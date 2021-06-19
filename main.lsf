@@ -1,0 +1,1313 @@
+############################################################
+### Linker spec file for Pokemon HeartGold/SoulSilver US ###
+###      Pass this to the SDK's makelcf.exe utility      ###
+###           along with the ARM9-TS template.           ###
+###                        WIP                           ###
+############################################################
+
+Static main
+{
+	Address 0x02000000
+	Object main.o
+	Object sdk.o
+}
+
+Autoload ITCM
+{
+	Address 0x01FF8000
+	### to be filled ###
+}
+
+Autoload DTCM
+{
+	Address 0x027E0000
+	### to be filled ###
+}
+Overlay OVY_0
+{
+    After main
+    ### Size 0x34d80 ###
+    ### BSS Size 0x1380 ###
+    ### SINIT Start 0x22163f8 ###
+    ### SINIT End 0x22163fc ###
+    ### Compressed? True ###
+    ### Compressed size 0x1fad0 ###
+}
+Overlay OVY_1
+{
+    After main
+    ### Size 0x24260 ###
+    ### BSS Size 0x3c020 ###
+    ### SINIT Start 0x2209810 ###
+    ### SINIT End 0x2209814 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1afa4 ###
+}
+Overlay OVY_2
+{
+    After OVY_81
+    ### Size 0xe2a0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2253d7c ###
+    ### SINIT End 0x2253d80 ###
+    ### Compressed? True ###
+    ### Compressed size 0xa7d4 ###
+}
+Overlay OVY_3
+{
+    After OVY_71
+    ### Size 0x5a80 ###
+    ### BSS Size 0x20 ###
+    ### SINIT Start 0x2259818 ###
+    ### SINIT End 0x225981c ###
+    ### Compressed? True ###
+    ### Compressed size 0x4224 ###
+}
+Overlay OVY_4
+{
+    After OVY_71
+    ### Size 0x3d60 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2257b64 ###
+    ### SINIT End 0x2257b68 ###
+    ### Compressed? True ###
+    ### Compressed size 0x2e30 ###
+}
+Overlay OVY_5
+{
+    After OVY_17
+    ### Size 0x3880 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x221f274 ###
+    ### SINIT End 0x221f278 ###
+    ### Compressed? True ###
+    ### Compressed size 0x2710 ###
+}
+Overlay OVY_6
+{
+    After OVY_17
+    ### Size 0x420 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x221be18 ###
+    ### SINIT End 0x221be1c ###
+    ### Compressed? True ###
+    ### Compressed size 0x310 ###
+}
+Overlay OVY_7
+{
+    After OVY_5
+    ### Size 0x1baa0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x223783c ###
+    ### SINIT End 0x2237840 ###
+    ### Compressed? True ###
+    ### Compressed size 0x132e8 ###
+}
+Overlay OVY_8
+{
+    After OVY_5
+    ### Size 0xa120 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2225f3c ###
+    ### SINIT End 0x2225f40 ###
+    ### Compressed? True ###
+    ### Compressed size 0x72a8 ###
+}
+Overlay OVY_9
+{
+    After OVY_5
+    ### Size 0x20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x221be20 ###
+    ### SINIT End 0x221be24 ###
+    ### Compressed? True ###
+    ### Compressed size 0x14 ###
+}
+Overlay OVY_10
+{
+    After OVY_5
+    ### Size 0xf460 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x222b268 ###
+    ### SINIT End 0x222b26c ###
+    ### Compressed? True ###
+    ### Compressed size 0x6c08 ###
+}
+Overlay OVY_11
+{
+    After main
+    ### Size 0x20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e5900 ###
+    ### SINIT End 0x21e5904 ###
+    ### Compressed? True ###
+    ### Compressed size 0x14 ###
+}
+Overlay OVY_12
+{
+    After OVY_40
+    ### Size 0x37380 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x226ec08 ###
+    ### SINIT End 0x226ec10 ###
+    ### Compressed? True ###
+    ### Compressed size 0x27aa0 ###
+}
+Overlay OVY_13
+{
+    After OVY_17
+    ### Size 0x2ba80 ###
+    ### BSS Size 0x81e0 ###
+    ### SINIT Start 0x2245964 ###
+    ### SINIT End 0x2245968 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1affc ###
+}
+Overlay OVY_14
+{
+    After main
+    ### Size 0x13a80 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21f9360 ###
+    ### SINIT End 0x21f9364 ###
+    ### Compressed? True ###
+    ### Compressed size 0xc980 ###
+}
+Overlay OVY_15
+{
+    After OVY_103
+    ### Size 0x8100 ###
+    ### BSS Size 0x20 ###
+    ### SINIT Start 0x22012f8 ###
+    ### SINIT End 0x22012fc ###
+    ### Compressed? True ###
+    ### Compressed size 0x5964 ###
+}
+Overlay OVY_16
+{
+    After OVY_15
+    ### Size 0x720 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2201b88 ###
+    ### SINIT End 0x2201b8c ###
+    ### Compressed? True ###
+    ### Compressed size 0x5f4 ###
+}
+Overlay OVY_17
+{
+    After OVY_16
+    ### Size 0x2420 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2203fc4 ###
+    ### SINIT End 0x2203fc8 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1a1c ###
+}
+Overlay OVY_18
+{
+    After main
+    ### Size 0x16560 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21fbe58 ###
+    ### SINIT End 0x21fbe5c ###
+    ### Compressed? True ###
+    ### Compressed size 0xe940 ###
+}
+Overlay OVY_19
+{
+    After OVY_46
+    ### Size 0x880 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225a13c ###
+    ### SINIT End 0x225a140 ###
+    ### Compressed? True ###
+    ### Compressed size 0x780 ###
+}
+Overlay OVY_20
+{
+    After OVY_46
+    ### Size 0x420 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259cd4 ###
+    ### SINIT End 0x2259cd8 ###
+    ### Compressed? True ###
+    ### Compressed size 0x390 ###
+}
+Overlay OVY_21
+{
+    After OVY_46
+    ### Size 0x160 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259a0c ###
+    ### SINIT End 0x2259a10 ###
+    ### Compressed? True ###
+    ### Compressed size 0x144 ###
+}
+Overlay OVY_22
+{
+    After OVY_46
+    ### Size 0x2c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259b7c ###
+    ### SINIT End 0x2259b80 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1b8 ###
+}
+Overlay OVY_23
+{
+    After OVY_46
+    ### Size 0x4c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259d7c ###
+    ### SINIT End 0x2259d80 ###
+    ### Compressed? True ###
+    ### Compressed size 0x47c ###
+}
+Overlay OVY_24
+{
+    After OVY_46
+    ### Size 0x6c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259f3c ###
+    ### SINIT End 0x2259f40 ###
+    ### Compressed? True ###
+    ### Compressed size 0x698 ###
+}
+Overlay OVY_25
+{
+    After OVY_46
+    ### Size 0x660 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259f1c ###
+    ### SINIT End 0x2259f20 ###
+    ### Compressed? True ###
+    ### Compressed size 0x590 ###
+}
+Overlay OVY_26
+{
+    After OVY_46
+    ### Size 0x520 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259dc0 ###
+    ### SINIT End 0x2259dc4 ###
+    ### Compressed? True ###
+    ### Compressed size 0x4c4 ###
+}
+Overlay OVY_27
+{
+    After OVY_35
+    ### Size 0x35a0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225d46c ###
+    ### SINIT End 0x225d470 ###
+    ### Compressed? True ###
+    ### Compressed size 0x27a0 ###
+}
+Overlay OVY_28
+{
+    After OVY_91
+    ### Size 0x1680 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225eb8c ###
+    ### SINIT End 0x225eb90 ###
+    ### Compressed? True ###
+    ### Compressed size 0x12cc ###
+}
+Overlay OVY_29
+{
+    After OVY_91
+    ### Size 0xe00 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225e304 ###
+    ### SINIT End 0x225e308 ###
+    ### Compressed? True ###
+    ### Compressed size 0xc70 ###
+}
+Overlay OVY_30
+{
+    After OVY_91
+    ### Size 0x7c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225dc80 ###
+    ### SINIT End 0x225dc84 ###
+    ### Compressed? True ###
+    ### Compressed size 0x608 ###
+}
+Overlay OVY_31
+{
+    After OVY_91
+    ### Size 0x1b00 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225ef24 ###
+    ### SINIT End 0x225ef28 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1340 ###
+}
+Overlay OVY_32
+{
+    After OVY_91
+    ### Size 0xdc0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225e2dc ###
+    ### SINIT End 0x225e2e0 ###
+    ### Compressed? True ###
+    ### Compressed size 0xbec ###
+}
+Overlay OVY_33
+{
+    After OVY_91
+    ### Size 0x5a0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225dabc ###
+    ### SINIT End 0x225dac0 ###
+    ### Compressed? True ###
+    ### Compressed size 0x518 ###
+}
+Overlay OVY_34
+{
+    After OVY_91
+    ### Size 0x1240 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225e750 ###
+    ### SINIT End 0x225e754 ###
+    ### Compressed? True ###
+    ### Compressed size 0xffc ###
+}
+Overlay OVY_35
+{
+    After OVY_19
+    ### Size 0x40 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259dbc ###
+    ### SINIT End 0x2259dc0 ###
+    ### Compressed? False ###
+}
+Overlay OVY_36
+{
+    After main
+    ### Size 0x360 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e5c44 ###
+    ### SINIT End 0x21e5c48 ###
+    ### Compressed? True ###
+    ### Compressed size 0x318 ###
+}
+Overlay OVY_37
+{
+    After main
+    ### Size 0x24e0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e7d08 ###
+    ### SINIT End 0x21e7d0c ###
+    ### Compressed? True ###
+    ### Compressed size 0x1cd8 ###
+}
+Overlay OVY_38
+{
+    After OVY_17
+    ### Size 0xa620 ###
+    ### BSS Size 0x1040 ###
+    ### SINIT Start 0x2225024 ###
+    ### SINIT End 0x2225028 ###
+    ### Compressed? True ###
+    ### Compressed size 0x6600 ###
+}
+Overlay OVY_39
+{
+    After OVY_97
+    ### Size 0x3b20 ###
+    ### BSS Size 0xb60 ###
+    ### SINIT Start 0x222aa0c ###
+    ### SINIT End 0x222aa10 ###
+    ### Compressed? True ###
+    ### Compressed size 0x2a90 ###
+}
+Overlay OVY_40
+{
+    After OVY_43
+    ### Size 0x1a7c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2245cb8 ###
+    ### SINIT End 0x2245cbc ###
+    ### Compressed? True ###
+    ### Compressed size 0x12464 ###
+}
+Overlay OVY_41
+{
+    After OVY_2
+    ### Size 0x6200 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x224c098 ###
+    ### SINIT End 0x224c09c ###
+    ### Compressed? True ###
+    ### Compressed size 0x5050 ###
+}
+Overlay OVY_42
+{
+    After OVY_97
+    ### Size 0x2e80 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2229ed8 ###
+    ### SINIT End 0x2229edc ###
+    ### Compressed? True ###
+    ### Compressed size 0x2248 ###
+}
+Overlay OVY_43
+{
+    After OVY_39
+    ### Size 0x5300 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x222f0d8 ###
+    ### SINIT End 0x222f0dc ###
+    ### Compressed? True ###
+    ### Compressed size 0x3dd4 ###
+}
+Overlay OVY_44
+{
+    After OVY_39
+    ### Size 0xc9c0 ###
+    ### BSS Size 0x20 ###
+    ### SINIT Start 0x2236650 ###
+    ### SINIT End 0x2236654 ###
+    ### Compressed? True ###
+    ### Compressed size 0x8498 ###
+}
+Overlay OVY_45
+{
+    After OVY_39
+    ### Size 0x2d8e0 ###
+    ### BSS Size 0x1040 ###
+    ### SINIT Start 0x2254e18 ###
+    ### SINIT End 0x2254e1c ###
+    ### Compressed? True ###
+    ### Compressed size 0x1a638 ###
+}
+Overlay OVY_46
+{
+    After OVY_3
+    ### Size 0xe40 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259630 ###
+    ### SINIT End 0x2259634 ###
+    ### Compressed? True ###
+    ### Compressed size 0xb40 ###
+}
+Overlay OVY_47
+{
+    After OVY_3
+    ### Size 0x17c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259f88 ###
+    ### SINIT End 0x2259f8c ###
+    ### Compressed? True ###
+    ### Compressed size 0x137c ###
+}
+Overlay OVY_48
+{
+    After OVY_3
+    ### Size 0x2d80 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225b570 ###
+    ### SINIT End 0x225b574 ###
+    ### Compressed? True ###
+    ### Compressed size 0x2548 ###
+}
+Overlay OVY_49
+{
+    After OVY_3
+    ### Size 0x12120 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x226a918 ###
+    ### SINIT End 0x226a91c ###
+    ### Compressed? True ###
+    ### Compressed size 0xd730 ###
+}
+Overlay OVY_50
+{
+    After main
+    ### Size 0x1c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e5aac ###
+    ### SINIT End 0x21e5ab0 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1ac ###
+}
+Overlay OVY_51
+{
+    After OVY_0
+    ### Size 0x2600 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e809c ###
+    ### SINIT End 0x21e80a0 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1dd8 ###
+}
+Overlay OVY_52
+{
+    After OVY_101
+    ### Size 0x1620 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e96a0 ###
+    ### SINIT End 0x21e96a4 ###
+    ### Compressed? True ###
+    ### Compressed size 0x11b8 ###
+}
+Overlay OVY_53
+{
+    After main
+    ### Size 0x2fa0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e8888 ###
+    ### SINIT End 0x21e888c ###
+    ### Compressed? True ###
+    ### Compressed size 0x252c ###
+}
+Overlay OVY_54
+{
+    After main
+    ### Size 0x1720 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e7014 ###
+    ### SINIT End 0x21e7018 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1120 ###
+}
+Overlay OVY_55
+{
+    After main
+    ### Size 0x320 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e5c14 ###
+    ### SINIT End 0x21e5c18 ###
+    ### Compressed? True ###
+    ### Compressed size 0x310 ###
+}
+Overlay OVY_56
+{
+    After OVY_51
+    ### Size 0x1300 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e6f0c ###
+    ### SINIT End 0x21e6f10 ###
+    ### Compressed? True ###
+    ### Compressed size 0xf50 ###
+}
+Overlay OVY_57
+{
+    After OVY_40
+    ### Size 0x4680 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x223bf28 ###
+    ### SINIT End 0x223bf30 ###
+    ### Compressed? True ###
+    ### Compressed size 0x3648 ###
+}
+Overlay OVY_58
+{
+    After OVY_40
+    ### Size 0x480 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2237d3c ###
+    ### SINIT End 0x2237d40 ###
+    ### Compressed? True ###
+    ### Compressed size 0x424 ###
+}
+Overlay OVY_59
+{
+    After OVY_12
+    ### Size 0x4e60 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x223cb64 ###
+    ### SINIT End 0x223cb68 ###
+    ### Compressed? True ###
+    ### Compressed size 0x3a70 ###
+}
+Overlay OVY_60
+{
+    After main
+    ### Size 0x5f80 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21eb840 ###
+    ### SINIT End 0x21eb844 ###
+    ### Compressed? True ###
+    ### Compressed size 0x41d0 ###
+}
+Overlay OVY_61
+{
+    After main
+    ### Size 0x1bc0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e74bc ###
+    ### SINIT End 0x21e74c0 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1750 ###
+}
+Overlay OVY_62
+{
+    After main
+    ### Size 0xfe0 ###
+    ### BSS Size 0x20 ###
+    ### SINIT Start 0x21e68dc ###
+    ### SINIT End 0x21e68e0 ###
+    ### Compressed? True ###
+    ### Compressed size 0xc18 ###
+}
+Overlay OVY_63
+{
+    After OVY_5
+    ### Size 0x45c0 ###
+    ### BSS Size 0x20 ###
+    ### SINIT Start 0x22203ac ###
+    ### SINIT End 0x22203b0 ###
+    ### Compressed? True ###
+    ### Compressed size 0x2fcc ###
+}
+Overlay OVY_64
+{
+    After main
+    ### Size 0x1b80 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e7470 ###
+    ### SINIT End 0x21e7474 ###
+    ### Compressed? True ###
+    ### Compressed size 0x12f4 ###
+}
+Overlay OVY_65
+{
+    After OVY_5
+    ### Size 0x4380 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2220194 ###
+    ### SINIT End 0x2220198 ###
+    ### Compressed? True ###
+    ### Compressed size 0x3308 ###
+}
+Overlay OVY_66
+{
+    After main
+    ### Size 0x20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e5900 ###
+    ### SINIT End 0x21e5904 ###
+    ### Compressed? True ###
+    ### Compressed size 0x14 ###
+}
+Overlay OVY_67
+{
+    After main
+    ### Size 0x1840 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e7138 ###
+    ### SINIT End 0x21e713c ###
+    ### Compressed? True ###
+    ### Compressed size 0x12d8 ###
+}
+Overlay OVY_68
+{
+    After main
+    ### Size 0x2800 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e80e4 ###
+    ### SINIT End 0x21e80e8 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1cf8 ###
+}
+Overlay OVY_69
+{
+    After main
+    ### Size 0x1f00 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e77e0 ###
+    ### SINIT End 0x21e77e4 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1940 ###
+}
+Overlay OVY_70
+{
+    After OVY_40
+    ### Size 0xef40 ###
+    ### BSS Size 0x160 ###
+    ### SINIT Start 0x2246090 ###
+    ### SINIT End 0x2246094 ###
+    ### Compressed? True ###
+    ### Compressed size 0xa64c ###
+}
+Overlay OVY_71
+{
+    After OVY_41
+    ### Size 0x56e0 ###
+    ### BSS Size 0xa0 ###
+    ### SINIT Start 0x224c004 ###
+    ### SINIT End 0x224c008 ###
+    ### Compressed? True ###
+    ### Compressed size 0x3f10 ###
+}
+Overlay OVY_72
+{
+    After OVY_40
+    ### Size 0x3f60 ###
+    ### BSS Size 0x120 ###
+    ### SINIT Start 0x223b4d4 ###
+    ### SINIT End 0x223b4d8 ###
+    ### Compressed? True ###
+    ### Compressed size 0x2dcc ###
+}
+Overlay OVY_73
+{
+    After main
+    ### Size 0x5040 ###
+    ### BSS Size 0x20 ###
+    ### SINIT Start 0x21ea7bc ###
+    ### SINIT End 0x21ea7c0 ###
+    ### Compressed? True ###
+    ### Compressed size 0x3bc0 ###
+}
+Overlay OVY_74
+{
+    After OVY_97
+    ### Size 0x16020 ###
+    ### BSS Size 0x1980 ###
+    ### SINIT Start 0x223bbb0 ###
+    ### SINIT End 0x223bbb4 ###
+    ### Compressed? True ###
+    ### Compressed size 0x10774 ###
+}
+Overlay OVY_75
+{
+    After OVY_41
+    ### Size 0x3280 ###
+    ### BSS Size 0x20 ###
+    ### SINIT Start 0x2249b04 ###
+    ### SINIT End 0x2249b08 ###
+    ### Compressed? True ###
+    ### Compressed size 0x2348 ###
+}
+Overlay OVY_76
+{
+    After main
+    ### Size 0x2ea0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e8794 ###
+    ### SINIT End 0x21e8798 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1e24 ###
+}
+Overlay OVY_77
+{
+    After main
+    ### Size 0x20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e5900 ###
+    ### SINIT End 0x21e5904 ###
+    ### Compressed? True ###
+    ### Compressed size 0x14 ###
+}
+Overlay OVY_78
+{
+    After main
+    ### Size 0x1040 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e691c ###
+    ### SINIT End 0x21e6920 ###
+    ### Compressed? True ###
+    ### Compressed size 0xca0 ###
+}
+Overlay OVY_79
+{
+    After OVY_39
+    ### Size 0x20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2229ee0 ###
+    ### SINIT End 0x2229ee4 ###
+    ### Compressed? True ###
+    ### Compressed size 0x14 ###
+}
+Overlay OVY_80
+{
+    After OVY_39
+    ### Size 0x13e60 ###
+    ### BSS Size 0x20 ###
+    ### SINIT Start 0x223dc0c ###
+    ### SINIT End 0x223dc10 ###
+    ### Compressed? True ###
+    ### Compressed size 0xf07c ###
+}
+Overlay OVY_81
+{
+    After OVY_59
+    ### Size 0x5b00 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2243850 ###
+    ### SINIT End 0x2243854 ###
+    ### Compressed? True ###
+    ### Compressed size 0x400c ###
+}
+Overlay OVY_82
+{
+    After OVY_59
+    ### Size 0x21e0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x223ff20 ###
+    ### SINIT End 0x223ff24 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1b50 ###
+}
+Overlay OVY_83
+{
+    After OVY_59
+    ### Size 0xa900 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2248648 ###
+    ### SINIT End 0x224864c ###
+    ### Compressed? True ###
+    ### Compressed size 0x7b44 ###
+}
+Overlay OVY_84
+{
+    After OVY_59
+    ### Size 0x1cc0 ###
+    ### BSS Size 0x20 ###
+    ### SINIT Start 0x223fa08 ###
+    ### SINIT End 0x223fa0c ###
+    ### Compressed? True ###
+    ### Compressed size 0x16cc ###
+}
+Overlay OVY_85
+{
+    After main
+    ### Size 0x51c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21eaa60 ###
+    ### SINIT End 0x21eaa64 ###
+    ### Compressed? True ###
+    ### Compressed size 0x3fe4 ###
+}
+Overlay OVY_86
+{
+    After main
+    ### Size 0x2aa0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e8398 ###
+    ### SINIT End 0x21e839c ###
+    ### Compressed? True ###
+    ### Compressed size 0x1e64 ###
+}
+Overlay OVY_87
+{
+    After main
+    ### Size 0x2be0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e84ac ###
+    ### SINIT End 0x21e84b0 ###
+    ### Compressed? True ###
+    ### Compressed size 0x2170 ###
+}
+Overlay OVY_88
+{
+    After OVY_3
+    ### Size 0x1280 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2259a4c ###
+    ### SINIT End 0x2259a50 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1014 ###
+}
+Overlay OVY_89
+{
+    After OVY_3
+    ### Size 0x4e80 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225d664 ###
+    ### SINIT End 0x225d668 ###
+    ### Compressed? True ###
+    ### Compressed size 0x3724 ###
+}
+Overlay OVY_90
+{
+    After OVY_3
+    ### Size 0x3d40 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225c538 ###
+    ### SINIT End 0x225c53c ###
+    ### Compressed? True ###
+    ### Compressed size 0x3180 ###
+}
+Overlay OVY_91
+{
+    After OVY_27
+    ### Size 0x6280 ###
+    ### BSS Size 0x40 ###
+    ### SINIT Start 0x22627b4 ###
+    ### SINIT End 0x22627b8 ###
+    ### Compressed? True ###
+    ### Compressed size 0x4b10 ###
+}
+Overlay OVY_92
+{
+    After OVY_27
+    ### Size 0x7c20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2264008 ###
+    ### SINIT End 0x226400c ###
+    ### Compressed? True ###
+    ### Compressed size 0x5604 ###
+}
+Overlay OVY_93
+{
+    After OVY_27
+    ### Size 0x6c00 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2263134 ###
+    ### SINIT End 0x2263138 ###
+    ### Compressed? True ###
+    ### Compressed size 0x54d0 ###
+}
+Overlay OVY_94
+{
+    After main
+    ### Size 0x420 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e5d18 ###
+    ### SINIT End 0x21e5d1c ###
+    ### Compressed? True ###
+    ### Compressed size 0x3dc ###
+}
+Overlay OVY_95
+{
+    After main
+    ### Size 0x1fc0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e78b4 ###
+    ### SINIT End 0x21e78b8 ###
+    ### Compressed? True ###
+    ### Compressed size 0x174c ###
+}
+Overlay OVY_96
+{
+    After main
+    ### Size 0x383a0 ###
+    ### BSS Size 0x920 ###
+    ### SINIT Start 0x221d9f0 ###
+    ### SINIT End 0x221d9f4 ###
+    ### Compressed? True ###
+    ### Compressed size 0x2d09c ###
+}
+Overlay OVY_97
+{
+    After OVY_7
+    ### Size 0x17c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x221fd74 ###
+    ### SINIT End 0x221fd78 ###
+    ### Compressed? True ###
+    ### Compressed size 0x126c ###
+}
+Overlay OVY_98
+{
+    After OVY_7
+    ### Size 0xcc0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x221f270 ###
+    ### SINIT End 0x221f274 ###
+    ### Compressed? True ###
+    ### Compressed size 0xb18 ###
+}
+Overlay OVY_99
+{
+    After main
+    ### Size 0x4d00 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21ea5a4 ###
+    ### SINIT End 0x21ea5a8 ###
+    ### Compressed? True ###
+    ### Compressed size 0x358c ###
+}
+Overlay OVY_100
+{
+    After main
+    ### Size 0x1e40 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e7714 ###
+    ### SINIT End 0x21e7718 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1768 ###
+}
+Overlay OVY_101
+{
+    After OVY_56
+    ### Size 0x13bc0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21fb2ac ###
+    ### SINIT End 0x21fb2b0 ###
+    ### Compressed? True ###
+    ### Compressed size 0xd29c ###
+}
+Overlay OVY_102
+{
+    After OVY_56
+    ### Size 0x5200 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21ec930 ###
+    ### SINIT End 0x21ec934 ###
+    ### Compressed? True ###
+    ### Compressed size 0x3da0 ###
+}
+Overlay OVY_103
+{
+    After OVY_52
+    ### Size 0x2740 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21ef060 ###
+    ### SINIT End 0x21ef064 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1d10 ###
+}
+Overlay OVY_104
+{
+    After main
+    ### Size 0x820 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e6048 ###
+    ### SINIT End 0x21e604c ###
+    ### Compressed? True ###
+    ### Compressed size 0x704 ###
+}
+Overlay OVY_105
+{
+    After main
+    ### Size 0x5c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e5e7c ###
+    ### SINIT End 0x21e5e80 ###
+    ### Compressed? True ###
+    ### Compressed size 0x538 ###
+}
+Overlay OVY_106
+{
+    After main
+    ### Size 0x2d40 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e8634 ###
+    ### SINIT End 0x21e8638 ###
+    ### Compressed? True ###
+    ### Compressed size 0x16c8 ###
+}
+Overlay OVY_107
+{
+    After main
+    ### Size 0x20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e5900 ###
+    ### SINIT End 0x21e5904 ###
+    ### Compressed? True ###
+    ### Compressed size 0x14 ###
+}
+Overlay OVY_108
+{
+    After main
+    ### Size 0x5460 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21ead50 ###
+    ### SINIT End 0x21ead54 ###
+    ### Compressed? True ###
+    ### Compressed size 0x4110 ###
+}
+Overlay OVY_109
+{
+    After main
+    ### Size 0x2240 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e7b20 ###
+    ### SINIT End 0x21e7b24 ###
+    ### Compressed? True ###
+    ### Compressed size 0x193c ###
+}
+Overlay OVY_110
+{
+    After main
+    ### Size 0x1720 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e6ff4 ###
+    ### SINIT End 0x21e6ff8 ###
+    ### Compressed? True ###
+    ### Compressed size 0x1278 ###
+}
+Overlay OVY_111
+{
+    After main
+    ### Size 0x1460 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e6d30 ###
+    ### SINIT End 0x21e6d34 ###
+    ### Compressed? True ###
+    ### Compressed size 0x10a8 ###
+}
+Overlay OVY_112
+{
+    After main
+    ### Size 0x1a0e0 ###
+    ### BSS Size 0x2c0 ###
+    ### SINIT Start 0x21ff4e8 ###
+    ### SINIT End 0x21ff4ec ###
+    ### Compressed? True ###
+    ### Compressed size 0xe7bc ###
+}
+Overlay OVY_113
+{
+    After main
+    ### Size 0x1480 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e6d70 ###
+    ### SINIT End 0x21e6d74 ###
+    ### Compressed? True ###
+    ### Compressed size 0xfd8 ###
+}
+Overlay OVY_114
+{
+    After OVY_28
+    ### Size 0x4e0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225f4f8 ###
+    ### SINIT End 0x225f4fc ###
+    ### Compressed? True ###
+    ### Compressed size 0x41c ###
+}
+Overlay OVY_115
+{
+    After OVY_28
+    ### Size 0x14e0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x22604f0 ###
+    ### SINIT End 0x22604f4 ###
+    ### Compressed? True ###
+    ### Compressed size 0xefc ###
+}
+Overlay OVY_116
+{
+    After OVY_28
+    ### Size 0x460 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225f46c ###
+    ### SINIT End 0x225f470 ###
+    ### Compressed? True ###
+    ### Compressed size 0x350 ###
+}
+Overlay OVY_117
+{
+    After OVY_28
+    ### Size 0xba0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225fbb4 ###
+    ### SINIT End 0x225fbb8 ###
+    ### Compressed? True ###
+    ### Compressed size 0x9c8 ###
+}
+Overlay OVY_118
+{
+    After OVY_28
+    ### Size 0x2a0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x225f2a8 ###
+    ### SINIT End 0x225f2ac ###
+    ### Compressed? True ###
+    ### Compressed size 0x244 ###
+}
+Overlay OVY_119
+{
+    After OVY_28
+    ### Size 0x1720 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x226072c ###
+    ### SINIT End 0x2260730 ###
+    ### Compressed? True ###
+    ### Compressed size 0xfd8 ###
+}
+Overlay OVY_120
+{
+    After OVY_28
+    ### Size 0x1340 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2260344 ###
+    ### SINIT End 0x2260348 ###
+    ### Compressed? True ###
+    ### Compressed size 0xe9c ###
+}
+Overlay OVY_121
+{
+    After main
+    ### Size 0x18a0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e7194 ###
+    ### SINIT End 0x21e7198 ###
+    ### Compressed? True ###
+    ### Compressed size 0x13a0 ###
+}
+Overlay OVY_122
+{
+    After main
+    ### Size 0x42c0 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x21e9b84 ###
+    ### SINIT End 0x21e9b88 ###
+    ### Compressed? True ###
+    ### Compressed size 0x3000 ###
+}
+Overlay OVY_123
+{
+    After OVY_28
+    ### Size 0x1be0 ###
+    ### BSS Size 0x20 ###
+    ### SINIT Start 0x2260bdc ###
+    ### SINIT End 0x2260bf4 ###
+    ### Compressed? True ###
+    ### Compressed size 0xf78 ###
+}
+Overlay OVY_124
+{
+    After OVY_114
+    ### Size 0x160 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2260d70 ###
+    ### SINIT End 0x2260d74 ###
+    ### Compressed? False ###
+}
+Overlay OVY_125
+{
+    After OVY_114
+    ### Size 0x20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2260c20 ###
+    ### SINIT End 0x2260c24 ###
+    ### Compressed? True ###
+    ### Compressed size 0x14 ###
+}
+Overlay OVY_126
+{
+    After OVY_114
+    ### Size 0x20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2260c20 ###
+    ### SINIT End 0x2260c24 ###
+    ### Compressed? True ###
+    ### Compressed size 0x14 ###
+}
+Overlay OVY_127
+{
+    After OVY_114
+    ### Size 0x20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2260c20 ###
+    ### SINIT End 0x2260c24 ###
+    ### Compressed? True ###
+    ### Compressed size 0x14 ###
+}
+Overlay OVY_128
+{
+    After OVY_114
+    ### Size 0x20 ###
+    ### BSS Size 0x0 ###
+    ### SINIT Start 0x2260c20 ###
+    ### SINIT End 0x2260c24 ###
+    ### Compressed? True ###
+    ### Compressed size 0x14 ###
+}

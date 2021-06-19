@@ -9,7 +9,7 @@ tools/bin/**
 
 # Build folder
 build/**
-arm*/build/**
+sub/build/**
 
 # CLion folders
 .idea/
@@ -27,15 +27,16 @@ cmake-build-debug/
 *.gbapal
 
 # For asmdiff
-arm*/baserom.*
+*/baserom.*
 *.dump
 
 *.lcf.template
+*.lcf
 
 # Working files
-arm9/modules/module_*.s
-arm9/modules/module_*.sbin
-arm9/modules/module_*.cfg
+overlays/*/module_*.s
+overlays/*/module_*.sbin
+overlays/*/module_*.cfg
 
 # Dism scripts
 dism.sh
