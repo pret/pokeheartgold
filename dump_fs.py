@@ -110,8 +110,8 @@ def main():
                         rom.seek(start)
                         ofp.write(rom.read(end - start))
 
-        dump_overlays('arm9', ovy9, allocs, rom)
-        dump_overlays('arm7', ovy7, allocs, rom)
+        dump_overlays('.', ovy9, allocs, rom)
+        dump_overlays('sub', ovy7, allocs, rom)
 
 
 if __name__ == '__main__':
