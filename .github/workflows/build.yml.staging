@@ -12,7 +12,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Update and Install Software
@@ -25,8 +25,10 @@ jobs:
           sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
           sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu $(lsb_release -cs) main"
           sudo apt -y --allow-downgrades install --install-recommends winehq-stable
+
       - name: Checkout Repo
         uses: actions/checkout@v2
+
       - name: Setup Repo
         run: |
           mkdir -p ~/download
@@ -37,13 +39,13 @@ jobs:
           mv mwccarm $GITHUB_WORKSPACE/tools
           7z x NitroSDK-3_2-060901.7z
           mv NitroSDK-3_2-060901/tools/bin $GITHUB_WORKSPACE/tools
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/arm7
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/arm9
+          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
+          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
         working-directory: ~
-      - name: Build Diamond
-        run: make diamond
-      - name: Build Pearl
-        run: make pearl
+
+      - name: Build HeartGold
+        run: make
+
       - name: Webhook
         run: |
           sudo chmod 755 $GITHUB_WORKSPACE/.github/calcrom/webhook.sh
