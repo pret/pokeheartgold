@@ -70226,7 +70226,7 @@ FUN_020D2324: @ 0x020D2324
 	ldr sp, [r0, #0x40]
 	ldr lr, [r0, #0x3c]
 	ldm r0, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, sp, lr} ^
-	mov r0, r0
+	nop
 	subs pc, lr, #4
 	.align 2, 0
 _020D2364: .4byte FUN_020D9C34
@@ -71489,7 +71489,7 @@ _020D3258:
 _020D3264:
 	beq _020D3264
 _020D3268:
-	mov r0, r0
+	nop
 	b _020D3268
 	arm_func_end FUN_020D3210
 
@@ -73592,12 +73592,13 @@ FUN_020D4BD0: @ 0x020D4BD0
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r1, r2, r3}
 	bx lr
-	movs r0, r0
 	thumb_func_end FUN_020D4BD0
+
+	.balign 4, 0
 
 	arm_func_start FUN_020D4BE0
 FUN_020D4BE0: @ 0x020D4BE0
-	.word 0xE1010090
+	swp r0, r0, [r1]
 	bx lr
 	arm_func_end FUN_020D4BE0
 
@@ -73623,7 +73624,7 @@ _020D4C18:
 	tst lr, #0x80
 	bne _020D4C3C
 	ldrb r6, [r0], #1
-	.word 0xE1416096
+	swpb r6, r6, [r1]
 	add r1, r1, #1
 	sub r2, r2, #1
 	b _020D4CC8
@@ -73666,7 +73667,7 @@ _020D4C94:
 	sub r2, r2, r3
 _020D4CB4:
 	ldrb r5, [r1, -ip]
-	.word 0xE1415095
+	swpb r5, r5, [r1]
 	add r1, r1, #1
 	subs r3, r3, #1
 	bgt _020D4CB4
@@ -91947,7 +91948,7 @@ _020E3ADC:
 _020E3B18:
 	ldrb r1, [r6]
 	subs r0, r0, #1
-	.word 0xE1471091
+	swpb r1, r1, [r7]
 	add r7, r7, #1
 	strb r1, [r6], #1
 	bne _020E3B18
@@ -91955,7 +91956,7 @@ _020E3B18:
 _020E3B34:
 	ldr r1, [r6]
 	subs r0, r0, #4
-	.word 0xE1071091
+	swp r1, r1, [r7]
 	add r7, r7, #4
 	str r1, [r6], #4
 	bne _020E3B34
@@ -91973,7 +91974,7 @@ _020E3B50:
 _020E3B74:
 	ldrb r1, [r2]
 	subs r0, r0, #1
-	.word 0xE1431091
+	swpb r1, r1, [r3]
 	add r3, r3, #1
 	strb r1, [r2], #1
 	bne _020E3B74
@@ -91981,7 +91982,7 @@ _020E3B74:
 _020E3B90:
 	ldr r1, [r2]
 	subs r0, r0, #4
-	.word 0xE1031091
+	swp r1, r1, [r3]
 	add r3, r3, #4
 	str r1, [r2], #4
 	bne _020E3B90
@@ -92023,7 +92024,7 @@ _020E3BF8:
 _020E3C18:
 	ldrb r1, [r2]
 	subs r0, r0, #1
-	.word 0xE1431091
+	swpb r1, r1, [r3]
 	add r3, r3, #1
 	strb r1, [r2], #1
 	bne _020E3C18
@@ -92031,7 +92032,7 @@ _020E3C18:
 _020E3C34:
 	ldr r1, [r2]
 	subs r0, r0, #4
-	.word 0xE1031091
+	swp r1, r1, [r3]
 	add r3, r3, #4
 	str r1, [r2], #4
 	bne _020E3C34
@@ -92049,7 +92050,7 @@ _020E3C5C:
 _020E3C70:
 	ldrb r1, [r2]
 	subs r0, r0, #1
-	.word 0xE1431091
+	swpb r1, r1, [r3]
 	add r3, r3, #1
 	strb r1, [r2], #1
 	bne _020E3C70
@@ -92057,7 +92058,7 @@ _020E3C70:
 _020E3C8C:
 	ldr r1, [r2]
 	subs r0, r0, #4
-	.word 0xE1031091
+	swp r1, r1, [r3]
 	add r3, r3, #4
 	str r1, [r2], #4
 	bne _020E3C8C
@@ -109689,7 +109690,7 @@ FUN_020F2998: @ 0x020F2998
 	adds r0, r0, r0
 	add r2, r2, r2, lsl #1
 	add pc, pc, r2, lsl #2
-	mov r0, r0
+	nop
 	adcs r3, r1, r3, lsl #1
 	sublo r3, r3, r1
 	adcs r0, r0, r0
@@ -109823,7 +109824,7 @@ FUN_020F2BAC: @ 0x020F2BAC
 	adds r0, r0, r0
 	add r2, r2, r2, lsl #1
 	add pc, pc, r2, lsl #2
-	mov r0, r0
+	nop
 	adcs r3, r1, r3, lsl #1
 	sublo r3, r3, r1
 	adcs r0, r0, r0
