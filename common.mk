@@ -16,8 +16,10 @@ include binutils.mk
 MWCC          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwccarm.exe
 MWAS          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwasmarm.exe
 MWLD          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwldarm.exe
-MAKEROM      := $(WINE) $(TOOLSDIR)/bin/makerom.exe
-MAKELCF      := $(WINE) $(TOOLSDIR)/bin/makelcf.exe
+MAKEROM      := $(TOOLSDIR)/bin/makerom.exe
+MAKELCF      := $(TOOLSDIR)/bin/makelcf.exe
+MAKEBNR      := $(TOOLSDIR)/bin/makebanner.exe
+NTRCOMP      := $(TOOLSDIR)/bin/ntrcomp.exe
 
 $(LM_LICENSE_FILE) := $(TOOLSDIR)/mwccarm/license.dat
 
@@ -25,10 +27,17 @@ $(LM_LICENSE_FILE) := $(TOOLSDIR)/mwccarm/license.dat
 SCANINC      := $(TOOLSDIR)/scaninc/scaninc$(EXE)
 JSONPROC     := $(TOOLSDIR)/jsonproc/jsonproc$(EXE)
 GFX          := $(TOOLSDIR)/nitrogfx/nitrogfx$(EXE)
+FIXROM       := $(TOOLSDIR)/fixrom/fixrom$(EXE)
+KNARC        := $(TOOLSDIR)/knarc/knarc$(EXE)
+O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
+
 NATIVE_TOOLS := \
 	$(SCANINC) \
 	$(JSONPROC) \
-	$(GFX)
+	$(GFX) \
+	$(FIXROM) \
+	$(KNARC) \
+	$(O2NARC)
 
 # Directories
 SRC_SUBDIR    := src
@@ -52,9 +61,9 @@ LCF               := $(NEF:%.nef=%.lcf)
 SBIN              := $(NEF:%.nef=%.sbin)
 XMAP              := $(NEF).xMAP
 MWCFLAGS          := -O4,p -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC)
-OVERLAYS          :=
 
 LSF               := $(NEFNAME).lsf
+OVERLAYS          := $(shell $(GREP) -o "^Overlay \w+" $(LSF) | cut -d' ' -f2)
 
 $(foreach dir,$(ALL_SUBDIRS),$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
@@ -72,7 +81,7 @@ clean-tools:
 	$(foreach tool,$(NATIVE_TOOLS),$(MAKE) -C $(shell dirname $(tool)) clean;)
 
 $(LCF): $(LSF) $(LCF_TEMPLATE)
-	$(MAKELCF) $(MAKELCF_FLAGS) $^ $@
+	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
 
 $(NEF): $(LCF)
 	cd $(BUILD_DIR) && LM_LICENSE_FILE=../../$(LM_LICENSE_FILE) $(WINE) ../../$(MWLD) $(MWLDFLAGS) $(LIBS) -o ../../$(NEF) $(LCF:%(BUILD_DIR)/%=%) $(ALL_OBJS:%(BUILD_DIR)/%=%)

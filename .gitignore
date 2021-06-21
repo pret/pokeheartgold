@@ -38,6 +38,11 @@ overlays/*/module_*.s
 overlays/*/module_*.sbin
 overlays/*/module_*.cfg
 
+*.sbin
+*.bnr
+*.nbfp
+*.nbfc
+
 # Dism scripts
 dism.sh
 asmdiff.sh

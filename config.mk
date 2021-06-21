@@ -29,3 +29,17 @@ endif
 
 BUILD_DIR         := build/$(buildname)
 NEFNAME           := main
+
+DEFINES := -DGAME_VERSION=$(GAME_VERSION) -DGAME_REMASTER=$(GAME_REMASTER) -DGAME_LANGUAGE=$(GAME_LANGUAGE)
+
+# Secure CRC
+ifeq ($(buildname),heartgold.us)
+SECURE_CRC := 0xA0FF
+endif
+ifeq ($(buildname),soulsilver.us)
+SECURE_CRC := 0x86A5
+endif
+
+ifndef SECURE_CRC
+$(error Unsupported ROM: $(GAME_VERSION) $(GAME_LANGUAGE))
+endif

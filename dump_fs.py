@@ -62,19 +62,23 @@ def read_table(rom, ofs):
     return rom.read(size)
 
 
-def dump_files(dirs, files, allocs, rom):
+def dump_files(dirs, files, allocs, rom, print_only=True):
     for dir_id, (name, parent, *members) in dirs.items():
         while parent is not None:
             name = dirs[parent][0] + '/' + name
             parent = dirs[parent][1]
-        os.makedirs(name, exist_ok=True)
+        if not print_only:
+            os.makedirs(name, exist_ok=True)
         for member in members:
             if not member & 0xF000:
                 start, end = allocs[member]
                 filename = name + '/' + files[member]
-                with open(filename, 'wb') as ofp:
-                    rom.seek(start)
-                    ofp.write(rom.read(end - start))
+                if print_only:
+                    print(filename)
+                else:
+                    with open(filename, 'wb') as ofp:
+                        rom.seek(start)
+                        ofp.write(rom.read(end - start))
 
 
 def dump_overlays(proc, table, allocs, rom, make_files=False):
@@ -131,10 +135,10 @@ def main():
         ovy9 = parse_overlays(ovy9_raw)
         ovy7 = parse_overlays(ovy7_raw)
 
-        # dump_files(dirs, files, allocs, rom)
+        dump_files(dirs, files, allocs, rom)
 
-        dump_overlays('.', ovy9, allocs, rom)
-        dump_overlays('sub', ovy7, allocs, rom)
+        # dump_overlays('.', ovy9, allocs, rom)
+        # dump_overlays('sub', ovy7, allocs, rom)
 
 
 if __name__ == '__main__':

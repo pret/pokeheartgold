@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 #include "global.h"
 #include "util.h"
 #include "options.h"
@@ -123,7 +124,10 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     char *inputFileExtension = GetFileExtension(inputPath);
     struct GbaToPngOptions options;
     options.paletteFilePath = NULL;
-    options.bitDepth = inputFileExtension[0] - '0';
+    if (isdigit(inputFileExtension[0]))
+        options.bitDepth = inputFileExtension[0] - '0';
+    else
+        options.bitDepth = 4;
     options.hasTransparency = false;
     options.width = 1;
     options.metatileWidth = 1;
@@ -914,12 +918,15 @@ int main(int argc, char **argv)
         { "1bpp", "png", HandleGbaToPngCommand },
         { "4bpp", "png", HandleGbaToPngCommand },
         { "8bpp", "png", HandleGbaToPngCommand },
+        { "nbfc", "png", HandleGbaToPngCommand },
         { "NCGR", "png", HandleNtrToPngCommand },
         { "png", "1bpp", HandlePngToGbaCommand },
         { "png", "4bpp", HandlePngToGbaCommand },
+        { "png", "nbfc", HandlePngToGbaCommand },
         { "png", "8bpp", HandlePngToGbaCommand },
         { "png", "NCGR", HandlePngToNtrCommand },
         { "png", "gbapal", HandlePngToGbaPaletteCommand },
+        { "png", "nbfp", HandlePngToGbaPaletteCommand },
         { "png", "NCLR", HandlePngToNtrPaletteCommand },
         { "gbapal", "pal", HandleGbaToJascPaletteCommand },
         { "NCLR", "pal", HandleNtrToJascPaletteCommand },

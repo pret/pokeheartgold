@@ -5,10 +5,15 @@ PROC_S         := arm5te
 
 include config.mk
 include common.mk
+include graphics_files_rules.mk
+include filesystem.mk
 
-ROM               := poke$(buildname).nds
+ROM            := $(BUILD_DIR)/poke$(buildname).nds
+BANNER         := $(ROM:%.nds=%.bnr)
+BANNER_SPEC    := $(ROM:%.nds=%.bsf)
+ICON_PNG       := $(ROM:$(BUILD_DIR)/%.nds=icon/%.png)
 
-MWCFLAGS += -ipa file -DGAME_VERSION=$(GAME_VERSION) -DGAME_REMASTER=$(GAME_REMASTER) -DGAME_LANGUAGE=$(GAME_LANGUAGE)
+MWCFLAGS += -ipa file $(DEFINES)
 
 .SECONDARY:
 .SECONDEXPANSION:
@@ -17,9 +22,27 @@ MWCFLAGS += -ipa file -DGAME_VERSION=$(GAME_VERSION) -DGAME_REMASTER=$(GAME_REMA
 
 MAKEFLAGS += --no-print-directory
 
-all: $(ROM)
+all: $(ROM) $(NEF) $(ELF) $(SBIN)
+
+tidy:
+	$(MAKE) -C sub tidy
+	$(RM) -r $(BUILD_DIR)
+	$(RM) $(ROM)
+
+clean: tidy
 
 main: $(SBIN)
+sub: ; $(MAKE) -C sub
 
+ROMSPEC        := rom.rsf
+MAKEROM_FLAGS  := $(DEFINES)
 
-$(ROM):
+$(ROM): $(ROMSPEC) $(NITROFS_FILES) main sub $(BANNER)
+	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DNITROFS_FILES="$(NITROFS_FILES)" -DTITLE_NAME="$(TITLE_NAME)" $< $@
+	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
+ifeq ($(COMPARE),1)
+	$(SHASUM) -c $(@:$(BUILD_DIR)/%.nds=%.sha1)
+endif
+
+$(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
+	$(WINE) $(MAKEBNR) $< $@
