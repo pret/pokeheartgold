@@ -4511,7 +4511,30 @@ _021E7B5C: .word 0x000019D8
 	thumb_func_end ov00_021E7AF4
 
 	.rodata
+
+	.balign 4
+_0221602C:
+	.byte 0x01, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+
+	.balign 4
+_02216034:
+	.asciz "%s = \'%s\'"
+
 	.data
-	.ctor
-	.sinit
+
+	.balign 4
+_02216400:
+	.asciz "pokemondpds"
+
+	.balign 4
+_0221640C:
+	.asciz "1vTlwb"
+
+	.balign 4
+_02216414:
+	.asciz "ppw_lobby"
+
 	.bss
+
+_0221A680:
+	.space 0x14
