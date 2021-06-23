@@ -12,18 +12,19 @@ Static main
 	Object error_handling.o
 	Object unk_02025534.o
 	Object sdk.o
+	Object bss_temp.o
 }
 
 Autoload ITCM
 {
 	Address 0x01FF8000
-	### to be filled ###
+	Object main.itcm.o
 }
 
 Autoload DTCM
 {
 	Address 0x027E0000
-	### to be filled ###
+	Object main.dtcm.o
 }
 Overlay OVY_0
 {
@@ -40,6 +41,7 @@ Overlay OVY_0
 Overlay OVY_1
 {
     After main
+    Object ovy_01.o
     ### Size 0x24260 ###
     ### BSS Size 0x3c020 ###
     ### SINIT Start 0x2209810 ###
@@ -50,6 +52,7 @@ Overlay OVY_1
 Overlay OVY_2
 {
     After OVY_81
+    Object ovy_02.o
     ### Size 0xe2a0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2253d7c ###
@@ -60,6 +63,7 @@ Overlay OVY_2
 Overlay OVY_3
 {
     After OVY_71
+    Object ovy_03.o
     ### Size 0x5a80 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x2259818 ###
@@ -70,6 +74,7 @@ Overlay OVY_3
 Overlay OVY_4
 {
     After OVY_71
+    Object ovy_04.o
     ### Size 0x3d60 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2257b64 ###
@@ -80,6 +85,7 @@ Overlay OVY_4
 Overlay OVY_5
 {
     After OVY_17
+    Object ovy_05.o
     ### Size 0x3880 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x221f274 ###
@@ -90,6 +96,7 @@ Overlay OVY_5
 Overlay OVY_6
 {
     After OVY_17
+    Object ovy_06.o
     ### Size 0x420 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x221be18 ###
@@ -100,6 +107,7 @@ Overlay OVY_6
 Overlay OVY_7
 {
     After OVY_5
+    Object ovy_07.o
     ### Size 0x1baa0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x223783c ###
@@ -110,6 +118,7 @@ Overlay OVY_7
 Overlay OVY_8
 {
     After OVY_5
+    Object ovy_08.o
     ### Size 0xa120 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2225f3c ###
@@ -120,6 +129,7 @@ Overlay OVY_8
 Overlay OVY_9
 {
     After OVY_5
+    ### No objects ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x221be20 ###
