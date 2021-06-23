@@ -568,7 +568,7 @@ FUN_0225A714: @ 0x0225A714
 	ldr r0, [r5, #0xc]
 	cmp r0, #0
 	bne _0225A722
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225A722:
 	ldr r4, [r5, #0x10]
 	ldr r6, [r5, #0xc]
@@ -674,7 +674,7 @@ FUN_0225A7DC: @ 0x0225A7DC
 	ldr r0, [r4, #0x14]
 	cmp r0, #7
 	blt _0225A7EA
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225A7EA:
 	ldr r1, [r4, #0x14]
 	adds r0, r4, #0
@@ -740,7 +740,7 @@ _0225A846:
 	bl FUN_0225B404
 	pop {r4, pc}
 _0225A866:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225A86A:
 	pop {r4, pc}
 	thumb_func_end FUN_0225A7FC
@@ -1512,7 +1512,7 @@ _0225AEDE:
 	str r0, [sp, #0x14]
 	cmp r0, #0
 	bne _0225AEFA
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225AEFA:
 	ldr r0, [sp, #0x14]
 	ldrb r0, [r0, #0x17]
@@ -1938,7 +1938,7 @@ _0225B27E:
 	bl FUN_0206DB28
 	adds r4, r0, #0
 	bne _0225B298
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225B298:
 	ldrb r0, [r4, #0x17]
 	lsls r0, r0, #0x1f
@@ -2066,7 +2066,7 @@ FUN_0225B398: @ 0x0225B398
 	str r1, [sp]
 	cmp r1, #7
 	blt _0225B3A6
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225B3A6:
 	ldr r0, _0225B3F0 @ =0x000004CC
 	movs r4, #0
@@ -3040,7 +3040,7 @@ FUN_0225C088: @ 0x0225C088
 	bl FUN_0206DB28
 	adds r4, r0, #0
 	bne _0225C09A
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225C09A:
 	adds r0, r4, #0
 	bl FUN_0206DB30
@@ -3186,7 +3186,7 @@ _0225C19C:
 	mvns r0, r0
 	cmp r4, r0
 	bne _0225C1A8
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225C1A8:
 	adds r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -3240,7 +3240,7 @@ FUN_0225C1EC: @ 0x0225C1EC
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	bne _0225C1FA
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225C1FA:
 	ldr r0, [r4, #0x14]
 	lsls r0, r0, #3

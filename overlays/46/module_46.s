@@ -444,7 +444,7 @@ _02259138:
 	ldr r0, [sp, #0x24]
 	cmp r0, #0x15
 	blt _02259142
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259142:
 	ldr r0, [sp, #0x30]
 	movs r7, #1

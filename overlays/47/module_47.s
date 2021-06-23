@@ -41,7 +41,7 @@ MOD47_02258800: @ 0x02258800
 	ldr r0, [r5, #8]
 	cmp r0, #2
 	blt _02258862
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02258862:
 	movs r1, #0x81
 	str r1, [sp]

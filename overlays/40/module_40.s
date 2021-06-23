@@ -509,7 +509,7 @@ FUN_0222BC68: @ 0x0222BC68
 	bl FUN_0200CFF4
 	cmp r0, #0
 	bne _0222BCD2
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222BCD2:
 	ldr r0, [r4, #0x18]
 	ldr r1, [r4, #0x1c]
@@ -517,7 +517,7 @@ _0222BCD2:
 	bl FUN_0200D3F8
 	cmp r0, #0
 	bne _0222BCE4
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222BCE4:
 	ldr r0, [r4, #0x18]
 	bl FUN_0200CF6C
@@ -1326,7 +1326,7 @@ _0222DBC8:
 	ldr r0, [r6, r0]
 	pop {r4, r5, r6, r7, pc}
 _0222DBD0:
-	bl FUN_0202551C
+	bl GF_AssertFail
 	ldr r0, [sp, #0x58]
 	add sp, #0x74
 	pop {r4, r5, r6, r7, pc}

@@ -2295,7 +2295,7 @@ FUN_021FD574: @ 0x021FD574
 	adds r7, r3, #0
 	cmp r5, #4
 	bls _021FD588
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021FD588:
 	cmp r5, #4
 	bls _021FD58E
@@ -5598,7 +5598,7 @@ FUN_02200458: @ 0x02200458
 	beq _0220046C
 	cmp r7, #0
 	beq _0220046C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0220046C:
 	add r0, sp, #0
 	movs r1, #0
@@ -5614,7 +5614,7 @@ _0220047A:
 	ldrb r0, [r0, #0xc]
 	cmp r0, #8
 	blo _0220048C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0220048C:
 	movs r0, #0x8d
 	lsls r0, r0, #2

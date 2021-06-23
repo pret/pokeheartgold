@@ -2061,7 +2061,7 @@ FUN_021ED64C: @ 0x021ED64C
 	bl FUN_021ED4B0
 	cmp r0, #0xff
 	bne _021ED66C
-	bl FUN_0202551C
+	bl GF_AssertFail
 	movs r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021ED66C:

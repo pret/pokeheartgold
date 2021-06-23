@@ -7,7 +7,7 @@ MOD23_022598C0: @ 0x022598C0
 	adds r5, r0, #0
 	cmp r6, #0xd
 	blo _022598D0
-	bl FUN_0202551C
+	bl GF_AssertFail
 _022598D0:
 	adds r0, r5, #0
 	movs r1, #0x14

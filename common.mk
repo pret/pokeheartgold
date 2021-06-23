@@ -40,15 +40,15 @@ NATIVE_TOOLS := \
 	$(O2NARC)
 
 # Directories
-SRC_SUBDIR    := src
-ASM_SUBDIR    := asm
+SRC_SUBDIR    := src lib/src $(wildcard overlays/*/src)
+ASM_SUBDIR    := asm lib/asm $(wildcard overlays/*/asm)
 ALL_SUBDIRS   := $(SRC_SUBDIR) $(ASM_SUBDIR)
 
-SRC_BUILDDIR  := $(BUILD_DIR)/$(SRC_SUBDIR)
-ASM_BUILDDIR  := $(BUILD_DIR)/$(ASM_SUBDIR)
+SRC_BUILDDIR  := $(foreach dir,$(SRC_SUBDIR),$(BUILD_DIR)/$(dir))
+ASM_BUILDDIR  := $(foreach dir,$(ASM_SUBDIR),$(BUILD_DIR)/$(dir))
 
-C_SRCS        := $(wildcard $(SRC_SUBDIR)/*.c)
-ASM_SRCS      := $(wildcard $(ASM_SUBDIR)/*.s)
+C_SRCS        := $(foreach dir,$(SRC_SUBDIR),wildcard $(dir)/*.c)
+ASM_SRCS      := $(foreach dir,$(ASM_SUBDIR),wildcard $(dir)/*.s)
 ALL_SRCS      := $(C_SRCS) $(ASM_SRCS)
 
 C_OBJS        := $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
@@ -67,10 +67,10 @@ OVERLAYS          := $(shell $(GREP) -o "^Overlay \w+" $(LSF) | cut -d' ' -f2)
 
 $(foreach dir,$(ALL_SUBDIRS),$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
-$(SRC_BUILDDIR)/%.o: $(SRC_SUBDIR)/%.c
+$(BUILD_DIR)/%.o: %.c
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $@ $<
 
-$(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s
+$(BUILD_DIR)/%.o: %.s
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $@ $<
 
 $(NATIVE_TOOLS): tools

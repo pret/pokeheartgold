@@ -1323,7 +1323,7 @@ FUN_0222CDE4: @ 0x0222CDE4
 	adds r6, r2, #0
 	cmp r4, #0xd
 	blo _0222CDF4
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222CDF4:
 	lsls r3, r4, #2
 	adds r1, r5, #4
@@ -1349,7 +1349,7 @@ FUN_0222CE2C: @ 0x0222CE2C
 	adds r5, r0, #0
 	cmp r4, #0xd
 	blo _0222CE3A
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222CE3A:
 	ldr r2, _0222CE50 @ =0x02254E54
 	lsls r3, r4, #2
@@ -1670,7 +1670,7 @@ FUN_0222DE3C: @ 0x0222DE3C
 	adds r7, r3, #0
 	cmp r4, #0x14
 	blo _0222DE4E
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222DE4E:
 	lsls r0, r4, #2
 	strh r6, [r5, r0]
@@ -1856,13 +1856,13 @@ FUN_0222E5D4: @ 0x0222E5D4
 	adds r4, r3, #0
 	cmp r0, #0
 	beq _0222E5EA
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222E5EA:
 	movs r0, #0x4b
 	lsls r0, r0, #2
 	cmp r7, r0
 	blo _0222E5F6
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222E5F6:
 	ldr r1, _0222E680 @ =0x00000988
 	adds r0, r5, #0
@@ -2062,7 +2062,7 @@ FUN_0222EE20: @ 0x0222EE20
 	adds r6, r2, #0
 	cmp r0, #0
 	bne _0222EE34
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222EE34:
 	ldr r2, _0222EE4C @ =0x022577C0
 	movs r1, #0x61
@@ -2305,7 +2305,7 @@ _0222F9C8:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _0222F9D6
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222F9D6:
 	cmp r4, #0
 	bne _0222F9DE

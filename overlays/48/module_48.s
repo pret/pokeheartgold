@@ -510,7 +510,7 @@ FUN_02259130: @ 0x02259130
 	bl FUN_022593B4
 	cmp r0, #1
 	beq _02259184
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259184:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -1253,7 +1253,7 @@ FUN_02259B3C: @ 0x02259B3C
 	adds r4, r1, #0
 	cmp r6, r0
 	blo _02259B4E
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259B4E:
 	movs r0, #0x30
 	muls r0, r6, r0
@@ -1278,7 +1278,7 @@ FUN_02259B68: @ 0x02259B68
 	adds r4, r1, #0
 	cmp r4, r0
 	blo _02259B78
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259B78:
 	movs r0, #0x30
 	muls r0, r4, r0
@@ -2075,7 +2075,7 @@ FUN_0225AAAC: @ 0x0225AAAC
 	bl FUN_0200B00C
 	cmp r0, #0
 	bne _0225AB18
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225AB18:
 	ldr r0, [sp, #0x2c]
 	ldr r0, [r0, #0x70]
@@ -2139,7 +2139,7 @@ _0225AB32:
 	bl FUN_0200ADA4
 	cmp r0, #0
 	bne _0225ABA0
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225ABA0:
 	ldr r0, [r4, #0x6c]
 	bl FUN_0200A740

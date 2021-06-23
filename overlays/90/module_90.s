@@ -40,7 +40,7 @@ _02258840:
 	ldrb r0, [r6, #8]
 	cmp r5, r0
 	beq _02258850
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02258850:
 	ldr r0, [sp]
 	cmp r0, #0

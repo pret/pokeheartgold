@@ -78,7 +78,7 @@ FUN_02259948: @ 0x02259948
 	bl FUN_0200BAF8
 	adds r6, r0, #0
 	bne _0225996C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225996C:
 	cmp r6, #0
 	beq _022599C4
@@ -90,7 +90,7 @@ _0225996C:
 	bl FUN_0200BB44
 	cmp r4, #0
 	bne _02259988
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259988:
 	cmp r4, #0
 	beq _022599C4
@@ -99,7 +99,7 @@ _02259988:
 	adds r6, r0, #0
 	cmp r6, #7
 	bls _0225999C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225999C:
 	cmp r6, #7
 	bls _022599A2
@@ -130,7 +130,7 @@ _022599C8:
 	bl FUN_0200BCDC
 	adds r4, r0, #0
 	bne _022599DE
-	bl FUN_0202551C
+	bl GF_AssertFail
 _022599DE:
 	cmp r4, #0
 	beq _02259A1A
@@ -139,7 +139,7 @@ _022599DE:
 	adds r6, r0, #0
 	cmp r6, #0xa
 	bls _022599F2
-	bl FUN_0202551C
+	bl GF_AssertFail
 _022599F2:
 	cmp r6, #0xa
 	bls _022599F8

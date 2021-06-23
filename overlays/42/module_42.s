@@ -169,7 +169,7 @@ FUN_02227570: @ 0x02227570
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _0222758E
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222758E:
 	ldr r0, _022275F4 @ =0x02229B70
 	ldr r6, _022275F8 @ =0x02229AF8

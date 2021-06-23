@@ -9,6 +9,8 @@ Static main
 {
 	Address 0x02000000
 	Object main.o
+	Object error_handling.o
+	Object unk_02025534.o
 	Object sdk.o
 }
 
@@ -26,6 +28,8 @@ Autoload DTCM
 Overlay OVY_0
 {
     After main
+    Object ovy_00_thumb.o
+    Object ovy_00_arm.o
     ### Size 0x34d80 ###
     ### BSS Size 0x1380 ###
     ### SINIT Start 0x22163f8 ###

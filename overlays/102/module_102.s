@@ -774,7 +774,7 @@ _021E9450:
 	blt _021E9434
 	pop {r4, r5, r6, pc}
 _021E945A:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E945E:
 	pop {r4, r5, r6, pc}
 	.align 2, 0
