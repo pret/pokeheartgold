@@ -140,6 +140,7 @@ Overlay OVY_9
 Overlay OVY_10
 {
     After OVY_5
+    Object ovy_11.o
     ### Size 0xf460 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x222b268 ###
@@ -150,6 +151,7 @@ Overlay OVY_10
 Overlay OVY_11
 {
     After main
+    ### No objects ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5900 ###
