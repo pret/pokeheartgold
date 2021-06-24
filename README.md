@@ -4,7 +4,7 @@ This is a WIP disassembly of Pokemon HeartGold. It currently does not compile an
 
 The target ROM is:
 
-* [**pokeheartgold.us.nds**](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=4787) `sha1: 30793e274fb4c7ba070ae226edbdfe355504b1f5`
+* [**pokeheartgold.us.nds**](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=4787) `sha1: 4fcded0e2713dc03929845de631d0932ea2b5a37`
 
 Other disassembly and/or decompilation projects:
 * [**Pokémon Red and Blue**](https://github.com/pret/pokered)
