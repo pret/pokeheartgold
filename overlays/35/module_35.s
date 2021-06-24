@@ -1,6 +1,6 @@
 
-	thumb_func_start MOD35_02259D80
-MOD35_02259D80: @ 0x02259D80
+	thumb_func_start ov35_02259D80
+ov35_02259D80: @ 0x02259D80
 	push {r3, lr}
 	cmp r1, #5
 	bhi _02259DB4
@@ -33,4 +33,10 @@ _02259DA4:
 _02259DB4:
 	pop {r3, pc}
 	.align 2, 0
-	thumb_func_end MOD35_02259D80
+	thumb_func_end ov35_02259D80
+
+	thumb_func_start ov35_02259DB8
+ov35_02259DB8: @ 0x02259DB8
+	ldrb r0, [r0, #3]
+	bx lr
+	thumb_func_end ov35_02259DB8
