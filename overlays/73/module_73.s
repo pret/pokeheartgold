@@ -2437,7 +2437,7 @@ _021EA384:
 	adds r7, r0, #0
 	cmp r6, r4
 	bhi _021EA3A0
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021EA3A0:
 	ldr r1, [sp, #4]
 	adds r0, r7, #0

@@ -1,6 +1,7 @@
 
-	thumb_func_start GF_AssertFail
-GF_AssertFail: @ 0x0202551C
+	; GF_AssertFail
+	thumb_func_start FUN_0202551C
+FUN_0202551C: @ 0x0202551C
 	push {r3, lr}
 	bl FUN_02037D78
 	cmp r0, #0
@@ -11,4 +12,4 @@ GF_AssertFail: @ 0x0202551C
 	bl FUN_02096338
 _02025532:
 	pop {r3, pc}
-	thumb_func_end GF_AssertFail
+	thumb_func_end FUN_0202551C

@@ -78274,6 +78274,7 @@ _020D8740: .4byte FUN_020D7C00
 _020D8744: .4byte 0x021E3654
 	arm_func_end FUN_020D8728
 
+	; FSi_GetOverlayBinarySize
 	arm_func_start FUN_020D8748
 FUN_020D8748: @ 0x020D8748
 	ldr r1, [r0, #0x1c]
@@ -78285,6 +78286,7 @@ FUN_020D8748: @ 0x020D8748
 	bx lr
 	arm_func_end FUN_020D8748
 
+	; FS_ClearOverlayImage
 	arm_func_start FUN_020D8764
 FUN_020D8764: @ 0x020D8764
 	push {r4, r5, r6, lr}
@@ -78304,6 +78306,7 @@ FUN_020D8764: @ 0x020D8764
 	pop {r4, r5, r6, pc}
 	arm_func_end FUN_020D8764
 
+	; FS_GetOverlayFileID
 	arm_func_start FUN_020D87A0
 FUN_020D87A0: @ 0x020D87A0
 	sub sp, sp, #8
@@ -78319,6 +78322,7 @@ FUN_020D87A0: @ 0x020D87A0
 _020D87C4: .4byte 0x021E3654
 	arm_func_end FUN_020D87A0
 
+	; FSi_LoadOverlayInfoCore
 	arm_func_start FUN_020D87C8
 FUN_020D87C8: @ 0x020D87C8
 	push {r4, r5, r6, r7, r8, sb, lr}
@@ -78386,6 +78390,7 @@ _020D8860:
 	pop {r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end FUN_020D87C8
 
+	; FS_LoadOverlayInfo
 	arm_func_start FUN_020D88C0
 FUN_020D88C0: @ 0x020D88C0
 	push {r3, r4, r5, lr}
@@ -78455,6 +78460,7 @@ _020D89B4: .4byte 0x027FFE50
 _020D89B8: .4byte 0x021E3654
 	arm_func_end FUN_020D88C0
 
+	; FS_LoadOverlayImageAsync
 	arm_func_start FUN_020D89BC
 FUN_020D89BC: @ 0x020D89BC
 	push {r4, r5, r6, lr}
@@ -78494,6 +78500,7 @@ FUN_020D89BC: @ 0x020D89BC
 	pop {r4, r5, r6, pc}
 	arm_func_end FUN_020D89BC
 
+	; FS_LoadOverlayImage
 	arm_func_start FUN_020D8A48
 FUN_020D8A48: @ 0x020D8A48
 	push {r3, r4, r5, lr}
@@ -78535,6 +78542,7 @@ _020D8AC8:
 	pop {r3, r4, r5, pc}
 	arm_func_end FUN_020D8A48
 
+	; FSi_CompareDigest
 	arm_func_start FUN_020D8AD8
 FUN_020D8AD8: @ 0x020D8AD8
 	push {r4, r5, r6, lr}
@@ -78579,6 +78587,7 @@ _020D8B54:
 _020D8B68: .4byte _02110CA0
 	arm_func_end FUN_020D8AD8
 
+	; FS_StartOverlay
 	arm_func_start FUN_020D8B6C
 FUN_020D8B6C: @ 0x020D8B6C
 	push {r3, r4, r5, lr}
@@ -78650,6 +78659,7 @@ _020D8C58: .4byte SDK_STATIC_TEXT_END
 _020D8C5C: .4byte 0x66666667
 	arm_func_end FUN_020D8B6C
 
+	; FS_EndOverlay
 	arm_func_start FUN_020D8C60
 FUN_020D8C60: @ 0x020D8C60
 	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -78719,15 +78729,13 @@ _020D8D38:
 	cmp r5, #0
 	bne _020D8D20
 	b _020D8C68
-	arm_func_end FUN_020D8C60
-
-	arm_func_start FUN_020D8D48
-FUN_020D8D48: @ 0x020D8D48
+_020D8D48:
 	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020D8D4C: .4byte 0x021E58E8
-	arm_func_end FUN_020D8D48
+	arm_func_end FUN_020D8C60
 
+	; FS_UnloadOverlayImage
 	arm_func_start FUN_020D8D50
 FUN_020D8D50: @ 0x020D8D50
 	push {r3, lr}
@@ -78736,6 +78744,7 @@ FUN_020D8D50: @ 0x020D8D50
 	pop {r3, pc}
 	arm_func_end FUN_020D8D50
 
+	; FS_LoadOverlay
 	arm_func_start FUN_020D8D60
 FUN_020D8D60: @ 0x020D8D60
 	stmdb sp!, {lr}
@@ -78763,6 +78772,7 @@ _020D8DA0:
 	ldm sp!, {pc}
 	arm_func_end FUN_020D8D60
 
+	; FS_UnloadOverlay
 	arm_func_start FUN_020D8DB4
 FUN_020D8DB4: @ 0x020D8DB4
 	stmdb sp!, {lr}

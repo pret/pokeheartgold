@@ -155,7 +155,7 @@ FUN_021E5AEC: @ 0x021E5AEC
 	ldrb r0, [r5, r0]
 	cmp r1, r0
 	blo _021E5C14
-	bl GF_AssertFail
+	bl FUN_0202551C
 	movs r0, #0x26
 	movs r1, #0
 	lsls r0, r0, #4
@@ -1653,7 +1653,7 @@ _021E6C04:
 	blt _021E6C46
 	cmp r2, #7
 	bne _021E6C36
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E6C36:
 	ldr r0, _021E6C50 @ =0x00000261
 	ldrb r1, [r4, r0]

@@ -44,7 +44,7 @@ _021E5944:
 	movs r0, #1
 	pop {r3, r4, pc}
 _021E5956:
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E595A:
 	movs r0, #0
 	add sp, #0xc
@@ -119,8 +119,8 @@ _021E5CA4:
 	movs r0, #0
 	pop {r3, pc}
 _021E5CA8:
-	bl GF_AssertFail
-	bl GF_AssertFail
+	bl FUN_0202551C
+	bl FUN_0202551C
 	movs r0, #0
 	pop {r3, pc}
 	thumb_func_end FUN_021E5C94
@@ -199,7 +199,7 @@ FUN_021E5E34: @ 0x021E5E34
 	bl FUN_020072A4
 	adds r5, r0, #0
 	bne _021E5E46
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5E46:
 	movs r0, #3
 	movs r1, #0x94
@@ -357,7 +357,7 @@ FUN_021E6000: @ 0x021E6000
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	bne _021E6010
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E6010:
 	movs r0, #2
 	lsls r0, r0, #8

@@ -1994,7 +1994,7 @@ FUN_0225A260: @ 0x0225A260
 	ldr r4, [sp, #0x9c]
 	cmp r0, #0
 	beq _0225A278
-	bl GF_AssertFail
+	bl FUN_0202551C
 _0225A278:
 	ldr r0, [r6, #8]
 	ldr r1, [sp, #0x1c]

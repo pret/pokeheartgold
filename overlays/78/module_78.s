@@ -24,12 +24,12 @@ MOD78_021E5900: @ 0x021E5900
 	adds r6, r0, #0
 	cmp r5, #0
 	bne _021E593C
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E593C:
 	ldr r0, [r5]
 	cmp r0, #0
 	bne _021E5946
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5946:
 	ldr r0, [r5]
 	bl FUN_02074904
@@ -838,7 +838,7 @@ FUN_021E656C: @ 0x021E656C
 	bl FUN_02024B60
 	cmp r0, #3
 	beq _021E6582
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E6582:
 	adds r0, r5, #0
 	adds r1, r6, #0

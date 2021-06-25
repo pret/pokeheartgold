@@ -11,7 +11,7 @@ MOD99_021E5900: @ 0x021E5900
 	bl FUN_020072A4
 	adds r5, r0, #0
 	bne _021E591C
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E591C:
 	movs r0, #3
 	movs r1, #0x84
@@ -176,11 +176,11 @@ FUN_021E5B90: @ 0x021E5B90
 	adds r4, r1, #0
 	cmp r5, #0
 	bne _021E5B9E
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5B9E:
 	cmp r4, #5
 	blt _021E5BA6
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5BA6:
 	movs r0, #0x2c
 	ldr r1, [r5]
@@ -198,7 +198,7 @@ FUN_021E5BB4: @ 0x021E5BB4
 	adds r4, r1, #0
 	cmp r5, #0
 	bne _021E5BC2
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5BC2:
 	adds r0, r5, #0
 	adds r1, r4, #0
@@ -221,7 +221,7 @@ FUN_021E5BD8: @ 0x021E5BD8
 	adds r6, r2, #0
 	cmp r5, #0
 	bne _021E5BE8
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5BE8:
 	cmp r6, #3
 	bne _021E5C12
@@ -261,15 +261,15 @@ FUN_021E5C20: @ 0x021E5C20
 	adds r4, r2, #0
 	cmp r0, #0
 	bne _021E5C2E
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5C2E:
 	cmp r5, #0xa
 	blt _021E5C36
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5C36:
 	cmp r4, #4
 	blo _021E5C3E
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5C3E:
 	ldr r0, _021E5C48 @ =0x021E9600
 	lsls r1, r5, #2
@@ -288,15 +288,15 @@ FUN_021E5C4C: @ 0x021E5C4C
 	adds r6, r2, #0
 	cmp r5, #0
 	bne _021E5C5C
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5C5C:
 	cmp r6, #3
 	blo _021E5C64
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5C64:
 	cmp r4, #5
 	blo _021E5C6C
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5C6C:
 	movs r0, #0x2c
 	ldr r1, [r5]

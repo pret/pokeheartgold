@@ -8,7 +8,7 @@ MOD94_021E5900: @ 0x021E5900
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E5912
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E5912:
 	movs r0, #0xc
 	movs r1, #0x1c

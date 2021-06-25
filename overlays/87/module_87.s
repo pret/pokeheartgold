@@ -1306,7 +1306,7 @@ FUN_021E7A04: @ 0x021E7A04
 	cmp r0, #0
 	bne _021E7A28
 	bne _021E7A28
-	bl GF_AssertFail
+	bl FUN_0202551C
 _021E7A28:
 	pop {r4, pc}
 	.align 2, 0
