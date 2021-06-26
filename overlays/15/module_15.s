@@ -1,6 +1,6 @@
 
-	thumb_func_start ovy15_021F9380
-ovy15_021F9380: @ 0x021F9380
+	thumb_func_start ov15_021F9380
+ov15_021F9380: @ 0x021F9380
 	push {r4, r5, lr}
 	sub sp, #0xc
 	adds r5, r0, #0
@@ -44,7 +44,7 @@ ovy15_021F9380: @ 0x021F9380
 	lsls r1, r1, #2
 	str r0, [r4, r1]
 	adds r0, r4, #0
-	bl ovy15_021F98F4
+	bl ov15_021F98F4
 	movs r0, #6
 	bl FUN_0201AC88
 	str r0, [r4]
@@ -68,40 +68,40 @@ ovy15_021F9380: @ 0x021F9380
 	movs r1, #8
 	bl FUN_0201A71C
 	adds r0, r4, #0
-	bl ovy15_021F9DB4
+	bl ov15_021F9DB4
 	adds r0, r4, #0
-	bl ovy15_021F9CBC
+	bl ov15_021F9CBC
 	adds r0, r4, #0
-	bl ovy15_021FA008
+	bl ov15_021FA008
 	adds r0, r4, #0
-	bl ovy15_021F9D28
+	bl ov15_021F9D28
 	adds r0, r4, #0
-	bl ovy15_021FA620
-	bl ovy15_021F9984
+	bl ov15_021FA620
+	bl ov15_021F9984
 	ldr r0, [r4]
-	bl ovy15_021F99A4
+	bl ov15_021F99A4
 	adds r0, r4, #0
-	bl ovy15_021F9AE4
+	bl ov15_021F9AE4
 	bl FUN_020210BC
 	movs r0, #4
 	bl FUN_02021148
 	adds r0, r4, #0
-	bl ovy15_021FE020
+	bl ov15_021FE020
 	movs r0, #1
 	bl FUN_02002B8C
 	adds r0, r4, #0
-	bl ovy15_021FE4C8
+	bl ov15_021FE4C8
 	adds r0, r4, #0
-	bl ovy15_021FE528
+	bl ov15_021FE528
 	adds r0, r4, #0
-	bl ovy15_021FEA5C
+	bl ov15_021FEA5C
 	adds r0, r4, #0
-	bl ovy15_021FE874
+	bl ov15_021FE874
 	adds r0, r4, #0
-	bl ovy15_021F9F08
+	bl ov15_021F9F08
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FF29C
+	bl ov15_021FF29C
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r3, [r4, r0]
@@ -119,7 +119,7 @@ ovy15_021F9380: @ 0x021F9380
 	adds r1, r1, r2
 	adds r2, r3, r2
 	ldrb r2, [r2, #0xd]
-	bl ovy15_021FA044
+	bl ov15_021FA044
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r3, [r4, r0]
@@ -138,16 +138,16 @@ ovy15_021F9380: @ 0x021F9380
 	adds r2, r3, r2
 	ldrb r2, [r2, #0xd]
 	movs r3, #6
-	bl ovy15_021FA070
+	bl ov15_021FA070
 	adds r0, r4, #0
-	bl ovy15_021FF850
+	bl ov15_021FF850
 	adds r0, r4, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	movs r1, #0
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r3, r1, #0
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r3, [r4, r0]
@@ -162,14 +162,14 @@ ovy15_021F9380: @ 0x021F9380
 	ldrsh r1, [r1, r2]
 	subs r2, #0xb
 	movs r3, #0
-	bl ovy15_021FF364
+	bl ov15_021FF364
 	movs r1, #0x8d
 	lsls r1, r1, #2
 	ldr r1, [r4, r1]
 	adds r0, r4, #0
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_02200030
+	bl ov15_02200030
 	movs r2, #0x8d
 	lsls r2, r2, #2
 	ldr r2, [r4, r2]
@@ -177,7 +177,7 @@ ovy15_021F9380: @ 0x021F9380
 	adds r2, #0x64
 	ldrb r2, [r2]
 	movs r1, #1
-	bl ovy15_021FD404
+	bl ov15_021FD404
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r3, [r4, r0]
@@ -193,12 +193,12 @@ ovy15_021F9380: @ 0x021F9380
 	ldrsh r2, [r3, r2]
 	adds r0, r4, #0
 	movs r3, #0
-	bl ovy15_021FF6BC
+	bl ov15_021FF6BC
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r5, [r4, r0]
 	adds r0, r4, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r5, #4
 	adds r5, #0x64
 	adds r2, r0, #0
@@ -208,7 +208,7 @@ ovy15_021F9380: @ 0x021F9380
 	muls r3, r5, r3
 	adds r1, r1, r3
 	movs r3, #1
-	bl ovy15_02200140
+	bl ov15_02200140
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r2, [r4, r0]
@@ -224,9 +224,9 @@ ovy15_021F9380: @ 0x021F9380
 	str r0, [r4, r1]
 	ldr r1, [r4, r1]
 	adds r0, r4, #0
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	adds r0, r4, #0
-	bl ovy15_021FA170
+	bl ov15_021FA170
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r0, [r4, r0]
@@ -238,11 +238,11 @@ ovy15_021F9380: @ 0x021F9380
 	cmp r0, #1
 	bhi _021F95B6
 	adds r0, r4, #0
-	bl ovy15_021FF1E0
+	bl ov15_021FF1E0
 _021F95B6:
 	adds r0, r4, #0
-	bl ovy15_021FD93C
-	ldr r0, _021F9600 @ =ovy15_021F995C
+	bl ov15_021FD93C
+	ldr r0, _021F9600 @ =ov15_021F995C
 	adds r1, r4, #0
 	bl FUN_0201A0FC
 	movs r1, #0
@@ -267,12 +267,12 @@ _021F95F0: .4byte 0x04001000
 _021F95F4: .4byte 0x0000094C
 _021F95F8: .4byte 0x00000615
 _021F95FC: .4byte 0x00000644
-_021F9600: .4byte ovy15_021F995C
+_021F9600: .4byte ov15_021F995C
 _021F9604: .4byte 0x04000304
-	thumb_func_end ovy15_021F9380
+	thumb_func_end ov15_021F9380
 
-	thumb_func_start ovy15_021F9608
-ovy15_021F9608: @ 0x021F9608
+	thumb_func_start ov15_021F9608
+ov15_021F9608: @ 0x021F9608
 	push {r3, r4, r5, lr}
 	adds r4, r1, #0
 	bl FUN_02007290
@@ -358,11 +358,11 @@ _021F96A2:
 	str r0, [r4]
 	b _021F9810
 _021F96A8:
-	bl ovy15_021FA1BC
+	bl ov15_021FA1BC
 	str r0, [r4]
 	b _021F9810
 _021F96B0:
-	bl ovy15_021FA93C
+	bl ov15_021FA93C
 	cmp r0, #1
 	beq _021F96BA
 _021F96B8:
@@ -395,138 +395,138 @@ _021F96E2:
 	str r0, [r4]
 	b _021F9810
 _021F96E8:
-	bl ovy15_021FAE48
+	bl ov15_021FAE48
 	str r0, [r4]
 	b _021F9810
 _021F96F0:
-	bl ovy15_021FB5AC
+	bl ov15_021FB5AC
 	str r0, [r4]
 	b _021F9810
 _021F96F8:
-	bl ovy15_021FBD50
+	bl ov15_021FBD50
 	str r0, [r4]
 	b _021F9810
 _021F9700:
-	bl ovy15_021FBF98
+	bl ov15_021FBF98
 	str r0, [r4]
 	b _021F9810
 _021F9708:
-	bl ovy15_021FBFC0
+	bl ov15_021FBFC0
 	str r0, [r4]
 	b _021F9810
 _021F9710:
-	bl ovy15_021FBFF8
+	bl ov15_021FBFF8
 	str r0, [r4]
 	b _021F9810
 _021F9718:
-	bl ovy15_021FC01C
+	bl ov15_021FC01C
 	str r0, [r4]
 	b _021F9810
 _021F9720:
-	bl ovy15_021FC140
+	bl ov15_021FC140
 	str r0, [r4]
 	b _021F9810
 _021F9728:
-	bl ovy15_021FC164
+	bl ov15_021FC164
 	str r0, [r4]
 	b _021F9810
 _021F9730:
-	bl ovy15_021FB700
+	bl ov15_021FB700
 	str r0, [r4]
 	b _021F9810
 _021F9738:
-	bl ovy15_021FB820
+	bl ov15_021FB820
 	str r0, [r4]
 	b _021F9810
 _021F9740:
-	bl ovy15_021FC41C
+	bl ov15_021FC41C
 	str r0, [r4]
 	b _021F9810
 _021F9748:
-	bl ovy15_021FC784
+	bl ov15_021FC784
 	str r0, [r4]
 	b _021F9810
 _021F9750:
-	bl ovy15_021FC7EC
+	bl ov15_021FC7EC
 	str r0, [r4]
 	b _021F9810
 _021F9758:
-	bl ovy15_021FCD80
+	bl ov15_021FCD80
 	str r0, [r4]
 	b _021F9810
 _021F9760:
-	bl ovy15_021FCDE4
+	bl ov15_021FCDE4
 	str r0, [r4]
 	b _021F9810
 _021F9768:
-	bl ovy15_021FCFC8
+	bl ov15_021FCFC8
 	str r0, [r4]
 	b _021F9810
 _021F9770:
-	bl ovy15_021FD058
+	bl ov15_021FD058
 	str r0, [r4]
 	b _021F9810
 _021F9778:
-	bl ovy15_021FD0E8
+	bl ov15_021FD0E8
 	str r0, [r4]
 	b _021F9810
 _021F9780:
-	bl ovy15_021FD10C
+	bl ov15_021FD10C
 	str r0, [r4]
 	b _021F9810
 _021F9788:
-	bl ovy15_021FD24C
+	bl ov15_021FD24C
 	str r0, [r4]
 	b _021F9810
 _021F9790:
-	bl ovy15_021FD2FC
+	bl ov15_021FD2FC
 	str r0, [r4]
 	b _021F9810
 _021F9798:
-	bl ovy15_021FD3AC
+	bl ov15_021FD3AC
 	str r0, [r4]
 	b _021F9810
 _021F97A0:
-	bl ovy15_021FC2E0
+	bl ov15_021FC2E0
 	str r0, [r4]
 	b _021F9810
 _021F97A8:
-	bl ovy15_021FA4F8
+	bl ov15_021FA4F8
 	str r0, [r4]
 	b _021F9810
 _021F97B0:
-	bl ovy15_021FB604
+	bl ov15_021FB604
 	str r0, [r4]
 	b _021F9810
 _021F97B8:
-	bl ovy15_021FB654
+	bl ov15_021FB654
 	str r0, [r4]
 	b _021F9810
 _021F97C0:
 	movs r1, #1
-	bl ovy15_021FA578
+	bl ov15_021FA578
 	str r0, [r4]
 	b _021F9810
 _021F97CA:
 	movs r1, #0
 	mvns r1, r1
-	bl ovy15_021FA578
+	bl ov15_021FA578
 	str r0, [r4]
 	b _021F9810
 _021F97D6:
-	bl ovy15_021FB060
+	bl ov15_021FB060
 	str r0, [r4]
 	b _021F9810
 _021F97DE:
-	bl ovy15_021FAFFC
+	bl ov15_021FAFFC
 	str r0, [r4]
 	b _021F9810
 _021F97E6:
-	bl ovy15_021FCB64
+	bl ov15_021FCB64
 	str r0, [r4]
 	b _021F9810
 _021F97EE:
-	bl ovy15_021FD850
+	bl ov15_021FD850
 	str r0, [r4]
 	b _021F9810
 _021F97F6:
@@ -544,27 +544,27 @@ _021F9804:
 	pop {r3, r4, r5, pc}
 _021F9810:
 	adds r0, r5, #0
-	bl ovy15_021FF8D4
+	bl ov15_021FF8D4
 	movs r0, #0x93
 	lsls r0, r0, #2
 	ldr r0, [r5, r0]
 	bl FUN_0200D020
 	adds r0, r5, #0
-	bl ovy15_021FDC88
+	bl ov15_021FDC88
 	movs r0, #0
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021F9608
+	thumb_func_end ov15_021F9608
 
-	thumb_func_start ovy15_021F982C
-ovy15_021F982C: @ 0x021F982C
+	thumb_func_start ov15_021F982C
+ov15_021F982C: @ 0x021F982C
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	bl FUN_02007290
 	adds r4, r0, #0
-	bl ovy15_021FDC6C
+	bl ov15_021FDC6C
 	adds r0, r4, #0
-	bl ovy15_021FF894
+	bl ov15_021FF894
 	ldr r0, _021F98EC @ =0x0000068C
 	ldr r0, [r4, r0]
 	bl FUN_0201AB0C
@@ -573,23 +573,23 @@ ovy15_021F982C: @ 0x021F982C
 	ldr r0, [r4, r0]
 	bl FUN_0201AB0C
 	adds r0, r4, #0
-	bl ovy15_021FA0D8
+	bl ov15_021FA0D8
 	adds r0, r4, #0
-	bl ovy15_021F9EA8
+	bl ov15_021F9EA8
 	adds r0, r4, #0
-	bl ovy15_021FE154
+	bl ov15_021FE154
 	ldr r0, [r4]
-	bl ovy15_021F9A8C
+	bl ov15_021F9A8C
 	bl FUN_02021238
 	bl FUN_020205AC
 	adds r0, r4, #0
-	bl ovy15_021FEB64
+	bl ov15_021FEB64
 	adds r0, r4, #0
-	bl ovy15_021FE504
+	bl ov15_021FE504
 	adds r0, r4, #0
-	bl ovy15_021FE8A4
+	bl ov15_021FE8A4
 	adds r0, r4, #0
-	bl ovy15_021FA028
+	bl ov15_021FA028
 	ldr r0, _021F98F0 @ =0x000005E4
 	ldr r0, [r4, r0]
 	bl FUN_02026380
@@ -630,10 +630,10 @@ ovy15_021F982C: @ 0x021F982C
 	nop
 _021F98EC: .4byte 0x0000068C
 _021F98F0: .4byte 0x000005E4
-	thumb_func_end ovy15_021F982C
+	thumb_func_end ov15_021F982C
 
-	thumb_func_start ovy15_021F98F4
-ovy15_021F98F4: @ 0x021F98F4
+	thumb_func_start ov15_021F98F4
+ov15_021F98F4: @ 0x021F98F4
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x8d
@@ -659,10 +659,10 @@ ovy15_021F98F4: @ 0x021F98F4
 	lsls r1, r1, #6
 	str r0, [r4, r1]
 	pop {r4, pc}
-	thumb_func_end ovy15_021F98F4
+	thumb_func_end ov15_021F98F4
 
-	thumb_func_start ovy15_021F992C
-ovy15_021F992C: @ 0x021F992C
+	thumb_func_start ov15_021F992C
+ov15_021F992C: @ 0x021F992C
 	movs r1, #0x8d
 	lsls r1, r1, #2
 	ldr r0, [r0, r1]
@@ -671,30 +671,30 @@ ovy15_021F992C: @ 0x021F992C
 	bx r3
 	.align 2, 0
 _021F9938: .4byte FUN_0202D9C4
-	thumb_func_end ovy15_021F992C
+	thumb_func_end ov15_021F992C
 
-	thumb_func_start ovy15_021F993C
-ovy15_021F993C: @ 0x021F993C
+	thumb_func_start ov15_021F993C
+ov15_021F993C: @ 0x021F993C
 	push {r4, lr}
 	adds r4, r1, #0
-	bl ovy15_021F992C
+	bl ov15_021F992C
 	bl FUN_0202DB04
 	strb r4, [r0]
 	pop {r4, pc}
-	thumb_func_end ovy15_021F993C
+	thumb_func_end ov15_021F993C
 
-	thumb_func_start ovy15_021F994C
-ovy15_021F994C: @ 0x021F994C
+	thumb_func_start ov15_021F994C
+ov15_021F994C: @ 0x021F994C
 	push {r4, lr}
 	adds r4, r1, #0
-	bl ovy15_021F992C
+	bl ov15_021F992C
 	adds r1, r4, #0
 	bl FUN_0202DB18
 	pop {r4, pc}
-	thumb_func_end ovy15_021F994C
+	thumb_func_end ov15_021F994C
 
-	thumb_func_start ovy15_021F995C
-ovy15_021F995C: @ 0x021F995C
+	thumb_func_start ov15_021F995C
+ov15_021F995C: @ 0x021F995C
 	push {r3, lr}
 	ldr r0, [r0]
 	bl FUN_0201EEB4
@@ -710,10 +710,10 @@ ovy15_021F995C: @ 0x021F995C
 	nop
 _021F997C: .4byte 0x027E0000
 _021F9980: .4byte 0x00003FF8
-	thumb_func_end ovy15_021F995C
+	thumb_func_end ov15_021F995C
 
-	thumb_func_start ovy15_021F9984
-ovy15_021F9984: @ 0x021F9984
+	thumb_func_start ov15_021F9984
+ov15_021F9984: @ 0x021F9984
 	push {r4, lr}
 	sub sp, #0x28
 	ldr r4, _021F99A0 @ =0x02200618
@@ -730,10 +730,10 @@ _021F998E:
 	pop {r4, pc}
 	.align 2, 0
 _021F99A0: .4byte 0x02200618
-	thumb_func_end ovy15_021F9984
+	thumb_func_end ov15_021F9984
 
-	thumb_func_start ovy15_021F99A4
-ovy15_021F99A4: @ 0x021F99A4
+	thumb_func_start ov15_021F99A4
+ov15_021F99A4: @ 0x021F99A4
 	push {r4, r5, lr}
 	sub sp, #0x14
 	ldr r5, _021F9A68 @ =0x02200518
@@ -826,10 +826,10 @@ _021F9A7C: .4byte 0x0220073C
 _021F9A80: .4byte 0x02200758
 _021F9A84: .4byte 0x02200774
 _021F9A88: .4byte 0x04000050
-	thumb_func_end ovy15_021F99A4
+	thumb_func_end ov15_021F99A4
 
-	thumb_func_start ovy15_021F9A8C
-ovy15_021F9A8C: @ 0x021F9A8C
+	thumb_func_start ov15_021F9A8C
+ov15_021F9A8C: @ 0x021F9A8C
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x1f
@@ -864,10 +864,10 @@ ovy15_021F9A8C: @ 0x021F9A8C
 	bl FUN_0201AB80
 	pop {r4, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021F9A8C
+	thumb_func_end ov15_021F9A8C
 
-	thumb_func_start ovy15_021F9AE4
-ovy15_021F9AE4: @ 0x021F9AE4
+	thumb_func_start ov15_021F9AE4
+ov15_021F9AE4: @ 0x021F9AE4
 	push {r4, lr}
 	sub sp, #0x10
 	adds r4, r0, #0
@@ -1047,10 +1047,10 @@ _021F9C68: .4byte 0x000003D9
 _021F9C6C: .4byte 0x00000694
 _021F9C70: .4byte 0x0000068C
 _021F9C74: .4byte 0x000003E2
-	thumb_func_end ovy15_021F9AE4
+	thumb_func_end ov15_021F9AE4
 
-	thumb_func_start ovy15_021F9C78
-ovy15_021F9C78: @ 0x021F9C78
+	thumb_func_start ov15_021F9C78
+ov15_021F9C78: @ 0x021F9C78
 	push {r3, lr}
 	sub sp, #0x10
 	adds r2, r0, #0
@@ -1084,10 +1084,10 @@ _021F9C9E:
 	add sp, #0x10
 	pop {r3, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021F9C78
+	thumb_func_end ov15_021F9C78
 
-	thumb_func_start ovy15_021F9CBC
-ovy15_021F9CBC: @ 0x021F9CBC
+	thumb_func_start ov15_021F9CBC
+ov15_021F9CBC: @ 0x021F9CBC
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0
@@ -1136,10 +1136,10 @@ ovy15_021F9CBC: @ 0x021F9CBC
 	pop {r4, pc}
 	.align 2, 0
 _021F9D24: .4byte 0x000005E4
-	thumb_func_end ovy15_021F9CBC
+	thumb_func_end ov15_021F9CBC
 
-	thumb_func_start ovy15_021F9D28
-ovy15_021F9D28: @ 0x021F9D28
+	thumb_func_start ov15_021F9D28
+ov15_021F9D28: @ 0x021F9D28
 	push {r3, r4, r5, r6}
 	ldr r2, _021F9D5C @ =0x00000614
 	movs r1, #0
@@ -1169,10 +1169,10 @@ _021F9D4C:
 	bx lr
 	nop
 _021F9D5C: .4byte 0x00000614
-	thumb_func_end ovy15_021F9D28
+	thumb_func_end ov15_021F9D28
 
-	thumb_func_start ovy15_021F9D60
-ovy15_021F9D60: @ 0x021F9D60
+	thumb_func_start ov15_021F9D60
+ov15_021F9D60: @ 0x021F9D60
 	push {r3, r4}
 	movs r3, #0x8d
 	lsls r3, r3, #2
@@ -1196,10 +1196,10 @@ _021F9D80:
 	pop {r3, r4}
 	bx lr
 	.align 2, 0
-	thumb_func_end ovy15_021F9D60
+	thumb_func_end ov15_021F9D60
 
-	thumb_func_start ovy15_021F9D8C
-ovy15_021F9D8C: @ 0x021F9D8C
+	thumb_func_start ov15_021F9D8C
+ov15_021F9D8C: @ 0x021F9D8C
 	adds r3, r1, #0
 	adds r1, r2, #0
 	adds r2, r3, #0
@@ -1207,10 +1207,10 @@ ovy15_021F9D8C: @ 0x021F9D8C
 	bx r3
 	nop
 _021F9D98: .4byte FUN_0200BB6C
-	thumb_func_end ovy15_021F9D8C
+	thumb_func_end ov15_021F9D8C
 
-	thumb_func_start ovy15_021F9D9C
-ovy15_021F9D9C: @ 0x021F9D9C
+	thumb_func_start ov15_021F9D9C
+ov15_021F9D9C: @ 0x021F9D9C
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
@@ -1221,10 +1221,10 @@ ovy15_021F9D9C: @ 0x021F9D9C
 	adds r2, r4, #0
 	bl FUN_0200BB6C
 	pop {r3, r4, r5, pc}
-	thumb_func_end ovy15_021F9D9C
+	thumb_func_end ov15_021F9D9C
 
-	thumb_func_start ovy15_021F9DB4
-ovy15_021F9DB4: @ 0x021F9DB4
+	thumb_func_start ov15_021F9DB4
+ov15_021F9DB4: @ 0x021F9DB4
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	movs r0, #0x8d
@@ -1356,10 +1356,10 @@ _021F9E9C:
 	cmp r1, #8
 	blo _021F9E7E
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ovy15_021F9DB4
+	thumb_func_end ov15_021F9DB4
 
-	thumb_func_start ovy15_021F9EA8
-ovy15_021F9EA8: @ 0x021F9EA8
+	thumb_func_start ov15_021F9EA8
+ov15_021F9EA8: @ 0x021F9EA8
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r0, #0x8d
@@ -1409,10 +1409,10 @@ _021F9EE2:
 	bl FUN_020787E0
 _021F9F06:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ovy15_021F9EA8
+	thumb_func_end ov15_021F9EA8
 
-	thumb_func_start ovy15_021F9F08
-ovy15_021F9F08: @ 0x021F9F08
+	thumb_func_start ov15_021F9F08
+ov15_021F9F08: @ 0x021F9F08
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	movs r1, #0x8d
@@ -1456,7 +1456,7 @@ _021F9F38:
 	ldr r1, [r2, r1]
 	adds r2, r3, #0
 	movs r3, #6
-	bl ovy15_021F9D9C
+	bl ov15_021F9D9C
 	ldr r0, [r4]
 	adds r6, r6, #1
 	ldrh r1, [r0, r5]
@@ -1504,7 +1504,7 @@ _021F9F94:
 	ldr r1, [r2, r1]
 	adds r2, r3, #0
 	movs r3, #6
-	bl ovy15_021F9D8C
+	bl ov15_021F9D8C
 	ldr r0, [r4]
 	adds r6, r6, #1
 	ldrh r1, [r0, r5]
@@ -1546,10 +1546,10 @@ _021F9FFC:
 	.align 2, 0
 _021FA000: .4byte 0x022008B0
 _021FA004: .4byte 0x000006A4
-	thumb_func_end ovy15_021F9F08
+	thumb_func_end ov15_021F9F08
 
-	thumb_func_start ovy15_021FA008
-ovy15_021FA008: @ 0x021FA008
+	thumb_func_start ov15_021FA008
+ov15_021FA008: @ 0x021FA008
 	push {r3, r4, r5, r6, r7, lr}
 	movs r6, #0x35
 	adds r5, r0, #0
@@ -1566,10 +1566,10 @@ _021FA014:
 	cmp r4, #0xa5
 	blo _021FA014
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ovy15_021FA008
+	thumb_func_end ov15_021FA008
 
-	thumb_func_start ovy15_021FA028
-ovy15_021FA028: @ 0x021FA028
+	thumb_func_start ov15_021FA028
+ov15_021FA028: @ 0x021FA028
 	push {r4, r5, r6, lr}
 	movs r6, #0x35
 	adds r5, r0, #0
@@ -1584,10 +1584,10 @@ _021FA032:
 	blo _021FA032
 	pop {r4, r5, r6, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FA028
+	thumb_func_end ov15_021FA028
 
-	thumb_func_start ovy15_021FA044
-ovy15_021FA044: @ 0x021FA044
+	thumb_func_start ov15_021FA044
+ov15_021FA044: @ 0x021FA044
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0
@@ -1611,16 +1611,16 @@ _021FA062:
 _021FA06C:
 	pop {r4, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FA044
+	thumb_func_end ov15_021FA044
 
-	thumb_func_start ovy15_021FA070
-ovy15_021FA070: @ 0x021FA070
+	thumb_func_start ov15_021FA070
+ov15_021FA070: @ 0x021FA070
 	bx lr
 	.align 2, 0
-	thumb_func_end ovy15_021FA070
+	thumb_func_end ov15_021FA070
 
-	thumb_func_start ovy15_021FA074
-ovy15_021FA074: @ 0x021FA074
+	thumb_func_start ov15_021FA074
+ov15_021FA074: @ 0x021FA074
 	movs r1, #0x8d
 	lsls r1, r1, #2
 	ldr r2, [r0, r1]
@@ -1640,10 +1640,10 @@ ovy15_021FA074: @ 0x021FA074
 _021FA094:
 	bx lr
 	.align 2, 0
-	thumb_func_end ovy15_021FA074
+	thumb_func_end ov15_021FA074
 
-	thumb_func_start ovy15_021FA098
-ovy15_021FA098: @ 0x021FA098
+	thumb_func_start ov15_021FA098
+ov15_021FA098: @ 0x021FA098
 	push {r3, r4, r5, lr}
 	ldr r1, _021FA0D4 @ =0x00000672
 	ldrb r4, [r0, r1]
@@ -1676,20 +1676,20 @@ _021FA0D0:
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _021FA0D4: .4byte 0x00000672
-	thumb_func_end ovy15_021FA098
+	thumb_func_end ov15_021FA098
 
-	thumb_func_start ovy15_021FA0D8
-ovy15_021FA0D8: @ 0x021FA0D8
+	thumb_func_start ov15_021FA0D8
+ov15_021FA0D8: @ 0x021FA0D8
 	movs r1, #0xd2
 	movs r2, #0
 	lsls r1, r1, #2
 	str r2, [r0, r1]
 	bx lr
 	.align 2, 0
-	thumb_func_end ovy15_021FA0D8
+	thumb_func_end ov15_021FA0D8
 
-	thumb_func_start ovy15_021FA0E4
-ovy15_021FA0E4: @ 0x021FA0E4
+	thumb_func_start ov15_021FA0E4
+ov15_021FA0E4: @ 0x021FA0E4
 	cmp r1, #8
 	blt _021FA102
 	cmp r1, #0xe
@@ -1707,10 +1707,10 @@ ovy15_021FA0E4: @ 0x021FA0E4
 	strh r1, [r0, #8]
 _021FA102:
 	bx lr
-	thumb_func_end ovy15_021FA0E4
+	thumb_func_end ov15_021FA0E4
 
-	thumb_func_start ovy15_021FA104
-ovy15_021FA104: @ 0x021FA104
+	thumb_func_start ov15_021FA104
+ov15_021FA104: @ 0x021FA104
 	adds r2, r1, #0
 	subs r2, #0xe
 	cmp r2, #1
@@ -1733,10 +1733,10 @@ _021FA124:
 	bx lr
 	.align 2, 0
 _021FA128: .4byte 0x00000644
-	thumb_func_end ovy15_021FA104
+	thumb_func_end ov15_021FA104
 
-	thumb_func_start ovy15_021FA12C
-ovy15_021FA12C: @ 0x021FA12C
+	thumb_func_start ov15_021FA12C
+ov15_021FA12C: @ 0x021FA12C
 	push {r3, r4}
 	movs r1, #0x8d
 	lsls r1, r1, #2
@@ -1770,10 +1770,10 @@ _021FA15C:
 	nop
 _021FA168: .4byte 0x00000644
 _021FA16C: .4byte 0x022008B0
-	thumb_func_end ovy15_021FA12C
+	thumb_func_end ov15_021FA12C
 
-	thumb_func_start ovy15_021FA170
-ovy15_021FA170: @ 0x021FA170
+	thumb_func_start ov15_021FA170
+ov15_021FA170: @ 0x021FA170
 	push {r4, lr}
 	ldr r1, _021FA1B8 @ =0x00000644
 	adds r4, r0, #0
@@ -1782,17 +1782,17 @@ ovy15_021FA170: @ 0x021FA170
 	blt _021FA19C
 	cmp r2, #0xd
 	bgt _021FA19C
-	bl ovy15_021FA12C
+	bl ov15_021FA12C
 	adds r2, r0, #0
 	beq _021FA192
 	adds r0, r4, #0
 	adds r1, r4, #4
-	bl ovy15_021FECA0
+	bl ov15_021FECA0
 	pop {r4, pc}
 _021FA192:
 	adds r0, r4, #0
 	adds r1, r4, #4
-	bl ovy15_021FECC4
+	bl ov15_021FECC4
 	pop {r4, pc}
 _021FA19C:
 	cmp r2, #0
@@ -1801,19 +1801,19 @@ _021FA19C:
 	bgt _021FA1AE
 	adds r0, r4, #0
 	adds r1, r4, #4
-	bl ovy15_021FECD8
+	bl ov15_021FECD8
 	pop {r4, pc}
 _021FA1AE:
 	adds r0, r4, #0
 	adds r1, r4, #4
-	bl ovy15_021FECC4
+	bl ov15_021FECC4
 	pop {r4, pc}
 	.align 2, 0
 _021FA1B8: .4byte 0x00000644
-	thumb_func_end ovy15_021FA170
+	thumb_func_end ov15_021FA170
 
-	thumb_func_start ovy15_021FA1BC
-ovy15_021FA1BC: @ 0x021FA1BC
+	thumb_func_start ov15_021FA1BC
+ov15_021FA1BC: @ 0x021FA1BC
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r1, _021FA4A4 @ =0x021D110C
@@ -1861,7 +1861,7 @@ _021FA1F4:
 	add r2, sp, #0xc
 	movs r3, #1
 	str r4, [sp, #4]
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FA21E:
@@ -1872,7 +1872,7 @@ _021FA21E:
 	cmp r1, #8
 	bge _021FA23E
 	subs r2, #0x21
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	ldr r1, _021FA4A8 @ =0x00000644
 	ldr r2, [r5, r1]
 	cmp r2, r0
@@ -1903,7 +1903,7 @@ _021FA246:
 	adds r2, #3
 	movs r3, #1
 	str r4, [sp, #4]
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FA270:
@@ -1917,7 +1917,7 @@ _021FA276:
 	cmp r1, #8
 	bge _021FA292
 	movs r2, #1
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	ldr r1, _021FA4A8 @ =0x00000644
 	ldr r2, [r5, r1]
 	cmp r2, r0
@@ -1947,12 +1947,12 @@ _021FA29A:
 	subs r2, #0x11
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	ldr r1, _021FA4A8 @ =0x00000644
 	str r0, [r5, r1]
 	ldr r1, [r5, r1]
 	adds r0, r5, #0
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	movs r0, #2
 	str r0, [sp]
 	adds r0, r4, #0
@@ -1963,7 +1963,7 @@ _021FA29A:
 	adds r0, r5, #0
 	adds r2, #2
 	movs r3, #1
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FA2E6:
@@ -1975,7 +1975,7 @@ _021FA2E6:
 	ldrb r1, [r1]
 	adds r0, r5, #0
 	mvns r2, r2
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -1985,7 +1985,7 @@ _021FA2E6:
 	adds r0, r5, #0
 	adds r2, #2
 	movs r3, #1
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FA314:
@@ -2005,12 +2005,12 @@ _021FA314:
 	movs r2, #1
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	ldr r1, _021FA4A8 @ =0x00000644
 	str r0, [r5, r1]
 	ldr r1, [r5, r1]
 	adds r0, r5, #0
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	movs r0, #2
 	str r0, [sp]
 	adds r0, r4, #0
@@ -2021,7 +2021,7 @@ _021FA314:
 	adds r0, r5, #0
 	adds r2, #1
 	movs r3, #1
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FA360:
@@ -2032,7 +2032,7 @@ _021FA360:
 	adds r1, #0x64
 	ldrb r1, [r1]
 	movs r2, #1
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -2042,7 +2042,7 @@ _021FA360:
 	adds r0, r5, #0
 	adds r2, #1
 	movs r3, #1
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FA38C:
@@ -2064,19 +2064,19 @@ _021FA3A0:
 	ldr r1, _021FA4A8 @ =0x00000644
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	ldr r1, _021FA4A8 @ =0x00000644
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 	adds r0, r5, #0
-	bl ovy15_021FA170
+	bl ov15_021FA170
 _021FA3C4:
 	movs r1, #0
 	add r0, sp, #8
 	strb r1, [r0]
 	adds r0, r5, #0
-	bl ovy15_021FAC2C
+	bl ov15_021FAC2C
 	adds r4, r0, #0
 	movs r0, #0
 	mvns r0, r0
@@ -2084,14 +2084,14 @@ _021FA3C4:
 	beq _021FA440
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl ovy15_021FA104
+	bl ov15_021FA104
 	cmp r0, #0
 	beq _021FA426
 	cmp r4, #8
 	bhs _021FA408
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl ovy15_021FA68C
+	bl ov15_021FA68C
 	movs r1, #0
 	mvns r1, r1
 	cmp r0, r1
@@ -2100,14 +2100,14 @@ _021FA3C4:
 	adds r0, r5, #0
 	str r4, [r5, r1]
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	b _021FA426
 _021FA408:
 	ldr r1, _021FA4A8 @ =0x00000644
 	adds r0, r5, #0
 	str r4, [r5, r1]
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	ldr r0, _021FA4A8 @ =0x00000644
 	ldr r1, [r5, r0]
 	cmp r1, #8
@@ -2115,7 +2115,7 @@ _021FA408:
 	cmp r1, #0xd
 	bgt _021FA426
 	adds r0, r5, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FA426:
 	movs r0, #2
 	str r0, [sp]
@@ -2124,7 +2124,7 @@ _021FA426:
 	adds r1, r4, #0
 	add r2, sp, #8
 	str r3, [sp, #4]
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	cmp r0, #1
 	beq _021FA4DA
 	add sp, #0x10
@@ -2144,7 +2144,7 @@ _021FA440:
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
 	add r2, sp, #8
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	adds r4, r0, #0
 	ldr r0, _021FA4A8 @ =0x00000644
 	ldr r1, [r5, r0]
@@ -2153,7 +2153,7 @@ _021FA440:
 	cmp r1, #0xd
 	bgt _021FA474
 	adds r0, r5, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FA474:
 	cmp r4, #1
 	beq _021FA4DA
@@ -2170,11 +2170,11 @@ _021FA47E:
 	adds r0, r5, #0
 	movs r1, #0x10
 	add r2, sp, #8
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	adds r4, r0, #0
 	adds r0, r5, #0
 	movs r1, #0
-	bl ovy15_021FD774
+	bl ov15_021FD774
 	ldr r0, _021FA4A8 @ =0x00000644
 	b _021FA4C0
 	nop
@@ -2192,7 +2192,7 @@ _021FA4C0:
 	cmp r1, #0xd
 	bgt _021FA4D0
 	adds r0, r5, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FA4D0:
 	cmp r4, #1
 	beq _021FA4DA
@@ -2208,17 +2208,17 @@ _021FA4DA:
 	movs r1, #0x14
 	movs r2, #0x29
 	movs r3, #0x1b
-	bl ovy15_021FD810
+	bl ov15_021FD810
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FA4F2:
 	movs r0, #1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
-	thumb_func_end ovy15_021FA1BC
+	thumb_func_end ov15_021FA1BC
 
-	thumb_func_start ovy15_021FA4F8
-ovy15_021FA4F8: @ 0x021FA4F8
+	thumb_func_start ov15_021FA4F8
+ov15_021FA4F8: @ 0x021FA4F8
 	push {r3, r4, r5, r6, r7, lr}
 	movs r1, #0x8d
 	adds r5, r0, #0
@@ -2234,21 +2234,21 @@ ovy15_021FA4F8: @ 0x021FA4F8
 	movs r1, #2
 	adds r3, r2, #0
 	adds r4, r6, r7
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	ldr r2, _021FA574 @ =0x00000644
 	movs r1, #6
 	ldr r2, [r5, r2]
 	ldrsh r1, [r4, r1]
 	adds r0, r5, #0
 	subs r2, #8
-	bl ovy15_021FF4EC
+	bl ov15_021FF4EC
 	ldr r1, _021FA574 @ =0x00000644
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
 	subs r1, #8
-	bl ovy15_022002B4
+	bl ov15_022002B4
 	adds r0, r5, #0
-	bl ovy15_021FB14C
+	bl ov15_021FB14C
 	movs r0, #6
 	ldrsh r3, [r4, r0]
 	ldr r0, _021FA574 @ =0x00000644
@@ -2278,10 +2278,10 @@ ovy15_021FA4F8: @ 0x021FA4F8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021FA574: .4byte 0x00000644
-	thumb_func_end ovy15_021FA4F8
+	thumb_func_end ov15_021FA4F8
 
-	thumb_func_start ovy15_021FA578
-ovy15_021FA578: @ 0x021FA578
+	thumb_func_start ov15_021FA578
+ov15_021FA578: @ 0x021FA578
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	movs r0, #0x8d
@@ -2328,19 +2328,19 @@ _021FA5C2:
 	bne _021FA5E0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl ovy15_021FAD80
+	bl ov15_021FAD80
 	ldr r1, _021FA61C @ =0x0000066C
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FFF34
+	bl ov15_021FFF34
 	movs r0, #3
 	pop {r3, r4, r5, pc}
 _021FA5E0:
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl ovy15_021FA6F4
+	bl ov15_021FA6F4
 	adds r0, r5, #0
-	bl ovy15_021FA170
+	bl ov15_021FA170
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2368,10 +2368,10 @@ _021FA612:
 	nop
 _021FA618: .4byte 0x00000671
 _021FA61C: .4byte 0x0000066C
-	thumb_func_end ovy15_021FA578
+	thumb_func_end ov15_021FA578
 
-	thumb_func_start ovy15_021FA620
-ovy15_021FA620: @ 0x021FA620
+	thumb_func_start ov15_021FA620
+ov15_021FA620: @ 0x021FA620
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _021FA648 @ =0x00000614
@@ -2394,10 +2394,10 @@ ovy15_021FA620: @ 0x021FA620
 	.align 2, 0
 _021FA648: .4byte 0x00000614
 _021FA64C: .4byte 0x00000617
-	thumb_func_end ovy15_021FA620
+	thumb_func_end ov15_021FA620
 
-	thumb_func_start ovy15_021FA650
-ovy15_021FA650: @ 0x021FA650
+	thumb_func_start ov15_021FA650
+ov15_021FA650: @ 0x021FA650
 	push {r4, lr}
 	ldr r1, _021FA680 @ =0x021D110C
 	ldr r2, [r1, #0x48]
@@ -2419,7 +2419,7 @@ _021FA672:
 	ldr r3, _021FA684 @ =0x02201480
 	movs r1, #1
 	ldr r3, [r3]
-	bl ovy15_021FD574
+	bl ov15_021FD574
 _021FA67C:
 	movs r0, #0
 	pop {r4, pc}
@@ -2427,10 +2427,10 @@ _021FA67C:
 _021FA680: .4byte 0x021D110C
 _021FA684: .4byte 0x02201480
 _021FA688: .4byte 0x02201300
-	thumb_func_end ovy15_021FA650
+	thumb_func_end ov15_021FA650
 
-	thumb_func_start ovy15_021FA68C
-ovy15_021FA68C: @ 0x021FA68C
+	thumb_func_start ov15_021FA68C
+ov15_021FA68C: @ 0x021FA68C
 	push {r4, r5}
 	movs r2, #0x8d
 	lsls r2, r2, #2
@@ -2459,10 +2459,10 @@ _021FA6AE:
 	mvns r0, r0
 	pop {r4, r5}
 	bx lr
-	thumb_func_end ovy15_021FA68C
+	thumb_func_end ov15_021FA68C
 
-	thumb_func_start ovy15_021FA6C0
-ovy15_021FA6C0: @ 0x021FA6C0
+	thumb_func_start ov15_021FA6C0
+ov15_021FA6C0: @ 0x021FA6C0
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r5, r1, #0
@@ -2480,7 +2480,7 @@ _021FA6D2:
 _021FA6D8:
 	adds r0, r7, #0
 	adds r1, r5, #0
-	bl ovy15_021FA68C
+	bl ov15_021FA68C
 	movs r1, #0
 	mvns r1, r1
 	cmp r0, r1
@@ -2492,44 +2492,44 @@ _021FA6EE:
 	adds r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FA6C0
+	thumb_func_end ov15_021FA6C0
 
-	thumb_func_start ovy15_021FA6F4
-ovy15_021FA6F4: @ 0x021FA6F4
+	thumb_func_start ov15_021FA6F4
+ov15_021FA6F4: @ 0x021FA6F4
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	movs r1, #0
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r3, r1, #0
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	movs r2, #6
 	ldrsh r1, [r4, r2]
 	adds r0, r5, #0
 	subs r2, r2, #7
 	movs r3, #0
-	bl ovy15_021FF364
+	bl ov15_021FF364
 	movs r2, #6
 	ldrb r1, [r4, #9]
 	ldrsh r2, [r4, r2]
 	adds r0, r5, #0
 	movs r3, #0
-	bl ovy15_021FF6BC
+	bl ov15_021FF6BC
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r3, #1
-	bl ovy15_02200140
+	bl ov15_02200140
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FA6F4
+	thumb_func_end ov15_021FA6F4
 
-	thumb_func_start ovy15_021FA73C
-ovy15_021FA73C: @ 0x021FA73C
+	thumb_func_start ov15_021FA73C
+ov15_021FA73C: @ 0x021FA73C
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r7, r2, #0
@@ -2563,7 +2563,7 @@ _021FA756: @ jump table
 	.2byte _021FA892 - _021FA756 - 2 @ case 15
 	.2byte _021FA8F6 - _021FA756 - 2 @ case 16
 _021FA778:
-	bl ovy15_021FA68C
+	bl ov15_021FA68C
 	subs r1, r6, #2
 	cmp r0, r1
 	bne _021FA786
@@ -2587,7 +2587,7 @@ _021FA7A0:
 	adds r2, #0x64
 	strb r0, [r2]
 	adds r0, r4, #0
-	bl ovy15_021F9F08
+	bl ov15_021F9F08
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2598,38 +2598,38 @@ _021FA7A0:
 	muls r0, r1, r0
 	adds r5, r2, r0
 	adds r0, r4, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	movs r1, #0
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r3, r1, #0
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	movs r2, #6
 	ldrsh r1, [r5, r2]
 	adds r0, r4, #0
 	subs r2, r2, #7
 	movs r3, #0
-	bl ovy15_021FF364
+	bl ov15_021FF364
 	movs r1, #0x8d
 	lsls r1, r1, #2
 	ldr r1, [r4, r1]
 	adds r0, r4, #0
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_02200030
+	bl ov15_02200030
 	movs r2, #6
 	ldrb r1, [r5, #9]
 	ldrsh r2, [r5, r2]
 	adds r0, r4, #0
 	movs r3, #0
-	bl ovy15_021FF6BC
+	bl ov15_021FF6BC
 	adds r0, r4, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #1
-	bl ovy15_02200140
+	bl ov15_02200140
 	movs r2, #0x8d
 	lsls r2, r2, #2
 	ldr r2, [r4, r2]
@@ -2637,20 +2637,20 @@ _021FA7A0:
 	adds r2, #0x64
 	ldrb r2, [r2]
 	movs r1, #1
-	bl ovy15_021FD404
+	bl ov15_021FD404
 	ldr r0, _021FA930 @ =0x000005DC
 	bl FUN_0200604C
 	adds r0, r4, #0
-	bl ovy15_021FA170
+	bl ov15_021FA170
 	ldr r0, _021FA934 @ =0x00000644
 	ldr r1, [r4, r0]
 	cmp r1, #8
 	blt _021FA838
 	adds r0, r4, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FA838:
 	adds r0, r4, #0
-	bl ovy15_021FDF88
+	bl ov15_021FDF88
 	movs r1, #0x8d
 	lsls r1, r1, #2
 	ldr r1, [r4, r1]
@@ -2660,7 +2660,7 @@ _021FA838:
 	adds r0, r4, r0
 	movs r2, #7
 	adds r1, r1, #1
-	bl ovy15_021FDAF4
+	bl ov15_021FDAF4
 	b _021FA92A
 _021FA856:
 	movs r0, #0x8d
@@ -2690,7 +2690,7 @@ _021FA856:
 	bl FUN_0200604C
 _021FA88A:
 	adds r0, r4, #0
-	bl ovy15_021FA170
+	bl ov15_021FA170
 	b _021FA92A
 _021FA892:
 	movs r0, #0x8d
@@ -2713,7 +2713,7 @@ _021FA892:
 	movs r1, #0x12
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	adds r6, r0, #0
 	b _021FA92A
 _021FA8C4:
@@ -2737,7 +2737,7 @@ _021FA8C4:
 	movs r1, #0x11
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	adds r6, r0, #0
 	b _021FA92A
 _021FA8F6:
@@ -2752,7 +2752,7 @@ _021FA8F6:
 	adds r1, #0x68
 	strh r2, [r1]
 	ldr r1, [sp, #0x1c]
-	bl ovy15_021FD774
+	bl ov15_021FD774
 	movs r0, #0x25
 	lsls r0, r0, #6
 	bl FUN_0200604C
@@ -2762,7 +2762,7 @@ _021FA8F6:
 	movs r1, #0x13
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	adds r6, r0, #0
 _021FA92A:
 	adds r0, r6, #0
@@ -2771,10 +2771,10 @@ _021FA92A:
 _021FA930: .4byte 0x000005DC
 _021FA934: .4byte 0x00000644
 _021FA938: .4byte 0x00000808
-	thumb_func_end ovy15_021FA73C
+	thumb_func_end ov15_021FA73C
 
-	thumb_func_start ovy15_021FA93C
-ovy15_021FA93C: @ 0x021FA93C
+	thumb_func_start ov15_021FA93C
+ov15_021FA93C: @ 0x021FA93C
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r0, _021FAA10 @ =0x00000619
@@ -2790,7 +2790,7 @@ ovy15_021FA93C: @ 0x021FA93C
 	strb r0, [r4, #7]
 _021FA958:
 	adds r0, r5, #0
-	bl ovy15_021FAC40
+	bl ov15_021FAC40
 	adds r6, r0, #0
 	movs r0, #0
 	mvns r0, r0
@@ -2808,7 +2808,7 @@ _021FA96E:
 	strb r0, [r4, #7]
 _021FA97A:
 	adds r0, r5, #0
-	bl ovy15_021FAA18
+	bl ov15_021FAA18
 	cmp r0, #0
 	bne _021FA9FE
 	ldrb r0, [r4, #7]
@@ -2864,7 +2864,7 @@ _021FA9C6:
 	lsls r1, r1, #4
 	strb r0, [r5, r1]
 	adds r0, r5, #0
-	bl ovy15_021FF950
+	bl ov15_021FF950
 	movs r1, #0x67
 	lsls r1, r1, #4
 	ldrb r1, [r5, r1]
@@ -2872,21 +2872,21 @@ _021FA9C6:
 	movs r2, #7
 	adds r0, r5, r0
 	adds r1, r1, #1
-	bl ovy15_021FDAF4
+	bl ov15_021FDAF4
 _021FA9FE:
 	adds r0, r5, #0
-	bl ovy15_021FAB34
+	bl ov15_021FAB34
 	adds r0, r5, #0
-	bl ovy15_021FF964
+	bl ov15_021FF964
 	movs r0, #0
 	pop {r4, r5, r6, pc}
 	nop
 _021FAA10: .4byte 0x00000619
 _021FAA14: .4byte 0x00000808
-	thumb_func_end ovy15_021FA93C
+	thumb_func_end ov15_021FA93C
 
-	thumb_func_start ovy15_021FAA18
-ovy15_021FAA18: @ 0x021FAA18
+	thumb_func_start ov15_021FAA18
+ov15_021FAA18: @ 0x021FAA18
 	push {r3, r4, r5, lr}
 	ldr r1, _021FAB28 @ =0x021D110C
 	adds r5, r0, #0
@@ -2957,7 +2957,7 @@ _021FAA6A:
 	strb r0, [r4, #4]
 _021FAA9C:
 	adds r0, r5, #0
-	bl ovy15_021FF950
+	bl ov15_021FF950
 	movs r0, #1
 	pop {r3, r4, r5, pc}
 _021FAAA6:
@@ -3023,7 +3023,7 @@ _021FAAE6:
 	strb r0, [r4, #4]
 _021FAB1A:
 	adds r0, r5, #0
-	bl ovy15_021FF950
+	bl ov15_021FF950
 	movs r0, #1
 	pop {r3, r4, r5, pc}
 _021FAB24:
@@ -3033,10 +3033,10 @@ _021FAB24:
 _021FAB28: .4byte 0x021D110C
 _021FAB2C: .4byte 0x00000619
 _021FAB30: .4byte 0x00000614
-	thumb_func_end ovy15_021FAA18
+	thumb_func_end ov15_021FAA18
 
-	thumb_func_start ovy15_021FAB34
-ovy15_021FAB34: @ 0x021FAB34
+	thumb_func_start ov15_021FAB34
+ov15_021FAB34: @ 0x021FAB34
 	push {r3, r4, r5, lr}
 	ldr r1, _021FAC28 @ =0x00000619
 	adds r5, r0, #0
@@ -3070,7 +3070,7 @@ _021FAB64:
 	ldrb r2, [r4]
 	adds r1, #0x64
 	strb r2, [r1]
-	bl ovy15_021F9F08
+	bl ov15_021F9F08
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r1, [r5, r0]
@@ -3085,21 +3085,21 @@ _021FAB64:
 	ldrsh r1, [r1, r2]
 	subs r2, #0xb
 	movs r3, #0
-	bl ovy15_021FF364
+	bl ov15_021FF364
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	movs r1, #0
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r3, r1, #0
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	movs r1, #0x8d
 	lsls r1, r1, #2
 	ldr r1, [r5, r1]
 	adds r0, r5, #0
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_02200030
+	bl ov15_02200030
 	movs r2, #0x8d
 	lsls r2, r2, #2
 	ldr r2, [r5, r2]
@@ -3107,7 +3107,7 @@ _021FAB64:
 	adds r2, #0x64
 	ldrb r2, [r2]
 	movs r1, #1
-	bl ovy15_021FD404
+	bl ov15_021FD404
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r3, [r5, r0]
@@ -3125,7 +3125,7 @@ _021FAB64:
 	adds r1, r1, r2
 	adds r2, r3, r2
 	ldrb r2, [r2, #0xd]
-	bl ovy15_021FA044
+	bl ov15_021FA044
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r3, [r5, r0]
@@ -3144,7 +3144,7 @@ _021FAB64:
 	adds r2, r3, r2
 	ldrb r2, [r2, #0xd]
 	movs r3, #6
-	bl ovy15_021FA070
+	bl ov15_021FA070
 	ldrb r0, [r4, #2]
 	adds r0, r0, #1
 	strb r0, [r4, #2]
@@ -3158,10 +3158,10 @@ _021FAC24:
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _021FAC28: .4byte 0x00000619
-	thumb_func_end ovy15_021FAB34
+	thumb_func_end ov15_021FAB34
 
-	thumb_func_start ovy15_021FAC2C
-ovy15_021FAC2C: @ 0x021FAC2C
+	thumb_func_start ov15_021FAC2C
+ov15_021FAC2C: @ 0x021FAC2C
 	ldr r0, _021FAC38 @ =0x02201314
 	lsls r1, r1, #2
 	ldr r3, _021FAC3C @ =FUN_02025224
@@ -3170,18 +3170,18 @@ ovy15_021FAC2C: @ 0x021FAC2C
 	nop
 _021FAC38: .4byte 0x02201314
 _021FAC3C: .4byte FUN_02025224
-	thumb_func_end ovy15_021FAC2C
+	thumb_func_end ov15_021FAC2C
 
-	thumb_func_start ovy15_021FAC40
-ovy15_021FAC40: @ 0x021FAC40
+	thumb_func_start ov15_021FAC40
+ov15_021FAC40: @ 0x021FAC40
 	movs r0, #0
 	mvns r0, r0
 	bx lr
 	.align 2, 0
-	thumb_func_end ovy15_021FAC40
+	thumb_func_end ov15_021FAC40
 
-	thumb_func_start ovy15_021FAC48
-ovy15_021FAC48: @ 0x021FAC48
+	thumb_func_start ov15_021FAC48
+ov15_021FAC48: @ 0x021FAC48
 	push {r3, r4, r5, lr}
 	movs r1, #0x8d
 	adds r5, r0, #0
@@ -3205,19 +3205,19 @@ ovy15_021FAC48: @ 0x021FAC48
 	adds r2, r3, r2
 	subs r2, #8
 	strb r2, [r5, r1]
-	bl ovy15_021FED60
+	bl ov15_021FED60
 	adds r0, r5, #0
-	bl ovy15_021FB114
+	bl ov15_021FB114
 	adds r0, r5, #0
-	bl ovy15_02200294
+	bl ov15_02200294
 	adds r0, r5, #0
-	bl ovy15_021FF560
+	bl ov15_021FF560
 	movs r0, #0x61
 	lsls r0, r0, #2
 	adds r0, r5, r0
-	bl ovy15_021FF7AC
+	bl ov15_021FF7AC
 	adds r0, r5, #0
-	bl ovy15_021FED58
+	bl ov15_021FED58
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3228,14 +3228,14 @@ ovy15_021FAC48: @ 0x021FAC48
 	muls r0, r1, r0
 	adds r4, r2, r0
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	ldr r3, _021FAD24 @ =0x00000644
 	adds r2, r0, #0
 	ldr r3, [r5, r3]
 	adds r0, r5, #0
 	movs r1, #1
 	subs r3, #8
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	ldr r2, _021FAD24 @ =0x00000644
 	movs r1, #6
 	ldr r2, [r5, r2]
@@ -3243,20 +3243,20 @@ ovy15_021FAC48: @ 0x021FAC48
 	adds r0, r5, #0
 	subs r2, #8
 	movs r3, #1
-	bl ovy15_021FF364
+	bl ov15_021FF364
 	movs r2, #6
 	ldrb r1, [r4, #9]
 	ldrsh r2, [r4, r2]
 	adds r0, r5, #0
 	movs r3, #0
-	bl ovy15_021FF6BC
+	bl ov15_021FF6BC
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r3, #0
-	bl ovy15_02200140
+	bl ov15_02200140
 	movs r2, #6
 	ldrsh r3, [r4, r2]
 	ldr r2, _021FAD24 @ =0x00000644
@@ -3265,11 +3265,11 @@ ovy15_021FAC48: @ 0x021FAC48
 	adds r1, r4, #0
 	adds r2, r3, r2
 	subs r2, #8
-	bl ovy15_022001C4
+	bl ov15_022001C4
 	ldr r1, _021FAD24 @ =0x00000644
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	ldr r0, _021FAD24 @ =0x00000644
 	ldr r1, [r5, r0]
 	adds r0, #0x28
@@ -3279,10 +3279,10 @@ ovy15_021FAC48: @ 0x021FAC48
 	.align 2, 0
 _021FAD20: .4byte 0x00000671
 _021FAD24: .4byte 0x00000644
-	thumb_func_end ovy15_021FAC48
+	thumb_func_end ov15_021FAC48
 
-	thumb_func_start ovy15_021FAD28
-ovy15_021FAD28: @ 0x021FAD28
+	thumb_func_start ov15_021FAD28
+ov15_021FAD28: @ 0x021FAD28
 	ldr r1, _021FAD6C @ =0x021D110C
 	movs r2, #0x40
 	ldr r1, [r1, #0x48]
@@ -3327,35 +3327,35 @@ _021FAD70: .4byte 0x02200584
 _021FAD74: .4byte 0x02200585
 _021FAD78: .4byte 0x02200586
 _021FAD7C: .4byte 0x02200587
-	thumb_func_end ovy15_021FAD28
+	thumb_func_end ov15_021FAD28
 
-	thumb_func_start ovy15_021FAD80
-ovy15_021FAD80: @ 0x021FAD80
+	thumb_func_start ov15_021FAD80
+ov15_021FAD80: @ 0x021FAD80
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r6, r0, #0
 	adds r0, r5, #0
-	bl ovy15_021FA098
+	bl ov15_021FA098
 	adds r3, r0, #0
 	adds r0, r5, #0
 	movs r1, #1
 	adds r2, r6, #0
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	adds r0, r5, #0
-	bl ovy15_021FA098
+	bl ov15_021FA098
 	movs r1, #6
 	adds r2, r0, #0
 	ldrsh r1, [r4, r1]
 	adds r0, r5, #0
 	movs r3, #1
-	bl ovy15_021FF364
+	bl ov15_021FF364
 	ldr r2, _021FADE4 @ =0x00000672
 	adds r0, r5, #0
 	ldrb r2, [r5, r2]
 	adds r1, r4, #0
-	bl ovy15_022001C4
+	bl ov15_022001C4
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r3, [r5, r0]
@@ -3371,14 +3371,14 @@ ovy15_021FAD80: @ 0x021FAD80
 	ldrsh r2, [r3, r2]
 	adds r0, r5, #0
 	movs r3, #0
-	bl ovy15_021FF6BC
+	bl ov15_021FF6BC
 	pop {r4, r5, r6, pc}
 	nop
 _021FADE4: .4byte 0x00000672
-	thumb_func_end ovy15_021FAD80
+	thumb_func_end ov15_021FAD80
 
-	thumb_func_start ovy15_021FADE8
-ovy15_021FADE8: @ 0x021FADE8
+	thumb_func_start ov15_021FADE8
+ov15_021FADE8: @ 0x021FADE8
 	push {r4, r5, r6, lr}
 	movs r4, #0
 	adds r5, r1, #0
@@ -3403,7 +3403,7 @@ _021FAE02: @ jump table
 	.2byte _021FAE34 - _021FAE02 - 2 @ case 7
 	.2byte _021FAE38 - _021FAE02 - 2 @ case 8
 _021FAE14:
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	cmp r0, r5
 	ble _021FAE28
 	ldr r0, _021FAE40 @ =0x0000066C
@@ -3429,10 +3429,10 @@ _021FAE3A:
 	nop
 _021FAE40: .4byte 0x0000066C
 _021FAE44: .4byte 0x000005F3
-	thumb_func_end ovy15_021FADE8
+	thumb_func_end ov15_021FADE8
 
-	thumb_func_start ovy15_021FAE48
-ovy15_021FAE48: @ 0x021FAE48
+	thumb_func_start ov15_021FAE48
+ov15_021FAE48: @ 0x021FAE48
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x8d
@@ -3448,7 +3448,7 @@ ovy15_021FAE48: @ 0x021FAE48
 	adds r7, r2, r0
 	ldr r0, _021FAFE4 @ =0x0000066C
 	ldr r0, [r5, r0]
-	bl ovy15_021FAD28
+	bl ov15_021FAD28
 	lsls r0, r0, #0x10
 	ldr r2, _021FAFE4 @ =0x0000066C
 	lsrs r1, r0, #0x10
@@ -3462,20 +3462,20 @@ ovy15_021FAE48: @ 0x021FAE48
 	cmp r0, #1
 	bhi _021FAE8C
 	adds r0, r5, #0
-	bl ovy15_021FADE8
+	bl ov15_021FADE8
 	adds r4, r0, #0
 	b _021FAE9C
 _021FAE8C:
 	str r1, [r5, r2]
 	ldr r1, [r5, r2]
 	adds r0, r5, #0
-	bl ovy15_021FFF34
+	bl ov15_021FFF34
 	ldr r0, _021FAFEC @ =0x000005DC
 	bl FUN_0200604C
 _021FAE9C:
 	adds r0, r5, #0
 	movs r1, #2
-	bl ovy15_021FAC2C
+	bl ov15_021FAC2C
 	adds r6, r0, #0
 	movs r0, #0
 	mvns r0, r0
@@ -3485,11 +3485,11 @@ _021FAE9C:
 	bne _021FAEC6
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl ovy15_021FADE8
+	bl ov15_021FADE8
 	adds r4, r0, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl ovy15_021FFF34
+	bl ov15_021FFF34
 	b _021FAF24
 _021FAEC6:
 	subs r0, r6, #6
@@ -3497,19 +3497,19 @@ _021FAEC6:
 	bhi _021FAED8
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl ovy15_021FADE8
+	bl ov15_021FADE8
 	adds r4, r0, #0
 	b _021FAF24
 _021FAED8:
 	ldr r0, _021FAFE4 @ =0x0000066C
 	str r6, [r5, r0]
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	cmp r0, r6
 	bls _021FAEF2
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl ovy15_021FADE8
+	bl ov15_021FADE8
 	adds r4, r0, #0
 	b _021FAEF8
 _021FAEF2:
@@ -3519,7 +3519,7 @@ _021FAEF8:
 	ldr r1, _021FAFE4 @ =0x0000066C
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FFF34
+	bl ov15_021FFF34
 	b _021FAF24
 _021FAF04:
 	ldr r0, _021FAFF4 @ =0x021D110C
@@ -3530,7 +3530,7 @@ _021FAF04:
 	ldr r1, _021FAFE4 @ =0x0000066C
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FADE8
+	bl ov15_021FADE8
 	adds r4, r0, #0
 	b _021FAF24
 _021FAF1C:
@@ -3574,7 +3574,7 @@ _021FAF46:
 	movs r1, #0x13
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	pop {r3, r4, r5, r6, r7, pc}
 _021FAF70:
 	ldrb r0, [r7, #9]
@@ -3588,7 +3588,7 @@ _021FAF70:
 	movs r1, #0x11
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	pop {r3, r4, r5, r6, r7, pc}
 _021FAF8E:
 	ldrb r0, [r7, #9]
@@ -3602,7 +3602,7 @@ _021FAF8E:
 	movs r1, #0x12
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	pop {r3, r4, r5, r6, r7, pc}
 _021FAFAC:
 	ldr r0, _021FAFEC @ =0x000005DC
@@ -3620,14 +3620,14 @@ _021FAFAC:
 	movs r1, #0x14
 	movs r2, #0x29
 	movs r3, #0x21
-	bl ovy15_021FD810
+	bl ov15_021FD810
 	pop {r3, r4, r5, r6, r7, pc}
 _021FAFD2:
 	adds r0, r5, #0
 	movs r1, #0x14
 	movs r2, #0x2a
 	movs r3, #0x21
-	bl ovy15_021FD810
+	bl ov15_021FD810
 	pop {r3, r4, r5, r6, r7, pc}
 _021FAFE0:
 	movs r0, #3
@@ -3639,10 +3639,10 @@ _021FAFEC: .4byte 0x000005DC
 _021FAFF0: .4byte 0x000005F3
 _021FAFF4: .4byte 0x021D110C
 _021FAFF8: .4byte 0x00000672
-	thumb_func_end ovy15_021FAE48
+	thumb_func_end ov15_021FAE48
 
-	thumb_func_start ovy15_021FAFFC
-ovy15_021FAFFC: @ 0x021FAFFC
+	thumb_func_start ov15_021FAFFC
+ov15_021FAFFC: @ 0x021FAFFC
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -3671,7 +3671,7 @@ ovy15_021FAFFC: @ 0x021FAFFC
 	ldr r0, [r5]
 	bl FUN_02077B5C
 	adds r0, r4, #0
-	bl ovy15_021F9F08
+	bl ov15_021F9F08
 	ldr r1, _021FB05C @ =0x0000066C
 	ldr r2, [r4, r1]
 	adds r0, r1, #0
@@ -3681,18 +3681,18 @@ ovy15_021FAFFC: @ 0x021FAFFC
 	subs r1, #0x28
 	ldr r1, [r4, r1]
 	adds r0, r4, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FB050:
 	adds r0, r4, #0
-	bl ovy15_021FB060
+	bl ov15_021FB060
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021FB05C: .4byte 0x0000066C
-	thumb_func_end ovy15_021FAFFC
+	thumb_func_end ov15_021FAFFC
 
-	thumb_func_start ovy15_021FB060
-ovy15_021FB060: @ 0x021FB060
+	thumb_func_start ov15_021FB060
+ov15_021FB060: @ 0x021FB060
 	push {r3, r4, r5, lr}
 	movs r1, #0xd2
 	adds r5, r0, #0
@@ -3705,9 +3705,9 @@ ovy15_021FB060: @ 0x021FB060
 	strb r3, [r5, r2]
 	adds r1, r1, #3
 	str r3, [r5, r1]
-	bl ovy15_021FB114
+	bl ov15_021FB114
 	adds r0, r5, #0
-	bl ovy15_021F9F08
+	bl ov15_021F9F08
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3718,25 +3718,25 @@ ovy15_021FB060: @ 0x021FB060
 	muls r0, r1, r0
 	adds r4, r2, r0
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	movs r1, #0
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r3, r1, #0
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	movs r2, #6
 	ldrsh r1, [r4, r2]
 	adds r0, r5, #0
 	subs r2, r2, #7
 	movs r3, #0
-	bl ovy15_021FF364
+	bl ov15_021FF364
 	movs r1, #0x8d
 	lsls r1, r1, #2
 	ldr r1, [r5, r1]
 	adds r0, r5, #0
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_02200030
+	bl ov15_02200030
 	movs r2, #0x8d
 	lsls r2, r2, #2
 	ldr r2, [r5, r2]
@@ -3744,35 +3744,35 @@ ovy15_021FB060: @ 0x021FB060
 	adds r2, #0x64
 	ldrb r2, [r2]
 	movs r1, #1
-	bl ovy15_021FD404
+	bl ov15_021FD404
 	movs r2, #6
 	ldrb r1, [r4, #9]
 	ldrsh r2, [r4, r2]
 	adds r0, r5, #0
 	movs r3, #0
-	bl ovy15_021FF6BC
+	bl ov15_021FF6BC
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r3, #1
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r5, #0
-	bl ovy15_021FED24
+	bl ov15_021FED24
 	ldr r1, _021FB110 @ =0x00000644
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	movs r0, #1
 	pop {r3, r4, r5, pc}
 	nop
 _021FB10C: .4byte 0x00000671
 _021FB110: .4byte 0x00000644
-	thumb_func_end ovy15_021FB060
+	thumb_func_end ov15_021FB060
 
-	thumb_func_start ovy15_021FB114
-ovy15_021FB114: @ 0x021FB114
+	thumb_func_start ov15_021FB114
+ov15_021FB114: @ 0x021FB114
 	push {r4, lr}
 	movs r1, #0x8d
 	lsls r1, r1, #2
@@ -3801,10 +3801,10 @@ _021FB146:
 	pop {r4, pc}
 	.align 2, 0
 _021FB148: .4byte 0x00000671
-	thumb_func_end ovy15_021FB114
+	thumb_func_end ov15_021FB114
 
-	thumb_func_start ovy15_021FB14C
-ovy15_021FB14C: @ 0x021FB14C
+	thumb_func_start ov15_021FB14C
+ov15_021FB14C: @ 0x021FB14C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	ldr r1, _021FB370 @ =_022004EC
@@ -4029,7 +4029,7 @@ _021FB2F8:
 	adds r1, #0x66
 	ldrh r1, [r1]
 	adds r0, r5, #0
-	bl ovy15_021FD3F0
+	bl ov15_021FD3F0
 	cmp r0, #1
 	bne _021FB310
 	movs r1, #0xe
@@ -4076,10 +4076,10 @@ _021FB34A:
 	adds r0, r4, #0
 	add r1, sp, #0
 	movs r2, #5
-	bl ovy15_021FEB84
+	bl ov15_021FEB84
 	adds r0, r4, #0
 	add r1, sp, #0
-	bl ovy15_021FB380
+	bl ov15_021FB380
 	adds r0, r7, #0
 	bl FUN_0201AB0C
 	add sp, #8
@@ -4089,10 +4089,10 @@ _021FB370: .4byte _022004EC
 _021FB374: .4byte 0x0000FFFE
 _021FB378: .4byte 0x000001C1
 _021FB37C: .4byte 0x02201368
-	thumb_func_end ovy15_021FB14C
+	thumb_func_end ov15_021FB14C
 
-	thumb_func_start ovy15_021FB380
-ovy15_021FB380: @ 0x021FB380
+	thumb_func_start ov15_021FB380
+ov15_021FB380: @ 0x021FB380
 	push {r3, r4, r5, lr}
 	adds r4, r1, #0
 	ldr r1, _021FB3E8 @ =0x0000066C
@@ -4102,10 +4102,10 @@ ovy15_021FB380: @ 0x021FB380
 	ldr r2, [r5, r1]
 	ldr r1, _021FB3EC @ =0x02201468
 	ldrb r1, [r1, r2]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl ovy15_0220023C
+	bl ov15_0220023C
 	movs r0, #0x61
 	movs r1, #3
 	lsls r0, r0, #2
@@ -4113,7 +4113,7 @@ ovy15_021FB380: @ 0x021FB380
 	ldrb r2, [r4]
 	adds r0, r5, r0
 	adds r1, r5, r1
-	bl ovy15_021FF758
+	bl ov15_021FF758
 	movs r0, #0x65
 	movs r1, #3
 	lsls r0, r0, #2
@@ -4121,7 +4121,7 @@ ovy15_021FB380: @ 0x021FB380
 	ldrb r2, [r4, #1]
 	adds r0, r5, r0
 	adds r1, r5, r1
-	bl ovy15_021FF758
+	bl ov15_021FF758
 	movs r0, #0x69
 	movs r1, #3
 	lsls r0, r0, #2
@@ -4129,7 +4129,7 @@ ovy15_021FB380: @ 0x021FB380
 	ldrb r2, [r4, #2]
 	adds r0, r5, r0
 	adds r1, r5, r1
-	bl ovy15_021FF758
+	bl ov15_021FF758
 	movs r0, #0x6d
 	movs r1, #3
 	lsls r0, r0, #2
@@ -4137,15 +4137,15 @@ ovy15_021FB380: @ 0x021FB380
 	ldrb r2, [r4, #3]
 	adds r0, r5, r0
 	adds r1, r5, r1
-	bl ovy15_021FF758
+	bl ov15_021FF758
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _021FB3E8: .4byte 0x0000066C
 _021FB3EC: .4byte 0x02201468
-	thumb_func_end ovy15_021FB380
+	thumb_func_end ov15_021FB380
 
-	thumb_func_start ovy15_021FB3F0
-ovy15_021FB3F0: @ 0x021FB3F0
+	thumb_func_start ov15_021FB3F0
+ov15_021FB3F0: @ 0x021FB3F0
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r0, _021FB4F8 @ =0x0000066C
@@ -4191,7 +4191,7 @@ _021FB434:
 	str r4, [r5, r0]
 	ldrb r1, [r1, r4]
 	adds r0, r5, #0
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	ldr r0, _021FB514 @ =0x000005DC
 	bl FUN_0200604C
 	movs r0, #0
@@ -4200,7 +4200,7 @@ _021FB434:
 _021FB452:
 	adds r0, r5, #0
 	movs r1, #1
-	bl ovy15_021FAC2C
+	bl ov15_021FAC2C
 	adds r6, r0, #0
 	movs r0, #0
 	mvns r0, r0
@@ -4208,13 +4208,13 @@ _021FB452:
 	beq _021FB4A4
 	adds r0, r5, #0
 	movs r1, #1
-	bl ovy15_021FD774
+	bl ov15_021FD774
 	ldr r0, _021FB4F8 @ =0x0000066C
 	ldr r1, _021FB510 @ =0x02201468
 	str r6, [r5, r0]
 	ldrb r1, [r1, r6]
 	adds r0, r5, #0
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	cmp r6, #4
 	bne _021FB48C
 	movs r0, #0x25
@@ -4252,7 +4252,7 @@ _021FB4A4:
 	bl FUN_0200604C
 	adds r0, r5, #0
 	movs r1, #0
-	bl ovy15_021FD774
+	bl ov15_021FD774
 	adds r0, r4, #0
 	pop {r4, r5, r6, pc}
 _021FB4CE:
@@ -4286,13 +4286,13 @@ _021FB508: .4byte 0x0220052A
 _021FB50C: .4byte 0x0220052B
 _021FB510: .4byte 0x02201468
 _021FB514: .4byte 0x000005DC
-	thumb_func_end ovy15_021FB3F0
+	thumb_func_end ov15_021FB3F0
 
-	thumb_func_start ovy15_021FB518
-ovy15_021FB518: @ 0x021FB518
+	thumb_func_start ov15_021FB518
+ov15_021FB518: @ 0x021FB518
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
-	bl ovy15_021F9F08
+	bl ov15_021F9F08
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r0, [r5, r0]
@@ -4303,25 +4303,25 @@ ovy15_021FB518: @ 0x021FB518
 	muls r0, r1, r0
 	adds r4, r2, r0
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	movs r1, #0
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r3, r1, #0
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	movs r2, #6
 	ldrsh r1, [r4, r2]
 	adds r0, r5, #0
 	subs r2, r2, #7
 	movs r3, #0
-	bl ovy15_021FF364
+	bl ov15_021FF364
 	movs r1, #0x8d
 	lsls r1, r1, #2
 	ldr r1, [r5, r1]
 	adds r0, r5, #0
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_02200030
+	bl ov15_02200030
 	movs r2, #0x8d
 	lsls r2, r2, #2
 	ldr r2, [r5, r2]
@@ -4329,38 +4329,38 @@ ovy15_021FB518: @ 0x021FB518
 	adds r2, #0x64
 	ldrb r2, [r2]
 	movs r1, #1
-	bl ovy15_021FD404
+	bl ov15_021FD404
 	movs r2, #6
 	ldrb r1, [r4, #9]
 	ldrsh r2, [r4, r2]
 	adds r0, r5, #0
 	movs r3, #0
-	bl ovy15_021FF6BC
+	bl ov15_021FF6BC
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r3, #0
-	bl ovy15_02200140
+	bl ov15_02200140
 	ldr r1, _021FB5A8 @ =0x00000644
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	adds r0, r5, #0
 	movs r1, #1
-	bl ovy15_021F9C78
+	bl ov15_021F9C78
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _021FB5A8: .4byte 0x00000644
-	thumb_func_end ovy15_021FB518
+	thumb_func_end ov15_021FB518
 
-	thumb_func_start ovy15_021FB5AC
-ovy15_021FB5AC: @ 0x021FB5AC
+	thumb_func_start ov15_021FB5AC
+ov15_021FB5AC: @ 0x021FB5AC
 	push {r3, r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	bl ovy15_021FB3F0
+	bl ov15_021FB3F0
 	adds r1, r0, #0
 	movs r0, #1
 	mvns r0, r0
@@ -4377,7 +4377,7 @@ _021FB5C8:
 	movs r1, #0x13
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	add sp, #4
 	pop {r3, r4, pc}
 _021FB5DC:
@@ -4391,7 +4391,7 @@ _021FB5DC:
 	adds r0, r4, #0
 	lsrs r1, r1, #0x18
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	add sp, #4
 	pop {r3, r4, pc}
 _021FB5F8:
@@ -4400,24 +4400,24 @@ _021FB5F8:
 	pop {r3, r4, pc}
 	nop
 _021FB600: .4byte 0x00000948
-	thumb_func_end ovy15_021FB5AC
+	thumb_func_end ov15_021FB5AC
 
-	thumb_func_start ovy15_021FB604
-ovy15_021FB604: @ 0x021FB604
+	thumb_func_start ov15_021FB604
+ov15_021FB604: @ 0x021FB604
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
-	bl ovy15_02200294
+	bl ov15_02200294
 	adds r0, r5, #0
-	bl ovy15_021FF560
+	bl ov15_021FF560
 	movs r0, #0x61
 	lsls r0, r0, #2
 	adds r0, r5, r0
-	bl ovy15_021FF7AC
+	bl ov15_021FF7AC
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r4, [r5, r0]
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r4, #4
 	adds r4, #0x64
 	adds r2, r0, #0
@@ -4427,26 +4427,26 @@ ovy15_021FB604: @ 0x021FB604
 	muls r3, r4, r3
 	adds r1, r1, r3
 	movs r3, #0
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r5, #0
-	bl ovy15_021FE868
+	bl ov15_021FE868
 	adds r0, r5, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r5, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	movs r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ovy15_021FB604
+	thumb_func_end ov15_021FB604
 
-	thumb_func_start ovy15_021FB654
-ovy15_021FB654: @ 0x021FB654
+	thumb_func_start ov15_021FB654
+ov15_021FB654: @ 0x021FB654
 	push {r4, lr}
 	adds r4, r0, #0
-	bl ovy15_02200294
+	bl ov15_02200294
 	movs r0, #0x61
 	lsls r0, r0, #2
 	adds r0, r4, r0
-	bl ovy15_021FF7AC
+	bl ov15_021FF7AC
 	ldr r1, _021FB67C @ =0x00000948
 	adds r0, r4, #0
 	ldr r1, [r4, r1]
@@ -4459,17 +4459,17 @@ ovy15_021FB654: @ 0x021FB654
 	pop {r4, pc}
 	nop
 _021FB67C: .4byte 0x00000948
-	thumb_func_end ovy15_021FB654
+	thumb_func_end ov15_021FB654
 
-	thumb_func_start ovy15_021FB680
-ovy15_021FB680: @ 0x021FB680
+	thumb_func_start ov15_021FB680
+ov15_021FB680: @ 0x021FB680
 	push {r3, r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
 	movs r1, #0
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	adds r0, r4, #0
-	bl ovy15_021FFF24
+	bl ov15_021FFF24
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r0, [r4, r0]
@@ -4506,7 +4506,7 @@ ovy15_021FB680: @ 0x021FB680
 	bl FUN_02077AA4
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FB6FC @ =0x00000616
 	add sp, #4
 	strb r0, [r4, r1]
@@ -4514,16 +4514,16 @@ ovy15_021FB680: @ 0x021FB680
 	pop {r3, r4, pc}
 _021FB6EE:
 	adds r0, r4, #0
-	bl ovy15_021FB784
+	bl ov15_021FB784
 	add sp, #4
 	pop {r3, r4, pc}
 	.align 2, 0
 _021FB6F8: .4byte 0x000005E4
 _021FB6FC: .4byte 0x00000616
-	thumb_func_end ovy15_021FB680
+	thumb_func_end ov15_021FB680
 
-	thumb_func_start ovy15_021FB700
-ovy15_021FB700: @ 0x021FB700
+	thumb_func_start ov15_021FB700
+ov15_021FB700: @ 0x021FB700
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _021FB778 @ =0x00000616
@@ -4549,7 +4549,7 @@ _021FB722:
 	cmp r0, #3
 	beq _021FB736
 	adds r0, r4, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 _021FB736:
 	adds r0, r4, #0
 	adds r0, #0x34
@@ -4562,9 +4562,9 @@ _021FB736:
 	bl FUN_0201D5C8
 	adds r0, r4, #0
 	movs r1, #1
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	adds r0, r4, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r0, [r4, r0]
@@ -4584,10 +4584,10 @@ _021FB772:
 _021FB778: .4byte 0x00000616
 _021FB77C: .4byte 0x021D110C
 _021FB780: .4byte 0x021D114C
-	thumb_func_end ovy15_021FB700
+	thumb_func_end ov15_021FB700
 
-	thumb_func_start ovy15_021FB784
-ovy15_021FB784: @ 0x021FB784
+	thumb_func_start ov15_021FB784
+ov15_021FB784: @ 0x021FB784
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x8d
@@ -4605,7 +4605,7 @@ ovy15_021FB784: @ 0x021FB784
 	ldrb r2, [r3, #8]
 	cmp r2, #3
 	bne _021FB7B0
-	ldr r2, _021FB810 @ =ovy15_021FB830
+	ldr r2, _021FB810 @ =ov15_021FB830
 	adds r0, r1, #1
 	str r2, [r4, r0]
 	movs r0, #0xd
@@ -4623,7 +4623,7 @@ _021FB7B0:
 	bne _021FB7D6
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FB814 @ =0x00000616
 	strb r0, [r4, r1]
 	movs r0, #0xc
@@ -4635,10 +4635,10 @@ _021FB7D6:
 	adds r0, r4, #0
 	adds r1, #0x66
 	ldrh r1, [r1]
-	bl ovy15_021FB9D8
+	bl ov15_021FB9D8
 	cmp r0, #1
 	bne _021FB7F4
-	ldr r1, _021FB818 @ =ovy15_021FBBB0
+	ldr r1, _021FB818 @ =ov15_021FBBB0
 	ldr r0, _021FB81C @ =0x0000067C
 	str r1, [r4, r0]
 	movs r0, #0xd
@@ -4657,14 +4657,14 @@ _021FB7F4:
 	pop {r4, pc}
 	.align 2, 0
 _021FB80C: .4byte 0x0000067B
-_021FB810: .4byte ovy15_021FB830
+_021FB810: .4byte ov15_021FB830
 _021FB814: .4byte 0x00000616
-_021FB818: .4byte ovy15_021FBBB0
+_021FB818: .4byte ov15_021FBBB0
 _021FB81C: .4byte 0x0000067C
-	thumb_func_end ovy15_021FB784
+	thumb_func_end ov15_021FB784
 
-	thumb_func_start ovy15_021FB820
-ovy15_021FB820: @ 0x021FB820
+	thumb_func_start ov15_021FB820
+ov15_021FB820: @ 0x021FB820
 	push {r3, lr}
 	ldr r1, _021FB82C @ =0x0000067C
 	ldr r1, [r0, r1]
@@ -4672,10 +4672,10 @@ ovy15_021FB820: @ 0x021FB820
 	pop {r3, pc}
 	nop
 _021FB82C: .4byte 0x0000067C
-	thumb_func_end ovy15_021FB820
+	thumb_func_end ov15_021FB820
 
-	thumb_func_start ovy15_021FB830
-ovy15_021FB830: @ 0x021FB830
+	thumb_func_start ov15_021FB830
+ov15_021FB830: @ 0x021FB830
 	push {r3, r4, r5, lr}
 	ldr r1, _021FB9C0 @ =0x0000067B
 	adds r4, r0, #0
@@ -4729,7 +4729,7 @@ _021FB88A:
 _021FB898:
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FB9C8 @ =0x00000616
 	strb r0, [r4, r1]
 	movs r0, #1
@@ -4773,7 +4773,7 @@ _021FB8CA:
 	bl FUN_02026380
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FB9C8 @ =0x00000616
 	strb r0, [r4, r1]
 	movs r0, #2
@@ -4787,7 +4787,7 @@ _021FB90C:
 	cmp r0, #0
 	bne _021FB9BA
 	adds r0, r4, #0
-	bl ovy15_021FF004
+	bl ov15_021FF004
 	ldr r0, _021FB9C0 @ =0x0000067B
 	movs r1, #3
 	strb r1, [r4, r0]
@@ -4804,7 +4804,7 @@ _021FB936:
 	b _021FB9BA
 _021FB938:
 	adds r0, r4, #0
-	bl ovy15_021FF058
+	bl ov15_021FF058
 	movs r0, #1
 	movs r1, #6
 	bl FUN_020880CC
@@ -4818,9 +4818,9 @@ _021FB938:
 	pop {r3, r4, r5, pc}
 _021FB956:
 	adds r0, r4, #0
-	bl ovy15_021FF058
+	bl ov15_021FF058
 	adds r0, r4, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r4, #0
 	adds r0, #0x34
 	movs r1, #1
@@ -4834,7 +4834,7 @@ _021FB956:
 	lsls r0, r0, #2
 	ldr r5, [r4, r0]
 	adds r0, r4, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r5, #4
 	adds r5, #0x64
 	adds r2, r0, #0
@@ -4844,16 +4844,16 @@ _021FB956:
 	muls r3, r5, r3
 	adds r1, r1, r3
 	movs r3, #0
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r4, #0
-	bl ovy15_021FE868
+	bl ov15_021FE868
 	adds r0, r4, #0
-	bl ovy15_02200294
+	bl ov15_02200294
 	adds r0, r4, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	adds r0, r4, #0
 	movs r1, #1
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	movs r0, #1
 	pop {r3, r4, r5, pc}
 _021FB9BA:
@@ -4866,10 +4866,10 @@ _021FB9C8: .4byte 0x00000616
 _021FB9CC: .4byte 0x021D110C
 _021FB9D0: .4byte 0x021D114C
 _021FB9D4: .4byte 0x00000804
-	thumb_func_end ovy15_021FB830
+	thumb_func_end ov15_021FB830
 
-	thumb_func_start ovy15_021FB9D8
-ovy15_021FB9D8: @ 0x021FB9D8
+	thumb_func_start ov15_021FB9D8
+ov15_021FB9D8: @ 0x021FB9D8
 	push {r3, r4, r5, lr}
 	movs r2, #0xbd
 	adds r4, r0, #0
@@ -4896,7 +4896,7 @@ ovy15_021FB9D8: @ 0x021FB9D8
 	adds r5, r0, #0
 	adds r0, r4, #0
 	movs r1, #1
-	bl ovy15_021F994C
+	bl ov15_021F994C
 	movs r0, #0x1a
 	movs r1, #0
 	lsls r0, r0, #6
@@ -4913,7 +4913,7 @@ _021FBA20:
 	adds r5, r0, #0
 	adds r0, r4, #0
 	movs r1, #2
-	bl ovy15_021F994C
+	bl ov15_021F994C
 	movs r0, #0x1a
 	movs r1, #0
 	lsls r0, r0, #6
@@ -4929,7 +4929,7 @@ _021FBA44:
 _021FBA50:
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl ovy15_021FBA9C
+	bl ov15_021FBA9C
 	adds r5, r0, #0
 	b _021FBA7A
 _021FBA5C:
@@ -4938,7 +4938,7 @@ _021FBA5C:
 	bne _021FBA76
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl ovy15_021FBAF8
+	bl ov15_021FBAF8
 	adds r5, r0, #0
 	movs r0, #0x1a
 	movs r1, #0
@@ -4963,14 +4963,14 @@ _021FBA7A:
 	.align 2, 0
 _021FBA94: .4byte 0x000001F6
 _021FBA98: .4byte 0x000005E4
-	thumb_func_end ovy15_021FB9D8
+	thumb_func_end ov15_021FB9D8
 
-	thumb_func_start ovy15_021FBA9C
-ovy15_021FBA9C: @ 0x021FBA9C
+	thumb_func_start ov15_021FBA9C
+ov15_021FBA9C: @ 0x021FBA9C
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	bl ovy15_021F992C
+	bl ov15_021F992C
 	bl FUN_0202DB08
 	cmp r0, #0
 	bne _021FBAC4
@@ -4993,7 +4993,7 @@ _021FBAC4:
 	lsls r1, r1, #0x18
 	adds r0, r4, #0
 	lsrs r1, r1, #0x18
-	bl ovy15_021F993C
+	bl ov15_021F993C
 	movs r0, #0x1a
 	movs r1, #1
 	lsls r0, r0, #6
@@ -5007,10 +5007,10 @@ _021FBAC4:
 	bl FUN_0200BBA0
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FBA9C
+	thumb_func_end ov15_021FBA9C
 
-	thumb_func_start ovy15_021FBAF8
-ovy15_021FBAF8: @ 0x021FBAF8
+	thumb_func_start ov15_021FBAF8
+ov15_021FBAF8: @ 0x021FBAF8
 	push {r4, lr}
 	adds r4, r0, #0
 	bl FUN_02005C18
@@ -5031,10 +5031,10 @@ _021FBB16:
 	movs r1, #0x68
 	bl FUN_0200BBA0
 	pop {r4, pc}
-	thumb_func_end ovy15_021FBAF8
+	thumb_func_end ov15_021FBAF8
 
-	thumb_func_start ovy15_021FBB28
-ovy15_021FBB28: @ 0x021FBB28
+	thumb_func_start ov15_021FBB28
+ov15_021FBB28: @ 0x021FBB28
 	push {r3, r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -5059,7 +5059,7 @@ ovy15_021FBB28: @ 0x021FBB28
 	ldrh r3, [r4, r3]
 	bl FUN_02078480
 	adds r0, r4, #0
-	bl ovy15_021F9F08
+	bl ov15_021F9F08
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r3, [r4, r0]
@@ -5077,7 +5077,7 @@ ovy15_021FBB28: @ 0x021FBB28
 	adds r1, r1, r2
 	adds r2, r3, r2
 	ldrb r2, [r2, #0xd]
-	bl ovy15_021FA044
+	bl ov15_021FA044
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r2, [r4, r0]
@@ -5096,13 +5096,13 @@ ovy15_021FBB28: @ 0x021FBB28
 	adds r0, r0, r3
 	adds r1, r1, r3
 	movs r3, #6
-	bl ovy15_021FA070
+	bl ov15_021FA070
 	add sp, #4
 	pop {r3, r4, pc}
-	thumb_func_end ovy15_021FBB28
+	thumb_func_end ov15_021FBB28
 
-	thumb_func_start ovy15_021FBBB0
-ovy15_021FBBB0: @ 0x021FBBB0
+	thumb_func_start ov15_021FBBB0
+ov15_021FBBB0: @ 0x021FBBB0
 	push {r3, r4, r5, lr}
 	ldr r1, _021FBC5C @ =0x0000067B
 	adds r5, r0, #0
@@ -5114,7 +5114,7 @@ ovy15_021FBBB0: @ 0x021FBBB0
 	b _021FBC56
 _021FBBC2:
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FBC60 @ =0x00000616
 	strb r0, [r5, r1]
 	movs r0, #1
@@ -5138,7 +5138,7 @@ _021FBBD4:
 	beq _021FBC56
 _021FBBF2:
 	adds r0, r5, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r5, #0
 	adds r0, #0x34
 	movs r1, #1
@@ -5147,14 +5147,14 @@ _021FBBF2:
 	adds r0, #0x34
 	bl FUN_0201D8E4
 	adds r0, r5, #0
-	bl ovy15_021FBB28
+	bl ov15_021FBB28
 	adds r0, r5, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r4, [r5, r0]
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r4, #4
 	adds r4, #0x64
 	adds r2, r0, #0
@@ -5164,14 +5164,14 @@ _021FBBF2:
 	muls r3, r4, r3
 	adds r1, r1, r3
 	movs r3, #1
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r5, #0
-	bl ovy15_021FA170
+	bl ov15_021FA170
 	adds r0, r5, #4
 	bl FUN_0201D5C8
 	adds r0, r5, #0
 	movs r1, #1
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	ldr r0, _021FBC5C @ =0x0000067B
 	movs r1, #0
 	strb r1, [r5, r0]
@@ -5185,13 +5185,13 @@ _021FBC5C: .4byte 0x0000067B
 _021FBC60: .4byte 0x00000616
 _021FBC64: .4byte 0x021D110C
 _021FBC68: .4byte 0x021D114C
-	thumb_func_end ovy15_021FBBB0
+	thumb_func_end ov15_021FBBB0
 
-	thumb_func_start ovy15_021FBC6C
-ovy15_021FBC6C: @ 0x021FBC6C
+	thumb_func_start ov15_021FBC6C
+ov15_021FBC6C: @ 0x021FBC6C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	movs r0, #1
 	movs r1, #6
 	bl FUN_020880CC
@@ -5203,13 +5203,13 @@ ovy15_021FBC6C: @ 0x021FBC6C
 	strh r1, [r0]
 	movs r0, #0x25
 	pop {r4, pc}
-	thumb_func_end ovy15_021FBC6C
+	thumb_func_end ov15_021FBC6C
 
-	thumb_func_start ovy15_021FBC8C
-ovy15_021FBC8C: @ 0x021FBC8C
+	thumb_func_start ov15_021FBC8C
+ov15_021FBC8C: @ 0x021FBC8C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	movs r0, #1
 	movs r1, #6
 	bl FUN_020880CC
@@ -5221,17 +5221,17 @@ ovy15_021FBC8C: @ 0x021FBC8C
 	strh r1, [r0]
 	movs r0, #0x25
 	pop {r4, pc}
-	thumb_func_end ovy15_021FBC8C
+	thumb_func_end ov15_021FBC8C
 
-	thumb_func_start ovy15_021FBCAC
-ovy15_021FBCAC: @ 0x021FBCAC
+	thumb_func_start ov15_021FBCAC
+ov15_021FBCAC: @ 0x021FBCAC
 	push {r4, lr}
 	movs r1, #0x1a
 	adds r4, r0, #0
 	movs r2, #1
 	lsls r1, r1, #6
 	strh r2, [r4, r1]
-	bl ovy15_021FFF24
+	bl ov15_021FFF24
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r2, [r4, r0]
@@ -5250,10 +5250,10 @@ ovy15_021FBCAC: @ 0x021FBCAC
 	cmp r0, #1
 	bne _021FBCF2
 	adds r0, r4, #0
-	bl ovy15_021FEEA4
+	bl ov15_021FEEA4
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	movs r0, #8
 	pop {r4, pc}
 _021FBCF2:
@@ -5261,28 +5261,28 @@ _021FBCF2:
 	adds r0, r4, #0
 	movs r1, #3
 	adds r3, r2, #0
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	ldr r2, _021FBD24 @ =0x00000682
 	adds r0, r4, #0
 	ldrh r2, [r4, r2]
 	movs r1, #3
-	bl ovy15_02200300
+	bl ov15_02200300
 	adds r0, r4, #0
 	movs r1, #3
-	bl ovy15_021FEDEC
+	bl ov15_021FEDEC
 	adds r0, r4, #0
-	bl ovy15_021FF7C4
+	bl ov15_021FF7C4
 	adds r0, r4, #0
 	movs r1, #1
-	bl ovy15_021FF29C
+	bl ov15_021FF29C
 	movs r0, #5
 	pop {r4, pc}
 	.align 2, 0
 _021FBD24: .4byte 0x00000682
-	thumb_func_end ovy15_021FBCAC
+	thumb_func_end ov15_021FBCAC
 
-	thumb_func_start ovy15_021FBD28
-ovy15_021FBD28: @ 0x021FBD28
+	thumb_func_start ov15_021FBD28
+ov15_021FBD28: @ 0x021FBD28
 	cmp r2, #0
 	ble _021FBD3E
 	cmp r0, r1
@@ -5307,16 +5307,16 @@ _021FBD46:
 	movs r0, #1
 _021FBD4E:
 	bx lr
-	thumb_func_end ovy15_021FBD28
+	thumb_func_end ov15_021FBD28
 
-	thumb_func_start ovy15_021FBD50
-ovy15_021FBD50: @ 0x021FBD50
+	thumb_func_start ov15_021FBD50
+ov15_021FBD50: @ 0x021FBD50
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	movs r6, #0
 	movs r1, #3
 	adds r4, r0, #0
-	bl ovy15_021FAC2C
+	bl ov15_021FAC2C
 	adds r5, r0, #0
 	subs r0, r6, #1
 	cmp r5, r0
@@ -5325,7 +5325,7 @@ ovy15_021FBD50: @ 0x021FBD50
 _021FBD68:
 	ldr r0, _021FBF88 @ =0x00000682
 	ldrh r0, [r4, r0]
-	bl ovy15_022002EC
+	bl ov15_022002EC
 	cmp r0, #1
 	beq _021FBD7A
 	cmp r0, #2
@@ -5378,7 +5378,7 @@ _021FBDBC:
 	adds r1, r1, #2
 	ldrh r1, [r4, r1]
 	movs r2, #0x64
-	bl ovy15_021FBD28
+	bl ov15_021FBD28
 	movs r1, #0x1a
 	lsls r1, r1, #6
 	strh r0, [r4, r1]
@@ -5401,7 +5401,7 @@ _021FBDEE:
 	adds r1, r1, #2
 	ldrh r1, [r4, r1]
 	movs r2, #0xa
-	bl ovy15_021FBD28
+	bl ov15_021FBD28
 	movs r1, #0x1a
 	lsls r1, r1, #6
 	strh r0, [r4, r1]
@@ -5424,7 +5424,7 @@ _021FBE20:
 	adds r1, r1, #2
 	ldrh r1, [r4, r1]
 	movs r2, #1
-	bl ovy15_021FBD28
+	bl ov15_021FBD28
 	movs r1, #0x1a
 	lsls r1, r1, #6
 	strh r0, [r4, r1]
@@ -5448,7 +5448,7 @@ _021FBE52:
 	movs r2, #0x63
 	ldrh r1, [r4, r1]
 	mvns r2, r2
-	bl ovy15_021FBD28
+	bl ov15_021FBD28
 	movs r1, #0x1a
 	lsls r1, r1, #6
 	strh r0, [r4, r1]
@@ -5472,7 +5472,7 @@ _021FBE86:
 	movs r2, #9
 	ldrh r1, [r4, r1]
 	mvns r2, r2
-	bl ovy15_021FBD28
+	bl ov15_021FBD28
 	movs r1, #0x1a
 	lsls r1, r1, #6
 	strh r0, [r4, r1]
@@ -5496,7 +5496,7 @@ _021FBEBA:
 	movs r2, #0
 	ldrh r1, [r4, r1]
 	mvns r2, r2
-	bl ovy15_021FBD28
+	bl ov15_021FBD28
 	movs r1, #0x1a
 	lsls r1, r1, #6
 	strh r0, [r4, r1]
@@ -5557,7 +5557,7 @@ _021FBF2E: @ jump table
 _021FBF38:
 	adds r0, r4, #0
 	movs r1, #3
-	bl ovy15_021FEDEC
+	bl ov15_021FEDEC
 	ldr r0, _021FBF90 @ =0x00000637
 	bl FUN_0200604C
 	add sp, #4
@@ -5572,7 +5572,7 @@ _021FBF4C:
 	movs r1, #0x26
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _021FBF66:
@@ -5585,7 +5585,7 @@ _021FBF66:
 	movs r1, #0x13
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _021FBF82:
@@ -5597,39 +5597,39 @@ _021FBF88: .4byte 0x00000682
 _021FBF8C: .4byte 0x021D110C
 _021FBF90: .4byte 0x00000637
 _021FBF94: .4byte 0x000005DC
-	thumb_func_end ovy15_021FBD50
+	thumb_func_end ov15_021FBD50
 
-	thumb_func_start ovy15_021FBF98
-ovy15_021FBF98: @ 0x021FBF98
+	thumb_func_start ov15_021FBF98
+ov15_021FBF98: @ 0x021FBF98
 	push {r4, lr}
 	adds r4, r0, #0
-	bl ovy15_021FEEA4
+	bl ov15_021FEEA4
 	adds r0, r4, #0
-	bl ovy15_02200428
+	bl ov15_02200428
 	adds r0, r4, #0
-	bl ovy15_021FFF24
+	bl ov15_021FFF24
 	adds r0, r4, #0
-	bl ovy15_021FF834
+	bl ov15_021FF834
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	movs r0, #8
 	pop {r4, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FBF98
+	thumb_func_end ov15_021FBF98
 
-	thumb_func_start ovy15_021FBFC0
-ovy15_021FBFC0: @ 0x021FBFC0
+	thumb_func_start ov15_021FBFC0
+ov15_021FBFC0: @ 0x021FBFC0
 	push {r4, lr}
 	adds r4, r0, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r4, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	adds r0, r4, #0
-	bl ovy15_02200428
+	bl ov15_02200428
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FF29C
+	bl ov15_021FF29C
 	movs r0, #0xa7
 	lsls r0, r0, #2
 	ldr r0, [r4, r0]
@@ -5642,10 +5642,10 @@ ovy15_021FBFC0: @ 0x021FBFC0
 	bl FUN_0200DC4C
 	movs r0, #1
 	pop {r4, pc}
-	thumb_func_end ovy15_021FBFC0
+	thumb_func_end ov15_021FBFC0
 
-	thumb_func_start ovy15_021FBFF8
-ovy15_021FBFF8: @ 0x021FBFF8
+	thumb_func_start ov15_021FBFF8
+ov15_021FBFF8: @ 0x021FBFF8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _021FC018 @ =0x00000616
@@ -5654,7 +5654,7 @@ ovy15_021FBFF8: @ 0x021FBFF8
 	cmp r0, #0
 	bne _021FC012
 	adds r0, r4, #0
-	bl ovy15_021FF004
+	bl ov15_021FF004
 	movs r0, #9
 	pop {r4, pc}
 _021FC012:
@@ -5662,10 +5662,10 @@ _021FC012:
 	pop {r4, pc}
 	nop
 _021FC018: .4byte 0x00000616
-	thumb_func_end ovy15_021FBFF8
+	thumb_func_end ov15_021FBFF8
 
-	thumb_func_start ovy15_021FC01C
-ovy15_021FC01C: @ 0x021FC01C
+	thumb_func_start ov15_021FC01C
+ov15_021FC01C: @ 0x021FC01C
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -5682,7 +5682,7 @@ ovy15_021FC01C: @ 0x021FC01C
 	b _021FC12E
 _021FC03A:
 	adds r0, r5, #0
-	bl ovy15_021FF058
+	bl ov15_021FF058
 	movs r0, #0x2f
 	lsls r0, r0, #4
 	ldr r0, [r5, r0]
@@ -5742,7 +5742,7 @@ _021FC082:
 	bl FUN_0201D978
 	adds r0, r5, #0
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FC13C @ =0x00000616
 	add sp, #8
 	strb r0, [r5, r1]
@@ -5750,7 +5750,7 @@ _021FC082:
 	pop {r3, r4, r5, pc}
 _021FC0CE:
 	adds r0, r5, #0
-	bl ovy15_021FF058
+	bl ov15_021FF058
 	adds r0, r5, #0
 	adds r0, #0x34
 	movs r1, #1
@@ -5764,7 +5764,7 @@ _021FC0CE:
 	lsls r0, r0, #2
 	ldr r4, [r5, r0]
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r4, #4
 	adds r4, #0x64
 	adds r2, r0, #0
@@ -5774,16 +5774,16 @@ _021FC0CE:
 	muls r3, r4, r3
 	adds r1, r1, r3
 	movs r3, #0
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r5, #0
-	bl ovy15_021FE868
+	bl ov15_021FE868
 	adds r0, r5, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r5, #0
 	movs r1, #1
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	adds r0, r5, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	add sp, #8
 	movs r0, #1
 	pop {r3, r4, r5, pc}
@@ -5795,10 +5795,10 @@ _021FC12E:
 _021FC134: .4byte 0x00000804
 _021FC138: .4byte 0x000005E4
 _021FC13C: .4byte 0x00000616
-	thumb_func_end ovy15_021FC01C
+	thumb_func_end ov15_021FC01C
 
-	thumb_func_start ovy15_021FC140
-ovy15_021FC140: @ 0x021FC140
+	thumb_func_start ov15_021FC140
+ov15_021FC140: @ 0x021FC140
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _021FC160 @ =0x00000616
@@ -5816,10 +5816,10 @@ _021FC154:
 	pop {r4, pc}
 	.align 2, 0
 _021FC160: .4byte 0x00000616
-	thumb_func_end ovy15_021FC140
+	thumb_func_end ov15_021FC140
 
-	thumb_func_start ovy15_021FC164
-ovy15_021FC164: @ 0x021FC164
+	thumb_func_start ov15_021FC164
+ov15_021FC164: @ 0x021FC164
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, _021FC218 @ =0x00000616
@@ -5867,12 +5867,12 @@ _021FC186:
 	ldrh r3, [r5, r3]
 	bl FUN_02078480
 	adds r0, r5, #0
-	bl ovy15_021F9F08
+	bl ov15_021F9F08
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r4, [r5, r0]
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r4, #4
 	adds r4, #0x64
 	adds r2, r0, #0
@@ -5882,18 +5882,18 @@ _021FC186:
 	muls r3, r4, r3
 	adds r1, r1, r3
 	movs r3, #1
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r5, #0
-	bl ovy15_021FE868
+	bl ov15_021FE868
 	adds r0, r5, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r5, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	adds r0, r5, #0
-	bl ovy15_021FA170
+	bl ov15_021FA170
 	adds r0, r5, #0
 	movs r1, #1
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	movs r0, #1
 	pop {r3, r4, r5, pc}
 _021FC214:
@@ -5903,10 +5903,10 @@ _021FC214:
 _021FC218: .4byte 0x00000616
 _021FC21C: .4byte 0x021D110C
 _021FC220: .4byte 0x021D114C
-	thumb_func_end ovy15_021FC164
+	thumb_func_end ov15_021FC164
 
-	thumb_func_start ovy15_021FC224
-ovy15_021FC224: @ 0x021FC224
+	thumb_func_start ov15_021FC224
+ov15_021FC224: @ 0x021FC224
 	push {r3, r4, r5, lr}
 	movs r1, #0x8e
 	adds r5, r0, #0
@@ -5940,30 +5940,30 @@ ovy15_021FC224: @ 0x021FC224
 	bl FUN_02026380
 	adds r0, r5, #0
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	adds r0, r5, #0
-	bl ovy15_02200294
+	bl ov15_02200294
 	adds r0, r5, #0
-	bl ovy15_021FFF24
+	bl ov15_021FFF24
 	adds r0, r5, #0
 	movs r1, #0
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	movs r0, #0x19
 	pop {r3, r4, r5, pc}
 _021FC28C:
 	adds r0, r5, #0
-	bl ovy15_02200294
+	bl ov15_02200294
 	adds r0, r5, #0
-	bl ovy15_021FF560
+	bl ov15_021FF560
 	movs r0, #0x61
 	lsls r0, r0, #2
 	adds r0, r5, r0
-	bl ovy15_021FF7AC
+	bl ov15_021FF7AC
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r4, [r5, r0]
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r4, #4
 	adds r4, #0x64
 	adds r2, r0, #0
@@ -5973,21 +5973,21 @@ _021FC28C:
 	muls r3, r4, r3
 	adds r1, r1, r3
 	movs r3, #0
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r5, #0
-	bl ovy15_021FE868
+	bl ov15_021FE868
 	adds r0, r5, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r5, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	movs r0, #1
 	pop {r3, r4, r5, pc}
 	nop
 _021FC2DC: .4byte 0x000005E4
-	thumb_func_end ovy15_021FC224
+	thumb_func_end ov15_021FC224
 
-	thumb_func_start ovy15_021FC2E0
-ovy15_021FC2E0: @ 0x021FC2E0
+	thumb_func_start ov15_021FC2E0
+ov15_021FC2E0: @ 0x021FC2E0
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, _021FC370 @ =0x00000616
@@ -6013,18 +6013,18 @@ _021FC302:
 	adds r0, #0x34
 	bl FUN_0201D8E4
 	adds r0, r5, #0
-	bl ovy15_02200294
+	bl ov15_02200294
 	adds r0, r5, #0
-	bl ovy15_021FF560
+	bl ov15_021FF560
 	movs r0, #0x61
 	lsls r0, r0, #2
 	adds r0, r5, r0
-	bl ovy15_021FF7AC
+	bl ov15_021FF7AC
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r4, [r5, r0]
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r4, #4
 	adds r4, #0x64
 	adds r2, r0, #0
@@ -6034,16 +6034,16 @@ _021FC302:
 	muls r3, r4, r3
 	adds r1, r1, r3
 	movs r3, #0
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r5, #0
-	bl ovy15_021FE868
+	bl ov15_021FE868
 	adds r0, r5, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r5, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	adds r0, r5, #0
 	movs r1, #1
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	movs r0, #1
 	pop {r3, r4, r5, pc}
 _021FC36A:
@@ -6053,10 +6053,10 @@ _021FC36A:
 _021FC370: .4byte 0x00000616
 _021FC374: .4byte 0x021D110C
 _021FC378: .4byte 0x021D114C
-	thumb_func_end ovy15_021FC2E0
+	thumb_func_end ov15_021FC2E0
 
-	thumb_func_start ovy15_021FC37C
-ovy15_021FC37C: @ 0x021FC37C
+	thumb_func_start ov15_021FC37C
+ov15_021FC37C: @ 0x021FC37C
 	push {r3, r4, r5, lr}
 	movs r1, #0x8e
 	adds r5, r0, #0
@@ -6068,18 +6068,18 @@ ovy15_021FC37C: @ 0x021FC37C
 	ldrh r1, [r1]
 	bl FUN_02078208
 	adds r0, r5, #0
-	bl ovy15_02200294
+	bl ov15_02200294
 	adds r0, r5, #0
-	bl ovy15_021FF560
+	bl ov15_021FF560
 	movs r0, #0x61
 	lsls r0, r0, #2
 	adds r0, r5, r0
-	bl ovy15_021FF7AC
+	bl ov15_021FF7AC
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r4, [r5, r0]
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r4, #4
 	adds r4, #0x64
 	adds r2, r0, #0
@@ -6089,36 +6089,36 @@ ovy15_021FC37C: @ 0x021FC37C
 	muls r3, r4, r3
 	adds r1, r1, r3
 	movs r3, #0
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r5, #0
-	bl ovy15_021FE868
+	bl ov15_021FE868
 	adds r0, r5, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r5, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	movs r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ovy15_021FC37C
+	thumb_func_end ov15_021FC37C
 
-	thumb_func_start ovy15_021FC3E0
-ovy15_021FC3E0: @ 0x021FC3E0
+	thumb_func_start ov15_021FC3E0
+ov15_021FC3E0: @ 0x021FC3E0
 	push {r3, lr}
-	bl ovy15_021FAC48
+	bl ov15_021FAC48
 	movs r0, #3
 	pop {r3, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FC3E0
+	thumb_func_end ov15_021FC3E0
 
-	thumb_func_start ovy15_021FC3EC
-ovy15_021FC3EC: @ 0x021FC3EC
+	thumb_func_start ov15_021FC3EC
+ov15_021FC3EC: @ 0x021FC3EC
 	push {r4, lr}
 	adds r4, r0, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	adds r0, r4, #0
-	bl ovy15_021FFF24
+	bl ov15_021FFF24
 	movs r0, #1
 	movs r1, #6
 	bl FUN_020880CC
@@ -6131,10 +6131,10 @@ ovy15_021FC3EC: @ 0x021FC3EC
 	movs r0, #0x25
 	pop {r4, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FC3EC
+	thumb_func_end ov15_021FC3EC
 
-	thumb_func_start ovy15_021FC41C
-ovy15_021FC41C: @ 0x021FC41C
+	thumb_func_start ov15_021FC41C
+ov15_021FC41C: @ 0x021FC41C
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r1, _021FC70C @ =0x021D110C
@@ -6182,7 +6182,7 @@ _021FC454:
 	add r2, sp, #0xc
 	adds r3, r4, #0
 	str r4, [sp, #4]
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	cmp r0, #1
 	bne _021FC4D6
 	add sp, #0x10
@@ -6196,7 +6196,7 @@ _021FC484:
 	cmp r1, #8
 	bge _021FC4A4
 	subs r2, #0x21
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	ldr r1, _021FC710 @ =0x00000644
 	ldr r2, [r5, r1]
 	cmp r2, r0
@@ -6227,7 +6227,7 @@ _021FC4AC:
 	adds r2, #3
 	adds r3, r4, #0
 	str r4, [sp, #4]
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	cmp r0, #1
 	beq _021FC4D8
 _021FC4D6:
@@ -6244,7 +6244,7 @@ _021FC4DE:
 	cmp r1, #8
 	bge _021FC4FE
 	movs r2, #1
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	ldr r1, _021FC710 @ =0x00000644
 	ldr r2, [r5, r1]
 	cmp r2, r0
@@ -6268,7 +6268,7 @@ _021FC506:
 	subs r2, #0x11
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -6278,7 +6278,7 @@ _021FC506:
 	adds r0, r5, #0
 	adds r2, #2
 	movs r3, #1
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	add sp, #0x10
 	movs r0, #0xe
 	pop {r4, r5, r6, pc}
@@ -6293,7 +6293,7 @@ _021FC53A:
 	movs r2, #1
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -6303,7 +6303,7 @@ _021FC53A:
 	adds r0, r5, #0
 	adds r2, #1
 	movs r3, #1
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	add sp, #0x10
 	movs r0, #0xe
 	pop {r4, r5, r6, pc}
@@ -6326,19 +6326,19 @@ _021FC582:
 	ldr r1, _021FC710 @ =0x00000644
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	ldr r1, _021FC710 @ =0x00000644
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 	adds r0, r5, #0
-	bl ovy15_021FA170
+	bl ov15_021FA170
 _021FC5A6:
 	movs r1, #0
 	add r0, sp, #8
 	strb r1, [r0]
 	adds r0, r5, #0
-	bl ovy15_021FAC2C
+	bl ov15_021FAC2C
 	adds r4, r0, #0
 	movs r0, #0
 	mvns r0, r0
@@ -6346,14 +6346,14 @@ _021FC5A6:
 	beq _021FC630
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl ovy15_021FA104
+	bl ov15_021FA104
 	cmp r0, #0
 	beq _021FC608
 	cmp r4, #8
 	bhs _021FC5EA
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl ovy15_021FA68C
+	bl ov15_021FA68C
 	movs r1, #0
 	mvns r1, r1
 	cmp r0, r1
@@ -6362,14 +6362,14 @@ _021FC5A6:
 	adds r0, r5, #0
 	str r4, [r5, r1]
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	b _021FC608
 _021FC5EA:
 	ldr r1, _021FC710 @ =0x00000644
 	adds r0, r5, #0
 	str r4, [r5, r1]
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	ldr r0, _021FC710 @ =0x00000644
 	ldr r1, [r5, r0]
 	cmp r1, #8
@@ -6377,7 +6377,7 @@ _021FC5EA:
 	cmp r1, #0xd
 	bgt _021FC608
 	adds r0, r5, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FC608:
 	movs r0, #2
 	str r0, [sp]
@@ -6387,7 +6387,7 @@ _021FC608:
 	adds r1, r4, #0
 	add r2, sp, #8
 	movs r3, #0
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	cmp r0, #1
 	beq _021FC6B4
 	movs r1, #0x8d
@@ -6412,7 +6412,7 @@ _021FC630:
 	ldr r1, [r5, r1]
 	adds r0, r5, #0
 	add r2, sp, #8
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	adds r4, r0, #0
 	ldr r0, _021FC710 @ =0x00000644
 	ldr r1, [r5, r0]
@@ -6421,7 +6421,7 @@ _021FC630:
 	cmp r1, #0xd
 	bgt _021FC662
 	adds r0, r5, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FC662:
 	cmp r4, #1
 	beq _021FC6B4
@@ -6444,7 +6444,7 @@ _021FC678:
 	movs r1, #0x10
 	add r2, sp, #8
 	str r3, [sp, #4]
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	adds r4, r0, #0
 	movs r0, #0x8d
 	lsls r0, r0, #2
@@ -6459,7 +6459,7 @@ _021FC678:
 	cmp r1, #0xd
 	bgt _021FC6AE
 	adds r0, r5, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FC6AE:
 	add sp, #0x10
 	adds r0, r4, #0
@@ -6525,7 +6525,7 @@ _021FC72C:
 	bl FUN_02026380
 	adds r0, r5, #0
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FC780 @ =0x00000616
 	add sp, #0x10
 	strb r0, [r5, r1]
@@ -6548,7 +6548,7 @@ _021FC75C:
 	movs r1, #0x14
 	movs r2, #0x29
 	movs r3, #0x24
-	bl ovy15_021FD810
+	bl ov15_021FD810
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FC778:
@@ -6558,10 +6558,10 @@ _021FC77A:
 	pop {r4, r5, r6, pc}
 	nop
 _021FC780: .4byte 0x00000616
-	thumb_func_end ovy15_021FC41C
+	thumb_func_end ov15_021FC41C
 
-	thumb_func_start ovy15_021FC784
-ovy15_021FC784: @ 0x021FC784
+	thumb_func_start ov15_021FC784
+ov15_021FC784: @ 0x021FC784
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _021FC7E0 @ =0x00000616
@@ -6600,7 +6600,7 @@ _021FC7A6:
 	ldrsh r1, [r1, r2]
 	subs r2, #0xb
 	movs r3, #0
-	bl ovy15_021FF364
+	bl ov15_021FF364
 	movs r0, #0xe
 	pop {r4, pc}
 _021FC7DC:
@@ -6610,10 +6610,10 @@ _021FC7DC:
 _021FC7E0: .4byte 0x00000616
 _021FC7E4: .4byte 0x021D110C
 _021FC7E8: .4byte 0x021D114C
-	thumb_func_end ovy15_021FC784
+	thumb_func_end ov15_021FC784
 
-	thumb_func_start ovy15_021FC7EC
-ovy15_021FC7EC: @ 0x021FC7EC
+	thumb_func_start ov15_021FC7EC
+ov15_021FC7EC: @ 0x021FC7EC
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r1, _021FCAB0 @ =0x021D110C
@@ -6661,7 +6661,7 @@ _021FC824:
 	add r2, sp, #0xc
 	movs r3, #1
 	str r4, [sp, #4]
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	cmp r0, #1
 	bne _021FC8A6
 	add sp, #0x10
@@ -6675,7 +6675,7 @@ _021FC854:
 	cmp r1, #8
 	bge _021FC874
 	subs r2, #0x21
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	ldr r1, _021FCAB4 @ =0x00000644
 	ldr r2, [r5, r1]
 	cmp r2, r0
@@ -6706,7 +6706,7 @@ _021FC87C:
 	adds r2, #3
 	movs r3, #1
 	str r4, [sp, #4]
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	cmp r0, #1
 	beq _021FC8A8
 _021FC8A6:
@@ -6726,7 +6726,7 @@ _021FC8B4:
 	cmp r1, #8
 	bge _021FC8D0
 	movs r2, #1
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	ldr r1, _021FCAB4 @ =0x00000644
 	ldr r2, [r5, r1]
 	cmp r2, r0
@@ -6756,12 +6756,12 @@ _021FC8D8:
 	subs r2, #0x11
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	ldr r1, _021FCAB4 @ =0x00000644
 	str r0, [r5, r1]
 	ldr r1, [r5, r1]
 	adds r0, r5, #0
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	movs r0, #4
 	str r0, [sp]
 	adds r0, r4, #0
@@ -6772,7 +6772,7 @@ _021FC8D8:
 	adds r0, r5, #0
 	adds r2, #2
 	movs r3, #1
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	b _021FC94C
 _021FC922:
 	movs r1, #0x8d
@@ -6783,7 +6783,7 @@ _021FC922:
 	ldrb r1, [r1]
 	adds r0, r5, #0
 	mvns r2, r2
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	adds r1, r0, #0
 	movs r0, #4
 	str r0, [sp]
@@ -6793,7 +6793,7 @@ _021FC922:
 	adds r0, r5, #0
 	adds r2, #2
 	movs r3, #1
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 _021FC94C:
 	add sp, #0x10
 	movs r0, #0x10
@@ -6815,12 +6815,12 @@ _021FC952:
 	movs r2, #1
 	adds r1, #0x64
 	ldrb r1, [r1]
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	ldr r1, _021FCAB4 @ =0x00000644
 	str r0, [r5, r1]
 	ldr r1, [r5, r1]
 	adds r0, r5, #0
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	movs r0, #4
 	str r0, [sp]
 	adds r0, r4, #0
@@ -6831,7 +6831,7 @@ _021FC952:
 	adds r0, r5, #0
 	adds r2, #1
 	movs r3, #1
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	b _021FC9C4
 _021FC99C:
 	movs r1, #0x8d
@@ -6841,7 +6841,7 @@ _021FC99C:
 	adds r1, #0x64
 	ldrb r1, [r1]
 	movs r2, #1
-	bl ovy15_021FA6C0
+	bl ov15_021FA6C0
 	adds r1, r0, #0
 	movs r0, #4
 	str r0, [sp]
@@ -6851,7 +6851,7 @@ _021FC99C:
 	adds r0, r5, #0
 	adds r2, #1
 	movs r3, #1
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 _021FC9C4:
 	add sp, #0x10
 	movs r0, #0x10
@@ -6875,19 +6875,19 @@ _021FC9DE:
 	ldr r1, _021FCAB4 @ =0x00000644
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	ldr r1, _021FCAB4 @ =0x00000644
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 	adds r0, r5, #0
-	bl ovy15_021FA170
+	bl ov15_021FA170
 _021FCA02:
 	movs r1, #0
 	add r0, sp, #8
 	strb r1, [r0]
 	adds r0, r5, #0
-	bl ovy15_021FAC2C
+	bl ov15_021FAC2C
 	adds r4, r0, #0
 	movs r0, #0
 	mvns r0, r0
@@ -6895,14 +6895,14 @@ _021FCA02:
 	beq _021FCA8A
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl ovy15_021FA104
+	bl ov15_021FA104
 	cmp r0, #0
 	beq _021FCA64
 	cmp r4, #8
 	bhs _021FCA46
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl ovy15_021FA68C
+	bl ov15_021FA68C
 	movs r1, #0
 	mvns r1, r1
 	cmp r0, r1
@@ -6911,14 +6911,14 @@ _021FCA02:
 	adds r0, r5, #0
 	str r4, [r5, r1]
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	b _021FCA64
 _021FCA46:
 	ldr r1, _021FCAB4 @ =0x00000644
 	adds r0, r5, #0
 	str r4, [r5, r1]
 	ldr r1, [r5, r1]
-	bl ovy15_021FFECC
+	bl ov15_021FFECC
 	ldr r0, _021FCAB4 @ =0x00000644
 	ldr r1, [r5, r0]
 	cmp r1, #8
@@ -6926,7 +6926,7 @@ _021FCA46:
 	cmp r1, #0xd
 	bgt _021FCA64
 	adds r0, r5, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FCA64:
 	movs r0, #4
 	str r0, [sp]
@@ -6935,7 +6935,7 @@ _021FCA64:
 	adds r1, r4, #0
 	add r2, sp, #8
 	str r3, [sp, #4]
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	cmp r0, #1
 	beq _021FCB40
 	movs r1, #0x8d
@@ -6961,7 +6961,7 @@ _021FCA8A:
 	adds r0, r5, #0
 	ldr r1, [r5, r1]
 	add r2, sp, #8
-	bl ovy15_021FA73C
+	bl ov15_021FA73C
 	adds r4, r0, #0
 	ldr r0, _021FCAB4 @ =0x00000644
 	b _021FCACC
@@ -6980,7 +6980,7 @@ _021FCACC:
 	cmp r1, #0xd
 	bgt _021FCADC
 	adds r0, r5, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FCADC:
 	cmp r4, #1
 	beq _021FCB40
@@ -7008,7 +7008,7 @@ _021FCAF2:
 	adds r0, #0x68
 	strh r2, [r0]
 	adds r0, r5, #0
-	bl ovy15_021FD774
+	bl ov15_021FD774
 	movs r0, #0x25
 	lsls r0, r0, #6
 	bl FUN_0200604C
@@ -7019,7 +7019,7 @@ _021FCAF2:
 	cmp r1, #0xd
 	bgt _021FCB2C
 	adds r0, r5, #0
-	bl ovy15_021FA0E4
+	bl ov15_021FA0E4
 _021FCB2C:
 	movs r0, #0x24
 	str r0, [sp]
@@ -7027,7 +7027,7 @@ _021FCB2C:
 	movs r1, #0x13
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FCB40:
@@ -7039,7 +7039,7 @@ _021FCB40:
 	movs r1, #0x14
 	movs r2, #0x29
 	movs r3, #0x22
-	bl ovy15_021FD810
+	bl ov15_021FD810
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FCB58:
@@ -7049,10 +7049,10 @@ _021FCB5A:
 	pop {r4, r5, r6, pc}
 	nop
 _021FCB60: .4byte 0x00000644
-	thumb_func_end ovy15_021FC7EC
+	thumb_func_end ov15_021FC7EC
 
-	thumb_func_start ovy15_021FCB64
-ovy15_021FCB64: @ 0x021FCB64
+	thumb_func_start ov15_021FCB64
+ov15_021FCB64: @ 0x021FCB64
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	movs r1, #0x8d
@@ -7068,7 +7068,7 @@ ovy15_021FCB64: @ 0x021FCB64
 	movs r2, #0
 	movs r1, #4
 	adds r3, r2, #0
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	movs r0, #0x1a
 	movs r1, #1
 	lsls r0, r0, #6
@@ -7087,7 +7087,7 @@ ovy15_021FCB64: @ 0x021FCB64
 	str r1, [r4, r0]
 	ldr r0, [r4]
 	movs r1, #5
-	bl ovy15_021FD43C
+	bl ov15_021FD43C
 	ldr r0, [r4]
 	movs r1, #5
 	bl FUN_0201EFBC
@@ -7103,22 +7103,22 @@ ovy15_021FCB64: @ 0x021FCB64
 	bl FUN_0200DCE8
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_02200458
+	bl ov15_02200458
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	ldr r2, _021FCD74 @ =0x00000644
 	movs r1, #6
 	ldr r2, [r4, r2]
 	ldrsh r1, [r5, r1]
 	adds r0, r4, #0
 	subs r2, #8
-	bl ovy15_021FF4EC
+	bl ov15_021FF4EC
 	ldr r1, _021FCD74 @ =0x00000644
 	adds r0, r4, #0
 	ldr r1, [r4, r1]
 	subs r1, #8
-	bl ovy15_022002B4
+	bl ov15_022002B4
 	movs r2, #0x8d
 	lsls r2, r2, #2
 	ldr r2, [r4, r2]
@@ -7126,9 +7126,9 @@ ovy15_021FCB64: @ 0x021FCB64
 	adds r2, #0x66
 	ldrh r2, [r2]
 	adds r1, r4, #4
-	bl ovy15_021FECA0
+	bl ov15_021FECA0
 	adds r0, r4, #0
-	bl ovy15_021FFF24
+	bl ov15_021FFF24
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r0, [r4, r0]
@@ -7170,7 +7170,7 @@ _021FCC32:
 	bl FUN_02026380
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FCD7C @ =0x00000616
 	add sp, #8
 	strb r0, [r4, r1]
@@ -7179,12 +7179,12 @@ _021FCC32:
 _021FCC7C:
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FF0FC
+	bl ov15_021FF0FC
 	adds r0, r4, #0
-	bl ovy15_021FF068
+	bl ov15_021FF068
 	adds r0, r4, #0
 	movs r1, #2
-	bl ovy15_021FEDEC
+	bl ov15_021FEDEC
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r2, [r4, r0]
@@ -7234,7 +7234,7 @@ _021FCC7C:
 	bl FUN_02026380
 	adds r0, r4, #0
 	movs r1, #1
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FCD7C @ =0x00000616
 	add sp, #8
 	strb r0, [r4, r1]
@@ -7279,7 +7279,7 @@ _021FCD0C:
 	bl FUN_02026380
 	adds r0, r4, #0
 	movs r1, #1
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FCD7C @ =0x00000616
 	strb r0, [r4, r1]
 	movs r0, #0x11
@@ -7290,10 +7290,10 @@ _021FCD70: .4byte 0x00000684
 _021FCD74: .4byte 0x00000644
 _021FCD78: .4byte 0x000005E4
 _021FCD7C: .4byte 0x00000616
-	thumb_func_end ovy15_021FCB64
+	thumb_func_end ov15_021FCB64
 
-	thumb_func_start ovy15_021FCD80
-ovy15_021FCD80: @ 0x021FCD80
+	thumb_func_start ov15_021FCD80
+ov15_021FCD80: @ 0x021FCD80
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _021FCDDC @ =0x00000616
@@ -7312,23 +7312,23 @@ _021FCD9C:
 	adds r0, r4, #0
 	movs r1, #4
 	adds r3, r2, #0
-	bl ovy15_021FD574
+	bl ov15_021FD574
 	ldr r2, _021FCDE0 @ =0x00000682
 	adds r0, r4, #0
 	ldrh r2, [r4, r2]
 	movs r1, #2
-	bl ovy15_02200300
+	bl ov15_02200300
 	adds r0, r4, #0
-	bl ovy15_021FF7FC
-	adds r0, r4, #0
-	movs r1, #1
-	bl ovy15_021FF29C
+	bl ov15_021FF7FC
 	adds r0, r4, #0
 	movs r1, #1
-	bl ovy15_022004DC
+	bl ov15_021FF29C
+	adds r0, r4, #0
+	movs r1, #1
+	bl ov15_022004DC
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FFFDC
+	bl ov15_021FFFDC
 	movs r0, #0x12
 	pop {r4, pc}
 _021FCDD6:
@@ -7337,16 +7337,16 @@ _021FCDD6:
 	nop
 _021FCDDC: .4byte 0x00000616
 _021FCDE0: .4byte 0x00000682
-	thumb_func_end ovy15_021FCD80
+	thumb_func_end ov15_021FCD80
 
-	thumb_func_start ovy15_021FCDE4
-ovy15_021FCDE4: @ 0x021FCDE4
+	thumb_func_start ov15_021FCDE4
+ov15_021FCDE4: @ 0x021FCDE4
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	movs r5, #0
 	movs r1, #4
 	adds r4, r0, #0
-	bl ovy15_021FAC2C
+	bl ov15_021FAC2C
 	adds r6, r0, #0
 	subs r0, r5, #1
 	cmp r6, r0
@@ -7355,7 +7355,7 @@ ovy15_021FCDE4: @ 0x021FCDE4
 _021FCDFC:
 	ldr r0, _021FCFB8 @ =0x00000682
 	ldrh r0, [r4, r0]
-	bl ovy15_022002EC
+	bl ov15_022002EC
 	cmp r0, #2
 	bne _021FCE14
 	cmp r6, #0
@@ -7390,7 +7390,7 @@ _021FCE32:
 	adds r1, r1, #2
 	ldrh r1, [r4, r1]
 	movs r2, #0xa
-	bl ovy15_021FBD28
+	bl ov15_021FBD28
 	movs r1, #0x1a
 	lsls r1, r1, #6
 	strh r0, [r4, r1]
@@ -7413,7 +7413,7 @@ _021FCE64:
 	adds r1, r1, #2
 	ldrh r1, [r4, r1]
 	movs r2, #1
-	bl ovy15_021FBD28
+	bl ov15_021FBD28
 	movs r1, #0x1a
 	lsls r1, r1, #6
 	strh r0, [r4, r1]
@@ -7437,7 +7437,7 @@ _021FCE96:
 	movs r2, #9
 	ldrh r1, [r4, r1]
 	mvns r2, r2
-	bl ovy15_021FBD28
+	bl ov15_021FBD28
 	movs r1, #0x1a
 	lsls r1, r1, #6
 	strh r0, [r4, r1]
@@ -7461,7 +7461,7 @@ _021FCECA:
 	movs r2, #0
 	ldrh r1, [r4, r1]
 	mvns r2, r2
-	bl ovy15_021FBD28
+	bl ov15_021FBD28
 	movs r1, #0x1a
 	lsls r1, r1, #6
 	strh r0, [r4, r1]
@@ -7521,10 +7521,10 @@ _021FCF3E: @ jump table
 	.2byte _021FCF96 - _021FCF3E - 2 @ case 4
 _021FCF48:
 	adds r0, r4, #0
-	bl ovy15_021FF068
+	bl ov15_021FF068
 	adds r0, r4, #0
 	movs r1, #2
-	bl ovy15_021FEDEC
+	bl ov15_021FEDEC
 	ldr r0, _021FCFC0 @ =0x00000637
 	bl FUN_0200604C
 	add sp, #4
@@ -7532,10 +7532,10 @@ _021FCF48:
 	pop {r3, r4, r5, r6, pc}
 _021FCF62:
 	adds r0, r4, #0
-	bl ovy15_021FF068
+	bl ov15_021FF068
 	adds r0, r4, #0
 	movs r1, #2
-	bl ovy15_021FEDEC
+	bl ov15_021FEDEC
 	ldr r0, _021FCFC0 @ =0x00000637
 	bl FUN_0200604C
 	add sp, #4
@@ -7550,7 +7550,7 @@ _021FCF7C:
 	movs r1, #0x26
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _021FCF96:
@@ -7563,7 +7563,7 @@ _021FCF96:
 	movs r1, #0x13
 	movs r2, #9
 	movs r3, #8
-	bl ovy15_021FD7D0
+	bl ov15_021FD7D0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _021FCFB2:
@@ -7575,10 +7575,10 @@ _021FCFB8: .4byte 0x00000682
 _021FCFBC: .4byte 0x021D110C
 _021FCFC0: .4byte 0x00000637
 _021FCFC4: .4byte 0x000005DC
-	thumb_func_end ovy15_021FCDE4
+	thumb_func_end ov15_021FCDE4
 
-	thumb_func_start ovy15_021FCFC8
-ovy15_021FCFC8: @ 0x021FCFC8
+	thumb_func_start ov15_021FCFC8
+ov15_021FCFC8: @ 0x021FCFC8
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -7586,7 +7586,7 @@ ovy15_021FCFC8: @ 0x021FCFC8
 	movs r1, #1
 	bl FUN_0200E5D4
 	adds r0, r5, #0
-	bl ovy15_021FF834
+	bl ov15_021FF834
 	adds r0, r5, #0
 	adds r0, #0x34
 	movs r1, #0xf
@@ -7623,26 +7623,26 @@ ovy15_021FCFC8: @ 0x021FCFC8
 	bl FUN_02026380
 	adds r0, r5, #0
 	movs r1, #1
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FD054 @ =0x00000616
 	strb r0, [r5, r1]
 	adds r0, r5, #0
-	bl ovy15_02200428
+	bl ov15_02200428
 	adds r0, r5, #0
-	bl ovy15_021FFF24
+	bl ov15_021FFF24
 	adds r0, r5, #0
 	movs r1, #0
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	movs r0, #0x15
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _021FD050: .4byte 0x000005E4
 _021FD054: .4byte 0x00000616
-	thumb_func_end ovy15_021FCFC8
+	thumb_func_end ov15_021FCFC8
 
-	thumb_func_start ovy15_021FD058
-ovy15_021FD058: @ 0x021FD058
+	thumb_func_start ov15_021FD058
+ov15_021FD058: @ 0x021FD058
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, _021FD0E4 @ =0x00000684
@@ -7667,14 +7667,14 @@ ovy15_021FD058: @ 0x021FD058
 	adds r0, r5, #4
 	bl FUN_0201D5C8
 	adds r0, r5, #0
-	bl ovy15_02200428
+	bl ov15_02200428
 	adds r0, r5, #0
-	bl ovy15_021FFF24
+	bl ov15_021FFF24
 	movs r0, #0x8d
 	lsls r0, r0, #2
 	ldr r4, [r5, r0]
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r4, #4
 	adds r4, #0x64
 	adds r2, r0, #0
@@ -7684,27 +7684,27 @@ ovy15_021FD058: @ 0x021FD058
 	muls r3, r4, r3
 	adds r1, r1, r3
 	movs r3, #0
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r5, #0
-	bl ovy15_021FE868
+	bl ov15_021FE868
 	adds r0, r5, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r5, #0
-	bl ovy15_021FB518
-	adds r0, r5, #0
-	movs r1, #1
-	bl ovy15_02200458
+	bl ov15_021FB518
 	adds r0, r5, #0
 	movs r1, #1
-	bl ovy15_021FD788
+	bl ov15_02200458
+	adds r0, r5, #0
+	movs r1, #1
+	bl ov15_021FD788
 	movs r0, #0x10
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _021FD0E4: .4byte 0x00000684
-	thumb_func_end ovy15_021FD058
+	thumb_func_end ov15_021FD058
 
-	thumb_func_start ovy15_021FD0E8
-ovy15_021FD0E8: @ 0x021FD0E8
+	thumb_func_start ov15_021FD0E8
+ov15_021FD0E8: @ 0x021FD0E8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _021FD108 @ =0x00000616
@@ -7713,7 +7713,7 @@ ovy15_021FD0E8: @ 0x021FD0E8
 	cmp r0, #0
 	bne _021FD102
 	adds r0, r4, #0
-	bl ovy15_021FF004
+	bl ov15_021FF004
 	movs r0, #0x16
 	pop {r4, pc}
 _021FD102:
@@ -7721,10 +7721,10 @@ _021FD102:
 	pop {r4, pc}
 	nop
 _021FD108: .4byte 0x00000616
-	thumb_func_end ovy15_021FD0E8
+	thumb_func_end ov15_021FD0E8
 
-	thumb_func_start ovy15_021FD10C
-ovy15_021FD10C: @ 0x021FD10C
+	thumb_func_start ov15_021FD10C
+ov15_021FD10C: @ 0x021FD10C
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	adds r4, r0, #0
@@ -7741,7 +7741,7 @@ ovy15_021FD10C: @ 0x021FD10C
 	b _021FD234
 _021FD12A:
 	adds r0, r4, #0
-	bl ovy15_021FF058
+	bl ov15_021FF058
 	movs r0, #0x2f
 	lsls r0, r0, #4
 	ldr r0, [r4, r0]
@@ -7800,7 +7800,7 @@ _021FD172:
 	bl FUN_02026380
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FD244 @ =0x00000616
 	add sp, #8
 	strb r0, [r4, r1]
@@ -7808,7 +7808,7 @@ _021FD172:
 	pop {r3, r4, r5, pc}
 _021FD1BA:
 	adds r0, r4, #0
-	bl ovy15_021FF058
+	bl ov15_021FF058
 	ldr r0, _021FD248 @ =0x00000684
 	movs r1, #0
 	str r1, [r4, r0]
@@ -7830,7 +7830,7 @@ _021FD1BA:
 	lsls r0, r0, #2
 	ldr r5, [r4, r0]
 	adds r0, r4, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r5, #4
 	adds r5, #0x64
 	adds r2, r0, #0
@@ -7840,19 +7840,19 @@ _021FD1BA:
 	muls r3, r5, r3
 	adds r1, r1, r3
 	movs r3, #0
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r4, #0
-	bl ovy15_021FE868
+	bl ov15_021FE868
 	adds r0, r4, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r4, #0
-	bl ovy15_021FB518
-	adds r0, r4, #0
-	movs r1, #1
-	bl ovy15_02200458
+	bl ov15_021FB518
 	adds r0, r4, #0
 	movs r1, #1
-	bl ovy15_021FD788
+	bl ov15_02200458
+	adds r0, r4, #0
+	movs r1, #1
+	bl ov15_021FD788
 	add sp, #8
 	movs r0, #0x10
 	pop {r3, r4, r5, pc}
@@ -7865,10 +7865,10 @@ _021FD23C: .4byte 0x00000804
 _021FD240: .4byte 0x000005E4
 _021FD244: .4byte 0x00000616
 _021FD248: .4byte 0x00000684
-	thumb_func_end ovy15_021FD10C
+	thumb_func_end ov15_021FD10C
 
-	thumb_func_start ovy15_021FD24C
-ovy15_021FD24C: @ 0x021FD24C
+	thumb_func_start ov15_021FD24C
+ov15_021FD24C: @ 0x021FD24C
 	push {r3, r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -7942,7 +7942,7 @@ _021FD2B4:
 	ldrh r3, [r4, r3]
 	bl FUN_02078480
 	adds r0, r4, #0
-	bl ovy15_021F9F08
+	bl ov15_021F9F08
 	adds r4, #0x34
 	adds r0, r4, #0
 	bl FUN_0201D5C8
@@ -7952,10 +7952,10 @@ _021FD2B4:
 	nop
 _021FD2F4: .4byte 0x00000616
 _021FD2F8: .4byte 0x00000643
-	thumb_func_end ovy15_021FD24C
+	thumb_func_end ov15_021FD24C
 
-	thumb_func_start ovy15_021FD2FC
-ovy15_021FD2FC: @ 0x021FD2FC
+	thumb_func_start ov15_021FD2FC
+ov15_021FD2FC: @ 0x021FD2FC
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, _021FD39C @ =0x00000616
@@ -7994,7 +7994,7 @@ _021FD31E:
 	lsls r0, r0, #2
 	ldr r4, [r5, r0]
 	adds r0, r5, #0
-	bl ovy15_021FA074
+	bl ov15_021FA074
 	adds r1, r4, #4
 	adds r4, #0x64
 	adds r2, r0, #0
@@ -8004,21 +8004,21 @@ _021FD31E:
 	muls r3, r4, r3
 	adds r1, r1, r3
 	movs r3, #1
-	bl ovy15_02200140
+	bl ov15_02200140
 	adds r0, r5, #0
-	bl ovy15_021FE868
+	bl ov15_021FE868
 	adds r0, r5, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r5, #0
-	bl ovy15_021FB518
+	bl ov15_021FB518
 	adds r0, r5, #0
-	bl ovy15_021FA170
-	adds r0, r5, #0
-	movs r1, #1
-	bl ovy15_02200458
+	bl ov15_021FA170
 	adds r0, r5, #0
 	movs r1, #1
-	bl ovy15_021FD788
+	bl ov15_02200458
+	adds r0, r5, #0
+	movs r1, #1
+	bl ov15_021FD788
 	movs r0, #0x10
 	pop {r3, r4, r5, pc}
 _021FD396:
@@ -8029,12 +8029,12 @@ _021FD39C: .4byte 0x00000616
 _021FD3A0: .4byte 0x021D110C
 _021FD3A4: .4byte 0x021D114C
 _021FD3A8: .4byte 0x00000684
-	thumb_func_end ovy15_021FD2FC
+	thumb_func_end ov15_021FD2FC
 
-	thumb_func_start ovy15_021FD3AC
-ovy15_021FD3AC: @ 0x021FD3AC
+	thumb_func_start ov15_021FD3AC
+ov15_021FD3AC: @ 0x021FD3AC
 	push {r3, lr}
-	bl ovy15_021FA650
+	bl ov15_021FA650
 	cmp r0, #1
 	bne _021FD3BA
 	movs r0, #2
@@ -8043,18 +8043,18 @@ _021FD3BA:
 	movs r0, #0x1a
 	pop {r3, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FD3AC
+	thumb_func_end ov15_021FD3AC
 
-	thumb_func_start ovy15_021FD3C0
-ovy15_021FD3C0: @ 0x021FD3C0
+	thumb_func_start ov15_021FD3C0
+ov15_021FD3C0: @ 0x021FD3C0
 	push {r4, lr}
 	adds r4, r0, #0
-	bl ovy15_021FED3C
+	bl ov15_021FED3C
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FD788
+	bl ov15_021FD788
 	adds r0, r4, #0
-	bl ovy15_021FFF24
+	bl ov15_021FFF24
 	movs r0, #1
 	movs r1, #6
 	bl FUN_020880CC
@@ -8067,10 +8067,10 @@ ovy15_021FD3C0: @ 0x021FD3C0
 	movs r0, #0x25
 	pop {r4, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FD3C0
+	thumb_func_end ov15_021FD3C0
 
-	thumb_func_start ovy15_021FD3F0
-ovy15_021FD3F0: @ 0x021FD3F0
+	thumb_func_start ov15_021FD3F0
+ov15_021FD3F0: @ 0x021FD3F0
 	cmp r0, #4
 	beq _021FD3FC
 	cmp r1, #0x5f
@@ -8083,10 +8083,10 @@ _021FD3FC:
 _021FD400:
 	movs r0, #0
 	bx lr
-	thumb_func_end ovy15_021FD3F0
+	thumb_func_end ov15_021FD3F0
 
-	thumb_func_start ovy15_021FD404
-ovy15_021FD404: @ 0x021FD404
+	thumb_func_start ov15_021FD404
+ov15_021FD404: @ 0x021FD404
 	push {r3, r4, r5, lr}
 	lsls r1, r1, #2
 	adds r1, r0, r1
@@ -8112,10 +8112,10 @@ _021FD434:
 	pop {r3, r4, r5, pc}
 	nop
 _021FD438: .4byte 0x00000694
-	thumb_func_end ovy15_021FD404
+	thumb_func_end ov15_021FD404
 
-	thumb_func_start ovy15_021FD43C
-ovy15_021FD43C: @ 0x021FD43C
+	thumb_func_start ov15_021FD43C
+ov15_021FD43C: @ 0x021FD43C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r1, [sp, #0x10]
@@ -8182,10 +8182,10 @@ _021FD4B6:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021FD4BC: .4byte 0x022013A8
-	thumb_func_end ovy15_021FD43C
+	thumb_func_end ov15_021FD43C
 
-	thumb_func_start ovy15_021FD4C0
-ovy15_021FD4C0: @ 0x021FD4C0
+	thumb_func_start ov15_021FD4C0
+ov15_021FD4C0: @ 0x021FD4C0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	str r1, [sp, #0x10]
@@ -8273,10 +8273,10 @@ _021FD566:
 	nop
 _021FD56C: .4byte 0x02201340
 _021FD570: .4byte 0x02201328
-	thumb_func_end ovy15_021FD4C0
+	thumb_func_end ov15_021FD4C0
 
-	thumb_func_start ovy15_021FD574
-ovy15_021FD574: @ 0x021FD574
+	thumb_func_start ov15_021FD574
+ov15_021FD574: @ 0x021FD574
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r5, r1, #0
@@ -8328,7 +8328,7 @@ _021FD5A4:
 	ldr r0, [r4]
 	movs r1, #5
 	adds r2, r6, #0
-	bl ovy15_021FD43C
+	bl ov15_021FD43C
 	ldr r0, [r4]
 	movs r1, #5
 	bl FUN_0201EFBC
@@ -8358,7 +8358,7 @@ _021FD5A4:
 	adds r0, r4, #0
 	adds r2, r1, #0
 	adds r3, r1, #0
-	bl ovy15_0220005C
+	bl ov15_0220005C
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _021FD62E:
@@ -8387,7 +8387,7 @@ _021FD62E:
 	movs r1, #5
 	adds r2, r6, #0
 	adds r3, r7, #0
-	bl ovy15_021FD4C0
+	bl ov15_021FD4C0
 	ldr r0, [r4]
 	movs r1, #5
 	bl FUN_0201EFBC
@@ -8414,14 +8414,14 @@ _021FD62E:
 	adds r0, r5, #0
 	bl FUN_0201AB0C
 	adds r0, r4, #0
-	bl ovy15_02200294
+	bl ov15_02200294
 	adds r0, r4, #0
-	bl ovy15_021FA098
+	bl ov15_021FA098
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r6, #0
 	movs r3, #0
-	bl ovy15_0220005C
+	bl ov15_0220005C
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _021FD6C6:
@@ -8448,7 +8448,7 @@ _021FD6C6:
 	ldr r0, [r4]
 	movs r1, #5
 	adds r2, r6, #0
-	bl ovy15_021FD43C
+	bl ov15_021FD43C
 	ldr r0, [r4]
 	movs r1, #5
 	bl FUN_0201EFBC
@@ -8501,10 +8501,10 @@ _021FD740:
 _021FD770:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ovy15_021FD574
+	thumb_func_end ov15_021FD574
 
-	thumb_func_start ovy15_021FD774
-ovy15_021FD774: @ 0x021FD774
+	thumb_func_start ov15_021FD774
+ov15_021FD774: @ 0x021FD774
 	push {r3, lr}
 	movs r2, #0x8d
 	lsls r2, r2, #2
@@ -8515,19 +8515,19 @@ ovy15_021FD774: @ 0x021FD774
 	bl FUN_02018410
 _021FD786:
 	pop {r3, pc}
-	thumb_func_end ovy15_021FD774
+	thumb_func_end ov15_021FD774
 
-	thumb_func_start ovy15_021FD788
-ovy15_021FD788: @ 0x021FD788
+	thumb_func_start ov15_021FD788
+ov15_021FD788: @ 0x021FD788
 	push {r4, lr}
 	adds r4, r0, #0
 	cmp r1, #1
 	bne _021FD7C0
 	movs r1, #1
-	bl ovy15_022004DC
+	bl ov15_022004DC
 	adds r0, r4, #0
 	movs r1, #0
-	bl ovy15_021FF29C
+	bl ov15_021FF29C
 	adds r0, r4, #0
 	adds r0, #0x74
 	bl FUN_0201D5C8
@@ -8544,15 +8544,15 @@ ovy15_021FD788: @ 0x021FD788
 	pop {r4, pc}
 _021FD7C0:
 	movs r1, #0
-	bl ovy15_022004DC
+	bl ov15_022004DC
 	adds r0, r4, #0
-	bl ovy15_021FF844
+	bl ov15_021FF844
 	pop {r4, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FD788
+	thumb_func_end ov15_021FD788
 
-	thumb_func_start ovy15_021FD7D0
-ovy15_021FD7D0: @ 0x021FD7D0
+	thumb_func_start ov15_021FD7D0
+ov15_021FD7D0: @ 0x021FD7D0
 	push {r4, r5}
 	movs r4, #0x25
 	lsls r4, r4, #6
@@ -8585,10 +8585,10 @@ ovy15_021FD7D0: @ 0x021FD7D0
 	movs r0, #0x23
 	pop {r4, r5}
 	bx lr
-	thumb_func_end ovy15_021FD7D0
+	thumb_func_end ov15_021FD7D0
 
-	thumb_func_start ovy15_021FD810
-ovy15_021FD810: @ 0x021FD810
+	thumb_func_start ov15_021FD810
+ov15_021FD810: @ 0x021FD810
 	push {r4, r5, r6, lr}
 	adds r6, r2, #0
 	movs r2, #0x25
@@ -8619,10 +8619,10 @@ ovy15_021FD810: @ 0x021FD810
 	movs r0, #0x23
 	pop {r4, r5, r6, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FD810
+	thumb_func_end ov15_021FD810
 
-	thumb_func_start ovy15_021FD850
-ovy15_021FD850: @ 0x021FD850
+	thumb_func_start ov15_021FD850
+ov15_021FD850: @ 0x021FD850
 	push {r3, r4, r5, lr}
 	movs r5, #0x25
 	lsls r5, r5, #6
@@ -8743,10 +8743,10 @@ _021FD936:
 	movs r0, #0x23
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FD850
+	thumb_func_end ov15_021FD850
 
-	thumb_func_start ovy15_021FD93C
-ovy15_021FD93C: @ 0x021FD93C
+	thumb_func_start ov15_021FD93C
+ov15_021FD93C: @ 0x021FD93C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r5, r0, #0
@@ -8850,7 +8850,7 @@ ovy15_021FD93C: @ 0x021FD93C
 	str r0, [r2]
 	ldr r0, _021FDAC4 @ =0x00000808
 	adds r0, r5, r0
-	bl ovy15_021FDAD0
+	bl ov15_021FDAD0
 	movs r1, #0x8d
 	lsls r1, r1, #2
 	ldr r1, [r5, r1]
@@ -8860,7 +8860,7 @@ ovy15_021FD93C: @ 0x021FD93C
 	adds r0, r5, r0
 	movs r2, #7
 	adds r1, r1, #1
-	bl ovy15_021FDAF4
+	bl ov15_021FDAF4
 	ldr r2, _021FDAAC @ =0x00000818
 	movs r0, #0x7b
 	ldr r1, _021FDAC8 @ =0x006A4000
@@ -8887,7 +8887,7 @@ _021FDA58:
 	cmp r4, #4
 	blo _021FDA58
 	adds r0, r5, #0
-	bl ovy15_021FDD70
+	bl ov15_021FDD70
 	movs r0, #1
 	adds r1, r0, #0
 	bl FUN_02022C60
@@ -8916,10 +8916,10 @@ _021FDAC0: .4byte 0x0220050C
 _021FDAC4: .4byte 0x00000808
 _021FDAC8: .4byte 0x006A4000
 _021FDACC: .4byte 0x04000008
-	thumb_func_end ovy15_021FD93C
+	thumb_func_end ov15_021FD93C
 
-	thumb_func_start ovy15_021FDAD0
-ovy15_021FDAD0: @ 0x021FDAD0
+	thumb_func_start ov15_021FDAD0
+ov15_021FDAD0: @ 0x021FDAD0
 	movs r2, #0x47
 	lsls r2, r2, #2
 	movs r3, #0
@@ -8938,10 +8938,10 @@ ovy15_021FDAD0: @ 0x021FDAD0
 	strh r3, [r0, r2]
 	bx lr
 	.align 2, 0
-	thumb_func_end ovy15_021FDAD0
+	thumb_func_end ov15_021FDAD0
 
-	thumb_func_start ovy15_021FDAF4
-ovy15_021FDAF4: @ 0x021FDAF4
+	thumb_func_start ov15_021FDAF4
+ov15_021FDAF4: @ 0x021FDAF4
 	push {r4, r5}
 	movs r4, #0x4a
 	lsls r4, r4, #2
@@ -8971,10 +8971,10 @@ _021FDB22:
 	pop {r4, r5}
 	bx lr
 	.align 2, 0
-	thumb_func_end ovy15_021FDAF4
+	thumb_func_end ov15_021FDAF4
 
-	thumb_func_start ovy15_021FDB2C
-ovy15_021FDB2C: @ 0x021FDB2C
+	thumb_func_start ov15_021FDB2C
+ov15_021FDB2C: @ 0x021FDB2C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	adds r5, r0, #0
@@ -9137,13 +9137,13 @@ _021FDC60:
 	.align 2, 0
 _021FDC64: .4byte 0x02200790
 _021FDC68: .4byte 0x0000012A
-	thumb_func_end ovy15_021FDB2C
+	thumb_func_end ov15_021FDB2C
 
-	thumb_func_start ovy15_021FDC6C
-ovy15_021FDC6C: @ 0x021FDC6C
+	thumb_func_start ov15_021FDC6C
+ov15_021FDC6C: @ 0x021FDC6C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl ovy15_021FDF20
+	bl ov15_021FDF20
 	ldr r0, _021FDC84 @ =0x00000818
 	ldr r0, [r4, r0]
 	bl FUN_02023120
@@ -9151,10 +9151,10 @@ ovy15_021FDC6C: @ 0x021FDC6C
 	pop {r4, pc}
 	nop
 _021FDC84: .4byte 0x00000818
-	thumb_func_end ovy15_021FDC6C
+	thumb_func_end ov15_021FDC6C
 
-	thumb_func_start ovy15_021FDC88
-ovy15_021FDC88: @ 0x021FDC88
+	thumb_func_start ov15_021FDC88
+ov15_021FDC88: @ 0x021FDC88
 	push {r4, r5, lr}
 	sub sp, #0x3c
 	ldr r4, _021FDD34 @ =0x022005CC
@@ -9178,7 +9178,7 @@ _021FDC94:
 	ldr r0, _021FDD40 @ =0x00000808
 	ldrb r1, [r5, r1]
 	adds r0, r5, r0
-	bl ovy15_021FDB2C
+	bl ov15_021FDB2C
 	ldr r3, _021FDD44 @ =0x0000091C
 	ldr r2, _021FDD48 @ =0x00000818
 	ldrb r0, [r5, r3]
@@ -9209,7 +9209,7 @@ _021FDC94:
 	adds r0, r4, r0
 	adds r0, #0xa0
 	ldr r0, [r0]
-	bl ovy15_021FDD54
+	bl ov15_021FDD54
 	adds r0, r4, #0
 	adds r0, #0xe4
 	ldr r0, [r0]
@@ -9217,11 +9217,11 @@ _021FDC94:
 	adds r0, r4, r0
 	adds r0, #0xc0
 	ldr r0, [r0]
-	bl ovy15_021FDD54
+	bl ov15_021FDD54
 	adds r0, r4, #0
 	adds r0, #0xe0
 	ldr r0, [r0]
-	bl ovy15_021FDD54
+	bl ov15_021FDD54
 	ldr r1, _021FDD50 @ =0x00000934
 	adds r0, r4, #0
 	adds r1, r5, r1
@@ -9242,10 +9242,10 @@ _021FDD44: .4byte 0x0000091C
 _021FDD48: .4byte 0x00000818
 _021FDD4C: .4byte 0x0000081C
 _021FDD50: .4byte 0x00000934
-	thumb_func_end ovy15_021FDC88
+	thumb_func_end ov15_021FDC88
 
-	thumb_func_start ovy15_021FDD54
-ovy15_021FDD54: @ 0x021FDD54
+	thumb_func_start ov15_021FDD54
+ov15_021FDD54: @ 0x021FDD54
 	movs r1, #1
 	ldr r2, [r0]
 	lsls r1, r1, #0xc
@@ -9261,10 +9261,10 @@ _021FDD6A:
 	movs r1, #0
 	str r1, [r0]
 	bx lr
-	thumb_func_end ovy15_021FDD54
+	thumb_func_end ov15_021FDD54
 
-	thumb_func_start ovy15_021FDD70
-ovy15_021FDD70: @ 0x021FDD70
+	thumb_func_start ov15_021FDD70
+ov15_021FDD70: @ 0x021FDD70
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	adds r7, r0, #0
@@ -9455,10 +9455,10 @@ _021FDE0E:
 _021FDF14: .4byte 0x00000808
 _021FDF18: .4byte 0x0000081C
 _021FDF1C: .4byte 0x00000615
-	thumb_func_end ovy15_021FDD70
+	thumb_func_end ov15_021FDD70
 
-	thumb_func_start ovy15_021FDF20
-ovy15_021FDF20: @ 0x021FDF20
+	thumb_func_start ov15_021FDF20
+ov15_021FDF20: @ 0x021FDF20
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, _021FDF80 @ =0x0000081C
@@ -9503,10 +9503,10 @@ _021FDF30:
 	nop
 _021FDF80: .4byte 0x0000081C
 _021FDF84: .4byte 0x00000808
-	thumb_func_end ovy15_021FDF20
+	thumb_func_end ov15_021FDF20
 
-	thumb_func_start ovy15_021FDF88
-ovy15_021FDF88: @ 0x021FDF88
+	thumb_func_start ov15_021FDF88
+ov15_021FDF88: @ 0x021FDF88
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, _021FE01C @ =0x0000081C
@@ -9579,10 +9579,10 @@ ovy15_021FDF88: @ 0x021FDF88
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _021FE01C: .4byte 0x0000081C
-	thumb_func_end ovy15_021FDF88
+	thumb_func_end ov15_021FDF88
 
-	thumb_func_start ovy15_021FE020
-ovy15_021FE020: @ 0x021FE020
+	thumb_func_start ov15_021FE020
+ov15_021FE020: @ 0x021FE020
 	push {r3, r4, lr}
 	sub sp, #0x14
 	adds r4, r0, #0
@@ -9728,10 +9728,10 @@ _021FE13E:
 	pop {r3, r4, pc}
 	.align 2, 0
 _021FE150: .4byte 0x0000012B
-	thumb_func_end ovy15_021FE020
+	thumb_func_end ov15_021FE020
 
-	thumb_func_start ovy15_021FE154
-ovy15_021FE154: @ 0x021FE154
+	thumb_func_start ov15_021FE154
+ov15_021FE154: @ 0x021FE154
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	movs r5, #0
@@ -9746,14 +9746,14 @@ _021FE15C:
 	cmp r5, #8
 	blo _021FE15C
 	adds r0, r6, #0
-	bl ovy15_021FE3E0
+	bl ov15_021FE3E0
 	adds r0, r6, #0
-	bl ovy15_021FE1D0
+	bl ov15_021FE1D0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ovy15_021FE154
+	thumb_func_end ov15_021FE154
 
-	thumb_func_start ovy15_021FE17C
-ovy15_021FE17C: @ 0x021FE17C
+	thumb_func_start ov15_021FE17C
+ov15_021FE17C: @ 0x021FE17C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	adds r7, r0, #0
@@ -9797,10 +9797,10 @@ _021FE1C8:
 	pop {r4, r5, r6, r7, pc}
 	.align 2, 0
 _021FE1CC: .4byte 0x02200908
-	thumb_func_end ovy15_021FE17C
+	thumb_func_end ov15_021FE17C
 
-	thumb_func_start ovy15_021FE1D0
-ovy15_021FE1D0: @ 0x021FE1D0
+	thumb_func_start ov15_021FE1D0
+ov15_021FE1D0: @ 0x021FE1D0
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r0, #0xb4
@@ -9827,10 +9827,10 @@ _021FE1E4:
 _021FE200:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FE1D0
+	thumb_func_end ov15_021FE1D0
 
-	thumb_func_start ovy15_021FE204
-ovy15_021FE204: @ 0x021FE204
+	thumb_func_start ov15_021FE204
+ov15_021FE204: @ 0x021FE204
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	movs r3, #0x5d
@@ -10052,10 +10052,10 @@ _021FE3D0: .4byte 0x022008D0
 _021FE3D4: .4byte 0x0000030D
 _021FE3D8: .4byte 0x00000363
 _021FE3DC: .4byte 0x00000387
-	thumb_func_end ovy15_021FE204
+	thumb_func_end ov15_021FE204
 
-	thumb_func_start ovy15_021FE3E0
-ovy15_021FE3E0: @ 0x021FE3E0
+	thumb_func_start ov15_021FE3E0
+ov15_021FE3E0: @ 0x021FE3E0
 	push {r3, r4, r5, r6, r7, lr}
 	movs r1, #0x5d
 	lsls r1, r1, #2
@@ -10163,10 +10163,10 @@ _021FE482:
 	str r2, [r0, r1]
 _021FE4C6:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ovy15_021FE3E0
+	thumb_func_end ov15_021FE3E0
 
-	thumb_func_start ovy15_021FE4C8
-ovy15_021FE4C8: @ 0x021FE4C8
+	thumb_func_start ov15_021FE4C8
+ov15_021FE4C8: @ 0x021FE4C8
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #1
@@ -10194,10 +10194,10 @@ _021FE4DE:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021FE500: .4byte 0x000005F4
-	thumb_func_end ovy15_021FE4C8
+	thumb_func_end ov15_021FE4C8
 
-	thumb_func_start ovy15_021FE504
-ovy15_021FE504: @ 0x021FE504
+	thumb_func_start ov15_021FE504
+ov15_021FE504: @ 0x021FE504
 	push {r4, r5, r6, lr}
 	ldr r6, _021FE524 @ =0x000005F4
 	adds r5, r0, #0
@@ -10215,10 +10215,10 @@ _021FE50C:
 	pop {r4, r5, r6, pc}
 	nop
 _021FE524: .4byte 0x000005F4
-	thumb_func_end ovy15_021FE504
+	thumb_func_end ov15_021FE504
 
-	thumb_func_start ovy15_021FE528
-ovy15_021FE528: @ 0x021FE528
+	thumb_func_start ov15_021FE528
+ov15_021FE528: @ 0x021FE528
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	adds r5, r0, #0
@@ -10264,17 +10264,17 @@ _021FE534:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FE528
+	thumb_func_end ov15_021FE528
 
-	thumb_func_start ovy15_021FE584
-ovy15_021FE584: @ 0x021FE584
+	thumb_func_start ov15_021FE584
+ov15_021FE584: @ 0x021FE584
 	push {r3, r4, r5, lr}
 	lsls r1, r1, #0x10
 	adds r4, r2, #0
 	lsrs r1, r1, #0x10
 	movs r2, #0
 	adds r5, r0, #0
-	bl ovy15_021F9D60
+	bl ov15_021F9D60
 	adds r2, r0, #0
 	movs r0, #0xbd
 	lsls r0, r0, #2
@@ -10282,17 +10282,17 @@ ovy15_021FE584: @ 0x021FE584
 	adds r1, r4, #0
 	bl FUN_0200C0CC
 	pop {r3, r4, r5, pc}
-	thumb_func_end ovy15_021FE584
+	thumb_func_end ov15_021FE584
 
-	thumb_func_start ovy15_021FE5A4
-ovy15_021FE5A4: @ 0x021FE5A4
+	thumb_func_start ov15_021FE5A4
+ov15_021FE5A4: @ 0x021FE5A4
 	push {r3, r4, r5, lr}
 	lsls r1, r1, #0x10
 	adds r4, r2, #0
 	lsrs r1, r1, #0x10
 	movs r2, #0
 	adds r5, r0, #0
-	bl ovy15_021F9D60
+	bl ov15_021F9D60
 	adds r2, r0, #0
 	movs r0, #0xbd
 	lsls r0, r0, #2
@@ -10300,10 +10300,10 @@ ovy15_021FE5A4: @ 0x021FE5A4
 	adds r1, r4, #0
 	bl FUN_0200C134
 	pop {r3, r4, r5, pc}
-	thumb_func_end ovy15_021FE5A4
+	thumb_func_end ov15_021FE5A4
 
-	thumb_func_start ovy15_021FE5C4
-ovy15_021FE5C4: @ 0x021FE5C4
+	thumb_func_start ov15_021FE5C4
+ov15_021FE5C4: @ 0x021FE5C4
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	adds r5, r0, #0
@@ -10345,10 +10345,10 @@ _021FE5F4:
 	nop
 _021FE618: .4byte 0x0000FFFF
 _021FE61C: .4byte 0x000F0E00
-	thumb_func_end ovy15_021FE5C4
+	thumb_func_end ov15_021FE5C4
 
-	thumb_func_start ovy15_021FE620
-ovy15_021FE620: @ 0x021FE620
+	thumb_func_start ov15_021FE620
+ov15_021FE620: @ 0x021FE620
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	adds r5, r0, #0
@@ -10607,19 +10607,19 @@ _021FE80C:
 	.align 2, 0
 _021FE860: .4byte 0x000F0E00
 _021FE864: .4byte 0x000005E4
-	thumb_func_end ovy15_021FE620
+	thumb_func_end ov15_021FE620
 
-	thumb_func_start ovy15_021FE868
-ovy15_021FE868: @ 0x021FE868
+	thumb_func_start ov15_021FE868
+ov15_021FE868: @ 0x021FE868
 	ldr r3, _021FE870 @ =FUN_0201D8E4
 	adds r0, #0x14
 	bx r3
 	nop
 _021FE870: .4byte FUN_0201D8E4
-	thumb_func_end ovy15_021FE868
+	thumb_func_end ov15_021FE868
 
-	thumb_func_start ovy15_021FE874
-ovy15_021FE874: @ 0x021FE874
+	thumb_func_start ov15_021FE874
+ov15_021FE874: @ 0x021FE874
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x2f
@@ -10640,10 +10640,10 @@ ovy15_021FE874: @ 0x021FE874
 	nop
 _021FE89C: .4byte 0x000005E8
 _021FE8A0: .4byte 0x000005EC
-	thumb_func_end ovy15_021FE874
+	thumb_func_end ov15_021FE874
 
-	thumb_func_start ovy15_021FE8A4
-ovy15_021FE8A4: @ 0x021FE8A4
+	thumb_func_start ov15_021FE8A4
+ov15_021FE8A4: @ 0x021FE8A4
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _021FE8BC @ =0x000005E8
@@ -10656,10 +10656,10 @@ ovy15_021FE8A4: @ 0x021FE8A4
 	nop
 _021FE8BC: .4byte 0x000005E8
 _021FE8C0: .4byte 0x000005EC
-	thumb_func_end ovy15_021FE8A4
+	thumb_func_end ov15_021FE8A4
 
-	thumb_func_start ovy15_021FE8C4
-ovy15_021FE8C4: @ 0x021FE8C4
+	thumb_func_start ov15_021FE8C4
+ov15_021FE8C4: @ 0x021FE8C4
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -10695,10 +10695,10 @@ ovy15_021FE8C4: @ 0x021FE8C4
 	pop {r4, r5, r6, pc}
 	.align 2, 0
 _021FE910: .4byte 0x000005EC
-	thumb_func_end ovy15_021FE8C4
+	thumb_func_end ov15_021FE8C4
 
-	thumb_func_start ovy15_021FE914
-ovy15_021FE914: @ 0x021FE914
+	thumb_func_start ov15_021FE914
+ov15_021FE914: @ 0x021FE914
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	adds r7, r2, #0
@@ -10731,7 +10731,7 @@ ovy15_021FE914: @ 0x021FE914
 	ldr r3, _021FE98C @ =0x00010200
 	adds r0, r5, #0
 	lsrs r2, r2, #0x10
-	bl ovy15_021FE8C4
+	bl ov15_021FE8C4
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _021FE95E:
@@ -10753,15 +10753,15 @@ _021FE95E:
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0x10
-	bl ovy15_021FE9B0
+	bl ov15_021FE9B0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _021FE98C: .4byte 0x00010200
-	thumb_func_end ovy15_021FE914
+	thumb_func_end ov15_021FE914
 
-	thumb_func_start ovy15_021FE990
-ovy15_021FE990: @ 0x021FE990
+	thumb_func_start ov15_021FE990
+ov15_021FE990: @ 0x021FE990
 	push {r3, r4, r5, lr}
 	adds r4, r1, #0
 	movs r1, #0x91
@@ -10776,16 +10776,16 @@ ovy15_021FE990: @ 0x021FE990
 	adds r0, r5, #0
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FE990
+	thumb_func_end ov15_021FE990
 
-	thumb_func_start ovy15_021FE9B0
-ovy15_021FE9B0: @ 0x021FE9B0
+	thumb_func_start ov15_021FE9B0
+ov15_021FE9B0: @ 0x021FE9B0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x1c
 	adds r5, r1, #0
 	add r1, sp, #0x18
 	adds r4, r2, #0
-	bl ovy15_021FE990
+	bl ov15_021FE990
 	adds r6, r0, #0
 	movs r0, #0x68
 	str r0, [sp]
@@ -10809,17 +10809,17 @@ ovy15_021FE9B0: @ 0x021FE9B0
 	bl FUN_0201AB80
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ovy15_021FE9B0
+	thumb_func_end ov15_021FE9B0
 
-	thumb_func_start ovy15_021FE9F0
-ovy15_021FE9F0: @ 0x021FE9F0
+	thumb_func_start ov15_021FE9F0
+ov15_021FE9F0: @ 0x021FE9F0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	adds r5, r1, #0
 	add r1, sp, #0x18
 	adds r4, r2, #0
 	adds r6, r3, #0
-	bl ovy15_021FE990
+	bl ov15_021FE990
 	adds r7, r0, #0
 	cmp r6, #0
 	bne _021FEA2C
@@ -10865,10 +10865,10 @@ _021FEA50:
 	bl FUN_0201AB80
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ovy15_021FE9F0
+	thumb_func_end ov15_021FE9F0
 
-	thumb_func_start ovy15_021FEA5C
-ovy15_021FEA5C: @ 0x021FEA5C
+	thumb_func_start ov15_021FEA5C
+ov15_021FEA5C: @ 0x021FEA5C
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x2f
@@ -10985,10 +10985,10 @@ ovy15_021FEA5C: @ 0x021FEA5C
 	lsls r1, r1, #2
 	str r0, [r4, r1]
 	pop {r4, pc}
-	thumb_func_end ovy15_021FEA5C
+	thumb_func_end ov15_021FEA5C
 
-	thumb_func_start ovy15_021FEB64
-ovy15_021FEB64: @ 0x021FEB64
+	thumb_func_start ov15_021FEB64
+ov15_021FEB64: @ 0x021FEB64
 	push {r4, r5, r6, lr}
 	movs r6, #3
 	adds r5, r0, #0
@@ -11005,10 +11005,10 @@ _021FEB6E:
 	cmp r4, #0x10
 	blo _021FEB6E
 	pop {r4, r5, r6, pc}
-	thumb_func_end ovy15_021FEB64
+	thumb_func_end ov15_021FEB64
 
-	thumb_func_start ovy15_021FEB84
-ovy15_021FEB84: @ 0x021FEB84
+	thumb_func_start ov15_021FEB84
+ov15_021FEB84: @ 0x021FEB84
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r5, r0, #0
@@ -11034,7 +11034,7 @@ ovy15_021FEB84: @ 0x021FEB84
 	adds r0, r5, #0
 	adds r1, #0x66
 	ldrh r1, [r1]
-	bl ovy15_021FE620
+	bl ov15_021FE620
 	adds r0, r5, #4
 	bl FUN_0201D5C8
 	movs r1, #0x8d
@@ -11044,10 +11044,10 @@ ovy15_021FEB84: @ 0x021FEB84
 	adds r1, #0x66
 	ldrh r1, [r1]
 	movs r2, #1
-	bl ovy15_021FF97C
+	bl ov15_021FF97C
 	adds r0, r5, #0
 	movs r1, #0
-	bl ovy15_021F9C78
+	bl ov15_021F9C78
 _021FEBDC:
 	adds r0, r5, #0
 	ldr r2, _021FEC98 @ =0x000003E2
@@ -11077,7 +11077,7 @@ _021FEBDC:
 	adds r1, #0x66
 	ldrb r0, [r4, #8]
 	ldrh r1, [r1]
-	bl ovy15_021FD3F0
+	bl ov15_021FD3F0
 	cmp r0, #0
 	bne _021FEC30
 	movs r0, #0x2f
@@ -11107,7 +11107,7 @@ _021FEC3E:
 	adds r1, r2, r1
 	subs r1, #8
 	movs r2, #0
-	bl ovy15_021FE584
+	bl ov15_021FE584
 	movs r0, #0xbd
 	lsls r0, r0, #2
 	ldr r0, [r5, r0]
@@ -11136,10 +11136,10 @@ _021FEC3E:
 	.align 2, 0
 _021FEC98: .4byte 0x000003E2
 _021FEC9C: .4byte 0x00000644
-	thumb_func_end ovy15_021FEB84
+	thumb_func_end ov15_021FEB84
 
-	thumb_func_start ovy15_021FECA0
-ovy15_021FECA0: @ 0x021FECA0
+	thumb_func_start ov15_021FECA0
+ov15_021FECA0: @ 0x021FECA0
 	push {r4, r5, r6, lr}
 	adds r5, r1, #0
 	adds r6, r0, #0
@@ -11150,15 +11150,15 @@ ovy15_021FECA0: @ 0x021FECA0
 	lsls r1, r4, #0x10
 	adds r0, r6, #0
 	lsrs r1, r1, #0x10
-	bl ovy15_021FE5C4
+	bl ov15_021FE5C4
 	adds r0, r5, #0
 	bl FUN_0201D5C8
 	pop {r4, r5, r6, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FECA0
+	thumb_func_end ov15_021FECA0
 
-	thumb_func_start ovy15_021FECC4
-ovy15_021FECC4: @ 0x021FECC4
+	thumb_func_start ov15_021FECC4
+ov15_021FECC4: @ 0x021FECC4
 	push {r4, lr}
 	adds r4, r1, #0
 	adds r0, r4, #0
@@ -11167,10 +11167,10 @@ ovy15_021FECC4: @ 0x021FECC4
 	adds r0, r4, #0
 	bl FUN_0201D5C8
 	pop {r4, pc}
-	thumb_func_end ovy15_021FECC4
+	thumb_func_end ov15_021FECC4
 
-	thumb_func_start ovy15_021FECD8
-ovy15_021FECD8: @ 0x021FECD8
+	thumb_func_start ov15_021FECD8
+ov15_021FECD8: @ 0x021FECD8
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	adds r5, r1, #0
@@ -11203,10 +11203,10 @@ ovy15_021FECD8: @ 0x021FECD8
 	pop {r3, r4, r5, pc}
 	nop
 _021FED20: .4byte 0x000F0E00
-	thumb_func_end ovy15_021FECD8
+	thumb_func_end ov15_021FECD8
 
-	thumb_func_start ovy15_021FED24
-ovy15_021FED24: @ 0x021FED24
+	thumb_func_start ov15_021FED24
+ov15_021FED24: @ 0x021FED24
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x24
@@ -11217,33 +11217,33 @@ ovy15_021FED24: @ 0x021FED24
 	bl FUN_0201D8E4
 	pop {r4, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FED24
+	thumb_func_end ov15_021FED24
 
-	thumb_func_start ovy15_021FED3C
-ovy15_021FED3C: @ 0x021FED3C
+	thumb_func_start ov15_021FED3C
+ov15_021FED3C: @ 0x021FED3C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl ovy15_021FED24
+	bl ov15_021FED24
 	adds r0, r4, #0
-	bl ovy15_021FE3E0
+	bl ov15_021FE3E0
 	movs r1, #0
 	adds r0, r4, #0
 	adds r2, r1, #0
-	bl ovy15_021FF97C
+	bl ov15_021FF97C
 	pop {r4, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FED3C
+	thumb_func_end ov15_021FED3C
 
-	thumb_func_start ovy15_021FED58
-ovy15_021FED58: @ 0x021FED58
-	ldr r3, _021FED5C @ =ovy15_021FE3E0
+	thumb_func_start ov15_021FED58
+ov15_021FED58: @ 0x021FED58
+	ldr r3, _021FED5C @ =ov15_021FE3E0
 	bx r3
 	.align 2, 0
-_021FED5C: .4byte ovy15_021FE3E0
-	thumb_func_end ovy15_021FED58
+_021FED5C: .4byte ov15_021FE3E0
+	thumb_func_end ov15_021FED58
 
-	thumb_func_start ovy15_021FED60
-ovy15_021FED60: @ 0x021FED60
+	thumb_func_start ov15_021FED60
+ov15_021FED60: @ 0x021FED60
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	adds r5, r0, #0
@@ -11264,7 +11264,7 @@ ovy15_021FED60: @ 0x021FED60
 	ldrb r1, [r5, r1]
 	adds r0, r5, #0
 	movs r2, #0
-	bl ovy15_021FE584
+	bl ov15_021FE584
 	movs r0, #0xbd
 	lsls r0, r0, #2
 	ldr r0, [r5, r0]
@@ -11302,10 +11302,10 @@ ovy15_021FED60: @ 0x021FED60
 _021FEDE0: .4byte 0x00000672
 _021FEDE4: .4byte 0x000003E2
 _021FEDE8: .4byte 0x00010200
-	thumb_func_end ovy15_021FED60
+	thumb_func_end ov15_021FED60
 
-	thumb_func_start ovy15_021FEDEC
-ovy15_021FEDEC: @ 0x021FEDEC
+	thumb_func_start ov15_021FEDEC
+ov15_021FEDEC: @ 0x021FEDEC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	adds r5, r0, #0
@@ -11394,10 +11394,10 @@ _021FEE96:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _021FEEA0: .4byte 0x00010200
-	thumb_func_end ovy15_021FEDEC
+	thumb_func_end ov15_021FEDEC
 
-	thumb_func_start ovy15_021FEEA4
-ovy15_021FEEA4: @ 0x021FEEA4
+	thumb_func_start ov15_021FEEA4
+ov15_021FEEA4: @ 0x021FEEA4
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -11429,7 +11429,7 @@ ovy15_021FEEA4: @ 0x021FEEA4
 	adds r1, r2, r1
 	subs r1, #8
 	movs r2, #0
-	bl ovy15_021FE5A4
+	bl ov15_021FE5A4
 	b _021FEEFE
 _021FEEEA:
 	movs r2, #6
@@ -11440,7 +11440,7 @@ _021FEEEA:
 	adds r1, r2, r1
 	subs r1, #8
 	movs r2, #0
-	bl ovy15_021FE584
+	bl ov15_021FE584
 _021FEEFE:
 	movs r0, #0
 	str r0, [sp]
@@ -11465,7 +11465,7 @@ _021FEEFE:
 	bl FUN_02026380
 	adds r0, r5, #0
 	movs r1, #0
-	bl ovy15_021FEF48
+	bl ov15_021FEF48
 	ldr r1, _021FEF44 @ =0x00000616
 	strb r0, [r5, r1]
 	add sp, #8
@@ -11473,10 +11473,10 @@ _021FEEFE:
 	nop
 _021FEF40: .4byte 0x000005E4
 _021FEF44: .4byte 0x00000616
-	thumb_func_end ovy15_021FEEA4
+	thumb_func_end ov15_021FEEA4
 
-	thumb_func_start ovy15_021FEF48
-ovy15_021FEF48: @ 0x021FEF48
+	thumb_func_start ov15_021FEF48
+ov15_021FEF48: @ 0x021FEF48
 	push {r4, r5, lr}
 	sub sp, #0xc
 	adds r5, r0, #0
@@ -11518,7 +11518,7 @@ _021FEF6C:
 	movs r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
-	ldr r0, _021FEFBC @ =ovy15_021FEFC4
+	ldr r0, _021FEFBC @ =ov15_021FEFC4
 	ldr r2, _021FEFC0 @ =0x000005E4
 	str r0, [sp, #8]
 	ldr r2, [r5, r2]
@@ -11529,12 +11529,12 @@ _021FEF6C:
 	pop {r4, r5, pc}
 	nop
 _021FEFB8: .4byte 0x000003E2
-_021FEFBC: .4byte ovy15_021FEFC4
+_021FEFBC: .4byte ov15_021FEFC4
 _021FEFC0: .4byte 0x000005E4
-	thumb_func_end ovy15_021FEF48
+	thumb_func_end ov15_021FEF48
 
-	thumb_func_start ovy15_021FEFC4
-ovy15_021FEFC4: @ 0x021FEFC4
+	thumb_func_start ov15_021FEFC4
+ov15_021FEFC4: @ 0x021FEFC4
 	push {r3, lr}
 	cmp r1, #4
 	bhi _021FEFFC
@@ -11569,10 +11569,10 @@ _021FEFFC:
 	pop {r3, pc}
 	.align 2, 0
 _021FF000: .4byte 0x0000060C
-	thumb_func_end ovy15_021FEFC4
+	thumb_func_end ov15_021FEFC4
 
-	thumb_func_start ovy15_021FF004
-ovy15_021FF004: @ 0x021FF004
+	thumb_func_start ov15_021FF004
+ov15_021FF004: @ 0x021FF004
 	push {r3, r4, lr}
 	sub sp, #0x14
 	adds r4, r0, #0
@@ -11612,10 +11612,10 @@ ovy15_021FF004: @ 0x021FF004
 	pop {r3, r4, pc}
 	nop
 _021FF054: .4byte 0x00000804
-	thumb_func_end ovy15_021FF004
+	thumb_func_end ov15_021FF004
 
-	thumb_func_start ovy15_021FF058
-ovy15_021FF058: @ 0x021FF058
+	thumb_func_start ov15_021FF058
+ov15_021FF058: @ 0x021FF058
 	ldr r1, _021FF060 @ =0x00000804
 	ldr r3, _021FF064 @ =FUN_02016624
 	ldr r0, [r0, r1]
@@ -11623,10 +11623,10 @@ ovy15_021FF058: @ 0x021FF058
 	.align 2, 0
 _021FF060: .4byte 0x00000804
 _021FF064: .4byte FUN_02016624
-	thumb_func_end ovy15_021FF058
+	thumb_func_end ov15_021FF058
 
-	thumb_func_start ovy15_021FF068
-ovy15_021FF068: @ 0x021FF068
+	thumb_func_start ov15_021FF068
+ov15_021FF068: @ 0x021FF068
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	movs r6, #0x89
@@ -11690,10 +11690,10 @@ ovy15_021FF068: @ 0x021FF068
 _021FF0F0: .4byte 0x00000684
 _021FF0F4: .4byte 0x000005E4
 _021FF0F8: .4byte 0x00010200
-	thumb_func_end ovy15_021FF068
+	thumb_func_end ov15_021FF068
 
-	thumb_func_start ovy15_021FF0FC
-ovy15_021FF0FC: @ 0x021FF0FC
+	thumb_func_start ov15_021FF0FC
+ov15_021FF0FC: @ 0x021FF0FC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	adds r5, r0, #0
@@ -11795,10 +11795,10 @@ _021FF160:
 	pop {r4, r5, r6, r7, pc}
 	.align 2, 0
 _021FF1DC: .4byte 0x00010200
-	thumb_func_end ovy15_021FF0FC
+	thumb_func_end ov15_021FF0FC
 
-	thumb_func_start ovy15_021FF1E0
-ovy15_021FF1E0: @ 0x021FF1E0
+	thumb_func_start ov15_021FF1E0
+ov15_021FF1E0: @ 0x021FF1E0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	adds r5, r0, #0
@@ -11879,10 +11879,10 @@ ovy15_021FF1E0: @ 0x021FF1E0
 	nop
 _021FF294: .4byte 0x000003F7
 _021FF298: .4byte 0x000005E4
-	thumb_func_end ovy15_021FF1E0
+	thumb_func_end ov15_021FF1E0
 
-	thumb_func_start ovy15_021FF29C
-ovy15_021FF29C: @ 0x021FF29C
+	thumb_func_start ov15_021FF29C
+ov15_021FF29C: @ 0x021FF29C
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	adds r5, r0, #0
@@ -11943,10 +11943,10 @@ _021FF308:
 	pop {r4, r5, r6, pc}
 	nop
 _021FF31C: .4byte 0x000F0E00
-	thumb_func_end ovy15_021FF29C
+	thumb_func_end ov15_021FF29C
 
-	thumb_func_start ovy15_021FF320
-ovy15_021FF320: @ 0x021FF320
+	thumb_func_start ov15_021FF320
+ov15_021FF320: @ 0x021FF320
 	push {r4, r5, r6, r7}
 	adds r3, r1, #0
 	adds r1, r2, #0
@@ -11984,10 +11984,10 @@ _021FF35A:
 	bx lr
 	.align 2, 0
 _021FF360: .4byte 0x022008C8
-	thumb_func_end ovy15_021FF320
+	thumb_func_end ov15_021FF320
 
-	thumb_func_start ovy15_021FF364
-ovy15_021FF364: @ 0x021FF364
+	thumb_func_start ov15_021FF364
+ov15_021FF364: @ 0x021FF364
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	adds r5, r0, #0
@@ -12031,7 +12031,7 @@ _021FF3A8:
 	eors r0, r2
 	strb r0, [r5, r1]
 	adds r0, r5, #0
-	bl ovy15_021FE17C
+	bl ov15_021FE17C
 	movs r0, #0
 	adds r7, r5, #0
 	ldr r6, [sp, #0x18]
@@ -12061,7 +12061,7 @@ _021FF3C2:
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x24]
 	ldr r2, [sp, #0x10]
-	bl ovy15_021FF320
+	bl ov15_021FF320
 	adds r4, r0, #0
 	movs r0, #0x8d
 	lsls r0, r0, #2
@@ -12104,7 +12104,7 @@ _021FF41C:
 	ldr r2, [r7, r2]
 	ldr r3, [sp, #0x24]
 	adds r0, r5, #0
-	bl ovy15_021FF570
+	bl ov15_021FF570
 	b _021FF494
 _021FF450:
 	ldr r0, _021FF4E4 @ =0x00000672
@@ -12120,7 +12120,7 @@ _021FF450:
 	ldr r2, [r7, r2]
 	ldr r3, [sp, #0x24]
 	adds r0, r5, #0
-	bl ovy15_021FF570
+	bl ov15_021FF570
 	b _021FF494
 _021FF470:
 	movs r0, #0x10
@@ -12184,10 +12184,10 @@ _021FF4DC: .4byte 0x0000068A
 _021FF4E0: .4byte 0x022008C8
 _021FF4E4: .4byte 0x00000672
 _021FF4E8: .4byte 0x00010200
-	thumb_func_end ovy15_021FF364
+	thumb_func_end ov15_021FF364
 
-	thumb_func_start ovy15_021FF4EC
-ovy15_021FF4EC: @ 0x021FF4EC
+	thumb_func_start ov15_021FF4EC
+ov15_021FF4EC: @ 0x021FF4EC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r6, r0, #0
@@ -12214,12 +12214,12 @@ _021FF510:
 	cmp r4, #6
 	blt _021FF510
 	adds r0, r6, #0
-	bl ovy15_021FE1D0
+	bl ov15_021FE1D0
 	adds r0, r6, #0
 	adds r0, #0x64
 	bl FUN_0201D8E4
 	adds r0, r6, #0
-	bl ovy15_021FE204
+	bl ov15_021FE204
 	lsls r2, r7, #2
 	adds r3, r6, r2
 	movs r2, #0x35
@@ -12233,7 +12233,7 @@ _021FF510:
 	adds r0, r6, #0
 	adds r1, r6, r1
 	adds r3, r4, r3
-	bl ovy15_021FF570
+	bl ov15_021FF570
 	movs r0, #0x5d
 	lsls r0, r0, #2
 	adds r0, r6, r0
@@ -12241,10 +12241,10 @@ _021FF510:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FF4EC
+	thumb_func_end ov15_021FF4EC
 
-	thumb_func_start ovy15_021FF560
-ovy15_021FF560: @ 0x021FF560
+	thumb_func_start ov15_021FF560
+ov15_021FF560: @ 0x021FF560
 	movs r1, #0x5d
 	lsls r1, r1, #2
 	ldr r3, _021FF56C @ =FUN_0201D8E4
@@ -12252,10 +12252,10 @@ ovy15_021FF560: @ 0x021FF560
 	bx r3
 	nop
 _021FF56C: .4byte FUN_0201D8E4
-	thumb_func_end ovy15_021FF560
+	thumb_func_end ov15_021FF560
 
-	thumb_func_start ovy15_021FF570
-ovy15_021FF570: @ 0x021FF570
+	thumb_func_start ov15_021FF570
+ov15_021FF570: @ 0x021FF570
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	adds r4, r3, #0
@@ -12285,7 +12285,7 @@ _021FF586:
 	adds r1, r6, #0
 	adds r2, r2, r7
 	movs r3, #0x10
-	bl ovy15_021FE914
+	bl ov15_021FE914
 	ldr r3, [r4]
 	movs r0, #0x52
 	ldrh r1, [r3, r7]
@@ -12303,7 +12303,7 @@ _021FF586:
 	ldrh r3, [r3, #2]
 	ldr r1, [r5, r1]
 	adds r2, r6, #0
-	bl ovy15_021FF66C
+	bl ov15_021FF66C
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _021FF5D8:
@@ -12331,7 +12331,7 @@ _021FF5D8:
 	adds r1, r6, #0
 	movs r2, #0x10
 	movs r3, #0
-	bl ovy15_021FE9F0
+	bl ov15_021FE9F0
 _021FF610:
 	movs r0, #0x8e
 	lsls r0, r0, #2
@@ -12345,7 +12345,7 @@ _021FF610:
 	adds r1, r6, #0
 	movs r2, #0x10
 	movs r3, #1
-	bl ovy15_021FE9F0
+	bl ov15_021FE9F0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _021FF632:
@@ -12370,16 +12370,16 @@ _021FF632:
 	ldrh r3, [r3, #2]
 	ldr r1, [r5, r1]
 	adds r2, r6, #0
-	bl ovy15_021FF66C
+	bl ov15_021FF66C
 _021FF662:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021FF668: .4byte 0x00010200
-	thumb_func_end ovy15_021FF570
+	thumb_func_end ov15_021FF570
 
-	thumb_func_start ovy15_021FF66C
-ovy15_021FF66C: @ 0x021FF66C
+	thumb_func_start ov15_021FF66C
+ov15_021FF66C: @ 0x021FF66C
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	adds r4, r1, #0
@@ -12416,10 +12416,10 @@ ovy15_021FF66C: @ 0x021FF66C
 	pop {r4, r5, r6, pc}
 	.align 2, 0
 _021FF6B8: .4byte 0x00010200
-	thumb_func_end ovy15_021FF66C
+	thumb_func_end ov15_021FF66C
 
-	thumb_func_start ovy15_021FF6BC
-ovy15_021FF6BC: @ 0x021FF6BC
+	thumb_func_start ov15_021FF6BC
+ov15_021FF6BC: @ 0x021FF6BC
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	adds r4, r0, #0
@@ -12491,10 +12491,10 @@ _021FF6E0:
 	pop {r4, r5, r6, pc}
 	.align 2, 0
 _021FF754: .4byte 0x000F0100
-	thumb_func_end ovy15_021FF6BC
+	thumb_func_end ov15_021FF6BC
 
-	thumb_func_start ovy15_021FF758
-ovy15_021FF758: @ 0x021FF758
+	thumb_func_start ov15_021FF758
+ov15_021FF758: @ 0x021FF758
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	adds r4, r1, #0
@@ -12533,10 +12533,10 @@ _021FF79E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _021FF7A8: .4byte 0x000F0E00
-	thumb_func_end ovy15_021FF758
+	thumb_func_end ov15_021FF758
 
-	thumb_func_start ovy15_021FF7AC
-ovy15_021FF7AC: @ 0x021FF7AC
+	thumb_func_start ov15_021FF7AC
+ov15_021FF7AC: @ 0x021FF7AC
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	movs r4, #0
@@ -12549,10 +12549,10 @@ _021FF7B2:
 	blt _021FF7B2
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FF7AC
+	thumb_func_end ov15_021FF7AC
 
-	thumb_func_start ovy15_021FF7C4
-ovy15_021FF7C4: @ 0x021FF7C4
+	thumb_func_start ov15_021FF7C4
+ov15_021FF7C4: @ 0x021FF7C4
 	push {r4, lr}
 	sub sp, #0x10
 	movs r1, #0
@@ -12578,10 +12578,10 @@ ovy15_021FF7C4: @ 0x021FF7C4
 	pop {r4, pc}
 	nop
 _021FF7F8: .4byte 0x000F0E00
-	thumb_func_end ovy15_021FF7C4
+	thumb_func_end ov15_021FF7C4
 
-	thumb_func_start ovy15_021FF7FC
-ovy15_021FF7FC: @ 0x021FF7FC
+	thumb_func_start ov15_021FF7FC
+ov15_021FF7FC: @ 0x021FF7FC
 	push {r4, lr}
 	sub sp, #0x10
 	movs r1, #0
@@ -12607,10 +12607,10 @@ ovy15_021FF7FC: @ 0x021FF7FC
 	pop {r4, pc}
 	nop
 _021FF830: .4byte 0x000F0E00
-	thumb_func_end ovy15_021FF7FC
+	thumb_func_end ov15_021FF7FC
 
-	thumb_func_start ovy15_021FF834
-ovy15_021FF834: @ 0x021FF834
+	thumb_func_start ov15_021FF834
+ov15_021FF834: @ 0x021FF834
 	movs r1, #0x7d
 	lsls r1, r1, #2
 	ldr r3, _021FF840 @ =FUN_0201D8E4
@@ -12618,19 +12618,19 @@ ovy15_021FF834: @ 0x021FF834
 	bx r3
 	nop
 _021FF840: .4byte FUN_0201D8E4
-	thumb_func_end ovy15_021FF834
+	thumb_func_end ov15_021FF834
 
-	thumb_func_start ovy15_021FF844
-ovy15_021FF844: @ 0x021FF844
+	thumb_func_start ov15_021FF844
+ov15_021FF844: @ 0x021FF844
 	ldr r3, _021FF84C @ =FUN_0201D8E4
 	adds r0, #0x74
 	bx r3
 	nop
 _021FF84C: .4byte FUN_0201D8E4
-	thumb_func_end ovy15_021FF844
+	thumb_func_end ov15_021FF844
 
-	thumb_func_start ovy15_021FF850
-ovy15_021FF850: @ 0x021FF850
+	thumb_func_start ov15_021FF850
+ov15_021FF850: @ 0x021FF850
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x10
@@ -12643,11 +12643,11 @@ ovy15_021FF850: @ 0x021FF850
 	movs r1, #6
 	bl FUN_0202055C
 	adds r0, r4, #0
-	bl ovy15_021FFA40
+	bl ov15_021FFA40
 	adds r0, r4, #0
-	bl ovy15_021FFAD0
+	bl ov15_021FFAD0
 	adds r0, r4, #0
-	bl ovy15_021FFDD8
+	bl ov15_021FFDD8
 	movs r0, #0x92
 	lsls r0, r0, #2
 	ldr r0, [r4, r0]
@@ -12657,10 +12657,10 @@ ovy15_021FF850: @ 0x021FF850
 	lsls r2, r2, #0x14
 	bl FUN_02009FC8
 	pop {r4, pc}
-	thumb_func_end ovy15_021FF850
+	thumb_func_end ov15_021FF850
 
-	thumb_func_start ovy15_021FF894
-ovy15_021FF894: @ 0x021FF894
+	thumb_func_start ov15_021FF894
+ov15_021FF894: @ 0x021FF894
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r7, #0x25
@@ -12690,10 +12690,10 @@ _021FF8A0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _021FF8D0: .4byte 0x0000069C
-	thumb_func_end ovy15_021FF894
+	thumb_func_end ov15_021FF894
 
-	thumb_func_start ovy15_021FF8D4
-ovy15_021FF8D4: @ 0x021FF8D4
+	thumb_func_start ov15_021FF8D4
+ov15_021FF8D4: @ 0x021FF8D4
 	push {r4, r5, r6, lr}
 	movs r6, #0x25
 	adds r5, r0, #0
@@ -12708,10 +12708,10 @@ _021FF8DE:
 	blo _021FF8DE
 	pop {r4, r5, r6, pc}
 	.align 2, 0
-	thumb_func_end ovy15_021FF8D4
+	thumb_func_end ov15_021FF8D4
 
-	thumb_func_start ovy15_021FF8F0
-ovy15_021FF8F0: @ 0x021FF8F0
+	thumb_func_start ov15_021FF8F0
+ov15_021FF8F0: @ 0x021FF8F0
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	adds r6, r2, #0
@@ -12754,10 +12754,10 @@ ovy15_021FF8F0: @ 0x021FF8F0
 	nop
 _021FF948: .4byte 0x0000C0FC
 _021FF94C: .4byte 0x0000C0FB
-	thumb_func_end ovy15_021FF8F0
+	thumb_func_end ov15_021FF8F0
 
-	thumb_func_start ovy15_021FF950
-ovy15_021FF950: @ 0x021FF950
+	thumb_func_start ov15_021FF950
+ov15_021FF950: @ 0x021FF950
 	ldr r1, _021FF960 @ =0x0000064B
 	movs r2, #0
 	strb r2, [r0, r1]
@@ -12767,10 +12767,10 @@ ovy15_021FF950: @ 0x021FF950
 	bx lr
 	nop
 _021FF960: .4byte 0x0000064B
-	thumb_func_end ovy15_021FF950
+	thumb_func_end ov15_021FF950
 
-	thumb_func_start ovy15_021FF964
-ovy15_021FF964: @ 0x021FF964
+	thumb_func_start ov15_021FF964
+ov15_021FF964: @ 0x021FF964
 	push {r3, lr}
 	ldr r1, _021FF978 @ =0x00000648
 	ldrb r1, [r0, r1]
@@ -12778,15 +12778,15 @@ ovy15_021FF964: @ 0x021FF964
 	beq _021FF976
 	cmp r1, #1
 	bne _021FF976
-	bl ovy15_021FFEC0
+	bl ov15_021FFEC0
 _021FF976:
 	pop {r3, pc}
 	.align 2, 0
 _021FF978: .4byte 0x00000648
-	thumb_func_end ovy15_021FF964
+	thumb_func_end ov15_021FF964
 
-	thumb_func_start ovy15_021FF97C
-ovy15_021FF97C: @ 0x021FF97C
+	thumb_func_start ov15_021FF97C
+ov15_021FF97C: @ 0x021FF97C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -12870,10 +12870,10 @@ _021FFA34:
 	.align 2, 0
 _021FFA38: .4byte 0x0000C103
 _021FFA3C: .4byte 0x0000C104
-	thumb_func_end ovy15_021FF97C
+	thumb_func_end ov15_021FF97C
 
-	thumb_func_start ovy15_021FFA40
-ovy15_021FFA40: @ 0x021FFA40
+	thumb_func_start ov15_021FFA40
+ov15_021FFA40: @ 0x021FFA40
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x4c
 	ldr r3, _021FFAC4 @ =0x022009BC
@@ -12938,10 +12938,10 @@ ovy15_021FFA40: @ 0x021FFA40
 _021FFAC4: .4byte 0x022009BC
 _021FFAC8: .4byte 0x022009F4
 _021FFACC: .4byte 0x022009A8
-	thumb_func_end ovy15_021FFA40
+	thumb_func_end ov15_021FFA40
 
-	thumb_func_start ovy15_021FFAD0
-ovy15_021FFAD0: @ 0x021FFAD0
+	thumb_func_start ov15_021FFAD0
+ov15_021FFAD0: @ 0x021FFAD0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	adds r5, r0, #0
@@ -13292,10 +13292,10 @@ _021FFDC8: .4byte 0x0000C101
 _021FFDCC: .4byte 0x0000C0FD
 _021FFDD0: .4byte 0x0000C0FE
 _021FFDD4: .4byte 0x0000069C
-	thumb_func_end ovy15_021FFAD0
+	thumb_func_end ov15_021FFAD0
 
-	thumb_func_start ovy15_021FFDD8
-ovy15_021FFDD8: @ 0x021FFDD8
+	thumb_func_start ov15_021FFDD8
+ov15_021FFDD8: @ 0x021FFDD8
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldr r4, _021FFEBC @ =0x02200B0C
@@ -13351,7 +13351,7 @@ _021FFE34:
 	blo _021FFE34
 	adds r0, r6, #0
 	movs r1, #1
-	bl ovy15_02200458
+	bl ov15_02200458
 	movs r0, #0x25
 	lsls r0, r0, #4
 	ldr r0, [r6, r0]
@@ -13404,20 +13404,20 @@ _021FFE90:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021FFEBC: .4byte 0x02200B0C
-	thumb_func_end ovy15_021FFDD8
+	thumb_func_end ov15_021FFDD8
 
-	thumb_func_start ovy15_021FFEC0
-ovy15_021FFEC0: @ 0x021FFEC0
+	thumb_func_start ov15_021FFEC0
+ov15_021FFEC0: @ 0x021FFEC0
 	ldr r1, _021FFEC8 @ =0x00000648
 	movs r2, #0
 	strb r2, [r0, r1]
 	bx lr
 	.align 2, 0
 _021FFEC8: .4byte 0x00000648
-	thumb_func_end ovy15_021FFEC0
+	thumb_func_end ov15_021FFEC0
 
-	thumb_func_start ovy15_021FFECC
-ovy15_021FFECC: @ 0x021FFECC
+	thumb_func_start ov15_021FFECC
+ov15_021FFECC: @ 0x021FFECC
 	push {r3, r4, r5, lr}
 	lsls r4, r1, #2
 	ldr r1, _021FFF14 @ =0x02200AB8
@@ -13454,10 +13454,10 @@ _021FFF14: .4byte 0x02200AB8
 _021FFF18: .4byte 0x02200AB9
 _021FFF1C: .4byte 0x02200ABA
 _021FFF20: .4byte 0x02200ABB
-	thumb_func_end ovy15_021FFECC
+	thumb_func_end ov15_021FFECC
 
-	thumb_func_start ovy15_021FFF24
-ovy15_021FFF24: @ 0x021FFF24
+	thumb_func_start ov15_021FFF24
+ov15_021FFF24: @ 0x021FFF24
 	movs r1, #0x2a
 	lsls r1, r1, #4
 	ldr r0, [r0, r1]
@@ -13466,10 +13466,10 @@ ovy15_021FFF24: @ 0x021FFF24
 	bx r3
 	.align 2, 0
 _021FFF30: .4byte FUN_0200DCE8
-	thumb_func_end ovy15_021FFF24
+	thumb_func_end ov15_021FFF24
 
-	thumb_func_start ovy15_021FFF34
-ovy15_021FFF34: @ 0x021FFF34
+	thumb_func_start ov15_021FFF34
+ov15_021FFF34: @ 0x021FFF34
 	push {r3, r4, r5, lr}
 	adds r4, r1, #0
 	adds r5, r0, #0
@@ -13548,10 +13548,10 @@ _021FFFCC: .4byte 0x00000672
 _021FFFD0: .4byte 0x02200A34
 _021FFFD4: .4byte 0x02200A35
 _021FFFD8: .4byte 0x02200A37
-	thumb_func_end ovy15_021FFF34
+	thumb_func_end ov15_021FFF34
 
-	thumb_func_start ovy15_021FFFDC
-ovy15_021FFFDC: @ 0x021FFFDC
+	thumb_func_start ov15_021FFFDC
+ov15_021FFFDC: @ 0x021FFFDC
 	push {r3, r4, r5, lr}
 	adds r4, r1, #0
 	adds r5, r0, #0
@@ -13588,10 +13588,10 @@ _02200020: .4byte 0x022009D4
 _02200024: .4byte 0x022009D5
 _02200028: .4byte 0x022009D6
 _0220002C: .4byte 0x022009D7
-	thumb_func_end ovy15_021FFFDC
+	thumb_func_end ov15_021FFFDC
 
-	thumb_func_start ovy15_02200030
-ovy15_02200030: @ 0x02200030
+	thumb_func_start ov15_02200030
+ov15_02200030: @ 0x02200030
 	push {r3, r4, r5, lr}
 	adds r5, r1, #0
 	cmp r5, #7
@@ -13613,10 +13613,10 @@ ovy15_02200030: @ 0x02200030
 _02200058:
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-	thumb_func_end ovy15_02200030
+	thumb_func_end ov15_02200030
 
-	thumb_func_start ovy15_0220005C
-ovy15_0220005C: @ 0x0220005C
+	thumb_func_start ov15_0220005C
+ov15_0220005C: @ 0x0220005C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
@@ -13694,10 +13694,10 @@ _022000DC:
 _022000F0:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ovy15_0220005C
+	thumb_func_end ov15_0220005C
 
-	thumb_func_start ovy15_022000F4
-ovy15_022000F4: @ 0x022000F4
+	thumb_func_start ov15_022000F4
+ov15_022000F4: @ 0x022000F4
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x8d
@@ -13733,10 +13733,10 @@ _02200128:
 	movs r1, #1
 	bl FUN_0200DCE8
 	pop {r4, pc}
-	thumb_func_end ovy15_022000F4
+	thumb_func_end ov15_022000F4
 
-	thumb_func_start ovy15_02200140
-ovy15_02200140: @ 0x02200140
+	thumb_func_start ov15_02200140
+ov15_02200140: @ 0x02200140
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r7, r0, #0
@@ -13773,7 +13773,7 @@ _02200152:
 	adds r3, r7, r2
 	ldr r2, _022001C0 @ =0x000006A4
 	ldrh r2, [r3, r2]
-	bl ovy15_021FF8F0
+	bl ov15_021FF8F0
 _0220018C:
 	movs r0, #0x95
 	lsls r0, r0, #2
@@ -13794,16 +13794,16 @@ _022001A6:
 	cmp r4, #6
 	blt _02200152
 	adds r0, r7, #0
-	bl ovy15_022000F4
+	bl ov15_022000F4
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
 _022001BC: .4byte 0x02200B0C
 _022001C0: .4byte 0x000006A4
-	thumb_func_end ovy15_02200140
+	thumb_func_end ov15_02200140
 
-	thumb_func_start ovy15_022001C4
-ovy15_022001C4: @ 0x022001C4
+	thumb_func_start ov15_022001C4
+ov15_022001C4: @ 0x022001C4
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r2, #0
 	str r0, [sp]
@@ -13858,14 +13858,14 @@ _02200226:
 	cmp r6, #6
 	blt _022001F2
 	ldr r0, [sp]
-	bl ovy15_022000F4
+	bl ov15_022000F4
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02200238: .4byte 0x02200B0C
-	thumb_func_end ovy15_022001C4
+	thumb_func_end ov15_022001C4
 
-	thumb_func_start ovy15_0220023C
-ovy15_0220023C: @ 0x0220023C
+	thumb_func_start ov15_0220023C
+ov15_0220023C: @ 0x0220023C
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	movs r0, #0x2a
@@ -13908,10 +13908,10 @@ _02200272:
 	movs r1, #0
 	bl FUN_0200DCE8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ovy15_0220023C
+	thumb_func_end ov15_0220023C
 
-	thumb_func_start ovy15_02200294
-ovy15_02200294: @ 0x02200294
+	thumb_func_start ov15_02200294
+ov15_02200294: @ 0x02200294
 	push {r3, r4, r5, r6, r7, lr}
 	movs r4, #0
 	movs r6, #0xb
@@ -13928,10 +13928,10 @@ _022002A0:
 	blt _022002A0
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ovy15_02200294
+	thumb_func_end ov15_02200294
 
-	thumb_func_start ovy15_022002B4
-ovy15_022002B4: @ 0x022002B4
+	thumb_func_start ov15_022002B4
+ov15_022002B4: @ 0x022002B4
 	push {r3, r4, r5, r6, r7, lr}
 	movs r7, #0x95
 	adds r5, r0, #0
@@ -13961,10 +13961,10 @@ _022002E0:
 	blt _022002C0
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ovy15_022002B4
+	thumb_func_end ov15_022002B4
 
-	thumb_func_start ovy15_022002EC
-ovy15_022002EC: @ 0x022002EC
+	thumb_func_start ov15_022002EC
+ov15_022002EC: @ 0x022002EC
 	movs r1, #0
 	cmp r0, #0x64
 	bge _022002F4
@@ -13977,10 +13977,10 @@ _022002FA:
 	adds r0, r1, #0
 	bx lr
 	.align 2, 0
-	thumb_func_end ovy15_022002EC
+	thumb_func_end ov15_022002EC
 
-	thumb_func_start ovy15_02200300
-ovy15_02200300: @ 0x02200300
+	thumb_func_start ov15_02200300
+ov15_02200300: @ 0x02200300
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r5, r0, #0
@@ -14037,7 +14037,7 @@ _02200338:
 	blt _02200338
 _0220036C:
 	ldr r0, [sp, #4]
-	bl ovy15_022002EC
+	bl ov15_022002EC
 	cmp r0, #0
 	beq _022003D4
 	ldr r1, [sp]
@@ -14120,10 +14120,10 @@ _02200418: .4byte 0x02200A58
 _0220041C: .4byte 0x02200A88
 _02200420: .4byte 0x022009A0
 _02200424: .4byte 0x02200A14
-	thumb_func_end ovy15_02200300
+	thumb_func_end ov15_02200300
 
-	thumb_func_start ovy15_02200428
-ovy15_02200428: @ 0x02200428
+	thumb_func_start ov15_02200428
+ov15_02200428: @ 0x02200428
 	push {r3, r4, r5, r6, r7, lr}
 	movs r4, #0
 	movs r6, #0x2d
@@ -14147,10 +14147,10 @@ _02200436:
 	bl FUN_0200DCE8
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ovy15_02200428
+	thumb_func_end ov15_02200428
 
-	thumb_func_start ovy15_02200458
-ovy15_02200458: @ 0x02200458
+	thumb_func_start ov15_02200458
+ov15_02200458: @ 0x02200458
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r7, r1, #0
@@ -14219,10 +14219,10 @@ _022004CE:
 	blt _022004AE
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ovy15_02200458
+	thumb_func_end ov15_02200458
 
-	thumb_func_start ovy15_022004DC
-ovy15_022004DC: @ 0x022004DC
+	thumb_func_start ov15_022004DC
+ov15_022004DC: @ 0x022004DC
 	movs r2, #0xa7
 	lsls r2, r2, #2
 	ldr r3, _022004E8 @ =FUN_0200DCE8
@@ -14230,7 +14230,7 @@ ovy15_022004DC: @ 0x022004DC
 	bx r3
 	nop
 _022004E8: .4byte FUN_0200DCE8
-	thumb_func_end ovy15_022004DC
+	thumb_func_end ov15_022004DC
 _022004EC:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
