@@ -22646,7 +22646,7 @@ _0200B3E2:
 	beq _0200B3F8
 	mov r2, #0x1a
 	ldrsh r2, [r5, r2]
-	ldr r0, _0200B414 ; =FUN_04000050
+	ldr r0, _0200B414 ; =0x04000050
 	ldr r1, [r5]
 	bl FUN_020CF178
 	b _0200B40A
@@ -22667,7 +22667,7 @@ _0200B40A:
 _0200B412:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0200B414: .word FUN_04000050
+_0200B414: .word 0x04000050
 _0200B418: .word 0x04001050
 	thumb_func_end FUN_0200B380
 
@@ -22741,7 +22741,7 @@ FUN_0200B484: ; 0x0200B484
 	mov r0, #1
 	tst r0, r1
 	beq _0200B4B6
-	ldr r0, _0200B4E0 ; =FUN_04000050
+	ldr r0, _0200B4E0 ; =0x04000050
 	add r1, r4, #0
 	bl FUN_020CF178
 	str r4, [sp]
@@ -22773,7 +22773,7 @@ _0200B4DA:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0200B4E0: .word FUN_04000050
+_0200B4E0: .word 0x04000050
 _0200B4E4: .word 0x021D0ED4
 _0200B4E8: .word 0x04001050
 _0200B4EC: .word 0x021D0EB4
@@ -22788,7 +22788,7 @@ FUN_0200B4F0: ; 0x0200B4F0
 	add r6, r1, #0
 	tst r0, r4
 	beq _0200B506
-	ldr r0, _0200B520 ; =FUN_04000050
+	ldr r0, _0200B520 ; =0x04000050
 	add r2, r5, #0
 	bl FUN_020CF178
 _0200B506:
@@ -22804,7 +22804,7 @@ _0200B516:
 	bl FUN_0200B554
 	pop {r4, r5, r6, pc}
 	nop
-_0200B520: .word FUN_04000050
+_0200B520: .word 0x04000050
 _0200B524: .word 0x04001050
 	thumb_func_end FUN_0200B4F0
 

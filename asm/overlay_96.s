@@ -100660,10 +100660,7 @@ _02216C74:
 	str r0, [sp, #0x68]
 	str r0, [sp, #0x6c]
 	str r0, [sp, #0x70]
-	thumb_func_end ov96_02216C38
-
-	non_word_aligned_thumb_func_start FUN_02216CA6
-FUN_02216CA6: @ 0x02216CA6
+_02216CA6:
 	ldr r0, [sp, #0xc]
 	bl ov96_021E5D34
 	cmp r0, r6
@@ -101663,7 +101660,7 @@ _022174AE:
 	str r0, [sp, #0x3c]
 	cmp r6, #4
 	bge _022174CA
-	bl FUN_02216CA6
+	bl _02216CA6
 _022174CA:
 	movs r6, #0
 	adds r4, r6, #0
@@ -101724,7 +101721,7 @@ _0221752C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02217540: .4byte ov96_02216C00
-	thumb_func_end FUN_02216CA6
+	thumb_func_end ov96_02216C38
 
 	thumb_func_start ov96_02217544
 ov96_02217544: @ 0x02217544
