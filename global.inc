@@ -1532,3 +1532,7 @@
 .public SDK_STATIC_ETABLE_END
 .public FUN_020F47A0
 .public FUN_020F4A58
+.public _fp_init
+.public __call_static_initializers
+.public FUN_01FF8000
+.public NitroMain
