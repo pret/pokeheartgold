@@ -531,7 +531,8 @@ Overlay OVY_44
 Overlay OVY_45
 {
     After OVY_39
-    Object overlay_45.o
+    Object overlay_45_thumb.o
+    Object overlay_45_arm.o
     ### Size 0x2d8e0 ###
     ### BSS Size 0x1040 ###
     ### SINIT Start 0x2254e18 ###
