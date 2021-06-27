@@ -134,7 +134,7 @@ ov30_0225D64C: @ 0x0225D64C
 	adds r4, r0, #0
 	movs r0, #0
 	adds r1, r7, #0
-	blx FUN_020D8D60
+	blx FS_LoadOverlay
 	ldr r0, _0225D6F0 @ =ov30_0225DC28
 	blx FUN_0225F4A8
 	cmp r0, #0
@@ -187,7 +187,7 @@ _0225D69E:
 _0225D6E2:
 	movs r0, #0
 	adds r1, r7, #0
-	blx FUN_020D8DB4
+	blx FS_UnloadOverlay
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0225D6EC: .4byte 0x0000007B

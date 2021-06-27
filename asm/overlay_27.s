@@ -240,7 +240,7 @@ ov27_0225A19C: @ 0x0225A19C
 	adds r6, r0, #0
 	ldr r1, _0225A2B0 @ =0x0000007B
 	movs r0, #0
-	blx FUN_020D8D60
+	blx FS_LoadOverlay
 	ldr r0, _0225A2B4 @ =ov27_0225C238
 	blx FUN_0225F430
 	cmp r0, #0
@@ -348,7 +348,7 @@ _0225A246:
 _0225A2A4:
 	ldr r1, _0225A2B0 @ =0x0000007B
 	movs r0, #0
-	blx FUN_020D8DB4
+	blx FS_UnloadOverlay
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0

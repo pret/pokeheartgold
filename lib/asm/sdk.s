@@ -78093,9 +78093,8 @@ _020D8740: .word FUN_020D7C00
 _020D8744: .word 0x021E3654
 	arm_func_end FUN_020D8728
 
-	; FSi_GetOverlayBinarySize
-	arm_func_start FUN_020D8748
-FUN_020D8748: ; 0x020D8748
+	arm_func_start FSi_GetOverlayBinarySize
+FSi_GetOverlayBinarySize: ; 0x020D8748
 	ldr r1, [r0, #0x1c]
 	mov r2, r1, lsr #0x18
 	tst r2, #1
@@ -78103,11 +78102,10 @@ FUN_020D8748: ; 0x020D8748
 	movne r0, r0, lsr #8
 	ldreq r0, [r0, #8]
 	bx lr
-	arm_func_end FUN_020D8748
+	arm_func_end FSi_GetOverlayBinarySize
 
-	; FS_ClearOverlayImage
-	arm_func_start FUN_020D8764
-FUN_020D8764: ; 0x020D8764
+	arm_func_start FS_ClearOverlayImage
+FS_ClearOverlayImage: ; 0x020D8764
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, [r0, #0xc]
 	ldmib r0, {r4, r5}
@@ -78123,11 +78121,10 @@ FUN_020D8764: ; 0x020D8764
 	mov r1, #0
 	bl FUN_020D4994
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end FUN_020D8764
+	arm_func_end FS_ClearOverlayImage
 
-	; FS_GetOverlayFileID
-	arm_func_start FUN_020D87A0
-FUN_020D87A0: ; 0x020D87A0
+	arm_func_start FS_GetOverlayFileID
+FS_GetOverlayFileID: ; 0x020D87A0
 	sub sp, sp, #8
 	ldr r1, [r1, #0x18]
 	ldr r2, _020D87C4 ; =0x021E3654
@@ -78139,11 +78136,10 @@ FUN_020D87A0: ; 0x020D87A0
 	bx lr
 	.align 2, 0
 _020D87C4: .word 0x021E3654
-	arm_func_end FUN_020D87A0
+	arm_func_end FS_GetOverlayFileID
 
-	; FSi_LoadOverlayInfoCore
-	arm_func_start FUN_020D87C8
-FUN_020D87C8: ; 0x020D87C8
+	arm_func_start FSi_LoadOverlayInfoCore
+FSi_LoadOverlayInfoCore: ; 0x020D87C8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x54
 	movs sb, r1
@@ -78187,7 +78183,7 @@ _020D8860:
 	add r0, sp, #4
 	mov r1, r4
 	str sb, [r4, #0x20]
-	bl FUN_020D87A0
+	bl FS_GetOverlayFileID
 	add r1, sp, #4
 	add r0, sp, #0xc
 	ldmia r1, {r1, r2}
@@ -78207,11 +78203,10 @@ _020D8860:
 	mov r0, #1
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end FUN_020D87C8
+	arm_func_end FSi_LoadOverlayInfoCore
 
-	; FS_LoadOverlayInfo
-	arm_func_start FUN_020D88C0
-FUN_020D88C0: ; 0x020D88C0
+	arm_func_start FS_LoadOverlayInfo
+FS_LoadOverlayInfo: ; 0x020D88C0
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x60
 	movs r4, r1
@@ -78236,7 +78231,7 @@ FUN_020D88C0: ; 0x020D88C0
 	bl FUN_020D7F98
 	add r0, sp, #0x10
 	mov r1, r5
-	bl FUN_020D87A0
+	bl FS_GetOverlayFileID
 	add r1, sp, #0x10
 	add r0, sp, #0x18
 	ldmia r1, {r1, r2}
@@ -78269,7 +78264,7 @@ _020D8970:
 	str r4, [sp, #8]
 	ldr r4, [ip, #0xc]
 	str r4, [sp, #0xc]
-	bl FUN_020D87C8
+	bl FSi_LoadOverlayInfoCore
 	add sp, sp, #0x60
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -78277,11 +78272,10 @@ _020D89AC: .word 0x021E3644
 _020D89B0: .word 0x021E364C
 _020D89B4: .word 0x027FFE50
 _020D89B8: .word 0x021E3654
-	arm_func_end FUN_020D88C0
+	arm_func_end FS_LoadOverlayInfo
 
-	; FS_LoadOverlayImageAsync
-	arm_func_start FUN_020D89BC
-FUN_020D89BC: ; 0x020D89BC
+	arm_func_start FS_LoadOverlayImageAsync
+FS_LoadOverlayImageAsync: ; 0x020D89BC
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r5, r1
@@ -78290,7 +78284,7 @@ FUN_020D89BC: ; 0x020D89BC
 	bl FUN_020D7F98
 	add r0, sp, #0
 	mov r1, r6
-	bl FUN_020D87A0
+	bl FS_GetOverlayFileID
 	add r1, sp, #0
 	mov r0, r5
 	ldmia r1, {r1, r2}
@@ -78300,10 +78294,10 @@ FUN_020D89BC: ; 0x020D89BC
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r6
-	bl FUN_020D8748
+	bl FSi_GetOverlayBinarySize
 	mov r4, r0
 	mov r0, r6
-	bl FUN_020D8764
+	bl FS_ClearOverlayImage
 	ldr r1, [r6, #4]
 	mov r0, r5
 	mov r2, r4
@@ -78317,11 +78311,10 @@ FUN_020D89BC: ; 0x020D89BC
 	mov r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end FUN_020D89BC
+	arm_func_end FS_LoadOverlayImageAsync
 
-	; FS_LoadOverlayImage
-	arm_func_start FUN_020D8A48
-FUN_020D8A48: ; 0x020D8A48
+	arm_func_start FS_LoadOverlayImage
+FS_LoadOverlayImage: ; 0x020D8A48
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x50
 	mov r5, r0
@@ -78329,7 +78322,7 @@ FUN_020D8A48: ; 0x020D8A48
 	bl FUN_020D7F98
 	add r0, sp, #0
 	mov r1, r5
-	bl FUN_020D87A0
+	bl FS_GetOverlayFileID
 	add r1, sp, #0
 	add r0, sp, #8
 	ldmia r1, {r1, r2}
@@ -78339,10 +78332,10 @@ FUN_020D8A48: ; 0x020D8A48
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl FUN_020D8748
+	bl FSi_GetOverlayBinarySize
 	mov r4, r0
 	mov r0, r5
-	bl FUN_020D8764
+	bl FS_ClearOverlayImage
 	ldr r1, [r5, #4]
 	add r0, sp, #8
 	mov r2, r4
@@ -78359,11 +78352,10 @@ _020D8AC8:
 	mov r0, #1
 	add sp, sp, #0x50
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end FUN_020D8A48
+	arm_func_end FS_LoadOverlayImage
 
-	; FSi_CompareDigest
-	arm_func_start FUN_020D8AD8
-FUN_020D8AD8: ; 0x020D8AD8
+	arm_func_start FSi_CompareDigest
+FSi_CompareDigest: ; 0x020D8AD8
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x58
 	mov r4, r0
@@ -78404,14 +78396,13 @@ _020D8B54:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D8B68: .word _02110CA0
-	arm_func_end FUN_020D8AD8
+	arm_func_end FSi_CompareDigest
 
-	; FS_StartOverlay
-	arm_func_start FUN_020D8B6C
-FUN_020D8B6C: ; 0x020D8B6C
+	arm_func_start FS_StartOverlay
+FS_StartOverlay: ; 0x020D8B6C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl FUN_020D8748
+	bl FSi_GetOverlayBinarySize
 	ldr r1, _020D8C50 ; =0x027FFC40
 	mov r4, r0
 	ldrh r0, [r1]
@@ -78436,7 +78427,7 @@ FUN_020D8B6C: ; 0x020D8B6C
 	mla r0, r2, r0, r3
 	ldr r1, [r5, #4]
 	mov r2, r4
-	bl FUN_020D8AD8
+	bl FSi_CompareDigest
 _020D8BDC:
 	cmp r0, #0
 	bne _020D8BFC
@@ -78476,11 +78467,10 @@ _020D8C50: .word 0x027FFC40
 _020D8C54: .word SDK_STATIC_TEXT_END
 _020D8C58: .word SDK_STATIC_TEXT_END
 _020D8C5C: .word 0x66666667
-	arm_func_end FUN_020D8B6C
+	arm_func_end FS_StartOverlay
 
-	; FS_EndOverlay
-	arm_func_start FUN_020D8C60
-FUN_020D8C60: ; 0x020D8C60
+	arm_func_start FS_EndOverlay
+FS_EndOverlay: ; 0x020D8C60
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov fp, r0
 _020D8C68:
@@ -78552,31 +78542,29 @@ _020D8D48:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020D8D4C: .word 0x021E58E8
-	arm_func_end FUN_020D8C60
+	arm_func_end FS_EndOverlay
 
-	; FS_UnloadOverlayImage
-	arm_func_start FUN_020D8D50
-FUN_020D8D50: ; 0x020D8D50
+	arm_func_start FS_UnloadOverlayImage
+FS_UnloadOverlayImage: ; 0x020D8D50
 	stmdb sp!, {r3, lr}
-	bl FUN_020D8C60
+	bl FS_EndOverlay
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end FUN_020D8D50
+	arm_func_end FS_UnloadOverlayImage
 
-	; FS_LoadOverlay
-	arm_func_start FUN_020D8D60
-FUN_020D8D60: ; 0x020D8D60
+	arm_func_start FS_LoadOverlay
+FS_LoadOverlay: ; 0x020D8D60
 	stmdb sp!, {lr}
 	sub sp, sp, #0x2c
 	mov r3, r0
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl FUN_020D88C0
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	beq _020D8D94
 	add r0, sp, #0
-	bl FUN_020D8A48
+	bl FS_LoadOverlayImage
 	cmp r0, #0
 	bne _020D8DA0
 _020D8D94:
@@ -78585,26 +78573,25 @@ _020D8D94:
 	ldmia sp!, {pc}
 _020D8DA0:
 	add r0, sp, #0
-	bl FUN_020D8B6C
+	bl FS_StartOverlay
 	mov r0, #1
 	add sp, sp, #0x2c
 	ldmia sp!, {pc}
-	arm_func_end FUN_020D8D60
+	arm_func_end FS_LoadOverlay
 
-	; FS_UnloadOverlay
-	arm_func_start FUN_020D8DB4
-FUN_020D8DB4: ; 0x020D8DB4
+	arm_func_start FS_UnloadOverlay
+FS_UnloadOverlay: ; 0x020D8DB4
 	stmdb sp!, {lr}
 	sub sp, sp, #0x2c
 	mov r3, r0
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl FUN_020D88C0
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	beq _020D8DE8
 	add r0, sp, #0
-	bl FUN_020D8D50
+	bl FS_UnloadOverlayImage
 	cmp r0, #0
 	bne _020D8DF4
 _020D8DE8:
@@ -78615,7 +78602,7 @@ _020D8DF4:
 	mov r0, #1
 	add sp, sp, #0x2c
 	ldmia sp!, {pc}
-	arm_func_end FUN_020D8DB4
+	arm_func_end FS_UnloadOverlay
 
 	arm_func_start FUN_020D8E00
 FUN_020D8E00: ; 0x020D8E00

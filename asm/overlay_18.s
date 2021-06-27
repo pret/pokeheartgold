@@ -348,7 +348,7 @@ ov18_021E5B80: @ 0x021E5B80
 	adds r4, r0, #0
 	movs r0, #0
 	adds r1, r6, #0
-	blx FUN_020D8D60
+	blx FS_LoadOverlay
 	ldr r0, _021E5C0C @ =ov18_021E5C1C
 	blx FUN_0225F520
 	cmp r0, #0
@@ -394,7 +394,7 @@ _021E5BD0:
 _021E5BFC:
 	movs r0, #0
 	adds r1, r6, #0
-	blx FUN_020D8DB4
+	blx FS_UnloadOverlay
 	movs r0, #1
 	pop {r4, r5, r6, pc}
 	.align 2, 0

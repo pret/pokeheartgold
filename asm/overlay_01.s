@@ -44,7 +44,7 @@ _021E594A: @ jump table
 _021E5952:
 	ldr r1, _021E5BA0 @ =0x0000007B
 	movs r0, #0
-	blx FUN_020D8D60
+	blx FS_LoadOverlay
 	movs r0, #0
 	adds r1, r0, #0
 	bl FUN_0201A0FC
@@ -130,7 +130,7 @@ _021E59F0:
 _021E5A12:
 	ldr r1, _021E5BA0 @ =0x0000007B
 	movs r0, #0
-	blx FUN_020D8DB4
+	blx FS_UnloadOverlay
 	movs r0, #4
 	movs r1, #0x28
 	bl FUN_0201AA8C
@@ -371,7 +371,7 @@ _021E5C48:
 _021E5C4A:
 	ldr r1, _021E5E80 @ =0x0000007B
 	movs r0, #0
-	blx FUN_020D8D60
+	blx FS_LoadOverlay
 	adds r0, r4, #0
 	bl FUN_02064910
 	ldr r0, _021E5E84 @ =ov01_021E66C8
@@ -452,7 +452,7 @@ _021E5CFA:
 	bl ov01_021EB1BC
 	ldr r1, _021E5E80 @ =0x0000007B
 	movs r0, #0
-	blx FUN_020D8DB4
+	blx FS_UnloadOverlay
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x10]
 	bl ov01_021EB1DC

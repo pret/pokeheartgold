@@ -8,7 +8,7 @@ ov124_02260C20: @ 0x02260C20
 	movs r0, #0
 	adds r1, r7, #0
 	ldr r4, _02260CFC @ =0x0097B4B1
-	blx FUN_020D8D60
+	blx FS_LoadOverlay
 	ldr r0, _02260D00 @ =ov124_02260D68
 	blx FUN_0225F4A8
 	cmp r0, #0
@@ -60,7 +60,7 @@ _02260C66:
 	str r0, [r1]
 	movs r0, #0
 	adds r1, r7, #0
-	blx FUN_020D8DB4
+	blx FS_UnloadOverlay
 	ldr r1, _02260D14 @ =0x00000989
 	adds r0, r4, r6
 	blx FUN_020F2BA4

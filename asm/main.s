@@ -13164,7 +13164,7 @@ FUN_02006F58: ; 0x02006F58
 _02006F66:
 	ldr r1, [r4]
 	mov r0, #0
-	bl FUN_020D8DB4
+	bl FS_UnloadOverlay
 	cmp r0, #1
 	beq _02006F76
 	bl GF_AssertFail
@@ -13208,7 +13208,7 @@ FUN_02006FAC: ; 0x02006FAC
 	add r2, r0, #0
 	add r0, sp, #0
 	mov r1, #0
-	bl FUN_020D88C0
+	bl FS_LoadOverlayInfo
 	cmp r0, #1
 	beq _02006FC2
 	bl GF_AssertFail
@@ -13439,7 +13439,7 @@ FUN_02007148: ; 0x02007148
 	add r0, sp, #0
 	mov r1, #0
 	add r2, r3, #0
-	bl FUN_020D88C0
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _0200716A
 	bl GF_AssertFail
@@ -13462,10 +13462,10 @@ _0200716A:
 
 	thumb_func_start FUN_02007180
 FUN_02007180: ; 0x02007180
-	ldr r3, _02007184 ; =FUN_020D8D60
+	ldr r3, _02007184 ; =FS_LoadOverlay
 	bx r3
 	.align 2, 0
-_02007184: .word FUN_020D8D60
+_02007184: .word FS_LoadOverlay
 	thumb_func_end FUN_02007180
 
 	thumb_func_start FUN_02007188
@@ -13476,7 +13476,7 @@ FUN_02007188: ; 0x02007188
 	add r2, r1, #0
 	add r0, sp, #0
 	add r1, r3, #0
-	bl FUN_020D88C0
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020071A2
 	add sp, #0x2c
@@ -13484,7 +13484,7 @@ FUN_02007188: ; 0x02007188
 	pop {pc}
 _020071A2:
 	add r0, sp, #0
-	bl FUN_020D8A48
+	bl FS_LoadOverlayImage
 	cmp r0, #0
 	bne _020071B2
 	add sp, #0x2c
@@ -13492,7 +13492,7 @@ _020071A2:
 	pop {pc}
 _020071B2:
 	add r0, sp, #0
-	bl FUN_020D8B6C
+	bl FS_StartOverlay
 	mov r0, #1
 	add sp, #0x2c
 	pop {pc}
@@ -13507,7 +13507,7 @@ FUN_020071C0: ; 0x020071C0
 	add r2, r1, #0
 	add r0, sp, #0
 	add r1, r3, #0
-	bl FUN_020D88C0
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020071DA
 	add sp, #0x74
@@ -13518,13 +13518,13 @@ _020071DA:
 	bl FUN_020D7F98
 	add r0, sp, #0
 	add r1, sp, #0x2c
-	bl FUN_020D89BC
+	bl FS_LoadOverlayImageAsync
 	add r0, sp, #0x2c
 	bl FUN_020D82FC
 	add r0, sp, #0x2c
 	bl FUN_020D82C0
 	add r0, sp, #0
-	bl FUN_020D8B6C
+	bl FS_StartOverlay
 	mov r0, #1
 	add sp, #0x74
 	pop {pc}
