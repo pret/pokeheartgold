@@ -5702,7 +5702,7 @@ _021E8636:
 	str r0, [r4]
 	cmp r0, #0
 	bne _021E866E
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E866E:
 	adds r0, r4, #0
 	add sp, #0x60
@@ -5862,7 +5862,7 @@ _021E8768:
 	ldr r0, [r0, r4]
 	cmp r0, #0
 	bne _021E879A
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E879A:
 	ldr r0, [r5, #4]
 	cmp r0, #0
@@ -5917,7 +5917,7 @@ _021E87D0:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _021E8806
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E8806:
 	adds r4, r4, #1
 	adds r6, r6, #4
@@ -5947,7 +5947,7 @@ _021E8806:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _021E8844
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E8844:
 	ldr r0, [r4]
 	ldr r0, [r0]

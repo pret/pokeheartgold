@@ -6372,10 +6372,10 @@ _02241138: .4byte 0x00000463
 
 	thumb_func_start ov81_0224113C
 ov81_0224113C: @ 0x0224113C
-	ldr r3, _02241140 @ =FUN_0202551C
+	ldr r3, _02241140 @ =GF_AssertFail
 	bx r3
 	.align 2, 0
-_02241140: .4byte FUN_0202551C
+_02241140: .4byte GF_AssertFail
 	thumb_func_end ov81_0224113C
 
 	thumb_func_start ov81_02241144

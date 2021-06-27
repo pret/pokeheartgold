@@ -2539,7 +2539,7 @@ _02238D70:
 	ldr r0, [sp, #0x24]
 	cmp r0, #0x15
 	blt _02238D7A
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02238D7A:
 	ldr r0, [sp, #0x30]
 	movs r7, #1

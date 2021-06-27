@@ -4254,7 +4254,7 @@ ov87_021E7A04: @ 0x021E7A04
 	cmp r0, #0
 	bne _021E7A28
 	bne _021E7A28
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E7A28:
 	pop {r4, pc}
 	.align 2, 0
@@ -4909,7 +4909,7 @@ ov87_021E7F28: @ 0x021E7F28
 	adds r5, r0, #0
 	cmp r4, #8
 	blt _021E7F38
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E7F38:
 	movs r0, #0x13
 	lsls r0, r0, #4

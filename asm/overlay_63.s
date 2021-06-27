@@ -7334,7 +7334,7 @@ _0221FA46:
 	lsls r0, r0, #0xa
 	cmp r1, r0
 	blo _0221FA6C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0221FA6C:
 	movs r0, #1
 	str r0, [r7, #4]

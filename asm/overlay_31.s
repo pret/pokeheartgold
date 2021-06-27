@@ -665,7 +665,7 @@ ov31_0225DAA4: @ 0x0225DAA4
 	beq _0225DAB2
 	cmp r4, #1
 	beq _0225DAB2
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225DAB2:
 	ldr r0, _0225DAC0 @ =0x0225EF40
 	lsls r1, r4, #2

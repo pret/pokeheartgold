@@ -493,7 +493,7 @@ _02258C16:
 	movs r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _02258C24:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02258C28:
 	movs r0, #0
 	add sp, #0x10
@@ -1105,7 +1105,7 @@ _02259138:
 	ldr r0, [sp, #0x24]
 	cmp r0, #0x15
 	blt _02259142
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259142:
 	ldr r0, [sp, #0x30]
 	movs r7, #1
@@ -1509,7 +1509,7 @@ ov46_02259450: @ 0x02259450
 	ldr r0, [r4, #0x24]
 	cmp r0, #0
 	beq _02259464
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259464:
 	adds r0, r4, #0
 	adds r0, #8
@@ -1531,7 +1531,7 @@ ov46_02259474: @ 0x02259474
 	ldr r0, [r4, #0x24]
 	cmp r0, #0
 	bne _02259488
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259488:
 	ldr r0, [r4, #0x24]
 	bl FUN_0200F450

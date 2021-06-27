@@ -41,7 +41,7 @@ ov47_02258800: @ 0x02258800
 	ldr r0, [r5, #8]
 	cmp r0, #2
 	blt _02258862
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02258862:
 	movs r1, #0x81
 	str r1, [sp]
@@ -612,7 +612,7 @@ ov47_02258CEC: @ 0x02258CEC
 	adds r6, r2, #0
 	cmp r4, #9
 	blo _02258CFC
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02258CFC:
 	lsls r0, r4, #2
 	ldr r0, [r5, r0]
@@ -636,7 +636,7 @@ ov47_02258D18: @ 0x02258D18
 	cmp r2, #0x3c
 	blo _02258D2A
 	bhs _02258D28
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02258D28:
 	movs r2, #0
 _02258D2A:
@@ -663,7 +663,7 @@ ov47_02258D44: @ 0x02258D44
 	cmp r3, #0x3c
 	blo _02258D58
 	bhs _02258D56
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02258D56:
 	movs r3, #0
 _02258D58:
@@ -809,13 +809,13 @@ ov47_02258DD0: @ 0x02258DD0
 	bl FUN_0200ADA4
 	cmp r0, #0
 	bne _02258E6C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02258E6C:
 	ldr r0, [r5, #0x1c]
 	bl FUN_0200B00C
 	cmp r0, #0
 	bne _02258E7A
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02258E7A:
 	ldr r0, [r5, #0x18]
 	bl FUN_0200A740
@@ -1138,7 +1138,7 @@ _02259104:
 	strh r0, [r4, #0x28]
 	b _02259118
 _02259114:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259118:
 	movs r0, #0
 	pop {r4, r5, r6, pc}
@@ -1450,7 +1450,7 @@ ov47_02259384: @ 0x02259384
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
 	beq _02259392
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259392:
 	adds r0, r4, #0
 	adds r0, #8
@@ -1528,7 +1528,7 @@ ov47_02259404: @ 0x02259404
 	adds r6, r2, #0
 	cmp r0, #0
 	beq _02259418
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259418:
 	str r6, [sp]
 	ldr r0, [r4]
@@ -2199,7 +2199,7 @@ _0225992E:
 	strh r0, [r4]
 	b _02259948
 _02259944:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259948:
 	movs r0, #0
 	add sp, #0x28
@@ -2667,7 +2667,7 @@ _02259CC4:
 	bl FUN_0222F628
 	adds r4, r0, #0
 	bne _02259CF6
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259CF6:
 	ldr r0, [r5, #0x10]
 	adds r1, r4, #0
@@ -2679,7 +2679,7 @@ _02259D02:
 	bl FUN_0222F628
 	adds r6, r0, #0
 	bne _02259D10
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259D10:
 	ldr r0, [r5, #0x14]
 	adds r1, r6, #0
@@ -2780,7 +2780,7 @@ ov47_02259DA4: @ 0x02259DA4
 	adds r6, r2, #0
 	cmp r4, #3
 	blo _02259DB4
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259DB4:
 	lsls r2, r4, #2
 	movs r1, #0

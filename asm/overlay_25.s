@@ -78,7 +78,7 @@ ov25_02259948: @ 0x02259948
 	bl FUN_0200BAF8
 	adds r6, r0, #0
 	bne _0225996C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225996C:
 	cmp r6, #0
 	beq _022599C4
@@ -90,7 +90,7 @@ _0225996C:
 	bl FUN_0200BB44
 	cmp r4, #0
 	bne _02259988
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259988:
 	cmp r4, #0
 	beq _022599C4
@@ -99,7 +99,7 @@ _02259988:
 	adds r6, r0, #0
 	cmp r6, #7
 	bls _0225999C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225999C:
 	cmp r6, #7
 	bls _022599A2
@@ -130,7 +130,7 @@ _022599C8:
 	bl FUN_0200BCDC
 	adds r4, r0, #0
 	bne _022599DE
-	bl FUN_0202551C
+	bl GF_AssertFail
 _022599DE:
 	cmp r4, #0
 	beq _02259A1A
@@ -139,7 +139,7 @@ _022599DE:
 	adds r6, r0, #0
 	cmp r6, #0xa
 	bls _022599F2
-	bl FUN_0202551C
+	bl GF_AssertFail
 _022599F2:
 	cmp r6, #0xa
 	bls _022599F8
@@ -455,12 +455,12 @@ _02259C5A:
 	bl FUN_0206EC40
 	add r0, sp, #0x10
 	movs r1, #0xb
-	bl FUN_0200210C
+	bl StringFillEOS
 	adds r1, r6, #0
 	add r0, sp, #0x10
 	adds r1, #0x24
 	movs r2, #0xa
-	bl FUN_02002048
+	bl StringCopyN
 	adds r0, r4, #0
 	movs r1, #0x75
 	add r2, sp, #0x10
@@ -500,7 +500,7 @@ ov25_02259CC4: @ 0x02259CC4
 	adds r1, r5, #0
 	adds r0, #0x14
 	adds r1, #8
-	bl FUN_02002028
+	bl StringCopy
 	adds r0, r4, #0
 	adds r1, r5, #0
 	adds r0, #0x24

@@ -569,7 +569,7 @@ _0221EA20:
 	ldrh r0, [r0, #0xa]
 	strh r0, [r4, #0xe]
 	ldr r0, [sp, #4]
-	bl FUN_02002048
+	bl StringCopyN
 	add r0, sp, #0xc
 	ldrh r0, [r0, #0x10]
 	strb r0, [r4, #0x1c]
@@ -943,7 +943,7 @@ _0221ED1C:
 	add r0, sp, #0x78
 	adds r0, #2
 	add r1, sp, #0x44
-	bl FUN_02002048
+	bl StringCopyN
 	add r1, sp, #0
 	ldrh r2, [r1, #0x3c]
 	add r0, sp, #0x70
@@ -2133,7 +2133,7 @@ _0221F70C:
 	bl FUN_020248F0
 	b _0221F72E
 _0221F72A:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0221F72E:
 	adds r0, r4, #1
 	lsls r0, r0, #0x18
@@ -2765,7 +2765,7 @@ ov97_0221FBDC: @ 0x0221FBDC
 	blx FUN_020B7140
 	cmp r0, #1
 	beq _0221FC3A
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0221FC3A:
 	ldr r0, [sp, #0x10]
 	movs r1, #0x97

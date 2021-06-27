@@ -252,7 +252,7 @@ _021E5AEA:
 	add sp, #0xc
 	pop {r4, r5, pc}
 _021E5AF6:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E5AFA:
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -307,7 +307,7 @@ _021E5B54:
 	bl ov62_021E5A84
 	pop {r3, r4, r5, pc}
 _021E5B5E:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E5B62:
 	pop {r3, r4, r5, pc}
 	.align 2, 0
@@ -350,7 +350,7 @@ _021E5BA4:
 	bl ov62_021E5A84
 	pop {r3, r4, r5, pc}
 _021E5BAE:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E5BB2:
 	pop {r3, r4, r5, pc}
 	.align 2, 0
@@ -405,7 +405,7 @@ _021E5C08:
 	add sp, #0xc
 	pop {r4, r5, pc}
 _021E5C14:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E5C18:
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -1393,7 +1393,7 @@ _021E63BE:
 	movs r4, #4
 	b _021E63CA
 _021E63C6:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E63CA:
 	adds r0, r4, #0
 	pop {r4, pc}

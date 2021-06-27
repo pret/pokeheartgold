@@ -3166,7 +3166,7 @@ ov89_0225A260: @ 0x0225A260
 	ldr r4, [sp, #0x9c]
 	cmp r0, #0
 	beq _0225A278
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225A278:
 	ldr r0, [r6, #8]
 	ldr r1, [sp, #0x1c]
@@ -3395,7 +3395,7 @@ _0225A42E:
 	ldr r0, [r5, r0]
 	cmp r0, r1
 	bge _0225A442
-	bl FUN_0202551C
+	bl GF_AssertFail
 	ldr r0, _0225A464 @ =0x000019D4
 	ldr r1, [r5, r0]
 	adds r0, r0, #4
@@ -3920,7 +3920,7 @@ ov89_0225A7BC: @ 0x0225A7BC
 	ldrh r0, [r4, #2]
 	cmp r0, r2
 	bls _0225A80A
-	bl FUN_0202551C
+	bl GF_AssertFail
 	movs r0, #0x84
 	strh r0, [r4, #2]
 _0225A80A:
@@ -3993,7 +3993,7 @@ ov89_0225A878: @ 0x0225A878
 	str r0, [r5]
 	cmp r0, #0
 	bne _0225A89C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225A89C:
 	ldr r0, [r5]
 	blx FUN_020C3B40
@@ -4712,7 +4712,7 @@ ov89_0225ADA4: @ 0x0225ADA4
 	adds r7, r0, #0
 	cmp r7, #3
 	blo _0225ADC0
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225ADC0:
 	adds r0, r4, #0
 	add r1, sp, #0x14
@@ -4871,7 +4871,7 @@ _0225AEFA:
 	adds r2, r2, #4
 	cmp r0, #0x80
 	blt _0225AED8
-	bl FUN_0202551C
+	bl GF_AssertFail
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _0225AF08: .4byte 0x0000053C
@@ -4945,7 +4945,7 @@ ov89_0225AF7C: @ 0x0225AF7C
 	ldrb r0, [r5, r4]
 	subs r0, r0, #1
 	bpl _0225AF94
-	bl FUN_0202551C
+	bl GF_AssertFail
 	movs r0, #0
 _0225AF94:
 	strb r0, [r5, r4]
@@ -8128,7 +8128,7 @@ ov89_0225C724: @ 0x0225C724
 	beq _0225C80A
 	cmp r5, #8
 	blo _0225C768
-	bl FUN_0202551C
+	bl GF_AssertFail
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 _0225C768:
@@ -8212,7 +8212,7 @@ ov89_0225C818: @ 0x0225C818
 	push {r3, lr}
 	cmp r1, #8
 	blo _0225C824
-	bl FUN_0202551C
+	bl GF_AssertFail
 	pop {r3, pc}
 _0225C824:
 	lsls r1, r1, #4

@@ -3711,7 +3711,7 @@ ov65_0221DD34: @ 0x0221DD34
 	adds r4, r2, #0
 	cmp r5, #0xd
 	blt _0221DD46
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0221DD46:
 	ldr r1, _0221DDAC @ =0x0221FF4C
 	lsls r0, r5, #3
@@ -3906,7 +3906,7 @@ ov65_0221DEA0: @ 0x0221DEA0
 	bl FUN_02028F54
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl FUN_02002028
+	bl StringCopy
 	adds r0, r6, #0
 	bl FUN_02028F84
 	str r0, [r4, #0x10]

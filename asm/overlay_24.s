@@ -540,7 +540,7 @@ ov24_02259CC0: @ 0x02259CC0
 	blx FUN_020D8278
 	cmp r0, #0
 	bne _02259CE0
-	bl FUN_0202551C
+	bl GF_AssertFail
 	add sp, #0x58
 	pop {r3, r4, r5, r6, r7, pc}
 _02259CE0:
@@ -686,7 +686,7 @@ ov24_02259DF0: @ 0x02259DF0
 	blx FUN_020D8278
 	cmp r0, #0
 	bne _02259E10
-	bl FUN_0202551C
+	bl GF_AssertFail
 	add sp, #0x48
 	pop {r4, r5, r6, pc}
 _02259E10:
@@ -774,7 +774,7 @@ _02259EA4:
 _02259EAC:
 	cmp r5, #0
 	bne _02259EB8
-	bl FUN_0202551C
+	bl GF_AssertFail
 	movs r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _02259EB8:

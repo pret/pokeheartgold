@@ -2498,7 +2498,7 @@ ov61_021E6D78: @ 0x021E6D78
 	str r3, [sp, #0x10]
 	cmp r0, #0
 	beq _021E6D90
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E6D90:
 	ldr r2, [sp, #0x10]
 	movs r0, #0
@@ -2507,7 +2507,7 @@ _021E6D90:
 	bl FUN_0200BAF8
 	adds r7, r0, #0
 	bne _021E6DA4
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E6DA4:
 	ldr r1, [sp, #0x28]
 	adds r0, r7, #0

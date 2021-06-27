@@ -1442,7 +1442,7 @@ ov71_02247424: @ 0x02247424
 	ldr r0, [r0]
 	cmp r0, #0x20
 	blt _02247434
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02247434:
 	ldr r0, _02247444 @ =0x0224C040
 	ldr r2, [r0]

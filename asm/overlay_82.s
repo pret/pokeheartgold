@@ -929,7 +929,7 @@ _0223E4D4:
 	strb r0, [r4, #8]
 	b _0223E5B6
 _0223E4DE:
-	bl FUN_0202551C
+	bl GF_AssertFail
 	b _0223E5B6
 _0223E4E4:
 	adds r0, #0x9c

@@ -2236,7 +2236,7 @@ ov92_0225D7CC: @ 0x0225D7CC
 	bl FUN_0200CFF4
 	cmp r0, #0
 	bne _0225D836
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225D836:
 	ldr r0, [r4, #0x50]
 	ldr r1, [r4, #0x54]
@@ -2244,7 +2244,7 @@ _0225D836:
 	bl FUN_0200D3F8
 	cmp r0, #0
 	bne _0225D848
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225D848:
 	ldr r0, [r4, #0x50]
 	bl FUN_0200CF6C
@@ -3230,7 +3230,7 @@ _0225DFF2:
 	adds r3, #8
 	cmp r2, #4
 	blt _0225DFE0
-	bl FUN_0202551C
+	bl GF_AssertFail
 	movs r0, #0
 	add sp, #0x20
 	pop {r4, r5, r6, pc}
@@ -3525,7 +3525,7 @@ _0225E210:
 	bl FUN_02007B68
 	b _0225E230
 _0225E22C:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225E230:
 	ldr r0, [r5, #4]
 	movs r6, #0

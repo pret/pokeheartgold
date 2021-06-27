@@ -2504,7 +2504,7 @@ _021E6BE0:
 	bl FUN_02024A14
 	b _021E6C38
 _021E6C34:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E6C38:
 	adds r0, r4, #0
 	add sp, #0x64
@@ -2668,7 +2668,7 @@ ov100_021E6D34: @ 0x021E6D34
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _021E6D70
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E6D70:
 	ldr r0, [r7, #4]
 	cmp r0, #0
@@ -2720,7 +2720,7 @@ _021E6DA0:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _021E6DD6
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E6DD6:
 	adds r4, r4, #1
 	adds r5, r5, #4
@@ -2750,7 +2750,7 @@ _021E6DD6:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _021E6E14
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E6E14:
 	ldr r0, [r4]
 	ldr r0, [r0]

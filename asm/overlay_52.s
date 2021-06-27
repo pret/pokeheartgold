@@ -2329,7 +2329,7 @@ _021E934A:
 	lsls r0, r0, #0xa
 	cmp r7, r0
 	blt _021E9356
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E9356:
 	movs r0, #6
 	adds r6, r6, #1

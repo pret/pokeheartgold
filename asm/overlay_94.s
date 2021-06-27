@@ -8,7 +8,7 @@ ov94_021E5900: @ 0x021E5900
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E5912
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E5912:
 	movs r0, #0xc
 	movs r1, #0x1c
@@ -101,7 +101,7 @@ _021E59B0:
 	str r0, [r4, #0x10]
 	b _021E59C6
 _021E59C2:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E59C6:
 	ldr r0, _021E5AD8 @ =0x00000654
 	ldr r0, [r5, r0]
@@ -462,7 +462,7 @@ ov94_021E5CA0: @ 0x021E5CA0
 	blx r3
 	adds r4, r0, #0
 	bne _021E5CB2
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E5CB2:
 	adds r0, r4, #0
 	bl FUN_02015354
@@ -482,7 +482,7 @@ ov94_021E5CC4: @ 0x021E5CC4
 	blx r3
 	adds r4, r0, #0
 	bne _021E5CD6
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E5CD6:
 	adds r0, r4, #0
 	bl FUN_02015394

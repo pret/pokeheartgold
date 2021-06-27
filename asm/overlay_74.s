@@ -14004,7 +14004,7 @@ ov74_0222E060: @ 0x0222E060
 	ldr r0, [r4, r0]
 	cmp r0, #3
 	blt _0222E072
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222E072:
 	movs r0, #0x1b
 	bl FUN_02028900
@@ -29431,7 +29431,7 @@ ov74_02235708: @ 0x02235708
 	ldr r0, [r0, #0x34]
 	cmp r0, #0
 	bne _02235718
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02235718:
 	adds r4, #0x34
 	adds r0, r4, #0

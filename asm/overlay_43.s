@@ -641,7 +641,7 @@ _0222A404:
 	adds r4, r4, #1
 	cmp r4, #0x20
 	blt _0222A378
-	bl FUN_0202551C
+	bl GF_AssertFail
 	movs r0, #0
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1095,7 +1095,7 @@ _0222A706:
 	bl FUN_0200ADA4
 	cmp r0, #0
 	bne _0222A7AC
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222A7AC:
 	adds r0, r6, #0
 	adds r0, #0xb0
@@ -1103,7 +1103,7 @@ _0222A7AC:
 	bl FUN_0200B00C
 	cmp r0, #0
 	bne _0222A7BE
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0222A7BE:
 	adds r0, r6, #0
 	adds r0, #0xac

@@ -2008,7 +2008,7 @@ ov37_021E6980: @ 0x021E6980
 	bl ov37_021E7880
 	cmp r0, #0
 	bne _021E69C8
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E69C8:
 	adds r0, r5, #0
 	movs r1, #6
@@ -2400,7 +2400,7 @@ ov37_021E6CC0: @ 0x021E6CC0
 	bl ov37_021E7880
 	cmp r0, #0
 	bne _021E6CFE
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E6CFE:
 	adds r0, r5, #0
 	movs r1, #0xe
@@ -3899,7 +3899,7 @@ _021E77D8:
 _021E7824:
 	cmp r0, #0
 	bne _021E782C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _021E782C:
 	movs r0, #1
 	pop {r3, r4, r5, pc}

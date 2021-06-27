@@ -2398,7 +2398,7 @@ _0223EF98:
 	lsrs r0, r0, #0x1f
 	b _0223EFAC
 _0223EFA2:
-	bl FUN_0202551C
+	bl GF_AssertFail
 	movs r0, #1
 	b _0223EFAC
 _0223EFAA:
@@ -2597,7 +2597,7 @@ _0223F0F4:
 _0223F110:
 	cmp r7, #0x32
 	blt _0223F124
-	bl FUN_0202551C
+	bl GF_AssertFail
 	ldr r0, [sp, #4]
 	movs r1, #0
 	adds r0, r6, r0
@@ -2680,7 +2680,7 @@ _0223F194:
 _0223F1AA:
 	cmp r0, #4
 	blo _0223F1B4
-	bl FUN_0202551C
+	bl GF_AssertFail
 	movs r0, #0
 _0223F1B4:
 	pop {r3, r4, r5, pc}

@@ -465,7 +465,7 @@ _0225D8B2:
 	bl FUN_02007234
 	pop {r3, r4, r5, r6, r7, pc}
 _0225D8F8:
-	bl FUN_0202551C
+	bl GF_AssertFail
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 	thumb_func_end ov34_0225D87C

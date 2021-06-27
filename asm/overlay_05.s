@@ -2131,7 +2131,7 @@ _0221CB34:
 	movs r0, #1
 	pop {r3, r4, pc}
 _0221CB4A:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0221CB4E:
 	ldr r0, [r4, #0xc]
 	movs r1, #0
@@ -2903,7 +2903,7 @@ ov05_0221D140: @ 0x0221D140
 	cmp r0, #0
 	bne _0221D168
 _0221D164:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0221D168:
 	ldr r0, [r4]
 	ldr r1, [r0]
@@ -4128,7 +4128,7 @@ ov05_0221DB4C: @ 0x0221DB4C
 	bl FUN_02015354
 	cmp r4, #0
 	bne _0221DB64
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0221DB64:
 	lsls r0, r4, #0x10
 	lsrs r0, r0, #0xd
@@ -4148,7 +4148,7 @@ ov05_0221DB70: @ 0x0221DB70
 	bl FUN_02015394
 	cmp r4, #0
 	bne _0221DB88
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0221DB88:
 	lsls r0, r4, #0x10
 	lsrs r0, r0, #0xd

@@ -345,7 +345,7 @@ _0220169E: @ jump table
 	.2byte _022016B6 - _0220169E - 2 @ case 4
 	.2byte _022016CE - _0220169E - 2 @ case 5
 _022016AA:
-	bl FUN_0202551C
+	bl GF_AssertFail
 	pop {r4, pc}
 _022016B0:
 	adds r0, r2, #1
@@ -987,7 +987,7 @@ _02201ADC:
 	bl FUN_0207789C
 	b _02201B02
 _02201AFE:
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02201B02:
 	ldr r0, _02201B20 @ =0x02201B78
 	ldr r1, [r4, #0x10]

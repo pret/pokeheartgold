@@ -1429,7 +1429,7 @@ _022592C6:
 	bl FUN_020205D8
 	cmp r0, #0
 	bne _022592E2
-	bl FUN_0202551C
+	bl GF_AssertFail
 _022592E2:
 	adds r4, r4, #1
 	adds r5, r5, #4
@@ -1782,7 +1782,7 @@ ov88_02259560: @ 0x02259560
 	lsls r0, r0, #4
 	cmp r1, r0
 	bls _0225959C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225959C:
 	adds r0, r5, #0
 	adds r0, #0xc
@@ -2115,11 +2115,11 @@ ov88_02259818: @ 0x02259818
 	adds r5, r0, #0
 	cmp r4, #4
 	blo _02259826
-	bl FUN_0202551C
+	bl GF_AssertFail
 _02259826:
 	cmp r4, #0
 	bne _0225982E
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0225982E:
 	movs r0, #0xc
 	adds r5, #0x40

@@ -9202,11 +9202,11 @@ ov59_0223C474: @ 0x0223C474
 	adds r5, r0, #0
 	cmp r4, #0
 	bne _0223C49C
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0223C49C:
 	cmp r5, #0
 	bne _0223C4A4
-	bl FUN_0202551C
+	bl GF_AssertFail
 _0223C4A4:
 	bl FUN_02014DA0
 	pop {r3, r4, r5, pc}

@@ -12213,7 +12213,7 @@ ov101_021ED64C: @ 0x021ED64C
 	bl ov101_021ED4B0
 	cmp r0, #0xff
 	bne _021ED66C
-	bl FUN_0202551C
+	bl GF_AssertFail
 	movs r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021ED66C:
@@ -21665,7 +21665,7 @@ ov101_021F1F64: @ 0x021F1F64
 	blx FUN_020D4994
 	cmp r6, #0x4b
 	blo _021F1F8C
-	bl FUN_0202551C
+	bl GF_AssertFail
 	movs r0, #0xff
 	str r0, [r4]
 	movs r0, #0
@@ -32368,7 +32368,7 @@ _021F7062:
 	ldrh r0, [r5, #0xa]
 	cmp r0, #0x96
 	blo _021F707C
-	bl FUN_0202551C
+	bl GF_AssertFail
 	b _021F7086
 _021F707C:
 	movs r0, #0x87
