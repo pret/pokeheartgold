@@ -452,7 +452,8 @@ Overlay OVY_37
 Overlay OVY_38
 {
     After OVY_17
-    Object overlay_38.o
+    Object overlay_38_thumb.o
+    Object overlay_38_arm.o
     ### Size 0xa620 ###
     ### BSS Size 0x1040 ###
     ### SINIT Start 0x2225024 ###
