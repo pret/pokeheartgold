@@ -8,10 +8,10 @@ ov57_022378C0: ; 0x022378C0
 	push {r3, lr}
 	ldr r0, _022378D4 ; =0x00000006
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	ldr r0, _022378D8 ; =0x00000007
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, pc}
 	.align 2, 0
 _022378D4: .word 0x00000006
@@ -419,9 +419,9 @@ ov57_02237B20: ; 0x02237B20
 	mov r0, #0x34
 	bl sub_0201A9C4
 	ldr r0, _02237CA0 ; =0x00000006
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _02237CA4 ; =0x00000007
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0

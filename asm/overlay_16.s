@@ -785,7 +785,7 @@ ov16_0220196C: ; 0x0220196C
 	add r5, r0, #0
 	ldr r0, _022019B4 ; =0x00000011
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	bl sub_02201BC0
 	mov r2, #2
 	mov r0, #3
@@ -871,7 +871,7 @@ ov16_02201A04: ; 0x02201A04
 	mov r0, #0x82
 	bl sub_0201A9C4
 	ldr r0, _02201A30 ; =0x00000011
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop

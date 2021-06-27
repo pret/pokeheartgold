@@ -10,7 +10,7 @@ ov82_0223DD60: ; 0x0223DD60
 	add r6, r1, #0
 	ldr r0, _0223DE1C ; =0x00000050
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	bl ov82_0223E9B0
 	mov r2, #2
 	mov r0, #3
@@ -283,7 +283,7 @@ ov82_0223DF74: ; 0x0223DF74
 	mov r0, #0x69
 	bl sub_0201A9C4
 	ldr r0, _0223DFB8 ; =0x00000050
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r4, pc}
 	nop

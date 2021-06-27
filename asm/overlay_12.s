@@ -142,7 +142,7 @@ _022379C6:
 	cmp r0, #1
 	bne _022379EC
 	ldr r0, _02237B00 ; =0x00000005
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #7
 	str r0, [r4]
 	mov r0, #0x3d
@@ -162,10 +162,10 @@ _022379EE:
 _022379F4:
 	ldr r0, _02237B04 ; =0x00000006
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	ldr r0, _02237B08 ; =0x00000007
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	add r0, r6, #0
 	bl ov12_02237F18
 	mov r0, #9
@@ -203,7 +203,7 @@ _02237A48:
 	cmp r0, #1
 	bne _02237AFA
 	ldr r0, _02237B00 ; =0x00000005
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #5
 	bl sub_0201A9C4
 	mov r0, #0xc
@@ -316,15 +316,15 @@ ov12_02237B0C: ; 0x02237B0C
 	cmp r0, #0
 	bne _02237B46
 	ldr r0, _02237B60 ; =0x00000007
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	b _02237B4C
 _02237B46:
 	ldr r0, _02237B64 ; =0x0000000A
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 _02237B4C:
 	ldr r0, _02237B68 ; =0x00000008
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r4, pc}
 	nop
 _02237B58: .word 0x000023FF
@@ -373,19 +373,19 @@ ov12_02237BB8: ; 0x02237BB8
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, _02237CB0 ; =0x00000008
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _02237CB4 ; =0x00002445
 	ldrb r0, [r5, r0]
 	cmp r0, #0
 	bne _02237BD6
 	ldr r0, _02237CB8 ; =0x00000007
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	b _02237BDE
 _02237BD6:
 	ldr r0, _02237CBC ; =0x0000000A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 _02237BDE:
 	add r0, r5, #0
 	mov r1, #0
@@ -728,17 +728,17 @@ _02237EE2:
 	strb r4, [r5, r0]
 	bne _02237EFA
 	ldr r0, _02237F10 ; =0x0000000A
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _02237F14 ; =0x00000007
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, r4, r5, pc}
 _02237EFA:
 	ldr r0, _02237F14 ; =0x00000007
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _02237F10 ; =0x0000000A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, r4, r5, pc}
 	nop
 _02237F0C: .word 0x00002445
@@ -1667,14 +1667,14 @@ _02238756:
 	add r0, r4, #0
 	bl sub_0201AB0C
 	ldr r0, _022387A0 ; =0x00000006
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _022387A4 ; =0x00000007
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	bl sub_02039998
 	cmp r0, #0
 	bne _02238776
 	ldr r0, _022387A8 ; =0x00000012
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 _02238776:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -3924,7 +3924,7 @@ ov12_022399BC: ; 0x022399BC
 	bne _022399CE
 	ldr r0, _022399D0 ; =0x00000012
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 _022399CE:
 	pop {r3, pc}
 	.align 2, 0
@@ -4798,7 +4798,7 @@ _0223A114:
 _0223A11C:
 	ldr r0, _0223A214 ; =0x00000005
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	ldr r1, [r4, #0x2c]
 	mov r0, #8
 	tst r0, r1
@@ -5187,7 +5187,7 @@ _0223A41A:
 	lsr r4, r0, #0x18
 	ldr r0, _0223A5DC ; =0x00000005
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	mov r0, #5
 	mov r1, #0x30
 	bl sub_0201AA8C

@@ -16179,7 +16179,7 @@ _021ED1FC:
 	bl sub_0201A910
 	ldr r0, _021ED46C ; =0x00000062
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -16504,7 +16504,7 @@ ov96_021ED48C: ; 0x021ED48C
 	strb r1, [r0, #9]
 	bl sub_02022D3C
 	ldr r0, _021ED520 ; =0x00000062
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #0x87
 	bl sub_0201A9C4
 	mov r0, #1
@@ -20353,7 +20353,7 @@ _021EF1EA:
 	strb r1, [r0, #9]
 	bl sub_02022D3C
 	ldr r0, _021EF238 ; =0x00000062
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #0x88
 	bl sub_0201A9C4
 	mov r0, #1
@@ -20455,7 +20455,7 @@ ov96_021EF2C0: ; 0x021EF2C0
 	ldr r0, _021EF390 ; =0x00000062
 	mov r1, #2
 	mov r6, #0x88
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC

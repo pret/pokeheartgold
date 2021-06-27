@@ -242,7 +242,7 @@ ov75_02246B48: ; 0x02246B48
 	bne _02246B8E
 	ldr r0, _02246B90 ; =0x00000046
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	bl sub_020915B0
 	bl sub_02091614
 	mov r0, #0x73
@@ -284,7 +284,7 @@ ov75_02246B98: ; 0x02246B98
 	bl sub_020915C0
 	bl sub_02034DE0
 	ldr r0, _02246BC8 ; =0x00000046
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #0
 	str r0, [r4, #0x7c]
 _02246BC4:

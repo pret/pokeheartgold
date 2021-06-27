@@ -3158,7 +3158,7 @@ ov02_02247460: ; 0x02247460
 	add r0, r7, #0
 	mov r1, #2
 	add r4, r2, #0
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -3171,7 +3171,7 @@ ov02_02247460: ; 0x02247460
 	bl ov02_02247ED8
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}

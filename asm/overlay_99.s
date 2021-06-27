@@ -10,7 +10,7 @@ ov99_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	ldr r0, _021E59F0 ; =0x00000062
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	add r0, r4, #0
 	bl sub_020072A4
 	add r5, r0, #0
@@ -127,7 +127,7 @@ ov99_021E5A04: ; 0x021E5A04
 	mov r0, #0x84
 	bl sub_0201A9C4
 	ldr r0, _021E5A34 ; =0x00000062
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -1827,7 +1827,7 @@ ov99_021E677C: ; 0x021E677C
 	add r4, r0, #0
 	ldr r0, _021E682C ; =0x00000062
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	add r0, r4, #0
 	bl sub_020072A4
 	add r5, r0, #0
@@ -1926,7 +1926,7 @@ ov99_021E6840: ; 0x021E6840
 	mov r0, #0x84
 	bl sub_0201A9C4
 	ldr r0, _021E6884 ; =0x00000062
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
@@ -3991,7 +3991,7 @@ ov99_021E7818: ; 0x021E7818
 	add r4, r0, #0
 	ldr r0, _021E78E0 ; =0x00000062
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	add r0, r4, #0
 	bl sub_020072A4
 	add r5, r0, #0
@@ -4102,7 +4102,7 @@ ov99_021E78F0: ; 0x021E78F0
 	mov r0, #0x84
 	bl sub_0201A9C4
 	ldr r0, _021E7948 ; =0x00000062
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
@@ -5361,7 +5361,7 @@ ov99_021E8304: ; 0x021E8304
 	add r4, r0, #0
 	ldr r0, _021E839C ; =0x00000062
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	add r0, r4, #0
 	bl sub_020072A4
 	add r5, r0, #0
@@ -5446,7 +5446,7 @@ ov99_021E83AC: ; 0x021E83AC
 	mov r0, #0x84
 	bl sub_0201A9C4
 	ldr r0, _021E83F0 ; =0x00000062
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0

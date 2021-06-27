@@ -94,7 +94,7 @@ _021E599E:
 	beq _021E59F0
 	ldr r0, _021E5BB8 ; =0x00000002
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	add r0, r4, #0
 	bl ov01_021E5EB8
 	cmp r0, #0
@@ -105,17 +105,17 @@ _021E599E:
 _021E59D4:
 	ldr r0, _021E5BBC ; =0x00000004
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	b _021E59F0
 _021E59DE:
 	ldr r0, _021E5BC0 ; =0x00000003
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	b _021E59F0
 _021E59E8:
 	ldr r0, _021E5BC0 ; =0x00000003
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 _021E59F0:
 	ldr r0, _021E5BC4 ; =ov01_021E66B8
 	bl sub_0225F430
@@ -588,11 +588,11 @@ _021E5E12:
 	lsr r0, r0, #0x1c
 	beq _021E5E6E
 	ldr r0, _021E5EAC ; =0x00000002
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _021E5EB0 ; =0x00000004
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _021E5EB4 ; =0x00000003
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 _021E5E6E:
 	bl sub_02005D00
 	mov r0, #1
@@ -10026,7 +10026,7 @@ ov01_021EA73C: ; 0x021EA73C
 	add r4, r0, #0
 	add r0, sp, #4
 	add r5, r1, #0
-	bl sub_020D7F98
+	bl FS_InitFile
 	add r0, sp, #4
 	add r1, r4, #0
 	bl sub_020D8278
@@ -10087,7 +10087,7 @@ _021EA7BC:
 	bl GF_AssertFail
 _021EA7CE:
 	add r0, sp, #4
-	bl sub_020D82C0
+	bl FS_CloseFile
 	add sp, #0x4c
 	pop {r3, r4, r5, r6, pc}
 _021EA7D8:
@@ -11233,7 +11233,7 @@ ov01_021EAF98: ; 0x021EAF98
 	add r4, r0, #0
 	ldr r0, _021EAFB0 ; =0x00000013
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	add r0, r4, #0
 	bl sub_022598C0
 	add r4, #0xd8
@@ -11252,7 +11252,7 @@ ov01_021EAFB4: ; 0x021EAFB4
 	add r4, #0xd8
 	str r0, [r4]
 	ldr r0, _021EAFCC ; =0x00000013
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	pop {r4, pc}
 	nop
 _021EAFCC: .word 0x00000013
@@ -21231,7 +21231,7 @@ ov01_021EFB64: ; 0x021EFB64
 	bgt _021EFB78
 	ldr r0, _021EFBE8 ; =0x00000073
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFB78:
 	add r1, r0, #0
@@ -21240,7 +21240,7 @@ _021EFB78:
 	bhi _021EFB8A
 	ldr r0, _021EFBEC ; =0x00000074
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFB8A:
 	cmp r0, #0x27
@@ -21249,14 +21249,14 @@ _021EFB8A:
 	bgt _021EFB9C
 	ldr r0, _021EFBF0 ; =0x00000075
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFB9C:
 	cmp r0, #0x2d
 	bne _021EFBAA
 	ldr r0, _021EFBF4 ; =0x00000076
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFBAA:
 	cmp r0, #0
@@ -21265,7 +21265,7 @@ _021EFBAA:
 	bgt _021EFBBC
 	ldr r0, _021EFBF8 ; =0x00000078
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFBBC:
 	cmp r0, #6
@@ -21274,19 +21274,19 @@ _021EFBBC:
 	bgt _021EFBCE
 	ldr r0, _021EFBFC ; =0x00000077
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFBCE:
 	cmp r0, #0x2e
 	bne _021EFBDC
 	ldr r0, _021EFBF8 ; =0x00000078
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFBDC:
 	ldr r0, _021EFC00 ; =0x00000072
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	pop {r3, pc}
 	nop
 _021EFBE8: .word 0x00000073
@@ -21306,7 +21306,7 @@ ov01_021EFC04: ; 0x021EFC04
 	cmp r0, #0x21
 	bgt _021EFC16
 	ldr r0, _021EFC78 ; =0x00000073
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC16:
 	add r1, r0, #0
@@ -21314,7 +21314,7 @@ _021EFC16:
 	cmp r1, #2
 	bhi _021EFC26
 	ldr r0, _021EFC7C ; =0x00000074
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC26:
 	cmp r0, #0x27
@@ -21322,13 +21322,13 @@ _021EFC26:
 	cmp r0, #0x2c
 	bgt _021EFC36
 	ldr r0, _021EFC80 ; =0x00000075
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC36:
 	cmp r0, #0x2d
 	bne _021EFC42
 	ldr r0, _021EFC84 ; =0x00000076
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC42:
 	cmp r0, #0
@@ -21336,7 +21336,7 @@ _021EFC42:
 	cmp r0, #5
 	bgt _021EFC52
 	ldr r0, _021EFC88 ; =0x00000078
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC52:
 	cmp r0, #6
@@ -21344,17 +21344,17 @@ _021EFC52:
 	cmp r0, #0xb
 	bgt _021EFC62
 	ldr r0, _021EFC8C ; =0x00000077
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC62:
 	cmp r0, #0x2e
 	bne _021EFC6E
 	ldr r0, _021EFC88 ; =0x00000078
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC6E:
 	ldr r0, _021EFC90 ; =0x00000072
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	pop {r3, pc}
 	nop
 _021EFC78: .word 0x00000073
@@ -35889,7 +35889,7 @@ ov01_021F6840: ; 0x021F6840
 	add r4, r0, #0
 	ldr r0, _021F6860 ; =0x0000001B
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	add r1, r4, #0
 	ldr r0, [r4, #8]
 	add r1, #0xd0
@@ -35923,7 +35923,7 @@ ov01_021F6874: ; 0x021F6874
 	cmp r0, #0
 	beq _021F688A
 	ldr r0, _021F6890 ; =0x0000001B
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, pc}
 _021F688A:
@@ -35939,7 +35939,7 @@ ov01_021F6894: ; 0x021F6894
 	add r4, r0, #0
 	ldr r0, _021F68B4 ; =0x0000001B
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	add r1, r4, #0
 	ldr r0, [r4, #8]
 	add r1, #0xd0
@@ -35967,7 +35967,7 @@ ov01_021F68C0: ; 0x021F68C0
 	cmp r0, #0
 	beq _021F68D4
 	ldr r0, _021F68D8 ; =0x0000001B
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, pc}
 _021F68D4:
@@ -36065,7 +36065,7 @@ ov01_021F6968: ; 0x021F6968
 	cmp r0, r1
 	beq _021F6982
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 _021F6982:
 	ldrb r5, [r4]
 	ldr r2, [r4, #8]
@@ -36095,7 +36095,7 @@ ov01_021F69A4: ; 0x021F69A4
 	mvn r1, r1
 	cmp r0, r1
 	beq _021F69BA
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 _021F69BA:
 	pop {r3, pc}
 	.align 2, 0
@@ -62400,7 +62400,7 @@ ov01_02202E00: ; 0x02202E00
 	add r5, r0, #0
 	add r0, sp, #0
 	add r4, r1, #0
-	bl sub_020D7F98
+	bl FS_InitFile
 	ldr r1, _02202E60 ; =0x02209AF4
 	add r0, sp, #0
 	bl sub_020D8278
@@ -62432,7 +62432,7 @@ _02202E34:
 	mov r2, #8
 	bl sub_020D83CC
 	add r0, sp, #0
-	bl sub_020D82C0
+	bl FS_CloseFile
 	add r0, r5, #0
 	add sp, #0x48
 	pop {r3, r4, r5, pc}
@@ -67457,13 +67457,13 @@ ov01_022053EC: ; 0x022053EC
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	add r5, #0x80
 	ldr r0, [r5]
 	add r1, r4, #0
 	bl sub_022598C0
 	add r0, r6, #0
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.align 2, 0

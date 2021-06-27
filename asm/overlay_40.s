@@ -17333,7 +17333,7 @@ ov40_0223414C: ; 0x0223414C
 	str r4, [r5, r0]
 	ldr r0, _022341DC ; =0x00000029
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	mov r1, #0x86
 	ldr r0, [r5, #0x24]
 	lsl r1, r1, #2
@@ -18048,7 +18048,7 @@ _02234776:
 	add r0, r5, #0
 	bl sub_0201AB0C
 	ldr r0, _02234804 ; =0x00000029
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _02234808 ; =ov40_0222BD04
 	add r1, r4, #0
 	bl sub_0201A0FC
@@ -18275,7 +18275,7 @@ _02234984:
 	add r0, r4, #0
 	bl sub_0201AB0C
 	ldr r0, _02234A0C ; =0x00000029
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _02234A10 ; =ov40_0222BD04
 	add r1, r5, #0
 	bl sub_0201A0FC
@@ -18926,7 +18926,7 @@ _02234F06:
 	add r0, r4, #0
 	bl sub_0201AB0C
 	ldr r0, _02234F90 ; =0x00000029
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _02234F94 ; =ov40_0222BD04
 	add r1, r5, #0
 	bl sub_0201A0FC

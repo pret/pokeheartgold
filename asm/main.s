@@ -217,7 +217,7 @@ sub_02000E84: ; 0x02000E84
 	cmp r0, r1
 	beq _02000EA4
 	mov r1, #0
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 _02000EA4:
 	ldr r0, _02000EEC ; =0x02111860
 	mov r2, #0
@@ -249,7 +249,7 @@ _02000EC2:
 	sub r1, r1, #1
 	cmp r0, r1
 	beq _02000EE8
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 _02000EE8:
 	pop {r3, pc}
 	nop

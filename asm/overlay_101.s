@@ -11,7 +11,7 @@ ov101_021E7740: ; 0x021E7740
 	add r5, r0, #0
 	ldr r0, _021E7790 ; =0x0000001A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	mov r0, #3
 	mov r1, #0x5b
 	lsl r2, r0, #0x10
@@ -151,7 +151,7 @@ _021E7858:
 	add r0, r4, #0
 	bl sub_0201A9C4
 	ldr r0, _021E7870 ; =0x0000001A
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
@@ -12469,10 +12469,10 @@ ov101_021ED7F8: ; 0x021ED7F8
 	add r5, r0, #0
 	ldr r0, _021ED8A4 ; =0x00000064
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	ldr r0, _021ED8A8 ; =0x0000001A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	mov r2, #1
 	mov r0, #3
 	mov r1, #0x5b
@@ -12634,9 +12634,9 @@ _021ED948:
 	add r0, r4, #0
 	bl sub_0201A9C4
 	ldr r0, _021ED978 ; =0x0000001A
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, _021ED97C ; =0x00000064
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop

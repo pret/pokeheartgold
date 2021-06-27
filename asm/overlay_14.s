@@ -6660,7 +6660,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	bl sub_0207789C
 	ldr r0, _021E8B14 ; =0x0000000F
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	ldr r0, _021E8B18 ; =0x022008B8
 	ldr r1, [r4, #0x18]
 	mov r2, #9
@@ -6680,7 +6680,7 @@ ov14_021E8B1C: ; 0x021E8B1C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _021E8B38 ; =0x0000000F
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r0, [r4, #0x18]
 	bl sub_02077904
 	strh r0, [r4, #0x1c]

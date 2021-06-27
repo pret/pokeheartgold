@@ -9,7 +9,7 @@ ov43_02229EE0: ; 0x02229EE0
 	add r5, r0, #0
 	ldr r0, _02229FA4 ; =0x0000002A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	mov r2, #7
 	mov r0, #3
 	mov r1, #0x33
@@ -286,7 +286,7 @@ ov43_0222A0AC: ; 0x0222A0AC
 	mov r0, #0x33
 	bl sub_0201A9C4
 	ldr r0, _0222A144 ; =0x0000002A
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0

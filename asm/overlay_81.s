@@ -11,7 +11,7 @@ ov81_0223DD60: ; 0x0223DD60
 	add r6, r1, #0
 	ldr r0, _0223DE90 ; =0x00000050
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	bl ov81_02240D2C
 	mov r0, #3
 	mov r1, #0x64
@@ -676,7 +676,7 @@ _0223E2CE:
 	mov r0, #0x64
 	bl sub_0201A9C4
 	ldr r0, _0223E314 ; =0x00000050
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0

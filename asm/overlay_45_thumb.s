@@ -9,7 +9,7 @@ ov45_02229EE0: ; 0x02229EE0
 	add r4, r0, #0
 	ldr r0, _02229F68 ; =0x0000002A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	bl sub_020915B0
 	bl sub_02091614
 	mov r0, #3
@@ -107,7 +107,7 @@ ov45_02229F94: ; 0x02229F94
 	mov r0, #0x6f
 	bl sub_0201A9C4
 	ldr r0, _02229FDC ; =0x0000002A
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	bl sub_02091624
 	bl sub_020915C0
 	mov r0, #1
@@ -7259,7 +7259,7 @@ ov45_0222D1B0: ; 0x0222D1B0
 	add r4, r1, #0
 	ldr r0, _0222D1D4 ; =0x0000005A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	ldrh r2, [r5, #0x3a]
 	ldr r0, [r4]
 	ldr r1, [r5, #0x3c]
@@ -7280,7 +7280,7 @@ ov45_0222D1DC: ; 0x0222D1DC
 	add r4, r0, #0
 	ldr r0, _0222D208 ; =0x0000005A
 	add r5, r1, #0
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r5, [r5]
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r5, #0x1c]
@@ -7341,7 +7341,7 @@ ov45_0222D250: ; 0x0222D250
 	add r4, r1, #0
 	ldr r0, _0222D274 ; =0x0000005A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	ldrh r2, [r5, #0x3a]
 	ldr r0, [r4]
 	ldr r1, [r5, #0x3c]
@@ -7362,7 +7362,7 @@ ov45_0222D27C: ; 0x0222D27C
 	add r4, r0, #0
 	ldr r0, _0222D2A8 ; =0x0000005A
 	add r5, r1, #0
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r5, [r5]
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r5, #0x1c]
@@ -7427,7 +7427,7 @@ ov45_0222D2F8: ; 0x0222D2F8
 	add r4, r1, #0
 	ldr r0, _0222D31C ; =0x0000005A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	ldrh r2, [r5, #0x3a]
 	ldr r0, [r4]
 	ldr r1, [r5, #0x3c]
@@ -7448,7 +7448,7 @@ ov45_0222D324: ; 0x0222D324
 	add r4, r0, #0
 	ldr r0, _0222D350 ; =0x0000005A
 	add r5, r1, #0
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	ldr r5, [r5]
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r5, #0x1c]

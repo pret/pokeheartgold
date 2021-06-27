@@ -538,7 +538,7 @@ ov24_02259CC0: ; 0x02259CC0
 	sub sp, #0x58
 	add r5, r0, #0
 	add r0, sp, #0x10
-	bl sub_020D7F98
+	bl FS_InitFile
 	ldr r1, _02259DEC ; =0x02259F40
 	add r0, sp, #0x10
 	bl sub_020D8278
@@ -671,7 +671,7 @@ _02259D7E:
 	ldr r0, [sp, #0xc]
 	bl sub_0201AB0C
 	add r0, sp, #0x10
-	bl sub_020D82C0
+	bl FS_CloseFile
 	add sp, #0x58
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -684,7 +684,7 @@ ov24_02259DF0: ; 0x02259DF0
 	sub sp, #0x48
 	add r5, r0, #0
 	add r0, sp, #0
-	bl sub_020D7F98
+	bl FS_InitFile
 	ldr r1, _02259E5C ; =0x02259F60
 	add r0, sp, #0
 	bl sub_020D8278
@@ -726,7 +726,7 @@ _02259E3A:
 	add r0, r4, #0
 	bl sub_0201AB0C
 	add r0, sp, #0
-	bl sub_020D82C0
+	bl FS_CloseFile
 	add sp, #0x48
 	pop {r4, r5, r6, pc}
 	.align 2, 0

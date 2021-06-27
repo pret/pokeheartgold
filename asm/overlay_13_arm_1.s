@@ -1049,7 +1049,7 @@ ov13_0221C8CC: ; 0x0221C8CC
 	movs r6, r0
 	add r0, sp, #4
 	ldreq r6, [r5, #0x18]
-	bl sub_020D7F98
+	bl FS_InitFile
 	ldr r2, [r4]
 	mvn r0, #0
 	str r0, [sp]
@@ -1069,7 +1069,7 @@ ov13_0221C8CC: ; 0x0221C8CC
 	moveq r0, #2
 	streq r0, [r4, #0xc]
 	add r0, sp, #4
-	bl sub_020D82C0
+	bl FS_CloseFile
 _0221C948:
 	ldr r0, [r4, #0xc]
 	cmp r0, #2
@@ -1525,7 +1525,7 @@ _0221CF44:
 	cmp r7, #0
 	moveq r7, #0x1000000
 	str r1, [sp, #0xc]
-	bl sub_020D7F98
+	bl FS_InitFile
 	ldr r0, _0221D334 ; =0x02245988
 	mov r1, #3
 	bl sub_020D7958
@@ -1727,7 +1727,7 @@ _0221D240:
 	cmp r0, #0
 	beq _0221D30C
 	add r0, sp, #0x24
-	bl sub_020D82C0
+	bl FS_CloseFile
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
 	beq _0221D30C
@@ -2499,7 +2499,7 @@ ov13_0221DCA4: ; 0x0221DCA4
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	add r0, sp, #0
-	bl sub_020D7F98
+	bl FS_InitFile
 	add r0, sp, #0
 	mov r1, r6
 	bl sub_020D8278
@@ -2513,7 +2513,7 @@ ov13_0221DCA4: ; 0x0221DCA4
 	cmp r4, r0
 	add r0, sp, #0
 	beq _0221DD24
-	bl sub_020D82C0
+	bl FS_CloseFile
 	add sp, sp, #0x48
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
@@ -2522,7 +2522,7 @@ _0221DD24:
 	mov r2, r4
 	bl sub_020D83CC
 	add r0, sp, #0
-	bl sub_020D82C0
+	bl FS_CloseFile
 	mov r0, #1
 	add sp, sp, #0x48
 	ldmia sp!, {r4, r5, r6, pc}

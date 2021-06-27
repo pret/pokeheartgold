@@ -885,7 +885,7 @@ _0222A510:
 _0222A51A:
 	ldr r0, _0222A608 ; =0x0000002A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	ldr r0, [r4, #4]
 	cmp r0, #1
 	bne _0222A536
@@ -1140,7 +1140,7 @@ _0222A6F0:
 	ldr r0, [r5, r0]
 	bl sub_0200BDA0
 	ldr r0, _0222A754 ; =0x0000002A
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222A74C: .word 0x00000D68
@@ -18245,7 +18245,7 @@ ov44_02232EA8: ; 0x02232EA8
 	add r5, r0, #0
 	ldr r0, _02232F5C ; =0x0000002A
 	mov r1, #2
-	bl sub_02006FF8
+	bl HandleLoadOverlay
 	bl sub_02039998
 	cmp r0, #1
 	beq _02232EC6
@@ -18503,7 +18503,7 @@ ov44_022330A8: ; 0x022330A8
 	mov r0, #0x67
 	bl sub_0201A9C4
 	ldr r0, _022330FC ; =0x0000002A
-	bl sub_02006F7C
+	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
