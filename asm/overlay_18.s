@@ -22700,7 +22700,7 @@ ov18_021F111C: @ 0x021F111C
 	adds r6, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x10]
 	cmp r0, #1
 	bne _021F1154
@@ -23955,7 +23955,7 @@ _021F1AC8:
 	str r0, [sp, #0x1c]
 	adds r0, r7, #0
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r2, #0x32
 	ldr r1, [sp, #0x1c]
 	adds r0, r7, #0
@@ -39440,7 +39440,7 @@ ov18_021F9518: @ 0x021F9518
 	adds r5, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x80
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0x80

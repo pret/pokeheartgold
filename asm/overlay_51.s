@@ -816,7 +816,7 @@ _021E61B0:
 	movs r1, #2
 	ldr r0, [r0, #0xc]
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp]
 	movs r1, #0x20
 	ldr r5, [r0, #0xc]
@@ -857,7 +857,7 @@ ov51_021E6200: @ 0x021E6200
 	ldr r5, [r0, #0xc]
 	movs r1, #0x20
 	adds r0, r5, r4
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, r4
 	movs r1, #0x80
 	movs r2, #0x20
@@ -1011,7 +1011,7 @@ ov51_021E6354: @ 0x021E6354
 	movs r1, #2
 	ldr r0, [r0, #0xc]
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x20]
 	movs r2, #2
 	ldr r0, [r0, #0xc]
@@ -1039,7 +1039,7 @@ ov51_021E6354: @ 0x021E6354
 	movs r1, #2
 	ldr r0, [r0, #0xc]
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x1c]
 	movs r2, #2
 	ldr r0, [r0, #0xc]

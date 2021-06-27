@@ -566,7 +566,7 @@ ov98_0221E9FC: @ 0x0221E9FC
 	adds r5, r0, #0
 	adds r0, r6, #0
 	adds r1, r7, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	cmp r4, #1
 	beq _0221EA2C
 	cmp r4, #2

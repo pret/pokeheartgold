@@ -3737,7 +3737,7 @@ ov57_022395B8: @ 0x022395B8
 	ldr r7, [r1, #0x14]
 	ldr r1, [r1, #0x10]
 	adds r0, r7, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r5, _0223966C @ =0x0223BDF4
 	movs r4, #0
 _022395E2:

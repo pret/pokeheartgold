@@ -26613,7 +26613,7 @@ ov14_021F2C1C: @ 0x021F2C1C
 	adds r6, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	adds r1, r6, #0
 	adds r2, r4, #0
@@ -26639,7 +26639,7 @@ ov14_021F2C50: @ 0x021F2C50
 	adds r6, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	adds r1, r6, #0
 	adds r2, r4, #0
@@ -27969,7 +27969,7 @@ _021F365A:
 	adds r7, r0, #0
 	adds r0, r5, #0
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r2, #0x32
 	adds r0, r5, #0
 	adds r1, r7, #0

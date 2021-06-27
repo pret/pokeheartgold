@@ -689,7 +689,7 @@ _0222A37A:
 	adds r0, r0, r1
 	movs r1, #0x2a
 	lsls r1, r1, #4
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r1, _0222A3F8 @ =0x00000D6C
 	ldr r0, [sp, #4]
 	movs r2, #1

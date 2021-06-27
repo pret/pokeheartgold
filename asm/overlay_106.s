@@ -1756,7 +1756,7 @@ ov106_021E6678: @ 0x021E6678
 	adds r4, r1, #0
 	adds r5, r0, #0
 	adds r1, r6, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	adds r1, r4, #0
 	adds r2, r6, #0
@@ -1772,7 +1772,7 @@ ov106_021E6694: @ 0x021E6694
 	adds r4, r1, #0
 	adds r5, r0, #0
 	adds r1, r6, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	adds r1, r4, #0
 	adds r2, r6, #0

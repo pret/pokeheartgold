@@ -5151,7 +5151,7 @@ ov81_02240770: @ 0x02240770
 	movs r1, #0x16
 	ldr r0, [r0, #0xc]
 	lsls r1, r1, #4
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp]
 	movs r2, #0x16
 	ldr r0, [r0, #0xc]
@@ -10144,7 +10144,7 @@ ov81_02242E14: @ 0x02242E14
 	adds r7, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	cmp r6, #1
 	bne _02242E42
 	adds r0, r5, #0

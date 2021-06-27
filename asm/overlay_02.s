@@ -10166,7 +10166,7 @@ ov02_0224A834: @ 0x0224A834
 	adds r5, r0, #0
 	adds r0, r4, #0
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r2, #0x32
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -10220,7 +10220,7 @@ ov02_0224A88C: @ 0x0224A88C
 	adds r5, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x20
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0x20

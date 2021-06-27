@@ -6527,7 +6527,7 @@ ov102_021EA80C: @ 0x021EA80C
 	movs r1, #5
 	adds r0, r4, #0
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	bl FUN_0201AB0C
 	add sp, #0xc

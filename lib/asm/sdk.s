@@ -35881,7 +35881,7 @@ FUN_020B61E8: ; 0x020B61E8
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #0xc]
 	ldr r4, [r2, r3, lsl #2]
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldmib r5, {r0, r1, r2}
 	blx r4
 	ldmia sp!, {r3, r4, r5, pc}
@@ -38015,7 +38015,7 @@ FUN_020B7CB8: ; 0x020B7CB8
 	mov r1, r8
 	add r0, r5, r3, lsl #3
 	mov r7, r2, lsr #0x10
-	bl FUN_020D2894
+	bl DC_FlushRange
 	cmp r6, #0
 	beq _020B7D24
 	cmp r6, #1
@@ -38339,7 +38339,7 @@ _020B80EC:
 _020B8104:
 	ldr r0, [r7, #0x14]
 	ldr r1, [r7, #0x10]
-	bl FUN_020D2894
+	bl DC_FlushRange
 	cmp r5, #0
 	beq _020B812C
 	cmp r5, #1
@@ -38512,7 +38512,7 @@ _020B8318:
 _020B8330:
 	ldr r0, [r7, #0x14]
 	ldr r1, [r7, #0x10]
-	bl FUN_020D2894
+	bl DC_FlushRange
 	cmp r5, #0
 	beq _020B8358
 	cmp r5, #1
@@ -38662,7 +38662,7 @@ FUN_020B84F8: ; 0x020B84F8
 	ldr r1, [r7, #0x10]
 	mov r5, r2
 	mov r4, r3
-	bl FUN_020D2894
+	bl DC_FlushRange
 	cmp r5, #0
 	ldr r0, [r7, #8]
 	beq _020B856C
@@ -38811,7 +38811,7 @@ FUN_020B86CC: ; 0x020B86CC
 	mov r0, r4
 	mov r1, r5
 	mov r6, r3
-	bl FUN_020D2894
+	bl DC_FlushRange
 	cmp r7, #0
 	beq _020B8788
 	cmp r7, #1
@@ -38902,7 +38902,7 @@ _020B880C:
 	mul r6, r8, r0
 	ldr r1, [sl, #8]
 	mov r0, r5
-	bl FUN_020D2894
+	bl DC_FlushRange
 	cmp fp, #0
 	beq _020B88C8
 	cmp fp, #1
@@ -58716,10 +58716,10 @@ FUN_020C927C: ; 0x020C927C
 	bl FUN_020D47EC
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x14]
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4, #0x14]
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r1, [r4, #0x2c]
 	mov r3, #0
 	cmp r1, #0
@@ -70499,8 +70499,8 @@ _020D2880:
 	bx lr
 	arm_func_end FUN_020D2878
 
-	arm_func_start FUN_020D2894
-FUN_020D2894: ; 0x020D2894
+	arm_func_start DC_FlushRange
+DC_FlushRange: ; 0x020D2894
 	mov ip, #0
 	add r1, r1, r0
 	bic r0, r0, #0x1f
@@ -70511,7 +70511,7 @@ _020D28A0:
 	cmp r0, r1
 	blt _020D28A0
 	bx lr
-	arm_func_end FUN_020D2894
+	arm_func_end DC_FlushRange
 
 	arm_func_start FUN_020D28B8
 FUN_020D28B8: ; 0x020D28B8
@@ -70527,8 +70527,8 @@ FUN_020D28C4: ; 0x020D28C4
 	bx lr
 	arm_func_end FUN_020D28C4
 
-	arm_func_start FUN_020D28D0
-FUN_020D28D0: ; 0x020D28D0
+	arm_func_start IC_InvalidateRange
+IC_InvalidateRange: ; 0x020D28D0
 	add r1, r1, r0
 	bic r0, r0, #0x1f
 _020D28D8:
@@ -70537,7 +70537,7 @@ _020D28D8:
 	cmp r0, r1
 	blt _020D28D8
 	bx lr
-	arm_func_end FUN_020D28D0
+	arm_func_end IC_InvalidateRange
 
 	arm_func_start FUN_020D28EC
 FUN_020D28EC: ; 0x020D28EC
@@ -74453,7 +74453,7 @@ _020D5824:
 _020D5858:
 	ldr r0, _020D5988 ; =0x021E1D40
 	mov r1, #0x1800
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r1, _020D5984 ; =0x021E1A60
 	mov r0, #7
 	ldr r1, [r1, #8]
@@ -74484,7 +74484,7 @@ _020D58B4:
 	mov sb, r0
 	mov r0, r7
 	mov r1, r6
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	bne _020D58F4
@@ -75140,7 +75140,7 @@ _020D60C0:
 	cmp r3, #0x10
 	blt _020D60C0
 	mov r1, #0x280
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldmia sp!, {r4, pc}
 	arm_func_end FUN_020D6068
 
@@ -78112,7 +78112,7 @@ FS_ClearOverlayImage: ; 0x020D8764
 	add r6, r5, r1
 	mov r0, r4
 	mov r1, r6
-	bl FUN_020D28D0
+	bl IC_InvalidateRange
 	mov r0, r4
 	mov r1, r6
 	bl FUN_020D285C
@@ -78447,7 +78447,7 @@ _020D8BFC:
 	bl MIi_UncompressBackward
 _020D8C18:
 	ldmib r5, {r0, r1}
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r4, [r5, #0x10]
 	ldr r5, [r5, #0x14]
 	cmp r4, r5
@@ -83019,7 +83019,7 @@ FUN_020DC7A8: ; 0x020DC7A8
 	bl FUN_020D4858
 	ldr r0, _020DC8A0 ; =0x021E37C0
 	mov r1, #0x60
-	bl FUN_020D2894
+	bl DC_FlushRange
 	mvn r1, #0
 	ldr r0, _020DC8A4 ; =0x027FFC40
 	str r1, [r4, #0x118]
@@ -83523,7 +83523,7 @@ _020DCE3C:
 	bl FUN_020D4A50
 	mov r0, r6
 	mov r1, r8
-	bl FUN_020D2894
+	bl DC_FlushRange
 	bl FUN_020D28B8
 	ldr r0, [sb]
 	str r6, [r0, #0xc]
@@ -84018,7 +84018,7 @@ _020DD48C:
 	bhs _020DD4DC
 	mov r0, sb
 	mov r1, r5
-	bl FUN_020D28D0
+	bl IC_InvalidateRange
 	b _020DD4E0
 _020DD4DC:
 	bl FUN_020D28C4
@@ -84412,7 +84412,7 @@ _020DD9B4:
 _020DD9C4:
 	ldr r0, [sl]
 	mov r1, #0x60
-	bl FUN_020D2894
+	bl DC_FlushRange
 	bl FUN_020D28B8
 	mov r7, #0xb
 	mov r6, #1
@@ -88822,7 +88822,7 @@ FUN_020E1434: ; 0x020E1434
 	bl FUN_020D4294
 	mov r0, r5
 	mov r1, r4
-	bl FUN_020D2894
+	bl DC_FlushRange
 _020E1488:
 	ldr r0, [sp, #0x18]
 	cmp r0, #0x11
@@ -92765,7 +92765,7 @@ FUN_020E47E4: ; 0x020E47E4
 	ldr r0, [r1, #0xc]
 	cmp r0, #0
 	bne _020E4820
-	bl FUN_020F4A84
+	bl __destroy_global_chain
 	ldr r0, _020E482C ; =0x021E5390
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -111898,8 +111898,8 @@ _020F4A6C:
 _020F4A80: .word 0x0210E96C
 	arm_func_end __call_static_initializers
 
-	arm_func_start FUN_020F4A84
-FUN_020F4A84: ; 0x020F4A84
+	arm_func_start __destroy_global_chain
+__destroy_global_chain: ; 0x020F4A84
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, _020F4AC4 ; =0x021E58E8
 	ldr r2, [r4]
@@ -111919,7 +111919,7 @@ _020F4A9C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020F4AC4: .word 0x021E58E8
-	arm_func_end FUN_020F4A84
+	arm_func_end __destroy_global_chain
 
 	arm_func_start FUN_020F4AC8
 FUN_020F4AC8: ; 0x020F4AC8
@@ -112493,7 +112493,7 @@ _020F5088:
 	.word FUN_020F4A2C, 0x0000000D, 0x00000000
 	.word FUN_020F4A38, 0x00000015, 0x00100100
 	.word __call_static_initializers, 0x0000002D, 0x00100100
-	.word FUN_020F4A84, 0x00000045, 0x00200300
+	.word __destroy_global_chain, 0x00000045, 0x00200300
 	.word FUN_020F4ACC, 0x00000031, 0x00100000
 	.word FUN_020F4AFC, 0x00000015, 0x00100100
 	.word FUN_020F4B10, 0x0000001D, 0x00100100

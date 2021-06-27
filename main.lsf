@@ -18,13 +18,13 @@ Static main
 Autoload ITCM
 {
 	Address 0x01FF8000
-	Object main.itcm.o
+	Object sdk.o (.itcm)
 }
 
 Autoload DTCM
 {
 	Address 0x027E0000
-	Object main.dtcm.o
+	Object sdk.o (.dtcm)
 }
 Overlay OVY_0
 {

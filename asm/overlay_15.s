@@ -8324,7 +8324,7 @@ _021FD5A4:
 	bl FUN_0201CC08
 	ldr r1, [sp, #4]
 	ldr r1, [r1, #8]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [r4]
 	movs r1, #5
 	adds r2, r6, #0
@@ -8382,7 +8382,7 @@ _021FD62E:
 	bl FUN_0201CC08
 	ldr r1, [sp, #4]
 	ldr r1, [r1, #8]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [r4]
 	movs r1, #5
 	adds r2, r6, #0

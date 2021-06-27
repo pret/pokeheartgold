@@ -1035,7 +1035,7 @@ _0225DD84:
 	bl FUN_0201CC08
 	movs r1, #6
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [r5, #0x14]
 	movs r1, #7
 	bl FUN_0201CC08
@@ -1688,7 +1688,7 @@ _0225E28A:
 	bl FUN_0201CC08
 	movs r1, #6
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x1c]
 	movs r1, #7
 	bl FUN_0201CC08

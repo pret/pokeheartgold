@@ -2605,7 +2605,7 @@ _02238DDE:
 	adds r0, r0, r1
 	movs r1, #0x2a
 	lsls r1, r1, #4
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r1, _02238E30 @ =0x00000FDC
 	ldr r0, [sp, #0x10]
 	movs r2, #1

@@ -557,7 +557,7 @@ _02246DD8:
 	blx FUN_020D0774
 	adds r0, r4, #0
 	movs r1, #0x60
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r1, #6
 	adds r0, r4, #0
 	lsls r1, r1, #0xc
@@ -584,7 +584,7 @@ _02246E1A:
 	blx FUN_020D0774
 	adds r0, r4, #0
 	movs r1, #0x60
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r1, #6
 	adds r0, r4, #0
 	lsls r1, r1, #0xc
@@ -1074,7 +1074,7 @@ _022471B8:
 	bl FUN_02014510
 	ldr r0, [sp, #0x24]
 	adds r1, r7, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r1, [sp, #0x14]
 	movs r0, #0
 	str r0, [sp]
@@ -1718,7 +1718,7 @@ ov71_02247610: @ 0x02247610
 	bl FUN_020075BC
 	adds r1, r0, #0
 	ldr r0, [r4, r6]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [r4, r6]
 	cmp r0, #0
 	beq _022476AC
@@ -3953,7 +3953,7 @@ ov71_02248604: @ 0x02248604
 	blx FUN_020D47EC
 	adds r0, r5, #0
 	movs r1, #0x60
-	blx FUN_020D2894
+	blx DC_FlushRange
 	blx FUN_020D0524
 	blx FUN_020D0774
 	movs r1, #6
@@ -8665,7 +8665,7 @@ ov71_0224AB7C: @ 0x0224AB7C
 	blx FUN_020D47EC
 	adds r0, r5, #0
 	movs r1, #0x60
-	blx FUN_020D2894
+	blx DC_FlushRange
 	blx FUN_020D0524
 	blx FUN_020D0774
 	movs r1, #6

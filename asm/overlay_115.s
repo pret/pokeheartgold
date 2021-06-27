@@ -2284,7 +2284,7 @@ ov115_02260254: @ 0x02260254
 	adds r6, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x20
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r6, #0
 	movs r1, #1
 	blx FUN_020B8078

@@ -1762,7 +1762,7 @@ ov84_0223EB44: @ 0x0223EB44
 	ldr r0, [sp]
 	movs r1, #0xe0
 	ldr r0, [r0, #0xc]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp]
 	movs r1, #0
 	ldr r0, [r0, #0xc]

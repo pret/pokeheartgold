@@ -1843,7 +1843,7 @@ _0225AD52:
 	ldr r0, [sp, #0x10]
 	movs r1, #0x40
 	ldr r0, [r0, #0xc]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x10]
 	ldr r1, _0225AE88 @ =0x000004CC
 	ldr r0, [r0, #0xc]

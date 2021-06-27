@@ -227,7 +227,7 @@ ov63_0221C00C: @ 0x0221C00C
 	adds r4, r1, #0
 	adds r5, r0, #0
 	adds r1, r6, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	adds r1, r4, #0
 	adds r2, r6, #0
@@ -243,7 +243,7 @@ ov63_0221C028: @ 0x0221C028
 	adds r4, r1, #0
 	adds r5, r0, #0
 	adds r1, r6, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	adds r1, r4, #0
 	adds r2, r6, #0
@@ -6427,7 +6427,7 @@ ov63_0221F2E8: @ 0x0221F2E8
 	adds r0, r4, #0
 	ldr r1, [r4, r1]
 	adds r0, #0x14
-	blx FUN_020D2894
+	blx DC_FlushRange
 	pop {r4, pc}
 _0221F30A:
 	ldr r1, _0221F320 @ =0x022203E0
@@ -7327,7 +7327,7 @@ _0221FA46:
 	ldr r0, _0221FA9C @ =0x0000151C
 	ldr r1, [r7, r1]
 	adds r0, r7, r0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, _0221FA98 @ =0x00008D1C
 	ldr r1, [r7, r0]
 	movs r0, #0x1e

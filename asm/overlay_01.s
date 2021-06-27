@@ -915,7 +915,7 @@ ov01_021E6058: @ 0x021E6058
 	add r1, sp, #0
 	strh r0, [r1]
 	movs r1, #2
-	blx FUN_020D2894
+	blx DC_FlushRange
 	add r0, sp, #0
 	movs r1, #0
 	movs r2, #2
@@ -20719,7 +20719,7 @@ ov01_021EF7A0: @ 0x021EF7A0
 	adds r5, r0, #0
 	adds r4, r2, #0
 	adds r1, r6, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	lsls r1, r4, #5
 	adds r2, r6, #0
@@ -25505,7 +25505,7 @@ ov01_021F1A48: @ 0x021F1A48
 	bne _021F1A78
 	ldr r0, [r4]
 	ldr r1, [r0, #8]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [r4]
 	blx FUN_020C26C0
 	cmp r0, #0

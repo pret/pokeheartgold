@@ -6898,7 +6898,7 @@ ov112_021E9290: @ 0x021E9290
 	movs r1, #0x32
 	adds r0, r5, #0
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x20]
 	cmp r0, #0
 	bne _021E9312
@@ -10011,7 +10011,7 @@ ov112_021EAB78: @ 0x021EAB78
 	movs r1, #1
 	ldr r0, [r0, #0x14]
 	lsls r1, r1, #0xa
-	blx FUN_020D2894
+	blx DC_FlushRange
 	str r4, [sp]
 	adds r4, #9
 	lsls r0, r4, #2
@@ -22365,7 +22365,7 @@ ov112_021F0D04: @ 0x021F0D04
 	movs r1, #0x32
 	ldr r0, [r4, r0]
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r1, #0x6e
 	lsls r1, r1, #2
 	ldr r0, [r4, r1]
@@ -22378,7 +22378,7 @@ ov112_021F0D04: @ 0x021F0D04
 	lsls r0, r0, #2
 	adds r0, r4, r0
 	movs r1, #0x20
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r1, #0x6f
 	lsls r1, r1, #2
 	adds r0, r4, r1
@@ -24507,7 +24507,7 @@ ov112_021F1D70: @ 0x021F1D70
 	adds r6, r0, #0
 	ldr r1, [sp]
 	adds r0, r7, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	cmp r4, #1
 	beq _021F1DA0
 	cmp r4, #2
@@ -25045,7 +25045,7 @@ _021F2172:
 _021F21B8:
 	adds r0, r4, #0
 	movs r1, #0x20
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x1c]
 	bl FUN_02024B34
 	movs r1, #1

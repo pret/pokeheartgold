@@ -13646,7 +13646,7 @@ _0222DD6A:
 	movs r1, #2
 	ldr r0, [r0, #0x14]
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x18]
 	movs r2, #2
 	ldr r0, [r0, #0x14]
@@ -13963,7 +13963,7 @@ _0222DFF0:
 	movs r1, #6
 	adds r0, r2, #0
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r0, #3
 	lsls r0, r0, #0xa
 	ldr r0, [r4, r0]
@@ -16547,7 +16547,7 @@ _0222F504:
 	movs r1, #2
 	ldr r0, [r0, #0x14]
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x18]
 	movs r2, #2
 	ldr r0, [r0, #0x14]
@@ -16861,7 +16861,7 @@ _0222F788:
 	movs r1, #6
 	adds r0, r2, #0
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r0, #3
 	lsls r0, r0, #0xa
 	ldr r0, [r4, r0]
@@ -18782,7 +18782,7 @@ ov74_02230714: @ 0x02230714
 	ldrh r1, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r5, [r4, #0xc]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldrh r2, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r1, [r4, #0xc]
@@ -18843,7 +18843,7 @@ ov74_0223078C: @ 0x0223078C
 	ldrh r1, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r5, [r4, #0xc]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldrh r2, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r1, [r4, #0xc]
@@ -18923,7 +18923,7 @@ _0223083C:
 	ldrh r1, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r5, [r4, #0xc]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldrh r2, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r1, [r4, #0xc]
@@ -19200,7 +19200,7 @@ ov74_02230A4C: @ 0x02230A4C
 	bhi _02230A70
 	adds r0, r5, #0
 	adds r1, r4, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	adds r1, r4, #0
 	adds r2, r6, #0
@@ -22107,7 +22107,7 @@ ov74_02231EC4: @ 0x02231EC4
 	movs r1, #2
 	ldr r0, [r0, #0x14]
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r1, [sp, #0x18]
 	ldr r0, [sp]
 	lsls r1, r1, #4
@@ -22212,7 +22212,7 @@ _02231FC0:
 	adds r0, r5, #0
 	adds r0, #0xc
 	adds r1, r6, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	ldr r1, [r5]
 	adds r0, #0xc
@@ -25670,7 +25670,7 @@ _02233B74:
 	movs r1, #1
 	adds r0, r5, #0
 	lsls r1, r1, #0xc
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, _02233BF0 @ =0x00000FF8
 	ldr r1, [r5, r0]
 	ldr r0, _02233BF4 @ =0x08012025
@@ -30015,7 +30015,7 @@ ov74_02235B14: @ 0x02235B14
 	movs r1, #0x32
 	ldr r0, [sp, #0x40]
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x20]
 	bl FUN_02024B1C
 	movs r1, #2

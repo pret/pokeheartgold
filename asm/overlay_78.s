@@ -1514,7 +1514,7 @@ ov78_021E656C: @ 0x021E656C
 _021E6582:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r7, #0
 	bl FUN_02024B1C
 	movs r1, #1
@@ -1587,7 +1587,7 @@ ov78_021E65BC: @ 0x021E65BC
 	ldr r4, [r5, #0x38]
 	movs r1, #0x20
 	adds r0, r5, r4
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r6, #0
 	bl FUN_02024B34
 	adds r0, r5, r4
@@ -1768,7 +1768,7 @@ _021E6738:
 _021E679E:
 	adds r0, r4, #0
 	movs r1, #0x20
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r7, #0
 	bl FUN_02024B34
 	adds r0, r4, #0

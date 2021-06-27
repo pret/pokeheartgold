@@ -2233,7 +2233,7 @@ _022598D0:
 	bl FUN_02003DE8
 	adds r0, r4, #4
 	movs r1, #2
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldrh r1, [r4, #6]
 	adds r0, r4, #4
 	movs r2, #2

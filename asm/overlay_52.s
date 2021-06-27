@@ -1141,7 +1141,7 @@ ov52_021E89D4: @ 0x021E89D4
 	bl ov52_021E8994
 	movs r1, #2
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r4, #0
 	ldr r0, _021E8B88 @ =0x00005B9C
 	str r4, [sp, #0x18]
@@ -1161,7 +1161,7 @@ _021E8A8A:
 	movs r1, #1
 	adds r0, r6, #0
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r2, #1
 	adds r0, r6, #0
 	adds r1, r7, #0

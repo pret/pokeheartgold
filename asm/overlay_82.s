@@ -2075,7 +2075,7 @@ ov82_0223EE38: @ 0x0223EE38
 	ldr r0, [sp]
 	movs r1, #0xc0
 	ldr r0, [r0, #0xc]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp]
 	movs r1, #0
 	ldr r0, [r0, #0xc]

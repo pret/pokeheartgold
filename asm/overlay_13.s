@@ -1823,7 +1823,7 @@ _0221D30C:
 	beq _0221D324
 	ldr r1, [sp, #4]
 	mov r0, sb
-	bl FUN_020D2894
+	bl DC_FlushRange
 _0221D324:
 	ldr r0, [sp, #0x10]
 	add sp, sp, #0x6c
@@ -2427,7 +2427,7 @@ ov13_0221DB30: @ 0x0221DB30
 	mov r5, r1
 	mov r0, r4
 	bic r1, r2, #0x1f
-	bl FUN_020D2894
+	bl DC_FlushRange
 	bl FUN_020D28B8
 	mov r0, r4
 	mov r1, r6
@@ -20075,7 +20075,7 @@ ov13_02227924: @ 0x02227924
 	bl ov13_0223F95C
 	ldr r1, [sp]
 	mov r4, r0
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r2, [sp]
 	mov r0, r4
 	mov r1, #0
@@ -20493,7 +20493,7 @@ ov13_02227E70: @ 0x02227E70
 	mov r4, r0
 	ldr r0, [r1]
 	mov r1, #0xc0
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r0, _02227EAC @ =0x0224F4B4
 	mov r1, #0
 	ldr r0, [r0]
@@ -27163,7 +27163,7 @@ _0222D5FC:
 _0222D620:
 	mov r0, r8
 	mov r1, #0x200
-	bl FUN_020D2894
+	bl DC_FlushRange
 	mov r0, r8
 	mov r1, #0
 	mov r2, #0x200
@@ -41922,7 +41922,7 @@ ov13_02239324: @ 0x02239324
 	popeq {r3, pc}
 	add r0, r1, #4
 	mov r1, #0x600
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r0, _02239374 @ =0x0224F590
 	mov r1, #0
 	ldr r0, [r0]
@@ -44745,7 +44745,7 @@ ov13_0223B73C: @ 0x0223B73C
 	mov r4, r0
 	ldr r0, [r1]
 	mov r1, #0x600
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r0, _0223B784 @ =0x0224F5AC
 	mov r1, #0
 	ldr r0, [r0]
@@ -51054,7 +51054,7 @@ ov13_02240A18: @ 0x02240A18
 	bne _02240A6C
 	ldr r0, [r1, #0x638]
 	mov r1, #0x6000
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r0, _02240A9C @ =0x0224F5E0
 	mov r1, #0
 	ldr r0, [r0]
@@ -51065,7 +51065,7 @@ ov13_02240A18: @ 0x02240A18
 _02240A6C:
 	ldr r0, [r1, #0x668]
 	mov r1, #0x3000
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r0, _02240A9C @ =0x0224F5E0
 	mov r1, #0x3000
 	ldr r0, [r0]
@@ -52528,7 +52528,7 @@ ov13_02241D04: @ 0x02241D04
 	ldr r0, _02241D48 @ =0x0224F608
 	mov r1, #0x800
 	ldr r0, [r0]
-	bl FUN_020D2894
+	bl DC_FlushRange
 	ldr r0, _02241D48 @ =0x0224F608
 	mov r1, #0
 	ldr r0, [r0]

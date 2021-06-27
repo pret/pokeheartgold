@@ -2992,7 +2992,7 @@ ov61_021E7108: @ 0x021E7108
 	adds r5, r0, #0
 	adds r0, r4, #0
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r2, #0x32
 	ldr r1, [sp, #4]
 	adds r0, r4, #0
@@ -3000,7 +3000,7 @@ ov61_021E7108: @ 0x021E7108
 	blx FUN_020CFECC
 	adds r0, r6, #0
 	movs r1, #0x20
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r6, #0
 	adds r1, r5, #0
 	movs r2, #0x20

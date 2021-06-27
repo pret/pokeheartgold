@@ -3300,7 +3300,7 @@ _021EE260:
 	movs r1, #2
 	ldr r0, [r0, #0x14]
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x14]
 	movs r2, #2
 	ldr r0, [r0, #0x14]

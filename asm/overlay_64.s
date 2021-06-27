@@ -196,7 +196,7 @@ ov64_021E5AAC: @ 0x021E5AAC
 	adds r4, r1, #0
 	adds r5, r0, #0
 	adds r1, r6, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	adds r1, r4, #0
 	adds r2, r6, #0
@@ -212,7 +212,7 @@ ov64_021E5AC8: @ 0x021E5AC8
 	adds r4, r1, #0
 	adds r5, r0, #0
 	adds r1, r6, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	adds r1, r4, #0
 	adds r2, r6, #0
@@ -228,7 +228,7 @@ ov64_021E5AE4: @ 0x021E5AE4
 	adds r4, r1, #0
 	adds r5, r0, #0
 	adds r1, r6, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r5, #0
 	adds r1, r4, #0
 	adds r2, r6, #0

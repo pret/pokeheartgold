@@ -2634,7 +2634,7 @@ ov87_021E6E44: @ 0x021E6E44
 	ldr r0, [sp]
 	movs r1, #0xa0
 	ldr r0, [r0, #0xc]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp]
 	movs r1, #0
 	ldr r0, [r0, #0xc]
@@ -2661,7 +2661,7 @@ ov87_021E6E78: @ 0x021E6E78
 	movs r1, #6
 	ldr r0, [r0, #0xc]
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp]
 	movs r2, #6
 	ldr r0, [r0, #0xc]

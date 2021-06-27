@@ -969,7 +969,7 @@
 .public FUN_020D15C4
 .public FUN_020D161C
 .public FUN_020D285C
-.public FUN_020D2894
+.public DC_FlushRange
 .public FUN_020D28B8
 .public FUN_020D290C
 .public FUN_020D2AEC

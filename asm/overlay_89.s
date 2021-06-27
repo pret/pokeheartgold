@@ -2138,7 +2138,7 @@ _02259A56:
 	movs r1, #1
 	ldr r0, [r0, #0x14]
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0xc]
 	ldr r4, [r0, #0x14]
 	adds r0, r4, #0
@@ -2160,7 +2160,7 @@ _02259A90:
 	ldr r0, [sp, #0xc]
 	movs r1, #0x80
 	ldr r0, [r0, #0x14]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0xc]
 	ldr r4, [r0, #0x14]
 	str r4, [sp, #4]
@@ -3850,7 +3850,7 @@ _0225A76E:
 	cmp r0, #0
 	beq _0225A78C
 	ldr r1, [r0, #4]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [r5]
 	movs r1, #1
 	blx FUN_020BE418

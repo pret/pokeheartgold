@@ -4958,7 +4958,7 @@ _0225ECD0:
 	lsls r0, r0, #4
 	ldr r0, [r5, r0]
 	adds r1, r4, #0
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r1, #0x96
 	ldr r0, [sp]
 	lsls r1, r1, #2
@@ -5036,7 +5036,7 @@ _0225ED7E:
 	ldr r0, [r4, r1]
 	adds r1, r1, #4
 	ldr r1, [r4, r1]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, _0225EDB4 @ =0x00000276
 	movs r1, #1
 	strb r1, [r4, r0]

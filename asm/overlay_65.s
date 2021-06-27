@@ -768,7 +768,7 @@ _0221C48A:
 	movs r1, #2
 	ldr r0, [r0, #0x14]
 	lsls r1, r1, #8
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x10]
 	ldr r1, _0221C5CC @ =0x0000069C
 	str r0, [sp]
@@ -2807,7 +2807,7 @@ _0221D5C0:
 	movs r1, #0x32
 	adds r0, r6, #0
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	adds r0, r7, #1
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}

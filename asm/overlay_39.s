@@ -3100,7 +3100,7 @@ _022287A2:
 	adds r0, r0, r1
 	movs r1, #0x2a
 	lsls r1, r1, #4
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [sp, #0x10]
 	movs r1, #1
 	adds r0, #0xac

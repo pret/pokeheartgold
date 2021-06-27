@@ -8982,7 +8982,7 @@ ov41_0224A094: @ 0x0224A094
 	adds r5, r0, #0
 	ldr r0, [r1, #0x14]
 	ldr r1, [r1, #0x10]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r3, [r4, #4]
 	ldr r0, [r4, #0x10]
 	str r0, [sp]
@@ -9011,7 +9011,7 @@ ov41_0224A0D0: @ 0x0224A0D0
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
 	ldr r0, [r0, #0xc]
-	blx FUN_020D2894
+	blx DC_FlushRange
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	bne _0224A0F4

@@ -2789,7 +2789,7 @@ ov97_0221FC54: @ 0x0221FC54
 	movs r1, #0x32
 	ldr r0, [r4, r0]
 	lsls r1, r1, #6
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r1, #0x96
 	lsls r1, r1, #2
 	ldr r0, [r4, r1]
@@ -2802,7 +2802,7 @@ ov97_0221FC54: @ 0x0221FC54
 	lsls r0, r0, #2
 	adds r0, r4, r0
 	movs r1, #0x20
-	blx FUN_020D2894
+	blx DC_FlushRange
 	movs r1, #0x97
 	lsls r1, r1, #2
 	adds r0, r4, r1
