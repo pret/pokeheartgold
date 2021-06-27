@@ -69,7 +69,7 @@ _02259930:
 	cmp r1, r7
 	beq _02259944
 	add r0, r6, #0
-	bl FUN_02040514
+	bl sub_02040514
 	cmp r0, #0
 	bne _02259944
 	lsl r0, r4, #0x10
@@ -94,14 +94,14 @@ ov26_0225995C: ; 0x0225995C
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl FUN_020503D0
+	bl sub_020503D0
 	cmp r4, #0
 	bne _0225996E
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 _0225996E:
 	add r1, r4, #0
-	bl FUN_020666C4
+	bl sub_020666C4
 	cmp r0, #0
 	bne _02259982
 	add r0, r5, #0
@@ -160,10 +160,10 @@ _022599CC: .word 0x02259ACC
 
 	thumb_func_start ov26_022599D0
 ov26_022599D0: ; 0x022599D0
-	ldr r3, _022599D4 ; =FUN_0205FC94
+	ldr r3, _022599D4 ; =sub_0205FC94
 	bx r3
 	.align 2, 0
-_022599D4: .word FUN_0205FC94
+_022599D4: .word sub_0205FC94
 	thumb_func_end ov26_022599D0
 
 	thumb_func_start ov26_022599D8
@@ -173,7 +173,7 @@ ov26_022599D8: ; 0x022599D8
 	add r5, r1, #0
 	beq _02259A20
 	add r0, r5, #0
-	bl FUN_0205F2A8
+	bl sub_0205F2A8
 	cmp r0, #0
 	bne _022599EE
 	mov r4, #0xe
@@ -217,16 +217,16 @@ ov26_02259A24: ; 0x02259A24
 	add r4, r1, #0
 	str r0, [sp]
 	str r2, [sp, #4]
-	bl FUN_0203B74C
+	bl sub_0203B74C
 	add r7, r0, #0
 	add r0, r4, #0
-	bl FUN_0205F27C
+	bl sub_0205F27C
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0xc]
-	bl FUN_020404C8
+	bl sub_020404C8
 	str r0, [sp, #8]
-	bl FUN_02040500
+	bl sub_02040500
 	cmp r0, #0
 	bne _02259A54
 	add sp, #0x10
@@ -240,18 +240,18 @@ _02259A5A:
 	ldr r0, [sp]
 	add r1, r4, #0
 	ldr r0, [r0, #0x3c]
-	bl FUN_0205EE60
+	bl sub_0205EE60
 	add r5, r0, #0
 	beq _02259AC0
 	ldr r1, [sp, #4]
 	cmp r1, #0
 	bne _02259A76
-	bl FUN_0205F264
+	bl sub_0205F264
 	cmp r0, #0x31
 	beq _02259AC0
 _02259A76:
 	add r0, r5, #0
-	bl FUN_0205F26C
+	bl sub_0205F26C
 	cmp r0, #8
 	bhi _02259AC0
 	add r0, r0, r0
@@ -272,11 +272,11 @@ _02259A8C: ; jump table
 	.short _02259A9E - _02259A8C - 2 ; case 8
 _02259A9E:
 	add r0, r5, #0
-	bl FUN_0205F27C
+	bl sub_0205F27C
 	add r6, r0, #0
 	lsl r0, r6, #0x10
 	lsr r0, r0, #0x10
-	bl FUN_020404C8
+	bl sub_020404C8
 	ldr r1, [sp, #0xc]
 	cmp r1, r6
 	beq _02259AC0

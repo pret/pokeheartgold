@@ -1,6 +1,6 @@
 
-	thumb_func_start FUN_020CB800
-FUN_020CB800: ; 0x020CB800
+	thumb_func_start sub_020CB800
+sub_020CB800: ; 0x020CB800
 	str r1, [r0, #0x14]
 	neg r1, r1
 	str r1, [r0, #0x1c]
@@ -17,10 +17,10 @@ FUN_020CB800: ; 0x020CB800
 	stmia r0!, {r1, r3}
 	bx lr
 	.align 2, 0
-	thumb_func_end FUN_020CB800
+	thumb_func_end sub_020CB800
 
-	thumb_func_start FUN_020CB820
-FUN_020CB820: ; 0x020CB820
+	thumb_func_start sub_020CB820
+sub_020CB820: ; 0x020CB820
 	str r1, [r0, #0x18]
 	mov r3, #0
 	stmia r0!, {r2, r3}
@@ -35,4 +35,4 @@ FUN_020CB820: ; 0x020CB820
 	stmia r0!, {r1, r3}
 	bx lr
 	.align 2, 0
-	thumb_func_end FUN_020CB820
+	thumb_func_end sub_020CB820

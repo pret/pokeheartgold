@@ -14,35 +14,35 @@ ov13_0221BA00: ; 0x0221BA00
 _0221BA0C:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl FUN_020C7F74
+	bl sub_020C7F74
 	add r0, r5, #0
 	add r1, r6, #0
-	bl FUN_020C7F8C
+	bl sub_020C7F8C
 	add r0, r5, #0
 	add r1, r7, #0
-	bl FUN_020C7FAC
+	bl sub_020C7FAC
 	add r5, r5, #1
 	cmp r5, #0x20
 	blt _0221BA0C
-	bl FUN_02034D8C
-	bl FUN_020D33C0
-	bl FUN_020D365C
-	bl FUN_020D3A38
+	bl sub_02034D8C
+	bl sub_020D33C0
+	bl sub_020D365C
+	bl sub_020D3A38
 	add r5, r0, #0
 	mov r0, #2
-	bl FUN_021EC454
+	bl sub_021EC454
 	mov r1, #1
 	ldr r0, [sp]
 	lsl r1, r1, #0x12
-	bl FUN_0201AA8C
+	bl sub_0201AA8C
 	add r4, r0, #0
 	mov r1, #1
 	mov r2, #0
 	bl ov13_0222B430
 	add r0, r4, #0
-	bl FUN_0201AB0C
+	bl sub_0201AB0C
 	add r0, r5, #0
-	bl FUN_020D3A4C
+	bl sub_020D3A4C
 	ldr r1, _0221BA6C ; =0x04000208
 	ldrh r0, [r1]
 	mov r0, #1

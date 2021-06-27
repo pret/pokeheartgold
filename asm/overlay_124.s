@@ -10,7 +10,7 @@ ov124_02260C20: ; 0x02260C20
 	ldr r4, _02260CFC ; =0x0097B4B1
 	bl FS_LoadOverlay
 	ldr r0, _02260D00 ; =ov124_02260D68
-	bl FUN_0225F4A8
+	bl sub_0225F4A8
 	cmp r0, #0
 	bne _02260C40
 	mov r1, #1
@@ -22,13 +22,13 @@ _02260C42:
 	mul r0, r1
 	add r4, r4, r0
 	add r0, r6, #0
-	bl FUN_020072A4
+	bl sub_020072A4
 	ldr r0, [r0, #8]
 	str r0, [r5, #0xc]
 	mov r0, #0
 	str r0, [r5, #0x10]
 	ldr r0, _02260D08 ; =ov124_02260D6C
-	bl FUN_0225F688
+	bl sub_0225F688
 	cmp r0, #0
 	bne _02260C64
 	mov r1, #1
@@ -40,21 +40,21 @@ _02260C66:
 	mul r0, r1
 	add r4, r4, r0
 	ldr r0, [r5, #0xc]
-	bl FUN_0203B9C4
-	bl FUN_0203B958
+	bl sub_0203B9C4
+	bl sub_0203B958
 	str r0, [r5, #0x20]
-	bl FUN_0203AF9C
+	bl sub_0203AF9C
 	str r0, [r5, #0x30]
 	ldr r0, _02260D0C ; =ov124_02260D58
-	bl FUN_0225F520
+	bl sub_0225F520
 	add r6, r0, #0
 	ldr r1, _02260D10 ; =0x000003A1
 	add r0, r5, #0
 	mul r6, r1
 	mov r1, #0xb
-	bl FUN_0203B610
+	bl sub_0203B610
 	mov r0, #0xb
-	bl FUN_020787A8
+	bl sub_020787A8
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]
@@ -63,25 +63,25 @@ _02260C66:
 	bl FS_UnloadOverlay
 	ldr r1, _02260D14 ; =0x00000989
 	add r0, r4, r6
-	bl FUN_020F2BA4
+	bl sub_020F2BA4
 	cmp r1, #0
 	beq _02260CB8
 	add r0, r5, #0
 	bl ov124_02260D1C
 _02260CB8:
 	mov r0, #0xb
-	bl FUN_02092BB8
+	bl sub_02092BB8
 	add r1, r5, #0
 	add r1, #0xa8
 	str r0, [r1]
 	mov r0, #0xb
-	bl FUN_0206A1D4
+	bl sub_0206A1D4
 	mov r1, #0x42
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	mov r0, #0xb
 	add r1, r5, #0
-	bl FUN_02092D98
+	bl sub_02092D98
 	mov r1, #0x45
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -90,7 +90,7 @@ _02260CB8:
 	str r0, [r5, r1]
 	ldr r1, _02260D18 ; =0x00000FE9
 	add r0, r4, r6
-	bl FUN_020F2BA4
+	bl sub_020F2BA4
 	cmp r1, #0
 	beq _02260CF6
 	add r0, r5, #0
@@ -117,9 +117,9 @@ ov124_02260D1C: ; 0x02260D1C
 	add r4, r5, #0
 _02260D24:
 	ldr r0, [r6, #0xc]
-	bl FUN_02028E9C
+	bl sub_02028E9C
 	add r1, r4, #0
-	bl FUN_02028F98
+	bl sub_02028F98
 	cmp r0, #1
 	bne _02260D36
 	add r5, r5, #1
@@ -137,7 +137,7 @@ _02260D44:
 	mul r1, r0
 _02260D4A:
 	mov r0, #3
-	bl FUN_0201AACC
+	bl sub_0201AACC
 	pop {r4, r5, r6, pc}
 	nop
 _02260D54: .word 0x00004E20
@@ -145,13 +145,13 @@ _02260D54: .word 0x00004E20
 
 	thumb_func_start ov124_02260D58
 ov124_02260D58: ; 0x02260D58
-	ldr r3, _02260D64 ; =FUN_0201AACC
+	ldr r3, _02260D64 ; =sub_0201AACC
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_02260D64: .word FUN_0201AACC
+_02260D64: .word sub_0201AACC
 	thumb_func_end ov124_02260D58
 
 	thumb_func_start ov124_02260D68

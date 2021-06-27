@@ -6,11 +6,11 @@ ov50_021E5900: ; 0x021E5900
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021E5920
-	bl FUN_020072A8
+	bl sub_020072A8
 	cmp r0, #0
 	beq _021E5920
 	ldr r0, [r4]
-	bl FUN_02007278
+	bl sub_02007278
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1
@@ -24,21 +24,21 @@ _021E5920:
 ov50_021E5924: ; 0x021E5924
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl FUN_020072A4
+	bl sub_020072A4
 	mov r2, #1
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x5e
 	lsl r2, r2, #0xc
-	bl FUN_0201A910
+	bl sub_0201A910
 	add r0, r4, #0
 	mov r1, #0x14
 	mov r2, #0x5e
-	bl FUN_02007280
+	bl sub_02007280
 	mov r1, #0
 	mov r2, #0x14
 	add r4, r0, #0
-	bl FUN_020D4994
+	bl sub_020D4994
 	mov r0, #0x5e
 	str r0, [r4]
 	str r5, [r4, #0xc]
@@ -52,7 +52,7 @@ ov50_021E5924: ; 0x021E5924
 ov50_021E595C: ; 0x021E595C
 	push {r4, lr}
 	add r4, r1, #0
-	bl FUN_02007290
+	bl sub_02007290
 	ldr r1, [r4]
 	cmp r1, #4
 	bhi _021E59A0
@@ -96,15 +96,15 @@ _021E59A4:
 ov50_021E59A8: ; 0x021E59A8
 	push {r4, lr}
 	add r4, r0, #0
-	bl FUN_02007290
+	bl sub_02007290
 	mov r1, #0
 	mov r2, #0x14
-	bl FUN_020D4994
+	bl sub_020D4994
 	add r0, r4, #0
-	bl FUN_02007294
-	bl FUN_02004B10
+	bl sub_02007294
+	bl sub_02004B10
 	mov r0, #0x5e
-	bl FUN_0201A9C4
+	bl sub_0201A9C4
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ov50_021E59A8
@@ -116,7 +116,7 @@ ov50_021E59CC: ; 0x021E59CC
 	ldr r0, _021E59E0 ; =_021E5A8C
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4]
-	bl FUN_0200724C
+	bl sub_0200724C
 	str r0, [r4, #8]
 	mov r0, #1
 	pop {r4, pc}
@@ -167,7 +167,7 @@ ov50_021E5A0C: ; 0x021E5A0C
 	lsl r1, r1, #4
 	ldr r1, [r2, r1]
 	ldr r2, [r4]
-	bl FUN_0200724C
+	bl sub_0200724C
 	str r0, [r4, #8]
 	mov r0, #3
 	add sp, #0x10
@@ -191,9 +191,9 @@ _021E5A4E:
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl FUN_0202C9D8
+	bl sub_0202C9D8
 	add r4, r0, #0
-	bl FUN_0202C9E8
+	bl sub_0202C9E8
 	ldr r2, [r5, #0xc]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -205,12 +205,12 @@ _021E5A4E:
 	orr r0, r1
 	strb r0, [r2, #4]
 	add r0, r4, #0
-	bl FUN_0202C9E4
+	bl sub_0202C9E4
 	ldr r1, [r5, #0xc]
 	mov r2, #6
 	add r1, #0x68
 	lsl r2, r2, #8
-	bl FUN_020D4A50
+	bl sub_020D4A50
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.align 2, 0

@@ -32,7 +32,7 @@ _0225EEA8:
 	mov r0, #0x34
 	mov r2, #0x20
 	strb ip, [r3, #0x7f]
-	bl FUN_020C2528
+	bl sub_020C2528
 	add sp, sp, #0x80
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov93_0225EE98
@@ -105,7 +105,7 @@ _0225EFD4:
 	mov r0, #0x40
 	add r1, sp, #0x44
 	mov r2, #1
-	bl FUN_020C2528
+	bl sub_020C2528
 	add r1, sl, sb, lsl #5
 	ldr r0, [r1, #0xc]
 	ldr r1, [r1, #0x10]
@@ -128,12 +128,12 @@ _0225EFD4:
 	mov r0, #0x22
 	add r1, sp, #0x40
 	mov r2, #1
-	bl FUN_020C2528
+	bl sub_020C2528
 	mov r0, #0x21
 	add r1, sp, #0x3c
 	mov r2, #1
 	str r6, [sp, #0x3c]
-	bl FUN_020C2528
+	bl sub_020C2528
 	ldrh r3, [sp, #2]
 	ldrh r2, [sp]
 	mov r0, #0x23
@@ -142,7 +142,7 @@ _0225EFD4:
 	str r2, [sp, #0x34]
 	mov r2, #2
 	str r5, [sp, #0x38]
-	bl FUN_020C2528
+	bl sub_020C2528
 	add r1, sl, sb, lsl #5
 	ldr r0, [r1, #0x14]
 	ldr r1, [r1, #0x18]
@@ -165,12 +165,12 @@ _0225EFD4:
 	mov r0, #0x22
 	add r1, sp, #0x30
 	mov r2, #1
-	bl FUN_020C2528
+	bl sub_020C2528
 	mov r0, #0x21
 	add r1, sp, #0x2c
 	mov r2, #1
 	str r6, [sp, #0x2c]
-	bl FUN_020C2528
+	bl sub_020C2528
 	ldrh r3, [sp, #2]
 	ldrh r2, [sp]
 	mov r0, #0x23
@@ -179,7 +179,7 @@ _0225EFD4:
 	str r2, [sp, #0x24]
 	mov r2, #2
 	str r4, [sp, #0x28]
-	bl FUN_020C2528
+	bl sub_020C2528
 	add r1, sl, sb, lsl #5
 	ldr r0, [r1, #0x24]
 	ldr r1, [r1, #0x28]
@@ -202,12 +202,12 @@ _0225EFD4:
 	mov r0, #0x22
 	add r1, sp, #0x20
 	mov r2, #1
-	bl FUN_020C2528
+	bl sub_020C2528
 	mov r0, #0x21
 	add r1, sp, #0x1c
 	mov r2, #1
 	str r6, [sp, #0x1c]
-	bl FUN_020C2528
+	bl sub_020C2528
 	ldrh r3, [sp, #2]
 	ldrh r2, [sp]
 	mov r0, #0x23
@@ -216,7 +216,7 @@ _0225EFD4:
 	str r2, [sp, #0x14]
 	mov r2, #2
 	str fp, [sp, #0x18]
-	bl FUN_020C2528
+	bl sub_020C2528
 	add r1, sl, sb, lsl #5
 	ldr r0, [r1, #0x1c]
 	ldr r1, [r1, #0x20]
@@ -239,12 +239,12 @@ _0225EFD4:
 	mov r0, #0x22
 	add r1, sp, #0x10
 	mov r2, #1
-	bl FUN_020C2528
+	bl sub_020C2528
 	mov r0, #0x21
 	add r1, sp, #0xc
 	mov r2, #1
 	str r6, [sp, #0xc]
-	bl FUN_020C2528
+	bl sub_020C2528
 	mov r0, #0
 	str r0, [sp, #8]
 	ldrh r3, [sp, #2]
@@ -254,11 +254,11 @@ _0225EFD4:
 	orr r2, r3, r2, lsl #16
 	str r2, [sp, #4]
 	mov r2, #2
-	bl FUN_020C2528
+	bl sub_020C2528
 	mov r1, #0
 	mov r0, #0x41
 	mov r2, r1
-	bl FUN_020C2528
+	bl sub_020C2528
 	add sb, sb, #1
 	cmp sb, #8
 	blt _0225EFD4
@@ -280,7 +280,7 @@ ov93_0225F268: ; 0x0225F268
 	mov r0, r0, lsl #0xc
 	mov r2, #0x80000
 	mov r3, #0
-	bl FUN_020F2750
+	bl sub_020F2750
 	mov r1, r5, asr #0x1f
 	mov r1, r1, lsl #0xc
 	mov r4, r0
@@ -288,7 +288,7 @@ ov93_0225F268: ; 0x0225F268
 	mov r0, r5, lsl #0xc
 	mov r2, #0x80000
 	mov r3, #0
-	bl FUN_020F2750
+	bl sub_020F2750
 	mov r5, r0
 	ldr r0, _0225F36C ; =0x00007FFF
 	cmp r4, r0
@@ -432,11 +432,11 @@ ov93_0225F44C: ; 0x0225F44C
 	cmp r1, r2
 	ble _0225F4BC
 	ldr r0, _0225F540 ; =0x0000058F
-	bl FUN_02006184
+	bl sub_02006184
 	cmp r0, #0
 	bne _0225F4BC
 	ldr r0, _0225F540 ; =0x0000058F
-	bl FUN_0200604C
+	bl sub_0200604C
 	mov r0, #1
 	strb r0, [r5, #0x274]
 _0225F4BC:
@@ -587,7 +587,7 @@ _0225F6C0:
 	ldr r0, [sp, #0xc]
 	mov r1, #0x40000
 	sub r0, r0, r5
-	bl FUN_020CD5DC
+	bl sub_020CD5DC
 	add r1, r0, #0x8000
 	mov r1, r1, lsl #0x10
 	mov fp, r1, lsr #0x10
@@ -596,7 +596,7 @@ _0225F6E0:
 	ldr r0, [sp, #0xc]
 	mov r1, #0x40000
 	sub r0, r0, r5
-	bl FUN_020CD5DC
+	bl sub_020CD5DC
 	add r1, r0, #0x8000
 	mov r1, r1, lsl #0x10
 	mov fp, r1, lsr #0x10
@@ -606,7 +606,7 @@ _0225F700:
 	mov r1, #0x40000
 	sub r0, r0, r5
 	rsb r1, r1, #0
-	bl FUN_020CD5DC
+	bl sub_020CD5DC
 	mov fp, r0
 	add r0, fp, #0x8000
 	mov r0, r0, lsl #0x10
@@ -803,7 +803,7 @@ ov93_0225F9AC: ; 0x0225F9AC
 	mov r0, r3
 	mov r3, #0
 	mov r2, #0x3200000
-	bl FUN_020F2750
+	bl sub_020F2750
 	ldmia sp!, {r3, pc}
 	arm_func_end ov93_0225F9AC
 
@@ -814,7 +814,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	mov r5, r0
 	mov r0, #0xc9
 	mov r1, #0x75
-	bl FUN_02007688
+	bl sub_02007688
 	mov r4, r0
 	str r4, [sp]
 	mov r0, #0x3a
@@ -830,7 +830,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r2, [r5, #0x24]
 	ldr r3, [r5, #0x28]
 	mov r1, #2
-	bl FUN_0200D68C
+	bl sub_0200D68C
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -841,7 +841,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r1, [r5, #0x28]
 	mov r2, r4
 	mov r3, #0x37
-	bl FUN_0200D504
+	bl sub_0200D504
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225FAB8 ; =0x00002713
@@ -850,7 +850,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x39
-	bl FUN_0200D6EC
+	bl sub_0200D6EC
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225FAB8 ; =0x00002713
@@ -859,9 +859,9 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x38
-	bl FUN_0200D71C
+	bl sub_0200D71C
 	mov r0, r4
-	bl FUN_0200770C
+	bl sub_0200770C
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -875,16 +875,16 @@ ov93_0225FABC: ; 0x0225FABC
 	mov r4, r0
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAF8 ; =0x00002713
-	bl FUN_0200D958
+	bl sub_0200D958
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAF8 ; =0x00002713
-	bl FUN_0200D978
+	bl sub_0200D978
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAF8 ; =0x00002713
-	bl FUN_0200D988
+	bl sub_0200D988
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAFC ; =0x00002715
-	bl FUN_0200D968
+	bl sub_0200D968
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0225FAF8: .word 0x00002713
@@ -910,12 +910,12 @@ ov93_0225FB00: ; 0x0225FB00
 	str r0, [ip]
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
-	bl FUN_0200D734
+	bl sub_0200D734
 	mov r4, r0
 	mov r1, #0
-	bl FUN_0200DCE8
+	bl sub_0200DCE8
 	ldr r0, [r4]
-	bl FUN_0200DC0C
+	bl sub_0200DC0C
 	mov r0, r4
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, pc}
@@ -948,12 +948,12 @@ _0225FB94:
 	mov r1, r1, asr #0x10
 	mov r2, r2, asr #0x10
 	mov r3, #0x160000
-	bl FUN_0200DDF4
+	bl sub_0200DDF4
 	mov r0, r5
 	mov r1, r4
-	bl FUN_0200DC4C
+	bl sub_0200DC4C
 	ldr r0, [r5]
-	bl FUN_0200DC0C
+	bl sub_0200DC0C
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0225FBE0: .word 0x02262C07
@@ -961,10 +961,10 @@ _0225FBE0: .word 0x02262C07
 
 	arm_func_start ov93_0225FBE4
 ov93_0225FBE4: ; 0x0225FBE4
-	ldr ip, _0225FBEC ; =FUN_0200D9DC
+	ldr ip, _0225FBEC ; =sub_0200D9DC
 	bx ip
 	.align 2, 0
-_0225FBEC: .word FUN_0200D9DC
+_0225FBEC: .word sub_0200D9DC
 	arm_func_end ov93_0225FBE4
 
 	.rodata

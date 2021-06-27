@@ -40,7 +40,7 @@ _02380080:
 	str r3, [r1], #4
 	cmp r1, r2
 	bmi _02380080
-	bl FUN_02380100
+	bl sub_02380100
 	ldr r0, _023800EC @ =_start_ModuleParams
 	ldr r1, [r0, #0xc]
 	ldr r2, [r0, #0x10]
@@ -49,7 +49,7 @@ _023800A4:
 	cmp r1, r2
 	strlo r0, [r1], #4
 	blo _023800A4
-	bl FUN_0238015C
+	bl sub_0238015C
 	ldr r1, _023800F0 @ =0x0380FFFC
 	ldr r0, _023800F4 @ =0x037F84E4
 	str r0, [r1]
@@ -72,8 +72,8 @@ _023800F8: .4byte 0x037F8000
 _023800FC: .4byte 0xFFFF0000
 	arm_func_end _start
 
-	arm_func_start FUN_02380100
-FUN_02380100: @ 0x02380100
+	arm_func_start sub_02380100
+sub_02380100: @ 0x02380100
 	ldr r0, _02380154 @ =_start_ModuleParams
 	ldr r1, [r0]
 	ldr r2, [r0, #4]
@@ -101,15 +101,15 @@ _02380150:
 	b _02380158
 	.align 2, 0
 _02380154: .4byte _start_ModuleParams
-	arm_func_end FUN_02380100
+	arm_func_end sub_02380100
 
-	arm_func_start FUN_02380158
-FUN_02380158:
+	arm_func_start sub_02380158
+sub_02380158:
 	bx lr
-	arm_func_end FUN_02380158
+	arm_func_end sub_02380158
 
-	arm_func_start FUN_0238015C
-FUN_0238015C: @ 0x0238015C
+	arm_func_start sub_0238015C
+sub_0238015C: @ 0x0238015C
 	mov r0, #1
 	mov r1, #0
 	ldr r2, _02380194 @ =0x027FFFFA
@@ -128,7 +128,7 @@ _0238018C:
 	bx lr
 	.align 2, 0
 _02380194: .4byte 0x027FFFFA
-	arm_func_end FUN_0238015C
+	arm_func_end sub_0238015C
 
 _start_ModuleParams:
 	.4byte 0x023A76B4
