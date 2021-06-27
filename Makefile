@@ -37,6 +37,9 @@ sub: ; $(MAKE) -C sub
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
 
+$(SBIN):
+	$(WINE) $(COMPSTATIC) -9 -F -c -f $(BUILD_DIR)/component.files
+
 $(ROM): $(ROMSPEC) $(NITROFS_FILES) main sub $(BANNER)
 	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DNITROFS_FILES="$(NITROFS_FILES)" -DTITLE_NAME="$(TITLE_NAME)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
