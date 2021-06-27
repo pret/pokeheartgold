@@ -99869,10 +99869,7 @@ _0226807E:
 	add sp, #4
 	mvns r0, r0
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ov12_02268024
-
-	non_word_aligned_thumb_func_start FUN_0226808E
-FUN_0226808E: @ 0x0226808E
+_0226808E:
 	add r0, sp, #0
 	ldrb r0, [r0, #3]
 	cmp r0, #0
@@ -99943,7 +99940,7 @@ _02268120: .4byte 0x0226E358
 _02268124: .4byte 0x000002FF
 _02268128: .4byte ov12_02269360
 _0226812C: .4byte 0x000006BC
-	thumb_func_end FUN_0226808E
+	thumb_func_end ov12_02268024
 
 	thumb_func_start ov12_02268130
 ov12_02268130: @ 0x02268130

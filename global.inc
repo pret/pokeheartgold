@@ -1488,7 +1488,6 @@
 .public FUN_02259DB8
 .public FUN_02260C20
 .public FUN_02264334
-.public FUN_04000050
 .public GF_AssertFail
 .public MIi_UncompressBackward
 .public NitroMain
