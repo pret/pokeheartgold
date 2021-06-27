@@ -60956,15 +60956,7 @@ FUN_020CAF70: @ 0x020CAF70
 	bx lr
 	arm_func_end FUN_020CAF70
 
-	thumb_func_start FUN_020CAF88
-FUN_020CAF88: @ 0x020CAF88
-	str r2, [r0]
-	str r1, [r0, #4]
-	rsbs r1, r1, #0
-	str r1, [r0, #8]
-	str r2, [r0, #0xc]
-	bx lr
-	thumb_func_end FUN_020CAF88
+	.include "lib/asm/sdk_thumb_1.inc"
 
 	arm_func_start FUN_020CAF94
 FUN_020CAF94: @ 0x020CAF94
@@ -61057,57 +61049,7 @@ FUN_020CB010: @ 0x020CB010
 	pop {r4, pc}
 	arm_func_end FUN_020CB010
 
-	thumb_func_start FUN_020CB0D0
-FUN_020CB0D0: @ 0x020CB0D0
-	movs r3, #1
-	lsls r3, r3, #0xc
-	str r3, [r0]
-	movs r3, #0
-	str r3, [r0, #4]
-	str r3, [r0, #8]
-	str r3, [r0, #0xc]
-	str r2, [r0, #0x10]
-	str r1, [r0, #0x14]
-	str r3, [r0, #0x18]
-	rsbs r1, r1, #0
-	str r1, [r0, #0x1c]
-	str r2, [r0, #0x20]
-	bx lr
-	thumb_func_end FUN_020CB0D0
-
-	thumb_func_start FUN_020CB0EC
-FUN_020CB0EC: @ 0x020CB0EC
-	str r2, [r0]
-	str r2, [r0, #0x20]
-	movs r3, #0
-	str r3, [r0, #4]
-	str r3, [r0, #0xc]
-	str r3, [r0, #0x14]
-	str r3, [r0, #0x1c]
-	rsbs r2, r1, #0
-	movs r3, #1
-	lsls r3, r3, #0xc
-	str r1, [r0, #0x18]
-	str r2, [r0, #8]
-	str r3, [r0, #0x10]
-	bx lr
-	thumb_func_end FUN_020CB0EC
-
-	thumb_func_start FUN_020CB108
-FUN_020CB108: @ 0x020CB108
-	stm r0!, {r2}
-	movs r3, #0
-	stm r0!, {r1, r3}
-	rsbs r1, r1, #0
-	stm r0!, {r1, r2}
-	movs r1, #1
-	lsls r1, r1, #0xc
-	str r3, [r0]
-	str r3, [r0, #4]
-	str r3, [r0, #8]
-	str r1, [r0, #0xc]
-	bx lr
-	thumb_func_end FUN_020CB108
+	.include "lib/asm/sdk_thumb_2.inc"
 
 	arm_func_start FUN_020CB120
 FUN_020CB120: @ 0x020CB120
@@ -61556,76 +61498,7 @@ _020CB728:
 	pop {r3, r4, r5, r6, r7, pc}
 	arm_func_end FUN_020CB708
 
-	thumb_func_start FUN_020CB7B4
-FUN_020CB7B4: @ 0x020CB7B4
-	stm r0!, {r1}
-	movs r1, #0
-	str r3, [r0, #0x1c]
-	movs r3, #0
-	stm r0!, {r1, r3}
-	stm r0!, {r1, r2, r3}
-	movs r2, #0
-	stm r0!, {r1, r3}
-	adds r0, #4
-	stm r0!, {r1, r2, r3}
-	bx lr
-	.align 2, 0
-	thumb_func_end FUN_020CB7B4
-
-	arm_func_start FUN_020CB7CC
-FUN_020CB7CC: @ 0x020CB7CC
-	push {r3, r4, r5, lr}
-	ldr ip, [sp, #0x10]
-	mov r5, r0
-	str ip, [sp]
-	mov r4, r1
-	bl FUN_020CB010
-	ldr r0, [r5, #0x24]
-	str r0, [r4, #0x24]
-	ldr r0, [r5, #0x28]
-	str r0, [r4, #0x28]
-	ldr r0, [r5, #0x2c]
-	str r0, [r4, #0x2c]
-	pop {r3, r4, r5, pc}
-	arm_func_end FUN_020CB7CC
-
-	thumb_func_start FUN_020CB800
-FUN_020CB800: @ 0x020CB800
-	str r1, [r0, #0x14]
-	rsbs r1, r1, #0
-	str r1, [r0, #0x1c]
-	movs r1, #1
-	lsls r1, r1, #0xc
-	stm r0!, {r1}
-	movs r3, #0
-	movs r1, #0
-	stm r0!, {r1, r3}
-	stm r0!, {r1, r2}
-	str r1, [r0, #4]
-	adds r0, #0xc
-	stm r0!, {r2, r3}
-	stm r0!, {r1, r3}
-	bx lr
-	.align 2, 0
-	thumb_func_end FUN_020CB800
-
-	thumb_func_start FUN_020CB820
-FUN_020CB820: @ 0x020CB820
-	str r1, [r0, #0x18]
-	movs r3, #0
-	stm r0!, {r2, r3}
-	rsbs r1, r1, #0
-	stm r0!, {r1, r3}
-	movs r1, #1
-	lsls r1, r1, #0xc
-	stm r0!, {r1, r3}
-	adds r0, #4
-	movs r1, #0
-	stm r0!, {r1, r2, r3}
-	stm r0!, {r1, r3}
-	bx lr
-	.align 2, 0
-	thumb_func_end FUN_020CB820
+	.include "lib/asm/sdk_thumb_3.inc"
 
 	arm_func_start FUN_020CB83C
 FUN_020CB83C: @ 0x020CB83C
@@ -62249,71 +62122,7 @@ _020CC0C4:
 	pop {r3, r4, r5, r6, r7, pc}
 	arm_func_end FUN_020CC0A4
 
-	thumb_func_start FUN_020CC17C
-FUN_020CC17C: @ 0x020CC17C
-	str r2, [r0, #0x14]
-	str r2, [r0, #0x28]
-	str r1, [r0, #0x18]
-	rsbs r1, r1, #0
-	str r1, [r0, #0x24]
-	movs r1, #1
-	movs r2, #0
-	lsls r1, r1, #0xc
-	movs r3, #0
-	stm r0!, {r1, r2, r3}
-	stm r0!, {r2, r3}
-	adds r0, #8
-	stm r0!, {r2, r3}
-	adds r0, #8
-	stm r0!, {r2, r3}
-	stm r0!, {r2, r3}
-	str r1, [r0]
-	bx lr
-	thumb_func_end FUN_020CC17C
-
-	thumb_func_start FUN_020CC1A0
-FUN_020CC1A0: @ 0x020CC1A0
-	str r2, [r0]
-	str r2, [r0, #0x28]
-	str r1, [r0, #0x20]
-	rsbs r1, r1, #0
-	str r1, [r0, #8]
-	movs r3, #1
-	movs r1, #0
-	lsls r3, r3, #0xc
-	movs r2, #0
-	str r2, [r0, #4]
-	adds r0, #0xc
-	stm r0!, {r1, r2, r3}
-	stm r0!, {r1, r2}
-	str r2, [r0, #4]
-	adds r0, #0xc
-	stm r0!, {r1, r2}
-	stm r0!, {r1, r2, r3}
-	bx lr
-	thumb_func_end FUN_020CC1A0
-
-	thumb_func_start FUN_020CC1C4
-FUN_020CC1C4: @ 0x020CC1C4
-	str r2, [r0]
-	str r2, [r0, #0x14]
-	str r1, [r0, #4]
-	rsbs r1, r1, #0
-	str r1, [r0, #0x10]
-	movs r3, #1
-	movs r1, #0
-	lsls r3, r3, #0xc
-	movs r2, #0
-	adds r0, #8
-	stm r0!, {r1, r2}
-	adds r0, #8
-	stm r0!, {r1, r2}
-	stm r0!, {r1, r2, r3}
-	stm r0!, {r1, r2}
-	stm r0!, {r1, r2, r3}
-	bx lr
-	.align 2, 0
-	thumb_func_end FUN_020CC1C4
+	.include "lib/asm/sdk_thumb_4.inc"
 
 	arm_func_start FUN_020CC1E8
 FUN_020CC1E8: @ 0x020CC1E8
@@ -73583,16 +73392,7 @@ _020D4BB4:
 	bx lr
 	arm_func_end FUN_020D4A50
 
-	thumb_func_start FUN_020D4BD0
-FUN_020D4BD0: @ 0x020D4BD0
-	movs r1, #0
-	movs r2, #0
-	movs r3, #0
-	stm r0!, {r1, r2, r3}
-	stm r0!, {r1, r2, r3}
-	stm r0!, {r1, r2, r3}
-	bx lr
-	thumb_func_end FUN_020D4BD0
+	.include "lib/asm/sdk_thumb_5.inc"
 
 	.balign 4, 0
 
