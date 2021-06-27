@@ -34130,7 +34130,7 @@ ov45_02240B10: @ 0x02240B10
 	mov sb, r1
 	mov r8, r2
 	mov r7, r3
-	bl FUN_02000B9C
+	bl OSi_ReferSymbol
 	ldr r0, _02240F34 @ =0x022577DC
 	ldr r0, [r0]
 	cmp r0, #0
