@@ -9,6 +9,8 @@ Static main
 {
 	Address 0x02000000
 	Object main.o
+	Object list_menu.o
+	Object unk_02001AF4.o
 	Object error_handling.o
 	Object unk_02025534.o
 	Object sdk.o
