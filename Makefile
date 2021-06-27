@@ -42,7 +42,7 @@ MAKEROM_FLAGS  := $(DEFINES)
 SBIN_LZ        := $(SBIN)_LZ
 
 $(SBIN_LZ): $(BUILD_DIR)/component.files
-	$(WINE) $(COMPSTATIC) -9 -F -c -f $<
+	$(WINE) $(COMPSTATIC) -9 -c -f $<
 
 $(BUILD_DIR)/component.files: main ;
 

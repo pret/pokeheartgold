@@ -1116,7 +1116,7 @@ _021E8A84:
 	mov r1, #3
 	cmp r0, #8
 	movhs r0, #1
-	strhsb r0, [sp, #0x38]
+	strsbh r0, [sp, #0x38]
 	ldrb r3, [sp, #0x38]
 	add r0, r4, #0x2c
 	bl FUN_020D168C
@@ -22559,7 +22559,7 @@ ov00_021FAE6C: ; 0x021FAE6C
 	ldmhsia sp!, {r4, r5, r6, pc}
 	ldrb r0, [r5, #0x16]
 	cmp r6, r0
-	strhib r6, [r5, #0x16]
+	stribh r6, [r5, #0x16]
 	cmphi r6, #7
 	ldmlsia sp!, {r4, r5, r6, pc}
 	ldrb r0, [r4, #0xd0d]
@@ -28666,8 +28666,8 @@ _021FFCC0:
 _021FFCD0:
 	sub r7, r7, #1
 	cmp r7, r1
-	ldrhssb r0, [r4, #2]
-	strhsb r0, [r7]
+	ldrsshb r0, [r4, #2]
+	strsbh r0, [r7]
 	bhs _021FFD34
 	ldrsb r0, [r7]
 	cmp r0, #0x19
