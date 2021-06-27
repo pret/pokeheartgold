@@ -1062,7 +1062,9 @@ Overlay OVY_92
 Overlay OVY_93
 {
     After OVY_27
-    Object overlay_93.o
+    Object overlay_93_thumb_1.o
+    Object overlay_93_arm.o
+    Object overlay_93_thumb_2.o
     ### Size 0x6c00 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2263134 ###
