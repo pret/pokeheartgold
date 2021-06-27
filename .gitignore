@@ -51,7 +51,6 @@ asmdiff.sh
 symbols.csv
 
 # NARCs
-*.narc
 *.arc
 files/**/*.c
 *.o
