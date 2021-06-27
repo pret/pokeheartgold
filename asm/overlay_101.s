@@ -21713,7 +21713,7 @@ _021F1FB2:
 	str r0, [r4]
 	add r0, r4, #0
 	add r0, #0x28
-	bl sub_02014708
+	bl GF_RTC_CopyDateTime
 	ldr r0, [r4, #0x38]
 	bl sub_0201485C
 	add r1, r4, #0
@@ -29280,7 +29280,7 @@ _021F590A:
 	add r1, r4, #0
 	add r0, #0x28
 	add r1, #0x38
-	bl sub_02014708
+	bl GF_RTC_CopyDateTime
 	cmp r5, #7
 	bhi _021F596C
 	add r0, r5, r5
@@ -30156,7 +30156,7 @@ ov101_021F5F40: ; 0x021F5F40
 	add r0, r4, #0
 	add r0, #0xc
 	add r1, sp, #0
-	bl sub_02014708
+	bl GF_RTC_CopyDateTime
 	ldr r0, [r4, #0x18]
 	strb r0, [r4, #6]
 	ldrb r0, [r4, #6]

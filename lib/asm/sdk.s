@@ -68246,8 +68246,8 @@ sub_020D0E50: ; 0x020D0E50
 	bx lr
 	arm_func_end sub_020D0E50
 
-	arm_func_start sub_020D0E6C
-sub_020D0E6C: ; 0x020D0E6C
+	arm_func_start OS_WaitIrq
+OS_WaitIrq: ; 0x020D0E6C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r4, r1
@@ -68280,7 +68280,7 @@ _020D0EC0:
 	.align 2, 0
 _020D0ED8: .word OSi_IntrTable
 _020D0EDC: .word 0x027E0060
-	arm_func_end sub_020D0E6C
+	arm_func_end OS_WaitIrq
 
 	arm_func_start sub_020D0EE0
 sub_020D0EE0: ; 0x020D0EE0
@@ -72006,7 +72006,7 @@ sub_020D3AB4: ; 0x020D3AB4
 	bl SVC_WaitByLoop
 	mov r0, #1
 	mov r1, r0
-	bl sub_020D0E6C
+	bl OS_WaitIrq
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020D3AB4
 
@@ -72072,8 +72072,8 @@ _020D3B68:
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020D3B58
 
-	arm_func_start sub_020D3B84
-sub_020D3B84: ; 0x020D3B84
+	arm_func_start OS_ResetSystem
+OS_ResetSystem: ; 0x020D3B84
 	stmdb sp!, {r4, lr}
 	ldr r1, _020D3C14 ; =0x027FFC40
 	mov r4, r0
@@ -72123,7 +72123,7 @@ _020D3C30: .word 0x027FFC20
 _020D3C34: .word 0x00000010
 _020D3C38: .word 0x027E3F80
 _020D3C3C: .word 0x00000800
-	arm_func_end sub_020D3B84
+	arm_func_end OS_ResetSystem
 
 	arm_func_start sub_020D3C40
 sub_020D3C40: ; 0x020D3C40
@@ -77880,7 +77880,7 @@ _020D849C: .word 0x021E362C
 sub_020D84A0: ; 0x020D84A0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020DDB24
+	bl CARD_IsPulledOut
 	cmp r0, #0
 	movne r1, #5
 	moveq r1, #0
@@ -81318,8 +81318,8 @@ _020DB238:
 _020DB258: .word 0x0000FFFF
 	arm_func_end sub_020DB1E0
 
-	arm_func_start sub_020DB25C
-sub_020DB25C: ; 0x020DB25C
+	arm_func_start PM_SetBackLight
+PM_SetBackLight: ; 0x020DB25C
 	stmdb sp!, {r3, lr}
 	ldr r2, _020DB280 ; =sub_020DADA0
 	add r3, sp, #0
@@ -81331,7 +81331,7 @@ sub_020DB25C: ; 0x020DB25C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DB280: .word sub_020DADA0
-	arm_func_end sub_020DB25C
+	arm_func_end PM_SetBackLight
 
 	arm_func_start sub_020DB284
 sub_020DB284: ; 0x020DB284
@@ -81346,20 +81346,20 @@ sub_020DB284: ; 0x020DB284
 	beq _020DB314
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_020DB3B4
+	bl PM_GetBackLight
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	beq _020DB2CC
 	mov r0, #0
 	mov r1, r0
-	bl sub_020DB25C
+	bl PM_SetBackLight
 _020DB2CC:
 	ldr r0, [sp]
 	cmp r0, #0
 	beq _020DB2E4
 	mov r0, #1
 	mov r1, #0
-	bl sub_020DB25C
+	bl PM_SetBackLight
 _020DB2E4:
 	mov r0, #1
 	bl sub_020DB774
@@ -81385,8 +81385,8 @@ _020DB314:
 _020DB32C: .word 0x00996A00
 	arm_func_end sub_020DB284
 
-	arm_func_start sub_020DB330
-sub_020DB330: ; 0x020DB330
+	arm_func_start PM_ForceToPowerOff
+PM_ForceToPowerOff: ; 0x020DB330
 	stmdb sp!, {r3, lr}
 	ldr r0, _020DB354 ; =sub_020DADA0
 	add r1, sp, #0
@@ -81398,7 +81398,7 @@ sub_020DB330: ; 0x020DB330
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DB354: .word sub_020DADA0
-	arm_func_end sub_020DB330
+	arm_func_end PM_ForceToPowerOff
 
 	arm_func_start sub_020DB358
 sub_020DB358: ; 0x020DB358
@@ -81437,8 +81437,8 @@ sub_020DB39C: ; 0x020DB39C
 _020DB3B0: .word sub_020DB13C
 	arm_func_end sub_020DB39C
 
-	arm_func_start sub_020DB3B4
-sub_020DB3B4: ; 0x020DB3B4
+	arm_func_start PM_GetBackLight
+PM_GetBackLight: ; 0x020DB3B4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -81463,7 +81463,7 @@ _020DB3F0:
 	moveq r1, #0
 	str r1, [r4]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020DB3B4
+	arm_func_end PM_GetBackLight
 
 	arm_func_start sub_020DB410
 sub_020DB410: ; 0x020DB410
@@ -81481,8 +81481,8 @@ _020DB420:
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020DB410
 
-	arm_func_start sub_020DB43C
-sub_020DB43C: ; 0x020DB43C
+	arm_func_start PM_GoSleepMode
+PM_GoSleepMode: ; 0x020DB43C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	ldr r3, _020DB660 ; =0x021E370C
@@ -81534,10 +81534,10 @@ _020DB4E0:
 	str r0, [sp]
 	add r0, sp, #0x14
 	add r1, sp, #0x10
-	bl sub_020DB3B4
+	bl PM_GetBackLight
 	mov r0, #2
 	mov r1, #0
-	bl sub_020DB25C
+	bl PM_SetBackLight
 	ldr r2, _020DB670 ; =0x027FFC3C
 	ldr r0, [r2]
 	str r0, [sp, #0xc]
@@ -81624,7 +81624,7 @@ _020DB618:
 	ldrh r0, [r1]
 	strh r8, [r1]
 	beq _020DB64C
-	bl sub_020DB330
+	bl PM_ForceToPowerOff
 _020DB64C:
 	ldr r0, _020DB660 ; =0x021E370C
 	ldr r0, [r0, #0x18]
@@ -81639,7 +81639,7 @@ _020DB66C: .word 0x027FFC40
 _020DB670: .word 0x027FFC3C
 _020DB674: .word 0x04000214
 _020DB678: .word 0x00708100
-	arm_func_end sub_020DB43C
+	arm_func_end PM_GoSleepMode
 
 	arm_func_start sub_020DB67C
 sub_020DB67C: ; 0x020DB67C
@@ -83188,7 +83188,7 @@ _020DC9B0: .word sub_020DC698
 sub_020DC9B4: ; 0x020DC9B4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020DD1A4
+	bl CARD_TryWaitBackupAsync
 	cmp r0, #0
 	bne _020DC9CC
 	bl sub_020DD198
@@ -83772,13 +83772,13 @@ sub_020DD198: ; 0x020DD198
 _020DD1A0: .word sub_020DC8F0
 	arm_func_end sub_020DD198
 
-	arm_func_start sub_020DD1A4
-sub_020DD1A4: ; 0x020DD1A4
+	arm_func_start CARD_TryWaitBackupAsync
+CARD_TryWaitBackupAsync: ; 0x020DD1A4
 	ldr ip, _020DD1AC ; =sub_020DC93C
 	bx ip
 	.align 2, 0
 _020DD1AC: .word sub_020DC93C
-	arm_func_end sub_020DD1A4
+	arm_func_end CARD_TryWaitBackupAsync
 
 	arm_func_start sub_020DD1B0
 sub_020DD1B0: ; 0x020DD1B0
@@ -84519,14 +84519,14 @@ _020DDB18:
 _020DDB20: .word 0x021E4080
 	arm_func_end sub_020DDAD0
 
-	arm_func_start sub_020DDB24
-sub_020DDB24: ; 0x020DDB24
+	arm_func_start CARD_IsPulledOut
+CARD_IsPulledOut: ; 0x020DDB24
 	ldr r0, _020DDB30 ; =0x021E4080
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _020DDB30: .word 0x021E4080
-	arm_func_end sub_020DDB24
+	arm_func_end CARD_IsPulledOut
 
 	arm_func_start sub_020DDB34
 sub_020DDB34: ; 0x020DDB34
@@ -84545,14 +84545,14 @@ sub_020DDB34: ; 0x020DDB34
 	and r0, r0, #0x8000
 	movs r0, r0, asr #0xf
 	beq _020DDB9C
-	bl sub_020DB330
+	bl PM_ForceToPowerOff
 	cmp r0, #4
 	bne _020DDB94
 	ldr r4, _020DDBBC ; =0x000A3A47
 _020DDB80:
 	mov r0, r4
 	bl _020D3AA8
-	bl sub_020DB330
+	bl PM_ForceToPowerOff
 	cmp r0, #4
 	beq _020DDB80
 _020DDB94:
@@ -88530,8 +88530,8 @@ sub_020E10C4: ; 0x020E10C4
 _020E10E4: .word 0x027FFC30
 	arm_func_end sub_020E10C4
 
-	arm_func_start sub_020E10E8
-sub_020E10E8: ; 0x020E10E8
+	arm_func_start CTRDG_IsPulledOut
+CTRDG_IsPulledOut: ; 0x020E10E8
 	stmdb sp!, {r3, lr}
 	ldr r2, _020E112C ; =0x027FFC30
 	ldr r0, _020E1130 ; =0x0000FFFF
@@ -88553,7 +88553,7 @@ _020E1118:
 	.align 2, 0
 _020E112C: .word 0x027FFC30
 _020E1130: .word 0x0000FFFF
-	arm_func_end sub_020E10E8
+	arm_func_end CTRDG_IsPulledOut
 
 	arm_func_start sub_020E1134
 sub_020E1134: ; 0x020E1134

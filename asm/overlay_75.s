@@ -127,7 +127,7 @@ _02246A44:
 	ldr r0, _02246AF4 ; =0x0224990C
 	ldr r0, [r0, r2]
 	mov r2, #0x73
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4]
 	add r0, r4, #0
 	add r0, #0x88
@@ -143,7 +143,7 @@ _02246A44:
 	b _02246ADE
 _02246A82:
 	ldr r0, [r4]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #1
 	bne _02246ADE
 	add r1, r4, #0
@@ -155,7 +155,7 @@ _02246A82:
 	ldr r1, [r1, r2]
 	blx r1
 	ldr r0, [r4]
-	bl sub_02007278
+	bl OverlayManager_delete
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -225,7 +225,7 @@ ov75_02246B00: ; 0x02246B00
 	bl sub_0201A9C4
 	ldr r0, _02246B40 ; =0x0000003C
 	ldr r1, _02246B44 ; =0x021EAFE0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0

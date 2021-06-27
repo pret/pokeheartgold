@@ -19593,7 +19593,7 @@ ov70_022413AC: ; 0x022413AC
 	ldr r0, _02241464 ; =0x02103A1C
 	add r1, #0xbc
 	mov r2, #0x3d
-	bl sub_0200724C
+	bl OverlayManager_new
 	add r1, r4, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -19615,13 +19615,13 @@ ov70_02241468: ; 0x02241468
 	add r0, #0xb8
 	ldr r0, [r0]
 	mov r4, #3
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _02241490
 	add r0, r5, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl sub_02007278
+	bl OverlayManager_delete
 	ldr r2, [r5, #0x24]
 	add r0, r5, #0
 	mov r1, #5
@@ -19834,7 +19834,7 @@ _02241618:
 	add r1, r4, #0
 	ldr r0, _02241644 ; =0x02245D50
 	add r1, #0xf8
-	bl sub_0200724C
+	bl OverlayManager_new
 	add r1, r4, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -19867,7 +19867,7 @@ _0224165E:
 	add r0, r5, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	bne _0224166E
 	b _022417FE
@@ -19875,7 +19875,7 @@ _0224166E:
 	add r0, r5, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl sub_02007278
+	bl OverlayManager_delete
 	ldr r1, [r5, #0x24]
 	cmp r1, #9
 	bne _022416E8

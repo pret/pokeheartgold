@@ -1550,14 +1550,14 @@ ov103_021ED568: ; 0x021ED568
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	bne _021ED57A
 	mov r0, #7
 	pop {r4, pc}
 _021ED57A:
 	ldr r0, [r4, #0x10]
-	bl sub_02007278
+	bl OverlayManager_delete
 	ldr r2, [r4, #0x18]
 	mov r1, #0xc
 	add r3, r2, #0
@@ -2539,7 +2539,7 @@ ov103_021EDCC8: ; 0x021EDCC8
 	ldr r0, _021EDCDC ; =0x0210159C
 	ldr r1, [r4, #0x14]
 	mov r2, #0x9c
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0x10]
 	mov r0, #0
 	pop {r4, pc}
@@ -2638,7 +2638,7 @@ ov103_021EDD54: ; 0x021EDD54
 	str r0, [r4, #0x14]
 	ldr r0, _021EDD94 ; =0x021EEC58
 	ldr r1, [r4, #0x14]
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0x10]
 	mov r0, #0
 	add sp, #4

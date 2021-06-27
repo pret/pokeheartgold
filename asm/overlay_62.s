@@ -114,7 +114,7 @@ ov62_021E59C0: ; 0x021E59C0
 	bl sub_0201A9C4
 	ldr r0, _021E5A14 ; =0x0000003C
 	ldr r1, _021E5A18 ; =0x021EAFE0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop

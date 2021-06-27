@@ -7365,7 +7365,7 @@ ov13_0222CFA0: ; 0x0222CFA0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0x1000000
 	bl sub_020D3AA8
-	bl sub_020DB330
+	bl PM_ForceToPowerOff
 	ldmia sp!, {r3, pc}
 	arm_func_end ov13_0222CFA0
 
@@ -8658,7 +8658,7 @@ ov13_0222DFC0: ; 0x0222DFC0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0x1000000
 	bl sub_020D3AA8
-	bl sub_020DB330
+	bl PM_ForceToPowerOff
 	ldmia sp!, {r3, pc}
 	arm_func_end ov13_0222DFC0
 

@@ -236,11 +236,11 @@ _021E5AD4:
 	b _021E5B22
 _021E5B06:
 	ldr r0, [r4, #0x14]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #1
 	bne _021E5B22
 	ldr r0, [r4, #0x14]
-	bl sub_02007278
+	bl OverlayManager_delete
 	add r0, r6, #0
 	str r0, [r4, #0x14]
 	mov r0, #5
@@ -311,7 +311,7 @@ ov53_021E5B48: ; 0x021E5B48
 	bl sub_0201A9C4
 	ldr r0, _021E5BC4 ; =0x00000024
 	ldr r1, _021E5BC8 ; =0x021E5C14
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	mov r0, #0
 	bl sub_02002B8C
 	mov r0, #1
@@ -2696,7 +2696,7 @@ ov53_021E6E7C: ; 0x021E6E7C
 	add r0, sp, #0xc
 	add r1, sp, #0
 	mov r4, #1
-	bl sub_02014708
+	bl GF_RTC_CopyDateTime
 	ldr r0, [sp]
 	ldr r3, [sp, #4]
 	mov r1, #0x64
@@ -4128,7 +4128,7 @@ _021E7A76:
 	ldr r0, _021E7C84 ; =0x02102610
 	ldr r1, [r4, r1]
 	ldr r2, [r4]
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0x14]
 	mov r0, #0x60
 	str r0, [r4, #0xc]

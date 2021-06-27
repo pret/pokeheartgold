@@ -10,11 +10,11 @@ ov50_021E5900: ; 0x021E5900
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021E5920
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _021E5920
 	ldr r0, [r4]
-	bl sub_02007278
+	bl OverlayManager_delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1
@@ -120,7 +120,7 @@ ov50_021E59CC: ; 0x021E59CC
 	ldr r0, _021E59E0 ; =_021E5A8C
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4]
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #8]
 	mov r0, #1
 	pop {r4, pc}
@@ -171,7 +171,7 @@ ov50_021E5A0C: ; 0x021E5A0C
 	lsl r1, r1, #4
 	ldr r1, [r2, r1]
 	ldr r2, [r4]
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #8]
 	mov r0, #3
 	add sp, #0x10

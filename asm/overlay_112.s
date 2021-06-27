@@ -4184,7 +4184,7 @@ ov112_021E7910: ; 0x021E7910
 	bl sub_0201A738
 	ldr r0, _021E7954 ; =0x0000003C
 	ldr r1, _021E7958 ; =0x021EAFE0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -6031,7 +6031,7 @@ ov112_021E8B74: ; 0x021E8B74
 	str r2, [sp, #4]
 	str r0, [sp, #0x10]
 	bl sub_020147A4
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	mov r7, #0
 	str r7, [sp, #8]
 _021E8B94:
@@ -19455,18 +19455,18 @@ _021EF5EE:
 	ldr r0, _021EF628 ; =0x021FF124
 	add r1, r4, r1
 	mov r2, #0x9a
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	str r0, [r4, #8]
 	b _021EF61C
 _021EF602:
 	ldr r0, [r4, #0x1c]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _021EF61C
 	ldr r0, [r4, #0x1c]
-	bl sub_02007278
+	bl OverlayManager_delete
 	mov r0, #3
 	str r0, [r4, #8]
 	b _021EF61C

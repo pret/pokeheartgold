@@ -11,7 +11,7 @@ ov36_021E5900: ; 0x021E5900
 	mov r1, #0x4b
 	lsl r2, r2, #0x10
 	bl sub_0201A910
-	bl sub_020010C8
+	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
 	.align 2, 0
@@ -37,7 +37,7 @@ ov36_021E592C: ; 0x021E592C
 	mov r0, #0
 	ldr r1, _021E5944 ; =0x02106068
 	mvn r0, r0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, pc}
 	nop
@@ -52,7 +52,7 @@ ov36_021E5948: ; 0x021E5948
 	mov r1, #0x4b
 	lsl r2, r2, #0x10
 	bl sub_0201A910
-	bl sub_020010C8
+	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
 	.align 2, 0
@@ -82,7 +82,7 @@ ov36_021E5980: ; 0x021E5980
 	mov r0, #0
 	ldr r1, _021E5998 ; =0x020FA15C
 	mvn r0, r0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, pc}
 	nop
@@ -97,7 +97,7 @@ ov36_021E599C: ; 0x021E599C
 	mov r1, #0x4b
 	lsl r2, r2, #0x10
 	bl sub_0201A910
-	bl sub_020010C8
+	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
 	.align 2, 0
@@ -154,7 +154,7 @@ ov36_021E5A1C: ; 0x021E5A1C
 	mov r0, #0
 	ldr r1, _021E5A34 ; =0x020FA16C
 	mvn r0, r0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, pc}
 	nop
@@ -325,7 +325,7 @@ ov36_021E5BB4: ; 0x021E5BB4
 	cmp r0, #0
 	bne _021E5BC6
 	mov r0, #0
-	bl sub_020D3B84
+	bl OS_ResetSystem
 _021E5BC6:
 	pop {r3, pc}
 	thumb_func_end ov36_021E5BB4

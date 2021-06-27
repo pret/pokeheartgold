@@ -665,7 +665,7 @@ ov82_0223E2A4: ; 0x0223E2A4
 	cmp r0, #0
 	bne _0223E2E8
 	ldr r0, [r4, #4]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #1
 	bne _0223E2E8
 	add r0, r4, #0
@@ -1019,7 +1019,7 @@ _0223E58A:
 	ldr r0, _0223E5D0 ; =0x02103A1C
 	ldr r1, [r1]
 	mov r2, #0x69
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #4]
 	mov r0, #1
 	add sp, #0x18

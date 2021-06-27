@@ -3536,7 +3536,7 @@ ov68_021E74D8: ; 0x021E74D8
 	ldr r0, _021E7564 ; =0x02103A1C
 	add r1, r4, r1
 	mov r2, #0x42
-	bl sub_0200724C
+	bl OverlayManager_new
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3555,13 +3555,13 @@ ov68_021E7568: ; 0x021E7568
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _021E75B6
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02007278
+	bl OverlayManager_delete
 	add r0, r4, #0
 	bl ov68_021E5A58
 	ldr r1, [r4]

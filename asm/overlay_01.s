@@ -61069,7 +61069,7 @@ _022023A2:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	bl sub_0202C7DC
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	ldr r1, [sp, #4]
 	mov r0, #0x20
 	bl sub_0201AACC
@@ -61124,7 +61124,7 @@ _02202408:
 	add r0, r4, #0
 	bl sub_0201AB0C
 	ldr r0, [sp, #0xc]
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	add r0, r5, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}

@@ -1637,7 +1637,7 @@ _022386C0:
 	bl ov12_022396E8
 	ldr r0, _02238798 ; =0x00002434
 	ldr r0, [r4, r0]
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	add r0, r4, #0
 	bl ov12_0223BD2C
 	cmp r0, #0
@@ -31389,7 +31389,7 @@ _02246DB0:
 	ldr r0, _0224706C ; =0x02102610
 	add r1, r5, #0
 	mov r2, #5
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0x50]
 	mov r0, #0x15
 	str r0, [r4, #0x28]
@@ -31427,7 +31427,7 @@ _02246E18:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246E2A:
 	ldr r0, [r4, #0x50]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _02246E82
 	ldr r2, [r4, #4]
@@ -31451,7 +31451,7 @@ _02246E5C:
 	add r0, r5, #0
 	bl sub_0208311C
 	ldr r0, [r4, #0x50]
-	bl sub_02007278
+	bl OverlayManager_delete
 	ldr r0, [r4]
 	mov r1, #2
 	bl ov12_0223BBF0

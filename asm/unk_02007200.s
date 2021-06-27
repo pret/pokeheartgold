@@ -47,8 +47,8 @@ _02007244:
 	pop {r4, pc}
 	thumb_func_end sub_02007234
 
-	thumb_func_start sub_0200724C
-sub_0200724C: ; 0x0200724C
+	thumb_func_start OverlayManager_new
+OverlayManager_new: ; 0x0200724C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -70,15 +70,15 @@ sub_0200724C: ; 0x0200724C
 	str r0, [r3, #0x24]
 	add r0, r3, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0200724C
+	thumb_func_end OverlayManager_new
 
-	thumb_func_start sub_02007278
-sub_02007278: ; 0x02007278
+	thumb_func_start OverlayManager_delete
+OverlayManager_delete: ; 0x02007278
 	ldr r3, _0200727C ; =sub_0201AB0C
 	bx r3
 	.align 2, 0
 _0200727C: .word sub_0201AB0C
-	thumb_func_end sub_02007278
+	thumb_func_end OverlayManager_delete
 
 	thumb_func_start sub_02007280
 sub_02007280: ; 0x02007280
@@ -114,8 +114,8 @@ sub_020072A4: ; 0x020072A4
 	bx lr
 	thumb_func_end sub_020072A4
 
-	thumb_func_start sub_020072A8
-sub_020072A8: ; 0x020072A8
+	thumb_func_start OverlayManager_run
+OverlayManager_run: ; 0x020072A8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0x10]
@@ -188,7 +188,7 @@ _02007326:
 	mov r0, #0
 	pop {r4, pc}
 	.align 2, 0
-	thumb_func_end sub_020072A8
+	thumb_func_end OverlayManager_run
 
 	thumb_func_start sub_0200732C
 sub_0200732C: ; 0x0200732C
@@ -29070,8 +29070,8 @@ sub_02014700: ; 0x02014700
 	.align 2, 0
 	thumb_func_end sub_02014700
 
-	thumb_func_start sub_02014708
-sub_02014708: ; 0x02014708
+	thumb_func_start GF_RTC_CopyDateTime
+GF_RTC_CopyDateTime: ; 0x02014708
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, _0201473C ; =0x021D1048
@@ -29105,7 +29105,7 @@ _0201473C: .word 0x021D1048
 _02014740: .word 0x021D1058
 _02014744: .word 0x021D1094
 _02014748: .word 0x021D1068
-	thumb_func_end sub_02014708
+	thumb_func_end GF_RTC_CopyDateTime
 
 	thumb_func_start sub_0201474C
 sub_0201474C: ; 0x0201474C
@@ -40031,7 +40031,7 @@ _020193B6:
 	ldr r0, _0201948C ; =0x020F6288
 	add r1, r4, #0
 	mov r2, #0x7b
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #8]
 	ldr r0, [r5]
 	add r0, r0, #1
@@ -40039,11 +40039,11 @@ _020193B6:
 	b _0201945A
 _020193CA:
 	ldr r0, [r4, #8]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #1
 	bne _0201945A
 	ldr r0, [r4, #8]
-	bl sub_02007278
+	bl OverlayManager_delete
 	ldr r0, [r4, #0x7c]
 	cmp r0, #1
 	bne _020193EC
@@ -40064,7 +40064,7 @@ _020193F2:
 	ldr r1, [r4]
 	mov r2, #0x7b
 	ldr r1, [r1]
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #8]
 	ldr r0, [r5]
 	add r0, r0, #1
@@ -40072,11 +40072,11 @@ _020193F2:
 	b _0201945A
 _0201940E:
 	ldr r0, [r4, #8]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #1
 	bne _0201945A
 	ldr r0, [r4, #8]
-	bl sub_02007278
+	bl OverlayManager_delete
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -40085,7 +40085,7 @@ _02019426:
 	ldr r0, _0201948C ; =0x020F6288
 	add r1, r4, #0
 	mov r2, #0x7b
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #8]
 	ldr r0, [r5]
 	add r0, r0, #1
@@ -40093,11 +40093,11 @@ _02019426:
 	b _0201945A
 _0201943A:
 	ldr r0, [r4, #8]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #1
 	bne _0201945A
 	ldr r0, [r4, #8]
-	bl sub_02007278
+	bl OverlayManager_delete
 	mov r0, #0
 	str r0, [r4, #4]
 	ldr r0, [r5]
@@ -42403,8 +42403,8 @@ sub_0201A4CC: ; 0x0201A4CC
 _0201A4D8: .word 0x021D116C
 	thumb_func_end sub_0201A4CC
 
-	thumb_func_start sub_0201A4DC
-sub_0201A4DC: ; 0x0201A4DC
+	thumb_func_start ReadKeypadAndTouchpad
+ReadKeypadAndTouchpad: ; 0x0201A4DC
 	push {r4, lr}
 	sub sp, #0x10
 	ldr r2, _0201A5D0 ; =0x027FFFA8
@@ -42539,7 +42539,7 @@ _0201A5D8: .word 0x021D114C
 _0201A5DC: .word 0x04000130
 _0201A5E0: .word 0x00002FFF
 _0201A5E4: .word 0x021D116C
-	thumb_func_end sub_0201A4DC
+	thumb_func_end ReadKeypadAndTouchpad
 
 	thumb_func_start sub_0201A5E8
 sub_0201A5E8: ; 0x0201A5E8
@@ -54690,14 +54690,14 @@ sub_0201FD2C: ; 0x0201FD2C
 _0201FD34: .word 0x021D15A4
 	thumb_func_end sub_0201FD2C
 
-	thumb_func_start sub_0201FD38
-sub_0201FD38: ; 0x0201FD38
+	thumb_func_start SetLCRNGSeed
+SetLCRNGSeed: ; 0x0201FD38
 	ldr r1, _0201FD40 ; =0x021D15A4
 	str r0, [r1, #4]
 	bx lr
 	nop
 _0201FD40: .word 0x021D15A4
-	thumb_func_end sub_0201FD38
+	thumb_func_end SetLCRNGSeed
 
 	thumb_func_start sub_0201FD44
 sub_0201FD44: ; 0x0201FD44
@@ -54729,8 +54729,8 @@ sub_0201FD68: ; 0x0201FD68
 _0201FD70: .word 0x6C078965
 	thumb_func_end sub_0201FD68
 
-	thumb_func_start sub_0201FD74
-sub_0201FD74: ; 0x0201FD74
+	thumb_func_start SetMTRNGSeed
+SetMTRNGSeed: ; 0x0201FD74
 	push {r4, r5}
 	ldr r1, _0201FDA8 ; =0x021D15A4
 	mov r4, #0x27
@@ -54762,7 +54762,7 @@ _0201FDA8: .word 0x021D15A4
 _0201FDAC: .word 0x0210F6CC
 _0201FDB0: .word 0x021D15B0
 _0201FDB4: .word 0x6C078965
-	thumb_func_end sub_0201FD74
+	thumb_func_end SetMTRNGSeed
 
 	thumb_func_start sub_0201FDB8
 sub_0201FDB8: ; 0x0201FDB8
@@ -54777,7 +54777,7 @@ sub_0201FDB8: ; 0x0201FDB8
 	cmp r1, r0
 	bne _0201FDD2
 	ldr r0, _0201FEA0 ; =0x00001571
-	bl sub_0201FD74
+	bl SetMTRNGSeed
 _0201FDD2:
 	ldr r4, _0201FEA4 ; =0x021D15AC
 	ldr r1, _0201FEA8 ; =0x0210F6D0

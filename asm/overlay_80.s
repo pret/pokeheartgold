@@ -12157,7 +12157,7 @@ _0222F8F4:
 	b _0222FBE6
 _0222F8FA:
 	mov r0, #0
-	bl sub_020D3B84
+	bl OS_ResetSystem
 	b _0222FBE6
 _0222F902:
 	ldr r0, _0222FBF4 ; =0x000004F4
@@ -14795,7 +14795,7 @@ _02230E14:
 	b _02230FB6
 _02230E22:
 	mov r0, #0
-	bl sub_020D3B84
+	bl OS_ResetSystem
 	b _02230FB6
 _02230E2A:
 	ldr r0, _02230FC4 ; =0x000006F8
@@ -16997,7 +16997,7 @@ _02231F96:
 	b _0223228E
 _02231FA4:
 	mov r0, #0
-	bl sub_020D3B84
+	bl OS_ResetSystem
 	b _0223228E
 _02231FAC:
 	ldr r0, [r4, #8]
@@ -20417,7 +20417,7 @@ _02233B34:
 	b _02233F12
 _02233B42:
 	mov r0, #0
-	bl sub_020D3B84
+	bl OS_ResetSystem
 	b _02233F12
 _02233B4A:
 	ldr r0, [r4, #8]

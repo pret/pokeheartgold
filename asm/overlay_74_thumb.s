@@ -82,7 +82,7 @@ ov74_022270C4: ; 0x022270C4
 	str r0, [r5, #0x58]
 	cmp r0, #6
 	bne _02227114
-	bl sub_020E10E8
+	bl CTRDG_IsPulledOut
 	cmp r0, #1
 	bne _02227114
 	mov r0, #0x4f
@@ -3477,27 +3477,27 @@ _02228BA0: ; jump table
 _02228BB4:
 	ldr r0, _02228C24 ; =0x00000024
 	ldr r1, _02228C28 ; =0x021E5C04
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BBE:
 	ldr r0, _02228C24 ; =0x00000024
 	ldr r1, _02228C2C ; =0x021E5C24
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BC8:
 	ldr r0, _02228C30 ; =0x0000004A
 	ldr r1, _02228C34 ; =0x0223B380
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BD2:
 	ldr r0, _02228C30 ; =0x0000004A
 	ldr r1, _02228C38 ; =0x0223B4D8
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BDC:
 	ldr r0, _02228C30 ; =0x0000004A
 	ldr r1, _02228C3C ; =0x0223B320
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BE6:
 	ldr r0, _02228C40 ; =0x0223BD4C
@@ -3508,24 +3508,24 @@ _02228BEE:
 	mov r0, #0
 	ldr r1, _02228C44 ; =0x021065C4
 	mvn r0, r0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BFE:
 	bl sub_02005FA0
 	ldr r0, _02228C48 ; =0x00000070
 	ldr r1, _02228C4C ; =0x021F5728
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C0C:
 	bl sub_02005FA0
 	ldr r0, _02228C50 ; =0x0000004B
 	ldr r1, _02228C54 ; =0x02249964
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C1A:
 	ldr r0, _02228C58 ; =0x0000003C
 	ldr r1, _02228C5C ; =0x021EAFE0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 _02228C22:
 	pop {r3, pc}
 	.align 2, 0
@@ -4465,7 +4465,7 @@ _02229404:
 	b _02229434
 _0222941A:
 	mov r0, #0
-	bl sub_020D3B84
+	bl OS_ResetSystem
 	b _02229434
 _02229422:
 	add r0, r6, #0
@@ -4496,7 +4496,7 @@ ov74_02229450: ; 0x02229450
 	bl sub_0201A9C4
 	ldr r0, _02229474 ; =0x0000003C
 	ldr r1, _02229478 ; =0x021EAFE0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	add r0, r4, #0
 	bl sub_02007294
 	mov r0, #0x53
@@ -5311,7 +5311,7 @@ _02229B0E:
 	tst r0, r1
 	beq _02229B52
 	mov r0, #0
-	bl sub_020D3B84
+	bl OS_ResetSystem
 	b _02229B52
 _02229B20:
 	bl ov74_02231048
@@ -11561,7 +11561,7 @@ _0222CD14:
 	b _0222CD3A
 _0222CD34:
 	mov r0, #0
-	bl sub_020D3B84
+	bl OS_ResetSystem
 _0222CD3A:
 	ldr r0, _0222CD74 ; =0x000029E8
 	ldr r1, [r4, r0]
@@ -11620,21 +11620,21 @@ ov74_0222CD94: ; 0x0222CD94
 	bne _0222CDB2
 	ldr r0, _0222CDF8 ; =0x0000003C
 	ldr r1, _0222CDFC ; =0x021EAFE0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDB2:
 	cmp r0, #1
 	bne _0222CDC0
 	ldr r0, _0222CE00 ; =0x0000004A
 	ldr r1, _0222CE04 ; =0x0223B410
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDC0:
 	cmp r0, #2
 	bne _0222CDCC
 	ldr r0, _0222CE00 ; =0x0000004A
 	ldr r1, _0222CE08 ; =0x0223B420
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 _0222CDCC:
 	mov r0, #0x59
 	bl sub_0201A9C4
@@ -15370,7 +15370,7 @@ _0222EBA0:
 	bl sub_0201AB0C
 	ldr r0, _0222EC00 ; =0x0000004A
 	ldr r1, _0222EC04 ; =0x0223B380
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	mov r0, #0x59
 	bl sub_0201A9C4
 	ldr r0, [sp]
@@ -17373,7 +17373,7 @@ _0222FBE8:
 	bl sub_0201AB0C
 	ldr r0, _0222FC48 ; =0x0000004A
 	ldr r1, _0222FC4C ; =0x0223B380
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	mov r0, #0x59
 	bl sub_0201A9C4
 	ldr r0, [sp]
@@ -17567,7 +17567,7 @@ ov74_0222FD98: ; 0x0222FD98
 	mov r1, #0
 	bl sub_0202746C
 	mov r0, #0
-	bl sub_020D3B84
+	bl OS_ResetSystem
 _0222FDCC:
 	add r0, r5, #0
 	add r0, #0x4c
@@ -24584,7 +24584,7 @@ ov74_022332F4: ; 0x022332F4
 	bl sub_02007290
 	add r4, r0, #0
 	bl sub_020E1134
-	bl sub_020E10E8
+	bl CTRDG_IsPulledOut
 	cmp r0, #1
 	beq _02233312
 	ldr r0, _02233618 ; =0x02111864
@@ -25304,7 +25304,7 @@ ov74_022338D4: ; 0x022338D4
 	bl sub_0201AB0C
 	ldr r0, _0223391C ; =0x0000003C
 	ldr r1, _02233920 ; =0x021EAFE0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	add r0, r5, #0
 	bl sub_02007294
 	mov r0, #0x4c

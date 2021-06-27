@@ -565,11 +565,11 @@ _0221C2F4:
 	b _0221C3B4
 _0221C330:
 	ldr r0, [r4, #0x4c]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _0221C3B4
 	ldr r0, [r4, #0x4c]
-	bl sub_02007278
+	bl OverlayManager_delete
 	add r0, r4, #0
 	bl ov65_0221C08C
 	add r0, r6, #0
@@ -4215,7 +4215,7 @@ _0221E0D6:
 	ldr r0, _0221E140 ; =0x02103A1C
 	add r1, #0xc
 	mov r2, #0x1a
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r5, #0x4c]
 	str r4, [r5, #0x48]
 	pop {r3, r4, r5, pc}

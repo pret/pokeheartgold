@@ -6655,11 +6655,11 @@ ov45_0222CD90: ; 0x0222CD90
 	mov r5, #0
 	cmp r0, #0
 	beq _0222CDBA
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _0222CDBA
 	ldr r0, [r4]
-	bl sub_02007278
+	bl OverlayManager_delete
 	add r0, r5, #0
 	str r0, [r4]
 	add r0, r4, #0
@@ -6693,7 +6693,7 @@ _0222CDD6:
 	ldrh r2, [r5, #0x3a]
 	ldr r1, [r4]
 	add r0, r6, #0
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r5]
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov45_0222CDC4

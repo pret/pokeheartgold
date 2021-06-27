@@ -6825,7 +6825,7 @@ ov63_0221F614: ; 0x0221F614
 	bl sub_0201FD44
 	str r0, [sp, #0x20]
 	ldr r0, _0221F7AC ; =0x00003594
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	mov r0, #0
 	ldr r4, [sp, #0x28]
 	str r0, [sp, #0x24]
@@ -6994,7 +6994,7 @@ _0221F75E:
 	b _0221F652
 _0221F784:
 	ldr r0, [sp, #0x20]
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	ldr r0, [sp, #0x28]
 	mov r2, #0
 	str r2, [r0]

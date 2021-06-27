@@ -42,7 +42,7 @@ ov96_021E5900: ; 0x021E5900
 	add r1, r4, r2
 	add r0, r3, #0
 	mov r2, #0x5c
-	bl sub_0200724C
+	bl OverlayManager_new
 	mov r1, #0xa
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -2138,13 +2138,13 @@ ov96_021E6814: ; 0x021E6814
 	mov r0, #0xa
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _021E686C
 	mov r0, #0xa
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02007278
+	bl OverlayManager_delete
 	mov r1, #0x7e
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]

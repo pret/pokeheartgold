@@ -1835,7 +1835,7 @@ ov81_0223EC88: ; 0x0223EC88
 	cmp r0, #0
 	bne _0223ECDA
 	ldr r0, [r4, #4]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #1
 	bne _0223ECDA
 	mov r1, #7
@@ -2085,7 +2085,7 @@ _0223EE8C:
 	ldr r0, _0223EF58 ; =0x02103A1C
 	ldr r1, [r4, r1]
 	mov r2, #0x64
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #4]
 	ldrb r1, [r4, #0x13]
 	mov r0, #2
@@ -2955,7 +2955,7 @@ _0223F5C0:
 	ldr r0, _0223F680 ; =0x02103A1C
 	ldr r1, [r4, r1]
 	mov r2, #0x64
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #4]
 	ldrb r1, [r4, #0x13]
 	mov r0, #2

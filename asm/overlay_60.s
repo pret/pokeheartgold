@@ -476,27 +476,27 @@ _021E5CF2:
 	mov r0, #0
 	ldr r1, _021E5D2C ; =0x02108278
 	mvn r0, r0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	b _021E5D28
 _021E5CFE:
 	mov r0, #0
 	ldr r1, _021E5D30 ; =0x0210820C
 	mvn r0, r0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	b _021E5D28
 _021E5D0A:
 	mov r0, #0
 	bl sub_02004AD8
 	ldr r0, _021E5D34 ; =0x0000003C
 	ldr r1, _021E5D38 ; =0x021EB030
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	b _021E5D28
 _021E5D1A:
 	mov r0, #0
 	bl sub_02004AD8
 	ldr r0, _021E5D3C ; =0x0000003E
 	ldr r1, _021E5D40 ; =0x021E68CC
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 _021E5D28:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2314,7 +2314,7 @@ ov60_021E6B68: ; 0x021E6B68
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	ldr r0, [r4]
 	bl sub_0201AC88
 	str r0, [r4, #0xc]
@@ -2551,14 +2551,14 @@ _021E6D98:
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	ldr r0, [sp]
 	bl sub_02007294
 	mov r0, #0x4a
 	bl sub_0201A9C4
 	ldr r0, _021E6E0C ; =0x0000003C
 	ldr r1, _021E6E10 ; =0x021EAFE0
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -4842,7 +4842,7 @@ ov60_021E7E0C: ; 0x021E7E0C
 	bl sub_02022CC8
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_020D0E6C
+	bl OS_WaitIrq
 	bl sub_02022D24
 	add sp, #0x10
 	pop {r4, pc}
@@ -5856,7 +5856,7 @@ ov60_021E8724: ; 0x021E8724
 	bl sub_02007938
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_020D0E6C
+	bl OS_WaitIrq
 	bl sub_02022D24
 	add sp, #0x10
 	pop {r4, pc}
@@ -7698,7 +7698,7 @@ _021E96BA:
 	bl sub_02007938
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_020D0E6C
+	bl OS_WaitIrq
 	bl sub_02022D24
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9263,7 +9263,7 @@ ov60_021EA3A0: ; 0x021EA3A0
 	bl sub_02007938
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_020D0E6C
+	bl OS_WaitIrq
 	bl sub_02022D24
 	add sp, #0x10
 	pop {r4, pc}
@@ -10391,7 +10391,7 @@ ov60_021EAD14: ; 0x021EAD14
 	bl sub_02007938
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_020D0E6C
+	bl OS_WaitIrq
 	bl sub_02022D24
 	add sp, #0x10
 	pop {r4, pc}

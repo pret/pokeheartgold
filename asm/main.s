@@ -14,10 +14,10 @@ NitroMain: ; 0x02000CA4
 	bl sub_0201A4B0
 	ldr r0, _02000E48 ; =0x02111860
 	mov r1, #0
-	bl sub_020DB3B4
+	bl PM_GetBackLight
 	bl sub_02026E30
 	bl sub_02014634
-	bl sub_02000E6C
+	bl Main_ResetOverlayManager
 	bl sub_02002CA8
 	mov r0, #0
 	mov r1, #3
@@ -77,7 +77,7 @@ _02000D4E:
 	str r1, [r0, #0x1c]
 	ldr r0, _02000E54 ; =0x0000003C
 	ldr r1, _02000E58 ; =0x021EB030
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	b _02000D82
 _02000D5E:
 	mov r0, #0
@@ -91,7 +91,7 @@ _02000D5E:
 	str r1, [r0, #0x1c]
 	ldr r0, _02000E5C ; =0x00000024
 	ldr r1, _02000E60 ; =0x021E5C04
-	bl sub_02000EF4
+	bl RegisterMainOverlay
 	b _02000D82
 _02000D7E:
 	bl GF_AssertFail
@@ -101,7 +101,7 @@ _02000D82:
 	str r1, [r0, #0x70]
 	mov r1, #0
 	str r1, [r0, #0x30]
-	bl sub_020010C8
+	bl InitializeMainRNG
 	bl sub_0200B528
 	bl sub_02018380
 	ldr r0, _02000E4C ; =0x02111860
@@ -115,8 +115,8 @@ _02000D82:
 	lsl r7, r7, #2
 _02000DAC:
 	bl sub_02000F60
-	bl sub_0200110C
-	bl sub_0201A4DC
+	bl HandleDSLidAction
+	bl ReadKeypadAndTouchpad
 	mov r0, #0xc3
 	ldr r1, [r4, #0x38]
 	lsl r0, r0, #2
@@ -127,14 +127,14 @@ _02000DAC:
 	cmp r0, #0
 	bne _02000DD0
 	mov r0, #0
-	bl sub_02000FA4
+	bl DoSoftReset
 _02000DD0:
 	bl sub_02036144
 	cmp r0, #0
 	beq _02000E08
 	bl sub_02000F60
 	bl sub_020D34B0
-	bl sub_02000E84
+	bl Main_RunOverlayManager
 	bl sub_020D34B0
 	ldr r0, [r4, #0x18]
 	bl sub_0201F880
@@ -145,7 +145,7 @@ _02000DD0:
 	bne _02000E08
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_020D0E6C
+	bl OS_WaitIrq
 	ldr r0, [r4, #0x2c]
 	add r0, r0, #1
 	str r0, [r4, #0x2c]
@@ -157,7 +157,7 @@ _02000E08:
 	bl sub_0201F880
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_020D0E6C
+	bl OS_WaitIrq
 	ldr r0, [r4, #0x2c]
 	add r0, r0, #1
 	str r0, [r4, #0x2c]
@@ -186,8 +186,8 @@ _02000E64: .word 0x021D110C
 _02000E68: .word 0x021D116C
 	thumb_func_end NitroMain
 
-	thumb_func_start sub_02000E6C
-sub_02000E6C: ; 0x02000E6C
+	thumb_func_start Main_ResetOverlayManager
+Main_ResetOverlayManager: ; 0x02000E6C
 	mov r2, #0
 	ldr r0, _02000E80 ; =0x02111860
 	mvn r2, r2
@@ -199,10 +199,10 @@ sub_02000E6C: ; 0x02000E6C
 	bx lr
 	nop
 _02000E80: .word 0x02111860
-	thumb_func_end sub_02000E6C
+	thumb_func_end Main_ResetOverlayManager
 
-	thumb_func_start sub_02000E84
-sub_02000E84: ; 0x02000E84
+	thumb_func_start Main_RunOverlayManager
+Main_RunOverlayManager: ; 0x02000E84
 	push {r3, lr}
 	ldr r0, _02000EEC ; =0x02111860
 	ldr r1, [r0, #0xc]
@@ -225,7 +225,7 @@ _02000EA4:
 	str r1, [r0, #8]
 	ldr r0, [r0, #0x14]
 	ldr r1, _02000EF0 ; =0x02111878
-	bl sub_0200724C
+	bl OverlayManager_new
 	ldr r1, _02000EEC ; =0x02111860
 	str r0, [r1, #0xc]
 	mov r0, #0
@@ -236,12 +236,12 @@ _02000EA4:
 _02000EC2:
 	ldr r0, _02000EEC ; =0x02111860
 	ldr r0, [r0, #0xc]
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _02000EE8
 	ldr r0, _02000EEC ; =0x02111860
 	ldr r0, [r0, #0xc]
-	bl sub_02007278
+	bl OverlayManager_delete
 	ldr r0, _02000EEC ; =0x02111860
 	mov r1, #0
 	str r1, [r0, #0xc]
@@ -255,10 +255,10 @@ _02000EE8:
 	nop
 _02000EEC: .word 0x02111860
 _02000EF0: .word 0x02111878
-	thumb_func_end sub_02000E84
+	thumb_func_end Main_RunOverlayManager
 
-	thumb_func_start sub_02000EF4
-sub_02000EF4: ; 0x02000EF4
+	thumb_func_start RegisterMainOverlay
+RegisterMainOverlay: ; 0x02000EF4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, _02000F10 ; =0x02111860
@@ -274,7 +274,7 @@ _02000F06:
 	pop {r3, r4, r5, pc}
 	nop
 _02000F10: .word 0x02111860
-	thumb_func_end sub_02000EF4
+	thumb_func_end RegisterMainOverlay
 
 	thumb_func_start sub_02000F14
 sub_02000F14: ; 0x02000F14
@@ -282,7 +282,7 @@ sub_02000F14: ; 0x02000F14
 	bl sub_02036144
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_020D0E6C
+	bl OS_WaitIrq
 	ldr r0, _02000F3C ; =0x021D110C
 	ldr r1, [r0, #0x2c]
 	add r1, r1, #1
@@ -307,11 +307,11 @@ sub_02000F40: ; 0x02000F40
 	bl sub_02039AA4
 	cmp r0, #0
 	beq _02000F5A
-	bl sub_020DD1A4
+	bl CARD_TryWaitBackupAsync
 	cmp r0, #1
 	bne _02000F5A
 	add r0, r4, #0
-	bl sub_020D3B84
+	bl OS_ResetSystem
 _02000F5A:
 	bl sub_02000F14
 	pop {r4, pc}
@@ -356,8 +356,8 @@ _02000FA2:
 	pop {r3, pc}
 	thumb_func_end sub_02000F60
 
-	thumb_func_start sub_02000FA4
-sub_02000FA4: ; 0x02000FA4
+	thumb_func_start DoSoftReset
+DoSoftReset: ; 0x02000FA4
 	push {r4, lr}
 	ldr r1, _02000FD4 ; =0x00007FFF
 	add r4, r0, #0
@@ -372,13 +372,13 @@ sub_02000FA4: ; 0x02000FA4
 	bl sub_020272B0
 	bl sub_020275A4
 _02000FC8:
-	bl sub_0200110C
+	bl HandleDSLidAction
 	add r0, r4, #0
 	bl sub_02000F40
 	b _02000FC8
 	.align 2, 0
 _02000FD4: .word 0x00007FFF
-	thumb_func_end sub_02000FA4
+	thumb_func_end DoSoftReset
 
 	thumb_func_start sub_02000FD8
 sub_02000FD8: ; 0x02000FD8
@@ -427,8 +427,8 @@ _02001020:
 	bl sub_02000F14
 	bl sub_02004208
 _02001036:
-	bl sub_0200110C
-	bl sub_0201A4DC
+	bl HandleDSLidAction
+	bl ReadKeypadAndTouchpad
 	cmp r6, #1
 	bne _02001068
 	cmp r5, #0
@@ -466,7 +466,7 @@ _02001076:
 	b _02001036
 _02001086:
 	ldr r0, [sp]
-	bl sub_02000FA4
+	bl DoSoftReset
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -507,13 +507,13 @@ _020010C2:
 	.align 2, 0
 	thumb_func_end sub_02001098
 
-	thumb_func_start sub_020010C8
-sub_020010C8: ; 0x020010C8
+	thumb_func_start InitializeMainRNG
+InitializeMainRNG: ; 0x020010C8
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r0, sp, #0xc
 	add r1, sp, #0
-	bl sub_02014708
+	bl GF_RTC_CopyDateTime
 	ldr r0, _02001108 ; =0x021D110C
 	ldr r3, [sp, #0x10]
 	ldr r4, [r0, #0x2c]
@@ -532,17 +532,17 @@ sub_020010C8: ; 0x020010C8
 	add r0, r1, r0
 	add r5, r2, r0
 	add r0, r4, r5
-	bl sub_0201FD74
+	bl SetMTRNGSeed
 	add r0, r4, r5
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	nop
 _02001108: .word 0x021D110C
-	thumb_func_end sub_020010C8
+	thumb_func_end InitializeMainRNG
 
-	thumb_func_start sub_0200110C
-sub_0200110C: ; 0x0200110C
+	thumb_func_start HandleDSLidAction
+HandleDSLidAction: ; 0x0200110C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	ldr r0, _020011D0 ; =0x027FFFA8
@@ -558,7 +558,7 @@ sub_0200110C: ; 0x0200110C
 	bne _02001190
 	bl sub_0202135C
 	bl sub_02005568
-	bl sub_020E10E8
+	bl CTRDG_IsPulledOut
 	cmp r0, #1
 	bne _0200113C
 	ldr r0, _020011D8 ; =0x02111860
@@ -584,11 +584,11 @@ _0200114C:
 _0200115A:
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_020DB43C
-	bl sub_020DDB24
+	bl PM_GoSleepMode
+	bl CARD_IsPulledOut
 	cmp r0, #0
 	beq _02001170
-	bl sub_020DB330
+	bl PM_ForceToPowerOff
 	b _02001184
 _02001170:
 	ldrh r1, [r4]
@@ -610,19 +610,19 @@ _02001190:
 	bl sub_0202135C
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_020DB3B4
+	bl PM_GetBackLight
 	ldr r0, [sp, #4]
 	cmp r0, #1
 	bne _020011CA
 	mov r0, #2
 	mov r1, #0
-	bl sub_020DB25C
+	bl PM_SetBackLight
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _020011AE:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_020DB3B4
+	bl PM_GetBackLight
 	bl sub_02021328
 	ldr r0, [sp, #4]
 	cmp r0, #0
@@ -630,7 +630,7 @@ _020011AE:
 	ldr r1, _020011D8 ; =0x02111860
 	mov r0, #2
 	ldr r1, [r1]
-	bl sub_020DB25C
+	bl PM_SetBackLight
 _020011CA:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -638,4 +638,4 @@ _020011CA:
 _020011D0: .word 0x027FFFA8
 _020011D4: .word 0x021D116C
 _020011D8: .word 0x02111860
-	thumb_func_end sub_0200110C
+	thumb_func_end HandleDSLidAction

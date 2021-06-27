@@ -371,7 +371,7 @@ ov100_021E5BB0: ; 0x021E5BB0
 	add r4, r1, #0
 	add r0, sp, #0x10
 	add r1, sp, #4
-	bl sub_02014708
+	bl GF_RTC_CopyDateTime
 	cmp r4, #0
 	bne _021E5BD6
 	add r0, r5, #0
@@ -1417,11 +1417,11 @@ ov100_021E6408: ; 0x021E6408
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021E6428
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _021E6428
 	ldr r0, [r4]
-	bl sub_02007278
+	bl OverlayManager_delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1
@@ -1770,7 +1770,7 @@ ov100_021E66B0: ; 0x021E66B0
 	ldr r0, _021E66C4 ; =0x021E762C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0x70]
 	mov r0, #7
 	pop {r4, pc}
@@ -1877,7 +1877,7 @@ _021E6750:
 	ldr r0, _021E6790 ; =0x021E761C
 	ldr r1, [r4, #0x6c]
 	ldr r2, [r4]
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0x70]
 	mov r0, #9
 	add sp, #4
@@ -1928,7 +1928,7 @@ ov100_021E67D4: ; 0x021E67D4
 	ldr r0, _021E67E8 ; =0x021E760C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0x70]
 	mov r0, #3
 	pop {r4, pc}
@@ -1990,7 +1990,7 @@ ov100_021E6840: ; 0x021E6840
 	ldr r0, _021E6854 ; =0x021E75FC
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0x70]
 	mov r0, #0xb
 	pop {r4, pc}
@@ -2049,7 +2049,7 @@ ov100_021E68A8: ; 0x021E68A8
 	ldr r0, _021E68BC ; =0x021E763C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0x70]
 	mov r0, #5
 	pop {r4, pc}

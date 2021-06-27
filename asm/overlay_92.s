@@ -11,7 +11,7 @@ ov92_0225C540: ; 0x0225C540
 	add r4, r3, #0
 	str r1, [r4, #0x14]
 	str r0, [r4, #0x18]
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	add r0, r4, #0
 	bl ov92_0225D8D4
 	pop {r4, pc}
@@ -1570,7 +1570,7 @@ ov92_0225D1FC: ; 0x0225D1FC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	ldr r0, [r5, #4]
 	bl ov92_0225E03C
 	ldr r0, [r5, #4]
@@ -7466,7 +7466,7 @@ _022601AE:
 	bl sub_0201FD44
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0201FD38
+	bl SetLCRNGSeed
 	add r0, r6, #0
 	mov r1, #0x64
 	bl sub_020F2BA4

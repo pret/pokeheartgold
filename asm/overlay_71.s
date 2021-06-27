@@ -3416,7 +3416,7 @@ _02248394:
 	add r0, r5, #0
 	add r0, #0xbc
 	ldr r0, [r0]
-	bl sub_0201FD74
+	bl SetMTRNGSeed
 	add r0, r5, #0
 	bl sub_0201AB0C
 _022483A4:
@@ -4270,7 +4270,7 @@ ov71_02248A08: ; 0x02248A08
 	add r3, sp, #0x60
 	bl ov71_02247320
 	ldr r0, _02248B20 ; =0x035947D1
-	bl sub_0201FD74
+	bl SetMTRNGSeed
 	mov r0, #0
 	str r0, [sp, #0x14]
 	add r4, r7, #0

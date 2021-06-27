@@ -3598,7 +3598,7 @@ ov17_022037C8: ; 0x022037C8
 	add r7, r1, #0
 	add r0, sp, #0x38
 	add r1, sp, #0x1c
-	bl sub_02014708
+	bl GF_RTC_CopyDateTime
 	add r0, sp, #0x38
 	add r1, sp, #0x1c
 	bl sub_020DC330

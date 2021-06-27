@@ -765,11 +765,11 @@ ov16_02201948: ; 0x02201948
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02201968
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _02201968
 	ldr r0, [r4]
-	bl sub_02007278
+	bl OverlayManager_delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1
@@ -911,7 +911,7 @@ ov16_02201A60: ; 0x02201A60
 	ldr r0, _02201A74 ; =0x02201B68
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #8]
 	mov r0, #1
 	pop {r4, pc}
@@ -996,7 +996,7 @@ _02201B02:
 	ldr r0, _02201B20 ; =0x02201B78
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4]
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #8]
 	mov r0, #3
 	add sp, #4

@@ -10,11 +10,11 @@ ov55_021E5900: ; 0x021E5900
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021E5920
-	bl sub_020072A8
+	bl OverlayManager_run
 	cmp r0, #0
 	beq _021E5920
 	ldr r0, [r4]
-	bl sub_02007278
+	bl OverlayManager_delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1
@@ -111,7 +111,7 @@ _021E59C0:
 	ldr r0, _021E5ADC ; =_021E5BF4
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4]
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0xc]
 	mov r0, #1
 	str r0, [r6]
@@ -209,7 +209,7 @@ _021E5A86:
 	ldr r0, _021E5AE4 ; =0x021E5C04
 	ldr r1, [r4, #8]
 	ldr r2, [r4]
-	bl sub_0200724C
+	bl OverlayManager_new
 	str r0, [r4, #0xc]
 	mov r0, #4
 	str r0, [r6]
