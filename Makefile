@@ -2,6 +2,7 @@ TOOLSDIR       := tools
 MWCCVER        := 2.0/sp1
 PROC           := arm946
 PROC_S         := arm5te
+PROC_LD        := v5te
 
 include config.mk
 include common.mk
@@ -13,7 +14,8 @@ BANNER         := $(ROM:%.nds=%.bnr)
 BANNER_SPEC    := $(ROM:%.nds=%.bsf)
 ICON_PNG       := $(ROM:$(BUILD_DIR)/%.nds=icon/%.png)
 
-MWCFLAGS += -ipa file $(DEFINES)
+MWCFLAGS  += -ipa file $(DEFINES)
+MWASFLAGS += $(DEFINES)
 
 .SECONDARY:
 .SECONDEXPANSION:
@@ -37,10 +39,14 @@ sub: ; $(MAKE) -C sub
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
 
-$(SBIN):
-	$(WINE) $(COMPSTATIC) -9 -F -c -f $(BUILD_DIR)/component.files
+SBIN_LZ        := $(SBIN)_LZ
 
-$(ROM): $(ROMSPEC) $(NITROFS_FILES) main sub $(BANNER)
+$(SBIN_LZ): $(BUILD_DIR)/component.files
+	$(WINE) $(COMPSTATIC) -9 -F -c -f $<
+
+$(BUILD_DIR)/component.files: main ;
+
+$(ROM): $(ROMSPEC) $(NITROFS_FILES) $(SBIN_LZ) sub $(BANNER)
 	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DNITROFS_FILES="$(NITROFS_FILES)" -DTITLE_NAME="$(TITLE_NAME)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)

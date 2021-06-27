@@ -1,8 +1,8 @@
 Arm9
 {
-	Static $(BUILD_DIR)/main.sbin
-	OverlayDefs $(BUILD_DIR)/main_defs.sbin
-	OverlayTable $(BUILD_DIR)/main_table.sbin
+	Static $(BUILD_DIR)/main.sbin_LZ
+	OverlayDefs $(BUILD_DIR)/main_defs.sbin_LZ
+	OverlayTable $(BUILD_DIR)/main_table.sbin_LZ
 	Nef $(BUILD_DIR)/main.nef
 }
 

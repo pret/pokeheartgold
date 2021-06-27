@@ -1,7 +1,9 @@
 	.include "asm/macros.inc"
-	.text
-	.syntax unified
+	.include "global.inc"
 
+	.text
+
+	; Entry point
 	thumb_func_start NitroMain
 NitroMain: @ 0x02000CA4
 	push {r3, r4, r5, r6, r7, lr}

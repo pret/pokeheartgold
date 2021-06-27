@@ -62,7 +62,9 @@ C_OBJS                    := $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
 ASM_OBJS                  := $(ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
 LIB_C_OBJS                := $(LIB_C_SRCS:%.c=$(BUILD_DIR)/%.o)
 LIB_ASM_OBJS              := $(LIB_ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
-ALL_OBJS                  := $(C_OBJS) $(ASM_OBJS) $(LIB_C_OBJS) $(LIB_ASM_OBJS)
+ALL_GAME_OBJS             := $(C_OBJS) $(ASM_OBJS)
+ALL_LIB_OBJS              := $(LIB_C_OBJS) $(LIB_ASM_OBJS)
+ALL_OBJS                  := $(ALL_GAME_OBJS) $(ALL_LIB_OBJS)
 
 ALL_BUILDDIRS             := $(sort $(foreach obj,$(ALL_OBJS),$(dir $(obj))))
 
@@ -71,7 +73,11 @@ ELF               := $(NEF:%.nef=%.elf)
 LCF               := $(NEF:%.nef=%.lcf)
 SBIN              := $(NEF:%.nef=%.sbin)
 XMAP              := $(NEF).xMAP
+
 MWCFLAGS          := -O4,p -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -i ./include
+MWASFLAGS         := -proc $(PROC_S)
+MWLDFLAGS         := -nodead -w off -proc $(PROC_LD) -interwork -map closure,unused -symtab sort -m _start
+ARFLAGS           := rcS
 
 export MWCIncludes := lib/include
 
@@ -97,7 +103,7 @@ clean-tools:
 $(LCF): $(LSF) $(LCF_TEMPLATE)
 	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
 
-$(NEF): $(LCF)
+$(NEF): $(LCF) $(ALL_OBJS)
 	cd $(BUILD_DIR) && LM_LICENSE_FILE=../../$(LM_LICENSE_FILE) $(WINE) ../../$(MWLD) $(MWLDFLAGS) $(LIBS) -o ../../$(NEF) $(LCF:%(BUILD_DIR)/%=%) $(ALL_OBJS:%(BUILD_DIR)/%=%)
 $(SBIN): $(NEF)
 
