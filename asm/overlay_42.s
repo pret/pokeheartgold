@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov42_02227060
 ov42_02227060: ; 0x02227060

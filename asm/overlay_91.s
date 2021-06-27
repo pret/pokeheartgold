@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov91_0225C540
 ov91_0225C540: ; 0x0225C540

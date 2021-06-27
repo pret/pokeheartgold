@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov97_0221E5C0
 ov97_0221E5C0: ; 0x0221E5C0

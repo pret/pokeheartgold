@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov76_021E5900
 ov76_021E5900: ; 0x021E5900

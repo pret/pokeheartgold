@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov40_0222B6E0
 ov40_0222B6E0: ; 0x0222B6E0

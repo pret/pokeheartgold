@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov03_02253E20
 ov03_02253E20: ; 0x02253E20

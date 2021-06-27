@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov56_021E5C20
 ov56_021E5C20: ; 0x021E5C20

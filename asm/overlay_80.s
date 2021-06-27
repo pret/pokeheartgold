@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov80_02229EE0
 ov80_02229EE0: ; 0x02229EE0

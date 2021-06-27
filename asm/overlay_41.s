@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov41_02245EA0
 ov41_02245EA0: ; 0x02245EA0

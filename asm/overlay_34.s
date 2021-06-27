@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov34_0225D520
 ov34_0225D520: ; 0x0225D520

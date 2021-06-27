@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov16_022014A0
 ov16_022014A0: ; 0x022014A0

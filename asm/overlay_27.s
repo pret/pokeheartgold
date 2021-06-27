@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov27_02259F80
 ov27_02259F80: ; 0x02259F80

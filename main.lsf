@@ -129,8 +129,7 @@ Overlay OVY_8
 Overlay OVY_9
 {
     After OVY_5
-    Object overlay_9.o
-    ### No objects ###
+    ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x221be20 ###
@@ -152,8 +151,7 @@ Overlay OVY_10
 Overlay OVY_11
 {
     After main
-    Object overlay_11.o
-    ### No objects ###
+    ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5900 ###
@@ -763,8 +761,7 @@ Overlay OVY_65
 Overlay OVY_66
 {
     After main
-    Object overlay_66.o
-    ### No objects ###
+    ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5900 ###
@@ -886,7 +883,7 @@ Overlay OVY_76
 Overlay OVY_77
 {
     After main
-    Object overlay_77.o
+    ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5900 ###
@@ -908,7 +905,7 @@ Overlay OVY_78
 Overlay OVY_79
 {
     After OVY_39
-    Object overlay_79.o
+    ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2229ee0 ###
@@ -1141,7 +1138,7 @@ Overlay OVY_99
 Overlay OVY_100
 {
     After main
-    Object overlay_10.o
+    Object overlay_100.o
     ### Size 0x1e40 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e7714 ###
@@ -1185,7 +1182,7 @@ Overlay OVY_103
 Overlay OVY_104
 {
     After main
-    Object overlay_10.o
+    Object overlay_104.o
     ### Size 0x820 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e6048 ###
@@ -1196,7 +1193,7 @@ Overlay OVY_104
 Overlay OVY_105
 {
     After main
-    Object overlay_10.o
+    Object overlay_105.o
     ### Size 0x5c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5e7c ###
@@ -1207,7 +1204,7 @@ Overlay OVY_105
 Overlay OVY_106
 {
     After main
-    Object overlay_10.o
+    Object overlay_106.o
     ### Size 0x2d40 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e8634 ###
@@ -1218,7 +1215,7 @@ Overlay OVY_106
 Overlay OVY_107
 {
     After main
-    Object overlay_10.o
+    ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5900 ###
@@ -1229,7 +1226,7 @@ Overlay OVY_107
 Overlay OVY_108
 {
     After main
-    Object overlay_10.o
+    Object overlay_108.o
     ### Size 0x5460 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21ead50 ###
@@ -1240,7 +1237,7 @@ Overlay OVY_108
 Overlay OVY_109
 {
     After main
-    Object overlay_10.o
+    Object overlay_109.o
     ### Size 0x2240 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e7b20 ###
@@ -1251,7 +1248,7 @@ Overlay OVY_109
 Overlay OVY_110
 {
     After main
-    Object overlay_11.o
+    Object overlay_110.o
     ### Size 0x1720 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e6ff4 ###
@@ -1262,7 +1259,7 @@ Overlay OVY_110
 Overlay OVY_111
 {
     After main
-    Object overlay_11.o
+    Object overlay_111.o
     ### Size 0x1460 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e6d30 ###
@@ -1273,7 +1270,7 @@ Overlay OVY_111
 Overlay OVY_112
 {
     After main
-    Object overlay_11.o
+    Object overlay_112.o
     ### Size 0x1a0e0 ###
     ### BSS Size 0x2c0 ###
     ### SINIT Start 0x21ff4e8 ###
@@ -1284,7 +1281,7 @@ Overlay OVY_112
 Overlay OVY_113
 {
     After main
-    Object overlay_11.o
+    Object overlay_113.o
     ### Size 0x1480 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e6d70 ###
@@ -1372,7 +1369,7 @@ Overlay OVY_120
 Overlay OVY_121
 {
     After main
-    Object overlay_12.o
+    Object overlay_121.o
     ### Size 0x18a0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e7194 ###
@@ -1383,7 +1380,7 @@ Overlay OVY_121
 Overlay OVY_122
 {
     After main
-    Object overlay_12.o
+    Object overlay_122.o
     ### Size 0x42c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e9b84 ###
@@ -1415,7 +1412,7 @@ Overlay OVY_124
 Overlay OVY_125
 {
     After OVY_114
-    Object overlay_125.o
+    ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2260c20 ###
@@ -1426,7 +1423,7 @@ Overlay OVY_125
 Overlay OVY_126
 {
     After OVY_114
-    Object overlay_126.o
+    ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2260c20 ###
@@ -1437,7 +1434,7 @@ Overlay OVY_126
 Overlay OVY_127
 {
     After OVY_114
-    Object overlay_127.o
+    ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2260c20 ###
@@ -1448,7 +1445,7 @@ Overlay OVY_127
 Overlay OVY_128
 {
     After OVY_114
-    Object overlay_128.o
+    ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2260c20 ###

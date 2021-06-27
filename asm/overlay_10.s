@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov10_0221BE20
 ov10_0221BE20: ; 0x0221BE20

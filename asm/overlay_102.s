@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov102_021E7740
 ov102_021E7740: ; 0x021E7740

@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov114_0225F020
 ov114_0225F020: ; 0x0225F020

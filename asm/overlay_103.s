@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov103_021EC940
 ov103_021EC940: ; 0x021EC940

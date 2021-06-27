@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov59_02237D40
 ov59_02237D40: ; 0x02237D40

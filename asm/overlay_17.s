@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov17_02201BC0
 ov17_02201BC0: ; 0x02201BC0

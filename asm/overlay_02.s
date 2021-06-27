@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov02_02245B80
 ov02_02245B80: ; 0x02245B80

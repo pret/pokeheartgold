@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	arm_func_start ov45_022310B0
 ov45_022310B0: ; 0x022310B0

@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov124_02260C20
 ov124_02260C20: ; 0x02260C20

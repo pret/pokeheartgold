@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov58_022378C0
 ov58_022378C0: ; 0x022378C0

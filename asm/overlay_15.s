@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov15_021F9380
 ov15_021F9380: ; 0x021F9380

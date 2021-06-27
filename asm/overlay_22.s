@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov22_022598C0
 ov22_022598C0: ; 0x022598C0

@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov84_0223DD60
 ov84_0223DD60: ; 0x0223DD60

@@ -1,3 +1,7 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	thumb_func_start ov06_0221BA00
 ov06_0221BA00: ; 0x0221BA00
