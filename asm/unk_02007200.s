@@ -40156,7 +40156,7 @@ sub_020194B4: ; 0x020194B4
 	ldr r0, [r4, #0x78]
 	cmp r0, #0
 	bne _020194F2
-	bl sub_020915B0
+	bl LoadDwcOverlay
 	bl sub_02091614
 	mov r0, #0x7b
 	bl sub_02039FD8
@@ -40193,7 +40193,7 @@ sub_020194F8: ; 0x020194F8
 	ldr r0, [r4, #0xc]
 	bl sub_0201AB0C
 	bl sub_02091624
-	bl sub_020915C0
+	bl UnloadDwcOverlay
 	bl sub_02034DE0
 	mov r0, #0
 	str r0, [r4, #0x78]

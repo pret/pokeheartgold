@@ -309,7 +309,7 @@ ov53_021E5B48: ; 0x021E5B48
 	bl sub_02007294
 	add r0, r5, #0
 	bl sub_0201A9C4
-	ldr r0, _021E5BC4 ; =0x00000024
+	ldr r0, _021E5BC4 ; =SDK_OVERLAY_OVY_36_ID
 	ldr r1, _021E5BC8 ; =0x021E5C14
 	bl RegisterMainOverlay
 	mov r0, #0
@@ -317,7 +317,7 @@ ov53_021E5B48: ; 0x021E5B48
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
-_021E5BC4: .word 0x00000024
+_021E5BC4: .word SDK_OVERLAY_OVY_36_ID
 _021E5BC8: .word 0x021E5C14
 	thumb_func_end ov53_021E5B48
 

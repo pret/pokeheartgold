@@ -764,7 +764,7 @@ _02237E36:
 	mov r1, #0x43
 	lsl r2, r2, #0x10
 	bl sub_0201A910
-	bl sub_020915B0
+	bl LoadDwcOverlay
 	bl sub_02091614
 	mov r0, #0x43
 	bl sub_02039FD8
@@ -1010,7 +1010,7 @@ _02238086:
 	ldr r0, [r4, #0x24]
 	bl sub_0201AB0C
 	bl sub_02091624
-	bl sub_020915C0
+	bl UnloadDwcOverlay
 	add r0, r4, #0
 	bl ov72_02238800
 	ldr r0, _022380F0 ; =0x00000BDC

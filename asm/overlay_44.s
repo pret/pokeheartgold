@@ -964,7 +964,7 @@ _0222A542:
 	bl sub_0203A880
 	b _0222A5DC
 _0222A5D2:
-	bl sub_020915B0
+	bl LoadDwcOverlay
 	mov r0, #0x35
 	bl sub_02039FD8
 _0222A5DC:
@@ -1168,7 +1168,7 @@ ov44_0222A758: ; 0x0222A758
 	cmp r0, #0xa
 	bne _0222A78C
 _0222A780:
-	bl sub_020915C0
+	bl UnloadDwcOverlay
 	mov r0, #0
 	bl sub_02002B8C
 	b _0222A792

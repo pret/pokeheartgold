@@ -4182,13 +4182,13 @@ ov112_021E7910: ; 0x021E7910
 	bl sub_0201A9C4
 	mov r0, #0x10
 	bl sub_0201A738
-	ldr r0, _021E7954 ; =0x0000003C
+	ldr r0, _021E7954 ; =SDK_OVERLAY_OVY_60_ID
 	ldr r1, _021E7958 ; =0x021EAFE0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021E7954: .word 0x0000003C
+_021E7954: .word SDK_OVERLAY_OVY_60_ID
 _021E7958: .word 0x021EAFE0
 	thumb_func_end ov112_021E7910
 

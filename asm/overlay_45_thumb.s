@@ -10,7 +10,7 @@ ov45_02229EE0: ; 0x02229EE0
 	ldr r0, _02229F68 ; =0x0000002A
 	mov r1, #2
 	bl HandleLoadOverlay
-	bl sub_020915B0
+	bl LoadDwcOverlay
 	bl sub_02091614
 	mov r0, #3
 	bl sub_02039FD8
@@ -109,7 +109,7 @@ ov45_02229F94: ; 0x02229F94
 	ldr r0, _02229FDC ; =0x0000002A
 	bl UnloadOverlayByID
 	bl sub_02091624
-	bl sub_020915C0
+	bl UnloadDwcOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop

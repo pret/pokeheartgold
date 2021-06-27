@@ -4891,7 +4891,7 @@ _021E7E62:
 	str r0, [r5]
 	b _021E7F78
 _021E7F62:
-	bl sub_020915B0
+	bl LoadDwcOverlay
 	bl sub_02091614
 	bl sub_02034D8C
 	mov r0, #0
@@ -5033,7 +5033,7 @@ ov73_021E808C: ; 0x021E808C
 	ldr r0, [r4, #0x24]
 	bl sub_0201AB0C
 	bl sub_02091624
-	bl sub_020915C0
+	bl UnloadDwcOverlay
 	add r0, r4, #0
 	bl ov73_021E847C
 	ldr r0, _021E80F4 ; =0x00000BDC

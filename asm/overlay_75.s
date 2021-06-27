@@ -223,13 +223,13 @@ ov75_02246B00: ; 0x02246B00
 	bl sub_0201A9C4
 	mov r0, #0x59
 	bl sub_0201A9C4
-	ldr r0, _02246B40 ; =0x0000003C
+	ldr r0, _02246B40 ; =SDK_OVERLAY_OVY_60_ID
 	ldr r1, _02246B44 ; =0x021EAFE0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-_02246B40: .word 0x0000003C
+_02246B40: .word SDK_OVERLAY_OVY_60_ID
 _02246B44: .word 0x021EAFE0
 	thumb_func_end ov75_02246B00
 
@@ -243,7 +243,7 @@ ov75_02246B48: ; 0x02246B48
 	ldr r0, _02246B90 ; =0x00000046
 	mov r1, #2
 	bl HandleLoadOverlay
-	bl sub_020915B0
+	bl LoadDwcOverlay
 	bl sub_02091614
 	mov r0, #0x73
 	bl sub_02039FD8
@@ -281,7 +281,7 @@ ov75_02246B98: ; 0x02246B98
 	ldr r0, [r4, #0xc]
 	bl sub_0201AB0C
 	bl sub_02091624
-	bl sub_020915C0
+	bl UnloadDwcOverlay
 	bl sub_02034DE0
 	ldr r0, _02246BC8 ; =0x00000046
 	bl UnloadOverlayByID

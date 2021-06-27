@@ -3475,27 +3475,27 @@ _02228BA0: ; jump table
 	.short _02228BEE - _02228BA0 - 2 ; case 8
 	.short _02228C0C - _02228BA0 - 2 ; case 9
 _02228BB4:
-	ldr r0, _02228C24 ; =0x00000024
+	ldr r0, _02228C24 ; =SDK_OVERLAY_OVY_36_ID
 	ldr r1, _02228C28 ; =0x021E5C04
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BBE:
-	ldr r0, _02228C24 ; =0x00000024
+	ldr r0, _02228C24 ; =SDK_OVERLAY_OVY_36_ID
 	ldr r1, _02228C2C ; =0x021E5C24
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BC8:
-	ldr r0, _02228C30 ; =0x0000004A
+	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _02228C34 ; =0x0223B380
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BD2:
-	ldr r0, _02228C30 ; =0x0000004A
+	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _02228C38 ; =0x0223B4D8
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BDC:
-	ldr r0, _02228C30 ; =0x0000004A
+	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _02228C3C ; =0x0223B320
 	bl RegisterMainOverlay
 	pop {r3, pc}
@@ -3512,37 +3512,37 @@ _02228BEE:
 	pop {r3, pc}
 _02228BFE:
 	bl sub_02005FA0
-	ldr r0, _02228C48 ; =0x00000070
+	ldr r0, _02228C48 ; =SDK_OVERLAY_OVY_112_ID
 	ldr r1, _02228C4C ; =0x021F5728
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C0C:
 	bl sub_02005FA0
-	ldr r0, _02228C50 ; =0x0000004B
+	ldr r0, _02228C50 ; =SDK_OVERLAY_OVY_75_ID
 	ldr r1, _02228C54 ; =0x02249964
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C1A:
-	ldr r0, _02228C58 ; =0x0000003C
+	ldr r0, _02228C58 ; =SDK_OVERLAY_OVY_60_ID
 	ldr r1, _02228C5C ; =0x021EAFE0
 	bl RegisterMainOverlay
 _02228C22:
 	pop {r3, pc}
 	.align 2, 0
-_02228C24: .word 0x00000024
+_02228C24: .word SDK_OVERLAY_OVY_36_ID
 _02228C28: .word 0x021E5C04
 _02228C2C: .word 0x021E5C24
-_02228C30: .word 0x0000004A
+_02228C30: .word SDK_OVERLAY_OVY_74_ID
 _02228C34: .word 0x0223B380
 _02228C38: .word 0x0223B4D8
 _02228C3C: .word 0x0223B320
 _02228C40: .word 0x0223BD4C
 _02228C44: .word 0x021065C4
-_02228C48: .word 0x00000070
+_02228C48: .word SDK_OVERLAY_OVY_112_ID
 _02228C4C: .word 0x021F5728
-_02228C50: .word 0x0000004B
+_02228C50: .word SDK_OVERLAY_OVY_75_ID
 _02228C54: .word 0x02249964
-_02228C58: .word 0x0000003C
+_02228C58: .word SDK_OVERLAY_OVY_60_ID
 _02228C5C: .word 0x021EAFE0
 	thumb_func_end ov74_02228B8C
 
@@ -4494,7 +4494,7 @@ ov74_02229450: ; 0x02229450
 	add r4, r0, #0
 	mov r0, #0x59
 	bl sub_0201A9C4
-	ldr r0, _02229474 ; =0x0000003C
+	ldr r0, _02229474 ; =SDK_OVERLAY_OVY_60_ID
 	ldr r1, _02229478 ; =0x021EAFE0
 	bl RegisterMainOverlay
 	add r0, r4, #0
@@ -4504,7 +4504,7 @@ ov74_02229450: ; 0x02229450
 	mov r0, #1
 	pop {r4, pc}
 	nop
-_02229474: .word 0x0000003C
+_02229474: .word SDK_OVERLAY_OVY_60_ID
 _02229478: .word 0x021EAFE0
 	thumb_func_end ov74_02229450
 
@@ -11618,21 +11618,21 @@ ov74_0222CD94: ; 0x0222CD94
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	bne _0222CDB2
-	ldr r0, _0222CDF8 ; =0x0000003C
+	ldr r0, _0222CDF8 ; =SDK_OVERLAY_OVY_60_ID
 	ldr r1, _0222CDFC ; =0x021EAFE0
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDB2:
 	cmp r0, #1
 	bne _0222CDC0
-	ldr r0, _0222CE00 ; =0x0000004A
+	ldr r0, _0222CE00 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _0222CE04 ; =0x0223B410
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDC0:
 	cmp r0, #2
 	bne _0222CDCC
-	ldr r0, _0222CE00 ; =0x0000004A
+	ldr r0, _0222CE00 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _0222CE08 ; =0x0223B420
 	bl RegisterMainOverlay
 _0222CDCC:
@@ -11654,9 +11654,9 @@ _0222CDEC:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_0222CDF8: .word 0x0000003C
+_0222CDF8: .word SDK_OVERLAY_OVY_60_ID
 _0222CDFC: .word 0x021EAFE0
-_0222CE00: .word 0x0000004A
+_0222CE00: .word SDK_OVERLAY_OVY_74_ID
 _0222CE04: .word 0x0223B410
 _0222CE08: .word 0x0223B420
 _0222CE0C: .word 0x000015D4
@@ -15368,7 +15368,7 @@ _0222EBA0:
 	ldr r0, _0222EBFC ; =0x000029FC
 	ldr r0, [r7, r0]
 	bl sub_0201AB0C
-	ldr r0, _0222EC00 ; =0x0000004A
+	ldr r0, _0222EC00 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _0222EC04 ; =0x0223B380
 	bl RegisterMainOverlay
 	mov r0, #0x59
@@ -15384,7 +15384,7 @@ _0222EBF0: .word 0x00002A08
 _0222EBF4: .word 0x00002BD0
 _0222EBF8: .word 0x00002BE0
 _0222EBFC: .word 0x000029FC
-_0222EC00: .word 0x0000004A
+_0222EC00: .word SDK_OVERLAY_OVY_74_ID
 _0222EC04: .word 0x0223B380
 	thumb_func_end ov74_0222EB44
 
@@ -17371,7 +17371,7 @@ _0222FBE8:
 	ldr r0, _0222FC44 ; =0x000029FC
 	ldr r0, [r7, r0]
 	bl sub_0201AB0C
-	ldr r0, _0222FC48 ; =0x0000004A
+	ldr r0, _0222FC48 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _0222FC4C ; =0x0223B380
 	bl RegisterMainOverlay
 	mov r0, #0x59
@@ -17387,7 +17387,7 @@ _0222FC38: .word 0x00002A08
 _0222FC3C: .word 0x00002BC4
 _0222FC40: .word 0x00002BD4
 _0222FC44: .word 0x000029FC
-_0222FC48: .word 0x0000004A
+_0222FC48: .word SDK_OVERLAY_OVY_74_ID
 _0222FC4C: .word 0x0223B380
 	thumb_func_end ov74_0222FB8C
 
@@ -25302,7 +25302,7 @@ ov74_022338D4: ; 0x022338D4
 	bl sub_02026380
 	ldr r0, [r4, #0x20]
 	bl sub_0201AB0C
-	ldr r0, _0223391C ; =0x0000003C
+	ldr r0, _0223391C ; =SDK_OVERLAY_OVY_60_ID
 	ldr r1, _02233920 ; =0x021EAFE0
 	bl RegisterMainOverlay
 	add r0, r5, #0
@@ -25316,7 +25316,7 @@ ov74_022338D4: ; 0x022338D4
 	nop
 _02233914: .word 0x00012608
 _02233918: .word 0x0001260C
-_0223391C: .word 0x0000003C
+_0223391C: .word SDK_OVERLAY_OVY_60_ID
 _02233920: .word 0x021EAFE0
 	thumb_func_end ov74_022338D4
 
@@ -32039,7 +32039,7 @@ ov74_02236AC8: ; 0x02236AC8
 	bl sub_0203A914
 	bl sub_020394F4
 	bl sub_02091624
-	bl sub_020915C0
+	bl UnloadDwcOverlay
 	bl sub_02034DE0
 	pop {r3, pc}
 	thumb_func_end ov74_02236AC8
@@ -32098,7 +32098,7 @@ _02236B1A: ; jump table
 	.short _02236EE6 - _02236B1A - 2 ; case 19
 _02236B42:
 	bl sub_02034D8C
-	bl sub_020915B0
+	bl LoadDwcOverlay
 	bl sub_02091614
 	mov r0, #3
 	bl sub_02039FD8
