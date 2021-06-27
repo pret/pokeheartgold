@@ -175,7 +175,10 @@ Overlay OVY_12
 Overlay OVY_13
 {
     After OVY_17
-    Object overlay_13.o
+    Object overlay_13_thumb_1.o
+    Object overlay_13_arm_1.o
+    Object overlay_13_thumb_2.o
+    Object overlay_13_arm_2.o
     ### Size 0x2ba80 ###
     ### BSS Size 0x81e0 ###
     ### SINIT Start 0x2245964 ###
