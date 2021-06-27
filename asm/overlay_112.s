@@ -187,7 +187,7 @@ _021E5A3E:
 	cmp r1, #0
 	beq _021E5A4A
 	add r0, r4, #0
-	bl r1
+	blx r1
 _021E5A4A:
 	bl ov112_021E594C
 	add sp, #4
@@ -573,7 +573,7 @@ _021E5CD0:
 	ldr r2, [r3, #0xc]
 	cmp r2, #0
 	beq _021E5D24
-	bl r2
+	blx r2
 	b _021E5D24
 _021E5CFE:
 	bl ov112_021E5938
@@ -594,7 +594,7 @@ _021E5D04:
 	ldr r0, _021E5D34 ; =0x021FFA20
 	ldr r4, [r5, #0x1c]
 	lsr r1, r1, #0x18
-	bl r4
+	blx r4
 _021E5D24:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -4085,7 +4085,7 @@ _021E7866:
 	mul r3, r1
 	ldr r1, _021E78F8 ; =0x021FF54C
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 	str r0, [r5]
 	b _021E78E4
 _021E7878:
@@ -4095,7 +4095,7 @@ _021E7878:
 	mul r3, r1
 	ldr r1, _021E78FC ; =0x021FF550
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 	str r0, [r5]
 	ldr r3, _021E7900 ; =0x0001F2E0
 	ldr r0, [r4, #0x18]
@@ -4111,7 +4111,7 @@ _021E7898:
 	mul r3, r1
 	ldr r1, _021E7904 ; =0x021FF554
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 	str r0, [r5]
 	ldr r0, [r4, #4]
 	cmp r0, #0xb
@@ -10088,7 +10088,7 @@ ov112_021EAC34: ; 0x021EAC34
 	lsl r2, r1, #2
 	ldr r1, _021EAC54 ; =0x021FF6C4
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	str r0, [r4, #8]
 	cmp r0, #0x1b
 	bne _021EAC50
@@ -11848,7 +11848,7 @@ ov112_021EBA28: ; 0x021EBA28
 	lsl r2, r1, #2
 	ldr r1, _021EBA4C ; =0x021FF730
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	str r0, [r4, #8]
 	cmp r0, #4
 	bne _021EBA48
@@ -12017,7 +12017,7 @@ ov112_021EBB58: ; 0x021EBB58
 	lsl r2, r1, #2
 	ldr r1, _021EBB80 ; =0x021FF740
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	str r0, [r4, #8]
 	cmp r0, #0x23
 	bne _021EBB74
@@ -13311,7 +13311,7 @@ ov112_021EC520: ; 0x021EC520
 	lsl r2, r1, #2
 	ldr r1, _021EC548 ; =0x021FF7CC
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	str r0, [r4, #8]
 	cmp r0, #0x43
 	bne _021EC53C
@@ -17502,7 +17502,7 @@ ov112_021EE688: ; 0x021EE688
 	lsl r2, r1, #2
 	ldr r1, _021EE6A8 ; =0x021FF8D8
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	str r0, [r4, #8]
 	cmp r0, #8
 	bne _021EE6A4
@@ -18418,7 +18418,7 @@ ov112_021EEDFC: ; 0x021EEDFC
 	lsl r2, r1, #2
 	ldr r1, _021EEE1C ; =0x021FF8F8
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	str r0, [r4, #8]
 	cmp r0, #0xb
 	bne _021EEE18
@@ -19547,7 +19547,7 @@ ov112_021EF67C: ; 0x021EF67C
 	lsl r2, r1, #2
 	ldr r1, _021EF69C ; =0x021FF924
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	str r0, [r4, #8]
 	cmp r0, #0x25
 	bne _021EF698

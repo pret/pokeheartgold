@@ -1924,14 +1924,14 @@ ov41_02246CC0: ; 0x02246CC0
 	ldr r3, [r3]
 	add r0, r4, #0
 	add r2, r1, #0
-	bl r3
+	blx r3
 	str r0, [r5, #0x24]
 	ldr r3, _02246D20 ; =0x0211092C
 	add r0, r6, #0
 	ldr r3, [r3]
 	mov r1, #0
 	mov r2, #1
-	bl r3
+	blx r3
 	str r0, [r5, #0x28]
 	ldr r3, [r5, #0x24]
 	ldr r2, _02246D24 ; =0x7FFF0000
@@ -1970,11 +1970,11 @@ ov41_02246D2C: ; 0x02246D2C
 	ldr r1, _02246D4C ; =0x02110928
 	ldr r0, [r4, #0x24]
 	ldr r1, [r1]
-	bl r1
+	blx r1
 	ldr r1, _02246D50 ; =0x02110930
 	ldr r0, [r4, #0x28]
 	ldr r1, [r1]
-	bl r1
+	blx r1
 	mov r0, #0
 	str r0, [r4, #0x2c]
 	pop {r4, pc}
@@ -6475,21 +6475,21 @@ ov41_02248E44: ; 0x02248E44
 	cmp r2, #0
 	beq _02248E56
 	ldr r1, [r4, #4]
-	bl r1
+	blx r1
 	b _02248E6C
 _02248E56:
 	ldrh r1, [r1, #0x26]
 	cmp r1, #0
 	beq _02248E62
 	ldr r1, [r4, #0xc]
-	bl r1
+	blx r1
 	b _02248E6C
 _02248E62:
 	ldrb r1, [r4, #0x18]
 	cmp r1, #0
 	beq _02248E6C
 	ldr r1, [r4, #8]
-	bl r1
+	blx r1
 _02248E6C:
 	ldr r0, _02248E7C ; =0x021D114C
 	ldrh r1, [r0, #0x20]
@@ -9159,7 +9159,7 @@ ov41_0224A1DC: ; 0x0224A1DC
 	bne _0224A1EA
 	ldr r1, [r0, #8]
 	ldr r2, [r0, #0xc]
-	bl r2
+	blx r2
 _0224A1EA:
 	pop {r3, pc}
 	thumb_func_end ov41_0224A1DC

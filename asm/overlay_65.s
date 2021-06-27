@@ -1640,7 +1640,7 @@ ov65_0221CC0C: ; 0x0221CC0C
 	ldr r1, [r4, r1]
 	cmp r1, #0
 	beq _0221CC22
-	bl r1
+	blx r1
 	mov r1, #0x53
 	lsl r1, r1, #2
 	str r0, [r4, r1]

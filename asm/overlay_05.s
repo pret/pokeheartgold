@@ -82,7 +82,7 @@ _0221BA98:
 	add r0, r5, #0
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
-	bl r1
+	blx r1
 	cmp r0, #0
 	beq _0221BAAE
 	ldrb r1, [r5, r4]
@@ -4127,7 +4127,7 @@ ov05_0221DB4C: ; 0x0221DB4C
 	ldr r3, _0221DB6C ; =0x02110924
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bl sub_02015354
 	cmp r4, #0
@@ -4147,7 +4147,7 @@ ov05_0221DB70: ; 0x0221DB70
 	ldr r3, _0221DB90 ; =0x0211092C
 	mov r2, #1
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bl sub_02015394
 	cmp r4, #0

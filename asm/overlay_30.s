@@ -250,7 +250,7 @@ _0225D73E:
 	lsl r2, r1, #2
 	ldr r1, _0225D780 ; =0x0225DCA0
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	cmp r0, #1
 	bne _0225D778
 	ldr r2, [r4, #0x1c]

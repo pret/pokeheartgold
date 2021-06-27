@@ -22724,7 +22724,7 @@ _021F2750:
 	lsl r2, r1, #2
 	ldr r1, _021F27E0 ; =0x021F867C
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	cmp r0, #0
 	bne _021F2762
 	mov r0, #0
@@ -29444,7 +29444,7 @@ _021F5A16:
 	mul r3, r1
 	ldr r1, _021F5A4C ; =0x021F8A04
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 	add r0, r5, #0
 	bl ov101_021F5C44
 	pop {r3, r4, r5, pc}
@@ -29467,7 +29467,7 @@ ov101_021F5A50: ; 0x021F5A50
 	mul r3, r1
 	ldr r1, _021F5A98 ; =0x021F8A0C
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 _021F5A6C:
 	add r0, r4, #0
 	add r0, #0x5c
@@ -29662,7 +29662,7 @@ _021F5BB6:
 	mul r3, r1
 	ldr r1, _021F5C3C ; =0x021F8A08
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 	add r4, #0x5e
 	strb r0, [r4]
 	pop {r4, pc}
@@ -29675,7 +29675,7 @@ _021F5BCE:
 	mul r3, r1
 	ldr r1, _021F5C40 ; =0x021F8A0C
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 	add r0, r4, #0
 	mov r1, #0x10
 	add r0, #0x6a

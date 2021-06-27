@@ -84,7 +84,7 @@ ov102_021E77B8: ; 0x021E77B8
 	add r0, r4, #0
 	add r4, #0x28
 	add r1, r4, #0
-	bl r2
+	blx r2
 	mov r0, #0
 	pop {r4, pc}
 _021E77E6:
@@ -92,7 +92,7 @@ _021E77E6:
 	ldr r2, [r4, #0x20]
 	add r0, r4, #0
 	add r1, #0x1c
-	bl r2
+	blx r2
 	pop {r4, pc}
 	nop
 _021E77F4: .word 0x021D110C
@@ -476,7 +476,7 @@ ov102_021E7AA4: ; 0x021E7AA4
 	lsl r3, r2, #2
 	ldr r2, _021E7AB4 ; =0x021EC5E8
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	pop {r3, pc}
 	nop
 _021E7AB4: .word 0x021EC5E8
@@ -1989,7 +1989,7 @@ ov102_021E85E8: ; 0x021E85E8
 	lsl r2, r1, #2
 	ldr r1, _021E85FC ; =_021EC5D8
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	pop {r3, pc}
 	nop
 _021E85FC: .word _021EC5D8

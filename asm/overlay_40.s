@@ -724,7 +724,7 @@ _0222BD70:
 	lsl r2, r1, #2
 	ldr r1, _0222BF2C ; =0x022450F0
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #1
@@ -752,7 +752,7 @@ _0222BDA8:
 	lsl r2, r1, #2
 	ldr r1, _0222BF30 ; =0x02245108
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -764,7 +764,7 @@ _0222BDC0:
 	lsl r2, r1, #2
 	ldr r1, _0222BF34 ; =0x02245140
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -776,7 +776,7 @@ _0222BDD8:
 	lsl r2, r1, #2
 	ldr r1, _0222BF38 ; =0x02245168
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -788,7 +788,7 @@ _0222BDF0:
 	lsl r2, r1, #2
 	ldr r1, _0222BF3C ; =0x02245220
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -800,7 +800,7 @@ _0222BE08:
 	lsl r2, r1, #2
 	ldr r1, _0222BF40 ; =0x02245238
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -812,7 +812,7 @@ _0222BE20:
 	lsl r2, r1, #2
 	ldr r1, _0222BF44 ; =0x0224533C
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -824,7 +824,7 @@ _0222BE38:
 	lsl r2, r1, #2
 	ldr r1, _0222BF48 ; =0x02245368
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -836,7 +836,7 @@ _0222BE50:
 	lsl r2, r1, #2
 	ldr r1, _0222BF4C ; =0x02245470
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -848,7 +848,7 @@ _0222BE68:
 	lsl r2, r1, #2
 	ldr r1, _0222BF50 ; =0x022455F4
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -860,7 +860,7 @@ _0222BE80:
 	lsl r2, r1, #2
 	ldr r1, _0222BF50 ; =0x022455F4
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -872,7 +872,7 @@ _0222BE98:
 	lsl r2, r1, #2
 	ldr r1, _0222BF54 ; =0x02245B98
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -884,7 +884,7 @@ _0222BEB0:
 	lsl r2, r1, #2
 	ldr r1, _0222BF58 ; =0x02245B44
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -896,7 +896,7 @@ _0222BEC8:
 	lsl r2, r1, #2
 	ldr r1, _0222BF5C ; =0x02245B30
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -914,7 +914,7 @@ _0222BEEC:
 	lsl r2, r1, #2
 	ldr r1, _0222BF60 ; =0x02245CA8
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -46872,7 +46872,7 @@ ov40_02243538: ; 0x02243538
 	lsl r2, r1, #2
 	ldr r1, _02243558 ; =0x02245C18
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r5, r0, #0
 	bne _02243554
 	add r0, r4, #0

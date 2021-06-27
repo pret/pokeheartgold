@@ -1019,7 +1019,7 @@ _022277E4:
 	sub r1, #0xc
 	add r0, r4, #0
 	add r1, r4, r1
-	bl r2
+	blx r2
 	cmp r0, #1
 	bne _02227836
 	ldr r0, _022278CC ; =0x0000040C
@@ -1034,7 +1034,7 @@ _022277E4:
 	ldr r0, [r4, r1]
 	add r1, #0x2c
 	add r1, r4, r1
-	bl r2
+	blx r2
 	mov r0, #1
 	mov r1, #0
 	lsl r0, r0, #0xa
@@ -1067,7 +1067,7 @@ _02227836:
 	ldr r2, [r2, r3]
 	add r0, r4, #0
 	add r1, r4, r1
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _022278C2
 	cmp r0, #1
@@ -1748,7 +1748,7 @@ ov39_02227D50: ; 0x02227D50
 	add r2, r0, #0
 	ldr r0, [r2, #8]
 	ldr r2, [r2, #4]
-	bl r2
+	blx r2
 	pop {r3, pc}
 	thumb_func_end ov39_02227D50
 
@@ -2577,7 +2577,7 @@ _02228330:
 	ldr r1, _0222836C ; =0x0222AA20
 	lsl r2, r6, #2
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldr r1, [r4, #8]
 	cmp r6, r1
 	beq _02228352

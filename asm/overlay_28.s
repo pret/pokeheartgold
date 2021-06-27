@@ -1769,7 +1769,7 @@ _0225E2EA:
 	lsl r2, r1, #2
 	ldr r1, _0225E318 ; =0x0225EAAC
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldr r0, [sp, #4]
 	add r4, #0xc
 	add r0, #0xc
@@ -2035,7 +2035,7 @@ _0225E4BC:
 	lsl r2, r1, #2
 	ldr r1, _0225E518 ; =0x0225EAAC
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldr r0, [sp]
 	add r4, #0xc
 	add r0, r0, #1

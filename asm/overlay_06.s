@@ -153,7 +153,7 @@ ov06_0221BB14: ; 0x0221BB14
 	ldr r3, _0221BB2C ; =0x02110924
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bl sub_02015354
 	lsl r0, r4, #0x10
@@ -169,7 +169,7 @@ ov06_0221BB30: ; 0x0221BB30
 	ldr r3, _0221BB48 ; =0x0211092C
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bl sub_02015394
 	lsl r0, r4, #0x10

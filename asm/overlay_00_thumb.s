@@ -837,7 +837,7 @@ _021E5F96:
 	mov r0, #0
 	add r1, r5, #0
 	lsr r2, r2, #0x10
-	bl r3
+	blx r3
 _021E5FB4:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -982,7 +982,7 @@ _021E60BE:
 	mov r0, #0
 	add r1, r5, #0
 	lsr r2, r2, #0x10
-	bl r3
+	blx r3
 _021E60D4:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -1079,7 +1079,7 @@ _021E6174:
 	ldr r3, _021E61A4 ; =0x00000FA8
 	lsr r2, r2, #0x10
 	ldr r3, [r4, r3]
-	bl r3
+	blx r3
 _021E6194:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -1407,7 +1407,7 @@ _021E63F4:
 	ldr r1, [r4, r2]
 	sub r2, r2, #4
 	ldr r2, [r3, r2]
-	bl r2
+	blx r2
 _021E6412:
 	pop {r4, pc}
 	.align 2, 0
@@ -1547,7 +1547,7 @@ _021E64E2:
 	ldr r0, [sp]
 	add r1, r5, #0
 	lsr r2, r2, #0x10
-	bl r3
+	blx r3
 	b _021E6536
 _021E651E:
 	ldr r0, _021E6544 ; =_0221A680
@@ -1561,7 +1561,7 @@ _021E651E:
 	ldr r0, [sp]
 	add r1, r5, #0
 	lsr r2, r2, #0x10
-	bl r3
+	blx r3
 _021E6536:
 	mov r0, #0
 	add r1, r5, #0
@@ -1630,7 +1630,7 @@ _021E65A8:
 	add r1, r1, #4
 	ldr r1, [r3, r1]
 	add r0, r4, #0
-	bl r2
+	blx r2
 _021E65BC:
 	pop {r4, r5, r6, pc}
 	nop
@@ -1844,7 +1844,7 @@ _021E6744:
 	beq _021E6762
 	ldr r0, [sp, #4]
 	neg r0, r0
-	bl r1
+	blx r1
 _021E6762:
 	ldr r0, _021E6784 ; =_0221A680
 	ldr r1, [r0]
@@ -2891,7 +2891,7 @@ _021E6F08:
 	cmp r1, #0
 	beq _021E6F1E
 	add r0, r5, #0
-	bl r1
+	blx r1
 	cmp r0, #0
 	bne _021E6F1E
 	mov r4, #1
@@ -3009,7 +3009,7 @@ ov00_021E6FE0: ; 0x021E6FE0
 	lsl r0, r0, #0x10
 	ldr r1, [r3, r1]
 	lsr r0, r0, #0x10
-	bl r2
+	blx r2
 _021E7000:
 	pop {r3, pc}
 	nop
@@ -4389,7 +4389,7 @@ ov00_021E7A30: ; 0x021E7A30
 	cmp r4, #0
 	str r1, [r0, #4]
 	beq _021E7A8C
-	bl r4
+	blx r4
 _021E7A8C:
 	pop {r4, pc}
 	nop

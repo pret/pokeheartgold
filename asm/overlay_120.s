@@ -964,7 +964,7 @@ ov120_0225F704: ; 0x0225F704
 	add r0, r1, #0
 	add r1, r2, #4
 	ldr r2, [r2]
-	bl r2
+	blx r2
 	pop {r3, pc}
 	.align 2, 0
 	thumb_func_end ov120_0225F704

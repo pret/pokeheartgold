@@ -3312,7 +3312,7 @@ ov93_02261538: ; 0x02261538
 	lsl r4, r3, #2
 	ldr r3, _02261548 ; =0x02262C94
 	ldr r3, [r3, r4]
-	bl r3
+	blx r3
 	pop {r4, pc}
 	nop
 _02261548: .word 0x02262C94
@@ -5755,7 +5755,7 @@ ov93_022627C0: ; 0x022627C0
 	ldr r2, [r2, r3]
 	cmp r2, #0
 	beq _022627E0
-	bl r2
+	blx r2
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x14

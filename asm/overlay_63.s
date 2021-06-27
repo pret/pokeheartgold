@@ -164,7 +164,7 @@ ov63_0221BF88: ; 0x0221BF88
 	lsl r2, r1, #2
 	ldr r1, _0221BFB8 ; =0x0221FD18
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldr r1, _0221BFB4 ; =0x0001304C
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -200,7 +200,7 @@ ov63_0221BFCC: ; 0x0221BFCC
 	cmp r1, #0
 	beq _0221BFE2
 	add r0, r4, #0
-	bl r1
+	blx r1
 	cmp r0, #0
 	bne _0221BFE2
 	mov r0, #0
@@ -5254,7 +5254,7 @@ ov63_0221E8FC: ; 0x0221E8FC
 	cmp r1, #0
 	beq _0221E912
 	add r0, r4, #0
-	bl r1
+	blx r1
 	cmp r0, #0
 	bne _0221E912
 	mov r0, #0

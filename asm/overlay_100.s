@@ -164,7 +164,7 @@ _021E5A14:
 	cmp r1, #0
 	beq _021E5A2E
 	ldr r0, [r5, #0x64]
-	bl r1
+	blx r1
 _021E5A2E:
 	mov r0, #0
 	mvn r0, r0
@@ -1663,7 +1663,7 @@ ov100_021E65F4: ; 0x021E65F4
 	cmp r2, #0
 	beq _021E6602
 	ldr r1, [r4, #0x64]
-	bl r2
+	blx r2
 _021E6602:
 	ldr r0, [r4, #0x78]
 	cmp r0, #0

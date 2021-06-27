@@ -675,7 +675,7 @@ _0222751C:
 	beq _02227532
 	add r0, r5, #0
 	add r1, r6, #0
-	bl r2
+	blx r2
 _02227532:
 	pop {r4, r5, r6, pc}
 	.align 2, 0
@@ -1746,7 +1746,7 @@ ov42_02227D30: ; 0x02227D30
 	ldr r1, [r1, r2]
 	cmp r1, #0
 	beq _02227D40
-	bl r1
+	blx r1
 _02227D40:
 	pop {r3, pc}
 	nop
@@ -2984,7 +2984,7 @@ ov42_02228548: ; 0x02228548
 	lsl r5, r3, #2
 	ldr r3, _02228570 ; =0x02229E14
 	ldr r3, [r3, r5]
-	bl r3
+	blx r3
 	mov r0, #0
 	strh r0, [r4, #0x16]
 	pop {r3, r4, r5, pc}
@@ -3003,7 +3003,7 @@ ov42_02228574: ; 0x02228574
 	ldr r1, _022285A0 ; =0x02229E44
 	add r0, r4, #0
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldrh r1, [r4, #0x16]
 	add r1, r1, #1
 	strh r1, [r4, #0x16]
@@ -3944,7 +3944,7 @@ _02228CBE:
 	ldr r4, _02228CD8 ; =0x02229E74
 	add r1, r7, #0
 	ldr r4, [r4, r5]
-	bl r4
+	blx r4
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

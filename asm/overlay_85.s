@@ -194,7 +194,7 @@ _021E5ABA:
 	add r0, r5, #0
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
-	bl r1
+	blx r1
 	cmp r0, #1
 	beq _021E5ABA
 	cmp r0, #2
@@ -4531,7 +4531,7 @@ _021E7B94:
 	add r0, r5, #0
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
-	bl r1
+	blx r1
 	cmp r0, #1
 	beq _021E7B94
 	cmp r0, #2
@@ -6661,7 +6661,7 @@ _021E8A7E:
 	cmp r2, #0
 	beq _021E8A94
 	add r0, r4, #0
-	bl r2
+	blx r2
 	str r0, [r4]
 _021E8A94:
 	ldr r0, [r4, #0x10]
@@ -6699,7 +6699,7 @@ _021E8ACC:
 	cmp r2, #0
 	beq _021E8AF0
 	add r0, r4, #0
-	bl r2
+	blx r2
 	str r0, [r4]
 	b _021E8AF0
 _021E8AE4:

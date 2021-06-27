@@ -933,7 +933,7 @@ _02237FEC:
 	ldr r2, _02238060 ; =0x0223B654
 	add r0, r5, #0
 	ldr r2, [r2, r6]
-	bl r2
+	blx r2
 	str r0, [r4]
 	b _02238044
 _02238000:
@@ -951,7 +951,7 @@ _0223800E:
 	ldr r2, _02238064 ; =0x0223B658
 	add r0, r5, #0
 	ldr r2, [r2, r6]
-	bl r2
+	blx r2
 	str r0, [r4]
 	b _02238044
 _02238022:
@@ -966,7 +966,7 @@ _02238022:
 	ldr r1, [r4]
 	ldr r2, [r2, r6]
 	add r0, r5, #0
-	bl r2
+	blx r2
 	str r0, [r4]
 	b _02238044
 _02238040:
@@ -2059,7 +2059,7 @@ ov72_0223894C: ; 0x0223894C
 	lsl r2, r4, #2
 	ldr r1, [r1, r2]
 	add r0, r5, #0
-	bl r1
+	blx r1
 	ldr r1, [r5, #0x1c]
 	cmp r4, r1
 	beq _02238976
@@ -5715,7 +5715,7 @@ ov72_0223A588: ; 0x0223A588
 	lsl r2, r1, #2
 	ldr r1, _0223A5AC ; =0x0223B744
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	cmp r0, #1
 	bne _0223A5A2
 	ldr r0, _0223A5B0 ; =0x0000130E
@@ -7000,7 +7000,7 @@ ov72_0223AF48: ; 0x0223AF48
 	lsl r2, r1, #2
 	ldr r1, _0223AF6C ; =0x0223B7FC
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	cmp r0, #1
 	bne _0223AF66
 	add r4, #0x33

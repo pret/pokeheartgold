@@ -1025,7 +1025,7 @@ _0222A634:
 	beq _0222A65A
 	ldr r3, _0222A688 ; =0x022368A0
 	str r2, [r3]
-	bl r6
+	blx r6
 	str r0, [r5]
 	b _0222A65A
 _0222A64E:
@@ -12587,7 +12587,7 @@ _022302AE:
 	lsl r3, r2, #2
 	ldr r2, _022302FC ; =0x02236680
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -16393,7 +16393,7 @@ _02232166:
 	ldr r2, [r4, r2]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl r2
+	blx r2
 	cmp r0, #1
 	bne _02232186
 	add r0, r5, #0
@@ -16428,7 +16428,7 @@ _022321A2:
 	ldr r2, [r4, r2]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl r2
+	blx r2
 _022321B8:
 	add r6, r6, #1
 	add r4, #0x1c
@@ -18397,7 +18397,7 @@ _02232FF8:
 	ldr r3, _022330A0 ; =0x022365B8
 	mov r2, #0x67
 	ldr r3, [r3, r6]
-	bl r3
+	blx r3
 	add r6, r0, #0
 	b _0223302E
 _0223300C:
@@ -18408,7 +18408,7 @@ _0223300C:
 	ldr r3, _022330A4 ; =0x02236540
 	mov r2, #0x67
 	ldr r3, [r3, r6]
-	bl r3
+	blx r3
 	add r6, r0, #0
 	bl sub_02034420
 	cmp r0, #1
@@ -20705,7 +20705,7 @@ _022341CE:
 	lsl r3, r2, #2
 	ldr r2, _02234200 ; =0x02236464
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	add r6, r6, #1
 	add r4, #0xc
 	add r5, #0xc

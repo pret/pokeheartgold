@@ -1873,7 +1873,7 @@ ov03_02254D64: ; 0x02254D64
 	ldr r2, [r2, #0x6c]
 	cmp r2, #0
 	beq _02254D72
-	bl r2
+	blx r2
 _02254D72:
 	pop {r3, pc}
 	.align 2, 0
@@ -9405,7 +9405,7 @@ ov03_02258894: ; 0x02258894
 	mov r0, #1
 	pop {r3, pc}
 _022588A8:
-	bl r1
+	blx r1
 	mov r0, #0
 	pop {r3, pc}
 	.align 2, 0

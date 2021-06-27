@@ -4459,7 +4459,7 @@ ov15_021FB654: ; 0x021FB654
 	mov r1, #0x7f
 	lsl r1, r1, #4
 	ldr r1, [r2, r1]
-	bl r1
+	blx r1
 	pop {r4, pc}
 	nop
 _021FB67C: .word 0x00000948
@@ -4493,7 +4493,7 @@ ov15_021FB680: ; 0x021FB680
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x70]
-	bl r1
+	blx r1
 	add r3, r0, #0
 	beq _021FB6EE
 	mov r2, #0x8f
@@ -4672,7 +4672,7 @@ ov15_021FB820: ; 0x021FB820
 	push {r3, lr}
 	ldr r1, _021FB82C ; =0x0000067C
 	ldr r1, [r0, r1]
-	bl r1
+	blx r1
 	pop {r3, pc}
 	nop
 _021FB82C: .word 0x0000067C

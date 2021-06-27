@@ -4640,7 +4640,7 @@ _0225C46C:
 	lsl r2, r1, #2
 	ldr r1, _0225C4A8 ; =0x0225D4D4
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	cmp r0, #1
 	bne _0225C496
 	ldr r2, [r4, #0x24]
@@ -5400,7 +5400,7 @@ ov27_0225CA14: ; 0x0225CA14
 	sub r1, #8
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
-	bl r2
+	blx r2
 _0225CA5A:
 	ldr r1, _0225CA64 ; =0x0000EEEE
 	ldr r0, [r4, #4]
@@ -5484,7 +5484,7 @@ ov27_0225CA98: ; 0x0225CA98
 	sub r1, #8
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
-	bl r2
+	blx r2
 	b _0225CC80
 _0225CAF6:
 	ldr r0, _0225CC8C ; =0x021D110C
@@ -5521,7 +5521,7 @@ _0225CAF6:
 	sub r1, #8
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
-	bl r2
+	blx r2
 	b _0225CC80
 _0225CB44:
 	mov r1, #0x80
@@ -5559,7 +5559,7 @@ _0225CB62:
 	sub r1, #8
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
-	bl r2
+	blx r2
 	b _0225CC80
 _0225CB90:
 	mov r1, #0x20
@@ -5594,7 +5594,7 @@ _0225CB90:
 	sub r1, #8
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
-	bl r2
+	blx r2
 	b _0225CC80
 _0225CBDA:
 	mov r1, #0x10
@@ -5629,7 +5629,7 @@ _0225CBDA:
 	sub r1, #8
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
-	bl r2
+	blx r2
 	b _0225CC80
 _0225CC24:
 	mov r1, #1

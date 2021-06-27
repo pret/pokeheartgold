@@ -6633,7 +6633,7 @@ _02248DFC:
 	add r0, r5, #0
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
-	bl r1
+	blx r1
 	cmp r0, #1
 	beq _02248DFC
 	pop {r3, r4, r5, pc}
@@ -7622,7 +7622,7 @@ _0224958A:
 	add r0, r5, #0
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
-	bl r1
+	blx r1
 	cmp r0, #1
 	beq _0224958A
 	ldr r0, [r5, #0x10]
@@ -8190,7 +8190,7 @@ _0224998A:
 	add r0, r5, #0
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
-	bl r1
+	blx r1
 	cmp r0, #1
 	beq _0224998A
 	ldr r0, [r5, #0x10]
@@ -8221,7 +8221,7 @@ _022499BE:
 	add r0, r5, #0
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
-	bl r1
+	blx r1
 	cmp r0, #1
 	beq _022499BE
 	ldr r0, [r5, #0x10]
@@ -10685,7 +10685,7 @@ _0224AC10:
 	add r0, r5, #0
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
-	bl r1
+	blx r1
 	cmp r0, #1
 	beq _0224AC10
 	pop {r3, r4, r5, pc}
@@ -11781,7 +11781,7 @@ _0224B462:
 	add r0, r5, #0
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
-	bl r1
+	blx r1
 	cmp r0, #1
 	beq _0224B462
 	ldr r0, [r5, #0x10]
@@ -13317,7 +13317,7 @@ _0224C032:
 	add r1, r7, #0
 	ldr r3, [r3, r4]
 	add r2, r5, #0
-	bl r3
+	blx r3
 	add r4, r0, #0
 	cmp r4, #2
 	bne _0224C04E
@@ -13553,7 +13553,7 @@ _0224C20C:
 	ldr r3, [r7, r3]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl r3
+	blx r3
 	cmp r0, #2
 	bne _0224C228
 	add r0, r4, #0
@@ -13865,7 +13865,7 @@ _0224C46E:
 	add r1, r6, #0
 	ldr r3, [r3, r5]
 	add r2, r4, #0
-	bl r3
+	blx r3
 	add r5, r0, #0
 	b _0224C494
 _0224C482:
@@ -13876,7 +13876,7 @@ _0224C482:
 	add r1, r6, #0
 	ldr r3, [r3, r5]
 	add r2, r4, #0
-	bl r3
+	blx r3
 	add r5, r0, #0
 _0224C494:
 	cmp r5, #2
@@ -14088,7 +14088,7 @@ _0224C61A:
 	add r1, r6, #0
 	ldr r3, [r3, r5]
 	add r2, r4, #0
-	bl r3
+	blx r3
 	add r5, r0, #0
 	b _0224C640
 _0224C62E:
@@ -14099,7 +14099,7 @@ _0224C62E:
 	add r1, r6, #0
 	ldr r3, [r3, r5]
 	add r2, r4, #0
-	bl r3
+	blx r3
 	add r5, r0, #0
 _0224C640:
 	cmp r5, #2
@@ -17619,7 +17619,7 @@ _0224E032:
 	lsl r2, r1, #2
 	ldr r1, _0224E06C ; =0x02253A34
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	cmp r0, #1
 	bne _0224E068
 	ldr r0, [r4, #8]
@@ -17632,7 +17632,7 @@ _0224E04A:
 	lsl r2, r1, #2
 	ldr r1, _0224E070 ; =0x02253A04
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldr r0, [r4, #4]
 	mov r1, #1
 	strh r1, [r0]
@@ -17669,7 +17669,7 @@ _0224E08C:
 	lsl r2, r4, #2
 	ldr r1, [r1, r2]
 	add r0, r7, #0
-	bl r1
+	blx r1
 	str r0, [r6]
 	str r5, [r6, #4]
 	ldr r0, _0224E0B8 ; =ov02_0224E020

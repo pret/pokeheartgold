@@ -183,7 +183,7 @@ _021E5D5A:
 	cmp r1, #0
 	beq _021E5D6C
 	add r0, r4, #0
-	bl r1
+	blx r1
 _021E5D6C:
 	mov r0, #0
 	strb r0, [r4, #0xa]
@@ -204,7 +204,7 @@ _021E5D80:
 	cmp r1, #0
 	beq _021E5D92
 	add r0, r4, #0
-	bl r1
+	blx r1
 _021E5D92:
 	mov r0, #1
 	strb r0, [r4, #0xa]
@@ -687,12 +687,12 @@ _021E6118:
 	bne _021E6136
 	ldr r1, [r5, #0x34]
 	add r0, r5, #0
-	bl r1
+	blx r1
 	b _021E613C
 _021E6136:
 	ldr r1, [r5, #0x38]
 	add r0, r5, #0
-	bl r1
+	blx r1
 _021E613C:
 	strb r6, [r5, #0xa]
 _021E613E:
@@ -921,7 +921,7 @@ _021E6306:
 	lsl r2, r1, #2
 	ldr r1, _021E63BC ; =0x021E6DE4
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	cmp r0, #0
 	bne _021E631C
 	add sp, #0xc

@@ -2442,14 +2442,14 @@ ov57_02238BCC: ; 0x02238BCC
 	ldr r3, [r3]
 	lsl r0, r0, #0xe
 	add r2, r1, #0
-	bl r3
+	blx r3
 	ldr r3, _02238C08 ; =0x0211092C
 	mov r1, #0
 	add r4, r0, #0
 	ldr r3, [r3]
 	mov r0, #0x80
 	add r2, r1, #0
-	bl r3
+	blx r3
 	add r5, r0, #0
 	cmp r4, #0
 	bne _02238BF4
@@ -5128,7 +5128,7 @@ ov57_0223A0E0: ; 0x0223A0E0
 	lsl r2, r1, #2
 	ldr r1, _0223A100 ; =0x0223BEB8
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r4, #0xe0
 	add r5, r0, #0
 	ldr r0, [r4]
@@ -5315,7 +5315,7 @@ _0223A292:
 	cmp r1, #0
 	beq _0223A300
 	add r0, r4, #0
-	bl r1
+	blx r1
 	cmp r0, #1
 	beq _0223A2A6
 	add r0, r4, #0

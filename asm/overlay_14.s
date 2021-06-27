@@ -96,7 +96,7 @@ ov14_021E59AC: ; 0x021E59AC
 	cmp r1, #0
 	beq _021E59C6
 	add r0, r4, #0
-	bl r1
+	blx r1
 	cmp r0, #0
 	bne _021E59C6
 	ldr r0, [r4, #0x34]
@@ -11371,7 +11371,7 @@ ov14_021EAF8C: ; 0x021EAF8C
 	lsl r2, r1, #2
 	ldr r1, _021EAFA8 ; =0x021F7D9C
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	str r0, [r4]
 	cmp r0, #0xb3
 	beq _021EAFA4
@@ -11622,7 +11622,7 @@ ov14_021EB1C0: ; 0x021EB1C0
 	lsl r2, r1, #2
 	ldr r1, _021EB1DC ; =0x021F7D9C
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	pop {r3, pc}
 _021EB1D6:
 	mov r0, #5
@@ -11685,7 +11685,7 @@ _021EB230:
 	lsl r2, r1, #3
 	ldr r1, _021EB274 ; =0x021F7D74
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	pop {r4, pc}
 _021EB24C:
 	ldr r1, [r4, #0x34]
@@ -11699,7 +11699,7 @@ _021EB24C:
 	lsl r2, r1, #3
 	ldr r1, _021EB278 ; =0x021F7D78
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	pop {r4, pc}
 _021EB268:
 	mov r0, #7
@@ -11734,7 +11734,7 @@ ov14_021EB290: ; 0x021EB290
 	mul r3, r1
 	ldr r1, _021EB2A4 ; =0x021F7D50
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 	mov r0, #0xa
 	pop {r3, pc}
 	.align 2, 0
@@ -11761,7 +11761,7 @@ _021EB2BA:
 	mul r3, r1
 	ldr r1, _021EB2E4 ; =0x021F7D54
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 	ldrb r1, [r4, #0x1e]
 	mov r0, #0xc
 	add r2, r1, #0

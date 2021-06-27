@@ -1245,7 +1245,7 @@ ov103_021ED2D4: ; 0x021ED2D4
 	lsl r2, r1, #2
 	ldr r1, _021ED310 ; =0x021EECA8
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	str r0, [r4]
 	cmp r0, #0x19
 	bne _021ED2EE
@@ -1489,7 +1489,7 @@ _021ED4EE:
 	lsl r2, r1, #3
 	ldr r1, _021ED534 ; =0x021EEC68
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	pop {r4, pc}
 _021ED50E:
 	mov r0, #0x8e
@@ -1505,7 +1505,7 @@ _021ED50E:
 	lsl r2, r1, #3
 	ldr r1, _021ED538 ; =0x021EEC6C
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	pop {r4, pc}
 _021ED52E:
 	mov r0, #4
@@ -1538,7 +1538,7 @@ ov103_021ED550: ; 0x021ED550
 	mul r3, r1
 	ldr r1, _021ED564 ; =0x021EEC78
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 	mov r0, #7
 	pop {r3, pc}
 	.align 2, 0
@@ -1565,7 +1565,7 @@ _021ED57A:
 	ldr r1, _021ED5A0 ; =0x021EEC7C
 	add r0, r4, #0
 	ldr r1, [r1, r3]
-	bl r1
+	blx r1
 	str r0, [r4, #0x28]
 	ldr r1, [r4, #0x18]
 	mov r0, #0xc

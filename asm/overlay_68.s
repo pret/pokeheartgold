@@ -983,7 +983,7 @@ _021E60F0:
 	lsl r2, r1, #3
 	ldr r1, _021E6144 ; =0x021E7D3C
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r4, r0, #0
 	mov r0, #0
 	bl ov68_021E7BC8
@@ -995,7 +995,7 @@ _021E6108:
 	lsl r2, r1, #3
 	ldr r1, _021E6148 ; =0x021E7D40
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r4, r0, #0
 	mov r0, #0
 	bl ov68_021E7BC8

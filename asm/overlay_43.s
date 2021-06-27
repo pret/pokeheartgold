@@ -4359,7 +4359,7 @@ _0222C0CA:
 	ldrsh r3, [r5, r3]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl r6
+	blx r6
 _0222C130:
 	mov r0, #0xb0
 	ldrsh r0, [r5, r0]
@@ -8297,7 +8297,7 @@ ov43_0222DF4C: ; 0x0222DF4C
 	ldr r4, [r4, r5]
 	add r0, r6, #0
 	add r1, r7, #0
-	bl r4
+	blx r4
 	pop {r3, r4, r5, r6, r7, pc}
 _0222DF74:
 	add r2, r5, #0
@@ -8307,7 +8307,7 @@ _0222DF74:
 	ldr r4, [r4, r5]
 	add r0, r6, #0
 	add r1, r7, #0
-	bl r4
+	blx r4
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222DF88: .word 0x0222F12C

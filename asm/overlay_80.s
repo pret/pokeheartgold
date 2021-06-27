@@ -1744,7 +1744,7 @@ _0222ABB0:
 	ldr r1, [r1]
 	cmp r1, #0
 	beq _0222ABCE
-	bl r1
+	blx r1
 	cmp r0, #1
 	bne _0222ABCA
 	mov r0, #1
@@ -1781,7 +1781,7 @@ _0222ABF6:
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
 	add r0, r4, #0
-	bl r1
+	blx r1
 	cmp r0, #1
 	bne _0222ABD2
 _0222AC04:
@@ -2029,7 +2029,7 @@ ov80_0222AD9C: ; 0x0222AD9C
 	ldr r2, [r2, r3]
 	cmp r2, #0
 	beq _0222ADAC
-	bl r2
+	blx r2
 _0222ADAC:
 	pop {r3, pc}
 	nop
@@ -2045,7 +2045,7 @@ ov80_0222ADB4: ; 0x0222ADB4
 	ldr r2, [r2, r3]
 	cmp r2, #0
 	beq _0222ADC4
-	bl r2
+	blx r2
 _0222ADC4:
 	pop {r3, pc}
 	nop
@@ -8493,7 +8493,7 @@ ov80_0222DCF0: ; 0x0222DCF0
 	lsl r2, r1, #2
 	ldr r1, _0222DD38 ; =0x0223B9EC
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r6, r0, #0
 	bne _0222DD2C
 	mov r0, #0
@@ -22907,7 +22907,7 @@ _02234EB8:
 	add r2, r0, #0
 	ldr r3, [r3, r4]
 	add r0, r5, #0
-	bl r3
+	blx r3
 	pop {r4, r5, r6, pc}
 	.align 2, 0
 _02234EC8: .word 0x0223DCB8
@@ -32953,7 +32953,7 @@ ov80_02239AB0: ; 0x02239AB0
 	ldr r3, _02239AD0 ; =0x02110924
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bne _02239AC2
 	bl GF_AssertFail
@@ -32973,7 +32973,7 @@ ov80_02239AD4: ; 0x02239AD4
 	ldr r3, _02239AF4 ; =0x0211092C
 	mov r2, #1
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bne _02239AE6
 	bl GF_AssertFail
@@ -33160,7 +33160,7 @@ ov80_02239C28: ; 0x02239C28
 	ldr r2, [r2, r3]
 	cmp r2, #0
 	beq _02239C4E
-	bl r2
+	blx r2
 	cmp r0, #1
 	bne _02239C4E
 	add r4, #0x26
@@ -36343,7 +36343,7 @@ ov80_0223B468: ; 0x0223B468
 	str r0, [r1, #0xc]
 	ldr r0, [r1, #0x18]
 	ldr r1, [r1, #0x10]
-	bl r1
+	blx r1
 	pop {r3, pc}
 _0223B47C:
 	bl sub_02014AA0
@@ -36363,7 +36363,7 @@ ov80_0223B484: ; 0x0223B484
 	beq _0223B49E
 	ldr r0, [r4, #0x18]
 	ldr r1, [r4, #0x14]
-	bl r1
+	blx r1
 	mov r0, #0
 	str r0, [r4, #0xc]
 _0223B49E:

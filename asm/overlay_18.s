@@ -6362,7 +6362,7 @@ ov18_021E8BF4: ; 0x021E8BF4
 	lsl r2, r1, #2
 	ldr r1, _021E8C28 ; =0x021F9C3C
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	str r0, [r4]
 	cmp r0, #0x5d
 	bne _021E8C0E
@@ -30677,7 +30677,7 @@ ov18_021F516C: ; 0x021F516C
 	lsl r2, r1, #2
 	ldr r1, _021F517C ; =0x021FA588
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	pop {r3, pc}
 	nop
 _021F517C: .word 0x021FA588

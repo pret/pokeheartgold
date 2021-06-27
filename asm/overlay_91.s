@@ -3144,7 +3144,7 @@ _0225DCD6:
 	lsl r5, r3, #2
 	ldr r3, _0225DD1C ; =0x02261C58
 	ldr r3, [r3, r5]
-	bl r3
+	blx r3
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov91_0225DD24

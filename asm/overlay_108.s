@@ -1222,7 +1222,7 @@ _021E6256:
 	cmp r1, #0
 	beq _021E626A
 	add r0, r4, #0
-	bl r1
+	blx r1
 _021E626A:
 	add r0, r4, #0
 	bl ov108_021E61E8
@@ -1245,7 +1245,7 @@ _021E6282:
 	cmp r1, #0
 	beq _021E6296
 	add r0, r4, #0
-	bl r1
+	blx r1
 _021E6296:
 	add r0, r4, #0
 	bl ov108_021E6238
@@ -7055,16 +7055,16 @@ _021E90FA:
 	ldr r1, _021E913C ; =0x02110928
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
-	bl r1
+	blx r1
 	ldr r1, _021E913C ; =0x02110928
 	ldr r0, [sp]
 	ldr r1, [r1]
-	bl r1
+	blx r1
 	ldr r0, [r6, #0xc]
 	bl sub_020BE588
 	ldr r1, _021E9140 ; =0x02110930
 	ldr r1, [r1]
-	bl r1
+	blx r1
 _021E9124:
 	ldr r0, [r6]
 	cmp r0, #0

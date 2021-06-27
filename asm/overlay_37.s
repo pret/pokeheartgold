@@ -234,7 +234,7 @@ _021E5B02:
 	cmp r2, #0
 	beq _021E5B18
 	add r0, r4, #0
-	bl r2
+	blx r2
 	str r0, [r5]
 _021E5B18:
 	mov r0, #0x9e
@@ -272,7 +272,7 @@ _021E5B48:
 	cmp r0, #0
 	beq _021E5B74
 	add r0, r4, #0
-	bl r2
+	blx r2
 	str r0, [r5]
 	b _021E5B74
 _021E5B68:

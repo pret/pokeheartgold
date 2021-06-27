@@ -115,7 +115,7 @@ _021E59C6:
 	lsl r2, r1, #2
 	ldr r1, _021E59E0 ; =0x021E6D40
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	cmp r0, #0
 	beq _021E59DA
 	mov r0, #1

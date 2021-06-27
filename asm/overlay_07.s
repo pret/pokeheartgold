@@ -36,7 +36,7 @@ _0221BE48:
 	bl ov07_0221F8B0
 	add r1, r0, #0
 	add r0, r4, #0
-	bl r1
+	blx r1
 	add r0, r4, #0
 	add r0, #0x8d
 	ldrb r0, [r0]
@@ -749,7 +749,7 @@ _0221C3A4:
 	add r0, r4, #0
 	add r4, #0xbc
 	ldr r1, [r4]
-	bl r1
+	blx r1
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ov07_0221C394
@@ -1081,7 +1081,7 @@ ov07_0221C584: ; 0x0221C584
 	lsl r2, r1, #2
 	ldr r1, _0221C5C0 ; =0x02234C08
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	cmp r0, #0
 	bne _0221C5BE
 	ldr r0, [r4, #0x38]
@@ -2704,7 +2704,7 @@ _0221D134:
 	blt _0221D134
 _0221D142:
 	add r0, r4, #0
-	bl r7
+	blx r7
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov07_0221D0E8
 
@@ -4578,7 +4578,7 @@ _0221DEFE:
 	lsl r1, r1, #2
 	ldr r1, [r7, r1]
 	add r0, r5, #0
-	bl r1
+	blx r1
 _0221DF06:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -6439,7 +6439,7 @@ ov07_0221ED14: ; 0x0221ED14
 	lsl r3, r2, #2
 	ldr r2, _0221ED40 ; =0x02234BC0
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	cmp r0, #0
 	bne _0221ED3E
 	mov r0, #0x5f
@@ -7771,7 +7771,7 @@ _0221F6EC:
 	ldr r1, [r1]
 	ldr r2, [r2, r7]
 	ldr r3, [sp, #4]
-	bl r5
+	blx r5
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -12901,7 +12901,7 @@ ov07_02221C74: ; 0x02221C74
 	ldr r2, _02221C88 ; =0x022363A0
 	lsl r3, r3, #2
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	pop {r3, pc}
 	nop
 _02221C88: .word 0x022363A0
@@ -13244,7 +13244,7 @@ ov07_02221EEC: ; 0x02221EEC
 	ldr r2, _02221F00 ; =0x02236444
 	lsl r3, r3, #2
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	pop {r3, pc}
 	nop
 _02221F00: .word 0x02236444
@@ -14754,7 +14754,7 @@ _02222996:
 	add r1, #0x94
 	ldr r1, [r1]
 	add r0, r7, #0
-	bl r1
+	blx r1
 	ldr r1, [sp, #4]
 	cmp r0, #0
 	str r0, [r1]
@@ -14953,7 +14953,7 @@ ov07_02222AF8: ; 0x02222AF8
 	str r0, [r1, #0xc]
 	ldr r0, [r1, #0x18]
 	ldr r1, [r1, #0x10]
-	bl r1
+	blx r1
 	pop {r3, pc}
 _02222B0C:
 	bl sub_02014AA0
@@ -14973,7 +14973,7 @@ ov07_02222B14: ; 0x02222B14
 	beq _02222B2E
 	ldr r0, [r4, #0x18]
 	ldr r1, [r4, #0x14]
-	bl r1
+	blx r1
 	mov r0, #0
 	str r0, [r4, #0xc]
 _02222B2E:
@@ -47550,7 +47550,7 @@ ov07_02232F60: ; 0x02232F60
 	lsl r2, r1, #2
 	ldr r1, _02232F70 ; =0x022371B8
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	pop {r3, pc}
 	nop
 _02232F70: .word 0x022371B8
@@ -48446,7 +48446,7 @@ ov07_022335A0: ; 0x022335A0
 	lsl r2, r1, #2
 	ldr r1, _022335B0 ; =0x0223729C
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	pop {r3, pc}
 	nop
 _022335B0: .word 0x0223729C
@@ -49472,7 +49472,7 @@ _02233D8A:
 	lsl r2, r1, #2
 	ldr r1, _02233DB4 ; =0x022371A0
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	cmp r0, #0
 	bne _02233DA0
 	mov r0, #0

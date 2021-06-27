@@ -463,7 +463,7 @@ ov94_021E5CA0: ; 0x021E5CA0
 	ldr r3, _021E5CC0 ; =0x02110924
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bne _021E5CB2
 	bl GF_AssertFail
@@ -483,7 +483,7 @@ ov94_021E5CC4: ; 0x021E5CC4
 	ldr r3, _021E5CE4 ; =0x0211092C
 	mov r2, #1
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bne _021E5CD6
 	bl GF_AssertFail

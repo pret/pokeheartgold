@@ -60,7 +60,7 @@ _02258862:
 	add r0, r4, r0
 	add r1, r4, r1
 	add r2, r4, #0
-	bl r5
+	blx r5
 	ldr r0, _02258894 ; =ov47_02258A14
 	add r1, r4, #0
 	bl sub_0201A0FC
@@ -164,7 +164,7 @@ _02258930:
 	add r1, r7, r1
 	add r2, r7, #0
 	add r3, r7, r3
-	bl r5
+	blx r5
 	cmp r0, #1
 	bne _02258996
 	ldr r0, [r4]
@@ -231,7 +231,7 @@ ov47_022589A8: ; 0x022589A8
 	ldr r3, [r3, r6]
 	add r1, r4, r1
 	add r2, r4, #0
-	bl r3
+	blx r3
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	add r0, r4, r0

@@ -2396,7 +2396,7 @@ _021E6C78:
 	lsl r3, r2, #2
 	ldr r2, _021E6CF4 ; =0x021EB860
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _021E6CB2
 	ldr r1, _021E6CF0 ; =0x0000062B
@@ -9689,7 +9689,7 @@ ov60_021EA828: ; 0x021EA828
 	ldr r3, _021EA848 ; =0x02110924
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bl sub_02015354
 	cmp r4, #0
@@ -9709,7 +9709,7 @@ ov60_021EA84C: ; 0x021EA84C
 	ldr r3, _021EA86C ; =0x0211092C
 	mov r2, #1
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bne _021EA85E
 	bl GF_AssertFail

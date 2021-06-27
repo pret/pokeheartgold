@@ -33,7 +33,7 @@ _02259DA4:
 	cmp r1, #0
 	beq _02259DB4
 	ldr r0, [r0, #0x48]
-	bl r1
+	blx r1
 _02259DB4:
 	pop {r3, pc}
 	.align 2, 0

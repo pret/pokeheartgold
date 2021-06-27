@@ -9195,14 +9195,14 @@ ov59_0223C474: ; 0x0223C474
 	ldr r3, [r3]
 	lsl r0, r0, #0xe
 	add r2, r1, #0
-	bl r3
+	blx r3
 	ldr r3, _0223C4B0 ; =0x0211092C
 	mov r1, #0
 	add r4, r0, #0
 	ldr r3, [r3]
 	mov r0, #0xa0
 	add r2, r1, #0
-	bl r3
+	blx r3
 	add r5, r0, #0
 	cmp r4, #0
 	bne _0223C49C
@@ -9225,7 +9225,7 @@ ov59_0223C4B4: ; 0x0223C4B4
 	ldr r3, _0223C4CC ; =0x02110924
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bl sub_02015354
 	lsl r0, r4, #0x10
@@ -9241,7 +9241,7 @@ ov59_0223C4D0: ; 0x0223C4D0
 	ldr r3, _0223C4E8 ; =0x0211092C
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bl sub_02015394
 	lsl r0, r4, #0x10

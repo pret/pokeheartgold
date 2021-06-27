@@ -1013,7 +1013,7 @@ ov106_021E6080: ; 0x021E6080
 	lsl r2, r1, #2
 	ldr r1, _021E60AC ; =0x021E6E14
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldr r1, _021E60A8 ; =0x0000040C
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -1247,7 +1247,7 @@ ov106_021E6250: ; 0x021E6250
 	lsl r2, r1, #2
 	ldr r1, _021E627C ; =0x021E6ED4
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldr r1, _021E6278 ; =0x0000040C
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -1418,7 +1418,7 @@ ov106_021E63A4: ; 0x021E63A4
 	lsl r2, r1, #2
 	ldr r1, _021E63DC ; =0x021E6F34
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldr r1, _021E63D8 ; =0x0000040C
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -2146,7 +2146,7 @@ _021E69A2:
 	lsl r2, r2, #2
 	ldr r2, [r7, r2]
 	add r0, r6, #0
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _021E69DA
 	cmp r0, #1

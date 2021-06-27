@@ -2122,7 +2122,7 @@ ov93_0225D744: ; 0x0225D744
 	ldr r3, _0225D764 ; =0x02110924
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bne _0225D756
 	bl GF_AssertFail
@@ -2142,7 +2142,7 @@ ov93_0225D768: ; 0x0225D768
 	ldr r3, _0225D788 ; =0x0211092C
 	mov r2, #1
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bne _0225D77A
 	bl GF_AssertFail
@@ -4265,7 +4265,7 @@ _0225E786:
 	add r0, r5, #0
 	ldr r2, [r2, r3]
 	add r1, r4, #0
-	bl r2
+	blx r2
 	cmp r0, #1
 	bne _0225E7A4
 	ldr r0, [r4]

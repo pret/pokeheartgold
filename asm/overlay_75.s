@@ -118,7 +118,7 @@ _02246A44:
 	lsl r2, r1, #4
 	ldr r1, _02246AF0 ; =0x02249904
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x88
@@ -153,7 +153,7 @@ _02246A82:
 	lsl r2, r1, #4
 	ldr r1, _02246AF8 ; =0x02249908
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldr r0, [r4]
 	bl sub_02007278
 	add r0, r4, #0
@@ -1020,7 +1020,7 @@ _02247140:
 	ldr r1, _0224717C ; =0x02249B30
 	lsl r2, r6, #2
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	ldr r1, [r4, #8]
 	cmp r6, r1
 	beq _02247162

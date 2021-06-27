@@ -136,14 +136,14 @@ ov95_021E59F8: ; 0x021E59F8
 	ldr r3, [r3]
 	lsl r0, r0, #0xe
 	add r2, r1, #0
-	bl r3
+	blx r3
 	ldr r3, _021E5A34 ; =0x0211092C
 	mov r1, #0
 	add r4, r0, #0
 	ldr r3, [r3]
 	mov r0, #0x80
 	add r2, r1, #0
-	bl r3
+	blx r3
 	add r5, r0, #0
 	cmp r4, #0
 	bne _021E5A20
@@ -578,7 +578,7 @@ ov95_021E5D98: ; 0x021E5D98
 	ldr r3, _021E5DB0 ; =0x02110924
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bl sub_02015354
 	lsl r0, r4, #0x10
@@ -594,7 +594,7 @@ ov95_021E5DB4: ; 0x021E5DB4
 	ldr r3, _021E5DCC ; =0x0211092C
 	mov r2, #0
 	ldr r3, [r3]
-	bl r3
+	blx r3
 	add r4, r0, #0
 	bl sub_02015394
 	lsl r0, r4, #0x10
@@ -1289,7 +1289,7 @@ ov95_021E6300: ; 0x021E6300
 	lsl r2, r1, #2
 	ldr r1, _021E6310 ; =0x021E7810
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	pop {r3, pc}
 	nop
 _021E6310: .word 0x021E7810

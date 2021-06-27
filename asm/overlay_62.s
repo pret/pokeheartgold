@@ -176,7 +176,7 @@ ov62_021E5A6C: ; 0x021E5A6C
 	ldr r2, [r4, #4]
 	add r0, r4, #0
 	add r1, #8
-	bl r2
+	blx r2
 _021E5A82:
 	pop {r4, pc}
 	thumb_func_end ov62_021E5A6C

@@ -5844,7 +5844,7 @@ ov45_0222C828: ; 0x0222C828
 	lsl r3, r2, #2
 	ldr r2, _0222C838 ; =0x02254A60
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	pop {r3, pc}
 	.align 2, 0
 _0222C838: .word 0x02254A60
@@ -6715,7 +6715,7 @@ _0222CDF4:
 	ldr r3, [r4, r3]
 	add r0, r5, #0
 	add r2, r6, #0
-	bl r3
+	blx r3
 	pop {r4, r5, r6, pc}
 	nop
 _0222CE08: .word 0x02254E88
@@ -6735,7 +6735,7 @@ _0222CE1A:
 	add r0, r4, #4
 	ldr r1, [r1, r2]
 	add r0, r0, r2
-	bl r1
+	blx r1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _0222CE28: .word 0x02254E20
@@ -6756,7 +6756,7 @@ _0222CE3A:
 	ldr r2, [r2, r3]
 	add r0, r5, #0
 	add r1, r1, r3
-	bl r2
+	blx r2
 	add r5, #0x38
 	strb r4, [r5]
 	pop {r3, r4, r5, pc}
@@ -6779,7 +6779,7 @@ _0222CE62:
 	ldr r2, [r2, r3]
 	add r0, r4, #0
 	add r1, r1, r3
-	bl r2
+	blx r2
 	pop {r3, r4, r5, pc}
 	nop
 _0222CE74: .word 0x02254EBC
@@ -8977,7 +8977,7 @@ _0222DD8E:
 	ldr r2, [sp, #0xc]
 	ldr r4, [r4, r5]
 	add r3, r7, #0
-	bl r4
+	blx r4
 	add r4, r0, #0
 	b _0222DDCC
 _0222DDCA:
@@ -9014,7 +9014,7 @@ _0222DDF6:
 	ldr r2, _0222DE18 ; =0x02254BE8
 	add r1, r4, #0
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	pop {r3, r4, r5, pc}
 _0222DE0E:
 	bl GF_AssertFail
@@ -13388,7 +13388,7 @@ _0222FD06:
 	ldr r2, [r6, #0x20]
 	ldr r4, [r4, #0xc]
 	add r0, r5, #0
-	bl r4
+	blx r4
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222FD4C: .word 0x022577C0
@@ -13433,7 +13433,7 @@ _0222FD88:
 	add r0, r5, #0
 	ldr r1, [r2, #0x20]
 	ldr r2, [r2, #0x10]
-	bl r2
+	blx r2
 	ldr r0, _0222FDCC ; =0x022577C0
 	add r1, r5, #0
 	ldr r0, [r0]
@@ -13553,7 +13553,7 @@ _0222FE5C:
 	ldr r3, [r6, r3]
 	ldr r4, [r4, r5]
 	add r0, r7, #0
-	bl r4
+	blx r4
 _0222FE78:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -13681,7 +13681,7 @@ ov45_0222FF40: ; 0x0222FF40
 	add r0, r5, #0
 	ldr r2, [r3, #0x20]
 	ldr r3, [r3, #0x14]
-	bl r3
+	blx r3
 _0222FF74:
 	pop {r3, r4, r5, pc}
 	nop
@@ -13801,7 +13801,7 @@ ov45_02230050: ; 0x02230050
 	ldr r2, [r1]
 	ldr r1, [r2, #0x20]
 	ldr r2, [r2, #0x18]
-	bl r2
+	blx r2
 	pop {r3, pc}
 	nop
 _02230060: .word 0x022577C0
@@ -13825,7 +13825,7 @@ _02230076:
 	add r1, r2, #0
 	ldr r2, [r3, #0x20]
 	ldr r3, [r3, #0x1c]
-	bl r3
+	blx r3
 	pop {r3, pc}
 	nop
 _02230088: .word 0x022577C0
@@ -15348,7 +15348,7 @@ _02230B2E:
 	strh r6, [r0]
 	ldr r1, [r1, r2]
 	add r0, r5, #0
-	bl r1
+	blx r1
 	ldr r0, [r5, #4]
 	bl sub_022282F4
 	add r2, sp, #0
@@ -15541,7 +15541,7 @@ ov45_02230CB0: ; 0x02230CB0
 	lsl r2, r1, #2
 	ldr r1, _02230CD4 ; =0x02254F1C
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 _02230CD0:
 	pop {r3, pc}
 	nop

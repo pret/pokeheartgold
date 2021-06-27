@@ -294,7 +294,7 @@ ov71_02246BB8: ; 0x02246BB8
 	bne _02246BEC
 	ldr r1, _02246C3C ; =0x0224BBEC
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -307,7 +307,7 @@ _02246BEC:
 	ldr r0, [r4, r0]
 	ldr r2, [r2, r3]
 	add r1, r5, #0
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _02246C2C
 	ldr r1, [r4, #4]
@@ -317,7 +317,7 @@ _02246BEC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r1, r2]
-	bl r1
+	blx r1
 	mov r0, #0x55
 	mov r1, #0
 	lsl r0, r0, #2
@@ -2185,7 +2185,7 @@ ov71_02247990: ; 0x02247990
 	ldr r2, _022479C4 ; =0x0224BC64
 	add r1, r5, #4
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _022479B4
 	ldr r0, [r4]
@@ -2851,14 +2851,14 @@ ov71_02247ED0: ; 0x02247ED0
 	ldr r3, [r3]
 	lsl r0, r0, #0xe
 	add r2, r1, #0
-	bl r3
+	blx r3
 	ldr r3, _02247F90 ; =0x0211092C
 	add r4, r0, #0
 	ldr r3, [r3]
 	mov r0, #0x80
 	mov r1, #0
 	mov r2, #1
-	bl r3
+	blx r3
 	ldr r2, _02247F94 ; =0x7FFF0000
 	add r6, r0, #0
 	and r2, r4
@@ -3437,7 +3437,7 @@ ov71_022483AC: ; 0x022483AC
 	ldr r2, _022483E0 ; =0x0224BCFC
 	add r1, r5, #4
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _022483D0
 	ldr r0, [r4]
@@ -5638,7 +5638,7 @@ ov71_02249500: ; 0x02249500
 	ldr r2, _02249534 ; =0x0224BD7C
 	add r1, r5, #4
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _02249524
 	ldr r0, [r4]
@@ -6675,7 +6675,7 @@ ov71_02249D28: ; 0x02249D28
 	ldr r2, _02249D54 ; =0x0224BDE8
 	add r1, r5, #4
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _02249D4C
 	ldr r0, [r4]
@@ -7185,7 +7185,7 @@ ov71_0224A15C: ; 0x0224A15C
 	ldr r2, _0224A188 ; =0x0224BE7C
 	add r1, r5, #4
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _0224A180
 	ldr r0, [r4]
@@ -8226,7 +8226,7 @@ ov71_0224A98C: ; 0x0224A98C
 	ldr r2, _0224A9C0 ; =0x0224BEF0
 	add r1, r5, #4
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _0224A9B0
 	ldr r0, [r4]
@@ -9274,7 +9274,7 @@ ov71_0224B1FC: ; 0x0224B1FC
 	ldr r2, _0224B230 ; =0x0224BF84
 	add r1, r5, #4
 	ldr r2, [r2, r3]
-	bl r2
+	blx r2
 	cmp r0, #0
 	beq _0224B220
 	ldr r0, [r4]
@@ -9942,14 +9942,14 @@ ov71_0224B720: ; 0x0224B720
 	ldr r3, [r3]
 	lsl r0, r0, #0xe
 	add r2, r1, #0
-	bl r3
+	blx r3
 	ldr r3, _0224B7E0 ; =0x0211092C
 	add r4, r0, #0
 	ldr r3, [r3]
 	mov r0, #0x80
 	mov r1, #0
 	mov r2, #1
-	bl r3
+	blx r3
 	ldr r2, _0224B7E4 ; =0x7FFF0000
 	add r6, r0, #0
 	and r2, r4
