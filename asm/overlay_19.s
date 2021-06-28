@@ -596,7 +596,7 @@ ov19_02259D44: ; 0x02259D44
 	ldr r3, [r3]
 	add r0, #0x5c
 	mov r2, #3
-	bl sub_021E7FDC
+	bl ov01_021E7FDC
 	ldr r5, [sp]
 	ldr r4, _02259DF0 ; =0x0225A0C4
 	add r7, r5, #0
@@ -605,7 +605,7 @@ ov19_02259D44: ; 0x02259D44
 _02259D60:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_021E81F0
+	bl ov01_021E81F0
 	mov r1, #7
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -690,7 +690,7 @@ _02259E00:
 	blt _02259E00
 	add r7, #0x5c
 	add r0, r7, #0
-	bl sub_021E8194
+	bl ov01_021E8194
 	mov r0, #0x10
 	mov r1, #0
 	bl sub_02022CC8

@@ -722,7 +722,7 @@ _02237E04:
 	mov r4, #5
 	mvn r4, r4
 _02237E18:
-	bl sub_021EC210
+	bl ov00_021EC210
 _02237E1C:
 	add r0, r4, #0
 	pop {r4, pc}
@@ -921,7 +921,7 @@ _02237FD0:
 	str r1, [r0]
 	ldr r0, _02238058 ; =ov72_02238778
 	ldr r1, _0223805C ; =ov72_022387A0
-	bl sub_021EC294
+	bl ov00_021EC294
 	mov r0, #1
 	str r0, [r4]
 	b _02238044
@@ -3152,7 +3152,7 @@ _02239258:
 	ldr r2, [sp, #4]
 	add r0, r1, #4
 	str r2, [r4, r0]
-	bl sub_021EC210
+	bl ov00_021EC210
 	bl sub_021EC8D8
 	add r0, r4, #0
 	bl ov72_0223A444
@@ -3224,14 +3224,14 @@ _022392E8:
 	bl ov72_0223A444
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_021EC11C
+	bl ov01_021EC11C
 	mov r1, #0xf5
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r2, [sp, #4]
 	add r0, r1, #4
 	str r2, [r4, r0]
-	bl sub_021EC210
+	bl ov00_021EC210
 	bl sub_021EC8D8
 	mov r0, #0x37
 	str r0, [r4, #0x1c]

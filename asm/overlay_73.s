@@ -4954,7 +4954,7 @@ _021E7FEC:
 	str r1, [r0, #4]
 	ldr r0, _021E8074 ; =ov73_021E83F4
 	ldr r1, _021E8078 ; =ov73_021E841C
-	bl sub_021EC294
+	bl ov00_021EC294
 	mov r0, #1
 	str r0, [r4]
 	b _021E8060
@@ -6611,7 +6611,7 @@ _021E8D64:
 	ldr r2, [sp, #4]
 	add r0, r1, #4
 	str r2, [r4, r0]
-	bl sub_021EC210
+	bl ov00_021EC210
 	bl sub_021EC8D8
 	add r0, r4, #0
 	bl ov73_021EA180
@@ -6683,14 +6683,14 @@ _021E8DF4:
 	bl ov73_021EA180
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_021EC11C
+	bl ov01_021EC11C
 	mov r1, #0xf1
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r2, [sp, #4]
 	add r0, r1, #4
 	str r2, [r4, r0]
-	bl sub_021EC210
+	bl ov00_021EC210
 	bl sub_021EC8D8
 	mov r0, #0x37
 	str r0, [r4, #0x1c]

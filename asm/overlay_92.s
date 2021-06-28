@@ -658,7 +658,7 @@ _0225CA6C:
 	cmp r0, #0
 	beq _0225CA9A
 	mov r0, #0x71
-	bl sub_021E69A8
+	bl ov00_021E69A8
 _0225CA9A:
 	add sp, #0xb8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1499,7 +1499,7 @@ _0225D12A:
 	ldr r0, [r0, #0x3c]
 	cmp r0, #0
 	beq _0225D1CA
-	bl sub_021E6A4C
+	bl ov00_021E6A4C
 	b _0225D1CA
 _0225D186:
 	add r0, r4, #0
@@ -1517,7 +1517,7 @@ _0225D194:
 	ldr r0, [r0, #0x3c]
 	cmp r0, #0
 	beq _0225D1AA
-	bl sub_021E6A4C
+	bl ov00_021E6A4C
 _0225D1AA:
 	add r0, r4, #0
 	mov r1, #1

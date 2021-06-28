@@ -30790,7 +30790,7 @@ _020B2370:
 	ldr r1, [r6, #0xf08]
 	ldr r2, [r6, #0xc]
 	and r0, r0, #0xff
-	bl sub_021F97C0
+	bl ov00_021F97C0
 	ldr r0, [r6, #0xf0c]
 	cmp r0, #0
 	bne _020B23D0
@@ -32331,7 +32331,7 @@ _020B3734:
 	mov r1, sl
 	mov r2, fp
 	strb sb, [sl, #9]
-	bl sub_021F9610
+	bl ov00_021F9610
 	cmp r0, #0
 	addne r8, r8, #1
 _020B3770:
@@ -32420,7 +32420,7 @@ sub_020B3850: ; 0x020B3850
 _020B3870:
 	ldrb r0, [r0, #4]
 	mov r2, #0x10
-	bl sub_021F9610
+	bl ov00_021F9610
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}

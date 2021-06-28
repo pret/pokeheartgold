@@ -383,7 +383,7 @@ ov39_02227334: ; 0x02227334
 ov39_02227348: ; 0x02227348
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_021EC210
+	bl ov00_021EC210
 	bl sub_021EC8D8
 	bl sub_0203946C
 	mov r0, #0xf2
@@ -3851,13 +3851,13 @@ _02228D32: ; jump table
 _02228D44:
 	add r0, sp, #8
 	add r1, sp, #4
-	bl sub_021EC11C
+	bl ov01_021EC11C
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #8]
 	str r0, [r4, #0x18]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x1c]
-	bl sub_021EC210
+	bl ov00_021EC210
 	bl sub_021EC8D8
 	add r0, r4, #0
 	bl ov39_02228AA8
@@ -3926,13 +3926,13 @@ _02228DCC:
 	bl ov39_02228AA8
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_021EC11C
+	bl ov01_021EC11C
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x18]
 	ldr r0, [sp]
 	str r0, [r4, #0x1c]
-	bl sub_021EC210
+	bl ov00_021EC210
 	bl sub_021EC8D8
 	mov r0, #6
 	str r0, [r4, #8]

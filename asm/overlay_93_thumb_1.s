@@ -125,7 +125,7 @@ _0225C62C:
 	ldrb r0, [r6]
 	cmp r0, #0
 	beq _0225C638
-	bl sub_021E6A4C
+	bl ov00_021E6A4C
 _0225C638:
 	add r0, r5, #0
 	mov r1, #2
@@ -591,7 +591,7 @@ ov93_0225C768: ; 0x0225C768
 	cmp r0, #0
 	beq _0225CA4C
 	mov r0, #0x75
-	bl sub_021E69A8
+	bl ov00_021E69A8
 _0225CA4C:
 	mov r0, #1
 	add sp, #0xc

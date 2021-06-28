@@ -5676,7 +5676,7 @@ _02256BCA:
 	str r0, [sp]
 	add r0, r4, #0
 	add r3, r7, #0
-	bl sub_021E8970
+	bl ov01_021E8970
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02256BE8: .word 0x0225945C
@@ -8499,7 +8499,7 @@ ov03_022581BC: ; 0x022581BC
 	add r0, #0x94
 	mov r2, #0x13
 	mov r3, #0xb
-	bl sub_021E7FDC
+	bl ov01_021E7FDC
 	add r0, r7, #0
 	str r0, [sp]
 	add r0, #0x94
@@ -8510,7 +8510,7 @@ ov03_022581BC: ; 0x022581BC
 _022581DA:
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl sub_021E81F0
+	bl ov01_021E81F0
 	mov r1, #0x7e
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -8603,7 +8603,7 @@ _02258296:
 	blo _02258296
 	ldr r0, [sp]
 	add r0, #0x94
-	bl sub_021E8194
+	bl ov01_021E8194
 	ldr r0, [sp]
 	mov r1, #0
 	add r0, #0x94

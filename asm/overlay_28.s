@@ -39,7 +39,7 @@ ov28_0225D520: ; 0x0225D520
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	ldr r0, [r4, #0x18]
-	bl sub_021E7F54
+	bl ov01_021E7F54
 	mov r1, #0xcd
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2490,7 +2490,7 @@ _0225E858:
 	ldr r4, [r5, r0]
 	b _0225E890
 _0225E860:
-	bl sub_021E7F54
+	bl ov01_021E7F54
 	add r4, r0, #0
 	cmp r4, #1
 	bne _0225E890

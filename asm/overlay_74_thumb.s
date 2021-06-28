@@ -32111,7 +32111,7 @@ _02236B5A:
 	beq _02236C3E
 	ldr r0, _02236DF0 ; =ov74_022369A8
 	ldr r1, _02236DF4 ; =ov74_022369C8
-	bl sub_021EC294
+	bl ov00_021EC294
 	ldr r0, [r4, #4]
 	bl sub_020394A0
 	ldr r0, _02236DF8 ; =0x00001002
@@ -32493,7 +32493,7 @@ _02236E94:
 	ldr r0, _02236F20 ; =0x0000267C
 	mov r1, #0
 	str r1, [r4, r0]
-	bl sub_021EC210
+	bl ov00_021EC210
 	bl ov74_02236AC8
 	mov r0, #4
 	pop {r3, r4, r5, pc}

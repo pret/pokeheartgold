@@ -773,7 +773,7 @@ _0225A5DC:
 	bne _0225A61A
 _0225A5E6:
 	add r0, r4, #0
-	bl sub_021E7F54
+	bl ov01_021E7F54
 	add r5, r0, #0
 	cmp r5, #1
 	bne _0225A618

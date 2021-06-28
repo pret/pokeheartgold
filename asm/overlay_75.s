@@ -104,7 +104,7 @@ _02246A24:
 	str r1, [r0]
 	ldr r0, _02246AE8 ; =ov75_02246BF0
 	ldr r1, _02246AEC ; =ov75_02246C18
-	bl sub_021EC294
+	bl ov00_021EC294
 	mov r0, #1
 	str r0, [r4, #0x7c]
 	mov r0, #2
@@ -3876,13 +3876,13 @@ _02248826: ; jump table
 _02248838:
 	add r0, sp, #8
 	add r1, sp, #4
-	bl sub_021EC11C
+	bl ov01_021EC11C
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #8]
 	str r0, [r4, #0x18]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x1c]
-	bl sub_021EC210
+	bl ov00_021EC210
 	bl sub_021EC8D8
 	bl sub_0203A914
 	bl sub_0203957C
@@ -3968,11 +3968,11 @@ _022488E8:
 	bl ov75_02247878
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_021EC11C
+	bl ov01_021EC11C
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x18]
-	bl sub_021EC210
+	bl ov00_021EC210
 	bl sub_021EC8D8
 	bl sub_0203A914
 	bl sub_0203957C
