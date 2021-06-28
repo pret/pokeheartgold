@@ -9034,7 +9034,7 @@ ov80_0222E120: ; 0x0222E120
 	ldr r0, [r0, #8]
 	bl sub_0202C6F4
 	add r4, r0, #0
-	bl sub_021E6EBC
+	bl ov00_021E6EBC
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0202C4B0

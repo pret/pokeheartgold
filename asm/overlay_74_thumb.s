@@ -31908,11 +31908,11 @@ ov74_022369D8: ; 0x022369D8
 	add r4, r0, #0
 	add r0, sp, #0
 	add r1, sp, #4
-	bl sub_021EC11C
+	bl ov00_021EC11C
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	neg r0, r0
-	bl sub_021E6A70
+	bl ov00_021E6A70
 	ldr r2, _02236A20 ; =0x0000266C
 	str r0, [r4, r2]
 	ldr r0, [sp]

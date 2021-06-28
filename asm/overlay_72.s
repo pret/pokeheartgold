@@ -5356,7 +5356,7 @@ ov72_0223A2E8: ; 0x0223A2E8
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	neg r0, r0
-	bl sub_021E6A70
+	bl ov00_021E6A70
 	ldr r2, _0223A310 ; =0x00000F54
 	add r1, r0, #0
 	ldr r2, [r4, r2]

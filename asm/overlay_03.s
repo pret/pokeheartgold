@@ -9210,7 +9210,7 @@ ov03_0225874C: ; 0x0225874C
 	push {r4, lr}
 	mov r0, #0
 	add r4, r1, #0
-	bl sub_021E636C
+	bl ov01_021E636C
 	ldr r0, _02258760 ; =0x00000272
 	mov r1, #0x17
 	strb r1, [r4, r0]

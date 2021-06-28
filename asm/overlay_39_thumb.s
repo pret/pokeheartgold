@@ -404,7 +404,7 @@ ov39_02227364: ; 0x02227364
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	neg r0, r0
-	bl sub_021E6A70
+	bl ov00_021E6A70
 	mov r2, #0x3e
 	lsl r2, r2, #4
 	ldr r2, [r4, r2]
@@ -3608,7 +3608,7 @@ ov39_02228B6C: ; 0x02228B6C
 	thumb_func_start ov39_02228B74
 ov39_02228B74: ; 0x02228B74
 	push {r3, lr}
-	bl sub_021E6A70
+	bl ov00_021E6A70
 	cmp r0, #0xb
 	bhi _02228BA6
 	add r0, r0, r0
@@ -4036,7 +4036,7 @@ ov39_02228EA4: ; 0x02228EA4
 	ldr r0, [r4, #0x18]
 	ldr r1, [r4, #0x1c]
 	neg r0, r0
-	bl sub_021E6A70
+	bl ov00_021E6A70
 	ldr r2, [r4, #0x18]
 	add r1, r0, #0
 	add r0, r4, #0

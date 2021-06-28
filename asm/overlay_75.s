@@ -240,7 +240,7 @@ ov75_02246B48: ; 0x02246B48
 	ldr r0, [r4, #0x7c]
 	cmp r0, #0
 	bne _02246B8E
-	ldr r0, _02246B90 ; =0x00000046
+	ldr r0, _02246B90 ; =SDK_OVERLAY_OVY_70_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl LoadDwcOverlay
@@ -265,7 +265,7 @@ ov75_02246B48: ; 0x02246B48
 _02246B8E:
 	pop {r4, pc}
 	.align 2, 0
-_02246B90: .word 0x00000046
+_02246B90: .word SDK_OVERLAY_OVY_70_ID
 _02246B94: .word 0x00020020
 	thumb_func_end ov75_02246B48
 
@@ -283,14 +283,14 @@ ov75_02246B98: ; 0x02246B98
 	bl sub_02091624
 	bl UnloadDwcOverlay
 	bl sub_02034DE0
-	ldr r0, _02246BC8 ; =0x00000046
+	ldr r0, _02246BC8 ; =SDK_OVERLAY_OVY_70_ID
 	bl UnloadOverlayByID
 	mov r0, #0
 	str r0, [r4, #0x7c]
 _02246BC4:
 	pop {r4, pc}
 	nop
-_02246BC8: .word 0x00000046
+_02246BC8: .word SDK_OVERLAY_OVY_70_ID
 	thumb_func_end ov75_02246B98
 
 	thumb_func_start ov75_02246BCC
@@ -5132,7 +5132,7 @@ ov75_022491CC: ; 0x022491CC
 	ldr r0, [r4, #0x18]
 	ldr r1, [r4, #0x1c]
 	neg r0, r0
-	bl sub_021E6A70
+	bl ov00_021E6A70
 	ldr r2, [r4, #0x18]
 	add r1, r0, #0
 	add r0, r4, #0

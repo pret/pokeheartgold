@@ -26790,7 +26790,7 @@ ov70_02244CA8: ; 0x02244CA8
 	ldr r0, [r4, #0x44]
 	ldr r1, [r4, #0x48]
 	neg r0, r0
-	bl sub_021E6A70
+	bl ov00_021E6A70
 	ldr r2, [r4, #0x44]
 	add r1, r0, #0
 	add r0, r4, #0

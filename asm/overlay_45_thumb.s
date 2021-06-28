@@ -8130,7 +8130,7 @@ ov45_0222D7CC: ; 0x0222D7CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_021E6A70
+	bl ov00_021E6A70
 	cmp r0, #0xb
 	beq _0222D7DE
 	cmp r5, #0x19
@@ -8161,7 +8161,7 @@ _0222D7F8:
 ov45_0222D7FC: ; 0x0222D7FC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_021E6A70
+	bl ov00_021E6A70
 	cmp r4, #0x19
 	bne _0222D80C
 	mov r0, #0xb
