@@ -6272,7 +6272,7 @@ _021ED0F4:
 	add r2, sp, #0x1a0
 	add r3, sp, #0x10
 	str r4, [sp, #8]
-	bl sub_02220434
+	bl ov38_02220434
 	cmp r0, #0
 	mov r0, #0
 	bne _021ED148
@@ -6427,7 +6427,7 @@ ov00_021ED308: ; 0x021ED308
 	b _021ED344
 _021ED33C:
 	ldr r0, _021ED350 ; =ov00_021ECFF4
-	bl sub_02220620
+	bl ov38_02220620
 _021ED344:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
@@ -6449,7 +6449,7 @@ ov00_021ED354: ; 0x021ED354
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_02220090
+	bl ov38_02220090
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov00_021ED354
 
@@ -6462,7 +6462,7 @@ ov00_021ED388: ; 0x021ED388
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
-	bl sub_02220F18
+	bl ov38_02220F18
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_021ED388
 
@@ -6484,7 +6484,7 @@ ov00_021ED3AC: ; 0x021ED3AC
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_02220F8C
+	bl ov38_02220F8C
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov00_021ED3AC
 
@@ -6501,7 +6501,7 @@ ov00_021ED3F4: ; 0x021ED3F4
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_0222124C
+	bl ov38_0222124C
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov00_021ED3F4
 
@@ -6512,7 +6512,7 @@ ov00_021ED428: ; 0x021ED428
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_02220648
+	bl ov38_02220648
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_021ED428
 
@@ -6527,7 +6527,7 @@ ov00_021ED444: ; 0x021ED444
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, r4
-	bl sub_02221408
+	bl ov38_02221408
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_021ED444
 
@@ -21494,7 +21494,7 @@ _021FA0B0: .word 0xFFFFFDF9
 	arm_func_start ov00_021FA0B4
 ov00_021FA0B4: ; 0x021FA0B4
 	stmdb sp!, {r3, lr}
-	bl sub_0221D7B4
+	bl ov38_0221D7B4
 	ldr r1, _021FA0D4 ; =_0221B0A4
 	mov r0, #1
 	ldr r2, [r1, #4]
@@ -21513,7 +21513,7 @@ ov00_021FA0D8: ; 0x021FA0D8
 	cmp r0, #0
 	movle r0, #1
 	ldmleia sp!, {r3, pc}
-	bl sub_0221D808
+	bl ov38_0221D808
 	ldr r0, _021FA114 ; =_0221B0A4
 	ldr r1, [r0, #4]
 	subs r1, r1, #1
@@ -21534,7 +21534,7 @@ ov00_021FA118: ; 0x021FA118
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_0221DAEC
+	bl ov38_0221DAEC
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_021FA118
@@ -21645,7 +21645,7 @@ _021FA294:
 	mov r0, r4
 	mov r3, r5
 	mov r1, #0
-	bl sub_0221D864
+	bl ov38_0221D864
 	movs r4, r0
 	bpl _021FA2D0
 	bl ov00_021FA4B0
@@ -21737,7 +21737,7 @@ _021FA3B8:
 	mov r0, r5
 	mov r3, r4
 	str r7, [sp, #0x14]
-	bl sub_0221D8A0
+	bl ov38_0221D8A0
 	b _021FA428
 _021FA3F8:
 	str r1, [sp]
@@ -21751,7 +21751,7 @@ _021FA3F8:
 	mov r0, r5
 	mov r3, r4
 	str r7, [sp, #0x14]
-	bl sub_0221D8A0
+	bl ov38_0221D8A0
 _021FA428:
 	mov r4, r0
 	cmp r4, #0

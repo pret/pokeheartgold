@@ -20815,7 +20815,7 @@ _021EF5CA:
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #4]
 	mov r2, #0xc
-	bl sub_0221EABC
+	bl ov98_0221EABC
 	str r0, [r4, #0x30]
 	add r0, r4, #0
 	bl ov96_021EF610
@@ -20860,7 +20860,7 @@ ov96_021EF610: ; 0x021EF610
 	mov r1, #5
 	ldr r0, [r5, #0x30]
 	add r2, r1, #0
-	bl sub_0221EEEC
+	bl ov98_0221EEEC
 _021EF636:
 	mov r1, #0
 	ldr r0, [r5, #0x30]
@@ -20895,7 +20895,7 @@ _021EF636:
 	mov r1, #5
 	mov r2, #0xef
 	add r3, r4, #0
-	bl sub_0221ECD0
+	bl ov98_0221ECD0
 	ldr r0, [r5, #0x24]
 	cmp r0, #0
 	bne _021EF69A
@@ -20905,7 +20905,7 @@ _021EF636:
 	str r1, [sp, #4]
 	ldr r0, [r5, #0x30]
 	mov r2, #0xf0
-	bl sub_0221EBEC
+	bl ov98_0221EBEC
 _021EF69A:
 	ldr r0, [r5, #0x34]
 	bl ov96_021EE6A0
@@ -20929,7 +20929,7 @@ _021EF6BC:
 	cmp r0, #0
 	bne _021EF70E
 	ldr r0, [r5, #0x30]
-	bl sub_0221EEFC
+	bl ov98_0221EEFC
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0x1e
@@ -20965,7 +20965,7 @@ _021EF70E:
 	lsr r1, r4, #0xa
 	mov r2, #2
 	mov r3, #0
-	bl sub_0221EDA4
+	bl ov98_0221EDA4
 	lsr r3, r4, #0x1f
 	lsl r2, r4, #0x16
 	sub r2, r2, r3
@@ -20982,13 +20982,13 @@ _021EF70E:
 	ldr r0, [r5, #0x30]
 	asr r1, r1, #0xa
 	add r3, r2, #0
-	bl sub_0221EDA4
+	bl ov98_0221EDA4
 	b _021EF74E
 _021EF744:
 	add r1, r4, #0
 	mov r2, #3
 	mov r3, #0
-	bl sub_0221EDA4
+	bl ov98_0221EDA4
 _021EF74E:
 	ldr r0, [r5, #0x30]
 	mov r1, #6
@@ -20999,7 +20999,7 @@ _021EF74E:
 	ldr r0, [r5, #0x30]
 	mov r1, #7
 	add r2, r6, #0
-	bl sub_0221ED3C
+	bl ov98_0221ED3C
 _021EF766:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -21029,7 +21029,7 @@ ov96_021EF770: ; 0x021EF770
 	ldr r0, [r5, #0x30]
 	mov r1, #9
 	mov r2, #0xf2
-	bl sub_0221EBEC
+	bl ov98_0221EBEC
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #4
@@ -21037,7 +21037,7 @@ ov96_021EF770: ; 0x021EF770
 	ldr r0, [r5, #0x30]
 	mov r1, #0xa
 	mov r2, #0xf3
-	bl sub_0221EBEC
+	bl ov98_0221EBEC
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x30]
@@ -21071,7 +21071,7 @@ ov96_021EF7C4: ; 0x021EF7C4
 	ldr r0, [r5, #0x30]
 	mov r1, #9
 	mov r2, #0xf1
-	bl sub_0221EBEC
+	bl ov98_0221EBEC
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #4
@@ -21079,7 +21079,7 @@ ov96_021EF7C4: ; 0x021EF7C4
 	ldr r0, [r5, #0x30]
 	mov r1, #0xa
 	mov r2, #0xf3
-	bl sub_0221EBEC
+	bl ov98_0221EBEC
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x30]

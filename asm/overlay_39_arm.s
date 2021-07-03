@@ -696,7 +696,7 @@ _02229B54:
 	ldmia sp!, {r3, pc}
 _02229B80:
 	add r0, sp, #0
-	bl sub_021FFA44
+	bl ov00_021FFA44
 	ldr r1, _02229B9C ; =0x0222AB84
 	str r0, [r1, #0x264]
 	mov r0, #1
@@ -1028,7 +1028,7 @@ ov39_02229FCC: ; 0x02229FCC
 	ldmeqia sp!, {r4, r5, pc}
 	ldr r0, _0222A108 ; =0x0222AA58
 	add r1, sp, #8
-	bl sub_021ECC6C
+	bl ov00_021ECC6C
 	cmp r0, #0
 	bne _0222A018
 	ldr r0, _0222A104 ; =0x0222AB84
@@ -1041,7 +1041,7 @@ _0222A018:
 	ldr r4, _0222A104 ; =0x0222AB84
 	mov r5, #1
 _0222A020:
-	bl sub_021ECCE0
+	bl ov00_021ECCE0
 	cmp r0, #3
 	bne _0222A074
 	ldr r4, _0222A10C ; =0x0222AB8A

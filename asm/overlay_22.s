@@ -39,7 +39,7 @@ ov22_022598C0: ; 0x022598C0
 	add r1, r4, #0
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_021EEC00
+	bl ov01_021EEC00
 	ldr r1, [sp]
 	str r0, [r1]
 	mov r0, #0
@@ -55,7 +55,7 @@ ov22_0225991C: ; 0x0225991C
 	mov r1, #0x27
 	bl sub_020402F0
 	ldr r0, [r0]
-	bl sub_021EEC68
+	bl ov01_021EEC68
 	mov r0, #0
 	pop {r3, pc}
 	.align 2, 0
@@ -79,7 +79,7 @@ ov22_02259934: ; 0x02259934
 	ldr r0, [r5]
 	ldr r1, [r1]
 	add r2, r4, #0
-	bl sub_021EEC7C
+	bl ov01_021EEC7C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.align 2, 0

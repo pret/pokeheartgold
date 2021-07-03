@@ -246,7 +246,7 @@ ov27_0225A19C: ; 0x0225A19C
 	mov r0, #0
 	bl FS_LoadOverlay
 	ldr r0, _0225A2B4 ; =ov27_0225C238
-	bl sub_0225F430
+	bl ov49_0225F430
 	cmp r0, #0
 	beq _0225A1C8
 	mov r1, #0xfa
@@ -782,7 +782,7 @@ _0225A5E6:
 	bl sub_0203DBF8
 	ldr r0, [sp]
 	bl sub_0205F27C
-	bl sub_021F6BD0
+	bl ov01_021F6BD0
 	cmp r0, #0
 	bne _0225A616
 	ldr r0, [sp]
@@ -3810,7 +3810,7 @@ ov27_0225BDFC: ; 0x0225BDFC
 	bne _0225BEAA
 	ldr r0, [r5, #4]
 	mov r1, #8
-	bl sub_02251E74
+	bl ov02_02251E74
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -4654,7 +4654,7 @@ _0225C46C:
 	mov r1, #0
 	ldr r0, [r4, #0x24]
 	add r2, r1, #0
-	bl sub_021F6A9C
+	bl ov01_021F6A9C
 _0225C496:
 	mov r0, #0x86
 	lsl r0, r0, #2
@@ -4847,11 +4847,11 @@ ov27_0225C618: ; 0x0225C618
 	sub sp, #0x1c
 	str r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_021EEF58
+	bl ov01_021EEF58
 	add r7, r0, #0
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_021EEF60
+	bl ov01_021EEF60
 	add r6, r0, #0
 	mov r0, #0xef
 	mov r1, #8
@@ -4955,7 +4955,7 @@ ov27_0225C6F8: ; 0x0225C6F8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_021EEF60
+	bl ov01_021EEF60
 	add r6, r0, #0
 	ldr r0, [r5, #0x18]
 	mov r1, #4
@@ -5711,7 +5711,7 @@ ov27_0225CCBC: ; 0x0225CCBC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_021EEF58
+	bl ov01_021EEF58
 	mov r1, #0xe5
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]

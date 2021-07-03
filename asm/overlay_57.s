@@ -1432,7 +1432,7 @@ _0223840C:
 	ldrsh r1, [r2, r1]
 	mov r2, #0xbe
 	mov r3, #0x46
-	bl sub_022344E4
+	bl ov07_022344E4
 	cmp r0, #0x3c
 	bgt _02238434
 	mov r0, #1
@@ -6466,7 +6466,7 @@ _0223AC04:
 	bl sub_0206E540
 	str r0, [sp, #0x6c]
 	add r0, sp, #0x5c
-	bl sub_02233DB8
+	bl ov07_02233DB8
 	mov r1, #0x95
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6506,7 +6506,7 @@ _0223AC4A:
 	bl sub_0206EC40
 	mov r0, #0x34
 	add r1, sp, #0x38
-	bl sub_02232694
+	bl ov07_02232694
 	mov r1, #0x25
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -6524,13 +6524,13 @@ _0223ACAC:
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02232A04
+	bl ov07_02232A04
 	cmp r0, #1
 	bne _0223AD64
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02233EA0
+	bl ov07_02233EA0
 	cmp r0, #1
 	bne _0223AD64
 	add r0, r4, #0
@@ -6538,7 +6538,7 @@ _0223ACAC:
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02232A44
+	bl ov07_02232A44
 	add r0, r4, #0
 	mov r1, #0
 	bl ov57_0223BB38
@@ -6557,7 +6557,7 @@ _0223ACF6:
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02233E88
+	bl ov07_02233E88
 	cmp r0, #0
 	bne _0223AD64
 	cmp r5, #0
@@ -6565,7 +6565,7 @@ _0223ACF6:
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02233ECC
+	bl ov07_02233ECC
 	mov r0, #0x10
 	mov r1, #0
 	bl sub_02022C60
@@ -6584,7 +6584,7 @@ _0223AD38:
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02232A54
+	bl ov07_02232A54
 	cmp r0, #0
 	bne _0223AD64
 	mov r0, #0xa1
@@ -6606,7 +6606,7 @@ _0223AD66:
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02232AB8
+	bl ov07_02232AB8
 	ldr r0, _0223AE90 ; =0x00000404
 	ldr r1, [r4, r0]
 	add r1, r1, #1
@@ -6648,7 +6648,7 @@ _0223AD7A:
 	bl sub_0206E540
 	str r0, [sp, #0x20]
 	add r0, sp, #0x10
-	bl sub_02233DB8
+	bl ov07_02233DB8
 	mov r1, #0x95
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6667,7 +6667,7 @@ _0223ADE2:
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02233E88
+	bl ov07_02233E88
 	cmp r0, #0
 	bne _0223AE88
 	cmp r5, #0
@@ -6702,7 +6702,7 @@ _0223ADE2:
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02233ECC
+	bl ov07_02233ECC
 	ldr r0, _0223AE90 ; =0x00000404
 	ldr r1, [r4, r0]
 	add r1, r1, #1

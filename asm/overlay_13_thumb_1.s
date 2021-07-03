@@ -30,7 +30,7 @@ _0221BA0C:
 	bl sub_020D3A38
 	add r5, r0, #0
 	mov r0, #2
-	bl sub_021EC454
+	bl ov00_021EC454
 	mov r1, #1
 	ldr r0, [sp]
 	lsl r1, r1, #0x12

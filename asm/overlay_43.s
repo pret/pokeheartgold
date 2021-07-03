@@ -3555,11 +3555,11 @@ _0222BADC:
 	add r0, r5, #0
 	add r0, #0xb4
 	ldr r0, [r0]
-	bl sub_02227274
+	bl ov42_02227274
 	add r0, r5, #0
 	add r0, #0xb4
 	ldr r0, [r0]
-	bl sub_02227114
+	bl ov42_02227114
 	mov r4, #0
 	add r5, #8
 _0222BB0E:
@@ -5551,7 +5551,7 @@ _0222CA38:
 	ldr r0, [r5, #0x18]
 	cmp r0, #0
 	beq _0222CA44
-	bl sub_0222740C
+	bl ov42_0222740C
 	str r6, [r5, #0x18]
 _0222CA44:
 	add r4, r4, #1
@@ -5621,7 +5621,7 @@ _0222CA8C:
 	ldr r2, [sp, #0x1c]
 	ldr r3, [sp, #0x4c]
 	add r1, sp, #0x20
-	bl sub_022272BC
+	bl ov42_022272BC
 	lsl r1, r4, #2
 	add r1, r5, r1
 	str r0, [r1, #0x18]

@@ -6723,7 +6723,7 @@ _0225BA7E:
 	ldrb r1, [r5, #7]
 	ldr r0, [r0, #0x30]
 	ldr r3, [sp, #0xc]
-	bl sub_0222ACB8
+	bl ov45_0222ACB8
 _0225BA9C:
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
@@ -6750,7 +6750,7 @@ ov90_0225BAA0: ; 0x0225BAA0
 	ldr r0, [r3, #0x30]
 	ldrb r1, [r1, #7]
 	ldrb r3, [r3, #4]
-	bl sub_0222ACB8
+	bl ov45_0222ACB8
 _0225BACA:
 	add sp, #0xc
 	pop {pc}

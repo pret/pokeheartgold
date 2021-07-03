@@ -107,7 +107,7 @@ _0225D5E0:
 _0225D5E8:
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_021F6A9C
+	bl ov01_021F6A9C
 	mov r0, #4
 	str r0, [r4]
 _0225D5F4:

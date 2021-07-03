@@ -221,7 +221,7 @@ _02259A7E:
 	ldrh r2, [r3, #0xa]
 	ldrh r3, [r3, #0xc]
 	add r0, r5, #0
-	bl sub_021EF564
+	bl ov01_021EF564
 	ldr r1, _02259AA8 ; =0x021EF349
 	add r0, r5, #0
 	bl sub_0203FD58

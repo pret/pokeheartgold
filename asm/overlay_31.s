@@ -1045,7 +1045,7 @@ _0225DD60:
 	lsl r1, r7, #0x10
 	str r0, [sp, #8]
 	lsr r1, r1, #0x10
-	bl sub_02258120
+	bl ov03_02258120
 	add r3, r0, #0
 	ldr r1, [sp, #8]
 	ldr r0, _0225DDFC ; =0x00000283
@@ -1569,7 +1569,7 @@ ov31_0225E184: ; 0x0225E184
 	ldr r1, [r6, r1]
 	add r0, r6, #0
 	ldrh r1, [r1, r4]
-	bl sub_02258120
+	bl ov03_02258120
 	add r3, r0, #0
 	ldr r0, _0225E208 ; =0x00000283
 	mov r1, #0x55
@@ -1631,7 +1631,7 @@ ov31_0225E20C: ; 0x0225E20C
 	ldr r0, [r5, #0x14]
 	lsl r1, r1, #2
 	ldrh r1, [r0, r1]
-	bl sub_02257978
+	bl ov03_02257978
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -2515,7 +2515,7 @@ _0225E97A:
 _0225E982:
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_02257814
+	bl ov03_02257814
 	cmp r0, #2
 	bne _0225E998
 	add r0, r4, #0

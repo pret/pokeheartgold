@@ -97,7 +97,7 @@ _0225F050:
 	str r0, [sp, #0x10]
 	ldr r0, [r4, #0x20]
 	mov r3, #0xa6
-	bl sub_021F0500
+	bl ov01_021F0500
 	mov r0, #2
 	mov r1, #0
 	bl sub_0201BB68
@@ -133,7 +133,7 @@ _0225F12C:
 	sub r1, #0x11
 	add r2, r1, #0
 	add r3, r4, #4
-	bl sub_021EFCF8
+	bl ov01_021EFCF8
 	mov r0, #2
 	str r0, [r4]
 	b _0225F218
@@ -167,7 +167,7 @@ _0225F150:
 	b _0225F218
 _0225F17E:
 	add r0, r5, #0
-	bl sub_021EFF28
+	bl ov01_021EFF28
 	cmp r0, #0
 	beq _0225F218
 	mov r0, #5
@@ -219,7 +219,7 @@ _0225F1CC:
 	b _0225F218
 _0225F1EA:
 	add r0, r5, #0
-	bl sub_021EFF28
+	bl ov01_021EFF28
 	cmp r0, #0
 	beq _0225F218
 	mov r0, #8
@@ -237,7 +237,7 @@ _0225F1FA:
 _0225F20C:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_021EFCDC
+	bl ov01_021EFCDC
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 _0225F218:

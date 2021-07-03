@@ -220,7 +220,7 @@ ov17_02201D30: ; 0x02201D30
 	bl sub_0202CF54
 	str r0, [r5, #0x10]
 	ldr r0, [r5]
-	bl sub_022014A0
+	bl ov16_022014A0
 	str r0, [r5, #0x1c]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
@@ -248,13 +248,13 @@ _02201DA8:
 	bl ov17_022023B0
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5]
-	bl sub_022018F0
+	bl ov16_022018F0
 	add r1, r5, #0
 	add r1, #0x82
 	strh r0, [r1]
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5]
-	bl sub_0220191C
+	bl ov16_0220191C
 	add r1, r5, #0
 	add r1, #0x84
 	strh r0, [r1]
@@ -837,7 +837,7 @@ _0220220C:
 	mul r0, r1
 	add r5, r2, r0
 	ldrb r0, [r2, r0]
-	bl sub_022018B4
+	bl ov16_022018B4
 	add r1, r0, #0
 	ldrb r2, [r5, #5]
 	ldr r0, [r4, #0xc]
@@ -1059,13 +1059,13 @@ ov17_022023B0: ; 0x022023B0
 	beq _02202438
 	ldr r0, [r4, #4]
 	ldrh r0, [r0, #0x16]
-	bl sub_022018E4
+	bl ov16_022018E4
 	add r1, r4, #0
 	add r1, #0x7c
 	add r2, r0, #0
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x14]
-	bl sub_0220165C
+	bl ov16_0220165C
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x7b
@@ -1079,14 +1079,14 @@ _022023F6:
 	beq _02202438
 	ldr r0, [r4, #4]
 	ldrh r0, [r0, #0x16]
-	bl sub_022018C4
+	bl ov16_022018C4
 	add r1, r4, #0
 	add r1, #0x7c
 	add r3, r0, #0
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x14]
 	ldr r2, [r4, #0x1c]
-	bl sub_02201610
+	bl ov16_02201610
 	ldr r0, [r4, #0x10]
 	mov r1, #5
 	bl sub_0202D0FC
@@ -2043,7 +2043,7 @@ ov17_02202B58: ; 0x02202B58
 	mul r0, r6
 	add r4, r2, r0
 	ldr r0, [r5, #0x14]
-	bl sub_02201644
+	bl ov16_02201644
 	add r0, r5, #0
 	bl ov17_0220387C
 	add r0, r6, #3
@@ -2078,9 +2078,9 @@ ov17_02202B98: ; 0x02202B98
 	add r6, #0x20
 	ldr r0, [r5, #0x14]
 	add r4, r6, r7
-	bl sub_02201674
+	bl ov16_02201674
 	ldrb r0, [r6, r7]
-	bl sub_022018B4
+	bl ov16_022018B4
 	add r1, r0, #0
 	ldrb r2, [r4, #5]
 	ldr r0, [r5, #0xc]
@@ -3158,7 +3158,7 @@ ov17_02203460: ; 0x02203460
 	add r0, r5, r0
 	add r0, #0x20
 	ldrb r0, [r0]
-	bl sub_022018B4
+	bl ov16_022018B4
 	mov r1, #1
 	add r4, r0, #0
 	bl sub_02077C18
@@ -3525,7 +3525,7 @@ _0220371E: ; jump table
 	.short _0220376C - _0220371E - 2 ; case 16
 _02203740:
 	ldrb r0, [r6, #4]
-	bl sub_022018D4
+	bl ov16_022018D4
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xa0
@@ -3607,7 +3607,7 @@ ov17_022037C8: ; 0x022037C8
 	ldr r0, [r4, #0x18]
 	add r1, sp, #0x28
 	add r2, sp, #0x10
-	bl sub_02201820
+	bl ov16_02201820
 	add r0, sp, #0x28
 	add r1, sp, #0x10
 	bl sub_020DC330
@@ -3632,7 +3632,7 @@ ov17_022037C8: ; 0x022037C8
 	stmia r2!, {r0, r1}
 	ldr r0, [r4, #0x18]
 	ldmia r5!, {r1, r2, r3}
-	bl sub_022017FC
+	bl ov16_022017FC
 	add sp, #0x48
 	pop {r3, r4, r5, r6, r7, pc}
 _02203828:
@@ -3646,7 +3646,7 @@ _02203828:
 	beq _02203876
 	ldr r0, [r4, #0x14]
 	ldr r1, [r4, #0x1c]
-	bl sub_02201760
+	bl ov16_02201760
 	add r0, r4, #0
 	bl ov17_0220387C
 	add r2, sp, #0x1c
@@ -3665,7 +3665,7 @@ _02203828:
 	stmia r2!, {r0, r1}
 	ldr r0, [r4, #0x18]
 	ldmia r5!, {r1, r2, r3}
-	bl sub_022017FC
+	bl ov16_022017FC
 	cmp r7, #0
 	beq _02203876
 	add r0, r4, #0
@@ -3703,51 +3703,51 @@ _02203884:
 	strb r1, [r0]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl sub_022015BC
+	bl ov16_022015BC
 	add r1, r5, #0
 	add r1, #0x20
 	strb r0, [r1]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl sub_022015B0
+	bl ov16_022015B0
 	add r1, r5, #0
 	add r1, #0x21
 	strb r0, [r1]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl sub_022015EC
+	bl ov16_022015EC
 	add r1, r5, #0
 	add r1, #0x22
 	strb r0, [r1]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl sub_022015E0
+	bl ov16_022015E0
 	add r1, r5, #0
 	add r1, #0x23
 	strb r0, [r1]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl sub_02201650
+	bl ov16_02201650
 	add r1, r5, #0
 	add r1, #0x24
 	strb r0, [r1]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl sub_02201668
+	bl ov16_02201668
 	add r1, r5, #0
 	add r1, #0x25
 	strb r0, [r1]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl sub_022015F8
+	bl ov16_022015F8
 	strh r0, [r5, #0x26]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl sub_02201604
+	bl ov16_02201604
 	strh r0, [r5, #0x28]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl sub_022015C4
+	bl ov16_022015C4
 	add r1, r5, #0
 	add r1, #0x2a
 	add r4, r4, #1

@@ -786,7 +786,7 @@ ov16_0220196C: ; 0x0220196C
 	ldr r0, _022019B4 ; =0x00000011
 	mov r1, #2
 	bl HandleLoadOverlay
-	bl sub_02201BC0
+	bl ov17_02201BC0
 	mov r2, #2
 	mov r0, #3
 	mov r1, #0x82
@@ -863,7 +863,7 @@ ov16_02201A04: ; 0x02201A04
 	add r5, r0, #0
 	bl sub_02007290
 	add r4, r0, #0
-	bl sub_02201BC0
+	bl ov17_02201BC0
 	add r0, r4, #0
 	bl ov16_02201A4C
 	add r0, r5, #0

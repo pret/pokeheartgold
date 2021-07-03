@@ -187,14 +187,14 @@ _0225898C:
 	add r0, r7, #0
 	bl ov48_02259030
 	ldr r0, [r5, #0xc]
-	bl sub_0222A330
+	bl ov45_0222A330
 	cmp r0, #1
 	bne _022589AC
 	ldr r0, [r5, #0xc]
-	bl sub_0222A4A8
+	bl ov45_0222A4A8
 	mov r6, #1
 _022589AC:
-	bl sub_0222D844
+	bl ov45_0222D844
 	cmp r0, #1
 	bne _022589B6
 	mov r6, #1
@@ -1196,12 +1196,12 @@ ov48_02259130: ; 0x02259130
 	lsl r1, r6, #0x18
 	ldr r0, [r4]
 	lsr r1, r1, #0x18
-	bl sub_0222D6B0
+	bl ov45_0222D6B0
 	add r7, r0, #0
 	lsl r1, r6, #0x18
 	ldr r0, [r4]
 	lsr r1, r1, #0x18
-	bl sub_0222D6D4
+	bl ov45_0222D6D4
 	add r2, r0, #0
 	lsl r1, r7, #0x18
 	lsl r2, r2, #0x18
@@ -2381,24 +2381,24 @@ _02259A74:
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0222D724
+	bl ov45_0222D724
 	cmp r0, #0
 	beq _02259AC2
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0222D6FC
+	bl ov45_0222D6FC
 	lsl r1, r4, #0x18
 	str r0, [sp, #4]
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0222D6B0
+	bl ov45_0222D6B0
 	lsl r0, r0, #0x18
 	lsl r1, r4, #0x18
 	lsr r6, r0, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0222D6D4
+	bl ov45_0222D6D4
 	cmp r6, r7
 	bne _02259AC2
 	ldr r1, [sp]
@@ -5519,7 +5519,7 @@ _0225B142:
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0222D724
+	bl ov45_0222D724
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	cmp r0, #1

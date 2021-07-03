@@ -371,7 +371,7 @@ _021E5BA8:
 	ldr r0, [r0, #8]
 	bl sub_02092BD8
 	ldr r0, _021E5C14 ; =ov18_021E5C2C
-	bl sub_0225F430
+	bl ov49_0225F430
 	cmp r0, #0
 	beq _021E5BD0
 	mov r1, #0xfa

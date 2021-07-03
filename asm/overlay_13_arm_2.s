@@ -20954,7 +20954,7 @@ _02237F60:
 	bne _02237F78
 	ldrb r0, [r4, #0xf4]
 	mov r1, r4
-	bl sub_021FAC20
+	bl ov00_021FAC20
 _02237F78:
 	mov r0, #0
 	ldr r1, _02237F98 ; =ov13_0223813C
@@ -21077,7 +21077,7 @@ ov13_022380A8: ; 0x022380A8
 	stmdb sp!, {r4, lr}
 	bl ov13_0223A7F4
 	mov r4, r0
-	bl sub_021FAAC8
+	bl ov00_021FAAC8
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	bl sub_0209EFEC
@@ -21119,7 +21119,7 @@ _02238138: .word ov13_022381CC
 ov13_0223813C: ; 0x0223813C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_021FA904
+	bl ov00_021FA904
 	movs r4, r0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	bl ov13_02227F68
@@ -21133,7 +21133,7 @@ ov13_0223813C: ; 0x0223813C
 	bl ov13_0223ABB8
 	b _02238188
 _02238178:
-	bl sub_021FA9D4
+	bl ov00_021FA9D4
 	bl ov13_02232DF4
 	mov r0, #0x12
 	bl ov13_0223ABB8
