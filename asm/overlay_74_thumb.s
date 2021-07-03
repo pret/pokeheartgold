@@ -32123,10 +32123,10 @@ _02236B76:
 	add r0, r4, r0
 	mov r2, #1
 	mov r3, #0x14
-	bl sub_021EC3F0
+	bl ov00_021EC3F0
 	mov r0, #2
 	bl ov00_021EC454
-	bl sub_021EC4A4
+	bl ov00_021EC4A4
 	bl sub_0203A880
 	ldr r0, _02236E00 ; =0x00001003
 	mov r1, #0
@@ -32184,7 +32184,7 @@ _02236BFA:
 	str r0, [r5]
 	b _02236F0A
 _02236C00:
-	bl sub_021ECDC8
+	bl ov00_021ECDC8
 	cmp r0, #3
 	bne _02236C14
 	ldr r0, _02236E1C ; =0x00001006
@@ -32199,7 +32199,7 @@ _02236C14:
 	add r0, r4, #0
 	bl ov74_022369D8
 	str r0, [r5]
-	bl sub_021EC8D8
+	bl ov00_021EC8D8
 	b _02236C34
 _02236C26:
 	cmp r0, #5
@@ -32480,7 +32480,7 @@ _02236E84:
 	str r0, [r5]
 	b _02236F0A
 _02236E8A:
-	bl sub_021EC8D8
+	bl ov00_021EC8D8
 	ldr r0, _02236F14 ; =0x00001010
 	str r0, [r5]
 	b _02236F0A

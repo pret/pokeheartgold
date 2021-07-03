@@ -20944,7 +20944,7 @@ ov13_02237F04: ; 0x02237F04
 	addne r0, r0, #1
 	strneb r0, [sp, #0xe]
 	add r0, sp, #4
-	bl sub_021FA75C
+	bl ov00_021FA75C
 	cmp r0, #0
 	bne _02237F60
 	bl sub_020D3F48

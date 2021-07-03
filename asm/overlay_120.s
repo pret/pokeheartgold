@@ -1227,7 +1227,7 @@ ov120_0225F90C: ; 0x0225F90C
 	b _0225F964
 _0225F922:
 	ldr r0, [r0, #8]
-	bl sub_021FB514
+	bl ov01_021FB514
 	mov r0, #0x1c
 	str r0, [sp]
 	mov r0, #1
@@ -1281,7 +1281,7 @@ ov120_0225F970: ; 0x0225F970
 	b _0225F9C8
 _0225F986:
 	ldr r0, [r0, #8]
-	bl sub_021FB514
+	bl ov01_021FB514
 	mov r0, #0x1c
 	str r0, [sp]
 	mov r0, #1
@@ -2117,7 +2117,7 @@ _0225FFDC:
 	add r0, #0xc
 	lsl r2, r2, #0x12
 	add r3, r1, #0
-	bl sub_021EFEC8
+	bl ov01_021EFEC8
 	mov r0, #0x1e
 	str r0, [sp]
 	add r0, r5, #0
@@ -2127,7 +2127,7 @@ _0225FFDC:
 	mov r1, #0
 	lsl r2, r2, #0x12
 	lsl r3, r3, #0xe
-	bl sub_021EFEC8
+	bl ov01_021EFEC8
 	add r0, r5, #0
 	add r0, #0x3c
 	mov r1, #0

@@ -469,7 +469,7 @@ ov39_022298E0: ; 0x022298E0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
 	mov r2, r0
-	bl sub_021EC2EC
+	bl ov00_021EC2EC
 	ldmia sp!, {r3, pc}
 	arm_func_end ov39_022298E0
 

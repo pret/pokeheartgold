@@ -3731,7 +3731,7 @@ ov75_02248714: ; 0x02248714
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0203957C
-	bl sub_021EC8D8
+	bl ov00_021EC8D8
 	bl sub_0203A914
 	mov r0, #4
 	bl sub_0201A4CC
@@ -3831,10 +3831,10 @@ _022487D4:
 	add r0, #0x14
 	mov r2, #1
 	mov r3, #0x14
-	bl sub_021EC3F0
+	bl ov00_021EC3F0
 	mov r0, #2
 	bl ov00_021EC454
-	bl sub_021EC4A4
+	bl ov00_021EC4A4
 	mov r0, #0xd
 	str r0, [r4, #8]
 _022487F6:
@@ -3883,7 +3883,7 @@ _02248838:
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x1c]
 	bl ov00_021EC210
-	bl sub_021EC8D8
+	bl ov00_021EC8D8
 	bl sub_0203A914
 	bl sub_0203957C
 	mov r0, #4
@@ -3943,7 +3943,7 @@ ov75_022488BC: ; 0x022488BC
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl sub_021ECDC8
+	bl ov00_021ECDC8
 	cmp r0, #5
 	bhi _02248984
 	add r0, r0, r0
@@ -3973,7 +3973,7 @@ _022488E8:
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x18]
 	bl ov00_021EC210
-	bl sub_021EC8D8
+	bl ov00_021EC8D8
 	bl sub_0203A914
 	bl sub_0203957C
 	mov r0, #4
@@ -4015,7 +4015,7 @@ _02248952:
 	str r0, [r4, #8]
 	b _02248972
 _02248956:
-	bl sub_021FA0D8
+	bl ov00_021FA0D8
 	mov r0, #0x1b
 	str r0, [r4, #8]
 	b _02248972
@@ -5046,7 +5046,7 @@ _0224910E:
 	str r0, [r4]
 	b _022491C2
 _0224912C:
-	bl sub_021EC8D8
+	bl ov00_021EC8D8
 	bl sub_0203A914
 	bl sub_0203957C
 	mov r0, #4
@@ -5414,7 +5414,7 @@ _022493BC:
 	cmp r0, #0
 	bne _02249456
 	bl sub_0203957C
-	bl sub_021EC8D8
+	bl ov00_021EC8D8
 	bl sub_0203A914
 	mov r0, #4
 	bl sub_0201A4CC

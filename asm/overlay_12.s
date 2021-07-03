@@ -31155,7 +31155,7 @@ _02246B90:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246BC4:
 	ldr r0, [r4, #0x50]
-	bl sub_021F89D0
+	bl ov00_021F89D0
 	ldr r0, [r4, #0x54]
 	bl sub_02021BEC
 	ldr r0, [r4]
@@ -31504,7 +31504,7 @@ _02246E84:
 	cmp r0, #0x17
 	bne _02246EEC
 	ldr r0, [r4, #0x50]
-	bl sub_021F89D0
+	bl ov00_021F89D0
 	ldr r0, [r4, #0x54]
 	bl sub_02021BEC
 	ldr r0, [r4]

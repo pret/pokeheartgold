@@ -340,7 +340,7 @@ _0225F2A0:
 	ldr r3, [r6, #0xc]
 	add r0, r5, #0
 	add r2, r1, r2
-	bl sub_021EFEC8
+	bl ov01_021EFEC8
 	ldr r0, [r4]
 	add sp, #0xc
 	add r0, r0, #1

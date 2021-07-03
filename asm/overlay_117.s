@@ -162,7 +162,7 @@ _0225F136:
 	ldr r1, [r1, r3]
 	ldr r2, [r2, r3]
 	ldr r3, [r5, r3]
-	bl sub_021EFEC8
+	bl ov01_021EFEC8
 	mov r0, #0xf2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -181,7 +181,7 @@ _0225F136:
 	ldr r1, [r1, r3]
 	ldr r2, [r2, r3]
 	ldr r3, [r5, r3]
-	bl sub_021EFEC8
+	bl ov01_021EFEC8
 	mov r0, #0x62
 	lsl r0, r0, #2
 	mov r1, #8
@@ -196,7 +196,7 @@ _0225F136:
 	ldr r3, _0225F2D8 ; =0xFFFFF99A
 	lsl r1, r1, #0xa
 	mov r2, #0x29
-	bl sub_021EFEC8
+	bl ov01_021EFEC8
 	mov r0, #0xf2
 	lsl r0, r0, #2
 	ldr r2, [r4, r0]
@@ -302,7 +302,7 @@ _0225F274:
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl sub_021FB514
+	bl ov01_021FB514
 	mov r0, #0xc
 	str r0, [sp]
 	mov r0, #1
@@ -917,7 +917,7 @@ _0225F76A:
 	mov r1, #0
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0xc
-	bl sub_021EFEC8
+	bl ov01_021EFEC8
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -1155,7 +1155,7 @@ _0225F970:
 	ldr r2, _0225FABC ; =0xFFFA0000
 	add r0, r4, r0
 	lsl r3, r3, #0xa
-	bl sub_021EFEC8
+	bl ov01_021EFEC8
 	mov r0, #0x6d
 	mov r1, #8
 	lsl r0, r0, #2

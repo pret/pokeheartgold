@@ -787,7 +787,7 @@ _0225A5E6:
 	bne _0225A616
 	ldr r0, [sp]
 	bl sub_0205F25C
-	bl sub_021F6BB0
+	bl ov01_021F6BB0
 	cmp r0, #0
 	beq _0225A618
 _0225A616:
@@ -5650,7 +5650,7 @@ _0225CC42:
 	tst r0, r1
 	beq _0225CC80
 	ldr r0, [r4, #0xc]
-	bl sub_021EF00C
+	bl ov01_021EF00C
 	cmp r0, #0
 	beq _0225CC80
 	mov r1, #0x85

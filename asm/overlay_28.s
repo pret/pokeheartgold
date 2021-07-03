@@ -56,7 +56,7 @@ ov28_0225D520: ; 0x0225D520
 	beq _0225D59E
 	ldr r0, [sp, #8]
 	bl sub_0205F25C
-	bl sub_021F6BB0
+	bl ov01_021F6BB0
 	cmp r0, #1
 	bne _0225D5A6
 _0225D59E:
@@ -2504,7 +2504,7 @@ _0225E860:
 	beq _0225E88E
 	ldr r0, [sp]
 	bl sub_0205F25C
-	bl sub_021F6BB0
+	bl ov01_021F6BB0
 	cmp r0, #1
 	bne _0225E890
 _0225E88E:

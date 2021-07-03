@@ -43,7 +43,7 @@ ov34_0225D558: ; 0x0225D558
 	tst r0, r1
 	beq _0225D576
 	ldr r0, [r4, #0xc]
-	bl sub_021F6B10
+	bl ov01_021F6B10
 	cmp r0, #1
 	bne _0225D576
 	mov r0, #3
@@ -1267,7 +1267,7 @@ _0225DF40:
 	cmp r0, #0
 	beq _0225E006
 	ldr r0, [r4, #0xc]
-	bl sub_021F6B10
+	bl ov01_021F6B10
 	cmp r0, #1
 	bne _0225E006
 	ldr r0, _0225E018 ; =0x000005FC

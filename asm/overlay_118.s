@@ -153,7 +153,7 @@ _0225F150:
 	lsl r1, r1, #0x12
 	mov r2, #0
 	lsl r3, r3, #0xc
-	bl sub_021EFEC8
+	bl ov01_021EFEC8
 	mov r0, #2
 	mov r1, #1
 	bl sub_02022C60
@@ -211,7 +211,7 @@ _0225F1CC:
 	mov r1, #0
 	lsl r2, r2, #0x12
 	lsl r3, r3, #0xc
-	bl sub_021EFEC8
+	bl ov01_021EFEC8
 	mov r0, #1
 	str r0, [r5, #0x1c]
 	mov r0, #7
