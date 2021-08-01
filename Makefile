@@ -1,3 +1,6 @@
+# Because mwldarm expects absolute paths to be WIN32 paths,
+# all paths referring up from BUILD_DIR must be relative.
+BACK_REL     := ../..
 TOOLSDIR       := tools
 MWCCVER        := 2.0/sp1
 PROC           := arm946e

@@ -1,43 +1,47 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	arm_func_start sub_06000000
-sub_06000000: @ 0x06000000
-	push {r3, r4, r5, lr}
+sub_06000000: ; 0x06000000
+	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r4, r1
 	ldr r1, [r4]
-	ldr r3, _0600018C @ =0x060198A4
+	ldr r3, _0600018C ; =0x060198A4
 	mov r5, r0
 	str r1, [r3, #0x540]
 	ldr r1, [r5, #0x24]
-	ldr r0, _06000190 @ =0x060188A4
+	ldr r0, _06000190 ; =0x060188A4
 	str r1, [r3, #0x544]
 	ldr r2, [r5, #0x28]
-	ldr r1, _06000194 @ =0x060188C4
+	ldr r1, _06000194 ; =0x060188C4
 	str r2, [r3, #0x548]
 	mov ip, #0
 	str ip, [r3, #0x54c]
 	mov r2, #2
 	str ip, [r3, #0x550]
 	bl sub_060001CC
-	ldr r0, _06000198 @ =0x060188CC
-	ldr r1, _0600019C @ =0x060188EC
+	ldr r0, _06000198 ; =0x060188CC
+	ldr r1, _0600019C ; =0x060188EC
 	mov r2, #4
 	bl sub_060001CC
-	ldr r0, _060001A0 @ =0x060188FC
-	ldr r1, _060001A4 @ =0x0601891C
+	ldr r0, _060001A0 ; =0x060188FC
+	ldr r1, _060001A4 ; =0x0601891C
 	mov r2, #4
 	bl sub_060001CC
-	ldr r0, _060001A8 @ =0x0601892C
-	ldr r1, _060001AC @ =0x0601894C
+	ldr r0, _060001A8 ; =0x0601892C
+	ldr r1, _060001AC ; =0x0601894C
 	mov r2, #0x20
 	bl sub_060001CC
-	ldr r1, _06000190 @ =0x060188A4
-	ldr r0, _06000198 @ =0x060188CC
+	ldr r1, _06000190 ; =0x060188A4
+	ldr r0, _06000198 ; =0x060188CC
 	str r1, [r5, #0x10]
 	str r0, [r5, #0x14]
 	ldr r2, [r4, #8]
-	ldr r1, _0600018C @ =0x060198A4
-	ldr r0, _060001B0 @ =0x06019DCC
+	ldr r1, _0600018C ; =0x060198A4
+	ldr r0, _060001B0 ; =0x06019DCC
 	str r2, [r1, #0x578]
 	ldr r2, [r4, #0x18]
 	str r2, [r1, #0x57c]
@@ -53,27 +57,27 @@ sub_06000000: @ 0x06000000
 	mov r0, #0x400
 	str r0, [sp]
 	ldr r1, [r4, #4]
-	ldr r0, _060001B4 @ =0x0380AC9C
+	ldr r0, _060001B4 ; =0x0380AC9C
 	str r1, [sp, #4]
-	ldr r1, _060001B8 @ =sub_06000958
-	ldr r3, _060001B0 @ =0x06019DCC
+	ldr r1, _060001B8 ; =sub_06000958
+	ldr r3, _060001B0 ; =0x06019DCC
 	mov r2, #0
 	bl sub_060001DC
-	ldr r0, _060001B4 @ =0x0380AC9C
+	ldr r0, _060001B4 ; =0x0380AC9C
 	bl sub_060001E4
 	mov r0, #0x1000
 	str r0, [sp]
 	ldr r1, [r4, #0xc]
-	ldr r0, _060001BC @ =0x0380ABF8
+	ldr r0, _060001BC ; =0x0380ABF8
 	str r1, [sp, #4]
-	ldr r1, _060001C0 @ =sub_06001E10
-	ldr r3, _060001C4 @ =0x060199CC
+	ldr r1, _060001C0 ; =sub_06001E10
+	ldr r3, _060001C4 ; =0x060199CC
 	mov r2, #0
 	bl sub_060001DC
-	ldr r0, _060001BC @ =0x0380ABF8
+	ldr r0, _060001BC ; =0x0380ABF8
 	bl sub_060001E4
 	mov r3, #0
-	ldr r1, _06000190 @ =0x060188A4
+	ldr r1, _06000190 ; =0x060188A4
 	mov r2, r3
 _06000128:
 	add r0, r1, r3
@@ -82,7 +86,7 @@ _06000128:
 	strb r2, [r0, #0x554]
 	cmp r3, #0x20
 	blt _06000128
-	ldr r0, _0600018C @ =0x060198A4
+	ldr r0, _0600018C ; =0x060198A4
 	str r2, [r0, #0x574]
 	bl sub_060001EC
 	cmp r0, #0
@@ -90,7 +94,7 @@ _06000128:
 	bl sub_060001F4
 _06000158:
 	bl sub_060001FC
-	ldr r1, _060001C8 @ =sub_060002B4
+	ldr r1, _060001C8 ; =sub_060002B4
 	mov r0, #0xa
 	bl sub_06000204
 	mov r0, #2
@@ -100,91 +104,91 @@ _06000158:
 	str r1, [r5, #0xc]
 	bl sub_06008B60
 	add sp, sp, #8
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600018C: .4byte 0x060198A4
-_06000190: .4byte 0x060188A4
-_06000194: .4byte 0x060188C4
-_06000198: .4byte 0x060188CC
-_0600019C: .4byte 0x060188EC
-_060001A0: .4byte 0x060188FC
-_060001A4: .4byte 0x0601891C
-_060001A8: .4byte 0x0601892C
-_060001AC: .4byte 0x0601894C
-_060001B0: .4byte 0x06019DCC
-_060001B4: .4byte 0x0380AC9C
-_060001B8: .4byte sub_06000958
-_060001BC: .4byte 0x0380ABF8
-_060001C0: .4byte sub_06001E10
-_060001C4: .4byte 0x060199CC
-_060001C8: .4byte sub_060002B4
+_0600018C: .word 0x060198A4
+_06000190: .word 0x060188A4
+_06000194: .word 0x060188C4
+_06000198: .word 0x060188CC
+_0600019C: .word 0x060188EC
+_060001A0: .word 0x060188FC
+_060001A4: .word 0x0601891C
+_060001A8: .word 0x0601892C
+_060001AC: .word 0x0601894C
+_060001B0: .word 0x06019DCC
+_060001B4: .word 0x0380AC9C
+_060001B8: .word sub_06000958
+_060001BC: .word 0x0380ABF8
+_060001C0: .word sub_06001E10
+_060001C4: .word 0x060199CC
+_060001C8: .word sub_060002B4
 	arm_func_end sub_06000000
 
 	arm_func_start sub_060001CC
-sub_060001CC: @ 0x060001CC
-	ldr pc, _060001D0 @ =sub_037F96D0
+sub_060001CC: ; 0x060001CC
+	ldr pc, _060001D0 ; =sub_037F96D0
 	.align 2, 0
-_060001D0: .4byte sub_037F96D0
+_060001D0: .word sub_037F96D0
 	arm_func_end sub_060001CC
 
 	arm_func_start sub_060001D4
-sub_060001D4: @ 0x060001D4
-	ldr pc, _060001D8 @ =sub_037F9894
+sub_060001D4: ; 0x060001D4
+	ldr pc, _060001D8 ; =sub_037F9894
 	.align 2, 0
-_060001D8: .4byte sub_037F9894
+_060001D8: .word sub_037F9894
 	arm_func_end sub_060001D4
 
 	arm_func_start sub_060001DC
-sub_060001DC: @ 0x060001DC
-	ldr pc, _060001E0 @ =sub_037F9054
+sub_060001DC: ; 0x060001DC
+	ldr pc, _060001E0 ; =sub_037F9054
 	.align 2, 0
-_060001E0: .4byte sub_037F9054
+_060001E0: .word sub_037F9054
 	arm_func_end sub_060001DC
 
 	arm_func_start sub_060001E4
-sub_060001E4: @ 0x060001E4
-	ldr pc, _060001E8 @ =sub_037F93B4
+sub_060001E4: ; 0x060001E4
+	ldr pc, _060001E8 ; =sub_037F93B4
 	.align 2, 0
-_060001E8: .4byte sub_037F93B4
+_060001E8: .word sub_037F93B4
 	arm_func_end sub_060001E4
 
 	arm_func_start sub_060001EC
-sub_060001EC: @ 0x060001EC
-	ldr pc, _060001F0 @ =sub_037FA7BC
+sub_060001EC: ; 0x060001EC
+	ldr pc, _060001F0 ; =sub_037FA7BC
 	.align 2, 0
-_060001F0: .4byte sub_037FA7BC
+_060001F0: .word sub_037FA7BC
 	arm_func_end sub_060001EC
 
 	arm_func_start sub_060001F4
-sub_060001F4: @ 0x060001F4
-	ldr pc, _060001F8 @ =sub_037FA770
+sub_060001F4: ; 0x060001F4
+	ldr pc, _060001F8 ; =sub_037FA770
 	.align 2, 0
-_060001F8: .4byte sub_037FA770
+_060001F8: .word sub_037FA770
 	arm_func_end sub_060001F4
 
 	arm_func_start sub_060001FC
-sub_060001FC: @ 0x060001FC
-	ldr pc, _06000200 @ =sub_037FB248
+sub_060001FC: ; 0x060001FC
+	ldr pc, _06000200 ; =sub_037FB248
 	.align 2, 0
-_06000200: .4byte sub_037FB248
+_06000200: .word sub_037FB248
 	arm_func_end sub_060001FC
 
 	arm_func_start sub_06000204
-sub_06000204: @ 0x06000204
-	ldr pc, _06000208 @ =sub_037FB330
+sub_06000204: ; 0x06000204
+	ldr pc, _06000208 ; =sub_037FB330
 	.align 2, 0
-_06000208: .4byte sub_037FB330
+_06000208: .word sub_037FB330
 	arm_func_end sub_06000204
 
 	arm_func_start sub_0600020C
-sub_0600020C: @ 0x0600020C
-	push {r3, lr}
+sub_0600020C: ; 0x0600020C
+	stmdb sp!, {r3, lr}
 	mov r1, r0
-	ldr r0, _0600027C @ =0x060188A4
+	ldr r0, _0600027C ; =0x060188A4
 	mov r2, #1
 	bl sub_06000284
-	ldr r0, _06000280 @ =0x060188FC
+	ldr r0, _06000280 ; =0x060188FC
 	add r1, sp, #0
 	mov r2, #1
 	bl sub_0600028C
@@ -206,67 +210,67 @@ sub_0600020C: @ 0x0600020C
 	bl sub_060002AC
 _06000270:
 	ldr r0, [sp]
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600027C: .4byte 0x060188A4
-_06000280: .4byte 0x060188FC
+_0600027C: .word 0x060188A4
+_06000280: .word 0x060188FC
 	arm_func_end sub_0600020C
 
 	arm_func_start sub_06000284
-sub_06000284: @ 0x06000284
-	ldr pc, _06000288 @ =sub_037F96F8
+sub_06000284: ; 0x06000284
+	ldr pc, _06000288 ; =sub_037F96F8
 	.align 2, 0
-_06000288: .4byte sub_037F96F8
+_06000288: .word sub_037F96F8
 	arm_func_end sub_06000284
 
 	arm_func_start sub_0600028C
-sub_0600028C: @ 0x0600028C
-	ldr pc, _06000290 @ =sub_037F9784
+sub_0600028C: ; 0x0600028C
+	ldr pc, _06000290 ; =sub_037F9784
 	.align 2, 0
-_06000290: .4byte sub_037F9784
+_06000290: .word sub_037F9784
 	arm_func_end sub_0600028C
 
 	arm_func_start sub_06000294
-sub_06000294: @ 0x06000294
-	ldr pc, _06000298 @ =sub_03806914
+sub_06000294: ; 0x06000294
+	ldr pc, _06000298 ; =sub_03806914
 	.align 2, 0
-_06000298: .4byte sub_03806914
+_06000298: .word sub_03806914
 	arm_func_end sub_06000294
 
 	arm_func_start sub_0600029C
-sub_0600029C: @ 0x0600029C
-	ldr pc, _060002A0 @ =sub_038068C8
+sub_0600029C: ; 0x0600029C
+	ldr pc, _060002A0 ; =sub_038068C8
 	.align 2, 0
-_060002A0: .4byte sub_038068C8
+_060002A0: .word sub_038068C8
 	arm_func_end sub_0600029C
 
 	arm_func_start sub_060002A4
-sub_060002A4: @ 0x060002A4
-	ldr pc, _060002A8 @ =sub_037FB69C
+sub_060002A4: ; 0x060002A4
+	ldr pc, _060002A8 ; =sub_037FB69C
 	.align 2, 0
-_060002A8: .4byte sub_037FB69C
+_060002A8: .word sub_037FB69C
 	arm_func_end sub_060002A4
 
 	arm_func_start sub_060002AC
-sub_060002AC: @ 0x060002AC
-	ldr pc, _060002B0 @ =sub_037FAE94
+sub_060002AC: ; 0x060002AC
+	ldr pc, _060002B0 ; =sub_037FAE94
 	.align 2, 0
-_060002B0: .4byte sub_037FAE94
+_060002B0: .word sub_037FAE94
 	arm_func_end sub_060002AC
 
 	arm_func_start sub_060002B4
-sub_060002B4: @ 0x060002B4
-	push {r4, lr}
+sub_060002B4: ; 0x060002B4
+	stmdb sp!, {r4, lr}
 	mov r4, r1
 	cmp r2, #0
 	bne _0600030C
-	ldr r0, _06000314 @ =0x0601892C
+	ldr r0, _06000314 ; =0x0601892C
 	mov r2, #0
 	bl sub_06000284
 	cmp r0, #0
 	bne _0600030C
-	ldr r0, _06000318 @ =0x060198A4
+	ldr r0, _06000318 ; =0x060198A4
 	ldr r0, [r0, #0x54c]
 	cmp r0, #0
 	beq _0600030C
@@ -280,45 +284,45 @@ sub_060002B4: @ 0x060002B4
 	strh r1, [r0, #6]
 	bl sub_0600029C
 _0600030C:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06000314: .4byte 0x0601892C
-_06000318: .4byte 0x060198A4
+_06000314: .word 0x0601892C
+_06000318: .word 0x060198A4
 	arm_func_end sub_060002B4
 
 	arm_func_start sub_0600031C
-sub_0600031C: @ 0x0600031C
-	ldr r1, _06000378 @ =0x060198A4
+sub_0600031C: ; 0x0600031C
+	ldr r1, _06000378 ; =0x060198A4
 	ldrb r2, [r0]
 	ldr r3, [r1, #0x550]
 	ldrb r1, [r3, #0xe0]
 	cmp r2, r1
-	ldrbeq r2, [r0, #1]
-	ldrbeq r1, [r3, #0xe1]
+	ldreqb r2, [r0, #1]
+	ldreqb r1, [r3, #0xe1]
 	cmpeq r2, r1
-	ldrbeq r2, [r0, #2]
-	ldrbeq r1, [r3, #0xe2]
+	ldreqb r2, [r0, #2]
+	ldreqb r1, [r3, #0xe2]
 	cmpeq r2, r1
-	ldrbeq r2, [r0, #3]
-	ldrbeq r1, [r3, #0xe3]
+	ldreqb r2, [r0, #3]
+	ldreqb r1, [r3, #0xe3]
 	cmpeq r2, r1
-	ldrbeq r2, [r0, #4]
-	ldrbeq r1, [r3, #0xe4]
+	ldreqb r2, [r0, #4]
+	ldreqb r1, [r3, #0xe4]
 	cmpeq r2, r1
-	ldrbeq r1, [r0, #5]
-	ldrbeq r0, [r3, #0xe5]
+	ldreqb r1, [r0, #5]
+	ldreqb r0, [r3, #0xe5]
 	cmpeq r1, r0
 	moveq r0, #1
 	movne r0, #0
 	bx lr
 	.align 2, 0
-_06000378: .4byte 0x060198A4
+_06000378: .word 0x060198A4
 	arm_func_end sub_0600031C
 
 	arm_func_start sub_0600037C
-sub_0600037C: @ 0x0600037C
-	push {r3, lr}
+sub_0600037C: ; 0x0600037C
+	stmdb sp!, {r3, lr}
 	ldr r3, [r1, #8]
 	mov r2, r0
 	str r3, [r2, #4]
@@ -368,21 +372,21 @@ _06000414:
 	bic r2, r3, #1
 	bl sub_06000440
 _06000438:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end sub_0600037C
 
 	arm_func_start sub_06000440
-sub_06000440: @ 0x06000440
-	ldr pc, _06000444 @ =sub_037FB110
+sub_06000440: ; 0x06000440
+	ldr pc, _06000444 ; =sub_037FB110
 	.align 2, 0
-_06000444: .4byte sub_037FB110
+_06000444: .word sub_037FB110
 	arm_func_end sub_06000440
 
 	arm_func_start sub_06000448
-sub_06000448: @ 0x06000448
-	push {r4, r5, r6, lr}
-	ldr r2, _06000590 @ =0x060198A4
+sub_06000448: ; 0x06000448
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _06000590 ; =0x060198A4
 	mov r5, r1
 	ldr r4, [r2, #0x550]
 	mov r6, r0
@@ -442,7 +446,7 @@ _060004E0:
 _06000528:
 	mov r2, #8
 	bl sub_06000598
-	ldr r0, _06000594 @ =0x0000FFFF
+	ldr r0, _06000594 ; =0x0000FFFF
 	add r1, r5, #0x84
 	mov r2, #0x18
 	bl sub_06000598
@@ -466,26 +470,26 @@ _06000540:
 	bl sub_0600029C
 	mov r0, #0
 _06000588:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06000590: .4byte 0x060198A4
-_06000594: .4byte 0x0000FFFF
+_06000590: .word 0x060198A4
+_06000594: .word 0x0000FFFF
 	arm_func_end sub_06000448
 
 	arm_func_start sub_06000598
-sub_06000598: @ 0x06000598
-	ldr pc, _0600059C @ =sub_037FAF98
+sub_06000598: ; 0x06000598
+	ldr pc, _0600059C ; =sub_037FAF98
 	.align 2, 0
-_0600059C: .4byte sub_037FAF98
+_0600059C: .word sub_037FAF98
 	arm_func_end sub_06000598
 
 	arm_func_start sub_060005A0
-sub_060005A0: @ 0x060005A0
-	ldr r1, _060005D8 @ =0x060198A4
-	ldr r3, _060005DC @ =0x06019DF8
+sub_060005A0: ; 0x060005A0
+	ldr r1, _060005D8 ; =0x060198A4
+	ldr r3, _060005DC ; =0x06019DF8
 	ldr ip, [r1, #0x574]
-	ldr r2, _060005E0 @ =0x027FFF98
+	ldr r2, _060005E0 ; =0x027FFF98
 	strb r0, [r3, ip]
 	ldr r3, [r1, #0x574]
 	add r3, r3, #1
@@ -497,14 +501,14 @@ sub_060005A0: @ 0x060005A0
 	strh r0, [r2]
 	bx lr
 	.align 2, 0
-_060005D8: .4byte 0x060198A4
-_060005DC: .4byte 0x06019DF8
-_060005E0: .4byte 0x027FFF98
+_060005D8: .word 0x060198A4
+_060005DC: .word 0x06019DF8
+_060005E0: .word 0x027FFF98
 	arm_func_end sub_060005A0
 
 	arm_func_start sub_060005E4
-sub_060005E4: @ 0x060005E4
-	ldr r2, _06000614 @ =0x060188A4
+sub_060005E4: ; 0x060005E4
+	ldr r2, _06000614 ; =0x060188A4
 	mov r3, #0
 _060005EC:
 	add r1, r2, r3
@@ -513,18 +517,18 @@ _060005EC:
 	strb r0, [r1, #0x554]
 	cmp r3, #0x20
 	blt _060005EC
-	ldr r0, _06000618 @ =0x060198A4
+	ldr r0, _06000618 ; =0x060198A4
 	mov r1, #0
 	str r1, [r0, #0x574]
 	bx lr
 	.align 2, 0
-_06000614: .4byte 0x060188A4
-_06000618: .4byte 0x060198A4
+_06000614: .word 0x060188A4
+_06000618: .word 0x060198A4
 	arm_func_end sub_060005E4
 
 	arm_func_start sub_0600061C
-sub_0600061C: @ 0x0600061C
-	ldr r1, _06000650 @ =0x060188A4
+sub_0600061C: ; 0x0600061C
+	ldr r1, _06000650 ; =0x060188A4
 	mov r3, #0
 	mov r2, r3
 _06000628:
@@ -535,17 +539,17 @@ _06000628:
 	cmp r2, #0x20
 	add r3, r3, r0
 	blt _06000628
-	ldr ip, _06000654 @ =sub_06000658
-	lsr r0, r3, #5
+	ldr ip, _06000654 ; =sub_06000658
+	mov r0, r3, lsr #5
 	bx ip
 	.align 2, 0
-_06000650: .4byte 0x060188A4
-_06000654: .4byte sub_06000658
+_06000650: .word 0x060188A4
+_06000654: .word sub_06000658
 	arm_func_end sub_0600061C
 
 	arm_func_start sub_06000658
-sub_06000658: @ 0x06000658
-	ldr r1, _060006BC @ =0x060198A4
+sub_06000658: ; 0x06000658
+	ldr r1, _060006BC ; =0x060198A4
 	ldr r1, [r1, #0x54c]
 	ldrb r1, [r1, #0x53]
 	cmp r1, #8
@@ -572,124 +576,124 @@ _06000694:
 	movhs r0, #3
 	bx lr
 	.align 2, 0
-_060006BC: .4byte 0x060198A4
+_060006BC: .word 0x060198A4
 	arm_func_end sub_06000658
 
 	arm_func_start sub_060006C0
-sub_060006C0: @ 0x060006C0
-	push {r4, lr}
+sub_060006C0: ; 0x060006C0
+	stmdb sp!, {r4, lr}
 	bl sub_06000720
 	mov r4, r0
 	bl sub_06000728
-	ldr r1, _06000714 @ =0x060198A4
-	ldr r0, _06000718 @ =0x0380ABF8
+	ldr r1, _06000714 ; =0x060198A4
+	ldr r0, _06000718 ; =0x0380ABF8
 	ldr r1, [r1, #0x58c]
 	bl sub_06000730
 	bl sub_06008D40
-	ldr r1, _06000714 @ =0x060198A4
+	ldr r1, _06000714 ; =0x060198A4
 	ldr r1, [r1, #0x588]
 	bl sub_06000730
-	ldr r1, _06000714 @ =0x060198A4
-	ldr r0, _0600071C @ =0x0380AC9C
+	ldr r1, _06000714 ; =0x060198A4
+	ldr r0, _0600071C ; =0x0380AC9C
 	ldr r1, [r1, #0x584]
 	bl sub_06000730
 	bl sub_06000738
 	mov r0, r4
 	bl sub_06000740
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06000714: .4byte 0x060198A4
-_06000718: .4byte 0x0380ABF8
-_0600071C: .4byte 0x0380AC9C
+_06000714: .word 0x060198A4
+_06000718: .word 0x0380ABF8
+_0600071C: .word 0x0380AC9C
 	arm_func_end sub_060006C0
 
 	arm_func_start sub_06000720
-sub_06000720: @ 0x06000720
-	ldr pc, _06000724 @ =sub_037FAD24
+sub_06000720: ; 0x06000720
+	ldr pc, _06000724 ; =sub_037FAD24
 	.align 2, 0
-_06000724: .4byte sub_037FAD24
+_06000724: .word sub_037FAD24
 	arm_func_end sub_06000720
 
 	arm_func_start sub_06000728
-sub_06000728: @ 0x06000728
-	ldr pc, _0600072C @ =sub_037F9594
+sub_06000728: ; 0x06000728
+	ldr pc, _0600072C ; =sub_037F9594
 	.align 2, 0
-_0600072C: .4byte sub_037F9594
+_0600072C: .word sub_037F9594
 	arm_func_end sub_06000728
 
 	arm_func_start sub_06000730
-sub_06000730: @ 0x06000730
-	ldr pc, _06000734 @ =sub_037F9408
+sub_06000730: ; 0x06000730
+	ldr pc, _06000734 ; =sub_037F9408
 	.align 2, 0
-_06000734: .4byte sub_037F9408
+_06000734: .word sub_037F9408
 	arm_func_end sub_06000730
 
 	arm_func_start sub_06000738
-sub_06000738: @ 0x06000738
-	ldr pc, _0600073C @ =sub_037F95CC
+sub_06000738: ; 0x06000738
+	ldr pc, _0600073C ; =sub_037F95CC
 	.align 2, 0
-_0600073C: .4byte sub_037F95CC
+_0600073C: .word sub_037F95CC
 	arm_func_end sub_06000738
 
 	arm_func_start sub_06000740
-sub_06000740: @ 0x06000740
-	ldr pc, _06000744 @ =sub_037FAD38
+sub_06000740: ; 0x06000740
+	ldr pc, _06000744 ; =sub_037FAD38
 	.align 2, 0
-_06000744: .4byte sub_037FAD38
+_06000744: .word sub_037FAD38
 	arm_func_end sub_06000740
 
 	arm_func_start sub_06000748
-sub_06000748: @ 0x06000748
-	push {r4, lr}
+sub_06000748: ; 0x06000748
+	stmdb sp!, {r4, lr}
 	bl sub_06000720
 	mov r4, r0
 	bl sub_06000728
-	ldr r1, _0600079C @ =0x060198A4
-	ldr r0, _060007A0 @ =0x0380AC9C
+	ldr r1, _0600079C ; =0x060198A4
+	ldr r0, _060007A0 ; =0x0380AC9C
 	ldr r1, [r1, #0x578]
 	bl sub_06000730
 	bl sub_06008D40
-	ldr r1, _0600079C @ =0x060198A4
+	ldr r1, _0600079C ; =0x060198A4
 	ldr r1, [r1, #0x57c]
 	bl sub_06000730
-	ldr r1, _0600079C @ =0x060198A4
-	ldr r0, _060007A4 @ =0x0380ABF8
+	ldr r1, _0600079C ; =0x060198A4
+	ldr r0, _060007A4 ; =0x0380ABF8
 	ldr r1, [r1, #0x580]
 	bl sub_06000730
 	bl sub_06000738
 	mov r0, r4
 	bl sub_06000740
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600079C: .4byte 0x060198A4
-_060007A0: .4byte 0x0380AC9C
-_060007A4: .4byte 0x0380ABF8
+_0600079C: .word 0x060198A4
+_060007A0: .word 0x0380AC9C
+_060007A4: .word 0x0380ABF8
 	arm_func_end sub_06000748
 
 	arm_func_start sub_060007A8
-sub_060007A8: @ 0x060007A8
-	ldr r0, _060007B0 @ =0x0380ABF8
+sub_060007A8: ; 0x060007A8
+	ldr r0, _060007B0 ; =0x0380ABF8
 	bx lr
 	.align 2, 0
-_060007B0: .4byte 0x0380ABF8
+_060007B0: .word 0x0380ABF8
 	arm_func_end sub_060007A8
 
 	arm_func_start sub_060007B4
-sub_060007B4: @ 0x060007B4
-	ldr r0, _060007BC @ =0x0380AC9C
+sub_060007B4: ; 0x060007B4
+	ldr r0, _060007BC ; =0x0380AC9C
 	bx lr
 	.align 2, 0
-_060007BC: .4byte 0x0380AC9C
+_060007BC: .word 0x0380AC9C
 	arm_func_end sub_060007B4
 
 	arm_func_start sub_060007C0
-sub_060007C0: @ 0x060007C0
-	push {r4, lr}
+sub_060007C0: ; 0x060007C0
+	stmdb sp!, {r4, lr}
 	mov r4, #0
 	bl sub_06000720
-	ldr r1, _06000828 @ =0x060198A4
+	ldr r1, _06000828 ; =0x060198A4
 	ldr r2, [r1, #0x54c]
 	cmp r2, #0
 	beq _06000818
@@ -714,15 +718,15 @@ _06000810:
 _06000818:
 	bl sub_06000740
 	mov r0, r4
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06000828: .4byte 0x060198A4
+_06000828: .word 0x060198A4
 	arm_func_end sub_060007C0
 
 	arm_func_start sub_0600082C
-sub_0600082C: @ 0x0600082C
-	ldr r0, _0600085C @ =0x060198A4
+sub_0600082C: ; 0x0600082C
+	ldr r0, _0600085C ; =0x060198A4
 	mov r1, #0
 	ldr r0, [r0, #0x550]
 	strh r1, [r0, #0x38]
@@ -735,12 +739,12 @@ sub_0600082C: @ 0x0600082C
 	strh r1, [r0, #0x36]
 	bx lr
 	.align 2, 0
-_0600085C: .4byte 0x060198A4
+_0600085C: .word 0x060198A4
 	arm_func_end sub_0600082C
 
 	arm_func_start sub_06000860
-sub_06000860: @ 0x06000860
-	ldr r1, _060008AC @ =0x060198A4
+sub_06000860: ; 0x06000860
+	ldr r1, _060008AC ; =0x060198A4
 	cmp r0, #0x200
 	ldr r2, [r1, #0x550]
 	movhi r0, #0x200
@@ -750,22 +754,22 @@ sub_06000860: @ 0x06000860
 	ldrh r1, [r1, #0x88]
 	add r0, r0, #4
 	cmp r1, #0
-	lsleq r0, r0, #0x10
-	lsreq r0, r0, #0x10
-	strheq r0, [r2, #0x3c]
-	strheq r0, [r2, #0x38]
-	lslne r0, r0, #0x10
-	lsrne r0, r0, #0x10
-	strhne r0, [r2, #0x3e]
-	strhne r0, [r2, #0x3a]
+	moveq r0, r0, lsl #0x10
+	moveq r0, r0, lsr #0x10
+	streqh r0, [r2, #0x3c]
+	streqh r0, [r2, #0x38]
+	movne r0, r0, lsl #0x10
+	movne r0, r0, lsr #0x10
+	strneh r0, [r2, #0x3e]
+	strneh r0, [r2, #0x3a]
 	bx lr
 	.align 2, 0
-_060008AC: .4byte 0x060198A4
+_060008AC: .word 0x060198A4
 	arm_func_end sub_06000860
 
 	arm_func_start sub_060008B0
-sub_060008B0: @ 0x060008B0
-	ldr r1, _060008FC @ =0x060198A4
+sub_060008B0: ; 0x060008B0
+	ldr r1, _060008FC ; =0x060198A4
 	cmp r0, #0x200
 	ldr r2, [r1, #0x550]
 	movhi r0, #0x200
@@ -775,57 +779,57 @@ sub_060008B0: @ 0x060008B0
 	ldrh r1, [r1, #0x88]
 	add r0, r0, #2
 	cmp r1, #0
-	lsleq r0, r0, #0x10
-	lsreq r0, r0, #0x10
-	strheq r0, [r2, #0x3e]
-	strheq r0, [r2, #0x3a]
-	lslne r0, r0, #0x10
-	lsrne r0, r0, #0x10
-	strhne r0, [r2, #0x3c]
-	strhne r0, [r2, #0x38]
+	moveq r0, r0, lsl #0x10
+	moveq r0, r0, lsr #0x10
+	streqh r0, [r2, #0x3e]
+	streqh r0, [r2, #0x3a]
+	movne r0, r0, lsl #0x10
+	movne r0, r0, lsr #0x10
+	strneh r0, [r2, #0x3c]
+	strneh r0, [r2, #0x38]
 	bx lr
 	.align 2, 0
-_060008FC: .4byte 0x060198A4
+_060008FC: .word 0x060198A4
 	arm_func_end sub_060008B0
 
 	arm_func_start sub_06000900
-sub_06000900: @ 0x06000900
-	ldr r1, _06000928 @ =0x060198A4
+sub_06000900: ; 0x06000900
+	ldr r1, _06000928 ; =0x060198A4
 	ldr r2, [r1, #0x550]
 	strh r0, [r2, #0x30]
 	add r1, r2, #0x100
 	ldrh r1, [r1, #0x88]
 	add r0, r0, #4
 	cmp r1, #0
-	strheq r0, [r2, #0x38]
-	strhne r0, [r2, #0x3a]
+	streqh r0, [r2, #0x38]
+	strneh r0, [r2, #0x3a]
 	bx lr
 	.align 2, 0
-_06000928: .4byte 0x060198A4
+_06000928: .word 0x060198A4
 	arm_func_end sub_06000900
 
 	arm_func_start sub_0600092C
-sub_0600092C: @ 0x0600092C
-	ldr r1, _06000954 @ =0x060198A4
+sub_0600092C: ; 0x0600092C
+	ldr r1, _06000954 ; =0x060198A4
 	ldr r2, [r1, #0x550]
 	strh r0, [r2, #0x32]
 	add r1, r2, #0x100
 	ldrh r1, [r1, #0x88]
 	add r0, r0, #2
 	cmp r1, #0
-	strheq r0, [r2, #0x3a]
-	strhne r0, [r2, #0x38]
+	streqh r0, [r2, #0x3a]
+	strneh r0, [r2, #0x38]
 	bx lr
 	.align 2, 0
-_06000954: .4byte 0x060198A4
+_06000954: .word 0x060198A4
 	arm_func_end sub_0600092C
 
 	arm_func_start sub_06000958
-sub_06000958: @ 0x06000958
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_06000958: ; 0x06000958
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x28
 _06000960:
-	ldr r0, _060017D4 @ =0x060188A4
+	ldr r0, _060017D4 ; =0x060188A4
 	add r1, sp, #0x24
 	add r0, r0, #0x28
 	mov r2, #1
@@ -838,22 +842,22 @@ _06000960:
 _06000988:
 	ldrh r1, [sb, #0xc]
 	and r0, r1, #0xff00
-	lsl r0, r0, #0x10
-	lsrs r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	movs r0, r0, lsr #0x10
 	and r1, r1, #0xff
 	cmpne r0, #0x100
 	bne _06001ABC
 	tst r1, #0x80
 	beq _06001ABC
-	ldr r0, _060017D8 @ =0x060198A4
+	ldr r0, _060017D8 ; =0x060198A4
 	ldr r1, [r0, #0x54c]
 	cmp r1, #0
 	ldrne r8, [r0, #0x550]
-	ldrhne r3, [r8]
+	ldrneh r3, [r8]
 	cmpne r3, #1
 	beq _06000960
 	ldrh r2, [sb, #0xc]
-	ldr r1, _060017DC @ =0x00000182
+	ldr r1, _060017DC ; =0x00000182
 	cmp r2, r1
 	bgt _06000A24
 	bge _060010DC
@@ -862,17 +866,17 @@ _06000988:
 	subs r0, r2, #0x84
 	addpl pc, pc, r0, lsl #2
 	b _06001AB0
-_060009F0: @ jump table
-	b _06000A50 @ case 0
-	b _06000A74 @ case 1
-	b _06000D00 @ case 2
-	b _06000E64 @ case 3
-	b _06000E88 @ case 4
-	b _06001AB0 @ case 5
-	b _06001AB0 @ case 6
-	b _06000EAC @ case 7
-	b _06000EDC @ case 8
-	b _06000F0C @ case 9
+_060009F0: ; jump table
+	b _06000A50 ; case 0
+	b _06000A74 ; case 1
+	b _06000D00 ; case 2
+	b _06000E64 ; case 3
+	b _06000E88 ; case 4
+	b _06001AB0 ; case 5
+	b _06001AB0 ; case 6
+	b _06000EAC ; case 7
+	b _06000EDC ; case 8
+	b _06000F0C ; case 9
 _06000A18:
 	cmp r2, #0x180
 	beq _06001024
@@ -926,25 +930,25 @@ _06000AA4:
 	ldrb fp, [sp, #0x1c]
 	ldrb r3, [r0, #0x128]
 	cmp fp, r3
-	ldrbeq fp, [sp, #0x1d]
-	ldrbeq r3, [r0, #0x129]
+	ldreqb fp, [sp, #0x1d]
+	ldreqb r3, [r0, #0x129]
 	cmpeq fp, r3
-	ldrbeq fp, [sp, #0x1e]
-	ldrbeq r3, [r0, #0x12a]
+	ldreqb fp, [sp, #0x1e]
+	ldreqb r3, [r0, #0x12a]
 	cmpeq fp, r3
-	ldrbeq fp, [sp, #0x1f]
-	ldrbeq r3, [r0, #0x12b]
+	ldreqb fp, [sp, #0x1f]
+	ldreqb r3, [r0, #0x12b]
 	cmpeq fp, r3
-	ldrbeq fp, [sp, #0x20]
-	ldrbeq r3, [r0, #0x12c]
+	ldreqb fp, [sp, #0x20]
+	ldreqb r3, [r0, #0x12c]
 	cmpeq fp, r3
-	ldrbeq r3, [sp, #0x21]
-	ldrbeq r0, [r0, #0x12d]
+	ldreqb r3, [sp, #0x21]
+	ldreqb r0, [r0, #0x12d]
 	cmpeq r3, r0
 	bne _06000B68
 	add r3, r8, #0x100
-	lsl r0, r1, #0x10
-	lsr r6, r0, #0x10
+	mov r0, r1, lsl #0x10
+	mov r6, r0, lsr #0x10
 	ldrh r0, [r3, #0x82]
 	mvn r1, sl, lsl r6
 	and r0, r0, r1
@@ -998,9 +1002,9 @@ _06000B7C:
 	cmp r0, #1
 	bne _06001AB0
 	mov r0, #1
-	lsl r0, r0, r6
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl r6
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_060079AC
 	b _06001AB0
 _06000BFC:
@@ -1090,7 +1094,7 @@ _06000D00:
 	mov r2, #6
 	str r3, [r4]
 	bl sub_06000440
-	ldr r0, _060017E0 @ =0x0601892C
+	ldr r0, _060017E0 ; =0x0601892C
 	mov r1, r4
 	mov r2, #0
 	bl sub_06000284
@@ -1212,7 +1216,7 @@ _06000EDC:
 _06000F0C:
 	ldrb r0, [sb, #0x1f]
 	bl sub_06001B5C
-	ldr r2, _060017E4 @ =0x027FFF98
+	ldr r2, _060017E4 ; =0x027FFF98
 	ldrh r1, [r2]
 	eor r0, r0, r1, lsl #1
 	eor r0, r0, r0, lsr #16
@@ -1232,9 +1236,9 @@ _06000F0C:
 	mov r0, #0x25
 	str r0, [r1]
 	mov r0, #1
-	ldr r3, _060017E8 @ =0x00008002
+	ldr r3, _060017E8 ; =0x00008002
 	str r0, [r1, #4]
-	ldr r0, _060017E0 @ =0x0601892C
+	ldr r0, _060017E0 ; =0x0601892C
 	mov r2, #0
 	str r3, [r1, #8]
 	bl sub_06000284
@@ -1253,7 +1257,7 @@ _06000F7C:
 	bl sub_0600029C
 	b _06001AB0
 _06000FB0:
-	ldr r0, _060017D8 @ =0x060198A4
+	ldr r0, _060017D8 ; =0x060198A4
 	ldr r0, [r0, #0x550]
 	ldrh r0, [r0, #0xc2]
 	cmp r0, #0
@@ -1297,7 +1301,7 @@ _06001024:
 	cmp r0, #1
 	beq _06001AB0
 	ldrh r1, [sb, #0x16]
-	ldr r0, _060017EC @ =0x000005E4
+	ldr r0, _060017EC ; =0x000005E4
 	cmp r1, r0
 	bhi _06001AB0
 	ldrh r1, [r8, #0xae]
@@ -1335,14 +1339,14 @@ _060010DC:
 	bl sub_06001B5C
 	ldrh r1, [r8, #0xbe]
 	cmp r1, r0
-	strhhi r0, [r8, #0xbe]
+	strhih r0, [r8, #0xbe]
 	ldr r0, [r8, #0xc]
 	cmp r0, #0
 	beq _06001AB0
 	ldrh r0, [r8, #0x60]
 	cmp r0, #1
 	moveq r0, #0
-	strheq r0, [r8, #0x60]
+	streqh r0, [r8, #0x60]
 	ldrh r0, [r8, #0x70]
 	ldrh sl, [r8, #0x8e]
 	eor r0, r0, #1
@@ -1364,14 +1368,14 @@ _060010DC:
 	cmp r1, #1
 	mov r5, #0
 	bne _0600116C
-	ldr r0, _060017F0 @ =0x0380AD40
+	ldr r0, _060017F0 ; =0x0380AD40
 	mov r5, #1
 	bl sub_06001B0C
 _0600116C:
 	mov r7, #1
 	strh r7, [r8, #0x84]
 	ldrh r0, [r4, #0xa]
-	ldr r2, _060017F4 @ =0x000082EA
+	ldr r2, _060017F4 ; =0x000082EA
 	strh r0, [r8, #0x82]
 	ldrh r6, [sb, #0x18]
 	mov r0, #0
@@ -1382,21 +1386,21 @@ _0600116C:
 	ldrh r1, [r4, #0xa]
 	ldrh r0, [r4, #0xc]
 	sub r0, r1, r0
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	add r0, r0, #0x80
-	lsl r3, r0, #4
+	mov r3, r0, lsl #4
 	umull r1, r0, r3, r2
-	asr r3, r3, #0x1f
+	mov r3, r3, asr #0x1f
 	mla r0, r3, r2, r0
-	lsr r1, r1, #6
+	mov r1, r1, lsr #6
 	orr r1, r1, r0, lsl #26
-	lsr r3, r0, #6
-	lsr r1, r1, #0xa
-	ldr r0, _060017F0 @ =0x0380AD40
-	lsr r2, r3, #0xa
+	mov r3, r0, lsr #6
+	mov r1, r1, lsr #0xa
+	ldr r0, _060017F0 ; =0x0380AD40
+	mov r2, r3, lsr #0xa
 	orr r1, r1, r3, lsl #22
-	ldr r3, _060017F8 @ =sub_06001C84
+	ldr r3, _060017F8 ; =sub_06001C84
 	bl sub_06001B14
 	and r0, r6, #0x2800
 	cmp r0, #0x2800
@@ -1408,7 +1412,7 @@ _0600116C:
 	movne r2, #0
 	cmp r2, #0
 	movne r0, #0
-	strhne r0, [r8, #0x8a]
+	strneh r0, [r8, #0x8a]
 	cmp r1, #0
 	movne r0, #1
 	moveq r0, #0
@@ -1421,9 +1425,9 @@ _0600116C:
 	beq _06001274
 	ldrh r0, [r4, #0x2c]
 	sub r1, r0, #0x66
-	asr r0, r1, #1
+	mov r0, r1, asr #1
 	add r0, r1, r0, lsr #30
-	asr r0, r0, #2
+	mov r0, r0, asr #2
 	subs r1, r0, #0x20
 	bmi _06001274
 	ldrh r0, [r8, #0x32]
@@ -1431,8 +1435,8 @@ _0600116C:
 	movgt r1, #0x200
 	cmp r1, r0
 	beq _06001274
-	lsl r0, r1, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r1, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_0600092C
 _06001274:
 	mov r0, fp
@@ -1549,7 +1553,7 @@ _0600140C:
 _06001414:
 	cmp r1, #0
 	movne r0, #0
-	strhne r0, [r8, #0x66]
+	strneh r0, [r8, #0x66]
 	ldrh r1, [sb, #0x16]
 	ldrh r0, [sb, #0x14]
 	ldrh r3, [r8, #0x70]
@@ -1563,7 +1567,7 @@ _06001414:
 	mov r1, r6
 	add r0, sb, #0x10
 	bl sub_06000440
-	ldr r0, _060017D8 @ =0x060198A4
+	ldr r0, _060017D8 ; =0x060198A4
 	ldrh r1, [r6]
 	ldr r7, [r0, #0x550]
 	cmp r1, #0
@@ -1595,7 +1599,7 @@ _060014B0:
 	ldrh fp, [r6]
 	mov r0, #0
 	str r0, [sp, #0x14]
-	ldr r0, _060017FC @ =0x00008001
+	ldr r0, _060017FC ; =0x00008001
 	orr r1, r1, #0
 	rsb r0, r0, #0x18000
 	mov r4, #0
@@ -1617,8 +1621,8 @@ _060014EC:
 	cmp r1, r0
 	beq _06001568
 	sub r0, r1, #2
-	lsl r0, r0, #0x10
-	lsrs r3, r0, #0x10
+	mov r0, r0, lsl #0x10
+	movs r3, r0, lsr #0x10
 	strh r3, [sl]
 	ldrh r2, [r8, #0x86]
 	mov r1, #1
@@ -1643,7 +1647,7 @@ _06001568:
 	ldr r2, [r0, #0x738]
 	ldr r1, [r0, #0x73c]
 	mov r0, #1
-	lsl r0, r0, r7
+	mov r0, r0, lsl r7
 	str r0, [sp, #4]
 	mov r0, #1
 	orr fp, fp, r0, lsl r7
@@ -1675,9 +1679,9 @@ _06001568:
 	ldr r0, [sp, #4]
 	mov r2, #0
 	str r0, [r1, #4]
-	ldr r0, _060017FC @ =0x00008001
+	ldr r0, _060017FC ; =0x00008001
 	str r0, [r1, #8]
-	ldr r0, _060017E0 @ =0x0601892C
+	ldr r0, _060017E0 ; =0x0601892C
 	bl sub_06000284
 _06001610:
 	cmp r0, #0
@@ -1695,8 +1699,8 @@ _06001610:
 _06001640:
 	ldr r0, [sp, #0x14]
 	add r0, r0, #1
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	str r0, [sp, #0x14]
 	ldrh r0, [r6, #6]
 	add sl, sl, r0
@@ -1705,8 +1709,8 @@ _0600165C:
 	ldr r0, [sp, #0x14]
 	cmp r0, r1
 	blo _060014EC
-	lsl r0, fp, #0x10
-	lsr r1, r0, #0x10
+	mov r0, fp, lsl #0x10
+	mov r1, r0, lsr #0x10
 	mov r0, #0
 	bl sub_0600767C
 	ldrh r0, [r6]
@@ -1728,16 +1732,16 @@ _0600165C:
 	bl sub_06000720
 	ldr r1, [sp, #0x10]
 	cmp r1, #0
-	ldrsheq r1, [r8, #0x62]
+	ldreqsh r1, [r8, #0x62]
 	subeq r1, r1, #1
-	strheq r1, [r8, #0x62]
+	streqh r1, [r8, #0x62]
 	ldrsh r1, [r8, #0x64]
 	cmp r1, #0
 	subgt r1, r1, #1
-	strhgt r1, [r8, #0x64]
+	strgth r1, [r8, #0x64]
 	ldrsh r1, [r8, #0x62]
 	cmp r1, #0
-	ldrshgt r1, [r8, #0x64]
+	ldrgtsh r1, [r8, #0x64]
 	cmpgt r1, #0
 	movgt r4, #1
 	movle r4, #0
@@ -1746,18 +1750,18 @@ _0600165C:
 	beq _06001AB0
 	ldr r0, [sp, #0x10]
 	cmp r0, #1
-	ldrheq r4, [sb, #0x10]
+	ldreqh r4, [sb, #0x10]
 	ldrh r0, [r8, #0x44]
-	ldrne r4, _06001800 @ =0x0000FFFF
+	ldrne r4, _06001800 ; =0x0000FFFF
 	cmp r0, #0
 	beq _06001748
-	ldr r0, _06001804 @ =0x0380AD6C
+	ldr r0, _06001804 ; =0x0380AD6C
 	bl sub_06001B0C
 	str r4, [sp]
 	ldr r1, [r8, #0x48]
 	ldr r2, [r8, #0x4c]
-	ldr r0, _06001804 @ =0x0380AD6C
-	ldr r3, _06001808 @ =sub_06001BF0
+	ldr r0, _06001804 ; =0x0380AD6C
+	ldr r3, _06001808 ; =sub_06001BF0
 	bl sub_06001B14
 	b _06001AB0
 _06001748:
@@ -1772,20 +1776,20 @@ _06001754:
 	ldrh r0, [sb, #0xe]
 	cmp r0, #0
 	bne _060017B4
-	ldr r1, _0600180C @ =0x048080F8
+	ldr r1, _0600180C ; =0x048080F8
 	mov r4, #1
 	ldrh r0, [r1]
 	ldrh r3, [r1, #2]
 	ldrh r2, [r1]
 	cmp r0, r2
-	ldrhhi r3, [r1, #2]
-	asr r0, r2, #4
+	ldrhih r3, [r1, #2]
+	mov r0, r2, asr #4
 	orr r0, r0, r3, lsl #12
 	ldrh r1, [r8, #0x82]
-	lsl r0, r0, #0x10
+	mov r0, r0, lsl #0x10
 	rsb r0, r1, r0, lsr #16
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, asr #0x10
 	cmp r0, #0
 	ble _06001AB0
 	b _060017B8
@@ -1800,23 +1804,23 @@ _060017B8:
 	bl sub_06000740
 	b _06001AB0
 	.align 2, 0
-_060017D4: .4byte 0x060188A4
-_060017D8: .4byte 0x060198A4
-_060017DC: .4byte 0x00000182
-_060017E0: .4byte 0x0601892C
-_060017E4: .4byte 0x027FFF98
-_060017E8: .4byte 0x00008002
-_060017EC: .4byte 0x000005E4
-_060017F0: .4byte 0x0380AD40
-_060017F4: .4byte 0x000082EA
-_060017F8: .4byte sub_06001C84
-_060017FC: .4byte 0x00008001
-_06001800: .4byte 0x0000FFFF
-_06001804: .4byte 0x0380AD6C
-_06001808: .4byte sub_06001BF0
-_0600180C: .4byte 0x048080F8
+_060017D4: .word 0x060188A4
+_060017D8: .word 0x060198A4
+_060017DC: .word 0x00000182
+_060017E0: .word 0x0601892C
+_060017E4: .word 0x027FFF98
+_060017E8: .word 0x00008002
+_060017EC: .word 0x000005E4
+_060017F0: .word 0x0380AD40
+_060017F4: .word 0x000082EA
+_060017F8: .word sub_06001C84
+_060017FC: .word 0x00008001
+_06001800: .word 0x0000FFFF
+_06001804: .word 0x0380AD6C
+_06001808: .word sub_06001BF0
+_0600180C: .word 0x048080F8
 _06001810:
-	ldr r0, _060017F0 @ =0x0380AD40
+	ldr r0, _060017F0 ; =0x0380AD40
 	mov r1, #0
 	strh r1, [r8, #0x84]
 	ldrh r6, [r8, #0x90]
@@ -1839,7 +1843,7 @@ _06001858:
 _0600185C:
 	cmp r3, #0
 	movne r0, #0
-	strhne r0, [r8, #0x8c]
+	strneh r0, [r8, #0x8c]
 	ldrh r0, [r8, #0x8e]
 	cmp r0, #0
 	beq _06001898
@@ -1847,9 +1851,9 @@ _0600185C:
 	strh r0, [r8, #0x8e]
 	cmp r2, #0
 	movne r0, #1
-	lsl r1, r0, #0x10
+	mov r1, r0, lsl #0x10
 	mov r0, r4
-	lsr r1, r1, #0x10
+	mov r1, r1, lsr #0x10
 	bl sub_0600767C
 	mov r5, r0
 _06001898:
@@ -1861,7 +1865,7 @@ _06001898:
 	strh r0, [r7]
 	cmp r4, #0
 	movne r0, #9
-	strhne r0, [r7, #2]
+	strneh r0, [r7, #2]
 	bne _060018E4
 	add r0, r8, #0x100
 	ldrh r2, [sb, #0x3e]
@@ -1869,9 +1873,9 @@ _06001898:
 	mov r1, #1
 	tst r2, r1, lsl r0
 	movne r0, #0xf
-	strhne r0, [r7, #2]
+	strneh r0, [r7, #2]
 	moveq r0, #0
-	strheq r0, [r7, #2]
+	streqh r0, [r7, #2]
 _060018E4:
 	mov r0, #0xd
 	strh r0, [r7, #4]
@@ -1903,20 +1907,20 @@ _06001944:
 	cmp r6, #0
 	beq _06001AB0
 	cmp r5, #1
-	ldrhne r0, [r8, #0x5e]
+	ldrneh r0, [r8, #0x5e]
 	cmpne r0, #0
 	bne _060019A0
 	ldrh r0, [r8, #0x46]
 	cmp r0, #0
 	beq _06001998
-	ldr r0, _06001804 @ =0x0380AD6C
+	ldr r0, _06001804 ; =0x0380AD6C
 	bl sub_06001B0C
 	mov r0, #0
 	str r0, [sp]
 	ldr r1, [r8, #0x50]
 	ldr r2, [r8, #0x54]
-	ldr r0, _06001804 @ =0x0380AD6C
-	ldr r3, _06001AE0 @ =sub_06001D24
+	ldr r0, _06001804 ; =0x0380AD6C
+	ldr r3, _06001AE0 ; =sub_06001D24
 	bl sub_06001B14
 	b _06001AB0
 _06001998:
@@ -1933,12 +1937,12 @@ _060019B8:
 	add r0, r8, #0x700
 	ldrh r0, [r0, #0xcc]
 	cmp r0, #1
-	ldrheq r0, [sb, #0x10]
+	ldreqh r0, [sb, #0x10]
 	cmpeq r0, #0x20
 	bne _06001A2C
 	bl sub_06000720
 	mov r4, r0
-	ldr r0, _060017F0 @ =0x0380AD40
+	ldr r0, _060017F0 ; =0x0380AD40
 	bl sub_06001B0C
 	mov r1, #0
 	mov r0, r4
@@ -1964,14 +1968,14 @@ _06001A2C:
 	movs r1, r0
 	moveq r0, #0
 	beq _06001A80
-	ldr r0, _06001AE4 @ =0x00008003
+	ldr r0, _06001AE4 ; =0x00008003
 	mov r2, #0x25
 	str r2, [r1]
 	str r0, [r1, #8]
 	ldrh r0, [r8]
 	cmp r0, #9
 	cmpne r0, #7
-	ldreq r0, _06001AE8 @ =0x00007FFE
+	ldreq r0, _06001AE8 ; =0x00007FFE
 	streq r0, [r1, #4]
 	beq _06001A74
 	cmp r0, #0xa
@@ -1979,7 +1983,7 @@ _06001A2C:
 	moveq r0, #1
 	streq r0, [r1, #4]
 _06001A74:
-	ldr r0, _060017E0 @ =0x0601892C
+	ldr r0, _060017E0 ; =0x0601892C
 	mov r2, #0
 	bl sub_06000284
 _06001A80:
@@ -2000,7 +2004,7 @@ _06001AB0:
 	bl sub_06001B1C
 	b _06000960
 _06001ABC:
-	ldr r0, _060017D4 @ =0x060188A4
+	ldr r0, _060017D4 ; =0x060188A4
 	mov r1, sb
 	add r0, r0, #0x58
 	mov r2, #1
@@ -2008,62 +2012,62 @@ _06001ABC:
 	b _06000960
 _06001AD4:
 	add sp, sp, #0x28
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06001AE0: .4byte sub_06001D24
-_06001AE4: .4byte 0x00008003
-_06001AE8: .4byte 0x00007FFE
+_06001AE0: .word sub_06001D24
+_06001AE4: .word 0x00008003
+_06001AE8: .word 0x00007FFE
 	arm_func_end sub_06000958
 
 	arm_func_start sub_06001AEC
-sub_06001AEC: @ 0x06001AEC
-	ldr pc, _06001AF0 @ =sub_037F915C
+sub_06001AEC: ; 0x06001AEC
+	ldr pc, _06001AF0 ; =sub_037F915C
 	.align 2, 0
-_06001AF0: .4byte sub_037F915C
+_06001AF0: .word sub_037F915C
 	arm_func_end sub_06001AEC
 
 	arm_func_start sub_06001AF4
-sub_06001AF4: @ 0x06001AF4
-	ldr pc, _06001AF8 @ =sub_037FB07C
+sub_06001AF4: ; 0x06001AF4
+	ldr pc, _06001AF8 ; =sub_037FB07C
 	.align 2, 0
-_06001AF8: .4byte sub_037FB07C
+_06001AF8: .word sub_037FB07C
 	arm_func_end sub_06001AF4
 
 	arm_func_start sub_06001AFC
-sub_06001AFC: @ 0x06001AFC
-	ldr pc, _06001B00 @ =sub_037FA240
+sub_06001AFC: ; 0x06001AFC
+	ldr pc, _06001B00 ; =sub_037FA240
 	.align 2, 0
-_06001B00: .4byte sub_037FA240
+_06001B00: .word sub_037FA240
 	arm_func_end sub_06001AFC
 
 	arm_func_start sub_06001B04
-sub_06001B04: @ 0x06001B04
-	ldr pc, _06001B08 @ =sub_037FAFB0
+sub_06001B04: ; 0x06001B04
+	ldr pc, _06001B08 ; =sub_037FAFB0
 	.align 2, 0
-_06001B08: .4byte sub_037FAFB0
+_06001B08: .word sub_037FAFB0
 	arm_func_end sub_06001B04
 
 	arm_func_start sub_06001B0C
-sub_06001B0C: @ 0x06001B0C
-	ldr pc, _06001B10 @ =sub_037FA5E4
+sub_06001B0C: ; 0x06001B0C
+	ldr pc, _06001B10 ; =sub_037FA5E4
 	.align 2, 0
-_06001B10: .4byte sub_037FA5E4
+_06001B10: .word sub_037FA5E4
 	arm_func_end sub_06001B0C
 
 	arm_func_start sub_06001B14
-sub_06001B14: @ 0x06001B14
-	ldr pc, _06001B18 @ =sub_037FA500
+sub_06001B14: ; 0x06001B14
+	ldr pc, _06001B18 ; =sub_037FA500
 	.align 2, 0
-_06001B18: .4byte sub_037FA500
+_06001B18: .word sub_037FA500
 	arm_func_end sub_06001B14
 
 	arm_func_start sub_06001B1C
-sub_06001B1C: @ 0x06001B1C
-	push {r3, r4, r5, lr}
+sub_06001B1C: ; 0x06001B1C
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl sub_06000720
-	ldr r1, _06001B50 @ =0x060198A4
+	ldr r1, _06001B50 ; =0x060198A4
 	mov r4, r0
 	ldr r0, [r1, #0x544]
 	ldr r1, [r1, #0x548]
@@ -2071,32 +2075,32 @@ sub_06001B1C: @ 0x06001B1C
 	bl sub_06001B54
 	mov r0, r4
 	bl sub_06000740
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06001B50: .4byte 0x060198A4
+_06001B50: .word 0x060198A4
 	arm_func_end sub_06001B1C
 
 	arm_func_start sub_06001B54
-sub_06001B54: @ 0x06001B54
-	ldr pc, _06001B58 @ =sub_037F9DA8
+sub_06001B54: ; 0x06001B54
+	ldr pc, _06001B58 ; =sub_037F9DA8
 	.align 2, 0
-_06001B58: .4byte sub_037F9DA8
+_06001B58: .word sub_037F9DA8
 	arm_func_end sub_06001B54
 
 	arm_func_start sub_06001B5C
-sub_06001B5C: @ 0x06001B5C
+sub_06001B5C: ; 0x06001B5C
 	tst r0, #2
-	asr r0, r0, #2
+	mov r0, r0, asr #2
 	addeq r0, r0, #0x19
 	and r0, r0, #0xff
 	bx lr
 	arm_func_end sub_06001B5C
 
 	arm_func_start sub_06001B70
-sub_06001B70: @ 0x06001B70
-	push {r4, lr}
-	ldr r0, _06001BE8 @ =0x060198A4
+sub_06001B70: ; 0x06001B70
+	stmdb sp!, {r4, lr}
+	ldr r0, _06001BE8 ; =0x060198A4
 	ldr r4, [r0, #0x550]
 	bl sub_060007C0
 	movs r1, r0
@@ -2105,14 +2109,14 @@ sub_06001B70: @ 0x06001B70
 	mov r0, #0x2d
 	str r0, [r1]
 	ldrh r3, [r4, #0x68]
-	ldr r0, _06001BEC @ =0x0601892C
+	ldr r0, _06001BEC ; =0x0601892C
 	mov r2, #0
 	str r3, [r1, #4]
 	bl sub_06000284
 _06001BA8:
 	cmp r0, #0
 	movne r0, #1
-	strhne r0, [r4, #0x66]
+	strneh r0, [r4, #0x66]
 	bne _06001BE0
 	bl sub_06000294
 	mov r1, #0x80
@@ -2125,30 +2129,30 @@ _06001BA8:
 	strh r1, [r0, #6]
 	bl sub_0600029C
 _06001BE0:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06001BE8: .4byte 0x060198A4
-_06001BEC: .4byte 0x0601892C
+_06001BE8: .word 0x060198A4
+_06001BEC: .word 0x0601892C
 	arm_func_end sub_06001B70
 
 	arm_func_start sub_06001BF0
-sub_06001BF0: @ 0x06001BF0
-	ldr ip, _06001C00 @ =sub_06001C04
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+sub_06001BF0: ; 0x06001BF0
+	ldr ip, _06001C00 ; =sub_06001C04
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bx ip
 	.align 2, 0
-_06001C00: .4byte sub_06001C04
+_06001C00: .word sub_06001C04
 	arm_func_end sub_06001BF0
 
 	arm_func_start sub_06001C04
-sub_06001C04: @ 0x06001C04
-	push {r3, r4, r5, lr}
+sub_06001C04: ; 0x06001C04
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl sub_060007C0
 	movs r1, r0
-	ldr r4, _06001C80 @ =0x060188A4
+	ldr r4, _06001C80 ; =0x060188A4
 	moveq r0, #0
 	beq _06001C38
 	mov r0, #0x2b
@@ -2175,24 +2179,24 @@ _06001C38:
 	strh r1, [r0, #6]
 	bl sub_0600029C
 _06001C78:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06001C80: .4byte 0x060188A4
+_06001C80: .word 0x060188A4
 	arm_func_end sub_06001C04
 
 	arm_func_start sub_06001C84
-sub_06001C84: @ 0x06001C84
-	push {r3, r4, r5, lr}
-	ldr r1, _06001D0C @ =0x060198A4
+sub_06001C84: ; 0x06001C84
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _06001D0C ; =0x060198A4
 	mov r2, #0x40
 	ldr r0, [r1, #0x544]
 	ldr r1, [r1, #0x548]
-	ldr r5, _06001D10 @ =0x060188A4
+	ldr r5, _06001D10 ; =0x060188A4
 	bl sub_06001D1C
 	mov r4, r0
-	ldr r1, _06001D14 @ =0x00000185
-	ldr r0, _06001D18 @ =0x060188CC
+	ldr r1, _06001D14 ; =0x00000185
+	ldr r0, _06001D18 ; =0x060188CC
 	strh r1, [r4, #0xc]
 	mov r2, #0
 	mov r1, r4
@@ -2216,41 +2220,41 @@ sub_06001C84: @ 0x06001C84
 	strh r2, [r0, #6]
 	bl sub_0600029C
 _06001D04:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06001D0C: .4byte 0x060198A4
-_06001D10: .4byte 0x060188A4
-_06001D14: .4byte 0x00000185
-_06001D18: .4byte 0x060188CC
+_06001D0C: .word 0x060198A4
+_06001D10: .word 0x060188A4
+_06001D14: .word 0x00000185
+_06001D18: .word 0x060188CC
 	arm_func_end sub_06001C84
 
 	arm_func_start sub_06001D1C
-sub_06001D1C: @ 0x06001D1C
-	ldr pc, _06001D20 @ =sub_037F9C98
+sub_06001D1C: ; 0x06001D1C
+	ldr pc, _06001D20 ; =sub_037F9C98
 	.align 2, 0
-_06001D20: .4byte sub_037F9C98
+_06001D20: .word sub_037F9C98
 	arm_func_end sub_06001D1C
 
 	arm_func_start sub_06001D24
-sub_06001D24: @ 0x06001D24
-	ldr ip, _06001D2C @ =sub_06001D30
+sub_06001D24: ; 0x06001D24
+	ldr ip, _06001D2C ; =sub_06001D30
 	bx ip
 	.align 2, 0
-_06001D2C: .4byte sub_06001D30
+_06001D2C: .word sub_06001D30
 	arm_func_end sub_06001D24
 
 	arm_func_start sub_06001D30
-sub_06001D30: @ 0x06001D30
-	push {r4, lr}
+sub_06001D30: ; 0x06001D30
+	stmdb sp!, {r4, lr}
 	bl sub_060007C0
-	ldr r2, _06001DB8 @ =0x060198A4
+	ldr r2, _06001DB8 ; =0x060198A4
 	movs r1, r0
 	ldr r0, [r2, #0x550]
 	mov r2, #0
 	strh r2, [r0, #0x5e]
 	strh r2, [r0, #0x60]
-	ldr r4, _06001DBC @ =0x060188A4
+	ldr r4, _06001DBC ; =0x060188A4
 	strh r2, [r0, #0x88]
 	beq _06001D70
 	mov r3, #0x2c
@@ -2276,56 +2280,56 @@ _06001D70:
 	strh r1, [r0, #6]
 	bl sub_0600029C
 _06001DB0:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06001DB8: .4byte 0x060198A4
-_06001DBC: .4byte 0x060188A4
+_06001DB8: .word 0x060198A4
+_06001DBC: .word 0x060188A4
 	arm_func_end sub_06001D30
 
 	arm_func_start sub_06001DC0
-sub_06001DC0: @ 0x06001DC0
-	push {r3, lr}
-	ldr r0, _06001DDC @ =0x0380AD6C
+sub_06001DC0: ; 0x06001DC0
+	stmdb sp!, {r3, lr}
+	ldr r0, _06001DDC ; =0x0380AD6C
 	bl sub_06001DE4
-	ldr r0, _06001DE0 @ =0x0380AD40
+	ldr r0, _06001DE0 ; =0x0380AD40
 	bl sub_06001DE4
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06001DDC: .4byte 0x0380AD6C
-_06001DE0: .4byte 0x0380AD40
+_06001DDC: .word 0x0380AD6C
+_06001DE0: .word 0x0380AD40
 	arm_func_end sub_06001DC0
 
 	arm_func_start sub_06001DE4
-sub_06001DE4: @ 0x06001DE4
-	ldr pc, _06001DE8 @ =sub_037FA3C4
+sub_06001DE4: ; 0x06001DE4
+	ldr pc, _06001DE8 ; =sub_037FA3C4
 	.align 2, 0
-_06001DE8: .4byte sub_037FA3C4
+_06001DE8: .word sub_037FA3C4
 	arm_func_end sub_06001DE4
 
 	arm_func_start sub_06001DEC
-sub_06001DEC: @ 0x06001DEC
-	push {r3, lr}
-	ldr r0, _06001E08 @ =0x0380AD6C
+sub_06001DEC: ; 0x06001DEC
+	stmdb sp!, {r3, lr}
+	ldr r0, _06001E08 ; =0x0380AD6C
 	bl sub_06001B0C
-	ldr r0, _06001E0C @ =0x0380AD40
+	ldr r0, _06001E0C ; =0x0380AD40
 	bl sub_06001B0C
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06001E08: .4byte 0x0380AD6C
-_06001E0C: .4byte 0x0380AD40
+_06001E08: .word 0x0380AD6C
+_06001E0C: .word 0x0380AD40
 	arm_func_end sub_06001DEC
 
 	arm_func_start sub_06001E10
-sub_06001E10: @ 0x06001E10
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r0, _06001EA8 @ =0x060198A4
+sub_06001E10: ; 0x06001E10
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldr r0, _06001EA8 ; =0x060198A4
 	mov r6, #1
-	ldr r8, _06001EAC @ =0x060188A4
+	ldr r8, _06001EAC ; =0x060188A4
 	ldr sb, [r0, #0x550]
-	ldr r5, _06001EB0 @ =_060181B0
+	ldr r5, _06001EB0 ; =_060181B0
 	add r7, sp, #0
 	mov r4, #0
 	mov fp, r6
@@ -2343,8 +2347,8 @@ _06001E58:
 	ldrh sl, [r0]
 	tst sl, #0x8000
 	bicne r0, sl, #0x8000
-	lslne r0, r0, #0x10
-	lsrne sl, r0, #0x10
+	movne r0, r0, lsl #0x10
+	movne sl, r0, lsr #0x10
 	cmp sl, #0x2e
 	bhs _06001E90
 	str r6, [sb, #4]
@@ -2356,7 +2360,7 @@ _06001E58:
 	arm_func_end sub_06001E10
 
 	arm_func_start sub_06001E8C
-sub_06001E8C: @ 0x06001E8C
+sub_06001E8C: ; 0x06001E8C
 	str r4, [sb, #4]
 _06001E90:
 	ldr r0, [sp]
@@ -2364,22 +2368,22 @@ _06001E90:
 	strh r1, [r0]
 	b _06001E34
 _06001EA0:
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06001EA8: .4byte 0x060198A4
-_06001EAC: .4byte 0x060188A4
-_06001EB0: .4byte _060181B0
+_06001EA8: .word 0x060198A4
+_06001EAC: .word 0x060188A4
+_06001EB0: .word _060181B0
 	arm_func_end sub_06001E8C
 
 	arm_func_start sub_06001EB4
-sub_06001EB4: @ 0x06001EB4
+sub_06001EB4: ; 0x06001EB4
 	bx lr
 	arm_func_end sub_06001EB4
 
 	arm_func_start sub_06001EB8
-sub_06001EB8: @ 0x06001EB8
-	push {r4, lr}
+sub_06001EB8: ; 0x06001EB8
+	stmdb sp!, {r4, lr}
 	mov r2, #0
 	strh r2, [r0]
 	strh r2, [r0, #2]
@@ -2398,13 +2402,13 @@ sub_06001EB8: @ 0x06001EB8
 	strh r3, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_06001EB8
 
 	arm_func_start sub_06001F0C
-sub_06001F0C: @ 0x06001F0C
-	push {r4, lr}
+sub_06001F0C: ; 0x06001F0C
+	stmdb sp!, {r4, lr}
 	mov r4, #0
 	strh r4, [r0]
 	strh r4, [r0, #2]
@@ -2426,13 +2430,13 @@ sub_06001F0C: @ 0x06001F0C
 	strh ip, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_06001F0C
 
 	arm_func_start sub_06001F6C
-sub_06001F6C: @ 0x06001F6C
-	push {r3, r4, r5, r6, r7, lr}
+sub_06001F6C: ; 0x06001F6C
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	mov r0, #0
 	strh r0, [r4]
@@ -2463,7 +2467,7 @@ sub_06001F6C: @ 0x06001F6C
 	mov r2, #0x10
 	bl sub_06001B04
 	ldrh r1, [sp, #0x24]
-	lsr r0, r7, #1
+	mov r0, r7, lsr #1
 	strh r1, [r4, #0x4a]
 	mov r1, #0
 	strh r1, [r4, #0x4c]
@@ -2476,13 +2480,13 @@ sub_06001F6C: @ 0x06001F6C
 	strh r1, [r5, #0x12]
 	bl sub_0600020C
 	add r0, r5, #0x10
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	arm_func_end sub_06001F6C
 
 	arm_func_start sub_06002024
-sub_06002024: @ 0x06002024
-	push {r3, r4, r5, lr}
+sub_06002024: ; 0x06002024
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r3, #0
 	strh r3, [r4]
@@ -2510,13 +2514,13 @@ sub_06002024: @ 0x06002024
 	strh r1, [r5, #0x12]
 	bl sub_0600020C
 	add r0, r5, #0x10
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_06002024
 
 	arm_func_start sub_0600209C
-sub_0600209C: @ 0x0600209C
-	push {r4, r5, r6, lr}
+sub_0600209C: ; 0x0600209C
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	mov r0, #0
 	strh r0, [r4]
@@ -2546,13 +2550,13 @@ sub_0600209C: @ 0x0600209C
 	strh r1, [r5, #0x12]
 	bl sub_0600020C
 	add r0, r5, #0x10
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	arm_func_end sub_0600209C
 
 	arm_func_start sub_0600211C
-sub_0600211C: @ 0x0600211C
-	push {r3, r4, r5, lr}
+sub_0600211C: ; 0x0600211C
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r0, #0
 	strh r0, [r4]
@@ -2580,13 +2584,13 @@ sub_0600211C: @ 0x0600211C
 	strh r1, [r5, #0x12]
 	bl sub_0600020C
 	add r0, r5, #0x10
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_0600211C
 
 	arm_func_start sub_06002194
-sub_06002194: @ 0x06002194
-	push {r4, r5, r6, lr}
+sub_06002194: ; 0x06002194
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	mov r0, #0
 	strh r0, [r4]
@@ -2615,13 +2619,13 @@ sub_06002194: @ 0x06002194
 	strh r1, [r5, #0x12]
 	bl sub_0600020C
 	add r0, r5, #0x10
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	arm_func_end sub_06002194
 
 	arm_func_start sub_06002210
-sub_06002210: @ 0x06002210
-	push {r3, r4, r5, lr}
+sub_06002210: ; 0x06002210
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov ip, #0
 	strh ip, [r4]
@@ -2632,7 +2636,7 @@ sub_06002210: @ 0x06002210
 	strh ip, [r4, #8]
 	add r0, r0, #1
 	add r0, r0, r0, lsr #31
-	asr r5, r0, #1
+	mov r5, r0, asr #1
 	mov r0, r2
 	strh ip, [r4, #0xa]
 	mov r2, #9
@@ -2667,13 +2671,13 @@ sub_06002210: @ 0x06002210
 	strh r1, [r5, #0x12]
 	bl sub_0600020C
 	add r0, r5, #0x10
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_06002210
 
 	arm_func_start sub_060022D0
-sub_060022D0: @ 0x060022D0
-	push {r3, r4, r5, lr}
+sub_060022D0: ; 0x060022D0
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, #0
 	strh r5, [r4]
@@ -2703,13 +2707,13 @@ sub_060022D0: @ 0x060022D0
 	strh r1, [r5, #0x12]
 	bl sub_0600020C
 	add r0, r5, #0x10
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_060022D0
 
 	arm_func_start sub_06002350
-sub_06002350: @ 0x06002350
-	push {r3, r4, r5, lr}
+sub_06002350: ; 0x06002350
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r0, #0
 	strh r0, [r4]
@@ -2750,20 +2754,20 @@ sub_06002350: @ 0x06002350
 	strh r1, [r5, #0x12]
 	bl sub_0600020C
 	add r0, r5, #0x10
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_06002350
 
 	arm_func_start sub_060023FC
-sub_060023FC: @ 0x060023FC
-	push {r4, lr}
+sub_060023FC: ; 0x060023FC
+	stmdb sp!, {r4, lr}
 	mov ip, #0
 	strh ip, [r0]
 	strh ip, [r0, #2]
 	strh ip, [r0, #4]
 	strh ip, [r0, #6]
 	strh ip, [r0, #8]
-	ldr r4, _06002460 @ =0x00000101
+	ldr r4, _06002460 ; =0x00000101
 	strh ip, [r0, #0xa]
 	strh r4, [r0, #0xc]
 	mov r4, #4
@@ -2779,22 +2783,22 @@ sub_060023FC: @ 0x060023FC
 	strh r1, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06002460: .4byte 0x00000101
+_06002460: .word 0x00000101
 	arm_func_end sub_060023FC
 
 	arm_func_start sub_06002464
-sub_06002464: @ 0x06002464
-	push {r4, lr}
+sub_06002464: ; 0x06002464
+	stmdb sp!, {r4, lr}
 	mov ip, #0
 	strh ip, [r0]
 	strh ip, [r0, #2]
 	strh ip, [r0, #4]
 	strh ip, [r0, #6]
 	strh ip, [r0, #8]
-	ldr r4, _060024F8 @ =0x00000102
+	ldr r4, _060024F8 ; =0x00000102
 	strh ip, [r0, #0xa]
 	strh r4, [r0, #0xc]
 	mov r4, #0xa
@@ -2822,15 +2826,15 @@ sub_06002464: @ 0x06002464
 	strh r1, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060024F8: .4byte 0x00000102
+_060024F8: .word 0x00000102
 	arm_func_end sub_06002464
 
 	arm_func_start sub_060024FC
-sub_060024FC: @ 0x060024FC
-	push {r4, lr}
+sub_060024FC: ; 0x060024FC
+	stmdb sp!, {r4, lr}
 	mov r2, #0
 	strh r2, [r0]
 	strh r2, [r0, #2]
@@ -2850,13 +2854,13 @@ sub_060024FC: @ 0x060024FC
 	strh r3, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_060024FC
 
 	arm_func_start sub_06002554
-sub_06002554: @ 0x06002554
-	push {r4, lr}
+sub_06002554: ; 0x06002554
+	stmdb sp!, {r4, lr}
 	mov r1, #0
 	strh r1, [r0]
 	strh r1, [r0, #2]
@@ -2875,20 +2879,20 @@ sub_06002554: @ 0x06002554
 	strh r1, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_06002554
 
 	arm_func_start sub_060025A8
-sub_060025A8: @ 0x060025A8
-	push {r4, lr}
+sub_060025A8: ; 0x060025A8
+	stmdb sp!, {r4, lr}
 	mov r3, #0
 	strh r3, [r0]
 	strh r3, [r0, #2]
 	strh r3, [r0, #4]
 	strh r3, [r0, #6]
 	strh r3, [r0, #8]
-	ldr r2, _06002600 @ =0x00000207
+	ldr r2, _06002600 ; =0x00000207
 	strh r3, [r0, #0xa]
 	strh r2, [r0, #0xc]
 	mov r3, #1
@@ -2901,22 +2905,22 @@ sub_060025A8: @ 0x060025A8
 	strh r3, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06002600: .4byte 0x00000207
+_06002600: .word 0x00000207
 	arm_func_end sub_060025A8
 
 	arm_func_start sub_06002604
-sub_06002604: @ 0x06002604
-	push {r4, lr}
+sub_06002604: ; 0x06002604
+	stmdb sp!, {r4, lr}
 	mov r3, #0
 	strh r3, [r0]
 	strh r3, [r0, #2]
 	strh r3, [r0, #4]
 	strh r3, [r0, #6]
 	strh r3, [r0, #8]
-	ldr r2, _0600265C @ =0x0000020B
+	ldr r2, _0600265C ; =0x0000020B
 	strh r3, [r0, #0xa]
 	strh r2, [r0, #0xc]
 	mov r3, #1
@@ -2929,15 +2933,15 @@ sub_06002604: @ 0x06002604
 	strh r3, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600265C: .4byte 0x0000020B
+_0600265C: .word 0x0000020B
 	arm_func_end sub_06002604
 
 	arm_func_start sub_06002660
-sub_06002660: @ 0x06002660
-	push {r3, r4, r5, lr}
+sub_06002660: ; 0x06002660
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r0, #0
 	strh r0, [r4]
@@ -2945,7 +2949,7 @@ sub_06002660: @ 0x06002660
 	strh r0, [r4, #4]
 	strh r0, [r4, #6]
 	strh r0, [r4, #8]
-	ldr r2, _060026D0 @ =0x0000020D
+	ldr r2, _060026D0 ; =0x0000020D
 	strh r0, [r4, #0xa]
 	mov r0, r1
 	strh r2, [r4, #0xc]
@@ -2963,22 +2967,22 @@ sub_06002660: @ 0x06002660
 	strh r1, [r5, #0x12]
 	bl sub_0600020C
 	add r0, r5, #0x10
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060026D0: .4byte 0x0000020D
+_060026D0: .word 0x0000020D
 	arm_func_end sub_06002660
 
 	arm_func_start sub_060026D4
-sub_060026D4: @ 0x060026D4
-	push {r4, lr}
+sub_060026D4: ; 0x060026D4
+	stmdb sp!, {r4, lr}
 	mov r3, #0
 	strh r3, [r0]
 	strh r3, [r0, #2]
 	strh r3, [r0, #4]
 	strh r3, [r0, #6]
 	strh r3, [r0, #8]
-	ldr r2, _0600272C @ =0x0000020E
+	ldr r2, _0600272C ; =0x0000020E
 	strh r3, [r0, #0xa]
 	strh r2, [r0, #0xc]
 	mov r3, #1
@@ -2991,22 +2995,22 @@ sub_060026D4: @ 0x060026D4
 	strh r3, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600272C: .4byte 0x0000020E
+_0600272C: .word 0x0000020E
 	arm_func_end sub_060026D4
 
 	arm_func_start sub_06002730
-sub_06002730: @ 0x06002730
-	push {r4, lr}
+sub_06002730: ; 0x06002730
+	stmdb sp!, {r4, lr}
 	mov ip, #0
 	strh ip, [r0]
 	strh ip, [r0, #2]
 	strh ip, [r0, #4]
 	strh ip, [r0, #6]
 	strh ip, [r0, #8]
-	ldr r4, _06002794 @ =0x00000211
+	ldr r4, _06002794 ; =0x00000211
 	strh ip, [r0, #0xa]
 	strh r4, [r0, #0xc]
 	mov r4, #3
@@ -3022,22 +3026,22 @@ sub_06002730: @ 0x06002730
 	strh r1, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06002794: .4byte 0x00000211
+_06002794: .word 0x00000211
 	arm_func_end sub_06002730
 
 	arm_func_start sub_06002798
-sub_06002798: @ 0x06002798
-	push {r4, lr}
+sub_06002798: ; 0x06002798
+	stmdb sp!, {r4, lr}
 	mov r3, #0
 	strh r3, [r0]
 	strh r3, [r0, #2]
 	strh r3, [r0, #4]
 	strh r3, [r0, #6]
 	strh r3, [r0, #8]
-	ldr r2, _060027F0 @ =0x00000212
+	ldr r2, _060027F0 ; =0x00000212
 	strh r3, [r0, #0xa]
 	strh r2, [r0, #0xc]
 	mov r3, #1
@@ -3050,22 +3054,22 @@ sub_06002798: @ 0x06002798
 	strh r3, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060027F0: .4byte 0x00000212
+_060027F0: .word 0x00000212
 	arm_func_end sub_06002798
 
 	arm_func_start sub_060027F4
-sub_060027F4: @ 0x060027F4
-	push {r4, lr}
+sub_060027F4: ; 0x060027F4
+	stmdb sp!, {r4, lr}
 	mov r3, #0
 	strh r3, [r0]
 	strh r3, [r0, #2]
 	strh r3, [r0, #4]
 	strh r3, [r0, #6]
 	strh r3, [r0, #8]
-	ldr r2, _0600284C @ =0x00000215
+	ldr r2, _0600284C ; =0x00000215
 	strh r3, [r0, #0xa]
 	strh r2, [r0, #0xc]
 	mov r3, #1
@@ -3078,22 +3082,22 @@ sub_060027F4: @ 0x060027F4
 	strh r3, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600284C: .4byte 0x00000215
+_0600284C: .word 0x00000215
 	arm_func_end sub_060027F4
 
 	arm_func_start sub_06002850
-sub_06002850: @ 0x06002850
-	push {r4, lr}
+sub_06002850: ; 0x06002850
+	stmdb sp!, {r4, lr}
 	mov r3, #0
 	strh r3, [r0]
 	strh r3, [r0, #2]
 	strh r3, [r0, #4]
 	strh r3, [r0, #6]
 	strh r3, [r0, #8]
-	ldr r2, _060028A8 @ =0x00000216
+	ldr r2, _060028A8 ; =0x00000216
 	strh r3, [r0, #0xa]
 	strh r2, [r0, #0xc]
 	mov r3, #1
@@ -3106,22 +3110,22 @@ sub_06002850: @ 0x06002850
 	strh r3, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060028A8: .4byte 0x00000216
+_060028A8: .word 0x00000216
 	arm_func_end sub_06002850
 
 	arm_func_start sub_060028AC
-sub_060028AC: @ 0x060028AC
-	push {r4, lr}
+sub_060028AC: ; 0x060028AC
+	stmdb sp!, {r4, lr}
 	mov r3, #0
 	strh r3, [r0]
 	strh r3, [r0, #2]
 	strh r3, [r0, #4]
 	strh r3, [r0, #6]
 	strh r3, [r0, #8]
-	ldr r2, _06002904 @ =0x00000242
+	ldr r2, _06002904 ; =0x00000242
 	strh r3, [r0, #0xa]
 	strh r2, [r0, #0xc]
 	mov r3, #1
@@ -3134,15 +3138,15 @@ sub_060028AC: @ 0x060028AC
 	strh r3, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06002904: .4byte 0x00000242
+_06002904: .word 0x00000242
 	arm_func_end sub_060028AC
 
 	arm_func_start sub_06002908
-sub_06002908: @ 0x06002908
-	push {r3, r4, r5, lr}
+sub_06002908: ; 0x06002908
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov ip, #0
 	strh ip, [r4]
@@ -3152,9 +3156,9 @@ sub_06002908: @ 0x06002908
 	strh ip, [r4, #8]
 	add r0, r1, #1
 	add r0, r0, r0, lsr #31
-	asr r3, r0, #1
+	mov r3, r0, asr #1
 	mov r0, r2
-	ldr r5, _06002988 @ =0x00000245
+	ldr r5, _06002988 ; =0x00000245
 	strh ip, [r4, #0xa]
 	strh r5, [r4, #0xc]
 	add r2, r3, #1
@@ -3172,140 +3176,140 @@ sub_06002908: @ 0x06002908
 	strh r1, [r5, #0x12]
 	bl sub_0600020C
 	add r0, r5, #0x10
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06002988: .4byte 0x00000245
+_06002988: .word 0x00000245
 	arm_func_end sub_06002908
 
 	arm_func_start sub_0600298C
-sub_0600298C: @ 0x0600298C
-	ldr ip, _0600299C @ =sub_06002AF8
-	ldr r1, _060029A0 @ =0x00000281
+sub_0600298C: ; 0x0600298C
+	ldr ip, _0600299C ; =sub_06002AF8
+	ldr r1, _060029A0 ; =0x00000281
 	mov r2, #4
 	bx ip
 	.align 2, 0
-_0600299C: .4byte sub_06002AF8
-_060029A0: .4byte 0x00000281
+_0600299C: .word sub_06002AF8
+_060029A0: .word 0x00000281
 	arm_func_end sub_0600298C
 
 	arm_func_start sub_060029A4
-sub_060029A4: @ 0x060029A4
-	ldr ip, _060029B4 @ =sub_06002AF8
-	ldr r1, _060029B8 @ =0x00000283
+sub_060029A4: ; 0x060029A4
+	ldr ip, _060029B4 ; =sub_06002AF8
+	ldr r1, _060029B8 ; =0x00000283
 	mov r2, #3
 	bx ip
 	.align 2, 0
-_060029B4: .4byte sub_06002AF8
-_060029B8: .4byte 0x00000283
+_060029B4: .word sub_06002AF8
+_060029B8: .word 0x00000283
 	arm_func_end sub_060029A4
 
 	arm_func_start sub_060029BC
-sub_060029BC: @ 0x060029BC
-	ldr ip, _060029CC @ =sub_06002AF8
+sub_060029BC: ; 0x060029BC
+	ldr ip, _060029CC ; =sub_06002AF8
 	mov r1, #0x284
 	mov r2, #2
 	bx ip
 	.align 2, 0
-_060029CC: .4byte sub_06002AF8
+_060029CC: .word sub_06002AF8
 	arm_func_end sub_060029BC
 
 	arm_func_start sub_060029D0
-sub_060029D0: @ 0x060029D0
-	ldr ip, _060029E0 @ =sub_06002AF8
-	ldr r1, _060029E4 @ =0x00000301
+sub_060029D0: ; 0x060029D0
+	ldr ip, _060029E0 ; =sub_06002AF8
+	ldr r1, _060029E4 ; =0x00000301
 	mov r2, #1
 	bx ip
 	.align 2, 0
-_060029E0: .4byte sub_06002AF8
-_060029E4: .4byte 0x00000301
+_060029E0: .word sub_06002AF8
+_060029E4: .word 0x00000301
 	arm_func_end sub_060029D0
 
 	arm_func_start sub_060029E8
-sub_060029E8: @ 0x060029E8
-	ldr ip, _060029F8 @ =sub_06002AF8
-	ldr r1, _060029FC @ =0x00000302
+sub_060029E8: ; 0x060029E8
+	ldr ip, _060029F8 ; =sub_06002AF8
+	ldr r1, _060029FC ; =0x00000302
 	mov r2, #1
 	bx ip
 	.align 2, 0
-_060029F8: .4byte sub_06002AF8
-_060029FC: .4byte 0x00000302
+_060029F8: .word sub_06002AF8
+_060029FC: .word 0x00000302
 	arm_func_end sub_060029E8
 
 	arm_func_start sub_06002A00
-sub_06002A00: @ 0x06002A00
-	ldr ip, _06002A10 @ =sub_06002AF8
-	ldr r1, _06002A14 @ =0x00000303
+sub_06002A00: ; 0x06002A00
+	ldr ip, _06002A10 ; =sub_06002AF8
+	ldr r1, _06002A14 ; =0x00000303
 	mov r2, #1
 	bx ip
 	.align 2, 0
-_06002A10: .4byte sub_06002AF8
-_06002A14: .4byte 0x00000303
+_06002A10: .word sub_06002AF8
+_06002A14: .word 0x00000303
 	arm_func_end sub_06002A00
 
 	arm_func_start sub_06002A18
-sub_06002A18: @ 0x06002A18
-	ldr ip, _06002A28 @ =sub_06002AF8
+sub_06002A18: ; 0x06002A18
+	ldr ip, _06002A28 ; =sub_06002AF8
 	mov r1, #0x304
 	mov r2, #1
 	bx ip
 	.align 2, 0
-_06002A28: .4byte sub_06002AF8
+_06002A28: .word sub_06002AF8
 	arm_func_end sub_06002A18
 
 	arm_func_start sub_06002A2C
-sub_06002A2C: @ 0x06002A2C
-	ldr ip, _06002A3C @ =sub_06002AF8
-	ldr r1, _06002A40 @ =0x00000305
+sub_06002A2C: ; 0x06002A2C
+	ldr ip, _06002A3C ; =sub_06002AF8
+	ldr r1, _06002A40 ; =0x00000305
 	mov r2, #1
 	bx ip
 	.align 2, 0
-_06002A3C: .4byte sub_06002AF8
-_06002A40: .4byte 0x00000305
+_06002A3C: .word sub_06002AF8
+_06002A40: .word 0x00000305
 	arm_func_end sub_06002A2C
 
 	arm_func_start sub_06002A44
-sub_06002A44: @ 0x06002A44
-	ldr ip, _06002A54 @ =sub_06002AF8
-	ldr r1, _06002A58 @ =0x00000306
+sub_06002A44: ; 0x06002A44
+	ldr ip, _06002A54 ; =sub_06002AF8
+	ldr r1, _06002A58 ; =0x00000306
 	mov r2, #9
 	bx ip
 	.align 2, 0
-_06002A54: .4byte sub_06002AF8
-_06002A58: .4byte 0x00000306
+_06002A54: .word sub_06002AF8
+_06002A58: .word 0x00000306
 	arm_func_end sub_06002A44
 
 	arm_func_start sub_06002A5C
-sub_06002A5C: @ 0x06002A5C
-	ldr ip, _06002A6C @ =sub_06002AF8
-	ldr r1, _06002A70 @ =0x00000307
+sub_06002A5C: ; 0x06002A5C
+	ldr ip, _06002A6C ; =sub_06002AF8
+	ldr r1, _06002A70 ; =0x00000307
 	mov r2, #0x5c
 	bx ip
 	.align 2, 0
-_06002A6C: .4byte sub_06002AF8
-_06002A70: .4byte 0x00000307
+_06002A6C: .word sub_06002AF8
+_06002A70: .word 0x00000307
 	arm_func_end sub_06002A5C
 
 	arm_func_start sub_06002A74
-sub_06002A74: @ 0x06002A74
-	ldr ip, _06002A84 @ =sub_06002AF8
+sub_06002A74: ; 0x06002A74
+	ldr ip, _06002A84 ; =sub_06002AF8
 	mov r1, #0x308
 	mov r2, #2
 	bx ip
 	.align 2, 0
-_06002A84: .4byte sub_06002AF8
+_06002A84: .word sub_06002AF8
 	arm_func_end sub_06002A74
 
 	arm_func_start sub_06002A88
-sub_06002A88: @ 0x06002A88
-	push {r4, lr}
+sub_06002A88: ; 0x06002A88
+	stmdb sp!, {r4, lr}
 	mov ip, #0
 	strh ip, [r0]
 	strh ip, [r0, #2]
 	strh ip, [r0, #4]
 	strh ip, [r0, #6]
 	strh ip, [r0, #8]
-	ldr r4, _06002AF4 @ =0x00000309
+	ldr r4, _06002AF4 ; =0x00000309
 	strh ip, [r0, #0xa]
 	strh r4, [r0, #0xc]
 	mov r4, #4
@@ -3323,15 +3327,15 @@ sub_06002A88: @ 0x06002A88
 	strh r1, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06002AF4: .4byte 0x00000309
+_06002AF4: .word 0x00000309
 	arm_func_end sub_06002A88
 
 	arm_func_start sub_06002AF8
-sub_06002AF8: @ 0x06002AF8
-	push {r4, lr}
+sub_06002AF8: ; 0x06002AF8
+	stmdb sp!, {r4, lr}
 	mov r3, #0
 	strh r3, [r0]
 	strh r3, [r0, #2]
@@ -3347,16 +3351,16 @@ sub_06002AF8: @ 0x06002AF8
 	strh r2, [r4, #0x12]
 	bl sub_0600020C
 	add r0, r4, #0x10
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_06002AF8
 
 	arm_func_start sub_06002B40
-sub_06002B40: @ 0x06002B40
-	push {r3, r4, lr}
+sub_06002B40: ; 0x06002B40
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r4, [r0, #4]
-	ldr r1, _06002BDC @ =0x060198A4
+	ldr r1, _06002BDC ; =0x060198A4
 	str r4, [r1, #0x54c]
 	ldr r2, [r0, #8]
 	str r2, [r1, #0x550]
@@ -3392,17 +3396,17 @@ _06002BB0:
 	bl sub_0600029C
 _06002BD0:
 	add sp, sp, #4
-	pop {r3, r4, lr}
+	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_06002BDC: .4byte 0x060198A4
+_06002BDC: .word 0x060198A4
 	arm_func_end sub_06002B40
 
 	arm_func_start sub_06002BE0
-sub_06002BE0: @ 0x06002BE0
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_06002BE0: ; 0x06002BE0
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x210
-	ldr r0, _06002FAC @ =0x060198A4
+	ldr r0, _06002FAC ; =0x060198A4
 	mov r4, #0
 	ldr r8, [r0, #0x550]
 	bl sub_06000720
@@ -3418,17 +3422,17 @@ sub_06002BE0: @ 0x06002BE0
 	ldrh r0, [r8]
 	cmp r0, #0xa
 	moveq r0, #8
-	strheq r0, [r8]
+	streqh r0, [r8]
 	beq _06002C3C
 	cmp r0, #9
 	moveq r0, #7
-	strheq r0, [r8]
+	streqh r0, [r8]
 _06002C3C:
 	ldrh r1, [r8]
 	add r0, r1, #0xf9
 	add r0, r0, #0xff00
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	cmp r0, #1
 	bhi _06002C70
 	add r0, r8, #0x100
@@ -3452,12 +3456,12 @@ _06002C74:
 	bl sub_06000740
 	cmp r4, #0
 	beq _06002CAC
-	ldr r0, _06002FB0 @ =0x0000FFFF
+	ldr r0, _06002FB0 ; =0x0000FFFF
 	bl sub_060079AC
 _06002CAC:
 	cmp sl, #0
 	movne r0, #0
-	strhne r0, [r8, #0xf6]
+	strneh r0, [r8, #0xf6]
 	cmp sb, #0
 	beq _06002D08
 	mov r7, #0
@@ -3472,9 +3476,9 @@ _06002CD4:
 	addeq r2, r4, #0x100
 	subne r0, r7, #1
 	mlane r2, r0, fp, r5
-	lsl r1, r7, #0x10
+	mov r1, r7, lsl #0x10
 	mov r0, sl
-	lsr r1, r1, #0x10
+	mov r1, r1, lsr #0x10
 	bl sub_06004BF0
 _06002CFC:
 	add r7, r7, #1
@@ -3533,8 +3537,8 @@ _06002DB0:
 _06002DB8:
 	add r0, r1, #0xfe
 	add r0, r0, #0xff00
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	cmp r0, #1
 	bhi _06002E3C
 	add r0, r8, #0x8a
@@ -3582,7 +3586,7 @@ _06002E3C:
 	ldrh r0, [r0, #4]
 	cmp r0, #0
 	moveq r0, #3
-	strheq r0, [r8]
+	streqh r0, [r8]
 _06002E74:
 	add r0, sp, #0x10
 	mov r1, #1
@@ -3599,7 +3603,7 @@ _06002E98:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06002EB8
-	ldr r0, _06002FB4 @ =0x00000302
+	ldr r0, _06002FB4 ; =0x00000302
 	bl sub_06002FC0
 	b _06002FA0
 _06002EB8:
@@ -3613,7 +3617,7 @@ _06002EB8:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06002EEC
-	ldr r0, _06002FB8 @ =0x0000020E
+	ldr r0, _06002FB8 ; =0x0000020E
 	bl sub_06002FC0
 	b _06002FA0
 _06002EEC:
@@ -3640,7 +3644,7 @@ _06002F10:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06002F4C
-	ldr r0, _06002FBC @ =0x00000309
+	ldr r0, _06002FBC ; =0x00000309
 	bl sub_06002FC0
 	b _06002FA0
 _06002F4C:
@@ -3649,7 +3653,7 @@ _06002F4C:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06002F6C
-	ldr r0, _06002FB4 @ =0x00000302
+	ldr r0, _06002FB4 ; =0x00000302
 	bl sub_06002FC0
 	b _06002FA0
 _06002F6C:
@@ -3670,19 +3674,19 @@ _06002F88:
 	bl sub_0600029C
 _06002FA0:
 	add sp, sp, #0x210
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06002FAC: .4byte 0x060198A4
-_06002FB0: .4byte 0x0000FFFF
-_06002FB4: .4byte 0x00000302
-_06002FB8: .4byte 0x0000020E
-_06002FBC: .4byte 0x00000309
+_06002FAC: .word 0x060198A4
+_06002FB0: .word 0x0000FFFF
+_06002FB4: .word 0x00000302
+_06002FB8: .word 0x0000020E
+_06002FBC: .word 0x00000309
 	arm_func_end sub_06002BE0
 
 	arm_func_start sub_06002FC0
-sub_06002FC0: @ 0x06002FC0
-	push {r3, r4, r5, lr}
+sub_06002FC0: ; 0x06002FC0
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	bl sub_06000294
@@ -3692,15 +3696,15 @@ sub_06002FC0: @ 0x06002FC0
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
 	bl sub_0600029C
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_06002FC0
 
 	arm_func_start sub_06002FF0
-sub_06002FF0: @ 0x06002FF0
-	push {r3, r4, r5, lr}
+sub_06002FF0: ; 0x06002FF0
+	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x200
-	ldr r0, _0600309C @ =0x060198A4
+	ldr r0, _0600309C ; =0x060198A4
 	ldr r4, [r0, #0x550]
 	ldrh r0, [r4]
 	cmp r0, #2
@@ -3742,24 +3746,24 @@ _06003064:
 	bl sub_0600029C
 _06003090:
 	add sp, sp, #0x200
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600309C: .4byte 0x060198A4
+_0600309C: .word 0x060198A4
 	arm_func_end sub_06002FF0
 
 	arm_func_start sub_060030A0
-sub_060030A0: @ 0x060030A0
-	ldr pc, _060030A4 @ =sub_038022BC
+sub_060030A0: ; 0x060030A0
+	ldr pc, _060030A4 ; =sub_038022BC
 	.align 2, 0
-_060030A4: .4byte sub_038022BC
+_060030A4: .word sub_038022BC
 	arm_func_end sub_060030A0
 
 	arm_func_start sub_060030A8
-sub_060030A8: @ 0x060030A8
-	push {r4, lr}
+sub_060030A8: ; 0x060030A8
+	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x200
-	ldr r1, _06003160 @ =0x060198A4
+	ldr r1, _06003160 ; =0x060198A4
 	ldr r0, [r0, #4]
 	ldr r4, [r1, #0x550]
 	mov r2, #0x40
@@ -3789,7 +3793,7 @@ _060030FC:
 	mov r1, #7
 	strh r1, [r0]
 	mov r2, #1
-	ldr r1, _06003164 @ =0x00000212
+	ldr r1, _06003164 ; =0x00000212
 	strh r2, [r0, #2]
 	strh r1, [r0, #4]
 	strh r4, [r0, #6]
@@ -3804,18 +3808,18 @@ _0600313C:
 	bl sub_0600029C
 _06003154:
 	add sp, sp, #0x200
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06003160: .4byte 0x060198A4
-_06003164: .4byte 0x00000212
+_06003160: .word 0x060198A4
+_06003164: .word 0x00000212
 	arm_func_end sub_060030A8
 
 	arm_func_start sub_06003168
-sub_06003168: @ 0x06003168
-	push {r4, r5, r6, lr}
+sub_06003168: ; 0x06003168
+	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x2b8
-	ldr r1, _060033EC @ =0x060198A4
+	ldr r1, _060033EC ; =0x060198A4
 	add r5, sp, #0xb8
 	ldr r4, [r1, #0x550]
 	ldrh r1, [r4]
@@ -3839,7 +3843,7 @@ _060031B8:
 	ldrh r2, [r1, #0x1a]
 	mov r3, #1
 	ldrh ip, [r1, #0xf6]
-	lsl r2, r3, r2
+	mov r2, r3, lsl r2
 	ldr r6, [r0, #4]
 	tst ip, r2, asr #1
 	bne _060031FC
@@ -3875,15 +3879,15 @@ _060031FC:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06003260
-	ldr r0, _060033F0 @ =0x00000303
+	ldr r0, _060033F0 ; =0x00000303
 	bl sub_060033F4
 	b _060033E0
 _06003260:
 	cmp r6, #0
 	movne r0, #1
 	moveq r0, #0
-	lsl r0, r0, #0x10
-	lsr r6, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r6, r0, lsr #0x10
 	mov r0, r5
 	mov r1, r6
 	mov r2, #0
@@ -3914,7 +3918,7 @@ _060032A0:
 	strh r1, [sp, #0x18]
 	ldr r2, [r6, #8]
 	mov r3, #0
-	lsr r2, r2, #0x10
+	mov r2, r2, lsr #0x10
 	strh r2, [sp, #0x1a]
 	ldrh r5, [r6, #0xc]
 	mov r2, #2
@@ -3929,8 +3933,8 @@ _060032A0:
 	ldrh r2, [r6, #4]
 	add r3, sp, #0x38
 	add r2, r2, #0x10
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	str r2, [sp, #0x10]
 	str r3, [sp, #0x14]
 	ldrh r3, [r6, #0x18]
@@ -3950,8 +3954,8 @@ _0600335C:
 	movne r1, #0x2a
 	moveq r1, #0
 	add r0, r0, r1
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_06000860
 	ldrh r0, [r6, #0x14]
 	cmp r0, #0
@@ -3959,8 +3963,8 @@ _0600335C:
 	ldrh r0, [r6, #0x36]
 	moveq r1, #0
 	add r0, r0, r1
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_060008B0
 	bl sub_06000294
 	mov r1, #7
@@ -3979,16 +3983,16 @@ _0600335C:
 	strh r0, [r4, #0xc2]
 _060033E0:
 	add sp, sp, #0x2b8
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_060033EC: .4byte 0x060198A4
-_060033F0: .4byte 0x00000303
+_060033EC: .word 0x060198A4
+_060033F0: .word 0x00000303
 	arm_func_end sub_06003168
 
 	arm_func_start sub_060033F4
-sub_060033F4: @ 0x060033F4
-	push {r3, r4, r5, lr}
+sub_060033F4: ; 0x060033F4
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	bl sub_06000294
@@ -4001,15 +4005,15 @@ sub_060033F4: @ 0x060033F4
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
 	bl sub_0600029C
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_060033F4
 
 	arm_func_start sub_06003430
-sub_06003430: @ 0x06003430
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
+sub_06003430: ; 0x06003430
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x208
-	ldr r0, _060035EC @ =0x060198A4
+	ldr r0, _060035EC ; =0x060198A4
 	ldr sl, [r0, #0x550]
 	ldrh r0, [sl]
 	cmp r0, #7
@@ -4074,8 +4078,8 @@ _060034E8:
 	str r2, [r1, #0x738]
 	str r2, [r1, #0x73c]
 	bl sub_06000740
-	lsl r0, r8, #0x10
-	lsr r1, r0, #0x10
+	mov r0, r8, lsl #0x10
+	mov r1, r0, lsr #0x10
 	add r2, sp, #0
 	mov r0, #1
 	bl sub_06004BF0
@@ -4104,7 +4108,7 @@ _06003574:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _060035A0
-	ldr r0, _060035F0 @ =0x00000302
+	ldr r0, _060035F0 ; =0x00000302
 	bl sub_060035F4
 	b _060035E0
 _060035A0:
@@ -4126,16 +4130,16 @@ _060035A0:
 	bl sub_0600029C
 _060035E0:
 	add sp, sp, #0x208
-	pop {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_060035EC: .4byte 0x060198A4
-_060035F0: .4byte 0x00000302
+_060035EC: .word 0x060198A4
+_060035F0: .word 0x00000302
 	arm_func_end sub_06003430
 
 	arm_func_start sub_060035F4
-sub_060035F4: @ 0x060035F4
-	push {r3, r4, r5, lr}
+sub_060035F4: ; 0x060035F4
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	bl sub_06000294
@@ -4146,15 +4150,15 @@ sub_060035F4: @ 0x060035F4
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
 	bl sub_0600029C
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_060035F4
 
 	arm_func_start sub_06003628
-sub_06003628: @ 0x06003628
-	push {r3, r4, r5, r6, r7, lr}
+sub_06003628: ; 0x06003628
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x248
-	ldr r1, _06003978 @ =0x060198A4
+	ldr r1, _06003978 ; =0x060198A4
 	add r4, sp, #0x48
 	ldr r7, [r1, #0x550]
 	ldrh r1, [r7]
@@ -4183,12 +4187,12 @@ _06003674:
 	mov r2, #6
 	bl sub_06000440
 	ldrh r1, [sp, #0x10]
-	ldr r0, _0600397C @ =0x0000FFFF
+	ldr r0, _0600397C ; =0x0000FFFF
 	cmp r1, r0
 	beq _060036B8
 	tst r1, #1
 	bicne r0, r1, #1
-	strhne r0, [sp, #0x10]
+	strneh r0, [sp, #0x10]
 _060036B8:
 	cmp r5, #0
 	bne _060036E4
@@ -4243,7 +4247,7 @@ _06003748:
 	mov r2, #0
 	cmp r1, #0
 	beq _0600378C
-	ldr r0, _06003980 @ =0x00000303
+	ldr r0, _06003980 ; =0x00000303
 	bl sub_06003ED4
 	b _0600396C
 _0600378C:
@@ -4263,7 +4267,7 @@ _0600378C:
 _060037C0:
 	strh r0, [r7, #0xc6]
 _060037C4:
-	ldr r0, _0600397C @ =0x0000FFFF
+	ldr r0, _0600397C ; =0x0000FFFF
 	mov r3, #5
 	strh r3, [r7]
 	add r1, sp, #0x26
@@ -4280,7 +4284,7 @@ _060037C4:
 	str r1, [sp, #4]
 	add r0, sp, #0x16
 	str r0, [sp, #8]
-	ldr r1, _06003984 @ =0x0000011E
+	ldr r1, _06003984 ; =0x0000011E
 	add r2, sp, #0x10
 	str r6, [sp, #0xc]
 	mov r0, r4
@@ -4318,7 +4322,7 @@ _06003878:
 	ldrh r2, [r4, #0xa]
 	ldr r1, [r7, #0x184]
 	add r0, r4, #0xa
-	lsl r2, r2, #1
+	mov r2, r2, lsl #1
 	bl sub_06000440
 	mov r0, #0xa
 	strh r0, [r6]
@@ -4375,42 +4379,42 @@ _06003964:
 	bl sub_0600029C
 _0600396C:
 	add sp, sp, #0x248
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06003978: .4byte 0x060198A4
-_0600397C: .4byte 0x0000FFFF
-_06003980: .4byte 0x00000303
-_06003984: .4byte 0x0000011E
+_06003978: .word 0x060198A4
+_0600397C: .word 0x0000FFFF
+_06003980: .word 0x00000303
+_06003984: .word 0x0000011E
 	arm_func_end sub_06003628
 
 	arm_func_start sub_06003988
-sub_06003988: @ 0x06003988
+sub_06003988: ; 0x06003988
 	tst r0, #2
-	asr r0, r0, #2
+	mov r0, r0, asr #2
 	addeq r0, r0, #0x19
 	and r0, r0, #0xff
 	bx lr
 	arm_func_end sub_06003988
 
 	arm_func_start sub_0600399C
-sub_0600399C: @ 0x0600399C
-	ldr r2, _060039B4 @ =0x027FFF98
+sub_0600399C: ; 0x0600399C
+	ldr r2, _060039B4 ; =0x027FFF98
 	ldrh r1, [r2]
 	eor r0, r0, r1, lsl #1
 	eor r0, r0, r0, lsr #16
 	strh r0, [r2]
 	bx lr
 	.align 2, 0
-_060039B4: .4byte 0x027FFF98
+_060039B4: .word 0x027FFF98
 	arm_func_end sub_0600399C
 
 	arm_func_start sub_060039B8
-sub_060039B8: @ 0x060039B8
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_060039B8: ; 0x060039B8
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc8
 	sub sp, sp, #0x400
-	ldr r1, _06003EB8 @ =0x060198A4
+	ldr r1, _06003EB8 ; =0x060198A4
 	mov sb, r0
 	ldr r8, [r1, #0x550]
 	ldrh r0, [r8]
@@ -4463,17 +4467,17 @@ _06003A6C:
 	ldrh r4, [sb, #0x14]
 	bl sub_06000440
 	ldrh r1, [sp, #0x18]
-	ldr r0, _06003EBC @ =0x0000FFFF
+	ldr r0, _06003EBC ; =0x0000FFFF
 	ldrh r7, [sb, #8]
 	cmp r1, r0
 	beq _06003AA0
 	tst r1, #1
 	bicne r0, r1, #1
-	strhne r0, [sp, #0x18]
+	strneh r0, [sp, #0x18]
 _06003AA0:
 	add r0, r8, #0x100
 	ldrh r1, [r0, #0xf4]
-	lsl r0, sl, #0x11
+	mov r0, sl, lsl #0x11
 	ands sl, r1, r0, lsr #16
 	beq _06003AE4
 	ldr r0, [r8, #0xc8]
@@ -4524,7 +4528,7 @@ _06003B34:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06003B78
-	ldr r0, _06003EC0 @ =0x00000303
+	ldr r0, _06003EC0 ; =0x00000303
 	mov r2, #1
 	bl sub_06003ED4
 	b _06003EA8
@@ -4558,7 +4562,7 @@ _06003BB4:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06003BF4
-	ldr r0, _06003EC4 @ =0x0000020E
+	ldr r0, _06003EC4 ; =0x0000020E
 	mov r2, #1
 	bl sub_06003ED4
 	b _06003EA8
@@ -4576,7 +4580,7 @@ _06003C04:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06003C34
-	ldr r0, _06003EC4 @ =0x0000020E
+	ldr r0, _06003EC4 ; =0x0000020E
 	mov r2, #1
 	bl sub_06003ED4
 	b _06003EA8
@@ -4604,7 +4608,7 @@ _06003C70:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06003C98
-	ldr r0, _06003EC8 @ =0x0000020D
+	ldr r0, _06003EC8 ; =0x0000020D
 	mov r2, #1
 	bl sub_06003ED4
 	b _06003EA8
@@ -4622,19 +4626,19 @@ _06003C98:
 _06003CC0:
 	tst sl, r2, lsl r3
 	addne r0, r6, #1
-	lslne r0, r0, #0x10
-	strbne r3, [r1, r6]
-	lsrne r6, r0, #0x10
+	movne r0, r0, lsl #0x10
+	strneb r3, [r1, r6]
+	movne r6, r0, lsr #0x10
 	add r0, r3, #1
-	lsl r0, r0, #0x10
-	lsr r3, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r3, r0, lsr #0x10
 	cmp r3, #0xf
 	blo _06003CC0
 	sub r0, r7, #0x40
 	mov r1, #0x42
 	bl sub_06003ECC
 	add r2, sp, #0x4e
-	stm sp, {r2, r5}
+	stmia sp, {r2, r5}
 	add r1, sp, #0x1e
 	str r1, [sp, #8]
 	ldr r1, [sp, #0x10]
@@ -4666,7 +4670,7 @@ _06003D44:
 	mov r0, #4
 	strh r0, [r6, #8]
 	strh r1, [r6, #0xe]
-	asr r0, sl, #1
+	mov r0, sl, asr #1
 	strh r0, [r6, #0xa]
 	b _06003EA0
 _06003D80:
@@ -4681,8 +4685,8 @@ _06003D80:
 _06003DA0:
 	ldrh r1, [r8]
 	mov r0, r8
-	lsl r1, r1, #0x11
-	lsr fp, r1, #0x10
+	mov r1, r1, lsl #0x11
+	mov fp, r1, lsr #0x10
 	mov r1, sb
 	mov r2, fp
 	bl sub_06000440
@@ -4745,7 +4749,7 @@ _06003E6C:
 	mov r0, #5
 	strh r0, [r6, #8]
 	ldrh r1, [r5, #8]
-	asr r0, sl, #1
+	mov r0, sl, asr #1
 	strh r1, [r6, #0xe]
 	strh r0, [r6, #0xa]
 _06003EA0:
@@ -4754,26 +4758,26 @@ _06003EA0:
 _06003EA8:
 	add sp, sp, #0xc8
 	add sp, sp, #0x400
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06003EB8: .4byte 0x060198A4
-_06003EBC: .4byte 0x0000FFFF
-_06003EC0: .4byte 0x00000303
-_06003EC4: .4byte 0x0000020E
-_06003EC8: .4byte 0x0000020D
+_06003EB8: .word 0x060198A4
+_06003EBC: .word 0x0000FFFF
+_06003EC0: .word 0x00000303
+_06003EC4: .word 0x0000020E
+_06003EC8: .word 0x0000020D
 	arm_func_end sub_060039B8
 
 	arm_func_start sub_06003ECC
-sub_06003ECC: @ 0x06003ECC
-	ldr pc, _06003ED0 @ =sub_03806468
+sub_06003ECC: ; 0x06003ECC
+	ldr pc, _06003ED0 ; =sub_03806468
 	.align 2, 0
-_06003ED0: .4byte sub_03806468
+_06003ED0: .word sub_03806468
 	arm_func_end sub_06003ECC
 
 	arm_func_start sub_06003ED4
-sub_06003ED4: @ 0x06003ED4
-	push {r4, r5, r6, lr}
+sub_06003ED4: ; 0x06003ED4
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r2
 	mov r6, r0
 	mov r5, r1
@@ -4789,15 +4793,15 @@ sub_06003ED4: @ 0x06003ED4
 	strh r6, [r0, #4]
 	strh r5, [r0, #6]
 	bl sub_0600029C
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	arm_func_end sub_06003ED4
 
 	arm_func_start sub_06003F1C
-sub_06003F1C: @ 0x06003F1C
-	push {r3, r4, r5, lr}
+sub_06003F1C: ; 0x06003F1C
+	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x200
-	ldr r0, _06003FE4 @ =0x060198A4
+	ldr r0, _06003FE4 ; =0x060198A4
 	add r4, sp, #0
 	ldr r5, [r0, #0x550]
 	ldrh r0, [r5]
@@ -4816,7 +4820,7 @@ _06003F58:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06003F78
-	ldr r0, _06003FE8 @ =0x00000302
+	ldr r0, _06003FE8 ; =0x00000302
 	bl sub_06003FF0
 	b _06003FD8
 _06003F78:
@@ -4832,7 +4836,7 @@ _06003F78:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06003FB4
-	ldr r0, _06003FEC @ =0x0000020E
+	ldr r0, _06003FEC ; =0x0000020E
 	bl sub_06003FF0
 	b _06003FD8
 _06003FB4:
@@ -4848,17 +4852,17 @@ _06003FC0:
 	bl sub_0600029C
 _06003FD8:
 	add sp, sp, #0x200
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06003FE4: .4byte 0x060198A4
-_06003FE8: .4byte 0x00000302
-_06003FEC: .4byte 0x0000020E
+_06003FE4: .word 0x060198A4
+_06003FE8: .word 0x00000302
+_06003FEC: .word 0x0000020E
 	arm_func_end sub_06003F1C
 
 	arm_func_start sub_06003FF0
-sub_06003FF0: @ 0x06003FF0
-	push {r3, r4, r5, lr}
+sub_06003FF0: ; 0x06003FF0
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	bl sub_06000294
@@ -4869,15 +4873,15 @@ sub_06003FF0: @ 0x06003FF0
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
 	bl sub_0600029C
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_06003FF0
 
 	arm_func_start sub_06004024
-sub_06004024: @ 0x06004024
-	push {r4, r5, r6, r7, r8, lr}
+sub_06004024: ; 0x06004024
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x250
-	ldr r1, _060045B4 @ =0x060198A4
+	ldr r1, _060045B4 ; =0x060198A4
 	add r4, sp, #0x50
 	ldr r7, [r1, #0x550]
 	ldr r5, [r1, #0x54c]
@@ -4923,7 +4927,7 @@ _060040C8:
 	add r0, r7, #0x100
 	mov r2, #1
 	ldrh r0, [r0, #0xf4]
-	lsl r1, r2, r1
+	mov r1, r2, lsl r1
 	tst r1, r0
 	beq _060040F0
 	rsb r0, r2, #0x2000
@@ -4954,16 +4958,16 @@ _06004110:
 	bne _06004158
 	tst r1, #1
 	movne r1, #1
-	strhne r1, [r0, #0xec]
+	strneh r1, [r0, #0xec]
 	moveq r1, #2
 	b _06004168
 _06004158:
 	tst r1, #2
 	movne r1, #2
-	strhne r1, [r0, #0xec]
+	strneh r1, [r0, #0xec]
 	moveq r1, #1
 _06004168:
-	strheq r1, [r0, #0xec]
+	streqh r1, [r0, #0xec]
 	ldrh r0, [r5, #0x3c]
 	tst r0, #0x20
 	movne r1, #1
@@ -4986,7 +4990,7 @@ _06004168:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _060041D4
-	ldr r0, _060045B8 @ =0x00000216
+	ldr r0, _060045B8 ; =0x00000216
 	mov r2, #0
 	bl sub_060045D0
 	b _060045A8
@@ -4998,12 +5002,12 @@ _060041D4:
 	cmp r1, #0
 	moveq r0, #1
 	beq _060041FC
-	ldr r0, _060045BC @ =0x00002710
+	ldr r0, _060045BC ; =0x00002710
 	bl sub_060045C8
 	add r0, r0, #1
 _060041FC:
-	lsl r0, r0, #0x10
-	lsr r1, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r1, r0, lsr #0x10
 	cmp r1, #0xff
 	movhi r1, #0xff
 	mov r0, r4
@@ -5011,7 +5015,7 @@ _060041FC:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06004230
-	ldr r0, _060045C0 @ =0x0000020B
+	ldr r0, _060045C0 ; =0x0000020B
 	mov r2, #0
 	bl sub_060045D0
 	b _060045A8
@@ -5022,7 +5026,7 @@ _06004230:
 	mov r2, #0
 	cmp r1, #0
 	beq _06004254
-	ldr r0, _060045C4 @ =0x00000303
+	ldr r0, _060045C4 ; =0x00000303
 	bl sub_060045D0
 	b _060045A8
 _06004254:
@@ -5033,8 +5037,8 @@ _06004254:
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
-	lsl r0, r0, #0x10
-	lsr r8, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r8, r0, lsr #0x10
 	mov r0, r4
 	mov r1, r8
 	bl sub_06001F0C
@@ -5061,7 +5065,7 @@ _060042A0:
 	strh r0, [sp, #0x18]
 	ldr r2, [r5, #0x54]
 	add r0, r6, #8
-	lsr r2, r2, #0x10
+	mov r2, r2, lsr #0x10
 	strh r2, [sp, #0x1a]
 	ldrh ip, [r5, #0x58]
 	mov r3, #0
@@ -5076,7 +5080,7 @@ _060042FC:
 	bl sub_06002024
 	ldrh r1, [r0, #4]
 	cmp r1, #0
-	ldrheq r2, [r0, #6]
+	ldreqh r2, [r0, #6]
 	cmpeq r2, #0
 	beq _06004330
 	ldrh r2, [r0, #6]
@@ -5101,7 +5105,7 @@ _06004330:
 	bl sub_0600209C
 	ldrh r1, [r0, #4]
 	cmp r1, #0xc
-	ldrheq r2, [r0, #6]
+	ldreqh r2, [r0, #6]
 	cmpeq r2, #0x13
 	bne _060043A0
 	bl sub_06000294
@@ -5114,7 +5118,7 @@ _06004330:
 	b _060045A8
 _060043A0:
 	cmp r1, #0
-	ldrheq r2, [r0, #6]
+	ldreqh r2, [r0, #6]
 	cmpeq r2, #0
 	beq _060043C0
 	ldrh r2, [r0, #6]
@@ -5137,7 +5141,7 @@ _060043C0:
 	ldrh r2, [r4, #4]
 	mov r6, r0
 	cmp r2, #0xc
-	ldrheq r1, [r4, #6]
+	ldreqh r1, [r4, #6]
 	cmpeq r1, #0x13
 	bne _0600442C
 	bl sub_06000740
@@ -5151,7 +5155,7 @@ _060043C0:
 	b _060045A8
 _0600442C:
 	cmp r2, #0
-	ldrheq r0, [r4, #6]
+	ldreqh r0, [r4, #6]
 	cmpeq r0, #0
 	beq _06004458
 	mov r0, r6
@@ -5174,7 +5178,7 @@ _06004458:
 	ldrh r0, [r5, #0x12]
 	and r0, r0, #0xff
 	tst r0, #2
-	asr r0, r0, #2
+	mov r0, r0, asr #2
 	addeq r0, r0, #0x19
 	and r4, r0, #0xff
 	mov r0, r4
@@ -5207,8 +5211,8 @@ _060044E8:
 	ldrh r0, [r5, #0x5c]
 	moveq r1, #0
 	add r0, r0, r1
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_06000860
 	ldrb r0, [r5, #0x5b]
 	tst r0, #4
@@ -5216,8 +5220,8 @@ _060044E8:
 	ldrh r0, [r5, #0x5e]
 	moveq r1, #0
 	add r0, r0, r1
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_060008B0
 	mov r0, r4
 	bl sub_06000740
@@ -5249,26 +5253,26 @@ _060044E8:
 	bl sub_06000740
 _060045A8:
 	add sp, sp, #0x250
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_060045B4: .4byte 0x060198A4
-_060045B8: .4byte 0x00000216
-_060045BC: .4byte 0x00002710
-_060045C0: .4byte 0x0000020B
-_060045C4: .4byte 0x00000303
+_060045B4: .word 0x060198A4
+_060045B8: .word 0x00000216
+_060045BC: .word 0x00002710
+_060045C0: .word 0x0000020B
+_060045C4: .word 0x00000303
 	arm_func_end sub_06004024
 
 	arm_func_start sub_060045C8
-sub_060045C8: @ 0x060045C8
-	ldr pc, _060045CC @ =sub_0380625C
+sub_060045C8: ; 0x060045C8
+	ldr pc, _060045CC ; =sub_0380625C
 	.align 2, 0
-_060045CC: .4byte sub_0380625C
+_060045CC: .word sub_0380625C
 	arm_func_end sub_060045C8
 
 	arm_func_start sub_060045D0
-sub_060045D0: @ 0x060045D0
-	push {r4, r5, r6, lr}
+sub_060045D0: ; 0x060045D0
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
@@ -5281,19 +5285,19 @@ sub_060045D0: @ 0x060045D0
 	strh r5, [r0, #6]
 	strh r4, [r0, #0xe]
 	bl sub_0600029C
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	arm_func_end sub_060045D0
 
 	arm_func_start sub_0600460C
-sub_0600460C: @ 0x0600460C
-	push {r3, r4, lr}
+sub_0600460C: ; 0x0600460C
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r1, [r0, #4]
 	add r2, sp, #0
-	lsl r3, r1, #0x10
+	mov r3, r1, lsl #0x10
 	mov r1, #0
-	lsr r4, r3, #0x10
+	mov r4, r3, lsr #0x10
 	bl sub_06004664
 	cmp r0, #1
 	bne _06004658
@@ -5308,26 +5312,26 @@ sub_0600460C: @ 0x0600460C
 	bl sub_0600029C
 _06004658:
 	add sp, sp, #4
-	pop {r3, r4, lr}
+	ldmia sp!, {r3, r4, lr}
 	bx lr
 	arm_func_end sub_0600460C
 
 	arm_func_start sub_06004664
-sub_06004664: @ 0x06004664
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_06004664: ; 0x06004664
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x220
-	ldr r3, _06004BE8 @ =0x060198A4
+	ldr r3, _06004BE8 ; =0x060198A4
 	ldr r4, [r0, #4]
 	movs sl, r1
 	ldrne r0, [r0, #8]
-	lsl r1, r4, #0x10
+	mov r1, r4, lsl #0x10
 	moveq r0, #0
-	lsl r0, r0, #0x10
+	mov r0, r0, lsl #0x10
 	mov fp, #0
 	ldr r7, [r3, #0x550]
-	lsr r8, r1, #0x10
+	mov r8, r1, lsr #0x10
 	ldrh r1, [r7]
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	cmp r1, #9
 	str r2, [sp]
 	mov r5, fp
@@ -5377,7 +5381,7 @@ _06004728:
 	ldrh r0, [r7]
 	cmp r0, #0xa
 	moveq r0, #8
-	strheq r0, [r7]
+	streqh r0, [r7]
 _06004758:
 	add r0, r7, #0x100
 	mov r1, #0
@@ -5498,7 +5502,7 @@ _060048E0:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06004930
-	ldr r0, _06004BEC @ =0x00000302
+	ldr r0, _06004BEC ; =0x00000302
 	cmp sl, #0
 	mov r2, r8
 	beq _06004910
@@ -5571,7 +5575,7 @@ _060049EC:
 	add r0, r7, #0x100
 	ldrh r0, [r0, #0x82]
 	mov r1, #1
-	lsl sb, r1, r6
+	mov sb, r1, lsl r6
 	and r0, r0, r8
 	tst sb, r0
 	beq _06004BC0
@@ -5581,8 +5585,8 @@ _060049EC:
 	str r0, [sp, #0x10]
 	add r0, r7, #0x128
 	str r0, [sp, #0xc]
-	lsl r0, r6, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r6, lsl #0x10
+	mov r0, r0, lsr #0x10
 	str r0, [sp, #4]
 	ldr r1, [sp, #0xc]
 	ldr r0, [sp, #0x10]
@@ -5638,8 +5642,8 @@ _06004AB8:
 	add r0, r2, r0
 	ldr r2, [sp, #4]
 	orr r2, fp, ip, lsl r2
-	lsl r2, r2, #0x10
-	lsr fp, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov fp, r2, lsr #0x10
 	mvn r2, sb
 	and r3, r3, r2
 	strh r3, [r1, #0x82]
@@ -5681,16 +5685,16 @@ _06004AB8:
 	bl sub_0600029C
 	b _06004BA4
 _06004B90:
-	lsl r0, r6, #0x10
-	lsr r1, r0, #0x10
+	mov r0, r6, lsl #0x10
+	mov r1, r0, lsr #0x10
 	add r2, sp, #0x14
 	mov r0, #1
 	bl sub_06004BF0
 _06004BA4:
 	cmp r5, #0
 	beq _06004BC0
-	lsl r0, sb, #0x10
-	lsr r0, r0, #0x10
+	mov r0, sb, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_060079AC
 	b _06004BC0
 _06004BBC:
@@ -5703,21 +5707,21 @@ _06004BC4:
 _06004BCC:
 	ldr r0, [sp]
 	cmp r0, #0
-	strhne fp, [r0]
+	strneh fp, [r0]
 	mov r0, #1
 _06004BDC:
 	add sp, sp, #0x220
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06004BE8: .4byte 0x060198A4
-_06004BEC: .4byte 0x00000302
+_06004BE8: .word 0x060198A4
+_06004BEC: .word 0x00000302
 	arm_func_end sub_06004664
 
 	arm_func_start sub_06004BF0
-sub_06004BF0: @ 0x06004BF0
-	push {r4, r5, r6, r7, r8, lr}
-	ldr r3, _06004CAC @ =0x060198A4
+sub_06004BF0: ; 0x06004BF0
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	ldr r3, _06004CAC ; =0x060198A4
 	mov r8, r0
 	ldr r5, [r3, #0x550]
 	mov r7, r1
@@ -5733,7 +5737,7 @@ sub_06004BF0: @ 0x06004BF0
 	mov r0, #8
 	strh r0, [r4]
 	strh r1, [r4, #8]
-	ldr r0, _06004CB0 @ =0x0000F001
+	ldr r0, _06004CB0 ; =0x0000F001
 	add r1, r4, #0xa
 	strh r0, [r4, #0x12]
 	strh r7, [r4, #0x10]
@@ -5747,7 +5751,7 @@ sub_06004BF0: @ 0x06004BF0
 _06004C60:
 	mov r0, #0xc
 	strh r0, [r4]
-	ldr r0, _06004CB0 @ =0x0000F001
+	ldr r0, _06004CB0 ; =0x0000F001
 	strh r1, [r4, #8]
 	strh r0, [r4, #0xc]
 	add r0, r5, #0x100
@@ -5763,16 +5767,16 @@ _06004C60:
 _06004C9C:
 	mov r0, r4
 	bl sub_0600029C
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_06004CAC: .4byte 0x060198A4
-_06004CB0: .4byte 0x0000F001
+_06004CAC: .word 0x060198A4
+_06004CB0: .word 0x0000F001
 	arm_func_end sub_06004BF0
 
 	arm_func_start sub_06004CB4
-sub_06004CB4: @ 0x06004CB4
-	push {r3, r4, r5, r6, r7, lr}
+sub_06004CB4: ; 0x06004CB4
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
@@ -5787,13 +5791,13 @@ sub_06004CB4: @ 0x06004CB4
 	strh r5, [r0, #8]
 	strh r4, [r0, #0xa]
 	bl sub_0600029C
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	arm_func_end sub_06004CB4
 
 	arm_func_start sub_06004CF8
-sub_06004CF8: @ 0x06004CF8
-	push {r3, r4, r5, r6, r7, lr}
+sub_06004CF8: ; 0x06004CF8
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
@@ -5808,15 +5812,15 @@ sub_06004CF8: @ 0x06004CF8
 	strh r5, [r0, #8]
 	strh r4, [r0, #0xa]
 	bl sub_0600029C
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	arm_func_end sub_06004CF8
 
 	arm_func_start sub_06004D3C
-sub_06004D3C: @ 0x06004D3C
-	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_06004D3C: ; 0x06004D3C
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x204
-	ldr r1, _060050C4 @ =0x060198A4
+	ldr r1, _060050C4 ; =0x060198A4
 	mov sl, r0
 	ldr r8, [r1, #0x550]
 	ldr fp, [sl, #4]
@@ -5824,7 +5828,7 @@ sub_06004D3C: @ 0x06004D3C
 	ldr r4, [sl, #8]
 	ldr r5, [sl, #0xc]
 	ldr r6, [sl, #0x10]
-	ldr r0, _060050C8 @ =0x060188A4
+	ldr r0, _060050C8 ; =0x060188A4
 	cmp r1, #0
 	mov r7, #0
 	bne _06004DC0
@@ -5836,7 +5840,7 @@ sub_06004D3C: @ 0x06004D3C
 	ldrh r1, [r1, #0x88]
 	movlo r7, #6
 	cmp r1, #0
-	ldrhne r1, [r8, #0x3e]
+	ldrneh r1, [r8, #0x3e]
 	addne r1, r1, #0x51
 	bne _06004DB4
 	ldrh r2, [r8, #0x3e]
@@ -5858,7 +5862,7 @@ _06004DC0:
 	ldrh r1, [r1, #0x46]
 	ldrh r3, [r0, #0xf6]
 	mov r2, #1
-	lsl r0, r2, r1
+	mov r0, r2, lsl r1
 	tst r3, r0, asr #1
 	moveq r7, #6
 _06004DF0:
@@ -5880,7 +5884,7 @@ _06004E18:
 	movne r1, #1
 	cmp r1, #0
 	beq _06004E3C
-	ldr r0, _060050CC @ =0x0000FFFF
+	ldr r0, _060050CC ; =0x0000FFFF
 	bl sub_060079AC
 _06004E3C:
 	bl sub_060064E0
@@ -5889,7 +5893,7 @@ _06004E3C:
 	add r0, sl, #0x14
 	mov r1, #0
 	bl sub_060085B4
-	ldr r0, _060050C4 @ =0x060198A4
+	ldr r0, _060050C4 ; =0x060198A4
 	ldr r7, [sl, #0x30]
 	ldr sb, [r0, #0x550]
 	ldrh r0, [sb]
@@ -5898,21 +5902,21 @@ _06004E3C:
 	beq _06004F30
 	bl sub_06000720
 	tst r7, #4
-	ldrhne r2, [sl, #0x38]
+	ldrneh r2, [sl, #0x38]
 	add r1, sb, #0x700
-	ldrheq r2, [sb, #0x5c]
+	ldreqh r2, [sb, #0x5c]
 	cmp r2, #0
 	moveq r2, #0x10
 	tst r7, #1
-	ldrhne r3, [sl, #0x34]
-	ldrheq r3, [sb, #0x58]
+	ldrneh r3, [sl, #0x34]
+	ldreqh r3, [sb, #0x58]
 	cmp r3, #0
 	moveq r3, #0x10
 	cmp r3, r2
 	movhi r3, r2
 	tst r7, #2
-	ldrhne ip, [sl, #0x36]
-	ldrheq ip, [sb, #0x5a]
+	ldrneh ip, [sl, #0x36]
+	ldreqh ip, [sb, #0x5a]
 	strh r2, [r1, #0xc4]
 	cmp ip, #0
 	moveq ip, #0x10
@@ -5922,34 +5926,34 @@ _06004E3C:
 	strh ip, [r1, #0xc2]
 	ldrsh r1, [sb, #0x62]
 	cmp r1, r2
-	strhgt r2, [sb, #0x62]
+	strgth r2, [sb, #0x62]
 	tst r7, #0x200
-	ldrhne r2, [sl, #0x3a]
+	ldrneh r2, [sl, #0x3a]
 	add r1, sb, #0x700
-	ldrheq r2, [sb, #0x98]
+	ldreqh r2, [sb, #0x98]
 	tst r7, #0x400
 	strh r2, [r1, #0xca]
-	ldrbne r2, [sl, #0x3c]
+	ldrneb r2, [sl, #0x3c]
 	add r1, sb, #0x700
-	ldrheq r2, [sb, #0x92]
+	ldreqh r2, [sb, #0x92]
 	tst r7, #0x800
 	strh r2, [r1, #0xc6]
-	ldrbne r2, [sl, #0x3d]
+	ldrneb r2, [sl, #0x3d]
 	add r1, sb, #0x700
-	ldrheq r2, [sb, #0x94]
+	ldreqh r2, [sb, #0x94]
 	tst r7, #0x1000
 	strh r2, [r1, #0xc8]
-	ldrbne r2, [sl, #0x3e]
+	ldrneb r2, [sl, #0x3e]
 	add r1, sb, #0x700
-	ldrheq r2, [sb, #0x9a]
+	ldreqh r2, [sb, #0x9a]
 	strh r2, [r1, #0xcc]
 	bl sub_06000740
 _06004F30:
 	ldrh r0, [r8]
 	add r0, r0, #0xf9
 	add r0, r0, #0xff00
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	cmp r0, #1
 	bhi _06005090
 	mov r2, #0
@@ -5999,11 +6003,11 @@ _06004FD0:
 	ldrh r0, [r8]
 	cmp r0, #8
 	moveq r0, #0xa
-	strheq r0, [r8]
+	streqh r0, [r8]
 	beq _06005018
 	cmp r0, #7
 	moveq r0, #9
-	strheq r0, [r8]
+	streqh r0, [r8]
 _06005018:
 	bl sub_06000294
 	mov r1, #0xe
@@ -6048,41 +6052,41 @@ _06005090:
 	bl sub_0600029C
 _060050B8:
 	add sp, sp, #0x204
-	pop {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_060050C4: .4byte 0x060198A4
-_060050C8: .4byte 0x060188A4
-_060050CC: .4byte 0x0000FFFF
+_060050C4: .word 0x060198A4
+_060050C8: .word 0x060188A4
+_060050CC: .word 0x0000FFFF
 	arm_func_end sub_06004D3C
 
 	arm_func_start sub_060050D0
-sub_060050D0: @ 0x060050D0
-	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_060050D0: ; 0x060050D0
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
-	ldr r1, _06005204 @ =0x060198A4
+	ldr r1, _06005204 ; =0x060198A4
 	ldr r2, [r0, #0x10]
 	ldr sl, [r1, #0x550]
 	ldr r5, [r0, #8]
 	add r4, sl, #0x100
 	ldr r3, [r0, #0x14]
 	ldrh r8, [r4, #0x88]
-	lsl r1, r5, #0x10
+	mov r1, r5, lsl #0x10
 	ldrh sb, [r4, #0x82]
 	ldr fp, [r0, #4]
 	ldr r5, [r0, #0xc]
 	cmp r8, #0
 	ldr r6, [r0, #0x18]
 	ldr r7, [r0, #0x1c]
-	lsl r2, r2, #0x10
-	lsr r0, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r0, r2, lsr #0x10
 	str r0, [sp, #0x10]
 	ldr r0, [sl, #0xc]
 	movne r5, #1
 	cmp r0, #0
-	lsl r3, r3, #0x10
-	lsr r4, r1, #0x10
-	lsr r1, r3, #0x10
+	mov r3, r3, lsl #0x10
+	mov r4, r1, lsr #0x10
+	mov r1, r3, lsr #0x10
 	moveq r8, #3
 	beq _06005164
 	tst r5, sb
@@ -6116,7 +6120,7 @@ _06005164:
 	strh r4, [r0, #0x18]
 	str fp, [r0, #0x14]
 	str r6, [r0, #0x1c]
-	ldr r1, _06005208 @ =0x0000FFFF
+	ldr r1, _06005208 ; =0x0000FFFF
 	str r7, [r0, #0x20]
 	strh r1, [r0, #0x1a]
 	add r1, sl, #0x100
@@ -6135,18 +6139,18 @@ _06005164:
 	bl sub_0600029C
 _060051F8:
 	add sp, sp, #0x14
-	pop {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06005204: .4byte 0x060198A4
-_06005208: .4byte 0x0000FFFF
+_06005204: .word 0x060198A4
+_06005208: .word 0x0000FFFF
 	arm_func_end sub_060050D0
 
 	arm_func_start sub_0600520C
-sub_0600520C: @ 0x0600520C
-	push {r4, r5, r6, lr}
+sub_0600520C: ; 0x0600520C
+	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x200
-	ldr r0, _0600531C @ =0x060198A4
+	ldr r0, _0600531C ; =0x060198A4
 	mov r4, #0
 	ldr r6, [r0, #0x550]
 	ldrh r0, [r6]
@@ -6173,11 +6177,11 @@ _0600524C:
 	ldrh r0, [r6]
 	cmp r0, #0xa
 	moveq r0, #8
-	strheq r0, [r6]
+	streqh r0, [r6]
 	beq _06005290
 	cmp r0, #9
 	moveq r0, #7
-	strheq r0, [r6]
+	streqh r0, [r6]
 _06005290:
 	mov r0, r5
 	bl sub_06000740
@@ -6187,7 +6191,7 @@ _06005290:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _060052BC
-	ldr r0, _06005320 @ =0x00000216
+	ldr r0, _06005320 ; =0x00000216
 	bl sub_06005328
 	b _06005310
 _060052BC:
@@ -6205,7 +6209,7 @@ _060052E0:
 	strh r0, [r6, #0x8a]
 	cmp r4, #0
 	beq _060052F8
-	ldr r0, _06005324 @ =0x0000FFFF
+	ldr r0, _06005324 ; =0x0000FFFF
 	bl sub_060079AC
 _060052F8:
 	bl sub_06000294
@@ -6216,17 +6220,17 @@ _060052F8:
 	bl sub_0600029C
 _06005310:
 	add sp, sp, #0x200
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600531C: .4byte 0x060198A4
-_06005320: .4byte 0x00000216
-_06005324: .4byte 0x0000FFFF
+_0600531C: .word 0x060198A4
+_06005320: .word 0x00000216
+_06005324: .word 0x0000FFFF
 	arm_func_end sub_0600520C
 
 	arm_func_start sub_06005328
-sub_06005328: @ 0x06005328
-	push {r3, r4, r5, lr}
+sub_06005328: ; 0x06005328
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	bl sub_06000294
@@ -6237,19 +6241,19 @@ sub_06005328: @ 0x06005328
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
 	bl sub_0600029C
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_06005328
 
 	arm_func_start sub_0600535C
-sub_0600535C: @ 0x0600535C
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r1, _060053E4 @ =0x060198A4
+sub_0600535C: ; 0x0600535C
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r1, _060053E4 ; =0x060198A4
 	ldr r2, [r0, #8]
 	ldr r4, [r1, #0x550]
-	lsl r5, r2, #0x10
+	mov r5, r2, lsl #0x10
 	ldr r6, [r0, #4]
-	lsr r7, r5, #0x10
+	mov r7, r5, lsr #0x10
 	bl sub_06000720
 	str r6, [r4, #0xb0]
 	strh r7, [r4, #0xb8]
@@ -6275,17 +6279,17 @@ sub_0600535C: @ 0x0600535C
 	mov r0, r5
 	str r1, [r4, #0x10]
 	bl sub_06000740
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_060053E4: .4byte 0x060198A4
+_060053E4: .word 0x060198A4
 	arm_func_end sub_0600535C
 
 	arm_func_start sub_060053E8
-sub_060053E8: @ 0x060053E8
-	push {r3, r4, r5, lr}
+sub_060053E8: ; 0x060053E8
+	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x230
-	ldr r1, _060054DC @ =0x060198A4
+	ldr r1, _060054DC ; =0x060198A4
 	mov r5, r0
 	ldr r4, [r1, #0x550]
 	add r0, r5, #4
@@ -6337,22 +6341,22 @@ sub_060053E8: @ 0x060053E8
 	ldrh r1, [r4, #4]
 	cmp r1, #0
 	movne r1, #0x100
-	strhne r1, [r0, #4]
-	ldrhne r1, [r4, #4]
-	strhne r1, [r0, #6]
+	strneh r1, [r0, #4]
+	ldrneh r1, [r4, #4]
+	strneh r1, [r0, #6]
 	bl sub_0600029C
 	add sp, sp, #0x230
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060054DC: .4byte 0x060198A4
+_060054DC: .word 0x060198A4
 	arm_func_end sub_060053E8
 
 	arm_func_start sub_060054E0
-sub_060054E0: @ 0x060054E0
-	push {r4, lr}
+sub_060054E0: ; 0x060054E0
+	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x200
-	ldr r0, _06005598 @ =0x060198A4
+	ldr r0, _06005598 ; =0x060198A4
 	ldr r4, [r0, #0x550]
 	bl sub_06000720
 	ldrh r1, [r4]
@@ -6397,16 +6401,16 @@ _06005574:
 	bl sub_0600029C
 _0600558C:
 	add sp, sp, #0x200
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06005598: .4byte 0x060198A4
+_06005598: .word 0x060198A4
 	arm_func_end sub_060054E0
 
 	arm_func_start sub_0600559C
-sub_0600559C: @ 0x0600559C
-	push {r3, lr}
-	ldr r1, _06005640 @ =0x060198A4
+sub_0600559C: ; 0x0600559C
+	stmdb sp!, {r3, lr}
+	ldr r1, _06005640 ; =0x060198A4
 	ldr r2, [r0, #4]
 	ldr r3, [r1, #0x550]
 	add r1, r3, #0x100
@@ -6415,11 +6419,11 @@ sub_0600559C: @ 0x0600559C
 	cmp r1, #3
 	addls pc, pc, r1, lsl #2
 	b _060055EC
-_060055C4: @ jump table
-	b _060055D4 @ case 0
-	b _060055E0 @ case 1
-	b _060055E0 @ case 2
-	b _060055E0 @ case 3
+_060055C4: ; jump table
+	b _060055D4 ; case 0
+	b _060055E0 ; case 1
+	b _060055E0 ; case 2
+	b _060055E0 ; case 3
 _060055D4:
 	mov r1, #0
 	str r1, [r3, #0x198]
@@ -6451,17 +6455,17 @@ _06005620:
 	mov r1, #0
 	strh r1, [r0, #2]
 	bl sub_0600029C
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06005640: .4byte 0x060198A4
+_06005640: .word 0x060198A4
 	arm_func_end sub_0600559C
 
 	arm_func_start sub_06005644
-sub_06005644: @ 0x06005644
-	push {r3, r4, r5, lr}
+sub_06005644: ; 0x06005644
+	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x200
-	ldr r1, _06005738 @ =0x060198A4
+	ldr r1, _06005738 ; =0x060198A4
 	mov r5, r0
 	ldr r4, [r1, #0x550]
 	ldr r1, [r5, #4]
@@ -6471,11 +6475,11 @@ sub_06005644: @ 0x06005644
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	b _0600569C
-_06005674: @ jump table
-	b _06005684 @ case 0
-	b _06005690 @ case 1
-	b _06005690 @ case 2
-	b _06005690 @ case 3
+_06005674: ; jump table
+	b _06005684 ; case 0
+	b _06005690 ; case 1
+	b _06005690 ; case 2
+	b _06005690 ; case 3
 _06005684:
 	mov r0, #0
 	str r0, [r4, #0x198]
@@ -6526,17 +6530,17 @@ _06005714:
 	strh r1, [r0, #2]
 	bl sub_0600029C
 	add sp, sp, #0x200
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06005738: .4byte 0x060198A4
+_06005738: .word 0x060198A4
 	arm_func_end sub_06005644
 
 	arm_func_start sub_0600573C
-sub_0600573C: @ 0x0600573C
-	push {r4, lr}
+sub_0600573C: ; 0x0600573C
+	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x280
-	ldr r1, _06005828 @ =0x060198A4
+	ldr r1, _06005828 ; =0x060198A4
 	ldr r2, [r0, #4]
 	ldr r4, [r1, #0x550]
 	str r2, [r4, #0xe8]
@@ -6570,9 +6574,9 @@ sub_0600573C: @ 0x0600573C
 	ldrh r1, [r4, #0xec]
 	add r0, sp, #0x80
 	add r1, r1, #0x10
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	add r2, sp, #0
-	lsr r1, r1, #0x10
+	mov r1, r1, lsr #0x10
 	bl sub_06002908
 	mov r4, r0
 	bl sub_06000294
@@ -6585,27 +6589,27 @@ sub_0600573C: @ 0x0600573C
 	strh r1, [r0, #2]
 	ldrh r1, [r4, #4]
 	cmp r1, #0
-	ldrne r1, _0600582C @ =0x00000245
-	strhne r1, [r0, #4]
-	ldrhne r1, [r4, #4]
-	strhne r1, [r0, #6]
+	ldrne r1, _0600582C ; =0x00000245
+	strneh r1, [r0, #4]
+	ldrneh r1, [r4, #4]
+	strneh r1, [r0, #6]
 	bl sub_0600029C
 	add sp, sp, #0x280
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06005828: .4byte 0x060198A4
-_0600582C: .4byte 0x00000245
+_06005828: .word 0x060198A4
+_0600582C: .word 0x00000245
 	arm_func_end sub_0600573C
 
 	arm_func_start sub_06005830
-sub_06005830: @ 0x06005830
-	push {r4, lr}
+sub_06005830: ; 0x06005830
+	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x200
 	ldr r1, [r0, #4]
 	add r0, sp, #0
-	lsl r1, r1, #0x10
-	lsr r1, r1, #0x10
+	mov r1, r1, lsl #0x10
+	mov r1, r1, lsr #0x10
 	bl sub_060027F4
 	ldrh r4, [r0, #4]
 	cmp r4, #0
@@ -6629,52 +6633,52 @@ _06005880:
 	bl sub_0600029C
 _06005898:
 	add sp, sp, #0x200
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_06005830
 
 	arm_func_start sub_060058A4
-sub_060058A4: @ 0x060058A4
-	push {r3, lr}
+sub_060058A4: ; 0x060058A4
+	stmdb sp!, {r3, lr}
 	bl sub_06000294
 	mov r1, #0x1a
 	strh r1, [r0]
 	mov r1, #4
 	strh r1, [r0, #2]
 	bl sub_0600029C
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end sub_060058A4
 
 	arm_func_start sub_060058C8
-sub_060058C8: @ 0x060058C8
-	push {r3, lr}
+sub_060058C8: ; 0x060058C8
+	stmdb sp!, {r3, lr}
 	bl sub_06000294
 	mov r1, #0x1b
 	strh r1, [r0]
 	mov r1, #4
 	strh r1, [r0, #2]
 	bl sub_0600029C
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end sub_060058C8
 
 	arm_func_start sub_060058EC
-sub_060058EC: @ 0x060058EC
-	push {r4, r5, r6, lr}
+sub_060058EC: ; 0x060058EC
+	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x200
 	ldmib r0, {r1, r2, r3}
 	ldr r0, [r0, #0x10]
-	lsl r1, r1, #0x10
-	lsl r4, r0, #0x10
-	lsl r2, r2, #0x10
-	lsl r3, r3, #0x10
-	ldr ip, _06005A04 @ =0x060198A4
-	lsr r5, r4, #0x10
+	mov r1, r1, lsl #0x10
+	mov r4, r0, lsl #0x10
+	mov r2, r2, lsl #0x10
+	mov r3, r3, lsl #0x10
+	ldr ip, _06005A04 ; =0x060198A4
+	mov r5, r4, lsr #0x10
 	add r0, sp, #0
-	lsr r1, r1, #0x10
-	lsr r2, r2, #0x10
-	lsr r3, r3, #0x10
+	mov r1, r1, lsr #0x10
+	mov r2, r2, lsr #0x10
+	mov r3, r3, lsr #0x10
 	ldr r4, [ip, #0x550]
 	bl sub_06002730
 	ldrh r6, [r0, #4]
@@ -6691,7 +6695,7 @@ sub_060058EC: @ 0x060058EC
 	bl sub_0600029C
 	b _060059F8
 _06005960:
-	ldr r0, _06005A08 @ =0x0000FFFF
+	ldr r0, _06005A08 ; =0x0000FFFF
 	cmp r5, r0
 	beq _060059AC
 	cmp r5, #0
@@ -6700,12 +6704,12 @@ _06005960:
 	beq _060059A0
 	mov r0, #0x64
 	mul r2, r5, r0
-	ldr r0, _06005A0C @ =0x000082EA
-	asr r1, r2, #0x1f
+	ldr r0, _06005A0C ; =0x000082EA
+	mov r1, r2, asr #0x1f
 	umull ip, r3, r2, r0
 	mla r3, r1, r0, r3
-	lsr r1, ip, #6
-	lsr r0, r3, #6
+	mov r1, ip, lsr #6
+	mov r0, r3, lsr #6
 	orr r1, r1, r3, lsl #26
 _060059A0:
 	str r1, [r4, #0x7b8]
@@ -6735,19 +6739,19 @@ _060059C8:
 	bl sub_0600029C
 _060059F8:
 	add sp, sp, #0x200
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06005A04: .4byte 0x060198A4
-_06005A08: .4byte 0x0000FFFF
-_06005A0C: .4byte 0x000082EA
+_06005A04: .word 0x060198A4
+_06005A08: .word 0x0000FFFF
+_06005A0C: .word 0x000082EA
 	arm_func_end sub_060058EC
 
 	arm_func_start sub_06005A10
-sub_06005A10: @ 0x06005A10
-	push {r4, r5, r6, r7, r8, sb, lr}
+sub_06005A10: ; 0x06005A10
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x214
-	ldr r1, _06005BAC @ =0x060198A4
+	ldr r1, _06005BAC ; =0x060198A4
 	mov r7, r0
 	ldr r6, [r1, #0x550]
 	add r4, sp, #0x14
@@ -6786,7 +6790,7 @@ _06005A70:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06005AB8
-	ldr r0, _06005BB0 @ =0x00000303
+	ldr r0, _06005BB0 ; =0x00000303
 	bl sub_06005BB8
 	b _06005BA0
 _06005AB8:
@@ -6832,13 +6836,13 @@ _06005B48:
 	ldrh r1, [r0, #8]
 	mov r0, r4
 	and r4, r1, #0xff
-	lsl r1, r1, #8
-	lsr r5, r1, #0x10
+	mov r1, r1, lsl #8
+	mov r5, r1, lsr #0x10
 	bl sub_060029E8
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06005B78
-	ldr r0, _06005BB4 @ =0x00000302
+	ldr r0, _06005BB4 ; =0x00000302
 	bl sub_06005BB8
 	b _06005BA0
 _06005B78:
@@ -6854,17 +6858,17 @@ _06005B78:
 	bl sub_0600029C
 _06005BA0:
 	add sp, sp, #0x214
-	pop {r4, r5, r6, r7, r8, sb, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_06005BAC: .4byte 0x060198A4
-_06005BB0: .4byte 0x00000303
-_06005BB4: .4byte 0x00000302
+_06005BAC: .word 0x060198A4
+_06005BB0: .word 0x00000303
+_06005BB4: .word 0x00000302
 	arm_func_end sub_06005A10
 
 	arm_func_start sub_06005BB8
-sub_06005BB8: @ 0x06005BB8
-	push {r3, r4, r5, lr}
+sub_06005BB8: ; 0x06005BB8
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	bl sub_06000294
@@ -6875,13 +6879,13 @@ sub_06005BB8: @ 0x06005BB8
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
 	bl sub_0600029C
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_06005BB8
 
 	arm_func_start sub_06005BEC
-sub_06005BEC: @ 0x06005BEC
-	push {r4, lr}
+sub_06005BEC: ; 0x06005BEC
+	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x200
 	add r0, sp, #0
 	bl sub_06002A2C
@@ -6907,13 +6911,13 @@ _06005C30:
 	bl sub_0600029C
 _06005C48:
 	add sp, sp, #0x200
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_06005BEC
 
 	arm_func_start sub_06005C54
-sub_06005C54: @ 0x06005C54
-	push {r3, r4, r5, lr}
+sub_06005C54: ; 0x06005C54
+	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x200
 	add r0, sp, #0
 	bl sub_06002A5C
@@ -6946,36 +6950,36 @@ _06005C9C:
 	bl sub_0600029C
 _06005CCC:
 	add sp, sp, #0x200
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_06005C54
 
 	arm_func_start sub_06005CD8
-sub_06005CD8: @ 0x06005CD8
-	ldr ip, _06005CE4 @ =0x037FA8A8
-	ldr r0, _06005CE8 @ =0x0380AD98
+sub_06005CD8: ; 0x06005CD8
+	ldr ip, _06005CE4 ; =0x037FA8A8
+	ldr r0, _06005CE8 ; =0x0380AD98
 	bx ip
 	.align 2, 0
-_06005CE4: .4byte 0x037FA8A8
-_06005CE8: .4byte 0x0380AD98
+_06005CE4: .word 0x037FA8A8
+_06005CE8: .word 0x0380AD98
 	arm_func_end sub_06005CD8
 
 	arm_func_start sub_06005CEC
-sub_06005CEC: @ 0x06005CEC
-	ldr ip, _06005CF8 @ =sub_037FAA5C
-	ldr r0, _06005CFC @ =0x0380AD98
+sub_06005CEC: ; 0x06005CEC
+	ldr ip, _06005CF8 ; =sub_037FAA5C
+	ldr r0, _06005CFC ; =0x0380AD98
 	bx ip
 	.align 2, 0
-_06005CF8: .4byte sub_037FAA5C
-_06005CFC: .4byte 0x0380AD98
+_06005CF8: .word sub_037FAA5C
+_06005CFC: .word 0x0380AD98
 	arm_func_end sub_06005CEC
 
 	arm_func_start sub_06005D00
-sub_06005D00: @ 0x06005D00
-	push {r3, r4, lr}
+sub_06005D00: ; 0x06005D00
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r1, _06005DA0 @ =0x060198A4
-	ldr r0, _06005DA4 @ =0x0380AD98
+	ldr r1, _06005DA0 ; =0x060198A4
+	ldr r0, _06005DA4 ; =0x0380AD98
 	ldr r4, [r1, #0x550]
 	ldrh r1, [r4, #0xe6]
 	cmp r1, #1
@@ -6985,10 +6989,10 @@ sub_06005D00: @ 0x06005D00
 	beq _06005D30
 	bl sub_06005DB0
 _06005D30:
-	ldr r0, _06005DA4 @ =0x0380AD98
+	ldr r0, _06005DA4 ; =0x0380AD98
 	mov r1, #0xcb
 	mov ip, #3
-	ldr r3, _06005DA8 @ =sub_060060FC
+	ldr r3, _06005DA8 ; =sub_060060FC
 	add r2, r1, #0x3c
 	str ip, [sp]
 	bl sub_06005DB8
@@ -7003,10 +7007,10 @@ _06005D50:
 	beq _06005D70
 	bl sub_06005DB0
 _06005D70:
-	ldr r0, _06005DA4 @ =0x0380AD98
+	ldr r0, _06005DA4 ; =0x0380AD98
 	mov r2, #1
 	mov r1, #0xc8
-	ldr r3, _06005DAC @ =sub_06005DC0
+	ldr r3, _06005DAC ; =sub_06005DC0
 	str r2, [sp]
 	add r2, r1, #0x3f
 	bl sub_06005DB8
@@ -7014,35 +7018,35 @@ _06005D70:
 	str r0, [r4, #0xd8]
 _06005D94:
 	add sp, sp, #4
-	pop {r3, r4, lr}
+	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_06005DA0: .4byte 0x060198A4
-_06005DA4: .4byte 0x0380AD98
-_06005DA8: .4byte sub_060060FC
-_06005DAC: .4byte sub_06005DC0
+_06005DA0: .word 0x060198A4
+_06005DA4: .word 0x0380AD98
+_06005DA8: .word sub_060060FC
+_06005DAC: .word sub_06005DC0
 	arm_func_end sub_06005D00
 
 	arm_func_start sub_06005DB0
-sub_06005DB0: @ 0x06005DB0
-	ldr pc, _06005DB4 @ =sub_037FAA5C
+sub_06005DB0: ; 0x06005DB0
+	ldr pc, _06005DB4 ; =sub_037FAA5C
 	.align 2, 0
-_06005DB4: .4byte sub_037FAA5C
+_06005DB4: .word sub_037FAA5C
 	arm_func_end sub_06005DB0
 
 	arm_func_start sub_06005DB8
-sub_06005DB8: @ 0x06005DB8
-	ldr pc, _06005DBC @ =sub_037FA8BC
+sub_06005DB8: ; 0x06005DB8
+	ldr pc, _06005DBC ; =sub_037FA8BC
 	.align 2, 0
-_06005DBC: .4byte sub_037FA8BC
+_06005DBC: .word sub_037FA8BC
 	arm_func_end sub_06005DB8
 
 	arm_func_start sub_06005DC0
-sub_06005DC0: @ 0x06005DC0
-	push {r3, r4, lr}
+sub_06005DC0: ; 0x06005DC0
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r1, _06005EFC @ =0x060198A4
-	ldr r2, _06005F00 @ =0x0380FFF0
+	ldr r1, _06005EFC ; =0x060198A4
+	ldr r2, _06005F00 ; =0x0380FFF0
 	ldr r0, [r1, #0x550]
 	ldrh r3, [r2]
 	str r3, [r0, #0xd0]
@@ -7051,19 +7055,19 @@ sub_06005DC0: @ 0x06005DC0
 	beq _06005EA0
 	str r3, [r0, #0xd4]
 	ldr r1, [r1, #0x550]
-	ldr r3, _06005F04 @ =0x048080F8
+	ldr r3, _06005F04 ; =0x048080F8
 	ldr r2, [r1, #0xd0]
-	lsl r2, r2, #6
+	mov r2, r2, lsl #6
 	str r2, [r1, #0xd0]
 	ldrh r2, [r3]
 	ldrh lr, [r3, #2]
 	ldrh r4, [r3]
 	cmp r2, r4
-	ldrhhi lr, [r3, #2]
-	ldr r3, _06005F08 @ =0x04000006
-	ldr r2, _06005F0C @ =0x00000107
+	ldrhih lr, [r3, #2]
+	ldr r3, _06005F08 ; =0x04000006
+	ldr r2, _06005F0C ; =0x00000107
 	ldrh ip, [r3]
-	ldr r3, _06005F10 @ =0x003FFFC0
+	ldr r3, _06005F10 ; =0x003FFFC0
 	sub ip, r2, ip
 	orr lr, r4, lr, lsl #16
 	ldr r2, [r1, #0xd0]
@@ -7084,7 +7088,7 @@ _06005E58:
 	str r3, [r1, #0xd0]
 	cmp r3, lr
 	bls _06005E8C
-	ldr r2, _06005F14 @ =0x0000400E
+	ldr r2, _06005F14 ; =0x0000400E
 	sub r3, r3, lr
 	cmp r3, r2
 	str r3, [r1, #0xd8]
@@ -7102,10 +7106,10 @@ _06005EA0:
 	ldr r1, [r0, #0xd8]
 	cmp r1, #0x7f
 	bls _06005ECC
-	ldr r0, _06005F18 @ =0x0380AD98
+	ldr r0, _06005F18 ; =0x0380AD98
 	mov r1, #0xd0
 	mov ip, #2
-	ldr r3, _06005F1C @ =sub_06005F24
+	ldr r3, _06005F1C ; =sub_06005F24
 	add r2, r1, #0x37
 	str ip, [sp]
 	bl sub_06005DB8
@@ -7116,32 +7120,32 @@ _06005ECC:
 	mov r1, #4
 	str r1, [sp]
 	ldrsh r1, [r0, #0x42]
-	ldr r0, _06005F18 @ =0x0380AD98
-	ldr r3, _06005F20 @ =sub_06005FE4
+	ldr r0, _06005F18 ; =0x0380AD98
+	ldr r3, _06005F20 ; =sub_06005FE4
 	rsb r2, r2, #0x108
 	bl sub_06005DB8
 _06005EF0:
 	add sp, sp, #4
-	pop {r3, r4, lr}
+	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_06005EFC: .4byte 0x060198A4
-_06005F00: .4byte 0x0380FFF0
-_06005F04: .4byte 0x048080F8
-_06005F08: .4byte 0x04000006
-_06005F0C: .4byte 0x00000107
-_06005F10: .4byte 0x003FFFC0
-_06005F14: .4byte 0x0000400E
-_06005F18: .4byte 0x0380AD98
-_06005F1C: .4byte sub_06005F24
-_06005F20: .4byte sub_06005FE4
+_06005EFC: .word 0x060198A4
+_06005F00: .word 0x0380FFF0
+_06005F04: .word 0x048080F8
+_06005F08: .word 0x04000006
+_06005F0C: .word 0x00000107
+_06005F10: .word 0x003FFFC0
+_06005F14: .word 0x0000400E
+_06005F18: .word 0x0380AD98
+_06005F1C: .word sub_06005F24
+_06005F20: .word sub_06005FE4
 	arm_func_end sub_06005DC0
 
 	arm_func_start sub_06005F24
-sub_06005F24: @ 0x06005F24
-	push {r3, lr}
-	ldr r1, _06005FD0 @ =0x04000006
-	ldr r0, _06005FD4 @ =0x060198A4
+sub_06005F24: ; 0x06005F24
+	stmdb sp!, {r3, lr}
+	ldr r1, _06005FD0 ; =0x04000006
+	ldr r0, _06005FD4 ; =0x060198A4
 	ldrh ip, [r1]
 	ldr r0, [r0, #0x550]
 	cmp ip, #0xd0
@@ -7164,7 +7168,7 @@ _06005F74:
 	cmp r3, #7
 	blt _06005F5C
 _06005F7C:
-	ldr r1, _06005FD0 @ =0x04000006
+	ldr r1, _06005FD0 ; =0x04000006
 	rsb r2, r3, #1
 	add r2, ip, r2
 	strh r2, [r1]
@@ -7174,39 +7178,39 @@ _06005F7C:
 	str r1, [r0, #0xd8]
 _06005F9C:
 	ldr r1, [r0, #0xd8]
-	ldr r2, _06005FD8 @ =0x00000107
+	ldr r2, _06005FD8 ; =0x00000107
 	cmp r1, #0x7f
 	movhs r1, #0
 	strhs r1, [r0, #0x1c]
 	mov r1, #4
 	str r1, [sp]
 	ldrsh r1, [r0, #0x42]
-	ldr r0, _06005FDC @ =0x0380AD98
-	ldr r3, _06005FE0 @ =sub_06005FE4
+	ldr r0, _06005FDC ; =0x0380AD98
+	ldr r3, _06005FE0 ; =sub_06005FE4
 	bl sub_06005DB8
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06005FD0: .4byte 0x04000006
-_06005FD4: .4byte 0x060198A4
-_06005FD8: .4byte 0x00000107
-_06005FDC: .4byte 0x0380AD98
-_06005FE0: .4byte sub_06005FE4
+_06005FD0: .word 0x04000006
+_06005FD4: .word 0x060198A4
+_06005FD8: .word 0x00000107
+_06005FDC: .word 0x0380AD98
+_06005FE0: .word sub_06005FE4
 	arm_func_end sub_06005F24
 
 	arm_func_start sub_06005FE4
-sub_06005FE4: @ 0x06005FE4
-	push {r3, r4, lr}
+sub_06005FE4: ; 0x06005FE4
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r0, _060060E8 @ =0x060198A4
+	ldr r0, _060060E8 ; =0x060198A4
 	ldr r4, [r0, #0x550]
 	ldr r0, [r4, #0xc]
 	cmp r0, #1
 	bne _060060DC
-	ldr r0, _060060EC @ =0x0380AD98
+	ldr r0, _060060EC ; =0x0380AD98
 	mov r2, #1
 	mov r1, #0xc8
-	ldr r3, _060060F0 @ =sub_06005DC0
+	ldr r3, _060060F0 ; =sub_06005DC0
 	str r2, [sp]
 	add r2, r1, #0x3f
 	bl sub_06005DB8
@@ -7239,9 +7243,9 @@ sub_06005FE4: @ 0x06005FE4
 	beq _060060A4
 	mov r0, #0x25
 	str r0, [r1]
-	ldr r3, _060060F4 @ =0x00008001
+	ldr r3, _060060F4 ; =0x00008001
 	mov r2, #0
-	ldr r0, _060060F8 @ =0x0601892C
+	ldr r0, _060060F8 ; =0x0601892C
 	stmib r1, {r2, r3}
 	bl sub_06000284
 _060060A4:
@@ -7262,99 +7266,99 @@ _060060D8:
 	bl sub_06006200
 _060060DC:
 	add sp, sp, #4
-	pop {r3, r4, lr}
+	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_060060E8: .4byte 0x060198A4
-_060060EC: .4byte 0x0380AD98
-_060060F0: .4byte sub_06005DC0
-_060060F4: .4byte 0x00008001
-_060060F8: .4byte 0x0601892C
+_060060E8: .word 0x060198A4
+_060060EC: .word 0x0380AD98
+_060060F0: .word sub_06005DC0
+_060060F4: .word 0x00008001
+_060060F8: .word 0x0601892C
 	arm_func_end sub_06005FE4
 
 	arm_func_start sub_060060FC
-sub_060060FC: @ 0x060060FC
-	push {r3, lr}
-	ldr r0, _0600619C @ =0x060198A4
+sub_060060FC: ; 0x060060FC
+	stmdb sp!, {r3, lr}
+	ldr r0, _0600619C ; =0x060198A4
 	ldr r0, [r0, #0x550]
 	ldrh r1, [r0, #0xdc]
 	cmp r1, #0x3c
 	blo _06006138
-	ldr r2, _060061A0 @ =0x04000006
+	ldr r2, _060061A0 ; =0x04000006
 	ldrh r1, [r2]
 	cmp r1, #0xcb
 	blt _06006140
 	cmp r1, #0xd2
-	strhlt r1, [r2]
+	strlth r1, [r2]
 	movlt r1, #0
-	strhlt r1, [r0, #0xdc]
+	strlth r1, [r0, #0xdc]
 	b _06006140
 _06006138:
 	add r1, r1, #1
 	strh r1, [r0, #0xdc]
 _06006140:
-	ldr r1, _060061A0 @ =0x04000006
-	ldr r2, _060061A4 @ =0x048080F8
+	ldr r1, _060061A0 ; =0x04000006
+	ldr r2, _060061A4 ; =0x048080F8
 	ldrh lr, [r1]
 	ldrh r1, [r2]
 	ldrh r3, [r2, #2]
 	ldrh ip, [r2]
 	cmp r1, ip
-	ldrhhi r3, [r2, #2]
-	ldr r1, _060061A8 @ =0x0380FFF0
+	ldrhih r3, [r2, #2]
+	ldr r1, _060061A8 ; =0x0380FFF0
 	orr r3, ip, r3, lsl #16
 	rsb r2, lr, lr, lsl #7
 	rsb r2, r2, r3, lsl #1
-	lsr r3, r2, #7
+	mov r3, r2, lsr #7
 	strh r3, [r1]
 	mov r2, #5
 	str r2, [sp]
 	ldrsh r1, [r0, #0x40]
-	ldr r0, _060061AC @ =0x0380AD98
-	ldr r3, _060061B0 @ =sub_060061B4
+	ldr r0, _060061AC ; =0x0380AD98
+	ldr r3, _060061B0 ; =sub_060061B4
 	rsb r2, r2, #0x10c
 	bl sub_06005DB8
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600619C: .4byte 0x060198A4
-_060061A0: .4byte 0x04000006
-_060061A4: .4byte 0x048080F8
-_060061A8: .4byte 0x0380FFF0
-_060061AC: .4byte 0x0380AD98
-_060061B0: .4byte sub_060061B4
+_0600619C: .word 0x060198A4
+_060061A0: .word 0x04000006
+_060061A4: .word 0x048080F8
+_060061A8: .word 0x0380FFF0
+_060061AC: .word 0x0380AD98
+_060061B0: .word sub_060061B4
 	arm_func_end sub_060060FC
 
 	arm_func_start sub_060061B4
-sub_060061B4: @ 0x060061B4
-	push {r3, lr}
-	ldr r0, _060061F4 @ =0x060198A4
+sub_060061B4: ; 0x060061B4
+	stmdb sp!, {r3, lr}
+	ldr r0, _060061F4 ; =0x060198A4
 	ldr r0, [r0, #0x550]
 	ldr r0, [r0, #0xc]
 	cmp r0, #1
 	bne _060061EC
-	ldr r0, _060061F8 @ =0x0380AD98
+	ldr r0, _060061F8 ; =0x0380AD98
 	mov r1, #0xcb
 	mov ip, #3
-	ldr r3, _060061FC @ =sub_060060FC
+	ldr r3, _060061FC ; =sub_060060FC
 	add r2, r1, #0x3c
 	str ip, [sp]
 	bl sub_06005DB8
 	bl sub_06006200
 _060061EC:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060061F4: .4byte 0x060198A4
-_060061F8: .4byte 0x0380AD98
-_060061FC: .4byte sub_060060FC
+_060061F4: .word 0x060198A4
+_060061F8: .word 0x0380AD98
+_060061FC: .word sub_060060FC
 	arm_func_end sub_060061B4
 
 	arm_func_start sub_06006200
-sub_06006200: @ 0x06006200
-	push {r3, r4, r5, lr}
-	ldr r0, _060062A8 @ =0x060198A4
-	ldr r4, _060062AC @ =0x060188A4
+sub_06006200: ; 0x06006200
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r0, _060062A8 ; =0x060198A4
+	ldr r4, _060062AC ; =0x060188A4
 	ldr r5, [r0, #0x550]
 	bl sub_06000720
 	ldrh r1, [r5, #0xce]
@@ -7395,17 +7399,17 @@ _06006258:
 	strh r1, [r0, #6]
 	bl sub_0600029C
 _060062A0:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060062A8: .4byte 0x060198A4
-_060062AC: .4byte 0x060188A4
+_060062A8: .word 0x060198A4
+_060062AC: .word 0x060188A4
 	arm_func_end sub_06006200
 
 	arm_func_start sub_060062B0
-sub_060062B0: @ 0x060062B0
-	push {r3, r4, r5, lr}
-	ldr r0, _06006448 @ =0x060198A4
+sub_060062B0: ; 0x060062B0
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r0, _06006448 ; =0x060198A4
 	mov r1, #0
 	ldr r4, [r0, #0x550]
 	mov r2, #1
@@ -7421,13 +7425,13 @@ sub_060062B0: @ 0x060062B0
 	rsb r0, r2, #0x10000
 	cmp r1, r0
 	moveq r0, #4
-	strheq r0, [r4, #0xbe]
+	streqh r0, [r4, #0xbe]
 	ldrh r0, [r4, #0xbe]
 	and r0, r0, #0xff
 	bl sub_060005A0
 	bl sub_0600061C
 	strh r0, [r4, #0xbc]
-	ldr r1, _0600644C @ =0x0000FFFF
+	ldr r1, _0600644C ; =0x0000FFFF
 	mov r0, #1
 	strh r1, [r4, #0xbe]
 	strh r0, [r4, #0xc0]
@@ -7448,12 +7452,12 @@ _0600634C:
 	ldrsh r2, [r4, #0x62]
 	mov r3, #1
 	cmp r2, #0
-	ldrshgt r1, [r4, #0x64]
+	ldrgtsh r1, [r4, #0x64]
 	cmpgt r1, #0
 	movgt r3, #0
 	cmp r2, #0
 	movlt r1, #0
-	strhlt r1, [r4, #0x62]
+	strlth r1, [r4, #0x62]
 	add r1, r4, #0x700
 	ldrsh r2, [r4, #0x62]
 	ldrsh r1, [r1, #0xc2]
@@ -7462,7 +7466,7 @@ _0600634C:
 	ldrsh r1, [r4, #0x62]
 	cmp r1, #0x100
 	movgt r1, #0x100
-	strhgt r1, [r4, #0x62]
+	strgth r1, [r4, #0x62]
 	add r1, r4, #0x700
 	ldrh r1, [r1, #0xc4]
 	cmp r3, #0
@@ -7470,7 +7474,7 @@ _0600634C:
 	beq _060063C0
 	ldrsh r1, [r4, #0x62]
 	cmp r1, #0
-	ldrshgt r1, [r4, #0x64]
+	ldrgtsh r1, [r4, #0x64]
 	cmpgt r1, #0
 	movgt r5, #1
 	bgt _060063C4
@@ -7480,21 +7484,21 @@ _060063C4:
 	bl sub_06000740
 	cmp r5, #0
 	beq _060063D8
-	ldr r0, _0600644C @ =0x0000FFFF
+	ldr r0, _0600644C ; =0x0000FFFF
 	bl sub_06006AA0
 _060063D8:
 	add r0, r4, #0x700
 	ldrh r0, [r0, #0xc6]
 	cmp r0, #1
-	ldrheq r0, [r4, #0xa0]
+	ldreqh r0, [r4, #0xa0]
 	subeq r0, r0, #1
-	strheq r0, [r4, #0xa0]
-	ldrheq r0, [r4, #0xa0]
+	streqh r0, [r4, #0xa0]
+	ldreqh r0, [r4, #0xa0]
 	cmpeq r0, #0
 	moveq r0, #1
-	strheq r0, [r4, #0x9e]
+	streqh r0, [r4, #0x9e]
 	moveq r0, #0x3c
-	strheq r0, [r4, #0xa0]
+	streqh r0, [r4, #0xa0]
 	b _06006440
 _0600640C:
 	cmp r0, #0xa
@@ -7505,77 +7509,77 @@ _0600640C:
 	cmp r1, #1
 	movne r1, r5
 	movne r5, #1
-	strhne r1, [r4, #0x60]
+	strneh r1, [r4, #0x60]
 	bl sub_06000740
 	cmp r5, #1
 	bne _06006440
 	bl sub_060065A8
 _06006440:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06006448: .4byte 0x060198A4
-_0600644C: .4byte 0x0000FFFF
+_06006448: .word 0x060198A4
+_0600644C: .word 0x0000FFFF
 	arm_func_end sub_060062B0
 
 	arm_func_start sub_06006450
-sub_06006450: @ 0x06006450
-	push {r3, lr}
-	ldr r1, _06006480 @ =0x060198A4
+sub_06006450: ; 0x06006450
+	stmdb sp!, {r3, lr}
+	ldr r1, _06006480 ; =0x060198A4
 	ldr r1, [r1, #0x550]
 	ldrh r1, [r1]
 	cmp r1, #9
 	bne _06006478
 	ldr r0, [r0, #4]
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_06006AA0
 _06006478:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06006480: .4byte 0x060198A4
+_06006480: .word 0x060198A4
 	arm_func_end sub_06006450
 
 	arm_func_start sub_06006484
-sub_06006484: @ 0x06006484
-	push {r3, lr}
-	ldr r0, _060064A8 @ =0x060198A4
+sub_06006484: ; 0x06006484
+	stmdb sp!, {r3, lr}
+	ldr r0, _060064A8 ; =0x060198A4
 	ldr r0, [r0, #0x550]
 	ldrh r0, [r0]
 	cmp r0, #0xa
 	bne _060064A0
 	bl sub_060065A8
 _060064A0:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060064A8: .4byte 0x060198A4
+_060064A8: .word 0x060198A4
 	arm_func_end sub_06006484
 
 	arm_func_start sub_060064AC
-sub_060064AC: @ 0x060064AC
-	push {r3, lr}
-	ldr r1, _060064DC @ =0x060198A4
+sub_060064AC: ; 0x060064AC
+	stmdb sp!, {r3, lr}
+	ldr r1, _060064DC ; =0x060198A4
 	ldr r1, [r1, #0x550]
 	ldrh r1, [r1]
 	cmp r1, #9
 	bne _060064D4
 	ldr r0, [r0, #4]
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_06007450
 _060064D4:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060064DC: .4byte 0x060198A4
+_060064DC: .word 0x060198A4
 	arm_func_end sub_060064AC
 
 	arm_func_start sub_060064E0
-sub_060064E0: @ 0x060064E0
-	push {r4, lr}
-	ldr r0, _06006590 @ =0x060198A4
+sub_060064E0: ; 0x060064E0
+	stmdb sp!, {r4, lr}
+	ldr r0, _06006590 ; =0x060198A4
 	ldr r4, [r0, #0x550]
 	add r0, r4, #0x31c
 	add r0, r0, #0x400
@@ -7587,14 +7591,14 @@ sub_060064E0: @ 0x060064E0
 	mov r3, #0
 _0600650C:
 	add r0, r3, #1
-	lsl r0, r0, #0x10
+	mov r0, r0, lsl #0x10
 	add r1, r4, r3, lsl #5
-	lsr r3, r0, #0x10
+	mov r3, r0, lsr #0x10
 	add r0, r1, #0x200
 	strh r3, [r0, #0xf8]
 	cmp r3, #0x1f
 	blo _0600650C
-	ldr r2, _06006594 @ =0x0000FFFF
+	ldr r2, _06006594 ; =0x0000FFFF
 	add r0, r4, r3, lsl #5
 	add r0, r0, #0x200
 	strh r2, [r0, #0xf8]
@@ -7610,40 +7614,40 @@ _0600654C:
 	add r0, r1, #0x600
 	add r1, ip, #1
 	strh r2, [r0, #0xfc]
-	lsl r1, r1, #0x10
-	lsr ip, r1, #0x10
+	mov r1, r1, lsl #0x10
+	mov ip, r1, lsr #0x10
 	strh r2, [r0, #0xfe]
 	cmp ip, #4
 	blo _0600654C
 	add r0, r4, #0x31c
 	add r0, r0, #0x400
 	bl sub_060065A0
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06006590: .4byte 0x060198A4
-_06006594: .4byte 0x0000FFFF
+_06006590: .word 0x060198A4
+_06006594: .word 0x0000FFFF
 	arm_func_end sub_060064E0
 
 	arm_func_start sub_06006598
-sub_06006598: @ 0x06006598
-	ldr pc, _0600659C @ =sub_037F98AC
+sub_06006598: ; 0x06006598
+	ldr pc, _0600659C ; =sub_037F98AC
 	.align 2, 0
-_0600659C: .4byte sub_037F98AC
+_0600659C: .word sub_037F98AC
 	arm_func_end sub_06006598
 
 	arm_func_start sub_060065A0
-sub_060065A0: @ 0x060065A0
-	ldr pc, _060065A4 @ =sub_037F9930
+sub_060065A0: ; 0x060065A0
+	ldr pc, _060065A4 ; =sub_037F9930
 	.align 2, 0
-_060065A4: .4byte sub_037F9930
+_060065A4: .word sub_037F9930
 	arm_func_end sub_060065A0
 
 	arm_func_start sub_060065A8
-sub_060065A8: @ 0x060065A8
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_060065A8: ; 0x060065A8
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x260
-	ldr r1, _06006A98 @ =0x060198A4
+	ldr r1, _06006A98 ; =0x060198A4
 	ldr fp, [r1, #0x550]
 	add r0, fp, #0x100
 	ldrh r0, [r0, #0x82]
@@ -7720,7 +7724,7 @@ _060066B0:
 _060066C8:
 	add r0, r8, #0x30c
 	add r0, r0, #0x400
-	lsl r1, r5, #2
+	mov r1, r5, lsl #2
 	ldrh sl, [r0, r1]
 	add r0, r0, r5, lsl #2
 	str r0, [sp, #0x20]
@@ -7730,7 +7734,7 @@ _060066C8:
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x20]
 	str r0, [sp, #0x28]
-	ldr r0, _06006A9C @ =0x0000FFFF
+	ldr r0, _06006A9C ; =0x0000FFFF
 	str r0, [sp, #0x2c]
 	str r0, [sp, #0x38]
 	str r0, [sp, #0x3c]
@@ -7788,7 +7792,7 @@ _0600678C:
 	and r1, r0, #1
 	cmp r1, #1
 	addeq r0, r0, #1
-	strheq r0, [r4, #0xe]
+	streqh r0, [r4, #0xe]
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x10]
 	cmp r0, #0
@@ -7811,12 +7815,12 @@ _0600678C:
 	cmp r0, #0
 	streq r7, [sp, #0x34]
 	moveq r0, #0
-	strheq r0, [r7], #2
+	streqh r0, [r7], #2
 	ldr r0, [sp, #0x34]
 	ldrh r2, [r4, #2]
 	ldrh r1, [r4, #0xe]
-	lsl r2, r2, #8
-	lsr r1, r1, #1
+	mov r2, r2, lsl #8
+	mov r1, r1, lsr #1
 	ldrh r0, [r0]
 	and r2, r2, #0xf00
 	and r1, r1, #0xff
@@ -7840,19 +7844,19 @@ _0600678C:
 	bne _060068F4
 	ldrh r0, [r4, #0x10]
 	tst r0, #1
-	asreq r2, r0, #1
+	moveq r2, r0, asr #1
 	beq _060068E0
 	ldr r0, [sp, #0x40]
 	ldrh r1, [r4, #2]
 	ldrh r0, [r0, #0x88]
-	lsl r1, r1, #0x1d
+	mov r1, r1, lsl #0x1d
 	add r0, r8, r0, lsl #4
 	add r0, r0, r1, lsr #28
 	add r0, r0, #0x100
 	ldrh r2, [r0, #0xf8]
 	add r1, r2, #1
 	strh r1, [r0, #0xf8]
-	lsl r0, r2, #1
+	mov r0, r2, lsl #1
 	strh r0, [r4, #0x10]
 _060068E0:
 	ldr r0, [sp, #0x44]
@@ -7883,7 +7887,7 @@ _06006924:
 	cmp r0, sl
 	ldreq r1, [sp, #0x2c]
 	ldreq r0, [sp, #0x20]
-	strheq r1, [r0, #2]
+	streqh r1, [r0, #2]
 	ldrh r1, [r4]
 	ldr r0, [sp, #0x28]
 	strh r1, [r0]
@@ -7894,10 +7898,10 @@ _06006924:
 	ldr r0, [sp, #0x48]
 	cmp r1, r0
 	ldreq r0, [sp, #0x24]
-	lslne r1, r1, #5
-	strheq sl, [r0]
+	movne r1, r1, lsl #5
+	streqh sl, [r0]
 	ldrne r0, [sp, #0x1c]
-	strhne sl, [r0, r1]
+	strneh sl, [r0, r1]
 	ldr r0, [sp, #8]
 	mov r1, #1
 	mvn r1, r1, lsl r0
@@ -7925,10 +7929,10 @@ _060069C0:
 	ldr r0, [sp, #0x54]
 	cmp sl, r0
 	ldrne r0, [sp, #0x1c]
-	lslne r1, sl, #5
-	ldrhne sl, [r0, r1]
+	movne r1, sl, lsl #5
+	ldrneh sl, [r0, r1]
 	ldreq r0, [sp, #0x20]
-	ldrheq sl, [r0]
+	ldreqh sl, [r0]
 _060069FC:
 	ldr r0, [sp, #0x58]
 	cmp sl, r0
@@ -7952,15 +7956,15 @@ _06006A38:
 	ldr r0, [sp, #0x14]
 	cmp r0, #1
 	moveq r0, #0
-	strheq r0, [fp, #0x8a]
+	streqh r0, [fp, #0x8a]
 	beq _06006A8C
 	ldr r0, [fp, #0x1c]
-	lsl r1, r6, #0x10
+	mov r1, r6, lsl #0x10
 	cmp r0, #1
-	ldrheq r0, [sp, #0x5c]
-	lsr r1, r1, #0x10
+	ldreqh r0, [sp, #0x5c]
+	mov r1, r1, lsr #0x10
 	orreq r0, r0, #0x8000
-	strheq r0, [sp, #0x5c]
+	streqh r0, [sp, #0x5c]
 	ldrh r2, [sp, #0x5c]
 	ldr r3, [fp, #0x7c]
 	add r0, sp, #0x60
@@ -7969,21 +7973,21 @@ _06006A38:
 	cmp r0, #0
 	cmpne r0, #8
 	movne r0, #0
-	strhne r0, [fp, #0x8a]
+	strneh r0, [fp, #0x8a]
 _06006A8C:
 	add sp, sp, #0x260
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06006A98: .4byte 0x060198A4
-_06006A9C: .4byte 0x0000FFFF
+_06006A98: .word 0x060198A4
+_06006A9C: .word 0x0000FFFF
 	arm_func_end sub_060065A8
 
 	arm_func_start sub_06006AA0
-sub_06006AA0: @ 0x06006AA0
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_06006AA0: ; 0x06006AA0
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c8
-	ldr r1, _06007438 @ =0x060198A4
+	ldr r1, _06007438 ; =0x060198A4
 	str r0, [sp, #0x18]
 	ldr r7, [r1, #0x550]
 	bl sub_06000720
@@ -7996,13 +8000,13 @@ sub_06006AA0: @ 0x06006AA0
 	strh r1, [sp, #0xc4]
 	ldrh r0, [r7, #0x88]
 	cmp r0, #1
-	ldreq r0, _0600743C @ =0x0000FFFF
+	ldreq r0, _0600743C ; =0x0000FFFF
 	streq r0, [sp, #0x18]
-	strheq r1, [r7, #0x88]
+	streqh r1, [r7, #0x88]
 	ldrh r0, [r7, #0x9e]
 	cmp r0, #0
 	bne _06007388
-	ldr r1, _06007438 @ =0x060198A4
+	ldr r1, _06007438 ; =0x060198A4
 	ldrh r0, [r7, #0x3a]
 	ldr r8, [r1, #0x550]
 	str r0, [sp, #0x24]
@@ -8086,7 +8090,7 @@ _06006C08:
 	b _06006FA0
 _06006C2C:
 	ldr r0, [sp, #0x58]
-	lsl r2, r0, #2
+	mov r2, r0, lsl #2
 	add r0, r8, #0x30c
 	add r1, r0, #0x400
 	ldr r0, [sp, #0x58]
@@ -8100,7 +8104,7 @@ _06006C2C:
 	str r0, [sp, #0x60]
 	ldr r0, [sp, #0x5c]
 	str r0, [sp, #0x64]
-	ldr r0, _0600743C @ =0x0000FFFF
+	ldr r0, _0600743C ; =0x0000FFFF
 	str r0, [sp, #0x68]
 	str r0, [sp, #0x78]
 	str r0, [sp, #0x8c]
@@ -8161,7 +8165,7 @@ _06006D08:
 	and r1, r0, #1
 	cmp r1, #1
 	addeq r0, r0, #1
-	strheq r0, [r4, #0xe]
+	streqh r0, [r4, #0xe]
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x44]
 	cmp r0, #0
@@ -8184,12 +8188,12 @@ _06006D08:
 	cmp r0, #0
 	streq r6, [sp, #0x70]
 	moveq r0, #0
-	strheq r0, [r6], #2
+	streqh r0, [r6], #2
 	ldr r0, [sp, #0x70]
 	ldrh r2, [r4, #2]
 	ldrh r1, [r4, #0xe]
-	lsl r2, r2, #8
-	lsr r1, r1, #1
+	mov r2, r2, lsl #8
+	mov r1, r1, lsr #1
 	ldrh r0, [r0]
 	and r2, r2, #0xf00
 	and r1, r1, #0xff
@@ -8213,19 +8217,19 @@ _06006D08:
 	bne _06006E70
 	ldrh r0, [r4, #0x10]
 	tst r0, #1
-	asreq r2, r0, #1
+	moveq r2, r0, asr #1
 	beq _06006E5C
 	ldr r0, [sp, #0x90]
 	ldrh r1, [r4, #2]
 	ldrh r0, [r0, #0x88]
-	lsl r1, r1, #0x1d
+	mov r1, r1, lsl #0x1d
 	add r0, r8, r0, lsl #4
 	add r0, r0, r1, lsr #28
 	add r0, r0, #0x100
 	ldrh r2, [r0, #0xf8]
 	add r1, r2, #1
 	strh r1, [r0, #0xf8]
-	lsl r0, r2, #1
+	mov r0, r2, lsl #1
 	strh r0, [r4, #0x10]
 _06006E5C:
 	ldr r0, [sp, #0x94]
@@ -8256,7 +8260,7 @@ _06006EA0:
 	cmp r0, sl
 	ldreq r1, [sp, #0x68]
 	ldreq r0, [sp, #0x5c]
-	strheq r1, [r0, #2]
+	streqh r1, [r0, #2]
 	ldrh r1, [r4]
 	ldr r0, [sp, #0x64]
 	strh r1, [r0]
@@ -8267,10 +8271,10 @@ _06006EA0:
 	ldr r0, [sp, #0x98]
 	cmp r1, r0
 	ldreq r0, [sp, #0x60]
-	lslne r1, r1, #5
-	strheq sl, [r0]
+	movne r1, r1, lsl #5
+	streqh sl, [r0]
 	ldrne r0, [sp, #0x54]
-	strhne sl, [r0, r1]
+	strneh sl, [r0, r1]
 	ldr r0, [sp, #0x28]
 	mov r1, #1
 	mvn r1, r1, lsl r0
@@ -8300,10 +8304,10 @@ _06006F44:
 	ldr r0, [sp, #0xa4]
 	cmp sl, r0
 	ldrne r0, [sp, #0x54]
-	lslne r1, sl, #5
-	ldrhne sl, [r0, r1]
+	movne r1, sl, lsl #5
+	ldrneh sl, [r0, r1]
 	ldreq r0, [sp, #0x5c]
-	ldrheq sl, [r0]
+	ldreqh sl, [r0]
 _06006F80:
 	ldr r0, [sp, #0xa8]
 	cmp sl, r0
@@ -8329,8 +8333,8 @@ _06006FB4:
 _06006FC8:
 	cmp r0, #1
 	moveq r0, #0
-	strheq r0, [r7, #0x62]
-	strheq r0, [r7, #0x64]
+	streqh r0, [r7, #0x62]
+	streqh r0, [r7, #0x64]
 	beq _0600742C
 	add r0, r7, #0x700
 	ldrh r1, [r0, #0xc6]
@@ -8350,7 +8354,7 @@ _06006FC8:
 	bic r0, r0, #0x1f
 	cmp r1, r0
 	bge _06007348
-	ldr r0, _06007438 @ =0x060198A4
+	ldr r0, _06007438 ; =0x060198A4
 	ldr sb, [r0, #0x550]
 	ldrh r0, [sb]
 	add r8, sb, #0x2f8
@@ -8382,17 +8386,17 @@ _06007074:
 	str r1, [sp, #0x3c]
 	bl sub_06000740
 _06007098:
-	lsl r0, r5, #0x10
+	mov r0, r5, lsl #0x10
 	mvn r0, r0, lsr #16
 	str r0, [sp, #0x30]
 	mov sl, #0
 _060070A8:
-	ldr r0, _0600743C @ =0x0000FFFF
+	ldr r0, _0600743C ; =0x0000FFFF
 	add fp, sb, #0x600
 	str r0, [sp, #0x38]
 	add r0, sb, #0x2fc
 	add r1, r0, #0x400
-	lsl r0, sl, #2
+	mov r0, sl, lsl #2
 	ldrh r5, [r1, r0]
 	ldr r0, [sp, #0x38]
 	add r6, r1, sl, lsl #2
@@ -8435,18 +8439,18 @@ _06007108:
 	beq _060071D8
 	ldrh r0, [r4, #2]
 	tst r0, #8
-	ldrheq r0, [r4, #0x12]
+	ldreqh r0, [r4, #0x12]
 	cmpeq r0, #0
 	beq _060071D8
 	ldrh r0, [r4, #0x12]
 	cmp r0, #0
 	subne r0, r0, #1
-	strhne r0, [r4, #0x12]
+	strneh r0, [r4, #0x12]
 	ldrh r1, [r4]
 	ldr r0, [sp, #0xac]
 	cmp r1, r0
 	ldreq r0, [sp, #0x7c]
-	strheq r0, [r6, #2]
+	streqh r0, [r6, #2]
 	ldr r1, [sp, #0x38]
 	ldr r0, [sp, #0xb0]
 	cmp r1, r0
@@ -8454,14 +8458,14 @@ _06007108:
 	strh r0, [r6]
 	ldr r0, [sp, #0x80]
 	strh r0, [r4]
-	lsleq r0, r5, #0x10
-	lsreq r0, r0, #0x10
+	moveq r0, r5, lsl #0x10
+	moveq r0, r0, lsr #0x10
 	streq r0, [sp, #0x34]
 	ldrne r0, [sp, #0x38]
-	lslne r0, r0, #5
-	strhne r5, [r8, r0]
-	lsl r0, r5, #0x10
-	lsr r0, r0, #0x10
+	movne r0, r0, lsl #5
+	strneh r5, [r8, r0]
+	mov r0, r5, lsl #0x10
+	mov r0, r0, lsr #0x10
 	str r0, [sp, #0x38]
 	b _060072C0
 _060071D8:
@@ -8511,7 +8515,7 @@ _060071D8:
 	ldr r0, [sp, #0xb8]
 	cmp r1, r0
 	ldreq r0, [sp, #0x84]
-	strheq r0, [r6, #2]
+	streqh r0, [r6, #2]
 	ldrh r0, [r4]
 	strh r0, [r6]
 	ldr r0, [sp, #0x88]
@@ -8519,9 +8523,9 @@ _060071D8:
 	ldrh r1, [fp, #0xfa]
 	ldr r0, [sp, #0xbc]
 	cmp r1, r0
-	strheq r5, [fp, #0xf8]
-	lslne r0, r1, #5
-	strhne r5, [r8, r0]
+	streqh r5, [fp, #0xf8]
+	movne r0, r1, lsl #5
+	strneh r5, [r8, r0]
 	strh r5, [fp, #0xfa]
 _060072C0:
 	ldrh r5, [r6]
@@ -8529,7 +8533,7 @@ _060072C4:
 	ldr r0, [sp, #0xc0]
 	cmp r5, r0
 	bne _06007108
-	ldr r2, _0600743C @ =0x0000FFFF
+	ldr r2, _0600743C ; =0x0000FFFF
 	ldr r0, [sp, #0x38]
 	cmp r0, r2
 	beq _06007318
@@ -8537,12 +8541,12 @@ _060072C4:
 	add r1, r0, #0x700
 	ldr r0, [sp, #0x38]
 	ldrh r3, [r1, #0xc]
-	lsl r0, r0, #5
+	mov r0, r0, lsl #5
 	strh r3, [r8, r0]
 	ldrh r0, [r1, #0xe]
 	cmp r0, r2
 	ldreq r0, [sp, #0x38]
-	strheq r0, [r1, #0xe]
+	streqh r0, [r1, #0xe]
 	add r0, sb, sl, lsl #2
 	add r1, r0, #0x700
 	ldr r0, [sp, #0x34]
@@ -8564,7 +8568,7 @@ _06007338:
 _06007348:
 	ldrsh r0, [r7, #0x62]
 	cmp r0, #1
-	ldrshne r0, [r7, #0x64]
+	ldrnesh r0, [r7, #0x64]
 	cmpne r0, #1
 	movne r6, #0
 	bne _060073C8
@@ -8586,7 +8590,7 @@ _06007388:
 	bic r0, r0, #0x8000
 	strh r0, [sp, #0xc4]
 	mov sl, r6
-	ldr r4, _06007440 @ =0x000080D6
+	ldr r4, _06007440 ; =0x000080D6
 	bl sub_06000720
 	ldrsh r1, [r7, #0x62]
 	add r1, r1, #1
@@ -8596,25 +8600,25 @@ _06007388:
 	strh r1, [r7, #0x64]
 	bl sub_06000740
 _060073C8:
-	lsl r0, r5, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r5, lsl #0x10
+	mov r0, r0, lsr #0x10
 	str r0, [sp]
-	ldr r0, _06007444 @ =0x048080F8
+	ldr r0, _06007444 ; =0x048080F8
 	str r6, [sp, #4]
 	ldrh r1, [r0]
-	lsl r0, sl, #0x10
+	mov r0, sl, lsl #0x10
 	str r1, [sp, #8]
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	str r0, [sp, #0xc]
 	ldrh r0, [sp, #0xc4]
-	lsl r3, r4, #0x10
+	mov r3, r4, lsl #0x10
 	str r0, [sp, #0x10]
 	ldr r2, [r7, #0x7c]
 	mov r1, #0
 	str r2, [sp, #0x14]
 	add r0, sp, #0xc8
 	mov r2, r1
-	lsr r3, r3, #0x10
+	mov r3, r3, lsr #0x10
 	bl sub_06002464
 	strh r5, [r7, #0x68]
 	ldrh r0, [sp, #0xc4]
@@ -8623,34 +8627,34 @@ _060073C8:
 	strh sl, [r7, #0x6e]
 _0600742C:
 	add sp, sp, #0x2c8
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06007438: .4byte 0x060198A4
-_0600743C: .4byte 0x0000FFFF
-_06007440: .4byte 0x000080D6
-_06007444: .4byte 0x048080F8
+_06007438: .word 0x060198A4
+_0600743C: .word 0x0000FFFF
+_06007440: .word 0x000080D6
+_06007444: .word 0x048080F8
 	arm_func_end sub_06006AA0
 
 	arm_func_start sub_06007448
-sub_06007448: @ 0x06007448
-	ldr pc, _0600744C @ =sub_03806010
+sub_06007448: ; 0x06007448
+	ldr pc, _0600744C ; =sub_03806010
 	.align 2, 0
-_0600744C: .4byte sub_03806010
+_0600744C: .word sub_03806010
 	arm_func_end sub_06007448
 
 	arm_func_start sub_06007450
-sub_06007450: @ 0x06007450
-	push {r4, r5, r6, r7, r8, lr}
+sub_06007450: ; 0x06007450
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x218
-	ldr r1, _06007534 @ =0x060198A4
+	ldr r1, _06007534 ; =0x060198A4
 	mov r4, r0
 	ldr r7, [r1, #0x550]
 	bl sub_06000720
 	bl sub_06000740
 	add r0, r7, #0x100
 	ldrh r0, [r0, #0x82]
-	ldr r1, _06007538 @ =0x048080F8
+	ldr r1, _06007538 ; =0x048080F8
 	and r4, r4, r0
 	ldrh r8, [r7, #0x3a]
 	mov r0, r4
@@ -8671,7 +8675,7 @@ sub_06007450: @ 0x06007450
 _060074BC:
 	ldrsh r0, [r7, #0x62]
 	cmp r0, #1
-	ldrshne r0, [r7, #0x64]
+	ldrnesh r0, [r7, #0x64]
 	cmpne r0, #1
 	bicne r6, r6, #0x8000
 	movne r0, #0
@@ -8683,41 +8687,41 @@ _060074BC:
 	bl sub_06007DA4
 	orr r6, r6, #0x8000
 _060074F0:
-	lsl r1, r4, #0x10
-	lsr r1, r1, #0x10
+	mov r1, r4, lsl #0x10
+	mov r1, r1, lsr #0x10
 	str r1, [sp]
 	stmib sp, {r0, r5}
 	mov r2, #0
-	lsl r0, r6, #0x10
+	mov r0, r6, lsl #0x10
 	str r2, [sp, #0xc]
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	str r0, [sp, #0x10]
-	ldr r1, _0600753C @ =0x0000800C
+	ldr r1, _0600753C ; =0x0000800C
 	add r0, sp, #0x18
 	mov r3, r2
 	str r2, [sp, #0x14]
 	bl sub_06002464
 _06007528:
 	add sp, sp, #0x218
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_06007534: .4byte 0x060198A4
-_06007538: .4byte 0x048080F8
-_0600753C: .4byte 0x0000800C
+_06007534: .word 0x060198A4
+_06007538: .word 0x048080F8
+_0600753C: .word 0x0000800C
 	arm_func_end sub_06007450
 
 	arm_func_start sub_06007540
-sub_06007540: @ 0x06007540
-	ldr pc, _06007544 @ =sub_037F94B0
+sub_06007540: ; 0x06007540
+	ldr pc, _06007544 ; =sub_037F94B0
 	.align 2, 0
-_06007544: .4byte sub_037F94B0
+_06007544: .word sub_037F94B0
 	arm_func_end sub_06007540
 
 	arm_func_start sub_06007548
-sub_06007548: @ 0x06007548
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r4, _06007674 @ =0x060198A4
+sub_06007548: ; 0x06007548
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldr r4, _06007674 ; =0x060198A4
 	ldrh r8, [sp, #0x24]
 	ldr r4, [r4, #0x550]
 	mov r7, r0
@@ -8743,7 +8747,7 @@ sub_06007548: @ 0x06007548
 	bl sub_06006598
 	add r2, r4, #0x600
 	ldrh r1, [r2, #0xf8]
-	ldr r3, _06007678 @ =0x0000FFFF
+	ldr r3, _06007678 ; =0x0000FFFF
 	cmp r1, r3
 	bne _060075D4
 	add r0, r4, #0x31c
@@ -8752,13 +8756,13 @@ sub_06007548: @ 0x06007548
 	mov r0, #0xa
 	b _0600766C
 _060075D4:
-	lsl r0, r1, #5
+	mov r0, r1, lsl #5
 	ldrh ip, [r8, r0]
 	add r0, r8, r1, lsl #5
 	strh ip, [r2, #0xf8]
 	ldrh ip, [r2, #0xfa]
 	cmp ip, r1
-	strheq r3, [r2, #0xfa]
+	streqh r3, [r2, #0xfa]
 	strh r6, [r0, #2]
 	strh r5, [r0, #4]
 	and r2, r5, r7
@@ -8774,7 +8778,7 @@ _060075D4:
 	ldr r2, [sp, #0x2c]
 	str r3, [r0, #0x18]
 	str r2, [r0, #0x1c]
-	ldr r3, _06007678 @ =0x0000FFFF
+	ldr r3, _06007678 ; =0x0000FFFF
 	add r2, r4, #0x700
 	strh r3, [r0]
 	strh r3, [r0, #0x10]
@@ -8782,27 +8786,27 @@ _060075D4:
 	strh r2, [r0, #0x12]
 	ldrh r0, [sb, #2]
 	cmp r0, r3
-	strheq r1, [sb]
-	lslne r0, r0, #5
-	strhne r1, [r8, r0]
+	streqh r1, [sb]
+	movne r0, r0, lsl #5
+	strneh r1, [r8, r0]
 	add r0, r4, #0x31c
 	add r0, r0, #0x400
 	strh r1, [sb, #2]
 	bl sub_060065A0
 	mov r0, #2
 _0600766C:
-	pop {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_06007674: .4byte 0x060198A4
-_06007678: .4byte 0x0000FFFF
+_06007674: .word 0x060198A4
+_06007678: .word 0x0000FFFF
 	arm_func_end sub_06007548
 
 	arm_func_start sub_0600767C
-sub_0600767C: @ 0x0600767C
-	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_0600767C: ; 0x0600767C
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x3c
-	ldr r2, _060079A4 @ =0x060198A4
+	ldr r2, _060079A4 ; =0x060198A4
 	str r0, [sp]
 	ldr r8, [r2, #0x550]
 	mov r5, r1
@@ -8845,8 +8849,8 @@ _0600770C:
 _06007718:
 	add r0, r8, #0x2fc
 	add r1, r0, #0x400
-	ldr sb, _060079A8 @ =0x0000FFFF
-	lsl r0, sl, #2
+	ldr sb, _060079A8 ; =0x0000FFFF
+	mov r0, sl, lsl #2
 	ldrh r5, [r1, r0]
 	add r0, r8, #0x100
 	str sb, [sp, #8]
@@ -8891,7 +8895,7 @@ _060077A4:
 	beq _06007840
 	ldrh r0, [r7, #2]
 	tst r0, #8
-	ldrheq r0, [r7, #0x12]
+	ldreqh r0, [r7, #0x12]
 	cmpeq r0, #0
 	beq _06007840
 	mov r0, #1
@@ -8899,25 +8903,25 @@ _060077A4:
 	ldrh r0, [r7, #0x12]
 	cmp r0, #0
 	subne r0, r0, #1
-	strhne r0, [r7, #0x12]
+	strneh r0, [r7, #0x12]
 	ldrh r1, [r7]
 	ldr r0, [sp, #0x24]
 	cmp r1, r0
 	ldreq r0, [sp, #0x14]
-	strheq r0, [r6, #2]
+	streqh r0, [r6, #2]
 	ldr r0, [sp, #0x28]
 	cmp sb, r0
 	ldrh r0, [r7]
 	strh r0, [r6]
 	ldr r0, [sp, #0x18]
 	strh r0, [r7]
-	lsleq r0, r5, #0x10
-	lsreq r0, r0, #0x10
+	moveq r0, r5, lsl #0x10
+	moveq r0, r0, lsr #0x10
 	streq r0, [sp, #8]
-	lslne r0, sb, #5
-	strhne r5, [r4, r0]
-	lsl r0, r5, #0x10
-	lsr sb, r0, #0x10
+	movne r0, sb, lsl #5
+	strneh r5, [r4, r0]
+	mov r0, r5, lsl #0x10
+	mov sb, r0, lsr #0x10
 	b _06007928
 _06007840:
 	bl sub_06000294
@@ -8966,7 +8970,7 @@ _06007840:
 	ldr r0, [sp, #0x30]
 	cmp r1, r0
 	ldreq r0, [sp, #0x1c]
-	strheq r0, [r6, #2]
+	streqh r0, [r6, #2]
 	ldrh r0, [r7]
 	strh r0, [r6]
 	ldr r0, [sp, #0x20]
@@ -8974,9 +8978,9 @@ _06007840:
 	ldrh r1, [fp, #0xfa]
 	ldr r0, [sp, #0x34]
 	cmp r1, r0
-	strheq r5, [fp, #0xf8]
-	lslne r0, r1, #5
-	strhne r5, [r4, r0]
+	streqh r5, [fp, #0xf8]
+	movne r0, r1, lsl #5
+	strneh r5, [r4, r0]
 	strh r5, [fp, #0xfa]
 _06007928:
 	ldrh r5, [r6]
@@ -8984,17 +8988,17 @@ _0600792C:
 	ldr r0, [sp, #0x38]
 	cmp r5, r0
 	bne _06007768
-	ldr r1, _060079A8 @ =0x0000FFFF
+	ldr r1, _060079A8 ; =0x0000FFFF
 	cmp sb, r1
 	beq _06007974
 	add r0, r8, sl, lsl #2
 	add r0, r0, #0x700
 	ldrh r3, [r0, #0xc]
-	lsl r2, sb, #5
+	mov r2, sb, lsl #5
 	strh r3, [r4, r2]
 	ldrh r2, [r0, #0xe]
 	cmp r2, r1
-	strheq sb, [r0, #0xe]
+	streqh sb, [r0, #0xe]
 	add r0, r8, sl, lsl #2
 	add r1, r0, #0x700
 	ldr r0, [sp, #8]
@@ -9011,18 +9015,18 @@ _06007974:
 	ldr r0, [sp, #0xc]
 _06007998:
 	add sp, sp, #0x3c
-	pop {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_060079A4: .4byte 0x060198A4
-_060079A8: .4byte 0x0000FFFF
+_060079A4: .word 0x060198A4
+_060079A8: .word 0x0000FFFF
 	arm_func_end sub_0600767C
 
 	arm_func_start sub_060079AC
-sub_060079AC: @ 0x060079AC
-	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_060079AC: ; 0x060079AC
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
-	ldr r1, _06007B98 @ =0x060198A4
+	ldr r1, _06007B98 ; =0x060198A4
 	mvn r2, r0
 	ldr sb, [r1, #0x550]
 	add r0, sb, #0x100
@@ -9044,10 +9048,10 @@ _060079F0:
 	add r4, sb, #0x600
 _06007A00:
 	ldr r0, [sp, #8]
-	lsl r1, r6, #2
+	mov r1, r6, lsl #2
 	add r7, r0, r6, lsl #2
 	ldrh sl, [r0, r1]
-	ldr r0, _06007B9C @ =0x0000FFFF
+	ldr r0, _06007B9C ; =0x0000FFFF
 	str r7, [sp, #4]
 	str r0, [sp]
 	b _06007B54
@@ -9102,36 +9106,36 @@ _06007A20:
 	strh r2, [r0, #0x26]
 	bl sub_0600029C
 	ldrh r1, [r8]
-	ldr r0, _06007B9C @ =0x0000FFFF
+	ldr r0, _06007B9C ; =0x0000FFFF
 	cmp r1, r0
 	ldreq r0, [sp]
-	strheq r0, [r7, #2]
+	streqh r0, [r7, #2]
 	ldrh r1, [r8]
 	ldr r0, [sp, #4]
 	strh r1, [r0]
-	ldr r0, _06007B9C @ =0x0000FFFF
+	ldr r0, _06007B9C ; =0x0000FFFF
 	strh r0, [r8]
 	ldrh r1, [r4, #0xfa]
 	cmp r1, r0
-	strheq sl, [r4, #0xf8]
-	lslne r0, r1, #5
-	strhne sl, [r5, r0]
+	streqh sl, [r4, #0xf8]
+	movne r0, r1, lsl #5
+	strneh sl, [r5, r0]
 	strh sl, [r4, #0xfa]
 	ldr sl, [sp]
 _06007B28:
-	ldr r0, _06007B9C @ =0x0000FFFF
+	ldr r0, _06007B9C ; =0x0000FFFF
 	str sl, [sp]
 	cmp sl, r0
 	addne r0, r5, sl, lsl #5
 	strne r0, [sp, #4]
-	ldr r0, _06007B9C @ =0x0000FFFF
+	ldr r0, _06007B9C ; =0x0000FFFF
 	streq r7, [sp, #4]
 	cmp sl, r0
-	lslne r0, sl, #5
-	ldrhne sl, [r5, r0]
-	ldrheq sl, [r7]
+	movne r0, sl, lsl #5
+	ldrneh sl, [r5, r0]
+	ldreqh sl, [r7]
 _06007B54:
-	ldr r0, _06007B9C @ =0x0000FFFF
+	ldr r0, _06007B9C ; =0x0000FFFF
 	cmp sl, r0
 	bne _06007A20
 	add r6, r6, #1
@@ -9146,19 +9150,19 @@ _06007B54:
 	add r0, r0, #0x400
 	bl sub_060065A0
 	add sp, sp, #0x14
-	pop {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06007B98: .4byte 0x060198A4
-_06007B9C: .4byte 0x0000FFFF
+_06007B98: .word 0x060198A4
+_06007B9C: .word 0x0000FFFF
 	arm_func_end sub_060079AC
 
 	arm_func_start sub_06007BA0
-sub_06007BA0: @ 0x06007BA0
-	push {r0, r1, r2, r3}
-	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_06007BA0: ; 0x06007BA0
+	stmdb sp!, {r0, r1, r2, r3}
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
-	ldr r4, _06007D9C @ =0x060198A4
+	ldr r4, _06007D9C ; =0x060198A4
 	ldr r1, [sp, #0x40]
 	ldr r5, [r4, #0x550]
 	movs sb, r3
@@ -9183,7 +9187,7 @@ sub_06007BA0: @ 0x06007BA0
 	b _06007D84
 _06007C08:
 	ldr r0, [sp, #8]
-	ldr r7, _06007DA0 @ =0x0000FFFF
+	ldr r7, _06007DA0 ; =0x0000FFFF
 	cmp r0, #1
 	addeq r1, sp, #0x34
 	moveq r0, #0
@@ -9193,9 +9197,9 @@ _06007C08:
 	addne r0, r0, #2
 	ldrh r1, [r1]
 	strne r0, [sp]
-	lsl r0, r1, #0x18
+	mov r0, r1, lsl #0x18
 	subne sb, sb, #2
-	lsrs r6, r0, #0x17
+	movs r6, r0, lsr #0x17
 	moveq r6, #0x200
 	tst r1, #0x1000
 	movne r2, #1
@@ -9215,27 +9219,27 @@ _06007C08:
 	bmi _06007D8C
 	and r1, r1, #0xf00
 	cmp r3, #1
-	lsl r1, r1, #8
+	mov r1, r1, lsl #8
 	ldr r3, [sp]
-	lsr fp, r1, #0x10
+	mov fp, r1, lsr #0x10
 	ldr r1, [sp]
 	add r0, r3, r0
 	str r1, [sp, #4]
 	add r1, r1, r6
 	str r0, [sp]
 	bne _06007CEC
-	lsl r0, fp, #0x1d
-	lsr r0, r0, #0x1c
+	mov r0, fp, lsl #0x1d
+	mov r0, r0, lsr #0x1c
 	ldrh r3, [r8, r0]
 	ldrh r7, [r1], #2
 	tst r3, #1
-	lslne r3, r7, #1
-	strhne r3, [r8, r0]
+	movne r3, r7, lsl #1
+	strneh r3, [r8, r0]
 	bne _06007CEC
-	lsl r7, r7, #1
+	mov r7, r7, lsl #1
 	sub r3, r3, r7
-	lsl r3, r3, #0x10
-	lsr r3, r3, #0x10
+	mov r3, r3, lsl #0x10
+	mov r3, r3, lsr #0x10
 	cmp r3, #0x100
 	blo _06007D84
 	strh r7, [r8, r0]
@@ -9284,32 +9288,32 @@ _06007D84:
 	bgt _06007C08
 _06007D8C:
 	add sp, sp, #0xc
-	pop {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_06007D9C: .4byte 0x060198A4
-_06007DA0: .4byte 0x0000FFFF
+_06007D9C: .word 0x060198A4
+_06007DA0: .word 0x0000FFFF
 	arm_func_end sub_06007BA0
 
 	arm_func_start sub_06007DA4
-sub_06007DA4: @ 0x06007DA4
-	push {r4, r5, r6, lr}
+sub_06007DA4: ; 0x06007DA4
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r1
 	mov r5, r0
 	tst r6, #0x8000
-	ldrne r0, _06007E40 @ =0x00007FFF
+	ldrne r0, _06007E40 ; =0x00007FFF
 	mov r4, r3
 	andne r6, r6, r0
 	addeq r0, r6, #0x1c
-	lsleq r0, r0, #2
+	moveq r0, r0, lsl #2
 	addeq r6, r0, #0x66
 	mov r0, r2
 	bl sub_06007448
 	mul r2, r6, r0
-	ldr r1, _06007E44 @ =0x04000006
+	ldr r1, _06007E44 ; =0x04000006
 	add r0, r5, #0x22
-	lsl r3, r0, #2
+	mov r3, r0, lsl #2
 	ldrh r1, [r1]
 	sub r0, r4, #2
 	add r3, r3, #0x60
@@ -9322,30 +9326,30 @@ _06007E00:
 	adds r3, r0, #0x100
 	bmi _06007E00
 _06007E0C:
-	ldr r2, _06007E48 @ =0x66666667
+	ldr r2, _06007E48 ; =0x66666667
 	rsb r1, r3, r3, lsl #7
-	lsr r0, r1, #0x1f
+	mov r0, r1, lsr #0x1f
 	smull r1, r3, r2, r1
 	add r3, r0, r3, asr #3
 	mov r0, #0xa
 	mul r0, r3, r0
 	cmp r0, r4
 	movlo r3, #0
-	lsl r0, r3, #0x10
-	lsr r0, r0, #0x10
-	pop {r4, r5, r6, lr}
+	mov r0, r3, lsl #0x10
+	mov r0, r0, lsr #0x10
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06007E40: .4byte 0x00007FFF
-_06007E44: .4byte 0x04000006
-_06007E48: .4byte 0x66666667
+_06007E40: .word 0x00007FFF
+_06007E44: .word 0x04000006
+_06007E48: .word 0x66666667
 	arm_func_end sub_06007DA4
 
 	arm_func_start sub_06007E4C
-sub_06007E4C: @ 0x06007E4C
-	push {r4, lr}
+sub_06007E4C: ; 0x06007E4C
+	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x280
-	ldr r1, _06007ED8 @ =0x060198A4
+	ldr r1, _06007ED8 ; =0x060198A4
 	ldr r2, [r0, #4]
 	ldr r4, [r1, #0x550]
 	add r0, sp, #0
@@ -9355,9 +9359,9 @@ sub_06007E4C: @ 0x06007E4C
 	ldrh r1, [r4, #0xec]
 	add r0, sp, #0x80
 	add r1, r1, #0x10
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	add r2, sp, #0
-	lsr r1, r1, #0x10
+	mov r1, r1, lsr #0x10
 	bl sub_06002908
 	mov r4, r0
 	bl sub_06000294
@@ -9366,7 +9370,7 @@ sub_06007E4C: @ 0x06007E4C
 	ldrh r1, [r4, #4]
 	cmp r1, #0
 	moveq r1, #0
-	strheq r1, [r0, #2]
+	streqh r1, [r0, #2]
 	beq _06007EC8
 	mov r1, #1
 	strh r1, [r0, #2]
@@ -9377,15 +9381,15 @@ sub_06007E4C: @ 0x06007E4C
 _06007EC8:
 	bl sub_0600029C
 	add sp, sp, #0x280
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06007ED8: .4byte 0x060198A4
+_06007ED8: .word 0x060198A4
 	arm_func_end sub_06007E4C
 
 	arm_func_start sub_06007EDC
-sub_06007EDC: @ 0x06007EDC
-	push {r4, r5, r6, r7, r8, lr}
+sub_06007EDC: ; 0x06007EDC
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x208
 	add r1, sp, #0
 	add r0, r0, #4
@@ -9419,7 +9423,7 @@ _06007F40:
 	ldrh r1, [r4, #4]
 	cmp r1, #0
 	moveq r1, #0
-	strheq r1, [r0, #2]
+	streqh r1, [r0, #2]
 	beq _06007F78
 	mov r1, #1
 	strh r1, [r0, #2]
@@ -9430,15 +9434,15 @@ _06007F40:
 _06007F78:
 	bl sub_0600029C
 	add sp, sp, #0x208
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	arm_func_end sub_06007EDC
 
 	arm_func_start sub_06007F88
-sub_06007F88: @ 0x06007F88
-	push {r3, lr}
+sub_06007F88: ; 0x06007F88
+	stmdb sp!, {r3, lr}
 	ldr r3, [r0, #4]
-	ldr r1, _06007FD4 @ =0x060198A4
+	ldr r1, _06007FD4 ; =0x060198A4
 	str r3, [r1, #0x54c]
 	ldr r2, [r0, #8]
 	str r2, [r1, #0x550]
@@ -9453,16 +9457,16 @@ sub_06007F88: @ 0x06007F88
 	mov r1, #0
 	strh r1, [r0, #2]
 	bl sub_0600029C
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06007FD4: .4byte 0x060198A4
+_06007FD4: .word 0x060198A4
 	arm_func_end sub_06007F88
 
 	arm_func_start sub_06007FD8
-sub_06007FD8: @ 0x06007FD8
-	push {r4, r5, r6, r7, r8, lr}
-	ldr r1, _06008178 @ =0x060198A4
+sub_06007FD8: ; 0x06007FD8
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	ldr r1, _06008178 ; =0x060198A4
 	mov r8, r0
 	ldr r7, [r1, #0x550]
 	ldr r4, [r1, #0x54c]
@@ -9525,7 +9529,7 @@ _06008018:
 	mov r0, #0x3e8
 	strh r0, [r7, #0x44]
 	mov r1, #0
-	ldr r0, _0600817C @ =0x0000020B
+	ldr r0, _0600817C ; =0x0000020B
 	strh r1, [r7, #0x46]
 	str r0, [r7, #0x48]
 	str r1, [r7, #0x4c]
@@ -9540,7 +9544,7 @@ _06008018:
 	bl sub_06000740
 	cmp r5, #0
 	beq _06008118
-	ldr r0, _06008180 @ =0x0000FFFF
+	ldr r0, _06008180 ; =0x0000FFFF
 	bl sub_060079AC
 _06008118:
 	mov r2, #0
@@ -9567,18 +9571,18 @@ _06008120:
 _06008168:
 	mov r0, #1
 	strh r0, [r7]
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_06008178: .4byte 0x060198A4
-_0600817C: .4byte 0x0000020B
-_06008180: .4byte 0x0000FFFF
+_06008178: .word 0x060198A4
+_0600817C: .word 0x0000020B
+_06008180: .word 0x0000FFFF
 	arm_func_end sub_06007FD8
 
 	arm_func_start sub_06008184
-sub_06008184: @ 0x06008184
-	push {r4, lr}
-	ldr r0, _060081E8 @ =0x060198A4
+sub_06008184: ; 0x06008184
+	stmdb sp!, {r4, lr}
+	ldr r0, _060081E8 ; =0x060198A4
 	ldr r4, [r0, #0x550]
 	ldrh r0, [r4]
 	cmp r0, #1
@@ -9602,17 +9606,17 @@ _060081B8:
 	strh r1, [r0, #2]
 	bl sub_0600029C
 _060081E0:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060081E8: .4byte 0x060198A4
+_060081E8: .word 0x060198A4
 	arm_func_end sub_06008184
 
 	arm_func_start sub_060081EC
-sub_060081EC: @ 0x060081EC
-	push {r3, r4, lr}
+sub_060081EC: ; 0x060081EC
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r0, _06008290 @ =0x060198A4
+	ldr r0, _06008290 ; =0x060198A4
 	ldr r4, [r0, #0x550]
 	ldrh r0, [r4]
 	cmp r0, #1
@@ -9652,17 +9656,17 @@ _06008264:
 	bl sub_0600029C
 _06008284:
 	add sp, sp, #4
-	pop {r3, r4, lr}
+	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_06008290: .4byte 0x060198A4
+_06008290: .word 0x060198A4
 	arm_func_end sub_060081EC
 
 	arm_func_start sub_06008294
-sub_06008294: @ 0x06008294
-	push {r3, r4, r5, r6, r7, lr}
+sub_06008294: ; 0x06008294
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x200
-	ldr r2, _0600847C @ =0x060198A4
+	ldr r2, _0600847C ; =0x060198A4
 	mov r7, r0
 	add r0, sp, #0
 	mov r6, r1
@@ -9683,26 +9687,26 @@ _060082D8:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06008304
-	ldr r1, _06008480 @ =0x00000302
+	ldr r1, _06008480 ; =0x00000302
 	strh r1, [r7]
 	ldrh r1, [r0, #4]
 	mov r0, #0
 	strh r1, [r6]
 	b _06008470
 _06008304:
-	ldr r2, _06008484 @ =0x04808124
+	ldr r2, _06008484 ; =0x04808124
 	mov r0, #0xc8
 	strh r0, [r2]
 	mov r0, #0x7d0
 	strh r0, [r2, #4]
-	ldr r1, _06008488 @ =0x00000202
+	ldr r1, _06008488 ; =0x00000202
 	add r0, sp, #0
 	strh r1, [r2, #0x2c]
 	bl sub_060029A4
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _0600834C
-	ldr r1, _0600848C @ =0x00000283
+	ldr r1, _0600848C ; =0x00000283
 	strh r1, [r7]
 	ldrh r1, [r0, #4]
 	mov r0, #0
@@ -9711,18 +9715,18 @@ _06008304:
 _0600834C:
 	ldrh r2, [r0, #6]
 	add r0, r5, #0x100
-	lsl r1, r2, #0xf
+	mov r1, r2, lsl #0xf
 	strh r2, [r0, #0xf4]
-	lsr r0, r1, #0x10
+	mov r0, r1, lsr #0x10
 	bl sub_060084A4
 	add r1, r5, #0x100
 	strh r0, [r1, #0xf6]
-	ldr r1, _06008490 @ =0x0000FFFF
+	ldr r1, _06008490 ; =0x0000FFFF
 	add r0, sp, #0
 	mov r2, #0x28
 	mov r3, #5
 	bl sub_06002730
-	ldr r1, _06008494 @ =0x001FF621
+	ldr r1, _06008494 ; =0x001FF621
 	mov r0, #0
 	str r1, [r5, #0x7b8]
 	str r0, [r5, #0x7bc]
@@ -9737,7 +9741,7 @@ _0600834C:
 	ldrh r0, [r4, #4]
 	cmp r0, #0
 	beq _060083D4
-	ldr r1, _06008498 @ =0x00000306
+	ldr r1, _06008498 ; =0x00000306
 	mov r0, #0
 	strh r1, [r7]
 	ldrh r1, [r4, #4]
@@ -9761,7 +9765,7 @@ _060083D4:
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	beq _06008430
-	ldr r1, _0600849C @ =0x00000281
+	ldr r1, _0600849C ; =0x00000281
 	strh r1, [r7]
 	ldrh r1, [r0, #4]
 	mov r0, #0
@@ -9779,40 +9783,40 @@ _06008430:
 	cmp r1, #0
 	moveq r0, #1
 	beq _06008470
-	ldr r1, _060084A0 @ =0x00000215
+	ldr r1, _060084A0 ; =0x00000215
 	strh r1, [r7]
 	ldrh r1, [r0, #4]
 	mov r0, #0
 	strh r1, [r6]
 _06008470:
 	add sp, sp, #0x200
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600847C: .4byte 0x060198A4
-_06008480: .4byte 0x00000302
-_06008484: .4byte 0x04808124
-_06008488: .4byte 0x00000202
-_0600848C: .4byte 0x00000283
-_06008490: .4byte 0x0000FFFF
-_06008494: .4byte 0x001FF621
-_06008498: .4byte 0x00000306
-_0600849C: .4byte 0x00000281
-_060084A0: .4byte 0x00000215
+_0600847C: .word 0x060198A4
+_06008480: .word 0x00000302
+_06008484: .word 0x04808124
+_06008488: .word 0x00000202
+_0600848C: .word 0x00000283
+_06008490: .word 0x0000FFFF
+_06008494: .word 0x001FF621
+_06008498: .word 0x00000306
+_0600849C: .word 0x00000281
+_060084A0: .word 0x00000215
 	arm_func_end sub_06008294
 
 	arm_func_start sub_060084A4
-sub_060084A4: @ 0x060084A4
-	ldr pc, _060084A8 @ =sub_03806968
+sub_060084A4: ; 0x060084A4
+	ldr pc, _060084A8 ; =sub_03806968
 	.align 2, 0
-_060084A8: .4byte sub_03806968
+_060084A8: .word sub_03806968
 	arm_func_end sub_060084A4
 
 	arm_func_start sub_060084AC
-sub_060084AC: @ 0x060084AC
-	push {r3, r4, r5, lr}
+sub_060084AC: ; 0x060084AC
+	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x200
-	ldr r0, _06008554 @ =0x060198A4
+	ldr r0, _06008554 ; =0x060198A4
 	ldr r5, [r0, #0x550]
 	ldrh r0, [r5]
 	cmp r0, #2
@@ -9853,15 +9857,15 @@ _06008528:
 	bl sub_0600029C
 _06008548:
 	add sp, sp, #0x200
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06008554: .4byte 0x060198A4
+_06008554: .word 0x060198A4
 	arm_func_end sub_060084AC
 
 	arm_func_start sub_06008558
-sub_06008558: @ 0x06008558
-	push {r3, r4, r5, r6, lr}
+sub_06008558: ; 0x06008558
+	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x1c
 	mov r6, r0
 	add r1, sp, #0
@@ -9882,14 +9886,14 @@ sub_06008558: @ 0x06008558
 	mov r0, r4
 	bl sub_0600029C
 	add sp, sp, #0x1c
-	pop {r3, r4, r5, r6, lr}
+	ldmia sp!, {r3, r4, r5, r6, lr}
 	bx lr
 	arm_func_end sub_06008558
 
 	arm_func_start sub_060085B4
-sub_060085B4: @ 0x060085B4
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r2, _060088AC @ =0x060198A4
+sub_060085B4: ; 0x060085B4
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldr r2, _060088AC ; =0x060198A4
 	mov sb, r0
 	ldr r7, [r2, #0x550]
 	ldr r6, [sb]
@@ -9897,8 +9901,8 @@ sub_060085B4: @ 0x060085B4
 	mov r8, r1
 	add r0, r0, #0xf7
 	add r0, r0, #0xff00
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	cmp r0, #1
 	mov r5, #0
 	bhi _060085F8
@@ -9910,7 +9914,7 @@ _060085F8:
 	mov r4, r0
 	cmp r8, #0
 	beq _06008680
-	ldr r0, _060088B0 @ =0x00003FFF
+	ldr r0, _060088B0 ; =0x00003FFF
 	str r0, [r8]
 	ldrh r0, [r7, #0x58]
 	strh r0, [r8, #4]
@@ -9960,7 +9964,7 @@ _060086A0:
 	strh r1, [r0, #0xc2]
 	ldrsh r0, [r7, #0x62]
 	cmp r0, r1
-	strhgt r1, [r7, #0x62]
+	strgth r1, [r7, #0x62]
 _060086CC:
 	tst r6, #4
 	beq _060086F8
@@ -9972,7 +9976,7 @@ _060086CC:
 	strh r1, [r0, #0xc4]
 	ldrsh r0, [r7, #0x62]
 	cmp r0, r1
-	strhgt r1, [r7, #0x62]
+	strgth r1, [r7, #0x62]
 _060086F8:
 	tst r6, #8
 	beq _06008724
@@ -9980,7 +9984,7 @@ _060086F8:
 	ldrh r2, [r7, #0x34]
 	add r1, r0, #1
 	bic r1, r1, #1
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	cmp r2, r1, lsr #16
 	movlo r5, #6
 	blo _06008724
@@ -9991,8 +9995,8 @@ _06008724:
 	ldrh r0, [sb, #0xc]
 	add r1, r0, #1
 	bic r1, r1, #1
-	lsl r1, r1, #0x10
-	lsr r1, r1, #0x10
+	mov r1, r1, lsl #0x10
+	mov r1, r1, lsr #0x10
 	cmp r1, #0x200
 	movhi r5, #6
 	bhi _06008750
@@ -10001,39 +10005,39 @@ _06008750:
 	tst r6, #0x20
 	beq _06008798
 	ldrh r2, [sb, #0xe]
-	ldr r0, _060088B4 @ =0x00002710
+	ldr r0, _060088B4 ; =0x00002710
 	cmp r2, r0
 	movhi r5, #6
 	bhi _06008798
-	ldr r0, _060088B8 @ =0x000082EA
+	ldr r0, _060088B8 ; =0x000082EA
 	strh r2, [r7, #0x44]
 	umull r1, r0, r2, r0
-	lsr r1, r1, #6
+	mov r1, r1, lsr #6
 	orr r1, r1, r0, lsl #26
-	lsr r0, r0, #6
-	lsr r1, r1, #0xa
+	mov r0, r0, lsr #6
+	mov r1, r1, lsr #0xa
 	orr r1, r1, r0, lsl #22
 	str r1, [r7, #0x48]
-	lsr r0, r0, #0xa
+	mov r0, r0, lsr #0xa
 	str r0, [r7, #0x4c]
 _06008798:
 	tst r6, #0x40
 	beq _060087E0
 	ldrh r2, [sb, #0x10]
-	ldr r0, _060088B4 @ =0x00002710
+	ldr r0, _060088B4 ; =0x00002710
 	cmp r2, r0
 	movhi r5, #6
 	bhi _060087E0
-	ldr r0, _060088B8 @ =0x000082EA
+	ldr r0, _060088B8 ; =0x000082EA
 	strh r2, [r7, #0x46]
 	umull r1, r0, r2, r0
-	lsr r1, r1, #6
+	mov r1, r1, lsr #6
 	orr r1, r1, r0, lsl #26
-	lsr r0, r0, #6
-	lsr r1, r1, #0xa
+	mov r0, r0, lsr #6
+	mov r1, r1, lsr #0xa
 	orr r1, r1, r0, lsl #22
 	str r1, [r7, #0x50]
-	lsr r0, r0, #0xa
+	mov r0, r0, lsr #0xa
 	str r0, [r7, #0x54]
 _060087E0:
 	tst r6, #0x80
@@ -10043,7 +10047,7 @@ _060087E0:
 	bls _06008808
 	cmp r1, #0xdc
 	blo _06008810
-	ldr r0, _060088BC @ =0x00000106
+	ldr r0, _060088BC ; =0x00000106
 	cmp r1, r0
 	bhi _06008810
 _06008808:
@@ -10059,7 +10063,7 @@ _06008814:
 	bls _0600883C
 	cmp r1, #0xdc
 	blo _06008844
-	ldr r0, _060088BC @ =0x00000106
+	ldr r0, _060088BC ; =0x00000106
 	cmp r1, r0
 	bhi _06008844
 _0600883C:
@@ -10069,46 +10073,46 @@ _06008844:
 	mov r5, #6
 _06008848:
 	tst r6, #0x200
-	ldrhne r1, [sb, #0x16]
+	ldrneh r1, [sb, #0x16]
 	addne r0, r7, #0x700
-	strhne r1, [r7, #0x98]
-	strhne r1, [r0, #0xca]
+	strneh r1, [r7, #0x98]
+	strneh r1, [r0, #0xca]
 	tst r6, #0x400
-	ldrbne r0, [sb, #0x18]
-	strhne r0, [r7, #0x92]
+	ldrneb r0, [sb, #0x18]
+	strneh r0, [r7, #0x92]
 	tst r6, #0x800
-	ldrbne r0, [sb, #0x19]
-	strhne r0, [r7, #0x94]
+	ldrneb r0, [sb, #0x19]
+	strneh r0, [r7, #0x94]
 	tst r6, #0x1000
-	ldrbne r1, [sb, #0x1a]
+	ldrneb r1, [sb, #0x1a]
 	addne r0, r7, #0x700
-	strhne r1, [r7, #0x9a]
-	ldrhne r1, [r7, #0x9a]
-	strhne r1, [r0, #0xcc]
+	strneh r1, [r7, #0x9a]
+	ldrneh r1, [r7, #0x9a]
+	strneh r1, [r0, #0xcc]
 	tst r6, #0x2000
-	ldrbne r0, [sb, #0x1b]
-	strhne r0, [r7, #0x9c]
+	ldrneb r0, [sb, #0x1b]
+	strneh r0, [r7, #0x9c]
 	mov r0, r4
 	bl sub_06000740
 	mov r0, r5
-	pop {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_060088AC: .4byte 0x060198A4
-_060088B0: .4byte 0x00003FFF
-_060088B4: .4byte 0x00002710
-_060088B8: .4byte 0x000082EA
-_060088BC: .4byte 0x00000106
+_060088AC: .word 0x060198A4
+_060088B0: .word 0x00003FFF
+_060088B4: .word 0x00002710
+_060088B8: .word 0x000082EA
+_060088BC: .word 0x00000106
 	arm_func_end sub_060085B4
 
 	arm_func_start sub_060088C0
-sub_060088C0: @ 0x060088C0
-	push {r4, lr}
+sub_060088C0: ; 0x060088C0
+	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x200
 	ldr r1, [r0, #4]
 	add r0, sp, #0
-	lsl r1, r1, #0x10
-	lsr r1, r1, #0x10
+	mov r1, r1, lsl #0x10
+	mov r1, r1, lsr #0x10
 	bl sub_060028AC
 	ldrh r4, [r0, #4]
 	cmp r4, #0
@@ -10117,7 +10121,7 @@ sub_060088C0: @ 0x060088C0
 	mov r1, #0x24
 	strh r1, [r0]
 	mov r2, #1
-	ldr r1, _06008934 @ =0x00000242
+	ldr r1, _06008934 ; =0x00000242
 	strh r2, [r0, #2]
 	strh r1, [r0, #4]
 	strh r4, [r0, #6]
@@ -10132,27 +10136,27 @@ _06008910:
 	bl sub_0600029C
 _06008928:
 	add sp, sp, #0x200
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06008934: .4byte 0x00000242
+_06008934: .word 0x00000242
 	arm_func_end sub_060088C0
 
 	arm_func_start sub_06008938
-sub_06008938: @ 0x06008938
-	ldr ip, _06008948 @ =sub_06004664
+sub_06008938: ; 0x06008938
+	ldr ip, _06008948 ; =sub_06004664
 	mov r1, #1
 	mov r2, #0
 	bx ip
 	.align 2, 0
-_06008948: .4byte sub_06004664
+_06008948: .word sub_06004664
 	arm_func_end sub_06008938
 
 	arm_func_start sub_0600894C
-sub_0600894C: @ 0x0600894C
-	push {r3, r4, r5, r6, r7, lr}
+sub_0600894C: ; 0x0600894C
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x230
-	ldr r1, _06008AC8 @ =0x060198A4
+	ldr r1, _06008AC8 ; =0x060198A4
 	mov r7, r0
 	ldr r6, [r1, #0x550]
 	add r5, sp, #0x30
@@ -10173,9 +10177,9 @@ _06008990:
 	cmp r0, #1
 	moveq r0, #1
 	movne r0, #0
-	lsl r1, r0, #0x10
+	mov r1, r0, lsl #0x10
 	mov r0, r5
-	lsr r1, r1, #0x10
+	mov r1, r1, lsr #0x10
 	mov r3, #1
 	bl sub_06001F0C
 	ldrh r1, [r0, #4]
@@ -10190,7 +10194,7 @@ _06008990:
 	bl sub_0600029C
 	b _06008ABC
 _060089E4:
-	ldr r0, _06008AC8 @ =0x060198A4
+	ldr r0, _06008AC8 ; =0x060198A4
 	mov r2, #6
 	ldr r5, [r0, #0x550]
 	add r0, r5, #0x8a
@@ -10247,47 +10251,47 @@ _06008AAC:
 	bl sub_0600029C
 _06008ABC:
 	add sp, sp, #0x230
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06008AC8: .4byte 0x060198A4
+_06008AC8: .word 0x060198A4
 	arm_func_end sub_0600894C
 
 	arm_func_start sub_06008ACC
-sub_06008ACC: @ 0x06008ACC
-	push {r3, lr}
+sub_06008ACC: ; 0x06008ACC
+	stmdb sp!, {r3, lr}
 	bl sub_06000294
 	mov r1, #0x29
 	strh r1, [r0]
 	mov r1, #4
 	strh r1, [r0, #2]
 	bl sub_0600029C
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end sub_06008ACC
 
 	arm_func_start sub_06008AF0
-sub_06008AF0: @ 0x06008AF0
-	push {r3, lr}
+sub_06008AF0: ; 0x06008AF0
+	stmdb sp!, {r3, lr}
 	bl sub_06000294
 	mov r1, #0x2a
 	strh r1, [r0]
 	mov r1, #4
 	strh r1, [r0, #2]
 	bl sub_0600029C
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end sub_06008AF0
 
 	arm_func_start sub_06008B14
-sub_06008B14: @ 0x06008B14
-	push {r3, lr}
+sub_06008B14: ; 0x06008B14
+	stmdb sp!, {r3, lr}
 	bl sub_0600B8A0
 	bl sub_0600A498
 	bl sub_0600B3D0
 	bl sub_060094E8
 	bl sub_06008DB0
-	ldr r0, _06008B5C @ =0x0380FFF4
+	ldr r0, _06008B5C ; =0x0380FFF4
 	ldr r0, [r0]
 	add r1, r0, #0x300
 	ldr r0, [r0, #0x31c]
@@ -10297,25 +10301,25 @@ sub_06008B14: @ 0x06008B14
 	bl sub_06010E3C
 	bl sub_0600ED20
 	bl sub_06009F54
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06008B5C: .4byte 0x0380FFF4
+_06008B5C: .word 0x0380FFF4
 	arm_func_end sub_06008B14
 
 	arm_func_start sub_06008B60
-sub_06008B60: @ 0x06008B60
-	push {r3, r4, lr}
+sub_06008B60: ; 0x06008B60
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0xc
 	mov r4, r0
 	ldr r1, [r4]
-	ldr r3, _06008D20 @ =0x0380FFF4
-	ldr r2, _06008D24 @ =0x00000694
+	ldr r3, _06008D20 ; =0x0380FFF4
+	ldr r2, _06008D24 ; =0x00000694
 	mov r0, #0
 	str r1, [r3]
 	bl sub_06008D30
 	bl sub_06008D38
-	ldr r2, _06008D20 @ =0x0380FFF4
+	ldr r2, _06008D20 ; =0x0380FFF4
 	ldr r1, [r2]
 	str r0, [r1, #0x314]
 	ldr r1, [r4, #0x18]
@@ -10323,7 +10327,7 @@ sub_06008B60: @ 0x06008B60
 	str r1, [r0, #0x30c]
 	ldr r1, [r4, #0x1c]
 	ldr r0, [r2]
-	lsr r1, r1, #1
+	mov r1, r1, lsr #1
 	str r1, [r0, #0x310]
 	ldr r1, [r2]
 	ldr r0, [r1, #0x310]
@@ -10333,8 +10337,8 @@ sub_06008B60: @ 0x06008B60
 	add r0, r4, #0x20
 	bl sub_06009410
 	bl sub_060180C4
-	ldr r3, _06008D28 @ =0x04000304
-	ldr r1, _06008D20 @ =0x0380FFF4
+	ldr r3, _06008D28 ; =0x04000304
+	ldr r1, _06008D20 ; =0x0380FFF4
 	ldrh r2, [r3]
 	mov r0, #0x30
 	orr r2, r2, #2
@@ -10349,13 +10353,13 @@ sub_06008B60: @ 0x06008B60
 	add r2, r1, #0x600
 	mov r1, #2
 	bl sub_06017FFC
-	ldr r1, _06008D20 @ =0x0380FFF4
+	ldr r1, _06008D20 ; =0x0380FFF4
 	mov r0, #0x3e
 	ldr r2, [r1]
 	mov r1, #2
 	add r2, r2, #0x690
 	bl sub_06017FFC
-	ldr r2, _06008D20 @ =0x0380FFF4
+	ldr r2, _06008D20 ; =0x0380FFF4
 	ldr r3, [r4, #0x10]
 	ldr r0, [r2]
 	mov r1, #0x1c
@@ -10377,7 +10381,7 @@ sub_06008B60: @ 0x06008B60
 	bl sub_06017F08
 	cmp r0, #0
 	beq _06008C9C
-	ldr r0, _06008D20 @ =0x0380FFF4
+	ldr r0, _06008D20 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r1, [r0, #0x3e]
@@ -10397,63 +10401,63 @@ _06008C9C:
 	bl sub_0600A498
 _06008CC4:
 	ldr r1, [r4, #8]
-	ldr r0, _06008D20 @ =0x0380FFF4
+	ldr r0, _06008D20 ; =0x0380FFF4
 	str r1, [sp]
 	ldr r2, [r4, #0xc]
-	ldr r1, _06008D2C @ =sub_06008E3C
+	ldr r1, _06008D2C ; =sub_06008E3C
 	str r2, [sp, #4]
 	ldr r0, [r0]
 	ldr r3, [r4, #4]
 	add r0, r0, #0x18
 	mov r2, #0
 	bl sub_060001DC
-	ldr r0, _06008D20 @ =0x0380FFF4
+	ldr r0, _06008D20 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x18
 	bl sub_060001E4
 	bl sub_0600D9C8
-	ldr r0, _06008D20 @ =0x0380FFF4
+	ldr r0, _06008D20 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x3e]
 	add sp, sp, #0xc
-	pop {r3, r4, lr}
+	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_06008D20: .4byte 0x0380FFF4
-_06008D24: .4byte 0x00000694
-_06008D28: .4byte 0x04000304
-_06008D2C: .4byte sub_06008E3C
+_06008D20: .word 0x0380FFF4
+_06008D24: .word 0x00000694
+_06008D28: .word 0x04000304
+_06008D2C: .word sub_06008E3C
 	arm_func_end sub_06008B60
 
 	arm_func_start sub_06008D30
-sub_06008D30: @ 0x06008D30
-	ldr pc, _06008D34 @ =sub_037FAFF8
+sub_06008D30: ; 0x06008D30
+	ldr pc, _06008D34 ; =sub_037FAFF8
 	.align 2, 0
-_06008D34: .4byte sub_037FAFF8
+_06008D34: .word sub_037FAFF8
 	arm_func_end sub_06008D30
 
 	arm_func_start sub_06008D38
-sub_06008D38: @ 0x06008D38
-	ldr pc, _06008D3C @ =sub_037F8C20
+sub_06008D38: ; 0x06008D38
+	ldr pc, _06008D3C ; =sub_037F8C20
 	.align 2, 0
-_06008D3C: .4byte sub_037F8C20
+_06008D3C: .word sub_037F8C20
 	arm_func_end sub_06008D38
 
 	arm_func_start sub_06008D40
-sub_06008D40: @ 0x06008D40
-	ldr r0, _06008D50 @ =0x0380FFF4
+sub_06008D40: ; 0x06008D40
+	ldr r0, _06008D50 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x18
 	bx lr
 	.align 2, 0
-_06008D50: .4byte 0x0380FFF4
+_06008D50: .word 0x0380FFF4
 	arm_func_end sub_06008D40
 
 	arm_func_start sub_06008D54
-sub_06008D54: @ 0x06008D54
-	push {r4, lr}
-	ldr r0, _06008D9C @ =0x0380FFF4
+sub_06008D54: ; 0x06008D54
+	stmdb sp!, {r4, lr}
+	ldr r0, _06008D9C ; =0x0380FFF4
 	ldr r4, [r0]
 	add r0, r4, #0x18
 	bl sub_06008DA0
@@ -10470,47 +10474,47 @@ _06008D84:
 	cmp r0, #0
 	beq _06008D84
 _06008D94:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06008D9C: .4byte 0x0380FFF4
+_06008D9C: .word 0x0380FFF4
 	arm_func_end sub_06008D54
 
 	arm_func_start sub_06008DA0
-sub_06008DA0: @ 0x06008DA0
-	ldr pc, _06008DA4 @ =sub_037F92C4
+sub_06008DA0: ; 0x06008DA0
+	ldr pc, _06008DA4 ; =sub_037F92C4
 	.align 2, 0
-_06008DA4: .4byte sub_037F92C4
+_06008DA4: .word sub_037F92C4
 	arm_func_end sub_06008DA0
 
 	arm_func_start sub_06008DA8
-sub_06008DA8: @ 0x06008DA8
-	ldr pc, _06008DAC @ =sub_037F9290
+sub_06008DA8: ; 0x06008DA8
+	ldr pc, _06008DAC ; =sub_037F9290
 	.align 2, 0
-_06008DAC: .4byte sub_037F9290
+_06008DAC: .word sub_037F9290
 	arm_func_end sub_06008DA8
 
 	arm_func_start sub_06008DB0
-sub_06008DB0: @ 0x06008DB0
-	push {r4, lr}
-	ldr r0, _06008E30 @ =0x0380FFF4
+sub_06008DB0: ; 0x06008DB0
+	stmdb sp!, {r4, lr}
+	ldr r0, _06008E30 ; =0x0380FFF4
 	mov r3, #0
 	ldr lr, [r0]
-	ldr r2, _06008E34 @ =0x0000FFFF
+	ldr r2, _06008E34 ; =0x0000FFFF
 	strh r3, [lr, #0x10]
 	strh r3, [lr, #0x12]
 _06008DCC:
 	add r0, lr, r3, lsl #1
 	strh r2, [r0, #8]
 	ldrh r0, [r0, #8]
-	lsl r1, r3, #1
+	mov r1, r3, lsl #1
 	add r3, r3, #1
 	strh r0, [lr, r1]
 	cmp r3, #4
 	blo _06008DCC
-	ldr ip, _06008E34 @ =0x0000FFFF
+	ldr ip, _06008E34 ; =0x0000FFFF
 	mov r4, #0
-	ldr r1, _06008E38 @ =0x06018268
+	ldr r1, _06008E38 ; =0x06018268
 	mov r2, r4
 _06008DFC:
 	add r3, lr, r4, lsl #3
@@ -10524,23 +10528,23 @@ _06008DFC:
 	mov r0, #3
 	mov r1, #0xc
 	bl sub_06008F04
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06008E30: .4byte 0x0380FFF4
-_06008E34: .4byte 0x0000FFFF
-_06008E38: .4byte 0x06018268
+_06008E30: .word 0x0380FFF4
+_06008E34: .word 0x0000FFFF
+_06008E38: .word 0x06018268
 	arm_func_end sub_06008DB0
 
 	arm_func_start sub_06008E3C
-sub_06008E3C: @ 0x06008E3C
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r7, _06008EE8 @ =0x0380FFF4
+sub_06008E3C: ; 0x06008E3C
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldr r7, _06008EE8 ; =0x0380FFF4
 	mov r0, #0
 	ldr r8, [r7]
-	ldr r4, _06008EEC @ =0x01000010
+	ldr r4, _06008EEC ; =0x01000010
 	strh r0, [r8, #0x10]
-	ldr sb, _06008EF0 @ =0x0000FFFF
+	ldr sb, _06008EF0 ; =0x0000FFFF
 	strh r0, [r8, #0x14]
 	add r6, sp, #0
 	mov r5, r0
@@ -10559,7 +10563,7 @@ _06008E88:
 	bl sub_06008EF4
 	ldrh r1, [r8, #0x10]
 	strh r1, [r8, #0x12]
-	lsl r1, r1, #1
+	mov r1, r1, lsl #1
 	ldrh r1, [r8, r1]
 	cmp r1, sb
 	bne _06008EBC
@@ -10581,42 +10585,42 @@ _06008EBC:
 	arm_func_end sub_06008E3C
 
 	arm_func_start sub_06008EE0
-sub_06008EE0: @ 0x06008EE0
+sub_06008EE0: ; 0x06008EE0
 	strh sb, [r8, #0x14]
 	b _06008E64
 	.align 2, 0
-_06008EE8: .4byte 0x0380FFF4
-_06008EEC: .4byte 0x01000010
-_06008EF0: .4byte 0x0000FFFF
+_06008EE8: .word 0x0380FFF4
+_06008EEC: .word 0x01000010
+_06008EF0: .word 0x0000FFFF
 	arm_func_end sub_06008EE0
 
 	arm_func_start sub_06008EF4
-sub_06008EF4: @ 0x06008EF4
-	ldr pc, _06008EF8 @ =sub_037F894C
+sub_06008EF4: ; 0x06008EF4
+	ldr pc, _06008EF8 ; =sub_037F894C
 	.align 2, 0
-_06008EF8: .4byte sub_037F894C
+_06008EF8: .word sub_037F894C
 	arm_func_end sub_06008EF4
 
 	arm_func_start sub_06008EFC
-sub_06008EFC: @ 0x06008EFC
-	ldr pc, _06008F00 @ =sub_037F8914
+sub_06008EFC: ; 0x06008EFC
+	ldr pc, _06008F00 ; =sub_037F8914
 	.align 2, 0
-_06008F00: .4byte sub_037F8914
+_06008F00: .word sub_037F8914
 	arm_func_end sub_06008EFC
 
 	arm_func_start sub_06008F04
-sub_06008F04: @ 0x06008F04
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r2, _06008FB4 @ =0x0380FFF4
+sub_06008F04: ; 0x06008F04
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r2, _06008FB4 ; =0x0380FFF4
 	mov r7, r0
 	ldr r4, [r2]
-	ldr r0, _06008FB8 @ =0x01000010
+	ldr r0, _06008FB8 ; =0x01000010
 	mov r6, r1
 	add r5, r4, #0xbc
 	bl sub_06008EF4
 	add r2, r5, r6, lsl #3
 	ldrh r1, [r2, #2]
-	lsl ip, r6, #3
+	mov ip, r6, lsl #3
 	cmp r1, #0
 	bne _06008F7C
 	mov r3, #1
@@ -10627,15 +10631,15 @@ sub_06008F04: @ 0x06008F04
 	ldrh r2, [r1, #8]
 	rsb r1, r3, #0x10000
 	cmp r2, r1
-	lsl r1, r7, #1
-	strheq r6, [r4, r1]
+	mov r1, r7, lsl #1
+	streqh r6, [r4, r1]
 	addne r1, r4, r2, lsl #3
-	strhne r6, [r1, #0xbc]
+	strneh r6, [r1, #0xbc]
 	add r1, r4, r7, lsl #1
 	strh r6, [r1, #8]
 	ldrh r1, [r4, #0x10]
 	cmp r7, r1
-	strhlt r7, [r4, #0x10]
+	strlth r7, [r4, #0x10]
 _06008F7C:
 	bl sub_06008EFC
 	cmp r7, #3
@@ -10643,60 +10647,60 @@ _06008F7C:
 	ldrh r0, [r4, #0x12]
 	cmp r0, #3
 	bne _06008FAC
-	ldr r0, _06008FB4 @ =0x0380FFF4
+	ldr r0, _06008FB4 ; =0x0380FFF4
 	mov r1, #0
 	ldr r0, [r0]
 	mov r2, r1
 	ldr r0, [r0, #0x308]
 	bl sub_06000284
 _06008FAC:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06008FB4: .4byte 0x0380FFF4
-_06008FB8: .4byte 0x01000010
+_06008FB4: .word 0x0380FFF4
+_06008FB8: .word 0x01000010
 	arm_func_end sub_06008F04
 
 	arm_func_start sub_06008FBC
-sub_06008FBC: @ 0x06008FBC
-	push {r3, r4, r5, lr}
-	ldr r1, _06009028 @ =0x0380FFF4
+sub_06008FBC: ; 0x06008FBC
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _06009028 ; =0x0380FFF4
 	mov r5, r0
-	ldr r0, _0600902C @ =0x01000010
+	ldr r0, _0600902C ; =0x01000010
 	ldr r4, [r1]
 	bl sub_06008EF4
-	lsl lr, r5, #1
+	mov lr, r5, lsl #1
 	ldrh r5, [r4, lr]
-	ldr r2, _06009030 @ =0x0000FFFF
+	ldr r2, _06009030 ; =0x0000FFFF
 	cmp r5, r2
 	beq _06009018
 	add ip, r4, #0xbc
 	add r1, ip, r5, lsl #3
 	mov r3, #0
 	strh r3, [r1, #2]
-	lsl r3, r5, #3
+	mov r3, r5, lsl #3
 	ldrh r1, [ip, r3]
 	cmp r1, r2
-	strheq r2, [r4, lr]
+	streqh r2, [r4, lr]
 	addeq r1, r4, lr
-	strheq r2, [r1, #8]
-	strhne r1, [r4, lr]
-	strhne r2, [ip, r3]
+	streqh r2, [r1, #8]
+	strneh r1, [r4, lr]
+	strneh r2, [ip, r3]
 _06009018:
 	bl sub_06008EFC
 	mov r0, r5
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06009028: .4byte 0x0380FFF4
-_0600902C: .4byte 0x01000010
-_06009030: .4byte 0x0000FFFF
+_06009028: .word 0x0380FFF4
+_0600902C: .word 0x01000010
+_06009030: .word 0x0000FFFF
 	arm_func_end sub_06008FBC
 
 	arm_func_start sub_06009034
-sub_06009034: @ 0x06009034
-	push {r3, lr}
-	ldr r0, _0600906C @ =0x0380FFF4
+sub_06009034: ; 0x06009034
+	stmdb sp!, {r3, lr}
+	ldr r0, _0600906C ; =0x0380FFF4
 	add r1, sp, #0
 	ldr r0, [r0]
 	mov r2, #1
@@ -10707,19 +10711,19 @@ sub_06009034: @ 0x06009034
 	mov r0, #3
 	mov r1, #0xc
 	bl sub_06008F04
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600906C: .4byte 0x0380FFF4
+_0600906C: .word 0x0380FFF4
 	arm_func_end sub_06009034
 
 	arm_func_start sub_06009070
-sub_06009070: @ 0x06009070
-	push {r3, lr}
+sub_06009070: ; 0x06009070
+	stmdb sp!, {r3, lr}
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0600909C
-	ldr r0, _060090A4 @ =0x0380FFF4
+	ldr r0, _060090A4 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	bl sub_06009230
@@ -10727,16 +10731,16 @@ sub_06009070: @ 0x06009070
 	mov r1, #0xb
 	bl sub_06008F04
 _0600909C:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060090A4: .4byte 0x0380FFF4
+_060090A4: .word 0x0380FFF4
 	arm_func_end sub_06009070
 
 	arm_func_start sub_060090A8
-sub_060090A8: @ 0x060090A8
-	push {r3, r4, r5, lr}
-	ldr r2, _0600913C @ =0x0380FFF4
+sub_060090A8: ; 0x060090A8
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r2, _0600913C ; =0x0380FFF4
 	movs r3, r1
 	ldr r1, [r2]
 	mov r5, r0
@@ -10763,13 +10767,13 @@ _060090F4:
 	arm_func_end sub_060090A8
 
 	arm_func_start sub_06009104
-sub_06009104: @ 0x06009104
+sub_06009104: ; 0x06009104
 	mov r4, r0
 _06009108:
 	cmp r4, #0
 	moveq r0, #0
 	beq _06009134
-	ldr r1, _06009140 @ =0x0000BF1D
+	ldr r1, _06009140 ; =0x0000BF1D
 	mov r0, r5
 	strh r1, [r4, #0xa]
 	mov r2, #0
@@ -10778,20 +10782,20 @@ _06009108:
 	bl sub_060092A0
 	mov r0, r4
 _06009134:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600913C: .4byte 0x0380FFF4
-_06009140: .4byte 0x0000BF1D
+_0600913C: .word 0x0380FFF4
+_06009140: .word 0x0000BF1D
 	arm_func_end sub_06009104
 
 	arm_func_start sub_06009144
-sub_06009144: @ 0x06009144
-	push {r4, r5, r6, lr}
+sub_06009144: ; 0x06009144
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r1
-	ldr r5, _060091BC @ =0x0380FFF4
+	ldr r5, _060091BC ; =0x0380FFF4
 	ldrh r3, [r4, #0xa]
-	ldr r2, _060091C0 @ =0x0000BF1D
+	ldr r2, _060091C0 ; =0x0000BF1D
 	ldr r5, [r5]
 	cmp r3, r2
 	movne r0, #1
@@ -10819,19 +10823,19 @@ _060091A0:
 _060091B0:
 	mov r0, r6
 _060091B4:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_060091BC: .4byte 0x0380FFF4
-_060091C0: .4byte 0x0000BF1D
+_060091BC: .word 0x0380FFF4
+_060091C0: .word 0x0000BF1D
 	arm_func_end sub_06009144
 
 	arm_func_start sub_060091C4
-sub_060091C4: @ 0x060091C4
-	push {r3, r4, r5, r6, r7, lr}
+sub_060091C4: ; 0x060091C4
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r2
 	ldrh r3, [r6, #0xa]
-	ldr r2, _0600922C @ =0x0000BF1D
+	ldr r2, _0600922C ; =0x0000BF1D
 	mov r4, r0
 	cmp r3, r2
 	mov r7, r1
@@ -10854,15 +10858,15 @@ _06009218:
 	bl sub_06008EFC
 	mov r0, r4
 _06009224:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600922C: .4byte 0x0000BF1D
+_0600922C: .word 0x0000BF1D
 	arm_func_end sub_060091C4
 
 	arm_func_start sub_06009230
-sub_06009230: @ 0x06009230
-	push {r3, r4, r5, lr}
+sub_06009230: ; 0x06009230
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #0x1000000
 	mov r4, r1
@@ -10878,7 +10882,7 @@ sub_06009230: @ 0x06009230
 	mvn r1, #0
 	str r1, [r4, #4]
 	ldrh r2, [r5, #0xa]
-	ldr r1, _0600929C @ =0x0000BF1D
+	ldr r1, _0600929C ; =0x0000BF1D
 	strh r2, [r4, #8]
 	strh r1, [r4, #0xa]
 	str r4, [r5, #4]
@@ -10887,18 +10891,18 @@ sub_06009230: @ 0x06009230
 	strh r1, [r5, #8]
 	bl sub_06008EFC
 	mov r0, #0
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600929C: .4byte 0x0000BF1D
+_0600929C: .word 0x0000BF1D
 	arm_func_end sub_06009230
 
 	arm_func_start sub_060092A0
-sub_060092A0: @ 0x060092A0
-	push {r3, r4, r5, lr}
+sub_060092A0: ; 0x060092A0
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	ldrh r2, [r4, #0xa]
-	ldr r1, _06009328 @ =0x0000BF1D
+	ldr r1, _06009328 ; =0x0000BF1D
 	mov r5, r0
 	cmp r2, r1
 	movne r0, #1
@@ -10928,18 +10932,18 @@ sub_060092A0: @ 0x060092A0
 	bl sub_06008EFC
 	mov r0, #0
 _06009320:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06009328: .4byte 0x0000BF1D
+_06009328: .word 0x0000BF1D
 	arm_func_end sub_060092A0
 
 	arm_func_start sub_0600932C
-sub_0600932C: @ 0x0600932C
-	push {r3, r4, r5, lr}
+sub_0600932C: ; 0x0600932C
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	ldrh r2, [r4, #0xa]
-	ldr r1, _060093E8 @ =0x0000BF1D
+	ldr r1, _060093E8 ; =0x0000BF1D
 	mov r5, r0
 	cmp r2, r1
 	movne r0, #1
@@ -10975,7 +10979,7 @@ sub_0600932C: @ 0x0600932C
 	streq r1, [r2, #4]
 	ldrne r1, [r4, #4]
 	strne r2, [r1]
-	ldmne r4, {r1, r2}
+	ldmneia r4, {r1, r2}
 	strne r2, [r1, #4]
 _060093D0:
 	mov r1, #0
@@ -10983,20 +10987,20 @@ _060093D0:
 	bl sub_06008EFC
 	mov r0, #0
 _060093E0:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060093E8: .4byte 0x0000BF1D
+_060093E8: .word 0x0000BF1D
 	arm_func_end sub_0600932C
 
 	arm_func_start sub_060093EC
-sub_060093EC: @ 0x060093EC
+sub_060093EC: ; 0x060093EC
 	ldr r0, [r0, #4]
 	bx lr
 	arm_func_end sub_060093EC
 
 	arm_func_start sub_060093F4
-sub_060093F4: @ 0x060093F4
+sub_060093F4: ; 0x060093F4
 	mvn r2, #0
 	str r2, [r0]
 	str r2, [r0, #4]
@@ -11007,9 +11011,9 @@ sub_060093F4: @ 0x060093F4
 	arm_func_end sub_060093F4
 
 	arm_func_start sub_06009410
-sub_06009410: @ 0x06009410
-	push {r3, r4, r5, lr}
-	ldr r1, _060094E4 @ =0x0380FFF4
+sub_06009410: ; 0x06009410
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _060094E4 ; =0x0380FFF4
 	ldr r2, [r0]
 	ldr r4, [r1]
 	mov r1, #2
@@ -11059,16 +11063,16 @@ sub_06009410: @ 0x06009410
 	mov r0, #0
 	strh r0, [r5, #0xa0]
 	strh r0, [r5, #0xa4]
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060094E4: .4byte 0x0380FFF4
+_060094E4: .word 0x0380FFF4
 	arm_func_end sub_06009410
 
 	arm_func_start sub_060094E8
-sub_060094E8: @ 0x060094E8
-	push {r4, lr}
-	ldr r0, _0600953C @ =0x0380FFF4
+sub_060094E8: ; 0x060094E8
+	stmdb sp!, {r4, lr}
+	ldr r0, _0600953C ; =0x0380FFF4
 	ldr r4, [r0]
 	add r0, r4, #0x194
 	bl sub_06009540
@@ -11086,15 +11090,15 @@ sub_060094E8: @ 0x060094E8
 	bl sub_06009540
 	add r0, r4, #0x1e8
 	bl sub_06009540
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600953C: .4byte 0x0380FFF4
+_0600953C: .word 0x0380FFF4
 	arm_func_end sub_060094E8
 
 	arm_func_start sub_06009540
-sub_06009540: @ 0x06009540
-	push {r4, r5, r6, lr}
+sub_06009540: ; 0x06009540
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldrh r0, [r6, #8]
 	ldr r1, [r6]
@@ -11111,14 +11115,14 @@ _06009570:
 	cmp r1, r4
 	bne _06009560
 _06009578:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	arm_func_end sub_06009540
 
 	arm_func_start sub_06009580
-sub_06009580: @ 0x06009580
-	push {r4, r5, r6, lr}
-	ldr r2, _060095FC @ =0x0380FFF4
+sub_06009580: ; 0x06009580
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _060095FC ; =0x0380FFF4
 	mov r5, r0
 	ldr r3, [r2]
 	mov r6, r1
@@ -11127,16 +11131,16 @@ sub_06009580: @ 0x06009580
 	mov r2, #0x28
 	ldr r4, [r3, #0x3e0]
 	bl sub_06000598
-	ldr r1, _060095FC @ =0x0380FFF4
+	ldr r1, _060095FC ; =0x0380FFF4
 	mov r0, #0
 	ldr r1, [r1]
 	mov r2, #0xc0
 	add r1, r1, #0x344
 	bl sub_06000598
-	ldr r3, _060095FC @ =0x0380FFF4
-	lsl r0, r6, #0x10
+	ldr r3, _060095FC ; =0x0380FFF4
+	mov r0, r6, lsl #0x10
 	ldr r2, [r3]
-	lsr r1, r0, #0x10
+	mov r1, r0, lsr #0x10
 	str r5, [r2, #0x31c]
 	ldr r0, [r3]
 	add r0, r0, #0x300
@@ -11146,49 +11150,49 @@ sub_06009580: @ 0x06009580
 	strh r1, [r0, #0x22]
 	ldr r0, [r3]
 	str r4, [r0, #0x3e0]
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_060095FC: .4byte 0x0380FFF4
+_060095FC: .word 0x0380FFF4
 	arm_func_end sub_06009580
 
 	arm_func_start sub_06009600
-sub_06009600: @ 0x06009600
-	push {r4, lr}
+sub_06009600: ; 0x06009600
+	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrh r0, [r4]
 	tst r0, #1
 	movne r0, #5
 	bne _06009650
-	ldr r0, _06009658 @ =0x0380FFF4
+	ldr r0, _06009658 ; =0x0380FFF4
 	mov r1, r4
 	ldr r0, [r0]
 	add r0, r0, #0x324
 	bl sub_0600A928
-	ldr r0, _0600965C @ =0x04808018
+	ldr r0, _0600965C ; =0x04808018
 	mov r1, r4
 	bl sub_0600A928
-	ldr r1, _06009658 @ =0x0380FFF4
+	ldr r1, _06009658 ; =0x0380FFF4
 	mov r0, #0
 	ldr r2, [r1]
 	ldr r1, [r2, #0x340]
 	orr r1, r1, #2
 	str r1, [r2, #0x340]
 _06009650:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06009658: .4byte 0x0380FFF4
-_0600965C: .4byte 0x04808018
+_06009658: .word 0x0380FFF4
+_0600965C: .word 0x04808018
 	arm_func_end sub_06009600
 
 	arm_func_start sub_06009660
-sub_06009660: @ 0x06009660
+sub_06009660: ; 0x06009660
 	cmp r0, #0xff
 	movhi r0, #5
 	bxhi lr
-	ldr r1, _0600968C @ =0x0380FFF4
-	ldr r2, _06009690 @ =0x0480802C
+	ldr r1, _0600968C ; =0x0380FFF4
+	ldr r2, _06009690 ; =0x0480802C
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x2a]
@@ -11196,17 +11200,17 @@ sub_06009660: @ 0x06009660
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0600968C: .4byte 0x0380FFF4
-_06009690: .4byte 0x0480802C
+_0600968C: .word 0x0380FFF4
+_06009690: .word 0x0480802C
 	arm_func_end sub_06009660
 
 	arm_func_start sub_06009694
-sub_06009694: @ 0x06009694
-	ldr r1, _060096CC @ =0x00007FFE
+sub_06009694: ; 0x06009694
+	ldr r1, _060096CC ; =0x00007FFE
 	tst r0, r1
 	moveq r0, #5
 	bxeq lr
-	ldr r2, _060096D0 @ =0x0380FFF4
+	ldr r2, _060096D0 ; =0x0380FFF4
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x2c]
@@ -11217,20 +11221,20 @@ sub_06009694: @ 0x06009694
 	str r1, [r2, #0x340]
 	bx lr
 	.align 2, 0
-_060096CC: .4byte 0x00007FFE
-_060096D0: .4byte 0x0380FFF4
+_060096CC: .word 0x00007FFE
+_060096D0: .word 0x0380FFF4
 	arm_func_end sub_06009694
 
 	arm_func_start sub_060096D4
-sub_060096D4: @ 0x060096D4
-	push {r3, lr}
+sub_060096D4: ; 0x060096D4
+	stmdb sp!, {r3, lr}
 	cmp r0, #3
 	movhi r0, #5
 	bhi _06009740
-	ldr ip, _06009748 @ =0x0380FFF4
-	ldr r3, _0600974C @ =0x04808006
+	ldr ip, _06009748 ; =0x0380FFF4
+	ldr r3, _0600974C ; =0x04808006
 	ldr r1, [ip]
-	ldr r2, _06009750 @ =0x0000FFF8
+	ldr r2, _06009750 ; =0x0000FFF8
 	add r1, r1, #0x300
 	strh r0, [r1, #0x2e]
 	ldr r1, [ip]
@@ -11244,43 +11248,43 @@ sub_060096D4: @ 0x060096D4
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x52]
 	bl sub_0600A3F0
-	ldr r1, _06009748 @ =0x0380FFF4
+	ldr r1, _06009748 ; =0x0380FFF4
 	mov r0, #0
 	ldr r2, [r1]
 	ldr r1, [r2, #0x340]
 	orr r1, r1, #8
 	str r1, [r2, #0x340]
 _06009740:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06009748: .4byte 0x0380FFF4
-_0600974C: .4byte 0x04808006
-_06009750: .4byte 0x0000FFF8
+_06009748: .word 0x0380FFF4
+_0600974C: .word 0x04808006
+_06009750: .word 0x0000FFF8
 	arm_func_end sub_060096D4
 
 	arm_func_start sub_06009754
-sub_06009754: @ 0x06009754
-	push {r3, lr}
+sub_06009754: ; 0x06009754
+	stmdb sp!, {r3, lr}
 	cmp r0, #2
 	movhi r0, #5
 	bhi _0600977C
-	ldr r1, _06009784 @ =0x0380FFF4
+	ldr r1, _06009784 ; =0x0380FFF4
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x30]
 	bl sub_0600A370
 	mov r0, #0
 _0600977C:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06009784: .4byte 0x0380FFF4
+_06009784: .word 0x0380FFF4
 	arm_func_end sub_06009754
 
 	arm_func_start sub_06009788
-sub_06009788: @ 0x06009788
-	ldr r1, _0600981C @ =0x0380FFF4
+sub_06009788: ; 0x06009788
+	ldr r1, _0600981C ; =0x0380FFF4
 	cmp r0, #3
 	ldr r1, [r1]
 	movhi r0, #5
@@ -11291,25 +11295,25 @@ sub_06009788: @ 0x06009788
 	ldrh r1, [r2, #0x7c]
 	cmp r0, #0
 	biceq r1, r1, #0x10
-	strheq r1, [r2, #0x7c]
-	ldrheq r1, [r2, #0x8a]
-	ldr r3, _06009820 @ =0x04808006
+	streqh r1, [r2, #0x7c]
+	ldreqh r1, [r2, #0x8a]
+	ldr r3, _06009820 ; =0x04808006
 	biceq r1, r1, #0x4000
 	orrne r1, r1, #0x10
-	strhne r1, [r2, #0x7c]
-	ldrhne r1, [r2, #0x8a]
+	strneh r1, [r2, #0x7c]
+	ldrneh r1, [r2, #0x8a]
 	orrne r1, r1, #0x4000
 	strh r1, [r2, #0x8a]
 	ldrh r1, [r2, #8]
 	cmp r1, #0x40
 	cmpeq r0, #1
-	ldreq r1, _0600981C @ =0x0380FFF4
-	ldrheq r2, [r2, #0x7c]
+	ldreq r1, _0600981C ; =0x0380FFF4
+	ldreqh r2, [r2, #0x7c]
 	ldreq r1, [r1]
 	ldreq r1, [r1, #0x4ac]
-	strheq r2, [r1, #0x2e]
+	streqh r2, [r1, #0x2e]
 	cmp r0, #0
-	ldr r1, _06009824 @ =0x0000FFC7
+	ldr r1, _06009824 ; =0x0000FFC7
 	ldrh r2, [r3]
 	moveq r0, #1
 	and r1, r2, r1
@@ -11318,60 +11322,60 @@ sub_06009788: @ 0x06009788
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0600981C: .4byte 0x0380FFF4
-_06009820: .4byte 0x04808006
-_06009824: .4byte 0x0000FFC7
+_0600981C: .word 0x0380FFF4
+_06009820: .word 0x04808006
+_06009824: .word 0x0000FFC7
 	arm_func_end sub_06009788
 
 	arm_func_start sub_06009828
-sub_06009828: @ 0x06009828
+sub_06009828: ; 0x06009828
 	cmp r0, #3
-	ldrls r1, _06009848 @ =0x0380FFF4
+	ldrls r1, _06009848 ; =0x0380FFF4
 	movhi r0, #5
 	ldrls r1, [r1]
 	addls r1, r1, #0x300
-	strhls r0, [r1, #0x36]
+	strlsh r0, [r1, #0x36]
 	movls r0, #0
 	bx lr
 	.align 2, 0
-_06009848: .4byte 0x0380FFF4
+_06009848: .word 0x0380FFF4
 	arm_func_end sub_06009828
 
 	arm_func_start sub_0600984C
-sub_0600984C: @ 0x0600984C
-	push {r4, lr}
-	ldr r1, _0600989C @ =0x04805F80
+sub_0600984C: ; 0x0600984C
+	stmdb sp!, {r4, lr}
+	ldr r1, _0600989C ; =0x04805F80
 	mov r2, #0x14
 	mov r4, r0
 	bl sub_06001B04
-	ldr r1, _060098A0 @ =0x04805FA0
+	ldr r1, _060098A0 ; =0x04805FA0
 	add r0, r4, #0x14
 	mov r2, #0x14
 	bl sub_06001B04
-	ldr r1, _060098A4 @ =0x04805FC0
+	ldr r1, _060098A4 ; =0x04805FC0
 	add r0, r4, #0x28
 	mov r2, #0x14
 	bl sub_06001B04
-	ldr r1, _060098A8 @ =0x04805FE0
+	ldr r1, _060098A8 ; =0x04805FE0
 	add r0, r4, #0x3c
 	mov r2, #0x14
 	bl sub_06001B04
 	mov r0, #0
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600989C: .4byte 0x04805F80
-_060098A0: .4byte 0x04805FA0
-_060098A4: .4byte 0x04805FC0
-_060098A8: .4byte 0x04805FE0
+_0600989C: .word 0x04805F80
+_060098A0: .word 0x04805FA0
+_060098A4: .word 0x04805FC0
+_060098A8: .word 0x04805FE0
 	arm_func_end sub_0600984C
 
 	arm_func_start sub_060098AC
-sub_060098AC: @ 0x060098AC
+sub_060098AC: ; 0x060098AC
 	cmp r0, #1
 	movhi r0, #5
 	bxhi lr
-	ldr r1, _060098E0 @ =0x0380FFF4
+	ldr r1, _060098E0 ; =0x0380FFF4
 	and r2, r0, #1
 	ldr r1, [r1]
 	mov r0, #0
@@ -11382,16 +11386,16 @@ sub_060098AC: @ 0x060098AC
 	strh r2, [r1, #0x3a]
 	bx lr
 	.align 2, 0
-_060098E0: .4byte 0x0380FFF4
+_060098E0: .word 0x0380FFF4
 	arm_func_end sub_060098AC
 
 	arm_func_start sub_060098E4
-sub_060098E4: @ 0x060098E4
+sub_060098E4: ; 0x060098E4
 	cmp r0, #1
 	movhi r0, #5
 	bxhi lr
-	ldr r1, _06009918 @ =0x0380FFF4
-	lsl r2, r0, #0x1f
+	ldr r1, _06009918 ; =0x0380FFF4
+	mov r2, r0, lsl #0x1f
 	ldr r1, [r1]
 	mov r0, #0
 	add r1, r1, #0x300
@@ -11401,15 +11405,15 @@ sub_060098E4: @ 0x060098E4
 	strh r2, [r1, #0x3a]
 	bx lr
 	.align 2, 0
-_06009918: .4byte 0x0380FFF4
+_06009918: .word 0x0380FFF4
 	arm_func_end sub_060098E4
 
 	arm_func_start sub_0600991C
-sub_0600991C: @ 0x0600991C
+sub_0600991C: ; 0x0600991C
 	cmp r0, #0xff
 	movhi r0, #5
 	bxhi lr
-	ldr r2, _06009950 @ =0x0380FFF4
+	ldr r2, _06009950 ; =0x0380FFF4
 	mov r3, #0
 	ldr r1, [r2]
 	add r1, r1, #0x300
@@ -11420,24 +11424,24 @@ sub_0600991C: @ 0x0600991C
 	mov r0, r3
 	bx lr
 	.align 2, 0
-_06009950: .4byte 0x0380FFF4
+_06009950: .word 0x0380FFF4
 	arm_func_end sub_0600991C
 
 	arm_func_start sub_06009954
-sub_06009954: @ 0x06009954
-	push {r3, r4, r5, lr}
+sub_06009954: ; 0x06009954
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	cmp r4, #0xa
 	movlo r0, #5
 	blo _060099F4
-	ldr r0, _060099FC @ =0x0380FFF4
+	ldr r0, _060099FC ; =0x0380FFF4
 	cmp r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	strh r4, [r0, #0x3c]
-	ldrne r0, _06009A00 @ =0x04808134
-	strhne r4, [r0]
-	ldr r0, _060099FC @ =0x0380FFF4
+	ldrne r0, _06009A00 ; =0x04808134
+	strneh r4, [r0]
+	ldr r0, _060099FC ; =0x0380FFF4
 	ldr r1, [r0]
 	add r0, r1, #0x400
 	ldrh r0, [r0, #0xa4]
@@ -11454,7 +11458,7 @@ sub_06009954: @ 0x06009954
 	bne _060099DC
 	and r1, r4, #0xff
 	bl sub_0600B9E4
-	asr r1, r4, #8
+	mov r1, r4, asr #8
 	add r0, r5, #7
 	and r1, r1, #0xff
 	bl sub_0600B9E4
@@ -11468,16 +11472,16 @@ _060099DC:
 _060099F0:
 	mov r0, #0
 _060099F4:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060099FC: .4byte 0x0380FFF4
-_06009A00: .4byte 0x04808134
+_060099FC: .word 0x0380FFF4
+_06009A00: .word 0x04808134
 	arm_func_end sub_06009954
 
 	arm_func_start sub_06009A04
-sub_06009A04: @ 0x06009A04
-	ldr r1, _06009A30 @ =0x0380FFF4
+sub_06009A04: ; 0x06009A04
+	ldr r1, _06009A30 ; =0x0380FFF4
 	mov r2, #0
 	ldr r1, [r1]
 	add r3, r1, #0x384
@@ -11490,13 +11494,13 @@ _06009A14:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_06009A30: .4byte 0x0380FFF4
+_06009A30: .word 0x0380FFF4
 	arm_func_end sub_06009A04
 
 	arm_func_start sub_06009A34
-sub_06009A34: @ 0x06009A34
-	push {r3, lr}
-	ldr r1, _06009AD4 @ =0x0380FFF4
+sub_06009A34: ; 0x06009A34
+	stmdb sp!, {r3, lr}
+	ldr r1, _06009AD4 ; =0x0380FFF4
 	cmp r0, #1
 	ldr r2, [r1]
 	movhi r0, #5
@@ -11504,7 +11508,7 @@ sub_06009A34: @ 0x06009A34
 	bhi _06009ACC
 	add r2, r2, #0x300
 	ldrh ip, [r2, #0x3a]
-	lsl r3, r0, #0x1f
+	mov r3, r0, lsl #0x1f
 	bic ip, ip, #4
 	orr r3, ip, r3, lsr #29
 	strh r3, [r2, #0x3a]
@@ -11515,49 +11519,49 @@ sub_06009A34: @ 0x06009A34
 	strh r2, [r1, #0x7c]
 	ldrh r2, [r1, #8]
 	cmp r2, #0x40
-	ldreq r2, _06009AD4 @ =0x0380FFF4
+	ldreq r2, _06009AD4 ; =0x0380FFF4
 	ldreq r3, [r2]
 	addeq r2, r3, #0x300
-	ldrheq r2, [r2, #0x2e]
+	ldreqh r2, [r2, #0x2e]
 	cmpeq r2, #1
-	ldrheq r2, [r1, #0x7c]
+	ldreqh r2, [r1, #0x7c]
 	ldreq r1, [r3, #0x4ac]
-	strheq r2, [r1, #0x2e]
-	ldr r1, _06009AD8 @ =0x048080BC
+	streqh r2, [r1, #0x2e]
+	ldr r1, _06009AD8 ; =0x048080BC
 	cmp r0, #0
-	ldrheq r0, [r1]
+	ldreqh r0, [r1]
 	biceq r0, r0, #6
-	strheq r0, [r1]
-	ldrhne r0, [r1]
+	streqh r0, [r1]
+	ldrneh r0, [r1]
 	orrne r0, r0, #6
-	strhne r0, [r1]
+	strneh r0, [r1]
 	bl sub_0600A370
 	mov r0, #0
 _06009ACC:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06009AD4: .4byte 0x0380FFF4
-_06009AD8: .4byte 0x048080BC
+_06009AD4: .word 0x0380FFF4
+_06009AD8: .word 0x048080BC
 	arm_func_end sub_06009A34
 
 	arm_func_start sub_06009ADC
-sub_06009ADC: @ 0x06009ADC
+sub_06009ADC: ; 0x06009ADC
 	cmp r0, #1
-	ldrls r1, _06009AFC @ =0x0380FFF4
+	ldrls r1, _06009AFC ; =0x0380FFF4
 	movhi r0, #5
 	ldrls r1, [r1]
 	addls r1, r1, #0x300
-	strhls r0, [r1, #0x32]
+	strlsh r0, [r1, #0x32]
 	movls r0, #0
 	bx lr
 	.align 2, 0
-_06009AFC: .4byte 0x0380FFF4
+_06009AFC: .word 0x0380FFF4
 	arm_func_end sub_06009ADC
 
 	arm_func_start sub_06009B00
-sub_06009B00: @ 0x06009B00
-	push {r4, lr}
+sub_06009B00: ; 0x06009B00
+	stmdb sp!, {r4, lr}
 	cmp r0, #3
 	mov r4, r1
 	movhi r0, #5
@@ -11573,43 +11577,43 @@ sub_06009B00: @ 0x06009B00
 	bl sub_0600B2A0
 	mov r0, #0
 _06009B3C:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_06009B00
 
 	arm_func_start sub_06009B44
-sub_06009B44: @ 0x06009B44
+sub_06009B44: ; 0x06009B44
 	cmp r0, #1
 	movhi r0, #5
 	bxhi lr
-	ldr r3, _06009BA4 @ =0x0380FFF4
-	lsl r0, r0, #0x10
+	ldr r3, _06009BA4 ; =0x0380FFF4
+	mov r0, r0, lsl #0x10
 	ldr r2, [r3]
-	lsr r1, r0, #0x10
+	mov r1, r0, lsr #0x10
 	add r0, r2, #0x300
 	ldrh r2, [r0, #0x3a]
-	lsl r1, r1, #0x1f
+	mov r1, r1, lsl #0x1f
 	bic r2, r2, #8
 	orr r1, r2, r1, lsr #28
 	strh r1, [r0, #0x3a]
 	ldr r0, [r3]
-	ldr r1, _06009BA8 @ =0x04808290
+	ldr r1, _06009BA8 ; =0x04808290
 	add r0, r0, #0x300
 	ldrh r3, [r0, #0x3a]
 	mov r0, #0
-	lsl r2, r3, #0x1c
-	lsl r3, r3, #0x1a
-	lsr r2, r2, #0x1f
+	mov r2, r3, lsl #0x1c
+	mov r3, r3, lsl #0x1a
+	mov r2, r2, lsr #0x1f
 	eor r2, r2, r3, lsr #31
 	strh r2, [r1]
 	bx lr
 	.align 2, 0
-_06009BA4: .4byte 0x0380FFF4
-_06009BA8: .4byte 0x04808290
+_06009BA4: .word 0x0380FFF4
+_06009BA8: .word 0x04808290
 	arm_func_end sub_06009B44
 
 	arm_func_start sub_06009BAC
-sub_06009BAC: @ 0x06009BAC
+sub_06009BAC: ; 0x06009BAC
 	cmp r0, #1
 	cmpls r1, #1
 	movhi r0, #5
@@ -11620,19 +11624,19 @@ sub_06009BAC: @ 0x06009BAC
 	beq _06009BFC
 	b _06009C24
 _06009BD0:
-	ldr r2, _06009C78 @ =0x0380FFF4
-	lsl r1, r1, #0x10
+	ldr r2, _06009C78 ; =0x0380FFF4
+	mov r1, r1, lsl #0x10
 	ldr r3, [r2]
-	lsr r2, r1, #0x10
+	mov r2, r1, lsr #0x10
 	add r1, r3, #0x300
 	ldrh r3, [r1, #0x3a]
-	lsl r2, r2, #0x1f
+	mov r2, r2, lsl #0x1f
 	bic r3, r3, #0x20
 	orr r2, r3, r2, lsr #26
 	strh r2, [r1, #0x3a]
 	b _06009C24
 _06009BFC:
-	ldr r1, _06009C78 @ =0x0380FFF4
+	ldr r1, _06009C78 ; =0x0380FFF4
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	ldrh r2, [r1, #0x2e]
@@ -11643,112 +11647,112 @@ _06009BFC:
 	bic r2, r2, #0x20
 	strh r2, [r1, #0x3a]
 _06009C24:
-	ldr r3, _06009C78 @ =0x0380FFF4
-	lsl r0, r0, #0x10
+	ldr r3, _06009C78 ; =0x0380FFF4
+	mov r0, r0, lsl #0x10
 	ldr r2, [r3]
-	lsr r1, r0, #0x10
+	mov r1, r0, lsr #0x10
 	add r0, r2, #0x300
 	ldrh r2, [r0, #0x3a]
-	lsl r1, r1, #0x1f
+	mov r1, r1, lsl #0x1f
 	bic r2, r2, #0x10
 	orr r1, r2, r1, lsr #27
 	strh r1, [r0, #0x3a]
 	ldr r0, [r3]
-	ldr r1, _06009C7C @ =0x04808290
+	ldr r1, _06009C7C ; =0x04808290
 	add r0, r0, #0x300
 	ldrh r3, [r0, #0x3a]
 	mov r0, #0
-	lsl r2, r3, #0x1c
-	lsl r3, r3, #0x1a
-	lsr r2, r2, #0x1f
+	mov r2, r3, lsl #0x1c
+	mov r3, r3, lsl #0x1a
+	mov r2, r2, lsr #0x1f
 	eor r2, r2, r3, lsr #31
 	strh r2, [r1]
 	bx lr
 	.align 2, 0
-_06009C78: .4byte 0x0380FFF4
-_06009C7C: .4byte 0x04808290
+_06009C78: .word 0x0380FFF4
+_06009C7C: .word 0x04808290
 	arm_func_end sub_06009BAC
 
 	arm_func_start sub_06009C80
-sub_06009C80: @ 0x06009C80
+sub_06009C80: ; 0x06009C80
 	cmp r0, #1
 	movhi r0, #5
 	bxhi lr
-	ldr r1, _06009CBC @ =0x0380FFF4
-	lsl r0, r0, #0x10
+	ldr r1, _06009CBC ; =0x0380FFF4
+	mov r0, r0, lsl #0x10
 	ldr r2, [r1]
-	lsr r1, r0, #0x10
+	mov r1, r0, lsr #0x10
 	add r0, r2, #0x300
 	ldrh r2, [r0, #0x3a]
-	lsl r1, r1, #0x1f
+	mov r1, r1, lsl #0x1f
 	bic r2, r2, #0x40
 	orr r1, r2, r1, lsr #25
 	strh r1, [r0, #0x3a]
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_06009CBC: .4byte 0x0380FFF4
+_06009CBC: .word 0x0380FFF4
 	arm_func_end sub_06009C80
 
 	arm_func_start sub_06009CC0
-sub_06009CC0: @ 0x06009CC0
+sub_06009CC0: ; 0x06009CC0
 	cmp r0, #1
 	movhi r0, #5
 	bxhi lr
-	ldr r2, _06009D08 @ =0x0380FFF4
-	lsl r1, r0, #0x10
+	ldr r2, _06009D08 ; =0x0380FFF4
+	mov r1, r0, lsl #0x10
 	ldr r3, [r2]
-	lsr r2, r1, #0x10
+	mov r2, r1, lsr #0x10
 	add r1, r3, #0x300
 	ldrh r3, [r1, #0x3a]
-	lsl r2, r2, #0x1f
+	mov r2, r2, lsl #0x1f
 	bic r3, r3, #0x80
 	orr r2, r3, r2, lsr #24
 	strh r2, [r1, #0x3a]
-	ldreq r1, _06009D0C @ =0x0480802A
-	ldrheq r0, [r1]
-	strheq r0, [r1, #-2]
+	ldreq r1, _06009D0C ; =0x0480802A
+	ldreqh r0, [r1]
+	streqh r0, [r1, #-2]
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_06009D08: .4byte 0x0380FFF4
-_06009D0C: .4byte 0x0480802A
+_06009D08: .word 0x0380FFF4
+_06009D0C: .word 0x0480802A
 	arm_func_end sub_06009CC0
 
 	arm_func_start sub_06009D10
-sub_06009D10: @ 0x06009D10
-	push {r4, lr}
-	ldr r1, _06009D68 @ =0x0380FFF4
+sub_06009D10: ; 0x06009D10
+	stmdb sp!, {r4, lr}
+	ldr r1, _06009D68 ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
 	mov r1, r4
 	add r0, r0, #0x3a8
 	bl sub_0600A928
-	ldr r0, _06009D6C @ =0x04808020
+	ldr r0, _06009D6C ; =0x04808020
 	mov r1, r4
 	bl sub_0600A928
 	ldrh r0, [r4]
-	ldr r1, _06009D70 @ =0x048080D0
+	ldr r1, _06009D70 ; =0x048080D0
 	tst r0, #1
-	ldrhne r0, [r1]
+	ldrneh r0, [r1]
 	bicne r0, r0, #0x400
-	strhne r0, [r1]
-	ldrheq r0, [r1]
+	strneh r0, [r1]
+	ldreqh r0, [r1]
 	orreq r0, r0, #0x400
-	strheq r0, [r1]
+	streqh r0, [r1]
 	mov r0, #0
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06009D68: .4byte 0x0380FFF4
-_06009D6C: .4byte 0x04808020
-_06009D70: .4byte 0x048080D0
+_06009D68: .word 0x0380FFF4
+_06009D6C: .word 0x04808020
+_06009D70: .word 0x048080D0
 	arm_func_end sub_06009D10
 
 	arm_func_start sub_06009D74
-sub_06009D74: @ 0x06009D74
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r2, _06009E80 @ =0x0380FFF4
+sub_06009D74: ; 0x06009D74
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldr r2, _06009E80 ; =0x0380FFF4
 	mov r8, r0
 	ldr r2, [r2]
 	cmp r8, #0x20
@@ -11760,7 +11764,7 @@ sub_06009D74: @ 0x06009D74
 	ldrh r0, [r4, #8]
 	cmp r0, #0x40
 	addeq r0, r2, #0x300
-	ldrheq r0, [r0, #0x2e]
+	ldreqh r0, [r0, #0x2e]
 	cmpeq r0, #1
 	bne _06009DD0
 	ldrh r0, [r4, #0x1e]
@@ -11799,7 +11803,7 @@ _06009E1C:
 	strh r8, [r4, #0x1e]
 	cmp r6, #0
 	beq _06009E74
-	ldr r1, _06009E80 @ =0x0380FFF4
+	ldr r1, _06009E80 ; =0x0380FFF4
 	ldrh r0, [r4, #0x92]
 	ldr r1, [r1]
 	mov r5, #0
@@ -11821,15 +11825,15 @@ _06009E6C:
 _06009E74:
 	mov r0, #0
 _06009E78:
-	pop {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_06009E80: .4byte 0x0380FFF4
+_06009E80: .word 0x0380FFF4
 	arm_func_end sub_06009D74
 
 	arm_func_start sub_06009E84
-sub_06009E84: @ 0x06009E84
-	push {r3, lr}
+sub_06009E84: ; 0x06009E84
+	stmdb sp!, {r3, lr}
 	cmp r0, #0xa
 	blo _06009E98
 	cmp r0, #0x3e8
@@ -11838,8 +11842,8 @@ _06009E98:
 	mov r0, #5
 	b _06009ECC
 _06009EA0:
-	ldr r3, _06009ED4 @ =0x0380FFF4
-	ldr r2, _06009ED8 @ =0x0480808C
+	ldr r3, _06009ED4 ; =0x0380FFF4
+	ldr r2, _06009ED8 ; =0x0480808C
 	ldr r1, [r3]
 	add r1, r1, #0x300
 	strh r0, [r1, #0xb2]
@@ -11850,15 +11854,15 @@ _06009EA0:
 	bl sub_0600A5D4
 	mov r0, #0
 _06009ECC:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06009ED4: .4byte 0x0380FFF4
-_06009ED8: .4byte 0x0480808C
+_06009ED4: .word 0x0380FFF4
+_06009ED8: .word 0x0480808C
 	arm_func_end sub_06009E84
 
 	arm_func_start sub_06009EDC
-sub_06009EDC: @ 0x06009EDC
+sub_06009EDC: ; 0x06009EDC
 	cmp r0, #1
 	blo _06009EEC
 	cmp r0, #0xff
@@ -11867,8 +11871,8 @@ _06009EEC:
 	mov r0, #5
 	bx lr
 _06009EF4:
-	ldr r1, _06009F18 @ =0x0380FFF4
-	ldr r2, _06009F1C @ =0x0480808E
+	ldr r1, _06009F18 ; =0x0380FFF4
+	ldr r2, _06009F1C ; =0x0480808E
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	strh r0, [r1, #0xb8]
@@ -11877,12 +11881,12 @@ _06009EF4:
 	strh r0, [r2, #-6]
 	bx lr
 	.align 2, 0
-_06009F18: .4byte 0x0380FFF4
-_06009F1C: .4byte 0x0480808E
+_06009F18: .word 0x0380FFF4
+_06009F1C: .word 0x0480808E
 	arm_func_end sub_06009EDC
 
 	arm_func_start sub_06009F20
-sub_06009F20: @ 0x06009F20
+sub_06009F20: ; 0x06009F20
 	cmp r0, #1
 	blo _06009F30
 	cmp r0, #0xff
@@ -11891,19 +11895,19 @@ _06009F30:
 	mov r0, #5
 	bx lr
 _06009F38:
-	ldr r1, _06009F50 @ =0x0380FFF4
+	ldr r1, _06009F50 ; =0x0380FFF4
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	strh r0, [r1, #0xb4]
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_06009F50: .4byte 0x0380FFF4
+_06009F50: .word 0x0380FFF4
 	arm_func_end sub_06009F20
 
 	arm_func_start sub_06009F54
-sub_06009F54: @ 0x06009F54
-	push {r3, lr}
+sub_06009F54: ; 0x06009F54
+	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r2, sp, #2
 	mov r0, #0x36
@@ -11918,10 +11922,10 @@ sub_06009F54: @ 0x06009F54
 	mov r0, #7
 	bl sub_06009660
 	ldrh r1, [sp]
-	ldr r0, _0600A088 @ =0x00007FFE
+	ldr r0, _0600A088 ; =0x00007FFE
 	and r0, r1, r0
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_06009694
 	mov r0, #2
 	bl sub_060096D4
@@ -11931,7 +11935,7 @@ sub_06009F54: @ 0x06009F54
 	bl sub_06009788
 	mov r0, #0
 	bl sub_06009828
-	ldr r0, _0600A08C @ =0x0601832C
+	ldr r0, _0600A08C ; =0x0601832C
 	bl sub_0600984C
 	mov r0, #0x1f4
 	bl sub_06009E84
@@ -11941,16 +11945,16 @@ sub_06009F54: @ 0x06009F54
 	bl sub_060098E4
 	mov r0, #0x10
 	bl sub_0600991C
-	ldr r0, _0600A090 @ =0x0000FFFF
+	ldr r0, _0600A090 ; =0x0000FFFF
 	mov r1, #0
 	bl sub_06009954
-	ldr r0, _0600A094 @ =0x060182CC
+	ldr r0, _0600A094 ; =0x060182CC
 	bl sub_06009A04
 	mov r0, #1
 	bl sub_06009A34
 	mov r0, #0
 	bl sub_06009ADC
-	ldr r0, _0600A098 @ =0x060182C8
+	ldr r0, _0600A098 ; =0x060182C8
 	bl sub_0600A330
 	mov r0, #0
 	mov r1, #0x1f
@@ -11966,47 +11970,47 @@ sub_06009F54: @ 0x06009F54
 	bl sub_06009C80
 	mov r0, #0
 	bl sub_06009CC0
-	ldr r1, _0600A09C @ =0x04808044
+	ldr r1, _0600A09C ; =0x04808044
 	ldrh r2, [r1]
 	ldrh r0, [r1]
 	ldrh r1, [r1]
 	add r0, r2, r0, lsl #8
 	bl sub_0600BA2C
-	ldr r0, _0600A0A0 @ =0x0380FFF4
+	ldr r0, _0600A0A0 ; =0x0380FFF4
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	strh r1, [r0, #0x58]
 	add sp, sp, #8
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600A088: .4byte 0x00007FFE
-_0600A08C: .4byte 0x0601832C
-_0600A090: .4byte 0x0000FFFF
-_0600A094: .4byte 0x060182CC
-_0600A098: .4byte 0x060182C8
-_0600A09C: .4byte 0x04808044
-_0600A0A0: .4byte 0x0380FFF4
+_0600A088: .word 0x00007FFE
+_0600A08C: .word 0x0601832C
+_0600A090: .word 0x0000FFFF
+_0600A094: .word 0x060182CC
+_0600A098: .word 0x060182C8
+_0600A09C: .word 0x04808044
+_0600A0A0: .word 0x0380FFF4
 	arm_func_end sub_06009F54
 
 	arm_func_start sub_0600A0A4
-sub_0600A0A4: @ 0x0600A0A4
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_0600A0A4: ; 0x0600A0A4
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov sl, r0
-	ldr r0, _0600A320 @ =0x0380FFF4
+	ldr r0, _0600A320 ; =0x0380FFF4
 	cmp r1, #0
 	ldr r0, [r0]
-	ldrne sb, _0600A324 @ =sub_0601805C
+	ldrne sb, _0600A324 ; =sub_0601805C
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x2c]
-	ldreq sb, _0600A328 @ =sub_06017FFC
+	ldreq sb, _0600A328 ; =sub_06017FFC
 	mov r2, #1
 	tst r0, r2, lsl sl
 	moveq r0, #5
 	beq _0600A314
-	ldr r1, _0600A32C @ =0x04808040
+	ldr r1, _0600A32C ; =0x04808040
 	add r0, r2, #0x8000
 	ldrh r6, [r1]
 	strh r0, [r1]
@@ -12015,13 +12019,13 @@ sub_0600A0A4: @ 0x0600A0A4
 _0600A0F4:
 	ldrh r2, [r3]
 	ldrh r0, [r1]
-	asr r2, r2, #8
+	mov r2, r2, asr #8
 	cmp r2, #2
 	bne _0600A0F4
 	cmp r0, #0
 	cmpne r0, #9
 	bne _0600A0F4
-	ldr r5, _0600A320 @ =0x0380FFF4
+	ldr r5, _0600A320 ; =0x0380FFF4
 	ldr r0, [r5]
 	add r0, r0, #0x300
 	strh sl, [r0, #0xbe]
@@ -12048,7 +12052,7 @@ _0600A148:
 	arm_func_end sub_0600A0A4
 
 	arm_func_start sub_0600A170
-sub_0600A170: @ 0x0600A170
+sub_0600A170: ; 0x0600A170
 	ldr r0, [sp, #4]
 	bl sub_0600B2D0
 	add r2, sp, #4
@@ -12059,11 +12063,11 @@ sub_0600A170: @ 0x0600A170
 	arm_func_end sub_0600A170
 
 	arm_func_start sub_0600A18C
-sub_0600A18C: @ 0x0600A18C
+sub_0600A18C: ; 0x0600A18C
 	ldr r0, [sp, #4]
 	bl sub_0600B2D0
 	mov r1, #0
-	ldr r0, _0600A320 @ =0x0380FFF4
+	ldr r0, _0600A320 ; =0x0380FFF4
 	str r1, [sp, #4]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x604]
@@ -12079,11 +12083,11 @@ sub_0600A18C: @ 0x0600A18C
 	arm_func_end sub_0600A18C
 
 	arm_func_start sub_0600A1CC
-sub_0600A1CC: @ 0x0600A1CC
-	ldr r1, _0600A320 @ =0x0380FFF4
+sub_0600A1CC: ; 0x0600A1CC
+	ldr r1, _0600A320 ; =0x0380FFF4
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
-	lsl r0, r0, #0x1b
+	mov r0, r0, lsl #0x1b
 	ldr r1, [r1, #0x604]
 	orr r0, r1, r0, lsr #17
 	str r0, [sp, #4]
@@ -12099,7 +12103,7 @@ _0600A1F0:
 	arm_func_end sub_0600A1CC
 
 	arm_func_start sub_0600A208
-sub_0600A208: @ 0x0600A208
+sub_0600A208: ; 0x0600A208
 	ldr r1, [sp, #4]
 	mov r0, #0x1e
 	bl sub_0600B2A0
@@ -12122,7 +12126,7 @@ _0600A230:
 	arm_func_end sub_0600A208
 
 	arm_func_start sub_0600A24C
-sub_0600A24C: @ 0x0600A24C
+sub_0600A24C: ; 0x0600A24C
 	add r0, r7, sl
 	mov r1, #1
 	add r2, sp, #4
@@ -12131,7 +12135,7 @@ sub_0600A24C: @ 0x0600A24C
 	arm_func_end sub_0600A24C
 
 	arm_func_start sub_0600A260
-sub_0600A260: @ 0x0600A260
+sub_0600A260: ; 0x0600A260
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	bl sub_0600B2A0
@@ -12144,7 +12148,7 @@ _0600A274:
 	cmp r8, r0
 	blo _0600A230
 	mov r8, #0
-	ldr r4, _0600A320 @ =0x0380FFF4
+	ldr r4, _0600A320 ; =0x0380FFF4
 	mov r5, r8
 	mov fp, #1
 	b _0600A2EC
@@ -12158,10 +12162,10 @@ _0600A29C:
 	arm_func_end sub_0600A260
 
 	arm_func_start sub_0600A2B4
-sub_0600A2B4: @ 0x0600A2B4
+sub_0600A2B4: ; 0x0600A2B4
 	ldr r1, [sp, #4]
 	add r0, r7, sl
-	lsl r1, r1, #8
+	mov r1, r1, lsl #8
 	str r1, [sp, #4]
 	mov r1, #1
 	add r2, sp, #4
@@ -12170,7 +12174,7 @@ sub_0600A2B4: @ 0x0600A2B4
 	arm_func_end sub_0600A2B4
 
 	arm_func_start sub_0600A2D4
-sub_0600A2D4: @ 0x0600A2D4
+sub_0600A2D4: ; 0x0600A2D4
 	ldr r0, [sp, #4]
 	orr r0, r0, #0x50000
 	str r0, [sp, #4]
@@ -12184,26 +12188,26 @@ _0600A2EC:
 	cmp r8, r0
 	blo _0600A29C
 _0600A300:
-	ldr r1, _0600A32C @ =0x04808040
+	ldr r1, _0600A32C ; =0x04808040
 	mov r0, #3
 	strh r6, [r1]
 	strh r0, [r1, #8]
 	mov r0, #0
 _0600A314:
 	add sp, sp, #8
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_0600A320: .4byte 0x0380FFF4
-_0600A324: .4byte sub_0601805C
-_0600A328: .4byte sub_06017FFC
-_0600A32C: .4byte 0x04808040
+_0600A320: .word 0x0380FFF4
+_0600A324: .word sub_0601805C
+_0600A328: .word sub_06017FFC
+_0600A32C: .word 0x04808040
 	arm_func_end sub_0600A2D4
 
 	arm_func_start sub_0600A330
-sub_0600A330: @ 0x0600A330
-	push {r3, lr}
-	ldr r1, _0600A36C @ =0x0380FFF4
+sub_0600A330: ; 0x0600A330
+	stmdb sp!, {r3, lr}
+	ldr r1, _0600A36C ; =0x0380FFF4
 	ldrh r2, [r0]
 	ldr r3, [r1]
 	add r1, r3, #0x300
@@ -12215,16 +12219,16 @@ sub_0600A330: @ 0x0600A330
 	strh r0, [r2, #2]
 	bl sub_0600A370
 	mov r0, #0
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600A36C: .4byte 0x0380FFF4
+_0600A36C: .word 0x0380FFF4
 	arm_func_end sub_0600A330
 
 	arm_func_start sub_0600A370
-sub_0600A370: @ 0x0600A370
-	push {r3, lr}
-	ldr r0, _0600A3E4 @ =0x0000E2E2
+sub_0600A370: ; 0x0600A370
+	stmdb sp!, {r3, lr}
+	ldr r0, _0600A3E4 ; =0x0000E2E2
 	add r2, sp, #0
 	str r0, [sp]
 	mov r0, #0x58
@@ -12238,7 +12242,7 @@ sub_0600A370: @ 0x0600A370
 	cmp r0, #0x14
 	bne _0600A3D0
 	ldr r1, [sp]
-	ldr r0, _0600A3E8 @ =0x048080BC
+	ldr r0, _0600A3E8 ; =0x048080BC
 	sub r1, r1, #0x61
 	sub r1, r1, #0x6100
 	str r1, [sp]
@@ -12249,33 +12253,33 @@ sub_0600A370: @ 0x0600A370
 	strne r0, [sp]
 _0600A3D0:
 	ldr r1, [sp]
-	ldr r0, _0600A3EC @ =0x04808140
+	ldr r0, _0600A3EC ; =0x04808140
 	strh r1, [r0]
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600A3E4: .4byte 0x0000E2E2
-_0600A3E8: .4byte 0x048080BC
-_0600A3EC: .4byte 0x04808140
+_0600A3E4: .word 0x0000E2E2
+_0600A3E8: .word 0x048080BC
+_0600A3EC: .word 0x04808140
 	arm_func_end sub_0600A370
 
 	arm_func_start sub_0600A3F0
-sub_0600A3F0: @ 0x0600A3F0
-	push {r3, lr}
-	ldr r1, _0600A450 @ =0x0380FFF4
+sub_0600A3F0: ; 0x0600A3F0
+	stmdb sp!, {r3, lr}
+	ldr r1, _0600A450 ; =0x0380FFF4
 	cmp r0, #0
 	ldr r2, [r1]
 	add r1, r2, #0x300
 	add r3, r2, #0x31c
 	strh r0, [r1, #0x52]
-	ldrhne r0, [r3, #0x12]
+	ldrneh r0, [r3, #0x12]
 	cmpne r0, #1
-	ldrne r1, _0600A454 @ =0x04808006
-	ldrhne r0, [r1]
+	ldrne r1, _0600A454 ; =0x04808006
+	ldrneh r0, [r1]
 	orrne r0, r0, #0x40
-	strhne r0, [r1]
+	strneh r0, [r1]
 	bne _0600A444
-	ldr r2, _0600A454 @ =0x04808006
+	ldr r2, _0600A454 ; =0x04808006
 	mov r1, #0
 	ldrh r0, [r2]
 	bic r0, r0, #0x40
@@ -12284,91 +12288,91 @@ sub_0600A3F0: @ 0x0600A3F0
 	bl sub_06009954
 _0600A444:
 	mov r0, #0
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600A450: .4byte 0x0380FFF4
-_0600A454: .4byte 0x04808006
+_0600A450: .word 0x0380FFF4
+_0600A454: .word 0x04808006
 	arm_func_end sub_0600A3F0
 
 	arm_func_start sub_0600A458
-sub_0600A458: @ 0x0600A458
-	ldr r1, _0600A47C @ =0x0380FFF4
-	ldr r2, _0600A480 @ =0x0480803C
+sub_0600A458: ; 0x0600A458
+	ldr r1, _0600A47C ; =0x0380FFF4
+	ldr r2, _0600A480 ; =0x0480803C
 	ldr r1, [r1]
-	lsr r3, r0, #1
+	mov r3, r0, lsr #1
 	add r1, r1, #0x300
 	strh r3, [r1, #0x54]
 	strh r0, [r2]
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0600A47C: .4byte 0x0380FFF4
-_0600A480: .4byte 0x0480803C
+_0600A47C: .word 0x0380FFF4
+_0600A480: .word 0x0480803C
 	arm_func_end sub_0600A458
 
 	arm_func_start sub_0600A484
-sub_0600A484: @ 0x0600A484
-	ldr r1, _0600A494 @ =0x04808040
+sub_0600A484: ; 0x0600A484
+	ldr r1, _0600A494 ; =0x04808040
 	strh r0, [r1]
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0600A494: .4byte 0x04808040
+_0600A494: .word 0x04808040
 	arm_func_end sub_0600A484
 
 	arm_func_start sub_0600A498
-sub_0600A498: @ 0x0600A498
-	push {r3, lr}
-	ldr r0, _0600A500 @ =0x0380FFF4
+sub_0600A498: ; 0x0600A498
+	stmdb sp!, {r3, lr}
+	ldr r0, _0600A500 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x500
 	ldrh r0, [r0, #0xf8]
 	cmp r0, #2
 	bne _0600A4BC
-	ldr r0, _0600A504 @ =0x0000C008
+	ldr r0, _0600A504 ; =0x0000C008
 	bl sub_0600B2D0
 _0600A4BC:
-	ldr r1, _0600A508 @ =0x0000601E
-	ldr r0, _0600A50C @ =0x04808158
+	ldr r1, _0600A508 ; =0x0000601E
+	ldr r0, _0600A50C ; =0x04808158
 	strh r1, [r0]
 	bl sub_0600F048
-	ldr r1, _0600A510 @ =0x0480815C
+	ldr r1, _0600A510 ; =0x0480815C
 	mov r0, #0x1e
 	ldrh r1, [r1]
 	orr r1, r1, #0x3f
 	bl sub_0600B2A0
-	ldr r2, _0600A514 @ =0x0000800D
-	ldr r1, _0600A518 @ =0x04808168
-	ldr r0, _0600A51C @ =0x04808036
+	ldr r2, _0600A514 ; =0x0000800D
+	ldr r1, _0600A518 ; =0x04808168
+	ldr r0, _0600A51C ; =0x04808036
 	strh r2, [r1]
 	mov r1, #1
 	strh r1, [r0]
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600A500: .4byte 0x0380FFF4
-_0600A504: .4byte 0x0000C008
-_0600A508: .4byte 0x0000601E
-_0600A50C: .4byte 0x04808158
-_0600A510: .4byte 0x0480815C
-_0600A514: .4byte 0x0000800D
-_0600A518: .4byte 0x04808168
-_0600A51C: .4byte 0x04808036
+_0600A500: .word 0x0380FFF4
+_0600A504: .word 0x0000C008
+_0600A508: .word 0x0000601E
+_0600A50C: .word 0x04808158
+_0600A510: .word 0x0480815C
+_0600A514: .word 0x0000800D
+_0600A518: .word 0x04808168
+_0600A51C: .word 0x04808036
 	arm_func_end sub_0600A498
 
 	arm_func_start sub_0600A520
-sub_0600A520: @ 0x0600A520
-	push {r4, lr}
-	ldr r2, _0600A5B8 @ =0x04808036
+sub_0600A520: ; 0x0600A520
+	stmdb sp!, {r4, lr}
+	ldr r2, _0600A5B8 ; =0x04808036
 	mov r3, #0
-	ldr r1, _0600A5BC @ =sub_0600B654
+	ldr r1, _0600A5BC ; =sub_0600B654
 	mov r0, #0x1f40
 	strh r3, [r2]
 	bl sub_0600EF54
-	ldr r1, _0600A5C0 @ =0x04808168
+	ldr r1, _0600A5C0 ; =0x04808168
 	mov r2, #0
-	ldr r0, _0600A5C4 @ =0x0380FFF4
+	ldr r0, _0600A5C4 ; =0x0380FFF4
 	strh r2, [r1]
 	ldr r0, [r0]
 	add r0, r0, #0x500
@@ -12379,10 +12383,10 @@ sub_0600A520: @ 0x0600A520
 	beq _0600A5AC
 	b _0600A5B0
 _0600A56C:
-	ldr r0, _0600A5C8 @ =0x00006001
+	ldr r0, _0600A5C8 ; =0x00006001
 	strh r0, [r1, #-0x10]
 	bl sub_0600F048
-	ldr r1, _0600A5CC @ =0x0480815C
+	ldr r1, _0600A5CC ; =0x0480815C
 	mov r0, #1
 	ldrh r4, [r1]
 	and r1, r4, #0x7f
@@ -12390,38 +12394,38 @@ _0600A56C:
 	mov r1, r4
 	mov r0, #1
 	bl sub_0600B2A0
-	ldr r0, _0600A5D0 @ =0x00009C40
-	ldr r1, _0600A5BC @ =sub_0600B654
+	ldr r0, _0600A5D0 ; =0x00009C40
+	ldr r1, _0600A5BC ; =sub_0600B654
 	bl sub_0600EF54
 	bl sub_0600B470
 	b _0600A5B0
 _0600A5AC:
 	bl sub_0600B470
 _0600A5B0:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600A5B8: .4byte 0x04808036
-_0600A5BC: .4byte sub_0600B654
-_0600A5C0: .4byte 0x04808168
-_0600A5C4: .4byte 0x0380FFF4
-_0600A5C8: .4byte 0x00006001
-_0600A5CC: .4byte 0x0480815C
-_0600A5D0: .4byte 0x00009C40
+_0600A5B8: .word 0x04808036
+_0600A5BC: .word sub_0600B654
+_0600A5C0: .word 0x04808168
+_0600A5C4: .word 0x0380FFF4
+_0600A5C8: .word 0x00006001
+_0600A5CC: .word 0x0480815C
+_0600A5D0: .word 0x00009C40
 	arm_func_end sub_0600A520
 
 	arm_func_start sub_0600A5D4
-sub_0600A5D4: @ 0x0600A5D4
-	push {r4, r5, r6, lr}
-	ldr r2, _0600A630 @ =0x0380FFF4
-	ldr r1, _0600A634 @ =0x0000FFFF
+sub_0600A5D4: ; 0x0600A5D4
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _0600A630 ; =0x0380FFF4
+	ldr r1, _0600A634 ; =0x0000FFFF
 	ldr r2, [r2]
 	mov r6, r0
 	add r5, r2, #0x31c
 	cmp r6, r1
-	strheq r1, [r5, #0x1c]
+	streqh r1, [r5, #0x1c]
 	add r4, r2, #0x344
-	strheq r1, [r4, #0x8c]
+	streqh r1, [r4, #0x8c]
 	beq _0600A624
 	ldrh r0, [r4, #0x6e]
 	mov r1, #0x64
@@ -12435,16 +12439,16 @@ sub_0600A5D4: @ 0x0600A5D4
 _0600A624:
 	mov r0, #0
 _0600A628:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600A630: .4byte 0x0380FFF4
-_0600A634: .4byte 0x0000FFFF
+_0600A630: .word 0x0380FFF4
+_0600A634: .word 0x0000FFFF
 	arm_func_end sub_0600A5D4
 
 	arm_func_start sub_0600A638
-sub_0600A638: @ 0x0600A638
-	ldr r1, _0600A67C @ =0x0380FFF4
+sub_0600A638: ; 0x0600A638
+	ldr r1, _0600A67C ; =0x0380FFF4
 	mov r2, #1
 	ldr r0, [r1]
 	add r0, r0, #0x300
@@ -12454,7 +12458,7 @@ sub_0600A638: @ 0x0600A638
 	ldrh r0, [r0, #0x68]
 	cmp r0, #0
 	bxne lr
-	ldr r2, _0600A680 @ =0x04808038
+	ldr r2, _0600A680 ; =0x04808038
 	mov r0, #0
 	ldrh r1, [r2]
 	bic r1, r1, #2
@@ -12462,14 +12466,14 @@ sub_0600A638: @ 0x0600A638
 	strh r0, [r2, #0x10]
 	bx lr
 	.align 2, 0
-_0600A67C: .4byte 0x0380FFF4
-_0600A680: .4byte 0x04808038
+_0600A67C: .word 0x0380FFF4
+_0600A680: .word 0x04808038
 	arm_func_end sub_0600A638
 
 	arm_func_start sub_0600A684
-sub_0600A684: @ 0x0600A684
-	ldr r0, _0600A6AC @ =0x0380FFF4
-	ldr r1, _0600A6B0 @ =0x04808038
+sub_0600A684: ; 0x0600A684
+	ldr r0, _0600A6AC ; =0x0380FFF4
+	ldr r1, _0600A6B0 ; =0x04808038
 	ldr r0, [r0]
 	mov r2, #0
 	add r0, r0, #0x300
@@ -12479,14 +12483,14 @@ sub_0600A684: @ 0x0600A684
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_0600A6AC: .4byte 0x0380FFF4
-_0600A6B0: .4byte 0x04808038
+_0600A6AC: .word 0x0380FFF4
+_0600A6B0: .word 0x04808038
 	arm_func_end sub_0600A684
 
 	arm_func_start sub_0600A6B4
-sub_0600A6B4: @ 0x0600A6B4
-	push {r3, r4, r5, lr}
-	ldr r2, _0600A6F4 @ =0x0380FFF4
+sub_0600A6B4: ; 0x0600A6B4
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r2, _0600A6F4 ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r2]
 	cmp r5, #0x80
@@ -12500,16 +12504,16 @@ sub_0600A6B4: @ 0x0600A6B4
 	strh r5, [r4, #0xa0]
 	mov r0, #0
 _0600A6EC:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600A6F4: .4byte 0x0380FFF4
+_0600A6F4: .word 0x0380FFF4
 	arm_func_end sub_0600A6B4
 
 	arm_func_start sub_0600A6F8
-sub_0600A6F8: @ 0x0600A6F8
-	push {r4, r5, r6, r7, r8, lr}
-	ldr r2, _0600A7A0 @ =0x0380FFF4
+sub_0600A6F8: ; 0x0600A6F8
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	ldr r2, _0600A7A0 ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r2]
 	mov r8, r1
@@ -12553,16 +12557,16 @@ _0600A788:
 	strh r0, [r5, #0xa4]
 	mov r0, #0
 _0600A798:
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_0600A7A0: .4byte 0x0380FFF4
+_0600A7A0: .word 0x0380FFF4
 	arm_func_end sub_0600A6F8
 
 	arm_func_start sub_0600A7A4
-sub_0600A7A4: @ 0x0600A7A4
-	ldr r3, _0600A7D8 @ =0x0380FFF4
-	ldr r2, _0600A7DC @ =0x0480802A
+sub_0600A7A4: ; 0x0600A7A4
+	ldr r3, _0600A7D8 ; =0x0380FFF4
+	ldr r2, _0600A7DC ; =0x0480802A
 	ldr r1, [r3]
 	add r1, r1, #0x300
 	strh r0, [r1, #0xae]
@@ -12570,25 +12574,25 @@ sub_0600A7A4: @ 0x0600A7A4
 	ldr r1, [r3]
 	add r1, r1, #0x300
 	ldrh r1, [r1, #0x3a]
-	lsl r1, r1, #0x18
-	lsrs r1, r1, #0x1f
-	strhne r0, [r2, #-2]
+	mov r1, r1, lsl #0x18
+	movs r1, r1, lsr #0x1f
+	strneh r0, [r2, #-2]
 	bx lr
 	.align 2, 0
-_0600A7D8: .4byte 0x0380FFF4
-_0600A7DC: .4byte 0x0480802A
+_0600A7D8: .word 0x0380FFF4
+_0600A7DC: .word 0x0480802A
 	arm_func_end sub_0600A7A4
 
 	arm_func_start sub_0600A7E0
-sub_0600A7E0: @ 0x0600A7E0
-	push {r4, lr}
-	ldr r1, _0600A834 @ =0x0380FFF4
+sub_0600A7E0: ; 0x0600A7E0
+	stmdb sp!, {r4, lr}
+	ldr r1, _0600A834 ; =0x0380FFF4
 	mov r0, #0
 	ldr r1, [r1]
 	add r4, r1, #0x344
 	strh r0, [r4, #0x6a]
 	bl sub_0600EFDC
-	ldr r0, _0600A838 @ =0x0480802A
+	ldr r0, _0600A838 ; =0x0480802A
 	mov r1, #0
 	strh r1, [r0]
 	ldrh r0, [r4, #0x88]
@@ -12601,46 +12605,46 @@ sub_0600A7E0: @ 0x0600A7E0
 	mov r0, #0
 	strh r0, [r4, #0x88]
 _0600A82C:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600A834: .4byte 0x0380FFF4
-_0600A838: .4byte 0x0480802A
+_0600A834: .word 0x0380FFF4
+_0600A838: .word 0x0480802A
 	arm_func_end sub_0600A7E0
 
 	arm_func_start sub_0600A83C
-sub_0600A83C: @ 0x0600A83C
-	ldr r0, _0600A858 @ =0x0380FFF4
-	ldr r1, _0600A85C @ =0x04808028
+sub_0600A83C: ; 0x0600A83C
+	ldr r0, _0600A858 ; =0x0380FFF4
+	ldr r1, _0600A85C ; =0x04808028
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0xae]
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_0600A858: .4byte 0x0380FFF4
-_0600A85C: .4byte 0x04808028
+_0600A858: .word 0x0380FFF4
+_0600A85C: .word 0x04808028
 	arm_func_end sub_0600A83C
 
 	arm_func_start sub_0600A860
-sub_0600A860: @ 0x0600A860
-	push {r3, lr}
-	ldr r0, _0600A880 @ =0x04808094
+sub_0600A860: ; 0x0600A860
+	stmdb sp!, {r3, lr}
+	ldr r0, _0600A880 ; =0x04808094
 	ldrh r0, [r0]
 	tst r0, #0x8000
 	bne _0600A878
 	bl sub_0600EFDC
 _0600A878:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600A880: .4byte 0x04808094
+_0600A880: .word 0x04808094
 	arm_func_end sub_0600A860
 
 	arm_func_start sub_0600A884
-sub_0600A884: @ 0x0600A884
-	push {r3, r4, r5, lr}
-	ldr r1, _0600A91C @ =0x0380FFF4
+sub_0600A884: ; 0x0600A884
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _0600A91C ; =0x0380FFF4
 	mov r5, r0
 	ldr r1, [r1]
 	add r4, r1, #0x344
@@ -12664,7 +12668,7 @@ _0600A8D4:
 	bl sub_0600A498
 	b _0600A910
 _0600A8DC:
-	ldr r0, _0600A920 @ =0x04808040
+	ldr r0, _0600A920 ; =0x04808040
 	mov r1, #0
 	strh r1, [r0]
 	bl sub_0600B1D4
@@ -12676,22 +12680,22 @@ _0600A8F4:
 	bne _0600A904
 	bl sub_0600A684
 _0600A904:
-	ldr r1, _0600A924 @ =sub_0600B72C
+	ldr r1, _0600A924 ; =sub_0600B72C
 	mov r0, #0x64
 	bl sub_0600B674
 _0600A910:
 	strh r5, [r4, #8]
 _0600A914:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600A91C: .4byte 0x0380FFF4
-_0600A920: .4byte 0x04808040
-_0600A924: .4byte sub_0600B72C
+_0600A91C: .word 0x0380FFF4
+_0600A920: .word 0x04808040
+_0600A924: .word sub_0600B72C
 	arm_func_end sub_0600A884
 
 	arm_func_start sub_0600A928
-sub_0600A928: @ 0x0600A928
+sub_0600A928: ; 0x0600A928
 	ldrh r2, [r1]
 	strh r2, [r0]
 	ldrh r2, [r1, #2]
@@ -12702,7 +12706,7 @@ sub_0600A928: @ 0x0600A928
 	arm_func_end sub_0600A928
 
 	arm_func_start sub_0600A944
-sub_0600A944: @ 0x0600A944
+sub_0600A944: ; 0x0600A944
 	ldrh r3, [r1]
 	strh r3, [r0]
 	ldrh r3, [r1, #2]
@@ -12719,7 +12723,7 @@ sub_0600A944: @ 0x0600A944
 	arm_func_end sub_0600A944
 
 	arm_func_start sub_0600A978
-sub_0600A978: @ 0x0600A978
+sub_0600A978: ; 0x0600A978
 	ldrh ip, [r1]
 	strh ip, [r0]
 	ldrh ip, [r1, #2]
@@ -12742,33 +12746,33 @@ sub_0600A978: @ 0x0600A978
 	arm_func_end sub_0600A978
 
 	arm_func_start sub_0600A9C4
-sub_0600A9C4: @ 0x0600A9C4
-	push {r3, lr}
+sub_0600A9C4: ; 0x0600A9C4
+	stmdb sp!, {r3, lr}
 	bl sub_0600A9FC
-	ldr r1, _0600A9F0 @ =0x0380FFF4
+	ldr r1, _0600A9F0 ; =0x0380FFF4
 	mov r0, #0
 	ldr r1, [r1]
 	mov r2, #0xb4
 	add r1, r1, #0x13c
 	add r1, r1, #0x400
 	bl sub_0600A9F4
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600A9F0: .4byte 0x0380FFF4
+_0600A9F0: .word 0x0380FFF4
 	arm_func_end sub_0600A9C4
 
 	arm_func_start sub_0600A9F4
-sub_0600A9F4: @ 0x0600A9F4
-	ldr pc, _0600A9F8 @ =sub_037FAFCC
+sub_0600A9F4: ; 0x0600A9F4
+	ldr pc, _0600A9F8 ; =sub_037FAFCC
 	.align 2, 0
-_0600A9F8: .4byte sub_037FAFCC
+_0600A9F8: .word sub_037FAFCC
 	arm_func_end sub_0600A9F4
 
 	arm_func_start sub_0600A9FC
-sub_0600A9FC: @ 0x0600A9FC
-	ldr r1, _0600ABEC @ =0x0380FFF4
-	ldr r0, _0600ABF0 @ =0x048081B0
+sub_0600A9FC: ; 0x0600A9FC
+	ldr r1, _0600ABEC ; =0x0380FFF4
+	ldr r0, _0600ABF0 ; =0x048081B0
 	ldr r1, [r1]
 	ldrh r2, [r0]
 	ldr r3, [r1, #0x58c]
@@ -12892,14 +12896,14 @@ sub_0600A9FC: @ 0x0600A9FC
 	str r0, [r1, #0x5ec]
 	bx lr
 	.align 2, 0
-_0600ABEC: .4byte 0x0380FFF4
-_0600ABF0: .4byte 0x048081B0
+_0600ABEC: .word 0x0380FFF4
+_0600ABF0: .word 0x048081B0
 	arm_func_end sub_0600A9FC
 
 	arm_func_start sub_0600ABF4
-sub_0600ABF4: @ 0x0600ABF4
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r2, _0600ACC0 @ =0x0380FFF4
+sub_0600ABF4: ; 0x0600ABF4
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldr r2, _0600ACC0 ; =0x0380FFF4
 	mov sb, r0
 	ldr r0, [r2]
 	mov r8, r1
@@ -12952,22 +12956,22 @@ _0600ACAC:
 	blo _0600AC68
 	mov r0, #1
 _0600ACB8:
-	pop {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_0600ACC0: .4byte 0x0380FFF4
+_0600ACC0: .word 0x0380FFF4
 	arm_func_end sub_0600ABF4
 
 	arm_func_start sub_0600ACC4
-sub_0600ACC4: @ 0x0600ACC4
+sub_0600ACC4: ; 0x0600ACC4
 	ldrh r3, [r0, #4]
 	ldrh r2, [r1, #4]
 	cmp r3, r2
-	ldrheq r3, [r0, #2]
-	ldrheq r2, [r1, #2]
+	ldreqh r3, [r0, #2]
+	ldreqh r2, [r1, #2]
 	cmpeq r3, r2
-	ldrheq r2, [r0]
-	ldrheq r0, [r1]
+	ldreqh r2, [r0]
+	ldreqh r0, [r1]
 	cmpeq r2, r0
 	moveq r0, #1
 	movne r0, #0
@@ -12975,8 +12979,8 @@ sub_0600ACC4: @ 0x0600ACC4
 	arm_func_end sub_0600ACC4
 
 	arm_func_start sub_0600ACF4
-sub_0600ACF4: @ 0x0600ACF4
-	ldr r1, _0600AD10 @ =0x0380FFF4
+sub_0600ACF4: ; 0x0600ACF4
+	ldr r1, _0600AD10 ; =0x0380FFF4
 	mov r2, #1
 	ldr r1, [r1]
 	add r1, r1, #0x300
@@ -12984,12 +12988,12 @@ sub_0600ACF4: @ 0x0600ACF4
 	and r0, r1, r2, lsl r0
 	bx lr
 	.align 2, 0
-_0600AD10: .4byte 0x0380FFF4
+_0600AD10: .word 0x0380FFF4
 	arm_func_end sub_0600ACF4
 
 	arm_func_start sub_0600AD14
-sub_0600AD14: @ 0x0600AD14
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
+sub_0600AD14: ; 0x0600AD14
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r1
 	mov r1, #0
 	mov r4, r0
@@ -12998,7 +13002,7 @@ sub_0600AD14: @ 0x0600AD14
 	strh r1, [sb, #2]
 	bl sub_0600BA10
 	add r6, r4, #2
-	ldr r5, _0600ADC4 @ =0x060183E0
+	ldr r5, _0600ADC4 ; =0x060183E0
 	mov r8, r0
 	mov r7, #0
 	mov r4, #1
@@ -13010,7 +13014,7 @@ _0600AD4C:
 	sub r1, r1, #1
 	cmp r1, #0x78
 	bhs _0600AD94
-	lsl r1, r1, #1
+	mov r1, r1, lsl #1
 	ldrh r2, [r5, r1]
 	cmp r2, #0xff
 	beq _0600AD94
@@ -13018,32 +13022,32 @@ _0600AD4C:
 	tst r0, #0x80
 	orr r0, r1, r4, lsl r2
 	strh r0, [sb, #2]
-	ldrhne r0, [sb]
+	ldrneh r0, [sb]
 	orrne r0, r0, r4, lsl r2
-	strhne r0, [sb]
+	strneh r0, [sb]
 	b _0600ADB0
 _0600AD94:
 	ldrh r1, [sb, #2]
 	tst r0, #0x80
 	orr r0, r1, #0x8000
 	strh r0, [sb, #2]
-	ldrhne r0, [sb]
+	ldrneh r0, [sb]
 	orrne r0, r0, #0x8000
-	strhne r0, [sb]
+	strneh r0, [sb]
 _0600ADB0:
 	add r7, r7, #1
 _0600ADB4:
 	cmp r7, r8
 	blo _0600AD4C
-	pop {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_0600ADC4: .4byte 0x060183E0
+_0600ADC4: .word 0x060183E0
 	arm_func_end sub_0600AD14
 
 	arm_func_start sub_0600ADC8
-sub_0600ADC8: @ 0x0600ADC8
-	ldr r0, _0600AE10 @ =0x0380FFF4
+sub_0600ADC8: ; 0x0600ADC8
+	ldr r0, _0600AE10 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r1, [r0, #0x30]
@@ -13065,19 +13069,19 @@ _0600AE08:
 	mov r0, #0x14
 	bx lr
 	.align 2, 0
-_0600AE10: .4byte 0x0380FFF4
+_0600AE10: .word 0x0380FFF4
 	arm_func_end sub_0600ADC8
 
 	arm_func_start sub_0600AE14
-sub_0600AE14: @ 0x0600AE14
-	push {r3, r4, r5, r6, r7, lr}
+sub_0600AE14: ; 0x0600AE14
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
-	ldr r0, _0600B180 @ =0x0380FFF4
+	ldr r0, _0600B180 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r6, r0, #0x344
 	add r4, r0, #0x31c
 	bl sub_0600B1D4
-	ldr r1, _0600B184 @ =0x04808044
+	ldr r1, _0600B184 ; =0x04808044
 	ldrh r2, [r1]
 	ldrh r0, [r1]
 	ldrh r1, [r1]
@@ -13086,23 +13090,23 @@ sub_0600AE14: @ 0x0600AE14
 	mov r0, #1
 	strh r0, [r6, #0x7c]
 	ldrh r0, [r4, #0x1e]
-	ldr r2, _0600B188 @ =0x04808032
-	lsl r0, r0, #0x1d
-	lsr r0, r0, #0x1f
+	ldr r2, _0600B188 ; =0x04808032
+	mov r0, r0, lsl #0x1d
+	mov r0, r0, lsr #0x1f
 	cmp r0, #1
-	ldrheq r0, [r6, #0x7c]
-	ldr r1, _0600B18C @ =0x04808134
+	ldreqh r0, [r6, #0x7c]
+	ldr r1, _0600B18C ; =0x04808134
 	orreq r0, r0, #0x20
-	strheq r0, [r6, #0x7c]
+	streqh r0, [r6, #0x7c]
 	ldrh r0, [r4, #0x18]
 	mov r4, #0
 	cmp r0, #0
-	ldrhne r0, [r6, #0x7c]
+	ldrneh r0, [r6, #0x7c]
 	mov r3, #0x8000
 	orrne r0, r0, #0x10
-	strhne r0, [r6, #0x7c]
+	strneh r0, [r6, #0x7c]
 	strh r4, [r6, #0x12]
-	ldr r0, _0600B190 @ =0x0000FFFF
+	ldr r0, _0600B190 ; =0x0000FFFF
 	strh r3, [r2]
 	strh r0, [r1]
 	strh r4, [r2, #-8]
@@ -13114,24 +13118,24 @@ sub_0600AE14: @ 0x0600AE14
 	bl sub_06017E9C
 	bl sub_06014F08
 	bl sub_06017C38
-	ldr r2, _0600B194 @ =0x04808030
+	ldr r2, _0600B194 ; =0x04808030
 	mov r1, #0x8000
 	strh r1, [r2]
-	ldr r0, _0600B190 @ =0x0000FFFF
-	ldr r1, _0600B198 @ =0x048081AE
+	ldr r0, _0600B190 ; =0x0000FFFF
+	ldr r1, _0600B198 ; =0x048081AE
 	strh r0, [r2, #-0x20]
 	sub r2, r0, #0xe000
-	ldr r0, _0600B180 @ =0x0380FFF4
+	ldr r0, _0600B180 ; =0x0380FFF4
 	strh r2, [r1]
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrh r0, [r0, #0x90]
 	tst r0, #8
 	movne r0, #0x400
-	strhne r0, [r1, #-4]
+	strneh r0, [r1, #-4]
 	moveq r0, r4
-	strheq r0, [r1, #-4]
-	ldr r2, _0600B19C @ =0x04808008
+	streqh r0, [r1, #-4]
+	ldr r2, _0600B19C ; =0x04808008
 	mov r3, #0
 	strh r3, [r2]
 	strh r3, [r2, #2]
@@ -13139,14 +13143,14 @@ sub_0600AE14: @ 0x0600AE14
 	cmp r0, #4
 	addls pc, pc, r0, lsl #2
 	b _0600B144
-_0600AF28: @ jump table
-	b _0600AF3C @ case 0
-	b _0600AF6C @ case 1
-	b _0600B050 @ case 2
-	b _0600B0D0 @ case 3
-	b _0600B128 @ case 4
+_0600AF28: ; jump table
+	b _0600AF3C ; case 0
+	b _0600AF6C ; case 1
+	b _0600B050 ; case 2
+	b _0600B0D0 ; case 3
+	b _0600B128 ; case 4
 _0600AF3C:
-	ldr r0, _0600B190 @ =0x0000FFFF
+	ldr r0, _0600B190 ; =0x0000FFFF
 	mov r1, #0x3f
 	strh r1, [r2, #0xa]
 	strh r0, [r2, #0xc8]
@@ -13159,9 +13163,9 @@ _0600AF3C:
 	strh r0, [r2, #-4]
 	b _0600B144
 _0600AF6C:
-	ldr r3, _0600B1A0 @ =0x0000703F
-	ldr r0, _0600B1A4 @ =0x00001FFF
-	ldr r1, _0600B198 @ =0x048081AE
+	ldr r3, _0600B1A0 ; =0x0000703F
+	ldr r0, _0600B1A4 ; =0x00001FFF
+	ldr r1, _0600B198 ; =0x048081AE
 	strh r3, [r2, #0xa]
 	strh r0, [r1]
 	rsb r0, r0, #0x2300
@@ -13186,7 +13190,7 @@ _0600AF6C:
 	strh r1, [r7, #6]
 	ldrh r2, [r6, #0x6e]
 	ldr r1, [sp, #4]
-	lsl r5, r2, #0xa
+	mov r5, r2, lsl #0xa
 	mov r2, r5
 	bl sub_0600B1CC
 	adds r3, r0, #1
@@ -13196,7 +13200,7 @@ _0600AF6C:
 	mla r0, r1, r5, r0
 	str r0, [sp, #4]
 	ldrh r0, [r7, #6]
-	ldr r3, _0600B1A8 @ =0x048080F6
+	ldr r3, _0600B1A8 ; =0x048080F6
 	str r2, [sp]
 	strh r0, [r3]
 	ldrh r0, [r7, #4]
@@ -13212,13 +13216,13 @@ _0600AF6C:
 	strh r1, [r3, #-0xc]
 	bl sub_0600A884
 	bl sub_06013F30
-	ldr r0, _0600B1AC @ =0x048080AE
+	ldr r0, _0600B1AC ; =0x048080AE
 	mov r1, #2
 	strh r1, [r0]
 	b _0600B144
 _0600B050:
-	ldr r1, _0600B1B0 @ =0x0000E0BF
-	ldr r0, _0600B180 @ =0x0380FFF4
+	ldr r1, _0600B1B0 ; =0x0000E0BF
+	ldr r0, _0600B180 ; =0x0380FFF4
 	strh r1, [r2, #0xa]
 	ldr r0, [r0]
 	add r0, r0, #0x600
@@ -13226,7 +13230,7 @@ _0600B050:
 	tst r0, #0x20
 	beq _0600B08C
 	ldrh r0, [r2, #0xa]
-	ldr r1, _0600B1B4 @ =0x048081AA
+	ldr r1, _0600B1B4 ; =0x048081AA
 	orr r0, r0, #0x40
 	strh r0, [r2, #0xa]
 	ldrh r0, [r1]
@@ -13235,12 +13239,12 @@ _0600B050:
 _0600B08C:
 	ldrh r0, [r6, #0x64]
 	tst r0, #1
-	ldr r0, _0600B1B8 @ =0x048080D0
-	ldrne r1, _0600B1BC @ =0x00000581
-	strhne r1, [r0]
-	ldreq r1, _0600B1C0 @ =0x00000181
-	strheq r1, [r0]
-	ldr r2, _0600B1C4 @ =0x048080E0
+	ldr r0, _0600B1B8 ; =0x048080D0
+	ldrne r1, _0600B1BC ; =0x00000581
+	strneh r1, [r0]
+	ldreq r1, _0600B1C0 ; =0x00000181
+	streqh r1, [r0]
+	ldr r2, _0600B1C4 ; =0x048080E0
 	mov r0, #0xb
 	strh r0, [r2]
 	mov r1, #1
@@ -13251,17 +13255,17 @@ _0600B08C:
 	bl sub_0600A884
 	b _0600B144
 _0600B0D0:
-	ldr r1, _0600B190 @ =0x0000FFFF
+	ldr r1, _0600B190 ; =0x0000FFFF
 	strh r1, [r2, #8]
 	sub r0, r1, #0x3fc0
 	strh r0, [r2, #0xa]
 	ldrh r0, [r6, #0x64]
 	tst r0, #1
 	rsbne r0, r1, #0x10400
-	strhne r0, [r2, #0xc8]
+	strneh r0, [r2, #0xc8]
 	moveq r0, #1
-	strheq r0, [r2, #0xc8]
-	ldr r2, _0600B1C4 @ =0x048080E0
+	streqh r0, [r2, #0xc8]
+	ldr r2, _0600B1C4 ; =0x048080E0
 	mov r0, #0xb
 	strh r0, [r2]
 	mov r0, #1
@@ -13274,7 +13278,7 @@ _0600B0D0:
 	bl sub_0600A884
 	b _0600B144
 _0600B128:
-	ldr r0, _0600B198 @ =0x048081AE
+	ldr r0, _0600B198 ; =0x048081AE
 	strh r3, [r2, #0xa]
 	strh r3, [r0]
 	mov r1, #1
@@ -13282,11 +13286,11 @@ _0600B128:
 	strh r1, [r2, #-4]
 	bl sub_0600A884
 _0600B144:
-	ldr r0, _0600B1C8 @ =0x04808048
+	ldr r0, _0600B1C8 ; =0x04808048
 	mov r1, #0
 	strh r1, [r0]
 	bl sub_0600A638
-	ldr r1, _0600B1AC @ =0x048080AE
+	ldr r1, _0600B1AC ; =0x048080AE
 	mov r0, #2
 	strh r0, [r1]
 	ldrh r1, [r6, #0xe]
@@ -13296,47 +13300,47 @@ _0600B144:
 _0600B170:
 	bl sub_0600EF28
 	add sp, sp, #8
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600B180: .4byte 0x0380FFF4
-_0600B184: .4byte 0x04808044
-_0600B188: .4byte 0x04808032
-_0600B18C: .4byte 0x04808134
-_0600B190: .4byte 0x0000FFFF
-_0600B194: .4byte 0x04808030
-_0600B198: .4byte 0x048081AE
-_0600B19C: .4byte 0x04808008
-_0600B1A0: .4byte 0x0000703F
-_0600B1A4: .4byte 0x00001FFF
-_0600B1A8: .4byte 0x048080F6
-_0600B1AC: .4byte 0x048080AE
-_0600B1B0: .4byte 0x0000E0BF
-_0600B1B4: .4byte 0x048081AA
-_0600B1B8: .4byte 0x048080D0
-_0600B1BC: .4byte 0x00000581
-_0600B1C0: .4byte 0x00000181
-_0600B1C4: .4byte 0x048080E0
-_0600B1C8: .4byte 0x04808048
+_0600B180: .word 0x0380FFF4
+_0600B184: .word 0x04808044
+_0600B188: .word 0x04808032
+_0600B18C: .word 0x04808134
+_0600B190: .word 0x0000FFFF
+_0600B194: .word 0x04808030
+_0600B198: .word 0x048081AE
+_0600B19C: .word 0x04808008
+_0600B1A0: .word 0x0000703F
+_0600B1A4: .word 0x00001FFF
+_0600B1A8: .word 0x048080F6
+_0600B1AC: .word 0x048080AE
+_0600B1B0: .word 0x0000E0BF
+_0600B1B4: .word 0x048081AA
+_0600B1B8: .word 0x048080D0
+_0600B1BC: .word 0x00000581
+_0600B1C0: .word 0x00000181
+_0600B1C4: .word 0x048080E0
+_0600B1C8: .word 0x04808048
 	arm_func_end sub_0600AE14
 
 	arm_func_start sub_0600B1CC
-sub_0600B1CC: @ 0x0600B1CC
-	ldr pc, _0600B1D0 @ =sub_03806214
+sub_0600B1CC: ; 0x0600B1CC
+	ldr pc, _0600B1D0 ; =sub_03806214
 	.align 2, 0
-_0600B1D0: .4byte sub_03806214
+_0600B1D0: .word sub_03806214
 	arm_func_end sub_0600B1CC
 
 	arm_func_start sub_0600B1D4
-sub_0600B1D4: @ 0x0600B1D4
-	push {r4, lr}
-	ldr r0, _0600B264 @ =0x0380FFF4
+sub_0600B1D4: ; 0x0600B1D4
+	stmdb sp!, {r4, lr}
+	ldr r0, _0600B264 ; =0x0380FFF4
 	ldr r1, [r0]
 	add r0, r1, #0x208
 	add r0, r0, #0x400
 	add r4, r1, #0x344
 	bl sub_06001B0C
-	ldr r0, _0600B264 @ =0x0380FFF4
+	ldr r0, _0600B264 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x234
 	add r0, r0, #0x400
@@ -13345,7 +13349,7 @@ sub_0600B1D4: @ 0x0600B1D4
 	bl sub_0600A884
 	mov r1, #0
 	strh r1, [r4, #0xa4]
-	ldr r0, _0600B268 @ =0x04808012
+	ldr r0, _0600B268 ; =0x04808012
 	strh r1, [r4, #0x12]
 	strh r1, [r0]
 	strh r1, [r0, #-0xe]
@@ -13358,41 +13362,41 @@ sub_0600B1D4: @ 0x0600B1D4
 	bne _0600B244
 	bl sub_06013F70
 _0600B244:
-	ldr r1, _0600B26C @ =0x0000FFFF
-	ldr r0, _0600B270 @ =0x048080AC
+	ldr r1, _0600B26C ; =0x0000FFFF
+	ldr r0, _0600B270 ; =0x048080AC
 	strh r1, [r0]
 	strh r1, [r0, #8]
 	bl sub_06013C9C
 	bl sub_060094E8
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600B264: .4byte 0x0380FFF4
-_0600B268: .4byte 0x04808012
-_0600B26C: .4byte 0x0000FFFF
-_0600B270: .4byte 0x048080AC
+_0600B264: .word 0x0380FFF4
+_0600B268: .word 0x04808012
+_0600B26C: .word 0x0000FFFF
+_0600B270: .word 0x048080AC
 	arm_func_end sub_0600B1D4
 
 	arm_func_start sub_0600B274
-sub_0600B274: @ 0x0600B274
-	push {r3, lr}
-	ldr r1, _0600B298 @ =0x04808158
+sub_0600B274: ; 0x0600B274
+	stmdb sp!, {r3, lr}
+	ldr r1, _0600B298 ; =0x04808158
 	orr r0, r0, #0x6000
 	strh r0, [r1]
 	bl sub_0600F048
-	ldr r0, _0600B29C @ =0x0480815C
+	ldr r0, _0600B29C ; =0x0480815C
 	ldrh r0, [r0]
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600B298: .4byte 0x04808158
-_0600B29C: .4byte 0x0480815C
+_0600B298: .word 0x04808158
+_0600B29C: .word 0x0480815C
 	arm_func_end sub_0600B274
 
 	arm_func_start sub_0600B2A0
-sub_0600B2A0: @ 0x0600B2A0
-	push {r3, lr}
-	ldr r2, _0600B2CC @ =0x0480815A
+sub_0600B2A0: ; 0x0600B2A0
+	stmdb sp!, {r3, lr}
+	ldr r2, _0600B2CC ; =0x0480815A
 	orr r0, r0, #0x5000
 	strh r1, [r2]
 	strh r0, [r2, #-2]
@@ -13400,28 +13404,28 @@ sub_0600B2A0: @ 0x0600B2A0
 	cmp r0, #0
 	mvnne r0, #0
 	moveq r0, #0
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600B2CC: .4byte 0x0480815A
+_0600B2CC: .word 0x0480815A
 	arm_func_end sub_0600B2A0
 
 	arm_func_start sub_0600B2D0
-sub_0600B2D0: @ 0x0600B2D0
-	ldr r2, _0600B2E8 @ =0x0480817E
-	ldr ip, _0600B2EC @ =sub_0600F07C
+sub_0600B2D0: ; 0x0600B2D0
+	ldr r2, _0600B2E8 ; =0x0480817E
+	ldr ip, _0600B2EC ; =sub_0600F07C
 	strh r0, [r2]
-	lsr r1, r0, #0x10
+	mov r1, r0, lsr #0x10
 	strh r1, [r2, #-2]
 	bx ip
 	.align 2, 0
-_0600B2E8: .4byte 0x0480817E
-_0600B2EC: .4byte sub_0600F07C
+_0600B2E8: .word 0x0480817E
+_0600B2EC: .word sub_0600F07C
 	arm_func_end sub_0600B2D0
 
 	arm_func_start sub_0600B2F0
-sub_0600B2F0: @ 0x0600B2F0
-	push {r3, r4, r5, r6, r7, r8, lr}
+sub_0600B2F0: ; 0x0600B2F0
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r8, #0
 	str r8, [sp]
@@ -13448,14 +13452,14 @@ _0600B310:
 	add r6, r6, #1
 	blo _0600B310
 	add sp, sp, #4
-	pop {r3, r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, lr}
 	bx lr
 	arm_func_end sub_0600B2F0
 
 	arm_func_start sub_0600B360
-sub_0600B360: @ 0x0600B360
-	push {r4, lr}
-	ldr r1, _0600B3CC @ =0x0380FFF4
+sub_0600B360: ; 0x0600B360
+	stmdb sp!, {r4, lr}
+	ldr r1, _0600B3CC ; =0x0380FFF4
 	mov r0, #0
 	ldr r1, [r1]
 	mov r2, #0x10
@@ -13479,18 +13483,18 @@ sub_0600B360: @ 0x0600B360
 	mov r0, #0x43
 	mov r1, #1
 	bl sub_06017FFC
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600B3CC: .4byte 0x0380FFF4
+_0600B3CC: .word 0x0380FFF4
 	arm_func_end sub_0600B360
 
 	arm_func_start sub_0600B3D0
-sub_0600B3D0: @ 0x0600B3D0
-	ldr r2, _0600B404 @ =0x0601837C
+sub_0600B3D0: ; 0x0600B3D0
+	ldr r2, _0600B404 ; =0x0601837C
 	mov r3, #0
 _0600B3D8:
-	lsl r0, r3, #2
+	mov r0, r3, lsl #2
 	ldrh r0, [r2, r0]
 	add r1, r2, r3, lsl #2
 	add r0, r0, #0x4800000
@@ -13502,13 +13506,13 @@ _0600B3D8:
 	blo _0600B3D8
 	bx lr
 	.align 2, 0
-_0600B404: .4byte 0x0601837C
+_0600B404: .word 0x0601837C
 	arm_func_end sub_0600B3D0
 
 	arm_func_start sub_0600B408
-sub_0600B408: @ 0x0600B408
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r0, _0600B46C @ =0x04808160
+sub_0600B408: ; 0x0600B408
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r0, _0600B46C ; =0x04808160
 	mov r1, #0x100
 	strh r1, [r0]
 	mov r6, #0
@@ -13531,18 +13535,18 @@ _0600B42C:
 	mov r0, #0x5a
 	mov r1, #2
 	bl sub_0600B2A0
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600B46C: .4byte 0x04808160
+_0600B46C: .word 0x04808160
 	arm_func_end sub_0600B408
 
 	arm_func_start sub_0600B470
-sub_0600B470: @ 0x0600B470
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
+sub_0600B470: ; 0x0600B470
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #8
-	ldr r0, _0600B5EC @ =0x0380FFF4
-	ldr r5, _0600B5F0 @ =0x0601830C
+	ldr r0, _0600B5EC ; =0x0380FFF4
+	ldr r5, _0600B5F0 ; =0x0601830C
 	ldr r0, [r0]
 	mov r8, #0
 	add r0, r0, #0x1f8
@@ -13551,12 +13555,12 @@ sub_0600B470: @ 0x0600B470
 	add r6, sp, #0
 	mov r7, #2
 _0600B49C:
-	lsl r0, r8, #1
+	mov r0, r8, lsl #1
 	mov r1, r7
 	mov r2, r6
 	add r0, r0, #0x44
 	bl sub_06017FFC
-	lsl r0, r8, #1
+	mov r0, r8, lsl #1
 	ldrh r0, [r5, r0]
 	add r8, r8, #1
 	add r0, r0, #0x4800000
@@ -13566,9 +13570,9 @@ _0600B49C:
 	cmp r8, #0x10
 	blo _0600B49C
 	ldrh r1, [r4, #2]
-	ldr r0, _0600B5F4 @ =0x04808184
-	lsr r2, r1, #7
-	lsl r1, r2, #8
+	ldr r0, _0600B5F4 ; =0x04808184
+	mov r2, r1, lsr #7
+	mov r1, r2, lsl #8
 	str r1, [sp, #4]
 	ldrh r1, [r4, #2]
 	mov r7, #0xce
@@ -13580,11 +13584,11 @@ _0600B49C:
 	ldrh r1, [r4]
 	and r0, r0, #0x7f
 	add r2, r0, #7
-	asr r0, r2, #2
+	mov r0, r2, asr #2
 	add r0, r2, r0, lsr #29
 	ldrh r8, [r4, #4]
 	cmp r1, #3
-	asr r6, r0, #3
+	mov r6, r0, asr #3
 	bne _0600B58C
 	add r0, r8, #0xce
 	add r2, r4, #8
@@ -13601,7 +13605,7 @@ _0600B54C:
 	mov r1, r5
 	mov r2, r4
 	bl sub_06017FFC
-	lsl r0, sb, #8
+	mov r0, sb, lsl #8
 	ldr r1, [sp, #4]
 	add r0, r0, #0x50000
 	orr r0, r1, r0
@@ -13630,7 +13634,7 @@ _0600B59C:
 	cmp r0, #2
 	ldreq r1, [sp, #4]
 	add r7, r7, r6
-	lsreq r0, r1, #0x12
+	moveq r0, r1, lsr #0x12
 	cmpeq r0, #9
 	biceq r0, r1, #0x7c00
 	streq r0, [r4, #0xc]
@@ -13639,25 +13643,25 @@ _0600B5D8:
 	bne _0600B59C
 _0600B5E0:
 	add sp, sp, #8
-	pop {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_0600B5EC: .4byte 0x0380FFF4
-_0600B5F0: .4byte 0x0601830C
-_0600B5F4: .4byte 0x04808184
+_0600B5EC: .word 0x0380FFF4
+_0600B5F0: .word 0x0601830C
+_0600B5F4: .word 0x04808184
 	arm_func_end sub_0600B470
 
 	arm_func_start sub_0600B5F8
-sub_0600B5F8: @ 0x0600B5F8
-	push {r4, lr}
-	ldr r0, _0600B648 @ =0x0380FFF4
+sub_0600B5F8: ; 0x0600B5F8
+	stmdb sp!, {r4, lr}
+	ldr r0, _0600B648 ; =0x0380FFF4
 	ldr r4, [r0]
 	bl sub_0600B64C
 	cmp r0, #0
 	addeq r0, r4, #0x300
-	ldrheq r1, [r0, #0x3e]
+	ldreqh r1, [r0, #0x3e]
 	orreq r1, r1, #0x40
-	strheq r1, [r0, #0x3e]
+	streqh r1, [r0, #0x3e]
 	beq _0600B640
 	add r0, r4, #0x208
 	add r0, r0, #0x400
@@ -13668,54 +13672,54 @@ sub_0600B5F8: @ 0x0600B5F8
 	add r0, r4, #0x660
 	bl sub_06001DE4
 _0600B640:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600B648: .4byte 0x0380FFF4
+_0600B648: .word 0x0380FFF4
 	arm_func_end sub_0600B5F8
 
 	arm_func_start sub_0600B64C
-sub_0600B64C: @ 0x0600B64C
-	ldr pc, _0600B650 @ =sub_037FA3B4
+sub_0600B64C: ; 0x0600B64C
+	ldr pc, _0600B650 ; =sub_037FA3B4
 	.align 2, 0
-_0600B650: .4byte sub_037FA3B4
+_0600B650: .word sub_037FA3B4
 	arm_func_end sub_0600B64C
 
 	arm_func_start sub_0600B654
-sub_0600B654: @ 0x0600B654
+sub_0600B654: ; 0x0600B654
 	mov r1, #0
 	str r1, [r0]
 	bx lr
 	arm_func_end sub_0600B654
 
 	arm_func_start sub_0600B660
-sub_0600B660: @ 0x0600B660
-	ldr ip, _0600B66C @ =sub_0600EF54
-	ldr r1, _0600B670 @ =sub_0600B654
+sub_0600B660: ; 0x0600B660
+	ldr ip, _0600B66C ; =sub_0600EF54
+	ldr r1, _0600B670 ; =sub_0600B654
 	bx ip
 	.align 2, 0
-_0600B66C: .4byte sub_0600EF54
-_0600B670: .4byte sub_0600B654
+_0600B66C: .word sub_0600EF54
+_0600B670: .word sub_0600B654
 	arm_func_end sub_0600B660
 
 	arm_func_start sub_0600B674
-sub_0600B674: @ 0x0600B674
-	push {r3, r4, r5, r6, lr}
+sub_0600B674: ; 0x0600B674
+	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0xc
-	ldr r2, _0600B6FC @ =0x0380FFF4
+	ldr r2, _0600B6FC ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r2]
 	mov r4, r1
 	add r0, r0, #0x208
 	add r0, r0, #0x400
 	bl sub_06001B0C
-	ldr r0, _0600B700 @ =0x000082EA
+	ldr r0, _0600B700 ; =0x000082EA
 	mov r1, #0
 	umull r3, r2, r5, r0
 	mla r2, r5, r1, r2
 	mov r5, r1
 	mla r2, r5, r0, r2
-	lsr r6, r3, #6
+	mov r6, r3, lsr #6
 	orr r6, r6, r2, lsl #26
 	bl sub_06001AFC
 	adds r0, r6, r0
@@ -13724,7 +13728,7 @@ sub_0600B674: @ 0x0600B674
 	str r4, [sp, #4]
 	mov r0, r5
 	str r0, [sp, #8]
-	ldr r0, _0600B6FC @ =0x0380FFF4
+	ldr r0, _0600B6FC ; =0x0380FFF4
 	str r5, [sp]
 	ldr r0, [r0]
 	mov r3, r6
@@ -13732,37 +13736,37 @@ sub_0600B674: @ 0x0600B674
 	add r0, r0, #0x400
 	bl sub_0600B704
 	add sp, sp, #0xc
-	pop {r3, r4, r5, r6, lr}
+	ldmia sp!, {r3, r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600B6FC: .4byte 0x0380FFF4
-_0600B700: .4byte 0x000082EA
+_0600B6FC: .word 0x0380FFF4
+_0600B700: .word 0x000082EA
 	arm_func_end sub_0600B674
 
 	arm_func_start sub_0600B704
-sub_0600B704: @ 0x0600B704
-	ldr pc, _0600B708 @ =sub_037FA570
+sub_0600B704: ; 0x0600B704
+	ldr pc, _0600B708 ; =sub_037FA570
 	.align 2, 0
-_0600B708: .4byte sub_037FA570
+_0600B708: .word sub_037FA570
 	arm_func_end sub_0600B704
 
 	arm_func_start sub_0600B70C
-sub_0600B70C: @ 0x0600B70C
-	ldr r0, _0600B724 @ =0x0380FFF4
-	ldr ip, _0600B728 @ =sub_037FA5E4
+sub_0600B70C: ; 0x0600B70C
+	ldr r0, _0600B724 ; =0x0380FFF4
+	ldr ip, _0600B728 ; =sub_037FA5E4
 	ldr r0, [r0]
 	add r0, r0, #0x208
 	add r0, r0, #0x400
 	bx ip
 	.align 2, 0
-_0600B724: .4byte 0x0380FFF4
-_0600B728: .4byte sub_037FA5E4
+_0600B724: .word 0x0380FFF4
+_0600B728: .word sub_037FA5E4
 	arm_func_end sub_0600B70C
 
 	arm_func_start sub_0600B72C
-sub_0600B72C: @ 0x0600B72C
-	push {r4, lr}
-	ldr r1, _0600B7A8 @ =0x0380FFF4
+sub_0600B72C: ; 0x0600B72C
+	stmdb sp!, {r4, lr}
+	ldr r1, _0600B7A8 ; =0x0380FFF4
 	mov r0, #1
 	ldr r4, [r1]
 	mov r1, #0xa
@@ -13792,16 +13796,16 @@ _0600B784:
 	mov r1, #0x15
 	bl sub_06008F04
 _0600B7A0:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600B7A8: .4byte 0x0380FFF4
+_0600B7A8: .word 0x0380FFF4
 	arm_func_end sub_0600B72C
 
 	arm_func_start sub_0600B7AC
-sub_0600B7AC: @ 0x0600B7AC
-	push {r3, r4, r5, lr}
-	ldr r2, _0600B814 @ =0x0380FFF4
+sub_0600B7AC: ; 0x0600B7AC
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r2, _0600B814 ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r2]
 	mov r4, r1
@@ -13809,46 +13813,46 @@ sub_0600B7AC: @ 0x0600B7AC
 	add r0, r0, #0x400
 	bl sub_06001B0C
 	mov r3, #0
-	ldr r0, _0600B818 @ =0x000082EA
+	ldr r0, _0600B818 ; =0x000082EA
 	mov r1, r3
 	umull r2, ip, r5, r0
 	mla ip, r5, r3, ip
 	mla ip, r1, r0, ip
-	lsr r1, r2, #6
+	mov r1, r2, lsr #6
 	str r3, [sp]
-	ldr r0, _0600B814 @ =0x0380FFF4
+	ldr r0, _0600B814 ; =0x0380FFF4
 	mov r3, r4
 	ldr r0, [r0]
-	lsr r2, ip, #6
+	mov r2, ip, lsr #6
 	add r0, r0, #0x234
 	add r0, r0, #0x400
 	orr r1, r1, ip, lsl #26
 	bl sub_06001B14
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600B814: .4byte 0x0380FFF4
-_0600B818: .4byte 0x000082EA
+_0600B814: .word 0x0380FFF4
+_0600B818: .word 0x000082EA
 	arm_func_end sub_0600B7AC
 
 	arm_func_start sub_0600B81C
-sub_0600B81C: @ 0x0600B81C
-	push {r3, r4, r5, lr}
-	ldr r2, _0600B898 @ =0x0380FFF4
+sub_0600B81C: ; 0x0600B81C
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r2, _0600B898 ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r2]
 	mov r4, r1
 	add r0, r0, #0x234
 	add r0, r0, #0x400
 	bl sub_06001B0C
-	ldr r0, _0600B89C @ =0x000082EA
+	ldr r0, _0600B89C ; =0x000082EA
 	mov r3, #0
 	umull ip, r2, r5, r0
 	mla r2, r5, r3, r2
 	mov r1, r3
 	mla r2, r1, r0, r2
-	lsr r0, ip, #6
-	lsr r1, r2, #6
+	mov r0, ip, lsr #6
+	mov r1, r2, lsr #6
 	orr r0, r0, r2, lsl #26
 	mov r2, #0x3e8
 	bl sub_0600B1CC
@@ -13856,36 +13860,36 @@ sub_0600B81C: @ 0x0600B81C
 	mov r1, r0
 	mov r0, #0
 	str r0, [sp]
-	ldr r0, _0600B898 @ =0x0380FFF4
+	ldr r0, _0600B898 ; =0x0380FFF4
 	mov r3, r4
 	ldr r0, [r0]
 	add r0, r0, #0x234
 	add r0, r0, #0x400
 	bl sub_06001B14
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600B898: .4byte 0x0380FFF4
-_0600B89C: .4byte 0x000082EA
+_0600B898: .word 0x0380FFF4
+_0600B89C: .word 0x000082EA
 	arm_func_end sub_0600B81C
 
 	arm_func_start sub_0600B8A0
-sub_0600B8A0: @ 0x0600B8A0
-	ldr r0, _0600B8B8 @ =0x0380FFF4
-	ldr ip, _0600B8BC @ =sub_037FA5E4
+sub_0600B8A0: ; 0x0600B8A0
+	ldr r0, _0600B8B8 ; =0x0380FFF4
+	ldr ip, _0600B8BC ; =sub_037FA5E4
 	ldr r0, [r0]
 	add r0, r0, #0x234
 	add r0, r0, #0x400
 	bx ip
 	.align 2, 0
-_0600B8B8: .4byte 0x0380FFF4
-_0600B8BC: .4byte sub_037FA5E4
+_0600B8B8: .word 0x0380FFF4
+_0600B8BC: .word sub_037FA5E4
 	arm_func_end sub_0600B8A0
 
 	arm_func_start sub_0600B8C0
-sub_0600B8C0: @ 0x0600B8C0
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r3, _0600B934 @ =0x04805F60
+sub_0600B8C0: ; 0x0600B8C0
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r3, _0600B934 ; =0x04805F60
 	add r2, r2, #1
 	mov r5, r1
 	bic r2, r2, #1
@@ -13902,7 +13906,7 @@ sub_0600B8C0: @ 0x0600B8C0
 	bl sub_06001B04
 	cmp r7, #0
 	beq _0600B92C
-	ldr r0, _0600B938 @ =0x0380FFF4
+	ldr r0, _0600B938 ; =0x0380FFF4
 	add r3, r5, r4
 	ldr r0, [r0]
 	mov r2, r7
@@ -13912,16 +13916,16 @@ sub_0600B8C0: @ 0x0600B8C0
 	sub r0, r3, r0
 	bl sub_06001B04
 _0600B92C:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600B934: .4byte 0x04805F60
-_0600B938: .4byte 0x0380FFF4
+_0600B934: .word 0x04805F60
+_0600B938: .word 0x0380FFF4
 	arm_func_end sub_0600B8C0
 
 	arm_func_start sub_0600B93C
-sub_0600B93C: @ 0x0600B93C
-	ldr ip, _0600B958 @ =sub_037FAFB0
+sub_0600B93C: ; 0x0600B93C
+	ldr ip, _0600B958 ; =sub_037FAFB0
 	mov r3, r0
 	add r2, r2, #1
 	mov r0, r1
@@ -13929,12 +13933,12 @@ sub_0600B93C: @ 0x0600B93C
 	bic r2, r2, #1
 	bx ip
 	.align 2, 0
-_0600B958: .4byte sub_037FAFB0
+_0600B958: .word sub_037FAFB0
 	arm_func_end sub_0600B93C
 
 	arm_func_start sub_0600B95C
-sub_0600B95C: @ 0x0600B95C
-	push {r4, r5, r6, lr}
+sub_0600B95C: ; 0x0600B95C
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r2
 	mov r0, r1
@@ -13950,13 +13954,13 @@ sub_0600B95C: @ 0x0600B95C
 	bic r2, r2, #1
 	bl sub_06001B04
 _0600B998:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	arm_func_end sub_0600B95C
 
 	arm_func_start sub_0600B9A0
-sub_0600B9A0: @ 0x0600B9A0
-	push {r4, r5, r6, lr}
+sub_0600B9A0: ; 0x0600B9A0
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r2
 	mov r0, r1
@@ -13972,40 +13976,40 @@ sub_0600B9A0: @ 0x0600B9A0
 	bic r2, r2, #1
 	bl sub_06001B04
 _0600B9DC:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	arm_func_end sub_0600B9A0
 
 	arm_func_start sub_0600B9E4
-sub_0600B9E4: @ 0x0600B9E4
+sub_0600B9E4: ; 0x0600B9E4
 	tst r0, #1
-	ldrhne r2, [r0, #-1]
+	ldrneh r2, [r0, #-1]
 	andne r2, r2, #0xff
 	orrne r1, r2, r1, lsl #8
-	strhne r1, [r0, #-1]
-	ldrheq r2, [r0]
+	strneh r1, [r0, #-1]
+	ldreqh r2, [r0]
 	andeq r1, r1, #0xff
 	andeq r2, r2, #0xff00
 	orreq r1, r2, r1
-	strheq r1, [r0]
+	streqh r1, [r0]
 	bx lr
 	arm_func_end sub_0600B9E4
 
 	arm_func_start sub_0600BA10
-sub_0600BA10: @ 0x0600BA10
+sub_0600BA10: ; 0x0600BA10
 	tst r0, #1
-	ldrhne r0, [r0, #-1]
-	asrne r0, r0, #8
-	ldrheq r0, [r0]
+	ldrneh r0, [r0, #-1]
+	movne r0, r0, asr #8
+	ldreqh r0, [r0]
 	and r0, r0, #0xff
 	and r0, r0, #0xff
 	bx lr
 	arm_func_end sub_0600BA10
 
 	arm_func_start sub_0600BA2C
-sub_0600BA2C: @ 0x0600BA2C
-	ldr r3, _0600BA58 @ =0x0380FFF4
-	ldr r2, _0600BA5C @ =0x0000FFF8
+sub_0600BA2C: ; 0x0600BA2C
+	ldr r3, _0600BA58 ; =0x0380FFF4
+	ldr r2, _0600BA5C ; =0x0000FFF8
 	ldr r3, [r3]
 	and r0, r0, r2
 	add r2, r0, #5
@@ -14016,24 +14020,24 @@ sub_0600BA2C: @ 0x0600BA2C
 	strh r0, [r2, #2]
 	bx lr
 	.align 2, 0
-_0600BA58: .4byte 0x0380FFF4
-_0600BA5C: .4byte 0x0000FFF8
+_0600BA58: .word 0x0380FFF4
+_0600BA5C: .word 0x0000FFF8
 	arm_func_end sub_0600BA2C
 
 	arm_func_start sub_0600BA60
-sub_0600BA60: @ 0x0600BA60
-	ldr r1, _0600BA74 @ =0x0380FFF4
+sub_0600BA60: ; 0x0600BA60
+	ldr r1, _0600BA74 ; =0x0380FFF4
 	ldr r1, [r1]
 	add r1, r1, #0x500
 	strh r0, [r1, #0xf4]
 	bx lr
 	.align 2, 0
-_0600BA74: .4byte 0x0380FFF4
+_0600BA74: .word 0x0380FFF4
 	arm_func_end sub_0600BA60
 
 	arm_func_start sub_0600BA78
-sub_0600BA78: @ 0x0600BA78
-	ldr r0, _0600BAA4 @ =0x0380FFF4
+sub_0600BA78: ; 0x0600BA78
+	ldr r0, _0600BAA4 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r3, r0, #0x5f0
 	add r0, r0, #0x500
@@ -14045,67 +14049,67 @@ sub_0600BA78: @ 0x0600BA78
 	ldrh r0, [r3, #4]
 	bx lr
 	.align 2, 0
-_0600BAA4: .4byte 0x0380FFF4
+_0600BAA4: .word 0x0380FFF4
 	arm_func_end sub_0600BA78
 
 	arm_func_start sub_0600BAA8
-sub_0600BAA8: @ 0x0600BAA8
-	push {r4, lr}
-	ldr r2, _0600BB20 @ =0x060182EC
-	lsl r4, r1, #0x1c
-	ldr r3, _0600BB24 @ =0x00000FFF
-	lsr r4, r4, #0x1b
-	lsl ip, r0, #0x1c
-	lsr lr, ip, #0x1b
+sub_0600BAA8: ; 0x0600BAA8
+	stmdb sp!, {r4, lr}
+	ldr r2, _0600BB20 ; =0x060182EC
+	mov r4, r1, lsl #0x1c
+	ldr r3, _0600BB24 ; =0x00000FFF
+	mov r4, r4, lsr #0x1b
+	mov ip, r0, lsl #0x1c
+	mov lr, ip, lsr #0x1b
 	and r1, r3, r1, asr #4
 	ldrh r4, [r2, r4]
-	lsl r1, r1, #0x10
-	asr r0, r0, #4
-	lsl r0, r0, #0x1c
-	lsr ip, r0, #0x1b
+	mov r1, r1, lsl #0x10
+	mov r0, r0, asr #4
+	mov r0, r0, lsl #0x1c
+	mov ip, r0, lsr #0x1b
 	ldrh r0, [r2, lr]
 	eor r1, r4, r1, lsr #16
 	eor r0, r1, r0
-	lsl r0, r0, #0x10
-	lsr r1, r0, #0x10
-	lsl r0, r1, #0x1c
-	lsr r0, r0, #0x1b
+	mov r0, r0, lsl #0x10
+	mov r1, r0, lsr #0x10
+	mov r0, r1, lsl #0x1c
+	mov r0, r0, lsr #0x1b
 	and r1, r3, r1, asr #4
 	ldrh r3, [r2, r0]
-	lsl r0, r1, #0x10
+	mov r0, r1, lsl #0x10
 	ldrh r1, [r2, ip]
 	eor r0, r3, r0, lsr #16
 	eor r0, r0, r1
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
-	pop {r4, lr}
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600BB20: .4byte 0x060182EC
-_0600BB24: .4byte 0x00000FFF
+_0600BB20: .word 0x060182EC
+_0600BB24: .word 0x00000FFF
 	arm_func_end sub_0600BAA8
 
 	arm_func_start sub_0600BB28
-sub_0600BB28: @ 0x0600BB28
-	push {r4, lr}
+sub_0600BB28: ; 0x0600BB28
+	stmdb sp!, {r4, lr}
 	ldr r4, [r0, #8]
-	ldr r1, _0600BB9C @ =0x0000B6B8
+	ldr r1, _0600BB9C ; =0x0000B6B8
 	ldrh r2, [r4, #-4]
 	sub lr, r4, #4
 	cmp r2, r1
-	ldrheq r2, [lr, #2]
-	ldreq r1, _0600BBA0 @ =0x00001D46
+	ldreqh r2, [lr, #2]
+	ldreq r1, _0600BBA0 ; =0x00001D46
 	cmpeq r2, r1
 	moveq r0, #0
 	beq _0600BB94
-	ldr r3, _0600BB9C @ =0x0000B6B8
+	ldr r3, _0600BB9C ; =0x0000B6B8
 	mov ip, #1
 	strh ip, [r4, #0xa]
-	ldr r2, _0600BBA0 @ =0x00001D46
+	ldr r2, _0600BBA0 ; =0x00001D46
 	strh r3, [lr]
 	strh r2, [lr, #2]
 	ldr r1, [r0, #8]
-	ldr r0, _0600BBA4 @ =0x0380FFF4
+	ldr r0, _0600BBA4 ; =0x0380FFF4
 	strh r3, [r1, #0xc]
 	strh r2, [r1, #0xe]
 	ldr r1, [r0]
@@ -14115,17 +14119,17 @@ sub_0600BB28: @ 0x0600BB28
 	add r2, r2, #1
 	strh r2, [r1, #0xfa]
 _0600BB94:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600BB9C: .4byte 0x0000B6B8
-_0600BBA0: .4byte 0x00001D46
-_0600BBA4: .4byte 0x0380FFF4
+_0600BB9C: .word 0x0000B6B8
+_0600BBA0: .word 0x00001D46
+_0600BBA4: .word 0x0380FFF4
 	arm_func_end sub_0600BB28
 
 	arm_func_start sub_0600BBA8
-sub_0600BBA8: @ 0x0600BBA8
-	ldr r0, _0600BBE0 @ =0x04808004
+sub_0600BBA8: ; 0x0600BBA8
+	ldr r0, _0600BBE0 ; =0x04808004
 	mov r1, #0
 	strh r1, [r0]
 	mov r2, #0x10
@@ -14142,12 +14146,12 @@ _0600BBD4:
 	bne _0600BBC0
 	bx lr
 	.align 2, 0
-_0600BBE0: .4byte 0x04808004
+_0600BBE0: .word 0x04808004
 	arm_func_end sub_0600BBA8
 
 	arm_func_start sub_0600BBE4
-sub_0600BBE4: @ 0x0600BBE4
-	push {r4, lr}
+sub_0600BBE4: ; 0x0600BBE4
+	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrh r0, [r4]
 	cmp r0, #0
@@ -14157,23 +14161,23 @@ sub_0600BBE4: @ 0x0600BBE4
 	ldr r0, [r4, #8]
 	sub r1, r1, #0x10
 	bl sub_06012EA8
-	ldr r0, _0600BC2C @ =0x0380FFF4
+	ldr r0, _0600BC2C ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r1, [r0, #0xfc]
 	add r1, r1, #1
 	strh r1, [r0, #0xfc]
 _0600BC24:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600BC2C: .4byte 0x0380FFF4
+_0600BC2C: .word 0x0380FFF4
 	arm_func_end sub_0600BBE4
 
 	arm_func_start sub_0600BC30
-sub_0600BC30: @ 0x0600BC30
-	push {r3, r4, r5, lr}
-	ldr r0, _0600BD24 @ =0x0380FFF4
+sub_0600BC30: ; 0x0600BC30
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r0, _0600BD24 ; =0x0380FFF4
 	ldr r2, [r0]
 	add r0, r2, #0x300
 	ldrh r1, [r0, #0x50]
@@ -14233,25 +14237,25 @@ _0600BCF0:
 	mov r0, r5
 	bl sub_0600BBE4
 _0600BD08:
-	ldr r1, _0600BD28 @ =0x04808004
+	ldr r1, _0600BD28 ; =0x04808004
 	ldrh r0, [r1]
 	cmp r0, #0
 	moveq r0, #1
-	strheq r0, [r1]
-	pop {r3, r4, r5, lr}
+	streqh r0, [r1]
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600BD24: .4byte 0x0380FFF4
-_0600BD28: .4byte 0x04808004
+_0600BD24: .word 0x0380FFF4
+_0600BD28: .word 0x04808004
 	arm_func_end sub_0600BC30
 
 	arm_func_start sub_0600BD2C
-sub_0600BD2C: @ 0x0600BD2C
-	push {r4, lr}
+sub_0600BD2C: ; 0x0600BD2C
+	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #0x1000000
 	bl sub_06008EF4
-	ldr r1, _0600BD6C @ =0x0380FFF4
+	ldr r1, _0600BD6C ; =0x0380FFF4
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	ldrh r2, [r1, #0xf4]
@@ -14261,16 +14265,16 @@ sub_0600BD2C: @ 0x0600BD2C
 	mov r0, #2
 	mov r1, #0x15
 	bl sub_06008F04
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600BD6C: .4byte 0x0380FFF4
+_0600BD6C: .word 0x0380FFF4
 	arm_func_end sub_0600BD2C
 
 	arm_func_start sub_0600BD70
-sub_0600BD70: @ 0x0600BD70
-	push {r3, r4, r5, lr}
-	ldr r0, _0600BDE8 @ =0x0380FFF4
+sub_0600BD70: ; 0x0600BD70
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r0, _0600BDE8 ; =0x0380FFF4
 	ldr r1, [r0]
 	add r4, r1, #0x344
 	ldrh r0, [r4, #0xb0]
@@ -14281,7 +14285,7 @@ sub_0600BD70: @ 0x0600BD70
 	bl sub_060090A8
 	movs r5, r0
 	beq _0600BDE0
-	ldr r1, _0600BDEC @ =0x00000186
+	ldr r1, _0600BDEC ; =0x00000186
 	mov r0, #1
 	strh r1, [r5, #0xc]
 	strh r0, [r5, #0xe]
@@ -14292,23 +14296,23 @@ sub_0600BD70: @ 0x0600BD70
 	strh r2, [r5, #0x10]
 	strh r1, [r4, #0xb0]
 	bl sub_06008EFC
-	ldr r0, _0600BDE8 @ =0x0380FFF4
+	ldr r0, _0600BDE8 ; =0x0380FFF4
 	mov r1, r5
 	ldr r0, [r0]
 	add r0, r0, #0x188
 	bl sub_0600F388
 _0600BDE0:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600BDE8: .4byte 0x0380FFF4
-_0600BDEC: .4byte 0x00000186
+_0600BDE8: .word 0x0380FFF4
+_0600BDEC: .word 0x00000186
 	arm_func_end sub_0600BD70
 
 	arm_func_start sub_0600BDF0
-sub_0600BDF0: @ 0x0600BDF0
-	push {r3, r4, r5, lr}
-	ldr r2, _0600BE88 @ =0x0380FFF4
+sub_0600BDF0: ; 0x0600BDF0
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r2, _0600BE88 ; =0x0380FFF4
 	ldr r0, [r2]
 	add r0, r0, #0x300
 	ldrh r1, [r0, #0x3e]
@@ -14320,7 +14324,7 @@ sub_0600BDF0: @ 0x0600BDF0
 	cmp r0, #0
 	beq _0600BE5C
 	bl sub_0600B1D4
-	ldr r2, _0600BE88 @ =0x0380FFF4
+	ldr r2, _0600BE88 ; =0x0380FFF4
 	ldr r0, [r2]
 	add r0, r0, #0x400
 	ldrh r1, [r0, #4]
@@ -14336,7 +14340,7 @@ sub_0600BDF0: @ 0x0600BDF0
 _0600BE58:
 	bl sub_0600A498
 _0600BE5C:
-	ldr r4, _0600BE8C @ =0x0000FFFF
+	ldr r4, _0600BE8C ; =0x0000FFFF
 	mov r5, #3
 _0600BE64:
 	mov r0, r5
@@ -14346,54 +14350,54 @@ _0600BE64:
 	mov r0, #3
 	mov r1, #0x17
 	bl sub_06008F04
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600BE88: .4byte 0x0380FFF4
-_0600BE8C: .4byte 0x0000FFFF
+_0600BE88: .word 0x0380FFF4
+_0600BE8C: .word 0x0000FFFF
 	arm_func_end sub_0600BDF0
 
 	arm_func_start sub_0600BE90
-sub_0600BE90: @ 0x0600BE90
-	push {r4, lr}
-	ldr r0, _0600BEDC @ =0x0380FFF4
+sub_0600BE90: ; 0x0600BE90
+	stmdb sp!, {r4, lr}
+	ldr r0, _0600BEDC ; =0x0380FFF4
 	ldr r4, [r0]
 	bl sub_0600D9F4
-	ldr r1, _0600BEDC @ =0x0380FFF4
+	ldr r1, _0600BEDC ; =0x0380FFF4
 	add r0, r4, #0x188
 	ldr r1, [r1]
 	ldr r1, [r1, #0x318]
 	sub r1, r1, #0xc
 	bl sub_06009144
-	ldr r1, _0600BEDC @ =0x0380FFF4
+	ldr r1, _0600BEDC ; =0x0380FFF4
 	add r0, r4, #0x188
 	ldr r1, [r1]
 	ldr r1, [r1, #0x3e0]
 	sub r1, r1, #0xc
 	bl sub_06009144
 	bl sub_06001AEC
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600BEDC: .4byte 0x0380FFF4
+_0600BEDC: .word 0x0380FFF4
 	arm_func_end sub_0600BE90
 
 	arm_func_start sub_0600BEE0
-sub_0600BEE0: @ 0x0600BEE0
-	push {r4, r5, r6, lr}
+sub_0600BEE0: ; 0x0600BEE0
+	stmdb sp!, {r4, r5, r6, lr}
 	mov ip, #0
-	ldr r0, _0600C074 @ =0x06018580
-	ldr r6, _0600C078 @ =0x06018510
+	ldr r0, _0600C074 ; =0x06018580
+	ldr r6, _0600C078 ; =0x06018510
 	mov r3, ip
 	mov r1, ip
 	b _0600BF54
 _0600BEFC:
-	lsl r4, r3, #1
+	mov r4, r3, lsl #1
 	ldrh r5, [r6, r4]
 	mov r2, r1
 	b _0600BF48
 _0600BF0C:
-	lsl lr, r2, #2
+	mov lr, r2, lsl #2
 	add r4, r0, r2, lsl #2
 	ldrh lr, [r0, lr]
 	ldrh r4, [r4, #2]
@@ -14416,11 +14420,11 @@ _0600BF48:
 _0600BF54:
 	cmp r3, #3
 	blo _0600BEFC
-	ldr r4, _0600C07C @ =0x00001234
-	ldr r3, _0600C074 @ =0x06018580
+	ldr r4, _0600C07C ; =0x00001234
+	ldr r3, _0600C074 ; =0x06018580
 	mov r5, #0
 _0600BF68:
-	lsl r0, r5, #2
+	mov r0, r5, lsl #2
 	add r1, r3, r5, lsl #2
 	ldrh r0, [r3, r0]
 	ldrh r2, [r1, #2]
@@ -14430,17 +14434,17 @@ _0600BF68:
 	add r5, r5, #1
 	and r2, r4, r2
 	add r0, r0, #0x8000
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	strh r2, [r0]
 	cmp r5, #0x1b
-	lsr r4, r1, #0x10
+	mov r4, r1, lsr #0x10
 	blo _0600BF68
-	ldr r5, _0600C07C @ =0x00001234
-	ldr r3, _0600C074 @ =0x06018580
+	ldr r5, _0600C07C ; =0x00001234
+	ldr r3, _0600C074 ; =0x06018580
 	mov r4, #0
 	b _0600BFFC
 _0600BFB4:
-	lsl r0, r4, #2
+	mov r0, r4, lsl #2
 	ldrh r0, [r3, r0]
 	add r1, r3, r4, lsl #2
 	add r0, r0, #0x4800000
@@ -14456,18 +14460,18 @@ _0600BFB4:
 _0600BFE8:
 	add r0, r5, #0x234
 	add r0, r0, #0x1000
-	lsl r0, r0, #0x10
-	lsr r5, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r5, r0, lsr #0x10
 	add r4, r4, #1
 _0600BFFC:
 	cmp r4, #0x1b
 	blo _0600BFB4
 	mov r3, #0
-	ldr r2, _0600C074 @ =0x06018580
+	ldr r2, _0600C074 ; =0x06018580
 	mov r1, r3
 	b _0600C044
 _0600C014:
-	lsl r0, r3, #2
+	mov r0, r3, lsl #2
 	ldrh r0, [r2, r0]
 	add r0, r0, #0x4800000
 	add r0, r0, #0x8000
@@ -14486,40 +14490,40 @@ _0600C044:
 _0600C04C:
 	cmp ip, #0
 	beq _0600C06C
-	ldr r0, _0600C080 @ =0x0380FFF4
+	ldr r0, _0600C080 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r1, [r0, #0x3e]
 	orr r1, r1, #1
 	strh r1, [r0, #0x3e]
 _0600C06C:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600C074: .4byte 0x06018580
-_0600C078: .4byte 0x06018510
-_0600C07C: .4byte 0x00001234
-_0600C080: .4byte 0x0380FFF4
+_0600C074: .word 0x06018580
+_0600C078: .word 0x06018510
+_0600C07C: .word 0x00001234
+_0600C080: .word 0x0380FFF4
 	arm_func_end sub_0600BEE0
 
 	arm_func_start sub_0600C084
-sub_0600C084: @ 0x0600C084
-	push {r3, lr}
-	ldr lr, _0600C1FC @ =0x04804000
+sub_0600C084: ; 0x0600C084
+	stmdb sp!, {r3, lr}
+	ldr lr, _0600C1FC ; =0x04804000
 	mov r0, #0
-	ldr r3, _0600C200 @ =0x0000FFFF
+	ldr r3, _0600C200 ; =0x0000FFFF
 	mov r2, r0
 _0600C098:
 	sub r1, r3, #1
 	mov ip, r3
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	add r2, r2, #2
 	cmp r2, #0x2000
-	lsr r3, r1, #0x10
+	mov r3, r1, lsr #0x10
 	strh ip, [lr], #2
 	blo _0600C098
-	ldr r2, _0600C1FC @ =0x04804000
-	ldr r3, _0600C200 @ =0x0000FFFF
+	ldr r2, _0600C1FC ; =0x04804000
+	ldr r3, _0600C200 ; =0x0000FFFF
 	mov ip, #0
 	b _0600C0F4
 _0600C0C8:
@@ -14531,26 +14535,26 @@ _0600C0C8:
 	bhi _0600C1D4
 _0600C0E0:
 	sub r1, r3, #1
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	add ip, ip, #2
 	add r2, r2, #2
-	lsr r3, r1, #0x10
+	mov r3, r1, lsr #0x10
 _0600C0F4:
 	cmp ip, #0x2000
 	blo _0600C0C8
-	ldr r2, _0600C1FC @ =0x04804000
-	ldr r3, _0600C204 @ =0x00005A5A
+	ldr r2, _0600C1FC ; =0x04804000
+	ldr r3, _0600C204 ; =0x00005A5A
 	mov ip, #0
 _0600C108:
 	mvn r1, r3
 	add ip, ip, #2
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	strh r3, [r2], #2
 	cmp ip, #0x2000
-	lsr r3, r1, #0x10
+	mov r3, r1, lsr #0x10
 	blo _0600C108
-	ldr r2, _0600C1FC @ =0x04804000
-	ldr r3, _0600C204 @ =0x00005A5A
+	ldr r2, _0600C1FC ; =0x04804000
+	ldr r3, _0600C204 ; =0x00005A5A
 	mov ip, #0
 	b _0600C160
 _0600C134:
@@ -14562,26 +14566,26 @@ _0600C134:
 	bhi _0600C1D4
 _0600C14C:
 	mvn r1, r3
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	add ip, ip, #2
 	add r2, r2, #2
-	lsr r3, r1, #0x10
+	mov r3, r1, lsr #0x10
 _0600C160:
 	cmp ip, #0x2000
 	blo _0600C134
-	ldr r2, _0600C1FC @ =0x04804000
-	ldr r3, _0600C208 @ =0x0000A5A5
+	ldr r2, _0600C1FC ; =0x04804000
+	ldr r3, _0600C208 ; =0x0000A5A5
 	mov ip, #0
 _0600C174:
 	mvn r1, r3
 	add ip, ip, #2
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	strh r3, [r2], #2
 	cmp ip, #0x2000
-	lsr r3, r1, #0x10
+	mov r3, r1, lsr #0x10
 	blo _0600C174
-	ldr r2, _0600C1FC @ =0x04804000
-	ldr r3, _0600C208 @ =0x0000A5A5
+	ldr r2, _0600C1FC ; =0x04804000
+	ldr r3, _0600C208 ; =0x0000A5A5
 	mov ip, #0
 	b _0600C1CC
 _0600C1A0:
@@ -14593,37 +14597,37 @@ _0600C1A0:
 	bhi _0600C1D4
 _0600C1B8:
 	mvn r1, r3
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	add ip, ip, #2
 	add r2, r2, #2
-	lsr r3, r1, #0x10
+	mov r3, r1, lsr #0x10
 _0600C1CC:
 	cmp ip, #0x2000
 	blo _0600C1A0
 _0600C1D4:
 	cmp r0, #0
 	beq _0600C1F4
-	ldr r0, _0600C20C @ =0x0380FFF4
+	ldr r0, _0600C20C ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r1, [r0, #0x3e]
 	orr r1, r1, #2
 	strh r1, [r0, #0x3e]
 _0600C1F4:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600C1FC: .4byte 0x04804000
-_0600C200: .4byte 0x0000FFFF
-_0600C204: .4byte 0x00005A5A
-_0600C208: .4byte 0x0000A5A5
-_0600C20C: .4byte 0x0380FFF4
+_0600C1FC: .word 0x04804000
+_0600C200: .word 0x0000FFFF
+_0600C204: .word 0x00005A5A
+_0600C208: .word 0x0000A5A5
+_0600C20C: .word 0x0380FFF4
 	arm_func_end sub_0600C084
 
 	arm_func_start sub_0600C210
-sub_0600C210: @ 0x0600C210
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r0, _0600C4E4 @ =0x0380FFF4
+sub_0600C210: ; 0x0600C210
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldr r0, _0600C4E4 ; =0x0380FFF4
 	mov r7, #0
 	ldr r0, [r0]
 	mov r6, #0
@@ -14631,9 +14635,9 @@ sub_0600C210: @ 0x0600C210
 	ldrh r0, [r0, #0xf8]
 	mov r5, #0xff
 	cmp r0, #5
-	ldreq sl, _0600C4E8 @ =0x06018516
+	ldreq sl, _0600C4E8 ; =0x06018516
 	mvn r4, #0
-	ldrne sl, _0600C4EC @ =0x06018548
+	ldrne sl, _0600C4EC ; =0x06018548
 	b _0600C260
 _0600C244:
 	mov r0, r6
@@ -14650,15 +14654,15 @@ _0600C260:
 	mov r4, r5
 	b _0600C2B0
 _0600C274:
-	lsl r0, r4, #1
+	mov r0, r4, lsl #1
 	ldrh r0, [sl, r0]
 	cmp r5, r0
 	addeq r4, r4, #1
 	beq _0600C2AC
 	mov r0, r5
 	bl sub_0600B274
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	cmp r0, #0xff
 	beq _0600C2AC
 	cmp r7, #0x20
@@ -14682,15 +14686,15 @@ _0600C2C0:
 	mov r5, r4
 	b _0600C31C
 _0600C2E4:
-	lsl r0, r5, #1
+	mov r0, r5, lsl #1
 	ldrh r0, [sl, r0]
 	cmp r4, r0
 	addeq r5, r5, #1
 	beq _0600C318
 	mov r0, r4
 	bl sub_0600B274
-	lsl r0, r0, #0x10
-	lsrs r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	movs r0, r0, lsr #0x10
 	beq _0600C318
 	cmp r7, #0x20
 	add r7, r7, #1
@@ -14708,24 +14712,24 @@ _0600C32C:
 	bl sub_0600B2A0
 	mvn r0, r4
 	add r5, r5, #1
-	lsl r0, r0, #0x10
+	mov r0, r0, lsl #0x10
 	cmp r5, #0x69
-	lsr r4, r0, #0x10
+	mov r4, r0, lsr #0x10
 	blo _0600C32C
 	mov r4, #0
 	mov r6, r4
 	mov r5, #0x55
 	b _0600C3A4
 _0600C360:
-	lsl r0, r6, #1
+	mov r0, r6, lsl #1
 	ldrh r0, [sl, r0]
 	cmp r4, r0
 	addeq r6, r6, #1
 	beq _0600C398
 	mov r0, r4
 	bl sub_0600B274
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	cmp r0, r5
 	beq _0600C398
 	cmp r7, #0x20
@@ -14746,24 +14750,24 @@ _0600C3B4:
 	bl sub_0600B2A0
 	sub r0, r5, #1
 	add r4, r4, #1
-	lsl r0, r0, #0x10
+	mov r0, r0, lsl #0x10
 	cmp r4, #0x69
-	lsr r5, r0, #0x10
+	mov r5, r0, lsr #0x10
 	blo _0600C3B4
 	mov r4, #0
 	mov r6, r4
 	mov r5, #0xff
 	b _0600C430
 _0600C3E8:
-	lsl r0, r6, #1
+	mov r0, r6, lsl #1
 	ldrh r0, [sl, r0]
 	cmp r4, r0
 	addeq r6, r6, #1
 	beq _0600C420
 	mov r0, r4
 	bl sub_0600B274
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	cmp r0, r5
 	beq _0600C420
 	cmp r7, #0x20
@@ -14771,9 +14775,9 @@ _0600C3E8:
 	bhi _0600C4BC
 _0600C420:
 	sub r0, r5, #1
-	lsl r0, r0, #0x10
+	mov r0, r0, lsl #0x10
 	add r4, r4, #1
-	lsr r5, r0, #0x10
+	mov r5, r0, lsr #0x10
 _0600C430:
 	cmp r4, #0x69
 	blo _0600C3E8
@@ -14783,7 +14787,7 @@ _0600C430:
 	mov fp, r8
 	b _0600C4B4
 _0600C44C:
-	lsl r0, sb, #1
+	mov r0, sb, lsl #1
 	ldrh r0, [sl, r0]
 	cmp r8, r0
 	addeq sb, sb, #1
@@ -14797,15 +14801,15 @@ _0600C46C:
 	bl sub_0600B2A0
 	mov r0, r8
 	bl sub_0600B274
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	cmp r0, r6
 	beq _0600C49C
 	cmp r7, #0x20
 	add r7, r7, #1
 	bhi _0600C4BC
 _0600C49C:
-	lsl r0, r6, #1
+	mov r0, r6, lsl #1
 	and r6, r0, #0xff
 	add r5, r5, #1
 _0600C4A8:
@@ -14819,25 +14823,25 @@ _0600C4B4:
 _0600C4BC:
 	cmp r7, #0
 	beq _0600C4DC
-	ldr r0, _0600C4E4 @ =0x0380FFF4
+	ldr r0, _0600C4E4 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r1, [r0, #0x3e]
 	orr r1, r1, #8
 	strh r1, [r0, #0x3e]
 _0600C4DC:
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_0600C4E4: .4byte 0x0380FFF4
-_0600C4E8: .4byte 0x06018516
-_0600C4EC: .4byte 0x06018548
+_0600C4E4: .word 0x0380FFF4
+_0600C4E8: .word 0x06018516
+_0600C4EC: .word 0x06018548
 	arm_func_end sub_0600C210
 
 	arm_func_start sub_0600C4F0
-sub_0600C4F0: @ 0x0600C4F0
-	push {r4, r5, r6, lr}
-	ldr r5, _0600C5BC @ =0x04808010
+sub_0600C4F0: ; 0x0600C4F0
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r5, _0600C5BC ; =0x04808010
 	mov r4, #1
 _0600C4FC:
 	ldrh r1, [r5]
@@ -14894,22 +14898,22 @@ _0600C590:
 	bl sub_0600D354
 	b _0600C4FC
 _0600C5A4:
-	ldr r1, _0600C5C0 @ =0x0380FFF8
+	ldr r1, _0600C5C0 ; =0x0380FFF8
 	ldr r0, [r1]
 	orr r0, r0, #0x1000000
 	str r0, [r1]
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600C5BC: .4byte 0x04808010
-_0600C5C0: .4byte 0x0380FFF8
+_0600C5BC: .word 0x04808010
+_0600C5C0: .word 0x0380FFF8
 	arm_func_end sub_0600C4F0
 
 	arm_func_start sub_0600C5C4
-sub_0600C5C4: @ 0x0600C5C4
-	push {r4, lr}
-	ldr r1, _0600C648 @ =0x0380FFF4
-	ldr r0, _0600C64C @ =0x04808010
+sub_0600C5C4: ; 0x0600C5C4
+	stmdb sp!, {r4, lr}
+	ldr r1, _0600C648 ; =0x0380FFF4
+	ldr r0, _0600C64C ; =0x04808010
 	ldr r2, [r1]
 	mov r1, #0x8000
 	strh r1, [r0]
@@ -14939,18 +14943,18 @@ sub_0600C5C4: @ 0x0600C5C4
 _0600C638:
 	mov r0, #1
 	strh r0, [r4, #0x10]
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600C648: .4byte 0x0380FFF4
-_0600C64C: .4byte 0x04808010
+_0600C648: .word 0x0380FFF4
+_0600C64C: .word 0x04808010
 	arm_func_end sub_0600C5C4
 
 	arm_func_start sub_0600C650
-sub_0600C650: @ 0x0600C650
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r6, _0600C8D4 @ =0x0380FFF4
-	ldr r2, _0600C8D8 @ =0x04808010
+sub_0600C650: ; 0x0600C650
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldr r6, _0600C8D4 ; =0x0380FFF4
+	ldr r2, _0600C8D8 ; =0x04808010
 	ldr r3, [r6]
 	mov r0, #0x4000
 	strh r0, [r2]
@@ -14975,22 +14979,22 @@ _0600C698:
 	add r0, r8, #8
 	and r1, r6, #0xff
 	bl sub_0600B9E4
-	lsr r1, r6, #8
+	mov r1, r6, lsr #8
 	add r0, r8, #9
 	and r1, r1, #0xff
 	bl sub_0600B9E4
 	ldrh r0, [r4, #0xe]
 	cmp r0, #1
 	bne _0600C6EC
-	ldr r1, _0600C8DC @ =0x04808134
+	ldr r1, _0600C8DC ; =0x04808134
 	ldrh r2, [r5, #0x20]
 	ldrh r0, [r1]
 	add r0, r2, r0
 	add r0, r0, #1
 	strh r0, [r1]
 _0600C6EC:
-	ldr r0, _0600C8D4 @ =0x0380FFF4
-	ldr r1, _0600C8E0 @ =0x048080B6
+	ldr r0, _0600C8D4 ; =0x0380FFF4
+	ldr r1, _0600C8E0 ; =0x048080B6
 	ldr r0, [r0]
 	add r0, r0, #0x500
 	ldrh r3, [r0, #0x2e]
@@ -15018,9 +15022,9 @@ _0600C73C:
 _0600C74C:
 	ldrh r0, [r4, #0x12]
 	cmp r0, #0
-	ldreq r1, _0600C8E4 @ =0x0000FFFF
+	ldreq r1, _0600C8E4 ; =0x0000FFFF
 	addeq r0, r2, #0x124
-	strheq r1, [r0]
+	streqh r1, [r0]
 	beq _0600C77C
 	add r1, r2, #0x124
 	ldrh r2, [r5, #0x20]
@@ -15050,27 +15054,27 @@ _0600C790:
 	cmp r0, #1
 	beq _0600C7D8
 	cmp r0, #0
-	ldrheq r0, [r4, #0x74]
+	ldreqh r0, [r4, #0x74]
 	cmpeq r0, #1
 	bne _0600C7DC
 _0600C7D8:
 	mov r1, #1
 _0600C7DC:
 	cmp r1, #0
-	ldr r1, _0600C8E8 @ =0x04808038
-	ldrhne r0, [r1]
+	ldr r1, _0600C8E8 ; =0x04808038
+	ldrneh r0, [r1]
 	orrne r0, r0, #1
-	strhne r0, [r1]
-	ldrheq r0, [r1]
+	strneh r0, [r1]
+	ldreqh r0, [r1]
 	biceq r0, r0, #1
-	strheq r0, [r1]
-	ldr r1, _0600C8EC @ =0x04808118
+	streqh r0, [r1]
+	ldr r1, _0600C8EC ; =0x04808118
 	mov r8, #0
 	ldrh r0, [r1]
 	mov r6, #2
 	cmp r0, #0xa
 	movhi r0, #0
-	strhhi r0, [r1, #-0xd0]
+	strhih r0, [r1, #-0xd0]
 	ldrh r0, [r4, #0x72]
 	mov r5, r8
 	sub r0, r0, #1
@@ -15078,15 +15082,15 @@ _0600C7DC:
 	ldrh r0, [r4, #0x72]
 	mov sl, #0x14
 	cmp r0, #0
-	ldrheq r0, [r4, #0x70]
-	strheq r0, [r4, #0x72]
+	ldreqh r0, [r4, #0x70]
+	streqh r0, [r4, #0x72]
 	ldrh r1, [r4, #0x76]
 	sub r0, r1, #1
 	strh r0, [r4, #0x76]
 	cmp r1, #0
-	ldrheq r0, [r4, #0x74]
+	ldreqh r0, [r4, #0x74]
 	subeq r0, r0, #1
-	strheq r0, [r4, #0x76]
+	streqh r0, [r4, #0x76]
 	mov r4, #0xe
 _0600C85C:
 	mul r1, r8, sl
@@ -15115,27 +15119,27 @@ _0600C8B4:
 	add r8, r8, #1
 	cmp r8, #2
 	blo _0600C85C
-	ldr r0, _0600C8F0 @ =0x048080AE
+	ldr r0, _0600C8F0 ; =0x048080AE
 	mov r1, #0xd
 	strh r1, [r0]
 _0600C8CC:
-	pop {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_0600C8D4: .4byte 0x0380FFF4
-_0600C8D8: .4byte 0x04808010
-_0600C8DC: .4byte 0x04808134
-_0600C8E0: .4byte 0x048080B6
-_0600C8E4: .4byte 0x0000FFFF
-_0600C8E8: .4byte 0x04808038
-_0600C8EC: .4byte 0x04808118
-_0600C8F0: .4byte 0x048080AE
+_0600C8D4: .word 0x0380FFF4
+_0600C8D8: .word 0x04808010
+_0600C8DC: .word 0x04808134
+_0600C8E0: .word 0x048080B6
+_0600C8E4: .word 0x0000FFFF
+_0600C8E8: .word 0x04808038
+_0600C8EC: .word 0x04808118
+_0600C8F0: .word 0x048080AE
 	arm_func_end sub_0600C650
 
 	arm_func_start sub_0600C8F4
-sub_0600C8F4: @ 0x0600C8F4
-	ldr r0, _0600C958 @ =0x0380FFF4
-	ldr r1, _0600C95C @ =0x04808010
+sub_0600C8F4: ; 0x0600C8F4
+	ldr r0, _0600C958 ; =0x0380FFF4
+	ldr r1, _0600C95C ; =0x04808010
 	ldr r2, [r0]
 	mov r0, #0x2000
 	strh r0, [r1]
@@ -15145,11 +15149,11 @@ sub_0600C8F4: @ 0x0600C8F4
 	ldrh r0, [r2, #0x1a]
 	cmp r0, #1
 	moveq r0, #2
-	strheq r0, [r2, #0x1a]
+	streqh r0, [r2, #0x1a]
 	bxeq lr
 	cmp r0, #2
 	moveq r0, #0
-	strheq r0, [r2, #0x1a]
+	streqh r0, [r2, #0x1a]
 	bxeq lr
 	ldrh r0, [r2, #0xc]
 	cmp r0, #2
@@ -15157,68 +15161,68 @@ sub_0600C8F4: @ 0x0600C8F4
 	ldrh r0, [r2, #8]
 	cmp r0, #0x40
 	movne r0, #0
-	strhne r0, [r1, #0x38]
+	strneh r0, [r1, #0x38]
 	bx lr
 	.align 2, 0
-_0600C958: .4byte 0x0380FFF4
-_0600C95C: .4byte 0x04808010
+_0600C958: .word 0x0380FFF4
+_0600C95C: .word 0x04808010
 	arm_func_end sub_0600C8F4
 
 	arm_func_start sub_0600C960
-sub_0600C960: @ 0x0600C960
-	ldr r0, _0600C970 @ =0x04808010
+sub_0600C960: ; 0x0600C960
+	ldr r0, _0600C970 ; =0x04808010
 	mov r1, #0x800
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
-_0600C970: .4byte 0x04808010
+_0600C970: .word 0x04808010
 	arm_func_end sub_0600C960
 
 	arm_func_start sub_0600C974
-sub_0600C974: @ 0x0600C974
-	push {r3, lr}
+sub_0600C974: ; 0x0600C974
+	stmdb sp!, {r3, lr}
 	bl sub_0600A9FC
-	ldr r1, _0600C99C @ =0x048081AC
-	ldr r2, _0600C9A0 @ =0x0000FFFF
+	ldr r1, _0600C99C ; =0x048081AC
+	ldr r2, _0600C9A0 ; =0x0000FFFF
 	sub r0, r1, #0x19c
 	strh r2, [r1]
 	mov r1, #0x30
 	strh r1, [r0]
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600C99C: .4byte 0x048081AC
-_0600C9A0: .4byte 0x0000FFFF
+_0600C99C: .word 0x048081AC
+_0600C9A0: .word 0x0000FFFF
 	arm_func_end sub_0600C974
 
 	arm_func_start sub_0600C9A4
-sub_0600C9A4: @ 0x0600C9A4
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r1, _0600CAA8 @ =0x04808010
+sub_0600C9A4: ; 0x0600C9A4
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r1, _0600CAA8 ; =0x04808010
 	mov r2, #8
-	ldr r0, _0600CAAC @ =0x0380FFF4
+	ldr r0, _0600CAAC ; =0x0380FFF4
 	strh r2, [r1]
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x3a]
-	lsl r0, r0, #0x1b
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x1b
+	movs r0, r0, lsr #0x1f
 	beq _0600C9EC
 	add r0, r1, #0x18c
 	ldrh r0, [r0]
 	tst r0, #1
 	addeq r1, r1, #0x280
-	ldrheq r0, [r1]
+	ldreqh r0, [r1]
 	eoreq r0, r0, #1
-	strheq r0, [r1]
+	streqh r0, [r1]
 _0600C9EC:
-	ldr r0, _0600CAAC @ =0x0380FFF4
+	ldr r0, _0600CAAC ; =0x0380FFF4
 	ldr r1, [r0]
 	add r0, r1, #0x600
 	ldrh r0, [r0, #0x90]
 	tst r0, #8
 	beq _0600CAA0
-	ldr r4, _0600CAB0 @ =0x04808032
+	ldr r4, _0600CAB0 ; =0x04808032
 	add r0, r1, #0x2c
 	mov r2, #0
 	add r1, r1, #0x344
@@ -15246,7 +15250,7 @@ _0600CA24:
 	bic r7, r6, #1
 	ldrh r6, [r7]
 	cmp r6, #0
-	ldrheq r6, [r7, #2]
+	ldreqh r6, [r7, #2]
 	cmpeq r6, #0
 	bne _0600CA94
 	strh r5, [r0, #4]
@@ -15260,19 +15264,19 @@ _0600CA94:
 	cmp r2, #3
 	blo _0600CA24
 _0600CAA0:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600CAA8: .4byte 0x04808010
-_0600CAAC: .4byte 0x0380FFF4
-_0600CAB0: .4byte 0x04808032
+_0600CAA8: .word 0x04808010
+_0600CAAC: .word 0x0380FFF4
+_0600CAB0: .word 0x04808032
 	arm_func_end sub_0600C9A4
 
 	arm_func_start sub_0600CAB4
-sub_0600CAB4: @ 0x0600CAB4
-	push {r3, lr}
-	ldr r1, _0600CC14 @ =0x0380FFF4
-	ldr ip, _0600CC18 @ =0x04808010
+sub_0600CAB4: ; 0x0600CAB4
+	stmdb sp!, {r3, lr}
+	ldr r1, _0600CC14 ; =0x0380FFF4
+	ldr ip, _0600CC18 ; =0x04808010
 	ldr r2, [r1]
 	mov r0, #4
 	strh r0, [ip]
@@ -15291,22 +15295,22 @@ sub_0600CAB4: @ 0x0600CAB4
 	beq _0600CBA4
 	ldrh ip, [ip, #0xa0]
 	tst ip, #1
-	ldrhne r2, [r3]
+	ldrneh r2, [r3]
 	cmpne r2, #0
 	bne _0600CB60
 	tst ip, #4
-	ldrhne r2, [r3, #0x14]
+	ldrneh r2, [r3, #0x14]
 	cmpne r2, #0
 	bne _0600CB60
 	tst ip, #8
-	ldrhne r2, [r3, #0x28]
+	ldrneh r2, [r3, #0x28]
 	cmpne r2, #0
 	bne _0600CB60
-	ldr r2, _0600CC1C @ =0x0480819C
+	ldr r2, _0600CC1C ; =0x0480819C
 	ldrh r2, [r2]
 	tst r2, #1
 	bne _0600CB60
-	ldr r3, _0600CC20 @ =0x04808032
+	ldr r3, _0600CC20 ; =0x04808032
 	mov ip, #0
 	strh ip, [r3]
 	mov r2, #0x8000
@@ -15319,12 +15323,12 @@ _0600CB60:
 	strh r2, [r0, #2]
 	cmp r3, #0xc
 	bls _0600CBA4
-	ldr r3, _0600CC20 @ =0x04808032
+	ldr r3, _0600CC20 ; =0x04808032
 	mov r2, #0
 	strh r2, [r0, #2]
 	strh r2, [r3]
 	mov r2, #0x8000
-	ldr r0, _0600CC14 @ =0x0380FFF4
+	ldr r0, _0600CC14 ; =0x0380FFF4
 	strh r2, [r3]
 	ldr r0, [r0]
 	add r0, r0, #0x300
@@ -15332,7 +15336,7 @@ _0600CB60:
 	add r2, r2, #1
 	strh r2, [r0, #0xfe]
 _0600CBA4:
-	ldr r0, _0600CC14 @ =0x0380FFF4
+	ldr r0, _0600CC14 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrh r0, [r0, #0x90]
@@ -15340,7 +15344,7 @@ _0600CBA4:
 	beq _0600CC0C
 	tst r1, #0x60
 	beq _0600CC0C
-	ldr r2, _0600CC24 @ =0x04808054
+	ldr r2, _0600CC24 ; =0x04808054
 	ldrh r1, [r2]
 	ldrh r0, [r2, #-2]
 	sub r0, r0, #0x4000
@@ -15353,31 +15357,31 @@ _0600CBA4:
 	cmp r1, r0, asr #1
 	bge _0600CC08
 _0600CBF4:
-	ldr r2, _0600CC28 @ =0x0480805A
-	ldr r0, _0600CC2C @ =0x00008001
+	ldr r2, _0600CC28 ; =0x0480805A
+	ldr r0, _0600CC2C ; =0x00008001
 	ldrh r1, [r2]
 	strh r1, [r2, #-4]
 	strh r0, [r2, #-0x2a]
 _0600CC08:
 	bl sub_0600BC30
 _0600CC0C:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600CC14: .4byte 0x0380FFF4
-_0600CC18: .4byte 0x04808010
-_0600CC1C: .4byte 0x0480819C
-_0600CC20: .4byte 0x04808032
-_0600CC24: .4byte 0x04808054
-_0600CC28: .4byte 0x0480805A
-_0600CC2C: .4byte 0x00008001
+_0600CC14: .word 0x0380FFF4
+_0600CC18: .word 0x04808010
+_0600CC1C: .word 0x0480819C
+_0600CC20: .word 0x04808032
+_0600CC24: .word 0x04808054
+_0600CC28: .word 0x0480805A
+_0600CC2C: .word 0x00008001
 	arm_func_end sub_0600CAB4
 
 	arm_func_start sub_0600CC30
-sub_0600CC30: @ 0x0600CC30
-	push {r3, r4, r5, lr}
-	ldr r3, _0600CE78 @ =0x0380FFF4
-	ldr r0, _0600CE7C @ =0x04808010
+sub_0600CC30: ; 0x0600CC30
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r3, _0600CE78 ; =0x0380FFF4
+	ldr r0, _0600CE7C ; =0x04808010
 	ldr r2, [r3]
 	mov r1, #2
 	strh r1, [r0]
@@ -15406,7 +15410,7 @@ _0600CC90:
 	beq _0600CCA0
 	bl sub_0600D7C0
 _0600CCA0:
-	ldr r1, _0600CE78 @ =0x0380FFF4
+	ldr r1, _0600CE78 ; =0x0380FFF4
 	mov r0, #0
 	ldr r3, [r1]
 	mov r1, #8
@@ -15420,21 +15424,21 @@ _0600CCC4:
 	ldrh r3, [r4, #0x9e]
 	ldrh r2, [r2, #4]
 	and r2, r2, #0xff
-	lsl r2, r2, #0x10
+	mov r2, r2, lsl #0x10
 	cmp r3, r2, lsr #16
-	strhls r1, [r0, #0x9c]
-	ldrhls r0, [r4, #0xa8]
+	strlsh r1, [r0, #0x9c]
+	ldrlsh r0, [r4, #0xa8]
 	addls r0, r0, #1
-	strhls r0, [r4, #0xa8]
+	strlsh r0, [r4, #0xa8]
 	ldr r1, [r4, #0x90]
 	ldrh r0, [r1, #0x18]
 	add r0, r0, #1
 	strh r0, [r1, #0x18]
 	b _0600CDFC
 _0600CD00:
-	ldr r3, _0600CE80 @ =0x0000FFFF
-	ldr r2, _0600CE84 @ =0x04805F70
-	ldr r1, _0600CE88 @ =0x0480824E
+	ldr r3, _0600CE80 ; =0x0000FFFF
+	ldr r2, _0600CE84 ; =0x04805F70
+	ldr r1, _0600CE88 ; =0x0480824E
 	strh r3, [r2]
 	strh r3, [r2, #2]
 	add r0, r0, #0x23c
@@ -15450,10 +15454,10 @@ _0600CD00:
 	ldrh r0, [r1, #4]
 	cmp r0, #0
 	movne r0, #0
-	strhne r0, [r1, #4]
-	ldrhne r1, [r4, #0x98]
+	strneh r0, [r1, #4]
+	ldrneh r1, [r4, #0x98]
 	ldrne r0, [r4, #0x44]
-	strhne r1, [r0, #2]
+	strneh r1, [r0, #2]
 _0600CD58:
 	ldr r0, [r4, #0x44]
 	ldr r2, [r4, #0x90]
@@ -15462,21 +15466,21 @@ _0600CD58:
 	cmp r1, #1
 	add r2, r2, #0x1a
 	bls _0600CDA8
-	ldr r3, _0600CE78 @ =0x0380FFF4
+	ldr r3, _0600CE78 ; =0x0380FFF4
 	ldr r3, [r3]
 	add r3, r3, #0x300
 	ldrh r3, [r3, #0x3a]
-	lsl r3, r3, #0x1b
-	lsrs r3, r3, #0x1f
+	mov r3, r3, lsl #0x1b
+	movs r3, r3, lsr #0x1f
 	beq _0600CDA8
-	ldr ip, _0600CE8C @ =0x0480819C
+	ldr ip, _0600CE8C ; =0x0480819C
 	ldrh r3, [ip]
 	tst r3, #1
-	ldrheq r3, [ip, #0xf4]
+	ldreqh r3, [ip, #0xf4]
 	eoreq r3, r3, #1
-	strheq r3, [ip, #0xf4]
+	streqh r3, [ip, #0xf4]
 _0600CDA8:
-	ldr r3, _0600CE78 @ =0x0380FFF4
+	ldr r3, _0600CE78 ; =0x0380FFF4
 	ldr r3, [r3]
 	add r3, r3, #0x600
 	ldrh r3, [r3, #0x90]
@@ -15484,17 +15488,17 @@ _0600CDA8:
 	beq _0600CDFC
 	b _0600CDF4
 _0600CDC4:
-	lsl r1, r1, #0xf
-	lsr r1, r1, #0x10
+	mov r1, r1, lsl #0xf
+	mov r1, r1, lsr #0x10
 	tst r1, #1
-	ldrhne r3, [r2, #6]
-	lsl r0, r0, #0xf
+	ldrneh r3, [r2, #6]
+	mov r0, r0, lsl #0xf
 	addne r3, r3, #1
-	lsr r0, r0, #0x10
-	strhne r3, [r2, #6]
+	mov r0, r0, lsr #0x10
+	strneh r3, [r2, #6]
 	tst r0, #1
 	ldrne r3, [r4, #0x90]
-	ldrhne r3, [r3, #0x16]
+	ldrneh r3, [r3, #0x16]
 	addne r2, r2, r3
 _0600CDF4:
 	cmp r1, #1
@@ -15502,7 +15506,7 @@ _0600CDF4:
 _0600CDFC:
 	cmp r5, #0x800
 	beq _0600CE64
-	ldr r2, _0600CE90 @ =0x048080B0
+	ldr r2, _0600CE90 ; =0x048080B0
 	ldrh r0, [r2]
 	tst r0, #2
 	bne _0600CE64
@@ -15515,9 +15519,9 @@ _0600CDFC:
 	strh r1, [r2, #-0x68]
 	ldrh r1, [r2, #-0xa0]
 	tst r1, #0x1000
-	ldrhne r0, [r4, #0xac]
+	ldrneh r0, [r4, #0xac]
 	addne r0, r0, #1
-	strhne r0, [r4, #0xac]
+	strneh r0, [r4, #0xac]
 	bne _0600CE4C
 	bl sub_0600D354
 _0600CE4C:
@@ -15525,7 +15529,7 @@ _0600CE4C:
 	add r0, r0, #1
 	strh r0, [r4, #0xaa]
 _0600CE58:
-	ldr r0, _0600CE94 @ =0x048080AE
+	ldr r0, _0600CE94 ; =0x048080AE
 	mov r1, #2
 	strh r1, [r0]
 _0600CE64:
@@ -15533,25 +15537,25 @@ _0600CE64:
 	mov r1, #0xe
 	bl sub_06008F04
 _0600CE70:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600CE78: .4byte 0x0380FFF4
-_0600CE7C: .4byte 0x04808010
-_0600CE80: .4byte 0x0000FFFF
-_0600CE84: .4byte 0x04805F70
-_0600CE88: .4byte 0x0480824E
-_0600CE8C: .4byte 0x0480819C
-_0600CE90: .4byte 0x048080B0
-_0600CE94: .4byte 0x048080AE
+_0600CE78: .word 0x0380FFF4
+_0600CE7C: .word 0x04808010
+_0600CE80: .word 0x0000FFFF
+_0600CE84: .word 0x04805F70
+_0600CE88: .word 0x0480824E
+_0600CE8C: .word 0x0480819C
+_0600CE90: .word 0x048080B0
+_0600CE94: .word 0x048080AE
 	arm_func_end sub_0600CC30
 
 	arm_func_start sub_0600CE98
-sub_0600CE98: @ 0x0600CE98
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_0600CE98: ; 0x0600CE98
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x38
-	ldr r0, _0600D328 @ =0x0380FFF4
-	ldr r2, _0600D32C @ =0x04808010
+	ldr r0, _0600D328 ; =0x0380FFF4
+	ldr r2, _0600D32C ; =0x04808010
 	ldr r3, [r0]
 	mov r1, #1
 	add r0, r3, #0x600
@@ -15562,29 +15566,29 @@ sub_0600CE98: @ 0x0600CE98
 	add r0, r3, #0xdc
 	cmp r1, #0
 	add r7, r0, #0x400
-	ldrheq r0, [r2, #0x44]
+	ldreqh r0, [r2, #0x44]
 	and r4, r4, #1
-	strheq r0, [r2, #0x4a]
-	ldr r0, _0600D330 @ =0x04808098
+	streqh r0, [r2, #0x4a]
+	ldr r0, _0600D330 ; =0x04808098
 	sub fp, r0, #0x70
 	add r0, r0, #0x1b4
 	str r0, [sp, #0x24]
-	ldr r0, _0600D334 @ =0x0480824E
+	ldr r0, _0600D334 ; =0x0480824E
 	sub r0, r0, #0x154
 	str r0, [sp, #0x14]
-	ldr r0, _0600D330 @ =0x04808098
+	ldr r0, _0600D330 ; =0x04808098
 	sub r0, r0, #0x44
 	str r0, [sp, #0x10]
-	ldr r0, _0600D338 @ =0x000008EF
+	ldr r0, _0600D338 ; =0x000008EF
 	sub r0, r0, #0x29
 	str r0, [sp, #0x28]
-	ldr r0, _0600D338 @ =0x000008EF
+	ldr r0, _0600D338 ; =0x000008EF
 	add r0, r0, #0x3d
 	str r0, [sp, #0x2c]
-	ldr r0, _0600D33C @ =0x04805F7E
+	ldr r0, _0600D33C ; =0x04805F7E
 	sub r0, r0, #0x24
 	str r0, [sp, #0x30]
-	ldr r0, _0600D338 @ =0x000008EF
+	ldr r0, _0600D338 ; =0x000008EF
 	add r0, r0, #0x710
 	str r0, [sp, #0x34]
 _0600CF34:
@@ -15593,30 +15597,30 @@ _0600CF34:
 	ldrh sl, [r0]
 	cmp sb, sl
 	beq _0600D2A8
-	ldr r0, _0600D330 @ =0x04808098
+	ldr r0, _0600D330 ; =0x04808098
 	ldr r1, [sp, #0x14]
 	ldrh r0, [r0, #0x60]
 	ldrh r3, [r1]
-	ldr r1, _0600D330 @ =0x04808098
+	ldr r1, _0600D330 ; =0x04808098
 	ldrh r2, [r1, #0x60]
 	ldr r1, [sp, #0x14]
 	cmp r0, r2
 	ldrh r1, [r1]
-	lslhi r0, r1, #0xc
+	movhi r0, r1, lsl #0xc
 	orrhi r0, r0, r2, lsr #4
 	strhi r0, [sp, #4]
-	lslls r1, r3, #0xc
+	movls r1, r3, lsl #0xc
 	orrls r0, r1, r0, lsr #4
 	strls r0, [sp, #4]
 	ldr r0, [sp, #0x28]
 	cmp sb, r0
 	blo _0600CFA0
-	ldr r0, _0600D338 @ =0x000008EF
+	ldr r0, _0600D338 ; =0x000008EF
 	cmp sb, r0
 	bhi _0600CFA0
 	bl sub_0600A9FC
 _0600CFA0:
-	lsl r0, sb, #1
+	mov r0, sb, lsl #1
 	str r0, [sp, #0x18]
 	add r0, r0, #0x4000
 	add r8, r0, #0x4800000
@@ -15636,7 +15640,7 @@ _0600CFA0:
 	ldrh r1, [r5]
 	add r0, r0, #0x4800000
 	add r0, r0, #0x4000
-	lsl r1, r1, #1
+	mov r1, r1, lsl #1
 	ldrh r2, [r0]
 	and r1, r1, #0x400
 	orr r1, r2, r1
@@ -15648,15 +15652,15 @@ _0600CFA0:
 	ldrh r1, [r0]
 	add r0, r1, sb, lsl #1
 	add r0, r0, #0xf
-	lsr r0, r0, #2
-	lsl sb, r0, #1
+	mov r0, r0, lsr #2
+	mov sb, r0, lsl #1
 	cmp sb, #0xfb0
-	ldrhhs r0, [r6, #0x9a]
+	ldrhsh r0, [r6, #0x9a]
 	subhs sb, sb, r0, lsr #1
 	ldr r0, [sp, #0x2c]
 	cmp r1, r0
 	bls _0600D05C
-	ldr r0, _0600D340 @ =0x0000FFFF
+	ldr r0, _0600D340 ; =0x0000FFFF
 	mov sb, sl
 	strh r0, [r8]
 	ldrh r0, [r6, #0xb4]
@@ -15668,18 +15672,18 @@ _0600D05C:
 	cmpne sb, sl
 	beq _0600D0E4
 	ldr r3, [sp, #0x30]
-	lsl r2, sb, #1
+	mov r2, sb, lsl #1
 	add r0, r2, #0x4000
 	add r0, r0, #0x4800000
 	cmp r0, r3
-	ldrhlo r0, [r0, #6]
+	ldrloh r0, [r0, #6]
 	add r2, r2, #0x4800000
 	add r2, r2, #0x4000
-	ldrhhs r3, [r6, #0x9a]
+	ldrhsh r3, [r6, #0x9a]
 	andlo r0, r0, #0xff
 	subhs r0, r0, r3
 	ldrh r2, [r2]
-	ldrhhs r0, [r0, #6]
+	ldrhsh r0, [r0, #6]
 	tst r2, #0x7c00
 	bne _0600D0BC
 	cmp r0, #0xa
@@ -15690,12 +15694,12 @@ _0600D05C:
 	bls _0600D0E4
 _0600D0BC:
 	ldrh r0, [r6, #0xb4]
-	ldr r1, _0600D340 @ =0x0000FFFF
+	ldr r1, _0600D340 ; =0x0000FFFF
 	add r0, r0, #1
 	strh r0, [r6, #0xb4]
-	lsl r0, sl, #0x10
+	mov r0, sl, lsl #0x10
 	strh r1, [r8]
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	strh r0, [r7, #4]
 	strh r0, [r5]
 	b _0600D2A8
@@ -15717,28 +15721,28 @@ _0600D0E4:
 	ldr r0, [sp, #8]
 	tst r0, #0x800
 	beq _0600D148
-	ldr r0, _0600D328 @ =0x0380FFF4
+	ldr r0, _0600D328 ; =0x0380FFF4
 	ldr r1, [r0]
 	ldr r0, [r1, #0x57c]
 	add r0, r0, #1
 	str r0, [r1, #0x57c]
-	ldr r0, _0600D340 @ =0x0000FFFF
+	ldr r0, _0600D340 ; =0x0000FFFF
 	strh r0, [r8]
 	b _0600D21C
 _0600D148:
-	ldr r0, _0600D328 @ =0x0380FFF4
+	ldr r0, _0600D328 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r1, r0, #0x300
 	ldrh r2, [r1, #0x3a]
-	lsl r2, r2, #0x18
-	lsrs r2, r2, #0x1f
-	ldrheq r1, [r1, #0x4c]
+	mov r2, r2, lsl #0x18
+	movs r2, r2, lsr #0x1f
+	ldreqh r1, [r1, #0x4c]
 	cmpeq r1, #0x40
 	bne _0600D21C
 	ldrh r1, [fp]
 	cmp r1, #0
 	beq _0600D1F4
-	ldr r1, _0600D330 @ =0x04808098
+	ldr r1, _0600D330 ; =0x04808098
 	ldrh r1, [r1]
 	tst r1, #0x8000
 	beq _0600D1F4
@@ -15747,36 +15751,36 @@ _0600D148:
 	ldr r0, [sp, #0xc]
 	mov r3, #0
 	ldrh r1, [r0]
-	ldr r0, _0600D344 @ =0x000082EA
+	ldr r0, _0600D344 ; =0x000082EA
 	mov r2, #0x3e8
 	umull ip, r8, r1, r0
 	mov r0, r3
 	mla r8, r1, r0, r8
-	lsr r0, ip, #6
-	ldr r1, _0600D344 @ =0x000082EA
+	mov r0, ip, lsr #6
+	ldr r1, _0600D344 ; =0x000082EA
 	mov ip, r3
 	mla r8, ip, r1, r8
-	lsr r1, r8, #6
+	mov r1, r8, lsr #6
 	orr r0, r0, r8, lsl #26
 	bl sub_0600B1CC
 	mov r2, #0
 	str r2, [sp]
 	mov r2, r1
 	mov r1, r0
-	ldr r0, _0600D328 @ =0x0380FFF4
-	ldr r3, _0600D348 @ =sub_0600A860
+	ldr r0, _0600D328 ; =0x0380FFF4
+	ldr r3, _0600D348 ; =sub_0600A860
 	ldr r0, [r0]
 	add r0, r0, #0x660
 	bl sub_06001B14
 	b _0600D21C
 _0600D1F4:
-	ldr r1, _0600D340 @ =0x0000FFFF
-	ldr r0, _0600D33C @ =0x04805F7E
+	ldr r1, _0600D340 ; =0x0000FFFF
+	ldr r0, _0600D33C ; =0x04805F7E
 	mov sl, r1
 	strh r1, [r0]
 	ldr r0, [sp, #0x24]
 	strh r1, [r0]
-	ldr r0, _0600D334 @ =0x0480824E
+	ldr r0, _0600D334 ; =0x0480824E
 	strh r1, [r0]
 	mov r0, r1
 	strh r0, [r8]
@@ -15785,7 +15789,7 @@ _0600D21C:
 	bl sub_0600D918
 	tst r0, #1
 	beq _0600D294
-	ldr r0, _0600D328 @ =0x0380FFF4
+	ldr r0, _0600D328 ; =0x0380FFF4
 	ldr r1, [r0]
 	ldr r0, [r1, #0x5a8]
 	add r0, r0, #1
@@ -15794,41 +15798,41 @@ _0600D21C:
 _0600D244:
 	cmp r0, #0xd
 	bne _0600D294
-	ldr r0, _0600D328 @ =0x0380FFF4
+	ldr r0, _0600D328 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r1, [r0, #0x3a]
-	lsl r1, r1, #0x18
-	lsrs r1, r1, #0x1f
-	ldrheq r0, [r0, #0x4c]
+	mov r1, r1, lsl #0x18
+	movs r1, r1, lsr #0x1f
+	ldreqh r0, [r0, #0x4c]
 	cmpeq r0, #0x40
 	bne _0600D294
 	ldrh r0, [fp]
 	cmp r0, #0
 	beq _0600D28C
-	ldr r0, _0600D330 @ =0x04808098
+	ldr r0, _0600D330 ; =0x04808098
 	ldrh r0, [r0]
 	tst r0, #0x8000
 	bne _0600D294
 _0600D28C:
-	ldr r0, _0600D340 @ =0x0000FFFF
+	ldr r0, _0600D340 ; =0x0000FFFF
 	strh r0, [r8]
 _0600D294:
-	lsl r0, sb, #0x10
-	lsr r0, r0, #0x10
+	mov r0, sb, lsl #0x10
+	mov r0, r0, lsr #0x10
 	strh r0, [r7, #4]
 	strh r0, [r5]
 	b _0600CF34
 _0600D2A8:
 	cmp r4, #0
 	beq _0600D2FC
-	ldr r0, _0600D34C @ =0x04808054
+	ldr r0, _0600D34C ; =0x04808054
 	ldrh r4, [r0]
 	bl sub_0600D918
-	lsl r0, r0, #0x10
-	lsrs r1, r0, #0x10
+	mov r0, r0, lsl #0x10
+	movs r1, r0, lsr #0x10
 	beq _0600D2FC
-	ldr r0, _0600D34C @ =0x04808054
+	ldr r0, _0600D34C ; =0x04808054
 	ldrh r0, [r0]
 	cmp r4, r0
 	bne _0600D2FC
@@ -15843,7 +15847,7 @@ _0600D2EC:
 	mov r0, #0x100
 	bl sub_0600BD2C
 _0600D2FC:
-	ldr r0, _0600D350 @ =0x0480805A
+	ldr r0, _0600D350 ; =0x0480805A
 	ldrh r1, [r0]
 	ldrh r0, [r0, #-6]
 	cmp r1, r0
@@ -15853,27 +15857,27 @@ _0600D2FC:
 	bl sub_06008F04
 _0600D31C:
 	add sp, sp, #0x38
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_0600D328: .4byte 0x0380FFF4
-_0600D32C: .4byte 0x04808010
-_0600D330: .4byte 0x04808098
-_0600D334: .4byte 0x0480824E
-_0600D338: .4byte 0x000008EF
-_0600D33C: .4byte 0x04805F7E
-_0600D340: .4byte 0x0000FFFF
-_0600D344: .4byte 0x000082EA
-_0600D348: .4byte sub_0600A860
-_0600D34C: .4byte 0x04808054
-_0600D350: .4byte 0x0480805A
+_0600D328: .word 0x0380FFF4
+_0600D32C: .word 0x04808010
+_0600D330: .word 0x04808098
+_0600D334: .word 0x0480824E
+_0600D338: .word 0x000008EF
+_0600D33C: .word 0x04805F7E
+_0600D340: .word 0x0000FFFF
+_0600D344: .word 0x000082EA
+_0600D348: .word sub_0600A860
+_0600D34C: .word 0x04808054
+_0600D350: .word 0x0480805A
 	arm_func_end sub_0600CE98
 
 	arm_func_start sub_0600D354
-sub_0600D354: @ 0x0600D354
-	push {r3, lr}
-	ldr ip, _0600D438 @ =0x0380FFF4
-	ldr r2, _0600D43C @ =0x04808010
+sub_0600D354: ; 0x0600D354
+	stmdb sp!, {r3, lr}
+	ldr ip, _0600D438 ; =0x0380FFF4
+	ldr r2, _0600D43C ; =0x04808010
 	ldr r1, [ip]
 	mov r3, #0x1000
 	add r1, r1, #0x2c
@@ -15902,9 +15906,9 @@ sub_0600D354: @ 0x0600D354
 	b _0600D3D8
 _0600D3C8:
 	and r1, r0, #1
-	lsl r0, r0, #0xf
+	mov r0, r0, lsl #0xf
 	add r2, r2, r1
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 _0600D3D8:
 	cmp r0, #0
 	bne _0600D3C8
@@ -15914,11 +15918,11 @@ _0600D3D8:
 	mul r0, r2, r0
 	add r0, r0, #0xc0
 	add r0, r0, r1, lsl #2
-	lsl r0, r0, #0x10
-	ldr r1, _0600D440 @ =sub_0600D888
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	ldr r1, _0600D440 ; =sub_0600D888
+	mov r0, r0, lsr #0x10
 	bl sub_0600B81C
-	ldr r0, _0600D438 @ =0x0380FFF4
+	ldr r0, _0600D438 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x400
 	ldrh r1, [r0]
@@ -15930,19 +15934,19 @@ _0600D424:
 	mov r1, #0x10
 	bl sub_06008F04
 _0600D430:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600D438: .4byte 0x0380FFF4
-_0600D43C: .4byte 0x04808010
-_0600D440: .4byte sub_0600D888
+_0600D438: .word 0x0380FFF4
+_0600D43C: .word 0x04808010
+_0600D440: .word sub_0600D888
 	arm_func_end sub_0600D354
 
 	arm_func_start sub_0600D444
-sub_0600D444: @ 0x0600D444
-	push {r3, lr}
-	ldr r3, _0600D540 @ =0x0380FFF4
-	ldr r0, _0600D544 @ =0x04808010
+sub_0600D444: ; 0x0600D444
+	stmdb sp!, {r3, lr}
+	ldr r3, _0600D540 ; =0x0380FFF4
+	ldr r0, _0600D544 ; =0x04808010
 	ldr r2, [r3]
 	mov r1, #0x80
 	strh r1, [r0]
@@ -15962,7 +15966,7 @@ sub_0600D444: @ 0x0600D444
 	cmp r3, #5
 	bhi _0600D4D8
 	ldr r3, [r2, #0x458]
-	ldr r1, _0600D548 @ =0x00000FFF
+	ldr r1, _0600D548 ; =0x00000FFF
 	and r3, r1, r3, lsr #1
 	cmp ip, r3
 	blo _0600D4D8
@@ -15978,7 +15982,7 @@ sub_0600D444: @ 0x0600D444
 	bic r0, r0, #0x80
 	strh r0, [r1]
 _0600D4D8:
-	ldr r1, _0600D54C @ =0x04808000
+	ldr r1, _0600D54C ; =0x04808000
 	ldrh r0, [r1]
 	cmp r0, #0x1440
 	beq _0600D538
@@ -16005,20 +16009,20 @@ _0600D52C:
 	cmp r2, r0
 	beq _0600D514
 _0600D538:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600D540: .4byte 0x0380FFF4
-_0600D544: .4byte 0x04808010
-_0600D548: .4byte 0x00000FFF
-_0600D54C: .4byte 0x04808000
+_0600D540: .word 0x0380FFF4
+_0600D544: .word 0x04808010
+_0600D548: .word 0x00000FFF
+_0600D54C: .word 0x04808000
 	arm_func_end sub_0600D444
 
 	arm_func_start sub_0600D550
-sub_0600D550: @ 0x0600D550
-	push {r4, r5, r6, r7, r8, lr}
-	ldr r2, _0600D7A4 @ =0x0380FFF4
-	ldr r0, _0600D7A8 @ =0x04808010
+sub_0600D550: ; 0x0600D550
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	ldr r2, _0600D7A4 ; =0x0380FFF4
+	ldr r0, _0600D7A8 ; =0x04808010
 	ldr r3, [r2]
 	mov r1, #0x40
 	strh r1, [r0]
@@ -16031,10 +16035,10 @@ sub_0600D550: @ 0x0600D550
 	add r5, r1, #0x400
 	beq _0600D79C
 	ldrh r2, [r5, #0xa4]
-	ldr r1, _0600D7AC @ =0x0000FFFF
+	ldr r1, _0600D7AC ; =0x0000FFFF
 	cmp r2, r1
 	addeq r2, r0, #0x18c
-	ldrheq r2, [r2]
+	ldreqh r2, [r2]
 	andeq r2, r2, #3
 	cmpeq r2, #3
 	bne _0600D79C
@@ -16046,7 +16050,7 @@ sub_0600D550: @ 0x0600D550
 	cmp r3, r1
 	blt _0600D79C
 	ldrh r7, [r0, #0x44]
-	lsl r0, r7, #1
+	mov r0, r7, lsl #1
 	add r0, r0, #0x4000
 	add r0, r0, #0x4800000
 	add r0, r0, #8
@@ -16054,32 +16058,32 @@ sub_0600D550: @ 0x0600D550
 	add r0, r0, #4
 	bl sub_0600D8F0
 	ldrh r2, [r0]
-	ldr r1, _0600D7B0 @ =0x0000E7FF
+	ldr r1, _0600D7B0 ; =0x0000E7FF
 	and r1, r2, r1
 	cmp r1, #0x228
 	bne _0600D79C
 	add r0, r0, #2
 	bl sub_0600D8F0
-	ldr r2, _0600D7B4 @ =0x048080F8
+	ldr r2, _0600D7B4 ; =0x048080F8
 	ldrh r1, [r2]
 	sub r6, r1, #0x10000
 	add r1, r2, #0x170
 _0600D610:
 	ldrh r3, [r1]
 	sub r3, r3, r7
-	lsl r3, r3, #0x10
-	lsr r8, r3, #0x10
+	mov r3, r3, lsl #0x10
+	mov r8, r3, lsr #0x10
 	tst r8, #0x8000
-	ldrhne r3, [r4, #0x9a]
+	ldrneh r3, [r4, #0x9a]
 	addne r3, r8, r3, lsr #1
-	lslne r3, r3, #0x10
-	lsrne r8, r3, #0x10
+	movne r3, r3, lsl #0x10
+	movne r8, r3, lsr #0x10
 	cmp r8, #0xe
 	bhi _0600D658
 	ldrh r3, [r2]
 	sub r3, r3, r6
-	lsl r3, r3, #0x10
-	lsr r3, r3, #0x10
+	mov r3, r3, lsl #0x10
+	mov r3, r3, lsr #0x10
 	cmp r3, #0x40
 	bhi _0600D79C
 	b _0600D610
@@ -16100,29 +16104,29 @@ _0600D680:
 	blo _0600D664
 	add r0, r0, #0xa
 	bl sub_0600D8F0
-	ldr r3, _0600D7B4 @ =0x048080F8
+	ldr r3, _0600D7B4 ; =0x048080F8
 	add r1, r3, #0x170
 _0600D698:
 	ldrh r2, [r1]
 	sub r2, r2, r7
-	lsl r2, r2, #0x10
-	lsr r8, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r8, r2, lsr #0x10
 	tst r8, #0x8000
-	ldrhne r2, [r4, #0x9a]
+	ldrneh r2, [r4, #0x9a]
 	addne r2, r8, r2, lsr #1
-	lslne r2, r2, #0x10
-	lsrne r8, r2, #0x10
+	movne r2, r2, lsl #0x10
+	movne r8, r2, lsr #0x10
 	cmp r8, #0x14
 	bhi _0600D6E0
 	ldrh r2, [r3]
 	sub r2, r2, r6
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	cmp r2, #0x70
 	bhi _0600D79C
 	b _0600D698
 _0600D6E0:
-	ldr r2, _0600D7B8 @ =0x04808028
+	ldr r2, _0600D7B8 ; =0x04808028
 	ldrh r3, [r0]
 	ldrh r0, [r2]
 	mov r1, #1
@@ -16141,21 +16145,21 @@ _0600D718:
 	and r0, r0, #3
 	cmp r0, #3
 	beq _0600D718
-	ldr r0, _0600D7BC @ =0x04808244
+	ldr r0, _0600D7BC ; =0x04808244
 	mov r2, #8
 	ldrh r1, [r0]
 	sub r3, r0, #0x1c
 	orr r1, r1, #0x40
 	strh r1, [r0]
 	ldrh r4, [r0]
-	ldr r1, _0600D7A4 @ =0x0380FFF4
+	ldr r1, _0600D7A4 ; =0x0380FFF4
 	bic r4, r4, #0x40
 	strh r4, [r0]
 	strh r2, [r3]
 	mov r2, #0
 	strh r2, [r3]
 	ldr r1, [r1]
-	ldr r2, _0600D7AC @ =0x0000FFFF
+	ldr r2, _0600D7AC ; =0x0000FFFF
 	add r1, r1, #0x2c
 	add r6, r1, #0x400
 	ldrh r5, [r6, #0xa4]
@@ -16171,22 +16175,22 @@ _0600D718:
 	strh r3, [r4]
 	strh r2, [r6, #0xa4]
 _0600D79C:
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_0600D7A4: .4byte 0x0380FFF4
-_0600D7A8: .4byte 0x04808010
-_0600D7AC: .4byte 0x0000FFFF
-_0600D7B0: .4byte 0x0000E7FF
-_0600D7B4: .4byte 0x048080F8
-_0600D7B8: .4byte 0x04808028
-_0600D7BC: .4byte 0x04808244
+_0600D7A4: .word 0x0380FFF4
+_0600D7A8: .word 0x04808010
+_0600D7AC: .word 0x0000FFFF
+_0600D7B0: .word 0x0000E7FF
+_0600D7B4: .word 0x048080F8
+_0600D7B8: .word 0x04808028
+_0600D7BC: .word 0x04808244
 	arm_func_end sub_0600D550
 
 	arm_func_start sub_0600D7C0
-sub_0600D7C0: @ 0x0600D7C0
-	push {r3, r4, r5, lr}
-	ldr r1, _0600D884 @ =0x0380FFF4
+sub_0600D7C0: ; 0x0600D7C0
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _0600D884 ; =0x0380FFF4
 	mov r0, #2
 	ldr r1, [r1]
 	mov r5, #0
@@ -16205,7 +16209,7 @@ sub_0600D7C0: @ 0x0600D7C0
 	cmp r0, #0
 	movne r5, #1
 	moveq r0, r5
-	strheq r0, [r4, #0x28]
+	streqh r0, [r4, #0x28]
 _0600D814:
 	ldrh r0, [r4, #0x14]
 	cmp r0, #0
@@ -16214,7 +16218,7 @@ _0600D814:
 	ldrh r0, [r0]
 	cmp r0, #0
 	moveq r0, #0
-	strheq r0, [r4, #0x14]
+	streqh r0, [r4, #0x14]
 	movne r5, #1
 _0600D838:
 	ldrh r0, [r4]
@@ -16224,7 +16228,7 @@ _0600D838:
 	ldrh r0, [r0]
 	cmp r0, #0
 	moveq r0, #0
-	strheq r0, [r4]
+	streqh r0, [r4]
 	movne r5, #1
 _0600D85C:
 	cmp r5, #0
@@ -16236,18 +16240,18 @@ _0600D870:
 	mov r0, #0
 	mov r1, #0x14
 	bl sub_06008F04
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600D884: .4byte 0x0380FFF4
+_0600D884: .word 0x0380FFF4
 	arm_func_end sub_0600D7C0
 
 	arm_func_start sub_0600D888
-sub_0600D888: @ 0x0600D888
-	push {r4, lr}
+sub_0600D888: ; 0x0600D888
+	stmdb sp!, {r4, lr}
 	mov r0, #0x1000000
 	bl sub_06008EF4
-	ldr r2, _0600D8E8 @ =0x04808210
+	ldr r2, _0600D8E8 ; =0x04808210
 	mov r1, #0x1000
 	ldrh r3, [r2]
 	mov r4, r0
@@ -16263,38 +16267,38 @@ _0600D8C0:
 	cmp r1, #0
 	bne _0600D8B0
 _0600D8C8:
-	ldr r1, _0600D8EC @ =0x04808244
+	ldr r1, _0600D8EC ; =0x04808244
 	mov r0, #0
 	strh r0, [r1]
 	bl sub_0600D354
 	mov r0, r4
 	bl sub_06008EFC
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600D8E8: .4byte 0x04808210
-_0600D8EC: .4byte 0x04808244
+_0600D8E8: .word 0x04808210
+_0600D8EC: .word 0x04808244
 	arm_func_end sub_0600D888
 
 	arm_func_start sub_0600D8F0
-sub_0600D8F0: @ 0x0600D8F0
-	ldr r1, _0600D910 @ =0x04805F60
+sub_0600D8F0: ; 0x0600D8F0
+	ldr r1, _0600D910 ; =0x04805F60
 	cmp r0, r1
-	ldrhs r1, _0600D914 @ =0x0380FFF4
+	ldrhs r1, _0600D914 ; =0x0380FFF4
 	ldrhs r1, [r1]
 	addhs r1, r1, #0x300
-	ldrhhs r1, [r1, #0xde]
+	ldrhsh r1, [r1, #0xde]
 	subhs r0, r0, r1
 	bx lr
 	.align 2, 0
-_0600D910: .4byte 0x04805F60
-_0600D914: .4byte 0x0380FFF4
+_0600D910: .word 0x04805F60
+_0600D914: .word 0x0380FFF4
 	arm_func_end sub_0600D8F0
 
 	arm_func_start sub_0600D918
-sub_0600D918: @ 0x0600D918
-	push {r3, r4, r5, lr}
-	ldr r0, _0600D94C @ =0x0380FFF4
+sub_0600D918: ; 0x0600D918
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r0, _0600D94C ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x2c
 	add r5, r0, #0x400
@@ -16304,29 +16308,29 @@ sub_0600D918: @ 0x0600D918
 	add r0, r5, #0x64
 	bl sub_0600D950
 	orr r0, r4, r0
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600D94C: .4byte 0x0380FFF4
+_0600D94C: .word 0x0380FFF4
 	arm_func_end sub_0600D918
 
 	arm_func_start sub_0600D950
-sub_0600D950: @ 0x0600D950
-	push {r4, lr}
+sub_0600D950: ; 0x0600D950
+	stmdb sp!, {r4, lr}
 	ldrh r1, [r0]
 	mov r4, #0
 	cmp r1, #2
 	bne _0600D990
-	ldr r2, _0600D9C0 @ =0x04808094
+	ldr r2, _0600D9C0 ; =0x04808094
 	ldr r3, [r0, #8]
-	ldr r1, _0600D9C4 @ =0x00003FFF
+	ldr r1, _0600D9C4 ; =0x00003FFF
 	ldrh r2, [r2]
 	and r1, r3, r1
-	lsr r1, r1, #1
+	mov r1, r1, lsr #1
 	orr r1, r1, #0x8000
 	cmp r1, r2
 	movne r1, #1
-	strhne r1, [r0]
+	strneh r1, [r0]
 	orrne r4, r4, #1
 _0600D990:
 	ldrh r1, [r0]
@@ -16340,50 +16344,50 @@ _0600D990:
 	orr r4, r4, #2
 _0600D9B4:
 	mov r0, r4
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600D9C0: .4byte 0x04808094
-_0600D9C4: .4byte 0x00003FFF
+_0600D9C0: .word 0x04808094
+_0600D9C4: .word 0x00003FFF
 	arm_func_end sub_0600D950
 
 	arm_func_start sub_0600D9C8
-sub_0600D9C8: @ 0x0600D9C8
-	push {r3, lr}
-	ldr r1, _0600D9E8 @ =sub_0600C4F0
+sub_0600D9C8: ; 0x0600D9C8
+	stmdb sp!, {r3, lr}
+	ldr r1, _0600D9E8 ; =sub_0600C4F0
 	mov r0, #0x1000000
 	bl sub_0600D9EC
 	mov r0, #0x1000000
 	bl sub_06008EFC
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600D9E8: .4byte sub_0600C4F0
+_0600D9E8: .word sub_0600C4F0
 	arm_func_end sub_0600D9C8
 
 	arm_func_start sub_0600D9EC
-sub_0600D9EC: @ 0x0600D9EC
-	ldr pc, _0600D9F0 @ =sub_037F87E0
+sub_0600D9EC: ; 0x0600D9EC
+	ldr pc, _0600D9F0 ; =sub_037F87E0
 	.align 2, 0
-_0600D9F0: .4byte sub_037F87E0
+_0600D9F0: .word sub_037F87E0
 	arm_func_end sub_0600D9EC
 
 	arm_func_start sub_0600D9F4
-sub_0600D9F4: @ 0x0600D9F4
-	push {r3, lr}
+sub_0600D9F4: ; 0x0600D9F4
+	stmdb sp!, {r3, lr}
 	mov r0, #0x1000000
 	bl sub_06008EF4
 	mov r0, #0x1000000
 	mov r1, #0
 	bl sub_0600D9EC
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end sub_0600D9F4
 
 	arm_func_start sub_0600DA14
-sub_0600DA14: @ 0x0600DA14
-	push {r3, lr}
-	ldr r0, _0600DA5C @ =0x0380FFF4
+sub_0600DA14: ; 0x0600DA14
+	stmdb sp!, {r3, lr}
+	ldr r0, _0600DA5C ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0xe8]
@@ -16391,36 +16395,36 @@ sub_0600DA14: @ 0x0600DA14
 	beq _0600DA34
 	bl sub_0601430C
 _0600DA34:
-	ldr r0, _0600DA5C @ =0x0380FFF4
+	ldr r0, _0600DA5C ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x3a]
-	lsl r0, r0, #0x19
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x19
+	movs r0, r0, lsr #0x1f
 	beq _0600DA54
 	bl sub_06010CC0
 _0600DA54:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600DA5C: .4byte 0x0380FFF4
+_0600DA5C: .word 0x0380FFF4
 	arm_func_end sub_0600DA14
 
 	arm_func_start sub_0600DA60
-sub_0600DA60: @ 0x0600DA60
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r7, _0600DC2C @ =0x0380FFF4
+sub_0600DA60: ; 0x0600DA60
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldr r7, _0600DC2C ; =0x0380FFF4
 	mov sl, #2
 	ldr r1, [r7]
 	mov fp, #0
 	add r0, r1, #0x2c
 	add r8, r0, #0x400
-	ldr r0, _0600DC30 @ =0x04808032
+	ldr r0, _0600DC30 ; =0x04808032
 	add r6, r1, #0x344
 	add r4, r0, #0x6e
 _0600DA88:
 	mov r0, #0x14
-	lsl r5, sl, #2
+	mov r5, sl, lsl #2
 	mla sb, sl, r0, r8
 	add r0, r5, #0x4800000
 	add r0, r0, #0x8000
@@ -16456,10 +16460,10 @@ _0600DA88:
 	bic r2, r1, #1
 	ldrh r1, [r2]
 	cmp r1, #0
-	ldrheq r1, [r2, #2]
+	ldreqh r1, [r2, #2]
 	cmpeq r1, #0
 	bne _0600DBAC
-	ldr r0, _0600DC30 @ =0x04808032
+	ldr r0, _0600DC30 ; =0x04808032
 	mov r1, #0x8000
 	strh fp, [r0]
 	strh r1, [r0]
@@ -16487,7 +16491,7 @@ _0600DA88:
 	arm_func_end sub_0600DA60
 
 	arm_func_start sub_0600DB8C
-sub_0600DB8C: @ 0x0600DB8C
+sub_0600DB8C: ; 0x0600DB8C
 	b _0600DC1C
 _0600DB90:
 	ldr r1, [sb, #0xc]
@@ -16522,7 +16526,7 @@ _0600DBD8:
 	arm_func_end sub_0600DB8C
 
 	arm_func_start sub_0600DBF8
-sub_0600DBF8: @ 0x0600DBF8
+sub_0600DBF8: ; 0x0600DBF8
 	b _0600DC1C
 _0600DBFC:
 	ldrh r0, [sb, #4]
@@ -16536,32 +16540,32 @@ _0600DBFC:
 _0600DC1C:
 	subs sl, sl, #1
 	bpl _0600DA88
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_0600DC2C: .4byte 0x0380FFF4
-_0600DC30: .4byte 0x04808032
+_0600DC2C: .word 0x0380FFF4
+_0600DC30: .word 0x04808032
 	arm_func_end sub_0600DBF8
 
 	arm_func_start sub_0600DC34
-sub_0600DC34: @ 0x0600DC34
-	push {r4, r5, r6, r7, r8, lr}
-	ldr r0, _0600DF84 @ =0x0380FFF4
+sub_0600DC34: ; 0x0600DC34
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	ldr r0, _0600DF84 ; =0x0380FFF4
 	ldr r4, [r0]
 	add r0, r4, #0xdc
 	add r5, r0, #0x400
 _0600DC48:
-	ldr r1, _0600DF88 @ =0x0480805A
+	ldr r1, _0600DF88 ; =0x0480805A
 	ldrh r0, [r5, #4]
 	ldrh r6, [r1]
 	cmp r6, r0
 	beq _0600DF7C
-	ldr r0, _0600DF8C @ =0x000008C6
+	ldr r0, _0600DF8C ; =0x000008C6
 	cmp r6, r0
 	blo _0600DC6C
 	bl sub_0600A9FC
 _0600DC6C:
-	lsl r6, r6, #1
+	mov r6, r6, lsl #1
 	add r0, r6, #0x4000
 	add r7, r0, #0x4800000
 	add r0, r7, #2
@@ -16569,18 +16573,18 @@ _0600DC6C:
 	add r1, r6, #0x4800000
 	add r1, r1, #0x4000
 	ldrh r2, [r1]
-	ldr r1, _0600DF90 @ =0x0000FFFF
+	ldr r1, _0600DF90 ; =0x0000FFFF
 	ldrh r6, [r0]
 	cmp r2, r1
-	ldreq r0, _0600DF88 @ =0x0480805A
-	strheq r6, [r0]
+	ldreq r0, _0600DF88 ; =0x0480805A
+	streqh r6, [r0]
 	beq _0600DC48
 	add r0, r7, #8
 	bl sub_0600D8F0
 	ldrh r1, [r0]
 	mov r0, r7
 	bl sub_0600E13C
-	ldr r1, _0600DF88 @ =0x0480805A
+	ldr r1, _0600DF88 ; =0x0480805A
 	movs r8, r0
 	strh r6, [r1]
 	bne _0600DCF0
@@ -16596,7 +16600,7 @@ _0600DCE4:
 	bl sub_0600BD2C
 	b _0600DC48
 _0600DCF0:
-	ldr r0, _0600DF84 @ =0x0380FFF4
+	ldr r0, _0600DF84 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrh r0, [r0, #0x90]
@@ -16605,20 +16609,20 @@ _0600DCF0:
 	ldrh r0, [r8, #0x14]
 	tst r0, #0x4000
 	movne r0, #0
-	strhne r0, [r5, #2]
+	strneh r0, [r5, #2]
 _0600DD18:
 	ldrh r0, [r8, #8]
 	mov r6, #1
 	tst r0, #0x200
 	beq _0600DD70
 	ldrh r0, [r8, #0x14]
-	lsl r0, r0, #0x15
-	lsr r0, r0, #0x1f
+	mov r0, r0, lsl #0x15
+	mov r0, r0, lsr #0x1f
 	cmp r0, #1
 	beq _0600DD4C
 	ldrh r0, [r8, #0x2a]
-	lsl r0, r0, #0x1c
-	lsrs r0, r0, #0x1c
+	mov r0, r0, lsl #0x1c
+	movs r0, r0, lsr #0x1c
 	beq _0600DF1C
 _0600DD4C:
 	add r0, r4, #0x188
@@ -16635,23 +16639,23 @@ _0600DD70:
 	cmp r0, #0xf
 	addls pc, pc, r0, lsl #2
 	b _0600DF1C
-_0600DD80: @ jump table
-	b _0600DE0C @ case 0
-	b _0600DDF4 @ case 1
-	b _0600DF1C @ case 2
-	b _0600DF1C @ case 3
-	b _0600DF1C @ case 4
-	b _0600DE3C @ case 5
-	b _0600DF1C @ case 6
-	b _0600DF1C @ case 7
-	b _0600DDC0 @ case 8
-	b _0600DF1C @ case 9
-	b _0600DF1C @ case 10
-	b _0600DF1C @ case 11
-	b _0600DE94 @ case 12
-	b _0600DEE8 @ case 13
-	b _0600DE74 @ case 14
-	b _0600DE74 @ case 15
+_0600DD80: ; jump table
+	b _0600DE0C ; case 0
+	b _0600DDF4 ; case 1
+	b _0600DF1C ; case 2
+	b _0600DF1C ; case 3
+	b _0600DF1C ; case 4
+	b _0600DE3C ; case 5
+	b _0600DF1C ; case 6
+	b _0600DF1C ; case 7
+	b _0600DDC0 ; case 8
+	b _0600DF1C ; case 9
+	b _0600DF1C ; case 10
+	b _0600DF1C ; case 11
+	b _0600DE94 ; case 12
+	b _0600DEE8 ; case 13
+	b _0600DE74 ; case 14
+	b _0600DE74 ; case 15
 _0600DDC0:
 	ldrh r0, [r8, #0x14]
 	and r0, r0, #0xf
@@ -16703,7 +16707,7 @@ _0600DE3C:
 	b _0600DF1C
 _0600DE74:
 	ldrh r1, [r8, #0x14]
-	ldr r0, _0600DF94 @ =0x0000E7BF
+	ldr r0, _0600DF94 ; =0x0000E7BF
 	and r0, r1, r0
 	cmp r0, #0x118
 	bne _0600DF1C
@@ -16716,14 +16720,14 @@ _0600DE94:
 	and r0, r1, r0
 	cmp r0, #0x228
 	bne _0600DF1C
-	ldr r0, _0600DF84 @ =0x0380FFF4
-	ldr r1, _0600DF84 @ =0x0380FFF4
+	ldr r0, _0600DF84 ; =0x0380FFF4
+	ldr r1, _0600DF84 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x54]
 	cmp r0, #0
-	ldreq r0, _0600DF98 @ =0x0480803C
-	strheq r6, [r0]
+	ldreq r0, _0600DF98 ; =0x0480803C
+	streqh r6, [r0]
 	ldr r2, [r1]
 	mov r0, r8
 	ldr r1, [r2, #0x5ac]
@@ -16738,7 +16742,7 @@ _0600DEE8:
 	and r0, r1, r0
 	cmp r0, #0x218
 	bne _0600DF1C
-	ldr r1, _0600DF84 @ =0x0380FFF4
+	ldr r1, _0600DF84 ; =0x0380FFF4
 	mov r0, r8
 	ldr r2, [r1]
 	ldr r1, [r2, #0x5b0]
@@ -16753,43 +16757,43 @@ _0600DF1C:
 	sub r1, r8, #0x10
 	bl sub_06009144
 _0600DF30:
-	ldr r3, _0600DF84 @ =0x0380FFF4
+	ldr r3, _0600DF84 ; =0x0380FFF4
 	ldr r0, [r3]
 	add r0, r0, #0x600
 	ldrh r0, [r0, #0x90]
 	tst r0, #1
 	beq _0600DC48
-	ldr r2, _0600DF90 @ =0x0000FFFF
-	ldr r1, _0600DF9C @ =0x04805F60
+	ldr r2, _0600DF90 ; =0x0000FFFF
+	ldr r1, _0600DF9C ; =0x04805F60
 	mov r6, #0
 _0600DF54:
 	cmp r7, r1
 	ldrhs r0, [r3]
 	add r6, r6, #1
 	addhs r0, r0, #0x300
-	ldrhhs r0, [r0, #0xde]
+	ldrhsh r0, [r0, #0xde]
 	subhs r7, r7, r0
 	cmp r6, #7
 	strh r2, [r7], #2
 	blo _0600DF54
 	b _0600DC48
 _0600DF7C:
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_0600DF84: .4byte 0x0380FFF4
-_0600DF88: .4byte 0x0480805A
-_0600DF8C: .4byte 0x000008C6
-_0600DF90: .4byte 0x0000FFFF
-_0600DF94: .4byte 0x0000E7BF
-_0600DF98: .4byte 0x0480803C
-_0600DF9C: .4byte 0x04805F60
+_0600DF84: .word 0x0380FFF4
+_0600DF88: .word 0x0480805A
+_0600DF8C: .word 0x000008C6
+_0600DF90: .word 0x0000FFFF
+_0600DF94: .word 0x0000E7BF
+_0600DF98: .word 0x0480803C
+_0600DF9C: .word 0x04805F60
 	arm_func_end sub_0600DC34
 
 	arm_func_start sub_0600DFA0
-sub_0600DFA0: @ 0x0600DFA0
-	push {r4, lr}
-	ldr r0, _0600E078 @ =0x0380FFF4
+sub_0600DFA0: ; 0x0600DFA0
+	stmdb sp!, {r4, lr}
+	ldr r0, _0600E078 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x2c
 	add r4, r0, #0x400
@@ -16807,7 +16811,7 @@ _0600DFDC:
 	ldr r0, [r4, #0x44]
 	ldrh r0, [r0, #4]
 	ands r2, r0, #0xff
-	ldr r0, _0600E078 @ =0x0380FFF4
+	ldr r0, _0600E078 ; =0x0380FFF4
 	ldrne r1, [r0]
 	ldrne r0, [r1, #0x5a0]
 	addne r0, r0, r2
@@ -16816,7 +16820,7 @@ _0600DFDC:
 	addeq r0, r0, #1
 	str r0, [r1, #0x5a0]
 	ldrh r1, [r4, #0x40]
-	ldr r0, _0600E078 @ =0x0380FFF4
+	ldr r0, _0600E078 ; =0x0380FFF4
 	add r1, r1, #1
 	strh r1, [r4, #0x40]
 	ldr ip, [r4, #0x90]
@@ -16837,23 +16841,23 @@ _0600DFDC:
 	beq _0600E05C
 	bl sub_0600A638
 _0600E05C:
-	ldr r0, _0600E078 @ =0x0380FFF4
+	ldr r0, _0600E078 ; =0x0380FFF4
 	ldr r1, [r4, #0x90]
 	ldr r0, [r0]
 	add r0, r0, #0x188
 	bl sub_0600F388
 _0600E070:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600E078: .4byte 0x0380FFF4
+_0600E078: .word 0x0380FFF4
 	arm_func_end sub_0600DFA0
 
 	arm_func_start sub_0600E07C
-sub_0600E07C: @ 0x0600E07C
-	push {r4, lr}
-	ldr r0, _0600E130 @ =0x0380FFF4
-	ldr r2, _0600E134 @ =0x04808088
+sub_0600E07C: ; 0x0600E07C
+	stmdb sp!, {r4, lr}
+	ldr r0, _0600E130 ; =0x0380FFF4
+	ldr r2, _0600E134 ; =0x04808088
 	ldr r1, [r0]
 	ldrh r0, [r2]
 	add r4, r1, #0x17c
@@ -16874,7 +16878,7 @@ _0600E0BC:
 	mvn r0, r1
 	tst r2, r0
 	bne _0600E0F4
-	ldr r0, _0600E138 @ =0x048080AE
+	ldr r0, _0600E138 ; =0x048080AE
 	mov r1, #8
 	strh r1, [r0]
 	ldrh r0, [r4, #0x38]
@@ -16883,7 +16887,7 @@ _0600E0BC:
 	mov r0, #2
 	bl sub_06012C88
 _0600E0F4:
-	ldr r0, _0600E138 @ =0x048080AE
+	ldr r0, _0600E138 ; =0x048080AE
 	mov r1, #5
 	strh r1, [r0]
 	ldrh r0, [r4, #0x2c]
@@ -16898,18 +16902,18 @@ _0600E114:
 	mov r0, #0
 	bl sub_06012C88
 _0600E128:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600E130: .4byte 0x0380FFF4
-_0600E134: .4byte 0x04808088
-_0600E138: .4byte 0x048080AE
+_0600E130: .word 0x0380FFF4
+_0600E134: .word 0x04808088
+_0600E138: .word 0x048080AE
 	arm_func_end sub_0600E07C
 
 	arm_func_start sub_0600E13C
-sub_0600E13C: @ 0x0600E13C
-	push {r4, r5, r6, lr}
-	ldr r2, _0600E1A8 @ =0x0380FFF4
+sub_0600E13C: ; 0x0600E13C
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _0600E1A8 ; =0x0380FFF4
 	mov r5, r1
 	ldr r1, [r2]
 	mov r6, r0
@@ -16929,26 +16933,26 @@ sub_0600E13C: @ 0x0600E13C
 	ldrh r1, [r4, #0x1e]
 	and r0, r0, #0xff
 	and r1, r1, #0xff
-	lsl r0, r0, #0x10
+	mov r0, r0, lsl #0x10
 	orr r0, r1, r0, lsr #8
 	strh r0, [r4, #0x1e]
 	add r0, r4, #0x10
 _0600E1A0:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600E1A8: .4byte 0x0380FFF4
+_0600E1A8: .word 0x0380FFF4
 	arm_func_end sub_0600E13C
 
 	arm_func_start sub_0600E1AC
-sub_0600E1AC: @ 0x0600E1AC
-	push {r4, r5, r6, r7, r8, lr}
+sub_0600E1AC: ; 0x0600E1AC
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	ldrh r0, [r8]
 	tst r0, #1
 	movne r0, #0
 	bne _0600E248
-	ldr r4, _0600E250 @ =0x0380FFF4
+	ldr r4, _0600E250 ; =0x0380FFF4
 	ldr r0, [r4]
 	add r1, r0, #0x500
 	ldrh r1, [r1, #0x2c]
@@ -16986,16 +16990,16 @@ _0600E234:
 _0600E244:
 	mov r0, #0xff
 _0600E248:
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_0600E250: .4byte 0x0380FFF4
+_0600E250: .word 0x0380FFF4
 	arm_func_end sub_0600E1AC
 
 	arm_func_start sub_0600E254
-sub_0600E254: @ 0x0600E254
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r5, _0600E390 @ =0x0380FFF4
+sub_0600E254: ; 0x0600E254
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldr r5, _0600E390 ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r5]
 	ldrh r1, [r4]
@@ -17082,16 +17086,16 @@ _0600E378:
 	bl sub_0600EE44
 	mov r0, r8
 _0600E388:
-	pop {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_0600E390: .4byte 0x0380FFF4
+_0600E390: .word 0x0380FFF4
 	arm_func_end sub_0600E254
 
 	arm_func_start sub_0600E394
-sub_0600E394: @ 0x0600E394
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r2, _0600E3EC @ =0x0380FFF4
+sub_0600E394: ; 0x0600E394
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r2, _0600E3EC ; =0x0380FFF4
 	mov r7, r0
 	ldr r2, [r2]
 	mov r0, #0x1000000
@@ -17111,16 +17115,16 @@ _0600E3CC:
 	bl sub_060091C4
 	mov r0, r5
 	bl sub_06008EFC
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600E3EC: .4byte 0x0380FFF4
+_0600E3EC: .word 0x0380FFF4
 	arm_func_end sub_0600E394
 
 	arm_func_start sub_0600E3F0
-sub_0600E3F0: @ 0x0600E3F0
-	push {r4, r5, r6, lr}
-	ldr r1, _0600E47C @ =0x0380FFF4
+sub_0600E3F0: ; 0x0600E3F0
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r1, _0600E47C ; =0x0380FFF4
 	ldrh r5, [r0, #2]
 	ldr r0, [r1]
 	mov r1, #0x1c
@@ -17128,13 +17132,13 @@ sub_0600E3F0: @ 0x0600E3F0
 	mov r0, #0x1000000
 	mla r6, r5, r1, r2
 	bl sub_06008EF4
-	ldr r1, _0600E47C @ =0x0380FFF4
+	ldr r1, _0600E47C ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x50]
 	cmp r0, #1
-	ldrheq r0, [r6, #0x16]
+	ldreqh r0, [r6, #0x16]
 	cmpeq r0, #0
 	bne _0600E440
 	mov r0, r5
@@ -17145,24 +17149,24 @@ _0600E440:
 	add r1, r1, #1
 	strh r1, [r6, #0x16]
 	bl sub_06008EFC
-	ldr r0, _0600E47C @ =0x0380FFF4
+	ldr r0, _0600E47C ; =0x0380FFF4
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x500
 	ldrh r0, [r0, #0x34]
 	tst r0, r1, lsl r5
-	ldrheq r0, [r6, #0x1a]
-	strheq r0, [r6, #0x18]
-	pop {r4, r5, r6, lr}
+	ldreqh r0, [r6, #0x1a]
+	streqh r0, [r6, #0x18]
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600E47C: .4byte 0x0380FFF4
+_0600E47C: .word 0x0380FFF4
 	arm_func_end sub_0600E3F0
 
 	arm_func_start sub_0600E480
-sub_0600E480: @ 0x0600E480
-	push {r4, r5, r6, lr}
-	ldr r1, _0600E4EC @ =0x0380FFF4
+sub_0600E480: ; 0x0600E480
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r1, _0600E4EC ; =0x0380FFF4
 	ldrh r5, [r0, #2]
 	ldr r0, [r1]
 	mov r1, #0x1c
@@ -17170,13 +17174,13 @@ sub_0600E480: @ 0x0600E480
 	mov r0, #0x1000000
 	mla r6, r5, r1, r2
 	bl sub_06008EF4
-	ldr r1, _0600E4EC @ =0x0380FFF4
+	ldr r1, _0600E4EC ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x50]
 	cmp r0, #1
-	ldrheq r0, [r6, #0x16]
+	ldreqh r0, [r6, #0x16]
 	cmpeq r0, #1
 	bne _0600E4D0
 	mov r0, r5
@@ -17187,20 +17191,20 @@ _0600E4D0:
 	sub r1, r1, #1
 	strh r1, [r6, #0x16]
 	bl sub_06008EFC
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600E4EC: .4byte 0x0380FFF4
+_0600E4EC: .word 0x0380FFF4
 	arm_func_end sub_0600E480
 
 	arm_func_start sub_0600E4F0
-sub_0600E4F0: @ 0x0600E4F0
-	push {r4, r5, r6, lr}
+sub_0600E4F0: ; 0x0600E4F0
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r0, #0x1000000
 	mov r5, r1
 	bl sub_06008EF4
-	ldr r3, _0600E5D4 @ =0x0380FFF4
+	ldr r3, _0600E5D4 ; =0x0380FFF4
 	mov r4, r0
 	cmp r5, #0x40
 	bhs _0600E570
@@ -17238,13 +17242,13 @@ _0600E570:
 	ldr r0, [r3]
 	add r0, r0, #0x500
 	ldrh r0, [r0, #0x2e]
-	asr r0, r0, r6
+	mov r0, r0, asr r6
 	tst r0, #1
 	beq _0600E5AC
 	mov r0, r6
 	bl sub_0600E654
 _0600E5AC:
-	ldr r1, _0600E5D4 @ =0x0380FFF4
+	ldr r1, _0600E5D4 ; =0x0380FFF4
 	mov r0, #0x1c
 	ldr r2, [r1]
 	mul r1, r6, r0
@@ -17252,15 +17256,15 @@ _0600E5AC:
 	mov r0, r4
 	strh r5, [r2, r1]
 	bl sub_06008EFC
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600E5D4: .4byte 0x0380FFF4
+_0600E5D4: .word 0x0380FFF4
 	arm_func_end sub_0600E4F0
 
 	arm_func_start sub_0600E5D8
-sub_0600E5D8: @ 0x0600E5D8
-	ldr r3, _0600E5F4 @ =0x0380FFF4
+sub_0600E5D8: ; 0x0600E5D8
+	ldr r3, _0600E5F4 ; =0x0380FFF4
 	mov r2, #0x1c
 	ldr r3, [r3]
 	ldr r3, [r3, #0x31c]
@@ -17268,12 +17272,12 @@ sub_0600E5D8: @ 0x0600E5D8
 	strh r1, [r2, #0xa]
 	bx lr
 	.align 2, 0
-_0600E5F4: .4byte 0x0380FFF4
+_0600E5F4: .word 0x0380FFF4
 	arm_func_end sub_0600E5D8
 
 	arm_func_start sub_0600E5F8
-sub_0600E5F8: @ 0x0600E5F8
-	ldr r3, _0600E648 @ =0x0380FFF4
+sub_0600E5F8: ; 0x0600E5F8
+	ldr r3, _0600E648 ; =0x0380FFF4
 	mov r2, #1
 	ldr ip, [r3]
 	mvn r3, r2, lsl r0
@@ -17287,26 +17291,26 @@ sub_0600E5F8: @ 0x0600E5F8
 	ldrh r1, [ip, #2]
 	mvn r0, r0
 	tst r1, r0
-	ldrne r0, _0600E64C @ =0x048080AC
+	ldrne r0, _0600E64C ; =0x048080AC
 	mov r1, #8
-	strhne r1, [r0]
-	ldreq r0, _0600E650 @ =0x048080AE
-	strheq r1, [r0]
+	strneh r1, [r0]
+	ldreq r0, _0600E650 ; =0x048080AE
+	streqh r1, [r0]
 	bx lr
 	.align 2, 0
-_0600E648: .4byte 0x0380FFF4
-_0600E64C: .4byte 0x048080AC
-_0600E650: .4byte 0x048080AE
+_0600E648: .word 0x0380FFF4
+_0600E64C: .word 0x048080AC
+_0600E650: .word 0x048080AE
 	arm_func_end sub_0600E5F8
 
 	arm_func_start sub_0600E654
-sub_0600E654: @ 0x0600E654
-	push {r4, lr}
+sub_0600E654: ; 0x0600E654
+	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_0600E88C
 	cmp r0, #0x40
 	bne _0600E688
-	ldr r1, _0600E690 @ =0x0380FFF4
+	ldr r1, _0600E690 ; =0x0380FFF4
 	mov r0, #1
 	ldr r2, [r1]
 	mvn r1, r0, lsl r4
@@ -17315,15 +17319,15 @@ sub_0600E654: @ 0x0600E654
 	and r1, r2, r1
 	strh r1, [r0, #0x30]
 _0600E688:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600E690: .4byte 0x0380FFF4
+_0600E690: .word 0x0380FFF4
 	arm_func_end sub_0600E654
 
 	arm_func_start sub_0600E694
-sub_0600E694: @ 0x0600E694
-	ldr r1, _0600E6B4 @ =0x0380FFF4
+sub_0600E694: ; 0x0600E694
+	ldr r1, _0600E6B4 ; =0x0380FFF4
 	mov r2, #1
 	ldr r1, [r1]
 	add r1, r1, #0x500
@@ -17332,12 +17336,12 @@ sub_0600E694: @ 0x0600E694
 	strh r0, [r1, #0x30]
 	bx lr
 	.align 2, 0
-_0600E6B4: .4byte 0x0380FFF4
+_0600E6B4: .word 0x0380FFF4
 	arm_func_end sub_0600E694
 
 	arm_func_start sub_0600E6B8
-sub_0600E6B8: @ 0x0600E6B8
-	ldr r3, _0600E6D4 @ =0x0380FFF4
+sub_0600E6B8: ; 0x0600E6B8
+	ldr r3, _0600E6D4 ; =0x0380FFF4
 	mov r2, #0x1c
 	ldr r3, [r3]
 	ldr r3, [r3, #0x31c]
@@ -17345,12 +17349,12 @@ sub_0600E6B8: @ 0x0600E6B8
 	strh r1, [r2, #0xc]
 	bx lr
 	.align 2, 0
-_0600E6D4: .4byte 0x0380FFF4
+_0600E6D4: .word 0x0380FFF4
 	arm_func_end sub_0600E6B8
 
 	arm_func_start sub_0600E6D8
-sub_0600E6D8: @ 0x0600E6D8
-	ldr r3, _0600E6F4 @ =0x0380FFF4
+sub_0600E6D8: ; 0x0600E6D8
+	ldr r3, _0600E6F4 ; =0x0380FFF4
 	mov r2, #0x1c
 	ldr r3, [r3]
 	ldr r3, [r3, #0x31c]
@@ -17358,12 +17362,12 @@ sub_0600E6D8: @ 0x0600E6D8
 	strh r1, [r2, #0x10]
 	bx lr
 	.align 2, 0
-_0600E6F4: .4byte 0x0380FFF4
+_0600E6F4: .word 0x0380FFF4
 	arm_func_end sub_0600E6D8
 
 	arm_func_start sub_0600E6F8
-sub_0600E6F8: @ 0x0600E6F8
-	ldr r3, _0600E714 @ =0x0380FFF4
+sub_0600E6F8: ; 0x0600E6F8
+	ldr r3, _0600E714 ; =0x0380FFF4
 	mov r2, #0x1c
 	ldr r3, [r3]
 	ldr r3, [r3, #0x31c]
@@ -17371,12 +17375,12 @@ sub_0600E6F8: @ 0x0600E6F8
 	strh r1, [r2, #0x14]
 	bx lr
 	.align 2, 0
-_0600E714: .4byte 0x0380FFF4
+_0600E714: .word 0x0380FFF4
 	arm_func_end sub_0600E6F8
 
 	arm_func_start sub_0600E718
-sub_0600E718: @ 0x0600E718
-	ldr r3, _0600E734 @ =0x0380FFF4
+sub_0600E718: ; 0x0600E718
+	ldr r3, _0600E734 ; =0x0380FFF4
 	mov r2, #0x1c
 	ldr r3, [r3]
 	ldr r3, [r3, #0x31c]
@@ -17384,12 +17388,12 @@ sub_0600E718: @ 0x0600E718
 	strh r1, [r2, #0xe]
 	bx lr
 	.align 2, 0
-_0600E734: .4byte 0x0380FFF4
+_0600E734: .word 0x0380FFF4
 	arm_func_end sub_0600E718
 
 	arm_func_start sub_0600E738
-sub_0600E738: @ 0x0600E738
-	ldr r2, _0600E758 @ =0x0380FFF4
+sub_0600E738: ; 0x0600E738
+	ldr r2, _0600E758 ; =0x0380FFF4
 	mov r1, #0x1c
 	ldr r2, [r2]
 	ldr r2, [r2, #0x31c]
@@ -17398,13 +17402,13 @@ sub_0600E738: @ 0x0600E738
 	strh r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
-_0600E758: .4byte 0x0380FFF4
+_0600E758: .word 0x0380FFF4
 	arm_func_end sub_0600E738
 
 	arm_func_start sub_0600E75C
-sub_0600E75C: @ 0x0600E75C
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r1, _0600E808 @ =0x0380FFF4
+sub_0600E75C: ; 0x0600E75C
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r1, _0600E808 ; =0x0380FFF4
 	mov r7, r0
 	ldr r1, [r1]
 	mov r0, #0x1000000
@@ -17429,7 +17433,7 @@ _0600E78C:
 	bne _0600E7BC
 	bl sub_0600A684
 _0600E7BC:
-	ldr r0, _0600E808 @ =0x0380FFF4
+	ldr r0, _0600E808 ; =0x0380FFF4
 	mov r1, #0x1c
 	ldr r2, [r0]
 	mov r0, r6
@@ -17441,7 +17445,7 @@ _0600E7BC:
 	b _0600E800
 _0600E7E4:
 	add r5, r5, #1
-	lsl r1, r1, #1
+	mov r1, r1, lsl #1
 _0600E7EC:
 	cmp r5, #0x10
 	blo _0600E78C
@@ -17449,16 +17453,16 @@ _0600E7EC:
 	bl sub_06008EFC
 	mov r0, #0
 _0600E800:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600E808: .4byte 0x0380FFF4
+_0600E808: .word 0x0380FFF4
 	arm_func_end sub_0600E75C
 
 	arm_func_start sub_0600E80C
-sub_0600E80C: @ 0x0600E80C
-	push {r3, r4, r5, lr}
-	ldr r1, _0600E888 @ =0x0380FFF4
+sub_0600E80C: ; 0x0600E80C
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _0600E888 ; =0x0380FFF4
 	mov r5, r0
 	ldr r4, [r1]
 	bl sub_0600EA74
@@ -17466,7 +17470,7 @@ sub_0600E80C: @ 0x0600E80C
 	bl sub_0600E978
 	cmp r0, #0
 	beq _0600E880
-	ldr r1, _0600E888 @ =0x0380FFF4
+	ldr r1, _0600E888 ; =0x0380FFF4
 	mov r2, #1
 	ldr r3, [r1]
 	mov r1, #0x1c
@@ -17487,15 +17491,15 @@ sub_0600E80C: @ 0x0600E80C
 	bne _0600E880
 	bl sub_0600A638
 _0600E880:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600E888: .4byte 0x0380FFF4
+_0600E888: .word 0x0380FFF4
 	arm_func_end sub_0600E80C
 
 	arm_func_start sub_0600E88C
-sub_0600E88C: @ 0x0600E88C
-	ldr r2, _0600E8A8 @ =0x0380FFF4
+sub_0600E88C: ; 0x0600E88C
+	ldr r2, _0600E8A8 ; =0x0380FFF4
 	mov r1, #0x1c
 	ldr r2, [r2]
 	mul r1, r0, r1
@@ -17503,38 +17507,38 @@ sub_0600E88C: @ 0x0600E88C
 	ldrh r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_0600E8A8: .4byte 0x0380FFF4
+_0600E8A8: .word 0x0380FFF4
 	arm_func_end sub_0600E88C
 
 	arm_func_start sub_0600E8AC
-sub_0600E8AC: @ 0x0600E8AC
-	ldr r1, _0600E8C8 @ =0x0380FFF4
+sub_0600E8AC: ; 0x0600E8AC
+	ldr r1, _0600E8C8 ; =0x0380FFF4
 	ldr r1, [r1]
 	add r1, r1, #0x500
 	ldrh r1, [r1, #0x30]
-	asr r0, r1, r0
+	mov r0, r1, asr r0
 	and r0, r0, #1
 	bx lr
 	.align 2, 0
-_0600E8C8: .4byte 0x0380FFF4
+_0600E8C8: .word 0x0380FFF4
 	arm_func_end sub_0600E8AC
 
 	arm_func_start sub_0600E8CC
-sub_0600E8CC: @ 0x0600E8CC
-	ldr r1, _0600E8E8 @ =0x0380FFF4
+sub_0600E8CC: ; 0x0600E8CC
+	ldr r1, _0600E8E8 ; =0x0380FFF4
 	ldr r1, [r1]
 	add r1, r1, #0x500
 	ldrh r1, [r1, #0x2e]
-	asr r0, r1, r0
+	mov r0, r1, asr r0
 	and r0, r0, #1
 	bx lr
 	.align 2, 0
-_0600E8E8: .4byte 0x0380FFF4
+_0600E8E8: .word 0x0380FFF4
 	arm_func_end sub_0600E8CC
 
 	arm_func_start sub_0600E8EC
-sub_0600E8EC: @ 0x0600E8EC
-	ldr r2, _0600E908 @ =0x0380FFF4
+sub_0600E8EC: ; 0x0600E8EC
+	ldr r2, _0600E908 ; =0x0380FFF4
 	mov r1, #0x1c
 	ldr r2, [r2]
 	ldr r2, [r2, #0x31c]
@@ -17542,12 +17546,12 @@ sub_0600E8EC: @ 0x0600E8EC
 	add r0, r1, #4
 	bx lr
 	.align 2, 0
-_0600E908: .4byte 0x0380FFF4
+_0600E908: .word 0x0380FFF4
 	arm_func_end sub_0600E8EC
 
 	arm_func_start sub_0600E90C
-sub_0600E90C: @ 0x0600E90C
-	ldr r2, _0600E928 @ =0x0380FFF4
+sub_0600E90C: ; 0x0600E90C
+	ldr r2, _0600E928 ; =0x0380FFF4
 	mov r1, #0x1c
 	ldr r2, [r2]
 	ldr r2, [r2, #0x31c]
@@ -17555,12 +17559,12 @@ sub_0600E90C: @ 0x0600E90C
 	ldrh r0, [r1, #0xe]
 	bx lr
 	.align 2, 0
-_0600E928: .4byte 0x0380FFF4
+_0600E928: .word 0x0380FFF4
 	arm_func_end sub_0600E90C
 
 	arm_func_start sub_0600E92C
-sub_0600E92C: @ 0x0600E92C
-	ldr r2, _0600E948 @ =0x0380FFF4
+sub_0600E92C: ; 0x0600E92C
+	ldr r2, _0600E948 ; =0x0380FFF4
 	mov r1, #0x1c
 	ldr r2, [r2]
 	ldr r2, [r2, #0x31c]
@@ -17568,12 +17572,12 @@ sub_0600E92C: @ 0x0600E92C
 	ldrh r0, [r1, #0x14]
 	bx lr
 	.align 2, 0
-_0600E948: .4byte 0x0380FFF4
+_0600E948: .word 0x0380FFF4
 	arm_func_end sub_0600E92C
 
 	arm_func_start sub_0600E94C
-sub_0600E94C: @ 0x0600E94C
-	ldr r2, _0600E974 @ =0x0380FFF4
+sub_0600E94C: ; 0x0600E94C
+	ldr r2, _0600E974 ; =0x0380FFF4
 	mov r1, #0x1c
 	ldr r2, [r2]
 	ldr r2, [r2, #0x31c]
@@ -17584,12 +17588,12 @@ sub_0600E94C: @ 0x0600E94C
 	moveq r0, #0xa
 	bx lr
 	.align 2, 0
-_0600E974: .4byte 0x0380FFF4
+_0600E974: .word 0x0380FFF4
 	arm_func_end sub_0600E94C
 
 	arm_func_start sub_0600E978
-sub_0600E978: @ 0x0600E978
-	ldr r2, _0600E994 @ =0x0380FFF4
+sub_0600E978: ; 0x0600E978
+	ldr r2, _0600E994 ; =0x0380FFF4
 	mov r1, #0x1c
 	ldr r2, [r2]
 	ldr r2, [r2, #0x31c]
@@ -17597,12 +17601,12 @@ sub_0600E978: @ 0x0600E978
 	ldrh r0, [r1, #2]
 	bx lr
 	.align 2, 0
-_0600E994: .4byte 0x0380FFF4
+_0600E994: .word 0x0380FFF4
 	arm_func_end sub_0600E978
 
 	arm_func_start sub_0600E998
-sub_0600E998: @ 0x0600E998
-	ldr r2, _0600E9B4 @ =0x0380FFF4
+sub_0600E998: ; 0x0600E998
+	ldr r2, _0600E9B4 ; =0x0380FFF4
 	mov r1, #0x1c
 	ldr r2, [r2]
 	ldr r2, [r2, #0x31c]
@@ -17610,17 +17614,17 @@ sub_0600E998: @ 0x0600E998
 	ldrh r0, [r1, #0x16]
 	bx lr
 	.align 2, 0
-_0600E9B4: .4byte 0x0380FFF4
+_0600E9B4: .word 0x0380FFF4
 	arm_func_end sub_0600E998
 
 	arm_func_start sub_0600E9B8
-sub_0600E9B8: @ 0x0600E9B8
-	push {r4, r5, r6, lr}
+sub_0600E9B8: ; 0x0600E9B8
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	bl sub_0600E88C
 	cmp r0, #0x40
 	bne _0600EA64
-	ldr r0, _0600EA6C @ =0x0380FFF4
+	ldr r0, _0600EA6C ; =0x0380FFF4
 	mov r1, #1
 	ldr r2, [r0]
 	add r0, r2, #0x500
@@ -17629,7 +17633,7 @@ sub_0600E9B8: @ 0x0600E9B8
 	bne _0600EA64
 	add r0, r2, #0x300
 	ldrh r2, [r0, #0xd8]
-	ldr r1, _0600EA70 @ =0x0480425C
+	ldr r1, _0600EA70 ; =0x0480425C
 	mov r0, #0x1000000
 	add r6, r2, r1
 	bl sub_06008EF4
@@ -17661,22 +17665,22 @@ _0600EA5C:
 	mov r0, r4
 	bl sub_06008EFC
 _0600EA64:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600EA6C: .4byte 0x0380FFF4
-_0600EA70: .4byte 0x0480425C
+_0600EA6C: .word 0x0380FFF4
+_0600EA70: .word 0x0480425C
 	arm_func_end sub_0600E9B8
 
 	arm_func_start sub_0600EA74
-sub_0600EA74: @ 0x0600EA74
-	push {r4, r5, r6, lr}
+sub_0600EA74: ; 0x0600EA74
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	bl sub_0600E88C
 	cmp r0, #0x40
 	bne _0600EB10
-	ldr r0, _0600EB18 @ =0x0380FFF4
-	ldr r2, _0600EB1C @ =0x0480425C
+	ldr r0, _0600EB18 ; =0x0380FFF4
+	ldr r2, _0600EB1C ; =0x0480425C
 	ldr r1, [r0]
 	mov r0, #0x1000000
 	add r1, r1, #0x300
@@ -17712,17 +17716,17 @@ _0600EB08:
 	mov r0, r4
 	bl sub_06008EFC
 _0600EB10:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600EB18: .4byte 0x0380FFF4
-_0600EB1C: .4byte 0x0480425C
+_0600EB18: .word 0x0380FFF4
+_0600EB1C: .word 0x0480425C
 	arm_func_end sub_0600EA74
 
 	arm_func_start sub_0600EB20
-sub_0600EB20: @ 0x0600EB20
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr fp, _0600ECD0 @ =0x0380FFF4
+sub_0600EB20: ; 0x0600EB20
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldr fp, _0600ECD0 ; =0x0380FFF4
 	mov sb, #0
 	ldr r2, [fp]
 	mov r8, #1
@@ -17740,7 +17744,7 @@ _0600EB54:
 	beq _0600ECAC
 	ldrh r1, [r7, #0x18]
 	cmp r1, #0
-	ldrne r0, _0600ECD4 @ =0x0000FFFF
+	ldrne r0, _0600ECD4 ; =0x0000FFFF
 	cmpne r1, r0
 	beq _0600ECA8
 	sub r0, r1, #1
@@ -17754,8 +17758,8 @@ _0600EB54:
 	mov r0, r8
 	bl sub_0600E88C
 	mov r6, r0
-	lsl r0, r8, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r8, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x20
 	bl sub_0600E4F0
 	mov r0, r8
@@ -17766,13 +17770,13 @@ _0600EB54:
 	cmp r6, #0x20
 	bls _0600EC94
 	ldr r1, [fp]
-	lsl r0, r8, #0x10
+	mov r0, r8, lsl #0x10
 	add r3, r1, #0x500
 	ldrh r6, [r3, #0x34]
 	mov r2, #1
 	orr r2, r6, r2, lsl r8
 	strh r2, [r3, #0x34]
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0
 	bl sub_0600E5F8
 	ldr r1, [fp]
@@ -17837,19 +17841,19 @@ _0600ECBC:
 	cmp r8, r0
 	blo _0600EB54
 _0600ECC8:
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_0600ECD0: .4byte 0x0380FFF4
-_0600ECD4: .4byte 0x0000FFFF
+_0600ECD0: .word 0x0380FFF4
+_0600ECD4: .word 0x0000FFFF
 	arm_func_end sub_0600EB20
 
 	arm_func_start sub_0600ECD8
-sub_0600ECD8: @ 0x0600ECD8
-	push {r4, lr}
+sub_0600ECD8: ; 0x0600ECD8
+	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_06013AF4
-	ldr r2, _0600ED1C @ =0x0380FFF4
+	ldr r2, _0600ED1C ; =0x0380FFF4
 	mov r0, #0x1c
 	ldr r1, [r2]
 	mul r0, r4, r0
@@ -17861,16 +17865,16 @@ sub_0600ECD8: @ 0x0600ECD8
 	ldrh r1, [r0, #0x2c]
 	sub r1, r1, #1
 	strh r1, [r0, #0x2c]
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600ED1C: .4byte 0x0380FFF4
+_0600ED1C: .word 0x0380FFF4
 	arm_func_end sub_0600ECD8
 
 	arm_func_start sub_0600ED20
-sub_0600ED20: @ 0x0600ED20
-	push {r3, r4, r5, lr}
-	ldr r0, _0600EDB0 @ =0x0380FFF4
+sub_0600ED20: ; 0x0600ED20
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r0, _0600EDB0 ; =0x0380FFF4
 	mov r2, #0x1c
 	ldr r3, [r0]
 	mov r0, #0
@@ -17880,14 +17884,14 @@ sub_0600ED20: @ 0x0600ED20
 	mul r2, r5, r2
 	mov r1, r4
 	bl sub_06000598
-	ldr r1, _0600EDB0 @ =0x0380FFF4
+	ldr r1, _0600EDB0 ; =0x0380FFF4
 	mov r0, #0
 	ldr r1, [r1]
 	mov r2, #0x10
 	add r1, r1, #0x12c
 	add r1, r1, #0x400
 	bl sub_06000598
-	ldr r2, _0600EDB4 @ =0x0000FFFF
+	ldr r2, _0600EDB4 ; =0x0000FFFF
 	mov r3, #1
 	strh r2, [r4, #0x1a]
 	mov r0, #0x1c
@@ -17899,24 +17903,24 @@ _0600ED7C:
 _0600ED88:
 	cmp r3, r5
 	blo _0600ED7C
-	ldr r1, _0600EDB8 @ =0x060184D0
+	ldr r1, _0600EDB8 ; =0x060184D0
 	mov r0, #0
 	bl sub_0600EE44
 	mov r0, #0
 	mov r1, #0x40
 	bl sub_0600E4F0
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600EDB0: .4byte 0x0380FFF4
-_0600EDB4: .4byte 0x0000FFFF
-_0600EDB8: .4byte 0x060184D0
+_0600EDB0: .word 0x0380FFF4
+_0600EDB4: .word 0x0000FFFF
+_0600EDB8: .word 0x060184D0
 	arm_func_end sub_0600ED20
 
 	arm_func_start sub_0600EDBC
-sub_0600EDBC: @ 0x0600EDBC
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r0, _0600EE3C @ =0x0380FFF4
+sub_0600EDBC: ; 0x0600EDBC
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldr r0, _0600EE3C ; =0x0380FFF4
 	mov r6, #1
 	ldr r2, [r0]
 	mov sl, #0
@@ -17941,23 +17945,23 @@ _0600EE04:
 	strh r2, [r5]
 	mov r1, #0
 	strh r1, [r5, #2]
-	ldr r0, _0600EE40 @ =0x0000FFFE
+	ldr r0, _0600EE40 ; =0x0000FFFE
 	strh r2, [r5, #4]
 	strh r0, [r5, #6]
 	strh r1, [r5, #0xc]
 	strh r1, [r5, #8]
 	strh r2, [r5, #0xe]
-	pop {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_0600EE3C: .4byte 0x0380FFF4
-_0600EE40: .4byte 0x0000FFFE
+_0600EE3C: .word 0x0380FFF4
+_0600EE40: .word 0x0000FFFE
 	arm_func_end sub_0600EDBC
 
 	arm_func_start sub_0600EE44
-sub_0600EE44: @ 0x0600EE44
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r2, _0600EF20 @ =0x0380FFF4
+sub_0600EE44: ; 0x0600EE44
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r2, _0600EF20 ; =0x0380FFF4
 	mov r7, r0
 	ldr r4, [r2]
 	mov r0, #0x1c
@@ -17968,26 +17972,26 @@ sub_0600EE44: @ 0x0600EE44
 	add r5, r3, r2
 	cmp r0, #0
 	addeq r0, r4, #0x500
-	ldrheq r1, [r0, #0x2c]
+	ldreqh r1, [r0, #0x2c]
 	mov r2, #0x1a
 	addeq r1, r1, #1
-	strheq r1, [r0, #0x2c]
+	streqh r1, [r0, #0x2c]
 	mov r1, r5
 	mov r0, #0
 	bl sub_06000598
-	ldr r0, _0600EF20 @ =0x0380FFF4
+	ldr r0, _0600EF20 ; =0x0380FFF4
 	mov r4, #1
 	ldr r1, [r0]
-	lsl r0, r7, #0x10
+	mov r0, r7, lsl #0x10
 	add r2, r1, #0x500
 	ldrh r3, [r2, #0x34]
 	mvn r1, r4, lsl r7
 	and r3, r3, r1
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0
 	strh r3, [r2, #0x34]
 	bl sub_0600E5F8
-	ldr r0, _0600EF20 @ =0x0380FFF4
+	ldr r0, _0600EF20 ; =0x0380FFF4
 	mov r1, r6
 	ldr r2, [r0]
 	add r0, r5, #4
@@ -17996,12 +18000,12 @@ sub_0600EE44: @ 0x0600EE44
 	orr r3, r3, r4, lsl r7
 	strh r3, [r2, #0x30]
 	bl sub_0600A928
-	ldr r2, _0600EF24 @ =0x0000FFFF
-	lsl r0, r7, #0x10
-	ldr r1, _0600EF20 @ =0x0380FFF4
+	ldr r2, _0600EF24 ; =0x0000FFFF
+	mov r0, r7, lsl #0x10
+	ldr r1, _0600EF20 ; =0x0380FFF4
 	strh r2, [r5, #0x14]
 	ldr r1, [r1]
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	add r1, r1, #0x300
 	ldrh r2, [r1, #0xa6]
 	mov r1, #0x20
@@ -18009,16 +18013,16 @@ sub_0600EE44: @ 0x0600EE44
 	ldrh r2, [r5, #0x1a]
 	strh r2, [r5, #0x18]
 	bl sub_0600E4F0
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600EF20: .4byte 0x0380FFF4
-_0600EF24: .4byte 0x0000FFFF
+_0600EF20: .word 0x0380FFF4
+_0600EF24: .word 0x0000FFFF
 	arm_func_end sub_0600EE44
 
 	arm_func_start sub_0600EF28
-sub_0600EF28: @ 0x0600EF28
-	ldr r1, _0600EF50 @ =0x0480819C
+sub_0600EF28: ; 0x0600EF28
+	ldr r1, _0600EF50 ; =0x0480819C
 	mov r2, #0xfa0
 	b _0600EF44
 _0600EF34:
@@ -18031,30 +18035,30 @@ _0600EF44:
 	bne _0600EF34
 	bx lr
 	.align 2, 0
-_0600EF50: .4byte 0x0480819C
+_0600EF50: .word 0x0480819C
 	arm_func_end sub_0600EF28
 
 	arm_func_start sub_0600EF54
-sub_0600EF54: @ 0x0600EF54
-	push {r3, r4, r5, lr}
+sub_0600EF54: ; 0x0600EF54
+	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
-	ldr r2, _0600EFD4 @ =0x000082EA
+	ldr r2, _0600EFD4 ; =0x000082EA
 	mov r3, #0
 	umull lr, ip, r0, r2
 	mla ip, r0, r3, ip
 	mov r0, r3
 	mla ip, r0, r2, ip
-	lsr r0, lr, #6
+	mov r0, lr, lsr #6
 	mov r4, #1
 	mov r5, r1
-	lsr r1, ip, #6
+	mov r1, ip, lsr #6
 	orr r0, r0, ip, lsl #26
 	mov r2, #0x3e8
 	str r4, [sp, #4]
 	bl sub_0600B1CC
 	add r3, sp, #4
 	str r3, [sp]
-	ldr r2, _0600EFD8 @ =0x0380FFF4
+	ldr r2, _0600EFD8 ; =0x0380FFF4
 	mov r3, r5
 	ldr r2, [r2]
 	add ip, r2, #0x234
@@ -18067,18 +18071,18 @@ _0600EFBC:
 	cmp r0, #0
 	bne _0600EFBC
 	add sp, sp, #8
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600EFD4: .4byte 0x000082EA
-_0600EFD8: .4byte 0x0380FFF4
+_0600EFD4: .word 0x000082EA
+_0600EFD8: .word 0x0380FFF4
 	arm_func_end sub_0600EF54
 
 	arm_func_start sub_0600EFDC
-sub_0600EFDC: @ 0x0600EFDC
-	push {r3, r4, r5, lr}
-	ldr r1, _0600F040 @ =0x04808028
-	ldr lr, _0600F044 @ =0x04000208
+sub_0600EFDC: ; 0x0600EFDC
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _0600F040 ; =0x04808028
+	ldr lr, _0600F044 ; =0x04000208
 	mov r5, #1
 	add r2, r1, #0x1ec
 	add r3, r1, #0x174
@@ -18090,27 +18094,27 @@ _0600EFFC:
 	ldrh r0, [r3]
 	and r0, r0, #3
 	cmp r0, #3
-	ldrhne r0, [r2]
+	ldrneh r0, [r2]
 	cmpne r0, #5
 	cmpne r0, #7
 	cmpne r0, #8
-	strhne ip, [r1]
+	strneh ip, [r1]
 	ldrh r0, [lr]
 	movne r5, ip
 	strh r4, [lr]
 _0600F030:
 	cmp r5, #0
 	bne _0600EFFC
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600F040: .4byte 0x04808028
-_0600F044: .4byte 0x04000208
+_0600F040: .word 0x04808028
+_0600F044: .word 0x04000208
 	arm_func_end sub_0600EFDC
 
 	arm_func_start sub_0600F048
-sub_0600F048: @ 0x0600F048
-	ldr r1, _0600F078 @ =0x0480815E
+sub_0600F048: ; 0x0600F048
+	ldr r1, _0600F078 ; =0x0480815E
 	mov r2, #0
 	b _0600F068
 _0600F054:
@@ -18125,12 +18129,12 @@ _0600F068:
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_0600F078: .4byte 0x0480815E
+_0600F078: .word 0x0480815E
 	arm_func_end sub_0600F048
 
 	arm_func_start sub_0600F07C
-sub_0600F07C: @ 0x0600F07C
-	ldr r1, _0600F0AC @ =0x04808180
+sub_0600F07C: ; 0x0600F07C
+	ldr r1, _0600F0AC ; =0x04808180
 	mov r2, #0
 	b _0600F09C
 _0600F088:
@@ -18145,13 +18149,13 @@ _0600F09C:
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_0600F0AC: .4byte 0x04808180
+_0600F0AC: .word 0x04808180
 	arm_func_end sub_0600F07C
 
 	arm_func_start sub_0600F0B0
-sub_0600F0B0: @ 0x0600F0B0
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r4, _0600F360 @ =0x0380FFF4
+sub_0600F0B0: ; 0x0600F0B0
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r4, _0600F360 ; =0x0380FFF4
 	mov r3, #0
 	ldr r2, [r4]
 	mov r6, r3
@@ -18172,15 +18176,15 @@ sub_0600F0B0: @ 0x0600F0B0
 	add r4, r0, r4, lsl #1
 	cmp r2, #0
 	movne r0, #1
-	strhne r0, [r4, #0x12]
+	strneh r0, [r4, #0x12]
 	movne r0, #6
-	strhne r0, [r4, #0x14]
+	strneh r0, [r4, #0x14]
 	bne _0600F310
 	ldrh r7, [r0, #0xc]
 	ldrh r2, [r4, #0x10]
 	cmp r7, r2
 	movne r0, #0xd
-	strhne r0, [r4, #0x14]
+	strneh r0, [r4, #0x14]
 	bne _0600F310
 	and r2, r7, #0xff00
 	cmp r2, #0x100
@@ -18200,7 +18204,7 @@ _0600F15C:
 	b _0600F278
 _0600F168:
 	ldrh r6, [r5, #4]
-	ldr r1, _0600F364 @ =0x06018674
+	ldr r1, _0600F364 ; =0x06018674
 	tst r6, #1
 	and r2, r7, #0xff
 	mov r6, #1
@@ -18213,7 +18217,7 @@ _0600F168:
 	b _0600F280
 _0600F198:
 	ldrh r6, [ip, #0x4c]
-	ldr r1, _0600F368 @ =0x060185EC
+	ldr r1, _0600F368 ; =0x060185EC
 	cmp r6, #0x40
 	and r2, r7, #0xff
 	mov r6, #2
@@ -18227,7 +18231,7 @@ _0600F1B8:
 	ldrh r1, [ip, #0x4c]
 	mov r6, #4
 	cmp r1, #0x10
-	ldr r1, _0600F36C @ =0x060187DC
+	ldr r1, _0600F36C ; =0x060187DC
 	movlo r3, #1
 	mov lr, #0x17
 	b _0600F280
@@ -18238,10 +18242,10 @@ _0600F1E0:
 	mov r6, #8
 	cmp r1, #0x40
 	sub r1, r2, #0x40
-	lsl r2, r1, #0x10
-	ldr r1, _0600F370 @ =0x06018644
+	mov r2, r1, lsl #0x10
+	ldr r1, _0600F370 ; =0x06018644
 	movne r3, #1
-	lsr r2, r2, #0x10
+	mov r2, r2, lsr #0x10
 	mov lr, #6
 	b _0600F280
 _0600F210:
@@ -18250,25 +18254,25 @@ _0600F210:
 	bhs _0600F240
 	cmp r1, #0x10
 	sub r1, r2, #0x80
-	lsl r2, r1, #0x10
-	ldr r1, _0600F374 @ =0x06018724
+	mov r2, r1, lsl #0x10
+	ldr r1, _0600F374 ; =0x06018724
 	movlo r3, #1
-	lsr r2, r2, #0x10
+	mov r2, r2, lsr #0x10
 	mov r6, #0x10
 	mov lr, #0x17
 	b _0600F280
 _0600F240:
 	cmp r1, #0x10
 	sub r1, r2, #0xc0
-	lsl r2, r1, #0x10
-	ldr r1, _0600F378 @ =0x06018614
+	mov r2, r1, lsl #0x10
+	ldr r1, _0600F378 ; =0x06018614
 	movlo r3, #1
-	lsr r2, r2, #0x10
+	mov r2, r2, lsr #0x10
 	mov r6, #0x20
 	mov lr, #6
 	b _0600F280
 _0600F264:
-	ldr r1, _0600F37C @ =0x060186CC
+	ldr r1, _0600F37C ; =0x060186CC
 	and r2, r7, #0xff
 	mov r6, #0x40
 	mov lr, #0xb
@@ -18280,20 +18284,20 @@ _0600F280:
 	cmp r2, lr
 	movhi r3, #3
 	bhi _0600F2B0
-	lsl lr, r2, #3
+	mov lr, r2, lsl #3
 	ldrh r7, [r0, #0xe]
 	ldrh ip, [r1, lr]
 	cmp r7, ip
 	addhs ip, r1, lr
-	ldrhhs lr, [r4, #0x12]
-	ldrhhs ip, [ip, #2]
+	ldrhsh lr, [r4, #0x12]
+	ldrhsh ip, [ip, #2]
 	cmphs lr, ip
 	movlo r3, #4
 _0600F2B0:
 	cmp r3, #0
 	movne r0, #1
-	strhne r0, [r4, #0x12]
-	strhne r3, [r4, #0x14]
+	strneh r0, [r4, #0x12]
+	strneh r3, [r4, #0x14]
 	bne _0600F310
 	ldrh r3, [r5, #4]
 	add r1, r1, r2, lsl #3
@@ -18306,7 +18310,7 @@ _0600F2B0:
 	arm_func_end sub_0600F0B0
 
 	arm_func_start sub_0600F2E4
-sub_0600F2E4: @ 0x0600F2E4
+sub_0600F2E4: ; 0x0600F2E4
 	strh r0, [r4, #0x14]
 	ldrh r0, [r4, #0x14]
 	cmp r0, #0x80
@@ -18323,13 +18327,13 @@ _0600F310:
 	mvn r0, r6
 	and r0, r1, r0
 	strh r0, [r5, #4]
-	ldr r0, _0600F360 @ =0x0380FFF4
+	ldr r0, _0600F360 ; =0x0380FFF4
 	ldr r1, [r5]
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	bl sub_0600F388
 _0600F334:
-	ldr r0, _0600F360 @ =0x0380FFF4
+	ldr r0, _0600F360 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrh r0, [r0, #8]
@@ -18339,29 +18343,29 @@ _0600F334:
 	mov r1, #0xb
 	bl sub_06008F04
 _0600F358:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600F360: .4byte 0x0380FFF4
-_0600F364: .4byte 0x06018674
-_0600F368: .4byte 0x060185EC
-_0600F36C: .4byte 0x060187DC
-_0600F370: .4byte 0x06018644
-_0600F374: .4byte 0x06018724
-_0600F378: .4byte 0x06018614
-_0600F37C: .4byte 0x060186CC
+_0600F360: .word 0x0380FFF4
+_0600F364: .word 0x06018674
+_0600F368: .word 0x060185EC
+_0600F36C: .word 0x060187DC
+_0600F370: .word 0x06018644
+_0600F374: .word 0x06018724
+_0600F378: .word 0x06018614
+_0600F37C: .word 0x060186CC
 	arm_func_end sub_0600F2E4
 
 	arm_func_start sub_0600F380
-sub_0600F380: @ 0x0600F380
+sub_0600F380: ; 0x0600F380
 	mov r0, #3
 	bx lr
 	arm_func_end sub_0600F380
 
 	arm_func_start sub_0600F388
-sub_0600F388: @ 0x0600F388
-	push {r3, r4, r5, lr}
-	ldr r2, _0600F40C @ =0x0380FFF4
+sub_0600F388: ; 0x0600F388
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r2, _0600F40C ; =0x0380FFF4
 	mov r5, r0
 	ldr r3, [r2]
 	mov r4, r1
@@ -18387,23 +18391,23 @@ _0600F3C8:
 	bl sub_0600932C
 	b _0600F404
 _0600F3EC:
-	ldr r1, _0600F40C @ =0x0380FFF4
+	ldr r1, _0600F40C ; =0x0380FFF4
 	mov r0, r5
 	ldr r1, [r1]
 	mov r2, r4
 	add r1, r1, #0x1f4
 	bl sub_060091C4
 _0600F404:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600F40C: .4byte 0x0380FFF4
+_0600F40C: .word 0x0380FFF4
 	arm_func_end sub_0600F388
 
 	arm_func_start sub_0600F410
-sub_0600F410: @ 0x0600F410
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r6, _0600F46C @ =0x0380FFF4
+sub_0600F410: ; 0x0600F410
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r6, _0600F46C ; =0x0380FFF4
 	mov r5, #0
 	ldr r0, [r6]
 	mvn r4, #0
@@ -18426,27 +18430,27 @@ _0600F45C:
 	cmp r7, r4
 	bne _0600F42C
 _0600F464:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600F46C: .4byte 0x0380FFF4
+_0600F46C: .word 0x0380FFF4
 	arm_func_end sub_0600F410
 
 	arm_func_start sub_0600F470
-sub_0600F470: @ 0x0600F470
-	ldr r0, _0600F488 @ =0x0380FFF4
+sub_0600F470: ; 0x0600F470
+	ldr r0, _0600F488 ; =0x0380FFF4
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x400
 	strh r1, [r0, #0x28]
 	bx lr
 	.align 2, 0
-_0600F488: .4byte 0x0380FFF4
+_0600F488: .word 0x0380FFF4
 	arm_func_end sub_0600F470
 
 	arm_func_start sub_0600F48C
-sub_0600F48C: @ 0x0600F48C
-	push {r4, lr}
+sub_0600F48C: ; 0x0600F48C
+	stmdb sp!, {r4, lr}
 	mov r2, #1
 	strh r2, [r1, #2]
 	mov r4, r0
@@ -18462,13 +18466,13 @@ sub_0600F48C: @ 0x0600F48C
 _0600F4C0:
 	mov r0, #0
 _0600F4C4:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_0600F48C
 
 	arm_func_start sub_0600F4CC
-sub_0600F4CC: @ 0x0600F4CC
-	push {r4, lr}
+sub_0600F4CC: ; 0x0600F4CC
+	stmdb sp!, {r4, lr}
 	mov r2, #9
 	strh r2, [r1, #2]
 	mov r4, r0
@@ -18491,14 +18495,14 @@ sub_0600F4CC: @ 0x0600F4CC
 	ldrh r0, [r4, #0x12]
 	cmp r0, #1
 	bne _0600F534
-	ldr r0, _0600F570 @ =0x00008001
+	ldr r0, _0600F570 ; =0x00008001
 	bl sub_0600A484
 	b _0600F53C
 _0600F534:
 	mov r0, #0
 	bl sub_0600A484
 _0600F53C:
-	ldr r0, _0600F574 @ =0x0380FFF4
+	ldr r0, _0600F574 ; =0x0380FFF4
 	ldrh r1, [r4, #0x14]
 	ldr r0, [r0]
 	add r0, r0, #0x300
@@ -18512,17 +18516,17 @@ _0600F554:
 _0600F564:
 	mov r0, #0
 _0600F568:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600F570: .4byte 0x00008001
-_0600F574: .4byte 0x0380FFF4
+_0600F570: .word 0x00008001
+_0600F574: .word 0x0380FFF4
 	arm_func_end sub_0600F4CC
 
 	arm_func_start sub_0600F578
-sub_0600F578: @ 0x0600F578
-	push {r4, r5, r6, r7, r8, lr}
-	ldr r2, _0600F6B4 @ =0x0380FFF4
+sub_0600F578: ; 0x0600F578
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	ldr r2, _0600F6B4 ; =0x0380FFF4
 	mov r5, r1
 	ldr r3, [r2]
 	ldrh r2, [r5, #2]
@@ -18540,7 +18544,7 @@ sub_0600F578: @ 0x0600F578
 	cmpne r1, #2
 	movne r0, #0xb
 	bne _0600F6AC
-	ldr r0, _0600F6B4 @ =0x0380FFF4
+	ldr r0, _0600F6B4 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x4c]
@@ -18602,16 +18606,16 @@ _0600F678:
 	bl sub_06008F04
 	mov r0, #0x80
 _0600F6AC:
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_0600F6B4: .4byte 0x0380FFF4
+_0600F6B4: .word 0x0380FFF4
 	arm_func_end sub_0600F578
 
 	arm_func_start sub_0600F6B8
-sub_0600F6B8: @ 0x0600F6B8
-	push {r4, r5, r6, lr}
-	ldr r2, _0600F868 @ =0x0380FFF4
+sub_0600F6B8: ; 0x0600F6B8
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _0600F868 ; =0x0380FFF4
 	mov r5, r1
 	ldr r3, [r2]
 	mov r1, #5
@@ -18655,7 +18659,7 @@ sub_0600F6B8: @ 0x0600F6B8
 	movhi r0, #5
 	bhi _0600F860
 	ldrh r0, [r6, #0x4a]
-	ldr r1, _0600F86C @ =0x0000FFF0
+	ldr r1, _0600F86C ; =0x0000FFF0
 	tst r0, r1
 	movne r0, #5
 	bne _0600F860
@@ -18719,17 +18723,17 @@ _0600F810:
 	bl sub_06008F04
 	mov r0, #0x80
 _0600F860:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600F868: .4byte 0x0380FFF4
-_0600F86C: .4byte 0x0000FFF0
+_0600F868: .word 0x0380FFF4
+_0600F86C: .word 0x0000FFF0
 	arm_func_end sub_0600F6B8
 
 	arm_func_start sub_0600F870
-sub_0600F870: @ 0x0600F870
-	push {r4, r5, r6, lr}
-	ldr r2, _0600F940 @ =0x0380FFF4
+sub_0600F870: ; 0x0600F870
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _0600F940 ; =0x0380FFF4
 	mov r5, r1
 	ldr r3, [r2]
 	mov r1, #6
@@ -18779,16 +18783,16 @@ sub_0600F870: @ 0x0600F870
 	bl sub_060102D0
 	mov r0, #0x80
 _0600F938:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600F940: .4byte 0x0380FFF4
+_0600F940: .word 0x0380FFF4
 	arm_func_end sub_0600F870
 
 	arm_func_start sub_0600F944
-sub_0600F944: @ 0x0600F944
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r3, _0600FA74 @ =0x0380FFF4
+sub_0600F944: ; 0x0600F944
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r3, _0600FA74 ; =0x0380FFF4
 	mov r6, r1
 	ldr r2, [r3]
 	mov r1, #4
@@ -18811,8 +18815,8 @@ sub_0600F944: @ 0x0600F944
 	blo _0600FA6C
 	add r0, r2, #0xfe
 	add r0, r0, #0xff00
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	cmp r0, #1
 	bhi _0600F9C4
 	ldrh r0, [r7, #0x10]
@@ -18838,7 +18842,7 @@ _0600F9C4:
 	ldrh r0, [r7, #0x10]
 	tst r0, #1
 	beq _0600FA58
-	ldr r2, _0600FA74 @ =0x0380FFF4
+	ldr r2, _0600FA74 ; =0x0380FFF4
 	sub r1, r4, #0x10
 	ldr r0, [r2]
 	ldr r0, [r0, #0x3ec]
@@ -18846,7 +18850,7 @@ _0600F9C4:
 	ldr r0, [r2]
 	add r0, r0, #0x188
 	bl sub_0600E394
-	ldr r0, _0600FA74 @ =0x0380FFF4
+	ldr r0, _0600FA74 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x500
 	ldrh r1, [r0, #0x32]
@@ -18865,16 +18869,16 @@ _0600FA58:
 _0600FA68:
 	mov r0, #0x80
 _0600FA6C:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600FA74: .4byte 0x0380FFF4
+_0600FA74: .word 0x0380FFF4
 	arm_func_end sub_0600F944
 
 	arm_func_start sub_0600FA78
-sub_0600FA78: @ 0x0600FA78
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r2, _0600FB4C @ =0x0380FFF4
+sub_0600FA78: ; 0x0600FA78
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r2, _0600FB4C ; =0x0380FFF4
 	mov r6, r1
 	ldr r3, [r2]
 	mov r1, #3
@@ -18925,16 +18929,16 @@ sub_0600FA78: @ 0x0600FA78
 	bl sub_060103F4
 	mov r0, #0x80
 _0600FB44:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600FB4C: .4byte 0x0380FFF4
+_0600FB4C: .word 0x0380FFF4
 	arm_func_end sub_0600FA78
 
 	arm_func_start sub_0600FB50
-sub_0600FB50: @ 0x0600FB50
-	push {r3, lr}
-	ldr r3, _0600FC0C @ =0x0380FFF4
+sub_0600FB50: ; 0x0600FB50
+	stmdb sp!, {r3, lr}
+	ldr r3, _0600FC0C ; =0x0380FFF4
 	mov r2, #3
 	ldr ip, [r3]
 	strh r2, [r1, #2]
@@ -18979,16 +18983,16 @@ sub_0600FB50: @ 0x0600FB50
 	bl sub_060104F0
 	mov r0, #0x80
 _0600FC04:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600FC0C: .4byte 0x0380FFF4
+_0600FC0C: .word 0x0380FFF4
 	arm_func_end sub_0600FB50
 
 	arm_func_start sub_0600FC10
-sub_0600FC10: @ 0x0600FC10
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r3, _0600FD18 @ =0x0380FFF4
+sub_0600FC10: ; 0x0600FC10
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r3, _0600FD18 ; =0x0380FFF4
 	mov r6, r1
 	ldr r2, [r3]
 	mov r1, #1
@@ -19028,7 +19032,7 @@ _0600FC64:
 	ldrh r0, [r7, #0x10]
 	tst r0, #1
 	beq _0600FCFC
-	ldr r2, _0600FD18 @ =0x0380FFF4
+	ldr r2, _0600FD18 ; =0x0380FFF4
 	sub r1, r4, #0x10
 	ldr r0, [r2]
 	ldr r0, [r0, #0x3ec]
@@ -19036,7 +19040,7 @@ _0600FC64:
 	ldr r0, [r2]
 	add r0, r0, #0x188
 	bl sub_0600E394
-	ldr r0, _0600FD18 @ =0x0380FFF4
+	ldr r0, _0600FD18 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x500
 	ldrh r1, [r0, #0x32]
@@ -19055,16 +19059,16 @@ _0600FCFC:
 _0600FD0C:
 	mov r0, #0x80
 _0600FD10:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600FD18: .4byte 0x0380FFF4
+_0600FD18: .word 0x0380FFF4
 	arm_func_end sub_0600FC10
 
 	arm_func_start sub_0600FD1C
-sub_0600FD1C: @ 0x0600FD1C
-	push {r4, r5, r6, lr}
-	ldr r3, _0600FEB0 @ =0x0380FFF4
+sub_0600FD1C: ; 0x0600FD1C
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r3, _0600FEB0 ; =0x0380FFF4
 	mov r2, #1
 	ldr r3, [r3]
 	mov r6, r0
@@ -19102,7 +19106,7 @@ sub_0600FD1C: @ 0x0600FD1C
 	movhi r0, #5
 	bhi _0600FEA8
 	ldrh r0, [r6, #0x36]
-	ldr r1, _0600FEB4 @ =0x0000FFF0
+	ldr r1, _0600FEB4 ; =0x0000FFF0
 	tst r0, r1
 	movne r0, #5
 	bne _0600FEA8
@@ -19138,7 +19142,7 @@ sub_0600FD1C: @ 0x0600FD1C
 	ldrh r0, [r5, #0x12]
 	cmp r0, #0
 	bne _0600FE54
-	ldr r0, _0600FEB8 @ =0x060184D0
+	ldr r0, _0600FEB8 ; =0x060184D0
 	bl sub_06009D10
 	b _0600FE5C
 _0600FE54:
@@ -19165,18 +19169,18 @@ _0600FE5C:
 	bl sub_0600AE14
 	mov r0, #0
 _0600FEA8:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600FEB0: .4byte 0x0380FFF4
-_0600FEB4: .4byte 0x0000FFF0
-_0600FEB8: .4byte 0x060184D0
+_0600FEB0: .word 0x0380FFF4
+_0600FEB4: .word 0x0000FFF0
+_0600FEB8: .word 0x060184D0
 	arm_func_end sub_0600FD1C
 
 	arm_func_start sub_0600FEBC
-sub_0600FEBC: @ 0x0600FEBC
-	push {r4, r5, r6, r7, r8, lr}
-	ldr r2, _0600FF9C @ =0x0380FFF4
+sub_0600FEBC: ; 0x0600FEBC
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	ldr r2, _0600FF9C ; =0x0380FFF4
 	mov r5, r1
 	ldr r3, [r2]
 	mov r1, #0x12
@@ -19233,16 +19237,16 @@ _0600FF6C:
 	bl sub_060105E4
 	mov r0, #0x80
 _0600FF94:
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_0600FF9C: .4byte 0x0380FFF4
+_0600FF9C: .word 0x0380FFF4
 	arm_func_end sub_0600FEBC
 
 	arm_func_start sub_0600FFA0
-sub_0600FFA0: @ 0x0600FFA0
-	push {r4, r5, r6, lr}
-	ldr r0, _06010188 @ =0x0380FFF4
+sub_0600FFA0: ; 0x0600FFA0
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r0, _06010188 ; =0x0380FFF4
 	mov r6, #0
 	ldr r2, [r0]
 	add r0, r2, #0x400
@@ -19254,13 +19258,13 @@ sub_0600FFA0: @ 0x0600FFA0
 	add r5, r2, #0x344
 	addls pc, pc, r1, lsl #2
 	b _0601016C
-_0600FFD4: @ jump table
-	b _0600FFEC @ case 0
-	b _06010064 @ case 1
-	b _060100F4 @ case 2
-	b _060100F4 @ case 3
-	b _0601016C @ case 4
-	b _0601014C @ case 5
+_0600FFD4: ; jump table
+	b _0600FFEC ; case 0
+	b _06010064 ; case 1
+	b _060100F4 ; case 2
+	b _060100F4 ; case 3
+	b _0601016C ; case 4
+	b _0601014C ; case 5
 _0600FFEC:
 	mov r0, #0x20
 	bl sub_0600A884
@@ -19279,14 +19283,14 @@ _0600FFEC:
 	ldrh r0, [r1, #0x4a]
 	bne _06010054
 	add r1, r0, #3
-	asr r0, r1, #1
+	mov r0, r1, asr #1
 	add r0, r1, r0, lsr #30
-	asr r0, r0, #2
+	mov r0, r0, asr #2
 	strh r0, [r4, #0xc]
 	ldrh r0, [r4, #0xc]
 	cmp r0, #0xa
 	movlo r0, #0xa
-	strhlo r0, [r4, #0xc]
+	strloh r0, [r4, #0xc]
 	b _06010058
 _06010054:
 	strh r0, [r4, #0xc]
@@ -19302,7 +19306,7 @@ _06010064:
 	bl sub_0600BA10
 	movs r5, r0
 	moveq r0, #0x15
-	strheq r0, [r4]
+	streqh r0, [r4]
 	moveq r6, #1
 	beq _0601016C
 	ldrh r1, [r4, #6]
@@ -19356,13 +19360,13 @@ _06010138:
 	bl sub_06013E10
 _0601013C:
 	ldrh r0, [r4, #0xc]
-	ldr r1, _0601018C @ =sub_06010190
+	ldr r1, _0601018C ; =sub_06010190
 	bl sub_0600B7AC
 	b _0601016C
 _0601014C:
 	strh r6, [r4]
 	bl sub_0600B1D4
-	ldr r0, _06010188 @ =0x0380FFF4
+	ldr r0, _06010188 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x2e]
@@ -19375,16 +19379,16 @@ _0601016C:
 	mov r1, #0
 	bl sub_06008F04
 _06010180:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06010188: .4byte 0x0380FFF4
-_0601018C: .4byte sub_06010190
+_06010188: .word 0x0380FFF4
+_0601018C: .word sub_06010190
 	arm_func_end sub_0600FFA0
 
 	arm_func_start sub_06010190
-sub_06010190: @ 0x06010190
-	ldr r0, _060101EC @ =0x0380FFF4
+sub_06010190: ; 0x06010190
+	ldr r0, _060101EC ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #4
 	add r2, r0, #0x400
@@ -19400,23 +19404,23 @@ sub_06010190: @ 0x06010190
 	ldrh r0, [r2, #6]
 	cmp r0, #0x10
 	movlo r0, #0x11
-	strhlo r0, [r2]
+	strloh r0, [r2]
 	movhs r0, #0x15
-	strhhs r0, [r2]
+	strhsh r0, [r2]
 _060101DC:
-	ldr ip, _060101F0 @ =sub_06008F04
+	ldr ip, _060101F0 ; =sub_06008F04
 	mov r0, #2
 	mov r1, #0
 	bx ip
 	.align 2, 0
-_060101EC: .4byte 0x0380FFF4
-_060101F0: .4byte sub_06008F04
+_060101EC: .word 0x0380FFF4
+_060101F0: .word sub_06008F04
 	arm_func_end sub_06010190
 
 	arm_func_start sub_060101F4
-sub_060101F4: @ 0x060101F4
-	push {r4, lr}
-	ldr r0, _0601028C @ =0x0380FFF4
+sub_060101F4: ; 0x060101F4
+	stmdb sp!, {r4, lr}
+	ldr r0, _0601028C ; =0x0380FFF4
 	ldr r2, [r0]
 	add r0, r2, #0x400
 	ldrh r1, [r0, #4]
@@ -19435,7 +19439,7 @@ _06010224:
 	mov r0, #0x21
 	strh r0, [r4]
 	ldr r0, [r4, #0x18]
-	ldr r1, _06010290 @ =sub_06010294
+	ldr r1, _06010290 ; =sub_06010294
 	ldrh r0, [r0, #0x10]
 	bl sub_0600B7AC
 	b _06010284
@@ -19455,17 +19459,17 @@ _06010278:
 	strh r0, [r4]
 	bl sub_060108A0
 _06010284:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0601028C: .4byte 0x0380FFF4
-_06010290: .4byte sub_06010294
+_0601028C: .word 0x0380FFF4
+_06010290: .word sub_06010294
 	arm_func_end sub_060101F4
 
 	arm_func_start sub_06010294
-sub_06010294: @ 0x06010294
-	ldr r0, _060102C8 @ =0x0380FFF4
-	ldr ip, _060102CC @ =sub_06008F04
+sub_06010294: ; 0x06010294
+	ldr r0, _060102C8 ; =0x0380FFF4
+	ldr ip, _060102CC ; =sub_06008F04
 	ldr r2, [r0]
 	mov r1, #7
 	add r0, r2, #4
@@ -19478,14 +19482,14 @@ sub_06010294: @ 0x06010294
 	strh r3, [r2, #4]
 	bx ip
 	.align 2, 0
-_060102C8: .4byte 0x0380FFF4
-_060102CC: .4byte sub_06008F04
+_060102C8: .word 0x0380FFF4
+_060102CC: .word sub_06008F04
 	arm_func_end sub_06010294
 
 	arm_func_start sub_060102D0
-sub_060102D0: @ 0x060102D0
-	push {r4, lr}
-	ldr r0, _060103AC @ =0x0380FFF4
+sub_060102D0: ; 0x060102D0
+	stmdb sp!, {r4, lr}
+	ldr r0, _060103AC ; =0x0380FFF4
 	ldr r2, [r0]
 	add r0, r2, #0x400
 	ldrh r1, [r0, #4]
@@ -19525,7 +19529,7 @@ _06010340:
 	strh r1, [r4]
 	bl sub_06013E10
 	ldr r0, [r4, #0x18]
-	ldr r1, _060103B0 @ =sub_060103B4
+	ldr r1, _060103B0 ; =sub_060103B4
 	ldrh r0, [r0, #0x18]
 	bl sub_0600B7AC
 	b _060103A4
@@ -19541,17 +19545,17 @@ _0601037C:
 	strh r0, [r4]
 	bl sub_060108A0
 _060103A4:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060103AC: .4byte 0x0380FFF4
-_060103B0: .4byte sub_060103B4
+_060103AC: .word 0x0380FFF4
+_060103B0: .word sub_060103B4
 	arm_func_end sub_060102D0
 
 	arm_func_start sub_060103B4
-sub_060103B4: @ 0x060103B4
-	push {r3, lr}
-	ldr r1, _060103F0 @ =0x0380FFF4
+sub_060103B4: ; 0x060103B4
+	stmdb sp!, {r3, lr}
+	ldr r1, _060103F0 ; =0x0380FFF4
 	mov r0, #2
 	ldr ip, [r1]
 	mov r3, #7
@@ -19563,16 +19567,16 @@ sub_060103B4: @ 0x060103B4
 	mov r3, #0x35
 	strh r3, [r2, #4]
 	bl sub_06008F04
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060103F0: .4byte 0x0380FFF4
+_060103F0: .word 0x0380FFF4
 	arm_func_end sub_060103B4
 
 	arm_func_start sub_060103F4
-sub_060103F4: @ 0x060103F4
-	push {r4, lr}
-	ldr r0, _060104AC @ =0x0380FFF4
+sub_060103F4: ; 0x060103F4
+	stmdb sp!, {r4, lr}
+	ldr r0, _060104AC ; =0x0380FFF4
 	ldr r2, [r0]
 	add r0, r2, #0x400
 	ldrh r1, [r0, #4]
@@ -19603,7 +19607,7 @@ _0601045C:
 	strh r1, [r4]
 	bl sub_06013E10
 	ldr r0, [r4, #0x18]
-	ldr r1, _060104B0 @ =sub_060104B4
+	ldr r1, _060104B0 ; =sub_060104B4
 	ldrh r0, [r0, #0x18]
 	bl sub_0600B7AC
 	b _060104A4
@@ -19619,17 +19623,17 @@ _0601047C:
 	strh r0, [r4]
 	bl sub_060108A0
 _060104A4:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060104AC: .4byte 0x0380FFF4
-_060104B0: .4byte sub_060104B4
+_060104AC: .word 0x0380FFF4
+_060104B0: .word sub_060104B4
 	arm_func_end sub_060103F4
 
 	arm_func_start sub_060104B4
-sub_060104B4: @ 0x060104B4
-	ldr r0, _060104E8 @ =0x0380FFF4
-	ldr ip, _060104EC @ =sub_06008F04
+sub_060104B4: ; 0x060104B4
+	ldr r0, _060104E8 ; =0x0380FFF4
+	ldr ip, _060104EC ; =sub_06008F04
 	ldr r2, [r0]
 	mov r1, #7
 	add r0, r2, #4
@@ -19642,14 +19646,14 @@ sub_060104B4: @ 0x060104B4
 	strh r3, [r2, #4]
 	bx ip
 	.align 2, 0
-_060104E8: .4byte 0x0380FFF4
-_060104EC: .4byte sub_06008F04
+_060104E8: .word 0x0380FFF4
+_060104EC: .word sub_06008F04
 	arm_func_end sub_060104B4
 
 	arm_func_start sub_060104F0
-sub_060104F0: @ 0x060104F0
-	push {r4, lr}
-	ldr r0, _060105A0 @ =0x0380FFF4
+sub_060104F0: ; 0x060104F0
+	stmdb sp!, {r4, lr}
+	ldr r0, _060105A0 ; =0x0380FFF4
 	ldr r2, [r0]
 	add r0, r2, #0x400
 	ldrh r1, [r0, #4]
@@ -19680,7 +19684,7 @@ _06010558:
 	strh r1, [r4]
 	bl sub_06013E10
 	ldr r0, [r4, #0x18]
-	ldr r1, _060105A4 @ =sub_060105A8
+	ldr r1, _060105A4 ; =sub_060105A8
 	ldrh r0, [r0, #0x18]
 	bl sub_0600B7AC
 	b _06010598
@@ -19694,17 +19698,17 @@ _06010578:
 	strh r0, [r4]
 	bl sub_060108A0
 _06010598:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060105A0: .4byte 0x0380FFF4
-_060105A4: .4byte sub_060105A8
+_060105A0: .word 0x0380FFF4
+_060105A4: .word sub_060105A8
 	arm_func_end sub_060104F0
 
 	arm_func_start sub_060105A8
-sub_060105A8: @ 0x060105A8
-	ldr r0, _060105DC @ =0x0380FFF4
-	ldr ip, _060105E0 @ =sub_06008F04
+sub_060105A8: ; 0x060105A8
+	ldr r0, _060105DC ; =0x0380FFF4
+	ldr ip, _060105E0 ; =sub_06008F04
 	ldr r2, [r0]
 	mov r1, #7
 	add r0, r2, #4
@@ -19717,14 +19721,14 @@ sub_060105A8: @ 0x060105A8
 	strh r3, [r2, #4]
 	bx ip
 	.align 2, 0
-_060105DC: .4byte 0x0380FFF4
-_060105E0: .4byte sub_06008F04
+_060105DC: .word 0x0380FFF4
+_060105E0: .word sub_06008F04
 	arm_func_end sub_060105A8
 
 	arm_func_start sub_060105E4
-sub_060105E4: @ 0x060105E4
-	push {r3, r4, r5, lr}
-	ldr r0, _06010844 @ =0x0380FFF4
+sub_060105E4: ; 0x060105E4
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r0, _06010844 ; =0x0380FFF4
 	ldr r2, [r0]
 	add r0, r2, #0x400
 	ldrh r1, [r0, #4]
@@ -19735,12 +19739,12 @@ sub_060105E4: @ 0x060105E4
 	add r5, r0, #0x400
 	addls pc, pc, r1, lsl #2
 	b _06010824
-_06010614: @ jump table
-	b _06010628 @ case 0
-	b _06010668 @ case 1
-	b _0601071C @ case 2
-	b _06010744 @ case 3
-	b _060107B0 @ case 4
+_06010614: ; jump table
+	b _06010628 ; case 0
+	b _06010668 ; case 1
+	b _0601071C ; case 2
+	b _06010744 ; case 3
+	b _060107B0 ; case 4
 _06010628:
 	mov r0, #0
 	strh r0, [r5, #0x14]
@@ -19781,19 +19785,19 @@ _060106A8:
 	bl sub_06017F08
 	cmp r0, #0
 	movne r0, #0xe
-	strhne r0, [r5, #0x16]
+	strneh r0, [r5, #0x16]
 	movne r0, #0x84
-	strhne r0, [r5]
+	strneh r0, [r5]
 	bne _06010824
 	ldrh r0, [r5]
 	mov r1, #0
 	cmp r0, #0x80
-	lsl r0, r4, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r4, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bne _06010700
 	bl sub_0600A0A4
 	bl sub_0600AE14
-	ldr r1, _06010848 @ =0x04808040
+	ldr r1, _06010848 ; =0x04808040
 	mov r0, #0x8000
 	ldrh r1, [r1]
 	strh r1, [r5, #0xc]
@@ -19805,12 +19809,12 @@ _06010704:
 	mov r0, #0x82
 	strh r0, [r5]
 	ldr r0, [r5, #0x18]
-	ldr r1, _0601084C @ =sub_06010854
+	ldr r1, _0601084C ; =sub_06010854
 	ldrh r0, [r0, #0x16]
 	bl sub_0600B7AC
 _0601071C:
 	ldr r1, [r5, #4]
-	ldr r0, _06010850 @ =0x0480819C
+	ldr r0, _06010850 ; =0x0480819C
 	add r1, r1, #1
 	str r1, [r5, #4]
 	ldrh r0, [r0]
@@ -19850,7 +19854,7 @@ _06010784:
 	b _06010824
 _060107B0:
 	bl sub_0600B1D4
-	ldr r1, _06010844 @ =0x0380FFF4
+	ldr r1, _06010844 ; =0x0380FFF4
 	mov r0, #0x13
 	ldr r1, [r1]
 	add r1, r1, #0x300
@@ -19888,19 +19892,19 @@ _06010824:
 	mov r1, #5
 	bl sub_06008F04
 _0601083C:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06010844: .4byte 0x0380FFF4
-_06010848: .4byte 0x04808040
-_0601084C: .4byte sub_06010854
-_06010850: .4byte 0x0480819C
+_06010844: .word 0x0380FFF4
+_06010848: .word 0x04808040
+_0601084C: .word sub_06010854
+_06010850: .word 0x0480819C
 	arm_func_end sub_060105E4
 
 	arm_func_start sub_06010854
-sub_06010854: @ 0x06010854
-	ldr r0, _06010878 @ =0x0380FFF4
-	ldr ip, _0601087C @ =sub_06008F04
+sub_06010854: ; 0x06010854
+	ldr r0, _06010878 ; =0x0380FFF4
+	ldr ip, _0601087C ; =sub_06008F04
 	ldr r1, [r0]
 	mov r3, #0x83
 	add r2, r1, #0x400
@@ -19909,27 +19913,27 @@ sub_06010854: @ 0x06010854
 	strh r3, [r2, #4]
 	bx ip
 	.align 2, 0
-_06010878: .4byte 0x0380FFF4
-_0601087C: .4byte sub_06008F04
+_06010878: .word 0x0380FFF4
+_0601087C: .word sub_06008F04
 	arm_func_end sub_06010854
 
 	arm_func_start sub_06010880
-sub_06010880: @ 0x06010880
-	ldr r0, _06010898 @ =0x0380FFF4
-	ldr ip, _0601089C @ =sub_06010C4C
+sub_06010880: ; 0x06010880
+	ldr r0, _06010898 ; =0x0380FFF4
+	ldr ip, _0601089C ; =sub_06010C4C
 	ldr r0, [r0]
 	add r0, r0, #0xc6
 	add r0, r0, #0x300
 	bx ip
 	.align 2, 0
-_06010898: .4byte 0x0380FFF4
-_0601089C: .4byte sub_06010C4C
+_06010898: .word 0x0380FFF4
+_0601089C: .word sub_06010C4C
 	arm_func_end sub_06010880
 
 	arm_func_start sub_060108A0
-sub_060108A0: @ 0x060108A0
-	push {r4, lr}
-	ldr r0, _060108F0 @ =0x0380FFF4
+sub_060108A0: ; 0x060108A0
+	stmdb sp!, {r4, lr}
+	ldr r0, _060108F0 ; =0x0380FFF4
 	ldr r2, [r0]
 	add r0, r2, #0x24
 	add r1, r0, #0x400
@@ -19947,16 +19951,16 @@ sub_060108A0: @ 0x060108A0
 	mov r1, #0xb
 	bl sub_06008F04
 _060108E8:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060108F0: .4byte 0x0380FFF4
+_060108F0: .word 0x0380FFF4
 	arm_func_end sub_060108A0
 
 	arm_func_start sub_060108F4
-sub_060108F4: @ 0x060108F4
-	push {r4, r5, r6, lr}
-	ldr r2, _0601096C @ =0x0380FFF4
+sub_060108F4: ; 0x060108F4
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _0601096C ; =0x0380FFF4
 	mov r5, r1
 	ldr r1, [r2]
 	mov r6, r0
@@ -19977,7 +19981,7 @@ _0601092C:
 	add r0, r4, #0x10
 	strh r2, [r4, #0xe]
 	bl sub_0600A928
-	ldr r0, _0601096C @ =0x0380FFF4
+	ldr r0, _0601096C ; =0x0380FFF4
 	strh r5, [r4, #0x16]
 	ldr r0, [r0]
 	mov r1, r4
@@ -19985,16 +19989,16 @@ _0601092C:
 	bl sub_0600F388
 	mov r0, #1
 _06010964:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0601096C: .4byte 0x0380FFF4
+_0601096C: .word 0x0380FFF4
 	arm_func_end sub_060108F4
 
 	arm_func_start sub_06010970
-sub_06010970: @ 0x06010970
-	push {r4, r5, r6, lr}
-	ldr r2, _060109E8 @ =0x0380FFF4
+sub_06010970: ; 0x06010970
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _060109E8 ; =0x0380FFF4
 	mov r5, r1
 	ldr r1, [r2]
 	mov r6, r0
@@ -20015,7 +20019,7 @@ _060109A8:
 	add r0, r4, #0x10
 	strh r2, [r4, #0xe]
 	bl sub_0600A928
-	ldr r0, _060109E8 @ =0x0380FFF4
+	ldr r0, _060109E8 ; =0x0380FFF4
 	strh r5, [r4, #0x16]
 	ldr r0, [r0]
 	mov r1, r4
@@ -20023,16 +20027,16 @@ _060109A8:
 	bl sub_0600F388
 	mov r0, #1
 _060109E0:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_060109E8: .4byte 0x0380FFF4
+_060109E8: .word 0x0380FFF4
 	arm_func_end sub_06010970
 
 	arm_func_start sub_060109EC
-sub_060109EC: @ 0x060109EC
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r3, _06010ADC @ =0x0380FFF4
+sub_060109EC: ; 0x060109EC
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r3, _06010ADC ; =0x0380FFF4
 	mov r5, r1
 	ldr r1, [r3]
 	mov r7, r0
@@ -20054,7 +20058,7 @@ _06010A28:
 	add r0, r4, #0x10
 	strh r2, [r4, #0xe]
 	bl sub_0600A928
-	ldr r1, _06010AE0 @ =0x00000FFF
+	ldr r1, _06010AE0 ; =0x00000FFF
 	add r0, r6, #1
 	and r1, r5, r1
 	strh r1, [r4, #0x16]
@@ -20089,24 +20093,24 @@ _06010AA4:
 _06010AB4:
 	cmp r5, #0x20
 	blo _06010AA4
-	ldr r0, _06010ADC @ =0x0380FFF4
+	ldr r0, _06010ADC ; =0x0380FFF4
 	mov r1, r4
 	ldr r0, [r0]
 	add r0, r0, #0x188
 	bl sub_0600F388
 	mov r0, #1
 _06010AD4:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06010ADC: .4byte 0x0380FFF4
-_06010AE0: .4byte 0x00000FFF
+_06010ADC: .word 0x0380FFF4
+_06010AE0: .word 0x00000FFF
 	arm_func_end sub_060109EC
 
 	arm_func_start sub_06010AE4
-sub_06010AE4: @ 0x06010AE4
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r3, _06010BCC @ =0x0380FFF4
+sub_06010AE4: ; 0x06010AE4
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r3, _06010BCC ; =0x0380FFF4
 	mov r6, r1
 	ldr r1, [r3]
 	mov r7, r0
@@ -20161,23 +20165,23 @@ _06010B94:
 _06010BA4:
 	cmp r7, #0x20
 	blo _06010B94
-	ldr r0, _06010BCC @ =0x0380FFF4
+	ldr r0, _06010BCC ; =0x0380FFF4
 	mov r1, r4
 	ldr r0, [r0]
 	add r0, r0, #0x188
 	bl sub_0600F388
 	mov r0, #1
 _06010BC4:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06010BCC: .4byte 0x0380FFF4
+_06010BCC: .word 0x0380FFF4
 	arm_func_end sub_06010AE4
 
 	arm_func_start sub_06010BD0
-sub_06010BD0: @ 0x06010BD0
-	push {r4, r5, r6, lr}
-	ldr r2, _06010C48 @ =0x0380FFF4
+sub_06010BD0: ; 0x06010BD0
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _06010C48 ; =0x0380FFF4
 	mov r5, r1
 	ldr r1, [r2]
 	mov r6, r0
@@ -20198,7 +20202,7 @@ _06010C08:
 	add r0, r4, #0x10
 	strh r2, [r4, #0xe]
 	bl sub_0600A928
-	ldr r0, _06010C48 @ =0x0380FFF4
+	ldr r0, _06010C48 ; =0x0380FFF4
 	strh r5, [r4, #0x16]
 	ldr r0, [r0]
 	mov r1, r4
@@ -20206,16 +20210,16 @@ _06010C08:
 	bl sub_0600F388
 	mov r0, #1
 _06010C40:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06010C48: .4byte 0x0380FFF4
+_06010C48: .word 0x0380FFF4
 	arm_func_end sub_06010BD0
 
 	arm_func_start sub_06010C4C
-sub_06010C4C: @ 0x06010C4C
-	push {r3, r4, r5, lr}
-	ldr r1, _06010CBC @ =0x0380FFF4
+sub_06010C4C: ; 0x06010C4C
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _06010CBC ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r1]
 	mov r1, #0x16
@@ -20235,23 +20239,23 @@ _06010C80:
 	add r0, r4, #0x10
 	strh r2, [r4, #0xe]
 	bl sub_0600A928
-	ldr r0, _06010CBC @ =0x0380FFF4
+	ldr r0, _06010CBC ; =0x0380FFF4
 	mov r1, r4
 	ldr r0, [r0]
 	add r0, r0, #0x188
 	bl sub_0600F388
 	mov r0, #1
 _06010CB4:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06010CBC: .4byte 0x0380FFF4
+_06010CBC: .word 0x0380FFF4
 	arm_func_end sub_06010C4C
 
 	arm_func_start sub_06010CC0
-sub_06010CC0: @ 0x06010CC0
-	push {r3, lr}
-	ldr r0, _06010D1C @ =0x0380FFF4
+sub_06010CC0: ; 0x06010CC0
+	stmdb sp!, {r3, lr}
+	ldr r0, _06010D1C ; =0x0380FFF4
 	mov r1, #0x10
 	ldr r0, [r0]
 	add r0, r0, #0x188
@@ -20266,23 +20270,23 @@ _06010CF0:
 	mov r0, #0x8c
 	strh r0, [r1, #0xc]
 	mov r2, #0
-	ldr r0, _06010D1C @ =0x0380FFF4
+	ldr r0, _06010D1C ; =0x0380FFF4
 	strh r2, [r1, #0xe]
 	ldr r0, [r0]
 	add r0, r0, #0x188
 	bl sub_0600F388
 	mov r0, #1
 _06010D14:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06010D1C: .4byte 0x0380FFF4
+_06010D1C: .word 0x0380FFF4
 	arm_func_end sub_06010CC0
 
 	arm_func_start sub_06010D20
-sub_06010D20: @ 0x06010D20
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r1, _06010E38 @ =0x0380FFF4
+sub_06010D20: ; 0x06010D20
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r1, _06010E38 ; =0x0380FFF4
 	mov r6, r0
 	ldr r2, [r1]
 	add r0, r2, #0x300
@@ -20304,7 +20308,7 @@ _06010D60:
 	add r0, r5, #0x1f
 	add r1, r1, #1
 	add r1, r1, r1, lsr #31
-	asr r1, r1, #1
+	mov r1, r1, asr #1
 	add r1, r1, #0x16
 	strh r1, [r5, #0xe]
 	ldrh r1, [r6, #0x12]
@@ -20348,23 +20352,23 @@ _06010E0C:
 	add r2, r2, #1
 	bl sub_06001B04
 _06010E18:
-	ldr r0, _06010E38 @ =0x0380FFF4
+	ldr r0, _06010E38 ; =0x0380FFF4
 	mov r1, r5
 	ldr r0, [r0]
 	add r0, r0, #0x188
 	bl sub_0600F388
 	mov r0, #1
 _06010E30:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06010E38: .4byte 0x0380FFF4
+_06010E38: .word 0x0380FFF4
 	arm_func_end sub_06010D20
 
 	arm_func_start sub_06010E3C
-sub_06010E3C: @ 0x06010E3C
-	ldr r1, _06010E5C @ =0x0380FFF4
-	ldr ip, _06010E60 @ =sub_037FAF98
+sub_06010E3C: ; 0x06010E3C
+	ldr r1, _06010E5C ; =0x0380FFF4
+	ldr ip, _06010E60 ; =sub_037FAF98
 	ldr r1, [r1]
 	mov r0, #0
 	add r1, r1, #4
@@ -20372,14 +20376,14 @@ sub_06010E3C: @ 0x06010E3C
 	add r1, r1, #0x400
 	bx ip
 	.align 2, 0
-_06010E5C: .4byte 0x0380FFF4
-_06010E60: .4byte sub_037FAF98
+_06010E5C: .word 0x0380FFF4
+_06010E60: .word sub_037FAF98
 	arm_func_end sub_06010E3C
 
 	arm_func_start sub_06010E64
-sub_06010E64: @ 0x06010E64
-	push {r3, r4, r5, lr}
-	ldr r2, _06010F4C @ =0x0380FFF4
+sub_06010E64: ; 0x06010E64
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r2, _06010F4C ; =0x0380FFF4
 	mov r5, r0
 	mov r0, #1
 	strh r0, [r1, #2]
@@ -20435,16 +20439,16 @@ sub_06010E64: @ 0x06010E64
 	bl sub_06009ADC
 	orr r0, r4, r0
 _06010F44:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06010F4C: .4byte 0x0380FFF4
+_06010F4C: .word 0x0380FFF4
 	arm_func_end sub_06010E64
 
 	arm_func_start sub_06010F50
-sub_06010F50: @ 0x06010F50
-	push {r3, lr}
-	ldr r2, _06010F8C @ =0x0380FFF4
+sub_06010F50: ; 0x06010F50
+	stmdb sp!, {r3, lr}
+	ldr r2, _06010F8C ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20457,27 +20461,27 @@ sub_06010F50: @ 0x06010F50
 	mov r3, r0
 _06010F80:
 	mov r0, r3
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06010F8C: .4byte 0x0380FFF4
+_06010F8C: .word 0x0380FFF4
 	arm_func_end sub_06010F50
 
 	arm_func_start sub_06010F90
-sub_06010F90: @ 0x06010F90
+sub_06010F90: ; 0x06010F90
 	mov r2, #1
 	strh r2, [r1, #2]
-	ldr ip, _06010FA4 @ =sub_06009660
+	ldr ip, _06010FA4 ; =sub_06009660
 	ldrh r0, [r0, #0x10]
 	bx ip
 	.align 2, 0
-_06010FA4: .4byte sub_06009660
+_06010FA4: .word sub_06009660
 	arm_func_end sub_06010F90
 
 	arm_func_start sub_06010FA8
-sub_06010FA8: @ 0x06010FA8
-	push {r3, lr}
-	ldr r2, _06010FE4 @ =0x0380FFF4
+sub_06010FA8: ; 0x06010FA8
+	stmdb sp!, {r3, lr}
+	ldr r2, _06010FE4 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20490,16 +20494,16 @@ sub_06010FA8: @ 0x06010FA8
 	mov r3, r0
 _06010FD8:
 	mov r0, r3
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06010FE4: .4byte 0x0380FFF4
+_06010FE4: .word 0x0380FFF4
 	arm_func_end sub_06010FA8
 
 	arm_func_start sub_06010FE8
-sub_06010FE8: @ 0x06010FE8
-	push {r3, lr}
-	ldr r2, _06011034 @ =0x0380FFF4
+sub_06010FE8: ; 0x06010FE8
+	stmdb sp!, {r3, lr}
+	ldr r2, _06011034 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20517,60 +20521,60 @@ _06011024:
 	ldrh r0, [r0, #0x10]
 	bl sub_060096D4
 _0601102C:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011034: .4byte 0x0380FFF4
+_06011034: .word 0x0380FFF4
 	arm_func_end sub_06010FE8
 
 	arm_func_start sub_06011038
-sub_06011038: @ 0x06011038
+sub_06011038: ; 0x06011038
 	mov r2, #1
 	strh r2, [r1, #2]
-	ldr ip, _0601104C @ =sub_06009754
+	ldr ip, _0601104C ; =sub_06009754
 	ldrh r0, [r0, #0x10]
 	bx ip
 	.align 2, 0
-_0601104C: .4byte sub_06009754
+_0601104C: .word sub_06009754
 	arm_func_end sub_06011038
 
 	arm_func_start sub_06011050
-sub_06011050: @ 0x06011050
+sub_06011050: ; 0x06011050
 	mov r2, #1
 	strh r2, [r1, #2]
-	ldr ip, _06011064 @ =sub_06009788
+	ldr ip, _06011064 ; =sub_06009788
 	ldrh r0, [r0, #0x10]
 	bx ip
 	.align 2, 0
-_06011064: .4byte sub_06009788
+_06011064: .word sub_06009788
 	arm_func_end sub_06011050
 
 	arm_func_start sub_06011068
-sub_06011068: @ 0x06011068
+sub_06011068: ; 0x06011068
 	mov r2, #1
 	strh r2, [r1, #2]
-	ldr ip, _0601107C @ =sub_06009828
+	ldr ip, _0601107C ; =sub_06009828
 	ldrh r0, [r0, #0x10]
 	bx ip
 	.align 2, 0
-_0601107C: .4byte sub_06009828
+_0601107C: .word sub_06009828
 	arm_func_end sub_06011068
 
 	arm_func_start sub_06011080
-sub_06011080: @ 0x06011080
-	ldr ip, _06011094 @ =sub_0600984C
+sub_06011080: ; 0x06011080
+	ldr ip, _06011094 ; =sub_0600984C
 	mov r2, #1
 	add r0, r0, #0x10
 	strh r2, [r1, #2]
 	bx ip
 	.align 2, 0
-_06011094: .4byte sub_0600984C
+_06011094: .word sub_0600984C
 	arm_func_end sub_06011080
 
 	arm_func_start sub_06011098
-sub_06011098: @ 0x06011098
-	push {r3, lr}
-	ldr r2, _060110D4 @ =0x0380FFF4
+sub_06011098: ; 0x06011098
+	stmdb sp!, {r3, lr}
+	ldr r2, _060110D4 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20583,82 +20587,82 @@ sub_06011098: @ 0x06011098
 	mov r3, r0
 _060110C8:
 	mov r0, r3
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060110D4: .4byte 0x0380FFF4
+_060110D4: .word 0x0380FFF4
 	arm_func_end sub_06011098
 
 	arm_func_start sub_060110D8
-sub_060110D8: @ 0x060110D8
+sub_060110D8: ; 0x060110D8
 	mov r2, #1
 	strh r2, [r1, #2]
-	ldr ip, _060110EC @ =sub_060098E4
+	ldr ip, _060110EC ; =sub_060098E4
 	ldrh r0, [r0, #0x10]
 	bx ip
 	.align 2, 0
-_060110EC: .4byte sub_060098E4
+_060110EC: .word sub_060098E4
 	arm_func_end sub_060110D8
 
 	arm_func_start sub_060110F0
-sub_060110F0: @ 0x060110F0
+sub_060110F0: ; 0x060110F0
 	mov r2, #1
 	strh r2, [r1, #2]
-	ldr ip, _06011104 @ =sub_0600991C
+	ldr ip, _06011104 ; =sub_0600991C
 	ldrh r0, [r0, #0x10]
 	bx ip
 	.align 2, 0
-_06011104: .4byte sub_0600991C
+_06011104: .word sub_0600991C
 	arm_func_end sub_060110F0
 
 	arm_func_start sub_06011108
-sub_06011108: @ 0x06011108
+sub_06011108: ; 0x06011108
 	mov r2, #1
 	strh r2, [r1, #2]
-	ldr ip, _06011120 @ =sub_06009954
+	ldr ip, _06011120 ; =sub_06009954
 	ldrh r0, [r0, #0x10]
 	mov r1, #0
 	bx ip
 	.align 2, 0
-_06011120: .4byte sub_06009954
+_06011120: .word sub_06009954
 	arm_func_end sub_06011108
 
 	arm_func_start sub_06011124
-sub_06011124: @ 0x06011124
-	ldr ip, _06011138 @ =sub_06009A04
+sub_06011124: ; 0x06011124
+	ldr ip, _06011138 ; =sub_06009A04
 	mov r2, #1
 	add r0, r0, #0x10
 	strh r2, [r1, #2]
 	bx ip
 	.align 2, 0
-_06011138: .4byte sub_06009A04
+_06011138: .word sub_06009A04
 	arm_func_end sub_06011124
 
 	arm_func_start sub_0601113C
-sub_0601113C: @ 0x0601113C
+sub_0601113C: ; 0x0601113C
 	mov r2, #1
 	strh r2, [r1, #2]
-	ldr ip, _06011150 @ =sub_06009A34
+	ldr ip, _06011150 ; =sub_06009A34
 	ldrh r0, [r0, #0x10]
 	bx ip
 	.align 2, 0
-_06011150: .4byte sub_06009A34
+_06011150: .word sub_06009A34
 	arm_func_end sub_0601113C
 
 	arm_func_start sub_06011154
-sub_06011154: @ 0x06011154
+sub_06011154: ; 0x06011154
 	mov r2, #1
 	strh r2, [r1, #2]
-	ldr ip, _06011168 @ =sub_06009ADC
+	ldr ip, _06011168 ; =sub_06009ADC
 	ldrh r0, [r0, #0x10]
 	bx ip
 	.align 2, 0
-_06011168: .4byte sub_06009ADC
+_06011168: .word sub_06009ADC
 	arm_func_end sub_06011154
 
 	arm_func_start sub_0601116C
-sub_0601116C: @ 0x0601116C
-	push {r3, r4, r5, lr}
+sub_0601116C: ; 0x0601116C
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r2, #1
 	strh r2, [r1, #2]
 	mov r5, r0
@@ -20677,14 +20681,14 @@ sub_0601116C: @ 0x0601116C
 _060111AC:
 	mov r0, r4
 _060111B0:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end sub_0601116C
 
 	arm_func_start sub_060111B8
-sub_060111B8: @ 0x060111B8
-	push {r4, lr}
-	ldr ip, _060112B8 @ =0x0380FFF4
+sub_060111B8: ; 0x060111B8
+	stmdb sp!, {r4, lr}
+	ldr ip, _060112B8 ; =0x0380FFF4
 	mov r3, #1
 	ldr r2, [ip]
 	ldr r2, [r2, #0x31c]
@@ -20703,15 +20707,15 @@ _060111F8:
 	ldrh r3, [r0, #0x14]
 	cmp r3, #0x3f
 	bls _06011214
-	ldr r1, _060112BC @ =0x0000FFFF
+	ldr r1, _060112BC ; =0x0000FFFF
 	cmp r3, r1
 	movne r0, #5
 	bne _060112B0
 _06011214:
-	ldr r1, _060112BC @ =0x0000FFFF
+	ldr r1, _060112BC ; =0x0000FFFF
 	cmp r4, r1
 	bne _06011268
-	ldr ip, _060112B8 @ =0x0380FFF4
+	ldr ip, _060112B8 ; =0x0380FFF4
 	mov r4, #1
 	mov r3, #0x1c
 	b _06011250
@@ -20722,8 +20726,8 @@ _06011230:
 	strh r1, [lr, #0x1a]
 	ldrh r1, [lr, #0x18]
 	cmp r1, #0
-	ldrhne r1, [r0, #0x12]
-	strhne r1, [lr, #0x18]
+	ldrneh r1, [r0, #0x12]
+	strneh r1, [lr, #0x18]
 _06011250:
 	ldr r1, [ip]
 	add r1, r1, #0x300
@@ -20743,8 +20747,8 @@ _06011268:
 	mul r3, r2, r1
 	ldrh r1, [ip, r3]
 	cmp r1, #0
-	ldrhne r1, [r0, #0x12]
-	strhne r1, [ip, r3]
+	ldrneh r1, [r0, #0x12]
+	strneh r1, [ip, r3]
 _0601129C:
 	ldrh r0, [r0, #0x14]
 	cmp r0, #0
@@ -20753,16 +20757,16 @@ _0601129C:
 _060112AC:
 	mov r0, #0
 _060112B0:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060112B8: .4byte 0x0380FFF4
-_060112BC: .4byte 0x0000FFFF
+_060112B8: .word 0x0380FFF4
+_060112BC: .word 0x0000FFFF
 	arm_func_end sub_060111B8
 
 	arm_func_start sub_060112C0
-sub_060112C0: @ 0x060112C0
-	ldr r2, _06011314 @ =0x0380FFF4
+sub_060112C0: ; 0x060112C0
+	ldr r2, _06011314 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20780,17 +20784,17 @@ sub_060112C0: @ 0x060112C0
 	ldrh r1, [r0, #0x20]
 	cmp r2, r1
 	movhi r0, #5
-	strhls r2, [r0, #0x22]
+	strlsh r2, [r0, #0x22]
 	movls r0, #0
 	bx lr
 	.align 2, 0
-_06011314: .4byte 0x0380FFF4
+_06011314: .word 0x0380FFF4
 	arm_func_end sub_060112C0
 
 	arm_func_start sub_06011318
-sub_06011318: @ 0x06011318
-	push {r3, lr}
-	ldr r2, _06011354 @ =0x0380FFF4
+sub_06011318: ; 0x06011318
+	stmdb sp!, {r3, lr}
+	ldr r2, _06011354 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20803,16 +20807,16 @@ sub_06011318: @ 0x06011318
 	mov r3, r0
 _06011348:
 	mov r0, r3
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011354: .4byte 0x0380FFF4
+_06011354: .word 0x0380FFF4
 	arm_func_end sub_06011318
 
 	arm_func_start sub_06011358
-sub_06011358: @ 0x06011358
-	push {r3, lr}
-	ldr r2, _06011394 @ =0x0380FFF4
+sub_06011358: ; 0x06011358
+	stmdb sp!, {r3, lr}
+	ldr r2, _06011394 ; =0x0380FFF4
 	mov r3, r0
 	mov r0, #1
 	strh r0, [r1, #2]
@@ -20825,16 +20829,16 @@ sub_06011358: @ 0x06011358
 	ldrh r1, [r3, #0x12]
 	bl sub_06009BAC
 _0601138C:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011394: .4byte 0x0380FFF4
+_06011394: .word 0x0380FFF4
 	arm_func_end sub_06011358
 
 	arm_func_start sub_06011398
-sub_06011398: @ 0x06011398
-	push {r3, lr}
-	ldr r2, _060113D4 @ =0x0380FFF4
+sub_06011398: ; 0x06011398
+	stmdb sp!, {r3, lr}
+	ldr r2, _060113D4 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20847,16 +20851,16 @@ sub_06011398: @ 0x06011398
 	mov r3, r0
 _060113C8:
 	mov r0, r3
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060113D4: .4byte 0x0380FFF4
+_060113D4: .word 0x0380FFF4
 	arm_func_end sub_06011398
 
 	arm_func_start sub_060113D8
-sub_060113D8: @ 0x060113D8
-	push {r3, lr}
-	ldr r2, _06011414 @ =0x0380FFF4
+sub_060113D8: ; 0x060113D8
+	stmdb sp!, {r3, lr}
+	ldr r2, _06011414 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20869,40 +20873,40 @@ sub_060113D8: @ 0x060113D8
 	mov r3, r0
 _06011408:
 	mov r0, r3
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011414: .4byte 0x0380FFF4
+_06011414: .word 0x0380FFF4
 	arm_func_end sub_060113D8
 
 	arm_func_start sub_06011418
-sub_06011418: @ 0x06011418
-	ldr ip, _0601142C @ =sub_06009D10
+sub_06011418: ; 0x06011418
+	ldr ip, _0601142C ; =sub_06009D10
 	mov r2, #1
 	add r0, r0, #0x10
 	strh r2, [r1, #2]
 	bx ip
 	.align 2, 0
-_0601142C: .4byte sub_06009D10
+_0601142C: .word sub_06009D10
 	arm_func_end sub_06011418
 
 	arm_func_start sub_06011430
-sub_06011430: @ 0x06011430
+sub_06011430: ; 0x06011430
 	mov r2, #1
 	strh r2, [r1, #2]
 	mov r1, r0
 	ldrh r0, [r1, #0x10]
-	ldr ip, _0601144C @ =sub_06009D74
+	ldr ip, _0601144C ; =sub_06009D74
 	add r1, r1, #0x12
 	bx ip
 	.align 2, 0
-_0601144C: .4byte sub_06009D74
+_0601144C: .word sub_06009D74
 	arm_func_end sub_06011430
 
 	arm_func_start sub_06011450
-sub_06011450: @ 0x06011450
-	push {r3, lr}
-	ldr r2, _06011488 @ =0x0380FFF4
+sub_06011450: ; 0x06011450
+	stmdb sp!, {r3, lr}
+	ldr r2, _06011488 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20914,16 +20918,16 @@ sub_06011450: @ 0x06011450
 	ldrh r0, [r0, #0x10]
 	bl sub_06009E84
 _06011480:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011488: .4byte 0x0380FFF4
+_06011488: .word 0x0380FFF4
 	arm_func_end sub_06011450
 
 	arm_func_start sub_0601148C
-sub_0601148C: @ 0x0601148C
-	push {r3, lr}
-	ldr r2, _060114C4 @ =0x0380FFF4
+sub_0601148C: ; 0x0601148C
+	stmdb sp!, {r3, lr}
+	ldr r2, _060114C4 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20935,16 +20939,16 @@ sub_0601148C: @ 0x0601148C
 	ldrh r0, [r0, #0x10]
 	bl sub_06009EDC
 _060114BC:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060114C4: .4byte 0x0380FFF4
+_060114C4: .word 0x0380FFF4
 	arm_func_end sub_0601148C
 
 	arm_func_start sub_060114C8
-sub_060114C8: @ 0x060114C8
-	push {r3, lr}
-	ldr r2, _06011504 @ =0x0380FFF4
+sub_060114C8: ; 0x060114C8
+	stmdb sp!, {r3, lr}
+	ldr r2, _06011504 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20957,16 +20961,16 @@ sub_060114C8: @ 0x060114C8
 	ldrh r0, [r0, #0x10]
 	bl sub_06009F20
 _060114FC:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011504: .4byte 0x0380FFF4
+_06011504: .word 0x0380FFF4
 	arm_func_end sub_060114C8
 
 	arm_func_start sub_06011508
-sub_06011508: @ 0x06011508
-	push {r3, lr}
-	ldr r2, _06011568 @ =0x0380FFF4
+sub_06011508: ; 0x06011508
+	stmdb sp!, {r3, lr}
+	ldr r2, _06011568 ; =0x0380FFF4
 	mov r3, #1
 	strh r3, [r1, #2]
 	ldr r1, [r2]
@@ -20980,7 +20984,7 @@ sub_06011508: @ 0x06011508
 	ldrh r2, [r3, #0xe]
 	add r1, r0, #1
 	add r1, r1, r1, lsr #31
-	asr r1, r1, #1
+	mov r1, r1, asr #1
 	add r1, r1, #1
 	cmp r2, r1
 	movlt r0, #4
@@ -20988,16 +20992,16 @@ sub_06011508: @ 0x06011508
 	add r1, r3, #0x12
 	bl sub_0600A6F8
 _06011560:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011568: .4byte 0x0380FFF4
+_06011568: .word 0x0380FFF4
 	arm_func_end sub_06011508
 
 	arm_func_start sub_0601156C
-sub_0601156C: @ 0x0601156C
-	push {r4, lr}
-	ldr r0, _060116A0 @ =0x0380FFF4
+sub_0601156C: ; 0x0601156C
+	stmdb sp!, {r4, lr}
+	ldr r0, _060116A0 ; =0x0380FFF4
 	mov r4, r1
 	mov r1, #0x21
 	strh r1, [r4, #2]
@@ -21005,7 +21009,7 @@ sub_0601156C: @ 0x0601156C
 	add r0, r4, #6
 	add r1, r1, #0x324
 	bl sub_0600A928
-	ldr r0, _060116A0 @ =0x0380FFF4
+	ldr r0, _060116A0 ; =0x0380FFF4
 	add r1, r4, #0x22
 	ldr r3, [r0]
 	mov r2, #0x20
@@ -21039,14 +21043,14 @@ sub_0601156C: @ 0x0601156C
 	ldr r3, [r0]
 	add r3, r3, #0x300
 	ldrh r3, [r3, #0x3a]
-	lsl r3, r3, #0x1f
-	lsr r3, r3, #0x1f
+	mov r3, r3, lsl #0x1f
+	mov r3, r3, lsr #0x1f
 	strh r3, [r4, #0x1a]
 	ldr r3, [r0]
 	add r3, r3, #0x300
 	ldrh r3, [r3, #0x3a]
-	lsl r3, r3, #0x1e
-	lsr r3, r3, #0x1f
+	mov r3, r3, lsl #0x1e
+	mov r3, r3, lsr #0x1f
 	strh r3, [r4, #0x1c]
 	ldr r3, [r0]
 	add r3, r3, #0x300
@@ -21059,28 +21063,28 @@ sub_0601156C: @ 0x0601156C
 	ldr r0, [r0]
 	add r0, r0, #0x384
 	bl sub_06001B04
-	ldr r2, _060116A0 @ =0x0380FFF4
+	ldr r2, _060116A0 ; =0x0380FFF4
 	mov r0, #0
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	ldrh r1, [r1, #0x3a]
-	lsl r1, r1, #0x1d
-	lsr r1, r1, #0x1f
+	mov r1, r1, lsl #0x1d
+	mov r1, r1, lsr #0x1f
 	strh r1, [r4, #0x42]
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	ldrh r1, [r1, #0x32]
 	strh r1, [r4, #0x44]
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060116A0: .4byte 0x0380FFF4
+_060116A0: .word 0x0380FFF4
 	arm_func_end sub_0601156C
 
 	arm_func_start sub_060116A4
-sub_060116A4: @ 0x060116A4
-	push {r3, lr}
-	ldr r0, _060116D0 @ =0x0380FFF4
+sub_060116A4: ; 0x060116A4
+	stmdb sp!, {r3, lr}
+	ldr r0, _060116D0 ; =0x0380FFF4
 	mov r2, #4
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21088,15 +21092,15 @@ sub_060116A4: @ 0x060116A4
 	add r1, r2, #0x324
 	bl sub_0600A928
 	mov r0, #0
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060116D0: .4byte 0x0380FFF4
+_060116D0: .word 0x0380FFF4
 	arm_func_end sub_060116A4
 
 	arm_func_start sub_060116D4
-sub_060116D4: @ 0x060116D4
-	ldr r0, _060116F8 @ =0x0380FFF4
+sub_060116D4: ; 0x060116D4
+	ldr r0, _060116F8 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21106,12 +21110,12 @@ sub_060116D4: @ 0x060116D4
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_060116F8: .4byte 0x0380FFF4
+_060116F8: .word 0x0380FFF4
 	arm_func_end sub_060116D4
 
 	arm_func_start sub_060116FC
-sub_060116FC: @ 0x060116FC
-	ldr r3, _06011730 @ =0x0380FFF4
+sub_060116FC: ; 0x060116FC
+	ldr r3, _06011730 ; =0x0380FFF4
 	mov r0, #3
 	strh r0, [r1, #2]
 	ldr r2, [r3]
@@ -21125,12 +21129,12 @@ sub_060116FC: @ 0x060116FC
 	strh r2, [r1, #8]
 	bx lr
 	.align 2, 0
-_06011730: .4byte 0x0380FFF4
+_06011730: .word 0x0380FFF4
 	arm_func_end sub_060116FC
 
 	arm_func_start sub_06011734
-sub_06011734: @ 0x06011734
-	ldr r0, _06011758 @ =0x0380FFF4
+sub_06011734: ; 0x06011734
+	ldr r0, _06011758 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21140,12 +21144,12 @@ sub_06011734: @ 0x06011734
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011758: .4byte 0x0380FFF4
+_06011758: .word 0x0380FFF4
 	arm_func_end sub_06011734
 
 	arm_func_start sub_0601175C
-sub_0601175C: @ 0x0601175C
-	ldr r0, _06011780 @ =0x0380FFF4
+sub_0601175C: ; 0x0601175C
+	ldr r0, _06011780 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21155,12 +21159,12 @@ sub_0601175C: @ 0x0601175C
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011780: .4byte 0x0380FFF4
+_06011780: .word 0x0380FFF4
 	arm_func_end sub_0601175C
 
 	arm_func_start sub_06011784
-sub_06011784: @ 0x06011784
-	ldr r0, _060117A8 @ =0x0380FFF4
+sub_06011784: ; 0x06011784
+	ldr r0, _060117A8 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21170,12 +21174,12 @@ sub_06011784: @ 0x06011784
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_060117A8: .4byte 0x0380FFF4
+_060117A8: .word 0x0380FFF4
 	arm_func_end sub_06011784
 
 	arm_func_start sub_060117AC
-sub_060117AC: @ 0x060117AC
-	ldr r0, _060117D0 @ =0x0380FFF4
+sub_060117AC: ; 0x060117AC
+	ldr r0, _060117D0 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21185,46 +21189,46 @@ sub_060117AC: @ 0x060117AC
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_060117D0: .4byte 0x0380FFF4
+_060117D0: .word 0x0380FFF4
 	arm_func_end sub_060117AC
 
 	arm_func_start sub_060117D4
-sub_060117D4: @ 0x060117D4
-	ldr r0, _06011800 @ =0x0380FFF4
+sub_060117D4: ; 0x060117D4
+	ldr r0, _06011800 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
 	mov r0, #0
 	add r2, r2, #0x300
 	ldrh r2, [r2, #0x3a]
-	lsl r2, r2, #0x1f
-	lsr r2, r2, #0x1f
+	mov r2, r2, lsl #0x1f
+	mov r2, r2, lsr #0x1f
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011800: .4byte 0x0380FFF4
+_06011800: .word 0x0380FFF4
 	arm_func_end sub_060117D4
 
 	arm_func_start sub_06011804
-sub_06011804: @ 0x06011804
-	ldr r0, _06011830 @ =0x0380FFF4
+sub_06011804: ; 0x06011804
+	ldr r0, _06011830 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
 	mov r0, #0
 	add r2, r2, #0x300
 	ldrh r2, [r2, #0x3a]
-	lsl r2, r2, #0x1e
-	lsr r2, r2, #0x1f
+	mov r2, r2, lsl #0x1e
+	mov r2, r2, lsr #0x1f
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011830: .4byte 0x0380FFF4
+_06011830: .word 0x0380FFF4
 	arm_func_end sub_06011804
 
 	arm_func_start sub_06011834
-sub_06011834: @ 0x06011834
-	ldr r0, _06011858 @ =0x0380FFF4
+sub_06011834: ; 0x06011834
+	ldr r0, _06011858 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21234,12 +21238,12 @@ sub_06011834: @ 0x06011834
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011858: .4byte 0x0380FFF4
+_06011858: .word 0x0380FFF4
 	arm_func_end sub_06011834
 
 	arm_func_start sub_0601185C
-sub_0601185C: @ 0x0601185C
-	ldr r0, _06011880 @ =0x0380FFF4
+sub_0601185C: ; 0x0601185C
+	ldr r0, _06011880 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21249,12 +21253,12 @@ sub_0601185C: @ 0x0601185C
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011880: .4byte 0x0380FFF4
+_06011880: .word 0x0380FFF4
 	arm_func_end sub_0601185C
 
 	arm_func_start sub_06011884
-sub_06011884: @ 0x06011884
-	ldr r0, _060118BC @ =0x0380FFF4
+sub_06011884: ; 0x06011884
+	ldr r0, _060118BC ; =0x0380FFF4
 	mov r2, #0x11
 	strh r2, [r1, #2]
 	ldr r0, [r0]
@@ -21270,29 +21274,29 @@ _060118A0:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_060118BC: .4byte 0x0380FFF4
+_060118BC: .word 0x0380FFF4
 	arm_func_end sub_06011884
 
 	arm_func_start sub_060118C0
-sub_060118C0: @ 0x060118C0
-	ldr r0, _060118EC @ =0x0380FFF4
+sub_060118C0: ; 0x060118C0
+	ldr r0, _060118EC ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
 	mov r0, #0
 	add r2, r2, #0x300
 	ldrh r2, [r2, #0x3a]
-	lsl r2, r2, #0x1d
-	lsr r2, r2, #0x1f
+	mov r2, r2, lsl #0x1d
+	mov r2, r2, lsr #0x1f
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_060118EC: .4byte 0x0380FFF4
+_060118EC: .word 0x0380FFF4
 	arm_func_end sub_060118C0
 
 	arm_func_start sub_060118F0
-sub_060118F0: @ 0x060118F0
-	ldr r0, _06011914 @ =0x0380FFF4
+sub_060118F0: ; 0x060118F0
+	ldr r0, _06011914 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21302,12 +21306,12 @@ sub_060118F0: @ 0x060118F0
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011914: .4byte 0x0380FFF4
+_06011914: .word 0x0380FFF4
 	arm_func_end sub_060118F0
 
 	arm_func_start sub_06011918
-sub_06011918: @ 0x06011918
-	push {r4, lr}
+sub_06011918: ; 0x06011918
+	stmdb sp!, {r4, lr}
 	mov r4, r1
 	mov r0, #4
 	strh r0, [r4, #2]
@@ -21321,13 +21325,13 @@ sub_06011918: @ 0x06011918
 	bl sub_0600B274
 	strh r0, [r4, #0xa]
 	mov r0, #0
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_06011918
 
 	arm_func_start sub_06011958
-sub_06011958: @ 0x06011958
-	ldr r0, _06011980 @ =0x0380FFF4
+sub_06011958: ; 0x06011958
+	ldr r0, _06011980 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21338,12 +21342,12 @@ sub_06011958: @ 0x06011958
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011980: .4byte 0x0380FFF4
+_06011980: .word 0x0380FFF4
 	arm_func_end sub_06011958
 
 	arm_func_start sub_06011984
-sub_06011984: @ 0x06011984
-	ldr r0, _060119BC @ =0x0380FFF4
+sub_06011984: ; 0x06011984
+	ldr r0, _060119BC ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r0, [r0]
@@ -21351,19 +21355,19 @@ sub_06011984: @ 0x06011984
 	ldrh r2, [r0, #0x4c]
 	cmp r2, #0x10
 	movlo r0, #1
-	ldrhhs r2, [r0, #0x3a]
+	ldrhsh r2, [r0, #0x3a]
 	movhs r0, #0
-	lslhs r2, r2, #0x1c
-	lsrhs r2, r2, #0x1f
-	strhhs r2, [r1, #6]
+	movhs r2, r2, lsl #0x1c
+	movhs r2, r2, lsr #0x1f
+	strhsh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_060119BC: .4byte 0x0380FFF4
+_060119BC: .word 0x0380FFF4
 	arm_func_end sub_06011984
 
 	arm_func_start sub_060119C0
-sub_060119C0: @ 0x060119C0
-	ldr r3, _06011A1C @ =0x0380FFF4
+sub_060119C0: ; 0x060119C0
+	ldr r3, _06011A1C ; =0x0380FFF4
 	mov r0, #3
 	strh r0, [r1, #2]
 	ldr r0, [r3]
@@ -21374,25 +21378,25 @@ sub_060119C0: @ 0x060119C0
 	bxlo lr
 	ldrh r2, [r0, #0x3a]
 	mov r0, #0
-	lsl r2, r2, #0x1b
-	lsr r2, r2, #0x1f
+	mov r2, r2, lsl #0x1b
+	mov r2, r2, lsr #0x1f
 	strh r2, [r1, #6]
 	ldr r2, [r3]
 	add r2, r2, #0x300
 	ldrh r3, [r2, #0x3a]
-	lsl r2, r3, #0x1c
-	lsl r3, r3, #0x1a
-	lsr r2, r2, #0x1f
+	mov r2, r3, lsl #0x1c
+	mov r3, r3, lsl #0x1a
+	mov r2, r2, lsr #0x1f
 	eor r2, r2, r3, lsr #31
 	strh r2, [r1, #8]
 	bx lr
 	.align 2, 0
-_06011A1C: .4byte 0x0380FFF4
+_06011A1C: .word 0x0380FFF4
 	arm_func_end sub_060119C0
 
 	arm_func_start sub_06011A20
-sub_06011A20: @ 0x06011A20
-	ldr r0, _06011A58 @ =0x0380FFF4
+sub_06011A20: ; 0x06011A20
+	ldr r0, _06011A58 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r0, [r0]
@@ -21400,19 +21404,19 @@ sub_06011A20: @ 0x06011A20
 	ldrh r2, [r0, #0x4c]
 	cmp r2, #0x10
 	movlo r0, #1
-	ldrhhs r2, [r0, #0x3a]
+	ldrhsh r2, [r0, #0x3a]
 	movhs r0, #0
-	lslhs r2, r2, #0x19
-	lsrhs r2, r2, #0x1f
-	strhhs r2, [r1, #6]
+	movhs r2, r2, lsl #0x19
+	movhs r2, r2, lsr #0x1f
+	strhsh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011A58: .4byte 0x0380FFF4
+_06011A58: .word 0x0380FFF4
 	arm_func_end sub_06011A20
 
 	arm_func_start sub_06011A5C
-sub_06011A5C: @ 0x06011A5C
-	ldr r0, _06011A94 @ =0x0380FFF4
+sub_06011A5C: ; 0x06011A5C
+	ldr r0, _06011A94 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r0, [r0]
@@ -21420,20 +21424,20 @@ sub_06011A5C: @ 0x06011A5C
 	ldrh r2, [r0, #0x4c]
 	cmp r2, #0x10
 	movlo r0, #1
-	ldrhhs r2, [r0, #0x3a]
+	ldrhsh r2, [r0, #0x3a]
 	movhs r0, #0
-	lslhs r2, r2, #0x18
-	lsrhs r2, r2, #0x1f
-	strhhs r2, [r1, #6]
+	movhs r2, r2, lsl #0x18
+	movhs r2, r2, lsr #0x1f
+	strhsh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011A94: .4byte 0x0380FFF4
+_06011A94: .word 0x0380FFF4
 	arm_func_end sub_06011A5C
 
 	arm_func_start sub_06011A98
-sub_06011A98: @ 0x06011A98
-	push {r3, lr}
-	ldr r0, _06011AC4 @ =0x0380FFF4
+sub_06011A98: ; 0x06011A98
+	stmdb sp!, {r3, lr}
+	ldr r0, _06011AC4 ; =0x0380FFF4
 	mov r2, #4
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21441,15 +21445,15 @@ sub_06011A98: @ 0x06011A98
 	add r1, r2, #0x3a8
 	bl sub_0600A928
 	mov r0, #0
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011AC4: .4byte 0x0380FFF4
+_06011AC4: .word 0x0380FFF4
 	arm_func_end sub_06011A98
 
 	arm_func_start sub_06011AC8
-sub_06011AC8: @ 0x06011AC8
-	ldr r2, _06011B10 @ =0x0380FFF4
+sub_06011AC8: ; 0x06011AC8
+	ldr r2, _06011B10 ; =0x0380FFF4
 	mov r0, #0x12
 	strh r0, [r1, #2]
 	ldr r0, [r2]
@@ -21469,12 +21473,12 @@ _06011AF4:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_06011B10: .4byte 0x0380FFF4
+_06011B10: .word 0x0380FFF4
 	arm_func_end sub_06011AC8
 
 	arm_func_start sub_06011B14
-sub_06011B14: @ 0x06011B14
-	ldr r0, _06011B38 @ =0x0380FFF4
+sub_06011B14: ; 0x06011B14
+	ldr r0, _06011B38 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21484,12 +21488,12 @@ sub_06011B14: @ 0x06011B14
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011B38: .4byte 0x0380FFF4
+_06011B38: .word 0x0380FFF4
 	arm_func_end sub_06011B14
 
 	arm_func_start sub_06011B3C
-sub_06011B3C: @ 0x06011B3C
-	ldr r0, _06011B60 @ =0x0380FFF4
+sub_06011B3C: ; 0x06011B3C
+	ldr r0, _06011B60 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21499,12 +21503,12 @@ sub_06011B3C: @ 0x06011B3C
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011B60: .4byte 0x0380FFF4
+_06011B60: .word 0x0380FFF4
 	arm_func_end sub_06011B3C
 
 	arm_func_start sub_06011B64
-sub_06011B64: @ 0x06011B64
-	ldr r0, _06011B88 @ =0x0380FFF4
+sub_06011B64: ; 0x06011B64
+	ldr r0, _06011B88 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21514,21 +21518,21 @@ sub_06011B64: @ 0x06011B64
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011B88: .4byte 0x0380FFF4
+_06011B88: .word 0x0380FFF4
 	arm_func_end sub_06011B64
 
 	arm_func_start sub_06011B8C
-sub_06011B8C: @ 0x06011B8C
-	push {r3, r4, r5, r6, r7, lr}
+sub_06011B8C: ; 0x06011B8C
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r1
 	ldrh r0, [r4, #2]
-	ldr r1, _06011C60 @ =0x0380FFF4
+	ldr r1, _06011C60 ; =0x0380FFF4
 	cmp r0, #1
-	ldrhi r0, _06011C60 @ =0x0380FFF4
+	ldrhi r0, _06011C60 ; =0x0380FFF4
 	ldrhi r0, [r0]
 	addhi r0, r0, #0x300
-	ldrhhi r0, [r0, #0xe4]
-	strhhi r0, [r4, #6]
+	ldrhih r0, [r0, #0xe4]
+	strhih r0, [r4, #6]
 	ldrh r0, [r4, #2]
 	ldr r3, [r1]
 	sub r1, r0, #2
@@ -21571,20 +21575,20 @@ _06011C3C:
 	mov r0, #0
 	add r1, r1, #1
 	add r1, r1, r1, lsr #31
-	asr r1, r1, #1
+	mov r1, r1, asr #1
 	add r1, r1, #2
 	strh r1, [r4, #2]
 _06011C58:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06011C60: .4byte 0x0380FFF4
+_06011C60: .word 0x0380FFF4
 	arm_func_end sub_06011B8C
 
 	arm_func_start sub_06011C64
-sub_06011C64: @ 0x06011C64
-	push {r3, lr}
-	ldr r2, _06011CA0 @ =0x0380FFF4
+sub_06011C64: ; 0x06011C64
+	stmdb sp!, {r3, lr}
+	ldr r2, _06011CA0 ; =0x0380FFF4
 	mov r0, #1
 	strh r0, [r1, #2]
 	ldr r1, [r2]
@@ -21597,16 +21601,16 @@ sub_06011C64: @ 0x06011C64
 	bl sub_0600A884
 	mov r0, #0
 _06011C98:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011CA0: .4byte 0x0380FFF4
+_06011CA0: .word 0x0380FFF4
 	arm_func_end sub_06011C64
 
 	arm_func_start sub_06011CA4
-sub_06011CA4: @ 0x06011CA4
-	push {r3, lr}
-	ldr r2, _06011CFC @ =0x0380FFF4
+sub_06011CA4: ; 0x06011CA4
+	stmdb sp!, {r3, lr}
+	ldr r2, _06011CFC ; =0x0380FFF4
 	mov r0, #1
 	strh r0, [r1, #2]
 	ldr r1, [r2]
@@ -21626,16 +21630,16 @@ sub_06011CA4: @ 0x06011CA4
 	bl sub_0600A884
 	mov r0, #0
 _06011CF4:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011CFC: .4byte 0x0380FFF4
+_06011CFC: .word 0x0380FFF4
 	arm_func_end sub_06011CA4
 
 	arm_func_start sub_06011D00
-sub_06011D00: @ 0x06011D00
-	push {r3, lr}
-	ldr r0, _06011D50 @ =0x0380FFF4
+sub_06011D00: ; 0x06011D00
+	stmdb sp!, {r3, lr}
+	ldr r0, _06011D50 ; =0x0380FFF4
 	mov r2, #1
 	strh r2, [r1, #2]
 	ldr r0, [r0]
@@ -21644,7 +21648,7 @@ sub_06011D00: @ 0x06011D00
 	cmp r1, #0x10
 	beq _06011D34
 	cmp r1, #0x20
-	ldrheq r0, [r0, #0x56]
+	ldreqh r0, [r0, #0x56]
 	cmpeq r0, #0
 	bne _06011D44
 _06011D34:
@@ -21655,16 +21659,16 @@ _06011D34:
 _06011D44:
 	mov r0, #1
 _06011D48:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011D50: .4byte 0x0380FFF4
+_06011D50: .word 0x0380FFF4
 	arm_func_end sub_06011D00
 
 	arm_func_start sub_06011D54
-sub_06011D54: @ 0x06011D54
-	push {r3, lr}
-	ldr r0, _06011D8C @ =0x0380FFF4
+sub_06011D54: ; 0x06011D54
+	stmdb sp!, {r3, lr}
+	ldr r0, _06011D8C ; =0x0380FFF4
 	mov r2, #1
 	strh r2, [r1, #2]
 	ldr r0, [r0]
@@ -21676,16 +21680,16 @@ sub_06011D54: @ 0x06011D54
 _06011D7C:
 	bl sub_06008B14
 	mov r0, #0
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011D8C: .4byte 0x0380FFF4
+_06011D8C: .word 0x0380FFF4
 	arm_func_end sub_06011D54
 
 	arm_func_start sub_06011D90
-sub_06011D90: @ 0x06011D90
-	push {r3, lr}
-	ldr r0, _06011DC4 @ =0x0380FFF4
+sub_06011D90: ; 0x06011D90
+	stmdb sp!, {r3, lr}
+	ldr r0, _06011DC4 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x4c]
@@ -21696,24 +21700,24 @@ sub_06011D90: @ 0x06011D90
 	bl sub_0600A9C4
 	mov r0, #0
 _06011DBC:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06011DC4: .4byte 0x0380FFF4
+_06011DC4: .word 0x0380FFF4
 	arm_func_end sub_06011D90
 
 	arm_func_start sub_06011DC8
-sub_06011DC8: @ 0x06011DC8
-	push {r4, lr}
-	ldr r0, _06011E5C @ =0x06018894
+sub_06011DC8: ; 0x06011DC8
+	stmdb sp!, {r4, lr}
+	ldr r0, _06011E5C ; =0x06018894
 	mov r4, r1
 	mov r3, #9
 	add r1, r4, #6
 	mov r2, #8
 	strh r3, [r4, #2]
 	bl sub_06001B04
-	ldr r1, _06011E60 @ =0x04808000
-	ldr r0, _06011E64 @ =0x0380FFF4
+	ldr r1, _06011E60 ; =0x04808000
+	ldr r0, _06011E64 ; =0x0380FFF4
 	ldrh r1, [r1]
 	strh r1, [r4, #0xe]
 	ldr r0, [r0]
@@ -21721,8 +21725,8 @@ sub_06011DC8: @ 0x06011DC8
 	ldrh r0, [r0, #0x90]
 	tst r0, #0x8000
 	moveq r1, #0x6d
-	ldreq r0, _06011E68 @ =0x0000933D
-	strheq r1, [r4, #0x10]
+	ldreq r0, _06011E68 ; =0x0000933D
+	streqh r1, [r4, #0x10]
 	beq _06011E28
 	mov r0, #0
 	bl sub_0600B274
@@ -21730,29 +21734,29 @@ sub_06011DC8: @ 0x06011DC8
 	bl sub_0600B2F0
 _06011E28:
 	strh r0, [r4, #0x12]
-	ldr r0, _06011E64 @ =0x0380FFF4
+	ldr r0, _06011E64 ; =0x0380FFF4
 	ldr r1, [r0]
 	add r0, r1, #0x600
 	ldrh r0, [r0, #0x90]
 	tst r0, #0x4000
 	addne r0, r1, #0x500
-	ldrhne r0, [r0, #0xf8]
+	ldrneh r0, [r0, #0xf8]
 	moveq r0, #2
 	strh r0, [r4, #0x14]
 	mov r0, #0
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06011E5C: .4byte 0x06018894
-_06011E60: .4byte 0x04808000
-_06011E64: .4byte 0x0380FFF4
-_06011E68: .4byte 0x0000933D
+_06011E5C: .word 0x06018894
+_06011E60: .word 0x04808000
+_06011E64: .word 0x0380FFF4
+_06011E68: .word 0x0000933D
 	arm_func_end sub_06011DC8
 
 	arm_func_start sub_06011E6C
-sub_06011E6C: @ 0x06011E6C
-	push {r4, lr}
-	ldr r0, _06011EC4 @ =0x0380FFF4
+sub_06011E6C: ; 0x06011E6C
+	stmdb sp!, {r4, lr}
+	ldr r0, _06011EC4 ; =0x0380FFF4
 	mov r4, r1
 	ldr r0, [r0]
 	add r0, r0, #0x300
@@ -21763,7 +21767,7 @@ sub_06011E6C: @ 0x06011E6C
 	mov r0, #0x5c
 	strh r0, [r4, #2]
 	bl sub_0600A9FC
-	ldr r0, _06011EC4 @ =0x0380FFF4
+	ldr r0, _06011EC4 ; =0x0380FFF4
 	add r1, r4, #8
 	ldr r0, [r0]
 	mov r2, #0xb4
@@ -21772,22 +21776,22 @@ sub_06011E6C: @ 0x06011E6C
 	bl sub_06011EC8
 	mov r0, #0
 _06011EBC:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06011EC4: .4byte 0x0380FFF4
+_06011EC4: .word 0x0380FFF4
 	arm_func_end sub_06011E6C
 
 	arm_func_start sub_06011EC8
-sub_06011EC8: @ 0x06011EC8
-	ldr pc, _06011ECC @ =sub_037FAFE0
+sub_06011EC8: ; 0x06011EC8
+	ldr pc, _06011ECC ; =sub_037FAFE0
 	.align 2, 0
-_06011ECC: .4byte sub_037FAFE0
+_06011ECC: .word sub_037FAFE0
 	arm_func_end sub_06011EC8
 
 	arm_func_start sub_06011ED0
-sub_06011ED0: @ 0x06011ED0
-	ldr r0, _06011EF4 @ =0x0380FFF4
+sub_06011ED0: ; 0x06011ED0
+	ldr r0, _06011EF4 ; =0x0380FFF4
 	mov r2, #2
 	strh r2, [r1, #2]
 	ldr r2, [r0]
@@ -21797,14 +21801,14 @@ sub_06011ED0: @ 0x06011ED0
 	strh r2, [r1, #6]
 	bx lr
 	.align 2, 0
-_06011EF4: .4byte 0x0380FFF4
+_06011EF4: .word 0x0380FFF4
 	arm_func_end sub_06011ED0
 
 	arm_func_start sub_06011EF8
-sub_06011EF8: @ 0x06011EF8
-	push {r3, r4, r5, r6, lr}
+sub_06011EF8: ; 0x06011EF8
+	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
-	ldr r2, _06012220 @ =0x0380FFF4
+	ldr r2, _06012220 ; =0x0380FFF4
 	mov r5, r0
 	ldr r2, [r2]
 	mov r0, #1
@@ -21855,28 +21859,28 @@ sub_06011EF8: @ 0x06011EF8
 	mov r1, r6
 	mov r0, #1
 	bl sub_0600B2A0
-	ldr r0, _06012224 @ =0x00001388
+	ldr r0, _06012224 ; =0x00001388
 	bl sub_0600B660
 _06011FD4:
 	ldrh r0, [r5, #0x12]
 	cmp r0, #4
 	addls pc, pc, r0, lsl #2
 	b _06012210
-_06011FE4: @ jump table
-	b _06011FF8 @ case 0
-	b _06011FF8 @ case 1
-	b _06011FF8 @ case 2
-	b _06012090 @ case 3
-	b _06012090 @ case 4
+_06011FE4: ; jump table
+	b _06011FF8 ; case 0
+	b _06011FF8 ; case 1
+	b _06011FF8 ; case 2
+	b _06012090 ; case 3
+	b _06012090 ; case 4
 _06011FF8:
 	mov r0, #0x11
 	strh r0, [r4, #8]
 	ldrh r0, [r5, #0x16]
 	mov r1, #1
 	bl sub_0600A0A4
-	ldr r1, _06012228 @ =0x04808040
+	ldr r1, _06012228 ; =0x04808040
 	mov r2, #0x8000
-	ldr r0, _0601222C @ =0x000005DC
+	ldr r0, _0601222C ; =0x000005DC
 	strh r2, [r1]
 	bl sub_0600B660
 	ldrh r1, [r5, #0x14]
@@ -21885,7 +21889,7 @@ _06011FF8:
 	bl sub_0600B274
 	str r0, [sp]
 	ldrh r1, [r5, #0x12]
-	ldr r2, _06012230 @ =0x048081A4
+	ldr r2, _06012230 ; =0x048081A4
 	cmp r1, #1
 	orrls r0, r0, #0x10
 	strls r0, [sp]
@@ -21893,7 +21897,7 @@ _06011FF8:
 	strh r0, [r2]
 	ldrh r0, [r5, #0x12]
 	cmp r0, #1
-	strhne r0, [r2, #-2]
+	strneh r0, [r2, #-2]
 	bne _06012074
 	ldr r1, [sp]
 	mov r0, #3
@@ -21904,12 +21908,12 @@ _06012074:
 	ldr r1, [sp]
 	mov r0, #2
 	bl sub_0600B2A0
-	ldr r1, _06012234 @ =0x00000823
-	ldr r0, _06012238 @ =0x048081A0
+	ldr r1, _06012234 ; =0x00000823
+	ldr r0, _06012238 ; =0x048081A0
 	strh r1, [r0]
 	b _06012210
 _06012090:
-	ldr r0, _06012220 @ =0x0380FFF4
+	ldr r0, _06012220 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r4, r0, #0x344
 	bl sub_0600AE14
@@ -21924,27 +21928,27 @@ _06012090:
 	mov r1, #0
 	bl sub_0600B2A0
 _060120C8:
-	ldr r1, _0601223C @ =0x04804000
+	ldr r1, _0601223C ; =0x04804000
 	mov r0, #0
 	mov r2, #0xc
 	bl sub_06000598
-	ldr r1, _0601223C @ =0x04804000
+	ldr r1, _0601223C ; =0x04804000
 	mov r0, #0x14
 	strh r0, [r1, #8]
 	mov r0, #0x7d0
 	strh r0, [r1, #0xa]
 	add r3, r1, #0xc
-	ldr r1, _06012240 @ =0x00005555
-	ldr r0, _06012244 @ =0x000007EC
+	ldr r1, _06012240 ; =0x00005555
+	ldr r0, _06012244 ; =0x000007EC
 	mov r2, #0
 _060120FC:
 	add r2, r2, #2
 	cmp r2, r0
 	strh r1, [r3], #2
 	blo _060120FC
-	ldr r1, _0601223C @ =0x04804000
+	ldr r1, _0601223C ; =0x04804000
 	mov r2, #8
-	ldr r0, _06012248 @ =0x04808194
+	ldr r0, _06012248 ; =0x04808194
 	strh r2, [r1, #0xc]
 	mov r1, #6
 	strh r1, [r0]
@@ -21954,21 +21958,21 @@ _060120FC:
 	strh r1, [r4, #0x18]
 	ldrh r0, [r5, #0x16]
 	bl sub_0600A0A4
-	ldr r1, _06012228 @ =0x04808040
+	ldr r1, _06012228 ; =0x04808040
 	mov r2, #0x8000
-	ldr r0, _0601222C @ =0x000005DC
+	ldr r0, _0601222C ; =0x000005DC
 	strh r2, [r1]
 	bl sub_0600B660
 	mov r2, #1
-	ldr r3, _0601224C @ =0x04808012
+	ldr r3, _0601224C ; =0x04808012
 	mov r0, #2
 	strh r0, [r3]
 	strh r2, [r3, #-0xe]
-	ldr r1, _0601223C @ =0x04804000
+	ldr r1, _0601223C ; =0x04804000
 	rsb r0, r2, #0x4000
 	and r0, r1, r0
-	lsl r0, r0, #0xf
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0xf
+	mov r0, r0, lsr #0x10
 	strh r2, [r3, #0x9c]
 	orr r0, r0, #0x8000
 	strh r0, [r3, #0x8e]
@@ -21978,7 +21982,7 @@ _06012188:
 	cmp r0, #0x11
 	bne _060121D0
 	bl sub_0600B70C
-	ldr r1, _06012238 @ =0x048081A0
+	ldr r1, _06012238 ; =0x048081A0
 	mov r2, #0
 	strh r2, [r1]
 	mov r0, #1
@@ -21995,7 +21999,7 @@ _06012188:
 _060121D0:
 	cmp r0, #0x12
 	bne _06012200
-	ldr r1, _06012250 @ =0x04808004
+	ldr r1, _06012250 ; =0x04808004
 	mov r0, #0
 	strh r0, [r4, #0x18]
 _060121E4:
@@ -22016,43 +22020,43 @@ _06012210:
 	mov r0, #0
 _06012214:
 	add sp, sp, #4
-	pop {r3, r4, r5, r6, lr}
+	ldmia sp!, {r3, r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06012220: .4byte 0x0380FFF4
-_06012224: .4byte 0x00001388
-_06012228: .4byte 0x04808040
-_0601222C: .4byte 0x000005DC
-_06012230: .4byte 0x048081A4
-_06012234: .4byte 0x00000823
-_06012238: .4byte 0x048081A0
-_0601223C: .4byte 0x04804000
-_06012240: .4byte 0x00005555
-_06012244: .4byte 0x000007EC
-_06012248: .4byte 0x04808194
-_0601224C: .4byte 0x04808012
-_06012250: .4byte 0x04808004
+_06012220: .word 0x0380FFF4
+_06012224: .word 0x00001388
+_06012228: .word 0x04808040
+_0601222C: .word 0x000005DC
+_06012230: .word 0x048081A4
+_06012234: .word 0x00000823
+_06012238: .word 0x048081A0
+_0601223C: .word 0x04804000
+_06012240: .word 0x00005555
+_06012244: .word 0x000007EC
+_06012248: .word 0x04808194
+_0601224C: .word 0x04808012
+_06012250: .word 0x04808004
 	arm_func_end sub_06011EF8
 
 	arm_func_start sub_06012254
-sub_06012254: @ 0x06012254
-	ldr r0, _060122C0 @ =0x0380FFF4
+sub_06012254: ; 0x06012254
+	ldr r0, _060122C0 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x5c]
 	cmp r0, #0
 	beq _06012290
-	ldr r0, _060122C4 @ =0x04804000
+	ldr r0, _060122C4 ; =0x04804000
 	mov r2, #0
 	strh r2, [r0]
-	ldr r1, _060122C8 @ =0x048080A0
+	ldr r1, _060122C8 ; =0x048080A0
 	strh r2, [r0, #4]
 	ldrh r0, [r1]
 	orr r0, r0, #0x8000
 	strh r0, [r1]
 	bx lr
 _06012290:
-	ldr r2, _060122CC @ =0x048080AC
+	ldr r2, _060122CC ; =0x048080AC
 	mov r3, #1
 	strh r3, [r2]
 	mov r1, #0
@@ -22065,16 +22069,16 @@ _06012290:
 	strh r1, [r2, #-0x6c]
 	bx lr
 	.align 2, 0
-_060122C0: .4byte 0x0380FFF4
-_060122C4: .4byte 0x04804000
-_060122C8: .4byte 0x048080A0
-_060122CC: .4byte 0x048080AC
+_060122C0: .word 0x0380FFF4
+_060122C4: .word 0x04804000
+_060122C8: .word 0x048080A0
+_060122CC: .word 0x048080AC
 	arm_func_end sub_06012254
 
 	arm_func_start sub_060122D0
-sub_060122D0: @ 0x060122D0
-	push {r4, lr}
-	ldr r2, _0601237C @ =0x0380FFF4
+sub_060122D0: ; 0x060122D0
+	stmdb sp!, {r4, lr}
+	ldr r2, _0601237C ; =0x0380FFF4
 	mov r3, #1
 	ldr r2, [r2]
 	strh r3, [r1, #2]
@@ -22119,20 +22123,20 @@ _06012368:
 _06012370:
 	mov r0, #0
 _06012374:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0601237C: .4byte 0x0380FFF4
+_0601237C: .word 0x0380FFF4
 	arm_func_end sub_060122D0
 
 	arm_func_start sub_06012380
-sub_06012380: @ 0x06012380
-	push {r4, r5, r6, r7, r8, lr}
-	ldr r1, _06012544 @ =0x0380FFF4
+sub_06012380: ; 0x06012380
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	ldr r1, _06012544 ; =0x0380FFF4
 	mov r8, r0
 	ldr r4, [r1]
 	ldrh r1, [r8, #0x16]
-	ldr r0, _06012548 @ =0x000005E4
+	ldr r0, _06012548 ; =0x000005E4
 	add r5, r4, #0x344
 	cmp r1, r0
 	add r6, r4, #0x31c
@@ -22155,16 +22159,16 @@ _060123D8:
 _060123E0:
 	ldrh r7, [r5, #0x88]
 _060123E4:
-	ldr r0, _06012544 @ =0x0380FFF4
+	ldr r0, _06012544 ; =0x0380FFF4
 	strh r7, [r8, #0x12]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3ec]
 	strh r0, [r8, #0x14]
 	ldrh r0, [r8, #0x1e]
 	tst r0, #0xff
-	strhne r0, [r8, #0x20]
+	strneh r0, [r8, #0x20]
 	movne r0, #0
-	strhne r0, [r8, #0x1e]
+	strneh r0, [r8, #0x1e]
 	bne _0601241C
 	mov r0, r7
 	bl sub_0600E94C
@@ -22187,9 +22191,9 @@ _06012444:
 	cmp r0, #0
 	ldrh r0, [r8, #0x16]
 	addeq r0, r0, #0x1c
-	strheq r0, [r8, #0x22]
+	streqh r0, [r8, #0x22]
 	addne r0, r0, #0x24
-	strhne r0, [r8, #0x22]
+	strneh r0, [r8, #0x22]
 _06012468:
 	ldrh r0, [r6, #0x12]
 	cmp r0, #1
@@ -22210,7 +22214,7 @@ _06012484:
 	mov r1, r8
 	add r0, r4, #0x200
 	bl sub_0600E394
-	ldr r0, _06012544 @ =0x0380FFF4
+	ldr r0, _06012544 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x500
 	ldrh r1, [r0, #0x32]
@@ -22249,17 +22253,17 @@ _06012500:
 _06012538:
 	mov r0, #0x81
 _0601253C:
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_06012544: .4byte 0x0380FFF4
-_06012548: .4byte 0x000005E4
+_06012544: .word 0x0380FFF4
+_06012548: .word 0x000005E4
 	arm_func_end sub_06012380
 
 	arm_func_start sub_0601254C
-sub_0601254C: @ 0x0601254C
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r2, _060126D8 @ =0x0380FFF4
+sub_0601254C: ; 0x0601254C
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldr r2, _060126D8 ; =0x0380FFF4
 	mov sl, r0
 	ldr r2, [r2]
 	mov sb, #1
@@ -22287,7 +22291,7 @@ sub_0601254C: @ 0x0601254C
 	cmp r1, #0
 	movne r0, #8
 	bne _060126D0
-	ldr r1, _060126DC @ =0x04808094
+	ldr r1, _060126DC ; =0x04808094
 	ldrh r1, [r1]
 	tst r1, #0x8000
 	movne r0, #8
@@ -22299,7 +22303,7 @@ sub_0601254C: @ 0x0601254C
 	strh r1, [r7, #4]
 	strh r0, [r7, #8]
 	ldrh r0, [sl, #0x10]
-	ldr r3, _060126E0 @ =0x060184D8
+	ldr r3, _060126E0 ; =0x060184D8
 	add r0, r0, #0x1e
 	strh r0, [r7, #0xa]
 	mov r0, #0x118
@@ -22329,30 +22333,30 @@ _06012644:
 	add r0, r0, #2
 	add r0, r1, r0
 	add r0, r0, #3
-	ldr r1, _060126E4 @ =0x0000B6B8
+	ldr r1, _060126E4 ; =0x0000B6B8
 	bic r2, r0, #3
-	ldr r0, _060126E8 @ =0x00001D46
+	ldr r0, _060126E8 ; =0x00001D46
 	strh r1, [r2]
 	strh r0, [r2, #2]
 _06012674:
 	mov r0, #0x1000000
 	bl sub_06008EF4
 	mov r2, #2
-	ldr r1, _060126EC @ =0x00003FFF
+	ldr r1, _060126EC ; =0x00003FFF
 	strh r2, [fp, r8]
 	add r5, r5, #0x52
 	ldrh r2, [r5, r8]
 	and r1, r7, r1
 	add r3, r2, #1
-	lsr r2, r1, #1
-	ldr r1, _060126DC @ =0x04808094
+	mov r2, r1, lsr #1
+	ldr r1, _060126DC ; =0x04808094
 	strh r3, [r5, r8]
 	orr r2, r2, #0x8000
 	strh r2, [r1]
 	ldrh r1, [r4, #0x1e]
 	mov r4, r0
-	lsl r0, r1, #0x18
-	lsrs r0, r0, #0x1f
+	mov r0, r1, lsl #0x18
+	movs r0, r0, lsr #0x1f
 	bne _060126C4
 	bl sub_0600A83C
 _060126C4:
@@ -22360,22 +22364,22 @@ _060126C4:
 	bl sub_06008EFC
 	mov r0, #0
 _060126D0:
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_060126D8: .4byte 0x0380FFF4
-_060126DC: .4byte 0x04808094
-_060126E0: .4byte 0x060184D8
-_060126E4: .4byte 0x0000B6B8
-_060126E8: .4byte 0x00001D46
-_060126EC: .4byte 0x00003FFF
+_060126D8: .word 0x0380FFF4
+_060126DC: .word 0x04808094
+_060126E0: .word 0x060184D8
+_060126E4: .word 0x0000B6B8
+_060126E8: .word 0x00001D46
+_060126EC: .word 0x00003FFF
 	arm_func_end sub_0601254C
 
 	arm_func_start sub_060126F0
-sub_060126F0: @ 0x060126F0
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_060126F0: ; 0x060126F0
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
-	ldr r2, _06012B7C @ =0x0380FFF4
+	ldr r2, _06012B7C ; =0x0380FFF4
 	mov sl, r0
 	ldr r4, [r2]
 	mov sb, #1
@@ -22399,21 +22403,21 @@ sub_060126F0: @ 0x060126F0
 	tst r0, #0x8000
 	beq _06012794
 	tst r0, #2
-	ldrheq r0, [r6, #0x94]
-	strheq r0, [sl, #0x14]
+	ldreqh r0, [r6, #0x94]
+	streqh r0, [sl, #0x14]
 	ldrh r0, [sl, #0x10]
 	tst r0, #4
-	ldrheq r0, [r6, #0xa0]
-	strheq r0, [sl, #0x16]
+	ldreqh r0, [r6, #0xa0]
+	streqh r0, [sl, #0x16]
 	ldrh r0, [sl, #0x10]
 	tst r0, #8
-	ldrheq r0, [r6, #0x96]
-	strheq r0, [sl, #0x18]
+	ldreqh r0, [r6, #0x96]
+	streqh r0, [sl, #0x18]
 	ldrh r0, [sl, #0x10]
 	tst r0, #0x10
-	ldrheq r0, [r6, #0x9c]
+	ldreqh r0, [r6, #0x9c]
 	moveq sb, #0
-	strheq r0, [sl, #0x1c]
+	streqh r0, [sl, #0x1c]
 _06012794:
 	ldrh r0, [sl, #0x1c]
 	cmp r0, #0x204
@@ -22425,9 +22429,9 @@ _06012794:
 _060127B0:
 	ldrh r0, [sl, #0x16]
 	tst r0, r1
-	lsl r0, r1, #0x11
+	mov r0, r1, lsl #0x11
 	addne r8, r8, #1
-	lsr r1, r0, #0x10
+	mov r1, r0, lsr #0x10
 _060127C4:
 	cmp r1, #0
 	bne _060127B0
@@ -22436,13 +22440,13 @@ _060127C4:
 	ldrh r0, [sl, #0x14]
 	tst r0, #0x8000
 	beq _06012810
-	ldr r1, _06012B80 @ =0x00007FFF
+	ldr r1, _06012B80 ; =0x00007FFF
 	mov r2, #0xea
 	and r0, r0, r1
 	strh r0, [sl, #0x14]
 	ldrh r0, [sl, #0x14]
 	sub r0, r0, #0xd0
-	lsr r0, r0, #2
+	mov r0, r0, lsr #2
 	strh r2, [r5, #0xe]
 	cmp r0, #0x10000
 	bls _06012860
@@ -22463,7 +22467,7 @@ _06012810:
 	cmp r0, r3
 	movhi r0, #5
 	bhi _06012B70
-	lsl r3, r0, #2
+	mov r3, r0, lsl #2
 	add r3, r3, #0xd0
 	add r1, r1, r3
 	strh r1, [sl, #0x14]
@@ -22503,7 +22507,7 @@ _06012860:
 	strh r1, [r6, #0x9e]
 	strh r2, [r5]
 	ldrh r7, [sl, #0x16]
-	ldr r1, _06012B84 @ =0x060184E8
+	ldr r1, _06012B84 ; =0x060184E8
 	strh r7, [r5, #2]
 	strh r2, [r5, #4]
 	strh ip, [r5, #8]
@@ -22520,12 +22524,12 @@ _06012860:
 	bl sub_0600A978
 	ldrh r0, [sl, #0x10]
 	tst r0, #0x8000
-	ldrhne r1, [r5, #0x22]
-	ldrne r0, _06012B88 @ =0x0000FFFF
+	ldrneh r1, [r5, #0x22]
+	ldrne r0, _06012B88 ; =0x0000FFFF
 	cmpne r1, r0
-	ldreq r0, _06012B88 @ =0x0000FFFF
+	ldreq r0, _06012B88 ; =0x0000FFFF
 	movne r7, #0x4000
-	strheq r0, [r5, #0x22]
+	streqh r0, [r5, #0x22]
 	ldrh r0, [sl, #0x14]
 	moveq r7, #0
 	strh r0, [r5, #0x24]
@@ -22534,7 +22538,7 @@ _06012860:
 	strh r0, [r5, #0x26]
 	ldrh r0, [sl, #0x1e]
 	strh r0, [r5, #0x28]
-	ldrhne r0, [sl, #0x1c]
+	ldrneh r0, [sl, #0x1c]
 	cmpne r0, #0
 	beq _06012980
 	bl sub_0600A9FC
@@ -22551,9 +22555,9 @@ _06012980:
 	add r0, r0, #2
 	add r0, r1, r0
 	add r0, r0, #3
-	ldr r1, _06012B8C @ =0x0000B6B8
+	ldr r1, _06012B8C ; =0x0000B6B8
 	bic r2, r0, #3
-	ldr r0, _06012B90 @ =0x00001D46
+	ldr r0, _06012B90 ; =0x00001D46
 	strh r1, [r2]
 	strh r0, [r2, #2]
 _060129B4:
@@ -22563,14 +22567,14 @@ _060129B4:
 	ldr r0, [sp]
 	ldr r1, [r6, #0x90]
 	add r0, r0, #0xb
-	lsr r0, r0, #1
+	mov r0, r0, lsr #1
 	strh r0, [r1, #0xe]
 	ldrh r1, [sl, #0x16]
 	ldr r0, [r6, #0x90]
 	mov r3, #0
 	strh r1, [r0, #0x10]
 	ldr r0, [r6, #0x90]
-	ldr sb, _06012B88 @ =0x0000FFFF
+	ldr sb, _06012B88 ; =0x0000FFFF
 	strh r8, [r0, #0x14]
 	ldr r0, [r6, #0x90]
 	mov r1, #1
@@ -22584,19 +22588,19 @@ _060129B4:
 _06012A14:
 	ldrh ip, [sl, #0x16]
 	tst ip, r2
-	strhne sb, [r0]
-	strhne r3, [r0, #2]
-	strhne r3, [r0, #6]
-	strhne r1, [r0, #4]
-	lsl r2, r2, #0x11
+	strneh sb, [r0]
+	strneh r3, [r0, #2]
+	strneh r3, [r0, #6]
+	strneh r1, [r0, #4]
+	mov r2, r2, lsl #0x11
 	addne r0, r0, fp
-	lsr r2, r2, #0x10
+	mov r2, r2, lsr #0x10
 	add r1, r1, #1
 _06012A3C:
 	cmp r2, #0
 	bne _06012A14
 	ldrh r0, [sl, #0x14]
-	ldr r2, _06012B94 @ =0x048080C4
+	ldr r2, _06012B94 ; =0x048080C4
 	strh r0, [r2]
 	ldrh r0, [r5, #0xe]
 	strh r0, [r2, #-4]
@@ -22611,7 +22615,7 @@ _06012A3C:
 	ldrh r0, [sl, #0x14]
 	add r1, r1, #0x22
 	mul r2, r0, r8
-	lsl r1, r1, #2
+	mov r1, r1, lsl #2
 	add r3, r1, #0x60
 	addne r3, r3, #0x3e8
 	add r0, r2, #0x388
@@ -22621,10 +22625,10 @@ _06012A3C:
 	bl sub_06003ECC
 	mov r4, r0
 	bl sub_06000720
-	ldr r1, _06012B98 @ =0x00003FFF
-	ldr r2, _06012B9C @ =0x04808118
+	ldr r1, _06012B98 ; =0x00003FFF
+	ldr r2, _06012B9C ; =0x04808118
 	and r1, r5, r1
-	lsr r1, r1, #1
+	mov r1, r1, lsr #1
 	orr r1, r1, #0x8000
 	strh r4, [r2]
 	orr r1, r1, r7
@@ -22633,24 +22637,24 @@ _06012A3C:
 	b _06012B6C
 _06012AD4:
 	bl sub_06000720
-	ldr r1, _06012BA0 @ =0x048080F8
+	ldr r1, _06012BA0 ; =0x048080F8
 	mov r8, r0
 	ldrh r0, [r1]
 	mov r1, #0xa
 	add r0, sb, r0
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_06003ECC
 	ldrh r3, [sl, #0x18]
 	add r1, r0, #3
 	cmp r1, r3
 	bhs _06012B3C
-	ldr r1, _06012B98 @ =0x00003FFF
-	ldr r2, _06012B9C @ =0x04808118
+	ldr r1, _06012B98 ; =0x00003FFF
+	ldr r2, _06012B9C ; =0x04808118
 	sub r3, r3, r0
 	and r0, r5, r1
 	sub r1, r3, #1
-	lsr r0, r0, #1
+	mov r0, r0, lsr #1
 	orr r0, r0, #0x8000
 	strh r1, [r2]
 	orr r1, r0, r7
@@ -22675,24 +22679,24 @@ _06012B6C:
 	mov r0, #0
 _06012B70:
 	add sp, sp, #8
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06012B7C: .4byte 0x0380FFF4
-_06012B80: .4byte 0x00007FFF
-_06012B84: .4byte 0x060184E8
-_06012B88: .4byte 0x0000FFFF
-_06012B8C: .4byte 0x0000B6B8
-_06012B90: .4byte 0x00001D46
-_06012B94: .4byte 0x048080C4
-_06012B98: .4byte 0x00003FFF
-_06012B9C: .4byte 0x04808118
-_06012BA0: .4byte 0x048080F8
+_06012B7C: .word 0x0380FFF4
+_06012B80: .word 0x00007FFF
+_06012B84: .word 0x060184E8
+_06012B88: .word 0x0000FFFF
+_06012B8C: .word 0x0000B6B8
+_06012B90: .word 0x00001D46
+_06012B94: .word 0x048080C4
+_06012B98: .word 0x00003FFF
+_06012B9C: .word 0x04808118
+_06012BA0: .word 0x048080F8
 	arm_func_end sub_060126F0
 
 	arm_func_start sub_06012BA4
-sub_06012BA4: @ 0x06012BA4
-	push {r4, lr}
+sub_06012BA4: ; 0x06012BA4
+	stmdb sp!, {r4, lr}
 	mov r2, #1
 	strh r2, [r1, #2]
 	mov r4, r0
@@ -22704,7 +22708,7 @@ sub_06012BA4: @ 0x06012BA4
 	add r0, r4, #0x10
 	strh r1, [r4, #0x22]
 	bl sub_0600E3F0
-	ldr r0, _06012C00 @ =0x0380FFF4
+	ldr r0, _06012C00 ; =0x0380FFF4
 	mov r2, r4
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -22713,15 +22717,15 @@ sub_06012BA4: @ 0x06012BA4
 	mov r0, #0
 	bl sub_06012C88
 	mov r0, #0
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06012C00: .4byte 0x0380FFF4
+_06012C00: .word 0x0380FFF4
 	arm_func_end sub_06012BA4
 
 	arm_func_start sub_06012C04
-sub_06012C04: @ 0x06012C04
-	push {r4, lr}
+sub_06012C04: ; 0x06012C04
+	stmdb sp!, {r4, lr}
 	mov r2, #1
 	strh r2, [r1, #2]
 	mov r4, r0
@@ -22741,13 +22745,13 @@ _06012C34:
 	bl sub_0601395C
 _06012C44:
 	mov r0, #0
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_06012C04
 
 	arm_func_start sub_06012C50
-sub_06012C50: @ 0x06012C50
-	push {r3, lr}
+sub_06012C50: ; 0x06012C50
+	stmdb sp!, {r3, lr}
 	ldrh r2, [r1, #0xe]
 	mov r3, #2
 	add lr, r1, r2, lsl #1
@@ -22759,15 +22763,15 @@ sub_06012C50: @ 0x06012C50
 	ldrh r2, [r1, #0x18]
 	strh r2, [lr, #0x16]
 	bl sub_0600F388
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end sub_06012C50
 
 	arm_func_start sub_06012C88
-sub_06012C88: @ 0x06012C88
-	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_06012C88: ; 0x06012C88
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
-	ldr r1, _06012E9C @ =0x0380FFF4
+	ldr r1, _06012E9C ; =0x0380FFF4
 	mov sl, r0
 	ldr r2, [r1]
 	mov r0, #0xc
@@ -22828,7 +22832,7 @@ _06012D0C:
 	arm_func_end sub_06012C88
 
 	arm_func_start sub_06012D6C
-sub_06012D6C: @ 0x06012D6C
+sub_06012D6C: ; 0x06012D6C
 	b _06012CF4
 _06012D70:
 	cmp sl, #0
@@ -22879,54 +22883,54 @@ _06012E00:
 	mov r0, sb
 	bl sub_0600E998
 	cmp r0, #1
-	ldrhhi r0, [r5, #0xc]
+	ldrhih r0, [r5, #0xc]
 	orrhi r0, r0, #0x2000
-	strhhi r0, [r5, #0xc]
+	strhih r0, [r5, #0xc]
 _06012E30:
-	ldr r1, _06012EA0 @ =0x00003FFF
-	ldr r0, _06012EA4 @ =0x048080A0
+	ldr r1, _06012EA0 ; =0x00003FFF
+	ldr r0, _06012EA4 ; =0x048080A0
 	ldrh r4, [r8, #0x14]
 	and r2, r5, r1
 	and r1, r4, #0xc
 	cmp r1, #4
-	lsr r1, r2, #1
+	mov r1, r2, lsr #1
 	add r3, r0, sl, lsl #2
-	lsleq r0, r1, #0x10
-	lsreq r0, r0, #0x10
+	moveq r0, r1, lsl #0x10
+	moveq r0, r0, lsr #0x10
 	orreq r0, r0, #0xa000
-	strheq r0, [r3]
+	streqh r0, [r3]
 	beq _06012E88
 	and r0, r4, #0xfc
 	cmp r0, #0x50
-	lsl r0, r1, #0x10
-	lsreq r0, r0, #0x10
+	mov r0, r1, lsl #0x10
+	moveq r0, r0, lsr #0x10
 	orreq r0, r0, #0x9000
-	strheq r0, [r3]
-	lsrne r0, r0, #0x10
+	streqh r0, [r3]
+	movne r0, r0, lsr #0x10
 	orrne r0, r0, #0x8000
-	strhne r0, [r3]
+	strneh r0, [r3]
 _06012E88:
 	ldr r0, [sp]
 	bl sub_06008EFC
 _06012E90:
 	add sp, sp, #0xc
-	pop {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06012E9C: .4byte 0x0380FFF4
-_06012EA0: .4byte 0x00003FFF
-_06012EA4: .4byte 0x048080A0
+_06012E9C: .word 0x0380FFF4
+_06012EA0: .word 0x00003FFF
+_06012EA4: .word 0x048080A0
 	arm_func_end sub_06012D6C
 
 	arm_func_start sub_06012EA8
-sub_06012EA8: @ 0x06012EA8
-	push {r3, r4, r5, lr}
+sub_06012EA8: ; 0x06012EA8
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	ldrh r1, [r4, #0x24]
 	mov r5, r0
 	tst r1, #0x4000
 	beq _06012F84
-	ldr r0, _06012FFC @ =0x0380FFF4
+	ldr r0, _06012FFC ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x50]
@@ -22935,7 +22939,7 @@ sub_06012EA8: @ 0x06012EA8
 	bl sub_0600A9FC
 _06012EDC:
 	ldrh r1, [r4, #0xc]
-	ldr r0, _06013000 @ =0x0000FFFF
+	ldr r0, _06013000 ; =0x0000FFFF
 	cmp r1, r0
 	bne _06012F04
 	ldrh r3, [r4, #0x16]
@@ -22951,8 +22955,8 @@ _06012F04:
 	add r1, r4, #0x18
 	bl sub_0600B9A0
 _06012F18:
-	ldr r3, _06013004 @ =0x04808044
-	ldr r1, _06012FFC @ =0x0380FFF4
+	ldr r3, _06013004 ; =0x04808044
+	ldr r1, _06012FFC ; =0x0380FFF4
 	ldrh r2, [r3]
 	ldrh r0, [r3]
 	add r0, r2, r0, lsl #8
@@ -22980,7 +22984,7 @@ _06012F18:
 	b _06012FB8
 _06012F84:
 	ldrh r2, [r4, #0xc]
-	ldr r1, _06013000 @ =0x0000FFFF
+	ldr r1, _06013000 ; =0x0000FFFF
 	cmp r2, r1
 	bne _06012FA8
 	ldrh r2, [r4, #0x16]
@@ -22994,7 +22998,7 @@ _06012FA8:
 	add r1, r4, #0x18
 	bl sub_0600B95C
 _06012FB8:
-	ldr r0, _06012FFC @ =0x0380FFF4
+	ldr r0, _06012FFC ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrh r0, [r0, #0x90]
@@ -23004,65 +23008,65 @@ _06012FB8:
 	add r1, r5, #0xc
 	add r0, r1, r0
 	sub r0, r0, #1
-	ldr r1, _06013008 @ =0x0000B6B8
+	ldr r1, _06013008 ; =0x0000B6B8
 	bic r2, r0, #3
-	ldr r0, _0601300C @ =0x00001D46
+	ldr r0, _0601300C ; =0x00001D46
 	strh r1, [r2]
 	strh r0, [r2, #2]
 _06012FF4:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06012FFC: .4byte 0x0380FFF4
-_06013000: .4byte 0x0000FFFF
-_06013004: .4byte 0x04808044
-_06013008: .4byte 0x0000B6B8
-_0601300C: .4byte 0x00001D46
+_06012FFC: .word 0x0380FFF4
+_06013000: .word 0x0000FFFF
+_06013004: .word 0x04808044
+_06013008: .word 0x0000B6B8
+_0601300C: .word 0x00001D46
 	arm_func_end sub_06012EA8
 
 	arm_func_start sub_06013010
-sub_06013010: @ 0x06013010
-	ldr r1, _0601308C @ =0x0380FFF4
+sub_06013010: ; 0x06013010
+	ldr r1, _0601308C ; =0x0380FFF4
 	ldrh r2, [r0, #0x14]
 	ldr r3, [r1]
-	lsl r1, r2, #0x1c
+	mov r1, r2, lsl #0x1c
 	add ip, r3, #0x344
 	ldrh r3, [ip, #0x8c]
-	lsrs r1, r1, #0x1e
-	lsl r1, r3, #0x13
-	lsr r3, r1, #0x10
+	movs r1, r1, lsr #0x1e
+	mov r1, r3, lsl #0x13
+	mov r3, r1, lsr #0x10
 	bne _06013064
 	ldrh r1, [ip, #0xc]
 	cmp r1, #1
 	bne _0601306C
-	lsl r1, r2, #0x18
-	lsr r1, r1, #0x1c
+	mov r1, r2, lsl #0x18
+	mov r1, r1, lsr #0x1c
 	cmp r1, #1
 	cmpne r1, #3
 	cmpne r1, #0xb
-	lsleq r1, r3, #0xd
-	lsreq r3, r1, #0x10
+	moveq r1, r3, lsl #0xd
+	moveq r3, r1, lsr #0x10
 	b _0601306C
 _06013064:
-	lsl r1, r3, #0xd
-	lsr r3, r1, #0x10
+	mov r1, r3, lsl #0xd
+	mov r3, r1, lsr #0x10
 _0601306C:
 	ldr r1, [ip, #0xa8]
 	ldrh r0, [r0, #4]
 	sub r0, r1, r0
-	lsl r0, r0, #0x10
+	mov r0, r0, lsl #0x10
 	cmp r3, r0, lsr #16
 	movlo r0, #1
 	movhs r0, #0
 	bx lr
 	.align 2, 0
-_0601308C: .4byte 0x0380FFF4
+_0601308C: .word 0x0380FFF4
 	arm_func_end sub_06013010
 
 	arm_func_start sub_06013090
-sub_06013090: @ 0x06013090
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r2, _06013208 @ =0x0380FFF4
+sub_06013090: ; 0x06013090
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldr r2, _06013208 ; =0x0380FFF4
 	mov sb, r0
 	ldr r4, [r2]
 	mov r8, r1
@@ -23077,8 +23081,8 @@ sub_06013090: @ 0x06013090
 	add r0, r0, #1
 	str r0, [r4, #0x53c]
 	ldrh r0, [sb, #0x14]
-	lsl r0, r0, #0x17
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x17
+	movs r0, r0, lsr #0x1f
 	beq _06013100
 	ldrh r0, [sb, #0x24]
 	tst r0, #1
@@ -23106,14 +23110,14 @@ _06013124:
 _06013130:
 	ldrh r0, [sb, #0x14]
 	mov r1, r7
-	lsl r0, r0, #0x11
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x11
+	movs r0, r0, lsr #0x1f
 	ldrne r0, [r4, #0x554]
 	addne r0, r0, #1
 	strne r0, [r4, #0x554]
 	mov r0, r5
 	bl sub_06012C50
-	ldr r0, _06013208 @ =0x0380FFF4
+	ldr r0, _06013208 ; =0x0380FFF4
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x400
@@ -23140,8 +23144,8 @@ _060131AC:
 	ldrh r0, [r6, #0xc]
 	add r0, r0, #0xfe
 	add r0, r0, #0xff00
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	cmp r0, #1
 	bhi _06013200
 	ldrh r0, [r6, #8]
@@ -23153,22 +23157,22 @@ _060131AC:
 	ldrh r0, [r6, #0x88]
 	bl sub_0600E998
 	cmp r0, #0
-	ldrheq r0, [r6, #0x8e]
+	ldreqh r0, [r6, #0x8e]
 	cmpeq r0, #0
 	bne _06013200
 	mov r0, #1
 	bl sub_0600A458
 _06013200:
-	pop {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_06013208: .4byte 0x0380FFF4
+_06013208: .word 0x0380FFF4
 	arm_func_end sub_06013090
 
 	arm_func_start sub_0601320C
-sub_0601320C: @ 0x0601320C
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r2, _060136D4 @ =0x0380FFF4
+sub_0601320C: ; 0x0601320C
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldr r2, _060136D4 ; =0x0380FFF4
 	mov sl, r0
 	ldr r4, [r2]
 	ldrh r2, [sl, #8]
@@ -23207,8 +23211,8 @@ _06013294:
 	str r0, [r4, #0x540]
 _060132A0:
 	ldrh r0, [sl, #0x14]
-	lsl r0, r0, #0x11
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x11
+	movs r0, r0, lsr #0x1f
 	ldrne r0, [r4, #0x554]
 	addne r0, r0, #1
 	strne r0, [r4, #0x554]
@@ -23247,13 +23251,13 @@ _06013318:
 	bne _0601368C
 	ldrh r1, [sl, #0x2c]
 	cmp r1, #0
-	ldrheq r0, [sl, #0x2e]
+	ldreqh r0, [sl, #0x2e]
 	cmpeq r0, #2
-	ldrheq r0, [sl, #0x30]
+	ldreqh r0, [sl, #0x30]
 	cmpeq r0, #0
 	bne _06013368
-	lsl r0, r7, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r7, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x30
 	bl sub_0600E4F0
 	ldrh r1, [sl, #0x2c]
@@ -23262,13 +23266,13 @@ _06013318:
 	b _0601368C
 _06013368:
 	cmp r1, #1
-	ldrheq r0, [sl, #0x2e]
+	ldreqh r0, [sl, #0x2e]
 	cmpeq r0, #4
-	ldrheq r0, [sl, #0x30]
+	ldreqh r0, [sl, #0x30]
 	cmpeq r0, #0
 	bne _0601368C
-	lsl r0, r7, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r7, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x30
 	bl sub_0600E4F0
 	ldrh r1, [sl, #0x2c]
@@ -23288,8 +23292,8 @@ _060133A0:
 	bl sub_0600E88C
 	cmp r0, #0x30
 	bne _0601368C
-	lsl r0, r7, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r7, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x40
 	bl sub_0600E4F0
 	ldrh r2, [sl, #0x12]
@@ -23308,8 +23312,8 @@ _06013404:
 	bl sub_06010AE4
 	b _0601368C
 _06013418:
-	lsl r0, r7, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r7, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_0600E80C
 	add r0, sl, #0x18
 	mov r1, #1
@@ -23338,8 +23342,8 @@ _06013464:
 	bl sub_0600E88C
 	cmp r0, #0x30
 	bls _0601350C
-	lsl r0, r7, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r7, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x30
 	bl sub_0600E4F0
 	b _0601350C
@@ -23347,7 +23351,7 @@ _0601349C:
 	ldrh r0, [sl, #0x18]
 	tst r0, #1
 	beq _0601350C
-	ldr r4, _060136D4 @ =0x0380FFF4
+	ldr r4, _060136D4 ; =0x0380FFF4
 	mov r8, #1
 	mov r7, #0x30
 	b _060134DC
@@ -23356,9 +23360,9 @@ _060134B8:
 	bl sub_0600E88C
 	cmp r0, #0x30
 	bls _060134D8
-	lsl r0, r8, #0x10
+	mov r0, r8, lsl #0x10
 	mov r1, r7
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_0600E4F0
 _060134D8:
 	add r8, r8, #1
@@ -23402,8 +23406,8 @@ _06013548:
 	bl sub_0600E88C
 	cmp r0, #0x20
 	bls _060135F0
-	lsl r0, r7, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r7, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x20
 	bl sub_0600E4F0
 	b _060135F0
@@ -23411,7 +23415,7 @@ _06013580:
 	ldrh r0, [sl, #0x18]
 	tst r0, #1
 	beq _060135F0
-	ldr r4, _060136D4 @ =0x0380FFF4
+	ldr r4, _060136D4 ; =0x0380FFF4
 	mov r8, #1
 	mov fp, #0x20
 	b _060135C0
@@ -23420,9 +23424,9 @@ _0601359C:
 	bl sub_0600E88C
 	cmp r0, #0x20
 	bls _060135BC
-	lsl r0, r8, #0x10
+	mov r0, r8, lsl #0x10
 	mov r1, fp
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_0600E4F0
 _060135BC:
 	add r8, r8, #1
@@ -23461,15 +23465,15 @@ _06013628:
 	bne _06013678
 	cmp r7, #0
 	beq _06013668
-	ldr r0, _060136D4 @ =0x0380FFF4
+	ldr r0, _060136D4 ; =0x0380FFF4
 	mov r2, #1
 	ldr r1, [r0]
-	lsl r0, r7, #0x10
+	mov r0, r7, lsl #0x10
 	add r1, r1, #0x500
 	ldrh r3, [r1, #0x34]
 	mvn r2, r2, lsl r7
 	and r2, r3, r2
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	strh r2, [r1, #0x34]
 	bl sub_0600ECD8
 _06013668:
@@ -23489,27 +23493,27 @@ _0601368C:
 	mov r0, r6
 	sub r1, sl, #0x10
 	bl sub_06009144
-	ldr r0, _060136D4 @ =0x0380FFF4
+	ldr r0, _060136D4 ; =0x0380FFF4
 	mov r1, #0
 	ldr r0, [r0]
 	cmp sb, #0
 	add r0, r0, #0x400
 	strh r1, [r0, #0x40]
-	ldrhne r0, [r6, #8]
+	ldrneh r0, [r6, #8]
 	cmpne r0, #0
 	beq _060136CC
 	mov r0, #1
 	bl sub_06012C88
 _060136CC:
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_060136D4: .4byte 0x0380FFF4
+_060136D4: .word 0x0380FFF4
 	arm_func_end sub_0601320C
 
 	arm_func_start sub_060136D8
-sub_060136D8: @ 0x060136D8
-	ldr r2, _0601373C @ =0x0380FFF4
+sub_060136D8: ; 0x060136D8
+	ldr r2, _0601373C ; =0x0380FFF4
 	ldrh r1, [r0, #4]
 	ldr r3, [r2]
 	and r1, r1, #0xff
@@ -23529,20 +23533,20 @@ sub_060136D8: @ 0x060136D8
 	add r0, r0, #1
 	str r0, [r3, #0x54c]
 _06013724:
-	ldr r0, _0601373C @ =0x0380FFF4
+	ldr r0, _0601373C ; =0x0380FFF4
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x400
 	strh r1, [r0, #0x54]
 	bx lr
 	.align 2, 0
-_0601373C: .4byte 0x0380FFF4
+_0601373C: .word 0x0380FFF4
 	arm_func_end sub_060136D8
 
 	arm_func_start sub_06013740
-sub_06013740: @ 0x06013740
-	push {r4, r5, r6, lr}
-	ldr r2, _06013844 @ =0x0380FFF4
+sub_06013740: ; 0x06013740
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _06013844 ; =0x0380FFF4
 	mov r6, r0
 	ldr r2, [r2]
 	mov r5, r1
@@ -23551,8 +23555,8 @@ sub_06013740: @ 0x06013740
 	add r1, r1, #1
 	str r1, [r2, #0x550]
 	ldrh r1, [r6, #0x14]
-	lsl r1, r1, #0x1c
-	lsrs r1, r1, #0x1e
+	mov r1, r1, lsl #0x1c
+	movs r1, r1, lsr #0x1e
 	bne _06013798
 	bl sub_0600E3F0
 	add r0, r4, #0x30
@@ -23568,7 +23572,7 @@ _06013798:
 	sub r1, r6, #0x10
 	bl sub_06012C50
 _060137A4:
-	ldr r1, _06013844 @ =0x0380FFF4
+	ldr r1, _06013844 ; =0x0380FFF4
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x400
@@ -23576,10 +23580,10 @@ _060137A4:
 	ldr r0, [r1]
 	ldr r0, [r0, #0x45c]
 	ldrh r0, [r0, #0xc]
-	lsl r0, r0, #0x12
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x12
+	movs r0, r0, lsr #0x1f
 	bne _06013814
-	ldr r1, _06013848 @ =0x048080AC
+	ldr r1, _06013848 ; =0x048080AC
 	mov r0, #8
 	strh r0, [r1]
 	mov r0, #5
@@ -23610,17 +23614,17 @@ _06013834:
 	mov r0, #0
 	bl sub_0600EA74
 _0601383C:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06013844: .4byte 0x0380FFF4
-_06013848: .4byte 0x048080AC
+_06013844: .word 0x0380FFF4
+_06013848: .word 0x048080AC
 	arm_func_end sub_06013740
 
 	arm_func_start sub_0601384C
-sub_0601384C: @ 0x0601384C
+sub_0601384C: ; 0x0601384C
 	ldr r2, [r0, #8]
-	ldr r1, _06013890 @ =0x0380FFF4
+	ldr r1, _06013890 ; =0x0380FFF4
 	ldrh r3, [r2, #4]
 	ldr r2, [r1]
 	ands r3, r3, #0xff
@@ -23637,30 +23641,30 @@ sub_0601384C: @ 0x0601384C
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
-_06013890: .4byte 0x0380FFF4
+_06013890: .word 0x0380FFF4
 	arm_func_end sub_0601384C
 
 	arm_func_start sub_06013894
-sub_06013894: @ 0x06013894
-	push {r3, r4, r5, lr}
-	ldr r1, _06013900 @ =0x0380FFF4
+sub_06013894: ; 0x06013894
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _06013900 ; =0x0380FFF4
 	mov r0, #0x1000000
 	ldr r1, [r1]
 	add r1, r1, #0x2c
 	add r4, r1, #0x400
 	bl sub_06008EF4
-	ldr r1, _06013900 @ =0x0380FFF4
+	ldr r1, _06013900 ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r1]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x3a]
-	lsl r0, r0, #0x18
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x18
+	movs r0, r0, lsr #0x1f
 	bne _060138D8
 	mov r0, #0
 	bl sub_0600A860
 _060138D8:
-	ldr r0, _06013904 @ =0x048080B4
+	ldr r0, _06013904 ; =0x048080B4
 	mov r1, #0xc0
 	strh r1, [r0]
 	mov r1, #0
@@ -23668,23 +23672,23 @@ _060138D8:
 	mov r0, r5
 	strh r1, [r4, #0x64]
 	bl sub_06008EFC
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06013900: .4byte 0x0380FFF4
-_06013904: .4byte 0x048080B4
+_06013900: .word 0x0380FFF4
+_06013904: .word 0x048080B4
 	arm_func_end sub_06013894
 
 	arm_func_start sub_06013908
-sub_06013908: @ 0x06013908
-	push {r4, lr}
-	ldr r1, _06013954 @ =0x0380FFF4
+sub_06013908: ; 0x06013908
+	stmdb sp!, {r4, lr}
+	ldr r1, _06013954 ; =0x0380FFF4
 	mov r0, #0x1000000
 	ldr r1, [r1]
 	add r1, r1, #0x2c
 	add r4, r1, #0x400
 	bl sub_06008EF4
-	ldr r1, _06013958 @ =0x048080B4
+	ldr r1, _06013958 ; =0x048080B4
 	mov r2, #2
 	strh r2, [r1]
 	ldrh r1, [r4, #0x3c]
@@ -23695,29 +23699,29 @@ sub_06013908: @ 0x06013908
 _06013944:
 	mov r0, r4
 	bl sub_06008EFC
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06013954: .4byte 0x0380FFF4
-_06013958: .4byte 0x048080B4
+_06013954: .word 0x0380FFF4
+_06013958: .word 0x048080B4
 	arm_func_end sub_06013908
 
 	arm_func_start sub_0601395C
-sub_0601395C: @ 0x0601395C
-	push {r3, r4, r5, lr}
-	ldr r1, _060139FC @ =0x0380FFF4
+sub_0601395C: ; 0x0601395C
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _060139FC ; =0x0380FFF4
 	mov r0, #0x1000000
 	ldr r1, [r1]
 	add r1, r1, #0x2c
 	add r4, r1, #0x400
 	bl sub_06008EF4
-	ldr r1, _060139FC @ =0x0380FFF4
+	ldr r1, _060139FC ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r1]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x50]
 	cmp r0, #1
-	ldr r0, _06013A00 @ =0x048080B4
+	ldr r0, _06013A00 ; =0x048080B4
 	bne _060139C4
 	mov r1, #9
 	strh r1, [r0]
@@ -23746,17 +23750,17 @@ _060139E0:
 	bl sub_06013D84
 	mov r0, r5
 	bl sub_06008EFC
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060139FC: .4byte 0x0380FFF4
-_06013A00: .4byte 0x048080B4
+_060139FC: .word 0x0380FFF4
+_06013A00: .word 0x048080B4
 	arm_func_end sub_0601395C
 
 	arm_func_start sub_06013A04
-sub_06013A04: @ 0x06013A04
-	push {r3, lr}
-	ldr r2, _06013A64 @ =0x0380FFF4
+sub_06013A04: ; 0x06013A04
+	stmdb sp!, {r3, lr}
+	ldr r2, _06013A64 ; =0x0380FFF4
 	mov r1, #0x14
 	ldr r2, [r2]
 	mul r1, r0, r1
@@ -23778,16 +23782,16 @@ sub_06013A04: @ 0x06013A04
 	mov lr, pc
 	bx r2
 _06013A5C:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06013A64: .4byte 0x0380FFF4
+_06013A64: .word 0x0380FFF4
 	arm_func_end sub_06013A04
 
 	arm_func_start sub_06013A68
-sub_06013A68: @ 0x06013A68
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r1, _06013AE8 @ =0x0380FFF4
+sub_06013A68: ; 0x06013A68
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r1, _06013AE8 ; =0x0380FFF4
 	mov r7, r0
 	mov r0, #0x14
 	ldr r1, [r1]
@@ -23797,10 +23801,10 @@ sub_06013A68: @ 0x06013A68
 	mov r0, #0x1000000
 	add r6, r5, r4
 	bl sub_06008EF4
-	ldr r1, _06013AEC @ =0x0601889C
-	lsl r2, r7, #1
+	ldr r1, _06013AEC ; =0x0601889C
+	mov r2, r7, lsl #1
 	ldrh r2, [r1, r2]
-	ldr r1, _06013AF0 @ =0x048080B4
+	ldr r1, _06013AF0 ; =0x048080B4
 	strh r2, [r1]
 	ldrh r1, [r5, r4]
 	cmp r1, #0
@@ -23809,25 +23813,25 @@ sub_06013A68: @ 0x06013A68
 	ldrh r1, [r2, #0x14]
 	tst r1, #0x4000
 	ldreq r1, [r6, #8]
-	ldrheq r1, [r1, #4]
-	strheq r1, [r2, #0xc]
+	ldreqh r1, [r1, #4]
+	streqh r1, [r2, #0xc]
 	ldr r2, [r6, #8]
 	ldr r1, [r6, #0xc]
 	ldrh r2, [r2, #0x22]
 	strh r2, [r1, #0x2a]
 _06013ADC:
 	bl sub_06008EFC
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06013AE8: .4byte 0x0380FFF4
-_06013AEC: .4byte 0x0601889C
-_06013AF0: .4byte 0x048080B4
+_06013AE8: .word 0x0380FFF4
+_06013AEC: .word 0x0601889C
+_06013AF0: .word 0x048080B4
 	arm_func_end sub_06013A68
 
 	arm_func_start sub_06013AF4
-sub_06013AF4: @ 0x06013AF4
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_06013AF4: ; 0x06013AF4
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov fp, r0
 	mov r7, #0
 	bl sub_0600E998
@@ -23835,7 +23839,7 @@ sub_06013AF4: @ 0x06013AF4
 	beq _06013BE0
 	mov r8, r7
 _06013B10:
-	ldr r0, _06013BE8 @ =0x0380FFF4
+	ldr r0, _06013BE8 ; =0x0380FFF4
 	mov r1, #0xc
 	ldr r2, [r0]
 	mul sl, r8, r1
@@ -23856,7 +23860,7 @@ _06013B40:
 	cmp r1, fp
 	bne _06013BC4
 	cmp r8, #1
-	ldrne r0, _06013BE8 @ =0x0380FFF4
+	ldrne r0, _06013BE8 ; =0x0380FFF4
 	ldrne r0, [r0]
 	addne r0, sb, r0
 	ldrne r0, [r0, #0x438]
@@ -23874,7 +23878,7 @@ _06013B94:
 	strh r0, [r6, #8]
 	mov r0, r6
 	bl sub_0600E480
-	ldr r0, _06013BE8 @ =0x0380FFF4
+	ldr r0, _06013BE8 ; =0x0380FFF4
 	mov r1, r5
 	ldr r0, [r0]
 	add r0, r0, #0x194
@@ -23892,16 +23896,16 @@ _06013BD4:
 	cmp r8, #3
 	blo _06013B10
 _06013BE0:
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06013BE8: .4byte 0x0380FFF4
+_06013BE8: .word 0x0380FFF4
 	arm_func_end sub_06013AF4
 
 	arm_func_start sub_06013BEC
-sub_06013BEC: @ 0x06013BEC
-	push {r3, r4, r5, lr}
-	ldr r4, _06013C98 @ =0x0380FFF4
+sub_06013BEC: ; 0x06013BEC
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r4, _06013C98 ; =0x0380FFF4
 	ldrh r1, [r0]
 	ldr r2, [r4]
 	tst r1, #1
@@ -23930,7 +23934,7 @@ _06013C40:
 	beq _06013C54
 	bl sub_06013AF4
 _06013C54:
-	ldr r0, _06013C98 @ =0x0380FFF4
+	ldr r0, _06013C98 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x2e]
@@ -23940,22 +23944,22 @@ _06013C54:
 	bl sub_0600E88C
 	cmp r0, #0x40
 	bne _06013C90
-	lsl r0, r4, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r4, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x20
 	bl sub_0600E4F0
 	bl sub_06013894
 _06013C90:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06013C98: .4byte 0x0380FFF4
+_06013C98: .word 0x0380FFF4
 	arm_func_end sub_06013BEC
 
 	arm_func_start sub_06013C9C
-sub_06013C9C: @ 0x06013C9C
-	push {r4, lr}
-	ldr r0, _06013D80 @ =0x0380FFF4
+sub_06013C9C: ; 0x06013C9C
+	stmdb sp!, {r4, lr}
+	ldr r0, _06013D80 ; =0x0380FFF4
 	ldr r2, [r0]
 	add r0, r2, #0x300
 	ldrh r1, [r0, #0x50]
@@ -23983,7 +23987,7 @@ _06013CD0:
 	mov r0, #0
 	strh r0, [r4, #0x3c]
 	ldrh r1, [r4, #0x3e]
-	ldr r0, _06013D80 @ =0x0380FFF4
+	ldr r0, _06013D80 ; =0x0380FFF4
 	sub r1, r1, #1
 	strh r1, [r4, #0x3e]
 	ldr r0, [r0]
@@ -24013,16 +24017,16 @@ _06013D54:
 	mov r1, #0
 	bl sub_06013D84
 _06013D78:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06013D80: .4byte 0x0380FFF4
+_06013D80: .word 0x0380FFF4
 	arm_func_end sub_06013C9C
 
 	arm_func_start sub_06013D84
-sub_06013D84: @ 0x06013D84
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r5, _06013E0C @ =0x0380FFF4
+sub_06013D84: ; 0x06013D84
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldr r5, _06013E0C ; =0x0380FFF4
 	mov r2, #0xc
 	mov sl, r0
 	mul r8, sl, r2
@@ -24057,25 +24061,25 @@ _06013DF8:
 	cmp r7, r4
 	bne _06013DBC
 _06013E04:
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06013E0C: .4byte 0x0380FFF4
+_06013E0C: .word 0x0380FFF4
 	arm_func_end sub_06013D84
 
 	arm_func_start sub_06013E10
-sub_06013E10: @ 0x06013E10
-	push {r3, lr}
+sub_06013E10: ; 0x06013E10
+	stmdb sp!, {r3, lr}
 	bl sub_06013E28
 	mov r0, #1
 	bl sub_06012C88
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end sub_06013E10
 
 	arm_func_start sub_06013E28
-sub_06013E28: @ 0x06013E28
-	push {r4, lr}
+sub_06013E28: ; 0x06013E28
+	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r0, r4, #0x18
 	bl sub_0600E1AC
@@ -24083,34 +24087,34 @@ sub_06013E28: @ 0x06013E28
 	ldrh r0, [r4, #2]
 	cmp r0, #0xff
 	moveq r0, #0
-	strheq r0, [r4, #2]
-	ldr r0, _06013E98 @ =0x0380FFF4
+	streqh r0, [r4, #2]
+	ldr r0, _06013E98 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3ec]
 	strh r0, [r4, #4]
 	ldrh r0, [r4, #0x14]
 	tst r0, #0x4000
-	ldrhne r0, [r4, #0x12]
+	ldrneh r0, [r4, #0x12]
 	addne r0, r0, #8
-	strhne r0, [r4, #0x12]
+	strneh r0, [r4, #0x12]
 	mov r0, r4
 	bl sub_0600E3F0
-	ldr r0, _06013E98 @ =0x0380FFF4
+	ldr r0, _06013E98 ; =0x0380FFF4
 	sub r2, r4, #0x10
 	ldr r1, [r0]
 	add r0, r1, #0x188
 	add r1, r1, #0x1a0
 	bl sub_060091C4
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06013E98: .4byte 0x0380FFF4
+_06013E98: .word 0x0380FFF4
 	arm_func_end sub_06013E28
 
 	arm_func_start sub_06013E9C
-sub_06013E9C: @ 0x06013E9C
-	push {r4, lr}
-	ldr r0, _06013F24 @ =0x0380FFF4
+sub_06013E9C: ; 0x06013E9C
+	stmdb sp!, {r4, lr}
+	ldr r0, _06013F24 ; =0x0380FFF4
 	ldr r2, [r0]
 	add r0, r2, #0x54
 	add r4, r0, #0x400
@@ -24122,7 +24126,7 @@ sub_06013E9C: @ 0x06013E9C
 	mov r1, #0
 	cmp r0, #0
 	ldrne r0, [r4, #8]
-	strhne r1, [r0, #4]
+	strneh r1, [r0, #4]
 	bne _06013F1C
 	mov r0, #1
 	strh r0, [r4]
@@ -24132,27 +24136,27 @@ sub_06013E9C: @ 0x06013E9C
 	strh r1, [r0, #4]
 	bl sub_0600ADC8
 	ldr r2, [r4, #8]
-	ldr r1, _06013F28 @ =0x00003FFF
+	ldr r1, _06013F28 ; =0x00003FFF
 	strh r0, [r2, #8]
 	ldr r0, [r4, #8]
-	ldr r2, _06013F2C @ =0x048080A8
+	ldr r2, _06013F2C ; =0x048080A8
 	and r0, r0, r1
-	lsl r0, r0, #0xf
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0xf
+	mov r0, r0, lsr #0x10
 	orr r0, r0, #0x8000
 	strh r0, [r2]
 _06013F1C:
-	pop {r4, lr}
+	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06013F24: .4byte 0x0380FFF4
-_06013F28: .4byte 0x00003FFF
-_06013F2C: .4byte 0x048080A8
+_06013F24: .word 0x0380FFF4
+_06013F28: .word 0x00003FFF
+_06013F2C: .word 0x048080A8
 	arm_func_end sub_06013E9C
 
 	arm_func_start sub_06013F30
-sub_06013F30: @ 0x06013F30
-	ldr r0, _06013F68 @ =0x0380FFF4
+sub_06013F30: ; 0x06013F30
+	ldr r0, _06013F68 ; =0x0380FFF4
 	mov r2, #1
 	ldr r3, [r0]
 	rsb r1, r2, #0x4000
@@ -24160,21 +24164,21 @@ sub_06013F30: @ 0x06013F30
 	strh r2, [r0, #0xa4]
 	add r0, r3, #0xa4
 	ldr r2, [r0, #0x408]
-	ldr r0, _06013F6C @ =0x04808080
+	ldr r0, _06013F6C ; =0x04808080
 	and r1, r2, r1
-	lsr r1, r1, #1
+	mov r1, r1, lsr #1
 	orr r1, r1, #0x8000
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
-_06013F68: .4byte 0x0380FFF4
-_06013F6C: .4byte 0x04808080
+_06013F68: .word 0x0380FFF4
+_06013F6C: .word 0x04808080
 	arm_func_end sub_06013F30
 
 	arm_func_start sub_06013F70
-sub_06013F70: @ 0x06013F70
-	ldr r1, _06013F90 @ =0x0380FFF4
-	ldr r0, _06013F94 @ =0x04808080
+sub_06013F70: ; 0x06013F70
+	ldr r1, _06013F90 ; =0x0380FFF4
+	ldr r0, _06013F94 ; =0x04808080
 	ldr r2, [r1]
 	mov r1, #0
 	strh r1, [r0]
@@ -24182,14 +24186,14 @@ sub_06013F70: @ 0x06013F70
 	strh r1, [r0, #0xa4]
 	bx lr
 	.align 2, 0
-_06013F90: .4byte 0x0380FFF4
-_06013F94: .4byte 0x04808080
+_06013F90: .word 0x0380FFF4
+_06013F94: .word 0x04808080
 	arm_func_end sub_06013F70
 
 	arm_func_start sub_06013F98
-sub_06013F98: @ 0x06013F98
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r1, _060142F4 @ =0x0380FFF4
+sub_06013F98: ; 0x06013F98
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldr r1, _060142F4 ; =0x0380FFF4
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r8, [r1, #0x4ac]
@@ -24206,7 +24210,7 @@ sub_06013F98: @ 0x06013F98
 	mov r0, #0
 	add r2, r5, #8
 	strh r0, [r8, #0xe]
-	ldr r1, _060142F8 @ =0x060184D0
+	ldr r1, _060142F8 ; =0x060184D0
 	add r0, r8, #0x10
 	mov r3, r2
 	bl sub_0600A978
@@ -24221,8 +24225,8 @@ sub_06013F98: @ 0x06013F98
 	ldrh r0, [r6, #0x7c]
 	strh r0, [sl, #0xa]
 	ldrh r0, [r5, #0x1e]
-	lsl r0, r0, #0x1f
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x1f
+	movs r0, r0, lsr #0x1f
 	bne _06014098
 	sub r0, sb, sl
 	strh r0, [r6, #0x92]
@@ -24274,7 +24278,7 @@ _0601409C:
 	sub r1, r0, sl
 	strh r1, [r6, #0x94]
 	ldrh r2, [r6, #0x94]
-	ldr r1, _060142FC @ =0x04808084
+	ldr r1, _060142FC ; =0x04808084
 	add r2, r2, #2
 	strh r2, [r1]
 	mov r1, #5
@@ -24332,7 +24336,7 @@ _0601409C:
 	bl sub_0600B9E4
 	ldrh r1, [r5, #0x20]
 	add r0, sb, #0x11
-	asr r1, r1, #8
+	mov r1, r1, asr #8
 	and r1, r1, #0xff
 	add sb, sb, #0x12
 	bl sub_0600B9E4
@@ -24346,12 +24350,12 @@ _060141DC:
 	add sb, sb, #0x12
 	bl sub_0600B9E4
 _060141F8:
-	ldr r1, _06014300 @ =0x0380FFF0
+	ldr r1, _06014300 ; =0x0380FFF0
 	mov r0, sb
 	ldrh r4, [r1]
 	and r1, r4, #0xff
 	bl sub_0600B9E4
-	lsr r1, r4, #8
+	mov r1, r4, lsr #8
 	add r0, sb, #1
 	and r1, r1, #0xff
 	add sb, sb, #2
@@ -24395,16 +24399,16 @@ _0601429C:
 	cmp r4, r0
 	blo _06014280
 _060142A8:
-	ldr r0, _060142F4 @ =0x0380FFF4
+	ldr r0, _060142F4 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrh r0, [r0, #0x90]
 	tst r0, #4
 	beq _060142D8
-	ldr r1, _06014304 @ =0x0000B6B8
+	ldr r1, _06014304 ; =0x0000B6B8
 	add r0, sb, #3
 	bic r2, r0, #3
-	ldr r0, _06014308 @ =0x00001D46
+	ldr r0, _06014308 ; =0x00001D46
 	strh r1, [r2]
 	strh r0, [r2, #2]
 _060142D8:
@@ -24413,21 +24417,21 @@ _060142D8:
 	strh r1, [r6, #0xa4]
 	sub r0, r0, sl
 	strh r0, [r8, #0xa]
-	pop {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_060142F4: .4byte 0x0380FFF4
-_060142F8: .4byte 0x060184D0
-_060142FC: .4byte 0x04808084
-_06014300: .4byte 0x0380FFF0
-_06014304: .4byte 0x0000B6B8
-_06014308: .4byte 0x00001D46
+_060142F4: .word 0x0380FFF4
+_060142F8: .word 0x060184D0
+_060142FC: .word 0x04808084
+_06014300: .word 0x0380FFF0
+_06014304: .word 0x0000B6B8
+_06014308: .word 0x00001D46
 	arm_func_end sub_06013F98
 
 	arm_func_start sub_0601430C
-sub_0601430C: @ 0x0601430C
-	push {r3, r4, r5, lr}
-	ldr r0, _060143F8 @ =0x0380FFF4
+sub_0601430C: ; 0x0601430C
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r0, _060143F8 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r4, r0, #0x344
 	ldr r1, [r0, #0x4ac]
@@ -24445,10 +24449,10 @@ sub_0601430C: @ 0x0601430C
 	sub r0, r0, #1
 	add r2, r2, #2
 	bl sub_0600B93C
-	ldr r1, _060143FC @ =0x0380FFF0
+	ldr r1, _060143FC ; =0x0380FFF0
 	add r0, r5, #9
 	ldrh r1, [r1]
-	asr r1, r1, #8
+	mov r1, r1, asr #8
 	and r1, r1, #0xff
 	bl sub_0600B9E4
 	b _0601437C
@@ -24456,7 +24460,7 @@ _06014374:
 	add r2, r2, #1
 	bl sub_0600B93C
 _0601437C:
-	ldr r0, _060143F8 @ =0x0380FFF4
+	ldr r0, _060143F8 ; =0x0380FFF4
 	ldrh r2, [r4, #0x96]
 	ldr r0, [r0]
 	ldrh r1, [r4, #0xa0]
@@ -24469,7 +24473,7 @@ _0601437C:
 	add r1, r1, #8
 	and r1, r1, #0xff
 	bl sub_0600B9E4
-	ldr r0, _060143F8 @ =0x0380FFF4
+	ldr r0, _060143F8 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrh r0, [r0, #0x90]
@@ -24478,26 +24482,26 @@ _0601437C:
 	ldrh r0, [r4, #0xa0]
 	add r1, r5, #0xd
 	add r0, r1, r0
-	ldr r1, _06014400 @ =0x0000B6B8
+	ldr r1, _06014400 ; =0x0000B6B8
 	bic r2, r0, #3
-	ldr r0, _06014404 @ =0x00001D46
+	ldr r0, _06014404 ; =0x00001D46
 	strh r1, [r2]
 	strh r0, [r2, #2]
 _060143E8:
 	mov r0, #0
 	strh r0, [r4, #0xa4]
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060143F8: .4byte 0x0380FFF4
-_060143FC: .4byte 0x0380FFF0
-_06014400: .4byte 0x0000B6B8
-_06014404: .4byte 0x00001D46
+_060143F8: .word 0x0380FFF4
+_060143FC: .word 0x0380FFF0
+_06014400: .word 0x0000B6B8
+_06014404: .word 0x00001D46
 	arm_func_end sub_0601430C
 
 	arm_func_start sub_06014408
-sub_06014408: @ 0x06014408
-	ldr r0, _06014434 @ =0x0380FFF4
+sub_06014408: ; 0x06014408
+	ldr r0, _06014434 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r1, r0, #0x500
 	add r0, r0, #0x100
@@ -24509,13 +24513,13 @@ sub_06014408: @ 0x06014408
 	movge r0, #0
 	bx lr
 	.align 2, 0
-_06014434: .4byte 0x0380FFF4
+_06014434: .word 0x0380FFF4
 	arm_func_end sub_06014408
 
 	arm_func_start sub_06014438
-sub_06014438: @ 0x06014438
-	push {r4, r5, r6, lr}
-	ldr r2, _060144AC @ =0x0380FFF4
+sub_06014438: ; 0x06014438
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _060144AC ; =0x0380FFF4
 	mov r5, r1
 	ldr r1, [r2]
 	mov r6, r0
@@ -24529,7 +24533,7 @@ sub_06014438: @ 0x06014438
 	mov r0, r4
 	b _060144A4
 _06014470:
-	ldr r0, _060144B0 @ =0x0000FFFF
+	ldr r0, _060144B0 ; =0x0000FFFF
 	mov r1, r6
 	strh r0, [r4, #0xc]
 	add r0, r4, #0x10
@@ -24543,17 +24547,17 @@ _06014470:
 	strh r0, [r4, #0x24]
 	add r0, r4, #0x10
 _060144A4:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_060144AC: .4byte 0x0380FFF4
-_060144B0: .4byte 0x0000FFFF
+_060144AC: .word 0x0380FFF4
+_060144B0: .word 0x0000FFFF
 	arm_func_end sub_06014438
 
 	arm_func_start sub_060144B4
-sub_060144B4: @ 0x060144B4
-	push {r4, r5, r6, lr}
-	ldr r1, _06014554 @ =0x0380FFF4
+sub_060144B4: ; 0x060144B4
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r1, _06014554 ; =0x0380FFF4
 	mov r6, r0
 	ldr r2, [r1]
 	mov r1, #0x5e
@@ -24567,7 +24571,7 @@ sub_060144B4: @ 0x060144B4
 	mov r0, r4
 	b _0601454C
 _060144EC:
-	ldr r0, _06014558 @ =0x0000FFFF
+	ldr r0, _06014558 ; =0x0000FFFF
 	mov r1, r6
 	strh r0, [r4, #0xc]
 	add r0, r4, #0x10
@@ -24592,17 +24596,17 @@ _060144EC:
 	strh r0, [r4, #0x24]
 	add r0, r4, #0x10
 _0601454C:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06014554: .4byte 0x0380FFF4
-_06014558: .4byte 0x0000FFFF
+_06014554: .word 0x0380FFF4
+_06014558: .word 0x0000FFFF
 	arm_func_end sub_060144B4
 
 	arm_func_start sub_0601455C
-sub_0601455C: @ 0x0601455C
-	push {r4, r5, r6, lr}
-	ldr r1, _06014608 @ =0x0380FFF4
+sub_0601455C: ; 0x0601455C
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r1, _06014608 ; =0x0380FFF4
 	mov r6, r0
 	ldr r2, [r1]
 	mov r1, #0x64
@@ -24616,7 +24620,7 @@ sub_0601455C: @ 0x0601455C
 	mov r0, r4
 	b _06014600
 _06014594:
-	ldr r0, _0601460C @ =0x0000FFFF
+	ldr r0, _0601460C ; =0x0000FFFF
 	mov r1, r6
 	strh r0, [r4, #0xc]
 	add r0, r4, #0x10
@@ -24644,17 +24648,17 @@ _06014594:
 	strh r0, [r4, #0x24]
 	add r0, r4, #0x10
 _06014600:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06014608: .4byte 0x0380FFF4
-_0601460C: .4byte 0x0000FFFF
+_06014608: .word 0x0380FFF4
+_0601460C: .word 0x0000FFFF
 	arm_func_end sub_0601455C
 
 	arm_func_start sub_06014610
-sub_06014610: @ 0x06014610
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r3, _0601477C @ =0x0380FFF4
+sub_06014610: ; 0x06014610
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldr r3, _0601477C ; =0x0380FFF4
 	mov r7, r1
 	ldr r1, [r3]
 	mov r8, r0
@@ -24669,7 +24673,7 @@ sub_06014610: @ 0x06014610
 	mov r0, r4
 	b _06014774
 _0601464C:
-	ldr r0, _06014780 @ =0x0000FFFF
+	ldr r0, _06014780 ; =0x0000FFFF
 	cmp r7, #0
 	strh r0, [r4, #0xc]
 	bne _06014670
@@ -24686,7 +24690,7 @@ _06014674:
 	mov r1, r0
 	add r0, r4, #0x10
 	bl sub_06014D3C
-	ldr r0, _0601477C @ =0x0380FFF4
+	ldr r0, _0601477C ; =0x0380FFF4
 	cmp r5, #0
 	ldr r0, [r0]
 	add r0, r0, #0x300
@@ -24694,9 +24698,9 @@ _06014674:
 	strh r0, [r4, #0x3c]
 	strh r7, [r4, #0x3e]
 	strh r5, [r4, #0x40]
-	ldrhne r0, [r4, #0x40]
+	ldrneh r0, [r4, #0x40]
 	orrne r0, r0, #0xc000
-	strhne r0, [r4, #0x40]
+	strneh r0, [r4, #0x40]
 	add r0, r4, #0x42
 	bl sub_06014E64
 	add r0, r0, #6
@@ -24750,17 +24754,17 @@ _06014758:
 _06014770:
 	add r0, r4, #0x10
 _06014774:
-	pop {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_0601477C: .4byte 0x0380FFF4
-_06014780: .4byte 0x0000FFFF
+_0601477C: .word 0x0380FFF4
+_06014780: .word 0x0000FFFF
 	arm_func_end sub_06014610
 
 	arm_func_start sub_06014784
-sub_06014784: @ 0x06014784
-	push {r4, r5, r6, r7, r8, lr}
-	ldr r3, _060148DC @ =0x0380FFF4
+sub_06014784: ; 0x06014784
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	ldr r3, _060148DC ; =0x0380FFF4
 	mov r6, r1
 	ldr r1, [r3]
 	mov r8, r0
@@ -24775,7 +24779,7 @@ sub_06014784: @ 0x06014784
 	mov r0, r4
 	b _060148D4
 _060147C0:
-	ldr r0, _060148E0 @ =0x0000FFFF
+	ldr r0, _060148E0 ; =0x0000FFFF
 	cmp r6, #0
 	strh r0, [r4, #0xc]
 	bne _060147E4
@@ -24792,7 +24796,7 @@ _060147E8:
 	mov r1, r0
 	add r0, r4, #0x10
 	bl sub_06014D3C
-	ldr r0, _060148DC @ =0x0380FFF4
+	ldr r0, _060148DC ; =0x0380FFF4
 	orr r2, r7, #0xc000
 	ldr r1, [r0]
 	add r0, r4, #0x42
@@ -24851,17 +24855,17 @@ _060148B8:
 _060148D0:
 	add r0, r4, #0x10
 _060148D4:
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_060148DC: .4byte 0x0380FFF4
-_060148E0: .4byte 0x0000FFFF
+_060148DC: .word 0x0380FFF4
+_060148E0: .word 0x0000FFFF
 	arm_func_end sub_06014784
 
 	arm_func_start sub_060148E4
-sub_060148E4: @ 0x060148E4
-	push {r3, r4, r5, lr}
-	ldr r1, _06014968 @ =0x0380FFF4
+sub_060148E4: ; 0x060148E4
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _06014968 ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
 	mov r1, #0x5a
@@ -24874,7 +24878,7 @@ sub_060148E4: @ 0x060148E4
 	mov r0, r5
 	b _06014960
 _06014918:
-	ldr r2, _0601496C @ =0x0000FFFF
+	ldr r2, _0601496C ; =0x0000FFFF
 	mov r1, r4
 	add r0, r5, #0x10
 	strh r2, [r5, #0xc]
@@ -24893,17 +24897,17 @@ _06014918:
 	strh r0, [r5, #0x24]
 	add r0, r5, #0x10
 _06014960:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06014968: .4byte 0x0380FFF4
-_0601496C: .4byte 0x0000FFFF
+_06014968: .word 0x0380FFF4
+_0601496C: .word 0x0000FFFF
 	arm_func_end sub_060148E4
 
 	arm_func_start sub_06014970
-sub_06014970: @ 0x06014970
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r1, _06014B84 @ =0x0380FFF4
+sub_06014970: ; 0x06014970
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldr r1, _06014B84 ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r1]
 	add r4, r0, #0x344
@@ -24911,7 +24915,7 @@ sub_06014970: @ 0x06014970
 	cmp r0, #0
 	moveq r0, #0
 	beq _06014B7C
-	ldr r1, _06014B84 @ =0x0380FFF4
+	ldr r1, _06014B84 ; =0x0380FFF4
 	ldrh r0, [r4, #0xa0]
 	ldr r2, [r1]
 	add r1, r0, #0x78
@@ -24924,7 +24928,7 @@ sub_06014970: @ 0x06014970
 	mov r0, r6
 	b _06014B7C
 _060149C4:
-	ldr r0, _06014B88 @ =0x0000FFFF
+	ldr r0, _06014B88 ; =0x0000FFFF
 	mov r1, r5
 	strh r0, [r6, #0xc]
 	add r0, r6, #0x10
@@ -24948,14 +24952,14 @@ _060149C4:
 	add r0, r4, #1
 	mov r1, #1
 	bl sub_0600B9E4
-	ldr r1, _06014B84 @ =0x0380FFF4
+	ldr r1, _06014B84 ; =0x0380FFF4
 	add r0, r4, #2
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	ldrh r1, [r1, #0xbe]
 	and r1, r1, #0xff
 	bl sub_0600B9E4
-	ldr r0, _06014B84 @ =0x0380FFF4
+	ldr r0, _06014B84 ; =0x0380FFF4
 	add r7, r7, #3
 	ldr r1, [r0]
 	add r0, r6, #0x48
@@ -24966,7 +24970,7 @@ _060149C4:
 	mov r1, #0xdd
 	mov sl, #0
 	bl sub_0600B9E4
-	ldr r1, _06014B84 @ =0x0380FFF4
+	ldr r1, _06014B84 ; =0x0380FFF4
 	add r0, r5, #1
 	ldr r1, [r1]
 	add r1, r1, #0x300
@@ -24992,15 +24996,15 @@ _060149C4:
 	bl sub_0600B9E4
 	ldrh r1, [r8, #0x20]
 	add r0, r5, #7
-	asr r1, r1, #8
+	mov r1, r1, asr #8
 	and r1, r1, #0xff
 	bl sub_0600B9E4
-	ldr r1, _06014B8C @ =0x0380FFF0
+	ldr r1, _06014B8C ; =0x0380FFF0
 	add r0, r5, #8
 	ldrh r8, [r1]
 	and r1, r8, #0xff
 	bl sub_0600B9E4
-	lsr r1, r8, #8
+	mov r1, r8, lsr #8
 	add r0, r5, #9
 	and r1, r1, #0xff
 	bl sub_0600B9E4
@@ -25038,17 +25042,17 @@ _06014B58:
 	strh r0, [r6, #0x24]
 	add r0, r6, #0x10
 _06014B7C:
-	pop {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_06014B84: .4byte 0x0380FFF4
-_06014B88: .4byte 0x0000FFFF
-_06014B8C: .4byte 0x0380FFF0
+_06014B84: .word 0x0380FFF4
+_06014B88: .word 0x0000FFFF
+_06014B8C: .word 0x0380FFF0
 	arm_func_end sub_06014970
 
 	arm_func_start sub_06014B90
-sub_06014B90: @ 0x06014B90
-	push {r4, r5, r6, lr}
+sub_06014B90: ; 0x06014B90
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	cmp r2, #0
@@ -25058,7 +25062,7 @@ sub_06014B90: @ 0x06014B90
 	moveq r0, #0
 	beq _06014C40
 _06014BB4:
-	ldr r0, _06014C48 @ =0x0380FFF4
+	ldr r0, _06014C48 ; =0x0380FFF4
 	add r1, r5, #0x3d
 	ldr r0, [r0]
 	add r0, r0, #0x188
@@ -25070,7 +25074,7 @@ _06014BB4:
 	mov r0, r4
 	b _06014C40
 _06014BE0:
-	ldr r2, _06014C4C @ =0x0000FFFF
+	ldr r2, _06014C4C ; =0x0000FFFF
 	mov r1, r6
 	add r0, r4, #0x10
 	strh r2, [r4, #0xc]
@@ -25084,8 +25088,8 @@ _06014BE0:
 	and r1, r5, #0xff
 	bl sub_0600B9E4
 	add r0, r5, #2
-	lsl r0, r0, #0x10
-	lsr r5, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r5, r0, lsr #0x10
 _06014C20:
 	add r0, r5, #6
 	strh r0, [r4, #0x16]
@@ -25096,16 +25100,16 @@ _06014C20:
 	strh r0, [r4, #0x24]
 	add r0, r4, #0x10
 _06014C40:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06014C48: .4byte 0x0380FFF4
-_06014C4C: .4byte 0x0000FFFF
+_06014C48: .word 0x0380FFF4
+_06014C4C: .word 0x0000FFFF
 	arm_func_end sub_06014B90
 
 	arm_func_start sub_06014C50
-sub_06014C50: @ 0x06014C50
-	push {r4, r5, r6, lr}
+sub_06014C50: ; 0x06014C50
+	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	cmp r2, #0
@@ -25115,7 +25119,7 @@ sub_06014C50: @ 0x06014C50
 	moveq r0, #0
 	beq _06014CD4
 _06014C74:
-	ldr r0, _06014CDC @ =0x0380FFF4
+	ldr r0, _06014CDC ; =0x0380FFF4
 	mov r1, #0x36
 	ldr r0, [r0]
 	add r0, r0, #0x188
@@ -25127,7 +25131,7 @@ _06014C74:
 	mov r0, r4
 	b _06014CD4
 _06014CA0:
-	ldr r0, _06014CE0 @ =0x0000FFFF
+	ldr r0, _06014CE0 ; =0x0000FFFF
 	mov r1, r6
 	strh r0, [r4, #0xc]
 	add r0, r4, #0x10
@@ -25141,17 +25145,17 @@ _06014CA0:
 	strh r0, [r4, #0x24]
 	add r0, r4, #0x10
 _06014CD4:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06014CDC: .4byte 0x0380FFF4
-_06014CE0: .4byte 0x0000FFFF
+_06014CDC: .word 0x0380FFF4
+_06014CE0: .word 0x0000FFFF
 	arm_func_end sub_06014C50
 
 	arm_func_start sub_06014CE4
-sub_06014CE4: @ 0x06014CE4
-	push {r3, lr}
-	ldr ip, _06014D38 @ =0x0380FFF4
+sub_06014CE4: ; 0x06014CE4
+	stmdb sp!, {r3, lr}
+	ldr ip, _06014D38 ; =0x0380FFF4
 	mov r2, #0
 	ldr r3, [ip]
 	mov r1, #0x14
@@ -25169,15 +25173,15 @@ sub_06014CE4: @ 0x06014CE4
 	add r1, r2, #0x3a8
 	add r2, r2, #0x324
 	bl sub_0600A944
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06014D38: .4byte 0x0380FFF4
+_06014D38: .word 0x0380FFF4
 	arm_func_end sub_06014CE4
 
 	arm_func_start sub_06014D3C
-sub_06014D3C: @ 0x06014D3C
-	push {r3, r4, r5, lr}
+sub_06014D3C: ; 0x06014D3C
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	mov r1, r5
@@ -25186,23 +25190,23 @@ sub_06014D3C: @ 0x06014D3C
 	bl sub_06000598
 	bl sub_0600ADC8
 	strh r0, [r5, #0x10]
-	ldr r0, _06014D84 @ =0x0380FFF4
+	ldr r0, _06014D84 ; =0x0380FFF4
 	mov r1, r4
 	ldr r3, [r0]
 	add r0, r5, #0x18
 	add r2, r3, #0x324
 	add r3, r3, #0x3a8
 	bl sub_0600A978
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06014D84: .4byte 0x0380FFF4
+_06014D84: .word 0x0380FFF4
 	arm_func_end sub_06014D3C
 
 	arm_func_start sub_06014D88
-sub_06014D88: @ 0x06014D88
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r2, _06014DEC @ =0x0380FFF4
+sub_06014D88: ; 0x06014D88
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r2, _06014DEC ; =0x0380FFF4
 	mov r7, r0
 	ldr r0, [r2]
 	mov r6, r1
@@ -25228,16 +25232,16 @@ _06014DD8:
 	bne _06014DA8
 	mov r0, #0
 _06014DE4:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06014DEC: .4byte 0x0380FFF4
+_06014DEC: .word 0x0380FFF4
 	arm_func_end sub_06014D88
 
 	arm_func_start sub_06014DF0
-sub_06014DF0: @ 0x06014DF0
-	push {r4, r5, r6, r7, r8, lr}
-	ldr r1, _06014E60 @ =0x0380FFF4
+sub_06014DF0: ; 0x06014DF0
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	ldr r1, _06014E60 ; =0x0380FFF4
 	mov r5, #0
 	ldr r1, [r1]
 	mov r8, r0
@@ -25264,23 +25268,23 @@ _06014E4C:
 	cmp r7, r6
 	blo _06014E30
 	mov r0, r5
-	pop {r4, r5, r6, r7, r8, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_06014E60: .4byte 0x0380FFF4
+_06014E60: .word 0x0380FFF4
 	arm_func_end sub_06014DF0
 
 	arm_func_start sub_06014E64
-sub_06014E64: @ 0x06014E64
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r2, _06014F00 @ =0x0380FFF4
+sub_06014E64: ; 0x06014E64
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldr r2, _06014F00 ; =0x0380FFF4
 	mov r1, #1
 	ldr r2, [r2]
 	mov sb, r0
 	add r6, r2, #0x344
 	mov r7, #0
 	bl sub_0600B9E4
-	ldr r4, _06014F04 @ =0x060184F0
+	ldr r4, _06014F04 ; =0x060184F0
 	add r7, r7, #2
 	mov r8, #0
 	mov r5, #1
@@ -25290,7 +25294,7 @@ _06014E94:
 	beq _06014ED8
 	ldrh r0, [r6, #0x60]
 	tst r0, r5, lsl r8
-	lsl r0, r8, #1
+	mov r0, r8, lsl #1
 	ldrh r1, [r4, r0]
 	beq _06014EC8
 	orr r1, r1, #0x80
@@ -25313,17 +25317,17 @@ _06014ED8:
 	and r1, r1, #0xff
 	bl sub_0600B9E4
 	mov r0, r7
-	pop {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_06014F00: .4byte 0x0380FFF4
-_06014F04: .4byte 0x060184F0
+_06014F00: .word 0x0380FFF4
+_06014F04: .word 0x060184F0
 	arm_func_end sub_06014E64
 
 	arm_func_start sub_06014F08
-sub_06014F08: @ 0x06014F08
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r1, _060151D8 @ =0x0380FFF4
+sub_06014F08: ; 0x06014F08
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r1, _060151D8 ; =0x0380FFF4
 	mov r0, #0
 	ldr r7, [r1]
 	mov r2, #0xb0
@@ -25340,7 +25344,7 @@ sub_06014F08: @ 0x06014F08
 	strh r1, [r4, #0x14]
 	str r1, [r4, #0x20]
 	strh r1, [r4, #0x28]
-	ldr r0, _060151DC @ =0x0000FFFF
+	ldr r0, _060151DC ; =0x0000FFFF
 	str r1, [r4, #0x34]
 	strh r0, [r4, #0xa2]
 	strh r0, [r4, #0xa4]
@@ -25348,64 +25352,64 @@ sub_06014F08: @ 0x06014F08
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	b _060151BC
-_06014F70: @ jump table
-	b _06014F80 @ case 0
-	b _06014FFC @ case 1
-	b _06015098 @ case 2
-	b _06015144 @ case 3
+_06014F70: ; jump table
+	b _06014F80 ; case 0
+	b _06014FFC ; case 1
+	b _06015098 ; case 2
+	b _06015144 ; case 3
 _06014F80:
-	ldr r7, _060151E0 @ =0x04804170
-	ldr r0, _060151E4 @ =0x04804026
+	ldr r7, _060151E0 ; =0x04804170
+	ldr r0, _060151E4 ; =0x04804026
 	str r7, [r4, #8]
 	sub r1, r7, #0x148
 	str r1, [r4, #0x1c]
 	sub r2, r7, #0x170
-	ldr r1, _060151E8 @ =sub_06013090
+	ldr r1, _060151E8 ; =sub_06013090
 	str r2, [r4, #0x30]
-	ldr r2, _060151EC @ =sub_0601320C
+	ldr r2, _060151EC ; =sub_0601320C
 	str r1, [r4, #0x10]
-	ldr r1, _060151F0 @ =sub_060136D8
+	ldr r1, _060151F0 ; =sub_060136D8
 	str r2, [r4, #0x24]
-	ldr r3, _060151F4 @ =0x0000B6B8
+	ldr r3, _060151F4 ; =0x0000B6B8
 	str r1, [r4, #0x38]
 	sub r1, r7, #0x14c
-	ldr r2, _060151F8 @ =0x00001D46
+	ldr r2, _060151F8 ; =0x00001D46
 	strh r3, [r1]
 	strh r2, [r0]
 	strh r3, [r7, #-4]
 	add r0, r0, #0x148
 	strh r2, [r0]
 	add r1, r7, #0x620
-	ldr r0, _060151FC @ =0x04804792
+	ldr r0, _060151FC ; =0x04804792
 	strh r3, [r1]
 	strh r2, [r0]
 	mov r1, #8
-	ldr r0, _06015200 @ =0x048080AE
+	ldr r0, _06015200 ; =0x048080AE
 	strh r1, [r5, #0x8a]
 	mov r1, #1
 	strh r1, [r0]
 	b _060151BC
 _06014FFC:
-	ldr r3, _06015204 @ =0x04804AA0
-	ldr r2, _06015208 @ =0x04804334
+	ldr r3, _06015204 ; =0x04804AA0
+	ldr r2, _06015208 ; =0x04804334
 	str r3, [r4, #8]
 	sub r0, r3, #0x148
 	str r0, [r4, #0x1c]
-	ldr r0, _060151E8 @ =sub_06013090
+	ldr r0, _060151E8 ; =sub_06013090
 	str r2, [r4, #0x30]
-	ldr r1, _060151EC @ =sub_0601320C
+	ldr r1, _060151EC ; =sub_0601320C
 	str r0, [r4, #0x10]
-	ldr r0, _0601520C @ =sub_06013740
+	ldr r0, _0601520C ; =sub_06013740
 	str r1, [r4, #0x24]
-	ldr ip, _06015210 @ =0x04804956
+	ldr ip, _06015210 ; =0x04804956
 	str r0, [r4, #0x38]
 	sub r1, r2, #0xfc
 	str r1, [r4, #0x80]
 	sub r7, r2, #0x334
-	ldr r0, _060151F4 @ =0x0000B6B8
+	ldr r0, _060151F4 ; =0x0000B6B8
 	str r7, [r4, #0x44]
 	sub r7, r2, #0x100
-	ldr lr, _060151F8 @ =0x00001D46
+	ldr lr, _060151F8 ; =0x00001D46
 	strh r0, [r7]
 	strh lr, [r2, #-0xfe]
 	strh r0, [r2, #-4]
@@ -25417,7 +25421,7 @@ _06014FFC:
 	add r2, ip, #0x148
 	strh lr, [r2]
 	add r3, r3, #0x620
-	ldr r2, _06015214 @ =0x048050C2
+	ldr r2, _06015214 ; =0x048050C2
 	strh r0, [r3]
 	strh lr, [r2]
 	mov r0, #0x208
@@ -25426,26 +25430,26 @@ _06014FFC:
 	bl sub_06013F98
 	b _060151BC
 _06015098:
-	ldr r1, _06015218 @ =0x048045D8
-	ldr r3, _0601521C @ =0x04804232
+	ldr r1, _06015218 ; =0x048045D8
+	ldr r3, _0601521C ; =0x04804232
 	str r1, [r4, #8]
 	sub r0, r1, #0x148
 	str r0, [r4, #0x1c]
 	sub r2, r1, #0x170
-	ldr ip, _06015220 @ =0x04804000
-	ldr r0, _060151E8 @ =sub_06013090
+	ldr ip, _06015220 ; =0x04804000
+	ldr r0, _060151E8 ; =sub_06013090
 	str r2, [r4, #0x30]
-	ldr r2, _060151EC @ =sub_0601320C
+	ldr r2, _060151EC ; =sub_0601320C
 	str r0, [r4, #0x10]
-	ldr r0, _060151F0 @ =sub_060136D8
+	ldr r0, _060151F0 ; =sub_060136D8
 	str r2, [r4, #0x24]
 	str r0, [r4, #0x38]
 	str ip, [r4, #0x58]
 	add r2, ip, #0x234
-	ldr r0, _060151F4 @ =0x0000B6B8
+	ldr r0, _060151F4 ; =0x0000B6B8
 	str r2, [r4, #0x6c]
 	add r2, ip, #0x230
-	ldr r4, _060151F8 @ =0x00001D46
+	ldr r4, _060151F8 ; =0x00001D46
 	strh r0, [r2]
 	strh r4, [r3]
 	sub r2, r1, #0x174
@@ -25460,81 +25464,81 @@ _06015098:
 	add r2, r3, #0x3a4
 	strh r4, [r2]
 	add r2, r1, #0x620
-	ldr r1, _06015224 @ =0x04804BFA
+	ldr r1, _06015224 ; =0x04804BFA
 	strh r0, [r2]
 	strh r4, [r1]
 	mov r1, #0x108
-	ldr r0, _06015200 @ =0x048080AE
+	ldr r0, _06015200 ; =0x048080AE
 	strh r1, [r5, #0x8a]
 	mov r1, #0xd
 	strh r1, [r0]
 	b _060151BC
 _06015144:
-	ldr ip, _060151E0 @ =0x04804170
-	ldr r0, _060151E4 @ =0x04804026
+	ldr ip, _060151E0 ; =0x04804170
+	ldr r0, _060151E4 ; =0x04804026
 	str ip, [r4, #8]
 	sub r1, ip, #0x148
 	str r1, [r4, #0x1c]
 	sub r2, ip, #0x170
-	ldr r1, _060151E8 @ =sub_06013090
+	ldr r1, _060151E8 ; =sub_06013090
 	str r2, [r4, #0x30]
-	ldr r2, _060151EC @ =sub_0601320C
+	ldr r2, _060151EC ; =sub_0601320C
 	str r1, [r4, #0x10]
-	ldr r1, _060151F0 @ =sub_060136D8
+	ldr r1, _060151F0 ; =sub_060136D8
 	str r2, [r4, #0x24]
-	ldr r3, _060151F4 @ =0x0000B6B8
+	ldr r3, _060151F4 ; =0x0000B6B8
 	str r1, [r4, #0x38]
 	sub r1, ip, #0x14c
-	ldr r2, _060151F8 @ =0x00001D46
+	ldr r2, _060151F8 ; =0x00001D46
 	strh r3, [r1]
 	strh r2, [r0]
 	strh r3, [ip, #-4]
 	add r0, r0, #0x148
 	strh r2, [r0]
 	add r1, ip, #0x620
-	ldr r0, _060151FC @ =0x04804792
+	ldr r0, _060151FC ; =0x04804792
 	strh r3, [r1]
 	strh r2, [r0]
 	mov r1, #0x108
-	ldr r0, _06015200 @ =0x048080AE
+	ldr r0, _06015200 ; =0x048080AE
 	strh r1, [r5, #0x8a]
 	mov r1, #0xd
 	strh r1, [r0]
 _060151BC:
 	ldrh r0, [r6, #0x18]
 	cmp r0, #0
-	ldrhne r0, [r5, #0x8a]
+	ldrneh r0, [r5, #0x8a]
 	orrne r0, r0, #0x4000
-	strhne r0, [r5, #0x8a]
-	pop {r3, r4, r5, r6, r7, lr}
+	strneh r0, [r5, #0x8a]
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_060151D8: .4byte 0x0380FFF4
-_060151DC: .4byte 0x0000FFFF
-_060151E0: .4byte 0x04804170
-_060151E4: .4byte 0x04804026
-_060151E8: .4byte sub_06013090
-_060151EC: .4byte sub_0601320C
-_060151F0: .4byte sub_060136D8
-_060151F4: .4byte 0x0000B6B8
-_060151F8: .4byte 0x00001D46
-_060151FC: .4byte 0x04804792
-_06015200: .4byte 0x048080AE
-_06015204: .4byte 0x04804AA0
-_06015208: .4byte 0x04804334
-_0601520C: .4byte sub_06013740
-_06015210: .4byte 0x04804956
-_06015214: .4byte 0x048050C2
-_06015218: .4byte 0x048045D8
-_0601521C: .4byte 0x04804232
-_06015220: .4byte 0x04804000
-_06015224: .4byte 0x04804BFA
+_060151D8: .word 0x0380FFF4
+_060151DC: .word 0x0000FFFF
+_060151E0: .word 0x04804170
+_060151E4: .word 0x04804026
+_060151E8: .word sub_06013090
+_060151EC: .word sub_0601320C
+_060151F0: .word sub_060136D8
+_060151F4: .word 0x0000B6B8
+_060151F8: .word 0x00001D46
+_060151FC: .word 0x04804792
+_06015200: .word 0x048080AE
+_06015204: .word 0x04804AA0
+_06015208: .word 0x04804334
+_0601520C: .word sub_06013740
+_06015210: .word 0x04804956
+_06015214: .word 0x048050C2
+_06015218: .word 0x048045D8
+_0601521C: .word 0x04804232
+_06015220: .word 0x04804000
+_06015224: .word 0x04804BFA
 	arm_func_end sub_06014F08
 
 	arm_func_start sub_06015228
-sub_06015228: @ 0x06015228
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _060154F4 @ =0x0380FFF4
+sub_06015228: ; 0x06015228
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldr r1, _060154F4 ; =0x0380FFF4
 	mvn r0, #0
 	ldr r4, [r1]
 	add r7, r4, #0x17c
@@ -25551,8 +25555,8 @@ sub_06015228: @ 0x06015228
 	b _060154EC
 _06015268:
 	ldrh r0, [r5, #0x24]
-	lsl r0, r0, #0x17
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x17
+	movs r0, r0, lsr #0x1f
 	beq _06015280
 	ldrh r0, [r5, #0x34]
 	b _06015284
@@ -25570,9 +25574,9 @@ _06015284:
 	ldrh r0, [r5, #0x18]
 	ldr r2, [r4, #0x560]
 	and r1, r0, #0xf0
-	asr r0, r1, #3
+	mov r0, r1, asr #3
 	add r0, r1, r0, lsr #28
-	asr r0, r0, #4
+	mov r0, r0, asr #4
 	sub r0, r0, #1
 	add r0, r2, r0
 	str r0, [r4, #0x560]
@@ -25625,10 +25629,10 @@ _06015364:
 	b _06015460
 _06015374:
 	ldrh r1, [r5, #0x24]
-	lsl r0, r8, #0x10
-	lsl r1, r1, #0x13
-	lsr r0, r0, #0x10
-	lsr r1, r1, #0x1f
+	mov r0, r8, lsl #0x10
+	mov r1, r1, lsl #0x13
+	mov r0, r0, lsr #0x10
+	mov r1, r1, lsr #0x1f
 	bl sub_0600E5F8
 	mov r0, r8
 	bl sub_0600E92C
@@ -25654,20 +25658,20 @@ _060153C0:
 	bne _0601542C
 	ldrh r0, [r5, #0x28]
 	tst r0, #1
-	ldrhne r0, [r6, #0x8e]
+	ldrneh r0, [r6, #0x8e]
 	bicne r0, r0, #1
-	strhne r0, [r6, #0x8e]
+	strneh r0, [r6, #0x8e]
 	bne _06015408
 	cmp r2, #3
-	ldrhne r0, [r6, #0x8e]
+	ldrneh r0, [r6, #0x8e]
 	bicne r0, r0, #2
-	strhne r0, [r6, #0x8e]
+	strneh r0, [r6, #0x8e]
 _06015408:
 	ldrh r0, [r6, #0x8e]
 	cmp r0, #0
-	ldrheq r0, [r7, #0x20]
+	ldreqh r0, [r7, #0x20]
 	cmpeq r0, #0
-	ldrheq r0, [r7, #0x2c]
+	ldreqh r0, [r7, #0x2c]
 	cmpeq r0, #0
 	bne _0601542C
 	mov r0, #1
@@ -25689,8 +25693,8 @@ _0601542C:
 _06015460:
 	cmp sb, #0
 	bne _060154C8
-	lsl r0, r8, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r8, lsl #0x10
+	mov r0, r0, lsr #0x10
 	strh r0, [r5, #0x12]
 	ldrh r1, [r5, #0x22]
 	and r1, r1, #0xff
@@ -25708,7 +25712,7 @@ _06015460:
 	ldrh r0, [r5, #0x16]
 	mov r1, r5
 	add r0, r0, #0x2d
-	lsr r2, r0, #1
+	mov r2, r0, lsr #1
 	add r0, r7, #0x48
 	strh r2, [r5, #0xe]
 	bl sub_0600F388
@@ -25725,16 +25729,16 @@ _060154D4:
 	mov r1, #6
 	bl sub_06008F04
 _060154EC:
-	pop {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_060154F4: .4byte 0x0380FFF4
+_060154F4: .word 0x0380FFF4
 	arm_func_end sub_06015228
 
 	arm_func_start sub_060154F8
-sub_060154F8: @ 0x060154F8
-	push {r4, r5, r6, lr}
-	ldr r1, _06015664 @ =0x0380FFF4
+sub_060154F8: ; 0x060154F8
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r1, _06015664 ; =0x0380FFF4
 	mov r6, r0
 	ldr r0, [r1]
 	add r4, r0, #0x344
@@ -25760,31 +25764,31 @@ _0601554C:
 _06015554:
 	ldrh r0, [r4, #0x6a]
 	mov r1, #1
-	lsl r0, r1, r0
+	mov r0, r1, lsl r0
 	ldrh r1, [r6, #0x2e]
-	lsl r0, r0, #0x10
+	mov r0, r0, lsl #0x10
 	tst r1, r0, lsr #16
 	moveq r0, #0
 	movne r0, #0x2000
 	strh r0, [r5, #6]
-	ldr r0, _06015668 @ =0x04808098
+	ldr r0, _06015668 ; =0x04808098
 	ldrh r0, [r0]
 	tst r0, #0x8000
 	beq _060155AC
-	lsl r0, r0, #0x11
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x11
+	mov r0, r0, lsr #0x10
 	add r0, r0, #0x4800000
 	add r0, r0, #0x4000
 	ldrh r0, [r0, #4]
 	cmp r0, #0
-	ldrhne r0, [r5, #6]
+	ldrneh r0, [r5, #6]
 	orrne r0, r0, #0x4000
-	strhne r0, [r5, #6]
+	strneh r0, [r5, #6]
 _060155AC:
 	ldrh r0, [r4, #0x88]
 	bl sub_0600E738
 	ldrh r1, [r6, #0x10]
-	ldr r0, _0601566C @ =0x00000182
+	ldr r0, _0601566C ; =0x00000182
 	sub r1, r1, #0x1c
 	strh r1, [r6, #6]
 	sub r1, r6, #0x10
@@ -25792,19 +25796,19 @@ _060155AC:
 	ldrh r2, [r6, #6]
 	mov r0, #0
 	add r2, r2, #0x31
-	lsr r2, r2, #1
+	mov r2, r2, lsr #1
 	strh r2, [r1, #0xe]
 	ldrh r2, [r1, #0x3e]
 	b _060155F8
 _060155E8:
 	tst r2, #1
-	lsl r2, r2, #0xf
+	mov r2, r2, lsl #0xf
 	addne r0, r0, #1
-	lsr r2, r2, #0x10
+	mov r2, r2, lsr #0x10
 _060155F8:
 	cmp r2, #0
 	bne _060155E8
-	ldr r2, _06015670 @ =0x04808094
+	ldr r2, _06015670 ; =0x04808094
 	ldrh r3, [r5, #6]
 	ldrh r4, [r2]
 	ldrh r2, [r2, #4]
@@ -25821,26 +25825,26 @@ _060155F8:
 	mul r2, r0, r2
 	add r0, r2, #0xfc
 	add r2, r3, r0, lsr #4
-	ldr r0, _06015664 @ =0x0380FFF4
+	ldr r0, _06015664 ; =0x0380FFF4
 	strh r2, [r1, #0x1a]
 	ldr r0, [r0]
 	add r0, r0, #0x188
 	bl sub_0600F388
 	mov r0, #0
 _0601565C:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06015664: .4byte 0x0380FFF4
-_06015668: .4byte 0x04808098
-_0601566C: .4byte 0x00000182
-_06015670: .4byte 0x04808094
+_06015664: .word 0x0380FFF4
+_06015668: .word 0x04808098
+_0601566C: .word 0x00000182
+_06015670: .word 0x04808094
 	arm_func_end sub_060154F8
 
 	arm_func_start sub_06015674
-sub_06015674: @ 0x06015674
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r1, _0601581C @ =0x0380FFF4
+sub_06015674: ; 0x06015674
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r1, _0601581C ; =0x0380FFF4
 	mov r7, r0
 	ldr r1, [r1]
 	add r0, r1, #0x2c
@@ -25890,20 +25894,20 @@ _0601572C:
 	cmp r6, #0
 	beq _06015814
 	ldrh r1, [r7, #0x14]
-	lsl r0, r6, #0x10
-	lsl r1, r1, #0x13
-	lsr r0, r0, #0x10
-	lsr r1, r1, #0x1f
+	mov r0, r6, lsl #0x10
+	mov r1, r1, lsl #0x13
+	mov r0, r0, lsr #0x10
+	mov r1, r1, lsr #0x1f
 	bl sub_0600E5F8
 	mov r0, r6
 	bl sub_0600E738
 	mov r0, r6
 	bl sub_0600E978
 	mov r1, #1
-	lsl r0, r1, r0
-	lsl r0, r0, #0x10
+	mov r0, r1, lsl r0
+	mov r0, r0, lsl #0x10
 	ldrh r1, [r5, #0x9a]
-	lsr r2, r0, #0x10
+	mov r2, r0, lsr #0x10
 	tst r2, r1
 	bne _06015814
 	ldrh r0, [r5, #0x98]
@@ -25914,18 +25918,18 @@ _0601572C:
 	ldrh r1, [r4, #0x10]
 	mvn r0, r2
 	and r1, r1, r0
-	lsl r0, r2, #0xf
+	mov r0, r2, lsl #0xf
 	strh r1, [r4, #0x10]
 	add r6, r4, #0x1a
-	lsr r1, r0, #0x10
+	mov r1, r0, lsr #0x10
 	b _060157C4
 _060157AC:
 	ldrh r0, [r5, #0x98]
 	tst r1, r0
-	ldrhne r0, [r4, #0x16]
+	ldrneh r0, [r4, #0x16]
 	addne r6, r6, r0
-	lsl r0, r1, #0xf
-	lsr r1, r0, #0x10
+	mov r0, r1, lsl #0xf
+	mov r1, r0, lsr #0x10
 _060157C4:
 	cmp r1, #1
 	bne _060157AC
@@ -25948,16 +25952,16 @@ _060157C4:
 	add r2, r2, #1
 	bl sub_06001B04
 _06015814:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0601581C: .4byte 0x0380FFF4
+_0601581C: .word 0x0380FFF4
 	arm_func_end sub_06015674
 
 	arm_func_start sub_06015820
-sub_06015820: @ 0x06015820
-	push {r3, r4, r5, lr}
-	ldr r1, _060158E8 @ =0x0380FFF4
+sub_06015820: ; 0x06015820
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _060158E8 ; =0x0380FFF4
 	mov r4, r0
 	ldr r1, [r1]
 	add r0, r1, #0x300
@@ -25981,15 +25985,15 @@ _06015870:
 	b _060158E0
 _06015878:
 	ldrh r1, [r4, #0x10]
-	ldr r0, _060158EC @ =0x00000185
+	ldr r0, _060158EC ; =0x00000185
 	sub r1, r1, #0x1c
 	strh r1, [r4, #6]
 	sub r1, r4, #0x10
 	strh r0, [r1, #0xc]
 	mov r0, #0x18
 	strh r0, [r1, #0xe]
-	ldr r4, _060158E8 @ =0x0380FFF4
-	ldr r2, _060158F0 @ =0x04808094
+	ldr r4, _060158E8 ; =0x0380FFF4
+	ldr r2, _060158F0 ; =0x04808094
 	ldr r0, [r4]
 	ldrh ip, [r2]
 	add r0, r0, #0x400
@@ -26007,19 +26011,19 @@ _06015878:
 	bl sub_0600F388
 	mov r0, #0
 _060158E0:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060158E8: .4byte 0x0380FFF4
-_060158EC: .4byte 0x00000185
-_060158F0: .4byte 0x04808094
+_060158E8: .word 0x0380FFF4
+_060158EC: .word 0x00000185
+_060158F0: .word 0x04808094
 	arm_func_end sub_06015820
 
 	arm_func_start sub_060158F4
-sub_060158F4: @ 0x060158F4
-	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_060158F4: ; 0x060158F4
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
-	ldr r1, _06015F1C @ =0x0380FFF4
+	ldr r1, _06015F1C ; =0x0380FFF4
 	mov sl, r0
 	ldr r3, [r1]
 	add r0, sl, #0x1e
@@ -26033,8 +26037,8 @@ sub_060158F4: @ 0x060158F4
 	add r7, r3, #0x17c
 	bl sub_0600E254
 	mov r8, r0
-	lsl r0, r8, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r8, lsl #0x10
+	mov r0, r0, lsr #0x10
 	strh r0, [sl, #2]
 	cmp r8, #0xff
 	beq _06015F10
@@ -26055,9 +26059,9 @@ sub_060158F4: @ 0x060158F4
 	strh r0, [sp, #0x22]
 	ldrh r0, [r4, #0x1e]
 	cmp r0, #0
-	ldrheq r0, [sp, #0x22]
+	ldreqh r0, [sp, #0x22]
 	orreq r0, r0, #1
-	strheq r0, [sp, #0x22]
+	streqh r0, [sp, #0x22]
 	mov r0, #0x38
 	strh r0, [sp, #0x24]
 	ldrh r1, [sl, #8]
@@ -26077,14 +26081,14 @@ sub_060158F4: @ 0x060158F4
 	mov fp, r0
 	add r0, sb, #7
 	bl sub_0600BA10
-	ldr r1, _06015F20 @ =0x0480810C
+	ldr r1, _06015F20 ; =0x0480810C
 	add r0, fp, r0, lsl #8
 	strh r0, [r1]
 _060159F0:
 	ldrh r1, [r5]
 	cmp r1, #0x13
 	ldreq r0, [r5, #0x18]
-	ldrheq r0, [r0, #0x38]
+	ldreqh r0, [r0, #0x38]
 	cmpeq r0, #1
 	bne _06015A28
 	ldrh r0, [sp, #0x22]
@@ -26106,16 +26110,16 @@ _06015A28:
 	and r0, r0, #0x30
 	cmp r0, #0x30
 	movne r0, #0xc
-	strhne r0, [r5, #4]
+	strneh r0, [r5, #4]
 	movne r0, #0xa
-	strhne r0, [r5, #6]
+	strneh r0, [r5, #6]
 	bne _06015B8C
 	ldrh r0, [sl, #0x34]
 	cmp r0, #0x3e8
 	movhi r0, #0xc
-	strhhi r0, [r5, #4]
+	strhih r0, [r5, #4]
 	movhi r0, #1
-	strhhi r0, [r5, #6]
+	strhih r0, [r5, #6]
 	bhi _06015B8C
 	mov r1, #0
 	strh r1, [r5, #4]
@@ -26143,8 +26147,8 @@ _06015AA4:
 	add r0, sb, #7
 	bl sub_0600BA10
 	add r0, fp, r0, lsl #8
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #1
 	bl sub_06009954
 	ldr r0, [sp, #0x40]
@@ -26155,14 +26159,14 @@ _06015AA4:
 	add r0, r1, #9
 	bl sub_0600BA10
 	add r1, sb, r0, lsl #8
-	ldr r0, _06015F24 @ =0x0380FFF0
+	ldr r0, _06015F24 ; =0x0380FFF0
 	strh r1, [r0]
 	b _06015B34
 _06015B1C:
-	ldr r0, _06015F28 @ =0x0000FFFF
+	ldr r0, _06015F28 ; =0x0000FFFF
 	mov r1, #1
 	bl sub_06009954
-	ldr r0, _06015F24 @ =0x0380FFF0
+	ldr r0, _06015F24 ; =0x0380FFF0
 	mov r1, #0
 	strh r1, [r0]
 _06015B34:
@@ -26181,10 +26185,10 @@ _06015B34:
 	strh r0, [r4, #0x1a]
 	ldrh r0, [r4, #0xc]
 	cmp r0, #2
-	ldreq r0, _06015F2C @ =0x04808048
+	ldreq r0, _06015F2C ; =0x04808048
 	moveq r1, #3
-	strheq r1, [r0]
-	ldr r1, _06015F30 @ =0x04808038
+	streqh r1, [r0]
+	ldr r1, _06015F30 ; =0x04808038
 	ldrh r0, [r1]
 	orr r0, r0, #1
 	strh r0, [r1]
@@ -26215,8 +26219,8 @@ _06015BC8:
 	add r0, sb, #7
 	bl sub_0600BA10
 	add r0, r5, r0, lsl #8
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0
 	bl sub_06009954
 	ldr r0, [sp, #0x40]
@@ -26226,7 +26230,7 @@ _06015BC8:
 	mov r5, r0
 	add r0, r1, #9
 	bl sub_0600BA10
-	ldr r1, _06015F24 @ =0x0380FFF0
+	ldr r1, _06015F24 ; =0x0380FFF0
 	add r0, r5, r0, lsl #8
 	strh r0, [r1]
 	ldr r0, [sp, #0x40]
@@ -26260,11 +26264,11 @@ _06015C80:
 	bl sub_0600E738
 	add r1, sl, #0x2c
 	add r0, sp, #0x10
-	ldm r1, {r2, r3}
-	stm r0, {r2, r3}
+	ldmia r1, {r2, r3}
+	stmia r0, {r2, r3}
 	ldrh r0, [r4, #0x6e]
 	mov r5, #0
-	lsl r8, r0, #0xa
+	mov r8, r0, lsl #0xa
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0x14]
 	mov r2, r8
@@ -26277,7 +26281,7 @@ _06015C80:
 	mla r0, sb, r8, r0
 	add r2, sp, #0x10
 	str r0, [sp, #0x14]
-	ldr r1, _06015F34 @ =0x048080F6
+	ldr r1, _06015F34 ; =0x048080F6
 	ldrh r0, [r2, #6]
 	str r3, [sp, #0x10]
 	strh r0, [r1]
@@ -26301,7 +26305,7 @@ _06015C80:
 	str r1, [sp, #0x10]
 	str r0, [sp, #0x14]
 	bl sub_06000720
-	ldr r1, _06015F38 @ =0x048080F8
+	ldr r1, _06015F38 ; =0x048080F8
 	ldrh ip, [r1]
 	ldrh fp, [r1, #2]
 	ldrh sb, [r1, #4]
@@ -26337,15 +26341,15 @@ _06015DAC:
 	ldr r0, [sp, #0x14]
 _06015DC0:
 	sbc r0, r1, r0
-	lsr r2, r2, #0xa
+	mov r2, r2, lsr #0xa
 	orr r2, r2, r0, lsl #22
 	ldrh r1, [r6, #0x20]
-	ldr r0, _06015F3C @ =0x04808134
+	ldr r0, _06015F3C ; =0x04808134
 	cmp r2, r1
 	sublo r1, r1, r2
-	strhlo r1, [r0]
+	strloh r1, [r0]
 	movhs r1, #0
-	strhhs r1, [r0]
+	strhsh r1, [r0]
 _06015DE8:
 	ldrh r0, [r4, #8]
 	cmp r0, #0x40
@@ -26360,7 +26364,7 @@ _06015DE8:
 	bl sub_0600BA10
 	ldrh r1, [r4, #0x76]
 	cmp r1, r0
-	strhne r0, [r4, #0x76]
+	strneh r0, [r4, #0x76]
 	mov r1, #0
 	strh r1, [r4, #0x8e]
 	cmp r0, #0
@@ -26369,9 +26373,9 @@ _06015DE8:
 	add r0, r0, #4
 	bl sub_0600BA10
 	tst r0, #1
-	ldrhne r0, [r4, #0x8e]
+	ldrneh r0, [r4, #0x8e]
 	orrne r0, r0, #1
-	strhne r0, [r4, #0x8e]
+	strneh r0, [r4, #0x8e]
 _06015E4C:
 	ldr r0, [sp, #0x3c]
 	add r0, r0, #4
@@ -26379,7 +26383,7 @@ _06015E4C:
 	ldr r1, [sp, #0x3c]
 	and r8, r0, #0xfe
 	add r0, r1, #1
-	lsl r5, r8, #3
+	mov r5, r8, lsl #3
 	bl sub_0600BA10
 	ldrh r1, [r4, #0x6a]
 	add r0, r8, r0
@@ -26404,17 +26408,17 @@ _06015E4C:
 _06015EBC:
 	ldrh r0, [r7, #0x20]
 	cmp r0, #0
-	ldrheq r0, [r7, #0x2c]
+	ldreqh r0, [r7, #0x2c]
 	cmpeq r0, #0
-	ldrheq r0, [r4, #0x8e]
+	ldreqh r0, [r4, #0x8e]
 	cmpeq r0, #0
 	bne _06015EE0
 	mov r0, #1
 	bl sub_0600A458
 _06015EE0:
 	ldrh r0, [r6, #0x1e]
-	lsl r0, r0, #0x19
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x19
+	movs r0, r0, lsr #0x1f
 	beq _06015EF8
 	mov r0, sl
 	bl sub_06010D20
@@ -26427,24 +26431,24 @@ _06015EF8:
 	bl sub_06017D58
 _06015F10:
 	add sp, sp, #0x44
-	pop {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06015F1C: .4byte 0x0380FFF4
-_06015F20: .4byte 0x0480810C
-_06015F24: .4byte 0x0380FFF0
-_06015F28: .4byte 0x0000FFFF
-_06015F2C: .4byte 0x04808048
-_06015F30: .4byte 0x04808038
-_06015F34: .4byte 0x048080F6
-_06015F38: .4byte 0x048080F8
-_06015F3C: .4byte 0x04808134
+_06015F1C: .word 0x0380FFF4
+_06015F20: .word 0x0480810C
+_06015F24: .word 0x0380FFF0
+_06015F28: .word 0x0000FFFF
+_06015F2C: .word 0x04808048
+_06015F30: .word 0x04808038
+_06015F34: .word 0x048080F6
+_06015F38: .word 0x048080F8
+_06015F3C: .word 0x04808134
 	arm_func_end sub_060158F4
 
 	arm_func_start sub_06015F40
-sub_06015F40: @ 0x06015F40
-	push {r3, r4, r5, lr}
-	ldr r1, _0601601C @ =0x0380FFF4
+sub_06015F40: ; 0x06015F40
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _0601601C ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
 	ldrh r5, [r4, #2]
@@ -26461,8 +26465,8 @@ _06015F74:
 	bl sub_0600E88C
 	cmp r0, #0x40
 	bne _06015FAC
-	lsl r0, r5, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r5, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x30
 	bl sub_0600E4F0
 	ldrh r1, [r4, #0x2c]
@@ -26502,17 +26506,17 @@ _06015FDC:
 	add r0, r4, #0x1e
 	bl sub_06010BD0
 _06016014:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0601601C: .4byte 0x0380FFF4
+_0601601C: .word 0x0380FFF4
 	arm_func_end sub_06015F40
 
 	arm_func_start sub_06016020
-sub_06016020: @ 0x06016020
-	push {r4, r5, r6, r7, lr}
+sub_06016020: ; 0x06016020
+	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x2c
-	ldr r1, _060161E8 @ =0x0380FFF4
+	ldr r1, _060161E8 ; =0x0380FFF4
 	mov r7, r0
 	ldr r0, [r1]
 	ldrh r5, [r7, #6]
@@ -26577,33 +26581,33 @@ _060160F0:
 	add r0, sp, #0
 	bl sub_06016CC4
 	ldrh r1, [r7, #0x2c]
-	ldr r0, _060161EC @ =0x0000FFC2
+	ldr r0, _060161EC ; =0x0000FFC2
 	tst r1, r0
 	bne _06016188
-	lsl r0, r1, #0x1f
-	lsrs r0, r0, #0x1f
+	mov r0, r1, lsl #0x1f
+	movs r0, r0, lsr #0x1f
 	beq _06016188
 	ldrh r2, [r4, #0x18]
 	cmp r2, #0
-	lsleq r0, r1, #0x1b
-	lsreq r0, r0, #0x1f
+	moveq r0, r1, lsl #0x1b
+	moveq r0, r0, lsr #0x1f
 	cmpeq r0, #1
 	beq _06016188
 	cmp r2, #0
 	beq _06016164
 	ldrh r0, [r7, #0x2c]
-	lsl r0, r0, #0x1b
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x1b
+	movs r0, r0, lsr #0x1f
 	beq _06016188
 _06016164:
 	ldrh r0, [r4, #0x1e]
-	lsl r0, r0, #0x1d
-	lsr r0, r0, #0x1f
+	mov r0, r0, lsl #0x1d
+	mov r0, r0, lsr #0x1f
 	cmp r0, #1
 	bne _06016190
 	ldrh r0, [r7, #0x2c]
-	lsl r0, r0, #0x1a
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x1a
+	movs r0, r0, lsr #0x1f
 	bne _06016190
 _06016188:
 	mov r1, #0xa
@@ -26631,16 +26635,16 @@ _060161C4:
 	bl sub_06013E10
 _060161DC:
 	add sp, sp, #0x2c
-	pop {r4, r5, r6, r7, lr}
+	ldmia sp!, {r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_060161E8: .4byte 0x0380FFF4
-_060161EC: .4byte 0x0000FFC2
+_060161E8: .word 0x0380FFF4
+_060161EC: .word 0x0000FFC2
 	arm_func_end sub_06016020
 
 	arm_func_start sub_060161F0
-sub_060161F0: @ 0x060161F0
-	push {r3, r4, lr}
+sub_060161F0: ; 0x060161F0
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x2c
 	mov r4, r0
 	add r0, r4, #0x1e
@@ -26662,15 +26666,15 @@ _06016228:
 	add r0, r4, #0x2c
 	str r0, [sp]
 	ldrh r1, [r4, #6]
-	ldr r0, _060162A0 @ =0x0380FFF4
+	ldr r0, _060162A0 ; =0x0380FFF4
 	strh r1, [sp, #8]
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrh r0, [r0, #0x3a]
-	lsl r0, r0, #0x1e
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x1e
+	movs r0, r0, lsr #0x1f
 	moveq r0, #0x800
-	strheq r0, [sp, #0xc]
+	streqh r0, [sp, #0xc]
 	add r0, sp, #0
 	bl sub_06016CC4
 	ldrh r0, [sp, #0xa]
@@ -26684,17 +26688,17 @@ _06016228:
 	bl sub_06013E10
 _06016294:
 	add sp, sp, #0x2c
-	pop {r3, r4, lr}
+	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_060162A0: .4byte 0x0380FFF4
+_060162A0: .word 0x0380FFF4
 	arm_func_end sub_060161F0
 
 	arm_func_start sub_060162A4
-sub_060162A4: @ 0x060162A4
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_060162A4: ; 0x060162A4
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
-	ldr r2, _0601666C @ =0x0380FFF4
+	ldr r2, _0601666C ; =0x0380FFF4
 	mov r7, r0
 	ldr r2, [r2]
 	mov sl, r1
@@ -26714,10 +26718,10 @@ _060162E8:
 	add r1, r7, #0x24
 	bl sub_0600ACC4
 	cmp r0, #0
-	ldrhne r1, [r5, #6]
+	ldrneh r1, [r5, #6]
 	movne r0, #1
 	orrne r0, r1, r0, lsl r6
-	strhne r0, [r5, #6]
+	strneh r0, [r5, #6]
 	bne _06016660
 	add r8, r8, #6
 	add r6, r6, #1
@@ -26773,7 +26777,7 @@ _06016350:
 _060163CC:
 	ldr r0, [sl, #0x28]
 	cmp r0, #0
-	ldrheq r0, [sl, #0x1a]
+	ldreqh r0, [sl, #0x1a]
 	beq _060163F0
 	add r0, r0, #1
 	bl sub_0600BA10
@@ -26782,13 +26786,13 @@ _060163CC:
 	ldrh r0, [r6, #0x3c]
 _060163F0:
 	add r0, r0, #0x41
-	lsr r0, r0, #1
+	mov r0, r0, lsr #1
 	strh r0, [r6]
 	ldrh r0, [sl, #0xa]
 	and r0, r0, #1
 	cmp r0, #1
 	bne _06016654
-	ldr r0, _0601666C @ =0x0380FFF4
+	ldr r0, _0601666C ; =0x0380FFF4
 	ldrh r1, [r6]
 	ldr r0, [r0]
 	add r0, r0, #0x400
@@ -26951,22 +26955,22 @@ _06016600:
 	bl sub_06008F04
 	b _06016660
 _06016654:
-	ldr r1, _06016670 @ =0x060184E0
+	ldr r1, _06016670 ; =0x060184E0
 	add r0, r6, #4
 	bl sub_0600A928
 _06016660:
 	add sp, sp, #0x30
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_0601666C: .4byte 0x0380FFF4
-_06016670: .4byte 0x060184E0
+_0601666C: .word 0x0380FFF4
+_06016670: .word 0x060184E0
 	arm_func_end sub_060162A4
 
 	arm_func_start sub_06016674
-sub_06016674: @ 0x06016674
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r1, _06016C00 @ =0x0380FFF4
+sub_06016674: ; 0x06016674
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldr r1, _06016C00 ; =0x0380FFF4
 	mov sl, r0
 	ldr r2, [r1]
 	add r0, r2, #0x600
@@ -26976,31 +26980,31 @@ sub_06016674: @ 0x06016674
 	add r4, r2, #0x344
 	add sb, r0, #0x400
 	beq _06016714
-	ldr r1, _06016C04 @ =0x048080B0
+	ldr r1, _06016C04 ; =0x048080B0
 	add r0, r2, #0x2c
 	ldrh r2, [r1]
 	add r1, r0, #0x400
 	tst r2, #1
-	ldrhne r0, [r1]
+	ldrneh r0, [r1]
 	cmpne r0, #0
 	bne _06016714
 	tst r2, #4
-	ldrhne r0, [r1, #0x14]
+	ldrneh r0, [r1, #0x14]
 	cmpne r0, #0
 	bne _06016714
 	tst r2, #8
-	ldrhne r0, [r1, #0x28]
+	ldrneh r0, [r1, #0x28]
 	cmpne r0, #0
 	bne _06016714
-	ldr r0, _06016C08 @ =0x0480819C
+	ldr r0, _06016C08 ; =0x0480819C
 	ldrh r0, [r0]
 	tst r0, #1
 	bne _06016714
-	ldr r2, _06016C0C @ =0x04808032
+	ldr r2, _06016C0C ; =0x04808032
 	mov r3, #0
 	strh r3, [r2]
 	mov r1, #0x8000
-	ldr r0, _06016C00 @ =0x0380FFF4
+	ldr r0, _06016C00 ; =0x0380FFF4
 	strh r1, [r2]
 	ldr r0, [r0]
 	add r0, r0, #0x400
@@ -27014,10 +27018,10 @@ _06016714:
 	ldrh r0, [sl, #0x2e]
 	ldrh r8, [sl, #2]
 	add r0, r0, #1
-	lsl r0, r0, #0x10
+	mov r0, r0, lsl #0x10
 	cmp r8, #0
 	mov r5, #0
-	lsr r6, r0, #0x10
+	mov r6, r0, lsr #0x10
 	moveq r7, #0x13
 	moveq r5, #1
 	beq _06016BBC
@@ -27028,8 +27032,8 @@ _06016714:
 	bl sub_0600E88C
 	cmp r0, #0x20
 	bls _06016788
-	lsl r0, r8, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r8, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x20
 	bl sub_0600E4F0
 	add r0, sl, #0x1e
@@ -27061,10 +27065,10 @@ _060167C4:
 _060167DC:
 	ldrh r1, [r4, #0xc]
 	cmp r1, #1
-	ldreq r0, _06016C00 @ =0x0380FFF4
+	ldreq r0, _06016C00 ; =0x0380FFF4
 	ldreq r0, [r0]
 	addeq r0, r0, #0x300
-	ldrheq r0, [r0, #0x32]
+	ldreqh r0, [r0, #0x32]
 	cmpeq r0, #1
 	moveq r7, #0xd
 	moveq r5, #1
@@ -27083,7 +27087,7 @@ _06016828:
 	ldrh r0, [sl, #0x2e]
 	cmp r0, #2
 	ldreq r1, [sb, #0x18]
-	ldrheq r0, [r1, #0x16]
+	ldreqh r0, [r1, #0x16]
 	cmpeq r0, #0
 	bne _06016BBC
 	add r0, r1, #0x10
@@ -27099,8 +27103,8 @@ _06016828:
 	cmp r0, #0
 	ldrne r0, [sb, #0x1c]
 	movne r1, #0xc
-	strhne r1, [r0, #4]
-	ldrhne r1, [sl, #0x30]
+	strneh r1, [r0, #4]
+	ldrneh r1, [sl, #0x30]
 	bne _06016898
 	mov r0, #0x30
 	bl sub_0600A884
@@ -27120,8 +27124,8 @@ _060168B8:
 	ldrh r0, [r4, #0xc]
 	cmp r0, #1
 	bne _06016A58
-	lsl r0, r8, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r8, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x20
 	bl sub_0600E4F0
 	ldrh r0, [sl, #0x2e]
@@ -27134,7 +27138,7 @@ _060168B8:
 	movs r4, r0
 	beq _06016BBC
 	ldrh r1, [sl, #0x2c]
-	ldr r0, _06016C10 @ =0x04808044
+	ldr r0, _06016C10 ; =0x04808044
 	strh r1, [r4, #0x2c]
 	strh r6, [r4, #0x2e]
 	mov r1, #0
@@ -27142,8 +27146,8 @@ _060168B8:
 	ldrh r1, [r0]
 	ldrh r0, [r0]
 	add r0, r1, r0, lsl #8
-	lsl r0, r0, #0x10
-	lsrs sb, r0, #0x10
+	mov r0, r0, lsl #0x10
+	movs sb, r0, lsr #0x10
 	moveq sb, #1
 	mov r0, sb
 	bl sub_0600BA60
@@ -27296,7 +27300,7 @@ _06016ADC:
 	b _06016BBC
 _06016B48:
 	cmp r0, #4
-	ldrheq r0, [sb]
+	ldreqh r0, [sb]
 	cmpeq r0, #0x33
 	bne _06016BBC
 	bl sub_0600B8A0
@@ -27304,8 +27308,8 @@ _06016B48:
 	cmp r0, #0
 	ldrne r0, [sb, #0x1c]
 	movne r1, #0xc
-	strhne r1, [r0, #4]
-	ldrhne r1, [sl, #0x30]
+	strneh r1, [r0, #4]
+	ldrneh r1, [sl, #0x30]
 	bne _06016B8C
 	mov r0, #0x30
 	bl sub_0600A884
@@ -27343,20 +27347,20 @@ _06016BBC:
 	strh r7, [r0, #0x30]
 	bl sub_06013E10
 _06016BF8:
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06016C00: .4byte 0x0380FFF4
-_06016C04: .4byte 0x048080B0
-_06016C08: .4byte 0x0480819C
-_06016C0C: .4byte 0x04808032
-_06016C10: .4byte 0x04808044
+_06016C00: .word 0x0380FFF4
+_06016C04: .word 0x048080B0
+_06016C08: .word 0x0480819C
+_06016C0C: .word 0x04808032
+_06016C10: .word 0x04808044
 	arm_func_end sub_06016674
 
 	arm_func_start sub_06016C14
-sub_06016C14: @ 0x06016C14
-	push {r3, r4, r5, lr}
-	ldr r1, _06016CC0 @ =0x0380FFF4
+sub_06016C14: ; 0x06016C14
+	stmdb sp!, {r3, r4, r5, lr}
+	ldr r1, _06016CC0 ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
 	ldrh r5, [r4, #2]
@@ -27373,8 +27377,8 @@ _06016C48:
 	bl sub_0600E88C
 	cmp r0, #0x20
 	bls _06016CB8
-	lsl r0, r5, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r5, lsl #0x10
+	mov r0, r0, lsr #0x10
 	mov r1, #0x20
 	bl sub_0600E4F0
 	ldrh r1, [r4, #0x2c]
@@ -27399,28 +27403,28 @@ _06016C80:
 	add r0, r4, #0x1e
 	bl sub_06010970
 _06016CB8:
-	pop {r3, r4, r5, lr}
+	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06016CC0: .4byte 0x0380FFF4
+_06016CC0: .word 0x0380FFF4
 	arm_func_end sub_06016C14
 
 	arm_func_start sub_06016CC4
-sub_06016CC4: @ 0x06016CC4
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r1, _06016FE4 @ =0x0380FFF4
+sub_06016CC4: ; 0x06016CC4
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldr r1, _06016FE4 ; =0x0380FFF4
 	mov sb, r0
 	ldr r0, [r1]
 	ldr r5, [sb]
 	add r4, r0, #0x344
 	ldrh r0, [r4, #0x7a]
-	ldr sl, _06016FE4 @ =0x0380FFF4
+	ldr sl, _06016FE4 ; =0x0380FFF4
 	strh r0, [sb, #0x12]
 	ldrh r0, [sb, #0xc]
 	tst r0, #0x800
-	ldrhne r0, [sb, #0xa]
+	ldrneh r0, [sb, #0xa]
 	orrne r0, r0, #1
-	strhne r0, [sb, #0xa]
+	strneh r0, [sb, #0xa]
 	ldrh r6, [sb, #8]
 	b _06016F58
 _06016D04:
@@ -27434,14 +27438,14 @@ _06016D04:
 	cmp r8, #6
 	addls pc, pc, r8, lsl #2
 	b _06016D48
-_06016D2C: @ jump table
-	b _06016D54 @ case 0
-	b _06016DC0 @ case 1
-	b _06016F4C @ case 2
-	b _06016E24 @ case 3
-	b _06016E90 @ case 4
-	b _06016E70 @ case 5
-	b _06016F4C @ case 6
+_06016D2C: ; jump table
+	b _06016D54 ; case 0
+	b _06016DC0 ; case 1
+	b _06016F4C ; case 2
+	b _06016E24 ; case 3
+	b _06016E90 ; case 4
+	b _06016E70 ; case 5
+	b _06016F4C ; case 6
 _06016D48:
 	cmp r8, #0xdd
 	beq _06016EB0
@@ -27458,22 +27462,22 @@ _06016D54:
 	bne _06016D90
 	ldrh r0, [sb, #0xc]
 	tst r0, #0x800
-	ldrhne r0, [sb, #0xa]
+	ldrneh r0, [sb, #0xa]
 	orrne r0, r0, #1
-	strhne r0, [sb, #0xa]
+	strneh r0, [sb, #0xa]
 	bne _06016F4C
 _06016D90:
 	ldrh r1, [sb, #0xa]
-	lsl r0, r7, #0x10
+	mov r0, r7, lsl #0x10
 	bic r2, r1, #1
 	strh r2, [sb, #0xa]
 	mov r1, r5
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_0600ABF4
 	cmp r0, #0
-	ldrhne r0, [sb, #0xa]
+	ldrneh r0, [sb, #0xa]
 	orrne r0, r0, #1
-	strhne r0, [sb, #0xa]
+	strneh r0, [sb, #0xa]
 	b _06016F4C
 _06016DC0:
 	cmp r7, #1
@@ -27490,16 +27494,16 @@ _06016DC0:
 	orr r1, r0, r1
 	mvn r1, r1
 	tst r2, r1
-	ldrheq r1, [sb, #0x16]
+	ldreqh r1, [sb, #0x16]
 	orreq r1, r2, r1
 	andeq r1, r0, r1
 	cmpeq r0, r1
-	ldrheq r0, [sb, #0xa]
+	ldreqh r0, [sb, #0xa]
 	orreq r0, r0, #4
-	strheq r0, [sb, #0xa]
-	ldrhne r0, [sb, #0xa]
+	streqh r0, [sb, #0xa]
+	ldrneh r0, [sb, #0xa]
 	bicne r0, r0, #4
-	strhne r0, [sb, #0xa]
+	strneh r0, [sb, #0xa]
 	b _06016F4C
 _06016E24:
 	cmp r7, #1
@@ -27517,9 +27521,9 @@ _06016E24:
 	cmp r1, r0
 	ldrh r0, [sb, #0xa]
 	orreq r0, r0, #2
-	strheq r0, [sb, #0xa]
+	streqh r0, [sb, #0xa]
 	bicne r0, r0, #2
-	strhne r0, [sb, #0xa]
+	strneh r0, [sb, #0xa]
 	b _06016F4C
 _06016E70:
 	cmp r7, #3
@@ -27611,29 +27615,29 @@ _06016F90:
 	and r1, r1, #3
 	and r0, r0, #3
 	cmp r1, r0
-	ldrheq r0, [sb, #0xa]
+	ldreqh r0, [sb, #0xa]
 	orreq r0, r0, #0x10
-	strheq r0, [sb, #0xa]
+	streqh r0, [sb, #0xa]
 	ldrh r1, [sb, #6]
 	ldrh r0, [r4, #0x7c]
 	and r1, r1, #0x10
 	and r0, r0, #0x10
 	cmp r1, r0
-	ldrheq r0, [sb, #0xa]
+	ldreqh r0, [sb, #0xa]
 	orreq r0, r0, #0x20
-	strheq r0, [sb, #0xa]
+	streqh r0, [sb, #0xa]
 _06016FDC:
-	pop {r4, r5, r6, r7, r8, sb, sl, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_06016FE4: .4byte 0x0380FFF4
+_06016FE4: .word 0x0380FFF4
 	arm_func_end sub_06016CC4
 
 	arm_func_start sub_06016FE8
-sub_06016FE8: @ 0x06016FE8
-	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_06016FE8: ; 0x06016FE8
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
-	ldr r0, _06017690 @ =0x0380FFF4
+	ldr r0, _06017690 ; =0x0380FFF4
 	mvn r1, #0
 	ldr r4, [r0]
 	add sl, r4, #0x17c
@@ -27653,18 +27657,18 @@ sub_06016FE8: @ 0x06016FE8
 	ldrh r0, [r6, #0x18]
 	ldr r2, [r4, #0x560]
 	and r1, r0, #0xf0
-	asr r0, r1, #3
+	mov r0, r1, asr #3
 	add r0, r1, r0, lsr #28
-	asr r0, r0, #4
+	mov r0, r0, asr #4
 	sub r0, r0, #1
 	add r0, r2, r0
 	str r0, [r4, #0x560]
 	ldrh r1, [r6, #0x24]
 	add r0, r6, #0x2e
-	lsl r2, r1, #0x1c
-	lsl r1, r1, #0x18
-	lsr r8, r2, #0x1e
-	lsr sb, r1, #0x1c
+	mov r2, r1, lsl #0x1c
+	mov r1, r1, lsl #0x18
+	mov r8, r2, lsr #0x1e
+	mov sb, r1, lsr #0x1c
 	bl sub_0600E254
 	mov r7, r0
 	strh r7, [r6, #0x12]
@@ -27696,9 +27700,9 @@ _060170CC:
 _060170D8:
 	bl sub_0600E738
 	ldrh r1, [r6, #0x22]
-	lsl r0, r7, #0x10
+	mov r0, r7, lsl #0x10
 	and r1, r1, #0xff
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_0600E5D8
 	cmp r8, #0
 	bne _06017124
@@ -27722,30 +27726,30 @@ _06017124:
 	b _06017660
 _0601713C:
 	ldrh r1, [r6, #0x24]
-	lsl r0, r7, #0x10
-	lsl r1, r1, #0x13
-	lsr r0, r0, #0x10
-	lsr r1, r1, #0x1f
+	mov r0, r7, lsl #0x10
+	mov r1, r1, lsl #0x13
+	mov r0, r0, lsr #0x10
+	mov r1, r1, lsr #0x1f
 	bl sub_0600E5F8
 	cmp r8, #0
 	bne _06017378
 	cmp sb, #0xc
 	addls pc, pc, sb, lsl #2
 	b _06017660
-_06017168: @ jump table
-	b _060171A8 @ case 0
-	b _06017660 @ case 1
-	b _060171B4 @ case 2
-	b _06017660 @ case 3
-	b _06017338 @ case 4
-	b _06017344 @ case 5
-	b _06017660 @ case 6
-	b _06017660 @ case 7
-	b _0601719C @ case 8
-	b _06017660 @ case 9
-	b _06017354 @ case 10
-	b _06017360 @ case 11
-	b _0601736C @ case 12
+_06017168: ; jump table
+	b _060171A8 ; case 0
+	b _06017660 ; case 1
+	b _060171B4 ; case 2
+	b _06017660 ; case 3
+	b _06017338 ; case 4
+	b _06017344 ; case 5
+	b _06017660 ; case 6
+	b _06017660 ; case 7
+	b _0601719C ; case 8
+	b _06017660 ; case 9
+	b _06017354 ; case 10
+	b _06017360 ; case 11
+	b _0601736C ; case 12
 _0601719C:
 	add r0, r6, #0x10
 	bl sub_060158F4
@@ -27755,7 +27759,7 @@ _060171A8:
 	bl sub_06016020
 	b _06017660
 _060171B4:
-	ldr r0, _06017690 @ =0x0380FFF4
+	ldr r0, _06017690 ; =0x0380FFF4
 	ldrh r4, [r6, #0x16]
 	ldr r5, [r0]
 	cmp r4, #0xa
@@ -27817,21 +27821,21 @@ _0601726C:
 	add r0, sp, #0
 	bl sub_06016CC4
 	ldrh r1, [r6, #0x3c]
-	ldr r0, _06017694 @ =0x0000FFC2
+	ldr r0, _06017694 ; =0x0000FFC2
 	tst r1, r0
 	bne _060172E0
 	add r0, r5, #0x300
 	ldrh r2, [r0, #0x34]
 	cmp r2, #0
-	lsleq r0, r1, #0x1b
-	lsreq r0, r0, #0x1f
+	moveq r0, r1, lsl #0x1b
+	moveq r0, r0, lsr #0x1f
 	cmpeq r0, #1
 	beq _060172E0
 	cmp r2, #0
 	beq _060172E8
 	ldrh r0, [r6, #0x3c]
-	lsl r0, r0, #0x1b
-	lsrs r0, r0, #0x1f
+	mov r0, r0, lsl #0x1b
+	movs r0, r0, lsr #0x1f
 	bne _060172E8
 _060172E0:
 	mov r1, #0xa
@@ -27884,7 +27888,7 @@ _06017378:
 	bne _06017660
 	cmp sb, #0xa
 	bne _06017660
-	ldr r0, _06017690 @ =0x0380FFF4
+	ldr r0, _06017690 ; =0x0380FFF4
 	ldrh r4, [r6, #0x12]
 	ldr r1, [r0]
 	mov r0, r4
@@ -27912,26 +27916,26 @@ _060173DC:
 	cmp sb, #0xc
 	addls pc, pc, sb, lsl #2
 	b _06017660
-_060173F0: @ jump table
-	b _06017660 @ case 0
-	b _06017430 @ case 1
-	b _06017660 @ case 2
-	b _0601752C @ case 3
-	b _06017660 @ case 4
-	b _06017630 @ case 5
-	b _06017660 @ case 6
-	b _06017660 @ case 7
-	b _06017424 @ case 8
-	b _06017660 @ case 9
-	b _06017640 @ case 10
-	b _0601764C @ case 11
-	b _06017658 @ case 12
+_060173F0: ; jump table
+	b _06017660 ; case 0
+	b _06017430 ; case 1
+	b _06017660 ; case 2
+	b _0601752C ; case 3
+	b _06017660 ; case 4
+	b _06017630 ; case 5
+	b _06017660 ; case 6
+	b _06017660 ; case 7
+	b _06017424 ; case 8
+	b _06017660 ; case 9
+	b _06017640 ; case 10
+	b _0601764C ; case 11
+	b _06017658 ; case 12
 _06017424:
 	add r0, r6, #0x10
 	bl sub_060158F4
 	b _06017660
 _06017430:
-	ldr r0, _06017690 @ =0x0380FFF4
+	ldr r0, _06017690 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r5, r0, #0x344
 	ldrh r1, [r5, #0xc]
@@ -27954,10 +27958,10 @@ _06017430:
 	cmp r0, #0
 	bne _060174CC
 	ldrh r1, [r6, #0x40]
-	ldr r0, _06017698 @ =0x00000FFF
+	ldr r0, _06017698 ; =0x00000FFF
 	and r0, r1, r0
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_0600A7A4
 	ldrh r0, [r5, #0x6a]
 	bl sub_06014CE4
@@ -27975,10 +27979,10 @@ _060174CC:
 	cmp r0, #0
 	ldr r0, [r4, #0x1c]
 	movne r1, #0xc
-	strhne r1, [r0, #4]
-	ldrhne r1, [r6, #0x3e]
+	strneh r1, [r0, #4]
+	ldrneh r1, [r6, #0x3e]
 	ldrne r0, [r4, #0x1c]
-	strhne r1, [r0, #6]
+	strneh r1, [r0, #6]
 	bne _06017508
 	mov r2, #0
 	strh r2, [r0, #4]
@@ -27997,7 +28001,7 @@ _06017508:
 	bl sub_06008F04
 	b _06017660
 _0601752C:
-	ldr r0, _06017690 @ =0x0380FFF4
+	ldr r0, _06017690 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r5, r0, #0x344
 	ldrh r1, [r5, #0xc]
@@ -28020,10 +28024,10 @@ _0601752C:
 	cmp r0, #0
 	bne _060175D0
 	ldrh r1, [r6, #0x40]
-	ldr r0, _06017698 @ =0x00000FFF
+	ldr r0, _06017698 ; =0x00000FFF
 	and r0, r1, r0
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, lsr #0x10
 	bl sub_0600A7A4
 	ldrh r0, [r5, #0x6a]
 	bl sub_06014CE4
@@ -28043,10 +28047,10 @@ _060175D0:
 	cmp r0, #0
 	ldr r0, [r4, #0x1c]
 	movne r1, #0xc
-	strhne r1, [r0, #4]
-	ldrhne r1, [r6, #0x3e]
+	strneh r1, [r0, #4]
+	ldrneh r1, [r6, #0x3e]
 	ldrne r0, [r4, #0x1c]
-	strhne r1, [r0, #6]
+	strneh r1, [r0, #6]
 	bne _0601760C
 	mov r2, #0
 	strh r2, [r0, #4]
@@ -28092,19 +28096,19 @@ _06017660:
 	bl sub_06008F04
 _06017684:
 	add sp, sp, #0x2c
-	pop {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06017690: .4byte 0x0380FFF4
-_06017694: .4byte 0x0000FFC2
-_06017698: .4byte 0x00000FFF
+_06017690: .word 0x0380FFF4
+_06017694: .word 0x0000FFC2
+_06017698: .word 0x00000FFF
 	arm_func_end sub_06016FE8
 
 	arm_func_start sub_0601769C
-sub_0601769C: @ 0x0601769C
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+sub_0601769C: ; 0x0601769C
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
-	ldr r0, _06017BB4 @ =0x0380FFF4
+	ldr r0, _06017BB4 ; =0x0380FFF4
 	mvn r1, #0
 	ldr r2, [r0]
 	add r0, r2, #0x17c
@@ -28117,7 +28121,7 @@ sub_0601769C: @ 0x0601769C
 	cmp r0, #0x40
 	bne _06017B7C
 	ldrh r1, [r5, #0x20]
-	ldr r0, _06017BB8 @ =0x000005FC
+	ldr r0, _06017BB8 ; =0x000005FC
 	cmp r1, r0
 	bhi _06017B7C
 	ldrh r4, [r5, #0x24]
@@ -28150,10 +28154,10 @@ _0601773C:
 	strh r0, [sp, #0x14]
 	beq _06017974
 	ldrh r0, [r5, #0x3a]
-	lsl r0, r0, #0x1c
-	lsrs r0, r0, #0x1c
+	mov r0, r0, lsl #0x1c
+	movs r0, r0, lsr #0x1c
 	bne _06017974
-	ldr r0, _06017BB4 @ =0x0380FFF4
+	ldr r0, _06017BB4 ; =0x0380FFF4
 	mvn r6, #0
 	ldr r0, [r0]
 	mov r7, #0
@@ -28180,17 +28184,17 @@ _06017780:
 	beq _06017880
 	ldrh r0, [sp, #0x14]
 	ldrh r1, [sl, #0x10]
-	lsl r0, r0, #0x10
-	lsr r2, r0, #0x14
-	lsl r0, r1, #0x10
+	mov r0, r0, lsl #0x10
+	mov r2, r0, lsr #0x14
+	mov r0, r1, lsl #0x10
 	cmp r2, r0, lsr #20
 	bne _06017880
 	ldrh r0, [r5, #0x18]
-	lsl r1, r1, #0x1c
+	mov r1, r1, lsl #0x1c
 	and r2, r0, #0xf0
-	asr r0, r2, #3
+	mov r0, r2, asr #3
 	add r0, r2, r0, lsr #28
-	asr r7, r0, #4
+	mov r7, r0, asr #4
 	subs r0, r7, r1, lsr #28
 	beq _06017B7C
 	tst r0, #-0x80000000
@@ -28211,15 +28215,15 @@ _06017780:
 	add r1, r1, r3
 	bl sub_06001B04
 	ldrh r1, [r4, #0x20]
-	lsl r0, r7, #0x10
+	mov r0, r7, lsl #0x10
 	add r1, r1, r6
 	strh r1, [r4, #0x20]
 	ldrh r1, [sl, #0x10]
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	bic r1, r1, #0xf
 	and r0, r0, #0xf
 	orr r1, r1, r0
-	ldr r0, _06017BB4 @ =0x0380FFF4
+	ldr r0, _06017BB4 ; =0x0380FFF4
 	strh r1, [sl, #0x10]
 	ldr r1, [r0]
 	ldr r0, [r1, #0x560]
@@ -28236,8 +28240,8 @@ _06017884:
 	mvn r0, #0
 	cmp r6, r0
 	beq _06017B7C
-	ldr r0, _06017BB4 @ =0x0380FFF4
-	ldr r1, _06017BBC @ =0x00000622
+	ldr r0, _06017BB4 ; =0x0380FFF4
+	ldr r1, _06017BBC ; =0x00000622
 	ldr r0, [r0]
 	add r0, r0, #0x188
 	bl sub_060090A8
@@ -28259,7 +28263,7 @@ _06017884:
 	add r1, r4, #0x18
 	add r2, r2, #0xc
 	bl sub_06001B04
-	ldr r0, _06017BB4 @ =0x0380FFF4
+	ldr r0, _06017BB4 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30c]
 	bl sub_06017BC4
@@ -28267,15 +28271,15 @@ _06017884:
 	ldrh r0, [r6, #0x10]
 	and r1, r1, #0xf0
 	bic r3, r0, #0xf
-	asr r0, r1, #3
+	mov r0, r1, asr #3
 	add r0, r1, r0, lsr #28
-	asr r1, r0, #4
-	lsl r2, r1, #0x10
-	lsr r2, r2, #0x10
+	mov r1, r0, asr #4
+	mov r2, r1, lsl #0x10
+	mov r2, r2, lsr #0x10
 	and r2, r2, #0xf
 	orr r2, r3, r2
 	strh r2, [r6, #0x10]
-	ldr r2, _06017BB4 @ =0x0380FFF4
+	ldr r2, _06017BB4 ; =0x0380FFF4
 	ldr r3, [r2]
 	ldr r2, [r3, #0x560]
 	add r0, r2, r0, asr #4
@@ -28293,7 +28297,7 @@ _06017968:
 	bl sub_0600BD2C
 	b _06017B7C
 _06017974:
-	ldr r1, _06017BB4 @ =0x0380FFF4
+	ldr r1, _06017BB4 ; =0x0380FFF4
 	ldrh r0, [r5, #0x20]
 	ldr r4, [r1]
 	sub r1, r0, #0x18
@@ -28321,9 +28325,9 @@ _06017998:
 	beq _06017A2C
 	ldrh r2, [sp, #0x14]
 	ldrh r0, [sl, #0x10]
-	lsl r1, r2, #0x10
-	lsr r1, r1, #0x14
-	lsl r0, r0, #0x10
+	mov r1, r2, lsl #0x10
+	mov r1, r1, lsr #0x14
+	mov r0, r0, lsl #0x10
 	cmp r1, r0, lsr #20
 	bne _06017A2C
 	mov r1, sl
@@ -28352,7 +28356,7 @@ _06017A38:
 	mul sb, r7, r0
 	add r0, r8, sb
 	ldr r1, [r0, #0x14]
-	ldr r0, _06017BC0 @ =0x000005E4
+	ldr r0, _06017BC0 ; =0x000005E4
 	add r7, r1, #0x10
 	ldrh r1, [r7, #0x10]
 	add sl, r1, r6
@@ -28377,17 +28381,17 @@ _06017A80:
 	add r0, r8, sb
 	ldrh r6, [r0, #0x10]
 	and r2, r1, #0xf0
-	asr r1, r2, #3
+	mov r1, r2, asr #3
 	add r1, r2, r1, lsr #28
-	lsl r3, r6, #0x1c
+	mov r3, r6, lsl #0x1c
 	rsb r2, fp, r1, asr #4
 	add r2, r2, r3, lsr #28
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	bic r3, r6, #0xf
 	and r2, r2, #0xf
 	orr r3, r3, r2
-	ldr r2, _06017BB4 @ =0x0380FFF4
+	ldr r2, _06017BB4 ; =0x0380FFF4
 	strh r3, [r0, #0x10]
 	ldr r3, [r2]
 	ldr r2, [r3, #0x560]
@@ -28444,26 +28448,26 @@ _06017B7C:
 	bl sub_06008F04
 _06017BA8:
 	add sp, sp, #0x18
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06017BB4: .4byte 0x0380FFF4
-_06017BB8: .4byte 0x000005FC
-_06017BBC: .4byte 0x00000622
-_06017BC0: .4byte 0x000005E4
+_06017BB4: .word 0x0380FFF4
+_06017BB8: .word 0x000005FC
+_06017BBC: .word 0x00000622
+_06017BC0: .word 0x000005E4
 	arm_func_end sub_0601769C
 
 	arm_func_start sub_06017BC4
-sub_06017BC4: @ 0x06017BC4
-	ldr pc, _06017BC8 @ =sub_037FAEAC
+sub_06017BC4: ; 0x06017BC4
+	ldr pc, _06017BC8 ; =sub_037FAEAC
 	.align 2, 0
-_06017BC8: .4byte sub_037FAEAC
+_06017BC8: .word sub_037FAEAC
 	arm_func_end sub_06017BC4
 
 	arm_func_start sub_06017BCC
-sub_06017BCC: @ 0x06017BCC
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r4, _06017C34 @ =0x0380FFF4
+sub_06017BCC: ; 0x06017BCC
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r4, _06017C34 ; =0x0380FFF4
 	mov r6, #0
 	ldr r0, [r4]
 	mov r7, #0x18
@@ -28488,16 +28492,16 @@ _06017C20:
 	add r6, r6, #1
 	cmp r6, #3
 	blo _06017BE8
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06017C34: .4byte 0x0380FFF4
+_06017C34: .word 0x0380FFF4
 	arm_func_end sub_06017BCC
 
 	arm_func_start sub_06017C38
-sub_06017C38: @ 0x06017C38
-	push {r4, r5, r6, lr}
-	ldr r1, _06017D30 @ =0x0380FFF4
+sub_06017C38: ; 0x06017C38
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r1, _06017D30 ; =0x0380FFF4
 	mov r0, #0
 	ldr r3, [r1]
 	mov r2, #0x50
@@ -28506,9 +28510,9 @@ sub_06017C38: @ 0x06017C38
 	mov r1, r5
 	add r4, r3, #0x344
 	bl sub_0600A9F4
-	ldr r1, _06017D34 @ =0x04808030
+	ldr r1, _06017D34 ; =0x04808030
 	mov r2, #0x8000
-	ldr r0, _06017D30 @ =0x0380FFF4
+	ldr r0, _06017D30 ; =0x0380FFF4
 	strh r2, [r1]
 	ldr r0, [r0]
 	add r0, r0, #0x300
@@ -28516,34 +28520,34 @@ sub_06017C38: @ 0x06017C38
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	b _06017CB4
-_06017C88: @ jump table
-	b _06017C98 @ case 0
-	b _06017CA0 @ case 1
-	b _06017CA8 @ case 2
-	b _06017CB0 @ case 3
+_06017C88: ; jump table
+	b _06017C98 ; case 0
+	b _06017CA0 ; case 1
+	b _06017CA8 ; case 2
+	b _06017CB0 ; case 3
 _06017C98:
-	ldr r6, _06017D38 @ =0x00000794
+	ldr r6, _06017D38 ; =0x00000794
 	b _06017CB4
 _06017CA0:
-	ldr r6, _06017D3C @ =0x000010C4
+	ldr r6, _06017D3C ; =0x000010C4
 	b _06017CB4
 _06017CA8:
-	ldr r6, _06017D40 @ =0x00000BFC
+	ldr r6, _06017D40 ; =0x00000BFC
 	b _06017CB4
 _06017CB0:
-	ldr r6, _06017D38 @ =0x00000794
+	ldr r6, _06017D38 ; =0x00000794
 _06017CB4:
-	ldr r3, _06017D44 @ =0x04808050
+	ldr r3, _06017D44 ; =0x04808050
 	add r0, r6, #0x4000
-	ldr r1, _06017D48 @ =0x00005F60
+	ldr r1, _06017D48 ; =0x00005F60
 	add r2, r0, #0x4800000
-	lsl r0, r6, #0xf
+	mov r0, r6, lsl #0xf
 	strh r2, [r3]
-	lsr r0, r0, #0x10
+	mov r0, r0, lsr #0x10
 	strh r0, [r3, #6]
 	strh r1, [r3, #2]
 	strh r0, [r3, #0xa]
-	ldr r2, _06017D4C @ =0x0000FFFF
+	ldr r2, _06017D4C ; =0x0000FFFF
 	strh r0, [r5, #4]
 	sub r0, r1, #0x4000
 	strh r2, [r5]
@@ -28554,33 +28558,33 @@ _06017CB4:
 	rsb r0, r2, #0x18000
 	strh r0, [r3, #-0x20]
 	add r0, r3, #0x1fc
-	ldr r1, _06017D50 @ =0x0480824E
+	ldr r1, _06017D50 ; =0x0480824E
 	strh r2, [r0]
-	ldr r0, _06017D54 @ =0x04805F70
+	ldr r0, _06017D54 ; =0x04805F70
 	strh r2, [r1]
 	strh r2, [r0]
 	strh r2, [r0, #2]
 	strh r2, [r0, #0xe]
 	strh r2, [r0, #6]
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06017D30: .4byte 0x0380FFF4
-_06017D34: .4byte 0x04808030
-_06017D38: .4byte 0x00000794
-_06017D3C: .4byte 0x000010C4
-_06017D40: .4byte 0x00000BFC
-_06017D44: .4byte 0x04808050
-_06017D48: .4byte 0x00005F60
-_06017D4C: .4byte 0x0000FFFF
-_06017D50: .4byte 0x0480824E
-_06017D54: .4byte 0x04805F70
+_06017D30: .word 0x0380FFF4
+_06017D34: .word 0x04808030
+_06017D38: .word 0x00000794
+_06017D3C: .word 0x000010C4
+_06017D40: .word 0x00000BFC
+_06017D44: .word 0x04808050
+_06017D48: .word 0x00005F60
+_06017D4C: .word 0x0000FFFF
+_06017D50: .word 0x0480824E
+_06017D54: .word 0x04805F70
 	arm_func_end sub_06017C38
 
 	arm_func_start sub_06017D58
-sub_06017D58: @ 0x06017D58
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r3, _06017E98 @ =0x0380FFF4
+sub_06017D58: ; 0x06017D58
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldr r3, _06017E98 ; =0x0380FFF4
 	mov sb, r2
 	ldr r2, [r3]
 	mov fp, r0
@@ -28624,7 +28628,7 @@ _06017DD8:
 	movne r5, r7
 	beq _06017E90
 _06017DF8:
-	ldr r0, _06017E98 @ =0x0380FFF4
+	ldr r0, _06017E98 ; =0x0380FFF4
 	mov r2, #0x32
 	mul r4, r5, r2
 	ldr r0, [r0]
@@ -28665,29 +28669,29 @@ _06017E74:
 	ldrh r0, [sl, #0x36]
 	strh r0, [r6, #4]
 _06017E90:
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06017E98: .4byte 0x0380FFF4
+_06017E98: .word 0x0380FFF4
 	arm_func_end sub_06017D58
 
 	arm_func_start sub_06017E9C
-sub_06017E9C: @ 0x06017E9C
-	ldr r1, _06017EB8 @ =0x0380FFF4
-	ldr ip, _06017EBC @ =sub_037FAF98
+sub_06017E9C: ; 0x06017E9C
+	ldr r1, _06017EB8 ; =0x0380FFF4
+	ldr ip, _06017EBC ; =sub_037FAF98
 	ldr r1, [r1]
 	mov r0, #0
 	mov r2, #0xc8
 	add r1, r1, #0x23c
 	bx ip
 	.align 2, 0
-_06017EB8: .4byte 0x0380FFF4
-_06017EBC: .4byte sub_037FAF98
+_06017EB8: .word 0x0380FFF4
+_06017EBC: .word sub_037FAF98
 	arm_func_end sub_06017E9C
 
 	arm_func_start sub_06017EC0
-sub_06017EC0: @ 0x06017EC0
-	ldr r0, _06017F04 @ =0x0380FFF4
+sub_06017EC0: ; 0x06017EC0
+	ldr r0, _06017F04 ; =0x0380FFF4
 	mov r3, #0
 	ldr r0, [r0]
 	add r2, r0, #0x23c
@@ -28700,27 +28704,27 @@ _06017ED4:
 	strh r1, [r2, #0x30]
 	ldrh r1, [r2, #0x30]
 	cmp r1, #0
-	strheq r0, [r2]
+	streqh r0, [r2]
 _06017EF4:
 	add r3, r3, #1
 	cmp r3, #4
 	blo _06017ED4
 	bx lr
 	.align 2, 0
-_06017F04: .4byte 0x0380FFF4
+_06017F04: .word 0x0380FFF4
 	arm_func_end sub_06017EC0
 
 	arm_func_start sub_06017F08
-sub_06017F08: @ 0x06017F08
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r1, _06017FA4 @ =0x0380FFF4
+sub_06017F08: ; 0x06017F08
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r1, _06017FA4 ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
 	ldr r1, [r0, #0x318]
 	ldrh r6, [r1, #2]
 	cmp r6, #0xa4
 	blo _06017F34
-	ldr r0, _06017FA8 @ =0x000001D6
+	ldr r0, _06017FA8 ; =0x000001D6
 	cmp r6, r0
 	bls _06017F3C
 _06017F34:
@@ -28733,9 +28737,9 @@ _06017F3C:
 _06017F48:
 	mov r0, r7
 	bl sub_0600BA10
-	lsl r1, r5, #0x10
+	mov r1, r5, lsl #0x10
 	and r0, r0, #0xff
-	lsr r1, r1, #0x10
+	mov r1, r1, lsr #0x10
 	add r7, r7, #1
 	bl sub_0600BAA8
 	mov r5, r0
@@ -28743,7 +28747,7 @@ _06017F48:
 _06017F6C:
 	cmp r6, #0
 	bne _06017F48
-	ldr r0, _06017FA4 @ =0x0380FFF4
+	ldr r0, _06017FA4 ; =0x0380FFF4
 	cmp r4, #0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x318]
@@ -28754,16 +28758,16 @@ _06017F6C:
 	movne r0, #1
 	moveq r0, #0
 _06017F9C:
-	pop {r3, r4, r5, r6, r7, lr}
+	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06017FA4: .4byte 0x0380FFF4
-_06017FA8: .4byte 0x000001D6
+_06017FA4: .word 0x0380FFF4
+_06017FA8: .word 0x000001D6
 	arm_func_end sub_06017F08
 
 	arm_func_start sub_06017FAC
-sub_06017FAC: @ 0x06017FAC
-	push {r3, r4, lr}
+sub_06017FAC: ; 0x06017FAC
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	add r4, sp, #0
 _06017FB8:
@@ -28779,28 +28783,28 @@ _06017FD4:
 	tst r0, #1
 	bne _06017FB8
 	add sp, sp, #4
-	pop {r3, r4, lr}
+	ldmia sp!, {r3, r4, lr}
 	bx lr
 	arm_func_end sub_06017FAC
 
 	arm_func_start sub_06017FEC
-sub_06017FEC: @ 0x06017FEC
-	ldr pc, _06017FF0 @ =sub_03803DFC
+sub_06017FEC: ; 0x06017FEC
+	ldr pc, _06017FF0 ; =sub_03803DFC
 	.align 2, 0
-_06017FF0: .4byte sub_03803DFC
+_06017FF0: .word sub_03803DFC
 	arm_func_end sub_06017FEC
 
 	arm_func_start sub_06017FF4
-sub_06017FF4: @ 0x06017FF4
-	ldr pc, _06017FF8 @ =sub_03804538
+sub_06017FF4: ; 0x06017FF4
+	ldr pc, _06017FF8 ; =sub_03804538
 	.align 2, 0
-_06017FF8: .4byte sub_03804538
+_06017FF8: .word sub_03804538
 	arm_func_end sub_06017FF4
 
 	arm_func_start sub_06017FFC
-sub_06017FFC: @ 0x06017FFC
-	push {r4, r5, r6, lr}
-	ldr r3, _06018058 @ =0x0380FFF4
+sub_06017FFC: ; 0x06017FFC
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r3, _06018058 ; =0x0380FFF4
 	mov r6, r1
 	ldr r1, [r3]
 	mov r5, r2
@@ -28823,16 +28827,16 @@ _06018048:
 	cmp r6, #0
 	bne _06018028
 _06018050:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06018058: .4byte 0x0380FFF4
+_06018058: .word 0x0380FFF4
 	arm_func_end sub_06017FFC
 
 	arm_func_start sub_0601805C
-sub_0601805C: @ 0x0601805C
-	push {r4, r5, r6, lr}
-	ldr r3, _060180A8 @ =0x0380FFF4
+sub_0601805C: ; 0x0601805C
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r3, _060180A8 ; =0x0380FFF4
 	mov r6, r0
 	ldr r0, [r3]
 	mov r5, r1
@@ -28844,41 +28848,41 @@ sub_0601805C: @ 0x0601805C
 	mov r1, r5
 	mov r2, r4
 	bl sub_060180B4
-	ldr r0, _060180A8 @ =0x0380FFF4
+	ldr r0, _060180A8 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x314]
 	bl sub_060180BC
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_060180A8: .4byte 0x0380FFF4
+_060180A8: .word 0x0380FFF4
 	arm_func_end sub_0601805C
 
 	arm_func_start sub_060180AC
-sub_060180AC: @ 0x060180AC
-	ldr pc, _060180B0 @ =sub_03800A40
+sub_060180AC: ; 0x060180AC
+	ldr pc, _060180B0 ; =sub_03800A40
 	.align 2, 0
-_060180B0: .4byte sub_03800A40
+_060180B0: .word sub_03800A40
 	arm_func_end sub_060180AC
 
 	arm_func_start sub_060180B4
-sub_060180B4: @ 0x060180B4
-	ldr pc, _060180B8 @ =sub_03803E6C
+sub_060180B4: ; 0x060180B4
+	ldr pc, _060180B8 ; =sub_03803E6C
 	.align 2, 0
-_060180B8: .4byte sub_03803E6C
+_060180B8: .word sub_03803E6C
 	arm_func_end sub_060180B4
 
 	arm_func_start sub_060180BC
-sub_060180BC: @ 0x060180BC
-	ldr pc, _060180C0 @ =sub_03800A9C
+sub_060180BC: ; 0x060180BC
+	ldr pc, _060180C0 ; =sub_03800A9C
 	.align 2, 0
-_060180C0: .4byte sub_03800A9C
+_060180C0: .word sub_03800A9C
 	arm_func_end sub_060180BC
 
 	arm_func_start sub_060180C4
-sub_060180C4: @ 0x060180C4
-	push {r3, lr}
-	ldr r0, _060181A8 @ =0x0380FFF4
+sub_060180C4: ; 0x060180C4
+	stmdb sp!, {r3, lr}
+	ldr r0, _060181A8 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x314]
 	bl sub_060180AC
@@ -28889,27 +28893,27 @@ sub_060180C4: @ 0x060180C4
 	mov r1, #2
 	str r3, [sp]
 	bl sub_060180B4
-	ldr r0, _060181A8 @ =0x0380FFF4
+	ldr r0, _060181A8 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x314]
 	bl sub_060180BC
 	ldr r1, [sp]
 	cmp r1, #0xa4
 	blo _0601811C
-	ldr r0, _060181AC @ =0x000001D6
+	ldr r0, _060181AC ; =0x000001D6
 	cmp r1, r0
 	bls _06018124
 _0601811C:
 	mov r0, #0
 	b _060181A0
 _06018124:
-	ldr r0, _060181A8 @ =0x0380FFF4
+	ldr r0, _060181A8 ; =0x0380FFF4
 	add r1, r1, #2
 	str r1, [sp]
 	ldr r0, [r0]
 	add r0, r0, #0x188
 	bl sub_060090A8
-	ldr r2, _060181A8 @ =0x0380FFF4
+	ldr r2, _060181A8 ; =0x0380FFF4
 	ldr r1, [r2]
 	str r0, [r1, #0x318]
 	ldr r1, [r2]
@@ -28923,24 +28927,27 @@ _06018124:
 	ldr r0, [r0, #0x314]
 	bl sub_060180AC
 	bl sub_06017FAC
-	ldr r0, _060181A8 @ =0x0380FFF4
+	ldr r0, _060181A8 ; =0x0380FFF4
 	ldr r1, [sp]
 	ldr r2, [r0]
 	mov r0, #0x2a
 	ldr r2, [r2, #0x318]
 	bl sub_060180B4
-	ldr r0, _060181A8 @ =0x0380FFF4
+	ldr r0, _060181A8 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x314]
 	bl sub_060180BC
 	mov r0, #1
 _060181A0:
-	pop {r3, lr}
+	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060181A8: .4byte 0x0380FFF4
-_060181AC: .4byte 0x000001D6
+_060181A8: .word 0x0380FFF4
+_060181AC: .word 0x000001D6
 	arm_func_end sub_060180C4
+
+	.rodata
+
 _060181B0:
 	.byte 0x40, 0x2B, 0x00, 0x06, 0xE0, 0x2B, 0x00, 0x06, 0xF0, 0x2F, 0x00, 0x06, 0x88, 0x7F, 0x00, 0x06
 	.byte 0x84, 0x81, 0x00, 0x06, 0xEC, 0x81, 0x00, 0x06, 0xAC, 0x84, 0x00, 0x06, 0xA8, 0x30, 0x00, 0x06
@@ -29054,3 +29061,7 @@ _060181B0:
 	.byte 0x58, 0x13, 0x01, 0x06, 0x01, 0x00, 0x01, 0x00, 0x98, 0x13, 0x01, 0x06, 0x01, 0x00, 0x01, 0x00
 	.byte 0xD8, 0x13, 0x01, 0x06, 0x32, 0x2E, 0x38, 0x33, 0x2E, 0x30, 0x30, 0x00, 0x01, 0x00, 0x04, 0x00
 	.byte 0x08, 0x00, 0x00, 0x00
+
+	.bss
+
+	.space 0x1590

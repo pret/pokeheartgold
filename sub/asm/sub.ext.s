@@ -1,28 +1,32 @@
+	.include "asm/macros.inc"
+	.include "global.inc"
+
+	.text
 
 	arm_func_start sub_027E0000
-sub_027E0000: @ 0x027E0000
-	push {r4, r5, r6, lr}
-	ldr r6, _027E00A4 @ =0x023801B0
-	ldr r2, _027E00A8 @ =0x023A76B4
-	ldr r0, _027E00AC @ =0x023A76D8
+sub_027E0000: ; 0x027E0000
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r6, _027E00A4 ; =0x023801B0
+	ldr r2, _027E00A8 ; =0x023A76B4
+	ldr r0, _027E00AC ; =0x023A76D8
 	b _027E0094
 _027E0014:
-	ldm r2, {r1, r4, r5}
+	ldmia r2, {r1, r4, r5}
 	cmp r1, #0x6000000
 	add r2, r2, #0xc
 	bne _027E0090
-	ldr r1, _027E00B0 @ =0x027E00BC
-	ldr r0, _027E00B4 @ =0x03809884
+	ldr r1, _027E00B0 ; =0x027E00BC
+	ldr r0, _027E00B4 ; =0x03809884
 	add r3, r4, r5
 	str r1, [r0, #4]
-	ldr r2, _027E00B8 @ =0x027F9EF0
+	ldr r2, _027E00B8 ; =0x027F9EF0
 	add r1, r1, r3
 	str r3, [r0, #0xc]
 	cmp r2, r1
 	beq _027E004C
 	bl sub_037FAE94
 _027E004C:
-	ldr r0, _027E00B4 @ =0x03809884
+	ldr r0, _027E00B4 ; =0x03809884
 	mov r1, #0
 	ldr r2, [r0, #4]
 	b _027E0068
@@ -49,13 +53,13 @@ _027E0094:
 	cmp r2, r0
 	bne _027E0014
 _027E009C:
-	pop {r4, r5, r6, lr}
+	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_027E00A4: .4byte 0x023801B0
-_027E00A8: .4byte 0x023A76B4
-_027E00AC: .4byte 0x023A76D8
-_027E00B0: .4byte 0x027E00BC
-_027E00B4: .4byte 0x03809884
-_027E00B8: .4byte 0x027F9EF0
+_027E00A4: .word 0x023801B0
+_027E00A8: .word 0x023A76B4
+_027E00AC: .word 0x023A76D8
+_027E00B0: .word 0x027E00BC
+_027E00B4: .word 0x03809884
+_027E00B8: .word 0x027F9EF0
 ; SDK_AUTOLOAD_ext_TEXT_END

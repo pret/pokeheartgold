@@ -71,7 +71,7 @@ XMAP              := $(NEF).xMAP
 
 MWCFLAGS          := -O4,p -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -I./lib/include
 MWASFLAGS         := -proc $(PROC_S)
-MWLDFLAGS         := -nodead -w off -proc $(PROC_LD) -interwork -map closure,unused -symtab sort -m _start
+MWLDFLAGS         := -nodead -w off -proc $(PROC_LD) -interworking -map closure,unused -symtab sort -m _start
 ARFLAGS           := rcS
 
 export MWCIncludes := lib/include
@@ -86,6 +86,7 @@ DUMMY != mkdir -p $(ALL_BUILDDIRS)
 .SECONDEXPANSION:
 .DELETE_ON_ERROR:
 .PHONY: all tidy clean tools clean-tools $(TOOLDIRS)
+.PRECIOUS: $(SBIN)
 
 $(BUILD_DIR)/%.o: %.c
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $@ $<
@@ -107,8 +108,12 @@ $(LCF): $(LSF) $(LCF_TEMPLATE)
 	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
 
 $(NEF): $(LCF) $(ALL_OBJS)
-	cd $(BUILD_DIR) && LM_LICENSE_FILE=../../$(LM_LICENSE_FILE) $(WINE) ../../$(MWLD) $(MWLDFLAGS) $(LIBS) -o ../../$(NEF) $(LCF:%(BUILD_DIR)/%=%) $(ALL_OBJS:%(BUILD_DIR)/%=%)
-$(SBIN): $(NEF)
+	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(BACK_REL)/$(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) $(ALL_OBJS:$(BUILD_DIR)/%=%)
+
+$(SBIN): %.sbin: %.nef
+ifeq ($(COMPARE),1)
+	sha1sum -c $(*F).sha1
+endif
 
 $(ELF): $(NEF)
 	@$(OBJCOPY) $(foreach ov,$(NEFNAME) $(OVERLAYS),--update-section $(ov)=$(BUILD_DIR)/$(ov).sbin -j $(ov)) $< $@ 2>/dev/null
