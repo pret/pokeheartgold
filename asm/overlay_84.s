@@ -2476,7 +2476,7 @@ _0223F020:
 	add r0, r5, r4
 	add r0, #0x44
 	ldrb r0, [r0]
-	bl sub_022384BC
+	bl ov80_022384BC
 	cmp r0, #0
 	bne _0223F036
 	ldrb r0, [r6]
@@ -2487,7 +2487,7 @@ _0223F036:
 	add r0, r5, r4
 	add r0, #0x44
 	ldrb r0, [r0]
-	bl sub_022384BC
+	bl ov80_022384BC
 	cmp r0, #1
 	bne _0223F04C
 	ldrb r0, [r7]
@@ -2498,7 +2498,7 @@ _0223F04C:
 	add r0, r5, r4
 	add r0, #0x44
 	ldrb r0, [r0]
-	bl sub_022384BC
+	bl ov80_022384BC
 	cmp r0, #2
 	bne _0223F066
 	ldr r0, [sp]
@@ -2511,7 +2511,7 @@ _0223F066:
 	add r0, r5, r4
 	add r0, #0x44
 	ldrb r0, [r0]
-	bl sub_022384BC
+	bl ov80_022384BC
 	cmp r0, #3
 	bne _0223F07E
 	ldr r0, [sp, #4]
@@ -2612,7 +2612,7 @@ _0223F124:
 	add r0, r6, r4
 	add r0, #0x44
 	ldrb r0, [r0]
-	bl sub_022384BC
+	bl ov80_022384BC
 	cmp r5, r0
 	bne _0223F142
 	add r0, r6, r4
