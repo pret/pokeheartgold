@@ -1,13 +1,6 @@
 ## Common defines for ARM9 and ARM7 Makefiles ##
 
-# We're not ready for prime time yet, so attempts to make anything will error unconditionally.
-$(error This project is not set up to build anything just yet)
-
-# At present this repository only supports US HeartGold 1.0
-SUPPORTED_ROMS   := heartgold.us
-ifneq ($(filter-out $(buildname),$(SUPPORTED_ROMS)),)
-$(error $(buildname) is not supported, choose from: $(SUPPORTED_ROMS))
-endif
+default: all
 
 include platform.mk
 include binutils.mk
@@ -22,7 +15,7 @@ MAKEBNR      := $(TOOLSDIR)/bin/makebanner.exe
 NTRCOMP      := $(TOOLSDIR)/bin/ntrcomp.exe
 COMPSTATIC   := $(TOOLSDIR)/bin/compstatic.exe
 
-$(LM_LICENSE_FILE) := $(TOOLSDIR)/mwccarm/license.dat
+LM_LICENSE_FILE := $(TOOLSDIR)/mwccarm/license.dat
 
 # Native tools
 SCANINC      := $(TOOLSDIR)/scaninc/scaninc$(EXE)
@@ -40,6 +33,8 @@ NATIVE_TOOLS := \
 	$(KNARC) \
 	$(O2NARC)
 
+TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
+
 # Directories
 SRC_SUBDIR                := src
 ASM_SUBDIR                := asm
@@ -52,10 +47,10 @@ ASM_BUILDDIR              := $(BUILD_DIR)/$(ASM_SUBDIR)
 LIB_SRC_BUILDDIR          := $(BUILD_DIR)/$(LIB_SRC_SUBDIR)
 LIB_ASM_BUILDDIR          := $(BUILD_DIR)/$(LIB_ASM_SUBDIR)
 
-C_SRCS                    := $(foreach dname,$(SRC_SUBDIR),wildcard $(dname)/*.c)
-ASM_SRCS                  := $(foreach dname,$(ASM_SUBDIR),wildcard $(dname)/*.s)
-LIB_C_SRCS                := $(foreach dname,$LIB_(SRC_SUBDIR),wildcard $(dname)/*.c)
-LIB_ASM_SRCS              := $(foreach dname,$LIB_(ASM_SUBDIR),wildcard $(dname)/*.s)
+C_SRCS                    := $(foreach dname,$(SRC_SUBDIR),$(wildcard $(dname)/*.c))
+ASM_SRCS                  := $(foreach dname,$(ASM_SUBDIR),$(wildcard $(dname)/*.s))
+LIB_C_SRCS                := $(foreach dname,$(LIB_SRC_SUBDIR),$(wildcard $(dname)/*.c))
+LIB_ASM_SRCS              := $(foreach dname,$(LIB_ASM_SUBDIR),$(wildcard $(dname)/*.s))
 ALL_SRCS                  := $(C_SRCS) $(ASM_SRCS) $(LIB_C_SRCS) $(LIB_ASM_SRCS)
 
 C_OBJS                    := $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
@@ -87,6 +82,11 @@ OVERLAYS          := $(shell $(GREP) -o "^Overlay \w+" $(LSF) | cut -d' ' -f2)
 # Make sure build directories exist before compiling anything
 DUMMY != mkdir -p $(ALL_BUILDDIRS)
 
+.SECONDARY:
+.SECONDEXPANSION:
+.DELETE_ON_ERROR:
+.PHONY: all tidy clean tools clean-tools $(TOOLDIRS)
+
 $(BUILD_DIR)/%.o: %.c
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $@ $<
 
@@ -94,11 +94,14 @@ $(BUILD_DIR)/%.o: %.s
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $@ $<
 
 $(NATIVE_TOOLS): tools
-tools:
-	$(foreach tool,$(NATIVE_TOOLS),$(MAKE) -C $(shell dirname $(tool));)
+
+tools: $(TOOLDIRS)
+
+$(TOOLDIRS):
+	$(MAKE) -C $@
 
 clean-tools:
-	$(foreach tool,$(NATIVE_TOOLS),$(MAKE) -C $(shell dirname $(tool)) clean;)
+	$(foreach tool,$(TOOLDIRS),$(MAKE) -C $(tool) clean;)
 
 $(LCF): $(LSF) $(LCF_TEMPLATE)
 	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
@@ -109,3 +112,5 @@ $(SBIN): $(NEF)
 
 $(ELF): $(NEF)
 	@$(OBJCOPY) $(foreach ov,$(NEFNAME) $(OVERLAYS),--update-section $(ov)=$(BUILD_DIR)/$(ov).sbin -j $(ov)) $< $@ 2>/dev/null
+
+print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true

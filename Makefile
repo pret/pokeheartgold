@@ -1,8 +1,9 @@
 TOOLSDIR       := tools
 MWCCVER        := 2.0/sp1
-PROC           := arm946
+PROC           := arm946e
 PROC_S         := arm5te
 PROC_LD        := v5te
+LCF_TEMPLATE   := ARM9-TS.lcf.template
 
 include config.mk
 include common.mk
@@ -17,24 +18,22 @@ ICON_PNG       := $(ROM:$(BUILD_DIR)/%.nds=icon/%.png)
 MWCFLAGS  += -ipa file $(DEFINES)
 MWASFLAGS += $(DEFINES)
 
-.SECONDARY:
-.SECONDEXPANSION:
-.DELETE_ON_ERROR:
-.PHONY: all tidy clean tools clean-tools sub
+.PHONY: main sub
 
 MAKEFLAGS += --no-print-directory
 
 all: $(ROM) $(NEF) $(ELF) $(SBIN)
 
 tidy:
-	$(MAKE) -C sub tidy
+	$(MAKE) -I $(CURDIR) -C sub tidy
 	$(RM) -r $(BUILD_DIR)
 	$(RM) $(ROM)
 
 clean: tidy
+	$(MAKE) -I $(CURDIR) -C sub clean
 
 main: $(SBIN)
-sub: ; $(MAKE) -C sub
+sub: ; $(MAKE) -I $(CURDIR) -C sub
 
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)

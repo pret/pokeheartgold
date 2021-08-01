@@ -1,15 +1,15 @@
-TOOLSDIR  := ../tools
-BUILD_DIR := build
-NEFNAME   := sub
-MWCCVER   := 2.0/sp2p3
-PROC      := arm7tdmi
-PROC_S    := arm4t
-PROC_LD   := v4t
+TOOLSDIR    := ../tools
+BUILD_DIR   := build
+NEFNAME     := sub
+MWCCVER     := 2.0/sp2p3
+PROC        := arm7tdmi
+PROC_S      := arm4t
+PROC_LD     := v4t
+LCF_TEMPATE := ARM7-TS.lcf.template
 
 include ../common.mk
 
-.SECONDARY:
-.SECONDEXPANSION:
-.DELETE_ON_ERROR:
-.PHONY: all tidy clean
+tidy:
+	$(RM) -r $(BUILD_DIR)
 
+clean: tidy
