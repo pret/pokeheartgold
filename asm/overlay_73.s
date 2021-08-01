@@ -6801,7 +6801,7 @@ _021E8ED4: .word 0x00000F94
 ov73_021E8ED8: ; 0x021E8ED8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02237B54
+	bl ov72_02237B54
 	cmp r0, #0
 	beq _021E8F90
 	bl ov72_02237B74
@@ -6939,7 +6939,7 @@ _021E8FE0: .word 0x00000F94
 ov73_021E8FE4: ; 0x021E8FE4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_02237B54
+	bl ov72_02237B54
 	cmp r0, #0
 	bne _021E8FF2
 	b _021E90FA
@@ -7123,7 +7123,7 @@ _021E9140: .word 0x00000F94
 ov73_021E9144: ; 0x021E9144
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02237B54
+	bl ov72_02237B54
 	cmp r0, #0
 	beq _021E91D6
 	bl ov72_02237B74
@@ -7516,7 +7516,7 @@ ov73_021E944C: ; 0x021E944C
 	push {r3, r4, lr}
 	sub sp, #0x1c
 	add r4, r0, #0
-	bl sub_02237B54
+	bl ov72_02237B54
 	cmp r0, #0
 	beq _021E953A
 	bl ov72_02237B74
@@ -7742,7 +7742,7 @@ _021E9614: .word 0x00000F94
 ov73_021E9618: ; 0x021E9618
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02237B54
+	bl ov72_02237B54
 	cmp r0, #0
 	beq _021E96CC
 	bl ov72_02237B74
@@ -8288,7 +8288,7 @@ _021E9A68: .word 0x00000F94
 ov73_021E9A6C: ; 0x021E9A6C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02237B54
+	bl ov72_02237B54
 	cmp r0, #0
 	beq _021E9B34
 	bl ov72_02237B74

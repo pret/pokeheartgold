@@ -3803,7 +3803,7 @@ ov08_0221DBCC: ; 0x0221DBCC
 	bl sub_02078434
 _0221DBF0:
 	add r0, r5, #0
-	bl sub_0223AA84
+	bl ov12_0223AA84
 	add r1, r4, #0
 	add r2, r6, #0
 	bl sub_02078828
@@ -12735,7 +12735,7 @@ ov08_022225D4: ; 0x022225D4
 	mov r1, #0
 	strb r1, [r4, r0]
 	ldr r0, [r5]
-	bl sub_0223AA84
+	bl ov12_0223AA84
 	add r6, r0, #0
 	mov r5, #0
 _02222614:
@@ -12936,7 +12936,7 @@ ov08_0222276C: ; 0x0222276C
 	bl sub_02002CEC
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0223AA84
+	bl ov12_0223AA84
 	bl sub_020787F8
 	ldr r1, _02222834 ; =0x0000114D
 	strb r0, [r4, r1]
@@ -13792,7 +13792,7 @@ _02222E40:
 	cmp r0, #0
 	beq _02222EAC
 	ldr r0, [r1]
-	bl sub_0223AA84
+	bl ov12_0223AA84
 	add r6, r0, #0
 	mov r4, #0
 _02222E82:
@@ -14433,7 +14433,7 @@ ov08_02223390: ; 0x02223390
 	add r3, r4, #0
 	bl sub_02078434
 	add r0, r6, #0
-	bl sub_0223AA84
+	bl ov12_0223AA84
 	add r1, r5, #0
 	add r2, r7, #0
 	bl sub_02078828

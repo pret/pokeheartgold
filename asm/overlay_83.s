@@ -11723,7 +11723,7 @@ _02243E8C:
 	ldr r0, [sp]
 	mov r1, #1
 	ldrb r0, [r0, #9]
-	bl sub_02237B58
+	bl ov80_02237B58
 	add r6, r0, #0
 	mov r5, #0
 	cmp r6, #0
@@ -11946,7 +11946,7 @@ _0224409E:
 _022440A4:
 	ldrb r0, [r5, #9]
 	mov r1, #1
-	bl sub_02237B58
+	bl ov80_02237B58
 	mov r6, #0
 	str r0, [sp, #0x18]
 	cmp r0, #0
@@ -12958,7 +12958,7 @@ _02244902:
 _02244904:
 	ldrb r0, [r5, #9]
 	mov r1, #1
-	bl sub_02237B58
+	bl ov80_02237B58
 	mov r7, #0
 	str r0, [sp, #0xc]
 	cmp r0, #0
@@ -13077,7 +13077,7 @@ _022449F4:
 _022449F8:
 	ldrb r0, [r5, #9]
 	mov r1, #1
-	bl sub_02237B58
+	bl ov80_02237B58
 	mov r7, #0
 	str r0, [sp, #0x14]
 	cmp r0, #0
@@ -15467,7 +15467,7 @@ ov83_02245C80: ; 0x02245C80
 	add r6, r0, #0
 	ldrb r0, [r6, #9]
 	mov r1, #1
-	bl sub_02237B58
+	bl ov80_02237B58
 	add r5, r0, #0
 	mov r4, #0
 	cmp r5, #0
