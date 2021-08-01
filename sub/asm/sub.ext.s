@@ -1,6 +1,6 @@
 
-	arm_func_start FUN_027E0000
-FUN_027E0000: @ 0x027E0000
+	arm_func_start sub_027E0000
+sub_027E0000: @ 0x027E0000
 	push {r4, r5, r6, lr}
 	ldr r6, _027E00A4 @ =0x023801B0
 	ldr r2, _027E00A8 @ =0x023A76B4
@@ -20,7 +20,7 @@ _027E0014:
 	str r3, [r0, #0xc]
 	cmp r2, r1
 	beq _027E004C
-	bl FUN_037FAE94
+	bl sub_037FAE94
 _027E004C:
 	ldr r0, _027E00B4 @ =0x03809884
 	mov r1, #0

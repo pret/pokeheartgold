@@ -1,6 +1,6 @@
 
-	thumb_func_start FUN_020CC17C
-FUN_020CC17C: ; 0x020CC17C
+	thumb_func_start sub_020CC17C
+sub_020CC17C: ; 0x020CC17C
 	str r2, [r0, #0x14]
 	str r2, [r0, #0x28]
 	str r1, [r0, #0x18]
@@ -19,10 +19,10 @@ FUN_020CC17C: ; 0x020CC17C
 	stmia r0!, {r2, r3}
 	str r1, [r0]
 	bx lr
-	thumb_func_end FUN_020CC17C
+	thumb_func_end sub_020CC17C
 
-	thumb_func_start FUN_020CC1A0
-FUN_020CC1A0: ; 0x020CC1A0
+	thumb_func_start sub_020CC1A0
+sub_020CC1A0: ; 0x020CC1A0
 	str r2, [r0]
 	str r2, [r0, #0x28]
 	str r1, [r0, #0x20]
@@ -41,10 +41,10 @@ FUN_020CC1A0: ; 0x020CC1A0
 	stmia r0!, {r1, r2}
 	stmia r0!, {r1, r2, r3}
 	bx lr
-	thumb_func_end FUN_020CC1A0
+	thumb_func_end sub_020CC1A0
 
-	thumb_func_start FUN_020CC1C4
-FUN_020CC1C4: ; 0x020CC1C4
+	thumb_func_start sub_020CC1C4
+sub_020CC1C4: ; 0x020CC1C4
 	str r2, [r0]
 	str r2, [r0, #0x14]
 	str r1, [r0, #4]
@@ -63,4 +63,4 @@ FUN_020CC1C4: ; 0x020CC1C4
 	stmia r0!, {r1, r2, r3}
 	bx lr
 	.align 2, 0
-	thumb_func_end FUN_020CC1C4
+	thumb_func_end sub_020CC1C4
