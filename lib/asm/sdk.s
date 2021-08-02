@@ -115049,3 +115049,7 @@ OSi_IntrTable:
 	.word sub_020D0EE0
 	.word sub_020D0EE0
 	.word sub_020D0EE0
+
+	.section .dtcm.bss,4
+
+	.space 0x20

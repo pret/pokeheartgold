@@ -110,9 +110,9 @@ $(LCF): $(LSF) $(LCF_TEMPLATE)
 $(NEF): $(LCF) $(ALL_OBJS)
 	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(BACK_REL)/$(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) $(ALL_OBJS:$(BUILD_DIR)/%=%)
 
-$(SBIN): %.sbin: %.nef
+$(SBIN): build/%.sbin: build/%.nef
 ifeq ($(COMPARE),1)
-	sha1sum -c $(*F).sha1
+	sha1sum -c $*.sha1
 endif
 
 $(ELF): $(NEF)

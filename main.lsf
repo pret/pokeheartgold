@@ -29,6 +29,7 @@ Autoload DTCM
 {
 	Address 0x027E0000
 	Object sdk.o (.dtcm)
+	Object sdk.o (.dtcm.bss)
 }
 Overlay OVY_0
 {
