@@ -84,7 +84,7 @@ def dump_files(dirs, files, allocs, rom, print_only=True):
 def dump_overlays(proc, table, allocs, rom, make_files=False):
     for ovy_id, ram_start, size, bsssize, sinit_start, sinit_end, file_id, flag in table:
         if make_files:
-            outdir = f'{proc}/overlays/{ovy_id:02d}'
+            outdir = f'{proc}/overlays_ss/{ovy_id:02d}'
             os.makedirs(outdir, exist_ok=True)
             with open(f'{outdir}/module_{ovy_id:02d}.cfg', 'w') as cfg:
                 print('thumb_func', f'0x{ram_start:08X}', f'MOD{ovy_id:02d}_{ram_start:08X}', file=cfg)
@@ -124,21 +124,21 @@ def dump_overlays(proc, table, allocs, rom, make_files=False):
 
 
 def main():
-    with open('baserom.nds', 'rb') as rom:
+    with open('baserom_soul.nds', 'rb') as rom:
         fnt_raw = read_table(rom, 0x40)
         fat_raw = read_table(rom, 0x48)
         ovy9_raw = read_table(rom, 0x50)
         ovy7_raw = read_table(rom, 0x58)
 
         allocs = parse_fat(fat_raw)
-        dirs, files = parse_fnt(fnt_raw)
+        dirs, files = parse_fnt(fnt_raw, root='files_ss')
         ovy9 = parse_overlays(ovy9_raw)
         ovy7 = parse_overlays(ovy7_raw)
 
         dump_files(dirs, files, allocs, rom)
 
-        # dump_overlays('.', ovy9, allocs, rom)
-        # dump_overlays('sub', ovy7, allocs, rom)
+        dump_overlays('.', ovy9, allocs, rom, make_files=True)
+        dump_overlays('sub', ovy7, allocs, rom, make_files=True)
 
 
 if __name__ == '__main__':

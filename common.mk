@@ -112,7 +112,7 @@ $(NEF): $(LCF) $(ALL_OBJS)
 
 $(SBIN): build/%.sbin: build/%.nef
 ifeq ($(COMPARE),1)
-	sha1sum -c $*.sha1
+	$(SHA1SUM) -c $*.sha1
 endif
 
 $(ELF): $(NEF)
