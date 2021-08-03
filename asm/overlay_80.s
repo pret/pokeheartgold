@@ -5606,7 +5606,7 @@ ov80_0222C70C: ; 0x0222C70C
 _0222C740:
 	ldr r0, [sp]
 	add r1, r5, #0
-	bl sub_02229200
+	bl ov42_02229200
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov80_0222C70C
@@ -10903,13 +10903,13 @@ _0222EF40:
 	ldr r0, [r5, #0x14]
 	mov r1, #1
 	ldr r0, [r0, #4]
-	bl sub_02229200
+	bl ov42_02229200
 	b _0222EF5C
 _0222EF4C:
 	ldr r0, [r5, #0x14]
 	mov r1, #0
 	ldr r0, [r0, #4]
-	bl sub_02229200
+	bl ov42_02229200
 	b _0222EF5C
 _0222EF58:
 	bl GF_AssertFail
@@ -32222,7 +32222,7 @@ _02239540:
 	bl ov42_0222903C
 	ldrb r1, [r5, #0xb]
 	add r7, r0, #0
-	bl sub_02229200
+	bl ov42_02229200
 	str r5, [sp]
 	ldr r0, [r6, #8]
 	ldr r2, [sp, #4]

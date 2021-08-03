@@ -252,7 +252,7 @@ _0225C702:
 	ldrb r1, [r1]
 	ldrb r3, [r7]
 	add r0, r6, #0
-	bl sub_02258800
+	bl ov90_02258800
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov93_0225C6D8
 

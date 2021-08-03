@@ -753,7 +753,7 @@ _02258E3C:
 	bl ov46_02259450
 	b _02258EF2
 _02258E4A:
-	bl sub_0222ED7C
+	bl ov45_0222ED7C
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	str r0, [r5, #8]

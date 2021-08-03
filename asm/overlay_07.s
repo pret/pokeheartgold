@@ -8511,7 +8511,7 @@ ov07_0221FB90: ; 0x0221FB90
 	bl ov12_0223A8EC
 	str r0, [r4, #0xc]
 	add r0, r7, #0
-	bl sub_0223A938
+	bl ov12_0223A938
 	str r0, [r4, #0x10]
 	mov r6, #0
 	add r5, r4, #0

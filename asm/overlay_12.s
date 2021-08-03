@@ -80844,7 +80844,7 @@ _0225EB12:
 	str r1, [r0, #0x1c]
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
-	bl sub_0221BE20
+	bl ov10_0221BE20
 	ldrb r0, [r4, #0xe]
 	add sp, #0x1fc
 	add sp, #0x14
@@ -82416,7 +82416,7 @@ _0225F7D4:
 	strb r1, [r0, #0x15]
 _0225F7DA:
 	ldr r0, [r4, #4]
-	bl sub_0221BE20
+	bl ov10_0221BE20
 	ldrb r0, [r4, #0xa]
 	add sp, #0x24
 	add r0, r0, #1
@@ -84747,7 +84747,7 @@ _02260A44:
 	add r1, #0x32
 	strb r0, [r1]
 	ldr r0, [r4, #4]
-	bl sub_0221BE20
+	bl ov10_0221BE20
 	ldrb r0, [r4, #0xa]
 	add sp, #0xc
 	add r0, r0, #1

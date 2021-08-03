@@ -36352,7 +36352,7 @@ _021F6B7A:
 _021F6B7E:
 	ldr r0, [r4, #4]
 	add r1, r5, #0
-	bl sub_0225A2EC
+	bl ov27_0225A2EC
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F6B64
 

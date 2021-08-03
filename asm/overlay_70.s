@@ -76,7 +76,7 @@ _02237934:
 	bl ov70_02238398
 	ldr r1, _02237BC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _0223794C:
 	ldr r0, _02237BC0 ; =0x02246800
@@ -158,7 +158,7 @@ _022379C6:
 	mvn r1, r1
 	str r1, [r0, #4]
 _022379CE:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _022379D4:
 	bl ov38_0221BF48
@@ -175,7 +175,7 @@ _022379E2:
 	bl ov70_02238398
 	ldr r1, _02237BC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _022379FA:
 	ldr r0, _02237BC0 ; =0x02246800
@@ -232,7 +232,7 @@ _02237A4C:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237A54:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237A5A:
 	bl ov38_0221BF48
@@ -249,7 +249,7 @@ _02237A68:
 	bl ov70_02238398
 	ldr r1, _02237BC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237A80:
 	ldr r0, _02237BC0 ; =0x02246800
@@ -299,7 +299,7 @@ _02237ACC:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237AD4:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237ADA:
 	bl ov38_0221BF48
@@ -316,7 +316,7 @@ _02237AE8:
 	bl ov70_02238398
 	ldr r1, _02237BC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237B00:
 	ldr r0, _02237BC0 ; =0x02246800
@@ -378,7 +378,7 @@ _02237B60:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237B68:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237B6E:
 	bl ov38_0221BF48
@@ -395,7 +395,7 @@ _02237B7C:
 	bl ov70_02238398
 	ldr r1, _02237BC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237B94:
 	ldr r1, _02237BC0 ; =0x02246800
@@ -443,7 +443,7 @@ _02237BDE:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237BE6:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237BEC:
 	bl ov38_0221BF48
@@ -460,7 +460,7 @@ _02237BFA:
 	bl ov70_02238398
 	ldr r1, _02237EC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237C12:
 	ldr r0, _02237EC0 ; =0x02246800
@@ -517,7 +517,7 @@ _02237C64:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237C6C:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237C72:
 	bl ov38_0221BF48
@@ -534,7 +534,7 @@ _02237C80:
 	bl ov70_02238398
 	ldr r1, _02237EC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237C98:
 	ldr r0, _02237EC0 ; =0x02246800
@@ -576,7 +576,7 @@ _02237CDC:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237CE4:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237CEA:
 	bl ov38_0221BF48
@@ -593,7 +593,7 @@ _02237CF8:
 	bl ov70_02238398
 	ldr r1, _02237EC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237D10:
 	ldr r0, _02237EC0 ; =0x02246800
@@ -690,7 +690,7 @@ _02237DAE:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237DB6:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237DBC:
 	bl ov38_0221BF48
@@ -707,7 +707,7 @@ _02237DCA:
 	bl ov70_02238398
 	ldr r1, _02237EC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237DE2:
 	ldr r1, _02237EC0 ; =0x02246800
@@ -734,7 +734,7 @@ _02237E06:
 	sub r2, #0x1d
 	str r2, [r1, #4]
 _02237E0A:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237E10:
 	bl ov38_0221BF48
@@ -751,7 +751,7 @@ _02237E1E:
 	bl ov70_02238398
 	ldr r1, _02237EC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237E36:
 	ldr r1, _02237EC0 ; =0x02246800
@@ -795,7 +795,7 @@ _02237E72:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237E7A:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237E80:
 	bl ov38_0221BF48
@@ -812,7 +812,7 @@ _02237E8E:
 	bl ov70_02238398
 	ldr r1, _02237EC0 ; =0x02246800
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237EA6:
 	ldr r0, _02237EC0 ; =0x02246800
@@ -875,14 +875,14 @@ _02237F0A:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237F12:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237F18:
 	mov r0, #0x18
 	str r0, [r1]
 	sub r0, #0x24
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 _02237F24:
 	pop {r3, pc}
 	nop
@@ -960,7 +960,7 @@ _02237F94:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 	.align 2, 0
 _02237FA4: .word 0x02246814
@@ -998,7 +998,7 @@ _02237FE2:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 	nop
 _02237FF4: .word 0x0224680C
@@ -1037,7 +1037,7 @@ _02238036:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	add sp, #4
 	pop {r3, r4, pc}
 	.align 2, 0
@@ -1076,7 +1076,7 @@ _02238086:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	add sp, #4
 	pop {r3, r4, pc}
 	.align 2, 0
@@ -1109,7 +1109,7 @@ _022380CA:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 	nop
 _022380DC: .word 0x022461D0
@@ -1141,7 +1141,7 @@ _0223810E:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 	nop
 _02238120: .word 0x0224621C
@@ -1196,7 +1196,7 @@ _02238180:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -1247,7 +1247,7 @@ _022381E8:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _022381F8: .word 0x02246900
@@ -1294,7 +1294,7 @@ _0223824A:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.align 2, 0
@@ -1333,7 +1333,7 @@ _0223829A:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 	nop
 _022382AC: .word 0x0224680C
@@ -1366,7 +1366,7 @@ _022382E2:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 	nop
 _022382F4: .word 0x02246358
@@ -1409,7 +1409,7 @@ _02238340:
 	str r1, [r0]
 	sub r1, #0x25
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _02238350: .word 0x02246814
