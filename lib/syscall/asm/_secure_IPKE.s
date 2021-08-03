@@ -1,8 +1,7 @@
 	.include "asm/macros.inc"
 	.text
-	.syntax unified
 
-_secure: @ 0x02000000
+_secure: ; 0x02000000
 	.byte 0xFF, 0xDE, 0xFF, 0xE7, 0xFF, 0xDE, 0xFF, 0xE7, 0xFF, 0xDE, 0xFF, 0xE7, 0xFF, 0xDE, 0xE2, 0x31
 	.byte 0xA3, 0xE9, 0xAE, 0x7B, 0x92, 0x75, 0x75, 0xB1, 0x69, 0x82, 0x1D, 0xE3, 0x22, 0xCB, 0x55, 0xAE
 	.byte 0xCE, 0xDC, 0x4D, 0x18, 0x1B, 0x3A, 0x9E, 0x4D, 0x42, 0x9F, 0x0C, 0xFF, 0xDF, 0x85, 0x90, 0x80
@@ -14,9 +13,9 @@ _secure: @ 0x02000000
 	.byte 0xD1, 0x90, 0xBB, 0xDF, 0x9E, 0x69, 0xC9, 0x5C, 0x2F, 0xE3
 
 	non_word_aligned_thumb_func_start SVC_DivRem
-SVC_DivRem: @ 0x0200008A
-	svc #9
-	adds r0, r1, #0
+SVC_DivRem: ; 0x0200008A
+	swi 9
+	add r0, r1, #0
 	bx lr
 	thumb_func_end SVC_DivRem
 _02000090:
@@ -26,8 +25,8 @@ _02000090:
 	.byte 0xD4, 0xAD, 0x89, 0xE0, 0xA1, 0x33, 0x5D, 0x89, 0x37, 0xA9, 0x4F, 0x34
 
 	thumb_func_start SVC_UncompressLZ8
-SVC_UncompressLZ8: @ 0x020000CC
-	svc #0x11
+SVC_UncompressLZ8: ; 0x020000CC
+	swi 0x11
 	bx lr
 	thumb_func_end SVC_UncompressLZ8
 _020000D0:
@@ -40,8 +39,8 @@ _020000D0:
 	.byte 0x42, 0x62, 0xFF, 0xFD, 0x8D, 0xCD, 0x6B, 0xBB, 0x63, 0xB0, 0xF4, 0x8A, 0x52, 0x8C
 
 	non_word_aligned_thumb_func_start SVC_UnpackBits
-SVC_UnpackBits: @ 0x0200013E
-	svc #0x10
+SVC_UnpackBits: ; 0x0200013E
+	swi 0x10
 	bx lr
 	thumb_func_end SVC_UnpackBits
 _02000142:
@@ -55,8 +54,8 @@ _02000142:
 	.byte 0xDD, 0x25, 0xF4, 0x04, 0xD4, 0x1F, 0x24, 0xB2, 0xEA, 0x40
 
 	non_word_aligned_thumb_func_start SVC_CpuSet
-SVC_CpuSet: @ 0x020001BA
-	svc #0xb
+SVC_CpuSet: ; 0x020001BA
+	swi 0xb
 	bx lr
 	thumb_func_end SVC_CpuSet
 _020001BE:
@@ -70,8 +69,8 @@ _020001BE:
 	.byte 0x3C, 0x25, 0xDE, 0x03
 
 	thumb_func_start SVC_Halt
-SVC_Halt: @ 0x02000224
-	svc #6
+SVC_Halt: ; 0x02000224
+	swi 6
 	bx lr
 	thumb_func_end SVC_Halt
 _02000228:
@@ -84,8 +83,8 @@ _02000228:
 	.byte 0xA2, 0xF8, 0x90, 0x72
 
 	thumb_func_start SVC_CpuSetFast
-SVC_CpuSetFast: @ 0x02000284
-	svc #0xc
+SVC_CpuSetFast: ; 0x02000284
+	swi 0xc
 	bx lr
 	thumb_func_end SVC_CpuSetFast
 _02000288:
@@ -96,8 +95,8 @@ _02000288:
 	.byte 0x06, 0xFB, 0x3A, 0x4B, 0xEC, 0x73, 0xA9, 0x71, 0xF0, 0x55, 0x27, 0xAE, 0xD9, 0x83, 0x40, 0x2C
 
 	thumb_func_start SVC_GetCRC16
-SVC_GetCRC16: @ 0x020002D0
-	svc #0xe
+SVC_GetCRC16: ; 0x020002D0
+	swi 0xe
 	bx lr
 	thumb_func_end SVC_GetCRC16
 _020002D4:
@@ -110,8 +109,8 @@ _020002D4:
 	.byte 0xAD, 0x88
 
 	non_word_aligned_thumb_func_start SVC_UncompressRL16FromDevice
-SVC_UncompressRL16FromDevice: @ 0x02000332
-	svc #0x15
+SVC_UncompressRL16FromDevice: ; 0x02000332
+	swi 0x15
 	bx lr
 	thumb_func_end SVC_UncompressRL16FromDevice
 _02000336:
@@ -124,8 +123,8 @@ _02000336:
 	.byte 0xDE, 0xCF, 0x0A, 0x3E, 0x5D, 0x6B
 
 	non_word_aligned_thumb_func_start SVC_Div
-SVC_Div: @ 0x02000396
-	svc #9
+SVC_Div: ; 0x02000396
+	swi 9
 	bx lr
 	thumb_func_end SVC_Div
 _0200039A:
@@ -147,8 +146,8 @@ _0200039A:
 	.byte 0x2A, 0xE2, 0x33, 0x74, 0x05, 0xA2, 0xCE, 0xF1, 0x35, 0x66
 
 	non_word_aligned_thumb_func_start SVC_Sqrt
-SVC_Sqrt: @ 0x0200048A
-	svc #0xd
+SVC_Sqrt: ; 0x0200048A
+	swi 0xd
 	bx lr
 	thumb_func_end SVC_Sqrt
 _0200048E:
@@ -163,9 +162,9 @@ _0200048E:
 	.byte 0x00, 0xFA
 
 	non_word_aligned_thumb_func_start SVC_WaitIntr
-SVC_WaitIntr: @ 0x02000502
-	movs r2, #0
-	svc #4
+SVC_WaitIntr: ; 0x02000502
+	mov r2, #0
+	swi 4
 	bx lr
 	thumb_func_end SVC_WaitIntr
 _02000508:
@@ -179,8 +178,8 @@ _02000508:
 	.byte 0x7E, 0x84
 
 	non_word_aligned_thumb_func_start IsMmemExpanded
-IsMmemExpanded: @ 0x02000572
-	svc #0xf
+IsMmemExpanded: ; 0x02000572
+	swi 0xf
 	bx lr
 	thumb_func_end IsMmemExpanded
 _02000576:
@@ -194,8 +193,8 @@ _02000576:
 	.byte 0xEC, 0x35, 0x73, 0x95, 0xC0, 0x76, 0x6A, 0x11, 0xAA, 0xEB, 0xC2, 0xCE, 0x03, 0x6A
 
 	non_word_aligned_thumb_func_start SVC_SoftReset
-SVC_SoftReset: @ 0x020005EE
-	svc #0
+SVC_SoftReset: ; 0x020005EE
+	swi 0
 	bx lr
 	thumb_func_end SVC_SoftReset
 _020005F2:
@@ -207,8 +206,8 @@ _020005F2:
 	.byte 0x09, 0x4F
 
 	non_word_aligned_thumb_func_start SVC_UncompressHuffmanFromDevice
-SVC_UncompressHuffmanFromDevice: @ 0x02000642
-	svc #0x13
+SVC_UncompressHuffmanFromDevice: ; 0x02000642
+	swi 0x13
 	bx lr
 	thumb_func_end SVC_UncompressHuffmanFromDevice
 _02000646:
@@ -222,9 +221,9 @@ _02000646:
 	.byte 0x69, 0x8F, 0x81, 0xB4, 0xF3, 0xA7, 0x05, 0x64
 
 	thumb_func_start SVC_WaitVBlankIntr
-SVC_WaitVBlankIntr: @ 0x020006B8
-	movs r2, #0
-	svc #5
+SVC_WaitVBlankIntr: ; 0x020006B8
+	mov r2, #0
+	swi 5
 	bx lr
 	thumb_func_end SVC_WaitVBlankIntr
 _020006BE:
@@ -245,8 +244,8 @@ _020006BE:
 	.byte 0x63, 0xA7, 0xAE, 0xFB, 0x20, 0x24, 0x7D, 0x23, 0x10, 0x8C, 0x62, 0x5C, 0x00, 0xD7
 
 	non_word_aligned_thumb_func_start SVC_WaitByLoop
-SVC_WaitByLoop: @ 0x0200079E
-	svc #3
+SVC_WaitByLoop: ; 0x0200079E
+	swi 3
 	bx lr
 	thumb_func_end SVC_WaitByLoop
 _020007A2:

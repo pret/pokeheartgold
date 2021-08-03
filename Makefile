@@ -1,12 +1,10 @@
-# Because mwldarm expects absolute paths to be WIN32 paths,
-# all paths referring up from BUILD_DIR must be relative.
-BACK_REL     := ../..
-TOOLSDIR       := tools
-MWCCVER        := 2.0/sp1
+MWCCVER        := 2.0/sp2p3
 PROC           := arm946e
 PROC_S         := arm5te
 PROC_LD        := v5te
 LCF_TEMPLATE   := ARM9-TS.lcf.template
+LIBS           := -L+lib -l+syscall -nostdlib
+ALL_BUILDDIRS  := $(BUILD_DIR)/lib
 
 include config.mk
 include common.mk
@@ -21,25 +19,31 @@ ICON_PNG       := $(ROM:$(BUILD_DIR)/%.nds=icon/%.png)
 MWCFLAGS  += -ipa file $(DEFINES)
 MWASFLAGS += $(DEFINES)
 
-.PHONY: main sub
+.PHONY: main sub libsyscall
 
 MAKEFLAGS += --no-print-directory
 
-all: $(ROM) $(NEF) $(ELF) $(SBIN)
+all: $(ROM)
 
 tidy:
-	$(MAKE) -I $(CURDIR) -C sub tidy
+	@$(MAKE) -C sub tidy
 	$(RM) -r $(BUILD_DIR)
 	$(RM) $(ROM)
 
-clean: tidy
-	$(MAKE) -I $(CURDIR) -C sub clean
+clean: tidy clean-tools
+	@$(MAKE) -C lib/syscall clean
+	@$(MAKE) -C sub clean
 
 main: $(SBIN)
-sub: ; $(MAKE) -I $(CURDIR) -C sub
+sub: ; @$(MAKE) -C sub
 
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
+
+$(NEF): libsyscall
+
+libsyscall:
+	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(PROJECT_ROOT)/$(BUILD_DIR) GAME_CODE=$(GAME_CODE)
 
 SBIN_LZ        := $(SBIN)_LZ
 
