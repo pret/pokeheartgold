@@ -7507,7 +7507,7 @@ _02241B48:
 	lsl r1, r1, #0x10
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x10
-	bl sub_0222A43C
+	bl ov80_0222A43C
 	add r1, r0, #0
 	ldr r0, _02241BC0 ; =0x0000073C
 	ldr r0, [r5, r0]
@@ -15159,7 +15159,7 @@ _022459C4:
 	lsl r1, r1, #0x10
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x10
-	bl sub_0222A43C
+	bl ov80_0222A43C
 	add r1, r0, #0
 	ldr r0, _02245A3C ; =0x000004E4
 	ldr r0, [r5, r0]

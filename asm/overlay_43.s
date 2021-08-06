@@ -3381,7 +3381,7 @@ _0222B95A:
 	ldr r3, [sp, #0x1c]
 	mov r1, #0
 	mov r2, #0x10
-	bl sub_02227060
+	bl ov42_02227060
 	ldr r1, [sp, #0x18]
 	ldr r3, [sp, #0x1c]
 	add r1, #0xb4

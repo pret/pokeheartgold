@@ -902,11 +902,11 @@ _02258F26:
 	add r0, r6, #0
 	add r1, sp, #8
 	add r2, sp, #4
-	bl sub_0222D594
+	bl ov45_0222D594
 	add r0, sp, #4
 	add r1, r5, #0
 	add r2, sp, #0
-	bl sub_0222D594
+	bl ov45_0222D594
 	add r0, sp, #0
 	ldrb r2, [r0, #2]
 	ldr r1, [r5, #8]
@@ -1283,7 +1283,7 @@ _022591C4:
 	beq _0225922E
 	add r0, r6, #0
 	add r1, r4, r5
-	bl sub_0222DD08
+	bl ov45_0222DD08
 	str r0, [sp, #0x28]
 	add r0, r6, #0
 	add r1, r4, r5
@@ -1291,7 +1291,7 @@ _022591C4:
 	str r0, [sp, #0x24]
 	add r0, r6, #0
 	add r1, r4, r5
-	bl sub_0222DD20
+	bl ov45_0222DD20
 	str r0, [sp, #0x20]
 	add r0, r6, #0
 	add r1, r4, r5

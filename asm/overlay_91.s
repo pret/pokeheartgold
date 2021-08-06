@@ -30,7 +30,7 @@ ov91_0225C540: ; 0x0225C540
 	ldrb r1, [r1]
 	ldrb r3, [r5]
 	add r0, #8
-	bl sub_02258800
+	bl ov90_02258800
 	add r0, r4, #0
 	mov r1, #0x6a
 	bl ov91_0225CBE4

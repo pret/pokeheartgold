@@ -64,7 +64,7 @@ _0223791C:
 	bl ov72_02237D88
 	ldr r1, _02237B48 ; =0x0223B820
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237934:
 	ldr r0, _02237B48 ; =0x0223B820
@@ -83,7 +83,7 @@ _0223794A:
 	mvn r1, r1
 _02237950:
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237958:
 	bl ov38_0221BF48
@@ -100,7 +100,7 @@ _02237966:
 	bl ov72_02237D88
 	ldr r1, _02237B48 ; =0x0223B820
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _0223797E:
 	ldr r0, _02237B48 ; =0x0223B820
@@ -141,7 +141,7 @@ _022379BA:
 	mvn r1, r1
 	str r1, [r0, #4]
 _022379C2:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _022379C8:
 	bl ov38_0221BF48
@@ -158,7 +158,7 @@ _022379D6:
 	bl ov72_02237D88
 	ldr r1, _02237B48 ; =0x0223B820
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _022379EE:
 	ldr r0, _02237B48 ; =0x0223B820
@@ -203,7 +203,7 @@ _02237A2C:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237A34:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237A3A:
 	bl ov38_0221BF48
@@ -220,7 +220,7 @@ _02237A48:
 	bl ov72_02237D88
 	ldr r1, _02237B48 ; =0x0223B820
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237A60:
 	ldr r0, _02237B48 ; =0x0223B820
@@ -265,7 +265,7 @@ _02237A9E:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237AA6:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237AAC:
 	bl ov38_0221BF48
@@ -282,7 +282,7 @@ _02237ABA:
 	bl ov72_02237D88
 	ldr r1, _02237B48 ; =0x0223B820
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237AD2:
 	ldr r0, _02237B48 ; =0x0223B820
@@ -340,14 +340,14 @@ _02237B2A:
 	mvn r1, r1
 	str r1, [r0, #4]
 _02237B32:
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 _02237B38:
 	mov r0, #0xc
 	str r0, [r1]
 	sub r0, #0x10
 	str r0, [r1, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 _02237B44:
 	pop {r3, pc}
 	nop
@@ -417,7 +417,7 @@ _02237BAE:
 	str r1, [r0]
 	sub r1, #0x11
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	add sp, #4
 	pop {r3, r4, pc}
 	.align 2, 0
@@ -462,7 +462,7 @@ _02237C0A:
 	str r1, [r0]
 	sub r1, #0x11
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.align 2, 0
@@ -520,7 +520,7 @@ _02237C82:
 	str r1, [r0]
 	sub r1, #0x11
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02237C94: .word 0x0223B834
@@ -555,7 +555,7 @@ _02237CD2:
 	str r1, [r0]
 	sub r1, #0x11
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, pc}
 	nop
 _02237CE4: .word 0x0223B5C4
@@ -598,7 +598,7 @@ _02237D30:
 	str r1, [r0]
 	sub r1, #0x11
 	str r1, [r0, #4]
-	bl sub_0221BFEC
+	bl ov38_0221BFEC
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _02237D40: .word 0x0223B834

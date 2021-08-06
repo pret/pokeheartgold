@@ -4082,7 +4082,7 @@ _022489CC:
 	add r2, r1, #0
 	add r0, r4, #0
 	add r1, r3, #0
-	bl sub_022378C0
+	bl ov70_022378C0
 	mov r0, #0x46
 	ldr r1, [r5]
 	mov r2, #1
@@ -4106,7 +4106,7 @@ ov75_022489F8: ; 0x022489F8
 	add r0, r1, #0
 	add r0, #0x98
 	add r1, #0xfc
-	bl sub_02238304
+	bl ov70_02238304
 	mov r0, #0x12
 	str r0, [r4, #8]
 	mov r0, #0
@@ -4565,7 +4565,7 @@ _02248D66:
 	add r0, r1, #0
 	add r0, #0x98
 	add r1, #0xfc
-	bl sub_02238304
+	bl ov70_02238304
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
