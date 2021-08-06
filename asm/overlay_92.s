@@ -724,7 +724,7 @@ _0225CB06:
 	add r0, #0x8c
 	ldr r3, [r3, #0x3c]
 	str r0, [sp, #4]
-	bl sub_02258800
+	bl ov90_02258800
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}

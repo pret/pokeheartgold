@@ -6774,7 +6774,7 @@ _021E8E96:
 	add r2, r1, #0
 	add r0, r4, #0
 	add r1, r3, #0
-	bl sub_022378C0
+	bl ov72_022378C0
 	mov r0, #7
 	str r0, [r5, #0x1c]
 	mov r0, #3

@@ -15575,17 +15575,17 @@ _021ECD3A:
 _021ECD4C:
 	ldr r0, [r6, #0x14]
 	mov r1, #3
-	bl sub_0221F120
+	bl ov98_0221F120
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	ldr r0, [r6, #0x14]
 	mov r1, #2
-	bl sub_0221F120
+	bl ov98_0221F120
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	ldr r0, [r6, #0x14]
 	mov r1, #1
-	bl sub_0221F120
+	bl ov98_0221F120
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	ldr r0, [r6, #4]
@@ -20308,7 +20308,7 @@ ov96_021EF19C: ; 0x021EF19C
 	bl ov96_021EE5E0
 	ldr r0, [r6, #0x30]
 	mov r1, #0xc
-	bl sub_0221EB84
+	bl ov98_0221EB84
 	ldr r5, _021EF230 ; =0x0221BA18
 	mov r4, #0
 _021EF1C2:
@@ -20878,7 +20878,7 @@ _021EF636:
 	ldr r0, [r5, #0x30]
 	mov r1, #1
 	add r2, #0xc6
-	bl sub_0221EC08
+	bl ov98_0221EC08
 	mov r3, #0
 	str r3, [sp]
 	lsl r2, r6, #1
@@ -20886,7 +20886,7 @@ _021EF636:
 	ldr r0, [r5, #0x30]
 	mov r1, #3
 	add r2, #0xd1
-	bl sub_0221EC08
+	bl ov98_0221EC08
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0
@@ -21043,7 +21043,7 @@ ov96_021EF770: ; 0x021EF770
 	ldr r0, [r5, #0x30]
 	mov r1, #0xb
 	add r2, r4, #0
-	bl sub_0221EC08
+	bl ov98_0221EC08
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.align 2, 0
@@ -21085,7 +21085,7 @@ ov96_021EF7C4: ; 0x021EF7C4
 	ldr r0, [r5, #0x30]
 	mov r1, #0xb
 	add r2, r4, #0
-	bl sub_0221EC08
+	bl ov98_0221EC08
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.align 2, 0

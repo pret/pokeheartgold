@@ -1073,7 +1073,7 @@ _0225906E:
 	ldr r2, [r4, #0x10]
 	bl ov45_0222A7DC
 	ldr r0, [r4, #0x10]
-	bl sub_0222F4D4
+	bl ov45_0222F4D4
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #0x60
@@ -1859,7 +1859,7 @@ _02259678:
 	ldr r0, [r6, #4]
 	bl ov45_0222A5C0
 	add r1, sp, #0x20
-	bl sub_0222AB0C
+	bl ov45_0222AB0C
 	ldr r0, [r6, #4]
 	bl ov45_0222A53C
 	add r1, r0, #0
@@ -2825,7 +2825,7 @@ _02259DE8:
 	str r0, [sp, #4]
 	add r0, r7, #0
 	add r1, sp, #8
-	bl sub_0222AB0C
+	bl ov45_0222AB0C
 	ldr r1, [sp, #4]
 	mov r0, #0
 	bl ov45_0222F6B0
