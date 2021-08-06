@@ -66,7 +66,7 @@ _0221BE7C:
 	strb r1, [r2, r0]
 _0221BE90:
 	add r0, r6, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x1c
 	sub r2, r2, r1
@@ -271,7 +271,7 @@ _0221C004:
 	cmp r2, #4
 	blt _0221BFD2
 	ldr r0, [sp]
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	add r1, r4, #0
 	bl sub_020F2998
 	add r0, sp, #4
@@ -448,7 +448,7 @@ _0221C14E:
 	cmp r1, #4
 	blt _0221C122
 	add r0, r7, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	add r1, r4, #0
 	bl sub_020F2998
 	add r0, sp, #0x10
@@ -521,7 +521,7 @@ _0221C1DA:
 	cmp r4, #4
 	blt _0221C1C0
 	add r0, r7, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	add r1, r6, #0
 	bl sub_020F2998
 	add r0, sp, #0x1c
@@ -747,7 +747,7 @@ ov10_0221C384: ; 0x0221C384
 	bl ov10_0221EEF0
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x18
 	sub r1, r1, r2
@@ -779,7 +779,7 @@ ov10_0221C3C4: ; 0x0221C3C4
 	bl ov10_0221EEF0
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x18
 	sub r1, r1, r2
@@ -811,7 +811,7 @@ ov10_0221C404: ; 0x0221C404
 	bl ov10_0221EEF0
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x18
 	sub r1, r1, r2
@@ -843,7 +843,7 @@ ov10_0221C444: ; 0x0221C444
 	bl ov10_0221EEF0
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x18
 	sub r1, r1, r2
@@ -2494,7 +2494,7 @@ _0221D122:
 	cmp r6, #0
 	beq _0221D15E
 	ldr r0, [sp]
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #1
 	tst r0, r1
 	beq _0221D156
@@ -4569,7 +4569,7 @@ ov10_0221E11C: ; 0x0221E11C
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, r5, #0
-	bl sub_02252EA8
+	bl ov12_02252EA8
 	mov r1, #0xc0
 	mul r1, r5
 	add r2, r4, r1
@@ -6915,7 +6915,7 @@ _0221F2BE:
 	b _0221F3B4
 _0221F2CE:
 	ldr r0, [sp, #0x18]
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #0xb
 	bl sub_020F2998
 	ldr r0, [sp, #0x64]
@@ -6960,7 +6960,7 @@ _0221F30E:
 	b _0221F3B4
 _0221F32C:
 	ldr r0, [sp, #0x18]
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #0x64
 	bl sub_020F2998
 	cmp r1, #5
@@ -7556,7 +7556,7 @@ _0221F710:
 	tst r0, r1
 	beq _0221F7BA
 	ldr r0, [sp, #0x14]
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #3
 	bl sub_020F2998
 	cmp r1, #2
@@ -7897,7 +7897,7 @@ _0221FA3E:
 	tst r0, r1
 	beq _0221FA66
 	add r0, r7, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #3
 	bl sub_020F2998
 	cmp r1, #2
@@ -7962,7 +7962,7 @@ _0221FACC:
 	tst r0, r1
 	beq _0221FAF4
 	add r0, r7, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #3
 	bl sub_020F2998
 	cmp r1, #2
@@ -8143,7 +8143,7 @@ _0221FC48:
 	cmp r0, #0
 	bne _0221FC72
 	add r0, r7, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x1f
 	sub r2, r2, r1
@@ -8210,7 +8210,7 @@ _0221FCD8:
 	cmp r0, #0
 	bne _0221FD02
 	add r0, r7, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x1f
 	sub r2, r2, r1
@@ -8319,7 +8319,7 @@ _0221FD70:
 	pop {r3, r4, r5, r6, r7, pc}
 _0221FDBA:
 	add r0, r5, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #0xa
 	bl sub_020F2998
 	cmp r1, #0
@@ -8398,7 +8398,7 @@ _0221FE12:
 	pop {r3, r4, r5, r6, r7, pc}
 _0221FE5C:
 	add r0, r5, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #0xa
 	bl sub_020F2998
 	cmp r1, #0
@@ -8434,7 +8434,7 @@ ov10_0221FE8C: ; 0x0221FE8C
 	cmp r0, #0
 	beq _0221FEB6
 	add r0, r6, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #3
 	bl sub_020F2998
 	cmp r1, #0
@@ -8586,7 +8586,7 @@ _0221FF64:
 	cmp r0, r1
 	bne _0221FFEC
 	add r0, r6, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #1
 	tst r0, r1
 	beq _0221FFEC
@@ -8867,7 +8867,7 @@ _0222018A:
 	tst r0, r1
 	beq _0222023C
 	ldr r0, [sp, #0x14]
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	ldr r1, [sp, #0x24]
 	bl sub_020F2998
 	cmp r1, #0
@@ -8948,7 +8948,7 @@ _022202B0:
 	cmp r0, #0
 	bne _022202D8
 	add r0, r6, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #1
 	tst r0, r1
 	beq _022202D8
@@ -8969,7 +8969,7 @@ _022202D8:
 	cmp r0, #0
 	bne _02220302
 	add r0, r6, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #1
 	tst r0, r1
 	beq _02220302
@@ -9008,7 +9008,7 @@ _0222031C:
 	pop {r3, r4, r5, r6, r7, pc}
 _02220336:
 	add r0, r6, #0
-	bl sub_0223BD98
+	bl ov12_0223BD98
 	mov r1, #1
 	tst r0, r1
 	beq _02220350

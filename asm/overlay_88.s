@@ -134,7 +134,7 @@ _022588F8:
 	bl sub_0200FA24
 	ldr r0, [r6, #8]
 	mov r1, #1
-	bl sub_0222A520
+	bl ov45_0222A520
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]

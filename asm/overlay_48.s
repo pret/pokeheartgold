@@ -167,7 +167,7 @@ _02258956:
 	bl sub_0200FA24
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_0222A520
+	bl ov45_0222A520
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

@@ -4927,7 +4927,7 @@ ov73_021E7FB8: ; 0x021E7FB8
 	bl sub_02007290
 	add r5, r0, #0
 	bl ov00_021ECB40
-	bl sub_022378DC
+	bl ov72_022378DC
 	bl ov00_021ECB40
 	ldr r1, [r4]
 	cmp r1, #5

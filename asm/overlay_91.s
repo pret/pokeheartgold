@@ -557,7 +557,7 @@ _0225C99C:
 	b _0225C9E6
 _0225C9BE:
 	ldr r0, [r4, #4]
-	bl sub_02258AA0
+	bl ov90_02258AA0
 	cmp r0, #1
 	bne _0225C9E6
 	ldr r0, [r4, #4]
@@ -6508,7 +6508,7 @@ ov91_0225F508: ; 0x0225F508
 	ldr r0, _0225F664 ; =0x00001AD0
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_02258BD4
+	bl ov90_02258BD4
 	ldr r1, _0225F668 ; =0x000021A4
 	str r0, [r5, r1]
 	add sp, #0xc
@@ -6583,7 +6583,7 @@ ov91_0225F66C: ; 0x0225F66C
 	bl ov91_0225FC84
 	ldr r0, _0225F740 ; =0x000021A4
 	ldr r0, [r4, r0]
-	bl sub_02258C38
+	bl ov90_02258C38
 	ldr r0, _0225F720 ; =0x00001AB4
 	add r0, r4, r0
 	bl ov91_0225FA60

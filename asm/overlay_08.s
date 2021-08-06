@@ -522,7 +522,7 @@ _0221C236:
 	add r2, r4, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl sub_0223AC20
+	bl ov12_0223AC20
 	cmp r0, #1
 	bne _0221C2E6
 	ldrh r0, [r4, #0x22]
@@ -1314,7 +1314,7 @@ _0221C862:
 	add r2, r6, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl sub_0223AC20
+	bl ov12_0223AC20
 	cmp r0, #1
 	bne _0221C8BA
 	ldr r0, _0221C90C ; =0x0000207C
@@ -13485,7 +13485,7 @@ _02222C0E:
 	str r0, [sp]
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
-	bl sub_0223AC20
+	bl ov12_0223AC20
 	cmp r0, #1
 	bne _02222C34
 	ldr r2, _02222D6C ; =0x0000114D

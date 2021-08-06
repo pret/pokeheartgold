@@ -4555,7 +4555,7 @@ ov02_02247ED8: ; 0x02247ED8
 	add r5, r3, #0
 	bl sub_0206DB28
 	mov r1, #4
-	bl sub_02259B50
+	bl ov24_02259B50
 	add r4, r0, #0
 	ldrh r0, [r4, #4]
 	add r1, r5, #0

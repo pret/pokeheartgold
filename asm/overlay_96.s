@@ -20866,12 +20866,12 @@ _021EF636:
 	ldr r0, [r5, #0x30]
 	mov r2, #0xc5
 	add r3, r1, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	ldr r0, [r5, #0x30]
 	mov r1, #2
 	mov r2, #0xd0
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	mov r3, #0
 	str r3, [sp]
 	add r2, r6, #0
@@ -20994,7 +20994,7 @@ _021EF74E:
 	mov r1, #6
 	mov r2, #0xb0
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	add r6, #0xb1
 	ldr r0, [r5, #0x30]
 	mov r1, #7
@@ -21021,7 +21021,7 @@ ov96_021EF770: ; 0x021EF770
 	ldr r0, [r5, #0x30]
 	mov r1, #8
 	add r4, #0xd2
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #4
@@ -21063,7 +21063,7 @@ ov96_021EF7C4: ; 0x021EF7C4
 	ldr r0, [r5, #0x30]
 	mov r1, #8
 	add r4, #0xd3
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #4

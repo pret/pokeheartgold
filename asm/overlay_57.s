@@ -6511,7 +6511,7 @@ _0223AC4A:
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
-	bl sub_022329B0
+	bl ov07_022329B0
 	ldr r0, _0223AE90 ; =0x00000404
 	ldr r1, [r4, r0]
 	add r1, r1, #1

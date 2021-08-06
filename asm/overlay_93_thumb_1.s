@@ -570,7 +570,7 @@ ov93_0225C768: ; 0x0225C768
 	ldr r0, [r5, #0x28]
 	bl sub_0200E2B0
 	mov r1, #0x75
-	bl sub_02258BD4
+	bl ov90_02258BD4
 	str r0, [r5, #0x1c]
 	bl ov90_02258C74
 	add r2, r0, #0
@@ -939,7 +939,7 @@ ov93_0225CD10: ; 0x0225CD10
 	ldr r0, [r4]
 	str r1, [r0, #0x24]
 	ldr r0, [r4, #0x1c]
-	bl sub_02258C38
+	bl ov90_02258C38
 	add r0, r4, #0
 	bl ov93_022602E4
 	add r0, r4, #0

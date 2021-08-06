@@ -2702,7 +2702,7 @@ ov84_0223F1BC: ; 0x0223F1BC
 	add r6, r0, #0
 	ldrb r0, [r5, #9]
 	mov r1, #1
-	bl sub_0223811C
+	bl ov80_0223811C
 	add r7, r0, #0
 	mov r4, #0
 	cmp r6, #0

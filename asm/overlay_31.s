@@ -70,7 +70,7 @@ ov31_0225D520: ; 0x0225D520
 	add r0, r4, #0
 	bl ov31_0225DD14
 	ldr r0, [r4, #0x14]
-	bl sub_022581BC
+	bl ov03_022581BC
 	ldr r2, _0225D600 ; =0x04001000
 	ldr r0, _0225D604 ; =0xFFFF1FFF
 	ldr r1, [r2]

@@ -980,7 +980,7 @@ _0223E5AC:
 	lsl r3, r2, #1
 	ldr r2, _0223E8D8 ; =0x02247D18
 	ldrh r2, [r2, r3]
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	add r1, r4, #0
 	add r0, r4, #0
 	add r1, #0x50
@@ -1563,7 +1563,7 @@ _0223EA96:
 	add r2, r0, #0
 	ldrb r1, [r4, #9]
 	ldr r0, [r4, #4]
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	add r1, r4, #0
 	add r0, r4, #0
 	add r1, #0x50
@@ -1834,7 +1834,7 @@ _0223ED12:
 	add r2, r0, #0
 	ldrb r1, [r4, #9]
 	ldr r0, [r4, #4]
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	add r1, r4, #0
 	add r0, r4, #0
 	add r1, #0x50
@@ -7262,7 +7262,7 @@ _02241940:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4, #4]
 	add r2, r6, #0
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	b _0224199E
 _02241962:
 	ldr r0, [r4, #0x24]
@@ -7292,7 +7292,7 @@ _0224198C:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4, #4]
 	add r2, r6, #0
-	bl sub_02237FA4
+	bl ov80_02237FA4
 _0224199E:
 	add r1, r4, #0
 	add r0, r4, #0
@@ -7595,7 +7595,7 @@ _02241BE2:
 	ldrb r1, [r5, #9]
 	ldrh r2, [r2, r3]
 	ldr r0, [r5, #4]
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	ldr r0, _02241DC4 ; =0x0000050C
 	ldrb r1, [r5, #9]
 	ldr r0, [r5, r0]
@@ -7715,7 +7715,7 @@ _02241CFA:
 	ldrb r1, [r5, #9]
 	ldrh r2, [r2, r3]
 	ldr r0, [r5, #4]
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	ldr r0, _02241DC4 ; =0x0000050C
 	ldrb r1, [r5, #9]
 	ldr r0, [r5, r0]
@@ -10760,7 +10760,7 @@ _02243678:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4, #4]
 	mov r2, #1
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	add r1, r4, #0
 	add r0, r4, #0
 	add r1, #0x50
@@ -10969,7 +10969,7 @@ _0224384C:
 	add r2, r0, #0
 	ldrb r1, [r4, #9]
 	ldr r0, [r4, #4]
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	add r1, r4, #0
 	add r0, r4, #0
 	add r1, #0x50
@@ -14772,7 +14772,7 @@ _02245686:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4, #4]
 	add r2, r5, #0
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	b _022456E4
 _022456A8:
 	ldr r0, [r4, #0x24]
@@ -14802,7 +14802,7 @@ _022456D2:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4, #4]
 	add r2, r5, #0
-	bl sub_02237FA4
+	bl ov80_02237FA4
 _022456E4:
 	add r1, r4, #0
 	add r0, r4, #0
@@ -15240,7 +15240,7 @@ _02245A82:
 	ldrb r1, [r5, #9]
 	ldr r0, [r5, #4]
 	add r2, r4, #0
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	add r1, r5, #0
 	add r0, r5, #0
 	add r1, #0x50
@@ -15304,7 +15304,7 @@ _02245AEA:
 	ldrb r1, [r5, #9]
 	ldr r0, [r5, #4]
 	mov r2, #0x32
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	mov r0, #0xaf
 	lsl r0, r0, #2
 	ldrb r1, [r5, #9]
@@ -15390,7 +15390,7 @@ _02245BBE:
 	ldrb r1, [r5, #9]
 	ldr r0, [r5, #4]
 	mov r2, #0x32
-	bl sub_02237FA4
+	bl ov80_02237FA4
 	mov r0, #0xaf
 	lsl r0, r0, #2
 	ldrb r1, [r5, #9]

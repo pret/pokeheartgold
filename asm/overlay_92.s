@@ -643,7 +643,7 @@ _0225CA6C:
 	ldr r0, [r5, #0x54]
 	bl sub_0200E2B0
 	mov r1, #0x71
-	bl sub_02258BD4
+	bl ov90_02258BD4
 	add r1, r5, #0
 	add r1, #0x84
 	str r0, [r1]
@@ -1124,7 +1124,7 @@ _0225CE56:
 	add r0, r4, #0
 	add r0, #0x8c
 	mov r1, #0x71
-	bl sub_02258920
+	bl ov90_02258920
 	add r1, r4, #0
 	add r1, #0x9c
 	str r0, [r1]
@@ -1464,7 +1464,7 @@ _0225D12A:
 	add r0, r4, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl sub_02258AA0
+	bl ov90_02258AA0
 	add r5, r0, #0
 	beq _0225D186
 	add r0, r4, #0
@@ -1669,7 +1669,7 @@ _0225D2C8:
 	add r0, r5, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_02258C38
+	bl ov90_02258C38
 	add r0, r5, #0
 	bl ov92_0225D49C
 	add r0, r5, #0

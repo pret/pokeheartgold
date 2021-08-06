@@ -7987,7 +7987,7 @@ ov59_0223BAE8: ; 0x0223BAE8
 	ldrb r2, [r2, #8]
 	ldr r1, [r4, #0x10]
 	add r0, #0x18
-	bl sub_022379C0
+	bl ov58_022379C0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x14]
 	cmp r0, #8

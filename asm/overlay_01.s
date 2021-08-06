@@ -3019,7 +3019,7 @@ _021E7172:
 	cmp r0, #0
 	beq _021E718E
 	add r0, r4, #0
-	bl sub_02246C8C
+	bl ov02_02246C8C
 	cmp r0, #1
 	bne _021E718E
 	add sp, #8
@@ -35895,7 +35895,7 @@ ov01_021F6840: ; 0x021F6840
 	add r1, #0xd0
 	add r2, r4, #0
 	mov r3, #0
-	bl sub_0225D520
+	bl ov30_0225D520
 	add r4, #0xd4
 	str r0, [r4]
 	pop {r4, pc}
@@ -35919,7 +35919,7 @@ _021F6870: .word ov30_0225D64C
 ov01_021F6874: ; 0x021F6874
 	push {r3, lr}
 	ldr r0, [r0, #8]
-	bl sub_0225D6FC
+	bl ov30_0225D6FC
 	cmp r0, #0
 	beq _021F688A
 	ldr r0, _021F6890 ; =SDK_OVERLAY_OVY_24_ID
@@ -48403,7 +48403,7 @@ _021FC3A8:
 	bl sub_02054918
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_02247F9C
+	bl ov02_02247F9C
 	cmp r0, #0
 	beq _021FC3EE
 	mov r0, #6
@@ -61027,7 +61027,7 @@ ov01_0220233C: ; 0x0220233C
 	ldr r0, [r4]
 	bl sub_02040374
 	add r4, r0, #0
-	bl sub_022522B4
+	bl ov02_022522B4
 	cmp r5, r0
 	bne _02202370
 	mov r0, #1
@@ -61785,7 +61785,7 @@ ov01_02202930: ; 0x02202930
 	cmp r4, #0
 	bne _02202964
 	add r0, r5, #0
-	bl sub_022598C0
+	bl ov24_022598C0
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -61794,7 +61794,7 @@ _02202964:
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02259928
+	bl ov24_02259928
 	mov r0, #0x46
 	mov r1, #0
 	lsl r0, r0, #2
@@ -61989,7 +61989,7 @@ ov01_02202ABC: ; 0x02202ABC
 	add r4, r0, #0
 	add r0, r6, #0
 	lsr r1, r1, #0x18
-	bl sub_02259ADC
+	bl ov24_02259ADC
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}

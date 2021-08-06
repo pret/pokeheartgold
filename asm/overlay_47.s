@@ -112,7 +112,7 @@ _022588CA:
 	bl sub_0200FA24
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl sub_0222A520
+	bl ov45_0222A520
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -1710,7 +1710,7 @@ _022594E6:
 	ldr r1, [sp, #0x10]
 	ldr r0, [r0, #4]
 	add r1, #0xc8
-	bl sub_0222B1FC
+	bl ov45_0222B1FC
 _02259564:
 	ldr r0, [sp, #0x10]
 	add r0, #0xdc

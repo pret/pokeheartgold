@@ -14839,7 +14839,7 @@ _022307CE:
 	ldrh r2, [r1, #2]
 	strh r2, [r1, #6]
 	add r1, sp, #0x34
-	bl sub_02258800
+	bl ov49_02258800
 	mov r0, #1
 	ldr r1, [sp, #0x3c]
 	lsl r0, r0, #0x10
@@ -14962,7 +14962,7 @@ ov45_022308C0: ; 0x022308C0
 	add r4, r0, #0
 	add r0, r1, #0
 	add r1, sp, #0
-	bl sub_02258800
+	bl ov49_02258800
 	mov r0, #1
 	ldr r1, [sp, #8]
 	lsl r0, r0, #0x10
@@ -15149,7 +15149,7 @@ ov45_022309E8: ; 0x022309E8
 	sub sp, #4
 	add r4, r0, #0
 	add r0, sp, #0
-	bl sub_02258830
+	bl ov49_02258830
 	ldr r0, [sp]
 	str r0, [r4]
 	bl sub_020C3B40
