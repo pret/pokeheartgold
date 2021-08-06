@@ -1378,11 +1378,11 @@ _022591AC:
 
 	thumb_func_start ov49_022591B4
 ov49_022591B4: ; 0x022591B4
-	ldr r3, _022591BC ; =sub_022308B0
+	ldr r3, _022591BC ; =ov45_022308B0
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022591BC: .word sub_022308B0
+_022591BC: .word ov45_022308B0
 	thumb_func_end ov49_022591B4
 
 	thumb_func_start ov49_022591C0
@@ -1396,11 +1396,11 @@ _022591C8: .word ov45_02230978
 
 	thumb_func_start ov49_022591CC
 ov49_022591CC: ; 0x022591CC
-	ldr r3, _022591D4 ; =sub_02230994
+	ldr r3, _022591D4 ; =ov45_02230994
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022591D4: .word sub_02230994
+_022591D4: .word ov45_02230994
 	thumb_func_end ov49_022591CC
 
 	thumb_func_start ov49_022591D8
