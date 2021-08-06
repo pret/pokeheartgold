@@ -242,7 +242,7 @@ ov27_0225A19C: ; 0x0225A19C
 	str r1, [sp, #4]
 	bl sub_0201F988
 	add r6, r0, #0
-	ldr r1, _0225A2B0 ; =0x0000007B
+	ldr r1, _0225A2B0 ; =SDK_OVERLAY_OVY_123_ID
 	mov r0, #0
 	bl FS_LoadOverlay
 	ldr r0, _0225A2B4 ; =ov27_0225C238
@@ -342,7 +342,7 @@ _0225A246:
 	mov r0, #8
 	bl sub_0201A9C4
 	ldr r0, _0225A2C4 ; =ov27_0225C24C
-	bl sub_0225F688
+	bl ov123_0225F688
 	cmp r0, #0
 	bne _0225A2A4
 	mov r1, #0xfa
@@ -350,13 +350,13 @@ _0225A246:
 	lsl r1, r1, #2
 	bl sub_0201AACC
 _0225A2A4:
-	ldr r1, _0225A2B0 ; =0x0000007B
+	ldr r1, _0225A2B0 ; =SDK_OVERLAY_OVY_123_ID
 	mov r0, #0
 	bl FS_UnloadOverlay
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0225A2B0: .word 0x0000007B
+_0225A2B0: .word SDK_OVERLAY_OVY_123_ID
 _0225A2B4: .word ov27_0225C238
 _0225A2B8: .word 0x000004A8
 _0225A2BC: .word 0x000004AC

@@ -244,7 +244,7 @@ ov75_02246B48: ; 0x02246B48
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl LoadDwcOverlay
-	bl sub_02091614
+	bl LoadOVY38
 	mov r0, #0x73
 	bl sub_02039FD8
 	ldr r1, _02246B94 ; =0x00020020
@@ -280,7 +280,7 @@ ov75_02246B98: ; 0x02246B98
 	bl sub_020B5394
 	ldr r0, [r4, #0xc]
 	bl sub_0201AB0C
-	bl sub_02091624
+	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	bl sub_02034DE0
 	ldr r0, _02246BC8 ; =SDK_OVERLAY_OVY_70_ID

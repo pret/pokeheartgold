@@ -9,7 +9,7 @@ ov101_021E7740: ; 0x021E7740
 	add r4, r0, #0
 	bl sub_020072A4
 	add r5, r0, #0
-	ldr r0, _021E7790 ; =0x0000001A
+	ldr r0, _021E7790 ; =SDK_OVERLAY_OVY_26_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r0, #3
@@ -40,7 +40,7 @@ ov101_021E7740: ; 0x021E7740
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-_021E7790: .word 0x0000001A
+_021E7790: .word SDK_OVERLAY_OVY_26_ID
 _021E7794: .word 0x000009F4
 _021E7798: .word 0x021F7372
 	thumb_func_end ov101_021E7740
@@ -150,12 +150,12 @@ _021E7858:
 	bl sub_02007294
 	add r0, r4, #0
 	bl sub_0201A9C4
-	ldr r0, _021E7870 ; =0x0000001A
+	ldr r0, _021E7870 ; =SDK_OVERLAY_OVY_26_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-_021E7870: .word 0x0000001A
+_021E7870: .word SDK_OVERLAY_OVY_26_ID
 	thumb_func_end ov101_021E7834
 
 	thumb_func_start ov101_021E7874
@@ -12467,10 +12467,10 @@ ov101_021ED7F8: ; 0x021ED7F8
 	add r4, r0, #0
 	bl sub_020072A4
 	add r5, r0, #0
-	ldr r0, _021ED8A4 ; =0x00000064
+	ldr r0, _021ED8A4 ; =SDK_OVERLAY_OVY_100_ID
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _021ED8A8 ; =0x0000001A
+	ldr r0, _021ED8A8 ; =SDK_OVERLAY_OVY_26_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r2, #1
@@ -12536,8 +12536,8 @@ ov101_021ED7F8: ; 0x021ED7F8
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021ED8A4: .word 0x00000064
-_021ED8A8: .word 0x0000001A
+_021ED8A4: .word SDK_OVERLAY_OVY_100_ID
+_021ED8A8: .word SDK_OVERLAY_OVY_26_ID
 _021ED8AC: .word 0x000009F4
 _021ED8B0: .word 0x021F7372
 	thumb_func_end ov101_021ED7F8
@@ -12633,15 +12633,15 @@ _021ED948:
 	bl sub_02007294
 	add r0, r4, #0
 	bl sub_0201A9C4
-	ldr r0, _021ED978 ; =0x0000001A
+	ldr r0, _021ED978 ; =SDK_OVERLAY_OVY_26_ID
 	bl UnloadOverlayByID
-	ldr r0, _021ED97C ; =0x00000064
+	ldr r0, _021ED97C ; =SDK_OVERLAY_OVY_100_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021ED978: .word 0x0000001A
-_021ED97C: .word 0x00000064
+_021ED978: .word SDK_OVERLAY_OVY_26_ID
+_021ED97C: .word SDK_OVERLAY_OVY_100_ID
 	thumb_func_end ov101_021ED924
 
 	thumb_func_start ov101_021ED980

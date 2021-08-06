@@ -11,7 +11,7 @@ ov45_02229EE0: ; 0x02229EE0
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl LoadDwcOverlay
-	bl sub_02091614
+	bl LoadOVY38
 	mov r0, #3
 	bl sub_02039FD8
 	mov r2, #5
@@ -108,7 +108,7 @@ ov45_02229F94: ; 0x02229F94
 	bl sub_0201A9C4
 	ldr r0, _02229FDC ; =SDK_OVERLAY_OVY_42_ID
 	bl UnloadOverlayByID
-	bl sub_02091624
+	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}

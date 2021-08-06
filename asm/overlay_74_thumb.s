@@ -32038,7 +32038,7 @@ ov74_02236AC8: ; 0x02236AC8
 	push {r3, lr}
 	bl sub_0203A914
 	bl sub_020394F4
-	bl sub_02091624
+	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	bl sub_02034DE0
 	pop {r3, pc}
@@ -32099,7 +32099,7 @@ _02236B1A: ; jump table
 _02236B42:
 	bl sub_02034D8C
 	bl LoadDwcOverlay
-	bl sub_02091614
+	bl LoadOVY38
 	mov r0, #3
 	bl sub_02039FD8
 	ldr r0, _02236DEC ; =0x00001001

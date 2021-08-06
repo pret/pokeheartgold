@@ -57,7 +57,7 @@ ov89_02258800: ; 0x02258800
 	str r0, [r5, #4]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0222A2CC
+	bl ov45_0222A2CC
 	ldr r1, _02258AD4 ; =0x000019E0
 	str r0, [r5, r1]
 	add r0, r5, #0

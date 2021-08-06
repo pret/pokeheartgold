@@ -6,7 +6,7 @@
 	thumb_func_start ov124_02260C20
 ov124_02260C20: ; 0x02260C20
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r7, _02260CF8 ; =0x0000007B
+	ldr r7, _02260CF8 ; =SDK_OVERLAY_OVY_123_ID
 	add r6, r0, #0
 	add r5, r1, #0
 	mov r0, #0
@@ -32,7 +32,7 @@ _02260C42:
 	mov r0, #0
 	str r0, [r5, #0x10]
 	ldr r0, _02260D08 ; =ov124_02260D6C
-	bl sub_0225F688
+	bl ov123_0225F688
 	cmp r0, #0
 	bne _02260C64
 	mov r1, #1
@@ -50,7 +50,7 @@ _02260C66:
 	bl sub_0203AF9C
 	str r0, [r5, #0x30]
 	ldr r0, _02260D0C ; =ov124_02260D58
-	bl sub_0225F520
+	bl ov123_0225F520
 	add r6, r0, #0
 	ldr r1, _02260D10 ; =0x000003A1
 	add r0, r5, #0
@@ -102,7 +102,7 @@ _02260CB8:
 _02260CF6:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02260CF8: .word 0x0000007B
+_02260CF8: .word SDK_OVERLAY_OVY_123_ID
 _02260CFC: .word 0x0097B4B1
 _02260D00: .word ov124_02260D68
 _02260D04: .word 0x00000301

@@ -141,7 +141,7 @@ _022379C6:
 	bl ov12_0223A3A8
 	cmp r0, #1
 	bne _022379EC
-	ldr r0, _02237B00 ; =0x00000005
+	ldr r0, _02237B00 ; =SDK_OVERLAY_OVY_5_ID
 	bl UnloadOverlayByID
 	mov r0, #7
 	str r0, [r4]
@@ -202,7 +202,7 @@ _02237A48:
 	bl ov12_0223A5E4
 	cmp r0, #1
 	bne _02237AFA
-	ldr r0, _02237B00 ; =0x00000005
+	ldr r0, _02237B00 ; =SDK_OVERLAY_OVY_5_ID
 	bl UnloadOverlayByID
 	mov r0, #5
 	bl sub_0201A9C4
@@ -287,7 +287,7 @@ _02237AFA:
 	add sp, #0x24
 	pop {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02237B00: .word 0x00000005
+_02237B00: .word SDK_OVERLAY_OVY_5_ID
 _02237B04: .word 0x00000006
 _02237B08: .word 0x00000007
 	thumb_func_end ov12_022378C0
@@ -4796,7 +4796,7 @@ _0223A114:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _0223A11C:
-	ldr r0, _0223A214 ; =0x00000005
+	ldr r0, _0223A214 ; =SDK_OVERLAY_OVY_5_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	ldr r1, [r4, #0x2c]
@@ -4913,13 +4913,13 @@ _0223A1FE:
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0221BA00
+	bl ov05_0221BA00
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _0223A20C: .word 0x00002490
 _0223A210: .word 0x0000240C
-_0223A214: .word 0x00000005
+_0223A214: .word SDK_OVERLAY_OVY_5_ID
 	thumb_func_end ov12_0223A0D4
 
 	thumb_func_start ov12_0223A218
@@ -5111,7 +5111,7 @@ _0223A394:
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0221BA00
+	bl ov05_0221BA00
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -5185,7 +5185,7 @@ _0223A41A:
 	bl sub_0203769C
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
-	ldr r0, _0223A5DC ; =0x00000005
+	ldr r0, _0223A5DC ; =SDK_OVERLAY_OVY_5_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r0, #5
@@ -5392,12 +5392,12 @@ _0223A5C4:
 	add r0, #0x2c
 	strb r1, [r0]
 	add r0, r6, #0
-	bl sub_0221BA00
+	bl ov05_0221BA00
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0223A5DC: .word 0x00000005
+_0223A5DC: .word SDK_OVERLAY_OVY_5_ID
 _0223A5E0: .word 0x000001B2
 	thumb_func_end ov12_0223A3F0
 

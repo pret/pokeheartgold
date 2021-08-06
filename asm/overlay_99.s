@@ -8,7 +8,7 @@ ov99_021E5900: ; 0x021E5900
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r4, r0, #0
-	ldr r0, _021E59F0 ; =0x00000062
+	ldr r0, _021E59F0 ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -104,7 +104,7 @@ _021E591C:
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.align 2, 0
-_021E59F0: .word 0x00000062
+_021E59F0: .word SDK_OVERLAY_OVY_98_ID
 _021E59F4: .word 0x0000013A
 _021E59F8: .word 0x021E96D8
 _021E59FC: .word 0x021E95A4
@@ -126,12 +126,12 @@ ov99_021E5A04: ; 0x021E5A04
 	bl sub_02007294
 	mov r0, #0x84
 	bl sub_0201A9C4
-	ldr r0, _021E5A34 ; =0x00000062
+	ldr r0, _021E5A34 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021E5A34: .word 0x00000062
+_021E5A34: .word SDK_OVERLAY_OVY_98_ID
 	thumb_func_end ov99_021E5A04
 
 	thumb_func_start ov99_021E5A38
@@ -250,7 +250,7 @@ _021E5B12:
 	add r4, #0x18
 	add r1, r4, #0
 	mov r2, #0x1a
-	bl sub_0221E684
+	bl ov98_0221E684
 	bl ov98_0221F0EC
 	add sp, #0xc
 	mov r0, #1
@@ -924,7 +924,7 @@ ov99_021E6018: ; 0x021E6018
 	mov r1, #0xb
 	mov r2, #7
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	add sp, #8
 	pop {r4, pc}
 	.align 2, 0
@@ -1008,7 +1008,7 @@ _021E60EC:
 	ldr r1, [r4, #4]
 	mov r2, #9
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 _021E60F8:
 	add r6, r6, #1
 	add r4, #8
@@ -1039,7 +1039,7 @@ _021E612E:
 	mov r1, #0xc
 	mov r2, #9
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1075,7 +1075,7 @@ _021E6174:
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0xe
-	bl sub_0221EE84
+	bl ov98_0221EE84
 _021E617E:
 	add r4, r4, #1
 	cmp r4, #3
@@ -1113,7 +1113,7 @@ ov99_021E6188: ; 0x021E6188
 	ldr r0, [r5, #0x10]
 	add r2, r1, #0
 	mov r3, #1
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	ldr r0, [r5]
 	bl ov99_021E5B70
 	cmp r0, #0
@@ -1128,7 +1128,7 @@ ov99_021E6188: ; 0x021E6188
 	mov r1, #4
 	mov r2, #5
 	mov r3, #1
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	pop {r3, r4, r5, r6, r7, pc}
 _021E61F2:
 	cmp r0, #1
@@ -1137,7 +1137,7 @@ _021E61F2:
 	mov r1, #4
 	mov r2, #6
 	mov r3, #1
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6204:
 	ldr r0, [r4, #4]
@@ -1167,7 +1167,7 @@ ov99_021E6218: ; 0x021E6218
 	mov r1, #0xd
 	mov r2, #1
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	pop {r3, r4, r5, pc}
 _021E623C:
 	ldr r0, [r4, #4]
@@ -1205,7 +1205,7 @@ ov99_021E6274: ; 0x021E6274
 	sub sp, #0x10
 	add r5, r0, #0
 	ldr r0, [r5, #0x14]
-	bl sub_0221E5C0
+	bl ov98_0221E5C0
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
 	bl ov98_0221E5D0
@@ -1386,7 +1386,7 @@ ov99_021E6400: ; 0x021E6400
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
-	bl sub_0221E5C0
+	bl ov98_0221E5C0
 	add r6, r0, #0
 	ldr r0, [r4, #0x14]
 	bl ov98_0221E5D0
@@ -1825,7 +1825,7 @@ ov99_021E677C: ; 0x021E677C
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r4, r0, #0
-	ldr r0, _021E682C ; =0x00000062
+	ldr r0, _021E682C ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -1895,7 +1895,7 @@ _021E6798:
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.align 2, 0
-_021E682C: .word 0x00000062
+_021E682C: .word SDK_OVERLAY_OVY_98_ID
 _021E6830: .word 0x0000013A
 _021E6834: .word 0x021E9ED0
 _021E6838: .word 0x021E9DEC
@@ -1914,7 +1914,7 @@ ov99_021E6840: ; 0x021E6840
 	ldr r0, [r4, #0x14]
 	add r1, #0x18
 	mov r2, #0x43
-	bl sub_0221E684
+	bl ov98_0221E684
 	ldr r0, [r4, #0x10]
 	mov r1, #0xf
 	bl ov98_0221EB84
@@ -1925,12 +1925,12 @@ ov99_021E6840: ; 0x021E6840
 	bl sub_02007294
 	mov r0, #0x84
 	bl sub_0201A9C4
-	ldr r0, _021E6884 ; =0x00000062
+	ldr r0, _021E6884 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-_021E6884: .word 0x00000062
+_021E6884: .word SDK_OVERLAY_OVY_98_ID
 	thumb_func_end ov99_021E6840
 
 	thumb_func_start ov99_021E6888
@@ -2205,7 +2205,7 @@ ov99_021E6A9C: ; 0x021E6A9C
 	sub sp, #0x10
 	add r5, r0, #0
 	ldr r0, [r5, #0x14]
-	bl sub_0221E5C0
+	bl ov98_0221E5C0
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
 	bl ov98_0221E5D0
@@ -2503,7 +2503,7 @@ _021E6D02:
 	mov r1, #6
 	add r2, #0x21
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 	thumb_func_end ov99_021E6CF4
@@ -2522,7 +2522,7 @@ _021E6D22:
 	mov r1, #9
 	add r2, r4, #0
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 	thumb_func_end ov99_021E6D14
@@ -2586,22 +2586,22 @@ ov99_021E6D34: ; 0x021E6D34
 	mov r1, #1
 	mov r2, #0xc
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	mov r2, #0xd
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	ldr r0, [r5, #0x10]
 	mov r1, #3
 	mov r2, #0xe
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	ldr r0, [r5, #0x10]
 	mov r1, #4
 	mov r2, #0xf
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5, #0x10]
@@ -2624,17 +2624,17 @@ ov99_021E6D34: ; 0x021E6D34
 	mov r1, #8
 	mov r2, #0x10
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	ldr r0, [r5, #0x10]
 	mov r1, #0xd
 	mov r2, #0x1f
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	ldr r0, [r5, #0x10]
 	mov r1, #0xe
 	mov r2, #1
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	mov r0, #4
 	str r0, [sp]
 	mov r0, #0
@@ -3910,14 +3910,14 @@ ov99_021E7758: ; 0x021E7758
 	mov r1, #5
 	mov r2, #0x7c
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	pop {r3, r4, r5, pc}
 _021E7786:
 	mov r0, #1
 	lsl r0, r0, #0xa
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl sub_0221EE84
+	bl ov98_0221EE84
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov99_021E7758
 
@@ -3989,7 +3989,7 @@ _021E7814: .word 0x00000444
 ov99_021E7818: ; 0x021E7818
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	ldr r0, _021E78E0 ; =0x00000062
+	ldr r0, _021E78E0 ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -4065,7 +4065,7 @@ _021E783C:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-_021E78E0: .word 0x00000062
+_021E78E0: .word SDK_OVERLAY_OVY_98_ID
 _021E78E4: .word 0x0000013A
 _021E78E8: .word 0x021E9FDC
 _021E78EC: .word ov99_021E7A54
@@ -4088,7 +4088,7 @@ ov99_021E78F0: ; 0x021E78F0
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	add r1, r4, r1
-	bl sub_0221E684
+	bl ov98_0221E684
 	mov r0, #1
 	lsl r0, r0, #0xa
 	ldr r0, [r4, r0]
@@ -4101,13 +4101,13 @@ ov99_021E78F0: ; 0x021E78F0
 	bl sub_02007294
 	mov r0, #0x84
 	bl sub_0201A9C4
-	ldr r0, _021E7948 ; =0x00000062
+	ldr r0, _021E7948 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _021E7944: .word 0x00000404
-_021E7948: .word 0x00000062
+_021E7948: .word SDK_OVERLAY_OVY_98_ID
 	thumb_func_end ov99_021E78F0
 
 	thumb_func_start ov99_021E794C
@@ -4910,7 +4910,7 @@ ov99_021E7F64: ; 0x021E7F64
 	add r5, r0, #0
 	ldr r0, _021E7F88 ; =0x00000404
 	ldr r0, [r5, r0]
-	bl sub_0221E5C0
+	bl ov98_0221E5C0
 	add r4, r0, #0
 	ldr r0, _021E7F88 ; =0x00000404
 	ldr r0, [r5, r0]
@@ -4933,7 +4933,7 @@ ov99_021E7F90: ; 0x021E7F90
 	add r5, r0, #0
 	ldr r0, _021E80C8 ; =0x00000404
 	ldr r0, [r5, r0]
-	bl sub_0221E5C0
+	bl ov98_0221E5C0
 	add r4, r0, #0
 	ldr r0, _021E80C8 ; =0x00000404
 	ldr r0, [r5, r0]
@@ -5291,7 +5291,7 @@ _021E8270:
 	add r1, r4, #6
 	mov r2, #4
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	add r4, r4, #1
 	cmp r4, #5
 	blt _021E8270
@@ -5359,7 +5359,7 @@ _021E82FA:
 ov99_021E8304: ; 0x021E8304
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	ldr r0, _021E839C ; =0x00000062
+	ldr r0, _021E839C ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -5416,7 +5416,7 @@ _021E831E:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021E839C: .word 0x00000062
+_021E839C: .word SDK_OVERLAY_OVY_98_ID
 _021E83A0: .word 0x0000013A
 _021E83A4: .word 0x021EA45C
 _021E83A8: .word ov99_021E856C
@@ -5434,7 +5434,7 @@ ov99_021E83AC: ; 0x021E83AC
 	ldr r0, [r4, #0x14]
 	add r1, #0x18
 	mov r2, #0x25
-	bl sub_0221E684
+	bl ov98_0221E684
 	ldr r0, [r4, #0x10]
 	mov r1, #0x13
 	bl ov98_0221EB84
@@ -5445,12 +5445,12 @@ ov99_021E83AC: ; 0x021E83AC
 	bl sub_02007294
 	mov r0, #0x84
 	bl sub_0201A9C4
-	ldr r0, _021E83F0 ; =0x00000062
+	ldr r0, _021E83F0 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-_021E83F0: .word 0x00000062
+_021E83F0: .word SDK_OVERLAY_OVY_98_ID
 	thumb_func_end ov99_021E83AC
 
 	thumb_func_start ov99_021E83F4
@@ -6026,7 +6026,7 @@ ov99_021E8828: ; 0x021E8828
 _021E8842:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #7
-	bl sub_0221EE84
+	bl ov98_0221EE84
 	ldr r0, [r5, #0x10]
 	add r1, r4, #7
 	bl ov98_0221EEDC
@@ -6052,16 +6052,16 @@ _021E8842:
 	bl sub_0200DCE8
 	ldr r0, [r5, #0x10]
 	mov r1, #3
-	bl sub_0221EE84
+	bl ov98_0221EE84
 	ldr r0, [r5, #0x10]
 	mov r1, #6
-	bl sub_0221EE84
+	bl ov98_0221EE84
 	ldr r0, [r5, #0x10]
 	mov r1, #0x11
-	bl sub_0221EE84
+	bl ov98_0221EE84
 	ldr r0, [r5, #0x10]
 	mov r1, #0x12
-	bl sub_0221EE84
+	bl ov98_0221EE84
 	add r0, r5, #0
 	bl ov99_021E9020
 	mov r3, #1
@@ -6345,7 +6345,7 @@ _021E8ACA:
 	mov r1, #6
 	mov r2, #0x4b
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	add r0, r5, #0
 	bl ov99_021E9020
 	mov r4, #0
@@ -6389,10 +6389,10 @@ _021E8B2A:
 	beq _021E8B4C
 	ldr r0, [r5, #0x10]
 	mov r1, #0x11
-	bl sub_0221EE84
+	bl ov98_0221EE84
 	ldr r0, [r5, #0x10]
 	mov r1, #0x12
-	bl sub_0221EE84
+	bl ov98_0221EE84
 	b _021E8B76
 _021E8B4C:
 	lsl r1, r1, #0x18
@@ -6412,7 +6412,7 @@ _021E8B4C:
 	mov r1, #0x12
 	mov r2, #0x6a
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 _021E8B76:
 	mov r0, #0xac
 	ldrsb r0, [r5, r0]
@@ -6420,7 +6420,7 @@ _021E8B76:
 	bge _021E8B86
 	ldr r0, [r5, #0x10]
 	mov r1, #6
-	bl sub_0221EE84
+	bl ov98_0221EE84
 _021E8B86:
 	ldr r0, [r5]
 	bl ov99_021E945C
@@ -6438,7 +6438,7 @@ _021E8B86:
 	mov r1, #6
 	mov r2, #0x6d
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _021E8BB0:
@@ -6476,7 +6476,7 @@ _021E8BEE:
 	mov r1, #6
 	add r2, #0x4c
 	mov r3, #0
-	bl sub_0221EBD8
+	bl ov98_0221EBD8
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -6556,7 +6556,7 @@ ov99_021E8C88: ; 0x021E8C88
 	sub sp, #0x10
 	add r5, r0, #0
 	ldr r0, [r5, #0x14]
-	bl sub_0221E5C0
+	bl ov98_0221E5C0
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
 	bl ov98_0221E5D0
@@ -7028,7 +7028,7 @@ _021E9026:
 	add r1, r4, #0
 	ldr r0, [r5, #0x10]
 	add r1, #0xc
-	bl sub_0221EE84
+	bl ov98_0221EE84
 	add r4, r4, #1
 	cmp r4, #5
 	blt _021E9026

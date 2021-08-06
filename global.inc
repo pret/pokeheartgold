@@ -648,8 +648,8 @@
 .public sub_02087E10
 .public LoadDwcOverlay
 .public UnloadDwcOverlay
-.public sub_02091614
-.public sub_02091624
+.public LoadOVY38
+.public UnloadOVY38
 .public sub_020916B4
 .public sub_0209263C
 .public sub_02096338
