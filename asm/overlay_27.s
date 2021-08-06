@@ -298,7 +298,7 @@ _0225A216:
 	cmp r5, #4
 	blt _0225A216
 	ldr r0, _0225A2C0 ; =ov27_0225C248
-	bl sub_0225F598
+	bl ov123_0225F598
 	cmp r0, #0
 	bne _0225A238
 	mov r1, #0xfa

@@ -140,7 +140,7 @@ ov30_0225D64C: ; 0x0225D64C
 	add r1, r7, #0
 	bl FS_LoadOverlay
 	ldr r0, _0225D6F0 ; =ov30_0225DC28
-	bl sub_0225F4A8
+	bl ov123_0225F4A8
 	cmp r0, #0
 	bne _0225D678
 	mov r1, #0xfa
@@ -155,7 +155,7 @@ _0225D678:
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r0, _0225D6F4 ; =ov30_0225DC08
-	bl sub_0225F520
+	bl ov123_0225F520
 	cmp r0, #0
 	beq _0225D69E
 	mov r1, #0xfa
@@ -181,7 +181,7 @@ _0225D69E:
 	mov r0, #8
 	bl sub_0201A9C4
 	ldr r0, _0225D6F8 ; =ov30_0225DC18
-	bl sub_0225F610
+	bl ov123_0225F610
 	cmp r0, #0
 	beq _0225D6E2
 	mov r1, #0xfa

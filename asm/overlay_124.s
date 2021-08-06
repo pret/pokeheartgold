@@ -14,7 +14,7 @@ ov124_02260C20: ; 0x02260C20
 	ldr r4, _02260CFC ; =0x0097B4B1
 	bl FS_LoadOverlay
 	ldr r0, _02260D00 ; =ov124_02260D68
-	bl sub_0225F4A8
+	bl ov123_0225F4A8
 	cmp r0, #0
 	bne _02260C40
 	mov r1, #1

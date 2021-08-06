@@ -354,7 +354,7 @@ ov18_021E5B80: ; 0x021E5B80
 	add r1, r6, #0
 	bl FS_LoadOverlay
 	ldr r0, _021E5C0C ; =ov18_021E5C1C
-	bl sub_0225F520
+	bl ov123_0225F520
 	cmp r0, #0
 	beq _021E5BA8
 	mov r1, #0xfa
