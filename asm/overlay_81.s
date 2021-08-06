@@ -9,7 +9,7 @@ ov81_0223DD60: ; 0x0223DD60
 	sub sp, #8
 	add r5, r0, #0
 	add r6, r1, #0
-	ldr r0, _0223DE90 ; =0x00000050
+	ldr r0, _0223DE90 ; =SDK_OVERLAY_OVY_80_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl ov81_02240D2C
@@ -143,7 +143,7 @@ _0223DE84:
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
-_0223DE90: .word 0x00000050
+_0223DE90: .word SDK_OVERLAY_OVY_80_ID
 _0223DE94: .word 0x0000048C
 _0223DE98: .word ov81_02242BC8
 _0223DE9C: .word 0x00000464
@@ -675,7 +675,7 @@ _0223E2CE:
 	bl sub_0201A0FC
 	mov r0, #0x64
 	bl sub_0201A9C4
-	ldr r0, _0223E314 ; =0x00000050
+	ldr r0, _0223E314 ; =SDK_OVERLAY_OVY_80_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -683,7 +683,7 @@ _0223E2CE:
 _0223E308: .word 0x00000478
 _0223E30C: .word 0x0000046C
 _0223E310: .word 0x00000464
-_0223E314: .word 0x00000050
+_0223E314: .word SDK_OVERLAY_OVY_80_ID
 	thumb_func_end ov81_0223E234
 
 	thumb_func_start ov81_0223E318

@@ -783,7 +783,7 @@ _02201968:
 ov16_0220196C: ; 0x0220196C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _022019B4 ; =0x00000011
+	ldr r0, _022019B4 ; =SDK_OVERLAY_OVY_17_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl ov17_02201BC0
@@ -810,7 +810,7 @@ ov16_0220196C: ; 0x0220196C
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_022019B4: .word 0x00000011
+_022019B4: .word SDK_OVERLAY_OVY_17_ID
 	thumb_func_end ov16_0220196C
 
 	thumb_func_start ov16_022019B8
@@ -870,12 +870,12 @@ ov16_02201A04: ; 0x02201A04
 	bl sub_02007294
 	mov r0, #0x82
 	bl sub_0201A9C4
-	ldr r0, _02201A30 ; =0x00000011
+	ldr r0, _02201A30 ; =SDK_OVERLAY_OVY_17_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02201A30: .word 0x00000011
+_02201A30: .word SDK_OVERLAY_OVY_17_ID
 	thumb_func_end ov16_02201A04
 
 	thumb_func_start ov16_02201A34

@@ -134,7 +134,7 @@ ov30_0225D64C: ; 0x0225D64C
 	add r5, r0, #0
 	add r0, r6, #0
 	bl sub_0201F988
-	ldr r7, _0225D6EC ; =0x0000007B
+	ldr r7, _0225D6EC ; =SDK_OVERLAY_OVY_123_ID
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r7, #0
@@ -194,7 +194,7 @@ _0225D6E2:
 	bl FS_UnloadOverlay
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0225D6EC: .word 0x0000007B
+_0225D6EC: .word SDK_OVERLAY_OVY_123_ID
 _0225D6F0: .word ov30_0225DC28
 _0225D6F4: .word ov30_0225DC08
 _0225D6F8: .word ov30_0225DC18

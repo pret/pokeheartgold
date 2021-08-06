@@ -6658,7 +6658,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	ldr r0, [r4, #0x18]
 	ldr r1, [r1]
 	bl sub_0207789C
-	ldr r0, _021E8B14 ; =0x0000000F
+	ldr r0, _021E8B14 ; =SDK_OVERLAY_OVY_15_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	ldr r0, _021E8B18 ; =0x022008B8
@@ -6671,7 +6671,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	pop {r3, r4, pc}
 	.align 2, 0
 _021E8B10: .word 0x021F7D14
-_021E8B14: .word 0x0000000F
+_021E8B14: .word SDK_OVERLAY_OVY_15_ID
 _021E8B18: .word 0x022008B8
 	thumb_func_end ov14_021E8ACC
 
@@ -6679,7 +6679,7 @@ _021E8B18: .word 0x022008B8
 ov14_021E8B1C: ; 0x021E8B1C
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021E8B38 ; =0x0000000F
+	ldr r0, _021E8B38 ; =SDK_OVERLAY_OVY_15_ID
 	bl UnloadOverlayByID
 	ldr r0, [r4, #0x18]
 	bl sub_02077904
@@ -6689,7 +6689,7 @@ ov14_021E8B1C: ; 0x021E8B1C
 	mov r0, #0
 	pop {r4, pc}
 	.align 2, 0
-_021E8B38: .word 0x0000000F
+_021E8B38: .word SDK_OVERLAY_OVY_15_ID
 	thumb_func_end ov14_021E8B1C
 
 	thumb_func_start ov14_021E8B3C

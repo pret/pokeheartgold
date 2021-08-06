@@ -6,16 +6,16 @@
 	thumb_func_start ov57_022378C0
 ov57_022378C0: ; 0x022378C0
 	push {r3, lr}
-	ldr r0, _022378D4 ; =0x00000006
+	ldr r0, _022378D4 ; =SDK_OVERLAY_OVY_6_ID
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _022378D8 ; =0x00000007
+	ldr r0, _022378D8 ; =SDK_OVERLAY_OVY_7_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 	.align 2, 0
-_022378D4: .word 0x00000006
-_022378D8: .word 0x00000007
+_022378D4: .word SDK_OVERLAY_OVY_6_ID
+_022378D8: .word SDK_OVERLAY_OVY_7_ID
 	thumb_func_end ov57_022378C0
 
 	thumb_func_start ov57_022378DC
@@ -418,9 +418,9 @@ ov57_02237B20: ; 0x02237B20
 	bl sub_02021238
 	mov r0, #0x34
 	bl sub_0201A9C4
-	ldr r0, _02237CA0 ; =0x00000006
+	ldr r0, _02237CA0 ; =SDK_OVERLAY_OVY_6_ID
 	bl UnloadOverlayByID
-	ldr r0, _02237CA4 ; =0x00000007
+	ldr r0, _02237CA4 ; =SDK_OVERLAY_OVY_7_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -428,8 +428,8 @@ ov57_02237B20: ; 0x02237B20
 _02237C94: .word 0x00000458
 _02237C98: .word 0x0000045C
 _02237C9C: .word 0x0000040C
-_02237CA0: .word 0x00000006
-_02237CA4: .word 0x00000007
+_02237CA0: .word SDK_OVERLAY_OVY_6_ID
+_02237CA4: .word SDK_OVERLAY_OVY_7_ID
 	thumb_func_end ov57_02237B20
 
 	thumb_func_start ov57_02237CA8
