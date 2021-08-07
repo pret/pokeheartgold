@@ -3851,7 +3851,7 @@ _02228D32: ; jump table
 _02228D44:
 	add r0, sp, #8
 	add r1, sp, #4
-	bl ov01_021EC11C
+	bl ov00_021EC11C
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #8]
 	str r0, [r4, #0x18]
@@ -3926,7 +3926,7 @@ _02228DCC:
 	bl ov39_02228AA8
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov01_021EC11C
+	bl ov00_021EC11C
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x18]
@@ -4662,4 +4662,4 @@ _0222AA20:
 	.bss
 
 _0222AB80:
-	.size 0x4
+	.space 0x4

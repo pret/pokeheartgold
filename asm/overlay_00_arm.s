@@ -1116,7 +1116,7 @@ _021E8A84:
 	mov r1, #3
 	cmp r0, #8
 	movhs r0, #1
-	strsbh r0, [sp, #0x38]
+	strhsb r0, [sp, #0x38]
 	ldrb r3, [sp, #0x38]
 	add r0, r4, #0x2c
 	bl sub_020D168C
@@ -22559,7 +22559,7 @@ ov00_021FAE6C: ; 0x021FAE6C
 	ldmhsia sp!, {r4, r5, r6, pc}
 	ldrb r0, [r5, #0x16]
 	cmp r6, r0
-	stribh r6, [r5, #0x16]
+	strhib r6, [r5, #0x16]
 	cmphi r6, #7
 	ldmlsia sp!, {r4, r5, r6, pc}
 	ldrb r0, [r4, #0xd0d]
@@ -28666,8 +28666,8 @@ _021FFCC0:
 _021FFCD0:
 	sub r7, r7, #1
 	cmp r7, r1
-	ldrsshb r0, [r4, #2]
-	strsbh r0, [r7]
+	ldrhssb r0, [r4, #2]
+	strhsb r0, [r7]
 	bhs _021FFD34
 	ldrsb r0, [r7]
 	cmp r0, #0x19
@@ -57211,4 +57211,193 @@ _0221A650:
 	.bss
 
 _0221A694:
-	.space 0x136C
+	.space 0x8
+
+_0221A69C:
+	.space 0x4
+
+_0221A6A0:
+	.space 0x14
+
+_0221A6B4:
+	.space 0x4
+
+_0221A6B8:
+	.space 0x4
+
+_0221A6BC:
+	.space 0x14
+
+_0221A6D0:
+	.space 0x1C
+
+_0221A6EC:
+	.space 0x48
+
+_0221A734:
+	.space 0x4
+
+_0221A738:
+	.space 0x8
+
+_0221A740:
+	.space 0x8
+
+_0221A748:
+	.space 0x4
+
+_0221A74C:
+	.space 0x8
+
+_0221A754:
+	.space 0x8
+
+_0221A75C:
+	.space 0x8
+
+_0221A764:
+	.space 0x4
+
+_0221A768:
+	.space 0x4
+
+_0221A76C:
+	.space 0x18
+
+_0221A784:
+	.space 0x8
+
+_0221A78C:
+	.space 0x80
+
+_0221A80C:
+	.space 0x100
+
+_0221A90C:
+	.space 0xC
+
+_0221A918:
+	.space 0x10
+
+_0221A928:
+	.space 0x20
+
+_0221A948:
+	.space 0x1
+
+_0221A949:
+	.space 0x1
+
+_0221A94A:
+	.space 0x2
+
+_0221A94C:
+	.space 0x4
+
+_0221A950:
+	.space 0x730
+
+_0221B080:
+	.space 0x20
+
+_0221B0A0:
+	.space 0x4
+
+_0221B0A4:
+	.space 0x8
+
+_0221B0AC:
+	.space 0x14
+
+_0221B0C0:
+	.space 0x4
+
+_0221B0C4:
+	.space 0xC
+
+_0221B0D0:
+	.space 0x8
+
+_0221B0D8:
+	.space 0x4
+
+_0221B0DC:
+	.space 0x4
+
+_0221B0E0:
+	.space 0x5
+
+_0221B0E5:
+	.space 0x47
+
+_0221B12C:
+	.space 0x40
+
+_0221B16C:
+	.space 0x40
+
+_0221B1AC:
+	.space 0x8
+
+_0221B1B4:
+	.space 0x10
+
+_0221B1C4:
+	.space 0x14
+
+_0221B1D8:
+	.space 0x18
+
+_0221B1F0:
+	.space 0x8
+
+_0221B1F8:
+	.space 0x8
+
+_0221B200:
+	.space 0x30
+
+_0221B230:
+	.space 0x200
+
+_0221B430:
+	.space 0x100
+
+_0221B530:
+	.space 0x100
+
+_0221B630:
+	.space 0x4
+
+_0221B634:
+	.space 0x4
+
+_0221B638:
+	.space 0x2C
+
+_0221B664:
+	.space 0x14
+
+_0221B678:
+	.space 0x200
+
+_0221B878:
+	.space 0x4
+
+_0221B87C:
+	.space 0x14
+
+_0221B890:
+	.space 0x40
+
+_0221B8D0:
+	.space 0x100
+
+_0221B9D0:
+	.space 0x4
+
+_0221B9D4:
+	.space 0x8
+
+_0221B9DC:
+	.space 0x8

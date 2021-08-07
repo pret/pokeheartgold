@@ -1391,7 +1391,7 @@ _0225928C:
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r4, #0
-	bl ov45_222DDE4
+	bl ov45_0222DDE4
 	add r1, r0, #0
 	cmp r1, #0x14
 	beq _022592B0

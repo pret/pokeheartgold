@@ -137,11 +137,11 @@ ov123_0225F688:
 	.byte 0x01, 0x0C, 0x26, 0x02, 0x94, 0x1F, 0x26, 0x02, 0xB2, 0x89, 0x26, 0x02, 0x98, 0x06, 0x26, 0x02
 
 	arm_func_start ov123_0225F700
-ov123_0225F700: @ 0x0225F700
+ov123_0225F700: ; 0x0225F700
 	stmdb sp!, {lr}
-	add r0, pc, #0x4 @ =_0225F710
+	add r0, pc, #0x4 ; =_0225F710
 	bl ov123_0225FD98
-	ldm sp!, {pc}
+	ldmia sp!, {pc}
 _0225F710:
 	.word 0x02260730, 0x02261F68
 	.word 0x022607A8, 0x02261F68
@@ -264,11 +264,11 @@ ov123_0225FC8C:
 	.byte 0x10, 0x0D, 0x26, 0x02
 
 	arm_func_start ov123_0225FD04
-ov123_0225FD04: @ 0x0225FD04
+ov123_0225FD04: ; 0x0225FD04
 	stmdb sp!, {lr}
-	add r0, pc, #0x4 @ =_0225FD14
+	add r0, pc, #0x4 ; =_0225FD14
 	bl ov123_0225FD98
-	ldm sp!, {pc}
+	ldmia sp!, {pc}
 _0225FD14:
 	.word 0x02260E24, 0x02261F68
 	.word 0x02260E9C, 0x02261F68
@@ -278,20 +278,20 @@ _0225FD14:
 	arm_func_end ov123_0225FD04
 
 	arm_func_start ov123_0225FD3C
-ov123_0225FD3C: @ 0x0225FD3C
-	push {r3, r4, r5, lr}
+ov123_0225FD3C: ; 0x0225FD3C
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	bl DC_FlushRange
 	mov r0, r5
 	mov r1, r4
 	bl IC_InvalidateRange
-	pop {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov123_0225FD3C
 
 	arm_func_start ov123_0225FD5C
-ov123_0225FD5C: @ 0x0225FD5C
-	lsr r0, r0, #0x18
+ov123_0225FD5C: ; 0x0225FD5C
+	mov r0, r0, lsr #0x18
 	and r1, r0, #0xff
 	and r0, r1, #0xe
 	cmp r0, #0xa
@@ -310,25 +310,25 @@ _0225FD90:
 	arm_func_end ov123_0225FD5C
 
 	arm_func_start ov123_0225FD98
-ov123_0225FD98: @ 0x0225FD98
-	push {r3, r4, r5, r6, r7, r8, sb, lr}
+ov123_0225FD98: ; 0x0225FD98
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	movs r8, r0
 	ldrne r1, [r8]
 	cmpne r1, #0
-	popeq {r3, r4, r5, r6, r7, r8, sb, pc}
-	ldr r6, _0225FEA0 @ =SDK_OVERLAY_OV_123_BSS_START
+	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldr r6, _0225FEA0 ; =SDK_OVERLAY_OV_123_BSS_START
 _0225FDB0:
 	ldr r0, [r8, #4]
 	cmp r1, #0
 	sub r0, r0, r6
 	sub r4, r0, #0x1300
-	popeq {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	sub r7, r1, #0x1300
 	bic r0, r4, #3
 	add r5, r7, r0
 	cmp r7, r5
 	bhs _0225FE80
-	ldr sb, _0225FEA4 @ =0xFFFFFB3E
+	ldr sb, _0225FEA4 ; =0xFFFFFB3E
 _0225FDDC:
 	ldr r0, [r7]
 	bl ov123_0225FD5C
@@ -383,10 +383,10 @@ _0225FE80:
 	ldr r1, [r8, #8]!
 	cmp r1, #0
 	bne _0225FDB0
-	pop {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0225FEA0: .4byte SDK_OVERLAY_OVY_123_BSS_START
-_0225FEA4: .4byte 0xFFFFFB3E
+_0225FEA0: .word _02260C00
+_0225FEA4: .word 0xFFFFFB3E
 	arm_func_end ov123_0225FD98
 
 	.public ov123_0225FEA8
@@ -414,11 +414,11 @@ ov123_0225FF30:
 	.byte 0x52, 0x65, 0xD1, 0x10, 0x46, 0xB5, 0xDB, 0x12, 0xAE, 0xE5, 0xEB, 0x18, 0x00, 0x0C, 0x26, 0x02
 
 	arm_func_start ov123_0225FFC0
-ov123_0225FFC0: @ 0x0225FFC0
+ov123_0225FFC0: ; 0x0225FFC0
 	stmdb sp!, {lr}
-	add r0, pc, #0x4 @ =_0225FFD0
+	add r0, pc, #0x4 ; =_0225FFD0
 	bl ov123_0225FD98
-	ldm sp!, {pc}
+	ldmia sp!, {pc}
 _0225FFD0:
 	.word 0x02261230, 0x02261F8C
 	.word 0x022611A8, 0x02261F84
@@ -572,11 +572,11 @@ ov123_02260704:
 	.byte 0xC4, 0x1F, 0x26, 0x02, 0x82, 0x28, 0x26, 0x02, 0xC8, 0x18, 0x26, 0x02
 
 	arm_func_start ov123_0226077C
-ov123_0226077C: @ 0x0226077C
+ov123_0226077C: ; 0x0226077C
 	stmdb sp!, {lr}
-	add r0, pc, #0x4 @ =_0226078C
+	add r0, pc, #0x4 ; =_0226078C
 	bl ov123_0225FD98
-	ldm sp!, {pc}
+	ldmia sp!, {pc}
 _0226078C:
 	.word 0x0226198C, 0x02261F68
 	.word 0x02261A04, 0x02261F68
@@ -673,11 +673,11 @@ ov123_02260B14:
 	.byte 0x56, 0x65, 0x36, 0x12, 0x14, 0xBA, 0xDB, 0x12, 0x26, 0xE5, 0xEB, 0x18
 
 	arm_func_start ov123_02260B6C
-ov123_02260B6C: @ 0x02260B6C
+ov123_02260B6C: ; 0x02260B6C
 	stmdb sp!, {lr}
-	add r0, pc, #0x4 @ =_02260B7C
+	add r0, pc, #0x4 ; =_02260B7C
 	bl ov123_0225FD98
-	ldm sp!, {pc}
+	ldmia sp!, {pc}
 _02260B7C:
 	.word 0x02261AC4, 0x02261F74
 	.word 0x02261B38, 0x02261F4C
@@ -694,7 +694,7 @@ _02260BBC:
 	.byte 0xC7, 0x4E, 0x06, 0xE4, 0x96, 0x35, 0x01, 0xEF, 0x83, 0x2F, 0x21, 0xE5, 0x5B, 0x33, 0xEE, 0xE7
 	.byte 0x7C, 0x19, 0x3B, 0xE8, 0xFF, 0xF6, 0x40, 0xFF, 0xFF, 0xCE, 0x00, 0x00
 
-	.sinit
+	.section .sinit,4
 
 	.word ov123_0225F700
 	.word ov123_0225FD04

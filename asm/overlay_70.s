@@ -26298,7 +26298,7 @@ _022448E6: ; jump table
 _022448F8:
 	add r0, sp, #8
 	add r1, sp, #4
-	bl ov01_021EC11C
+	bl ov00_021EC11C
 	str r0, [r4, #0x40]
 	ldr r0, [sp, #8]
 	str r0, [r4, #0x44]
@@ -26373,7 +26373,7 @@ _02244980:
 	bl ov70_02238F80
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov01_021EC11C
+	bl ov00_021EC11C
 	str r0, [r4, #0x40]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x44]

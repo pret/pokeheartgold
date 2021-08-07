@@ -1,5 +1,5 @@
 	.include "asm/macros.inc"
-	.include "global.h"
+	.include "global.inc"
 
 	.text
 

@@ -71296,7 +71296,7 @@ sub_020D3210: ; 0x020D3210
 	cmp ip, #0
 	movne lr, pc
 	bxne ip
-	ldr ip, _020D3280 ; =_secure
+	ldr ip, _020D3280 ; =0x02000000
 	stmdb ip!, {r0, r1, r2, r3, sp, lr}
 	and r0, sp, #1
 	mov sp, ip
@@ -71319,17 +71319,14 @@ _020D3264:
 _020D3268:
 	nop
 	b _020D3268
-	arm_func_end sub_020D3210
-
-	arm_func_start sub_020D3270
-sub_020D3270: ; 0x020D3270
+_020D3270: ; 0x020D3270
 	ldmia sp!, {r0, r1, r2, r3, ip, lr}
 	mov sp, ip
 	bx lr
 	.align 2, 0
 _020D327C: .word 0x021E1924
-_020D3280: .word _secure
-	arm_func_end sub_020D3270
+_020D3280: .word 0x02000000
+	arm_func_end sub_020D3210
 
 	arm_func_start sub_020D3284
 sub_020D3284: ; 0x020D3284
@@ -71993,9 +71990,9 @@ sub_020D3A9C: ; 0x020D3A9C
 	mrs r0, cpsr
 	and r0, r0, #0x1f
 	bx lr
-_020D3AA8:
+sub_020D3AA8:
 	subs r0, r0, #4
-	bhs _020D3AA8
+	bhs sub_020D3AA8
 	bx lr
 	arm_func_end sub_020D3A9C
 
@@ -74291,7 +74288,7 @@ _020D5634:
 	mov r0, r4
 	bl sub_020D3A4C
 	mov r0, r6
-	bl _020D3AA8
+	bl sub_020D3AA8
 	bl sub_020D3A38
 	mov r4, r0
 	bl sub_020D6040
@@ -74700,7 +74697,7 @@ sub_020D5B30: ; 0x020D5B30
 	mov r4, #1
 _020D5B6C:
 	mov r0, r6
-	bl _020D3AA8
+	bl sub_020D3AA8
 	mov r0, r5
 	mov r1, r4
 	bl sub_020D66A0
@@ -81340,7 +81337,7 @@ sub_020DB284: ; 0x020DB284
 	mov r7, r0
 	ldr r0, _020DB32C ; =0x00996A00
 	mov r6, r1
-	bl _020D3AA8
+	bl sub_020D3AA8
 	bl sub_020DB794
 	cmp r0, #1
 	beq _020DB314
@@ -81369,7 +81366,7 @@ _020DB2E4:
 	mov r4, #1
 _020DB2FC:
 	mov r0, r5
-	bl _020D3AA8
+	bl sub_020D3AA8
 	mov r0, r4
 	bl sub_020DB774
 	cmp r0, #0
@@ -81613,7 +81610,7 @@ _020DB608:
 	str r6, [r0]
 _020DB618:
 	ldr r0, _020DB678 ; =0x00708100
-	bl _020D3AA8
+	bl sub_020D3AA8
 	bl sub_020D3A38
 	ldr r0, [sp, #4]
 	bl sub_020D11A8
@@ -84398,7 +84395,7 @@ sub_020DD950: ; 0x020DD950
 	mov r4, #1
 _020DD998:
 	mov r0, r6
-	bl _020D3AA8
+	bl sub_020D3AA8
 	mov r0, r5
 	mov r1, r4
 	bl sub_020D66A0
@@ -84551,7 +84548,7 @@ sub_020DDB34: ; 0x020DDB34
 	ldr r4, _020DDBBC ; =0x000A3A47
 _020DDB80:
 	mov r0, r4
-	bl _020D3AA8
+	bl sub_020D3AA8
 	bl PM_ForceToPowerOff
 	cmp r0, #4
 	beq _020DDB80
@@ -89860,6 +89857,10 @@ sub_020E21DC: ; 0x020E21DC
 	bl sub_020E203C
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
+	arm_func_end sub_020E21DC
+
+	arm_func_start sub_020E2200
+sub_020E2200:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	str r1, [sp, #0xc]
@@ -89873,7 +89874,7 @@ sub_020E21DC: ; 0x020E21DC
 	ldmia sp!, {pc}
 	.align 2, 0
 _020E222C: .word sub_020E2118
-	arm_func_end sub_020E21DC
+	arm_func_end sub_020E2200
 
 	arm_func_start sub_020E2230
 sub_020E2230: ; 0x020E2230
@@ -111601,7 +111602,10 @@ sub_020F4744: ; 0x020F4744
 	add r0, r0, r2
 	str r0, [r3, #0x10]
 	ldmia sp!, {r3, pc}
-_020F47A0:
+	arm_func_end sub_020F4744
+
+	arm_func_start sub_020F47A0
+sub_020F47A0:
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x28
 	mov r5, r0
@@ -111663,7 +111667,7 @@ _020F4804:
 	bl sub_020F4EB4
 	add sp, sp, #0x28
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020F4744
+	arm_func_end sub_020F47A0
 
 	arm_func_start sub_020F488C
 sub_020F488C: ; 0x020F488C
@@ -112295,7 +112299,7 @@ sub_020F4EE4: ; 0x020F4EE4
 	str r1, [sp, #4]
 	str r2, [sp, #8]
 	mov r0, sp
-	b _020F47A0
+	b sub_020F47A0
 	arm_func_end sub_020F4EE4
 
 	arm_func_start sub_020F4F2C
@@ -112318,7 +112322,7 @@ sub_020F4F2C: ; 0x020F4F2C
 	str ip, [sp, #4]
 	str ip, [sp, #8]
 	mov r0, sp
-	b _020F47A0
+	b sub_020F47A0
 	arm_func_end sub_020F4F2C
 
 	arm_func_start sub_020F4F78

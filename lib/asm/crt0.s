@@ -221,9 +221,11 @@ _02000AA4:
 	.align 2, 0
 _02000AA8: .word _start_ModuleParams
 	arm_func_end do_autoload
+
+	arm_func_start _start_AutoloadDoneCallback
 _start_AutoloadDoneCallback:
 	bx lr
-	arm_func_end do_autoload
+	arm_func_end _start_AutoloadDoneCallback
 
 	arm_func_start init_cp15
 init_cp15: ; 0x02000AB0
@@ -299,6 +301,7 @@ OSi_ReferSymbol: ; 0x02000B9C
 	arm_func_end OSi_ReferSymbol
 
 	.rodata
+	.public _start_ModuleParams
 _start_ModuleParams: ; 0x02000BA0
 	.word 0x02111EE0 ; SDK_AUTOLOAD_LIST
 	.word 0x02111EF8 ; SDK_AUTOLOAD_LIST_END

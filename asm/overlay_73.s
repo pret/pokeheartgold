@@ -6683,7 +6683,7 @@ _021E8DF4:
 	bl ov73_021EA180
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov01_021EC11C
+	bl ov00_021EC11C
 	mov r1, #0xf1
 	lsl r1, r1, #4
 	str r0, [r4, r1]

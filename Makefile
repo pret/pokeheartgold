@@ -3,7 +3,7 @@ PROC           := arm946e
 PROC_S         := arm5te
 PROC_LD        := v5te
 LCF_TEMPLATE   := ARM9-TS.lcf.template
-LIBS           := -L+lib -l+syscall -nostdlib
+LIBS           := -Llib -lsyscall -nostdlib
 ALL_BUILDDIRS  := $(BUILD_DIR)/lib
 
 include config.mk

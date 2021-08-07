@@ -101,10 +101,16 @@ DUMMY != mkdir -p $(ALL_BUILDDIRS)
 
 all: tools
 
-$(BUILD_DIR)/%.o: %.c
+ifeq ($(NODEP),)
+$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I $(PROJECT_ROOT)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
+else
+$(BUILD_DIR)/%.o: dep :=
+endif
+
+$(BUILD_DIR)/%.o: %.c $$(dep)
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $@ $<
 
-$(BUILD_DIR)/%.o: %.s
+$(BUILD_DIR)/%.o: %.s $$(dep)
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $@ $<
 
 $(NATIVE_TOOLS): tools

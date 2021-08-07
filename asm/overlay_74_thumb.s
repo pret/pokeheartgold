@@ -20557,7 +20557,7 @@ ov74_022312C0: ; 0x022312C0
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_020002D0
+	bl SVC_GetCRC16
 	ldr r1, [r5, #8]
 	lsl r0, r0, #0x10
 	lsl r1, r1, #0x10
@@ -20650,7 +20650,7 @@ ov74_02231424: ; 0x02231424
 	lsr r1, r1, #0x18
 	add r1, r4, r1
 	lsr r2, r2, #8
-	bl sub_020002D0
+	bl SVC_GetCRC16
 	ldr r1, [r4, #8]
 	lsr r1, r1, #0x10
 	cmp r1, r0

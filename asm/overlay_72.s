@@ -3224,7 +3224,7 @@ _022392E8:
 	bl ov72_0223A444
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov01_021EC11C
+	bl ov00_021EC11C
 	mov r1, #0xf5
 	lsl r1, r1, #4
 	str r0, [r4, r1]

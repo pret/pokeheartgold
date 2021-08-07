@@ -1068,7 +1068,7 @@ _0222A074:
 	bne _0222A0A0
 	add r0, sp, #0
 	add r1, sp, #4
-	bl ov01_021EC11C
+	bl ov00_021EC11C
 	ldr r0, _0222A104 ; =0x0222AB84
 	mov r1, #0xe
 	str r1, [r0, #0x250]
@@ -1802,4 +1802,4 @@ _0222AA58:
 	.bss
 
 _0222AB84:
-	.size 0xB5C
+	.space 0xB5C
