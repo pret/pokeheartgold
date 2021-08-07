@@ -4537,4 +4537,4 @@ _0221A684:
 	.space 0x4
 
 _0221A688:
-	.space 0x4
+	.space 0xC

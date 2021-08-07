@@ -18,6 +18,8 @@ def main():
         for j, b in enumerate(ovy_table[:i]):
             if a.start == b.end:
                 print('Overlay', a.id, 'After', b.id)
+    with open('overlay_table.sbin', 'wb') as ofp:
+        ofp.write(buffer[ovy_addr:ovy_addr + ovy_size])
 
 
 if __name__ == '__main__':

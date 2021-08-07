@@ -2643,7 +2643,7 @@ _021E6E74: .word 0x000001ED
 _021E6E78: .word 0x00000129
 	thumb_func_end ov64_021E6E30
 
-	.data
+	.rodata
 
 _021E6E7C:
 	.byte 0x58, 0x77, 0x00, 0x17
