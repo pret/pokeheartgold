@@ -15,21 +15,25 @@ Static main
 	Object unk_02007200.o
 	Object error_handling.o
 	Object unk_02025534.o
+	### Vendor libraries ###
 	Object sdk.o
+	Object nnsys.o
+	Object nitro.o
+	Object msl.o
 	Object bss_temp.o
 }
 
 Autoload ITCM
 {
 	Address 0x01FF8000
-	Object sdk.o (.itcm)
+	Object nitro.o (.itcm)
 }
 
 Autoload DTCM
 {
 	Address 0x027E0000
-	Object sdk.o (.dtcm)
-	Object sdk.o (.dtcm.bss)
+	Object nitro_dtcm.o (.dtcm)
+	Object nitro_dtcm.o (.bss)
 }
 Overlay OVY_0
 {

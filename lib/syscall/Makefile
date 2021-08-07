@@ -27,6 +27,6 @@ install: all
 	install -t $(INSTALL_LIBDIR) $(LIB)
 
 tidy:
-	$(RM) -f $(BUILD_DIR)
+	$(RM) -r $(BUILD_DIR)
 
 clean: tidy
