@@ -73,7 +73,7 @@ def dump_files(dirs, files, allocs, rom, print_only=True):
                 start, end = allocs[member]
                 filename = name + '/' + files[member]
                 if print_only:
-                    print(member, filename, hex(start), hex(end - start), sep='\t')
+                    print(member, filename, '0x{:08X}'.format(start), '0x{:08X}'.format(end - start), sep='\t')
                 else:
                     with open(filename, 'wb') as ofp:
                         rom.seek(start)

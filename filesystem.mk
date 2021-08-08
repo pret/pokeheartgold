@@ -1,4 +1,90 @@
 NITROFS_FILES := \
+	files/data/UTF16.dat \
+	files/data/area00light.txt \
+	files/data/area01light.txt \
+	files/data/area02light.txt \
+	files/data/arealight.narc \
+	files/data/battle_win.NSCR \
+	files/data/cell0.NCGR \
+	files/data/cell0.NCLR \
+	files/data/clact_default.NANR \
+	files/data/crystal.nsbmd \
+	files/data/demo_climax.narc \
+	files/data/dp_areawindow.NCGR \
+	files/data/dp_areawindow.NCLR \
+	files/data/dun20_01light.txt \
+	files/data/dun20_02light.txt \
+	files/data/dun_sea.nsbtx \
+	files/data/eoo.dat \
+	files/data/exdata.dat \
+	files/data/farm.dat \
+	files/data/field_cutin.narc \
+	files/data/fldtanime.narc \
+	files/data/fs_kanban.nsbca \
+	files/data/ground0.NCGR \
+	files/data/ground0.NCLR \
+	files/data/ground0.NSCR \
+	files/data/gsbr.dat \
+	files/data/guru2.narc \
+	files/data/kemu_itpconv.dat \
+	files/data/kowaza.narc \
+	files/data/lake_anim.nsbtx \
+	files/data/miniasahamabe.nsbtx \
+	files/data/miniasasea.nsbtx \
+	files/data/minihamabe.nsbtx \
+	files/data/minimum.nsbtx \
+	files/data/minirhana.nsbtx \
+	files/data/nfont.NCGR \
+	files/data/nfont.NCLR \
+	files/data/pc.nsbca \
+	files/data/pl_wifi.ncgr \
+	files/data/pl_wm.ncgr \
+	files/data/pl_wm.nclr \
+	files/data/slot.narc \
+	files/data/smptm_koori.NANR \
+	files/data/smptm_koori.NCER \
+	files/data/smptm_koori.NCGR \
+	files/data/smptm_koori.NCLR \
+	files/data/smptm_nemuri.NANR \
+	files/data/smptm_nemuri.NCER \
+	files/data/smptm_nemuri.NCGR \
+	files/data/smptm_nemuri.NCLR \
+	files/data/str2uni.bin \
+	files/data/t3_fl_b.nsbtx \
+	files/data/t3_fl_p.nsbtx \
+	files/data/t3_fl_r.nsbtx \
+	files/data/t3_fl_y.nsbtx \
+	files/data/test.atr \
+	files/data/tmap_block.dat \
+	files/data/tmap_flags.dat \
+	files/data/tradelist.narc \
+	files/data/trapmark.narc \
+	files/data/ug_anim.narc \
+	files/data/ug_base_cur.nsbmd \
+	files/data/ug_boygirl.NCGR \
+	files/data/ug_boygirl.NCLR \
+	files/data/ug_fossil.narc \
+	files/data/ug_hero.NANR \
+	files/data/ug_hero.NCER \
+	files/data/ug_hole.NANR \
+	files/data/ug_hole.NCER \
+	files/data/ug_hole.NCGR \
+	files/data/ug_parts.narc \
+	files/data/ug_radar.narc \
+	files/data/ug_trap.narc \
+	files/data/ugeffect_obj_graphic.narc \
+	files/data/underg_radar.narc \
+	files/data/utility.bin \
+	files/data/weather_sys.narc \
+	files/data/wifi.ncgr \
+	files/data/wifinote.narc \
+	files/data/wifip2pmatch.narc \
+	files/data/wm.ncgr \
+	files/data/wm.nclr \
+	files/data/wm256k.ncgr \
+	files/data/sound/gs_sound_data.sdat \
+	files/msgdata/scenario/scr_msg.narc \
+	files/fielddata/build_model/bm_field.narc \
 	files/fielddata/build_model/bm_room.narc \
 	files/fielddata/build_model/bm_field_matshp.dat \
 	files/fielddata/build_model/bm_room_matshp.dat \
@@ -74,25 +160,6 @@ NITROFS_FILES := \
 	files/a/0/6/3 \
 	files/a/0/6/4 \
 	files/a/0/6/5 \
-	files/data/UTF16.dat \
-	files/data/area00light.txt \
-	files/data/area01light.txt \
-	files/data/area02light.txt \
-	files/data/arealight.narc \
-	files/data/battle_win.NSCR \
-	files/data/cell0.NCGR \
-	files/data/cell0.NCLR \
-	files/data/clact_default.NANR \
-	files/data/crystal.nsbmd \
-	files/data/demo_climax.narc \
-	files/data/dp_areawindow.NCGR \
-	files/data/dp_areawindow.NCLR \
-	files/data/dun20_01light.txt \
-	files/data/dun20_02light.txt \
-	files/data/dun_sea.nsbtx \
-	files/data/eoo.dat \
-	files/data/exdata.dat \
-	files/data/farm.dat \
 	files/a/0/6/6 \
 	files/a/0/6/7 \
 	files/a/0/6/8 \
@@ -109,13 +176,6 @@ NITROFS_FILES := \
 	files/a/0/7/9 \
 	files/a/0/8/0 \
 	files/a/0/8/1 \
-	files/data/field_cutin.narc \
-	files/data/fldtanime.narc \
-	files/data/fs_kanban.nsbca \
-	files/data/ground0.NCGR \
-	files/data/ground0.NCLR \
-	files/data/ground0.NSCR \
-	files/data/gsbr.dat \
 	files/a/0/8/2 \
 	files/a/0/8/3 \
 	files/a/0/8/4 \
@@ -158,7 +218,6 @@ NITROFS_FILES := \
 	files/a/1/2/1 \
 	files/a/1/2/2 \
 	files/a/1/2/3 \
-	files/data/guru2.narc \
 	files/a/1/2/4 \
 	files/a/1/2/5 \
 	files/a/1/2/6 \
@@ -186,25 +245,10 @@ NITROFS_FILES := \
 	files/a/1/4/8 \
 	files/a/1/4/9 \
 	files/a/1/5/0 \
-	files/data/kemu_itpconv.dat \
-	files/data/kowaza.narc \
-	files/data/lake_anim.nsbtx \
-	files/data/miniasahamabe.nsbtx \
-	files/data/miniasasea.nsbtx \
-	files/data/minihamabe.nsbtx \
-	files/data/minimum.nsbtx \
-	files/data/minirhana.nsbtx \
-	files/data/nfont.NCGR \
 	files/a/1/5/1 \
 	files/a/1/5/2 \
 	files/a/1/5/3 \
 	files/a/1/5/4 \
-	files/data/nfont.NCLR \
-	files/data/pc.nsbca \
-	files/data/pl_wifi.ncgr \
-	files/data/pl_wm.ncgr \
-	files/data/pl_wm.nclr \
-	files/data/slot.narc \
 	files/a/1/5/5 \
 	files/a/1/5/6 \
 	files/a/1/5/7 \
@@ -227,42 +271,13 @@ NITROFS_FILES := \
 	files/a/1/7/4 \
 	files/a/1/7/5 \
 	files/a/1/7/6 \
-	files/data/smptm_koori.NANR \
-	files/data/smptm_koori.NCER \
-	files/data/smptm_koori.NCGR \
 	files/a/1/7/7 \
 	files/a/1/7/8 \
-	files/data/smptm_koori.NCLR \
-	files/data/smptm_nemuri.NANR \
-	files/data/smptm_nemuri.NCER \
-	files/data/smptm_nemuri.NCGR \
-	files/data/smptm_nemuri.NCLR \
-	files/data/str2uni.bin \
 	files/a/1/7/9 \
-	files/data/t3_fl_b.nsbtx \
-	files/data/t3_fl_p.nsbtx \
-	files/data/t3_fl_r.nsbtx \
-	files/data/t3_fl_y.nsbtx \
-	files/data/test.atr \
-	files/data/tmap_block.dat \
-	files/data/tmap_flags.dat \
-	files/data/tradelist.narc \
-	files/data/trapmark.narc \
-	files/data/ug_anim.narc \
-	files/data/ug_base_cur.nsbmd \
-	files/data/ug_boygirl.NCGR \
 	files/a/1/8/0 \
 	files/a/1/8/1 \
 	files/a/1/8/2 \
-	files/data/ug_boygirl.NCLR \
-	files/data/ug_fossil.narc \
 	files/a/1/8/3 \
-	files/data/ug_hero.NANR \
-	files/data/ug_hero.NCER \
-	files/data/ug_hole.NANR \
-	files/data/ug_hole.NCER \
-	files/data/ug_hole.NCGR \
-	files/data/ug_parts.narc \
 	files/a/1/8/4 \
 	files/a/1/8/5 \
 	files/a/1/8/6 \
@@ -272,13 +287,8 @@ NITROFS_FILES := \
 	files/a/1/9/0 \
 	files/a/1/9/1 \
 	files/a/1/9/2 \
-	files/data/ug_radar.narc \
 	files/a/1/9/3 \
-	files/data/ug_trap.narc \
 	files/pbr/pokegra.narc \
-	files/data/ugeffect_obj_graphic.narc \
-	files/data/underg_radar.narc \
-	files/data/utility.bin \
 	files/pbr/otherpoke.narc \
 	files/a/1/9/4 \
 	files/a/1/9/5 \
@@ -325,7 +335,6 @@ NITROFS_FILES := \
 	files/a/2/3/6 \
 	files/a/2/3/7 \
 	files/a/2/3/8 \
-	files/data/weather_sys.narc \
 	files/a/2/3/9 \
 	files/a/2/4/0 \
 	files/a/2/4/1 \
@@ -333,9 +342,6 @@ NITROFS_FILES := \
 	files/a/2/4/3 \
 	files/a/2/4/4 \
 	files/a/2/4/5 \
-	files/data/wifi.ncgr \
-	files/data/wifinote.narc \
-	files/data/wifip2pmatch.narc \
 	files/a/2/4/6 \
 	files/a/2/4/7 \
 	files/a/2/4/8 \
@@ -347,10 +353,6 @@ NITROFS_FILES := \
 	files/a/2/5/4 \
 	files/a/2/5/5 \
 	files/a/2/5/6 \
-	files/data/wm.ncgr \
-	files/data/wm.nclr \
-	files/data/wm256k.ncgr \
-	files/data/sound/gs_sound_data.sdat \
 	files/a/2/5/7 \
 	files/a/2/5/8 \
 	files/a/2/5/9 \
@@ -380,6 +382,4 @@ NITROFS_FILES := \
 	files/pbr/winframe.narc \
 	files/pbr/poketch.narc \
 	files/pbr/zukan.narc \
-	files/dwc/utility.bin \
-	files/msgdata/scenario/scr_msg.narc \
-	files/fielddata/build_model/bm_field.narc
+	files/dwc/utility.bin

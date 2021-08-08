@@ -295,7 +295,11 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
 void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **argv)
 {
     char *outputFileExtension = GetFileExtension(outputPath);
-    int bitDepth = outputFileExtension[0] - '0';
+    int bitDepth;
+    if (strcmp(outputFileExtension, "nbfc") == 0)
+        bitDepth = 4;
+    else
+        bitDepth = outputFileExtension[0] - '0';
     struct PngToGbaOptions options;
     options.numTiles = 0;
     options.bitDepth = bitDepth;
