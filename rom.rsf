@@ -15,7 +15,7 @@ Arm7
 
 Property
 {
-	RomHeaderTemplate tools/bin/rom_header.template.sbin
+	RomHeaderTemplate "$(HEADER_TEMPLATE)"
 	TitleName "$(TITLE_NAME)"
 	MakerCode "01"
 	RemasterVersion 0

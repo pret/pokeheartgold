@@ -1,5 +1,10 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
+	.public SDK_AUTOLOAD_LIST
+    .public SDK_AUTOLOAD_LIST_END
+    .public SDK_AUTOLOAD_START
+    .public SDK_STATIC_BSS_START
+    .public SDK_STATIC_BSS_END
 	.text
 
 	arm_func_start _start
@@ -303,11 +308,11 @@ OSi_ReferSymbol: ; 0x02000B9C
 	.rodata
 	.public _start_ModuleParams
 _start_ModuleParams: ; 0x02000BA0
-	.word 0x02111EE0 ; SDK_AUTOLOAD_LIST
-	.word 0x02111EF8 ; SDK_AUTOLOAD_LIST_END
-	.word 0x02111860 ; SDK_AUTOLOAD_START
-	.word 0x02111860 ; SDK_STATIC_BSS_START
-	.word 0x021E5900 ; SDK_STATIC_BSS_END
+	.word SDK_AUTOLOAD_LIST
+	.word SDK_AUTOLOAD_LIST_END
+	.word SDK_AUTOLOAD_START
+	.word SDK_STATIC_BSS_START
+	.word SDK_STATIC_BSS_END
 	.word 0 ; SDK_COMPRESSED_STATIC_END
 	.word 0x04027533 ; SDK_VERSION_ID
 	.word 0xDEC00621 ; SDK_NITROCODE_BE

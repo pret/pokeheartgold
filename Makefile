@@ -11,15 +11,17 @@ include common.mk
 include graphics_files_rules.mk
 include filesystem.mk
 
-ROM            := $(BUILD_DIR)/poke$(buildname).nds
-BANNER         := $(ROM:%.nds=%.bnr)
-BANNER_SPEC    := $(buildname)/banner.bsf
-ICON_PNG       := $(buildname)/icon.png
+ROM             := $(BUILD_DIR)/poke$(buildname).nds
+BANNER          := $(ROM:%.nds=%.bnr)
+BANNER_SPEC     := $(buildname)/banner.bsf
+ICON_PNG        := $(buildname)/icon.png
+HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
 
 MWCFLAGS  += -ipa file $(DEFINES)
 MWASFLAGS += $(DEFINES)
 
 .PHONY: main sub libsyscall
+.PRECIOUS: $(ROM)
 
 MAKEFLAGS += --no-print-directory
 
@@ -52,8 +54,10 @@ $(SBIN_LZ): $(BUILD_DIR)/component.files
 
 $(BUILD_DIR)/component.files: main ;
 
+$(HEADER_TEMPLATE): ;
+
 $(ROM): $(ROMSPEC) $(NITROFS_FILES) $(SBIN_LZ) sub $(BANNER)
-	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(NITROFS_FILES:files/%=%)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" $< $@
+	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(NITROFS_FILES:files/%=%)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) -c $(buildname)/rom.sha1
