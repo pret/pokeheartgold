@@ -1,6 +1,9 @@
 name: build
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
 
 env:
   LM_LICENSE_FILE: "$GITHUB_WORKSPACE/tools/mwccarm/license.dat"
@@ -9,6 +12,7 @@ env:
   CALCROM_DISCORD_WEBHOOK_AVATAR_URL: "https://i.imgur.com/38BQHdd.png"
   CALCROM_DISCORD_WEBHOOK_USERNAME: OK
   CALCROM_WEBHOOK_URL: ${{ secrets.WEBHOOKURL }}
+  COMPARE: 1
 
 jobs:
   build:
@@ -47,6 +51,7 @@ jobs:
         run: make
 
       - name: Webhook
+        if: ${{ github.event_name == 'push' }}
         run: |
           sudo chmod 755 $GITHUB_WORKSPACE/.github/calcrom/webhook.sh
           $GITHUB_WORKSPACE/.github/calcrom/webhook.sh pokediamond "$CALCROM_WEBHOOK_URL"
