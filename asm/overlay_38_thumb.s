@@ -30,7 +30,7 @@ ov38_0221BA10: ; 0x0221BA10
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0221BA2C: .word 0x02226020
 _0221BA30: .word 0x00001111
 _0221BA34: .word 0x7FFFFFFF
@@ -165,7 +165,7 @@ _0221BB04:
 	mov r0, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _0221BB40: .word 0x4A3B2C1D
 	thumb_func_end ov38_0221BA38
 
@@ -188,7 +188,7 @@ _0221BB58:
 	add r0, r0, r4
 	lsl r0, r0, #2
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov38_0221BB44
 
 	thumb_func_start ov38_0221BB68
@@ -705,7 +705,7 @@ _0221BEF0:
 	str r1, [r0]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _0221BF38: .word 0x02225040
 _0221BF3C: .word 0x0222512C
 _0221BF40: .word 0x0222508C
@@ -816,7 +816,7 @@ _0221C004:
 	mov r1, #1
 	str r1, [r0]
 	pop {r3, pc}
-	.align 2, 0
+	.balign 4, 0
 _0221C010: .word 0x02225040
 	thumb_func_end ov38_0221BFEC
 

@@ -14,7 +14,7 @@ ov124_02260C20: ; 0x02260C20
 	ldr r4, _02260CFC ; =0x0097B4B1
 	bl FS_LoadOverlay
 	ldr r0, _02260D00 ; =ov124_02260D68
-	bl ov123_0225F4A8
+	blx ov123_0225F4A8
 	cmp r0, #0
 	bne _02260C40
 	mov r1, #1
@@ -32,7 +32,7 @@ _02260C42:
 	mov r0, #0
 	str r0, [r5, #0x10]
 	ldr r0, _02260D08 ; =ov124_02260D6C
-	bl ov123_0225F688
+	blx ov123_0225F688
 	cmp r0, #0
 	bne _02260C64
 	mov r1, #1
@@ -50,7 +50,7 @@ _02260C66:
 	bl sub_0203AF9C
 	str r0, [r5, #0x30]
 	ldr r0, _02260D0C ; =ov124_02260D58
-	bl ov123_0225F520
+	blx ov123_0225F520
 	add r6, r0, #0
 	ldr r1, _02260D10 ; =0x000003A1
 	add r0, r5, #0
@@ -101,7 +101,7 @@ _02260CB8:
 	bl ov124_02260D1C
 _02260CF6:
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _02260CF8: .word SDK_OVERLAY_OVY_123_ID
 _02260CFC: .word 0x0097B4B1
 _02260D00: .word ov124_02260D68
@@ -161,12 +161,12 @@ _02260D64: .word sub_0201AACC
 	thumb_func_start ov124_02260D68
 ov124_02260D68: ; 0x02260D68
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov124_02260D68
 
 	thumb_func_start ov124_02260D6C
 ov124_02260D6C: ; 0x02260D6C
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov124_02260D6C
 

@@ -350,7 +350,7 @@ _021E5BBA:
 	add r0, r4, #0
 	bl sub_0201AB0C
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov55_021E5BAC
 
 	thumb_func_start ov55_021E5BC4
@@ -377,7 +377,7 @@ _021E5BD0:
 	add r0, r6, #0
 	bl sub_0202B3F4
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov55_021E5BC4
 
 	.rodata

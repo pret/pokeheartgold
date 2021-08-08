@@ -301,7 +301,7 @@ _02259B38:
 	strh r0, [r6]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov20_02259A88
 
 	thumb_func_start ov20_02259B40
@@ -334,7 +334,7 @@ ov20_02259B40: ; 0x02259B40
 	bl sub_02066B60
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov20_02259B40
 
 	thumb_func_start ov20_02259B88

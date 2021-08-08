@@ -330,7 +330,7 @@ _0225F2A4:
 	ldr r0, [sp, #0x18]
 	str r1, [r0]
 	b _0225F330
-	.align 2, 0
+	.balign 4, 0
 _0225F2B8: .word 0x000927C0
 _0225F2BC: .word 0x0225FB0C
 _0225F2C0: .word 0x0225FAF4
@@ -491,7 +491,7 @@ _0225F3E4:
 _0225F41A:
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov117_0225F020
 
 	thumb_func_start ov117_0225F420
@@ -1300,7 +1300,7 @@ _0225FAAC:
 _0225FAB8:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225FABC: .word 0xFFFA0000
 _0225FAC0: .word 0x04001000
 _0225FAC4: .word 0xFFFEFFFF

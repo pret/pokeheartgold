@@ -171,7 +171,7 @@ _021E5A8E:
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5A94: .word 0xFFFFE0FF
 _021E5A98: .word 0x04001000
 _021E5A9C: .word 0x00004A8C
@@ -295,7 +295,7 @@ _021E5B92:
 	bl sub_0202457C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5B9C: .word 0x00004A24
 _021E5BA0: .word 0x021EA7C0
 _021E5BA4: .word 0x00004A14
@@ -431,7 +431,7 @@ _021E5CC4:
 	bl ov73_021E72F4
 _021E5CCE:
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5CD0: .word 0x021EA52A
 _021E5CD4: .word 0x021EA52B
 	thumb_func_end ov73_021E5C74
@@ -451,7 +451,7 @@ ov73_021E5CD8: ; 0x021E5CD8
 	orr r0, r2
 	str r0, [r3, r1]
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5CF8: .word 0x027E0000
 _021E5CFC: .word 0x00003FF8
 	thumb_func_end ov73_021E5CD8
@@ -472,7 +472,7 @@ _021E5D0A:
 	bl sub_02022BE8
 	add sp, #0x28
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5D1C: .word 0x021EA5E8
 	thumb_func_end ov73_021E5D00
 
@@ -672,7 +672,7 @@ _021E5E1C:
 	strb r0, [r1, r2]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5EC8: .word 0x00004A3C
 _021E5ECC: .word 0x00004A44
 _021E5ED0: .word 0x00004A18
@@ -723,7 +723,7 @@ ov73_021E5F0C: ; 0x021E5F0C
 	add r0, r4, #0
 	bl sub_0201AB0C
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E5F0C
 
 	thumb_func_start ov73_021E5F38
@@ -887,7 +887,7 @@ ov73_021E6060: ; 0x021E6060
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E608C: .word 0x021EA550
 	thumb_func_end ov73_021E6060
 
@@ -1306,7 +1306,7 @@ ov73_021E63BC: ; 0x021E63BC
 	bl sub_020200FC
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E63BC
 
 	thumb_func_start ov73_021E6400
@@ -1338,7 +1338,7 @@ ov73_021E6400: ; 0x021E6400
 	add r0, r4, r0
 	bl sub_0201D520
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E6400
 
 	thumb_func_start ov73_021E6444
@@ -1667,7 +1667,7 @@ _021E66EC: .word 0x00004A38
 	thumb_func_start ov73_021E66F0
 ov73_021E66F0: ; 0x021E66F0
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E66F0
 
 	thumb_func_start ov73_021E66F4
@@ -1681,7 +1681,7 @@ ov73_021E66F4: ; 0x021E66F4
 	bl ov73_021E66F0
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E66F4
 
 	thumb_func_start ov73_021E670C
@@ -1693,7 +1693,7 @@ ov73_021E670C: ; 0x021E670C
 	add r2, r2, #4
 	str r1, [r0, r2]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E670C
 
 	thumb_func_start ov73_021E671C
@@ -1764,7 +1764,7 @@ _021E6794:
 	bl ov73_021E66F0
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E6778
 
 	thumb_func_start ov73_021E67A8
@@ -1875,7 +1875,7 @@ _021E686C:
 	bl sub_0201EFBC
 _021E6886:
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E6888: .word 0x00004A15
 _021E688C: .word 0x00004A38
 	thumb_func_end ov73_021E6830
@@ -2023,7 +2023,7 @@ _021E69B0:
 	add r0, r6, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E69BC: .word 0x00004A10
 _021E69C0: .word 0x021D110C
 _021E69C4: .word 0x000005F2
@@ -2107,7 +2107,7 @@ _021E6A5E:
 	bl ov73_021E66F0
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E6A68: .word 0x00004A30
 _021E6A6C: .word 0x00004A32
 	thumb_func_end ov73_021E69E8
@@ -2280,7 +2280,7 @@ ov73_021E6B98: ; 0x021E6B98
 	mov r0, #1
 	str r0, [r4, #0xc]
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E6B98
 
 	thumb_func_start ov73_021E6BC8
@@ -2352,7 +2352,7 @@ ov73_021E6C20: ; 0x021E6C20
 	str r1, [r5, r0]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E6C4C: .word 0x021D116C
 	thumb_func_end ov73_021E6C20
 
@@ -2607,7 +2607,7 @@ _021E6E2C:
 	bl ov73_021E66F0
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E6DF8
 
 	thumb_func_start ov73_021E6E48
@@ -2629,7 +2629,7 @@ _021E6E62:
 	bl ov73_021E66F0
 	add r0, r4, #0
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E6E48
 
 	thumb_func_start ov73_021E6E6C
@@ -2647,7 +2647,7 @@ ov73_021E6E6C: ; 0x021E6E6C
 	bl ov73_021E66F0
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E6E6C
 
 	thumb_func_start ov73_021E6E8C
@@ -2680,7 +2680,7 @@ _021E6EBE:
 	add r0, r5, #0
 	add sp, #0xc
 	pop {r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E6E8C
 
 	thumb_func_start ov73_021E6ECC
@@ -2725,7 +2725,7 @@ _021E6F10:
 	bl ov73_021E66F0
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E6EF8
 
 	thumb_func_start ov73_021E6F1C
@@ -3238,7 +3238,7 @@ _021E730A:
 	mov r2, #2
 	bl sub_020CFD18
 	pop {r3, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E72F4
 
 	thumb_func_start ov73_021E7340
@@ -3386,14 +3386,14 @@ _021E7448:
 	mov r0, #1
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E7464: .word 0x00020300
 	thumb_func_end ov73_021E735C
 
 	thumb_func_start ov73_021E7468
 ov73_021E7468: ; 0x021E7468
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7468
 
 	thumb_func_start ov73_021E746C
@@ -3419,7 +3419,7 @@ _021E747E:
 ov73_021E7488: ; 0x021E7488
 	ldr r3, _021E748C ; =ov73_021E746C
 	bx r3
-	.align 2, 0
+	.balign 4, 0
 _021E748C: .word ov73_021E746C
 	thumb_func_end ov73_021E7488
 
@@ -3535,7 +3535,7 @@ _021E7550:
 	blt _021E74F6
 	ldr r0, [sp]
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E7560: .word 0x00004A3C
 _021E7564: .word 0x00004A44
 _021E7568: .word 0x00004A40
@@ -3606,7 +3606,7 @@ _021E75DC:
 	str r0, [r5, #0x4c]
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E756C
 
 	thumb_func_start ov73_021E75FC
@@ -3627,7 +3627,7 @@ _021E7606:
 _021E7616:
 	mov r0, #0
 	pop {r3, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E75FC
 
 	thumb_func_start ov73_021E761C
@@ -3638,7 +3638,7 @@ ov73_021E761C: ; 0x021E761C
 	ldr r3, _021E7628 ; =sub_0200E9BC
 	mov r1, #0
 	bx r3
-	.align 2, 0
+	.balign 4, 0
 _021E7628: .word sub_0200E9BC
 	thumb_func_end ov73_021E761C
 
@@ -3778,7 +3778,7 @@ _021E771A:
 _021E7738:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E773C: .word 0x0000064E
 	thumb_func_end ov73_021E762C
 
@@ -3829,7 +3829,7 @@ ov73_021E7740: ; 0x021E7740
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7740
 
 	thumb_func_start ov73_021E77A4
@@ -3887,7 +3887,7 @@ ov73_021E77E8: ; 0x021E77E8
 	ldr r0, [r4, r0]
 	bl sub_0201AB0C
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E77E8
 
 	thumb_func_start ov73_021E7818
@@ -4057,7 +4057,7 @@ _021E7942:
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E7950: .word 0x00004A1C
 _021E7954: .word 0x00004A20
 _021E7958: .word 0x00004A18
@@ -4113,7 +4113,7 @@ _021E7990:
 	str r0, [r7]
 	pop {r4, r5, r6, r7}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7964
 
 	thumb_func_start ov73_021E79A8
@@ -4158,7 +4158,7 @@ _021E79E2:
 	strh r0, [r4]
 	strh r0, [r1, #0x10]
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E79F0: .word 0x0000FFFF
 	thumb_func_end ov73_021E79A8
 
@@ -4227,7 +4227,7 @@ _021E7A5C:
 _021E7A6E:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E79F4
 
 	thumb_func_start ov73_021E7A74
@@ -4235,7 +4235,7 @@ ov73_021E7A74: ; 0x021E7A74
 	mov r0, #0x12
 	lsl r0, r0, #4
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7A74
 
 	thumb_func_start ov73_021E7A7C
@@ -4243,7 +4243,7 @@ ov73_021E7A7C: ; 0x021E7A7C
 	mov r0, #0x12
 	lsl r0, r0, #4
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7A7C
 
 	thumb_func_start ov73_021E7A84
@@ -4251,7 +4251,7 @@ ov73_021E7A84: ; 0x021E7A84
 	mov r0, #0x12
 	lsl r0, r0, #4
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7A84
 
 	thumb_func_start ov73_021E7A8C
@@ -4346,7 +4346,7 @@ _021E7B16:
 _021E7B36:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7AC0
 
 	thumb_func_start ov73_021E7B3C
@@ -4382,7 +4382,7 @@ _021E7B64:
 	add r0, r7, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7B3C
 
 	thumb_func_start ov73_021E7B84
@@ -4416,7 +4416,7 @@ _021E7BAC:
 	add r0, r7, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7B84
 
 	thumb_func_start ov73_021E7BC8
@@ -4627,7 +4627,7 @@ _021E7D46:
 _021E7D4E:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7CD8
 
 	thumb_func_start ov73_021E7D54
@@ -4741,7 +4741,7 @@ _021E7E18:
 	bl sub_0202893C
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E7D74
 
 	thumb_func_start ov73_021E7E24
@@ -4763,7 +4763,7 @@ ov73_021E7E24: ; 0x021E7E24
 	bl ov73_021E7D74
 	add sp, #0xc
 	pop {r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E7E48: .word 0x0000090C
 	thumb_func_end ov73_021E7E24
 
@@ -5014,7 +5014,7 @@ _021E8060:
 _021E806C:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E8070: .word 0x021EA940
 _021E8074: .word ov73_021E83F4
 _021E8078: .word ov73_021E841C
@@ -5063,7 +5063,7 @@ ov73_021E808C: ; 0x021E808C
 	bl sub_0201A9C4
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E80F4: .word 0x00000BDC
 _021E80F8: .word 0x00000BD8
 _021E80FC: .word 0x00000BD4
@@ -5084,7 +5084,7 @@ ov73_021E8100: ; 0x021E8100
 	orr r0, r2
 	str r0, [r3, r1]
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E8120: .word 0x027E0000
 _021E8124: .word 0x00003FF8
 	thumb_func_end ov73_021E8100
@@ -5105,7 +5105,7 @@ _021E8132:
 	bl sub_02022BE8
 	add sp, #0x28
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E8144: .word 0x021EA6AC
 	thumb_func_end ov73_021E8128
 
@@ -5122,13 +5122,13 @@ ov73_021E8148: ; 0x021E8148
 	str r1, [r4, #0x10]
 	bl ov73_021E844C
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E8148
 
 	thumb_func_start ov73_021E8164
 ov73_021E8164: ; 0x021E8164
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E8164
 
 	thumb_func_start ov73_021E8168
@@ -5151,7 +5151,7 @@ ov73_021E8168: ; 0x021E8168
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E8194: .word 0x021EA69C
 	thumb_func_end ov73_021E8168
 
@@ -5269,7 +5269,7 @@ _021E81E8:
 	bl sub_0200770C
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E8290: .word 0x00000BFC
 _021E8294: .word 0x00000BF8
 _021E8298: .word 0x00000D24
@@ -5300,7 +5300,7 @@ ov73_021E82A8: ; 0x021E82A8
 	str r1, [r0, #0x2c]
 	pop {r3, r4}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _021E82D0: .word 0x00000BF8
 	thumb_func_end ov73_021E82A8
 
@@ -5439,7 +5439,7 @@ ov73_021E83D4: ; 0x021E83D4
 _021E83E6:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E83D4
 
 	thumb_func_start ov73_021E83EC
@@ -5447,7 +5447,7 @@ ov73_021E83EC: ; 0x021E83EC
 	str r1, [r0, #0x1c]
 	str r2, [r0, #0x20]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E83EC
 
 	thumb_func_start ov73_021E83F4
@@ -5467,7 +5467,7 @@ ov73_021E83F4: ; 0x021E83F4
 	bl sub_020D3A4C
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E8418: .word 0x021EA940
 	thumb_func_end ov73_021E83F4
 
@@ -5504,7 +5504,7 @@ ov73_021E844C: ; 0x021E844C
 	str r1, [r0, #0x14]
 	str r2, [r0, #0x18]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E844C
 
 	thumb_func_start ov73_021E8454
@@ -5555,7 +5555,7 @@ _021E8496:
 	bl sub_0202168C
 	bl sub_02022608
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E84C0: .word 0x00000D34
 _021E84C4: .word 0x00000D38
 _021E84C8: .word 0x00000D24
@@ -5683,7 +5683,7 @@ ov73_021E85AC: ; 0x021E85AC
 	strh r2, [r5, r1]
 _021E85D6:
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E85D8: .word 0x021EA848
 	thumb_func_end ov73_021E85AC
 
@@ -6098,7 +6098,7 @@ _021E8902:
 	bl sub_0200770C
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E894C: .word 0x00000F98
 _021E8950: .word 0x00001020
 _021E8954: .word 0x00000F9C
@@ -6191,7 +6191,7 @@ _021E89E2:
 	strb r1, [r4, r0]
 _021E89FE:
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E8A00: .word 0x0000032B
 _021E8A04: .word 0x0000032A
 	thumb_func_end ov73_021E8960
@@ -6313,7 +6313,7 @@ ov73_021E8A08: ; 0x021E8A08
 	bl sub_0201D978
 	add sp, #0x14
 	pop {r3, r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E8B04: .word 0x00000E18
 _021E8B08: .word 0x00000DF8
 _021E8B0C: .word 0x00000DE8
@@ -6553,7 +6553,7 @@ _021E8CFC:
 _021E8D04:
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E8D08: .word 0x000012C8
 	thumb_func_end ov73_021E8CBC
 
@@ -6744,7 +6744,7 @@ _021E8E6E:
 	mov r0, #3
 	add sp, #8
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E8E74: .word 0xFFFFB1E0
 _021E8E78: .word 0xFFFF8AD1
 	thumb_func_end ov73_021E8DC8
@@ -7093,7 +7093,7 @@ _021E90FA:
 _021E9110:
 	mov r0, #3
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9114: .word 0x00000F94
 _021E9118: .word 0x00000F88
 _021E911C: .word 0x00000F1C
@@ -7115,7 +7115,7 @@ ov73_021E9120: ; 0x021E9120
 	bl ov73_021EA15C
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9140: .word 0x00000F94
 	thumb_func_end ov73_021E9120
 
@@ -7212,7 +7212,7 @@ _021E91D6:
 _021E91EC:
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E91F0: .word 0x00000F94
 	thumb_func_end ov73_021E9144
 
@@ -7270,7 +7270,7 @@ ov73_021E9224: ; 0x021E9224
 	str r0, [r4, #0x1c]
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9264: .word 0x00000DF8
 _021E9268: .word 0x00000BE8
 	thumb_func_end ov73_021E9224
@@ -7456,7 +7456,7 @@ ov73_021E9378: ; 0x021E9378
 	mov r0, #3
 	add sp, #8
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E93E0: .word 0x00000F0F
 _021E93E4: .word 0x00000BD4
 _021E93E8: .word 0x00000A38
@@ -7696,7 +7696,7 @@ ov73_021E9598: ; 0x021E9598
 	mov r0, #3
 	add sp, #4
 	pop {r3, r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E95C4: .word 0x00000F0F
 _021E95C8: .word 0x00000BD4
 	thumb_func_end ov73_021E9598
@@ -7733,7 +7733,7 @@ ov73_021E95CC: ; 0x021E95CC
 	str r1, [r5, r0]
 	mov r0, #3
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9610: .word 0x00000AD8
 _021E9614: .word 0x00000F94
 	thumb_func_end ov73_021E95CC
@@ -8201,7 +8201,7 @@ _021E99A8:
 _021E99C0:
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E99C4: .word 0x021D110C
 _021E99C8: .word 0x00000DF8
 _021E99CC: .word 0x00000BE8
@@ -8254,7 +8254,7 @@ ov73_021E99D4: ; 0x021E99D4
 	mov r0, #3
 	add sp, #8
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9A34: .word 0x00000F0F
 _021E9A38: .word 0x00000BD4
 	thumb_func_end ov73_021E99D4
@@ -8451,7 +8451,7 @@ ov73_021E9B9C: ; 0x021E9B9C
 	str r0, [r4, #0x1c]
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E9B9C
 
 	thumb_func_start ov73_021E9BB4
@@ -8470,7 +8470,7 @@ ov73_021E9BB4: ; 0x021E9BB4
 _021E9BCE:
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E9BB4
 
 	thumb_func_start ov73_021E9BD4
@@ -8520,7 +8520,7 @@ _021E9C1E:
 _021E9C28:
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9C2C: .word 0x000012C8
 	thumb_func_end ov73_021E9C04
 
@@ -8571,7 +8571,7 @@ _021E9C7A:
 _021E9C84:
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9C88: .word 0x000012C8
 	thumb_func_end ov73_021E9C60
 
@@ -8612,7 +8612,7 @@ ov73_021E9CBC: ; 0x021E9CBC
 	str r0, [r4, #0x1c]
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021E9CBC
 
 	thumb_func_start ov73_021E9CD8
@@ -8756,7 +8756,7 @@ _021E9DAE:
 	bl ov73_021E83EC
 	mov r0, #3
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9DD4: .word 0x00000F1C
 _021E9DD8: .word 0x00000F0F
 _021E9DDC: .word 0x00000BD4
@@ -8881,7 +8881,7 @@ ov73_021E9EAC: ; 0x021E9EAC
 _021E9EC4:
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9EC8: .word 0x00000BF4
 	thumb_func_end ov73_021E9EAC
 
@@ -8912,7 +8912,7 @@ _021E9EEE:
 _021E9EF8:
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9EFC: .word 0x00000BF4
 	thumb_func_end ov73_021E9ECC
 
@@ -8939,7 +8939,7 @@ ov73_021E9F00: ; 0x021E9F00
 _021E9F28:
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9F2C: .word 0x00000BF4
 _021E9F30: .word 0x000012C8
 	thumb_func_end ov73_021E9F00
@@ -8988,7 +8988,7 @@ ov73_021E9F34: ; 0x021E9F34
 	bl sub_02026380
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9F94: .word 0x00000DD8
 _021E9F98: .word 0x00000BF4
 	thumb_func_end ov73_021E9F34
@@ -9013,7 +9013,7 @@ ov73_021E9F9C: ; 0x021E9F9C
 	str r0, [r4, #0x1c]
 	mov r0, #3
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E9FC4: .word 0x00000F14
 	thumb_func_end ov73_021E9F9C
 
@@ -9116,7 +9116,7 @@ _021EA074:
 _021EA082:
 	add r0, r2, #0
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021EA050
 
 	thumb_func_start ov73_021EA088
@@ -9172,7 +9172,7 @@ ov73_021EA0BC: ; 0x021EA0BC
 	bl sub_020200FC
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021EA0BC
 
 	thumb_func_start ov73_021EA0F0
@@ -9202,7 +9202,7 @@ ov73_021EA0F0: ; 0x021EA0F0
 	bl ov73_021EA0BC
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021EA128: .word 0x00010200
 	thumb_func_end ov73_021EA0F0
 
@@ -9210,7 +9210,7 @@ _021EA128: .word 0x00010200
 ov73_021EA12C: ; 0x021EA12C
 	ldr r3, _021EA130 ; =sub_0203A880
 	bx r3
-	.align 2, 0
+	.balign 4, 0
 _021EA130: .word sub_0203A880
 	thumb_func_end ov73_021EA12C
 
@@ -9252,7 +9252,7 @@ ov73_021EA15C: ; 0x021EA15C
 	str r0, [r4, r1]
 _021EA176:
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021EA178: .word 0x00000F0C
 _021EA17C: .word 0x00000DD8
 	thumb_func_end ov73_021EA15C
@@ -9271,7 +9271,7 @@ ov73_021EA180: ; 0x021EA180
 	str r1, [r4, r0]
 _021EA196:
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021EA198: .word 0x00000F0C
 	thumb_func_end ov73_021EA180
 
@@ -9435,7 +9435,7 @@ ov73_021EA2B4: ; 0x021EA2B4
 	bl sub_020D48B4
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021EA2B4
 
 	thumb_func_start ov73_021EA2E0
@@ -9469,14 +9469,14 @@ ov73_021EA2FC: ; 0x021EA2FC
 	bl ov73_021E7E24
 	add sp, #4
 	pop {r3, r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021EA2FC
 
 	thumb_func_start ov73_021EA31C
 ov73_021EA31C: ; 0x021EA31C
 	ldr r3, _021EA320 ; =sub_0202E66C
 	bx r3
-	.align 2, 0
+	.balign 4, 0
 _021EA320: .word sub_0202E66C
 	thumb_func_end ov73_021EA31C
 
@@ -9518,13 +9518,13 @@ ov73_021EA348: ; 0x021EA348
 	bl sub_02069528
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021EA348
 
 	thumb_func_start ov73_021EA370
 ov73_021EA370: ; 0x021EA370
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov73_021EA370
 
 	thumb_func_start ov73_021EA374
@@ -9570,7 +9570,7 @@ _021EA3A0:
 	blt _021EA384
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021EA3C8: .word 0x00000BB8
 _021EA3CC: .word 0x021EA744
 	thumb_func_end ov73_021EA374
@@ -9746,7 +9746,7 @@ _021EA4DE:
 	bl sub_0202E474
 	add sp, #0x68
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021EA514: .word 0x00000BB8
 _021EA518: .word 0x021EA744
 	thumb_func_end ov73_021EA3D0

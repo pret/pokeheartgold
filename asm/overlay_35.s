@@ -36,7 +36,7 @@ _02259DA4:
 	blx r1
 _02259DB4:
 	pop {r3, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov35_02259D80
 
 	thumb_func_start ov35_02259DB8

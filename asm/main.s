@@ -174,7 +174,7 @@ _02000E3C:
 	ldr r0, [r4, #0x20]
 	bl sub_0201F880
 	b _02000DAC
-	.align 2, 0
+	.balign 4, 0
 _02000E48: .word 0x02111860
 _02000E4C: .word 0x02111860
 _02000E50: .word 0x027FFC20
@@ -376,7 +376,7 @@ _02000FC8:
 	add r0, r4, #0
 	bl sub_02000F40
 	b _02000FC8
-	.align 2, 0
+	.balign 4, 0
 _02000FD4: .word 0x00007FFF
 	thumb_func_end DoSoftReset
 
@@ -469,7 +469,7 @@ _02001086:
 	bl DoSoftReset
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _02001090: .word 0x021D116C
 _02001094: .word 0x021D110C
 	thumb_func_end sub_02000FD8
@@ -504,7 +504,7 @@ _020010BE:
 _020010C2:
 	mov r0, #0
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end sub_02001098
 
 	thumb_func_start InitializeMainRNG

@@ -16,7 +16,7 @@ ov06_0221BA00: ; 0x0221BA00
 _0221BA10:
 	ldr r0, _0221BA18 ; =0x0221BB6C
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0221BA14: .word 0x0221BDD0
 _0221BA18: .word 0x0221BB6C
 	thumb_func_end ov06_0221BA00
@@ -38,7 +38,7 @@ ov06_0221BA1C: ; 0x0221BA1C
 	lsr r3, r3, #0x10
 	bl sub_0200316C
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov06_0221BA1C
 
 	thumb_func_start ov06_0221BA40

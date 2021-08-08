@@ -33514,7 +33514,7 @@ _02110FC4:
 _02110FC8:
 	.byte 0x00, 0x00, 0x00, 0x00
 
-	.section .itcm,4
+	.section .itcm,4,1,4
 
 	arm_func_start sub_01FF8000
 sub_01FF8000: ; 0x01FF8000

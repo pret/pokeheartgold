@@ -90,7 +90,7 @@ _02006FEE:
 	mov r0, #0
 	add sp, #0x2c
 	pop {pc}
-	.align 2, 0
+	.balign 4, 0
 _02006FF4: .word OSi_IntrTable
 	thumb_func_end GetOverlayLoadDestination
 
@@ -253,7 +253,7 @@ _02007114:
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end CanOverlayBeLoaded
 
 	thumb_func_start GetLoadedOverlaysInRegion
@@ -273,7 +273,7 @@ _02007134:
 _02007138:
 	ldr r0, _02007144 ; =0x021D0E70
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0200713C: .word 0x021D0DF0
 _02007140: .word 0x021D0E30
 _02007144: .word 0x021D0E70
@@ -307,14 +307,14 @@ _0200716A:
 	mov r0, #1
 	add sp, #0x2c
 	pop {r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end GetOverlayRamBounds
 
 	thumb_func_start LoadOverlayNormal
 LoadOverlayNormal: ; 0x02007180
 	ldr r3, _02007184 ; =FS_LoadOverlay
 	bx r3
-	.align 2, 0
+	.balign 4, 0
 _02007184: .word FS_LoadOverlay
 	thumb_func_end LoadOverlayNormal
 
@@ -346,7 +346,7 @@ _020071B2:
 	mov r0, #1
 	add sp, #0x2c
 	pop {pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end LoadOverlayNoInit
 
 	thumb_func_start LoadOverlayNoInitAsync

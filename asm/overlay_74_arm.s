@@ -126,7 +126,7 @@ _022371E4:
 	add sp, sp, #0x120
 	ldmia sp!, {r4, lr}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _02237224: .word 0x00010001
 	arm_func_end ov74_02237128
 
@@ -1347,7 +1347,7 @@ _02238384:
 	add sp, sp, #4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _02238394: .word 0x0000FFFF
 	arm_func_end ov74_02238258
 
@@ -1964,7 +1964,7 @@ _02238BEC:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _02238C1C: .word 0x0223D058
 	arm_func_end ov74_02238A48
 
@@ -2067,7 +2067,7 @@ _02238D70:
 	add sp, sp, #4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, lr}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _02238D84: .word 0x00010001
 _02238D88: .word 0x0223BB3C
 _02238D8C: .word 0x0223BB54
@@ -2798,7 +2798,7 @@ _022397CC:
 	add sp, sp, #0x4c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _022397DC: .word 0x0000FFFF
 	arm_func_end ov74_02239240
 
@@ -3892,7 +3892,7 @@ _0223A5CC:
 	bne _0223A5CC
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0223A700: .word 0x0000FFFF
 	arm_func_end ov74_0223A5B0
 
@@ -4003,7 +4003,7 @@ _0223A890:
 	add sp, sp, #4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, lr}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0223A8A0: .word 0x0000FFFF
 	arm_func_end ov74_0223A704
 
@@ -4130,7 +4130,7 @@ _0223AA70:
 	add sp, sp, #4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, lr}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0223AA80: .word 0x0000FFFF
 	arm_func_end ov74_0223A8A4
 
@@ -4571,7 +4571,7 @@ ov74_0223B024: ; 0x0223B024
 	mov r1, #0
 	mov r2, #0x14
 	bx ip
-	.align 2, 0
+	.balign 4, 0
 _0223B034: .word sub_020D4994
 	arm_func_end ov74_0223B024
 
@@ -4721,7 +4721,7 @@ _0223B1E0:
 	add r0, r0, r2
 	add r0, r0, #4
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0223B210: .word 0x0223BB60
 	arm_func_end ov74_0223B1B4
 
@@ -4732,7 +4732,7 @@ ov74_0223B214: ; 0x0223B214
 	str r0, [r3]
 	str r1, [r2]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0223B228: .word 0x0223E9F8
 _0223B22C: .word 0x0223E9FC
 	arm_func_end ov74_0223B214
@@ -4757,7 +4757,7 @@ _0223B25C:
 	add sp, sp, #4
 	ldmia sp!, {lr}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0223B274: .word 0x0223E9FC
 	arm_func_end ov74_0223B230
 
@@ -4781,7 +4781,7 @@ _0223B2A4:
 	add sp, sp, #4
 	ldmia sp!, {lr}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0223B2BC: .word 0x0223E9F8
 	arm_func_end ov74_0223B278
 

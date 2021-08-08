@@ -264,7 +264,7 @@ _0225EFD4:
 	blt _0225EFD4
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225F264: .word 0x1FF00000
 	arm_func_end ov93_0225EFAC
 
@@ -343,7 +343,7 @@ _0225F358:
 	add r0, r5, #0x800
 	strh r0, [r6]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225F36C: .word 0x00007FFF
 	arm_func_end ov93_0225F268
 
@@ -402,7 +402,7 @@ _0225F3EC:
 	str r0, [r4, #0x240]
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225F43C: .word 0x02262C07
 _0225F440: .word 0x02262C05
 _0225F444: .word 0x02262C06
@@ -476,7 +476,7 @@ _0225F51C:
 	rsb r1, r1, #0
 	str r1, [r5, #0x230]
 	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225F540: .word 0x0000058F
 _0225F544: .word 0x02262C07
 	arm_func_end ov93_0225F44C
@@ -710,7 +710,7 @@ _0225F7E4:
 	movne r0, #0
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225F8A4: .word 0x021094DC
 _0225F8A8: .word 0x92492493
 	arm_func_end ov93_0225F548
@@ -760,7 +760,7 @@ ov93_0225F8E4: ; 0x0225F8E4
 	sub r1, r3, r4
 	str r1, [ip]
 	ldmia sp!, {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225F948: .word 0x51EB851F
 	arm_func_end ov93_0225F8E4
 
@@ -864,7 +864,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	bl sub_0200770C
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225FAB4: .word 0x00002715
 _0225FAB8: .word 0x00002713
 	arm_func_end ov93_0225F9D8
@@ -886,7 +886,7 @@ ov93_0225FABC: ; 0x0225FABC
 	ldr r1, _0225FAFC ; =0x00002715
 	bl sub_0200D968
 	ldmia sp!, {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225FAF8: .word 0x00002713
 _0225FAFC: .word 0x00002715
 	arm_func_end ov93_0225FABC
@@ -919,7 +919,7 @@ ov93_0225FB00: ; 0x0225FB00
 	mov r0, r4
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225FB68: .word 0x02262C38
 	arm_func_end ov93_0225FB00
 
@@ -955,7 +955,7 @@ _0225FB94:
 	ldr r0, [r5]
 	bl sub_0200DC0C
 	ldmia sp!, {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225FBE0: .word 0x02262C07
 	arm_func_end ov93_0225FB6C
 
@@ -963,7 +963,7 @@ _0225FBE0: .word 0x02262C07
 ov93_0225FBE4: ; 0x0225FBE4
 	ldr ip, _0225FBEC ; =sub_0200D9DC
 	bx ip
-	.align 2, 0
+	.balign 4, 0
 _0225FBEC: .word sub_0200D9DC
 	arm_func_end ov93_0225FBE4
 

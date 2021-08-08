@@ -44,7 +44,7 @@ ov22_022598C0: ; 0x022598C0
 	str r0, [r1]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_022598C0
 
 	thumb_func_start ov22_0225991C
@@ -58,7 +58,7 @@ ov22_0225991C: ; 0x0225991C
 	bl ov01_021EEC68
 	mov r0, #0
 	pop {r3, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_0225991C
 
 	thumb_func_start ov22_02259934
@@ -82,7 +82,7 @@ ov22_02259934: ; 0x02259934
 	bl ov01_021EEC7C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_02259934
 
 	thumb_func_start ov22_02259960
@@ -104,7 +104,7 @@ ov22_02259960: ; 0x02259960
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_02259960
 
 	thumb_func_start ov22_0225998C
@@ -126,7 +126,7 @@ ov22_0225998C: ; 0x0225998C
 	bl sub_0202C954
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_0225998C
 
 	thumb_func_start ov22_022599B8
@@ -148,7 +148,7 @@ ov22_022599B8: ; 0x022599B8
 	bl sub_0202C98C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_022599B8
 
 	thumb_func_start ov22_022599E4
@@ -170,7 +170,7 @@ ov22_022599E4: ; 0x022599E4
 	bl sub_0202C98C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_022599E4
 
 	thumb_func_start ov22_02259A10
@@ -203,7 +203,7 @@ _02259A48:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_02259A10
 
 	thumb_func_start ov22_02259A50
@@ -241,7 +241,7 @@ _02259A94:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_02259A50
 
 	thumb_func_start ov22_02259A9C
@@ -293,7 +293,7 @@ ov22_02259ADC: ; 0x02259ADC
 	bl sub_02031A38
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_02259ADC
 
 	thumb_func_start ov22_02259B08
@@ -315,7 +315,7 @@ ov22_02259B08: ; 0x02259B08
 	bl sub_02031A54
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov22_02259B08
 
 	thumb_func_start ov22_02259B34

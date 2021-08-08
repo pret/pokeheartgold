@@ -46,7 +46,7 @@ _02259900:
 	blo _022598F4
 	mov r0, #0xff
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 _0225990C: .word 0x02259ACC
 	thumb_func_end ov26_022598F0
 
@@ -88,7 +88,7 @@ _02259944:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _02259954: .word 0x02259ACC
 _02259958: .word 0x0000FFFF
 	thumb_func_end ov26_02259910
@@ -115,7 +115,7 @@ _0225996E:
 _02259982:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov26_0225995C
 
 	thumb_func_start ov26_02259988
@@ -166,7 +166,7 @@ _022599CC: .word 0x02259ACC
 ov26_022599D0: ; 0x022599D0
 	ldr r3, _022599D4 ; =sub_0205FC94
 	bx r3
-	.align 2, 0
+	.balign 4, 0
 _022599D4: .word sub_0205FC94
 	thumb_func_end ov26_022599D0
 
@@ -211,7 +211,7 @@ _02259A16:
 	bl ov26_022599D0
 _02259A20:
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov26_022599D8
 
 	thumb_func_start ov26_02259A24

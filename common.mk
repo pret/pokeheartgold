@@ -78,7 +78,7 @@ XMAP              := $(NEF).xMAP
 
 MWCFLAGS          := -O4,p -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -I./lib/include
 MWASFLAGS         := -proc $(PROC_S)
-MWLDFLAGS         := -nodead -w off -proc $(PROC_LD) -interworking -map closure,unused -symtab sort -m _start
+MWLDFLAGS         := -nodead -w off -proc $(PROC) -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
 export MWCIncludes := lib/include

@@ -171,7 +171,7 @@ _020012E0:
 	bl sub_0201D578
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end sub_020011DC
 
 	thumb_func_start sub_02001338
@@ -356,7 +356,7 @@ sub_0200145C: ; 0x0200145C
 	ldr r0, [r4, #0xc]
 	bl sub_0201D578
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end sub_0200145C
 
 	thumb_func_start sub_02001488
@@ -412,7 +412,7 @@ sub_020014DC: ; 0x020014DC
 	add r0, r2, r0
 	strh r0, [r1]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end sub_020014DC
 
 	thumb_func_start sub_020014E8
@@ -428,7 +428,7 @@ _020014F0:
 	strh r0, [r2]
 _020014F8:
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end sub_020014E8
 
 	thumb_func_start sub_020014FC
@@ -438,7 +438,7 @@ sub_020014FC: ; 0x020014FC
 	add r0, r2, r0
 	ldr r0, [r0, #4]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end sub_020014FC
 
 	thumb_func_start sub_02001508
@@ -741,7 +741,7 @@ _020016F6:
 _0200171A:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end sub_02001688
 
 	thumb_func_start sub_02001720
@@ -1015,7 +1015,7 @@ _020018F8:
 	mov r0, #2
 	pop {r4, r5, r6, r7}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end sub_020017E0
 
 	thumb_func_start sub_02001900
@@ -1149,7 +1149,7 @@ _020019BA:
 	bl sub_0201DA74
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end sub_02001900
 
 	thumb_func_start sub_02001A18

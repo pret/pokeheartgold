@@ -1,4 +1,4 @@
-MWCCVER        := 2.0/sp2p3
+MWCCVER        := 2.0/sp2p2
 PROC           := arm946e
 PROC_S         := arm5te
 PROC_LD        := v5te
@@ -53,10 +53,10 @@ $(SBIN_LZ): $(BUILD_DIR)/component.files
 $(BUILD_DIR)/component.files: main ;
 
 $(ROM): $(ROMSPEC) $(NITROFS_FILES) $(SBIN_LZ) sub $(BANNER)
-	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DNITROFS_FILES="$(NITROFS_FILES)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" $< $@
+	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(NITROFS_FILES:files/%=%)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)
-	$(SHASUM) -c $(buildname)/rom.sha1
+	$(SHA1SUM) -c $(buildname)/rom.sha1
 endif
 
 $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
