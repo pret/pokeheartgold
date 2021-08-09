@@ -80,10 +80,10 @@ def dump_files(dirs, files, allocs, rom, print_only=True):
                         ofp.write(rom.read(end - start))
 
 
-def dump_overlays(proc, table, allocs, rom, make_files=False):
+def dump_overlays(proc, table, allocs, rom, ovysubdir='overlays', make_files=False):
     for ovy_id, ram_start, size, bsssize, sinit_start, sinit_end, file_id, flag in table:
         if make_files:
-            outdir = f'{proc}/overlays_ss/{ovy_id:02d}'
+            outdir = f'{proc}/{ovysubdir}/{ovy_id:02d}'
             os.makedirs(outdir, exist_ok=True)
             with open(f'{outdir}/module_{ovy_id:02d}.cfg', 'w') as cfg:
                 print('thumb_func', f'0x{ram_start:08X}', f'MOD{ovy_id:02d}_{ram_start:08X}', file=cfg)
@@ -98,7 +98,7 @@ def dump_overlays(proc, table, allocs, rom, make_files=False):
                 '-m', str(ovy_id),
                 '-c', f'{outdir}/module_{ovy_id:02d}.cfg',
                 '-d',
-                'baserom.nds'
+                rom.name
             ]
             if proc == 'arm7':
                 sbp_args.append('-7')
@@ -128,6 +128,7 @@ def main():
     parser.add_argument('--no-dump-overlays', dest='dump_overlays', action='store_false')
     parser.add_argument('--no-dump-files', dest='dump_files', action='store_false')
     parser.add_argument('--fsroot', default='files')
+    parser.add_argument('--ovysubdir', default='overlays')
     parser.add_argument('--arm9-root', default='.')
     parser.add_argument('--arm7-root', default='sub')
     args = parser.parse_args()
@@ -143,8 +144,8 @@ def main():
 
     dump_files(dirs, files, allocs, args.rom, print_only=not args.dump_files)
 
-    dump_overlays(args.arm9_root, ovy9, allocs, args.rom, make_files=args.dump_overlays)
-    dump_overlays(args.arm7_root, ovy7, allocs, args.rom, make_files=args.dump_overlays)
+    dump_overlays(args.arm9_root, ovy9, allocs, args.rom, ovysubdir=args.ovysubdir, make_files=args.dump_overlays)
+    dump_overlays(args.arm7_root, ovy7, allocs, args.rom, ovysubdir=args.ovysubdir, make_files=args.dump_overlays)
 
 
 if __name__ == '__main__':
