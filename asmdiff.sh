@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-gcc -O3 -g -o ntruncompbw ntruncompbw.c
+# Build ntruncompbw on demand
+[[ ntruncompbw -nt ntruncompbw.c ]] || gcc -O3 -g -o ntruncompbw ntruncompbw.c
 
 getword() {
   od -j "$2" -N 4 -A n -t u "$1" | awk '{$1=$1};1'
@@ -33,17 +34,14 @@ while [[ $# -gt 0 ]]; do
   -7)
     proc=armv4t
     builddir=sub/build
-    shift
-    ;;
-  -a)
-    mode=autoload
-    autoload="$2"
-    shift
+    basestem=${basestem}.sub
     shift
     ;;
   -m)
+    [[ -n $overlay ]] && { echo can only do one overlay at a time; exit 1; }
     mode=overlay
     overlay="$2"
+    basestem=${basestem}.o${overlay}
     shift
     shift
     ;;
@@ -75,9 +73,9 @@ proc=${proc:-armv5te}
 builddir=${builddir:-build/heartgold.us}
 baserom=${baserom:-baserom.nds}
 
-[[ -n "${autoload}" && -n "${overlay}" ]] && echo warning: -m and -a conflict. will run in $mode mode
+basefile=${baserom}${basestem}.sbin
+echo $basefile
 
-tmpfile=$(mktemp)
 [[ "$mode" == overlay ]] && {
   case $proc in
   armv4t)
@@ -88,13 +86,20 @@ tmpfile=$(mktemp)
     ;;
   esac
   ovtoff=$(getword "$baserom" "$ovt")
-  fatoff=$((getword "$baserom" 72))
   vma=$(getword "$baserom" "$((ovtoff+32*overlay+4))")
   size=$(getword "$baserom" "$((ovtoff+32*overlay+8))")
-  fileid=$(getword "$baserom" "$((ovtoff+32*overlay+24))")
-  param=$(getword "$baserom" "$((ovtoff+32*overlay+28))")
-  fileoff=$(getword "$baserom" "$((fatoff+8*fileid))")
-  dd if="$baserom" of="$tmpfile" bs=1 skip="$fileoff" count="$size" 2>/dev/null
+  [[ -f $basefile ]] || {
+    fileid=$(getword "$baserom" "$((ovtoff+32*overlay+24))")
+    param=$(getword "$baserom" "$((ovtoff+32*overlay+28))")
+    fatoff=$(getword "$baserom" 72)
+    fileoff=$(getword "$baserom" "$((fatoff+8*fileid))")
+    filesize=$(($(getword "$baserom" "$((fatoff+8*fileid+4))")-fileoff))
+    dd if="$baserom" of="$basefile" bs=1 skip="$fileoff" count="$filesize" 2>/dev/null
+    (( param & 16777216 )) && {
+      compsize=$((param & 16777215))
+      ./ntruncompbw $basefile $vma $((vma+compsize)) || { rm -f $basefile; exit 1; }
+    }
+  }
   buildfile=$builddir/OVY_${overlay}.sbin
 } || {
   case $proc in
@@ -112,10 +117,12 @@ tmpfile=$(mktemp)
   vma=$(getword "$baserom" "$((romtab+8))")
   size=$(getword "$baserom" "$((romtab+12))")
 
-  dd if="$baserom" of="$tmpfile" bs=1 skip="$fileoff" count="$size" 2>/dev/null
-  ntrcodebe=$(grep -bao "$(printf "\x21\x06\xc0\xde")" ${tmpfile} | head -n1 | cut -d: -f1)
-  compstatend=$(getword "$tmpfile" $((ntrcodebe-8)))
-  [[ $compstatend != "0" ]] && { ./ntruncompbw $tmpfile $vma $compstatend || exit 1; }
+  [[ -f $basefile ]] || {
+    dd if="$baserom" of="$basefile" bs=1 skip="$fileoff" count="$size" 2>/dev/null
+    _start_ModuleParams=$(python find_module_params.py ${basefile})
+    compstatend=$(getword "$basefile" $((_start_ModuleParams+20)))
+    [[ $compstatend != "0" ]] && { ./ntruncompbw $basefile $vma $compstatend || { rm -f $basefile; exit 1; }; }
+  }
   buildfile=${builddir}/${compname}.sbin
 }
 
@@ -124,5 +131,4 @@ tmpfile=$(mktemp)
 do-objdump () {
   arm-none-eabi-objdump -Drz -bbinary -m$proc $thumb --adjust-vma=$vma --start-address=$start --stop-address=$((start+size)) $1
 }
-diff -u <(do-objdump $tmpfile) <(do-objdump $buildfile)
-rm -f $tmpfile
+diff -u <(do-objdump $basefile) <(do-objdump $buildfile)
