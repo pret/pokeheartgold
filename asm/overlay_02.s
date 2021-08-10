@@ -8960,21 +8960,33 @@ ov02_02249EC0: ; 0x02249EC0
 	bl sub_02022C60
 	add r2, r5, #0
 	add r0, r4, #0
+#ifdef HEARTGOLD
 	mov r1, #2
+#else
+	mov r1, #5
+#endif
 	add r2, #0x6c
 	bl ov02_0224A570
 	ldr r0, [r5, #0x60]
 	add r3, r5, #0
 	ldr r0, [r0, #8]
 	add r1, r4, #0
+#ifdef HEARTGOLD
 	mov r2, #0
+#else
+	mov r2, #3
+#endif
 	add r3, #0x68
 	bl ov02_0224A598
 	ldr r0, [r5, #0x60]
 	add r3, r5, #0
 	ldr r0, [r0, #8]
 	add r1, r4, #0
+#ifdef HEARTGOLD
 	mov r2, #1
+#else
+	mov r2, #4
+#endif
 	add r3, #0x64
 	bl ov02_0224A5D0
 	add r0, r5, #0

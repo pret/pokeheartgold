@@ -3366,7 +3366,7 @@ _0223956A:
 	add r1, r5, #0
 	bl ov12_0223AA40
 	bl sub_0202907C
-	cmp r0, #7
+	cmp r0, #GAME_VERSION
 	beq _0223957C
 	mov r7, #1
 _0223957C:

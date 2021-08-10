@@ -74,7 +74,6 @@ builddir=${builddir:-build/heartgold.us}
 baserom=${baserom:-baserom.nds}
 
 basefile=${baserom}${basestem}.sbin
-echo $basefile
 
 [[ "$mode" == overlay ]] && {
   case $proc in
