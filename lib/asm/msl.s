@@ -19961,7 +19961,7 @@ _021117FC:
 	.asciz "N10__cxxabiv117__class_type_infoE"
 	.balign 4, 0
 _02111820:
-	.asciz "N10_cxxabiv120__si_class_type_infoE"
+	.asciz "N10__cxxabiv120__si_class_type_infoE"
 	.balign 4, 0
 _02111848:
 	.word _ZSt9dthandlerv

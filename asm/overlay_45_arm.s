@@ -1,5 +1,6 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
+	.public _version_NINTENDO_DWC_LOBBY
 
 	.text
 
@@ -18080,15 +18081,6 @@ ov45_02240A80: ; 0x02240A80
 	.balign 4, 0
 _02240B0C: .word 0x022577DC
 	arm_func_end ov45_02240A80
-
-	.section .version,4
-
-	.balign 4, 0
-	.public _version_NINTENDO_DWC_LOBBY
-_version_NINTENDO_DWC_LOBBY: ; 0x02000C88
-	.asciz "[SDK+NINTENDO:DWC_LOBBY]"
-
-	.previous
 
 	arm_func_start ov45_02240B10
 ov45_02240B10: ; 0x02240B10

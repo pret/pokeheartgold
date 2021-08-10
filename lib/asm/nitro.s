@@ -22692,15 +22692,6 @@ _020DCD6C: .word 0x000109A0
 _020DCD70: .word 0x00027100
 	arm_func_end sub_020DC9F0
 
-	.section .version,4
-
-	.balign 4, 0
-	.public _version_NINTENDO_BACKUP
-_version_NINTENDO_BACKUP: ; 0x02000C70
-	.asciz "[SDK+NINTENDO:BACKUP]"
-
-	.previous
-
 	arm_func_start sub_020DCD74
 sub_020DCD74: ; 0x020DCD74
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}

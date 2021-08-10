@@ -126,7 +126,7 @@ basefile=${baserom}${basestem}.sbin
 }
 
 [[ -n "$1" ]] && start=$(($1)) || start=$vma
-[[ -n "$2" ]] && size=$(($2))
+[[ -n "$2" ]] && size=$(($2)) || size=$(wc -c <$basefile)
 do-objdump () {
   arm-none-eabi-objdump -Drz -bbinary -m$proc $thumb --adjust-vma=$vma --start-address=$start --stop-address=$((start+size)) $1
 }

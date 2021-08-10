@@ -8592,15 +8592,6 @@ _0209FAD8:
 	ldmia sp!, {pc}
 	arm_func_end sub_0209FA94
 
-	.section .version,4
-
-	.balign 4, 0
-	.public _version_NINTENDO_DWC
-_version_NINTENDO_DWC: ; 0x02000BC4
-	.asciz "[SDK+NINTENDO:DWC2.2.30008.080630.1906_DWC_2_2_PLUS8]"
-
-	.previous
-
 	arm_func_start sub_0209FAE4
 sub_0209FAE4: ; 0x0209FAE4
 	stmdb sp!, {r4, r5, r6, lr}
@@ -9688,15 +9679,6 @@ _020A07F0:
 	str r7, [r0, #-8]
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end sub_020A0628
-
-	.section .version,4
-
-	.balign 4, 0
-	.public _version_NINTENDO_WiFi
-_version_NINTENDO_WiFi: ; 0x02000BFC
-	.asciz "[SDK+NINTENDO:WiFi2.1.30003.0709200229]"
-
-	.previous
 
 	arm_func_start sub_020A0804
 sub_020A0804: ; 0x020A0804
@@ -13565,15 +13547,6 @@ sub_020A39A4: ; 0x020A39A4
 	mov r0, #1
 	bx lr
 	arm_func_end sub_020A39A4
-
-	.section .version,4
-
-	.balign 4, 0
-	.public _version_UBIQUITOUS_CPS
-_version_UBIQUITOUS_CPS: ; 0x02000C24
-	.asciz "[SDK+UBIQUITOUS:CPS]"
-
-	.previous
 
 	arm_func_start sub_020A39AC
 sub_020A39AC: ; 0x020A39AC
@@ -33672,15 +33645,6 @@ _020B485C:
 	blo _020B47A8
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020B478C
-
-	.section .version,4
-
-	.balign 4, 0
-	.public _version_Abiosso_libVCT
-_version_Abiosso_libVCT: ; 0x02000C54
-	.asciz "[SDK+Abiosso:libVCT 1.3.1]"
-
-	.previous
 
 	arm_func_start sub_020B4874
 sub_020B4874: ; 0x020B4874
