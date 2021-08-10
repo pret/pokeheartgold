@@ -22,7 +22,7 @@ ov43_02229EE0: ; 0x02229EE0
 	ldr r2, _02229FA8 ; =0x000005A4
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r5, #0
 	bl sub_020072A4
 	mov r1, #0x9f
@@ -672,7 +672,7 @@ ov43_0222A420: ; 0x0222A420
 	add r0, #0x10
 	mov r1, #0
 	mov r2, #0x48
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r5, #4]
 	bl sub_0202C6F4
 	mov r4, #0
@@ -1482,7 +1482,7 @@ ov43_0222AAA4: ; 0x0222AAA4
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r3, #0
-	bl sub_020F2900
+	bl _ll_udiv
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -1495,10 +1495,10 @@ ov43_0222AAA4: ; 0x0222AAA4
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r3, #0
-	bl sub_020F2900
+	bl _ll_udiv
 	ldr r2, _0222AB1C ; =0x00002710
 	mov r3, #0
-	bl sub_020F290C
+	bl _ull_mod
 	mov r1, #2
 	add r2, r0, #0
 	str r1, [sp]
@@ -1511,7 +1511,7 @@ ov43_0222AAA4: ; 0x0222AAA4
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r3, #0
-	bl sub_020F290C
+	bl _ull_mod
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -7953,7 +7953,7 @@ _0222DD0A:
 	beq _0222DD3A
 _0222DD12:
 	add r0, r4, #1
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r4, r1, #0
 	add r1, r5, r4
 	ldrb r1, [r1, #0x18]

@@ -790,7 +790,7 @@ _02259EB8:
 	mul r1, r0
 	add r0, r1, #0
 	ldrb r1, [r5, #3]
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r7, r0
 	lsl r0, r0, #0x10
 	mov r4, #0
@@ -827,7 +827,7 @@ _02259ED8:
 	add r1, r0, #0
 	mov r0, #0x64
 	mul r0, r4
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r7, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10

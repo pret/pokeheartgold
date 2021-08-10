@@ -41,7 +41,7 @@ ov15_021F9380: ; 0x021F9380
 	ldr r2, _021F95F4 ; =0x0000094C
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r5, #0
 	bl sub_020072A4
 	mov r1, #0x8d
@@ -11346,7 +11346,7 @@ _021FEE1C:
 _021FEE2C:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	str r0, [sp, #0x18]
 	mov r0, #1
 	str r0, [sp]
@@ -11361,7 +11361,7 @@ _021FEE2C:
 	sub r7, r7, r1
 	add r0, r4, #0
 	mov r1, #0xa
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r4, r0, #0
 	add r0, r6, #0
 	add r0, #0x11

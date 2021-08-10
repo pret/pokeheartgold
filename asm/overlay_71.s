@@ -4277,13 +4277,13 @@ ov71_02248A08: ; 0x02248A08
 _02248AA2:
 	bl sub_0201FDB8
 	mov r1, #0xe8
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r6, r1, #0
 	add r6, #0xc
 	bl sub_0201FDB8
 	mov r1, #0x71
 	lsl r1, r1, #2
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r5, r1, #0
 	mov r0, #0
 	str r0, [sp]

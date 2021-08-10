@@ -8232,7 +8232,7 @@ ov89_0225C830: ; 0x0225C830
 	add r4, r0, #0
 	add r0, r1, #0
 	mov r1, #9
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r2, r1, #2
 	ldr r0, _0225C848 ; =0x0225CE70
 	lsl r1, r4, #1

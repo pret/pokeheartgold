@@ -548,7 +548,7 @@ _02237C98:
 	bl ov38_0221C020
 	mov r1, #0x49
 	lsl r1, r1, #2
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r1, _02237EC0 ; =0x02246800
 	str r0, [r1, #4]
 	b _02237CE4
@@ -938,7 +938,7 @@ ov70_02237F64: ; 0x02237F64
 	mov r2, #0x49
 	ldr r0, _02237FA4 ; =0x02246814
 	lsl r2, r2, #2
-	bl sub_020E5AD8
+	bl memcpy
 	bl ov38_0221BE84
 	mov r0, #2
 	str r0, [sp]
@@ -1270,7 +1270,7 @@ ov70_02238208: ; 0x02238208
 	ldr r0, _02238260 ; =0x02246814
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_020E5AD8
+	bl memcpy
 	ldr r0, _0223825C ; =0x02246900
 	mov r2, #0x49
 	str r5, [r0, #0x38]
@@ -1385,7 +1385,7 @@ ov70_02238304: ; 0x02238304
 	ldr r0, _02238350 ; =0x02246814
 	add r1, r5, #0
 	mov r2, #0x64
-	bl sub_020E5AD8
+	bl memcpy
 	ldr r0, _02238354 ; =0x02246900
 	str r4, [r0, #0x40]
 	bl ov38_0221BE84
@@ -1587,7 +1587,7 @@ _02238446:
 	ldr r2, _02238590 ; =0x00001608
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x3d
 	bl sub_0201AC88
 	str r0, [r4, #4]

@@ -41,7 +41,7 @@ _0225F050:
 	str r0, [r1, #0xc]
 	mov r1, #0
 	lsl r2, r2, #4
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [sp, #0x18]
 	mov r1, #6
 	ldr r4, [r0, #0xc]
@@ -671,7 +671,7 @@ _0225F560:
 	str r0, [r5, #0xc]
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020E5B44
+	bl memset
 	ldr r4, [r5, #0xc]
 	mov r1, #1
 	add r0, r4, #4

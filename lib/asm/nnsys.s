@@ -861,7 +861,7 @@ sub_020B5798: ; 0x020B5798
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
-	bl sub_020E4A90
+	bl abs
 	sub r1, r0, #1
 	ldr r0, [r4, #0x24]
 	mvn r2, r1
@@ -1020,26 +1020,26 @@ _020B5940: .word sub_020B58C8
 
 	arm_func_start sub_020B5944
 sub_020B5944: ; 0x020B5944
-	ldr ip, _020B595C ; =sub_020D2E54
+	ldr ip, _020B595C ; =OS_AllocFromHeap
 	mov r3, r0
 	mov r2, r1
 	ldr r0, [r3, #8]
 	ldr r1, [r3, #4]
 	bx ip
 	.align 2, 0
-_020B595C: .word sub_020D2E54
+_020B595C: .word OS_AllocFromHeap
 	arm_func_end sub_020B5944
 
 	arm_func_start sub_020B5960
 sub_020B5960: ; 0x020B5960
-	ldr ip, _020B5978 ; =sub_020D2F5C
+	ldr ip, _020B5978 ; =OS_FreeToHeap
 	mov r3, r0
 	mov r2, r1
 	ldr r0, [r3, #8]
 	ldr r1, [r3, #4]
 	bx ip
 	.align 2, 0
-_020B5978: .word sub_020D2F5C
+_020B5978: .word OS_FreeToHeap
 	arm_func_end sub_020B5960
 
 	arm_func_start sub_020B597C
@@ -1514,7 +1514,7 @@ sub_020B5EFC: ; 0x020B5EFC
 	mov r2, r0
 	add r0, r1, #1
 	ldr r1, [r2, #4]
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, r1, lsl #0x10
 	mov r0, r0, lsr #0x10
 	ldmia sp!, {r3, pc}
@@ -3482,7 +3482,7 @@ sub_020B75D8: ; 0x020B75D8
 	adc r1, r1, sb
 	mov r0, r0, lsr #0xc
 	orr r0, r0, r1, lsl #20
-	bl sub_020E4A90
+	bl abs
 	mov r4, #1
 	ldr r1, [sl, #0x10]
 	mov fp, sb
@@ -5312,7 +5312,7 @@ _020B8D20:
 	beq _020B8D4C
 	mov r0, sb
 	mov r1, r6
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, r7
 	mov r1, r1, lsl #0xc
 	bl sub_020B8BDC
@@ -5382,7 +5382,7 @@ _020B8E1C:
 	beq _020B8E48
 	mov r0, sb
 	mov r1, r8
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, r6
 	mov r1, r1, lsl #0xc
 	bl sub_020B8BDC
@@ -22986,10 +22986,10 @@ _020C7D38:
 	ldr r0, _020C7E04 ; =0xD87F8000
 	mov r3, r2, asr #0x1f
 	mov r1, #0x7f
-	bl sub_020F2900
+	bl _ll_udiv
 	ldr r2, [sp, #0x48]
 	mov r3, r2, asr #0x1f
-	bl sub_020F2900
+	bl _ll_udiv
 	cmp r1, #0
 	mov r2, #0x10
 	cmpeq r0, #0x10
@@ -23084,10 +23084,10 @@ sub_020C7E70: ; 0x020C7E70
 	ldr r0, _020C7EEC ; =0xD87F8000
 	mov r3, r2, asr #0x1f
 	mov r1, #0x7f
-	bl sub_020F2900
+	bl _ll_udiv
 	mov r2, r4
 	mov r3, r4, asr #0x1f
-	bl sub_020F2900
+	bl _ll_udiv
 	mov r3, r0
 	cmp r1, #0
 	mov r0, #0x10
@@ -24177,7 +24177,7 @@ _020C8BA8:
 	mov r0, fp, lsl #5
 	mul r1, r2, r0
 	mov r0, r4
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mul r1, r0, fp
 	mov r0, r1, lsl #5
 	ldr r2, [sp, #0x40]
@@ -24186,7 +24186,7 @@ _020C8BA8:
 	moveq r0, r0, lsr #1
 	mul r0, r2, r0
 	mov r1, fp
-	bl sub_020F2BA4
+	bl _u32_div_f
 	str r0, [sp, #0x18]
 	bl sub_020C7C0C
 	cmp r0, #0
@@ -24407,7 +24407,7 @@ sub_020C8EA8: ; 0x020C8EA8
 	mov r4, r1
 	ldr r0, [r5, #0x28]
 	ldr r1, [r5, #0x2c]
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r1, [r5, #0x48]
 	ldr r2, [r5, #0x38]
 	mov r3, r0
@@ -26736,14 +26736,14 @@ sub_020CACD0: ; 0x020CACD0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _020CAD60 ; =0x021E0FC8
-	bl sub_020D2618
+	bl OS_LockMutex
 	ldr r0, _020CAD64 ; =0x021E0950
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _020CACFC
 	add r0, r0, #0xc8
 	add r0, r0, #0x400
-	bl sub_020D2618
+	bl OS_LockMutex
 _020CACFC:
 	ldr r0, [r4, #0x110]
 	mov r0, r0, lsl #0x1e
@@ -26763,14 +26763,14 @@ _020CAD30:
 	mov r0, r4
 	bl sub_020CAD68
 	ldr r0, _020CAD60 ; =0x021E0FC8
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	ldr r0, _020CAD64 ; =0x021E0950
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	add r0, r0, #0xc8
 	add r0, r0, #0x400
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020CAD60: .word 0x021E0FC8

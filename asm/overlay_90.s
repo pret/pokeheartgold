@@ -586,7 +586,7 @@ ov90_02258BD4: ; 0x02258BD4
 	add r4, r0, #0
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020E5B44
+	bl memset
 	str r6, [r4, #8]
 	mov r0, #0xc8
 	add r1, r5, #0
@@ -871,7 +871,7 @@ _02258DDC:
 	add r2, r4, #0
 	str r0, [r1, #0x10]
 	mov r1, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [sp]
 	str r6, [r0, #0x14]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1903,7 +1903,7 @@ ov90_02259588: ; 0x02259588
 	ldr r2, _022596A0 ; =0x000005F4
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r2, r4, #0
 	add r2, #8
 	mov r1, #0x10
@@ -2594,7 +2594,7 @@ ov90_02259B38: ; 0x02259B38
 	add r4, r1, #0
 	bl sub_0201FDB8
 	mov r1, #0x64
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r3, #0
 	add r0, r3, #0
 	cmp r4, #0
@@ -3571,11 +3571,11 @@ ov90_0225A28C: ; 0x0225A28C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r4, r1, #0
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r1, r4, #1
 	cmp r1, #3
 	bhs _0225A2A8
@@ -4111,7 +4111,7 @@ ov90_0225A6B4: ; 0x0225A6B4
 	ldr r2, _0225A820 ; =0x00000664
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r2, r4, #0
 	add r2, #0x1c
 	mov r1, #0x18
@@ -5733,7 +5733,7 @@ ov90_0225B340: ; 0x0225B340
 	mov r2, #0x20
 	add r5, r0, #0
 	add r7, r3, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r4]
 	str r0, [r5, #8]
 	mov r0, #4
@@ -6066,7 +6066,7 @@ ov90_0225B59C: ; 0x0225B59C
 	add r7, r0, #0
 	add r6, r3, #0
 	ldr r4, [sp, #0x40]
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x20
 	str r0, [sp]
 	ldr r0, [sp, #0x44]
@@ -6768,12 +6768,12 @@ ov90_0225BAD0: ; 0x0225BAD0
 	mov r1, #0
 	mov r2, #0xc0
 	str r3, [sp, #0x10]
-	bl sub_020E5B44
+	bl memset
 	add r0, r7, #0
 	add r0, #0xcc
 	mov r1, #0
 	mov r2, #0xc0
-	bl sub_020E5B44
+	bl memset
 	mov r6, #0
 	strh r6, [r7, #8]
 	mov r0, #0x63
@@ -7114,7 +7114,7 @@ ov90_0225BD84: ; 0x0225BD84
 	add r0, #0xcc
 	mov r1, #0
 	mov r2, #0xc0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0xa
 	ldrsh r2, [r4, r0]
 	mov r0, #0x17
@@ -7167,7 +7167,7 @@ ov90_0225BDE4: ; 0x0225BDE4
 	add r0, #0xc
 	add r1, #0xcc
 	mov r2, #0xc0
-	bl sub_020E5AD8
+	bl memcpy
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

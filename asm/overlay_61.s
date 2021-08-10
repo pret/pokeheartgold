@@ -1881,7 +1881,7 @@ ov61_021E6894: ; 0x021E6894
 	bl ov61_021E684C
 	add r0, r4, #1
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x15
 	add r2, r5, r1
@@ -1892,7 +1892,7 @@ ov61_021E6894: ; 0x021E6894
 	str r0, [r1]
 	add r0, r4, #2
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x15
 	add r1, r5, r0
@@ -2221,7 +2221,7 @@ ov61_021E6B2C: ; 0x021E6B2C
 	ldr r0, [r4, r0]
 	mov r1, #3
 	add r0, r0, #1
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, #0xe5
 	lsl r0, r0, #2
 	str r1, [r4, r0]

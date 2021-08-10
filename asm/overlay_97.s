@@ -183,7 +183,7 @@ ov97_0221E700: ; 0x0221E700
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x5c
 	bl sub_0201AC88
 	str r0, [r4]

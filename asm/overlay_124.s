@@ -67,7 +67,7 @@ _02260C66:
 	bl FS_UnloadOverlay
 	ldr r1, _02260D14 ; =0x00000989
 	add r0, r4, r6
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r1, #0
 	beq _02260CB8
 	add r0, r5, #0
@@ -94,7 +94,7 @@ _02260CB8:
 	str r0, [r5, r1]
 	ldr r1, _02260D18 ; =0x00000FE9
 	add r0, r4, r6
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r1, #0
 	beq _02260CF6
 	add r0, r5, #0

@@ -484,7 +484,7 @@ ov72_02237C30: ; 0x02237C30
 	ldr r0, _02237C94 ; =0x0223B834
 	add r1, r4, #0
 	mov r2, #0xe4
-	bl sub_020E5AD8
+	bl memcpy
 	ldr r0, _02237C98 ; =0x0223B900
 	sub r1, r5, #1
 	strb r1, [r0, #0x18]
@@ -574,7 +574,7 @@ ov72_02237CF4: ; 0x02237CF4
 	ldr r0, _02237D40 ; =0x0223B834
 	add r1, r5, #0
 	mov r2, #0x64
-	bl sub_020E5AD8
+	bl memcpy
 	ldr r0, _02237D44 ; =0x0223B920
 	str r4, [r0, #8]
 	bl ov38_0221BE84
@@ -775,7 +775,7 @@ _02237E36:
 	ldr r2, _02237F70 ; =0x000013A4
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x43
 	bl sub_0201AC88
 	str r0, [r4, #4]

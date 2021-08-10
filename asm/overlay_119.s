@@ -39,7 +39,7 @@ _0225F04E:
 	str r0, [r7, #0xc]
 	mov r1, #0
 	lsl r2, r2, #4
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r7, #0x10]
 	ldr r4, [r7, #0xc]
 	ldr r1, [r0, #0x24]
@@ -442,7 +442,7 @@ _0225F3A8:
 	str r0, [r6, #0xc]
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r6, #0x10]
 	ldr r4, [r6, #0xc]
 	ldr r1, [r0, #0x24]
@@ -799,7 +799,7 @@ _0225F69E:
 	str r0, [r7, #0xc]
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r7, #0x10]
 	ldr r4, [r7, #0xc]
 	ldr r1, [r0, #0x24]
@@ -1258,7 +1258,7 @@ _0225FA5C:
 	str r0, [r1, #0xc]
 	mov r1, #0
 	lsl r2, r2, #6
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [sp, #0x1c]
 	ldr r4, [r0, #0xc]
 	ldr r0, [r0, #0x10]
@@ -1913,7 +1913,7 @@ _0225FFC8:
 	str r0, [r5, #0xc]
 	mov r1, #0
 	lsl r2, r2, #4
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r5, #0x10]
 	ldr r4, [r5, #0xc]
 	ldr r1, [r0, #0x24]
@@ -2245,7 +2245,7 @@ _0226028C:
 	str r0, [r1, #0xc]
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [sp, #0x18]
 	mov r2, #1
 	ldr r4, [r0, #0xc]

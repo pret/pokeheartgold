@@ -26,7 +26,7 @@ ov82_0223DD60: ; 0x0223DD60
 	mov r1, #0
 	lsl r2, r2, #2
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x69
 	bl sub_0201AC88
 	str r0, [r5, #0x48]
@@ -2583,7 +2583,7 @@ ov82_0223F224: ; 0x0223F224
 	ldr r0, [r0]
 	mov r1, #0
 	mov r2, #0x3c
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x85
 	add r1, r4, #0
 	lsl r0, r0, #2

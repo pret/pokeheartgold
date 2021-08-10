@@ -48,7 +48,7 @@ ov60_021E5900: ; 0x021E5900
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r1, #0x2e
 	mov r0, #0x1e
 	lsl r1, r1, #4
@@ -2302,7 +2302,7 @@ ov60_021E6B68: ; 0x021E6B68
 	ldr r2, _021E6BFC ; =0x0000062C
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x4a
 	str r0, [r4]
 	mov r1, #0

@@ -890,7 +890,7 @@ PrintDecimalInteger: ; 0x0200211C
 _0200212E:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	add r0, r4, #0
@@ -938,7 +938,7 @@ _02002176:
 _02002180:
 	add r0, r4, #0
 	mov r1, #0xa
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r4, r0, #0
 	bne _0200212E
 _0200218C:
@@ -3737,7 +3737,7 @@ sub_020035F0: ; 0x020035F0
 	cmp r2, #0
 	bge _02003620
 	add r0, r2, #0
-	bl sub_020E4A90
+	bl abs
 	add r0, r0, #2
 	ldrh r1, [r5, #6]
 	mov r2, #0xf
@@ -4505,7 +4505,7 @@ sub_02003BA8: ; 0x02003BA8
 	mov r1, #0
 	lsl r2, r2, #8
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #8
@@ -4557,7 +4557,7 @@ _02003C16:
 	mov r1, #0
 	lsl r2, r2, #0xc
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0xc
@@ -6161,7 +6161,7 @@ sub_02004858: ; 0x02004858
 	ldr r2, _02004874 ; =0x000BEC88
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _02004878 ; =0x000BEC0C
 	mov r1, #0
 _02004868:
@@ -8218,7 +8218,7 @@ _020057FC:
 _02005818:
 	mov r1, #0
 	add r2, r6, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r7]
 	ldr r1, [r4]
 	lsl r0, r0, #8

@@ -19,7 +19,7 @@ ov78_021E5900: ; 0x021E5900
 	mov r1, #0
 	mov r2, #0x5c
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r5, #0
 	bl sub_020072A4
 	add r5, r0, #0

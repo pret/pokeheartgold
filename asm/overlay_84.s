@@ -26,7 +26,7 @@ ov84_0223DD60: ; 0x0223DD60
 	mov r1, #0
 	lsl r2, r2, #2
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x6e
 	bl sub_0201AC88
 	add r1, r5, #0

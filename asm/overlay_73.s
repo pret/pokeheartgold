@@ -50,7 +50,7 @@ _021E5916:
 	ldr r2, _021E5A9C ; =0x00004A8C
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x32
 	bl sub_0201AC88
 	str r0, [r4]
@@ -4810,7 +4810,7 @@ _021E7E62:
 	ldr r2, _021E7F88 ; =0x000012CC
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x96
 	bl sub_0201AC88
 	str r0, [r4, #4]

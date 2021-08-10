@@ -387,23 +387,23 @@ _021E5BD6:
 	ldr r4, [sp, #4]
 	mov r1, #0xa
 	add r0, r4, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r1, sp, #0
 	strb r0, [r1]
 	add r0, r4, #0
 	mov r1, #0xa
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, sp, #0
 	strb r1, [r0, #1]
 	ldr r4, [sp, #8]
 	mov r1, #0xa
 	add r0, r4, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r1, sp, #0
 	strb r0, [r1, #2]
 	add r0, r4, #0
 	mov r1, #0xa
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, sp, #0
 	strb r1, [r0, #3]
 	mov r4, #0
@@ -1451,7 +1451,7 @@ ov100_021E642C: ; 0x021E642C
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xcc
-	bl sub_020E5B44
+	bl memset
 	str r5, [r4, #0x20]
 	mov r0, #0x5a
 	str r0, [r4]

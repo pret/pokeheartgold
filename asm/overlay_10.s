@@ -918,7 +918,7 @@ ov10_0221C4B8: ; 0x0221C4B8
 	mul r0, r1
 	add r1, r3, #4
 	ldr r1, [r2, r1]
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r0, r6
 	bhs _0221C508
 	add r0, r5, #0
@@ -959,7 +959,7 @@ ov10_0221C510: ; 0x0221C510
 	mul r0, r1
 	add r1, r3, #4
 	ldr r1, [r2, r1]
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r0, r6
 	bls _0221C560
 	add r0, r5, #0
@@ -1000,7 +1000,7 @@ ov10_0221C568: ; 0x0221C568
 	mul r0, r1
 	add r1, r3, #4
 	ldr r1, [r2, r1]
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r0, r6
 	bne _0221C5B8
 	add r0, r5, #0
@@ -1041,7 +1041,7 @@ ov10_0221C5C0: ; 0x0221C5C0
 	mul r0, r1
 	add r1, r3, #4
 	ldr r1, [r2, r1]
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r0, r6
 	beq _0221C610
 	add r0, r5, #0
@@ -6892,7 +6892,7 @@ _0221F28E:
 	lsl r1, r1, #2
 	add r1, r6, r1
 	ldr r1, [r1, r2]
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r4, r0, #1
 	cmp r4, #0x96
 	ble _0221F2B4

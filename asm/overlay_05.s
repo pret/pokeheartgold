@@ -16,7 +16,7 @@ ov05_0221BA00: ; 0x0221BA00
 	ldr r2, _0221BA60 ; =0x00000BD4
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _0221BA64 ; =0x00000B7F
 	str r5, [r4]
 	mov r1, #0
@@ -4311,7 +4311,7 @@ ov05_0221DC60: ; 0x0221DC60
 	add r0, r5, r0
 	add r1, #0x60
 	mov r2, #0x60
-	bl sub_020E5AD8
+	bl memcpy
 	add r0, r6, #0
 	bl sub_0201AB0C
 	ldr r0, [r5]
@@ -4481,11 +4481,11 @@ _0221DE0E:
 	add r0, r0, r1
 	add r1, r6, r4
 	mov r2, #0x20
-	bl sub_020E5AD8
+	bl memcpy
 	add r0, r6, r4
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020E5B44
+	bl memset
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
@@ -4780,7 +4780,7 @@ ov05_0221E07C: ; 0x0221E07C
 	add r0, r4, r0
 	mov r1, #0
 	mov r2, #0x90
-	bl sub_020E5B44
+	bl memset
 	ldr r1, [r4]
 	add r0, r4, #0
 	ldr r1, [r1, #4]

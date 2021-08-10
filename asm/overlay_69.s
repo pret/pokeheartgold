@@ -36,7 +36,7 @@ ov69_021E5900: ; 0x021E5900
 	ldr r2, _021E5A10 ; =0x0000C33C
 	mov r1, #0
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x31
 	str r0, [r5]
 	ldr r0, _021E5A14 ; =0x020F5670
@@ -988,7 +988,7 @@ ov69_021E6138: ; 0x021E6138
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x24]
 	mov r1, #6
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r7, r0, #0
 	ldr r0, [sp, #0x18]
 	mov r5, #1

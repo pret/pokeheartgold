@@ -2607,7 +2607,7 @@ ov95_021E6D70: ; 0x021E6D70
 	mov r1, #0
 	mov r2, #0x8c
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r5, #0
 	bl sub_020072A4
 	str r0, [r4]

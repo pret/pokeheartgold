@@ -8817,14 +8817,14 @@ _021EB9E2:
 	bne _021EBA0A
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, #0x50
 	mul r0, r1
 	add r0, #0x30
 	str r0, [sp, #8]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r1, #0x18
 	mul r1, r0
 	add r1, #0x40

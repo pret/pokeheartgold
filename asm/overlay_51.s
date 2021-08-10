@@ -51,7 +51,7 @@ ov51_021E5AC0: ; 0x021E5AC0
 	ldr r2, _021E5D4C ; =0x00003444
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r5, #0
 	bl sub_020072A4
 	add r1, r4, #0

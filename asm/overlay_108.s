@@ -9709,7 +9709,7 @@ ov108_021EA63C: ; 0x021EA63C
 	str r2, [sp, #4]
 	str r3, [sp, #8]
 	add r4, r6, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r2, _021EA6F8 ; =0x021EAD28
 	lsl r0, r1, #2
 	add r0, r2, r0

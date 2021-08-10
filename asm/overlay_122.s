@@ -6312,7 +6312,7 @@ ov122_021E8910: ; 0x021E8910
 	add r7, r0, #0
 	bl sub_0201FDB8
 	mov r1, #0x64
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r7, #0
 	add r6, r1, #0
 	bl ov122_021E8848
@@ -6580,7 +6580,7 @@ _021E8AF4:
 	beq _021E8B06
 	bl sub_0201FDB8
 	mov r1, #0x19
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r0, r1, #0x18
 	b _021E8B08
 _021E8B06:

@@ -1303,7 +1303,7 @@ _022382DC:
 	beq _022382F8
 	mov r0, sl
 	mov r1, r7
-	bl sub_020F2BA4
+	bl _u32_div_f
 _022382F8:
 	mul ip, r0, r7
 	mul r3, r0, r6
@@ -2080,7 +2080,7 @@ ov74_02238D94: ; 0x02238D94
 	mov sl, r0
 	mov r1, sl
 	rsb r0, sl, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	movs r8, r1
 	mov r7, sl
 	mov r5, #0
@@ -2090,11 +2090,11 @@ ov74_02238D94: ; 0x02238D94
 _02238DC0:
 	mov r0, r7
 	mov r1, r8
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov sb, r1
 	mov r0, r7
 	mov r1, r8
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mla r1, r0, r6, r5
 	mov r5, r6
 	mov r7, r8
@@ -2111,7 +2111,7 @@ _02238DFC:
 	bne _02238E1C
 	mov r0, r5
 	mov r1, sl
-	bl sub_020F2BA4
+	bl _u32_div_f
 _02238E1C:
 	mov r0, r1
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
@@ -4753,7 +4753,7 @@ ov74_0223B230: ; 0x0223B230
 _0223B25C:
 	mov r0, #0
 	mvn r1, #0
-	bl sub_020D2F5C
+	bl OS_FreeToHeap
 	add sp, sp, #4
 	ldmia sp!, {lr}
 	bx lr
@@ -4777,7 +4777,7 @@ ov74_0223B278: ; 0x0223B278
 _0223B2A4:
 	mov r0, #0
 	mvn r1, #0
-	bl sub_020D2E54
+	bl OS_AllocFromHeap
 	add sp, sp, #4
 	ldmia sp!, {lr}
 	bx lr

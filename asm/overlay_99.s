@@ -3096,7 +3096,7 @@ ov99_021E7158: ; 0x021E7158
 	lsl r0, r1, #0x12
 	lsr r0, r0, #0x17
 	mov r1, #0x1e
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
 	bne _021E717E
@@ -3366,7 +3366,7 @@ _021E7332:
 	lsr r0, r0, #0x17
 	beq _021E7380
 	mov r1, #0x1e
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r2, #0xfd
 	lsl r2, r2, #2
 	ldr r3, [r5, r2]
@@ -3380,7 +3380,7 @@ _021E7332:
 	mov r1, #0x1e
 	lsl r0, r0, #0x12
 	lsr r0, r0, #0x17
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r1, #0
 	bne _021E7380
 	mov r2, #0xfd

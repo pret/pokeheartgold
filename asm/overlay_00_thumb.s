@@ -553,12 +553,12 @@ _021E5D4E:
 	add r3, r5, #0
 	add r0, r1, r0
 	ldr r1, _021E5E10 ; =_02216034
-	bl sub_020E7F30
+	bl sprintf
 	ldr r0, _021E5DFC ; =_0221A680
 	ldr r1, [r0]
 	ldr r0, _021E5E0C ; =0x00000FC4
 	add r0, r1, r0
-	bl sub_020E9580
+	bl strlen
 	cmp r0, #0x80
 	blo _021E5D84
 	bl GF_AssertFail
@@ -3876,7 +3876,7 @@ ov00_021E765C: ; 0x021E765C
 	lsl r0, r0, #8
 	mul r0, r1
 	ldr r1, _021E7790 ; =0x000082EA
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r1, _021E778C ; =_0221A684
 	ldr r3, _021E7794 ; =0x0000411A
 	ldr r2, [r1]

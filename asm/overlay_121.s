@@ -248,7 +248,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	mov r1, #0
 	lsl r2, r2, #2
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x9e
 	bl sub_0201AC88
 	str r0, [r5]

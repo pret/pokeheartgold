@@ -142,7 +142,7 @@ ov45_02229FF4: ; 0x02229FF4
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _0222A0CC ; =0x00000528
 	str r5, [r4]
 	str r7, [r4, r0]
@@ -2225,11 +2225,11 @@ ov45_0222AE08: ; 0x0222AE08
 	add r6, r0, #0
 	mov r1, #3
 	add r4, r2, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	str r0, [r5]
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	str r1, [r4]
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov45_0222AE08
@@ -3559,7 +3559,7 @@ ov45_0222B79C: ; 0x0222B79C
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0xc8
-	bl sub_020E5B44
+	bl memset
 	add r0, sp, #4
 	bl ov45_0222EC10
 	add r4, #0x20
@@ -4314,12 +4314,12 @@ _0222BD34:
 
 	thumb_func_start ov45_0222BD40
 ov45_0222BD40: ; 0x0222BD40
-	ldr r3, _0222BD48 ; =sub_020E5B44
+	ldr r3, _0222BD48 ; =memset
 	mov r1, #0
 	mov r2, #0x28
 	bx r3
 	.balign 4, 0
-_0222BD48: .word sub_020E5B44
+_0222BD48: .word memset
 	thumb_func_end ov45_0222BD40
 
 	thumb_func_start ov45_0222BD4C
@@ -5196,7 +5196,7 @@ ov45_0222C388: ; 0x0222C388
 	add r4, r0, #0
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0
 	add r4, #0x50
 	mvn r0, r0
@@ -5342,11 +5342,11 @@ ov45_0222C480: ; 0x0222C480
 	cmp r6, r1
 	beq _0222C4B2
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r2, #0xc
 	mul r2, r4
 	mov r0, #0
@@ -5370,11 +5370,11 @@ ov45_0222C4B4: ; 0x0222C4B4
 _0222C4C2:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, #0xc
 	mul r0, r6
 	add r2, r5, r0
@@ -5428,11 +5428,11 @@ ov45_0222C514: ; 0x0222C514
 	cmp r6, r1
 	beq _0222C548
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r2, #0xc
 	mul r2, r4
 	add r2, r5, r2
@@ -5458,11 +5458,11 @@ ov45_0222C54C: ; 0x0222C54C
 _0222C55A:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, #0xc
 	mul r0, r6
 	add r2, r5, r0
@@ -5486,11 +5486,11 @@ ov45_0222C580: ; 0x0222C580
 _0222C58E:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r2, #0xc
 	mul r2, r6
 	add r2, r5, r2
@@ -5548,11 +5548,11 @@ ov45_0222C5E8: ; 0x0222C5E8
 _0222C5F8:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r2, #0xc
 	mul r2, r7
 	add r2, r5, r2
@@ -5576,11 +5576,11 @@ ov45_0222C61C: ; 0x0222C61C
 _0222C62C:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, #0xc
 	mul r0, r7
 	add r2, r5, r0
@@ -5608,11 +5608,11 @@ ov45_0222C658: ; 0x0222C658
 _0222C666:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, #0xc
 	mul r0, r6
 	add r2, r5, r0
@@ -5923,7 +5923,7 @@ ov45_0222C8AC: ; 0x0222C8AC
 	mov r1, #0
 	mov r2, #0x20
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r1, #0
 	mov r0, #0x64
 _0222C8BC:
@@ -5956,7 +5956,7 @@ _0222C8E0:
 	bne _0222C8FC
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldrb r1, [r5, r0]
 	asr r1, r1, #1
 	strb r1, [r5, r0]
@@ -5981,7 +5981,7 @@ _0222C908:
 	blt _0222C908
 	bl sub_0201FDB8
 	add r1, r5, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r3, #0
 	add r0, r3, #0
 _0222C920:
@@ -6153,7 +6153,7 @@ ov45_0222CA10: ; 0x0222CA10
 	add r1, r7, #0
 	str r0, [sp]
 	add r0, r0, r4
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r6, #0
 	bl sub_02015D6C
 	strh r0, [r5]
@@ -6162,7 +6162,7 @@ ov45_0222CA10: ; 0x0222CA10
 	add r1, r7, #0
 	str r0, [sp, #4]
 	add r0, r4, r0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r6, #0
 	bl sub_02015D6C
 	strh r0, [r5, #2]
@@ -6171,14 +6171,14 @@ ov45_0222CA10: ; 0x0222CA10
 	ldr r0, [sp, #4]
 	add r1, r7, #0
 	add r0, r0, r4
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r6, #0
 	bl sub_02015D6C
 	strh r0, [r5, #4]
 	ldr r0, [sp]
 	add r1, r7, #0
 	add r0, r4, r0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r6, #0
 	bl sub_02015D6C
 	strh r0, [r5, #6]
@@ -6596,7 +6596,7 @@ ov45_0222CD1C: ; 0x0222CD1C
 	mov r1, #0
 	mov r2, #0x48
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x3c]
 	ldr r0, [sp]
@@ -6872,7 +6872,7 @@ ov45_0222CF00: ; 0x0222CF00
 	str r0, [r5]
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020E5B44
+	bl memset
 	ldr r1, [r5]
 	ldr r0, [r4, #0x40]
 	str r0, [r1]
@@ -7223,7 +7223,7 @@ ov45_0222D164: ; 0x0222D164
 	str r0, [r4]
 	mov r1, #0
 	mov r2, #0x3c
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r4]
 	mov r2, #0
 	add r1, r0, #0
@@ -7309,7 +7309,7 @@ ov45_0222D20C: ; 0x0222D20C
 	str r0, [r4]
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r4]
 	mov r1, #0
 	str r1, [r0, #0x3c]
@@ -7391,7 +7391,7 @@ ov45_0222D2AC: ; 0x0222D2AC
 	str r0, [r4]
 	mov r1, #0
 	mov r2, #0x3c
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r4]
 	mov r2, #0
 	add r1, r0, #0
@@ -8230,7 +8230,7 @@ ov45_0222D860: ; 0x0222D860
 	add r4, r0, #0
 	mov r1, #0
 	lsl r2, r2, #4
-	bl sub_020E5B44
+	bl memset
 	add r0, r4, #0
 	add r0, #8
 	bl ov45_0222DE1C
@@ -9261,7 +9261,7 @@ ov45_0222DF78: ; 0x0222DF78
 	mov r1, #0
 	lsl r2, r2, #2
 	str r0, [sp]
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0
 	str r0, [sp, #8]
 	ldr r0, [sp]
@@ -9324,7 +9324,7 @@ _0222DFDC:
 	ldr r0, [sp]
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020E5B44
+	bl memset
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov45_0222DFD0
 
@@ -10182,7 +10182,7 @@ _0222E5F6:
 	ldr r2, _0222E680 ; =0x00000988
 	str r0, [r1]
 	mov r1, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _0222E67C ; =0x022577C0
 	ldr r0, [r0]
 	str r6, [r0]
@@ -12705,7 +12705,7 @@ ov45_0222F848: ; 0x0222F848
 	mov r1, #0
 	ldr r0, [r0, #0x24]
 	add r2, r4, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _0222F874 ; =0x022577C0
 	ldr r0, [r0]
 	str r5, [r0, #0x28]
@@ -12758,7 +12758,7 @@ _0222F8B4:
 	bls _0222F8CA
 	add r0, r5, r4
 	mov r1, #0
-	bl sub_020E5B44
+	bl memset
 	b _0222F8CC
 _0222F8CA:
 	add r6, r2, #0
@@ -12766,7 +12766,7 @@ _0222F8CC:
 	ldr r1, [sp]
 	add r0, r5, r4
 	add r2, r6, #0
-	bl sub_020E5AD8
+	bl memcpy
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov45_0222F898
 
@@ -12810,7 +12810,7 @@ _0222F914:
 	mul r0, r4
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_020E5B44
+	bl memset
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov45_0222F8FC
@@ -13567,7 +13567,7 @@ ov45_0222FE84: ; 0x0222FE84
 	ldr r1, _0222FEBC ; =0x02254EF0
 	ldr r0, [sp, #8]
 	ldr r1, [r1]
-	bl sub_020E9734
+	bl strcmp
 	cmp r0, #0
 	bne _0222FEB8
 	ldr r0, _0222FEC0 ; =0x022577C0
@@ -13577,7 +13577,7 @@ ov45_0222FE84: ; 0x0222FE84
 	lsl r0, r0, #2
 	add r0, r1, r0
 	ldr r1, [sp, #0xc]
-	bl sub_020E5AD8
+	bl memcpy
 	ldr r0, _0222FEC0 ; =0x022577C0
 	ldr r2, [r0]
 	mov r0, #0x13
@@ -13943,7 +13943,7 @@ ov45_02230144: ; 0x02230144
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0xe4
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _02230160 ; =0x0000069C
 	mov r1, #3
 	strh r1, [r4, r0]
@@ -14422,12 +14422,12 @@ _02230484:
 
 	thumb_func_start ov45_0223048C
 ov45_0223048C: ; 0x0223048C
-	ldr r3, _02230494 ; =sub_020E5AD8
+	ldr r3, _02230494 ; =memcpy
 	mov r2, #0xb6
 	lsl r2, r2, #2
 	bx r3
 	.balign 4, 0
-_02230494: .word sub_020E5AD8
+_02230494: .word memcpy
 	thumb_func_end ov45_0223048C
 
 	thumb_func_start ov45_02230498
@@ -14444,7 +14444,7 @@ ov45_02230498: ; 0x02230498
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r2, [sp, #4]
 	mov r1, #0x90
 	add r0, r7, #0
@@ -14920,7 +14920,7 @@ ov45_02230884: ; 0x02230884
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x90
-	bl sub_020E5B44
+	bl memset
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov45_02230884
@@ -15138,7 +15138,7 @@ ov45_022309D0: ; 0x022309D0
 	add r0, r1, #0
 	mul r0, r2
 	add r1, r3, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r0, r0, #0xc
 	pop {r3, pc}
 	thumb_func_end ov45_022309D0
@@ -15275,12 +15275,12 @@ _02230AAE:
 
 	thumb_func_start ov45_02230AB4
 ov45_02230AB4: ; 0x02230AB4
-	ldr r3, _02230ABC ; =sub_020E5B44
+	ldr r3, _02230ABC ; =memset
 	mov r1, #0
 	mov r2, #0x90
 	bx r3
 	.balign 4, 0
-_02230ABC: .word sub_020E5B44
+_02230ABC: .word memset
 	thumb_func_end ov45_02230AB4
 
 	thumb_func_start ov45_02230AC0
@@ -15991,7 +15991,7 @@ ov45_02231018: ; 0x02231018
 	add r6, r0, #0
 	ldr r0, [sp, #0x18]
 	mov r1, #6
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r5, r0
 	blt _0223104A
 	bl GF_AssertFail

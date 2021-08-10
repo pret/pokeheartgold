@@ -22,7 +22,7 @@ ov53_021E5900: ; 0x021E5900
 	mov r1, #0
 	lsl r2, r2, #6
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x50
 	str r0, [r4]
 	add r0, r5, #0

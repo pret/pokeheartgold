@@ -648,7 +648,7 @@ ov75_02246DFC: ; 0x02246DFC
 	bl sub_020266FC
 	ldr r2, _02246E38 ; =0x00002710
 	mov r3, #0
-	bl sub_020F290C
+	bl _ull_mod
 	mov r1, #0x42
 	lsl r1, r1, #2
 	str r0, [r5, r1]

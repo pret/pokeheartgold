@@ -5009,7 +5009,7 @@ _0226226E:
 _0226227A:
 	ldr r0, [sp, #0x2c]
 	mov r1, #0xa
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r7, #0
 	add r0, #0x80
 	ldr r0, [r0]
@@ -5018,7 +5018,7 @@ _0226227A:
 	str r0, [sp, #0x34]
 	ldr r0, [sp, #0x2c]
 	mov r1, #0xa
-	bl sub_020F2BA4
+	bl _u32_div_f
 	str r0, [sp, #0x2c]
 	ldr r0, _02262304 ; =0x000015AC
 	add r1, sp, #0x3c

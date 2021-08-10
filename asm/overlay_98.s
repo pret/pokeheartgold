@@ -1537,13 +1537,13 @@ _0221F130:
 	lsl r2, r4, #2
 	ldr r1, [r1, r2]
 	add r0, r5, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r1, #0
 	sub r1, r4, #1
 	lsl r2, r1, #2
 	ldr r1, _0221F14C ; =0x0221F1E4
 	ldr r1, [r1, r2]
-	bl sub_020F2BA4
+	bl _u32_div_f
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0221F14C: .word 0x0221F1E4

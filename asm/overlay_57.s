@@ -36,7 +36,7 @@ ov57_022378DC: ; 0x022378DC
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r5, #0
 	bl sub_020072A4
 	str r0, [r4]

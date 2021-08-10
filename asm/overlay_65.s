@@ -2281,7 +2281,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	ldr r0, _0221D1C4 ; =0x00002228
 	mov r1, #0xff
 	ldr r0, [r5, r0]
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r4, #4]
 	mov r1, #0x1a
 	bl sub_02028F68

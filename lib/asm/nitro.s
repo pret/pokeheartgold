@@ -9507,8 +9507,8 @@ sub_020D2600: ; 0x020D2600
 	bx lr
 	arm_func_end sub_020D2600
 
-	arm_func_start sub_020D2618
-sub_020D2618: ; 0x020D2618
+	arm_func_start OS_LockMutex
+OS_LockMutex: ; 0x020D2618
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	bl sub_020D3A38
@@ -9547,10 +9547,10 @@ _020D268C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D2698: .word 0x021E16A0
-	arm_func_end sub_020D2618
+	arm_func_end OS_LockMutex
 
-	arm_func_start sub_020D269C
-sub_020D269C: ; 0x020D269C
+	arm_func_start OS_UnlockMutex
+OS_UnlockMutex: ; 0x020D269C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl sub_020D3A38
@@ -9576,7 +9576,7 @@ _020D26E8:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D26F4: .word 0x021E16A0
-	arm_func_end sub_020D269C
+	arm_func_end OS_UnlockMutex
 
 	arm_func_start sub_020D26F8
 sub_020D26F8: ; 0x020D26F8
@@ -9598,8 +9598,8 @@ _020D2710:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020D26F8
 
-	arm_func_start sub_020D2734
-sub_020D2734: ; 0x020D2734
+	arm_func_start OS_TryLockMutex
+OS_TryLockMutex: ; 0x020D2734
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	bl sub_020D3A38
@@ -9632,7 +9632,7 @@ _020D2794:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D27A4: .word 0x021E16A0
-	arm_func_end sub_020D2734
+	arm_func_end OS_TryLockMutex
 
 	arm_func_start sub_020D27A8
 sub_020D27A8: ; 0x020D27A8
@@ -10204,8 +10204,8 @@ _020D2E4C:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020D2DAC
 
-	arm_func_start sub_020D2E54
-sub_020D2E54: ; 0x020D2E54
+	arm_func_start OS_AllocFromHeap
+OS_AllocFromHeap: ; 0x020D2E54
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	mov r5, r1
@@ -10279,10 +10279,10 @@ _020D2F38:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D2F58: .word 0x021E1900
-	arm_func_end sub_020D2E54
+	arm_func_end OS_AllocFromHeap
 
-	arm_func_start sub_020D2F5C
-sub_020D2F5C: ; 0x020D2F5C
+	arm_func_start OS_FreeToHeap
+OS_FreeToHeap: ; 0x020D2F5C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -10310,7 +10310,7 @@ sub_020D2F5C: ; 0x020D2F5C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D2FC0: .word 0x021E1900
-	arm_func_end sub_020D2F5C
+	arm_func_end OS_FreeToHeap
 
 	arm_func_start sub_020D2FC4
 sub_020D2FC4: ; 0x020D2FC4
@@ -10924,7 +10924,7 @@ sub_020D36BC: ; 0x020D36BC
 	mov r2, r5
 	mov r3, r4
 	sbc r1, r1, r6
-	bl sub_020F2900
+	bl _ll_udiv
 	adds r2, r0, #1
 	adc r0, r1, #0
 	umull r3, r1, r5, r2
@@ -13429,21 +13429,21 @@ _020D5504: .word 0x021E1A44
 
 	arm_func_start sub_020D5508
 sub_020D5508: ; 0x020D5508
-	ldr ip, _020D5514 ; =sub_020D2618
+	ldr ip, _020D5514 ; =OS_LockMutex
 	ldr r0, _020D5518 ; =0x021E1A44
 	bx ip
 	.align 2, 0
-_020D5514: .word sub_020D2618
+_020D5514: .word OS_LockMutex
 _020D5518: .word 0x021E1A44
 	arm_func_end sub_020D5508
 
 	arm_func_start sub_020D551C
 sub_020D551C: ; 0x020D551C
-	ldr ip, _020D5528 ; =sub_020D269C
+	ldr ip, _020D5528 ; =OS_UnlockMutex
 	ldr r0, _020D552C ; =0x021E1A44
 	bx ip
 	.align 2, 0
-_020D5528: .word sub_020D269C
+_020D5528: .word OS_UnlockMutex
 _020D552C: .word 0x021E1A44
 	arm_func_end sub_020D551C
 
@@ -23907,7 +23907,7 @@ _020DDCB4:
 	mla r1, r2, r8, r1
 	mov r2, r5
 	mov r3, r4
-	bl sub_020F2900
+	bl _ll_udiv
 	ldrb r2, [sl]
 	cmp r1, r2, asr #31
 	cmpeq r0, r2
@@ -23964,7 +23964,7 @@ _020DDD6C:
 	umull r0, r1, lr, r7
 	mla r1, lr, r8, r1
 	mla r1, ip, r7, r1
-	bl sub_020F2900
+	bl _ll_udiv
 	ldrb r2, [sb, #1]
 	cmp r1, r2, asr #31
 	cmpeq r0, r2
@@ -24014,7 +24014,7 @@ _020DDE18:
 	umull r0, r1, lr, r7
 	mla r1, lr, r8, r1
 	mla r1, ip, r7, r1
-	bl sub_020F2900
+	bl _ll_udiv
 	ldrb r2, [sb, #2]
 	cmp r1, r2, asr #31
 	cmpeq r0, r2
@@ -24241,7 +24241,7 @@ _020DE124:
 	mla r1, ip, r7, r1
 	ldr r2, _020DE234 ; =0x000082EA
 	mov r3, #0
-	bl sub_020F2900
+	bl _ll_udiv
 	cmp r1, sl
 	cmpeq r0, sb
 	blo _020DE124
@@ -24276,7 +24276,7 @@ _020DE1A0:
 	mla r1, fp, ip, r1
 	mla r1, sl, r7, r1
 	ldr r2, _020DE234 ; =0x000082EA
-	bl sub_020F2900
+	bl _ll_udiv
 	cmp r1, sb
 	cmpeq r0, r8
 	blo _020DE1A0
@@ -28763,7 +28763,7 @@ sub_020E1D6C: ; 0x020E1D6C
 	orr r1, r1, ip, lsr #26
 	mov r0, ip, lsl #6
 	mov r3, #0
-	bl sub_020F2900
+	bl _ll_udiv
 	ldr r2, _020E1DC0 ; =0x021E4F2C
 	ldr r3, [r2, #0x24]
 	ldr ip, [r2, #0x20]
@@ -31855,7 +31855,7 @@ _020E45E0:
 	mov r0, r7
 	mov r2, #0xa
 	mov r3, #0
-	bl sub_020F2900
+	bl _ll_udiv
 	mov r2, #0xa
 	umull r3, r2, r0, r2
 	subs r2, r7, r3
