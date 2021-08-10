@@ -1109,7 +1109,7 @@
 .public sub_020F2968
 .public sub_020F2998
 .public sub_020F2BA4
-.public sub_020F47A0
+.public __ThrowHandler
 
 .public GF_AssertFail
 .public MIi_UncompressBackward
