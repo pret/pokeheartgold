@@ -18081,12 +18081,21 @@ ov45_02240A80: ; 0x02240A80
 _02240B0C: .word 0x022577DC
 	arm_func_end ov45_02240A80
 
+	.section .version,4
+
+	.balign 4, 0
+	.public _version_NINTENDO_DWC_LOBBY
+_version_NINTENDO_DWC_LOBBY: ; 0x02000C88
+	.asciz "[SDK+NINTENDO:DWC_LOBBY]"
+
+	.previous
+
 	arm_func_start ov45_02240B10
 ov45_02240B10: ; 0x02240B10
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x13c
 	mov sl, r0
-	ldr r0, _02240F30 ; =0x02000C88
+	ldr r0, _02240F30 ; =_version_NINTENDO_DWC_LOBBY
 	mov sb, r1
 	mov r8, r2
 	mov r7, r3
@@ -18355,7 +18364,7 @@ _02240F0C:
 	add sp, sp, #0x13c
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.balign 4, 0
-_02240F30: .word 0x02000C88
+_02240F30: .word _version_NINTENDO_DWC_LOBBY
 _02240F34: .word 0x022577DC
 _02240F38: .word 0x02255308
 _02240F3C: .word 0x02255310
