@@ -1,5 +1,6 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
+	.public ov60_021EAFE0
 
 	.text
 
@@ -224,13 +225,13 @@ ov75_02246B00: ; 0x02246B00
 	mov r0, #0x59
 	bl sub_0201A9C4
 	ldr r0, _02246B40 ; =SDK_OVERLAY_OVY_60_ID
-	ldr r1, _02246B44 ; =0x021EAFE0
+	ldr r1, _02246B44 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02246B40: .word SDK_OVERLAY_OVY_60_ID
-_02246B44: .word 0x021EAFE0
+_02246B44: .word ov60_021EAFE0
 	thumb_func_end ov75_02246B00
 
 	thumb_func_start ov75_02246B48

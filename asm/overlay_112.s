@@ -1,5 +1,6 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
+	.public ov60_021EAFE0
 
 	.text
 
@@ -4183,13 +4184,13 @@ ov112_021E7910: ; 0x021E7910
 	mov r0, #0x10
 	bl sub_0201A738
 	ldr r0, _021E7954 ; =SDK_OVERLAY_OVY_60_ID
-	ldr r1, _021E7958 ; =0x021EAFE0
+	ldr r1, _021E7958 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
 _021E7954: .word SDK_OVERLAY_OVY_60_ID
-_021E7958: .word 0x021EAFE0
+_021E7958: .word ov60_021EAFE0
 	thumb_func_end ov112_021E7910
 
 	thumb_func_start ov112_021E795C
@@ -4602,7 +4603,7 @@ ov112_021E7CC8: ; 0x021E7CC8
 	mov r0, #1
 	str r0, [r5, r1]
 	add r0, r1, #0
-	mov r2, #7
+	mov r2, #GAME_VERSION
 	add r0, #8
 	strh r2, [r5, r0]
 	add r0, r1, #0
@@ -4629,7 +4630,7 @@ ov112_021E7CC8: ; 0x021E7CC8
 	ldr r0, _021E7D6C ; =0x00001028
 	mov r1, #1
 	str r1, [r5, r0]
-	mov r1, #7
+	mov r1, #GAME_VERSION
 	add r0, r0, #6
 	strh r1, [r5, r0]
 	ldr r0, _021E7D70 ; =0x0001E440
@@ -4712,7 +4713,7 @@ ov112_021E7DC0: ; 0x021E7DC0
 	ldr r0, _021E7DF0 ; =0x0000F1D0
 	mov r1, #1
 	str r1, [r4, r0]
-	mov r1, #7
+	mov r1, #GAME_VERSION
 	add r0, r0, #4
 	strh r1, [r4, r0]
 	ldr r0, _021E7DF4 ; =0x0001E440
