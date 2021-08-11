@@ -383,3 +383,9 @@ NITROFS_FILES := \
 	files/pbr/poketch.narc \
 	files/pbr/zukan.narc \
 	files/dwc/utility.bin
+
+.PHONY: filesystem
+filesystem: $(NITROFS_FILES)
+
+# TODO: file rules
+$(NITROFS_FILES): ;
