@@ -131,7 +131,7 @@ ov46_02258800: ; 0x02258800
 	mov r0, #1
 	add sp, #0x1c
 	pop {r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _02258918: .word 0x00000404
 _0225891C: .word 0x0000047D
 _02258920: .word 0x0000030A
@@ -558,7 +558,7 @@ _02258C68:
 	bl sub_02022D3C
 	mov r0, #1
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _02258CB0: .word 0x021D116C
 	thumb_func_end ov46_02258C38
 
@@ -839,7 +839,7 @@ _02258EF2:
 	mov r0, #0
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 _02258EF8: .word 0x0000FFFF
 	thumb_func_end ov46_02258DA8
 
@@ -891,7 +891,7 @@ _02258F2C:
 	bl sub_02022D3C
 	mov r0, #1
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _02258F6C: .word 0x021D116C
 	thumb_func_end ov46_02258EFC
 
@@ -899,7 +899,7 @@ _02258F6C: .word 0x021D116C
 ov46_02258F70: ; 0x02258F70
 	ldr r3, _02258F74 ; =ov46_022592E0
 	bx r3
-	.align 2, 0
+	.balign 4, 0
 _02258F74: .word ov46_022592E0
 	thumb_func_end ov46_02258F70
 
@@ -1198,7 +1198,7 @@ _022591A6:
 	bl sub_0200770C
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _022591F4: .word 0x04000050
 _022591F8: .word 0x04001050
 _022591FC: .word 0x022595B4
@@ -1293,7 +1293,7 @@ _02259292:
 	strb r1, [r4, r0]
 _022592AE:
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _022592B0: .word 0x0000032B
 _022592B4: .word 0x0000032A
 	thumb_func_end ov46_02259210
@@ -1317,7 +1317,7 @@ _022592C0:
 	ldr r0, [r6, #0xc]
 	bl sub_0201AB0C
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 _022592DC: .word _02259598
 	thumb_func_end ov46_022592B8
 
@@ -1500,7 +1500,7 @@ _0225943A:
 	add r0, r4, #0
 	bl sub_0201D8E4
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov46_022593F8
 
 	thumb_func_start ov46_02259450
@@ -1522,7 +1522,7 @@ _02259464:
 	str r0, [r4, #0x24]
 _02259470:
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov46_02259450
 
 	thumb_func_start ov46_02259474
@@ -1578,7 +1578,7 @@ _022594BC:
 	ldr r0, [r4]
 	bl sub_0200BDA0
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov46_02259494
 
 	thumb_func_start ov46_022594E0
@@ -1673,7 +1673,7 @@ ov46_02259550: ; 0x02259550
 	add r0, r6, #0
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov46_02259550
 
 	.rodata

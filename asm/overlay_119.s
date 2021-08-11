@@ -389,7 +389,7 @@ _0225F328:
 	add r0, #0x48
 	bl ov01_021F05F4
 	ldr r0, [r4, #0x44]
-	bl ov00_021F0028
+	bl ov01_021F0028
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
 	bl ov01_021EFCDC
@@ -1210,7 +1210,7 @@ _0225FA00:
 _0225FA0C:
 	add sp, #0x58
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _0225FA10: .word 0x000927C0
 _0225FA14: .word 0x04000010
 _0225FA18: .word 0x04000050
@@ -1876,7 +1876,7 @@ _0225FF68:
 _0225FF96:
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov119_0225FA2C
 
 	thumb_func_start ov119_0225FF9C
@@ -2198,7 +2198,7 @@ _02260238:
 _02260244:
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _02260248: .word 0x000927C0
 _0226024C: .word 0xFFFE0000
 _02260250: .word 0x0000019A

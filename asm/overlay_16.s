@@ -59,7 +59,7 @@ ov16_022014FC: ; 0x022014FC
 	strb r1, [r0, #0xa]
 	strb r1, [r0, #0xb]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_022014FC
 
 	thumb_func_start ov16_02201514
@@ -73,7 +73,7 @@ ov16_02201514: ; 0x02201514
 	ldrb r0, [r0, #2]
 	mul r0, r2
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201514
 
 	thumb_func_start ov16_02201528
@@ -138,7 +138,7 @@ ov16_02201578: ; 0x02201578
 _02201582:
 	mov r0, #4
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201578
 
 	thumb_func_start ov16_02201588
@@ -151,7 +151,7 @@ ov16_02201588: ; 0x02201588
 _02201592:
 	mov r0, #0xa
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201588
 
 	thumb_func_start ov16_02201598
@@ -175,7 +175,7 @@ ov16_022015B0: ; 0x022015B0
 	add r0, r0, r2
 	ldrb r0, [r0, #1]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_022015B0
 
 	thumb_func_start ov16_022015BC
@@ -213,7 +213,7 @@ ov16_022015E0: ; 0x022015E0
 	add r0, r0, r2
 	ldrb r0, [r0, #9]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_022015E0
 
 	thumb_func_start ov16_022015EC
@@ -223,7 +223,7 @@ ov16_022015EC: ; 0x022015EC
 	add r0, r0, r2
 	ldrb r0, [r0, #0xa]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_022015EC
 
 	thumb_func_start ov16_022015F8
@@ -233,7 +233,7 @@ ov16_022015F8: ; 0x022015F8
 	add r0, r0, r2
 	ldrh r0, [r0, #2]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_022015F8
 
 	thumb_func_start ov16_02201604
@@ -243,7 +243,7 @@ ov16_02201604: ; 0x02201604
 	add r0, r0, r2
 	ldrh r0, [r0, #4]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201604
 
 	thumb_func_start ov16_02201610
@@ -272,7 +272,7 @@ ov16_02201610: ; 0x02201610
 	mov r0, #5
 	strb r0, [r1, #0xa]
 	pop {r4, r5, r6, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201610
 
 	thumb_func_start ov16_02201644
@@ -292,7 +292,7 @@ ov16_02201650: ; 0x02201650
 	add r0, r0, r2
 	ldrb r0, [r0, #0xb]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201650
 
 	thumb_func_start ov16_0220165C
@@ -302,7 +302,7 @@ ov16_0220165C: ; 0x0220165C
 	add r0, r0, r3
 	strb r2, [r0, #0xb]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_0220165C
 
 	thumb_func_start ov16_02201668
@@ -312,7 +312,7 @@ ov16_02201668: ; 0x02201668
 	add r0, r0, r2
 	ldrh r0, [r0, #6]
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201668
 
 	thumb_func_start ov16_02201674
@@ -325,7 +325,7 @@ ov16_02201674: ; 0x02201674
 	bl ov16_022014FC
 	add r0, r4, #0
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201674
 
 	thumb_func_start ov16_02201688
@@ -386,7 +386,7 @@ _022016CE:
 	bl ov16_022014FC
 _022016F0:
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201688
 
 	thumb_func_start ov16_022016F4
@@ -566,7 +566,7 @@ ov16_02201820: ; 0x02201820
 	str r0, [r2]
 	pop {r4, r5}
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201820
 
 	thumb_func_start ov16_02201840
@@ -575,7 +575,7 @@ ov16_02201840: ; 0x02201840
 	add r1, r0, #0
 	mov r0, #0x42
 	bx r3
-	.align 2, 0
+	.balign 4, 0
 _02201848: .word sub_02007688
 	thumb_func_end ov16_02201840
 
@@ -583,7 +583,7 @@ _02201848: .word sub_02007688
 ov16_0220184C: ; 0x0220184C
 	ldr r3, _02201850 ; =sub_0200771C
 	bx r3
-	.align 2, 0
+	.balign 4, 0
 _02201850: .word sub_0200771C
 	thumb_func_end ov16_0220184C
 
@@ -591,7 +591,7 @@ _02201850: .word sub_0200771C
 ov16_02201854: ; 0x02201854
 	ldr r3, _02201858 ; =sub_0200770C
 	bx r3
-	.align 2, 0
+	.balign 4, 0
 _02201858: .word sub_0200770C
 	thumb_func_end ov16_02201854
 
@@ -653,7 +653,7 @@ _022018AA:
 _022018AE:
 	mov r0, #0
 	bx lr
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_0220185C
 
 	thumb_func_start ov16_022018B4
@@ -729,7 +729,7 @@ _022018FA:
 	blt _022018FA
 	add r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_022018F0
 
 	thumb_func_start ov16_0220191C
@@ -755,7 +755,7 @@ _02201926:
 	blt _02201926
 	add r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_0220191C
 
 	thumb_func_start ov16_02201948
@@ -783,7 +783,7 @@ _02201968:
 ov16_0220196C: ; 0x0220196C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _022019B4 ; =0x00000011
+	ldr r0, _022019B4 ; =SDK_OVERLAY_OVY_17_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl ov17_02201BC0
@@ -810,7 +810,7 @@ ov16_0220196C: ; 0x0220196C
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_022019B4: .word 0x00000011
+_022019B4: .word SDK_OVERLAY_OVY_17_ID
 	thumb_func_end ov16_0220196C
 
 	thumb_func_start ov16_022019B8
@@ -870,12 +870,12 @@ ov16_02201A04: ; 0x02201A04
 	bl sub_02007294
 	mov r0, #0x82
 	bl sub_0201A9C4
-	ldr r0, _02201A30 ; =0x00000011
+	ldr r0, _02201A30 ; =SDK_OVERLAY_OVY_17_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02201A30: .word 0x00000011
+_02201A30: .word SDK_OVERLAY_OVY_17_ID
 	thumb_func_end ov16_02201A04
 
 	thumb_func_start ov16_02201A34
@@ -889,7 +889,7 @@ ov16_02201A34: ; 0x02201A34
 	bl sub_020787A8
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201A34
 
 	thumb_func_start ov16_02201A4C
@@ -901,7 +901,7 @@ ov16_02201A4C: ; 0x02201A4C
 	ldr r0, [r4, #0x18]
 	bl sub_0201AB0C
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201A4C
 
 	thumb_func_start ov16_02201A60
@@ -915,7 +915,7 @@ ov16_02201A60: ; 0x02201A60
 	str r0, [r4, #8]
 	mov r0, #1
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _02201A74: .word 0x02201B68
 	thumb_func_end ov16_02201A60
 
@@ -941,7 +941,7 @@ _02201A8A:
 _02201A9A:
 	mov r0, #4
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov16_02201A78
 
 	thumb_func_start ov16_02201AA0
@@ -1001,7 +1001,7 @@ _02201B02:
 	mov r0, #3
 	add sp, #4
 	pop {r3, r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _02201B14: .word _02201B60
 _02201B18: .word 0x02201BA0
 _02201B1C: .word 0x02201B64
@@ -1037,9 +1037,12 @@ _02201B4E:
 	mov r0, #0
 	str r0, [r4, #0x10]
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _02201B5C: .word 0x0000FFFF
 	thumb_func_end ov16_02201B24
+
+	.rodata
+
 _02201B60:
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x04, 0xFF, 0x00, 0x00, 0x11, 0x1C, 0x20, 0x02, 0x79, 0x1C, 0x20, 0x02
 	.byte 0x05, 0x1D, 0x20, 0x02, 0xFF, 0xFF, 0xFF, 0xFF, 0x81, 0x93, 0x1F, 0x02, 0x09, 0x96, 0x1F, 0x02

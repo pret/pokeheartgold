@@ -27,7 +27,7 @@ ov116_0225F020: ; 0x0225F020
 	bl sub_02023558
 	add sp, #8
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov116_0225F020
 
 	thumb_func_start ov116_0225F054

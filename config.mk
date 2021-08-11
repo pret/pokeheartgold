@@ -43,3 +43,9 @@ endif
 ifndef SECURE_CRC
 $(error Unsupported ROM: $(GAME_VERSION) $(GAME_LANGUAGE))
 endif
+
+# At present this repository only supports the 1.0 US ROMs
+SUPPORTED_ROMS   := heartgold.us soulsilver.us
+ifneq ($(filter $(buildname),$(SUPPORTED_ROMS)),$(buildname))
+$(error $(buildname) is not supported, choose from: $(SUPPORTED_ROMS))
+endif

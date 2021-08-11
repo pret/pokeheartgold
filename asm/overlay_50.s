@@ -49,7 +49,7 @@ ov50_021E5924: ; 0x021E5924
 	str r5, [r4, #0x10]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov50_021E5924
 
 	thumb_func_start ov50_021E595C
@@ -124,7 +124,7 @@ ov50_021E59CC: ; 0x021E59CC
 	str r0, [r4, #8]
 	mov r0, #1
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E59E0: .word _021E5A8C
 	thumb_func_end ov50_021E59CC
 
@@ -149,7 +149,7 @@ _021E59F6:
 _021E5A04:
 	mov r0, #4
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5A08: .word 0x00000674
 	thumb_func_end ov50_021E59E4
 
@@ -176,7 +176,7 @@ ov50_021E5A0C: ; 0x021E5A0C
 	mov r0, #3
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5A38: .word 0x021E5A9C
 	thumb_func_end ov50_021E5A0C
 
@@ -217,7 +217,7 @@ _021E5A4E:
 	bl sub_020D4A50
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov50_021E5A3C
 
 	.rodata

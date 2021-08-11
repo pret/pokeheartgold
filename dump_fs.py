@@ -1,8 +1,7 @@
 import struct
 import os
 import subprocess
-import operator
-import itertools
+import argparse
 
 
 class StructReader(struct.Struct):
@@ -74,7 +73,7 @@ def dump_files(dirs, files, allocs, rom, print_only=True):
                 start, end = allocs[member]
                 filename = name + '/' + files[member]
                 if print_only:
-                    print(filename)
+                    print(member, filename, '0x{:08X}'.format(start), '0x{:08X}'.format(end - start), sep='\t')
                 else:
                     with open(filename, 'wb') as ofp:
                         rom.seek(start)
@@ -84,7 +83,7 @@ def dump_files(dirs, files, allocs, rom, print_only=True):
 def dump_overlays(proc, table, allocs, rom, make_files=False):
     for ovy_id, ram_start, size, bsssize, sinit_start, sinit_end, file_id, flag in table:
         if make_files:
-            outdir = f'{proc}/overlays/{ovy_id:02d}'
+            outdir = f'{proc}/overlays_ss/{ovy_id:02d}'
             os.makedirs(outdir, exist_ok=True)
             with open(f'{outdir}/module_{ovy_id:02d}.cfg', 'w') as cfg:
                 print('thumb_func', f'0x{ram_start:08X}', f'MOD{ovy_id:02d}_{ram_start:08X}', file=cfg)
@@ -105,40 +104,47 @@ def dump_overlays(proc, table, allocs, rom, make_files=False):
                 sbp_args.append('-7')
             with open(f'{outdir}/module_{ovy_id:02d}.s', 'w') as ofp:
                 subprocess.run(sbp_args, stdout=ofp)
-        else:
-            print('Overlay', ovy_id)
-            print('{')
-            print('    Address', hex(ram_start))
-            print('    ### Size', hex(size), '###')
-            print('    ### BSS Size', hex(bsssize), '###')
-            print('    ### SINIT Start', hex(sinit_start), '###')
-            print('    ### SINIT End', hex(sinit_end), '###')
-            print('    ### Compressed?', (flag & 0x01000000) != 0, '###')
-            if (flag & 0x01000000) != 0:
-                print('    ### Compressed size', hex(flag & 0x00FFFFFF), '###')
-            print('}')
-            print('')
-
-            for key, values in itertools.groupby(sorted(table, key=operator.itemgetter(1, 0)), key=operator.itemgetter(1)):
-                print(hex(key), [x[0] for x in values])
+    #     else:
+    #         print('Overlay', ovy_id)
+    #         print('{')
+    #         print('    Address', hex(ram_start))
+    #         print('    ### Size', hex(size), '###')
+    #         print('    ### BSS Size', hex(bsssize), '###')
+    #         print('    ### SINIT Start', hex(sinit_start), '###')
+    #         print('    ### SINIT End', hex(sinit_end), '###')
+    #         print('    ### Compressed?', (flag & 0x01000000) != 0, '###')
+    #         if (flag & 0x01000000) != 0:
+    #             print('    ### Compressed size', hex(flag & 0x00FFFFFF), '###')
+    #         print('}')
+    #         print('')
+    # if not make_files:
+    #     for key, values in itertools.groupby(sorted(table, key=operator.itemgetter(1, 0)), key=operator.itemgetter(1)):
+    #         print(hex(key), [x[0] for x in values])
 
 
 def main():
-    with open('baserom.nds', 'rb') as rom:
-        fnt_raw = read_table(rom, 0x40)
-        fat_raw = read_table(rom, 0x48)
-        ovy9_raw = read_table(rom, 0x50)
-        ovy7_raw = read_table(rom, 0x58)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('rom', type=argparse.FileType('rb'))
+    parser.add_argument('--no-dump-overlays', dest='dump_overlays', action='store_false')
+    parser.add_argument('--no-dump-files', dest='dump_files', action='store_false')
+    parser.add_argument('--fsroot', default='files')
+    parser.add_argument('--arm9-root', default='.')
+    parser.add_argument('--arm7-root', default='sub')
+    args = parser.parse_args()
+    fnt_raw = read_table(args.rom, 0x40)
+    fat_raw = read_table(args.rom, 0x48)
+    ovy9_raw = read_table(args.rom, 0x50)
+    ovy7_raw = read_table(args.rom, 0x58)
 
-        allocs = parse_fat(fat_raw)
-        dirs, files = parse_fnt(fnt_raw)
-        ovy9 = parse_overlays(ovy9_raw)
-        ovy7 = parse_overlays(ovy7_raw)
+    allocs = parse_fat(fat_raw)
+    dirs, files = parse_fnt(fnt_raw, root=args.fsroot)
+    ovy9 = parse_overlays(ovy9_raw)
+    ovy7 = parse_overlays(ovy7_raw)
 
-        dump_files(dirs, files, allocs, rom)
+    dump_files(dirs, files, allocs, args.rom, print_only=not args.dump_files)
 
-        # dump_overlays('.', ovy9, allocs, rom)
-        # dump_overlays('sub', ovy7, allocs, rom)
+    dump_overlays(args.arm9_root, ovy9, allocs, args.rom, make_files=args.dump_overlays)
+    dump_overlays(args.arm7_root, ovy7, allocs, args.rom, make_files=args.dump_overlays)
 
 
 if __name__ == '__main__':

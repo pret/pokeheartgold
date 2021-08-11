@@ -1,15 +1,20 @@
-TOOLSDIR  := ../tools
-BUILD_DIR := build
-NEFNAME   := sub
-MWCCVER   := 2.0/sp2p3
-PROC      := arm7tdmi
-PROC_S    := arm4t
-PROC_LD   := v4t
+BUILD_DIR    := build
+# Because mwldarm expects absolute paths to be WIN32 paths,
+# all paths referring up from BUILD_DIR must be relative.
+BACK_REL     := ..
+TOOLSDIR     := ../tools
+NEFNAME      := sub
+MWCCVER      := 2.0/sp2p3
+PROC         := arm7tdmi
+PROC_S       := arm4t
+PROC_LD      := v4t
+LCF_TEMPLATE := ARM7-TS.lcf.template
 
 include ../common.mk
 
-.SECONDARY:
-.SECONDEXPANSION:
-.DELETE_ON_ERROR:
-.PHONY: all tidy clean
+tidy:
+	$(RM) -r $(BUILD_DIR)
 
+clean: tidy
+
+all: $(SBIN)

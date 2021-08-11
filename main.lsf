@@ -15,26 +15,31 @@ Static main
 	Object unk_02007200.o
 	Object error_handling.o
 	Object unk_02025534.o
+	### Vendor libraries ###
 	Object sdk.o
+	Object nnsys.o
+	Object nitro.o
+	Object msl.o
 	Object bss_temp.o
 }
 
 Autoload ITCM
 {
 	Address 0x01FF8000
-	Object sdk.o (.itcm)
+	Object nitro.o (.itcm)
 }
 
 Autoload DTCM
 {
 	Address 0x027E0000
-	Object sdk.o (.dtcm)
+	Object nitro_dtcm.o (.dtcm)
+	Object nitro_dtcm.o (.bss)
 }
 Overlay OVY_0
 {
     After main
-    Object overlay_0_thumb.o
-    Object overlay_0_arm.o
+    Object overlay_00_thumb.o
+    Object overlay_00_arm.o
     ### Size 0x34d80 ###
     ### BSS Size 0x1380 ###
     ### SINIT Start 0x22163f8 ###
@@ -45,7 +50,7 @@ Overlay OVY_0
 Overlay OVY_1
 {
     After main
-    Object overlay_1.o
+    Object overlay_01.o
     ### Size 0x24260 ###
     ### BSS Size 0x3c020 ###
     ### SINIT Start 0x2209810 ###
@@ -55,8 +60,8 @@ Overlay OVY_1
 }
 Overlay OVY_2
 {
-    After OVY_81
-    Object overlay_2.o
+    After OVY_1
+    Object overlay_02.o
     ### Size 0xe2a0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2253d7c ###
@@ -66,8 +71,8 @@ Overlay OVY_2
 }
 Overlay OVY_3
 {
-    After OVY_71
-    Object overlay_3.o
+    After OVY_2
+    Object overlay_03.o
     ### Size 0x5a80 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x2259818 ###
@@ -77,8 +82,8 @@ Overlay OVY_3
 }
 Overlay OVY_4
 {
-    After OVY_71
-    Object overlay_4.o
+    After OVY_2
+    Object overlay_04.o
     ### Size 0x3d60 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2257b64 ###
@@ -88,8 +93,8 @@ Overlay OVY_4
 }
 Overlay OVY_5
 {
-    After OVY_17
-    Object overlay_5.o
+    After OVY_0
+    Object overlay_05.o
     ### Size 0x3880 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x221f274 ###
@@ -99,8 +104,8 @@ Overlay OVY_5
 }
 Overlay OVY_6
 {
-    After OVY_17
-    Object overlay_6.o
+    After OVY_0
+    Object overlay_06.o
     ### Size 0x420 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x221be18 ###
@@ -110,8 +115,8 @@ Overlay OVY_6
 }
 Overlay OVY_7
 {
-    After OVY_5
-    Object overlay_7.o
+    After OVY_6
+    Object overlay_07.o
     ### Size 0x1baa0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x223783c ###
@@ -121,8 +126,8 @@ Overlay OVY_7
 }
 Overlay OVY_8
 {
-    After OVY_5
-    Object overlay_8.o
+    After OVY_6
+    Object overlay_08.o
     ### Size 0xa120 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2225f3c ###
@@ -132,7 +137,7 @@ Overlay OVY_8
 }
 Overlay OVY_9
 {
-    After OVY_5
+    After OVY_6
     ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
@@ -143,7 +148,7 @@ Overlay OVY_9
 }
 Overlay OVY_10
 {
-    After OVY_5
+    After OVY_6
     Object overlay_10.o
     ### Size 0xf460 ###
     ### BSS Size 0x0 ###
@@ -165,7 +170,7 @@ Overlay OVY_11
 }
 Overlay OVY_12
 {
-    After OVY_40
+    After OVY_7
     Object overlay_12.o
     ### Size 0x37380 ###
     ### BSS Size 0x0 ###
@@ -176,7 +181,7 @@ Overlay OVY_12
 }
 Overlay OVY_13
 {
-    After OVY_17
+    After OVY_0
     Object overlay_13_thumb_1.o
     Object overlay_13_arm_1.o
     Object overlay_13_thumb_2.o
@@ -201,7 +206,7 @@ Overlay OVY_14
 }
 Overlay OVY_15
 {
-    After OVY_103
+    After OVY_14
     Object overlay_15.o
     ### Size 0x8100 ###
     ### BSS Size 0x20 ###
@@ -245,7 +250,7 @@ Overlay OVY_18
 }
 Overlay OVY_19
 {
-    After OVY_46
+    After OVY_3
     Object overlay_19.o
     ### Size 0x880 ###
     ### BSS Size 0x0 ###
@@ -256,7 +261,7 @@ Overlay OVY_19
 }
 Overlay OVY_20
 {
-    After OVY_46
+    After OVY_3
     Object overlay_20.o
     ### Size 0x420 ###
     ### BSS Size 0x0 ###
@@ -267,7 +272,7 @@ Overlay OVY_20
 }
 Overlay OVY_21
 {
-    After OVY_46
+    After OVY_3
     Object overlay_21.o
     ### Size 0x160 ###
     ### BSS Size 0x0 ###
@@ -278,7 +283,7 @@ Overlay OVY_21
 }
 Overlay OVY_22
 {
-    After OVY_46
+    After OVY_3
     Object overlay_22.o
     ### Size 0x2c0 ###
     ### BSS Size 0x0 ###
@@ -289,7 +294,7 @@ Overlay OVY_22
 }
 Overlay OVY_23
 {
-    After OVY_46
+    After OVY_3
     Object overlay_23.o
     ### Size 0x4c0 ###
     ### BSS Size 0x0 ###
@@ -300,7 +305,7 @@ Overlay OVY_23
 }
 Overlay OVY_24
 {
-    After OVY_46
+    After OVY_3
     Object overlay_24.o
     ### Size 0x6c0 ###
     ### BSS Size 0x0 ###
@@ -311,7 +316,7 @@ Overlay OVY_24
 }
 Overlay OVY_25
 {
-    After OVY_46
+    After OVY_3
     Object overlay_25.o
     ### Size 0x660 ###
     ### BSS Size 0x0 ###
@@ -322,7 +327,7 @@ Overlay OVY_25
 }
 Overlay OVY_26
 {
-    After OVY_46
+    After OVY_3
     Object overlay_26.o
     ### Size 0x520 ###
     ### BSS Size 0x0 ###
@@ -333,7 +338,7 @@ Overlay OVY_26
 }
 Overlay OVY_27
 {
-    After OVY_35
+    After OVY_24
     Object overlay_27.o
     ### Size 0x35a0 ###
     ### BSS Size 0x0 ###
@@ -344,7 +349,7 @@ Overlay OVY_27
 }
 Overlay OVY_28
 {
-    After OVY_91
+    After OVY_27
     Object overlay_28.o
     ### Size 0x1680 ###
     ### BSS Size 0x0 ###
@@ -355,7 +360,7 @@ Overlay OVY_28
 }
 Overlay OVY_29
 {
-    After OVY_91
+    After OVY_27
     Object overlay_29.o
     ### Size 0xe00 ###
     ### BSS Size 0x0 ###
@@ -366,7 +371,7 @@ Overlay OVY_29
 }
 Overlay OVY_30
 {
-    After OVY_91
+    After OVY_27
     Object overlay_30.o
     ### Size 0x7c0 ###
     ### BSS Size 0x0 ###
@@ -377,7 +382,7 @@ Overlay OVY_30
 }
 Overlay OVY_31
 {
-    After OVY_91
+    After OVY_27
     Object overlay_31.o
     ### Size 0x1b00 ###
     ### BSS Size 0x0 ###
@@ -388,7 +393,7 @@ Overlay OVY_31
 }
 Overlay OVY_32
 {
-    After OVY_91
+    After OVY_27
     Object overlay_32.o
     ### Size 0xdc0 ###
     ### BSS Size 0x0 ###
@@ -399,7 +404,7 @@ Overlay OVY_32
 }
 Overlay OVY_33
 {
-    After OVY_91
+    After OVY_27
     Object overlay_33.o
     ### Size 0x5a0 ###
     ### BSS Size 0x0 ###
@@ -410,7 +415,7 @@ Overlay OVY_33
 }
 Overlay OVY_34
 {
-    After OVY_91
+    After OVY_27
     Object overlay_34.o
     ### Size 0x1240 ###
     ### BSS Size 0x0 ###
@@ -421,7 +426,7 @@ Overlay OVY_34
 }
 Overlay OVY_35
 {
-    After OVY_19
+    After OVY_23
     Object overlay_35.o
     ### Size 0x40 ###
     ### BSS Size 0x0 ###
@@ -453,7 +458,7 @@ Overlay OVY_37
 }
 Overlay OVY_38
 {
-    After OVY_17
+    After OVY_0
     Object overlay_38_thumb.o
     Object overlay_38_arm.o
     ### Size 0xa620 ###
@@ -465,7 +470,7 @@ Overlay OVY_38
 }
 Overlay OVY_39
 {
-    After OVY_97
+    After OVY_38
     Object overlay_39_thumb.o
     Object overlay_39_arm.o
     ### Size 0x3b20 ###
@@ -477,7 +482,7 @@ Overlay OVY_39
 }
 Overlay OVY_40
 {
-    After OVY_43
+    After OVY_39
     Object overlay_40.o
     ### Size 0x1a7c0 ###
     ### BSS Size 0x0 ###
@@ -488,7 +493,7 @@ Overlay OVY_40
 }
 Overlay OVY_41
 {
-    After OVY_2
+    After OVY_40
     Object overlay_41.o
     ### Size 0x6200 ###
     ### BSS Size 0x0 ###
@@ -499,7 +504,7 @@ Overlay OVY_41
 }
 Overlay OVY_42
 {
-    After OVY_97
+    After OVY_38
     Object overlay_42.o
     ### Size 0x2e80 ###
     ### BSS Size 0x0 ###
@@ -510,7 +515,7 @@ Overlay OVY_42
 }
 Overlay OVY_43
 {
-    After OVY_39
+    After OVY_42
     Object overlay_43.o
     ### Size 0x5300 ###
     ### BSS Size 0x0 ###
@@ -521,7 +526,7 @@ Overlay OVY_43
 }
 Overlay OVY_44
 {
-    After OVY_39
+    After OVY_42
     Object overlay_44.o
     ### Size 0xc9c0 ###
     ### BSS Size 0x20 ###
@@ -532,7 +537,7 @@ Overlay OVY_44
 }
 Overlay OVY_45
 {
-    After OVY_39
+    After OVY_42
     Object overlay_45_thumb.o
     Object overlay_45_arm.o
     ### Size 0x2d8e0 ###
@@ -544,7 +549,7 @@ Overlay OVY_45
 }
 Overlay OVY_46
 {
-    After OVY_3
+    After OVY_45
     Object overlay_46.o
     ### Size 0xe40 ###
     ### BSS Size 0x0 ###
@@ -555,7 +560,7 @@ Overlay OVY_46
 }
 Overlay OVY_47
 {
-    After OVY_3
+    After OVY_45
     Object overlay_47.o
     ### Size 0x17c0 ###
     ### BSS Size 0x0 ###
@@ -566,7 +571,7 @@ Overlay OVY_47
 }
 Overlay OVY_48
 {
-    After OVY_3
+    After OVY_45
     Object overlay_48.o
     ### Size 0x2d80 ###
     ### BSS Size 0x0 ###
@@ -577,7 +582,7 @@ Overlay OVY_48
 }
 Overlay OVY_49
 {
-    After OVY_3
+    After OVY_45
     Object overlay_49.o
     ### Size 0x12120 ###
     ### BSS Size 0x0 ###
@@ -599,7 +604,7 @@ Overlay OVY_50
 }
 Overlay OVY_51
 {
-    After OVY_0
+    After OVY_50
     Object overlay_51.o
     ### Size 0x2600 ###
     ### BSS Size 0x0 ###
@@ -610,7 +615,7 @@ Overlay OVY_51
 }
 Overlay OVY_52
 {
-    After OVY_101
+    After OVY_51
     Object overlay_52.o
     ### Size 0x1620 ###
     ### BSS Size 0x0 ###
@@ -654,7 +659,7 @@ Overlay OVY_55
 }
 Overlay OVY_56
 {
-    After OVY_51
+    After OVY_55
     Object overlay_56.o
     ### Size 0x1300 ###
     ### BSS Size 0x0 ###
@@ -665,7 +670,7 @@ Overlay OVY_56
 }
 Overlay OVY_57
 {
-    After OVY_40
+    After OVY_7
     Object overlay_57.o
     ### Size 0x4680 ###
     ### BSS Size 0x0 ###
@@ -676,7 +681,7 @@ Overlay OVY_57
 }
 Overlay OVY_58
 {
-    After OVY_40
+    After OVY_7
     Object overlay_58.o
     ### Size 0x480 ###
     ### BSS Size 0x0 ###
@@ -687,7 +692,7 @@ Overlay OVY_58
 }
 Overlay OVY_59
 {
-    After OVY_12
+    After OVY_58
     Object overlay_59.o
     ### Size 0x4e60 ###
     ### BSS Size 0x0 ###
@@ -731,7 +736,7 @@ Overlay OVY_62
 }
 Overlay OVY_63
 {
-    After OVY_5
+    After OVY_6
     Object overlay_63.o
     ### Size 0x45c0 ###
     ### BSS Size 0x20 ###
@@ -753,7 +758,7 @@ Overlay OVY_64
 }
 Overlay OVY_65
 {
-    After OVY_5
+    After OVY_6
     Object overlay_65.o
     ### Size 0x4380 ###
     ### BSS Size 0x0 ###
@@ -808,7 +813,7 @@ Overlay OVY_69
 }
 Overlay OVY_70
 {
-    After OVY_40
+    After OVY_7
     Object overlay_70.o
     ### Size 0xef40 ###
     ### BSS Size 0x160 ###
@@ -819,7 +824,7 @@ Overlay OVY_70
 }
 Overlay OVY_71
 {
-    After OVY_41
+    After OVY_70
     Object overlay_71.o
     ### Size 0x56e0 ###
     ### BSS Size 0xa0 ###
@@ -830,7 +835,7 @@ Overlay OVY_71
 }
 Overlay OVY_72
 {
-    After OVY_40
+    After OVY_7
     Object overlay_72.o
     ### Size 0x3f60 ###
     ### BSS Size 0x120 ###
@@ -852,7 +857,7 @@ Overlay OVY_73
 }
 Overlay OVY_74
 {
-    After OVY_97
+    After OVY_38
     Object overlay_74_thumb.o
     Object overlay_74_arm.o
     ### Size 0x16020 ###
@@ -864,7 +869,7 @@ Overlay OVY_74
 }
 Overlay OVY_75
 {
-    After OVY_41
+    After OVY_70
     Object overlay_75.o
     ### Size 0x3280 ###
     ### BSS Size 0x20 ###
@@ -908,7 +913,7 @@ Overlay OVY_78
 }
 Overlay OVY_79
 {
-    After OVY_39
+    After OVY_42
     ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
@@ -919,7 +924,7 @@ Overlay OVY_79
 }
 Overlay OVY_80
 {
-    After OVY_39
+    After OVY_42
     Object overlay_80.o
     ### Size 0x13e60 ###
     ### BSS Size 0x20 ###
@@ -930,7 +935,7 @@ Overlay OVY_80
 }
 Overlay OVY_81
 {
-    After OVY_59
+    After OVY_80
     Object overlay_81.o
     ### Size 0x5b00 ###
     ### BSS Size 0x0 ###
@@ -941,7 +946,7 @@ Overlay OVY_81
 }
 Overlay OVY_82
 {
-    After OVY_59
+    After OVY_80
     Object overlay_82.o
     ### Size 0x21e0 ###
     ### BSS Size 0x0 ###
@@ -952,7 +957,7 @@ Overlay OVY_82
 }
 Overlay OVY_83
 {
-    After OVY_59
+    After OVY_80
     Object overlay_83.o
     ### Size 0xa900 ###
     ### BSS Size 0x0 ###
@@ -963,7 +968,7 @@ Overlay OVY_83
 }
 Overlay OVY_84
 {
-    After OVY_59
+    After OVY_80
     Object overlay_84.o
     ### Size 0x1cc0 ###
     ### BSS Size 0x20 ###
@@ -1007,7 +1012,7 @@ Overlay OVY_87
 }
 Overlay OVY_88
 {
-    After OVY_3
+    After OVY_45
     Object overlay_88.o
     ### Size 0x1280 ###
     ### BSS Size 0x0 ###
@@ -1018,7 +1023,7 @@ Overlay OVY_88
 }
 Overlay OVY_89
 {
-    After OVY_3
+    After OVY_45
     Object overlay_89.o
     ### Size 0x4e80 ###
     ### BSS Size 0x0 ###
@@ -1029,7 +1034,7 @@ Overlay OVY_89
 }
 Overlay OVY_90
 {
-    After OVY_3
+    After OVY_45
     Object overlay_90.o
     ### Size 0x3d40 ###
     ### BSS Size 0x0 ###
@@ -1040,7 +1045,7 @@ Overlay OVY_90
 }
 Overlay OVY_91
 {
-    After OVY_27
+    After OVY_90
     Object overlay_91.o
     ### Size 0x6280 ###
     ### BSS Size 0x40 ###
@@ -1051,7 +1056,7 @@ Overlay OVY_91
 }
 Overlay OVY_92
 {
-    After OVY_27
+    After OVY_90
     Object overlay_92.o
     ### Size 0x7c20 ###
     ### BSS Size 0x0 ###
@@ -1062,7 +1067,7 @@ Overlay OVY_92
 }
 Overlay OVY_93
 {
-    After OVY_27
+    After OVY_90
     Object overlay_93_thumb_1.o
     Object overlay_93_arm.o
     Object overlay_93_thumb_2.o
@@ -1108,7 +1113,7 @@ Overlay OVY_96
 }
 Overlay OVY_97
 {
-    After OVY_7
+    After OVY_96
     Object overlay_97.o
     ### Size 0x17c0 ###
     ### BSS Size 0x0 ###
@@ -1119,7 +1124,7 @@ Overlay OVY_97
 }
 Overlay OVY_98
 {
-    After OVY_7
+    After OVY_96
     Object overlay_98.o
     ### Size 0xcc0 ###
     ### BSS Size 0x0 ###
@@ -1152,7 +1157,7 @@ Overlay OVY_100
 }
 Overlay OVY_101
 {
-    After OVY_56
+    After OVY_100
     Object overlay_101.o
     ### Size 0x13bc0 ###
     ### BSS Size 0x0 ###
@@ -1163,7 +1168,7 @@ Overlay OVY_101
 }
 Overlay OVY_102
 {
-    After OVY_56
+    After OVY_100
     Object overlay_102.o
     ### Size 0x5200 ###
     ### BSS Size 0x0 ###
@@ -1174,7 +1179,7 @@ Overlay OVY_102
 }
 Overlay OVY_103
 {
-    After OVY_52
+    After OVY_102
     Object overlay_103.o
     ### Size 0x2740 ###
     ### BSS Size 0x0 ###
@@ -1295,7 +1300,7 @@ Overlay OVY_113
 }
 Overlay OVY_114
 {
-    After OVY_28
+    After OVY_31
     Object overlay_114.o
     ### Size 0x4e0 ###
     ### BSS Size 0x0 ###
@@ -1306,7 +1311,7 @@ Overlay OVY_114
 }
 Overlay OVY_115
 {
-    After OVY_28
+    After OVY_31
     Object overlay_115.o
     ### Size 0x14e0 ###
     ### BSS Size 0x0 ###
@@ -1317,7 +1322,7 @@ Overlay OVY_115
 }
 Overlay OVY_116
 {
-    After OVY_28
+    After OVY_31
     Object overlay_116.o
     ### Size 0x460 ###
     ### BSS Size 0x0 ###
@@ -1328,7 +1333,7 @@ Overlay OVY_116
 }
 Overlay OVY_117
 {
-    After OVY_28
+    After OVY_31
     Object overlay_117.o
     ### Size 0xba0 ###
     ### BSS Size 0x0 ###
@@ -1339,7 +1344,7 @@ Overlay OVY_117
 }
 Overlay OVY_118
 {
-    After OVY_28
+    After OVY_31
     Object overlay_118.o
     ### Size 0x2a0 ###
     ### BSS Size 0x0 ###
@@ -1350,7 +1355,7 @@ Overlay OVY_118
 }
 Overlay OVY_119
 {
-    After OVY_28
+    After OVY_31
     Object overlay_119.o
     ### Size 0x1720 ###
     ### BSS Size 0x0 ###
@@ -1361,7 +1366,7 @@ Overlay OVY_119
 }
 Overlay OVY_120
 {
-    After OVY_28
+    After OVY_31
     Object overlay_120.o
     ### Size 0x1340 ###
     ### BSS Size 0x0 ###
@@ -1394,7 +1399,7 @@ Overlay OVY_122
 }
 Overlay OVY_123
 {
-    After OVY_28
+    After OVY_31
     Object overlay_123.o
     ### Size 0x1be0 ###
     ### BSS Size 0x20 ###
@@ -1405,7 +1410,7 @@ Overlay OVY_123
 }
 Overlay OVY_124
 {
-    After OVY_114
+    After OVY_123
     Object overlay_124.o
     ### Size 0x160 ###
     ### BSS Size 0x0 ###
@@ -1415,7 +1420,7 @@ Overlay OVY_124
 }
 Overlay OVY_125
 {
-    After OVY_114
+    After OVY_123
     ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
@@ -1426,7 +1431,7 @@ Overlay OVY_125
 }
 Overlay OVY_126
 {
-    After OVY_114
+    After OVY_123
     ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
@@ -1437,7 +1442,7 @@ Overlay OVY_126
 }
 Overlay OVY_127
 {
-    After OVY_114
+    After OVY_123
     ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###
@@ -1448,7 +1453,7 @@ Overlay OVY_127
 }
 Overlay OVY_128
 {
-    After OVY_114
+    After OVY_123
     ### Empty overlay ###
     ### Size 0x20 ###
     ### BSS Size 0x0 ###

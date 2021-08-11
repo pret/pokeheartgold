@@ -1,43 +1,51 @@
-TOOLSDIR       := tools
-MWCCVER        := 2.0/sp1
-PROC           := arm946
+MWCCVER        := 2.0/sp2p2
+PROC           := arm946e
 PROC_S         := arm5te
 PROC_LD        := v5te
+LCF_TEMPLATE   := ARM9-TS.lcf.template
+LIBS           := -Llib -lsyscall -nostdlib
+ALL_BUILDDIRS  := $(BUILD_DIR)/lib
 
 include config.mk
 include common.mk
 include graphics_files_rules.mk
 include filesystem.mk
 
-ROM            := $(BUILD_DIR)/poke$(buildname).nds
-BANNER         := $(ROM:%.nds=%.bnr)
-BANNER_SPEC    := $(ROM:%.nds=%.bsf)
-ICON_PNG       := $(ROM:$(BUILD_DIR)/%.nds=icon/%.png)
+ROM             := $(BUILD_DIR)/poke$(buildname).nds
+BANNER          := $(ROM:%.nds=%.bnr)
+BANNER_SPEC     := $(buildname)/banner.bsf
+ICON_PNG        := $(buildname)/icon.png
+HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
 
 MWCFLAGS  += -ipa file $(DEFINES)
 MWASFLAGS += $(DEFINES)
 
-.SECONDARY:
-.SECONDEXPANSION:
-.DELETE_ON_ERROR:
-.PHONY: all tidy clean tools clean-tools sub
+.PHONY: main sub libsyscall
+.PRECIOUS: $(ROM)
 
 MAKEFLAGS += --no-print-directory
 
-all: $(ROM) $(NEF) $(ELF) $(SBIN)
+all: $(ROM)
 
 tidy:
-	$(MAKE) -C sub tidy
+	@$(MAKE) -C sub tidy
 	$(RM) -r $(BUILD_DIR)
 	$(RM) $(ROM)
 
-clean: tidy
+clean: tidy clean-tools
+	@$(MAKE) -C lib/syscall clean
+	@$(MAKE) -C sub clean
 
 main: $(SBIN)
-sub: ; $(MAKE) -C sub
+sub: ; @$(MAKE) -C sub
 
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
+
+$(NEF): libsyscall
+
+libsyscall:
+	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(PROJECT_ROOT)/$(BUILD_DIR) GAME_CODE=$(GAME_CODE)
 
 SBIN_LZ        := $(SBIN)_LZ
 
@@ -46,11 +54,13 @@ $(SBIN_LZ): $(BUILD_DIR)/component.files
 
 $(BUILD_DIR)/component.files: main ;
 
+$(HEADER_TEMPLATE): ;
+
 $(ROM): $(ROMSPEC) $(NITROFS_FILES) $(SBIN_LZ) sub $(BANNER)
-	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DNITROFS_FILES="$(NITROFS_FILES)" -DTITLE_NAME="$(TITLE_NAME)" $< $@
+	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(NITROFS_FILES:files/%=%)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)
-	$(SHASUM) -c $(@:$(BUILD_DIR)/%.nds=%.sha1)
+	$(SHA1SUM) -c $(buildname)/rom.sha1
 endif
 
 $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)

@@ -48,6 +48,6 @@ _0221BA0C:
 	mov r0, #1
 	strh r0, [r1]
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _0221BA6C: .word 0x04000208
 	thumb_func_end ov13_0221BA00

@@ -1,6 +1,6 @@
 #ifndef NITRO_H_
 #define NITRO_H_
 
-// Include all the Nitro SDK headers
+#include <nitro/types.h>
 
 #endif //NITRO_H_

@@ -38,7 +38,7 @@ _022598E0:
 	strh r5, [r0]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _02259908: .word 0x022599F0
 	thumb_func_end ov21_022598C0
 
@@ -152,7 +152,7 @@ _022599E6:
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _022599EC: .word 0x022599F0
 	thumb_func_end ov21_02259960
 

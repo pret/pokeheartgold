@@ -14,7 +14,7 @@ ov36_021E5900: ; 0x021E5900
 	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov36_021E5900
 
 	thumb_func_start ov36_021E5918
@@ -26,7 +26,7 @@ ov36_021E5918: ; 0x021E5918
 	bl ov36_021E5BC8
 	mov r0, #1
 	pop {r3, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov36_021E5918
 
 	thumb_func_start ov36_021E592C
@@ -55,7 +55,7 @@ ov36_021E5948: ; 0x021E5948
 	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov36_021E5948
 
 	thumb_func_start ov36_021E5960
@@ -100,7 +100,7 @@ ov36_021E599C: ; 0x021E599C
 	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov36_021E599C
 
 	thumb_func_start ov36_021E59B4
@@ -143,7 +143,7 @@ _021E5A0C:
 	bl sub_0201838C
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov36_021E59B4
 
 	thumb_func_start ov36_021E5A1C
@@ -350,7 +350,7 @@ ov36_021E5BC8: ; 0x021E5BC8
 	bl sub_020503D0
 	bl sub_020665EC
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5BFC: .word 0x00000BB8
 _021E5C00: .word 0x0000DB56
 	thumb_func_end ov36_021E5BC8

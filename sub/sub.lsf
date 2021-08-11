@@ -1,26 +1,24 @@
 Static sub
 {
 	Address 0x02380000
-	### to be filled ###
 }
 
 Autoload ext
 {
 	Address 0x027E0000
-	### to be filled ###
-	### size: 0x00BC+0x0000 ###
+	Object sub.ext.o
 }
 
 Autoload wram
 {
 	Address 0x037F8000
-	### to be filled ###
-	### size: 0xEBA4+0x421C ###
+	Object sub.wram.o
+	Object libsyscall.o
+	Object sub.wram_2.o
 }
 
 Autoload ext_wram
 {
 	Address 0x06000000
-	### to be filled ###
-	### size: 0x188A4+0x01590 ###
+	Object sub.ext_wram.o
 }

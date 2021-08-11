@@ -105,7 +105,7 @@ _021E596A:
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov104_021E5900
 
 	thumb_func_start ov104_021E59E4
@@ -310,7 +310,7 @@ _021E5B36:
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov104_021E5B14
 
 	thumb_func_start ov104_021E5B88
@@ -434,7 +434,7 @@ ov104_021E5BEC: ; 0x021E5BEC
 	bl sub_0202313C
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5C90: .word 0x021E5FD0
 _021E5C94: .word 0x021E5FDC
 _021E5C98: .word 0x021E5FDE
@@ -459,7 +459,7 @@ _021E5CB2:
 	bl sub_02022BE8
 	add sp, #0x28
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5CC4: .word 0x021E5F60
 	thumb_func_end ov104_021E5CA8
 
@@ -737,7 +737,7 @@ _021E5ED4:
 	bl sub_0200FA24
 	add sp, #0xc
 	pop {pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov104_021E5EB0
 
 	.rodata

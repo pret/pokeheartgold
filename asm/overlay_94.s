@@ -276,7 +276,7 @@ ov94_021E5B04: ; 0x021E5B04
 	bl sub_020CF15C
 	add sp, #4
 	pop {r3, r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5B2C: .word 0x04000050
 	thumb_func_end ov94_021E5B04
 
@@ -454,7 +454,7 @@ ov94_021E5C84: ; 0x021E5C84
 	add r0, r4, #0
 	bl sub_0201AB0C
 	pop {r3, r4, r5, pc}
-	.align 2, 0
+	.balign 4, 0
 	thumb_func_end ov94_021E5C84
 
 	thumb_func_start ov94_021E5CA0

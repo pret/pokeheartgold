@@ -1,16 +1,16 @@
 ## Common defines for ARM9 and ARM7 Makefiles ##
 
-# We're not ready for prime time yet, so attempts to make anything will error unconditionally.
-$(error This project is not set up to build anything just yet)
+default: all
 
-# At present this repository only supports US HeartGold 1.0
-SUPPORTED_ROMS   := heartgold.us
-ifneq ($(filter-out $(buildname),$(SUPPORTED_ROMS)),)
-$(error $(buildname) is not supported, choose from: $(SUPPORTED_ROMS))
-endif
+PROJECT_ROOT := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+TOOLSDIR     := $(PROJECT_ROOT)/tools
 
-include platform.mk
-include binutils.mk
+include $(PROJECT_ROOT)/platform.mk
+include $(PROJECT_ROOT)/binutils.mk
+
+# Because mwldarm expects absolute paths to be WIN32 paths,
+# all paths referring up from BUILD_DIR must be relative.
+BACK_REL   := $(shell echo $(BUILD_DIR) | $(SED) 's/[^/]+/../g')
 
 # NitroSDK tools
 MWCC          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwccarm.exe
@@ -22,7 +22,7 @@ MAKEBNR      := $(TOOLSDIR)/bin/makebanner.exe
 NTRCOMP      := $(TOOLSDIR)/bin/ntrcomp.exe
 COMPSTATIC   := $(TOOLSDIR)/bin/compstatic.exe
 
-$(LM_LICENSE_FILE) := $(TOOLSDIR)/mwccarm/license.dat
+export LM_LICENSE_FILE := $(TOOLSDIR)/mwccarm/license.dat
 
 # Native tools
 SCANINC      := $(TOOLSDIR)/scaninc/scaninc$(EXE)
@@ -40,6 +40,8 @@ NATIVE_TOOLS := \
 	$(KNARC) \
 	$(O2NARC)
 
+TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
+
 # Directories
 SRC_SUBDIR                := src
 ASM_SUBDIR                := asm
@@ -52,21 +54,21 @@ ASM_BUILDDIR              := $(BUILD_DIR)/$(ASM_SUBDIR)
 LIB_SRC_BUILDDIR          := $(BUILD_DIR)/$(LIB_SRC_SUBDIR)
 LIB_ASM_BUILDDIR          := $(BUILD_DIR)/$(LIB_ASM_SUBDIR)
 
-C_SRCS                    := $(foreach dname,$(SRC_SUBDIR),wildcard $(dname)/*.c)
-ASM_SRCS                  := $(foreach dname,$(ASM_SUBDIR),wildcard $(dname)/*.s)
-LIB_C_SRCS                := $(foreach dname,$LIB_(SRC_SUBDIR),wildcard $(dname)/*.c)
-LIB_ASM_SRCS              := $(foreach dname,$LIB_(ASM_SUBDIR),wildcard $(dname)/*.s)
+C_SRCS                    := $(foreach dname,$(SRC_SUBDIR),$(wildcard $(dname)/*.c))
+ASM_SRCS                  := $(foreach dname,$(ASM_SUBDIR),$(wildcard $(dname)/*.s))
+LIB_C_SRCS                := $(foreach dname,$(LIB_SRC_SUBDIR),$(wildcard $(dname)/*.c))
+LIB_ASM_SRCS              := $(foreach dname,$(LIB_ASM_SUBDIR),$(wildcard $(dname)/*.s))
 ALL_SRCS                  := $(C_SRCS) $(ASM_SRCS) $(LIB_C_SRCS) $(LIB_ASM_SRCS)
 
-C_OBJS                    := $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
-ASM_OBJS                  := $(ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
-LIB_C_OBJS                := $(LIB_C_SRCS:%.c=$(BUILD_DIR)/%.o)
-LIB_ASM_OBJS              := $(LIB_ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
-ALL_GAME_OBJS             := $(C_OBJS) $(ASM_OBJS)
-ALL_LIB_OBJS              := $(LIB_C_OBJS) $(LIB_ASM_OBJS)
-ALL_OBJS                  := $(ALL_GAME_OBJS) $(ALL_LIB_OBJS)
+C_OBJS                    = $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
+ASM_OBJS                  = $(ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
+LIB_C_OBJS                = $(LIB_C_SRCS:%.c=$(BUILD_DIR)/%.o)
+LIB_ASM_OBJS              = $(LIB_ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
+ALL_GAME_OBJS             = $(C_OBJS) $(ASM_OBJS)
+ALL_LIB_OBJS              = $(LIB_C_OBJS) $(LIB_ASM_OBJS)
+ALL_OBJS                  = $(ALL_GAME_OBJS) $(ALL_LIB_OBJS)
 
-ALL_BUILDDIRS             := $(sort $(foreach obj,$(ALL_OBJS),$(dir $(obj))))
+ALL_BUILDDIRS             := $(sort $(ALL_BUILDDIRS) $(foreach obj,$(ALL_OBJS),$(dir $(obj))))
 
 NEF               := $(BUILD_DIR)/$(NEFNAME).nef
 ELF               := $(NEF:%.nef=%.elf)
@@ -76,36 +78,63 @@ XMAP              := $(NEF).xMAP
 
 MWCFLAGS          := -O4,p -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -I./lib/include
 MWASFLAGS         := -proc $(PROC_S)
-MWLDFLAGS         := -nodead -w off -proc $(PROC_LD) -interwork -map closure,unused -symtab sort -m _start
+MWLDFLAGS         := -nodead -w off -proc $(PROC) -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
 export MWCIncludes := lib/include
 
-LSF               := $(NEFNAME).lsf
+LSF               := $(addsuffix .lsf,$(NEFNAME))
+ifneq ($(LSF),)
 OVERLAYS          := $(shell $(GREP) -o "^Overlay \w+" $(LSF) | cut -d' ' -f2)
+else
+OVERLAYS          :=
+endif
 
 # Make sure build directories exist before compiling anything
 DUMMY != mkdir -p $(ALL_BUILDDIRS)
 
-$(BUILD_DIR)/%.o: %.c
+.SECONDARY:
+.SECONDEXPANSION:
+.DELETE_ON_ERROR:
+.PHONY: all tidy clean tools clean-tools $(TOOLDIRS)
+.PRECIOUS: $(SBIN)
+
+all: tools
+
+ifeq ($(NODEP),)
+$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I $(PROJECT_ROOT)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
+else
+$(BUILD_DIR)/%.o: dep :=
+endif
+
+$(BUILD_DIR)/%.o: %.c $$(dep)
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $@ $<
 
-$(BUILD_DIR)/%.o: %.s
+$(BUILD_DIR)/%.o: %.s $$(dep)
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $@ $<
 
 $(NATIVE_TOOLS): tools
-tools:
-	$(foreach tool,$(NATIVE_TOOLS),$(MAKE) -C $(shell dirname $(tool));)
+
+tools: $(TOOLDIRS)
+
+$(TOOLDIRS):
+	@$(MAKE) -C $@
 
 clean-tools:
-	$(foreach tool,$(NATIVE_TOOLS),$(MAKE) -C $(shell dirname $(tool)) clean;)
+	$(foreach tool,$(TOOLDIRS),$(MAKE) -C $(tool) clean;)
 
 $(LCF): $(LSF) $(LCF_TEMPLATE)
 	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
 
 $(NEF): $(LCF) $(ALL_OBJS)
-	cd $(BUILD_DIR) && LM_LICENSE_FILE=../../$(LM_LICENSE_FILE) $(WINE) ../../$(MWLD) $(MWLDFLAGS) $(LIBS) -o ../../$(NEF) $(LCF:%(BUILD_DIR)/%=%) $(ALL_OBJS:%(BUILD_DIR)/%=%)
-$(SBIN): $(NEF)
+	cd $(BUILD_DIR) && $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) $(ALL_OBJS:$(BUILD_DIR)/%=%)
+
+$(SBIN): build/%.sbin: build/%.nef
+ifeq ($(COMPARE),1)
+	$(SHA1SUM) -c $*.sha1
+endif
 
 $(ELF): $(NEF)
 	@$(OBJCOPY) $(foreach ov,$(NEFNAME) $(OVERLAYS),--update-section $(ov)=$(BUILD_DIR)/$(ov).sbin -j $(ov)) $< $@ 2>/dev/null
+
+print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true

@@ -442,7 +442,7 @@ _021E5C8E:
 	bl sub_02022BE8
 	add sp, #0x28
 	pop {r4, pc}
-	.align 2, 0
+	.balign 4, 0
 _021E5CA0: .word 0x021E5E54
 	thumb_func_end ov105_021E5C84
 
