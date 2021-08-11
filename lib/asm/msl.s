@@ -18613,7 +18613,7 @@ _020F44B0:
 	beq _020F44DC
 	ldr r3, _020F44F8 ; =_021116E8
 	ldr r0, _020F44FC ; =_0211170C
-	ldr r2, _020F4500 ; =sub_020F4504
+	ldr r2, _020F4500 ; =_ZNSt13bad_exceptionD1Ev
 	add r1, fp, #0
 	str r3, [fp]
 	bl __throw
@@ -18629,13 +18629,13 @@ _020F44E8:
 _020F44F4: .word _021116F4
 _020F44F8: .word _021116E8
 _020F44FC: .word _0211170C
-_020F4500: .word sub_020F4504
+_020F4500: .word _ZNSt13bad_exceptionD1Ev
 	arm_func_end __unexpected
 
-	arm_func_start sub_020F4504
-sub_020F4504: ; 0x020F4504
+	arm_func_start _ZNSt13bad_exceptionD1Ev
+_ZNSt13bad_exceptionD1Ev: ; 0x020F4504
 	bx lr
-	arm_func_end sub_020F4504
+	arm_func_end _ZNSt13bad_exceptionD1Ev
 
 	arm_func_start _Z16HandleUnexpectedP12ThrowContextP13ExceptionInfoP16ex_specificationPc
 _Z16HandleUnexpectedP12ThrowContextP13ExceptionInfoP16ex_specificationPc: ; 0x020F4508
@@ -19883,7 +19883,7 @@ _021116E0:
 	.word 0
 	.word _021116B0
 _021116E8:
-	.word sub_020F4504
+	.word _ZNSt13bad_exceptionD1Ev
 	.word _ZNSt13bad_exceptionD0Ev
 	.word _ZNKSt13bad_exception4whatEv
 _021116F4:
