@@ -414,14 +414,14 @@ sub_02007508: ; 0x02007508
 	sub sp, #4
 	mov r3, #0
 	lsl r4, r1, #2
-	ldr r1, _02007520 ; =0x0210F210
+	ldr r1, _02007520 ; =_0210F210
 	str r3, [sp]
 	ldr r1, [r1, r4]
 	bl sub_0200732C
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
-_02007520: .word 0x0210F210
+_02007520: .word _0210F210
 	thumb_func_end sub_02007508
 
 	thumb_func_start sub_02007524
@@ -431,14 +431,14 @@ sub_02007524: ; 0x02007524
 	mov r3, #0
 	str r3, [sp]
 	lsl r4, r0, #2
-	ldr r0, _0200753C ; =0x0210F210
+	ldr r0, _0200753C ; =_0210F210
 	str r3, [sp, #4]
 	ldr r0, [r0, r4]
 	bl sub_0200740C
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-_0200753C: .word 0x0210F210
+_0200753C: .word _0210F210
 	thumb_func_end sub_02007524
 
 	thumb_func_start sub_02007540
@@ -450,13 +450,13 @@ sub_02007540: ; 0x02007540
 	mov r4, #1
 	str r4, [sp, #4]
 	lsl r4, r0, #2
-	ldr r0, _0200755C ; =0x0210F210
+	ldr r0, _0200755C ; =_0210F210
 	ldr r0, [r0, r4]
 	bl sub_0200740C
 	add sp, #8
 	pop {r4, pc}
 	nop
-_0200755C: .word 0x0210F210
+_0200755C: .word _0210F210
 	thumb_func_end sub_02007540
 
 	thumb_func_start sub_02007560
@@ -466,13 +466,13 @@ sub_02007560: ; 0x02007560
 	ldr r4, [sp, #0x10]
 	str r4, [sp]
 	lsl r4, r1, #2
-	ldr r1, _02007578 ; =0x0210F210
+	ldr r1, _02007578 ; =_0210F210
 	ldr r1, [r1, r4]
 	bl sub_0200732C
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
-_02007578: .word 0x0210F210
+_02007578: .word _0210F210
 	thumb_func_end sub_02007560
 
 	thumb_func_start sub_0200757C
@@ -484,13 +484,13 @@ sub_0200757C: ; 0x0200757C
 	mov r4, #0
 	str r4, [sp, #4]
 	lsl r4, r0, #2
-	ldr r0, _02007598 ; =0x0210F210
+	ldr r0, _02007598 ; =_0210F210
 	ldr r0, [r0, r4]
 	bl sub_0200740C
 	add sp, #8
 	pop {r4, pc}
 	nop
-_02007598: .word 0x0210F210
+_02007598: .word _0210F210
 	thumb_func_end sub_0200757C
 
 	thumb_func_start sub_0200759C
@@ -502,13 +502,13 @@ sub_0200759C: ; 0x0200759C
 	mov r4, #1
 	str r4, [sp, #4]
 	lsl r4, r0, #2
-	ldr r0, _020075B8 ; =0x0210F210
+	ldr r0, _020075B8 ; =_0210F210
 	ldr r0, [r0, r4]
 	bl sub_0200740C
 	add sp, #8
 	pop {r4, pc}
 	nop
-_020075B8: .word 0x0210F210
+_020075B8: .word _0210F210
 	thumb_func_end sub_0200759C
 
 	thumb_func_start sub_020075BC
@@ -525,7 +525,7 @@ sub_020075BC: ; 0x020075BC
 	strh r1, [r0]
 	add r0, sp, #0x10
 	bl FS_InitFile
-	ldr r1, _02007684 ; =0x0210F210
+	ldr r1, _02007684 ; =_0210F210
 	lsl r2, r4, #2
 	ldr r1, [r1, r2]
 	add r0, sp, #0x10
@@ -600,7 +600,7 @@ _0200767C:
 	add sp, #0x58
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02007684: .word 0x0210F210
+_02007684: .word _0210F210
 	thumb_func_end sub_020075BC
 
 	thumb_func_start sub_02007688
@@ -615,7 +615,7 @@ sub_02007688: ; 0x02007688
 	mov r1, #0
 	str r1, [r4, #0x48]
 	bl FS_InitFile
-	ldr r1, _02007708 ; =0x0210F210
+	ldr r1, _02007708 ; =_0210F210
 	lsl r2, r5, #2
 	ldr r1, [r1, r2]
 	add r0, r4, #0
@@ -661,7 +661,7 @@ _02007704:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02007708: .word 0x0210F210
+_02007708: .word _0210F210
 	thumb_func_end sub_02007688
 
 	thumb_func_start sub_0200770C
@@ -67373,3 +67373,1079 @@ sub_02025504: ; 0x02025504
 	.balign 4, 0
 _02025518: .word 0x01FF6210
 	thumb_func_end sub_02025504
+
+	.data
+
+_0210E980:
+	.asciz "data/sound/gs_sound_data.sdat"
+	.balign 4, 0
+_0210E9A0:
+	.asciz "a/0/0/1"
+	.balign 4, 0
+_0210E9A8:
+	.asciz "a/2/6/3"
+	.balign 4, 0
+_0210E9B0:
+	.asciz "a/0/0/0"
+	.balign 4, 0
+_0210E9B8:
+	.asciz "a/2/6/1"
+	.balign 4, 0
+_0210E9C0:
+	.asciz "a/2/6/0"
+	.balign 4, 0
+_0210E9C8:
+	.asciz "a/2/5/9"
+	.balign 4, 0
+_0210E9D0:
+	.asciz "a/2/5/8"
+	.balign 4, 0
+_0210E9D8:
+	.asciz "a/2/6/4"
+	.balign 4, 0
+_0210E9E0:
+	.asciz "a/2/5/6"
+	.balign 4, 0
+_0210E9E8:
+	.asciz "a/2/5/5"
+	.balign 4, 0
+_0210E9F0:
+	.asciz "a/2/5/4"
+	.balign 4, 0
+_0210E9F8:
+	.asciz "a/2/5/3"
+	.balign 4, 0
+_0210EA00:
+	.asciz "a/2/5/2"
+	.balign 4, 0
+_0210EA08:
+	.asciz "a/2/5/1"
+	.balign 4, 0
+_0210EA10:
+	.asciz "a/2/5/0"
+	.balign 4, 0
+_0210EA18:
+	.asciz "a/2/4/9"
+	.balign 4, 0
+_0210EA20:
+	.asciz "a/2/6/2"
+	.balign 4, 0
+_0210EA28:
+	.asciz "a/2/4/7"
+	.balign 4, 0
+_0210EA30:
+	.asciz "a/2/4/6"
+	.balign 4, 0
+_0210EA38:
+	.asciz "a/2/4/5"
+	.balign 4, 0
+_0210EA40:
+	.asciz "a/2/4/4"
+	.balign 4, 0
+_0210EA48:
+	.asciz "a/2/4/3"
+	.balign 4, 0
+_0210EA50:
+	.asciz "a/2/4/2"
+	.balign 4, 0
+_0210EA58:
+	.asciz "a/2/4/1"
+	.balign 4, 0
+_0210EA60:
+	.asciz "a/2/4/0"
+	.balign 4, 0
+_0210EA68:
+	.asciz "a/2/3/9"
+	.balign 4, 0
+_0210EA70:
+	.asciz "a/2/3/8"
+	.balign 4, 0
+_0210EA78:
+	.asciz "a/2/3/7"
+	.balign 4, 0
+_0210EA80:
+	.asciz "a/2/3/6"
+	.balign 4, 0
+_0210EA88:
+	.asciz "a/2/3/5"
+	.balign 4, 0
+_0210EA90:
+	.asciz "a/2/3/4"
+	.balign 4, 0
+_0210EA98:
+	.asciz "a/2/3/3"
+	.balign 4, 0
+_0210EAA0:
+	.asciz "a/2/3/2"
+	.balign 4, 0
+_0210EAA8:
+	.asciz "a/2/3/1"
+	.balign 4, 0
+_0210EAB0:
+	.asciz "a/2/4/8"
+	.balign 4, 0
+_0210EAB8:
+	.asciz "a/2/5/7"
+	.balign 4, 0
+_0210EAC0:
+	.asciz "a/2/2/8"
+	.balign 4, 0
+_0210EAC8:
+	.asciz "a/2/2/7"
+	.balign 4, 0
+_0210EAD0:
+	.asciz "a/2/2/6"
+	.balign 4, 0
+_0210EAD8:
+	.asciz "a/2/2/5"
+	.balign 4, 0
+_0210EAE0:
+	.asciz "a/2/2/4"
+	.balign 4, 0
+_0210EAE8:
+	.asciz "a/2/2/3"
+	.balign 4, 0
+_0210EAF0:
+	.asciz "a/2/2/2"
+	.balign 4, 0
+_0210EAF8:
+	.asciz "a/2/2/1"
+	.balign 4, 0
+_0210EB00:
+	.asciz "a/2/2/0"
+	.balign 4, 0
+_0210EB08:
+	.asciz "a/2/1/9"
+	.balign 4, 0
+_0210EB10:
+	.asciz "a/2/1/8"
+	.balign 4, 0
+_0210EB18:
+	.asciz "a/2/1/7"
+	.balign 4, 0
+_0210EB20:
+	.asciz "a/2/1/6"
+	.balign 4, 0
+_0210EB28:
+	.asciz "a/2/1/5"
+	.balign 4, 0
+_0210EB30:
+	.asciz "a/2/1/4"
+	.balign 4, 0
+_0210EB38:
+	.asciz "a/2/1/3"
+	.balign 4, 0
+_0210EB40:
+	.asciz "a/2/1/2"
+	.balign 4, 0
+_0210EB48:
+	.asciz "a/2/1/1"
+	.balign 4, 0
+_0210EB50:
+	.asciz "a/2/1/0"
+	.balign 4, 0
+_0210EB58:
+	.asciz "a/2/0/9"
+	.balign 4, 0
+_0210EB60:
+	.asciz "a/2/0/8"
+	.balign 4, 0
+_0210EB68:
+	.asciz "a/2/0/7"
+	.balign 4, 0
+_0210EB70:
+	.asciz "a/2/0/6"
+	.balign 4, 0
+_0210EB78:
+	.asciz "a/2/0/5"
+	.balign 4, 0
+_0210EB80:
+	.asciz "a/2/0/4"
+	.balign 4, 0
+_0210EB88:
+	.asciz "a/2/0/3"
+	.balign 4, 0
+_0210EB90:
+	.asciz "a/2/0/2"
+	.balign 4, 0
+_0210EB98:
+	.asciz "a/2/0/1"
+	.balign 4, 0
+_0210EBA0:
+	.asciz "a/2/0/0"
+	.balign 4, 0
+_0210EBA8:
+	.asciz "a/1/9/9"
+	.balign 4, 0
+_0210EBB0:
+	.asciz "a/1/9/8"
+	.balign 4, 0
+_0210EBB8:
+	.asciz "a/1/9/7"
+	.balign 4, 0
+_0210EBC0:
+	.asciz "a/1/9/6"
+	.balign 4, 0
+_0210EBC8:
+	.asciz "a/1/9/5"
+	.balign 4, 0
+_0210EBD0:
+	.asciz "a/1/9/4"
+	.balign 4, 0
+_0210EBD8:
+	.asciz "a/2/3/0"
+	.balign 4, 0
+_0210EBE0:
+	.asciz "a/2/2/9"
+	.balign 4, 0
+_0210EBE8:
+	.asciz "a/1/9/3"
+	.balign 4, 0
+_0210EBF0:
+	.asciz "a/1/9/2"
+	.balign 4, 0
+_0210EBF8:
+	.asciz "a/1/9/1"
+	.balign 4, 0
+_0210EC00:
+	.asciz "a/1/9/0"
+	.balign 4, 0
+_0210EC08:
+	.asciz "a/1/8/9"
+	.balign 4, 0
+_0210EC10:
+	.asciz "a/1/8/8"
+	.balign 4, 0
+_0210EC18:
+	.asciz "a/1/8/7"
+	.balign 4, 0
+_0210EC20:
+	.asciz "a/1/8/6"
+	.balign 4, 0
+_0210EC28:
+	.asciz "a/1/8/5"
+	.balign 4, 0
+_0210EC30:
+	.asciz "a/1/8/4"
+	.balign 4, 0
+_0210EC38:
+	.asciz "a/1/8/3"
+	.balign 4, 0
+_0210EC40:
+	.asciz "a/1/8/2"
+	.balign 4, 0
+_0210EC48:
+	.asciz "a/1/8/1"
+	.balign 4, 0
+_0210EC50:
+	.asciz "a/1/8/0"
+	.balign 4, 0
+_0210EC58:
+	.asciz "a/1/7/9"
+	.balign 4, 0
+_0210EC60:
+	.asciz "a/1/7/8"
+	.balign 4, 0
+_0210EC68:
+	.asciz "a/1/7/7"
+	.balign 4, 0
+_0210EC70:
+	.asciz "a/1/7/6"
+	.balign 4, 0
+_0210EC78:
+	.asciz "a/1/7/5"
+	.balign 4, 0
+_0210EC80:
+	.asciz "a/1/7/4"
+	.balign 4, 0
+_0210EC88:
+	.asciz "a/1/7/3"
+	.balign 4, 0
+_0210EC90:
+	.asciz "a/1/7/2"
+	.balign 4, 0
+_0210EC98:
+	.asciz "a/1/7/1"
+	.balign 4, 0
+_0210ECA0:
+	.asciz "a/1/7/0"
+	.balign 4, 0
+_0210ECA8:
+	.asciz "a/1/6/9"
+	.balign 4, 0
+_0210ECB0:
+	.asciz "a/1/6/8"
+	.balign 4, 0
+_0210ECB8:
+	.asciz "a/1/6/7"
+	.balign 4, 0
+_0210ECC0:
+	.asciz "a/1/6/6"
+	.balign 4, 0
+_0210ECC8:
+	.asciz "a/1/6/5"
+	.balign 4, 0
+_0210ECD0:
+	.asciz "a/1/6/4"
+	.balign 4, 0
+_0210ECD8:
+	.asciz "a/1/6/3"
+	.balign 4, 0
+_0210ECE0:
+	.asciz "a/1/6/2"
+	.balign 4, 0
+_0210ECE8:
+	.asciz "a/1/6/1"
+	.balign 4, 0
+_0210ECF0:
+	.asciz "a/1/6/0"
+	.balign 4, 0
+_0210ECF8:
+	.asciz "a/1/5/9"
+	.balign 4, 0
+_0210ED00:
+	.asciz "a/1/5/8"
+	.balign 4, 0
+_0210ED08:
+	.asciz "a/1/5/7"
+	.balign 4, 0
+_0210ED10:
+	.asciz "a/1/5/6"
+	.balign 4, 0
+_0210ED18:
+	.asciz "a/1/5/5"
+	.balign 4, 0
+_0210ED20:
+	.asciz "a/1/5/4"
+	.balign 4, 0
+_0210ED28:
+	.asciz "a/1/5/3"
+	.balign 4, 0
+_0210ED30:
+	.asciz "a/1/5/2"
+	.balign 4, 0
+_0210ED38:
+	.asciz "a/1/5/1"
+	.balign 4, 0
+_0210ED40:
+	.asciz "a/1/5/0"
+	.balign 4, 0
+_0210ED48:
+	.asciz "a/1/4/9"
+	.balign 4, 0
+_0210ED50:
+	.asciz "a/1/4/8"
+	.balign 4, 0
+_0210ED58:
+	.asciz "a/1/4/7"
+	.balign 4, 0
+_0210ED60:
+	.asciz "a/1/4/6"
+	.balign 4, 0
+_0210ED68:
+	.asciz "a/1/4/5"
+	.balign 4, 0
+_0210ED70:
+	.asciz "a/1/4/4"
+	.balign 4, 0
+_0210ED78:
+	.asciz "a/1/4/3"
+	.balign 4, 0
+_0210ED80:
+	.asciz "a/1/4/2"
+	.balign 4, 0
+_0210ED88:
+	.asciz "a/1/4/1"
+	.balign 4, 0
+_0210ED90:
+	.asciz "a/1/4/0"
+	.balign 4, 0
+_0210ED98:
+	.asciz "a/1/3/9"
+	.balign 4, 0
+_0210EDA0:
+	.asciz "a/1/3/8"
+	.balign 4, 0
+_0210EDA8:
+	.asciz "a/1/3/7"
+	.balign 4, 0
+_0210EDB0:
+	.asciz "a/1/3/6"
+	.balign 4, 0
+_0210EDB8:
+	.asciz "a/1/3/5"
+	.balign 4, 0
+_0210EDC0:
+	.asciz "a/1/3/4"
+	.balign 4, 0
+_0210EDC8:
+	.asciz "a/1/3/3"
+	.balign 4, 0
+_0210EDD0:
+	.asciz "a/1/3/2"
+	.balign 4, 0
+_0210EDD8:
+	.asciz "a/1/3/1"
+	.balign 4, 0
+_0210EDE0:
+	.asciz "a/1/3/0"
+	.balign 4, 0
+_0210EDE8:
+	.asciz "a/1/2/9"
+	.balign 4, 0
+_0210EDF0:
+	.asciz "a/1/2/8"
+	.balign 4, 0
+_0210EDF8:
+	.asciz "a/1/2/7"
+	.balign 4, 0
+_0210EE00:
+	.asciz "a/1/2/6"
+	.balign 4, 0
+_0210EE08:
+	.asciz "a/1/2/5"
+	.balign 4, 0
+_0210EE10:
+	.asciz "a/1/2/4"
+	.balign 4, 0
+_0210EE18:
+	.asciz "a/1/2/3"
+	.balign 4, 0
+_0210EE20:
+	.asciz "a/1/2/2"
+	.balign 4, 0
+_0210EE28:
+	.asciz "a/1/2/1"
+	.balign 4, 0
+_0210EE30:
+	.asciz "a/1/2/0"
+	.balign 4, 0
+_0210EE38:
+	.asciz "a/1/1/9"
+	.balign 4, 0
+_0210EE40:
+	.asciz "a/1/1/8"
+	.balign 4, 0
+_0210EE48:
+	.asciz "a/1/1/7"
+	.balign 4, 0
+_0210EE50:
+	.asciz "a/1/1/6"
+	.balign 4, 0
+_0210EE58:
+	.asciz "a/1/1/5"
+	.balign 4, 0
+_0210EE60:
+	.asciz "a/1/1/4"
+	.balign 4, 0
+_0210EE68:
+	.asciz "a/1/1/3"
+	.balign 4, 0
+_0210EE70:
+	.asciz "a/1/1/2"
+	.balign 4, 0
+_0210EE78:
+	.asciz "a/1/1/1"
+	.balign 4, 0
+_0210EE80:
+	.asciz "a/1/1/0"
+	.balign 4, 0
+_0210EE88:
+	.asciz "a/1/0/9"
+	.balign 4, 0
+_0210EE90:
+	.asciz "a/1/0/8"
+	.balign 4, 0
+_0210EE98:
+	.asciz "a/1/0/7"
+	.balign 4, 0
+_0210EEA0:
+	.asciz "a/1/0/6"
+	.balign 4, 0
+_0210EEA8:
+	.asciz "a/1/0/5"
+	.balign 4, 0
+_0210EEB0:
+	.asciz "a/1/0/4"
+	.balign 4, 0
+_0210EEB8:
+	.asciz "a/1/0/3"
+	.balign 4, 0
+_0210EEC0:
+	.asciz "a/1/0/2"
+	.balign 4, 0
+_0210EEC8:
+	.asciz "a/1/0/1"
+	.balign 4, 0
+_0210EED0:
+	.asciz "a/1/0/0"
+	.balign 4, 0
+_0210EED8:
+	.asciz "a/0/9/9"
+	.balign 4, 0
+_0210EEE0:
+	.asciz "a/0/9/8"
+	.balign 4, 0
+_0210EEE8:
+	.asciz "a/0/9/7"
+	.balign 4, 0
+_0210EEF0:
+	.asciz "a/0/9/6"
+	.balign 4, 0
+_0210EEF8:
+	.asciz "a/0/9/5"
+	.balign 4, 0
+_0210EF00:
+	.asciz "a/0/9/4"
+	.balign 4, 0
+_0210EF08:
+	.asciz "a/0/9/3"
+	.balign 4, 0
+_0210EF10:
+	.asciz "a/0/9/2"
+	.balign 4, 0
+_0210EF18:
+	.asciz "a/0/9/1"
+	.balign 4, 0
+_0210EF20:
+	.asciz "a/0/9/0"
+	.balign 4, 0
+_0210EF28:
+	.asciz "a/0/8/9"
+	.balign 4, 0
+_0210EF30:
+	.asciz "a/0/8/8"
+	.balign 4, 0
+_0210EF38:
+	.asciz "a/0/8/7"
+	.balign 4, 0
+_0210EF40:
+	.asciz "a/0/8/6"
+	.balign 4, 0
+_0210EF48:
+	.asciz "a/0/8/5"
+	.balign 4, 0
+_0210EF50:
+	.asciz "a/0/8/4"
+	.balign 4, 0
+_0210EF58:
+	.asciz "a/0/8/3"
+	.balign 4, 0
+_0210EF60:
+	.asciz "a/0/8/2"
+	.balign 4, 0
+_0210EF68:
+	.asciz "a/0/8/1"
+	.balign 4, 0
+_0210EF70:
+	.asciz "a/0/8/0"
+	.balign 4, 0
+_0210EF78:
+	.asciz "a/0/7/9"
+	.balign 4, 0
+_0210EF80:
+	.asciz "a/0/7/8"
+	.balign 4, 0
+_0210EF88:
+	.asciz "a/0/7/7"
+	.balign 4, 0
+_0210EF90:
+	.asciz "a/0/7/6"
+	.balign 4, 0
+_0210EF98:
+	.asciz "a/0/7/5"
+	.balign 4, 0
+_0210EFA0:
+	.asciz "a/0/7/4"
+	.balign 4, 0
+_0210EFA8:
+	.asciz "a/0/7/3"
+	.balign 4, 0
+_0210EFB0:
+	.asciz "a/0/7/2"
+	.balign 4, 0
+_0210EFB8:
+	.asciz "a/0/7/1"
+	.balign 4, 0
+_0210EFC0:
+	.asciz "a/0/7/0"
+	.balign 4, 0
+_0210EFC8:
+	.asciz "a/0/6/9"
+	.balign 4, 0
+_0210EFD0:
+	.asciz "a/0/6/8"
+	.balign 4, 0
+_0210EFD8:
+	.asciz "a/0/6/7"
+	.balign 4, 0
+_0210EFE0:
+	.asciz "a/0/6/6"
+	.balign 4, 0
+_0210EFE8:
+	.asciz "a/0/6/5"
+	.balign 4, 0
+_0210EFF0:
+	.asciz "a/0/6/4"
+	.balign 4, 0
+_0210EFF8:
+	.asciz "a/0/6/3"
+	.balign 4, 0
+_0210F000:
+	.asciz "a/0/6/2"
+	.balign 4, 0
+_0210F008:
+	.asciz "a/0/6/1"
+	.balign 4, 0
+_0210F010:
+	.asciz "a/0/6/0"
+	.balign 4, 0
+_0210F018:
+	.asciz "a/0/5/9"
+	.balign 4, 0
+_0210F020:
+	.asciz "a/0/5/8"
+	.balign 4, 0
+_0210F028:
+	.asciz "a/0/5/7"
+	.balign 4, 0
+_0210F030:
+	.asciz "a/0/5/6"
+	.balign 4, 0
+_0210F038:
+	.asciz "a/0/5/5"
+	.balign 4, 0
+_0210F040:
+	.asciz "a/0/5/4"
+	.balign 4, 0
+_0210F048:
+	.asciz "a/0/5/3"
+	.balign 4, 0
+_0210F050:
+	.asciz "a/0/5/2"
+	.balign 4, 0
+_0210F058:
+	.asciz "a/0/5/1"
+	.balign 4, 0
+_0210F060:
+	.asciz "a/0/5/0"
+	.balign 4, 0
+_0210F068:
+	.asciz "a/0/4/9"
+	.balign 4, 0
+_0210F070:
+	.asciz "a/0/4/8"
+	.balign 4, 0
+_0210F078:
+	.asciz "a/0/4/7"
+	.balign 4, 0
+_0210F080:
+	.asciz "a/0/4/6"
+	.balign 4, 0
+_0210F088:
+	.asciz "a/0/4/5"
+	.balign 4, 0
+_0210F090:
+	.asciz "a/0/4/4"
+	.balign 4, 0
+_0210F098:
+	.asciz "a/0/4/3"
+	.balign 4, 0
+_0210F0A0:
+	.asciz "a/0/4/2"
+	.balign 4, 0
+_0210F0A8:
+	.asciz "a/0/4/1"
+	.balign 4, 0
+_0210F0B0:
+	.asciz "a/0/4/0"
+	.balign 4, 0
+_0210F0B8:
+	.asciz "a/0/3/9"
+	.balign 4, 0
+_0210F0C0:
+	.asciz "a/0/3/8"
+	.balign 4, 0
+_0210F0C8:
+	.asciz "a/0/3/7"
+	.balign 4, 0
+_0210F0D0:
+	.asciz "a/0/3/6"
+	.balign 4, 0
+_0210F0D8:
+	.asciz "a/0/3/5"
+	.balign 4, 0
+_0210F0E0:
+	.asciz "a/0/3/4"
+	.balign 4, 0
+_0210F0E8:
+	.asciz "a/0/3/3"
+	.balign 4, 0
+_0210F0F0:
+	.asciz "a/0/3/2"
+	.balign 4, 0
+_0210F0F8:
+	.asciz "a/0/3/1"
+	.balign 4, 0
+_0210F100:
+	.asciz "a/0/3/0"
+	.balign 4, 0
+_0210F108:
+	.asciz "a/0/2/9"
+	.balign 4, 0
+_0210F110:
+	.asciz "a/0/2/8"
+	.balign 4, 0
+_0210F118:
+	.asciz "a/0/2/7"
+	.balign 4, 0
+_0210F120:
+	.asciz "a/0/2/6"
+	.balign 4, 0
+_0210F128:
+	.asciz "a/0/2/5"
+	.balign 4, 0
+_0210F130:
+	.asciz "a/0/2/4"
+	.balign 4, 0
+_0210F138:
+	.asciz "a/0/2/3"
+	.balign 4, 0
+_0210F140:
+	.asciz "a/0/2/2"
+	.balign 4, 0
+_0210F148:
+	.asciz "a/0/2/1"
+	.balign 4, 0
+_0210F150:
+	.asciz "a/0/2/0"
+	.balign 4, 0
+_0210F158:
+	.asciz "a/0/1/9"
+	.balign 4, 0
+_0210F160:
+	.asciz "a/0/1/8"
+	.balign 4, 0
+_0210F168:
+	.asciz "a/0/1/7"
+	.balign 4, 0
+_0210F170:
+	.asciz "a/0/1/6"
+	.balign 4, 0
+_0210F178:
+	.asciz "a/0/1/5"
+	.balign 4, 0
+_0210F180:
+	.asciz "a/0/1/4"
+	.balign 4, 0
+_0210F188:
+	.asciz "a/0/1/3"
+	.balign 4, 0
+_0210F190:
+	.asciz "a/0/1/2"
+	.balign 4, 0
+_0210F198:
+	.asciz "a/0/1/1"
+	.balign 4, 0
+_0210F1A0:
+	.asciz "a/0/1/0"
+	.balign 4, 0
+_0210F1A8:
+	.asciz "a/0/0/9"
+	.balign 4, 0
+_0210F1B0:
+	.asciz "a/0/0/8"
+	.balign 4, 0
+_0210F1B8:
+	.asciz "a/0/0/7"
+	.balign 4, 0
+_0210F1C0:
+	.asciz "a/0/0/6"
+	.balign 4, 0
+_0210F1C8:
+	.asciz "a/0/0/5"
+	.balign 4, 0
+_0210F1D0:
+	.asciz "a/0/0/4"
+	.balign 4, 0
+_0210F1D8:
+	.asciz "a/0/0/3"
+	.balign 4, 0
+_0210F1E0:
+	.asciz "a/0/0/2"
+	.balign 4, 0
+_0210F1E8:
+	.asciz "pbr/pokegra.narc"
+	.balign 4, 0
+_0210F1FC:
+	.asciz "pbr/otherpoke.narc"
+	.balign 4, 0
+
+_0210F210:
+	.word _0210E9B0
+	.word _0210E9A0
+	.word _0210F1E0
+	.word _0210F1D8
+	.word _0210F1D0
+	.word _0210F1C8
+	.word _0210F1C0
+	.word _0210F1B8
+	.word _0210F1B0
+	.word _0210F1A8
+	.word _0210F1A0
+	.word _0210F198
+	.word _0210F190
+	.word _0210F188
+	.word _0210F180
+	.word _0210F178
+	.word _0210F170
+	.word _0210F168
+	.word _0210F160
+	.word _0210F158
+	.word _0210F150
+	.word _0210F148
+	.word _0210F140
+	.word _0210F138
+	.word _0210F130
+	.word _0210F128
+	.word _0210F120
+	.word _0210F118
+	.word _0210F110
+	.word _0210F108
+	.word _0210F100
+	.word _0210F0F8
+	.word _0210F0F0
+	.word _0210F0E8
+	.word _0210F0E0
+	.word _0210F0D8
+	.word _0210F0D0
+	.word _0210F0C8
+	.word _0210F0C0
+	.word _0210F0B8
+	.word _0210F0B0
+	.word _0210F0A8
+	.word _0210F0A0
+	.word _0210F098
+	.word _0210F090
+	.word _0210F088
+	.word _0210F080
+	.word _0210F078
+	.word _0210F070
+	.word _0210F068
+	.word _0210F060
+	.word _0210F058
+	.word _0210F050
+	.word _0210F048
+	.word _0210F040
+	.word _0210F038
+	.word _0210F030
+	.word _0210F028
+	.word _0210F020
+	.word _0210F018
+	.word _0210F010
+	.word _0210F008
+	.word _0210F000
+	.word _0210EFF8
+	.word _0210EFF0
+	.word _0210EFE8
+	.word _0210EFE0
+	.word _0210EFD8
+	.word _0210EFD0
+	.word _0210EFC8
+	.word _0210EFC0
+	.word _0210EFB8
+	.word _0210EFB0
+	.word _0210EFA8
+	.word _0210EFA0
+	.word _0210EF98
+	.word _0210EF90
+	.word _0210EF88
+	.word _0210EF80
+	.word _0210EF78
+	.word _0210EF70
+	.word _0210EF68
+	.word _0210EF60
+	.word _0210EF58
+	.word _0210EF50
+	.word _0210EF48
+	.word _0210EF40
+	.word _0210EF38
+	.word _0210EF30
+	.word _0210EF28
+	.word _0210EF20
+	.word _0210EF18
+	.word _0210EF10
+	.word _0210EF08
+	.word _0210EF00
+	.word _0210EEF8
+	.word _0210EEF0
+	.word _0210EEE8
+	.word _0210EEE0
+	.word _0210EED8
+	.word _0210EED0
+	.word _0210EEC8
+	.word _0210EEC0
+	.word _0210EEB8
+	.word _0210EEB0
+	.word _0210EEA8
+	.word _0210EEA0
+	.word _0210EE98
+	.word _0210EE90
+	.word _0210EE88
+	.word _0210EE80
+	.word _0210EE78
+	.word _0210EE70
+	.word _0210EE68
+	.word _0210EE60
+	.word _0210EE58
+	.word _0210EE50
+	.word _0210EE48
+	.word _0210EE40
+	.word _0210EE38
+	.word _0210EE30
+	.word _0210EE28
+	.word _0210EE20
+	.word _0210EE18
+	.word _0210EE10
+	.word _0210EE08
+	.word _0210EE00
+	.word _0210EDF8
+	.word _0210EDF0
+	.word _0210EDE8
+	.word _0210EDE0
+	.word _0210EDD8
+	.word _0210EDD0
+	.word _0210EDC8
+	.word _0210EDC0
+	.word _0210EDB8
+	.word _0210EDB0
+	.word _0210EDA8
+	.word _0210EDA0
+	.word _0210ED98
+	.word _0210ED90
+	.word _0210ED88
+	.word _0210ED80
+	.word _0210ED78
+	.word _0210ED70
+	.word _0210ED68
+	.word _0210ED60
+	.word _0210ED58
+	.word _0210ED50
+	.word _0210ED48
+	.word _0210ED40
+	.word _0210ED38
+	.word _0210ED30
+	.word _0210ED28
+	.word _0210ED20
+	.word _0210ED18
+	.word _0210ED10
+	.word _0210ED08
+	.word _0210ED00
+	.word _0210ECF8
+	.word _0210ECF0
+	.word _0210ECE8
+	.word _0210ECE0
+	.word _0210ECD8
+	.word _0210ECD0
+	.word _0210ECC8
+	.word _0210ECC0
+	.word _0210ECB8
+	.word _0210ECB0
+	.word _0210ECA8
+	.word _0210ECA0
+	.word _0210EC98
+	.word _0210EC90
+	.word _0210EC88
+	.word _0210EC80
+	.word _0210EC78
+	.word _0210EC70
+	.word _0210EC68
+	.word _0210EC60
+	.word _0210EC58
+	.word _0210EC50
+	.word _0210EC48
+	.word _0210EC40
+	.word _0210EC38
+	.word _0210EC30
+	.word _0210EC28
+	.word _0210EC20
+	.word _0210EC18
+	.word _0210EC10
+	.word _0210EC08
+	.word _0210EC00
+	.word _0210EBF8
+	.word _0210EBF0
+	.word _0210EBE8
+	.word _0210F1E8
+	.word _0210F1FC
+	.word _0210EBD0
+	.word _0210EBC8
+	.word _0210EBC0
+	.word _0210EBB8
+	.word _0210EBB0
+	.word _0210EBA8
+	.word _0210EBA0
+	.word _0210EB98
+	.word _0210EB90
+	.word _0210EB88
+	.word _0210EB80
+	.word _0210EB78
+	.word _0210EB70
+	.word _0210EB68
+	.word _0210EB60
+	.word _0210EB58
+	.word _0210EB50
+	.word _0210EB48
+	.word _0210EB40
+	.word _0210EB38
+	.word _0210EB30
+	.word _0210EB28
+	.word _0210EB20
+	.word _0210EB18
+	.word _0210EB10
+	.word _0210EB08
+	.word _0210EB00
+	.word _0210EAF8
+	.word _0210EAF0
+	.word _0210EAE8
+	.word _0210EAE0
+	.word _0210EAD8
+	.word _0210EAD0
+	.word _0210EAC8
+	.word _0210EAC0
+	.word _0210EBE0
+	.word _0210EBD8
+	.word _0210EAA8
+	.word _0210EAA0
+	.word _0210EA98
+	.word _0210EA90
+	.word _0210EA88
+	.word _0210EA80
+	.word _0210EA78
+	.word _0210EA70
+	.word _0210EA68
+	.word _0210EA60
+	.word _0210EA58
+	.word _0210EA50
+	.word _0210EA48
+	.word _0210EA40
+	.word _0210EA38
+	.word _0210EA30
+	.word _0210EA28
+	.word _0210EAB0
+	.word _0210EA18
+	.word _0210EA10
+	.word _0210EA08
+	.word _0210EA00
+	.word _0210E9F8
+	.word _0210E9F0
+	.word _0210E9E8
+	.word _0210E9E0
+	.word _0210EAB8
+	.word _0210E9D0
+	.word _0210E9C8
+	.word _0210E9C0
+	.word _0210E9B8
+	.word _0210EA20
+	.word _0210E9A8
+	.word _0210E9D8
