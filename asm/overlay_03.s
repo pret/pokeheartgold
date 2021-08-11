@@ -4486,25 +4486,25 @@ _02256250:
 	blt _0225626A
 	mul r0, r4
 	mov r1, #0xfe
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r0, #5
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r0, #0
 	b _0225627E
 _0225626A:
 	neg r1, r4
 	mul r0, r1
 	mov r1, #0xfe
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r0, #5
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	neg r4, r0
 _0225627E:
 	add r0, r4, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	bl abs
 	add r2, r0, #0
 	mov r0, #0
@@ -4517,7 +4517,7 @@ _0225627E:
 	bl sub_0200BFCC
 	add r0, r4, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r1, #0
 	bl abs
 	add r2, r0, #0
@@ -4546,7 +4546,7 @@ _022562CE:
 	ldr r0, _022563CC ; =0x0000C350
 	add r0, r1, r0
 	ldr r1, _022563D0 ; =0x000186A0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r0, #0
 	b _022562F8
 _022562E6:
@@ -4556,7 +4556,7 @@ _022562E6:
 	ldr r0, _022563CC ; =0x0000C350
 	ldr r1, _022563D0 ; =0x000186A0
 	add r0, r2, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	neg r4, r0
 _022562F8:
 	add r0, r4, #0
@@ -5265,25 +5265,25 @@ _0225689E:
 	blt _022568B8
 	mul r0, r4
 	mov r1, #0xfe
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r0, #5
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r0, #0
 	b _022568CC
 _022568B8:
 	neg r1, r4
 	mul r0, r1
 	mov r1, #0xfe
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r0, #5
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	neg r4, r0
 _022568CC:
 	add r0, r4, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	bl abs
 	add r2, r0, #0
 	mov r0, #0
@@ -5296,7 +5296,7 @@ _022568CC:
 	bl sub_0200BFCC
 	add r0, r4, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r1, #0
 	bl abs
 	add r2, r0, #0
@@ -5325,7 +5325,7 @@ _0225691C:
 	ldr r0, _02256A24 ; =0x0000C350
 	add r0, r1, r0
 	ldr r1, _02256A28 ; =0x000186A0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r0, #0
 	b _02256946
 _02256934:
@@ -5335,7 +5335,7 @@ _02256934:
 	ldr r0, _02256A24 ; =0x0000C350
 	ldr r1, _02256A28 ; =0x000186A0
 	add r0, r2, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	neg r4, r0
 _02256946:
 	add r0, r4, #0

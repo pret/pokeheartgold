@@ -2488,7 +2488,7 @@ _02259B86:
 	str r1, [r6, #0x64]
 	mul r0, r1
 	mov r1, #0x14
-	bl sub_020F2998
+	bl _s32_div_f
 	str r0, [sp, #0x24]
 	mov r0, #0
 	str r0, [sp, #0x1c]
@@ -2791,7 +2791,7 @@ _02259DB4:
 	ldr r2, [r5, r2]
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_020F2948
+	bl _ll_mul
 	ldr r2, [r5, #0xc]
 	ldr r3, [r5, #0x10]
 	bl _ll_udiv

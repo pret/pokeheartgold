@@ -2858,7 +2858,7 @@ ov60_021E6FFC: ; 0x021E6FFC
 	mov r0, #0x1f
 	mul r0, r1
 	ldrb r1, [r4, #1]
-	bl sub_020F2998
+	bl _s32_div_f
 	strb r0, [r4, #2]
 	ldrb r0, [r4, #2]
 	cmp r0, #0x1f
@@ -3108,14 +3108,14 @@ _021E71F8:
 	add r0, r1, #0
 	mul r0, r4
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r7, r0, #0
 	mov r0, #0x16
 	ldrsh r1, [r5, r0]
 	add r0, r1, #0
 	mul r0, r4
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #0x18
 	ldrsh r1, [r5, r1]
 	add r1, r7, r1
@@ -3183,14 +3183,14 @@ _021E7290:
 	add r0, r1, #0
 	mul r0, r4
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r7, r0, #0
 	mov r0, #0x16
 	ldrsh r1, [r5, r0]
 	add r0, r1, #0
 	mul r0, r4
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #0x18
 	ldrsh r1, [r5, r1]
 	add r1, r7, r1
@@ -3445,7 +3445,7 @@ ov60_021E7454: ; 0x021E7454
 	add r0, r1, #0
 	mul r0, r4
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r7, r0
 	str r0, [sp, #0xc]
 	ldr r7, [r5, #0x14]
@@ -3454,7 +3454,7 @@ ov60_021E7454: ; 0x021E7454
 	add r0, r1, #0
 	mul r0, r4
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r7, r0
 	str r0, [sp, #8]
 	ldr r7, [r5, #0x18]
@@ -3463,7 +3463,7 @@ ov60_021E7454: ; 0x021E7454
 	add r0, r1, #0
 	mul r0, r4
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r7, r7, r0
 	ldr r0, [r5, #0x1c]
 	ldr r1, [r5, #0x2c]
@@ -3472,7 +3472,7 @@ ov60_021E7454: ; 0x021E7454
 	add r0, r1, #0
 	mul r0, r4
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, [sp, #4]
 	add r4, r1, r0
 	ldr r0, [sp, #0xc]
@@ -3904,7 +3904,7 @@ ov60_021E77C0: ; 0x021E77C0
 	ldrb r0, [r4, #0x11]
 	ldrb r1, [r4, #0x10]
 	lsl r0, r0, #0xf
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -4036,7 +4036,7 @@ _021E78BE:
 _021E78CA:
 	add r0, r2, #0
 	mul r0, r3
-	bl sub_020F2998
+	bl _s32_div_f
 _021E78D2:
 	add r2, r0, #0
 	add r2, #0x7f
@@ -6358,13 +6358,13 @@ ov60_021E8B7C: ; 0x021E8B7C
 	add r0, r1, #0
 	mul r0, r4
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, [r5, #0x10]
 	add r7, r0, #0
 	add r0, r1, #0
 	mul r0, r4
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, [r5, #0x14]
 	add r1, r7, r1
 	str r1, [sp]

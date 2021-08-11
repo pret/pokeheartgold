@@ -1020,7 +1020,7 @@ _021E60FE:
 	bl sub_0200DED0
 	mov r0, #0
 	add r1, r7, #0
-	bl sub_020F1C54
+	bl _fneq
 	beq _021E611E
 	ldr r0, [sp]
 	add r1, r7, #0

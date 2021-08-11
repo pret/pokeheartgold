@@ -26928,7 +26928,7 @@ sub_020CAF0C: ; 0x020CAF0C
 	ldr r0, [r0, #4]
 	sub r0, r0, r4
 	mul r0, r2, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r4, r0
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020CAF0C

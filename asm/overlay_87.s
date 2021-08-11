@@ -3178,7 +3178,7 @@ ov87_021E7264: ; 0x021E7264
 _021E7270:
 	bl sub_0201FD44
 	mov r1, #9
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
 	add r1, r5, r0
@@ -3212,7 +3212,7 @@ ov87_021E7294: ; 0x021E7294
 _021E72B0:
 	bl sub_0201FD44
 	mov r1, #9
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r0, #0x36
 	add r2, r5, r1
 	lsl r0, r0, #4

@@ -1998,7 +1998,7 @@ ov61_021E6944: ; 0x021E6944
 _021E696E:
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp]
@@ -2065,7 +2065,7 @@ _021E696E:
 	strh r2, [r0, r1]
 	add r0, r4, #1
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r4, r0, #0x18
 	mov r0, #1
@@ -2768,7 +2768,7 @@ ov61_021E6F80: ; 0x021E6F80
 	add r4, r0, #0
 	add r0, r1, #1
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, r4
 	bne _021E6F94
 	mov r0, #1
@@ -3250,7 +3250,7 @@ ov61_021E7348: ; 0x021E7348
 	add r0, r1, #0
 	mul r0, r2
 	add r1, r3, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	b _021E7376
 _021E7364:
 	sub r0, r4, r0
@@ -3259,7 +3259,7 @@ _021E7364:
 	add r0, r1, #0
 	mul r0, r2
 	add r1, r3, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	neg r0, r0
 _021E7376:
 	add r0, r4, r0

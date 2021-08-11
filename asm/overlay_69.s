@@ -3512,7 +3512,7 @@ ov69_021E75A0: ; 0x021E75A0
 	cmp r0, #0
 	blt _021E75B4
 	ldr r1, _021E75F4 ; =0x0000FFFF
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4]
 	b _021E75CA
 _021E75B4:
@@ -3520,7 +3520,7 @@ _021E75B4:
 	neg r0, r0
 _021E75B8:
 	ldr r1, _021E75F4 ; =0x0000FFFF
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, r0, #1
 	ldr r0, _021E75F4 ; =0x0000FFFF
 	ldr r2, [r4]
@@ -3532,7 +3532,7 @@ _021E75CA:
 	cmp r0, #0
 	blt _021E75DA
 	ldr r1, _021E75F4 ; =0x0000FFFF
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4, #4]
 	pop {r4, pc}
 _021E75DA:
@@ -3540,7 +3540,7 @@ _021E75DA:
 	neg r0, r0
 _021E75DE:
 	ldr r1, _021E75F4 ; =0x0000FFFF
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, r0, #1
 	ldr r0, _021E75F4 ; =0x0000FFFF
 	ldr r2, [r4, #4]

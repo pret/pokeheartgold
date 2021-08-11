@@ -561,7 +561,7 @@ _02237808:
 	ldrb r0, [r0, #3]
 	str r0, [sp, #0x10]
 	add r0, r1, #0x3f
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, [sp, #0x34]
 	mov r4, r0
 	add r0, r1, #4
@@ -1857,7 +1857,7 @@ ov74_02238A48: ; 0x02238A48
 	sub r0, r0, #1
 	str r2, [sp, #4]
 	mov r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	mov ip, #0
 	mov r0, r0, lsl #1
 	add r0, r0, #2

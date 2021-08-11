@@ -5545,7 +5545,7 @@ ov13_022205D4: ; 0x022205D4
 	sub r1, r0, #2
 	mov r0, #0x1e
 	str r1, [r2, #8]
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, _02220600 ; =0x0224CF84
 	mov r2, #0x1e
 	str r0, [r1, #0xc]

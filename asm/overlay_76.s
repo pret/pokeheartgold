@@ -1732,7 +1732,7 @@ _021E66F6:
 	ldrb r0, [r0]
 	mov r1, #6
 	add r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r4, #0
 	add r0, #0x62
 	strb r1, [r0]

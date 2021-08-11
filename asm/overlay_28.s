@@ -1128,7 +1128,7 @@ ov28_0225DE04: ; 0x0225DE04
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xe
 	mov r3, #0
-	bl sub_020F2948
+	bl _ll_mul
 	mov r2, #2
 	mov r3, #0
 	lsl r2, r2, #0xa
@@ -1148,7 +1148,7 @@ ov28_0225DE04: ; 0x0225DE04
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xe
 	mov r3, #0
-	bl sub_020F2948
+	bl _ll_mul
 	mov r2, #2
 	mov r3, #0
 	lsl r2, r2, #0xa
@@ -1857,14 +1857,14 @@ _0225E396:
 	ldr r0, _0225E3B8 ; =0x0000024E
 	mov r1, #0xa
 	ldrsh r0, [r5, r0]
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #1
 	and r0, r1
 	strh r0, [r4]
 	ldr r0, _0225E3B8 ; =0x0000024E
 	mov r1, #0x14
 	ldrsh r0, [r5, r0]
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r0, [r6]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2281,7 +2281,7 @@ _0225E6A2:
 	b _0225E6F6
 _0225E6CC:
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	add r2, r0, #0
 	ldr r0, [sp, #0x3c]
 	lsl r3, r2, #1

@@ -17488,7 +17488,7 @@ _02232932:
 	ldr r2, _022329AC ; =0xFFF40000
 	asr r1, r0, #0x1f
 	asr r3, r2, #0x14
-	bl sub_020F2948
+	bl _ll_mul
 	mov r5, #2
 	mov r6, #0
 	lsl r5, r5, #0xa
@@ -17555,13 +17555,13 @@ ov44_022329B0: ; 0x022329B0
 	cmp r0, #0
 	ble _02232A26
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x10
 	asr r1, r0, #0x10
 	mov r0, #0xb4
 	mul r0, r1
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_0201FBB8
@@ -19989,7 +19989,7 @@ ov44_02233CCC: ; 0x02233CCC
 	ldrsh r0, [r4, r0]
 	mov r1, #0x12
 	add r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _02233D04 ; =0x000001F6
 	strh r1, [r4, r0]
 	pop {r4, pc}

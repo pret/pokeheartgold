@@ -2254,12 +2254,12 @@ ov00_021E6A70: ; 0x021E6A70
 	add r6, r1, #0
 	mov r1, #0x64
 	add r4, r0, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #0xfa
 	add r5, r0, #0
 	add r0, r4, #0
 	lsl r1, r1, #2
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r2, _021E6BC8 ; =0x00004E85
 	cmp r4, r2
 	bne _021E6A92

@@ -3523,11 +3523,11 @@ _021E75A0:
 	mov r1, #7
 	ldrb r6, [r0, r4]
 	add r0, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r5, r1, #0
 	add r0, r6, #0
 	mov r1, #7
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #5
 	str r0, [sp]
 	mov r0, #4

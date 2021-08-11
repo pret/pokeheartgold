@@ -1563,7 +1563,7 @@ _0221F15E:
 	cmp r0, #0
 	beq _0221F170
 	add r1, r4, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, r5, #1
 	lsl r1, r1, #0x18
 	lsr r5, r1, #0x18

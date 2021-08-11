@@ -747,7 +747,7 @@ _021E5E46:
 	add r0, r0, #1
 	str r0, [r4, #0x10]
 	ldr r1, [r4, #0x14]
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4, #0x10]
 	ldr r0, [r4]
 	add r1, r0, #1
@@ -1514,7 +1514,7 @@ _021E63E8:
 	ldr r7, [r5, #0x30]
 	add r0, r4, #1
 	add r1, r7, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r6, r6, #1
 	add r4, r1, #0
 	cmp r6, r7
@@ -3746,7 +3746,7 @@ ov85_021E75C8: ; 0x021E75C8
 	asr r0, r0, #0xc
 	lsl r1, r1, #2
 	sub r0, r1, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r4, #0
 	add r0, #0x4e
 	strh r1, [r0]
@@ -5926,7 +5926,7 @@ _021E8548:
 	mov r1, #0x5a
 	ldr r0, [r4]
 	lsl r1, r1, #0xe
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4]
 	pop {r4, pc}
 	.balign 4, 0

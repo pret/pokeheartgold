@@ -1423,7 +1423,7 @@ _0223E982:
 	ldrb r0, [r4, r0]
 	mov r1, #6
 	sub r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, _0223EC88 ; =0x00000862
 	strh r0, [r4, r1]
 _0223E9A2:
@@ -1452,7 +1452,7 @@ _0223E9CA:
 	ldrb r0, [r4, r0]
 	mov r1, #6
 	sub r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, _0223EC88 ; =0x00000862
 	ldrsh r2, [r4, r1]
 	cmp r0, r2
@@ -5052,7 +5052,7 @@ ov83_022407FC: ; 0x022407FC
 	mov r1, #6
 	ldrb r0, [r4, r0]
 	sub r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #1

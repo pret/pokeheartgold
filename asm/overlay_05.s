@@ -1105,7 +1105,7 @@ _0221C2F8:
 	ldrsb r4, [r5, r0]
 	bl sub_0201FD44
 	add r1, r4, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	lsr r0, r4, #0x1f
 	add r0, r4, r0
 	asr r0, r0, #1
@@ -1116,7 +1116,7 @@ _0221C2F8:
 	ldrsb r4, [r5, r0]
 	bl sub_0201FD44
 	add r1, r4, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	lsr r0, r4, #0x1f
 	add r0, r4, r0
 	asr r0, r0, #1

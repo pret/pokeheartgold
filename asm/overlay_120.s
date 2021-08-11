@@ -939,7 +939,7 @@ ov120_0225F6BC: ; 0x0225F6BC
 	mul r0, r1
 	mov r1, #0x5a
 	lsl r1, r1, #2
-	bl sub_020F2998
+	bl _s32_div_f
 	ldrh r1, [r4, #8]
 	add r0, r1, r0
 	strh r0, [r4, #8]

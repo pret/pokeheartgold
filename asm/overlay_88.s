@@ -1854,7 +1854,7 @@ ov88_022595F8: ; 0x022595F8
 	ldr r0, [sp, #0x20]
 	mul r0, r1
 	ldrh r1, [r5, #4]
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r0, #0
 	mov r0, #1
 	lsl r0, r0, #8
@@ -2220,7 +2220,7 @@ _022598C2:
 	sub r0, #0xe
 	lsl r0, r0, #4
 	mov r1, #0xe
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #0x10
 	sub r3, r1, r0
 _022598D0:

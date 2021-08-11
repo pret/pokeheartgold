@@ -160,7 +160,7 @@ ov20_022599A0: ; 0x022599A0
 	add r2, r4, r2
 	adc r5, r3
 	add r3, r5, #0
-	bl sub_020F2948
+	bl _ll_mul
 	mov r2, #0xa
 	mov r3, #0
 	bl _ll_udiv

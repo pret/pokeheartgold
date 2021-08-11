@@ -1590,7 +1590,7 @@ _021E6600:
 	ldrh r0, [r5, #2]
 	ldrh r1, [r5]
 	add r0, r0, r4
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r1, [r5, #2]
 	pop {r3, r4, r5, pc}
 _021E6612:
@@ -1599,7 +1599,7 @@ _021E6612:
 	ldrh r0, [r5, #2]
 	add r0, r0, r1
 	sub r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r1, [r5, #2]
 _021E6622:
 	pop {r3, r4, r5, pc}

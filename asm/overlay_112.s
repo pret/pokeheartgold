@@ -1022,9 +1022,9 @@ ov112_021E6004: ; 0x021E6004
 	ldr r2, _021E6118 ; =0x000082EA
 	mov r3, #0
 	bl _ll_udiv
-	bl sub_020F2274
+	bl _ulltof
 	ldr r1, _021E611C ; =0x447A0000
-	bl sub_020F1CC8
+	bl _fdiv
 	ldr r0, _021E6120 ; =0x021FFB24
 	ldrb r1, [r0, #0x1d]
 	cmp r1, #0xb0
@@ -1193,9 +1193,9 @@ ov112_021E6164: ; 0x021E6164
 	ldr r2, _021E64CC ; =0x000082EA
 	mov r3, #0
 	bl _ll_udiv
-	bl sub_020F2274
+	bl _ulltof
 	ldr r1, _021E64D0 ; =0x447A0000
-	bl sub_020F1CC8
+	bl _fdiv
 	ldr r1, _021E64D4 ; =0x021FFB24
 	ldrb r0, [r1, #0x1d]
 	sub r0, #0x46
@@ -3859,7 +3859,7 @@ ov112_021E7670: ; 0x021E7670
 	ldrh r2, [r1, #0x36]
 	ldrh r1, [r1, #0x34]
 	mul r0, r2
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, pc}
@@ -3875,7 +3875,7 @@ ov112_021E768C: ; 0x021E768C
 	ldrh r2, [r1, #0x3a]
 	ldrh r1, [r1, #0x38]
 	mul r0, r2
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, pc}
@@ -6176,7 +6176,7 @@ _021E8C9E:
 	add r0, r1, #0
 	mul r0, r6
 	add r1, r7, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r0, [r4]
 	add r5, r5, #1
 	add r4, r4, #2
@@ -9599,7 +9599,7 @@ _021EA872:
 	mul r0, r1
 	mov r1, #5
 	lsl r1, r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	add r7, r0, #0
 	ldrb r0, [r4]
 	cmp r0, #0
@@ -9608,7 +9608,7 @@ _021EA872:
 	bl sub_0201FCAC
 	mov r1, #0x5a
 	lsl r1, r1, #2
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r0, [r4, #0xa]
 	ldrh r0, [r4, #0xc]
 	bl sub_0201FCC0
@@ -9625,10 +9625,10 @@ _021EA872:
 	add r0, #0xa
 	strh r0, [r4, #0xc]
 	ldrh r0, [r4, #0xc]
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r1, #0
 	mov r1, #0x49
-	bl sub_020F2998
+	bl _s32_div_f
 	add r2, r0, #0
 	mov r0, #6
 	ldrsh r1, [r4, r0]
@@ -9680,7 +9680,7 @@ _021EA92C:
 	ldrh r0, [r4, #0xc]
 	mov r1, #0x5a
 	lsl r1, r1, #2
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	blt _021EA954
 	cmp r1, #0xb4
@@ -13658,7 +13658,7 @@ ov112_021EC7B8: ; 0x021EC7B8
 	ldrh r0, [r0, r1]
 	mov r1, #5
 	sub r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r0, #1
 	pop {r3, pc}
 	nop
@@ -26974,7 +26974,7 @@ _021F3050:
 	add r1, r1, #1
 	ldrb r1, [r4, r1]
 	add r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _021F30B4 ; =0x0000013D
 	strb r1, [r4, r0]
 	add r0, r4, #0

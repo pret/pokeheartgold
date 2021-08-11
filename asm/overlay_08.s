@@ -15580,7 +15580,7 @@ _02223C8A:
 _02223C9A:
 	sub r0, r0, #1
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, _02223CD0 ; =0x00001154
 	strb r0, [r6, r1]
 _02223CA6:

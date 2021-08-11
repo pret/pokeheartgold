@@ -6837,7 +6837,7 @@ _0223AF42:
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _0223B104 ; =0x00000448
 	str r1, [r4, r0]
 	add r0, r4, #0
@@ -7491,7 +7491,7 @@ ov57_0223B478: ; 0x0223B478
 	mov r1, #0xc
 	add r0, r0, #1
 	str r0, [r4]
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4]
 	b _0223B4FC
 _0223B496:
@@ -7521,7 +7521,7 @@ _0223B4AE:
 	sub r0, r1, #4
 	mov r1, #0xc
 	str r0, [r4]
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4]
 	b _0223B4FC
 _0223B4CE:
@@ -7541,7 +7541,7 @@ _0223B4D2:
 	add r0, r1, #4
 	mov r1, #0xc
 	str r0, [r4]
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4]
 	b _0223B4FC
 _0223B4F4:

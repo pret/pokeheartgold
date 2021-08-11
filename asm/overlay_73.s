@@ -4684,7 +4684,7 @@ _021E7D9E:
 _021E7DAE:
 	add r0, r4, #1
 	add r1, r7, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r1, #0
 _021E7DB8:
 	lsl r0, r4, #2

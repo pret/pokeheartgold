@@ -1052,7 +1052,7 @@ _0225F892:
 	sub r0, r0, r1
 	lsl r0, r0, #1
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]

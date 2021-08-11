@@ -1716,38 +1716,38 @@ ov72_02238688: ; 0x02238688
 	cmp r1, #0
 	ble _022386A6
 	lsl r0, r1, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _022386B4
 _022386A6:
 	lsl r0, r1, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _022386B4:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp]
 	cmp r5, #0
 	ble _022386D0
 	lsl r0, r5, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _022386DE
 _022386D0:
 	lsl r0, r5, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _022386DE:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp, #4]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -6062,7 +6062,7 @@ _0223A83E:
 	bge _0223A84E
 _0223A844:
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	sub r4, r4, #1
 	b _0223A860
 _0223A84E:
@@ -6090,7 +6090,7 @@ _0223A872:
 	mul r1, r0
 	add r6, r6, r1
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, [sp]
 	add r5, r5, #4
 	add r1, r1, #1

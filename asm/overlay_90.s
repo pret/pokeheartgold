@@ -733,7 +733,7 @@ ov90_02258CF0: ; 0x02258CF0
 	str r3, [sp]
 	asr r1, r0, #0x1f
 	asr r3, r2, #0x1f
-	bl sub_020F2948
+	bl _ll_mul
 	add r2, r0, #0
 	sub r0, r7, r6
 	mov r7, #2
@@ -787,7 +787,7 @@ _02258D60:
 	lsl r2, r4, #0xc
 	asr r1, r0, #0x1f
 	asr r3, r2, #0x1f
-	bl sub_020F2948
+	bl _ll_mul
 	mov r2, #2
 	mov r3, #0
 	lsl r2, r2, #0xa
@@ -802,7 +802,7 @@ _02258D60:
 	lsl r2, r2, #0xc
 	asr r1, r0, #0x1f
 	asr r3, r2, #0x1f
-	bl sub_020F2948
+	bl _ll_mul
 	mov r2, #2
 	mov r3, #0
 	lsl r2, r2, #0xa
@@ -3077,20 +3077,20 @@ ov90_02259EE0: ; 0x02259EE0
 	cmp r1, #0
 	ble _02259EFC
 	lsl r0, r1, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _02259F0A
 _02259EFC:
 	lsl r0, r1, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _02259F0A:
-	bl sub_020F2104
+	bl _ftoi
 	add r2, r0, #0
 	mov r0, #8
 	str r0, [sp]
@@ -6283,7 +6283,7 @@ _0225B750:
 	add r0, #0x4a
 	ldrb r0, [r0]
 	mov r1, #0xf
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #2
 	add r0, r4, r0
 	ldr r0, [r0, #8]
@@ -6325,7 +6325,7 @@ _0225B784:
 	ldrb r5, [r0]
 	mov r1, #0xf
 	add r0, r5, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	bne _0225B7E4
 	add r0, r4, #0
@@ -6985,20 +6985,20 @@ _0225BC74:
 	cmp r0, #0
 	ble _0225BC9C
 	add r0, r5, #0
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0225BCAA
 _0225BC9C:
 	add r0, r5, #0
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0225BCAA:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #0xc]
 	sub r0, r1, r0
 	str r0, [sp, #0xc]
@@ -7008,20 +7008,20 @@ _0225BCB6:
 	cmp r0, #0
 	ble _0225BCCE
 	add r0, r5, #0
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0225BCDC
 _0225BCCE:
 	add r0, r5, #0
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0225BCDC:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #0xc]
 	add r0, r1, r0
 	str r0, [sp, #0xc]

@@ -1843,7 +1843,7 @@ _020CC8B4:
 	mov r1, r3
 	mov r2, #0x1000
 	mov r3, #0
-	bl sub_020F2750
+	bl _ll_div
 _020CC930:
 	ldr r4, [sp, #0x18]
 	mov r2, r7, lsl #1
@@ -1917,7 +1917,7 @@ sub_020CC998: ; 0x020CC998
 	umull r0, r1, r4, sb
 	mla r1, r4, r5, r1
 	mla r1, r6, sb, r1
-	bl sub_020F2750
+	bl _ll_div
 	mov r4, r0
 	mov r6, r1
 _020CCA48:
@@ -1947,7 +1947,7 @@ _020CCA48:
 	umull r0, r1, r5, sb
 	mla r1, r5, ip, r1
 	mla r1, r7, sb, r1
-	bl sub_020F2750
+	bl _ll_div
 	mov r5, r0
 	mov r7, r1
 _020CCABC:
@@ -1968,7 +1968,7 @@ _020CCABC:
 	mov r1, r3
 	mov r2, #0x1000
 	mov r3, #0
-	bl sub_020F2750
+	bl _ll_div
 _020CCB04:
 	ldr r3, [sp, #4]
 	ldr r2, [sp]
@@ -9349,7 +9349,7 @@ _020D23F4:
 _020D240C:
 	ldr r0, [r5, #0x18]
 	add r0, r0, r2
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r2, [r5, #0x10]
 	add r0, r5, #8
 	str r4, [r2, r1, lsl #2]
@@ -9399,7 +9399,7 @@ _020D24B0:
 	ldr r0, [r6, #0x18]
 	ldr r1, [r6, #0x14]
 	add r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r6, #0x18]
 	ldr r1, [r6, #0x1c]
 	mov r0, r6
@@ -9443,7 +9443,7 @@ _020D2544:
 	ldr r0, [r6, #0x18]
 	add r0, r0, r1
 	sub r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r6, #0x18]
 	ldr r0, [r6, #0x10]
 	str r5, [r0, r1, lsl #2]
@@ -22061,7 +22061,7 @@ _020DC554:
 	mov r0, r5
 	mov r1, r4
 	mov r3, #0
-	bl sub_020F2740
+	bl _ll_mod
 	mov r1, r0
 	mov r0, r6
 	bl sub_020DC494
@@ -22069,7 +22069,7 @@ _020DC554:
 	mov r0, r5
 	mov r1, r4
 	mov r3, #0
-	bl sub_020F2750
+	bl _ll_div
 	mov r1, r0
 	mov r0, r7
 	bl sub_020DC394

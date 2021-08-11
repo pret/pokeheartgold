@@ -929,7 +929,7 @@ _021ED070:
 _021ED08C:
 	sub r0, r1, #1
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, _021ED09C ; =0x000002E2
 	strh r0, [r4, r1]
 	pop {r3, r4, r5, r6, r7, pc}

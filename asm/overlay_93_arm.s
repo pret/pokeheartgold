@@ -280,7 +280,7 @@ ov93_0225F268: ; 0x0225F268
 	mov r0, r0, lsl #0xc
 	mov r2, #0x80000
 	mov r3, #0
-	bl sub_020F2750
+	bl _ll_div
 	mov r1, r5, asr #0x1f
 	mov r1, r1, lsl #0xc
 	mov r4, r0
@@ -288,7 +288,7 @@ ov93_0225F268: ; 0x0225F268
 	mov r0, r5, lsl #0xc
 	mov r2, #0x80000
 	mov r3, #0
-	bl sub_020F2750
+	bl _ll_div
 	mov r5, r0
 	ldr r0, _0225F36C ; =0x00007FFF
 	cmp r4, r0
@@ -803,7 +803,7 @@ ov93_0225F9AC: ; 0x0225F9AC
 	mov r0, r3
 	mov r3, #0
 	mov r2, #0x3200000
-	bl sub_020F2750
+	bl _ll_div
 	ldmia sp!, {r3, pc}
 	arm_func_end ov93_0225F9AC
 

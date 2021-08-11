@@ -2130,39 +2130,39 @@ _0225B0A0:
 	cmp r0, #0
 	beq _0225B0BA
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0225B0C8
 _0225B0BA:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0225B0C8:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp, #0x44]
 	ldrh r0, [r6, #2]
 	cmp r0, #0
 	beq _0225B0E6
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0225B0F4
 _0225B0E6:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0225B0F4:
-	bl sub_020F2104
+	bl _ftoi
 	mov r1, #1
 	lsl r1, r1, #0x14
 	add r0, r0, r1
@@ -2212,35 +2212,35 @@ _0225B154:
 	cmp r0, #0
 	beq _0225B16E
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	add r0, r7, #0
-	bl sub_020F1520
+	bl _fadd
 	b _0225B17A
 _0225B16E:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r7, #0
-	bl sub_020F24C8
+	bl _fsub
 _0225B17A:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp, #0x44]
 	ldrh r0, [r6, #2]
 	cmp r0, #0
 	beq _0225B196
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	add r0, r7, #0
-	bl sub_020F1520
+	bl _fadd
 	b _0225B1A2
 _0225B196:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r7, #0
-	bl sub_020F24C8
+	bl _fsub
 _0225B1A2:
-	bl sub_020F2104
+	bl _ftoi
 	mov r1, #1
 	lsl r1, r1, #0x14
 	add r0, r0, r1
@@ -2291,31 +2291,31 @@ _0225B200:
 	str r0, [sp, #0x40]
 	mov r0, #0x19
 	lsl r0, r0, #0xe
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
-	bl sub_020F2104
+	bl _fadd
+	bl _ftoi
 	str r0, [sp, #0x44]
 	ldr r0, [sp, #0x34]
 	cmp r0, #0
 	ble _0225B238
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0225B246
 _0225B238:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0225B246:
-	bl sub_020F2104
+	bl _ftoi
 	mov r1, #1
 	lsl r1, r1, #0x14
 	add r0, r0, r1

@@ -9969,7 +9969,7 @@ _0222ED28:
 	ldrsh r0, [r4, r0]
 	add r0, r0, r1
 	add r1, r2, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r1, [r4]
 	pop {r4, pc}
 _0222ED40:

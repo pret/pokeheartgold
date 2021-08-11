@@ -19924,7 +19924,7 @@ _021F8C68:
 	mul r0, r2, fp
 	movle sl, #0
 	mov r1, r8
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r0, sl
 	str r0, [r5, sb, lsl #2]
 	cmp r6, r0
@@ -27016,7 +27016,7 @@ _021FE884:
 	ldr r2, [r6, #0x14]
 	ldr r1, [r6, #8]
 	sub r0, r0, r2
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r2, r0
 	mov r0, r6
 	mov r1, r5
@@ -27193,7 +27193,7 @@ _021FEAC8:
 	ldr r2, [r7, #0x14]
 	ldr r1, [r7, #8]
 	sub r0, r0, r2
-	bl sub_020F2998
+	bl _s32_div_f
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end ov00_021FEA40
@@ -28557,7 +28557,7 @@ ov00_021FFB5C: ; 0x021FFB5C
 	ldmeqia sp!, {r3, r4, r5, pc}
 	bl ov00_021FFB20
 	mov r1, r4
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r1, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_021FFB5C
@@ -37647,7 +37647,7 @@ _02207A90: .word _02219218
 ov00_02207A94: ; 0x02207A94
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0]
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_02207A94
@@ -41111,7 +41111,7 @@ ov00_0220AB04: ; 0x0220AB04
 	bl ov00_0220ADE0
 	ldr r0, [r0]
 	ldr r1, [r5]
-	bl sub_020F2998
+	bl _s32_div_f
 	bl ov00_0220AD00
 	mov r1, r0
 	mov r0, r4
@@ -41201,7 +41201,7 @@ ov00_0220AC2C: ; 0x0220AC2C
 	ldr r2, [r7]
 	ldr r0, [r0]
 	mla r0, r1, r0, r2
-	bl sub_020F2998
+	bl _s32_div_f
 	bl ov00_0220AD00
 	mov r1, r0
 	mov r0, r4
@@ -42593,11 +42593,11 @@ _0220BE6C:
 	ldrnesb r6, [r0, #-1]
 	mov r1, r7
 	add r0, sl, sb
-	bl sub_020F2998
+	bl _s32_div_f
 	mul r0, r6, r8
 	mov r6, r1
 	mov r1, r7
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _0220BF08 ; =_022199E4
 	ldrsb r3, [r0, r6]
 	ldrsb r2, [r0, r1]
@@ -48819,7 +48819,7 @@ _022110E0:
 	rsb r2, r3, r2, lsl #24
 	add r2, r3, r2, ror #24
 	and r5, r2, #0xff
-	bl sub_020F2998
+	bl _s32_div_f
 	and r4, r1, #0xff
 	mov r0, r6
 	add r1, fp, r5
@@ -50811,12 +50811,12 @@ _02212BE0: .word ov00_0221321C
 
 	arm_func_start ov00_02212BE4
 ov00_02212BE4: ; 0x02212BE4
-	ldr ip, _02212BF4 ; =sub_020F03D0
+	ldr ip, _02212BF4 ; =strnicmp
 	ldr r0, [r0]
 	ldr r1, [r1]
 	bx ip
 	.balign 4, 0
-_02212BF4: .word sub_020F03D0
+_02212BF4: .word strnicmp
 	arm_func_end ov00_02212BE4
 
 	arm_func_start ov00_02212BF8
@@ -51383,12 +51383,12 @@ _022132A4: .word ov00_0221321C
 
 	arm_func_start ov00_022132A8
 ov00_022132A8: ; 0x022132A8
-	ldr ip, _022132B8 ; =sub_020F03D0
+	ldr ip, _022132B8 ; =strnicmp
 	ldr r0, [r0]
 	ldr r1, [r1]
 	bx ip
 	.balign 4, 0
-_022132B8: .word sub_020F03D0
+_022132B8: .word strnicmp
 	arm_func_end ov00_022132A8
 
 	arm_func_start ov00_022132BC
@@ -52056,14 +52056,14 @@ _02213AE0:
 	mov r1, r5
 	bl _d2f
 	mov r1, #0
-	bl sub_020F1ACC
+	bl _fgr
 	movhi r0, #1
 	ldmhiia sp!, {r4, r5, r6, pc}
 	mov r0, r4
 	mov r1, r5
 	bl _d2f
 	mov r1, #0
-	bl sub_020F1B90
+	bl _fls
 	movlo r0, #1
 	movhs r0, #0
 	rsb r0, r0, #0
@@ -52122,7 +52122,7 @@ ov00_02213B8C: ; 0x02213B8C
 	bl ov00_02212D48
 	mov r1, r0
 	mov r0, r4
-	bl sub_020F03D0
+	bl strnicmp
 	ldr r1, _02213BEC ; =_0221B9DC
 	ldr r1, [r1]
 	ldr r1, [r1, #0x49c]
@@ -53204,7 +53204,7 @@ ov00_022149A4: ; 0x022149A4
 _022149D0:
 	mov r0, r4
 	mov r1, r5
-	bl sub_020F2998
+	bl _s32_div_f
 	ldrsb r1, [r6, r1]
 	mov r2, r4, lsr #0x1f
 	rsb r0, r2, r4, lsl #29

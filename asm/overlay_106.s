@@ -2092,7 +2092,7 @@ _021E6930:
 	bl abs
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, [sp, #8]
 	mul r0, r1
 	lsr r1, r0, #8

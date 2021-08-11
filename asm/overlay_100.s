@@ -2408,58 +2408,58 @@ _021E6B06:
 	str r0, [sp, #0x38]
 	beq _021E6B66
 	lsl r0, r7, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E6B74
 _021E6B66:
 	lsl r0, r7, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E6B74:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp, #0x3c]
 	ldr r0, [sp, #0x2c]
 	cmp r0, #0
 	beq _021E6B92
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E6BA0
 _021E6B92:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E6BA0:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp, #0x40]
 	ldr r0, [sp, #0x30]
 	cmp r0, #0
 	beq _021E6BBE
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E6BCC
 _021E6BBE:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E6BCC:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp, #0x44]
 	cmp r6, #2
 	bne _021E6BE0

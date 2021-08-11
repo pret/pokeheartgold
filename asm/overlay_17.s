@@ -3340,7 +3340,7 @@ ov17_022035A4: ; 0x022035A4
 	ldrsh r0, [r1, r0]
 	mov r1, #0x1b
 	sub r0, #0x1f
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	ldrb r0, [r5, #0xa]
@@ -3641,7 +3641,7 @@ _02203828:
 	add r1, r6, #0
 	mov r2, #0x3c
 	mov r3, #0
-	bl sub_020F2750
+	bl _ll_div
 	add r2, r0, #0
 	beq _02203876
 	ldr r0, [r4, #0x14]

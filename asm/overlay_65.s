@@ -558,7 +558,7 @@ _0221C2F4:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov65_0221E06C
@@ -1001,7 +1001,7 @@ _0221C6A6:
 	bne _0221C6CA
 	bl sub_0201FD44
 	mov r1, #0x3c
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x10
 	lsr r5, r0, #0x10
 	bl sub_0203769C
@@ -1502,7 +1502,7 @@ ov65_0221CADC: ; 0x0221CADC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _0221CB48 ; =0x00002228
 	add r7, r1, #0
 	ldr r0, [r5, r0]
@@ -1510,7 +1510,7 @@ ov65_0221CADC: ; 0x0221CADC
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, r6, #0
 	ldr r2, _0221CB4C ; =0x000007FC
 	mov r6, #0x32
@@ -1571,7 +1571,7 @@ ov65_0221CB5C: ; 0x0221CB5C
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	add r3, r0, #0
 	ldr r2, _0221CBF4 ; =0x000007FC
 	add r1, r4, #0
@@ -4185,7 +4185,7 @@ _0221E0D6:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r5, #0
 	add r0, #0x20
 	strb r1, [r0]
@@ -5744,7 +5744,7 @@ ov65_0221ED94: ; 0x0221ED94
 	mov r1, #0x14
 	str r2, [sp, #8]
 	ldr r5, [sp, #0x4c]
-	bl sub_020F2998
+	bl _s32_div_f
 	mul r0, r6
 	add r0, r4, r0
 	str r0, [sp, #0x24]
@@ -5752,7 +5752,7 @@ ov65_0221ED94: ; 0x0221ED94
 	ldr r0, [r7, #0x10]
 	mov r1, #0x14
 	sub r0, r0, r4
-	bl sub_020F2998
+	bl _s32_div_f
 	mul r0, r6
 	add r0, r4, r0
 	str r0, [sp, #0x28]

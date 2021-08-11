@@ -7493,7 +7493,7 @@ ov45_02237890: ; 0x02237890
 	sub r0, r0, r4
 	cmp r1, r0
 	bls _022378B8
-	bl sub_020F05FC
+	bl _ZNSt15__vector_commonILb1EE18throw_length_errorEv
 _022378B8:
 	ldr r0, _02237954 ; =0x55555555
 	cmp r4, r0
@@ -8483,7 +8483,7 @@ ov45_022385A4: ; 0x022385A4
 	sub r0, r0, r4
 	cmp r1, r0
 	bls _022385CC
-	bl sub_020F05FC
+	bl _ZNSt15__vector_commonILb1EE18throw_length_errorEv
 _022385CC:
 	ldr r0, _0223866C ; =0x071C71C7
 	cmp r4, r0
@@ -8820,7 +8820,7 @@ ov45_02238A3C: ; 0x02238A3C
 	mov r5, r0
 	cmp r4, r2
 	bls _02238A58
-	bl sub_020F05FC
+	bl _ZNSt15__vector_commonILb1EE18throw_length_errorEv
 _02238A58:
 	mov r0, #0xc
 	mul r0, r4, r0
@@ -12492,7 +12492,7 @@ ov45_0223BD94: ; 0x0223BD94
 	sub r0, r0, r4
 	cmp r1, r0
 	bls _0223BDBC
-	bl sub_020F05FC
+	bl _ZNSt15__vector_commonILb1EE18throw_length_errorEv
 _0223BDBC:
 	ldr r0, _0223BE58 ; =0x0AAAAAAA
 	cmp r4, r0
@@ -12585,7 +12585,7 @@ ov45_0223BED0: ; 0x0223BED0
 	sub r0, r0, r4
 	cmp r1, r0
 	bls _0223BEF8
-	bl sub_020F05FC
+	bl _ZNSt15__vector_commonILb1EE18throw_length_errorEv
 _0223BEF8:
 	ldr r0, _0223BF94 ; =0x0AAAAAAA
 	cmp r4, r0
@@ -13651,7 +13651,7 @@ ov45_0223CE30: ; 0x0223CE30
 	mov r5, r0
 	cmp r4, r1
 	bls _0223CE4C
-	bl sub_020F05FC
+	bl _ZNSt15__vector_commonILb1EE18throw_length_errorEv
 _0223CE4C:
 	mov r0, r4, lsl #3
 	bl ov45_02242394
@@ -13668,7 +13668,7 @@ ov45_0223CE60: ; 0x0223CE60
 	mov r5, r0
 	cmp r4, r1
 	bls _0223CE7C
-	bl sub_020F05FC
+	bl _ZNSt15__vector_commonILb1EE18throw_length_errorEv
 _0223CE7C:
 	mov r0, r4, lsl #3
 	bl ov45_02242394
@@ -15682,7 +15682,7 @@ ov45_0223EA04: ; 0x0223EA04
 	mov r5, r0
 	cmp r4, r1
 	bls _0223EA20
-	bl sub_020F05FC
+	bl _ZNSt15__vector_commonILb1EE18throw_length_errorEv
 _0223EA20:
 	mov r0, r4, lsl #2
 	bl ov45_02242394
@@ -15702,7 +15702,7 @@ ov45_0223EA34: ; 0x0223EA34
 	sub r0, r0, r4
 	cmp r1, r0
 	bls _0223EA5C
-	bl sub_020F05FC
+	bl _ZNSt15__vector_commonILb1EE18throw_length_errorEv
 _0223EA5C:
 	ldr r0, _0223EAF8 ; =0x15555555
 	cmp r4, r0
@@ -15864,7 +15864,7 @@ ov45_0223EC80: ; 0x0223EC80
 	mov r5, r0
 	cmp r4, r1
 	bls _0223EC9C
-	bl sub_020F05FC
+	bl _ZNSt15__vector_commonILb1EE18throw_length_errorEv
 _0223EC9C:
 	mov r0, r4, lsl #2
 	bl ov45_02242394
@@ -25846,7 +25846,7 @@ _02247584:
 	bne _02247570
 _02247594:
 	mov r1, r4
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r0, r1
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
@@ -25979,7 +25979,7 @@ _02247720:
 _02247740:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020F03D0
+	bl strnicmp
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _02247750: .word 0x02255958
@@ -26115,7 +26115,7 @@ _022478DC:
 _022478FC:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020F03D0
+	bl strnicmp
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _0224790C: .word 0x02255958
@@ -26260,10 +26260,10 @@ _02247AD0: .word 0x00000101
 
 	arm_func_start ov45_02247AD4
 ov45_02247AD4: ; 0x02247AD4
-	ldr ip, _02247ADC ; =sub_020F03D0
+	ldr ip, _02247ADC ; =strnicmp
 	bx ip
 	.balign 4, 0
-_02247ADC: .word sub_020F03D0
+_02247ADC: .word strnicmp
 	arm_func_end ov45_02247AD4
 
 	arm_func_start ov45_02247AE0
@@ -26301,7 +26301,7 @@ _02247B28:
 _02247B50:
 	mov r0, r8
 	mov r1, sb
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -28227,7 +28227,7 @@ _02249590:
 	ldrb r3, [r6, r4]
 	strb r3, [r6, r5]
 	strb r2, [r6, r4]
-	bl sub_020F2998
+	bl _s32_div_f
 	add r5, r5, #1
 	cmp r5, #0x100
 	and r0, r1, #0xff
@@ -28368,7 +28368,7 @@ _0224976C:
 	ldrne r1, [r8, #8]
 	cmpne r1, #0
 	beq _022497F4
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	bne _022497F4
 _022497AC:
@@ -28381,7 +28381,7 @@ _022497AC:
 	cmpne r1, #0
 	beq _022497F4
 	mov r0, r7
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	bne _022497F4
 _022497DC:
@@ -28454,7 +28454,7 @@ _022498A8:
 	ldr r0, [r4, #0x1c]
 	mov r1, r5
 	ldr r0, [r0, #8]
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	moveq r0, r4
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -30311,7 +30311,7 @@ _0224B1DC:
 _0224B204:
 	mov r0, r5
 	add r1, sb, #0x36c
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	bne _0224B27C
 	ldr r0, [sb, #0x800]
@@ -30410,7 +30410,7 @@ _0224B358:
 	add r1, r7, #0x36c
 	ldmia r0, {r4, r5}
 	mov r0, r4
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	bne _0224B3E8
 	ldr r0, [r7, #0x800]
@@ -30507,7 +30507,7 @@ _0224B4BC:
 	add r1, r7, #0x36c
 	ldmia r0, {r4, r5}
 	mov r0, r4
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	bne _0224B550
 	ldr r0, [r7, #0x800]
@@ -30606,7 +30606,7 @@ _0224B628:
 	add r1, r7, #0x36c
 	ldmia r0, {r4, r5}
 	mov r0, r4
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	bne _0224B6BC
 	ldr r0, [r7, #0x800]
@@ -30730,7 +30730,7 @@ _0224B7DC:
 	mov r0, r5
 	add r1, r4, #0x36c
 	ldr r6, [r2]
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	bne _0224B898
 	mov r0, r6
@@ -31095,7 +31095,7 @@ _0224BCE4:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r6
 	add r1, sb, #0x36c
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	bne _0224BDA8
 	ldr r0, [r7, #4]
@@ -35162,7 +35162,7 @@ _0224F5E0:
 _0224F5F8:
 	ldr r0, [r5, #0x14]
 	ldr r1, [r8, r4, lsl #3]
-	bl sub_020F03D0
+	bl strnicmp
 	cmp r0, #0
 	bne _0224F630
 	ldr r0, _0224F65C ; =0x02256414

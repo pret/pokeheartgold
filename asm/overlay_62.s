@@ -1251,7 +1251,7 @@ _021E62A6:
 	blt _021E629C
 _021E62AE:
 	add r0, r2, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov62_021E6288
@@ -1521,38 +1521,38 @@ ov62_021E6480: ; 0x021E6480
 	cmp r5, #0
 	ble _021E64B6
 	lsl r0, r5, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E64C4
 _021E64B6:
 	lsl r0, r5, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E64C4:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [r4, #8]
 	cmp r6, #0
 	ble _021E64E0
 	lsl r0, r6, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E64EE
 _021E64E0:
 	lsl r0, r6, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E64EE:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [r4, #0xc]
 	mov r0, #0
 	str r0, [r4, #0x10]
@@ -1567,7 +1567,7 @@ _021E64EE:
 	asr r7, r0, #0x1f
 	add r1, r7, #0
 	str r0, [sp]
-	bl sub_020F2948
+	bl _ll_mul
 	add r2, r0, #0
 	mov r0, #2
 	mov r3, #0
@@ -1586,7 +1586,7 @@ _021E64EE:
 	ldr r0, [sp]
 	add r1, r7, #0
 	asr r3, r2, #0x1f
-	bl sub_020F2948
+	bl _ll_mul
 	mov r3, #2
 	mov r2, #0
 	lsl r3, r3, #0xa

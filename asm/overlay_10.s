@@ -273,7 +273,7 @@ _0221C004:
 	ldr r0, [sp]
 	bl ov12_0223BD98
 	add r1, r4, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, sp, #4
 	ldrb r0, [r0, r1]
 _0221C01C:
@@ -450,7 +450,7 @@ _0221C14E:
 	add r0, r7, #0
 	bl ov12_0223BD98
 	add r1, r4, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, sp, #0x10
 	ldrb r1, [r0, r1]
 	ldr r0, [sp, #4]
@@ -523,7 +523,7 @@ _0221C1DA:
 	add r0, r7, #0
 	bl ov12_0223BD98
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, sp, #0x1c
 	ldrb r3, [r0, r1]
 	ldr r0, _0221C264 ; =0x000003CF
@@ -6863,14 +6863,14 @@ _0221F1E8:
 	mov r0, #0x28
 	mul r0, r1
 	mov r1, #0x3f
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r0, #0
 	ldr r1, [sp, #0x24]
 	mov r0, #0xf
 	mul r0, r1
 	mov r1, #0x3f
 	add r4, #0x1e
-	bl sub_020F2998
+	bl _s32_div_f
 	add r7, r0, #1
 	cmp r7, #9
 	bge _0221F28A
@@ -6917,7 +6917,7 @@ _0221F2CE:
 	ldr r0, [sp, #0x18]
 	bl ov12_0223BD98
 	mov r1, #0xb
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, [sp, #0x64]
 	mov r2, #0xc0
 	mul r2, r0
@@ -6927,7 +6927,7 @@ _0221F2CE:
 	add r0, r1, #5
 	mov r1, #0xa
 	mul r0, r2
-	bl sub_020F2998
+	bl _s32_div_f
 	str r0, [sp, #0x20]
 	b _0221F3B4
 _0221F2F4:
@@ -6940,7 +6940,7 @@ _0221F2F4:
 	mov r0, #0xa
 	mul r0, r1
 	mov r1, #0x19
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r0, #0
 	b _0221F3B4
 _0221F30E:
@@ -6955,14 +6955,14 @@ _0221F30E:
 	mov r0, #0xa
 	mul r0, r1
 	mov r1, #0x19
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r0, #0
 	b _0221F3B4
 _0221F32C:
 	ldr r0, [sp, #0x18]
 	bl ov12_0223BD98
 	mov r1, #0x64
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #5
 	bge _0221F340
 	mov r4, #0xa
@@ -7287,7 +7287,7 @@ _0221F536:
 	mov r0, #0xf
 	mul r0, r1
 	mov r1, #0x3f
-	bl sub_020F2998
+	bl _s32_div_f
 	add r5, r0, #1
 	cmp r5, #9
 	blt _0221F5E4
@@ -7558,7 +7558,7 @@ _0221F710:
 	ldr r0, [sp, #0x14]
 	bl ov12_0223BD98
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #2
 	bge _0221F7BA
 	ldr r0, [sp, #0x18]
@@ -7899,7 +7899,7 @@ _0221FA3E:
 	add r0, r7, #0
 	bl ov12_0223BD98
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #2
 	bge _0221FA66
 	ldr r0, [sp, #0x14]
@@ -7964,7 +7964,7 @@ _0221FACC:
 	add r0, r7, #0
 	bl ov12_0223BD98
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #2
 	bge _0221FAF4
 	ldr r0, [sp, #0x14]
@@ -8321,7 +8321,7 @@ _0221FDBA:
 	add r0, r5, #0
 	bl ov12_0223BD98
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	beq _0221FDD0
 	add sp, #0x30
@@ -8400,7 +8400,7 @@ _0221FE5C:
 	add r0, r5, #0
 	bl ov12_0223BD98
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	beq _0221FE72
 	add sp, #0x30
@@ -8436,7 +8436,7 @@ ov10_0221FE8C: ; 0x0221FE8C
 	add r0, r6, #0
 	bl ov12_0223BD98
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	beq _0221FEB6
 	add sp, #0x14
@@ -8869,7 +8869,7 @@ _0222018A:
 	ldr r0, [sp, #0x14]
 	bl ov12_0223BD98
 	ldr r1, [sp, #0x24]
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	bne _0222023C
 	ldr r0, [sp, #0x18]

@@ -2328,7 +2328,7 @@ _021E6DF2:
 	mov r1, #0x1e
 	ldrb r0, [r4, r0]
 	add r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _021E6E08 ; =0x00003439
 	strb r1, [r4, r0]
 _021E6E02:
