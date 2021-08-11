@@ -60,3 +60,7 @@ files/**/*.c
 
 # Utilities
 ntruncompbw
+*.elf
+cmake-build-*
+*.sbin_LZ
+*.diff
