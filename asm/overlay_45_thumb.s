@@ -3815,7 +3815,7 @@ _0222B958:
 	add r1, #0x63
 	strb r0, [r1]
 	add r1, r5, #0
-	mov r2, #7
+	mov r2, #GAME_VERSION
 	add r1, #0x62
 	strb r2, [r1]
 	ldr r1, [sp, #8]

@@ -310,7 +310,7 @@ _0222722C:
 	str r0, [r5, r1]
 	ldr r0, [r4]
 	str r0, [r5, #0xc]
-	mov r0, #7
+	mov r0, #GAME_VERSION
 	strb r0, [r5, #0x10]
 	mov r0, #2
 	strb r0, [r5, #0x11]

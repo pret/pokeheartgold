@@ -4311,7 +4311,7 @@ _021E7ADA:
 	add r0, r4, #0
 	bl sub_02028F94
 	strb r0, [r5, #4]
-	mov r0, #7
+	mov r0, #GAME_VERSION
 	strb r0, [r5, #5]
 	mov r0, #2
 	strb r0, [r5, #6]
