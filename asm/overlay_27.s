@@ -252,7 +252,7 @@ ov27_0225A19C: ; 0x0225A19C
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 _0225A1C8:
 	mov r0, #0x52
 	lsl r0, r0, #4
@@ -304,7 +304,7 @@ _0225A216:
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 _0225A238:
 	ldr r0, [r6, #0x18]
 	bl sub_02024504
@@ -348,7 +348,7 @@ _0225A246:
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 _0225A2A4:
 	ldr r1, _0225A2B0 ; =SDK_OVERLAY_OVY_123_ID
 	mov r0, #0
@@ -1855,7 +1855,7 @@ _0225AD52:
 	mov r2, #0x40
 	bl sub_020D48B4
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4368,13 +4368,13 @@ _0225C236:
 
 	thumb_func_start ov27_0225C238
 ov27_0225C238: ; 0x0225C238
-	ldr r3, _0225C244 ; =sub_0201AACC
+	ldr r3, _0225C244 ; =AllocFromHeapAtEnd
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_0225C244: .word sub_0201AACC
+_0225C244: .word AllocFromHeapAtEnd
 	thumb_func_end ov27_0225C238
 
 	thumb_func_start ov27_0225C248
@@ -4673,7 +4673,7 @@ ov27_0225C4AC: ; 0x0225C4AC
 	add r5, r0, #0
 	mov r0, #0xef
 	mov r1, #8
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0
 	ldr r2, _0225C53C ; =0x04001050
 	add r3, r1, #0
@@ -4726,9 +4726,9 @@ ov27_0225C4AC: ; 0x0225C4AC
 	mov r1, #6
 	bl sub_0201EFBC
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -4742,7 +4742,7 @@ ov27_0225C540: ; 0x0225C540
 	add r5, r0, #0
 	mov r0, #0xef
 	mov r1, #8
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -4766,7 +4766,7 @@ ov27_0225C540: ; 0x0225C540
 	mov r3, #4
 	bl sub_02007B68
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #8
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4855,7 +4855,7 @@ ov27_0225C618: ; 0x0225C618
 	add r6, r0, #0
 	mov r0, #0xef
 	mov r1, #8
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -4881,7 +4881,7 @@ ov27_0225C618: ; 0x0225C618
 	mov r3, #4
 	bl sub_02007B68
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #0
 	str r0, [sp, #0x14]
 	cmp r6, #0

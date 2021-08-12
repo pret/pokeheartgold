@@ -270,7 +270,7 @@ ov55_021E5B08: ; 0x021E5B08
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0x38
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0x38
 	add r6, r0, #0
@@ -348,7 +348,7 @@ ov55_021E5BAC: ; 0x021E5BAC
 	bl sub_02026380
 _021E5BBA:
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov55_021E5BAC

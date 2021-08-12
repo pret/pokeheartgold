@@ -1395,7 +1395,7 @@ ov110_021E6348: ; 0x021E6348
 	mov r1, #4
 	bl sub_0201BB4C
 	ldr r0, [r4, #0x14]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r2, _021E6390 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -1413,7 +1413,7 @@ ov110_021E6394: ; 0x021E6394
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xac
-	bl sub_02007688
+	bl NARC_ctor
 	add r4, r0, #0
 	ldr r0, [r5]
 	bl sub_020030E8
@@ -1552,7 +1552,7 @@ ov110_021E6394: ; 0x021E6394
 	add r1, #0xd8
 	str r0, [r1]
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -1612,7 +1612,7 @@ ov110_021E6544: ; 0x021E6544
 	add r4, r0, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
@@ -2619,7 +2619,7 @@ ov110_021E6D20: ; 0x021E6D20
 	add r4, r0, #0
 	ldr r0, [r4]
 	mov r1, #8
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 	mov r1, #0
 	mov r2, #8
 	add r5, r0, #0
@@ -2660,7 +2660,7 @@ ov110_021E6D54: ; 0x021E6D54
 	mov r2, #8
 	bl sub_020D4994
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r5, #0
 	bl sub_0200E390
 _021E6D8A:

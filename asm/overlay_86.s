@@ -675,7 +675,7 @@ ov86_021E5E54: ; 0x021E5E54
 	mov r1, #6
 	bl sub_0201BB4C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov86_021E5E54
 
@@ -732,7 +732,7 @@ ov86_021E5ECC: ; 0x021E5ECC
 	add r6, r1, #0
 	mov r0, #0xb7
 	mov r1, #0x79
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -782,9 +782,9 @@ ov86_021E5ECC: ; 0x021E5ECC
 	mov r2, #0x60
 	bl sub_020D47B8
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -798,7 +798,7 @@ ov86_021E5F58: ; 0x021E5F58
 	add r6, r1, #0
 	mov r0, #0xb7
 	mov r1, #0x79
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -833,7 +833,7 @@ ov86_021E5F58: ; 0x021E5F58
 	mov r3, #0
 	bl sub_02007B8C
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1621,7 +1621,7 @@ _021E6630:
 	cmp r4, #0
 	beq _021E663A
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 _021E663A:
 	add r0, r5, #0
 	mov r1, #0
@@ -2680,7 +2680,7 @@ ov86_021E6E98: ; 0x021E6E98
 	bl sub_02009FC8
 	mov r0, #0xb8
 	mov r1, #0x79
-	bl sub_02007688
+	bl NARC_ctor
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -2732,7 +2732,7 @@ ov86_021E6E98: ; 0x021E6E98
 	mov r3, #0x32
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	ldr r6, _021E6FF0 ; =0x021E802C
 	mov r7, #0
 	add r4, r5, #0
@@ -3340,7 +3340,7 @@ _021E7438:
 	ldr r1, [sp, #0xc]
 	mov r0, #0x79
 	lsl r1, r1, #1
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0x26
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -3388,7 +3388,7 @@ _021E74A2:
 	blo _021E7462
 _021E74AE:
 	add r0, r7, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [sp, #4]
 	add r0, r0, #1
 	lsl r0, r0, #0x10
@@ -3400,7 +3400,7 @@ _021E74C2:
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _021E74CC
-	bl sub_0201AB0C
+	bl FreeToHeap
 _021E74CC:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -3417,7 +3417,7 @@ _021E74DA:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _021E74E4
-	bl sub_0201AB0C
+	bl FreeToHeap
 _021E74E4:
 	add r4, r4, #1
 	add r5, #8

@@ -138,9 +138,9 @@ ov97_0221E69C: ; 0x0221E69C
 	bl sub_0202168C
 	bl sub_02022608
 	ldr r0, [r4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -1107,7 +1107,7 @@ ov97_0221EE84: ; 0x0221EE84
 	mov r1, #0xbf
 	lsl r1, r1, #2
 	add r5, r0, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0xbf
 	mov r1, #0
 	lsl r2, r2, #2
@@ -1378,7 +1378,7 @@ _0221F0BC:
 	ldr r0, [r5, #4]
 	bl sub_02024504
 	add r0, r7, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov97_0221F020
@@ -1433,7 +1433,7 @@ _0221F114:
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2593,7 +2593,7 @@ _0221FA70:
 	mov r1, #0x32
 	ldr r0, [r5]
 	lsl r1, r1, #6
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0x96
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2763,7 +2763,7 @@ ov97_0221FBDC: ; 0x0221FBDC
 	ldrh r0, [r1, #4]
 	ldrh r1, [r1, #8]
 	ldr r2, [r4]
-	bl sub_02007524
+	bl AllocAndReadWholeNarcMemberByIdPair
 	add r1, sp, #0x10
 	add r5, r0, #0
 	bl sub_020B7140
@@ -2779,7 +2779,7 @@ _0221FC3A:
 	mov r2, #0x20
 	bl sub_020D47B8
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x24
 	pop {r4, r5, pc}
 	thumb_func_end ov97_0221FBDC

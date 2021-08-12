@@ -34,7 +34,7 @@ _0225F04E:
 	mov r1, #0x69
 	mov r0, #4
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x69
 	str r0, [r4, #0xc]
 	mov r1, #0
@@ -321,7 +321,7 @@ _0225F2AC:
 	mov r1, #0x1b
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x1b
 	str r0, [r6, #0xc]
 	mov r1, #0

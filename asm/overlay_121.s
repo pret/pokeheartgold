@@ -189,9 +189,9 @@ _021E5A5A:
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, _021E5AE8 ; =0x0000025E
 	mov r5, #0
 	ldrb r0, [r4, r0]
@@ -215,9 +215,9 @@ _021E5AC4:
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x9e
 	bl sub_0201A9C4
 	mov r0, #1
@@ -1174,7 +1174,7 @@ ov121_021E62A0: ; 0x021E62A0
 	add r4, r0, #0
 	add r0, r1, #0
 	mov r1, #0x28
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	mov r2, #0
@@ -1894,7 +1894,7 @@ ov121_021E67FC: ; 0x021E67FC
 	ldrb r2, [r4, r1]
 	mov r1, #0x3c
 	mul r1, r2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x95
 	lsl r2, r2, #2
 	str r0, [r4, r2]

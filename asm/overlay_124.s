@@ -141,7 +141,7 @@ _02260D44:
 	mul r1, r0
 _02260D4A:
 	mov r0, #3
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 	pop {r4, r5, r6, pc}
 	nop
 _02260D54: .word 0x00004E20
@@ -149,13 +149,13 @@ _02260D54: .word 0x00004E20
 
 	thumb_func_start ov124_02260D58
 ov124_02260D58: ; 0x02260D58
-	ldr r3, _02260D64 ; =sub_0201AACC
+	ldr r3, _02260D64 ; =AllocFromHeapAtEnd
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_02260D64: .word sub_0201AACC
+_02260D64: .word AllocFromHeapAtEnd
 	thumb_func_end ov124_02260D58
 
 	thumb_func_start ov124_02260D68

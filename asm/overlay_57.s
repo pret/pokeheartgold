@@ -42,7 +42,7 @@ ov57_022378DC: ; 0x022378DC
 	str r0, [r4]
 	mov r0, #0xb4
 	mov r1, #0x34
-	bl sub_02007688
+	bl NARC_ctor
 	ldr r1, _02237AE4 ; =0x0000045C
 	str r0, [r4, r1]
 	ldr r0, [r4]
@@ -344,7 +344,7 @@ ov57_02237B20: ; 0x02237B20
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
@@ -378,7 +378,7 @@ ov57_02237B20: ; 0x02237B20
 	bl ov57_02237E80
 	ldr r0, _02237C94 ; =0x00000458
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
 	bl ov57_022383AC
 	mov r0, #0x7b
@@ -407,7 +407,7 @@ ov57_02237B20: ; 0x02237B20
 	bl ov57_02237CDC
 	ldr r0, _02237C98 ; =0x0000045C
 	ldr r0, [r4, r0]
-	bl sub_0200770C
+	bl NARC_dtor
 	ldr r0, [r4]
 	ldr r1, _02237C9C ; =0x0000040C
 	ldr r0, [r0, #0x2c]
@@ -3759,7 +3759,7 @@ _022395E2:
 	cmp r4, #9
 	blo _022395E2
 	ldr r0, [sp, #0x14]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x20
@@ -5167,7 +5167,7 @@ _0223A120: ; jump table
 _0223A12E:
 	mov r0, #0x57
 	mov r1, #0x34
-	bl sub_02007688
+	bl NARC_ctor
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov57_02238DD0
@@ -5251,7 +5251,7 @@ _0223A12E:
 	and r0, r1
 	strh r0, [r2]
 	add r0, r5, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #0xff
 	lsl r0, r0, #2
 	ldr r1, [r4, r0]
@@ -8110,7 +8110,7 @@ _0223B8E4:
 	add r0, r5, #0
 	bl sub_0200E390
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, pc}
 _0223B904:
 	add r0, r0, #1
@@ -8126,7 +8126,7 @@ ov57_0223B90C: ; 0x0223B90C
 	add r5, r1, #0
 	mov r0, #0x34
 	mov r1, #0xc
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [r4]

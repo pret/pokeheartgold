@@ -13,7 +13,7 @@ ov93_0225FBF0: ; 0x0225FBF0
 	mov r1, #0x75
 	add r5, r2, #0
 	add r4, r3, #0
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -40,7 +40,7 @@ ov93_0225FBF0: ; 0x0225FBF0
 	mov r3, #7
 	bl sub_02007B68
 	ldr r0, [sp, #0x14]
-	bl sub_0200770C
+	bl NARC_dtor
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x30

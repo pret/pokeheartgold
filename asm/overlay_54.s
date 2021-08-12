@@ -749,7 +749,7 @@ ov54_021E5F0C: ; 0x021E5F0C
 	mov r1, #0
 	bl sub_0201BB4C
 	ldr r0, [r4, #0x14]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov54_021E5F0C
 

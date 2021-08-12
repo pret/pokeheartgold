@@ -472,7 +472,7 @@ ov93_0225C768: ; 0x0225C768
 	bl ov93_02261310
 	mov r0, #0xc9
 	mov r1, #0x75
-	bl sub_02007688
+	bl NARC_ctor
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -492,7 +492,7 @@ ov93_0225C768: ; 0x0225C768
 	add r1, r4, #0
 	bl ov93_0225DD2C
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -1048,7 +1048,7 @@ _0225CD72:
 	ldr r0, [r0]
 	bl sub_0200BB44
 	ldr r0, [r4, #0x2c]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
 	bl ov93_0225D064
 	add r0, r4, #0
@@ -1894,7 +1894,7 @@ _0225D560:
 	mov r1, #0
 	bl sub_020200FC
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 _0225D58E:
 	add r4, r4, #1
 _0225D590:
@@ -2020,7 +2020,7 @@ ov93_0225D674: ; 0x0225D674
 	mov r1, #0x12
 	mov r0, #0x75
 	lsl r1, r1, #0xa
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -2073,7 +2073,7 @@ ov93_0225D6E0: ; 0x0225D6E0
 	ldr r0, [r4]
 	bl sub_02014EBC
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov93_0225D6E0
@@ -4295,7 +4295,7 @@ ov93_0225E7B0: ; 0x0225E7B0
 	add r5, r0, #0
 	mov r0, #0x75
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x9e
 	mov r1, #0
 	lsl r2, r2, #2
@@ -4387,17 +4387,17 @@ ov93_0225E860: ; 0x0225E860
 	add r0, r5, #0
 	bl ov93_0225FABC
 	ldr r0, [r4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x93
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov93_0225E860
 
@@ -4915,7 +4915,7 @@ ov93_0225EC98: ; 0x0225EC98
 	mov r0, #0xc9
 	mov r1, #0x1d
 	mov r2, #0x75
-	bl sub_02007524
+	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5]
 	bl sub_020C3B50
 	str r0, [r5, #4]
@@ -4937,13 +4937,13 @@ ov93_0225EC98: ; 0x0225EC98
 _0225ECD0:
 	mov r0, #0x75
 	add r1, r4, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	mov r0, #0x75
 	add r1, r4, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0x25
 	lsl r1, r1, #4
 	str r0, [r5, r1]

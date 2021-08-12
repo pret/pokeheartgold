@@ -34,7 +34,7 @@ _0225F04E:
 	mov r1, #0x1e
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x1e
 	str r0, [r7, #0xc]
 	mov r1, #0
@@ -437,7 +437,7 @@ _0225F3A8:
 	mov r1, #0x71
 	mov r0, #4
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x71
 	str r0, [r6, #0xc]
 	mov r1, #0
@@ -794,7 +794,7 @@ _0225F69E:
 	mov r1, #0x7a
 	mov r0, #4
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x7a
 	str r0, [r7, #0xc]
 	mov r1, #0
@@ -1252,7 +1252,7 @@ _0225FA5C:
 	mov r1, #9
 	mov r0, #4
 	lsl r1, r1, #6
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	ldr r1, [sp, #0x1c]
 	mov r2, #9
 	str r0, [r1, #0xc]
@@ -1908,7 +1908,7 @@ _0225FFC8:
 	mov r1, #0x1f
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x1f
 	str r0, [r5, #0xc]
 	mov r1, #0
@@ -2239,7 +2239,7 @@ _0226028C:
 	mov r1, #0x8a
 	mov r0, #4
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	ldr r1, [sp, #0x18]
 	mov r2, #0x8a
 	str r0, [r1, #0xc]

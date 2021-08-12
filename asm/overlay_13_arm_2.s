@@ -26923,7 +26923,7 @@ ov13_0223CB7C: ; 0x0223CB7C
 	bl FS_InitFile
 	ldr r1, [r6]
 	add r0, sp, #0
-	bl sub_020D8278
+	bl FS_OpenFile
 	cmp r0, #0
 	addeq sp, sp, #0x48
 	moveq r0, r5
@@ -30231,7 +30231,7 @@ ov13_0223F664: ; 0x0223F664
 	bl FS_InitFile
 	ldr r1, _0223F7F8 ; =0x02247404
 	add r0, sp, #0xa0
-	bl sub_020D8278
+	bl FS_OpenFile
 	cmp r0, #0
 	bne _0223F6A0
 	bl sub_020D3F48
@@ -30244,11 +30244,11 @@ _0223F6A0:
 	strh r0, [r3, #0xe4]
 	add r0, sp, #0xa0
 	ldr r4, [sp, #0xc4]
-	bl sub_020D83CC
+	bl FS_ReadFile
 	add r0, sp, #0xa0
 	add r1, sp, #0x10
 	mov r2, #8
-	bl sub_020D83CC
+	bl FS_ReadFile
 	add r0, sp, #0xa0
 	bl FS_CloseFile
 	ldr r0, _0223F7F4 ; =0x0224F5CC
@@ -30459,7 +30459,7 @@ ov13_0223F95C: ; 0x0223F95C
 	bl FS_InitFile
 	add r0, sp, #4
 	mov r1, r6
-	bl sub_020D8278
+	bl FS_OpenFile
 	cmp r0, #0
 	bne _0223F9A0
 	bl sub_020D3F48
@@ -30483,7 +30483,7 @@ _0223F9A0:
 	add r0, sp, #4
 	mov r2, r7
 	str r1, [sp]
-	bl sub_020D83CC
+	bl FS_ReadFile
 	add r0, sp, #4
 	bl FS_CloseFile
 	cmp r6, #0

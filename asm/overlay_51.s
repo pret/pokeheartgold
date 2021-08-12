@@ -490,13 +490,13 @@ ov51_021E5EC8: ; 0x021E5EC8
 	bl ov51_021E7CA4
 	ldr r0, _021E5F50 ; =0x000030EC
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, _021E5F54 ; =0x000033B8
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, _021E5F58 ; =0x000033B0
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
 	bl ov51_021E6EF0
 	ldr r0, [r4]
@@ -835,7 +835,7 @@ _021E61B0:
 	mov r2, #0x20
 	bl sub_020CFCC0
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x64
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -867,7 +867,7 @@ ov51_021E6200: ; 0x021E6200
 	mov r2, #0x20
 	bl sub_020CFCC0
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1023,7 +1023,7 @@ ov51_021E6354: ; 0x021E6354
 	lsl r2, r2, #8
 	bl sub_020CFCC0
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r2, [r0]
@@ -1051,7 +1051,7 @@ ov51_021E6354: ; 0x021E6354
 	lsl r2, r2, #8
 	bl sub_020CFC6C
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
@@ -1398,7 +1398,7 @@ ov51_021E6644: ; 0x021E6644
 	mov r1, #3
 	bl sub_0201BB4C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov51_021E6644
 
@@ -3834,7 +3834,7 @@ _021E7A58:
 	bne _021E7A58
 	mov r0, #0x31
 	mov r1, #0x19
-	bl sub_02007688
+	bl NARC_ctor
 	str r0, [sp, #0x18]
 	mov r1, #0x8e
 	ldr r0, [sp, #0x14]
@@ -3849,7 +3849,7 @@ _021E7A74:
 	ldr r0, [sp, #0x18]
 	ldr r1, [r1, r6]
 	mov r2, #0x19
-	bl sub_0200771C
+	bl NARC_AllocAndReadWholeMember
 	mov r1, #0x7e
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3864,7 +3864,7 @@ _021E7A74:
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	bl GF_AssertFail
 	b _021E7AB2
 _021E7AAE:
@@ -3876,7 +3876,7 @@ _021E7AB2:
 	cmp r4, #0x10
 	blo _021E7A74
 	ldr r0, [sp, #0x18]
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022C60
@@ -4121,7 +4121,7 @@ _021E7CAE:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

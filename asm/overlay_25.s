@@ -315,7 +315,7 @@ _02259B50:
 	blt _02259B12
 _02259B60:
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r6, #0
 	bl sub_02052580
 	ldr r1, [sp, #8]
@@ -572,7 +572,7 @@ _02259D56:
 	blt _02259D56
 _02259D7A:
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov25_02259D14

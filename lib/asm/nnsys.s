@@ -24789,7 +24789,7 @@ sub_020C9380: ; 0x020C9380
 	mov r6, r2
 	mov r2, r1
 	add r0, r5, #0x34
-	bl sub_020D83DC
+	bl FS_SeekFile
 	cmp r0, #0
 	addeq sp, sp, #4
 	moveq r0, #0
@@ -24797,7 +24797,7 @@ sub_020C9380: ; 0x020C9380
 	mov r1, r5
 	add r0, r5, #0x34
 	mov r2, #0x30
-	bl sub_020D83CC
+	bl FS_ReadFile
 	cmp r0, #0x30
 	addne sp, sp, #4
 	movne r0, #0
@@ -24819,7 +24819,7 @@ sub_020C9380: ; 0x020C9380
 	ldr r1, [r5, #0x18]
 	add r0, r5, #0x34
 	mov r2, #0
-	bl sub_020D83DC
+	bl FS_SeekFile
 	cmp r0, #0
 	addeq sp, sp, #4
 	moveq r0, #0
@@ -24827,7 +24827,7 @@ sub_020C9380: ; 0x020C9380
 	ldr r1, [r5, #0x8c]
 	ldr r2, [r5, #0x1c]
 	add r0, r5, #0x34
-	bl sub_020D83CC
+	bl FS_ReadFile
 	ldr r1, [r5, #0x1c]
 	cmp r0, r1
 	addne sp, sp, #4
@@ -24847,7 +24847,7 @@ sub_020C9380: ; 0x020C9380
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0x34
 	mov r2, #0
-	bl sub_020D83DC
+	bl FS_SeekFile
 	cmp r0, #0
 	addeq sp, sp, #4
 	moveq r0, #0
@@ -24855,7 +24855,7 @@ sub_020C9380: ; 0x020C9380
 	ldr r1, [r5, #0x84]
 	ldr r2, [r5, #0x24]
 	add r0, r5, #0x34
-	bl sub_020D83CC
+	bl FS_ReadFile
 	ldr r1, [r5, #0x24]
 	cmp r0, r1
 	addne sp, sp, #4
@@ -24879,7 +24879,7 @@ sub_020C9380: ; 0x020C9380
 	ldr r1, [r5, #0x10]
 	add r0, r5, #0x34
 	mov r2, #0
-	bl sub_020D83DC
+	bl FS_SeekFile
 	cmp r0, #0
 	addeq sp, sp, #4
 	moveq r0, #0
@@ -24887,7 +24887,7 @@ sub_020C9380: ; 0x020C9380
 	ldr r1, [r5, #0x88]
 	ldr r2, [r5, #0x14]
 	add r0, r5, #0x34
-	bl sub_020D83CC
+	bl FS_ReadFile
 	ldr r1, [r5, #0x14]
 	cmp r0, r1
 	addne sp, sp, #4
@@ -25219,14 +25219,14 @@ _020C9928:
 	mov r2, #0
 	add r0, r7, #0x34
 	add r1, r1, r8
-	bl sub_020D83DC
+	bl FS_SeekFile
 	cmp r0, #0
 	mvneq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r1, sl
 	mov r2, r6
 	add r0, r7, #0x34
-	bl sub_020D83CC
+	bl FS_ReadFile
 	cmp r0, #0
 	ldmltia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	add r4, r4, r0

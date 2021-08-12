@@ -12,7 +12,7 @@ ov42_02227060: ; 0x02227060
 	ldr r1, _02227100 ; =0x0000230C
 	add r0, r6, #0
 	str r2, [sp]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	ldr r2, _02227100 ; =0x0000230C
 	add r7, r0, #0
 	mov r1, #0
@@ -21,12 +21,12 @@ ov42_02227060: ; 0x02227060
 	mov r0, #0xb3
 	add r1, r6, #0
 	str r5, [r7, #4]
-	bl sub_02007688
+	bl NARC_ctor
 	ldr r1, _02227104 ; =0x00002304
 	str r0, [r7, r1]
 	mov r0, #0xba
 	add r1, r6, #0
-	bl sub_02007688
+	bl NARC_ctor
 	ldr r1, _02227108 ; =0x00002308
 	mov r4, #0
 	str r0, [r7, r1]
@@ -70,7 +70,7 @@ _022270CE:
 	str r0, [r7, #0xc]
 	add r0, r6, #0
 	mul r1, r2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r7, #8]
 	ldr r3, [r7, #0xc]
 	mov r2, #0x18
@@ -124,10 +124,10 @@ _02227142:
 	bl ov42_022271F8
 	ldr r0, _02227188 ; =0x00002304
 	ldr r0, [r5, r0]
-	bl sub_0200770C
+	bl NARC_dtor
 	ldr r0, _0222718C ; =0x00002308
 	ldr r0, [r5, r0]
-	bl sub_0200770C
+	bl NARC_dtor
 	ldr r7, _02227190 ; =0x000022F0
 	mov r6, #0
 	add r4, r5, #0
@@ -139,9 +139,9 @@ _0222716C:
 	cmp r6, #4
 	blt _0222716C
 	ldr r0, [r5, #8]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02227188: .word 0x00002304
@@ -2023,7 +2023,7 @@ ov42_02227EE0: ; 0x02227EE0
 	add r6, r1, #0
 	add r0, r7, #0
 	mov r1, #8
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	bne _02227EF8
 	bl GF_AssertFail
@@ -2035,7 +2035,7 @@ _02227EF8:
 	add r0, r7, #0
 	mul r1, r2
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r4, #4]
 	cmp r0, #0
 	bne _02227F14
@@ -2060,9 +2060,9 @@ ov42_02227F28: ; 0x02227F28
 	bl GF_AssertFail
 _02227F32:
 	ldr r0, [r4, #4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov42_02227F28
 
@@ -2201,7 +2201,7 @@ ov42_02228010: ; 0x02228010
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #8
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	bne _02228026
 	bl GF_AssertFail
@@ -2210,7 +2210,7 @@ _02228026:
 	add r0, r6, #0
 	mul r1, r5
 	str r5, [r4, #4]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r4]
 	cmp r0, #0
 	bne _0222803C
@@ -2235,9 +2235,9 @@ ov42_02228050: ; 0x02228050
 	bl GF_AssertFail
 _0222805A:
 	ldr r0, [r4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov42_02228050
 
@@ -4245,7 +4245,7 @@ ov42_02228EDC: ; 0x02228EDC
 	mov r1, #0xc
 	add r5, r2, #0
 	add r6, r3, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	ldr r1, [sp]
 	ldr r3, [sp, #0x18]
@@ -4258,7 +4258,7 @@ ov42_02228EDC: ; 0x02228EDC
 	mov r1, #0x14
 	ldr r0, [sp, #0x18]
 	mul r1, r2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r4, #4]
 	ldrh r3, [r4, #8]
 	mov r2, #0x14
@@ -4283,7 +4283,7 @@ ov42_02228F24: ; 0x02228F24
 	mov r1, #0xc
 	add r6, r2, #0
 	str r3, [sp, #8]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	ldr r1, [sp, #4]
 	add r0, r7, #0
@@ -4296,7 +4296,7 @@ ov42_02228F24: ; 0x02228F24
 	mov r1, #0x14
 	add r0, r5, #0
 	mul r1, r2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r4, #4]
 	ldrh r3, [r4, #8]
 	mov r2, #0x14
@@ -4357,9 +4357,9 @@ _02228FC0:
 	ldr r0, [r5]
 	bl ov42_02227114
 	ldr r0, [r5, #4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov42_02228F94
 
@@ -4951,7 +4951,7 @@ ov42_022293B8: ; 0x022293B8
 	mov r1, #0x1c
 	add r5, r2, #0
 	str r3, [sp, #4]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x1c
@@ -4990,9 +4990,9 @@ ov42_0222940C: ; 0x0222940C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov42_0222940C
@@ -5723,7 +5723,7 @@ ov42_02229974: ; 0x02229974
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0xc
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	bne _0222998A
 	bl GF_AssertFail
@@ -5732,7 +5732,7 @@ _0222998A:
 	str r1, [r4, #4]
 	add r0, r6, #0
 	lsl r1, r1, #3
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r4]
 	ldr r2, [r4, #4]
 	mov r1, #0
@@ -5750,9 +5750,9 @@ ov42_022299AC: ; 0x022299AC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov42_022299AC
@@ -5834,7 +5834,7 @@ ov42_02229A40: ; 0x02229A40
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0xc
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	bne _02229A56
 	bl GF_AssertFail
@@ -5843,7 +5843,7 @@ _02229A56:
 	str r1, [r4, #4]
 	add r0, r6, #0
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r4]
 	ldr r2, [r4, #4]
 	mov r1, #0
@@ -5861,9 +5861,9 @@ ov42_02229A78: ; 0x02229A78
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov42_02229A78

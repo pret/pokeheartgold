@@ -2335,7 +2335,7 @@ _0223F164:
 	bl ov83_0223F734
 	ldr r0, _0223F1C4 ; =0x000007A8
 	ldr r0, [r5, r0]
-	bl sub_0200770C
+	bl NARC_dtor
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0223F18C: .word 0x0000084C
@@ -2389,7 +2389,7 @@ ov83_0223F200: ; 0x0223F200
 	add r5, r0, #0
 	mov r0, #0xb7
 	mov r1, #0x6b
-	bl sub_02007688
+	bl NARC_ctor
 	ldr r1, _0223F594 ; =0x000007A8
 	str r0, [r5, r1]
 	add r0, r5, #0
@@ -3009,7 +3009,7 @@ ov83_0223F734: ; 0x0223F734
 	mov r1, #7
 	bl sub_0201BB4C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r2, _0223F79C ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -3371,7 +3371,7 @@ ov83_0223FA74: ; 0x0223FA74
 	mov r2, #0xe0
 	bl sub_020CFC6C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -3435,7 +3435,7 @@ ov83_0223FAF0: ; 0x0223FAF0
 	mov r2, #0x80
 	bl sub_020CFC6C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -9095,7 +9095,7 @@ _022428E2:
 	mov r1, #2
 	bl sub_0201EFBC
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x3b
 	lsl r0, r0, #4
 	add r0, r6, r0
@@ -9212,7 +9212,7 @@ ov83_022429E4: ; 0x022429E4
 	mov r1, #2
 	bl sub_0201EFBC
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, _02242AA4 ; =0x00000862
 	mov r4, #0
 	ldrsh r1, [r6, r0]
@@ -11810,7 +11810,7 @@ _02243F50:
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11857,7 +11857,7 @@ ov83_02243FD4: ; 0x02243FD4
 	add r5, r0, #0
 	mov r0, #0xb7
 	mov r1, #0x6b
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0x56
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -12383,7 +12383,7 @@ ov83_0224442C: ; 0x0224442C
 	mov r1, #5
 	bl sub_0201BB4C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r2, _02244484 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -12688,7 +12688,7 @@ ov83_022446D0: ; 0x022446D0
 	mov r2, #0x80
 	bl sub_020CFC6C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -12752,7 +12752,7 @@ ov83_0224474C: ; 0x0224474C
 	mov r2, #0x80
 	bl sub_020CFC6C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -17668,7 +17668,7 @@ _02246E4C:
 	str r0, [r5, r1]
 	mov r0, #0x12
 	mov r1, #0x6b
-	bl sub_02007688
+	bl NARC_ctor
 	add r6, r5, #0
 	add r7, r0, #0
 	mov r4, #4
@@ -17766,7 +17766,7 @@ _02246EFC:
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r7, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #2
@@ -17815,7 +17815,7 @@ _02246EFC:
 	bl ov83_02247314
 	mov r0, #0x14
 	mov r1, #0x6b
-	bl sub_02007688
+	bl NARC_ctor
 	add r7, r0, #0
 	bl sub_02074490
 	add r2, r0, #0
@@ -17911,7 +17911,7 @@ _022470D4:
 	cmp r4, #4
 	blt _022470AE
 	add r0, r7, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r7, #0x4f
 	mov r6, #0
 	add r4, r5, #0
@@ -18181,7 +18181,7 @@ ov83_02247314: ; 0x02247314
 	add r5, r0, #0
 	mov r0, #0x15
 	mov r1, #0x6b
-	bl sub_02007688
+	bl NARC_ctor
 	add r4, r0, #0
 	bl sub_0207CA9C
 	add r2, r0, #0
@@ -18247,7 +18247,7 @@ ov83_02247314: ; 0x02247314
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov83_02247314
@@ -18259,7 +18259,7 @@ ov83_022473BC: ; 0x022473BC
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #0x6b
-	bl sub_02007688
+	bl NARC_ctor
 	add r4, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -18321,7 +18321,7 @@ ov83_022473BC: ; 0x022473BC
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov83_022473BC
@@ -18336,7 +18336,7 @@ ov83_02247454: ; 0x02247454
 	mov r1, #8
 	add r7, r2, #0
 	str r3, [sp, #0x10]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #0
 	strb r1, [r4]
@@ -18393,7 +18393,7 @@ ov83_022474C4: ; 0x022474C4
 	mov r1, #8
 	add r7, r2, #0
 	str r3, [sp, #0x10]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #0
 	strb r1, [r4]
@@ -18456,7 +18456,7 @@ _0224754A:
 	ldr r0, [r4, #4]
 	bl sub_02024758
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -18630,7 +18630,7 @@ ov83_02247668: ; 0x02247668
 	mov r1, #0x32
 	mov r0, #0x6b
 	lsl r1, r1, #6
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	cmp r6, #0
 	beq _022476C0
@@ -18672,7 +18672,7 @@ _022476C0:
 	lsl r2, r2, #6
 	bl sub_020D4808
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r7, #0xb8
 	mov r6, #0x3d
 _022476EA:
@@ -18704,7 +18704,7 @@ _022476EA:
 	mov r2, #5
 	bl sub_02007938
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

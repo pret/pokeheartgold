@@ -16466,7 +16466,7 @@ sub_020D7C00: ; 0x020D7C00
 	ldr r2, [r7, #0x30]
 	add r0, sp, #4
 	mov r1, r5
-	bl sub_020D83CC
+	bl FS_ReadFile
 	cmp r0, #0
 	bge _020D7C8C
 	ldr r2, [r7, #0x30]
@@ -16493,7 +16493,7 @@ _020D7C94:
 	ldr r2, [r7, #0x38]
 	add r0, sp, #4
 	mov r1, r5
-	bl sub_020D83CC
+	bl FS_ReadFile
 	cmp r0, #0
 	bge _020D7CF0
 	ldr r2, [r7, #0x38]
@@ -16930,8 +16930,8 @@ sub_020D8208: ; 0x020D8208
 	bx lr
 	arm_func_end sub_020D8208
 
-	arm_func_start sub_020D8278
-sub_020D8278: ; 0x020D8278
+	arm_func_start FS_OpenFile
+FS_OpenFile: ; 0x020D8278
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	mov r4, r0
@@ -16951,7 +16951,7 @@ _020D82B4:
 	mov r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020D8278
+	arm_func_end FS_OpenFile
 
 	arm_func_start FS_CloseFile
 FS_CloseFile: ; 0x020D82C0
@@ -17038,17 +17038,17 @@ sub_020D83BC: ; 0x020D83BC
 _020D83C8: .word sub_020D8104
 	arm_func_end sub_020D83BC
 
-	arm_func_start sub_020D83CC
-sub_020D83CC: ; 0x020D83CC
+	arm_func_start FS_ReadFile
+FS_ReadFile: ; 0x020D83CC
 	ldr ip, _020D83D8 ; =sub_020D8104
 	mov r3, #0
 	bx ip
 	.align 2, 0
 _020D83D8: .word sub_020D8104
-	arm_func_end sub_020D83CC
+	arm_func_end FS_ReadFile
 
-	arm_func_start sub_020D83DC
-sub_020D83DC: ; 0x020D83DC
+	arm_func_start FS_SeekFile
+FS_SeekFile: ; 0x020D83DC
 	cmp r2, #0
 	beq _020D83F8
 	cmp r2, #1
@@ -17081,7 +17081,7 @@ _020D8424:
 	str r1, [r0, #0x2c]
 	mov r0, #1
 	bx lr
-	arm_func_end sub_020D83DC
+	arm_func_end FS_SeekFile
 
 	arm_func_start sub_020D8448
 sub_020D8448: ; 0x020D8448
@@ -17404,7 +17404,7 @@ FSi_LoadOverlayInfoCore: ; 0x020D87C8
 	add r0, sp, #0xc
 	mov r1, r4
 	mov r2, #0x20
-	bl sub_020D83CC
+	bl FS_ReadFile
 	cmp r0, #0x20
 	add r0, sp, #0xc
 	beq _020D8860
@@ -17573,7 +17573,7 @@ FS_LoadOverlayImage: ; 0x020D8A48
 	ldr r1, [r5, #4]
 	add r0, sp, #8
 	mov r2, r4
-	bl sub_020D83CC
+	bl FS_ReadFile
 	cmp r4, r0
 	add r0, sp, #8
 	beq _020D8AC8

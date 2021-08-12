@@ -10,7 +10,7 @@ ov24_022598C0: ; 0x022598C0
 	add r6, r1, #0
 	mov r0, #3
 	mov r1, #0xc0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0xc0
 	add r4, r0, #0
@@ -56,9 +56,9 @@ ov24_02259928: ; 0x02259928
 	add r4, r0, #0
 	bl ov24_02259C10
 	ldr r0, [r4, #0x10]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov24_02259928
@@ -352,7 +352,7 @@ ov24_02259B50: ; 0x02259B50
 	add r5, r0, #0
 	add r0, r1, #0
 	mov r1, #8
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 	add r6, r0, #0
 	bl sub_0201FD44
 	mov r1, #0x64
@@ -473,9 +473,9 @@ ov24_02259C10: ; 0x02259C10
 	add r1, sp, #0
 	bl sub_020746BC
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r4, #8]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	str r0, [r4, #8]
 	ldrb r0, [r4, #0x17]
@@ -541,7 +541,7 @@ ov24_02259CC0: ; 0x02259CC0
 	bl FS_InitFile
 	ldr r1, _02259DEC ; =0x02259F40
 	add r0, sp, #0x10
-	bl sub_020D8278
+	bl FS_OpenFile
 	cmp r0, #0
 	bne _02259CE0
 	bl GF_AssertFail
@@ -553,16 +553,16 @@ _02259CE0:
 	sub r4, r1, r0
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 	str r0, [sp, #0xc]
 	ldr r0, [r5]
 	mov r1, #8
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 	add r6, r0, #0
 	ldr r1, [sp, #0xc]
 	add r0, sp, #0x10
 	add r2, r4, #0
-	bl sub_020D83CC
+	bl FS_ReadFile
 	mov r2, #0
 	add r3, r5, #0
 	mov r1, #0xff
@@ -667,9 +667,9 @@ _02259D7E:
 	cmp r0, #5
 	blt _02259D26
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [sp, #0xc]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, sp, #0x10
 	bl FS_CloseFile
 	add sp, #0x58
@@ -687,7 +687,7 @@ ov24_02259DF0: ; 0x02259DF0
 	bl FS_InitFile
 	ldr r1, _02259E5C ; =0x02259F60
 	add r0, sp, #0
-	bl sub_020D8278
+	bl FS_OpenFile
 	cmp r0, #0
 	bne _02259E10
 	bl GF_AssertFail
@@ -699,12 +699,12 @@ _02259E10:
 	sub r6, r1, r0
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	add r0, sp, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020D83CC
+	bl FS_ReadFile
 	ldrb r0, [r5, #0x17]
 	lsl r0, r0, #0x1e
 	lsr r0, r0, #0x1f
@@ -724,7 +724,7 @@ _02259E3A:
 	mov r2, #0x50
 	bl sub_020D4A50
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, sp, #0
 	bl FS_CloseFile
 	add sp, #0x48

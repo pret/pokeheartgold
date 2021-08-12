@@ -67,7 +67,7 @@ _0225D59E:
 _0225D5A6:
 	mov r0, #0xfd
 	mov r1, #8
-	bl sub_02007688
+	bl NARC_ctor
 	add r7, r0, #0
 	bl ov28_0225D628
 	add r0, r5, #0
@@ -83,7 +83,7 @@ _0225D5A6:
 	add r1, r7, #0
 	bl ov28_0225D898
 	add r0, r7, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add r0, r6, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -680,7 +680,7 @@ ov28_0225DA74: ; 0x0225DA74
 	add r5, r0, #0
 	mov r0, #0xe
 	mov r1, #8
-	bl sub_02007688
+	bl NARC_ctor
 	add r4, r0, #0
 	mov r0, #7
 	str r0, [sp]
@@ -704,7 +704,7 @@ ov28_0225DA74: ; 0x0225DA74
 	mov r3, #0x46
 	bl ov28_0225D92C
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r1, #0x16
 	lsl r1, r1, #4
 	add r0, r5, r1
@@ -1019,7 +1019,7 @@ ov28_0225DD3C: ; 0x0225DD3C
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0225DD56
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x81
 	mov r1, #0
 	lsl r0, r0, #2

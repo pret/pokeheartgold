@@ -146,7 +146,7 @@ ov30_0225D64C: ; 0x0225D64C
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 _0225D678:
 	ldr r0, [r4, #0x40]
 	bl ov01_021F434C
@@ -161,7 +161,7 @@ _0225D678:
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 _0225D69E:
 	add r0, r4, #0
 	bl ov30_0225D830
@@ -187,7 +187,7 @@ _0225D69E:
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl sub_0201AACC
+	bl AllocFromHeapAtEnd
 _0225D6E2:
 	mov r0, #0
 	add r1, r7, #0
@@ -889,24 +889,24 @@ _0225DC04: .word sub_02018410
 
 	thumb_func_start ov30_0225DC08
 ov30_0225DC08: ; 0x0225DC08
-	ldr r3, _0225DC14 ; =sub_0201AACC
+	ldr r3, _0225DC14 ; =AllocFromHeapAtEnd
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_0225DC14: .word sub_0201AACC
+_0225DC14: .word AllocFromHeapAtEnd
 	thumb_func_end ov30_0225DC08
 
 	thumb_func_start ov30_0225DC18
 ov30_0225DC18: ; 0x0225DC18
-	ldr r3, _0225DC24 ; =sub_0201AACC
+	ldr r3, _0225DC24 ; =AllocFromHeapAtEnd
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_0225DC24: .word sub_0201AACC
+_0225DC24: .word AllocFromHeapAtEnd
 	thumb_func_end ov30_0225DC18
 
 	thumb_func_start ov30_0225DC28

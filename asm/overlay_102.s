@@ -3541,7 +3541,7 @@ ov102_021E909C: ; 0x021E909C
 	add r5, r0, #0
 	mov r0, #0x23
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -3639,9 +3639,9 @@ _021E9166:
 	add r0, r6, #0
 	bl ov102_021E91BC
 	ldr r0, [r6, #0x20]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 _021E9196:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov102_021E9144
@@ -3965,7 +3965,7 @@ ov102_021E940C: ; 0x021E940C
 	bhs _021E945A
 	mov r0, #0x23
 	mov r1, #0x18
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r1, r0, #0
 	beq _021E945E
 	mov r4, #0
@@ -4065,7 +4065,7 @@ ov102_021E94A4: ; 0x021E94A4
 	add r0, r1, r0
 	str r2, [r0, #8]
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021E94A4
@@ -4101,7 +4101,7 @@ ov102_021E94CC: ; 0x021E94CC
 	str r1, [r0]
 	mov r0, #0x4c
 	mov r1, #0x23
-	bl sub_02007688
+	bl NARC_ctor
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov102_021E978C
@@ -4177,7 +4177,7 @@ ov102_021E94CC: ; 0x021E94CC
 	bl sub_02022CC8
 	bl sub_020CD9B4
 	add r0, r5, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add r0, r4, #0
 	bl ov102_021E94A4
 	pop {r3, r4, r5, pc}
@@ -4345,14 +4345,14 @@ _021E971A:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E9728
-	bl sub_0201AB0C
+	bl FreeToHeap
 _021E9728:
 	mov r0, #0x76
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E9736
-	bl sub_0201AB0C
+	bl FreeToHeap
 _021E9736:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -5885,7 +5885,7 @@ ov102_021EA314: ; 0x021EA314
 	mov r0, #0x23
 	lsl r1, r1, #2
 	add r7, r2, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -5999,7 +5999,7 @@ _021EA3E0:
 	ldr r0, [r4, r0]
 	bl sub_02016624
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021EA380
@@ -6533,7 +6533,7 @@ ov102_021EA80C: ; 0x021EA80C
 	lsl r1, r1, #6
 	bl DC_FlushRange
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -7762,7 +7762,7 @@ ov102_021EB1A4: ; 0x021EB1A4
 	mov r0, #0x23
 	mov r1, #0x68
 	add r7, r2, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -7793,7 +7793,7 @@ ov102_021EB1E0: ; 0x021EB1E0
 	ldr r0, [r4, #0x14]
 	bl sub_0200BB44
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021EB1E0
@@ -7902,9 +7902,9 @@ _021EB2BA:
 	cmp r6, #3
 	blt _021EB2BA
 	ldr r0, [r7, #0x58]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r7, #0x54]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [sp]
 	mov r1, #3
 	bl sub_0201BF7C
@@ -8327,7 +8327,7 @@ _021EB602:
 	mov r1, #0
 	str r1, [r0, #0x64]
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r5, #0
 	bl sub_0200E390
 _021EB620:
@@ -8344,7 +8344,7 @@ ov102_021EB624: ; 0x021EB624
 	add r4, r0, #0
 	mov r0, #0x23
 	mov r1, #0x1c
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r1, r0, #0
 	str r5, [r1]
 	mov r0, #0
@@ -8409,7 +8409,7 @@ ov102_021EB694: ; 0x021EB694
 	mov r0, #0x23
 	mov r1, #0x64
 	add r7, r2, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -8438,7 +8438,7 @@ ov102_021EB6C8: ; 0x021EB6C8
 	bl sub_02024758
 _021EB6D6:
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021EB6C8
@@ -9162,7 +9162,7 @@ ov102_021EBC34: ; 0x021EBC34
 	mov r0, #0x23
 	mov r1, #0x98
 	add r7, r2, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -9250,7 +9250,7 @@ _021EBCE8:
 	add r0, #0x10
 	bl sub_0201D520
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov102_021EBCBC
 
@@ -9919,7 +9919,7 @@ ov102_021EC20C: ; 0x021EC20C
 	mov r0, #0x23
 	mov r1, #0x30
 	add r7, r2, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -9940,10 +9940,10 @@ ov102_021EC20C: ; 0x021EC20C
 
 	thumb_func_start ov102_021EC240
 ov102_021EC240: ; 0x021EC240
-	ldr r3, _021EC244 ; =sub_0201AB0C
+	ldr r3, _021EC244 ; =FreeToHeap
 	bx r3
 	.balign 4, 0
-_021EC244: .word sub_0201AB0C
+_021EC244: .word FreeToHeap
 	thumb_func_end ov102_021EC240
 
 	thumb_func_start ov102_021EC248

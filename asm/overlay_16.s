@@ -12,7 +12,7 @@ ov16_022014A0: ; 0x022014A0
 	str r0, [sp]
 	add r0, r7, #0
 	mov r1, #0xc0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [sp, #4]
 	mov r6, #0
 	add r5, r0, #0
@@ -34,7 +34,7 @@ _022014BA:
 	bl ov16_0220185C
 	strb r0, [r5, #2]
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r6, r6, #1
 	add r5, r5, #3
 	cmp r6, #0x40
@@ -571,28 +571,28 @@ ov16_02201820: ; 0x02201820
 
 	thumb_func_start ov16_02201840
 ov16_02201840: ; 0x02201840
-	ldr r3, _02201848 ; =sub_02007688
+	ldr r3, _02201848 ; =NARC_ctor
 	add r1, r0, #0
 	mov r0, #0x42
 	bx r3
 	.balign 4, 0
-_02201848: .word sub_02007688
+_02201848: .word NARC_ctor
 	thumb_func_end ov16_02201840
 
 	thumb_func_start ov16_0220184C
 ov16_0220184C: ; 0x0220184C
-	ldr r3, _02201850 ; =sub_0200771C
+	ldr r3, _02201850 ; =NARC_AllocAndReadWholeMember
 	bx r3
 	.balign 4, 0
-_02201850: .word sub_0200771C
+_02201850: .word NARC_AllocAndReadWholeMember
 	thumb_func_end ov16_0220184C
 
 	thumb_func_start ov16_02201854
 ov16_02201854: ; 0x02201854
-	ldr r3, _02201858 ; =sub_0200770C
+	ldr r3, _02201858 ; =NARC_dtor
 	bx r3
 	.balign 4, 0
-_02201858: .word sub_0200770C
+_02201858: .word NARC_dtor
 	thumb_func_end ov16_02201854
 
 	thumb_func_start ov16_0220185C
@@ -897,9 +897,9 @@ ov16_02201A4C: ; 0x02201A4C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x1c]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r4, #0x18]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov16_02201A4C
@@ -1033,7 +1033,7 @@ _02201B4C:
 _02201B4E:
 	strh r0, [r4, #0x16]
 	ldr r0, [r4, #0x10]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	str r0, [r4, #0x10]
 	pop {r4, pc}
