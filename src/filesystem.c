@@ -81,9 +81,9 @@ THUMB_FUNC void * AllocAndReadFromNarcMemberByPathAndId(const char * path, s32 f
     case 0:
         dest = AllocFromHeap(heap_id, chunk_size);
         break;
-        default:
-            dest = AllocFromHeapAtEnd(heap_id, chunk_size);
-            break;
+    default:
+        dest = AllocFromHeapAtEnd(heap_id, chunk_size);
+        break;
     }
     FS_ReadFile(&file, dest, (s32)chunk_size);
     FS_CloseFile(&file);
