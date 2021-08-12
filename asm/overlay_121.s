@@ -248,7 +248,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	mov r1, #0
 	lsl r2, r2, #2
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x9e
 	bl sub_0201AC88
 	str r0, [r5]
@@ -312,13 +312,13 @@ ov121_021E5AEC: ; 0x021E5AEC
 	str r0, [r5, r1]
 	ldrh r0, [r4]
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r0, #0x97
 	lsl r0, r0, #2
 	strb r1, [r5, r0]
 	ldrh r0, [r4]
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, _021E5C44 ; =0x0000025D
 	strb r0, [r5, r1]
 	sub r0, r1, #1

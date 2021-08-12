@@ -26,7 +26,7 @@ ov84_0223DD60: ; 0x0223DD60
 	mov r1, #0
 	lsl r2, r2, #2
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x6e
 	bl sub_0201AC88
 	add r1, r5, #0
@@ -2331,7 +2331,7 @@ _0223EF1C:
 	bl ov84_0223EC98
 	mov r1, #7
 	str r0, [sp]
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x10
 	lsr r2, r0, #0x10
 	ldr r1, [sp]
@@ -2588,7 +2588,7 @@ _0223F0D8:
 _0223F0F4:
 	bl sub_0201FD44
 	add r1, r7, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x10
 	lsr r0, r0, #0x10
 	add r0, r0, r4
@@ -2662,7 +2662,7 @@ ov84_0223F178: ; 0x0223F178
 	mov r5, #0
 	bl sub_0201FD44
 	mov r1, #0x64
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x10
 	lsr r2, r0, #0x10
 	ldr r3, _0223F1B8 ; =0x0223F934

@@ -44,7 +44,7 @@ ov86_021E5900: ; 0x021E5900
 	add r5, r0, #0
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020E5B44
+	bl memset
 	str r4, [r5]
 	mov r0, #0x79
 	bl sub_0201AC88
@@ -3523,11 +3523,11 @@ _021E75A0:
 	mov r1, #7
 	ldrb r6, [r0, r4]
 	add r0, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r5, r1, #0
 	add r0, r6, #0
 	mov r1, #7
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #5
 	str r0, [sp]
 	mov r0, #4
@@ -3676,7 +3676,7 @@ ov86_021E7688: ; 0x021E7688
 	mov r1, #7
 	ldrb r4, [r0, r4]
 	add r0, r4, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r0, r1, #5
 	add r0, #0x18
 	lsr r1, r0, #3
@@ -3685,7 +3685,7 @@ ov86_021E7688: ; 0x021E7688
 	strb r1, [r5, r0]
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r0, r0, #5
 	add r0, #0x28
 	lsr r1, r0, #3

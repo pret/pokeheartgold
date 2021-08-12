@@ -1305,18 +1305,18 @@ ov31_0225DF98: ; 0x0225DF98
 	mov r1, #6
 	ldrb r0, [r5, r0]
 	add r0, r0, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	str r0, [sp, #0x14]
 	mov r0, #0x27
 	lsl r0, r0, #4
 	ldrb r0, [r5, r0]
 	mov r1, #6
 	str r0, [sp, #0x10]
-	bl sub_020F2998
+	bl _s32_div_f
 	add r5, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	beq _0225DFEC
 	add r5, r5, #1
@@ -1502,7 +1502,7 @@ _0225E14E:
 	sub r0, #0x8a
 	sub r0, r2, r0
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	add r2, r0, #0
 	mov r0, #0x95
 	lsl r0, r0, #2
@@ -1709,7 +1709,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r3, #1
 	add r2, r0, #0
 	str r3, [sp]
@@ -1721,7 +1721,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	bl sub_0200BFCC
 	add r0, r4, #0
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	add r2, r1, #0
 	mov r1, #1
 	str r1, [sp]

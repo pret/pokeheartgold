@@ -38,7 +38,7 @@ _0225F050:
 	mov r1, #0
 	mov r2, #0x20
 	str r0, [r4, #0xc]
-	bl sub_020E5B44
+	bl memset
 	mov r0, #2
 	mov r1, #1
 	ldr r5, [r4, #0xc]

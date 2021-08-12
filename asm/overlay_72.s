@@ -484,7 +484,7 @@ ov72_02237C30: ; 0x02237C30
 	ldr r0, _02237C94 ; =0x0223B834
 	add r1, r4, #0
 	mov r2, #0xe4
-	bl sub_020E5AD8
+	bl memcpy
 	ldr r0, _02237C98 ; =0x0223B900
 	sub r1, r5, #1
 	strb r1, [r0, #0x18]
@@ -574,7 +574,7 @@ ov72_02237CF4: ; 0x02237CF4
 	ldr r0, _02237D40 ; =0x0223B834
 	add r1, r5, #0
 	mov r2, #0x64
-	bl sub_020E5AD8
+	bl memcpy
 	ldr r0, _02237D44 ; =0x0223B920
 	str r4, [r0, #8]
 	bl ov38_0221BE84
@@ -775,7 +775,7 @@ _02237E36:
 	ldr r2, _02237F70 ; =0x000013A4
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x43
 	bl sub_0201AC88
 	str r0, [r4, #4]
@@ -1716,38 +1716,38 @@ ov72_02238688: ; 0x02238688
 	cmp r1, #0
 	ble _022386A6
 	lsl r0, r1, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _022386B4
 _022386A6:
 	lsl r0, r1, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _022386B4:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp]
 	cmp r5, #0
 	ble _022386D0
 	lsl r0, r5, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _022386DE
 _022386D0:
 	lsl r0, r5, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _022386DE:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp, #4]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -6062,7 +6062,7 @@ _0223A83E:
 	bge _0223A84E
 _0223A844:
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	sub r4, r4, #1
 	b _0223A860
 _0223A84E:
@@ -6090,7 +6090,7 @@ _0223A872:
 	mul r1, r0
 	add r6, r6, r1
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, [sp]
 	add r5, r5, #4
 	add r1, r1, #1

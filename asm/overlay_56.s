@@ -19,7 +19,7 @@ ov56_021E5C20: ; 0x021E5C20
 	mov r1, #0
 	mov r2, #0xc4
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x29
 	str r0, [r4]
 	add r0, r5, #0

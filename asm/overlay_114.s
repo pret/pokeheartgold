@@ -39,7 +39,7 @@ _0225F04E:
 	str r0, [r4, #0xc]
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020E5B44
+	bl memset
 	ldr r5, [r4, #0xc]
 	mov r1, #1
 	add r0, r5, #0
@@ -326,7 +326,7 @@ _0225F2AC:
 	str r0, [r6, #0xc]
 	mov r1, #0
 	lsl r2, r2, #4
-	bl sub_020E5B44
+	bl memset
 	ldr r4, [r6, #0xc]
 	mov r1, #4
 	add r0, r4, #0

@@ -284,13 +284,13 @@ _021E5B1A:
 _021E5B32:
 	ldrb r0, [r5, #0x1f]
 	mov r1, #0xe
-	bl sub_020F2998
+	bl _s32_div_f
 	strb r0, [r5, #0x1c]
 	ldrb r0, [r5, #0x1f]
 	cmp r0, #0
 	beq _021E5B52
 	mov r1, #0xe
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	beq _021E5B52
 	ldrb r0, [r5, #0x1c]

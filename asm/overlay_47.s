@@ -24,7 +24,7 @@ ov47_02258800: ; 0x02258800
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r1, [r5]
 	add r0, r4, #0
 	mov r2, #0x81
@@ -2488,7 +2488,7 @@ _02259B86:
 	str r1, [r6, #0x64]
 	mul r0, r1
 	mov r1, #0x14
-	bl sub_020F2998
+	bl _s32_div_f
 	str r0, [sp, #0x24]
 	mov r0, #0
 	str r0, [sp, #0x1c]
@@ -2791,10 +2791,10 @@ _02259DB4:
 	ldr r2, [r5, r2]
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_020F2948
+	bl _ll_mul
 	ldr r2, [r5, #0xc]
 	ldr r3, [r5, #0x10]
-	bl sub_020F2900
+	bl _ll_udiv
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov47_02259DA4
 

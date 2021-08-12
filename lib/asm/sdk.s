@@ -1027,7 +1027,7 @@ _02098D98:
 _02098DB0:
 	ldrh r0, [sb, #0x4c]
 	ldrb r1, [sb, #0x80]
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	bne _02098DF8
 	ldr r1, [sb, #0x24]
@@ -1251,7 +1251,7 @@ _02098FF4:
 	ldr r1, [sp, #4]
 	mov r0, r0, asr #0xc
 	ldrb r1, [r1, #0xe]
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	bne _0209912C
 	mov r0, r4
@@ -1371,7 +1371,7 @@ _020992C0:
 	ldrh r1, [r5, #0x24]
 	str r0, [sp, #0x14]
 	mov r0, r2, lsl #8
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r4, [sp, #0x1c]
 	strb r0, [sp, #0x20]
 	cmp r6, #0
@@ -4699,11 +4699,11 @@ _0209C458:
 	strb r1, [r7, #0x2c]
 	ldrh r1, [r8, #0x24]
 	mov r1, r1, lsr #1
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r0, [r7, #0x28]
 	ldrh r1, [r8, #0x24]
 	ldr r0, _0209C4CC ; =0x0000FFFF
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r0, [r7, #0x2a]
 	ldr r0, [sp, #0x20]
 	strb r0, [r7, #0x2d]
@@ -4869,7 +4869,7 @@ _0209C680:
 _0209C6E8:
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0xc]
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, [sp, #0x18]
 	mov r0, r0, asr #4
 	add r1, r1, #0x10000
@@ -5538,7 +5538,7 @@ _0209D0A8:
 	ldr r1, [sp, #4]
 	ldr sl, [r1, #0x10]
 	ldrb r1, [sl, #8]
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldrb r0, [sl, r1]
 	strb r0, [r7, #0x2c]
 	b _0209D168
@@ -5561,11 +5561,11 @@ _0209D168:
 	ldr r0, _0209D1F8 ; =0x0000FFFF
 	ldr r1, [r1]
 	ldrb r1, [r1, #0x48]
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r0, [r7, #0x28]
 	ldrh r1, [r7, #0x24]
 	ldr r0, _0209D1F8 ; =0x0000FFFF
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r0, [r7, #0x2a]
 	ldr r0, [sp, #0x40]
 	strb r0, [r7, #0x2d]
@@ -5958,7 +5958,7 @@ sub_0209D6EC: ; 0x0209D6EC
 	mov r0, r0, lsr #0x1b
 	sub r0, r0, r6, lsr #27
 	mul r0, r2, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r0, r6, lsr #27
 	b _0209D768
 _0209D72C:
@@ -5975,7 +5975,7 @@ _0209D72C:
 	mov r0, r0, lsl #0x16
 	sub r0, r3, r0, lsr #27
 	mul r0, r2, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r0, r6, lsr #27
 _0209D768:
 	ldr r3, _0209D7BC ; =0x021D43B8
@@ -6049,17 +6049,17 @@ sub_0209D7C8: ; 0x0209D7C8
 	mul r0, r4, r0
 	sub fp, r1, r3
 	mov r1, fp
-	bl sub_020F2998
+	bl _s32_div_f
 	sub r1, sb, r8
 	mov sb, r0
 	mul r0, r4, r1
 	mov r1, fp
-	bl sub_020F2998
+	bl _s32_div_f
 	sub r1, r7, r6
 	mov r7, r0
 	mul r0, r4, r1
 	mov r1, fp
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, r8, r7
 	add r0, r6, r0
 	add r2, r5, sb
@@ -6098,17 +6098,17 @@ _0209D8C0:
 	mul r0, r4, r0
 	sub fp, fp, r1
 	mov r1, fp
-	bl sub_020F2998
+	bl _s32_div_f
 	sub r1, r7, r8
 	mov r7, r0
 	mul r0, r4, r1
 	mov r1, fp
-	bl sub_020F2998
+	bl _s32_div_f
 	sub r1, r5, r6
 	mov r5, r0
 	mul r0, r4, r1
 	mov r1, fp
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, r8, r5
 	add r0, r6, r0
 	add r2, sb, r7
@@ -6140,7 +6140,7 @@ sub_0209D994: ; 0x0209D994
 	ldrsh r0, [ip, #2]
 	sub r0, r0, r5
 	mul r0, r2, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r5, r0
 	add sp, sp, #4
 	strh r0, [r4, #0x34]
@@ -6159,7 +6159,7 @@ _0209D9DC:
 	rsb r1, r3, #0xff
 	sub r0, r5, r0
 	mul r0, r2, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r5, r0
 	strh r0, [r4, #0x34]
 	add sp, sp, #4
@@ -6395,7 +6395,7 @@ sub_0209DD30: ; 0x0209DD30
 	ldrh r0, [r1, #0x26]
 	ldrh r1, [r5, #6]
 	mov r4, r2
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	addne sp, sp, #4
 	ldmneia sp!, {r4, r5, lr}
@@ -7556,7 +7556,7 @@ _0209EC8C:
 	mla r1, lr, sb, r1
 	ldr r2, _0209ED34 ; =0x000082EA
 	mov r3, r6
-	bl sub_020F2900
+	bl _ll_udiv
 	mov r2, r6
 	cmp r1, r2
 	cmpeq r0, r8
@@ -7691,7 +7691,7 @@ sub_0209EE44: ; 0x0209EE44
 	mov r0, r6
 	mov r1, r4
 	mov r2, r5
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -8045,7 +8045,7 @@ sub_0209F300: ; 0x0209F300
 	ldr r1, _0209F3FC ; =0x02108F9C
 	add r0, r4, #0xc0
 	mov r2, #4
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	beq _0209F3B0
 	add r0, r4, #0xc4
@@ -8072,7 +8072,7 @@ _0209F3B0:
 	ldr r1, _0209F3FC ; =0x02108F9C
 	add r0, r4, #0xc8
 	mov r2, #4
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	beq _0209F3F0
 	add r0, r4, #0xc8
@@ -10567,7 +10567,7 @@ sub_020A1318: ; 0x020A1318
 	ldr r4, [r6, #4]
 	ldr r5, [r4, #0x64]
 	add r0, r5, #0xe0
-	bl sub_020D2618
+	bl OS_LockMutex
 	mov r1, #0
 	ldrh r0, [r6, #0x10]
 	mov r2, r1
@@ -10587,7 +10587,7 @@ sub_020A1318: ; 0x020A1318
 	add r0, r5, #0xe0
 	orr r1, r1, #4
 	strh r1, [r4, #0x70]
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	mov r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
@@ -10730,7 +10730,7 @@ sub_020A1540: ; 0x020A1540
 	mov r6, #0
 	ldr r5, [r4, #0x64]
 	add r0, r5, #0xe0
-	bl sub_020D2618
+	bl OS_LockMutex
 	ldrh r0, [r7, #0x10]
 	ldrh r1, [r7, #0x12]
 	ldr r2, [r7, #0x14]
@@ -10745,7 +10745,7 @@ sub_020A1540: ; 0x020A1540
 	mov r6, r0
 _020A158C:
 	add r0, r5, #0xe0
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	cmp r6, #0
 	beq _020A15B0
 	ldrsh r1, [r4, #0x70]
@@ -10829,14 +10829,14 @@ _020A16A4:
 	tst r5, #1
 	add r0, r4, #0xe0
 	bne _020A16CC
-	bl sub_020D2734
+	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020A16D0
 	add sp, sp, #0xc
 	mvn r0, #5
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 _020A16CC:
-	bl sub_020D2618
+	bl OS_LockMutex
 _020A16D0:
 	ldr r0, [sp, #0x28]
 	ldr ip, [sp, #0x2c]
@@ -10849,7 +10849,7 @@ _020A16D0:
 	bl sub_020A170C
 	mov r5, r0
 	add r0, r4, #0xe0
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	mov r0, r5
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
@@ -11433,7 +11433,7 @@ _020A1EB8:
 	bne _020A1EF4
 _020A1ED4:
 	add r0, r4, #0xe0
-	bl sub_020D2734
+	bl OS_TryLockMutex
 	cmp r0, #0
 	addeq sp, sp, #8
 	mvneq r0, #5
@@ -11442,7 +11442,7 @@ _020A1ED4:
 	b _020A1F00
 _020A1EF4:
 	add r0, r4, #0xe0
-	bl sub_020D2618
+	bl OS_LockMutex
 	mov ip, #1
 _020A1F00:
 	ldr r1, [sp, #0x20]
@@ -11455,7 +11455,7 @@ _020A1F00:
 	bl sub_020A1F38
 	mov r5, r0
 	add r0, r4, #0xe0
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	mov r0, r5
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
@@ -11819,7 +11819,7 @@ _020A23F8:
 	ble _020A241C
 	mov r0, r4
 	mov r1, r5
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r0, #0
 	mulgt r0, r5, r0
 	ldmgtia sp!, {r3, r4, r5, pc}
@@ -13423,7 +13423,7 @@ sub_020A3810: ; 0x020A3810
 	ldr r5, [r4, #0x64]
 	add r0, r5, #0xe0
 	ldr r6, [r5, #0xc4]
-	bl sub_020D2618
+	bl OS_LockMutex
 	ldr r1, [r7, #0x10]
 	cmp r1, #0
 	beq _020A3850
@@ -13441,7 +13441,7 @@ _020A3850:
 	str r0, [r6, #0xc]
 _020A3864:
 	add r0, r5, #0xe0
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020A3810
@@ -17435,7 +17435,7 @@ _020A6DEC:
 	sub r2, r2, r7
 	add r1, r0, r7
 	str r2, [r4, #0x44]
-	bl sub_020E5AF8
+	bl memmove
 _020A6E10:
 	mov r0, r5
 	bl sub_020D3A4C
@@ -17787,7 +17787,7 @@ sub_020A7260: ; 0x020A7260
 	ldr r0, [r5, #0x5c]
 	sub r2, r1, r4
 	add r1, r0, r4
-	bl sub_020E5AF8
+	bl memmove
 	ldr r1, [r5, #0x60]
 	mov r0, #0
 	sub r1, r1, r4
@@ -19191,7 +19191,7 @@ _020A85B8:
 	mov r0, r6
 	mov r2, r8
 	add r1, r7, #0x74
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	bne _020A860C
 	mov r1, r7
@@ -19346,7 +19346,7 @@ _020A87D4:
 	mov r0, r7
 	mov r2, r4
 	add r1, r8, #0x74
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	moveq r0, #0
 	streqb r0, [r7, #0x5a]
@@ -19467,7 +19467,7 @@ _020A892C:
 	ldr r7, [r5, r4, lsl #2]
 	mov r1, r8
 	ldr r0, [r7]
-	bl sub_020E9734
+	bl strcmp
 	cmp r0, #0
 	moveq r0, r7
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
@@ -19746,11 +19746,11 @@ _020A8CD4:
 _020A8CE0:
 	ldr r7, [sl, r5, lsl #2]
 	mov r0, r7
-	bl sub_020E9580
+	bl strlen
 	mov r2, r0
 	mov r0, r6
 	mov r1, r7
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	bne _020A8D50
 	cmp r5, #5
@@ -20036,7 +20036,7 @@ _020A90C8:
 	add r1, r6, r3
 	add r0, r0, #0x400
 	sub r1, r1, r2
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	beq _020A910C
 _020A9108:
@@ -20338,7 +20338,7 @@ sub_020A94C8: ; 0x020A94C8
 	mov r1, r5
 	add r0, r6, #0x74
 	mov r2, #0x20
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	moveq r0, #1
 	streqb r0, [r6, #0x31]
@@ -20698,7 +20698,7 @@ sub_020A99DC: ; 0x020A99DC
 	add r0, r4, #0x348
 	bl sub_020AC780
 	mov r0, r5
-	bl sub_020E9580
+	bl strlen
 	mov r2, r0
 	mov r1, r5
 	add r0, r4, #0x348
@@ -21052,7 +21052,7 @@ sub_020A9E98: ; 0x020A9E98
 	add r1, sp, #0
 	mov r0, r4
 	mov r2, #0x10
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	movne r0, #9
 	addne sp, sp, #0x14
@@ -21073,7 +21073,7 @@ sub_020A9E98: ; 0x020A9E98
 	add r1, sp, #0
 	add r0, r4, #0x10
 	mov r2, #0x14
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	movne r0, #9
 	strneb r0, [r5, #0x455]
@@ -21243,7 +21243,7 @@ _020AA190:
 	add r1, sp, #0x30
 	mov r2, r5
 	add r0, r0, r4
-	bl sub_020E5BB0
+	bl memcmp
 	cmp r0, #0
 	movne r0, #9
 	strneb r0, [r7, #0x455]
@@ -24668,12 +24668,12 @@ _020AD0C8:
 	ldr r2, [sp, #0x14]
 	mov r1, r6
 	add r0, r6, #2
-	bl sub_020E5AF8
+	bl memmove
 	add r0, r7, fp
 	bl sub_020ACFA0
 	ldr r2, [sp, #0x18]
 	ldr r3, [sp, #0x10]
-	bl sub_020F2900
+	bl _ll_udiv
 	mov r5, r0
 	ldr r0, _020AD198 ; =0x0000FFFF
 	cmp r5, r0
@@ -24978,7 +24978,7 @@ _020AD4D8:
 	mov r2, r8
 	mov r0, r7
 	add r1, r7, r5, lsl #1
-	bl sub_020E5AF8
+	bl memmove
 	add r0, r7, r6, lsl #1
 	sub r0, r0, r5, lsl #1
 	mov r2, r5, lsl #1
@@ -26941,7 +26941,7 @@ _020AEEFC:
 	add r0, r0, #0x2000
 	ldr r6, [r0, #0x284]
 	mov r0, r6
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r1, #0
 	bne _020AEF68
 	ldr r4, _020AF0A8 ; =0x00000728
@@ -28207,12 +28207,12 @@ sub_020AFFE4: ; 0x020AFFE4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020B001C:
 	ldr r0, _020B015C ; =0x021D5FFC
-	bl sub_020D2618
+	bl OS_LockMutex
 	bl sub_020AE4EC
 	movs r7, r0
 	bne _020B0048
 	ldr r0, _020B015C ; =0x021D5FFC
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	mov r0, r5
 	bl sub_020D3A4C
 	mvn r0, #0
@@ -28227,7 +28227,7 @@ _020B0048:
 	bne _020B007C
 _020B0064:
 	ldr r0, _020B015C ; =0x021D5FFC
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	mov r0, r5
 	bl sub_020D3A4C
 	mvn r0, #3
@@ -28268,7 +28268,7 @@ _020B00D4: ; jump table
 	b _020B00F8 ; case 8
 _020B00F8:
 	ldr r0, _020B015C ; =0x021D5FFC
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	mov r0, r5
 	bl sub_020D3A4C
 	mvn r0, #4
@@ -28282,14 +28282,14 @@ _020B0110:
 	beq _020B0144
 	cmp r0, #1
 	ldr r0, _020B015C ; =0x021D5FFC
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	mov r0, r5
 	bl sub_020D3A4C
 	mvn r0, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020B0144:
 	ldr r0, _020B015C ; =0x021D5FFC
-	bl sub_020D269C
+	bl OS_UnlockMutex
 	mov r0, r5
 	bl sub_020D3A4C
 	mov r0, r6
@@ -28449,7 +28449,7 @@ _020B0310:
 	add r0, r0, r2
 	blt _020B0310
 _020B0324:
-	bl sub_020F2998
+	bl _s32_div_f
 _020B0328:
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
@@ -30046,7 +30046,7 @@ _020B1938:
 	bl sub_020D34B0
 	mov r2, #0x40
 	mov r3, #0
-	bl sub_020F2900
+	bl _ll_udiv
 	str r0, [r4, #8]
 	ldr r1, _020B1980 ; =0x021D6040
 	mov r0, #1
@@ -34002,6 +34002,50 @@ sub_020B4CB4: ; 0x020B4CB4
 	strh r1, [r0, #8]
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020B4CB4
+
+	.rodata
+
+_02018F9C:
+	.byte 0x00, 0x00, 0x00, 0x00
+_02108FA0:
+	.byte 0x01, 0x02, 0x00, 0x04, 0x03, 0x05, 0x06, 0x07, 0x05, 0x09, 0x01, 0x0E, 0x0C, 0x02, 0x0A, 0x00
+	.byte 0x0B, 0x0D, 0x03, 0x04, 0x08, 0x06, 0x0F, 0x07, 0x15, 0x03, 0x00, 0x00, 0x02, 0x01, 0x29, 0x00
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x01, 0xFF, 0x01, 0xFF, 0xFF, 0x01, 0x02
+	.byte 0xFF, 0xFF, 0x01, 0x02, 0xFF, 0xFF, 0xFF, 0xFF, 0x02, 0x04, 0x06, 0x08, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0x02, 0x04, 0x06, 0x08, 0x07, 0x00, 0x08, 0x00, 0x09, 0x00, 0x0A, 0x00, 0x0B, 0x00, 0x0C, 0x00
+	.byte 0x0D, 0x00, 0x0E, 0x00, 0x10, 0x00, 0x11, 0x00, 0x13, 0x00, 0x15, 0x00, 0x17, 0x00, 0x19, 0x00
+	.byte 0x1C, 0x00, 0x1F, 0x00, 0x22, 0x00, 0x25, 0x00, 0x29, 0x00, 0x2D, 0x00, 0x32, 0x00, 0x37, 0x00
+	.byte 0x3C, 0x00, 0x42, 0x00, 0x49, 0x00, 0x50, 0x00, 0x58, 0x00, 0x61, 0x00, 0x6B, 0x00, 0x76, 0x00
+	.byte 0x82, 0x00, 0x8F, 0x00, 0x9D, 0x00, 0xAD, 0x00, 0xBE, 0x00, 0xD1, 0x00, 0xE6, 0x00, 0xFD, 0x00
+	.byte 0x17, 0x01, 0x33, 0x01, 0x51, 0x01, 0x73, 0x01, 0x98, 0x01, 0xC1, 0x01, 0xEE, 0x01, 0x20, 0x02
+	.byte 0x56, 0x02, 0x92, 0x02, 0xD4, 0x02, 0x1C, 0x03, 0x6C, 0x03, 0xC3, 0x03, 0x24, 0x04, 0x8E, 0x04
+	.byte 0x02, 0x05, 0x83, 0x05, 0x10, 0x06, 0xAB, 0x06, 0x56, 0x07, 0x12, 0x08, 0xE0, 0x08, 0xC3, 0x09
+	.byte 0xBD, 0x0A, 0xD0, 0x0B, 0xFF, 0x0C, 0x4C, 0x0E, 0xBA, 0x0F, 0x4C, 0x11, 0x07, 0x13, 0xEE, 0x14
+	.byte 0x06, 0x17, 0x54, 0x19, 0xDC, 0x1B, 0xA5, 0x1E, 0xB6, 0x21, 0x15, 0x25, 0xCA, 0x28, 0xDF, 0x2C
+	.byte 0x5B, 0x31, 0x4B, 0x36, 0xB9, 0x3B, 0xB2, 0x41, 0x44, 0x48, 0x7E, 0x4F, 0x71, 0x57, 0x2F, 0x60
+	.byte 0xCE, 0x69, 0x62, 0x74, 0xFF, 0x7F, 0x00, 0x00, 0x08, 0x00, 0x08, 0x00, 0x02, 0x04, 0x03, 0x04
+	.byte 0x04, 0x04, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x02, 0x01, 0x02
+	.byte 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x03, 0x00, 0x01, 0x08, 0x04, 0x0A, 0x00, 0x00, 0x00, 0x00
+	.byte 0x07, 0x0C, 0x02, 0x03, 0x09, 0x02, 0x00, 0x00, 0xFE, 0xFE, 0xFE, 0x03, 0xFF, 0xFF, 0x00, 0xFF
+	.byte 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0xFE, 0xFD, 0xFF, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0xFE, 0xFE
+	.byte 0xFE, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, 0xFE, 0xFD, 0xFF, 0xFF, 0xFF
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0xFE, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE
+	.byte 0xFE, 0xFE, 0xFD, 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF, 0x01, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE
+	.byte 0x00, 0x00, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0x05, 0xFE, 0xFE, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE
+	.byte 0xFE, 0x05, 0xFE, 0xFE, 0xFE, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE
+	.byte 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0x02, 0x00, 0x00, 0x00, 0xFE
+	.byte 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0x00, 0x00, 0xFE, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0x01
+	.byte 0xFF, 0xFE, 0x00, 0x00, 0x00, 0xFE, 0xFE, 0xFE, 0x05, 0x05, 0xFE, 0xFF, 0xFE, 0x00, 0xFE, 0xFE
+	.byte 0xFE, 0xFE, 0xFE, 0x05, 0xFE, 0xFE, 0xFF, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE
+	.byte 0xFE, 0xFF, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0x03, 0x00, 0x00
+	.byte 0x00, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0x00, 0x00, 0xFE, 0xFE, 0x00, 0xFE, 0x04, 0xFE
+	.byte 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0x02, 0x00
+	.byte 0x00, 0x00, 0xFF, 0x00, 0xFE, 0x05, 0x05, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE
+	.byte 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0x05, 0xFE, 0xFF, 0xFF
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF
+	.byte 0x14, 0x59, 0x0B, 0x02, 0x34, 0x59, 0x0B, 0x02, 0xFC, 0x58, 0x0B, 0x02, 0x10, 0x59, 0x0B, 0x02
 
 	.data
 

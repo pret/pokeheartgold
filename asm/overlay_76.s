@@ -115,7 +115,11 @@ _021E59B6:
 	ldr r0, [r4, r2]
 	add r2, #0x14
 	ldr r2, [r4, r2]
+#ifdef HEARTGOLD
 	mov r1, #0
+#else
+	mov r1, #1
+#endif
 	bl sub_0200BB6C
 	mov r0, #0x8b
 	lsl r0, r0, #2
@@ -1728,7 +1732,7 @@ _021E66F6:
 	ldrb r0, [r0]
 	mov r1, #6
 	add r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r4, #0
 	add r0, #0x62
 	strb r1, [r0]

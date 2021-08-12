@@ -16,6 +16,7 @@ Static main
 	Object error_handling.o
 	Object unk_02025534.o
 	### Vendor libraries ###
+	Object middleware.o
 	Object sdk.o
 	Object nnsys.o
 	Object nitro.o

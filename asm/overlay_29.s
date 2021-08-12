@@ -57,7 +57,7 @@ _0225D578:
 	b _0225D594
 _0225D588:
 	add r1, r7, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r5, r5, #1
 	cmp r5, #6
 	blo _0225D578
@@ -1106,11 +1106,11 @@ _0225DDB8:
 	bl ov29_0225DEB8
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r6, r1, #0
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r2, r0, #0
 	mov r3, #6
 	add r1, r6, #0

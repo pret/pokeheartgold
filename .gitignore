@@ -57,3 +57,10 @@ files/**/*.c
 *.o
 *.naix
 *.a
+
+# Utilities
+ntruncompbw
+*.elf
+cmake-build-*
+*.sbin_LZ
+*.diff

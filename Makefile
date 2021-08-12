@@ -36,7 +36,7 @@ clean: tidy clean-tools
 	@$(MAKE) -C lib/syscall clean
 	@$(MAKE) -C sub clean
 
-main: $(SBIN)
+main: filesystem $(SBIN)
 sub: ; @$(MAKE) -C sub
 
 ROMSPEC        := rom.rsf
@@ -65,3 +65,11 @@ endif
 
 $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 	$(WINE) $(MAKEBNR) $< $@
+
+heartgold:  ; $(MAKE) GAME_VERSION=HEARTGOLD
+soulsilver: ; $(MAKE) GAME_VERSION=SOULSILVER
+compare: compare-heartgold
+compare-heartgold: ; $(MAKE) GAME_VERSION=HEARTGOLD COMPARE=1
+compare-soulsilver: ; $(MAKE) GAME_VERSION=SOULSILVER COMPARE=1
+
+.PHONY: heartgold soulsilver compare compare-heartgold compare-soulsilver

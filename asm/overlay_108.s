@@ -1308,12 +1308,12 @@ _021E6304:
 	mov r1, #3
 	ldrb r6, [r5, r0]
 	add r0, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r7, r0, #0x18
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	cmp r6, #2
@@ -1323,7 +1323,7 @@ _021E6304:
 	beq _021E6338
 	add r0, r7, #1
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r7, r0, #0x18
 	b _021E634A
@@ -1333,7 +1333,7 @@ _021E6338:
 	beq _021E634A
 	add r0, r7, #2
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r7, r0, #0x18
 _021E634A:
@@ -1342,7 +1342,7 @@ _021E634A:
 	beq _021E635E
 	add r0, r6, #2
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 	b _021E6370
@@ -1352,7 +1352,7 @@ _021E635E:
 	beq _021E6370
 	add r0, r6, #1
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 _021E6370:
@@ -1577,12 +1577,12 @@ _021E6526:
 _021E6532:
 	ldr r0, [sp]
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 	ldr r0, [sp]
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	mov r0, #0
@@ -1602,7 +1602,7 @@ _021E6532:
 	lsr r4, r0, #0x18
 	add r0, r6, #1
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 	b _021E6644
@@ -1627,14 +1627,14 @@ _021E6576:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r6, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 	b _021E6644
 _021E65A8:
 	add r0, r6, #1
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 	b _021E6644
@@ -1654,7 +1654,7 @@ _021E65B6:
 	lsr r4, r0, #0x18
 	add r0, r6, #2
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 	b _021E6644
@@ -1679,14 +1679,14 @@ _021E65DE:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r6, #2
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 	b _021E6644
 _021E6610:
 	add r0, r6, #2
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 	b _021E6644
@@ -1696,7 +1696,7 @@ _021E661E:
 	beq _021E6632
 	add r0, r4, #2
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r4, r0, #0x18
 	b _021E6644
@@ -1706,7 +1706,7 @@ _021E6632:
 	beq _021E6644
 	add r0, r4, #1
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r4, r0, #0x18
 _021E6644:
@@ -2042,12 +2042,12 @@ _021E68F2:
 	mov r1, #3
 	ldrb r6, [r5, r0]
 	add r0, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r7, r0, #0x18
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	cmp r6, #2
@@ -2057,7 +2057,7 @@ _021E68F2:
 	beq _021E6926
 	add r0, r7, #1
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r7, r0, #0x18
 	b _021E6938
@@ -2067,7 +2067,7 @@ _021E6926:
 	beq _021E6938
 	add r0, r7, #2
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r7, r0, #0x18
 _021E6938:
@@ -2076,7 +2076,7 @@ _021E6938:
 	beq _021E694C
 	add r0, r6, #2
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 	b _021E695E
@@ -2086,7 +2086,7 @@ _021E694C:
 	beq _021E695E
 	add r0, r6, #1
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r6, r0, #0x18
 _021E695E:
@@ -3303,11 +3303,11 @@ ov108_021E733C: ; 0x021E733C
 _021E7348:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	add r3, r0, #0
 	mov r0, #0x80
 	str r0, [sp]
@@ -3347,11 +3347,11 @@ _021E7348:
 _021E73A4:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	add r7, r1, #0
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	add r2, r0, #0
 	mov r0, #0x80
 	str r0, [sp]
@@ -4006,7 +4006,7 @@ _021E790C:
 	beq _021E795E
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r0, #0x48
 	mul r0, r1
 	add r0, #0x38
@@ -4015,7 +4015,7 @@ _021E790C:
 	str r0, [sp]
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #0x48
 	mul r1, r0
 	add r1, #0x38
@@ -4046,7 +4046,7 @@ _021E794A:
 _021E795E:
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r0, #0x50
 	mul r0, r1
 	add r0, #0x30
@@ -4055,7 +4055,7 @@ _021E795E:
 	str r0, [sp]
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #0x48
 	mul r1, r0
 	add r1, #0x38
@@ -4139,7 +4139,7 @@ _021E79D0:
 	bne _021E7A80
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #3
 	add r0, r1, r0
 	add r0, r0, #3
@@ -4148,7 +4148,7 @@ _021E79D0:
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r1, r0, #3
 	add r0, r0, r1
 	add r0, r0, #3
@@ -4187,7 +4187,7 @@ _021E79D0:
 _021E7A80:
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r0, #0xa
 	mul r0, r1
 	add r0, r0, #2
@@ -4196,7 +4196,7 @@ _021E7A80:
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r1, r0, #3
 	add r0, r0, r1
 	add r0, #0x1b
@@ -4241,7 +4241,7 @@ _021E7AE8:
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x1c]
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r1, r0, #3
 	add r0, r0, r1
 	add r0, r0, #3
@@ -4250,7 +4250,7 @@ _021E7AE8:
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x1c]
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #3
 	add r0, r1, r0
 	add r0, r0, #3
@@ -4897,11 +4897,11 @@ _021E7FF4:
 _021E8020:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	add r3, r0, #0
 	mov r0, #0xdb
 	lsl r0, r0, #2
@@ -5126,11 +5126,11 @@ _021E81DA:
 _021E81EE:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	add r7, r1, #0
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #0x50
 	mul r1, r7
 	add r2, r0, #0
@@ -5265,13 +5265,13 @@ ov108_021E82E0: ; 0x021E82E0
 	sub r0, r1, #3
 	ldrb r0, [r6, r0]
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, sp, #8
 	strb r0, [r1]
 	ldr r0, _021E8380 ; =0x000184E0
 	mov r1, #3
 	ldrb r0, [r6, r0]
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, sp, #8
 	strb r0, [r1, #1]
 	ldr r0, [sp]
@@ -5639,38 +5639,38 @@ _021E85CC:
 	str r0, [sp, #0x34]
 	beq _021E85E6
 	lsl r0, r6, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E85F4
 _021E85E6:
 	lsl r0, r6, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E85F4:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp, #0x38]
 	cmp r7, #0
 	beq _021E8610
 	lsl r0, r7, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E861E
 _021E8610:
 	lsl r0, r7, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E861E:
-	bl sub_020F2104
+	bl _ftoi
 	mov r1, #0
 	str r1, [sp, #0x40]
 	ldr r1, [sp, #0x84]
@@ -6128,14 +6128,14 @@ ov108_021E8968: ; 0x021E8968
 	ldr r0, [r4, #0x20]
 	mov r1, #6
 	ldrb r0, [r0]
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _021E8A74 ; =0x00000431
 	strb r1, [r5, r0]
 	ldr r0, [r5, #0x1c]
 	mov r1, #6
 	ldr r0, [r0, #0x20]
 	ldrb r0, [r0]
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #0x43
 	lsl r1, r1, #4
 	strb r0, [r5, r1]
@@ -6182,13 +6182,13 @@ _021E8A06:
 	sub r0, #8
 	ldrb r0, [r5, r0]
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, _021E8A80 ; =0x0000042E
 	strb r0, [r5, r1]
 	sub r0, r1, #1
 	ldrb r0, [r5, r0]
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	ble _021E8A3E
 	ldr r0, _021E8A80 ; =0x0000042E
@@ -6929,20 +6929,20 @@ _021E8FEC:
 	cmp r0, #0
 	ble _021E900E
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E901C
 _021E900E:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E901C:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #4]
 	add r1, #0xdc
 	str r0, [r1]
@@ -6951,20 +6951,20 @@ _021E901C:
 	cmp r0, #0
 	ble _021E9040
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E904E
 _021E9040:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E904E:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #4]
 	add r1, #0xe0
 	str r0, [r1]
@@ -6973,20 +6973,20 @@ _021E904E:
 	cmp r0, #0
 	ble _021E9072
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E9080
 _021E9072:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E9080:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #4]
 	add r1, #0xe4
 	str r0, [r1]
@@ -6994,20 +6994,20 @@ _021E9080:
 	cmp r0, #0
 	beq _021E90A2
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021E90B0
 _021E90A2:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021E90B0:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #4]
 	ldr r1, [r1]
 	bl sub_020235D4
@@ -7209,7 +7209,7 @@ ov108_021E9210: ; 0x021E9210
 	ldr r1, [r1, #8]
 	ldrh r1, [r1, #4]
 	lsl r1, r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4, #0xc]
 	ldr r0, [r4, #8]
 	str r1, [r0]
@@ -9709,7 +9709,7 @@ ov108_021EA63C: ; 0x021EA63C
 	str r2, [sp, #4]
 	str r3, [sp, #8]
 	add r4, r6, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r2, _021EA6F8 ; =0x021EAD28
 	lsl r0, r1, #2
 	add r0, r2, r0

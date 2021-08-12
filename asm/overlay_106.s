@@ -2070,7 +2070,7 @@ ov106_021E68F4: ; 0x021E68F4
 	ldr r6, [r4, #0x2c]
 	mov r0, #0xf
 	sub r0, r0, r6
-	bl sub_020E4A90
+	bl abs
 	str r0, [sp]
 	ldr r0, _021E6980 ; =0x04000050
 	ldr r1, [r4, #0x1c]
@@ -2089,10 +2089,10 @@ _021E6930:
 	ldr r6, [r4, #0x20]
 	str r0, [sp, #4]
 	sub r0, r6, r0
-	bl sub_020E4A90
+	bl abs
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, [sp, #8]
 	mul r0, r1
 	lsr r1, r0, #8
@@ -2106,7 +2106,7 @@ _021E6954:
 _021E6956:
 	mov r0, #0xf
 	sub r0, r0, r6
-	bl sub_020E4A90
+	bl abs
 	str r0, [sp]
 	ldr r0, _021E6980 ; =0x04000050
 	ldr r1, [r4, #0x1c]

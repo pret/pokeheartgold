@@ -31,7 +31,7 @@ ov85_021E5900: ; 0x021E5900
 	ldr r2, _021E5A28 ; =0x00000DCC
 	add r6, r0, #0
 	mov r1, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r6, #0
 	str r6, [r4, #0x34]
 	add r0, #0xcc
@@ -747,7 +747,7 @@ _021E5E46:
 	add r0, r0, #1
 	str r0, [r4, #0x10]
 	ldr r1, [r4, #0x14]
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4, #0x10]
 	ldr r0, [r4]
 	add r1, r0, #1
@@ -1514,7 +1514,7 @@ _021E63E8:
 	ldr r7, [r5, #0x30]
 	add r0, r4, #1
 	add r1, r7, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r6, r6, #1
 	add r4, r1, #0
 	cmp r6, r7
@@ -1622,7 +1622,7 @@ _021E64B8:
 	bl sub_0201FD44
 	sub r1, r7, r4
 	add r1, r1, #1
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r0, _021E6520 ; =0x021EA728
 	add r4, r4, r1
 	ldr r0, [r0, r6]
@@ -3746,7 +3746,7 @@ ov85_021E75C8: ; 0x021E75C8
 	asr r0, r0, #0xc
 	lsl r1, r1, #2
 	sub r0, r1, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r4, #0
 	add r0, #0x4e
 	strh r1, [r0]
@@ -4704,7 +4704,7 @@ _021E7CC6:
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020E5B44
+	bl memset
 _021E7CDA:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -4743,7 +4743,7 @@ ov85_021E7D08: ; 0x021E7D08
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0xa0
-	bl sub_020E5B44
+	bl memset
 	mov r2, #1
 	ldr r0, _021E7D3C ; =ov85_021E7CE0
 	add r1, r4, #0
@@ -4927,7 +4927,7 @@ ov85_021E7E3C: ; 0x021E7E3C
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x64
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _021E7E6C ; =ov85_021E7E18
 	ldr r2, _021E7E70 ; =0x00000101
 	add r1, r4, #0
@@ -5099,7 +5099,7 @@ ov85_021E7F74: ; 0x021E7F74
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x78
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _021E7FA4 ; =ov85_021E7F50
 	ldr r2, _021E7FA8 ; =0x00000102
 	add r1, r4, #0
@@ -5729,7 +5729,7 @@ ov85_021E83E0: ; 0x021E83E0
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x50
-	bl sub_020E5B44
+	bl memset
 	mov r2, #0x41
 	ldr r0, _021E8410 ; =ov85_021E83C0
 	add r1, r4, #0
@@ -5926,7 +5926,7 @@ _021E8548:
 	mov r1, #0x5a
 	ldr r0, [r4]
 	lsl r1, r1, #0xe
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4]
 	pop {r4, pc}
 	.balign 4, 0
@@ -6038,7 +6038,7 @@ _021E85FC:
 	add r0, #0xac
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020E5B44
+	bl memset
 	add r4, #0xac
 	add r0, r4, #0
 	pop {r4, pc}
@@ -6498,7 +6498,7 @@ _021E890A:
 	ldr r2, _021E89FC ; =0x00004AB0
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_020E5B44
+	bl memset
 	str r4, [r6, #0x38]
 	str r6, [r4, #0xc]
 	ldr r0, [r6, #0x30]

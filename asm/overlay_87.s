@@ -21,7 +21,7 @@ ov87_021E5900: ; 0x021E5900
 	ldr r2, _021E59AC ; =0x000099FC
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x7a
 	bl sub_0201AC88
 	str r0, [r4, #0x58]
@@ -3178,7 +3178,7 @@ ov87_021E7264: ; 0x021E7264
 _021E7270:
 	bl sub_0201FD44
 	mov r1, #9
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
 	add r1, r5, r0
@@ -3212,7 +3212,7 @@ ov87_021E7294: ; 0x021E7294
 _021E72B0:
 	bl sub_0201FD44
 	mov r1, #9
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r0, #0x36
 	add r2, r5, r1
 	lsl r0, r0, #4
@@ -3341,7 +3341,7 @@ _021E7380:
 _021E7390:
 	bl sub_0201FD44
 	add r1, r7, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	strh r1, [r4]
 	mov r1, #0
 	cmp r5, #0
@@ -4272,11 +4272,11 @@ ov87_021E7A2C: ; 0x021E7A2C
 	add r1, r1, #4
 	ldr r0, [r0, r1]
 	ldr r1, [r2, #0x14]
-	ldr r3, _021E7A40 ; =sub_020E5AD8
+	ldr r3, _021E7A40 ; =memcpy
 	ldr r2, [r2, #0x10]
 	bx r3
 	nop
-_021E7A40: .word sub_020E5AD8
+_021E7A40: .word memcpy
 	thumb_func_end ov87_021E7A2C
 
 	thumb_func_start ov87_021E7A44

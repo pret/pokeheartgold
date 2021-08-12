@@ -210,12 +210,12 @@ ov109_021E5A70: ; 0x021E5A70
 	mov r1, #0xc
 	ldrb r6, [r0, #2]
 	add r0, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _021E5B3C ; =0x021E7890
 	ldrb r4, [r0, r1]
 	add r0, r6, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	strb r0, [r5, #0x19]
 	lsr r2, r4, #0x1f
 	lsl r1, r4, #0x1e
@@ -255,13 +255,13 @@ ov109_021E5A70: ; 0x021E5A70
 	add r0, #0xc5
 	ldrb r0, [r0]
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	strb r0, [r5, #0x1a]
 	add r0, r5, #0
 	add r0, #0xc5
 	ldrb r0, [r0]
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	beq _021E5B26
 	ldrb r0, [r5, #0x1a]
@@ -728,13 +728,13 @@ _021E5E32:
 	add r0, #0xc5
 	ldrb r0, [r0]
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	strb r0, [r5, #0x1a]
 	add r0, r5, #0
 	add r0, #0xc5
 	ldrb r0, [r0]
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	beq _021E5E66
 	ldrb r0, [r5, #0x1a]
@@ -771,11 +771,11 @@ _021E5E8E:
 _021E5E98:
 	add r0, r7, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	strb r0, [r5, #0x19]
 	add r0, r7, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _021E5EC4 ; =0x021E7890
 	ldrb r3, [r0, r1]
 	mov r0, #0x1e
@@ -3143,11 +3143,11 @@ ov109_021E7114: ; 0x021E7114
 	ldr r4, [r0]
 	add r0, r6, #0
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	add r7, r1, #0
 	add r0, r6, #0
 	mov r1, #6
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r1, #5
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -3227,13 +3227,13 @@ ov109_021E71BC: ; 0x021E71BC
 	add r0, r5, #0
 	mov r1, #0xc
 	add r7, r2, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	ldrb r1, [r4, #0x19]
 	cmp r0, r1
 	bne _021E71FE
 	add r0, r5, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _021E7244 ; =0x021E7890
 	mov r2, #3
 	ldrb r3, [r0, r1]
@@ -3254,13 +3254,13 @@ ov109_021E71BC: ; 0x021E71BC
 _021E71FE:
 	add r0, r7, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	ldrb r1, [r4, #0x19]
 	cmp r0, r1
 	bne _021E7238
 	add r0, r7, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _021E7244 ; =0x021E7890
 	mov r2, #3
 	ldrb r5, [r0, r1]
@@ -3605,7 +3605,7 @@ ov109_021E74D4: ; 0x021E74D4
 	ldrb r0, [r5, #0x1f]
 	add r4, r1, #0
 	mov r1, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x18
 	ldrb r1, [r5, #0x19]
 	lsr r0, r0, #0x18

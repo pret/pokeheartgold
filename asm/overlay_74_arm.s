@@ -561,7 +561,7 @@ _02237808:
 	ldrb r0, [r0, #3]
 	str r0, [sp, #0x10]
 	add r0, r1, #0x3f
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, [sp, #0x34]
 	mov r4, r0
 	add r0, r1, #4
@@ -1303,7 +1303,7 @@ _022382DC:
 	beq _022382F8
 	mov r0, sl
 	mov r1, r7
-	bl sub_020F2BA4
+	bl _u32_div_f
 _022382F8:
 	mul ip, r0, r7
 	mul r3, r0, r6
@@ -1857,7 +1857,7 @@ ov74_02238A48: ; 0x02238A48
 	sub r0, r0, #1
 	str r2, [sp, #4]
 	mov r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	mov ip, #0
 	mov r0, r0, lsl #1
 	add r0, r0, #2
@@ -1993,7 +1993,7 @@ ov74_02238C20: ; 0x02238C20
 	ldr r1, _02238D84 ; =0x00010001
 	ldr r2, [r2]
 	cmp r2, r1
-	ldreq r5, _02238D88 ; =0x0223BB3C
+	ldreq r5, _02238D88 ; =_0223BB3C
 	beq _02238CB0
 _02238C84:
 	ldr r1, [sb]
@@ -2001,13 +2001,13 @@ _02238C84:
 	cmp r1, #0x11
 	bne _02238CA0
 	cmp r0, #1
-	ldreq r5, _02238D8C ; =0x0223BB54
+	ldreq r5, _02238D8C ; =_0223BB54
 	beq _02238CB0
 _02238CA0:
 	cmp r1, #3
 	bne _02238CB0
 	cmp r0, #1
-	ldreq r5, _02238D90 ; =0x0223BB48
+	ldreq r5, _02238D90 ; =_0223BB48
 _02238CB0:
 	mov r7, #1
 	mov r6, r7
@@ -2069,9 +2069,9 @@ _02238D70:
 	bx lr
 	.balign 4, 0
 _02238D84: .word 0x00010001
-_02238D88: .word 0x0223BB3C
-_02238D8C: .word 0x0223BB54
-_02238D90: .word 0x0223BB48
+_02238D88: .word _0223BB3C
+_02238D8C: .word _0223BB54
+_02238D90: .word _0223BB48
 	arm_func_end ov74_02238C20
 
 	arm_func_start ov74_02238D94
@@ -2080,7 +2080,7 @@ ov74_02238D94: ; 0x02238D94
 	mov sl, r0
 	mov r1, sl
 	rsb r0, sl, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	movs r8, r1
 	mov r7, sl
 	mov r5, #0
@@ -2090,11 +2090,11 @@ ov74_02238D94: ; 0x02238D94
 _02238DC0:
 	mov r0, r7
 	mov r1, r8
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov sb, r1
 	mov r0, r7
 	mov r1, r8
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mla r1, r0, r6, r5
 	mov r5, r6
 	mov r7, r8
@@ -2111,7 +2111,7 @@ _02238DFC:
 	bne _02238E1C
 	mov r0, r5
 	mov r1, sl
-	bl sub_020F2BA4
+	bl _u32_div_f
 _02238E1C:
 	mov r0, r1
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
@@ -4711,18 +4711,18 @@ _0223B1D4:
 _0223B1E0:
 	mov r1, r0, lsr r2
 	ands r0, r1, #0xf0
-	ldreq r0, _0223B210 ; =0x0223BB60
+	ldreq r0, _0223B210 ; =_0223BB60
 	ldreqsb r0, [r0, r1]
 	addeq r0, r0, r2
 	bxeq lr
-	ldr r0, _0223B210 ; =0x0223BB60
+	ldr r0, _0223B210 ; =_0223BB60
 	mov r1, r1, lsr #4
 	ldrsb r0, [r0, r1]
 	add r0, r0, r2
 	add r0, r0, #4
 	bx lr
 	.balign 4, 0
-_0223B210: .word 0x0223BB60
+_0223B210: .word _0223BB60
 	arm_func_end ov74_0223B1B4
 
 	arm_func_start ov74_0223B214
@@ -4753,7 +4753,7 @@ ov74_0223B230: ; 0x0223B230
 _0223B25C:
 	mov r0, #0
 	mvn r1, #0
-	bl sub_020D2F5C
+	bl OS_FreeToHeap
 	add sp, sp, #4
 	ldmia sp!, {lr}
 	bx lr
@@ -4777,7 +4777,7 @@ ov74_0223B278: ; 0x0223B278
 _0223B2A4:
 	mov r0, #0
 	mvn r1, #0
-	bl sub_020D2E54
+	bl OS_AllocFromHeap
 	add sp, sp, #4
 	ldmia sp!, {lr}
 	bx lr
@@ -4789,20 +4789,45 @@ _0223B2BC: .word 0x0223E9F8
 
 _0223BB3C:
 	.byte 0x00, 0x08, 0x01, 0x01
-	.byte 0x01, 0x10, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x01, 0x01, 0x01, 0x04, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223BB40:
+	.byte 0x01, 0x10, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223BB48:
+	.byte 0x00, 0x08, 0x01, 0x01
+_0223BB4C:
+	.byte 0x01, 0x01, 0x01, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00
+_0223BB54:
+	.byte 0x00, 0x08, 0x01, 0x01
+_0223BB58:
+	.byte 0x01, 0x04, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223BB60:
 	.byte 0x00, 0x01, 0x02, 0x02, 0x03, 0x03, 0x03, 0x03, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04
+_0223BB70:
 	.byte 0x06, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00
 	.byte 0x04, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00
+_0223BB90:
 	.byte 0x05, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00
-	.byte 0x04, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00
+_0223BBA0:
+	.byte 0x04, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00
+_0223BBA8:
+	.byte 0x03, 0x00, 0x01, 0x00
+_0223BBAC:
+	.byte 0x02, 0x00
+_0223BBAE:
+	.byte 0x01
+_0223BBAF:
+	.byte 0x00
 
 	.data
 
 _0223D058:
-	.byte 0xAF, 0xBB, 0x23, 0x02, 0xAE, 0xBB, 0x23, 0x02
-	.byte 0xAC, 0xBB, 0x23, 0x02, 0xA8, 0xBB, 0x23, 0x02, 0xA0, 0xBB, 0x23, 0x02, 0x90, 0xBB, 0x23, 0x02
-	.byte 0x70, 0xBB, 0x23, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word _0223BBAF
+	.word _0223BBAE
+	.word _0223BBAC
+	.word _0223BBA8
+	.word _0223BBA0
+	.word _0223BB90
+	.word _0223BB70
 
 	.bss
 

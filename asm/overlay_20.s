@@ -149,7 +149,7 @@ ov20_022599A0: ; 0x022599A0
 	mov r3, #0
 	sub r0, r5, r0
 	sbc r1, r3
-	bl sub_020F2900
+	bl _ll_udiv
 	add r2, r0, #0
 	add r0, r6, #0
 	ldr r6, _02259A18 ; =0x02259C74
@@ -160,10 +160,10 @@ ov20_022599A0: ; 0x022599A0
 	add r2, r4, r2
 	adc r5, r3
 	add r3, r5, #0
-	bl sub_020F2948
+	bl _ll_mul
 	mov r2, #0xa
 	mov r3, #0
-	bl sub_020F2900
+	bl _ll_udiv
 	pop {r4, r5, r6, pc}
 	nop
 _02259A10: .word 0x02259C78
@@ -190,13 +190,13 @@ ov20_02259A1C: ; 0x02259A1C
 	mul r1, r0
 	add r0, r1, #0
 	mov r1, #0xfe
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r0, #5
 	mov r1, #0xa
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r1, #0xa
 	add r4, r0, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -208,7 +208,7 @@ ov20_02259A1C: ; 0x02259A1C
 	bl sub_0200BFCC
 	add r0, r4, #0
 	mov r1, #0xa
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, #0
 	add r2, r1, #0
 	str r0, [sp]
@@ -273,19 +273,19 @@ ov20_02259A88: ; 0x02259A88
 	lsl r0, r0, #2
 	mul r0, r7
 	mov r1, #0xfe
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r0, #5
 	mov r1, #0xa
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r4, r0, #0
 	mov r0, #0xfa
 	lsl r0, r0, #2
 	mul r0, r5
 	mov r1, #0xfe
-	bl sub_020F2BA4
+	bl _u32_div_f
 	add r0, r0, #5
 	mov r1, #0xa
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r4, r0
 	bne _02259B2E
 	mov r0, #1

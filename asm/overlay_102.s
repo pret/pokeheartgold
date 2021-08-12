@@ -364,12 +364,12 @@ ov102_021E79DC: ; 0x021E79DC
 	add r6, r2, #0
 	ldrsb r1, [r5, r1]
 	add r0, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	strb r1, [r5, #2]
 	mov r1, #3
 	ldrsb r1, [r5, r1]
 	add r0, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r0, [r5]
 	mov r1, #0
 	mov r2, #2
@@ -2064,7 +2064,7 @@ _021E866C:
 	add r0, #0x52
 	ldrh r0, [r0]
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, #9
 	add r4, #0x50
 	strh r1, [r4]
@@ -2078,7 +2078,7 @@ _021E868A:
 	add r0, #0x52
 	ldrh r0, [r0]
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, #0x50
 	strh r1, [r4]
 	mov r0, #1
@@ -7572,20 +7572,20 @@ _021EB032:
 	cmp r0, #0
 	ble _021EB058
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _021EB066
 _021EB058:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _021EB066:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #8]
 	add r0, r1, r0
 	str r0, [sp, #8]
@@ -8536,7 +8536,7 @@ _021EB79E:
 	beq _021EB7B6
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020F2998
+	bl _s32_div_f
 	cmp r1, #0
 	bne _021EB7B6
 	ldr r0, [sp, #0x24]
@@ -8817,14 +8817,14 @@ _021EB9E2:
 	bne _021EBA0A
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r0, #0x50
 	mul r0, r1
 	add r0, #0x30
 	str r0, [sp, #8]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_020F2BA4
+	bl _u32_div_f
 	mov r1, #0x18
 	mul r1, r0
 	add r1, #0x40
@@ -10028,7 +10028,7 @@ _021EC2BE:
 	lsl r1, r1, #0xc
 	str r1, [r4, #0xc]
 	ldr r1, [sp, #0xc]
-	bl sub_020F2998
+	bl _s32_div_f
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #0xc]
 	strh r0, [r4, #0x18]
@@ -10130,7 +10130,7 @@ ov102_021EC37C: ; 0x021EC37C
 	str r1, [r4, #0x14]
 	str r3, [r4, #8]
 	sub r0, r0, r3
-	bl sub_020F2998
+	bl _s32_div_f
 	str r0, [r4, #0x10]
 	ldr r0, [sp, #8]
 	mov r2, #0
@@ -10223,7 +10223,7 @@ ov102_021EC410: ; 0x021EC410
 	str r2, [r5, #0xc]
 	ldr r0, [r5, #8]
 	sub r0, r2, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	str r0, [r5, #0x10]
 	mov r2, #0
 	ldr r0, _021EC44C ; =ov102_021EC478

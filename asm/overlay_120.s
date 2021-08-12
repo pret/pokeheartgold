@@ -11,7 +11,7 @@ ov120_0225F020: ; 0x0225F020
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -133,7 +133,7 @@ ov120_0225F0FC: ; 0x0225F0FC
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -282,7 +282,7 @@ _0225F208:
 _0225F212:
 	bl sub_0201FD44
 	add r1, r6, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r2, r1, #1
 	ldrh r0, [r4]
 	ldrh r1, [r5, r2]
@@ -338,7 +338,7 @@ ov120_0225F268: ; 0x0225F268
 	mov r1, #0
 	mov r2, #0xcc
 	add r7, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r4, #0
 	add r5, r7, #0
 _0225F280:
@@ -939,7 +939,7 @@ ov120_0225F6BC: ; 0x0225F6BC
 	mul r0, r1
 	mov r1, #0x5a
 	lsl r1, r1, #2
-	bl sub_020F2998
+	bl _s32_div_f
 	ldrh r1, [r4, #8]
 	add r0, r1, r0
 	strh r0, [r4, #8]
@@ -1003,7 +1003,7 @@ _0225F73E:
 	str r0, [r5, #0xc]
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020E5B44
+	bl memset
 	ldr r4, [r5, #0xc]
 	mov r0, #4
 	mov r1, #1
@@ -2037,7 +2037,7 @@ _0225FF2E:
 	mov r1, #0
 	mov r2, #0x70
 	str r0, [r4, #0xc]
-	bl sub_020E5B44
+	bl memset
 	mov r0, #2
 	mov r1, #1
 	ldr r5, [r4, #0xc]

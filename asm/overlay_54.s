@@ -22,7 +22,7 @@ ov54_021E5900: ; 0x021E5900
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, [r5, #4]
 	bl sub_0202AD20
 	ldrh r1, [r4, #0x18]
@@ -1590,7 +1590,7 @@ _021E6600:
 	ldrh r0, [r5, #2]
 	ldrh r1, [r5]
 	add r0, r0, r4
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r1, [r5, #2]
 	pop {r3, r4, r5, pc}
 _021E6612:
@@ -1599,7 +1599,7 @@ _021E6612:
 	ldrh r0, [r5, #2]
 	add r0, r0, r1
 	sub r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r1, [r5, #2]
 _021E6622:
 	pop {r3, r4, r5, pc}
@@ -1703,7 +1703,7 @@ _021E66DC:
 	lsl r0, r0, #0x1b
 	lsr r0, r0, #0x1d
 	add r0, r0, #6
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r2, [r4, #0x10]
 	mov r0, #0x1c
 	bic r2, r0
@@ -1728,7 +1728,7 @@ _021E6716:
 	lsl r0, r0, #0x1b
 	lsr r0, r0, #0x1d
 	add r0, r0, #1
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r2, [r4, #0x10]
 	mov r0, #0x1c
 	bic r2, r0

@@ -22,7 +22,7 @@ ov83_0223DD60: ; 0x0223DD60
 	ldr r2, _0223DE44 ; =0x0000086C
 	mov r1, #0
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x6b
 	bl sub_0201AC88
 	str r0, [r5, #0x4c]
@@ -1423,7 +1423,7 @@ _0223E982:
 	ldrb r0, [r4, r0]
 	mov r1, #6
 	sub r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, _0223EC88 ; =0x00000862
 	strh r0, [r4, r1]
 _0223E9A2:
@@ -1452,7 +1452,7 @@ _0223E9CA:
 	ldrb r0, [r4, r0]
 	mov r1, #6
 	sub r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r1, _0223EC88 ; =0x00000862
 	ldrsh r2, [r4, r1]
 	cmp r0, r2
@@ -5052,7 +5052,7 @@ ov83_022407FC: ; 0x022407FC
 	mov r1, #6
 	ldrb r0, [r4, r0]
 	sub r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #1
@@ -9979,7 +9979,7 @@ ov83_02242FE8: ; 0x02242FE8
 	ldr r2, _022430F4 ; =0x00000614
 	mov r1, #0
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x6b
 	bl sub_0201AC88
 	str r0, [r5, #0x4c]

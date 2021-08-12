@@ -246,7 +246,7 @@ _0225F1EE:
 	mov r1, #0
 	mov r2, #0x38
 	str r0, [r4, #0xc]
-	bl sub_020E5B44
+	bl memset
 	mov r0, #2
 	mov r1, #0
 	bl sub_02022C60

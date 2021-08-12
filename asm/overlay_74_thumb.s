@@ -1,5 +1,7 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
+	.public ov60_021EAFE0
+	.public sub_020342C0
 
 	.text
 
@@ -442,7 +444,7 @@ _0222739C:
 	ldr r0, _02227424 ; =0x021D114C
 	mov r1, #0x30
 	ldrh r0, [r0, #0x22]
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	mov r0, #0x4e
@@ -557,7 +559,7 @@ ov74_0222746C: ; 0x0222746C
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _02227482:
-	ldr r0, _022274C8 ; =0x0223B2CC
+	ldr r0, _022274C8 ; =_0223B2CC
 	bl sub_02025224
 	add r6, r0, #0
 	mov r0, #0
@@ -594,7 +596,7 @@ _022274C4:
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_022274C8: .word 0x0223B2CC
+_022274C8: .word _0223B2CC
 _022274CC: .word 0x0000FFFE
 _022274D0: .word 0x021D114C
 	thumb_func_end ov74_0222746C
@@ -1460,7 +1462,7 @@ _02227B78: .word 0xFFFF4000
 ov74_02227B7C: ; 0x02227B7C
 	push {r3, r4, r5, lr}
 	sub sp, #0x40
-	ldr r5, _02227C9C ; =0x0223B2E8
+	ldr r5, _02227C9C ; =_0223B2E8
 	add r4, r0, #0
 	add r3, sp, #0x18
 	mov r2, #5
@@ -1469,7 +1471,7 @@ _02227B88:
 	stmia r3!, {r0, r1}
 	sub r2, r2, #1
 	bne _02227B88
-	ldr r3, _02227CA0 ; =0x0223B2D8
+	ldr r3, _02227CA0 ; =_0223B2D8
 	add r2, sp, #8
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
@@ -1587,8 +1589,8 @@ _02227B88:
 	add sp, #0x40
 	pop {r3, r4, r5, pc}
 	nop
-_02227C9C: .word 0x0223B2E8
-_02227CA0: .word 0x0223B2D8
+_02227C9C: .word _0223B2E8
+_02227CA0: .word _0223B2D8
 _02227CA4: .word 0x04000304
 _02227CA8: .word 0xFFFF7FFF
 _02227CAC: .word 0x04000008
@@ -3176,7 +3178,7 @@ ov74_02228920: ; 0x02228920
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x4f
 	bl sub_0201AC88
 	str r0, [r4]
@@ -3486,17 +3488,17 @@ _02228BBE:
 	pop {r3, pc}
 _02228BC8:
 	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _02228C34 ; =0x0223B380
+	ldr r1, _02228C34 ; =_0223B380
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BD2:
 	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _02228C38 ; =0x0223B4D8
+	ldr r1, _02228C38 ; =_0223B4D8
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BDC:
 	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _02228C3C ; =0x0223B320
+	ldr r1, _02228C3C ; =_0223B320
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BE6:
@@ -3524,7 +3526,7 @@ _02228C0C:
 	pop {r3, pc}
 _02228C1A:
 	ldr r0, _02228C58 ; =SDK_OVERLAY_OVY_60_ID
-	ldr r1, _02228C5C ; =0x021EAFE0
+	ldr r1, _02228C5C ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 _02228C22:
 	pop {r3, pc}
@@ -3533,9 +3535,9 @@ _02228C24: .word SDK_OVERLAY_OVY_36_ID
 _02228C28: .word 0x021E5C04
 _02228C2C: .word 0x021E5C24
 _02228C30: .word SDK_OVERLAY_OVY_74_ID
-_02228C34: .word 0x0223B380
-_02228C38: .word 0x0223B4D8
-_02228C3C: .word 0x0223B320
+_02228C34: .word _0223B380
+_02228C38: .word _0223B4D8
+_02228C3C: .word _0223B320
 _02228C40: .word 0x0223BD4C
 _02228C44: .word 0x021065C4
 _02228C48: .word SDK_OVERLAY_OVY_112_ID
@@ -3543,7 +3545,7 @@ _02228C4C: .word 0x021F5728
 _02228C50: .word SDK_OVERLAY_OVY_75_ID
 _02228C54: .word 0x02249964
 _02228C58: .word SDK_OVERLAY_OVY_60_ID
-_02228C5C: .word 0x021EAFE0
+_02228C5C: .word ov60_021EAFE0
 	thumb_func_end ov74_02228B8C
 
 	thumb_func_start ov74_02228C60
@@ -3598,41 +3600,41 @@ ov74_02228CB4: ; 0x02228CB4
 	add r5, r0, #0
 	ldr r1, _02228D1C ; =0x00002710
 	add r0, r4, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, #0x30
 	strh r0, [r5]
 	ldr r1, _02228D1C ; =0x00002710
 	add r0, r4, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r1, #0
 	mov r1, #0xfa
 	add r0, r4, #0
 	lsl r1, r1, #2
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, #0x30
 	mov r1, #0xfa
 	strh r0, [r5, #2]
 	add r0, r4, #0
 	lsl r1, r1, #2
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #0x64
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, #0x30
 	strh r0, [r5, #4]
 	add r0, r4, #0
 	mov r1, #0x64
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, #0x30
 	strh r0, [r5, #6]
 	add r0, r4, #0
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r1, #0
 	add r4, #0x30
 	strh r4, [r5, #8]
@@ -3678,7 +3680,7 @@ _02228D60: .word 0x0223D080
 ov74_02228D64: ; 0x02228D64
 	push {r3, r4, r5, lr}
 	sub sp, #0x48
-	ldr r5, _02228E90 ; =0x0223B340
+	ldr r5, _02228E90 ; =_0223B340
 	add r4, r0, #0
 	add r3, sp, #0x20
 	mov r2, #5
@@ -3687,7 +3689,7 @@ _02228D70:
 	stmia r3!, {r0, r1}
 	sub r2, r2, #1
 	bne _02228D70
-	ldr r3, _02228E94 ; =0x0223B330
+	ldr r3, _02228E94 ; =_0223B330
 	add r2, sp, #0x10
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
@@ -3810,8 +3812,8 @@ _02228D70:
 	add sp, #0x48
 	pop {r3, r4, r5, pc}
 	nop
-_02228E90: .word 0x0223B340
-_02228E94: .word 0x0223B330
+_02228E90: .word _0223B340
+_02228E94: .word _0223B330
 	thumb_func_end ov74_02228D64
 
 	thumb_func_start ov74_02228E98
@@ -4495,7 +4497,7 @@ ov74_02229450: ; 0x02229450
 	mov r0, #0x59
 	bl sub_0201A9C4
 	ldr r0, _02229474 ; =SDK_OVERLAY_OVY_60_ID
-	ldr r1, _02229478 ; =0x021EAFE0
+	ldr r1, _02229478 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	add r0, r4, #0
 	bl sub_02007294
@@ -4505,7 +4507,7 @@ ov74_02229450: ; 0x02229450
 	pop {r4, pc}
 	nop
 _02229474: .word SDK_OVERLAY_OVY_60_ID
-_02229478: .word 0x021EAFE0
+_02229478: .word ov60_021EAFE0
 	thumb_func_end ov74_02229450
 
 	thumb_func_start ov74_0222947C
@@ -5068,7 +5070,7 @@ _02229908:
 	str r0, [r4, r5]
 	bl sub_020D3550
 	mov r1, #0x36
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r0, #0x16
 	add r1, r1, #6
 	lsl r0, r0, #4
@@ -5647,7 +5649,7 @@ _02229D72:
 	add r5, #0x8c
 	add r0, r5, #0
 	mov r2, #0x50
-	bl sub_020E5AD8
+	bl memcpy
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 _02229D92:
@@ -5743,12 +5745,12 @@ _02229E10: .word 0x0223D0A4
 ov74_02229E14: ; 0x02229E14
 	ldr r3, _02229E20 ; =sub_0203410C
 	add r2, r0, #0
-	ldr r0, _02229E24 ; =0x0223B368
+	ldr r0, _02229E24 ; =_0223B368
 	mov r1, #2
 	bx r3
 	nop
 _02229E20: .word sub_0203410C
-_02229E24: .word 0x0223B368
+_02229E24: .word _0223B368
 	thumb_func_end ov74_02229E14
 
 	thumb_func_start ov74_02229E28
@@ -6082,7 +6084,7 @@ _0222A096:
 	add r1, r0, #0
 	add r0, r5, #0
 	lsl r2, r2, #2
-	bl sub_020E5AD8
+	bl memcpy
 	add r0, r4, #0
 	add r4, #0xdc
 	add r0, #0x8c
@@ -6097,11 +6099,11 @@ _0222A0BC:
 	add r0, r5, #0
 	add r1, #0x50
 	lsl r2, r2, #2
-	bl sub_020E5AD8
+	bl memcpy
 	add r0, r6, #0
 	add r1, r4, r7
 	mov r2, #0x50
-	bl sub_020E5AD8
+	bl memcpy
 _0222A0D6:
 	add r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -6903,7 +6905,7 @@ ov74_0222A6F8: ; 0x0222A6F8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r5, r3, #0
-	ldr r3, _0222A740 ; =0x0223B3A0
+	ldr r3, _0222A740 ; =_0223B3A0
 	add r7, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
@@ -6935,14 +6937,14 @@ ov74_0222A6F8: ; 0x0222A6F8
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222A740: .word 0x0223B3A0
+_0222A740: .word _0223B3A0
 	thumb_func_end ov74_0222A6F8
 
 	thumb_func_start ov74_0222A744
 ov74_0222A744: ; 0x0222A744
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
-	ldr r5, _0222A79C ; =0x0223B390
+	ldr r5, _0222A79C ; =_0223B390
 	add r3, sp, #0
 	add r4, r0, #0
 	add r2, r3, #0
@@ -6980,7 +6982,7 @@ ov74_0222A744: ; 0x0222A744
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0222A79C: .word 0x0223B390
+_0222A79C: .word _0223B390
 	thumb_func_end ov74_0222A744
 
 	thumb_func_start ov74_0222A7A0
@@ -7569,7 +7571,7 @@ _0222AC4C:
 	add r0, #0x8c
 	add r1, r4, r1
 	lsl r2, r2, #2
-	bl sub_020E5AD8
+	bl memcpy
 	add r0, r4, #0
 	mov r1, #0
 	bl ov74_02229E28
@@ -7844,7 +7846,7 @@ ov74_0222AE6C: ; 0x0222AE6C
 	ldr r2, _0222AF14 ; =0x000029F8
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x54
 	bl sub_0201AC88
 	str r0, [r4]
@@ -8490,7 +8492,7 @@ ov74_0222B3A4: ; 0x0222B3A4
 	add r5, r0, #0
 	str r0, [sp]
 	add r0, #0x88
-	ldr r3, _0222B5E8 ; =0x0223B3BC
+	ldr r3, _0222B5E8 ; =_0223B3BC
 	mov r4, #0
 	add r7, sp, #0x64
 	str r0, [sp]
@@ -8541,25 +8543,25 @@ _0222B3C6:
 	str r1, [r0]
 	add r0, r4, #0
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r0, #4
 	cmp r0, #0
 	ble _0222B42C
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0222B43A
 _0222B42C:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0222B43A:
-	bl sub_020F2104
+	bl _ftoi
 	add r1, r5, #0
 	add r1, #0xa4
 	str r0, [r1]
@@ -8567,7 +8569,7 @@ _0222B43A:
 	ble _0222B462
 	bl sub_0201FD44
 	mov r1, #5
-	bl sub_020F2998
+	bl _s32_div_f
 	mov r0, #0x41
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -8581,7 +8583,7 @@ _0222B462:
 	ble _0222B47E
 	bl sub_0201FD44
 	mov r1, #5
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r4, #0
 	add r0, #0xfa
 	add r1, r0, r1
@@ -8594,7 +8596,7 @@ _0222B47E:
 	ble _0222B49A
 	bl sub_0201FD44
 	mov r1, #5
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r4, #0
 	add r0, #0xf0
 	add r1, r0, r1
@@ -8607,7 +8609,7 @@ _0222B49A:
 	ble _0222B4B6
 	bl sub_0201FD44
 	mov r1, #5
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r4, #0
 	add r0, #0xe6
 	add r1, r0, r1
@@ -8620,7 +8622,7 @@ _0222B4B6:
 	ble _0222B4D2
 	bl sub_0201FD44
 	mov r1, #5
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r4, #0
 	add r0, #0xdc
 	add r1, r0, r1
@@ -8651,13 +8653,13 @@ _0222B4EC:
 	lsr r0, r1, #0x1f
 	add r0, r1, r0
 	asr r0, r0, #1
-	bl sub_020F0BD8
+	bl _dflt
 	add r2, r0, #0
 	add r3, r1, #0
 	ldr r0, _0222B5EC ; =0x66666666
 	ldr r1, _0222B5F0 ; =0x3FE66666
-	bl sub_020F0C54
-	bl sub_020F0AA8
+	bl _dmul
+	bl _dtoi
 	add r1, r5, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -8696,33 +8698,33 @@ _0222B4EC:
 	str r0, [r2]
 	bl sub_0201FD44
 	mov r1, #0xe0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, #0x10
 	cmp r1, #0
 	ble _0222B586
 	bl sub_0201FD44
 	mov r1, #0xe0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, #0x10
 	lsl r0, r1, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0222B5A0
 _0222B586:
 	bl sub_0201FD44
 	mov r1, #0xe0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r1, #0x10
 	lsl r0, r1, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0222B5A0:
-	bl sub_020F2104
+	bl _ftoi
 	str r0, [sp, #4]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -8756,7 +8758,7 @@ _0222B5E4:
 	add sp, #0xb8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222B5E8: .word 0x0223B3BC
+_0222B5E8: .word _0223B3BC
 _0222B5EC: .word 0x66666666
 _0222B5F0: .word 0x3FE66666
 _0222B5F4: .word ov74_0222BA48
@@ -8815,7 +8817,7 @@ _0222B610:
 	ble _0222B66A
 	bl sub_0201FD44
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r5, #0
 	add r1, #0xf
 	add r0, #0xb8
@@ -8826,7 +8828,7 @@ _0222B66A:
 	ble _0222B682
 	bl sub_0201FD44
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r5, #0
 	add r1, #0xa
 	add r0, #0xb8
@@ -8837,7 +8839,7 @@ _0222B682:
 	ble _0222B69A
 	bl sub_0201FD44
 	mov r1, #5
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r5, #0
 	add r1, #0xa
 	add r0, #0xb8
@@ -8846,7 +8848,7 @@ _0222B682:
 _0222B69A:
 	bl sub_0201FD44
 	mov r1, #5
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r5, #0
 	add r1, r1, #5
 	add r0, #0xb8
@@ -8871,7 +8873,7 @@ _0222B6AC:
 	bl sub_0201FD44
 	mov r1, #0x5a
 	lsl r1, r1, #2
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [sp]
 	bl sub_0201FD44
 	lsr r2, r0, #0x1f
@@ -8988,25 +8990,25 @@ _0222B76C:
 	str r1, [r5, r0]
 	add r0, r4, #0
 	mov r1, #0x1e
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r0, #4
 	cmp r0, #0
 	ble _0222B7DE
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0222B7EC
 _0222B7DE:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0222B7EC:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, _0222B930 ; =0x00001864
 	cmp r4, #0x3c
 	str r0, [r5, r1]
@@ -9017,7 +9019,7 @@ _0222B7EC:
 	str r1, [r5, r0]
 	bl sub_0201FD44
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _0222B940 ; =0x00001878
 	add r1, #0x46
 	str r1, [r5, r0]
@@ -9031,7 +9033,7 @@ _0222B812:
 	str r1, [r5, r0]
 	bl sub_0201FD44
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _0222B940 ; =0x00001878
 	add r1, #0x3c
 	str r1, [r5, r0]
@@ -9045,7 +9047,7 @@ _0222B830:
 	str r1, [r5, r0]
 	bl sub_0201FD44
 	mov r1, #5
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _0222B940 ; =0x00001878
 	add r1, #0x32
 	str r1, [r5, r0]
@@ -9059,7 +9061,7 @@ _0222B84E:
 	str r1, [r5, r0]
 	bl sub_0201FD44
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _0222B940 ; =0x00001878
 	add r1, #0x28
 	str r1, [r5, r0]
@@ -9073,7 +9075,7 @@ _0222B86C:
 	str r1, [r5, r0]
 	bl sub_0201FD44
 	mov r1, #0xa
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _0222B940 ; =0x00001878
 	add r1, #0x1e
 	str r1, [r5, r0]
@@ -9087,7 +9089,7 @@ _0222B88A:
 	str r1, [r5, r0]
 	bl sub_0201FD44
 	mov r1, #5
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _0222B940 ; =0x00001878
 	add r1, #0x14
 	str r1, [r5, r0]
@@ -9099,7 +9101,7 @@ _0222B8A8:
 	str r1, [r5, r0]
 	bl sub_0201FD44
 	mov r1, #5
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _0222B940 ; =0x00001878
 	add r1, #0xa
 	str r1, [r5, r0]
@@ -9176,66 +9178,66 @@ ov74_0222B950: ; 0x0222B950
 	add r6, r3, #0
 	str r1, [sp]
 	str r1, [sp, #4]
-	bl sub_020F2178
+	bl _itof
 	add r1, r4, #0
-	bl sub_020F24C8
+	bl _fsub
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_020F2178
+	bl _itof
 	add r1, r6, #0
-	bl sub_020F24C8
+	bl _fsub
 	str r0, [sp, #0xc]
 	mov r0, #0
 	str r0, [sp, #0x10]
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #8]
 	add r1, r0, #0
-	bl sub_020F22DC
+	bl _fmul
 	add r4, r0, #0
 	ldr r0, [sp, #0xc]
 	add r1, r0, #0
-	bl sub_020F22DC
+	bl _fmul
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020F1520
+	bl _fadd
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020F1ACC
+	bl _fgr
 	ldr r0, _0222BA44 ; =0x45800000
 	bls _0222B9B8
 	add r1, r4, #0
-	bl sub_020F22DC
+	bl _fmul
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0222B9C6
 _0222B9B8:
 	add r1, r4, #0
-	bl sub_020F22DC
+	bl _fmul
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0222B9C6:
-	bl sub_020F2104
+	bl _ftoi
 	bl sub_020CCBEC
-	bl sub_020F2178
+	bl _itof
 	ldr r1, _0222BA44 ; =0x45800000
-	bl sub_020F1CC8
+	bl _fdiv
 	ldr r1, [sp, #0x30]
 	add r4, r0, #0
-	bl sub_020F1B90
+	bl _fls
 	blo _0222B9FE
 	add r1, sp, #0x18
 	mov r0, #0x1c
 	ldrsh r0, [r1, r0]
-	bl sub_020F2178
+	bl _itof
 	add r1, r4, #0
-	bl sub_020F1ACC
+	bl _fgr
 	bhi _0222B9FE
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020F1BEC
+	bl _feq
 	bne _0222BA04
 _0222B9FE:
 	add sp, #0x18
@@ -9244,24 +9246,24 @@ _0222B9FE:
 _0222BA04:
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0x30]
-	bl sub_020F22DC
+	bl _fmul
 	add r1, r4, #0
-	bl sub_020F1CC8
+	bl _fdiv
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #0x30]
-	bl sub_020F22DC
+	bl _fmul
 	add r1, r4, #0
-	bl sub_020F1CC8
+	bl _fdiv
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp]
-	bl sub_020F1520
+	bl _fadd
 	ldr r1, [sp, #0x28]
 	str r0, [r1]
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #4]
-	bl sub_020F1520
+	bl _fadd
 	ldr r1, [sp, #0x2c]
 	str r0, [r1]
 	mov r0, #1
@@ -9299,25 +9301,25 @@ _0222BA66:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [sp, #0x18]
-	bl sub_020F2178
+	bl _itof
 	ldr r1, _0222BD90 ; =0x45800000
-	bl sub_020F1CC8
+	bl _fdiv
 	add r6, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl sub_020F2178
+	bl _itof
 	ldr r1, _0222BD90 ; =0x45800000
-	bl sub_020F1CC8
+	bl _fdiv
 	add r7, r0, #0
 	ldr r0, [r5, #0x1c]
-	bl sub_020F2178
+	bl _itof
 	ldr r1, _0222BD90 ; =0x45800000
-	bl sub_020F1CC8
+	bl _fdiv
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
-	bl sub_020F2178
+	bl _itof
 	ldr r1, _0222BD90 ; =0x45800000
-	bl sub_020F1CC8
-	bl sub_020F2104
+	bl _fdiv
+	bl _ftoi
 	add r1, sp, #0x14
 	str r1, [sp]
 	add r1, sp, #0x10
@@ -9340,47 +9342,47 @@ _0222BA66:
 	bne _0222BB5A
 	ldr r0, [sp, #0x14]
 	mov r1, #0
-	bl sub_020F1ACC
+	bl _fgr
 	ldr r0, _0222BD90 ; =0x45800000
 	bls _0222BB00
 	ldr r1, [sp, #0x14]
-	bl sub_020F22DC
+	bl _fmul
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0222BB0E
 _0222BB00:
 	ldr r1, [sp, #0x14]
-	bl sub_020F22DC
+	bl _fmul
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0222BB0E:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #0x18]
 	add r0, r1, r0
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x10]
 	mov r1, #0
-	bl sub_020F1ACC
+	bl _fgr
 	ldr r0, _0222BD90 ; =0x45800000
 	bls _0222BB36
 	ldr r1, [sp, #0x10]
-	bl sub_020F22DC
+	bl _fmul
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0222BB44
 _0222BB36:
 	ldr r1, [sp, #0x10]
-	bl sub_020F22DC
+	bl _fmul
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0222BB44:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #0x1c]
 	add r0, r1, r0
 	str r0, [sp, #0x1c]
@@ -9404,18 +9406,18 @@ _0222BB68:
 	cmp r0, #0
 	ble _0222BB84
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0222BB92
 _0222BB84:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0222BB92:
 	add r4, r0, #0
 	ldr r1, [r5, #0x14]
@@ -9424,23 +9426,23 @@ _0222BB92:
 	cmp r0, #0
 	ble _0222BBB0
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0222BBBE
 _0222BBB0:
 	lsl r0, r0, #0xc
-	bl sub_020F2178
+	bl _itof
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0222BBBE:
-	bl sub_020F2104
+	bl _ftoi
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_020F2104
+	bl _ftoi
 	add r1, r0, #0
 	add r0, r6, #0
 	bl sub_020CD5DC
@@ -9472,7 +9474,7 @@ _0222BBEE:
 	add r0, #8
 	lsl r1, r1, #2
 	str r0, [r5, #0x34]
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x10
 	str r1, [r5, #0x34]
 	lsr r0, r0, #0x10
@@ -9508,7 +9510,7 @@ _0222BC44:
 	add r0, #8
 	lsl r1, r1, #2
 	str r0, [r5, #0x34]
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x10
 	str r1, [r5, #0x34]
 	lsr r0, r0, #0x10
@@ -9544,7 +9546,7 @@ _0222BC92:
 	add r0, #8
 	lsl r1, r1, #2
 	str r0, [r5, #0x34]
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x10
 	str r1, [r5, #0x34]
 	lsr r0, r0, #0x10
@@ -9588,7 +9590,7 @@ _0222BCF0:
 	add r0, #8
 	lsl r1, r1, #2
 	str r0, [r5, #0x34]
-	bl sub_020F2998
+	bl _s32_div_f
 	lsl r0, r1, #0x10
 	str r1, [r5, #0x34]
 	lsr r0, r0, #0x10
@@ -9709,19 +9711,19 @@ _0222BDE6:
 	add r0, r1, r0
 	str r0, [r5, #0x1c]
 	ldr r0, [sp, #0x18]
-	bl sub_020F2178
+	bl _itof
 	ldr r1, _0222BED4 ; =0x45800000
-	bl sub_020F1CC8
+	bl _fdiv
 	add r4, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl sub_020F2178
+	bl _itof
 	ldr r1, _0222BED4 ; =0x45800000
-	bl sub_020F1CC8
+	bl _fdiv
 	add r6, r0, #0
 	ldr r0, [r5, #0x1c]
-	bl sub_020F2178
+	bl _itof
 	ldr r1, _0222BED4 ; =0x45800000
-	bl sub_020F1CC8
+	bl _fdiv
 	add r1, sp, #0x14
 	str r1, [sp]
 	add r1, sp, #0x10
@@ -9742,47 +9744,47 @@ _0222BDE6:
 	beq _0222BEB8
 	ldr r0, [sp, #0x14]
 	mov r1, #0
-	bl sub_020F1ACC
+	bl _fgr
 	ldr r0, _0222BED4 ; =0x45800000
 	bls _0222BE60
 	ldr r1, [sp, #0x14]
-	bl sub_020F22DC
+	bl _fmul
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0222BE6E
 _0222BE60:
 	ldr r1, [sp, #0x14]
-	bl sub_020F22DC
+	bl _fmul
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0222BE6E:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #0x18]
 	add r0, r1, r0
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x10]
 	mov r1, #0
-	bl sub_020F1ACC
+	bl _fgr
 	ldr r0, _0222BED4 ; =0x45800000
 	bls _0222BE96
 	ldr r1, [sp, #0x10]
-	bl sub_020F22DC
+	bl _fmul
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
-	bl sub_020F1520
+	bl _fadd
 	b _0222BEA4
 _0222BE96:
 	ldr r1, [sp, #0x10]
-	bl sub_020F22DC
+	bl _fmul
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
-	bl sub_020F24C8
+	bl _fsub
 _0222BEA4:
-	bl sub_020F2104
+	bl _ftoi
 	ldr r1, [sp, #0x1c]
 	add r0, r1, r0
 	str r0, [sp, #0x1c]
@@ -9797,7 +9799,7 @@ _0222BEBC:
 	mov r1, #0x5a
 	ldr r0, [r5, #0x28]
 	lsl r1, r1, #2
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r5, #0x28]
 	ldr r0, [r5, #0xc]
 	add r1, sp, #0x18
@@ -10614,7 +10616,7 @@ _0222C4CE:
 	ldr r2, _0222C660 ; =0x000030A4
 	mov r1, #0
 	add r6, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _0222C65C ; =0x000029F4
 	add r1, r4, r0
 	ldr r0, _0222C664 ; =0x000030A0
@@ -11619,21 +11621,21 @@ ov74_0222CD94: ; 0x0222CD94
 	cmp r0, #0
 	bne _0222CDB2
 	ldr r0, _0222CDF8 ; =SDK_OVERLAY_OVY_60_ID
-	ldr r1, _0222CDFC ; =0x021EAFE0
+	ldr r1, _0222CDFC ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDB2:
 	cmp r0, #1
 	bne _0222CDC0
 	ldr r0, _0222CE00 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _0222CE04 ; =0x0223B410
+	ldr r1, _0222CE04 ; =_0223B410
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDC0:
 	cmp r0, #2
 	bne _0222CDCC
 	ldr r0, _0222CE00 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _0222CE08 ; =0x0223B420
+	ldr r1, _0222CE08 ; =_0223B420
 	bl RegisterMainOverlay
 _0222CDCC:
 	mov r0, #0x59
@@ -11655,10 +11657,10 @@ _0222CDEC:
 	pop {r3, r4, r5, pc}
 	nop
 _0222CDF8: .word SDK_OVERLAY_OVY_60_ID
-_0222CDFC: .word 0x021EAFE0
+_0222CDFC: .word ov60_021EAFE0
 _0222CE00: .word SDK_OVERLAY_OVY_74_ID
-_0222CE04: .word 0x0223B410
-_0222CE08: .word 0x0223B420
+_0222CE04: .word _0223B410
+_0222CE08: .word _0223B420
 _0222CE0C: .word 0x000015D4
 	thumb_func_end ov74_0222CD94
 
@@ -13704,7 +13706,7 @@ ov74_0222DDFC: ; 0x0222DDFC
 	ldr r2, _0222DE60 ; =0x00003D54
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x55
 	bl sub_0201AC88
 	ldr r1, _0222DE64 ; =0x000029FC
@@ -14899,14 +14901,14 @@ ov74_0222E7EC: ; 0x0222E7EC
 	add r0, #0xe0
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_020E5AD8
+	bl memcpy
 	mov r1, #0x41
 	add r0, r5, #0
 	lsl r1, r1, #2
 	add r0, #0x90
 	add r1, r4, r1
 	mov r2, #0x50
-	bl sub_020E5AD8
+	bl memcpy
 	ldr r0, _0222E854 ; =0x00000428
 	mov r1, #0
 	strb r1, [r5, r0]
@@ -15369,7 +15371,7 @@ _0222EBA0:
 	ldr r0, [r7, r0]
 	bl sub_0201AB0C
 	ldr r0, _0222EC00 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _0222EC04 ; =0x0223B380
+	ldr r1, _0222EC04 ; =_0223B380
 	bl RegisterMainOverlay
 	mov r0, #0x59
 	bl sub_0201A9C4
@@ -15385,7 +15387,7 @@ _0222EBF4: .word 0x00002BD0
 _0222EBF8: .word 0x00002BE0
 _0222EBFC: .word 0x000029FC
 _0222EC00: .word SDK_OVERLAY_OVY_74_ID
-_0222EC04: .word 0x0223B380
+_0222EC04: .word _0223B380
 	thumb_func_end ov74_0222EB44
 
 	thumb_func_start ov74_0222EC08
@@ -15401,7 +15403,7 @@ ov74_0222EC08: ; 0x0222EC08
 	ldr r2, _0222EC54 ; =0x00003D54
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _0222EC58 ; =0x000029FC
 	mov r1, #0x1e
 	str r6, [r4, r0]
@@ -16605,7 +16607,7 @@ ov74_0222F598: ; 0x0222F598
 	ldr r2, _0222F5F4 ; =0x00003D0C
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x55
 	bl sub_0201AC88
 	ldr r1, _0222F5F8 ; =0x000029FC
@@ -17372,7 +17374,7 @@ _0222FBE8:
 	ldr r0, [r7, r0]
 	bl sub_0201AB0C
 	ldr r0, _0222FC48 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _0222FC4C ; =0x0223B380
+	ldr r1, _0222FC4C ; =_0223B380
 	bl RegisterMainOverlay
 	mov r0, #0x59
 	bl sub_0201A9C4
@@ -17388,7 +17390,7 @@ _0222FC3C: .word 0x00002BC4
 _0222FC40: .word 0x00002BD4
 _0222FC44: .word 0x000029FC
 _0222FC48: .word SDK_OVERLAY_OVY_74_ID
-_0222FC4C: .word 0x0223B380
+_0222FC4C: .word _0223B380
 	thumb_func_end ov74_0222FB8C
 
 	thumb_func_start ov74_0222FC50
@@ -17404,7 +17406,7 @@ ov74_0222FC50: ; 0x0222FC50
 	ldr r2, _0222FC98 ; =0x00003D0C
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _0222FC9C ; =0x000029FC
 	mov r1, #0x1e
 	str r6, [r4, r0]
@@ -17432,7 +17434,7 @@ _0222FCA0: .word 0x00002BB4
 ov74_0222FCA4: ; 0x0222FCA4
 	push {r4, lr}
 	sub sp, #0x28
-	ldr r4, _0222FCC0 ; =0x0223B4B0
+	ldr r4, _0222FCC0 ; =_0223B4B0
 	add r3, sp, #0
 	mov r2, #5
 _0222FCAE:
@@ -17445,14 +17447,14 @@ _0222FCAE:
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
-_0222FCC0: .word 0x0223B4B0
+_0222FCC0: .word _0223B4B0
 	thumb_func_end ov74_0222FCA4
 
 	thumb_func_start ov74_0222FCC4
 ov74_0222FCC4: ; 0x0222FCC4
 	push {r3, r4, r5, lr}
 	sub sp, #0x80
-	ldr r5, _0222FD84 ; =0x0223B430
+	ldr r5, _0222FD84 ; =_0223B430
 	add r3, sp, #0x70
 	add r4, r0, #0
 	add r2, r3, #0
@@ -17462,7 +17464,7 @@ ov74_0222FCC4: ; 0x0222FCC4
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
 	bl sub_0201ACB0
-	ldr r5, _0222FD88 ; =0x0223B45C
+	ldr r5, _0222FD88 ; =_0223B45C
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
 	add r2, r3, #0
@@ -17480,7 +17482,7 @@ ov74_0222FCC4: ; 0x0222FCC4
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0201CAE0
-	ldr r5, _0222FD8C ; =0x0223B494
+	ldr r5, _0222FD8C ; =_0223B494
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
 	add r2, r3, #0
@@ -17498,7 +17500,7 @@ ov74_0222FCC4: ; 0x0222FCC4
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201CAE0
-	ldr r5, _0222FD90 ; =0x0223B478
+	ldr r5, _0222FD90 ; =_0223B478
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
 	add r2, r3, #0
@@ -17516,7 +17518,7 @@ ov74_0222FCC4: ; 0x0222FCC4
 	add r0, r4, #0
 	mov r1, #2
 	bl sub_0201CAE0
-	ldr r5, _0222FD94 ; =0x0223B440
+	ldr r5, _0222FD94 ; =_0223B440
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
 	add r2, r3, #0
@@ -17537,11 +17539,11 @@ ov74_0222FCC4: ; 0x0222FCC4
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop
-_0222FD84: .word 0x0223B430
-_0222FD88: .word 0x0223B45C
-_0222FD8C: .word 0x0223B494
-_0222FD90: .word 0x0223B478
-_0222FD94: .word 0x0223B440
+_0222FD84: .word _0223B430
+_0222FD88: .word _0223B45C
+_0222FD8C: .word _0223B494
+_0222FD90: .word _0223B478
+_0222FD94: .word _0223B440
 	thumb_func_end ov74_0222FCC4
 
 	thumb_func_start ov74_0222FD98
@@ -17585,7 +17587,12 @@ _0222FDE0:
 	mov r4, #0
 	mvn r4, r4
 _0222FDE8:
+#ifdef HEARTGOLD
 	mov r0, #0x80
+#else
+	mov r0, #1
+	lsl r0, r0, #8
+#endif
 	tst r0, r4
 	bne _0222FDF2
 	mov r0, #1
@@ -20390,13 +20397,13 @@ ov74_02231238: ; 0x02231238
 	ldr r1, _0223125C ; =0x00002710
 	add r6, r0, #0
 	add r4, r2, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	str r1, [r5]
 	ldr r1, _0223125C ; =0x00002710
 	add r0, r6, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r1, _0223125C ; =0x00002710
-	bl sub_020F2BA4
+	bl _u32_div_f
 	str r1, [r4]
 	pop {r4, r5, r6, pc}
 	nop
@@ -21226,7 +21233,7 @@ _0223182A:
 	bl sub_020D34B0
 	mov r2, #0x78
 	mov r3, #0
-	bl sub_020F290C
+	bl _ull_mod
 	add r0, r0, #1
 	str r0, [r4, #4]
 	ldr r0, [r4]
@@ -21679,7 +21686,7 @@ _02231BBC: .word 0x000003D2
 ov74_02231BC0: ; 0x02231BC0
 	push {r4, lr}
 	sub sp, #0x10
-	ldr r4, _02231BEC ; =0x0223B4E8
+	ldr r4, _02231BEC ; =_0223B4E8
 	add r3, sp, #0
 	add r2, r3, #0
 	ldmia r4!, {r0, r1}
@@ -21696,7 +21703,7 @@ ov74_02231BC0: ; 0x02231BC0
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
-_02231BEC: .word 0x0223B4E8
+_02231BEC: .word _0223B4E8
 	thumb_func_end ov74_02231BC0
 
 	thumb_func_start ov74_02231BF0
@@ -22047,7 +22054,7 @@ _02231E66:
 	orr r0, r1
 	orr r0, r2
 	mov r1, #0x1c
-	bl sub_020F2BA4
+	bl _u32_div_f
 	lsl r0, r1, #0x18
 	lsr r4, r0, #0x18
 	b _02231EBA
@@ -23444,7 +23451,7 @@ _02232970: .word 0x00007FFF
 ov74_02232974: ; 0x02232974
 	push {r3, r4, r5, lr}
 	sub sp, #0x80
-	ldr r5, _02232A34 ; =0x0223B4F8
+	ldr r5, _02232A34 ; =_0223B4F8
 	add r3, sp, #0x70
 	add r4, r0, #0
 	add r2, r3, #0
@@ -23454,7 +23461,7 @@ ov74_02232974: ; 0x02232974
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
 	bl sub_0201ACB0
-	ldr r5, _02232A38 ; =0x0223B508
+	ldr r5, _02232A38 ; =_0223B508
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
 	add r2, r3, #0
@@ -23472,7 +23479,7 @@ ov74_02232974: ; 0x02232974
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0201CAE0
-	ldr r5, _02232A3C ; =0x0223B524
+	ldr r5, _02232A3C ; =_0223B524
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
 	add r2, r3, #0
@@ -23490,7 +23497,7 @@ ov74_02232974: ; 0x02232974
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201CAE0
-	ldr r5, _02232A40 ; =0x0223B540
+	ldr r5, _02232A40 ; =_0223B540
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
 	add r2, r3, #0
@@ -23508,7 +23515,7 @@ ov74_02232974: ; 0x02232974
 	add r0, r4, #0
 	mov r1, #2
 	bl sub_0201CAE0
-	ldr r5, _02232A44 ; =0x0223B55C
+	ldr r5, _02232A44 ; =_0223B55C
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
 	add r2, r3, #0
@@ -23529,18 +23536,18 @@ ov74_02232974: ; 0x02232974
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop
-_02232A34: .word 0x0223B4F8
-_02232A38: .word 0x0223B508
-_02232A3C: .word 0x0223B524
-_02232A40: .word 0x0223B540
-_02232A44: .word 0x0223B55C
+_02232A34: .word _0223B4F8
+_02232A38: .word _0223B508
+_02232A3C: .word _0223B524
+_02232A40: .word _0223B540
+_02232A44: .word _0223B55C
 	thumb_func_end ov74_02232974
 
 	thumb_func_start ov74_02232A48
 ov74_02232A48: ; 0x02232A48
 	push {r3, r4, r5, lr}
 	sub sp, #0x38
-	ldr r5, _02232AC0 ; =0x0223B578
+	ldr r5, _02232AC0 ; =_0223B578
 	add r4, r0, #0
 	add r3, sp, #0x10
 	mov r2, #5
@@ -23592,7 +23599,7 @@ _02232A54:
 	add sp, #0x38
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02232AC0: .word 0x0223B578
+_02232AC0: .word _0223B578
 _02232AC4: .word 0x021D116C
 	thumb_func_end ov74_02232A48
 
@@ -23671,7 +23678,7 @@ ov74_02232B18: ; 0x02232B18
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x4c
-	bl sub_020E5B44
+	bl memset
 	ldr r0, _02232BC8 ; =0x00000498
 	mov r3, #0x1b
 	add r1, r0, #0
@@ -24514,7 +24521,7 @@ ov74_02233230: ; 0x02233230
 	ldr r2, _022332D8 ; =0x00012610
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x4c
 	bl sub_0201AC88
 	str r0, [r4, #0x20]
@@ -24727,7 +24734,11 @@ _02233426:
 	ldr r0, _02233630 ; =0x0000E88C
 	ldr r0, [r4, r0]
 	bl sub_020169CC
+#ifdef HEARTGOLD
 	mov r0, #0x22
+#else
+	mov r0, #0x23
+#endif
 	str r0, [r4, #8]
 	mov r0, #4
 	str r0, [r5]
@@ -25217,7 +25228,11 @@ _02233818:
 	bl sub_0200604C
 	cmp r6, #0xb
 	bne _0223383A
+#ifdef HEARTGOLD
 	mov r1, #0x1d
+#else
+	mov r1, #0x1e
+#endif
 	b _0223383C
 _0223383A:
 	mov r1, #0x24
@@ -25303,7 +25318,7 @@ ov74_022338D4: ; 0x022338D4
 	ldr r0, [r4, #0x20]
 	bl sub_0201AB0C
 	ldr r0, _0223391C ; =SDK_OVERLAY_OVY_60_ID
-	ldr r1, _02233920 ; =0x021EAFE0
+	ldr r1, _02233920 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	add r0, r5, #0
 	bl sub_02007294
@@ -25317,7 +25332,7 @@ ov74_022338D4: ; 0x022338D4
 _02233914: .word 0x00012608
 _02233918: .word 0x0001260C
 _0223391C: .word SDK_OVERLAY_OVY_60_ID
-_02233920: .word 0x021EAFE0
+_02233920: .word ov60_021EAFE0
 	thumb_func_end ov74_022338D4
 
 	thumb_func_start ov74_02233924
@@ -25346,7 +25361,7 @@ ov74_02233938: ; 0x02233938
 	mov r0, #0xc
 	pop {r3, pc}
 _0223394A:
-	ldr r0, _0223399C ; =0x0223B5A0
+	ldr r0, _0223399C ; =_0223B5A0
 	mov r1, #0x1e
 	bl ov74_022339D4
 	cmp r0, #0
@@ -25387,7 +25402,7 @@ _02233992:
 	.balign 4, 0
 _02233994: .word 0x0223D33C
 _02233998: .word 0x0223CAFC
-_0223399C: .word 0x0223B5A0
+_0223399C: .word _0223B5A0
 _022339A0: .word 0x0223D3BC
 _022339A4: .word 0x00001220
 _022339A8: .word 0x08000100
@@ -25667,7 +25682,7 @@ ov74_02233B58: ; 0x02233B58
 _02233B74:
 	add r0, r4, #0
 	mov r1, #0xe
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r1, r7
 	add r1, r5, #0
 	bl ov74_02233AB8
@@ -26001,7 +26016,7 @@ ov74_02233DBC: ; 0x02233DBC
 	ldr r0, [r0, #0xc]
 	add r0, r6, r0
 	add r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	ldr r0, _02233E48 ; =0x0223CAFC
 	ldr r3, _02233E4C ; =ov74_02233E50
 	ldr r2, [r0, #4]
@@ -26233,7 +26248,7 @@ ov74_02233F8C: ; 0x02233F8C
 	mov r1, #0x18
 	add r5, r2, #0
 	mov r6, #0
-	bl sub_020F2BA4
+	bl _u32_div_f
 	cmp r1, #0x17
 	bhi _02233FE2
 	add r0, r1, r1
@@ -28475,7 +28490,7 @@ _02234E62:
 	str r3, [sp, #8]
 	orr r0, r2
 	mov r1, #0x1c
-	bl sub_020F2BA4
+	bl _u32_div_f
 	str r1, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x70
@@ -28703,7 +28718,7 @@ _02235182:
 	ldr r1, _022351F4 ; =sub_0201AB0C
 	bl ov74_0223B214
 	ldr r1, _022351E8 ; =0x000004A8
-	ldr r3, _022351F8 ; =0x0223B690
+	ldr r3, _022351F8 ; =_0223B690
 	add r0, r7, #0
 	add r2, sp, #0
 	bl ov74_022370E4
@@ -28733,7 +28748,7 @@ _022351E8: .word 0x000004A8
 _022351EC: .word 0x08020000
 _022351F0: .word ov74_02235138
 _022351F4: .word sub_0201AB0C
-_022351F8: .word 0x0223B690
+_022351F8: .word _0223B690
 	thumb_func_end ov74_0223514C
 
 	thumb_func_start ov74_022351FC
@@ -28866,7 +28881,7 @@ ov74_022352D0: ; 0x022352D0
 	mov r1, #0
 	add r2, r4, #0
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0200FBF4
@@ -28881,7 +28896,7 @@ ov74_022352D0: ; 0x022352D0
 ov74_02235308: ; 0x02235308
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
-	ldr r5, _0223538C ; =0x0223B720
+	ldr r5, _0223538C ; =_0223B720
 	add r6, r3, #0
 	add r7, r0, #0
 	add r4, r1, #0
@@ -28949,7 +28964,7 @@ _02235362:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0223538C: .word 0x0223B720
+_0223538C: .word _0223B720
 	thumb_func_end ov74_02235308
 
 	thumb_func_start ov74_02235390
@@ -29037,7 +29052,7 @@ ov74_02235414: ; 0x02235414
 	mov r2, #0x54
 	add r5, r0, #0
 	add r7, r3, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #1
 	str r0, [r5, #4]
 	str r0, [r5, #8]
@@ -29328,7 +29343,7 @@ ov74_02235634: ; 0x02235634
 ov74_0223563C: ; 0x0223563C
 	push {r4, lr}
 	sub sp, #0x10
-	ldr r4, _02235674 ; =0x0223B710
+	ldr r4, _02235674 ; =_0223B710
 	add r3, sp, #0
 	add r2, r3, #0
 	ldmia r4!, {r0, r1}
@@ -29351,7 +29366,7 @@ ov74_0223563C: ; 0x0223563C
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
-_02235674: .word 0x0223B710
+_02235674: .word _0223B710
 _02235678: .word 0x0223D454
 	thumb_func_end ov74_0223563C
 
@@ -29921,7 +29936,7 @@ _02235AC0: .word 0x00003FF8
 ov74_02235AC4: ; 0x02235AC4
 	push {r4}
 	sub sp, #0x24
-	ldr r4, _02235B10 ; =0x0223B73C
+	ldr r4, _02235B10 ; =_0223B73C
 	add r3, sp, #0
 	mov r2, #0x22
 _02235ACE:
@@ -29962,7 +29977,7 @@ _02235B08:
 	pop {r4}
 	bx lr
 	.balign 4, 0
-_02235B10: .word 0x0223B73C
+_02235B10: .word _0223B73C
 	thumb_func_end ov74_02235AC4
 
 	thumb_func_start ov74_02235B14
@@ -30955,7 +30970,7 @@ _02236292:
 _022362A8:
 	add r0, r1, #1
 	add r1, r7, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r6, #0
 	lsl r0, r1
 	tst r0, r4
@@ -31531,7 +31546,7 @@ ov74_022366E8: ; 0x022366E8
 	ldr r0, [r4, r2]
 	mov r1, #0x68
 	sub r0, r0, #1
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r2, _02236764 ; =0x0000115C
 	add r0, r0, #1
 	strh r0, [r4, r2]
@@ -32359,7 +32374,7 @@ _02236D46:
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	mul r0, r2
-	bl sub_020F2BA4
+	bl _u32_div_f
 	ldr r1, _02236E54 ; =0x00002664
 	ldr r2, [r4, r1]
 	cmp r2, r0
@@ -32670,7 +32685,7 @@ _02236FCE:
 	sub r0, r0, #1
 	str r0, [sp, #0xc]
 	beq _02237056
-	ldr r1, _02237064 ; =0x0223B760
+	ldr r1, _02237064 ; =_0223B760
 	lsl r0, r2, #1
 	ldr r4, [sp, #4]
 	add r7, r1, r0
@@ -32749,60 +32764,105 @@ _02237056:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02237064: .word 0x0223B760
+_02237064: .word _0223B760
 _02237068: .word 0x0000FFFF
 	thumb_func_end ov74_02236FB8
 
 	.rodata
 
-
 _0223B2C0:
-	.byte 0x06, 0x22, 0xDE, 0xFA, 0x9E, 0xBA, 0xDE, 0xFA, 0xFF, 0x00, 0x00, 0x00, 0x70, 0x88, 0x20, 0xE0
-	.byte 0x98, 0xB0, 0x20, 0xE0, 0xFF, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x06, 0x22, 0xDE, 0xFA, 0x9E, 0xBA, 0xDE, 0xFA, 0xFF, 0x00, 0x00, 0x00
+_0223B2CC:
+	.byte 0x70, 0x88, 0x20, 0xE0
+	.byte 0x98, 0xB0, 0x20, 0xE0, 0xFF, 0x00, 0x00, 0x00
+_0223B2D8:
+	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B2E8:
+	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00
 	.byte 0x21, 0x89, 0x22, 0x02, 0xD5, 0x89, 0x22, 0x02, 0x61, 0x8C, 0x22, 0x02, 0xFF, 0xFF, 0xFF, 0xFF
-	.byte 0x01, 0x92, 0x22, 0x02, 0x95, 0x92, 0x22, 0x02, 0x51, 0x94, 0x22, 0x02, 0xFF, 0xFF, 0xFF, 0xFF
+_0223B320:
+	.word ov74_02229200, ov74_02229294, ov74_02229450, 0xFFFFFFFF
+_0223B330:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B340:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0xA1, 0x9D, 0x22, 0x02, 0xCD, 0x9D, 0x22, 0x02
-	.byte 0xD5, 0x9D, 0x22, 0x02, 0xE1, 0x9D, 0x22, 0x02, 0xC1, 0x42, 0x03, 0x02, 0x00, 0x00, 0x00, 0x00
-	.byte 0x6D, 0xAE, 0x22, 0x02, 0xED, 0xC2, 0x22, 0x02, 0x95, 0xCD, 0x22, 0x02, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0x02, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00
+_0223B368:
+	.word ov74_02229DA0
+	.word ov74_02229DCC
+	.word ov74_02229DD4
+	.word ov74_02229DE0
+	.word sub_020342C0
+	.word 0
+_0223B380:
+	.word ov74_0222AE6C, ov74_0222C2EC, ov74_0222CD94, 0xFFFFFFFF
+_0223B390:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B3A0:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.byte 0x01, 0x00, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B3BC:
+	.byte 0x01, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x00, 0x00, 0x00, 0x3C, 0x00, 0x00, 0x00, 0x5A, 0x00, 0x00, 0x00, 0x5A, 0x00, 0x00, 0x00
 	.byte 0x78, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00, 0x00, 0x96, 0x00, 0x00, 0x00
 	.byte 0x96, 0x00, 0x00, 0x00, 0x96, 0x00, 0x00, 0x00, 0x96, 0x00, 0x00, 0x00, 0xB4, 0x00, 0x00, 0x00
 	.byte 0xB4, 0x00, 0x00, 0x00, 0xB4, 0x00, 0x00, 0x00, 0xB4, 0x00, 0x00, 0x00, 0xD2, 0x00, 0x00, 0x00
 	.byte 0xD2, 0x00, 0x00, 0x00, 0xD2, 0x00, 0x00, 0x00, 0xD2, 0x00, 0x00, 0x00, 0xD2, 0x00, 0x00, 0x00
-	.byte 0xFD, 0xDD, 0x22, 0x02, 0xF5, 0xE1, 0x22, 0x02, 0x45, 0xEB, 0x22, 0x02, 0xFF, 0xFF, 0xFF, 0xFF
-	.byte 0x99, 0xF5, 0x22, 0x02, 0xD5, 0xF7, 0x22, 0x02, 0x8D, 0xFB, 0x22, 0x02, 0xFF, 0xFF, 0xFF, 0xFF
+_0223B410:
+	.word ov74_0222DDFC, ov74_0222E1F4, ov74_0222EB44, 0xFFFFFFFF
+_0223B420:
+	.word ov74_0222F598, ov74_0222F7D4, ov74_0222FB8C, 0xFFFFFFFF
+_0223B430:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B440:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x1F, 0x03, 0x01, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x00, 0x1F, 0x03, 0x01, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B45C:
+	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1C, 0x00
-	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B478:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1E, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00
+_0223B494:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1D, 0x02, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B4B0:
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x31, 0x32, 0x23, 0x02, 0xF5, 0x32, 0x23, 0x02
-	.byte 0xD5, 0x38, 0x23, 0x02, 0xFF, 0xFF, 0xFF, 0xFF, 0x14, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00
-	.byte 0x00, 0x08, 0x00, 0x00, 0x4C, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x02, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00
+_0223B4D8:
+	.word ov74_02233230, ov74_022332F4, ov74_022338D4, 0xFFFFFFFF
+_0223B4E8:
+	.byte 0x14, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00
+	.byte 0x00, 0x08, 0x00, 0x00, 0x4C, 0x00, 0x00, 0x00
+_0223B4F8:
+	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B508:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00
+_0223B524:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1D, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B540:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x1E, 0x02, 0x01, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x00, 0x1E, 0x02, 0x01, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B55C:
+	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1F, 0x02
-	.byte 0x01, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B578:
+	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00
+_0223B5A0:
 	.byte 0x41, 0x58, 0x56, 0x4A, 0x00, 0x00, 0x01, 0x00, 0x41, 0x58, 0x56, 0x45, 0x00, 0x00, 0x02, 0x00
 	.byte 0x41, 0x58, 0x56, 0x46, 0x00, 0x00, 0x03, 0x00, 0x41, 0x58, 0x56, 0x44, 0x00, 0x00, 0x05, 0x00
 	.byte 0x41, 0x58, 0x56, 0x53, 0x00, 0x00, 0x07, 0x00, 0x41, 0x58, 0x56, 0x49, 0x00, 0x00, 0x04, 0x00
@@ -32818,6 +32878,7 @@ _0223B2C0:
 	.byte 0x42, 0x50, 0x45, 0x4A, 0x02, 0x04, 0x01, 0x00, 0x42, 0x50, 0x45, 0x45, 0x02, 0x04, 0x02, 0x00
 	.byte 0x42, 0x50, 0x45, 0x46, 0x02, 0x04, 0x03, 0x00, 0x42, 0x50, 0x45, 0x44, 0x02, 0x04, 0x05, 0x00
 	.byte 0x42, 0x50, 0x45, 0x53, 0x02, 0x04, 0x07, 0x00, 0x42, 0x50, 0x45, 0x49, 0x02, 0x04, 0x04, 0x00
+_0223B690:
 	.byte 0xC8, 0x7E, 0x66, 0x71, 0x46, 0x0B, 0xE6, 0x6F, 0x17, 0x8A, 0x5C, 0x7D, 0xEA, 0xE1, 0x93, 0xFD
 	.byte 0xEE, 0xFA, 0x99, 0x84, 0xFE, 0x35, 0x02, 0xB9, 0x7F, 0x4F, 0xF1, 0x19, 0x74, 0xA2, 0x0F, 0x65
 	.byte 0x8A, 0x9C, 0x44, 0x81, 0x0C, 0x1F, 0x94, 0xE4, 0xC0, 0xB6, 0xD7, 0x20, 0xEE, 0x11, 0x9A, 0x8D
@@ -32826,11 +32887,16 @@ _0223B2C0:
 	.byte 0x01, 0x18, 0xBA, 0xF9, 0x65, 0xA5, 0x15, 0x37, 0xDC, 0x7A, 0x48, 0x5C, 0x3A, 0x55, 0x35, 0x43
 	.byte 0xE2, 0xC6, 0x66, 0xBA, 0x21, 0xEA, 0x67, 0x2E, 0xA8, 0x29, 0x03, 0xD7, 0x1F, 0x0F, 0xC6, 0xDE
 	.byte 0x1B, 0xE2, 0xA1, 0xCA, 0x21, 0x51, 0xFE, 0xB9, 0x68, 0x17, 0x3C, 0xEB, 0x04, 0x54, 0xE0, 0xBD
+_0223B710:
 	.byte 0x28, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B720:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01
+	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0223B73C:
+	.byte 0x00, 0x00, 0x01, 0x01
 	.byte 0x02, 0x01, 0x03, 0x02, 0x04, 0x03, 0x05, 0x02, 0x06, 0x02, 0x07, 0x00, 0x08, 0x05, 0x09, 0x05
 	.byte 0x0A, 0x05, 0x0B, 0x04, 0x0C, 0x05, 0x0D, 0x05, 0x0E, 0x02, 0x0F, 0x02, 0xFF, 0x00, 0x00, 0x00
+_0223B760:
 	.byte 0x01, 0x00, 0x01, 0x00, 0x03, 0x00, 0x03, 0x00, 0x05, 0x00, 0x05, 0x00, 0x07, 0x00, 0x07, 0x00
 	.byte 0x09, 0x00, 0x09, 0x00, 0x0B, 0x00, 0x0B, 0x00, 0x0C, 0x00, 0x0C, 0x00, 0x0E, 0x00, 0x0E, 0x00
 	.byte 0x10, 0x00, 0x10, 0x00, 0x12, 0x00, 0x12, 0x00, 0x14, 0x00, 0x14, 0x00, 0x16, 0x00, 0x16, 0x00
@@ -33004,7 +33070,9 @@ _0223BBC0:
 	.byte 0x12, 0x00, 0x00, 0x00, 0x05, 0xA5, 0x22, 0x02, 0x13, 0x00, 0x00, 0x00, 0x39, 0xA5, 0x22, 0x02
 	.byte 0x12, 0x00, 0x00, 0x00, 0x91, 0x9F, 0x22, 0x02, 0x13, 0x00, 0x00, 0x00, 0xA5, 0xA2, 0x22, 0x02
 	.byte 0x12, 0x00, 0x00, 0x00, 0xF5, 0x9F, 0x22, 0x02, 0x13, 0x00, 0x00, 0x00, 0x95, 0xA4, 0x22, 0x02
-	.byte 0x00, 0x00, 0x00, 0x00, 0xF9, 0x5F, 0x23, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00
+	.word ov74_02235FF8
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x03, 0x00, 0x00, 0x0C, 0x00, 0x10, 0x2F, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x0C, 0x00, 0x00, 0x00, 0xCD, 0xA5, 0x22, 0x02, 0x0D, 0x00, 0x00, 0x00, 0x51, 0xA6, 0x22, 0x02
 	.byte 0x15, 0x00, 0x00, 0x00, 0x89, 0xA6, 0x22, 0x02, 0x0E, 0x00, 0x00, 0x00, 0xC1, 0xA6, 0x22, 0x02
@@ -33015,7 +33083,9 @@ _0223BBC0:
 	.byte 0x41, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x42, 0x00, 0x00, 0x00, 0x15, 0xD4, 0x22, 0x02
 	.byte 0x2B, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x2C, 0x00, 0x00, 0x00, 0xD5, 0xD2, 0x22, 0x02
 	.byte 0x2D, 0x00, 0x00, 0x00, 0x09, 0xD3, 0x22, 0x02, 0x2E, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0xF9, 0x5F, 0x23, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00
+	.word ov74_02235FF8
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x04, 0x00, 0x00, 0x0C, 0x00, 0x10, 0x2F, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x02, 0x01, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
@@ -33075,7 +33145,9 @@ _0223BBC0:
 	.byte 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x02, 0x01, 0x00, 0x0E, 0x00, 0x00, 0x00
 	.byte 0x3D, 0x00, 0x00, 0x00, 0x91, 0xD4, 0x22, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x2B, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x2E, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0xF9, 0x5F, 0x23, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00
+	.word ov74_02235FF8
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x04, 0x00, 0x00, 0x0C, 0x00, 0x10, 0x2F, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x02, 0x01, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
@@ -33115,8 +33187,14 @@ _0223BBC0:
 	.byte 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x02, 0x01, 0x03, 0x04, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00
+	.byte 0x00, 0x02, 0x01, 0x03, 0x04, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifdef HEARTGOLD
+	.byte 0x14, 0x00, 0x00, 0x00
 	.byte 0x12, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x1A, 0x00, 0x00, 0x00
+#else
+	.byte 0x15, 0x00, 0x00, 0x00
+	.byte 0x13, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00, 0x1B, 0x00, 0x00, 0x00
+#endif
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00
 	.byte 0x39, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x94, 0x00, 0x00, 0x00, 0xF9, 0x00, 0x00, 0x00

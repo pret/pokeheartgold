@@ -20,7 +20,7 @@ ov46_02258800: ; 0x02258800
 	ldr r2, _02258918 ; =0x00000404
 	mov r1, #0
 	add r5, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r4, #0
 	bl sub_020072A4
 	add r4, r0, #0
@@ -579,7 +579,7 @@ ov46_02258CB4: ; 0x02258CB4
 	ldr r2, _02258D98 ; =0x00000404
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	add r0, r5, #0
 	bl sub_020072A4
 	ldr r0, [r0]

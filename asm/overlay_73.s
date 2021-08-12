@@ -50,7 +50,7 @@ _021E5916:
 	ldr r2, _021E5A9C ; =0x00004A8C
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x32
 	bl sub_0201AC88
 	str r0, [r4]
@@ -4311,7 +4311,7 @@ _021E7ADA:
 	add r0, r4, #0
 	bl sub_02028F94
 	strb r0, [r5, #4]
-	mov r0, #7
+	mov r0, #GAME_VERSION
 	strb r0, [r5, #5]
 	mov r0, #2
 	strb r0, [r5, #6]
@@ -4684,7 +4684,7 @@ _021E7D9E:
 _021E7DAE:
 	add r0, r4, #1
 	add r1, r7, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r1, #0
 _021E7DB8:
 	lsl r0, r4, #2
@@ -4810,7 +4810,7 @@ _021E7E62:
 	ldr r2, _021E7F88 ; =0x000012CC
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	mov r0, #0x96
 	bl sub_0201AC88
 	str r0, [r4, #4]

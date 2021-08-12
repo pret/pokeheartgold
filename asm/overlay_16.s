@@ -406,12 +406,12 @@ ov16_022016F4: ; 0x022016F4
 	mov r1, #0x3c
 	str r0, [sp]
 	add r0, r7, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	add r4, r0, #0
 	ldr r0, [sp]
 	mov r1, #0x3c
 	add r0, r7, r0
-	bl sub_020F2998
+	bl _s32_div_f
 	strh r1, [r5, #4]
 	cmp r4, #0
 	beq _0220175E
@@ -429,7 +429,7 @@ _0220173A:
 	sub r0, r6, #1
 	add r0, r1, r0
 	add r1, r6, #0
-	bl sub_020F2998
+	bl _s32_div_f
 	sub r4, r4, r0
 	mov r0, #0
 	strb r0, [r5, #9]

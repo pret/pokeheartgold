@@ -2071,17 +2071,17 @@ _02254ED0:
 	mov r0, #1
 	ldr r1, [r4, #4]
 	lsl r0, r0, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	str r0, [r5]
 	mov r0, #1
 	ldr r1, [r4, #4]
 	lsl r0, r0, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	str r0, [r5, #4]
 	mov r0, #1
 	ldr r1, [r4, #4]
 	lsl r0, r0, #0xc
-	bl sub_020F2998
+	bl _s32_div_f
 	str r0, [r5, #8]
 	b _02254F18
 _02254EFE:
@@ -5657,7 +5657,7 @@ _02256A08:
 	ldr r0, [r0]
 	mov r1, #3
 	add r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	add r6, #0xd0
 	str r1, [r6]
 	add sp, #0x10
@@ -5732,7 +5732,7 @@ _02256AA6:
 	ldr r0, [r5]
 	mov r1, #3
 	add r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r5]
 	add r0, r4, r6
 	pop {r4, r5, r6, pc}
@@ -5913,7 +5913,7 @@ ov04_02256BE4: ; 0x02256BE4
 	ldr r0, [r4, #0x50]
 	mov r1, #3
 	add r0, r0, #1
-	bl sub_020F2998
+	bl _s32_div_f
 	str r1, [r4, #0x50]
 	pop {r4, r5, r6, pc}
 _02256C18:
@@ -6702,7 +6702,7 @@ _022571F0:
 	str r0, [r6, r4]
 	ldr r0, [r6, r4]
 	mov r1, #0x1e
-	bl sub_020F2998
+	bl _s32_div_f
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18

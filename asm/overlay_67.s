@@ -21,7 +21,7 @@ ov67_021E5900: ; 0x021E5900
 	ldr r2, _021E5964 ; =0x000004AC
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_020E5B44
+	bl memset
 	ldrh r0, [r5, #4]
 	strh r0, [r4, #8]
 	ldrh r0, [r5, #6]
