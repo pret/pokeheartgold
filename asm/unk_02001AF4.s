@@ -11249,3 +11249,9 @@ _02006F52:
 	bx lr
 	.balign 4, 0
 	thumb_func_end sub_02006F30
+
+	.data
+
+_0210E980:
+	.asciz "data/sound/gs_sound_data.sdat"
+	.balign 4, 0
