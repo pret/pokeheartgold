@@ -32,7 +32,7 @@ typedef enum NarcId
     NARC_a_0_2_4,
     NARC_a_0_2_5,
     NARC_a_0_2_6,
-    NARC_a_0_2_7,
+    NARC_msgdata_msg,
     NARC_a_0_2_8,
     NARC_a_0_2_9,
     NARC_a_0_3_0,
