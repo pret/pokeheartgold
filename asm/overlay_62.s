@@ -915,7 +915,7 @@ _021E602C:
 	cmp r4, #5
 	blo _021E602C
 	ldr r0, [r6]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021E6044: .word 0x021E6728
@@ -1114,7 +1114,7 @@ ov62_021E61AC: ; 0x021E61AC
 	mov r1, #0x12
 	add r0, r4, #0
 	lsl r1, r1, #4
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x12
 	add r4, r0, #0
 	mov r1, #0
@@ -1146,7 +1146,7 @@ ov62_021E61AC: ; 0x021E61AC
 ov62_021E61FC: ; 0x021E61FC
 	push {r3, lr}
 	ldr r0, [r0, #0x1c]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #8
 	bl sub_0201A4CC
 	pop {r3, pc}

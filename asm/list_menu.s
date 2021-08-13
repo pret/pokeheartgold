@@ -12,7 +12,7 @@ sub_020011DC: ; 0x020011DC
 	mov r1, #0x38
 	add r7, r2, #0
 	str r3, [sp]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	add r3, r5, #0
 	add r2, r4, #0

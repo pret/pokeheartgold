@@ -208,7 +208,7 @@ ov68_021E5A58: ; 0x021E5A58
 	str r0, [r4, #4]
 	mov r0, #0x6e
 	mov r1, #0x42
-	bl sub_02007688
+	bl NARC_ctor
 	add r5, r0, #0
 	bl ov68_021E5BA0
 	ldr r0, [r4, #4]
@@ -240,7 +240,7 @@ ov68_021E5A58: ; 0x021E5A58
 	add r1, r4, #0
 	bl sub_0201A0FC
 	add r0, r5, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	pop {r3, r4, r5, pc}
 	nop
 _021E5B08: .word 0xFFFFE0FF
@@ -622,11 +622,11 @@ ov68_021E5D24: ; 0x021E5D24
 ov68_021E5E38: ; 0x021E5E38
 	mov r1, #7
 	lsl r1, r1, #6
-	ldr r3, _021E5E44 ; =sub_0201AB0C
+	ldr r3, _021E5E44 ; =FreeToHeap
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021E5E44: .word sub_0201AB0C
+_021E5E44: .word FreeToHeap
 	thumb_func_end ov68_021E5E38
 
 	thumb_func_start ov68_021E5E48

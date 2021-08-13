@@ -527,7 +527,7 @@ ov44_0222A1FC: ; 0x0222A1FC
 	bl sub_0201A71C
 	mov r0, #0x58
 	mov r1, #0x35
-	bl sub_02007688
+	bl NARC_ctor
 	str r0, [sp, #0x20]
 	mov r0, #0x35
 	bl sub_0201AC88
@@ -599,7 +599,7 @@ ov44_0222A1FC: ; 0x0222A1FC
 	mov r2, #0x80
 	bl sub_020D47B8
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	mov r1, #0xdf
 	str r0, [sp, #0x18]
@@ -723,7 +723,7 @@ _0222A37A:
 	strb r1, [r0, #9]
 	bl sub_02022D3C
 	ldr r0, [sp, #0x20]
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1689,14 +1689,14 @@ ov44_0222ABB8: ; 0x0222ABB8
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0222ABCA
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	str r0, [r4]
 _0222ABCA:
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0222ABD8
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	str r0, [r4, #8]
 _0222ABD8:
@@ -2110,7 +2110,7 @@ ov44_0222AE74: ; 0x0222AE74
 	mov r1, #0
 	bl sub_0201BB4C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov44_0222AE74
@@ -3893,13 +3893,13 @@ _0222BD1A:
 	bl sub_0201CAE0
 	mov r0, #0x58
 	mov r1, #0x35
-	bl sub_02007688
+	bl NARC_ctor
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
 	bl ov44_0222AEC0
 	add r0, r6, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	ldr r0, _0222BE2C ; =0x00000D6C
 	mov r1, #1
 	str r1, [r5, r0]
@@ -4684,7 +4684,7 @@ _0222C388:
 	str r1, [r5, r0]
 	mov r0, #0x58
 	mov r1, #0x35
-	bl sub_02007688
+	bl NARC_ctor
 	add r6, r0, #0
 	mov r0, #0x57
 	lsl r0, r0, #2
@@ -4798,7 +4798,7 @@ _0222C46A:
 	lsl r0, r0, #4
 	str r1, [r5, r0]
 	add r0, r6, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	ldr r0, _0222C4E8 ; =0x021D116C
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -11146,7 +11146,7 @@ ov44_0222F780: ; 0x0222F780
 	add r2, r4, #0
 	bl sub_0200BE48
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 _0222F7BA:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov44_0222F780
@@ -12141,13 +12141,13 @@ _0222FF52:
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r4, [sp]
 	ldr r6, _0222FFB0 ; =0x00000B28
 	mov r5, #0
 _0222FF8A:
 	ldr r0, [r4, r6]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #7
@@ -12156,7 +12156,7 @@ _0222FF8A:
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -12710,7 +12710,7 @@ _02230322:
 	add r2, r6, #0
 	bl sub_0200BE48
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -15311,7 +15311,7 @@ ov44_02231918: ; 0x02231918
 	add r2, r4, #0
 	bl sub_0200BE48
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 _02231950:
 	pop {r4, r5, r6, pc}
 	nop
@@ -17991,7 +17991,7 @@ ov44_02232D08: ; 0x02232D08
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r0, [r4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r1, #0x14
 	mov r0, #0
 _02232D16:
@@ -18817,7 +18817,7 @@ ov44_0223325C: ; 0x0223325C
 	bl sub_02022CC8
 	mov r0, #0x58
 	add r1, r4, #0
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0x20
 	str r1, [sp]
 	mov r1, #0xe
@@ -18887,7 +18887,7 @@ ov44_0223325C: ; 0x0223325C
 	add r0, r0, #2
 	strh r1, [r5, r0]
 	add r0, r6, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x74
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -18904,11 +18904,11 @@ ov44_0223340C: ; 0x0223340C
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x7b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r4]
 	mov r1, #2
 	bl sub_0201BB4C
@@ -18919,7 +18919,7 @@ ov44_0223340C: ; 0x0223340C
 	mov r1, #0
 	bl sub_0201BB4C
 	ldr r0, [r4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov44_0223340C
 

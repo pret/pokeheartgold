@@ -17,7 +17,7 @@ BANNER_SPEC     := $(buildname)/banner.bsf
 ICON_PNG        := $(buildname)/icon.png
 HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
 
-MWCFLAGS  += -ipa file $(DEFINES)
+MWCFLAGS  += -ipa file $(DEFINES) -interworking
 MWASFLAGS += $(DEFINES)
 
 .PHONY: main sub libsyscall

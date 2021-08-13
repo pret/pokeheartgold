@@ -49,7 +49,7 @@ ov32_0225D520: ; 0x0225D520
 	bl sub_02002CEC
 	ldr r0, _0225D5C8 ; =0x00000105
 	mov r1, #8
-	bl sub_02007688
+	bl NARC_ctor
 	add r4, r0, #0
 	bl ov32_0225D60C
 	add r0, r6, #0
@@ -67,7 +67,7 @@ ov32_0225D520: ; 0x0225D520
 	add r0, r5, #0
 	bl ov32_0225DD74
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add r0, r7, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -632,7 +632,7 @@ _0225D9D4:
 	cmp r4, #8
 	blo _0225D9D4
 	ldr r0, [sp, #0x1c]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [sp, #0x14]
 	bl sub_02026380
 	ldr r0, [sp, #0x18]

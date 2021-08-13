@@ -10,7 +10,7 @@ ov19_022598C0: ; 0x022598C0
 	add r5, r0, #0
 	mov r0, #0xb
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x76
 	mov r1, #0
 	lsl r2, r2, #2
@@ -62,7 +62,7 @@ ov19_02259918: ; 0x02259918
 	add r0, r4, #0
 	bl ov19_022599D4
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r5, #0
 	add r0, #0xd8
 	ldr r0, [r0]
@@ -397,7 +397,7 @@ ov19_02259BC0: ; 0x02259BC0
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xab
-	bl sub_02007688
+	bl NARC_ctor
 	mov r3, #0
 	str r3, [sp]
 	ldr r1, [r5]
@@ -460,9 +460,9 @@ ov19_02259BC0: ; 0x02259BC0
 	lsl r3, r7, #6
 	bl sub_0201C0C0
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

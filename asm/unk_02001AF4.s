@@ -15,7 +15,7 @@ sub_02001AF4: ; 0x02001AF4
 	mov r1, #0x20
 	add r7, r2, #0
 	str r0, [sp, #4]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	add r3, r5, #0
 	ldmia r3!, {r0, r1}
@@ -2654,7 +2654,7 @@ _02002E30:
 	add r0, r0, r5
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, _02002E74 ; =0x0211188C
 	mov r1, #0
 	ldr r0, [r0]
@@ -3033,7 +3033,7 @@ sub_020030E8: ; 0x020030E8
 	push {r4, lr}
 	mov r1, #0x12
 	lsl r1, r1, #4
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x12
 	mov r1, #0
 	lsl r2, r2, #4
@@ -3046,10 +3046,10 @@ sub_020030E8: ; 0x020030E8
 
 	thumb_func_start sub_02003104
 sub_02003104: ; 0x02003104
-	ldr r3, _02003108 ; =sub_0201AB0C
+	ldr r3, _02003108 ; =FreeToHeap
 	bx r3
 	.balign 4, 0
-_02003108: .word sub_0201AB0C
+_02003108: .word FreeToHeap
 	thumb_func_end sub_02003104
 
 	thumb_func_start sub_0200310C
@@ -3076,11 +3076,11 @@ sub_02003120: ; 0x02003120
 	str r3, [sp, #4]
 	add r0, r3, #0
 	add r1, r4, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	add r1, r4, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r3, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -3099,10 +3099,10 @@ sub_02003150: ; 0x02003150
 	add r5, r1, #0
 	mul r5, r0
 	ldr r0, [r4, r5]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, r5
 	ldr r0, [r0, #4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_02003150
@@ -3179,7 +3179,7 @@ _020031D8:
 	ldr r2, [sp, #0x18]
 	bl sub_0200316C
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -3250,7 +3250,7 @@ _0200325C:
 	ldr r2, [sp, #0x18]
 	bl sub_0200316C
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -4500,7 +4500,7 @@ sub_02003BA8: ; 0x02003BA8
 	add r4, r0, #0
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #8
@@ -4552,7 +4552,7 @@ _02003C16:
 	mov r1, #2
 	add r0, r6, #0
 	lsl r1, r1, #0xc
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0xc
@@ -5078,7 +5078,7 @@ _02003FEC:
 	add r0, r5, #0
 	bl sub_0200316C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02003FC8
@@ -8207,7 +8207,7 @@ _020057FC:
 	bne _0200584A
 	ldr r0, [sp, #0x48]
 	add r1, r6, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r4]
 	cmp r0, #0
 	bne _02005818
@@ -8323,7 +8323,7 @@ _020058DC:
 	mov r0, #0
 	strb r0, [r4]
 	ldr r0, [r6]
-	bl sub_0201AB0C
+	bl FreeToHeap
 _020058F2:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_020058B8
@@ -10336,7 +10336,7 @@ sub_02006838: ; 0x02006838
 	bl sub_020068F8
 	add r0, r4, #0
 	mov r1, #8
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	bne _0200685C
 	bl GF_AssertFail
@@ -10432,7 +10432,7 @@ sub_020068F8: ; 0x020068F8
 	ldr r0, [r4]
 	bl sub_0200E390
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 _0200691A:
 	mov r0, #0
 	str r0, [r4]
@@ -11249,3 +11249,9 @@ _02006F52:
 	bx lr
 	.balign 4, 0
 	thumb_func_end sub_02006F30
+
+	.data
+
+_0210E980:
+	.asciz "data/sound/gs_sound_data.sdat"
+	.balign 4, 0

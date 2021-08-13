@@ -35,7 +35,7 @@ _0225F050:
 	mov r1, #0x3d
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	ldr r1, [sp, #0x18]
 	mov r2, #0x3d
 	str r0, [r1, #0xc]
@@ -525,7 +525,7 @@ ov117_0225F420: ; 0x0225F420
 	ldr r0, [r0, #8]
 	bl sub_0201C4C4
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
 	ldr r0, [r0, #8]
@@ -666,7 +666,7 @@ _0225F560:
 	mov r1, #0x6f
 	add r0, r7, #0
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x6f
 	str r0, [r5, #0xc]
 	mov r1, #0

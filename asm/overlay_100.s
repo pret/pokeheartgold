@@ -762,7 +762,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	add r4, r1, #0
 	ldr r1, [r5]
 	mov r0, #0x8f
-	bl sub_02007688
+	bl NARC_ctor
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0x30
@@ -847,7 +847,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	ldr r2, [r2]
 	add r0, r6, #0
 	add r1, #0x36
-	bl sub_0200778C
+	bl NARC_ReadWholeMember
 	add r0, r5, #0
 	add r0, #0xc4
 	add r1, r5, #0
@@ -882,7 +882,7 @@ _021E5FA4:
 	mov r3, #0x8f
 	bl sub_0208820C
 	add r0, r6, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	ldr r0, [r5, #0x74]
 	mov r1, #0
 	bl sub_0201EFBC
@@ -995,7 +995,7 @@ ov100_021E6094: ; 0x021E6094
 	mov r1, #0
 	bl sub_0201BB4C
 	ldr r0, [r4, #0x74]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r2, _021E60BC ; =0x04000304
 	ldr r0, _021E60C0 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -1013,7 +1013,7 @@ ov100_021E60C4: ; 0x021E60C4
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x8f
-	bl sub_02007688
+	bl NARC_ctor
 	add r4, r0, #0
 	ldr r0, [r5]
 	bl sub_020030E8
@@ -1041,10 +1041,10 @@ ov100_021E60C4: ; 0x021E60C4
 	bl sub_02003120
 	mov r0, #0x8f
 	mov r1, #0x36
-	bl sub_020075BC
+	bl GetNarcMemberSizeByIdPair
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r1, r5, #0
 	add r1, #0xc4
 	str r0, [r1]
@@ -1052,7 +1052,7 @@ ov100_021E60C4: ; 0x021E60C4
 	add r0, r5, #0
 	bl ov100_021E5EB4
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov100_021E60C4
@@ -1063,7 +1063,7 @@ ov100_021E6134: ; 0x021E6134
 	add r4, r0, #0
 	add r0, #0xc4
 	ldr r0, [r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r4, #0x78]
 	mov r1, #3
 	bl sub_02003150
@@ -2235,7 +2235,7 @@ ov100_021E69F8: ; 0x021E69F8
 	add r6, r0, #0
 	add r5, r2, #0
 	str r3, [sp]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x16
 	mov r1, #0
 	lsl r2, r2, #4
@@ -2274,7 +2274,7 @@ ov100_021E6A3C: ; 0x021E6A3C
 	lsl r2, r2, #4
 	bl sub_020D4994
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov100_021E6A3C
 
@@ -2344,18 +2344,18 @@ ov100_021E6AC0: ; 0x021E6AC0
 	add r7, r1, #0
 	ldr r0, [r5]
 	mov r1, #0x10
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0x10
 	add r4, r0, #0
 	bl sub_020D4994
 	ldr r0, [r5]
 	mov r1, #8
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r4, #8]
 	ldr r0, [r5]
 	mov r1, #0x24
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	ldr r1, [r4, #8]
 	str r0, [r1]
 	ldr r0, [r4, #8]
@@ -2770,7 +2770,7 @@ ov100_021E6E20: ; 0x021E6E20
 	add r6, r0, #0
 	add r0, r7, #0
 	mov r1, #0xc
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0xc
 	add r4, r0, #0
@@ -2781,7 +2781,7 @@ ov100_021E6E20: ; 0x021E6E20
 	add r0, r7, #0
 	add r1, r5, #0
 	strh r6, [r4]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #8]
@@ -2802,13 +2802,13 @@ ov100_021E6E58: ; 0x021E6E58
 	mul r2, r3
 	bl sub_020D4994
 	ldr r0, [r4, #8]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0xc
 	bl sub_020D4994
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov100_021E6E58
@@ -2971,7 +2971,7 @@ ov100_021E6F88: ; 0x021E6F88
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0xc
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xc
@@ -2980,7 +2980,7 @@ ov100_021E6F88: ; 0x021E6F88
 	lsl r5, r5, #5
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #4]
@@ -3025,13 +3025,13 @@ _021E6FF0:
 	lsl r2, r2, #5
 	bl sub_020D4994
 	ldr r0, [r5, #4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0xc
 	bl sub_020D4994
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov100_021E6FBC
@@ -3069,7 +3069,7 @@ ov100_021E7014: ; 0x021E7014
 	ldrb r2, [r4, #2]
 	ldr r0, [sp, #0x1c]
 	mul r1, r2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r4, #4]
 	ldrb r3, [r4, #2]
 	mov r2, #0xc
@@ -3147,7 +3147,7 @@ _021E70CC:
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	ldr r0, [r0, #4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r5, #4]
 	mov r1, #0
 	add r0, r0, r4

@@ -1850,9 +1850,9 @@ ov81_0223EC88: ; 0x0223EC88
 	ldrb r2, [r2, #0x14]
 	str r2, [r4, r0]
 	ldr r0, [r4, r1]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r4, #4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	str r0, [r4, #4]
 	add r0, r4, #0
@@ -4753,7 +4753,7 @@ ov81_02240458: ; 0x02240458
 	mov r1, #7
 	bl sub_0201BB4C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov81_02240458
 
@@ -5163,7 +5163,7 @@ ov81_02240770: ; 0x02240770
 	lsl r2, r2, #4
 	bl sub_020CFC6C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -5789,7 +5789,7 @@ _02240C9A:
 	mov r0, #0xf7
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -5872,7 +5872,7 @@ ov81_02240D64: ; 0x02240D64
 	add r5, r0, #0
 	mov r0, #0xb7
 	mov r1, #0x64
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0xf7
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -5989,7 +5989,7 @@ ov81_02240E78: ; 0x02240E78
 	add r4, r0, #0
 	mov r0, #0x64
 	mov r1, #0x3c
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #7
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -8600,7 +8600,7 @@ ov81_02242218: ; 0x02242218
 	mov r3, #2
 	bl ov81_02242E14
 	ldr r0, [sp, #0x20]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r1, [sp, #0x18]
 	add r0, r7, #0
 	mov r2, #0
@@ -9946,7 +9946,7 @@ ov81_02242CBC: ; 0x02242CBC
 	mov r1, #0xc
 	str r2, [sp, #8]
 	add r5, r3, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #0
 	strb r1, [r4]
@@ -9993,7 +9993,7 @@ ov81_02242D18: ; 0x02242D18
 	mov r1, #0xc
 	str r2, [sp, #8]
 	add r5, r3, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r0, #0
 	strb r0, [r4]
@@ -10037,7 +10037,7 @@ ov81_02242D74: ; 0x02242D74
 	ldr r0, [r4, #8]
 	bl sub_02024758
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov81_02242D74
@@ -10174,7 +10174,7 @@ ov81_02242E50: ; 0x02242E50
 	add r0, r3, #0
 	mov r1, #0x10
 	add r6, r2, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x10
@@ -10215,7 +10215,7 @@ ov81_02242EA4: ; 0x02242EA4
 	ldr r0, [r4, #0xc]
 	bl sub_02024758
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov81_02242EA4
@@ -10405,7 +10405,7 @@ ov81_02242FC8: ; 0x02242FC8
 	ldr r0, [r4, #0xc]
 	bl sub_02024758
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov81_02242FC8
@@ -10681,7 +10681,7 @@ _02243196:
 	blo _02243184
 _022431D2:
 	ldr r0, [sp, #0x20]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

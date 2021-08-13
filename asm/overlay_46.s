@@ -549,7 +549,7 @@ _02258C68:
 	add r0, #0xd8
 	str r1, [r0]
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x77
 	bl sub_0201A9C4
 	ldr r0, _02258CB0 ; =0x021D116C
@@ -882,7 +882,7 @@ _02258F2C:
 	add r0, #0xd8
 	str r1, [r0]
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x77
 	bl sub_0201A9C4
 	ldr r0, _02258F6C ; =0x021D116C
@@ -1053,7 +1053,7 @@ _02258FAE:
 	bl sub_02022C60
 	mov r0, #0x58
 	add r1, r6, #0
-	bl sub_02007688
+	bl NARC_ctor
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x10]
 	mov r2, #0x33
@@ -1082,7 +1082,7 @@ _02258FAE:
 	mov r2, #0x80
 	bl sub_020D47B8
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	mov r1, #0x57
 	str r0, [sp, #0x24]
@@ -1195,7 +1195,7 @@ _022591A6:
 	str r0, [r1]
 	ldr r0, [sp, #0x2c]
 	str r1, [sp, #0x10]
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1315,7 +1315,7 @@ _022592C0:
 	cmp r4, #3
 	blt _022592C0
 	ldr r0, [r6, #0xc]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _022592DC: .word _02259598

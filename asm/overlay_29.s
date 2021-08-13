@@ -72,7 +72,7 @@ _0225D594:
 _0225D5A2:
 	mov r0, #0xee
 	mov r1, #8
-	bl sub_02007688
+	bl NARC_ctor
 	add r5, r0, #0
 	bl ov29_0225D620
 	ldr r0, [sp]
@@ -88,7 +88,7 @@ _0225D5A2:
 	add r0, r4, #0
 	bl ov29_0225DBF0
 	add r0, r5, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	ldr r0, [sp, #4]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}

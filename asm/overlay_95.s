@@ -611,7 +611,7 @@ ov95_021E5DD0: ; 0x021E5DD0
 	mov r1, #0x12
 	lsl r1, r1, #0xa
 	add r4, r0, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -669,7 +669,7 @@ ov95_021E5E40: ; 0x021E5E40
 	add r0, r5, #0
 	bl sub_02014EBC
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov95_021E5E40
 
@@ -711,7 +711,7 @@ ov95_021E5E90: ; 0x021E5E90
 	add r5, r0, #0
 	ldr r0, [r5]
 	mov r1, #0x10
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	bne _021E5EA4
 	bl GF_AssertFail
@@ -762,10 +762,10 @@ _021E5EEC:
 
 	thumb_func_start ov95_021E5EF0
 ov95_021E5EF0: ; 0x021E5EF0
-	ldr r3, _021E5EF4 ; =sub_0201AB0C
+	ldr r3, _021E5EF4 ; =FreeToHeap
 	bx r3
 	.balign 4, 0
-_021E5EF4: .word sub_0201AB0C
+_021E5EF4: .word FreeToHeap
 	thumb_func_end ov95_021E5EF0
 
 	thumb_func_start ov95_021E5EF8
@@ -2625,7 +2625,7 @@ ov95_021E6D70: ; 0x021E6D70
 	str r0, [r4, #0x3c]
 	mov r0, #0xb4
 	mov r1, #0x46
-	bl sub_02007688
+	bl NARC_ctor
 	str r0, [r4, #0x40]
 	mov r0, #0x46
 	bl sub_0201AC88
@@ -2815,14 +2815,14 @@ ov95_021E6F0C: ; 0x021E6F0C
 	mov r1, #3
 	bl sub_0201BB4C
 	ldr r0, [r4, #4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	bl sub_020205AC
 	ldr r0, [r4, #0x3c]
 	bl sub_02008524
 	ldr r0, [r4, #0x58]
 	bl sub_02016F2C
 	ldr r0, [r4, #0x40]
-	bl sub_0200770C
+	bl NARC_dtor
 	add r0, r4, #4
 	bl ov95_021E6228
 	add r0, r5, #0
@@ -2905,7 +2905,7 @@ _021E703A:
 _021E7042:
 	ldr r0, [sp]
 	mov r1, #0x3c
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0
@@ -2952,7 +2952,7 @@ _021E7082:
 	mov r1, #6
 	bl sub_0201BB4C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov95_021E7078
@@ -2980,7 +2980,7 @@ _021E70DA:
 _021E70E2:
 	ldr r1, [r5]
 	mov r0, #0xef
-	bl sub_02007688
+	bl NARC_ctor
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -3106,7 +3106,7 @@ _021E70E2:
 	mov r1, #1
 	bl sub_02022C60
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov95_021E70BC

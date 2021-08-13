@@ -33,7 +33,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl sub_02002CEC
 	mov r0, #0x34
 	mov r1, #0x1a
-	bl sub_02007688
+	bl NARC_ctor
 	add r5, r0, #0
 	ldr r1, _0221BFA8 ; =0x000036CC
 	add r0, r6, #0
@@ -154,7 +154,7 @@ ov65_0221BE20: ; 0x0221BE20
 	ldr r0, _0221BFB8 ; =0x00000427
 	bl sub_02005448
 	add r0, r5, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -269,7 +269,7 @@ ov65_0221C08C: ; 0x0221C08C
 	add r5, r0, #0
 	mov r0, #0x34
 	mov r1, #0x1a
-	bl sub_02007688
+	bl NARC_ctor
 	add r4, r0, #0
 	bl ov65_0221CE98
 	mov r0, #6
@@ -376,7 +376,7 @@ ov65_0221C08C: ; 0x0221C08C
 	add r1, r5, #0
 	bl sub_0201A0FC
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -1774,7 +1774,7 @@ ov65_0221CD0C: ; 0x0221CD0C
 _0221CD22:
 	ldr r0, _0221CD68 ; =0x0000079C
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r5, r7]
 	add r4, r4, #4
 	add r6, r6, #1
@@ -1793,7 +1793,7 @@ _0221CD38:
 _0221CD4A:
 	ldr r0, _0221CD70 ; =0x000007B4
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r5, r7]
 	add r4, r4, #4
 	add r6, r6, #1
@@ -1827,7 +1827,7 @@ ov65_0221CD74: ; 0x0221CD74
 	bl sub_02026380
 	ldr r0, _0221CE14 ; =0x00002228
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
 	bl ov65_0221CCB0
 	ldr r0, _0221CE18 ; =0x00000444
@@ -2270,7 +2270,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	bl sub_020744AC
 	add r1, r0, #0
 	mov r0, #0x1a
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	ldr r1, _0221D1C4 ; =0x00002228
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
@@ -2373,7 +2373,7 @@ _0221D232:
 	bl sub_0201C0A8
 _0221D250:
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 _0221D256:
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -4687,7 +4687,7 @@ _0221E4C0:
 	add r2, r6, #0
 	bl sub_0200BE48
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r5, #0
 	mov r1, #0x41
 	bl ov65_0221E330
@@ -6856,9 +6856,9 @@ _0221F6BC:
 	mov r1, #0x14
 	bl sub_0202D0FC
 	ldr r0, [sp, #0xc]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

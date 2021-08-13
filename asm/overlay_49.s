@@ -63,7 +63,7 @@ ov49_02258830: ; 0x02258830
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
@@ -78,7 +78,7 @@ ov49_02258830: ; 0x02258830
 	add r0, r5, #0
 	bl sub_020BE530
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov49_02258830
@@ -171,7 +171,7 @@ ov49_02258958: ; 0x02258958
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r1, #4
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r0, #0x23
 	mov r1, #0x2a
@@ -190,7 +190,7 @@ ov49_02258958: ; 0x02258958
 	add r1, r5, #0
 	bl ov42_02227F48
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov49_02258958
@@ -202,7 +202,7 @@ ov49_02258994: ; 0x02258994
 	ldr r0, [r4]
 	bl ov42_02227F28
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov49_02258994
@@ -394,7 +394,7 @@ ov49_02258AB4: ; 0x02258AB4
 	mov r1, #0x28
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0x28
 	add r4, r0, #0
@@ -419,7 +419,7 @@ ov49_02258AB4: ; 0x02258AB4
 	ldr r0, [sp, #4]
 	add r1, r7, #0
 	strh r5, [r4, #0xc]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	add r2, r7, #0
 	str r0, [r4, #8]
@@ -439,7 +439,7 @@ ov49_02258B20: ; 0x02258B20
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r4, #0x10]
 	bl ov42_02229A78
 	ldr r0, [r4, #4]
@@ -447,7 +447,7 @@ ov49_02258B20: ; 0x02258B20
 	ldr r0, [r4]
 	bl ov42_02228050
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov49_02258B20
 
@@ -3184,7 +3184,7 @@ ov49_02259EF8: ; 0x02259EF8
 	add r0, #0x3c
 	bl ov49_0225A7D0
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x77
 	bl sub_0201A9C4
 	mov r0, #0x78
@@ -3814,7 +3814,7 @@ _0225A35C:
 	add r2, r7, #0
 	bl ov49_0225B3C8
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225A334
@@ -4427,7 +4427,7 @@ _0225A7DC:
 	cmp r4, #4
 	blt _0225A7DC
 	ldr r0, [r6]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #5
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]
@@ -5095,7 +5095,7 @@ ov49_0225AD20: ; 0x0225AD20
 	add r4, r1, #0
 	mov r0, #0x3c
 	add r1, r5, #0
-	bl sub_02007688
+	bl NARC_ctor
 	add r6, r0, #0
 	ldr r0, _0225AE44 ; =0x00001388
 	add r1, r6, #0
@@ -5150,7 +5150,7 @@ ov49_0225AD20: ; 0x0225AD20
 	bl sub_0200A540
 	str r0, [r7, #0x4c]
 	add r0, r6, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	ldr r0, [r7, #0x40]
 	bl sub_0200ADA4
 	ldr r0, [r7, #0x44]
@@ -6108,7 +6108,7 @@ ov49_0225B450: ; 0x0225B450
 	str r0, [sp, #4]
 	mov r0, #0xd1
 	add r1, r4, #0
-	bl sub_02007688
+	bl NARC_ctor
 	mov r2, #0x53
 	lsl r2, r2, #2
 	str r0, [r5, r2]
@@ -6185,7 +6185,7 @@ ov49_0225B4E4: ; 0x0225B4E4
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200770C
+	bl NARC_dtor
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225B4E4
@@ -7076,7 +7076,7 @@ _0225BB4C:
 	lsr r1, r1, #0x18
 	bl sub_0201EFBC
 	add r0, r7, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7453,7 +7453,7 @@ _0225BE70:
 	add r2, r6, #0
 	bl ov49_0225BEA0
 	ldr r0, [sp, #0x10]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7510,7 +7510,7 @@ _0225BEB8:
 	ldr r2, [r2, #0x14]
 	bl sub_0201C0C0
 	ldr r0, [sp, #0x2c]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #4
 	str r0, [sp]
 	mov r0, #2
@@ -8264,7 +8264,7 @@ ov49_0225C4CC: ; 0x0225C4CC
 	add r1, r3, #0
 	str r2, [sp, #0x2c]
 	str r3, [sp, #0x30]
-	bl sub_02007688
+	bl NARC_ctor
 	str r0, [sp, #0x50]
 	ldr r0, [sp, #0xb4]
 	bl ov45_0222A99C
@@ -8583,7 +8583,7 @@ _0225C760:
 	b _0225C60E
 _0225C770:
 	ldr r0, [sp, #0x50]
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x98
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -8752,7 +8752,7 @@ ov49_0225C8A8: ; 0x0225C8A8
 	add r5, r6, #0
 _0225C8BE:
 	ldr r0, [r5, #0x20]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3
@@ -9122,7 +9122,7 @@ ov49_0225CB78: ; 0x0225CB78
 	sub sp, #0xc
 	mov r1, #0x14
 	add r5, r0, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x14
@@ -9172,7 +9172,7 @@ ov49_0225CBDC: ; 0x0225CBDC
 	ldr r0, [r4]
 	bl sub_02023120
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225CBDC
@@ -9249,7 +9249,7 @@ ov49_0225CC4C: ; 0x0225CC4C
 	ldr r1, _0225CCBC ; =0x000004A4
 	add r0, r2, #0
 	str r2, [sp]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	ldr r2, _0225CCBC ; =0x000004A4
 	mov r1, #0
 	add r4, r0, #0
@@ -9259,7 +9259,7 @@ ov49_0225CC4C: ; 0x0225CC4C
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0x47
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -9268,7 +9268,7 @@ ov49_0225CC4C: ; 0x0225CC4C
 	mul r7, r0
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -9309,13 +9309,13 @@ _0225CCD2:
 	mov r0, #0x47
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225CCC0
@@ -9477,7 +9477,7 @@ ov49_0225CDEC: ; 0x0225CDEC
 	add r6, r0, #0
 	mov r0, #0xcb
 	add r1, r7, #0
-	bl sub_02007688
+	bl NARC_ctor
 	add r7, r0, #0
 	ldr r0, _0225CE84 ; =0x00000494
 	add r1, r4, #0
@@ -9513,7 +9513,7 @@ ov49_0225CDEC: ; 0x0225CDEC
 	str r4, [sp]
 	bl ov49_0225D854
 	add r0, r7, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add r0, r6, #0
 	bl ov49_0225D520
 	mov r1, #0x4b
@@ -10489,10 +10489,10 @@ _0225D50E:
 
 	thumb_func_start ov49_0225D520
 ov49_0225D520: ; 0x0225D520
-	ldr r3, _0225D524 ; =sub_0201AB0C
+	ldr r3, _0225D524 ; =FreeToHeap
 	bx r3
 	.balign 4, 0
-_0225D524: .word sub_0201AB0C
+_0225D524: .word FreeToHeap
 	thumb_func_end ov49_0225D520
 
 	thumb_func_start ov49_0225D528
@@ -11190,7 +11190,7 @@ _0225D9E4:
 	mov r5, #0
 _0225DA04:
 	ldr r0, [r4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r5, r5, #1
 	add r4, #0x10
 	cmp r5, #2
@@ -11220,7 +11220,7 @@ _0225DA1C:
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r4, #0x20]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #3
@@ -11573,7 +11573,7 @@ _0225DCD4:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _0225DCE4
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x12
 	lsl r0, r0, #4
 	str r6, [r5, r0]
@@ -11876,7 +11876,7 @@ ov49_0225DF18: ; 0x0225DF18
 	add r0, r3, #0
 	add r7, r2, #0
 	str r3, [sp, #4]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	ldr r2, _0225E284 ; =0x00000614
 	mov r1, #0
 	add r4, r0, #0
@@ -12357,7 +12357,7 @@ _0225E2FA:
 	ldr r0, [r5, #4]
 	bl ov49_0225CCC0
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0225E310: .word 0x00000613
@@ -13960,7 +13960,7 @@ ov49_0225EEAC: ; 0x0225EEAC
 	add r4, r0, #0
 	add r0, r6, #0
 	lsl r1, r1, #2
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0xbf
 	mov r1, #0
 	lsl r2, r2, #2
@@ -14010,7 +14010,7 @@ _0225EF02:
 	add r0, r6, r0
 	bl ov49_0225F074
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225EEF8
@@ -14051,7 +14051,7 @@ ov49_0225EF40: ; 0x0225EF40
 _0225EF50:
 	ldrh r0, [r5]
 	add r1, r4, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	add r2, r4, #0
 	str r0, [r5, #8]
@@ -14071,7 +14071,7 @@ ov49_0225EF68: ; 0x0225EF68
 	bl GF_AssertFail
 _0225EF76:
 	ldr r0, [r4, #8]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	str r0, [r4, #8]
 	pop {r4, pc}
@@ -14237,12 +14237,12 @@ ov49_0225F074: ; 0x0225F074
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0225F082
-	bl sub_0201AB0C
+	bl FreeToHeap
 _0225F082:
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
 	beq _0225F08C
-	bl sub_0201AB0C
+	bl FreeToHeap
 _0225F08C:
 	add r0, r4, #0
 	mov r1, #0
@@ -26104,7 +26104,7 @@ ov49_022652E8: ; 0x022652E8
 	str r2, [sp]
 	str r3, [sp, #4]
 	ldr r5, [sp, #0x24]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	ldr r2, _02265354 ; =0x0001082C
 	mov r1, #0
 	add r4, r0, #0
@@ -26117,7 +26117,7 @@ ov49_022652E8: ; 0x022652E8
 	str r0, [r4, #8]
 	mov r0, #0xd1
 	str r7, [r4, #0xc]
-	bl sub_02007688
+	bl NARC_ctor
 	add r6, r0, #0
 	ldr r0, _02265358 ; =0x0001081C
 	add r1, r5, #0
@@ -26137,7 +26137,7 @@ ov49_022652E8: ; 0x022652E8
 	add r2, r5, #0
 	bl ov49_022657B4
 	add r0, r6, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -26156,7 +26156,7 @@ ov49_0226535C: ; 0x0226535C
 	add r0, r4, #0
 	bl ov49_02265858
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov49_0226535C
 
@@ -26655,7 +26655,7 @@ ov49_0226571C: ; 0x0226571C
 	mov r4, #0
 _02265724:
 	ldr r0, [r5, r6]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0xf
@@ -26717,7 +26717,7 @@ _0226576A:
 	blx r1
 	ldr r0, _022657AC ; =0x00010640
 	ldr r0, [r5, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x27
@@ -32448,7 +32448,7 @@ ov49_02268490: ; 0x02268490
 	add r5, r1, #0
 	mov r1, #0x60
 	add r6, r2, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0x60
 	add r4, r0, #0
@@ -32493,10 +32493,10 @@ _022684F0: .word 0x0226A7D8
 
 	thumb_func_start ov49_022684F4
 ov49_022684F4: ; 0x022684F4
-	ldr r3, _022684F8 ; =sub_0201AB0C
+	ldr r3, _022684F8 ; =FreeToHeap
 	bx r3
 	.balign 4, 0
-_022684F8: .word sub_0201AB0C
+_022684F8: .word FreeToHeap
 	thumb_func_end ov49_022684F4
 
 	thumb_func_start ov49_022684FC
@@ -32842,7 +32842,7 @@ ov49_02268764: ; 0x02268764
 	add r5, r1, #0
 	mov r1, #0x1c
 	add r6, r0, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x1c
@@ -32949,7 +32949,7 @@ ov49_02268850: ; 0x02268850
 	ldr r0, [r4, #0x10]
 	bl ov49_022684F4
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov49_02268850
@@ -33173,7 +33173,7 @@ ov49_02268A0C: ; 0x02268A0C
 	add r6, r1, #0
 	add r0, r2, #0
 	mov r1, #0x10
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x10
@@ -33219,7 +33219,7 @@ ov49_02268A6C: ; 0x02268A6C
 	add r4, r0, #0
 	bl ov49_02268DB0
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	thumb_func_end ov49_02268A6C
 
@@ -33918,7 +33918,7 @@ ov49_02268FAC: ; 0x02268FAC
 	add r5, r0, #0
 	add r0, r1, #0
 	mov r1, #0xc4
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xc4
@@ -34022,10 +34022,10 @@ _0226908C: .word 0x0226A8C8
 
 	thumb_func_start ov49_02269090
 ov49_02269090: ; 0x02269090
-	ldr r3, _02269094 ; =sub_0201AB0C
+	ldr r3, _02269094 ; =FreeToHeap
 	bx r3
 	.balign 4, 0
-_02269094: .word sub_0201AB0C
+_02269094: .word FreeToHeap
 	thumb_func_end ov49_02269090
 
 	thumb_func_start ov49_02269098

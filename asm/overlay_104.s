@@ -285,14 +285,14 @@ _021E5B36:
 	add r0, r7, r0
 	bl sub_020C2BA0
 	ldr r0, [r5, #0x5c]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	cmp r4, #2
 	blo _021E5B36
 	ldr r0, [r6, #0x58]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [sp, #4]
 	add r0, r0, #1
 	lsl r0, r0, #0x18
@@ -470,7 +470,7 @@ ov104_021E5CC8: ; 0x021E5CC8
 	str r0, [sp]
 	mov r0, #0xeb
 	mov r1, #0x95
-	bl sub_02007688
+	bl NARC_ctor
 	str r0, [sp, #8]
 	mov r1, #0x52
 	ldr r0, [sp]
@@ -577,7 +577,7 @@ _021E5D76:
 	str r0, [sp, #4]
 	ldr r0, [sp, #8]
 	mov r2, #0x95
-	bl sub_0200771C
+	bl NARC_AllocAndReadWholeMember
 	add r1, r5, #0
 	add r2, r5, #0
 	str r0, [r5, #0x58]
@@ -622,7 +622,7 @@ _021E5DEA:
 	ldrh r1, [r1, #4]
 	ldr r0, [sp, #8]
 	mov r2, #0x95
-	bl sub_0200771C
+	bl NARC_AllocAndReadWholeMember
 	mov r1, #0
 	str r0, [r6, #0x5c]
 	bl sub_020C3B90
@@ -655,7 +655,7 @@ _021E5DEA:
 	cmp r0, #3
 	blo _021E5D76
 	ldr r0, [sp, #8]
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

@@ -303,11 +303,11 @@ _021E5B56:
 	add r3, r6, #0
 	bl sub_0202B554
 	ldr r0, [sp, #0x10]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [sp, #0x18]
 	bl sub_02026380
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [sp, #0x1c]
 	bl sub_0200BB44
 	add sp, #0x28

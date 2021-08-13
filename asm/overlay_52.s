@@ -57,7 +57,7 @@ _021E80D6:
 	str r0, [r4]
 	mov r0, #0x5b
 	mov r1, #0x27
-	bl sub_02007688
+	bl NARC_ctor
 	add r7, r0, #0
 	mov r0, #0x27
 	bl sub_0200BD08
@@ -135,7 +135,7 @@ _021E80D6:
 	and r0, r1
 	strh r0, [r2]
 	add r0, r7, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -576,7 +576,7 @@ ov52_021E85A0: ; 0x021E85A0
 	mov r1, #0
 	bl sub_0201BB4C
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov52_021E85A0

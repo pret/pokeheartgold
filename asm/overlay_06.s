@@ -48,7 +48,7 @@ ov06_0221BA40: ; 0x0221BA40
 	mov r1, #0x12
 	lsl r1, r1, #0xa
 	add r4, r0, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -83,7 +83,7 @@ ov06_0221BA88: ; 0x0221BA88
 	mov r1, #0x42
 	lsl r1, r1, #8
 	add r4, r0, #0
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r2, r0, #0
 	bne _0221BAA0
 	add sp, #8
@@ -125,7 +125,7 @@ ov06_0221BAD8: ; 0x0221BAD8
 	add r0, r5, #0
 	bl sub_02014EBC
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov06_0221BAD8
 

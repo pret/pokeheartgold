@@ -1063,7 +1063,7 @@ ov13_0221C8CC: ; 0x0221C8CC
 	ldr r1, [r4, #8]
 	ldr r2, [r4, #4]
 	add r0, sp, #4
-	bl sub_020D83CC
+	bl FS_ReadFile
 	ldr r1, [r4, #4]
 	cmp r1, r0
 	moveq r0, #2
@@ -1458,13 +1458,13 @@ ov13_0221CE4C: ; 0x0221CE4C
 	add r1, sp, #0
 	mov r2, #0x60
 	sub r6, ip, r3
-	bl sub_020D83CC
+	bl FS_ReadFile
 	cmp r0, #0x60
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0
 	addhs r4, sp, #0
-	bl sub_020D83DC
+	bl FS_SeekFile
 	b _0221CE9C
 _0221CE98:
 	ldr r4, _0221CEC8 ; =0x027FFE00
@@ -1510,7 +1510,7 @@ ov13_0221CECC: ; 0x0221CECC
 	mov r2, #0x160
 	sub r3, r7, r3
 	str r3, [sp, #8]
-	bl sub_020D83CC
+	bl FS_ReadFile
 	cmp r0, #0x160
 	ldr r7, [sb, #0x80]
 	movlt r4, fp
@@ -1557,11 +1557,11 @@ _0221CFC0:
 	mov r0, sl
 	add r1, r1, r7
 	mov r2, #0
-	bl sub_020D83DC
+	bl FS_SeekFile
 	mov r0, sl
 	mov r1, r5
 	mov r2, #0x88
-	bl sub_020D83CC
+	bl FS_ReadFile
 	add r5, r5, #0x88
 	sub r4, r4, #0x88
 _0221CFF8:
@@ -1632,11 +1632,11 @@ _0221D0C4:
 	mov r0, sl
 	sub r1, r1, r7
 	mov r2, #0
-	bl sub_020D83DC
+	bl FS_SeekFile
 	ldr r2, [sb, #0x2c]
 	mov r0, sl
 	mov r1, r5
-	bl sub_020D83CC
+	bl FS_ReadFile
 	mov r0, #3
 	str r0, [sp]
 	ldr r1, [fp, #4]
@@ -1649,11 +1649,11 @@ _0221D0C4:
 	mov r0, sl
 	mov r2, #0
 	sub r1, r1, r7
-	bl sub_020D83DC
+	bl FS_SeekFile
 	ldr r2, [sb, #0x3c]
 	mov r0, sl
 	add r1, r5, r4
-	bl sub_020D83CC
+	bl FS_ReadFile
 	mov r0, #3
 	str r0, [sp]
 	ldr r1, [fp, #8]
@@ -1672,11 +1672,11 @@ _0221D16C:
 	mov r0, sl
 	sub r1, r4, r7
 	mov r2, #0
-	bl sub_020D83DC
+	bl FS_SeekFile
 	mov r0, sl
 	mov r1, r5
 	mov r2, #0x4400
-	bl sub_020D83CC
+	bl FS_ReadFile
 	mov r0, #3
 	str r0, [sp]
 	mov r0, r6
@@ -1688,11 +1688,11 @@ _0221D16C:
 	mov r0, sl
 	sub r1, r1, r7
 	mov r2, #0
-	bl sub_020D83DC
+	bl FS_SeekFile
 	mov r0, sl
 	add r1, r5, #0x4400
 	mov r2, #0x4400
-	bl sub_020D83CC
+	bl FS_ReadFile
 	mov r0, #2
 	str r0, [sp]
 	mov r0, r6
@@ -1704,11 +1704,11 @@ _0221D16C:
 	mov r0, sl
 	sub r1, r1, r7
 	mov r2, #0
-	bl sub_020D83DC
+	bl FS_SeekFile
 	mov r0, sl
 	add r1, r5, #0x8800
 	mov r2, #0x4400
-	bl sub_020D83CC
+	bl FS_ReadFile
 	mov r0, #2
 	str r0, [sp]
 	add r1, r4, #0x8800
@@ -1722,7 +1722,7 @@ _0221D240:
 	ldr r1, [sp, #8]
 	mov r0, sl
 	mov r2, #0
-	bl sub_020D83DC
+	bl FS_SeekFile
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
 	beq _0221D30C
@@ -2502,7 +2502,7 @@ ov13_0221DCA4: ; 0x0221DCA4
 	bl FS_InitFile
 	add r0, sp, #0
 	mov r1, r6
-	bl sub_020D8278
+	bl FS_OpenFile
 	cmp r0, #0
 	addeq sp, sp, #0x48
 	moveq r0, #0
@@ -2520,7 +2520,7 @@ ov13_0221DCA4: ; 0x0221DCA4
 _0221DD24:
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D83CC
+	bl FS_ReadFile
 	add r0, sp, #0
 	bl FS_CloseFile
 	mov r0, #1

@@ -273,7 +273,7 @@ ov47_02258A1C: ; 0x02258A1C
 	add r6, r0, #0
 	mov r0, #0xd1
 	add r1, r4, #0
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -301,7 +301,7 @@ ov47_02258A60: ; 0x02258A60
 	mov r0, #5
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_0200770C
+	bl NARC_dtor
 	bl sub_020205AC
 	add r0, r4, #0
 	bl ov47_02258B8C
@@ -453,7 +453,7 @@ _02258B94:
 	cmp r4, #4
 	blt _02258B94
 	ldr r0, [r6]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02258BB0: .word 0x02259E68
@@ -707,7 +707,7 @@ ov47_02258D78: ; 0x02258D78
 	add r2, r6, #0
 	bl sub_0200BE48
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov47_02258D78
 
@@ -2229,7 +2229,7 @@ ov47_02259968: ; 0x02259968
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r5, #0
 	mov r4, #0
 	add r0, #0x80

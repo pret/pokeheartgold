@@ -16,7 +16,7 @@ ov94_021E5900: ; 0x021E5900
 _021E5912:
 	mov r0, #0xc
 	mov r1, #0x1c
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0x32
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -249,7 +249,7 @@ ov94_021E5AEC: ; 0x021E5AEC
 	mov r0, #0x32
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0x32
 	mov r1, #0
 	lsl r0, r0, #6
@@ -308,7 +308,7 @@ ov94_021E5B54: ; 0x021E5B54
 	mov r1, #0x12
 	mov r0, #0xc
 	lsl r1, r1, #0xa
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -452,7 +452,7 @@ ov94_021E5C84: ; 0x021E5C84
 	ldr r0, [r5, #0x18]
 	bl sub_02014EBC
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov94_021E5C84

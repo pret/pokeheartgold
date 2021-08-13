@@ -411,7 +411,7 @@ ov33_0225D84C: ; 0x0225D84C
 	add r5, r0, #0
 	mov r0, #0xef
 	mov r1, #8
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0xa0
 	str r1, [sp]
 	mov r1, #8
@@ -460,9 +460,9 @@ ov33_0225D84C: ; 0x0225D84C
 	add r1, r5, #0
 	bl sub_020D47B8
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200770C
+	bl NARC_dtor
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

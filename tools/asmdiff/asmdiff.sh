@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
+MYDIR=$(dirname $0)
+
+DEFAULT_BASEROM=baserom.nds
+DEFAULT_ARM9BUILDDIR=build/heartgold.us
+DEFAULT_ARM7BUILDDIR=sub/build
+
 # Build ntruncompbw on demand
-[[ ntruncompbw -nt ntruncompbw.c ]] || gcc -O3 -g -o ntruncompbw ntruncompbw.c
+[[ $MYDIR/ntruncompbw -nt $MYDIR/ntruncompbw.c ]] || gcc -O3 -g -o $MYDIR/ntruncompbw $MYDIR/ntruncompbw.c
 
 getword() {
   od -j "$2" -N 4 -A n -t u "$1" | awk '{$1=$1};1'
@@ -16,14 +22,13 @@ while [[ $# -gt 0 ]]; do
   case $key in
   -h)
     echo "Diff segments of a Nintendo DS ROM"
-    echo "Usage: $0 [-h] [-7] [-a AUTOLOAD] [-m OVERLAY] [-r BASEROM] [-d BUILDDIR] START END"
+    echo "Usage: $0 [-h] [-7] [-m OVERLAY] [-r BASEROM] [-d BUILDDIR] [START [END]]"
     echo ""
     echo "Arguments:"
     echo "  START, END    Start and end virtual addresses to diff"
     echo ""
     echo "Options:"
     echo "  -7            Diff the ARM7 module (default: ARM9)"
-    echo "  -a AUTOLOAD   Diff the indicated autoload module (default: static module)"
     echo "  -m OVERLAY    Diff the indicated overlay module (default: static module)"
     echo "  -r BASEROM    Use the indicated baserom (default: baserom.nds)"
     echo "  -d BUILDDIR   Look for compiled binaries in this directory (default: build/heartgold.us)"
@@ -33,7 +38,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -7)
     proc=armv4t
-    builddir=sub/build
+    builddir=${builddir:-$DEFAULT_ARM7BUILDDIR}
     basestem=${basestem}.sub
     shift
     ;;
@@ -70,8 +75,8 @@ set -- "${POSITIONAL[@]}"
 
 mode=${mode:-static}
 proc=${proc:-armv5te}
-builddir=${builddir:-build/heartgold.us}
-baserom=${baserom:-baserom.nds}
+builddir=${builddir:-$DEFAULT_ARM9BUILDDIR}
+baserom=${baserom:-$DEFAULT_BASEROM}
 
 basefile=${baserom}${basestem}.sbin
 
@@ -96,7 +101,7 @@ basefile=${baserom}${basestem}.sbin
     dd if="$baserom" of="$basefile" bs=1 skip="$fileoff" count="$filesize" 2>/dev/null
     (( param & 16777216 )) && {
       compsize=$((param & 16777215))
-      ./ntruncompbw $basefile $vma $((vma+compsize)) || { rm -f $basefile; exit 1; }
+      $MYDIR/ntruncompbw $basefile $vma $((vma+compsize)) || { rm -f $basefile; exit 1; }
     }
   }
   buildfile=$builddir/OVY_${overlay}.sbin
@@ -118,9 +123,11 @@ basefile=${baserom}${basestem}.sbin
 
   [[ -f $basefile ]] || {
     dd if="$baserom" of="$basefile" bs=1 skip="$fileoff" count="$size" 2>/dev/null
-    _start_ModuleParams=$(python find_module_params.py ${basefile})
-    compstatend=$(getword "$basefile" $((_start_ModuleParams+20)))
-    [[ $compstatend != "0" ]] && { ./ntruncompbw $basefile $vma $compstatend || { rm -f $basefile; exit 1; }; }
+    [[ $proc == armv5te ]] && {
+      _start_ModuleParams=$(python $MYDIR/find_module_params.py ${basefile})
+      compstatend=$(getword "$basefile" $((_start_ModuleParams+20)))
+      [[ $compstatend != "0" ]] && { $MYDIR/ntruncompbw $basefile $vma $compstatend || { rm -f $basefile; exit 1; }; }
+    }
   }
   buildfile=${builddir}/${compname}.sbin
 }

@@ -423,7 +423,7 @@ ov58_02237BD4: ; 0x02237BD4
 	add r5, r0, #0
 	ldr r0, [r5]
 	mov r1, #0x44
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0x44
 	add r4, r0, #0
@@ -489,7 +489,7 @@ _02237C5E:
 	ldrb r4, [r0]
 	strb r4, [r5, #0x1c]
 	ldr r0, [r5, #0x10]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #0
 	str r0, [r5, #0x10]
 	cmp r4, #7

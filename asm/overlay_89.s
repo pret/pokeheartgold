@@ -141,13 +141,13 @@ ov89_02258800: ; 0x02258800
 	str r0, [r5, #0x10]
 	mov r0, #0xd2
 	mov r1, #0x7d
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0x16
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	mov r0, #0x45
 	mov r1, #0x7d
-	bl sub_02007688
+	bl NARC_ctor
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -827,7 +827,7 @@ ov89_02258F00: ; 0x02258F00
 	ldr r0, [r4, #8]
 	bl ov89_02259230
 	ldr r0, [r4, #8]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r4, #0x1c]
 	ldr r1, [r4, #0x20]
 	bl sub_0200D998
@@ -856,11 +856,11 @@ ov89_02258F00: ; 0x02258F00
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200770C
+	bl NARC_dtor
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -2197,7 +2197,7 @@ _02259ACA:
 	mov r2, #0x40
 	bl sub_020D47B8
 	ldr r0, [sp, #8]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3900,7 +3900,7 @@ ov89_0225A7BC: ; 0x0225A7BC
 	lsl r1, r1, #2
 	add r5, r2, #0
 	str r3, [sp, #0xc]
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	mov r2, #0x91
 	mov r1, #0
 	lsl r2, r2, #2
@@ -4070,7 +4070,7 @@ _0225A926:
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _0225A930
-	bl sub_0201AB0C
+	bl FreeToHeap
 _0225A930:
 	mov r1, #0x10
 	mov r0, #0
@@ -4380,7 +4380,7 @@ _0225AB2E:
 	add r0, r0, r1
 	strh r2, [r0, #2]
 	ldr r0, [sp, #0x18]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov89_0225AA24
@@ -4395,7 +4395,7 @@ ov89_0225AB64: ; 0x0225AB64
 	str r0, [sp, #8]
 	mov r0, #0x7d
 	mov r1, #0x40
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	str r0, [sp, #4]
 	ldr r1, [sp]
 	ldr r0, [sp, #8]
@@ -4473,7 +4473,7 @@ _0225ABE6:
 	blt _0225ABE2
 _0225AC06:
 	ldr r0, [sp, #4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov89_0225AB64
@@ -4485,7 +4485,7 @@ ov89_0225AC10: ; 0x0225AC10
 	add r0, #0xc
 	bl sub_02018068
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov89_0225AC10
@@ -8202,7 +8202,7 @@ _0225C7D8:
 	add r0, r7, #0
 	bl sub_02026380
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 _0225C80A:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}

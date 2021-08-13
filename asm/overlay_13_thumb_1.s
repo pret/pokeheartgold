@@ -34,13 +34,13 @@ _0221BA0C:
 	mov r1, #1
 	ldr r0, [sp]
 	lsl r1, r1, #0x12
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #1
 	mov r2, #0
 	bl ov13_0222B430
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r5, #0
 	bl sub_020D3A4C
 	ldr r1, _0221BA6C ; =0x04000208

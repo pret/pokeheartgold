@@ -15,7 +15,7 @@ ov23_022598C0: ; 0x022598C0
 _022598D0:
 	add r0, r5, #0
 	mov r1, #0x14
-	bl sub_0201AA8C
+	bl AllocFromHeap
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x14
@@ -69,13 +69,13 @@ ov23_02259944: ; 0x02259944
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r4, #4]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	ldr r0, [r4, #8]
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov23_02259944
@@ -155,12 +155,12 @@ ov23_02259964: ; 0x02259964
 	add r0, r5, #0
 	bl sub_02026380
 	add r0, r7, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 _02259A14:
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov23_02259964
@@ -213,9 +213,9 @@ ov23_02259A24: ; 0x02259A24
 	add r0, r6, #0
 	bl sub_02026380
 	add r0, r4, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0201AB0C
+	bl FreeToHeap
 	add r0, r7, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
