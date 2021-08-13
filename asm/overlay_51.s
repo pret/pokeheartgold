@@ -204,7 +204,7 @@ _021E5C2C:
 	add r0, r4, r0
 	bl ov51_021E7DA4
 	ldr r0, _021E5D70 ; =0x00000694
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _021E5D74 ; =0x0000311C
 	add r0, r4, r0
 	bl ov51_021E78F8
@@ -546,7 +546,7 @@ ov51_021E5F64: ; 0x021E5F64
 	mov r0, #0
 	mov r1, #0x1b
 	mov r3, #0x19
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, _021E6018 ; =0x000033C4
 	str r0, [r5, r1]
 	mov r0, #4
@@ -672,7 +672,7 @@ _021E6042:
 	bl sub_02026380
 	ldr r0, _021E60D0 ; =0x000033C4
 	ldr r0, [r6, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #4
 	bl sub_02002DB4
 	pop {r3, r4, r5, r6, r7, pc}
@@ -814,7 +814,7 @@ _021E61B0:
 	mov r0, #0x31
 	add r2, sp, #0
 	mov r3, #0x19
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r4, r0, #0
 	ldr r0, [sp]
 	mov r1, #2
@@ -828,12 +828,12 @@ _021E61B0:
 	add r0, r5, #0
 	add r0, #0x20
 	add r2, #0xe0
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 	mov r1, #0x1e
 	lsl r1, r1, #4
 	add r0, r5, r1
 	mov r2, #0x20
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x64
@@ -854,7 +854,7 @@ ov51_021E6200: ; 0x021E6200
 	mov r1, #0x3c
 	add r2, sp, #0
 	mov r3, #0x19
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r6, r0, #0
 	ldr r0, [sp]
 	lsl r4, r4, #5
@@ -865,7 +865,7 @@ ov51_021E6200: ; 0x021E6200
 	add r0, r5, r4
 	mov r1, #0x80
 	mov r2, #0x20
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 	add r0, r6, #0
 	bl FreeToHeap
 	add sp, #4
@@ -1009,7 +1009,7 @@ ov51_021E6354: ; 0x021E6354
 	mov r1, #0
 	add r2, sp, #0x20
 	mov r3, #0x19
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r5, r0, #0
 	ldr r0, [sp, #0x20]
 	mov r1, #2
@@ -1021,7 +1021,7 @@ ov51_021E6354: ; 0x021E6354
 	ldr r0, [r0, #0xc]
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -1037,7 +1037,7 @@ ov51_021E6354: ; 0x021E6354
 	mov r1, #0x1c
 	add r2, sp, #0x1c
 	mov r3, #0x19
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r5, r0, #0
 	ldr r0, [sp, #0x1c]
 	mov r1, #2
@@ -1049,7 +1049,7 @@ ov51_021E6354: ; 0x021E6354
 	ldr r0, [r0, #0xc]
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -1672,7 +1672,7 @@ _021E68B0:
 	add r2, #0x80
 	str r2, [r4, r0]
 	ldr r0, _021E69DC ; =0x00000695
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _021E69D4 ; =0x00003436
 	ldrb r1, [r4, r0]
 	add r1, r1, #1
@@ -1879,7 +1879,7 @@ ov51_021E6A54: ; 0x021E6A54
 	lsr r0, r0, #0x1f
 	bne _021E6A8E
 	ldr r0, _021E6AA8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #4
 	pop {r3, pc}
 _021E6A7C:
@@ -1888,7 +1888,7 @@ _021E6A7C:
 	beq _021E6A8E
 	mov r0, #0x25
 	lsl r0, r0, #6
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #5
 	pop {r3, pc}
 _021E6A8E:
@@ -1926,7 +1926,7 @@ _021E6ABE:
 	str r0, [r4]
 	mov r0, #0x25
 	lsl r0, r0, #6
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #5
 	pop {r3, r4, r5, pc}
 _021E6AD8:
@@ -1946,7 +1946,7 @@ _021E6AD8:
 	mov r0, #1
 	str r0, [r4]
 	ldr r0, _021E6B38 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #4
 	pop {r3, r4, r5, pc}
 _021E6B02:
@@ -2394,7 +2394,7 @@ _021E6E6C:
 	ldr r0, [r5]
 	add r1, r6, r1
 	add r2, r7, r2
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -2459,7 +2459,7 @@ ov51_021E6EF0: ; 0x021E6EF0
 _021E6F02:
 	lsl r0, r5, #4
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
@@ -3257,7 +3257,7 @@ _021E758E:
 	mov r0, #0
 	mov r1, #0x1b
 	mov r3, #0x19
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x10]
 	mov r0, #0x20
 	mov r1, #0x19
@@ -3316,7 +3316,7 @@ _021E758E:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	ldr r0, [sp, #0x10]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
 	bl sub_02026380
 	ldr r0, [sp, #0x14]
@@ -3540,7 +3540,7 @@ ov51_021E7804: ; 0x021E7804
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r4]
 	mov r1, #0x1a
 	str r0, [sp]

@@ -360,7 +360,7 @@ _0225D7F0:
 	ldr r2, [r3, r2]
 	add r1, r5, #0
 	add r2, r2, r6
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -392,7 +392,7 @@ ov33_0225D820: ; 0x0225D820
 	add r5, #0x18
 _0225D834:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldrh r0, [r6, r7]
 	add r4, r4, #1
 	add r5, #0x10
@@ -458,7 +458,7 @@ ov33_0225D84C: ; 0x0225D84C
 	lsl r2, r2, #6
 	add r0, r0, r2
 	add r1, r5, #0
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -480,7 +480,7 @@ ov33_0225D8D4: ; 0x0225D8D4
 	mov r1, #0x1b
 	mov r2, #0xbf
 	mov r3, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x14]
 	ldr r0, _0225D9C8 ; =0x000001BA
 	ldr r3, _0225D9CC ; =0x0225DA50
@@ -573,7 +573,7 @@ _0225D912:
 	blo _0225D912
 _0225D9B0:
 	ldr r0, [sp, #0x14]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #4
 	bl sub_02002DB4
 	ldr r0, [r7]

@@ -743,7 +743,7 @@ _0223E33C:
 	cmp r0, #0xfe
 	bne _0223E36E
 	ldr r0, _0223E5C0 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -770,7 +770,7 @@ _0223E36E:
 	cmp r0, #9
 	beq _0223E3C2
 	ldr r0, _0223E5C4 ; =0x000005F3
-	bl sub_0200604C
+	bl PlaySE
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -783,7 +783,7 @@ _0223E38E:
 	cmp r0, #0xa
 	blo _0223E3AC
 	ldr r0, _0223E5C4 ; =0x000005F3
-	bl sub_0200604C
+	bl PlaySE
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -793,13 +793,13 @@ _0223E3AC:
 	cmp r0, #9
 	bne _0223E3C2
 	ldr r0, _0223E5C4 ; =0x000005F3
-	bl sub_0200604C
+	bl PlaySE
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _0223E3C2:
 	ldr r0, _0223E5C0 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	ldrb r0, [r4, #9]
 	bl ov80_0223792C
 	cmp r0, #0
@@ -891,7 +891,7 @@ _0223E482:
 	mov r1, #0
 	bl sub_02006154
 	ldr r0, _0223E5CC ; =0x00000623
-	bl sub_0200604C
+	bl PlaySE
 	ldrb r0, [r4, #0x1f]
 	cmp r0, #0x75
 	beq _0223E498
@@ -1221,7 +1221,7 @@ _0223E73C:
 	mov r1, #0
 	bl sub_02006154
 	ldr r0, _0223E7E4 ; =0x00000623
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov82_0223F834
 	mov r0, #6
@@ -1445,12 +1445,12 @@ _0223E8E4:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r6, #0
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r6, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -1463,7 +1463,7 @@ _0223E8E4:
 	add r0, #0xa8
 	bl ov82_0223FBBC
 	ldr r0, [r6, #0x20]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r6, #0x24]
 	bl sub_0200BDA0
 	ldr r0, [r6, #0x28]
@@ -1571,7 +1571,7 @@ ov82_0223E9E8: ; 0x0223E9E8
 	mov r0, #1
 	mov r1, #0x1b
 	mov r3, #0x69
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r5, #0x20]
 	mov r0, #0x69
 	bl sub_0200BD08
@@ -1717,7 +1717,7 @@ ov82_0223EB3C: ; 0x0223EB3C
 	ldr r0, [r0]
 	lsl r2, r1, #8
 	mov r3, #0x69
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r4, #0
 	add r0, #0x94
 	mov r2, #2
@@ -1725,7 +1725,7 @@ ov82_0223EB3C: ; 0x0223EB3C
 	mov r1, #0
 	lsl r2, r2, #8
 	mov r3, #0x69
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r4, #0
 	mov r1, #3
 	bl ov82_0223EDF0
@@ -2074,7 +2074,7 @@ ov82_0223EE38: ; 0x0223EE38
 	mov r1, #0x99
 	add r2, sp, #0
 	mov r3, #0x69
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r4, r0, #0
 	ldr r0, [sp]
 	mov r1, #0xc0
@@ -2084,7 +2084,7 @@ ov82_0223EE38: ; 0x0223EE38
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	mov r2, #0xc0
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #4
@@ -2344,7 +2344,7 @@ ov82_0223F040: ; 0x0223F040
 	mov r0, #1
 	mov r1, #0x1b
 	mov r3, #0x69
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x24]
 	mov r0, #0xb
 	mov r1, #0x69
@@ -2418,7 +2418,7 @@ _0223F0D4:
 	add r0, r5, #0
 	bl sub_02026380
 	ldr r0, [sp, #0x24]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [sp, #0x10]
 	bl CopyWindowToVram
 	add sp, #0x2c
@@ -2528,7 +2528,7 @@ ov82_0223F1AC: ; 0x0223F1AC
 	mov r0, #1
 	mov r1, #0x1b
 	mov r3, #0x69
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r1, #0x25
 	str r0, [sp, #0x10]
 	bl sub_0200BBA0
@@ -2559,7 +2559,7 @@ ov82_0223F1AC: ; 0x0223F1AC
 	add r0, r6, #0
 	bl sub_02026380
 	ldr r0, [sp, #0x10]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add sp, #0x14
@@ -2846,7 +2846,7 @@ _0223F424:
 	cmp r0, #1
 	bne _0223F44A
 	ldr r0, _0223F484 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov82_0223F558
 	add r5, r0, #0
@@ -4085,7 +4085,7 @@ _0223FD34:
 	add r0, r7, #0
 	add r1, r5, r6
 	add r2, r2, r3
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r5, r6
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -4107,7 +4107,7 @@ ov82_0223FD5C: ; 0x0223FD5C
 _0223FD62:
 	lsl r0, r4, #4
 	add r0, r5, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -4174,7 +4174,7 @@ ov82_0223FDC8: ; 0x0223FDC8
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x6d
 	mov r2, #0
 	str r0, [sp, #8]

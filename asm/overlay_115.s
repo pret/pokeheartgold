@@ -176,7 +176,7 @@ ov115_0225F158: ; 0x0225F158
 	mov r1, #0x1b
 	mov r2, #0xbd
 	add r3, r5, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_0200BD08
@@ -202,7 +202,7 @@ ov115_0225F158: ; 0x0225F158
 	add r2, r5, #0
 	bl sub_0200CBBC
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
 	bl sub_0200BDA0
 	add r0, r5, #0
@@ -220,7 +220,7 @@ ov115_0225F1BC: ; 0x0225F1BC
 	mov r1, #0x1b
 	mov r2, #0xbd
 	add r3, r5, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_0200BD08
@@ -246,7 +246,7 @@ ov115_0225F1BC: ; 0x0225F1BC
 	add r2, r5, #0
 	bl sub_0200CBBC
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
 	bl sub_0200BDA0
 	add r0, r5, #0
@@ -789,7 +789,7 @@ _0225F650:
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -2194,7 +2194,7 @@ _022601BA:
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r7, #0x9a
 	mov r6, #0
 	add r5, r4, #0
@@ -2272,7 +2272,7 @@ ov115_02260254: ; 0x02260254
 	add r1, r6, #0
 	add r2, sp, #8
 	add r3, r5, #0
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r5, r0, #0
 	add r0, sp, #0x10
 	ldrh r0, [r0, #0x10]
@@ -2295,7 +2295,7 @@ ov115_02260254: ; 0x02260254
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x20
-	bl sub_020CFD18
+	bl GX_LoadOBJPltt
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0

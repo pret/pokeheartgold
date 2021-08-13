@@ -1118,13 +1118,13 @@ _021E614E:
 	bne _021E6160
 	mov r0, #0x93
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	b _021E619A
 _021E6160:
 	cmp r1, #0x28
 	bne _021E616C
 	ldr r0, _021E61AC ; =0x0000092E
-	bl sub_0200604C
+	bl PlaySE
 	b _021E619A
 _021E616C:
 	cmp r1, #0x4e
@@ -1132,13 +1132,13 @@ _021E616C:
 	add r0, #0x79
 	bl sub_02005E44
 	ldr r0, _021E61B0 ; =0x00000932
-	bl sub_0200604C
+	bl PlaySE
 	b _021E619A
 _021E617E:
 	cmp r1, #0x62
 	bne _021E618A
 	ldr r0, _021E61B4 ; =0x0000092F
-	bl sub_0200604C
+	bl PlaySE
 	b _021E619A
 _021E618A:
 	cmp r1, #0x81
@@ -1215,7 +1215,7 @@ _021E6216:
 	tst r0, r1
 	bne _021E6226
 	ldr r0, _021E624C ; =0x0000092D
-	bl sub_0200604C
+	bl PlaySE
 _021E6226:
 	ldr r0, _021E6248 ; =0x00000414
 	ldr r0, [r4, r0]
@@ -1356,7 +1356,7 @@ _021E6330:
 	cmp r0, #0x73
 	bne _021E633C
 	ldr r0, _021E63A0 ; =0x00000931
-	bl sub_0200604C
+	bl PlaySE
 	b _021E6364
 _021E633C:
 	cmp r0, #0x91
@@ -1780,7 +1780,7 @@ ov106_021E6694: ; 0x021E6694
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020CFD18
+	bl GX_LoadOBJPltt
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov106_021E6694
@@ -1984,7 +1984,7 @@ ov106_021E6814: ; 0x021E6814
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _021E689C ; =0x00000418
 	mov r1, #0x99
 	ldr r4, [r5, r0]
@@ -2231,13 +2231,13 @@ _021E6A40:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E6A62
-	bl sub_020D0524
+	bl GX_BeginLoadBGExtPltt
 	ldr r2, _021E6A78 ; =0x00002034
 	add r0, r4, #0
 	ldr r2, [r5, r2]
 	add r1, r6, #0
-	bl sub_020D05C4
-	bl sub_020D0634
+	bl GX_LoadBGExtPltt
+	bl GX_EndLoadBGExtPltt
 	ldr r0, _021E6A78 ; =0x00002034
 	mov r1, #0
 	str r1, [r5, r0]

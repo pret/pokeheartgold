@@ -14468,7 +14468,7 @@ _0223D9B4:
 	ldr r2, _0223DA38 ; =0x00000191
 	add r0, sp, #0x30
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r3, _0223DA38 ; =0x00000191
 	add r2, sp, #0x30
 	mov r0, r6
@@ -18170,7 +18170,7 @@ _02240C3C:
 	add r0, sp, #0x104
 	mov r1, #0
 	mov r2, #0x14
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r4, _02240F40 ; =ov45_0223ED00
 	ldr r3, _02240F44 ; =ov45_0223ED1C
 	ldr r1, _02240F48 ; =ov45_0223F1C8
@@ -18547,7 +18547,7 @@ _02241108:
 	add r0, sp, #0x58
 	mov r1, #0
 	mov r2, #0x30
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _02241298 ; =ov45_0223F8F4
 	ldr r2, _0224129C ; =ov45_0223F1E4
 	str r0, [sp, #0x70]

@@ -1993,7 +1993,7 @@ ov42_02227E78: ; 0x02227E78
 	ldr r1, [r1, #0xc]
 	mov r2, #2
 	lsr r3, r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 _02227EBC:
 	mov r0, #0
 	mvn r0, r0
@@ -2008,7 +2008,7 @@ _02227EBC:
 	ldr r1, [r1, #0xc]
 	mov r2, #3
 	lsr r3, r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 _02227EDA:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}

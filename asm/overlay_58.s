@@ -41,7 +41,7 @@ ov58_022378E4: ; 0x022378E4
 	mov r1, #0
 	mov r2, #0x20
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x85
 	str r0, [r4]
 	add r0, r5, #0
@@ -150,7 +150,7 @@ ov58_022379C0: ; 0x022379C0
 	add r0, #1
 	mov r1, #0
 	mov r2, #5
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r1, sp, #0x14
 	add r0, r4, #0
 	add r1, #2
@@ -427,7 +427,7 @@ ov58_02237BD4: ; 0x02237BD4
 	mov r1, #0
 	mov r2, #0x44
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
 	bl sub_02074904

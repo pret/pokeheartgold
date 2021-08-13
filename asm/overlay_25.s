@@ -74,12 +74,12 @@ ov25_02259948: ; 0x02259948
 	ldr r0, _02259A24 ; =0x02259D9C
 	add r1, r5, #0
 	lsl r2, r2, #6
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldr r2, _02259A28 ; =0x000002D6
 	mov r0, #1
 	mov r1, #0x1b
 	mov r3, #0xb
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	bne _0225996C
 	bl GF_AssertFail
@@ -91,7 +91,7 @@ _0225996C:
 	bl sub_0200BBA0
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	cmp r4, #0
 	bne _02259988
 	bl GF_AssertFail
@@ -119,7 +119,7 @@ _022599A2:
 	add r1, r5, #0
 	add r1, #8
 	lsl r2, r6, #1
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r0, r4, #0
 	bl sub_02026380
 _022599C4:
@@ -159,7 +159,7 @@ _022599F8:
 	add r1, r5, #0
 	add r1, #0x24
 	lsl r2, r6, #1
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r0, r4, #0
 	bl sub_02026380
 _02259A1A:
@@ -199,7 +199,7 @@ ov25_02259A30: ; 0x02259A30
 	add r0, sp, #8
 	add r1, sp, #0x10
 	mov r2, #8
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	b _02259A7E
 _02259A6C:
 	mov r1, #6
@@ -209,7 +209,7 @@ _02259A6C:
 	add r0, #0x18
 	add r1, sp, #0x10
 	mov r2, #8
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 _02259A7E:
 	add r3, sp, #8
 	mov r0, #0xe
@@ -490,7 +490,7 @@ ov25_02259CC4: ; 0x02259CC4
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x34
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldrb r0, [r5, #7]
 	ldrb r1, [r5, #4]
 	mov r2, #1

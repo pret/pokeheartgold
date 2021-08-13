@@ -286,7 +286,7 @@ ov28_0225D764: ; 0x0225D764
 	mov r1, #0x1b
 	mov r2, #0xc4
 	mov r3, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r1, #0x11
 	add r4, r0, #0
 	bl sub_0200BBA0
@@ -318,7 +318,7 @@ ov28_0225D764: ; 0x0225D764
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov28_0225D764
@@ -360,7 +360,7 @@ _0225D7FC:
 	ldr r0, [r7, #0x10]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r4, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -421,7 +421,7 @@ ov28_0225D878: ; 0x0225D878
 	add r5, r0, r1
 _0225D882:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #5

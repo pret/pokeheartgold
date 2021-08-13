@@ -1566,7 +1566,7 @@ ov88_022593D0: ; 0x022593D0
 	add r4, #0x60
 _022593EC:
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r5, #0
 	bl ov88_0225954C
 	add r6, r6, #1
@@ -1754,7 +1754,7 @@ ov88_0225954C: ; 0x0225954C
 	bl sub_02026380
 	add r4, #0xc
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	pop {r4, pc}
 	thumb_func_end ov88_0225954C
 
@@ -1801,7 +1801,7 @@ _0225959C:
 	ldr r2, [r5, #8]
 	add r0, #0xc
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	ldrb r0, [r4]
 	ldr r1, [sp, #0x20]
 	strb r0, [r5, #0x1c]
@@ -1924,7 +1924,7 @@ ov88_0225967C: ; 0x0225967C
 	ldr r3, [sp, #0x1c]
 	mov r0, #0
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x38]
 	ldr r1, [sp, #0x1c]
 	mov r0, #0x80
@@ -2065,7 +2065,7 @@ _0225978A:
 	ldr r0, [sp, #0x34]
 	bl sub_02026380
 	ldr r0, [sp, #0x38]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2084,7 +2084,7 @@ ov88_022597DC: ; 0x022597DC
 	add r4, #0x40
 _022597E6:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	bl ov88_0225985C
 	add r6, r6, #1
@@ -2201,7 +2201,7 @@ _02259894:
 	ldr r0, [r4, #8]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0200604C
+	bl PlaySE
 _022598AA:
 	ldrh r0, [r4, #2]
 	cmp r0, #2
@@ -2241,7 +2241,7 @@ _022598D0:
 	ldrh r1, [r4, #6]
 	add r0, r4, #4
 	mov r2, #2
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]

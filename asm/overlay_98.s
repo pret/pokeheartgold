@@ -674,7 +674,7 @@ ov98_0221EABC: ; 0x0221EABC
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [sp, #8]
 	lsl r5, r0, #4
 	ldr r0, [sp]
@@ -683,7 +683,7 @@ ov98_0221EABC: ; 0x0221EABC
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #4]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r1, #6
 	ldr r2, [sp]
 	mov r0, #0
@@ -704,7 +704,7 @@ _0221EB1A:
 	ldr r0, [sp, #4]
 	add r1, r1, r5
 	add r2, r6, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	ldr r0, [r4, #4]
 	mov r1, #0
 	add r0, r0, r5
@@ -723,13 +723,13 @@ _0221EB44:
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xed
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0xc]
 	ldr r2, [sp, #0x20]
 	ldr r3, [sp]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #8]
 	ldr r0, [sp]
 	bl sub_0200BD08
@@ -761,9 +761,9 @@ ov98_0221EB84: ; 0x0221EB84
 	ldr r0, [r5, #0x10]
 	bl sub_0200BDA0
 	ldr r0, [r5, #0xc]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r5, #8]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r6, #0
 	cmp r7, #0
 	ble _0221EBC8
@@ -774,7 +774,7 @@ _0221EBB0:
 	bl sub_0201D8C8
 	ldr r0, [r5, #4]
 	add r0, r0, r4
-	bl sub_0201D520
+	bl RemoveWindow
 	add r6, r6, #1
 	add r4, #0x10
 	cmp r6, r7

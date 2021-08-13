@@ -15,7 +15,7 @@ ov19_022598C0: ; 0x022598C0
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0xb
 	str r0, [r4]
 	str r5, [r4, #0x14]
@@ -186,7 +186,7 @@ _02259A26:
 	mov r1, #0
 	bl ov19_02259E20
 	ldr r0, _02259A8C ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	str r0, [r5, #0xc]
 	b _02259A88
@@ -203,7 +203,7 @@ _02259A48:
 	mov r1, #1
 	bl ov19_02259E20
 	ldr r0, _02259A90 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #2
 	str r0, [r5, #0xc]
 	b _02259A88
@@ -223,7 +223,7 @@ _02259A70:
 	mov r1, #2
 	bl ov19_02259E20
 	ldr r0, _02259A90 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #3
 	str r0, [r5, #0xc]
 	b _02259A88
@@ -485,7 +485,7 @@ ov19_02259C68: ; 0x02259C68
 	ldr r3, [r6]
 	mov r1, #0x1b
 	add r2, r0, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r6, #0x24]
 	ldr r2, [r6]
 	mov r0, #6
@@ -535,7 +535,7 @@ _02259CC4:
 	ldr r0, [r6, #0x28]
 	bl sub_0200BDA0
 	ldr r0, [r6, #0x24]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #4
 	bl sub_02002DB4
 	pop {r4, r5, r6, pc}
@@ -554,7 +554,7 @@ _02259D00:
 	ldr r0, [r7, #0x18]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -578,7 +578,7 @@ _02259D2C:
 	add r0, r5, #0
 	bl sub_0201D8C8
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #2

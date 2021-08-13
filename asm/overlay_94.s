@@ -23,7 +23,7 @@ _021E5912:
 	ldr r0, [r4, r1]
 	mov r1, #0
 	mov r2, #0x1c
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _021E5938 ; =0x00000C65
 	ldrb r1, [r4, r0]
 	add r0, #0x1b
@@ -372,7 +372,7 @@ _021E5BCA:
 	add r3, r4, #0
 	bl sub_02015494
 	ldr r0, _021E5C20 ; =0x00000564
-	bl sub_0200604C
+	bl PlaySE
 	pop {r4, pc}
 _021E5BF6:
 	ldr r0, [r4, #0x18]
@@ -386,7 +386,7 @@ _021E5BF6:
 	add r3, r4, #0
 	bl sub_02015494
 	ldr r0, _021E5C24 ; =0x00000565
-	bl sub_0200604C
+	bl PlaySE
 	pop {r4, pc}
 	nop
 _021E5C18: .word 0x000001E7

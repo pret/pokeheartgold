@@ -73,7 +73,7 @@ ov74_022270C4: ; 0x022270C4
 	cmp r2, #0
 	ldr r0, _02227158 ; =0x000005DC
 	bne _02227106
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r5, #0
 	add r0, #0x54
 	ldrh r0, [r0]
@@ -98,7 +98,7 @@ _022270FE:
 	bl sub_020927D0
 	b _02227114
 _02227106:
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0
 	str r0, [r5, #0x58]
 	mov r0, #1
@@ -663,7 +663,7 @@ _0222752C:
 	ldrh r1, [r4]
 	bl ov74_02228548
 	ldr r0, _0222757C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _02227556:
@@ -763,7 +763,7 @@ _022275FC:
 	tst r0, r1
 	beq _02227624
 	ldr r0, _02227638 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x19
 	lsl r0, r0, #4
 	add r0, r5, r0
@@ -772,7 +772,7 @@ _022275FC:
 	mov r0, #0x19
 	lsl r0, r0, #4
 	add r0, r5, r0
-	bl sub_0201D520
+	bl RemoveWindow
 _02227624:
 	add sp, #0x5c
 	mov r0, #1
@@ -1106,7 +1106,7 @@ _0222787A:
 	ldr r2, [sp, #0x50]
 	mov r1, #0x1b
 	mov r3, #0x4f
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, [r5, #0x10]
 	add r7, r0, #0
 	bl sub_0200BBA0
@@ -1123,7 +1123,7 @@ _0222787A:
 	ldr r0, [sp, #0x10]
 	bl sub_02026380
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #4
 	str r0, [sp, #0x40]
 _022278BC:
@@ -1286,7 +1286,7 @@ _02227A08:
 	mov r0, #0x55
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x51
 	mov r1, #0x14
 	lsl r0, r0, #2
@@ -1294,7 +1294,7 @@ _02227A08:
 	add r0, #0xc
 	str r6, [r4, r0]
 	ldr r0, _02227AE8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _02227ABE
 _02227A26:
 	add r2, r1, #0
@@ -1327,15 +1327,15 @@ _02227A4E:
 	mov r0, #0x55
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x59
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r1, r4, #0
 	add r1, #0x54
 	ldrh r1, [r1]
@@ -1348,7 +1348,7 @@ _02227A4E:
 	add r0, #0xc
 	str r5, [r4, r0]
 	ldr r0, _02227AE8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _02227ABE
 _02227A9E:
 	mov r0, #1
@@ -1850,7 +1850,7 @@ ov74_02227E94: ; 0x02227E94
 	mov r0, #1
 	mov r1, #0x1b
 	mov r3, #0x4f
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x24]
 	mov r0, #0x4f
 	bl sub_0200BD08
@@ -2022,7 +2022,7 @@ _02227FEA:
 	ldr r0, [sp, #0x28]
 	bl sub_0200BDA0
 	ldr r0, [sp, #0x24]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #1
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
@@ -2861,7 +2861,7 @@ _022286B8:
 	cmp r2, #0
 	beq _022286AA
 	ldr r0, _022286F4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _022286CE:
 	add r0, r5, #0
 	add r0, #0x54
@@ -3080,7 +3080,7 @@ _02228870:
 	add r0, r5, #0
 	bl sub_0201D8C8
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _02228882:
 	add r6, r6, #1
 	add r4, #0x10
@@ -3924,7 +3924,7 @@ _02228F5E:
 	bl sub_0200E5D4
 	add r4, #0x18
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add sp, #0x5c
 	mov r0, #0
 	pop {r3, r4, pc}
@@ -4185,19 +4185,19 @@ ov74_02229190: ; 0x02229190
 	bl sub_0201D8C8
 	add r0, r4, #0
 	add r0, #0x18
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0x28
 	bl sub_0201D8C8
 	add r0, r4, #0
 	add r0, #0x28
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0x38
 	bl sub_0201D8C8
 	add r0, r4, #0
 	add r0, #0x38
-	bl sub_0201D520
+	bl RemoveWindow
 _022291D8:
 	ldr r0, [r4, #4]
 	mov r1, #0
@@ -4522,12 +4522,12 @@ ov74_0222947C: ; 0x0222947C
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r3, [r5]
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xf7
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	ldr r0, [r5]
 	bl sub_0200BD08
@@ -4639,7 +4639,7 @@ ov74_0222947C: ; 0x0222947C
 	ldr r0, [sp]
 	bl sub_0200BDA0
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, _022295C4 ; =0x00003174
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -4896,7 +4896,7 @@ _0222977A:
 	mov r1, #0
 	str r1, [r4, r0]
 	ldr r0, _02229A0C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x16
 	ldr r1, _02229A04 ; =0x00000708
 	lsl r0, r0, #4
@@ -4954,7 +4954,7 @@ _022297F2:
 	mov r3, #0x13
 	bl ov74_02235568
 	ldr r0, _02229A0C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _02229A00 ; =0x000034D8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -5233,7 +5233,7 @@ _02229A4A:
 	ldr r0, [r4, r0]
 	bl sub_0200F450
 	ldr r0, _02229B60 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _02229B5C ; =0x000034D8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -5366,7 +5366,7 @@ ov74_02229B68: ; 0x02229B68
 	str r0, [r1]
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _02229BB8 ; =0x0223D0A4
 	mov r1, #0x32
 	ldr r0, [r0]
@@ -5802,7 +5802,7 @@ ov74_02229E68: ; 0x02229E68
 	ldr r0, [r7, #0x7c]
 	cmp r0, #0
 	beq _02229E7E
-	bl sub_02014950
+	bl ListMenuItems_dtor
 _02229E7E:
 	ldr r0, [r7, #0x78]
 	cmp r0, #0
@@ -5816,7 +5816,7 @@ _02229E8C:
 	bl sub_0201D8C8
 	add r0, r7, #0
 	add r0, #0x18
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r7, #0
 	add r0, #0x58
 	bl sub_0201D3F0
@@ -5827,7 +5827,7 @@ _02229E8C:
 	bl sub_0201D8C8
 	add r0, r7, #0
 	add r0, #0x58
-	bl sub_0201D520
+	bl RemoveWindow
 _02229EB8:
 	add r5, r7, #0
 	mov r6, #0
@@ -5840,7 +5840,7 @@ _02229EC0:
 	add r0, r5, #0
 	bl sub_0201D8C8
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _02229ED2:
 	add r6, r6, #1
 	add r4, #0x10
@@ -6181,7 +6181,7 @@ _0222A142:
 	cmp r0, #1
 	beq _0222A15E
 	ldr r0, _0222A16C ; =0x0000061A
-	bl sub_0200604C
+	bl PlaySE
 _0222A15E:
 	ldr r0, _0222A170 ; =0x000029E8
 	mov r1, #0
@@ -7121,17 +7121,17 @@ ov74_0222A89C: ; 0x0222A89C
 	ldr r0, [r4, #0x7c]
 	cmp r0, #0
 	beq _0222A8B8
-	bl sub_02014950
+	bl ListMenuItems_dtor
 _0222A8B8:
 	add r0, r7, #0
 	mov r1, #0x54
-	bl sub_02014918
+	bl ListMenuItems_ctor
 	str r0, [r4, #0x7c]
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xf7
 	mov r3, #0x54
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r6, #0
 	str r0, [r4, #0x10]
 	cmp r7, #0
@@ -7141,14 +7141,14 @@ _0222A8D6:
 	ldr r1, [r4, #0x10]
 	ldr r2, [r5]
 	ldr r3, [r5, #4]
-	bl sub_02014960
+	bl ListMenuItems_AppendFromMsgData
 	add r6, r6, #1
 	add r5, #8
 	cmp r6, r7
 	blt _0222A8D6
 _0222A8EA:
 	ldr r0, [r4, #0x10]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r3, _0222A948 ; =0x0223C270
 	add r2, sp, #8
 	ldmia r3!, {r0, r1}
@@ -7308,7 +7308,7 @@ ov74_0222AA18: ; 0x0222AA18
 	mov r1, #0x1b
 	mov r2, #0xf7
 	mov r3, #0x54
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x10]
 	mov r0, #0x54
 	bl sub_0200BD08
@@ -7353,7 +7353,7 @@ _0222AA86:
 	mov r3, #2
 	bl sub_0200E998
 	ldr r0, [r4, #0x10]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #0xc]
 	bl sub_0200BDA0
 	mov r0, #0xff
@@ -7428,7 +7428,7 @@ ov74_0222AB0C: ; 0x0222AB0C
 	b _0222AB4A
 _0222AB30:
 	ldr r0, _0222AB68 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	cmp r6, #0
 	beq _0222AB66
 	add r0, r7, #0
@@ -7441,7 +7441,7 @@ _0222AB30:
 	pop {r3, r4, r5, r6, r7, pc}
 _0222AB4A:
 	ldr r0, _0222AB68 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	cmp r4, #0
 	beq _0222AB66
 	ldr r0, _0222AB6C ; =0x0223D0A8
@@ -7603,12 +7603,12 @@ _0222AC8C:
 	mov r0, #0x9a
 	lsl r0, r0, #6
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4]
 	mov r1, #0
 	bl sub_0201CAE0
 	ldr r0, _0222ACD4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r6, #0
 	mov r1, #0xc4
 	mov r2, #0
@@ -7759,7 +7759,7 @@ ov74_0222ADBC: ; 0x0222ADBC
 	mov r1, #0x1b
 	mov r2, #0xf7
 	mov r3, #0x54
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #4]
 	mov r0, #0x54
 	bl sub_0200BD08
@@ -7779,7 +7779,7 @@ ov74_0222ADBC: ; 0x0222ADBC
 	str r7, [r4, #0x74]
 	bl sub_0200BDA0
 	ldr r0, [sp, #4]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	b _0222AE36
 _0222AE16:
 	ldr r0, [r4, #0x6c]
@@ -10176,7 +10176,7 @@ _0222C14A:
 	bne _0222C1A8
 _0222C164:
 	ldr r0, _0222C2E0 ; =0x0000061A
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #5
 	str r0, [r4]
 	add r0, r4, #0
@@ -10695,7 +10695,7 @@ _0222C57E:
 	b _0222C5D2
 _0222C5CC:
 	ldr r0, _0222C66C ; =0x00000623
-	bl sub_0200604C
+	bl PlaySE
 _0222C5D2:
 	mov r0, #0x23
 	str r0, [r5]
@@ -11122,7 +11122,7 @@ _0222C96A:
 	bl ov74_02229DF8
 	bl sub_0203A914
 	ldr r0, _0222CA28 ; =0x00000623
-	bl sub_0200604C
+	bl PlaySE
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -11137,7 +11137,7 @@ _0222C96A:
 	b _0222CD3A
 _0222C9AA:
 	ldr r0, _0222CA2C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r1, r4, #0
 	add r0, r6, #0
 	add r1, #0x18
@@ -11163,7 +11163,7 @@ _0222C9DA:
 	mov r1, #0
 	bl ov74_02229E28
 	ldr r0, _0222CA2C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r1, r4, #0
 	add r0, r6, #0
 	add r1, #0x18
@@ -11196,7 +11196,7 @@ _0222CA28: .word 0x00000623
 _0222CA2C: .word 0x000005DC
 _0222CA30: .word 0x000015DC
 _0222CA34:
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r6, #0
 	mov r1, #0xc4
 	mov r2, #0
@@ -11348,7 +11348,7 @@ _0222CB58:
 	mvn r1, r1
 	bl ov74_02229F28
 	ldr r0, _0222CD60 ; =0x00000623
-	bl sub_0200604C
+	bl PlaySE
 	add r1, r4, #0
 	add r0, r6, #0
 	add r1, #0x18
@@ -11481,7 +11481,7 @@ _0222CC7E:
 	cmp r0, #0
 	beq _0222CD3A
 	ldr r0, _0222CD68 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	add r0, #0xda
 	ldrb r0, [r0]
@@ -12087,7 +12087,7 @@ ov74_0222D11C: ; 0x0222D11C
 	str r3, [sp]
 	cmp r0, #0
 	beq _0222D134
-	bl sub_02014950
+	bl ListMenuItems_dtor
 _0222D134:
 	ldr r0, _0222D1C8 ; =0x00002BC8
 	ldr r0, [r5, r0]
@@ -12099,14 +12099,14 @@ _0222D134:
 _0222D144:
 	add r0, r7, #0
 	mov r1, #0x55
-	bl sub_02014918
+	bl ListMenuItems_ctor
 	ldr r1, _0222D1C4 ; =0x00002BCC
 	mov r2, #0xf7
 	str r0, [r5, r1]
 	mov r0, #0
 	mov r1, #0x1b
 	mov r3, #0x55
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, _0222D1CC ; =0x00002A04
 	mov r6, #0
 	str r0, [r5, r1]
@@ -12119,7 +12119,7 @@ _0222D166:
 	ldr r1, [r5, r1]
 	ldr r2, [r4]
 	ldr r3, [r4, #4]
-	bl sub_02014960
+	bl ListMenuItems_AppendFromMsgData
 	add r6, r6, #1
 	add r4, #8
 	cmp r6, r7
@@ -12127,7 +12127,7 @@ _0222D166:
 _0222D17E:
 	ldr r0, _0222D1CC ; =0x00002A04
 	ldr r0, [r5, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r4, _0222D1D0 ; =0x0223C320
 	add r3, sp, #4
 	add r2, r3, #0
@@ -12174,7 +12174,7 @@ ov74_0222D1D4: ; 0x0222D1D4
 	mov r1, #0x1b
 	mov r2, #0xf7
 	mov r3, #0x55
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	mov r0, #0x55
 	bl sub_0200BD08
@@ -12207,7 +12207,7 @@ ov74_0222D1D4: ; 0x0222D1D4
 	add r0, r7, #0
 	bl sub_02026380
 	add r0, r4, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r6, #0
 	bl sub_0200BDA0
 	add sp, #0x10
@@ -12459,7 +12459,7 @@ ov74_0222D448: ; 0x0222D448
 	add r4, r0, #0
 	ldr r0, _0222D484 ; =0x00002BCC
 	ldr r0, [r4, r0]
-	bl sub_02014950
+	bl ListMenuItems_dtor
 	mov r1, #0
 	ldr r0, _0222D484 ; =0x00002BCC
 	add r2, r1, #0
@@ -12478,7 +12478,7 @@ ov74_0222D448: ; 0x0222D448
 	bl sub_0201D8C8
 	ldr r0, _0222D48C ; =0x00002BE0
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	pop {r4, pc}
 	.balign 4, 0
 _0222D484: .word 0x00002BCC
@@ -12812,7 +12812,7 @@ _0222D6D6:
 	add r0, r7, #0
 	bl sub_0201D8C8
 	add r0, r7, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r1, r4, #2
 	mov r0, #4
 	sub r0, r0, r1
@@ -12976,7 +12976,7 @@ ov74_0222D824: ; 0x0222D824
 	mov r1, #0x1b
 	mov r2, #0xf7
 	ldr r4, _0222D9C8 ; =0x0223C340
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, _0222D9CC ; =0x00002A04
 	str r0, [r5, r1]
 	ldr r0, [r5]
@@ -13011,7 +13011,7 @@ _0222D864:
 	add r0, r6, #0
 	bl sub_0201D8C8
 	add r0, r6, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _0222D886:
 	ldr r0, [sp, #0x1c]
 	add r7, #0x30
@@ -13155,7 +13155,7 @@ _0222D98A:
 	blo _0222D8AA
 	ldr r0, _0222D9CC ; =0x00002A04
 	ldr r0, [r5, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
@@ -13228,7 +13228,7 @@ _0222DA2A:
 	mov r1, #0x1b
 	mov r2, #0xf7
 	mov r3, #0x55
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, _0222DAE8 ; =0x00002A04
 	str r0, [r5, r1]
 	mov r0, #0x55
@@ -13272,7 +13272,7 @@ _0222DA58:
 	bl sub_02026380
 	ldr r0, _0222DAE8 ; =0x00002A04
 	ldr r0, [r5, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
@@ -13514,7 +13514,7 @@ ov74_0222DC60: ; 0x0222DC60
 	b _0222DCA0
 _0222DC86:
 	ldr r0, _0222DCCC ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	cmp r6, #0
 	beq _0222DCC4
 	add r0, r7, #0
@@ -13527,7 +13527,7 @@ _0222DC86:
 	pop {r3, r4, r5, r6, r7, pc}
 _0222DCA0:
 	ldr r0, _0222DCCC ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	cmp r4, #0
 	beq _0222DCC4
 	cmp r4, #0x1f
@@ -13990,7 +13990,7 @@ ov74_0222E03C: ; 0x0222E03C
 	cmp r0, #1
 	bhi _0222E056
 	ldr r0, _0222E058 ; =0x0000061A
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _0222E05C ; =0x00003D48
 	mov r1, #0
 	str r1, [r4, r0]
@@ -14156,7 +14156,7 @@ _0222E17A:
 	cmp r4, #1
 	bne _0222E1B2
 	ldr r0, _0222E1E4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xab
 	bl sub_02037AC0
 	mov r3, #0xa
@@ -14181,7 +14181,7 @@ _0222E1B2:
 	cmp r4, #2
 	bne _0222E1C6
 	ldr r0, _0222E1E4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r2, #0x14
@@ -14190,7 +14190,7 @@ _0222E1C6:
 	cmp r4, #3
 	bne _0222E1D0
 	ldr r0, _0222E1E4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _0222E1D0:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -14392,7 +14392,7 @@ _0222E37A:
 	tst r0, r1
 	beq _0222E394
 	ldr r0, _0222E5C8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x1d
@@ -14404,7 +14404,7 @@ _0222E394:
 	tst r0, r1
 	beq _0222E3A4
 	ldr r0, _0222E5C8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #4
 	str r0, [r5]
 _0222E3A4:
@@ -14416,7 +14416,7 @@ _0222E3A4:
 	b _0222E79C
 _0222E3B0:
 	ldr r0, _0222E5CC ; =0x000005FF
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xaf
 	lsl r0, r0, #6
 	str r6, [r4, r0]
@@ -14455,13 +14455,13 @@ _0222E3F0:
 	tst r0, r1
 	beq _0222E4C2
 	ldr r0, _0222E5C8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xb
 	str r0, [r5]
 	b _0222E79C
 _0222E410:
 	ldr r0, _0222E5CC ; =0x000005FF
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x10
 	mov r1, #0
 	bl sub_02022C60
@@ -14505,7 +14505,7 @@ _0222E468:
 	tst r0, r1
 	beq _0222E4C2
 	ldr r0, _0222E5CC ; =0x000005FF
-	bl sub_0200604C
+	bl PlaySE
 	mov r1, #1
 	add r0, r4, #0
 	lsl r2, r1, #0xc
@@ -14571,7 +14571,7 @@ _0222E4F4:
 	bl sub_0201D8C8
 	ldr r0, _0222E5D0 ; =0x00002BD0
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #3
 	str r0, [r5]
 	b _0222E79C
@@ -14612,7 +14612,7 @@ _0222E54C:
 	bl sub_0201D8C8
 	ldr r0, _0222E5D0 ; =0x00002BD0
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #3
@@ -14827,7 +14827,7 @@ _0222E744:
 	bl sub_0201D8C8
 	ldr r0, _0222E7CC ; =0x00002BD0
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #3
 	str r0, [r5]
 	b _0222E79C
@@ -15092,7 +15092,7 @@ _0222E926:
 	mov r1, #0x1b
 	mov r2, #0xf7
 	mov r3, #0x55
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x1c]
 	mov r5, #0
 	ldr r0, [sp, #0x10]
@@ -15203,7 +15203,7 @@ _0222EA54:
 	bl CopyWindowToVram
 _0222EA5E:
 	ldr r0, [sp, #0x1c]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
 	bl sub_0200BDA0
 	add r0, r6, #0
@@ -15230,7 +15230,7 @@ ov74_0222EA88: ; 0x0222EA88
 	mov r1, #0x1b
 	mov r2, #0xf7
 	mov r3, #0x55
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, _0222EB20 ; =0x00002A04
 	str r0, [r5, r1]
 	mov r0, #0x55
@@ -15277,7 +15277,7 @@ ov74_0222EA88: ; 0x0222EA88
 	bl sub_02026380
 	ldr r0, _0222EB20 ; =0x00002A04
 	ldr r0, [r5, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
@@ -15324,7 +15324,7 @@ _0222EB56:
 	add r0, r5, #0
 	bl sub_0201D8C8
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _0222EB6A:
 	add r6, r6, #1
 	add r4, #0x10
@@ -15339,7 +15339,7 @@ _0222EB6A:
 	bl sub_0201D8C8
 	ldr r0, _0222EBF4 ; =0x00002BD0
 	add r0, r7, r0
-	bl sub_0201D520
+	bl RemoveWindow
 _0222EB8A:
 	ldr r0, _0222EBF8 ; =0x00002BE0
 	ldr r1, [r7, r0]
@@ -15349,7 +15349,7 @@ _0222EB8A:
 	bl sub_0201D8C8
 	ldr r0, _0222EBF8 ; =0x00002BE0
 	add r0, r7, r0
-	bl sub_0201D520
+	bl RemoveWindow
 _0222EBA0:
 	ldr r0, _0222EBFC ; =0x000029FC
 	mov r1, #0
@@ -15531,7 +15531,7 @@ ov74_0222ED04: ; 0x0222ED04
 	str r3, [sp]
 	cmp r0, #0
 	beq _0222ED1E
-	bl sub_02014950
+	bl ListMenuItems_dtor
 _0222ED1E:
 	ldr r0, _0222EDB4 ; =0x00002BBC
 	ldr r0, [r5, r0]
@@ -15543,7 +15543,7 @@ _0222ED1E:
 _0222ED2E:
 	add r0, r7, #0
 	mov r1, #0x55
-	bl sub_02014918
+	bl ListMenuItems_ctor
 	mov r1, #0xaf
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -15551,7 +15551,7 @@ _0222ED2E:
 	mov r1, #0x1b
 	mov r2, #0xf7
 	mov r3, #0x55
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, _0222EDB8 ; =0x00002A04
 	mov r6, #0
 	str r0, [r5, r1]
@@ -15565,7 +15565,7 @@ _0222ED52:
 	ldr r1, [r5, r1]
 	ldr r2, [r4]
 	ldr r3, [r4, #4]
-	bl sub_02014960
+	bl ListMenuItems_AppendFromMsgData
 	add r6, r6, #1
 	add r4, #8
 	cmp r6, r7
@@ -15573,7 +15573,7 @@ _0222ED52:
 _0222ED6C:
 	ldr r0, _0222EDB8 ; =0x00002A04
 	ldr r0, [r5, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r4, _0222EDBC ; =0x0223C6E0
 	add r3, sp, #4
 	add r2, r3, #0
@@ -15617,7 +15617,7 @@ ov74_0222EDC0: ; 0x0222EDC0
 	mov r0, #0xaf
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02014950
+	bl ListMenuItems_dtor
 	mov r0, #0xaf
 	mov r1, #0
 	lsl r0, r0, #6
@@ -15637,7 +15637,7 @@ ov74_0222EDC0: ; 0x0222EDC0
 	bl sub_0201D8C8
 	ldr r0, _0222EE04 ; =0x00002BD4
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	pop {r4, pc}
 	.balign 4, 0
 _0222EE00: .word 0x00002BBC
@@ -15848,7 +15848,7 @@ ov74_0222EF68: ; 0x0222EF68
 	add r0, r6, #0
 	bl sub_0201D8C8
 	add r0, r6, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4, #8]
 	add r1, r6, #0
 	lsl r0, r0, #0x18
@@ -15934,7 +15934,7 @@ ov74_0222F024: ; 0x0222F024
 	mov r1, #0x1b
 	mov r2, #0xf7
 	ldr r4, _0222F1A4 ; =0x0223C700
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, _0222F1A8 ; =0x00002A04
 	str r0, [r5, r1]
 	ldr r0, [r5]
@@ -15969,7 +15969,7 @@ _0222F064:
 	add r0, r6, #0
 	bl sub_0201D8C8
 	add r0, r6, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _0222F086:
 	ldr r0, [sp, #0x1c]
 	add r7, #0x30
@@ -16095,7 +16095,7 @@ _0222F166:
 	blo _0222F0A8
 	ldr r0, _0222F1A8 ; =0x00002A04
 	ldr r0, [r5, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
@@ -16168,7 +16168,7 @@ _0222F206:
 	mov r1, #0x1b
 	mov r2, #0xf7
 	mov r3, #0x55
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, _0222F2C4 ; =0x00002A04
 	str r0, [r5, r1]
 	mov r0, #0x55
@@ -16212,7 +16212,7 @@ _0222F234:
 	bl sub_02026380
 	ldr r0, _0222F2C4 ; =0x00002A04
 	ldr r0, [r5, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
@@ -16420,7 +16420,7 @@ ov74_0222F404: ; 0x0222F404
 	b _0222F444
 _0222F42A:
 	ldr r0, _0222F470 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	cmp r6, #0
 	beq _0222F468
 	add r0, r7, #0
@@ -16433,7 +16433,7 @@ _0222F42A:
 	pop {r3, r4, r5, r6, r7, pc}
 _0222F444:
 	ldr r0, _0222F470 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	cmp r4, #0
 	beq _0222F468
 	cmp r4, #0x1f
@@ -17025,7 +17025,7 @@ _0222F8FC:
 	tst r0, r1
 	beq _0222F91A
 	ldr r0, _0222FB6C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x1d
@@ -17039,7 +17039,7 @@ _0222F91A:
 	b _0222FB2C
 _0222F922:
 	ldr r0, _0222FB6C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #4
 	str r0, [r5]
 	b _0222FB2C
@@ -17073,13 +17073,13 @@ _0222F956:
 	tst r0, r1
 	beq _0222FA28
 	ldr r0, _0222FB6C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xb
 	str r0, [r5]
 	b _0222FB2C
 _0222F976:
 	ldr r0, _0222FB78 ; =0x000005FF
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x10
 	mov r1, #0
 	bl sub_02022C60
@@ -17123,7 +17123,7 @@ _0222F9CE:
 	tst r0, r1
 	beq _0222FA28
 	ldr r0, _0222FB78 ; =0x000005FF
-	bl sub_0200604C
+	bl PlaySE
 	mov r1, #1
 	add r0, r4, #0
 	lsl r2, r1, #0xc
@@ -17189,7 +17189,7 @@ _0222FA5A:
 	bl sub_0201D8C8
 	ldr r0, _0222FB70 ; =0x00002BC4
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #3
 	str r0, [r5]
 	b _0222FB2C
@@ -17247,7 +17247,7 @@ _0222FAD6:
 	bl sub_0201D8C8
 	ldr r0, _0222FB70 ; =0x00002BC4
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #3
 	str r0, [r5]
 	b _0222FB2C
@@ -17327,7 +17327,7 @@ _0222FB9E:
 	add r0, r5, #0
 	bl sub_0201D8C8
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _0222FBB2:
 	add r6, r6, #1
 	add r4, #0x10
@@ -17342,7 +17342,7 @@ _0222FBB2:
 	bl sub_0201D8C8
 	ldr r0, _0222FC3C ; =0x00002BC4
 	add r0, r7, r0
-	bl sub_0201D520
+	bl RemoveWindow
 _0222FBD2:
 	ldr r0, _0222FC40 ; =0x00002BD4
 	ldr r1, [r7, r0]
@@ -17352,7 +17352,7 @@ _0222FBD2:
 	bl sub_0201D8C8
 	ldr r0, _0222FC40 ; =0x00002BD4
 	add r0, r7, r0
-	bl sub_0201D520
+	bl RemoveWindow
 _0222FBE8:
 	ldr r0, _0222FC44 ; =0x000029FC
 	mov r1, #0
@@ -20252,7 +20252,7 @@ ov74_02231164: ; 0x02231164
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r1, #0x46
 	lsl r1, r1, #2
 	add r0, r1, #0
@@ -21541,7 +21541,7 @@ _02231A7E:
 	mov r0, #1
 	mov r1, #0x1b
 	mov r3, #0x4c
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x40]
 	str r0, [sp, #0x14]
@@ -21592,7 +21592,7 @@ _02231AA6:
 	bl sub_0200BDA0
 _02231B02:
 	ldr r0, [sp, #0x18]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #0
 	mvn r0, r0
 	str r0, [r5, #0x34]
@@ -23292,7 +23292,7 @@ _022327D6:
 	mov r1, #0x1b
 	mov r2, #0xed
 	mov r3, #0x4c
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0xb
@@ -23316,7 +23316,7 @@ _022327D6:
 	str r6, [sp, #0x68]
 	bl ov74_02231A1C
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r6, #0
 	bl sub_02026380
 	add r0, r4, #0
@@ -23956,7 +23956,7 @@ ov74_02232DA4: ; 0x02232DA4
 	add r0, r4, #0
 	bl sub_0201D8C8
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _02232DC0:
 	pop {r4, pc}
 	.balign 4, 0
@@ -24463,7 +24463,7 @@ ov74_0223319C: ; 0x0223319C
 	mvn r0, r0
 	str r0, [r5, #8]
 	ldr r0, _02233220 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _0223321C
 _022331DE:
 	cmp r4, #0
@@ -24492,7 +24492,7 @@ _0223320C:
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r0, _02233220 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _0223321C:
@@ -25052,7 +25052,7 @@ _022336B2:
 	add r0, r4, #0
 	bl ov74_02231FF4
 	ldr r0, _022338A8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _02233896
 _022336C2:
 	ldr r0, _022338A4 ; =0x0000E884
@@ -25068,7 +25068,7 @@ _022336D4:
 	add r0, r4, #0
 	bl ov74_02231FF4
 	ldr r0, _022338A8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _02233896
 _022336E2:
 	add r0, r4, #0
@@ -25077,7 +25077,7 @@ _022336E2:
 	add r3, r5, #0
 	bl ov74_02232940
 	ldr r0, _022338A8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _02233896
 _022336F6:
 	add r0, r4, #0
@@ -25156,7 +25156,7 @@ _0223377C:
 	add r0, r4, #0
 	bl ov74_02232F5C
 	ldr r0, _022338A8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x13
 	str r0, [r5]
 	b _02233896
@@ -25225,7 +25225,7 @@ _02233818:
 	ldr r0, [r4, r0]
 	bl sub_0200F450
 	ldr r0, _022338C4 ; =0x0000061A
-	bl sub_0200604C
+	bl PlaySE
 	cmp r6, #0xb
 	bne _0223383A
 #ifdef HEARTGOLD
@@ -25266,7 +25266,7 @@ _0223386A:
 	add r3, r5, #0
 	bl ov74_02232940
 	ldr r0, _022338A8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _02233896
 _0223387E:
 	bl sub_0200FB5C
@@ -29141,7 +29141,7 @@ _022354A6:
 	ldr r3, [r4, #8]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r6, [r5, #0x14]
 	str r0, [sp, #0x10]
 	cmp r6, #0
@@ -29214,7 +29214,7 @@ _02235542:
 	bl sub_0200BDA0
 _02235554:
 	ldr r0, [sp, #0x10]
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0223555A:
 	mov r0, #0xff
 	str r0, [r5, #0x50]
@@ -30598,7 +30598,7 @@ ov74_02235FF8: ; 0x02235FF8
 	pop {r3, pc}
 _02236002:
 	ldr r0, _0223600C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	pop {r3, pc}
 	nop
 _0223600C: .word 0x000005DC

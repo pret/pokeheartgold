@@ -436,7 +436,7 @@ ov93_0225F44C: ; 0x0225F44C
 	cmp r0, #0
 	bne _0225F4BC
 	ldr r0, _0225F540 ; =0x0000058F
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	strb r0, [r5, #0x274]
 _0225F4BC:

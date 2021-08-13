@@ -53,7 +53,7 @@ _022469A6:
 	mov r1, #0x1b
 	mov r2, #0xb3
 	mov r3, #0x38
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x10]
 	mov r0, #0x38
 	bl sub_0200BD08
@@ -250,7 +250,7 @@ ov71_02246B58: ; 0x02246B58
 	ldr r0, [r4, #0xc]
 	bl sub_0200BDA0
 	ldr r0, [r4, #0x10]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
 	bl sub_02026380
 	ldr r0, [r4, #8]
@@ -382,7 +382,7 @@ ov71_02246C6C: ; 0x02246C6C
 	mov r1, #6
 	add r2, sp, #4
 	mov r3, #0x38
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r7, r0, #0
 	beq _02246CA6
 	mov r0, #0
@@ -544,7 +544,7 @@ ov71_02246D9C: ; 0x02246D9C
 	cmp r0, #0
 	bgt _02246DD8
 	ldr r0, _02246E80 ; =0x000006AD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0x1e
 	add r0, #0xf0
@@ -557,8 +557,8 @@ _02246DD8:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02246E7C
-	bl sub_020D0524
-	bl sub_020D0774
+	bl GX_BeginLoadBGExtPltt
+	bl GXS_BeginLoadBGExtPltt
 	add r0, r4, #0
 	mov r1, #0x60
 	bl DC_FlushRange
@@ -566,14 +566,14 @@ _02246DD8:
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D05C4
+	bl GX_LoadBGExtPltt
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D078C
-	bl sub_020D0634
-	bl sub_020D07F0
+	bl GXS_LoadBGExtPltt
+	bl GX_EndLoadBGExtPltt
+	bl GXS_EndLoadBGExtPltt
 	mov r0, #0
 	add r4, #0xec
 	str r0, [r4]
@@ -584,8 +584,8 @@ _02246E1A:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02246E5C
-	bl sub_020D0524
-	bl sub_020D0774
+	bl GX_BeginLoadBGExtPltt
+	bl GXS_BeginLoadBGExtPltt
 	add r0, r4, #0
 	mov r1, #0x60
 	bl DC_FlushRange
@@ -593,14 +593,14 @@ _02246E1A:
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D05C4
+	bl GX_LoadBGExtPltt
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D078C
-	bl sub_020D0634
-	bl sub_020D07F0
+	bl GXS_LoadBGExtPltt
+	bl GX_EndLoadBGExtPltt
+	bl GXS_EndLoadBGExtPltt
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xec
@@ -2154,7 +2154,7 @@ ov71_02247924: ; 0x02247924
 	bl sub_0201BB4C
 	add r0, r4, #0
 	add r0, #0x58
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
@@ -2568,7 +2568,7 @@ _02247CC0:
 	ldr r2, [r4, #0x6c]
 	add r0, #0x58
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0x6d
@@ -2646,7 +2646,7 @@ _02247D80:
 	ldr r2, [r4, #0x6c]
 	add r0, #0x58
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	add r0, #0x58
 	bl sub_0201D8A0
@@ -2711,7 +2711,7 @@ _02247E06: ; jump table
 	.short _02247EAE - _02247E06 - 2 ; case 4
 _02247E10:
 	ldr r0, _02247ECC ; =0x000006A7
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0x10
@@ -3259,7 +3259,7 @@ _0224822E:
 	str r0, [r4, #0x24]
 _0224825C:
 	ldr r0, _022482E8 ; =0x000005E6
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4, #0x20]
 	add r0, r0, #1
 	str r0, [r4, #0x20]
@@ -3705,7 +3705,7 @@ _022485A4:
 	cmp r0, #0x28
 	bne _022485B8
 	ldr r0, _022485FC ; =0x000006AF
-	bl sub_0200604C
+	bl PlaySE
 _022485B8:
 	mov r0, #0x16
 	lsl r0, r0, #4
@@ -3958,20 +3958,20 @@ ov71_02248604: ; 0x02248604
 	add r0, r5, #0
 	mov r1, #0x60
 	bl DC_FlushRange
-	bl sub_020D0524
-	bl sub_020D0774
+	bl GX_BeginLoadBGExtPltt
+	bl GXS_BeginLoadBGExtPltt
 	mov r1, #6
 	add r0, r5, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D05C4
+	bl GX_LoadBGExtPltt
 	mov r1, #6
 	add r0, r5, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D078C
-	bl sub_020D0634
-	bl sub_020D07F0
+	bl GXS_LoadBGExtPltt
+	bl GX_EndLoadBGExtPltt
+	bl GXS_EndLoadBGExtPltt
 	add r0, r5, #0
 	bl FreeToHeap
 _0224880A:
@@ -5744,7 +5744,7 @@ _022495D0:
 	cmp r0, #0xa
 	ble _0224965C
 	ldr r0, _02249664 ; =0x000006AB
-	bl sub_0200604C
+	bl PlaySE
 	add r1, r5, #0
 	add r0, r5, #0
 	add r1, #0x34
@@ -5763,7 +5763,7 @@ _022495FA:
 	cmp r0, #0
 	beq _0224965C
 	ldr r0, _02249668 ; =0x000006AC
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5, #0x20]
 	mov r1, #3
 	bl sub_020248F0
@@ -6758,7 +6758,7 @@ _02249DCA:
 	cmp r0, #0
 	beq _02249E04
 	ldr r0, _02249E1C ; =0x000006A8
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #1
@@ -7270,7 +7270,7 @@ _0224A206:
 	cmp r0, #0
 	bne _0224A26A
 	ldr r0, _0224A270 ; =0x000006AA
-	bl sub_0200604C
+	bl PlaySE
 	add r1, r5, #0
 	add r0, r5, #0
 	add r1, #0x34
@@ -8670,20 +8670,20 @@ ov71_0224AB7C: ; 0x0224AB7C
 	add r0, r5, #0
 	mov r1, #0x60
 	bl DC_FlushRange
-	bl sub_020D0524
-	bl sub_020D0774
+	bl GX_BeginLoadBGExtPltt
+	bl GXS_BeginLoadBGExtPltt
 	mov r1, #6
 	add r0, r5, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D05C4
+	bl GX_LoadBGExtPltt
 	mov r1, #6
 	add r0, r5, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D078C
-	bl sub_020D0634
-	bl sub_020D07F0
+	bl GXS_LoadBGExtPltt
+	bl GX_EndLoadBGExtPltt
+	bl GXS_EndLoadBGExtPltt
 	add r0, r5, #0
 	bl FreeToHeap
 _0224AD52:
@@ -9243,7 +9243,7 @@ _0224B1C8:
 	bl sub_0201BB4C
 	add r0, r4, #0
 	add r0, #0x5c
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _0224B1E2
@@ -9750,7 +9750,7 @@ _0224B5DE:
 	ldr r2, [r4, #0x70]
 	add r0, #0x5c
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0x6d
@@ -9799,7 +9799,7 @@ _0224B62C:
 	ldr r2, [r4, #0x70]
 	add r0, #0x5c
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	add r0, #0x5c
 	bl sub_0201D8A0
@@ -10442,7 +10442,7 @@ _0224BB44:
 	cmp r1, r0
 	bge _0224BBCA
 	ldr r0, _0224BBD0 ; =0x000005E6
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0
 	ldr r1, [r4, #0x30]
 	mvn r0, r0

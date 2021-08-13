@@ -555,7 +555,7 @@ ov78_021E5D94: ; 0x021E5D94
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #4
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x38]
 	ldr r0, [r4]
 	bl sub_0200BD08
@@ -567,7 +567,7 @@ ov78_021E5D94: ; 0x021E5D94
 	ldr r0, [r4, #0x14]
 	add r1, #0x18
 	add r2, sp, #8
-	bl sub_0201D4F8
+	bl AddWindow
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #8
@@ -586,7 +586,7 @@ ov78_021E5D94: ; 0x021E5D94
 	ldr r0, [r4, #0x14]
 	add r1, #0x28
 	add r2, sp, #8
-	bl sub_0201D4F8
+	bl AddWindow
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #8
@@ -609,14 +609,14 @@ ov78_021E5E24: ; 0x021E5E24
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x28
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0x18
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4, #0x3c]
 	bl sub_0200BDA0
 	ldr r0, [r4, #0x38]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r4, pc}
 	thumb_func_end ov78_021E5E24
 
@@ -1597,11 +1597,11 @@ ov78_021E65BC: ; 0x021E65BC
 	add r0, r5, r4
 	mov r1, #0x40
 	mov r2, #0x20
-	bl sub_020CFD18
+	bl GX_LoadOBJPltt
 	add r0, r5, r4
 	mov r1, #0x40
 	mov r2, #0x20
-	bl sub_020CFD70
+	bl GXS_LoadOBJPltt
 	ldr r0, [sp, #0x14]
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
@@ -1778,11 +1778,11 @@ _021E679E:
 	add r0, r4, #0
 	mov r1, #0x60
 	mov r2, #0x20
-	bl sub_020CFD18
+	bl GX_LoadOBJPltt
 	add r0, r4, #0
 	mov r1, #0x60
 	mov r2, #0x20
-	bl sub_020CFD70
+	bl GXS_LoadOBJPltt
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]

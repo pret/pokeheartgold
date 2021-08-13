@@ -36,7 +36,7 @@ ov63_0221BE20: ; 0x0221BE20
 	ldr r2, _0221BF1C ; =0x0001306C
 	mov r1, #0
 	add r5, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	bl sub_020072A4
 	str r0, [r5]
@@ -44,7 +44,7 @@ ov63_0221BE20: ; 0x0221BE20
 	mov r1, #0x1b
 	mov r2, #0xb4
 	mov r3, #0x3e
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r1, r5, #0
 	add r1, #0x84
 	str r0, [r1]
@@ -144,7 +144,7 @@ ov63_0221BF28: ; 0x0221BF28
 	bl sub_0200BDA0
 	add r4, #0x84
 	ldr r0, [r4]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r5, #0
 	bl sub_02007294
 	mov r0, #0x3e
@@ -251,7 +251,7 @@ ov63_0221C028: ; 0x0221C028
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020CFD18
+	bl GX_LoadOBJPltt
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov63_0221C028
@@ -901,9 +901,9 @@ _0221C51C:
 	add r0, r5, #0
 	bl ov63_0221E8AC
 	ldr r0, _0221C598 ; =0x00000919
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _0221C59C ; =0x0000091A
-	bl sub_0200604C
+	bl PlaySE
 	ldr r1, _0221C578 ; =0x00013060
 	mov r0, #8
 	ldr r2, [r5, r1]
@@ -1978,7 +1978,7 @@ _0221CE06:
 	ldr r0, [r7, #0x10]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r6, r6, #1
 	add r4, #8
 	add r5, #0x10
@@ -2037,7 +2037,7 @@ ov63_0221CE7C: ; 0x0221CE7C
 	add r5, #0x14
 _0221CE84:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #7
@@ -5463,7 +5463,7 @@ _0221EAB6:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r7, r7, #1
 	add r6, #8
 	add r4, #0x10
@@ -5617,7 +5617,7 @@ ov63_0221EC04: ; 0x0221EC04
 	add r5, #0x14
 _0221EC0C:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #2

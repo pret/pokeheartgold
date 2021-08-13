@@ -430,13 +430,13 @@ ov23_02259C1C: ; 0x02259C1C
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xc8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r5, r0, #0
 	add r1, r4, #0
 	bl sub_0200BBA0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov23_02259C1C

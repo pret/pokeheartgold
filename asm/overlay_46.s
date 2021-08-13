@@ -1060,7 +1060,7 @@ _02258FAE:
 	add r0, #0xd4
 	mov r1, #0
 	lsl r2, r2, #4
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [sp, #0x2c]
 	mov r1, #5
 	add r2, sp, #0x38
@@ -1072,7 +1072,7 @@ _02258FAE:
 	ldr r0, [r0, #0xc]
 	add r1, #0xdc
 	mov r2, #0x80
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldr r0, [sp, #0x38]
 	mov r2, #0x57
 	ldr r1, [sp, #0x10]
@@ -1080,7 +1080,7 @@ _02258FAE:
 	add r1, r1, r2
 	ldr r0, [r0, #0xc]
 	mov r2, #0x80
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -1235,7 +1235,7 @@ ov46_02259210: ; 0x02259210
 	add r0, r2, r0
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 _02259246:
 	mov r0, #0xcb
 	lsl r0, r0, #2
@@ -1254,7 +1254,7 @@ _02259254:
 	add r0, r1, r0
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 _0225926A:
 	ldr r0, _022592B4 ; =0x0000032A
 	ldrsb r1, [r4, r0]
@@ -1346,7 +1346,7 @@ ov46_022592EC: ; 0x022592EC
 	mov r0, #0
 	mov r1, #0x1b
 	add r3, r4, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r5, #4]
 	mov r0, #1
 	lsl r0, r0, #8
@@ -1433,7 +1433,7 @@ _02259394:
 	ldr r2, [r5, #0x18]
 	add r0, #8
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	ldr r0, [r5, #0x20]
 	cmp r0, #0
 	bne _022593DE
@@ -1568,13 +1568,13 @@ _022594B0:
 _022594BC:
 	add r0, r4, #0
 	add r0, #8
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4, #0x1c]
 	bl sub_02026380
 	ldr r0, [r4, #0x18]
 	bl sub_02026380
 	ldr r0, [r4, #4]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4]
 	bl sub_0200BDA0
 	pop {r4, pc}

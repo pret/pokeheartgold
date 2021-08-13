@@ -396,7 +396,7 @@ ov67_021E5C04: ; 0x021E5C04
 	beq _021E5C30
 _021E5C1C:
 	ldr r0, _021E5C3C ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov67_021E6BB8
 	ldr r0, _021E5C40 ; =0x0000049C
@@ -440,7 +440,7 @@ _021E5C6A: ; jump table
 	.short _021E5CCC - _021E5C6A - 2 ; case 3
 _021E5C72:
 	ldr r0, _021E5D8C ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov67_021E6BB8
 	ldr r0, _021E5D90 ; =0x0000049C
@@ -450,7 +450,7 @@ _021E5C72:
 	pop {r4, pc}
 _021E5C88:
 	ldr r0, _021E5D94 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _021E5D98 ; =0x000004A8
 	ldr r0, [r4, r0]
 	cmp r0, #1
@@ -479,7 +479,7 @@ _021E5CBE:
 	cmp r0, #1
 	bne _021E5CCC
 	ldr r0, _021E5D94 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _021E5CCC:
 	ldr r0, _021E5D9C ; =0x021E6D50
 	bl sub_02025224
@@ -502,7 +502,7 @@ _021E5CEC:
 	strh r1, [r4, r0]
 	mov r0, #0x5e
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov67_021E6490
 	ldr r0, _021E5D88 ; =0x000004A4
@@ -541,7 +541,7 @@ _021E5D40:
 	strh r1, [r4, r0]
 	mov r0, #0x5e
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov67_021E6490
 	ldr r0, _021E5D88 ; =0x000004A4
@@ -876,7 +876,7 @@ _021E601A:
 	ldr r0, [r6, #0x10]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r7, r7, #1
 	add r4, #8
 	add r5, #0x10
@@ -892,7 +892,7 @@ _021E6038:
 	ldr r0, [r6, #0x10]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -943,7 +943,7 @@ _021E609E:
 	add r0, r5, #0
 	bl sub_0201D8C8
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, r6
@@ -960,7 +960,7 @@ ov67_021E60B4: ; 0x021E60B4
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0x1c
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x28]
 	ldr r2, [r4]
 	mov r0, #2
@@ -996,7 +996,7 @@ ov67_021E60F4: ; 0x021E60F4
 	ldr r0, [r4, #0x2c]
 	bl sub_0200BDA0
 	ldr r0, [r4, #0x28]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r4, pc}
 	thumb_func_end ov67_021E60F4
 

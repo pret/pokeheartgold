@@ -36,7 +36,7 @@ ov06_0221BA1C: ; 0x0221BA1C
 	add r0, r5, #0
 	add r2, r4, #0
 	lsr r3, r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov06_0221BA1C

@@ -231,7 +231,7 @@ _021E5AE2:
 	ldrh r0, [r4, #0x18]
 	lsl r0, r0, #0x1a
 	lsr r0, r0, #0x1e
-	bl sub_0200597C
+	bl GF_SndSetMonoFlag
 	ldrh r1, [r4, #0x18]
 	mov r0, #0
 	lsl r1, r1, #0x16
@@ -526,7 +526,7 @@ _021E5D48:
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x2d
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x28]
 	add r0, r4, #0
 	bl ov54_021E6360
@@ -610,7 +610,7 @@ _021E5E00:
 	blt _021E5DDA
 	ldr r0, [sp]
 	ldr r0, [r0, #0x28]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [sp]
 	bl ov54_021E6000
 	ldr r0, [sp]
@@ -1035,7 +1035,7 @@ _021E6180:
 	add r0, r5, r4
 	bl sub_0201D634
 	add r0, r5, r4
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r6, #1
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
@@ -1446,7 +1446,7 @@ _021E64DE:
 	add r0, r0, r1
 	add r0, #0x86
 	ldrh r0, [r0]
-	bl sub_0200597C
+	bl GF_SndSetMonoFlag
 	b _021E652E
 _021E64F2:
 	mov r1, #0x54
@@ -1630,7 +1630,7 @@ ov54_021E6624: ; 0x021E6624
 	lsr r1, r1, #0x10
 	bl ov54_021E6418
 	ldr r0, _021E6814 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _021E667E
 _021E665C:
 	mov r3, #0x20
@@ -1646,7 +1646,7 @@ _021E665C:
 	lsr r1, r1, #0x10
 	bl ov54_021E6418
 	ldr r0, _021E6814 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _021E667E:
 	add r0, r4, #0
 	bl ov54_021E6BB8
@@ -1671,7 +1671,7 @@ _021E6686:
 	lsr r1, r1, #0x1d
 	bl ov54_021E69D4
 	ldr r0, _021E6814 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _021E66DC
 _021E66B4:
 	mov r2, #0x10
@@ -1691,7 +1691,7 @@ _021E66B4:
 	lsr r1, r1, #0x1d
 	bl ov54_021E69D4
 	ldr r0, _021E6814 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _021E66DC:
 	ldr r0, _021E6810 ; =0x021D110C
 	mov r1, #0x40
@@ -1717,7 +1717,7 @@ _021E66DC:
 	lsr r1, r1, #0x1d
 	bl ov54_021E69D4
 	ldr r0, _021E6814 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	pop {r3, r4, r5, pc}
 _021E6716:
 	mov r1, #0x80
@@ -1742,7 +1742,7 @@ _021E6716:
 	lsr r1, r1, #0x1d
 	bl ov54_021E69D4
 	ldr r0, _021E6814 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	pop {r3, r4, r5, pc}
 _021E674C:
 	mov r1, #1
@@ -1764,7 +1764,7 @@ _021E674C:
 	mov r1, #0
 	bl sub_02018410
 	ldr r0, _021E6818 ; =0x0000061A
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xbe
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1782,7 +1782,7 @@ _021E6792:
 	bl sub_02018410
 	mov r0, #0x25
 	lsl r0, r0, #6
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1804,7 +1804,7 @@ _021E67BA:
 	bl sub_02018410
 	mov r0, #0x25
 	lsl r0, r0, #6
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #0x1b
 	lsr r1, r0, #0x1d
@@ -1889,7 +1889,7 @@ _021E6844:
 	orr r0, r1
 	str r0, [r4, #0x10]
 	ldr r0, _021E69C4 ; =0x0000061A
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x32
 	mov r1, #1
 	lsl r0, r0, #4
@@ -1939,7 +1939,7 @@ _021E68B0:
 	str r0, [r4, #0x10]
 	mov r0, #0x25
 	lsl r0, r0, #6
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x32
 	mov r1, #1
 	lsl r0, r0, #4
@@ -2022,7 +2022,7 @@ _021E6960:
 	lsl r0, r0, #4
 	str r1, [r4, r0]
 	ldr r0, _021E69CC ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	pop {r3, r4, r5, pc}
 _021E6998:
 	ldr r1, _021E69D0 ; =0x021D110C

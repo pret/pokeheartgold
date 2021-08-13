@@ -5719,12 +5719,12 @@ _020CF8E0: .word 0x04000600
 
 	arm_func_start sub_020CF8E4
 sub_020CF8E4: ; 0x020CF8E4
-	ldr ip, _020CF8F4 ; =sub_020D47B8
+	ldr ip, _020CF8F4 ; =MIi_CpuCopy16
 	ldr r1, _020CF8F8 ; =0x04000330
 	mov r2, #0x10
 	bx ip
 	.align 2, 0
-_020CF8F4: .word sub_020D47B8
+_020CF8F4: .word MIi_CpuCopy16
 _020CF8F8: .word 0x04000330
 	arm_func_end sub_020CF8E4
 
@@ -6015,8 +6015,8 @@ sub_020CFC30: ; 0x020CFC30
 _020CFC68: .word 0x04000468
 	arm_func_end sub_020CFC30
 
-	arm_func_start sub_020CFC6C
-sub_020CFC6C: ; 0x020CFC6C
+	arm_func_start GX_LoadBGPltt
+GX_LoadBGPltt: ; 0x020CFC6C
 	stmdb sp!, {r4, lr}
 	ldr r3, _020CFCBC ; =_02110C80
 	mov r4, r0
@@ -6036,14 +6036,14 @@ _020CFCA8:
 	mov r0, r4
 	mov r2, r3
 	add r1, lr, #0x5000000
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020CFCBC: .word _02110C80
-	arm_func_end sub_020CFC6C
+	arm_func_end GX_LoadBGPltt
 
-	arm_func_start sub_020CFCC0
-sub_020CFCC0: ; 0x020CFCC0
+	arm_func_start GXS_LoadBGPltt
+GXS_LoadBGPltt: ; 0x020CFCC0
 	stmdb sp!, {r3, lr}
 	ldr r3, _020CFD14 ; =_02110C80
 	mov lr, r0
@@ -6064,14 +6064,14 @@ _020CFCFC:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x5000000
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020CFD14: .word _02110C80
-	arm_func_end sub_020CFCC0
+	arm_func_end GXS_LoadBGPltt
 
-	arm_func_start sub_020CFD18
-sub_020CFD18: ; 0x020CFD18
+	arm_func_start GX_LoadOBJPltt
+GX_LoadOBJPltt: ; 0x020CFD18
 	stmdb sp!, {r3, lr}
 	ldr r3, _020CFD6C ; =_02110C80
 	mov lr, r0
@@ -6092,14 +6092,14 @@ _020CFD54:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x5000000
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020CFD6C: .word _02110C80
-	arm_func_end sub_020CFD18
+	arm_func_end GX_LoadOBJPltt
 
-	arm_func_start sub_020CFD70
-sub_020CFD70: ; 0x020CFD70
+	arm_func_start GXS_LoadOBJPltt
+GXS_LoadOBJPltt: ; 0x020CFD70
 	stmdb sp!, {r3, lr}
 	ldr r3, _020CFDC4 ; =_02110C80
 	mov lr, r0
@@ -6120,11 +6120,11 @@ _020CFDAC:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x5000000
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020CFDC4: .word _02110C80
-	arm_func_end sub_020CFD70
+	arm_func_end GXS_LoadOBJPltt
 
 	arm_func_start sub_020CFDC8
 sub_020CFDC8: ; 0x020CFDC8
@@ -6261,7 +6261,7 @@ _020CFF6C:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020CFF80: .word _02110C80
@@ -6291,7 +6291,7 @@ _020CFFCC:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020CFFE0: .word _02110C80
@@ -6321,7 +6321,7 @@ _020D002C:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D0040: .word _02110C80
@@ -6351,7 +6351,7 @@ _020D008C:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D00A0: .word _02110C80
@@ -6381,7 +6381,7 @@ _020D00EC:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D0100: .word _02110C80
@@ -6411,7 +6411,7 @@ _020D014C:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D0160: .word _02110C80
@@ -6441,7 +6441,7 @@ _020D01AC:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D01C0: .word _02110C80
@@ -6471,7 +6471,7 @@ _020D020C:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D0220: .word _02110C80
@@ -6717,8 +6717,8 @@ _020D050C:
 _020D0520: .word _02110C80
 	arm_func_end sub_020D04C4
 
-	arm_func_start sub_020D0524
-sub_020D0524: ; 0x020D0524
+	arm_func_start GX_BeginLoadBGExtPltt
+GX_BeginLoadBGExtPltt: ; 0x020D0524
 	stmdb sp!, {r3, lr}
 	bl sub_020CE8C4
 	ldr r1, _020D05B4 ; =0x021E15DC
@@ -6765,10 +6765,10 @@ _020D05B4: .word 0x021E15DC
 _020D05B8: .word 0x06880000
 _020D05BC: .word 0x06894000
 _020D05C0: .word 0x06890000
-	arm_func_end sub_020D0524
+	arm_func_end GX_BeginLoadBGExtPltt
 
-	arm_func_start sub_020D05C4
-sub_020D05C4: ; 0x020D05C4
+	arm_func_start GX_LoadBGExtPltt
+GX_LoadBGExtPltt: ; 0x020D05C4
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	ldr ip, _020D062C ; =0x021E15DC
@@ -6799,10 +6799,10 @@ _020D061C:
 	.align 2, 0
 _020D062C: .word 0x021E15DC
 _020D0630: .word _02110C80
-	arm_func_end sub_020D05C4
+	arm_func_end GX_LoadBGExtPltt
 
-	arm_func_start sub_020D0634
-sub_020D0634: ; 0x020D0634
+	arm_func_start GX_EndLoadBGExtPltt
+GX_EndLoadBGExtPltt: ; 0x020D0634
 	stmdb sp!, {r3, lr}
 	ldr r0, _020D0674 ; =_02110C80
 	mvn r1, #0
@@ -6823,10 +6823,10 @@ _020D0650:
 	.align 2, 0
 _020D0674: .word _02110C80
 _020D0678: .word 0x021E15DC
-	arm_func_end sub_020D0634
+	arm_func_end GX_EndLoadBGExtPltt
 
-	arm_func_start sub_020D067C
-sub_020D067C: ; 0x020D067C
+	arm_func_start GX_BeginLoadOBJExtPltt
+GX_BeginLoadOBJExtPltt: ; 0x020D067C
 	stmdb sp!, {r3, lr}
 	bl sub_020CE8E8
 	ldr r1, _020D06B8 ; =0x021E15DC
@@ -6847,10 +6847,10 @@ _020D06AC:
 _020D06B8: .word 0x021E15DC
 _020D06BC: .word 0x06894000
 _020D06C0: .word 0x06890000
-	arm_func_end sub_020D067C
+	arm_func_end GX_BeginLoadOBJExtPltt
 
-	arm_func_start sub_020D06C4
-sub_020D06C4: ; 0x020D06C4
+	arm_func_start GX_LoadOBJExtPltt
+GX_LoadOBJExtPltt: ; 0x020D06C4
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	ldr r3, _020D0728 ; =_02110C80
@@ -6880,10 +6880,10 @@ _020D0718:
 	.align 2, 0
 _020D0728: .word _02110C80
 _020D072C: .word 0x021E15DC
-	arm_func_end sub_020D06C4
+	arm_func_end GX_LoadOBJExtPltt
 
-	arm_func_start sub_020D0730
-sub_020D0730: ; 0x020D0730
+	arm_func_start GX_EndLoadOBJExtPltt
+GX_EndLoadOBJExtPltt: ; 0x020D0730
 	stmdb sp!, {r3, lr}
 	ldr r0, _020D076C ; =_02110C80
 	mvn r1, #0
@@ -6903,10 +6903,10 @@ _020D074C:
 	.align 2, 0
 _020D076C: .word _02110C80
 _020D0770: .word 0x021E15DC
-	arm_func_end sub_020D0730
+	arm_func_end GX_EndLoadOBJExtPltt
 
-	arm_func_start sub_020D0774
-sub_020D0774: ; 0x020D0774
+	arm_func_start GXS_BeginLoadBGExtPltt
+GXS_BeginLoadBGExtPltt: ; 0x020D0774
 	stmdb sp!, {r3, lr}
 	bl sub_020CE970
 	ldr r1, _020D0788 ; =0x021E15DC
@@ -6914,10 +6914,10 @@ sub_020D0774: ; 0x020D0774
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020D0788: .word 0x021E15DC
-	arm_func_end sub_020D0774
+	arm_func_end GXS_BeginLoadBGExtPltt
 
-	arm_func_start sub_020D078C
-sub_020D078C: ; 0x020D078C
+	arm_func_start GXS_LoadBGExtPltt
+GXS_LoadBGExtPltt: ; 0x020D078C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r3, _020D07EC ; =_02110C80
@@ -6945,10 +6945,10 @@ _020D07D8:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D07EC: .word _02110C80
-	arm_func_end sub_020D078C
+	arm_func_end GXS_LoadBGExtPltt
 
-	arm_func_start sub_020D07F0
-sub_020D07F0: ; 0x020D07F0
+	arm_func_start GXS_EndLoadBGExtPltt
+GXS_EndLoadBGExtPltt: ; 0x020D07F0
 	stmdb sp!, {r3, lr}
 	ldr r0, _020D0828 ; =_02110C80
 	mvn r1, #0
@@ -6967,10 +6967,10 @@ _020D080C:
 	.align 2, 0
 _020D0828: .word _02110C80
 _020D082C: .word 0x021E15DC
-	arm_func_end sub_020D07F0
+	arm_func_end GXS_EndLoadBGExtPltt
 
-	arm_func_start sub_020D0830
-sub_020D0830: ; 0x020D0830
+	arm_func_start GXS_BeginLoadOBJExtPltt
+GXS_BeginLoadOBJExtPltt: ; 0x020D0830
 	stmdb sp!, {r3, lr}
 	bl sub_020CE998
 	ldr r1, _020D0844 ; =0x021E15DC
@@ -6978,10 +6978,10 @@ sub_020D0830: ; 0x020D0830
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020D0844: .word 0x021E15DC
-	arm_func_end sub_020D0830
+	arm_func_end GXS_BeginLoadOBJExtPltt
 
-	arm_func_start sub_020D0848
-sub_020D0848: ; 0x020D0848
+	arm_func_start GXS_LoadOBJExtPltt
+GXS_LoadOBJExtPltt: ; 0x020D0848
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r3, _020D08A8 ; =_02110C80
@@ -7009,10 +7009,10 @@ _020D0894:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D08A8: .word _02110C80
-	arm_func_end sub_020D0848
+	arm_func_end GXS_LoadOBJExtPltt
 
-	arm_func_start sub_020D08AC
-sub_020D08AC: ; 0x020D08AC
+	arm_func_start GXS_EndLoadOBJExtPltt
+GXS_EndLoadOBJExtPltt: ; 0x020D08AC
 	stmdb sp!, {r3, lr}
 	ldr r0, _020D08E4 ; =_02110C80
 	mvn r1, #0
@@ -7031,7 +7031,7 @@ _020D08C8:
 	.align 2, 0
 _020D08E4: .word _02110C80
 _020D08E8: .word 0x021E15DC
-	arm_func_end sub_020D08AC
+	arm_func_end GXS_EndLoadOBJExtPltt
 
 	arm_func_start sub_020D08EC
 sub_020D08EC: ; 0x020D08EC
@@ -11386,12 +11386,12 @@ sub_020D3C5C: ; 0x020D3C5C
 	strh r3, [r4, #0x1a]
 	ldrb r3, [ip, #0x50]
 	strh r3, [r4, #0x52]
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldr r0, _020D3CDC ; =0x027FFC80
 	add r1, r4, #0x1c
 	add r0, r0, #0x1c
 	mov r2, #0x34
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	mov r0, #0
 	strh r0, [r4, #0x18]
 	strh r0, [r4, #0x50]
@@ -12251,8 +12251,8 @@ _020D47B0:
 	bx lr
 	arm_func_end sub_020D4790
 
-	arm_func_start sub_020D47B8
-sub_020D47B8: ; 0x020D47B8
+	arm_func_start MIi_CpuCopy16
+MIi_CpuCopy16: ; 0x020D47B8
 	mov ip, #0
 _020D47BC:
 	cmp ip, r2
@@ -12273,7 +12273,7 @@ _020D47E0:
 _020D47E4:
 	blt _020D47BC
 	bx lr
-	arm_func_end sub_020D47B8
+	arm_func_end MIi_CpuCopy16
 
 	arm_func_start sub_020D47EC
 sub_020D47EC: ; 0x020D47EC
@@ -12446,8 +12446,8 @@ sub_020D4968: ; 0x020D4968
 	bx lr
 	arm_func_end sub_020D4968
 
-	arm_func_start sub_020D4994
-sub_020D4994: ; 0x020D4994
+	arm_func_start MIi_CpuFill8
+MIi_CpuFill8: ; 0x020D4994
 	cmp r2, #0
 	beq _020D49A0
 	b _020D49A4
@@ -12507,7 +12507,7 @@ _020D4A38:
 	orr r1, r1, r3
 	strh r1, [r0]
 	bx lr
-	arm_func_end sub_020D4994
+	arm_func_end MIi_CpuFill8
 
 	arm_func_start sub_020D4A50
 sub_020D4A50: ; 0x020D4A50
@@ -16221,7 +16221,7 @@ sub_020D792C: ; 0x020D792C
 	mov r1, #0
 	mov r2, #0x5c
 	mov r4, r0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0
 	str r0, [r4, #0x10]
 	str r0, [r4, #0xc]
@@ -16472,7 +16472,7 @@ sub_020D7C00: ; 0x020D7C00
 	ldr r2, [r7, #0x30]
 	mov r0, r5
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 _020D7C8C:
 	add r0, sp, #4
 	bl FS_CloseFile
@@ -16499,7 +16499,7 @@ _020D7C94:
 	ldr r2, [r7, #0x38]
 	mov r0, r5
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 _020D7CF0:
 	add r0, sp, #4
 	bl FS_CloseFile
@@ -17353,7 +17353,7 @@ FS_ClearOverlayImage: ; 0x020D8764
 	add r0, r4, r5
 	sub r2, r6, r5
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end FS_ClearOverlayImage
 
@@ -17598,7 +17598,7 @@ FSi_CompareDigest: ; 0x020D8AD8
 	add r0, sp, #0x44
 	mov r1, #0
 	mov r2, #0x14
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r2, _020D8B68 ; =_02110CA0
 	add r1, sp, #4
 	ldmia r2, {r0, r2}
@@ -17668,7 +17668,7 @@ _020D8BDC:
 	ldr r0, [r5, #4]
 	mov r2, r4
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	bl sub_020D3F48
 	ldmia sp!, {r3, r4, r5, pc}
 _020D8BFC:
@@ -17938,7 +17938,7 @@ sub_020D8F08: ; 0x020D8F08
 	bhs _020D8F6C
 	add r0, r4, #0x18
 	add r0, r0, r3
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, r4
 	bl sub_020D8FC0
 	mov r3, #0
@@ -17950,7 +17950,7 @@ _020D8F6C:
 	add r0, r0, r3
 	sub r2, r2, #8
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 _020D8F88:
 	str r7, [r4, #0x50]
 	mov r0, r4
@@ -17963,7 +17963,7 @@ _020D8F88:
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x58
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D8FBC: .word _02110CA8
@@ -19727,8 +19727,8 @@ sub_020DA81C: ; 0x020DA81C
 _020DA82C: .word 0x021E36B0
 	arm_func_end sub_020DA81C
 
-	arm_func_start sub_020DA830
-sub_020DA830: ; 0x020DA830
+	arm_func_start MIC_Init
+MIC_Init: ; 0x020DA830
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020DA894 ; =0x021E36EC
 	ldrh r1, [r0]
@@ -19759,7 +19759,7 @@ _020DA864:
 _020DA894: .word 0x021E36EC
 _020DA898: .word 0x027FFF90
 _020DA89C: .word sub_020DAAA8
-	arm_func_end sub_020DA830
+	arm_func_end MIC_Init
 
 	arm_func_start sub_020DA8A0
 sub_020DA8A0: ; 0x020DA8A0
@@ -20634,8 +20634,8 @@ PM_ForceToPowerOff: ; 0x020DB330
 _020DB354: .word sub_020DADA0
 	arm_func_end PM_ForceToPowerOff
 
-	arm_func_start sub_020DB358
-sub_020DB358: ; 0x020DB358
+	arm_func_start PM_SetAmp
+PM_SetAmp: ; 0x020DB358
 	ldr r1, _020DB368 ; =0x021E370C
 	ldr ip, _020DB36C ; =sub_020DB370
 	str r0, [r1, #0x14]
@@ -20643,7 +20643,7 @@ sub_020DB358: ; 0x020DB358
 	.align 2, 0
 _020DB368: .word 0x021E370C
 _020DB36C: .word sub_020DB370
-	arm_func_end sub_020DB358
+	arm_func_end PM_SetAmp
 
 	arm_func_start sub_020DB370
 sub_020DB370: ; 0x020DB370
@@ -20660,8 +20660,8 @@ sub_020DB370: ; 0x020DB370
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020DB370
 
-	arm_func_start sub_020DB39C
-sub_020DB39C: ; 0x020DB39C
+	arm_func_start PM_SetAmpGain
+PM_SetAmpGain: ; 0x020DB39C
 	ldr ip, _020DB3B0 ; =sub_020DB13C
 	mov r0, r0, lsl #0x10
 	mov r1, r0, lsr #0x10
@@ -20669,7 +20669,7 @@ sub_020DB39C: ; 0x020DB39C
 	bx ip
 	.align 2, 0
 _020DB3B0: .word sub_020DB13C
-	arm_func_end sub_020DB39C
+	arm_func_end PM_SetAmpGain
 
 	arm_func_start PM_GetBackLight
 PM_GetBackLight: ; 0x020DB3B4
@@ -22452,7 +22452,7 @@ sub_020DC9F0: ; 0x020DC9F0
 	mov r1, #0
 	add r0, r4, #0x18
 	mov r2, #0x48
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _020DCD58 ; =0x0000203F
 	str r5, [r4, #4]
 	str r0, [r4, #0x58]
@@ -24862,7 +24862,7 @@ _020DE988:
 	mov r1, #0
 	mov r2, #0x44
 	strh r7, [r3, #0x50]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr ip, _020DEAF4 ; =0x021E4220
 	mov r1, #0x82
 	strh r1, [ip, #0x50]
@@ -24889,7 +24889,7 @@ _020DE988:
 	beq _020DEA40
 	ldr r1, _020DEB04 ; =0x021E4294
 	mov r0, fp
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	b _020DEA4C
 _020DEA40:
 	ldr r1, _020DEB04 ; =0x021E4294
@@ -25042,7 +25042,7 @@ sub_020DEBEC: ; 0x020DEBEC
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x44
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r3, #0
 	ldr r1, _020DECC0 ; =0x0000FFFF
 	mov r7, #0x82
@@ -26087,7 +26087,7 @@ sub_020DF94C: ; 0x020DF94C
 _020DF9E4:
 	add r0, sp, #8
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 _020DF9F0:
 	ldrh r2, [sp, #0x40]
 	add r0, sp, #0
@@ -26874,7 +26874,7 @@ _020E04EC:
 	strh r3, [sl, r5]
 	ldrh r0, [r0, #0xc]
 	add r0, sl, r0, lsl #9
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r1, sl, #0x800
 	ldrh r0, [r1, #0xc]
 	mov r5, #1
@@ -26938,7 +26938,7 @@ _020E05C8:
 	mov r1, r8
 	add r0, sl, r2
 	mov r2, #0x200
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r2, sl, #0x800
 	ldrh r1, [r2, #0xc]
 	mov r0, #1
@@ -26960,7 +26960,7 @@ _020E0648:
 	mov r0, sb
 	add r6, sl, r1, lsl #9
 	add r1, r6, #0x20
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r3, sl, #0x800
 	ldrh r1, [r3, #0xe]
 	mov r4, #1
@@ -27188,7 +27188,7 @@ _020E0964:
 	mov r0, r7
 	mov r2, r5
 	add r1, r4, r1, lsl #9
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r1, r4, #0x800
 	ldrh r0, [r1, #8]
 	ldrh r2, [r8, #0x1a]
@@ -27246,7 +27246,7 @@ _020E0A34:
 	ldrh r2, [r0, #0x10]
 	beq _020E0A64
 	mov r0, r5
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	b _020E0A6C
 _020E0A64:
 	mov r0, #0
@@ -27514,7 +27514,7 @@ sub_020E0D8C: ; 0x020E0D8C
 	ldr r1, _020E0E40 ; =0x021E4CC0
 	mov r0, r6
 	mov r2, r5
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldr r0, _020E0E40 ; =0x021E4CC0
 	mov r1, r5
 	bl sub_020D2878
@@ -28098,7 +28098,7 @@ _020E1504:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	b _020E154C
 _020E1518:
 	mov r0, r6
@@ -30532,12 +30532,12 @@ _020E3564: .word 0x021E4F68
 
 	arm_func_start sub_020E3568
 sub_020E3568: ; 0x020E3568
-	ldr ip, _020E3578 ; =sub_020D4994
+	ldr ip, _020E3578 ; =MIi_CpuFill8
 	mov r1, #0
 	mov r2, #0x24
 	bx ip
 	.align 2, 0
-_020E3578: .word sub_020D4994
+_020E3578: .word MIi_CpuFill8
 	arm_func_end sub_020E3568
 
 	arm_func_start sub_020E357C
@@ -30555,7 +30555,7 @@ _020E35A0:
 	mov r0, r6
 	mov r1, r5
 	mov r2, fp
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	bl sub_020D3A38
 	ldr r1, [r8, #0xc0]
 	mov r7, r0

@@ -25,7 +25,7 @@ ListMenuInit: ; 0x020011DC
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	ldr r0, [sp]
-	bl sub_02015788
+	bl ListMenuCursorNew
 	str r0, [r4, #0x28]
 	strh r6, [r4, #0x2c]
 	add r1, r4, #0
@@ -790,7 +790,7 @@ _02001766: ; jump table
 _0200176E:
 	ldr r0, [r4, #0x28]
 	ldr r1, [r4, #0xc]
-	bl sub_020157F0
+	bl ListMenuUpdateCursorObj
 _02001776:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ListMenuDrawCursor

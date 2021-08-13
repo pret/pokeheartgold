@@ -1202,7 +1202,7 @@ _0221C648:
 	sub r0, r0, #1
 	strb r0, [r5, #0x18]
 	ldrh r0, [r5, #0x1a]
-	bl sub_0200604C
+	bl PlaySE
 	ldrh r0, [r5, #0x1a]
 	ldr r1, _0221C670 ; =0x0000FFFF
 	ldr r2, [r5, #0x14]
@@ -1229,7 +1229,7 @@ ov07_0221C674: ; 0x0221C674
 	cmp r2, #0
 	bne _0221C696
 	ldrh r0, [r4, #0x1a]
-	bl sub_0200604C
+	bl PlaySE
 	ldrh r0, [r4, #0x1a]
 	ldr r1, _0221C698 ; =0x0000FFFF
 	ldr r2, [r4, #0x14]
@@ -3035,7 +3035,7 @@ ov07_0221D374: ; 0x0221D374
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #8
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	str r5, [r4]
 	ldr r0, [r5, #0x18]
 	mov r1, #0xff
@@ -3377,7 +3377,7 @@ ov07_0221D5B0: ; 0x0221D5B0
 	mov r2, #0x19
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #2
 	mov r1, #0
 	bl sub_0201BC28
@@ -3402,7 +3402,7 @@ ov07_0221D5B0: ; 0x0221D5B0
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x10]
 	ldr r3, [r5]
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3520,7 +3520,7 @@ ov07_0221D718: ; 0x0221D718
 	mov r2, #0x19
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	mov r1, #4
 	bl ov07_0221D55C
@@ -3865,7 +3865,7 @@ _0221D9C2:
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x14]
 	ldr r3, [r4]
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 _0221D9F8:
 	ldr r0, [sp, #0xc]
 	lsl r5, r0, #2
@@ -4484,7 +4484,7 @@ ov07_0221DE04: ; 0x0221DE04
 	ldr r0, [r0]
 	ldr r3, [r5]
 	mov r1, #7
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	add r0, r5, #0
 	add r0, #0xc4
 	lsl r1, r4, #0x18
@@ -4979,7 +4979,7 @@ _0221E1D0:
 	ldr r1, [r3, r1]
 	ldr r2, [r3, r2]
 	ldr r3, [r3]
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 _0221E224:
 	ldr r2, [r4, #0x48]
 	mov r0, #0
@@ -5346,7 +5346,7 @@ _0221E4B0:
 	ldr r1, [r3, r1]
 	ldr r2, [r3, r2]
 	ldr r3, [r3]
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 _0221E504:
 	ldr r2, [r4, #0x48]
 	mov r0, #0
@@ -5959,7 +5959,7 @@ _0221E97E:
 	ldrb r2, [r4, r2]
 	ldr r0, [r4, #4]
 	ldr r3, [r4]
-	bl sub_0200319C
+	bl PaletteData_LoadFromNarc
 	ldr r1, _0221E9D0 ; =0x0000018A
 	mov r0, #0
 	strb r0, [r4, r1]
@@ -5998,7 +5998,7 @@ ov07_0221E9D4: ; 0x0221E9D4
 	mov r1, #0
 	mov r2, #0x28
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r1, #0x19
 	ldr r0, [r6]
 	lsl r1, r1, #4
@@ -6007,7 +6007,7 @@ ov07_0221E9D4: ; 0x0221E9D4
 	mov r1, #0
 	lsl r2, r2, #4
 	str r0, [r4, #0x24]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r5, #0
 	add r0, #0x44
 	ldrh r1, [r0]
@@ -6797,7 +6797,7 @@ ov07_0221EF54: ; 0x0221EF54
 	ldr r0, [r0]
 	ldr r3, [r5]
 	mov r1, #7
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	add r0, r5, #0
 	add r0, #0xc4
 	ldr r0, [r0]
@@ -6920,7 +6920,7 @@ ov07_0221F094: ; 0x0221F094
 	thumb_func_start ov07_0221F098
 ov07_0221F098: ; 0x0221F098
 	ldr r1, [r0, #0x18]
-	ldr r3, _0221F0AC ; =sub_0200604C
+	ldr r3, _0221F0AC ; =PlaySE
 	add r1, r1, #4
 	str r1, [r0, #0x18]
 	ldr r2, [r1]
@@ -6930,7 +6930,7 @@ ov07_0221F098: ; 0x0221F098
 	lsr r0, r0, #0x10
 	bx r3
 	.balign 4, 0
-_0221F0AC: .word sub_0200604C
+_0221F0AC: .word PlaySE
 	thumb_func_end ov07_0221F098
 
 	thumb_func_start ov07_0221F0B0
@@ -6969,7 +6969,7 @@ ov07_0221F0CC: ; 0x0221F0CC
 	bl ov07_0221F8C8
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0200604C
+	bl PlaySE
 	ldr r1, _0221F100 ; =0x0000FFFF
 	add r0, r4, #0
 	add r2, r5, #0
@@ -7058,7 +7058,7 @@ ov07_0221F120: ; 0x0221F120
 	bl ov07_0221F980
 	str r0, [r4, #0x10]
 	ldrh r0, [r4, #0x1a]
-	bl sub_0200604C
+	bl PlaySE
 	ldrh r0, [r4, #0x1a]
 	ldr r1, _0221F1BC ; =0x0000FFFF
 	ldr r2, [r4, #8]
@@ -7117,7 +7117,7 @@ ov07_0221F1C0: ; 0x0221F1C0
 	add r0, r0, #4
 	str r0, [r5, #0x18]
 	ldrh r0, [r4, #0x1a]
-	bl sub_0200604C
+	bl PlaySE
 	ldrh r0, [r4, #0x1a]
 	ldr r1, _0221F234 ; =0x0000FFFF
 	ldr r2, [r4, #8]
@@ -7194,7 +7194,7 @@ ov07_0221F238: ; 0x0221F238
 	bl ov07_0221F8C8
 	str r0, [r4, #0x10]
 	ldrh r0, [r4, #0x1a]
-	bl sub_0200604C
+	bl PlaySE
 	ldrh r0, [r4, #0x1a]
 	ldr r1, _0221F2D8 ; =0x0000FFFF
 	ldr r2, [r4, #8]
@@ -8459,7 +8459,7 @@ ov07_0221FB58: ; 0x0221FB58
 	mov r2, #0
 	ldr r0, [r0]
 	add r3, r2, #0
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 	pop {r3, pc}
 	thumb_func_end ov07_0221FB58
 
@@ -8760,7 +8760,7 @@ _0221FDB2:
 	ldr r1, [sp, #0x28]
 	ldr r2, [sp, #0x24]
 	ldr r3, [r4]
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 _0221FDDC:
 	ldr r0, [sp, #0x2c]
 	add r7, r7, #4
@@ -15650,7 +15650,7 @@ ov07_02222FC4: ; 0x02222FC4
 	add r5, r0, #0
 	bl ov07_0221FA78
 	mov r1, #0
-	bl sub_02003364
+	bl PaletteData_GetFadedBuf
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov07_0221BFC0
@@ -15686,7 +15686,7 @@ ov07_02222FF4: ; 0x02222FF4
 	add r0, r4, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02003318
+	bl PaletteData_CopyPalette
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _02223020:
@@ -15698,7 +15698,7 @@ _02223020:
 	add r0, r4, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02003318
+	bl PaletteData_CopyPalette
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov07_02222FF4
@@ -16531,7 +16531,7 @@ _02223604:
 	ldr r0, [r4, #0x34]
 	mov r1, #7
 	add r2, r6, #0
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	bl sub_0201CAE0
@@ -16937,7 +16937,7 @@ _0222392C:
 	ldr r0, [r4, #0x34]
 	mov r1, #7
 	add r2, r6, #0
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	bl sub_0201CAE0
@@ -44058,7 +44058,7 @@ ov07_02231524: ; 0x02231524
 	ldr r1, [r5]
 	ldr r2, [r2, r3]
 	add r3, r6, #0
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x2c]
 	lsr r1, r1, #0x18
@@ -49502,7 +49502,7 @@ ov07_02233DB8: ; 0x02233DB8
 	mov r1, #0
 	mov r2, #0xe0
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	cmp r4, #0
 	bne _02233DD6
 	bl GF_AssertFail

@@ -358,11 +358,11 @@ _0225D82C: .word 0x04001050
 
 	thumb_func_start ov30_0225D830
 ov30_0225D830: ; 0x0225D830
-	ldr r3, _0225D838 ; =sub_0201D520
+	ldr r3, _0225D838 ; =RemoveWindow
 	add r0, #0x4c
 	bx r3
 	nop
-_0225D838: .word sub_0201D520
+_0225D838: .word RemoveWindow
 	thumb_func_end ov30_0225D830
 
 	thumb_func_start ov30_0225D83C
@@ -376,7 +376,7 @@ ov30_0225D83C: ; 0x0225D83C
 	mov r1, #0x1b
 	mov r2, #0x28
 	mov r3, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
@@ -394,7 +394,7 @@ ov30_0225D86C: ; 0x0225D86C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x38]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #0x3c]
 	bl sub_0200BDA0
 	pop {r4, pc}
@@ -409,7 +409,7 @@ ov30_0225D880: ; 0x0225D880
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r4, #4]
 	mov r1, #6
 	str r0, [sp]
@@ -497,7 +497,7 @@ ov30_0225D8F8: ; 0x0225D8F8
 	ldr r2, [r4, #0x5c]
 	add r0, #0x4c
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	str r0, [r4, #0x60]
 	add r0, r4, #0
 	mov r1, #3
@@ -617,7 +617,7 @@ ov30_0225D9EC: ; 0x0225D9EC
 	ldr r2, [r4, #0x5c]
 	add r0, #0x4c
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	str r0, [r4, #0x60]
 	add r0, r4, #0
 	mov r1, #6
@@ -707,7 +707,7 @@ ov30_0225DA98: ; 0x0225DA98
 	ldr r2, [r4, #0x5c]
 	add r0, #0x4c
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	str r0, [r4, #0x60]
 	add r0, r4, #0
 	mov r1, #9
@@ -762,7 +762,7 @@ _0225DB1C:
 	ldr r2, [r4, #0x5c]
 	add r0, #0x4c
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	str r0, [r4, #0x60]
 	add r0, r4, #0
 	mov r1, #0xb
@@ -829,7 +829,7 @@ ov30_0225DB74: ; 0x0225DB74
 	ldr r2, [r4, #0x5c]
 	add r0, #0x4c
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	str r0, [r4, #0x60]
 	add r0, r4, #0
 	mov r1, #0xe
@@ -844,7 +844,7 @@ ov30_0225DBC8: ; 0x0225DBC8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0225DBDC ; =0x0000061A
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xf
 	str r0, [r4, #0xc]
 	mov r0, #0

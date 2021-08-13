@@ -35,7 +35,7 @@ _021E591A:
 _021E5936:
 	ldr r2, _021E5A84 ; =0x000004C8
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -95,7 +95,7 @@ _021E59B6:
 	mov r1, #0x1b
 	lsl r2, r2, #2
 	mov r3, #0x49
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r1, #0x8a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -222,11 +222,11 @@ _021E5AD6:
 	lsl r0, r0, #2
 	add r4, r6, r0
 	add r0, r4, #4
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
 	bl sub_02026380
 	add r0, r6, #0
@@ -2011,7 +2011,7 @@ ov76_021E6904: ; 0x021E6904
 	ldr r0, [r4, #4]
 	ldr r2, _021E6940 ; =0x021E6E98
 	add r1, r4, r1
-	bl sub_0201D4F8
+	bl AddWindow
 	mov r2, #0
 	str r2, [sp]
 	ldr r0, [r4, #4]
@@ -2458,7 +2458,7 @@ _021E6C42:
 	add r1, r4, r1
 	ldr r1, [r1, #0x10]
 	mov r2, #0x20
-	bl sub_020CFD18
+	bl GX_LoadOBJPltt
 	mov r0, #0x49
 	str r0, [sp]
 	lsl r5, r6, #4

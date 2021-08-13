@@ -92,7 +92,7 @@ ov27_02259F80: ; 0x02259F80
 	mov r0, #0
 	mov r1, #0x1b
 	mov r3, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, _0225A190 ; =0x000004A8
 	str r0, [r4, r1]
 	add r0, r4, #0
@@ -260,7 +260,7 @@ _0225A1C8:
 	bl ov27_0225BEB0
 	ldr r0, _0225A2B8 ; =0x000004A8
 	ldr r0, [r6, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, _0225A2BC ; =0x000004AC
 	ldr r0, [r6, r0]
 	bl sub_0200BDA0
@@ -314,7 +314,7 @@ _0225A238:
 	add r4, r6, r0
 _0225A246:
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r5, r5, #1
 	add r4, #0x10
 	cmp r5, #8
@@ -322,11 +322,11 @@ _0225A246:
 	mov r0, #0x3e
 	lsl r0, r0, #4
 	add r0, r6, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x3d
 	lsl r0, r0, #4
 	add r0, r6, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r6, #0
 	bl ov27_0225BC34
 	mov r0, #4
@@ -1842,7 +1842,7 @@ _0225AD52:
 	add r1, r0, #0
 	add r2, sp, #0x10
 	mov r3, #8
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r1, #0x40
@@ -2510,7 +2510,7 @@ _0225B3D8:
 	add r0, r7, r0
 	add r1, r5, #0
 	mov r2, #0x20
-	bl sub_020CFD70
+	bl GXS_LoadOBJPltt
 _0225B3E4:
 	add r4, r4, #1
 	add r5, #0x20
@@ -2575,7 +2575,7 @@ _0225B448:
 	str r0, [r5, #0x14]
 	mov r0, #0x5e
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	cmp r4, #1
 	bhi _0225B478
 	ldr r0, [r5, #0x14]
@@ -3897,7 +3897,7 @@ ov27_0225BEB0: ; 0x0225BEB0
 	bl sub_0201D8C8
 	add r4, #0xc
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _0225BED4:
 	pop {r4, pc}
 	.balign 4, 0
@@ -3977,7 +3977,7 @@ _0225BF48:
 	add r0, sp, #0x14
 	bl CopyWindowToVram
 	add r0, sp, #0x14
-	bl sub_0201D520
+	bl RemoveWindow
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4828,14 +4828,14 @@ ov27_0225C5E4: ; 0x0225C5E4
 	beq _0225C606
 	add r0, r4, #0
 	add r0, #0x28
-	bl sub_0201D520
+	bl RemoveWindow
 _0225C606:
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
 	beq _0225C614
 	add r4, #0x38
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _0225C614:
 	pop {r4, pc}
 	.balign 4, 0
@@ -4900,7 +4900,7 @@ _0225C686:
 	ldr r0, [r0, #0x18]
 	add r1, r5, #0
 	add r2, r2, r4
-	bl sub_0201D4F8
+	bl AddWindow
 	ldr r0, [sp, #0x14]
 	add r4, #8
 	add r0, r0, #1
@@ -4969,7 +4969,7 @@ ov27_0225C6F8: ; 0x0225C6F8
 	add r5, #0x54
 _0225C71C:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, r6
@@ -5226,7 +5226,7 @@ ov27_0225C914: ; 0x0225C914
 	mov r1, #0x1b
 	mov r2, #0xbf
 	mov r3, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x4c]
 	pop {r4, pc}
 	thumb_func_end ov27_0225C914
@@ -5236,7 +5236,7 @@ ov27_0225C930: ; 0x0225C930
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x4c]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #0x50]
 	bl sub_0200BDA0
 	pop {r4, pc}
@@ -5467,7 +5467,7 @@ ov27_0225CA98: ; 0x0225CA98
 	add r0, r4, #0
 	bl ov27_0225CD18
 	ldr r0, _0225CC88 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #9
 	mov r1, #0x85
 	str r0, [r4]
@@ -5511,7 +5511,7 @@ _0225CAF6:
 	add r0, r4, #0
 	bl ov27_0225CD18
 	ldr r0, _0225CC88 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r1, #0xe7
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -5549,7 +5549,7 @@ _0225CB62:
 	add r0, r4, #0
 	bl ov27_0225CD18
 	ldr r0, _0225CC88 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r1, #0xe7
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -5584,7 +5584,7 @@ _0225CB90:
 	add r0, r4, #0
 	bl ov27_0225CD18
 	ldr r0, _0225CC88 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r1, #0xe7
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -5619,7 +5619,7 @@ _0225CBDA:
 	add r0, r4, #0
 	bl ov27_0225CD18
 	ldr r0, _0225CC88 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r1, #0xe7
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -5643,7 +5643,7 @@ _0225CC24:
 	mov r0, #9
 	str r0, [r4]
 	ldr r0, _0225CC88 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _0225CC80
 _0225CC42:
 	mov r1, #2
@@ -5672,7 +5672,7 @@ _0225CC42:
 	mov r0, #9
 	str r0, [r4]
 	ldr r0, _0225CC88 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _0225CC80:
 	mov r0, #0
 	pop {r4, pc}
@@ -5846,7 +5846,7 @@ ov27_0225CD94: ; 0x0225CD94
 	mov r1, #3
 	bl sub_020248F0
 	ldr r0, _0225CEA4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #5
 	str r0, [r4]
 	b _0225CE9C
@@ -5866,7 +5866,7 @@ _0225CDD2:
 	mov r1, #3
 	bl sub_020248F0
 	ldr r0, _0225CEA4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #5
 	str r0, [r4]
 	b _0225CE9C
@@ -5882,7 +5882,7 @@ _0225CDFE:
 	cmp r0, #1
 	bne _0225CE18
 	ldr r0, _0225CEA4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _0225CE18:
 	mov r1, #0xe5
 	mov r0, #0
@@ -5902,7 +5902,7 @@ _0225CE2A:
 	cmp r0, #0
 	bne _0225CE40
 	ldr r0, _0225CEA4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _0225CE40:
 	mov r1, #0xe5
 	mov r0, #1
@@ -5925,7 +5925,7 @@ _0225CE52:
 	mov r0, #5
 	str r0, [r4]
 	ldr r0, _0225CEA4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _0225CE9C
 _0225CE72:
 	mov r1, #2
@@ -5943,7 +5943,7 @@ _0225CE72:
 	mov r1, #3
 	bl sub_020248F0
 	ldr r0, _0225CEA4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #5
 	str r0, [r4]
 _0225CE9C:

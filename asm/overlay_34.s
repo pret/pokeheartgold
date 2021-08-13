@@ -142,7 +142,7 @@ ov34_0225D5F8: ; 0x0225D5F8
 	mov r0, #0
 	mov r1, #0x1b
 	mov r3, #4
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x1c]
 	mov r0, #4
 	add r3, r4, #0
@@ -306,17 +306,17 @@ ov34_0225D77C: ; 0x0225D77C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r4, #0
 _0225D788:
 	add r0, r5, #0
 	add r0, #0x10
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r5, #0
 	add r0, #0x20
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x38
 	cmp r4, #3
@@ -450,7 +450,7 @@ _0225D8B2:
 	ldr r0, [r6, #0x28]
 	bl sub_02024504
 	ldr r0, [r6, #0x1c]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r6, #0x18]
 	bl sub_0200BDA0
 	mov r1, #0x72
@@ -1216,7 +1216,7 @@ _0225DEDC:
 	cmp r0, #0
 	beq _0225DEF6
 	ldr r0, _0225E010 ; =0x000005E5
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xa2
 	lsl r0, r0, #2
 	ldrh r1, [r4, r0]
@@ -1243,7 +1243,7 @@ _0225DF00:
 	cmp r1, r0
 	bge _0225DF2C
 	ldr r0, _0225E010 ; =0x000005E5
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xa2
 	lsl r0, r0, #2
 	ldrh r1, [r4, r0]
@@ -1271,7 +1271,7 @@ _0225DF40:
 	cmp r0, #1
 	bne _0225E006
 	ldr r0, _0225E018 ; =0x000005FC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #3
 	str r0, [r4]
 	b _0225E006
@@ -1323,7 +1323,7 @@ _0225DF94:
 	cmp r0, r1
 	bne _0225DFD0
 	ldr r0, _0225E010 ; =0x000005E5
-	bl sub_0200604C
+	bl PlaySE
 	mov r1, #0x18
 	ldr r2, [r4, #4]
 	mul r1, r5
@@ -1348,7 +1348,7 @@ _0225DFD8:
 	cmp r1, r0
 	bne _0225DFFE
 	ldr r0, _0225E010 ; =0x000005E5
-	bl sub_0200604C
+	bl PlaySE
 	ldr r1, [r4, #4]
 	ldr r0, _0225E01C ; =0x000004BF
 	mov r2, #1
@@ -1500,7 +1500,7 @@ ov34_0225E0E4: ; 0x0225E0E4
 	sub r0, r0, #1
 	strh r0, [r4, r1]
 	ldr r0, _0225E160 ; =0x000005E5
-	bl sub_0200604C
+	bl PlaySE
 	pop {r4, pc}
 _0225E126:
 	lsr r1, r1, #1
@@ -1525,7 +1525,7 @@ _0225E126:
 	add r1, r2, #1
 	strh r1, [r4, r0]
 	ldr r0, _0225E160 ; =0x000005E5
-	bl sub_0200604C
+	bl PlaySE
 _0225E158:
 	pop {r4, pc}
 	nop

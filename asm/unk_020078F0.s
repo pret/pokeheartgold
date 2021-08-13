@@ -150,8 +150,8 @@ sub_020079D8: ; 0x020079D8
 	.balign 4, 0
 	thumb_func_end sub_020079D8
 
-	thumb_func_start sub_020079F4
-sub_020079F4: ; 0x020079F4
+	thumb_func_start GfGfxLoader_GetPlttData
+GfGfxLoader_GetPlttData: ; 0x020079F4
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r2, #0
@@ -162,7 +162,7 @@ sub_020079F4: ; 0x020079F4
 	bl sub_02007F80
 	add sp, #4
 	pop {r3, r4, pc}
-	thumb_func_end sub_020079F4
+	thumb_func_end GfGfxLoader_GetPlttData
 
 	thumb_func_start sub_02007A0C
 sub_02007A0C: ; 0x02007A0C
@@ -738,7 +738,7 @@ _02007E18: ; jump table
 	.short _02007E42 - _02007E18 - 2 ; case 6
 	.short _02007E76 - _02007E18 - 2 ; case 7
 _02007E28:
-	bl sub_020D0524
+	bl GX_BeginLoadBGExtPltt
 	ldr r0, [sp, #4]
 	ldr r3, _02007EAC ; =0x020F5968
 	lsl r4, r4, #2
@@ -747,10 +747,10 @@ _02007E28:
 	add r1, r6, #0
 	add r2, r5, #0
 	blx r3
-	bl sub_020D0634
+	bl GX_EndLoadBGExtPltt
 	b _02007EA0
 _02007E42:
-	bl sub_020D0774
+	bl GXS_BeginLoadBGExtPltt
 	ldr r0, [sp, #4]
 	ldr r3, _02007EAC ; =0x020F5968
 	lsl r4, r4, #2
@@ -759,10 +759,10 @@ _02007E42:
 	add r1, r6, #0
 	add r2, r5, #0
 	blx r3
-	bl sub_020D07F0
+	bl GXS_EndLoadBGExtPltt
 	b _02007EA0
 _02007E5C:
-	bl sub_020D067C
+	bl GX_BeginLoadOBJExtPltt
 	ldr r0, [sp, #4]
 	ldr r3, _02007EAC ; =0x020F5968
 	lsl r4, r4, #2
@@ -771,10 +771,10 @@ _02007E5C:
 	add r1, r6, #0
 	add r2, r5, #0
 	blx r3
-	bl sub_020D0730
+	bl GX_EndLoadOBJExtPltt
 	b _02007EA0
 _02007E76:
-	bl sub_020D0830
+	bl GXS_BeginLoadOBJExtPltt
 	ldr r0, [sp, #4]
 	ldr r3, _02007EAC ; =0x020F5968
 	lsl r4, r4, #2
@@ -783,7 +783,7 @@ _02007E76:
 	add r1, r6, #0
 	add r2, r5, #0
 	blx r3
-	bl sub_020D08AC
+	bl GXS_EndLoadOBJExtPltt
 	b _02007EA0
 _02007E90:
 	ldr r0, [sp, #4]
@@ -1080,7 +1080,7 @@ _0200805A:
 	ldrb r1, [r1]
 	ldr r0, [r4, r0]
 	lsl r2, r2, #0xe
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0
 	mov r7, #0xbf
 	ldr r6, _02008118 ; =0x00005050
@@ -8372,11 +8372,11 @@ sub_0200B528: ; 0x0200B528
 	ldr r0, _0200B548 ; =0x021D0ED4
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _0200B54C ; =0x021D0EB4
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _0200B550 ; =0x021D0EB4
 	mov r1, #0
 	str r1, [r0, #0x3c]
@@ -8398,7 +8398,7 @@ sub_0200B554: ; 0x0200B554
 	ldr r0, _0200B588 ; =0x021D0ED4
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _0200B58C ; =0x021D0EB4
 	mov r1, #0
 	str r1, [r0, #0x3c]
@@ -8409,7 +8409,7 @@ _0200B56E:
 	ldr r0, _0200B590 ; =0x021D0EB4
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _0200B58C ; =0x021D0EB4
 	mov r1, #0
 	str r1, [r0, #0x1c]
@@ -8668,11 +8668,11 @@ sub_0200B74C: ; 0x0200B74C
 	add r0, r1, #0
 	add r1, r3, #0
 	ldr r2, [r2, #4]
-	ldr r3, _0200B75C ; =sub_020D47B8
+	ldr r3, _0200B75C ; =MIi_CpuCopy16
 	lsl r2, r2, #1
 	bx r3
 	nop
-_0200B75C: .word sub_020D47B8
+_0200B75C: .word MIi_CpuCopy16
 	thumb_func_end sub_0200B74C
 
 	thumb_func_start sub_0200B760
@@ -8718,7 +8718,7 @@ sub_0200B760: ; 0x0200B760
 	ldr r2, [sp, #4]
 	add r0, r5, r0
 	add r1, r7, #0
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldr r1, _0200B808 ; =0x00091BD3
 	add r2, r4, #1
 	mul r1, r2
@@ -8806,7 +8806,7 @@ sub_0200B810: ; 0x0200B810
 	ldr r2, [sp, #4]
 	add r0, r5, r0
 	add r1, r7, #0
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldr r1, _0200B8CC ; =0x00091BD3
 	add r2, r4, #1
 	mul r1, r2
@@ -9140,8 +9140,8 @@ sub_0200BAD8: ; 0x0200BAD8
 	.balign 4, 0
 	thumb_func_end sub_0200BAD8
 
-	thumb_func_start sub_0200BAF8
-sub_0200BAF8: ; 0x0200BAF8
+	thumb_func_start NewMsgDataFromNarc
+NewMsgDataFromNarc: ; 0x0200BAF8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -9179,10 +9179,10 @@ _0200BB36:
 _0200BB40:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200BAF8
+	thumb_func_end NewMsgDataFromNarc
 
-	thumb_func_start sub_0200BB44
-sub_0200BB44: ; 0x0200BB44
+	thumb_func_start DestroyMsgData
+DestroyMsgData: ; 0x0200BB44
 	push {r4, lr}
 	add r4, r0, #0
 	beq _0200BB6A
@@ -9204,7 +9204,7 @@ _0200BB64:
 	bl FreeToHeap
 _0200BB6A:
 	pop {r4, pc}
-	thumb_func_end sub_0200BB44
+	thumb_func_end DestroyMsgData
 
 	thumb_func_start sub_0200BB6C
 sub_0200BB6C: ; 0x0200BB6C
@@ -9327,13 +9327,13 @@ sub_0200BC28: ; 0x0200BC28
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xed
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r1, r5, #0
 	add r2, r4, #0
 	bl sub_0200BBF4
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_0200BC28
 
@@ -9386,7 +9386,7 @@ sub_0200BC9C: ; 0x0200BC9C
 	mov r0, #1
 	mov r1, #0x1b
 	add r3, r5, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	beq _0200BCD2
 	mov r0, #0x10
@@ -9400,7 +9400,7 @@ sub_0200BC9C: ; 0x0200BC9C
 	bl sub_0200BB6C
 _0200BCC8:
 	add r0, r4, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r5, #0
 	pop {r4, r5, r6, pc}
 _0200BCD2:
@@ -9418,14 +9418,14 @@ sub_0200BCDC: ; 0x0200BCDC
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xed
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r5, r0, #0
 	beq _0200BD02
 	add r1, r4, #0
 	bl sub_0200BBA0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 _0200BD02:
@@ -9666,7 +9666,7 @@ sub_0200BE94: ; 0x0200BE94
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	add r0, r7, #0
 	bl sub_02028F94
@@ -9689,7 +9689,7 @@ _0200BED0:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r4, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200BEE4: .word 0x000001BD
@@ -9705,7 +9705,7 @@ sub_0200BEE8: ; 0x0200BEE8
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xed
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
 	add r7, r0, #0
@@ -9716,7 +9716,7 @@ sub_0200BEE8: ; 0x0200BEE8
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200BEE8
@@ -9765,7 +9765,7 @@ sub_0200BF58: ; 0x0200BF58
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xee
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
 	add r7, r0, #0
@@ -9776,7 +9776,7 @@ sub_0200BF58: ; 0x0200BF58
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200BF58
@@ -9847,7 +9847,7 @@ sub_0200BFF0: ; 0x0200BFF0
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C022
 	ldr r2, [r5, #0xc]
@@ -9859,7 +9859,7 @@ sub_0200BFF0: ; 0x0200BFF0
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C022:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9877,7 +9877,7 @@ sub_0200C028: ; 0x0200C028
 	mov r0, #1
 	mov r1, #0x1b
 	lsl r2, r2, #2
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C05C
 	ldr r2, [r5, #0xc]
@@ -9889,7 +9889,7 @@ sub_0200C028: ; 0x0200C028
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C05C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9906,7 +9906,7 @@ sub_0200C060: ; 0x0200C060
 	mov r0, #1
 	mov r1, #0x1b
 	lsl r2, r2, #4
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C094
 	ldr r2, [r5, #0xc]
@@ -9918,7 +9918,7 @@ sub_0200C060: ; 0x0200C060
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C094:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9934,7 +9934,7 @@ sub_0200C098: ; 0x0200C098
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x22
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
 	add r7, r0, #0
@@ -9945,7 +9945,7 @@ sub_0200C098: ; 0x0200C098
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200C098
@@ -9960,7 +9960,7 @@ sub_0200C0CC: ; 0x0200C0CC
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xde
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C0FE
 	ldr r2, [r5, #0xc]
@@ -9972,7 +9972,7 @@ sub_0200C0CC: ; 0x0200C0CC
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C0FE:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C0CC
@@ -9987,7 +9987,7 @@ sub_0200C100: ; 0x0200C100
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xdf
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C132
 	ldr r2, [r5, #0xc]
@@ -9999,7 +9999,7 @@ sub_0200C100: ; 0x0200C100
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C132:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C100
@@ -10014,7 +10014,7 @@ sub_0200C134: ; 0x0200C134
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xe0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C166
 	ldr r2, [r5, #0xc]
@@ -10026,7 +10026,7 @@ sub_0200C134: ; 0x0200C134
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C166:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C134
@@ -10041,7 +10041,7 @@ sub_0200C168: ; 0x0200C168
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xe2
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C19A
 	ldr r2, [r5, #0xc]
@@ -10053,7 +10053,7 @@ sub_0200C168: ; 0x0200C168
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C19A:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C168
@@ -10068,7 +10068,7 @@ sub_0200C19C: ; 0x0200C19C
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C1CE
 	ldr r2, [r5, #0xc]
@@ -10080,7 +10080,7 @@ sub_0200C19C: ; 0x0200C19C
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C1CE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10097,7 +10097,7 @@ sub_0200C1D4: ; 0x0200C1D4
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C206
 	ldr r2, [r5, #0xc]
@@ -10109,7 +10109,7 @@ sub_0200C1D4: ; 0x0200C1D4
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C206:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10126,7 +10126,7 @@ sub_0200C20C: ; 0x0200C20C
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x2c
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C23E
 	ldr r2, [r5, #0xc]
@@ -10138,7 +10138,7 @@ sub_0200C20C: ; 0x0200C20C
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C23E:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C20C
@@ -10153,7 +10153,7 @@ sub_0200C240: ; 0x0200C240
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C272
 	ldr r2, [r5, #0xc]
@@ -10165,7 +10165,7 @@ sub_0200C240: ; 0x0200C240
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C272:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10183,7 +10183,7 @@ sub_0200C278: ; 0x0200C278
 	ldr r3, [r5, #4]
 	mov r0, #1
 	add r2, #0xfc
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	beq _0200C2D2
 	cmp r4, #0
@@ -10193,13 +10193,13 @@ sub_0200C278: ; 0x0200C278
 	blo _0200C2B6
 _0200C29E:
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r1, #0x1b
 	add r2, r1, #0
 	ldr r3, [r5, #4]
 	mov r0, #1
 	add r2, #0xfd
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	mov r4, #2
 _0200C2B6:
@@ -10213,7 +10213,7 @@ _0200C2B6:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C2D2:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C278
@@ -10228,7 +10228,7 @@ sub_0200C2D4: ; 0x0200C2D4
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C306
 	ldr r2, [r5, #0xc]
@@ -10240,7 +10240,7 @@ sub_0200C2D4: ; 0x0200C2D4
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C306:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10257,7 +10257,7 @@ sub_0200C30C: ; 0x0200C30C
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C33E
 	ldr r2, [r5, #0xc]
@@ -10269,7 +10269,7 @@ sub_0200C30C: ; 0x0200C30C
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C33E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10286,7 +10286,7 @@ sub_0200C344: ; 0x0200C344
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C376
 	ldrb r1, [r4, #1]
@@ -10298,7 +10298,7 @@ sub_0200C344: ; 0x0200C344
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C376:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10315,7 +10315,7 @@ sub_0200C37C: ; 0x0200C37C
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C3AE
 	ldr r2, [r5, #0xc]
@@ -10327,7 +10327,7 @@ sub_0200C37C: ; 0x0200C37C
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C3AE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10344,7 +10344,7 @@ sub_0200C3B4: ; 0x0200C3B4
 	ldr r3, [r5, #4]
 	mov r0, #1
 	add r2, r1, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C3E6
 	ldr r2, [r5, #0xc]
@@ -10356,7 +10356,7 @@ sub_0200C3B4: ; 0x0200C3B4
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C3E6:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C3B4
@@ -10389,7 +10389,7 @@ sub_0200C408: ; 0x0200C408
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C43A
 	ldr r2, [r5, #0xc]
@@ -10401,7 +10401,7 @@ sub_0200C408: ; 0x0200C408
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C43A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10418,7 +10418,7 @@ sub_0200C440: ; 0x0200C440
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x28
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	cmp r4, #0
 	beq _0200C460
@@ -10445,7 +10445,7 @@ _0200C47A:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200C440
@@ -10478,7 +10478,7 @@ sub_0200C4B0: ; 0x0200C4B0
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C4E2
 	ldr r2, [r5, #0xc]
@@ -10490,7 +10490,7 @@ sub_0200C4B0: ; 0x0200C4B0
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C4E2:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10512,7 +10512,7 @@ sub_0200C4E8: ; 0x0200C4E8
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C526
 	ldr r2, [r5, #0xc]
@@ -10524,7 +10524,7 @@ sub_0200C4E8: ; 0x0200C4E8
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C526:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C4E8
@@ -10555,7 +10555,7 @@ sub_0200C544: ; 0x0200C544
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xf
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C576
 	ldr r2, [r5, #0xc]
@@ -10567,7 +10567,7 @@ sub_0200C544: ; 0x0200C544
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C576:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C544
@@ -10582,7 +10582,7 @@ sub_0200C578: ; 0x0200C578
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x10
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C5AA
 	ldr r2, [r5, #0xc]
@@ -10594,7 +10594,7 @@ sub_0200C578: ; 0x0200C578
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C5AA:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C578
@@ -10617,7 +10617,7 @@ sub_0200C5AC: ; 0x0200C5AC
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C648
 	bl sub_0200BBCC
@@ -10638,11 +10638,11 @@ _0200C5E8:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 _0200C606:
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	cmp r6, #0
 	bne _0200C61A
 	cmp r4, #0
@@ -10658,7 +10658,7 @@ _0200C620:
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	beq _0200C648
 	ldr r2, [r5, #0xc]
@@ -10670,7 +10670,7 @@ _0200C620:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C648:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -10688,7 +10688,7 @@ sub_0200C654: ; 0x0200C654
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xd8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C686
 	ldr r2, [r5, #0xc]
@@ -10700,7 +10700,7 @@ sub_0200C654: ; 0x0200C654
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C686:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C654
@@ -10715,7 +10715,7 @@ sub_0200C688: ; 0x0200C688
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xd9
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C6BA
 	ldr r2, [r5, #0xc]
@@ -10727,7 +10727,7 @@ sub_0200C688: ; 0x0200C688
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C6BA:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C688
@@ -10742,7 +10742,7 @@ sub_0200C6BC: ; 0x0200C6BC
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xda
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C6EE
 	ldr r2, [r5, #0xc]
@@ -10754,7 +10754,7 @@ sub_0200C6BC: ; 0x0200C6BC
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C6EE:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C6BC
@@ -10811,7 +10811,7 @@ sub_0200C74C: ; 0x0200C74C
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C77E
 	ldr r2, [r5, #0xc]
@@ -10823,7 +10823,7 @@ sub_0200C74C: ; 0x0200C74C
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C77E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10840,7 +10840,7 @@ sub_0200C784: ; 0x0200C784
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C7B6
 	ldr r2, [r5, #0xc]
@@ -10852,7 +10852,7 @@ sub_0200C784: ; 0x0200C784
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C7B6:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10870,7 +10870,7 @@ sub_0200C7BC: ; 0x0200C7BC
 	mov r0, #1
 	mov r1, #0x1b
 	lsl r2, r2, #2
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C7F0
 	ldr r2, [r5, #0xc]
@@ -10882,7 +10882,7 @@ sub_0200C7BC: ; 0x0200C7BC
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C7F0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10898,7 +10898,7 @@ sub_0200C7F4: ; 0x0200C7F4
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C826
 	ldr r2, [r5, #0xc]
@@ -10910,7 +10910,7 @@ sub_0200C7F4: ; 0x0200C7F4
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C826:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10927,7 +10927,7 @@ sub_0200C82C: ; 0x0200C82C
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C85E
 	ldr r2, [r5, #0xc]
@@ -10939,7 +10939,7 @@ sub_0200C82C: ; 0x0200C82C
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C85E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10957,7 +10957,7 @@ sub_0200C864: ; 0x0200C864
 	mov r0, #1
 	mov r1, #0x1b
 	lsl r2, r2, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C898
 	ldr r2, [r5, #0xc]
@@ -10969,7 +10969,7 @@ sub_0200C864: ; 0x0200C864
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C898:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10985,7 +10985,7 @@ sub_0200C89C: ; 0x0200C89C
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C8CE
 	ldr r2, [r5, #0xc]
@@ -10997,7 +10997,7 @@ sub_0200C89C: ; 0x0200C89C
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C8CE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11014,7 +11014,7 @@ sub_0200C8D4: ; 0x0200C8D4
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C906
 	ldr r2, [r5, #0xc]
@@ -11026,7 +11026,7 @@ sub_0200C8D4: ; 0x0200C8D4
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C906:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11044,7 +11044,7 @@ sub_0200C90C: ; 0x0200C90C
 	mov r0, #1
 	mov r1, #0x1b
 	lsl r2, r2, #2
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C940
 	ldr r2, [r5, #0xc]
@@ -11056,7 +11056,7 @@ sub_0200C90C: ; 0x0200C90C
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200C940:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11072,7 +11072,7 @@ sub_0200C944: ; 0x0200C944
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	cmp r4, #0xb
 	blo _0200C962
@@ -11088,7 +11088,7 @@ _0200C962:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C980: .word 0x00000139
@@ -11104,7 +11104,7 @@ sub_0200C984: ; 0x0200C984
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	cmp r4, #5
 	blo _0200C9A2
@@ -11121,7 +11121,7 @@ _0200C9A2:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0200C9C4: .word 0x00000139
@@ -11137,7 +11137,7 @@ sub_0200C9C8: ; 0x0200C9C8
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	cmp r4, #0xa
 	blo _0200C9E6
@@ -11154,7 +11154,7 @@ _0200C9E6:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0200CA08: .word 0x00000139
@@ -11170,7 +11170,7 @@ sub_0200CA0C: ; 0x0200CA0C
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x15
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	cmp r4, #7
 	blo _0200CA2E
@@ -11189,7 +11189,7 @@ _0200CA2E:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200CA0C
 
@@ -11203,7 +11203,7 @@ sub_0200CA4C: ; 0x0200CA4C
 	ldr r3, [r5, #4]
 	mov r0, #1
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	cmp r4, #0x18
 	blo _0200CA6E
@@ -11223,7 +11223,7 @@ _0200CA6E:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0200CA90: .word 0x000001AE
@@ -11240,7 +11240,7 @@ sub_0200CA94: ; 0x0200CA94
 	mov r0, #1
 	mov r1, #0x1b
 	lsl r2, r2, #2
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	cmp r4, #0xc
 	blo _0200CAB8
@@ -11259,7 +11259,7 @@ _0200CAB8:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200CA94
@@ -11275,7 +11275,7 @@ sub_0200CAD8: ; 0x0200CAD8
 	ldr r3, [r5, #4]
 	mov r0, #1
 	add r2, #0xf7
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	cmp r4, #0x1b
 	blo _0200CAFC
@@ -11295,7 +11295,7 @@ _0200CAFC:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200CAD8
 
@@ -11309,7 +11309,7 @@ sub_0200CB1C: ; 0x0200CB1C
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xef
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	beq _0200CB5A
 	cmp r4, #1
@@ -11329,7 +11329,7 @@ _0200CB3E:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200CB5A:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200CB1C
@@ -11357,7 +11357,7 @@ sub_0200CB70: ; 0x0200CB70
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xbf
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	cmp r4, #6
 	bls _0200CB8E
@@ -11382,7 +11382,7 @@ _0200CB9C:
 	mov r3, #0
 	bl sub_0200BDF8
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0200CBB8:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11842,7 +11842,7 @@ _0200CEFA:
 	ldr r1, [sp]
 	add r0, r6, r5
 	mov r2, #0x20
-	bl sub_020D4994
+	bl MIi_CpuFill8
 _0200CF04:
 	add r4, r4, #2
 	ldrh r1, [r4, #8]
@@ -17414,7 +17414,7 @@ sub_0200F748: ; 0x0200F748
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x20
-	bl sub_020CFD18
+	bl GX_LoadOBJPltt
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x28
@@ -17977,12 +17977,12 @@ _0200FC78:
 	bne _0200FC88
 	mov r1, #0
 	mov r2, #2
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 	b _0200FC90
 _0200FC88:
 	mov r1, #0
 	mov r2, #2
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 _0200FC90:
 	ldr r0, _0200FCD8 ; =0x021D0F80
 	mov r1, #1
@@ -18025,11 +18025,11 @@ sub_0200FCDC: ; 0x0200FCDC
 	add r0, sp, #8
 	mov r1, #0
 	mov r2, #2
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 	add r0, sp, #8
 	mov r1, #0
 	mov r2, #2
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 	pop {r3}
 	pop {r3}
 	add sp, #0x10
@@ -27797,7 +27797,7 @@ _0201447C:
 	add r1, r4, #0
 	ldr r0, [r0, #0xc]
 	mov r2, #0x20
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -28460,8 +28460,8 @@ _02014910: .word sub_020146F4
 _02014914: .word 0x021D1048
 	thumb_func_end sub_02014904
 
-	thumb_func_start sub_02014918
-sub_02014918: ; 0x02014918
+	thumb_func_start ListMenuItems_ctor
+ListMenuItems_ctor: ; 0x02014918
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -28492,20 +28492,20 @@ _02014942:
 	str r4, [r1, #4]
 _0201494E:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02014918
+	thumb_func_end ListMenuItems_ctor
 
-	thumb_func_start sub_02014950
-sub_02014950: ; 0x02014950
+	thumb_func_start ListMenuItems_dtor
+ListMenuItems_dtor: ; 0x02014950
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_020149E0
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
-	thumb_func_end sub_02014950
+	thumb_func_end ListMenuItems_dtor
 
-	thumb_func_start sub_02014960
-sub_02014960: ; 0x02014960
+	thumb_func_start ListMenuItems_AppendFromMsgData
+ListMenuItems_AppendFromMsgData: ; 0x02014960
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r1, sp, #0
@@ -28521,7 +28521,7 @@ sub_02014960: ; 0x02014960
 	str r5, [r4, #4]
 _0201497E:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02014960
+	thumb_func_end ListMenuItems_AppendFromMsgData
 
 	thumb_func_start sub_02014980
 sub_02014980: ; 0x02014980
@@ -30619,8 +30619,8 @@ _02015780:
 	pop {r4, pc}
 	thumb_func_end sub_0201576C
 
-	thumb_func_start sub_02015788
-sub_02015788: ; 0x02015788
+	thumb_func_start ListMenuCursorNew
+ListMenuCursorNew: ; 0x02015788
 	push {r3, r4, r5, lr}
 	mov r1, #8
 	add r5, r0, #0
@@ -30641,7 +30641,7 @@ _020157AA:
 	nop
 _020157B0: .word 0x0001020F
 _020157B4: .word 0x020F60DC
-	thumb_func_end sub_02015788
+	thumb_func_end ListMenuCursorNew
 
 	thumb_func_start DestroyListMenuCursorObj
 DestroyListMenuCursorObj: ; 0x020157B8
@@ -30680,8 +30680,8 @@ _020157EC:
 	.balign 4, 0
 	thumb_func_end ListMenuCursorSetColor
 
-	thumb_func_start sub_020157F0
-sub_020157F0: ; 0x020157F0
+	thumb_func_start ListMenuUpdateCursorObj
+ListMenuUpdateCursorObj: ; 0x020157F0
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r6, r0, #0
@@ -30702,7 +30702,7 @@ sub_020157F0: ; 0x020157F0
 	bl sub_0201D8A0
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_020157F0
+	thumb_func_end ListMenuUpdateCursorObj
 
 	thumb_func_start sub_0201581C
 sub_0201581C: ; 0x0201581C
@@ -30811,7 +30811,7 @@ _020158C4:
 	ldr r2, _02015900 ; =0x020F60E0
 	ldrh r2, [r2, r3]
 	ldr r3, [sp, #4]
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r5, r0, #0
 	ldr r2, [sp]
 	ldr r3, [sp, #4]
@@ -30821,7 +30821,7 @@ _020158C4:
 	bl sub_0200BC4C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r6, #0
 	bl sub_0200BDA0
 	add r0, r4, #0
@@ -31108,7 +31108,7 @@ _02015AAE:
 	ldrh r2, [r4]
 	mov r0, #1
 	add r3, r6, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r5, #4]
 	add r7, r7, #1
 	add r4, r4, #2
@@ -31129,7 +31129,7 @@ sub_02015AD4: ; 0x02015AD4
 	add r5, r6, #0
 _02015ADC:
 	ldr r0, [r5, #4]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xb
@@ -32512,7 +32512,7 @@ sub_020163E0: ; 0x020163E0
 	bne _02016414
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0200335C
+	bl PaletteData_GetUnfadedBuf
 	str r0, [sp]
 	ldr r0, _0201648C ; =sub_020165D4
 	str r0, [r4, #4]
@@ -32520,7 +32520,7 @@ sub_020163E0: ; 0x020163E0
 _02016414:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200335C
+	bl PaletteData_GetUnfadedBuf
 	str r0, [sp]
 	ldr r0, _02016490 ; =sub_020165F0
 	str r0, [r4, #4]
@@ -32546,14 +32546,14 @@ _0201643E:
 	add r1, r4, #0
 	add r1, #0xc
 	mov r2, #0x20
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldr r1, [sp]
 	ldr r0, [sp, #8]
 	mov r2, #0x20
 	add r0, r1, r0
 	add r1, r4, #0
 	add r1, #0x2c
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldr r0, [sp, #4]
 	mov r1, #1
 	str r0, [r4]
@@ -32784,7 +32784,7 @@ sub_020165D4: ; 0x020165D4
 	mov r2, #0
 	lsl r3, r3, #0x14
 	lsr r3, r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_020165D4
@@ -32801,7 +32801,7 @@ sub_020165F0: ; 0x020165F0
 	mov r2, #1
 	lsl r3, r3, #0x14
 	lsr r3, r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_020165F0
@@ -32952,7 +32952,7 @@ sub_02016704: ; 0x02016704
 	mov r0, #0x98
 	mov r1, #0
 	add r2, sp, #4
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r7, r0, #0
 	mov r0, #0x40
 	str r0, [sp]
@@ -32964,7 +32964,7 @@ sub_02016704: ; 0x02016704
 	add r0, r4, #0
 	lsr r2, r2, #2
 	lsr r3, r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 	add r0, r7, #0
 	bl FreeToHeap
 _02016742:
@@ -33097,7 +33097,7 @@ sub_02016804: ; 0x02016804
 	orr r1, r3
 	strb r1, [r0]
 	ldr r0, _0201687C ; =0x000005E4
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	pop {r3, pc}
 _02016832:
@@ -33114,7 +33114,7 @@ _02016832:
 	orr r1, r2
 	strb r1, [r0]
 	ldr r0, _0201687C ; =0x000005E4
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	pop {r3, pc}
 _02016854:
@@ -33130,7 +33130,7 @@ _02016854:
 	strb r2, [r1]
 	bl sub_020167C4
 	ldr r0, _02016880 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0
 	pop {r3, pc}
 _02016876:
@@ -33640,7 +33640,7 @@ sub_02016BC0: ; 0x02016BC0
 	ldrb r3, [r3]
 	bl sub_02016E40
 	ldr r0, _02016C24 ; =0x000005E4
-	bl sub_0200604C
+	bl PlaySE
 _02016C20:
 	add sp, #4
 	pop {r3, r4, pc}
@@ -33841,7 +33841,7 @@ _02016D8E:
 	ldr r3, [sp, #0x1c]
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	str r0, [r4, #4]
 	strh r5, [r4, #8]
 	ldr r0, [sp, #0x18]
@@ -33901,7 +33901,7 @@ sub_02016DF8: ; 0x02016DF8
 	ldrh r1, [r4, #0xa]
 	ldrh r2, [r4, #0xc]
 	ldr r0, [r0, #0xc]
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 	b _02016E2C
 _02016E1C:
 	cmp r0, #4
@@ -33910,7 +33910,7 @@ _02016E1C:
 	ldrh r1, [r4, #0xa]
 	ldrh r2, [r4, #0xc]
 	ldr r0, [r0, #0xc]
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 _02016E2C:
 	add r0, r5, #0
 	bl sub_0200E390
@@ -34034,7 +34034,7 @@ sub_02016EDC: ; 0x02016EDC
 	mov r1, #0
 	add r2, r7, #0
 	str r0, [r4]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r3, #0
 	cmp r5, #0
 	ble _02016F28
@@ -34102,7 +34102,7 @@ _02016F78:
 	add r0, r0, r4
 	mov r1, #0
 	lsl r2, r2, #4
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5]
 	mov r1, #1
 	add r0, r0, r4
@@ -34480,7 +34480,7 @@ _0201722A:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x54
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #1
 	str r0, [r4]
 	mov r0, #0xc
@@ -37065,7 +37065,7 @@ sub_02018424: ; 0x02018424
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x18
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	str r5, [r4]
 	mov r2, #0
 	mov r0, #0xa5
@@ -37103,7 +37103,7 @@ sub_02018474: ; 0x02018474
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x18
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -37123,7 +37123,7 @@ sub_02018498: ; 0x02018498
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x38
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r7, #0
 	add r1, r4, #4
 	mov r2, #0x18
@@ -37374,7 +37374,7 @@ sub_02018680: ; 0x02018680
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x38
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -37486,7 +37486,7 @@ sub_02018744: ; 0x02018744
 	mov r1, #0
 	mov r2, #0x10
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r6, #4]
 	add r1, r4, #0
 	str r0, [r4, #8]
@@ -37517,7 +37517,7 @@ sub_02018744: ; 0x02018744
 	ldr r1, [r1, #0xc]
 	mov r2, #0
 	lsr r3, r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 	pop {r3, r4, r5, r6, r7, pc}
 _020187A2:
 	mov r0, #0x20
@@ -37529,7 +37529,7 @@ _020187A2:
 	ldr r1, [r1, #0xc]
 	mov r2, #1
 	lsr r3, r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 _020187B8:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -37565,14 +37565,14 @@ sub_020187C0: ; 0x020187C0
 	ldr r0, [r0, #0xc]
 	mov r2, #0x20
 	lsl r1, r1, #5
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 	b _0201880E
 _02018802:
 	ldrb r1, [r4, #5]
 	ldr r0, [r0, #0xc]
 	mov r2, #0x20
 	lsl r1, r1, #5
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 _0201880E:
 	add r0, r5, #0
 	bl sub_0200E390
@@ -37653,7 +37653,7 @@ sub_02018890: ; 0x02018890
 	add r5, r0, #0
 	ldrb r1, [r5, #0x18]
 	ldr r0, [r5, #0x2c]
-	bl sub_0201D39C
+	bl AllocWindows
 	str r0, [r5, #0x1c]
 	ldrb r1, [r5, #0x18]
 	ldr r0, [r5, #0x2c]
@@ -37665,7 +37665,7 @@ sub_02018890: ; 0x02018890
 	mov r1, #0
 	add r2, r2, #1
 	lsl r2, r2, #2
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r5, #0
 	add r0, #0x26
 	ldrb r0, [r0]
@@ -38610,7 +38610,7 @@ sub_02018FE8: ; 0x02018FE8
 	lsr r0, r0, #0x1f
 	bne _02018FFA
 	add r0, r1, #0
-	bl sub_0200604C
+	bl PlaySE
 _02018FFA:
 	pop {r3, pc}
 	thumb_func_end sub_02018FE8
@@ -38641,7 +38641,7 @@ sub_02019014: ; 0x02019014
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	str r5, [r4]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -39049,7 +39049,7 @@ sub_020192D0: ; 0x020192D0
 	mov r1, #0
 	mov r2, #0x80
 	add r5, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	bl sub_020072A4
 	str r0, [r5]
@@ -39361,7 +39361,7 @@ sub_0201956C: ; 0x0201956C
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #4]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -39472,7 +39472,7 @@ sub_02019668: ; 0x02019668
 	lsr r2, r2, #0x1a
 	mul r2, r3
 	lsl r2, r2, #1
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	pop {r4, pc}
 	thumb_func_end sub_02019668
 
@@ -45170,7 +45170,7 @@ _0201BF50:
 	bl sub_020D4808
 	pop {r3, r4, r5, pc}
 _0201BF76:
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0201BF44
 
@@ -45579,13 +45579,13 @@ sub_0201C260: ; 0x0201C260
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, r4, #0
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C282:
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, r4, #0
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0201C260
@@ -45611,13 +45611,13 @@ sub_0201C290: ; 0x0201C290
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 	b _0201C2CC
 _0201C2C2:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 _0201C2CC:
 	ldr r0, [sp]
 	add r1, r4, #0
@@ -47970,8 +47970,8 @@ _0201D392:
 _0201D398: .word 0x00007FC0
 	thumb_func_end sub_0201D2F4
 
-	thumb_func_start sub_0201D39C
-sub_0201D39C: ; 0x0201D39C
+	thumb_func_start AllocWindows
+AllocWindows: ; 0x0201D39C
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	lsl r1, r5, #4
@@ -47992,7 +47992,7 @@ _0201D3AE:
 _0201D3C0:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0201D39C
+	thumb_func_end AllocWindows
 
 	thumb_func_start sub_0201D3C4
 sub_0201D3C4: ; 0x0201D3C4
@@ -48164,8 +48164,8 @@ _0201D4F0:
 _0201D4F4: .word 0xFFFF8000
 	thumb_func_end sub_0201D494
 
-	thumb_func_start sub_0201D4F8
-sub_0201D4F8: ; 0x0201D4F8
+	thumb_func_start AddWindow
+AddWindow: ; 0x0201D4F8
 	push {lr}
 	sub sp, #0x14
 	add r3, r2, #0
@@ -48185,10 +48185,10 @@ sub_0201D4F8: ; 0x0201D4F8
 	add sp, #0x14
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_0201D4F8
+	thumb_func_end AddWindow
 
-	thumb_func_start sub_0201D520
-sub_0201D520: ; 0x0201D520
+	thumb_func_start RemoveWindow
+RemoveWindow: ; 0x0201D520
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
@@ -48210,7 +48210,7 @@ sub_0201D520: ; 0x0201D520
 	pop {r4, pc}
 	.balign 4, 0
 _0201D548: .word 0xFFFF8000
-	thumb_func_end sub_0201D520
+	thumb_func_end RemoveWindow
 
 	thumb_func_start sub_0201D54C
 sub_0201D54C: ; 0x0201D54C
@@ -54267,8 +54267,8 @@ sub_020200A0: ; 0x020200A0
 _020200A4: .word sub_02020020
 	thumb_func_end sub_020200A0
 
-	thumb_func_start sub_020200A8
-sub_020200A8: ; 0x020200A8
+	thumb_func_start AddTextPrinterParameterized
+AddTextPrinterParameterized: ; 0x020200A8
 	push {lr}
 	sub sp, #0x1c
 	str r2, [sp]
@@ -54309,7 +54309,7 @@ sub_020200A8: ; 0x020200A8
 	pop {pc}
 	nop
 _020200F8: .word 0x0210F6D8
-	thumb_func_end sub_020200A8
+	thumb_func_end AddTextPrinterParameterized
 
 	thumb_func_start sub_020200FC
 sub_020200FC: ; 0x020200FC

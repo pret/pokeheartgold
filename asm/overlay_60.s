@@ -1327,7 +1327,7 @@ _021E62C0:
 	mov r1, #1
 	lsl r2, r1, #9
 	mov r3, #0x1e
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	mov r0, #0x81
 	lsl r0, r0, #2
 	mov r1, #1
@@ -1496,7 +1496,7 @@ ov60_021E6544: ; 0x021E6544
 	ldr r0, [r5, r0]
 	mov r1, #1
 	add r6, r2, #0
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1699,7 +1699,7 @@ _021E667C:
 	mov r0, #1
 	mov r1, #0x1b
 	add r3, r5, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	mov r0, #0x40
 	add r1, r5, #0
@@ -1710,7 +1710,7 @@ _021E667C:
 	ldr r2, _021E67D4 ; =_021EAE1C
 	add r0, r6, #0
 	add r1, r4, r1
-	bl sub_0201D4F8
+	bl AddWindow
 	mov r1, #1
 	lsl r1, r1, #8
 	str r1, [sp]
@@ -1769,7 +1769,7 @@ _021E679A:
 	add r0, r5, #0
 	bl sub_02026380
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r1, _021E67E0 ; =0x0000011B
 	add r0, sp, #0x18
 	strh r1, [r0, #2]
@@ -1901,11 +1901,11 @@ _021E689C: .word 0x0000318C
 ov60_021E68A0: ; 0x021E68A0
 	mov r0, #6
 	lsl r0, r0, #6
-	ldr r3, _021E68AC ; =sub_0201D520
+	ldr r3, _021E68AC ; =RemoveWindow
 	add r0, r2, r0
 	bx r3
 	nop
-_021E68AC: .word sub_0201D520
+_021E68AC: .word RemoveWindow
 	thumb_func_end ov60_021E68A0
 
 	thumb_func_start ov60_021E68B0

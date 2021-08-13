@@ -185,7 +185,7 @@ _021E5A9A:
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xba
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, _021E5D80 ; =0x0000C070
 	str r0, [r4, r1]
 	ldr r1, [r4]
@@ -282,7 +282,7 @@ _021E5B60:
 	add r0, r4, #0
 	bl ov69_021E6A54
 	ldr r0, _021E5DA0 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r6, #2
 	cmp r0, #4
 	bhi _021E5B9A
@@ -324,7 +324,7 @@ _021E5BAC:
 	ldr r2, _021E5DAC ; =0x000001D9
 	ldr r0, [r4, r0]
 	mov r3, #7
-	bl sub_02001FC8
+	bl Std_CreateYesNoMenu
 	ldr r1, _021E5DB0 ; =0x0000C06C
 	str r0, [r4, r1]
 	mov r0, #6
@@ -402,7 +402,7 @@ _021E5C4C:
 	add r0, r4, #0
 	bl ov69_021E6A54
 	ldr r0, _021E5DA0 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	mvn r0, r0
 	cmp r6, r0
@@ -484,7 +484,7 @@ _021E5CF8:
 	add r0, r4, #0
 	bl ov69_021E6A54
 	ldr r0, _021E5DA0 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	mvn r0, r0
 	cmp r6, r0
@@ -563,7 +563,7 @@ _021E5DC8:
 	ldr r2, _021E6038 ; =0x000001D9
 	ldr r0, [r4, r0]
 	mov r3, #7
-	bl sub_02001FC8
+	bl Std_CreateYesNoMenu
 	ldr r1, _021E603C ; =0x0000C06C
 	str r0, [r4, r1]
 	mov r0, #0xd
@@ -714,7 +714,7 @@ _021E5EF8:
 	add r0, r4, r0
 	bl sub_0200E5D4
 	ldr r0, _021E6068 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xd8
 	str r0, [sp]
 	mov r0, #0x20
@@ -762,7 +762,7 @@ _021E5F54:
 	cmp r0, #1
 	bne _021E6028
 	ldr r0, _021E6068 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _021E6028
 _021E5F76:
 	ldr r0, _021E606C ; =0x00000403
@@ -805,7 +805,7 @@ _021E5FB8:
 	mov r0, #0x10
 	str r0, [r5]
 	ldr r0, _021E6070 ; =0x000005D9
-	bl sub_0200604C
+	bl PlaySE
 	b _021E6028
 _021E5FCC:
 	add r0, r4, #0
@@ -845,7 +845,7 @@ _021E5FFE:
 	bl ov69_021E6F48
 	ldr r0, _021E607C ; =0x0000C070
 	ldr r0, [r4, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #0
 	str r0, [r5]
 	mov r0, #1
@@ -1543,7 +1543,7 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	add r1, r4, r1
-	bl sub_0201D4F8
+	bl AddWindow
 	mov r0, #0xd8
 	str r0, [sp]
 	mov r0, #0x20
@@ -1681,7 +1681,7 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r0, [r4, r1]
 	add r1, #0x24
 	add r1, r4, r1
-	bl sub_0201D4F8
+	bl AddWindow
 	mov r0, #0xd8
 	str r0, [sp]
 	mov r0, #0x20
@@ -1706,13 +1706,13 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r4, r0
 	add r2, r5, #0
 	str r3, [sp, #8]
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	ldr r1, _021E676C ; =0x0000C010
 	ldr r2, _021E67B0 ; =0x021E7654
 	ldr r0, [r4, r1]
 	add r1, #0x34
 	add r1, r4, r1
-	bl sub_0201D4F8
+	bl AddWindow
 	mov r0, #0xd8
 	str r0, [sp]
 	mov r0, #0x20
@@ -1737,7 +1737,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r4, r0
 	add r2, r5, #0
 	str r3, [sp, #8]
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r5, #0
 	bl sub_02026380
 	mov r0, #4
@@ -1772,13 +1772,13 @@ ov69_021E67B8: ; 0x021E67B8
 	add r4, r0, #0
 	ldr r0, _021E6800 ; =0x0000C034
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, _021E6804 ; =0x0000C044
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, _021E6808 ; =0x0000C014
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, _021E680C ; =0x0000C010
 	mov r1, #2
 	ldr r0, [r4, r0]
@@ -1853,7 +1853,7 @@ _021E682C:
 	add r2, #0x68
 	ldr r2, [r5, r2]
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	ldr r1, _021E68D0 ; =0x0000C078
 	mov r2, #1
 	str r0, [r5, r1]
@@ -1906,7 +1906,7 @@ ov69_021E68D8: ; 0x021E68D8
 	cmp r2, #0
 	bne _021E68E4
 	ldr r0, _021E68E8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _021E68E4:
 	pop {r3, pc}
 	nop
@@ -1922,10 +1922,10 @@ ov69_021E68EC: ; 0x021E68EC
 	add r6, r3, #0
 	ldr r0, [r5, r0]
 	str r1, [sp]
-	bl sub_0201D4F8
+	bl AddWindow
 	ldrh r0, [r6, #0x10]
 	ldr r1, [r5]
-	bl sub_02014918
+	bl ListMenuItems_ctor
 	ldr r1, _021E6980 ; =0x0000C068
 	mov r7, #0
 	str r0, [r5, r1]
@@ -1940,7 +1940,7 @@ _021E6914:
 	ldr r1, [r5, r1]
 	ldr r2, [r4]
 	ldr r3, [r4, #4]
-	bl sub_02014960
+	bl ListMenuItems_AppendFromMsgData
 	ldrh r0, [r6, #0x10]
 	add r7, r7, #1
 	add r4, #8
@@ -2002,16 +2002,16 @@ ov69_021E6994: ; 0x021E6994
 	str r3, [sp, #4]
 	ldr r7, [sp, #0x44]
 	ldr r6, [sp, #0x48]
-	bl sub_0201D4F8
+	bl AddWindow
 	ldr r2, [sp, #0x40]
 	ldr r3, [r5]
 	mov r0, #0
 	mov r1, #0x1b
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #8]
 	ldr r1, [r5]
 	add r0, r6, #0
-	bl sub_02014918
+	bl ListMenuItems_ctor
 	ldr r1, _021E6A44 ; =0x0000C068
 	mov r4, #0
 	str r0, [r5, r1]
@@ -2023,13 +2023,13 @@ _021E69CA:
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #8]
 	add r3, r4, #0
-	bl sub_02014960
+	bl ListMenuItems_AppendFromMsgData
 	add r4, r4, #1
 	cmp r4, r6
 	blo _021E69CA
 _021E69DE:
 	ldr r0, [sp, #8]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r4, [sp, #4]
 	add r3, sp, #0xc
 	ldmia r4!, {r0, r1}
@@ -2090,7 +2090,7 @@ ov69_021E6A54: ; 0x021E6A54
 	bl sub_0200E5D4
 	ldr r0, _021E6A80 ; =0x0000C024
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, _021E6A84 ; =0x0000C064
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -2098,7 +2098,7 @@ ov69_021E6A54: ; 0x021E6A54
 	bl DestroyListMenu
 	ldr r0, _021E6A88 ; =0x0000C068
 	ldr r0, [r4, r0]
-	bl sub_02014950
+	bl ListMenuItems_dtor
 	pop {r4, pc}
 	.balign 4, 0
 _021E6A80: .word 0x0000C024
@@ -2126,7 +2126,7 @@ ov69_021E6A8C: ; 0x021E6A8C
 	add r1, #0x44
 	ldr r2, _021E6B44 ; =0x021E764C
 	add r1, r5, r1
-	bl sub_0201D4F8
+	bl AddWindow
 	mov r0, #0xd8
 	str r0, [sp]
 	mov r0, #0x30
@@ -2175,7 +2175,7 @@ ov69_021E6A8C: ; 0x021E6A8C
 	add r2, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #8]
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r6, #0
 	bl sub_02026380
 	add r0, r4, #0
@@ -2215,7 +2215,7 @@ ov69_021E6B5C: ; 0x021E6B5C
 	add r1, #0x44
 	ldr r2, _021E6C08 ; =0x021E764C
 	add r1, r5, r1
-	bl sub_0201D4F8
+	bl AddWindow
 	mov r0, #0xd8
 	str r0, [sp]
 	mov r0, #0x30
@@ -2251,7 +2251,7 @@ ov69_021E6B5C: ; 0x021E6B5C
 	add r0, r5, r0
 	add r3, r1, #0
 	str r1, [sp, #8]
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 _021E6BD8:
 	mov r1, #0
 	ldr r0, _021E6C0C ; =0x0000C054
@@ -2261,7 +2261,7 @@ _021E6BD8:
 	add r2, r7, #0
 	add r3, r1, #0
 	str r1, [sp, #8]
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r6, #0
 	bl sub_02026380
 	add r0, r7, #0
@@ -2288,7 +2288,7 @@ ov69_021E6C14: ; 0x021E6C14
 	bl sub_0200E5D4
 	ldr r0, _021E6C2C ; =0x0000C054
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	pop {r4, pc}
 	.balign 4, 0
 _021E6C2C: .word 0x0000C054
@@ -2491,7 +2491,7 @@ ov69_021E6D5C: ; 0x021E6D5C
 	mov r1, #1
 	add r2, r4, #0
 	str r3, [sp, #8]
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	bl sub_02026380
 	add sp, #0x10
@@ -2548,7 +2548,7 @@ _021E6DB6:
 	mov r1, #1
 	add r2, r4, #0
 	str r3, [sp, #8]
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 _021E6E2A:
 	mov r3, #0
 	ldr r0, _021E6E7C ; =0x0000C014
@@ -2558,7 +2558,7 @@ _021E6E2A:
 	mov r1, #1
 	add r2, r6, #0
 	str r3, [sp, #8]
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	bl sub_02026380
 	add r0, r6, #0
@@ -3454,13 +3454,13 @@ ov69_021E7520: ; 0x021E7520
 	mov r0, #0
 	mov r1, #0x1b
 	add r3, r7, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #8]
 	add r1, r5, #0
 	add r2, r6, #0
 	bl sub_0200BB6C
 	ldr r0, [sp, #8]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	cmp r4, #0
 	bne _021E755C
 	mov r5, #0
@@ -3476,13 +3476,13 @@ _021E755E:
 	mov r0, #0
 	mov r1, #0x1b
 	add r3, r7, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	add r4, r0, #0
 	bl sub_0200BB6C
 	add r0, r4, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r5, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}

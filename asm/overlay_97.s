@@ -970,7 +970,7 @@ _0221ED1C:
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #5
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, sp, #4
 	add r1, sp, #0xc
 	add r0, #2
@@ -1112,7 +1112,7 @@ ov97_0221EE84: ; 0x0221EE84
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	str r5, [r4]
 	str r5, [r4, #0x78]
 	add r0, r4, #0
@@ -1225,7 +1225,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	ldr r3, [r5]
 	mov r0, #1
 	add r2, #0xfb
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r5, #0x6c]
 	ldr r0, [r5]
 	bl sub_0200BD08
@@ -1305,29 +1305,29 @@ ov97_0221F020: ; 0x0221F020
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	ldr r0, [r7, #0x6c]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r7, #0x70]
 	bl sub_0200BDA0
 	ldr r0, [r7, #0x74]
 	bl sub_02026380
 	add r0, r7, #0
 	add r0, #8
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r7, #0
 	add r0, #0x18
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r7, #0
 	add r0, #0x28
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r7, #0
 	add r0, #0x38
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r7, #0
 	add r0, #0x48
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r7, #0
 	add r0, #0x58
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r7, #4]
 	mov r1, #4
 	bl sub_0201BB4C
@@ -2777,7 +2777,7 @@ _0221FC3A:
 	ldr r0, [r0, #0xc]
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r0, r5, #0
 	bl FreeToHeap
 	add sp, #0x24
@@ -2813,7 +2813,7 @@ ov97_0221FC54: ; 0x0221FC54
 	add r1, #0x24
 	ldr r1, [r4, r1]
 	mov r2, #0x20
-	bl sub_020CFD70
+	bl GXS_LoadOBJPltt
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov97_0221FC54

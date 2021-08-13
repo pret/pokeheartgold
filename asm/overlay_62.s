@@ -21,7 +21,7 @@ ov62_021E5900: ; 0x021E5900
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r1, #0x62
 	add r0, r1, #0
 	add r0, #0xd6
@@ -296,7 +296,7 @@ _021E5B34:
 	cmp r0, #0
 	beq _021E5B62
 	ldr r0, _021E5B64 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #2
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
@@ -1014,7 +1014,7 @@ ov62_021E60E4: ; 0x021E60E4
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xea
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, [sp, #0x14]
 	ldr r4, _021E6174 ; =0x021E66F8
 	str r0, [r1, #0x34]
@@ -1092,13 +1092,13 @@ _021E6182:
 	add r0, r5, #0
 	bl sub_0201D634
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #3
 	blt _021E6182
 	ldr r0, [r7, #0x34]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov62_021E6178
 
@@ -1119,7 +1119,7 @@ ov62_021E61AC: ; 0x021E61AC
 	add r4, r0, #0
 	mov r1, #0
 	lsl r2, r2, #4
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	str r4, [r5, #0x1c]
 	mov r0, #0
 	str r0, [r5]

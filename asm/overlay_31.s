@@ -117,7 +117,7 @@ ov31_0225D60C: ; 0x0225D60C
 	mov r1, #0x1b
 	add r2, #0x5f
 	mov r3, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r1, #0x56
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -125,7 +125,7 @@ ov31_0225D60C: ; 0x0225D60C
 	mov r1, #0x1b
 	mov r2, #0xde
 	mov r3, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -149,11 +149,11 @@ ov31_0225D654: ; 0x0225D654
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -786,19 +786,19 @@ ov31_0225DBA0: ; 0x0225DBA0
 	bl ov31_0225DCF4
 	add r0, r4, #0
 	add r0, #0x34
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0x44
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0x74
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0x54
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, #0x64
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov31_0225DBA0
@@ -959,7 +959,7 @@ _0225DCFC:
 	add r0, r5, #0
 	bl sub_0201D8C8
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #6
@@ -2056,7 +2056,7 @@ ov31_0225E54C: ; 0x0225E54C
 	add r2, #0x44
 	ldr r2, [r5, r2]
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	mov r1, #0xa
 	ldr r2, [r5, #0x14]
 	lsl r1, r1, #6
@@ -2178,7 +2178,7 @@ _0225E684:
 	add r2, #0x44
 	ldr r2, [r4, r2]
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2197,7 +2197,7 @@ ov31_0225E700: ; 0x0225E700
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r4, #4]
 	mov r2, #0x1a
 	str r0, [sp]
@@ -2464,7 +2464,7 @@ _0225E8DA:
 	ldr r2, [r4, r2]
 	add r0, #0x44
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	mov r1, #0xa
 	ldr r2, [r4, #0x14]
 	lsl r1, r1, #6
@@ -2484,7 +2484,7 @@ ov31_0225E948: ; 0x0225E948
 	cmp r1, #1
 	bne _0225E954
 	ldr r0, _0225E958 ; =0x00000643
-	bl sub_0200604C
+	bl PlaySE
 _0225E954:
 	mov r0, #0
 	pop {r3, pc}
@@ -2644,7 +2644,7 @@ ov31_0225EA08: ; 0x0225EA08
 	ldr r2, [r5, r2]
 	add r0, #0x44
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	mov r1, #0xa
 	ldr r2, [r5, #0x14]
 	lsl r1, r1, #6
@@ -2712,7 +2712,7 @@ ov31_0225EA9C: ; 0x0225EA9C
 	ldr r2, [r5, r2]
 	add r0, #0x44
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	mov r1, #0xa
 	ldr r2, [r5, #0x14]
 	lsl r1, r1, #6
@@ -2780,7 +2780,7 @@ ov31_0225EB30: ; 0x0225EB30
 	ldr r2, [r5, r2]
 	add r0, #0x44
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	mov r1, #0xa
 	ldr r2, [r5, #0x14]
 	lsl r1, r1, #6
@@ -2848,7 +2848,7 @@ ov31_0225EBC4: ; 0x0225EBC4
 	ldr r2, [r5, r2]
 	add r0, #0x44
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	mov r1, #0xa
 	ldr r2, [r5, #0x14]
 	lsl r1, r1, #6
@@ -3052,30 +3052,30 @@ ov31_0225EDA0: ; 0x0225EDA0
 	bl sub_0200E9BC
 	add r0, r4, #0
 	add r0, #0xe4
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0xf4
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x41
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x45
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x49
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x4d
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x51
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov31_0225EDA0

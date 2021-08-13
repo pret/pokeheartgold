@@ -799,7 +799,7 @@ ov16_0220196C: ; 0x0220196C
 	mov r1, #0
 	mov r2, #0x20
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x82
 	str r0, [r4]
 	add r0, r5, #0

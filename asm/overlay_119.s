@@ -1335,7 +1335,7 @@ _0225FACC:
 	bl sub_02022C60
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201D39C
+	bl AllocWindows
 	mov r1, #0x83
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1758,7 +1758,7 @@ _0225FE64:
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2305,7 +2305,7 @@ _022602EA:
 	bl sub_02022C60
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201D39C
+	bl AllocWindows
 	mov r1, #2
 	lsl r1, r1, #8
 	str r0, [r4, r1]
@@ -2689,7 +2689,7 @@ _0226061E:
 	mov r0, #2
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #2
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]

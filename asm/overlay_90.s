@@ -701,7 +701,7 @@ _02258CBE:
 	mov r0, #1
 	strh r0, [r4, #4]
 	ldr r0, _02258CDC ; =0x000005F1
-	bl sub_0200604C
+	bl PlaySE
 	pop {r4, pc}
 	nop
 _02258CD8: .word ov90_0225C06C
@@ -1341,7 +1341,7 @@ ov90_02259184: ; 0x02259184
 	mov r1, #0x1b
 	mov r2, #0xec
 	add r3, r4, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r5]
 	mov r0, #8
 	mov r1, #0x40
@@ -1381,7 +1381,7 @@ ov90_022591D4: ; 0x022591D4
 	ldr r0, [r4, #4]
 	bl sub_0200BDA0
 	ldr r0, [r4]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov90_022591D4
@@ -1717,7 +1717,7 @@ _0225943E:
 	ldr r0, [r5, #0x24]
 	bl sub_02026380
 	add r0, r6, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, r5, #4
 	add r6, #0x10
@@ -3063,7 +3063,7 @@ _02259ECC:
 	cmp r0, #1
 	bne _02259EDC
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _02259EDC:
 	pop {r4, pc}
 	.balign 4, 0
@@ -3160,7 +3160,7 @@ ov90_02259F7C: ; 0x02259F7C
 	ldr r0, [r5, #0x34]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0200604C
+	bl PlaySE
 _02259F9A:
 	mov r1, #0x30
 	ldrsh r0, [r5, r1]
@@ -3658,7 +3658,7 @@ _0225A33C: .word 0x00000201
 ov90_0225A340: ; 0x0225A340
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4, #0x14]
 	bl sub_02026380
 	pop {r4, pc}
@@ -3805,7 +3805,7 @@ _0225A44C:
 	cmp r6, #1
 	bne _0225A528
 	ldr r0, _0225A530 ; =0x00000581
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4, #0x10]
 	ldr r1, _0225A534 ; =0x0225C228
 	lsl r3, r0, #2
@@ -6278,7 +6278,7 @@ _0225B738:
 	b _0225B7F2
 _0225B750:
 	ldr r0, _0225B7F8 ; =0x00000594
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	add r0, #0x4a
 	ldrb r0, [r0]
@@ -7395,23 +7395,23 @@ _0225BF82: ; jump table
 	.short _0225BFC2 - _0225BF82 - 2 ; case 15
 _0225BFA2:
 	ldr r0, _0225C064 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225BFC8
 _0225BFAA:
 	ldr r0, _0225C064 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225BFC8
 _0225BFB2:
 	ldr r0, _0225C064 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225BFC8
 _0225BFBA:
 	ldr r0, _0225C064 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225BFC8
 _0225BFC2:
 	ldr r0, _0225C068 ; =0x00000642
-	bl sub_0200604C
+	bl PlaySE
 _0225BFC8:
 	cmp r5, #0xf
 	bne _0225BFFC

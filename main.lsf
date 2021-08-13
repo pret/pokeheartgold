@@ -11,6 +11,13 @@ Static main
 	Object main.o
 	Object list_menu.o
 	Object unk_02001AF4.o
+	Object string_util.o
+	Object render_text.o
+	Object font.o
+	Object palette.o
+	Object sound.o
+	Object unk_02004A44.o
+	Object sound_chatot.o
 	Object poke_overlay.o
 	Object unk_02007200.o
 	Object overlay_manager.o

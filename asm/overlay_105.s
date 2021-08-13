@@ -198,7 +198,7 @@ _021E5A6C:
 	ldr r0, [r1, r0]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0200604C
+	bl PlaySE
 _021E5A9A:
 	mov r3, #1
 	mov r2, #0

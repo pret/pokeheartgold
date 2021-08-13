@@ -1119,7 +1119,7 @@ ov48_0225909C: ; 0x0225909C
 	tst r1, r0
 	beq _022590C0
 	ldr r0, _02259120 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add sp, #0xc
 	mov r0, #2
 	pop {r4, r5, pc}
@@ -1155,7 +1155,7 @@ _022590C0:
 	lsr r2, r2, #0x18
 	bl ov48_022593B4
 	ldr r0, _0225912C ; =0x000005D6
-	bl sub_0200604C
+	bl PlaySE
 	b _02259116
 _0225910C:
 	ldr r2, [r2, #0x44]
@@ -2656,13 +2656,13 @@ ov48_02259C4C: ; 0x02259C4C
 	mov r0, #1
 	strh r0, [r4, #0x10]
 	ldr r0, _02259C74 ; =0x000005D5
-	bl sub_0200604C
+	bl PlaySE
 	b _02259C6C
 _02259C62:
 	mov r0, #0
 	strh r0, [r4, #0x10]
 	ldr r0, _02259C74 ; =0x000005D5
-	bl sub_0200604C
+	bl PlaySE
 _02259C6C:
 	mov r0, #1
 	strh r0, [r4, #0x12]
@@ -2821,11 +2821,11 @@ _02259D90: .word 0x0002010F
 
 	thumb_func_start ov48_02259D94
 ov48_02259D94: ; 0x02259D94
-	ldr r3, _02259D9C ; =sub_0201D520
+	ldr r3, _02259D9C ; =RemoveWindow
 	add r0, #0x1c
 	bx r3
 	nop
-_02259D9C: .word sub_0201D520
+_02259D9C: .word RemoveWindow
 	thumb_func_end ov48_02259D94
 
 	thumb_func_start ov48_02259DA0
@@ -3052,7 +3052,7 @@ _02259F30:
 	bl sub_02016624
 	add r4, #0x10
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov48_02259F14
@@ -3083,7 +3083,7 @@ ov48_02259F48: ; 0x02259F48
 	add r0, r4, #0
 	ldr r2, [r4, #0xc]
 	add r0, #0x10
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	str r0, [r4, #4]
 	mov r0, #0
 	str r0, [r4]
@@ -3226,7 +3226,7 @@ _0225A02C:
 	add r0, r0, r1
 	mov r1, #1
 	str r3, [sp, #8]
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	mov r1, #0x6a
 	mov r2, #0xa
 	ldr r0, [sp, #0x14]
@@ -3299,7 +3299,7 @@ ov48_0225A108: ; 0x0225A108
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r0, r5, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r5, #0
 	bl ov48_0225A294
 	mov r4, #0
@@ -4185,7 +4185,7 @@ ov48_0225A768: ; 0x0225A768
 	add r5, r6, r0
 _0225A774:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #3
@@ -4193,7 +4193,7 @@ _0225A774:
 	mov r0, #0x66
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov48_0225A768
@@ -4982,7 +4982,7 @@ ov48_0225AD54: ; 0x0225AD54
 	cmp r0, #1
 	bne _0225ADB6
 	ldr r0, _0225ADB8 ; =0x000005D8
-	bl sub_0200604C
+	bl PlaySE
 	pop {r3, r4, r5, pc}
 _0225AD82:
 	mov r1, #0x30
@@ -5407,7 +5407,7 @@ ov48_0225B068: ; 0x0225B068
 	mov r0, #0
 	mov r1, #0x1b
 	add r3, r4, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r5]
 	mov r0, #8
 	mov r1, #0x40
@@ -5432,7 +5432,7 @@ ov48_0225B0A4: ; 0x0225B0A4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #4]
 	bl sub_0200BDA0
 	ldr r0, [r4, #8]

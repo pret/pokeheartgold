@@ -66,7 +66,7 @@ _021E80D6:
 	mov r1, #0x1b
 	mov r2, #0xfc
 	mov r3, #0x27
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x14]
 	mov r0, #1
 	bl sub_02002B8C
@@ -273,7 +273,7 @@ _021E82FC:
 	mov r0, #0
 	bl sub_02002B34
 	ldr r0, [r6, #0x14]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r6, #0x10]
 	bl sub_0200BDA0
 	add r0, r6, #0
@@ -1284,7 +1284,7 @@ ov52_021E8B94: ; 0x021E8B94
 	add r5, r6, r0
 _021E8BA0:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #5
@@ -1292,19 +1292,19 @@ _021E8BA0:
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0xb9
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0xb1
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0xb5
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov52_021E8B94
 
@@ -1345,7 +1345,7 @@ ov52_021E8BDC: ; 0x021E8BDC
 	mov r1, #1
 	bl ov52_021E8CDC
 	ldr r0, _021E8CA8 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _021E8C30
 _021E8C22:
 	ldr r0, _021E8CAC ; =0x0000431A
@@ -2191,7 +2191,7 @@ _021E9232:
 	add r0, sp, #0
 	mov r1, #0x18
 	mov r2, #2
-	bl sub_020CFD18
+	bl GX_LoadOBJPltt
 	pop {r3, pc}
 	thumb_func_end ov52_021E921C
 
@@ -2263,7 +2263,7 @@ ov52_021E927C: ; 0x021E927C
 	ldr r2, [r5, #0x34]
 	add r0, r5, r0
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	str r0, [r5, #0x38]
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -2462,7 +2462,7 @@ ov52_021E9424: ; 0x021E9424
 	cmp r0, #0
 	bne _021E9448
 	ldr r0, _021E9484 ; =0x00000699
-	bl sub_0200604C
+	bl PlaySE
 _021E9448:
 	mov r0, #0
 	ldrsb r1, [r4, r0]
@@ -2482,7 +2482,7 @@ _021E9460:
 	cmp r0, #0
 	bne _021E9470
 	ldr r0, _021E9484 ; =0x00000699
-	bl sub_0200604C
+	bl PlaySE
 _021E9470:
 	mov r0, #2
 	ldrsb r0, [r4, r0]

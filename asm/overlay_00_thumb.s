@@ -23,7 +23,7 @@ _021E5918:
 	ldr r2, _021E5AC8 ; =0x00001108
 	add r6, r0, #0
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r2, r6, #0
 	add r2, #0x1f
 	mov r0, #0x1f
@@ -545,7 +545,7 @@ _021E5D4E:
 	ldr r0, _021E5E0C ; =0x00000FC4
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _021E5DFC ; =_0221A680
 	ldr r2, _021E5E08 ; =_02216414
 	ldr r1, [r0]
@@ -1253,7 +1253,7 @@ ov00_021E62D4: ; 0x021E62D4
 	thumb_func_start ov00_021E62D8
 ov00_021E62D8: ; 0x021E62D8
 	ldr r0, _021E62E8 ; =_0221A680
-	ldr r3, _021E62EC ; =sub_020D4994
+	ldr r3, _021E62EC ; =MIi_CpuFill8
 	ldr r1, [r0]
 	ldr r0, _021E62F0 ; =0x000010AC
 	mov r2, #0x20
@@ -1262,7 +1262,7 @@ ov00_021E62D8: ; 0x021E62D8
 	bx r3
 	.balign 4, 0
 _021E62E8: .word _0221A680
-_021E62EC: .word sub_020D4994
+_021E62EC: .word MIi_CpuFill8
 _021E62F0: .word 0x000010AC
 	thumb_func_end ov00_021E62D8
 
@@ -3462,12 +3462,12 @@ _021E7338: .word 0x000010E6
 	thumb_func_start ov00_021E733C
 ov00_021E733C: ; 0x021E733C
 	push {r3, r4, r5, lr}
-	bl sub_020DA830
+	bl MIC_Init
 	bl sub_020DADE8
 	mov r0, #1
-	bl sub_020DB358
+	bl PM_SetAmp
 	mov r0, #3
-	bl sub_020DB39C
+	bl PM_SetAmpGain
 	ldr r0, _021E73CC ; =_0221A684
 	mov r2, #0
 	ldr r1, [r0, #4]
@@ -3504,7 +3504,7 @@ _021E737E:
 	str r1, [r2, r0]
 	mov r0, #1
 	bl sub_020B1D6C
-	bl sub_020C78D0
+	bl NNS_SndInit
 	ldr r0, _021E73CC ; =_0221A684
 	ldr r1, [r0, #4]
 	ldr r0, _021E73DC ; =0x000019F8
@@ -3555,7 +3555,7 @@ _021E73FC:
 	ldr r0, [r4]
 	mov r1, #0
 	add r2, r6, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r7, r7, #1
 	add r4, r4, #4
 	cmp r7, r5
@@ -3932,19 +3932,19 @@ _021E76D6: ; jump table
 	.short _021E76F6 - _021E76D6 - 2 ; case 3
 _021E76DE:
 	mov r0, #3
-	bl sub_020DB39C
+	bl PM_SetAmpGain
 	b _021E76FC
 _021E76E6:
 	mov r0, #2
-	bl sub_020DB39C
+	bl PM_SetAmpGain
 	b _021E76FC
 _021E76EE:
 	mov r0, #1
-	bl sub_020DB39C
+	bl PM_SetAmpGain
 	b _021E76FC
 _021E76F6:
 	mov r0, #0
-	bl sub_020DB39C
+	bl PM_SetAmpGain
 _021E76FC:
 	ldr r0, _021E778C ; =_0221A684
 	mov r2, #0
@@ -4064,7 +4064,7 @@ ov00_021E77CC: ; 0x021E77CC
 	str r0, [r5]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r1, [r5]
 	mov r0, #0x1f
 	add r1, #0x1f

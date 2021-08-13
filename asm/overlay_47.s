@@ -558,7 +558,7 @@ _02258C7E:
 	mov r0, #0
 	mov r1, #0x1b
 	add r3, r7, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r6, #1
 	add r4, r4, #4
 	stmia r5!, {r0}
@@ -593,7 +593,7 @@ ov47_02258CC0: ; 0x02258CC0
 	add r5, r6, #0
 _02258CC8:
 	ldr r0, [r5]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #9
@@ -905,7 +905,7 @@ _02258E7A:
 	ldr r0, [r4]
 	ldr r2, _02258F44 ; =0x02259E40
 	add r1, r5, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r5, #0x2c
 	add r0, r5, #0
 	mov r1, #1
@@ -1029,7 +1029,7 @@ _02259016:
 	tst r0, r1
 	beq _0225902E
 	ldr r0, _02259120 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	ldrh r0, [r4, #0x28]
 	add r0, r0, #1
 	strh r0, [r4, #0x28]
@@ -1043,7 +1043,7 @@ _0225902E:
 	bmi _02259066
 	mov r0, #0x5e
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4, #0x10]
 	sub r0, r0, #1
 	str r0, [r4, #0x10]
@@ -1058,7 +1058,7 @@ _0225904A:
 	bge _02259066
 	mov r0, #0x5e
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4, #0x10]
 	add r0, r0, #1
 	str r0, [r4, #0x10]
@@ -1084,7 +1084,7 @@ _0225906E:
 	add r0, r5, #0
 	bl ov47_02259384
 	ldr r0, _02259124 ; =0x0000057D
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #7
 	strh r0, [r4, #0x28]
 	b _02259118
@@ -1093,7 +1093,7 @@ _022590A4:
 	cmp r0, #1
 	beq _02259118
 	ldr r0, _02259128 ; =0x000005E4
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r5, #0
 	bl ov47_022593A0
 	add r0, r6, #0
@@ -1161,7 +1161,7 @@ ov47_0225912C: ; 0x0225912C
 	add r4, r2, #0
 	bl ov47_02259D24
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r5, #0x14]
 	bl sub_02024758
 	ldr r0, [r5, #0x18]
@@ -1340,7 +1340,7 @@ _02259296:
 	bl sub_02026380
 	add r0, r5, #0
 	add r0, #8
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov47_02259448
@@ -1539,7 +1539,7 @@ _02259418:
 	ldr r1, _0225942C ; =_02259E38
 	mov r2, #0x1f
 	mov r3, #6
-	bl sub_02001FC8
+	bl Std_CreateYesNoMenu
 	str r0, [r5, #0x20]
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -1659,7 +1659,7 @@ _022594E6:
 	ldr r0, [r6]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r7, r7, #1
 	add r4, #8
 	add r5, #0x10
@@ -1887,7 +1887,7 @@ _02259678:
 	mov r3, #1
 	bl ov47_02259B30
 	ldr r0, _0225995C ; =0x000005D7
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #5
 	add r4, #0x60
 	strh r0, [r4]
@@ -2145,7 +2145,7 @@ _0225987C:
 	mov r3, #2
 	bl ov47_02259B30
 	ldr r0, _0225995C ; =0x000005D7
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x12
 	add r4, #0x60
 	strh r0, [r4]
@@ -2236,7 +2236,7 @@ ov47_02259968: ; 0x02259968
 	str r4, [r0]
 _0225998C:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #6

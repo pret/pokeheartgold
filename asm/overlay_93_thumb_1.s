@@ -20,7 +20,7 @@ ov93_0225C540: ; 0x0225C540
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov93_0225C6D8
@@ -336,7 +336,7 @@ ov93_0225C768: ; 0x0225C768
 	ldr r2, _0225CA64 ; =0x00003850
 	add r5, r0, #0
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r5, #0
 	add r0, #0xa8
 	mov r1, #0x75
@@ -369,14 +369,14 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #0
 	lsl r2, r2, #8
 	mov r3, #0x75
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r5, #0
 	add r0, #0x8c
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r2, r1, #9
 	mov r3, #0x75
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r5, #0
 	add r0, #0x8c
 	mov r2, #7
@@ -384,7 +384,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #2
 	lsl r2, r2, #6
 	mov r3, #0x75
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r5, #0
 	add r0, #0x8c
 	mov r2, #2
@@ -392,7 +392,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #3
 	lsl r2, r2, #8
 	mov r3, #0x75
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	mov r0, #0x75
 	bl sub_0201AC88
 	str r0, [r5, #0x2c]
@@ -444,7 +444,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #0x1b
 	mov r2, #0xc
 	mov r3, #0x75
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r1, r5, #0
 	add r1, #0x80
 	str r0, [r1]
@@ -505,7 +505,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #0x10
 	mov r2, #7
 	mov r3, #0x75
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x20
@@ -518,7 +518,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #0x10
 	mov r2, #7
 	mov r3, #0x75
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	add r0, r5, #0
 	bl ov93_0225D4EC
 	add r0, r5, #0
@@ -969,7 +969,7 @@ ov93_0225CD10: ; 0x0225CD10
 	add r5, #0x30
 _0225CD72:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r6, r6, #1
 	add r5, #0x10
 	cmp r6, #5
@@ -1015,22 +1015,22 @@ _0225CD72:
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -1046,7 +1046,7 @@ _0225CD72:
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #0x2c]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -2592,7 +2592,7 @@ ov93_0225DB2C: ; 0x0225DB2C
 	mov r1, #0xc9
 	mov r2, #4
 	mov r3, #0x75
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2674,7 +2674,7 @@ ov93_0225DBC8: ; 0x0225DBC8
 	mov r1, #0xc9
 	mov r2, #5
 	mov r3, #0x75
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #5
@@ -2689,7 +2689,7 @@ ov93_0225DBC8: ; 0x0225DBC8
 	mov r1, #0xc9
 	mov r2, #6
 	mov r3, #0x75
-	bl sub_0200319C
+	bl PaletteData_LoadFromNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3168,7 +3168,7 @@ _0225DF76:
 	add r0, #0xc8
 	str r1, [r0]
 	ldr r0, _0225E004 ; =0x00000591
-	bl sub_0200604C
+	bl PlaySE
 	add sp, #8
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4300,7 +4300,7 @@ ov93_0225E7B0: ; 0x0225E7B0
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5]
 	ldr r1, [r0, #0x34]
 	mov r0, #0x27
@@ -4550,7 +4550,7 @@ _0225E97C:
 	add r0, #0xd
 	strb r1, [r4, r0]
 	ldr r0, _0225EA48 ; =0x0000058E
-	bl sub_0200604C
+	bl PlaySE
 	b _0225E9D4
 _0225E9C4:
 	add r0, r4, #0
@@ -4715,7 +4715,7 @@ ov93_0225EAE0: ; 0x0225EAE0
 	mov r1, #0
 	bl ov93_0225D700
 	ldr r0, _0225EB34 ; =0x00000592
-	bl sub_0200604C
+	bl PlaySE
 	pop {r3, pc}
 _0225EAFE:
 	mov r2, #0x91
@@ -4731,7 +4731,7 @@ _0225EAFE:
 	bl ov93_0225D700
 	mov r0, #0x59
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	pop {r3, pc}
 _0225EB20:
 	cmp r1, r2
@@ -4740,7 +4740,7 @@ _0225EB20:
 	bl ov93_0225D700
 	mov r0, #0x59
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 _0225EB32:
 	pop {r3, pc}
 	.balign 4, 0

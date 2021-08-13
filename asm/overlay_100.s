@@ -99,7 +99,7 @@ _021E59A6:
 _021E59AA:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0
 	strb r0, [r5, #6]
 	mov r0, #1
@@ -125,7 +125,7 @@ ov100_021E59CC: ; 0x021E59CC
 	beq _021E59E6
 	mov r0, #0x25
 	lsl r0, r0, #6
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #4
 	pop {r4, r5, r6, pc}
 _021E59E6:
@@ -155,7 +155,7 @@ _021E5A10:
 _021E5A14:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0200604C
+	bl PlaySE
 	ldrh r1, [r4, r6]
 	ldrb r0, [r5, #4]
 	cmp r1, r0
@@ -182,7 +182,7 @@ _021E5A44:
 	tst r0, r1
 	beq _021E5A5E
 	ldr r0, _021E5A84 ; =0x0000093F
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5, #0x7c]
 	mov r1, #0
 	bl ov100_021E73AC
@@ -194,7 +194,7 @@ _021E5A5E:
 	tst r1, r0
 	beq _021E5A78
 	ldr r0, _021E5A84 ; =0x0000093F
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5, #0x7c]
 	mov r1, #1
 	bl ov100_021E73AC
@@ -1022,23 +1022,23 @@ ov100_021E60C4: ; 0x021E60C4
 	ldr r3, [r5]
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	mov r1, #2
 	ldr r0, [r5, #0x78]
 	ldr r3, [r5]
 	lsl r2, r1, #8
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	mov r1, #1
 	ldr r0, [r5, #0x78]
 	ldr r3, [r5]
 	lsl r2, r1, #9
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	mov r2, #2
 	ldr r0, [r5, #0x78]
 	ldr r3, [r5]
 	mov r1, #3
 	lsl r2, r2, #8
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	mov r0, #0x8f
 	mov r1, #0x36
 	bl GetNarcMemberSizeByIdPair
@@ -1066,16 +1066,16 @@ ov100_021E6134: ; 0x021E6134
 	bl FreeToHeap
 	ldr r0, [r4, #0x78]
 	mov r1, #3
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x78]
 	mov r1, #1
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x78]
 	mov r1, #2
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x78]
 	mov r1, #0
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x78]
 	bl sub_02003104
 	mov r0, #0
@@ -2240,7 +2240,7 @@ ov100_021E69F8: ; 0x021E69F8
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	str r6, [r4]
 	cmp r5, #4
 	bls _021E6A22
@@ -2272,7 +2272,7 @@ ov100_021E6A3C: ; 0x021E6A3C
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #4
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -2348,7 +2348,7 @@ ov100_021E6AC0: ; 0x021E6AC0
 	mov r1, #0
 	mov r2, #0x10
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5]
 	mov r1, #8
 	bl AllocFromHeap
@@ -2774,7 +2774,7 @@ ov100_021E6E20: ; 0x021E6E20
 	mov r1, #0
 	mov r2, #0xc
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x28
 	add r5, r6, #0
 	mul r5, r0
@@ -2785,7 +2785,7 @@ ov100_021E6E20: ; 0x021E6E20
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #8]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2800,13 +2800,13 @@ ov100_021E6E58: ; 0x021E6E58
 	ldr r0, [r4, #8]
 	mov r1, #0
 	mul r2, r3
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0xc
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -2910,7 +2910,7 @@ _021E6F20:
 	ldr r0, [r5, #8]
 	mov r1, #0
 	mul r2, r3
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0
 	strh r0, [r5, #2]
 	pop {r4, r5, r6, pc}
@@ -2956,7 +2956,7 @@ _021E6F6A:
 	add r0, r3, r1
 	mov r1, #0
 	mul r2, r7
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldrh r0, [r5, #2]
 	sub r0, r0, r7
 	strh r0, [r5, #2]
@@ -2975,7 +2975,7 @@ ov100_021E6F88: ; 0x021E6F88
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xc
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	strh r5, [r4]
 	lsl r5, r5, #5
 	add r0, r6, #0
@@ -2984,7 +2984,7 @@ ov100_021E6F88: ; 0x021E6F88
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #4]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -3023,13 +3023,13 @@ _021E6FF0:
 	ldr r0, [r5, #4]
 	mov r1, #0
 	lsl r2, r2, #5
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
 	bl FreeToHeap
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0xc
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r5, #0
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -3143,7 +3143,7 @@ _021E70CC:
 	ldr r0, [r2, #4]
 	mov r2, #0xc
 	mul r2, r3
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	ldr r0, [r0, #4]
@@ -3152,7 +3152,7 @@ _021E70CC:
 	mov r1, #0
 	add r0, r0, r4
 	mov r2, #0x20
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

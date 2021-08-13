@@ -1007,7 +1007,7 @@ _0225F73E:
 	ldr r4, [r5, #0xc]
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201D39C
+	bl AllocWindows
 	str r0, [r4]
 	mov r3, #0
 	str r3, [sp]
@@ -1126,7 +1126,7 @@ _0225F852:
 	ldr r0, [r4]
 	bl sub_0201D8C8
 	ldr r0, [r4]
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4]
 	mov r1, #1
 	bl sub_0201D54C
@@ -1443,7 +1443,7 @@ _0225FA9E:
 	ldr r5, [r4, #0xc]
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201D39C
+	bl AllocWindows
 	str r0, [r5]
 	mov r3, #0
 	str r3, [sp]
@@ -1543,7 +1543,7 @@ _0225FB84:
 	ldr r0, [r5]
 	bl sub_0201D8C8
 	ldr r0, [r5]
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r5]
 	mov r1, #1
 	bl sub_0201D54C
@@ -1616,7 +1616,7 @@ _0225FBEE:
 	ldr r5, [r4, #0xc]
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201D39C
+	bl AllocWindows
 	str r0, [r5]
 	mov r3, #0
 	str r3, [sp]
@@ -1716,7 +1716,7 @@ _0225FCD4:
 	ldr r0, [r5]
 	bl sub_0201D8C8
 	ldr r0, [r5]
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r5]
 	mov r1, #1
 	bl sub_0201D54C

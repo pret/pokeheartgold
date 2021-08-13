@@ -20,7 +20,7 @@ ov61_021E5900: ; 0x021E5900
 	ldr r2, _021E5A20 ; =0x00000598
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	mov r1, #0x2e
 	add r0, #0x20
@@ -613,7 +613,7 @@ _021E5E40: .word 0x000011A4
 _021E5E44: .word 0x021E73A4
 _021E5E48: .word 0x000005F8
 _021E5E4C:
-	bl sub_0200604C
+	bl PlaySE
 	b _021E5E86
 _021E5E52:
 	bl sub_0200FB5C
@@ -2254,13 +2254,13 @@ ov61_021E6B6C: ; 0x021E6B6C
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201D39C
+	bl AllocWindows
 	mov r1, #0xe7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201D39C
+	bl AllocWindows
 	mov r1, #0x3a
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -2508,7 +2508,7 @@ _021E6D90:
 	mov r0, #0
 	mov r1, #0x1b
 	add r3, r7, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	bne _021E6DA4
 	bl GF_AssertFail
@@ -2548,7 +2548,7 @@ _021E6DE8:
 	bl CopyWindowToVram
 _021E6DEE:
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -2586,7 +2586,7 @@ _021E6E2C: .word 0x00010200
 ov61_021E6E30: ; 0x021E6E30
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -2751,7 +2751,7 @@ _021E6F62:
 	cmp r4, #6
 	bne _021E6F6C
 	ldr r0, _021E6F7C ; =0x000005EA
-	bl sub_0200604C
+	bl PlaySE
 _021E6F6C:
 	add r0, r4, #0
 	add sp, #0x18
@@ -3008,7 +3008,7 @@ ov61_021E7108: ; 0x021E7108
 	add r0, r6, #0
 	add r1, r5, #0
 	mov r2, #0x20
-	bl sub_020CFD70
+	bl GXS_LoadOBJPltt
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

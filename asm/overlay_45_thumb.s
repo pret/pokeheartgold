@@ -1375,7 +1375,7 @@ _0222A8A2:
 	mov r0, #1
 	mov r1, #0x1b
 	add r3, r7, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r1, #0x40
 	add r6, r0, #0
 	bl sub_0200BBA0
@@ -1386,7 +1386,7 @@ _0222A8A2:
 	add r0, r7, #0
 	bl sub_02026380
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 _0222A8D0:
 	add r0, r5, #0
 	bl ov45_0222A9A0
@@ -6048,7 +6048,7 @@ ov45_0222C978: ; 0x0222C978
 	mov r1, #0
 	mov r2, #0xb8
 	add r5, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	bl sub_02015D14
 	add r5, #0xb4
@@ -8959,7 +8959,7 @@ _0222DD8E:
 	mov r0, #1
 	mov r1, #0x1b
 	add r2, #0xcd
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	ldr r0, [sp, #0x28]
 	bl sub_0200BD08
@@ -8984,7 +8984,7 @@ _0222DDCA:
 	mov r4, #0
 _0222DDCC:
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
 	bl sub_0200BDA0
 	add r0, r4, #0

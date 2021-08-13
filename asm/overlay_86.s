@@ -82,7 +82,7 @@ ov86_021E5900: ; 0x021E5900
 	mov r1, #0x1b
 	mov r2, #0x13
 	mov r3, #0x79
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r1, #0x21
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -199,12 +199,12 @@ ov86_021E5AA4: ; 0x021E5AA4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	mov r0, #0x87
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	mov r0, #0x87
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -215,7 +215,7 @@ ov86_021E5AA4: ; 0x021E5AA4
 	str r1, [r4, r0]
 	sub r0, #0xc
 	ldr r0, [r4, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #0x85
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -355,7 +355,7 @@ _021E5BE0:
 	beq _021E5C82
 _021E5BF4:
 	ldr r0, _021E5C90 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov86_021E71C0
 	mov r0, #0xa
@@ -405,7 +405,7 @@ _021E5C46:
 	beq _021E5C82
 _021E5C5A:
 	ldr r0, _021E5C90 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov86_021E71C0
 	mov r0, #4
@@ -635,14 +635,14 @@ ov86_021E5E0C: ; 0x021E5E0C
 	mov r1, #2
 	lsl r2, r1, #8
 	mov r3, #0x79
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	mov r2, #0x87
 	lsl r2, r2, #2
 	ldr r0, [r4, r2]
 	mov r1, #0
 	sub r2, #0x1c
 	mov r3, #0x79
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r4, #0
 	mov r1, #2
 	bl ov86_021E5ECC
@@ -780,7 +780,7 @@ ov86_021E5ECC: ; 0x021E5ECC
 	add r0, #0xc
 	add r1, r5, r1
 	mov r2, #0x60
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -1668,13 +1668,13 @@ ov86_021E668C: ; 0x021E668C
 	mov r1, #0x1b
 	mov r2, #0xed
 	mov r3, #0x79
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r1, r5, #0
 	bl sub_0200BBA0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #2
@@ -3738,7 +3738,7 @@ _021E773A: ; jump table
 	.short _021E77AA - _021E773A - 2 ; case 3
 _021E7742:
 	ldr r0, _021E77B0 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov86_021E71C0
 	add r0, r4, #0
@@ -3749,7 +3749,7 @@ _021E7742:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E775C:
 	ldr r0, _021E77B4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _021E77AA
 _021E7764:
 	mov r0, #0x99
@@ -3760,11 +3760,11 @@ _021E7764:
 	cmp r0, #0
 	bne _021E777A
 	ldr r0, _021E77B8 ; =0x000005F2
-	bl sub_0200604C
+	bl PlaySE
 	b _021E77AA
 _021E777A:
 	ldr r0, _021E77B0 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r1, #0x96
 	lsl r1, r1, #2
 	strh r5, [r4, r1]
@@ -4066,7 +4066,7 @@ _021E79AE: ; jump table
 	.short _021E79D2 - _021E79AE - 2 ; case 3
 _021E79B6:
 	ldr r0, _021E7B3C ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov86_021E71C0
 	mov r0, #2
@@ -4075,7 +4075,7 @@ _021E79B6:
 	pop {r3, r4, r5, pc}
 _021E79CA:
 	ldr r0, _021E7B40 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _021E7AB4
 _021E79D2:
 	mov r0, #0x95
@@ -4122,7 +4122,7 @@ _021E79FC:
 	strb r2, [r4, r0]
 _021E7A24:
 	ldr r0, _021E7B40 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov86_021E7B68
 	add r0, r4, #0
@@ -4152,7 +4152,7 @@ _021E7A38:
 	strb r2, [r4, r0]
 _021E7A62:
 	ldr r0, _021E7B40 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	bl ov86_021E7B68
 	add r0, r4, #0
@@ -4174,13 +4174,13 @@ _021E7A76:
 	cmp r0, r2
 	blo _021E7A9A
 	ldr r0, _021E7B4C ; =0x000005F2
-	bl sub_0200604C
+	bl PlaySE
 	b _021E7AB4
 _021E7A9A:
 	sub r0, r1, #2
 	strh r5, [r4, r0]
 	ldr r0, _021E7B3C ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov86_021E78B8
@@ -4215,7 +4215,7 @@ _021E7AC4:
 _021E7AE2:
 	mov r0, #0x5e
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0x22
 	mov r2, #0x34
@@ -4244,7 +4244,7 @@ _021E7AFC:
 _021E7B1C:
 	mov r0, #0x5e
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0x26
 	mov r2, #0x34
@@ -4627,7 +4627,7 @@ _021E7E12:
 	ldr r0, [sp]
 	add r1, r5, r6
 	add r2, r2, r3
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r5, r6
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -4657,7 +4657,7 @@ ov86_021E7E40: ; 0x021E7E40
 _021E7E50:
 	lsl r0, r4, #4
 	add r0, r6, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -4694,10 +4694,10 @@ ov86_021E7E68: ; 0x021E7E68
 
 	thumb_func_start ov86_021E7E90
 ov86_021E7E90: ; 0x021E7E90
-	ldr r3, _021E7E94 ; =sub_0201D520
+	ldr r3, _021E7E94 ; =RemoveWindow
 	bx r3
 	.balign 4, 0
-_021E7E94: .word sub_0201D520
+_021E7E94: .word RemoveWindow
 	thumb_func_end ov86_021E7E90
 
 	.rodata

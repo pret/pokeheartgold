@@ -230,7 +230,7 @@ _021E5AD4:
 	mov r0, #1
 	mov r1, #0x1b
 	mov r3, #3
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x1c]
 	add r0, r6, #0
 	bl sub_0202B50C
@@ -309,7 +309,7 @@ _021E5B56:
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x1c]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

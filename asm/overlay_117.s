@@ -543,7 +543,7 @@ ov117_0225F470: ; 0x0225F470
 	mov r1, #0x1b
 	mov r2, #0xbd
 	add r3, r5, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_0200BD08
@@ -569,7 +569,7 @@ ov117_0225F470: ; 0x0225F470
 	add r2, r5, #0
 	bl sub_0200CBBC
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
 	bl sub_0200BDA0
 	add r0, r5, #0
@@ -1259,7 +1259,7 @@ _0225FA30:
 	mov r0, #0x66
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0

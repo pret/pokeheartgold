@@ -1395,7 +1395,7 @@ _0225CF7C:
 	cmp r0, #0x32
 	bne _0225CF98
 	ldr r0, _0225D06C ; =0x00000619
-	bl sub_0200604C
+	bl PlaySE
 _0225CF98:
 	mov r0, #0x7d
 	lsl r0, r0, #6
@@ -1403,7 +1403,7 @@ _0225CF98:
 	cmp r0, #0x14
 	bne _0225CFA8
 	ldr r0, _0225D070 ; =0x0000063D
-	bl sub_0200604C
+	bl PlaySE
 _0225CFA8:
 	ldr r0, _0225D064 ; =0x00001F74
 	mov r1, #1
@@ -1436,7 +1436,7 @@ _0225CFDC:
 	add r1, r4, r1
 	bl ov91_0225DB18
 	ldr r0, _0225D074 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _0225D054 ; =0x00001F38
 	mov r1, #6
 	str r1, [r4, r0]
@@ -2851,7 +2851,7 @@ _0225DAD2:
 	ldr r0, [sp, #0x24]
 	bl sub_02026380
 	add r0, sp, #0x30
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [sp, #0x14]
 	mov r1, #0
 	str r1, [r0, #4]
@@ -2872,11 +2872,11 @@ _0225DB08: .word 0x00007FFF
 
 	thumb_func_start ov91_0225DB0C
 ov91_0225DB0C: ; 0x0225DB0C
-	ldr r3, _0225DB14 ; =sub_0201D520
+	ldr r3, _0225DB14 ; =RemoveWindow
 	add r0, #0xc
 	bx r3
 	nop
-_0225DB14: .word sub_0201D520
+_0225DB14: .word RemoveWindow
 	thumb_func_end ov91_0225DB0C
 
 	thumb_func_start ov91_0225DB18
@@ -4205,21 +4205,21 @@ _0225E4CE:
 	b _0225E4F6
 _0225E4DA:
 	ldr r0, _0225E608 ; =0x00000582
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _0225E60C ; =0x00000583
-	bl sub_0200604C
+	bl PlaySE
 	b _0225E502
 _0225E4E8:
 	ldr r0, _0225E608 ; =0x00000582
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _0225E610 ; =0x00000584
-	bl sub_0200604C
+	bl PlaySE
 	b _0225E502
 _0225E4F6:
 	ldr r0, _0225E608 ; =0x00000582
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, _0225E614 ; =0x00000585
-	bl sub_0200604C
+	bl PlaySE
 _0225E502:
 	add r0, r4, #0
 	add r1, r5, #0
@@ -4265,7 +4265,7 @@ _0225E544:
 	cmp r7, #1
 	bne _0225E562
 	ldr r0, _0225E624 ; =0x00000722
-	bl sub_0200604C
+	bl PlaySE
 _0225E562:
 	add r0, r4, #0
 	add r1, r5, #0
@@ -5191,7 +5191,7 @@ _0225EC32:
 	mov r2, #1
 	bl ov91_0225E2E4
 	ldr r0, _0225EC74 ; =0x0000064F
-	bl sub_0200604C
+	bl PlaySE
 	b _0225EC46
 _0225EC44:
 	mov r4, #1
@@ -6085,7 +6085,7 @@ _0225F2CE:
 	add r3, r1, #0
 	bl ov91_0225D500
 	ldr r0, _0225F380 ; =0x0000064F
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	add r4, #0x3b
 	strb r0, [r4]
@@ -7262,7 +7262,7 @@ ov91_0225FCD8: ; 0x0225FCD8
 	mov r1, #0x1b
 	mov r2, #0xe6
 	add r3, r4, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r5, #8]
 	mov r0, #0x80
 	add r1, r4, #0
@@ -7285,7 +7285,7 @@ ov91_0225FD0C: ; 0x0225FD0C
 	ldr r0, [r4, #0xc]
 	bl sub_02026380
 	ldr r0, [r4, #8]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #4]
 	bl sub_0200BDA0
 	pop {r4, pc}
@@ -10713,7 +10713,7 @@ _022616FA:
 	bl sub_020137C0
 	add r0, r5, #0
 	add r0, #0x38
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r2, #8
 	add r0, r5, #0
 	mov r3, #9
@@ -10840,7 +10840,7 @@ ov91_02261808: ; 0x02261808
 	bl sub_020139D0
 	add r0, r5, #0
 	add r0, #0x38
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r5, #0x48]
 	mov r1, #1
 	bl sub_020137C0
@@ -10930,7 +10930,7 @@ ov91_022618B0: ; 0x022618B0
 	bl sub_020139D0
 	add r0, r5, #0
 	add r0, #0x38
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0
 	add r5, #0x96
 	strh r0, [r5]
@@ -11050,11 +11050,11 @@ ov91_022619E8: ; 0x022619E8
 	mov r1, #1
 	strb r1, [r0, #2]
 	strb r2, [r0, #3]
-	ldr r3, _022619F8 ; =sub_0200604C
+	ldr r3, _022619F8 ; =PlaySE
 	ldr r0, _022619FC ; =0x00000586
 	bx r3
 	.balign 4, 0
-_022619F8: .word sub_0200604C
+_022619F8: .word PlaySE
 _022619FC: .word 0x00000586
 	thumb_func_end ov91_022619E8
 
@@ -11118,7 +11118,7 @@ _02261A2E:
 	cmp r0, #0xc
 	bne _02261A7C
 	ldr r0, _02261B0C ; =0x00000587
-	bl sub_0200604C
+	bl PlaySE
 _02261A7C:
 	mov r0, #3
 	ldrsb r0, [r4, r0]

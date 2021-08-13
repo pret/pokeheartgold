@@ -28,7 +28,7 @@ _021E591C:
 	mov r1, #0
 	mov r2, #0x94
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x84
 	str r0, [r4, #0xc]
 	add r0, r4, #0
@@ -218,7 +218,7 @@ _021E5ACC:
 	cmp r0, #0
 	bne _021E5B40
 	ldr r0, _021E5B4C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -1703,7 +1703,7 @@ _021E6682:
 	mov r1, #1
 	bl sub_0200DC78
 	ldr r0, _021E6770 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _021E669A:
 	strb r7, [r4]
 	b _021E66EE
@@ -1724,7 +1724,7 @@ _021E66AA:
 	mov r0, #1
 	str r0, [r4, #4]
 	ldr r0, _021E6770 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _021E66EE
 _021E66C2:
 	mov r0, #0x20
@@ -1742,7 +1742,7 @@ _021E66CE:
 	strb r1, [r4]
 	str r0, [r4, #4]
 	ldr r0, _021E6770 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	b _021E66EE
 _021E66E4:
 	mov r0, #1
@@ -1847,7 +1847,7 @@ _021E6798:
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x84
 	str r0, [r4, #0xc]
 	add r0, r4, #0
@@ -1981,7 +1981,7 @@ _021E68DA:
 	cmp r0, #0
 	beq _021E6924
 	ldr r0, _021E6930 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -2845,7 +2845,7 @@ ov99_021E6FD0: ; 0x021E6FD0
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r6, [r5]
 	str r0, [sp, #8]
@@ -4014,7 +4014,7 @@ _021E783C:
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x84
 	str r0, [r4, #0xc]
 	str r5, [r4, #0x10]
@@ -4195,7 +4195,7 @@ _021E79DE:
 	beq _021E7A32
 _021E79F0:
 	ldr r0, _021E7A48 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -4369,7 +4369,7 @@ _021E7B20:
 	cmp r0, r2
 	beq _021E7BB4
 	ldr r0, _021E7BBC ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	cmp r4, #0
 	bne _021E7B4A
 	mov r2, #1
@@ -4540,7 +4540,7 @@ ov99_021E7C58: ; 0x021E7C58
 	orr r0, r2
 	str r0, [r5, r1]
 	ldr r0, _021E7CA4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	pop {r3, r4, r5, pc}
 	nop
 _021E7C9C: .word 0x00000408
@@ -5379,7 +5379,7 @@ _021E831E:
 	mov r1, #0
 	mov r2, #0xe4
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x84
 	str r0, [r4, #0xc]
 	add r0, r4, #0
@@ -5535,7 +5535,7 @@ _021E8482:
 	beq _021E84D6
 _021E8494:
 	ldr r0, _021E84E4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -7162,7 +7162,7 @@ _021E9114:
 	mov r1, #0xb
 	bl sub_0200DC4C
 	ldr r0, _021E92E4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xac
 	ldrsb r1, [r5, r0]
 	sub r0, #0xad
@@ -7176,7 +7176,7 @@ _021E9114:
 	mov r1, #0xd
 	bl sub_0200DC4C
 	ldr r0, _021E92E4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _021E914A:
 	ldr r0, [r5, #0x18]
 	mov r1, #1
@@ -7199,7 +7199,7 @@ _021E9164:
 	add r1, #0xb4
 	str r0, [r1]
 	ldr r0, _021E92E4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _021E9176:
 	mov r0, #0xac
 	ldrsb r1, [r5, r0]
@@ -7314,7 +7314,7 @@ _021E923A:
 	cmp r4, r0
 	beq _021E92D6
 	ldr r0, _021E92E4 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xac
 	ldrsb r1, [r5, r0]
 	sub r0, #0xad
@@ -7535,7 +7535,7 @@ ov99_021E93DC: ; 0x021E93DC
 	add r4, r0, #0
 	mov r1, #0
 	lsl r2, r2, #6
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	str r6, [r4]
 	ldr r1, [r6]
 	add r0, r5, #0

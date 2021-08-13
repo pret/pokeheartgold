@@ -644,7 +644,7 @@ _021E5E5C:
 	ldr r0, [r7, #4]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -678,7 +678,7 @@ ov68_021E5E94: ; 0x021E5E94
 	add r4, #8
 _021E5EA6:
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r5, r5, #1
 	add r4, #0x10
 	cmp r5, #0xf
@@ -696,7 +696,7 @@ ov68_021E5EBC: ; 0x021E5EBC
 	mov r0, #0
 	mov r1, #0x1b
 	mov r3, #0x42
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r1, r4, #0
 	add r1, #0xf8
 	str r0, [r1]
@@ -739,7 +739,7 @@ ov68_021E5F18: ; 0x021E5F18
 	add r4, r0, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
 	add r0, #0xfc
 	ldr r0, [r0]
@@ -841,7 +841,7 @@ _021E5FC8:
 	cmp r1, r0
 	bhs _021E604E
 	ldr r0, _021E6054 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov68_021E7A18
@@ -857,7 +857,7 @@ _021E5FF6:
 	cmp r1, r0
 	bhs _021E6014
 	ldr r0, _021E6054 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov68_021E7A18
@@ -869,7 +869,7 @@ _021E6014:
 	b _021E604E
 _021E601E:
 	ldr r0, _021E6054 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #5
 	bl ov68_021E7A18
@@ -882,7 +882,7 @@ _021E601E:
 	pop {r3, r4, r5, pc}
 _021E603E:
 	ldr r0, _021E6054 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0xf
 	bl ov68_021E7AB4
@@ -922,7 +922,7 @@ ov68_021E6078: ; 0x021E6078
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r4, #4]
 	mov r3, #0x6d
 	str r0, [sp]
@@ -1422,7 +1422,7 @@ ov68_021E6320: ; 0x021E6320
 	mov r0, #0
 	mov r1, #0x1b
 	mov r3, #0x42
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -1638,7 +1638,7 @@ _021E65AE:
 	add r0, r5, #0
 	bl sub_0201D5C8
 	ldr r0, [sp, #0x1c]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [sp, #0x20]
 	bl sub_02026380
 	add sp, #0x28
@@ -1874,7 +1874,7 @@ ov68_021E6820: ; 0x021E6820
 	strb r0, [r5, r1]
 	ldrb r0, [r5, r1]
 	mov r1, #0x42
-	bl sub_02014918
+	bl ListMenuItems_ctor
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -1882,7 +1882,7 @@ ov68_021E6820: ; 0x021E6820
 	mov r0, #0
 	mov r1, #0x1b
 	mov r3, #0x42
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	mov r0, #0x6e
 	lsl r0, r0, #2
@@ -1903,7 +1903,7 @@ _021E6858:
 	ldr r0, [r5, r0]
 	add r1, r7, #0
 	add r3, r2, #0
-	bl sub_02014960
+	bl ListMenuItems_AppendFromMsgData
 	b _021E688C
 _021E6874:
 	mov r0, #0x11
@@ -1915,7 +1915,7 @@ _021E6874:
 	ldr r0, [r5, r0]
 	ldr r1, [r1]
 	sub r3, #0x22
-	bl sub_02014960
+	bl ListMenuItems_AppendFromMsgData
 	b _021E689A
 _021E688C:
 	mov r0, #0x6e
@@ -1927,7 +1927,7 @@ _021E688C:
 	blo _021E6858
 _021E689A:
 	add r0, r7, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, _021E68C0 ; =0x000001BB
 	mov r1, #0
 	strb r1, [r5, r0]
@@ -1948,11 +1948,11 @@ _021E68C0: .word 0x000001BB
 ov68_021E68C4: ; 0x021E68C4
 	mov r1, #0x11
 	lsl r1, r1, #4
-	ldr r3, _021E68D0 ; =sub_02014950
+	ldr r3, _021E68D0 ; =ListMenuItems_dtor
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021E68D0: .word sub_02014950
+_021E68D0: .word ListMenuItems_dtor
 	thumb_func_end ov68_021E68C4
 
 	thumb_func_start ov68_021E68D4
@@ -2046,7 +2046,7 @@ _021E697C:
 	mov r0, #1
 	mov r1, #0x1b
 	mov r3, #0x42
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r2, #1
 	lsl r2, r2, #8
 	ldr r2, [r5, r2]
@@ -2061,7 +2061,7 @@ _021E697C:
 	str r2, [sp, #4]
 	bl ov68_021E6234
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	lsl r1, r4, #0x10
 	add r0, r5, #0
 	lsr r1, r1, #0x10
@@ -2377,7 +2377,7 @@ ov68_021E6C14: ; 0x021E6C14
 	add r0, r4, #0
 	ldr r2, [r4, r2]
 	add r0, #0x68
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	ldr r1, _021E6C70 ; =0x000001B9
 	strb r0, [r4, r1]
 	add sp, #0xc
@@ -2427,7 +2427,7 @@ _021E6CB0:
 	pop {r3, pc}
 _021E6CB6:
 	ldr r0, _021E6CD4 ; =0x000005E6
-	bl sub_0200604C
+	bl PlaySE
 	b _021E6CD0
 _021E6CBE:
 	mov r0, #0x4a
@@ -3239,7 +3239,7 @@ ov68_021E7288: ; 0x021E7288
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x55
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -3312,7 +3312,7 @@ ov68_021E7388: ; 0x021E7388
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x1c
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	pop {r4, pc}
 	thumb_func_end ov68_021E7388
 
@@ -3654,7 +3654,7 @@ ov68_021E7618: ; 0x021E7618
 	cmp r4, #3
 	bgt _021E766A
 	ldr r0, _021E7738 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5]
 	strh r4, [r0, #0x14]
 	ldr r0, [r5]
@@ -3692,7 +3692,7 @@ _021E766A:
 	cmp r1, r0
 	bge _021E76C2
 	ldr r0, _021E7738 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x72
 	lsl r0, r0, #2
 	mov r4, #3
@@ -3724,7 +3724,7 @@ _021E76C2:
 	cmp r0, #0
 	beq _021E7700
 	ldr r0, _021E7738 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	ldr r1, [r5]
 	ldrh r0, [r1, #0x16]
 	sub r0, r0, #1
@@ -3752,7 +3752,7 @@ _021E7700:
 	b _021E7728
 _021E7710:
 	ldr r0, _021E7738 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r1, #1
 	add r0, r5, #0
 	mvn r1, r1
@@ -3760,7 +3760,7 @@ _021E7710:
 	b _021E7728
 _021E7722:
 	ldr r0, _021E7738 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 _021E7728:
 	lsl r1, r4, #0x18
 	add r0, r5, #0
@@ -3815,7 +3815,7 @@ _021E7792:
 	cmp r4, #4
 	bne _021E77E8
 	ldr r0, _021E7894 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	ldr r1, [r5]
 	ldrh r0, [r1, #0x16]
 	ldrh r4, [r1, #0x14]
@@ -3850,7 +3850,7 @@ _021E77E8:
 	cmp r4, #5
 	bne _021E7840
 	ldr r0, _021E7894 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	ldr r1, [r5]
 	ldrh r0, [r1, #0x16]
 	ldrh r4, [r1, #0x14]
