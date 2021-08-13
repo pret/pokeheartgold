@@ -1468,7 +1468,7 @@ ov100_021E642C: ; 0x021E642C
 	str r0, [r4, #0x2c]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]

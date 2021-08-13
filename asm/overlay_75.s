@@ -32,7 +32,7 @@ ov75_02246960: ; 0x02246960
 	bl sub_020072A4
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #8]
 	mov r0, #0x64
 	mov r1, #0x73
@@ -525,7 +525,7 @@ ov75_02246D08: ; 0x02246D08
 	str r0, [sp, #0x10]
 	str r0, [sp, #0x14]
 	ldr r0, [r4, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r3, r0, #0
 	mov r0, #4
 	str r0, [sp]
@@ -613,7 +613,7 @@ ov75_02246DB4: ; 0x02246DB4
 	str r0, [sp, #0x18]
 	str r0, [sp, #0x1c]
 	ldr r0, [r4, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r3, r0, #0
 	mov r0, #5
 	str r0, [sp]
@@ -681,7 +681,7 @@ ov75_02246E3C: ; 0x02246E3C
 	str r0, [sp, #0x10]
 	str r0, [sp, #0x14]
 	ldr r0, [r4, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r3, r0, #0
 	mov r0, #6
 	str r0, [sp]

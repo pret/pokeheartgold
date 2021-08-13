@@ -52,7 +52,7 @@ ov83_0223DD60: ; 0x0223DD60
 	lsl r0, r0, #4
 	str r2, [r5, r0]
 	ldr r0, [r5, r1]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	ldr r1, _0223DE50 ; =0x00000508
 	str r0, [r5, r1]
 	ldr r2, [r4, #0x18]
@@ -10010,7 +10010,7 @@ ov83_02242FE8: ; 0x02242FE8
 	sub r1, #8
 	str r2, [r5, r0]
 	ldr r0, [r5, r1]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	mov r1, #0xae
 	lsl r1, r1, #2
 	str r0, [r5, r1]

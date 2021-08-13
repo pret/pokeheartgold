@@ -492,7 +492,7 @@ _02258C56:
 	mov r1, #2
 	bl sub_0200BB6C
 	ldr r0, [r4, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 	mov r3, #0
 	str r3, [sp]
@@ -628,7 +628,7 @@ _02258D7A:
 	mov r1, #3
 	bl sub_0200BB6C
 	ldr r0, [r4, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 	mov r3, #0
 	str r3, [sp]
@@ -1280,7 +1280,7 @@ _022592FE:
 	lsl r2, r2, #0xa
 	bl sub_020D4790
 	ldr r0, [r4, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202ADCC
 	add r5, r0, #0
 	bl sub_0200E640

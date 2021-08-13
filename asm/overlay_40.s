@@ -40923,7 +40923,7 @@ _0224043A:
 	str r0, [sp, #0x10]
 	str r0, [sp, #0x14]
 	ldr r0, [r5, r1]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r3, r0, #0
 	mov r0, #0x6d
 	mov r1, #0xc

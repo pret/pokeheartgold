@@ -189,7 +189,7 @@ ov59_02237E94: ; 0x02237E94
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r4, r0, #0
 	bl sub_0202AD3C
 	add r1, r5, #0
@@ -5797,7 +5797,7 @@ ov59_0223A9E4: ; 0x0223A9E4
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x18]
 	str r0, [r5, #8]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r4, r0, #0
 	bl sub_0202AD3C
 	add r1, r5, #0

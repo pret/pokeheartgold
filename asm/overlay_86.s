@@ -69,7 +69,7 @@ ov86_021E5900: ; 0x021E5900
 	strh r0, [r5, #8]
 	sub r0, r1, #4
 	ldr r0, [r5, r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	mov r1, #0x22
 	lsl r1, r1, #4
 	str r0, [r5, r1]

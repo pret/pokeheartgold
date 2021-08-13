@@ -27,7 +27,7 @@ ov67_021E5900: ; 0x021E5900
 	ldrh r0, [r5, #6]
 	strb r0, [r4, #0xa]
 	ldr r0, [r5]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x18]
 	ldr r0, [r5]
 	bl sub_0203107C

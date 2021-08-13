@@ -49,7 +49,7 @@ ov55_021E5924: ; 0x021E5924
 	bl ov55_021E5B08
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0x10]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #4]
 	ldrh r0, [r5]

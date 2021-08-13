@@ -658,7 +658,7 @@ ov15_021F98F4: ; 0x021F98F4
 	sub r1, #8
 	ldr r0, [r4, r1]
 	ldr r0, [r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	mov r1, #9
 	lsl r1, r1, #6
 	str r0, [r4, r1]

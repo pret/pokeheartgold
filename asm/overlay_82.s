@@ -47,7 +47,7 @@ ov82_0223DD60: ; 0x0223DD60
 	add r0, r5, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r1, r5, #0
 	add r1, #0x9c
 	str r0, [r1]
@@ -946,7 +946,7 @@ _0223E4E4:
 	add r0, r4, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 	mov r3, #1
 	str r3, [sp]

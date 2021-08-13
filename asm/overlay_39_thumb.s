@@ -2530,7 +2530,7 @@ _022282CA:
 	ldr r0, [r5]
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 	add r1, r5, #0
 	add r1, #0x90
@@ -2909,7 +2909,7 @@ ov39_022285CC: ; 0x022285CC
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202ADCC
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18

@@ -957,7 +957,7 @@ _02258FAE:
 	blt _02258FAE
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202ADCC
 	lsl r0, r0, #0x18
 	mov r1, #5
@@ -1360,7 +1360,7 @@ ov46_022592EC: ; 0x022592EC
 	str r0, [r5, #0x1c]
 	ldr r0, [sp, #0x44]
 	str r6, [r5, #0x20]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 	str r0, [r5, #0x28]
 	mov r0, #0

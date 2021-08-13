@@ -21297,7 +21297,7 @@ ov02_0224FB9C: ; 0x0224FB9C
 	sub r3, r3, #1
 	bl ov02_0224FC8C
 	ldr r0, [r5, #0xc]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
@@ -21350,7 +21350,7 @@ ov02_0224FC08: ; 0x0224FC08
 	add r0, r5, #0
 	bl ov02_0224FCE0
 	ldr r0, [r5, #0xc]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0

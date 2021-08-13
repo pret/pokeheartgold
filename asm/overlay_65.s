@@ -1193,7 +1193,7 @@ _0221C82E:
 	b _0221C99E
 _0221C83A:
 	ldr r0, [r4, #4]
-	bl sub_0202CE64
+	bl Sav2_Chatot_get
 	bl ov65_0221DF0C
 	ldr r0, [r4, #0x58]
 	add r0, r0, #1
@@ -3609,7 +3609,7 @@ ov65_0221DC34: ; 0x0221DC34
 	cmp r0, r1
 	bne _0221DC8E
 	ldr r0, [r4, #4]
-	bl sub_0202CE64
+	bl Sav2_Chatot_get
 	mov r1, #0
 	mov r2, #0x64
 	add r3, r1, #0
@@ -6828,7 +6828,7 @@ _0221F664:
 	cmp r0, #0
 	bne _0221F6BC
 	ldr r0, [r5, #0x10]
-	bl sub_0202CE64
+	bl Sav2_Chatot_get
 	bl sub_0202CE74
 _0221F6BC:
 	ldr r0, [r5, #0x10]

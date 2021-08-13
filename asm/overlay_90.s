@@ -1630,7 +1630,7 @@ ov90_0225938C: ; 0x0225938C
 	str r0, [sp, #0x30]
 	add r0, r2, #0
 	str r3, [sp, #0x18]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202ADCC
 	add r4, r0, #0
 	mov r0, #1

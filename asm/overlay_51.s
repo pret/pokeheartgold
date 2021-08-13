@@ -77,7 +77,7 @@ ov51_021E5AC0: ; 0x021E5AC0
 	mov r0, #0x67
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r5, r0, #0
 	bl sub_0202AD3C
 	ldr r1, _021E5D58 ; =0x0000343E

@@ -41,7 +41,7 @@ ov87_021E5900: ; 0x021E5900
 	lsl r0, r0, #2
 	str r2, [r4, r0]
 	ldr r0, [r4, r1]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r4, r1]

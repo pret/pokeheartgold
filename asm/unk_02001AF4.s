@@ -5261,8 +5261,8 @@ _0200415E:
 _02004170: .word 0xFFFFC000
 	thumb_func_end sub_020040AC
 
-	thumb_func_start sub_02004174
-sub_02004174: ; 0x02004174
+	thumb_func_start InitSoundData
+InitSoundData: ; 0x02004174
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -5320,10 +5320,10 @@ _020041F8: .word 0x000BEAE0
 _020041FC: .word 0x0210E980
 _02004200: .word 0x0211194C
 _02004204: .word 0x000BEC3C
-	thumb_func_end sub_02004174
+	thumb_func_end InitSoundData
 
-	thumb_func_start sub_02004208
-sub_02004208: ; 0x02004208
+	thumb_func_start DoSoundUpdateFrame
+DoSoundUpdateFrame: ; 0x02004208
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	bl sub_020043F8
@@ -5436,7 +5436,7 @@ _020042F0: .word 0x000BEC74
 _020042F4: .word 0x000BEC58
 _020042F8: .word 0x000BEC60
 _020042FC: .word 0x000BEC80
-	thumb_func_end sub_02004208
+	thumb_func_end DoSoundUpdateFrame
 
 	thumb_func_start sub_02004300
 sub_02004300: ; 0x02004300

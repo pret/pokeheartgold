@@ -100,7 +100,7 @@ _021E80D6:
 	str r0, [r4, #8]
 	add r0, r6, #0
 	bl sub_020072A4
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0xc]
 	add r0, r4, #0
 	add r1, r7, #0

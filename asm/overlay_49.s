@@ -4263,7 +4263,7 @@ _0225A636:
 	cmp r0, #4
 	blt _0225A636
 	ldr r0, [sp, #0x14]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202ADCC
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -4797,7 +4797,7 @@ ov49_0225AAC8: ; 0x0225AAC8
 	bl sub_02026354
 	str r0, [r5, #0x18]
 	add r0, r4, #0
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 	str r0, [r5, #0x14]
 	add sp, #0x14

@@ -29,7 +29,7 @@ ov53_021E5900: ; 0x021E5900
 	bl sub_020072A4
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	mov r1, #0
 	str r0, [r4, #8]
 	str r1, [r4, #0xc]

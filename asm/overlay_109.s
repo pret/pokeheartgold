@@ -195,7 +195,7 @@ ov109_021E5A70: ; 0x021E5A70
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r4, r0, #0
 	bl sub_0202AD3C
 	add r1, r5, #0

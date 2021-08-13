@@ -268,7 +268,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	add r1, #0x94
 	str r0, [r1]
 	ldr r0, [r4, #4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202ADCC
 	mov r1, #0x9a
 	lsl r1, r1, #2

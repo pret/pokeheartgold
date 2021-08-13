@@ -4206,7 +4206,7 @@ ov112_021E795C: ; 0x021E795C
 	ldr r1, _021E7998 ; =0x0001E438
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	ldr r1, _021E799C ; =0x0001E43C
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]

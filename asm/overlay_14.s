@@ -38,7 +38,7 @@ ov14_021E5900: ; 0x021E5900
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x10]
 	add r0, r4, #0
 	mov r1, #0xff

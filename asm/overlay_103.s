@@ -24,7 +24,7 @@ ov103_021EC940: ; 0x021EC940
 	bl sub_020072A4
 	str r0, [r4, #8]
 	ldr r0, [r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4]
 	ldr r0, [r4, #8]
 	ldr r0, [r0]

@@ -11567,7 +11567,7 @@ ov80_0222F458: ; 0x0222F458
 	b _0222F4BC
 _0222F498:
 	ldr r0, [r0, #8]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 	add r1, r0, #0
 	ldrh r0, [r4, #4]
@@ -25398,7 +25398,7 @@ ov80_0223608C: ; 0x0223608C
 	ldr r1, [r1]
 	str r0, [r1, #8]
 	ldr r0, [r5]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r1, r5, #0
 	add r1, #0xa8
 	ldr r1, [r1]
@@ -25725,7 +25725,7 @@ ov80_02236330: ; 0x02236330
 	mov r2, #0x3c
 	bl sub_020D4994
 	ldr r0, [r4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r1, r4, #0
 	add r1, #0xac
 	ldr r1, [r1]

@@ -18344,7 +18344,7 @@ _02240A1A:
 	bne _02240A62
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl sub_0202CE64
+	bl Sav2_Chatot_get
 	bl sub_0202CE74
 _02240A62:
 	cmp r6, #0

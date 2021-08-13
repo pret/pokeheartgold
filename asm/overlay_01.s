@@ -20515,7 +20515,7 @@ ov01_021EF60C: ; 0x021EF60C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 	pop {r3, pc}
 	.balign 4, 0
@@ -20600,7 +20600,7 @@ ov01_021EF6A8: ; 0x021EF6A8
 	mov r2, #3
 	bl sub_0205B514
 	ldr r0, [r5, #0xc]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
 	bl sub_0205B564
@@ -36599,7 +36599,7 @@ _021F6D24:
 	add r0, #0x88
 	str r1, [r0]
 	ldr r0, [r4, #0x34]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202ADCC
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -37239,14 +37239,14 @@ _021F71DC:
 	bl sub_0205B514
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #0xc]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x10
 	bl sub_0205B564
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #0xc]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r2, r0, #0
 	add r0, r4, #0
 	ldr r1, [r4, #0xc]
@@ -49490,7 +49490,7 @@ ov01_021FCB6C: ; 0x021FCB6C
 	mov r2, #3
 	bl sub_0205B514
 	ldr r0, [r4, #0xc]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r5, #0x38
 	add r1, r0, #0
 	add r0, r5, #0
@@ -49514,7 +49514,7 @@ ov01_021FCB90: ; 0x021FCB90
 	ldr r2, [r5, #0x30]
 	bl sub_0200CBBC
 	ldr r0, [r4, #0xc]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r2, r0, #0
 	add r0, r5, #0
 	ldr r1, [r5, #0x2c]

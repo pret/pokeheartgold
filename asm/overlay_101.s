@@ -12515,7 +12515,7 @@ ov101_021ED7F8: ; 0x021ED7F8
 	str r0, [r1, #0x2c]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x30]
 	ldr r0, [r4, #0x10]

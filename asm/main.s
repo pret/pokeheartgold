@@ -3,21 +3,32 @@
 	.public ov60_021EB030
     .public ov36_021E5C04
 
+	.bss
+
+gBacklightTop:
+	.space 0x4
+
+_02111864:
+	.space 0x4
+
+_02111868:
+	.space 0x1C
+
 	.text
 
 	; Entry point
 	thumb_func_start NitroMain
 NitroMain: ; 0x02000CA4
 	push {r3, r4, r5, r6, r7, lr}
-	bl sub_0201A200
-	bl sub_0201A348
-	bl sub_0201A458
+	bl InitSystemForTheGame
+	bl InitGraphicMemory
+	bl InitKeypadAndTouchpad
 	mov r0, #0
 	bl sub_0201A4B0
-	ldr r0, _02000E48 ; =0x02111860
+	ldr r0, _02000E48 ; =gBacklightTop
 	mov r1, #0
 	bl PM_GetBackLight
-	bl sub_02026E30
+	bl GF_InitRTCWork
 	bl sub_02014634
 	bl Main_ResetOverlayManager
 	bl sub_02002CA8
@@ -31,33 +42,34 @@ NitroMain: ; 0x02000CA4
 	add r1, r0, #0
 	bl sub_02002CEC
 	mov r1, #0
-	ldr r0, _02000E4C ; =0x02111860
+	; Note to decompiler: the -ipa file switch causes most file-local symbol access to be compiled relative to the top symbol in that section. This is buggy in practice.
+	ldr r0, _02000E4C ; =_0211868-8
 	mvn r1, r1
 	str r1, [r0, #0x18]
-	bl sub_020271B0
-	ldr r1, _02000E4C ; =0x02111860
+	bl SaveBlock2_new
+	ldr r1, _02000E4C ; =_0211868-8
 	str r0, [r1, #0x20]
 	bl sub_02005D00
-	ldr r0, _02000E4C ; =0x02111860
+	ldr r0, _02000E4C ; =_0211868-8
 	ldr r0, [r0, #0x20]
-	bl sub_0202CE64
+	bl Sav2_Chatot_get
 	add r4, r0, #0
-	ldr r0, _02000E4C ; =0x02111860
+	ldr r0, _02000E4C ; =_0211868-8
 	ldr r0, [r0, #0x20]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02004174
-	bl sub_02025404
+	bl InitSoundData
+	bl Init_Timer3
 	mov r0, #3
 	bl sub_02039FFC
 	cmp r0, #3
 	bne _02000D2C
 	mov r0, #3
 	mov r1, #0
-	bl sub_0203AC94
+	bl ShowWFCUserInfoWarning
 _02000D2C:
-	ldr r0, _02000E4C ; =0x02111860
+	ldr r0, _02000E4C ; =_0211868-8
 	ldr r0, [r0, #0x20]
 	bl sub_020274D0
 	cmp r0, #0
@@ -66,6 +78,7 @@ _02000D2C:
 	bl sub_0209263C
 	b _02000D82
 _02000D40:
+	; static inline int OS_GetResetParameter();
 	ldr r0, _02000E50 ; =0x027FFC20
 	ldr r0, [r0]
 	cmp r0, #0
@@ -74,25 +87,27 @@ _02000D40:
 	beq _02000D5E
 	b _02000D7E
 _02000D4E:
-	ldr r0, _02000E4C ; =0x02111860
+	; Title Demo
+	ldr r0, _02000E4C ; =_0211868-8
 	mov r1, #0
 	str r1, [r0, #0x1c]
 	ldr r0, _02000E54 ; =SDK_OVERLAY_OVY_60_ID
-	ldr r1, _02000E58 ; =0x021EB030
+	ldr r1, _02000E58 ; =ov60_021EB030
 	bl RegisterMainOverlay
 	b _02000D82
 _02000D5E:
+	; Reset transition?
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0200FBF4
 	mov r0, #1
 	mov r1, #0
 	bl sub_0200FBF4
-	ldr r0, _02000E4C ; =0x02111860
+	ldr r0, _02000E4C ; =_0211868-8
 	mov r1, #1
 	str r1, [r0, #0x1c]
 	ldr r0, _02000E5C ; =SDK_OVERLAY_OVY_36_ID
-	ldr r1, _02000E60 ; =0x021E5C04
+	ldr r1, _02000E60 ; =ov36_021E5C04
 	bl RegisterMainOverlay
 	b _02000D82
 _02000D7E:
@@ -106,7 +121,7 @@ _02000D82:
 	bl InitializeMainRNG
 	bl sub_0200B528
 	bl sub_02018380
-	ldr r0, _02000E4C ; =0x02111860
+	ldr r0, _02000E4C ; =_0211864-4
 	mov r1, #0
 	str r1, [r0, #4]
 	bl sub_020D33C0
@@ -152,7 +167,7 @@ _02000DD0:
 	add r0, r0, #1
 	str r0, [r4, #0x2c]
 _02000E08:
-	bl sub_0201466C
+	bl GF_RTC_UpdateOnFrame
 	bl sub_020183B0
 	bl sub_02026E60
 	ldr r0, [r4, #0x24]
@@ -172,13 +187,13 @@ _02000E08:
 	ldr r0, [r4, #4]
 	blx r1
 _02000E3C:
-	bl sub_02004208
+	bl DoSoundUpdateFrame
 	ldr r0, [r4, #0x20]
 	bl sub_0201F880
 	b _02000DAC
 	.balign 4, 0
-_02000E48: .word 0x02111860
-_02000E4C: .word 0x02111860
+_02000E48: .word gBacklightTop
+_02000E4C: .word gBacklightTop
 _02000E50: .word 0x027FFC20
 _02000E54: .word SDK_OVERLAY_OVY_60_ID
 _02000E58: .word ov60_021EB030
@@ -191,7 +206,7 @@ _02000E68: .word 0x021D116C
 	thumb_func_start Main_ResetOverlayManager
 Main_ResetOverlayManager: ; 0x02000E6C
 	mov r2, #0
-	ldr r0, _02000E80 ; =0x02111860
+	ldr r0, _02000E80 ; =gBacklightTop
 	mvn r2, r2
 	str r2, [r0, #8]
 	mov r1, #0
@@ -200,13 +215,13 @@ Main_ResetOverlayManager: ; 0x02000E6C
 	str r1, [r0, #0x14]
 	bx lr
 	nop
-_02000E80: .word 0x02111860
+_02000E80: .word gBacklightTop
 	thumb_func_end Main_ResetOverlayManager
 
 	thumb_func_start Main_RunOverlayManager
 Main_RunOverlayManager: ; 0x02000E84
 	push {r3, lr}
-	ldr r0, _02000EEC ; =0x02111860
+	ldr r0, _02000EEC ; =gBacklightTop
 	ldr r1, [r0, #0xc]
 	cmp r1, #0
 	bne _02000EC2
@@ -221,14 +236,14 @@ Main_RunOverlayManager: ; 0x02000E84
 	mov r1, #0
 	bl HandleLoadOverlay
 _02000EA4:
-	ldr r0, _02000EEC ; =0x02111860
+	ldr r0, _02000EEC ; =gBacklightTop
 	mov r2, #0
 	ldr r1, [r0, #0x10]
 	str r1, [r0, #8]
 	ldr r0, [r0, #0x14]
-	ldr r1, _02000EF0 ; =0x02111878
+	ldr r1, _02000EF0 ; =_02111868 + 0x10
 	bl OverlayManager_new
-	ldr r1, _02000EEC ; =0x02111860
+	ldr r1, _02000EEC ; =gBacklightTop
 	str r0, [r1, #0xc]
 	mov r0, #0
 	mvn r0, r0
@@ -236,15 +251,15 @@ _02000EA4:
 	mov r0, #0
 	str r0, [r1, #0x14]
 _02000EC2:
-	ldr r0, _02000EEC ; =0x02111860
+	ldr r0, _02000EEC ; =gBacklightTop
 	ldr r0, [r0, #0xc]
 	bl OverlayManager_run
 	cmp r0, #0
 	beq _02000EE8
-	ldr r0, _02000EEC ; =0x02111860
+	ldr r0, _02000EEC ; =gBacklightTop
 	ldr r0, [r0, #0xc]
 	bl OverlayManager_delete
-	ldr r0, _02000EEC ; =0x02111860
+	ldr r0, _02000EEC ; =gBacklightTop
 	mov r1, #0
 	str r1, [r0, #0xc]
 	ldr r0, [r0, #8]
@@ -255,27 +270,27 @@ _02000EC2:
 _02000EE8:
 	pop {r3, pc}
 	nop
-_02000EEC: .word 0x02111860
-_02000EF0: .word 0x02111878
+_02000EEC: .word gBacklightTop
+_02000EF0: .word _02111868 + 0x10
 	thumb_func_end Main_RunOverlayManager
 
 	thumb_func_start RegisterMainOverlay
 RegisterMainOverlay: ; 0x02000EF4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _02000F10 ; =0x02111860
+	ldr r0, _02000F10 ; =gBacklightTop
 	add r4, r1, #0
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
 	beq _02000F06
 	bl GF_AssertFail
 _02000F06:
-	ldr r0, _02000F10 ; =0x02111860
+	ldr r0, _02000F10 ; =gBacklightTop
 	str r5, [r0, #0x10]
 	str r4, [r0, #0x14]
 	pop {r3, r4, r5, pc}
 	nop
-_02000F10: .word 0x02111860
+_02000F10: .word gBacklightTop
 	thumb_func_end RegisterMainOverlay
 
 	thumb_func_start sub_02000F14
@@ -427,7 +442,7 @@ _02001020:
 	bl sub_0203AA44
 	bl sub_02038D90
 	bl sub_02000F14
-	bl sub_02004208
+	bl DoSoundUpdateFrame
 _02001036:
 	bl HandleDSLidAction
 	bl ReadKeypadAndTouchpad
@@ -460,7 +475,7 @@ _02001068:
 	cmp r4, #0xa
 	bge _02001086
 _02001076:
-	bl sub_02004208
+	bl DoSoundUpdateFrame
 	bl sub_02000F14
 	cmp r4, #0xa
 	bge _02001036
@@ -563,11 +578,11 @@ HandleDSLidAction: ; 0x0200110C
 	bl CTRDG_IsPulledOut
 	cmp r0, #1
 	bne _0200113C
-	ldr r0, _020011D8 ; =0x02111860
+	ldr r0, _020011D8 ; =_02111864 - 4
 	mov r1, #1
 	str r1, [r0, #4]
 _0200113C:
-	ldr r6, _020011D8 ; =0x02111860
+	ldr r6, _020011D8 ; =_02111864 - 4
 	mov r0, #0xc
 	ldr r1, [r6, #4]
 	ldr r4, _020011D0 ; =0x027FFFA8
@@ -629,7 +644,7 @@ _020011AE:
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	bne _020011CA
-	ldr r1, _020011D8 ; =0x02111860
+	ldr r1, _020011D8 ; =gBacklightTop
 	mov r0, #2
 	ldr r1, [r1]
 	bl PM_SetBackLight
@@ -639,5 +654,5 @@ _020011CA:
 	nop
 _020011D0: .word 0x027FFFA8
 _020011D4: .word 0x021D116C
-_020011D8: .word 0x02111860
+_020011D8: .word gBacklightTop
 	thumb_func_end HandleDSLidAction

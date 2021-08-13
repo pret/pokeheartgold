@@ -269,7 +269,7 @@ ov47_02258A1C: ; 0x02258A1C
 	add r5, r0, #0
 	add r4, r2, #0
 	add r0, r1, #0
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r6, r0, #0
 	mov r0, #0xd1
 	add r1, r4, #0
@@ -1311,7 +1311,7 @@ ov47_02259228: ; 0x02259228
 	bl sub_02026354
 	str r0, [r5, #0x18]
 	add r0, r4, #0
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 	str r0, [r5, #4]
 	add sp, #0x14

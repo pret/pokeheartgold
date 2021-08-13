@@ -28059,8 +28059,8 @@ _02014664: .word 0x021D1048
 _02014668: .word 0x021D1048
 	thumb_func_end sub_02014634
 
-	thumb_func_start sub_0201466C
-sub_0201466C: ; 0x0201466C
+	thumb_func_start GF_RTC_UpdateOnFrame
+GF_RTC_UpdateOnFrame: ; 0x0201466C
 	push {r3, lr}
 	ldr r0, _0201468C ; =0x021D1048
 	ldr r1, [r0, #4]
@@ -28080,7 +28080,7 @@ _0201468A:
 	.balign 4, 0
 _0201468C: .word 0x021D1048
 _02014690: .word 0x021D1048
-	thumb_func_end sub_0201466C
+	thumb_func_end GF_RTC_UpdateOnFrame
 
 	thumb_func_start sub_02014694
 sub_02014694: ; 0x02014694
@@ -41145,8 +41145,8 @@ _0201A1EE:
 _0201A1FC: .word 0x020F62A4
 	thumb_func_end sub_0201A1B4
 
-	thumb_func_start sub_0201A200
-sub_0201A200: ; 0x0201A200
+	thumb_func_start InitSystemForTheGame
+InitSystemForTheGame: ; 0x0201A200
 	push {r3, r4, r5, lr}
 	bl sub_020D290C
 	bl sub_020CD784
@@ -41274,10 +41274,10 @@ _0201A338: .word 0xFFFEFFFF
 _0201A33C: .word sub_0201A08C
 _0201A340: .word 0x04000208
 _0201A344: .word 0x021D116C
-	thumb_func_end sub_0201A200
+	thumb_func_end InitSystemForTheGame
 
-	thumb_func_start sub_0201A348
-sub_0201A348: ; 0x0201A348
+	thumb_func_start InitGraphicMemory
+InitGraphicMemory: ; 0x0201A348
 	push {r3, lr}
 	ldr r0, _0201A398 ; =0x000001FF
 	bl sub_020CE630
@@ -41315,7 +41315,7 @@ sub_0201A348: ; 0x0201A348
 _0201A398: .word 0x000001FF
 _0201A39C: .word 0x07000400
 _0201A3A0: .word 0x05000400
-	thumb_func_end sub_0201A348
+	thumb_func_end InitGraphicMemory
 
 	thumb_func_start sub_0201A3A4
 sub_0201A3A4: ; 0x0201A3A4
@@ -41414,8 +41414,8 @@ _0201A448:
 _0201A454: .word 0x021D157C
 	thumb_func_end sub_0201A430
 
-	thumb_func_start sub_0201A458
-sub_0201A458: ; 0x0201A458
+	thumb_func_start InitKeypadAndTouchpad
+InitKeypadAndTouchpad: ; 0x0201A458
 	push {r3, lr}
 	sub sp, #8
 	ldr r0, _0201A4A4 ; =0x021D110C
@@ -41454,7 +41454,7 @@ _0201A49E:
 _0201A4A4: .word 0x021D110C
 _0201A4A8: .word 0x021D114C
 _0201A4AC: .word 0x021D116C
-	thumb_func_end sub_0201A458
+	thumb_func_end InitKeypadAndTouchpad
 
 	thumb_func_start sub_0201A4B0
 sub_0201A4B0: ; 0x0201A4B0
@@ -66313,8 +66313,8 @@ _020253FE:
 	pop {r3, pc}
 	thumb_func_end sub_020253F0
 
-	thumb_func_start sub_02025404
-sub_02025404: ; 0x02025404
+	thumb_func_start Init_Timer3
+Init_Timer3: ; 0x02025404
 	push {r3, lr}
 	ldr r0, _0202542C ; =0x021D2210
 	mov r2, #0
@@ -66337,7 +66337,7 @@ sub_02025404: ; 0x02025404
 _0202542C: .word 0x021D2210
 _02025430: .word 0x0400010E
 _02025434: .word sub_02025438
-	thumb_func_end sub_02025404
+	thumb_func_end Init_Timer3
 
 	thumb_func_start sub_02025438
 sub_02025438: ; 0x02025438

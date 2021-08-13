@@ -132,7 +132,7 @@ ov108_021E59E4: ; 0x021E59E4
 	add r2, #0x1c
 	bl sub_0202F658
 	ldr r0, [r4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r6, r0, #0
 	bl sub_0202AD20
 	ldr r1, _021E5A38 ; =0x000184DC
@@ -6114,7 +6114,7 @@ ov108_021E8968: ; 0x021E8968
 	add r2, #0x24
 	bl sub_0202F658
 	ldr r0, [r4]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r6, r0, #0
 	bl sub_0202AD20
 	strb r0, [r5, #0x18]

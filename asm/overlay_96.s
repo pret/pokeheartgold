@@ -18983,7 +18983,7 @@ ov96_021EE75C: ; 0x021EE75C
 	ldr r0, _021EE7F4 ; =0x00000004
 	bne _021EE774
 	ldr r0, [sp, #0x18]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 _021EE774:
 	mov r1, #0

@@ -446,7 +446,7 @@ ov58_02237BD4: ; 0x02237BD4
 	strb r1, [r0]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
