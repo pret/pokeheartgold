@@ -1031,7 +1031,7 @@ _0225F73E:
 	bl sub_0201C260
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4]
 	bl sub_0201D5C8
 	add r0, r4, #0
@@ -1467,7 +1467,7 @@ _0225FA9E:
 	bl sub_0201C260
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5]
 	bl sub_0201D5C8
 	mov r0, #4
@@ -1640,7 +1640,7 @@ _0225FBEE:
 	bl sub_0201C260
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5]
 	bl sub_0201D5C8
 	mov r0, #4

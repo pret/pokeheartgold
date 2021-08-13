@@ -363,7 +363,7 @@ _0225D7FC:
 	bl sub_0201D4F8
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xff

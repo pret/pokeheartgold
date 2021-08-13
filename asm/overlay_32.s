@@ -324,7 +324,7 @@ _0225D796:
 	add r0, r5, #0
 	add r0, #0x24
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -333,7 +333,7 @@ _0225D796:
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x24
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r1, r0, #3
 	lsr r0, r1, #0x1f
 	add r0, r1, r0
@@ -401,7 +401,7 @@ ov32_0225D84C: ; 0x0225D84C
 	add r5, r0, #0
 	add r0, #0x34
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -416,7 +416,7 @@ ov32_0225D84C: ; 0x0225D84C
 	lsr r7, r0, #0x10
 	add r0, r5, #0
 	add r0, #0x34
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r0, r0, #3
 	sub r1, r0, r7
 	lsr r0, r1, #0x1f
@@ -564,7 +564,7 @@ _0225D9A0:
 	bl sub_02028ED0
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r1, r0, #3
 	lsr r0, r1, #0x1f
 	add r0, r1, r0
@@ -598,7 +598,7 @@ _0225D9D4:
 	str r0, [sp, #0x20]
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	ldr r1, [sp, #0x14]
 	add r2, r0, #0

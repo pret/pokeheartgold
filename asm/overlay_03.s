@@ -151,13 +151,13 @@ _02253F14:
 	mov r1, #0
 	add r0, r2, #0
 	add r2, r1, #0
-	bl sub_020011DC
+	bl ListMenuInit
 	ldr r1, _02253F6C ; =0x022598A0
 	ldr r2, [r1]
 	str r0, [r2, #0x5c]
 	ldr r0, [r1]
 	add r0, #0x20
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x34
 	pop {r3, r4}
 	pop {r3}
@@ -386,7 +386,7 @@ ov03_02254120: ; 0x02254120
 	mov r1, #3
 	add r5, r0, #0
 	mov r4, #0
-	bl sub_02001508
+	bl ListMenuGetTemplateField
 	cmp r0, #0
 	bls _0225414E
 	add r6, r4, #0
@@ -400,7 +400,7 @@ _02254134:
 	add r0, r5, #0
 	add r1, r7, #0
 	add r4, r4, #1
-	bl sub_02001508
+	bl ListMenuGetTemplateField
 	cmp r4, r0
 	blo _02254134
 _0225414E:
@@ -423,7 +423,7 @@ ov03_02254150: ; 0x02254150
 	cmp r0, #0
 	beq _02254172
 	add r1, sp, #0xc
-	bl sub_020014E8
+	bl ListMenuGetScrollAndRow
 _02254172:
 	add r0, sp, #0xc
 	ldrh r1, [r0]
@@ -433,7 +433,7 @@ _02254172:
 	lsl r5, r5, #4
 	ldr r0, [r0]
 	add r0, #0x20
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r0, r0, #3
 	sub r0, #8
 	lsl r0, r0, #0x10
@@ -448,7 +448,7 @@ _02254172:
 	add r0, #0x20
 	mov r2, #8
 	lsr r3, r3, #0x10
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	add r0, sp, #0xc
 	ldrh r2, [r0]
 	cmp r2, r4
@@ -622,11 +622,11 @@ _02254302:
 	mov r1, #0xf
 	ldr r0, [r0]
 	add r0, #0x30
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, _02254398 ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x30
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x97
@@ -879,7 +879,7 @@ _02254536:
 	ldr r0, _022545F4 ; =0x022598A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x5c]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	mov r2, #0
 	mvn r2, r2
 	cmp r0, r2
@@ -893,7 +893,7 @@ _02254536:
 	add r1, sp, #0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x5c]
-	bl sub_020014DC
+	bl ListMenuGetCurrentItemArrayId
 	add r0, sp, #0
 	ldrh r0, [r0]
 	b _02254578
@@ -935,7 +935,7 @@ _022545AC:
 	add r1, r4, #0
 	ldr r0, [r4, #0x5c]
 	add r1, #0x8e
-	bl sub_020014DC
+	bl ListMenuGetCurrentItemArrayId
 	bl sub_0203511C
 	add r1, r4, #0
 	add r1, #0x8e
@@ -995,7 +995,7 @@ _02254618:
 	mov r2, #8
 	add r0, #0x20
 	mov r3, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r0, _0225465C ; =0x022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -1005,7 +1005,7 @@ _02254618:
 	ldr r0, _0225465C ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x20
-	bl sub_0201D578
+	bl CopyWindowToVram
 _02254656:
 	add sp, #8
 	pop {r3, pc}
@@ -1493,7 +1493,7 @@ ov03_02254A54: ; 0x02254A54
 	cmp r0, #0
 	beq _02254A70
 	add r1, sp, #0xc
-	bl sub_020014E8
+	bl ListMenuGetScrollAndRow
 _02254A70:
 	add r0, sp, #0xc
 	ldrh r1, [r0]
@@ -1657,11 +1657,11 @@ _02254BA0:
 	mov r1, #0xf
 	ldr r0, [r0]
 	add r0, #0x30
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, _02254BE0 ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x30
-	bl sub_0201D578
+	bl CopyWindowToVram
 	mov r0, #1
 	add r4, #0x97
 	strb r0, [r4]
@@ -1800,7 +1800,7 @@ _02254CC6:
 	mov r1, #0xf
 	ldr r0, [r0]
 	add r0, #0x30
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, _02254D20 ; =0x022598A0
 	add r1, r4, #0
 	ldr r2, [r0]
@@ -2085,13 +2085,13 @@ _02254EFA:
 	strb r0, [r2]
 	ldr r0, [r1]
 	ldr r0, [r0, #0x5c]
-	bl sub_0200145C
+	bl RedrawListMenu
 	ldr r0, _0225505C ; =0x022598A0
 	mov r1, #3
 	ldr r0, [r0]
 	mov r5, #0
 	ldr r0, [r0, #0x5c]
-	bl sub_02001508
+	bl ListMenuGetTemplateField
 	cmp r0, #0
 	bls _02254F52
 	ldr r4, _0225505C ; =0x022598A0
@@ -2108,13 +2108,13 @@ _02254F34:
 	add r1, r7, #0
 	ldr r0, [r0, #0x5c]
 	add r5, r5, #1
-	bl sub_02001508
+	bl ListMenuGetTemplateField
 	cmp r5, r0
 	blo _02254F34
 _02254F52:
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0x5c]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r4, r0, #0
 	bl sub_02034780
 	cmp r0, #0xff
@@ -2652,7 +2652,7 @@ ov03_022553C8: ; 0x022553C8
 	mov r0, #0
 	bl sub_02037EC0
 	ldr r0, [r4, #0x5c]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	ldr r0, _022553FC ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x94
@@ -2918,7 +2918,7 @@ ov03_022555F4: ; 0x022555F4
 	add r0, r4, #0
 	bl ov03_02254C9C
 	ldr r0, [r4, #0x5c]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	ldr r0, _02255624 ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x94
@@ -3026,7 +3026,7 @@ _022556E0:
 	add r0, r4, #0
 	bl ov03_02254C9C
 	ldr r0, [r4, #0x5c]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	mov r0, #0xa
 	bl sub_02037B38
 	cmp r0, #0
@@ -3052,7 +3052,7 @@ ov03_02255714: ; 0x02255714
 	add r0, r4, #0
 	bl ov03_02254C9C
 	ldr r0, [r4, #0x5c]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	ldr r0, _02255744 ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x94
@@ -3080,7 +3080,7 @@ ov03_0225574C: ; 0x0225574C
 	ldr r0, [r0]
 	mov r1, #0xf
 	add r0, #0x40
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x20
 	mov r1, #0
@@ -3090,7 +3090,7 @@ ov03_0225574C: ; 0x0225574C
 	mov r1, #0
 	ldr r0, [r4, #0x5c]
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 	mov r0, #0
 	str r0, [r4, #0x5c]
 	add r0, r4, #0
@@ -4025,11 +4025,11 @@ _02255E66:
 	add r2, #0x78
 	ldrh r2, [r2]
 	mov r3, #4
-	bl sub_020011DC
+	bl ListMenuInit
 	str r0, [r5]
 	add r5, #0x34
 	add r0, r5, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -4046,7 +4046,7 @@ ov03_02255EBC: ; 0x02255EBC
 	beq _02255EF6
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 	add r0, r4, #0
 	add r0, #0x34
 	mov r1, #1
@@ -4072,20 +4072,20 @@ ov03_02255EF8: ; 0x02255EF8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r4, r0, #0
 	add r2, r5, #0
 	ldr r0, [r5]
 	mov r1, #0
 	add r2, #0x78
-	bl sub_020014E8
+	bl ListMenuGetScrollAndRow
 	add r0, r5, #0
 	add r0, #0x80
 	ldrh r6, [r0]
 	add r1, r5, #0
 	ldr r0, [r5]
 	add r1, #0x80
-	bl sub_020014DC
+	bl ListMenuGetCurrentItemArrayId
 	add r0, r5, #0
 	add r0, #0x80
 	ldrh r0, [r0]
@@ -4217,11 +4217,11 @@ _02255FDE:
 	add r2, #0x7a
 	ldrh r2, [r2]
 	mov r3, #4
-	bl sub_020011DC
+	bl ListMenuInit
 	str r0, [r5, #4]
 	add r5, #0x44
 	add r0, r5, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x34
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -4236,20 +4236,20 @@ ov03_0225604C: ; 0x0225604C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r4, r0, #0
 	add r2, r5, #0
 	ldr r0, [r5, #4]
 	mov r1, #0
 	add r2, #0x7a
-	bl sub_020014E8
+	bl ListMenuGetScrollAndRow
 	add r0, r5, #0
 	add r0, #0x82
 	ldrh r6, [r0]
 	add r1, r5, #0
 	ldr r0, [r5, #4]
 	add r1, #0x82
-	bl sub_020014DC
+	bl ListMenuGetCurrentItemArrayId
 	add r0, r5, #0
 	add r0, #0x82
 	ldrh r0, [r0]
@@ -4284,7 +4284,7 @@ _022560AE:
 	beq _022560E4
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 	add r0, r5, #0
 	add r0, #0x44
 	mov r1, #1
@@ -4356,7 +4356,7 @@ ov03_022560EC: ; 0x022560EC
 	bl sub_0200E580
 	ldr r0, [sp, #0x24]
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x14]
 	add r1, r0, #0
 	add r1, #0x78
@@ -4647,7 +4647,7 @@ _0225639C:
 	ldr r0, [sp, #0x30]
 	bl sub_0200BB44
 	ldr r0, [sp, #0x24]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5124,7 +5124,7 @@ ov03_02256730: ; 0x02256730
 	bl sub_0200E580
 	ldr r0, [sp, #0x18]
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xb6
@@ -5429,7 +5429,7 @@ _022569EC:
 	ldr r0, [sp, #0x30]
 	bl sub_0200BB44
 	ldr r0, [sp, #0x18]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -6743,7 +6743,7 @@ _02257414:
 	add r0, r4, #0
 	add r0, #0x18
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r2, #0x29
 	lsl r2, r2, #4
 	add r0, r2, #0
@@ -6842,7 +6842,7 @@ _022574EA:
 	add r0, r4, #0
 	add r0, #0x18
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r1, _0225750C ; =0x0000FFFF
 	add r0, r4, #0
 	bl ov03_022585A4
@@ -7511,7 +7511,7 @@ ov03_022579E0: ; 0x022579E0
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0xa6
 	mov r1, #7
 	lsl r0, r0, #2
@@ -10095,7 +10095,7 @@ ov03_02258DE8: ; 0x02258DE8
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r1, #0x1b
 	add r2, r1, #0
 	mov r0, #0

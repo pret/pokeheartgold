@@ -3868,7 +3868,7 @@ ov41_02247BB8: ; 0x02247BB8
 	ldr r0, _02247C74 ; =0x000006BC
 	mov r1, #0xf
 	ldr r0, [r5, r0]
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -3911,7 +3911,7 @@ ov41_02247BB8: ; 0x02247BB8
 	bl sub_0200BB44
 	ldr r0, _02247C74 ; =0x000006BC
 	ldr r0, [r5, r0]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3929,7 +3929,7 @@ ov41_02247C7C: ; 0x02247C7C
 	add r4, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xd7
@@ -3968,7 +3968,7 @@ ov41_02247C7C: ; 0x02247C7C
 	bl sub_0200BB44
 	ldr r0, _02247CF4 ; =0x000006BC
 	ldr r0, [r5, r0]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -10333,7 +10333,7 @@ _0224AA8C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -10689,7 +10689,7 @@ ov41_0224AD0C: ; 0x0224AD0C
 	bl sub_0201D40C
 	ldr r0, [r5]
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x34]
 	cmp r0, #0
 	beq _0224AD70
@@ -10700,7 +10700,7 @@ ov41_0224AD0C: ; 0x0224AD0C
 	bl sub_0200E998
 _0224AD70:
 	ldr r0, [r5]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10732,7 +10732,7 @@ ov41_0224AD90: ; 0x0224AD90
 	add r5, r0, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x28]
 	add r1, r4, #0
 	str r0, [sp]
@@ -10768,7 +10768,7 @@ ov41_0224ADD8: ; 0x0224ADD8
 	add r5, r0, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x28]
 	add r1, r4, #0
 	str r0, [sp]
@@ -11268,7 +11268,7 @@ _0224B174:
 	bl ov41_0224AD0C
 	ldr r0, [r7, #0x18]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	str r0, [sp]
 	mov r3, #4
@@ -11295,7 +11295,7 @@ _0224B174:
 	mov r3, #5
 	bl ov41_0224AE24
 	ldr r0, [r7, #0x18]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x60
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -12900,13 +12900,13 @@ ov41_0224BE5C: ; 0x0224BE5C
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	bl ov41_0224BE80
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov41_0224BE5C

@@ -279,14 +279,14 @@ _0225D73A:
 	bl sub_0201D4F8
 	add r0, r5, r4
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r1, r6, #0
 	ldr r0, [sp, #0x18]
 	add r1, #0x18
 	bl sub_0200BBA0
 	add r7, r0, #0
 	add r0, r5, r4
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r1, r0, #3
 	lsr r0, r1, #0x1f
 	add r0, r1, r0

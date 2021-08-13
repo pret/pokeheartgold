@@ -11757,7 +11757,7 @@ _0200CE4E:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x10
 	add r3, r7, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 _0200CE66:
 	add r4, r4, #2
 	ldrh r1, [r4, #8]
@@ -15121,10 +15121,10 @@ sub_0200E580: ; 0x0200E580
 	bl sub_0201EE9C
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	ldr r1, [sp, #0x1c]
 	ldr r2, [sp, #0x14]
 	str r1, [sp]
@@ -15138,7 +15138,7 @@ sub_0200E580: ; 0x0200E580
 	cmp r4, #0
 	bne _0200E5D0
 	add r0, r5, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 _0200E5D0:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -15159,10 +15159,10 @@ sub_0200E5D4: ; 0x0200E5D4
 	bl sub_0201EE9C
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	sub r1, r7, #1
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
@@ -15594,10 +15594,10 @@ sub_0200E948: ; 0x0200E948
 	bl sub_0201EE9C
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r4, [sp]
 	str r0, [sp, #4]
 	lsl r0, r7, #0x18
@@ -15628,7 +15628,7 @@ sub_0200E998: ; 0x0200E998
 	cmp r4, #0
 	bne _0200E9B2
 	add r0, r5, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 _0200E9B2:
 	add r0, r6, #0
 	bl sub_020027F0
@@ -15651,10 +15651,10 @@ sub_0200E9BC: ; 0x0200E9BC
 	bl sub_0201EE9C
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	sub r1, r7, #1
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
@@ -15969,7 +15969,7 @@ sub_0200EC0C: ; 0x0200EC0C
 	bl sub_0201C260
 	ldr r1, [sp, #0x14]
 	add r0, r4, #0
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	add r0, sp, #0x20
 	ldrb r3, [r0, #0x10]
 	cmp r3, #1
@@ -16450,10 +16450,10 @@ sub_0200F004: ; 0x0200F004
 	bl sub_0201EE9C
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r5, [sp]
 	str r0, [sp, #4]
 	str r7, [sp, #8]
@@ -16479,10 +16479,10 @@ _0200F062:
 	bl sub_0201EE9C
 	str r0, [sp, #0x24]
 	add r0, r4, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r5, [sp]
 	str r0, [sp, #4]
 	str r7, [sp, #8]
@@ -16497,7 +16497,7 @@ _0200F094:
 	cmp r0, #0
 	bne _0200F0A0
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 _0200F0A0:
 	add r0, r6, #0
 	bl sub_020027F0
@@ -16654,7 +16654,7 @@ sub_0200F1D4: ; 0x0200F1D4
 	bl sub_0201EE9C
 	str r0, [sp, #0x1c]
 	ldr r0, [r5]
-	bl sub_0201EE90
+	bl GetWindowWidth
 	str r0, [sp, #0x20]
 	cmp r6, #2
 	bne _0200F2DE
@@ -30643,8 +30643,8 @@ _020157B0: .word 0x0001020F
 _020157B4: .word 0x020F60DC
 	thumb_func_end sub_02015788
 
-	thumb_func_start sub_020157B8
-sub_020157B8: ; 0x020157B8
+	thumb_func_start DestroyListMenuCursorObj
+DestroyListMenuCursorObj: ; 0x020157B8
 	push {r4, lr}
 	add r4, r0, #0
 	bne _020157C2
@@ -30661,10 +30661,10 @@ _020157D0:
 	bl FreeToHeap
 _020157D6:
 	pop {r4, pc}
-	thumb_func_end sub_020157B8
+	thumb_func_end DestroyListMenuCursorObj
 
-	thumb_func_start sub_020157D8
-sub_020157D8: ; 0x020157D8
+	thumb_func_start ListMenuCursorSetColor
+ListMenuCursorSetColor: ; 0x020157D8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -30678,7 +30678,7 @@ _020157E6:
 _020157EC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_020157D8
+	thumb_func_end ListMenuCursorSetColor
 
 	thumb_func_start sub_020157F0
 sub_020157F0: ; 0x020157F0
@@ -37721,7 +37721,7 @@ _020188DC:
 	ldr r0, [r5, #0x1c]
 	mov r1, #3
 	add r0, r0, r6
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x29
 	ldrb r0, [r0]
@@ -38275,7 +38275,7 @@ _02018D50:
 	lsl r6, r4, #4
 	ldr r1, [sp, #0x14]
 	add r0, r0, r6
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -41346,7 +41346,7 @@ sub_0201A3A4: ; 0x0201A3A4
 	beq _0201A3E8
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	mov r4, #0
 _0201A3E8:
 	add r0, sp, #0
@@ -42425,8 +42425,8 @@ _0201AB74:
 _0201AB7C: .word 0x021D1584
 	thumb_func_end FreeToHeap
 
-	thumb_func_start sub_0201AB80
-sub_0201AB80: ; 0x0201AB80
+	thumb_func_start FreeToHeapExplicit
+FreeToHeapExplicit: ; 0x0201AB80
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -42479,7 +42479,7 @@ _0201ABE2:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0201ABE8: .word 0x021D1584
-	thumb_func_end sub_0201AB80
+	thumb_func_end FreeToHeapExplicit
 
 	thumb_func_start sub_0201ABEC
 sub_0201ABEC: ; 0x0201ABEC
@@ -45504,7 +45504,7 @@ sub_0201C1C4: ; 0x0201C1C4
 	bl sub_0201C130
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0201C1C4
 
@@ -45621,7 +45621,7 @@ _0201C2C2:
 _0201C2CC:
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0201C290
@@ -48239,8 +48239,8 @@ _0201D570:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_0201D54C
 
-	thumb_func_start sub_0201D578
-sub_0201D578: ; 0x0201D578
+	thumb_func_start CopyWindowToVram
+CopyWindowToVram: ; 0x0201D578
 	push {r4, lr}
 	add r4, r0, #0
 	bne _0201D582
@@ -48280,7 +48280,7 @@ _0201D5AA:
 	pop {r4, pc}
 	nop
 _0201D5C4: .word 0x020F62FC
-	thumb_func_end sub_0201D578
+	thumb_func_end CopyWindowToVram
 
 	thumb_func_start sub_0201D5C8
 sub_0201D5C8: ; 0x0201D5C8
@@ -48817,8 +48817,8 @@ sub_0201D964: ; 0x0201D964
 	.balign 4, 0
 	thumb_func_end sub_0201D964
 
-	thumb_func_start sub_0201D978
-sub_0201D978: ; 0x0201D978
+	thumb_func_start FillWindowPixelBuffer
+FillWindowPixelBuffer: ; 0x0201D978
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldrb r2, [r4, #4]
@@ -48847,7 +48847,7 @@ _0201D994:
 	mul r2, r3
 	bl sub_020D4858
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201D978
+	thumb_func_end FillWindowPixelBuffer
 
 	thumb_func_start sub_0201D9B0
 sub_0201D9B0: ; 0x0201D9B0
@@ -48956,8 +48956,8 @@ _0201DA56:
 	.balign 4, 0
 	thumb_func_end sub_0201DA04
 
-	thumb_func_start sub_0201DA74
-sub_0201DA74: ; 0x0201DA74
+	thumb_func_start FillWindowPixelRect
+FillWindowPixelRect: ; 0x0201DA74
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	add r5, r1, #0
@@ -49001,7 +49001,7 @@ _0201DAB6:
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201DA74
+	thumb_func_end FillWindowPixelRect
 
 	thumb_func_start sub_0201DACC
 sub_0201DACC: ; 0x0201DACC
@@ -51383,8 +51383,8 @@ sub_0201EC3C: ; 0x0201EC3C
 _0201EC44: .word 0x00007FC0
 	thumb_func_end sub_0201EC3C
 
-	thumb_func_start sub_0201EC48
-sub_0201EC48: ; 0x0201EC48
+	thumb_func_start ScrollWindow
+ScrollWindow: ; 0x0201EC48
 	push {r4, r5, r6, lr}
 	ldrb r6, [r0, #4]
 	mov r5, #0x2c
@@ -51400,7 +51400,7 @@ _0201EC60:
 	bl sub_0201ED54
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201EC48
+	thumb_func_end ScrollWindow
 
 	thumb_func_start sub_0201EC68
 sub_0201EC68: ; 0x0201EC68
@@ -51723,17 +51723,17 @@ sub_0201EE8C: ; 0x0201EE8C
 	bx lr
 	thumb_func_end sub_0201EE8C
 
-	thumb_func_start sub_0201EE90
-sub_0201EE90: ; 0x0201EE90
+	thumb_func_start GetWindowWidth
+GetWindowWidth: ; 0x0201EE90
 	ldrb r0, [r0, #7]
 	bx lr
-	thumb_func_end sub_0201EE90
+	thumb_func_end GetWindowWidth
 
-	thumb_func_start sub_0201EE94
-sub_0201EE94: ; 0x0201EE94
+	thumb_func_start GetWindowHeight
+GetWindowHeight: ; 0x0201EE94
 	ldrb r0, [r0, #8]
 	bx lr
-	thumb_func_end sub_0201EE94
+	thumb_func_end GetWindowHeight
 
 	thumb_func_start sub_0201EE98
 sub_0201EE98: ; 0x0201EE98
@@ -54355,8 +54355,8 @@ sub_020200FC: ; 0x020200FC
 _0202014C: .word 0x0210F6D8
 	thumb_func_end sub_020200FC
 
-	thumb_func_start sub_02020150
-sub_02020150: ; 0x02020150
+	thumb_func_start AddTextPrinterParameterized3
+AddTextPrinterParameterized3: ; 0x02020150
 	push {lr}
 	sub sp, #0x1c
 	str r2, [sp]
@@ -54397,7 +54397,7 @@ sub_02020150: ; 0x02020150
 	pop {pc}
 	nop
 _020201A0: .word 0x0210F6D8
-	thumb_func_end sub_02020150
+	thumb_func_end AddTextPrinterParameterized3
 
 	thumb_func_start sub_020201A4
 sub_020201A4: ; 0x020201A4
@@ -54548,7 +54548,7 @@ _020202C6:
 	cmp r6, #0xff
 	beq _020202D0
 	ldr r0, [r4, #4]
-	bl sub_0201D578
+	bl CopyWindowToVram
 _020202D0:
 	add r0, r4, #0
 	bl sub_02020548
@@ -54592,7 +54592,7 @@ sub_020202EC: ; 0x020202EC
 	pop {r4, pc}
 _02020324:
 	ldr r0, [r4, #4]
-	bl sub_0201D578
+	bl CopyWindowToVram
 _0202032A:
 	ldr r2, [r4, #0x1c]
 	cmp r2, #0
@@ -54869,7 +54869,7 @@ _02020512:
 	mul r6, r0
 	add r0, r5, #0
 	ldr r4, [r4, #0x30]
-	bl sub_0201EE90
+	bl GetWindowWidth
 	sub r0, r0, #3
 	lsl r0, r0, #0x13
 	mov r1, #0x18

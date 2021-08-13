@@ -453,9 +453,9 @@ ov95_021E5C44: ; 0x021E5C44
 	bl sub_0200E998
 	add r0, r5, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov95_021E5C44
@@ -469,7 +469,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	str r0, [sp, #0xc]
 	str r2, [sp, #0x10]
 	add r6, r3, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xbb
@@ -3280,7 +3280,7 @@ ov95_021E7328: ; 0x021E7328
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _021E7384 ; =0x00010200
@@ -3292,7 +3292,7 @@ ov95_021E7328: ; 0x021E7328
 	str r3, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r7, #0
 	bl sub_0200BB44
 	add r0, r5, #0

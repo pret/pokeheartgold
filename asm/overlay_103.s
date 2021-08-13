@@ -3665,7 +3665,7 @@ ov103_021EE550: ; 0x021EE550
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #0x2c
 	str r1, [sp]
@@ -3691,7 +3691,7 @@ ov103_021EE550: ; 0x021EE550
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #0x18
 	str r1, [sp]
@@ -3719,7 +3719,7 @@ ov103_021EE550: ; 0x021EE550
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #0x18
 	str r1, [sp]
@@ -3785,7 +3785,7 @@ ov103_021EE644: ; 0x021EE644
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r2, #0x8a
 	ldr r3, [r5, #0xc]
 	lsl r2, r2, #2
@@ -3975,7 +3975,7 @@ ov103_021EE7DC: ; 0x021EE7DC
 	lsl r6, r6, #2
 	add r0, r4, r6
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5]
 	bl sub_0202AD3C
 	mov r3, #0
@@ -4158,7 +4158,7 @@ _021EE93A:
 	add r1, r7, #0
 	add r0, #0x48
 	add r0, r0, r6
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x1a
@@ -4176,7 +4176,7 @@ _021EE93A:
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrb r0, [r5, #0x1f]
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #2

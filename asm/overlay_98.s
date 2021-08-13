@@ -708,7 +708,7 @@ _0221EB1A:
 	ldr r0, [r4, #4]
 	mov r1, #0
 	add r0, r0, r5
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #4]
 	add r0, r0, r5
 	bl sub_0201D634
@@ -876,7 +876,7 @@ _0221EC54:
 	ldr r1, [r5, #4]
 	lsl r0, r6, #4
 	add r0, r1, r0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r0, r0, #0x1b
 	lsr r4, r0, #0x18
 	ldr r0, [sp, #0x30]
@@ -894,7 +894,7 @@ _0221EC8A:
 	lsl r6, r6, #4
 	ldrb r1, [r1, #0x1c]
 	add r0, r0, r6
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r3, sp, #0x18
 	ldrb r0, [r3, #0x14]
 	ldr r1, [sp, #0x30]
@@ -1111,7 +1111,7 @@ _0221EE3E:
 	lsl r4, r4, #4
 	add r0, r0, r4
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -1224,12 +1224,12 @@ _0221EF10:
 ov98_0221EF14: ; 0x0221EF14
 	ldr r2, [r0, #4]
 	lsl r0, r1, #4
-	ldr r3, _0221EF20 ; =sub_0201D978
+	ldr r3, _0221EF20 ; =FillWindowPixelBuffer
 	add r0, r2, r0
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_0221EF20: .word sub_0201D978
+_0221EF20: .word FillWindowPixelBuffer
 	thumb_func_end ov98_0221EF14
 
 	thumb_func_start ov98_0221EF24

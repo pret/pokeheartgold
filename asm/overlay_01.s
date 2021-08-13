@@ -9414,7 +9414,7 @@ _021EA28E:
 	bl ov01_021EA564
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
@@ -9760,7 +9760,7 @@ _021EA502:
 _021EA54E:
 	ldr r1, [sp, #0x14]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	ldr r0, [sp, #8]
 	add sp, #0x1fc
 	add sp, #0x20
@@ -9775,7 +9775,7 @@ ov01_021EA564: ; 0x021EA564
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
@@ -10165,7 +10165,7 @@ ov01_021EA840: ; 0x021EA840
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
@@ -10294,7 +10294,7 @@ ov01_021EA8FC: ; 0x021EA8FC
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
@@ -12232,7 +12232,7 @@ _021EB69A:
 	bl NARC_dtor
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	mov r0, #0
 	str r0, [r4]
 _021EB6F6:
@@ -12910,7 +12910,7 @@ _021EBBCE:
 	bl ov01_021EB968
 	ldr r1, [r4, #0xc]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	mov r0, #0
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x14]
@@ -12945,7 +12945,7 @@ _021EBC1E:
 	cmp r1, #0
 	beq _021EBC36
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	ldr r1, [r4, #8]
 	ldr r0, _021EBC98 ; =0x00000F58
 	mov r2, #0
@@ -12976,7 +12976,7 @@ _021EBC56:
 _021EBC64:
 	ldr r1, [r4, #8]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	mov r0, #0
 	str r0, [r4, #8]
 _021EBC70:
@@ -17797,7 +17797,7 @@ _021EE08A:
 	add r0, r4, r0
 	mov r1, #0
 	mov r3, #4
-	bl sub_020011DC
+	bl ListMenuInit
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -17970,7 +17970,7 @@ _021EE1C2:
 	ldrh r1, [r4]
 	ldrh r2, [r6]
 	add r0, r5, r0
-	bl sub_020011DC
+	bl ListMenuInit
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -18254,13 +18254,13 @@ ov01_021EE434: ; 0x021EE434
 	mov r1, #3
 	mov r2, #0xf
 	mov r3, #4
-	bl sub_02001488
+	bl ListMenuOverrideSetColors
 	pop {r3, pc}
 _021EE44A:
 	mov r1, #1
 	mov r2, #0xf
 	mov r3, #2
-	bl sub_02001488
+	bl ListMenuOverrideSetColors
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EE434
@@ -18274,13 +18274,13 @@ ov01_021EE458: ; 0x021EE458
 	strh r2, [r1]
 	mov r1, #0x13
 	add r5, r0, #0
-	bl sub_02001508
+	bl ListMenuGetTemplateField
 	add r1, sp, #0
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, #2
 	add r2, sp, #0
-	bl sub_020014E8
+	bl ListMenuGetScrollAndRow
 	add r0, r4, #0
 	add r0, #0xa4
 	ldr r2, [r0]
@@ -18325,7 +18325,7 @@ _021EE4B8:
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r4, r0, #0
 	mov r0, #0x6f
 	mov r1, #0xb7
@@ -18334,7 +18334,7 @@ _021EE4B8:
 	ldrh r6, [r5, r1]
 	ldr r0, [r5, r0]
 	add r1, r5, r1
-	bl sub_020014DC
+	bl ListMenuGetCurrentItemArrayId
 	mov r0, #0xb7
 	lsl r0, r0, #2
 	ldrh r0, [r5, r0]
@@ -18415,7 +18415,7 @@ ov01_021EE568: ; 0x021EE568
 	mov r1, #0
 	ldr r0, [r6, r0]
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -18471,7 +18471,7 @@ ov01_021EE5D0: ; 0x021EE5D0
 	add r6, r0, #0
 	ldr r0, [r5, #0x18]
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -18509,7 +18509,7 @@ ov01_021EE634: ; 0x021EE634
 	ldr r0, [r4, r1]
 	add r1, r1, #6
 	add r1, r4, r1
-	bl sub_020014DC
+	bl ListMenuGetCurrentItemArrayId
 	ldr r0, _021EE660 ; =0x000001C2
 	ldrh r1, [r4, r0]
 	add r0, #0xe2
@@ -18544,7 +18544,7 @@ ov01_021EE664: ; 0x021EE664
 	add r5, r0, #0
 	add r0, r4, #0
 	add r1, r0, #0
-	bl sub_02002FAC
+	bl GetFontAttribute
 	lsl r1, r0, #3
 	mov r0, #7
 	tst r0, r1
@@ -18603,7 +18603,7 @@ _021EE698:
 	add r0, #8
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #0x10
@@ -18628,7 +18628,7 @@ _021EE698:
 	add r0, #8
 	add r1, #0xb0
 	str r0, [r1]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	ldr r0, _021EE750 ; =ov01_021EE7B8
 	add r1, r5, #0
 	mov r2, #0
@@ -19134,7 +19134,7 @@ ov01_021EEA90: ; 0x021EEA90
 	bl sub_0200E580
 	add r0, r4, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r2, _021EEB34 ; =0x000001B3
 	mov r0, #0
 	mov r1, #0x1b
@@ -19193,7 +19193,7 @@ ov01_021EEB4C: ; 0x021EEB4C
 	mov r1, #0xf
 	mov r2, #0
 	str r3, [sp, #4]
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r2, _021EEBFC ; =0x000001B3
 	mov r0, #0
 	mov r1, #0x1b
@@ -19329,7 +19329,7 @@ ov01_021EEC7C: ; 0x021EEC7C
 	add r0, r1, #0
 	mov r1, #0xf
 	add r4, r2, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xbf
@@ -19461,7 +19461,7 @@ ov01_021EED60: ; 0x021EED60
 	bl sub_0200E580
 	add r0, r4, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xbf
@@ -19537,7 +19537,7 @@ ov01_021EEE44: ; 0x021EEE44
 	add r0, r5, #0
 	mov r1, #0xf
 	mov r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	mov r0, #0x80
 	str r0, [sp]
 	mov r0, #0x10
@@ -19547,7 +19547,7 @@ ov01_021EEE44: ; 0x021EEE44
 	mov r1, #0xf
 	mov r2, #0
 	lsl r3, r3, #6
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xbf
@@ -19711,7 +19711,7 @@ ov01_021EEF9C: ; 0x021EEF9C
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x18]
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x8c
 	ldrh r1, [r4, r6]
@@ -20617,7 +20617,7 @@ ov01_021EF6A8: ; 0x021EF6A8
 _021EF6E2:
 	ldr r0, [r4, #0xc]
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021EF6A8
 
@@ -20825,7 +20825,7 @@ ov01_021EF844: ; 0x021EF844
 	add r0, r6, #0
 	add r0, #0x20
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r7, r6, #0
 	mov r4, #0
 	add r7, #0x20
@@ -20862,7 +20862,7 @@ _021EF87A:
 	blt _021EF87A
 	add r0, r6, #0
 	add r0, #0x20
-	bl sub_0201D578
+	bl CopyWindowToVram
 	ldr r0, [r6, #0x38]
 	bl FreeToHeap
 	add sp, #0x18
@@ -21411,7 +21411,7 @@ ov01_021EFCDC: ; 0x021EFCDC
 	bl NARC_dtor
 	ldr r1, [r5, #0xc]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	add r0, r4, #0
 	bl sub_02007234
 	pop {r3, r4, r5, pc}
@@ -23141,7 +23141,7 @@ _021F0998:
 	ldrb r1, [r1, #0x14]
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x10
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 _021F09B8:
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -28445,12 +28445,12 @@ _021F30E4:
 
 	thumb_func_start ov01_021F30F4
 ov01_021F30F4: ; 0x021F30F4
-	ldr r3, _021F30FC ; =sub_0201AB80
+	ldr r3, _021F30FC ; =FreeToHeapExplicit
 	add r1, r0, #0
 	mov r0, #4
 	bx r3
 	.balign 4, 0
-_021F30FC: .word sub_0201AB80
+_021F30FC: .word FreeToHeapExplicit
 	thumb_func_end ov01_021F30F4
 
 	thumb_func_start ov01_021F3100
@@ -28767,12 +28767,12 @@ _021F335C:
 
 	thumb_func_start ov01_021F336C
 ov01_021F336C: ; 0x021F336C
-	ldr r3, _021F3374 ; =sub_0201AB80
+	ldr r3, _021F3374 ; =FreeToHeapExplicit
 	add r1, r0, #0
 	mov r0, #4
 	bx r3
 	.balign 4, 0
-_021F3374: .word sub_0201AB80
+_021F3374: .word FreeToHeapExplicit
 	thumb_func_end ov01_021F336C
 
 	thumb_func_start ov01_021F3378
@@ -30535,11 +30535,11 @@ ov01_021F4048: ; 0x021F4048
 	add r5, r0, #0
 	mov r0, #0
 	mov r1, #1
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r4, r0, #0
 	mov r0, #0
 	mov r1, #3
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r0, r4, r0
 	str r0, [sp, #0x14]
 	mov r4, #0
@@ -30600,7 +30600,7 @@ _021F40A6:
 	add r6, r0, #0
 	mov r0, #0
 	mov r1, #2
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r2, r0, #0
 	mov r0, #0
 	add r1, r6, #0
@@ -30673,10 +30673,10 @@ ov01_021F412C: ; 0x021F412C
 	bl sub_0200E3DC
 	mov r0, #0
 	mov r1, #6
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	bl ov01_021F4048
 	ldr r0, [r4, #0x10]
@@ -30803,11 +30803,11 @@ ov01_021F426C: ; 0x021F426C
 	add r5, r0, #0
 	mov r0, #0
 	mov r1, #1
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r4, r0, #0
 	mov r0, #0
 	mov r1, #3
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r0, r4, r0
 	ldr r4, _021F42F0 ; =0x02206B04
 	str r0, [sp, #0x10]
@@ -30895,11 +30895,11 @@ ov01_021F42F8: ; 0x021F42F8
 	bl sub_0201D40C
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	bl ov01_021F426C
 	ldr r0, [r4, #0x10]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -31391,7 +31391,7 @@ ov01_021F46DC: ; 0x021F46DC
 	bl sub_02022C60
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	pop {r4, pc}
 	thumb_func_end ov01_021F46DC
 
@@ -42086,11 +42086,11 @@ ov01_021F96E4: ; 0x021F96E4
 	add r1, #0xe4
 	ldr r1, [r1]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	add r4, #0xf4
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	pop {r4, pc}
 	thumb_func_end ov01_021F96E4
 
@@ -58441,7 +58441,7 @@ _02200E62:
 	ldrh r1, [r1]
 	ldrh r2, [r2]
 	mov r3, #4
-	bl sub_020011DC
+	bl ListMenuInit
 	mov r1, #0x8f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -58675,13 +58675,13 @@ ov01_02201064: ; 0x02201064
 	mov r1, #3
 	mov r2, #0xf
 	mov r3, #4
-	bl sub_02001488
+	bl ListMenuOverrideSetColors
 	pop {r3, pc}
 _0220107A:
 	mov r1, #1
 	mov r2, #0xf
 	mov r3, #2
-	bl sub_02001488
+	bl ListMenuOverrideSetColors
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov01_02201064
@@ -58695,13 +58695,13 @@ ov01_02201088: ; 0x02201088
 	strh r2, [r1]
 	mov r1, #0x13
 	add r5, r0, #0
-	bl sub_02001508
+	bl ListMenuGetTemplateField
 	add r1, sp, #0
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, #2
 	add r2, sp, #0
-	bl sub_020014E8
+	bl ListMenuGetScrollAndRow
 	mov r1, #0x85
 	lsl r1, r1, #2
 	ldr r3, [r4, r1]
@@ -58742,7 +58742,7 @@ _022010E0:
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r4, r0, #0
 	mov r0, #0x8f
 	ldr r1, _0220115C ; =0x000006F4
@@ -58750,7 +58750,7 @@ _022010E0:
 	ldrh r6, [r5, r1]
 	ldr r0, [r5, r0]
 	add r1, r5, r1
-	bl sub_020014DC
+	bl ListMenuGetCurrentItemArrayId
 	ldr r0, _0220115C ; =0x000006F4
 	ldrh r0, [r5, r0]
 	cmp r6, r0
@@ -58812,7 +58812,7 @@ ov01_0220116C: ; 0x0220116C
 	mov r1, #0
 	ldr r0, [r6, r0]
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

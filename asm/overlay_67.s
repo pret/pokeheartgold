@@ -895,7 +895,7 @@ _021E6038:
 	bl sub_0201D4F8
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r7, r7, #1
 	add r4, #8
 	add r5, #0x10
@@ -1114,7 +1114,7 @@ ov67_021E61E8: ; 0x021E61E8
 	sub sp, #0x10
 	add r4, r0, #0
 	add r0, #0x6c
-	bl sub_0201EE90
+	bl GetWindowWidth
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]
@@ -1149,7 +1149,7 @@ ov67_021E6220: ; 0x021E6220
 _021E622E:
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r6, r6, #1
 	add r4, #0x10
 	cmp r6, #0xa
@@ -1158,7 +1158,7 @@ _021E622E:
 	bl ov67_021E61E8
 	add r0, r5, #0
 	add r0, #0x7c
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1255,7 +1255,7 @@ _021E62E8:
 	bl sub_0200BFCC
 	add r0, r5, #0
 	add r0, #0xbc
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1283,7 +1283,7 @@ _021E62E8:
 	bl sub_0200BFCC
 	add r0, r5, #0
 	add r0, #0xdc
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1314,7 +1314,7 @@ _021E62E8:
 	bl sub_0200BFCC
 	add r0, r5, #0
 	add r0, #0xfc
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1468,7 +1468,7 @@ _021E64C0:
 	lsl r7, r6, #4
 	add r0, r5, r7
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	cmp r4, #0x1e
 	bhs _021E64FE
 	ldr r0, [sp, #0xc]
@@ -1528,7 +1528,7 @@ ov67_021E6530: ; 0x021E6530
 	add r4, r0, #0
 	add r0, #0xac
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r1, #0
 	mov r2, #0x4a
 	str r1, [sp]
@@ -1602,7 +1602,7 @@ ov67_021E65C0: ; 0x021E65C0
 _021E65CE:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #3
@@ -1708,7 +1708,7 @@ _021E66A8:
 	lsl r0, r5, #4
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10

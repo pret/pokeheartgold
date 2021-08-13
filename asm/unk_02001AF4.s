@@ -40,20 +40,20 @@ sub_02001AF4: ; 0x02001AF4
 	strb r6, [r4, #0x17]
 	strb r7, [r4, #0x18]
 	ldrb r0, [r5, #8]
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r6, r0, #0
 	ldrb r0, [r5, #8]
 	mov r1, #2
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r0, r6, r0
 	strb r0, [r4, #0x19]
 	ldrb r0, [r5, #8]
 	mov r1, #1
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r6, r0, #0
 	ldrb r0, [r5, #8]
 	mov r1, #3
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r0, r6, r0
 	strb r0, [r4, #0x1a]
 	add r0, r4, #0
@@ -78,7 +78,7 @@ sub_02001B7C: ; 0x02001B7C
 	bl sub_02001AF4
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r4, #0
 	add sp, #8
 	pop {r4, pc}
@@ -93,7 +93,7 @@ sub_02001B9C: ; 0x02001B9C
 	add r6, r1, #0
 	add r4, r2, #0
 	mov r1, #0
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r1, r0, #0
 	str r4, [sp]
 	mov r0, #2
@@ -116,10 +116,10 @@ sub_02001BC4: ; 0x02001BC4
 	strb r0, [r1]
 _02001BD0:
 	ldr r0, [r4, #0xc]
-	bl sub_020157B8
+	bl DestroyListMenuCursorObj
 	ldrb r0, [r4, #0x1c]
 	add r1, r4, #0
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	pop {r4, pc}
 	thumb_func_end sub_02001BC4
 
@@ -241,7 +241,7 @@ sub_02001C98: ; 0x02001C98
 _02001CB0:
 	ldrb r0, [r5, #8]
 	mov r1, #6
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r1, sp, #8
 	add r7, r0, #0
 	add r0, r5, #0
@@ -258,7 +258,7 @@ _02001CB0:
 	ldrb r2, [r3, #1]
 	ldrb r3, [r3]
 	ldr r0, [r5, #4]
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	add r0, r5, #0
 	bl sub_02001EB4
 	add r0, r6, #0
@@ -455,10 +455,10 @@ sub_02001E28: ; 0x02001E28
 	add r5, r0, #0
 	ldrb r0, [r5, #8]
 	mov r1, #6
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r1, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrb r0, [r5, #0x19]
 	ldrb r1, [r5, #0x16]
 	ldrb r7, [r5, #0x17]
@@ -705,7 +705,7 @@ sub_02001FFC: ; 0x02001FFC
 	bl sub_0201D520
 	ldr r1, [r5, #4]
 	add r0, r4, #0
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	ldr r0, [r5]
 	bl sub_02014950
 	add r0, r5, #0
@@ -1235,7 +1235,7 @@ _020023A4:
 	mov r1, #1
 	strh r0, [r4, #0xc]
 	ldrb r0, [r4, #9]
-	bl sub_02002FAC
+	bl GetFontAttribute
 	ldrh r1, [r4, #0x12]
 	ldrh r2, [r4, #0xe]
 	add sp, #0xc
@@ -1360,7 +1360,7 @@ _02002492:
 	b _02002622
 _02002494:
 	ldr r0, [r4, #4]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	b _02002622
 _0200249C:
 	add r0, r4, #0
@@ -1445,7 +1445,7 @@ _02002536:
 	b _02002622
 _02002542:
 	ldr r0, [r4, #4]
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r5, r0, #3
 	ldrb r0, [r4, #9]
 	ldrh r2, [r4, #0x10]
@@ -1467,7 +1467,7 @@ _02002568:
 	b _02002622
 _0200256E:
 	ldr r0, [r4, #4]
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r5, r0, #3
 	ldrb r0, [r4, #9]
 	ldrh r2, [r4, #0x10]
@@ -1629,7 +1629,7 @@ _020026B4:
 	bl sub_020029D8
 	ldrb r1, [r4, #0x16]
 	ldr r0, [r4, #4]
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrb r0, [r4, #0xa]
 	strh r0, [r4, #0xc]
 	ldrb r0, [r4, #0xb]
@@ -1649,7 +1649,7 @@ _020026DE:
 	bl sub_020029D8
 	ldrb r0, [r4, #9]
 	mov r1, #1
-	bl sub_02002FAC
+	bl GetFontAttribute
 	ldrh r1, [r4, #0x12]
 	add r1, r1, r0
 	add r0, r4, #0
@@ -1678,7 +1678,7 @@ _0200270E:
 	ldr r0, [r4, #4]
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_0201EC48
+	bl ScrollWindow
 	mov r1, #0
 	b _0200274A
 _02002730:
@@ -1689,7 +1689,7 @@ _02002730:
 	mov r1, #0
 	mov r2, #4
 	lsr r3, r3, #0x18
-	bl sub_0201EC48
+	bl ScrollWindow
 	add r0, r4, #0
 	add r0, #0x2b
 	ldrb r0, [r0]
@@ -1699,7 +1699,7 @@ _0200274A:
 	add r0, #0x2b
 	strb r1, [r0]
 	ldr r0, [r4, #4]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	b _0200275E
 _02002758:
 	mov r0, #0
@@ -1743,7 +1743,7 @@ _02002790:
 	bl sub_020029D8
 	ldrb r1, [r4, #0x16]
 	ldr r0, [r4, #4]
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrb r0, [r4, #0xa]
 	strh r0, [r4, #0xc]
 	ldrb r0, [r4, #0xb]
@@ -1763,7 +1763,7 @@ _020027BA:
 	bl sub_020029D8
 	ldrb r0, [r4, #9]
 	mov r1, #1
-	bl sub_02002FAC
+	bl GetFontAttribute
 	ldrh r1, [r4, #0x12]
 	add r1, r1, r0
 	add r0, r4, #0
@@ -1871,10 +1871,10 @@ _02002872:
 	bl sub_0201EE9C
 	add r7, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_0201EE90
+	bl GetWindowWidth
 	str r0, [sp, #0x28]
 	ldr r0, [r5, #4]
-	bl sub_0201EE94
+	bl GetWindowHeight
 	sub r0, r0, #2
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
@@ -2052,10 +2052,10 @@ sub_020029D8: ; 0x020029D8
 	bl sub_0201EE9C
 	add r6, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_0201EE90
+	bl GetWindowWidth
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #4]
-	bl sub_0201EE94
+	bl GetWindowHeight
 	sub r0, r0, #2
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
@@ -2849,8 +2849,8 @@ _02002F82:
 _02002FA8: .word 0x0211188C
 	thumb_func_end sub_02002F68
 
-	thumb_func_start sub_02002FAC
-sub_02002FAC: ; 0x02002FAC
+	thumb_func_start GetFontAttribute
+GetFontAttribute: ; 0x02002FAC
 	mov r2, #0
 	cmp r1, #7
 	bhi _0200300C
@@ -2920,7 +2920,7 @@ _02003020: .word 0x020F56DC
 _02003024: .word 0x020F56DD
 _02003028: .word 0x020F56DE
 _0200302C: .word 0x020F56DF
-	thumb_func_end sub_02002FAC
+	thumb_func_end GetFontAttribute
 
 	thumb_func_start sub_02003030
 sub_02003030: ; 0x02003030
@@ -4548,7 +4548,7 @@ _02003C04:
 _02003C16:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	mov r1, #2
 	add r0, r6, #0
 	lsl r1, r1, #0xc
@@ -4682,7 +4682,7 @@ _02003D36:
 _02003D52:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02003BA8
 

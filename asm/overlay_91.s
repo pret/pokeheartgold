@@ -2663,7 +2663,7 @@ _0225D908:
 	add r0, #0xc
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	mov r0, #0x80
 	add r1, r4, #0
 	bl sub_02026354
@@ -2783,7 +2783,7 @@ _0225DA0E:
 	bl sub_0201CA4C
 	add r0, sp, #0x30
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	cmp r0, #1
 	bne _0225DA5C

@@ -125,7 +125,7 @@ _021E59B6:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0x46
 	str r0, [sp]
 	mov r0, #0xff
@@ -144,7 +144,7 @@ _021E59B6:
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	mov r1, #0xfe
 	ldr r0, _021E5A98 ; =0x00000257
 	mov r2, #1
@@ -2234,7 +2234,7 @@ ov76_021E6A94: ; 0x021E6A94
 	ldrh r4, [r0, r1]
 	add r0, r5, #4
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x10]
 	cmp r4, r0
 	bne _021E6B18
@@ -2281,7 +2281,7 @@ _021E6AC8:
 	beq _021E6AC8
 _021E6B18:
 	add r0, r5, #4
-	bl sub_0201D578
+	bl CopyWindowToVram
 _021E6B1E:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}

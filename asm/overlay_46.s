@@ -1415,7 +1415,7 @@ _02259394:
 	add r0, r5, #0
 	add r0, #8
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #0x1c]
 	add r1, r4, #0
@@ -1589,7 +1589,7 @@ ov46_022594E0: ; 0x022594E0
 	add r5, r1, #0
 	add r0, #8
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #4]
 	ldr r2, [r4, #0x1c]
 	add r1, r5, #0

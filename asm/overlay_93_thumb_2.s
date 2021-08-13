@@ -4542,7 +4542,7 @@ _02261EE6:
 	ldr r2, [sp, #0x88]
 	add r0, sp, #0x30
 	str r3, [sp, #0x14]
-	bl sub_02020150
+	bl AddTextPrinterParameterized3
 	add r0, sp, #0x30
 	mov r1, #1
 	mov r2, #0x75

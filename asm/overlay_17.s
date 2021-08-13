@@ -1647,7 +1647,7 @@ ov17_02202850: ; 0x02202850
 	add r0, r4, #0
 	add r0, #0xfc
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r1, r4, #0
 	add r1, #0xa8
 	ldr r1, [r1]
@@ -1779,7 +1779,7 @@ _0220295A:
 	add r4, r5, r0
 	add r0, r4, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	cmp r7, #0
 	beq _02202994
 	mov r0, #0x12
@@ -2590,7 +2590,7 @@ _02202FD0:
 	bl sub_0201D4F8
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r6, r6, #1
 	add r4, #8
 	add r5, #0x10

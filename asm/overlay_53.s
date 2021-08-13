@@ -1016,7 +1016,7 @@ _021E613C:
 	add r0, #0x2c
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	add r0, r5, #0
 	ldr r2, _021E6280 ; =0x000003E2
 	add r0, #0x2c
@@ -1265,7 +1265,7 @@ _021E632E:
 	add r0, #0x1c
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	mov r1, #0
 	str r1, [sp]
 	mov r2, #0x11
@@ -1312,7 +1312,7 @@ _021E63A6:
 	add r0, #0x1c
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	mov r1, #0
 	str r1, [sp]
 	mov r2, #0x11
@@ -1338,7 +1338,7 @@ _021E63E2:
 	b _021E6490
 _021E63F6:
 	add r0, #0x1c
-	bl sub_0201D578
+	bl CopyWindowToVram
 	mov r0, #0x42
 	mov r1, #2
 	lsl r0, r0, #2
@@ -1509,7 +1509,7 @@ _021E650C:
 	add r0, r4, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r0, [sp, #0x10]
 	ldr r3, [sp, #0x14]
 	str r0, [sp]
@@ -1531,7 +1531,7 @@ _021E650C:
 	asr r3, r3, #1
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r6, #0
 	bl sub_02026380
 	ldr r0, [sp, #0x24]
@@ -4500,7 +4500,7 @@ ov53_021E7D70: ; 0x021E7D70
 	bl sub_0201D4F8
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _021E7DD8 ; =0x000F0100
@@ -4512,7 +4512,7 @@ ov53_021E7D70: ; 0x021E7D70
 	str r3, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r4, #0
 	bl sub_0201D520
 	add r0, r6, #0
@@ -4535,9 +4535,9 @@ ov53_021E7DDC: ; 0x021E7DDC
 	bl sub_0201D4F8
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r4, #0
 	bl sub_0201D520
 	pop {r4, pc}
@@ -5230,7 +5230,7 @@ ov53_021E8330: ; 0x021E8330
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _021E838C ; =0x000F0100
@@ -5242,7 +5242,7 @@ ov53_021E8330: ; 0x021E8330
 	str r3, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r7, #0
 	bl sub_0200BB44
 	add r0, r5, #0

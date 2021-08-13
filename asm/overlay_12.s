@@ -692,7 +692,7 @@ _02237D1A:
 	bl sub_0201D40C
 	ldr r0, [r5, #8]
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5, #8]
 	mov r1, #0
 	mov r2, #1
@@ -888,7 +888,7 @@ _02237FD8:
 	bl sub_0201D40C
 	ldr r0, [r4, #8]
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #8]
 	mov r1, #0
 	mov r2, #1
@@ -4119,7 +4119,7 @@ _02239A46:
 	bl sub_0201D40C
 	ldr r0, [r5, #8]
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5, #8]
 	mov r1, #0
 	mov r2, #1
@@ -9678,7 +9678,7 @@ _0223C3A0:
 	add r4, r0, #0
 	add r0, r7, #0
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r6, #0x18]
 	add r1, r4, #0
 	bl sub_020263D4
@@ -9740,7 +9740,7 @@ _0223C40A:
 	add r4, r0, #0
 	add r0, r7, #0
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r6, #0x18]
 	add r1, r4, #0
 	bl sub_020263D4
@@ -9768,7 +9768,7 @@ _0223C454:
 	bl sub_02073548
 	add r0, r7, #0
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0
 	ldr r0, [sp, #0x30]
 	str r3, [sp]
@@ -9814,7 +9814,7 @@ ov12_0223C494: ; 0x0223C494
 	bl ov12_0223CEF4
 	add r0, r7, #0
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _0223C4E4 ; =ov12_0223CF14
@@ -9853,7 +9853,7 @@ ov12_0223C4E8: ; 0x0223C4E8
 	beq _0223C51C
 	add r0, r4, #0
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 _0223C51C:
 	ldr r1, [sp, #0x28]
 	mov r0, #2
@@ -29486,7 +29486,7 @@ _02245D62:
 	bl sub_0201D40C
 	add r0, r5, #0
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #1
@@ -29609,7 +29609,7 @@ _02245EC8:
 	mov r2, #0x50
 	mov r3, #0
 	add r7, r0, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	mov r1, #0
 	str r1, [sp, #0x50]
 	add r5, sp, #0xb4
@@ -70620,7 +70620,7 @@ ov12_022598F8: ; 0x022598F8
 	bl ov12_0223A7D8
 	add r6, r0, #0
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r6, #0
 	bl sub_0201D8A0
 	mov r1, #0x65
@@ -82081,7 +82081,7 @@ _0225F50A:
 	bl ov12_0223A7D8
 	add r6, r0, #0
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r6, #0
 	bl sub_0201D8A0
 	ldr r0, [r4]
@@ -94116,7 +94116,7 @@ ov12_0226516C: ; 0x0226516C
 	str r1, [sp, #0x14]
 	add r0, sp, #0x24
 	add r3, r1, #0
-	bl sub_02020150
+	bl AddTextPrinterParameterized3
 	ldr r0, [r5, #4]
 	ldr r6, [sp, #0x30]
 	ldr r0, [r0]
@@ -94631,7 +94631,7 @@ _0226561E:
 	str r1, [sp, #0x14]
 	add r0, sp, #0x18
 	add r3, r1, #0
-	bl sub_02020150
+	bl AddTextPrinterParameterized3
 	ldr r0, [r4, #4]
 	ldr r5, [sp, #0x24]
 	ldr r0, [r0]
@@ -94758,7 +94758,7 @@ _02265716:
 	str r1, [sp, #0x14]
 	add r0, sp, #0x24
 	add r3, r1, #0
-	bl sub_02020150
+	bl AddTextPrinterParameterized3
 	ldr r0, [r4, #4]
 	ldr r5, [sp, #0x30]
 	ldr r0, [r0]
@@ -100531,7 +100531,7 @@ _02268594:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x3c
 	str r3, [sp, #0x14]
-	bl sub_02020150
+	bl AddTextPrinterParameterized3
 	b _022685DE
 _022685D2:
 	add r3, r4, #0
@@ -101173,7 +101173,7 @@ _02268A90:
 	add r0, r4, #0
 	add r2, r6, #0
 	str r3, [sp, #0x14]
-	bl sub_02020150
+	bl AddTextPrinterParameterized3
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov12_02268A64

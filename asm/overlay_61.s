@@ -2298,12 +2298,12 @@ ov61_021E6B6C: ; 0x021E6B6C
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0x3a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0xe9
 	lsl r0, r0, #2
 	ldrb r0, [r4, r0]
@@ -2521,7 +2521,7 @@ _021E6DA4:
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0
 	ldr r0, [sp, #0x30]
 	str r3, [sp]
@@ -2545,7 +2545,7 @@ _021E6DA4:
 	b _021E6DEE
 _021E6DE8:
 	add r0, r5, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 _021E6DEE:
 	add r0, r7, #0
 	bl sub_0200BB44

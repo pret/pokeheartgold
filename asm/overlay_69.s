@@ -273,7 +273,7 @@ _021E5B3A:
 _021E5B60:
 	ldr r0, _021E5D9C ; =0x0000C064
 	ldr r0, [r4, r0]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -393,7 +393,7 @@ _021E5C10:
 _021E5C4C:
 	ldr r0, _021E5D9C ; =0x0000C064
 	ldr r0, [r4, r0]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -475,7 +475,7 @@ _021E5CB8:
 _021E5CF8:
 	ldr r0, _021E5D9C ; =0x0000C064
 	ldr r0, [r4, r0]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -646,7 +646,7 @@ _021E5E52:
 	add r0, r4, r0
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r0, _021E604C ; =0x0000C034
 	ldr r2, _021E6038 ; =0x000001D9
 	add r0, r4, r0
@@ -724,7 +724,7 @@ _021E5EF8:
 	add r0, r4, r0
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r0, _021E6050 ; =0x0000C324
 	ldr r1, [r4, r0]
 	cmp r1, #0
@@ -1553,7 +1553,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r4, r0
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r0, _021E6788 ; =0x0000C014
 	ldr r2, _021E6778 ; =0x000001E2
 	add r0, r4, r0
@@ -1691,7 +1691,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r4, r0
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r0, _021E67AC ; =0x0000C070
 	mov r1, #0x10
 	ldr r0, [r4, r0]
@@ -1722,7 +1722,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r4, r0
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r0, _021E67AC ; =0x0000C070
 	mov r1, #0xd
 	ldr r0, [r4, r0]
@@ -1829,7 +1829,7 @@ _021E682C:
 	mov r1, #0xf
 	add r2, r4, #0
 	add r3, r4, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
@@ -1970,7 +1970,7 @@ _021E692E:
 	lsl r3, r3, #0x18
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_020011DC
+	bl ListMenuInit
 	ldr r1, _021E698C ; =0x0000C064
 	ldr r2, _021E6990 ; =0x000001D9
 	str r0, [r5, r1]
@@ -1979,7 +1979,7 @@ _021E692E:
 	mov r3, #7
 	bl sub_0200E580
 	ldr r0, [sp]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2060,7 +2060,7 @@ _021E69DE:
 	lsl r3, r3, #0x18
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_020011DC
+	bl ListMenuInit
 	ldr r1, _021E6A4C ; =0x0000C064
 	ldr r2, _021E6A50 ; =0x000001D9
 	str r0, [r5, r1]
@@ -2069,7 +2069,7 @@ _021E69DE:
 	mov r3, #7
 	bl sub_0200E580
 	ldr r0, [sp]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2095,7 +2095,7 @@ ov69_021E6A54: ; 0x021E6A54
 	mov r1, #0
 	ldr r0, [r4, r0]
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 	ldr r0, _021E6A88 ; =0x0000C068
 	ldr r0, [r4, r0]
 	bl sub_02014950
@@ -2136,7 +2136,7 @@ ov69_021E6A8C: ; 0x021E6A8C
 	add r0, r5, r0
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r0, _021E6B48 ; =0x0000C054
 	ldr r2, _021E6B4C ; =0x000001D9
 	add r0, r5, r0
@@ -2182,7 +2182,7 @@ ov69_021E6A8C: ; 0x021E6A8C
 	bl sub_02026380
 	ldr r0, _021E6B48 ; =0x0000C054
 	add r0, r5, r0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -2225,7 +2225,7 @@ ov69_021E6B5C: ; 0x021E6B5C
 	add r0, r5, r0
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r0, _021E6C0C ; =0x0000C054
 	ldr r2, _021E6C10 ; =0x000001D9
 	add r0, r5, r0
@@ -2268,7 +2268,7 @@ _021E6BD8:
 	bl sub_02026380
 	ldr r0, _021E6C0C ; =0x0000C054
 	add r0, r5, r0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2477,7 +2477,7 @@ ov69_021E6D5C: ; 0x021E6D5C
 	add r0, r5, r0
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r0, _021E6E80 ; =0x0000C070
 	mov r1, #0xf
 	ldr r0, [r5, r0]
@@ -2518,7 +2518,7 @@ _021E6DB6:
 	add r0, r5, r0
 	mov r1, #0xf
 	add r3, r2, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	ldr r1, [sp, #0xc]
 	mov r0, #0x30
 	add r2, r1, #0

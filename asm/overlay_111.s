@@ -2163,7 +2163,7 @@ ov111_021E69A0: ; 0x021E69A0
 	mov r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x28]
 	cmp r0, #0
 	beq _021E69D4
@@ -2325,7 +2325,7 @@ _021E6ADE:
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x30]
 	ldr r2, [sp, #0x34]
@@ -2365,7 +2365,7 @@ ov111_021E6B30: ; 0x021E6B30
 	mov r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r2, [sp, #0x20]
 	ldr r3, [sp, #0x34]
 	add r0, r4, #0

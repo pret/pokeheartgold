@@ -636,15 +636,15 @@ ov113_021E5DA4: ; 0x021E5DA4
 	add r4, r0, #0
 	add r0, #0x78
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x88
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x98
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrb r3, [r4, #0x1a]
 	cmp r3, #0
 	bne _021E5DD4
@@ -733,7 +733,7 @@ ov113_021E5E64: ; 0x021E5E64
 	add r0, r4, #0
 	add r0, #0x68
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r1, [r4, #0x54]
 	mov r0, #4
 	mov r2, #0
@@ -1817,7 +1817,7 @@ _021E6728:
 	bl sub_0201D4F8
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r6, r6, #1
 	add r4, #8
 	add r5, #0x10

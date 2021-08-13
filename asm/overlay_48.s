@@ -2779,7 +2779,7 @@ ov48_02259D00: ; 0x02259D00
 	add r0, r5, #0
 	add r0, #0x1c
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r6, #0
 	mov r1, #1
 	bl ov48_0225B0C4
@@ -3019,7 +3019,7 @@ ov48_02259EAC: ; 0x02259EAC
 	add r0, r5, #0
 	add r0, #0x10
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	mov r1, #5
@@ -3064,7 +3064,7 @@ ov48_02259F48: ; 0x02259F48
 	add r4, r0, #0
 	add r0, #0x10
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x10
@@ -3212,7 +3212,7 @@ _0225A02C:
 	lsl r1, r1, #2
 	add r0, r0, r1
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x1c]
 	mov r1, #0
 	bl ov48_0225B0C4
@@ -4139,9 +4139,9 @@ _0225A6F0:
 	add r0, r5, #0
 	mov r1, #0
 	add r6, #0xa2
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r7, r7, #1
 	add r4, r4, #6
 	add r5, #0x10
@@ -4170,7 +4170,7 @@ _0225A6F0:
 	lsl r1, r1, #2
 	add r0, r0, r1
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov48_0225A6DC
@@ -4216,7 +4216,7 @@ _0225A7A4:
 	lsl r4, r4, #4
 	add r0, r5, r4
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r6]
 	bl ov48_0225B038
 	str r0, [sp, #0x10]

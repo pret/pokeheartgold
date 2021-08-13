@@ -562,6 +562,7 @@ _02001108: .word 0x021D110C
 HandleDSLidAction: ; 0x0200110C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
+	; static inline BOOL PAD_DetectFold();
 	ldr r0, _020011D0 ; =0x027FFFA8
 	ldrh r1, [r0]
 	mov r0, #2

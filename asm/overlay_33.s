@@ -363,7 +363,7 @@ _0225D7F0:
 	bl sub_0201D4F8
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, _0225D818 ; =0x000001BA
 	add r4, r4, #1
 	ldrh r0, [r7, r0]
@@ -530,7 +530,7 @@ _0225D912:
 	lsl r6, r5, #4
 	str r0, [sp, #0x20]
 	add r0, r4, r6
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r1, r0, #3
 	lsr r0, r1, #0x1f
 	add r0, r1, r0

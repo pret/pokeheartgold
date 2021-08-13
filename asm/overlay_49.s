@@ -4790,7 +4790,7 @@ ov49_0225AAC8: ; 0x0225AAC8
 	bl sub_0201D40C
 	add r0, r5, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #6
 	lsl r0, r0, #6
 	add r1, r6, #0
@@ -4847,7 +4847,7 @@ ov49_0225AB44: ; 0x0225AB44
 _0225AB64:
 	add r0, r5, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
 	bl sub_020263D4
@@ -4893,7 +4893,7 @@ ov49_0225ABA4: ; 0x0225ABA4
 _0225ABC4:
 	add r0, r5, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
 	bl sub_020263D4
@@ -5060,7 +5060,7 @@ ov49_0225ACC4: ; 0x0225ACC4
 _0225ACE4:
 	add r0, r5, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
 	bl sub_020263D4
@@ -5423,7 +5423,7 @@ _0225AF52:
 	add r0, r5, #0
 	add r0, #0x20
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x20
 	mov r1, #1
@@ -5437,7 +5437,7 @@ _0225AF52:
 	add r0, r5, #0
 	add r1, r7, #0
 	lsr r3, r3, #0x18
-	bl sub_020011DC
+	bl ListMenuInit
 	str r0, [r5, #0x30]
 	add r5, #0x20
 	add r0, r5, #0
@@ -5459,7 +5459,7 @@ ov49_0225AFD8: ; 0x0225AFD8
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 _0225AFE8:
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r4, r0, #0
 	mov r0, #1
 	mvn r0, r0
@@ -5489,7 +5489,7 @@ ov49_0225B014: ; 0x0225B014
 	ldr r0, [r5, #0x30]
 	cmp r0, #0
 	beq _0225B056
-	bl sub_02001434
+	bl DestroyListMenu
 	mov r0, #0
 	str r0, [r5, #0x30]
 	add r0, r5, #0
@@ -5556,7 +5556,7 @@ _0225B090:
 	ldr r0, [r4, #0x30]
 	add r1, sp, #0
 	mov r2, #0
-	bl sub_020014E8
+	bl ListMenuGetScrollAndRow
 	add r0, sp, #0
 	ldrh r0, [r0]
 	cmp r0, #0
@@ -5628,7 +5628,7 @@ ov49_0225B0E0: ; 0x0225B0E0
 	bl sub_0200E580
 	add r0, r4, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	bl sub_0201D5C8
 	add sp, #0x14
@@ -5692,7 +5692,7 @@ ov49_0225B178: ; 0x0225B178
 	add r3, r4, #0
 	str r1, [sp, #4]
 	mov r1, #0xf
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5783,7 +5783,7 @@ ov49_0225B214: ; 0x0225B214
 	bl sub_0201D40C
 	add r0, r4, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add sp, #0x14
 	pop {r3, r4, pc}
 	thumb_func_end ov49_0225B214
@@ -8109,7 +8109,7 @@ ov49_0225C3C0: ; 0x0225C3C0
 _0225C3C8:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #5
@@ -8902,7 +8902,7 @@ ov49_0225C970: ; 0x0225C970
 	add r0, r5, #0
 	add r0, #0xc
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #4
 	str r0, [sp]
 	mov r1, #0

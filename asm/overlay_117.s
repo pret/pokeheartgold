@@ -797,7 +797,7 @@ _0225F560:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r6, #4]
 	add r1, r7, #0
 	bl ov117_0225F470

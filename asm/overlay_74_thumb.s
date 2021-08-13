@@ -1148,10 +1148,10 @@ _022278BC:
 	bl sub_0201EE9C
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x2c]
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r5, r0, #0
 	ldr r0, [sp, #0x2c]
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r5, [sp]
 	str r0, [sp, #4]
 	mov r0, #0
@@ -1781,14 +1781,14 @@ ov74_02227E10: ; 0x02227E10
 	add r5, r0, #0
 	mov r0, #0
 	mov r1, #2
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r2, r0, #0
 	mov r0, #0
 	add r1, r5, #0
 	bl sub_02002F30
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r0, r0, #3
 	add r4, #0x20
 	sub r3, r0, r4
@@ -2595,10 +2595,10 @@ _02228452:
 	bl sub_0201EE9C
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r5, [sp]
 	str r0, [sp, #4]
 	mov r0, #0
@@ -2625,10 +2625,10 @@ _022284A8:
 	bl sub_0201EE9C
 	str r0, [sp, #0x24]
 	add r0, r4, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r5, [sp]
 	str r0, [sp, #4]
 	mov r0, #0
@@ -2652,10 +2652,10 @@ _022284EE:
 	bl sub_0201EE9C
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r5, [sp]
 	str r0, [sp, #4]
 	mov r0, #1
@@ -2712,10 +2712,10 @@ _02228564:
 	bl sub_0201EE9C
 	str r0, [sp, #0x14]
 	add r0, r4, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r5, [sp]
 	str r0, [sp, #4]
 	mov r0, #1
@@ -2744,10 +2744,10 @@ _022285AA:
 	bl sub_0201EE9C
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r5, [sp]
 	str r0, [sp, #4]
 	mov r0, #0
@@ -2774,10 +2774,10 @@ _022285F4:
 	bl sub_0201EE9C
 	str r0, [sp, #0x24]
 	add r0, r4, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r5, [sp]
 	str r0, [sp, #4]
 	mov r0, #0
@@ -2801,10 +2801,10 @@ _0222863A:
 	bl sub_0201EE9C
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	str r5, [sp]
 	str r0, [sp, #4]
 	mov r0, #1
@@ -2899,7 +2899,7 @@ ov74_022286F8: ; 0x022286F8
 	sub r0, r0, #1
 	lsl r4, r0, #3
 	add r0, r6, r7
-	bl sub_0201EE94
+	bl GetWindowHeight
 	mov r0, #0x4e
 	lsl r0, r0, #2
 	ldr r1, [r5, r0]
@@ -3000,7 +3000,7 @@ _022287C6:
 	sub r0, r0, #1
 	lsl r4, r0, #3
 	add r0, r5, #0
-	bl sub_0201EE94
+	bl GetWindowHeight
 	cmp r7, r4
 	ble _022287E8
 	mov r0, #1
@@ -4110,7 +4110,7 @@ ov74_02229084: ; 0x02229084
 	add r1, #0xf8
 	str r0, [r1]
 	mov r1, #1
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r2, r0, #0
 	add r0, r5, #0
 	add r0, #0xf0
@@ -5731,7 +5731,7 @@ ov74_02229DF8: ; 0x02229DF8
 	ldr r1, _02229E10 ; =0x0223D0A4
 	mov r0, #0xf
 	ldr r1, [r1]
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	ldr r0, _02229E10 ; =0x0223D0A4
 	mov r1, #0
 	str r1, [r0]
@@ -5809,7 +5809,7 @@ _02229E7E:
 	beq _02229E8C
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 _02229E8C:
 	add r0, r7, #0
 	add r0, #0x18
@@ -7172,13 +7172,13 @@ _0222A8EA:
 	beq _0222A922
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 _0222A922:
 	mov r1, #0
 	add r0, sp, #8
 	add r2, r1, #0
 	mov r3, #0x54
-	bl sub_020011DC
+	bl ListMenuInit
 	str r0, [r4, #0x78]
 	mov r0, #0
 	ldr r2, [sp, #0x40]
@@ -7315,10 +7315,10 @@ ov74_0222AA18: ; 0x0222AA18
 	str r0, [r4, #0xc]
 	mov r0, #1
 	mov r1, #6
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r6, [r4, #0x14]
 	cmp r6, #0
 	bne _0222AA60
@@ -7380,10 +7380,10 @@ ov74_0222AAAC: ; 0x0222AAAC
 	bl sub_02026A04
 	mov r0, #0
 	mov r1, #6
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -7416,7 +7416,7 @@ ov74_0222AB0C: ; 0x0222AB0C
 	add r6, r2, #0
 	bl sub_02007290
 	ldr r0, [r0, #0x78]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r4, r0, #0
 	mov r0, #1
 	mvn r0, r0
@@ -12095,7 +12095,7 @@ _0222D134:
 	beq _0222D144
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 _0222D144:
 	add r0, r7, #0
 	mov r1, #0x55
@@ -12152,7 +12152,7 @@ _0222D17E:
 	ldr r2, [sp, #0x38]
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
-	bl sub_020011DC
+	bl ListMenuInit
 	ldr r1, _0222D1C8 ; =0x00002BC8
 	str r0, [r5, r1]
 	add sp, #0x24
@@ -12181,10 +12181,10 @@ ov74_0222D1D4: ; 0x0222D1D4
 	add r6, r0, #0
 	mov r0, #1
 	mov r1, #6
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, r7, #0
@@ -12203,7 +12203,7 @@ ov74_0222D1D4: ; 0x0222D1D4
 	str r3, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r5, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r7, #0
 	bl sub_02026380
 	add r0, r4, #0
@@ -12466,7 +12466,7 @@ ov74_0222D448: ; 0x0222D448
 	str r1, [r4, r0]
 	sub r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02001434
+	bl DestroyListMenu
 	ldr r0, _0222D488 ; =0x00002BC8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -13078,10 +13078,10 @@ _0222D8FA:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x18]
 	ldr r3, [r4, #0x24]
 	str r0, [sp, #0x28]
@@ -13131,7 +13131,7 @@ _0222D956:
 	bl sub_02026380
 _0222D976:
 	add r0, r6, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	ldr r1, [r4, #0xc]
 	ldr r0, [r4, #0x10]
 	add r2, r1, #0
@@ -13220,7 +13220,7 @@ _0222DA2A:
 	add r0, r6, #0
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _0222DA58
@@ -13502,7 +13502,7 @@ ov74_0222DC60: ; 0x0222DC60
 	bl sub_02007290
 	ldr r1, _0222DCC8 ; =0x00002BC8
 	ldr r0, [r0, r1]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r4, r0, #0
 	mov r0, #1
 	mvn r0, r0
@@ -14676,10 +14676,10 @@ _0222E5E8:
 	ldr r0, _0222E7C0 ; =0x00002B08
 	mov r1, #0
 	add r0, r4, r0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, _0222E7C0 ; =0x00002B08
 	add r0, r4, r0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	ldr r0, _0222E7C4 ; =0x00002C30
 	mov r1, #0
 	str r1, [r4, r0]
@@ -15097,7 +15097,7 @@ _0222E926:
 	mov r5, #0
 	ldr r0, [sp, #0x10]
 	add r1, r5, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	str r0, [sp, #0x14]
 	cmp r6, #0
@@ -15200,7 +15200,7 @@ _0222EA54:
 	cmp r6, #0
 	beq _0222EA5E
 	ldr r0, [sp, #0x10]
-	bl sub_0201D578
+	bl CopyWindowToVram
 _0222EA5E:
 	ldr r0, [sp, #0x1c]
 	bl sub_0200BB44
@@ -15240,7 +15240,7 @@ ov74_0222EA88: ; 0x0222EA88
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #1
 	str r3, [sp]
 	mov r0, #0x2a
@@ -15272,7 +15272,7 @@ ov74_0222EA88: ; 0x0222EA88
 	str r3, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r6, #0
 	bl sub_02026380
 	ldr r0, _0222EB20 ; =0x00002A04
@@ -15539,7 +15539,7 @@ _0222ED1E:
 	beq _0222ED2E
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 _0222ED2E:
 	add r0, r7, #0
 	mov r1, #0x55
@@ -15599,7 +15599,7 @@ _0222ED6C:
 	ldr r2, [sp, #0x38]
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
-	bl sub_020011DC
+	bl ListMenuInit
 	ldr r1, _0222EDB4 ; =0x00002BBC
 	str r0, [r5, r1]
 	add sp, #0x24
@@ -15625,7 +15625,7 @@ ov74_0222EDC0: ; 0x0222EDC0
 	sub r0, r0, #4
 	ldr r0, [r4, r0]
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 	ldr r0, _0222EE00 ; =0x00002BBC
 	mov r1, #0
 	str r1, [r4, r0]
@@ -16033,10 +16033,10 @@ _0222F0F4:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x18]
 	ldr r3, [r4, #0x24]
 	str r0, [sp, #0x28]
@@ -16074,7 +16074,7 @@ _0222F0F4:
 	bl sub_02026380
 _0222F158:
 	add r0, r6, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	ldr r1, [r4, #0xc]
 	ldr r0, [r4, #0x10]
 	mul r0, r1
@@ -16160,7 +16160,7 @@ _0222F206:
 	add r0, r6, #0
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _0222F234
@@ -16408,7 +16408,7 @@ ov74_0222F404: ; 0x0222F404
 	bl sub_02007290
 	ldr r1, _0222F46C ; =0x00002BBC
 	ldr r0, [r0, r1]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r4, r0, #0
 	mov r0, #1
 	mvn r0, r0
@@ -21530,7 +21530,7 @@ _02231A6C:
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 _02231A7E:
 	mov r0, #0
 	ldr r1, [r5, #0x34]
@@ -21651,7 +21651,7 @@ _02231B78:
 	tst r0, r4
 	bne _02231B84
 	ldr r0, [r5]
-	bl sub_0201D578
+	bl CopyWindowToVram
 _02231B84:
 	mov r0, #8
 	tst r0, r4
@@ -23252,7 +23252,7 @@ _02232768:
 	cmp r4, #0
 	bne _022327D6
 	ldr r0, [sp, #0x2c]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x78
 	pop {r3, r4, r5, r6, r7, pc}
 _022327D6:
@@ -29130,7 +29130,7 @@ ov74_0223547C: ; 0x0223547C
 	add r1, #0x48
 	ldrb r1, [r1]
 	ldr r0, [r5, #0x10]
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 _022354A6:
 	mov r0, #0
 	ldr r1, [r5, #0x4c]
@@ -29179,14 +29179,14 @@ _02235500:
 	mov r1, #2
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02002FAC
+	bl GetFontAttribute
 	add r2, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, r4, #0
 	bl sub_02002F30
 	add r7, r0, #0
 	ldr r0, [r5, #0x10]
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r0, r0, #3
 	sub r3, r0, r7
 	ldr r0, [r5, #0x24]
@@ -29324,7 +29324,7 @@ _02235612:
 	b _0223562E
 _02235628:
 	ldr r0, [r4, #0x10]
-	bl sub_0201D578
+	bl CopyWindowToVram
 _0223562E:
 	add r0, r5, #0
 	add sp, #0x14

@@ -1143,7 +1143,7 @@ _021E6204:
 	ldr r0, [r4, #4]
 	mov r1, #0
 	add r0, #0x40
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #4]
 	add r0, #0x40
 	bl sub_0201D5C8
@@ -1173,7 +1173,7 @@ _021E623C:
 	ldr r0, [r4, #4]
 	mov r1, #0
 	add r0, #0xd0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #4]
 	add r0, #0xd0
 	bl sub_0201D5C8

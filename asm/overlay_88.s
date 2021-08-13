@@ -1483,7 +1483,7 @@ _02259304:
 	bl sub_0201D40C
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	bl sub_0201D5C8
 	ldr r0, [sp, #0x20]
@@ -1791,7 +1791,7 @@ _0225959C:
 	add r0, r5, #0
 	add r0, #0xc
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -1881,7 +1881,7 @@ _02259630:
 	ldr r0, [sp, #0x1c]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	mov r0, #0x5a
 	lsl r0, r0, #4
 	str r0, [sp]
@@ -1966,7 +1966,7 @@ _022596BC:
 	bl sub_0201D40C
 	ldr r0, [sp, #0x14]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x38]
 	ldr r1, [sp, #0x3c]
 	ldr r2, [sp, #0x34]

@@ -578,7 +578,7 @@ ov78_021E5D94: ; 0x021E5D94
 	add r0, #0x18
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	mov r1, #4
 	add r0, sp, #8
 	strb r1, [r0]
@@ -597,7 +597,7 @@ ov78_021E5D94: ; 0x021E5D94
 	add r0, r4, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

@@ -1782,7 +1782,7 @@ ov75_02247790: ; 0x02247790
 	add r0, r4, #0
 	add r0, #0x68
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x18
@@ -1803,7 +1803,7 @@ ov75_02247790: ; 0x02247790
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #1
 	ldr r0, _02247834 ; =0x000F0E00
 	str r3, [sp]
@@ -1832,7 +1832,7 @@ ov75_02247790: ; 0x02247790
 	add r4, #0x48
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add sp, #0x14
 	pop {r3, r4, pc}
 	nop
@@ -2025,7 +2025,7 @@ _02247972:
 	add r0, sp, #0x14
 	add r2, r1, #0
 	mov r3, #0x74
-	bl sub_020011DC
+	bl ListMenuInit
 	add r1, r5, #0
 	add r1, #0xa4
 	str r0, [r1]
@@ -2041,7 +2041,7 @@ _02247972:
 	bl sub_0200E9BC
 	add r0, r5, #0
 	add r0, #0x78
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r5, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -2053,7 +2053,7 @@ _022479C0:
 	add r0, r5, #0
 	add r0, #0xa4
 	ldr r0, [r0]
-	bl sub_02001338
+	bl ListMenu_ProcessInput
 	add r4, r0, #0
 	mov r0, #1
 	mvn r0, r0
@@ -2104,7 +2104,7 @@ _02247A1C:
 	mov r1, #0
 	ldr r0, [r0]
 	add r2, r1, #0
-	bl sub_02001434
+	bl DestroyListMenu
 	add r0, r5, #0
 	add r0, #0x78
 	mov r1, #1
@@ -2398,7 +2398,7 @@ ov75_02247C70: ; 0x02247C70
 	add r4, r0, #0
 	add r0, #0xd4
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #0x2a
 	bl sub_0200BBA0
@@ -2453,7 +2453,7 @@ ov75_02247C70: ; 0x02247C70
 	bl sub_020157F0
 	add r4, #0xd4
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -2468,10 +2468,10 @@ ov75_02247D0C: ; 0x02247D0C
 	add r4, r0, #0
 	add r0, #0xd4
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r4, #0xd4
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov75_02247D0C
@@ -2868,7 +2868,7 @@ ov75_02248034: ; 0x02248034
 	add r7, r0, #0
 	add r0, #0xc4
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r7, #0x34]
 	mov r1, #0x2c
 	bl sub_0200BBA0
@@ -2918,7 +2918,7 @@ _0224809E:
 	bl sub_02026380
 	add r7, #0xc4
 	add r0, r7, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2998,7 +2998,7 @@ _022480D6:
 	add r0, r5, #0
 	add r0, #0xc4
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x14]
 	bl sub_02026800
 	mov r1, #0x74
@@ -3041,11 +3041,11 @@ _02248168:
 	bl sub_0200E580
 	add r0, r5, #0
 	add r0, #0xc4
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r5, #0
 	add r0, #0xd4
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0xd4
 	mov r1, #1
@@ -3054,7 +3054,7 @@ _02248168:
 	bl sub_0200E580
 	add r0, r5, #0
 	add r0, #0xd4
-	bl sub_0201D578
+	bl CopyWindowToVram
 	mov r0, #0x74
 	bl sub_02015788
 	add r1, r5, #0
@@ -3063,7 +3063,7 @@ _02248168:
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #1
@@ -3284,7 +3284,7 @@ _0224837C:
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_020157B8
+	bl DestroyListMenuCursorObj
 	ldr r0, [r5, #4]
 	mov r1, #3
 	bl sub_0201CAE0
@@ -5575,7 +5575,7 @@ ov75_022494CC: ; 0x022494CC
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #0
@@ -5846,7 +5846,7 @@ ov75_022496B8: ; 0x022496B8
 	add r0, r5, #0
 	add r0, #0x68
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x68
 	mov r1, #1

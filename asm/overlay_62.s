@@ -1040,7 +1040,7 @@ _021E6102:
 	bl sub_0201D40C
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	bl sub_0201D634
 	ldr r0, [sp, #0x14]
@@ -1064,7 +1064,7 @@ _021E6102:
 	add r0, r7, #0
 	bl sub_02026380
 	add r0, r5, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r6, r6, #1
 	add r4, #0x10
 	add r5, #0x10
@@ -1088,7 +1088,7 @@ _021E6182:
 	bl sub_0201D8C8
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	bl sub_0201D634
 	add r0, r5, #0

@@ -274,14 +274,14 @@ _021E5B20:
 	ldr r0, [r2, r1]
 	sub r1, #0xf4
 	ldr r1, [r2, r1]
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	ldr r0, _021E5B58 ; =_0221A680
 	ldr r1, _021E5B68 ; =0x00000F7C
 	ldr r2, [r0]
 	ldr r0, _021E5B64 ; =0x00001084
 	ldr r1, [r2, r1]
 	ldr r0, [r2, r0]
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	ldr r0, _021E5B58 ; =_0221A680
 	mov r1, #0
 	str r1, [r0]
@@ -4375,7 +4375,7 @@ ov00_021E7A30: ; 0x021E7A30
 	ldr r0, _021E7AA0 ; =0x000019F4
 	ldr r1, [r2, r1]
 	ldr r0, [r2, r0]
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	ldr r0, _021E7A90 ; =_0221A684
 	mov r1, #0x22
 	ldr r2, [r0, #4]
@@ -4383,7 +4383,7 @@ ov00_021E7A30: ; 0x021E7A30
 	lsl r1, r1, #6
 	ldr r0, [r2, r0]
 	ldr r1, [r2, r1]
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	mov r1, #0
 	ldr r0, _021E7A90 ; =_0221A684
 	cmp r4, #0

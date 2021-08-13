@@ -333,7 +333,7 @@ _0225F260:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrh r0, [r6, #8]
 	cmp r0, #0x17
 	bne _0225F2D4
@@ -1641,7 +1641,7 @@ _0225FC0E:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0x14]
 	ldrh r0, [r0, #6]

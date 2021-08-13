@@ -1716,7 +1716,7 @@ ov02_0224686C: ; 0x0224686C
 	add r0, r5, #0
 	add r0, #8
 	mov r1, #9
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r3, [r5]
 	mov r0, #0
 	mov r1, #0x1b

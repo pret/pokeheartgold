@@ -3330,7 +3330,7 @@ ov92_0225E070: ; 0x0225E070
 	ldr r0, _0225E0FC ; =0x00001FE0
 	mov r1, #0xff
 	add r0, r5, r0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xeb
@@ -3361,7 +3361,7 @@ ov92_0225E070: ; 0x0225E070
 	bl sub_0200E580
 	ldr r0, _0225E0FC ; =0x00001FE0
 	add r0, r5, r0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -3450,7 +3450,7 @@ ov92_0225E188: ; 0x0225E188
 	bl sub_02002F30
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r0, r0, #3
 	sub r1, r0, r4
 	lsr r0, r1, #0x1f
@@ -3612,7 +3612,7 @@ _0225E246:
 	add r0, r0, r2
 	str r0, [sp, #0x24]
 	add r0, r4, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x2c]
 	mov r1, #0x71
 	bl sub_02028F68
@@ -3636,7 +3636,7 @@ _0225E246:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl sub_02020150
+	bl AddTextPrinterParameterized3
 	b _0225E32E
 _0225E312:
 	mov r0, #0
@@ -3651,12 +3651,12 @@ _0225E312:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl sub_02020150
+	bl AddTextPrinterParameterized3
 _0225E32E:
 	add r0, r7, #0
 	bl sub_02026380
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	ldr r0, [sp, #0x1c]
 	add r4, #0x10
 	add r0, #8

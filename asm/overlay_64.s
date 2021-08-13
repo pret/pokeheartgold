@@ -1028,7 +1028,7 @@ _021E6186:
 	lsl r0, r0, #2
 	add r0, r6, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r2, #0x46
 	lsl r2, r2, #2
 	ldr r0, [r6, r2]
@@ -1671,7 +1671,7 @@ _021E6656:
 	lsl r6, r0, #4
 	add r0, r4, r6
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r2, #0x46
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -1991,7 +1991,7 @@ _021E6920:
 	lsl r1, r6, #4
 	add r0, r0, r1
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r7, r7, #1
 	add r6, r6, #1
 	cmp r7, #7

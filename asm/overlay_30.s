@@ -337,7 +337,7 @@ ov30_0225D784: ; 0x0225D784
 	add r0, r4, #0
 	add r0, #0x4c
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x44]
 	bl sub_0202ADCC
 	lsl r0, r0, #0x18
@@ -602,7 +602,7 @@ ov30_0225D9EC: ; 0x0225D9EC
 	add r4, r0, #0
 	add r0, #0x4c
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x38]
 	mov r1, #0x52
 	bl sub_0200BBA0
@@ -735,7 +735,7 @@ ov30_0225DAEC: ; 0x0225DAEC
 	add r4, r0, #0
 	add r0, #0x4c
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x1c]
 	bl ov01_021F2F70
 	str r0, [r4, #0x68]
@@ -812,7 +812,7 @@ ov30_0225DB74: ; 0x0225DB74
 	add r0, r4, #0
 	add r0, #0x4c
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0x38]
 	mov r2, #0x10
