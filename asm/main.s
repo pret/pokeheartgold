@@ -1,5 +1,7 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
+	.public ov60_021EB030
+    .public ov36_021E5C04
 
 	.text
 
@@ -179,13 +181,9 @@ _02000E48: .word 0x02111860
 _02000E4C: .word 0x02111860
 _02000E50: .word 0x027FFC20
 _02000E54: .word SDK_OVERLAY_OVY_60_ID
-#ifdef HEARTGOLD
-_02000E58: .word 0x021EB030
-#else
-_02000E58: .word 0x021EB028
-#endif
+_02000E58: .word ov60_021EB030
 _02000E5C: .word SDK_OVERLAY_OVY_36_ID
-_02000E60: .word 0x021E5C04
+_02000E60: .word ov36_021E5C04
 _02000E64: .word 0x021D110C
 _02000E68: .word 0x021D116C
 	thumb_func_end NitroMain
