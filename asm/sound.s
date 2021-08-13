@@ -13,7 +13,7 @@ _02111954:
 	.space 4
 
 _02111958:
-	.space 0xBEC88
+	.space 0xBEC90
 
 	.text
 
@@ -38,7 +38,7 @@ InitSoundData: ; 0x02004174
 	str r0, [r1]
 	add r2, r4, #0
 	add r2, #0x94
-	ldr r1, _020041FC ; =0x0210E980
+	ldr r1, _020041FC ; =_0210E980
 	ldr r2, [r2]
 	add r0, r4, #0
 	mov r3, #0
@@ -56,12 +56,12 @@ InitSoundData: ; 0x02004174
 	add r0, #0x94
 	ldr r0, [r0]
 	bl sub_020C9CD8
-	ldr r1, _02004200 ; =0x0211194C
+	ldr r1, _02004200 ; =_0211194C
 	str r0, [r1, #8]
 	bl sub_0200472C
 	add r0, r4, #0
 	bl sub_02004898
-	ldr r0, _02004200 ; =0x0211194C
+	ldr r0, _02004200 ; =_0211194C
 	mov r1, #0
 	str r1, [r0, #4]
 	ldr r0, _02004204 ; =0x000BEC3C
@@ -73,8 +73,8 @@ InitSoundData: ; 0x02004174
 	pop {r4, r5, r6, pc}
 	nop
 _020041F8: .word 0x000BEAE0
-_020041FC: .word 0x0210E980
-_02004200: .word 0x0211194C
+_020041FC: .word _0210E980
+_02004200: .word _0211194C
 _02004204: .word 0x000BEC3C
 	thumb_func_end InitSoundData
 
@@ -199,7 +199,7 @@ sub_02004300: ; 0x02004300
 	push {r4, lr}
 	bl GetSoundDataPointer
 	add r4, r0, #0
-	ldr r0, _020043A4 ; =0x0211194C
+	ldr r0, _020043A4 ; =_0211194C
 	ldr r0, [r0]
 	cmp r0, #6
 	bhi _020043A0
@@ -271,7 +271,7 @@ _02004394:
 _020043A0:
 	pop {r4, pc}
 	nop
-_020043A4: .word 0x0211194C
+_020043A4: .word _0211194C
 _020043A8: .word 0x000BEBFE
 _020043AC: .word 0x000BEBF8
 	thumb_func_end sub_02004300
@@ -284,12 +284,12 @@ sub_020043B0: ; 0x020043B0
 	ldr r1, _020043C4 ; =0x000BEBEC
 	mov r2, #0
 	strh r2, [r0, r1]
-	ldr r0, _020043C8 ; =0x0211194C
+	ldr r0, _020043C8 ; =_0211194C
 	str r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
 _020043C4: .word 0x000BEBEC
-_020043C8: .word 0x0211194C
+_020043C8: .word _0211194C
 	thumb_func_end sub_020043B0
 
 	thumb_func_start sub_020043CC
@@ -319,10 +319,10 @@ _020043F4: .word 0x000BEC02
 
 	thumb_func_start GetSoundDataPointer
 GetSoundDataPointer: ; 0x020043F8
-	ldr r0, _020043FC ; =0x02111958
+	ldr r0, _020043FC ; =_02111958
 	bx lr
 	.balign 4, 0
-_020043FC: .word 0x02111958
+_020043FC: .word _02111958
 	thumb_func_end GetSoundDataPointer
 
 	thumb_func_start sub_02004400
@@ -746,11 +746,11 @@ sub_0200472C: ; 0x0200472C
 	add r0, #0x94
 	ldr r0, [r0]
 	bl sub_020C9CE8
-	ldr r1, _02004740 ; =0x0211194C
+	ldr r1, _02004740 ; =_0211194C
 	str r0, [r1, #8]
 	pop {r3, pc}
 	.balign 4, 0
-_02004740: .word 0x0211194C
+_02004740: .word _0211194C
 	thumb_func_end sub_0200472C
 
 	thumb_func_start GF_Snd_LoadGroup

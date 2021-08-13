@@ -836,7 +836,7 @@ _020050C2:
 _020050D6:
 	mov r0, #1
 	bl sub_020059E0
-	ldr r0, _0200514C ; =0x021D05E8
+	ldr r0, _0200514C ; =_021D05E8
 	ldr r1, [r0, #0xc]
 	cmp r1, #0
 	beq _020050EA
@@ -845,7 +845,7 @@ _020050D6:
 	bne _020050F4
 _020050EA:
 	bl sub_02005FD8
-	ldr r0, _0200514C ; =0x021D05E8
+	ldr r0, _0200514C ; =_021D05E8
 	mov r1, #1
 	str r1, [r0, #4]
 _020050F4:
@@ -886,7 +886,7 @@ _02005142:
 	.balign 4, 0
 _02005144: .word 0x000004C1
 _02005148: .word 0x000003F5
-_0200514C: .word 0x021D05E8
+_0200514C: .word _021D05E8
 	thumb_func_end sub_0200508C
 
 	thumb_func_start sub_02005150
@@ -1410,10 +1410,10 @@ sub_02005520: ; 0x02005520
 	add r4, r0, #0
 	bl sub_020DA9CC
 	add r3, r0, #0
-	ldr r0, _02005548 ; =0x021D05E8
+	ldr r0, _02005548 ; =_021D05E8
 	mov r1, #1
 	strb r1, [r0]
-	ldr r2, _0200554C ; =0x021D05F8
+	ldr r2, _0200554C ; =_021D05F8
 	ldmia r4!, {r0, r1}
 	stmia r2!, {r0, r1}
 	ldmia r4!, {r0, r1}
@@ -1425,27 +1425,27 @@ sub_02005520: ; 0x02005520
 	add r0, r3, #0
 	pop {r4, pc}
 	nop
-_02005548: .word 0x021D05E8
-_0200554C: .word 0x021D05F8
+_02005548: .word _021D05E8
+_0200554C: .word _021D05F8
 	thumb_func_end sub_02005520
 
 	thumb_func_start sub_02005550
 sub_02005550: ; 0x02005550
 	push {r3, lr}
 	bl GetSoundDataPointer
-	ldr r0, _02005564 ; =0x021D05E8
+	ldr r0, _02005564 ; =_021D05E8
 	mov r1, #0
 	strb r1, [r0]
 	bl sub_020DAA60
 	pop {r3, pc}
 	nop
-_02005564: .word 0x021D05E8
+_02005564: .word _021D05E8
 	thumb_func_end sub_02005550
 
 	thumb_func_start sub_02005568
 sub_02005568: ; 0x02005568
 	push {r3, lr}
-	ldr r0, _02005580 ; =0x021D05E8
+	ldr r0, _02005580 ; =_021D05E8
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0200557E
@@ -1456,17 +1456,17 @@ sub_02005568: ; 0x02005568
 _0200557E:
 	pop {r3, pc}
 	.balign 4, 0
-_02005580: .word 0x021D05E8
+_02005580: .word _021D05E8
 	thumb_func_end sub_02005568
 
 	thumb_func_start sub_02005584
 sub_02005584: ; 0x02005584
 	push {r3, lr}
-	ldr r0, _020055A4 ; =0x021D05E8
+	ldr r0, _020055A4 ; =_021D05E8
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0200559C
-	ldr r0, _020055A8 ; =0x021D05F8
+	ldr r0, _020055A8 ; =_021D05F8
 	bl sub_020DA9CC
 	cmp r0, #0
 	beq _0200559C
@@ -1475,8 +1475,8 @@ _0200559C:
 	bl sub_02004940
 	pop {r3, pc}
 	nop
-_020055A4: .word 0x021D05E8
-_020055A8: .word 0x021D05F8
+_020055A4: .word _021D05E8
+_020055A8: .word _021D05F8
 	thumb_func_end sub_02005584
 
 	thumb_func_start sub_020055AC
@@ -2001,11 +2001,11 @@ GF_SndSetMonoFlag: ; 0x0200597C
 	push {r4, lr}
 	add r4, r0, #0
 	bl NNS_SndSetMonoFlag
-	ldr r0, _0200598C ; =0x021D05E8
+	ldr r0, _0200598C ; =_021D05E8
 	str r4, [r0, #8]
 	pop {r4, pc}
 	nop
-_0200598C: .word 0x021D05E8
+_0200598C: .word _021D05E8
 	thumb_func_end GF_SndSetMonoFlag
 
 	thumb_func_start sub_02005990
@@ -2060,10 +2060,10 @@ _020059D4: .word sub_020C7988
 
 	thumb_func_start sub_020059D8
 sub_020059D8: ; 0x020059D8
-	ldr r0, _020059DC ; =0x021D0620
+	ldr r0, _020059DC ; =_021D0620
 	bx lr
 	.balign 4, 0
-_020059DC: .word 0x021D0620
+_020059DC: .word _021D0620
 	thumb_func_end sub_020059D8
 
 	thumb_func_start sub_020059E0
@@ -2502,22 +2502,22 @@ _02005CF0: .word 0x0000A7FE
 
 	thumb_func_start sub_02005CF4
 sub_02005CF4: ; 0x02005CF4
-	ldr r1, _02005CFC ; =0x021D05E8
+	ldr r1, _02005CFC ; =_021D05E8
 	str r0, [r1, #0xc]
 	bx lr
 	nop
-_02005CFC: .word 0x021D05E8
+_02005CFC: .word _021D05E8
 	thumb_func_end sub_02005CF4
 
 	thumb_func_start sub_02005D00
 sub_02005D00: ; 0x02005D00
-	ldr r0, _02005D0C ; =0x021D05E8
+	ldr r0, _02005D0C ; =_021D05E8
 	mov r1, #0
 	str r1, [r0, #0xc]
 	str r1, [r0, #4]
 	bx lr
 	nop
-_02005D0C: .word 0x021D05E8
+_02005D0C: .word _021D05E8
 	thumb_func_end sub_02005D00
 
 	thumb_func_start sub_02005D10
