@@ -6399,7 +6399,7 @@ _021E8E6C:
 	mov r0, #0xfa
 	mov r2, #1
 	mov r3, #0x9a
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	ldr r1, [sp, #0x34]
 	mov r2, #6
 	str r0, [sp, #0x30]
@@ -6432,7 +6432,7 @@ _021E8E6C:
 	ldr r0, _021E903C ; =0x00000102
 	mov r3, #0x9a
 	str r2, [sp]
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	ldr r1, _021E9040 ; =0x00000FFE
 	mov r2, #6
 	add r4, r0, #0
@@ -6540,7 +6540,7 @@ _021E8F3A:
 	mov r0, #0xfa
 	mov r3, #0x9a
 	str r2, [sp]
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	ldr r1, _021E9050 ; =0x000002BE
 	mov r2, #6
 	add r4, r0, #0
@@ -6568,7 +6568,7 @@ _021E8FD6:
 	ldr r0, _021E903C ; =0x00000102
 	mov r3, #0x9a
 	str r2, [sp]
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r4, r0, #0
 	ldr r0, _021E9024 ; =0x0001D77C
 	ldrh r1, [r5, r0]
@@ -22343,7 +22343,7 @@ ov112_021F0C8C: ; 0x021F0C8C
 	bl AllocAndReadWholeNarcMemberByIdPair
 	add r1, sp, #0x10
 	add r5, r0, #0
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	cmp r0, #1
 	beq _021F0CEA
 	bl GF_AssertFail

@@ -30500,7 +30500,7 @@ _0223F9A0:
 	mov r4, r0
 	ldr r0, [sp]
 	mov r1, r4
-	bl sub_020D4BE8
+	bl MI_UncompressLZ8
 	add r0, sp, #0
 	bl ov13_022412B0
 	mov r0, r4

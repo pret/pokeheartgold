@@ -4296,7 +4296,7 @@ ov05_0221DC60: ; 0x0221DC60
 	bl NARC_AllocAndReadWholeMember
 	add r1, sp, #0x10
 	add r6, r0, #0
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	ldr r2, [sp, #0x10]
 	mov r0, #3
 	ldr r1, [r2, #0xc]

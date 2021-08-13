@@ -114,7 +114,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl sub_0203A4AC
 	add r1, sp, #0x10
 	add r5, r0, #0
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	mov r0, #0x20
 	str r0, [sp]
 	ldr r1, [sp, #0x10]

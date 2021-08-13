@@ -1407,7 +1407,7 @@ ov56_021E6650: ; 0x021E6650
 	bl NARC_ReadWholeMember
 	add r0, r6, #0
 	add r1, sp, #0x24
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	ldr r2, [sp, #0x24]
 	mov r0, #4
 	ldr r1, [r2, #0xc]

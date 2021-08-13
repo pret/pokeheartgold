@@ -1063,7 +1063,7 @@ ov51_021E6354: ; 0x021E6354
 	mov r1, #0x2c
 	mov r3, #0x19
 	str r2, [sp]
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	ldr r1, _021E6624 ; =0x000030EC
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -1117,7 +1117,7 @@ _021E6442:
 	mov r0, #0x31
 	mov r3, #0x19
 	str r2, [sp]
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	ldr r1, _021E6624 ; =0x000030EC
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -3858,7 +3858,7 @@ _021E7A74:
 	cmp r0, #0
 	beq _021E7AAE
 	add r1, r7, r6
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	cmp r0, #0
 	bne _021E7AB2
 	mov r0, #0x8e

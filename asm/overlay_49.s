@@ -184,7 +184,7 @@ ov49_02258958: ; 0x02258958
 	mov r0, #0xca
 	add r2, r1, #0
 	add r3, r5, #0
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -7495,7 +7495,7 @@ _0225BEB8:
 	ldr r0, [sp, #0x28]
 	ldr r3, [sp, #0x1c]
 	mov r2, #1
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r1, sp, #0x30
 	str r0, [sp, #0x2c]
 	bl sub_020B70A8
@@ -10483,7 +10483,7 @@ _0225D50E:
 	add r1, r4, #1
 	mov r2, #0
 	add r3, r5, #0
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov49_0225D4FC
 

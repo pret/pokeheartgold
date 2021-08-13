@@ -6152,7 +6152,7 @@ _0221EAEC:
 	mov r0, #9
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r7, r0, #0
 	bne _0221EB04
 	bl GF_AssertFail

@@ -264,7 +264,7 @@ _021E5AC8:
 	ldr r1, [r3, r1]
 	ldr r0, [sp, #8]
 	mov r3, #0x99
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r1, r4, #0
 	add r2, r4, #0
 	str r0, [r4, #0x58]
@@ -323,7 +323,7 @@ _021E5B5A:
 	ldr r0, [sp, #8]
 	mov r2, #1
 	mov r3, #0x99
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	str r0, [r6, #0x5c]
 	mov r1, #0
 	bl sub_020C3B90

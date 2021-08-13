@@ -9780,7 +9780,7 @@ ov02_0224A570: ; 0x0224A570
 	bl NARC_AllocAndReadWholeMember
 	add r1, r5, #0
 	add r4, r0, #0
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	ldr r1, [r5]
 	mov r0, #3
 	ldr r1, [r1, #0xc]
@@ -16601,7 +16601,7 @@ _0224D8B4:
 	add r1, r4, #4
 	mov r2, #0
 	mov r3, #4
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	str r0, [r6, r7]
 	add r4, r4, #1
 	add r6, r6, #4
@@ -17170,7 +17170,7 @@ _0224DCE0:
 	add r1, r4, #4
 	mov r2, #0
 	mov r3, #4
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4

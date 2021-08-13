@@ -12056,7 +12056,7 @@ ov01_021EB578: ; 0x021EB578
 	add r1, r5, #0
 	mov r2, #0
 	mov r3, #4
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r5, r0, #0
 	add r1, r4, #0
 	mov r2, #4
@@ -13547,7 +13547,7 @@ ov01_021EC078: ; 0x021EC078
 	bl NARC_AllocAndReadWholeMember
 	add r1, sp, #0x14
 	str r0, [sp]
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	ldr r1, [sp, #0x14]
 	mov r0, #2
 	ldr r1, [r1, #0xc]
@@ -47401,7 +47401,7 @@ ov01_021FBCD8: ; 0x021FBCD8
 	add r1, r2, #0
 	str r5, [sp]
 	add r2, r5, #0
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4]
 	bl sub_020C3B40
 	str r0, [r4, #4]
@@ -47603,7 +47603,7 @@ ov01_021FBE44: ; 0x021FBE44
 	ldr r3, [sp, #0x18]
 	add r2, r6, #0
 	str r6, [sp]
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r2, r0, #0
 	ldr r3, [sp, #0x1c]
 	add r0, r5, #0

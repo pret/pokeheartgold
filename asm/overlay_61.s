@@ -1697,7 +1697,7 @@ ov61_021E6768: ; 0x021E6768
 	add r4, r0, #0
 	str r2, [sp]
 	mov r0, #0x52
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4]
 	bl sub_020C3B40
 	str r0, [r4, #4]
@@ -1762,7 +1762,7 @@ ov61_021E67D4: ; 0x021E67D4
 	mov r0, #0x52
 	add r1, r6, #0
 	add r3, r7, #0
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4]
 	mov r1, #0
 	bl sub_020C3B90

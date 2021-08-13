@@ -1,4 +1,3 @@
-
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterized3
 .public AddWindow
@@ -23962,7 +23961,7 @@
 .public sub_020079D8
 .public sub_02007A0C
 .public sub_02007A28
-.public sub_02007A44
+.public GfGfxLoader_LoadFromNarc
 .public sub_02007AC4
 .public sub_02007B44
 .public sub_02007B68
@@ -26865,7 +26864,7 @@
 .public sub_020B6FC8
 .public sub_020B70A8
 .public sub_020B70F4
-.public sub_020B7140
+.public NNS_G2dGetUnpackedPaletteData
 .public sub_020B717C
 .public sub_020B71D8
 .public sub_020B7350
@@ -27318,7 +27317,7 @@
 .public sub_020D4968
 .public sub_020D4A50
 .public sub_020D4BD0
-.public sub_020D4BE8
+.public MI_UncompressLZ8
 .public sub_020D4D5C
 .public sub_020D5044
 .public sub_020D5064
@@ -27531,3 +27530,33 @@
 .public sub_02005774
 .public sub_020058B8
 .public sub_020059D8
+.public sub_0200925C
+.public sub_020094FC
+.public sub_0200994C
+.public sub_02009CD0
+.public sub_02009B60
+.public sub_0200A840
+.public sub_0200A858
+.public sub_0200A870
+.public sub_0200A888
+.public sub_0200AF24
+.public sub_020216F4
+.public sub_020225E4
+.public sub_02021758
+.public sub_020217B0
+.public sub_0202183C
+.public sub_02021910
+.public sub_02021934
+.public sub_020219B8
+.public sub_02022660
+.public sub_020226A4
+.public sub_020226E4
+.public sub_020227D4
+.public sub_0200A590
+.public sub_0200A5FC
+.public sub_0200AD30
+.public sub_0200AE58
+.public sub_0200AF80
+.public sub_0200AFD8
+.public sub_02024BF4
+.public sub_0200BBCC

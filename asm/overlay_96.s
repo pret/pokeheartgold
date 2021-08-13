@@ -64118,7 +64118,7 @@ ov96_02205048: ; 0x02205048
 	ldr r3, [r4, #0x14]
 	mov r0, #0xe2
 	mov r1, #3
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r1, r4, #0
 	add r1, #0x1c
 	str r0, [r4, #0x18]

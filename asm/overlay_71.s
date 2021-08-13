@@ -1715,7 +1715,7 @@ ov71_02247610: ; 0x02247610
 	mov r2, #0
 	mov r3, #0x39
 	add r5, r4, r6
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4, r6]
 	ldr r1, [sp, #4]
 	add r0, r7, #0

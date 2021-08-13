@@ -12655,8 +12655,8 @@ sub_020D4BE0: ; 0x020D4BE0
 	bx lr
 	arm_func_end sub_020D4BE0
 
-	arm_func_start sub_020D4BE8
-sub_020D4BE8: ; 0x020D4BE8
+	arm_func_start MI_UncompressLZ8
+MI_UncompressLZ8: ; 0x020D4BE8
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	ldr r5, [r0], #4
 	mov r2, r5, lsr #8
@@ -12736,7 +12736,7 @@ _020D4CD8:
 _020D4CE0:
 	ldmia sp!, {r4, r5, r6, r7, lr}
 	bx lr
-	arm_func_end sub_020D4BE8
+	arm_func_end MI_UncompressLZ8
 
 	arm_func_start sub_020D4CE8
 sub_020D4CE8: ; 0x020D4CE8

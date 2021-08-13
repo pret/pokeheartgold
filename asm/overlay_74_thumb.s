@@ -13355,7 +13355,7 @@ ov74_0222DB30: ; 0x0222DB30
 	add r6, r3, #0
 	ldr r3, [r5]
 	mov r0, #0x71
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r1, sp, #4
 	add r7, r0, #0
 	bl sub_020B71D8
@@ -16261,7 +16261,7 @@ ov74_0222F2D4: ; 0x0222F2D4
 	add r6, r3, #0
 	ldr r3, [r5]
 	mov r0, #0x71
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r1, sp, #4
 	add r7, r0, #0
 	bl sub_020B71D8
@@ -30353,7 +30353,7 @@ ov74_02235DC4: ; 0x02235DC4
 	ldr r3, [r3, #8]
 	mov r0, #0x71
 	mov r1, #0x23
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r1, sp, #0x14
 	str r0, [sp, #0x10]
 	bl sub_020B71D8

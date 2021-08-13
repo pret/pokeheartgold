@@ -32472,7 +32472,7 @@ ov12_02247668: ; 0x02247668
 	mov r2, #0
 	mov r3, #3
 	str r1, [sp]
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	lsl r1, r4, #2
 	ldr r4, [r0, r1]
 	bl FreeToHeap

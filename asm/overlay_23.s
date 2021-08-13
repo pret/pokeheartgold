@@ -30,7 +30,7 @@ _022598E0:
 	mov r0, #0x70
 	add r1, r6, #0
 	add r3, r5, #0
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4]
 	str r5, [r4, #0x10]
 	str r6, [r4, #0xc]
@@ -97,7 +97,7 @@ ov23_02259964: ; 0x02259964
 	add r1, r5, #0
 	mov r2, #0
 	mov r3, #0xb
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
 	add r1, r4, #0
@@ -178,7 +178,7 @@ ov23_02259A24: ; 0x02259A24
 	mov r1, #7
 	mov r2, #0
 	mov r3, #0xb
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r4, r0, #0
 	mov r0, #0x65
 	str r0, [sp]

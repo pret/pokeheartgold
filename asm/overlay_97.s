@@ -2766,7 +2766,7 @@ ov97_0221FBDC: ; 0x0221FBDC
 	bl AllocAndReadWholeNarcMemberByIdPair
 	add r1, sp, #0x10
 	add r5, r0, #0
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	cmp r0, #1
 	beq _0221FC3A
 	bl GF_AssertFail

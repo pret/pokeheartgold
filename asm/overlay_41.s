@@ -1786,7 +1786,7 @@ _02246B92:
 	ldr r1, [r7, #8]
 	add r0, r4, #0
 	add r1, r1, #4
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	ldr r1, [r6]
 	ldr r0, [r7, #8]
 	str r1, [r0]
@@ -1854,7 +1854,7 @@ _02246BFA:
 	ldr r0, [sp, #0xc]
 	add r1, r1, r7
 	add r1, r1, #4
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	ldr r0, [r4, #8]
 	add r0, r0, r7
 	ldr r0, [r0, #4]
@@ -7475,7 +7475,7 @@ ov41_022495C8: ; 0x022495C8
 	ldrh r0, [r4]
 	ldrh r1, [r4, #2]
 	mov r3, #0xe
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0x76
@@ -7567,7 +7567,7 @@ ov41_02249604: ; 0x02249604
 	ldrh r0, [r4]
 	ldrh r1, [r4, #2]
 	ldr r3, [sp, #0x38]
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r1, sp, #0x14
 	str r0, [sp, #0x10]
 	bl sub_020B70A8
@@ -12356,7 +12356,7 @@ _0224B9D0:
 	ldr r1, [r4, #8]
 	add r0, r5, #0
 	add r1, r1, #4
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	ldr r0, [sp, #4]
 	ldr r1, [r0]
 	ldr r0, [r4, #8]

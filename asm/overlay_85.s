@@ -2465,7 +2465,7 @@ ov85_021E6B68: ; 0x021E6B68
 	lsl r1, r1, #4
 	add r1, r4, r1
 	add r5, r0, #0
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	mov r0, #0x40
 	mov r2, #0
 	ldr r1, _021E6D54 ; =0x00000D9C
@@ -2486,7 +2486,7 @@ ov85_021E6B68: ; 0x021E6B68
 	lsl r1, r1, #4
 	add r1, r4, r1
 	add r5, r0, #0
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	mov r0, #0x40
 	ldr r1, _021E6D54 ; =0x00000D9C
 	str r0, [sp]
@@ -2988,7 +2988,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	bl sub_0203A4AC
 	add r1, sp, #0x18
 	add r4, r0, #0
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	mov r0, #0x20
 	str r0, [sp]
 	ldr r1, [sp, #0x18]

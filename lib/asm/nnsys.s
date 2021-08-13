@@ -3107,8 +3107,8 @@ sub_020B7130: ; 0x020B7130
 	bx lr
 	arm_func_end sub_020B7130
 
-	arm_func_start sub_020B7140
-sub_020B7140: ; 0x020B7140
+	arm_func_start NNS_G2dGetUnpackedPaletteData
+NNS_G2dGetUnpackedPaletteData: ; 0x020B7140
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	ldr r1, _020B7178 ; =0x504C5454
@@ -3125,7 +3125,7 @@ sub_020B7140: ; 0x020B7140
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020B7178: .word 0x504C5454
-	arm_func_end sub_020B7140
+	arm_func_end NNS_G2dGetUnpackedPaletteData
 
 	arm_func_start sub_020B717C
 sub_020B717C: ; 0x020B717C
