@@ -5999,7 +5999,7 @@ _021E8578:
 	add r1, r0, #0
 	add r0, r6, #0
 	mov r2, #0xb
-	bl StringCopyN
+	bl CopyU16StringArrayN
 	ldr r0, [sp, #0x20]
 	bl String_dtor
 	ldr r0, [sp, #0x18]

@@ -4321,7 +4321,7 @@ _021E7ADA:
 	add r0, r5, #0
 	add r0, #8
 	mov r2, #8
-	bl StringCopyN
+	bl CopyU16StringArrayN
 	add r3, r5, #0
 	add r6, r7, #0
 	add r3, #0x18

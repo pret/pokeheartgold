@@ -464,7 +464,7 @@ _02259C5A:
 	add r0, sp, #0x10
 	add r1, #0x24
 	mov r2, #0xa
-	bl StringCopyN
+	bl CopyU16StringArrayN
 	add r0, r4, #0
 	mov r1, #0x75
 	add r2, sp, #0x10
@@ -504,7 +504,7 @@ ov25_02259CC4: ; 0x02259CC4
 	add r1, r5, #0
 	add r0, #0x14
 	add r1, #8
-	bl StringCopy
+	bl CopyU16StringArray
 	add r0, r4, #0
 	add r1, r5, #0
 	add r0, #0x24

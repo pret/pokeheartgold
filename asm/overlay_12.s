@@ -64194,7 +64194,7 @@ ov12_02256854: ; 0x02256854
 	add r1, r5, r1
 	add r1, r1, r4
 	mov r2, #7
-	bl StringCompareN
+	bl StringNotEqualN
 	cmp r0, #0
 	bne _022568A8
 	mov r0, #1
@@ -64241,7 +64241,7 @@ ov12_022568B0: ; 0x022568B0
 	add r0, r4, #0
 	add r1, sp, #0
 	mov r2, #7
-	bl StringCompareN
+	bl StringNotEqualN
 	cmp r0, #0
 	bne _0225690E
 	add sp, #0x10

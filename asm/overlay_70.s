@@ -15801,7 +15801,7 @@ _0223F730:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r2, #8
-	bl StringCopyN
+	bl CopyU16StringArrayN
 	ldr r0, [r4]
 	ldr r0, [r0, #0x1c]
 	bl sub_02028F88

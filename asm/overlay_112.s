@@ -19185,7 +19185,7 @@ _021EF3B0:
 	add r0, r5, #0
 	add r0, #0x1a
 	add r1, sp, #0x18
-	bl StringCopyN
+	bl CopyU16StringArrayN
 	add r0, r5, #0
 	add r1, sp, #0
 	ldrh r2, [r1, #0x10]
@@ -19326,7 +19326,7 @@ _021EF4D6:
 	add r0, sp, #0x3c
 	add r0, #2
 	add r1, sp, #0x1c
-	bl StringCopyN
+	bl CopyU16StringArrayN
 	add r0, sp, #4
 	ldrh r1, [r0, #0x10]
 	add r2, sp, #0x34
@@ -27405,7 +27405,7 @@ ov112_021F336C: ; 0x021F336C
 	add r0, r5, #0
 	add r0, #8
 	mov r2, #7
-	bl StringCopyN
+	bl CopyU16StringArrayN
 	mov r4, #0
 	add r5, #0x18
 _021F33B6:
@@ -27558,7 +27558,7 @@ _021F3482:
 	add r0, #0x24
 	add r1, sp, #0x20
 	mov r2, #0xa
-	bl StringCopyN
+	bl CopyU16StringArrayN
 	mov r4, #0
 	str r4, [sp, #0x10]
 	str r6, [sp, #8]

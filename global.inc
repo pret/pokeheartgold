@@ -145,7 +145,7 @@
 .public PaletteData_LoadNarc
 .public PaletteData_LoadPalette
 .public PlaySE
-.public PrintDecimalInteger
+.public ConvertUIntToDecimalString
 .public ReadFromNarcMemberByIdPair
 .public ReadKeypadAndTouchpad
 .public ReadWholeNarcMemberByIdPair
@@ -298,10 +298,10 @@
 .public SetMTRNGSeed
 .public ShowWFCUserInfoWarning
 .public Std_CreateYesNoMenu
-.public StringCompare
-.public StringCompareN
-.public StringCopy
-.public StringCopyN
+.public StringNotEqual
+.public StringNotEqualN
+.public CopyU16StringArray
+.public CopyU16StringArrayN
 .public StringFillEOS
 .public StringLength
 .public TintPalette_CustomTone

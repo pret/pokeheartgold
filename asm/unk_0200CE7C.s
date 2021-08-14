@@ -47,7 +47,7 @@ sub_0200CEB0: ; 0x0200CEB0
 	add r2, r3, #0
 	add r0, #8
 	add r3, r4, #0
-	bl PrintDecimalInteger
+	bl ConvertUIntToDecimalString
 	ldrh r1, [r7, #8]
 	ldr r0, _0200CF14 ; =0x0000FFFF
 	cmp r1, r0

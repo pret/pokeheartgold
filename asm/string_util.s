@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start StringCopy
-StringCopy: ; 0x02002028
+	thumb_func_start CopyU16StringArray
+CopyU16StringArray: ; 0x02002028
 	ldrh r3, [r1]
 	ldr r2, _02002044 ; =0x0000FFFF
 	cmp r3, r2
@@ -22,10 +22,10 @@ _0200203C:
 	bx lr
 	nop
 _02002044: .word 0x0000FFFF
-	thumb_func_end StringCopy
+	thumb_func_end CopyU16StringArray
 
-	thumb_func_start StringCopyN
-StringCopyN: ; 0x02002048
+	thumb_func_start CopyU16StringArrayN
+CopyU16StringArrayN: ; 0x02002048
 	push {r4, r5}
 	mov r4, #0
 	cmp r2, #0
@@ -44,7 +44,7 @@ _02002060:
 	add r0, r0, r1
 	pop {r4, r5}
 	bx lr
-	thumb_func_end StringCopyN
+	thumb_func_end CopyU16StringArrayN
 
 	thumb_func_start StringLength
 StringLength: ; 0x02002068
@@ -66,8 +66,8 @@ _0200207C:
 _02002080: .word 0x0000FFFF
 	thumb_func_end StringLength
 
-	thumb_func_start StringCompare
-StringCompare: ; 0x02002084
+	thumb_func_start StringNotEqual
+StringNotEqual: ; 0x02002084
 	push {r3, r4}
 	ldrh r4, [r0]
 	ldrh r2, [r1]
@@ -93,10 +93,10 @@ _020020A6:
 	bx lr
 	.balign 4, 0
 _020020AC: .word 0x0000FFFF
-	thumb_func_end StringCompare
+	thumb_func_end StringNotEqual
 
-	thumb_func_start StringCompareN
-StringCompareN: ; 0x020020B0
+	thumb_func_start StringNotEqualN
+StringNotEqualN: ; 0x020020B0
 	push {r3, r4, r5, r6}
 	ldrh r6, [r1]
 	ldrh r5, [r0]
@@ -132,7 +132,7 @@ _020020E4:
 	bx lr
 	nop
 _020020EC: .word 0x0000FFFF
-	thumb_func_end StringCompareN
+	thumb_func_end StringNotEqualN
 
 	thumb_func_start StringFill
 StringFill: ; 0x020020F0
@@ -165,8 +165,8 @@ _02002114: .word StringFill
 _02002118: .word 0x0000FFFF
 	thumb_func_end StringFillEOS
 
-	thumb_func_start PrintDecimalInteger
-PrintDecimalInteger: ; 0x0200211C
+	thumb_func_start ConvertUIntToDecimalString
+ConvertUIntToDecimalString: ; 0x0200211C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -239,4 +239,4 @@ _0200218C:
 _02002194: .word 0x020F5690
 _02002198: .word 0x020F5674
 _0200219C: .word 0x0000FFFF
-	thumb_func_end PrintDecimalInteger
+	thumb_func_end ConvertUIntToDecimalString

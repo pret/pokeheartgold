@@ -3910,7 +3910,7 @@ ov65_0221DEA0: ; 0x0221DEA0
 	bl sub_02028F54
 	add r1, r0, #0
 	add r0, r4, #0
-	bl StringCopy
+	bl CopyU16StringArray
 	add r0, r6, #0
 	bl sub_02028F84
 	str r0, [r4, #0x10]

@@ -739,7 +739,7 @@ ov80_0222A480: ; 0x0222A480
 	add r1, r4, #0
 	add r0, r0, r6
 	add r1, #8
-	bl StringCopy
+	bl CopyU16StringArray
 	add r0, r5, r6
 	ldrh r1, [r4, #0x20]
 	add r0, #0x4c

@@ -2281,7 +2281,7 @@ sub_0200CDF0: ; 0x0200CDF0
 	add r3, r4, #0
 	ldr r5, [sp, #0x34]
 	ldr r7, [sp, #0x38]
-	bl PrintDecimalInteger
+	bl ConvertUIntToDecimalString
 	ldrh r1, [r6, #8]
 	ldr r0, _0200CE78 ; =0x0000FFFF
 	cmp r1, r0

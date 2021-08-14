@@ -573,7 +573,7 @@ _0221EA20:
 	ldrh r0, [r0, #0xa]
 	strh r0, [r4, #0xe]
 	ldr r0, [sp, #4]
-	bl StringCopyN
+	bl CopyU16StringArrayN
 	add r0, sp, #0xc
 	ldrh r0, [r0, #0x10]
 	strb r0, [r4, #0x1c]
@@ -947,7 +947,7 @@ _0221ED1C:
 	add r0, sp, #0x78
 	add r0, #2
 	add r1, sp, #0x44
-	bl StringCopyN
+	bl CopyU16StringArrayN
 	add r1, sp, #0
 	ldrh r2, [r1, #0x3c]
 	add r0, sp, #0x70
