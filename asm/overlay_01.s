@@ -9371,7 +9371,7 @@ _021EA22E:
 	str r0, [r4]
 	mov r0, #0
 	str r0, [r4, #8]
-	bl sub_020147A4
+	bl GF_RTC_TimeToSec
 	lsr r1, r0, #0x1f
 	add r1, r0, r1
 	asr r3, r1, #1
@@ -9427,7 +9427,7 @@ ov01_021EA2A4: ; 0x021EA2A4
 	bne _021EA2AE
 	bl GF_AssertFail
 _021EA2AE:
-	bl sub_020147A4
+	bl GF_RTC_TimeToSec
 	lsr r1, r0, #0x1f
 	add r1, r0, r1
 	asr r0, r1, #1
@@ -9970,7 +9970,7 @@ _021EA6D4:
 	add r1, sp, #0
 	bl ov01_021EA3E0
 	add r4, r0, #0
-	bl sub_020147A4
+	bl GF_RTC_TimeToSec
 	lsr r1, r0, #0x1f
 	add r1, r0, r1
 	asr r3, r1, #1
@@ -50817,7 +50817,7 @@ ov01_021FD4F4: ; 0x021FD4F4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r1, #0
-	bl sub_0201481C
+	bl GF_RTC_GetTimeOfDay
 	ldr r1, [r5]
 	add r4, r0, #0
 	cmp r1, #0
@@ -60387,7 +60387,7 @@ ov01_02201DA4: ; 0x02201DA4
 	bl sub_02040374
 	str r0, [sp, #8]
 	add r0, sp, #0x20
-	bl sub_02014780
+	bl GF_RTC_CopyDate
 	ldr r0, [sp, #0x10]
 	add r2, sp, #0x18
 	add r0, r0, #5
@@ -65784,7 +65784,7 @@ ov01_02204744: ; 0x02204744
 	add r1, r4, #0
 	mov r2, #0x78
 	bl sub_020D4858
-	bl sub_0201481C
+	bl GF_RTC_GetTimeOfDay
 	str r0, [r4]
 	add r0, r4, #0
 	pop {r4, pc}
@@ -65866,7 +65866,7 @@ _022047D4:
 ov01_022047DC: ; 0x022047DC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0201481C
+	bl GF_RTC_GetTimeOfDay
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	ldr r0, [r5]

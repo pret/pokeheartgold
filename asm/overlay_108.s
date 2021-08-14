@@ -6212,7 +6212,7 @@ _021E8A50:
 	ldr r0, [r4]
 	bl sub_02028D3C
 	ldr r0, [r0, #0x14]
-	bl sub_02014844
+	bl GF_RTC_GetTimeOfDayByHour
 	ldr r1, _021E8A84 ; =0x0000042C
 	strb r0, [r5, r1]
 	ldrb r0, [r5, r1]

@@ -7378,7 +7378,7 @@ _0222D956:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	ldr r2, [r4, #4]
-	bl sub_02014980
+	bl ListMenuItems_AddItem
 _0222D99E:
 	add r6, r6, #1
 	add r4, #8
@@ -8200,7 +8200,7 @@ ov44_0222E030: ; 0x0222E030
 	bl ov44_0222E074
 	cmp r0, #0
 	bne _0222E056
-	bl sub_02014804
+	bl IsNighttime
 	mov r0, #0
 	bl sub_02004AD8
 	ldr r1, _0222E070 ; =0x00000427

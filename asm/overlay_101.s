@@ -24625,7 +24625,7 @@ _021F3568:
 	pop {r4, r5, r6, pc}
 _021F3584:
 	ldr r0, [r4, #0x38]
-	bl sub_02014844
+	bl GF_RTC_GetTimeOfDayByHour
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r0, #0xfe
@@ -30316,7 +30316,7 @@ _021F6092:
 _021F60A2:
 	add r0, r4, #0
 	add r0, #0x1c
-	bl sub_02014780
+	bl GF_RTC_CopyDate
 	ldrb r1, [r4, #5]
 	add r0, r5, #0
 	bl ov101_021F5DE0
@@ -30329,7 +30329,7 @@ _021F60BA:
 	cmp r0, #0
 	beq _021F610E
 	add r0, sp, #0
-	bl sub_02014780
+	bl GF_RTC_CopyDate
 	ldr r1, [sp, #8]
 	ldr r0, [r4, #0x24]
 	cmp r1, r0

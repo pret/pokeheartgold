@@ -37,6 +37,11 @@ Static main
 	Object unk_0200FA24.o
 	Object unk_0201010C.o
 	Object unk_02012DD8.o
+	Object unk_02013534.o
+	Object unk_02013FDC.o
+	Object gf_rtc.o
+	Object list_menu_items.o
+	Object unk_02014A08.o
 	Object error_handling.o
 	Object unk_02025534.o
 	### Vendor libraries ###

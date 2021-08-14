@@ -316,7 +316,7 @@ _02258A80:
 	bl sub_0202CF54
 	mov r1, #0x21
 	bl sub_0202D1C0
-	bl sub_020147DC
+	bl GF_RTC_DateTimeToSec
 	ldr r2, [r6, #0xc]
 	str r0, [r2]
 	str r1, [r2, #4]

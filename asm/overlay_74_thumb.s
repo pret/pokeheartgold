@@ -4630,7 +4630,7 @@ ov74_0222947C: ; 0x0222947C
 	add r0, #8
 	strb r1, [r4, r0]
 	add r0, sp, #0x10
-	bl sub_02014780
+	bl GF_RTC_CopyDate
 	add r0, sp, #0x10
 	bl sub_020DC284
 	mov r1, #0xd5
@@ -6233,7 +6233,7 @@ _0222A1A2:
 	strb r0, [r5, r1]
 _0222A1BC:
 	add r0, sp, #8
-	bl sub_02014780
+	bl GF_RTC_CopyDate
 	add r0, sp, #8
 	bl sub_020DC284
 	mov r1, #0xd5

@@ -784,7 +784,7 @@ ov112_021E5E48: ; 0x021E5E48
 	bne _021E5EB0
 	add r0, sp, #0
 	add r1, sp, #0x10
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mov r2, #0
 	mov r3, #0
 	mvn r2, r2
@@ -6031,7 +6031,7 @@ ov112_021E8B74: ; 0x021E8B74
 	mul r0, r3
 	str r2, [sp, #4]
 	str r0, [sp, #0x10]
-	bl sub_020147A4
+	bl GF_RTC_TimeToSec
 	bl SetLCRNGSeed
 	mov r7, #0
 	str r7, [sp, #8]
@@ -15835,7 +15835,7 @@ _021ED980:
 	bl sub_020DBBFC
 	add r0, sp, #0xc
 	add r1, sp, #0
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	add r0, r4, #0
 	bl ov112_021ED530
 	add r0, r4, #0
@@ -22996,7 +22996,7 @@ _021F116A:
 	mov r2, #0
 	add r0, #0x76
 	strb r2, [r0]
-	bl sub_020147DC
+	bl GF_RTC_DateTimeToSec
 	ldr r1, _021F1280 ; =0x0000013E
 	ldrb r1, [r5, r1]
 	sub r1, r1, #1

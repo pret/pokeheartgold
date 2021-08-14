@@ -8258,7 +8258,7 @@ sub_0209F630: ; 0x0209F630
 	sub sp, sp, #0x24
 	mov sl, r0
 	bl sub_0209E430
-	bl sub_020DB9C0
+	bl RTC_Init
 	add r0, sp, #0x14
 	bl sub_020DBA9C
 	cmp r0, #0
@@ -8273,7 +8273,7 @@ sub_0209F630: ; 0x0209F630
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	add r0, sp, #0x14
 	add r1, sp, #8
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mov r4, r0
 	mov r0, #0
 	subs r2, r4, r0
@@ -8442,7 +8442,7 @@ sub_0209F8A0: ; 0x0209F8A0
 	strb r1, [r2, #4]
 	strb r1, [r2, #5]
 	bl sub_0209E430
-	bl sub_020DB9C0
+	bl RTC_Init
 	add r0, sp, #0x14
 	bl sub_020DBA9C
 	cmp r0, #0
@@ -8457,7 +8457,7 @@ sub_0209F8A0: ; 0x0209F8A0
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	add r0, sp, #0x14
 	add r1, sp, #8
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mov r4, r0
 	mov r0, #0
 	subs r2, r4, r0
@@ -19374,7 +19374,7 @@ sub_020A8820: ; 0x020A8820
 	bl sub_020DBB48
 	add r0, sp, #0xc
 	add r1, sp, #0
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	ldr r1, _020A8854 ; =0x386D4380
 	add r0, r0, r1
 	add sp, sp, #0x1c

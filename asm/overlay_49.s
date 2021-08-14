@@ -5326,11 +5326,11 @@ _0225AEF4:
 
 	thumb_func_start ov49_0225AEF8
 ov49_0225AEF8: ; 0x0225AEF8
-	ldr r3, _0225AF00 ; =sub_02014980
+	ldr r3, _0225AF00 ; =ListMenuItems_AddItem
 	ldr r0, [r0, #0x34]
 	bx r3
 	nop
-_0225AF00: .word sub_02014980
+_0225AF00: .word ListMenuItems_AddItem
 	thumb_func_end ov49_0225AEF8
 
 	thumb_func_start ov49_0225AF04
@@ -5720,7 +5720,7 @@ _0225B1AA:
 	add r1, r0, #0
 	ldr r0, [r5]
 	mov r2, #0
-	bl sub_02014980
+	bl ListMenuItems_AddItem
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x42
@@ -5728,7 +5728,7 @@ _0225B1AA:
 	add r1, r0, #0
 	ldr r0, [r5]
 	mov r2, #1
-	bl sub_02014980
+	bl ListMenuItems_AddItem
 	ldr r3, _0225B1FC ; =0x022697AC
 	add r2, r5, #4
 	ldmia r3!, {r0, r1}

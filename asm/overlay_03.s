@@ -786,7 +786,7 @@ _02254448:
 	mov r2, #0
 	ldr r0, [r1, #0x64]
 	ldr r1, [r1]
-	bl sub_02014980
+	bl ListMenuItems_AddItem
 	add r5, r5, #1
 	cmp r5, #0x10
 	blt _02254448
@@ -3984,7 +3984,7 @@ _02255E2C:
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #0x20]
 	add r2, r4, #0
-	bl sub_02014980
+	bl ListMenuItems_AddItem
 	add r4, r4, #1
 	cmp r4, r6
 	blt _02255E2C

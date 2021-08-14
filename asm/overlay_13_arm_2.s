@@ -5263,7 +5263,7 @@ _0222B5A0:
 	mvn r0, #0
 	bl sub_020D7F60
 	bl sub_020D9EF0
-	bl sub_020DB9C0
+	bl RTC_Init
 	bl sub_020CD978
 	ldr r1, _0222B618 ; =0x04001000
 	ldr r0, [r1]

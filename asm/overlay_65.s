@@ -147,7 +147,7 @@ ov65_0221BE20: ; 0x0221BE20
 	mov r0, #0x1a
 	bl sub_020399FC
 	bl sub_0203A880
-	bl sub_02014804
+	bl IsNighttime
 	ldr r1, _0221BFB8 ; =0x00000427
 	mov r0, #0
 	bl sub_02055198
@@ -4761,7 +4761,7 @@ _0221E580:
 	add r1, r6, #0
 	ldr r0, [r5, r0]
 	add r2, r4, #0
-	bl sub_02014980
+	bl ListMenuItems_AddItem
 _0221E5AA:
 	add r4, r4, #1
 	cmp r4, #0x20

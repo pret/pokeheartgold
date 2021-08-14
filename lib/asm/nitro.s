@@ -21167,8 +21167,8 @@ _020DB9B8: .word sub_020DB8F0
 _020DB9BC: .word 0x021E3724
 	arm_func_end sub_020DB9A8
 
-	arm_func_start sub_020DB9C0
-sub_020DB9C0: ; 0x020DB9C0
+	arm_func_start RTC_Init
+RTC_Init: ; 0x020DB9C0
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020DBA24 ; =0x021E3778
 	ldrh r1, [r0]
@@ -21198,7 +21198,7 @@ _020DBA00:
 	.align 2, 0
 _020DBA24: .word 0x021E3778
 _020DBA28: .word sub_020DBC34
-	arm_func_end sub_020DB9C0
+	arm_func_end RTC_Init
 
 	arm_func_start sub_020DBA2C
 sub_020DBA2C: ; 0x020DBA2C
@@ -21309,8 +21309,8 @@ _020DBB78: .word sub_020DC1F4
 _020DBB7C: .word 0x021E3778
 	arm_func_end sub_020DBB48
 
-	arm_func_start sub_020DBB80
-sub_020DBB80: ; 0x020DBB80
+	arm_func_start RTC_GetDateTimeAsync
+RTC_GetDateTimeAsync: ; 0x020DBB80
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -21344,14 +21344,14 @@ _020DBBB4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020DBBF8: .word 0x021E3778
-	arm_func_end sub_020DBB80
+	arm_func_end RTC_GetDateTimeAsync
 
 	arm_func_start sub_020DBBFC
 sub_020DBBFC: ; 0x020DBBFC
 	stmdb sp!, {r3, lr}
 	ldr r2, _020DBC2C ; =sub_020DC1F4
 	mov r3, #0
-	bl sub_020DBB80
+	bl RTC_GetDateTimeAsync
 	ldr r1, _020DBC30 ; =0x021E3778
 	cmp r0, #0
 	str r0, [r1, #0x2c]
@@ -21895,8 +21895,8 @@ sub_020DC318: ; 0x020DC318
 	bx lr
 	arm_func_end sub_020DC318
 
-	arm_func_start sub_020DC330
-sub_020DC330: ; 0x020DC330
+	arm_func_start RTC_ConvertDateTimeToSecond
+RTC_ConvertDateTimeToSecond: ; 0x020DC330
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	bl sub_020DC284
@@ -21924,7 +21924,7 @@ _020DC388:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020DC390: .word 0x00015180
-	arm_func_end sub_020DC330
+	arm_func_end RTC_ConvertDateTimeToSecond
 
 	arm_func_start sub_020DC394
 sub_020DC394: ; 0x020DC394
@@ -25512,7 +25512,7 @@ sub_020DF250: ; 0x020DF250
 	ldr r0, [r0]
 	cmp r0, #0x10000
 	bne _020DF298
-	bl sub_020DB9C0
+	bl RTC_Init
 	add r0, sp, #0
 	bl sub_020DBB48
 	cmp r0, #0

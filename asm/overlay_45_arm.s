@@ -141,7 +141,7 @@ _02231238:
 	bl ov00_021ECB94
 	add r0, sp, #0x14
 	add r1, sp, #8
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	str r0, [r4, #0x100]
 	str r1, [r4, #0x104]
 	mov r0, #1
@@ -618,7 +618,7 @@ _02231918:
 	bl ov00_021ECB94
 	add r0, sp, #0x28
 	add r1, sp, #0x38
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	ldr r2, [r5, #0x140]
 	add r7, r5, #0x138
 	mov r6, r0
@@ -1207,7 +1207,7 @@ _02232124:
 	bl ov00_021ECB94
 	add r0, sp, #0xc
 	add r1, sp, #0
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	stmia r5, {r0, r1}
 	ldr r2, [r4, #0x14c]
 	ldr r1, [r4, #0x150]
@@ -1875,7 +1875,7 @@ _022329F4:
 	bl ov00_021ECB94
 	add r0, sp, #0x6c
 	add r1, sp, #0x60
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mov r2, #0
 	subs r0, r0, #0x15
 	str r0, [sp, #0x10]
@@ -4935,7 +4935,7 @@ ov45_022354F4: ; 0x022354F4
 	bl ov00_021ECB94
 	add r0, sp, #0x288
 	add r1, sp, #0x27c
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	ldr r4, [sp, #0x298]
 	str r0, [sp, #0x29c]
 	str r1, [sp, #0x2a0]
@@ -4984,7 +4984,7 @@ _022355DC:
 	bl ov00_021ECB94
 	add r0, sp, #0x258
 	add r1, sp, #0x24c
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mov r2, #0
 	subs r0, r0, #3
 	str r0, [sp, #0x1fc]
@@ -5028,7 +5028,7 @@ _022355DC:
 	bl ov00_021ECB94
 	add r0, sp, #0x1ec
 	add r1, sp, #0x1e0
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	ldr r6, _02235A84 ; =ov45_02234764
 	mov r7, #0
 	subs r5, r0, #4
@@ -5072,7 +5072,7 @@ _022355DC:
 	bl ov00_021ECB94
 	add r0, sp, #0x180
 	add r1, sp, #0x174
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mov r2, #4
 	str r2, [sp, #0x12c]
 	mov r2, r7
@@ -5118,7 +5118,7 @@ _022355DC:
 	bl ov00_021ECB94
 	add r0, sp, #0x114
 	add r1, sp, #0x108
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mov r2, #3
 	str r2, [sp, #0xc0]
 	mov r2, #0
@@ -5164,7 +5164,7 @@ _022355DC:
 	bl ov00_021ECB94
 	add r0, sp, #0xa8
 	add r1, sp, #0x9c
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mov r2, #0
 	subs r0, r0, #4
 	str r0, [sp, #0x4c]
@@ -6287,7 +6287,7 @@ _02236880:
 	bl ov00_021ECB94
 	add r0, sp, #0x18
 	add r1, sp, #0x28
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	str r0, [r4, #0x14c]
 	str r1, [r4, #0x150]
 	add r2, r4, #0x14c
@@ -11535,7 +11535,7 @@ _0223AFE0:
 	bl ov00_021ECB94
 	add r0, sp, #0x14
 	add r1, sp, #0x24
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mov r8, r0
 	ldr r2, [r4, #0x10]
 	ldr r3, [r6, r5, lsr #22]
@@ -11636,7 +11636,7 @@ _0223B138:
 	bl ov00_021ECB94
 	add r0, sp, #0
 	add r1, sp, #0x10
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	ldr ip, [r4, #8]
 	ldr r2, [r4, #0x1c]
 	ldr r3, [r4, #0xc]
@@ -11667,7 +11667,7 @@ ov45_0223B1C8: ; 0x0223B1C8
 	bl ov00_021ECB94
 	add r0, sp, #0
 	add r1, sp, #0x10
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	str r0, [r4, #0x10]
 	str r1, [r4, #0x14]
 	mov r0, #5
@@ -14762,7 +14762,7 @@ ov45_0223DD3C: ; 0x0223DD3C
 	bl ov00_021ECB94
 	add r0, sp, #0x24
 	add r1, sp, #0x18
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	str r0, [r4, #8]
 	str r1, [r4, #0xc]
 	mov r1, #1
@@ -15045,7 +15045,7 @@ ov45_0223E100: ; 0x0223E100
 	bl ov00_021ECB94
 	add r0, sp, #0x78
 	add r1, sp, #0x6c
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	str sb, [r7, #0x2c]
 	stmib r8, {r0, r1}
 	mov r0, #1
@@ -15142,7 +15142,7 @@ _0223E268:
 	bl ov00_021ECB94
 	add r0, sp, #0x5c
 	add r1, sp, #0x50
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	str r1, [sp, #0x90]
 	ldr r1, [sp, #0x88]
 	str r0, [sp, #0x8c]
@@ -17912,7 +17912,7 @@ _022408BC:
 	bl ov00_021ECB94
 	add r0, sp, #0xc
 	add r1, sp, #0x1c
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	ldr r2, [r5, #0xa8]
 	add r7, r5, #0xa0
 	mov r6, r0
@@ -18283,7 +18283,7 @@ _02240C3C:
 	bl ov00_021ECB94
 	add r0, sp, #0x88
 	add r1, sp, #0x7c
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	ldr r3, _02240F68 ; =ov45_02240850
 	str r0, [sp, #0x2c]
 	str r1, [sp, #0x30]

@@ -3601,7 +3601,7 @@ ov17_022037C8: ; 0x022037C8
 	bl GF_RTC_CopyDateTime
 	add r0, sp, #0x38
 	add r1, sp, #0x1c
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	add r5, r0, #0
 	add r6, r1, #0
 	ldr r0, [r4, #0x18]
@@ -3610,7 +3610,7 @@ ov17_022037C8: ; 0x022037C8
 	bl ov16_02201820
 	add r0, sp, #0x28
 	add r1, sp, #0x10
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	sub r2, r5, r0
 	mov ip, r6
 	mov r2, ip

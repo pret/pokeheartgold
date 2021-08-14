@@ -4197,7 +4197,7 @@ ov00_021EB5B0: ; 0x021EB5B0
 	bne _021EB7B0
 	add r0, sp, #0x2c
 	add r1, sp, #0x20
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mov r4, r0
 	mov r5, r1
 	mvn r0, #0
@@ -4284,7 +4284,7 @@ _021EB6CC:
 	beq _021EB7B0
 	add r0, sp, #0x2c
 	add r1, sp, #0x20
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mvn r2, #0
 	cmp r1, r2
 	cmpeq r0, r2
@@ -5855,7 +5855,7 @@ ov00_021ECB94: ; 0x021ECB94
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, r4
-	bl sub_020DC330
+	bl RTC_ConvertDateTimeToSecond
 	mvn r2, #0
 	cmp r1, r2
 	cmpeq r0, r2

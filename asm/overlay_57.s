@@ -2584,7 +2584,7 @@ _02238CCE:
 	ldr r0, [r7, r0]
 	ldr r2, [r2, #4]
 	add r1, r4, #0
-	bl sub_02014980
+	bl ListMenuItems_AddItem
 	add r0, r4, #0
 	bl String_dtor
 	ldr r0, [sp, #0x14]

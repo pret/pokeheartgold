@@ -1915,7 +1915,7 @@ ov02_02246A84: ; 0x02246A84
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0201481C
+	bl GF_RTC_GetTimeOfDay
 	cmp r0, #0
 	bne _02246A98
 	add r3, r5, #0
@@ -1963,7 +1963,7 @@ ov02_02246AD4: ; 0x02246AD4
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0201481C
+	bl GF_RTC_GetTimeOfDay
 	sub r0, r0, #3
 	cmp r0, #1
 	bhi _02246AFC
