@@ -753,7 +753,7 @@ ov41_022463DC: ; 0x022463DC
 	lsl r5, r5, #2
 	add r0, r6, #0
 	add r1, r1, r5
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, [r4, #0x38]
 	ldr r0, [r0, r5]
 	pop {r4, r5, r6, pc}
@@ -3983,7 +3983,7 @@ ov41_02247D00: ; 0x02247D00
 	add r4, r0, #0
 	ldr r0, _02247D18 ; =0x000006BC
 	ldr r0, [r4, r0]
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _02247D18 ; =0x000006BC
 	ldr r0, [r4, r0]
 	bl RemoveWindow
@@ -7570,7 +7570,7 @@ ov41_02249604: ; 0x02249604
 	bl GfGfxLoader_LoadFromNarc
 	add r1, sp, #0x14
 	str r0, [sp, #0x10]
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, [sp, #0x14]
 	ldrh r1, [r4]
 	ldr r0, [r0, #0x14]
@@ -8531,7 +8531,7 @@ _02249D22:
 	ldr r0, [r5]
 	add r3, sp, #0x14
 	ldr r0, [r0, #4]
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [r5]
 	add r4, r0, #0
 	ldr r0, [r3, #0x18]
@@ -8568,7 +8568,7 @@ ov41_02249D60: ; 0x02249D60
 	ldr r0, [r1, #4]
 	ldr r1, [r1, #8]
 	add r3, sp, #0x14
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [r5]
 	add r4, r0, #0
 	ldr r0, [r3, #0x18]
@@ -8741,7 +8741,7 @@ _02249EA2:
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #0x10]
 	add r3, sp, #0x24
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r2, [sp, #0x24]
 	str r0, [sp, #0x20]
 	ldrh r0, [r2]
@@ -8924,7 +8924,7 @@ _0224A018:
 	add r0, r7, #0
 	mov r2, #0
 	add r3, r4, #4
-	bl sub_020079BC
+	bl GfGfxLoader_GetCharData
 	str r0, [r4, #8]
 	str r5, [r4]
 	ldr r0, [sp, #0x20]
@@ -8996,7 +8996,7 @@ ov41_0224A094: ; 0x0224A094
 	ldr r0, [r4]
 	ldr r3, [r3, #0x10]
 	lsr r1, r1, #0x18
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r5, #0
 	bl sub_0200E390
 	ldr r0, [r4, #8]
@@ -12322,7 +12322,7 @@ _0224B972:
 	add r1, r1, r5
 	add r0, r7, #0
 	add r1, r1, #4
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, [sp, #4]
 	ldr r1, [r0]
 	ldr r0, [r4]
@@ -12634,7 +12634,7 @@ ov41_0224BC04: ; 0x0224BC04
 	mov r1, #0x80
 	mov r2, #0
 	add r3, sp, #0x10
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r2, [sp, #0x10]
 	mov r3, #0
 	str r3, [sp]
@@ -12688,7 +12688,7 @@ ov41_0224BCA4: ; 0x0224BCA4
 	mov r0, #0xef
 	mov r2, #4
 	add r3, r1, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -12699,7 +12699,7 @@ ov41_0224BCA4: ; 0x0224BCA4
 	mov r0, #0xef
 	mov r1, #9
 	mov r3, #4
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -12710,7 +12710,7 @@ ov41_0224BCA4: ; 0x0224BCA4
 	mov r0, #0xef
 	mov r1, #1
 	mov r3, #4
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	add sp, #0x10
 	pop {r4, pc}
 	thumb_func_end ov41_0224BCA4
@@ -12878,7 +12878,7 @@ ov41_0224BE34: ; 0x0224BE34
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

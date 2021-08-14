@@ -4804,7 +4804,7 @@ ov40_0222DD68: ; 0x0222DD68
 	str r0, [sp, #4]
 	mov r0, #0x4a
 	mov r1, #0xd
-	bl sub_02007AC4
+	bl GfGfxLoader_LoadFromNarc_GetSizeOut
 	ldr r1, [sp, #8]
 	lsr r1, r1, #1
 	str r1, [r4]
@@ -4917,7 +4917,7 @@ ov40_0222DE40: ; 0x0222DE40
 	str r1, [r4, r0]
 	add r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _0222DEA0 ; =0x000008A4
 	add r0, r4, r0
 	bl RemoveWindow
@@ -4959,7 +4959,7 @@ ov40_0222DEAC: ; 0x0222DEAC
 	add r4, r0, #0
 	ldr r0, _0222DECC ; =0x000008A4
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _0222DECC ; =0x000008A4
 	add r0, r4, r0
 	bl RemoveWindow
@@ -5090,7 +5090,7 @@ ov40_0222DFB0: ; 0x0222DFB0
 	str r1, [r4, r0]
 	add r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _0222DFE4 ; =0x000008A4
 	add r0, r4, r0
 	bl RemoveWindow
@@ -5639,7 +5639,7 @@ ov40_0222E4A4: ; 0x0222E4A4
 	add r5, #0xc
 _0222E4AC:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -7970,7 +7970,7 @@ ov40_0222F720: ; 0x0222F720
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x18
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r4, #0x18
 	add r0, r4, #0
 	bl RemoveWindow
@@ -9555,7 +9555,7 @@ ov40_02230398: ; 0x02230398
 	add r5, #0x3c
 _022303A0:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -11104,7 +11104,7 @@ ov40_02230EB4: ; 0x02230EB4
 	add r4, r0, #0
 	ldr r0, _02230ED4 ; =0x000008A4
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _02230ED4 ; =0x000008A4
 	add r0, r4, r0
 	bl RemoveWindow
@@ -14220,7 +14220,7 @@ ov40_022327BC: ; 0x022327BC
 	mov r0, #0x5e
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #0x5e
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -14228,7 +14228,7 @@ ov40_022327BC: ; 0x022327BC
 	mov r0, #0x62
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #0x62
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -15208,7 +15208,7 @@ ov40_02232FCC: ; 0x02232FCC
 	mov r0, #0x5e
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #0x5e
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -20011,7 +20011,7 @@ ov40_0223584C: ; 0x0223584C
 	ldr r4, [r0, r1]
 	add r0, r4, #0
 	add r0, #0xd0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r4, #0xd0
 	add r0, r4, #0
 	bl RemoveWindow
@@ -21098,7 +21098,7 @@ ov40_0223610C: ; 0x0223610C
 	add r5, #0xd0
 _02236118:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -21122,7 +21122,7 @@ ov40_02236130: ; 0x02236130
 	bne _02236154
 	add r0, r4, #0
 	add r0, #0x10
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r4, #0x10
 	add r0, r4, #0
 	bl RemoveWindow
@@ -22964,7 +22964,7 @@ ov40_02236FE0: ; 0x02236FE0
 	add r5, r1, r0
 _02236FF0:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -22987,7 +22987,7 @@ ov40_02237008: ; 0x02237008
 	add r5, r1, r0
 _02237018:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -24498,7 +24498,7 @@ ov40_02237C54: ; 0x02237C54
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -24519,7 +24519,7 @@ ov40_02237C74: ; 0x02237C74
 	add r5, r1, r0
 _02237C84:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -24642,7 +24642,7 @@ ov40_02237D6C: ; 0x02237D6C
 	add r5, r1, r0
 _02237D7C:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -27314,7 +27314,7 @@ ov40_022393F4: ; 0x022393F4
 	add r5, #0x84
 _02239400:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -27458,7 +27458,7 @@ ov40_02239514: ; 0x02239514
 	add r5, #0x24
 _02239520:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -31294,7 +31294,7 @@ ov40_0223B538: ; 0x0223B538
 	add r5, #0x14
 _0223B550:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	ldr r0, [r6, r7]
@@ -31327,7 +31327,7 @@ ov40_0223B574: ; 0x0223B574
 	add r5, #0x94
 _0223B58C:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	ldr r0, [r6, r7]
@@ -34043,7 +34043,7 @@ ov40_0223CCA0: ; 0x0223CCA0
 	ldr r4, [r0, r1]
 	add r0, r4, #0
 	add r0, #0x94
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r4, #0x94
 	add r0, r4, #0
 	bl RemoveWindow
@@ -34234,13 +34234,13 @@ ov40_0223CE38: ; 0x0223CE38
 	ldr r4, [r0, r1]
 	add r0, r4, #0
 	add r0, #0x94
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	add r0, #0x94
 	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0xa4
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r4, #0xa4
 	add r0, r4, #0
 	bl RemoveWindow
@@ -36582,7 +36582,7 @@ ov40_0223E024: ; 0x0223E024
 	add r5, r6, r0
 _0223E03C:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	ldr r0, [r6, r7]
@@ -36617,7 +36617,7 @@ ov40_0223E064: ; 0x0223E064
 	add r7, #0xc4
 _0223E07E:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	ldr r0, [r6, r7]
@@ -37550,7 +37550,7 @@ ov40_0223E848: ; 0x0223E848
 	add r5, r1, r0
 _0223E856:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -43535,7 +43535,7 @@ ov40_02241A34: ; 0x02241A34
 	ldr r4, [r0, r1]
 	ldr r0, _02241A50 ; =0x000006D4
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _02241A50 ; =0x000006D4
 	add r0, r4, r0
 	bl RemoveWindow
@@ -43731,13 +43731,13 @@ ov40_02241BDC: ; 0x02241BDC
 	ldr r4, [r0, r1]
 	ldr r0, _02241C08 ; =0x000006D4
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _02241C08 ; =0x000006D4
 	add r0, r4, r0
 	bl RemoveWindow
 	ldr r0, _02241C0C ; =0x000006E4
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _02241C0C ; =0x000006E4
 	add r0, r4, r0
 	bl RemoveWindow
@@ -48662,7 +48662,7 @@ ov40_022442CC: ; 0x022442CC
 	add r4, r0, #0
 	ldr r0, _022442EC ; =0x000008A4
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _022442EC ; =0x000008A4
 	add r0, r4, r0
 	bl RemoveWindow
@@ -48868,13 +48868,13 @@ ov40_02244494: ; 0x02244494
 	ldr r4, [r0, r1]
 	add r0, r4, #0
 	add r0, #0x10
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	add r0, #0x10
 	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0x20
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r4, #0x20
 	add r0, r4, #0
 	bl RemoveWindow

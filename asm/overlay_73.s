@@ -3813,7 +3813,7 @@ ov73_021E7740: ; 0x021E7740
 	mov r1, #0x2b
 	mov r2, #1
 	add r3, r5, r3
-	bl sub_020079BC
+	bl GfGfxLoader_GetCharData
 	mov r3, #0xbb
 	lsl r3, r3, #2
 	str r0, [r5, r3]

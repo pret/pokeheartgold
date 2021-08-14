@@ -4459,7 +4459,7 @@ ov05_0221DDEC: ; 0x0221DDEC
 	ldr r0, [r4, #0xc]
 	str r1, [sp]
 	add r1, r2, #0
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	add r6, r0, #0
 	ldr r0, [r4]
 	add r0, #0x29

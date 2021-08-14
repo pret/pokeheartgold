@@ -622,7 +622,7 @@ _0221EA62:
 	add r0, r7, #0
 	add r2, r6, #0
 	add r3, r5, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	ldr r0, [sp, #0x20]
 	cmp r0, #0
 	beq _0221EA9C
@@ -771,7 +771,7 @@ ov98_0221EB84: ; 0x0221EB84
 _0221EBB0:
 	ldr r0, [r5, #4]
 	add r0, r0, r4
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	bl RemoveWindow

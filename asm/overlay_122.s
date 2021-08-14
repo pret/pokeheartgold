@@ -2520,7 +2520,7 @@ _021E6C9C:
 	ldr r0, [r5, #0x18]
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 _021E6CB8:
 	ldr r0, [r5, #0x18]
 	mov r1, #2
@@ -3120,7 +3120,7 @@ _021E70F8:
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -3135,7 +3135,7 @@ _021E713A:
 	str r2, [sp, #0xc]
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -3794,7 +3794,7 @@ ov122_021E765C: ; 0x021E765C
 	add r5, #0x24
 _021E7664:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -3897,7 +3897,7 @@ ov122_021E76F4: ; 0x021E76F4
 	ldr r0, [r5, #0x18]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r1, #1
 	add r0, r4, #0
 	add r2, r1, #0
@@ -3975,7 +3975,7 @@ _021E77B8:
 	ldr r0, [r5, #0x18]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r1, #1
 	add r0, r4, #0
 	add r2, r1, #0
@@ -4271,7 +4271,7 @@ _021E79E8:
 	mov r1, #9
 	mov r2, #0
 	lsl r3, r3, #6
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r1, #6
 	ldr r2, [r4]
 	mov r0, #0
@@ -4291,7 +4291,7 @@ _021E79E8:
 	mov r1, #9
 	mov r2, #4
 	lsl r3, r3, #4
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	ldr r0, _021E7AE8 ; =0x00000229
 	mov r1, #3
 	ldrb r0, [r4, r0]

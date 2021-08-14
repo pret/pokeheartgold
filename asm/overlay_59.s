@@ -1852,7 +1852,7 @@ _02238B6E:
 	ldr r0, [r5, #0x54]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x20
@@ -1864,7 +1864,7 @@ _02238B6E:
 	ldr r0, [r5, #0x54]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r5, #0x54]
 	mov r1, #1
 	bl sub_0201EFBC
@@ -3498,7 +3498,7 @@ ov59_022398A0: ; 0x022398A0
 	add r5, r6, r0
 _022398AC:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -7599,7 +7599,7 @@ ov59_0223B7D8: ; 0x0223B7D8
 	add r5, r6, r0
 _0223B7E4:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1

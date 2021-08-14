@@ -4585,7 +4585,7 @@ ov112_021E7CA4: ; 0x021E7CA4
 	add r1, r2, #0
 	ldr r2, [r4, #0x18]
 	mov r0, #0xf9
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	add sp, #0x10
 	pop {r4, pc}
 	thumb_func_end ov112_021E7CA4
@@ -6921,7 +6921,7 @@ ov112_021E9290: ; 0x021E9290
 	ldrh r1, [r4, #4]
 	mov r2, #1
 	mov r3, #0x80
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	b _021E9332
 _021E9312:
 	mov r1, #0x31
@@ -6937,7 +6937,7 @@ _021E9312:
 	ldrh r0, [r4]
 	ldrh r1, [r4, #4]
 	mov r2, #5
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 _021E9332:
 	mov r0, #0
 	add sp, #0x24
@@ -9984,7 +9984,7 @@ ov112_021EAB58: ; 0x021EAB58
 	mov r0, #0x14
 	mov r2, #1
 	mov r3, #0xa0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	add sp, #8
 	pop {r3, pc}
 	thumb_func_end ov112_021EAB58
@@ -10008,7 +10008,7 @@ ov112_021EAB78: ; 0x021EAB78
 	mov r0, #0x14
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_020079BC
+	bl GfGfxLoader_GetCharData
 	ldr r1, _021EABE0 ; =0x0001EA60
 	str r0, [r5, r1]
 	add r0, r1, #4
@@ -10199,7 +10199,7 @@ _021EACEC:
 	ldr r0, [r5, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -10233,7 +10233,7 @@ _021EAD3A:
 	ldr r0, [r5, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -10261,7 +10261,7 @@ _021EAD82:
 	ldr r0, [r5, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -10479,7 +10479,7 @@ ov112_021EAF5C: ; 0x021EAF5C
 	ldr r0, [r5, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r5, #0
 	mov r1, #5
 	mov r2, #0x11
@@ -10622,7 +10622,7 @@ _021EB074:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -10651,7 +10651,7 @@ _021EB0BC:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -10689,7 +10689,7 @@ _021EB108:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -10713,7 +10713,7 @@ _021EB152:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -10737,7 +10737,7 @@ _021EB188:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -10802,7 +10802,7 @@ ov112_021EB208: ; 0x021EB208
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -11538,7 +11538,7 @@ ov112_021EB7D8: ; 0x021EB7D8
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -11550,7 +11550,7 @@ ov112_021EB7D8: ; 0x021EB7D8
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -11614,7 +11614,7 @@ ov112_021EB864: ; 0x021EB864
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -11626,7 +11626,7 @@ ov112_021EB864: ; 0x021EB864
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -11711,7 +11711,7 @@ ov112_021EB90C: ; 0x021EB90C
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -11763,7 +11763,7 @@ _021EB974:
 	ldr r0, [r5, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -11950,7 +11950,7 @@ ov112_021EBAB4: ; 0x021EBAB4
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -11962,7 +11962,7 @@ ov112_021EBAB4: ; 0x021EBAB4
 	ldr r0, [r4, #0x18]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -11974,7 +11974,7 @@ ov112_021EBAB4: ; 0x021EBAB4
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -11986,7 +11986,7 @@ ov112_021EBAB4: ; 0x021EBAB4
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r4, #0
 	bl ov112_021EA64C
 	add r0, r4, #0
@@ -12110,13 +12110,13 @@ _021EBBEC:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, _021EBC34 ; =0x0001EA98
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _021EBC38 ; =0x0001EAA8
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add sp, #0x10
 	mov r0, #3
 	pop {r4, pc}
@@ -12156,7 +12156,7 @@ ov112_021EBC3C: ; 0x021EBC3C
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -12312,7 +12312,7 @@ ov112_021EBD9C: ; 0x021EBD9C
 	bl ov112_021EA570
 	ldr r0, _021EBDE0 ; =0x0001EAB8
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r1, #0x10
 	mov r2, #0
 	str r1, [sp]
@@ -12324,7 +12324,7 @@ ov112_021EBD9C: ; 0x021EBD9C
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, _021EBDE4 ; =0x0001EC50
 	ldr r0, [r4, r0]
 	cmp r0, #0
@@ -12359,7 +12359,7 @@ ov112_021EBDE8: ; 0x021EBDE8
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -12371,7 +12371,7 @@ ov112_021EBDE8: ; 0x021EBDE8
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -12444,13 +12444,13 @@ _021EBE8C:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, _021EBF0C ; =0x0001EA98
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _021EBF10 ; =0x0001EAA8
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _021EBF14 ; =0x0001F2E4
 	mov r1, #0
 	strh r1, [r4, r0]
@@ -12469,13 +12469,13 @@ _021EBEC8:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, _021EBF0C ; =0x0001EA98
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _021EBF10 ; =0x0001EAA8
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl ov112_021EA570
 	ldr r0, _021EBF14 ; =0x0001F2E4
@@ -12559,7 +12559,7 @@ ov112_021EBF70: ; 0x021EBF70
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0xe
@@ -12848,7 +12848,7 @@ ov112_021EC1A8: ; 0x021EC1A8
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0x13
 	add sp, #0x10
 	pop {r4, pc}
@@ -12894,7 +12894,7 @@ ov112_021EC208: ; 0x021EC208
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x40
@@ -12906,7 +12906,7 @@ ov112_021EC208: ; 0x021EC208
 	ldr r0, [r4, #0x18]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -12930,7 +12930,7 @@ ov112_021EC208: ; 0x021EC208
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0x15
 	add sp, #0x10
 	pop {r4, pc}
@@ -13242,7 +13242,7 @@ ov112_021EC478: ; 0x021EC478
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -13254,7 +13254,7 @@ ov112_021EC478: ; 0x021EC478
 	ldr r0, [r4, #0x18]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -13266,7 +13266,7 @@ ov112_021EC478: ; 0x021EC478
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -13278,7 +13278,7 @@ ov112_021EC478: ; 0x021EC478
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r4, #0
 	mov r1, #7
 	bl ov112_021EA688
@@ -13387,7 +13387,7 @@ _021EC598:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -13399,7 +13399,7 @@ _021EC598:
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -13414,7 +13414,7 @@ _021EC598:
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -13426,7 +13426,7 @@ _021EC598:
 	ldr r0, [r4, #0x18]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	bl sub_0201BF7C
@@ -13584,7 +13584,7 @@ ov112_021EC70C: ; 0x021EC70C
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -13596,7 +13596,7 @@ ov112_021EC70C: ; 0x021EC70C
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -13892,7 +13892,7 @@ ov112_021EC99C: ; 0x021EC99C
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0x11
@@ -14299,7 +14299,7 @@ _021ECCEE:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r4, #0
 	bl ov112_021ECA88
 	ldr r1, _021ECD98 ; =0x0001D798
@@ -14336,7 +14336,7 @@ _021ECD34:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add sp, #0x10
 	mov r0, #0
 	pop {r4, pc}
@@ -14436,7 +14436,7 @@ ov112_021ECE28: ; 0x021ECE28
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -14448,7 +14448,7 @@ ov112_021ECE28: ; 0x021ECE28
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -16422,7 +16422,7 @@ ov112_021EDE1C: ; 0x021EDE1C
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -16490,7 +16490,7 @@ _021EDEBA:
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -16565,7 +16565,7 @@ ov112_021EDF4C: ; 0x021EDF4C
 	ldr r0, [r5, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -16802,7 +16802,7 @@ ov112_021EE12C: ; 0x021EE12C
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -16910,7 +16910,7 @@ _021EE1FC:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -16922,13 +16922,13 @@ _021EE1FC:
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, _021EE294 ; =0x0001EA98
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _021EE298 ; =0x0001EAA8
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -16947,13 +16947,13 @@ _021EE254:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, _021EE294 ; =0x0001EA98
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _021EE298 ; =0x0001EAA8
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl ov112_021EA570
 	mov r0, #0
@@ -17153,7 +17153,7 @@ ov112_021EE3E0: ; 0x021EE3E0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -17165,13 +17165,13 @@ ov112_021EE3E0: ; 0x021EE3E0
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, _021EE458 ; =0x0001EA98
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _021EE45C ; =0x0001EAA8
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201BF7C
@@ -17412,7 +17412,7 @@ ov112_021EE5B8: ; 0x021EE5B8
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -17660,7 +17660,7 @@ ov112_021EE778: ; 0x021EE778
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -18614,7 +18614,7 @@ ov112_021EEF30: ; 0x021EEF30
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -19579,7 +19579,7 @@ ov112_021EF6A0: ; 0x021EF6A0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -19591,7 +19591,7 @@ ov112_021EF6A0: ; 0x021EF6A0
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -19625,7 +19625,7 @@ ov112_021EF700: ; 0x021EF700
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x10]
 	cmp r0, #2
 	bne _021EF72C
@@ -20148,7 +20148,7 @@ ov112_021EFB14: ; 0x021EFB14
 	ldr r0, [r5, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, _021EFC84 ; =0x00009D70
 	ldr r1, _021EFC88 ; =0x0000AABC
 	add r0, r5, r0
@@ -20489,7 +20489,7 @@ _021EFDCC:
 	ldr r0, [r7, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #0xf
@@ -20719,7 +20719,7 @@ ov112_021EFF84: ; 0x021EFF84
 	mov r1, #1
 	add r2, r4, #0
 	add r3, r4, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #0xf
@@ -21013,7 +21013,7 @@ ov112_021F01CC: ; 0x021F01CC
 	mov r1, #1
 	add r2, r4, #0
 	add r3, r4, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #0xf
@@ -21524,7 +21524,7 @@ ov112_021F05FC: ; 0x021F05FC
 	mov r2, #4
 	add r3, r1, #0
 	str r4, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -21534,7 +21534,7 @@ ov112_021F05FC: ; 0x021F05FC
 	add r2, r5, #0
 	mov r3, #7
 	str r4, [sp, #0xc]
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -21547,7 +21547,7 @@ ov112_021F05FC: ; 0x021F05FC
 	add r2, r5, #0
 	mov r3, #7
 	str r4, [sp, #0xc]
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	add r0, r5, #0
 	mov r1, #7
 	bl sub_0201BF7C

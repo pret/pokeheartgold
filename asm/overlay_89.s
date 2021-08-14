@@ -1266,7 +1266,7 @@ _022592FE:
 	bl sub_02007B68
 	ldr r0, [r4, #8]
 	mov r1, #6
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	mov r1, #0x27
 	lsl r1, r1, #6
 	mov r2, #2
@@ -2002,7 +2002,7 @@ _0225993A:
 	ldr r0, [r6, #8]
 	mov r1, #2
 	add r3, r7, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r4, r4, #1
 	add r5, r5, #2
 	cmp r4, #4
@@ -2137,7 +2137,7 @@ _02259A56:
 	bl sub_02007C98
 	add r1, sp, #0xc
 	str r0, [sp, #8]
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, [sp, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x14]
@@ -2160,7 +2160,7 @@ _02259A90:
 	bl sub_02007C98
 	add r1, sp, #0xc
 	str r0, [sp, #8]
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, [sp, #0xc]
 	mov r1, #0x80
 	ldr r0, [r0, #0x14]
@@ -2829,7 +2829,7 @@ _02259FC6:
 	bl ov89_0225C724
 	ldr r0, [r6, #8]
 	mov r1, #6
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	str r0, [sp, #0x10]
 	lsl r0, r7, #3
 	ldr r1, _0225A130 ; =0x0225CBD8
@@ -2910,7 +2910,7 @@ _0225A036:
 	ldr r0, [r6, #8]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r6, #8]
 	mov r1, #6
 	bl sub_0201EFBC
@@ -4238,7 +4238,7 @@ ov89_0225AA24: ; 0x0225AA24
 	bl sub_02007C98
 	add r1, sp, #0x20
 	str r0, [sp, #0x18]
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	b _0225AA80
 _0225AA68:
 	mov r0, #1
@@ -4250,7 +4250,7 @@ _0225AA68:
 	bl sub_02007C98
 	add r1, sp, #0x20
 	str r0, [sp, #0x18]
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 _0225AA80:
 	ldr r1, [sp, #0x1c]
 	mov r0, #0
@@ -8221,7 +8221,7 @@ ov89_0225C818: ; 0x0225C818
 _0225C824:
 	lsl r1, r1, #4
 	add r0, r0, r1
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov89_0225C818

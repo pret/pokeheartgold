@@ -292,7 +292,7 @@ ov30_0225D784: ; 0x0225D784
 	mov r0, #0xe
 	mov r1, #0x4c
 	mov r3, #4
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -304,7 +304,7 @@ ov30_0225D784: ; 0x0225D784
 	mov r0, #0xe
 	mov r1, #0x4d
 	mov r3, #4
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #2
 	lsl r0, r0, #8
 	str r0, [sp]
@@ -314,7 +314,7 @@ ov30_0225D784: ; 0x0225D784
 	mov r1, #0x4b
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #4
 	mov r1, #0x80
 	mov r2, #8

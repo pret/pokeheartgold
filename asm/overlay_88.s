@@ -995,7 +995,7 @@ ov88_02258F88: ; 0x02258F88
 	ldr r0, [r0]
 	mov r1, #3
 	mov r3, #5
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [sp, #0x14]
 	mov r1, #3
 	ldr r0, [r0]
@@ -1266,7 +1266,7 @@ ov88_0225918C: ; 0x0225918C
 	mov r1, #3
 	mov r3, #0x15
 	ldr r7, [sp, #0x50]
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r5, #0
 	str r5, [sp, #0x2c]
 _022591BA:

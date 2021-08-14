@@ -996,7 +996,7 @@ _02258FAE:
 	mov r1, #3
 	add r3, r2, #0
 	str r6, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x12
 	lsl r0, r0, #4
 	str r0, [sp]
@@ -1005,7 +1005,7 @@ _02258FAE:
 	mov r2, #4
 	mov r3, #0
 	str r6, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -1015,7 +1015,7 @@ _02258FAE:
 	ldr r2, [r2, #0xc]
 	mov r0, #0x58
 	mov r1, #2
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1026,7 +1026,7 @@ _02258FAE:
 	mov r0, #0x58
 	mov r1, #0xb
 	mov r3, #4
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -1036,7 +1036,7 @@ _02258FAE:
 	ldr r2, [r2, #0xc]
 	mov r0, #0x58
 	mov r1, #6
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1047,7 +1047,7 @@ _02258FAE:
 	mov r0, #0x58
 	mov r1, #0xc
 	mov r3, #4
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022C60

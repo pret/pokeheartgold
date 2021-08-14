@@ -2514,7 +2514,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r1, _021E6D5C ; =0x00000D8C
 	add r5, r0, #0
 	add r1, r4, r1
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, _021E6D5C ; =0x00000D8C
 	mov r1, #0
 	ldr r3, [r4, r0]
@@ -2524,7 +2524,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	ldr r3, [r3, #0x10]
 	mov r1, #3
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -2534,7 +2534,7 @@ ov85_021E6B68: ; 0x021E6B68
 	add r5, r0, #0
 	ldr r1, _021E6D5C ; =0x00000D8C
 	add r1, r4, r1
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, _021E6D5C ; =0x00000D8C
 	mov r1, #0
 	ldr r3, [r4, r0]
@@ -2544,7 +2544,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	ldr r3, [r3, #0x10]
 	mov r1, #6
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -2554,7 +2554,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r1, _021E6D5C ; =0x00000D8C
 	add r5, r0, #0
 	add r1, r4, r1
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, _021E6D5C ; =0x00000D8C
 	mov r1, #0
 	ldr r3, [r4, r0]
@@ -2564,7 +2564,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	ldr r3, [r3, #0x10]
 	mov r1, #7
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -2574,7 +2574,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r1, _021E6D60 ; =0x00000D88
 	add r5, r0, #0
 	add r1, r4, r1
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldr r0, _021E6D60 ; =0x00000D88
 	mov r1, #2
 	ldr r3, [r4, r0]
@@ -2583,7 +2583,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, _021E6D64 ; =0x00000D84
 	mov r1, #2
 	ldr r0, [r4, r0]
@@ -2597,7 +2597,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r1, _021E6D60 ; =0x00000D88
 	add r5, r0, #0
 	add r1, r4, r1
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldr r0, _021E6D60 ; =0x00000D88
 	mov r1, #3
 	ldr r3, [r4, r0]
@@ -2606,7 +2606,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, _021E6D64 ; =0x00000D84
 	mov r1, #3
 	ldr r0, [r4, r0]
@@ -2620,7 +2620,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r1, _021E6D60 ; =0x00000D88
 	add r5, r0, #0
 	add r1, r4, r1
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldr r0, _021E6D60 ; =0x00000D88
 	mov r1, #6
 	ldr r3, [r4, r0]
@@ -2629,7 +2629,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, _021E6D64 ; =0x00000D84
 	mov r1, #6
 	ldr r0, [r4, r0]
@@ -2643,7 +2643,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r1, _021E6D60 ; =0x00000D88
 	add r5, r0, #0
 	add r1, r4, r1
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldr r0, _021E6D60 ; =0x00000D88
 	mov r1, #7
 	ldr r3, [r4, r0]
@@ -2652,7 +2652,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, _021E6D64 ; =0x00000D84
 	mov r1, #7
 	ldr r0, [r4, r0]
@@ -2709,7 +2709,7 @@ ov85_021E6DAC: ; 0x021E6DAC
 	ldr r1, _021E6DE8 ; =0x00000D88
 	add r4, r0, #0
 	add r1, r5, r1
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldr r0, _021E6DE8 ; =0x00000D88
 	mov r1, #6
 	ldr r3, [r5, r0]
@@ -2718,7 +2718,7 @@ ov85_021E6DAC: ; 0x021E6DAC
 	ldr r0, [r5, r0]
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, _021E6DEC ; =0x00000D84
 	mov r1, #6
 	ldr r0, [r5, r0]
@@ -3155,7 +3155,7 @@ ov85_021E7148: ; 0x021E7148
 	add r6, r4, #0
 	add r6, #0xc
 	add r0, r6, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r6, #0
 	bl RemoveWindow
 	add r0, r5, #0
@@ -3402,7 +3402,7 @@ ov85_021E7350: ; 0x021E7350
 	add r5, #0x1c
 _021E7362:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	ldr r0, [r6, r7]
@@ -7154,7 +7154,7 @@ ov85_021E8E6C: ; 0x021E8E6C
 	mov r1, #0x47
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -7176,7 +7176,7 @@ ov85_021E8E6C: ; 0x021E8E6C
 	mov r1, #0xa
 	add r2, r4, #0
 	mov r3, #6
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7188,7 +7188,7 @@ ov85_021E8E6C: ; 0x021E8E6C
 	mov r1, #0xb
 	add r2, r4, #0
 	mov r3, #6
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -9806,7 +9806,7 @@ ov85_021EA2C0: ; 0x021EA2C0
 	mov r1, #0x2b
 	mov r2, #1
 	add r3, r5, r3
-	bl sub_020079BC
+	bl GfGfxLoader_GetCharData
 	mov r3, #0xcd
 	lsl r3, r3, #2
 	str r0, [r5, r3]

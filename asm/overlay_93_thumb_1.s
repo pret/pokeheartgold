@@ -1806,7 +1806,7 @@ ov93_0225D4B8: ; 0x0225D4B8
 	ldr r2, _0225D4E8 ; =0x000003FF
 	mov r1, #4
 	mov r3, #1
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x2c]
 	mov r1, #4
 	bl sub_0201EFBC
@@ -1929,7 +1929,7 @@ ov93_0225D5AC: ; 0x0225D5AC
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
 	mov r3, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xc
@@ -1940,7 +1940,7 @@ ov93_0225D5AC: ; 0x0225D5AC
 	str r3, [sp, #0xc]
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0xd
 	str r0, [sp]
 	mov r0, #0xc
@@ -1952,7 +1952,7 @@ ov93_0225D5AC: ; 0x0225D5AC
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
 	mov r3, #0x14
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	b _0225D662
 _0225D604:
 	ldr r0, [r4]
@@ -1975,7 +1975,7 @@ _0225D614:
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
 	mov r3, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0xd
 	str r0, [sp]
 	mov r0, #0xc
@@ -1987,7 +1987,7 @@ _0225D614:
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
 	mov r3, #0x14
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	b _0225D662
 _0225D64A:
 	mov r0, #0
@@ -2000,7 +2000,7 @@ _0225D64A:
 	str r3, [sp, #0xc]
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 _0225D662:
 	ldr r0, [r4, #0x2c]
 	mov r1, #4

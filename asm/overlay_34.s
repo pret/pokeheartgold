@@ -151,7 +151,7 @@ ov34_0225D5F8: ; 0x0225D5F8
 	mov r1, #3
 	mov r2, #1
 	add r3, #0x24
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	str r0, [r4, #0x20]
 	add sp, #4
 	pop {r3, r4, pc}
@@ -586,7 +586,7 @@ ov34_0225D924: ; 0x0225D924
 	mov r0, #0x49
 	add r3, r1, #0
 	str r2, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #5
@@ -600,7 +600,7 @@ ov34_0225D924: ; 0x0225D924
 	mov r1, #2
 	add r2, r4, #0
 	mov r3, #7
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -613,7 +613,7 @@ ov34_0225D924: ; 0x0225D924
 	add r2, r4, #0
 	mov r3, #7
 	str r1, [sp, #0xc]
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #4
 	mov r1, #0
 	bl sub_0205B4EC
@@ -1036,13 +1036,13 @@ _0225DD5C:
 _0225DD84:
 	ldr r0, [r5, #0x14]
 	mov r1, #7
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	mov r1, #6
 	lsl r1, r1, #8
 	bl DC_FlushRange
 	ldr r0, [r5, #0x14]
 	mov r1, #7
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1050,7 +1050,7 @@ _0225DD84:
 	ldr r0, [r5, #0x14]
 	mov r1, #7
 	lsl r3, r3, #8
-	bl sub_0201BF94
+	bl BgCopyOrUncompressTilemapBufferRangeToVram
 	mov r0, #0xa5
 	mov r1, #0
 	lsl r0, r0, #2
@@ -1689,13 +1689,13 @@ _0225E226:
 _0225E28A:
 	ldr r0, [sp, #0x1c]
 	mov r1, #7
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	mov r1, #6
 	lsl r1, r1, #8
 	bl DC_FlushRange
 	ldr r0, [sp, #0x1c]
 	mov r1, #7
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1703,7 +1703,7 @@ _0225E28A:
 	ldr r0, [sp, #0x1c]
 	mov r1, #7
 	lsl r3, r3, #8
-	bl sub_0201BF94
+	bl BgCopyOrUncompressTilemapBufferRangeToVram
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

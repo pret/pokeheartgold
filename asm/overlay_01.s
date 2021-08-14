@@ -13585,7 +13585,7 @@ ov01_021EC0C0: ; 0x021EC0C0
 	bl NARC_AllocAndReadWholeMember
 	add r1, sp, #0x14
 	str r0, [sp, #8]
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r3, [sp, #0x14]
 	mov r0, #0
 	str r0, [sp]
@@ -13596,7 +13596,7 @@ ov01_021EC0C0: ; 0x021EC0C0
 	ldr r0, [r0, #8]
 	ldr r3, [r3, #0x10]
 	mov r1, #2
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldr r0, [sp, #8]
 	bl FreeToHeap
 	mov r0, #0
@@ -13637,7 +13637,7 @@ ov01_021EC114: ; 0x021EC114
 _021EC14A:
 	ldr r0, [sp, #0x14]
 	add r1, sp, #0x18
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldr r3, [sp, #0x18]
 	mov r0, #0
 	str r0, [sp]
@@ -13649,7 +13649,7 @@ _021EC14A:
 	ldr r0, [r0, #8]
 	mov r1, #2
 	add r2, #0xc
-	bl sub_0201BF94
+	bl BgCopyOrUncompressTilemapBufferRangeToVram
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r3, [sp, #0x18]
@@ -13659,7 +13659,7 @@ _021EC14A:
 	ldr r3, [r3, #8]
 	mov r1, #2
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	mov r0, #0x20
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -20776,7 +20776,7 @@ ov01_021EF7E8: ; 0x021EF7E8
 	add r1, r4, #0
 	mov r2, #0
 	add r3, #0x34
-	bl sub_020079BC
+	bl GfGfxLoader_GetCharData
 	str r0, [r5, #0x38]
 	ldr r3, [r5, #0x34]
 	add r1, r7, #0
@@ -20784,7 +20784,7 @@ ov01_021EF7E8: ; 0x021EF7E8
 	ldr r2, [r3, #0x14]
 	ldr r0, [r5, #0x1c]
 	ldr r3, [r3, #0x10]
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	mov r0, #0xa3
 	add r1, r4, #1
 	add r2, sp, #8
@@ -20856,7 +20856,7 @@ _021EF87A:
 	ldr r1, [r1, #0x14]
 	lsr r2, r2, #0x10
 	mov r3, #0
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 	add r4, r4, #1
 	cmp r4, #0x44
 	blt _021EF87A
@@ -21154,7 +21154,7 @@ ov01_021EFACC: ; 0x021EFACC
 _021EFADA:
 	add r0, r4, #0
 	add r0, #0x20
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r1, #3
 	ldr r0, [r4, #0x1c]
 	add r2, r1, #0
@@ -22538,7 +22538,7 @@ ov01_021F0500: ; 0x021F0500
 	ldr r0, [sp, #0x38]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	add r3, r0, #0
 	mov r5, #0
 	mov r0, #0xf
@@ -30288,7 +30288,7 @@ ov01_021F3E4C: ; 0x021F3E4C
 	ldr r0, [r4, #8]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #8]
 	mov r1, #3
 	bl sub_0201BF7C
@@ -30368,7 +30368,7 @@ ov01_021F3EE0: ; 0x021F3EE0
 	ldr r0, [r4, #8]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #8]
 	mov r1, #3
 	bl sub_0201BF7C
@@ -48083,7 +48083,7 @@ ov01_021FC14C: ; 0x021FC14C
 	mov r1, #2
 	add r2, r4, #0
 	mov r3, #0x20
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r2, _021FC1A0 ; =0x00006001
@@ -58176,7 +58176,7 @@ ov01_02200C94: ; 0x02200C94
 	add r0, sp, #8
 	str r0, [sp, #4]
 	mov r0, #0x4a
-	bl sub_02007AC4
+	bl GfGfxLoader_LoadFromNarc_GetSizeOut
 	ldr r1, [sp, #8]
 	lsr r1, r1, #1
 	str r1, [r4]

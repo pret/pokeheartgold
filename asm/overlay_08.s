@@ -2214,7 +2214,7 @@ ov08_0221CF38: ; 0x0221CF38
 	bl NARC_AllocAndReadWholeMember
 	add r1, sp, #0x10
 	add r6, r0, #0
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
 	add r1, #0xc
@@ -2228,7 +2228,7 @@ ov08_0221CF38: ; 0x0221CF38
 	bl NARC_AllocAndReadWholeMember
 	add r1, sp, #0x10
 	add r6, r0, #0
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
 	add r1, #0xc
@@ -2310,7 +2310,7 @@ ov08_0221CF38: ; 0x0221CF38
 	ldr r2, [r5, r2]
 	mov r0, #0x26
 	mov r3, #4
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	add r0, r4, #0
 	bl sub_0200E640
 	add r2, r0, #0
@@ -3225,7 +3225,7 @@ ov08_0221D74C: ; 0x0221D74C
 	mov r1, #7
 	add r2, r5, #0
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3253,7 +3253,7 @@ ov08_0221D77C: ; 0x0221D77C
 	mov r1, #7
 	add r2, r4, #0
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #1
@@ -3271,7 +3271,7 @@ ov08_0221D77C: ; 0x0221D77C
 	mov r1, #7
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0xf
 	str r0, [sp]
 	mov r0, #1
@@ -3289,7 +3289,7 @@ ov08_0221D77C: ; 0x0221D77C
 	mov r1, #7
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0xf
 	str r0, [sp]
 	mov r0, #1
@@ -3306,7 +3306,7 @@ ov08_0221D77C: ; 0x0221D77C
 	mov r1, #7
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov08_0221D77C
@@ -3398,7 +3398,7 @@ _0221D8BE:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	add r1, sp, #0xc
 	add r7, r0, #0
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -14136,7 +14136,7 @@ ov08_022230F4: ; 0x022230F4
 	bl NARC_AllocAndReadWholeMember
 	add r1, sp, #0x10
 	add r6, r0, #0
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
 	add r1, #0xc
@@ -14187,7 +14187,7 @@ ov08_022230F4: ; 0x022230F4
 	str r0, [sp, #0xc]
 	ldr r2, [r5, #4]
 	mov r0, #0x26
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	add r0, r4, #0
 	bl sub_0200E640
 	add r2, r0, #0
@@ -14941,7 +14941,7 @@ ov08_0222377C: ; 0x0222377C
 	ldr r0, [r4, #4]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r5, #0
 _0222379E:
 	add r0, r4, #0

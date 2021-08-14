@@ -921,13 +921,13 @@ _02002854:
 	pop {r3, r4, r5, r6, r7, pc}
 _02002872:
 	ldr r0, [r5, #4]
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	str r0, [sp, #0x20]
 	ldr r0, [r5, #4]
-	bl sub_0201EE98
+	bl GetWindowX
 	str r0, [sp, #0x24]
 	ldr r0, [r5, #4]
-	bl sub_0201EE9C
+	bl GetWindowY
 	add r7, r0, #0
 	ldr r0, [r5, #4]
 	bl GetWindowWidth
@@ -974,7 +974,7 @@ _02002872:
 	lsl r3, r3, #0x18
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [sp, #0x1c]
 	add r2, r6, #0
 	add r0, r0, #2
@@ -1005,7 +1005,7 @@ _02002872:
 	lsl r3, r3, #0x18
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r7, #1
 	str r0, [sp, #0x14]
 	lsl r0, r0, #0x18
@@ -1033,7 +1033,7 @@ _02002872:
 	ldr r1, [sp, #0x20]
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [sp, #0x14]
 	add r6, #0x15
 	lsl r0, r0, #0x18
@@ -1059,7 +1059,7 @@ _02002872:
 	lsl r3, r3, #0x18
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r5, #4]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0]
@@ -1102,13 +1102,13 @@ sub_020029D8: ; 0x020029D8
 	lsr r0, r0, #0x1f
 	bne _02002A7C
 	ldr r0, [r5, #4]
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #4]
-	bl sub_0201EE98
+	bl GetWindowX
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #4]
-	bl sub_0201EE9C
+	bl GetWindowY
 	add r6, r0, #0
 	ldr r0, [r5, #4]
 	bl GetWindowWidth
@@ -1143,7 +1143,7 @@ sub_020029D8: ; 0x020029D8
 	ldr r1, [sp, #0x10]
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -1162,7 +1162,7 @@ sub_020029D8: ; 0x020029D8
 	ldr r1, [sp, #0x10]
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r5, #4]
 	ldr r1, [sp, #0x10]
 	ldr r0, [r0]

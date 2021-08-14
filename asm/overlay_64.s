@@ -1975,7 +1975,7 @@ _021E685E:
 	ldrh r0, [r1, #0x14]
 	ldrh r1, [r1, #0x18]
 	mov r2, #5
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	ldr r0, [sp, #0x24]
 	mov r1, #1
 	ldr r0, [r0, r6]

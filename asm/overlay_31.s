@@ -176,7 +176,7 @@ ov31_0225D684: ; 0x0225D684
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x64
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	add r0, #0x64
 	mov r1, #0
@@ -586,7 +586,7 @@ _0225D9EA:
 	mov r1, #0x11
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r5, r0, #0
 	add r2, r3, #0
@@ -594,7 +594,7 @@ _0225D9EA:
 	ldr r3, [r3, #8]
 	mov r1, #6
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4, #4]
 	mov r1, #6
 	bl sub_0201EFBC
@@ -616,7 +616,7 @@ _0225DA26:
 	mov r1, #0x13
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r5, r0, #0
 	add r2, r3, #0
@@ -624,7 +624,7 @@ _0225DA26:
 	ldr r3, [r3, #8]
 	mov r1, #6
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4, #4]
 	mov r1, #6
 	bl sub_0201EFBC
@@ -643,7 +643,7 @@ _0225DA64:
 	mov r1, #0x14
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r5, r0, #0
 	add r2, r3, #0
@@ -651,7 +651,7 @@ _0225DA64:
 	ldr r3, [r3, #8]
 	mov r1, #6
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4, #4]
 	mov r1, #6
 	bl sub_0201EFBC
@@ -744,7 +744,7 @@ ov31_0225DB38: ; 0x0225DB38
 	mov r0, #0x3c
 	mov r1, #0xf
 	mov r2, #4
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -755,7 +755,7 @@ ov31_0225DB38: ; 0x0225DB38
 	mov r0, #0x3c
 	mov r1, #0x10
 	mov r3, #5
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	add r0, r4, #0
 	mov r1, #0
 	bl ov31_0225D9D4
@@ -957,7 +957,7 @@ ov31_0225DCF4: ; 0x0225DCF4
 	add r5, #0x84
 _0225DCFC:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -1381,7 +1381,7 @@ ov31_0225E060: ; 0x0225E060
 	lsr r1, r1, #0x18
 	add r6, r0, #0
 	add r4, r2, #0
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	str r0, [sp, #0x14]
 	cmp r4, #6
 	beq _0225E0DA
@@ -1429,7 +1429,7 @@ _0225E0B2:
 	str r0, [sp, #0xc]
 	ldrb r3, [r5, #3]
 	add r0, r6, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 _0225E0D2:
 	add r7, r7, #1
 	add r5, #8
@@ -1454,7 +1454,7 @@ ov31_0225E0E4: ; 0x0225E0E4
 	mov r1, #0x12
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r6, r0, #0
 	add r2, r3, #0
@@ -1462,7 +1462,7 @@ ov31_0225E0E4: ; 0x0225E0E4
 	ldr r3, [r3, #8]
 	mov r1, #5
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r5, #4]
 	mov r1, #5
 	add r2, r4, #0

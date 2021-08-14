@@ -2277,7 +2277,7 @@ _0225E6A2:
 	ldr r2, _0225E728 ; =0x00001001
 	mov r1, #6
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	b _0225E6F6
 _0225E6CC:
 	mov r1, #0xa
@@ -2298,7 +2298,7 @@ _0225E6CC:
 	ldr r0, [r6, #0x10]
 	mov r1, #6
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 _0225E6F6:
 	add r0, r5, #1
 	lsl r0, r0, #0x10

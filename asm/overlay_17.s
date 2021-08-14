@@ -1795,7 +1795,7 @@ _0220295A:
 	ldr r0, [r0]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r1, #1
 	add r0, r4, #0
 	add r2, r1, #0
@@ -2615,7 +2615,7 @@ ov17_02203004: ; 0x02203004
 	add r5, #0xfc
 _0220300E:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1

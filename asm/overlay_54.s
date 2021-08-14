@@ -766,7 +766,7 @@ ov54_021E5F40: ; 0x021E5F40
 	mov r0, #0x48
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -777,7 +777,7 @@ ov54_021E5F40: ; 0x021E5F40
 	ldr r2, [r4, #0x14]
 	mov r0, #0x48
 	mov r3, #4
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -788,7 +788,7 @@ ov54_021E5F40: ; 0x021E5F40
 	ldr r2, [r4, #0x14]
 	mov r0, #0x48
 	mov r3, #4
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x40
 	str r0, [sp]
 	ldr r0, [r4]
@@ -797,7 +797,7 @@ ov54_021E5F40: ; 0x021E5F40
 	mov r0, #0x48
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -807,7 +807,7 @@ ov54_021E5F40: ; 0x021E5F40
 	str r0, [sp, #0xc]
 	ldr r2, [r4, #0x14]
 	mov r0, #0x48
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -818,7 +818,7 @@ ov54_021E5F40: ; 0x021E5F40
 	ldr r2, [r4, #0x14]
 	mov r0, #0x48
 	mov r3, #2
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -828,7 +828,7 @@ ov54_021E5F40: ; 0x021E5F40
 	str r0, [sp, #0xc]
 	ldr r2, [r4, #0x14]
 	mov r0, #0x48
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	ldr r3, [r4, #0x10]
 	ldr r0, [r4, #0x14]
 	lsl r3, r3, #0x1b
@@ -1028,7 +1028,7 @@ ov54_021E6164: ; 0x021E6164
 _021E6180:
 	lsl r4, r6, #4
 	add r0, r5, r4
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, r4
 	add r1, r7, #0
 	bl FillWindowPixelBuffer

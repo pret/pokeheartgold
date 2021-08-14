@@ -1861,7 +1861,7 @@ ov101_021E857C: ; 0x021E857C
 	add r5, r6, r0
 _021E8588:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -13715,7 +13715,7 @@ ov101_021EE210: ; 0x021EE210
 	add r5, r0, r1
 _021EE21A:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -18280,7 +18280,7 @@ ov101_021F05CC: ; 0x021F05CC
 	add r5, #0x48
 _021F05D4:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -19003,7 +19003,7 @@ _021F0B48:
 	ldr r0, [r0, #0x74]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 _021F0B6C:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
@@ -27878,7 +27878,7 @@ ov101_021F4E48: ; 0x021F4E48
 	add r5, #0x30
 _021F4E56:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1

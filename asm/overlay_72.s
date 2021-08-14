@@ -6755,7 +6755,7 @@ ov72_0223AD64: ; 0x0223AD64
 	add r5, r6, r0
 _0223AD6E:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -7263,7 +7263,7 @@ _0223B130:
 	str r0, [sp, #0x10]
 	ldrb r1, [r1]
 	ldr r0, [r4]
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	ldr r2, [sp, #0x18]
 	mov r5, #3
 	ldr r7, _0223B1C4 ; =0x00000FFF
@@ -7427,10 +7427,10 @@ ov72_0223B2C0: ; 0x0223B2C0
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x18
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	add r0, #8
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	add r0, #0x18
 	bl RemoveWindow

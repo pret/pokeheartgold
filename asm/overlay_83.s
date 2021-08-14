@@ -18663,7 +18663,7 @@ _022476C0:
 	mov r1, #0x27
 	mov r2, #1
 	add r3, sp, #0x1c
-	bl sub_020079BC
+	bl GfGfxLoader_GetCharData
 	add r6, r0, #0
 	ldr r0, [sp, #0x1c]
 	mov r2, #0x32
@@ -18702,7 +18702,7 @@ _022476EA:
 	add r0, r7, #0
 	add r1, r6, #0
 	mov r2, #5
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x40
@@ -19028,7 +19028,7 @@ ov83_02247944: ; 0x02247944
 	sub sp, #8
 	add r5, r1, #0
 	add r4, r0, #0
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	add r1, r0, #0
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18

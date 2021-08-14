@@ -2701,7 +2701,7 @@ ov109_021E6DBC: ; 0x021E6DBC
 	add r5, #0x50
 _021E6DC6:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1

@@ -881,7 +881,7 @@ ov91_0225CBE4: ; 0x0225CBE4
 	str r0, [sp, #4]
 	mov r0, #0xd4
 	add r2, r1, #0
-	bl sub_02007AC4
+	bl GfGfxLoader_LoadFromNarc_GetSizeOut
 	str r0, [r7, #0x4c]
 	ldr r0, [sp, #8]
 	mov r1, #0x18

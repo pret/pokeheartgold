@@ -9804,7 +9804,7 @@ ov02_0224A598: ; 0x0224A598
 	bl NARC_AllocAndReadWholeMember
 	add r1, r4, #0
 	add r6, r0, #0
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r3, [r4]
 	mov r0, #0
 	str r0, [sp]
@@ -9812,7 +9812,7 @@ ov02_0224A598: ; 0x0224A598
 	ldr r3, [r3, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r6, #0
 	bl FreeToHeap
 	add sp, #4
@@ -9843,14 +9843,14 @@ ov02_0224A5D0: ; 0x0224A5D0
 	bl NARC_AllocAndReadWholeMember
 	add r1, r4, #0
 	add r6, r0, #0
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldr r3, [r4]
 	add r0, r5, #0
 	add r2, r3, #0
 	ldr r3, [r3, #8]
 	mov r1, #3
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	mov r0, #0x20
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25120,7 +25120,7 @@ _022519D4:
 	mov r0, #0xae
 	mov r2, #0
 	add r3, r5, #0
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r1, _02251B04 ; =0x02253B3C
 	ldr r3, [sp, #0x14]
 	str r0, [r5, #0x30]
@@ -25130,7 +25130,7 @@ _022519D4:
 	mov r0, #0xae
 	mov r2, #0
 	add r3, r3, r7
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	str r0, [r5, #0x48]
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -25143,14 +25143,14 @@ _022519D4:
 	ldr r3, [r3, #8]
 	mov r1, #2
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r3, [r6, #0x18]
 	ldr r0, [r6, #0x64]
 	add r2, r3, #0
 	ldr r3, [r3, #8]
 	mov r1, #3
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	mov r0, #0x20
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25181,7 +25181,7 @@ _022519D4:
 	mov r0, #0xae
 	mov r1, #0x35
 	mov r3, #2
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25192,7 +25192,7 @@ _022519D4:
 	mov r0, #0xae
 	mov r1, #0x35
 	mov r3, #3
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #4
@@ -25201,7 +25201,7 @@ _022519D4:
 	mov r1, #0x36
 	mov r2, #0
 	mov r3, #0xc0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	ldr r0, _02251B08 ; =ov02_02251BC4
 	ldr r1, [sp, #0x10]
 	mov r2, #0

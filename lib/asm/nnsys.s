@@ -2753,13 +2753,13 @@ sub_020B6CDC: ; 0x020B6CDC
 _020B6D14: .word 0x41424E4B
 	arm_func_end sub_020B6CDC
 
-	arm_func_start sub_020B6D18
-sub_020B6D18: ; 0x020B6D18
+	arm_func_start NNS_G2dGetUnpackedAnimBank
+NNS_G2dGetUnpackedAnimBank: ; 0x020B6D18
 	ldr ip, _020B6D20 ; =sub_020B6CDC
 	bx ip
 	.align 2, 0
 _020B6D20: .word sub_020B6CDC
-	arm_func_end sub_020B6D18
+	arm_func_end NNS_G2dGetUnpackedAnimBank
 
 	arm_func_start sub_020B6D24
 sub_020B6D24: ; 0x020B6D24
@@ -2895,8 +2895,8 @@ sub_020B6EB8: ; 0x020B6EB8
 _020B6EC4: .word sub_020B7254
 	arm_func_end sub_020B6EB8
 
-	arm_func_start sub_020B6EC8
-sub_020B6EC8: ; 0x020B6EC8
+	arm_func_start NNS_G2dGetUnpackedCellBank
+NNS_G2dGetUnpackedCellBank: ; 0x020B6EC8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	ldr r1, _020B6F00 ; =0x4345424B
@@ -2913,7 +2913,7 @@ sub_020B6EC8: ; 0x020B6EC8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020B6F00: .word 0x4345424B
-	arm_func_end sub_020B6EC8
+	arm_func_end NNS_G2dGetUnpackedCellBank
 
 	arm_func_start sub_020B6F04
 sub_020B6F04: ; 0x020B6F04
@@ -3051,8 +3051,8 @@ sub_020B7090: ; 0x020B7090
 	bx lr
 	arm_func_end sub_020B7090
 
-	arm_func_start sub_020B70A8
-sub_020B70A8: ; 0x020B70A8
+	arm_func_start NNS_G2dGetUnpackedCharacterData
+NNS_G2dGetUnpackedCharacterData: ; 0x020B70A8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	ldr r1, _020B70E0 ; =0x43484152
@@ -3069,7 +3069,7 @@ sub_020B70A8: ; 0x020B70A8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020B70E0: .word 0x43484152
-	arm_func_end sub_020B70A8
+	arm_func_end NNS_G2dGetUnpackedCharacterData
 
 	arm_func_start sub_020B70E4
 sub_020B70E4: ; 0x020B70E4
@@ -3079,8 +3079,8 @@ sub_020B70E4: ; 0x020B70E4
 	bx lr
 	arm_func_end sub_020B70E4
 
-	arm_func_start sub_020B70F4
-sub_020B70F4: ; 0x020B70F4
+	arm_func_start NNS_G2dGetUnpackedBGCharacterData
+NNS_G2dGetUnpackedBGCharacterData: ; 0x020B70F4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	ldr r1, _020B712C ; =0x43484152
@@ -3097,7 +3097,7 @@ sub_020B70F4: ; 0x020B70F4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020B712C: .word 0x43484152
-	arm_func_end sub_020B70F4
+	arm_func_end NNS_G2dGetUnpackedBGCharacterData
 
 	arm_func_start sub_020B7130
 sub_020B7130: ; 0x020B7130
@@ -3127,8 +3127,8 @@ NNS_G2dGetUnpackedPaletteData: ; 0x020B7140
 _020B7178: .word 0x504C5454
 	arm_func_end NNS_G2dGetUnpackedPaletteData
 
-	arm_func_start sub_020B717C
-sub_020B717C: ; 0x020B717C
+	arm_func_start NNS_G2dGetUnpackedPaletteCompressInfo
+NNS_G2dGetUnpackedPaletteCompressInfo: ; 0x020B717C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	ldr r1, _020B71B4 ; =0x50434D50
@@ -3145,7 +3145,7 @@ sub_020B717C: ; 0x020B717C
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020B71B4: .word 0x50434D50
-	arm_func_end sub_020B717C
+	arm_func_end NNS_G2dGetUnpackedPaletteCompressInfo
 
 	arm_func_start sub_020B71B8
 sub_020B71B8: ; 0x020B71B8
@@ -3163,8 +3163,8 @@ sub_020B71C8: ; 0x020B71C8
 	bx lr
 	arm_func_end sub_020B71C8
 
-	arm_func_start sub_020B71D8
-sub_020B71D8: ; 0x020B71D8
+	arm_func_start NNS_G2dGetUnpackedScreenData
+NNS_G2dGetUnpackedScreenData: ; 0x020B71D8
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	ldr r1, _020B7208 ; =0x5343524E
@@ -3179,7 +3179,7 @@ sub_020B71D8: ; 0x020B71D8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020B7208: .word 0x5343524E
-	arm_func_end sub_020B71D8
+	arm_func_end NNS_G2dGetUnpackedScreenData
 
 	arm_func_start sub_020B720C
 sub_020B720C: ; 0x020B720C
@@ -4807,8 +4807,8 @@ _020B86C4: .word 0xFFCFFFEF
 _020B86C8: .word 0x04001000
 	arm_func_end sub_020B84F8
 
-	arm_func_start sub_020B86CC
-sub_020B86CC: ; 0x020B86CC
+	arm_func_start NNS_G2dLoadPalette
+NNS_G2dLoadPalette: ; 0x020B86CC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	ldr r4, [sb, #0xc]
@@ -4877,10 +4877,10 @@ _020B87A0:
 	str r3, [r6, #4]
 	bl sub_020B806C
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020B86CC
+	arm_func_end NNS_G2dLoadPalette
 
-	arm_func_start sub_020B87C4
-sub_020B87C4: ; 0x020B87C4
+	arm_func_start NNS_G2dLoadPaletteEx
+NNS_G2dLoadPaletteEx: ; 0x020B87C4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov sl, r0
@@ -4978,7 +4978,7 @@ _020B88F8:
 	bl sub_020B806C
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020B87C4
+	arm_func_end NNS_G2dLoadPaletteEx
 
 	arm_func_start sub_020B8928
 sub_020B8928: ; 0x020B8928
@@ -23152,8 +23152,8 @@ _020C7F54:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020C7F18
 
-	arm_func_start sub_020C7F74
-sub_020C7F74: ; 0x020C7F74
+	arm_func_start NNS_SndPlayerSetPlayerVolume
+NNS_SndPlayerSetPlayerVolume: ; 0x020C7F74
 	mov r2, #0x24
 	mul r2, r0, r2
 	ldr r0, _020C7F88 ; =0x021DFDE4
@@ -23161,7 +23161,7 @@ sub_020C7F74: ; 0x020C7F74
 	bx lr
 	.align 2, 0
 _020C7F88: .word 0x021DFDE4
-	arm_func_end sub_020C7F74
+	arm_func_end NNS_SndPlayerSetPlayerVolume
 
 	arm_func_start sub_020C7F8C
 sub_020C7F8C: ; 0x020C7F8C

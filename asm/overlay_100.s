@@ -853,7 +853,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	add r1, r5, #0
 	ldr r0, [r0]
 	add r1, #0xc8
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	ldrb r1, [r5, #4]
 	cmp r1, #4
 	bne _021E5F9C

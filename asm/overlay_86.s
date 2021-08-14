@@ -3302,7 +3302,7 @@ ov86_021E73EC: ; 0x021E73EC
 	add r1, r5, #0
 	mov r2, #0
 	mov r3, #0x79
-	bl sub_02007AC4
+	bl GfGfxLoader_LoadFromNarc_GetSizeOut
 	ldr r1, [sp, #8]
 	lsr r1, r1, #1
 	str r1, [r4]

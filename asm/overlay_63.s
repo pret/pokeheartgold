@@ -1384,7 +1384,7 @@ _0221C908:
 	ldrh r0, [r1]
 	ldrh r1, [r1, #4]
 	mov r2, #1
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -6013,7 +6013,7 @@ _0221EF06:
 	ldr r0, [sp, #0x2c]
 	ldr r1, [sp, #0x34]
 	mov r2, #1
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	add r0, r5, #0
 	add r1, r5, #0
 	add r0, #0x9c

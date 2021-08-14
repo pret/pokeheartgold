@@ -508,7 +508,7 @@ sub_02003030: ; 0x02003030
 	mov r0, #0x10
 	mov r1, #7
 	add r2, r4, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end sub_02003030
@@ -525,7 +525,7 @@ sub_0200304C: ; 0x0200304C
 	mov r0, #0x10
 	mov r1, #8
 	add r2, r4, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end sub_0200304C

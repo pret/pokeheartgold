@@ -458,7 +458,7 @@ ov19_02259BC0: ; 0x02259BC0
 	add r2, r2, r3
 	mov r1, #7
 	lsl r3, r7, #6
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -576,7 +576,7 @@ ov19_02259D24: ; 0x02259D24
 	add r5, #0x3c
 _02259D2C:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -846,7 +846,7 @@ _02259F20:
 	mov r1, #7
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r4, r4, #1
 	cmp r4, #5
 	blt _02259F20

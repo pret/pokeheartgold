@@ -7446,7 +7446,7 @@ _0222D4CC:
 	ldr r0, [r4, #0x2c]
 	bl ov80_0223AF60
 	ldr r0, [r4, #0x28]
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, [r4, #0x28]
 	bl RemoveWindow
 	ldr r0, [r4, #0x28]
@@ -7580,7 +7580,7 @@ _0222D5E8:
 	ldr r0, [r4, #0x2c]
 	bl ov80_0223AF60
 	ldr r0, [r4, #0x28]
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, [r4, #0x28]
 	bl RemoveWindow
 	ldr r0, [r4, #0x28]
@@ -33526,7 +33526,7 @@ _02239EEE:
 	mov r3, #1
 	mov r1, #3
 	lsl r3, r3, #0x10
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldr r2, _02239F44 ; =0x00022009
 	add r3, r4, #0
 	ldrb r2, [r4, r2]
@@ -33537,7 +33537,7 @@ _02239EEE:
 	mov r3, #1
 	mov r1, #3
 	lsl r3, r3, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4, #4]
 	mov r1, #3
 	bl sub_0201EFBC

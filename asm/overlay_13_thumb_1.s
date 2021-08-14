@@ -14,7 +14,7 @@ ov13_0221BA00: ; 0x0221BA00
 _0221BA0C:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020C7F74
+	bl NNS_SndPlayerSetPlayerVolume
 	add r0, r5, #0
 	add r1, r6, #0
 	bl sub_020C7F8C

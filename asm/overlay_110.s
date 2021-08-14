@@ -1745,7 +1745,7 @@ ov110_021E6650: ; 0x021E6650
 	add r5, #0x4c
 _021E665A:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -2260,7 +2260,7 @@ ov110_021E6A44: ; 0x021E6A44
 	ldr r0, [r0, #0x14]
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add sp, #0x1c
 	pop {r4, r5, pc}
 _021E6A74:

@@ -775,7 +775,7 @@ ov121_021E5F58: ; 0x021E5F58
 	mov r1, #1
 	add r3, r2, #0
 	str r4, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -788,7 +788,7 @@ ov121_021E5F58: ; 0x021E5F58
 	add r2, r5, #0
 	add r3, r1, #0
 	str r4, [sp, #0xc]
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -801,7 +801,7 @@ ov121_021E5F58: ; 0x021E5F58
 	add r2, r5, #0
 	mov r3, #3
 	str r4, [sp, #0xc]
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	add r0, r5, #0
 	mov r1, #3
 	bl sub_0201BF7C
@@ -812,7 +812,7 @@ ov121_021E5F58: ; 0x021E5F58
 	mov r2, #4
 	add r3, r1, #0
 	str r4, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -825,7 +825,7 @@ ov121_021E5F58: ; 0x021E5F58
 	add r2, r5, #0
 	mov r3, #4
 	str r4, [sp, #0xc]
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -838,7 +838,7 @@ ov121_021E5F58: ; 0x021E5F58
 	add r2, r5, #0
 	add r3, r1, #0
 	str r4, [sp, #0xc]
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	add r0, r5, #0
 	mov r1, #4
 	bl sub_0201BF7C
@@ -1878,7 +1878,7 @@ ov121_021E67E4: ; 0x021E67E4
 	bl sub_0200E9BC
 	add r4, #0x54
 	add r0, r4, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov121_021E67E4

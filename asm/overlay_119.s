@@ -1754,7 +1754,7 @@ _0225FE64:
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2685,7 +2685,7 @@ _0226061E:
 	mov r0, #2
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #2
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]

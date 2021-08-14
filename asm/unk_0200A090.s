@@ -1493,7 +1493,7 @@ sub_0200AB0C: ; 0x0200AB0C
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	str r5, [r4, #4]
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
@@ -1530,7 +1530,7 @@ sub_0200AB50: ; 0x0200AB50
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020B6EC8
+	bl NNS_G2dGetUnpackedCellBank
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1546,7 +1546,7 @@ sub_0200AB6C: ; 0x0200AB6C
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020B6D18
+	bl NNS_G2dGetUnpackedAnimBank
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

@@ -888,7 +888,7 @@ _021E5FC6:
 	mov r0, #0xf1
 	lsl r0, r0, #2
 	add r0, r5, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	mov r1, #0
 	bl ov108_021E767C
@@ -3145,7 +3145,7 @@ ov108_021E71EC: ; 0x021E71EC
 	add r5, r5, r0
 _021E720A:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -3697,7 +3697,7 @@ ov108_021E767C: ; 0x021E767C
 	ldr r0, [r5, r0]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, _021E76FC ; =0x000004D8
 	lsl r3, r4, #1
 	add r2, r4, r3
@@ -4215,7 +4215,7 @@ _021E7AA6:
 	ldr r3, [sp, #0x1c]
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -4279,7 +4279,7 @@ _021E7B1A:
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
 	add r5, r5, #1
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021E7B1A
@@ -4333,7 +4333,7 @@ ov108_021E7B74: ; 0x021E7B74
 	ldr r2, [r2, #0x14]
 	mov r1, #5
 	lsl r3, r3, #0xc
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r6, #0
 	bl FreeToHeap
 	add sp, #8
@@ -4840,7 +4840,7 @@ ov108_021E7F7C: ; 0x021E7F7C
 	ldr r0, [r6, r0]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]
@@ -8666,7 +8666,7 @@ ov108_021E9DE0: ; 0x021E9DE0
 	add r5, r5, r0
 _021E9DF2:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -8889,7 +8889,7 @@ _021E9FA4:
 	mov r2, #0
 	ldr r0, [r5, r0]
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #5
 	str r0, [sp]
 	mov r0, #0x20
@@ -8903,7 +8903,7 @@ _021E9FA4:
 	ldr r0, [r5, r0]
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18
@@ -8965,7 +8965,7 @@ ov108_021EA040: ; 0x021EA040
 	ldr r0, [r5, r0]
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, _021EA248 ; =0x00000454
 	mov r4, #0
 	add r7, r5, r0

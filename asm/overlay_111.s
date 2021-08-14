@@ -566,13 +566,13 @@ ov111_021E5D2C: ; 0x021E5D2C
 	bl sub_0201EE88
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	str r0, [sp, #0x18]
 	add r0, r4, #0
-	bl sub_0201EE98
+	bl GetWindowX
 	str r0, [sp, #0x10]
 	add r0, r4, #0
-	bl sub_0201EE9C
+	bl GetWindowY
 	str r0, [sp, #0x14]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -637,7 +637,7 @@ _021E5DAC:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x18]
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	cmp r4, #8
 	bhs _021E5DD2
 	mov r4, #0
@@ -1640,7 +1640,7 @@ _021E65E0:
 	bl sub_0201EE88
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	str r0, [sp]
 	mov r0, #0x74
 	ldrsh r1, [r5, r0]
@@ -1757,7 +1757,7 @@ _021E66B0:
 	add r4, #0xc
 _021E66BE:
 	add r0, r4, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl RemoveWindow
 	add r5, r5, #1
@@ -2219,7 +2219,7 @@ _021E6A0A:
 	bl sub_0200E9BC
 	add r0, r4, #0
 	add r0, #0x1c
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r4, #0x1c
 	add r0, r4, #0
 	bl RemoveWindow
@@ -2305,7 +2305,7 @@ _021E6A92:
 	mov r3, #2
 	bl sub_0201D40C
 	add r0, r4, #0
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	add r7, r0, #0
 	ldr r0, [sp, #0x40]
 	bl sub_0202ADCC

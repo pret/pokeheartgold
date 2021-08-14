@@ -3789,13 +3789,13 @@ _0223FC9E:
 	strb r0, [r4, #0x13]
 	add r0, r4, #0
 	add r0, #0x60
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	add r0, #0xa0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	add r0, #0xb0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	add r0, #0x50
 	mov r1, #0
@@ -3805,16 +3805,16 @@ _0223FC9E:
 	bl sub_0201D5C8
 	add r0, r4, #0
 	add r0, #0x70
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	add r0, #0x80
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	add r0, #0x90
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	add r0, #0xd0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _0223FFF0 ; =0x00000474
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -8584,7 +8584,7 @@ ov81_02242218: ; 0x02242218
 	mov r0, #0x14
 	mov r2, #0
 	add r3, sp, #0x24
-	bl sub_020079BC
+	bl GfGfxLoader_GetCharData
 	str r0, [sp, #0x20]
 	mov r0, #0x12
 	lsl r0, r0, #6
@@ -10461,7 +10461,7 @@ ov81_02243028: ; 0x02243028
 	sub sp, #8
 	add r5, r1, #0
 	add r4, r0, #0
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	add r1, r0, #0
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
@@ -10665,7 +10665,7 @@ _02243196:
 	mov r1, #5
 	lsr r2, r2, #0x10
 	add r3, r4, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -10716,7 +10716,7 @@ _022431F4:
 	add r0, r4, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r4, #0
 	mov r1, #5
 	bl sub_0201EFBC

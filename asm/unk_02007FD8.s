@@ -86,7 +86,7 @@ _0200805A:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	add r1, sp, #0xc
 	str r0, [sp, #4]
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, [sp, #0xc]
 	mov r1, #0xc3
 	ldr r0, [r0, #4]
@@ -2904,7 +2904,7 @@ _02009466:
 	add r0, r4, r0
 	mov r2, #0
 	add r3, r4, r3
-	bl sub_020B86CC
+	bl NNS_G2dLoadPalette
 _020094A6:
 	pop {r4, pc}
 	.balign 4, 0
@@ -3005,7 +3005,7 @@ _02009520:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	add r1, sp, #0x58
 	str r0, [sp, #0x4c]
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, [sp, #0x58]
 	mov r1, #0xc3
 	ldr r0, [r0, #4]

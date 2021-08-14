@@ -1035,7 +1035,7 @@ _021E6150:
 	ldr r0, [r5, #4]
 	add r1, r4, #0
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r5, #4]
 	add r1, r4, #0
 	bl sub_0201EFBC
@@ -1979,7 +1979,7 @@ ov18_021E6868: ; 0x021E6868
 	mov r1, #0
 	add r2, #0xc
 	lsl r3, r3, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -2121,7 +2121,7 @@ _021E69C6:
 	mov r1, #0
 	mov r2, #0x16
 	mov r3, #3
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 _021E6A06:
 	add r0, r4, #0
 	bl ov18_021E6A70
@@ -3526,7 +3526,7 @@ ov18_021E7564: ; 0x021E7564
 	ldr r5, _021E7624 ; =_021F9774
 	ldr r0, [r6, #4]
 	mov r1, #2
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	add r4, r0, #0
 	ldrb r0, [r5]
 	ldrb r2, [r5, #1]
@@ -5644,7 +5644,7 @@ _021E86DE:
 	add r1, r3, r1
 	mov r0, #0x85
 	mov r3, #0x25
-	bl sub_02007AC4
+	bl GfGfxLoader_LoadFromNarc_GetSizeOut
 	str r0, [r4]
 	ldr r0, [sp, #8]
 	lsr r0, r0, #2
@@ -6324,7 +6324,7 @@ ov18_021E8B94: ; 0x021E8B94
 	mov r0, #0x85
 	mov r1, #1
 	mov r3, #0x25
-	bl sub_02007AC4
+	bl GfGfxLoader_LoadFromNarc_GetSizeOut
 	ldr r1, _021E8BCC ; =0x0000190C
 	mov r3, #0x25
 	str r0, [r4, r1]
@@ -6334,7 +6334,7 @@ ov18_021E8B94: ; 0x021E8B94
 	str r0, [sp, #4]
 	mov r0, #0x85
 	add r2, r1, #0
-	bl sub_02007AC4
+	bl GfGfxLoader_LoadFromNarc_GetSizeOut
 	ldr r1, _021E8BD0 ; =0x00001908
 	str r0, [r4, r1]
 	add sp, #0xc
@@ -9145,7 +9145,7 @@ ov18_021EA350: ; 0x021EA350
 	ldr r0, [r5, #4]
 	lsr r1, r1, #0x18
 	add r4, r2, #0
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	add r2, r0, #0
 	ldr r0, [r5, #8]
 	add r1, r4, #0
@@ -20625,12 +20625,12 @@ ov18_021F006C: ; 0x021F006C
 	ldr r1, [sp]
 	ldr r0, [sp, #0x10]
 	add r0, r1, r0
-	bl sub_0201EE98
+	bl GetWindowX
 	add r6, r0, #0
 	ldr r1, [sp]
 	ldr r0, [sp, #0x10]
 	add r0, r1, r0
-	bl sub_0201EE9C
+	bl GetWindowY
 	add r7, r0, #0
 	ldr r1, [sp]
 	ldr r0, [sp, #0x10]
@@ -21127,10 +21127,10 @@ _021F0480:
 	add r0, r6, r7
 	bl sub_0201D8A0
 	add r0, r6, r7
-	bl sub_0201EE98
+	bl GetWindowX
 	str r0, [sp, #0x14]
 	add r0, r6, r7
-	bl sub_0201EE9C
+	bl GetWindowY
 	add r3, r0, #0
 	ldr r2, [sp, #0x14]
 	add r1, r4, #0
@@ -21762,10 +21762,10 @@ _021F0994:
 	add r0, r6, r7
 	bl sub_0201D8A0
 	add r0, r6, r7
-	bl sub_0201EE98
+	bl GetWindowX
 	str r0, [sp, #0x14]
 	add r0, r6, r7
-	bl sub_0201EE9C
+	bl GetWindowY
 	add r3, r0, #0
 	ldr r2, [sp, #0x14]
 	add r1, r4, #0
@@ -23990,7 +23990,7 @@ _021F1AC8:
 	ldrh r1, [r1, #0x14]
 	mov r2, #5
 	add r3, r4, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x85
 	lsl r0, r0, #4
 	lsl r2, r4, #0xf
@@ -33882,7 +33882,7 @@ _021F6A22:
 	mov r1, #7
 	add r2, r4, #0
 	lsl r3, r3, #8
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r7, #0
@@ -36857,7 +36857,7 @@ _021F8178:
 	str r1, [sp, #4]
 	add r1, r5, #0
 	mov r3, #0x25
-	bl sub_02007AC4
+	bl GfGfxLoader_LoadFromNarc_GetSizeOut
 	ldr r1, [sp, #8]
 	lsr r1, r1, #1
 	str r1, [r4]
@@ -39626,7 +39626,7 @@ ov18_021F9694: ; 0x021F9694
 	add r0, r6, #0
 	mov r2, #1
 	add r3, sp, #4
-	bl sub_020079BC
+	bl GfGfxLoader_GetCharData
 	add r6, r0, #0
 	ldr r0, [sp, #4]
 	mov r1, #0x80

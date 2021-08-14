@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start sub_020078F0
-sub_020078F0: ; 0x020078F0
+	thumb_func_start GfGfxLoader_LoadCharData
+GfGfxLoader_LoadCharData: ; 0x020078F0
 	push {r3, r4, r5, lr}
 	add r5, r2, #0
 	mov r2, #0
@@ -18,13 +18,13 @@ sub_020078F0: ; 0x020078F0
 	str r1, [sp]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02007D2C
+	bl GfGfxLoader_LoadCharDataInternal
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_020078F0
+	thumb_func_end GfGfxLoader_LoadCharData
 
-	thumb_func_start sub_02007914
-sub_02007914: ; 0x02007914
+	thumb_func_start GfGfxLoader_LoadScrnData
+GfGfxLoader_LoadScrnData: ; 0x02007914
 	push {r3, r4, r5, lr}
 	add r5, r2, #0
 	mov r2, #1
@@ -38,13 +38,13 @@ sub_02007914: ; 0x02007914
 	str r1, [sp]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02007D70
+	bl GfGfxLoader_LoadScrnDataInternal
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02007914
+	thumb_func_end GfGfxLoader_LoadScrnData
 
-	thumb_func_start sub_02007938
-sub_02007938: ; 0x02007938
+	thumb_func_start GfGfxLoader_GXLoadPal
+GfGfxLoader_GXLoadPal: ; 0x02007938
 	push {lr}
 	sub sp, #0xc
 	str r3, [sp]
@@ -53,13 +53,13 @@ sub_02007938: ; 0x02007938
 	ldr r3, [sp, #0x14]
 	str r3, [sp, #8]
 	mov r3, #0
-	bl sub_02007950
+	bl GfGfxLoader_GXLoadPalWithSrcOffset
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02007938
+	thumb_func_end GfGfxLoader_GXLoadPal
 
-	thumb_func_start sub_02007950
-sub_02007950: ; 0x02007950
+	thumb_func_start GfGfxLoader_GXLoadPalWithSrcOffset
+GfGfxLoader_GXLoadPalWithSrcOffset: ; 0x02007950
 	push {r3, r4, r5, lr}
 	add r5, r2, #0
 	add r4, r3, #0
@@ -73,13 +73,13 @@ sub_02007950: ; 0x02007950
 	str r1, [sp]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02007DD0
+	bl GfGfxLoader_GXLoadPalWithSrcOffsetInternal
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02007950
+	thumb_func_end GfGfxLoader_GXLoadPalWithSrcOffset
 
-	thumb_func_start sub_02007974
-sub_02007974: ; 0x02007974
+	thumb_func_start GfGfxLoader_PartiallyLoadPalette
+GfGfxLoader_PartiallyLoadPalette: ; 0x02007974
 	push {r3, r4, r5, lr}
 	add r5, r2, #0
 	add r4, r3, #0
@@ -91,13 +91,13 @@ sub_02007974: ; 0x02007974
 	ldr r3, [sp, #0x14]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02007EB0
+	bl GfGfxLoader_PartiallyLoadPaletteInternal
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02007974
+	thumb_func_end GfGfxLoader_PartiallyLoadPalette
 
-	thumb_func_start sub_02007994
-sub_02007994: ; 0x02007994
+	thumb_func_start GfGfxLoader_LoadImageMapping
+GfGfxLoader_LoadImageMapping: ; 0x02007994
 	push {r4, lr}
 	sub sp, #8
 	add r4, r3, #0
@@ -112,14 +112,14 @@ sub_02007994: ; 0x02007994
 	ldr r3, [sp, #0x14]
 	str r1, [sp, #4]
 	add r1, r4, #0
-	bl sub_02007F00
+	bl GfGfxLoader_LoadImageMappingInternal
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02007994
+	thumb_func_end GfGfxLoader_LoadImageMapping
 
-	thumb_func_start sub_020079BC
-sub_020079BC: ; 0x020079BC
+	thumb_func_start GfGfxLoader_GetCharData
+GfGfxLoader_GetCharData: ; 0x020079BC
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r3, #0
@@ -128,14 +128,14 @@ sub_020079BC: ; 0x020079BC
 	ldr r3, [sp, #0x10]
 	bl GfGfxLoader_LoadFromNarc
 	add r1, r4, #0
-	bl sub_02007F48
+	bl GfGfxLoader_GetCharDataInternal
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020079BC
+	thumb_func_end GfGfxLoader_GetCharData
 
-	thumb_func_start sub_020079D8
-sub_020079D8: ; 0x020079D8
+	thumb_func_start GfGfxLoader_GetScrnData
+GfGfxLoader_GetScrnData: ; 0x020079D8
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r3, #0
@@ -144,11 +144,11 @@ sub_020079D8: ; 0x020079D8
 	ldr r3, [sp, #0x10]
 	bl GfGfxLoader_LoadFromNarc
 	add r1, r4, #0
-	bl sub_02007F64
+	bl GfGfxLoader_GetScrnDataInternal
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020079D8
+	thumb_func_end GfGfxLoader_GetScrnData
 
 	thumb_func_start GfGfxLoader_GetPlttData
 GfGfxLoader_GetPlttData: ; 0x020079F4
@@ -159,13 +159,13 @@ GfGfxLoader_GetPlttData: ; 0x020079F4
 	str r2, [sp]
 	bl GfGfxLoader_LoadFromNarc
 	add r1, r4, #0
-	bl GfGfxLoader_G2dGetUnpackedPaletteData
+	bl GfGfxLoader_GetPlttDataInternal
 	add sp, #4
 	pop {r3, r4, pc}
 	thumb_func_end GfGfxLoader_GetPlttData
 
-	thumb_func_start sub_02007A0C
-sub_02007A0C: ; 0x02007A0C
+	thumb_func_start GfGfxLoader_GetCellBank
+GfGfxLoader_GetCellBank: ; 0x02007A0C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r3, #0
@@ -174,14 +174,14 @@ sub_02007A0C: ; 0x02007A0C
 	ldr r3, [sp, #0x10]
 	bl GfGfxLoader_LoadFromNarc
 	add r1, r4, #0
-	bl sub_02007F9C
+	bl GfGfxLoader_GetCellBankInternal
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02007A0C
+	thumb_func_end GfGfxLoader_GetCellBank
 
-	thumb_func_start sub_02007A28
-sub_02007A28: ; 0x02007A28
+	thumb_func_start GfGfxLoader_GetAnimBank
+GfGfxLoader_GetAnimBank: ; 0x02007A28
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r3, #0
@@ -190,11 +190,11 @@ sub_02007A28: ; 0x02007A28
 	ldr r3, [sp, #0x10]
 	bl GfGfxLoader_LoadFromNarc
 	add r1, r4, #0
-	bl sub_02007FB8
+	bl GfGfxLoader_GetAnimBankInternal
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02007A28
+	thumb_func_end GfGfxLoader_GetAnimBank
 
 	thumb_func_start GfGfxLoader_LoadFromNarc
 GfGfxLoader_LoadFromNarc: ; 0x02007A44
@@ -262,8 +262,8 @@ _02007ABE:
 	.balign 4, 0
 	thumb_func_end GfGfxLoader_LoadFromNarc
 
-	thumb_func_start sub_02007AC4
-sub_02007AC4: ; 0x02007AC4
+	thumb_func_start GfGfxLoader_LoadFromNarc_GetSizeOut
+GfGfxLoader_LoadFromNarc_GetSizeOut: ; 0x02007AC4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	ldr r5, [sp, #0x24]
@@ -327,7 +327,7 @@ _02007B3E:
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02007AC4
+	thumb_func_end GfGfxLoader_LoadFromNarc_GetSizeOut
 
 	thumb_func_start sub_02007B44
 sub_02007B44: ; 0x02007B44
@@ -344,7 +344,7 @@ sub_02007B44: ; 0x02007B44
 	str r1, [sp]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02007D2C
+	bl GfGfxLoader_LoadCharDataInternal
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_02007B44
@@ -364,7 +364,7 @@ sub_02007B68: ; 0x02007B68
 	str r1, [sp]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02007D70
+	bl GfGfxLoader_LoadScrnDataInternal
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_02007B68
@@ -399,7 +399,7 @@ sub_02007BA4: ; 0x02007BA4
 	str r1, [sp]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02007DD0
+	bl GfGfxLoader_GXLoadPalWithSrcOffsetInternal
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_02007BA4
@@ -417,7 +417,7 @@ sub_02007BC8: ; 0x02007BC8
 	ldr r3, [sp, #0x14]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02007EB0
+	bl GfGfxLoader_PartiallyLoadPaletteInternal
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_02007BC8
@@ -438,7 +438,7 @@ sub_02007BE8: ; 0x02007BE8
 	ldr r3, [sp, #0x14]
 	str r1, [sp, #4]
 	add r1, r4, #0
-	bl sub_02007F00
+	bl GfGfxLoader_LoadImageMappingInternal
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -454,7 +454,7 @@ sub_02007C10: ; 0x02007C10
 	ldr r3, [sp, #0x10]
 	bl sub_02007C98
 	add r1, r4, #0
-	bl sub_02007F48
+	bl GfGfxLoader_GetCharDataInternal
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -470,7 +470,7 @@ sub_02007C2C: ; 0x02007C2C
 	ldr r3, [sp, #0x10]
 	bl sub_02007C98
 	add r1, r4, #0
-	bl sub_02007F64
+	bl GfGfxLoader_GetScrnDataInternal
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -485,7 +485,7 @@ sub_02007C48: ; 0x02007C48
 	str r2, [sp]
 	bl sub_02007C98
 	add r1, r4, #0
-	bl GfGfxLoader_G2dGetUnpackedPaletteData
+	bl GfGfxLoader_GetPlttDataInternal
 	add sp, #4
 	pop {r3, r4, pc}
 	thumb_func_end sub_02007C48
@@ -500,7 +500,7 @@ sub_02007C60: ; 0x02007C60
 	ldr r3, [sp, #0x10]
 	bl sub_02007C98
 	add r1, r4, #0
-	bl sub_02007F9C
+	bl GfGfxLoader_GetCellBankInternal
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -516,7 +516,7 @@ sub_02007C7C: ; 0x02007C7C
 	ldr r3, [sp, #0x10]
 	bl sub_02007C98
 	add r1, r4, #0
-	bl sub_02007FB8
+	bl GfGfxLoader_GetAnimBankInternal
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -602,8 +602,8 @@ _02007D26:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02007CAC
 
-	thumb_func_start sub_02007D2C
-sub_02007D2C: ; 0x02007D2C
+	thumb_func_start GfGfxLoader_LoadCharDataInternal
+GfGfxLoader_LoadCharDataInternal: ; 0x02007D2C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -614,7 +614,7 @@ sub_02007D2C: ; 0x02007D2C
 	cmp r5, #0
 	beq _02007D68
 	add r1, sp, #8
-	bl sub_020B70F4
+	bl NNS_G2dGetUnpackedBGCharacterData
 	cmp r0, #0
 	beq _02007D62
 	cmp r4, #0
@@ -629,7 +629,7 @@ _02007D50:
 	ldr r2, [r2, #0x14]
 	lsr r1, r1, #0x18
 	add r3, r4, #0
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 _02007D62:
 	add r0, r5, #0
 	bl FreeToHeap
@@ -638,10 +638,10 @@ _02007D68:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02007D2C
+	thumb_func_end GfGfxLoader_LoadCharDataInternal
 
-	thumb_func_start sub_02007D70
-sub_02007D70: ; 0x02007D70
+	thumb_func_start GfGfxLoader_LoadScrnDataInternal
+GfGfxLoader_LoadScrnDataInternal: ; 0x02007D70
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r0, #0
@@ -652,7 +652,7 @@ sub_02007D70: ; 0x02007D70
 	cmp r6, #0
 	beq _02007DCC
 	add r1, sp, #8
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	cmp r0, #0
 	beq _02007DC6
 	cmp r4, #0
@@ -663,7 +663,7 @@ _02007D94:
 	lsl r1, r5, #0x18
 	add r0, r7, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	cmp r0, #0
 	beq _02007DB2
 	ldr r2, [sp, #8]
@@ -672,7 +672,7 @@ _02007D94:
 	lsr r1, r1, #0x18
 	add r2, #0xc
 	add r3, r4, #0
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 _02007DB2:
 	ldr r0, [sp, #4]
 	lsl r1, r5, #0x18
@@ -682,17 +682,17 @@ _02007DB2:
 	lsr r1, r1, #0x18
 	add r2, #0xc
 	add r3, r4, #0
-	bl sub_0201BF94
+	bl BgCopyOrUncompressTilemapBufferRangeToVram
 _02007DC6:
 	add r0, r6, #0
 	bl FreeToHeap
 _02007DCC:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_02007D70
+	thumb_func_end GfGfxLoader_LoadScrnDataInternal
 
-	thumb_func_start sub_02007DD0
-sub_02007DD0: ; 0x02007DD0
+	thumb_func_start GfGfxLoader_GXLoadPalWithSrcOffsetInternal
+GfGfxLoader_GXLoadPalWithSrcOffsetInternal: ; 0x02007DD0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r0, [sp]
@@ -802,10 +802,10 @@ _02007EA6:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02007EAC: .word 0x020F5968
-	thumb_func_end sub_02007DD0
+	thumb_func_end GfGfxLoader_GXLoadPalWithSrcOffsetInternal
 
-	thumb_func_start sub_02007EB0
-sub_02007EB0: ; 0x02007EB0
+	thumb_func_start GfGfxLoader_PartiallyLoadPaletteInternal
+GfGfxLoader_PartiallyLoadPaletteInternal: ; 0x02007EB0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -815,7 +815,7 @@ sub_02007EB0: ; 0x02007EB0
 	cmp r5, #0
 	beq _02007EFC
 	add r1, sp, #8
-	bl sub_020B717C
+	bl NNS_G2dGetUnpackedPaletteCompressInfo
 	str r0, [sp, #4]
 	add r0, r5, #0
 	add r1, sp, #0xc
@@ -830,24 +830,24 @@ sub_02007EB0: ; 0x02007EB0
 	ldr r1, [sp, #8]
 	add r2, r7, #0
 	add r3, r6, #0
-	bl sub_020B87C4
+	bl NNS_G2dLoadPaletteEx
 	b _02007EF6
 _02007EEA:
 	ldr r0, [sp, #0xc]
 	add r1, r7, #0
 	add r2, r6, #0
 	add r3, r4, #0
-	bl sub_020B86CC
+	bl NNS_G2dLoadPalette
 _02007EF6:
 	add r0, r5, #0
 	bl FreeToHeap
 _02007EFC:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02007EB0
+	thumb_func_end GfGfxLoader_PartiallyLoadPaletteInternal
 
-	thumb_func_start sub_02007F00
-sub_02007F00: ; 0x02007F00
+	thumb_func_start GfGfxLoader_LoadImageMappingInternal
+GfGfxLoader_LoadImageMappingInternal: ; 0x02007F00
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -858,7 +858,7 @@ sub_02007F00: ; 0x02007F00
 	cmp r5, #0
 	beq _02007F3E
 	add r1, sp, #4
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	cmp r0, #0
 	beq _02007F38
 	cmp r4, #0
@@ -885,14 +885,14 @@ _02007F3E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02007F44: .word 0x020F5950
-	thumb_func_end sub_02007F00
+	thumb_func_end GfGfxLoader_LoadImageMappingInternal
 
-	thumb_func_start sub_02007F48
-sub_02007F48: ; 0x02007F48
+	thumb_func_start GfGfxLoader_GetCharDataInternal
+GfGfxLoader_GetCharDataInternal: ; 0x02007F48
 	push {r4, lr}
 	add r4, r0, #0
 	beq _02007F60
-	bl sub_020B70F4
+	bl NNS_G2dGetUnpackedBGCharacterData
 	cmp r0, #0
 	bne _02007F60
 	add r0, r4, #0
@@ -902,14 +902,14 @@ sub_02007F48: ; 0x02007F48
 _02007F60:
 	add r0, r4, #0
 	pop {r4, pc}
-	thumb_func_end sub_02007F48
+	thumb_func_end GfGfxLoader_GetCharDataInternal
 
-	thumb_func_start sub_02007F64
-sub_02007F64: ; 0x02007F64
+	thumb_func_start GfGfxLoader_GetScrnDataInternal
+GfGfxLoader_GetScrnDataInternal: ; 0x02007F64
 	push {r4, lr}
 	add r4, r0, #0
 	beq _02007F7C
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	cmp r0, #0
 	bne _02007F7C
 	add r0, r4, #0
@@ -919,10 +919,10 @@ sub_02007F64: ; 0x02007F64
 _02007F7C:
 	add r0, r4, #0
 	pop {r4, pc}
-	thumb_func_end sub_02007F64
+	thumb_func_end GfGfxLoader_GetScrnDataInternal
 
-	thumb_func_start GfGfxLoader_G2dGetUnpackedPaletteData
-GfGfxLoader_G2dGetUnpackedPaletteData: ; 0x02007F80
+	thumb_func_start GfGfxLoader_GetPlttDataInternal
+GfGfxLoader_GetPlttDataInternal: ; 0x02007F80
 	push {r4, lr}
 	add r4, r0, #0
 	beq _02007F98
@@ -936,14 +936,14 @@ GfGfxLoader_G2dGetUnpackedPaletteData: ; 0x02007F80
 _02007F98:
 	add r0, r4, #0
 	pop {r4, pc}
-	thumb_func_end GfGfxLoader_G2dGetUnpackedPaletteData
+	thumb_func_end GfGfxLoader_GetPlttDataInternal
 
-	thumb_func_start sub_02007F9C
-sub_02007F9C: ; 0x02007F9C
+	thumb_func_start GfGfxLoader_GetCellBankInternal
+GfGfxLoader_GetCellBankInternal: ; 0x02007F9C
 	push {r4, lr}
 	add r4, r0, #0
 	beq _02007FB4
-	bl sub_020B6EC8
+	bl NNS_G2dGetUnpackedCellBank
 	cmp r0, #0
 	bne _02007FB4
 	add r0, r4, #0
@@ -953,14 +953,14 @@ sub_02007F9C: ; 0x02007F9C
 _02007FB4:
 	add r0, r4, #0
 	pop {r4, pc}
-	thumb_func_end sub_02007F9C
+	thumb_func_end GfGfxLoader_GetCellBankInternal
 
-	thumb_func_start sub_02007FB8
-sub_02007FB8: ; 0x02007FB8
+	thumb_func_start GfGfxLoader_GetAnimBankInternal
+GfGfxLoader_GetAnimBankInternal: ; 0x02007FB8
 	push {r4, lr}
 	add r4, r0, #0
 	beq _02007FD0
-	bl sub_020B6D18
+	bl NNS_G2dGetUnpackedAnimBank
 	cmp r0, #0
 	bne _02007FD0
 	add r0, r4, #0
@@ -970,4 +970,4 @@ sub_02007FB8: ; 0x02007FB8
 _02007FD0:
 	add r0, r4, #0
 	pop {r4, pc}
-	thumb_func_end sub_02007FB8
+	thumb_func_end GfGfxLoader_GetAnimBankInternal

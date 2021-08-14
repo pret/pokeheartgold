@@ -3383,7 +3383,7 @@ ov92_0225E100: ; 0x0225E100
 	bl sub_0200E5D4
 	ldr r0, _0225E12C ; =0x00001FE0
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, _0225E12C ; =0x00001FE0
 	add r0, r4, r0
 	bl RemoveWindow
@@ -3701,7 +3701,7 @@ _0225E374:
 	add r1, r7, #0
 	bl sub_0200E5D4
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 _0225E398:

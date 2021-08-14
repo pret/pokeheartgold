@@ -2740,7 +2740,7 @@ ov43_0222B458: ; 0x0222B458
 	ldr r0, [r4]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
 	bl sub_0201EFBC
@@ -2754,7 +2754,7 @@ ov43_0222B458: ; 0x0222B458
 	ldr r0, [r4]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
 	bl sub_0201EFBC
@@ -5504,7 +5504,7 @@ _0222C9CC:
 	str r0, [sp, #8]
 	str r2, [sp, #0xc]
 	ldr r0, [r4]
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
 	bl sub_0201EFBC
@@ -5533,7 +5533,7 @@ _0222CA06:
 	str r0, [sp, #8]
 	str r2, [sp, #0xc]
 	ldr r0, [r4]
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
 	bl sub_0201EFBC
@@ -6364,7 +6364,7 @@ ov43_0222D090: ; 0x0222D090
 	ldr r0, [r4]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
 	bl sub_0201EFBC
@@ -6386,7 +6386,7 @@ ov43_0222D090: ; 0x0222D090
 	ldr r0, [r4]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
 	bl sub_0201EFBC
@@ -7300,7 +7300,7 @@ _0222D7BE:
 	ldr r0, [r5]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -7310,7 +7310,7 @@ _0222D7BE:
 	ldr r0, [r5]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -7320,7 +7320,7 @@ _0222D7BE:
 	ldr r0, [r5]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r5]
 	mov r1, #5
 	bl sub_0201EFBC
@@ -7598,7 +7598,7 @@ _0222DA0E:
 	add r0, r7, r0
 	add r1, r4, #0
 	add r3, r2, #0
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0x20
@@ -7610,7 +7610,7 @@ _0222DA0E:
 	ldr r1, [sp, #0x30]
 	mov r2, #4
 	lsl r3, r3, #4
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r1, #4
 	mov r0, #0xa
 	str r0, [sp]
@@ -8068,7 +8068,7 @@ ov43_0222DDD0: ; 0x0222DDD0
 	add r5, r0, r1
 _0222DDDA:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -9842,7 +9842,7 @@ _0222EC2E:
 	ldr r0, [r4]
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
 	bl sub_0201EFBC

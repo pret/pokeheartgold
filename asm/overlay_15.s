@@ -891,7 +891,7 @@ ov15_021F9AE4: ; 0x021F9AE4
 	mov r0, #0xf
 	mov r1, #7
 	mov r3, #2
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -902,7 +902,7 @@ ov15_021F9AE4: ; 0x021F9AE4
 	mov r0, #0xf
 	mov r1, #0x36
 	mov r3, #2
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	ldr r0, _021F9C60 ; =0x00000615
 	ldrb r0, [r4, r0]
 	cmp r0, #0
@@ -917,7 +917,7 @@ ov15_021F9AE4: ; 0x021F9AE4
 	mov r0, #0xf
 	mov r1, #0x5e
 	mov r3, #3
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	b _021F9B62
 _021F9B4A:
 	mov r0, #0
@@ -930,7 +930,7 @@ _021F9B4A:
 	mov r0, #0xf
 	mov r1, #0x5d
 	mov r3, #3
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 _021F9B62:
 	mov r2, #0
 	str r2, [sp]
@@ -939,7 +939,7 @@ _021F9B62:
 	mov r0, #0xf
 	mov r1, #8
 	add r3, r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #6
@@ -949,7 +949,7 @@ _021F9B62:
 	mov r1, #0x11
 	mov r2, #0
 	lsl r3, r3, #4
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r1, #0x16
 	mov r0, #0
 	lsl r1, r1, #4
@@ -985,7 +985,7 @@ _021F9B62:
 	mov r0, #0xf
 	mov r1, #0x26
 	mov r2, #4
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r1, #0x16
 	mov r0, #4
 	lsl r1, r1, #4
@@ -1000,7 +1000,7 @@ _021F9B62:
 	ldr r2, [r4]
 	mov r0, #0xf
 	mov r1, #0x2e
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	ldr r2, _021F9C6C ; =0x00000694
 	mov r0, #0xf
 	mov r1, #0x28
@@ -1027,7 +1027,7 @@ _021F9B62:
 	mov r0, #0xf
 	mov r1, #8
 	add r3, #0xfc
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #9
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -1070,7 +1070,7 @@ ov15_021F9C78: ; 0x021F9C78
 	mov r0, #0xf
 	mov r1, #0x36
 	mov r3, #2
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	add sp, #0x10
 	pop {r3, pc}
 _021F9C9E:
@@ -1084,7 +1084,7 @@ _021F9C9E:
 	mov r0, #0xf
 	mov r1, #9
 	mov r3, #2
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	add sp, #0x10
 	pop {r3, pc}
 	.balign 4, 0
@@ -8127,7 +8127,7 @@ ov15_021FD43C: ; 0x021FD43C
 	lsr r1, r1, #0x18
 	add r6, r0, #0
 	add r4, r2, #0
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	str r0, [sp, #0x14]
 	cmp r4, #6
 	beq _021FD4B6
@@ -8175,7 +8175,7 @@ _021FD48E:
 	str r0, [sp, #0xc]
 	ldrb r3, [r5, #3]
 	add r0, r6, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 _021FD4AE:
 	add r7, r7, #1
 	add r5, #8
@@ -8198,7 +8198,7 @@ ov15_021FD4C0: ; 0x021FD4C0
 	lsr r1, r1, #0x18
 	add r6, r0, #0
 	str r3, [sp, #0x14]
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	str r0, [sp, #0x18]
 	sub r0, r5, #1
 	ldr r1, _021FD56C ; =0x02201340
@@ -8221,7 +8221,7 @@ _021FD4E6:
 	str r0, [sp, #0xc]
 	ldrb r3, [r5]
 	add r0, r6, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -8314,7 +8314,7 @@ _021FD5A4:
 	mov r1, #0x2b
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r5, r0, #0
 	add r2, r3, #0
@@ -8322,10 +8322,10 @@ _021FD5A4:
 	ldr r3, [r3, #8]
 	mov r1, #5
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	ldr r1, [sp, #4]
 	ldr r1, [r1, #8]
 	bl DC_FlushRange
@@ -8344,7 +8344,7 @@ _021FD5A4:
 	mov r1, #0x27
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r5, r0, #0
 	add r2, r3, #0
@@ -8352,7 +8352,7 @@ _021FD5A4:
 	ldr r3, [r3, #8]
 	mov r1, #6
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #6
 	bl sub_0201EFBC
@@ -8372,7 +8372,7 @@ _021FD62E:
 	mov r1, #0x2c
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r5, r0, #0
 	add r2, r3, #0
@@ -8380,10 +8380,10 @@ _021FD62E:
 	ldr r3, [r3, #8]
 	mov r1, #5
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201CC08
+	bl GetBgTilemapBuffer
 	ldr r1, [sp, #4]
 	ldr r1, [r1, #8]
 	bl DC_FlushRange
@@ -8403,7 +8403,7 @@ _021FD62E:
 	mov r1, #0x2a
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r5, r0, #0
 	add r2, r3, #0
@@ -8411,7 +8411,7 @@ _021FD62E:
 	ldr r3, [r3, #8]
 	mov r1, #6
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #6
 	bl sub_0201EFBC
@@ -8435,7 +8435,7 @@ _021FD6C6:
 	mov r1, #0x2d
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r5, r0, #0
 	add r2, r3, #0
@@ -8443,7 +8443,7 @@ _021FD6C6:
 	ldr r3, [r3, #8]
 	mov r1, #6
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #6
 	bl sub_0201EFBC
@@ -8465,7 +8465,7 @@ _021FD70C:
 	mov r1, #0x34
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r5, r0, #0
 	add r2, r3, #0
@@ -8473,7 +8473,7 @@ _021FD70C:
 	ldr r3, [r3, #8]
 	mov r1, #6
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #6
 	bl sub_0201EFBC
@@ -8488,7 +8488,7 @@ _021FD740:
 	mov r1, #0x35
 	mov r2, #0
 	add r3, sp, #4
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r3, [sp, #4]
 	add r5, r0, #0
 	add r2, r3, #0
@@ -8496,7 +8496,7 @@ _021FD740:
 	ldr r3, [r3, #8]
 	mov r1, #6
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #6
 	bl sub_0201EFBC
@@ -10243,7 +10243,7 @@ _021FE534:
 	mov r1, #3
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #1
@@ -10259,7 +10259,7 @@ _021FE534:
 	mov r1, #3
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -10776,7 +10776,7 @@ ov15_021FE990: ; 0x021FE990
 	bl NARC_AllocAndReadWholeMember
 	add r1, r4, #0
 	add r5, r0, #0
-	bl sub_020B70F4
+	bl NNS_G2dGetUnpackedBGCharacterData
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -10807,7 +10807,7 @@ ov15_021FE9B0: ; 0x021FE9B0
 	add r0, r5, #0
 	ldr r1, [r1, #0x14]
 	add r3, r2, #0
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 	mov r0, #6
 	add r1, r6, #0
 	bl FreeToHeapExplicit
@@ -10843,7 +10843,7 @@ ov15_021FE9F0: ; 0x021FE9F0
 	add r0, r5, #0
 	ldr r1, [r1, #0x14]
 	mov r2, #0x18
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 	b _021FEA50
 _021FEA2C:
 	mov r0, #0x68
@@ -10862,7 +10862,7 @@ _021FEA2C:
 	add r0, r5, #0
 	ldr r1, [r1, #0x14]
 	mov r2, #0x40
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 _021FEA50:
 	mov r0, #6
 	add r1, r7, #0

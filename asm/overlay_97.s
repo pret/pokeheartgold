@@ -1452,7 +1452,7 @@ ov97_0221F14C: ; 0x0221F14C
 	mov r2, #4
 	add r3, r1, #0
 	str r4, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1462,7 +1462,7 @@ ov97_0221F14C: ; 0x0221F14C
 	add r2, r5, #0
 	mov r3, #7
 	str r4, [sp, #0xc]
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -1475,7 +1475,7 @@ ov97_0221F14C: ; 0x0221F14C
 	add r2, r5, #0
 	mov r3, #7
 	str r4, [sp, #0xc]
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	add r0, r5, #0
 	mov r1, #7
 	bl sub_0201BF7C
@@ -1491,7 +1491,7 @@ ov97_0221F14C: ; 0x0221F14C
 	add r2, r5, #0
 	mov r3, #6
 	str r4, [sp, #0xc]
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	add r0, r5, #0
 	mov r1, #6
 	bl sub_0201BF7C

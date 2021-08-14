@@ -940,7 +940,7 @@ ov62_021E604C: ; 0x021E604C
 	add r2, r1, #0
 	add r3, r1, #0
 	str r4, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -950,7 +950,7 @@ ov62_021E604C: ; 0x021E604C
 	mov r0, #0xb0
 	mov r1, #4
 	mov r3, #5
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -960,7 +960,7 @@ ov62_021E604C: ; 0x021E604C
 	ldr r2, [r5]
 	mov r0, #0xb0
 	add r3, r1, #0
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0xb0
@@ -968,7 +968,7 @@ ov62_021E604C: ; 0x021E604C
 	mov r2, #4
 	mov r3, #0
 	str r4, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -978,7 +978,7 @@ ov62_021E604C: ; 0x021E604C
 	mov r0, #0xb0
 	mov r1, #2
 	mov r3, #1
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -988,7 +988,7 @@ ov62_021E604C: ; 0x021E604C
 	mov r0, #0xb0
 	mov r1, #3
 	mov r3, #1
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov62_021E604C
@@ -1085,7 +1085,7 @@ ov62_021E6178: ; 0x021E6178
 	add r6, r4, #0
 _021E6182:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	add r1, r6, #0
 	bl FillWindowPixelBuffer

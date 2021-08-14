@@ -1841,7 +1841,7 @@ ov113_021E6754: ; 0x021E6754
 	add r5, #0x68
 _021E675E:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1

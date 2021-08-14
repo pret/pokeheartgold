@@ -3585,7 +3585,7 @@ _021EE49A:
 	add r0, r6, r7
 	add r1, #8
 	add r3, r2, #0
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 	mov r0, #8
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3601,7 +3601,7 @@ _021EE49A:
 	add r0, r6, r7
 	add r1, #0x28
 	add r3, r2, #0
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 	ldr r0, [sp, #0x1c]
 	add r4, #8
 	add r0, r0, #1

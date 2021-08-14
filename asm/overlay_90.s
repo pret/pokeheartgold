@@ -3938,7 +3938,7 @@ _0225A558:
 	strh r0, [r5, #0x2e]
 	b _0225A5B8
 _0225A586:
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022C60

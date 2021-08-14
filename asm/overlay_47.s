@@ -409,7 +409,7 @@ _02258ACA:
 	mov r0, #0xc6
 	mov r1, #2
 	mov r3, #4
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -419,14 +419,14 @@ _02258ACA:
 	mov r0, #0xc6
 	mov r1, #6
 	mov r3, #4
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xc6
 	mov r2, #4
 	add r3, r1, #0
 	str r7, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2549,7 +2549,7 @@ _02259BD4:
 	ldr r1, [r1, #0x14]
 	mov r2, #0xf7
 	mov r3, #0x10
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 	add r5, r5, #1
 	cmp r5, r4
 	blt _02259BD4

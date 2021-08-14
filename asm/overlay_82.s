@@ -422,14 +422,14 @@ ov82_0223E0B0: ; 0x0223E0B0
 	sub sp, #0x18
 	add r5, r0, #0
 	add r0, #0x7c
-	bl sub_0201EE98
+	bl GetWindowX
 	sub r0, r0, #1
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	add r0, #0x7c
-	bl sub_0201EE9C
+	bl GetWindowY
 	sub r0, r0, #1
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
@@ -447,7 +447,7 @@ ov82_0223E0B0: ; 0x0223E0B0
 	lsr r4, r0, #0x18
 	add r0, r5, #0
 	add r0, #0x7c
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	str r0, [sp, #0x14]
 	mov r0, #1
 	str r0, [sp]
@@ -502,7 +502,7 @@ ov82_0223E140: ; 0x0223E140
 	ldrh r2, [r2, #0x18]
 	ldr r3, [sp, #0x18]
 	str r0, [sp, #0x10]
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r1, sp, #0x30
 	ldrh r4, [r1, #0x18]
 	ldrb r7, [r1, #0x10]
@@ -525,7 +525,7 @@ ov82_0223E140: ; 0x0223E140
 	ldr r1, [sp, #0x14]
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r0, sp, #0x30
 	ldrb r0, [r0, #0x14]
 	add r2, r4, #6
@@ -547,7 +547,7 @@ ov82_0223E140: ; 0x0223E140
 	ldr r1, [sp, #0x14]
 	ldr r3, [sp, #0x18]
 	lsr r2, r2, #0x10
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [sp, #0x24]
 	add r2, r4, #0
 	lsl r0, r0, #0x18
@@ -567,7 +567,7 @@ ov82_0223E140: ; 0x0223E140
 	ldr r1, [sp, #0x14]
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	sub r0, r7, #2
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x18]
@@ -589,7 +589,7 @@ ov82_0223E140: ; 0x0223E140
 	ldr r1, [sp, #0x14]
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [sp, #0x24]
 	add r2, r4, #7
 	lsl r0, r0, #0x18
@@ -610,7 +610,7 @@ ov82_0223E140: ; 0x0223E140
 	ldr r1, [sp, #0x14]
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [sp, #0x28]
 	add r6, r6, #1
 	sub r7, r0, #2
@@ -631,7 +631,7 @@ ov82_0223E140: ; 0x0223E140
 	ldr r1, [sp, #0x14]
 	ldr r3, [sp, #0x18]
 	lsr r2, r2, #0x10
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -651,7 +651,7 @@ ov82_0223E140: ; 0x0223E140
 	ldr r1, [sp, #0x14]
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4123,7 +4123,7 @@ ov82_0223FD78: ; 0x0223FD78
 	sub sp, #8
 	add r5, r1, #0
 	add r4, r0, #0
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	add r1, r0, #0
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18

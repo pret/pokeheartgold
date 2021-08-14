@@ -1881,7 +1881,7 @@ ov44_0222ACE8: ; 0x0222ACE8
 	lsl r2, r2, #0x14
 	lsr r2, r2, #0x10
 	mov r3, #0
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 	ldrb r0, [r4, #4]
 	bl ov44_0222ADC4
 	add r2, r0, #0
@@ -12355,7 +12355,7 @@ ov44_022300C8: ; 0x022300C8
 	ldr r0, [r6, r0]
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	b _022300FE
 _022300FA:
 	mov r0, #0
@@ -12548,7 +12548,7 @@ _02230254:
 	ldr r3, [r3, #8]
 	mov r1, #6
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18

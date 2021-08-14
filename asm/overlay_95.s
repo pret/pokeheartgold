@@ -523,7 +523,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 ov95_021E5D34: ; 0x021E5D34
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl RemoveWindow
 	pop {r4, pc}
@@ -545,7 +545,7 @@ ov95_021E5D44: ; 0x021E5D44
 	mov r0, #0x73
 	add r2, r5, #0
 	mov r3, #3
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -556,7 +556,7 @@ ov95_021E5D44: ; 0x021E5D44
 	mov r0, #0x73
 	add r2, r5, #0
 	mov r3, #3
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x40

@@ -4307,7 +4307,7 @@ _0225A636:
 	mov r2, #0
 	mov r3, #0x40
 	str r6, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	bl sub_020B78D4
 	mov r0, #0
 	str r0, [sp]
@@ -6965,7 +6965,7 @@ ov49_0225BA5C: ; 0x0225BA5C
 	str r0, [sp, #4]
 	add r0, r6, #0
 	lsl r3, r3, #4
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	add r0, r5, #0
 	bl sub_0200E390
 	add sp, #8
@@ -7498,7 +7498,7 @@ _0225BEB8:
 	bl GfGfxLoader_LoadFromNarc
 	add r1, sp, #0x30
 	str r0, [sp, #0x2c]
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r0, [sp, #0x20]
 	mov r1, #6
 	ldrh r0, [r0]
@@ -7508,7 +7508,7 @@ _0225BEB8:
 	ldr r2, [sp, #0x30]
 	ldr r0, [r5]
 	ldr r2, [r2, #0x14]
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldr r0, [sp, #0x2c]
 	bl FreeToHeap
 	mov r0, #4

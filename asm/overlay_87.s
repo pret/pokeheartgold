@@ -665,7 +665,7 @@ _021E5E20:
 	ldr r3, [r4, r3]
 	ldr r0, [r4, #0x58]
 	ldr r3, [r3, #0x10]
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldr r0, [r4, #0x58]
 	mov r1, #0
 	bl sub_0201BF7C
@@ -977,7 +977,7 @@ _021E60B0:
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl ov87_021E71B4
 	mov r0, #0xcf
@@ -996,7 +996,7 @@ _021E60E2:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl ov87_021E717C
 _021E60F2:
@@ -1387,7 +1387,7 @@ _021E6414:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	add r0, #0x5c
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl ov87_021E7998
 	add r0, r4, #0
@@ -1408,7 +1408,7 @@ _021E6450:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	add r0, #0x5c
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl ov87_021E6B28
 	mov r0, #0xb
@@ -1432,7 +1432,7 @@ _021E647E:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	add r0, #0x5c
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl ov87_021E7990
 	add r0, r4, #0
@@ -1453,7 +1453,7 @@ _021E64BA:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	add r0, #0x5c
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl ov87_021E6B28
 	mov r0, #0xb
@@ -4221,7 +4221,7 @@ ov87_021E79C4: ; 0x021E79C4
 	mov r1, #7
 	mov r2, #0
 	add r3, r4, r3
-	bl sub_020079BC
+	bl GfGfxLoader_GetCharData
 	mov r1, #0xe1
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4232,7 +4232,7 @@ ov87_021E79C4: ; 0x021E79C4
 	ldr r2, [r3, #0x14]
 	ldr r0, [r4, #0x58]
 	ldr r3, [r3, #0x10]
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldr r0, [r4, #0x58]
 	mov r1, #0
 	bl sub_0201BF7C
@@ -4328,7 +4328,7 @@ _021E7A7C:
 	ldr r3, [r6, r3]
 	ldr r0, [r6, #0x58]
 	ldr r3, [r3, #0x10]
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldr r0, [r6, #0x58]
 	mov r1, #0
 	bl sub_0201BF7C
@@ -5217,7 +5217,7 @@ ov87_021E8134: ; 0x021E8134
 	sub sp, #8
 	add r5, r1, #0
 	add r4, r0, #0
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	add r1, r0, #0
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18

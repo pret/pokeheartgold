@@ -4977,7 +4977,7 @@ _022293D4:
 	ldrb r1, [r5, #9]
 	ldrb r2, [r5, #0xa]
 	add r3, #0xc
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	str r0, [r4, #8]
 	add r0, r4, #0
 	add sp, #8
@@ -5319,7 +5319,7 @@ _02229686:
 	ldr r0, [sp, #0x1c]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]

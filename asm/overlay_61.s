@@ -2323,7 +2323,7 @@ ov61_021E6B6C: ; 0x021E6B6C
 	mov r0, #0x52
 	mov r2, #4
 	mov r3, #0x40
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x20
 	str r0, [sp]
 	ldr r0, [r4, #4]
@@ -2332,7 +2332,7 @@ ov61_021E6B6C: ; 0x021E6B6C
 	mov r0, #0x52
 	mov r2, #0
 	mov r3, #0x40
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0xe7
 	lsl r0, r0, #2
 	mov r1, #0
@@ -2360,7 +2360,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r2, r5, #0
 	mov r3, #2
 	str r4, [sp, #0xc]
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2370,7 +2370,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r2, r5, #0
 	mov r3, #5
 	str r4, [sp, #0xc]
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2380,7 +2380,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r2, r5, #0
 	mov r3, #6
 	str r4, [sp, #0xc]
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2390,7 +2390,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r2, r5, #0
 	mov r3, #2
 	str r4, [sp, #0xc]
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2400,7 +2400,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r2, r5, #0
 	mov r3, #5
 	str r4, [sp, #0xc]
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2410,7 +2410,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r2, r5, #0
 	mov r3, #6
 	str r4, [sp, #0xc]
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x52
@@ -2418,7 +2418,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	mov r2, #0
 	mov r3, #0x60
 	str r4, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x52
@@ -2426,7 +2426,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	mov r2, #4
 	mov r3, #0x60
 	str r4, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x52
@@ -2434,7 +2434,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	mov r2, #4
 	mov r3, #0x80
 	str r4, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18

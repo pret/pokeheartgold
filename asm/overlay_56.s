@@ -587,7 +587,7 @@ _021E606A:
 	bl sub_0200E9BC
 	add r0, r5, #0
 	add r0, #0x9c
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #0
 	strh r0, [r5, #8]
 	ldrb r1, [r5, #0xd]
@@ -782,7 +782,7 @@ _021E61E2:
 	bl sub_0200E9BC
 	add r0, r5, #0
 	add r0, #0x9c
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #0
 	strh r0, [r5, #8]
 	cmp r4, #0
@@ -1375,7 +1375,7 @@ ov56_021E6650: ; 0x021E6650
 	bl NARC_ReadWholeMember
 	add r0, r6, #0
 	add r1, sp, #0x28
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r3, [sp, #0x28]
 	mov r0, #0
 	str r0, [sp]
@@ -1383,7 +1383,7 @@ ov56_021E6650: ; 0x021E6650
 	ldr r0, [r5, #0x18]
 	ldr r3, [r3, #0x10]
 	mov r1, #1
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldr r3, [sp, #0x28]
 	mov r0, #0
 	str r0, [sp]
@@ -1391,7 +1391,7 @@ ov56_021E6650: ; 0x021E6650
 	ldr r0, [r5, #0x18]
 	ldr r3, [r3, #0x10]
 	mov r1, #4
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -1541,7 +1541,7 @@ _021E6768:
 	add r1, r5, #0
 	ldr r0, [r5, #0x3c]
 	add r1, #0x44
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	add r0, r4, #0
 	mov r1, #0x24
 	bl NARC_GetMemberSize
@@ -1556,7 +1556,7 @@ _021E6768:
 	add r1, r5, #0
 	ldr r0, [r5, #0x40]
 	add r1, #0x48
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	add r0, r4, #0
 	bl NARC_dtor
 	mov r3, #0
@@ -1569,7 +1569,7 @@ _021E6768:
 	ldr r0, [r5, #0x18]
 	ldr r2, _021E691C ; =0x00002001
 	mov r1, #4
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	ldr r0, [r5, #0x44]
 	mov r1, #0x20
@@ -1816,7 +1816,7 @@ ov56_021E6A7C: ; 0x021E6A7C
 	add r4, #0x4c
 _021E6A8C:
 	add r0, r4, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	bl RemoveWindow
 	add r5, r5, #1

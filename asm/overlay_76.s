@@ -407,7 +407,7 @@ _021E5C4A:
 	ldr r2, [r5, #4]
 	add r0, #0xc0
 	mov r1, #6
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -420,7 +420,7 @@ _021E5C4A:
 	ldr r2, [r5, #4]
 	add r0, #0xc0
 	mov r1, #0x13
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	ldr r0, [r5, #4]
 	mov r1, #1
 	bl sub_0201BF7C
@@ -771,7 +771,7 @@ ov76_021E5F1C: ; 0x021E5F1C
 	ldr r2, [sp, #0x10]
 	add r0, #0xc0
 	mov r3, #3
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -783,7 +783,7 @@ ov76_021E5F1C: ; 0x021E5F1C
 	add r0, #0xc0
 	mov r1, #5
 	mov r3, #7
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0xe0
 	str r0, [sp]
 	mov r0, #0x49
@@ -792,7 +792,7 @@ ov76_021E5F1C: ; 0x021E5F1C
 	add r0, #0xc0
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0xe0
 	str r0, [sp]
 	mov r0, #0x49
@@ -801,7 +801,7 @@ ov76_021E5F1C: ; 0x021E5F1C
 	add r0, #0xc0
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	ldr r0, _021E6074 ; =0x00000498
 	mov r4, #0
 	add r0, r7, r0
@@ -821,7 +821,7 @@ _021E5FB2:
 	mov r2, #1
 	add r3, r3, r5
 	add r6, r7, r5
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r1, _021E6078 ; =0x00000468
 	ldr r3, [sp, #0x18]
 	str r0, [r6, r1]
@@ -832,7 +832,7 @@ _021E5FB2:
 	add r0, #0xc0
 	mov r2, #1
 	add r3, r3, r5
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	mov r1, #0x12
 	lsl r1, r1, #6
 	str r0, [r6, r1]
@@ -849,7 +849,7 @@ _021E5FB2:
 	ldr r3, [r3, #8]
 	mov r1, #2
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	mov r0, #0x4b
 	lsl r0, r0, #4
 	ldr r3, [r7, r0]
@@ -858,7 +858,7 @@ _021E5FB2:
 	ldr r3, [r3, #8]
 	mov r1, #3
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, _021E6074 ; =0x00000498
 	mov r1, #6
 	ldr r3, [r7, r0]
@@ -866,7 +866,7 @@ _021E5FB2:
 	add r2, r3, #0
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	mov r0, #0x4b
 	lsl r0, r0, #4
 	ldr r3, [r7, r0]
@@ -875,7 +875,7 @@ _021E5FB2:
 	ldr r3, [r3, #8]
 	mov r1, #7
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [sp, #0x10]
 	mov r1, #2
 	bl sub_0201EFBC
@@ -1765,7 +1765,7 @@ _021E671A:
 	add r2, r3, #0
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r6, #4]
 	mov r1, #7
 	bl sub_0201EFBC
@@ -1778,7 +1778,7 @@ _021E671A:
 	ldr r0, [r6, #4]
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r6, #4]
 	mov r1, #6
 	bl sub_0201EFBC
@@ -1788,7 +1788,7 @@ _021E671A:
 	ldr r3, [r3, #8]
 	mov r1, #3
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r6, #4]
 	mov r1, #3
 	bl sub_0201EFBC
@@ -1799,7 +1799,7 @@ _021E671A:
 	add r2, r3, #0
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r6, #4]
 	mov r1, #2
 	bl sub_0201EFBC

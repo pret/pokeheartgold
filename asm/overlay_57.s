@@ -3735,7 +3735,7 @@ ov57_022395B8: ; 0x022395B8
 	mov r1, #8
 	mov r2, #1
 	add r3, sp, #0x18
-	bl sub_020079BC
+	bl GfGfxLoader_GetCharData
 	ldr r1, [sp, #0x18]
 	str r0, [sp, #0x14]
 	ldr r7, [r1, #0x14]
@@ -3753,7 +3753,7 @@ _022395E2:
 	mov r1, #1
 	add r2, r7, r2
 	mov r3, #0x20
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #9
@@ -5899,7 +5899,7 @@ _0223A708:
 	mov r0, #0x47
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
 	ldr r2, _0223A7D4 ; =0x0000FFFF
 	add r0, #0xec
