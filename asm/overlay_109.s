@@ -818,10 +818,10 @@ ov109_021E5EC8: ; 0x021E5EC8
 	bl ov109_021E7474
 	ldr r0, [r4, #0x14]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r4, #0x14]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov109_021E5EC8
@@ -1278,7 +1278,7 @@ _021E624C:
 	bl ov109_021E73F8
 	ldr r0, [r4, #0x14]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0
 	strh r0, [r4, #0xa]
 	strh r0, [r4, #8]
@@ -3126,7 +3126,7 @@ _021E7106:
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x14]
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov109_021E70C4
@@ -3281,7 +3281,7 @@ _021E71FE:
 _021E7238:
 	ldr r0, [r4, #0x14]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E7244: .word 0x021E7890
@@ -3295,10 +3295,10 @@ ov109_021E7248: ; 0x021E7248
 	ldr r0, [r5, #0x14]
 	add r4, r1, #0
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5, #0x14]
 	mov r1, #7
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	add r0, #0x70
 	mov r1, #0
@@ -3478,7 +3478,7 @@ _021E73B2:
 	bl sub_0201D5C8
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop

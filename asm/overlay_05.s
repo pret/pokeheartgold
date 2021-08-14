@@ -210,7 +210,7 @@ _0221BB66:
 	str r0, [r4, r1]
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _0221BD0C ; =0x00000BBC
 	mov r1, #2
 	add sp, #0xc
@@ -300,7 +300,7 @@ _0221BBF0:
 	str r0, [r4, r1]
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _0221BD0C ; =0x00000BBC
 	mov r1, #4
 	add sp, #0xc
@@ -361,7 +361,7 @@ _0221BC98:
 	str r0, [r4, r1]
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _0221BD0C ; =0x00000BBC
 	mov r1, #6
 	add sp, #0xc
@@ -386,7 +386,7 @@ _0221BCF0:
 	bl sub_0200E9BC
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _0221BD0C ; =0x00000BBC
 	mov r1, #8
 	str r1, [r4, r0]
@@ -2037,7 +2037,7 @@ _0221CA68:
 	bl sub_0200E9BC
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _0221CAA4 ; =0x00000B82
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -2050,7 +2050,7 @@ _0221CA68:
 _0221CA8C:
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -2139,7 +2139,7 @@ _0221CB4A:
 _0221CB4E:
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -4442,7 +4442,7 @@ _0221DDC6:
 	blo _0221DD14
 	ldr r0, [r5, #0xc]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4509,10 +4509,10 @@ ov05_0221DE38: ; 0x0221DE38
 	bl ov05_0221DDEC
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r4, #0xc]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, pc}
 	.balign 4, 0
 _0221DE64: .word 0x00000544
@@ -4608,10 +4608,10 @@ _0221DECC:
 _0221DF1A:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5, #0xc]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 	nop

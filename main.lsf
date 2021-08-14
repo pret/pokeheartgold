@@ -31,8 +31,12 @@ Static main
 	Object msgdata.o
 	Object script_buffers.o
 	Object unk_0200CE7C.o
+	Object unk_0200CF18.o
 	Object unk_0200E320.o
 	Object unk_0200E398.o
+	Object unk_0200FA24.o
+	Object unk_0201010C.o
+	Object unk_02012DD8.o
 	Object error_handling.o
 	Object unk_02025534.o
 	### Vendor libraries ###

@@ -6755,7 +6755,7 @@ _021E8EB6:
 	bl BG_LoadScreenTilemapData
 	add r0, r7, #0
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldrb r0, [r5, #3]
 	cmp r0, #3
 	blo _021E8F0E
@@ -6784,7 +6784,7 @@ _021E8F10:
 	bl BG_LoadScreenTilemapData
 	add r0, r7, #0
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021E9476
@@ -7242,13 +7242,13 @@ _021E92A6:
 	bl BG_LoadScreenTilemapData
 	add r0, r7, #0
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r7, #0
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r7, #0
 	mov r1, #7
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r2, #0
 	add r0, r7, #0
 	mov r1, #5

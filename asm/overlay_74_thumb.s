@@ -2950,10 +2950,10 @@ _0222872C:
 	bl FillBgTilemapRect
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _0222878C:
@@ -25941,7 +25941,7 @@ _02233D1C:
 	add r1, r0, #0
 	ldr r2, [sp]
 	add r0, r5, #0
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	ldr r0, _02233DAC ; =0x00000FF4
 	ldrh r0, [r5, r0]
 	cmp r0, #0
@@ -25993,7 +25993,7 @@ ov74_02233DBC: ; 0x02233DBC
 	bl ov74_02233B04
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	ldr r0, _02233E38 ; =0x0223D33C
 	ldr r1, [r0, #0x10]
 	ldr r0, _02233E3C ; =0x00000FFC
@@ -30381,7 +30381,7 @@ ov74_02235DC4: ; 0x02235DC4
 	bl sub_0201CA4C
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r1, _02235EC4 ; =ov74_02235DA4
 	ldr r0, _02235EC8 ; =0x0223E2D4
 	cmp r4, #0xf
@@ -31637,7 +31637,7 @@ _022367B0:
 	add r1, r2, r1
 	add r0, r4, #0
 	mov r2, #0x68
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	ldr r0, _02236884 ; =0x0223E2FC
 	mov r2, #1
 	ldr r1, [r0]
@@ -31697,7 +31697,7 @@ _02236800:
 	add r0, r4, #0
 	add r1, r1, r3
 	sub r2, r2, r3
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	b _02236858
 _02236844:
 	add r4, #8
@@ -31708,7 +31708,7 @@ _02236844:
 	add r3, r1, #0
 	mul r3, r2
 	add r1, r4, r3
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 _02236858:
 	ldr r1, _02236884 ; =0x0223E2FC
 	ldr r0, _022368A0 ; =0x0000115E

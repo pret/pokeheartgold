@@ -28,8 +28,8 @@ NitroMain: ; 0x02000CA4
 	ldr r0, _02000E48 ; =gBacklightTop
 	mov r1, #0
 	bl PM_GetBackLight
+	bl sub_02026E30
 	bl GF_InitRTCWork
-	bl sub_02014634
 	bl Main_ResetOverlayManager
 	bl sub_02002CA8
 	mov r0, #0

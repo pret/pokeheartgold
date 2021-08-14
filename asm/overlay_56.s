@@ -1595,10 +1595,10 @@ _021E6768:
 	bl sub_0201C4EC
 	ldr r0, [r5, #0x18]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5, #0x18]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldrb r0, [r5, #0xc]
 	cmp r0, #0
 	beq _021E6916
@@ -1627,7 +1627,7 @@ _021E6768:
 	bl sub_0201C4EC
 	ldr r0, [r5, #0x18]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r2, #0
 	strb r2, [r5, #0x14]
 	ldr r0, _021E6920 ; =ov56_021E63FC

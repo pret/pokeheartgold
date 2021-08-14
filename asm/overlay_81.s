@@ -4979,7 +4979,7 @@ ov81_02240628: ; 0x02240628
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x4c]
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -9113,7 +9113,7 @@ _02242624:
 _02242644:
 	ldr r0, [r4, #0x4c]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r1, _02242690 ; =0x0000048A
 	mov r0, #1
 	ldrb r2, [r4, r1]
@@ -10719,7 +10719,7 @@ _022431F4:
 	bl FillBgTilemapRect
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r4, pc}
 	thumb_func_end ov81_022431E0

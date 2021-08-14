@@ -597,7 +597,7 @@ _0225D9EA:
 	bl BG_LoadScreenTilemapData
 	ldr r0, [r4, #4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r0, #2
@@ -627,7 +627,7 @@ _0225DA26:
 	bl BG_LoadScreenTilemapData
 	ldr r0, [r4, #4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl FreeToHeap
 	add sp, #8
@@ -654,7 +654,7 @@ _0225DA64:
 	bl BG_LoadScreenTilemapData
 	ldr r0, [r4, #4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl FreeToHeap
 	add sp, #8
@@ -1469,7 +1469,7 @@ ov31_0225E0E4: ; 0x0225E0E4
 	bl ov31_0225E060
 	ldr r0, [r5, #4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
 	bl FreeToHeap
 	add sp, #8

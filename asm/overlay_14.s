@@ -853,7 +853,7 @@ _021E5F8A:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x14]
 	lsr r1, r1, #0x19
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _021E5FB8:
 	ldrb r0, [r4, #2]
 	add r0, r0, #1
@@ -905,7 +905,7 @@ _021E5FF0:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x14]
 	lsr r1, r1, #0x19
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _021E6020:
 	mov r0, #0
 	strb r0, [r4, #3]
@@ -4044,7 +4044,7 @@ ov14_021E7808: ; 0x021E7808
 	ldr r0, [r5, #0x34]
 	mov r1, #3
 	ldr r0, [r0, #0x14]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov14_021E7808
 
@@ -4167,7 +4167,7 @@ _021E78CA:
 	ldr r0, [r5, #0x34]
 	mov r1, #3
 	ldr r0, [r0, #0x14]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -6495,7 +6495,7 @@ _021E897A:
 	ldr r0, [r5, #0x34]
 	mov r1, #5
 	ldr r0, [r0, #0x14]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8413,7 +8413,7 @@ _021E988A:
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldrh r0, [r6, #0x10]
 	cmp r0, #0xa
 	bne _021E98A2
@@ -8472,7 +8472,7 @@ ov14_021E98AC: ; 0x021E98AC
 	ldr r0, [r5, #0x34]
 	mov r1, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldrh r0, [r4, #0x10]
 	cmp r0, #3
 	bne _021E9914
@@ -26873,7 +26873,7 @@ _021F2E10:
 	mov r2, #2
 	add r1, r1, r6
 	lsl r2, r2, #8
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	ldr r0, [sp, #8]
 	bl FreeToHeap
 	add r0, r7, #0
@@ -32093,7 +32093,7 @@ ov14_021F5718: ; 0x021F5718
 	mul r2, r5
 	ldr r1, [r4, #0xc]
 	lsl r2, r2, #5
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	mov r0, #0x14
 	mov r1, #0xa
 	bl String_ctor
@@ -34018,7 +34018,7 @@ ov14_021F6654: ; 0x021F6654
 	bl GetWindowBgId
 	add r1, r0, #0
 	ldr r0, [r6, #0x14]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov14_021F6654

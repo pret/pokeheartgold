@@ -6862,7 +6862,7 @@ _0223AE42:
 	bl sub_0201CA4C
 	ldrb r1, [r4, #2]
 	ldr r0, [r5, #4]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0

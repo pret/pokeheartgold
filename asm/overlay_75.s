@@ -2855,7 +2855,7 @@ _0224800E:
 _02248028:
 	ldr r0, [r4, #4]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _02248030:
 	add sp, #0x10
 	pop {r3, r4, r5, pc}

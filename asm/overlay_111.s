@@ -654,7 +654,7 @@ _021E5DD8:
 	blo _021E5D9E
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x18]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

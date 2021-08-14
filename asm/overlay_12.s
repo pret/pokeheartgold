@@ -8040,7 +8040,7 @@ ov12_0223B874: ; 0x0223B874
 	ldr r0, _0223BACC ; =0x06010000
 	ldr r1, [r4, r1]
 	lsl r2, r2, #0x10
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r5, [r4, r0]
@@ -8050,7 +8050,7 @@ ov12_0223B874: ; 0x0223B874
 	mov r2, #2
 	add r1, r5, #0
 	lsl r2, r2, #8
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	mov r0, #0x19
 	lsl r0, r0, #0x16
 	str r0, [sp, #0x24]
@@ -96122,7 +96122,7 @@ _0226615A:
 	mov r2, #2
 	add r0, #0xc
 	lsl r2, r2, #0xa
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r0, r5, #0
 	bl FreeToHeap
 	add r4, r4, #1
@@ -96621,7 +96621,7 @@ _0226659A:
 	lsl r1, r1, #0x18
 	ldr r0, [sp, #0x28]
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _022665BC:
 	add r4, r4, #1
 	add r6, r6, #2
@@ -98353,7 +98353,7 @@ ov12_0226739C: ; 0x0226739C
 	bl FillBgTilemapRect
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _022673F8 ; =0x000004E4
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -98423,7 +98423,7 @@ ov12_02267418: ; 0x02267418
 	bl FillBgTilemapRect
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _02267484 ; =0x000004E4
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -99043,7 +99043,7 @@ ov12_02267984: ; 0x02267984
 	ldr r1, [r5, #0x58]
 	add r0, #0xc
 	lsl r2, r2, #0xa
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r0, [r5]
@@ -99055,7 +99055,7 @@ ov12_02267984: ; 0x02267984
 	bl BG_LoadScreenTilemapData
 	add r0, r6, #0
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5]
 	bl ov12_0223A7D4
 	mov r2, #2
@@ -99072,7 +99072,7 @@ ov12_02267984: ; 0x02267984
 	bl BG_LoadScreenTilemapData
 	add r0, r6, #0
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _02267A50 ; =0x00010203
 	mov r1, #0x4d
 	str r0, [sp]
@@ -99925,7 +99925,7 @@ _022680E4:
 	bl sub_0201CB04
 	add r0, r6, #0
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov12_02268EDC
@@ -100954,7 +100954,7 @@ _022688CA:
 	ldr r0, [r0, #0x14]
 	ldr r1, [r1, #0x18]
 	ldr r2, [sp, #0xc]
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	ldr r0, [sp, #0x44]
 	bl FreeToHeap
 _02268910:
@@ -101459,7 +101459,7 @@ ov12_02268CA0: ; 0x02268CA0
 	bl PaletteData_LoadPalette
 	add r0, r6, #0
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _02268D54 ; =0x0226E2F8
 	lsl r1, r4, #2
 	ldrb r2, [r0, r1]
@@ -101488,7 +101488,7 @@ ov12_02268CA0: ; 0x02268CA0
 	bl FillBgTilemapRect
 	add r0, r6, #0
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -101782,7 +101782,7 @@ _02268F42:
 _02268F4C:
 	ldr r0, [sp, #4]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov12_02268EE4
@@ -105536,7 +105536,7 @@ _0226AAB4:
 	bl FillBgTilemapRect
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0x1c]
 	ldr r0, [r0]
 	bl ov12_0223A930

@@ -1867,10 +1867,10 @@ _02238B6E:
 	bl FillBgTilemapRect
 	ldr r0, [r5, #0x54]
 	mov r1, #1
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5, #0x54]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _02238BB2:
 	add r4, r5, #0
 	mov r6, #9

@@ -858,7 +858,7 @@ _02259F20:
 	blt _02259F16
 	ldr r0, [r7, #0x18]
 	mov r1, #7
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

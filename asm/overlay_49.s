@@ -7074,7 +7074,7 @@ _0225BB4C:
 	lsl r1, r6, #0x18
 	ldr r0, [r5]
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r7, #0
 	bl FreeToHeap
 	add sp, #0x10
@@ -7547,7 +7547,7 @@ _0225BEB8:
 	bl sub_0201CA4C
 	ldr r0, [r5]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _0225BF60:
 	ldr r0, [sp, #0x20]
 	add r6, #0x10
@@ -9049,7 +9049,7 @@ ov49_0225CAD4: ; 0x0225CAD4
 	bl sub_0201C4EC
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldrh r0, [r5, #8]
 	cmp r0, #1
 	bne _0225CB34

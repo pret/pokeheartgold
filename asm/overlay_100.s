@@ -305,7 +305,7 @@ _021E5B04:
 _021E5B40:
 	ldr r0, [r5, #0x74]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	thumb_func_end ov100_021E5A88
@@ -357,7 +357,7 @@ _021E5B6C:
 	bl sub_0201C4EC
 	ldr r0, [r5, #0x74]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
@@ -885,10 +885,10 @@ _021E5FA4:
 	bl NARC_dtor
 	ldr r0, [r5, #0x74]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5, #0x74]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov100_021E5EB4

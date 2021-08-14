@@ -446,14 +446,14 @@ ov103_021ECC1C: ; 0x021ECC1C
 	add r0, r6, #0
 	add r0, #0xe0
 	mov r2, #0x20
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	mov r0, #0x16
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #4
 	add r0, r6, r0
 	add r1, #0x28
 	mov r2, #0x20
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r0, r7, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -1083,7 +1083,7 @@ _021ED182:
 	lsl r1, r1, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x19
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _021ED1B0:
 	ldrb r0, [r4, #2]
 	add r0, r0, #1
@@ -1134,7 +1134,7 @@ _021ED1E6:
 	lsl r1, r1, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x19
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _021ED216:
 	mov r0, #0
 	strb r0, [r4, #3]
@@ -4065,7 +4065,7 @@ ov103_021EE888: ; 0x021EE888
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov103_021EE888

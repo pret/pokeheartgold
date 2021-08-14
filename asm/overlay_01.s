@@ -10264,7 +10264,7 @@ ov01_021EA8C4: ; 0x021EA8C4
 	add r1, r4, #0
 	add r1, #0x18
 	mov r2, #0x20
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r4, #0x18
 	add r0, r4, #0
 	bl sub_020CF8FC
@@ -22497,7 +22497,7 @@ ov01_021F0454: ; 0x021F0454
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021F0454
@@ -22594,7 +22594,7 @@ _021F0558:
 	ldr r0, [sp, #0x38]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

@@ -3466,7 +3466,7 @@ ov87_021E7460: ; 0x021E7460
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x58]
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0

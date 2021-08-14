@@ -5751,7 +5751,7 @@ _02223450:
 	bl sub_020AFAE4
 	add r1, r5, #0
 	mov r2, #0xc0
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r4, r4, #1
 	add r5, #0xc0
 	cmp r4, r6
@@ -6016,7 +6016,7 @@ _02223660:
 	add r0, r7, #0
 	ldr r1, [r1, #0x20]
 	mov r2, #0xc0
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	bl ov13_022233CC
 	cmp r0, #1
 	bne _02223684
@@ -6640,7 +6640,7 @@ _02223B00:
 	bl sub_020AFAE4
 	add r1, r5, #0
 	mov r2, #0xc0
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r4, r4, #1
 	add r5, #0xc0
 	cmp r4, r6
@@ -6869,7 +6869,7 @@ _02223CCC:
 	add r0, r7, #0
 	ldr r1, [r1, #0x4c]
 	mov r2, #0xc0
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	bl ov13_02223A7C
 	cmp r0, #1
 	bne _02223CF0

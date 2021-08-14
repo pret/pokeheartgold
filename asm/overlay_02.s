@@ -25211,10 +25211,10 @@ _022519D4:
 	str r0, [r1, r2]
 	ldr r0, [r6, #0x64]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r6, #0x64]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #4
 	mov r1, #1
 	bl sub_02022C60
@@ -25431,10 +25431,10 @@ _02251BF8:
 	bl sub_0201CA4C
 	ldr r0, [r4, #0x64]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r4, #0x64]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _02251C7E:
 	add r0, r4, #0
 	add r0, #0x60

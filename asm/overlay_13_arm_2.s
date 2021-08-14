@@ -20932,7 +20932,7 @@ ov13_02237F04: ; 0x02237F04
 	ldr r0, _02237F94 ; =0x02245778
 	add r1, sp, #4
 	mov r2, #0xc
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r1, sp, #0
 	mov r0, #0
 	bl ov13_0222B948
@@ -31059,7 +31059,7 @@ _02240144:
 	mov r0, r8
 	mov r1, r5
 	mov r2, r6
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add sl, sl, #1
 	cmp sl, r4
 	add sb, sb, #6

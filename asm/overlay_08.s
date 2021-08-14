@@ -2145,12 +2145,12 @@ ov08_0221CDF8: ; 0x0221CDF8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0x79
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3199,7 +3199,7 @@ _0221D734:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #7
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _0221D74A:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov08_0221D6CC
@@ -3421,7 +3421,7 @@ _0221D8BE:
 	lsl r1, r1, #0x18
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r7, #0
 	bl FreeToHeap
 	add r4, r4, #1
@@ -3778,7 +3778,7 @@ ov08_0221DBB4: ; 0x0221DBB4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #7
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov08_0221DBB4
@@ -11808,7 +11808,7 @@ ov08_02221E6C: ; 0x02221E6C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0x18]
 	bl FreeToHeap
 	add sp, #0x1c
@@ -14064,10 +14064,10 @@ ov08_02223000: ; 0x02223000
 	bl sub_0201C1C4
 	ldr r0, [r4, #4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r4, #4]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x64
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -17048,7 +17048,7 @@ ov08_022247E4: ; 0x022247E4
 	bl sub_0201C4C4
 	ldr r0, [r5, #4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0x18]
 	bl FreeToHeap
 	add sp, #0x1c

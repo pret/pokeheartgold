@@ -2847,7 +2847,7 @@ _0221D512:
 	bl ov63_0221D2F8
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0221D54C: .word 0x00013056

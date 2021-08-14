@@ -1758,7 +1758,7 @@ ov44_0222ABDC: ; 0x0222ABDC
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -12324,7 +12324,7 @@ ov44_02230090: ; 0x02230090
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -12498,7 +12498,7 @@ _022301EC:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #2
 	mov r1, #1
 	bl sub_02022CC8
@@ -12592,7 +12592,7 @@ _022302AE:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _022302F8 ; =0x00000D18
 	add r0, r5, r0
 	bl sub_0201D5C8
@@ -19865,7 +19865,7 @@ _02233BAA:
 	bl sub_0201CA4C
 	ldr r0, [r5]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0x28]
 	bl String_dtor
 	ldr r0, [sp, #0x24]
@@ -19923,7 +19923,7 @@ ov44_02233C18: ; 0x02233C18
 	bl sub_0201C4EC
 	ldr r0, [r5]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	add r0, r5, r0

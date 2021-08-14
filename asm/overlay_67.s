@@ -2216,7 +2216,7 @@ _021E6A7E:
 	ldrb r1, [r4, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x19
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _021E6AB8:
 	ldr r0, _021E6B60 ; =0x00000496
 	ldrb r1, [r4, r0]
@@ -2277,7 +2277,7 @@ _021E6AF8:
 	ldrb r1, [r4, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x19
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _021E6B32:
 	ldr r0, _021E6B68 ; =0x00000497
 	mov r1, #0

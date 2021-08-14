@@ -1240,7 +1240,7 @@ ov113_021E6238: ; 0x021E6238
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x40]
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	thumb_func_end ov113_021E6238

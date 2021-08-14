@@ -3025,7 +3025,7 @@ ov90_02259E8C: ; 0x02259E8C
 	bl sub_0201D5C8
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02259E8C
@@ -6255,7 +6255,7 @@ _0225B6EA:
 	bl sub_0201CA4C
 	ldr r0, [r5]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
 	add r0, #0x48
 	ldrb r0, [r0]

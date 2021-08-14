@@ -2320,7 +2320,7 @@ _0225E702:
 _0225E716:
 	ldr r0, [r6, #0x10]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

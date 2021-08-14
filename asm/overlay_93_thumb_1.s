@@ -1809,7 +1809,7 @@ ov93_0225D4B8: ; 0x0225D4B8
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x2c]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r4, pc}
 	nop
@@ -2004,7 +2004,7 @@ _0225D64A:
 _0225D662:
 	ldr r0, [r4, #0x2c]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r4, pc}
 	nop

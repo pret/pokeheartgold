@@ -7094,7 +7094,7 @@ ov15_021FCB64: ; 0x021FCB64
 	bl ov15_021FD43C
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0xa5
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -8335,7 +8335,7 @@ _021FD5A4:
 	bl ov15_021FD43C
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r0, #6
@@ -8355,7 +8355,7 @@ _021FD5A4:
 	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r1, #0
@@ -8394,7 +8394,7 @@ _021FD62E:
 	bl ov15_021FD4C0
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r0, #6
@@ -8414,7 +8414,7 @@ _021FD62E:
 	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -8446,7 +8446,7 @@ _021FD6C6:
 	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [r4]
@@ -8455,7 +8455,7 @@ _021FD6C6:
 	bl ov15_021FD43C
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _021FD70C:
@@ -8476,7 +8476,7 @@ _021FD70C:
 	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl FreeToHeap
 	add sp, #8
@@ -8499,7 +8499,7 @@ _021FD740:
 	bl BG_LoadScreenTilemapData
 	ldr r0, [r4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl FreeToHeap
 _021FD770:

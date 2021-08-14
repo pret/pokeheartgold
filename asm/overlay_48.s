@@ -3943,7 +3943,7 @@ ov48_0225A57C: ; 0x0225A57C
 	bl sub_0201C4EC
 	ldr r0, [r4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -4511,7 +4511,7 @@ _0225A9A2:
 	bl sub_0201C4EC
 	ldr r0, [r7]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _0225A9EC:
 	add r6, r6, #1
 	add r4, r4, #6
@@ -4616,7 +4616,7 @@ ov48_0225AA5C: ; 0x0225AA5C
 	bl sub_0201C4EC
 	ldr r0, [r4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _0225AAA8:
 	add sp, #0x1c
 	pop {r3, r4, pc}

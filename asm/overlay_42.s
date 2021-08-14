@@ -5209,7 +5209,7 @@ _022295B4:
 	ldr r0, [r5, #4]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _022295DC:
 	ldr r1, [r5, #0x14]
 	ldr r0, [r5, #4]

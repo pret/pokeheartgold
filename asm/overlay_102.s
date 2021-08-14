@@ -6847,10 +6847,10 @@ _021EAAE8:
 	blt _021EAA60
 	ldr r0, [sp]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8036,7 +8036,7 @@ ov102_021EB3B4: ; 0x021EB3B4
 	bl ClearWindowTilemapAndCopyToVram
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 _021EB3F6:
@@ -8089,7 +8089,7 @@ _021EB3F6:
 	bl sub_020200FC
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -8308,7 +8308,7 @@ _021EB5CA:
 	ldr r0, [r4]
 	mov r1, #3
 	ldr r0, [r0, #0x10]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldrh r0, [r4, #0xc]
 	add r0, r0, #1
 	strh r0, [r4, #0xc]

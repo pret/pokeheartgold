@@ -3415,10 +3415,10 @@ _0225BB1E:
 _0225BB22:
 	add r0, r6, #0
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4724,7 +4724,7 @@ ov27_0225C4AC: ; 0x0225C4AC
 	bl BG_LoadScreenTilemapData
 	ldr r0, [r5, #0x18]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0

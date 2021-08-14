@@ -4055,7 +4055,7 @@ ov03_02255EBC: ; 0x02255EBC
 	add r1, #0x38
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x34]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
 	add r0, #0x34
 	bl RemoveWindow
@@ -4293,7 +4293,7 @@ _022560AE:
 	add r1, #0x48
 	ldrb r1, [r1]
 	ldr r0, [r5, #0x44]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	add r0, #0x44
 	bl RemoveWindow
@@ -4671,7 +4671,7 @@ ov03_022563D4: ; 0x022563D4
 	add r1, #0x28
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x24]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r4, #0x24
 	add r0, r4, #0
 	bl RemoveWindow
@@ -6356,7 +6356,7 @@ ov03_022570D4: ; 0x022570D4
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
 	bl ov03_02257134
 	mov r0, #0xb
@@ -10155,7 +10155,7 @@ ov03_02258E88: ; 0x02258E88
 	bl RemoveWindow
 	ldr r0, [r4, #0xc]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, pc}
 	thumb_func_end ov03_02258E88
 
@@ -10222,7 +10222,7 @@ _02258F32:
 	bl sub_0201D5C8
 	ldr r0, [r6, #0xc]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02258F44: .word 0x0225980C

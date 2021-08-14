@@ -727,7 +727,7 @@ ov88_02258D90: ; 0x02258D90
 	bl sub_0201C4EC
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	thumb_func_end ov88_02258D90
@@ -824,7 +824,7 @@ _02258E7C:
 _02258E9A:
 	ldr r0, [r5]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -999,7 +999,7 @@ ov88_02258F88: ; 0x02258F88
 	ldr r0, [sp, #0x14]
 	mov r1, #3
 	ldr r0, [r0]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0
 	str r0, [sp, #0x1c]
 _02258FE2:

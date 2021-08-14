@@ -2459,7 +2459,7 @@ ov43_0222B1FC: ; 0x0222B1FC
 	bl ov43_0222B3A4
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov43_0222B1FC
@@ -2542,7 +2542,7 @@ _0222B2F6:
 	bl ov43_0222B3A4
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _0222B310:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -2583,7 +2583,7 @@ _0222B340:
 	bl ov43_0222B3A4
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2671,7 +2671,7 @@ _0222B3DC:
 	blt _0222B3D0
 	ldr r0, [r6]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov43_0222B3C4
@@ -2698,7 +2698,7 @@ _0222B414:
 	bl sub_0201CA4C
 	ldr r0, [r5]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r6, r6, #1
 	add r4, r4, #5
 	cmp r6, #4
@@ -2743,7 +2743,7 @@ ov43_0222B458: ; 0x0222B458
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -2757,7 +2757,7 @@ ov43_0222B458: ; 0x0222B458
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r5, #8
 	add r0, r5, #0
 	bl sub_0201D8E4
@@ -3617,7 +3617,7 @@ ov43_0222BB20: ; 0x0222BB20
 	bl sub_0201D5C8
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
 	mov r1, #1
 	bl ov43_0222AD00
@@ -3731,7 +3731,7 @@ _0222BBD6:
 	bl sub_0201C4EC
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4770,7 +4770,7 @@ ov43_0222C3E8: ; 0x0222C3E8
 	bl sub_0201C4EC
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	thumb_func_end ov43_0222C3E8
@@ -4810,7 +4810,7 @@ ov43_0222C46C: ; 0x0222C46C
 	bl sub_0201C4EC
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	thumb_func_end ov43_0222C46C
@@ -4877,7 +4877,7 @@ ov43_0222C4B8: ; 0x0222C4B8
 	bl sub_0201C4EC
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	thumb_func_end ov43_0222C4B8
@@ -5282,7 +5282,7 @@ _0222C812:
 	bl sub_0201C4C4
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov43_0222C7F8
@@ -5388,11 +5388,11 @@ _0222C8C6:
 	ldr r0, [sp, #0xc]
 	mov r1, #2
 	ldr r0, [r0]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0xc]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -5461,7 +5461,7 @@ _0222C988:
 	blt _0222C954
 	ldr r0, [r7]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r6, #8
 	add r0, r6, #0
 	bl sub_0201D5C8
@@ -5507,7 +5507,7 @@ _0222C9CC:
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #2
 	ldrsh r1, [r5, r0]
 	cmp r1, #0
@@ -5536,7 +5536,7 @@ _0222CA06:
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov43_0222C9A4
@@ -5725,7 +5725,7 @@ _0222CB50:
 	bl sub_0201C4EC
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -6332,7 +6332,7 @@ ov43_0222D028: ; 0x0222D028
 	bl sub_0201C4C4
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl sub_0201D5C8
 	add r0, r5, #0
@@ -6367,7 +6367,7 @@ ov43_0222D090: ; 0x0222D090
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl sub_0201D8E4
 	add r0, r5, #0
@@ -6389,7 +6389,7 @@ ov43_0222D090: ; 0x0222D090
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov43_0222D090
@@ -6419,7 +6419,7 @@ ov43_0222D0F8: ; 0x0222D0F8
 	bl sub_0201CA4C
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -7151,7 +7151,7 @@ ov43_0222D654: ; 0x0222D654
 	bl sub_0201C4C4
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	add r0, #0xfc
 	mov r1, #0
@@ -7171,7 +7171,7 @@ ov43_0222D654: ; 0x0222D654
 	bl sub_0201C4C4
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r2, [r5, r0]
@@ -7191,7 +7191,7 @@ ov43_0222D654: ; 0x0222D654
 	bl sub_0201C4C4
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -7323,13 +7323,13 @@ _0222D7BE:
 	bl FillBgTilemapRect
 	ldr r0, [r5]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0x43
 	lsl r0, r0, #2
 	mov r1, #0
@@ -7349,7 +7349,7 @@ _0222D7BE:
 	bl sub_0201C4C4
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
 	bl ov43_0222AA70
 	mov r0, #2
@@ -7822,7 +7822,7 @@ _0222DC10:
 	bne _0222DC20
 	ldr r0, [r5]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 _0222DC20:
@@ -7861,7 +7861,7 @@ _0222DC20:
 	bl sub_0201C4EC
 	ldr r0, [r5]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -7903,7 +7903,7 @@ ov43_0222DC7C: ; 0x0222DC7C
 	bl sub_0201C4EC
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	thumb_func_end ov43_0222DC7C
@@ -9845,7 +9845,7 @@ _0222EC2E:
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r4, pc}
 	thumb_func_end ov43_0222EC14

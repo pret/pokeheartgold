@@ -14357,7 +14357,7 @@ _02230426:
 	ldr r1, [r5]
 	add r0, r6, #0
 	lsl r2, r4, #3
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	strh r4, [r5, #6]
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov45_0223040C

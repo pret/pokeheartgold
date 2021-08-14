@@ -12393,7 +12393,7 @@ _0222FAB2:
 	ldr r0, [sp, #0x20]
 	mov r1, #3
 	ldr r0, [r0]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	b _0222FBE6
 _0222FAD6:
 	ldr r0, [r6]
@@ -22296,7 +22296,7 @@ ov80_02234968: ; 0x02234968
 	bl sub_02022C60
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
 	bl NARC_dtor
 	add sp, #0x14
@@ -22335,7 +22335,7 @@ ov80_02234A38: ; 0x02234A38
 	bl sub_02007B68
 	ldr r0, [r5]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
 	bl NARC_dtor
 	add sp, #0x10
@@ -29462,7 +29462,7 @@ ov80_02237EFC: ; 0x02237EFC
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x48
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -30311,7 +30311,7 @@ _02238544:
 	bl sub_0201C4C4
 	ldr r0, [r4, #4]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x14
 	pop {r3, r4, pc}
 	thumb_func_end ov80_02238530
@@ -31828,7 +31828,7 @@ _02239198:
 _0223925E:
 	ldr r0, [r5]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
 	bl NARC_dtor
 	add sp, #0x2c
@@ -33418,7 +33418,7 @@ _02239DFE:
 	add r0, #0xc
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r0, r7, #0
 	bl FreeToHeap
 	mov r0, #1
@@ -33447,7 +33447,7 @@ _02239DFE:
 	ldr r0, [r3, #0x14]
 	add r1, r1, r2
 	ldr r2, [r3, #0x10]
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r0, #0x65
@@ -33464,7 +33464,7 @@ _02239DFE:
 	ldr r0, [r3, #0x14]
 	add r1, r1, r2
 	ldr r2, [r3, #0x10]
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -33540,7 +33540,7 @@ _02239EEE:
 	bl BG_LoadScreenTilemapData
 	ldr r0, [r4, #4]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r1, _02239F44 ; =0x00022009
 	mov r0, #1
 	ldrb r2, [r4, r1]
@@ -34917,7 +34917,7 @@ ov80_0223A938: ; 0x0223A938
 	bl sub_0201CA4C
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldrb r1, [r4, #8]
 	mov r0, #0x6d
 	add r2, sp, #0x10

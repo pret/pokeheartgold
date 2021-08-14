@@ -185,10 +185,10 @@ _0225D67E:
 	bl sub_0201CAE0
 	ldr r0, [r4]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0x6e
 	mov r1, #3
 	lsl r0, r0, #2
@@ -203,10 +203,10 @@ _0225D6A8:
 	bl sub_0201CAE0
 	ldr r0, [r4]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0x6e
 	mov r1, #5
 	lsl r0, r0, #2
@@ -578,7 +578,7 @@ _0225D9B0:
 	bl sub_02002DB4
 	ldr r0, [r7]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -619,7 +619,7 @@ ov33_0225D9D4: ; 0x0225D9D4
 	bl sub_0201CA4C
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop

@@ -1812,7 +1812,7 @@ ov120_0225FD2C: ; 0x0225FD2C
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

@@ -2209,7 +2209,7 @@ ov106_021E69F0: ; 0x021E69F0
 	sub r2, r2, #4
 	ldr r0, [r0, #0xc]
 	ldr r2, [r1, r2]
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r0, r6, #0
 	bl FreeToHeap
 	add sp, #4
