@@ -289,31 +289,31 @@ ov28_0225D764: ; 0x0225D764
 	bl NewMsgDataFromNarc
 	mov r1, #0x11
 	add r4, r0, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x69
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #0x12
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x1a
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #0x16
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #0x17
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #0x15
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x1b
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -332,7 +332,7 @@ ov28_0225D7C4: ; 0x0225D7C4
 	lsl r6, r6, #4
 _0225D7CE:
 	ldr r0, [r5, r6]
-	bl sub_02026380
+	bl String_dtor
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5

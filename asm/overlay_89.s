@@ -167,7 +167,7 @@ ov89_02258800: ; 0x02258800
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x7d
-	bl sub_02026354
+	bl String_ctor
 	add r1, r5, #0
 	add r1, #0xc4
 	str r0, [r1]
@@ -490,7 +490,7 @@ _02258C56:
 	ldr r0, [r4, #0x30]
 	ldr r2, [r2]
 	mov r1, #2
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
@@ -626,7 +626,7 @@ _02258D7A:
 	ldr r0, [r4, #0x30]
 	ldr r2, [r2]
 	mov r1, #3
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
@@ -813,7 +813,7 @@ ov89_02258F00: ; 0x02258F00
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #2
 	bl sub_02002DB4
 	ldr r0, [r4, #0x10]
@@ -1649,7 +1649,7 @@ _0225963E:
 	blt _0225963E
 	ldr r0, [r7, #0x30]
 	mov r1, #1
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r0, _022596D4 ; =0x00010203
 	mov r1, #0x67
@@ -1676,7 +1676,7 @@ _0225963E:
 	mov r1, #1
 	bl sub_020137C0
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -8160,16 +8160,16 @@ _0225C768:
 	bl sub_0200BE3C
 	ldr r0, [sp, #0x10]
 	mov r1, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x20]
 	mov r0, #0x40
 	mov r1, #0x7d
-	bl sub_02026354
+	bl String_ctor
 	add r7, r0, #0
 	ldr r0, [sp, #0x14]
 	ldr r2, [sp, #0x20]
 	add r1, r7, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	lsl r5, r5, #4
 	add r0, r4, r5
 	mov r1, #0
@@ -8196,11 +8196,11 @@ _0225C7D8:
 	add r0, r4, r5
 	bl CopyWindowToVram
 	ldr r0, [sp, #0x1c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x20]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	bl FreeToHeap
 _0225C80A:

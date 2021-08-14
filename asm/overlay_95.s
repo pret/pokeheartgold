@@ -481,11 +481,11 @@ ov95_021E5CAC: ; 0x021E5CAC
 	add r5, r0, #0
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x14]
 	mov r0, #0xff
 	mov r1, #0x46
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
 	bl sub_02070DB0
@@ -496,7 +496,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	ldr r2, [sp, #0x14]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r3, #0
 	str r3, [sp]
 	str r6, [sp, #4]
@@ -509,9 +509,9 @@ ov95_021E5CAC: ; 0x021E5CAC
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x14]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	bl sub_0200BDA0
 	add r0, r6, #0
@@ -3276,7 +3276,7 @@ ov95_021E7328: ; 0x021E7328
 	ldr r3, [r5]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -3296,7 +3296,7 @@ ov95_021E7328: ; 0x021E7328
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

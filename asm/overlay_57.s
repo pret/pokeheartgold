@@ -1763,7 +1763,7 @@ ov57_0223866C: ; 0x0223866C
 	bl NewMsgDataFromNarc
 	mov r1, #0x11
 	add r6, r0, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r4, r0, #0
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -1790,7 +1790,7 @@ ov57_0223866C: ; 0x0223866C
 	lsr r3, r3, #1
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	bl DestroyMsgData
 	mov r0, #0x43
@@ -1949,7 +1949,7 @@ ov57_022387E0: ; 0x022387E0
 	bl NewMsgDataFromNarc
 	add r1, r4, #5
 	str r0, [sp, #0x14]
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x18]
 	add r0, sp, #0x1c
 	bl sub_0201D3C4
@@ -2040,7 +2040,7 @@ ov57_022387E0: ; 0x022387E0
 	ldr r1, [sp, #0x70]
 	bl sub_020138E0
 	ldr r0, [sp, #0x18]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x14]
 	bl DestroyMsgData
 	add r0, sp, #0x1c
@@ -2573,7 +2573,7 @@ _02238CCE:
 	lsl r2, r1, #3
 	ldr r1, _02238D74 ; =0x0223BECC
 	ldr r1, [r1, r2]
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r2, [r5]
 	mov r0, #0x6f
@@ -2586,7 +2586,7 @@ _02238CCE:
 	add r1, r4, #0
 	bl sub_02014980
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x14]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -3936,7 +3936,7 @@ _02239766:
 	bl NewMsgDataFromNarc
 	add r1, r5, #0
 	add r6, r0, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0xf
@@ -3952,7 +3952,7 @@ _02239766:
 	add r0, r4, #0
 	bl sub_0201D5C8
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	bl DestroyMsgData
 	add sp, #0xc
@@ -4277,7 +4277,7 @@ _02239A22:
 	bl FillWindowPixelBuffer
 	mov r0, #0x64
 	mov r1, #0x34
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, [sp, #0x10]
 	add r4, r0, #0
 	ldr r0, [r7, #0x64]
@@ -4306,7 +4306,7 @@ _02239A22:
 	add r0, r5, #0
 	bl sub_0201D5C8
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 _02239A76:
 	add r6, r6, #1
 	add r5, #0x10
@@ -4347,7 +4347,7 @@ _02239AB8:
 	bl FillWindowPixelBuffer
 	mov r0, #0x64
 	mov r1, #0x34
-	bl sub_02026354
+	bl String_ctor
 	str r0, [sp, #0x10]
 	ldr r0, [r6, #0x64]
 	sub r1, r7, #1
@@ -4372,7 +4372,7 @@ _02239AB8:
 	add r0, r5, r4
 	bl sub_0201D5C8
 	ldr r0, [sp, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4421,7 +4421,7 @@ _02239B4A:
 	bl NewMsgDataFromNarc
 	add r1, r5, #0
 	add r6, r0, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0xf
@@ -4437,7 +4437,7 @@ _02239B4A:
 	add r0, r4, #0
 	bl sub_0201D5C8
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	bl DestroyMsgData
 	add sp, #0xc

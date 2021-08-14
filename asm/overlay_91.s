@@ -2666,13 +2666,13 @@ _0225D908:
 	bl FillWindowPixelRect
 	mov r0, #0x80
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	add r6, r0, #0
 	ldr r0, [sp, #0x18]
 	mov r1, #0
 	ldr r0, [r0, #8]
 	add r2, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -2686,7 +2686,7 @@ _0225D908:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2739,7 +2739,7 @@ _0225D908:
 	str r0, [sp, #0x28]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x1c]
 	mov r4, #0
@@ -2849,7 +2849,7 @@ _0225DAC6:
 	blo _0225DA0E
 _0225DAD2:
 	ldr r0, [sp, #0x24]
-	bl sub_02026380
+	bl String_dtor
 	add r0, sp, #0x30
 	bl RemoveWindow
 	ldr r0, [sp, #0x14]
@@ -7266,11 +7266,11 @@ ov91_0225FCD8: ; 0x0225FCD8
 	str r0, [r5, #8]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0xc]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x10]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -7281,9 +7281,9 @@ ov91_0225FD0C: ; 0x0225FD0C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0xc]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
@@ -10630,7 +10630,7 @@ _02261616:
 	bl sub_02024830
 	mov r0, #0x10
 	add r1, r6, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x5c]
 	mov r0, #0
 	str r0, [sp]
@@ -10765,7 +10765,7 @@ ov91_02261790: ; 0x02261790
 	ldr r0, [r5, #0x4c]
 	bl sub_02013938
 	ldr r0, [r5, #0x5c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r5, #0x34]
 	bl sub_02024758
 	ldr r0, [r5]

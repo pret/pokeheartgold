@@ -241,7 +241,7 @@ _02259A80:
 	ldrb r1, [r4]
 	add r0, r6, #0
 	add r1, #0x4e
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -252,7 +252,7 @@ _02259A80:
 	str r3, [sp, #4]
 	bl sub_0200BE3C
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	ldrb r2, [r4]
 	add r0, r5, #0
 	mov r1, #2
@@ -317,7 +317,7 @@ ov24_02259AF8: ; 0x02259AF8
 _02259B10:
 	ldr r1, [r5]
 	mov r0, #0xc
-	bl sub_02026354
+	bl String_ctor
 	add r7, r0, #0
 	ldr r0, [r5, #0x10]
 	mov r1, #0x77
@@ -332,7 +332,7 @@ _02259B10:
 	str r3, [sp, #4]
 	bl sub_0200BE3C
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	ldrb r0, [r5, #0x15]
 	cmp r0, #6
 	blo _02259B48

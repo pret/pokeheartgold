@@ -252,7 +252,7 @@ _021E5AD4:
 	bne _021E5B36
 	ldr r0, [sp, #0x1c]
 	mov r1, #1
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x18]
 	mov r0, #0
 	str r0, [sp]
@@ -265,7 +265,7 @@ _021E5AD4:
 _021E5B36:
 	ldr r0, [sp, #0x1c]
 	mov r1, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x18]
 	mov r2, #0
 	ldr r0, [sp, #0x10]
@@ -305,7 +305,7 @@ _021E5B56:
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	ldr r0, [sp, #0x18]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x1c]

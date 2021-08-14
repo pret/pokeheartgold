@@ -104,7 +104,7 @@ ov54_021E5900: ; 0x021E5900
 	str r0, [r4, r1]
 	ldr r1, [r4]
 	mov r0, #0x28
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #0xc9
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -246,7 +246,7 @@ _021E5B08:
 	mov r0, #0xc9
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #1
 	bl sub_02002B34
 	mov r0, #1
@@ -595,7 +595,7 @@ _021E5DE8:
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	add r0, #0x84
 	ldrh r0, [r0]
@@ -1070,7 +1070,7 @@ _021E61D2:
 	ldrh r1, [r5, r1]
 	add r2, r4, #0
 	add r1, #0x28
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	add r0, r5, #0
 	add r0, #0x54
 	mov r1, #0xff
@@ -1120,12 +1120,12 @@ ov54_021E6238: ; 0x021E6238
 	add r6, r0, #0
 	ldr r1, [r6]
 	mov r0, #0x28
-	bl sub_02026354
+	bl String_ctor
 	add r5, r0, #0
 	ldr r0, [r6, #0x28]
 	mov r1, #0
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #5
 	str r0, [sp]
 	mov r1, #0
@@ -1139,7 +1139,7 @@ ov54_021E6238: ; 0x021E6238
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r5, #0
-	bl sub_020263AC
+	bl StringSetEmpty
 	add r0, r6, #0
 	add r1, r5, #0
 	mov r2, #1
@@ -1149,11 +1149,11 @@ ov54_021E6238: ; 0x021E6238
 	add r7, #0x44
 _021E6282:
 	add r0, r5, #0
-	bl sub_020263AC
+	bl StringSetEmpty
 	ldr r0, [r6, #0x28]
 	add r1, r4, #1
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #0x18
 	mul r0, r4
 	add r0, r0, #5
@@ -1175,11 +1175,11 @@ _021E6282:
 	cmp r4, #6
 	blo _021E6282
 	add r0, r5, #0
-	bl sub_020263AC
+	bl StringSetEmpty
 	ldr r0, [r6, #0x28]
 	mov r1, #8
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #0xff
@@ -1194,11 +1194,11 @@ _021E6282:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r5, #0
-	bl sub_020263AC
+	bl StringSetEmpty
 	ldr r0, [r6, #0x28]
 	mov r1, #7
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #0xff
@@ -1238,7 +1238,7 @@ _021E6316:
 	add r0, r6, #0
 	bl CopyWindowToVram
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1274,7 +1274,7 @@ _021E6386:
 	lsr r5, r0, #0x10
 	ldr r0, [r6, #0x28]
 	add r1, #9
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	ldr r1, [sp]
 	lsl r2, r4, #2
 	add r1, r1, r2

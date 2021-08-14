@@ -494,11 +494,11 @@ ov19_02259C68: ; 0x02259C68
 	str r0, [r6, #0x28]
 	ldr r1, [r6]
 	mov r0, #0x80
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r6, #0x2c]
 	ldr r0, [r6, #0x24]
 	mov r1, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r6, #0x30]
 	mov r4, #0
 	add r5, r6, #0
@@ -506,7 +506,7 @@ _02259CA6:
 	add r1, r4, #0
 	ldr r0, [r6, #0x24]
 	add r1, #0xa
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r5, #0x34]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -523,15 +523,15 @@ ov19_02259CBC: ; 0x02259CBC
 	add r5, r6, #0
 _02259CC4:
 	ldr r0, [r5, #0x34]
-	bl sub_02026380
+	bl String_dtor
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
 	blt _02259CC4
 	ldr r0, [r6, #0x30]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r6, #0x2c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r6, #0x28]
 	bl sub_0200BDA0
 	ldr r0, [r6, #0x24]
@@ -910,12 +910,12 @@ ov19_02259F64: ; 0x02259F64
 	bls _02259FCC
 	ldr r1, [r4, #0x2c]
 	ldr r2, [r4, #0x38]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	b _02259FD4
 _02259FCC:
 	ldr r1, [r4, #0x2c]
 	ldr r2, [r4, #0x34]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 _02259FD4:
 	mov r1, #0
 	str r1, [sp]

@@ -405,7 +405,7 @@ sub_02002F68: ; 0x02002F68
 	bl GF_AssertFail
 _02002F82:
 	add r0, r5, #0
-	bl sub_020263AC
+	bl StringSetEmpty
 	add r0, r5, #0
 	add r1, r6, #0
 	bl sub_02026B88

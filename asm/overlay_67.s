@@ -970,15 +970,15 @@ ov67_021E60B4: ; 0x021E60B4
 	mov r0, #2
 	ldr r1, [r4]
 	lsl r0, r0, #8
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x28]
 	mov r1, #0x21
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r4, #0x64]
 	ldr r0, [r4, #0x28]
 	mov r1, #0x22
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r4, #0x68]
 	pop {r4, pc}
 	thumb_func_end ov67_021E60B4
@@ -988,11 +988,11 @@ ov67_021E60F4: ; 0x021E60F4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x68]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x64]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x30]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x2c]
 	bl sub_0200BDA0
 	ldr r0, [r4, #0x28]
@@ -1050,7 +1050,7 @@ ov67_021E6164: ; 0x021E6164
 	add r4, r1, #0
 	add r1, r2, #0
 	add r7, r3, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	ldr r0, [sp, #0x24]
 	add r5, #0x6c
@@ -1066,7 +1066,7 @@ ov67_021E6164: ; 0x021E6164
 	add r2, r7, #0
 	bl ov67_021E6118
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1081,12 +1081,12 @@ ov67_021E61A0: ; 0x021E61A0
 	add r4, r1, #0
 	add r1, r2, #0
 	add r6, r3, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r7, r0, #0
 	ldr r0, [r5, #0x2c]
 	ldr r1, [r5, #0x30]
 	add r2, r7, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x24]
 	add r1, r5, #0
 	str r0, [sp]
@@ -1102,7 +1102,7 @@ ov67_021E61A0: ; 0x021E61A0
 	add r2, r6, #0
 	bl ov67_021E6118
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1388,7 +1388,7 @@ _021E6406:
 	bl sub_020D4A50
 	ldr r1, [r7]
 	mov r0, #8
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4]
 	ldrb r0, [r4, #7]
 	cmp r0, #0
@@ -1427,7 +1427,7 @@ ov67_021E6474: ; 0x021E6474
 	lsl r6, r6, #2
 _021E647E:
 	ldr r0, [r5, r6]
-	bl sub_02026380
+	bl String_dtor
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0x1e
@@ -1856,7 +1856,7 @@ _021E67A6:
 	str r2, [sp, #8]
 	bl ov67_021E6118
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 _021E67E8:
 	mov r5, #0
 _021E67EA:

@@ -102,7 +102,7 @@ _021E59B6:
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x49
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #0x8f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -120,7 +120,7 @@ _021E59B6:
 #else
 	mov r1, #1
 #endif
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -228,7 +228,7 @@ _021E5AD6:
 	ldr r0, [r6, r0]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	bl ov76_021E5EE0
 	mov r4, #0
@@ -2252,7 +2252,7 @@ _021E6AC8:
 	ldrb r6, [r1, #3]
 	ldr r0, [r5]
 	ldr r1, [r1, #4]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	str r6, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]

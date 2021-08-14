@@ -50,7 +50,7 @@ _022598E0:
 	mov r2, #0x80
 	bl sub_02026A68
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #8]
 	add r1, sp, #4
 	bl sub_02028F24
@@ -153,7 +153,7 @@ ov23_02259964: ; 0x02259964
 	add r2, r7, #0
 	bl sub_0206EC40
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r7, #0
 	bl FreeToHeap
 _02259A14:
@@ -211,7 +211,7 @@ ov23_02259A24: ; 0x02259A24
 	bl sub_0202B2D4
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
@@ -433,7 +433,7 @@ ov23_02259C1C: ; 0x02259C1C
 	bl NewMsgDataFromNarc
 	add r5, r0, #0
 	add r1, r4, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r5, #0
 	bl DestroyMsgData
@@ -468,7 +468,7 @@ ov23_02259C40: ; 0x02259C40
 	mov r1, #0x77
 	bl sub_0206EC40
 	ldr r0, [sp, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	mov r1, #1
 	add r0, sp, #0x14
 	strb r1, [r0]
@@ -545,7 +545,7 @@ ov23_02259C40: ; 0x02259C40
 	add r2, r6, #0
 	bl sub_0206EC40
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x9d

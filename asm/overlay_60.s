@@ -1703,7 +1703,7 @@ _021E667C:
 	add r7, r0, #0
 	mov r0, #0x40
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #6
 	lsl r1, r1, #6
 	add r5, r0, #0
@@ -1725,7 +1725,7 @@ _021E667C:
 	add r0, r7, #0
 	mov r1, #0
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
@@ -1767,7 +1767,7 @@ _021E677C:
 	bl AddTextPrinterParameterized3
 _021E679A:
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r1, _021E67E0 ; =0x0000011B

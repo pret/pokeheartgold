@@ -268,7 +268,7 @@ _021E5B4C:
 	mov r0, #0x3b
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0x3b
 	add r1, r6, #0
 	lsl r0, r0, #4
@@ -336,7 +336,7 @@ _021E5BB4:
 	ldr r1, [r4, #4]
 	bl ov61_021E6D78
 	ldr r0, [sp, #0x14]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0xe5
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -488,7 +488,7 @@ _021E5CF2:
 	ldr r1, [r4, #4]
 	bl ov61_021E6D78
 	ldr r0, [sp, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0xe5
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2515,7 +2515,7 @@ _021E6D90:
 _021E6DA4:
 	ldr r1, [sp, #0x28]
 	add r0, r7, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	ldr r1, [sp, #0x2c]
 	str r0, [r4]
 	lsl r1, r1, #0x18
@@ -2575,7 +2575,7 @@ ov61_021E6DFC: ; 0x021E6DFC
 	mov r3, #0xbe
 	bl ov61_021E6D78
 	ldr r0, [sp, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x14
 	pop {pc}
 	nop

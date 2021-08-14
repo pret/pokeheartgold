@@ -3338,7 +3338,7 @@ ov92_0225E070: ; 0x0225E070
 	bl NewMsgDataFromNarc
 	mov r1, #0
 	add r6, r0, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r4, r0, #0
 	mov r1, #0
 	ldr r0, _0225E0FC ; =0x00001FE0
@@ -3350,7 +3350,7 @@ ov92_0225E070: ; 0x0225E070
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	bl DestroyMsgData
 	ldr r0, _0225E0FC ; =0x00001FE0
@@ -3654,7 +3654,7 @@ _0225E312:
 	bl AddTextPrinterParameterized3
 _0225E32E:
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	bl CopyWindowToVram
 	ldr r0, [sp, #0x1c]

@@ -1350,11 +1350,11 @@ ov90_02259184: ; 0x02259184
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #8]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #6
 	str r0, [r5, #0xc]
 	mov r0, #0
@@ -1375,9 +1375,9 @@ ov90_022591D4: ; 0x022591D4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #8]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #4]
 	bl sub_0200BDA0
 	ldr r0, [r4]
@@ -1494,11 +1494,11 @@ ov90_0225928C: ; 0x0225928C
 	add r1, r2, #0
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov90_0225928C
 
@@ -1527,11 +1527,11 @@ ov90_022592C4: ; 0x022592C4
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
 	add r4, r3, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #8]
 	ldr r2, [r5, #0xc]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r0, #0
 	ldr r1, [r5, #8]
 	add r2, r0, #0
@@ -1567,11 +1567,11 @@ ov90_02259314: ; 0x02259314
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
 	add r4, r3, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r3, #0
 	ldr r0, [sp, #0x20]
 	str r3, [sp]
@@ -1598,11 +1598,11 @@ ov90_02259350: ; 0x02259350
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
 	add r6, r3, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #8]
 	ldr r2, [r5, #0xc]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, sp, #0x10
 	ldrb r0, [r0, #0x10]
 	mov r1, #0
@@ -1688,7 +1688,7 @@ _022593EC:
 	bl FillWindowPixelBuffer
 	ldr r1, [sp, #0x30]
 	mov r0, #0x80
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x24]
 	add r6, r6, #1
 	add r4, #0x10
@@ -1715,7 +1715,7 @@ _0225943E:
 	add r1, r4, #0
 	bl ov90_022594FC
 	ldr r0, [r5, #0x24]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -3615,7 +3615,7 @@ ov90_0225A2B0: ; 0x0225A2B0
 	bl FillWindowPixelBuffer
 	ldr r1, [sp, #0x2c]
 	mov r0, #0x80
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x14]
 	add r0, r7, #0
 	add r1, r6, #0
@@ -3660,7 +3660,7 @@ ov90_0225A340: ; 0x0225A340
 	add r4, r0, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x14]
-	bl sub_02026380
+	bl String_dtor
 	pop {r4, pc}
 	thumb_func_end ov90_0225A340
 

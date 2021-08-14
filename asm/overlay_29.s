@@ -283,7 +283,7 @@ _0225D73A:
 	add r1, r6, #0
 	ldr r0, [sp, #0x18]
 	add r1, #0x18
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r7, r0, #0
 	add r0, r5, r4
 	bl GetWindowWidth
@@ -315,7 +315,7 @@ _0225D73A:
 	add r0, r5, r4
 	bl sub_020200FC
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, r4
 	bl sub_0201D8A0
 	add r0, r5, r4

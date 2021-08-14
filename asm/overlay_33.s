@@ -526,7 +526,7 @@ _0225D912:
 	ldr r2, [r1]
 	lsl r1, r5, #2
 	ldr r1, [r2, r1]
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	lsl r6, r5, #4
 	str r0, [sp, #0x20]
 	add r0, r4, r6
@@ -563,7 +563,7 @@ _0225D912:
 	add r0, r4, r6
 	bl sub_0201D5C8
 	ldr r0, [sp, #0x20]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10

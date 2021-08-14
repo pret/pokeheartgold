@@ -1232,7 +1232,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	str r0, [r5, #0x70]
 	ldr r1, [r5]
 	mov r0, #0xb
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x74]
 	add r0, r5, #0
 	add r0, #0x68
@@ -1309,7 +1309,7 @@ ov97_0221F020: ; 0x0221F020
 	ldr r0, [r7, #0x70]
 	bl sub_0200BDA0
 	ldr r0, [r7, #0x74]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r7, #0
 	add r0, #8
 	bl RemoveWindow
@@ -1608,7 +1608,7 @@ ov97_0221F294: ; 0x0221F294
 	ldr r1, [r4, #0x6c]
 	ldr r3, [r4]
 	mov r2, #0
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	add r5, r0, #0
 	add r0, r4, #0
 	add r0, #8
@@ -1630,7 +1630,7 @@ ov97_0221F294: ; 0x0221F294
 	add r0, #8
 	bl CopyWindowToVram
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	add r0, #0x18
 	mov r1, #0
@@ -1642,7 +1642,7 @@ ov97_0221F294: ; 0x0221F294
 	beq _0221F32A
 	ldr r0, [r4, #0x6c]
 	mov r1, #1
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0
 	add r5, r0, #0
 	str r1, [sp]
@@ -1657,7 +1657,7 @@ ov97_0221F294: ; 0x0221F294
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 _0221F32A:
 	add r0, r4, #0
 	add r0, #0x18
@@ -1668,7 +1668,7 @@ _0221F32A:
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x6c]
 	mov r1, #8
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0
 	add r5, r0, #0
 	str r1, [sp]
@@ -1683,10 +1683,10 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x6c]
 	mov r1, #4
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	mov r0, #0x10
 	str r0, [sp]
@@ -1702,10 +1702,10 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x6c]
 	mov r1, #6
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	mov r0, #0x20
 	str r0, [sp]
@@ -1721,10 +1721,10 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x6c]
 	mov r1, #5
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	mov r0, #0x30
 	str r0, [sp]
@@ -1740,10 +1740,10 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x6c]
 	mov r1, #7
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	mov r0, #0x40
 	str r0, [sp]
@@ -1759,7 +1759,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r4, #0x48
 	add r0, r4, #0
 	bl CopyWindowToVram
@@ -1802,7 +1802,7 @@ ov97_0221F428: ; 0x0221F428
 	bne _0221F4A8
 	ldr r0, [r5, #0x6c]
 	mov r1, #2
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x38
@@ -1824,14 +1824,14 @@ ov97_0221F428: ; 0x0221F428
 	add r0, #0x38
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	b _0221F4FE
 _0221F4A8:
 	cmp r0, #1
 	bne _0221F4EC
 	ldr r0, [r5, #0x6c]
 	mov r1, #3
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x38
@@ -1854,7 +1854,7 @@ _0221F4A8:
 	add r0, #0x38
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	b _0221F4FE
 _0221F4EC:
 	add r0, r5, #0
@@ -1867,7 +1867,7 @@ _0221F4EC:
 _0221F4FE:
 	ldrh r0, [r4, #4]
 	ldr r1, [r5]
-	bl sub_0200BCDC
+	bl GetSpeciesName
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1878,12 +1878,12 @@ _0221F4FE:
 	add r2, r4, #0
 	bl sub_0200BE3C
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r5, #0x70]
 	ldr r1, [r5, #0x6c]
 	ldr r3, [r5]
 	mov r2, #9
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x58
@@ -1905,7 +1905,7 @@ _0221F4FE:
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

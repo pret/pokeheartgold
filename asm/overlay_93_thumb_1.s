@@ -456,7 +456,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r0, #5
 	lsl r0, r0, #6
 	mov r1, #0x75
-	bl sub_02026354
+	bl String_ctor
 	add r1, r5, #0
 	add r1, #0x88
 	str r0, [r1]
@@ -1038,7 +1038,7 @@ _0225CD72:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
@@ -1765,7 +1765,7 @@ ov93_0225D468: ; 0x0225D468
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0
 	add r4, r0, #0
 	str r1, [sp]
@@ -1779,7 +1779,7 @@ ov93_0225D468: ; 0x0225D468
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add r5, #0x70
 	add r0, r5, #0
 	bl sub_0201D5C8
@@ -2183,7 +2183,7 @@ ov93_0225D78C: ; 0x0225D78C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	mov r0, #0
 	add r1, r6, #0
@@ -2222,18 +2222,18 @@ ov93_0225D78C: ; 0x0225D78C
 	add r3, r5, r3
 	bl ov93_02261EB8
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x30]
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x38]
 	mov r0, #0
 	str r0, [sp, #0x34]
@@ -2307,9 +2307,9 @@ _0225D840:
 	cmp r0, #6
 	blt _0225D840
 	ldr r0, [sp, #0x30]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x38]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, _0225D9D4 ; =0x000015A8
 	add r0, r5, r0
 	bl ov93_02261FC8

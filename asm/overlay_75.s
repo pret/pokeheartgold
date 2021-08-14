@@ -36,13 +36,13 @@ ov75_02246960: ; 0x02246960
 	str r0, [r4, #8]
 	mov r0, #0x64
 	mov r1, #0x73
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #0x64
 	mov r1, #0x73
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #0x45
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -213,11 +213,11 @@ ov75_02246B00: ; 0x02246B00
 	mov r0, #0x45
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	bl sub_02007294
 	mov r0, #0x73
@@ -879,16 +879,16 @@ ov75_02246F0C: ; 0x02246F0C
 	str r0, [r5, #0x34]
 	ldr r0, _0224710C ; =0x0000010E
 	mov r1, #0x74
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x38]
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x74
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x40]
 	ldr r0, [r5, #0x24]
 	mov r1, #0x1f
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r5, #0x3c]
 	add r0, r5, #0
 	bl ov75_02247450
@@ -1085,11 +1085,11 @@ _022471A4:
 	ldr r0, [r4, #0x20]
 	bl sub_0200BDA0
 	ldr r0, [r4, #0x3c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x40]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x38]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	bl ov75_02247838
 	ldr r0, [r4, #4]
@@ -2401,7 +2401,7 @@ ov75_02247C70: ; 0x02247C70
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #0x2a
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	ldr r3, _02247D00 ; =0x02249B20
 	mov r1, #0
@@ -2417,10 +2417,10 @@ ov75_02247C70: ; 0x02247C70
 	add r3, #0xc
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x34]
 	mov r1, #0x2b
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	ldr r3, _02247D00 ; =0x02249B20
 	mov r1, #0
@@ -2436,7 +2436,7 @@ ov75_02247C70: ; 0x02247C70
 	add r3, #0xc
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	add r0, #0xb0
 	ldr r0, [r0]
@@ -2871,11 +2871,11 @@ ov75_02248034: ; 0x02248034
 	bl FillWindowPixelBuffer
 	ldr r0, [r7, #0x34]
 	mov r1, #0x2c
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0xc]
 	bl sub_02026800
 	mov r1, #0x74
-	bl sub_02026354
+	bl String_ctor
 	add r6, r0, #0
 	add r0, r7, #0
 	add r0, #0xac
@@ -2913,9 +2913,9 @@ _0224806E:
 	blt _0224806E
 _0224809E:
 	ldr r0, [sp, #0xc]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r7, #0xc4
 	add r0, r7, #0
 	bl CopyWindowToVram
@@ -2946,7 +2946,7 @@ _022480D4:
 _022480D6:
 	ldr r0, [r5, #0x34]
 	mov r1, #0x2c
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x14]
 	bl sub_02026820
 	add r1, r5, #0
@@ -3002,7 +3002,7 @@ _022480D6:
 	ldr r0, [sp, #0x14]
 	bl sub_02026800
 	mov r1, #0x74
-	bl sub_02026354
+	bl String_ctor
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r6, #0
@@ -3030,9 +3030,9 @@ _02248168:
 	cmp r6, #6
 	blt _02248168
 	ldr r0, [sp, #0x14]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	add r0, #0xc4
 	mov r1, #1
@@ -5564,14 +5564,14 @@ ov75_022494CC: ; 0x022494CC
 	add r0, r1, #0
 	add r1, r2, #0
 	add r4, r3, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	ldr r0, [r5, #0x20]
 	ldr r1, [r5, #0x38]
 	add r2, r6, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #0xf
@@ -5833,16 +5833,16 @@ ov75_022496B8: ; 0x022496B8
 	add r6, r1, #0
 	lsl r0, r0, #8
 	mov r1, #0x74
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	ldr r0, [r5, #0x30]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #0x20]
 	ldr r1, [r5, #0x40]
 	add r2, r4, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r5, #0
 	add r0, #0x68
 	mov r1, #0xf
@@ -5865,7 +5865,7 @@ ov75_022496B8: ; 0x022496B8
 	mov r0, #0xff
 	str r0, [r5, #0x44]
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

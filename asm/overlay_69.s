@@ -1640,7 +1640,7 @@ ov69_021E64CC: ; 0x021E64CC
 	bl sub_0201C2D8
 	ldr r1, [r4]
 	mov r0, #0x10
-	bl sub_02026354
+	bl String_ctor
 	add r5, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
@@ -1696,7 +1696,7 @@ ov69_021E64CC: ; 0x021E64CC
 	mov r1, #0x10
 	ldr r0, [r4, r0]
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -1727,7 +1727,7 @@ ov69_021E64CC: ; 0x021E64CC
 	mov r1, #0xd
 	ldr r0, [r4, r0]
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -1739,7 +1739,7 @@ ov69_021E64CC: ; 0x021E64CC
 	str r3, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #4
 	bl sub_02002DB4
 	add sp, #0x18
@@ -1833,7 +1833,7 @@ _021E682C:
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl sub_02026354
+	bl String_ctor
 	ldr r2, _021E68C8 ; =0x0000C07C
 	add r1, r6, #0
 	str r0, [r5, r2]
@@ -1841,7 +1841,7 @@ _021E682C:
 	sub r0, #0xc
 	ldr r0, [r5, r0]
 	ldr r2, [r5, r2]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #8]
 	bl sub_0202AD3C
 	add r3, r4, #0
@@ -1870,7 +1870,7 @@ _021E6886:
 	bne _021E68BC
 	ldr r0, _021E68C8 ; =0x0000C07C
 	ldr r0, [r5, r0]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, _021E68C4 ; =0x0000C074
 	mov r1, #2
 	str r1, [r5, r0]
@@ -2114,12 +2114,12 @@ ov69_021E6A8C: ; 0x021E6A8C
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, _021E6B40 ; =0x0000C010
 	add r6, r0, #0
 	ldr r0, [r5, r1]
@@ -2161,12 +2161,12 @@ ov69_021E6A8C: ; 0x021E6A8C
 	mov r1, #0xe
 	ldr r0, [r5, r0]
 	add r2, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, _021E6B50 ; =0x0000C080
 	add r1, r4, #0
 	ldr r0, [r5, r0]
 	add r2, r6, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r1, #0
 	ldr r0, _021E6B48 ; =0x0000C054
 	str r1, [sp]
@@ -2177,9 +2177,9 @@ ov69_021E6A8C: ; 0x021E6A8C
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, _021E6B48 ; =0x0000C054
 	add r0, r5, r0
 	bl CopyWindowToVram
@@ -2204,11 +2204,11 @@ ov69_021E6B5C: ; 0x021E6B5C
 	ldr r1, [r5]
 	mov r0, #0x40
 	add r4, r2, #0
-	bl sub_02026354
+	bl String_ctor
 	add r7, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x40
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, _021E6C04 ; =0x0000C010
 	add r6, r0, #0
 	ldr r0, [r5, r1]
@@ -2263,9 +2263,9 @@ _021E6BD8:
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, _021E6C0C ; =0x0000C054
 	add r0, r5, r0
 	bl CopyWindowToVram
@@ -2466,7 +2466,7 @@ ov69_021E6D5C: ; 0x021E6D5C
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	mov r0, #0xd8
 	str r0, [sp]
@@ -2482,7 +2482,7 @@ ov69_021E6D5C: ; 0x021E6D5C
 	mov r1, #0xf
 	ldr r0, [r5, r0]
 	add r2, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r3, #0
 	ldr r0, _021E6E7C ; =0x0000C014
 	str r3, [sp]
@@ -2493,7 +2493,7 @@ ov69_021E6D5C: ; 0x021E6D5C
 	str r3, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021E6DB6:
@@ -2503,11 +2503,11 @@ _021E6DB6:
 	beq _021E6E6E
 	ldr r1, [r5]
 	mov r0, #0x40
-	bl sub_02026354
+	bl String_ctor
 	add r6, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x40
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	mov r0, #0xd8
 	str r0, [sp]
@@ -2560,9 +2560,9 @@ _021E6E2A:
 	str r3, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0xc]
 	mov r1, #0x30
 	add r2, r0, #0
@@ -3458,7 +3458,7 @@ ov69_021E7520: ; 0x021E7520
 	str r0, [sp, #8]
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [sp, #8]
 	bl DestroyMsgData
 	cmp r4, #0
@@ -3480,7 +3480,7 @@ _021E755E:
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	add r4, r0, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r0, r5, #0

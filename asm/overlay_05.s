@@ -195,7 +195,7 @@ _0221BB66:
 	ldr r0, [r4, r2]
 	add r2, #8
 	ldr r2, [r4, r2]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r3, #0
 	str r3, [sp]
 	ldr r2, _0221BD14 ; =0x00000B88
@@ -246,7 +246,7 @@ _0221BBC4:
 	ldr r0, [r4, r0]
 	ldr r2, [r4, r2]
 	mov r1, #2
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	b _0221BBF0
 _0221BBE0:
 	add r0, r2, #0
@@ -255,7 +255,7 @@ _0221BBE0:
 	ldr r0, [r4, r0]
 	ldr r2, [r4, r2]
 	mov r1, #1
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 _0221BBF0:
 	mov r0, #0xd8
 	str r0, [sp]
@@ -346,7 +346,7 @@ _0221BC98:
 	ldr r0, [r4, r2]
 	add r2, #8
 	ldr r2, [r4, r2]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r3, #0
 	str r3, [sp]
 	ldr r2, _0221BD14 ; =0x00000B88
@@ -730,7 +730,7 @@ _0221BF92:
 	mov r0, #5
 	ldr r1, [r1, #0x24]
 	lsl r0, r0, #6
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, _0221C014 ; =0x00000BB4
 	str r0, [r5, r1]
 	mov r0, #1
@@ -1921,7 +1921,7 @@ _0221C972:
 	ldr r0, [r4, r2]
 	add r2, #8
 	ldr r2, [r4, r2]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r3, #0
 	str r3, [sp]
 	ldr r2, _0221CAAC ; =0x00000B88
@@ -1965,7 +1965,7 @@ _0221C9B0:
 	ldr r0, [r4, r2]
 	add r2, #8
 	ldr r2, [r4, r2]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, _0221CAB4 ; =0x0000061A
 	bl PlaySE
 	b _0221C9FE
@@ -1977,7 +1977,7 @@ _0221C9EC:
 	ldr r0, [r4, r2]
 	add r2, #8
 	ldr r2, [r4, r2]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 _0221C9FE:
 	add r0, r4, #0
 	bl ov05_0221EA38
@@ -2091,7 +2091,7 @@ _0221CADC:
 	ldr r0, [r4, r2]
 	add r2, #8
 	ldr r2, [r4, r2]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r3, #0
 	str r3, [sp]
 	ldr r2, _0221CB64 ; =0x00000B88
@@ -2753,7 +2753,7 @@ ov05_0221D020: ; 0x0221D020
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221D030
-	bl sub_02026380
+	bl String_dtor
 _0221D030:
 	mov r0, #0xbb
 	lsl r0, r0, #4
@@ -5524,7 +5524,7 @@ _0221E656:
 	add r1, r4, #0
 	ldr r0, [sp, #0x10]
 	add r1, #8
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x18]
 	bl sub_02070DB0
@@ -5535,9 +5535,9 @@ _0221E656:
 	ldr r0, [sp, #0x14]
 	ldr r2, [sp, #0x20]
 	add r1, r6, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x20]
-	bl sub_02026380
+	bl String_dtor
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -5564,7 +5564,7 @@ _0221E656:
 	ldr r0, [sp, #0x10]
 	mov r1, #0x1b
 	add r2, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -5586,7 +5586,7 @@ _0221E6DC:
 	ldr r0, [sp, #0x10]
 	mov r1, #0x1c
 	add r2, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -5908,7 +5908,7 @@ ov05_0221E944: ; 0x0221E944
 	str r0, [sp, #8]
 	ldr r1, [r1, #0x24]
 	mov r0, #0x20
-	bl sub_02026354
+	bl String_ctor
 	add r7, r0, #0
 	mov r4, #0
 	add r5, r6, #0
@@ -5931,7 +5931,7 @@ _0221E9A0:
 	cmp r4, #6
 	blo _0221E986
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]

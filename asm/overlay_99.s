@@ -7543,7 +7543,7 @@ ov99_021E93DC: ; 0x021E93DC
 	bl ov99_021E92EC
 	ldr r1, [r5, #0xc]
 	mov r0, #8
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -7559,7 +7559,7 @@ ov99_021E9418: ; 0x021E9418
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

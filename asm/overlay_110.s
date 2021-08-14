@@ -1655,18 +1655,18 @@ ov110_021E6580: ; 0x021E6580
 	str r0, [r6, #0x2c]
 	ldr r1, [r6]
 	mov r0, #0x80
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r6, #0x30]
 	ldr r0, [r6, #0x28]
 	mov r1, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r6, #0x34]
 	mov r4, #0
 	add r5, r6, #0
 _021E65BE:
 	ldr r0, [r6, #0x28]
 	add r1, r4, #1
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r5, #0x38]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -1674,7 +1674,7 @@ _021E65BE:
 	blt _021E65BE
 	ldr r0, [r6, #0x28]
 	mov r1, #5
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r6, #0x48]
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov110_021E6580
@@ -1684,20 +1684,20 @@ ov110_021E65DC: ; 0x021E65DC
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, [r6, #0x48]
-	bl sub_02026380
+	bl String_dtor
 	mov r4, #0
 	add r5, r6, #0
 _021E65EA:
 	ldr r0, [r5, #0x38]
-	bl sub_02026380
+	bl String_dtor
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
 	blt _021E65EA
 	ldr r0, [r6, #0x34]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r6, #0x30]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r6, #0x2c]
 	bl sub_0200BDA0
 	ldr r0, [r6, #0x28]

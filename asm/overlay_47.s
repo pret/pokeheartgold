@@ -571,13 +571,13 @@ _02258C7E:
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, [sp]
 	str r0, [r1, #0x28]
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, [sp]
 	str r0, [r1, #0x2c]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -601,9 +601,9 @@ _02258CC8:
 	ldr r0, [r6, #0x24]
 	bl sub_0200BDA0
 	ldr r0, [r6, #0x28]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r6, #0x2c]
-	bl sub_02026380
+	bl String_dtor
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov47_02258CC0
@@ -622,11 +622,11 @@ _02258CFC:
 	ldr r0, [r5, r0]
 	ldr r2, [r5, #0x2c]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	ldr r2, [r5, #0x2c]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	ldr r0, [r5, #0x28]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1308,7 +1308,7 @@ ov47_02259228: ; 0x02259228
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r6, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x18]
 	add r0, r4, #0
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -1337,7 +1337,7 @@ _02259296:
 	add r0, r5, #0
 	bl ov47_022593A0
 	ldr r0, [r5, #0x18]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	add r0, #8
 	bl RemoveWindow
@@ -2631,7 +2631,7 @@ ov47_02259C8C: ; 0x02259C8C
 	str r1, [sp]
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x10]
 	mov r6, #0
 	add r4, r5, #0
@@ -2639,7 +2639,7 @@ _02259CA4:
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x14]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -2702,11 +2702,11 @@ ov47_02259D24: ; 0x02259D24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	mov r4, #0
 _02259D30:
 	ldr r0, [r5, #0x14]
-	bl sub_02026380
+	bl String_dtor
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3

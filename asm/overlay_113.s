@@ -688,7 +688,7 @@ _021E5DF6:
 	ldr r0, [r4, #0x48]
 	ldr r1, [r4, #0x50]
 	ldr r2, [r4, #0x58]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -934,7 +934,7 @@ _021E5FE6:
 	ldr r0, [r6, #0x44]
 	ldr r2, [r6, #0x50]
 	mov r1, #1
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	add r0, r6, #0
 	ldr r1, [r6, #0x50]
 	add r0, #0x78
@@ -958,7 +958,7 @@ _021E5FE6:
 	ldr r0, [r6, #0x44]
 	ldr r2, [r6, #0x50]
 	mov r1, #3
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	add r0, r6, #0
 	ldr r1, [r6, #0x50]
 	add r0, #0x88
@@ -968,7 +968,7 @@ _021E5FE6:
 	ldr r0, [r6, #0x44]
 	ldr r2, [r6, #0x4c]
 	mov r1, #4
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #1
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -980,7 +980,7 @@ _021E5FE6:
 	ldr r0, [r6, #0x48]
 	ldr r1, [r6, #0x50]
 	ldr r2, [r6, #0x4c]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r6, #0
 	ldr r1, [r6, #0x50]
 	add r0, #0x88
@@ -1053,7 +1053,7 @@ _021E60DA:
 	ldr r0, [r5, #0x44]
 	ldr r2, [r5, #0x50]
 	add r1, #0x14
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	cmp r4, #7
 	bge _021E6118
 	lsl r3, r6, #0x10
@@ -1143,7 +1143,7 @@ _021E61A2:
 	lsl r1, r1, #0x1a
 	lsr r1, r1, #0x1a
 	add r1, r1, r6
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldrh r0, [r4]
 	lsl r0, r0, #0x1a
 	lsr r0, r0, #0x1a
@@ -1194,7 +1194,7 @@ _021E6206:
 	lsl r1, r1, #0x1a
 	lsr r1, r1, #0x1a
 	add r1, r1, r6
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r1, [r5, #0x50]
 	add r0, r7, #0
 	mov r2, #4
@@ -1754,20 +1754,20 @@ ov113_021E6680: ; 0x021E6680
 	mov r0, #2
 	ldr r1, [r4]
 	lsl r0, r0, #8
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x4c]
 	mov r0, #2
 	ldr r1, [r4]
 	lsl r0, r0, #8
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x50]
 	ldr r0, [r4, #0x44]
 	mov r1, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r4, #0x54]
 	ldr r0, [r4, #0x44]
 	mov r1, #5
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r4, #0x58]
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
@@ -1783,15 +1783,15 @@ ov113_021E66E4: ; 0x021E66E4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x58]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x54]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x50]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x4c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x48]
 	bl sub_0200BDA0
 	ldr r0, [r4, #0x44]

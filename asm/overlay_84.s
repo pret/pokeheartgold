@@ -1050,14 +1050,14 @@ _0223E544:
 	ldr r0, [r6, #0x6c]
 	bl sub_0200BDA0
 	ldr r0, [r6, #0x70]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r6, #0x74]
-	bl sub_02026380
+	bl String_dtor
 	mov r5, #0
 	add r4, r6, #0
 _0223E596:
 	ldr r0, [r4, #0x78]
-	bl sub_02026380
+	bl String_dtor
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #2
@@ -1134,13 +1134,13 @@ ov84_0223E5FC: ; 0x0223E5FC
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x6e
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, [sp, #0x18]
 	str r0, [r1, #0x70]
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x6e
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, [sp, #0x18]
 	mov r4, #0
 	str r0, [r1, #0x74]
@@ -1150,7 +1150,7 @@ ov84_0223E5FC: ; 0x0223E5FC
 _0223E65C:
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x78]
 	add r4, r4, #1
 	add r5, r5, #4

@@ -5014,7 +5014,7 @@ _0226227A:
 	add r0, #0x80
 	ldr r0, [r0]
 	add r1, r1, #4
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x34]
 	ldr r0, [sp, #0x2c]
 	mov r1, #0xa
@@ -5055,7 +5055,7 @@ _0226227A:
 	ldr r2, [r2]
 	bl ov93_02261EB8
 	ldr r0, [sp, #0x34]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x30]
 	sub r6, #0x14
 	sub r4, #0x28

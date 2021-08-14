@@ -485,7 +485,7 @@ ov30_0225D8F8: ; 0x0225D8F8
 	bl sub_0200E998
 	ldr r0, [r4, #0x38]
 	mov r1, #0x51
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
 	bl sub_0202AD3C
@@ -524,7 +524,7 @@ ov30_0225D954: ; 0x0225D954
 	cmp r0, #0
 	bne _0225D970
 	ldr r0, [r4, #0x5c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x10]
 	str r0, [r4, #0xc]
 _0225D970:
@@ -605,7 +605,7 @@ ov30_0225D9EC: ; 0x0225D9EC
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x38]
 	mov r1, #0x52
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
 	bl sub_0202AD3C
@@ -695,7 +695,7 @@ ov30_0225DA98: ; 0x0225DA98
 	bl sub_0200E998
 	ldr r0, [r4, #0x38]
 	mov r1, #0x14
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
 	bl sub_0202AD3C
@@ -745,11 +745,11 @@ ov30_0225DAEC: ; 0x0225DAEC
 	ldr r0, [r4, #0x38]
 	beq _0225DB16
 	mov r1, #0x15
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	b _0225DB1C
 _0225DB16:
 	mov r1, #0xf
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 _0225DB1C:
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
@@ -817,7 +817,7 @@ ov30_0225DB74: ; 0x0225DB74
 	ldr r1, [r4, #0x38]
 	mov r2, #0x10
 	mov r3, #8
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
 	bl sub_0202AD3C

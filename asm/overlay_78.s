@@ -893,7 +893,7 @@ ov78_021E6068: ; 0x021E6068
 	mov r0, #2
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl sub_02026354
+	bl String_ctor
 	add r6, r0, #0
 	ldr r0, [r5, #4]
 	cmp r0, #2
@@ -914,7 +914,7 @@ _021E6096:
 	mov r0, #2
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl sub_02026354
+	bl String_ctor
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #4]
 	cmp r0, #2
@@ -930,7 +930,7 @@ _021E60B2:
 	ldr r0, [r5, #0x38]
 	ldr r2, [sp, #0x10]
 	mov r1, #4
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #0x3c]
 	ldr r2, [sp, #0x1c]
 	mov r1, #1
@@ -940,7 +940,7 @@ _021E60D0:
 	ldr r0, [r5, #0x38]
 	ldr r2, [sp, #0x10]
 	mov r1, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 _021E60DA:
 	ldr r0, [r5, #0x3c]
 	ldr r2, [r5, #0xc]
@@ -949,7 +949,7 @@ _021E60DA:
 	ldr r0, [r5, #0x3c]
 	ldr r2, [sp, #0x10]
 	add r1, r6, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	str r7, [sp]
 	mov r1, #0
 	ldr r0, _021E61C0 ; =0x00010200
@@ -973,7 +973,7 @@ _021E60DA:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	ldr r0, [sp, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	bne _021E612E
@@ -989,7 +989,7 @@ _021E6136:
 _021E6138:
 	ldr r0, [r5, #0x38]
 	add r2, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	str r4, [sp]
 	mov r1, #0
 	ldr r0, _021E61C0 ; =0x00010200
@@ -1018,7 +1018,7 @@ _021E6138:
 	ldr r0, [r5, #0x38]
 	mov r1, #3
 	add r2, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #0x90
 	str r0, [sp]
 	mov r1, #0
@@ -1045,7 +1045,7 @@ _021E6138:
 	bl sub_020200FC
 _021E61B4:
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

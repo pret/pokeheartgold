@@ -190,7 +190,7 @@ _021E5A6A:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #0xbc
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r7, r0, #0
 	add r0, r6, #0
 	bl sub_02070DB0
@@ -204,9 +204,9 @@ _021E5A6A:
 	ldr r0, [r5, r1]
 	add r1, r1, #4
 	ldr r1, [r5, r1]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1

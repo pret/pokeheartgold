@@ -1467,9 +1467,9 @@ _0223E8E4:
 	ldr r0, [r6, #0x24]
 	bl sub_0200BDA0
 	ldr r0, [r6, #0x28]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r6, #0x2c]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	add r0, #0x98
 	ldr r0, [r0]
@@ -1478,7 +1478,7 @@ _0223E8E4:
 	add r5, r6, #0
 _0223E94A:
 	ldr r0, [r5, #0x30]
-	bl sub_02026380
+	bl String_dtor
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -1579,12 +1579,12 @@ ov82_0223E9E8: ; 0x0223E9E8
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x69
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x28]
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x69
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x2c]
 	mov r6, #0
 	add r4, r5, #0
@@ -1592,7 +1592,7 @@ ov82_0223E9E8: ; 0x0223E9E8
 _0223EA3C:
 	add r0, r7, #0
 	mov r1, #0x69
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x30]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -2197,11 +2197,11 @@ ov82_0223EF1C: ; 0x0223EF1C
 	ldr r0, [r5, #0x20]
 	ldr r2, [r5, #0x2c]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	ldr r2, [r5, #0x2c]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x28]
 	add r2, sp, #0x18
 	str r0, [sp]
@@ -2296,7 +2296,7 @@ ov82_0223EFCC: ; 0x0223EFCC
 	bl FillWindowPixelBuffer
 	mov r0, #0xb
 	mov r1, #0x69
-	bl sub_02026354
+	bl String_ctor
 	add r1, sp, #0x10
 	add r6, r0, #0
 	bl sub_020269A0
@@ -2321,7 +2321,7 @@ ov82_0223EFCC: ; 0x0223EFCC
 	add r3, r7, #0
 	bl sub_020200FC
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add sp, #0x28
@@ -2348,7 +2348,7 @@ ov82_0223F040: ; 0x0223F040
 	str r0, [sp, #0x24]
 	mov r0, #0xb
 	mov r1, #0x69
-	bl sub_02026354
+	bl String_ctor
 	add r5, r0, #0
 	mov r0, #0
 	lsl r2, r4, #0x18
@@ -2378,14 +2378,14 @@ _0223F090:
 	cmp r0, #0xfe
 	beq _0223F0D4
 	add r0, r5, #0
-	bl sub_020263AC
+	bl StringSetEmpty
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
 	bl ov80_02237920
 	add r1, r0, #0
 	ldr r0, [sp, #0x24]
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
 	str r0, [sp]
@@ -2416,7 +2416,7 @@ _0223F0D4:
 	cmp r0, #5
 	blt _0223F08C
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x24]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x10]
@@ -2531,7 +2531,7 @@ ov82_0223F1AC: ; 0x0223F1AC
 	bl NewMsgDataFromNarc
 	mov r1, #0x25
 	str r0, [sp, #0x10]
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0xf
@@ -2557,7 +2557,7 @@ ov82_0223F1AC: ; 0x0223F1AC
 	add r3, r7, #0
 	bl sub_020200FC
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	add r0, r5, #0

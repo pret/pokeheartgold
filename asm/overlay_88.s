@@ -1498,7 +1498,7 @@ _02259304:
 	mov r0, #1
 	ldr r1, [sp, #0x1c]
 	lsl r0, r0, #8
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x14]
 	add r1, #0x90
@@ -1560,7 +1560,7 @@ ov88_022593D0: ; 0x022593D0
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl sub_02026380
+	bl String_dtor
 	add r4, r5, #0
 	mov r6, #0
 	add r4, #0x60
@@ -1723,7 +1723,7 @@ ov88_02259508: ; 0x02259508
 	add r6, r2, #0
 	lsl r0, r0, #8
 	add r1, r3, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #8]
 	add r0, r6, #7
 	strb r0, [r5, #1]
@@ -1751,7 +1751,7 @@ ov88_0225954C: ; 0x0225954C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_02026380
+	bl String_dtor
 	add r4, #0xc
 	add r0, r4, #0
 	bl RemoveWindow
@@ -1928,7 +1928,7 @@ ov88_0225967C: ; 0x0225967C
 	str r0, [sp, #0x38]
 	ldr r1, [sp, #0x1c]
 	mov r0, #0x80
-	bl sub_02026354
+	bl String_ctor
 	str r0, [sp, #0x34]
 	mov r0, #0
 	str r0, [sp, #0x3c]
@@ -1970,7 +1970,7 @@ _022596BC:
 	ldr r0, [sp, #0x38]
 	ldr r1, [sp, #0x3c]
 	ldr r2, [sp, #0x34]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [sp, #0x34]
 	bl sub_02026820
 	str r0, [sp, #0x30]
@@ -1979,7 +1979,7 @@ _022596BC:
 	bl sub_02026800
 	ldr r1, [sp, #0x1c]
 	add r0, r0, #1
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	ldr r0, [sp, #0x30]
 	mov r7, #0
@@ -2041,7 +2041,7 @@ _02259766:
 	blo _02259720
 _0225978A:
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x14]
 	bl sub_0201D5C8
 	ldr r0, [sp, #0x28]
@@ -2063,7 +2063,7 @@ _0225978A:
 	cmp r0, #4
 	blt _022596BC
 	ldr r0, [sp, #0x34]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x38]
 	bl DestroyMsgData
 	add sp, #0x40

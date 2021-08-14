@@ -94,7 +94,7 @@ ov86_021E5900: ; 0x021E5900
 	mov r0, #0x32
 	lsl r0, r0, #4
 	mov r1, #0x79
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #0x86
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -223,7 +223,7 @@ ov86_021E5AA4: ; 0x021E5AA4
 	mov r0, #0x86
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -908,7 +908,7 @@ ov86_021E6024: ; 0x021E6024
 	ldr r0, [r5, r0]
 	add r1, r2, #0
 	add r7, r3, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	ldr r0, [sp, #0x24]
 	add r5, #0x10
@@ -924,7 +924,7 @@ ov86_021E6024: ; 0x021E6024
 	add r2, r7, #0
 	bl ov86_021E5FD8
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -941,7 +941,7 @@ ov86_021E6064: ; 0x021E6064
 	ldr r0, [r5, r0]
 	add r1, r2, #0
 	add r7, r3, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x85
 	add r6, r0, #0
 	lsl r1, r1, #2
@@ -949,7 +949,7 @@ ov86_021E6064: ; 0x021E6064
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	add r2, r6, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x24]
 	add r1, r5, #0
 	str r0, [sp]
@@ -967,7 +967,7 @@ ov86_021E6064: ; 0x021E6064
 	add r2, r7, #0
 	bl ov86_021E5FD8
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov86_021E6064
@@ -1671,7 +1671,7 @@ ov86_021E668C: ; 0x021E668C
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r1, r5, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	add r0, r6, #0
 	bl DestroyMsgData
@@ -1686,7 +1686,7 @@ ov86_021E668C: ; 0x021E668C
 	add r3, r1, #0
 	bl sub_0200BE3C
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov86_021E668C
@@ -2565,7 +2565,7 @@ ov86_021E6E30: ; 0x021E6E30
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0x27
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r4, r0, #0
 	mov r0, #0x8f
 	lsl r0, r0, #2
@@ -2598,7 +2598,7 @@ ov86_021E6E30: ; 0x021E6E30
 	add r0, r5, r0
 	bl sub_0201D5C8
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop

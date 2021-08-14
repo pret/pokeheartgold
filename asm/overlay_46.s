@@ -1351,12 +1351,12 @@ ov46_022592EC: ; 0x022592EC
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x18]
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x1c]
 	ldr r0, [sp, #0x44]
 	str r6, [r5, #0x20]
@@ -1419,11 +1419,11 @@ _02259394:
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #0x1c]
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5]
 	ldr r1, [r5, #0x18]
 	ldr r2, [r5, #0x1c]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -1570,9 +1570,9 @@ _022594BC:
 	add r0, #8
 	bl RemoveWindow
 	ldr r0, [r4, #0x1c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x18]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #4]
 	bl DestroyMsgData
 	ldr r0, [r4]
@@ -1593,11 +1593,11 @@ ov46_022594E0: ; 0x022594E0
 	ldr r0, [r4, #4]
 	ldr r2, [r4, #0x1c]
 	add r1, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r4]
 	ldr r1, [r4, #0x18]
 	ldr r2, [r4, #0x1c]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r0, #0
 	ldr r1, [r4, #0x18]
 	add r2, r0, #0

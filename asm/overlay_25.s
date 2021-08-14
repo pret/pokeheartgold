@@ -88,7 +88,7 @@ _0225996C:
 	beq _022599C4
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r6, #0
 	bl DestroyMsgData
@@ -121,7 +121,7 @@ _022599A2:
 	lsl r2, r6, #1
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 _022599C4:
 	mov r7, #0
 	add r5, #0x30
@@ -131,7 +131,7 @@ _022599C8:
 	lsr r0, r0, #0x15
 	beq _02259A1A
 	mov r1, #0xb
-	bl sub_0200BCDC
+	bl GetSpeciesName
 	add r4, r0, #0
 	bne _022599DE
 	bl GF_AssertFail
@@ -161,7 +161,7 @@ _022599F8:
 	lsl r2, r6, #1
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 _02259A1A:
 	add r7, r7, #1
 	add r5, #0x38

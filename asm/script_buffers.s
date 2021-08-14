@@ -39,7 +39,7 @@ _0200BD32:
 	str r0, [r4, #4]
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0xc]
 	cmp r0, #0
 	beq _0200BD98
@@ -58,7 +58,7 @@ _0200BD68:
 	bl sub_0200BDF4
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, [r4, #8]
 	add r1, r1, r5
 	str r0, [r1, #4]
@@ -107,7 +107,7 @@ _0200BDBE:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0200BDD6
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r5]
 	add r6, r6, #1
 	add r4, #8
@@ -120,7 +120,7 @@ _0200BDDC:
 	ldr r0, [r5, #0xc]
 	cmp r0, #0
 	beq _0200BDE6
-	bl sub_02026380
+	bl String_dtor
 _0200BDE6:
 	mov r0, #0
 	str r0, [r5]
@@ -244,13 +244,13 @@ sub_0200BE94: ; 0x0200BE94
 	ldr r2, [r5, #0xc]
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	b _0200BED0
 _0200BEC6:
 	ldr r2, [r5, #0xc]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 _0200BED0:
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
@@ -278,7 +278,7 @@ sub_0200BEE8: ; 0x0200BEE8
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
 	add r7, r0, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -338,7 +338,7 @@ sub_0200BF58: ; 0x0200BF58
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
 	add r7, r0, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -421,7 +421,7 @@ sub_0200BFF0: ; 0x0200BFF0
 	beq _0200C022
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -451,7 +451,7 @@ sub_0200C028: ; 0x0200C028
 	beq _0200C05C
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -480,7 +480,7 @@ sub_0200C060: ; 0x0200C060
 	beq _0200C094
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -507,7 +507,7 @@ sub_0200C098: ; 0x0200C098
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
 	add r7, r0, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -534,7 +534,7 @@ sub_0200C0CC: ; 0x0200C0CC
 	beq _0200C0FE
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -561,7 +561,7 @@ sub_0200C100: ; 0x0200C100
 	beq _0200C132
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -588,7 +588,7 @@ sub_0200C134: ; 0x0200C134
 	beq _0200C166
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -615,7 +615,7 @@ sub_0200C168: ; 0x0200C168
 	beq _0200C19A
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -642,7 +642,7 @@ sub_0200C19C: ; 0x0200C19C
 	beq _0200C1CE
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -671,7 +671,7 @@ sub_0200C1D4: ; 0x0200C1D4
 	beq _0200C206
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -700,7 +700,7 @@ sub_0200C20C: ; 0x0200C20C
 	beq _0200C23E
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -727,7 +727,7 @@ sub_0200C240: ; 0x0200C240
 	beq _0200C272
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -757,7 +757,7 @@ sub_0200C278: ; 0x0200C278
 	beq _0200C2D2
 	cmp r4, #0
 	beq _0200C29E
-	bl sub_0200BBCC
+	bl MsgDataGetCount
 	cmp r4, r0
 	blo _0200C2B6
 _0200C29E:
@@ -775,7 +775,7 @@ _0200C2B6:
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -802,7 +802,7 @@ sub_0200C2D4: ; 0x0200C2D4
 	beq _0200C306
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -831,7 +831,7 @@ sub_0200C30C: ; 0x0200C30C
 	beq _0200C33E
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -860,7 +860,7 @@ sub_0200C344: ; 0x0200C344
 	beq _0200C376
 	ldrb r1, [r4, #1]
 	ldr r2, [r5, #0xc]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r6, #0
@@ -889,7 +889,7 @@ sub_0200C37C: ; 0x0200C37C
 	beq _0200C3AE
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -918,7 +918,7 @@ sub_0200C3B4: ; 0x0200C3B4
 	beq _0200C3E6
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -963,7 +963,7 @@ sub_0200C408: ; 0x0200C408
 	beq _0200C43A
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -997,16 +997,16 @@ sub_0200C440: ; 0x0200C440
 _0200C460:
 	ldr r2, [r5, #0xc]
 	mov r1, #0x37
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	b _0200C47A
 _0200C46A:
 	ldr r2, [r5, #0xc]
 	mov r1, #0x38
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	b _0200C47A
 _0200C474:
 	ldr r0, [r5, #0xc]
-	bl sub_020263AC
+	bl StringSetEmpty
 _0200C47A:
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
@@ -1052,7 +1052,7 @@ sub_0200C4B0: ; 0x0200C4B0
 	beq _0200C4E2
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1086,7 +1086,7 @@ sub_0200C4E8: ; 0x0200C4E8
 	beq _0200C526
 	ldr r2, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r6, #0
@@ -1129,7 +1129,7 @@ sub_0200C544: ; 0x0200C544
 	beq _0200C576
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1156,7 +1156,7 @@ sub_0200C578: ; 0x0200C578
 	beq _0200C5AA
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1189,7 +1189,7 @@ sub_0200C5AC: ; 0x0200C5AC
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	beq _0200C648
-	bl sub_0200BBCC
+	bl MsgDataGetCount
 	cmp r4, r0
 	bhs _0200C606
 	cmp r6, #0
@@ -1200,7 +1200,7 @@ _0200C5E8:
 	ldr r2, [r5, #0xc]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r1, [sp]
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
@@ -1232,7 +1232,7 @@ _0200C620:
 	beq _0200C648
 	ldr r2, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r1, [sp]
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
@@ -1262,7 +1262,7 @@ sub_0200C654: ; 0x0200C654
 	beq _0200C686
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1289,7 +1289,7 @@ sub_0200C688: ; 0x0200C688
 	beq _0200C6BA
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1316,7 +1316,7 @@ sub_0200C6BC: ; 0x0200C6BC
 	beq _0200C6EE
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1347,7 +1347,7 @@ sub_0200C6F0: ; 0x0200C6F0
 	add r7, r0, #0
 	mov r0, #0x40
 	mov r1, #4
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	ldr r2, [sp, #0x28]
 	add r0, r6, #0
@@ -1365,7 +1365,7 @@ sub_0200C6F0: ; 0x0200C6F0
 	str r7, [sp, #4]
 	bl sub_0200BE3C
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200C6F0
@@ -1385,7 +1385,7 @@ sub_0200C74C: ; 0x0200C74C
 	beq _0200C77E
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1414,7 +1414,7 @@ sub_0200C784: ; 0x0200C784
 	beq _0200C7B6
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1444,7 +1444,7 @@ sub_0200C7BC: ; 0x0200C7BC
 	beq _0200C7F0
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1472,7 +1472,7 @@ sub_0200C7F4: ; 0x0200C7F4
 	beq _0200C826
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1501,7 +1501,7 @@ sub_0200C82C: ; 0x0200C82C
 	beq _0200C85E
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1531,7 +1531,7 @@ sub_0200C864: ; 0x0200C864
 	beq _0200C898
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1559,7 +1559,7 @@ sub_0200C89C: ; 0x0200C89C
 	beq _0200C8CE
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1588,7 +1588,7 @@ sub_0200C8D4: ; 0x0200C8D4
 	beq _0200C906
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1618,7 +1618,7 @@ sub_0200C90C: ; 0x0200C90C
 	beq _0200C940
 	ldr r2, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1650,7 +1650,7 @@ _0200C962:
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1683,7 +1683,7 @@ _0200C9A2:
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1716,7 +1716,7 @@ _0200C9E6:
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1751,7 +1751,7 @@ _0200CA2E:
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	add r1, r4, #7
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1785,7 +1785,7 @@ _0200CA6E:
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1821,7 +1821,7 @@ _0200CAB8:
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1857,7 +1857,7 @@ _0200CAFC:
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1891,7 +1891,7 @@ _0200CB3E:
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	sub r1, r4, #1
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1944,7 +1944,7 @@ _0200CB9C:
 	ldr r2, [r5, #0xc]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1957,8 +1957,8 @@ _0200CBB8:
 	.balign 4, 0
 	thumb_func_end sub_0200CB70
 
-	thumb_func_start sub_0200CBBC
-sub_0200CBBC: ; 0x0200CBBC
+	thumb_func_start StringExpandPlaceholders
+StringExpandPlaceholders: ; 0x0200CBBC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r6, r1, #0
@@ -1966,7 +1966,7 @@ sub_0200CBBC: ; 0x0200CBBC
 	bl sub_02026AA4
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_020263AC
+	bl StringSetEmpty
 	ldrh r1, [r5]
 	ldr r0, _0200CC48 ; =0x0000FFFF
 	cmp r1, r0
@@ -2028,7 +2028,7 @@ _0200CC44:
 	nop
 _0200CC48: .word 0x0000FFFF
 _0200CC4C: .word 0x0000FFFE
-	thumb_func_end sub_0200CBBC
+	thumb_func_end StringExpandPlaceholders
 
 	thumb_func_start sub_0200CC50
 sub_0200CC50: ; 0x0200CC50
@@ -2043,7 +2043,7 @@ _0200CC5E:
 	ldr r0, [r5, #8]
 	add r0, r0, r4
 	ldr r0, [r0, #4]
-	bl sub_020263AC
+	bl StringSetEmpty
 	ldr r0, [r5]
 	add r6, r6, #1
 	add r4, #8
@@ -19085,7 +19085,7 @@ ListMenuItems_AppendFromMsgData: ; 0x02014960
 	beq _0201497E
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r4]
 	str r5, [r4, #4]
 _0201497E:
@@ -19104,7 +19104,7 @@ sub_02014980: ; 0x02014980
 	beq _0201499E
 	ldr r1, [sp]
 	add r0, r6, #0
-	bl sub_0202642C
+	bl StringDup
 	str r0, [r4]
 	str r5, [r4, #4]
 _0201499E:
@@ -19166,7 +19166,7 @@ _020149F2:
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _02014A06
-	bl sub_02026380
+	bl String_dtor
 	str r4, [r5]
 	add r5, #8
 	ldr r0, [r5]
@@ -21200,7 +21200,7 @@ ListMenuCursorNew: ; 0x02015788
 	add r1, r5, #0
 	str r0, [r4]
 	mov r0, #4
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, _020157B4 ; =0x020F60DC
 	str r0, [r4, #4]
 	bl sub_020269A0
@@ -21224,7 +21224,7 @@ _020157C2:
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _020157D0
-	bl sub_02026380
+	bl String_dtor
 _020157D0:
 	add r0, r4, #0
 	bl FreeToHeap
@@ -21387,7 +21387,7 @@ _020158C4:
 	ldrh r2, [r2, #2]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	add r4, r0, #0
 	add r0, r5, #0
 	bl DestroyMsgData
@@ -21412,7 +21412,7 @@ sub_02015904: ; 0x02015904
 	ldr r1, _0201591C ; =0x020F60E0
 	ldrh r1, [r1, r2]
 	ldrh r2, [r4, #2]
-	bl sub_0200B9C4
+	bl ReadMsgData_NewNarc_NewString
 	pop {r4, pc}
 	.balign 4, 0
 _0201591C: .word 0x020F60E0
@@ -21483,7 +21483,7 @@ _02015980:
 	mov r0, #0x1b
 	add r2, r4, #0
 	mov r3, #0
-	bl sub_0200B9C4
+	bl ReadMsgData_NewNarc_NewString
 	str r0, [sp]
 	bl sub_02026AA4
 	add r4, r0, #0
@@ -21515,7 +21515,7 @@ _020159C2:
 	bne _020159A6
 _020159C8:
 	ldr r0, [sp]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -21725,7 +21725,7 @@ sub_02015AF4: ; 0x02015AF4
 	add r0, r5, r0
 	ldr r0, [r0, #4]
 	add r2, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -21752,12 +21752,12 @@ sub_02015B1C: ; 0x02015B1C
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	mov r0, #0x1b
-	bl sub_0200B8D4
+	bl ReadMsgData_NewNarc_ExistingString
 	add sp, #0xc
 	pop {r3, r4, pc}
 _02015B4C:
 	add r0, r4, #0
-	bl sub_020263AC
+	bl StringSetEmpty
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop

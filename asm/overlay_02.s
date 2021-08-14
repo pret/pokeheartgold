@@ -1724,7 +1724,7 @@ ov02_0224686C: ; 0x0224686C
 	bl NewMsgDataFromNarc
 	ldrb r1, [r5, #0x19]
 	add r4, r0, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r7, r0, #0
 	mov r0, #3
 	add r1, r7, #0
@@ -1753,7 +1753,7 @@ ov02_0224686C: ; 0x0224686C
 	add r0, r5, #0
 	bl sub_0201D5C8
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	bl DestroyMsgData
 	add sp, #0x10
@@ -21130,7 +21130,7 @@ _0224FA50:
 	add r0, r4, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -21164,7 +21164,7 @@ _0224FABA:
 	add r0, r4, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -21284,7 +21284,7 @@ ov02_0224FB9C: ; 0x0224FB9C
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #0xb
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #8]
 	add r1, r4, #0
@@ -21335,7 +21335,7 @@ ov02_0224FC08: ; 0x0224FC08
 	lsl r0, r0, #0xa
 	mov r1, #0xb
 	add r6, r2, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #8]
 	add r1, r4, #0
@@ -21414,14 +21414,14 @@ ov02_0224FC8C: ; 0x0224FC8C
 	bl ov02_022504A0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	ldr r1, [sp]
 	add r0, r4, #0
 	add r2, r6, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	bl sub_0200BDA0
 	add r0, r5, #0
@@ -21498,14 +21498,14 @@ _0224FD70:
 	mov r1, #0x62
 _0224FD72:
 	add r0, r7, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	ldr r1, [sp]
 	add r0, r4, #0
 	add r2, r5, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	bl sub_0200BDA0
 	add r0, r7, #0
@@ -22163,7 +22163,7 @@ _02250272:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -22201,7 +22201,7 @@ _022502C4:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -22387,7 +22387,7 @@ _02250418:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -25686,7 +25686,7 @@ ov02_02251E74: ; 0x02251E74
 _02251E86:
 	mov r0, #8
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	add r5, r0, #0
 	b _02251EB2
 _02251E92:
@@ -25698,7 +25698,7 @@ _02251E92:
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	add r0, r4, #0
 	bl DestroyMsgData

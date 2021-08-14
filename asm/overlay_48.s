@@ -3000,7 +3000,7 @@ ov48_02259EAC: ; 0x02259EAC
 	str r0, [r5, #8]
 	ldr r1, [sp, #0x28]
 	mov r0, #0x80
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0xc]
 	mov r2, #1
 	add r1, r5, #0
@@ -3047,7 +3047,7 @@ ov48_02259F14: ; 0x02259F14
 	bl sub_020200A0
 _02259F30:
 	ldr r0, [r4, #0xc]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x20]
 	bl sub_02016624
 	add r4, #0x10
@@ -5416,11 +5416,11 @@ ov48_0225B068: ; 0x0225B068
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #8]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0xc]
 	pop {r3, r4, r5, pc}
 	nop
@@ -5436,9 +5436,9 @@ ov48_0225B0A4: ; 0x0225B0A4
 	ldr r0, [r4, #4]
 	bl sub_0200BDA0
 	ldr r0, [r4, #8]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0xc]
-	bl sub_02026380
+	bl String_dtor
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov48_0225B0A4
@@ -5449,18 +5449,18 @@ ov48_0225B0C4: ; 0x0225B0C4
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r2, [r4, #8]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r4, #8]
 	pop {r4, pc}
 	thumb_func_end ov48_0225B0C4
 
 	thumb_func_start ov48_0225B0D4
 ov48_0225B0D4: ; 0x0225B0D4
-	ldr r3, _0225B0DC ; =sub_0200BB6C
+	ldr r3, _0225B0DC ; =ReadMsgDataIntoString
 	ldr r0, [r0]
 	bx r3
 	nop
-_0225B0DC: .word sub_0200BB6C
+_0225B0DC: .word ReadMsgDataIntoString
 	thumb_func_end ov48_0225B0D4
 
 	thumb_func_start ov48_0225B0E0
@@ -5471,7 +5471,7 @@ ov48_0225B0E0: ; 0x0225B0E0
 	add r4, r1, #0
 	ldr r2, [r5, #0xc]
 	mov r1, #3
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	mov r1, #0
 	add r2, r4, #0
@@ -5479,7 +5479,7 @@ ov48_0225B0E0: ; 0x0225B0E0
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #8]
 	ldr r2, [r5, #0xc]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	ldr r0, [r5, #8]
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov48_0225B0E0
@@ -5495,7 +5495,7 @@ ov48_0225B108: ; 0x0225B108
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
 	mov r1, #3
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	mov r1, #0
 	add r2, r4, #0
@@ -5504,7 +5504,7 @@ ov48_0225B108: ; 0x0225B108
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #8]
 	ldr r2, [r5, #0xc]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	ldr r0, [r5, #8]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

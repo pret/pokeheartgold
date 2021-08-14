@@ -1030,12 +1030,12 @@ _021E613C:
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl sub_02026354
+	bl String_ctor
 	add r6, r0, #0
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -1043,7 +1043,7 @@ _021E613C:
 	ldr r0, [r5, r1]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r3, #0x46
 	mov r0, #1
 	lsl r3, r3, #2
@@ -1077,9 +1077,9 @@ _021E613C:
 	sub r1, #8
 	ldr r1, [r5, r1]
 	add r2, r6, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r5, #8]
 	bl sub_0202AD3C
 	add r3, r4, #0
@@ -1111,7 +1111,7 @@ _021E621C:
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0x41
 	mov r1, #2
 	lsl r0, r0, #2
@@ -1193,7 +1193,7 @@ _021E62C2:
 	mov r0, #1
 	ldr r1, [r4]
 	lsl r0, r0, #0xa
-	bl sub_02026354
+	bl String_ctor
 	mov r2, #0x11
 	lsl r2, r2, #4
 	str r0, [r4, r2]
@@ -1202,7 +1202,7 @@ _021E62C2:
 	ldr r0, [r4, r0]
 	ldr r1, [sp, #0x10]
 	ldr r2, [r4, r2]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, _021E6498 ; =0x0000FFFF
 	cmp r7, r0
 	bne _021E6304
@@ -1330,7 +1330,7 @@ _021E63E2:
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0x42
 	mov r1, #1
 	lsl r0, r0, #2
@@ -1484,7 +1484,7 @@ _021E650C:
 	mov r0, #1
 	ldr r1, [r7]
 	lsl r0, r0, #0xa
-	bl sub_02026354
+	bl String_ctor
 	add r6, r0, #0
 	mov r0, #1
 	ldr r1, [sp, #0x24]
@@ -1492,7 +1492,7 @@ _021E650C:
 	ldr r0, [r7, r0]
 	ldr r1, [r1]
 	add r2, r6, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
@@ -1533,7 +1533,7 @@ _021E650C:
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x24]
 	add r4, #0x10
 	add r0, r0, #4
@@ -4116,7 +4116,7 @@ _021E7A76:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x18]
-	bl sub_020263AC
+	bl StringSetEmpty
 	mov r1, #0x4d
 	lsl r1, r1, #2
 	add r0, r1, #0
@@ -4484,7 +4484,7 @@ ov53_021E7D70: ; 0x021E7D70
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl sub_02026354
+	bl String_ctor
 	add r6, r0, #0
 	mov r0, #1
 	lsl r0, r0, #8
@@ -4493,7 +4493,7 @@ ov53_021E7D70: ; 0x021E7D70
 	mov r1, #0x3c
 	add r2, r6, #0
 	add r4, #0x6c
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #0x18]
 	ldr r2, _021E7DD4 ; =0x021E8518
 	add r1, r4, #0
@@ -4516,7 +4516,7 @@ ov53_021E7D70: ; 0x021E7D70
 	add r0, r4, #0
 	bl RemoveWindow
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -5226,7 +5226,7 @@ ov53_021E8330: ; 0x021E8330
 	ldr r3, [r5]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -5246,7 +5246,7 @@ ov53_021E8330: ; 0x021E8330
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

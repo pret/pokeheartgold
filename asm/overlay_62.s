@@ -1046,7 +1046,7 @@ _021E6102:
 	ldr r0, [sp, #0x14]
 	add r1, r6, #0
 	ldr r0, [r0, #0x34]
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1062,7 +1062,7 @@ _021E6102:
 	mov r3, #0
 	bl sub_020200FC
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r6, r6, #1

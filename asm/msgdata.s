@@ -3,24 +3,24 @@
 
 	.text
 
-	thumb_func_start sub_0200B610
-sub_0200B610: ; 0x0200B610
+	thumb_func_start LoadSingleElementFromNarc
+LoadSingleElementFromNarc: ; 0x0200B610
 	ldr r3, _0200B614 ; =AllocAndReadWholeNarcMemberByIdPair
 	bx r3
 	.balign 4, 0
 _0200B614: .word AllocAndReadWholeNarcMemberByIdPair
-	thumb_func_end sub_0200B610
+	thumb_func_end LoadSingleElementFromNarc
 
-	thumb_func_start sub_0200B618
-sub_0200B618: ; 0x0200B618
+	thumb_func_start FreeMsgDataRawData
+FreeMsgDataRawData: ; 0x0200B618
 	ldr r3, _0200B61C ; =FreeToHeap
 	bx r3
 	.balign 4, 0
 _0200B61C: .word FreeToHeap
-	thumb_func_end sub_0200B618
+	thumb_func_end FreeMsgDataRawData
 
-	thumb_func_start sub_0200B620
-sub_0200B620: ; 0x0200B620
+	thumb_func_start ReadMsgData_ExistingTable_ExistingArray
+ReadMsgData_ExistingTable_ExistingArray: ; 0x0200B620
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r3, r0, #0
@@ -52,7 +52,7 @@ sub_0200B620: ; 0x0200B620
 	add r1, r3, r2
 	add r0, r4, #0
 	add r2, sp, #0
-	bl sub_0200B74C
+	bl CopyEncryptedMessage16
 	ldr r2, [sp, #4]
 	ldr r0, _0200B69C ; =0x00091BD3
 	add r1, r7, #0
@@ -86,10 +86,10 @@ _0200B694:
 _0200B698: .word 0x000002FD
 _0200B69C: .word 0x00091BD3
 _0200B6A0: .word 0x0000493D
-	thumb_func_end sub_0200B620
+	thumb_func_end ReadMsgData_ExistingTable_ExistingArray
 
-	thumb_func_start sub_0200B6A4
-sub_0200B6A4: ; 0x0200B6A4
+	thumb_func_start ReadMsgData_NewNarc_ExistingArray
+ReadMsgData_NewNarc_ExistingArray: ; 0x0200B6A4
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r5, r1, #0
@@ -169,10 +169,10 @@ _0200B73A:
 _0200B740: .word 0x000002FD
 _0200B744: .word 0x00091BD3
 _0200B748: .word 0x0000493D
-	thumb_func_end sub_0200B6A4
+	thumb_func_end ReadMsgData_NewNarc_ExistingArray
 
-	thumb_func_start sub_0200B74C
-sub_0200B74C: ; 0x0200B74C
+	thumb_func_start CopyEncryptedMessage16
+CopyEncryptedMessage16: ; 0x0200B74C
 	add r3, r0, #0
 	add r0, r1, #0
 	add r1, r3, #0
@@ -182,10 +182,10 @@ sub_0200B74C: ; 0x0200B74C
 	bx r3
 	nop
 _0200B75C: .word MIi_CpuCopy16
-	thumb_func_end sub_0200B74C
+	thumb_func_end CopyEncryptedMessage16
 
-	thumb_func_start sub_0200B760
-sub_0200B760: ; 0x0200B760
+	thumb_func_start ReadMsgData_ExistingTable_ExistingString
+ReadMsgData_ExistingTable_ExistingString: ; 0x0200B760
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -254,7 +254,7 @@ _0200B7E2:
 	ldr r0, [sp]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_02026A04
+	bl CopyU16ArrayToStringN
 	add r0, r7, #0
 	bl FreeToHeap
 	add sp, #0x10
@@ -262,7 +262,7 @@ _0200B7E2:
 _0200B7F6:
 	bl GF_AssertFail
 	ldr r0, [sp]
-	bl sub_020263AC
+	bl StringSetEmpty
 _0200B800:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -270,10 +270,10 @@ _0200B800:
 _0200B804: .word 0x000002FD
 _0200B808: .word 0x00091BD3
 _0200B80C: .word 0x0000493D
-	thumb_func_end sub_0200B760
+	thumb_func_end ReadMsgData_ExistingTable_ExistingString
 
-	thumb_func_start sub_0200B810
-sub_0200B810: ; 0x0200B810
+	thumb_func_start ReadMsgData_ExistingTable_NewString
+ReadMsgData_ExistingTable_NewString: ; 0x0200B810
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -341,12 +341,12 @@ _0200B87C:
 _0200B892:
 	ldr r1, [sp]
 	add r0, r6, #0
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	beq _0200B8A6
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_02026A04
+	bl CopyU16ArrayToStringN
 _0200B8A6:
 	add r0, r7, #0
 	bl FreeToHeap
@@ -361,17 +361,17 @@ _0200B8B8:
 	bl GF_AssertFail
 	ldr r1, [sp]
 	mov r0, #4
-	bl sub_02026354
+	bl String_ctor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200B8C8: .word 0x000002FD
 _0200B8CC: .word 0x00091BD3
 _0200B8D0: .word 0x0000493D
-	thumb_func_end sub_0200B810
+	thumb_func_end ReadMsgData_ExistingTable_NewString
 
-	thumb_func_start sub_0200B8D4
-sub_0200B8D4: ; 0x0200B8D4
+	thumb_func_start ReadMsgData_NewNarc_ExistingString
+ReadMsgData_NewNarc_ExistingString: ; 0x0200B8D4
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r3, #0
 	add r5, r1, #0
@@ -385,15 +385,15 @@ sub_0200B8D4: ; 0x0200B8D4
 	str r1, [sp]
 	add r1, r5, #0
 	add r3, r7, #0
-	bl sub_0200B8FC
+	bl ReadMsgData_ExistingNarc_ExistingString
 	add r0, r6, #0
 	bl NARC_dtor
 _0200B8FA:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200B8D4
+	thumb_func_end ReadMsgData_NewNarc_ExistingString
 
-	thumb_func_start sub_0200B8FC
-sub_0200B8FC: ; 0x0200B8FC
+	thumb_func_start ReadMsgData_ExistingNarc_ExistingString
+ReadMsgData_ExistingNarc_ExistingString: ; 0x0200B8FC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r2, #0
@@ -472,7 +472,7 @@ _0200B996:
 	ldr r0, [sp, #0x28]
 	ldr r2, [sp, #0xc]
 	add r1, r4, #0
-	bl sub_02026A04
+	bl CopyU16ArrayToStringN
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x14
@@ -480,7 +480,7 @@ _0200B996:
 _0200B9AA:
 	bl GF_AssertFail
 	ldr r0, [sp, #0x28]
-	bl sub_020263AC
+	bl StringSetEmpty
 _0200B9B4:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -488,10 +488,10 @@ _0200B9B4:
 _0200B9B8: .word 0x000002FD
 _0200B9BC: .word 0x00091BD3
 _0200B9C0: .word 0x0000493D
-	thumb_func_end sub_0200B8FC
+	thumb_func_end ReadMsgData_ExistingNarc_ExistingString
 
-	thumb_func_start sub_0200B9C4
-sub_0200B9C4: ; 0x0200B9C4
+	thumb_func_start ReadMsgData_NewNarc_NewString
+ReadMsgData_NewNarc_NewString: ; 0x0200B9C4
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r3, #0
 	add r5, r1, #0
@@ -503,7 +503,7 @@ sub_0200B9C4: ; 0x0200B9C4
 	add r1, r5, #0
 	add r2, r4, #0
 	add r3, r6, #0
-	bl sub_0200B9F8
+	bl ReadMsgData_ExistingNarc_NewString
 	add r4, r0, #0
 	add r0, r7, #0
 	bl NARC_dtor
@@ -511,15 +511,15 @@ sub_0200B9C4: ; 0x0200B9C4
 _0200B9EA:
 	mov r0, #4
 	add r1, r6, #0
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 _0200B9F4:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200B9C4
+	thumb_func_end ReadMsgData_NewNarc_NewString
 
-	thumb_func_start sub_0200B9F8
-sub_0200B9F8: ; 0x0200B9F8
+	thumb_func_start ReadMsgData_ExistingNarc_NewString
+ReadMsgData_ExistingNarc_NewString: ; 0x0200B9F8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r4, r2, #0
@@ -560,7 +560,7 @@ sub_0200B9F8: ; 0x0200B9F8
 	eor r0, r1
 	add r1, r5, #0
 	str r0, [sp, #0x10]
-	bl sub_02026354
+	bl String_ctor
 	str r0, [sp, #8]
 	cmp r0, #0
 	beq _0200BAB0
@@ -604,7 +604,7 @@ _0200BAA0:
 	ldr r0, [sp, #8]
 	ldr r2, [sp, #0x10]
 	add r1, r5, #0
-	bl sub_02026A04
+	bl CopyU16ArrayToStringN
 	add r0, r5, #0
 	bl FreeToHeap
 _0200BAB0:
@@ -615,23 +615,23 @@ _0200BAB6:
 	bl GF_AssertFail
 	mov r0, #4
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0200BAC8: .word 0x000002FD
 _0200BACC: .word 0x00091BD3
 _0200BAD0: .word 0x0000493D
-	thumb_func_end sub_0200B9F8
+	thumb_func_end ReadMsgData_ExistingNarc_NewString
 
-	thumb_func_start sub_0200BAD4
-sub_0200BAD4: ; 0x0200BAD4
+	thumb_func_start GetMsgCount_ExistingTable
+GetMsgCount_ExistingTable: ; 0x0200BAD4
 	ldrh r0, [r0]
 	bx lr
-	thumb_func_end sub_0200BAD4
+	thumb_func_end GetMsgCount_ExistingTable
 
-	thumb_func_start sub_0200BAD8
-sub_0200BAD8: ; 0x0200BAD8
+	thumb_func_start GetMsgCount_TableFromNarc
+GetMsgCount_TableFromNarc: ; 0x0200BAD8
 	push {r3, lr}
 	sub sp, #8
 	add r3, r0, #0
@@ -647,7 +647,7 @@ sub_0200BAD8: ; 0x0200BAD8
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BAD8
+	thumb_func_end GetMsgCount_TableFromNarc
 
 	thumb_func_start NewMsgDataFromNarc
 NewMsgDataFromNarc: ; 0x0200BAF8
@@ -666,7 +666,7 @@ NewMsgDataFromNarc: ; 0x0200BAF8
 	ldr r2, [sp]
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_0200B610
+	bl LoadSingleElementFromNarc
 	str r0, [r4, #8]
 	cmp r0, #0
 	bne _0200BB36
@@ -703,7 +703,7 @@ DestroyMsgData: ; 0x0200BB44
 	b _0200BB64
 _0200BB56:
 	ldr r0, [r4, #8]
-	bl sub_0200B618
+	bl FreeMsgDataRawData
 	b _0200BB64
 _0200BB5E:
 	ldr r0, [r4, #8]
@@ -715,8 +715,8 @@ _0200BB6A:
 	pop {r4, pc}
 	thumb_func_end DestroyMsgData
 
-	thumb_func_start sub_0200BB6C
-sub_0200BB6C: ; 0x0200BB6C
+	thumb_func_start ReadMsgDataIntoString
+ReadMsgDataIntoString: ; 0x0200BB6C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -730,7 +730,7 @@ sub_0200BB6C: ; 0x0200BB6C
 	pop {r3, r4, pc}
 _0200BB82:
 	ldr r0, [r4, #8]
-	bl sub_0200B760
+	bl ReadMsgData_ExistingTable_ExistingString
 	add sp, #4
 	pop {r3, r4, pc}
 _0200BB8C:
@@ -739,14 +739,14 @@ _0200BB8C:
 	ldrh r1, [r4, #6]
 	ldrh r3, [r4, #2]
 	ldr r0, [r4, #8]
-	bl sub_0200B8FC
+	bl ReadMsgData_ExistingNarc_ExistingString
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BB6C
+	thumb_func_end ReadMsgDataIntoString
 
-	thumb_func_start sub_0200BBA0
-sub_0200BBA0: ; 0x0200BBA0
+	thumb_func_start NewString_ReadMsgData
+NewString_ReadMsgData: ; 0x0200BBA0
 	push {r3, lr}
 	add r3, r0, #0
 	ldrh r0, [r3]
@@ -759,21 +759,21 @@ sub_0200BBA0: ; 0x0200BBA0
 _0200BBB2:
 	ldrh r2, [r3, #2]
 	ldr r0, [r3, #8]
-	bl sub_0200B810
+	bl ReadMsgData_ExistingTable_NewString
 	pop {r3, pc}
 _0200BBBC:
 	ldr r0, [r3, #8]
 	ldrh r1, [r3, #6]
 	ldrh r3, [r3, #2]
-	bl sub_0200B9F8
+	bl ReadMsgData_ExistingNarc_NewString
 	pop {r3, pc}
 _0200BBC8:
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_0200BBA0
+	thumb_func_end NewString_ReadMsgData
 
-	thumb_func_start sub_0200BBCC
-sub_0200BBCC: ; 0x0200BBCC
+	thumb_func_start MsgDataGetCount
+MsgDataGetCount: ; 0x0200BBCC
 	push {r3, lr}
 	add r1, r0, #0
 	ldrh r0, [r1]
@@ -784,21 +784,21 @@ sub_0200BBCC: ; 0x0200BBCC
 	b _0200BBEE
 _0200BBDC:
 	ldr r0, [r1, #8]
-	bl sub_0200BAD4
+	bl GetMsgCount_ExistingTable
 	pop {r3, pc}
 _0200BBE4:
 	ldrh r0, [r1, #4]
 	ldrh r1, [r1, #6]
-	bl sub_0200BAD8
+	bl GetMsgCount_TableFromNarc
 	pop {r3, pc}
 _0200BBEE:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BBCC
+	thumb_func_end MsgDataGetCount
 
-	thumb_func_start sub_0200BBF4
-sub_0200BBF4: ; 0x0200BBF4
+	thumb_func_start ReadMsgDataIntoU16Array
+ReadMsgDataIntoU16Array: ; 0x0200BBF4
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -812,7 +812,7 @@ sub_0200BBF4: ; 0x0200BBF4
 	pop {r3, r4, pc}
 _0200BC0A:
 	ldr r0, [r4, #8]
-	bl sub_0200B620
+	bl ReadMsgData_ExistingTable_ExistingArray
 	add sp, #4
 	pop {r3, r4, pc}
 _0200BC14:
@@ -821,14 +821,14 @@ _0200BC14:
 	ldrh r0, [r4, #4]
 	ldrh r1, [r4, #6]
 	ldrh r3, [r4, #2]
-	bl sub_0200B6A4
+	bl ReadMsgData_NewNarc_ExistingArray
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BBF4
+	thumb_func_end ReadMsgDataIntoU16Array
 
-	thumb_func_start sub_0200BC28
-sub_0200BC28: ; 0x0200BC28
+	thumb_func_start GetSpeciesNameIntoArray
+GetSpeciesNameIntoArray: ; 0x0200BC28
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r3, r1, #0
@@ -840,14 +840,14 @@ sub_0200BC28: ; 0x0200BC28
 	add r6, r0, #0
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0200BBF4
+	bl ReadMsgDataIntoU16Array
 	add r0, r6, #0
 	bl DestroyMsgData
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0200BC28
+	thumb_func_end GetSpeciesNameIntoArray
 
-	thumb_func_start sub_0200BC4C
-sub_0200BC4C: ; 0x0200BC4C
+	thumb_func_start ReadMsgData_ExpandPlaceholders
+ReadMsgData_ExpandPlaceholders: ; 0x0200BC4C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r0, #0
@@ -859,35 +859,35 @@ sub_0200BC4C: ; 0x0200BC4C
 	lsl r0, r0, #0xa
 	add r6, r2, #0
 	str r3, [sp]
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	beq _0200BC96
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r5, r0, #0
 	beq _0200BC90
 	add r0, r7, #0
 	add r1, r4, #0
 	add r2, r5, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl sub_0202642C
+	bl StringDup
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 _0200BC90:
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 _0200BC96:
 	ldr r0, [sp, #4]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200BC4C
+	thumb_func_end ReadMsgData_ExpandPlaceholders
 
-	thumb_func_start sub_0200BC9C
-sub_0200BC9C: ; 0x0200BC9C
+	thumb_func_start GetMoveName
+GetMoveName: ; 0x0200BC9C
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -900,13 +900,13 @@ sub_0200BC9C: ; 0x0200BC9C
 	beq _0200BCD2
 	mov r0, #0x10
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	add r5, r0, #0
 	beq _0200BCC8
 	add r0, r4, #0
 	add r1, r6, #0
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 _0200BCC8:
 	add r0, r4, #0
 	bl DestroyMsgData
@@ -917,10 +917,10 @@ _0200BCD2:
 	pop {r4, r5, r6, pc}
 	nop
 _0200BCD8: .word 0x000002EE
-	thumb_func_end sub_0200BC9C
+	thumb_func_end GetMoveName
 
-	thumb_func_start sub_0200BCDC
-sub_0200BCDC: ; 0x0200BCDC
+	thumb_func_start GetSpeciesName
+GetSpeciesName: ; 0x0200BCDC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r3, r1, #0
@@ -931,7 +931,7 @@ sub_0200BCDC: ; 0x0200BCDC
 	add r5, r0, #0
 	beq _0200BD02
 	add r1, r4, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r5, #0
 	bl DestroyMsgData
@@ -941,4 +941,4 @@ _0200BD02:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BCDC
+	thumb_func_end GetSpeciesName

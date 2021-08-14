@@ -282,7 +282,7 @@ ov55_021E5B08: ; 0x021E5B08
 	str r0, [r6, #0xc]
 	mov r0, #8
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r6, #0x14]
 	add r0, r4, #0
 	bl sub_0202B3E8
@@ -345,7 +345,7 @@ ov55_021E5BAC: ; 0x021E5BAC
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _021E5BBA
-	bl sub_02026380
+	bl String_dtor
 _021E5BBA:
 	add r0, r4, #0
 	bl FreeToHeap

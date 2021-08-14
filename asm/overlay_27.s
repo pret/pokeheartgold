@@ -3487,7 +3487,7 @@ _0225BB8A:
 	ldr r1, [r5, r1]
 	lsr r2, r2, #0x11
 	mov r3, #8
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	ldr r1, _0225BC24 ; =0x00000474
 	str r0, [r6, r1]
 _0225BBBA:
@@ -3502,7 +3502,7 @@ _0225BBC8:
 	ldr r0, _0225BC20 ; =0x000004A8
 	ldr r1, [r4]
 	ldr r0, [r5, r0]
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x4b
 	lsl r1, r1, #4
 	str r0, [r6, r1]
@@ -3517,7 +3517,7 @@ _0225BBC8:
 	ldr r1, [r5, r1]
 	mov r2, #0xc
 	mov r3, #8
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	ldr r1, _0225BC2C ; =0x000004C4
 	mov r2, #0xd
 	str r0, [r5, r1]
@@ -3527,7 +3527,7 @@ _0225BBC8:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	mov r3, #8
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	ldr r1, _0225BC30 ; =0x000004C8
 	str r0, [r5, r1]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3549,17 +3549,17 @@ ov27_0225BC34: ; 0x0225BC34
 	add r5, r0, #0
 	ldr r0, _0225BC78 ; =0x000004C8
 	ldr r0, [r5, r0]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, _0225BC7C ; =0x000004C4
 	ldr r0, [r5, r0]
-	bl sub_02026380
+	bl String_dtor
 	mov r7, #0x4b
 	mov r6, #0
 	add r4, r5, #0
 	lsl r7, r7, #4
 _0225BC50:
 	ldr r0, [r4, r7]
-	bl sub_02026380
+	bl String_dtor
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #5
@@ -3570,7 +3570,7 @@ _0225BC62:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _0225BC6C
-	bl sub_02026380
+	bl String_dtor
 _0225BC6C:
 	add r4, r4, #1
 	add r5, #8
@@ -3852,7 +3852,7 @@ _0225BE3A:
 	mov r2, #1
 	bl ov27_0225BB38
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r5, #8]
 	mov r1, #5
 	bl sub_02024950
@@ -3937,7 +3937,7 @@ ov27_0225BED8: ; 0x0225BED8
 	sub r1, r1, #4
 	ldr r1, [r4, r1]
 	mov r3, #8
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -3973,7 +3973,7 @@ _0225BF48:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, sp, #0x14
 	bl CopyWindowToVram
 	add r0, sp, #0x14
@@ -5189,7 +5189,7 @@ ov27_0225C8D0: ; 0x0225C8D0
 	add r5, r0, #0
 	add r0, r1, #0
 	add r1, r2, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -5208,7 +5208,7 @@ ov27_0225C8D0: ; 0x0225C8D0
 	add r0, r5, #0
 	bl sub_0201D5C8
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

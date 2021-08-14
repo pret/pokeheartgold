@@ -3841,7 +3841,7 @@ ov122_021E769C: ; 0x021E769C
 	ldr r1, [r5, r1]
 	ldr r3, [r5]
 	add r2, r6, #0
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	add r5, r0, #0
 	add r3, sp, #0x18
 	ldrb r0, [r3, #0x14]
@@ -3860,7 +3860,7 @@ ov122_021E769C: ; 0x021E769C
 	add r0, r7, #0
 	bl sub_0201D5C8
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3884,7 +3884,7 @@ ov122_021E76F4: ; 0x021E76F4
 	ldr r1, [r5, r1]
 	ldr r3, [r5]
 	add r2, r6, #0
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	add r6, r0, #0
 	mov r0, #0x14
 	str r0, [sp]
@@ -3915,7 +3915,7 @@ ov122_021E76F4: ; 0x021E76F4
 	add r0, r4, #0
 	bl sub_0201D5C8
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r5, #0x18]
 	mov r1, #3
 	bl sub_0201BF7C
@@ -3949,7 +3949,7 @@ _021E778C:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r1, r6, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	b _021E77B8
 _021E77A6:
 	mov r1, #0x61
@@ -3959,7 +3959,7 @@ _021E77A6:
 	ldr r1, [r5, r1]
 	ldr r3, [r5]
 	add r2, r6, #0
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 _021E77B8:
 	add r6, r0, #0
 	cmp r7, #0
@@ -4025,7 +4025,7 @@ ov122_021E7820: ; 0x021E7820
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E7846
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #5
 	mov r1, #0
 	lsl r0, r0, #6
