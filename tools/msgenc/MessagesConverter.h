@@ -9,6 +9,12 @@
 
 using namespace std;
 
+static inline uint16_t enc_short(uint16_t value, uint16_t & seed) {
+    value ^= seed;
+    seed += 18749;
+    return value;
+}
+
 enum ConvertMode {
     CONV_ENCODE = 0,
     CONV_DECODE
@@ -24,10 +30,28 @@ struct MsgAlloc
 {
     uint32_t offset;
     uint32_t length;
+    void encrypt(uint16_t key, int i) {
+        uint32_t alloc_key = (765 * i * key) & 0xFFFF;
+        alloc_key |= alloc_key << 16;
+        offset ^= alloc_key;
+        length ^= alloc_key;
+    }
+    void decrypt(uint16_t key, int i) { encrypt(key, i); }
 };
 
+static inline void EncryptU16String(u16string & message, int & i) {
+    uint16_t key = i * 596947;
+    for (auto & code : message) {
+        code = enc_short(code, key);
+    }
+}
+
+static inline void DecryptU16String(u16string & message, int & i) {
+    EncryptU16String(message, i);
+}
+
 class MessagesConverter{
-    ConvertMode mode;
+protected:
     string textfilename;
     string keyfilename;
     string charmapfilename;
@@ -49,52 +73,27 @@ class MessagesConverter{
         {"COLOR", 0xFF00},
         {"SIZE", 0xFF01}
     };
-    map <uint16_t, string> cmdmap_dec;
-    map <uint16_t, string> charmap_dec;
-
-    static string ReadTextFile(string& filename);
-    void ReadKeyFile(string& keyfname);
-    void ReadCharmap(string& filename);
-    void ReadMessagesFromText(string& filename);
-    void ReadTextAndKey();
-    void WriteMessagesToText(string& filename);
-    static void WriteTextFile(string& filename, string const& contents);
-    static void WriteBinaryFile(string& filename, void* data, streamsize size);
-    void ReadMessagesFromBin(string& filename);
-    void WriteMessagesToBin(string& filename);
-    void ReadBinary();
-    void EncodeMessages();
-    void DecodeMessages();
-    void WriteTextAndKey();
-    void WriteBinary();
-    static u16string DecodeTrainerNameMessage(u16string const &message);
     template <typename key_type, typename mapped_type> void CreateInverseMap(map<key_type, mapped_type>const& _in, map<mapped_type, key_type>& _out) {
         for (auto _pair : _in) {
             _out[_pair.second] = _pair.first;
         }
     }
-    void CreateInverseMaps();
+    string ReadTextFile(string& filename);
+    void WriteTextFile(string& filename, string const & contents);
+    void ReadCharmap(string& charmapfname);
 public:
-    MessagesConverter(ConvertMode _mode, string &_textfilename, string &_keyfilename, string &_charmapfilename, string &_binfilename) :
-        mode(_mode),
+    MessagesConverter(string &_textfilename, string &_keyfilename, string &_charmapfilename, string &_binfilename) :
         textfilename(_textfilename),
         keyfilename(_keyfilename),
         charmapfilename(_charmapfilename),
         binfilename(_binfilename)
     {
         ReadCharmap(charmapfilename);
-        if (mode == CONV_DECODE)
-            CreateInverseMaps();
     }
-    void ReadInput() {
-        mode == CONV_ENCODE ? ReadTextAndKey() : ReadBinary();
-    }
-    void Convert() {
-        mode == CONV_ENCODE ? EncodeMessages() : DecodeMessages();
-    }
-    void WriteOutput() {
-        mode == CONV_ENCODE ? WriteBinary() : WriteTextAndKey();
-    }
+    virtual void ReadInput() = 0;
+    virtual void Convert() = 0;
+    virtual void WriteOutput() = 0;
+    virtual ~MessagesConverter() = 0;
 };
 
 #endif //GUARD_MESSAGESCONVERTER_H

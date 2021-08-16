@@ -5,7 +5,8 @@
  *     msgenc TXTFILE KEYFILE CHARMAP OUTFILE
  */
 
-#include "MessagesConverter.h"
+#include "MessagesDecoder.h"
+#include "MessagesEncoder.h"
 
 int main(int argc, char ** argv) {
     // msgenc TXTFILE KEYFILE CHARMAP OUTFILE
@@ -24,10 +25,15 @@ int main(int argc, char ** argv) {
     string charmapfile(argv[4]);
     string binfile(argv[5]);
 
-    MessagesConverter converter(mode, textfile, keyfile, charmapfile, binfile);
-    converter.ReadInput();
-    converter.Convert();
-    converter.WriteOutput();
+    MessagesConverter * converter;
+    if (mode == CONV_DECODE)
+        converter = new MessagesDecoder(textfile, keyfile, charmapfile, binfile);
+    else
+        converter = new MessagesEncoder(textfile, keyfile, charmapfile, binfile);
+    converter->ReadInput();
+    converter->Convert();
+    converter->WriteOutput();
+    delete converter;
 
     return 0;
 }
