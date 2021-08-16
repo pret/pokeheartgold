@@ -16,15 +16,15 @@ static string ConvertIntToHexStringN(unsigned value, StrConvMode mode, int n) {
         if (nybble == 0 && !printing_zeroes) {
             if (i == n - 1) printing_zeroes = true;
             else if (mode == STR_CONV_MODE_RIGHT_ALIGN) {
-                dest.push_back(' ');
+                dest += ' ';
                 continue;
             }
         }
         if (nybble != 0 || printing_zeroes) {
             if (nybble < 10) {
-                dest.push_back((char)('0' + nybble));
+                dest += (char)('0' + nybble);
             } else {
-                dest.push_back((char)('A' + nybble - 10));
+                dest += (char)('A' + nybble - 10);
             }
         }
         shift -= 4;
@@ -129,7 +129,7 @@ void MessagesConverter::ReadMessagesFromBin(string& filename)
             uint16_t code;
             infile.read((char*)&code, 2);
             code = enc_short(code, seed);
-            str.push_back(code);
+            str += (char16_t)code;
         }
         outfiles.push_back(str);
         i++;
@@ -174,7 +174,7 @@ void MessagesConverter::EncodeMessages() {
                 enclosed = enclosed.substr(pos + 1);
                 if (cmdmap.find(command) != cmdmap.end()) {
                     uint16_t command_i = cmdmap[command];
-                    encoded.push_back(enc_short(0xFFFE, seed));
+                    encoded += (char16_t)enc_short(0xFFFE, seed);
                     vector<uint16_t> args;
                     do {
                         k = enclosed.find(',');
@@ -188,16 +188,16 @@ void MessagesConverter::EncodeMessages() {
                         command_i |= args[0];
                         args.erase(args.begin());
                     }
-                    encoded.push_back(enc_short(command_i, seed));
-                    encoded.push_back(enc_short(args.size(), seed));
+                    encoded += (char16_t)enc_short(command_i, seed);
+                    encoded += (char16_t)enc_short(args.size(), seed);
                     for (auto num_i : args) {
-                        encoded.push_back(enc_short(num_i, seed));
+                        encoded += (char16_t)enc_short(num_i, seed);
                     }
                 } else if (command == "TRNAME") {
                     is_trname = true;
-                    encoded.push_back(enc_short(0xF100, seed));
+                    encoded += (char16_t)enc_short(0xF100, seed);
                 } else {
-                    encoded.push_back(enc_short(stoi(enclosed, nullptr, 16), seed));
+                    encoded += (char16_t)enc_short(stoi(enclosed, nullptr, 16), seed);
                 }
             } else {
                 uint16_t code = 0;
@@ -224,20 +224,20 @@ void MessagesConverter::EncodeMessages() {
                     bit += 9;
                     if (bit >= 15) {
                         bit -= 15;
-                        encoded.push_back(enc_short(trnamebuf & 0x7FFF, seed));
+                        encoded += (char16_t)enc_short(trnamebuf & 0x7FFF, seed);
                         trnamebuf >>= 15;
                     }
                 } else {
-                    encoded.push_back(enc_short(code, seed));
+                    encoded += (char16_t)enc_short(code, seed);
                 }
                 j += k;
             }
         }
         if (is_trname && bit > 1) {
             trnamebuf |= 0xFFFF << bit;
-            encoded.push_back(enc_short(trnamebuf & 0x7FFF, seed));
+            encoded += (char16_t)enc_short(trnamebuf & 0x7FFF, seed);
         }
-        encoded.push_back(enc_short(0xFFFF, seed));
+        encoded += (char16_t)enc_short(0xFFFF, seed);
         MsgAlloc alloc {0, 0};
         if (i > 1) {
             alloc.offset = alloc_table[i - 2].offset + alloc_table[i - 2].length * 2;
@@ -297,7 +297,7 @@ void MessagesConverter::DecodeMessages()
                 break;
             }
             else if (code == 0xFFFE) {
-                decoded.push_back('{');
+                decoded += '{';
                 j++;
                 code = message[j++];
                 string command;
@@ -312,7 +312,7 @@ void MessagesConverter::DecodeMessages()
                 decoded += command;
                 int nargs = message[j++];
                 for (int k = 0; k < nargs; k++) {
-                    decoded.push_back(' ');
+                    decoded += ' ';
                     if (is_strvar) {
                         decoded += ConvertIntToHexStringN(code & 0xFF, STR_CONV_MODE_LEADING_ZEROS, 2);
                         nargs--;
@@ -324,7 +324,7 @@ void MessagesConverter::DecodeMessages()
                     if (k != nargs - 1)
                         decoded += ',';
                 }
-                decoded.push_back('}');
+                decoded += '}';
                 j += nargs - ((code & 0xFF00) != 0x0100);
             }
             else if (code == 0xF100) {
