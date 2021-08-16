@@ -264,14 +264,20 @@ u16string MessagesConverter::DecodeTrainerNameMessage(u16string const &message)
     uint32_t trnamebuf = 0;
     int bit = 0;
     u16string out = u"\uf100";
-    for (auto code_p = message.cbegin() + 1; code_p < message.cend(); code_p++) {
-        trnamebuf = (trnamebuf << 15) | *code_p;
-        bit += 15;
-        while (bit >= 9) {
-            out.push_back((char16_t)((trnamebuf >> bit) & 0x1FF));
-            bit -= 9;
+    auto src_p = message.cbegin() + 1;
+    char16_t cur_char = 0;
+    do {
+        cur_char = ((*src_p >> bit) & 0x1FF);
+        bit += 9;
+        if (bit >= 15) {
+            src_p++;
+            bit -= 15;
+            if (bit != 0 && src_p < message.cend()) {
+                cur_char |= (*src_p << (9 - bit)) & 0x1FF;
+            }
         }
-    }
+        out += cur_char;
+    } while (src_p < message.cend() && cur_char != 0x1FF);
     return out;
 }
 
@@ -319,9 +325,10 @@ void MessagesConverter::DecodeMessages()
                         decoded += ',';
                 }
                 decoded.push_back('}');
-                j += nargs - !((code & 0xFF00) == 0x0100);
+                j += nargs - ((code & 0xFF00) != 0x0100);
             }
             else if (code == 0xF100) {
+                decoded += "{TRNAME}";
                 message = DecodeTrainerNameMessage(message);
                 is_trname = true;
             }
