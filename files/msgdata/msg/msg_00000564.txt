@@ -1,0 +1,20 @@
+Ilex Forest Ahead\nEnter through the gate.
+{STRVAR_1 3, 0, 0}: ...Tell me something.\rIs it true that Team Rocket has\nreturned?\rWhat? You beat them? Hah!\nQuit lying.\rAre you serious?\nThen let’s see how good you are.\r
+{STRVAR_1 3, 0, 0}: I hate the weak.\rPokémon, Trainers.\nIt doesn’t matter who or what.\rI hate to see them hanging around.\nThat goes for Team Rocket, too.\rThey think they are big and tough\nas long as they are in a group.\rBut get them alone, and they’re weak.\nI hate them all.\rYou stay out of my way.\nYou won’t be an exception\fif you get in my way.\r
+Nothing is going on.\nIt’s unsafe to go in there, so I’m\fstanding guard to make sure\fpeople don’t wander in.\rAm I not a good Samaritan?
+Do you know about SlowpokeTail?\nI heard it’s tasty!\rAren’t you glad I told you that?
+The SLOWPOKE have disappeared\nfrom town...\rI heard their tails are being sold\nsomewhere.
+The SLOWPOKE have returned.\rKnowing them, they could’ve just been\ntaking it easy somewhere.
+Did you come to get Kurt to make\nsome Poké Balls?\fA lot of people do just that.
+Cut through Azalea and you’ll be in\nIlex Forest.\rBut these skinny trees make it\nimpossible to get through.\rThe Charcoal Man’s Pokémon can cut\ndown trees.
+SLOWPOKE: ...\r...\r
+...Yawn?
+Azalea Town\nLiving Happily with Pokémon
+Kurt’s House\rApricorn and Nothing Else\nThe Stubborn Poké Ball Creator
+Azalea Town Pokémon Gym\nLeader: Bugsy\fThe Walking Bug Pokémon Encyclopedia
+SLOWPOKE Well\nAlso known as the Rainmaker Well.\rLocals believe that a SLOWPOKE’s\nyawn summons the rain.\rRecords show that a SLOWPOKE’s yawn\nended a drought 400 years ago.
+Charcoal Kiln\rWe let our FARFETCH’D fetch branches\nfor charcoal!
+Who are you?\nYou don’t know us?\rWe are...\nTeam Rocket!\r...What?\nWe broke up a while ago?\rGive me a break!\nWe have not broken up!\rActually we did once.\nBut we have come back to\fpursue Giovanni’s ambition.\rEnough talking.\nShut up and just beat it!\r
+{SIZE 200}Thud!{SIZE 100}\r
+We have this tough guy called Kurt\nin this town.\fHe should be able to take care of it...
+I knew we could count on Kurt!

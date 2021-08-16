@@ -61,8 +61,8 @@ protected:
 
     MsgArcHeader header = {};
     vector<MsgAlloc> alloc_table;
-    vector<string> files;
-    vector<u16string> outfiles;
+    vector<string> vec_decoded;
+    vector<u16string> vec_encoded;
 
     map<string, uint16_t> cmdmap = {
         {"STRVAR_1", 0x0100},

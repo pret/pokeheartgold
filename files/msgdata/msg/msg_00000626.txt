@@ -1,0 +1,36 @@
+GYARADOS: Gyashaa!
+DRAGONITE: Gyafooha!
+That red GYARADOS wasn’t acting right.\nAs I feared, somebody must have forced\fit to evolve...\r
+Did you come here because of the\nwild tales?\rYou’re {STRVAR_1 3, 0, 0}?\nI’m Lance, a Trainer like you.\rI heard some rumblings, so I came to\ninvestigate...\rI saw the way you battled earlier,\n{STRVAR_1 3, 0, 0}.\rI can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t mind, could you help me\ninvestigate? {YESNO 0}
+Did you come here because of the\nwild tales?\rYou’re {STRVAR_1 3, 0, 0}?\nI’m Lance, a Trainer like you.\rI heard some rumblings, so I came to\ninvestigate...\rI saw the way you battled earlier,\n{STRVAR_1 3, 0, 0}.\rI can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t mind, could you help me\ninvestigate? {YESNO 0}
+Lance: Excellent!\rIt seems that the Lake of Rage’s\nMAGIKARP are being forced to evolve.\rA mysterious radio broadcast coming\nfrom Mahogany is probably the cause.\rAnd that suspicious souvenir shop...\rI’ll be waiting for you in Mahogany,\n{STRVAR_1 3, 0, 0}.
+Lance: Excellent!\rIt seems that the Lake of Rage’s\nMAGIKARP are being forced\fto evolve.\rA mysterious radio broadcast coming\nfrom Mahogany is the cause.\rI’ll be waiting for you, {STRVAR_1 3, 0, 0}.
+Oh... Well, if you change your mind,\nplease help me.
+Lance: What do you think?\nAre you going to help me? {YESNO 0}
+The GYARADOS are angry!\nIt’s a bad omen!
+Hahah! The MAGIKARP are biting!
+I heard this lake was made by rampaging\nGYARADOS.\rI wonder if there is any connection\nto their mass outbreak now?
+Did my eyes deceive me? I saw a \nred GYARADOS in the Lake of Rage...\rBut I thought GYARADOS were\nusually blue?
+Pryce: The strong rain falling on the\nsurface seems to be agitating the\fraging lake.\rThis must have some purpose that we\nmeet again.\rWhy don’t we exchange our phone\nnumbers? {YESNO 0}\n
+{STRVAR_1 3, 0, 0} registered Pryce\nin the Pokégear!
+Pryce: I make it a habit to train myself\non Monday mornings to give this lazy\fbody a spine.\rYou could be a good training partner.\nI’ll be waiting for your call!
+Pryce: That’s OK, too.\nPeople ought to have their own ideas.\fThat’s the way it is.
+Pryce: So? Will you exchange\nnumbers with me? {YESNO 0}
+Battle with the great catch\nI just got!
+                             
+                                             
+I can only land the same kind of\nPokémon. No matter how long I fish!
+              
+                       
+When you spot a Trainer, it’s time for\na challenge!\fThat’s the way of Trainers!
+                
+                                        
+What happened to the red GYARADOS?\rIt’s gone?\nI came all the way for it...\rOK, I challenge you!
+    
+                            
+Lake of Rage\nAlso Known As GYARADOS Lake
+Fishing Guru’s House
+Fishing Guru’s House\rCurrent Record\n{STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} in. {STRVAR_1 3, 2, 0}
+{STRVAR_1 3, 0, 0} found\n{STRVAR_1 8, 1, 0}!
+{STRVAR_1 3, 0, 0} put the {STRVAR_1 8, 1, 0}\nin the {COLOR 2}{STRVAR_1 31, 2, 0}{COLOR 0} Pocket.
+Obtained the {STRVAR_1 8, 0, 0}!\rToo bad!\nThe Bag is full...

@@ -1,0 +1,50 @@
+                          
+    
+                                                
+                         
+                     
+                             
+                                  
+             
+                             
+                                    
+               
+                          
+                                          
+           
+                                           
+                   
+                                
+                                              
+I’m on patrol for suspicious individuals.
+Irene: Who are you?!\r
+               
+Irene: I’ll tell my sister about you!\r
+Irene: I’ll tell my sister about you!
+Irene: How did you find this place?\fThis is our hideout!
+Jenn: What the...?\nWhat are you doing?\r
+                     
+Jenn: Better not laugh yet.\nMy sister is really strong!
+Jenn: You and us... We might as well\nbecome friends!
+Kate: I must pay you back for taking\ncare of my sisters!\r
+                  
+Kate: You are so strong.\nWe lost with no excuses...\rHere, take this!\r
+                           
+Kate: I’m sorry we jumped you.\rWe never expected anyone to find \nus here.\fYou sure startled us.
+Rt. 34\nSouth to Azalea Town
+Trainer Tips\rNorth to Goldenrod City\nThe Radio Tower at Goldenrod is giving\faway Radio Cards.\rAnswer their questions and receive a\nRadio Card!
+Pokémon Day Care\nLet us raise your Pokémon for you!
+Lyra: Grandpa!\r
+Lyra: Good work, Grandpa!\nThe Pokémon you raised for me has\fbeen as healthy as can be!\rYou look fit, too!\r
+Lyra: Hi, {STRVAR_1 3, 0, 0}!\r
+Let me introduce you.\nThis is {STRVAR_1 3, 0, 0}. He’s a Trainer.\rHe seems to be getting better at\nraising Pokémon.\rWell, not as good as you, Grandpa,\nof course!\r
+Follow me, {STRVAR_1 3, 0, 0}!\r
+Ethan: Grandpa!\r
+Ethan: Good work, Grandpa!\nThe Pokémon you raised for me has\fbeen as healthy as can be!\rYou look fit, too!\r
+Ethan: Hey, {STRVAR_1 3, 0, 0}!\r
+Let me introduce you.\nThis is {STRVAR_1 3, 0, 0}. She’s a Trainer.\rShe seems to be getting better at\nraising Pokémon.\rWell, not as good as you, Grandpa,\nof course!\r
+Follow me, {STRVAR_1 3, 0, 0}!\r
+I have an idea!\nI’ll give you our numbers.\rThen you can check on the Pokémon\nwe raise for you.\r
+{STRVAR_1 3, 0, 0} registered the\nDay-Care Man in the Pokégear!
+{STRVAR_1 3, 0, 0} registered the\nDay-Care Lady in the Pokégear!
+Call us from time to time when you\ngive us your Pokémon to raise.\rI’ll be happy to have a use for this\nPokégear my grandchild gave me.\r

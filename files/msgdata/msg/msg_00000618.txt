@@ -1,0 +1,46 @@
+{SIZE 200}Hey! Hey!{SIZE 100}\r
+Stop dancing such a serious dance!\nShow me something like a hula dance!\r
+...You mustn’t push such a request\non me.\r
+Huh?\nAre you telling me you don’t respect\fwhat the customer wants?\r
+Well, then I’ll show you how to dance.\rI’ll show you a great one.\nWahahaha!\r
+Huh? Who are you?\rYou dare to get in my way?\r
+Oh, no!\nYou make me look like a villain!\r
+Oops!\nI have an important mission.\rIf they find out I was wasting time\nhere, they’ll make me start over\fas the lowest Team Rocket Grunt!\rI better leave now!\r
+...
+You must be {STRVAR_1 3, 0, 0}, correct?\nThat was indeed excellent.\fKind and strong...\fGood at raising Pokémon as well...\rThat person does know what to look for\nin people...\rOhoho! That was just me talking to\nmyself.\fNever mind.
+For Kimono Girls like me, dancing\nis everything.\rI have never gone a day without\na dance practice.\rPokémon are the same.\rThey grow with you little by little\neach day.
+Welcome.\nMy name is Zuki.\fI met you previously in Violet City.\rIn order to bring back HO-OH, we\nneeded someone with the right bond\fwith Pokémon.\rWe asked Mr. Pokémon to give this\nMystery Egg to whoever showed\ftrue potential.\rThe Egg was eventually handed from\nMr. Pokémon to Professor Elm, and then\fto you.\rHowever, being pure alone will not be\nsufficient to face the power of\fthis Pokémon.\fI must test you.\rAre you ready? {YESNO 0}
+Welcome.\nMy name is Zuki.\fI met you previously in Violet City.\rIn order to bring back LUGIA, we\nneeded someone with the right bond\fwith Pokémon.\rWe asked Mr. Pokémon to give this\nMystery Egg to whoever showed\ftrue potential.\rThe Egg was eventually handed from\nMr. Pokémon to Professor Elm, and then\fto you.\rHowever, being pure alone will not be\nsufficient to face the power of\fthis Pokémon.\fI must test you.\rAre you ready? {YESNO 0}
+I will test you to see if you are a good\nPokémon Trainer.\rAre you ready? {YESNO 0}
+That is fine...\nI will wait for you to get ready.
+You are quite strong.\rYou helped me in the Ilex Forest.\rMy name is Naoko. I’m the one that’s\nnot so good at directions.\rMy eyes witnessed you defeating\nTeam Rocket when Kurt was in trouble\fat the SLOWPOKE Well.\rAllow me to challenge you and your\nPokémon!\r
+You are quite the Trainer.\rI remember you chasing off\nthat Team Rocket Grunt\ffrom right here.\rI must thank you for that.\rAlthough, I am actually a Trainer\nmyself.\rShe who knows the most speaks\nthe least!\fI am Miki--the Kimono Girl!\rAllow me to challenge you and your\nPokémon!\r
+Excellent fighting spirit!\rYou got me off the ice by pushing me\nfrom the back.\rI am the one who skates in sandals.\fI am Sayo--the Kimono Girl!\rI was listening in the Dragon’s Den\nwhen you passed the test of the Elder.\rAllow me to challenge you and your\nPokémon!\r
+I am the last one.\rYou were so dependable at the\nGoldenrod Tunnel. I am the one who\ftwirls even underground.\rI am Kuni--the Kimono Girl!\rI looked at you in wonder when you\nthwarted Team Rocket’s mission\fto take over the Radio Tower.\fYou must show your strength to me now.\rAllow me to challenge you and your\nPokémon!\r
+Talk to Zuki in the middle\nwhen you are ready.
+We were not wrong about you.\nYou are indeed worthy of this...\rPlease take it.\r
+Big sisters!\rI just saw the big shadow of a Pokémon\nover the Bell Tower!\rIt could be...\r
+Big sisters!\rI just saw the big shadow of a Pokémon\nin the Whirl Islands’ waters!\rIt could be...\r
+Zuki: {STRVAR_1 3, 0, 0}!\nWe’ll be at the Bell Tower.\fSee you there!\r
+Zuki: {STRVAR_1 3, 0, 0}!\nWe’ll be at the Whirl Islands.\fSee you there!\r
+What’s the deal with that Team Rocket\nGrunt, messing with my Kimono Girl?\rYou are a Trainer, aren’t you?\fPlease help her!
+Wonderful!\nYou were so courageous for your age!\rIt was a rare sight to see!\nI want you to have this.\fDon’t be shy--take it!\r
+                      
+That’s Surf.\nIt’s a move that lets Pokémon swim\facross water with ease.\r
+Not only are the Kimono Girls great\ndancers, they’re also skilled at\fPokémon.\rBut they battle only for good reasons.\rI don’t know if you could defeat them if\nthey showed what they can do...
+PSYDUCK: Dau dau!
+That man’s always with his PSYDUCK.\rSays he wants a Pokémon that can\nSurf and dance.\rIs he trying to make a Pokémon\nthat stars at synchronized swimming?
+Oh... Ouch...!\rThis stomachache!\rI wouldn’t let this guy act like that\nwere it not for this pain...!
+I was supposed to be the hero...!\rSo much for getting close to\na Kimono Girl!\n
+Oh... Ouch...!\rThis back pain!\rI wouldn’t let this guy act like that\nwere it not for this pain...!
+Oh... Ouch...!\rThis toothache!\rI wouldn’t let this guy act like that\nwere it not for this pain...! 
+The Kimono Girls are so beautiful...\rBut they have to go through rigorous\ntraining.\rAnd they have to learn to follow\ncustoms before appearing in public.\rBut if you love something, anything\nis possible.
+To do such a terrible thing to\na Kimono Girl!\rI don’t understand how young people\nbehave these days.
+Quite the Trainer for your age indeed!
+This desk is used for\ncertain programs...
+Thank you for your help the other day.
+We are rehearsing a dance.
+Thank you for your help the other day.\rYou have beautifully proven that the\nbond between people can be extended to\fthe bond between people and Pokémon...\rWe all appreciate that you have lived up\nto our expectations, {STRVAR_1 3, 0, 0}!\rIf you feel that this experience has\ntaught you anything, the people you\fshould thank are not us, but\fMr. Pokémon and Professor Elm...
+We are rehearsing a dance.
+Thank you for your help the other day.
+I will test how closely you’ve\nbonded with your Pokémon!\r

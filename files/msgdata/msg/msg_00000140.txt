@@ -1,0 +1,14 @@
+This is the “Solidarity” room.\rIt is to show the solidarity of Pokémon\nand people, as well as the history\fof the Pokéathlon.
+Only the Pokéathletes who have\ncome in first in five of the courses\fare allowed here.
+This is the “Trust” room.\nPlease go ahead.
+The Pokéathlon does go way back.
+When you win a course,\nyou receive a Medal!\fI’ve got to win at every course!\r
+I heard that Pokéathletes with great\nrecords are going to have their shoes\fdisplayed at the museum!
+{STRVAR_1 3, 0, 0} checked\nthe course record!\r
+It is an old wall painting.\rOne person and three Pokémon\nseem to be learning something\ffrom looking up at the sky.
+It is an old, worn scroll.\r“Pokéathlon Myth\rWhen a disease took over the entire\nisland, one human and three Pokémon\fovercame ten obstacles to spread the\fword about the cure.”
+It’s an old scroll.\r“The Beginning of Pokéathlon\rTo commemorate the friendship of the\nperson and three Pokémon that\fconveyed the words of the cure, people\fstarted to tell of their achievement.”\r...\nThe commemorating eventually took the\fform of ten games to compete in, just\flike the obstacles in the legend...”
+RATTATA: Ffft!
+RATTATA: Kooar!
+ZUBAT: Quuooh.
+“Pokéathlon Almanac”\rThere are many Pokéathletes and\nPokémon Medalists shown in\fthe photos.\n

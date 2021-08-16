@@ -1,0 +1,12 @@
+Torin
+You know, I’m going to practice a whole\nbunch so we can battle again the next\ftime we meet.\rThat’s right! Give me your phone\nnumber so I can call you! {YESNO 0}
+All right, registration complete!\nLater!
+That’s too bad...
+Hey! You really want to trade phone\nnumbers with me, don’t you? {YESNO 0}
+Huh?\nI can hear the sound of a windmill...\rThat must mean that you’re nearby,\naren’t you?\rSo come have a proper conversation!
+My {STRVAR_1 0, 10, 0} works really hard!\rEverything I learn at school, it helps\nme repeat it right away.\rDo your Pokémon listen to what you say?
+Yesterday we battled a {STRVAR_1 0, 11, 0}!\rWe practiced all the stuff I learned\nin school!\rWhere do you go to school?\nSeriously, you don’t go to my school?\fThat can’t be true, can it?
+Recently I was trying to catch a\n{STRVAR_1 0, 11, 0}, but it ran away!\fSo disappointing!\rAnd so I don’t forget how disappointing\nit was, I’m writing down the name of the\fPokémon that got away on my notebook.\rThere’re Pokémon names all over\nmy notebook!
+Hey, come battle me again.\nI’ll be waiting at {STRVAR_1 4, 3, 0}!
+Hello? I’m at {STRVAR_1 4, 3, 0}. We\nwere going to battle, weren’t we?\fHurry on over!
+Huh? The only time you ever see me is\nwhen I’m on my way home from school?\rI suppose you’re right...\rBut when I’m on my way to school, I’m\nalways in a rush so that I’m not late.\rI don’t have any time for Pokémon\nbattles then!

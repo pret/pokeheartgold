@@ -1,0 +1,14 @@
+OK!\nYou must be the last passenger.\r
+Huh?\nDoesn’t seem like the ship will be moving\fanytime soon.
+If I manage to come back safely from\nthis journey and take my first steps in\fOlivine City, will you live there with me?\rPlease! I beg you!
+He’s only a crewman of a\npleasure cruise.\fHe has a way of exaggerating things.\r
+Sabrina: Out of the blue...\nI get the urge to see the ocean...\rIt may be fun to exchange numbers\nwith you...\rDo you want mine? {YESNO 0}
+{STRVAR_1 3, 0, 0} registered Sabrina\nin the Pokégear!
+Sabrina: I think I can keep my promises\nif you call me on Sundays around noon.
+Sabrina: I see...\nI thought you’d make a good friend.
+Sabrina: Now you want to know\nmy number?\fI can see it in your eyes... {YESNO 0}
+Sabrina: It’s you...\rHow about a picture here\nagainst the pleasant sea breeze? {YESNO 0}
+Sabrina: Are you ready?\r
+Sabrina: I think it looks good.
+Sabrina: I see...\nI thought you’d make a good\fpicture subject...
+Your Photo Album is full.\rAccess your PC and delete\nsome pictures.

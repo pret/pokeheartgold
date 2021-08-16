@@ -25,6 +25,7 @@ cmake-build-debug/
 *.4bpp
 *.lz
 *.gbapal
+files/msgdata/msg.narc
 
 # For asmdiff
 */baserom.*

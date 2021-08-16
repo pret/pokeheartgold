@@ -1,0 +1,13 @@
+Ian
+Hmm. If you transferred into my class,\nI’d become the second-best student\fin my class, wouldn’t I?\rI want to get stronger before that\ncould happen, so would you trade phone\fnumbers with me?\rThen we can have Pokémon\nbattles together! {YESNO 0}
+Cool. I’ll give you a call when I’m\nready to battle again!\rYou can call me, too!
+Wait...don’t tell me you’re serious\nabout transferring into my school?!
+Hmm. If you transferred into my class,\nI’d become the second-best student\fin my class, wouldn’t I!\rBefore that happens, I want to battle\nmore with you so I can become much\fstronger! Let’s trade phone numbers.\rThen we can have Pokémon\nbattles together! {YESNO 0}
+I want to give you something as thanks\nfor battling with me!\fHere you go--have a Berry!\r
+Hm? Wait, where are you?\nI’m pretty sure you’re nearby.\rIf you’re going to come all the way over\nhere, please feel free to approach me!
+You know, I’ve learned a lot from\nwatching you battle, and I’ve been\fpracticing with my {STRVAR_1 0, 10, 0}.\rThanks to you, we’ve improved a lot!\rBut even though we’ve grown stronger,\nyou’ve probably gotten stronger at\fthe same time, I guess.\rSo...that means we still won’t\nbe able to beat you, I guess!
+I used the tips I learned from watching\nyou battle to take down a wild\f{STRVAR_1 0, 11, 0} the other day!\rThanks to you, my Pokémon’s much\nstronger!\rIf we get the chance to meet again,\nI hope you’ll show me some more tricks!
+Hey, hey, listen up!\rA few days ago, I was trying to catch a\nwild {STRVAR_1 0, 11, 0}...\rWe went down to the wire, but it\nended up getting away!\rI really should have had a bunch of\nPoké Balls ready, I know...
+You know, lately I’ve been wanting to\nbattle you again... What do you say?\rAre you interested?\nI’m waiting on {STRVAR_1 4, 3, 0}!
+Hello? Didn’t we make plans to meet on\n{STRVAR_1 4, 3, 0} for a battle?\rI’m sure you couldn’t have forgotten!\nGet a move on, already!
+Hey, you know why I’m always in shorts?\rIt’s because they’re really cool!\rYou know how, if you scuff your knees\nand you’re wearing shorts, everyone\fcan see all the bandages?\fIt makes me look wild and dangerous!

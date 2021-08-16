@@ -1,0 +1,15 @@
+Whitney
+Um, ’scuse me? I can’t hear you very\nwell. We must have a bad connection.\rTry calling again from somewhere else!
+Hello...\nUm, hey, what’s up?\fI’m doing great over here...totally!\r
+There are so many Gym Leaders that are\nstronger than me... Um, I really need\fto work harder and improve!
+I’m often bored Saturdays at noon.\nThere’s nothing to do...\fUm... So, call me Saturday, OK?
+Yeah, I’m bored! Nothing to do!\nOh, yeah!\fYou wanna battle me again? {YESNO 0}
+For sure! I really want to battle, too.\rUm, you know where to find me...\nthe Fighting Dojo in Saffron City.
+What’s that?\nUm, bo-ring...
+Um, really?\nYou really have time to battle me?\rDon’t break a promise you made to\nsomeone else--that’s not fair!
+I’m waiting at the Fighting Dojo in\nSaffron City.\fBroken promises are unforgivable,\fget me?
+Um, this is Whitney.\nHow are you?\r
+Don’t forget you promised to meet me at\nthe Fighting Dojo in Saffron City.\fYou’re not gonna make me wait, are you?
+Um, have you ever been to the\nMoomoo Farm off Route 39?\rMy Milky...\nUm, I mean, my MILTANK, is staying over\fthere now...
+Um, I’ve gotta tell you, I’m so\nhungry... Do you know how it feels?\rI’m not an overeater or anything! This\nis completely normal for my age!
+The coolest member of the Elite Four?\nUmm... I’d have to say...\fBruno?\rI’m not the only one. Everyone says the\nsame thing, seriously.\fHe looks like quite a guy...

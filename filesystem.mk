@@ -408,5 +408,15 @@ $(DIFF_ARCS):
 
 $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
 
+MSGDATA_MSG_DIR := files/msgdata/msg
+MSGFILE_TXT := $(sort $(wildcard $(MSGDATA_MSG_DIR)/*.txt))
+MSGFILE_BIN := $(patsubst %.txt,%.bin,$(MSGFILE_TXT))
+
+files/msgdata/msg.narc: %.narc: $(MSGFILE_BIN)
+	$(KNARC) -d $* -p $@
+
+$(MSGFILE_BIN): %.bin: %.txt %.key
+	$(MSGENC) -e $^ charmap.txt $@
+
 #%.narc:
 #	$(KNARC) -d $* -p $@

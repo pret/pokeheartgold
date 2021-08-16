@@ -1,0 +1,14 @@
+Magnus: Oh, gosh!\r
+You are...!\nIt is indeed you, {STRVAR_1 3, 0, 0}!\rOutstanding!\nQuite an achievement for you\fto come up here, bud!\r
+This is the “Friendship” room.\rIt was built to commemorate the\nsolidarity, trust, and potential\fof Pokémon and people and\fto hope for the eternal friendship\fbetween Pokémon and people.\r
+Congratulations!\rThis room is only for those true\nPokéathletes who have earned\freal friendships with Pokémon!\r{STRVAR_1 3, 0, 0}!\nYou are a true Pokéathlete, bud!\r
+Having said that...\nthis is also the moment\fof a new beginning...\r
+That’s right, bud!\nYou have just heard a new starting\fsignal. Your challenge continues\ffor a whole new height and to become\fthe legendary Pokéathlete!\rTake a look at this statue.\nYou may be looking at your goal...\r
+Magnus: This is the “Friendship” room.\nIt is the last of all. It’s the room\fwhere eternal friendship between\fpeople and Pokémon is pledged.\r...But this is not your goal, bud.\rEach room has Trophies to earn,\nbut you can aim for any new height.\rIt is entirely up to you whether\nyou get there or not...\rThat’s right!\rYour true goal is not something\nanyone else can decide for you, bud.\r{STRVAR_1 3, 0, 0}!\nYou can overcome any difficulties\fwith your friendship with your Pokémon.
+It’s your statue!\r
+The statue of the Pokémon\nyou’ve shared your journey\fwith, helping each other and\fcultivating your friendship!
+It is the statue of a Medalist Pokémon.\rDo you want to replace it with another?
+You can place a statue of a\nMedalist Pokémon that has\fearned five medals.\rDo you want to place a statue?
+It is the statue of a Medalist Pokémon.\rDo you want to replace it with another?
+You can place a statue of a\nMedalist Pokémon that has\fearned five medals.\rDo you want to place a statue?
+It is the statue of a Medalist Pokémon.\rDo you want to replace it with another?

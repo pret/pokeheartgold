@@ -1,0 +1,15 @@
+Blue
+Wha... I can’t make out what you’re\nsaying! This connection is no good!\rCall from somewhere better, OK?
+Hello...\nWhatever... Don’t worry about me.\fI’m doing peachy over here!\r
+Are there any Gym Leaders you haven’t\nbattled yet?\fMake your move! Show some initiative!
+If it’s not Sunday night, then I’m not\navailable. Call then or forget about it!
+I was just looking for something\nto do!\fWanna battle me again? {YESNO 0}
+Whatever!\nI won’t lose to you again, got that?\rI’ll be waiting at the Fighting Dojo in\nSaffron City.
+Whatever. Sounds like you’re pretty\nbusy yourself.
+Wha...?\nOh, c’mon... Haven’t you made plans\fwith enough other people?
+I’m waiting at the Fighting Dojo in\nSaffron City.\fC’mon, show a little initiative here!
+I’m Blue.\r
+Remember we made plans to battle at\nthe Fighting Dojo in Saffron City?\fWha...! Did you seriously forget?\fC’mon, I don’t have all day!
+When I look at Pokémon, I get a strange\nfeeling--you ever get that?\rThere’s round ones, square ones, flying\nones, swimming ones, flaming ones,\ffreezing ones, shiny ones, dark ones--\fthere are so many different types, and\fyet, they’re all Pokémon.\rI mean, like Pokémon, there’s not\njust one type of person, either...\rBut it’s still kind of strange when you\nthink about it.
+Anyway, you’re really something.\rTraveling all by yourself, visiting all\nthese different Gyms you find and\fbeating them all...\rWell, you’re not really alone...\nYou’ve got Pokémon with you!
+Man, this guy called Red brought\nme down in a heartbeat.\rI haven’t seen him in a long time...\nI wonder where he is and what he’s\fup to...\rCome to think of it, you look a little bit\nlike Red. Yeah, you do.\rJust...\nJust a little bit. Whatever...

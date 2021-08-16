@@ -1,0 +1,151 @@
+                 
+Connecting to Nintendo Wi-Fi\nConnection... Please wait a moment...
+{STRVAR_1 3, 0, 0} is seeking someone\nto battle.
+{STRVAR_1 3, 0, 0} is seeking someone\nto trade with.
+{STRVAR_1 3, 0, 0} is seeking someone to\ncook with.
+{STRVAR_1 3, 0, 0} is seeking participants\nfor the Battle Frontier.
+{STRVAR_1 3, 0, 0} is seeking participants\nfor {STRVAR_3 0, 1, 0}.
+{STRVAR_1 3, 0, 0} is on standby.
+What would you like to seek?
+Seeking participants...
+Suspend your invitation?
+{STRVAR_1 3, 0, 0} contacted you!
+Would you like to log out of\nNintendo WFC?
+                            
+{STRVAR_1 3, 0, 0} invites you for\na voice chat!
+{STRVAR_1 3, 0, 0} appears to be busy...
+You can’t connect with\n{STRVAR_1 3, 0, 0}.
+Communicating with {STRVAR_1 3, 0, 0}...
+{STRVAR_1 3, 0, 0} failed to respond...
+{STRVAR_1 3, 0, 0} ended the voice chat.
+Would you like to end\nthis voice chat?
+Nintendo Wi-Fi Connection
+             
+  
+   
+         
+          
+IN BATTLE
+TRADE
+TRADING...
+COOK
+COOKING...
+BATTLE FRONTIER
+IN CHALLENGE...
+PLAZA GAMES
+IN PLAY...
+VOICE CHAT
+           
+              
+APPLY
+       
+CANCEL
+{STRVAR_1 3, 0, 0}
+GROUP
+BATTLE RECORD
+W: {STRVAR_1 53, 0, 0}
+L: {STRVAR_1 53, 0, 0}
+POKéMON TRADES
+{STRVAR_1 53, 0, 0}
+POFFIN SESSIONS
+{STRVAR_1 53, 0, 0}
+DATE LAST PLAYED
+BATTLE TOWER
+BATTLE FACTORY
+BATTLE CASTLE
+BATTLE HALL
+BATTLE ARCADE
+PREV
+CURRENT
+RECORD
+LEVEL 50
+OPEN LEVEL
+RENTAL/TRADE
+CASTLE POINTS
+{STRVAR_1 0, 0, 0}
+WIN STREAK: {STRVAR_1 53, 0, 0}
+{STRVAR_1 53, 0, 0}
+{STRVAR_1 53, 0, 0} CP
+WIN STREAK: {STRVAR_1 53, 0, 0}
+GAMES CLEARED: {STRVAR_1 53, 0, 0}
+PLAZA GAMES PLAYED
+{STRVAR_3 0, 0, 0}
+{STRVAR_1 53, 0, 0}
+CLOSE
+{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, {STRVAR_1 53, 0, 0}
+               
+{STRVAR_1 3, 0, 0} wants to join you!
+Would you like to have another\nbattle against {STRVAR_1 3, 0, 0}?
+Would you like to do another\ntrade with {STRVAR_1 3, 0, 0}?
+Standing by...
+       
+{STRVAR_1 3, 0, 0} is in a battle.
+{STRVAR_1 3, 0, 0} is trading.
+{STRVAR_1 3, 0, 0} is cooking.
+{STRVAR_1 3, 0, 0} is in a Battle Frontier\nchallenge.
+{STRVAR_1 3, 0, 0} is playing a Plaza Game.
+{STRVAR_1 3, 0, 0} is having a voice chat.
+                              
+Reconnect to Nintendo WFC?
+You need at least two Pokémon\nif you want to trade!
+Voice chat was turned ON.\r
+Voice chat was turned OFF.\r
+???
+SINGLE BATTLE
+DOUBLE BATTLE
+FREE SINGLE
+LV. 50 SINGLE
+LV. 100 SINGLE
+FREE DOUBLE
+LV. 50 DOUBLE
+LV. 100 DOUBLE
+Your friend ended the communication\nbattle.
+Communicating. Please stand by...
+You can’t have a Double Battle\nif you only have one Pokémon...
+You don’t have any Berries...
+Your Poffin Case is full.
+You can’t cook Berries if you don’t\nhave a Poffin Case.
+When the group is ready:\nA Button: Proceed   B Button: Cancel
+Someone wishes to join.\nAccept this Trainer as a member?
+  
+   
+Are these members OK?
+  
+   
+Awaiting {STRVAR_1 3, 0, 0}’s response...
+{STRVAR_1 3, 0, 0} approved your\nmember-registration request.
+{STRVAR_1 3, 0, 0} turned down your\nmember-registration request...\r
+                
+A member had to drop out.\nPlease register from the start again.\r
+There aren’t enough members.\r
+Stop looking for members?
+If the leader drops out, the group will\nbe disbanded. Is that OK?
+The member invitations will be canceled.
+Awaiting other members.
+Is it OK to turn on the Voice Chat?
+Is it OK to turn off the Voice Chat?
+Seeking Poffin cooks!
+Seeking {STRVAR_3 0, 0, 0} players!
+Voice Chat ON/OFF: X Button
+{STRVAR_1 3, 0, 0}
+ID {STRVAR_1 54, 0, 0}
+{STRVAR_1 3, 0, 0}\nID {STRVAR_1 54, 1, 0}
+The leader appears busy.\nPlease apply again.\r
+                  
+Voice chat will be turned ON while\nyou play with this friend.\rWould you like to respond to this\nfriend’s invitation?
+Voice chat will be turned OFF while\nyou play with this friend.\rWould you like to respond to this\nfriend’s invitation?
+                 
+                                
+Waiting for the other player to\ndecide. Please wait...
+                              
+                             
+                       
+           
+                  
+WALKABOUT
+MULTI BATTLE
+2BITADPCM
+3BITADPCM
+4BITADPCM
+    
+{STRVAR_1 3, 0, 0}

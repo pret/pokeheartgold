@@ -1,0 +1,28 @@
+Lance: Are you all right?\rYour Pokémon are hurt and tired.\nHere, give them some of my medicine.\r
+Lance: {STRVAR_1 3, 0, 0}, let’s give our\nbest for Pokémon.\r
+Lance: {STRVAR_1 3, 0, 0}, let’s give our\nbest for Pokémon.\r
+Ariana: Hold it right there!
+Ariana: We can’t let a brat like you\ndo as you please forever.\rIt’ll hurt Team Rocket’s pride over and\nover again. Making it lessen, you see.\r...So, it’s time to finish you. However\nstrong you may be, if the two of us\ffight at the same time, you’ll have no\fchance of winning. Don’t you agree?\rHee hee hee! Sorry, baby. Now, get\nready to be thrashed.\r
+Lance: Hold it!\rA two-on-one battle?\nThat is so unfair!\rTypical of Team Rocket to be so sneaky.\nAllow me to join the battle!\r
+Ariana: What? You had an accomplice?\nWhere is your sense of dignity?\rAs interim boss in place of Giovanni,\nI’ll show you how wrong it is to meddle\fwith Team Rocket!\r
+Tch, you really are strong.\nIt’s too bad.\rIf you were to join Team Rocket, you\ncould become an Executive.\r
+Ariana: But that’s fine. The broadcast\nexperiment was a total success.\rIt doesn’t matter what happens to this\nhideout now.\rWe have much bigger plans.\nYou’ll come to appreciate Team\fRocket’s true power soon enough.\rEnjoy yourself while you can...\nHee hee hee...\r
+Lance: That did it. We defeated all the\nmembers of Team Rocket here.\rBut I’m concerned about the young guy\nwith red hair I battled in the\fprocess...\r
+Sorry, {STRVAR_1 3, 0, 0}. I saw how well you\nwere doing, so I just hung back.\rNow all there is left to do is to turn\noff that odd radio signal.\r
+Sorry, {STRVAR_1 3, 0, 0}. I saw how well you\nwere doing, so I just hung back.\rNow all there is left to do is to turn\noff that odd radio signal.\r
+It’s this machine that’s causing all the\nproblems. I don’t see a switch on it...\rWe have no choice. We have to make all\nthe ELECTRODE faint.\rThat should stop this machine from\ntransmitting that strange signal.\rIt’s no fault of the ELECTRODE, so it\nmakes me feel sad.\r{STRVAR_1 3, 0, 0}, let’s split the job.\r
+It’s this machine that’s causing all the\nproblems. I don’t see a switch on it...\rWe have no choice. We have to make all\nthe ELECTRODE faint.\rThat should stop this machine from\ntransmitting that strange signal.\rIt’s no fault of the ELECTRODE, so it\nmakes me feel sad.\r{STRVAR_1 3, 0, 0}, let’s split the job.\r
+Lance: Leave this side to me.\r
+Lance: That odd signal has finally\nstopped. The lake should be back to\fnormal. You’re the best!\rLet me thank you on behalf of all the\nPokémon. Oh, yes. You should take this.\rI found it here, but I don’t have any\nneed for it.\r
+{STRVAR_1 3, 0, 0} received HM05 from Lance!
+Lance: That’s Whirlpool.\rTeach it to a Pokémon to get across wild\nwater. But keep this in mind.\rYou can use that out of battle only with\nthe Badge from Mahogany Gym.\r
+{STRVAR_1 3, 0, 0}...\rThe journey to becoming the Pokémon\nChampion is long and difficult.\rKnowing that, will you keep going?\r..................\rI see. No, you’re right.\rIf you would give up that easily,\nyou would have never chased that\fdream in the first place.\rI look forward to seeing you again!\r
+{STRVAR_1 3, 0, 0}...\rThe journey to becoming the Pokémon\nChampion is long and difficult.\rKnowing that, will you keep going?\r..................\rI see. No, you’re right.\rIf you would give up that easily,\nyou would have never chased that\fdream in the first place.\rI look forward to seeing you again!\r
+“The Radio Transmitter”\rIt seems that this door checks the\nvoice of the person saying the password\fbefore it opens...
+The door’s closed...\r{STRVAR_1 3, 0, 0} entered the password.\rThe door opened!\r
+It’s the radio transmitter that’s\nsending the sinister signal.\rIt’s working at full capacity.
+The radio transmitter has finally\nstopped its evil broadcast.
+MURKROW: The password is...\fHail Giovanni.\r
+MURKROW: The password is...\fHail Giovanni.\r
+MURKROW: The password is...\fHail Giovanni.\r
+MURKROW screamed the password,\nmimicking the voice of Petrel.\r..................\rThe voice-recognition system unlocked\nthe door!\r

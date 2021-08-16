@@ -1,0 +1,4 @@
+{STRVAR_1 0, 0, 0} hatched from the Egg!
+Would you like to nickname the\nnewly hatched {STRVAR_1 0, 0, 0}? {YESNO 0}
+{ALN_CENTER}Yes
+{ALN_CENTER}No

@@ -1,0 +1,10 @@
+Advance: months
+Turn back: months
+Advance: days
+Turn back: days
+Advance: hours
+Turn back: hours
+Advance: minutes
+Turn back: Minutes
+Cancel
+{STRVAR_1 51, 0, 0}/{STRVAR_1 51, 1, 0}\n{STRVAR_1 51, 2, 0}:{STRVAR_1 51, 3, 0} {STRVAR_1 51, 4, 0}sec.

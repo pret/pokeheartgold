@@ -1,0 +1,1404 @@
+!
+!
+!
+{STRVAR_1 1, 0, 0} used\nPound!
+The wild {STRVAR_1 1, 0, 0} used\nPound!
+The foe’s {STRVAR_1 1, 0, 0} used\nPound!
+{STRVAR_1 1, 0, 0} used\nKarate Chop!
+The wild {STRVAR_1 1, 0, 0} used\nKarate Chop!
+The foe’s {STRVAR_1 1, 0, 0} used\nKarate Chop!
+{STRVAR_1 1, 0, 0} used\nDoubleSlap!
+The wild {STRVAR_1 1, 0, 0} used\nDoubleSlap!
+The foe’s {STRVAR_1 1, 0, 0} used\nDoubleSlap!
+{STRVAR_1 1, 0, 0} used\nComet Punch!
+The wild {STRVAR_1 1, 0, 0} used\nComet Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nComet Punch!
+{STRVAR_1 1, 0, 0} used\nMega Punch!
+The wild {STRVAR_1 1, 0, 0} used\nMega Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nMega Punch!
+{STRVAR_1 1, 0, 0} used\nPay Day!
+The wild {STRVAR_1 1, 0, 0} used\nPay Day!
+The foe’s {STRVAR_1 1, 0, 0} used\nPay Day!
+{STRVAR_1 1, 0, 0} used\nFire Punch!
+The wild {STRVAR_1 1, 0, 0} used\nFire Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nFire Punch!
+{STRVAR_1 1, 0, 0} used\nIce Punch!
+The wild {STRVAR_1 1, 0, 0} used\nIce Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nIce Punch!
+{STRVAR_1 1, 0, 0} used\nThunderPunch!
+The wild {STRVAR_1 1, 0, 0} used\nThunderPunch!
+The foe’s {STRVAR_1 1, 0, 0} used\nThunderPunch!
+{STRVAR_1 1, 0, 0} used\nScratch!
+The wild {STRVAR_1 1, 0, 0} used\nScratch!
+The foe’s {STRVAR_1 1, 0, 0} used\nScratch!
+{STRVAR_1 1, 0, 0} used\nViceGrip!
+The wild {STRVAR_1 1, 0, 0} used\nViceGrip!
+The foe’s {STRVAR_1 1, 0, 0} used\nViceGrip!
+{STRVAR_1 1, 0, 0} used\nGuillotine!
+The wild {STRVAR_1 1, 0, 0} used\nGuillotine!
+The foe’s {STRVAR_1 1, 0, 0} used\nGuillotine!
+{STRVAR_1 1, 0, 0} used\nRazor Wind!
+The wild {STRVAR_1 1, 0, 0} used\nRazor Wind!
+The foe’s {STRVAR_1 1, 0, 0} used\nRazor Wind!
+{STRVAR_1 1, 0, 0} used\nSwords Dance!
+The wild {STRVAR_1 1, 0, 0} used\nSwords Dance!
+The foe’s {STRVAR_1 1, 0, 0} used\nSwords Dance!
+{STRVAR_1 1, 0, 0} used\nCut!
+The wild {STRVAR_1 1, 0, 0} used\nCut!
+The foe’s {STRVAR_1 1, 0, 0} used\nCut!
+{STRVAR_1 1, 0, 0} used\nGust!
+The wild {STRVAR_1 1, 0, 0} used\nGust!
+The foe’s {STRVAR_1 1, 0, 0} used\nGust!
+{STRVAR_1 1, 0, 0} used\nWing Attack!
+The wild {STRVAR_1 1, 0, 0} used\nWing Attack!
+The foe’s {STRVAR_1 1, 0, 0} used\nWing Attack!
+{STRVAR_1 1, 0, 0} used\nWhirlwind!
+The wild {STRVAR_1 1, 0, 0} used\nWhirlwind!
+The foe’s {STRVAR_1 1, 0, 0} used\nWhirlwind!
+{STRVAR_1 1, 0, 0} used\nFly!
+The wild {STRVAR_1 1, 0, 0} used\nFly!
+The foe’s {STRVAR_1 1, 0, 0} used\nFly!
+{STRVAR_1 1, 0, 0} used\nBind!
+The wild {STRVAR_1 1, 0, 0} used\nBind!
+The foe’s {STRVAR_1 1, 0, 0} used\nBind!
+{STRVAR_1 1, 0, 0} used\nSlam!
+The wild {STRVAR_1 1, 0, 0} used\nSlam!
+The foe’s {STRVAR_1 1, 0, 0} used\nSlam!
+{STRVAR_1 1, 0, 0} used\nVine Whip!
+The wild {STRVAR_1 1, 0, 0} used\nVine Whip!
+The foe’s {STRVAR_1 1, 0, 0} used\nVine Whip!
+{STRVAR_1 1, 0, 0} used\nStomp!
+The wild {STRVAR_1 1, 0, 0} used\nStomp!
+The foe’s {STRVAR_1 1, 0, 0} used\nStomp!
+{STRVAR_1 1, 0, 0} used\nDouble Kick!
+The wild {STRVAR_1 1, 0, 0} used\nDouble Kick!
+The foe’s {STRVAR_1 1, 0, 0} used\nDouble Kick!
+{STRVAR_1 1, 0, 0} used\nMega Kick!
+The wild {STRVAR_1 1, 0, 0} used\nMega Kick!
+The foe’s {STRVAR_1 1, 0, 0} used\nMega Kick!
+{STRVAR_1 1, 0, 0} used\nJump Kick!
+The wild {STRVAR_1 1, 0, 0} used\nJump Kick!
+The foe’s {STRVAR_1 1, 0, 0} used\nJump Kick!
+{STRVAR_1 1, 0, 0} used\nRolling Kick!
+The wild {STRVAR_1 1, 0, 0} used\nRolling Kick!
+The foe’s {STRVAR_1 1, 0, 0} used\nRolling Kick!
+{STRVAR_1 1, 0, 0} used\nSand-Attack!
+The wild {STRVAR_1 1, 0, 0} used\nSand-Attack!
+The foe’s {STRVAR_1 1, 0, 0} used\nSand-Attack!
+{STRVAR_1 1, 0, 0} used\nHeadbutt!
+The wild {STRVAR_1 1, 0, 0} used\nHeadbutt!
+The foe’s {STRVAR_1 1, 0, 0} used\nHeadbutt!
+{STRVAR_1 1, 0, 0} used\nHorn Attack!
+The wild {STRVAR_1 1, 0, 0} used\nHorn Attack!
+The foe’s {STRVAR_1 1, 0, 0} used\nHorn Attack!
+{STRVAR_1 1, 0, 0} used\nFury Attack!
+The wild {STRVAR_1 1, 0, 0} used\nFury Attack!
+The foe’s {STRVAR_1 1, 0, 0} used\nFury Attack!
+{STRVAR_1 1, 0, 0} used\nHorn Drill!
+The wild {STRVAR_1 1, 0, 0} used\nHorn Drill!
+The foe’s {STRVAR_1 1, 0, 0} used\nHorn Drill!
+{STRVAR_1 1, 0, 0} used\nTackle!
+The wild {STRVAR_1 1, 0, 0} used\nTackle!
+The foe’s {STRVAR_1 1, 0, 0} used\nTackle!
+{STRVAR_1 1, 0, 0} used\nBody Slam!
+The wild {STRVAR_1 1, 0, 0} used\nBody Slam!
+The foe’s {STRVAR_1 1, 0, 0} used\nBody Slam!
+{STRVAR_1 1, 0, 0} used\nWrap!
+The wild {STRVAR_1 1, 0, 0} used\nWrap!
+The foe’s {STRVAR_1 1, 0, 0} used\nWrap!
+{STRVAR_1 1, 0, 0} used\nTake Down!
+The wild {STRVAR_1 1, 0, 0} used\nTake Down!
+The foe’s {STRVAR_1 1, 0, 0} used\nTake Down!
+{STRVAR_1 1, 0, 0} used\nThrash!
+The wild {STRVAR_1 1, 0, 0} used\nThrash!
+The foe’s {STRVAR_1 1, 0, 0} used\nThrash!
+{STRVAR_1 1, 0, 0} used\nDouble-Edge!
+The wild {STRVAR_1 1, 0, 0} used\nDouble-Edge!
+The foe’s {STRVAR_1 1, 0, 0} used\nDouble-Edge!
+{STRVAR_1 1, 0, 0} used\nTail Whip!
+The wild {STRVAR_1 1, 0, 0} used\nTail Whip!
+The foe’s {STRVAR_1 1, 0, 0} used\nTail Whip!
+{STRVAR_1 1, 0, 0} used\nPoison Sting!
+The wild {STRVAR_1 1, 0, 0} used\nPoison Sting!
+The foe’s {STRVAR_1 1, 0, 0} used\nPoison Sting!
+{STRVAR_1 1, 0, 0} used\nTwineedle!
+The wild {STRVAR_1 1, 0, 0} used\nTwineedle!
+The foe’s {STRVAR_1 1, 0, 0} used\nTwineedle!
+{STRVAR_1 1, 0, 0} used\nPin Missile!
+The wild {STRVAR_1 1, 0, 0} used\nPin Missile!
+The foe’s {STRVAR_1 1, 0, 0} used\nPin Missile!
+{STRVAR_1 1, 0, 0} used\nLeer!
+The wild {STRVAR_1 1, 0, 0} used\nLeer!
+The foe’s {STRVAR_1 1, 0, 0} used\nLeer!
+{STRVAR_1 1, 0, 0} used\nBite!
+The wild {STRVAR_1 1, 0, 0} used\nBite!
+The foe’s {STRVAR_1 1, 0, 0} used\nBite!
+{STRVAR_1 1, 0, 0} used\nGrowl!
+The wild {STRVAR_1 1, 0, 0} used\nGrowl!
+The foe’s {STRVAR_1 1, 0, 0} used\nGrowl!
+{STRVAR_1 1, 0, 0} used\nRoar!
+The wild {STRVAR_1 1, 0, 0} used\nRoar!
+The foe’s {STRVAR_1 1, 0, 0} used\nRoar!
+{STRVAR_1 1, 0, 0} used\nSing!
+The wild {STRVAR_1 1, 0, 0} used\nSing!
+The foe’s {STRVAR_1 1, 0, 0} used\nSing!
+{STRVAR_1 1, 0, 0} used\nSupersonic!
+The wild {STRVAR_1 1, 0, 0} used\nSupersonic!
+The foe’s {STRVAR_1 1, 0, 0} used\nSupersonic!
+{STRVAR_1 1, 0, 0} used\nSonicBoom!
+The wild {STRVAR_1 1, 0, 0} used\nSonicBoom!
+The foe’s {STRVAR_1 1, 0, 0} used\nSonicBoom!
+{STRVAR_1 1, 0, 0} used\nDisable!
+The wild {STRVAR_1 1, 0, 0} used\nDisable!
+The foe’s {STRVAR_1 1, 0, 0} used\nDisable!
+{STRVAR_1 1, 0, 0} used\nAcid!
+The wild {STRVAR_1 1, 0, 0} used\nAcid!
+The foe’s {STRVAR_1 1, 0, 0} used\nAcid!
+{STRVAR_1 1, 0, 0} used\nEmber!
+The wild {STRVAR_1 1, 0, 0} used\nEmber!
+The foe’s {STRVAR_1 1, 0, 0} used\nEmber!
+{STRVAR_1 1, 0, 0} used\nFlamethrower!
+The wild {STRVAR_1 1, 0, 0} used\nFlamethrower!
+The foe’s {STRVAR_1 1, 0, 0} used\nFlamethrower!
+{STRVAR_1 1, 0, 0} used\nMist!
+The wild {STRVAR_1 1, 0, 0} used\nMist!
+The foe’s {STRVAR_1 1, 0, 0} used\nMist!
+{STRVAR_1 1, 0, 0} used\nWater Gun!
+The wild {STRVAR_1 1, 0, 0} used\nWater Gun!
+The foe’s {STRVAR_1 1, 0, 0} used\nWater Gun!
+{STRVAR_1 1, 0, 0} used\nHydro Pump!
+The wild {STRVAR_1 1, 0, 0} used\nHydro Pump!
+The foe’s {STRVAR_1 1, 0, 0} used\nHydro Pump!
+{STRVAR_1 1, 0, 0} used\nSurf!
+The wild {STRVAR_1 1, 0, 0} used\nSurf!
+The foe’s {STRVAR_1 1, 0, 0} used\nSurf!
+{STRVAR_1 1, 0, 0} used\nIce Beam!
+The wild {STRVAR_1 1, 0, 0} used\nIce Beam!
+The foe’s {STRVAR_1 1, 0, 0} used\nIce Beam!
+{STRVAR_1 1, 0, 0} used\nBlizzard!
+The wild {STRVAR_1 1, 0, 0} used\nBlizzard!
+The foe’s {STRVAR_1 1, 0, 0} used\nBlizzard!
+{STRVAR_1 1, 0, 0} used\nPsybeam!
+The wild {STRVAR_1 1, 0, 0} used\nPsybeam!
+The foe’s {STRVAR_1 1, 0, 0} used\nPsybeam!
+{STRVAR_1 1, 0, 0} used\nBubbleBeam!
+The wild {STRVAR_1 1, 0, 0} used\nBubbleBeam!
+The foe’s {STRVAR_1 1, 0, 0} used\nBubbleBeam!
+{STRVAR_1 1, 0, 0} used\nAurora Beam!
+The wild {STRVAR_1 1, 0, 0} used\nAurora Beam!
+The foe’s {STRVAR_1 1, 0, 0} used\nAurora Beam!
+{STRVAR_1 1, 0, 0} used\nHyper Beam!
+The wild {STRVAR_1 1, 0, 0} used\nHyper Beam!
+The foe’s {STRVAR_1 1, 0, 0} used\nHyper Beam!
+{STRVAR_1 1, 0, 0} used\nPeck!
+The wild {STRVAR_1 1, 0, 0} used\nPeck!
+The foe’s {STRVAR_1 1, 0, 0} used\nPeck!
+{STRVAR_1 1, 0, 0} used\nDrill Peck!
+The wild {STRVAR_1 1, 0, 0} used\nDrill Peck!
+The foe’s {STRVAR_1 1, 0, 0} used\nDrill Peck!
+{STRVAR_1 1, 0, 0} used\nSubmission!
+The wild {STRVAR_1 1, 0, 0} used\nSubmission!
+The foe’s {STRVAR_1 1, 0, 0} used\nSubmission!
+{STRVAR_1 1, 0, 0} used\nLow Kick!
+The wild {STRVAR_1 1, 0, 0} used\nLow Kick!
+The foe’s {STRVAR_1 1, 0, 0} used\nLow Kick!
+{STRVAR_1 1, 0, 0} used\nCounter!
+The wild {STRVAR_1 1, 0, 0} used\nCounter!
+The foe’s {STRVAR_1 1, 0, 0} used\nCounter!
+{STRVAR_1 1, 0, 0} used\nSeismic Toss!
+The wild {STRVAR_1 1, 0, 0} used\nSeismic Toss!
+The foe’s {STRVAR_1 1, 0, 0} used\nSeismic Toss!
+{STRVAR_1 1, 0, 0} used\nStrength!
+The wild {STRVAR_1 1, 0, 0} used\nStrength!
+The foe’s {STRVAR_1 1, 0, 0} used\nStrength!
+{STRVAR_1 1, 0, 0} used\nAbsorb!
+The wild {STRVAR_1 1, 0, 0} used\nAbsorb!
+The foe’s {STRVAR_1 1, 0, 0} used\nAbsorb!
+{STRVAR_1 1, 0, 0} used\nMega Drain!
+The wild {STRVAR_1 1, 0, 0} used\nMega Drain!
+The foe’s {STRVAR_1 1, 0, 0} used\nMega Drain!
+{STRVAR_1 1, 0, 0} used\nLeech Seed!
+The wild {STRVAR_1 1, 0, 0} used\nLeech Seed!
+The foe’s {STRVAR_1 1, 0, 0} used\nLeech Seed!
+{STRVAR_1 1, 0, 0} used\nGrowth!
+The wild {STRVAR_1 1, 0, 0} used\nGrowth!
+The foe’s {STRVAR_1 1, 0, 0} used\nGrowth!
+{STRVAR_1 1, 0, 0} used\nRazor Leaf!
+The wild {STRVAR_1 1, 0, 0} used\nRazor Leaf!
+The foe’s {STRVAR_1 1, 0, 0} used\nRazor Leaf!
+{STRVAR_1 1, 0, 0} used\nSolarBeam!
+The wild {STRVAR_1 1, 0, 0} used\nSolarBeam!
+The foe’s {STRVAR_1 1, 0, 0} used\nSolarBeam!
+{STRVAR_1 1, 0, 0} used\nPoisonPowder!
+The wild {STRVAR_1 1, 0, 0} used\nPoisonPowder!
+The foe’s {STRVAR_1 1, 0, 0} used\nPoisonPowder!
+{STRVAR_1 1, 0, 0} used\nStun Spore!
+The wild {STRVAR_1 1, 0, 0} used\nStun Spore!
+The foe’s {STRVAR_1 1, 0, 0} used\nStun Spore!
+{STRVAR_1 1, 0, 0} used\nSleep Powder!
+The wild {STRVAR_1 1, 0, 0} used\nSleep Powder!
+The foe’s {STRVAR_1 1, 0, 0} used\nSleep Powder!
+{STRVAR_1 1, 0, 0} used\nPetal Dance!
+The wild {STRVAR_1 1, 0, 0} used\nPetal Dance!
+The foe’s {STRVAR_1 1, 0, 0} used\nPetal Dance!
+{STRVAR_1 1, 0, 0} used\nString Shot!
+The wild {STRVAR_1 1, 0, 0} used\nString Shot!
+The foe’s {STRVAR_1 1, 0, 0} used\nString Shot!
+{STRVAR_1 1, 0, 0} used\nDragon Rage!
+The wild {STRVAR_1 1, 0, 0} used\nDragon Rage!
+The foe’s {STRVAR_1 1, 0, 0} used\nDragon Rage!
+{STRVAR_1 1, 0, 0} used\nFire Spin!
+The wild {STRVAR_1 1, 0, 0} used\nFire Spin!
+The foe’s {STRVAR_1 1, 0, 0} used\nFire Spin!
+{STRVAR_1 1, 0, 0} used\nThunderShock!
+The wild {STRVAR_1 1, 0, 0} used\nThunderShock!
+The foe’s {STRVAR_1 1, 0, 0} used\nThunderShock!
+{STRVAR_1 1, 0, 0} used\nThunderbolt!
+The wild {STRVAR_1 1, 0, 0} used\nThunderbolt!
+The foe’s {STRVAR_1 1, 0, 0} used\nThunderbolt!
+{STRVAR_1 1, 0, 0} used\nThunder Wave!
+The wild {STRVAR_1 1, 0, 0} used\nThunder Wave!
+The foe’s {STRVAR_1 1, 0, 0} used\nThunder Wave!
+{STRVAR_1 1, 0, 0} used\nThunder!
+The wild {STRVAR_1 1, 0, 0} used\nThunder!
+The foe’s {STRVAR_1 1, 0, 0} used\nThunder!
+{STRVAR_1 1, 0, 0} used\nRock Throw!
+The wild {STRVAR_1 1, 0, 0} used\nRock Throw!
+The foe’s {STRVAR_1 1, 0, 0} used\nRock Throw!
+{STRVAR_1 1, 0, 0} used\nEarthquake!
+The wild {STRVAR_1 1, 0, 0} used\nEarthquake!
+The foe’s {STRVAR_1 1, 0, 0} used\nEarthquake!
+{STRVAR_1 1, 0, 0} used\nFissure!
+The wild {STRVAR_1 1, 0, 0} used\nFissure!
+The foe’s {STRVAR_1 1, 0, 0} used\nFissure!
+{STRVAR_1 1, 0, 0} used\nDig!
+The wild {STRVAR_1 1, 0, 0} used\nDig!
+The foe’s {STRVAR_1 1, 0, 0} used\nDig!
+{STRVAR_1 1, 0, 0} used\nToxic!
+The wild {STRVAR_1 1, 0, 0} used\nToxic!
+The foe’s {STRVAR_1 1, 0, 0} used\nToxic!
+{STRVAR_1 1, 0, 0} used\nConfusion!
+The wild {STRVAR_1 1, 0, 0} used\nConfusion!
+The foe’s {STRVAR_1 1, 0, 0} used\nConfusion!
+{STRVAR_1 1, 0, 0} used\nPsychic!
+The wild {STRVAR_1 1, 0, 0} used\nPsychic!
+The foe’s {STRVAR_1 1, 0, 0} used\nPsychic!
+{STRVAR_1 1, 0, 0} used\nHypnosis!
+The wild {STRVAR_1 1, 0, 0} used\nHypnosis!
+The foe’s {STRVAR_1 1, 0, 0} used\nHypnosis!
+{STRVAR_1 1, 0, 0} used\nMeditate!
+The wild {STRVAR_1 1, 0, 0} used\nMeditate!
+The foe’s {STRVAR_1 1, 0, 0} used\nMeditate!
+{STRVAR_1 1, 0, 0} used\nAgility!
+The wild {STRVAR_1 1, 0, 0} used\nAgility!
+The foe’s {STRVAR_1 1, 0, 0} used\nAgility!
+{STRVAR_1 1, 0, 0} used\nQuick Attack!
+The wild {STRVAR_1 1, 0, 0} used\nQuick Attack!
+The foe’s {STRVAR_1 1, 0, 0} used\nQuick Attack!
+{STRVAR_1 1, 0, 0} used\nRage!
+The wild {STRVAR_1 1, 0, 0} used\nRage!
+The foe’s {STRVAR_1 1, 0, 0} used\nRage!
+{STRVAR_1 1, 0, 0} used\nTeleport!
+The wild {STRVAR_1 1, 0, 0} used\nTeleport!
+The foe’s {STRVAR_1 1, 0, 0} used\nTeleport!
+{STRVAR_1 1, 0, 0} used\nNight Shade!
+The wild {STRVAR_1 1, 0, 0} used\nNight Shade!
+The foe’s {STRVAR_1 1, 0, 0} used\nNight Shade!
+{STRVAR_1 1, 0, 0} used\nMimic!
+The wild {STRVAR_1 1, 0, 0} used\nMimic!
+The foe’s {STRVAR_1 1, 0, 0} used\nMimic!
+{STRVAR_1 1, 0, 0} used\nScreech!
+The wild {STRVAR_1 1, 0, 0} used\nScreech!
+The foe’s {STRVAR_1 1, 0, 0} used\nScreech!
+{STRVAR_1 1, 0, 0} used\nDouble Team!
+The wild {STRVAR_1 1, 0, 0} used\nDouble Team!
+The foe’s {STRVAR_1 1, 0, 0} used\nDouble Team!
+{STRVAR_1 1, 0, 0} used\nRecover!
+The wild {STRVAR_1 1, 0, 0} used\nRecover!
+The foe’s {STRVAR_1 1, 0, 0} used\nRecover!
+{STRVAR_1 1, 0, 0} used\nHarden!
+The wild {STRVAR_1 1, 0, 0} used\nHarden!
+The foe’s {STRVAR_1 1, 0, 0} used\nHarden!
+{STRVAR_1 1, 0, 0} used\nMinimize!
+The wild {STRVAR_1 1, 0, 0} used\nMinimize!
+The foe’s {STRVAR_1 1, 0, 0} used\nMinimize!
+{STRVAR_1 1, 0, 0} used\nSmokeScreen!
+The wild {STRVAR_1 1, 0, 0} used\nSmokeScreen!
+The foe’s {STRVAR_1 1, 0, 0} used\nSmokeScreen!
+{STRVAR_1 1, 0, 0} used\nConfuse Ray!
+The wild {STRVAR_1 1, 0, 0} used\nConfuse Ray!
+The foe’s {STRVAR_1 1, 0, 0} used\nConfuse Ray!
+{STRVAR_1 1, 0, 0} used\nWithdraw!
+The wild {STRVAR_1 1, 0, 0} used\nWithdraw!
+The foe’s {STRVAR_1 1, 0, 0} used\nWithdraw!
+{STRVAR_1 1, 0, 0} used\nDefense Curl!
+The wild {STRVAR_1 1, 0, 0} used\nDefense Curl!
+The foe’s {STRVAR_1 1, 0, 0} used\nDefense Curl!
+{STRVAR_1 1, 0, 0} used\nBarrier!
+The wild {STRVAR_1 1, 0, 0} used\nBarrier!
+The foe’s {STRVAR_1 1, 0, 0} used\nBarrier!
+{STRVAR_1 1, 0, 0} used\nLight Screen!
+The wild {STRVAR_1 1, 0, 0} used\nLight Screen!
+The foe’s {STRVAR_1 1, 0, 0} used\nLight Screen!
+{STRVAR_1 1, 0, 0} used\nHaze!
+The wild {STRVAR_1 1, 0, 0} used\nHaze!
+The foe’s {STRVAR_1 1, 0, 0} used\nHaze!
+{STRVAR_1 1, 0, 0} used\nReflect!
+The wild {STRVAR_1 1, 0, 0} used\nReflect!
+The foe’s {STRVAR_1 1, 0, 0} used\nReflect!
+{STRVAR_1 1, 0, 0} used\nFocus Energy!
+The wild {STRVAR_1 1, 0, 0} used\nFocus Energy!
+The foe’s {STRVAR_1 1, 0, 0} used\nFocus Energy!
+{STRVAR_1 1, 0, 0} used\nBide!
+The wild {STRVAR_1 1, 0, 0} used\nBide!
+The foe’s {STRVAR_1 1, 0, 0} used\nBide!
+{STRVAR_1 1, 0, 0} used\nMetronome!
+The wild {STRVAR_1 1, 0, 0} used\nMetronome!
+The foe’s {STRVAR_1 1, 0, 0} used\nMetronome!
+{STRVAR_1 1, 0, 0} used\nMirror Move!
+The wild {STRVAR_1 1, 0, 0} used\nMirror Move!
+The foe’s {STRVAR_1 1, 0, 0} used\nMirror Move!
+{STRVAR_1 1, 0, 0} used\nSelfdestruct!
+The wild {STRVAR_1 1, 0, 0} used\nSelfdestruct!
+The foe’s {STRVAR_1 1, 0, 0} used\nSelfdestruct!
+{STRVAR_1 1, 0, 0} used\nEgg Bomb!
+The wild {STRVAR_1 1, 0, 0} used\nEgg Bomb!
+The foe’s {STRVAR_1 1, 0, 0} used\nEgg Bomb!
+{STRVAR_1 1, 0, 0} used\nLick!
+The wild {STRVAR_1 1, 0, 0} used\nLick!
+The foe’s {STRVAR_1 1, 0, 0} used\nLick!
+{STRVAR_1 1, 0, 0} used\nSmog!
+The wild {STRVAR_1 1, 0, 0} used\nSmog!
+The foe’s {STRVAR_1 1, 0, 0} used\nSmog!
+{STRVAR_1 1, 0, 0} used\nSludge!
+The wild {STRVAR_1 1, 0, 0} used\nSludge!
+The foe’s {STRVAR_1 1, 0, 0} used\nSludge!
+{STRVAR_1 1, 0, 0} used\nBone Club!
+The wild {STRVAR_1 1, 0, 0} used\nBone Club!
+The foe’s {STRVAR_1 1, 0, 0} used\nBone Club!
+{STRVAR_1 1, 0, 0} used\nFire Blast!
+The wild {STRVAR_1 1, 0, 0} used\nFire Blast!
+The foe’s {STRVAR_1 1, 0, 0} used\nFire Blast!
+{STRVAR_1 1, 0, 0} used\nWaterfall!
+The wild {STRVAR_1 1, 0, 0} used\nWaterfall!
+The foe’s {STRVAR_1 1, 0, 0} used\nWaterfall!
+{STRVAR_1 1, 0, 0} used\nClamp!
+The wild {STRVAR_1 1, 0, 0} used\nClamp!
+The foe’s {STRVAR_1 1, 0, 0} used\nClamp!
+{STRVAR_1 1, 0, 0} used\nSwift!
+The wild {STRVAR_1 1, 0, 0} used\nSwift!
+The foe’s {STRVAR_1 1, 0, 0} used\nSwift!
+{STRVAR_1 1, 0, 0} used\nSkull Bash!
+The wild {STRVAR_1 1, 0, 0} used\nSkull Bash!
+The foe’s {STRVAR_1 1, 0, 0} used\nSkull Bash!
+{STRVAR_1 1, 0, 0} used\nSpike Cannon!
+The wild {STRVAR_1 1, 0, 0} used\nSpike Cannon!
+The foe’s {STRVAR_1 1, 0, 0} used\nSpike Cannon!
+{STRVAR_1 1, 0, 0} used\nConstrict!
+The wild {STRVAR_1 1, 0, 0} used\nConstrict!
+The foe’s {STRVAR_1 1, 0, 0} used\nConstrict!
+{STRVAR_1 1, 0, 0} used\nAmnesia!
+The wild {STRVAR_1 1, 0, 0} used\nAmnesia!
+The foe’s {STRVAR_1 1, 0, 0} used\nAmnesia!
+{STRVAR_1 1, 0, 0} used\nKinesis!
+The wild {STRVAR_1 1, 0, 0} used\nKinesis!
+The foe’s {STRVAR_1 1, 0, 0} used\nKinesis!
+{STRVAR_1 1, 0, 0} used\nSoftboiled!
+The wild {STRVAR_1 1, 0, 0} used\nSoftboiled!
+The foe’s {STRVAR_1 1, 0, 0} used\nSoftboiled!
+{STRVAR_1 1, 0, 0} used\nHi Jump Kick!
+The wild {STRVAR_1 1, 0, 0} used\nHi Jump Kick!
+The foe’s {STRVAR_1 1, 0, 0} used\nHi Jump Kick!
+{STRVAR_1 1, 0, 0} used\nGlare!
+The wild {STRVAR_1 1, 0, 0} used\nGlare!
+The foe’s {STRVAR_1 1, 0, 0} used\nGlare!
+{STRVAR_1 1, 0, 0} used\nDream Eater!
+The wild {STRVAR_1 1, 0, 0} used\nDream Eater!
+The foe’s {STRVAR_1 1, 0, 0} used\nDream Eater!
+{STRVAR_1 1, 0, 0} used\nPoison Gas!
+The wild {STRVAR_1 1, 0, 0} used\nPoison Gas!
+The foe’s {STRVAR_1 1, 0, 0} used\nPoison Gas!
+{STRVAR_1 1, 0, 0} used\nBarrage!
+The wild {STRVAR_1 1, 0, 0} used\nBarrage!
+The foe’s {STRVAR_1 1, 0, 0} used\nBarrage!
+{STRVAR_1 1, 0, 0} used\nLeech Life!
+The wild {STRVAR_1 1, 0, 0} used\nLeech Life!
+The foe’s {STRVAR_1 1, 0, 0} used\nLeech Life!
+{STRVAR_1 1, 0, 0} used\nLovely Kiss!
+The wild {STRVAR_1 1, 0, 0} used\nLovely Kiss!
+The foe’s {STRVAR_1 1, 0, 0} used\nLovely Kiss!
+{STRVAR_1 1, 0, 0} used\nSky Attack!
+The wild {STRVAR_1 1, 0, 0} used\nSky Attack!
+The foe’s {STRVAR_1 1, 0, 0} used\nSky Attack!
+{STRVAR_1 1, 0, 0} used\nTransform!
+The wild {STRVAR_1 1, 0, 0} used\nTransform!
+The foe’s {STRVAR_1 1, 0, 0} used\nTransform!
+{STRVAR_1 1, 0, 0} used\nBubble!
+The wild {STRVAR_1 1, 0, 0} used\nBubble!
+The foe’s {STRVAR_1 1, 0, 0} used\nBubble!
+{STRVAR_1 1, 0, 0} used\nDizzy Punch!
+The wild {STRVAR_1 1, 0, 0} used\nDizzy Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nDizzy Punch!
+{STRVAR_1 1, 0, 0} used\nSpore!
+The wild {STRVAR_1 1, 0, 0} used\nSpore!
+The foe’s {STRVAR_1 1, 0, 0} used\nSpore!
+{STRVAR_1 1, 0, 0} used\nFlash!
+The wild {STRVAR_1 1, 0, 0} used\nFlash!
+The foe’s {STRVAR_1 1, 0, 0} used\nFlash!
+{STRVAR_1 1, 0, 0} used\nPsywave!
+The wild {STRVAR_1 1, 0, 0} used\nPsywave!
+The foe’s {STRVAR_1 1, 0, 0} used\nPsywave!
+{STRVAR_1 1, 0, 0} used\nSplash!
+The wild {STRVAR_1 1, 0, 0} used\nSplash!
+The foe’s {STRVAR_1 1, 0, 0} used\nSplash!
+{STRVAR_1 1, 0, 0} used\nAcid Armor!
+The wild {STRVAR_1 1, 0, 0} used\nAcid Armor!
+The foe’s {STRVAR_1 1, 0, 0} used\nAcid Armor!
+{STRVAR_1 1, 0, 0} used\nCrabhammer!
+The wild {STRVAR_1 1, 0, 0} used\nCrabhammer!
+The foe’s {STRVAR_1 1, 0, 0} used\nCrabhammer!
+{STRVAR_1 1, 0, 0} used\nExplosion!
+The wild {STRVAR_1 1, 0, 0} used\nExplosion!
+The foe’s {STRVAR_1 1, 0, 0} used\nExplosion!
+{STRVAR_1 1, 0, 0} used\nFury Swipes!
+The wild {STRVAR_1 1, 0, 0} used\nFury Swipes!
+The foe’s {STRVAR_1 1, 0, 0} used\nFury Swipes!
+{STRVAR_1 1, 0, 0} used\nBonemerang!
+The wild {STRVAR_1 1, 0, 0} used\nBonemerang!
+The foe’s {STRVAR_1 1, 0, 0} used\nBonemerang!
+{STRVAR_1 1, 0, 0} used\nRest!
+The wild {STRVAR_1 1, 0, 0} used\nRest!
+The foe’s {STRVAR_1 1, 0, 0} used\nRest!
+{STRVAR_1 1, 0, 0} used\nRock Slide!
+The wild {STRVAR_1 1, 0, 0} used\nRock Slide!
+The foe’s {STRVAR_1 1, 0, 0} used\nRock Slide!
+{STRVAR_1 1, 0, 0} used\nHyper Fang!
+The wild {STRVAR_1 1, 0, 0} used\nHyper Fang!
+The foe’s {STRVAR_1 1, 0, 0} used\nHyper Fang!
+{STRVAR_1 1, 0, 0} used\nSharpen!
+The wild {STRVAR_1 1, 0, 0} used\nSharpen!
+The foe’s {STRVAR_1 1, 0, 0} used\nSharpen!
+{STRVAR_1 1, 0, 0} used\nConversion!
+The wild {STRVAR_1 1, 0, 0} used\nConversion!
+The foe’s {STRVAR_1 1, 0, 0} used\nConversion!
+{STRVAR_1 1, 0, 0} used\nTri Attack!
+The wild {STRVAR_1 1, 0, 0} used\nTri Attack!
+The foe’s {STRVAR_1 1, 0, 0} used\nTri Attack!
+{STRVAR_1 1, 0, 0} used\nSuper Fang!
+The wild {STRVAR_1 1, 0, 0} used\nSuper Fang!
+The foe’s {STRVAR_1 1, 0, 0} used\nSuper Fang!
+{STRVAR_1 1, 0, 0} used\nSlash!
+The wild {STRVAR_1 1, 0, 0} used\nSlash!
+The foe’s {STRVAR_1 1, 0, 0} used\nSlash!
+{STRVAR_1 1, 0, 0} used\nSubstitute!
+The wild {STRVAR_1 1, 0, 0} used\nSubstitute!
+The foe’s {STRVAR_1 1, 0, 0} used\nSubstitute!
+{STRVAR_1 1, 0, 0} used\nStruggle!
+The wild {STRVAR_1 1, 0, 0} used\nStruggle!
+The foe’s {STRVAR_1 1, 0, 0} used\nStruggle!
+{STRVAR_1 1, 0, 0} used\nSketch!
+The wild {STRVAR_1 1, 0, 0} used\nSketch!
+The foe’s {STRVAR_1 1, 0, 0} used\nSketch!
+{STRVAR_1 1, 0, 0} used\nTriple Kick!
+The wild {STRVAR_1 1, 0, 0} used\nTriple Kick!
+The foe’s {STRVAR_1 1, 0, 0} used\nTriple Kick!
+{STRVAR_1 1, 0, 0} used\nThief!
+The wild {STRVAR_1 1, 0, 0} used\nThief!
+The foe’s {STRVAR_1 1, 0, 0} used\nThief!
+{STRVAR_1 1, 0, 0} used\nSpider Web!
+The wild {STRVAR_1 1, 0, 0} used\nSpider Web!
+The foe’s {STRVAR_1 1, 0, 0} used\nSpider Web!
+{STRVAR_1 1, 0, 0} used\nMind Reader!
+The wild {STRVAR_1 1, 0, 0} used\nMind Reader!
+The foe’s {STRVAR_1 1, 0, 0} used\nMind Reader!
+{STRVAR_1 1, 0, 0} used\nNightmare!
+The wild {STRVAR_1 1, 0, 0} used\nNightmare!
+The foe’s {STRVAR_1 1, 0, 0} used\nNightmare!
+{STRVAR_1 1, 0, 0} used\nFlame Wheel!
+The wild {STRVAR_1 1, 0, 0} used\nFlame Wheel!
+The foe’s {STRVAR_1 1, 0, 0} used\nFlame Wheel!
+{STRVAR_1 1, 0, 0} used\nSnore!
+The wild {STRVAR_1 1, 0, 0} used\nSnore!
+The foe’s {STRVAR_1 1, 0, 0} used\nSnore!
+{STRVAR_1 1, 0, 0} used\nCurse!
+The wild {STRVAR_1 1, 0, 0} used\nCurse!
+The foe’s {STRVAR_1 1, 0, 0} used\nCurse!
+{STRVAR_1 1, 0, 0} used\nFlail!
+The wild {STRVAR_1 1, 0, 0} used\nFlail!
+The foe’s {STRVAR_1 1, 0, 0} used\nFlail!
+{STRVAR_1 1, 0, 0} used\nConversion 2!
+The wild {STRVAR_1 1, 0, 0} used\nConversion 2!
+The foe’s {STRVAR_1 1, 0, 0} used\nConversion 2!
+{STRVAR_1 1, 0, 0} used\nAeroblast!
+The wild {STRVAR_1 1, 0, 0} used\nAeroblast!
+The foe’s {STRVAR_1 1, 0, 0} used\nAeroblast!
+{STRVAR_1 1, 0, 0} used\nCotton Spore!
+The wild {STRVAR_1 1, 0, 0} used\nCotton Spore!
+The foe’s {STRVAR_1 1, 0, 0} used\nCotton Spore!
+{STRVAR_1 1, 0, 0} used\nReversal!
+The wild {STRVAR_1 1, 0, 0} used\nReversal!
+The foe’s {STRVAR_1 1, 0, 0} used\nReversal!
+{STRVAR_1 1, 0, 0} used\nSpite!
+The wild {STRVAR_1 1, 0, 0} used\nSpite!
+The foe’s {STRVAR_1 1, 0, 0} used\nSpite!
+{STRVAR_1 1, 0, 0} used\nPowder Snow!
+The wild {STRVAR_1 1, 0, 0} used\nPowder Snow!
+The foe’s {STRVAR_1 1, 0, 0} used\nPowder Snow!
+{STRVAR_1 1, 0, 0} used\nProtect!
+The wild {STRVAR_1 1, 0, 0} used\nProtect!
+The foe’s {STRVAR_1 1, 0, 0} used\nProtect!
+{STRVAR_1 1, 0, 0} used\nMach Punch!
+The wild {STRVAR_1 1, 0, 0} used\nMach Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nMach Punch!
+{STRVAR_1 1, 0, 0} used\nScary Face!
+The wild {STRVAR_1 1, 0, 0} used\nScary Face!
+The foe’s {STRVAR_1 1, 0, 0} used\nScary Face!
+{STRVAR_1 1, 0, 0} used\nFaint Attack!
+The wild {STRVAR_1 1, 0, 0} used\nFaint Attack!
+The foe’s {STRVAR_1 1, 0, 0} used\nFaint Attack!
+{STRVAR_1 1, 0, 0} used\nSweet Kiss!
+The wild {STRVAR_1 1, 0, 0} used\nSweet Kiss!
+The foe’s {STRVAR_1 1, 0, 0} used\nSweet Kiss!
+{STRVAR_1 1, 0, 0} used\nBelly Drum!
+The wild {STRVAR_1 1, 0, 0} used\nBelly Drum!
+The foe’s {STRVAR_1 1, 0, 0} used\nBelly Drum!
+{STRVAR_1 1, 0, 0} used\nSludge Bomb!
+The wild {STRVAR_1 1, 0, 0} used\nSludge Bomb!
+The foe’s {STRVAR_1 1, 0, 0} used\nSludge Bomb!
+{STRVAR_1 1, 0, 0} used\nMud-Slap!
+The wild {STRVAR_1 1, 0, 0} used\nMud-Slap!
+The foe’s {STRVAR_1 1, 0, 0} used\nMud-Slap!
+{STRVAR_1 1, 0, 0} used\nOctazooka!
+The wild {STRVAR_1 1, 0, 0} used\nOctazooka!
+The foe’s {STRVAR_1 1, 0, 0} used\nOctazooka!
+{STRVAR_1 1, 0, 0} used\nSpikes!
+The wild {STRVAR_1 1, 0, 0} used\nSpikes!
+The foe’s {STRVAR_1 1, 0, 0} used\nSpikes!
+{STRVAR_1 1, 0, 0} used\nZap Cannon!
+The wild {STRVAR_1 1, 0, 0} used\nZap Cannon!
+The foe’s {STRVAR_1 1, 0, 0} used\nZap Cannon!
+{STRVAR_1 1, 0, 0} used\nForesight!
+The wild {STRVAR_1 1, 0, 0} used\nForesight!
+The foe’s {STRVAR_1 1, 0, 0} used\nForesight!
+{STRVAR_1 1, 0, 0} used\nDestiny Bond!
+The wild {STRVAR_1 1, 0, 0} used\nDestiny Bond!
+The foe’s {STRVAR_1 1, 0, 0} used\nDestiny Bond!
+{STRVAR_1 1, 0, 0} used\nPerish Song!
+The wild {STRVAR_1 1, 0, 0} used\nPerish Song!
+The foe’s {STRVAR_1 1, 0, 0} used\nPerish Song!
+{STRVAR_1 1, 0, 0} used\nIcy Wind!
+The wild {STRVAR_1 1, 0, 0} used\nIcy Wind!
+The foe’s {STRVAR_1 1, 0, 0} used\nIcy Wind!
+{STRVAR_1 1, 0, 0} used\nDetect!
+The wild {STRVAR_1 1, 0, 0} used\nDetect!
+The foe’s {STRVAR_1 1, 0, 0} used\nDetect!
+{STRVAR_1 1, 0, 0} used\nBone Rush!
+The wild {STRVAR_1 1, 0, 0} used\nBone Rush!
+The foe’s {STRVAR_1 1, 0, 0} used\nBone Rush!
+{STRVAR_1 1, 0, 0} used\nLock-On!
+The wild {STRVAR_1 1, 0, 0} used\nLock-On!
+The foe’s {STRVAR_1 1, 0, 0} used\nLock-On!
+{STRVAR_1 1, 0, 0} used\nOutrage!
+The wild {STRVAR_1 1, 0, 0} used\nOutrage!
+The foe’s {STRVAR_1 1, 0, 0} used\nOutrage!
+{STRVAR_1 1, 0, 0} used\nSandstorm!
+The wild {STRVAR_1 1, 0, 0} used\nSandstorm!
+The foe’s {STRVAR_1 1, 0, 0} used\nSandstorm!
+{STRVAR_1 1, 0, 0} used\nGiga Drain!
+The wild {STRVAR_1 1, 0, 0} used\nGiga Drain!
+The foe’s {STRVAR_1 1, 0, 0} used\nGiga Drain!
+{STRVAR_1 1, 0, 0} used\nEndure!
+The wild {STRVAR_1 1, 0, 0} used\nEndure!
+The foe’s {STRVAR_1 1, 0, 0} used\nEndure!
+{STRVAR_1 1, 0, 0} used\nCharm!
+The wild {STRVAR_1 1, 0, 0} used\nCharm!
+The foe’s {STRVAR_1 1, 0, 0} used\nCharm!
+{STRVAR_1 1, 0, 0} used\nRollout!
+The wild {STRVAR_1 1, 0, 0} used\nRollout!
+The foe’s {STRVAR_1 1, 0, 0} used\nRollout!
+{STRVAR_1 1, 0, 0} used\nFalse Swipe!
+The wild {STRVAR_1 1, 0, 0} used\nFalse Swipe!
+The foe’s {STRVAR_1 1, 0, 0} used\nFalse Swipe!
+{STRVAR_1 1, 0, 0} used\nSwagger!
+The wild {STRVAR_1 1, 0, 0} used\nSwagger!
+The foe’s {STRVAR_1 1, 0, 0} used\nSwagger!
+{STRVAR_1 1, 0, 0} used\nMilk Drink!
+The wild {STRVAR_1 1, 0, 0} used\nMilk Drink!
+The foe’s {STRVAR_1 1, 0, 0} used\nMilk Drink!
+{STRVAR_1 1, 0, 0} used\nSpark!
+The wild {STRVAR_1 1, 0, 0} used\nSpark!
+The foe’s {STRVAR_1 1, 0, 0} used\nSpark!
+{STRVAR_1 1, 0, 0} used\nFury Cutter!
+The wild {STRVAR_1 1, 0, 0} used\nFury Cutter!
+The foe’s {STRVAR_1 1, 0, 0} used\nFury Cutter!
+{STRVAR_1 1, 0, 0} used\nSteel Wing!
+The wild {STRVAR_1 1, 0, 0} used\nSteel Wing!
+The foe’s {STRVAR_1 1, 0, 0} used\nSteel Wing!
+{STRVAR_1 1, 0, 0} used\nMean Look!
+The wild {STRVAR_1 1, 0, 0} used\nMean Look!
+The foe’s {STRVAR_1 1, 0, 0} used\nMean Look!
+{STRVAR_1 1, 0, 0} used\nAttract!
+The wild {STRVAR_1 1, 0, 0} used\nAttract!
+The foe’s {STRVAR_1 1, 0, 0} used\nAttract!
+{STRVAR_1 1, 0, 0} used\nSleep Talk!
+The wild {STRVAR_1 1, 0, 0} used\nSleep Talk!
+The foe’s {STRVAR_1 1, 0, 0} used\nSleep Talk!
+{STRVAR_1 1, 0, 0} used\nHeal Bell!
+The wild {STRVAR_1 1, 0, 0} used\nHeal Bell!
+The foe’s {STRVAR_1 1, 0, 0} used\nHeal Bell!
+{STRVAR_1 1, 0, 0} used\nReturn!
+The wild {STRVAR_1 1, 0, 0} used\nReturn!
+The foe’s {STRVAR_1 1, 0, 0} used\nReturn!
+{STRVAR_1 1, 0, 0} used\nPresent!
+The wild {STRVAR_1 1, 0, 0} used\nPresent!
+The foe’s {STRVAR_1 1, 0, 0} used\nPresent!
+{STRVAR_1 1, 0, 0} used\nFrustration!
+The wild {STRVAR_1 1, 0, 0} used\nFrustration!
+The foe’s {STRVAR_1 1, 0, 0} used\nFrustration!
+{STRVAR_1 1, 0, 0} used\nSafeguard!
+The wild {STRVAR_1 1, 0, 0} used\nSafeguard!
+The foe’s {STRVAR_1 1, 0, 0} used\nSafeguard!
+{STRVAR_1 1, 0, 0} used\nPain Split!
+The wild {STRVAR_1 1, 0, 0} used\nPain Split!
+The foe’s {STRVAR_1 1, 0, 0} used\nPain Split!
+{STRVAR_1 1, 0, 0} used\nSacred Fire!
+The wild {STRVAR_1 1, 0, 0} used\nSacred Fire!
+The foe’s {STRVAR_1 1, 0, 0} used\nSacred Fire!
+{STRVAR_1 1, 0, 0} used\nMagnitude!
+The wild {STRVAR_1 1, 0, 0} used\nMagnitude!
+The foe’s {STRVAR_1 1, 0, 0} used\nMagnitude!
+{STRVAR_1 1, 0, 0} used\nDynamicPunch!
+The wild {STRVAR_1 1, 0, 0} used\nDynamicPunch!
+The foe’s {STRVAR_1 1, 0, 0} used\nDynamicPunch!
+{STRVAR_1 1, 0, 0} used\nMegahorn!
+The wild {STRVAR_1 1, 0, 0} used\nMegahorn!
+The foe’s {STRVAR_1 1, 0, 0} used\nMegahorn!
+{STRVAR_1 1, 0, 0} used\nDragonBreath!
+The wild {STRVAR_1 1, 0, 0} used\nDragonBreath!
+The foe’s {STRVAR_1 1, 0, 0} used\nDragonBreath!
+{STRVAR_1 1, 0, 0} used\nBaton Pass!
+The wild {STRVAR_1 1, 0, 0} used\nBaton Pass!
+The foe’s {STRVAR_1 1, 0, 0} used\nBaton Pass!
+{STRVAR_1 1, 0, 0} used\nEncore!
+The wild {STRVAR_1 1, 0, 0} used\nEncore!
+The foe’s {STRVAR_1 1, 0, 0} used\nEncore!
+{STRVAR_1 1, 0, 0} used\nPursuit!
+The wild {STRVAR_1 1, 0, 0} used\nPursuit!
+The foe’s {STRVAR_1 1, 0, 0} used\nPursuit!
+{STRVAR_1 1, 0, 0} used\nRapid Spin!
+The wild {STRVAR_1 1, 0, 0} used\nRapid Spin!
+The foe’s {STRVAR_1 1, 0, 0} used\nRapid Spin!
+{STRVAR_1 1, 0, 0} used\nSweet Scent!
+The wild {STRVAR_1 1, 0, 0} used\nSweet Scent!
+The foe’s {STRVAR_1 1, 0, 0} used\nSweet Scent!
+{STRVAR_1 1, 0, 0} used\nIron Tail!
+The wild {STRVAR_1 1, 0, 0} used\nIron Tail!
+The foe’s {STRVAR_1 1, 0, 0} used\nIron Tail!
+{STRVAR_1 1, 0, 0} used\nMetal Claw!
+The wild {STRVAR_1 1, 0, 0} used\nMetal Claw!
+The foe’s {STRVAR_1 1, 0, 0} used\nMetal Claw!
+{STRVAR_1 1, 0, 0} used\nVital Throw!
+The wild {STRVAR_1 1, 0, 0} used\nVital Throw!
+The foe’s {STRVAR_1 1, 0, 0} used\nVital Throw!
+{STRVAR_1 1, 0, 0} used\nMorning Sun!
+The wild {STRVAR_1 1, 0, 0} used\nMorning Sun!
+The foe’s {STRVAR_1 1, 0, 0} used\nMorning Sun!
+{STRVAR_1 1, 0, 0} used\nSynthesis!
+The wild {STRVAR_1 1, 0, 0} used\nSynthesis!
+The foe’s {STRVAR_1 1, 0, 0} used\nSynthesis!
+{STRVAR_1 1, 0, 0} used\nMoonlight!
+The wild {STRVAR_1 1, 0, 0} used\nMoonlight!
+The foe’s {STRVAR_1 1, 0, 0} used\nMoonlight!
+{STRVAR_1 1, 0, 0} used\nHidden Power!
+The wild {STRVAR_1 1, 0, 0} used\nHidden Power!
+The foe’s {STRVAR_1 1, 0, 0} used\nHidden Power!
+{STRVAR_1 1, 0, 0} used\nCross Chop!
+The wild {STRVAR_1 1, 0, 0} used\nCross Chop!
+The foe’s {STRVAR_1 1, 0, 0} used\nCross Chop!
+{STRVAR_1 1, 0, 0} used\nTwister!
+The wild {STRVAR_1 1, 0, 0} used\nTwister!
+The foe’s {STRVAR_1 1, 0, 0} used\nTwister!
+{STRVAR_1 1, 0, 0} used\nRain Dance!
+The wild {STRVAR_1 1, 0, 0} used\nRain Dance!
+The foe’s {STRVAR_1 1, 0, 0} used\nRain Dance!
+{STRVAR_1 1, 0, 0} used\nSunny Day!
+The wild {STRVAR_1 1, 0, 0} used\nSunny Day!
+The foe’s {STRVAR_1 1, 0, 0} used\nSunny Day!
+{STRVAR_1 1, 0, 0} used\nCrunch!
+The wild {STRVAR_1 1, 0, 0} used\nCrunch!
+The foe’s {STRVAR_1 1, 0, 0} used\nCrunch!
+{STRVAR_1 1, 0, 0} used\nMirror Coat!
+The wild {STRVAR_1 1, 0, 0} used\nMirror Coat!
+The foe’s {STRVAR_1 1, 0, 0} used\nMirror Coat!
+{STRVAR_1 1, 0, 0} used\nPsych Up!
+The wild {STRVAR_1 1, 0, 0} used\nPsych Up!
+The foe’s {STRVAR_1 1, 0, 0} used\nPsych Up!
+{STRVAR_1 1, 0, 0} used\nExtremeSpeed!
+The wild {STRVAR_1 1, 0, 0} used\nExtremeSpeed!
+The foe’s {STRVAR_1 1, 0, 0} used\nExtremeSpeed!
+{STRVAR_1 1, 0, 0} used\nAncientPower!
+The wild {STRVAR_1 1, 0, 0} used\nAncientPower!
+The foe’s {STRVAR_1 1, 0, 0} used\nAncientPower!
+{STRVAR_1 1, 0, 0} used\nShadow Ball!
+The wild {STRVAR_1 1, 0, 0} used\nShadow Ball!
+The foe’s {STRVAR_1 1, 0, 0} used\nShadow Ball!
+{STRVAR_1 1, 0, 0} used\nFuture Sight!
+The wild {STRVAR_1 1, 0, 0} used\nFuture Sight!
+The foe’s {STRVAR_1 1, 0, 0} used\nFuture Sight!
+{STRVAR_1 1, 0, 0} used\nRock Smash!
+The wild {STRVAR_1 1, 0, 0} used\nRock Smash!
+The foe’s {STRVAR_1 1, 0, 0} used\nRock Smash!
+{STRVAR_1 1, 0, 0} used\nWhirlpool!
+The wild {STRVAR_1 1, 0, 0} used\nWhirlpool!
+The foe’s {STRVAR_1 1, 0, 0} used\nWhirlpool!
+{STRVAR_1 1, 0, 0} used\nBeat Up!
+The wild {STRVAR_1 1, 0, 0} used\nBeat Up!
+The foe’s {STRVAR_1 1, 0, 0} used\nBeat Up!
+{STRVAR_1 1, 0, 0} used\nFake Out!
+The wild {STRVAR_1 1, 0, 0} used\nFake Out!
+The foe’s {STRVAR_1 1, 0, 0} used\nFake Out!
+{STRVAR_1 1, 0, 0} used\nUproar!
+The wild {STRVAR_1 1, 0, 0} used\nUproar!
+The foe’s {STRVAR_1 1, 0, 0} used\nUproar!
+{STRVAR_1 1, 0, 0} used\nStockpile!
+The wild {STRVAR_1 1, 0, 0} used\nStockpile!
+The foe’s {STRVAR_1 1, 0, 0} used\nStockpile!
+{STRVAR_1 1, 0, 0} used\nSpit Up!
+The wild {STRVAR_1 1, 0, 0} used\nSpit Up!
+The foe’s {STRVAR_1 1, 0, 0} used\nSpit Up!
+{STRVAR_1 1, 0, 0} used\nSwallow!
+The wild {STRVAR_1 1, 0, 0} used\nSwallow!
+The foe’s {STRVAR_1 1, 0, 0} used\nSwallow!
+{STRVAR_1 1, 0, 0} used\nHeat Wave!
+The wild {STRVAR_1 1, 0, 0} used\nHeat Wave!
+The foe’s {STRVAR_1 1, 0, 0} used\nHeat Wave!
+{STRVAR_1 1, 0, 0} used\nHail!
+The wild {STRVAR_1 1, 0, 0} used\nHail!
+The foe’s {STRVAR_1 1, 0, 0} used\nHail!
+{STRVAR_1 1, 0, 0} used\nTorment!
+The wild {STRVAR_1 1, 0, 0} used\nTorment!
+The foe’s {STRVAR_1 1, 0, 0} used\nTorment!
+{STRVAR_1 1, 0, 0} used\nFlatter!
+The wild {STRVAR_1 1, 0, 0} used\nFlatter!
+The foe’s {STRVAR_1 1, 0, 0} used\nFlatter!
+{STRVAR_1 1, 0, 0} used\nWill-O-Wisp!
+The wild {STRVAR_1 1, 0, 0} used\nWill-O-Wisp!
+The foe’s {STRVAR_1 1, 0, 0} used\nWill-O-Wisp!
+{STRVAR_1 1, 0, 0} used\nMemento!
+The wild {STRVAR_1 1, 0, 0} used\nMemento!
+The foe’s {STRVAR_1 1, 0, 0} used\nMemento!
+{STRVAR_1 1, 0, 0} used\nFacade!
+The wild {STRVAR_1 1, 0, 0} used\nFacade!
+The foe’s {STRVAR_1 1, 0, 0} used\nFacade!
+{STRVAR_1 1, 0, 0} used\nFocus Punch!
+The wild {STRVAR_1 1, 0, 0} used\nFocus Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nFocus Punch!
+{STRVAR_1 1, 0, 0} used\nSmellingSalt!
+The wild {STRVAR_1 1, 0, 0} used\nSmellingSalt!
+The foe’s {STRVAR_1 1, 0, 0} used\nSmellingSalt!
+{STRVAR_1 1, 0, 0} used\nFollow Me!
+The wild {STRVAR_1 1, 0, 0} used\nFollow Me!
+The foe’s {STRVAR_1 1, 0, 0} used\nFollow Me!
+{STRVAR_1 1, 0, 0} used\nNature Power!
+The wild {STRVAR_1 1, 0, 0} used\nNature Power!
+The foe’s {STRVAR_1 1, 0, 0} used\nNature Power!
+{STRVAR_1 1, 0, 0} used\nCharge!
+The wild {STRVAR_1 1, 0, 0} used\nCharge!
+The foe’s {STRVAR_1 1, 0, 0} used\nCharge!
+{STRVAR_1 1, 0, 0} used\nTaunt!
+The wild {STRVAR_1 1, 0, 0} used\nTaunt!
+The foe’s {STRVAR_1 1, 0, 0} used\nTaunt!
+{STRVAR_1 1, 0, 0} used\nHelping Hand!
+The wild {STRVAR_1 1, 0, 0} used\nHelping Hand!
+The foe’s {STRVAR_1 1, 0, 0} used\nHelping Hand!
+{STRVAR_1 1, 0, 0} used\nTrick!
+The wild {STRVAR_1 1, 0, 0} used\nTrick!
+The foe’s {STRVAR_1 1, 0, 0} used\nTrick!
+{STRVAR_1 1, 0, 0} used\nRole Play!
+The wild {STRVAR_1 1, 0, 0} used\nRole Play!
+The foe’s {STRVAR_1 1, 0, 0} used\nRole Play!
+{STRVAR_1 1, 0, 0} used\nWish!
+The wild {STRVAR_1 1, 0, 0} used\nWish!
+The foe’s {STRVAR_1 1, 0, 0} used\nWish!
+{STRVAR_1 1, 0, 0} used\nAssist!
+The wild {STRVAR_1 1, 0, 0} used\nAssist!
+The foe’s {STRVAR_1 1, 0, 0} used\nAssist!
+{STRVAR_1 1, 0, 0} used\nIngrain!
+The wild {STRVAR_1 1, 0, 0} used\nIngrain!
+The foe’s {STRVAR_1 1, 0, 0} used\nIngrain!
+{STRVAR_1 1, 0, 0} used\nSuperpower!
+The wild {STRVAR_1 1, 0, 0} used\nSuperpower!
+The foe’s {STRVAR_1 1, 0, 0} used\nSuperpower!
+{STRVAR_1 1, 0, 0} used\nMagic Coat!
+The wild {STRVAR_1 1, 0, 0} used\nMagic Coat!
+The foe’s {STRVAR_1 1, 0, 0} used\nMagic Coat!
+{STRVAR_1 1, 0, 0} used\nRecycle!
+The wild {STRVAR_1 1, 0, 0} used\nRecycle!
+The foe’s {STRVAR_1 1, 0, 0} used\nRecycle!
+{STRVAR_1 1, 0, 0} used\nRevenge!
+The wild {STRVAR_1 1, 0, 0} used\nRevenge!
+The foe’s {STRVAR_1 1, 0, 0} used\nRevenge!
+{STRVAR_1 1, 0, 0} used\nBrick Break!
+The wild {STRVAR_1 1, 0, 0} used\nBrick Break!
+The foe’s {STRVAR_1 1, 0, 0} used\nBrick Break!
+{STRVAR_1 1, 0, 0} used\nYawn!
+The wild {STRVAR_1 1, 0, 0} used\nYawn!
+The foe’s {STRVAR_1 1, 0, 0} used\nYawn!
+{STRVAR_1 1, 0, 0} used\nKnock Off!
+The wild {STRVAR_1 1, 0, 0} used\nKnock Off!
+The foe’s {STRVAR_1 1, 0, 0} used\nKnock Off!
+{STRVAR_1 1, 0, 0} used\nEndeavor!
+The wild {STRVAR_1 1, 0, 0} used\nEndeavor!
+The foe’s {STRVAR_1 1, 0, 0} used\nEndeavor!
+{STRVAR_1 1, 0, 0} used\nEruption!
+The wild {STRVAR_1 1, 0, 0} used\nEruption!
+The foe’s {STRVAR_1 1, 0, 0} used\nEruption!
+{STRVAR_1 1, 0, 0} used\nSkill Swap!
+The wild {STRVAR_1 1, 0, 0} used\nSkill Swap!
+The foe’s {STRVAR_1 1, 0, 0} used\nSkill Swap!
+{STRVAR_1 1, 0, 0} used\nImprison!
+The wild {STRVAR_1 1, 0, 0} used\nImprison!
+The foe’s {STRVAR_1 1, 0, 0} used\nImprison!
+{STRVAR_1 1, 0, 0} used\nRefresh!
+The wild {STRVAR_1 1, 0, 0} used\nRefresh!
+The foe’s {STRVAR_1 1, 0, 0} used\nRefresh!
+{STRVAR_1 1, 0, 0} used\nGrudge!
+The wild {STRVAR_1 1, 0, 0} used\nGrudge!
+The foe’s {STRVAR_1 1, 0, 0} used\nGrudge!
+{STRVAR_1 1, 0, 0} used\nSnatch!
+The wild {STRVAR_1 1, 0, 0} used\nSnatch!
+The foe’s {STRVAR_1 1, 0, 0} used\nSnatch!
+{STRVAR_1 1, 0, 0} used\nSecret Power!
+The wild {STRVAR_1 1, 0, 0} used\nSecret Power!
+The foe’s {STRVAR_1 1, 0, 0} used\nSecret Power!
+{STRVAR_1 1, 0, 0} used\nDive!
+The wild {STRVAR_1 1, 0, 0} used\nDive!
+The foe’s {STRVAR_1 1, 0, 0} used\nDive!
+{STRVAR_1 1, 0, 0} used\nArm Thrust!
+The wild {STRVAR_1 1, 0, 0} used\nArm Thrust!
+The foe’s {STRVAR_1 1, 0, 0} used\nArm Thrust!
+{STRVAR_1 1, 0, 0} used\nCamouflage!
+The wild {STRVAR_1 1, 0, 0} used\nCamouflage!
+The foe’s {STRVAR_1 1, 0, 0} used\nCamouflage!
+{STRVAR_1 1, 0, 0} used\nTail Glow!
+The wild {STRVAR_1 1, 0, 0} used\nTail Glow!
+The foe’s {STRVAR_1 1, 0, 0} used\nTail Glow!
+{STRVAR_1 1, 0, 0} used\nLuster Purge!
+The wild {STRVAR_1 1, 0, 0} used\nLuster Purge!
+The foe’s {STRVAR_1 1, 0, 0} used\nLuster Purge!
+{STRVAR_1 1, 0, 0} used\nMist Ball!
+The wild {STRVAR_1 1, 0, 0} used\nMist Ball!
+The foe’s {STRVAR_1 1, 0, 0} used\nMist Ball!
+{STRVAR_1 1, 0, 0} used\nFeatherDance!
+The wild {STRVAR_1 1, 0, 0} used\nFeatherDance!
+The foe’s {STRVAR_1 1, 0, 0} used\nFeatherDance!
+{STRVAR_1 1, 0, 0} used\nTeeter Dance!
+The wild {STRVAR_1 1, 0, 0} used\nTeeter Dance!
+The foe’s {STRVAR_1 1, 0, 0} used\nTeeter Dance!
+{STRVAR_1 1, 0, 0} used\nBlaze Kick!
+The wild {STRVAR_1 1, 0, 0} used\nBlaze Kick!
+The foe’s {STRVAR_1 1, 0, 0} used\nBlaze Kick!
+{STRVAR_1 1, 0, 0} used\nMud Sport!
+The wild {STRVAR_1 1, 0, 0} used\nMud Sport!
+The foe’s {STRVAR_1 1, 0, 0} used\nMud Sport!
+{STRVAR_1 1, 0, 0} used\nIce Ball!
+The wild {STRVAR_1 1, 0, 0} used\nIce Ball!
+The foe’s {STRVAR_1 1, 0, 0} used\nIce Ball!
+{STRVAR_1 1, 0, 0} used\nNeedle Arm!
+The wild {STRVAR_1 1, 0, 0} used\nNeedle Arm!
+The foe’s {STRVAR_1 1, 0, 0} used\nNeedle Arm!
+{STRVAR_1 1, 0, 0} used\nSlack Off!
+The wild {STRVAR_1 1, 0, 0} used\nSlack Off!
+The foe’s {STRVAR_1 1, 0, 0} used\nSlack Off!
+{STRVAR_1 1, 0, 0} used\nHyper Voice!
+The wild {STRVAR_1 1, 0, 0} used\nHyper Voice!
+The foe’s {STRVAR_1 1, 0, 0} used\nHyper Voice!
+{STRVAR_1 1, 0, 0} used\nPoison Fang!
+The wild {STRVAR_1 1, 0, 0} used\nPoison Fang!
+The foe’s {STRVAR_1 1, 0, 0} used\nPoison Fang!
+{STRVAR_1 1, 0, 0} used\nCrush Claw!
+The wild {STRVAR_1 1, 0, 0} used\nCrush Claw!
+The foe’s {STRVAR_1 1, 0, 0} used\nCrush Claw!
+{STRVAR_1 1, 0, 0} used\nBlast Burn!
+The wild {STRVAR_1 1, 0, 0} used\nBlast Burn!
+The foe’s {STRVAR_1 1, 0, 0} used\nBlast Burn!
+{STRVAR_1 1, 0, 0} used\nHydro Cannon!
+The wild {STRVAR_1 1, 0, 0} used\nHydro Cannon!
+The foe’s {STRVAR_1 1, 0, 0} used\nHydro Cannon!
+{STRVAR_1 1, 0, 0} used\nMeteor Mash!
+The wild {STRVAR_1 1, 0, 0} used\nMeteor Mash!
+The foe’s {STRVAR_1 1, 0, 0} used\nMeteor Mash!
+{STRVAR_1 1, 0, 0} used\nAstonish!
+The wild {STRVAR_1 1, 0, 0} used\nAstonish!
+The foe’s {STRVAR_1 1, 0, 0} used\nAstonish!
+{STRVAR_1 1, 0, 0} used\nWeather Ball!
+The wild {STRVAR_1 1, 0, 0} used\nWeather Ball!
+The foe’s {STRVAR_1 1, 0, 0} used\nWeather Ball!
+{STRVAR_1 1, 0, 0} used\nAromatherapy!
+The wild {STRVAR_1 1, 0, 0} used\nAromatherapy!
+The foe’s {STRVAR_1 1, 0, 0} used\nAromatherapy!
+{STRVAR_1 1, 0, 0} used\nFake Tears!
+The wild {STRVAR_1 1, 0, 0} used\nFake Tears!
+The foe’s {STRVAR_1 1, 0, 0} used\nFake Tears!
+{STRVAR_1 1, 0, 0} used\nAir Cutter!
+The wild {STRVAR_1 1, 0, 0} used\nAir Cutter!
+The foe’s {STRVAR_1 1, 0, 0} used\nAir Cutter!
+{STRVAR_1 1, 0, 0} used\nOverheat!
+The wild {STRVAR_1 1, 0, 0} used\nOverheat!
+The foe’s {STRVAR_1 1, 0, 0} used\nOverheat!
+{STRVAR_1 1, 0, 0} used\nOdor Sleuth!
+The wild {STRVAR_1 1, 0, 0} used\nOdor Sleuth!
+The foe’s {STRVAR_1 1, 0, 0} used\nOdor Sleuth!
+{STRVAR_1 1, 0, 0} used\nRock Tomb!
+The wild {STRVAR_1 1, 0, 0} used\nRock Tomb!
+The foe’s {STRVAR_1 1, 0, 0} used\nRock Tomb!
+{STRVAR_1 1, 0, 0} used\nSilver Wind!
+The wild {STRVAR_1 1, 0, 0} used\nSilver Wind!
+The foe’s {STRVAR_1 1, 0, 0} used\nSilver Wind!
+{STRVAR_1 1, 0, 0} used\nMetal Sound!
+The wild {STRVAR_1 1, 0, 0} used\nMetal Sound!
+The foe’s {STRVAR_1 1, 0, 0} used\nMetal Sound!
+{STRVAR_1 1, 0, 0} used\nGrassWhistle!
+The wild {STRVAR_1 1, 0, 0} used\nGrassWhistle!
+The foe’s {STRVAR_1 1, 0, 0} used\nGrassWhistle!
+{STRVAR_1 1, 0, 0} used\nTickle!
+The wild {STRVAR_1 1, 0, 0} used\nTickle!
+The foe’s {STRVAR_1 1, 0, 0} used\nTickle!
+{STRVAR_1 1, 0, 0} used\nCosmic Power!
+The wild {STRVAR_1 1, 0, 0} used\nCosmic Power!
+The foe’s {STRVAR_1 1, 0, 0} used\nCosmic Power!
+{STRVAR_1 1, 0, 0} used\nWater Spout!
+The wild {STRVAR_1 1, 0, 0} used\nWater Spout!
+The foe’s {STRVAR_1 1, 0, 0} used\nWater Spout!
+{STRVAR_1 1, 0, 0} used\nSignal Beam!
+The wild {STRVAR_1 1, 0, 0} used\nSignal Beam!
+The foe’s {STRVAR_1 1, 0, 0} used\nSignal Beam!
+{STRVAR_1 1, 0, 0} used\nShadow Punch!
+The wild {STRVAR_1 1, 0, 0} used\nShadow Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nShadow Punch!
+{STRVAR_1 1, 0, 0} used\nExtrasensory!
+The wild {STRVAR_1 1, 0, 0} used\nExtrasensory!
+The foe’s {STRVAR_1 1, 0, 0} used\nExtrasensory!
+{STRVAR_1 1, 0, 0} used\nSky Uppercut!
+The wild {STRVAR_1 1, 0, 0} used\nSky Uppercut!
+The foe’s {STRVAR_1 1, 0, 0} used\nSky Uppercut!
+{STRVAR_1 1, 0, 0} used\nSand Tomb!
+The wild {STRVAR_1 1, 0, 0} used\nSand Tomb!
+The foe’s {STRVAR_1 1, 0, 0} used\nSand Tomb!
+{STRVAR_1 1, 0, 0} used\nSheer Cold!
+The wild {STRVAR_1 1, 0, 0} used\nSheer Cold!
+The foe’s {STRVAR_1 1, 0, 0} used\nSheer Cold!
+{STRVAR_1 1, 0, 0} used\nMuddy Water!
+The wild {STRVAR_1 1, 0, 0} used\nMuddy Water!
+The foe’s {STRVAR_1 1, 0, 0} used\nMuddy Water!
+{STRVAR_1 1, 0, 0} used\nBullet Seed!
+The wild {STRVAR_1 1, 0, 0} used\nBullet Seed!
+The foe’s {STRVAR_1 1, 0, 0} used\nBullet Seed!
+{STRVAR_1 1, 0, 0} used\nAerial Ace!
+The wild {STRVAR_1 1, 0, 0} used\nAerial Ace!
+The foe’s {STRVAR_1 1, 0, 0} used\nAerial Ace!
+{STRVAR_1 1, 0, 0} used\nIcicle Spear!
+The wild {STRVAR_1 1, 0, 0} used\nIcicle Spear!
+The foe’s {STRVAR_1 1, 0, 0} used\nIcicle Spear!
+{STRVAR_1 1, 0, 0} used\nIron Defense!
+The wild {STRVAR_1 1, 0, 0} used\nIron Defense!
+The foe’s {STRVAR_1 1, 0, 0} used\nIron Defense!
+{STRVAR_1 1, 0, 0} used\nBlock!
+The wild {STRVAR_1 1, 0, 0} used\nBlock!
+The foe’s {STRVAR_1 1, 0, 0} used\nBlock!
+{STRVAR_1 1, 0, 0} used\nHowl!
+The wild {STRVAR_1 1, 0, 0} used\nHowl!
+The foe’s {STRVAR_1 1, 0, 0} used\nHowl!
+{STRVAR_1 1, 0, 0} used\nDragon Claw!
+The wild {STRVAR_1 1, 0, 0} used\nDragon Claw!
+The foe’s {STRVAR_1 1, 0, 0} used\nDragon Claw!
+{STRVAR_1 1, 0, 0} used\nFrenzy Plant!
+The wild {STRVAR_1 1, 0, 0} used\nFrenzy Plant!
+The foe’s {STRVAR_1 1, 0, 0} used\nFrenzy Plant!
+{STRVAR_1 1, 0, 0} used\nBulk Up!
+The wild {STRVAR_1 1, 0, 0} used\nBulk Up!
+The foe’s {STRVAR_1 1, 0, 0} used\nBulk Up!
+{STRVAR_1 1, 0, 0} used\nBounce!
+The wild {STRVAR_1 1, 0, 0} used\nBounce!
+The foe’s {STRVAR_1 1, 0, 0} used\nBounce!
+{STRVAR_1 1, 0, 0} used\nMud Shot!
+The wild {STRVAR_1 1, 0, 0} used\nMud Shot!
+The foe’s {STRVAR_1 1, 0, 0} used\nMud Shot!
+{STRVAR_1 1, 0, 0} used\nPoison Tail!
+The wild {STRVAR_1 1, 0, 0} used\nPoison Tail!
+The foe’s {STRVAR_1 1, 0, 0} used\nPoison Tail!
+{STRVAR_1 1, 0, 0} used\nCovet!
+The wild {STRVAR_1 1, 0, 0} used\nCovet!
+The foe’s {STRVAR_1 1, 0, 0} used\nCovet!
+{STRVAR_1 1, 0, 0} used\nVolt Tackle!
+The wild {STRVAR_1 1, 0, 0} used\nVolt Tackle!
+The foe’s {STRVAR_1 1, 0, 0} used\nVolt Tackle!
+{STRVAR_1 1, 0, 0} used\nMagical Leaf!
+The wild {STRVAR_1 1, 0, 0} used\nMagical Leaf!
+The foe’s {STRVAR_1 1, 0, 0} used\nMagical Leaf!
+{STRVAR_1 1, 0, 0} used\nWater Sport!
+The wild {STRVAR_1 1, 0, 0} used\nWater Sport!
+The foe’s {STRVAR_1 1, 0, 0} used\nWater Sport!
+{STRVAR_1 1, 0, 0} used\nCalm Mind!
+The wild {STRVAR_1 1, 0, 0} used\nCalm Mind!
+The foe’s {STRVAR_1 1, 0, 0} used\nCalm Mind!
+{STRVAR_1 1, 0, 0} used\nLeaf Blade!
+The wild {STRVAR_1 1, 0, 0} used\nLeaf Blade!
+The foe’s {STRVAR_1 1, 0, 0} used\nLeaf Blade!
+{STRVAR_1 1, 0, 0} used\nDragon Dance!
+The wild {STRVAR_1 1, 0, 0} used\nDragon Dance!
+The foe’s {STRVAR_1 1, 0, 0} used\nDragon Dance!
+{STRVAR_1 1, 0, 0} used\nRock Blast!
+The wild {STRVAR_1 1, 0, 0} used\nRock Blast!
+The foe’s {STRVAR_1 1, 0, 0} used\nRock Blast!
+{STRVAR_1 1, 0, 0} used\nShock Wave!
+The wild {STRVAR_1 1, 0, 0} used\nShock Wave!
+The foe’s {STRVAR_1 1, 0, 0} used\nShock Wave!
+{STRVAR_1 1, 0, 0} used\nWater Pulse!
+The wild {STRVAR_1 1, 0, 0} used\nWater Pulse!
+The foe’s {STRVAR_1 1, 0, 0} used\nWater Pulse!
+{STRVAR_1 1, 0, 0} used\nDoom Desire!
+The wild {STRVAR_1 1, 0, 0} used\nDoom Desire!
+The foe’s {STRVAR_1 1, 0, 0} used\nDoom Desire!
+{STRVAR_1 1, 0, 0} used\nPsycho Boost!
+The wild {STRVAR_1 1, 0, 0} used\nPsycho Boost!
+The foe’s {STRVAR_1 1, 0, 0} used\nPsycho Boost!
+{STRVAR_1 1, 0, 0} used\nRoost!
+The wild {STRVAR_1 1, 0, 0} used\nRoost!
+The foe’s {STRVAR_1 1, 0, 0} used\nRoost!
+{STRVAR_1 1, 0, 0} used\nGravity!
+The wild {STRVAR_1 1, 0, 0} used\nGravity!
+The foe’s {STRVAR_1 1, 0, 0} used\nGravity!
+{STRVAR_1 1, 0, 0} used\nMiracle Eye!
+The wild {STRVAR_1 1, 0, 0} used\nMiracle Eye!
+The foe’s {STRVAR_1 1, 0, 0} used\nMiracle Eye!
+{STRVAR_1 1, 0, 0} used\nWake-Up Slap!
+The wild {STRVAR_1 1, 0, 0} used\nWake-Up Slap!
+The foe’s {STRVAR_1 1, 0, 0} used\nWake-Up Slap!
+{STRVAR_1 1, 0, 0} used\nHammer Arm!
+The wild {STRVAR_1 1, 0, 0} used\nHammer Arm!
+The foe’s {STRVAR_1 1, 0, 0} used\nHammer Arm!
+{STRVAR_1 1, 0, 0} used\nGyro Ball!
+The wild {STRVAR_1 1, 0, 0} used\nGyro Ball!
+The foe’s {STRVAR_1 1, 0, 0} used\nGyro Ball!
+{STRVAR_1 1, 0, 0} used\nHealing Wish!
+The wild {STRVAR_1 1, 0, 0} used\nHealing Wish!
+The foe’s {STRVAR_1 1, 0, 0} used\nHealing Wish!
+{STRVAR_1 1, 0, 0} used\nBrine!
+The wild {STRVAR_1 1, 0, 0} used\nBrine!
+The foe’s {STRVAR_1 1, 0, 0} used\nBrine!
+{STRVAR_1 1, 0, 0} used\nNatural Gift!
+The wild {STRVAR_1 1, 0, 0} used\nNatural Gift!
+The foe’s {STRVAR_1 1, 0, 0} used\nNatural Gift!
+{STRVAR_1 1, 0, 0} used\nFeint!
+The wild {STRVAR_1 1, 0, 0} used\nFeint!
+The foe’s {STRVAR_1 1, 0, 0} used\nFeint!
+{STRVAR_1 1, 0, 0} used\nPluck!
+The wild {STRVAR_1 1, 0, 0} used\nPluck!
+The foe’s {STRVAR_1 1, 0, 0} used\nPluck!
+{STRVAR_1 1, 0, 0} used\nTailwind!
+The wild {STRVAR_1 1, 0, 0} used\nTailwind!
+The foe’s {STRVAR_1 1, 0, 0} used\nTailwind!
+{STRVAR_1 1, 0, 0} used\nAcupressure!
+The wild {STRVAR_1 1, 0, 0} used\nAcupressure!
+The foe’s {STRVAR_1 1, 0, 0} used\nAcupressure!
+{STRVAR_1 1, 0, 0} used\nMetal Burst!
+The wild {STRVAR_1 1, 0, 0} used\nMetal Burst!
+The foe’s {STRVAR_1 1, 0, 0} used\nMetal Burst!
+{STRVAR_1 1, 0, 0} used\nU-turn!
+The wild {STRVAR_1 1, 0, 0} used\nU-turn!
+The foe’s {STRVAR_1 1, 0, 0} used\nU-turn!
+{STRVAR_1 1, 0, 0} used\nClose Combat!
+The wild {STRVAR_1 1, 0, 0} used\nClose Combat!
+The foe’s {STRVAR_1 1, 0, 0} used\nClose Combat!
+{STRVAR_1 1, 0, 0} used\nPayback!
+The wild {STRVAR_1 1, 0, 0} used\nPayback!
+The foe’s {STRVAR_1 1, 0, 0} used\nPayback!
+{STRVAR_1 1, 0, 0} used\nAssurance!
+The wild {STRVAR_1 1, 0, 0} used\nAssurance!
+The foe’s {STRVAR_1 1, 0, 0} used\nAssurance!
+{STRVAR_1 1, 0, 0} used\nEmbargo!
+The wild {STRVAR_1 1, 0, 0} used\nEmbargo!
+The foe’s {STRVAR_1 1, 0, 0} used\nEmbargo!
+{STRVAR_1 1, 0, 0} used\nFling!
+The wild {STRVAR_1 1, 0, 0} used\nFling!
+The foe’s {STRVAR_1 1, 0, 0} used\nFling!
+{STRVAR_1 1, 0, 0} used\nPsycho Shift!
+The wild {STRVAR_1 1, 0, 0} used\nPsycho Shift!
+The foe’s {STRVAR_1 1, 0, 0} used\nPsycho Shift!
+{STRVAR_1 1, 0, 0} used\nTrump Card!
+The wild {STRVAR_1 1, 0, 0} used\nTrump Card!
+The foe’s {STRVAR_1 1, 0, 0} used\nTrump Card!
+{STRVAR_1 1, 0, 0} used\nHeal Block!
+The wild {STRVAR_1 1, 0, 0} used\nHeal Block!
+The foe’s {STRVAR_1 1, 0, 0} used\nHeal Block!
+{STRVAR_1 1, 0, 0} used\nWring Out!
+The wild {STRVAR_1 1, 0, 0} used\nWring Out!
+The foe’s {STRVAR_1 1, 0, 0} used\nWring Out!
+{STRVAR_1 1, 0, 0} used\nPower Trick!
+The wild {STRVAR_1 1, 0, 0} used\nPower Trick!
+The foe’s {STRVAR_1 1, 0, 0} used\nPower Trick!
+{STRVAR_1 1, 0, 0} used\nGastro Acid!
+The wild {STRVAR_1 1, 0, 0} used\nGastro Acid!
+The foe’s {STRVAR_1 1, 0, 0} used\nGastro Acid!
+{STRVAR_1 1, 0, 0} used\nLucky Chant!
+The wild {STRVAR_1 1, 0, 0} used\nLucky Chant!
+The foe’s {STRVAR_1 1, 0, 0} used\nLucky Chant!
+{STRVAR_1 1, 0, 0} used\nMe First!
+The wild {STRVAR_1 1, 0, 0} used\nMe First!
+The foe’s {STRVAR_1 1, 0, 0} used\nMe First!
+{STRVAR_1 1, 0, 0} used\nCopycat!
+The wild {STRVAR_1 1, 0, 0} used\nCopycat!
+The foe’s {STRVAR_1 1, 0, 0} used\nCopycat!
+{STRVAR_1 1, 0, 0} used\nPower Swap!
+The wild {STRVAR_1 1, 0, 0} used\nPower Swap!
+The foe’s {STRVAR_1 1, 0, 0} used\nPower Swap!
+{STRVAR_1 1, 0, 0} used\nGuard Swap!
+The wild {STRVAR_1 1, 0, 0} used\nGuard Swap!
+The foe’s {STRVAR_1 1, 0, 0} used\nGuard Swap!
+{STRVAR_1 1, 0, 0} used\nPunishment!
+The wild {STRVAR_1 1, 0, 0} used\nPunishment!
+The foe’s {STRVAR_1 1, 0, 0} used\nPunishment!
+{STRVAR_1 1, 0, 0} used\nLast Resort!
+The wild {STRVAR_1 1, 0, 0} used\nLast Resort!
+The foe’s {STRVAR_1 1, 0, 0} used\nLast Resort!
+{STRVAR_1 1, 0, 0} used\nWorry Seed!
+The wild {STRVAR_1 1, 0, 0} used\nWorry Seed!
+The foe’s {STRVAR_1 1, 0, 0} used\nWorry Seed!
+{STRVAR_1 1, 0, 0} used\nSucker Punch!
+The wild {STRVAR_1 1, 0, 0} used\nSucker Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nSucker Punch!
+{STRVAR_1 1, 0, 0} used\nToxic Spikes!
+The wild {STRVAR_1 1, 0, 0} used\nToxic Spikes!
+The foe’s {STRVAR_1 1, 0, 0} used\nToxic Spikes!
+{STRVAR_1 1, 0, 0} used\nHeart Swap!
+The wild {STRVAR_1 1, 0, 0} used\nHeart Swap!
+The foe’s {STRVAR_1 1, 0, 0} used\nHeart Swap!
+{STRVAR_1 1, 0, 0} used\nAqua Ring!
+The wild {STRVAR_1 1, 0, 0} used\nAqua Ring!
+The foe’s {STRVAR_1 1, 0, 0} used\nAqua Ring!
+{STRVAR_1 1, 0, 0} used\nMagnet Rise!
+The wild {STRVAR_1 1, 0, 0} used\nMagnet Rise!
+The foe’s {STRVAR_1 1, 0, 0} used\nMagnet Rise!
+{STRVAR_1 1, 0, 0} used\nFlare Blitz!
+The wild {STRVAR_1 1, 0, 0} used\nFlare Blitz!
+The foe’s {STRVAR_1 1, 0, 0} used\nFlare Blitz!
+{STRVAR_1 1, 0, 0} used\nForce Palm!
+The wild {STRVAR_1 1, 0, 0} used\nForce Palm!
+The foe’s {STRVAR_1 1, 0, 0} used\nForce Palm!
+{STRVAR_1 1, 0, 0} used\nAura Sphere!
+The wild {STRVAR_1 1, 0, 0} used\nAura Sphere!
+The foe’s {STRVAR_1 1, 0, 0} used\nAura Sphere!
+{STRVAR_1 1, 0, 0} used\nRock Polish!
+The wild {STRVAR_1 1, 0, 0} used\nRock Polish!
+The foe’s {STRVAR_1 1, 0, 0} used\nRock Polish!
+{STRVAR_1 1, 0, 0} used\nPoison Jab!
+The wild {STRVAR_1 1, 0, 0} used\nPoison Jab!
+The foe’s {STRVAR_1 1, 0, 0} used\nPoison Jab!
+{STRVAR_1 1, 0, 0} used\nDark Pulse!
+The wild {STRVAR_1 1, 0, 0} used\nDark Pulse!
+The foe’s {STRVAR_1 1, 0, 0} used\nDark Pulse!
+{STRVAR_1 1, 0, 0} used\nNight Slash!
+The wild {STRVAR_1 1, 0, 0} used\nNight Slash!
+The foe’s {STRVAR_1 1, 0, 0} used\nNight Slash!
+{STRVAR_1 1, 0, 0} used\nAqua Tail!
+The wild {STRVAR_1 1, 0, 0} used\nAqua Tail!
+The foe’s {STRVAR_1 1, 0, 0} used\nAqua Tail!
+{STRVAR_1 1, 0, 0} used\nSeed Bomb!
+The wild {STRVAR_1 1, 0, 0} used\nSeed Bomb!
+The foe’s {STRVAR_1 1, 0, 0} used\nSeed Bomb!
+{STRVAR_1 1, 0, 0} used\nAir Slash!
+The wild {STRVAR_1 1, 0, 0} used\nAir Slash!
+The foe’s {STRVAR_1 1, 0, 0} used\nAir Slash!
+{STRVAR_1 1, 0, 0} used\nX-Scissor!
+The wild {STRVAR_1 1, 0, 0} used\nX-Scissor!
+The foe’s {STRVAR_1 1, 0, 0} used\nX-Scissor!
+{STRVAR_1 1, 0, 0} used\nBug Buzz!
+The wild {STRVAR_1 1, 0, 0} used\nBug Buzz!
+The foe’s {STRVAR_1 1, 0, 0} used\nBug Buzz!
+{STRVAR_1 1, 0, 0} used\nDragon Pulse!
+The wild {STRVAR_1 1, 0, 0} used\nDragon Pulse!
+The foe’s {STRVAR_1 1, 0, 0} used\nDragon Pulse!
+{STRVAR_1 1, 0, 0} used\nDragon Rush!
+The wild {STRVAR_1 1, 0, 0} used\nDragon Rush!
+The foe’s {STRVAR_1 1, 0, 0} used\nDragon Rush!
+{STRVAR_1 1, 0, 0} used\nPower Gem!
+The wild {STRVAR_1 1, 0, 0} used\nPower Gem!
+The foe’s {STRVAR_1 1, 0, 0} used\nPower Gem!
+{STRVAR_1 1, 0, 0} used\nDrain Punch!
+The wild {STRVAR_1 1, 0, 0} used\nDrain Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nDrain Punch!
+{STRVAR_1 1, 0, 0} used\nVacuum Wave!
+The wild {STRVAR_1 1, 0, 0} used\nVacuum Wave!
+The foe’s {STRVAR_1 1, 0, 0} used\nVacuum Wave!
+{STRVAR_1 1, 0, 0} used\nFocus Blast!
+The wild {STRVAR_1 1, 0, 0} used\nFocus Blast!
+The foe’s {STRVAR_1 1, 0, 0} used\nFocus Blast!
+{STRVAR_1 1, 0, 0} used\nEnergy Ball!
+The wild {STRVAR_1 1, 0, 0} used\nEnergy Ball!
+The foe’s {STRVAR_1 1, 0, 0} used\nEnergy Ball!
+{STRVAR_1 1, 0, 0} used\nBrave Bird!
+The wild {STRVAR_1 1, 0, 0} used\nBrave Bird!
+The foe’s {STRVAR_1 1, 0, 0} used\nBrave Bird!
+{STRVAR_1 1, 0, 0} used\nEarth Power!
+The wild {STRVAR_1 1, 0, 0} used\nEarth Power!
+The foe’s {STRVAR_1 1, 0, 0} used\nEarth Power!
+{STRVAR_1 1, 0, 0} used\nSwitcheroo!
+The wild {STRVAR_1 1, 0, 0} used\nSwitcheroo!
+The foe’s {STRVAR_1 1, 0, 0} used\nSwitcheroo!
+{STRVAR_1 1, 0, 0} used\nGiga Impact!
+The wild {STRVAR_1 1, 0, 0} used\nGiga Impact!
+The foe’s {STRVAR_1 1, 0, 0} used\nGiga Impact!
+{STRVAR_1 1, 0, 0} used\nNasty Plot!
+The wild {STRVAR_1 1, 0, 0} used\nNasty Plot!
+The foe’s {STRVAR_1 1, 0, 0} used\nNasty Plot!
+{STRVAR_1 1, 0, 0} used\nBullet Punch!
+The wild {STRVAR_1 1, 0, 0} used\nBullet Punch!
+The foe’s {STRVAR_1 1, 0, 0} used\nBullet Punch!
+{STRVAR_1 1, 0, 0} used\nAvalanche!
+The wild {STRVAR_1 1, 0, 0} used\nAvalanche!
+The foe’s {STRVAR_1 1, 0, 0} used\nAvalanche!
+{STRVAR_1 1, 0, 0} used\nIce Shard!
+The wild {STRVAR_1 1, 0, 0} used\nIce Shard!
+The foe’s {STRVAR_1 1, 0, 0} used\nIce Shard!
+{STRVAR_1 1, 0, 0} used\nShadow Claw!
+The wild {STRVAR_1 1, 0, 0} used\nShadow Claw!
+The foe’s {STRVAR_1 1, 0, 0} used\nShadow Claw!
+{STRVAR_1 1, 0, 0} used\nThunder Fang!
+The wild {STRVAR_1 1, 0, 0} used\nThunder Fang!
+The foe’s {STRVAR_1 1, 0, 0} used\nThunder Fang!
+{STRVAR_1 1, 0, 0} used\nIce Fang!
+The wild {STRVAR_1 1, 0, 0} used\nIce Fang!
+The foe’s {STRVAR_1 1, 0, 0} used\nIce Fang!
+{STRVAR_1 1, 0, 0} used\nFire Fang!
+The wild {STRVAR_1 1, 0, 0} used\nFire Fang!
+The foe’s {STRVAR_1 1, 0, 0} used\nFire Fang!
+{STRVAR_1 1, 0, 0} used\nShadow Sneak!
+The wild {STRVAR_1 1, 0, 0} used\nShadow Sneak!
+The foe’s {STRVAR_1 1, 0, 0} used\nShadow Sneak!
+{STRVAR_1 1, 0, 0} used\nMud Bomb!
+The wild {STRVAR_1 1, 0, 0} used\nMud Bomb!
+The foe’s {STRVAR_1 1, 0, 0} used\nMud Bomb!
+{STRVAR_1 1, 0, 0} used\nPsycho Cut!
+The wild {STRVAR_1 1, 0, 0} used\nPsycho Cut!
+The foe’s {STRVAR_1 1, 0, 0} used\nPsycho Cut!
+{STRVAR_1 1, 0, 0} used\nZen Headbutt!
+The wild {STRVAR_1 1, 0, 0} used\nZen Headbutt!
+The foe’s {STRVAR_1 1, 0, 0} used\nZen Headbutt!
+{STRVAR_1 1, 0, 0} used\nMirror Shot!
+The wild {STRVAR_1 1, 0, 0} used\nMirror Shot!
+The foe’s {STRVAR_1 1, 0, 0} used\nMirror Shot!
+{STRVAR_1 1, 0, 0} used\nFlash Cannon!
+The wild {STRVAR_1 1, 0, 0} used\nFlash Cannon!
+The foe’s {STRVAR_1 1, 0, 0} used\nFlash Cannon!
+{STRVAR_1 1, 0, 0} used\nRock Climb!
+The wild {STRVAR_1 1, 0, 0} used\nRock Climb!
+The foe’s {STRVAR_1 1, 0, 0} used\nRock Climb!
+{STRVAR_1 1, 0, 0} used\nDefog!
+The wild {STRVAR_1 1, 0, 0} used\nDefog!
+The foe’s {STRVAR_1 1, 0, 0} used\nDefog!
+{STRVAR_1 1, 0, 0} used\nTrick Room!
+The wild {STRVAR_1 1, 0, 0} used\nTrick Room!
+The foe’s {STRVAR_1 1, 0, 0} used\nTrick Room!
+{STRVAR_1 1, 0, 0} used\nDraco Meteor!
+The wild {STRVAR_1 1, 0, 0} used\nDraco Meteor!
+The foe’s {STRVAR_1 1, 0, 0} used\nDraco Meteor!
+{STRVAR_1 1, 0, 0} used\nDischarge!
+The wild {STRVAR_1 1, 0, 0} used\nDischarge!
+The foe’s {STRVAR_1 1, 0, 0} used\nDischarge!
+{STRVAR_1 1, 0, 0} used\nLava Plume!
+The wild {STRVAR_1 1, 0, 0} used\nLava Plume!
+The foe’s {STRVAR_1 1, 0, 0} used\nLava Plume!
+{STRVAR_1 1, 0, 0} used\nLeaf Storm!
+The wild {STRVAR_1 1, 0, 0} used\nLeaf Storm!
+The foe’s {STRVAR_1 1, 0, 0} used\nLeaf Storm!
+{STRVAR_1 1, 0, 0} used\nPower Whip!
+The wild {STRVAR_1 1, 0, 0} used\nPower Whip!
+The foe’s {STRVAR_1 1, 0, 0} used\nPower Whip!
+{STRVAR_1 1, 0, 0} used\nRock Wrecker!
+The wild {STRVAR_1 1, 0, 0} used\nRock Wrecker!
+The foe’s {STRVAR_1 1, 0, 0} used\nRock Wrecker!
+{STRVAR_1 1, 0, 0} used\nCross Poison!
+The wild {STRVAR_1 1, 0, 0} used\nCross Poison!
+The foe’s {STRVAR_1 1, 0, 0} used\nCross Poison!
+{STRVAR_1 1, 0, 0} used\nGunk Shot!
+The wild {STRVAR_1 1, 0, 0} used\nGunk Shot!
+The foe’s {STRVAR_1 1, 0, 0} used\nGunk Shot!
+{STRVAR_1 1, 0, 0} used\nIron Head!
+The wild {STRVAR_1 1, 0, 0} used\nIron Head!
+The foe’s {STRVAR_1 1, 0, 0} used\nIron Head!
+{STRVAR_1 1, 0, 0} used\nMagnet Bomb!
+The wild {STRVAR_1 1, 0, 0} used\nMagnet Bomb!
+The foe’s {STRVAR_1 1, 0, 0} used\nMagnet Bomb!
+{STRVAR_1 1, 0, 0} used\nStone Edge!
+The wild {STRVAR_1 1, 0, 0} used\nStone Edge!
+The foe’s {STRVAR_1 1, 0, 0} used\nStone Edge!
+{STRVAR_1 1, 0, 0} used\nCaptivate!
+The wild {STRVAR_1 1, 0, 0} used\nCaptivate!
+The foe’s {STRVAR_1 1, 0, 0} used\nCaptivate!
+{STRVAR_1 1, 0, 0} used\nStealth Rock!
+The wild {STRVAR_1 1, 0, 0} used\nStealth Rock!
+The foe’s {STRVAR_1 1, 0, 0} used\nStealth Rock!
+{STRVAR_1 1, 0, 0} used\nGrass Knot!
+The wild {STRVAR_1 1, 0, 0} used\nGrass Knot!
+The foe’s {STRVAR_1 1, 0, 0} used\nGrass Knot!
+{STRVAR_1 1, 0, 0} used\nChatter!
+The wild {STRVAR_1 1, 0, 0} used\nChatter!
+The foe’s {STRVAR_1 1, 0, 0} used\nChatter!
+{STRVAR_1 1, 0, 0} used\nJudgment!
+The wild {STRVAR_1 1, 0, 0} used\nJudgment!
+The foe’s {STRVAR_1 1, 0, 0} used\nJudgment!
+{STRVAR_1 1, 0, 0} used\nBug Bite!
+The wild {STRVAR_1 1, 0, 0} used\nBug Bite!
+The foe’s {STRVAR_1 1, 0, 0} used\nBug Bite!
+{STRVAR_1 1, 0, 0} used\nCharge Beam!
+The wild {STRVAR_1 1, 0, 0} used\nCharge Beam!
+The foe’s {STRVAR_1 1, 0, 0} used\nCharge Beam!
+{STRVAR_1 1, 0, 0} used\nWood Hammer!
+The wild {STRVAR_1 1, 0, 0} used\nWood Hammer!
+The foe’s {STRVAR_1 1, 0, 0} used\nWood Hammer!
+{STRVAR_1 1, 0, 0} used\nAqua Jet!
+The wild {STRVAR_1 1, 0, 0} used\nAqua Jet!
+The foe’s {STRVAR_1 1, 0, 0} used\nAqua Jet!
+{STRVAR_1 1, 0, 0} used\nAttack Order!
+The wild {STRVAR_1 1, 0, 0} used\nAttack Order!
+The foe’s {STRVAR_1 1, 0, 0} used\nAttack Order!
+{STRVAR_1 1, 0, 0} used\nDefend Order!
+The wild {STRVAR_1 1, 0, 0} used\nDefend Order!
+The foe’s {STRVAR_1 1, 0, 0} used\nDefend Order!
+{STRVAR_1 1, 0, 0} used\nHeal Order!
+The wild {STRVAR_1 1, 0, 0} used\nHeal Order!
+The foe’s {STRVAR_1 1, 0, 0} used\nHeal Order!
+{STRVAR_1 1, 0, 0} used\nHead Smash!
+The wild {STRVAR_1 1, 0, 0} used\nHead Smash!
+The foe’s {STRVAR_1 1, 0, 0} used\nHead Smash!
+{STRVAR_1 1, 0, 0} used\nDouble Hit!
+The wild {STRVAR_1 1, 0, 0} used\nDouble Hit!
+The foe’s {STRVAR_1 1, 0, 0} used\nDouble Hit!
+{STRVAR_1 1, 0, 0} used\nRoar of Time!
+The wild {STRVAR_1 1, 0, 0} used\nRoar of Time!
+The foe’s {STRVAR_1 1, 0, 0} used\nRoar of Time!
+{STRVAR_1 1, 0, 0} used\nSpacial Rend!
+The wild {STRVAR_1 1, 0, 0} used\nSpacial Rend!
+The foe’s {STRVAR_1 1, 0, 0} used\nSpacial Rend!
+{STRVAR_1 1, 0, 0} used\nLunar Dance!
+The wild {STRVAR_1 1, 0, 0} used\nLunar Dance!
+The foe’s {STRVAR_1 1, 0, 0} used\nLunar Dance!
+{STRVAR_1 1, 0, 0} used\nCrush Grip!
+The wild {STRVAR_1 1, 0, 0} used\nCrush Grip!
+The foe’s {STRVAR_1 1, 0, 0} used\nCrush Grip!
+{STRVAR_1 1, 0, 0} used\nMagma Storm!
+The wild {STRVAR_1 1, 0, 0} used\nMagma Storm!
+The foe’s {STRVAR_1 1, 0, 0} used\nMagma Storm!
+{STRVAR_1 1, 0, 0} used\nDark Void!
+The wild {STRVAR_1 1, 0, 0} used\nDark Void!
+The foe’s {STRVAR_1 1, 0, 0} used\nDark Void!
+{STRVAR_1 1, 0, 0} used\nSeed Flare!
+The wild {STRVAR_1 1, 0, 0} used\nSeed Flare!
+The foe’s {STRVAR_1 1, 0, 0} used\nSeed Flare!
+{STRVAR_1 1, 0, 0} used\nOminous Wind!
+The wild {STRVAR_1 1, 0, 0} used\nOminous Wind!
+The foe’s {STRVAR_1 1, 0, 0} used\nOminous Wind!
+{STRVAR_1 1, 0, 0} used\nShadow Force!
+The wild {STRVAR_1 1, 0, 0} used\nShadow Force!
+The foe’s {STRVAR_1 1, 0, 0} used\nShadow Force!

@@ -1,0 +1,40 @@
+First, we will hold your Pokémon in\nexchange for you renting our Pokémon.\rMay I suggest choosing Pokémon after\nappropriate deliberation?\r
+Please wait a moment.
+Please go in.
+Well done!\nYour party Pokémon will be healed now.
+Next up, battle no. {STRVAR_1 53, 0, 0}!\nAre you ready?
+Would you like to trade Pokémon before\nyour battle?
+Would you like to save the last battle\nas your Battle Video?
+{STRVAR_1 3, 0, 0}’s battle has been saved\nas a Battle Video.\r
+There was an error.\nThe Battle Video couldn’t be saved.\r
+Delete your existing Battle Video and\nsave the last battle?
+Saving...\nDon’t turn off the power.
+Would you like to save and take a break\nfrom playing?
+Would you like to retire from this\nBattle Factory challenge?
+{STRVAR_1 3, 0, 0} is choosing.\nPlease wait.
+                     
+{STRVAR_1 3, 0, 0} chose to retire.
+You have cleared your seventh Battle\nFactory match! Congratulations!\rIn recognition of your deep knowledge\nin matters pertaining to Pokémon,\fwe present you with BP!\r
+{STRVAR_1 3, 0, 0} received {STRVAR_1 51, 1, 0} BP!\r
+Let’s trade back your Pokémon that\nwe’ve been holding for the rentals.\r
+Saving...\nDon’t turn off the power.
+                                                
+I’ve done a bit of research into your\nnext opponent.\rYou can expect to see {STRVAR_1 0, 1, 0},\n{STRVAR_1 0, 3, 0}, and {STRVAR_1 0, 5, 0}.\r
+I’ve done a bit of research into your\nnext opponent.\rYou can expect to see {STRVAR_1 0, 1, 0}\nand {STRVAR_1 0, 3, 0}.\r
+I’ve done a bit of research into your\nnext opponent.\rFirst out will be a tough,\n{STRVAR_1 6, 0, 0}-using {STRVAR_1 0, 1, 0}.\r
+I’ve done a bit of research into your\nnext opponent.\rFirst out will be a Pokémon that has\nthe move {STRVAR_1 6, 0, 0}.\r
+I’ve done a bit of research into your\nnext opponent.\rThe opponent seems to be good with\nthe {STRVAR_1 15, 0, 0} type.\r
+I’ve done a bit of research into your\nnext opponent.\rThe opponent doesn’t seem to be\nconcerned about the types of Pokémon.\r
+I’ve done a bit of research into your\nnext opponent.\rYou can expect to see {STRVAR_1 0, 1, 0},\n{STRVAR_1 0, 2, 0}, {STRVAR_1 0, 3, 0}, and\f{STRVAR_1 0, 4, 0}.\r
+I’ve done a bit of research into your\nnext opponent.\rYou can expect to see {STRVAR_1 0, 1, 0}\nand {STRVAR_1 0, 2, 0} first.\r
+I’ve done a bit of research into your\nnext opponent.\rFirst out will be Pokémon with the moves\n{STRVAR_1 6, 0, 0} and {STRVAR_1 6, 1, 0}.\r
+I’ve done a bit of research into your\nnext opponent.\rFirst out will be a Pokémon that has\nthe move {STRVAR_1 6, 0, 0}.\r
+CONTINUE
+RECORD
+REST
+RETIRE
+Congratulations to you, Trainer!\rIn recognition of your outstanding\nwinning streak, our Frontier Brain is\fdemanding a match with you.\rSo, your next match is against the\nFactory Head with no right of refusal!\rAre you prepared?\r
+Thorton: Bzweeeeep!\rSorry, don’t mind me.\rWhat I’m using is an invention of mine.\nIt’s my data-interpreting machine.\rIt’s telling me what you’ve rented\nfor this match.\rI see! You’ve rented {STRVAR_1 0, 0, 0},\n{STRVAR_1 0, 1, 0}, and {STRVAR_1 0, 2, 0}.\rI have to say, that’s a good setup.\nLike, say, {STRVAR_1 51, 3, 0} percent?\fOh, don’t let that number concern you!\rAll righty, let’s get going!\r
+Thorton: Bzweeeeep!\rLet’s see what I can see about you\nthrough my data-interpreting machine.\rSo, what have you rented for this\nmatch...?\rI see! You’ve rented {STRVAR_1 0, 0, 0},\n{STRVAR_1 0, 1, 0}, and {STRVAR_1 0, 2, 0}.\rI have to admit, that’s a good setup.\rIt’s a combination of friendship with\ncooperation all around.\rI’d say it’s like {STRVAR_1 51, 3, 0} percent?\fOh, don’t let that number concern you!\rAll righty, let’s get going!\nNo losing for me this time!\r
+Thorton: Hmm...\nI got handed the loss here.\rIt’s not making me happy at all, losing.\nEven though I’m not happy, I did glean\fsome useful data, I suppose.\rThat makes me glad I battled you.\rSo, did you get to like those Pokémon\nyou rented?\rAs the Factory Head, it would sure make\nme happy if you did.\rNext time, come back with different\nrental Pokémon.\r
+Thorton: Hmm...\nI got handed another loss.\rIt’s not making me happy at all, this.\nIn fact, I’m stewing here.\rI thought I learned a lot about\nPokémon since I lost to you.\rBut that’s all right.\nSome things you learn from winning.\fBut some things you learn by losing.\rI hope you’ll keep renting our Pokémon\nand give me a chance to redeem myself!\r

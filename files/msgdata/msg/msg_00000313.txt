@@ -1,0 +1,30 @@
+Speed Course
+Power Course
+Skill Course
+Stamina Course
+Jump Course
+Speed & Jump Course
+Jump & Skill Course
+Skill & Power Course
+Power & Stamina Course
+Stamina & Speed Course
+Master Course
+  
+  
+   
+   
+Speed Medal
+Power Medal
+Skill Medal
+Stamina Medal
+Jump Medal
+Hurdle Dash
+Pennant Capture
+Circle Push
+Block Smash
+Disc Catch
+Lamp Jump
+Relay Run
+Ring Drop
+Snow Throw
+Goal Roll

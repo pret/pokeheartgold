@@ -1,0 +1,23 @@
+You crossed the sea to get here?\rThat must have been hard.\rIt would be much easier if your\nPokémon knew how to Fly...\r
+But you can’t use Fly without this\ncity’s Gym Badge.\rIf you beat the Gym Leader here,\ncome see me.\fI’ll have a nice gift for you.
+That’s Cianwood’s Gym Badge!\rThen you should take this HM.\r
+                      
+Teach Fly to your Pokémon.\rYou will be able to Fly instantly\nto anywhere you have visited.
+My husband lost to you, so he needs\nto train harder.\rThat’s good, since he was getting a\nlittle chubby.
+Your Bag is full.
+His only hobby is to battle\ntough Trainers.\rDo you want to have my\nhusband’s phone number? {YESNO 0}
+{STRVAR_1 3, 0, 0} registered Chuck\nin the Pokégear!
+He takes a break from the pounding\nwaterfall on Wednesday nights.\rHe should be able to chat with\nyou then.
+Oh, I see.\nMy husband won’t be a good match?
+Do you want to exchange your\nnumber for my husband’s? {YESNO 0}
+If you use Fly, you can get back\nto Olivine instantly.
+Boulders to the north of town can\nbe crushed.\rThey may be hiding something.\nYour Pokémon could use Rock Smash to\fbreak them.
+Chuck, the Gym Leader, spars with\nhis Fighting-type Pokémon.
+Eusine: Yo, {STRVAR_1 3, 0, 0}.\rWasn’t that SUICUNE just now?\rI only caught a quick glimpse, but I\nthought I saw SUICUNE running on\fthe waves.\rSUICUNE is beautiful and grand.\nAnd it races through towns and\froads at simply awesome speeds.\rIt’s wonderful...\rI want to see SUICUNE up close...\rI’ve decided.\nI’ll battle you as a Trainer to earn\fSUICUNE’s respect!\rCome on, {STRVAR_1 3, 0, 0}.\nLet’s battle now!
+You’re amazing, {STRVAR_1 3, 0, 0}!\rI’m starting to understand why SUICUNE\nwas keeping an eye on you.\rI’m going to keep searching\nfor SUICUNE.\rI have a feeling we’ll see each other\nagain. See you around!\r
+There are several islands between\nhere and Olivine.\rA mythical sea creature supposedly\nlives there.
+Cianwood City\nA Port of Crashing Waves
+Cianwood City Pokémon Gym\nLeader: Chuck\fHis Roaring Fists Do the Talking
+Cianwood City Pharmacy\r500 Years of Tradition\nWe Await Your Medicinal Queries
+This is the house of Cameron,\nthe Photographer.\fTake a Snapshot as a Keepsake!
+Entrance to the road for the\nSafari Zone.\rExperience thrilling encounters\nwith wild Pokémon for heart-to-heart\fcontact!\rThe Safari Zone is just around the\ncorner from this entrance!

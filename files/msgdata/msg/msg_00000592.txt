@@ -1,0 +1,8 @@
+Welcome to the Goldenrod\nDepartment Store.
+The department store has a\ndecent selection.\rBut some items are only available\nas Game Corner prizes.
+What kind of business would a\nTeam Rocket member have here?\rWe aren’t selling sanity here.
+I’m raring to shop again today!
+Be it Team Rocket, “Team Pocket,” or\nwhatever...leave me alone!\rI’m busy shopping and have no time\nto waste!
+Mom’s good at bargain hunting.\rShe always buys stuff at lower prices.
+Mom told me to stay away from\npeople in black suits.
+1F Service Counter\n2F Trainer’s Market\f3F Battle Collection\f4F Medicine Box\f5F TM Corner\f6F Rooftop Atrium

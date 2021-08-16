@@ -1,0 +1,17 @@
+Wade
+You’re awesome! I like you!\nI look for Pokémon here every day.\rWhen I’m in the tall grass, I find all\nkinds of Berries.\rIf you’d like, I’ll share some.\nCould I get your phone number? {YESNO 0}
+You’ll hear from me as soon as I\nfind anything that you might like.
+Oh well.\rDon’t be shy if you want to get my\nnumber.
+When I’m in the tall grass, I find all\nkinds of Berries.\rIf you’d like, I’ll share some.\nCould I get your phone number? {YESNO 0}
+Good to see you!\nSee? This is what I found.\fIt’s for you!\r
+You’re nearby aren’t you? Well, then\njust come talk in person!
+Are your Pokémon growing?\rMy Pokémon are growing a bit too\nquickly for me. It’s overwhelming!\r{STRVAR_1 0, 10, 0}’s growing especially\nquickly. I think it’ll get tough.\rSee you later!
+Oh yeah, we knocked out a wild\n{STRVAR_1 0, 11, 0} with one hit a while back.\rIt went down so easily, I felt a\nlittle sorry for the poor thing.\rSee you later!
+Oh yeah, a wild {STRVAR_1 0, 11, 0} got\naway from me at the last second.\rI know it’s a common Pokémon...\rBut it does annoy me that it got\naway when I almost had it.\rSee you later!
+Do you feel like a Pokémon battle?\nIt won’t be like last time!\r{STRVAR_1 4, 3, 0}’s where I’ll be.\nLet me know when you get there.
+Let’s battle already!\r{STRVAR_1 4, 3, 0} is where I am.\nPlease get here as soon as you can!
+Huh? Berries?\rSorry, I haven’t found any yet.\nI’ll call you if I find any.\fWill you please wait?
+I found all kinds of Berries. If you\nwant, I’ll share some with you.\rI’ll be waiting on {STRVAR_1 4, 3, 0}.
+How come you’re not here yet?\r{STRVAR_1 4, 3, 0} is where I am.\nPlease get here as soon as you can!
+The Bug-Catching Contest is at the\nNational Park today.\fAre you going, {STRVAR_1 3, 0, 0}?\rI’m trying to make up my mind.
+The Bug-Catching Contest is at the\nNational Park today.\fAre you going, {STRVAR_1 3, 0, 0}?\rI’m trying to make up my mind.

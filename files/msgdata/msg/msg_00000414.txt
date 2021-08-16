@@ -1,0 +1,33 @@
+Pokémon Talk
+Mary and Oak
+Mary: We’re reaching out to all you\nPokémon fans out there! Here is the\nleading expert on Pokémon, Professor\nOak, and of course myself, Mary!
+Pokémon! Pokémon!\nPokémon Channel...
+Professor Oak: {STRVAR_1 0, 1, 0} may be\nseen around {STRVAR_1 4, 0, 0}!
+Mary: {STRVAR_1 0, 1, 0},\n{STRVAR_1 28, 2, 0}\n{STRVAR_1 28, 3, 0}
+When you first see them
+So many it’ll seem like a dream
+There’s no reason for it, but
+Only when you’re there
+Whether you see them above or below,
+If one walks with you as a companion
+If you just try calling out its name
+If you look at it from a different angle
+It’ll resemble a teacher
+You won’t be able to resist
+Anytime
+If you lightly poke it and see,
+More than you expected
+you won’t be able to stop laughing!
+you’ll feel totally at ease.
+you’ll feel so hopeful.
+you won’t be able to look away.
+you’ll be held captive!
+you’ll be able to make a great friend!
+you’ll be admired by all!
+it will never cease to amaze you!
+you’ll be intensely appealing.
+you’ll think it’s so wonderful...
+you’ll be so cool.
+you’ll feel so strange...
+you’ll think that’s one typical Pokémon.
+Mary: This is breaking news!\nA bunch of {STRVAR_1 0, 1, 0} have decided to\nmake an appearance at\n{STRVAR_1 4, 0, 0}! If you’re a Trainer\nwho’s really wanted to find {STRVAR_1 0, 1, 0},\nhurry over to {STRVAR_1 4, 0, 0}! That’s\nthe end of the breaking news!

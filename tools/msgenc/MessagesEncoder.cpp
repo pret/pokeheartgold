@@ -8,13 +8,14 @@ void MessagesEncoder::ReadMessagesFromText(string& fname) {
         if (text.empty())
             break;
         pos = text.find_first_of("\r\n");
-        files.push_back(text.substr(0, pos));
+        vec_decoded.push_back(text.substr(0, pos));
         pos = text.find_last_of("\r\n", pos + 1, 2);
         if (pos == string::npos)
             break;
         pos++;
     } while (pos != string::npos);
-    header.count = files.size();
+    header.count = vec_decoded.size();
+    debug_printf("%d lines\n", header.count);
 }
 
 void MessagesEncoder::ReadKeyFile(string& keyfname) {
@@ -43,6 +44,7 @@ u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
             if (cmdmap.find(command) != cmdmap.end()) {
                 uint16_t command_i = cmdmap[command];
                 encoded += (char16_t)(0xFFFE);
+                debug_printf("%04X ", 0xFFFE);
                 vector<uint16_t> args;
                 if (pos != string::npos) {
                     do {
@@ -58,15 +60,20 @@ u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
                     }
                 }
                 encoded += (char16_t)(command_i);
+                debug_printf("%04X ", command_i);
                 encoded += (char16_t)(args.size());
+                debug_printf("%04X ", args.size());
                 for (auto num_i : args) {
                     encoded += (char16_t)(num_i);
+                    debug_printf("%04X ", num_i);
                 }
             } else if (command == "TRNAME") {
                 is_trname = true;
                 encoded += (char16_t)(0xF100);
+                debug_printf("%04X ", 0xF100);
             } else {
                 encoded += (char16_t)(stoi(enclosed, nullptr, 16));
+                debug_printf("%04X ", stoi(enclosed, nullptr, 16));
             }
         } else {
             uint16_t code = 0;
@@ -83,6 +90,7 @@ u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
                 ss << "unrecognized character in " << textfilename << ": line " << i << " pos " << (j + 1) << " value " << substr;
                 throw runtime_error(ss.str());
             }
+            debug_printf("%04X ", code);
             if (is_trname) {
                 if (code & ~0x1FF) {
                     stringstream ss;
@@ -105,8 +113,10 @@ u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
     if (is_trname && bit > 1) {
         trnamebuf |= 0xFFFF << bit;
         encoded += (char16_t)(trnamebuf & 0x7FFF);
+        debug_printf("%04X ", trnamebuf & 0x7FFF);
     }
     encoded += (char16_t)(0xFFFF);
+    debug_printf("%04X ", 0xFFFF);
     return encoded;
 }
 
@@ -118,10 +128,10 @@ void MessagesEncoder::WriteMessagesToBin(string& filename) {
     outfile.write((char *)&header, sizeof(header));
     for (int i = 1; i <= (int)alloc_table.size(); i++) {
         alloc_table[i - 1].encrypt(header.key, i);
-        EncryptU16String(outfiles[i - 1], i);
+        EncryptU16String(vec_encoded[i - 1], i);
     }
     outfile.write((char *)alloc_table.data(), (streamsize)(sizeof(MsgAlloc) * alloc_table.size()));
-    for (const u16string & m : outfiles) {
+    for (const u16string & m : vec_encoded) {
         outfile.write((char *)m.c_str(), (streamsize)(m.size() * 2));
     }
     outfile.close();
@@ -138,10 +148,10 @@ void MessagesEncoder::ReadInput()
 void MessagesEncoder::Convert() {
     MsgAlloc alloc {(uint32_t)(sizeof(header) + sizeof(MsgAlloc) * header.count), 0};
     int i = 1;
-    for (const auto& message : files) {
+    for (const auto& message : vec_decoded) {
         u16string encoded = EncodeMessage(message, i);
         alloc.length = encoded.size();
-        outfiles.push_back(encoded);
+        vec_encoded.push_back(encoded);
         debug_printf("msg %d: at 0x%08X, count %d\n", i, alloc.offset, alloc.length);
         alloc_table.push_back(alloc);
         alloc.offset += alloc.length * 2;

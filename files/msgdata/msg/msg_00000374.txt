@@ -1,0 +1,2 @@
+You can’t climb ledges.\rBut you can jump down from them to\ntake a shortcut.
+Different kinds of Pokémon appear\npast here.\rIf you want to catch them all,\nyou have to look everywhere.

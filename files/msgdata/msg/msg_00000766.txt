@@ -1,0 +1,910 @@
+{STRVAR_3 3, 0, 0}\r
+{STRVAR_3 3, 0, 0}\n{COLOR 2}{STRVAR_3 4, 1, 0}{COLOR 0}\r
+{STRVAR_3 4, 0, 0}\n{COLOR 2}{STRVAR_3 3, 1, 0}{COLOR 0}\r
+{STRVAR_3 3, 0, 0}\n{COLOR 2}{STRVAR_3 5, 1, 0}{COLOR 0}\r
+{STRVAR_3 5, 0, 0}\n{COLOR 2}{STRVAR_3 3, 1, 0}{COLOR 0}\r
+{STRVAR_3 3, 0, 0}\n{COLOR 2}{STRVAR_3 7, 1, 0}{COLOR 0}\r
+{STRVAR_3 7, 0, 0}\n{COLOR 2}{STRVAR_3 3, 1, 0}{COLOR 0}\r
+{STRVAR_3 3, 0, 0}\n{COLOR 2}{STRVAR_3 6, 1, 0}{COLOR 0}\r
+{STRVAR_3 6, 0, 0}\n{COLOR 2}{STRVAR_3 3, 1, 0}{COLOR 0}\r
+{STRVAR_3 3, 0, 0}\n{COLOR 2}{STRVAR_3 8, 1, 0}{COLOR 0}\r
+{STRVAR_3 8, 0, 0}\n{COLOR 2}{STRVAR_3 3, 1, 0}{COLOR 0}\r
+{STRVAR_3 4, 0, 0}\n{COLOR 2}{STRVAR_3 5, 1, 0}{COLOR 0}\r
+{STRVAR_3 5, 0, 0}\n{COLOR 2}{STRVAR_3 4, 1, 0}{COLOR 0}\r
+{STRVAR_3 4, 0, 0}\n{COLOR 2}{STRVAR_3 7, 1, 0}{COLOR 0}\r
+{STRVAR_3 7, 0, 0}\n{COLOR 2}{STRVAR_3 4, 1, 0}{COLOR 0}\r
+{STRVAR_3 4, 0, 0}\n{COLOR 2}{STRVAR_3 6, 1, 0}{COLOR 0}\r
+{STRVAR_3 6, 0, 0}\n{COLOR 2}{STRVAR_3 4, 1, 0}{COLOR 0}\r
+{STRVAR_3 4, 0, 0}\n{COLOR 2}{STRVAR_3 8, 1, 0}{COLOR 0}\r
+{STRVAR_3 8, 0, 0}\n{COLOR 2}{STRVAR_3 4, 1, 0}{COLOR 0}\r
+{STRVAR_3 5, 0, 0}\n{COLOR 2}{STRVAR_3 7, 1, 0}{COLOR 0}\r
+{STRVAR_3 7, 0, 0}\n{COLOR 2}{STRVAR_3 5, 1, 0}{COLOR 0}\r
+{STRVAR_3 5, 0, 0}\n{COLOR 2}{STRVAR_3 6, 1, 0}{COLOR 0}\r
+{STRVAR_3 6, 0, 0}\n{COLOR 2}{STRVAR_3 5, 1, 0}{COLOR 0}\r
+{STRVAR_3 5, 0, 0}\n{COLOR 2}{STRVAR_3 8, 1, 0}{COLOR 0}\r
+{STRVAR_3 8, 0, 0}\n{COLOR 2}{STRVAR_3 5, 1, 0}{COLOR 0}\r
+{STRVAR_3 7, 0, 0}\n{COLOR 2}{STRVAR_3 6, 1, 0}{COLOR 0}\r
+{STRVAR_3 6, 0, 0}\n{COLOR 2}{STRVAR_3 7, 1, 0}{COLOR 0}\r
+{STRVAR_3 7, 0, 0}\n{COLOR 2}{STRVAR_3 8, 1, 0}{COLOR 0}\r
+{STRVAR_3 8, 0, 0}\n{COLOR 2}{STRVAR_3 7, 1, 0}{COLOR 0}\r
+{STRVAR_3 6, 0, 0}\n{COLOR 2}{STRVAR_3 8, 1, 0}{COLOR 0}\r
+{STRVAR_3 8, 0, 0}\n{COLOR 2}{STRVAR_3 6, 1, 0}{COLOR 0}\r
+Hello!\r
+{STRVAR_3 4, 0, 0}\r
+{STRVAR_3 5, 0, 0}\r
+{STRVAR_3 7, 0, 0}\r
+{STRVAR_3 6, 0, 0}\r
+{STRVAR_3 8, 0, 0}\r
+...Wow, it’s that time there?\rAre you going to go out somewhere\nafter this?\r
+...Wow, it’s that time there?\rAre you getting sleepy, maybe?\r
+...Wow, it’s that time there?\rAre you maybe still feeling drowsy?\r
+{STRVAR_1 3, 0, 0}:\nHello! Nice to meet you.\r
+{STRVAR_1 3, 0, 0}:\nHi, {STRVAR_1 3, 1, 0}!\fIt’s good to see you again!\r
+...This Trainer seems to be busy.\r
+{STRVAR_1 3, 0, 0}:\nSee you again!\r
+{STRVAR_1 3, 0, 0}:\nAnother thing...\r
+Sorry! Something’s come up!\nI can’t talk now!\r
+{STRVAR_1 3, 0, 0}:\nYes? What’s up?\r
+{STRVAR_1 3, 0, 0}:\nHi, do you have a moment?\r
+                                   
+{STRVAR_1 3, 0, 0}:\nDon’t worry. You don’t have to answer\fif you don’t want to.\r
+{STRVAR_1 3, 0, 0}:\nI see...\r
+{STRVAR_1 3, 0, 0}:\nThat’s the same as me!\fThat’s pretty nice!\r
+{STRVAR_1 3, 0, 0}:\nThanks for answering!\r
+{STRVAR_1 3, 0, 0}:\nMoving on...\r
+{STRVAR_1 3, 0, 0}:\nIs there anything else?\r
+{STRVAR_1 3, 0, 0}:\nWhat’s your favorite color?\r
+{STRVAR_1 3, 0, 0}:\nWhat kind of Pokémon do you like?\r
+{STRVAR_1 3, 0, 0}:\nHow’s the weather today?\r
+{STRVAR_1 3, 0, 0}:\nWhat were you doing before this?\r
+{STRVAR_1 3, 0, 0}:\nDo you have any plans for tomorrow?\r
+{STRVAR_1 3, 0, 0}:\nWhere would you like to go\fduring your break?\r
+{STRVAR_1 3, 0, 0}:\nWho do you look like?\r
+{STRVAR_1 3, 0, 0}:\nWhat do you most want now?\r
+{STRVAR_1 3, 0, 0}:\nWhat do you find difficult?\r
+{STRVAR_1 3, 0, 0}:\nWhere would you go out to play?\r
+{STRVAR_1 3, 0, 0}:\nWhich Plaza Game are you good at?\r
+{STRVAR_1 3, 0, 0}:\nWhat’s popular around you?\r
+{STRVAR_1 3, 0, 0}:\nWhat are you good at?\r
+{STRVAR_1 3, 0, 0}:\nWhat can’t you give up?\r
+{STRVAR_1 3, 0, 0}:\nWhat’s your hidden passion?\r
+{STRVAR_1 3, 0, 0}:\nWhat will you do next?\r
+{STRVAR_1 3, 0, 0}:\nWhat’s near your house?\r
+{STRVAR_1 3, 0, 0}:\nWhat do you do with friends?\r
+{STRVAR_1 3, 0, 0}:\nWho is important to you?\r
+{STRVAR_1 3, 0, 0}:\nHow do people describe you?\r
+{STRVAR_1 3, 0, 0}:\nWhen do you feel really happy?\r
+{STRVAR_1 3, 0, 0}:\nWhat worries you?\r
+{STRVAR_1 3, 0, 0}:\nWhat are you working hard at?\r
+{STRVAR_1 3, 0, 0}:\nWhat sports are you good at?\r
+{STRVAR_1 3, 0, 0}:\nWhat’s your dream job?\r
+{STRVAR_1 3, 0, 0}:\nWhat makes where you live special?\r
+{STRVAR_1 3, 0, 0}:\nWhat is the temperature like there?\r
+{STRVAR_1 3, 0, 0}:\nWhat sounds can you hear around you?\r
+{STRVAR_1 3, 0, 0}:\nWhat does it smell like around you?\r
+{STRVAR_1 3, 0, 0}:\nWhat interests you most?\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nLet’s see... Over here...\r
+{STRVAR_1 3, 0, 0}:\nLet’s see... Over here...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nLet’s see... Over here...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nLet’s see... Over here...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+{STRVAR_1 3, 0, 0}:\nLet’s see... Over here...\r
+{STRVAR_1 3, 0, 0}:\nLet’s see... Over here...\r
+{STRVAR_1 3, 0, 0}:\nLet’s see... Over here...\r
+{STRVAR_1 3, 0, 0}:\nLet’s see... Over here...\r
+{STRVAR_1 3, 0, 0}:\nWell, if it were me...\r
+Red
+Blue
+Yellow
+Green
+Tough-looking ones
+Cute ones
+Pretty ones
+Weird ones
+Sunny
+Cloudy
+Rainy
+Hail
+Sleeping
+Went out
+Working
+Eating
+No plans
+Busy
+Holiday
+Secret
+A warm place
+A cold place
+A crowded place
+A deserted place
+Older brother
+Older sister
+Uncle
+Aunt
+Time
+Money
+Friends
+Dinner
+School
+Sports
+Waking up early
+Housecleaning
+A park
+A department store
+An amusement park
+A theater
+SWALOT Plop
+MIME JR. Top
+WOBBUFFET Pop
+Never played
+TV & music
+Games & computers
+School & sports
+Fashion & romance
+Physical activities
+Using my brain
+Standing out
+Making friends
+Reading books
+Music
+Computers
+Staying up late
+Fashion
+Interior design
+Gourmet dining
+Life
+A Plaza Game
+Footprint Stamp
+Visitor Profiles
+Plaza News
+Someone’s house
+A variety of shops
+A big factory
+Lots of nature
+Sports
+Games
+Chat
+Shopping
+Family
+Friends
+Myself
+Secret
+Cheerful
+Funny
+Kind
+Mysterious
+When playing
+When working hard
+When sleeping
+When eating
+Allowance
+School
+Fitness
+Friends
+School
+Dieting
+Romance
+Training
+Team sports
+Running
+Swimming
+Dancing
+Pro athlete
+Inventor
+Musician
+Comedian
+Very convenient
+Lots of nature
+Very quiet
+Rare things/events
+Hot
+Warm
+Cold
+Cool
+Voices
+Music
+TV
+Nothing
+Food
+People
+The season
+Unpleasant stench
+The latest toys
+Fashionable clothes
+Tomorrow’s weather
+New pop stars
+Stop chatting
+{STRVAR_1 3, 0, 0}:\nI’d say red.\r
+{STRVAR_1 3, 0, 0}:\nI’d say blue.\r
+{STRVAR_1 3, 0, 0}:\nI’d say yellow.\r
+{STRVAR_1 3, 0, 0}:\nI’d say green.\r
+{STRVAR_1 3, 0, 0}:\nI like tough-looking Pokémon.\r
+{STRVAR_1 3, 0, 0}:\nI like cute Pokémon.\r
+{STRVAR_1 3, 0, 0}:\nI like pretty Pokémon.\r
+{STRVAR_1 3, 0, 0}:\nI like weird Pokémon.\r
+{STRVAR_1 3, 0, 0}:\nIt’s sunny here.\r
+{STRVAR_1 3, 0, 0}:\nIt’s cloudy here.\r
+{STRVAR_1 3, 0, 0}:\nIt’s rainy here.\r
+{STRVAR_1 3, 0, 0}:\nIt’s hailing here.\r
+{STRVAR_1 3, 0, 0}:\nUm... Sleeping, I think.\r
+{STRVAR_1 3, 0, 0}:\nUm... I think I went out.\r
+{STRVAR_1 3, 0, 0}:\nUm... I think I was working.\r
+{STRVAR_1 3, 0, 0}:\nUm... I think I was eating.\r
+{STRVAR_1 3, 0, 0}:\nI’ve got no plans for tomorrow.\r
+{STRVAR_1 3, 0, 0}:\nI’ll be busy tomorrow.\r
+{STRVAR_1 3, 0, 0}:\nIt’s a holiday tomorrow.\r
+{STRVAR_1 3, 0, 0}:\nIt’s a secret.\r
+{STRVAR_1 3, 0, 0}:\nI’d like to go to a warm place.\r
+{STRVAR_1 3, 0, 0}:\nI’d like to go to a cold place.\r
+{STRVAR_1 3, 0, 0}:\nI’d like to go where there are lots of\fpeople.\r
+{STRVAR_1 3, 0, 0}:\nI’d like to go where there aren’t any\fpeople.\r
+{STRVAR_1 3, 0, 0}:\nI guess I look like my older brother.\r
+{STRVAR_1 3, 0, 0}:\nI guess I look like my older sister.\r
+{STRVAR_1 3, 0, 0}:\nI guess I look like my uncle.\r
+{STRVAR_1 3, 0, 0}:\nI guess I look like my aunt.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say time.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say money.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say friends.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say dinner.\r
+{STRVAR_1 3, 0, 0}:\nWell... School, I guess...\r
+{STRVAR_1 3, 0, 0}:\nWell... Sports, I guess...\r
+{STRVAR_1 3, 0, 0}:\nWell... Waking up early, I guess...\r
+{STRVAR_1 3, 0, 0}:\nWell... Housecleaning, I guess...\r
+{STRVAR_1 3, 0, 0}:\nI’d like to go to a park.\r
+{STRVAR_1 3, 0, 0}:\nI’d like to go to a department store.\r
+{STRVAR_1 3, 0, 0}:\nI’d like to go to an amusement park.\r
+{STRVAR_1 3, 0, 0}:\nI’d like to go to a theater.\r
+{STRVAR_1 3, 0, 0}:\nI’d say SWALOT Plop.\r
+{STRVAR_1 3, 0, 0}:\nI’d say MIME JR. Top.\r
+{STRVAR_1 3, 0, 0}:\nI’d say WOBBUFFET Pop.\r
+{STRVAR_1 3, 0, 0}:\nI’ve never played one.\r
+{STRVAR_1 3, 0, 0}:\nTV and music, I guess.\r
+{STRVAR_1 3, 0, 0}:\nGames and computers, I guess.\r
+{STRVAR_1 3, 0, 0}:\nSchool and sports, I guess.\r
+{STRVAR_1 3, 0, 0}:\nFashion and romance, I guess.\r
+{STRVAR_1 3, 0, 0}:\nPhysical activities, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nUsing my brain, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nI’m really good at standing out.\r
+{STRVAR_1 3, 0, 0}:\nMaking friends, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nThat would be reading books.\r
+{STRVAR_1 3, 0, 0}:\nThat would be music.\r
+{STRVAR_1 3, 0, 0}:\nThat would be computers.\r
+{STRVAR_1 3, 0, 0}:\nThat would be staying up late.\r
+{STRVAR_1 3, 0, 0}:\nThat’s fashion, of course!\r
+{STRVAR_1 3, 0, 0}:\nThat’s interior design, of course!\r
+{STRVAR_1 3, 0, 0}:\nThat’s gourmet dining, of course!\r
+{STRVAR_1 3, 0, 0}:\nThat’s life, of course!\r
+{STRVAR_1 3, 0, 0}:\nA Plaza Game, I think.\r
+{STRVAR_1 3, 0, 0}:\nA Footprint Stamp, I think.\r
+{STRVAR_1 3, 0, 0}:\nVisitor Profiles, I think.\r
+{STRVAR_1 3, 0, 0}:\nThe Plaza News, I think.\r
+{STRVAR_1 3, 0, 0}:\nI can see someone’s house.\r
+{STRVAR_1 3, 0, 0}:\nI can see a variety of shops.\r
+{STRVAR_1 3, 0, 0}:\nI can see a big factory.\r
+{STRVAR_1 3, 0, 0}:\nThere’s lots of nature around here.\r
+{STRVAR_1 3, 0, 0}:\nHmm... Sports, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nHmm... Games, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nHmm... Chatting, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nHmm... Shopping, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say family.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say friends.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say myself, of course.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say that’s a secret.\r
+{STRVAR_1 3, 0, 0}:\nHmm... Cheerful, maybe?\r
+{STRVAR_1 3, 0, 0}:\nHmm... Funny, maybe?\r
+{STRVAR_1 3, 0, 0}:\nHmm... Kind, maybe?\r
+{STRVAR_1 3, 0, 0}:\nHmm... Mysterious, maybe?\r
+{STRVAR_1 3, 0, 0}:\nI’m happy when I’m playing!\r
+{STRVAR_1 3, 0, 0}:\nI’m happy when I’m working hard!\r
+{STRVAR_1 3, 0, 0}:\nI’m happy when I’m sleeping.\r
+{STRVAR_1 3, 0, 0}:\nI’m happy when I’m eating!\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say my allowance.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say school.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say my fitness.\r
+{STRVAR_1 3, 0, 0}:\nI’d have to say my friends.\r
+{STRVAR_1 3, 0, 0}:\nSchool, I think.\r
+{STRVAR_1 3, 0, 0}:\nMy diet, I think.\r
+{STRVAR_1 3, 0, 0}:\nRomance, maybe?\r
+{STRVAR_1 3, 0, 0}:\nMy training, I think.\r
+{STRVAR_1 3, 0, 0}:\nAny team sports!\r
+{STRVAR_1 3, 0, 0}:\nRunning, for sure!\r
+{STRVAR_1 3, 0, 0}:\nSwimming, for sure!\r
+{STRVAR_1 3, 0, 0}:\nDancing, for sure!\r
+{STRVAR_1 3, 0, 0}:\nThat would be a pro athlete.\r
+{STRVAR_1 3, 0, 0}:\nThat would be an inventor.\r
+{STRVAR_1 3, 0, 0}:\nThat would be a musician.\r
+{STRVAR_1 3, 0, 0}:\nThat would be a comedian.\r
+{STRVAR_1 3, 0, 0}:\nIt’s a very convenient place.\r
+{STRVAR_1 3, 0, 0}:\nThere’s lots of nature here.\r
+{STRVAR_1 3, 0, 0}:\nIt’s very quiet here.\r
+{STRVAR_1 3, 0, 0}:\nThere are rare things and events here.\r
+{STRVAR_1 3, 0, 0}:\nIt’s a hot place.\r
+{STRVAR_1 3, 0, 0}:\nIt’s a warm place.\r
+{STRVAR_1 3, 0, 0}:\nIt’s a cold place.\r
+{STRVAR_1 3, 0, 0}:\nIt’s a cool place.\r
+{STRVAR_1 3, 0, 0}:\nI can hear voices.\r
+{STRVAR_1 3, 0, 0}:\nI can hear music.\r
+{STRVAR_1 3, 0, 0}:\nI can hear a TV.\r
+{STRVAR_1 3, 0, 0}:\nIt’s very quiet here.\r
+{STRVAR_1 3, 0, 0}:\nHmm... I smell some food.\r
+{STRVAR_1 3, 0, 0}:\nHmm... I smell people.\r
+{STRVAR_1 3, 0, 0}:\nHmm... The scents of the season.\r
+{STRVAR_1 3, 0, 0}:\nEww... There’s an unpleasant stench.\r
+{STRVAR_1 3, 0, 0}:\nThe latest toys, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nFashionable clothes, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nTomorrow’s weather, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nNew pop stars, I’d say.\r
+{STRVAR_1 3, 0, 0}:\nHmm... That’s hard to say...\fI’m sorry, I can’t answer that.\r
+{STRVAR_1 3, 0, 0}:\nOh, your favorite color’s red.\r
+{STRVAR_1 3, 0, 0}:\nOh, your favorite color’s blue.\r
+{STRVAR_1 3, 0, 0}:\nOh, your favorite color’s yellow.\r
+{STRVAR_1 3, 0, 0}:\nOh, your favorite color’s green.\r
+{STRVAR_1 3, 0, 0}:\nSo, you like tough-looking Pokémon.\r
+{STRVAR_1 3, 0, 0}:\nSo, you like cute Pokémon.\r
+{STRVAR_1 3, 0, 0}:\nSo, you like pretty Pokémon.\r
+{STRVAR_1 3, 0, 0}:\nSo, you like weird Pokémon.\r
+{STRVAR_1 3, 0, 0}:\nOh, it’s sunny over there.\r
+{STRVAR_1 3, 0, 0}:\nOh, it’s cloudy over there.\r
+{STRVAR_1 3, 0, 0}:\nOh, it’s rainy over there.\r
+{STRVAR_1 3, 0, 0}:\nOh, it’s hailing over there!\r
+{STRVAR_1 3, 0, 0}:\nOh, you were sleeping.\r
+{STRVAR_1 3, 0, 0}:\nOh, you were out.\r
+{STRVAR_1 3, 0, 0}:\nOh, you were working.\r
+{STRVAR_1 3, 0, 0}:\nOh, you were eating.\r
+{STRVAR_1 3, 0, 0}:\nOh, nothing planned.\r
+{STRVAR_1 3, 0, 0}:\nOh, you’re going to be busy.\r
+{STRVAR_1 3, 0, 0}:\nOh, you have a holiday tomorrow.\r
+{STRVAR_1 3, 0, 0}:\nOh? You can’t tell me?\r
+{STRVAR_1 3, 0, 0}:\nA warm place...\r
+{STRVAR_1 3, 0, 0}:\nA cold place...\r
+{STRVAR_1 3, 0, 0}:\nA place with lots of people...\r
+{STRVAR_1 3, 0, 0}:\nA place without any people...\r
+{STRVAR_1 3, 0, 0}:\nYou look like your older brother?\r
+{STRVAR_1 3, 0, 0}:\nYou look like your older sister?\r
+{STRVAR_1 3, 0, 0}:\nYou look like your uncle?\r
+{STRVAR_1 3, 0, 0}:\nYou look like your aunt?\r
+{STRVAR_1 3, 0, 0}:\nTime, huh? I see...\r
+{STRVAR_1 3, 0, 0}:\nMoney, huh? I see...\r
+{STRVAR_1 3, 0, 0}:\nFriends, huh? I see...\r
+{STRVAR_1 3, 0, 0}:\nDinner, huh? I see...\r
+{STRVAR_1 3, 0, 0}:\nSo school’s hard for you...\r
+{STRVAR_1 3, 0, 0}:\nSo sports are hard for you...\r
+{STRVAR_1 3, 0, 0}:\nSo waking up early’s tough for you...\r
+{STRVAR_1 3, 0, 0}:\nSo housecleaning’s tough for you...\r
+{STRVAR_1 3, 0, 0}:\nOh, you like to play at a park.\r
+{STRVAR_1 3, 0, 0}:\nA department store?\fYou must like shopping.\r
+{STRVAR_1 3, 0, 0}:\nAn amusement park! Of course!\r
+{STRVAR_1 3, 0, 0}:\nA theater sounds entertaining!\r
+{STRVAR_1 3, 0, 0}:\nOh, you’re good at SWALOT Plop!\r
+{STRVAR_1 3, 0, 0}:\nOh, you’re good at MIME JR. Top!\r
+{STRVAR_1 3, 0, 0}:\nOh, you’re good at WOBBUFFET Pop!\r
+{STRVAR_1 3, 0, 0}:\nOh. You’ve never played any.\r
+{STRVAR_1 3, 0, 0}:\nTV and music! I see.\r
+{STRVAR_1 3, 0, 0}:\nGames and computers! I see.\r
+{STRVAR_1 3, 0, 0}:\nSchool and sports! I see.\r
+{STRVAR_1 3, 0, 0}:\nFashion and romance! I see.\r
+{STRVAR_1 3, 0, 0}:\nOh, so you like to work out.\fThat’s good.\r
+{STRVAR_1 3, 0, 0}:\nOh, so you’re a good thinker.\fThat’s nice.\r
+{STRVAR_1 3, 0, 0}:\nYou’re good at standing out?\fYou’re an attention getter.\r
+{STRVAR_1 3, 0, 0}:\nYou’re good at making friends?\fThat’s a good thing.\r
+{STRVAR_1 3, 0, 0}:\nYou can’t give up reading books!\r
+{STRVAR_1 3, 0, 0}:\nYou can’t give up music!\r
+{STRVAR_1 3, 0, 0}:\nYou can’t be without computers!\r
+{STRVAR_1 3, 0, 0}:\nYou can’t go without staying up late!\r
+{STRVAR_1 3, 0, 0}:\nOh, so you have a thing for fashion.\r
+{STRVAR_1 3, 0, 0}:\nOh, so interior design’s your thing.\r
+{STRVAR_1 3, 0, 0}:\nOh, so gourmet dining is your thing.\r
+{STRVAR_1 3, 0, 0}:\nOh, so your passion is for life.\r
+{STRVAR_1 3, 0, 0}:\nYou’re off to play a Plaza Game.\fHave fun!\r
+{STRVAR_1 3, 0, 0}:\nYou’re going to play with Footprint\fStamp. That’s neat.\r
+{STRVAR_1 3, 0, 0}:\nVisitor Profiles?\fYou can see where people are from.\r
+{STRVAR_1 3, 0, 0}:\nYou’re going to check out the Plaza\fNews? It’s informative.\r
+{STRVAR_1 3, 0, 0}:\nOh, so you see someone’s house.\r
+{STRVAR_1 3, 0, 0}:\nOh, so you’re near some shops.\r
+{STRVAR_1 3, 0, 0}:\nYou live near a big factory? Wow.\r
+{STRVAR_1 3, 0, 0}:\nOh, so you’re out among nature.\r
+{STRVAR_1 3, 0, 0}:\nOh, so you play sports with your\ffriends.\r
+{STRVAR_1 3, 0, 0}:\nCool. You play games with your friends.\r
+{STRVAR_1 3, 0, 0}:\nOh, chatting is what you do with your\ffriends.\r
+{STRVAR_1 3, 0, 0}:\nOh, so you shop with your friends for\ffun.\r
+{STRVAR_1 3, 0, 0}:\nYour family’s important to you...\r
+{STRVAR_1 3, 0, 0}:\nYour friends are important to you...\r
+{STRVAR_1 3, 0, 0}:\nYourself, huh? It’s only natural.\r
+{STRVAR_1 3, 0, 0}:\nA secret? That’s intriguing.\r
+{STRVAR_1 3, 0, 0}:\nSo, people think you’re cheerful.\r
+{STRVAR_1 3, 0, 0}:\nSo, people think you’re funny.\r
+{STRVAR_1 3, 0, 0}:\nSo, people think you’re kind.\r
+{STRVAR_1 3, 0, 0}:\nSo, people think you’re mysterious.\r
+{STRVAR_1 3, 0, 0}:\nYou’re happy when you’re playing.\fThat makes sense.\r
+{STRVAR_1 3, 0, 0}:\nYou’re happy when you’re working hard.\fYou’re a go-getter!\r
+{STRVAR_1 3, 0, 0}:\nYou’re happy when you’re sleeping.\fThat’s nice.\r
+{STRVAR_1 3, 0, 0}:\nYou’re happy when you’re eating.\fThat’s nice.\r
+{STRVAR_1 3, 0, 0}:\nYour allowance is a worry? Ouch.\r
+{STRVAR_1 3, 0, 0}:\nSchool worries you? Ouch.\r
+{STRVAR_1 3, 0, 0}:\nYour fitness is a concern? Ouch.\r
+{STRVAR_1 3, 0, 0}:\nYour friends worry you? Ouch.\r
+{STRVAR_1 3, 0, 0}:\nYou’re studying hard for school?\fGood for you!\r
+{STRVAR_1 3, 0, 0}:\nYou’re working hard on your diet?\fBe good to yourself.\r
+{STRVAR_1 3, 0, 0}:\nOoh, you’re working hard on romance?\fThat must be nice!\r
+{STRVAR_1 3, 0, 0}:\nYou’re working hard on your training?\fGood luck with that!\r
+{STRVAR_1 3, 0, 0}:\nSo you’re good at all kinds of\fteam sports. Gotcha.\r
+{STRVAR_1 3, 0, 0}:\nYou’re a good runner. Gotcha.\r
+{STRVAR_1 3, 0, 0}:\nYou’re a good swimmer. Gotcha.\r
+{STRVAR_1 3, 0, 0}:\nYou’re a good dancer. Gotcha.\r
+{STRVAR_1 3, 0, 0}:\nYou want to be a pro athlete.\r
+{STRVAR_1 3, 0, 0}:\nYou want to be an inventor.\r
+{STRVAR_1 3, 0, 0}:\nYou want to be a musician.\r
+{STRVAR_1 3, 0, 0}:\nYou want to be a comedian.\r
+{STRVAR_1 3, 0, 0}:\nA very convenient place?\fThat must be cool.\r
+{STRVAR_1 3, 0, 0}:\nA place with lots of nature?\fThat must be cool.\r
+{STRVAR_1 3, 0, 0}:\nA very quiet place?\fIt must be nice.\r
+{STRVAR_1 3, 0, 0}:\nA place with rare things and events?\fThat must be cool.\r
+{STRVAR_1 3, 0, 0}:\nI see. You’re in a hot place.\r
+{STRVAR_1 3, 0, 0}:\nI see. You’re in a warm place.\r
+{STRVAR_1 3, 0, 0}:\nI see. You’re in a cold place.\r
+{STRVAR_1 3, 0, 0}:\nI see. You’re in a cool place.\r
+{STRVAR_1 3, 0, 0}:\nOh, so there are other people.\r
+{STRVAR_1 3, 0, 0}:\nOh, you can hear music.\r
+{STRVAR_1 3, 0, 0}:\nOh, so there’s a TV somewhere close.\r
+{STRVAR_1 3, 0, 0}:\nOh, so you don’t hear very much.\r
+{STRVAR_1 3, 0, 0}:\nOh, you smell something cooking?\fSounds nice!\r
+{STRVAR_1 3, 0, 0}:\nOh, you smell other people? OK.\r
+{STRVAR_1 3, 0, 0}:\nOh, you smell the scents of the season,\fhuh? That’s nice.\r
+{STRVAR_1 3, 0, 0}:\nSomething stinks there? Eww.\r
+{STRVAR_1 3, 0, 0}:\nThe latest toys interest you the most?\fThat’s interesting.\r
+{STRVAR_1 3, 0, 0}:\nFashionable clothes interest you the\fmost? That’s interesting.\r
+{STRVAR_1 3, 0, 0}:\nTomorrow’s weather concerns you the\fmost? OK.\r
+{STRVAR_1 3, 0, 0}:\nNew pop stars are what interest you\fmost? Nice.\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about your side?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nHow about your side?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nHow about your side?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nHow about over there?\r
+{STRVAR_1 3, 0, 0}:\nHow about over there?\r
+{STRVAR_1 3, 0, 0}:\nHow about over there?\r
+{STRVAR_1 3, 0, 0}:\nHow about over there?\r
+{STRVAR_1 3, 0, 0}:\nWhat about you?\r
+{STRVAR_1 3, 0, 0}:\nOh! You’ve got a {STRVAR_3 0, 1, 0}\fjust like me.\rThat’s pretty nice!\r
+{STRVAR_1 3, 0, 0}:\nYour Tap Toy is a {STRVAR_3 2, 1, 0}?\rMine is a {STRVAR_3 2, 2, 0}.\nWould you like me to share it with you?\r
+{STRVAR_1 3, 0, 0}:\nThere you go!\fHave fun with it!\r
+Received a {STRVAR_3 2, 1, 0} from\n{STRVAR_1 3, 0, 0}!\r
+{STRVAR_1 3, 0, 0}:\nYou have a {STRVAR_3 0, 1, 0}?\fThat must be nice!\r
+{STRVAR_1 3, 0, 0}:\n...Can you share your\f{STRVAR_3 0, 1, 0} with me?\r
+Shared the {STRVAR_3 2, 1, 0} with\n{STRVAR_1 3, 0, 0}.\r
+{STRVAR_1 3, 0, 0}:\nThank you! I’ll take good care of it!\r
+TAP TOYS
+CHAT
+CANCEL
+GET
+Favorite color?
+Favorite kind of Pokémon?
+Today’s weather?
+What were you doing?
+Tomorrow’s plans?
+Destination during break?
+Who do you look like?
+Most wanted thing?
+What’s difficult?
+Where do you play?
+Your best Plaza Game?
+What’s popular?
+What are you good at?
+What can’t you give up?
+What’s your hidden passion?
+What will you do next?
+What’s near your house?
+What do you do with friends?
+Who is important to you?
+How do people describe you?
+When do you feel happy?
+What worries you?
+What are you working hard at?
+What sports are you good at?
+Your dream job?
+What’s special there?
+How warm is it?
+What can you hear?
+What do you smell?
+What interests you most?
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHello! Nice to meet you.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHi, {STRVAR_1 3, 1, 0}!\fIt’s good to see you again!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSee you again!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nAnother thing...\r
+Sorry! Something’s come up!\nI can’t talk now!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYes? What’s up?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHi, do you have a moment?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSorry! That’s hard to say.\fI can’t answer that.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nDon’t worry. You don’t have to answer\fif you don’t want to.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI see...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat’s the same as me!\fThat’s pretty nice!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThanks for answering!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nMoving on...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIs there anything else?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat’s your favorite color?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat kind of Pokémon do you like?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHow’s the weather today?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat were you doing before this?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nDo you have any plans for tomorrow?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhere would you like to go\fduring your break?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWho do you look like?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat do you most want now?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat do you find hard?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhere would you go out to play?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nLet’s see... Over here...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nLet’s see... Over here...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d say red.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d say blue.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d say yellow.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d say green.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI like tough-looking Pokémon.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI like cute Pokémon.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI like pretty Pokémon.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI like weird Pokémon.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s sunny here.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s cloudy here.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s rainy here.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s hailing here.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nUm... Sleeping, I think.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nUm... I think I went out.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nUm... I think I was working.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nUm... I think I was eating.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’ve got no plans for tomorrow.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’ll be busy tomorrow.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s a holiday tomorrow.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s a secret.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d like to go to a warm place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d like to go to a cold place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d like to go where there are lots of\fpeople.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d like to go where there aren’t any\fpeople.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI guess I look like my older brother.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI guess I look like my older sister.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI guess I look like my uncle.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI guess I look like my aunt.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say time.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say money.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say friends.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say dinner.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell... School, I guess...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell... Sports, I guess...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell... Waking up early, I guess...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell... Housecleaning, I guess...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d like to go to a park.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d like to go to a department store.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d like to go to an amusement park.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d like to go to a theater.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... That’s hard to say...\fI’m sorry, I can’t answer that.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, your favorite color’s red.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, your favorite color’s blue.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, your favorite color’s yellow.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, your favorite color’s green.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo, you like tough-looking Pokémon.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo, you like cute Pokémon.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo, you like pretty Pokémon.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo, you like weird Pokémon.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, it’s sunny over there.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, it’s cloudy over there.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, it’s rainy over there.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, it’s hailing over there!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you were sleeping.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you were out.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you were working.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you were eating.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, nothing planned.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you’re going to be busy.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you have a holiday tomorrow.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh? You can’t tell me?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA warm place...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA cold place...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA place with lots of people...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA place without any people...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou look like your older brother?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou look like your older sister?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou look like your uncle?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou look like your aunt?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nTime, huh? I see...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nMoney, huh? I see...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nFriends, huh? I see...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nDinner, huh? I see...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo school’s hard for you...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo sports are hard for you...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo waking up early’s tough for you...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo housecleaning’s tough for you...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you like to play at a park.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA department store?\fYou must like shopping.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nAn amusement park! Of course!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA theater sounds entertaining!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about your side?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh! You’ve got a {STRVAR_3 0, 1, 0}\fjust like me.\rThat’s pretty nice!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYour Tap Toy is a {STRVAR_3 2, 1, 0}?\rMine is a {STRVAR_3 2, 2, 0}.\nWould you like me to share it with you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThere you go!\fHave fun with it!\r
+Received a {STRVAR_3 2, 1, 0} from\n{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou have a {STRVAR_3 0, 1, 0}?\fThat must be nice!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n...Can you share your\f{STRVAR_3 0, 1, 0} with me?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThank you! I’ll take good care of it!\r
+{STRVAR_1 3, 0, 0}:\nHi, {COLOR 2}{STRVAR_1 3, 1, 0}{COLOR 0}!\fIt’s good to see you again!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHi, {COLOR 2}{STRVAR_1 3, 1, 0}{COLOR 0}!\fIt’s good to see you again!\r
+{STRVAR_1 3, 0, 0}:\nWhat’s wrong? Are you OK?
+{STRVAR_1 3, 0, 0}:\nUmm... Hold on a second...
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat’s wrong? Are you OK?
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nUmm... Hold on a second...
+{STRVAR_1 3, 0, 0}:\nLet’s chat!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nLet’s chat!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhich Plaza Game are you good at?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat’s popular around you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat are you good at?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat can’t you give up?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat’s your hidden passion?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat will you do next?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat’s near your house?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat do you do with friends?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWho is important to you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHow do people describe you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhen do you feel really happy?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat worries you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat are you working hard at?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat physical activity are you good at?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat’s your dream job?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat makes where you live special?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat is the temperature like there?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat sounds can you hear around you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat does it smell like around you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat interests you most?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nLet’s see... Over here...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nLet’s see... Over here...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nLet’s see... Over here...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nLet’s see... Over here...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nLet’s see... Over here...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nLet’s see... Over here...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWell, if it were me...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d say SWALOT Plop.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d say MIME JR. Top.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d say WOBBUFFET Pop.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’ve never played one.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nTV and music, I guess.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nGames and computers, I guess.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSchool and sports, I guess.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nFashion and romance, I guess.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nPhysical activities, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nUsing my brain, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’m really good at standing out.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nMaking friends, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat would be reading books.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat would be music.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat would be computers.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat would be staying up late.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat’s fashion, of course!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat’s interior design, of course!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat’s gourmet dining, of course!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat’s life, of course!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA Plaza Game, I think.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA Footprint Stamp, I think.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nVisitor Profiles, I think.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThe Plaza News, I think.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI can see someone’s house.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI can see a variety of shops.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI can see a big factory.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThere’s lots of nature around here.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... Sports, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... Games, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... Chatting, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... Shopping, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say family.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say friends.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say myself, of course.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say that’s a secret.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... Cheerful, maybe?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... Funny, maybe?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... Kind, maybe?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... Mysterious, maybe?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’m happy when I’m playing!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’m happy when I’m working hard!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’m happy when I’m sleeping.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’m happy when I’m eating!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say my allowance.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say school.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say my fitness.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say my friends.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSchool, I think.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nMy diet, I think.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nRomance, maybe?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nMy training, I think.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nAny team sports!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nRunning, for sure!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSwimming, for sure!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nDancing, for sure!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat would be a pro athlete.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat would be an inventor.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat would be a musician.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThat would be a comedian.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s a very convenient place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThere’s lots of nature here.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s very quiet here.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThere are rare things and events here.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s a hot place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s a warm place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s a cold place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s a cool place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI can hear voices.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI can hear music.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI can hear a TV.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nIt’s very quiet here.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... I smell some food.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... I smell people.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHmm... The scents of the season.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nEww... There’s an unpleasant stench.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThe latest toys, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nFashionable clothes, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nTomorrow’s weather, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nNew pop stars, I’d say.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you’re good at SWALOT Plop!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you’re good at MIME JR. Top!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you’re good at WOBBUFFET Pop!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh. You’ve never played any.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nTV and music! I see.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nGames and computers! I see.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSchool and sports! I see.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nFashion and romance! I see.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so you like to work out.\fThat’s good.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so you’re a good thinker.\fThat’s neat.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re good at standing out?\fYou’re an attention getter.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re good at making friends?\fThat’s a good thing.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou can’t give up reading books!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou can’t give up music!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou can’t be without computers!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou can’t go without staying up late!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so you have a thing for fashion.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so interior design’s your thing.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so gourmet dining is your thing.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so your passion is for life.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re off to play a Plaza Game.\fHave fun!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re going to play with the Footprint\fStamp. That’s neat.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nVisitor Profiles?\fYou can see where people are from.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re going to check out the Plaza\fNews? It’s informative.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so you see someone’s house.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so you’re near some shops.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou live near a big factory? Wow.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so you’re out among nature.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so you play sports with your\ffriends.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nCool. You play games with your friends.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, chatting is what you do with your\ffriends.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so you like to shop with your\ffriends.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYour family’s important to you...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYour friends are important to you...\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYourself, huh? It’s only natural.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA secret? That’s intriguing.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo, people think you’re cheerful.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo, people think you’re funny.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo, people think you’re kind.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo, people think you’re mysterious.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re happy when you’re playing.\fThat makes sense.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re happy when you’re working hard.\fYou’re a go-getter!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re happy when you’re sleeping.\fThat’s nice.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re happy when you’re eating.\fThat’s nice.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYour allowance is a worry? Ouch.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSchool worries you? Ouch.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYour fitness is a concern? Ouch.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYour friends worry you? Ouch.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re studying hard for school?\fGood for you!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re working hard on your diet?\fBe good to yourself.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOoh, you’re working hard on romance?\fThat must be nice!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re working hard on your training?\fGood luck with that!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSo you’re good at all kinds of\fteam sports. Gotcha.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re a good runner. Gotcha.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re a good swimmer. Gotcha.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou’re a good dancer. Gotcha.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou want to be a pro athlete.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou want to be an inventor.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou want to be a musician.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nYou want to be a comedian.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA very convenient place?\fThat must be cool.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA place with lots of nature?\fThat must be cool.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA very quiet place?\fIt must be nice.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nA place with rare things and events?\fThat must be cool.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI see. You’re in a hot place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI see. You’re in a warm place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI see. You’re in a cold place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI see. You’re in a cool place.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so there are other people.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you can hear music.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so there’s a TV somewhere close.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, so you don’t hear very much.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you smell something cooking?\fSounds nice!\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you smell other people? OK.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nOh, you smell the season, huh?\fThat’s neat.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nSomething stinks there? Eww.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nThe latest toys interest you the most?\fThat’s interesting.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nFashionable clothes interest you the\fmost? That’s interesting.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nTomorrow’s weather concerns you the\fmost? OK.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nNew pop stars are what interest you\fmost? Neat.\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHow about your side?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHow about your side?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHow about over there?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHow about over there?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHow about over there?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nHow about over there?\r
+{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nWhat about you?\r
+Shared the {STRVAR_3 2, 1, 0} with\n{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}.\r

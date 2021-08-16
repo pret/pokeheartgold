@@ -1,0 +1,16 @@
+...Hnuurg ...Huh?\rI walked too far today looking\nfor Pokémon.\rMy feet hurt and I’m sleepy...\rIf I were a wild Pokémon, I’d be\neasy to catch...\r...Zzzz...
+...Hnuurg! ...Huh?\rI feel like reading some words\non a piece of paper or something...\r...Zzz...\n...!!\r
+Huh? What?\nWhat about that Pokémon?\fI don’t have any mail.\rZzz...
+This Mail isn’t for me.
+Oh, hey! I got an email!\r...\nHuh?\fI don’t know this Pokémon.\fI’ll just let you take care of it.\r
+{STRVAR_1 3, 0, 0} handed over the Pokémon\nholding the Mail.
+{STRVAR_1 3, 0, 0} handed over the Mail.
+Let’s see...\r“Thank you for your Mail.\nIt was such an exciting adventure.\rI did not like ZUBAT, though...”\nThat’s what it says.\rI went to a dark cave the other day\nwith a friend.\rThat cave leads to another route.\nBy the way, I must thank you for\fbeing so kind.\rI’d like to do something good in return.\r
+TM44 is...\n...Zzz...\f...\r...Umm... Rest!\rThe phrase “recover fast” became\nshortened to “Rest,” you see?\fThis is a move to sleep and recover HP.
+...I’m\nsleepy...
+...Wait!\nThat would make you not have\fany Pokémon!
+I found a good Pokémon in Dark Cave.\nI’m going to raise it to take on\fFalkner.\rHe’s the leader of Violet City’s Gym.
+Dark Cave...\rIf a Pokémon could light it up,\nI’d explore it.
+Rt. 31\nWest to Violet City
+Dark Cave
+Huh? What is it?\nIs that a Pokémon Egg?\fI’ve never seen one.\r...Zzz...

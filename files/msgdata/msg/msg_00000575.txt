@@ -1,0 +1,7 @@
+Have you met the maniac in this city?\rHe’s always bragging about his\nrare Pokémon.
+You can’t help showing off the Pokémon\nyou have, don’t you agree?\rI’d love to show mine to a friend of mine\nwho lives in Violet...
+The Pokémon at this Gym are all rough\nand tough.\rThey could blow me away in a second.\fLet me give you a piece of advice.\rThe Gym Leader uses Fighting-type\nPokémon.\rYou can try to fool them with\nPsychic-type Pokémon.\rOr simply defeat them before they\ncan demonstrate their power.\rBy the way, Chuck, the Gym Leader,\nis into his waterfall training.\rHe won’t be able to hear you unless\nyou somehow stop the pounding water.
+{STRVAR_1 3, 0, 0}! You won, didn’t you?\nYour face tells me you did.
+Huh? Do you happen to...\nhave only one Pokémon?\rThat must be hard on you.\n...\rThat’s right!\nI’ll give you a TENTACOOL!\rI just caught a little too many.\nI was going to release it,\fso take it. Go ahead!\r
+{STRVAR_1 3, 0, 0} received\nthe TENTACOOL!
+Want to give a nickname to\nthe TENTACOOL? {YESNO 0}

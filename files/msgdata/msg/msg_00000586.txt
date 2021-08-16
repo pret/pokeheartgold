@@ -1,0 +1,16 @@
+Bill: Hi, {STRVAR_1 3, 0, 0}! Would you do\nsomething for me and take this EEVEE?\rIt came over when I was adjusting\nNintendo Wi-Fi Connection.\rSomeone has to take care of it,\nbut I don’t like being outside.\rCan I count on you to play with it,\n{STRVAR_1 3, 0, 0}? {YESNO 0}
+Bill: I knew you’d come through!\nYou’re the real deal! Way to go!\fOK, I’m counting on you.\fTake good care of it!\r
+{STRVAR_1 3, 0, 0} received\nthe EEVEE!
+Bill: Professor Elm said EEVEE can\nevolve into seven different kinds\fof Pokémon!
+Whoa, wait. You can’t carry any\nmore Pokémon.
+Oh... Now what to do?
+Bill: I used to do experiments on\ntransferring things.\rBoth the GTS and Nintendo Wi-Fi\nConnection were inspired by\fmy machine that transfers things!
+Give a nickname to\nthe EEVEE you received? {YESNO 0}
+                         
+Oh, you collect Pokémon?\nMy son Bill is an expert.\rHe just got called to the Pokémon\nCenter in Ecruteak City.
+Whatever happens, it makes me happy\nto see my own son.
+My big brother Bill made the\nPokémon Storage System.
+Are you a Trainer?\rI’ve got a useful phone number\nfor you. {YESNO 0}
+{STRVAR_1 3, 0, 0} registered Bill\nin the Pokégear!
+My brother made the\nPokémon Storage System.\rI was going to give you Bill’s number...
+When you call my brother, he can tell\nyou about the PC Boxes where you\fstore your Pokémon!

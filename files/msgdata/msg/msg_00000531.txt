@@ -1,0 +1,10 @@
+Sabrina: I knew you were coming...\rThree years ago I had a vision of\nyour arrival. You’re after my Badge.\rI don’t enjoy battling, but it’s my\nduty as a Gym Leader to confer\fBadges on anyone who has proven\fhim- or herself worthy.\rSince you wish it, I will show you my\npsychic powers!\r
+Sabrina: Your power...\nIt far exceeds what I foresaw...\rMaybe it isn’t possible to fully\npredict what the future holds...\rOK, you win. You earned yourself\nthe Marsh Badge.\r
+{STRVAR_1 3, 0, 0} received\nthe Marsh Badge!
+Sabrina: I failed to accurately predict\nyour power. That means that your\fpower is beyond my psychic ability.\rYou deserve this.\nPlease take this TM, too!\r
+Sabrina: It contains Skill Swap!\nIt swaps Abilities between the user\fand the target.\rYou will become a celebrated and\nbeloved Champion!
+Sabrina: Your love for your Pokémon\nsmashed my psychic abilities...\rThe ability to love, I think, is some\nkind of psychic ability...
+Yo, legend in the making!\rA Trainer as skilled as you doesn’t\nneed to be told how to deal\fwith Psychic-type Pokémon, right?\rI expect great things from you!\rGood luck!
+That was another fantastic battle!
+Saffron City Pokémon Gym
+Saffron City Pokémon Gym\rLeader: Sabrina\nCertified Trainer!\f{STRVAR_1 3, 0, 0}

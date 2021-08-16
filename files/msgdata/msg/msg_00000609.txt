@@ -1,0 +1,12 @@
+Along the way to Cianwood, there are\nfour deserted islands.\rBad kids are taken to the islands\nas punishment!
+Whenever I get in trouble, Daddy\nalways scares me.
+My sister gave me a lot of Seals!\fHere, have some!\r
+Wow!\nYou have so many Seals!\rYou can cover your Poké Balls in Seals!
+I can give you better ones tomorrow!
+Huh?\nYou don’t have a Seal Case?\fI was gonna give you some Seals...
+There!\nI’ll give you this!\r
+Have another!\r
+Have more!\r
+Stick them on your Ball Capsules!
+Your Seal Case is full!
+The {STRVAR_1 10, 0, 0} was\nput away in the Seal Case.\r

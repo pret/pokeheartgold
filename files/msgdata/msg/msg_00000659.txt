@@ -1,0 +1,15 @@
+Pryce
+What? I can’t hear you very well.\nI think we’ve got a bad connection.\rWell, if you have something you want to\ntalk to me about, go somewhere else and\ftry calling again.
+Hello...\nOh, hi, how are you?\fI’m doing fine, thanks.\r
+You know, there are Gym Leaders out\nthere who are stronger than me.\fYou should try battling them.\fI don’t think you’d lose.
+I usually get up pretty early...\nIf we’re going to battle, I’m at my best\fin the morning... How about you give me\fa call on Monday morning!
+Oh, perfect timing!\nI was starting to get bored...\fDo you want to battle again? {YESNO 0}
+Honesty is good.\rSo, I’ll meet you at the Fighting Dojo in\nSaffron City, then?
+I see. Well, that’s how it’s got\nto be...\rIf you ever change your mind, give me\na call.\rRemember, I’m free on Monday mornings.
+Hmm. Do you really have the time to\nbattle me right now?\rIf you’ve got plans with other people,\nyou should take care of those first,\fdon’t you think?
+All right, I will see you at the\nFighting Dojo in Saffron City.\fI won’t be late. Don’t worry!
+Yes, this is Pryce.\nHow are you doing?\r
+We made plans to battle at the Fighting\nDojo in Saffron City.\fYou didn’t forget, did you?\fI’m waiting there for you.
+Just like one of my children...\rNo.\rYou’re more like one of my\ngrandchildren...\rThere’s such an age difference between\nmyself and the Trainers who defeat me\fnowadays...\rBut you know, the strange thing is that\nwhen I lose, I don’t feel disappointed.\rI just feel happy.\rJust happy that such talented Trainers\nhave come to see me.\r...I just wanted to talk to someone\nabout that, so I called you.\rThat’s all.
+Do you know why they call me the winter\nTrainer? Do you recall that my middle\fname is “Willow”?\rThe willow tree looks like it withers in\nwinter’s cold. But really, it sprouts\fdozens of new buds.\rMy fighting style is also strong just\nlike that...\rIt’s written in old books, you know.\nYou should look it up sometime.
+That reminds me, you kept Team\nRocket’s treachery in check, right?\rHumph...\nThat’s a praiseworthy deed and an\fappropriate responsibility for a Trainer\fwho could defeat me.\rI think there’s still several things I\ncould stand to learn from you.\rI’m looking forward to it.

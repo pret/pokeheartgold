@@ -1,0 +1,70 @@
+Radio is good, you know?\rCool music and Pokémon information...\nSurprising news and moving dramas...\fIt has everything!\rThe only thing missing would be images.\r..................\nOops, they call that a TV!
+Lullabies on the radio make wild\nPokémon sleepy.\rThat’s why you don’t see many Pokémon\nwhen the radio plays lullabies in the\ftall grass.
+Why would they want to take over the\nRadio Tower?
+JIGGLYPUFF: Jiggly...
+Sorry. Authorized personnel only\nbeyond this point.\rIt wasn’t that way before. There’s\nsomething wrong with the Director...
+Feel free to look around anywhere.\nThe Director is nice again, just as he\fwas before.
+2F Sales
+Pokémon Talk with Professor Oak\nThe Hottest Show on the Air!
+2F Studio 2
+Buena: Huh?\nToday’s password?\rHELP, of course!
+Buena: Hi! I’m Buena!\rDo you know about the radio show\ncalled Buena’s Password?\rIf you can tell me the password from\nthe program, you will earn points.\rSave up those points and trade them\nwith that sweet young lady over there\ffor some choice prizes!\rHere you go!\nIt’s your very own point card!\r
+Buena: Thank you for listening in\nevery day!\r
+Buena: {STRVAR_1 3, 0, 0}!\nThank you for listening to my show!\r
+Buena: {STRVAR_1 3, 0, 0}!\nThank you for listening in to my show!\r
+Buena: Do you remember today’s\npassword? {YESNO 0}
+Buena: Oh, wow! Thank you!\nWhat was your name again?\r...{STRVAR_1 3, 0, 0}!\rCome on, {STRVAR_1 3, 0, 0}.\nJoin the show.\r
+Buena: Oh, wow! Thank you!\nWhat was your name again?\r...{STRVAR_1 3, 0, 0}!\rCome on, {STRVAR_1 3, 0, 0}.\nJoin the show.\r
+Buena: Thanks, {STRVAR_1 3, 0, 0}!\rPlease join the show like you always do!\r
+Buena: Thanks, {STRVAR_1 3, 0, 0}!\rPlease join the show like you always do!\r
+Buena: Come back after you listen to\nmy show, OK? Catch ya later!
+Buena: Everyone ready?\rI want to hear you shout out today’s\npassword for {STRVAR_1 3, 0, 0}!\r
+Buena: Everyone ready?\rI want to hear you shout out today’s\npassword for {STRVAR_1 3, 0, 0}!\r
+Buena: Yippee! That’s right!\rYou did tune in! I’m so happy!\nYou earned one point! Congratulations!\r
+Buena: Aww... That’s not it...\nDid you forget the password?
+Buena: Oh! Your Blue Card reached 30\npoints today! That’s so wild!\rHmm... You came by so often,\n{STRVAR_1 3, 0, 0}, I’ll make you a\fspecial deal!\rHow would you like my phone number?\r
+Buena: Oh! Your Blue Card reached 30\npoints today! That’s so wild!\rHmm... You came by so often,\n{STRVAR_1 3, 0, 0}, I’ll make you a\fspecial deal!\rHow would you like my phone number?\r
+{STRVAR_1 3, 0, 0} registered Buena\nin the Pokégear!\r
+Buena: I look forward to hearing\nfrom you!\r
+Buena: Tune in to my password show!
+Buena: Sorry...\nYou get just one chance each day.\rCome back tomorrow for another try!
+Buena: Your Bag is full!
+                         
+Buena: Tune in to my show again\ntomorrow!\r
+Save up the Blue Card points for some\nchoice prizes!
+Your points total on your\nBlue Card is now {STRVAR_1 51, 0, 0}.
+Congratulations!\rYour points total is now {STRVAR_1 51, 0, 0}. The prize\nis this {STRVAR_1 8, 1, 0}. Here you are!\r
+Your Blue Card points have reached\ntheir max.\fI will give you a new card!\r
+You received a new Blue Card!
+Please join the show again!\r
+Somebody needs to put a beating on this\nmean Team Rocket!\fLike three years ago even!
+CYNDAQUIL
+TOTODILE
+CHIKORITA
+Potion
+Antidote
+Parlyz Heal
+Poké Ball
+Great Ball
+Ultra Ball
+PIKACHU
+RATTATA
+GEODUDE
+HOOTHOOT
+SPINARAK
+DROWZEE
+New Bark Town
+Cherrygrove City
+Azalea Town
+Bug Pokémon
+Bird Pokémon
+Grass Pokémon
+Tackle
+Growl
+Mud-Slap
+X Attack
+X Defend
+X Speed
+Pokémon Talk
+Pokémon Music
+Buena’s Password

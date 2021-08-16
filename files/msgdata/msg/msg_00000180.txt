@@ -1,0 +1,19 @@
+The Hall of Fame!
+{STRVAR_1 0, 0, 0} ♂
+{STRVAR_1 0, 0, 0} ♀
+{STRVAR_1 0, 0, 0}
+{STRVAR_1 1, 0, 0}
+Lv. {STRVAR_1 52, 0, 0}
+OT/{STRVAR_1 3, 0, 0}
+Met at\n{STRVAR_1 4, 0, 0}.
+Hatched at\n{STRVAR_1 4, 0, 0}.
+Obtained in a link\ntrade.
+Arrived from the\nKanto region.
+Arrived from the\nHoenn region.
+Arrived from a\ndistant land.
+Obtained in a fateful\nencounter.
+Arrived from the\nSinnoh region.
+Received at\n{STRVAR_1 4, 0, 0}.
+League Champion! Congratulations!
+{STRVAR_1 3, 0, 0} ID: {STRVAR_1 54, 1, 0} Time: {STRVAR_1 52, 2, 0}:{STRVAR_1 51, 3, 0}
+                   

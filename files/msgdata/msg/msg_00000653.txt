@@ -1,0 +1,15 @@
+Morty
+Huh? I can’t hear you very well.\nWe must have a bad connection.\rTry calling again from somewhere else!
+Hello...\nWhat’s going on?\fI’m doing great.\r
+There are stronger Gym Leaders than\nme out there. They’re all waiting to\fcheer you on!
+That’s right... If we were to have\nanother battle, then we’d need to do it\fwhen I’m free, like on Tuesday nights.\rGive me a call then.
+I’m competely free today.\nWhy don’t we have a battle? {YESNO 0}
+All right!\rDo you know where the Fighting Dojo is\nin Saffron City? I’ll be waiting there.
+I see...\nWell, you’ve got your own plans as well,\fI understand.
+Hey! Before you battle me again, don’t\nyou have someone else you promised to\fbattle with?
+I’ll be at the Fighting Dojo in Saffron\nCity. Get ready and meet me there!
+This is Morty!\nHow are you doing?\r
+Hey, didn’t we make plans to meet at\nthe Fighting Dojo in Saffron City?\fI remembered!\fYou didn’t forget, did you?
+The legendary Pokémon: Suicune, Entei,\nand Raikou--which do you like best?\rUnlike Eusine, I don’t really have any\ninterest in Suicune.\rSo I’d have to say Entei...\nBut I can’t leave out Raikou...\fHmm... Guess I can’t make up my mind.
+You know, I once saw Entei. I mean like\nup close. It was amazing.\rEntei looked me in the eyes. I’ll never\nforget its eyes.\rIt was like it could see right through\nme, down into the depths of my heart...
+How have you been?\nAnything interesting happening?\rI’m doing the same as usual, just my\nregular Gym Leader duties.\rThere haven’t been any really strong\nTrainers here since you came through.\rSeems like you’re one of those genius\nTrainers you seldom meet.\rHa ha ha! I don’t mean to flatter you!

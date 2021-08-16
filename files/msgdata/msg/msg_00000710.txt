@@ -1,0 +1,13 @@
+Walt
+Mostly I breathe fire, but want\nto exchange phone numbers? {YESNO 0}
+All right!\rDon’t worry. I’ll stop breathing fire\nwhile we’re talking on the phone...\fso give me a call sometime!
+I knew that us Firebreathers weren’t\nparticularly well liked...
+Oh!\nWould you like to breathe fire with me?\r...Oh, you don’t.\rWould you like to exchange phone\nnumbers with me after all? {YESNO 0}
+It’s all right.\nI promise I won’t burn you, so you can\fcome talk to me in person.
+You know, a lot of people\nmisunderstand.\rIt may seem like we Firebreathers use\nfire to threaten our Pokémon while\ftraining them.\rBut that’s not the case at all!\nWe just train our Pokémon normally!\fIsn’t that right, {STRVAR_1 0, 10, 0}?\rBreathing fire is just a hobby!
+Buoahhhbobobo!\rWhat do you think?\nI discovered a new technique\ffor breathing fire!\rWell, not like you can tell over\nthe phone...\rNever mind that. I caught a wild\n{STRVAR_1 0, 11, 0} yesterday.\rI think I’ll start training it soon.
+Do you like {STRVAR_1 0, 11, 0}?\rAs for me...they’re all right. There’s\nall kinds of things in this world.
+Buoahhhbobobo!\nToday is a great day!\rYou should have another battle with me!\nI’m waiting and practicing on\f{STRVAR_1 4, 3, 0}!
+I’m all ready, and waiting for you on\n{STRVAR_1 4, 3, 0}, so hurry up!
+You know how there are so many\ndifferent types of Pokémon, right?\rEach type has good points and bad\npoints, so it’s not easy to say which\ftype is the best.\rHowever...\rMy choice has to be the Fire type!\fBuoahhhbobobo!!
+Did you know that today’s the\nBug-Catching Competition?\rI’m not that into Bug-type Pokémon,\nbut the National Park isn’t that far\ffrom Route 35...\fI thought I might go check it out.

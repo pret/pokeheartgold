@@ -1,0 +1,18 @@
+{STRVAR_1 3, 0, 0}: Hi! Do you like Pokémon?\r{STRVAR_1 3, 0, 0}: Uh, no, I just asked you.\r{STRVAR_1 3, 0, 0}: Huh? You’re strange!\r
+{STRVAR_1 3, 0, 0}: Hi. You must like\nPokémon.\r{STRVAR_1 3, 0, 0}: No, not me. I asked you.\r{STRVAR_1 3, 0, 0}: Pardon? You’re weird!\r
+Copycat: Hmm? Quit mimicking?\nBut that’s my main hobby!\r
+{STRVAR_1 3, 0, 0}: Hi! I heard that you\nlost your cherished Poké Doll.\r{STRVAR_1 3, 0, 0}: If I find it, you’ll give\nme a Magnet Train Pass?\r{STRVAR_1 3, 0, 0}: I’ll go find it for you.\r{STRVAR_1 3, 0, 0}: You think you lost it\nwhen you went to Vermilion City?\r
+{STRVAR_1 3, 0, 0}: Hi! I heard that you\nlost your cherished Poké Doll.\r{STRVAR_1 3, 0, 0}: If I find it, you’ll give\nme a Magnet Train Pass?\r{STRVAR_1 3, 0, 0}: I’ll go find it for you.\r{STRVAR_1 3, 0, 0}: You think you lost it\nwhen you went to Vermilion City?\r
+Copycat: Pardon?\rI shouldn’t decide what you should do?\rBut I’m really worried...\nWhat if someone finds it?\r
+Copycat: Yay! That’s my CLEFAIRY\nPoké Doll!\rSee the tear where the right arm is\nsewn on? That’s proof!\rOK. I’ll give you this Magnet Train Pass\nas I promised!\r
+                   
+Copycat: You show it at the ticket\ngate to get on the Magnet Train.\rThe rail-company man gave me that\nwhen they tore down our old house\ffor the station.
+{STRVAR_1 3, 0, 0}: Hi!\nThanks a lot for the Magnet Train Pass!\r{STRVAR_1 3, 0, 0}: Pardon?\r{STRVAR_1 3, 0, 0}: Is it that fun to mimic\nmy every move?\r
+{STRVAR_1 3, 0, 0}: Hi!\nThanks a lot for the Magnet Train Pass!\r{STRVAR_1 3, 0, 0}: Pardon?\r{STRVAR_1 3, 0, 0}: Is it that fun to mimic\nmy every move?\r
+Copycat: You bet! It’s a scream!\r
+This Poké Doll looks just like the\nreal thing...\rAw! It moved!\nIt’s a real BANETTE!
+BANETTE: Giggle!
+This is a flowerlike Poké Doll...\nIt is a CHERRIM Poké Doll!
+This is a nose-like Poké Doll...\nIt is a NOSEPASS Poké Doll!
+It’s a CLEFAIRY!\nHuh?\rOh, right. It’s a CLEFAIRY Poké Doll.
+It’s a CLEFAIRY Poké Doll.\rIt has a tear where the right arm\nwas sewn on.

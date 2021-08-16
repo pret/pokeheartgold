@@ -1,0 +1,15 @@
+Misty
+Could you repeat that? I can’t hear\nyou at all. A bad connection, I guess.\rPlease move along and call again!
+Hi...\nOh, hi there. What’s happening?\fEverything’s good with me.\r
+We both know there’s much stronger\nGym Leaders than me around, right?\fYou’d better be ready to work hard.
+I’m really sorry, but I’ve got a lot\ngoing on... I’m pretty busy lately...\rWell, Wednesday mornings I’ve got some\nfree time. Want to try calling then?
+Oh hi, I’m free today!\nLet’s battle again, OK?{YESNO 0}
+OK! So, I’ll see you at the\nFighting Dojo in Saffron City, then!
+Aw...\nThat makes me sad...
+I’m not sure... Are you making plans\njust with me?\rDidn’t you make some plans with\nsomeone else already?
+I’m waiting at the Fighting Dojo in\nSaffron City.\fIf you stand me up, I’m going to be sad.
+Yes, this is Misty...\nHi, how are you?\r
+We made plans to meet at the\nFighting Dojo in Saffron City.\rYou remembered you’re meeting me?\nI’ve been so looking forward to this...
+Hey, have you traveled through all of\nthe Kanto region yet? How is it,\fcompared to Johto? There’s a lot\fof beautiful scenery here, right?\rI especially love the Cape along\nRoute 25!\rI’ve got so many memories of things\nalong that coast...\rWhat kinds of memories? Pfft!\nLike I’d tell you!
+That reminds me...\nThat strange person who came to visit\fmy Gym recently...\rThat was you who defeated him and\nsent him off, wasn’t it?\rI forgot to thank you for that!\rEveryone in my Gym is really\nappreciative. Thanks so much!
+Hey, did you hear?\nIf you beat all six people on Route 25,\fnot losing even once, you get to make\fa true-love wish!\rYou didn’t hear about that?\nReally?\rWell, that would be because I just made\nit up! Ha ha ha!

@@ -1,0 +1,19 @@
+Falkner: Out of all the Trainers\nout there, the best Trainer would\fhave to be my dad.\r
+Janine: Ha!\nYou don’t know a thing!\rThe best Trainer in the world is Koga,\none of the Elite Four!\fNamely--my dad!\r
+Falkner: You are mistaken.\nMy dad treats Poké...\r
+Janine: Please stop this!\nWhy don’t you just admit that my dad\fis the true Trainer!\r
+Falkner: You were listening, right?\nYou agree my dad is\fgreater, right? {YESNO 0}
+Falkner: You do?\nJust as I thought!\rYou know something?\nI’m sure we’ll enjoy talking about\fmy dad!\fHere is my number!\r
+{STRVAR_1 3, 0, 0} registered Falkner\nin the Pokégear!
+Falkner: Give me a call on Saturday\nmorning if you want to hear about\fmy dad!
+Falkner: You don’t?\nI thought you were smarter than that.\rOh, well.\fYou’ll change your mind eventually.
+Falkner: So, you did change your mind.\nYou now think my dad\fis greater? {YESNO 0}
+Falkner: Hey, why don’t we take\na picture together? {YESNO 0}
+Falkner: All right!\nAre you ready?\r
+Falkner: Yes!\nWe look good.
+Falkner: That’s all right.\nI’ll just take one with my dad...
+Your Photo Album is full.\rAccess your PC and delete\nsome pictures.
+Janine: Bah!
+I’m here to buy Bloom Mail to send\nto my girlfriend.
+You know what?\rTunnel Mail is finally available\nat this department store!\rPreviously, it was only sold\nin Violet City.
+Gifts to Express Yourself!\n4F: Wiseman Gifts

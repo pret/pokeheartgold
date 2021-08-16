@@ -1,0 +1,44 @@
+{STRVAR_1 0, 0, 0} entered the motor.\r{STRVAR_1 0, 0, 0} is trying to\nlearn {STRVAR_1 6, 1, 0}.\rBut {STRVAR_1 0, 0, 0} can’t learn\nmore than four moves.\rDelete a move to make\nroom for {STRVAR_1 6, 1, 0}? {YESNO 0}
+Give up on learning the move\n{STRVAR_1 6, 1, 0}? {YESNO 0}
+{STRVAR_1 0, 0, 0} did not learn\n{STRVAR_1 6, 1, 0}.\r{STRVAR_1 0, 0, 0} emerged from the motor.
+The move {STRVAR_1 6, 1, 0} will be\nforgotten. Is that OK? {YESNO 0}
+1,{PAUSE 20} 2,{PAUSE 20} and...{PAUSE 20} ...{PAUSE 20} Poof!
+{STRVAR_1 1, 0, 0} forgot how to\nuse {STRVAR_1 6, 1, 0}.\rAnd...
+{STRVAR_1 1, 0, 0} learned\n{STRVAR_1 6, 1, 0}!
+Which ROTOM are you choosing?\r
+An Egg can’t enter a motor.
+That Pokémon can’t enter a motor.
+{STRVAR_1 0, 0, 0} entered the motor.\r
+{STRVAR_1 0, 0, 0} emerged from the motor.\r
+Return which ROTOM to its\noriginal form? {YESNO 0}
+Oh? ROTOM appears as if it wants to\nrevert to its original form.\rWould you like to recall it from\nthe motor? {YESNO 0}
+RECALL
+YES
+NO
+That ROTOM hasn’t entered a motor.
+There was an appliance here.\nThe one with the oddly shaped motor.
+CANCEL
+It’s a microwave oven.\nIt has an odd-shaped motor on it.\r
+It’s a microwave oven.\nIt has an odd-shaped motor on it.\rOh? ROTOM appears as if it wants\nto go into the motor.\rAllow it to enter the motor? {YESNO 0}
+ROTOM reluctantly gave up on entering\nthe microwave oven’s motor...
+It’s a refrigerator.\nIt has an odd-shaped motor on it.\r
+It’s a refrigerator.\nIt has an odd-shaped motor on it.\rOh? ROTOM appears as if it wants\nto go into the motor.\rAllow it to enter the motor? {YESNO 0}
+ROTOM reluctantly gave up on entering\nthe refrigerator’s motor...
+It’s a washing machine.\nIt has an odd-shaped motor on it.\r
+It’s a washing machine.\nIt has an odd-shaped motor on it.\rOh? ROTOM appears as if it wants\nto go into the motor.\rAllow it to enter the motor? {YESNO 0}
+ROTOM reluctantly gave up on entering\nthe washing machine’s motor...
+It’s a rotary fan.\nIt has an odd-shaped motor on it.\r
+It’s a rotary fan.\nIt has an odd-shaped motor on it.\rOh? ROTOM appears as if it wants\nto go into the motor.\rAllow it to enter the motor? {YESNO 0}
+ROTOM reluctantly gave up on entering\nthe rotary fan’s motor...
+It’s a lawn mower.\nIt has an odd-shaped motor on it.\r
+It’s a lawn mower.\nIt has an odd-shaped motor on it.\rOh? ROTOM appears as if it wants\nto go into the motor.\rAllow it to enter the motor? {YESNO 0}
+ROTOM reluctantly gave up on entering\nthe lawn mower’s motor...
+There is a mysterious notebook here.\nIts age is impossible to tell.\r“It was by pure chance that I obtained\ninformation about the Pokémon ROTOM.\r“Remarkably, ROTOM has the ability to\nenter and merge with special motors.\r“It’s now known that ROTOM can stay\ninside a motor almost indefinitely.\r“However, it will emerge if it enters a\nUnion Room or a Wi-Fi Club.\r“ROTOM will also emerge from the motor\nif it is left at the Day Care.\r“ROTOM may also forget certain moves\nwhen it leaves a motor.\r“This Pokémon requires\nexhaustive observation and analysis.\r“To ensure I get all the credit,\nmy ROTOM research must be kept secret.\r“They will come to revere me as the\nscientific genius Char...”\rThe rest of the notebook is blank.
+                                                                                   
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                      
+                                              
+                 

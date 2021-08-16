@@ -1,0 +1,17 @@
+Only Trainers who have proven\nthemselves may pass.\rOh! The eight Badges of Johto!\nPlease, go right on through!
+This way leads to\nMt. Silver.\rYou’ll see scary-strong Pokémon\nout there.\fYou’re not ready for it.
+This way leads to\nMt. Silver.\rYou’ll see scary-strong Pokémon\nout there.\fYou’re not ready for it.\r
+This way leads to\nMt. Silver.\rYou’ll see scary-strong Pokémon\nout there.\rBut you should be all right.\nJust watch out for yourself.
+Huh?\nThis way leads to Kanto...\fBut this path’s blocked for\fthe time being, I’m afraid.
+Hold there!\rThis way leads to Kanto...\nBut this path’s blocked for\fthe time being, I’m afraid.\r
+West to Mt. Silver.\nEast to the Kanto region.\rGo north for the Elite Four!\nBut you should know that already,\fsince you defeated the Champion!
+Janine: I’m on the way to my dad’s\nhouse to give him his lunch.\rThe Elite Four has no time to rest,\nday or night. It’s such hard work,\fyou know?\rSay!\nDo you want to exchange numbers? {YESNO 0}
+{STRVAR_1 3, 0, 0} registered Janine\nin the Pokégear!
+Janine: Call me on Monday around noon\nif you want to battle!
+Janine: You don’t look like you’re\nscared, but you are, aren’t you?
+Janine: Now you want to know\nmy number, don’t you? {YESNO 0}
+Janine: I’m done taking lunch to\nmy dad, and now I’m on my way home.\rDo you want to take a picture\nwith me? {YESNO 0}
+Janine: Can you look as cool as me\nfor the picture?\r
+Janine: Don’t you think we look\ngood in the picture?
+Janine: That’s a pity!
+Your Photo Album is full.\rAccess your PC and delete\nsome pictures.

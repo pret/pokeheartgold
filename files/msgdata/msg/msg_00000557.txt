@@ -1,0 +1,11 @@
+When you first catch a Pokémon,\nit may be weak.\rBut it will eventually grow to\nbe strong.\rIt’s important to treat Pokémon\nwith love.
+Pokémon can hold items like a Potion\nor an Antidote.\rBut they don’t appear to know how\nto use man-made items.
+Long time no see, {STRVAR_1 3, 0, 0}.\nI’ve been waiting for you.\fThis is from Professor Elm.\rThe thing is...we would like you to\ntake care of an Egg! {YESNO 0}
+Long time no see, {STRVAR_1 3, 0, 0}.\nI’ve been waiting for you.\fThis is from Professor Elm.\rThe thing is...we would like you to\ntake care of an Egg! {YESNO 0}
+{STRVAR_1 3, 0, 0} received\nthe Egg from the assistant!
+After you left, Professor Elm received\na phone call. I have no idea what they\fwere talking about.\rBut, after a while, Professor Elm\nsuddenly cried out, “I can’t think of\fanyone more suited than {STRVAR_1 3, 0, 0}!”\rThen he insisted that I hand this Egg\nto you.\rThat’s how I came here to deliver the\nEgg to you.\rIt seems that a Pokémon will hatch from\nit only when you keep it in your party\fof Pokémon.\rThat’s another reason we’ve\nchosen you, {STRVAR_1 3, 0, 0}.\rPlease take care of it!\r
+After you left, Professor Elm received\na phone call. I have no idea what they\fwere talking about, but after a while,\fProfessor Elm suddenly cried out,\f“I can’t think of anyone more suited\ffor that than {STRVAR_1 3, 0, 0}!”\rThen he insisted that I hand this Egg\nto you.\rThat’s how I came here to deliver the\nEgg to you.\rIt seems that a Pokémon will hatch from\nit only when you keep it in your party\fof Pokémon.\rThat’s another reason we’ve\nchosen you, {STRVAR_1 3, 0, 0}.\rPlease take care of it!\r
+Your party is full.\nYou cannot take the Egg yet.\fI’ll wait here for you.
+What?\nI never expected you’d say no!\fYou must be kidding, right?\rProfessor Elm really wants you to\ntake care of it...\n\n
+{STRVAR_1 3, 0, 0},\nwill you take this Egg? {YESNO 0}
+{STRVAR_1 3, 0, 0},\nwill you take this Egg? {YESNO 0}

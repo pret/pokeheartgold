@@ -1,0 +1,12 @@
+Anthony
+By the way, I’m a Hiker, so I often go\nto mountains and caves.\rI don’t usually go to the town.\rI bet you go to all kinds of towns on\nyour journey, don’t you?\rYou know, if we were to trade phone\nnumbers, then we could exchange\fall kinds of information, yes? {YESNO 0}
+I’ll give you a call when I think of a\ngood, heart-warming story, OK?
+That’s so sad. I might just end up\nsecluding myself in the mountain...
+What do you say?\nWould you like to exchange numbers\fwith another adventurer? {YESNO 0}
+You’re nearby, and yet you’re going to\ncall me on the phone?\rAm I that “dazzling” that you need to\nkeep your distance?
+The other day, I was watching my\n{STRVAR_1 0, 10, 0} eat some Berries.\fIt looked like it was enjoying its meal,\fso I decided to try some.\rI’m not sure if people should eat that\nstuff, but it was delicious!\rAll right then!\nBe good!
+Lately, I’ve been running across wild\n{STRVAR_1 0, 11, 0} quite often.\fThey’re easily taken care of.\rAll right then!\nBe good!
+Oh yeah, I was battling this\n{STRVAR_1 0, 11, 0} the other day...\fIt took off when I got distracted by a\fpassing Beauty.\rLearn from my mistake--always stay\nfocused on the job at hand!\rAll right then!\nBe good!
+Come on--let’s battle right now!\r{STRVAR_1 4, 3, 0} is where I am.\nCome on over if you feel up to it!
+Hello! You haven’t forgotten about our\nbattle, have you?\r{STRVAR_1 4, 3, 0}! I’m waiting!
+I wonder why I like mountains so much...\rIt wouldn’t be wrong to say I also like\nthe Pokémon that dwell on mountains.\rBut I bet that the number one reason is\nthat I just like mountains.\rI have no idea what a Swimmer♂’s\nthinking...

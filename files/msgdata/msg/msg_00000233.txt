@@ -1,0 +1,4 @@
+CONFIRM
+CANCEL
+Please enter a phrase or word.
+Stop giving the Pokémon\nMail?

@@ -1,0 +1,16 @@
+Huh?\rYou hear wind blowing into this room?\nThat is...just me whistling.\rEnough about that.\nWhy don’t you buy something? {YESNO 0}
+Arrgh...\nYou found the secret stairway...\rHow did you do that?\nI thought it was well camouflaged...
+Heheh! The experiment worked like\na charm.\rMAGIKARP are just worthless, but\nGYARADOS are big moneymakers.
+Urrgh...\rThat guy’s Dragon-type Pokémon\nare tough...
+Lance: DRAGONITE, Hyper Beam.\r
+What took you so long, {STRVAR_1 3, 0, 0}?\rJust as I thought, that strange radio\nsignal is coming from here.\r
+What took you so long, {STRVAR_1 3, 0, 0}?\rJust as I thought, that strange radio\nsignal is coming from here.\r
+The stairs are right here.\r
+Lance: {STRVAR_1 3, 0, 0}, we should split up\nto check this place. I’ll go first.\r
+Lance: {STRVAR_1 3, 0, 0}, we should split up\nto check this place. I’ll go first.\r
+Whistle...whistle...\rAre you bothered by that noise? That’s\nme. My false teeth don’t fit right,\fand the gap makes the noise.\rEnough about that.\nWhy don’t you buy something?\r
+The radio is on.\rThe variety show is airing\nThe Pokémon Search Party!
+The radio is on.\rThe variety show is airing\nThe Radio Miniseries!
+The radio is on.\rThe variety show is airing\nBuena’s Password!
+Team Rocket is declaring its revival on\nthe radio!
+You hear something strange...!

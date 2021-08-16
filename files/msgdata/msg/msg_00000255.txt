@@ -1,0 +1,16 @@
+Welcome to Fast Ship S.S. Aqua.\r...Except that the engine-maintenance\nteam is taking some time off, and we\fdon’t know when we can depart...
+Welcome to Fast Ship S.S. Aqua.\nMay I see your S.S. Ticket?\r
+{STRVAR_1 3, 0, 0} tried to show the\nS.S. Ticket...\r...But no Ticket here!\r
+I’m sorry...\rAnother person without a Ticket\nwouldn’t make much of a difference,\fI think.\rBut a rule is a rule.\nSorry, kiddo.
+{STRVAR_1 3, 0, 0} flashed the S.S. Ticket.\r
+OK, you have a Ticket!\rWe’re departing soon.\nGet on board quick!\r
+What?\nYou already showed me the Ticket.
+Welcome to the S.S. Aqua!\rYour Ticket is...right there.\nPlease come through.\r
+Operating a ship every day can wear\nyou out!\fIt’s not running today.\rIt leaves for Vermilion City on Mondays\nand Fridays!
+Professor Oak: Hello!\nYou are starting to have the\fattitude of a Champion, {STRVAR_1 3, 0, 0}!\rIt’s time for your Pokédex to match\nwho you are.\fLet me see your Pokédex for a second.\rI’ll upgrade your Pokédex with\nthe National Mode.\r
+Professor Oak: Hello!\nYou are starting to have the...\fattitude of a Champion, {STRVAR_1 3, 0, 0}!\rIt’s time for your Pokédex to match\nwho you are.\fLet me see your Pokédex for a second.\rI’ll upgrade your Pokédex with\nthe National Mode.\r
+{STRVAR_1 3, 0, 0}’s Pokédex was upgraded\nwith the National Mode!
+Professor Oak: It won’t be easy to\ncomplete the National Pokédex...\rHowever, I’m sure you will make an\nhonest attempt on our behalf!\r
+Oh, time flies!\rI have a radio show to record\nat Goldenrod Radio Tower.\rYou must be heading for Kanto.\rIf you come near Pallet Town, do drop\nby my Pokémon Research Lab!\r
+The S.S. Aqua uses jets to travel.\nIt skims over water!
+You’ve been to Kanto already?\rI hear many rare Pokémon live\nover there.\rSounds exciting.\nI’d love to visit!

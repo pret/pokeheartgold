@@ -1,0 +1,5 @@
+Bill: Hi, I’m Bill. And who are you?\rHmm, {STRVAR_1 3, 0, 0}, huh?\r
+You know what?\nI’m the one who developed\fthe system to transfer Pokémon.\rBut it couldn’t have been done by\nme alone.\rFor example, do you know the Hoenn\nregion? This girl Lanette from Hoenn\fmade the Pokémon Storage System\feasier to use.\rMy friends all over the world are\nworking together to improve\fthe Pokémon trade and\fstorage systems.\rI have to hurry on back to Goldenrod\nand see my folks.\fBuh-bye!\r
+Kimono Girls are so pretty.\rThe way the Kimono Girls dance and\nthe way they use their Pokémon are\fboth marvels.
+Morty, the Gym Leader, is soooo cool.\rHis Pokémon are really tough, too.
+Lake of Rage...\nThe appearance of a red GYARADOS...\fI smell a conspiracy. I know it!

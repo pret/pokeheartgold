@@ -1,0 +1,25 @@
+Hm? Who are you?\r{STRVAR_1 3, 0, 0}, eh? You want me to make\nsome Balls?\rSorry, but that’ll have to wait.\rDo you know Team Rocket?\nAh, don’t worry. I’ll tell you anyhow.\rTeam Rocket’s an evil gang that\nuses Pokémon for their dirty work.\rThey’re supposed to have disbanded\nthree years ago.\rAnyway, they’re at the well, cutting\noff SlowpokeTails for sale!\rSo I’m going to go give them a\nlesson in pain!\rHang on, SLOWPOKE!\nOld Kurt is on his way!
+Kurt: Hi, {STRVAR_1 3, 0, 0}!\nYou handled yourself like a real hero.\rAs I mentioned before, Team Rocket was\ndisbanded by a boy called Red three\fyears ago.\rNow that they have come back...\nI have a bad feeling about it...\rIn any case, it would please me greatly\nto make Poké Balls for a Trainer\flike you, {STRVAR_1 3, 0, 0}.\fThis is all I have now, but take it.\r
+                       
+Kurt: I make Poké Balls from Apricorns.\rCollect them from trees and bring\n’em to me.\rI’ll make Poké Balls out of them.
+Kurt: You have Apricorns for me?\fFine! I’ll turn them into Poké Balls.\r
+Kurt: It’ll take a day to make you a\nPoké Ball. Come back for it later.
+Kurt: Oh...\nThat’s a letdown.
+Kurt: I’m working!\nDon’t bother me!
+Kurt: Ah, {STRVAR_1 3, 0, 0}!\fI just finished your Poké Ball. Here!\r
+Kurt: Your Bag is full!\nCome back when it’s lighter.
+Kurt: That turned out great.\rTry catching Pokémon with it.
+The SLOWPOKE are gone...\nWere they taken away by bad people?
+Grandpa’s gone...\nI’m so lonely...
+The SLOWPOKE my dad gave me came\nback! Its tail has grown back, too!
+Dad works at Silph where he studies\nPoké Balls.\rI have to stay home with Grandpa\nand SLOWPOKE.
+That’s right!\nI’ll give you my grandpa’s number. {YESNO 0}
+{STRVAR_1 3, 0, 0} registered Kurt\nin the Pokégear!
+My grandpa can tell you more\nabout Apricorns.
+No? Why?\nYou don’t want to talk to my grandpa?
+You want to talk to my grandpa,\ndon’t you? {YESNO 0}
+SLOWPOKE: ...\nYawn?
+You see three people, with landscape\nin the background.\rIt’s Kurt, Professor Oak, and...\nin the middle,\fa lady with determined eyes.
+It’s a statue of the forest’s\nprotector.
+The radio is on.\rIt’s Professor Oak’s Pokémon Talk!
+The radio is declaring the revival\nof Team Rocket!

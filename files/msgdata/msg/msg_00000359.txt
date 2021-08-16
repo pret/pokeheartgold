@@ -1,0 +1,2 @@
+Cycling Road is all uphill from this end.\nIt’s really challenging.\rAlthough, it may be interesting to go up\nonce pushing really hard on the pedals.
+Hey, you!\rCycling Road is for cyclists only.\nYou have to be on a Bicycle if you want\fto proceed!\r

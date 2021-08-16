@@ -1,0 +1,13 @@
+Vance
+You are sure strong. But I don’t\nwant to just slink away...\rI know! Could I get your number?\nLet’s meet up for more battles!{YESNO 0}
+Don’t forget to come and see me\nwhen I challenge you!
+A Bird Keeper friend isn’t a bad thing to\nhave, I’d say...\rWon’t you reconsider?
+I want to battle tough Trainers as\noften as I can!\rCould I get your number?\nLet’s meet up for more battles!{YESNO 0}
+You are really, really strong!\rThanks for taking me on so often--\nI learned a whole lot from you.\rI know! This will do as my thanks!\r
+You’re nearby, aren’t you?\rWhy not come and talk in person?
+My {STRVAR_1 0, 10, 0}’s become tougher.\nWe’ve achieved liftoff!\rWe can easily beat {STRVAR_1 0, 11, 0}!\r...Huh? You, too? Isn’t that great?\nLet’s talk later!
+My {STRVAR_1 0, 10, 0}’s become tougher.\nWe’ve achieved liftoff!\rBut get this, a wild {STRVAR_1 0, 11, 0} just\nbarely eluded us.\fI wanted to Fly after it...\rLet’s talk later!
+Right now, I’m on {STRVAR_1 4, 3, 0}.\nYou know--where I first met you?\rWant to battle? I’ll wait here.
+Oh, {STRVAR_1 3, 0, 0}!\nHurry, hurry!\r{STRVAR_1 4, 3, 0}! Fly over now!
+Oh, {STRVAR_1 3, 0, 0}!\nHurry, hurry!\r{STRVAR_1 4, 3, 0}! Fly over now!
+I’ll be looking forward to our\nnext battle!

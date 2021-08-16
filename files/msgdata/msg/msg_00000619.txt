@@ -1,0 +1,8 @@
+Ah. You’re on an adventure with\nyour Pokémon?\rWell, what’s an adventure without\ntreasure hunting?\rAm I right, or am I right? {YESNO 0}
+Good! You understand the true\nspirit of adventure.\rI like that! Take this with you.
+                      
+There are many items lying about\nthat aren’t obvious.\rTouch the Dowsing Machine for a while\nto see if it makes a high-pitched noise.\rWhen it does, you know there is\nan item near you.\rWalking as you use it may make it\neasy to find items.\rOh yeah--I heard there are items\nin Ecruteak’s Burned Tower.
+Oh... To each his own, I suppose...
+History of Ecruteak\rWant to read it? {YESNO 0}
+In Ecruteak, there were two towers.\nEach tower was the roost of powerful\fflying Pokémon.\rBut one of the towers burned to\nthe ground.\rThe two Pokémon haven’t been\nseen since...\rKeep reading? {YESNO 0}
+Ecruteak was also home to three\nPokémon that raced around the town.\rThey were said to have been born of\nwater, lightning, and fire.\rBut they could not contain their\nexcessive power.\rSo they say the three ran like the\nwind off into the grassland.

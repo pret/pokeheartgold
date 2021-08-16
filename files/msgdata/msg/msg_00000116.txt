@@ -1,0 +1,12 @@
+I was challenged to a battle\ndownstairs.\rIt’s rough down there. You’d better\nbe careful.
+You look like an earnest youth.\nHow come you ended up in\fTeam Rocket...?
+Team Rocket never stops bothering\npeople, do they?
+There are some shops downstairs...\rBut there are also Trainers.\nI’m scared to go down there.
+Yes...\nTeam Rocket can use the tunnel, too.
+All the people working at the tunnel\nleft. No one wants Team Rocket to\fgive them a hard time.
+Lyra: Hi, {STRVAR_1 3, 0, 0}.\nYou are just in time!\r
+Lyra: When you follow this tunnel,\nyou’ll see a Dress-Up Shop.\rThat’s where your Pokémon can put on\nAccessories to dress up and\ftake pictures!\rBy the way, here is the Fashion Case!\rDid you say you want it?\nI knew it!\rThis is a present from me!\r
+Lyra: Keep Accessories in the\nFashion Case, OK?\rI should get going.\nSee you!\r
+Ethan: Hi, {STRVAR_1 3, 0, 0}.\nYou are just in time!\r
+Ethan: When you follow this tunnel,\nyou’ll see a Dress-Up Shop.\rThat’s where your Pokémon can put on\nAccessories to dress up and\ftake pictures!\rBy the way, here is the Fashion Case!\rDid you say you want it?\nI knew it!\rThis is a present from me!\r
+Ethan: Keep Accessories in the\nFashion Case, OK?\rI should get going.\nSee you!\r

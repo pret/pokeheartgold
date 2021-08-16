@@ -1,0 +1,53 @@
+Young Pokéathlete!\nHello!\r...\rRunning out of energy?\nHello, again!\rGood!\nMy name is Maximo!\rI am the Pokéathlon MC!\nNice to meet you!\rI’ll be there for you when you\nneed to know anything about\fthe Pokéathlon.\r
+Maximo: Hello!\rI’ll be there for you when you\nneed to know anything about\fthe Pokéathlon.\r
+Do you have any questions? {YESNO 0}
+Which course do you want to\nknow about? {YESNO 0}
+Which event do you want to\nknow about? {YESNO 0}
+Let me explain the Pokéathlon!\rIt’s the connection between Pokémon\nand Pokéathletes.\rIt is friendship itself!\n...What?\rYou don’t get it?\nOK. I won’t be as brief this time.\rYou are to form a team of three\nPokémon to compete in ten\fdifferent events!\rThe friendship between Pokémon and\nPokéathletes is tested!\rThat is what we call friendship!\nDo you understand what I mean?\r
+I’ll explain “Hurdle Dash” for you.\nIt is an event to test your speed.\rYour Pokémon needs to jump\nwhen the Hurdle comes near.\rIf it jumps at the right time,\nit will go over the Hurdle!\rThe total time of the three Pokémon\ngives you the event score.\rThis is an event for speedy Pokémon\nthat move quickly like me!\rDo you understand what I mean?\rOK, do you have any more questions?\r
+I’ll explain “Pennant Capture”\nfor you.\rYour Pokémon grab Pennants on\nthe beach.\rGrabbing Pennants doesn’t add to\nyour score.\rYou have to come back with\nthe Pennants.\rThis is an event for speedy and skillful\nPokémon that move like I do!\rDo you understand what I mean?\rOK, do you have any more questions?\r
+I’ll explain “Circle Push” for you.\nYour Pokémon push others to try\fand stay in a Circle.\rYou will get points as long as your\nPokémon stay in a Circle.\rThe total time of the three Pokémon\ngives your score.\rThis is an event for powerful Pokémon\nwith stamina that are strong like me!\rDo you understand what I mean?\rOK, do you have any more questions?\r
+I’ll explain “Block Smash” for you.\nYou smash Blocks as the name suggests.\rThe number of Blocks you smash\nwill be the score you’ll get.\rIt’s so simple, isn’t it?\rThis is an event for powerful Pokémon\nthat are strong like me!\rDo you understand what I mean?\rOK, do you have any more questions?\r
+I’ll explain “Disc Catch” for you.\nYour Pokémon jump and catch\fDiscs that come flying toward them.\rThe longer you wait before they catch\nthe Discs, the more points you get.\fThe total points will decide the score.\rThis is an event for powerful and jumpy\nPokémon that move like me!\rDo you understand what I mean?\nOK, do you have any other questions?\r
+I’ll explain “Lamp Jump” for you.\nYour Pokémon bounce to jump high\fand touch as many Lamps as they can.\rThe more Lamps they touch, the more\npoints you get.\rThe total points will decide the score.\rThis is an event for jumpy Pokémon\nthat are jumpy like me!\rDo you understand what I mean?\rOK, do you have any more questions?\r
+I’ll explain “Relay Run” for you.\nYour Pokémon run in turns as far as\fthey can in 90 seconds.\rThe distance of the Relay will decide\nthe score.\rThis is an event for speedy Pokémon\nwith stamina... Ones just like me!\rDo you understand what I mean?\rOK, do you have any more questions?\r
+I’ll explain “Ring Drop” for you.\nYour Pokémon try to knock other\fPokémon out of the Ring.\rA tackle gives you one point.\nA stomp on another Pokémon\fgives you two points.\rIf your Pokémon knock another Pokémon\noff the Ring, making them drop, you get\ften points.\rThis is an event for Pokémon with\nstamina just like I have!\rDo you understand what I mean?\nOK, do you have any more questions?\r
+I’ll explain “Snow Throw” for you.\nSnow Throw may not ring a bell but...\fhow about a Snowball fight?\rThe more your Pokémon hit other\nPokémon with Snow, the higher the\fscore will be.\rThis is an event for powerful and\nskillful Pokémon... Ones just like me!\rDo you understand what I mean?\rOK, do you have any more questions?\r
+I’ll explain “Goal Roll” for you.\nYour Pokémon try to roll the ball into\fthe Goals of the other Pokémon teams.\rMost balls will give you one point.\rGold-colored balls will give you\ntwo points.\rThe number of points will decide\nyour rank, and that decides the score.\rThis is an event for powerful and\nskillful Pokémon... Ones just like me!\rDo you understand what I mean?\rOK, do you have any more questions?\r
+Young Pokéathlete!\rDon’t forget to do your Pokéathlon\nstretches before exercise!
+Me? Are you interested in me?\nHahaha!\fOh, don’t be shy.\rSome people call me the “big brother”!\rBut really, the big brother is...\n...\f...\fmy twin brother!\rThe “big brother,” as they say, is\nreally the younger brother.\rSo this “big brother” has a\nbigger brother...\rDo you get what I mean?\r
+RATTATA: Ratta.
+RATTATA: Grrrr.
+MACHOP: Awwwrr...
+MACHOP: Yahhh!
+BUTTERFREE: Fluttah fluttah...
+BUTTERFREE: Bing bing!
+The Pokéathlon is all about scores.\rNo one knows who’s going to win\nuntil the last moment!
+Pokéathlete {STRVAR_1 3, 0, 0} is\nalways splendid!\rI can’t take my eyes off\nthat Pokéathlete!\r...\nWait... Wow! Is that really you?
+Aprijuice for victory!\rYour Pokémon can show their\ntrue Performance potential!
+Aprijuice for victory!\rWhat drink do you use,\nPokéathlete {STRVAR_1 3, 0, 0}?\rI’ll buy what you buy!\fI’m a big fan!
+Er... I...I will try to win at every\ncourse with MAGIKARP!
+Pokéathlete {STRVAR_1 3, 0, 0}!\rEr... How...how can I win at every\ncourse with MAGIKARP?
+I will break my personal record\nat Hurdle Dash!\rOK, which Pokémon should\nI choose...?
+Y-y-you’re Pokéathlete {STRVAR_1 3, 0, 0}!\rI have no clue how I could possibly\nreach where you are!\fYou are the Pokéathlon itself!
+Wow!\nThat guy over there is Magnus,\fthe Pokéathlon owner!\rI heard he once beat a MACHAMP at\narm wrestling. Could it be true?
+Yikes!\nPokéathlete {STRVAR_1 3, 0, 0}!\rI am a huge fan of yours!\nOh my...what should I do?\fCan you give me an autograph?
+Arrgh!
+Arrgh!\nPokéathlete {STRVAR_1 3, 0, 0}!\rYou make me feel young again!\fI’ll root for you!
+Yeek!!
+Oh my!\nIt’s Pokéathlete {STRVAR_1 3, 0, 0}!\rYou look just like my son.\fI’m rooting for you.
+Oh my!\nIt’s Pokéathlete {STRVAR_1 3, 0, 0}!\rYou look just like my daughter.\fI’m rooting for you.
+My boyfriend’s a Pokéathlete.\rBut he’s so shy about it that I root\nfor him behind a column so he won’t\fspot me!
+Don’t you think he’s so cool dripping\nsweat just like his Pokémon?\rNot that he even compares to the great\nPokéathlete {STRVAR_1 3, 0, 0}, though.
+Participate in the Pokéathlon to\nreduce stress.\fThat’s the way to go!
+Don’t you dare underestimate your mom.\nThe look on her face when she was\fselling things at a bargain...\rIt still gives me shivers!\r
+Every father longs to be a hero to\ntheir son.\rThe Pokéathlon...\nDo I want to take it up?\rJust you wait and see, Son!
+Ahh... My son!\nI’m so sad to hear that.\rLet me hear you say you want to be\nlike your dad...\r
+My mom will finally participate.\rI was starting to worry because she\nnever exercises.\r
+I’ll grow up to be a great\nPokéathlete like you, {STRVAR_1 3, 0, 0}!\r
+I’m cheering for you!
+Are you Pokéathlete {STRVAR_1 3, 0, 0}?\rFor real?\nI can’t believe it!\n
+I’m watching intently!
+Are you Pokéathlete {STRVAR_1 3, 0, 0}?\rTap... Tap... Tap...\rI can’t believe it! I touched my hero!
+I didn’t expect so many rather old\nladies like me participating.\fMaybe I can join them.\rIt may be a chance to get close to\nmy hero--Pokéathlete Jet!\fHahaha!
+Yeek!!\rPokéathlete {STRVAR_1 3, 0, 0}!\nEvery time you are in the game,\fmy daughters’ eyes stay wide open!\rCould I ask for an autograph?\f...No no!\rNot for me. It’s for my daughters.\nHa ha!

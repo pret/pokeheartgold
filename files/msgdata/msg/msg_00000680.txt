@@ -1,0 +1,32 @@
+Liz
+Oh? You’re on a big journey to see the\nsights? Neat!\rLet’s be friends!\nCan I have your phone number?\rI want to hear about everything\nyou’ve seen! {YESNO 0}
+I’ll telephone you if I hear anything\ninteresting.
+Aww... You won’t be my friend?
+Let’s be friends!\nCan I have your phone number?\rI want to hear about everything\nyou’ve seen! {YESNO 0}
+If you’re nearby, just come talk\nin person!
+Oh, you have to hear this.\rMy {STRVAR_1 0, 10, 0} is so adorable!\nIt always wants to nuzzle me!\rAnd, and! Um...\rWe beat a wild {STRVAR_1 0, 11, 0} with just\none hit a little while ago.\fWe felt sorry for it, though.\rOK, I’ll call you later!
+Oh, you have to hear this.\rMy {STRVAR_1 0, 10, 0} is so adorable!\nIt’s always giving me cute looks!\rAnd, and! Uh...\rWe just saw a really gorgeous\n{STRVAR_1 0, 11, 0}.\rBut I was on the phone, so it got away.\nIt made us really angry!\rOK, I’ll call you later!
+Listen, listen!\rI was listening to the radio in the Ruins\nof Alph when an odd broadcast suddenly\fcut in on the regular show.\fI wonder what it was. So strange!\rOK, I’ll call you later!
+Listen, listen!\rDon’t you think Falkner of Violet Gym is\ncool and handsome?\rBut they say his dad, who’s out training\non the road, is even more cool and\fhandsome than Falkner.\rI wish I could meet him!\rOK, I’ll call you later!
+Listen, listen!\rDo you know Earl, the teacher who runs\nthe Pokémon School in Violet?\rI saw him doing pirouettes while he was\nrunning. It was wildly funny!\rOK, I’ll call you later!
+Listen, listen!\rThe Kimono Girls in Ecruteak City don’t\njust study dancing!\rThey’re also working to bring back\nlegendary Pokémon that haven’t\fappeared in front of humans since long,\flong ago.\rThat’s amazing isn’t it?\rOK, I’ll call you later!
+Listen, listen!\rDo you know about Moomoo Milk?\rYou can buy it at Moomoo Farm.\nIt’s supposed to be good for health\fand beauty.\rI really want to try some. I bet it’s\ndelicious!\rOK, I’ll call you later!
+Listen, listen!\rThere’s a Pokémon Salon in Goldenrod\nthat’s run by two brothers.\rThe older brother is good, but the\nyounger one really isn’t.\rBut the younger one charges less, and\nsometimes does a better job than\fhis brother.\rEvery time I go, I have a hard time\ntrying to decide whom I should use...\rOK, I’ll call you later!
+Listen, listen!\rGoldenrod Gym’s Whitney began battling\nonly a little while ago!\rBut the Pokémon League chose her as a\nGym Leader!\fI bet she must be totally talented.\rOK, I’ll call you later!
+Listen, listen!\rHave you ever taken part in a\nBug-Catching Contest at the\fNational Park?\rI did once, but all I could catch was a\nCATERPIE.\rBut guess what! I won with that\nCATERPIE. Isn’t that great?\rOK, I’ll call you later!
+Listen, listen!\rI saw a beautiful {STRVAR_1 14, 4, 0}!\rI wish I could become a beautiful\n{STRVAR_1 14, 4, 0}, too.\rOK, I’ll call you later!
+Listen, listen!\rUh... Um... Whoops! I forgot what I was\ngoing to say!\rOK, I’ll call you later!
+Listen, listen!\rI entered the drawing on the sixth\nfloor of the Goldenrod Department\fStore.\rFor $300, you have a chance to\nreceive a TM. It’s a great deal!\rBut I tried ten times and all I got was\nBerries! I don’t think I’m lucky\fenough to win a top prize.\rOK, I’ll call you later!
+Hi! Do you have some free time?\rI’ve got all sorts of time. If you’re\nfree, would you like to battle?\rI’ll be waiting on {STRVAR_1 4, 3, 0}.\nLet me know when you get here!
+I’ve got too much time on my hands!\nLet’s battle right away!\rI’ll be waiting on {STRVAR_1 4, 3, 0}!
+Hi, Tania. How are you? This is Liz.\nI’m fine, but I’m bored silly!\rHuh... Wrong number?\nOops! Sorry!
+Listen, listen!\rMy {STRVAR_1 0, 10, 0}...it’s...so pretty...\nand...giggle...so awesome...yes...\fbut...very much...eeek!\fAnd...lovely...just ravishing...\fOh, too much! Hug it... Sleeping...\fThat’s right...pretty... Sigh...\fSo nice...cute...\r...Oops! Look at the time! I chatted\ntoo long!\rI’m sorry I took so much of your time!\nI love chatting!
+Ace Trainer
+Beauty
+Team Rocket
+Teacher
+Swimmer♀
+Kimono Girl
+Skier
+Medium
+Pokéfan

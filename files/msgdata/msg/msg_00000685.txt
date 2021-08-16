@@ -1,0 +1,23 @@
+Chad
+Huh? Is that thing a Pokédex? Have you\nmet Professor Oak?\rHuh? You have?\nThat’s way cool!\rI have a dream of becoming a Pokémon\nresearcher like Professor Oak.\rMay I please have your phone number?\rWe should chat about Professor Oak.\rI’m sure it will be loads of fun! {YESNO 0}
+You must listen to Professor Oak’s\nPokémon Talk, right?
+Oh... I wish I had a chance to meet\nProfessor Oak...
+May I please have your phone number?\rWe should chat about Professor\nOak. It will be loads of fun! {YESNO 0}
+Huh?\nWait, aren’t you nearby?\fDo you like the phone that much?
+I recently began observing wild\n{STRVAR_1 0, 10, 0}.\rI’ve been learning all sorts of new\nthings through my observations.\rI wish I could become a Pokémon\nresearcher like Professor Oak soon.\rSee you later!
+Oh yes, I managed to knock out a wild\n{STRVAR_1 0, 11, 0} a while back.\rWell, considering all the Pokémon\nstudying I do every day,\fit was inevitable.\rSee you later!
+Oh yes, I came close to catching\na wild {STRVAR_1 0, 11, 0}, but it got away.\rFor the longest time, I’ve been wanting\nto observe {STRVAR_1 0, 11, 0}. Man...\rSee you later!\n
+Do you know Blue?\rHe’s Professor Oak’s grandson and a\nformer Pokémon League Champion!\fHe’s one super Pokémon Trainer!\rSee you later!
+Professor Oak has a granddaughter\nnamed Daisy.\rWhen she’s around, even the most\nferocious Pokémon calm right down.\rSee you later!
+Everyone’s talking about\nProfessor Elm.\rHe used to be an assistant to the great\nProfessor Oak!\rThat is so cool! I envy him!\rSee you later!
+Professor Oak’s dream is to compile a\ncomprehensive Pokédex.\rI envy you for taking part in that\nproject...\rSee you later!
+Do you know Kurt, the Poké Ball\ncreator?\rHe and Professor Oak go back a long\nway. I guess great people attract\fone another!\rSee you later!
+The Pokémon League is the great\ngathering place for all Trainers who\fwish to become the Champion.\rProfessor Oak acts as an advisor to\nthe Pokémon League’s headquarters.\rHe really is a great man.\rSee you later!
+Professor Oak’s Pokémon Talk is a\npopular radio show, right?\rDid you know that he was going to turn\ndown the show at first?\rBut Mary’s energy and persistence wore\nhim down.\fSo we have Mary to thank for it!\rSee you later!
+Professor Oak used to be a Trainer a\nlong time ago.\rBut rather than battling, he found\nPokémon themselves to be interesting.\rSo he abandoned his training to focus\non becoming a researcher.\rSee you later!
+Professor Oak has a granddaughter\nnamed Daisy.\rShe has tea every day for an hour from\nthree in the afternoon.\rI wish I could join her for tea and chat\nabout Professor Oak.\rSee you later!
+Did you know?\nProfessor Oak traveled all over the\fworld when he was young.\rWhile traveling, he must’ve learned\nabout Pokémon naturally.\rI envy him... I’d like to travel and\nlearn about things, too...\rSee you later!
+Did you know?\nProfessor Oak traveled all over the\fworld when he was young.\rWhile traveling, he must’ve learned\nabout Pokémon naturally.\rI envy him... I’d like to travel and\nlearn about things, too...\rSee you later!
+Want to battle?\rI have to battle every so often to\navoid getting rusty.\rI’ll be on {STRVAR_1 4, 3, 0}!
+Do you remember about our battle?\rThe place is {STRVAR_1 4, 3, 0}.\nHurry over--I’m waiting.
+I’m going to study all about Pokémon so\nthat Professor Oak will make me his\fassistant!

@@ -1,0 +1,12 @@
+Bill
+Hello, is this {STRVAR_1 3, 0, 0}?\rThat reminds me... Telephones, they\nchange your voice into electricity to\fcarry it over a long distance,\fdon’t they?\rSo, if you consider that technology,\nyou could change Pokémon into\felectricity and send them over large\fdistances as well, no?\rSo, based on that theory, I was able to\ncome up with and create the Pokémon\fStorage system!\rWell, it’s not quite as simple as a\ntelephone, but you get the idea, right?
+Hello, is this {STRVAR_1 3, 0, 0}?\rThat reminds me... Telephones, they\nchange your voice into electricity to\fcarry it over a long distance,\fdon’t they?\rSo, if you consider that technology,\nyou could change Pokémon into\felectricity and send them over large\fdistances as well, no?\rSo, based on that theory, I was able to\ncome up with and create the Pokémon\fStorage system!\rWell, it’s not quite as simple as a\ntelephone, but you get the idea, right?
+Who’s calling?\r{STRVAR_1 3, 0, 0}, is it? Hang on a sec...\r...\n...\r
+Who’s calling?\r{STRVAR_1 3, 0, 0}, is it? Hang on a sec...\r...\n...\r
+Well, you’re starting on the PC Box\nnamed {STRVAR_1 11, 10, 0} right now.\rThat’s an easy-to-remember name. \nEasy to remember is the best way to go.\rOK, including the space left in\n{STRVAR_1 11, 10, 0}, you can still hold\f{STRVAR_1 52, 11, 0} more Pokémon in the PC.\r
+Right now you’re using the PC Box\nnamed {STRVAR_1 11, 10, 0}, right?\rThat is a great name--I really like it.\rOK, including the space left in\n{STRVAR_1 11, 10, 0}, you can still hold\f{STRVAR_1 52, 11, 0} more Pokémon in the PC.\r
+So your PC Box is called\n{STRVAR_1 11, 10, 0}, right?\rThat’s not an ordinary name. I have a\nfeeling you know a good name when\fyou see it...\rOK, including the space left in\n{STRVAR_1 11, 10, 0}, you can still hold\f{STRVAR_1 52, 11, 0} more Pokémon in the PC.\r
+Call again sometime...
+Your PC Boxes are full!\rYou’ll have to release some Pokémon\nif you want to catch more.\r
+Hey, this is Bill here.\rYou know your PC Boxes are full, right?\rYou’ve done a great job of catching\nPokémon, haven’t you!\rSeriously, it’s wonderful, I tip my hat!\rThat said, you do understand that with\nyour PC Boxes full like that, you can’t\fcatch any more Pokémon?\fJust so you know.
+Hey, this is Bill here.\rYou know your PC Boxes are full, right?\rYou’ve done a great job of catching\nPokémon, haven’t you!\rSeriously, it’s wonderful, I tip my hat!\rThat said, you do understand that with\nyour PC Boxes full like that, you can’t\fcatch any more Pokémon?\fJust so you know.

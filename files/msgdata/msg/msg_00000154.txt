@@ -1,0 +1,236 @@
+Player’s side 1
+Player’s side 2
+Opponent 1
+Opponent 2
+Class
+Level
+Exp. Points
+ID No.
+Random value
+Gender
+Nature
+Normal
+Rare
+Status
+Friendliness
+Pokérus
+Move 1
+Move 2
+Move 3
+Move 4
+Item
+Attribute
+Set
+Default HP
+HPrnd
+HPexp
+POWrnd
+POWexp
+DEFrnd
+DEFexp
+AGIrnd
+AGIexp
+SPWrnd
+SPWexp
+SDFrnd
+SDFexp
+POW
+DEF
+AGI
+SPW
+SDF
+HP
+MPP
+MPT
+Coolness
+Beauty
+Cuteness
+Smartness
+Toughness
+Luster
+Capture place
+Capture level
+Capture cassette
+Capture Ball
+Form No.
+Egg Flag OFF
+Egg Flag ON
+→
+Land form
+Player’s gender
+Battle type
+ＴｒＩD1
+ＴｒＩD2
+1 vs 1 Wild
+1 vs 1 Trainer
+2 vs 2 Trainer
+1 vs 1 Link Host
+1 vs 1 Link Client
+2 vs 2 Link Host
+2 vs 2 Link Client
+Link Multi Host
+Link Multi Client
+1 vs 1 Wifi Host
+1 vs 1 Wifi Client
+Safari Zone
+Poké Park
+Bug-Catching
+Capture Demo
+Wild 2 vs 2
+Pair-up Battle
+AI Multi
+Tower Multi Host
+Tower Multi Client
+Mickey
+Angelica
+Cedric
+Cheryl
+Riley
+Marley
+Buck
+Mira
+㊚
+㊛
+None
+Normal
+Sleep
+Poison
+Burned
+Paralysis
+Frozen
+Badly poisoned
+Gravel
+Beach
+Lawn
+Puddle
+Rock surface
+Dungeon
+Snowfield
+Water surface
+Ice surface
+Floor
+Swamp
+Dummy
+Elite Four A
+Elite Four B
+Elite Four C
+Elite Four D
+Champion
+Distortion World
+Battle Tower
+Battle Factory
+Battle Arcade
+Battle Castle
+Battle Hall
+Load
+Save
+Grassland
+Ocean
+Town
+Forest
+Mountain
+Snow mountain
+Room A
+Room B
+Room C
+Dungeon A
+Dungeon B
+Dungeon C
+Elite Four A
+Elite Four B
+Elite Four C
+Elite Four D
+Champion
+Distortion World
+Battle Tower
+Battle Factory
+Battle Arcade
+Battle Castle
+Battle Hall
+Morning
+Afternoon
+Evening
+Night
+Midnight
+Switch
+Tourney
+Effect ON
+Effect OFF
+Slow
+Normal
+Fast
+OFF
+ON
+Basic AI
+High power
+Expert AI
+Support move AI
+Gamble AI
+Damage AI
+Relay AI
+Double Battle
+HP judge AI
+Weather move AI
+Annoyance AI
+No weather effect
+Rain
+Heavy rain 1
+Heavy rain 2
+Snow
+Blizzard
+Whiteout
+Sandstorm
+Dense fog 1
+Dense fog 2
+Sunny Day
+Trick Room
+PP not reduced
+HP not reduced
+Auto Battle
+Control Commands
+Flat Type Alignments
+BＴＩD1
+BＴＩD2
+Client 0
+Client 1
+Client 2
+Client 3
+0ｘ000
+0ｘ100
+0ｘ200
+0ｘ300
+＋00
+＋08
+＋10
+＋18
+＋20
+＋28
+＋30
+＋38
+＋40
+＋48
+＋50
+＋58
+＋60
+＋68
+＋70
+＋78
+＋80
+＋88
+＋90
+＋98
+＋A0
+＋A8
+＋B0
+＋B8
+＋C0
+＋C8
+＋D0
+＋D8
+＋E0
+＋E8
+＋F0
+＋F8
+Save the recorded data
+Obey
+Disobey

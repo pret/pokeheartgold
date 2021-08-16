@@ -1,0 +1,13 @@
+Ernest
+You have got some nerve!\nThat’s awesome!\fJust what I look for in a friend!\rWhadda ya say we trade phone\nnumbers and be best friends? {YESNO 0}
+All right!\nCall me anytime!\rAbout studying,\nor about Pokémon,\for about a puzzle,\for about a Gym trick.\fEven if you don’t run into anything\fdifficult, you can still give me a call!\rI probably won’t know the answer, but\nI’ll at least be able to listen!\r’Cause we’re friends, you know?
+Hey! What’re you, nervous?
+Oh, I see you’ve finally figured out\njust how amazing I am?\rWell, that’s to be expected. Let’s\ntrade phone numbers! {YESNO 0}
+Well, I probably look a lot scarier than\nI really am. Would you believe I’m really\fa nice guy?\rI won’t bite, so come and talk to me\nin person!
+Yo, Teddy! You do a pretty good\nimpression of a motorcycle!\rNext time you get a chance, you and I\nshould go riding and yell like\fmotorcycles. What do you say?\r......Wait, who is this?\rOh no! Wrong number!\nSorry!
+My {STRVAR_1 0, 10, 0} does a great job!\nAnyway, its fighting spirit is different.\rIt’s never lost to any but the\nstrongest Pokémon!\rWhat about your Pokémon?\nDo they have any fighting spirit?\rNever mind, you don’t have to answer.\rI should know better than anyone just\nhow strong your Pokémon are!
+We’re a Biker gang, you know.\nGot Pokémon with poison,\fwith spikes all over their bodies,\fwith fangs, and we even have some\fGhost-type Pokémon.\fIt’s all a big show of how tough we are.\rBut...\rAs for me...\rI really like cute Pokémon like MARILL!
+So, yesterday I thought I was gonna\ncatch a {STRVAR_1 0, 11, 0}.\fBut that {STRVAR_1 0, 11, 0}, it took one look\fat me and ran off!\rIt was totally rude!\rYou wouldn’t run away if you saw me,\nwould you...?
+Yo! So, I really wanna battle you again.\nI mean, I am really itching to show off!\rI’m always hanging out on\n{STRVAR_1 4, 3, 0}. Don’t get all\fnervous and run away, got it?!
+What’s going on with you?\nI’m waiting on {STRVAR_1 4, 3, 0}!\rYou wouldn’t forget a promise you made\nwith a buddy, would you?
+You know, my bro Markey was talking\nabout this earlier... Have you thought\fabout joining our team at all?\rWe hang out on Cycling Road and make a\nlot of noise, throw our garbage around,\fthen pick up our garbage and take it\fhome to throw away. It’s so much fun!

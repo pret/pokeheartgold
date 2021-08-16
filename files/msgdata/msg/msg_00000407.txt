@@ -1,0 +1,10 @@
+Well, hello!\rIt’s said that past this hole used to be\na huge tower reaching far into the sky.\rThey say that it was a rather strange\ntower with half of it embedded\fin the cliff.\rIt was not just a tall tower reaching\nup to the sky, but also reaching deep\fdown underground!\rIt is rumored that it even reached the\nbottom of the ocean!\rIn short, the ruins used to connect\nthe sky, the land, and the\fsea to each other...\rMost of the tower is now crumbled,\nand the only things that remain are\fthe entrance and its interior, where\fyou’ll see strange patterns.
+I think this building may have been\nbuilt to enshrine Pokémon with\fa strong connection to the sea,\fthe land, and the sky.
+A masked guy who looks great in front\nof a huge torrential waterfall...\fThat’s me, Crasher Wake!\rWho dares to talk to me so freely?\rOh!\nYou are that mask-fanatic Trainer\fI saw at the Celadon Dept. Store!\r
+Wake: I heard about the great\nwaterfall near Cianwood and decided\fto come see it.\rThis waterfall is awesome!\rNo human or Pokémon can survive\nwithout water, yet that same water\fcan sometimes cause great suffering.\r
+Wake: You must be a Trainer from this\nregion, right?\rI hope you’ll become a Trainer\nwith the qualities of water--\fstrong, tough to beat, yet\frefreshing.\rGood luck, mask-fanatic {STRVAR_1 3, 0, 0}!\r
+Chuck: Ooomph!\nYou came all this way just to see me?\rThen you might as well take a\npicture with me, too. Yes? {YESNO 0}
+Chuck: Say cheese!\nDon’t close your eyes!\r
+Chuck: Great picture!\nThis wil be a good memory for you, too!
+Chuck: No? You came all the way\njust to say no?
+Your Photo Album is full.\rAccess your PC and delete\nsome pictures.

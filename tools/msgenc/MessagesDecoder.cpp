@@ -35,17 +35,17 @@ void MessagesDecoder::ReadMessagesFromBin(string& filename)
         throw ifstream::failure("Unable to open file \"" + filename + "\" for reading");
     }
     infile.read((char*)&header, sizeof(header));
+    debug_printf("%d lines\n", header.count);
     alloc_table.resize(header.count);
     infile.read((char*)alloc_table.data(), (streamsize)(sizeof(MsgAlloc) * header.count));
     int i = 1;
     for (auto & alloc : alloc_table) {
         alloc.decrypt(header.key, i);
-        debug_printf("msg %d: at 0x%08X, count %d\n", i, alloc.offset, alloc.length);
         u16string str;
         str.resize(alloc.length);
         infile.read((char*)str.data(), (2 * alloc.length));
         DecryptU16String(str, i);
-        outfiles.push_back(str);
+        vec_encoded.push_back(str);
         i++;
     }
     infile.close();
@@ -77,6 +77,7 @@ string MessagesDecoder::DecodeMessage(u16string &message, int &i) {
     bool is_trname = false;
     for (size_t j = 0; j < message.size(); j++) {
         uint16_t code = message[j];
+        debug_printf("%04X ", code);
 
         if (charmap_dec.find(code) != charmap_dec.end()) {
             decoded += charmap_dec[code];
@@ -88,6 +89,7 @@ string MessagesDecoder::DecodeMessage(u16string &message, int &i) {
             decoded += '{';
             j++;
             code = message[j++];
+            debug_printf("%04X ", code);
             string command;
             bool is_strvar = false;
             if (find(strvar_codes.cbegin(), strvar_codes.cend(), code & 0xFF00) != strvar_codes.cend()) {
@@ -101,13 +103,15 @@ string MessagesDecoder::DecodeMessage(u16string &message, int &i) {
             }
             decoded += command;
             int nargs = message[j++];
+            debug_printf("%04X ", nargs);
             for (int k = 0; k < nargs; k++) {
                 decoded += ' ';
                 if (is_strvar) {
-                    decoded += ConvertIntToHexStringN(code & 0xFF, STR_CONV_MODE_LEADING_ZEROS, 2) + ", ";
+                    decoded += to_string(code & 0xFF) + ", ";
                     is_strvar = false;
                 }
-                decoded += ConvertIntToHexStringN(message[j + k], STR_CONV_MODE_LEADING_ZEROS, 4);
+                decoded += to_string(message[j + k]);
+                debug_printf("%04X ", message[j + k]);
                 if (k != nargs - 1)
                     decoded += ',';
             }
@@ -123,6 +127,8 @@ string MessagesDecoder::DecodeMessage(u16string &message, int &i) {
             throw runtime_error("invalid character in " + binfilename + ": " + ConvertIntToHexStringN(code, STR_CONV_MODE_LEADING_ZEROS, 4) + " at " + to_string(i) + ":" + to_string(j));
         }
     }
+    MsgAlloc & alloc = alloc_table[i];
+    debug_printf("msg %d: at 0x%08X, count %d\n", i + 1, alloc.offset, alloc.length);
     return decoded;
 }
 
@@ -138,7 +144,7 @@ void MessagesDecoder::WriteBinaryFile(string& filename, void* data, streamsize s
 
 void MessagesDecoder::WriteMessagesToText(string& filename) {
     stringstream ss;
-    for (string& text : files) {
+    for (string& text : vec_decoded) {
         ss << text << "\r\n";
     }
     WriteTextFile(filename, ss.str());
@@ -153,10 +159,10 @@ void MessagesDecoder::ReadInput()
 
 void MessagesDecoder::Convert()
 {
-    for (int i = 0; i < (int)outfiles.size(); i++) {
-        u16string message = outfiles[i];
+    for (int i = 0; i < (int)vec_encoded.size(); i++) {
+        u16string message = vec_encoded[i];
         string decoded = DecodeMessage(message, i);
-        files.push_back(decoded);
+        vec_decoded.push_back(decoded);
     }
 }
 

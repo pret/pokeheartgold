@@ -1,0 +1,108 @@
+{STRVAR_1 3, 0, 0}
+{STRVAR_1 3, 0, 0}
+{STRVAR_1 53, 0, 0} CP
+{STRVAR_1 53, 0, 0} CP
+{STRVAR_1 53, 0, 0} CP
+Please choose your Pokémon.
+{ALN_CENTER}EXIT
+              
+{STRVAR_1 3, 0, 0} chose to exit.
+HEAL
+RENTAL
+   
+  
+CANCEL
+Restore HP and/or PP.
+You may rent a Berry or\nan item.
+                      
+                    
+Go back to the Pokémon-\nselection page.
+RESTORE HP
+RESTORE PP
+RESTORE ALL
+RANK UP
+CANCEL
+Which would you like to use?
+You will be able to restore PP by going\nup in rank.
+You will be able to restore both HP and\nPP by going up in rank.
+Your rank cannot be raised any higher.
+Return to previous selections.
+                            
+  
+   
+You don’t have enough CP.
+You are too low in healing rank to use\nthis menu item.
+{STRVAR_1 0, 0, 0}’s HP will be restored.
+{STRVAR_1 0, 0, 0}’s PP will be restored.
+{STRVAR_1 0, 0, 0}’s HP and PP will be\nrestored.
+There is no benefit to using that\ncommand.
+Would you like to up your rank\nfor {STRVAR_1 52, 0, 0} CP?
+  
+   
+You don’t have enough CP.
+{STRVAR_1 3, 5, 0} gained the ability to\nrestore PP!
+{STRVAR_1 3, 5, 0} gained the ability to\nrestore both HP and PP!
+BERRIES
+ITEMS
+RANK UP
+CANCEL
+You may rent a Berry for this Pokémon.
+You may rent an item for this Pokémon.
+You will be able to rent an item for\nyour Pokémon by going up in rank.
+Your choices of items and Berries will\nbe expanded by going up in rank.
+Your rank cannot be raised any higher.
+Return to previous selections.
+You are too low in rental rank to\nuse CP.
+It will cost {STRVAR_1 51, 0, 0} CP.\nIs that OK?
+  
+   
+          
+{STRVAR_1 0, 0, 0} was given the\n{STRVAR_1 8, 1, 0} to hold.
+{STRVAR_1 0, 0, 0} is already holding\n{STRVAR_1 8, 1, 0}.
+Would you like to switch the\ntwo items?
+  
+   
+                         
+  
+   
+          
+{STRVAR_1 3, 5, 0} gained the ability to\nrent items!
+{STRVAR_1 3, 5, 0} expanded the variety of\nrentable Berries and items!
+Item
+{STRVAR_1 8, 0, 0}
+Nature
+{STRVAR_1 7, 0, 0}
+Ability
+{STRVAR_1 5, 0, 0}
+Attack
+{STRVAR_1 52, 0, 0}
+Defense
+{STRVAR_1 52, 0, 0}
+Sp. Atk
+{STRVAR_1 52, 0, 0}
+Sp. Def
+{STRVAR_1 52, 0, 0}
+Speed
+{STRVAR_1 52, 0, 0}
+♂
+♀
+Lv.
+HP
+/
+{STRVAR_1 1, 0, 0}
+     
+     
+{STRVAR_1 52, 0, 0}
+{STRVAR_1 52, 0, 0}/{STRVAR_1 52, 1, 0}
+{STRVAR_1 6, 0, 0}
+{STRVAR_1 6, 1, 0}
+{STRVAR_1 6, 2, 0}
+{STRVAR_1 6, 3, 0}
+{COLOR 2}{STRVAR_1 51, 4, 0}{COLOR 0}/{COLOR 2}{STRVAR_1 51, 5, 0}{COLOR 0}
+{STRVAR_1 51, 0, 0}
+--
+{STRVAR_1 50, 0, 0}/{STRVAR_1 50, 1, 0}
+{STRVAR_1 51, 0, 0}CP
+RETURN
+Rental/Berry
+Rental/Item

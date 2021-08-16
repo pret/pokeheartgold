@@ -1,0 +1,96 @@
+{STRVAR_1 3, 0, 0}
+{STRVAR_1 3, 0, 0}
+{STRVAR_1 53, 0, 0} CP
+{STRVAR_1 53, 0, 0} CP
+Which Pokémon would you like\nto check?
+{ALN_CENTER}EXIT
+              
+{STRVAR_1 3, 0, 0} chose to exit.
+CHECK
+LEVEL
+SUMMARY
+CANCEL
+Check the identity of a Pokémon.
+Change the level of a Pokémon.
+Examine the stats of a Pokémon.
+Return to previous selections.
+Would you like to identify this Pokémon?\nIt will cost {STRVAR_1 51, 0, 0} CP.
+  
+   
+          
+The Pokémon’s identity is\n{STRVAR_1 0, 0, 0}.
+You may change this Pokémon’s level.\nWhat would you like to do?
+LEVEL +5
+LEVEL -5
+CANCEL
+It will cost {STRVAR_1 51, 0, 0} CP.\nIs that OK?
+  
+   
+You don’t have enough CP...
+This Pokémon’s level can’t be\nraised higher.
+This Pokémon’s level can’t be lowered\nany more.
+The Pokémon’s level was\nboosted by five.
+The Pokémon’s level was\nlowered by five.
+SUMMARY
+MOVES
+RANK UP
+CANCEL
+Check the stats of the Pokémon.
+Check the move list of the Pokémon.
+You will be able to check moves using CP\nby going up in rank.
+Your rank cannot be raised any higher.
+Return to previous selections.
+You are too low in information rank to\ncheck the target’s move list.
+You may check this Pokémon’s stats.\nIt will cost {STRVAR_1 51, 0, 0} CP. Is that OK?
+  
+   
+You don’t have enough CP...
+The Pokémon’s stat summary\nwas bought.
+Item
+{STRVAR_1 8, 0, 0}
+Nature
+{STRVAR_1 7, 0, 0}
+Ability
+{STRVAR_1 5, 0, 0}
+Attack
+{STRVAR_1 52, 0, 0}
+Defense
+{STRVAR_1 52, 0, 0}
+Sp. Atk
+{STRVAR_1 52, 0, 0}
+Sp. Def
+{STRVAR_1 52, 0, 0}
+Speed
+{STRVAR_1 52, 0, 0}
+♂
+♀
+Lv.
+HP
+/
+{STRVAR_1 1, 0, 0}
+     
+     
+{STRVAR_1 52, 0, 0}
+?
+??
+?????
+You will be able to check\nyour opponent’s moves\nusing CP by going up in\ninformation rank.
+??/??
+{STRVAR_1 52, 0, 0}/{STRVAR_1 52, 1, 0}
+You may check this Pokémon’s move list.\nIt will cost {STRVAR_1 51, 0, 0} CP. Is that OK?
+  
+   
+You don’t have enough CP...
+The Pokémon’s move-list data was\nbought.
+{STRVAR_1 6, 0, 0}
+{STRVAR_1 6, 1, 0}
+{STRVAR_1 6, 2, 0}
+{STRVAR_1 6, 3, 0}
+{COLOR 2}{STRVAR_1 51, 4, 0}{COLOR 0}/{COLOR 2}{STRVAR_1 51, 5, 0}{COLOR 0}
+{STRVAR_1 51, 0, 0}
+--
+Would you like to up your rank for\n{STRVAR_1 52, 0, 0} CP?
+  
+   
+          
+{STRVAR_1 3, 5, 0} gained the ability to buy\nthe target’s move-list information.

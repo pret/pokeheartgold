@@ -1,0 +1,45 @@
+Call
+Sort
+Quit
+Title
+Alphabet
+Location
+Move
+Quit
+Save some money
+Don’t save money
+Evaluate Pokédex
+Quit
+Evaluate Johto Pokédex
+Evaluate National Pokédex
+Quit
+Evaluate National Pokédex
+Quit
+   
+Yes
+No
+Please select the next search.
+Select where you wish to move.
+What will you do?
+Sort by Trainer type
+Sort by alphabet
+Sort by location
+Manual sort
+Finish sorting
+{STRVAR_1 3, 0, 0}
+{STRVAR_1 14, 0, 0}
+......
+...... ......
+...... ...... ......
+Click!
+Click!\n......
+Click!\n...... ......
+Click!\n...... ...... ......
+That number is out\nof the area.
+Pokémon Professor
+Childhood Friend
+Poké Ball Creator
+Day Care
+Radio Personality
+Poké Maniac
+Safari Warden

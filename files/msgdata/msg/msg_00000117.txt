@@ -1,0 +1,65 @@
+Hello, dear.\rI sell inexpensive herbal medicine.\nThey’re good, but a trifle bitter.\rYour Pokémon may not like them.\nHehehehe... {YESNO 0}
+Hiya! Care to see some bargains?\rI sell rare items that nobody else\ncarries--but only one of\feach item. {YESNO 0}
+{STRVAR_1 8, 0, 0} costs\n${STRVAR_1 53, 1, 0}. Want it?
+Thanks.\r
+You put the {STRVAR_1 8, 0, 0} in\nthe {STRVAR_1 18, 1, 0} Pocket. {YESNO 0}
+You bought that already. I’m all\nsold out of it. {YESNO 0}
+Uh-oh, you’re short on funds. {YESNO 0}
+Uh-oh, your Bag is chock-full. {YESNO 0}
+We’re closed for the day.
+Come by again sometime.
+Welcome!\rI run the Pokémon Salon!\rI’m the older and better of the two\nHaircut Brothers.\rI can make your Pokémon beautiful for\njust $500.\rGrooming gives a better look.\nYour Pokémon will become friendlier and\fmore beautiful.\rWould you like me to do that? {YESNO 0}
+Which Pokémon should I work on?
+OK! Watch it become beautiful!
+There! All done!
+Is that right? That’s a shame!
+You’ll need more money than that.
+I do only one haircut a day, sorry.\nI’m done for today.
+Welcome to the Pokémon Salon!\rI’m the younger and less expensive of\nthe two Haircut Brothers.\rI’ll spruce up your Pokémon for\njust $300.\rGrooming gives a better look.\nYour Pokémon will become friendlier and\fmore beautiful.\rSo? How about it?
+OK, which Pokémon should I spruce up?
+OK! I hope I do a good job!
+There we go! All done!
+No? How disappointing!
+You’re a little short on funds.
+I have a feeling that it won’t go well\nnext time. Let me close for the day!
+{STRVAR_1 0, 0, 0} looks a little happier.
+{STRVAR_1 0, 0, 0} looks happy.
+{STRVAR_1 0, 0, 0} looks delighted!
+NO ENTRY BEYOND THIS POINT
+{STRVAR_1 3, 0, 0} inserted the\nBasement Key.\r
+Welcome to the Memorial Photo Studio.\nWe are no ordinary studio!\rYou can wear a Team Rocket uniform\nto take a picture!\rWould you like to try it? {YESNO 0}
+Please stand in front of the camera\nonce you have changed.\r
+Are you ready?\rCome on!\nLook cool as if you own the world!\r
+Good job.\rYou can check the picture using the PC.
+You can wear a Team Rocket uniform\nto take a picture!\rWould you like to try it? {YESNO 0}
+...Fair enough.\rNo one should look up to Team Rocket.
+Hmm. Your Photo Album is full.\rAccess your PC and delete\nsome pictures.
+Huh?\nAre you a newcomer, too?\rWe had to recruit new members for the\nRadio Tower mission.\fThen we ran out of uniforms.\rI heard this studio has some, so I\ndecided to “borrow” one.\rSince you are here, why don’t you\nchange as well?\r
+Look at you! Pretty good!\rOh, but you shouldn’t try to scare\npeople walking around looking\flike that, OK?
+                                                          
+Ooh, your Pokémon are so very\ncharming! How enchanting!\rIf you dress up your Pokémon here,\nmake it a sight to behold!\rThen I will even hang a picture of one\nin the other room!\rYou will do this, won’t you? {YESNO 0}
+Oh, you silly thing...\nWhere’s your sense of adventure?
+Ooh, ooh, yes! How nice!\nLet’s not delay!\rShould I explain to you how\nto dress up your Pokémon? {YESNO 0}
+Ooh, I wonder which Pokémon you’ll\ndress up?\r
+Teeheehee...\nI hope you will dress it up adorably!\r
+You have a Fashion Case, don’t you?\nAh, oui, wonderful!\rJust choose the Accessories and put\nthem on your Pokémon.\rWhen you’re done, I will snap a photo\nand put it up beside me!\rIf you mix your records with others,\nyou can get their photos, too!\rI think it will be much easier if \nyou will just try! {YESNO 0}
+Ooh, nice work!\nLet’s display the photo right away!\fOh, but it needs to have a title!\r
+{STRVAR_1 28, 0, 0}...\rOoh, yes, yes! I get it now!\nYour aesthetics shine through!\r
+Oh, non, non, non!\nIt will be forlorn without a title.\r
+Oh... You came out without doing\nanything... How disappointing.
+If you dress up any Pokémon again,\nthe photo here will be changed.\rWould you like to dress up\na Pokémon, dearie? {YESNO 0}
+Why don’t I dress up myself and hang a\npicture...?\rThe title should be...\nHmm...how about “Girl’s Paradise”?
+Ooh, non, non, non! That’s an Egg!\nIt’s too young to be dressing up!\r
+I put your photo up right here.\nIt just looks so perfect there!
+It’s a frame for holding a\nportrait photo.
+                                                                                             
+Team Rocket members in black suits\nhave been running around...\rI was wondering what was going on.\nSo, you took on Team Rocket?\fYou are impressive!\rYou may be able to face the\nlegendary Poké...\r
+Hahaha! Never mind.\rI must go now.\r
+Take a look!\rThis is a drawing for Accessories.\nYou never know what you’re gonna get.\rWould you like to try for $100? {YESNO 0}
+Wow, you are great!\nSo many Accessories and wallpapers!\rGo ahead and dress up your Pokémon!
+Please come again!
+Oh, no!\nYou’re short on funds.
+Here we go!\r..................\n..................\f......\fYou win!\r
+How about a wallpaper?\r
+Come again!
+Oh, you didn’t win. Sorry.\r

@@ -1,0 +1,48 @@
+CANCEL
+{ALN_CENTER}UNOWN Report
+{STRVAR_1 3, 0, 0}
+{ALN_CENTER} Number of UNOWN
+{ALN_CENTER}Current Kinds: {STRVAR_1 51, 0, 0}
+{ALN_CENTER}{STRVAR_1 50, 0, 0}/{STRVAR_1 50, 1, 0}
+Found a strange puzzle in the\nruins. Solved it, and suddenly a\nhole opened up in the ground\nand I dropped into the room\nbelow! Should have known that\nancient ruins would have\nsurprising tricks like that.
+There was a stone statue where I\nfell. The place might have been a\nreception hall. Then, suddenly,\nthe UNOWN appeared. That puzzle\nwas like a key somehow. It woke\nthe UNOWN up from their sleep.\nThese ruins have become difficult.
+If you turn on the radio in the\nruins, you can receive mysterious\nradio waves! It’s proof that the\nUNOWN communicate with each\nother using radio waves!
+There are as many UNOWN as there\nare letters in the alphabet.\nRight now, we’re confirming the\nexistence of 26 kinds of UNOWN.\nDo you think you can find\nall 26 of them?
+It seems that individually they\ndon’t make much sense, but when\nthe various UNOWN are arranged\nin order, they begin to make\nsense. In nature, they seem to be\nscattered around randomly, but\nthe truth is they’re arranged in\na very specific order.
+In this report, the scattered\nUNOWN were sorted and put into\norder by the research-center\nstaff. That makes the UNOWN much\neasier to understand.
+Scratched on the floor of the\nruins are UNOWN letters. Finding\nthe room feels like a huge\ndiscovery! The Researchers were\nvery excited and said they were\ngoing to go check it out.
+There aren’t just 26 different\nkinds of UNOWN. Two more have\nbeen discovered! But that begs\nthe question of where those\nother two kinds are hiding...
+{CURSOR_Y 24}The characters found scratched\non the floor in the small room are\ntranscribed here in this report.
+{CURSOR_Y 72}OUR FRIENDS LOOK\nUP AND HEARTILY\nCONGRATULATE US
+{CURSOR_Y 120}We don’t know what this could\npossibly mean yet.
+The Researchers were saying\nthat they’ll need to examine the\nruins again, but...?
+In the past, it seems that UNOWN\nlived with relatives of humans in\nthese ruins. In the lower levels\nof these ruins is a Pokémon\nstatue. We’ve come to understand\nthat it was those relatives who\nmade that statue.
+The UNOWN are very timid\ncreatures, so they don’t go\noutside the ruins. Even if a bunch\nof people gathered near the\nruins, it is said that the ones who\nwished for UNOWN and humans to\nagain coexist have all left.
+ANGER
+BEAR
+CHASE
+DIRECT
+ENGAGE
+FIND
+GIVE
+HELP
+INCREASE
+JOIN
+KEEP
+LAUGH
+MAKE
+NUZZLE
+OBSERVE
+PERFORM
+QUICKEN
+REASSURE
+SEARCH
+TELL
+UNDO
+VANISH
+WANT
+XXXXX
+YIELD
+ZOOM
+!!!!!
+?????

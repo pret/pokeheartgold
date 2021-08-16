@@ -1,0 +1,13 @@
+        
+{STRVAR_1 8, 0, 0}
+  
+   
+NEXT CARD
+CANCEL
+Would you like to stop scratching\nthis card?
+  
+   
+Start card no. {STRVAR_1 50, 0, 0}!
+       
+Too bad!
+Please select card no. {STRVAR_1 50, 0, 0}.{YESNO 0}

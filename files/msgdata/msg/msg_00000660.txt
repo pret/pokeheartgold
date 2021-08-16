@@ -1,0 +1,11 @@
+Day-C Lady
+Hello...\nOh hello there. Is this {STRVAR_1 3, 0, 0}?\rWhat’s wrong?\nWhy are you calling even though\fyou’re nearby?
+Hello...\nOh hello there. Is this {STRVAR_1 3, 0, 0}?\rWhat’s wrong?\nWhy are you calling even though\fyou’re nearby?
+Hello...\nOh, hello there. Is this {STRVAR_1 3, 0, 0}?\r
+Hello...\nOh, hello there. Is this {STRVAR_1 3, 0, 0}?\r
+Your Pokémon are doing quite well.\r
+By level, your {STRVAR_1 0, 10, 0} has\ngrown by about {STRVAR_1 52, 11, 0}.\r
+By level, your {STRVAR_1 0, 12, 0} has\ngrown by about {STRVAR_1 52, 13, 0}.\r
+We can raise two of your Pokémon.\rIf you’d like us to raise another, stop\nby anytime.
+You should stop by and check on your\nPokémon sometime.
+If you’d like us to look after your\nPokémon, stop by anytime.

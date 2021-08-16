@@ -1,0 +1,20 @@
+Misty: Aww! Why did you have to\nshow up and bug us now?\rDo you know what they call people\nlike you?\rPests! You heard me right, pest!\r...\r...Oh? Those Badges you have...\nAre they Johto Gym Badges?\rIf you have eight, you must be good.\rOK, then. Come to Cerulean Gym.\nI’ll be happy to take you on.\rI’m Misty, the Gym Leader\nin Cerulean.\r
+Misty: I love the sunset here!\nIt gives me courage to go on, you know?\rRight!\rWhy don’t we exchange numbers? {YESNO 0}
+{STRVAR_1 3, 0, 0} registered Misty\nin the Pokégear!
+Misty: Give me a call on Wednesday\nmorning if you want another\fbattle with me!
+Misty: That’s a shame!
+Misty: So you do want to know\nmy number? {YESNO 0}
+Misty: Ah! You have a cool\nWater-type Pokémon!\fCan I take a picture with it? {YESNO 0}
+Misty: Way to go!\rLet’s see a big smile!\r
+Misty: We look good!\nI really like Water-type Pokémon!
+Misty: What a letdown...
+Your Photo Album is full.\rAccess your PC and delete\nsome pictures.
+You took on one more battle than\nyou expected, but you won anyway.\rAs promised, you win a prize.\r
+                    
+But after seeing how you battle,\nI want to see how I’ll fare.\fHow about it? Let me take you on.\r
+I’ve never had a battle this\nwonderful!\rYou and your Pokémon are\nreally strong!
+Sea Cottage\nBill’s House
+Eusine: Puff, puff...\nI am...no match for you.\f...As I predicted.\r..................\n...Go ahead.\rSince I met you in the Burned Tower\nat Ecruteak City, I’ve sort of known\fthat SUICUNE would choose you.\r
+Eusine: Take a look at it!\nSUICUNE is waiting for you!\fIt has been waiting for a battle\fwith a worthy Trainer to whom\fit can entrust itself!
+Eusine: {STRVAR_1 3, 0, 0}...\nYou two are truly amazing...\rI have never seen a battle\nthis intense!\fI have no regrets...\rFarewell, SUICUNE!\nFarewell...{STRVAR_1 3, 0, 0}!\r
+Eusine: {STRVAR_1 3, 0, 0}...\nThere is nothing to be ashamed of.\rNo one can pick on you just because\nyou ran from SUICUNE.\rIt’s just that SUICUNE is such an\namazing Pokémon. That’s all.\fAnyway, SUICUNE is gone again.\fIt’s back to square one...\r

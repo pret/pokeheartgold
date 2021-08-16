@@ -1,0 +1,12 @@
+Did you know?\nThey are constructing a Safari Zone\fjust around the corner.\rThey say it’ll be really fun!\nYou will see many different kinds of\fPokémon, and it’s all you can catch!\rThere is no reason not to go, right?\nI’m so looking forward to the\fSafari Zone!\rFinish the construction already!
+Did you know? There’s a Safari Zone\njust around the corner.\rIt’s really fun!\nYou will see many different kinds of\fPokémon, and it’s all you can catch!\rThere is no reason not to go, right?\nJust around the corner.\rIt won’t take too long.\nWhy don’t you drop by? Won’t you? {YESNO 0}
+All right!\nIt’s just over there.\rGo up the stairs, and you’ll be outside.\nThen it’s only a few paces away!
+It’s such a good deal, you know?
+See? The Safari Zone was fun?\nNo need to say anything!\fYour face says it was really fun!
+What?\nYou want to go to the Safari Zone, too?\rIt’s still under construction.\nPlease come back later.
+I appreciate that everybody is looking\nforward to it. But the lady at the\freception seems a bit too dramatic...\fDon’t get your expectations too high!
+Chuck: Hey, {STRVAR_1 3, 0, 0}!\nGood to see you again! But I never\fexpected to see you around here.\rCould it be...that you are on the way\nto the Embedded Tower?\rThe Embedded Tower is a huge tower\npiercing the sky.\rIt is said to have something to do with\nthe mythical Pokémon that stretched\fthe seas and that Pokémon that widened\fthe lands.\rBut the tower no longer is standing.\r
+Chuck: The way to the Embedded Tower\nis harder than you can imagine.\rYou need to use Rock Climb\nas well as Surf.\r
+Chuck: I see! So you’ve defeated all\nthe Gym Leaders in Kanto as well!\rThen there’s nothing to worry about.\nBelieve in yourself and walk your path.\rYahaha!\r
+Everything Is Thrilling!\nExplore to Find Wild Pokémon!\rWarden Baoba’s Safari Zone\nComing Soon!
+Everything Is Thrilling!\nExplore to Find Wild Pokémon!\rWarden Baoba’s Safari Zone\nUp and Running!

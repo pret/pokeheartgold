@@ -1,0 +1,15 @@
+Bugsy
+Huh? I can’t hear you very well!\nI think we’ve got a bad connection.\rCall me back from somewhere else!
+Hello? How are you?\nI’m doing great as usual!\r
+There are so many stronger Gym\nLeaders than me out there.\rYou’re trying to visit every Gym around\nthe region, aren’t you?\fThat’s great! Keep up the good work!
+On Thursdays around noon, I’m\nusually free.\fIf you want to see my Bug-type Pokémon\fagain, you should call me then!
+Oh, you called at just the right time!\nI’m not doing anything right now.\fWanna battle again? {YESNO 0}
+All right!\rSee you at the Fighting Dojo in\nSaffron City!
+I see...\nWell, there’s no helping that...
+Huh?\nIt’s great that you want to battle,\fbut don’t you have other plans?\rYou should take care of those plans\nfirst, and then give me a call.
+All right, I’ll be waiting for you at the\nFighting Dojo in Saffron City!\fRace you there!
+Yeah, this is Bugsy...\nWhat’s up?\r
+Hey, didn’t we make plans to meet at\nthe Fighting Dojo in Saffron City for a\fbattle? Did you forget or something?
+You know, everyone’s really into\nBug-type Pokémon when they’re kids.\rBut then for some reason, as people\ngrow up, at some point they all start\fto like Bug-type Pokémon less and less.\rHow about you?\nDo you still like Bug-type Pokémon?\rEven if I grow up I’ll never stop liking\nBug-type Pokémon, no way!
+My Gym has such a different trick to it,\ndoesn’t it?\rIt may seem like it was really difficult\nto get a trick like that set up...\fBut the truth is, it was actually\fpretty easy.\rFirst we ran the ropes through the\nGym, then all the Pokémon helped us\ffinish everything else up!
+I think I’ve already mentioned this to\nyou, but did you know I’m doing\fresearch on Bug-type Pokémon?\rThere’s so many different kinds, it’s a\nbit difficult, you know?\rI’m just studying Bug-type Pokémon,\nand yet it’s still this difficult.\rPeople like Professor Elm and\nProfessor Oak who study all the\fdifferent types of Pokémon are really\fsomething else, you know?

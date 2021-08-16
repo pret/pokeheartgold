@@ -1,0 +1,14 @@
+Apparently, there is an odd tree\non Route 36.\rThey say it dances when you\nwater it...\rOh, of course not!\rThis is a Flower Shop, so we do have\nwatering cans and things like that...\rBut I cannot let you have one!\nIt’s too dangerous!\fHmmm...\rWell, maybe if you manage to defeat\nthe Goldenrod Gym Leader, it might\fbe OK...
+Apparently, there is an odd tree\non Route 36.\rThey say it dances when you water it...\rOh, that’s a Plain Badge from\nGoldenrod Gym!\rDid you defeat Whitney?!\nWell, then there’s nothing to worry\fabout, is there?\rI’ll let you use this SquirtBottle for\na while then... Oh, never mind.\fKeep it!\r
+The odd tree is on Route 36.\nPlease be careful!
+Lalala lalalala.\nHave plenty of water, my lovely!\r
+Are you using the Berry Pots?\rYou can pick any of the Berries you\nhave planted.\rDon’t forget to water them!
+How...\n...\f...\f...\fcute!\rWhere did you get that...\noh-so-cute Pokémon?\r
+SHAYMIN, is it?\nIt’s so cute!\rI know!\rLet me give it a flower!\nI have just the one for it!\r
+The Gracidea will look perfect on\nSHAYMIN!\fPut it on SHAYMIN in the daylight.
+Mulch!\nAnyone want Mulch?\rBerries love Mulch.\nIt makes Berries grow faster!\r
+That {STRVAR_1 8, 0, 0} is a mix of\nhigh-quality soil and Pokémon’s...\fer...you know...\rIt’s full of nutrients!\nBerries will surely benefit from it.
+Thank you.\nPlease come again!
+You bought the {STRVAR_1 8, 0, 0}.\r
+Ouch!\nYour Bag is full!
+Well... Excuse me, but\nyou’re short of money.

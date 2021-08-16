@@ -1,0 +1,118 @@
+Kanto
+Johto
+{STRVAR_1 4, 0, 0}
+{STRVAR_1 28, 0, 0}
+Choose your destination.
+Fly to {STRVAR_1 4, 0, 0}?
+Close
+Fly
+Quit
+                       
+A fairly new and quiet town.\nIt’s a small and pretty place.
+A beautiful city that is enveloped\nin green year-round.
+A quiet city nestled between\nrugged mountains and rocks.
+A beautiful city with flowing\nwater and blooming flowers.
+A small town covered in a\nbeautiful hue of purple.
+A southern city that is bathed\nin orange by the setting sun.
+A rich, rainbow-colored city where\npeople and Pokémon gather.
+A historic village that has\nbecome new.
+A town used to be here until it\nwas swept away by an eruption.
+The fate of many Trainers aiming for\nthe top rests here.
+The biggest city in Kanto, shining\nwith a golden light.
+A town where the wind blows and\ntells of impending change.
+A city where you can smell small\nflowers and a sea breeze.
+This old village is still surrounded\nby trees and other scenery.
+A town where people and Pokémon\nlive together in simple harmony.
+A beachside city that has\nbenefitted greatly from the sea.
+A developing city where people and\nPokémon come and go as they like.
+A city where you can hear the\nmelody of the sea.
+A city that even now bears the\nmarks of its history.
+A town with a suspicious air to it.\nIt’s a hiding place for ninjas.
+A huge lake full of clear, blue water.
+A mysterious mountain village cut\ninto a rock face.
+A mountain where something mysterious\nawaits you underfoot.
+A tunnel dug by DIGLETT connecting\nVermilion City to Pewter City.
+A mountain where a star fell.\nIt now holds a mysterious power.
+A cave that had collapsed once.\nIt has been reconstructed.
+A dark tunnel that begins in Lavender\nTown and comes out in Cerulean City.
+This used to be the location of the\nSafari Zone, but is now the Pal Park.
+Two small islands lightly floating in\nthe ocean.
+A tower where they study diligently\nto learn to live with Pokémon.
+A tower that’s said to have a\nlegendary Pokémon that lands there.
+A path said to always be bathed in\nsunset, no matter what the season.
+A tower that was hit by lightning, and\nsubsequently caught fire and burned.
+A spacious and beautiful park. It’s\nconnected to the Pokéathlon Dome.
+An old building that has been reused\nas a radio broadcasting tower.
+A place where you can find a\nformer adventure.
+Deep underground, it’s connected to\nthe ocean. The water flows here.
+When SLOWPOKE are thirsty, they come\nhere to drink.
+It shines brightly over the ocean with\nthe power of AMPHAROS.
+A Battle Stadium with five different\nsets of rules to enjoy.
+A place where people from all over\ncome to show off their strength.
+                      
+A large forest full of trees that are\nused to make charcoal.
+                     
+A naturally large cavern that is\nincredibly spacious.
+A cave that connects Route 44 to\nBlackthorn City.
+Four islands that are protected by\nwhirlpools and are difficult to reach.
+A hallowed mountain that rises\nbetween the Johto and Kanto regions.
+A dark, difficult-to-navigate tunnel\nthat runs beneath the Johto region.
+A road that tests Trainers\naiming at the Pokémon League.
+                   
+The Tohjo waterfall that links the\nKanto and Johto regions.
+A forest filled with nature and\nBug-type Pokémon.
+A place where Pokémon can compete\nagainst each other’s strengths.
+                      
+A snow-covered area of old legends,\nsurrounded by a wall of snow.
+                   
+The plant that generates all the\nenergy for the Kanto region.
+A place where you can experience\nwild thrills safely.
+A boat that traverses ocean paths\nusing hydraulic power.
+A country road full of greenery and\nrough paths.
+A path that winds and bends from the\nforest’s entrance.
+A road where many rocks have fallen\nfrom the sky to create craters.
+A one-way road down a hill that has\na gentle slope and is fun to traverse.
+A road running north of Saffron City\nconnecting to the Underground Path.
+A road running south of Saffron City\nconnecting to the Underground Path.
+A short road that leads to the\nblocked-off Underground Path.
+A short road that leads to the\nblocked-off Underground Path.
+A road that forms a maze crossing a\nsmall, rocky mountain.
+A road that passes along the canal\nand comes out at the Power Plant.
+A grassy path with a gentle,\nrefreshing breeze.
+A bridge known for its fishing.\nIt’s also called “Silence Bridge.”
+A difficult, narrow path where many\nTrainers await you.
+A pleasant coastal road where the\nbreeze blows and waves roar.
+A path that cuts through the row of\ntrees to come out on the coastline.
+The northern starting point of\nCycling Road.
+An easy path of Cycling Road running\nabove the sea.
+The southern ending point of\nCycling Road.
+A coastal road littered with rocks due\nto Cinnabar Island’s volcano eruption.
+A popular path with swimmers.\nThe Seafoam Islands are also here.
+A coastal road where the only threat\nmight be the volcano on the horizon.
+A path to Victory Road that\neventually becomes impassable.
+                    
+A beautiful bridge that stretches\nacross a river.
+A path that winds through the forest\nand comes out overlooking the sea.
+An unimaginably difficult mountain road\nthat gives the impression of a test.
+A road that crosses from Johto to\nthe Kanto region, like a new journey.
+A vacant and hidden mountain road\nthat continues to Mt. Silver.
+A road that begins a journey. The\nroad smells like freshly cut grass.
+A grassy path where you can battle\nother young Trainers.
+A short, nostalgic path winding\nthrough nature.
+A path crossed by the Magnet Train\nbridge--nature meets technology.
+A difficult and always rainy path\nthat comes out in a cave.
+A lush, green path, even though it’s\nright next to a city.
+A bright path with a lake that’s easy\non the eyes and easy to traverse.
+A green and densely overgrown path\nthat forks in two directions.
+A popular route for Trainers, marked\nby three Apricorn trees.
+A path that weaves through trees\nand comes out at a farm.
+A downhill path that passes through a\ngrassy and breezy plain.
+You can hear the waves on this path\nfrom west Olivine City to the sea.
+A rough spot in the sea where\nwhirlpools block your path.
+A small path opened at the base of\nchallenging Mt. Mortar.
+A woodland path that comes out at a\nlake. Beware the greedy gate.
+A wonderful path with a few pleasant\nsprings and abundant greenery.
+A winding road by a river, but called\n“Mountain Road.”
+A way home that runs from the base of\nthe mountain to the plains.
+A road on a cliff that strikes fear in\nthe hearts of those who dare to pass.
+A pleasant path from the base of the\nmountain to the Safari Zone.

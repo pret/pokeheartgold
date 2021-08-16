@@ -1,0 +1,20 @@
+I win!\n{STRVAR_1 28, 0, 0}!
+I won!\nI won with {STRVAR_1 28, 0, 0}!
+{STRVAR_1 28, 0, 0} is strong,\nisn’t it?
+It’s {STRVAR_1 28, 0, 0}\n{STRVAR_1 28, 1, 0} after all!
+{STRVAR_1 28, 0, 0}, yay!
+Yay, {STRVAR_1 28, 0, 0}!\n{STRVAR_1 28, 1, 0}!
+Sorry, it’s {STRVAR_1 28, 0, 0}\n{STRVAR_1 28, 1, 0}.
+{STRVAR_1 28, 0, 0}!\nThank you!
+The way I feel now is\n{STRVAR_1 28, 0, 0}!
+I wanted people to look at\nmy {STRVAR_1 28, 0, 0}!
+It’s all thanks to\n{STRVAR_1 28, 0, 0}.
+I might have won with\n{STRVAR_1 28, 0, 0}!
+I get the happiest with\n{STRVAR_1 28, 0, 0}!
+{STRVAR_1 28, 0, 0} secured\nthe victory!
+This {STRVAR_1 28, 0, 0}\nwas really good!
+{STRVAR_1 28, 0, 0}\nwas fun, wasn’t it?
+Huh?\n{STRVAR_1 28, 0, 0}?!
+{STRVAR_1 28, 0, 0} is the toughest!
+Happy!\n{STRVAR_1 28, 0, 0} happy!
+How’s that?!\n{STRVAR_1 28, 0, 0}!

@@ -1,0 +1,63 @@
+Um...\nWho did you say I was again?\r...\n...\rOh, yes, I remember now!\nI’m the Move Deleter!\r
+You’ve come to make me force your\nPokémon to forget some moves? {YESNO 0}
+Which Pokémon should forget a move?\r
+Remember me if there are moves that\nneed to be forgotten.
+That Pokémon knows only one move,\nso it can’t be forgotten...\r
+What? That’s an Egg.\nNo Egg should know any moves.\r
+OK, then.\nWhich move should be forgotten?\r
+Hm! The move {STRVAR_1 6, 0, 0}?\nShould that move be forgotten? {YESNO 0}
+It worked perfectly!\rYour Pokémon has forgotten the move\n{STRVAR_1 6, 0, 0} completely.
+Me?\nI’m the Pokémon Move Maniac.\rI know every move that Pokémon learn\nwhile they’re leveling up, and I can\fmake Pokémon remember those moves.\rI can make a Pokémon of yours remember\na move if you’d like.\rBut...ahem! It’ll cost you.\rI’ll make a Pokémon remember a move\nif you’ll trade me a Heart Scale.
+Ha! That’s it! That’s an honest-to-\ngoodness Heart Scale!\rLet me guess, you want me to teach\none of your Pokémon a move?\r
+If any of your Pokémon needs to learn a\nmove, come back with a Heart Scale.
+Which Pokémon needs tutoring?\r
+Which move should I make it remember?\r
+Sorry...\rThere isn’t any move I can make\nthat Pokémon remember.
+Hunh?\rDon’t you think it’d be tough for\nan Egg to remember a move?\rIt’s not even hatched.
+                        
+                 
+                                 
+                     
+                                                                                           
+                                  
+                           
+                      
+                                                                               
+{STRVAR_1 3, 3, 0} handed over one\nHeart Scale in exchange.
+Hohoho...\nThey call me Grandma Wilma.\rI sense a slight talent as a\nDragon Tamer in you.\rWould you like me to teach a move\nto one of your Pokémon? {YESNO 0}
+Ah, it is you again...\rWould you like me to teach the best\nDragon-type move I know to one of\fyour Pokémon? {YESNO 0}
+Well, perhaps if you change your\nmind, do come back.
+I see...\nI like your sense of adventure.\rHowever, none of the Pokémon with\nyou now can learn the move.
+Fine, fine, now pick the Pokémon\nI should teach the move to.\r
+Sorry to disappoint you...\rThat Pokémon you have can learn this\nmove, but it hasn’t come to trust\fyou fully yet...\rUntil then, I can’t make it learn\nthis move.
+Sorry to disappoint you...\nThat Pokémon can’t learn this move.
+Hmm...\rTeaching a move to an Egg is\na challenge that’s beyond me.
+Oh? That Pokémon already\nknows {STRVAR_1 6, 0, 0}.
+                            
+                         
+                                                                                        
+                             
+                         
+                      
+                                                                            
+Draco Meteor’s destructive power\nis awe inspiring.\rHowever, using it will also lower\nthe user’s Special Attack.
+Your quest for power has brought\nyou here...\rVery well.\rLet me reward your passion with some\nabsolutely astounding moves.\rThey’re the ultimate moves!\rShall I teach them to\nyour Pokémon? {YESNO 0}
+The ultimate moves!\rShall I teach them to\nyour Pokémon? {YESNO 0}
+To which Pokémon should I teach\na move?\r
+Hmm... Well, that is fine, as well.\nVisit if you have a change of heart.
+                          
+That Pokémon can’t learn a move!\nRead the memo there! Keh!
+Teach a move to an Egg?\nImpossible even for me! Keh!
+You’ve not bonded strongly enough\nwith your Pokémon! Keh!
+That Pokémon already knows the move\nI’ve offered to teach! Keh!
+I should teach Blast Burn to\nyour {STRVAR_1 0, 0, 0}? {YESNO 0}
+I should teach Hydro Cannon to\nyour {STRVAR_1 0, 0, 0}? {YESNO 0}
+I should teach Frenzy Plant to\nyour {STRVAR_1 0, 0, 0}? {YESNO 0}
+                         
+                                                                                        
+                      
+                                                                            
+                             
+                         
+To the Pokémon listed here,\nthe ultimate moves may be taught!\rThe blazing Fire-type Pokémon\n{CURSOR_X 7}CHARIZARD TYPHLOSION\f{CURSOR_X 7}BLAZIKEN INFERNAPE\rThe restless Water-type Pokémon\n{CURSOR_X 7}BLASTOISE FERALIGATR\f{CURSOR_X 7}SWAMPERT EMPOLEON\rThe quiet Grass-type Pokémon\n{CURSOR_X 7}VENUSAUR MEGANIUM\f{CURSOR_X 7}SCEPTILE TORTERRA
+Well then, I will teach {STRVAR_1 0, 0, 0}\na move...\r

@@ -1,0 +1,2 @@
+OK!\nYou must be the last passenger.\r
+Huh?\nThe ship won’t go anywhere today.

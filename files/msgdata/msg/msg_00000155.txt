@@ -1,0 +1,34 @@
+Bag ON
+Bag OFF
+Game clear ON
+Game clear OFF
+Journal ON
+Journal OFF
+Special Saving Process ON
+Special Saving Process OFF
+Strength ON
+Strength OFF
+Safari ON
+Safari OFF
+Dash ON/OFF
+T29 Rage ON
+T29 Rage OFF
+T28 Mahogany ON
+T28 Mahogany OFF
+Show L04
+Hide L04
+Show D18
+Hide D18
+Dist. flag 1 ON
+Dist. flag 1 OFF
+Dist. flag 2 ON
+Dist. flag 2 OFF
+Dist. flag 3 ON
+Dist. flag 3 OFF
+T25 Radio 01
+T25 Radio 02
+HO-OH Event A ON
+LUGIA Event A ON
+5 Maiko Battle
+Pkth RecWin All
+Pkth RecWin Clear

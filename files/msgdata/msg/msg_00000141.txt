@@ -1,0 +1,16 @@
+This is the “Trust” room.\rIt is to show the mutual reliance\nbetween Pokémon and people.
+Only the Pokéathletes who have\ncome first in five courses with\fone Pokémon are allowed here.
+This is the “Potential” room.\nPlease go ahead.
+To win Medals with different kinds of\nPokémon, it is essential to believe in\fyour Pokémon.
+I would love to see my own shoes here!
+This Dome contains so many\nother Domes...
+{STRVAR_1 3, 0, 0} checked the Medal!\r
+Those who have participated in the\nPokéathlon 50 times are commemorated\fhere for their never-yielding spirits.
+It’s your jersey with\nyour autograph!
+Those who have dashed 5,000 times\nare commemorated here for their\fachievement in breaking the\flegendary record.
+Cool shoes!\nAnd they’re your model!
+Those who have switched 200 times\nare commemorated here for great\fteamwork and their bond with\ftheir Pokémon.
+It’s a cool flag!\nAnd it’s yours!
+Pokéathlon Medals...\rThose are the proof of the hard work\nof both Pokéathletes and Pokémon.\rThose Pokémon that have won all five\nMedals are called “Medalist Pokémon”\fto commemorate the trust they’ve\fearned from their Pokéathlete.
+ABRA: ...\n...\f...\rIt must be asleep!
+DRATINI: Achoo!

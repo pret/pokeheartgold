@@ -1,0 +1,15 @@
+Janine
+Sorry? I’m afraid I can’t hear you very\nwell. Must be a bad connection.\rCan you call again from somewhere else?
+Hello, hello, hello...\nOh, hello, what are you up to?\fI’m just fine, thanks!\r
+Many of the Gym Leaders are much\nstronger than I am. We’ve just got to\fwork harder!
+My schedule’s fairly open on Monday\nafternoons. Would you mind calling\fme back then?
+I can hear you clearly now.\nSay, my schedule just opened up.\fWould you like to meet for\fa battle or something? {YESNO 0}
+Super!\nI’m burning up, ready to fight!\rI’ll be waiting for you at the\nFighting Dojo in Saffron City!
+Oh, I getcha...\nYou’re afraid to face me...\fNah, that’s not true, right?
+You’re sure you want to meet me for\na battle?\rDon’t you have kind of a full schedule,\nwith other appointments?
+I’m waiting for you at the Fighting Dojo\nin Saffron City!\fCome on! Move like the wind!
+This is Janine.\nHow are you doing?\r
+Remember, you promised to meet me at\nthe Fighting Dojo in Saffron City.\fI’m ready whenever you are...like, now!
+Hey, can I talk to you about my dad?\nOnly if you want to hear, though.\rSeriously? I might talk your ear off\nif I’m not careful!
+See, I’ve been training with my dad\nsince I was little--to be a Gym Leader.\rI haven’t even considered taking any\nother path, really.\rIt’s my dream to someday become a\nbetter Gym Leader than Dad!
+Falkner in Violet City...\nHe’s talking about his dad all the time!\rSeriously, he’s such a daddy’s boy,\nhe needs to become his own person\fsometime, you know?\rWhat do you mean, I should talk?\fHa ha--mind your own business!

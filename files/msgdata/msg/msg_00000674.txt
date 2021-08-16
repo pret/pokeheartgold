@@ -1,0 +1,12 @@
+Huey
+Cool! That’s the first time I’ve lost in\na while!\rHey, give me your phone number.\rYou’d be fun to battle, so I’ll call\nyou when I get stronger! {YESNO 0}
+Hey, let’s battle again!
+Looks like you’re a wimp...
+Hey, give me your phone number.\rYou’d be fun to battle, so I’ll call\nyou when I get stronger! {YESNO 0}
+Man! You’re as tough as ever!\rI’ve battled you over and over, but\n{STRVAR_1 3, 0, 0}, I haven’t won once.\rI bought tons of items to toughen up my\nPokémon, but to no avail...\rItems alone aren’t the answer.\nThat must be what it is...\rHere, take this, {STRVAR_1 3, 0, 0}.\nI won’t be needing it anymore...\r
+Wow, when you call from inside the\nLighthouse, your voice just kind of\fechoes. It’s kind of cool!
+How are your Pokémon doing?\nMy Pokémon are a bit too energetic.\r{STRVAR_1 0, 10, 0}, especially.\rEvery time it spots a Trainer, it just\ncharges ahead into battle!\rIt gets to be a bit much for me!\nLater!
+My {STRVAR_1 0, 10, 0}’s looking tougher\nthan ever.\rIt looks even tougher than me!\nLater!
+Hey, I challenge you to a battle!\nIt won’t be like last time!\r{STRVAR_1 4, 3, 0}’s where I’m waiting\nfor you. Hustle over here pronto!
+Hey, you’d better not have forgotten\nabout our battle!\r{STRVAR_1 4, 3, 0}!\nHustle over quick! I’m waiting!
+We have to battle again sometime.\nYou can bet I’m going to keep\fchallenging you till I win.
