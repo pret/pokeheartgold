@@ -90,8 +90,8 @@ protected:
             _out[_pair.second] = _pair.first;
         }
     }
-    string ReadTextFile(string& filename);
-    void WriteTextFile(string& filename, string const & contents);
+    static string ReadTextFile(string& filename);
+    static void WriteTextFile(string& filename, string const & contents);
     void ReadCharmap(string& charmapfname);
 public:
     MessagesConverter(string &_textfilename, string &_keyfilename, string &_charmapfilename, string &_binfilename) :

@@ -44,14 +44,14 @@ u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
                 uint16_t command_i = cmdmap[command];
                 encoded += (char16_t)(0xFFFE);
                 vector<uint16_t> args;
-                if (pos != enclosed.npos) {
+                if (pos != string::npos) {
                     do {
                         k = enclosed.find(',');
                         string num = enclosed.substr(0, k);
                         uint16_t num_i = stoi(num);
                         args.push_back(num_i);
                         enclosed = enclosed.substr(k + 1);
-                    } while (k++ != string::npos);
+                    } while (k != string::npos);
                     if (command.rfind("STRVAR_", 0) == 0) {
                         command_i |= args[0];
                         args.erase(args.begin());
@@ -116,7 +116,7 @@ void MessagesEncoder::WriteMessagesToBin(string& filename) {
         throw ofstream::failure("Unable to open file \"" + filename + "\" for writing");
     }
     outfile.write((char *)&header, sizeof(header));
-    for (int i = 1; i <= alloc_table.size(); i++) {
+    for (int i = 1; i <= (int)alloc_table.size(); i++) {
         alloc_table[i - 1].encrypt(header.key, i);
         EncryptU16String(outfiles[i - 1], i);
     }
@@ -138,7 +138,7 @@ void MessagesEncoder::ReadInput()
 void MessagesEncoder::Convert() {
     MsgAlloc alloc {(uint32_t)(sizeof(header) + sizeof(MsgAlloc) * header.count), 0};
     int i = 1;
-    for (auto message : files) {
+    for (const auto& message : files) {
         u16string encoded = EncodeMessage(message, i);
         alloc.length = encoded.size();
         outfiles.push_back(encoded);

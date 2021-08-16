@@ -17,18 +17,18 @@ class MessagesDecoder : public MessagesConverter
 
     void ReadMessagesFromBin(string& filename);
     void WriteMessagesToText(string& filename);
-    void WriteBinaryFile(string& filename, void* data, streamsize size);
-    u16string DecodeTrainerNameMessage(u16string const &message);
+    static void WriteBinaryFile(string& filename, void* data, streamsize size);
+    static u16string DecodeTrainerNameMessage(u16string const &message);
     string DecodeMessage(u16string& message, int& i);
 public:
     MessagesDecoder(string &_textfilename, string &_keyfilename, string &_charmapfilename, string &_binfilename) : MessagesConverter(_textfilename, _keyfilename, _charmapfilename, _binfilename) {
         CreateInverseMap(charmap, charmap_dec);
         CreateInverseMap(cmdmap, cmdmap_dec);
     }
-    void ReadInput();
-    void Convert();
-    void WriteOutput();
-    ~MessagesDecoder() {}
+    void ReadInput() override;
+    void Convert() override;
+    void WriteOutput() override;
+    ~MessagesDecoder() override = default;
 };
 
 

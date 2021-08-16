@@ -38,4 +38,4 @@ void MessagesConverter::ReadCharmap(string& filename) {
     }
 }
 
-MessagesConverter::~MessagesConverter() {}
+MessagesConverter::~MessagesConverter() = default;

@@ -43,7 +43,7 @@ void MessagesDecoder::ReadMessagesFromBin(string& filename)
         debug_printf("msg %d: at 0x%08X, count %d\n", i, alloc.offset, alloc.length);
         u16string str;
         str.resize(alloc.length);
-        infile.read((char*)str.data(), (streamsize)(2 * alloc.length));
+        infile.read((char*)str.data(), (2 * alloc.length));
         DecryptU16String(str, i);
         outfiles.push_back(str);
         i++;
@@ -56,7 +56,7 @@ u16string MessagesDecoder::DecodeTrainerNameMessage(u16string const &message)
     int bit = 0;
     u16string out = u"\uf100";
     auto src_p = message.cbegin() + 1;
-    char16_t cur_char = 0;
+    char16_t cur_char;
     do {
         cur_char = ((*src_p >> bit) & 0x1FF);
         bit += 9;
@@ -153,9 +153,9 @@ void MessagesDecoder::ReadInput()
 
 void MessagesDecoder::Convert()
 {
-    for (size_t i = 0; i < outfiles.size(); i++) {
+    for (int i = 0; i < (int)outfiles.size(); i++) {
         u16string message = outfiles[i];
-        string decoded = DecodeMessage(message, (int&)i);
+        string decoded = DecodeMessage(message, i);
         files.push_back(decoded);
     }
 }

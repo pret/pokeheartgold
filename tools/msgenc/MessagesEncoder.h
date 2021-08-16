@@ -12,10 +12,10 @@ class MessagesEncoder : public MessagesConverter
     u16string EncodeMessage(const string& message, int & i);
 public:
     MessagesEncoder(string &_textfilename, string &_keyfilename, string &_charmapfilename, string &_binfilename) : MessagesConverter(_textfilename, _keyfilename, _charmapfilename, _binfilename) {}
-    void ReadInput();
-    void Convert();
-    void WriteOutput();
-    ~MessagesEncoder() {}
+    void ReadInput() override;
+    void Convert() override;
+    void WriteOutput() override;
+    ~MessagesEncoder() override = default;
 };
 
 
