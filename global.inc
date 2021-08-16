@@ -24647,7 +24647,7 @@
 .public sub_0201FA34
 .public sub_0201FB1C
 .public MsgArray_GetControlCode
-.public sub_0201FB90
+.public MsgArray_ControlCodeGetField
 .public sub_0201FBB8
 .public sub_0201FC30
 .public sub_0201FCAC

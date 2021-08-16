@@ -22852,8 +22852,8 @@ _0201FB8C:
 	pop {r3, pc}
 	thumb_func_end sub_0201FB5C
 
-	thumb_func_start sub_0201FB90
-sub_0201FB90: ; 0x0201FB90
+	thumb_func_start MsgArray_ControlCodeGetField
+MsgArray_ControlCodeGetField: ; 0x0201FB90
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -22874,7 +22874,7 @@ _0201FBAC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0201FBB4: .word 0x0000FFFE
-	thumb_func_end sub_0201FB90
+	thumb_func_end MsgArray_ControlCodeGetField
 
 	thumb_func_start sub_0201FBB8
 sub_0201FBB8: ; 0x0201FBB8

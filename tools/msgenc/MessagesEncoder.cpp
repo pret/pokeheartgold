@@ -44,17 +44,18 @@ u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
                 uint16_t command_i = cmdmap[command];
                 encoded += (char16_t)(0xFFFE);
                 vector<uint16_t> args;
-                do {
-                    k = enclosed.find(',');
-                    string num = enclosed.substr(0, k);
-                    uint16_t num_i = stoi(num);
-                    args.push_back(num_i);
-                    enclosed = enclosed.substr(k + 1);
-                } while (k++ != string::npos);
-
-                if (command == "STRVAR") {
-                    command_i |= args[0];
-                    args.erase(args.begin());
+                if (pos != enclosed.npos) {
+                    do {
+                        k = enclosed.find(',');
+                        string num = enclosed.substr(0, k);
+                        uint16_t num_i = stoi(num);
+                        args.push_back(num_i);
+                        enclosed = enclosed.substr(k + 1);
+                    } while (k++ != string::npos);
+                    if (command.rfind("STRVAR_", 0) == 0) {
+                        command_i |= args[0];
+                        args.erase(args.begin());
+                    }
                 }
                 encoded += (char16_t)(command_i);
                 encoded += (char16_t)(args.size());
@@ -79,7 +80,7 @@ u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
             }
             if (code == 0 && substr != "\\x0000") {
                 stringstream ss;
-                ss << "unrecognized character: file " << i << " pos " << (j + 1);
+                ss << "unrecognized character in " << textfilename << ": line " << i << " pos " << (j + 1) << " value " << substr;
                 throw runtime_error(ss.str());
             }
             if (is_trname) {
@@ -135,18 +136,15 @@ void MessagesEncoder::ReadInput()
 }
 
 void MessagesEncoder::Convert() {
+    MsgAlloc alloc {(uint32_t)(sizeof(header) + sizeof(MsgAlloc) * header.count), 0};
     int i = 1;
     for (auto message : files) {
         u16string encoded = EncodeMessage(message, i);
-        MsgAlloc alloc {0, 0};
-        if (i > 1) {
-            alloc.offset = alloc_table[i - 2].offset + alloc_table[i - 2].length * 2;
-        } else {
-            alloc.offset = sizeof(header) + sizeof(MsgAlloc) * header.count;
-        }
         alloc.length = encoded.size();
         outfiles.push_back(encoded);
+        debug_printf("msg %d: at 0x%08X, count %d\n", i, alloc.offset, alloc.length);
         alloc_table.push_back(alloc);
+        alloc.offset += alloc.length * 2;
         i++;
     }
 }

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "MessagesDecoder.h"
 
 static string ConvertIntToHexStringN(unsigned value, StrConvMode mode, int n) {
@@ -37,11 +38,12 @@ void MessagesDecoder::ReadMessagesFromBin(string& filename)
     alloc_table.resize(header.count);
     infile.read((char*)alloc_table.data(), (streamsize)(sizeof(MsgAlloc) * header.count));
     int i = 1;
-    for (auto & x : alloc_table) {
-        x.decrypt(header.key, i);
+    for (auto & alloc : alloc_table) {
+        alloc.decrypt(header.key, i);
+        debug_printf("msg %d: at 0x%08X, count %d\n", i, alloc.offset, alloc.length);
         u16string str;
-        str.resize(x.length);
-        infile.read((char*)str.data(), (streamsize)(2 * x.length));
+        str.resize(alloc.length);
+        infile.read((char*)str.data(), (streamsize)(2 * alloc.length));
         DecryptU16String(str, i);
         outfiles.push_back(str);
         i++;
@@ -88,30 +90,29 @@ string MessagesDecoder::DecodeMessage(u16string &message, int &i) {
             code = message[j++];
             string command;
             bool is_strvar = false;
-            if ((code & 0xFF00) == 0x0100) {
+            if (find(strvar_codes.cbegin(), strvar_codes.cend(), code & 0xFF00) != strvar_codes.cend()) {
                 is_strvar = true;
-                command = "STRVAR";
+                command = "STRVAR_" + ConvertIntToHexStringN((code >> 8), STR_CONV_MODE_LEFT_ALIGN, 2);
             }
             else if (cmdmap_dec.find(code) != cmdmap_dec.end()) {
                 command = cmdmap_dec[code];
-            } else command = ConvertIntToHexStringN(code, STR_CONV_MODE_LEADING_ZEROS, 4);
+            } else {
+                throw runtime_error("Invalid control code in " + binfilename + ": " + ConvertIntToHexStringN(code, STR_CONV_MODE_LEADING_ZEROS, 4) + " at line " + to_string(i) + ":" + to_string(j));
+            }
             decoded += command;
             int nargs = message[j++];
             for (int k = 0; k < nargs; k++) {
                 decoded += ' ';
                 if (is_strvar) {
-                    decoded += ConvertIntToHexStringN(code & 0xFF, STR_CONV_MODE_LEADING_ZEROS, 2);
-                    nargs--;
-                    k--;
+                    decoded += ConvertIntToHexStringN(code & 0xFF, STR_CONV_MODE_LEADING_ZEROS, 2) + ", ";
                     is_strvar = false;
                 }
-                else
-                    decoded += ConvertIntToHexStringN(message[j + k], STR_CONV_MODE_LEADING_ZEROS, 4);
+                decoded += ConvertIntToHexStringN(message[j + k], STR_CONV_MODE_LEADING_ZEROS, 4);
                 if (k != nargs - 1)
                     decoded += ',';
             }
             decoded += '}';
-            j += nargs - ((code & 0xFF00) != 0x0100);
+            j += nargs - 1;
         }
         else if (code == 0xF100) {
             decoded += "{TRNAME}";
@@ -119,7 +120,7 @@ string MessagesDecoder::DecodeMessage(u16string &message, int &i) {
             is_trname = true;
         }
         else {
-            throw runtime_error("invalid character " + ConvertIntToHexStringN(code, STR_CONV_MODE_LEADING_ZEROS, 4) + " at " + to_string(i) + ":" + to_string(j));
+            throw runtime_error("invalid character in " + binfilename + ": " + ConvertIntToHexStringN(code, STR_CONV_MODE_LEADING_ZEROS, 4) + " at " + to_string(i) + ":" + to_string(j));
         }
     }
     return decoded;

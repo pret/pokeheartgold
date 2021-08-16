@@ -1,6 +1,7 @@
 #ifndef GUARD_MESSAGESCONVERTER_H
 #define GUARD_MESSAGESCONVERTER_H
 
+#include "util.h"
 #include <string>
 #include <fstream>
 #include <map>
@@ -64,15 +65,26 @@ protected:
     vector<u16string> outfiles;
 
     map<string, uint16_t> cmdmap = {
-        {"STRVAR", 0x0100},
+        {"STRVAR_1", 0x0100},
+        {"STRVAR_3", 0x0300},
+        {"STRVAR_4", 0x0400},
+        {"STRVAR_34", 0x3400},
         {"YESNO", 0x200},
         {"PAUSE", 0x201},
         {"WAIT", 0x202},
         {"CURSOR_X", 0x203},
         {"CURSOR_Y", 0x204},
+        {"ALN_CENTER", 0x205},
+        {"ALN_RIGHT", 0x206},
+        {"UNK_207", 0x207},
+        {"UNK_208", 0x208},
         {"COLOR", 0xFF00},
-        {"SIZE", 0xFF01}
+        {"SIZE", 0xFF01},
+        {"UNK_FF02", 0xFF02},
     };
+
+    vector<uint16_t> strvar_codes = {0x0100, 0x0300, 0x0400, 0x3400};
+
     template <typename key_type, typename mapped_type> void CreateInverseMap(map<key_type, mapped_type>const& _in, map<mapped_type, key_type>& _out) {
         for (auto _pair : _in) {
             _out[_pair.second] = _pair.first;

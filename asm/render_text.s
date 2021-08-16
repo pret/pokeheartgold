@@ -362,7 +362,7 @@ _02002420:
 _02002422:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201FB90
+	bl MsgArray_ControlCodeGetField
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	cmp r0, #0xff
@@ -402,7 +402,7 @@ _0200245A:
 _02002470:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201FB90
+	bl MsgArray_ControlCodeGetField
 	lsl r0, r0, #0x10
 	lsr r3, r0, #0x10
 	ldrh r1, [r4, #0xc]
@@ -466,7 +466,7 @@ _020024EA:
 _020024F0:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201FB90
+	bl MsgArray_ControlCodeGetField
 	add r1, r4, #0
 	add r1, #0x2a
 	strb r0, [r1]
@@ -482,7 +482,7 @@ _020024F0:
 _02002512:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201FB90
+	bl MsgArray_ControlCodeGetField
 	strh r0, [r4, #0x2e]
 	ldr r0, [r4]
 	bl sub_0201FB1C
@@ -493,16 +493,16 @@ _02002512:
 _0200252A:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201FB90
+	bl MsgArray_ControlCodeGetField
 	strh r0, [r4, #0xc]
 	b _02002622
 _02002536:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201FB90
+	bl MsgArray_ControlCodeGetField
 	strh r0, [r4, #0xe]
 	b _02002622
-_02002542:
+_02002542: ; 0x0205
 	ldr r0, [r4, #4]
 	bl GetWindowWidth
 	lsl r5, r0, #3
@@ -544,7 +544,7 @@ _0200258A:
 _02002590:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201FB90
+	bl MsgArray_ControlCodeGetField
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	cmp r0, #0x64
@@ -573,7 +573,7 @@ _020025CC: .word 0x0000FFFC
 _020025D0:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201FB90
+	bl MsgArray_ControlCodeGetField
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	mov r0, #0xfe

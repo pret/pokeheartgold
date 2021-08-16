@@ -1981,7 +1981,7 @@ _0200CBD8:
 	beq _0200CC14
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201FB90
+	bl MsgArray_ControlCodeGetField
 	add r4, r0, #0
 	ldr r0, [r7]
 	cmp r4, r0
