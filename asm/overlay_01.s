@@ -13677,7 +13677,7 @@ _021EC14A:
 	ldr r0, [r4, r0]
 	mov r1, #2
 	ldr r0, [r0, #8]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [sp, #0x14]
 	bl FreeToHeap
 	mov r0, #0
@@ -19201,7 +19201,7 @@ ov01_021EEB4C: ; 0x021EEB4C
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0xc]
 	mov r0, #4
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r6, r0, #0
 	mov r0, #0x10
 	mov r1, #4
@@ -19246,7 +19246,7 @@ ov01_021EEB4C: ; 0x021EEB4C
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add r0, r5, #0
@@ -19337,7 +19337,7 @@ ov01_021EEC7C: ; 0x021EEC7C
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	mov r0, #4
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [sp, #0x10]
 	mov r0, #0x10
 	mov r1, #4
@@ -19411,7 +19411,7 @@ _021EED04:
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [sp, #0x10]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
@@ -19555,7 +19555,7 @@ ov01_021EEE44: ; 0x021EEE44
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0xc]
 	mov r0, #4
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r6, r0, #0
 	mov r0, #0x10
 	mov r1, #4
@@ -19633,7 +19633,7 @@ ov01_021EEE44: ; 0x021EEE44
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add r0, r5, #0
@@ -20092,7 +20092,7 @@ ov01_021EF268: ; 0x021EF268
 	mov r3, #1
 	bl ov01_021EF5C8
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r1, _021EF2DC ; =ov01_021EF348
 	add r0, r5, #0
 	bl sub_0203FD58
@@ -20666,7 +20666,7 @@ ov01_021EF708: ; 0x021EF708
 	add r4, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_020263D4
+	bl StringCopy
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #8
@@ -30291,7 +30291,7 @@ ov01_021F3E4C: ; 0x021F3E4C
 	bl FillBgTilemapRect
 	ldr r0, [r4, #8]
 	mov r1, #3
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r1, #3
 	ldr r0, [r4, #8]
 	add r2, r1, #0
@@ -30371,7 +30371,7 @@ ov01_021F3EE0: ; 0x021F3EE0
 	bl FillBgTilemapRect
 	ldr r0, [r4, #8]
 	mov r1, #3
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r1, #3
 	ldr r0, [r4, #8]
 	add r2, r1, #0
@@ -30449,7 +30449,7 @@ ov01_021F3F9C: ; 0x021F3F9C
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, [r4, #8]
 	bl sub_02028FF0
 	add r2, r0, #0
@@ -30722,7 +30722,7 @@ ov01_021F41C0: ; 0x021F41C0
 	ldr r0, [r6, #8]
 	str r0, [r4, #0xc]
 	add r0, r5, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x14]
 	ldr r2, _021F4218 ; =0x000001A7
 	mov r0, #1
@@ -30757,7 +30757,7 @@ ov01_021F421C: ; 0x021F421C
 	ldr r0, [r4, #0x18]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -30934,7 +30934,7 @@ ov01_021F4360: ; 0x021F4360
 	ldr r0, [r6, #8]
 	str r0, [r4, #0xc]
 	add r0, r5, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x14]
 	ldr r2, _021F43CC ; =0x000001A7
 	mov r0, #1
@@ -30943,7 +30943,7 @@ ov01_021F4360: ; 0x021F4360
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x18]
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #1
@@ -30975,7 +30975,7 @@ ov01_021F43D0: ; 0x021F43D0
 	ldr r0, [r4, #0x18]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -36691,7 +36691,7 @@ _021F6DC8:
 	add r2, r0, #0
 	ldr r0, [r6, #0x38]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r6, #0
 	mov r1, #0x3e
 	bl ov01_021F71C4
@@ -36866,7 +36866,7 @@ _021F6F20:
 	add r2, r0, #0
 	ldr r0, [r4, #0x38]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r4, #0
 	mov r1, #0x40
 	bl ov01_021F71C4
@@ -36988,7 +36988,7 @@ _021F6FF4:
 	add r2, r0, #0
 	ldr r0, [r5, #0x38]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r5, #0
 	mov r1, #0x40
 	bl ov01_021F71C4
@@ -37016,7 +37016,7 @@ _021F7016:
 	ldr r0, [r5, #0x38]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
@@ -37098,7 +37098,7 @@ _021F70DA:
 	add r2, r0, #0
 	ldr r0, [r5, #0x38]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r5, #0
 	mov r1, #0x40
 	bl ov01_021F71C4
@@ -37266,7 +37266,7 @@ ov01_021F722C: ; 0x021F722C
 	add r4, r0, #0
 	bl MIi_CpuFill8
 	mov r0, #4
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x38]
 	ldr r2, _021F7264 ; =0x0000030B
 	mov r0, #0
@@ -37294,7 +37294,7 @@ ov01_021F7268: ; 0x021F7268
 	ldr r0, [r4, #0x3c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x38]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0xc]
 	bl String_dtor
 	ldr r0, [r4, #8]
@@ -49458,7 +49458,7 @@ ov01_021FCB14: ; 0x021FCB14
 	mov r0, #8
 	mov r1, #0x40
 	mov r2, #4
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r4, #0x34]
 	pop {r4, pc}
 	thumb_func_end ov01_021FCB14
@@ -49468,7 +49468,7 @@ ov01_021FCB4C: ; 0x021FCB4C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x2c]
 	bl String_dtor
 	ldr r0, [r4, #0x30]
@@ -60423,7 +60423,7 @@ _02201E46:
 	ldr r0, [r7]
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r0, [sp, #0x14]
 	bl FreeToHeap
 	ldrh r1, [r4]
@@ -60437,7 +60437,7 @@ _02201E46:
 	ldr r0, [r7]
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, sp, #0x18
@@ -62589,7 +62589,7 @@ _02202F82:
 	mov r1, #0
 	add r2, r7, #0
 	mov r3, #2
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #1
 	str r0, [sp]
 	str r0, [sp, #4]

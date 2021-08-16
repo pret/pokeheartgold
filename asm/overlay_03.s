@@ -228,17 +228,17 @@ _02253F84:
 	add r0, #0x40
 	bl sub_0201D3C4
 	mov r0, #4
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldr r1, _02254050 ; =0x022598A0
 	ldr r1, [r1]
 	str r0, [r1, #0x50]
 	mov r0, #4
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldr r1, _02254050 ; =0x022598A0
 	ldr r1, [r1]
 	str r0, [r1, #0x54]
 	mov r0, #4
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldr r1, _02254050 ; =0x022598A0
 	ldr r2, [r1]
 	str r0, [r2, #0x58]
@@ -296,7 +296,7 @@ _0225405C:
 	ldr r0, [r0, #0x50]
 	cmp r0, #0
 	beq _0225408C
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, _022540E4 ; =0x022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -307,7 +307,7 @@ _0225408C:
 	ldr r0, [r0, #0x54]
 	cmp r0, #0
 	beq _022540A2
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, _022540E4 ; =0x022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -318,7 +318,7 @@ _022540A2:
 	ldr r0, [r0, #0x58]
 	cmp r0, #0
 	beq _022540B8
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, _022540E4 ; =0x022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -475,7 +475,7 @@ _02254172:
 	ldr r2, [r0]
 	ldr r0, [r2, #0x50]
 	ldr r2, [r2, #0x7c]
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, _022542C4 ; =0x022598A0
 	mov r1, #0x4c
 	ldr r2, [r0]
@@ -698,7 +698,7 @@ ov03_022543AC: ; 0x022543AC
 	ldr r2, [r0]
 	ldr r0, [r2, #0x54]
 	ldr r2, [r2, #0x78]
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, _0225441C ; =0x022598A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x78]
@@ -1087,7 +1087,7 @@ _022546E4:
 	ldr r2, [r2]
 	mov r1, #1
 	ldr r2, [r2, #0x7c]
-	bl sub_0200BE48
+	bl BufferPlayersName
 	bl ov03_02255B70
 	cmp r0, #2
 	bgt _02254714
@@ -1146,7 +1146,7 @@ _0225476A:
 	add r0, #0x40
 	bl sub_0205B564
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0
@@ -1511,7 +1511,7 @@ _02254A70:
 	mov r1, #0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x50]
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, _02254B28 ; =0x022598A0
 	mov r1, #0x4f
 	ldr r2, [r0]
@@ -1850,7 +1850,7 @@ _02254D30:
 	beq _02254D4C
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl sub_0200BE48
+	bl BufferPlayersName
 _02254D4C:
 	add r4, #0x91
 	ldrb r0, [r4]
@@ -3140,7 +3140,7 @@ ov03_022557CC: ; 0x022557CC
 	add r2, r0, #0
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl sub_0200BE48
+	bl BufferPlayersName
 	mov r0, #0x45
 	mov r1, #1
 	bl ov03_02253E20
@@ -3171,7 +3171,7 @@ ov03_02255804: ; 0x02255804
 	ldr r2, [r2]
 	mov r1, #1
 	ldr r2, [r2, #0x7c]
-	bl sub_0200BE48
+	bl BufferPlayersName
 	mov r0, #4
 	mov r1, #1
 	bl ov03_02253E20
@@ -3466,7 +3466,7 @@ ov03_02255A70: ; 0x02255A70
 	ldr r2, [r2]
 	mov r1, #1
 	ldr r2, [r2, #0x7c]
-	bl sub_0200BE48
+	bl BufferPlayersName
 	mov r0, #5
 	mov r1, #1
 	bl ov03_02253E20
@@ -3908,7 +3908,7 @@ ov03_02255D8C: ; 0x02255D8C
 	ldr r0, [r4, #0x64]
 	ldr r2, [r4, #0x1c]
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -4939,7 +4939,7 @@ _022565F6:
 	mov r1, #0
 	bl ov03_02255D68
 	ldr r0, [r4, #0x64]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x68]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
@@ -4983,7 +4983,7 @@ ov03_02256644: ; 0x02256644
 	add r5, #0xa4
 	str r0, [r5]
 	mov r0, #4
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x64]
 	mov r0, #0
 	mov r1, #0x1b
@@ -5056,7 +5056,7 @@ ov03_022566D0: ; 0x022566D0
 	add r0, r6, #0
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #8
@@ -5132,7 +5132,7 @@ ov03_02256730: ; 0x02256730
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0x30]
 	mov r0, #4
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r6, r0, #0
 	mov r0, #0xb4
 	mov r1, #4
@@ -5425,7 +5425,7 @@ _022569EC:
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [sp, #0x30]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x18]
@@ -6301,7 +6301,7 @@ ov03_02257074: ; 0x02257074
 	add r1, #0x88
 	str r0, [r1]
 	mov r0, #0xb
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r4, #0x8c
 	str r0, [r4]
 	pop {r4, pc}
@@ -6320,7 +6320,7 @@ ov03_0225709C: ; 0x0225709C
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x9d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -10106,7 +10106,7 @@ ov03_02258DE8: ; 0x02258DE8
 	mov r0, #3
 	mov r1, #0x10
 	mov r2, #4
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r4, #0x2c]
 	mov r0, #0x80
 	mov r1, #4
@@ -10143,7 +10143,7 @@ ov03_02258E88: ; 0x02258E88
 	ldr r0, [r4, #0x30]
 	bl String_dtor
 	ldr r0, [r4, #0x2c]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x28]
 	bl DestroyMsgData
 	add r0, r4, #0

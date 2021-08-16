@@ -7256,7 +7256,7 @@ ov91_0225FCD8: ; 0x0225FCD8
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r5, #4]
 	mov r0, #0
 	mov r1, #0x1b
@@ -7287,7 +7287,7 @@ ov91_0225FD0C: ; 0x0225FD0C
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov91_0225FD0C
@@ -7500,16 +7500,16 @@ ov91_0225FDE0: ; 0x0225FDE0
 	bl sub_0201CA4C
 	ldr r0, [r5]
 	mov r1, #4
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r5]
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r5]
 	mov r1, #6
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r5]
 	mov r1, #7
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10493,7 +10493,7 @@ _02261568:
 	lsl r1, r1, #0x18
 	ldr r0, [r6]
 	lsr r1, r1, #0x18
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r4, r4, #1
 	cmp r4, #3
 	blt _02261516

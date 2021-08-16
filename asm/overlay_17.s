@@ -2501,7 +2501,7 @@ ov17_02202F0C: ; 0x02202F0C
 	mov r0, #0x10
 	ldr r2, [r6]
 	add r1, r0, #0
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	add r1, r6, #0
 	add r1, #0xa0
 	str r0, [r1]
@@ -2564,7 +2564,7 @@ _02202F84:
 	add r0, r6, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r6, #0x9c
 	ldr r0, [r6]
 	bl DestroyMsgData
@@ -3558,7 +3558,7 @@ _0220376C:
 	ldr r0, [r0]
 	add r2, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r6, #0
 	bl String_dtor
 	b _022037AA
@@ -3570,7 +3570,7 @@ _02203794:
 	add r1, #0xb0
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_020263D4
+	bl StringCopy
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _022037AA:

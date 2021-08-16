@@ -5340,10 +5340,10 @@ ov81_022408C4: ; 0x022408C4
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	add r0, r7, #0
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r7, #0
 	bl sub_02028F94
 	cmp r0, #0
@@ -5765,7 +5765,7 @@ _02240C6C:
 	ldr r0, [r5, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r5, #0x20]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r5, #0x24]
 	bl String_dtor
 	ldr r0, [r5, #0x28]
@@ -5890,7 +5890,7 @@ ov81_02240D64: ; 0x02240D64
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x1c]
 	mov r0, #0x64
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r5, #0x20]
 	mov r0, #0x32
 	lsl r0, r0, #4

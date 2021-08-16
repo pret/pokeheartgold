@@ -529,7 +529,7 @@ ov117_0225F420: ; 0x0225F420
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
 	ldr r0, [r0, #8]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov117_0225F420
@@ -546,7 +546,7 @@ ov117_0225F470: ; 0x0225F470
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
@@ -571,7 +571,7 @@ ov117_0225F470: ; 0x0225F470
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r7, #0

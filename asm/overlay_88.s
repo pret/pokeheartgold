@@ -1767,7 +1767,7 @@ ov88_02259560: ; 0x02259560
 	add r7, r1, #0
 	add r6, r2, #0
 	add r4, r3, #0
-	bl sub_020263D4
+	bl StringCopy
 	mov r0, #1
 	strb r0, [r5]
 	mov r2, #0

@@ -423,7 +423,7 @@ _021E5C4A:
 	bl GfGfxLoader_LoadScrnData
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022C60

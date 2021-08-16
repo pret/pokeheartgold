@@ -2405,7 +2405,7 @@ ov08_0221D0F4: ; 0x0221D0F4
 	str r0, [r4, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldr r1, _0221D144 ; =0x00001FAC
 	str r0, [r4, r1]
 	ldr r1, [r4]
@@ -2435,7 +2435,7 @@ ov08_0221D14C: ; 0x0221D14C
 	bl sub_0200CD94
 	ldr r0, _0221D17C ; =0x00001FAC
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, _0221D180 ; =0x00001FB0
 	ldr r0, [r4, r0]
 	bl String_dtor
@@ -8268,7 +8268,7 @@ ov08_022201E8: ; 0x022201E8
 	sub sp, #0xc
 	add r4, r0, #0
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4]
 	ldr r0, [r0, #8]
 	bl ov12_0223B718
@@ -13525,7 +13525,7 @@ _02222C56:
 	ldr r0, [r5, #0x14]
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, [r5, #0x14]
 	ldr r1, [r5, #0x18]
 	add r2, r6, #0
@@ -14228,7 +14228,7 @@ ov08_022231E8: ; 0x022231E8
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x14]
 	ldr r1, [r4]
 	mov r0, #2
@@ -14249,7 +14249,7 @@ ov08_02223228: ; 0x02223228
 	ldr r0, [r4, #0xc]
 	bl sub_0200CD94
 	ldr r0, [r4, #0x14]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x18]
 	bl String_dtor
 	pop {r4, pc}
@@ -15397,7 +15397,7 @@ ov08_02223B48: ; 0x02223B48
 	sub sp, #0xc
 	add r4, r0, #0
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4]
 	ldr r0, [r0]
 	bl ov12_0223B718

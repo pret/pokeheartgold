@@ -536,7 +536,7 @@ ov44_0222A1FC: ; 0x0222A1FC
 	lsl r2, r2, #2
 	str r0, [r1, r2]
 	mov r0, #0x35
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	mov r2, #0x59
 	ldr r1, [sp, #4]
 	lsl r2, r2, #2
@@ -1138,7 +1138,7 @@ _0222A6F0:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, _0222A754 ; =SDK_OVERLAY_OVY_42_ID
 	bl UnloadOverlayByID
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4483,7 +4483,7 @@ _0222C1EA:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	b _0222C214
 _0222C204:
 	mov r2, #0x5a
@@ -10963,7 +10963,7 @@ _0222F5F8:
 	mov r3, #0xa
 	bl sub_0200E998
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #1
@@ -11144,7 +11144,7 @@ ov44_0222F780: ; 0x0222F780
 	ldr r0, [r5, r0]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r4, #0
 	bl FreeToHeap
 _0222F7BA:
@@ -11449,7 +11449,7 @@ ov44_0222F9A0: ; 0x0222F9A0
 	ldr r1, _0222FA20 ; =0x00000B68
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldr r1, _0222FA14 ; =0x00000B1C
 	add r2, r4, #0
 	str r0, [r5, r1]
@@ -11490,7 +11490,7 @@ ov44_0222FA28: ; 0x0222FA28
 	str r1, [r4, r0]
 	sub r0, #0x4c
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, _0222FA7C ; =0x00000B1C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -12708,7 +12708,7 @@ _02230322:
 	mov r1, #0
 	ldr r0, [r5, r0]
 	add r2, r6, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r6, #0
 	bl FreeToHeap
 	mov r2, #0x5a
@@ -15309,7 +15309,7 @@ ov44_02231918: ; 0x02231918
 	mov r1, #0
 	ldr r0, [r5, r0]
 	add r2, r4, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r4, #0
 	bl FreeToHeap
 _02231950:
@@ -19153,7 +19153,7 @@ ov44_0223362C: ; 0x0223362C
 	add r5, r0, #0
 	add r0, r6, #0
 	add r4, r1, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r5, #4]
 	ldr r2, _02233674 ; =0x0000030A
 	mov r0, #0
@@ -19193,7 +19193,7 @@ ov44_02233678: ; 0x02233678
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov44_02233678
@@ -19942,7 +19942,7 @@ ov44_02233C88: ; 0x02233C88
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	add r1, r4, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov44_02233C88
 

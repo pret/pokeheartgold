@@ -127,7 +127,7 @@ ov89_02258800: ; 0x02258800
 	mov r1, #0x7d
 	bl sub_02002CEC
 	mov r0, #0x7d
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r5, #0x2c]
 	ldr r2, _02258AE0 ; =0x000002F2
 	mov r0, #0
@@ -273,7 +273,7 @@ _02258A4A:
 	mov r1, #1
 	bl sub_02022CC8
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0
@@ -821,7 +821,7 @@ ov89_02258F00: ; 0x02258F00
 	ldr r0, [r4, #0x30]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x2c]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r4, #0
 	bl ov89_02259D50
 	ldr r0, [r4, #8]
@@ -868,7 +868,7 @@ ov89_02258F00: ; 0x02258F00
 	bl sub_020205AC
 	bl sub_02021238
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0
@@ -8157,7 +8157,7 @@ _0225C768:
 	ldr r0, [sp, #0x14]
 	ldr r2, [sp, #0x1c]
 	mov r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r0, [sp, #0x10]
 	mov r1, #0
 	bl NewString_ReadMsgData

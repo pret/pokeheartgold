@@ -235,7 +235,7 @@ ov24_02259A4C: ; 0x02259A4C
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	b _02259AB4
 _02259A80:
 	ldrb r1, [r4]
@@ -250,7 +250,7 @@ _02259A80:
 	mov r1, #0
 	add r2, r6, #0
 	str r3, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r6, #0
 	bl String_dtor
 	ldrb r2, [r4]
@@ -330,7 +330,7 @@ _02259B10:
 	add r1, r6, #0
 	add r2, r7, #0
 	str r3, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
 	bl String_dtor
 	ldrb r0, [r5, #0x15]

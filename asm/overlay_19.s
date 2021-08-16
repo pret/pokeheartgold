@@ -490,7 +490,7 @@ ov19_02259C68: ; 0x02259C68
 	ldr r2, [r6]
 	mov r0, #6
 	mov r1, #0x16
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r6, #0x28]
 	ldr r1, [r6]
 	mov r0, #0x80
@@ -533,7 +533,7 @@ _02259CC4:
 	ldr r0, [r6, #0x2c]
 	bl String_dtor
 	ldr r0, [r6, #0x28]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x24]
 	bl DestroyMsgData
 	mov r0, #4
@@ -750,7 +750,7 @@ ov19_02259E64: ; 0x02259E64
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldrh r0, [r5, #0x32]
 	add r1, r7, #0
 	add r2, r6, #0
@@ -762,11 +762,11 @@ ov19_02259E64: ; 0x02259E64
 	mov r1, #1
 	add r2, r6, #0
 	str r3, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	add r1, r5, #0
 	add r0, r6, #0
 	add r1, #0x18
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r0, #0
 	mov r1, #2
 	str r0, [sp]
@@ -774,7 +774,7 @@ ov19_02259E64: ; 0x02259E64
 	add r2, r6, #0
 	add r3, r1, #0
 	str r1, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #1

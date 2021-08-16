@@ -2625,7 +2625,7 @@ ov49_02259AA4: ; 0x02259AA4
 	bl GF_AssertFail
 _02259B02:
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0
@@ -4850,7 +4850,7 @@ _0225AB64:
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
-	bl sub_020263D4
+	bl StringCopy
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x14]
@@ -4896,7 +4896,7 @@ _0225ABC4:
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
-	bl sub_020263D4
+	bl StringCopy
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -5063,7 +5063,7 @@ _0225ACE4:
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
-	bl sub_020263D4
+	bl StringCopy
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x14]
@@ -5899,7 +5899,7 @@ ov49_0225B308: ; 0x0225B308
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r7, #0
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	ldr r1, [sp]
 	ldr r4, _0225B358 ; =0x02269714
 	str r0, [r1]
@@ -5939,7 +5939,7 @@ ov49_0225B35C: ; 0x0225B35C
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r4, #0
 	add r5, r6, #0
 _0225B36A:
@@ -5999,11 +5999,11 @@ ov49_0225B3C8: ; 0x0225B3C8
 	add r3, r1, #0
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _0225B3D4 ; =sub_0200BE48
+	ldr r3, _0225B3D4 ; =BufferPlayersName
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_0225B3D4: .word sub_0200BE48
+_0225B3D4: .word BufferPlayersName
 	thumb_func_end ov49_0225B3C8
 
 	thumb_func_start ov49_0225B3D8

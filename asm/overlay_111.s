@@ -765,7 +765,7 @@ _021E5E46:
 	mov r0, #1
 	bl sub_0200FBDC
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
 	bl sub_02002B8C
 	ldr r0, _021E5F00 ; =ov111_021E5DF0
@@ -1713,7 +1713,7 @@ _021E6646:
 _021E6678:
 	ldr r0, [sp, #4]
 	ldr r1, [sp]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov111_021E65D4
@@ -1950,7 +1950,7 @@ ov111_021E67EC: ; 0x021E67EC
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x18]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #8]
 	bl sub_02020080
 	ldr r1, [r4, #0x30]
@@ -1988,7 +1988,7 @@ ov111_021E685C: ; 0x021E685C
 	ldr r0, [r4, #0xc]
 	bl DestroyMsgData
 	ldr r0, [r4, #8]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _021E687A

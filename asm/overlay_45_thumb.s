@@ -8962,7 +8962,7 @@ _0222DD8E:
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	ldr r0, [sp, #0x28]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldrb r6, [r4]
 	str r0, [sp, #0xc]
 	cmp r6, #9
@@ -8986,7 +8986,7 @@ _0222DDCC:
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9546,14 +9546,14 @@ ov45_0222E14C: ; 0x0222E14C
 	ldr r2, [r5, #0x10]
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r1, #1
 	str r1, [sp]
 	str r4, [sp, #4]
 	ldr r2, [r5, #0x14]
 	add r0, r6, #0
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
 	mov r1, #7
 	bl NewString_ReadMsgData
@@ -9587,14 +9587,14 @@ ov45_0222E1A0: ; 0x0222E1A0
 	ldr r2, [r5, #0x10]
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r1, #1
 	str r1, [sp]
 	str r4, [sp, #4]
 	ldr r2, [r5, #0x14]
 	add r0, r6, #0
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r2, [r5, #4]
 	add r0, r6, #0
 	mov r1, #2
@@ -9647,7 +9647,7 @@ _0222E22A:
 	str r6, [sp, #4]
 	ldr r2, [r5, #0x10]
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #1
 	str r0, [sp]
 	str r6, [sp, #4]
@@ -9655,7 +9655,7 @@ _0222E22A:
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #1
 	str r0, [sp]
 	str r6, [sp, #4]
@@ -9663,7 +9663,7 @@ _0222E22A:
 	add r0, r4, #0
 	mov r1, #3
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r1, #0x12
 	b _0222E2E4
 _0222E266:
@@ -9675,7 +9675,7 @@ _0222E266:
 	str r6, [sp, #4]
 	ldr r2, [r5, #0x10]
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #1
 	str r0, [sp]
 	str r6, [sp, #4]
@@ -9683,7 +9683,7 @@ _0222E266:
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r1, #0x13
 	b _0222E2E4
 _0222E290:
@@ -9695,7 +9695,7 @@ _0222E290:
 	str r6, [sp, #4]
 	ldr r2, [r5, #0x10]
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #1
 	str r0, [sp]
 	str r6, [sp, #4]
@@ -9703,7 +9703,7 @@ _0222E290:
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #1
 	str r0, [sp]
 	str r6, [sp, #4]
@@ -9711,7 +9711,7 @@ _0222E290:
 	add r0, r4, #0
 	mov r1, #3
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #1
 	str r0, [sp]
 	str r6, [sp, #4]
@@ -9719,7 +9719,7 @@ _0222E290:
 	add r0, r4, #0
 	mov r1, #4
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r1, #6
 	b _0222E2E4
 _0222E2DE:
@@ -9740,7 +9740,7 @@ _0222E2EE:
 	str r0, [sp, #4]
 	ldr r2, [r5, #0x10]
 	add r0, r4, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r3, #1
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -9787,7 +9787,7 @@ ov45_0222E33C: ; 0x0222E33C
 	str r0, [sp, #4]
 	ldr r2, [r5, #0x10]
 	add r0, r4, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r3, #1
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -9838,7 +9838,7 @@ _0222E3B6:
 	ldr r2, [r5, #0x10]
 	add r0, r7, #0
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r1, [r6, #4]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -9997,7 +9997,7 @@ _0222E4DE:
 	ldr r2, [r5, #0x10]
 	add r0, r7, #0
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r1, [r6, #8]
 	add r4, r4, #1
 	add r5, r5, #4

@@ -52,17 +52,17 @@ ov65_0221BE20: ; 0x0221BE20
 	mov r0, #0xc
 	mov r1, #0x16
 	mov r2, #0x1a
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x1a
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x1a
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1849,15 +1849,15 @@ ov65_0221CD74: ; 0x0221CD74
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3907,7 +3907,7 @@ ov65_0221DEA0: ; 0x0221DEA0
 	add r4, r2, #0
 	add r6, r0, #0
 	add r5, r1, #0
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl CopyU16StringArray
@@ -4608,7 +4608,7 @@ _0221E42C:
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r4, #0
 	mov r1, #0x40
 	bl ov65_0221E330
@@ -4657,7 +4657,7 @@ _0221E494:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r5, #0
 	mov r1, #0x40
 	bl ov65_0221E330
@@ -4685,7 +4685,7 @@ _0221E4C0:
 	ldr r0, [r5, r0]
 	mov r1, #0
 	add r2, r6, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r5, #0
@@ -4756,7 +4756,7 @@ _0221E580:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r0, _0221E5F0 ; =0x00003688
 	add r1, r6, #0
 	ldr r0, [r5, r0]
@@ -4846,7 +4846,7 @@ _0221E644:
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r4, #0
 	mov r1, #0x40
 	bl ov65_0221E330
@@ -5010,7 +5010,7 @@ _0221E77C:
 	mov r0, #0xda
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x13
 	bl sub_02037AC0
 	mov r3, #0x61
@@ -5046,7 +5046,7 @@ _0221E7C2:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r5, #0
 	mov r1, #0x3e
 	bl ov65_0221E330
@@ -5129,7 +5129,7 @@ ov65_0221E858: ; 0x0221E858
 	pop {r3, r4, pc}
 _0221E898:
 	mov r0, #0x1a
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	mov r1, #0xda
 	lsl r1, r1, #6
 	str r0, [r4, r1]

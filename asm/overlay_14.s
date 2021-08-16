@@ -573,7 +573,7 @@ ov14_021E5D78: ; 0x021E5D78
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0x1c]
 	mov r0, #0xa
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0x24]
 	mov r0, #1
@@ -595,7 +595,7 @@ ov14_021E5DB8: ; 0x021E5DB8
 	bl String_dtor
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x24]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x1c]
 	bl sub_0200CD94

@@ -56,7 +56,7 @@ _022469A6:
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x10]
 	mov r0, #0x38
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0xc]
 	ldr r2, [r4]
 	ldr r0, [r2, #0x10]
@@ -81,7 +81,7 @@ _022469EE:
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2, #8]
 	mov r1, #2
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
 	bl ov71_02246B28
@@ -248,7 +248,7 @@ ov71_02246B58: ; 0x02246B58
 	bl sub_0200E390
 	bl sub_0203A914
 	ldr r0, [r4, #0xc]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
@@ -2397,7 +2397,7 @@ ov71_02247A10: ; 0x02247A10
 	bl GfGfxLoader_GXLoadPal
 	ldr r0, [r4, #0x54]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	bl ov71_02247ED0
 	mov r1, #0
@@ -7036,13 +7036,13 @@ ov71_02249E6C: ; 0x02249E6C
 	bl ov71_02247230
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0xc]
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0xc]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224A07C ; =0xFFFFFE80
 	mov r1, #0x50
@@ -9418,7 +9418,7 @@ ov71_0224B280: ; 0x0224B280
 	bl GfGfxLoader_GXLoadPal
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

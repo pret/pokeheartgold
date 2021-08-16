@@ -604,7 +604,7 @@ ov103_021ECE18: ; 0x021ECE18
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x9d
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -634,7 +634,7 @@ ov103_021ECE54: ; 0x021ECE54
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3565,7 +3565,7 @@ ov103_021EE468: ; 0x021EE468
 	ldr r2, [r5, #0xc]
 	lsl r0, r0, #4
 	ldr r0, [r2, r0]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r4, #0
 	str r4, [sp, #0x1c]
 _021EE49A:
@@ -3943,7 +3943,7 @@ ov103_021EE784: ; 0x021EE784
 	bl sub_0202B3E8
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r5, #0
 	bl sub_0202B3EC
 	add r3, r0, #0
@@ -3957,7 +3957,7 @@ ov103_021EE784: ; 0x021EE784
 	ldr r0, [r1, r0]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #8
@@ -4190,7 +4190,7 @@ _021EE93A:
 	ldr r2, [r5, #0xc]
 	lsl r0, r0, #4
 	ldr r0, [r2, r0]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r1, #0x86
 	ldr r4, [r5, #0xc]
 	mov r3, #1

@@ -1749,7 +1749,7 @@ ov113_021E6680: ; 0x021E6680
 	mov r0, #0x10
 	ldr r2, [r4]
 	add r1, r0, #0
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r4, #0x48]
 	mov r0, #2
 	ldr r1, [r4]
@@ -1793,7 +1793,7 @@ ov113_021E66E4: ; 0x021E66E4
 	ldr r0, [r4, #0x4c]
 	bl String_dtor
 	ldr r0, [r4, #0x48]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x44]
 	bl DestroyMsgData
 	mov r0, #4

@@ -633,7 +633,7 @@ ov53_021E5E6C: ; 0x021E5E6C
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -656,7 +656,7 @@ ov53_021E5EB8: ; 0x021E5EB8
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x45
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -976,7 +976,7 @@ ov53_021E60E8: ; 0x021E60E8
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x18]
 	lsr r1, r1, #0x18
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -1024,7 +1024,7 @@ _021E613C:
 	mov r3, #4
 	bl sub_0200E998
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	add r0, r4, #0
 	bl sub_02002B50
 	mov r0, #1
@@ -1058,7 +1058,7 @@ _021E613C:
 	ldrh r3, [r5, r3]
 	ldr r2, [r2, #0x18]
 	add r1, r4, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r1, #1
 	mov r2, #0x46
 	str r1, [sp]
@@ -1070,7 +1070,7 @@ _021E613C:
 	ldr r2, [r5, r2]
 	add r3, r4, #0
 	ldr r2, [r2, #0x18]
-	bl sub_0200BE3C
+	bl BufferString
 	mov r1, #0x46
 	lsl r1, r1, #2
 	ldr r0, [r5, r1]
@@ -3927,10 +3927,10 @@ _021E78C2:
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #6
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #7
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	bl sub_0201CAE0
@@ -4457,7 +4457,7 @@ ov53_021E7D04: ; 0x021E7D04
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #7
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	pop {r4, pc}
 	thumb_func_end ov53_021E7D04
@@ -4951,7 +4951,7 @@ _021E8108:
 	ldr r0, [sp, #0x20]
 	strb r0, [r4, #0x18]
 	ldr r0, [sp, #4]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x14]
 	add r0, r6, #0
 	mov r1, #1
@@ -4974,7 +4974,7 @@ _021E8156:
 	add r0, r4, #0
 	bl ov53_021E8310
 	ldr r0, [r4, #0x14]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -5034,7 +5034,7 @@ ov53_021E816C: ; 0x021E816C
 	bl sub_0201CA4C
 	ldr r0, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r6, #0
 	mov r1, #0
 	bl sub_0201BC28

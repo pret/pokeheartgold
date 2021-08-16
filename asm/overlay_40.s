@@ -3640,7 +3640,7 @@ _0222D410:
 	ldr r2, [sp, #0x14]
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r7, #0
@@ -3650,7 +3650,7 @@ _0222D410:
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	b _0222D504
 _0222D478:
 	cmp r2, #0x29
@@ -3697,7 +3697,7 @@ _0222D494:
 	ldr r2, [sp, #0x18]
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r7, #0
@@ -3707,7 +3707,7 @@ _0222D494:
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	b _0222D504
 _0222D4FC:
 	add r1, r2, #0
@@ -4446,13 +4446,13 @@ ov40_0222DAA8: ; 0x0222DAA8
 
 	thumb_func_start ov40_0222DAB0
 ov40_0222DAB0: ; 0x0222DAB0
-	ldr r3, _0222DABC ; =sub_0200BD18
+	ldr r3, _0222DABC ; =ScrStrBufs_new_custom
 	add r2, r0, #0
 	mov r0, #4
 	mov r1, #0x40
 	bx r3
 	nop
-_0222DABC: .word sub_0200BD18
+_0222DABC: .word ScrStrBufs_new_custom
 	thumb_func_end ov40_0222DAB0
 
 	thumb_func_start ov40_0222DAC0
@@ -5331,7 +5331,7 @@ _0222E0D6:
 	ldr r2, [sp, #0x2c]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r2, [sp, #0x30]
 	add r0, r4, #0
 	add r1, r6, #0
@@ -5624,7 +5624,7 @@ _0222E46A:
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add sp, #0xd8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6124,7 +6124,7 @@ _0222E884:
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 _0222E890:
 	mov r0, #0x10
 	str r0, [sp]
@@ -6428,7 +6428,7 @@ _0222EAC0:
 	ldr r1, _0222EB98 ; =0x00002608
 	add r0, r7, #0
 	ldr r1, [r2, r1]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r0, [sp, #0x14]
 	add r1, r7, #0
 	bl ov40_02230DCC
@@ -6718,7 +6718,7 @@ _0222ED28:
 	add r0, r5, #0
 	mov r1, #1
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	b _0222EDA8
 _0222ED4E:
 	ldr r0, [r4, #0x28]
@@ -6751,7 +6751,7 @@ _0222ED6E:
 	bl GetSpeciesNameIntoArray
 	ldr r0, [sp, #0x44]
 	add r1, sp, #0x64
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -6760,7 +6760,7 @@ _0222ED6E:
 	add r0, r5, #0
 	mov r1, #1
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 _0222EDA8:
 	ldr r0, [r4, #0x28]
 	ldr r0, [r0]
@@ -6798,7 +6798,7 @@ _0222EDA8:
 	ldr r2, [sp, #0x48]
 	add r0, r5, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r2, [sp, #0x4c]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -6835,7 +6835,7 @@ _0222EDA8:
 	add r0, r5, #0
 	mov r1, #2
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r2, [sp, #0x2f8]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -6886,7 +6886,7 @@ _0222EEB4:
 	ldr r0, [sp, #0x50]
 	bl sub_0201D5C8
 	add r0, r5, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add sp, #0x1fc
 	add sp, #0xe0
 	pop {r4, r5, r6, r7, pc}
@@ -7310,7 +7310,7 @@ _0222F1D8:
 	add r0, r5, #0
 	mov r1, #1
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	b _0222F258
 _0222F1FE:
 	ldr r0, [r4, #0x28]
@@ -7343,7 +7343,7 @@ _0222F21E:
 	bl GetSpeciesNameIntoArray
 	ldr r0, [sp, #0x4c]
 	add r1, sp, #0x6c
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -7352,7 +7352,7 @@ _0222F21E:
 	add r0, r5, #0
 	mov r1, #1
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 _0222F258:
 	ldr r0, [r4, #0x28]
 	ldr r0, [r0]
@@ -7390,7 +7390,7 @@ _0222F258:
 	ldr r2, [sp, #0x50]
 	add r0, r5, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r2, [sp, #0x54]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -7427,7 +7427,7 @@ _0222F258:
 	add r0, r5, #0
 	mov r1, #2
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r2, [sp, #0x2f8]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -7481,7 +7481,7 @@ _0222F36A:
 	ldr r0, [sp, #0x58]
 	bl sub_0201D5C8
 	add r0, r5, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #8
 	ldrsh r0, [r4, r0]
 	str r0, [r4, #0xc]
@@ -7717,7 +7717,7 @@ _0222F500:
 	ldr r1, _0222F5E4 ; =0x00002608
 	add r0, r5, #0
 	ldr r1, [r2, r1]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r0, [sp, #0x14]
 	add r1, r5, #0
 	bl ov40_02230DCC
@@ -9235,7 +9235,7 @@ _02230062:
 	ldr r2, [sp, #0x44]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r2, [sp, #0x48]
 	add r0, r4, #0
 	add r1, r6, #0
@@ -9336,7 +9336,7 @@ _02230062:
 	ldr r2, [sp, #0x50]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r2, [sp, #0x54]
 	add r0, r4, #0
 	add r1, r6, #0
@@ -9486,7 +9486,7 @@ _022302BA:
 	add r0, r4, #0
 	mov r3, #0
 	str r1, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	mov r1, #1
 	str r1, [sp]
 	mov r0, #2
@@ -9494,7 +9494,7 @@ _022302BA:
 	ldr r2, [sp, #0x34]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -9503,7 +9503,7 @@ _022302BA:
 	ldr r2, [sp, #0x30]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
@@ -9540,7 +9540,7 @@ _022302BA:
 	add r0, r4, #0
 	bl sub_0200CC50
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add sp, #0x9c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -20449,7 +20449,7 @@ _02235B66:
 	ldr r0, [sp, #0x18]
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r0, [sp, #0x18]
 	mov r1, #1
 	add r2, r5, #0
@@ -20503,7 +20503,7 @@ _02235C54:
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 _02235C72:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -20585,7 +20585,7 @@ _02235C96:
 	ldr r0, [sp, #0x18]
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r0, [sp, #0x18]
 	mov r1, #1
 	add r2, r5, #0
@@ -20639,7 +20639,7 @@ _02235D84:
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 _02235DA2:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -23068,7 +23068,7 @@ ov40_0223707C: ; 0x0223707C
 	mov r1, #0xe3
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r5, #0
 	add r1, r6, #0
 	bl ov40_02230DCC
@@ -23080,7 +23080,7 @@ ov40_0223707C: ; 0x0223707C
 	ldr r0, [sp, #0x14]
 	add r2, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r0, [sp, #0x14]
 	ldr r2, [sp, #0x10]
 	add r1, r7, #0
@@ -23114,7 +23114,7 @@ ov40_0223707C: ; 0x0223707C
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x14]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -23136,7 +23136,7 @@ ov40_02237144: ; 0x02237144
 	bl String_ctor
 	add r1, r5, #4
 	add r4, r0, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r5, r6
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -23255,7 +23255,7 @@ _02237238:
 	bl GetSpeciesNameIntoArray
 	add r0, r5, #0
 	add r1, sp, #0x10
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r4, r7
 	add r1, r5, #0
 	bl ov40_022306C0
@@ -25249,7 +25249,7 @@ _022382AA:
 	lsl r1, r1, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r5, r1]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r1, _022382FC ; =0x00002E10
 	ldr r0, [sp]
 	ldr r1, [r4, r1]
@@ -25265,7 +25265,7 @@ _022382AA:
 	ldr r1, [r5, r1]
 	ldr r0, [r4, r0]
 	add r1, #0x80
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r0, #0xe2
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
@@ -27636,7 +27636,7 @@ _02239668:
 	ldr r2, [sp, #0x1c]
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	b _0223973A
 _022396A6:
 	ldr r0, _022397B0 ; =0x0000088C
@@ -27688,7 +27688,7 @@ _022396F8:
 	bl GetSpeciesNameIntoArray
 	ldr r0, [sp, #0x1c]
 	add r1, sp, #0x2c
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	b _02239726
 _0223971C:
 	ldr r0, [r5, #0x48]
@@ -27704,7 +27704,7 @@ _02239726:
 	ldr r2, [sp, #0x1c]
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 _0223973A:
 	mov r1, #1
 	str r1, [sp]
@@ -27713,7 +27713,7 @@ _0223973A:
 	ldr r2, [sp, #0x18]
 	add r0, r6, #0
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r1, [sp, #0x14]
 	add r0, r6, #0
 	add r2, r7, #0
@@ -27745,7 +27745,7 @@ _0223973A:
 	add r0, r6, #0
 	bl sub_0200CC50
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add sp, #0x1fc
 	add sp, #0x30
 	pop {r4, r5, r6, r7, pc}
@@ -29384,7 +29384,7 @@ ov40_0223A510: ; 0x0223A510
 	ldr r2, [sp, #0x18]
 	add r0, r7, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -29394,7 +29394,7 @@ ov40_0223A510: ; 0x0223A510
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	b _0223A602
 _0223A58A:
 	cmp r4, #0x66
@@ -29431,7 +29431,7 @@ _0223A58A:
 	ldr r2, [sp, #0x1c]
 	add r0, r7, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -29441,7 +29441,7 @@ _0223A58A:
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	b _0223A602
 _0223A5FA:
 	ldr r0, [r5, #0x48]
@@ -31007,7 +31007,7 @@ _0223B2BC:
 	add r0, r7, #0
 	add r2, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r2, [sp, #0x14]
 	add r0, r7, #0
 	add r1, r4, #0
@@ -31017,7 +31017,7 @@ _0223B2BC:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 _0223B31A:
 	add r0, sp, #0x18
 	bl sub_0201D3C4
@@ -33453,7 +33453,7 @@ ov40_0223C710: ; 0x0223C710
 	ldr r2, [sp, #0x18]
 	add r0, r7, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -33463,7 +33463,7 @@ ov40_0223C710: ; 0x0223C710
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	b _0223C7CE
 _0223C7C4:
 	ldr r0, [r5, #0x48]
@@ -36272,7 +36272,7 @@ _0223DD94:
 	bl GetSpeciesNameIntoArray
 	add r0, r5, #0
 	add r1, sp, #0x10
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 _0223DDB0:
 	mov r1, #0
 	str r1, [sp]
@@ -36367,7 +36367,7 @@ _0223DE78:
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 _0223DE84:
 	mov r1, #0
 	str r1, [sp]
@@ -42055,7 +42055,7 @@ _02240D70:
 	add r0, r7, #0
 	add r2, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r2, [sp, #0x14]
 	add r0, r7, #0
 	add r1, r4, #0
@@ -42065,7 +42065,7 @@ _02240D70:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 _02240DCE:
 	add r0, sp, #0x18
 	bl sub_0201D3C4
@@ -42171,7 +42171,7 @@ ov40_02240E28: ; 0x02240E28
 	ldr r2, [sp, #0x18]
 	add r0, r7, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -42181,7 +42181,7 @@ ov40_02240E28: ; 0x02240E28
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	b _02240EE4
 _02240EDA:
 	ldr r0, [r5, #0x48]
@@ -42257,7 +42257,7 @@ ov40_02240F24: ; 0x02240F24
 	ldr r2, [sp, #0x18]
 	add r0, r7, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -42267,7 +42267,7 @@ ov40_02240F24: ; 0x02240F24
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	b _02241014
 _02240F9C:
 	cmp r4, #0x66
@@ -42304,7 +42304,7 @@ _02240F9C:
 	ldr r2, [sp, #0x1c]
 	add r0, r7, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -42314,7 +42314,7 @@ _02240F9C:
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	b _02241014
 _0224100C:
 	ldr r0, [r5, #0x48]
@@ -46061,7 +46061,7 @@ ov40_02242E4C: ; 0x02242E4C
 	add r0, r6, #0
 	mov r3, #0
 	str r1, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	mov r1, #1
 	str r1, [sp]
 	mov r0, #2
@@ -46069,7 +46069,7 @@ ov40_02242E4C: ; 0x02242E4C
 	ldr r2, [sp, #0x1c]
 	add r0, r6, #0
 	mov r3, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -46078,7 +46078,7 @@ ov40_02242E4C: ; 0x02242E4C
 	ldr r2, [sp, #0x20]
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r1, [sp, #0x2c]
 	ldr r2, [sp, #0x28]
 	add r0, r6, #0
@@ -46115,7 +46115,7 @@ ov40_02242E4C: ; 0x02242E4C
 	add r0, r6, #0
 	bl sub_0200CC50
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -48715,7 +48715,7 @@ ov40_022442F0: ; 0x022442F0
 	ldr r2, [sp, #0x14]
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, r7, #0
@@ -48725,7 +48725,7 @@ ov40_022442F0: ; 0x022442F0
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	b _02244372
 _0224436A:
 	ldr r0, [r5, #0x48]
@@ -49467,7 +49467,7 @@ _0224499E:
 	bl StringSetEmpty
 	ldr r1, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r2, [sp, #0x1c]
 	mov r0, #0
 	add r1, r4, #0
@@ -49533,7 +49533,7 @@ _02244A02:
 	bl StringSetEmpty
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r2, [sp, #0x1c]
 	mov r0, #0
 	add r1, r4, #0

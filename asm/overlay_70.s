@@ -1608,7 +1608,7 @@ _02238446:
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x3d
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	ldr r1, _0223859C ; =0x00000B9C
 	ldr r2, _022385A0 ; =0x00000307
 	str r0, [r4, r1]
@@ -1880,7 +1880,7 @@ ov70_022386F4: ; 0x022386F4
 	bl DestroyMsgData
 	ldr r0, _022387A0 ; =0x00000B9C
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r4, #0
 	bl ov70_0223887C
 	bl sub_02034DE0
@@ -4606,7 +4606,7 @@ ov70_02239C6C: ; 0x02239C6C
 	bl FillBgTilemapRect
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0x3d
@@ -5878,7 +5878,7 @@ ov70_0223A72C: ; 0x0223A72C
 	str r0, [sp, #0x10]
 	ldr r1, [sp, #8]
 	add r0, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r7, #0
 	mov r1, #0xb4
 	bl NewString_ReadMsgData
@@ -10402,7 +10402,7 @@ _0223CC1C:
 	bl sub_0201CA4C
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r6, #0
 	mov r1, #0x45
 	bl NewString_ReadMsgData
@@ -14085,7 +14085,7 @@ ov70_0223E954: ; 0x0223E954
 	bl FillBgTilemapRect
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r5, _0223EA3C ; =0x02245938
 	add r3, sp, #0x10
 	ldmia r5!, {r0, r1}
@@ -15795,7 +15795,7 @@ _0223F718:
 _0223F730:
 	ldr r0, [r4]
 	ldr r0, [r0, #0x1c]
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -20837,7 +20837,7 @@ _02241DF0:
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 _02241E3C:
 	ldr r0, [r4, #4]
 	add r0, #0xe0
@@ -20881,7 +20881,7 @@ _02241E4E:
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 _02241E9A:
 	ldr r0, [r4, #4]
 	add r0, #0xe0
@@ -20925,7 +20925,7 @@ _02241EAC:
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 _02241EF8:
 	ldr r0, [r4, #4]
 	add r0, #0xe0
@@ -20969,7 +20969,7 @@ _02241F0A:
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 _02241F56:
 	ldr r0, [r4, #4]
 	add r0, #0xe0
@@ -21022,7 +21022,7 @@ _02241F70:
 	bl FillBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 _02241FC8:
 	ldr r0, [r4, #4]
 	add r0, #0xe0

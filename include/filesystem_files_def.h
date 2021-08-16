@@ -21,7 +21,7 @@ typedef enum NarcId
     NARC_a_0_1_3,
     NARC_a_0_1_4,
     NARC_a_0_1_5,
-    NARC_a_0_1_6,
+    NARC_graphic_font,
     NARC_a_0_1_7,
     NARC_a_0_1_8,
     NARC_a_0_1_9,

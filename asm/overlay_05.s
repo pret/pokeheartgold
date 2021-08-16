@@ -722,7 +722,7 @@ _0221BF92:
 	str r0, [r5, r1]
 	ldr r0, [r5]
 	ldr r0, [r0, #0x24]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	mov r1, #0xbb
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -2760,7 +2760,7 @@ _0221D030:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221D03E
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 _0221D03E:
 	ldr r0, _0221D050 ; =0x00000BAC
 	ldr r0, [r4, r0]
@@ -5903,7 +5903,7 @@ ov05_0221E944: ; 0x0221E944
 	str r0, [sp, #0xc]
 	ldr r0, [r6]
 	ldr r0, [r0, #0x24]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldr r1, [r6]
 	str r0, [sp, #8]
 	ldr r1, [r1, #0x24]
@@ -5937,7 +5937,7 @@ _0221E9A0:
 	ldr r0, [sp, #0xc]
 	bl sub_0200CD94
 	ldr r0, [sp, #8]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov05_0221E944

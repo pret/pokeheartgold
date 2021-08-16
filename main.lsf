@@ -42,6 +42,8 @@ Static main
 	Object gf_rtc.o
 	Object list_menu_items.o
 	Object unk_02014A08.o
+	Object unk_02014DA0.o
+	Object mail_message.o
 	Object error_handling.o
 	Object unk_02025534.o
 	### Vendor libraries ###

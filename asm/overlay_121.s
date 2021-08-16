@@ -804,7 +804,7 @@ ov121_021E5F58: ; 0x021E5F58
 	bl GfGfxLoader_LoadScrnData
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #0x20
 	str r0, [sp]
 	mov r1, #0
@@ -841,7 +841,7 @@ ov121_021E5F58: ; 0x021E5F58
 	bl GfGfxLoader_LoadScrnData
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2156,7 +2156,7 @@ ov121_021E69F0: ; 0x021E69F0
 	mov r0, #2
 	mov r1, #0x4c
 	mov r2, #0x9e
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r6, #0x68]
 	mov r0, #0x4c
 	mov r1, #0x9e
@@ -2207,7 +2207,7 @@ _021E6A54:
 	ldr r0, [r6, #0x6c]
 	bl String_dtor
 	ldr r0, [r6, #0x68]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x64]
 	bl DestroyMsgData
 	pop {r4, r5, r6, pc}
@@ -2321,7 +2321,7 @@ _021E6B0E:
 	mov r1, #1
 	ldr r2, [r2, #8]
 	mov r3, #2
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r0, [r4, #0x68]
 	ldr r1, [r4, #0x6c]
 	ldr r2, [r4, #0x70]
@@ -2551,7 +2551,7 @@ ov121_021E6CEC: ; 0x021E6CEC
 	ldr r0, [r5, #0x68]
 	ldr r2, [r2, #8]
 	mov r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r0, [r5, #0x68]
 	ldr r1, [r5, #0x64]
 	mov r2, #0x31

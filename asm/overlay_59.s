@@ -3304,7 +3304,7 @@ ov59_02239704: ; 0x02239704
 	ldr r2, [r5]
 	mov r0, #0x10
 	mov r1, #0x20
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r5, #0x60]
 	mov r0, #1
 	ldr r1, [r5]
@@ -3386,7 +3386,7 @@ _022397AA:
 	ldr r0, [r6, #0x64]
 	bl String_dtor
 	ldr r0, [r6, #0x60]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x5c]
 	bl DestroyMsgData
 	mov r0, #4
@@ -4116,7 +4116,7 @@ _02239D7E:
 	str r3, [sp, #4]
 	ldr r0, [r5, #0x60]
 	ldr r2, [r5, #0x64]
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -7440,7 +7440,7 @@ ov59_0223B68C: ; 0x0223B68C
 	mov r0, #4
 	bl sub_02002CEC
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
 	bl sub_02002B8C
 	ldr r3, [r6]
@@ -7452,7 +7452,7 @@ ov59_0223B68C: ; 0x0223B68C
 	mov r0, #0x10
 	ldr r2, [r6]
 	add r1, r0, #0
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r6, #0x60]
 	mov r0, #1
 	ldr r1, [r6]
@@ -7499,13 +7499,13 @@ ov59_0223B6FC: ; 0x0223B6FC
 	ldr r0, [r4, #0x64]
 	bl String_dtor
 	ldr r0, [r4, #0x60]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x5c]
 	bl DestroyMsgData
 	mov r0, #0
 	bl sub_02002B8C
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #4
 	bl sub_02002DB4
 	pop {r4, pc}

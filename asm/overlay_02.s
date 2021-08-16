@@ -9863,7 +9863,7 @@ ov02_0224A5D0: ; 0x0224A5D0
 	bl sub_0201CA4C
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r6, #0
 	bl FreeToHeap
 	add sp, #0xc
@@ -21407,7 +21407,7 @@ ov02_0224FC8C: ; 0x0224FC8C
 	bl NewMsgDataFromNarc
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -21423,7 +21423,7 @@ ov02_0224FC8C: ; 0x0224FC8C
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r5, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -21445,7 +21445,7 @@ ov02_0224FCE0: ; 0x0224FCE0
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r4, r0, #0
 	mov r0, #2
 	tst r0, r6
@@ -21455,7 +21455,7 @@ ov02_0224FCE0: ; 0x0224FCE0
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	mov r1, #1
 	add r0, r6, #0
 	tst r0, r1
@@ -21484,7 +21484,7 @@ _0224FD3E:
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r2, [sp, #4]
 	add r0, r4, #0
 	mov r1, #1
@@ -21507,7 +21507,7 @@ _0224FD72:
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	add sp, #8
@@ -22438,7 +22438,7 @@ ov02_022504A0: ; 0x022504A0
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
 	bl sub_0203B36C

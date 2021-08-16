@@ -1010,7 +1010,7 @@ _02237FD8:
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x10]
 	mov r0, #5
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x14]
 	mov r0, #5
 	lsl r0, r0, #6
@@ -1565,7 +1565,7 @@ _0223861E:
 	ldr r0, [r4, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1606,7 +1606,7 @@ _022386A8:
 	bl ov12_02237B6C
 _022386C0:
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0
@@ -5451,7 +5451,7 @@ _0223A634:
 	mov r0, #1
 	bl sub_02002B50
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
 	pop {r3, pc}
@@ -5459,7 +5459,7 @@ _0223A648:
 	mov r0, #3
 	bl sub_02002B50
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
 	bl sub_02002B8C
 	pop {r3, pc}
@@ -9681,7 +9681,7 @@ _0223C3A0:
 	bl FillWindowPixelBuffer
 	ldr r0, [r6, #0x18]
 	add r1, r4, #0
-	bl sub_020263D4
+	bl StringCopy
 	mov r3, #0
 	ldr r0, [sp, #0x30]
 	str r3, [sp]
@@ -9743,7 +9743,7 @@ _0223C40A:
 	bl FillWindowPixelBuffer
 	ldr r0, [r6, #0x18]
 	add r1, r4, #0
-	bl sub_020263D4
+	bl StringCopy
 	mov r3, #0
 	ldr r0, [sp, #0x30]
 	str r3, [sp]
@@ -48106,7 +48106,7 @@ _0224EF9C:
 	add r4, #0x36
 	add r0, r3, #0
 	add r1, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	b _0224F162
 _0224EFA8:
 	ldr r0, [r4, #0x4c]
@@ -64173,7 +64173,7 @@ ov12_02256854: ; 0x02256854
 	bl sub_02028F94
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	ldr r2, [r5, #0x64]
 	mov r1, #0xc0
 	add r4, r2, #0
@@ -64220,7 +64220,7 @@ ov12_022568B0: ; 0x022568B0
 	bl sub_02028F94
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0x90

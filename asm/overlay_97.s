@@ -1228,7 +1228,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x6c]
 	ldr r0, [r5]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r5, #0x70]
 	ldr r1, [r5]
 	mov r0, #0xb
@@ -1307,7 +1307,7 @@ ov97_0221F020: ; 0x0221F020
 	ldr r0, [r7, #0x6c]
 	bl DestroyMsgData
 	ldr r0, [r7, #0x70]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r7, #0x74]
 	bl String_dtor
 	add r0, r7, #0
@@ -1478,7 +1478,7 @@ ov97_0221F14C: ; 0x0221F14C
 	bl GfGfxLoader_LoadScrnData
 	add r0, r5, #0
 	mov r1, #7
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -1494,7 +1494,7 @@ ov97_0221F14C: ; 0x0221F14C
 	bl GfGfxLoader_LoadScrnData
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r1, #0x1e
 	mov r0, #4
 	lsl r1, r1, #4
@@ -1777,7 +1777,7 @@ ov97_0221F428: ; 0x0221F428
 	ldr r0, [r5, #0x74]
 	add r4, r1, #0
 	add r1, #0xa
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r5, #0
 	add r0, #0x28
 	mov r1, #0
@@ -1876,7 +1876,7 @@ _0221F4FE:
 	ldr r0, [r5, #0x70]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r4, #0
 	bl String_dtor
 	ldr r0, [r5, #0x70]

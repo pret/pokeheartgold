@@ -63,7 +63,7 @@ sub_02002CEC: ; 0x02002CEC
 	ldr r3, _02002D3C ; =0x020F56C2
 	ldrh r1, [r1, r4]
 	ldrh r3, [r3, r4]
-	mov r0, #0x10
+	mov r0, #0x10  ; graphic/font.narc
 	mov r2, #1
 	bl sub_02025E88
 	ldr r2, _02002D34 ; =_0211188C
@@ -299,7 +299,7 @@ sub_02002E98: ; 0x02002E98
 	strb r0, [r3, #1]
 _02002EC0:
 	add r0, r1, #0
-	bl sub_02002298
+	bl RenderText
 	pop {r4, pc}
 	thumb_func_end sub_02002E98
 

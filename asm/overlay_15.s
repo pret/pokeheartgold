@@ -616,7 +616,7 @@ ov15_021F982C: ; 0x021F982C
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1111,7 +1111,7 @@ ov15_021F9CBC: ; 0x021F9CBC
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #6
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	mov r1, #0xbd
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4883,7 +4883,7 @@ ov15_021FB9D8: ; 0x021FB9D8
 	add r5, r1, #0
 	ldr r2, [r4, r2]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -11512,7 +11512,7 @@ _021FEF6C:
 	add r0, r4, #0
 	bl sub_0201D5C8
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #9

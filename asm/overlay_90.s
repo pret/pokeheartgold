@@ -1346,7 +1346,7 @@ ov90_02259184: ; 0x02259184
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r4, #0
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
@@ -1379,7 +1379,7 @@ ov90_022591D4: ; 0x022591D4
 	ldr r0, [r4, #8]
 	bl String_dtor
 	ldr r0, [r4, #4]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4]
 	bl DestroyMsgData
 	pop {r4, pc}
@@ -1397,13 +1397,13 @@ _022591FC: .word sub_0200CC50
 
 	thumb_func_start ov90_02259200
 ov90_02259200: ; 0x02259200
-	ldr r3, _0225920C ; =sub_0200BE48
+	ldr r3, _0225920C ; =BufferPlayersName
 	add r2, r1, #0
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bx r3
 	nop
-_0225920C: .word sub_0200BE48
+_0225920C: .word BufferPlayersName
 	thumb_func_end ov90_02259200
 
 	thumb_func_start ov90_02259210

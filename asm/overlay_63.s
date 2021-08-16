@@ -49,7 +49,7 @@ ov63_0221BE20: ; 0x0221BE20
 	add r1, #0x84
 	str r0, [r1]
 	mov r0, #0x3e
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r1, r5, #0
 	add r1, #0x88
 	str r0, [r1]
@@ -141,7 +141,7 @@ ov63_0221BF28: ; 0x0221BF28
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r4, #0x84
 	ldr r0, [r4]
 	bl DestroyMsgData
@@ -5525,7 +5525,7 @@ _0221EAB6:
 	ldr r0, [r0]
 	ldr r2, [r2]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, [r5]
 	ldr r0, [r0]
 	bl sub_02028F88

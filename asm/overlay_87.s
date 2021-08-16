@@ -668,7 +668,7 @@ _021E5E20:
 	bl BG_LoadCharTilesData
 	ldr r0, [r4, #0x58]
 	mov r1, #0
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #1
 	lsl r0, r0, #8
 	strh r0, [r4, #0x12]
@@ -1920,7 +1920,7 @@ _021E6816:
 	ldr r0, [r6, #0x38]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x3c]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x40]
 	bl String_dtor
 	ldr r0, [r6, #0x44]
@@ -1998,7 +1998,7 @@ ov87_021E68DC: ; 0x021E68DC
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x38]
 	mov r0, #0x7a
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r5, #0x3c]
 	mov r0, #0x96
 	lsl r0, r0, #2
@@ -4235,7 +4235,7 @@ ov87_021E79C4: ; 0x021E79C4
 	bl BG_LoadCharTilesData
 	ldr r0, [r4, #0x58]
 	mov r1, #0
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -4331,7 +4331,7 @@ _021E7A7C:
 	bl BG_LoadCharTilesData
 	ldr r0, [r6, #0x58]
 	mov r1, #0
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

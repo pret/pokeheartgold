@@ -3,19 +3,19 @@
 
 	.text
 
-	thumb_func_start sub_0200BD08
-sub_0200BD08: ; 0x0200BD08
-	ldr r3, _0200BD14 ; =sub_0200BD18
+	thumb_func_start ScrStrBufs_new
+ScrStrBufs_new: ; 0x0200BD08
+	ldr r3, _0200BD14 ; =ScrStrBufs_new_custom
 	add r2, r0, #0
 	mov r0, #8
 	mov r1, #0x20
 	bx r3
 	nop
-_0200BD14: .word sub_0200BD18
-	thumb_func_end sub_0200BD08
+_0200BD14: .word ScrStrBufs_new_custom
+	thumb_func_end ScrStrBufs_new
 
-	thumb_func_start sub_0200BD18
-sub_0200BD18: ; 0x0200BD18
+	thumb_func_start ScrStrBufs_new_custom
+ScrStrBufs_new_custom: ; 0x0200BD18
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r0, #0
@@ -55,7 +55,7 @@ _0200BD32:
 	add r5, r6, #0
 _0200BD68:
 	add r0, r0, r5
-	bl sub_0200BDF4
+	bl ScrStrBufs_InitSub
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	bl String_ctor
@@ -82,10 +82,10 @@ _0200BD98:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BD18
+	thumb_func_end ScrStrBufs_new_custom
 
-	thumb_func_start sub_0200BDA0
-sub_0200BDA0: ; 0x0200BDA0
+	thumb_func_start ScrStrBufs_delete
+ScrStrBufs_delete: ; 0x0200BDA0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -128,16 +128,16 @@ _0200BDE6:
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BDA0
+	thumb_func_end ScrStrBufs_delete
 
-	thumb_func_start sub_0200BDF4
-sub_0200BDF4: ; 0x0200BDF4
+	thumb_func_start ScrStrBufs_InitSub
+ScrStrBufs_InitSub: ; 0x0200BDF4
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0200BDF4
+	thumb_func_end ScrStrBufs_InitSub
 
-	thumb_func_start sub_0200BDF8
-sub_0200BDF8: ; 0x0200BDF8
+	thumb_func_start SetStringAsPlaceholder
+SetStringAsPlaceholder: ; 0x0200BDF8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -170,58 +170,58 @@ _0200BE2C:
 	add r0, r1, r0
 	ldr r0, [r0, #4]
 	add r1, r7, #0
-	bl sub_020263D4
+	bl StringCopy
 _0200BE3A:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200BDF8
+	thumb_func_end SetStringAsPlaceholder
 
-	thumb_func_start sub_0200BE3C
-sub_0200BE3C: ; 0x0200BE3C
+	thumb_func_start BufferString
+BufferString: ; 0x0200BE3C
 	push {r3, lr}
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BE3C
+	thumb_func_end BufferString
 
-	thumb_func_start sub_0200BE48
-sub_0200BE48: ; 0x0200BE48
+	thumb_func_start BufferPlayersName
+BufferPlayersName: ; 0x0200BE48
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r2, #0
 	add r4, r1, #0
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BE48
+	thumb_func_end BufferPlayersName
 
-	thumb_func_start sub_0200BE6C
-sub_0200BE6C: ; 0x0200BE6C
+	thumb_func_start BufferRivalsName
+BufferRivalsName: ; 0x0200BE6C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r2, #0
 	add r4, r1, #0
 	bl sub_0202A960
-	bl sub_0202A9A8
+	bl GetRivalNamePtr
 	add r1, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BE6C
+	thumb_func_end BufferRivalsName
 
 	thumb_func_start sub_0200BE94
 sub_0200BE94: ; 0x0200BE94
@@ -256,7 +256,7 @@ _0200BED0:
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r4, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -283,7 +283,7 @@ sub_0200BEE8: ; 0x0200BEE8
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -343,7 +343,7 @@ sub_0200BF58: ; 0x0200BF58
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -363,7 +363,7 @@ sub_0200BF8C: ; 0x0200BF8C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200BF8C
@@ -381,7 +381,7 @@ sub_0200BFAC: ; 0x0200BFAC
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200BFAC
@@ -402,7 +402,7 @@ sub_0200BFCC: ; 0x0200BFCC
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0200BFCC
 
@@ -426,7 +426,7 @@ sub_0200BFF0: ; 0x0200BFF0
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C022:
@@ -456,7 +456,7 @@ sub_0200C028: ; 0x0200C028
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C05C:
@@ -485,7 +485,7 @@ sub_0200C060: ; 0x0200C060
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C094:
@@ -512,7 +512,7 @@ sub_0200C098: ; 0x0200C098
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -539,7 +539,7 @@ sub_0200C0CC: ; 0x0200C0CC
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C0FE:
@@ -566,7 +566,7 @@ sub_0200C100: ; 0x0200C100
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C132:
@@ -593,7 +593,7 @@ sub_0200C134: ; 0x0200C134
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C166:
@@ -620,7 +620,7 @@ sub_0200C168: ; 0x0200C168
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C19A:
@@ -647,7 +647,7 @@ sub_0200C19C: ; 0x0200C19C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C1CE:
@@ -676,7 +676,7 @@ sub_0200C1D4: ; 0x0200C1D4
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C206:
@@ -705,7 +705,7 @@ sub_0200C20C: ; 0x0200C20C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C23E:
@@ -732,7 +732,7 @@ sub_0200C240: ; 0x0200C240
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C272:
@@ -780,7 +780,7 @@ _0200C2B6:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 _0200C2D2:
@@ -807,7 +807,7 @@ sub_0200C2D4: ; 0x0200C2D4
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C306:
@@ -836,7 +836,7 @@ sub_0200C30C: ; 0x0200C30C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C33E:
@@ -865,7 +865,7 @@ sub_0200C344: ; 0x0200C344
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C376:
@@ -894,7 +894,7 @@ sub_0200C37C: ; 0x0200C37C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C3AE:
@@ -923,7 +923,7 @@ sub_0200C3B4: ; 0x0200C3B4
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C3E6:
@@ -938,12 +938,12 @@ sub_0200C3E8: ; 0x0200C3E8
 	add r2, #0x14
 	add r4, r1, #0
 	add r1, r2, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200C3E8
@@ -968,7 +968,7 @@ sub_0200C408: ; 0x0200C408
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C43A:
@@ -1012,7 +1012,7 @@ _0200C47A:
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1032,7 +1032,7 @@ sub_0200C490: ; 0x0200C490
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200C490
@@ -1057,7 +1057,7 @@ sub_0200C4B0: ; 0x0200C4B0
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C4E2:
@@ -1091,7 +1091,7 @@ sub_0200C4E8: ; 0x0200C4E8
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C526:
@@ -1110,7 +1110,7 @@ sub_0200C528: ; 0x0200C528
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0200C528
 
@@ -1134,7 +1134,7 @@ sub_0200C544: ; 0x0200C544
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C576:
@@ -1161,7 +1161,7 @@ sub_0200C578: ; 0x0200C578
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C5AA:
@@ -1205,7 +1205,7 @@ _0200C5E8:
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1237,7 +1237,7 @@ _0200C620:
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 _0200C648:
@@ -1267,7 +1267,7 @@ sub_0200C654: ; 0x0200C654
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C686:
@@ -1294,7 +1294,7 @@ sub_0200C688: ; 0x0200C688
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C6BA:
@@ -1321,7 +1321,7 @@ sub_0200C6BC: ; 0x0200C6BC
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C6EE:
@@ -1355,7 +1355,7 @@ sub_0200C6F0: ; 0x0200C6F0
 	bl sub_0202C7E0
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, [sp, #8]
@@ -1363,7 +1363,7 @@ sub_0200C6F0: ; 0x0200C6F0
 	ldr r3, [sp, #0x10]
 	add r2, r4, #0
 	str r7, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x14
@@ -1390,7 +1390,7 @@ sub_0200C74C: ; 0x0200C74C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C77E:
@@ -1419,7 +1419,7 @@ sub_0200C784: ; 0x0200C784
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C7B6:
@@ -1449,7 +1449,7 @@ sub_0200C7BC: ; 0x0200C7BC
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C7F0:
@@ -1477,7 +1477,7 @@ sub_0200C7F4: ; 0x0200C7F4
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C826:
@@ -1506,7 +1506,7 @@ sub_0200C82C: ; 0x0200C82C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C85E:
@@ -1536,7 +1536,7 @@ sub_0200C864: ; 0x0200C864
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C898:
@@ -1564,7 +1564,7 @@ sub_0200C89C: ; 0x0200C89C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C8CE:
@@ -1593,7 +1593,7 @@ sub_0200C8D4: ; 0x0200C8D4
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C906:
@@ -1623,7 +1623,7 @@ sub_0200C90C: ; 0x0200C90C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r7, #0
 	bl DestroyMsgData
 _0200C940:
@@ -1655,7 +1655,7 @@ _0200C962:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1688,7 +1688,7 @@ _0200C9A2:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1721,7 +1721,7 @@ _0200C9E6:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1756,7 +1756,7 @@ _0200CA2E:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1790,7 +1790,7 @@ _0200CA6E:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1826,7 +1826,7 @@ _0200CAB8:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1862,7 +1862,7 @@ _0200CAFC:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1896,7 +1896,7 @@ _0200CB3E:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 _0200CB5A:
@@ -1949,7 +1949,7 @@ _0200CB9C:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200BDF8
+	bl SetStringAsPlaceholder
 	add r0, r6, #0
 	bl DestroyMsgData
 _0200CBB8:

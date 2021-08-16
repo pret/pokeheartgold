@@ -110,7 +110,7 @@ _021E5950:
 	add r0, r4, #0
 	bl ov61_021E6FC4
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
 	bl sub_02002B50
 	mov r0, #0
@@ -765,7 +765,7 @@ ov61_021E5F74: ; 0x021E5F74
 	bl sub_020072A4
 	add r6, r0, #0
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0
@@ -2470,13 +2470,13 @@ ov61_021E6C3C: ; 0x021E6C3C
 	bl sub_0201CA4C
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #0xb
 	str r0, [sp]
 	ldr r0, _021E6D74 ; =0x04001050

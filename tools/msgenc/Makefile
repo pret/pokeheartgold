@@ -9,5 +9,5 @@ all: msgenc
 clean:
 	$(RM) msgenc msgenc.exe
 
-msgenc: msgenc.cpp
+msgenc: msgenc.cpp MessagesConverter.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^

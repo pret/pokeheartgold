@@ -3960,7 +3960,7 @@ ov112_021E76CC: ; 0x021E76CC
 	add r0, r5, #0
 	bl ov112_021E7768
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -4169,7 +4169,7 @@ ov112_021E7910: ; 0x021E7910
 	bl sub_02007290
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
 	add r0, r4, #0
@@ -4528,7 +4528,7 @@ ov112_021E7C18: ; 0x021E7C18
 	str r0, [r4, r1]
 	mov r0, #0x10
 	mov r1, #0x20
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	ldr r1, _021E7C64 ; =0x0001E448
 	str r0, [r4, r1]
 	mov r0, #0x19
@@ -4560,7 +4560,7 @@ ov112_021E7C6C: ; 0x021E7C6C
 	bl DestroyMsgData
 	ldr r0, _021E7CA0 ; =0x0001E448
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	pop {r4, pc}
 	nop
 _021E7C94: .word 0x0001E454
@@ -10202,7 +10202,7 @@ _021EACEC:
 	bl FillBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, _021EADC8 ; =0x0001E440
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -10236,7 +10236,7 @@ _021EAD3A:
 	bl FillBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
 	mov r1, #0
 	bl ov112_021EADD0
@@ -10264,7 +10264,7 @@ _021EAD82:
 	bl FillBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
 	mov r1, #1
 	bl ov112_021EADD0
@@ -10625,7 +10625,7 @@ _021EB074:
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	mov r0, #0x1a
 	pop {r4, pc}
@@ -10654,7 +10654,7 @@ _021EB0BC:
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, _021EB1D0 ; =0x0001E440
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -10692,7 +10692,7 @@ _021EB108:
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	mov r0, #0xf
 	pop {r4, pc}
@@ -10716,7 +10716,7 @@ _021EB152:
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	mov r0, #0xa
 	pop {r4, pc}
@@ -10740,7 +10740,7 @@ _021EB188:
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	mov r0, #0xf
 	pop {r4, pc}
@@ -10805,7 +10805,7 @@ ov112_021EB208: ; 0x021EB208
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #8
@@ -11553,10 +11553,10 @@ ov112_021EB7D8: ; 0x021EB7D8
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0xf
@@ -11629,10 +11629,10 @@ ov112_021EB864: ; 0x021EB864
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r2, #0x16
 	add r0, r4, #0
 	mov r1, #2
@@ -11714,7 +11714,7 @@ ov112_021EB90C: ; 0x021EB90C
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	bl ov112_021EA570
 	add sp, #0x10
@@ -11766,7 +11766,7 @@ _021EB974:
 	bl FillBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
 	bl ov112_021EA570
 	mov r0, #1
@@ -11994,16 +11994,16 @@ ov112_021EBAB4: ; 0x021EBAB4
 	bl ov112_021EA688
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #2
 	add sp, #0x10
 	pop {r4, pc}
@@ -12159,7 +12159,7 @@ ov112_021EBC3C: ; 0x021EBC3C
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #4
 	add sp, #0x10
 	pop {r4, pc}
@@ -12374,10 +12374,10 @@ ov112_021EBDE8: ; 0x021EBDE8
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #9
@@ -12909,10 +12909,10 @@ ov112_021EC208: ; 0x021EC208
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0x1f
@@ -13284,16 +13284,16 @@ ov112_021EC478: ; 0x021EC478
 	bl ov112_021EA688
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, _021EC51C ; =0x0001F2E0
 	mov r1, #0
 	strh r1, [r4, r0]
@@ -13402,7 +13402,7 @@ _021EC598:
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -13429,10 +13429,10 @@ _021EC598:
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	mov r1, #3
 	bl ov112_021EA688
@@ -13599,7 +13599,7 @@ ov112_021EC70C: ; 0x021EC70C
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	mov r1, #3
 	bl ov112_021EA688
@@ -14451,7 +14451,7 @@ ov112_021ECE28: ; 0x021ECE28
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	mov r1, #3
 	bl ov112_021EA688
@@ -16425,7 +16425,7 @@ ov112_021EDE1C: ; 0x021EDE1C
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0xc]
 	add sp, #0x10
 	str r0, [r4, #8]
@@ -16493,7 +16493,7 @@ _021EDEBA:
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0x18
@@ -16568,7 +16568,7 @@ ov112_021EDF4C: ; 0x021EDF4C
 	bl FillBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
 	bl ov112_021ED610
 	cmp r0, #0
@@ -16588,7 +16588,7 @@ ov112_021EDF4C: ; 0x021EDF4C
 	lsl r3, r3, #0x19
 	ldr r0, [r5, r0]
 	lsr r3, r3, #0x1e
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #0x1b
@@ -16805,7 +16805,7 @@ ov112_021EE12C: ; 0x021EE12C
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	bl ov112_021E7464
 	ldr r0, _021EE174 ; =0x000004A1
 	bl sub_02006B24
@@ -16931,7 +16931,7 @@ _021EE1FC:
 	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	mov r0, #0x2f
 	pop {r4, pc}
@@ -17174,7 +17174,7 @@ ov112_021EE3E0: ; 0x021EE3E0
 	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, _021EE460 ; =0x0001EC7C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -17415,7 +17415,7 @@ ov112_021EE5B8: ; 0x021EE5B8
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #0x43
 	add sp, #0x10
 	pop {r4, pc}
@@ -17663,7 +17663,7 @@ ov112_021EE778: ; 0x021EE778
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #8
 	add sp, #0x10
 	pop {r4, pc}
@@ -18176,7 +18176,7 @@ _021EEBA4:
 	beq _021EECAC
 	add r2, #0x1e
 	add r1, r5, r2
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r4, #0
 	bl sub_0206DCE4
 	add r0, r4, #0
@@ -18617,7 +18617,7 @@ ov112_021EEF30: ; 0x021EEF30
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	mov r1, #6
 	bl ov112_021EA688
@@ -19594,10 +19594,10 @@ ov112_021EF6A0: ; 0x021EF6A0
 	bl FillBgTilemapRect
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	mov r1, #6
 	bl ov112_021E9C10
@@ -19864,7 +19864,7 @@ ov112_021EF8D4: ; 0x021EF8D4
 	lsl r3, r3, #0x19
 	ldr r0, [r5, r0]
 	lsr r3, r3, #0x1e
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r5, #0
@@ -21349,7 +21349,7 @@ ov112_021F03BC: ; 0x021F03BC
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x68]
 	ldr r0, [r4]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x6c]
 	ldr r1, [r4]
 	mov r0, #0xb
@@ -21415,7 +21415,7 @@ ov112_021F051C: ; 0x021F051C
 	ldr r0, [r7, #0x68]
 	bl DestroyMsgData
 	ldr r0, [r7, #0x6c]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r7, #0x70]
 	bl String_dtor
 	add r0, r7, #0
@@ -21550,7 +21550,7 @@ ov112_021F05FC: ; 0x021F05FC
 	bl GfGfxLoader_LoadScrnData
 	add r0, r5, #0
 	mov r1, #7
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r1, #0x1e
 	mov r0, #4
 	lsl r1, r1, #4
@@ -21623,7 +21623,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r1, #0xa
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0x70]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r5, #0
 	add r0, #0x38
 	mov r1, #0
@@ -21654,7 +21654,7 @@ ov112_021F06CC: ; 0x021F06CC
 	ldr r0, [r5, #0x6c]
 	mov r1, #0
 	add r2, r6, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [r5, #0x6c]
@@ -22758,7 +22758,7 @@ _021F0FC2:
 	bl sub_02028F94
 	str r0, [r5, #0xc]
 	add r0, r4, #0
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	mov r6, #0
 	str r0, [r5, #8]
 	add r7, r6, #0
@@ -23156,7 +23156,7 @@ _021F129C:
 	ldr r2, [r5, #4]
 	mov r0, #0xd
 	mov r1, #0x20
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	add r4, r5, #0
 	ldr r6, _021F1320 ; =0x021FF350
 	str r0, [r5, #0x58]
@@ -23211,7 +23211,7 @@ _021F132E:
 	cmp r4, #4
 	blt _021F132E
 	ldr r0, [r6, #0x58]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x5c]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x60]
@@ -23317,7 +23317,7 @@ ov112_021F13CC: ; 0x021F13CC
 	bl String_ctor
 	add r1, r6, #0
 	add r4, r0, #0
-	bl sub_020263D4
+	bl StringCopy
 	mov r1, #0xe
 	add r0, r4, #0
 	lsl r1, r1, #0xc
@@ -23404,12 +23404,12 @@ _021F14C6:
 	beq _021F14D6
 	ldr r1, _021F1500 ; =0x021FF2EC
 	add r0, r7, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	b _021F14DE
 _021F14D6:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 _021F14DE:
 	mov r0, #1
 	str r0, [sp]
@@ -23418,7 +23418,7 @@ _021F14DE:
 	ldr r0, [r5, #0x58]
 	ldr r1, [sp, #8]
 	add r2, r7, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
 	bl String_dtor
 	add sp, #0x10
@@ -27400,7 +27400,7 @@ ov112_021F336C: ; 0x021F336C
 	bl sub_0202903C
 	strb r0, [r5, #4]
 	add r0, r4, #0
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #8

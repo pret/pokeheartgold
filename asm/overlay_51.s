@@ -195,7 +195,7 @@ _021E5C2C:
 	mov r0, #1
 	bl sub_02002B8C
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r1, #0
 	mov r0, #0x38
 	add r2, r1, #0
@@ -505,7 +505,7 @@ ov51_021E5EC8: ; 0x021E5EC8
 	mov r0, #0
 	bl sub_02002B8C
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r1, [r0]
@@ -1328,7 +1328,7 @@ _021E65C8:
 _021E6608:
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
@@ -2157,7 +2157,7 @@ ov51_021E6C6C: ; 0x021E6C6C
 	bl sub_0201C4EC
 	ldr r0, [r4]
 	mov r1, #7
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -2527,7 +2527,7 @@ _021E6F68:
 	mov r2, #0x19
 	str r0, [sp, #0x18]
 	mov r0, #6
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	add r4, r0, #0
 	ldr r0, _021E71CC ; =0x000033D4
 	mov r2, #0
@@ -2550,7 +2550,7 @@ _021E6F68:
 	add r1, r5, #0
 	ldr r0, [r7, r0]
 	add r1, #8
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r0, _021E71C8 ; =0x000033D0
 	mov r2, #0
 	ldr r0, [r7, r0]
@@ -2774,7 +2774,7 @@ _021E710A:
 	ldr r0, [sp, #0x1c]
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2864,7 +2864,7 @@ _021E721C:
 	ldr r4, [r0, r1]
 	mov r0, #6
 	mov r1, #0x20
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	ldr r1, [sp, #0x18]
 	add r6, r0, #0
 	add r1, #0x33
@@ -2935,7 +2935,7 @@ _021E72EC:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #2
@@ -2943,7 +2943,7 @@ _021E72EC:
 	add r0, r6, #0
 	mov r1, #1
 	add r2, r7, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r0, [sp, #0x1c]
 	mov r1, #0x19
 	add r2, r4, #0
@@ -3129,7 +3129,7 @@ _021E7324:
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3270,7 +3270,7 @@ _021E758E:
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0x19
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	add r6, r0, #0
 	ldr r0, [r5, #0x18]
 	bl sub_0202CE24
@@ -3322,7 +3322,7 @@ _021E758E:
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

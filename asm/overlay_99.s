@@ -2575,7 +2575,7 @@ ov99_021E6D34: ; 0x021E6D34
 	add r2, r0, #0
 	ldr r0, [sp, #0x2c]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r5, #0x10]
@@ -3480,7 +3480,7 @@ ov99_021E73E0: ; 0x021E73E0
 	bl ov99_021E738C
 	ldr r0, [r5]
 	mov r1, #3
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 _021E7424:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5890,7 +5890,7 @@ _021E870C:
 	blt _021E8704
 	ldr r0, [r7, #4]
 	ldr r1, [sp, #0x1c]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7724,7 +7724,7 @@ _021E9528:
 	add r2, #0x30
 	mul r1, r6
 	add r1, r2, r1
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

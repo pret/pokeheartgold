@@ -1570,13 +1570,13 @@ _021E82EC:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r5, #0x10]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E82EC
@@ -1891,7 +1891,7 @@ ov101_021E85A8: ; 0x021E85A8
 	ldr r2, [r4]
 	mov r0, #2
 	mov r1, #0x5b
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	add r1, r4, #0
 	add r1, #0x8c
 	str r0, [r1]
@@ -1964,7 +1964,7 @@ ov101_021E862C: ; 0x021E862C
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r4, #0x88
 	ldr r0, [r4]
 	bl DestroyMsgData
@@ -7957,7 +7957,7 @@ _021EB4FC:
 	ldr r0, [r0]
 	ldr r2, [r2]
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r5, #0
 	add r1, r5, #0
 	add r2, r5, #0
@@ -13741,7 +13741,7 @@ ov101_021EE230: ; 0x021EE230
 	ldr r2, [r4]
 	mov r0, #2
 	mov r1, #0x5b
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	add r1, r4, #0
 	add r1, #0x8c
 	str r0, [r1]
@@ -13849,7 +13849,7 @@ ov101_021EE2E8: ; 0x021EE2E8
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r4, #0x88
 	ldr r0, [r4]
 	bl DestroyMsgData
@@ -18305,7 +18305,7 @@ ov101_021F05EC: ; 0x021F05EC
 	ldr r2, [r6]
 	mov r0, #2
 	mov r1, #0x20
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r6, #0x18]
 	mov r0, #0xa
 	ldr r1, [r6]
@@ -18337,7 +18337,7 @@ _021F0628:
 	mov r0, #1
 	bl sub_02002BA8
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov101_021F05EC
@@ -18360,13 +18360,13 @@ _021F0660:
 	ldr r0, [r6, #0x1c]
 	bl String_dtor
 	ldr r0, [r6, #0x18]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x14]
 	bl DestroyMsgData
 	mov r0, #0
 	bl sub_02002BA8
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov101_021F0658
 
@@ -21498,7 +21498,7 @@ ov101_021F1D74: ; 0x021F1D74
 	ldr r2, [r4]
 	mov r0, #0x10
 	mov r1, #0x25
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r4, #0x50]
 	ldr r0, _021F1E7C ; =0x00000439
 	ldr r1, [r4]
@@ -21569,7 +21569,7 @@ _021F1E88:
 	ldr r0, [r6, #0x54]
 	bl String_dtor
 	ldr r0, [r6, #0x50]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x48]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x44]
@@ -21892,7 +21892,7 @@ ov101_021F2110: ; 0x021F2110
 	ldr r0, [r4, #0x50]
 	ldr r2, [r4, #0x24]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r1, r4, #0
 	add r1, #0xa0
 	ldrb r1, [r1]
@@ -21904,7 +21904,7 @@ ov101_021F2110: ; 0x021F2110
 	str r3, [sp, #4]
 	add r2, r0, #0
 	ldr r0, [r4, #0x50]
-	bl sub_0200BE3C
+	bl BufferString
 	ldrh r0, [r4, #0x30]
 	bl sub_0203B36C
 	add r2, r0, #0
@@ -22127,7 +22127,7 @@ _021F22D8:
 	ldr r0, [r4, #0x50]
 	ldr r2, [r4, #0x54]
 	mov r1, #4
-	bl sub_0200BE3C
+	bl BufferString
 _021F2304:
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -24746,7 +24746,7 @@ _021F3642:
 	ldr r0, [r4, #0x50]
 	ldr r2, [r4, #0x54]
 	mov r1, #0xa
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r6, #0
 	bl sub_02073DFC
 	add r6, r0, #0
@@ -29187,7 +29187,7 @@ ov101_021F57B8: ; 0x021F57B8
 	ldr r2, [r4]
 	mov r0, #8
 	mov r1, #0x33
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r4, #0x44]
 	ldr r1, [r4]
 	mov r0, #0x33
@@ -29239,7 +29239,7 @@ ov101_021F58A0: ; 0x021F58A0
 	ldr r0, [r4, #0x48]
 	bl String_dtor
 	ldr r0, [r4, #0x44]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x20]
 	bl DestroyMsgData
 	add r0, r4, #0
@@ -31470,7 +31470,7 @@ _021F6948:
 	ldr r0, [r5, #0x44]
 	mov r1, #0
 	add r2, r6, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -32137,7 +32137,7 @@ _021F6E64:
 	ldr r2, [r6, #0x48]
 	add r1, r1, #2
 	mov r3, #1
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r0, [sp, #8]
 	add r5, r5, #2
 	add r0, r0, #1

@@ -558,7 +558,7 @@ ov78_021E5D94: ; 0x021E5D94
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x38]
 	ldr r0, [r4]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x3c]
 	mov r1, #0
 	add r0, sp, #8
@@ -614,7 +614,7 @@ ov78_021E5E24: ; 0x021E5E24
 	add r0, #0x18
 	bl RemoveWindow
 	ldr r0, [r4, #0x3c]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x38]
 	bl DestroyMsgData
 	pop {r4, pc}
@@ -799,7 +799,7 @@ _021E5EEE:
 	bl sub_0201CA4C
 	ldr r0, [r5, #0x14]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -843,7 +843,7 @@ _021E5EEE:
 	bl sub_0201CA4C
 	ldr r0, [r5, #0x14]
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -945,7 +945,7 @@ _021E60DA:
 	ldr r0, [r5, #0x3c]
 	ldr r2, [r5, #0xc]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, [r5, #0x3c]
 	ldr r2, [sp, #0x10]
 	add r1, r6, #0

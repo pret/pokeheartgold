@@ -31,6 +31,7 @@ GFX          := $(TOOLSDIR)/nitrogfx/nitrogfx$(EXE)
 FIXROM       := $(TOOLSDIR)/fixrom/fixrom$(EXE)
 KNARC        := $(TOOLSDIR)/knarc/knarc$(EXE)
 O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
+MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
 
 NATIVE_TOOLS := \
 	$(SCANINC) \
@@ -38,7 +39,8 @@ NATIVE_TOOLS := \
 	$(GFX) \
 	$(FIXROM) \
 	$(KNARC) \
-	$(O2NARC)
+	$(O2NARC) \
+	$(MSGENC)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 

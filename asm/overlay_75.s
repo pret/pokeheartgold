@@ -585,7 +585,7 @@ _02246D8C:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, [r4, #0x1c]
-	bl sub_020263D4
+	bl StringCopy
 	add r0, r5, #0
 	mov r1, #2
 	bl ov75_02246CF0
@@ -844,7 +844,7 @@ ov75_02246F0C: ; 0x02246F0C
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x74
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r5, #0x20]
 	ldr r2, _02247104 ; =0x00000307
 	mov r0, #0
@@ -972,7 +972,7 @@ _0224707C:
 	strb r1, [r0, #9]
 	bl sub_02022D3C
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0
@@ -1083,7 +1083,7 @@ _022471A4:
 	ldr r0, [r4, #0x24]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x20]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x3c]
 	bl String_dtor
 	ldr r0, [r4, #0x40]
@@ -1103,7 +1103,7 @@ _022471A4:
 	bl sub_020205AC
 	bl sub_02021238
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0
@@ -4930,7 +4930,7 @@ _0224902E:
 	add r2, r0, #0
 	ldr r0, [r4, #0x20]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, _022490D0 ; =0x00000F0F
 	mov r2, #0x21
 	str r0, [sp]

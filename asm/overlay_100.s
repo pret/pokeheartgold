@@ -532,7 +532,7 @@ _021E5CCA:
 	lsl r1, r1, #0x18
 	ldr r0, [r5, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r1, r4, #1
 	lsl r1, r1, #0x18
 	ldr r0, [r5, #0x74]
@@ -554,7 +554,7 @@ _021E5CCA:
 	lsl r1, r1, #0x18
 	ldr r0, [r5, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r1, r4, #5
 	lsl r1, r1, #0x18
 	ldr r0, [r5, #0x74]

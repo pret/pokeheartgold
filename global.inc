@@ -23791,9 +23791,9 @@
 .public sub_02001C94
 .public sub_02001FDC
 .public sub_02001FFC
-.public sub_02002298
+.public RenderText
 .public sub_020027F0
-.public sub_02002B34
+.public TextFlags_SetCanABSpeedUpPrint
 .public sub_02002B50
 .public sub_02002B8C
 .public sub_02002BA8
@@ -24087,12 +24087,12 @@
 .public ReadMsgData_ExpandPlaceholders
 .public GetMoveName
 .public GetSpeciesName
-.public sub_0200BD08
-.public sub_0200BD18
-.public sub_0200BDA0
-.public sub_0200BE3C
-.public sub_0200BE48
-.public sub_0200BE6C
+.public ScrStrBufs_new
+.public ScrStrBufs_new_custom
+.public ScrStrBufs_delete
+.public BufferString
+.public BufferPlayersName
+.public BufferRivalsName
 .public sub_0200BE94
 .public sub_0200BEE8
 .public sub_0200BF1C
@@ -24576,7 +24576,7 @@
 .public sub_0201BE00
 .public sub_0201BE0C
 .public sub_0201BE7C
-.public sub_0201BF7C
+.public BgCommitTilemapBufferToVram
 .public BgCopyOrUncompressTilemapBufferRangeToVram
 .public BG_LoadScreenTilemapData
 .public BG_LoadCharTilesData
@@ -24646,7 +24646,7 @@
 .public sub_0201F990
 .public sub_0201FA34
 .public sub_0201FB1C
-.public sub_0201FB44
+.public MsgArray_GetControlCode
 .public sub_0201FB90
 .public sub_0201FBB8
 .public sub_0201FC30
@@ -24909,7 +24909,7 @@
 .public String_ctor
 .public String_dtor
 .public StringSetEmpty
-.public sub_020263D4
+.public StringCopy
 .public StringDup
 .public sub_02026464
 .public sub_02026598
@@ -24919,7 +24919,7 @@
 .public sub_02026820
 .public sub_02026860
 .public sub_020268EC
-.public sub_020269A0
+.public CopyU16ArrayToString
 .public CopyU16ArrayToStringN
 .public sub_02026A68
 .public sub_02026AA4
@@ -24993,7 +24993,7 @@
 .public sub_02028EF0
 .public sub_02028F24
 .public sub_02028F44
-.public sub_02028F54
+.public PlayerProfile_GetNamePtr
 .public sub_02028F58
 .public sub_02028F68
 .public sub_02028F80
@@ -25056,7 +25056,7 @@
 .public sub_0202A978
 .public sub_0202A988
 .public sub_0202A998
-.public sub_0202A9A8
+.public GetRivalNamePtr
 .public sub_0202A9B0
 .public sub_0202A9E8
 .public sub_0202AA20

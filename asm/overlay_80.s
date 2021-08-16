@@ -1187,7 +1187,7 @@ ov80_0222A7CC: ; 0x0222A7CC
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0222A7CC
@@ -1279,7 +1279,7 @@ ov80_0222A84C: ; 0x0222A84C
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r5, #0
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r4, #0x44]
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -1371,7 +1371,7 @@ ov80_0222A920: ; 0x0222A920
 	bl GF_AssertFail
 _0222A930:
 	ldr r0, [r4, #0x44]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x48]
 	bl String_dtor
 	ldr r0, [r4, #0x4c]
@@ -6815,7 +6815,7 @@ ov80_0222D008: ; 0x0222D008
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0, #0x44]
-	bl sub_0200BE48
+	bl BufferPlayersName
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -6840,7 +6840,7 @@ ov80_0222D034: ; 0x0222D034
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0, #0x44]
-	bl sub_0200BE48
+	bl BufferPlayersName
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov80_0222D034
@@ -6893,7 +6893,7 @@ ov80_0222D084: ; 0x0222D084
 	ldr r0, [r0, #0x44]
 	add r1, r6, #0
 	add r2, r7, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
 	bl String_dtor
 	mov r0, #0
@@ -6954,7 +6954,7 @@ ov80_0222D118: ; 0x0222D118
 	ldrb r1, [r1]
 	ldr r0, [r0, #0x44]
 	ldr r2, [r2, #8]
-	bl sub_0200BE6C
+	bl BufferRivalsName
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov80_0222D118
@@ -9325,7 +9325,7 @@ ov80_0222E344: ; 0x0222E344
 	add r0, r3, #0
 	add r6, r1, #0
 	add r4, r2, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [sp, #0x20]
 	bl sub_02002B50
 	cmp r4, #0
@@ -9445,7 +9445,7 @@ ov80_0222E400: ; 0x0222E400
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020263D4
+	bl StringCopy
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #8
@@ -19755,7 +19755,7 @@ ov80_02233594: ; 0x02233594
 	ldr r0, [r5, #0x44]
 	ldr r2, [sp, #0x10]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r7, #0
 	mov r1, #0
 	add r2, r4, #0
@@ -20735,7 +20735,7 @@ _02233DC4:
 	ldr r0, [r7]
 	add r1, r6, #0
 	ldr r0, [r0, #0x44]
-	bl sub_0200BE48
+	bl BufferPlayersName
 	b _02233F12
 _02233DD2:
 	ldr r1, _02233E4C ; =0x00000A7A
@@ -30629,7 +30629,7 @@ _022386D4:
 	mov r0, #1
 	bl sub_02002B50
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r0, _02238854 ; =ov80_02238A7C
@@ -30763,7 +30763,7 @@ ov80_0223885C: ; 0x0223885C
 	mov r0, #0x65
 	bl sub_0201A9C4
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0

@@ -732,7 +732,7 @@ _0221EB44:
 	bl NewMsgDataFromNarc
 	str r0, [r4, #8]
 	ldr r0, [sp]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x10]
 	mov r0, #1
 	ldr r1, [sp]
@@ -759,7 +759,7 @@ ov98_0221EB84: ; 0x0221EB84
 	ldr r0, [r5, #0x14]
 	bl String_dtor
 	ldr r0, [r5, #0x10]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r5, #0xc]
 	bl DestroyMsgData
 	ldr r0, [r5, #8]
@@ -1054,7 +1054,7 @@ ov98_0221EDC4: ; 0x0221EDC4
 	ldr r0, [r5, #0x10]
 	ldr r2, [sp, #0x20]
 	add r1, r3, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, [r5, #8]
 	add r1, r6, #0
 	bl NewString_ReadMsgData

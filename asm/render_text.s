@@ -23,7 +23,7 @@ sub_020021A0: ; 0x020021A0
 	lsl r0, r0, #0x1b
 	lsr r0, r0, #0x1f
 	beq _020021C2
-	ldr r1, _02002214 ; =0x02111884
+	ldr r1, _02002214 ; =_02111884
 	mov r0, #1
 	ldrb r2, [r1, #3]
 	bic r2, r0
@@ -31,7 +31,7 @@ sub_020021A0: ; 0x020021A0
 	mov r0, #1
 	pop {r3, pc}
 _020021C2:
-	ldr r1, _02002214 ; =0x02111884
+	ldr r1, _02002214 ; =_02111884
 	ldrb r0, [r1, #2]
 	lsl r0, r0, #0x1b
 	lsr r0, r0, #0x1f
@@ -47,11 +47,11 @@ _020021D8:
 	lsl r0, r2, #0x1e
 	lsr r0, r0, #0x1f
 	beq _020021FE
-	ldr r0, _0200221C ; =0x02111888
+	ldr r0, _0200221C ; =_02111888
 	bl sub_020252F4
 	cmp r0, #0
 	beq _020021FA
-	ldr r1, _02002214 ; =0x02111884
+	ldr r1, _02002214 ; =_02111884
 	mov r0, #1
 	ldrb r2, [r1, #3]
 	bic r2, r0
@@ -74,9 +74,9 @@ _0200220A:
 	pop {r3, pc}
 	nop
 _02002210: .word 0x021D110C
-_02002214: .word 0x02111884
+_02002214: .word _02111884
 _02002218: .word 0x021D114C
-_0200221C: .word 0x02111888
+_0200221C: .word _02111888
 	thumb_func_end sub_020021A0
 
 	thumb_func_start sub_02002220
@@ -87,7 +87,7 @@ sub_02002220: ; 0x02002220
 	mov r0, #3
 	tst r0, r1
 	beq _0200223A
-	ldr r1, _0200228C ; =0x02111884
+	ldr r1, _0200228C ; =_02111884
 	mov r0, #1
 	ldrb r2, [r1, #3]
 	bic r2, r0
@@ -95,7 +95,7 @@ sub_02002220: ; 0x02002220
 	mov r0, #1
 	pop {r3, pc}
 _0200223A:
-	ldr r1, _0200228C ; =0x02111884
+	ldr r1, _0200228C ; =_02111884
 	ldrb r0, [r1, #2]
 	lsl r0, r0, #0x1b
 	lsr r0, r0, #0x1f
@@ -111,11 +111,11 @@ _02002250:
 	lsl r0, r2, #0x1e
 	lsr r0, r0, #0x1f
 	beq _02002276
-	ldr r0, _02002294 ; =0x02111888
+	ldr r0, _02002294 ; =_02111888
 	bl sub_02025320
 	cmp r0, #0
 	beq _02002272
-	ldr r1, _0200228C ; =0x02111884
+	ldr r1, _0200228C ; =_02111884
 	mov r0, #1
 	ldrb r2, [r1, #3]
 	bic r2, r0
@@ -138,13 +138,13 @@ _02002282:
 	pop {r3, pc}
 	nop
 _02002288: .word 0x021D110C
-_0200228C: .word 0x02111884
+_0200228C: .word _02111884
 _02002290: .word 0x021D114C
-_02002294: .word 0x02111888
+_02002294: .word _02111888
 	thumb_func_end sub_02002220
 
-	thumb_func_start sub_02002298
-sub_02002298: ; 0x02002298
+	thumb_func_start RenderText
+RenderText: ; 0x02002298
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -188,7 +188,7 @@ _020022CC:
 	lsl r0, r0, #0x19
 	lsr r0, r0, #0x19
 	beq _020022F4
-	ldr r1, _020025B8 ; =0x02111884
+	ldr r1, _020025B8 ; =_02111884
 	mov r0, #0x40
 	ldrb r2, [r1, #2]
 	orr r0, r2
@@ -212,7 +212,7 @@ _020022F4:
 	add r0, r4, #0
 	add r0, #0x2a
 	strb r1, [r0]
-	ldr r0, _020025B8 ; =0x02111884
+	ldr r0, _020025B8 ; =_02111884
 	ldrb r0, [r0, #2]
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
@@ -314,7 +314,7 @@ _020023CC:
 	ldr r0, [r4]
 	sub r0, r0, #2
 	str r0, [r4]
-	bl sub_0201FB44
+	bl MsgArray_GetControlCode
 	lsl r0, r0, #0x10
 	ldr r1, _020025C8 ; =0x0000FE06
 	lsr r0, r0, #0x10
@@ -564,7 +564,7 @@ _020025AE:
 	strb r0, [r4, #0x1a]
 	b _02002622
 	.balign 4, 0
-_020025B8: .word 0x02111884
+_020025B8: .word _02111884
 _020025BC: .word 0x0000F0FD
 _020025C0: .word 0x000025BD
 _020025C4: .word 0x0000FFFE
@@ -668,11 +668,11 @@ _02002658:
 	mov r0, #0
 	pop {r3, r4, r5, r6, pc}
 _0200269A:
-	bl sub_02002B10
+	bl TextPrinterWait
 	cmp r0, #0
 	beq _020026AE
 	add r0, r4, #0
-	bl sub_020029D8
+	bl TextPrinterClearDownArrow
 	mov r0, #0
 	add r4, #0x28
 	strb r0, [r4]
@@ -681,11 +681,11 @@ _020026AE:
 	mov r0, #3
 	pop {r3, r4, r5, r6, pc}
 _020026B4:
-	bl sub_02002AEC
+	bl TextPrinterWaitWithDownArrow
 	cmp r0, #0
 	beq _020026D8
 	add r0, r4, #0
-	bl sub_020029D8
+	bl TextPrinterClearDownArrow
 	ldrb r1, [r4, #0x16]
 	ldr r0, [r4, #4]
 	bl FillWindowPixelBuffer
@@ -701,11 +701,11 @@ _020026D8:
 	mov r0, #3
 	pop {r3, r4, r5, r6, pc}
 _020026DE:
-	bl sub_02002AEC
+	bl TextPrinterWaitWithDownArrow
 	cmp r0, #0
 	beq _02002708
 	add r0, r4, #0
-	bl sub_020029D8
+	bl TextPrinterClearDownArrow
 	ldrb r0, [r4, #9]
 	mov r1, #1
 	bl GetFontAttribute
@@ -795,11 +795,11 @@ _02002788:
 	mov r0, #3
 	pop {r3, r4, r5, r6, pc}
 _02002790:
-	bl sub_02002AEC
+	bl TextPrinterWaitWithDownArrow
 	cmp r0, #0
 	beq _020027B4
 	add r0, r4, #0
-	bl sub_020029D8
+	bl TextPrinterClearDownArrow
 	ldrb r1, [r4, #0x16]
 	ldr r0, [r4, #4]
 	bl FillWindowPixelBuffer
@@ -815,11 +815,11 @@ _020027B4:
 	mov r0, #3
 	pop {r3, r4, r5, r6, pc}
 _020027BA:
-	bl sub_02002AEC
+	bl TextPrinterWaitWithDownArrow
 	cmp r0, #0
 	beq _020027E4
 	add r0, r4, #0
-	bl sub_020029D8
+	bl TextPrinterClearDownArrow
 	ldrb r0, [r4, #9]
 	mov r1, #1
 	bl GetFontAttribute
@@ -841,20 +841,20 @@ _020027EA:
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end sub_02002298
+	thumb_func_end RenderText
 
 	thumb_func_start sub_020027F0
 sub_020027F0: ; 0x020027F0
-	ldr r1, _020027F8 ; =0x02111884
+	ldr r1, _020027F8 ; =_02111884
 	strh r0, [r1]
 	bx lr
 	nop
-_020027F8: .word 0x02111884
+_020027F8: .word _02111884
 	thumb_func_end sub_020027F0
 
 	thumb_func_start sub_020027FC
 sub_020027FC: ; 0x020027FC
-	ldr r2, _02002830 ; =0x02111884
+	ldr r2, _02002830 ; =_02111884
 	add r1, r0, #0
 	ldrb r2, [r2, #2]
 	add r1, #0x20
@@ -876,22 +876,22 @@ _02002814:
 	bic r3, r2
 	strb r3, [r1, #1]
 _02002824:
-	ldr r1, _02002830 ; =0x02111884
+	ldr r1, _02002830 ; =_02111884
 	ldr r3, _02002834 ; =sub_0200EB68
 	ldr r0, [r0, #4]
 	ldrh r1, [r1]
 	bx r3
 	nop
-_02002830: .word 0x02111884
+_02002830: .word _02111884
 _02002834: .word sub_0200EB68
 	thumb_func_end sub_020027FC
 
-	thumb_func_start sub_02002838
-sub_02002838: ; 0x02002838
+	thumb_func_start TextPrinterDrawDownArrow
+TextPrinterDrawDownArrow: ; 0x02002838
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	add r5, r0, #0
-	ldr r0, _020029D0 ; =0x02111884
+	ldr r0, _020029D0 ; =_02111884
 	add r4, r5, #0
 	ldrb r0, [r0, #2]
 	add r4, #0x20
@@ -937,7 +937,7 @@ _02002872:
 	sub r0, r0, #2
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
-	ldr r0, _020029D0 ; =0x02111884
+	ldr r0, _020029D0 ; =_02111884
 	add r7, r7, r1
 	ldrh r6, [r0]
 	ldr r1, [sp, #0x24]
@@ -1063,7 +1063,7 @@ _02002872:
 	ldr r0, [r5, #4]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldrb r1, [r4, #1]
 	mov r0, #0x1f
 	bic r1, r0
@@ -1087,16 +1087,16 @@ _020029CC:
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020029D0: .word 0x02111884
+_020029D0: .word _02111884
 _020029D4: .word 0x020F56BC
-	thumb_func_end sub_02002838
+	thumb_func_end TextPrinterDrawDownArrow
 
-	thumb_func_start sub_020029D8
-sub_020029D8: ; 0x020029D8
+	thumb_func_start TextPrinterClearDownArrow
+TextPrinterClearDownArrow: ; 0x020029D8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r5, r0, #0
-	ldr r0, _02002A80 ; =0x02111884
+	ldr r0, _02002A80 ; =_02111884
 	ldrb r0, [r0, #2]
 	lsl r0, r0, #0x1e
 	lsr r0, r0, #0x1f
@@ -1118,7 +1118,7 @@ sub_020029D8: ; 0x020029D8
 	sub r0, r0, #2
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
-	ldr r0, _02002A80 ; =0x02111884
+	ldr r0, _02002A80 ; =_02111884
 	add r7, r6, r1
 	ldrh r4, [r0]
 	ldr r1, [sp, #0x14]
@@ -1166,23 +1166,23 @@ sub_020029D8: ; 0x020029D8
 	ldr r0, [r5, #4]
 	ldr r1, [sp, #0x10]
 	ldr r0, [r0]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 _02002A7C:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02002A80: .word 0x02111884
-	thumb_func_end sub_020029D8
+_02002A80: .word _02111884
+	thumb_func_end TextPrinterClearDownArrow
 
-	thumb_func_start sub_02002A84
-sub_02002A84: ; 0x02002A84
+	thumb_func_start TextPrinterContinue
+TextPrinterContinue: ; 0x02002A84
 	push {r3, lr}
 	bl sub_02002220
 	cmp r0, #0
 	beq _02002AA2
 	ldr r0, _02002AA8 ; =0x000005DC
 	bl PlaySE
-	ldr r1, _02002AAC ; =0x02111884
+	ldr r1, _02002AAC ; =_02111884
 	mov r0, #0x80
 	ldrb r2, [r1, #2]
 	orr r0, r2
@@ -1194,11 +1194,11 @@ _02002AA2:
 	pop {r3, pc}
 	nop
 _02002AA8: .word 0x000005DC
-_02002AAC: .word 0x02111884
-	thumb_func_end sub_02002A84
+_02002AAC: .word _02111884
+	thumb_func_end TextPrinterContinue
 
-	thumb_func_start sub_02002AB0
-sub_02002AB0: ; 0x02002AB0
+	thumb_func_start TextPrinterWaitAutoMode
+TextPrinterWaitAutoMode: ; 0x02002AB0
 	push {r4, lr}
 	add r2, r0, #0
 	add r2, #0x20
@@ -1218,64 +1218,64 @@ _02002AC2:
 	lsr r3, r3, #0x18
 	orr r1, r3
 	strb r1, [r2, #2]
-	ldr r1, _02002AE8 ; =0x02111884
+	ldr r1, _02002AE8 ; =_02111884
 	ldrb r1, [r1, #2]
 	lsl r1, r1, #0x1a
 	lsr r1, r1, #0x1f
 	beq _02002AE4
-	bl sub_02002A84
+	bl TextPrinterContinue
 	pop {r4, pc}
 _02002AE4:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_02002AE8: .word 0x02111884
-	thumb_func_end sub_02002AB0
+_02002AE8: .word _02111884
+	thumb_func_end TextPrinterWaitAutoMode
 
-	thumb_func_start sub_02002AEC
-sub_02002AEC: ; 0x02002AEC
+	thumb_func_start TextPrinterWaitWithDownArrow
+TextPrinterWaitWithDownArrow: ; 0x02002AEC
 	push {r4, lr}
-	ldr r1, _02002B0C ; =0x02111884
+	ldr r1, _02002B0C ; =_02111884
 	add r4, r0, #0
 	ldrb r1, [r1, #2]
 	lsl r1, r1, #0x1d
 	lsr r1, r1, #0x1f
 	beq _02002B00
-	bl sub_02002AB0
+	bl TextPrinterWaitAutoMode
 	pop {r4, pc}
 _02002B00:
-	bl sub_02002838
+	bl TextPrinterDrawDownArrow
 	add r0, r4, #0
-	bl sub_02002A84
+	bl TextPrinterContinue
 	pop {r4, pc}
 	.balign 4, 0
-_02002B0C: .word 0x02111884
-	thumb_func_end sub_02002AEC
+_02002B0C: .word _02111884
+	thumb_func_end TextPrinterWaitWithDownArrow
 
-	thumb_func_start sub_02002B10
-sub_02002B10: ; 0x02002B10
+	thumb_func_start TextPrinterWait
+TextPrinterWait: ; 0x02002B10
 	push {r3, lr}
-	ldr r1, _02002B30 ; =0x02111884
+	ldr r1, _02002B30 ; =_02111884
 	ldrb r1, [r1, #2]
 	lsl r1, r1, #0x1d
 	lsr r1, r1, #0x1f
 	beq _02002B26
-	bl sub_02002AB0
+	bl TextPrinterWaitAutoMode
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, pc}
 _02002B26:
-	bl sub_02002A84
+	bl TextPrinterContinue
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, pc}
 	.balign 4, 0
-_02002B30: .word 0x02111884
-	thumb_func_end sub_02002B10
+_02002B30: .word _02111884
+	thumb_func_end TextPrinterWait
 
-	thumb_func_start sub_02002B34
-sub_02002B34: ; 0x02002B34
-	ldr r2, _02002B4C ; =0x02111884
+	thumb_func_start TextFlags_SetCanABSpeedUpPrint
+TextFlags_SetCanABSpeedUpPrint: ; 0x02002B34
+	ldr r2, _02002B4C ; =_02111884
 	mov r1, #1
 	ldrb r3, [r2, #2]
 	lsl r0, r0, #0x18
@@ -1287,13 +1287,13 @@ sub_02002B34: ; 0x02002B34
 	strb r0, [r2, #2]
 	bx lr
 	nop
-_02002B4C: .word 0x02111884
-	thumb_func_end sub_02002B34
+_02002B4C: .word _02111884
+	thumb_func_end TextFlags_SetCanABSpeedUpPrint
 
 	thumb_func_start sub_02002B50
 sub_02002B50: ; 0x02002B50
 	push {r3, r4}
-	ldr r1, _02002B88 ; =0x02111884
+	ldr r1, _02002B88 ; =_02111884
 	mov r3, #4
 	ldrb r2, [r1, #2]
 	mov r4, #1
@@ -1320,12 +1320,12 @@ sub_02002B50: ; 0x02002B50
 	pop {r3, r4}
 	bx lr
 	nop
-_02002B88: .word 0x02111884
+_02002B88: .word _02111884
 	thumb_func_end sub_02002B50
 
 	thumb_func_start sub_02002B8C
 sub_02002B8C: ; 0x02002B8C
-	ldr r2, _02002BA4 ; =0x02111884
+	ldr r2, _02002BA4 ; =_02111884
 	lsl r0, r0, #0x18
 	ldrb r3, [r2, #2]
 	lsr r0, r0, #0x18
@@ -1337,12 +1337,12 @@ sub_02002B8C: ; 0x02002B8C
 	strb r0, [r2, #2]
 	bx lr
 	nop
-_02002BA4: .word 0x02111884
+_02002BA4: .word _02111884
 	thumb_func_end sub_02002B8C
 
 	thumb_func_start sub_02002BA8
 sub_02002BA8: ; 0x02002BA8
-	ldr r2, _02002BC0 ; =0x02111884
+	ldr r2, _02002BC0 ; =_02111884
 	lsl r0, r0, #0x18
 	ldrb r3, [r2, #2]
 	lsr r0, r0, #0x18
@@ -1354,58 +1354,58 @@ sub_02002BA8: ; 0x02002BA8
 	strb r0, [r2, #2]
 	bx lr
 	nop
-_02002BC0: .word 0x02111884
+_02002BC0: .word _02111884
 	thumb_func_end sub_02002BA8
 
 	thumb_func_start sub_02002BC4
 sub_02002BC4: ; 0x02002BC4
-	ldr r0, _02002BD0 ; =0x02111884
+	ldr r0, _02002BD0 ; =_02111884
 	ldrb r0, [r0, #2]
 	lsl r0, r0, #0x19
 	lsr r0, r0, #0x1f
 	bx lr
 	nop
-_02002BD0: .word 0x02111884
+_02002BD0: .word _02111884
 	thumb_func_end sub_02002BC4
 
 	thumb_func_start sub_02002BD4
 sub_02002BD4: ; 0x02002BD4
-	ldr r1, _02002BE0 ; =0x02111884
+	ldr r1, _02002BE0 ; =_02111884
 	mov r0, #0x40
 	ldrb r2, [r1, #2]
 	bic r2, r0
 	strb r2, [r1, #2]
 	bx lr
 	.balign 4, 0
-_02002BE0: .word 0x02111884
+_02002BE0: .word _02111884
 	thumb_func_end sub_02002BD4
 
 	thumb_func_start sub_02002BE4
 sub_02002BE4: ; 0x02002BE4
-	ldr r0, _02002BF0 ; =0x02111884
+	ldr r0, _02002BF0 ; =_02111884
 	ldrb r0, [r0, #2]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x1f
 	bx lr
 	nop
-_02002BF0: .word 0x02111884
+_02002BF0: .word _02111884
 	thumb_func_end sub_02002BE4
 
 	thumb_func_start sub_02002BF4
 sub_02002BF4: ; 0x02002BF4
-	ldr r1, _02002C00 ; =0x02111884
+	ldr r1, _02002C00 ; =_02111884
 	mov r0, #0x80
 	ldrb r2, [r1, #2]
 	bic r2, r0
 	strb r2, [r1, #2]
 	bx lr
 	.balign 4, 0
-_02002C00: .word 0x02111884
+_02002C00: .word _02111884
 	thumb_func_end sub_02002BF4
 
 	thumb_func_start sub_02002C04
 sub_02002C04: ; 0x02002C04
-	ldr r0, _02002C1C ; =0x02111884
+	ldr r0, _02002C1C ; =_02111884
 	ldrb r1, [r0, #2]
 	lsl r1, r1, #0x1b
 	lsr r1, r1, #0x1f
@@ -1418,12 +1418,12 @@ _02002C16:
 	mov r0, #0
 	bx lr
 	nop
-_02002C1C: .word 0x02111884
+_02002C1C: .word _02111884
 	thumb_func_end sub_02002C04
 
 	thumb_func_start sub_02002C20
 sub_02002C20: ; 0x02002C20
-	ldr r2, _02002C3C ; =0x02111884
+	ldr r2, _02002C3C ; =_02111884
 	mov r1, #2
 	ldrb r3, [r2, #3]
 	orr r1, r3
@@ -1438,12 +1438,12 @@ sub_02002C20: ; 0x02002C20
 	strb r0, [r2, #7]
 	bx lr
 	.balign 4, 0
-_02002C3C: .word 0x02111884
+_02002C3C: .word _02111884
 	thumb_func_end sub_02002C20
 
 	thumb_func_start sub_02002C40
 sub_02002C40: ; 0x02002C40
-	ldr r1, _02002C5C ; =0x02111884
+	ldr r1, _02002C5C ; =_02111884
 	mov r0, #2
 	ldrb r2, [r1, #3]
 	bic r2, r0
@@ -1457,7 +1457,7 @@ sub_02002C40: ; 0x02002C40
 	strb r0, [r1, #7]
 	bx lr
 	nop
-_02002C5C: .word 0x02111884
+_02002C5C: .word _02111884
 	thumb_func_end sub_02002C40
 
 	thumb_func_start sub_02002C60
@@ -1466,7 +1466,7 @@ sub_02002C60: ; 0x02002C60
 	cmp r0, #0
 	bne _02002C7A
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #3
 	bl sub_02002B50
 	mov r0, #1
@@ -1476,7 +1476,7 @@ _02002C7A:
 	mov r0, #1
 	bl sub_02002B50
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
 	pop {r3, pc}
@@ -1487,7 +1487,7 @@ _02002C7A:
 sub_02002C90: ; 0x02002C90
 	push {r3, lr}
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0

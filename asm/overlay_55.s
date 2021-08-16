@@ -288,7 +288,7 @@ ov55_021E5B08: ; 0x021E5B08
 	bl sub_0202B3E8
 	add r1, r0, #0
 	ldr r0, [r6, #0x14]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r4, #0
 	bl sub_0202B3F0
 	strb r0, [r6, #0x13]

@@ -136,7 +136,7 @@ ov34_0225D5F8: ; 0x0225D5F8
 	sub r1, #0xa
 	mov r0, #4
 	strh r2, [r4, r1]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x18]
 	ldr r2, _0225D64C ; =0x000002E2
 	mov r0, #0
@@ -452,7 +452,7 @@ _0225D8B2:
 	ldr r0, [r6, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x18]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r1, #0x72
 	lsl r1, r1, #2
 	add r0, r6, r1
@@ -1736,7 +1736,7 @@ _0225E2E0:
 	ldr r2, [sp, #0x28]
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	b _0225E332
 _0225E2F4:
 	cmp r4, #2
@@ -1751,7 +1751,7 @@ _0225E2F4:
 	bl sub_0202AEF8
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r6, #0
 	add r1, r5, #0
 	bl sub_0202AF00
@@ -1761,7 +1761,7 @@ _0225E2F4:
 	add r0, r7, #0
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r4, #0
 	bl String_dtor
 _0225E332:
@@ -1823,13 +1823,13 @@ _0225E386:
 	bl String_dtor
 _0225E398:
 	ldr r0, [sp, #8]
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	ldr r2, [r5]
 	mov r0, #0x1c
 	mul r0, r2
 	ldr r0, [r4, r0]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	ldr r0, [r5]
 	mov r1, #0x1c
 	add r2, r0, #0

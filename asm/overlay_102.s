@@ -7335,7 +7335,7 @@ _021EAE68:
 	mov r0, #2
 	mov r1, #0x3c
 	mov r2, #0
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	add r5, r0, #0
 	mov r0, #0x4b
 	lsl r0, r0, #2
@@ -7370,7 +7370,7 @@ _021EAE68:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	b _021EAF34
 _021EAECA:
 	ldr r0, [r4, #0x78]
@@ -7868,7 +7868,7 @@ ov102_021EB1F8: ; 0x021EB1F8
 	bl ov102_021EB570
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov102_021EB1F8
@@ -7907,7 +7907,7 @@ _021EB2BA:
 	bl FreeToHeap
 	ldr r0, [sp]
 	mov r1, #3
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov102_021EB29C
 
@@ -7940,7 +7940,7 @@ ov102_021EB2EC: ; 0x021EB2EC
 	bne _021EB330
 	ldr r0, [sp, #0x1c]
 	mov r1, #0
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 _021EB330:
@@ -8001,7 +8001,7 @@ _021EB366:
 	blt _021EB366
 	ldr r0, [sp, #0x1c]
 	mov r1, #0
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8506,7 +8506,7 @@ ov102_021EB6E0: ; 0x021EB6E0
 	bl sub_020CF178
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -9290,7 +9290,7 @@ ov102_021EBD00: ; 0x021EBD00
 	bl sub_0201D8A0
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
 	bl ov102_021EBD68
 	mov r0, #2
@@ -9978,7 +9978,7 @@ ov102_021EC248: ; 0x021EC248
 	bl sub_02007B44
 	ldr r0, [r5, #0xc]
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov102_021EC248

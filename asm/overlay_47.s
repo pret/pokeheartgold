@@ -565,7 +565,7 @@ _02258C7E:
 	cmp r6, #9
 	blt _02258C7E
 	add r0, r7, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldr r1, [sp]
 	str r0, [r1, #0x24]
 	mov r0, #1
@@ -599,7 +599,7 @@ _02258CC8:
 	cmp r4, #9
 	blt _02258CC8
 	ldr r0, [r6, #0x24]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x28]
 	bl String_dtor
 	ldr r0, [r6, #0x2c]
@@ -705,7 +705,7 @@ ov47_02258D78: ; 0x02258D78
 	ldr r0, [r5, #0x24]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r6, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1370,7 +1370,7 @@ _022592D4:
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
-	bl sub_020263D4
+	bl StringCopy
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #4]
@@ -1419,7 +1419,7 @@ _02259338:
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
-	bl sub_020263D4
+	bl StringCopy
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -2675,7 +2675,7 @@ _02259CC4:
 _02259CF6:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r4, #0
 	add r7, r6, #1
 _02259D02:
@@ -2687,7 +2687,7 @@ _02259D02:
 _02259D10:
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3

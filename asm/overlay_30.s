@@ -370,7 +370,7 @@ ov30_0225D83C: ; 0x0225D83C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #8
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x3c]
 	mov r0, #0
 	mov r1, #0x1b
@@ -384,7 +384,7 @@ ov30_0225D83C: ; 0x0225D83C
 	add r2, r0, #0
 	ldr r0, [r4, #0x3c]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov30_0225D83C
@@ -396,7 +396,7 @@ ov30_0225D86C: ; 0x0225D86C
 	ldr r0, [r4, #0x38]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x3c]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov30_0225D86C

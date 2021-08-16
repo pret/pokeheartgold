@@ -277,7 +277,7 @@ ov32_0225D748: ; 0x0225D748
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #8
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -291,7 +291,7 @@ ov32_0225D76C: ; 0x0225D76C
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -587,7 +587,7 @@ _0225D9D4:
 	ldr r0, [r7, r0]
 	ldr r2, [sp, #0x1c]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]

@@ -179,7 +179,7 @@ ov115_0225F158: ; 0x0225F158
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
@@ -204,7 +204,7 @@ ov115_0225F158: ; 0x0225F158
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r7, #0
@@ -223,7 +223,7 @@ ov115_0225F1BC: ; 0x0225F1BC
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
@@ -240,7 +240,7 @@ ov115_0225F1BC: ; 0x0225F1BC
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BE6C
+	bl BufferRivalsName
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
@@ -248,7 +248,7 @@ ov115_0225F1BC: ; 0x0225F1BC
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r7, #0

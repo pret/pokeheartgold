@@ -1912,7 +1912,7 @@ sub_0200F1D4: ; 0x0200F1D4
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 _0200F2DE:
@@ -2025,7 +2025,7 @@ _0200F2DE:
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 _0200F3C6:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -2176,7 +2176,7 @@ sub_0200F4A0: ; 0x0200F4A0
 	bl sub_0200F82C
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, _0200F4F4 ; =0x0000016F
 	add r0, r4, r0
 	add sp, #0xc
@@ -2215,7 +2215,7 @@ sub_0200F4F8: ; 0x0200F4F8
 	bl sub_0200F82C
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, _0200F548 ; =0x0000016F
 	add r0, r4, r0
 	add sp, #0xc

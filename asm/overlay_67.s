@@ -965,7 +965,7 @@ ov67_021E60B4: ; 0x021E60B4
 	ldr r2, [r4]
 	mov r0, #2
 	mov r1, #0x40
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r4, #0x2c]
 	mov r0, #2
 	ldr r1, [r4]
@@ -994,7 +994,7 @@ ov67_021E60F4: ; 0x021E60F4
 	ldr r0, [r4, #0x30]
 	bl String_dtor
 	ldr r0, [r4, #0x2c]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x28]
 	bl DestroyMsgData
 	pop {r4, pc}
@@ -1398,11 +1398,11 @@ _021E6406:
 	lsl r1, r1, #2
 	add r1, r7, r1
 	ldr r1, [r1, #0x64]
-	bl sub_020263D4
+	bl StringCopy
 	b _021E645A
 _021E6454:
 	add r1, r6, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 _021E645A:
 	ldr r0, [sp]
 	add r4, #0x10
@@ -1735,7 +1735,7 @@ _021E66C4:
 	ldr r0, [r6, #0x2c]
 	ldrb r3, [r3, r5]
 	mov r1, #0
-	bl sub_0200BE3C
+	bl BufferString
 	ldr r0, [sp, #0x14]
 	ldrb r0, [r0, r5]
 	cmp r0, #0

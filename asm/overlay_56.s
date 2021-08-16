@@ -50,7 +50,7 @@ ov56_021E5C20: ; 0x021E5C20
 	bl sub_0202ADCC
 	strb r0, [r4, #0xb]
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #8]
 	bl sub_020183F0
@@ -83,7 +83,7 @@ ov56_021E5CB4: ; 0x021E5CB4
 	bl sub_02007290
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4, #0x1c]
 	ldrb r1, [r4, #0xa]
 	ldr r0, [r0, #8]

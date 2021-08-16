@@ -50,7 +50,7 @@ _021E5916:
 	bl sub_0201AC88
 	str r0, [r4]
 	mov r0, #0x27
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0xc]
 	mov r0, #0
 	mov r1, #0x1b
@@ -364,7 +364,7 @@ _021E5BF8:
 	ldr r0, [r6, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r6, #0xc]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r7]
 	add r0, r0, #1
 	str r0, [r7]
@@ -2461,7 +2461,7 @@ _021E6D4E:
 	add r2, r0, #0
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r5, #0
 	mov r6, #2
 	bl ov37_021E78A4
@@ -2512,7 +2512,7 @@ ov37_021E6DD0: ; 0x021E6DD0
 	add r2, r0, #0
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r5, #0
 	mov r1, #3
 	mov r2, #1
@@ -2812,7 +2812,7 @@ _021E7014:
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	mov r0, #0x32
 	lsl r0, r0, #4
 	str r6, [r4, r0]
@@ -2833,7 +2833,7 @@ _021E7044:
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	bl sub_0203769C
 	cmp r6, r0
 	beq _021E70AE

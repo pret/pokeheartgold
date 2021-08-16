@@ -491,7 +491,7 @@ _0222A2DC:
 _0222A2DE:
 	strb r0, [r5, #0xe]
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
 	bl sub_02002B8C
 	pop {r4, r5, r6, pc}
@@ -504,7 +504,7 @@ ov43_0222A2F0: ; 0x0222A2F0
 	add r5, r0, #0
 	mov r0, #0
 	add r4, r1, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r0, [r4, #4]
@@ -549,13 +549,13 @@ ov43_0222A338: ; 0x0222A338
 	cmp r1, #0
 	beq _0222A348
 	ldr r0, [r5, #0x58]
-	bl sub_020263D4
+	bl StringCopy
 _0222A348:
 	cmp r4, #0
 	beq _0222A354
 	ldr r0, [r5, #0x5c]
 	add r1, r4, #0
-	bl sub_020263D4
+	bl StringCopy
 _0222A354:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -761,7 +761,7 @@ ov43_0222A48C: ; 0x0222A48C
 	mov r1, #1
 	bl sub_02022C60
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0
@@ -1205,7 +1205,7 @@ ov43_0222A87C: ; 0x0222A87C
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r5, #0x50]
 	ldr r2, _0222A8A4 ; =0x0000030B
 	mov r0, #0
@@ -1230,7 +1230,7 @@ ov43_0222A8A8: ; 0x0222A8A8
 	ldr r0, [r4, #0x54]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x50]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	pop {r4, pc}
 	thumb_func_end ov43_0222A8A8
 
@@ -1549,7 +1549,7 @@ ov43_0222AB20: ; 0x0222AB20
 	ldr r0, [r4, #0x50]
 	mov r1, #0
 	add r2, r5, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r5, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1575,7 +1575,7 @@ ov43_0222AB5C: ; 0x0222AB5C
 	ldr r0, [r5, #0x50]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2128,7 +2128,7 @@ _0222AF88:
 	ldr r0, [r6, #0x50]
 	ldr r2, [sp, #0xc]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, [sp, #0xc]
 	bl FreeToHeap
 	ldr r0, [r4, #0x5c]
@@ -2326,7 +2326,7 @@ ov43_0222B0A0: ; 0x0222B0A0
 	ldr r0, [sp, #0x24]
 	mov r1, #0
 	ldr r0, [r0, #0x50]
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, [sp, #0x14]
 	mov r7, #0
 	str r0, [sp, #0x20]
@@ -5635,7 +5635,7 @@ _0222CAD0:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r3, r4, #0
 	mov r0, #0xa
 	mul r3, r0
@@ -5967,7 +5967,7 @@ ov43_0222CD44: ; 0x0222CD44
 	ldr r0, [r4, #0x18]
 	bne _0222CD80
 	ldr r1, [r5, #0x60]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	b _0222CD84
 _0222CD80:
 	bl StringSetEmpty
@@ -6309,7 +6309,7 @@ ov43_0222D028: ; 0x0222D028
 	add r2, r0, #0
 	ldr r0, [r4, #0x50]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	add r1, r4, #0
 	add r0, r4, #0
 	add r1, #0x64

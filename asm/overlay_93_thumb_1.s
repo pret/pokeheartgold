@@ -449,7 +449,7 @@ ov93_0225C768: ; 0x0225C768
 	add r1, #0x80
 	str r0, [r1]
 	mov r0, #0x75
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r1, r5, #0
 	add r1, #0x84
 	str r0, [r1]
@@ -564,7 +564,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r0, #1
 	bl sub_02002B50
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r0, [r5, #0x28]
@@ -1042,7 +1042,7 @@ _0225CD72:
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
@@ -1072,7 +1072,7 @@ _0225CD72:
 	add r0, r7, #0
 	bl sub_02007294
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0

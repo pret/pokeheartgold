@@ -477,7 +477,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	mov r0, #0x46
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r5, r0, #0
 	add r0, r7, #0
 	add r1, r4, #0
@@ -513,7 +513,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add r0, r5, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r6, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2915,7 +2915,7 @@ _021E7042:
 	str r5, [r4, #0xc]
 	str r6, [r4, #4]
 	str r7, [r4, #8]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0x14]
 	ldr r1, [r4]
 	mov r0, #4
@@ -2941,7 +2941,7 @@ _021E7082:
 	mov r0, #4
 	bl sub_02002DB4
 	ldr r0, [r4, #0x14]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0xc]
 	mov r1, #4
 	bl sub_0201BB4C

@@ -2308,7 +2308,7 @@ _0223F0F0:
 	ldr r0, [r5, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r5, #0x24]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r5, #0x28]
 	bl String_dtor
 	ldr r0, [r5, #0x2c]
@@ -2412,7 +2412,7 @@ ov83_0223F200: ; 0x0223F200
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x1c]
 	mov r0, #0x6b
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r5, #0x24]
 	mov r0, #0x96
 	lsl r0, r0, #2
@@ -4752,10 +4752,10 @@ _0224058C:
 	bl String_ctor
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r6, #0
 	bl sub_02028F94
 	cmp r0, #0
@@ -5569,7 +5569,7 @@ ov83_02240C6C: ; 0x02240C6C
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	add r1, r4, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	pop {r3, r4, r5, pc}
 	nop
 _02240C88: .word 0x0000050C
@@ -5591,10 +5591,10 @@ ov83_02240C8C: ; 0x02240C8C
 	bl String_ctor
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r7, #0
 	bl sub_02028F94
 	cmp r0, #0
@@ -5653,7 +5653,7 @@ _02240D26:
 	ldr r0, [r5, #0x24]
 	ldr r2, [sp, #0x1c]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	str r6, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -11776,7 +11776,7 @@ _02243EDC:
 	bl DestroyMsgData
 	ldr r0, [sp]
 	ldr r0, [r0, #0x24]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [sp]
 	ldr r0, [r0, #0x28]
 	bl String_dtor
@@ -11875,7 +11875,7 @@ ov83_02243FD4: ; 0x02243FD4
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x20]
 	mov r0, #0x6b
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r5, #0x24]
 	mov r0, #0x96
 	lsl r0, r0, #2
@@ -13199,7 +13199,7 @@ ov83_02244ABC: ; 0x02244ABC
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	add r1, r4, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov83_02244ABC
 
@@ -13220,10 +13220,10 @@ ov83_02244AD8: ; 0x02244AD8
 	bl String_ctor
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02028F54
+	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r6, #0
 	bl sub_02028F94
 	cmp r0, #0
@@ -13279,7 +13279,7 @@ _02244B6A:
 	ldr r0, [r5, #0x24]
 	ldr r2, [sp, #0x1c]
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	str r6, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -18810,7 +18810,7 @@ ov83_022477C4: ; 0x022477C4
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov83_022477C4
@@ -18950,7 +18950,7 @@ ov83_022478B4: ; 0x022478B4
 	bl sub_020169CC
 	ldr r0, [r4, #8]
 	mov r1, #0
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #0
 	str r0, [r4, #4]
 _022478D0:

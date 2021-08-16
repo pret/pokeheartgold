@@ -109,7 +109,7 @@ ov54_021E5900: ; 0x021E5900
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
 	mov r0, #0
@@ -248,7 +248,7 @@ _021E5B08:
 	ldr r0, [r4, r0]
 	bl String_dtor
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
 	bl sub_02002B8C
 	add r0, r5, #0

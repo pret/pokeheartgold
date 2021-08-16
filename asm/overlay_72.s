@@ -793,7 +793,7 @@ _02237E36:
 	mov r0, #0xb
 	mov r1, #0x20
 	mov r2, #0x43
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	mov r1, #0xbd
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -1025,7 +1025,7 @@ _02238086:
 	mov r0, #0xbd
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r4, #0
 	bl ov72_02238160
 	bl sub_02034DE0
@@ -7289,7 +7289,7 @@ _0223B178:
 	add r1, #0x2f
 	ldrb r1, [r1]
 	ldr r0, [r4]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]

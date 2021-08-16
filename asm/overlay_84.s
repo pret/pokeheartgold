@@ -1048,7 +1048,7 @@ _0223E544:
 	ldr r0, [r6, #0x68]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x6c]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x70]
 	bl String_dtor
 	ldr r0, [r6, #0x74]
@@ -1128,7 +1128,7 @@ ov84_0223E5FC: ; 0x0223E5FC
 	ldr r1, [sp, #0x18]
 	str r0, [r1, #0x68]
 	mov r0, #0x6e
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldr r1, [sp, #0x18]
 	str r0, [r1, #0x6c]
 	mov r0, #0x96
