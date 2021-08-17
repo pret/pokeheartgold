@@ -9425,23 +9425,23 @@ ov80_0222E400: ; 0x0222E400
 	add r6, r2, #0
 	add r0, sp, #0
 	add r7, r3, #0
-	bl sub_0201581C
+	bl MailMsg_init
 	add r0, sp, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_02015A44
+	bl MailMsg_SetMsgBankAndNum
 	add r0, sp, #0
 	mov r1, #0
 	add r2, r7, #0
-	bl sub_02015A5C
+	bl MailMsg_SetFieldI
 	add r2, sp, #0x10
 	ldrh r2, [r2, #0x10]
 	add r0, sp, #0
 	mov r1, #1
-	bl sub_02015A5C
+	bl MailMsg_SetFieldI
 	add r0, sp, #0
 	mov r1, #0x20
-	bl sub_02015898
+	bl MailMsg_GetExpandedString
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0

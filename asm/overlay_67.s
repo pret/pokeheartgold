@@ -1843,7 +1843,7 @@ _021E67A6:
 	add r0, r6, r0
 	ldr r1, [r6]
 	add r0, r0, r5
-	bl sub_02015898
+	bl MailMsg_GetExpandedString
 	add r5, r0, #0
 	mov r2, #0
 	ldr r0, _021E6810 ; =0x00010200

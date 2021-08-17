@@ -25,11 +25,11 @@ ov25_022598C0: ; 0x022598C0
 	add r0, r4, #0
 	ldr r1, _02259940 ; =0x02259D8C
 	add r0, #0x24
-	bl sub_0201585C
+	bl MailMsg_init_fromTemplate
 	add r4, #0x2c
 	ldr r1, _02259944 ; =0x02259D94
 	add r0, r4, #0
-	bl sub_0201585C
+	bl MailMsg_init_fromTemplate
 	b _0225990E
 _022598FE:
 	mov r1, #6
@@ -195,7 +195,7 @@ ov25_02259A30: ; 0x02259A30
 	bne _02259A6C
 	ldr r1, _02259AA4 ; =_02259D84
 	add r0, sp, #8
-	bl sub_0201585C
+	bl MailMsg_init_fromTemplate
 	add r0, sp, #8
 	add r1, sp, #0x10
 	mov r2, #8
@@ -509,12 +509,12 @@ ov25_02259CC4: ; 0x02259CC4
 	add r1, r5, #0
 	add r0, #0x24
 	add r1, #0x20
-	bl sub_02015A24
+	bl MailMsg_copy
 	add r0, r4, #0
 	add r5, #0x28
 	add r0, #0x2c
 	add r1, r5, #0
-	bl sub_02015A24
+	bl MailMsg_copy
 	mov r0, #0
 	str r0, [r4, #0x10]
 	pop {r3, r4, r5, pc}

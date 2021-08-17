@@ -263,12 +263,12 @@ ov102_021E7934: ; 0x021E7934
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_020159E4
+	bl MailMsg_GetMsgBank
 	strh r0, [r5]
 	mov r0, #0x14
 	strb r0, [r5, #3]
 	add r0, r4, #0
-	bl sub_020159E8
+	bl MailMsg_GetMsgNo
 	mov r6, #0
 	strb r0, [r5, #2]
 	add r4, r5, #4
@@ -313,10 +313,10 @@ _021E798E:
 	mov r3, #2
 	ldrsh r1, [r2, r1]
 	ldrsb r2, [r2, r3]
-	ldr r3, _021E799C ; =sub_02015A44
+	ldr r3, _021E799C ; =MailMsg_SetMsgBankAndNum
 	bx r3
 	.balign 4, 0
-_021E799C: .word sub_02015A44
+_021E799C: .word MailMsg_SetMsgBankAndNum
 	thumb_func_end ov102_021E7968
 
 	thumb_func_start ov102_021E79A0
@@ -349,10 +349,10 @@ _021E79CA:
 	mov r3, #2
 	ldrsh r1, [r2, r1]
 	ldrsb r2, [r2, r3]
-	ldr r3, _021E79D8 ; =sub_02015A44
+	ldr r3, _021E79D8 ; =MailMsg_SetMsgBankAndNum
 	bx r3
 	.balign 4, 0
-_021E79D8: .word sub_02015A44
+_021E79D8: .word MailMsg_SetMsgBankAndNum
 	thumb_func_end ov102_021E79A0
 
 	thumb_func_start ov102_021E79DC
@@ -376,7 +376,7 @@ ov102_021E79DC: ; 0x021E79DC
 	ldrsh r1, [r5, r1]
 	ldrsb r2, [r5, r2]
 	add r0, r4, #0
-	bl sub_02015A44
+	bl MailMsg_SetMsgBankAndNum
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov102_021E79DC
 
@@ -2970,7 +2970,7 @@ _021E8D02:
 	ldrh r1, [r1]
 	add r0, r4, #0
 	add r0, #8
-	bl sub_02015A5C
+	bl MailMsg_SetFieldI
 _021E8D10:
 	add r0, r4, #0
 	bl ov102_021E8F14
@@ -3132,7 +3132,7 @@ _021E8E20:
 	bne _021E8E2E
 	add r0, r4, #0
 	add r0, #8
-	bl sub_02015A74
+	bl MailMsg_SetTrailingFieldsEmpty
 _021E8E2E:
 	add r1, r4, #0
 	add r2, r4, #0
@@ -3289,7 +3289,7 @@ _021E8F48:
 	pop {r3, pc}
 _021E8F4C:
 	add r0, #8
-	bl sub_02015934
+	bl MailMsg_AllFieldsAreInit
 	pop {r3, pc}
 _021E8F54:
 	mov r0, #0
@@ -3343,11 +3343,11 @@ ov102_021E8F7C: ; 0x021E8F7C
 
 	thumb_func_start ov102_021E8F84
 ov102_021E8F84: ; 0x021E8F84
-	ldr r3, _021E8F8C ; =sub_020159E4
+	ldr r3, _021E8F8C ; =MailMsg_GetMsgBank
 	add r0, #8
 	bx r3
 	nop
-_021E8F8C: .word sub_020159E4
+_021E8F8C: .word MailMsg_GetMsgBank
 	thumb_func_end ov102_021E8F84
 
 	thumb_func_start ov102_021E8F90
@@ -3357,7 +3357,7 @@ ov102_021E8F90: ; 0x021E8F90
 	cmp r2, #2
 	bne _021E8FA0
 	add r0, #8
-	bl sub_020159DC
+	bl MailMsg_GetFieldI
 	pop {r3, pc}
 _021E8FA0:
 	lsl r1, r1, #1
@@ -3368,11 +3368,11 @@ _021E8FA0:
 
 	thumb_func_start ov102_021E8FA8
 ov102_021E8FA8: ; 0x021E8FA8
-	ldr r3, _021E8FB0 ; =sub_02015904
+	ldr r3, _021E8FB0 ; =MailMsg_GetRawString
 	add r0, #8
 	bx r3
 	nop
-_021E8FB0: .word sub_02015904
+_021E8FB0: .word MailMsg_GetRawString
 	thumb_func_end ov102_021E8FA8
 
 	thumb_func_start ov102_021E8FB4

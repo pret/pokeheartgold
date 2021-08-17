@@ -5602,7 +5602,7 @@ _0222E434:
 	bne _0222E46A
 	add r0, sp, #0x50
 	mov r1, #0x6d
-	bl sub_02015898
+	bl MailMsg_GetExpandedString
 	add r5, r0, #0
 _0222E46A:
 	ldr r0, [sp, #0x14]

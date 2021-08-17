@@ -9663,7 +9663,7 @@ _0223C376:
 	mul r1, r0
 	add r0, r2, r1
 	mov r1, #5
-	bl sub_02015898
+	bl MailMsg_GetExpandedString
 	b _0223C3A0
 _0223C38E:
 	ldr r0, [sp, #0xc]
@@ -9673,7 +9673,7 @@ _0223C38E:
 	mul r1, r0
 	add r0, r2, r1
 	mov r1, #5
-	bl sub_02015898
+	bl MailMsg_GetExpandedString
 _0223C3A0:
 	add r4, r0, #0
 	add r0, r7, #0

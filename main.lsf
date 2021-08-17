@@ -44,6 +44,8 @@ Static main
 	Object unk_02014A08.o
 	Object unk_02014DA0.o
 	Object mail_message.o
+	Object unk_02015A9C.o
+	Object unk_02015D14.o
 	Object error_handling.o
 	Object unk_02025534.o
 	### Vendor libraries ###

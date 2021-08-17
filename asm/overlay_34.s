@@ -1857,7 +1857,7 @@ _0225E398:
 	str r0, [r1, #0x10]
 	add r0, r6, #0
 	mov r1, #0x57
-	bl sub_02015898
+	bl MailMsg_GetExpandedString
 	ldr r2, [r5]
 	mov r1, #0x1c
 	mul r1, r2
@@ -1899,7 +1899,7 @@ ov34_0225E428: ; 0x0225E428
 	add r0, r1, #0
 	str r1, [sp]
 	add r7, r2, #0
-	bl sub_02015920
+	bl MailMsg_IsInit
 	cmp r0, #0
 	bne _0225E43E
 	mov r0, #0
@@ -1921,7 +1921,7 @@ _0225E450:
 	bne _0225E464
 	ldr r0, [sp]
 	add r1, #0x14
-	bl sub_020159EC
+	bl MailMsg_compare
 	cmp r0, #0
 	bne _0225E478
 _0225E464:
@@ -1956,7 +1956,7 @@ _0225E48E:
 	beq _0225E4A2
 	ldr r0, [sp]
 	add r1, #0x14
-	bl sub_020159EC
+	bl MailMsg_compare
 _0225E4A2:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}

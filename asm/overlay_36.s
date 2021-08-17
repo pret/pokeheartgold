@@ -281,7 +281,7 @@ _021E5B4E:
 _021E5B56:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_0201585C
+	bl MailMsg_init_fromTemplate
 	lsl r2, r5, #0x18
 	add r0, r6, #0
 	add r1, r7, #0
@@ -292,7 +292,7 @@ _021E5B56:
 	cmp r5, #2
 	blt _021E5B56
 	add r0, sp, #0x20
-	bl sub_0201581C
+	bl MailMsg_init
 	add r0, r6, #0
 	add r1, sp, #0x20
 	mov r2, #2

@@ -4232,12 +4232,12 @@ ov103_021EE9C8: ; 0x021EE9C8
 	lsr r1, r1, #0x18
 	bl sub_0202B4E8
 	add r6, r0, #0
-	bl sub_02015920
+	bl MailMsg_IsInit
 	cmp r0, #0
 	beq _021EEA1C
 	add r0, r6, #0
 	mov r1, #0x9d
-	bl sub_02015898
+	bl MailMsg_GetExpandedString
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]

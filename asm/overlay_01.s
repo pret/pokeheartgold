@@ -20646,23 +20646,23 @@ ov01_021EF708: ; 0x021EF708
 	add r6, r2, #0
 	add r0, sp, #0
 	add r7, r3, #0
-	bl sub_0201581C
+	bl MailMsg_init
 	add r0, sp, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_02015A44
+	bl MailMsg_SetMsgBankAndNum
 	add r0, sp, #0
 	mov r1, #0
 	add r2, r7, #0
-	bl sub_02015A5C
+	bl MailMsg_SetFieldI
 	add r2, sp, #0x10
 	ldrh r2, [r2, #0x10]
 	add r0, sp, #0
 	mov r1, #1
-	bl sub_02015A5C
+	bl MailMsg_SetFieldI
 	add r0, sp, #0
 	mov r1, #0x20
-	bl sub_02015898
+	bl MailMsg_GetExpandedString
 	add r4, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
