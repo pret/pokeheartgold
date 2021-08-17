@@ -1,6 +1,16 @@
 #include <algorithm>
 #include "MessagesDecoder.h"
 
+void MessagesDecoder::CmdmapRegisterCommand(string &command, uint16_t value)
+{
+    cmdmap[value] = command;
+}
+
+void MessagesDecoder::CharmapRegisterCharacter(string &code, uint16_t value)
+{
+    charmap[value] = code;
+}
+
 static string ConvertIntToHexStringN(unsigned value, StrConvMode mode, int n) {
     string dest;
     bool printing_zeroes = mode == STR_CONV_MODE_LEADING_ZEROS;
@@ -79,8 +89,8 @@ string MessagesDecoder::DecodeMessage(u16string &message, int &i) {
         uint16_t code = message[j];
         debug_printf("%04X ", code);
 
-        if (charmap_dec.find(code) != charmap_dec.end()) {
-            decoded += charmap_dec[code];
+        if (charmap.find(code) != charmap.end()) {
+            decoded += charmap[code];
         }
         else if (code == (is_trname ? 0x01FF : 0xFFFF)) {
             break;
@@ -96,8 +106,8 @@ string MessagesDecoder::DecodeMessage(u16string &message, int &i) {
                 is_strvar = true;
                 command = "STRVAR_" + ConvertIntToHexStringN((code >> 8), STR_CONV_MODE_LEFT_ALIGN, 2);
             }
-            else if (cmdmap_dec.find(code) != cmdmap_dec.end()) {
-                command = cmdmap_dec[code];
+            else if (cmdmap.find(code) != cmdmap.end()) {
+                command = cmdmap[code];
             } else {
                 throw runtime_error("Invalid control code in " + binfilename + ": " + ConvertIntToHexStringN(code, STR_CONV_MODE_LEADING_ZEROS, 4) + " at line " + to_string(i) + ":" + to_string(j));
             }

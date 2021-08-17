@@ -415,8 +415,8 @@ MSGFILE_BIN := $(patsubst %.txt,%.bin,$(MSGFILE_TXT))
 $(MSGDATA_MSG_DIR).narc: %.narc: $(MSGFILE_BIN)
 	$(KNARC) -d $* -p $@ -i
 
-$(MSGFILE_BIN): %.bin: %.txt %.key
-	$(MSGENC) -e $^ charmap.txt $@
+$(MSGFILE_BIN): %.bin: %.txt %.key charmap.txt
+	$(MSGENC) -e $^ $@
 
 #%.narc:
 #	$(KNARC) -d $* -p $@

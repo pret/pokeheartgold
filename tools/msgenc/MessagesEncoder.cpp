@@ -1,5 +1,15 @@
 #include "MessagesEncoder.h"
 
+void MessagesEncoder::CmdmapRegisterCommand(string &command, uint16_t value)
+{
+    cmdmap[command] = value;
+}
+
+void MessagesEncoder::CharmapRegisterCharacter(string &code, uint16_t value)
+{
+    charmap[code] = value;
+}
+
 void MessagesEncoder::ReadMessagesFromText(string& fname) {
     string text = ReadTextFile(fname);
     size_t pos = 0;
@@ -62,7 +72,7 @@ u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
                 encoded += (char16_t)(command_i);
                 debug_printf("%04X ", command_i);
                 encoded += (char16_t)(args.size());
-                debug_printf("%04X ", args.size());
+                debug_printf("%04X ", (unsigned)args.size());
                 for (auto num_i : args) {
                     encoded += (char16_t)(num_i);
                     debug_printf("%04X ", num_i);
@@ -81,9 +91,10 @@ u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
             string substr;
             for (k = 0; k < message.size() - j; k++) {
                 substr = message.substr(j, k + 1);
-                code = charmap[substr];
-                if (code != 0 || substr == "\\x0000")
+                try {
+                    code = charmap.at(substr);
                     break;
+                } catch (out_of_range) { /* silently discard */}
             }
             if (code == 0 && substr != "\\x0000") {
                 stringstream ss;

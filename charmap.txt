@@ -1,3 +1,9 @@
+// Character mapping for Pokémon HeartGold and SoulSilver
+// Version 2021.08.17
+// Format is HEXCODE=<character> or HEXCODE={<command>}
+// Comments are preceded by double forward slashes as in C99 and C++.
+// Leading spaces and tabs are ignored; trailing spaces and tabs are not.
+
 0000=\x0000
 0001=　
 0002=ぁ
@@ -2874,3 +2880,21 @@
 E000=\n
 25BC=\r
 25BD=\f
+
+// Function codes
+0100={STRVAR_1}
+0300={STRVAR_3}
+0400={STRVAR_4}
+3400={STRVAR_34}
+0200={YESNO}
+0201={PAUSE}
+0202={WAIT}
+0203={CURSOR_X}
+0204={CURSOR_Y}
+0205={ALN_CENTER}
+0206={ALN_RIGHT}
+0207={UNK_207}
+0208={UNK_208}
+FF00={COLOR}
+FF01={SIZE}
+FF02={UNK_FF02}

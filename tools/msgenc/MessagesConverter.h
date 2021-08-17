@@ -7,6 +7,7 @@
 #include <map>
 #include <sstream>
 #include <vector>
+#include <set>
 
 using namespace std;
 
@@ -52,38 +53,21 @@ static inline void DecryptU16String(u16string & message, int & i) {
 }
 
 class MessagesConverter{
+    virtual void CharmapRegisterCharacter(string& code, uint16_t value);
+    virtual void CmdmapRegisterCommand(string& command, uint16_t value);
 protected:
+    ConvertMode mode;
     string textfilename;
     string keyfilename;
     string charmapfilename;
     string binfilename;
-    map<string, uint16_t> charmap;
 
     MsgArcHeader header = {};
     vector<MsgAlloc> alloc_table;
     vector<string> vec_decoded;
     vector<u16string> vec_encoded;
 
-    map<string, uint16_t> cmdmap = {
-        {"STRVAR_1", 0x0100},
-        {"STRVAR_3", 0x0300},
-        {"STRVAR_4", 0x0400},
-        {"STRVAR_34", 0x3400},
-        {"YESNO", 0x200},
-        {"PAUSE", 0x201},
-        {"WAIT", 0x202},
-        {"CURSOR_X", 0x203},
-        {"CURSOR_Y", 0x204},
-        {"ALN_CENTER", 0x205},
-        {"ALN_RIGHT", 0x206},
-        {"UNK_207", 0x207},
-        {"UNK_208", 0x208},
-        {"COLOR", 0xFF00},
-        {"SIZE", 0xFF01},
-        {"UNK_FF02", 0xFF02},
-    };
-
-    vector<uint16_t> strvar_codes = {0x0100, 0x0300, 0x0400, 0x3400};
+    set<uint16_t> strvar_codes;
 
     template <typename key_type, typename mapped_type> void CreateInverseMap(map<key_type, mapped_type>const& _in, map<mapped_type, key_type>& _out) {
         for (auto _pair : _in) {
@@ -92,16 +76,15 @@ protected:
     }
     static string ReadTextFile(string& filename);
     static void WriteTextFile(string& filename, string const & contents);
-    void ReadCharmap(string& charmapfname);
 public:
-    MessagesConverter(string &_textfilename, string &_keyfilename, string &_charmapfilename, string &_binfilename) :
+    MessagesConverter(ConvertMode _mode, string &_textfilename, string &_keyfilename, string &_charmapfilename, string &_binfilename) :
+        mode(_mode),
         textfilename(_textfilename),
         keyfilename(_keyfilename),
         charmapfilename(_charmapfilename),
         binfilename(_binfilename)
-    {
-        ReadCharmap(charmapfilename);
-    }
+    {}
+    void ReadCharmap();
     virtual void ReadInput() = 0;
     virtual void Convert() = 0;
     virtual void WriteOutput() = 0;
