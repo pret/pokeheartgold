@@ -13553,7 +13553,7 @@ ov01_021EC078: ; 0x021EC078
 	ldr r1, [r1, #0xc]
 	mov r2, #0x20
 	mov r3, #0xc0
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r0, [sp]
 	bl FreeToHeap
 	mov r0, #0
@@ -48069,7 +48069,7 @@ ov01_021FC14C: ; 0x021FC14C
 	add r1, sp, #4
 	add r2, r0, #0
 	mov r3, #0xc2
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	mov r0, #4
 	mov r1, #0x20
 	bl AllocFromHeap
@@ -48178,7 +48178,7 @@ ov01_021FC1FC: ; 0x021FC1FC
 	mov r0, #2
 	add r1, sp, #4
 	add r2, r0, #0
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	mov r1, #2
 	str r1, [sp]
 	ldr r0, [r4, #8]
@@ -48223,7 +48223,7 @@ ov01_021FC260: ; 0x021FC260
 	strh r2, [r1]
 	add r1, sp, #4
 	mov r2, #2
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	mov r2, #2
 	str r2, [sp]
 	ldr r0, [r4, #8]

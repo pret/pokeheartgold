@@ -4304,7 +4304,7 @@ ov05_0221DC60: ; 0x0221DC60
 	mov r3, #0
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r1, [sp, #0x10]
 	ldr r0, _0221DD00 ; =0x000004E4
 	ldr r1, [r1, #0xc]
@@ -4423,7 +4423,7 @@ _0221DDA0:
 	add r1, r5, r1
 	mov r2, #0x20
 	lsr r3, r3, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	b _0221DDC6
 _0221DDB4:
 	ldr r1, _0221DDE8 ; =0x000004E4
@@ -4433,7 +4433,7 @@ _0221DDB4:
 	add r1, r5, r1
 	mov r2, #0x20
 	lsr r3, r3, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 _0221DDC6:
 	add r4, r4, #1
 	add r7, #0x18
@@ -5741,7 +5741,7 @@ _0221E800:
 	add r1, r5, r1
 	mov r2, #4
 	lsr r3, r3, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	b _0221E846
 _0221E818:
 	ldrb r3, [r4, #9]
@@ -5753,7 +5753,7 @@ _0221E818:
 	add r1, r5, r1
 	mov r2, #4
 	lsr r3, r3, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	b _0221E846
 _0221E830:
 	ldrb r3, [r4, #9]
@@ -5765,7 +5765,7 @@ _0221E830:
 	add r1, r5, r1
 	mov r2, #4
 	lsr r3, r3, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 _0221E846:
 	ldr r0, [sp, #8]
 	ldrh r1, [r7, r6]

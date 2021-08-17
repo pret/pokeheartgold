@@ -1780,12 +1780,12 @@ _021E679A:
 	mov r0, #3
 	add r1, #2
 	mov r3, #0x42
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	mov r0, #3
 	add r1, sp, #0x18
 	mov r2, #2
 	mov r3, #0x44
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop

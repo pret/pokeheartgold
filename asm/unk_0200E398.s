@@ -1118,7 +1118,7 @@ sub_0200EC0C: ; 0x0200EC0C
 	add r0, r6, #0
 	mov r2, #0x20
 	lsr r3, r3, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r1, [sp, #0x14]
 	add r0, r4, #0
 	bl FreeToHeapExplicit

@@ -1658,24 +1658,24 @@ ov69_021E64CC: ; 0x021E64CC
 	add r1, sp, #0x14
 	add r1, #2
 	add r2, r0, #0
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	mov r0, #2
 	mov r3, #0x79
 	add r1, sp, #0x14
 	add r2, r0, #0
 	lsl r3, r3, #2
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	mov r0, #2
 	add r1, sp, #0x10
 	ldr r3, _021E679C ; =0x000001E6
 	add r1, #2
 	add r2, r0, #0
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	mov r0, #2
 	ldr r3, _021E67A0 ; =0x000001FE
 	add r1, sp, #0x10
 	add r2, r0, #0
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r1, _021E676C ; =0x0000C010
 	ldr r2, _021E67A4 ; =0x021E765C
 	ldr r0, [r4, r1]

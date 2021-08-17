@@ -1415,7 +1415,7 @@ ov56_021E6650: ; 0x021E6650
 	mov r3, #0
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r0, [r5]
 	bl sub_020030E8
 	str r0, [r5, #0x30]

@@ -24582,7 +24582,7 @@
 .public BG_LoadCharTilesData
 .public sub_0201C1C4
 .public sub_0201C1F4
-.public sub_0201C260
+.public BG_LoadPlttData
 .public sub_0201C290
 .public sub_0201C2D8
 .public sub_0201C4C4
@@ -27619,3 +27619,7 @@
 .public sub_02013364
 .public sub_02022448
 .public sub_02015DC8
+.public sub_020254FC
+.public sub_02025504
+.public sub_0201FFB0
+.public sub_020210A0

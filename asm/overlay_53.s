@@ -2418,7 +2418,7 @@ _021E6C36:
 	ldr r3, [r3, r4]
 	lsl r3, r3, #0x11
 	lsr r3, r3, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r0, _021E6CA0 ; =0x00000136
 	add r1, sp, #0
 	ldrh r2, [r5, r0]
@@ -2442,7 +2442,7 @@ _021E6C84:
 	lsl r3, r3, #0x11
 	mov r2, #4
 	lsr r3, r3, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -2466,12 +2466,12 @@ ov53_021E6CB0: ; 0x021E6CB0
 	strh r1, [r0, #2]
 	mov r0, #6
 	add r1, sp, #0
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	mov r0, #6
 	add r1, sp, #0
 	mov r2, #4
 	mov r3, #0x1c
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	pop {r3, pc}
 	.balign 4, 0
 _021E6CD8: .word 0x00000136

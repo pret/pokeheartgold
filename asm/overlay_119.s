@@ -1359,7 +1359,7 @@ _0225FACC:
 	add r1, sp, #0x28
 	mov r2, #2
 	mov r3, #0x1e
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2329,7 +2329,7 @@ _022602EA:
 	add r1, sp, #0x28
 	mov r2, #2
 	mov r3, #0x1e
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	mov r0, #2
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]

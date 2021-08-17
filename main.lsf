@@ -46,6 +46,16 @@ Static main
 	Object mail_message.o
 	Object unk_02015A9C.o
 	Object unk_02015D14.o
+	Object unk_02015DD8.o
+	Object unk_020163E0.o
+	Object unk_0201660C.o
+	Object unk_02016EDC.o
+	Object unk_02017FAC.o
+	Object unk_02018000.o
+	Object game_init.o
+	Object heap.o
+	Object bg_window.o
+	Object unk_0201F4C4.o
 	Object error_handling.o
 	Object unk_02025534.o
 	### Vendor libraries ###

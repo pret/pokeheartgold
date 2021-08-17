@@ -1522,7 +1522,7 @@ _02259304:
 	mov r3, #0xfa
 	ldr r1, [r1, #0xc]
 	add r1, #0xee
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r1, [sp, #0x14]
 	ldr r3, _022593C8 ; =0x0000011A
 	add r1, #0x98
@@ -1531,7 +1531,7 @@ _02259304:
 	ldr r1, [r1, #0xc]
 	mov r2, #4
 	add r1, #0xee
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r1, [sp, #0x14]
 	ldr r3, _022593CC ; =0x0000013A
 	add r1, #0x98
@@ -1541,7 +1541,7 @@ _02259304:
 	ldr r1, [r1, #0xc]
 	mov r2, #4
 	add r1, #0xee
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

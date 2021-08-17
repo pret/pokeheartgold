@@ -1028,7 +1028,7 @@ _0225F73E:
 	add r1, sp, #0x14
 	mov r2, #2
 	mov r3, #0x1e
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r0, [r4]
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -1464,7 +1464,7 @@ _0225FA9E:
 	add r1, sp, #0x14
 	mov r2, #2
 	mov r3, #0x1e
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r0, [r5]
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -1637,7 +1637,7 @@ _0225FBEE:
 	add r1, sp, #0x14
 	mov r2, #2
 	mov r3, #0x1e
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r0, [r5]
 	mov r1, #0
 	bl FillWindowPixelBuffer

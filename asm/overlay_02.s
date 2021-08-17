@@ -9786,7 +9786,7 @@ ov02_0224A570: ; 0x0224A570
 	ldr r1, [r1, #0xc]
 	mov r2, #0x20
 	lsl r3, r0, #7
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}
