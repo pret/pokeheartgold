@@ -94,7 +94,7 @@ u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
                 try {
                     code = charmap.at(substr);
                     break;
-                } catch (out_of_range) { /* silently discard */}
+                } catch (out_of_range& oor) { /* silently discard */}
             }
             if (code == 0 && substr != "\\x0000") {
                 stringstream ss;
