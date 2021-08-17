@@ -3293,7 +3293,7 @@ ov85_021E7274: ; 0x021E7274
 	ldr r0, [r4, #8]
 	mov r1, #0
 	add r5, #0xc
-	bl sub_0200C0CC
+	bl BufferItemName
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x66
@@ -9285,7 +9285,7 @@ _021E9EF2:
 	ldr r0, [r0, #0x34]
 	mov r1, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x14]
 	ldr r0, [r0, #0x34]
@@ -9682,7 +9682,7 @@ _021EA1FA:
 	mov r0, #0xdd
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	str r0, [sp, #0xc]
 	mov r0, #0xdd
 	lsl r0, r0, #2
@@ -9733,7 +9733,7 @@ _021EA262:
 	mov r0, #0xdd
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r1, r0, #0
 	mov r0, #0x8f
 	lsl r0, r0, #2

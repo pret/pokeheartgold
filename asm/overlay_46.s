@@ -1633,7 +1633,7 @@ ov46_02259534: ; 0x02259534
 	ldr r0, [r0]
 	mov r1, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	thumb_func_end ov46_02259534

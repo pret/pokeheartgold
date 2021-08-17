@@ -21477,7 +21477,7 @@ ov101_021F1D74: ; 0x021F1D74
 	add r0, #0x34
 	strb r1, [r0]
 	ldr r0, [r4, #0x24]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r1, r4, #0
 	add r1, #0x36
 	strb r0, [r1]
@@ -21644,7 +21644,7 @@ _021F1F3C:
 _021F1F4E:
 	ldr r0, [r4, #0x50]
 	mov r1, #0
-	bl sub_0200C2D4
+	bl BufferTrainerClassName
 	ldr r0, [r4, #0x50]
 	ldr r1, [r4, #0x5c]
 	ldr r2, [r4, #0x60]
@@ -21910,7 +21910,7 @@ ov101_021F2110: ; 0x021F2110
 	add r2, r0, #0
 	ldr r0, [r4, #0x50]
 	mov r1, #2
-	bl sub_0200C278
+	bl BufferLandmarkName
 	add r0, r4, #0
 	add r0, #0x98
 	ldr r0, [r0]
@@ -21919,7 +21919,7 @@ ov101_021F2110: ; 0x021F2110
 	add r2, r0, #0
 	ldr r0, [r4, #0x50]
 	mov r1, #3
-	bl sub_0200C278
+	bl BufferLandmarkName
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov101_021F2110
@@ -22894,7 +22894,7 @@ _021F2870:
 	ldr r2, [r4, #0x44]
 	mov r1, #0xa
 	mov r3, #6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5, #0x28]
 	bl sub_02066794
 	add r1, r4, #0
@@ -23849,7 +23849,7 @@ _021F2F68:
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #0xa
-	bl sub_0200BEE8
+	bl BufferSpeciesName
 	ldr r1, [r4, #0x10]
 	add r2, r4, #0
 	add r2, #0x23
@@ -23860,7 +23860,7 @@ _021F2F68:
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #0xb
-	bl sub_0200BEE8
+	bl BufferSpeciesName
 	ldr r0, [r4, #0x10]
 	ldrb r0, [r0, #0xc]
 	cmp r0, #0xff
@@ -24302,7 +24302,7 @@ _021F32F8:
 	mov r1, #5
 	add r2, r7, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -24311,7 +24311,7 @@ _021F32F8:
 	mov r1, #6
 	add r2, r6, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #0x14
@@ -24521,7 +24521,7 @@ _021F34B8:
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #0xa
-	bl sub_0200C0CC
+	bl BufferItemName
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -24530,7 +24530,7 @@ _021F34B8:
 	mov r1, #0xb
 	add r2, r7, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r2, #3
 _021F34DE:
 	ldr r1, [r5, #0x4c]
@@ -24758,7 +24758,7 @@ _021F3642:
 	mov r1, #0xb
 	add r2, r6, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	cmp r6, #0
 	bne _021F3696
 	ldr r1, [r4, #0x4c]
@@ -24858,7 +24858,7 @@ _021F3738:
 	bl sub_020292E4
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	cmp r0, #0
 	beq _021F376A
 	add r0, r6, #0
@@ -24867,7 +24867,7 @@ _021F3738:
 	add r1, r5, #0
 	ldr r0, [r7, #0x50]
 	add r1, #0xa
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -25055,7 +25055,7 @@ _021F38B8:
 	bl sub_020292E4
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	cmp r0, #0
 	beq _021F38E4
 	ldrb r0, [r6]
@@ -25196,7 +25196,7 @@ _021F39C4:
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #0xa
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -25207,7 +25207,7 @@ _021F39C4:
 	ldr r0, [r5, #0x50]
 	mov r1, #0xb
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #6
@@ -25230,7 +25230,7 @@ _021F3A10:
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #0xa
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -25241,7 +25241,7 @@ _021F3A10:
 	ldr r0, [r5, #0x50]
 	mov r1, #0xb
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #6
@@ -26299,7 +26299,7 @@ _021F420A:
 	add r1, r4, #0
 	ldr r0, [r5, #0x50]
 	add r1, #0xa
-	bl sub_0200CA94
+	bl BufferSafariZoneAreaName
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -32063,11 +32063,11 @@ _021F6DE6:
 	add r2, r0, #0
 	ldr r0, [r6, #0x44]
 	mov r1, #0
-	bl sub_0200C278
+	bl BufferLandmarkName
 	ldrh r2, [r4, #6]
 	ldr r0, [r6, #0x44]
 	mov r1, #1
-	bl sub_0200BEE8
+	bl BufferSpeciesName
 	add r0, r6, #0
 	mov r1, #0x20
 	bl ov101_021F5DE0
@@ -32091,7 +32091,7 @@ _021F6E1E:
 	lsl r2, r2, #2
 	add r2, r4, r2
 	ldrh r2, [r2, #0x10]
-	bl sub_0200C278
+	bl BufferLandmarkName
 	mov r2, #0x25
 	lsl r2, r2, #4
 	ldrb r2, [r4, r2]
@@ -32100,7 +32100,7 @@ _021F6E1E:
 	lsl r2, r2, #2
 	add r2, r4, r2
 	ldrh r2, [r2, #0x12]
-	bl sub_0200BEE8
+	bl BufferSpeciesName
 	add r0, r6, #0
 	mov r1, #4
 	bl ov101_021F5DE0

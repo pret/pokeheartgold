@@ -3765,7 +3765,7 @@ _0222B958:
 	cmp r4, #6
 	blt _0222B910
 	ldr r0, [sp, #0x18]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r1, r5, #0
 	add r1, #0x58
 	strb r0, [r1]
@@ -9749,7 +9749,7 @@ _0222E2EE:
 	add r0, r4, #0
 	mov r1, #2
 	sub r2, r2, r5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r7, #0
 	mov r1, #5
 	bl NewString_ReadMsgData
@@ -9796,7 +9796,7 @@ ov45_0222E33C: ; 0x0222E33C
 	add r0, r4, #0
 	mov r1, #2
 	sub r2, r2, r5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r6, #0
 	mov r1, #9
 	bl NewString_ReadMsgData

@@ -198,7 +198,7 @@ _021E5A6A:
 	ldr r0, _021E5AE4 ; =0x000007C4
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _021E5AE4 ; =0x000007C4
 	add r2, r7, #0
 	ldr r0, [r5, r1]

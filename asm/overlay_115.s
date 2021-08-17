@@ -196,7 +196,7 @@ ov115_0225F158: ; 0x0225F158
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200C37C
+	bl BufferTrainerName
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
@@ -1192,7 +1192,7 @@ ov115_0225F968: ; 0x0225F968
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl sub_02028E9C
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov115_0225F968

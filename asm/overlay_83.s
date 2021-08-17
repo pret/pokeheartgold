@@ -1615,7 +1615,7 @@ _0223EB36:
 	add r2, r0, #0
 	ldr r0, [r4, #0x24]
 	mov r1, #1
-	bl sub_0200C100
+	bl BufferItemNameWithIndefArticle
 	ldr r0, _0223EC84 ; =0x00000508
 	ldr r0, [r4, r0]
 	bl sub_0202ADCC
@@ -2315,7 +2315,7 @@ _0223F0F0:
 	bl String_dtor
 	ldr r0, _0223F1C0 ; =0x00000504
 	ldr r0, [r5, r0]
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	mov r0, #4
 	bl sub_02002DB4
 	mov r6, #0
@@ -2450,7 +2450,7 @@ _0223F268:
 	mov r1, #2
 	mov r2, #0
 	mov r3, #0x6b
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	ldr r1, _0223F598 ; =0x00000504
 	mov r2, #0
 	str r0, [r5, r1]
@@ -3737,7 +3737,7 @@ ov83_0223FD4C: ; 0x0223FD4C
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	mov r1, #0
-	bl sub_0200C0CC
+	bl BufferItemName
 	mov r0, #8
 	str r0, [sp]
 	add r0, r5, #0
@@ -3757,7 +3757,7 @@ ov83_0223FD4C: ; 0x0223FD4C
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	mov r1, #0
-	bl sub_0200C098
+	bl BufferNatureName
 	mov r0, #0x18
 	str r0, [sp]
 	add r0, r5, #0
@@ -3779,7 +3779,7 @@ ov83_0223FD4C: ; 0x0223FD4C
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	mov r1, #0
-	bl sub_0200C060
+	bl BufferAbilityName
 	mov r0, #0x28
 	str r0, [sp]
 	add r0, r5, #0
@@ -4032,7 +4032,7 @@ ov83_0223FFD8: ; 0x0223FFD8
 	add r2, r0, #0
 	ldr r0, [r4, #0x24]
 	add r1, r5, #0
-	bl sub_0200BFF0
+	bl BufferMoveName
 	mov r3, #0x18
 	add r0, r5, #0
 	mul r0, r3
@@ -4757,7 +4757,7 @@ _0224058C:
 	add r0, r4, #0
 	bl CopyU16ArrayToString
 	add r0, r6, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _022405BC
 	ldr r0, _02240660 ; =0x00070800
@@ -5310,7 +5310,7 @@ _02240994:
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -5388,7 +5388,7 @@ _02240AC2:
 	ldr r0, [r5, #0x24]
 	ldrh r2, [r5, r2]
 	mov r1, #0
-	bl sub_0200C0CC
+	bl BufferItemName
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -5543,7 +5543,7 @@ ov83_02240C48: ; 0x02240C48
 	mov r4, #1
 	str r4, [sp, #4]
 	ldr r0, [r0, #0x24]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -5551,11 +5551,11 @@ ov83_02240C48: ; 0x02240C48
 
 	thumb_func_start ov83_02240C60
 ov83_02240C60: ; 0x02240C60
-	ldr r3, _02240C68 ; =sub_0200BF8C
+	ldr r3, _02240C68 ; =BufferBoxMonNickname
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
-_02240C68: .word sub_0200BF8C
+_02240C68: .word BufferBoxMonNickname
 	thumb_func_end ov83_02240C60
 
 	thumb_func_start ov83_02240C6C
@@ -5596,7 +5596,7 @@ ov83_02240C8C: ; 0x02240C8C
 	add r0, r4, #0
 	bl CopyU16ArrayToString
 	add r0, r7, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _02240CC6
 	ldr r1, _02240CF8 ; =0x00070800
@@ -5641,7 +5641,7 @@ ov83_02240CFC: ; 0x02240CFC
 	eor r0, r1
 	bl sub_02034818
 	str r0, [sp, #0x1c]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _02240D22
 	ldr r4, _02240D60 ; =0x00070800
@@ -6561,7 +6561,7 @@ ov83_022413C4: ; 0x022413C4
 	bl sub_02028E9C
 	ldr r1, _02241404 ; =0x000007AC
 	strh r4, [r6, r1]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	ldr r1, _02241408 ; =0x000007AE
 	mov r4, #0
 	strh r0, [r6, r1]
@@ -6979,7 +6979,7 @@ _022416D6:
 	ldrh r2, [r2, #8]
 	ldr r0, [r5, #0x24]
 	mov r1, #1
-	bl sub_0200C0CC
+	bl BufferItemName
 	add r0, r5, #0
 	mov r1, #0x3b
 	mov r2, #1
@@ -8359,7 +8359,7 @@ ov83_022421E0: ; 0x022421E0
 	add r2, r0, #0
 	ldr r0, [r4, #0x24]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -8438,7 +8438,7 @@ _02242354:
 	ldrb r2, [r4, r2]
 	ldr r0, [r4, #0x24]
 	mov r1, #0
-	bl sub_0200C060
+	bl BufferAbilityName
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -8457,7 +8457,7 @@ _02242354:
 	ldr r0, [r4, #0x24]
 	ldrb r2, [r4, r2]
 	mov r1, #0
-	bl sub_0200C098
+	bl BufferNatureName
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -8476,7 +8476,7 @@ _02242354:
 	ldr r0, [r4, #0x24]
 	ldrh r2, [r4, r2]
 	mov r1, #0
-	bl sub_0200C0CC
+	bl BufferItemName
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -8672,7 +8672,7 @@ _02242586:
 	ldr r0, [r4, #0x24]
 	ldrh r2, [r3, r2]
 	add r1, r5, #0
-	bl sub_0200BFF0
+	bl BufferMoveName
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -11787,7 +11787,7 @@ _02243EDC:
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	mov r0, #4
 	bl sub_02002DB4
 	ldr r4, [sp]
@@ -11913,7 +11913,7 @@ _02244030:
 	mov r1, #2
 	mov r2, #0
 	mov r3, #0x6b
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	mov r1, #0xad
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -13172,7 +13172,7 @@ ov83_02244A98: ; 0x02244A98
 	mov r4, #1
 	str r4, [sp, #4]
 	ldr r0, [r0, #0x24]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -13180,11 +13180,11 @@ ov83_02244A98: ; 0x02244A98
 
 	thumb_func_start ov83_02244AB0
 ov83_02244AB0: ; 0x02244AB0
-	ldr r3, _02244AB8 ; =sub_0200BF1C
+	ldr r3, _02244AB8 ; =BufferBoxMonSpeciesName
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
-_02244AB8: .word sub_0200BF1C
+_02244AB8: .word BufferBoxMonSpeciesName
 	thumb_func_end ov83_02244AB0
 
 	thumb_func_start ov83_02244ABC
@@ -13225,7 +13225,7 @@ ov83_02244AD8: ; 0x02244AD8
 	add r0, r4, #0
 	bl CopyU16ArrayToString
 	add r0, r6, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _02244B14
 	ldr r1, _02244B3C ; =0x00070800
@@ -13267,7 +13267,7 @@ ov83_02244B40: ; 0x02244B40
 	eor r0, r1
 	bl sub_02034818
 	str r0, [sp, #0x1c]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _02244B66
 	ldr r4, _02244BA4 ; =0x00070800
@@ -14065,7 +14065,7 @@ ov83_02245104: ; 0x02245104
 	bl sub_02028E9C
 	ldr r1, _02245144 ; =0x00000564
 	strh r4, [r6, r1]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	ldr r1, _02245148 ; =0x00000566
 	mov r4, #0
 	strh r0, [r6, r1]
@@ -16148,7 +16148,7 @@ _0224621E:
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -16244,7 +16244,7 @@ _02246328:
 	ldrb r2, [r5, r2]
 	ldr r0, [r5, #0x24]
 	mov r1, #0
-	bl sub_0200C060
+	bl BufferAbilityName
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -16263,7 +16263,7 @@ _02246328:
 	ldr r0, [r5, #0x24]
 	ldrb r2, [r5, r2]
 	mov r1, #0
-	bl sub_0200C098
+	bl BufferNatureName
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -16282,7 +16282,7 @@ _02246328:
 	ldr r0, [r5, #0x24]
 	ldrh r2, [r5, r2]
 	mov r1, #0
-	bl sub_0200C0CC
+	bl BufferItemName
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -16705,7 +16705,7 @@ _02246724:
 	ldrh r2, [r7, r2]
 	ldr r0, [r5, #0x24]
 	add r1, r4, #0
-	bl sub_0200BFF0
+	bl BufferMoveName
 	mov r0, #0
 	mov r1, #0x27
 	lsl r1, r1, #4

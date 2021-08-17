@@ -205,7 +205,7 @@ ov20_02259A1C: ; 0x02259A1C
 	ldr r0, [r5]
 	add r1, r6, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r4, #0
 	mov r1, #0xa
 	bl _u32_div_f
@@ -216,7 +216,7 @@ ov20_02259A1C: ; 0x02259A1C
 	str r3, [sp, #4]
 	ldr r0, [r5]
 	add r1, r7, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov20_02259A1C

@@ -71,12 +71,12 @@ _022469EE:
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r2, [r4]
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2, #4]
 	mov r1, #1
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r2, [r4]
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2, #8]
@@ -93,13 +93,13 @@ _02246A20:
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	b _02246A44
 _02246A2C:
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2, #4]
 	mov r1, #1
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
 	bl ov71_02246B28
@@ -137,7 +137,7 @@ _02246A44:
 	mov r1, #5
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	mov r1, #0x53
 	lsl r1, r1, #2
 	strh r0, [r4, r1]
@@ -145,7 +145,7 @@ _02246A44:
 	mov r1, #5
 	ldr r0, [r0, #4]
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	mov r1, #0x15
 	lsl r1, r1, #4
 	strh r0, [r4, r1]
@@ -153,14 +153,14 @@ _02246A44:
 	mov r1, #0x70
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	ldr r1, _02246B14 ; =0x0000014E
 	mov r2, #0
 	strh r0, [r4, r1]
 	ldr r0, [r4]
 	mov r1, #0x70
 	ldr r0, [r0, #4]
-	bl sub_0206E640
+	bl GetBoxMonData
 	ldr r1, _02246B18 ; =0x00000152
 	strh r0, [r4, r1]
 	mov r0, #0
@@ -213,12 +213,12 @@ ov71_02246B28: ; 0x02246B28
 	add r5, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x1c
@@ -1034,12 +1034,12 @@ _02247166:
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	ldr r0, [sp, #0x60]
@@ -1052,7 +1052,7 @@ _022471A0:
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	cmp r0, #1
 	bne _022471B8
 	ldr r0, _0224722C ; =0x00000147
@@ -2605,7 +2605,7 @@ _02247D04:
 	bl ov71_02247390
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	cmp r0, #0
 	bne _02247D80
 	ldr r0, [r4, #0x10]
@@ -9630,7 +9630,7 @@ _0224B504:
 	bl ov71_02247398
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	cmp r0, #0
 	bne _0224B55A
 	ldr r0, [r4]

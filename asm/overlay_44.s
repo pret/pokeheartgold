@@ -3242,7 +3242,7 @@ _0222B7F0:
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x1d]
 	ldr r0, [sp, #0x14]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x1e]
 	ldr r0, [sp, #8]
@@ -3479,7 +3479,7 @@ _0222B9E4:
 	mov r1, #0
 	add r2, r6, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0xd7
 	mov r1, #0x1e
 	lsl r0, r0, #2
@@ -4410,7 +4410,7 @@ _0222C152:
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	add r0, r6, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _0222C16C
 	ldr r0, _0222C280 ; =0x00050600
@@ -12802,7 +12802,7 @@ _02230322:
 	mov r1, #0
 	ldr r0, [r5, r0]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -12844,7 +12844,7 @@ _02230322:
 	mov r1, #0
 	ldr r0, [r5, r0]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x5a
 	mov r1, #0x2e
 	lsl r0, r0, #2
@@ -12914,7 +12914,7 @@ _02230322:
 	mov r1, #0
 	ldr r0, [r5, r0]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -12988,7 +12988,7 @@ _02230322:
 	mov r1, #0
 	ldr r0, [r5, r0]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -13069,7 +13069,7 @@ _022306B4:
 	mov r1, #2
 	ldr r0, [r5, r0]
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5]
 	add r1, r4, #0
 	mov r2, #4
@@ -13082,7 +13082,7 @@ _022306B4:
 	ldr r0, _022307D8 ; =0x00000B1C
 	mov r3, #4
 	ldr r0, [r5, r0]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5]
 	add r1, r4, #0
 	mov r2, #5
@@ -13091,7 +13091,7 @@ _022306B4:
 	ldr r0, _022307D8 ; =0x00000B1C
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_0200CB1C
+	bl BufferMonthNameAbbr
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -14244,7 +14244,7 @@ ov44_022310C8: ; 0x022310C8
 	ldr r0, [r5, r0]
 	mov r1, #0
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -19963,7 +19963,7 @@ ov44_02233CA0: ; 0x02233CA0
 	ldr r0, [r5, #4]
 	add r1, r4, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

@@ -664,7 +664,7 @@ _0221C3F0:
 	add r2, r0, #0
 	add r0, r7, #0
 	add r1, r4, r6
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	add r0, r5, #0
 	add r4, r4, #1
 	bl sub_02074640
@@ -3077,7 +3077,7 @@ _0221D7B0:
 	add r0, r6, #0
 	mov r2, #3
 	mov r3, #0
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #0x1e
 	str r0, [sp]
 	ldr r0, [sp, #0x2c]
@@ -3921,7 +3921,7 @@ ov65_0221DEA0: ; 0x0221DEA0
 	bl sub_0202907C
 	strb r0, [r4, #0x15]
 	add r0, r6, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	strb r0, [r4, #0x16]
 	mov r0, #0
 	add r1, r4, #0
@@ -5274,7 +5274,7 @@ ov65_0221E9A8: ; 0x0221E9A8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x20
@@ -6066,7 +6066,7 @@ ov65_0221F028: ; 0x0221F028
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	add r1, r4, #0
 	ldr r0, _0221F0B4 ; =0x00002228
 	add r1, #0x98
@@ -6080,7 +6080,7 @@ ov65_0221F028: ; 0x0221F028
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	mov r3, #0x62
 	lsl r3, r3, #2
 	ldr r0, [r4, r3]
@@ -6534,7 +6534,7 @@ ov65_0221F3F4: ; 0x0221F3F4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x20

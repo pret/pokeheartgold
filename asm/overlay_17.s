@@ -3531,7 +3531,7 @@ _02203740:
 	add r0, #0xa0
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_0200C0CC
+	bl BufferItemName
 	b _022037AA
 _02203756:
 	mov r0, #0
@@ -3543,7 +3543,7 @@ _02203756:
 	ldr r0, [r0]
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 _0220376C:
 	ldrb r0, [r6]
 	ldr r1, [r4]

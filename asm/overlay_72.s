@@ -3775,7 +3775,7 @@ ov72_022396E8: ; 0x022396E8
 	ldr r0, [r4, r0]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _02239758 ; =0x00000F0F
 	ldr r1, _0223975C ; =0x00000BD4
 	str r0, [sp]
@@ -3794,7 +3794,7 @@ _02239720:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _02239758 ; =0x00000F0F
 	ldr r1, _0223975C ; =0x00000BD4
 	str r0, [sp]
@@ -3906,7 +3906,7 @@ ov72_022397E8: ; 0x022397E8
 	ldr r2, [r2]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	mov r0, #0xbd
 	add r2, r4, #0
@@ -3917,7 +3917,7 @@ ov72_022397E8: ; 0x022397E8
 	add r2, #0x94
 	ldr r0, [r4, r0]
 	ldr r2, [r2]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _02239850 ; =0x00000F0F
 	mov r2, #1
 	str r0, [sp]
@@ -4442,7 +4442,7 @@ ov72_02239C14: ; 0x02239C14
 	ldr r0, [r4, r0]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _02239C84 ; =0x00000F0F
 	ldr r1, _02239C88 ; =0x00000BD4
 	str r0, [sp]
@@ -4461,7 +4461,7 @@ _02239C4C:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _02239C84 ; =0x00000F0F
 	ldr r1, _02239C88 ; =0x00000BD4
 	str r0, [sp]
@@ -4545,7 +4545,7 @@ ov72_02239CD8: ; 0x02239CD8
 	ldr r2, [r2]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	mov r0, #0xbd
 	add r2, r4, #0
@@ -4556,7 +4556,7 @@ ov72_02239CD8: ; 0x02239CD8
 	add r2, #0x94
 	ldr r0, [r4, r0]
 	ldr r2, [r2]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _02239D34 ; =0x00000F0F
 	mov r2, #1
 	str r0, [sp]
@@ -5636,7 +5636,7 @@ _0223A4EE:
 	ldr r0, [r5, r0]
 	mov r1, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0223A51C ; =0x00000E18
 	mov r1, #1
 	add r0, r5, r0

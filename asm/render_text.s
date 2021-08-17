@@ -429,7 +429,7 @@ _0200249C:
 	add r0, r4, #0
 	bl sub_020027FC
 	ldr r0, [r4]
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	str r0, [r4]
 	mov r1, #0xe
 	ldrh r2, [r0]
@@ -450,7 +450,7 @@ _020024C6:
 	add r0, r4, #0
 	bl sub_020027FC
 	ldr r0, [r4]
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	str r0, [r4]
 	mov r1, #0xe
 	ldrh r2, [r0]
@@ -471,7 +471,7 @@ _020024F0:
 	add r1, #0x2a
 	strb r0, [r1]
 	ldr r0, [r4]
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	str r0, [r4]
 	mov r0, #6
 	add r4, #0x28
@@ -485,7 +485,7 @@ _02002512:
 	bl MsgArray_ControlCodeGetField
 	strh r0, [r4, #0x2e]
 	ldr r0, [r4]
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	str r0, [r4]
 	add sp, #0xc
 	mov r0, #3
@@ -590,7 +590,7 @@ _020025D0:
 	add r0, r4, #0
 	bl sub_020027FC
 	ldr r0, [r4]
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	str r0, [r4]
 	add sp, #0xc
 	mov r0, #3
@@ -603,14 +603,14 @@ _02002606:
 	add r0, r4, #0
 	bl sub_020027FC
 	ldr r0, [r4]
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	str r0, [r4]
 	add sp, #0xc
 	mov r0, #3
 	pop {r3, r4, r5, r6, pc}
 _02002622:
 	ldr r0, [r4]
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	str r0, [r4]
 	add sp, #0xc
 	mov r0, #2

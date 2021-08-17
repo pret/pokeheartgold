@@ -936,7 +936,7 @@ ov98_0221ECD0: ; 0x0221ECD0
 	ldr r0, [r5, #0x10]
 	ldr r1, [sp, #0x24]
 	ldr r3, [sp, #0x20]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5, #8]
 	add r1, r6, #0
 	bl NewString_ReadMsgData
@@ -1038,7 +1038,7 @@ ov98_0221EDA4: ; 0x0221EDA4
 	ldr r0, [r0, #0x10]
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

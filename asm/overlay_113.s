@@ -676,7 +676,7 @@ _021E5DF6:
 	ldrb r2, [r4, #0x1a]
 	ldr r0, [r4, #0x48]
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	mov r1, #1
 	str r0, [sp]
@@ -684,7 +684,7 @@ _021E5DF6:
 	ldrb r2, [r4, #0x1b]
 	ldr r0, [r4, #0x48]
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r4, #0x48]
 	ldr r1, [r4, #0x50]
 	ldr r2, [r4, #0x58]
@@ -976,7 +976,7 @@ _021E5FE6:
 	ldr r0, [r6, #0x48]
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r6, #0x48]
 	ldr r1, [r6, #0x50]
 	ldr r2, [r6, #0x4c]

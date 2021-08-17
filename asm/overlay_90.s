@@ -1388,11 +1388,11 @@ ov90_022591D4: ; 0x022591D4
 
 	thumb_func_start ov90_022591F4
 ov90_022591F4: ; 0x022591F4
-	ldr r3, _022591FC ; =sub_0200CC50
+	ldr r3, _022591FC ; =ScrStrBufs_ResetBuffers
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022591FC: .word sub_0200CC50
+_022591FC: .word ScrStrBufs_ResetBuffers
 	thumb_func_end ov90_022591F4
 
 	thumb_func_start ov90_02259200
@@ -1408,13 +1408,13 @@ _0225920C: .word BufferPlayersName
 
 	thumb_func_start ov90_02259210
 ov90_02259210: ; 0x02259210
-	ldr r3, _0225921C ; =sub_0200C4B0
+	ldr r3, _0225921C ; =BufferCountryName
 	add r2, r1, #0
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bx r3
 	nop
-_0225921C: .word sub_0200C4B0
+_0225921C: .word BufferCountryName
 	thumb_func_end ov90_02259210
 
 	thumb_func_start ov90_02259220
@@ -1425,7 +1425,7 @@ ov90_02259220: ; 0x02259220
 	ldr r0, [r0, #4]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200C4E8
+	bl BufferCityName
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02259220
@@ -1442,7 +1442,7 @@ ov90_02259234: ; 0x02259234
 	ldr r0, [r0, #4]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov90_02259234
@@ -1458,7 +1458,7 @@ ov90_02259250: ; 0x02259250
 	ldr r0, [r0, #4]
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0

@@ -18593,7 +18593,7 @@ ov02_0224E754: ; 0x0224E754
 	add r6, r5, r0
 	ldr r0, [r4, #0xc]
 	bl sub_02028E9C
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #4]
@@ -21464,14 +21464,14 @@ ov02_0224FCE0: ; 0x0224FCE0
 	ldrb r2, [r2, #0x10]
 	add r0, r4, #0
 	sub r2, r2, #1
-	bl sub_0200C654
+	bl BufferFashionName
 	mov r1, #0x20
 	b _0224FD72
 _0224FD30:
 	ldrb r2, [r2, #0x10]
 	add r0, r4, #0
 	sub r2, r2, #1
-	bl sub_0200C688
+	bl BufferFashionNameWithArticle
 	mov r1, #0x5f
 	b _0224FD72
 _0224FD3E:
@@ -21488,7 +21488,7 @@ _0224FD3E:
 	ldr r2, [sp, #4]
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	mov r0, #1
 	tst r0, r6
 	beq _0224FD70
@@ -22428,11 +22428,11 @@ ov02_022504A0: ; 0x022504A0
 	add r0, r4, #0
 	mov r1, #0
 	add r2, r7, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	ldr r0, [r5, #0xc]
 	bl sub_02028E9C
 	add r2, r0, #0
@@ -22445,7 +22445,7 @@ ov02_022504A0: ; 0x022504A0
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0200C5AC
+	bl BufferLocationName
 	add r0, r6, #0
 	mov r1, #6
 	mov r2, #0
@@ -22453,7 +22453,7 @@ ov02_022504A0: ; 0x022504A0
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0200C0CC
+	bl BufferItemName
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_022504A0
 

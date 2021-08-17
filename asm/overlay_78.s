@@ -934,7 +934,7 @@ _021E60B2:
 	ldr r0, [r5, #0x3c]
 	ldr r2, [sp, #0x1c]
 	mov r1, #1
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	b _021E60DA
 _021E60D0:
 	ldr r0, [r5, #0x38]
@@ -1619,7 +1619,7 @@ ov78_021E6664: ; 0x021E6664
 	add r5, r0, #0
 	add r0, r1, #0
 	add r4, r2, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _021E6678
 	mov r1, #0x45

@@ -1,5 +1,7 @@
 ## Common defines for ARM9 and ARM7 Makefiles ##
 
+COMPARE ?= 1
+
 default: all
 
 PROJECT_ROOT := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))

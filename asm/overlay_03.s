@@ -469,7 +469,7 @@ _02254172:
 	ldr r0, [r0, #0x50]
 	mov r1, #0
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _022542C4 ; =0x022598A0
 	mov r1, #1
 	ldr r2, [r0]
@@ -514,7 +514,7 @@ _02254172:
 	ldr r0, [r0]
 	mov r3, #5
 	ldr r0, [r0, #0x50]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _022542C4 ; =0x022598A0
 	mov r1, #0x4e
 	ldr r2, [r0]
@@ -551,7 +551,7 @@ _02254274:
 	ldr r0, [r0]
 	add r2, r2, #1
 	ldr r0, [r0, #0x50]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _022542C4 ; =0x022598A0
 	mov r1, #0x4d
 	ldr r2, [r0]
@@ -714,7 +714,7 @@ ov03_022543AC: ; 0x022543AC
 	lsr r2, r2, #0x10
 	ldr r0, [r0, #0x54]
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0225441C ; =0x022598A0
 	mov r1, #0x4b
 	ldr r2, [r0]
@@ -772,7 +772,7 @@ _02254448:
 	ldr r0, [r0, #0x50]
 	add r2, r5, #1
 	add r3, r6, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r2, [r4]
 	mov r1, #0x4d
 	ldr r0, [r2, #0x74]
@@ -1548,7 +1548,7 @@ _02254A70:
 	mov r3, #5
 	ldr r0, [r0]
 	ldr r0, [r0, #0x50]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _02254B28 ; =0x022598A0
 	mov r1, #0x4e
 	ldr r2, [r0]
@@ -1795,7 +1795,7 @@ _02254CC6:
 	ldr r0, [r0]
 	mov r3, #2
 	ldr r0, [r0, #0x54]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _02254D20 ; =0x022598A0
 	mov r1, #0xf
 	ldr r0, [r0]
@@ -4451,7 +4451,7 @@ _02256208:
 	mov r1, #0
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	b _02256348
 _0225621C:
 	mov r0, #0
@@ -4462,7 +4462,7 @@ _0225621C:
 	mov r1, #0
 	add r2, r4, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	b _02256348
 _02256232:
 	cmp r4, #0
@@ -4478,7 +4478,7 @@ _0225623A:
 	mov r1, #0
 	add r2, r4, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	b _02256348
 _02256250:
 	cmp r4, #0
@@ -4514,7 +4514,7 @@ _0225627E:
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r4, #0
 	mov r1, #0xc
 	bl _s32_div_f
@@ -4528,7 +4528,7 @@ _0225627E:
 	add r0, r6, #0
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	cmp r4, #0
 	bne _022562C8
 	mov r5, #0x72
@@ -4569,7 +4569,7 @@ _022562F8:
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	cmp r4, #0
 	bne _0225631A
 	mov r5, #0x72
@@ -4724,7 +4724,7 @@ _02256428:
 	add r2, r0, #0
 	ldr r0, [r4, #0x64]
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r4, #0
 	mov r1, #0x7a
 	bl ov03_02255CF8
@@ -4750,7 +4750,7 @@ _02256462:
 	str r1, [sp, #4]
 	ldr r0, [r4, #0x64]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r4, #0
 	mov r1, #0x88
 	bl ov03_02255CF8
@@ -5230,7 +5230,7 @@ _02256856:
 	mov r1, #0
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	b _02256994
 _0225686A:
 	mov r0, #0
@@ -5241,7 +5241,7 @@ _0225686A:
 	mov r1, #0
 	add r2, r4, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	b _02256994
 _02256880:
 	cmp r4, #0
@@ -5257,7 +5257,7 @@ _02256888:
 	mov r1, #0
 	add r2, r4, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	b _02256994
 _0225689E:
 	cmp r4, #0
@@ -5293,7 +5293,7 @@ _022568CC:
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r4, #0
 	mov r1, #0xc
 	bl _s32_div_f
@@ -5307,7 +5307,7 @@ _022568CC:
 	add r0, r6, #0
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	cmp r4, #0
 	bne _02256916
 	mov r5, #0x72
@@ -5348,7 +5348,7 @@ _02256946:
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	cmp r4, #0
 	bne _02256968
 	mov r5, #0x72
@@ -5536,7 +5536,7 @@ _02256AC0:
 	ldr r0, [sp, #0xc]
 	add r3, r1, #0
 	str r1, [sp, #4]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #0x18
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -5551,7 +5551,7 @@ _02256AEE:
 	mov r2, #2
 	add r3, r1, #0
 	str r1, [sp, #4]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #0x18
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -5573,7 +5573,7 @@ _02256B0E:
 	ldr r0, [sp, #0xc]
 	mov r3, #3
 	str r1, [sp, #4]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #2
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9669,7 +9669,7 @@ ov03_02258A18: ; 0x02258A18
 	add r4, r1, r0
 	ldr r0, [r5, #0xc]
 	bl sub_02028E9C
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r2, r0, #0
 	lsl r2, r2, #0x18
 	ldrb r1, [r4]
@@ -10324,14 +10324,14 @@ _02258FFA:
 	mov r1, #0
 	add r2, r6, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	str r3, [sp]
 	mov r1, #1
 	str r1, [sp, #4]
 	ldr r0, [r5, #0x2c]
 	add r2, r7, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5, #0x2c]
 	ldr r1, [r5, #0x34]
 	ldr r2, [r5, #0x30]
@@ -10343,7 +10343,7 @@ _02259028:
 	ldr r0, [r5, #0x34]
 	add r1, r7, #0
 	mov r2, #7
-	bl sub_02026464
+	bl String16_FormatInteger
 _02259036:
 	mov r0, #0
 	ldr r1, [r5, #0x34]

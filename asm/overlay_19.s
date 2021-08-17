@@ -789,7 +789,7 @@ ov19_02259E64: ; 0x02259E64
 	add r2, r3, r2
 	mov r1, #3
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	str r3, [sp]
 	mov r0, #1
@@ -800,7 +800,7 @@ ov19_02259E64: ; 0x02259E64
 	lsl r2, r2, #0x18
 	mov r1, #4
 	lsr r2, r2, #0x18
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	str r3, [sp]
 	mov r0, #1
@@ -811,7 +811,7 @@ ov19_02259E64: ; 0x02259E64
 	lsl r2, r2, #0x18
 	mov r1, #5
 	lsr r2, r2, #0x18
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov19_02259E64

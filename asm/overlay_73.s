@@ -3307,7 +3307,7 @@ _021E738E:
 	ldr r0, [r0, #0x24]
 	mov r1, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x14]
 	ldr r0, [r0, #0x24]
@@ -3689,7 +3689,7 @@ _021E767A:
 	mov r0, #0xce
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	str r0, [sp, #0xc]
 	mov r0, #0xce
 	lsl r0, r0, #2
@@ -3740,7 +3740,7 @@ _021E76E2:
 	mov r0, #0xce
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r1, r0, #0
 	mov r0, #0x8b
 	lsl r0, r0, #2
@@ -4309,7 +4309,7 @@ _021E7ADA:
 	bl sub_02028F84
 	str r0, [r5]
 	add r0, r4, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	strb r0, [r5, #4]
 	mov r0, #GAME_VERSION
 	strb r0, [r5, #5]
@@ -7424,7 +7424,7 @@ ov73_021E9378: ; 0x021E9378
 	ldr r2, [r2]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	mov r0, #0xbd
 	add r2, r4, #0
@@ -7435,7 +7435,7 @@ ov73_021E9378: ; 0x021E9378
 	add r2, #0x94
 	ldr r0, [r4, r0]
 	ldr r2, [r2]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _021E93E0 ; =0x00000F0F
 	mov r2, #1
 	str r0, [sp]
@@ -8225,7 +8225,7 @@ ov73_021E99D4: ; 0x021E99D4
 	ldr r2, [r2]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	mov r0, #0xbd
 	add r2, r4, #0
@@ -8236,7 +8236,7 @@ ov73_021E99D4: ; 0x021E99D4
 	add r2, #0x94
 	ldr r0, [r4, r0]
 	ldr r2, [r2]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _021E9A34 ; =0x00000F0F
 	mov r2, #1
 	str r0, [sp]
@@ -9191,7 +9191,7 @@ ov73_021EA0F0: ; 0x021EA0F0
 	add r1, r6, #0
 	add r2, r7, #0
 	mov r3, #2
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r3, #1
 	ldr r0, _021EA128 ; =0x00010200
 	str r3, [sp]
@@ -9352,7 +9352,7 @@ _021EA22A:
 	ldr r0, [r5, r0]
 	mov r1, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _021EA258 ; =0x00000DD8
 	mov r1, #1
 	add r0, r5, r0

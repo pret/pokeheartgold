@@ -1127,7 +1127,7 @@ _0225DE3A:
 	add r2, r3, #0
 	add r0, r5, #0
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -1242,7 +1242,7 @@ _0225DF2A:
 	ldr r0, [r5, r0]
 	mov r1, #0
 	mov r3, #6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1330,7 +1330,7 @@ _0225DFEC:
 	ldr r2, [sp, #0x14]
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r1, #1
 	str r1, [sp]
 	mov r0, #0x55
@@ -1339,7 +1339,7 @@ _0225DFEC:
 	ldr r0, [r4, r0]
 	add r2, r5, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1641,7 +1641,7 @@ ov31_0225E20C: ; 0x0225E20C
 	ldr r0, [r5, r0]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1718,7 +1718,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r4, #0
 	mov r1, #0xa
 	bl _s32_div_f
@@ -1730,7 +1730,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1822,7 +1822,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	mov r1, #0
 	mul r2, r4
 	mov r3, #6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1917,7 +1917,7 @@ _0225E4CE: ; jump table
 _0225E4D8:
 	add r0, r1, #0
 	add r1, r3, #0
-	bl sub_0200C0CC
+	bl BufferItemName
 	pop {r3, pc}
 _0225E4E2:
 	add r0, r1, #0
@@ -1947,7 +1947,7 @@ _0225E4FE: ; jump table
 _0225E508:
 	add r0, r1, #0
 	add r1, r3, #0
-	bl sub_0200C134
+	bl BufferItemNamePlural
 	pop {r3, pc}
 _0225E512:
 	add r0, r1, #0
@@ -1977,7 +1977,7 @@ _0225E52E: ; jump table
 _0225E538:
 	add r0, r1, #0
 	add r1, r3, #0
-	bl sub_0200C100
+	bl BufferItemNameWithIndefArticle
 	pop {r3, pc}
 _0225E542:
 	add r0, r1, #0
@@ -2111,7 +2111,7 @@ _0225E63E:
 	ldrsh r2, [r2, r3]
 	ldr r0, [r4, r0]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r5, #0xa3
 	ldr r2, [r4, #0x14]
 	mov r0, #0
@@ -2127,7 +2127,7 @@ _0225E63E:
 	ldr r0, [r4, r0]
 	mul r2, r3
 	mov r3, #6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2366,7 +2366,7 @@ _0225E82E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200C168
+	bl BufferPocketName
 	b _0225E8DA
 _0225E85C:
 	add r2, r0, #1
@@ -2404,7 +2404,7 @@ _0225E87E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200C168
+	bl BufferPocketName
 	b _0225E8DA
 _0225E8AC:
 	mov r0, #0x56

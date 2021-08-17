@@ -1832,7 +1832,7 @@ _02227E82:
 	mov r1, #1
 	str r1, [sp, #4]
 	mov r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -1857,7 +1857,7 @@ ov74_02227E94: ; 0x02227E94
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #1
 	bne _02227EC8
 	ldr r0, _0222802C ; =0x0003040F
@@ -1947,7 +1947,7 @@ _02227F28:
 	str r3, [sp]
 	mov r1, #1
 	str r1, [sp, #4]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x12
 	str r0, [sp]
 	mov r0, #0x20
@@ -1966,7 +1966,7 @@ _02227F28:
 	ldr r0, [sp, #0x28]
 	ldr r2, [r2, #0x50]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x14
 	str r0, [sp]
 	mov r0, #0x30
@@ -4096,7 +4096,7 @@ ov74_02229084: ; 0x02229084
 	add r0, r4, #0
 	mov r3, #5
 	str r1, [sp, #4]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x44
 	str r0, [sp]
 	add r1, r5, #0
@@ -4141,7 +4141,7 @@ ov74_02229084: ; 0x02229084
 	add r0, r4, #0
 	mov r1, #0
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #2
 	str r0, [sp]
 	mov r1, #1
@@ -4149,7 +4149,7 @@ ov74_02229084: ; 0x02229084
 	ldr r2, [sp, #0x18]
 	add r0, r4, #0
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #0xfc
@@ -7657,7 +7657,7 @@ _0222ACEC:
 	ldr r2, [r5, r2]
 	mov r3, #5
 	add r6, r0, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x1f
 	mov r1, #0x9a
 	str r0, [sp]
@@ -12625,13 +12625,13 @@ ov74_0222D55C: ; 0x0222D55C
 	ldr r0, [r4, r0]
 	mov r1, #0
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
 	ldr r2, [sp, #0xc]
 	mov r1, #1
-	bl sub_0200CB1C
+	bl BufferMonthNameAbbr
 	mov r1, #2
 	str r1, [sp]
 	mov r0, #1
@@ -12641,7 +12641,7 @@ ov74_0222D55C: ; 0x0222D55C
 	ldr r0, [r4, r0]
 	ldr r2, [sp, #0x10]
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #1
 	add sp, #0x18
 	pop {r4, pc}
@@ -12741,7 +12741,7 @@ _0222D66C:
 	lsl r0, r0, #8
 	ldr r0, [r3, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #0x10
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -12928,7 +12928,7 @@ ov74_0222D7D0: ; 0x0222D7D0
 	ldr r0, [r0, r1]
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #1
 	add sp, #8
 	pop {r3, pc}
@@ -15121,7 +15121,7 @@ _0222E98C:
 	bl ReadMsgData_ExpandPlaceholders
 	str r0, [sp, #0x20]
 	add r0, r7, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	str r5, [sp]
 	bne _0222E9D6
@@ -15165,7 +15165,7 @@ _0222E9F0:
 	mov r1, #0
 	lsr r2, r2, #0x10
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r1, [sp, #0x1c]
 	add r0, r4, #0
 	mov r2, #0x37
@@ -15250,7 +15250,7 @@ ov74_0222EA88: ; 0x0222EA88
 	ldr r0, [r5, r0]
 	ldr r2, [r5, r2]
 	mov r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r1, #0x2a
 	lsl r1, r1, #8
 	ldr r0, [r5, r1]
@@ -15758,7 +15758,7 @@ ov74_0222EEB0: ; 0x0222EEB0
 	ldr r0, [r4, r0]
 	mov r1, #0
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	mov r0, #0x2a
 	str r3, [sp]
@@ -15767,7 +15767,7 @@ ov74_0222EEB0: ; 0x0222EEB0
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
 	ldr r2, [sp, #0xc]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r1, #2
 	str r1, [sp]
 	mov r0, #1
@@ -15777,7 +15777,7 @@ ov74_0222EEB0: ; 0x0222EEB0
 	ldr r0, [r4, r0]
 	ldr r2, [sp, #0x10]
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #1
 	add sp, #0x18
 	pop {r4, pc}
@@ -23363,7 +23363,7 @@ _022328B8:
 	mov r2, #3
 	add r4, r0, #0
 	str r3, [sp]
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #0
 	mvn r0, r0
 	str r0, [sp, #0x60]
@@ -27868,7 +27868,7 @@ ov74_02234A34: ; 0x02234A34
 	add r0, r1, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
@@ -28154,7 +28154,7 @@ _02234C8E:
 	add r0, r4, #0
 	add r1, #0x42
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	add r1, r5, #0
 	str r0, [sp, #8]
 	add r0, r4, #0
@@ -28465,7 +28465,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	cmp r0, #0xc9
 	bne _02234FDE
 	mov r1, #0
@@ -28500,7 +28500,7 @@ _02234FDE:
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	ldr r1, _02235120 ; =0x00000182
 	cmp r0, r1
 	bne _0223502E

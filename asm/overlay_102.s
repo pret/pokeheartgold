@@ -7026,7 +7026,7 @@ ov102_021EAC44: ; 0x021EAC44
 	mov r1, #0x23
 	bl ov102_021E8FA8
 	str r0, [r4]
-	bl sub_02026AA4
+	bl String_c_str
 	str r0, [r4, #4]
 	ldrh r1, [r0]
 	ldr r0, _021EAC6C ; =0x0000FFFE
@@ -7125,7 +7125,7 @@ _021EACDC:
 	pop {r3, r4, r5, r6, r7, pc}
 _021EACF6:
 	mov r0, ip
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	str r0, [r4, #4]
 	mov r0, #1
 	b _021EAD10
@@ -7237,7 +7237,7 @@ ov102_021EAD98: ; 0x021EAD98
 	bl ov102_021EAD48
 	ldr r1, [r5, #0x7c]
 	add r0, r6, #0
-	bl sub_02015B1C
+	bl GetECWordIntoStringByIndex
 	ldr r1, [r5, #0x7c]
 	mov r0, #1
 	mov r2, #0
@@ -7345,7 +7345,7 @@ _021EAE68:
 	add r6, r0, #0
 	add r0, r5, #0
 	add r2, r1, #0
-	bl sub_0200C168
+	bl BufferPocketName
 	ldr r0, [r4, #4]
 	bl ov102_021E8F70
 	add r1, r0, #0

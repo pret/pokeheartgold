@@ -455,7 +455,7 @@ ov32_0225D84C: ; 0x0225D84C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r2, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -492,7 +492,7 @@ ov32_0225D84C: ; 0x0225D84C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

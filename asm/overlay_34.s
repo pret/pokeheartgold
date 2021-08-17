@@ -1849,7 +1849,7 @@ _0225E398:
 	add r1, r4, r1
 	str r0, [r1, #0xc]
 	ldr r0, [sp, #8]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	ldr r2, [r5]
 	mov r1, #0x1c
 	mul r1, r2

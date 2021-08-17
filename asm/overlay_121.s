@@ -2294,7 +2294,7 @@ _021E6B0E:
 	ldr r2, [sp, #0x18]
 	mov r1, #0
 	mov r3, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r4, #0x68]
 	ldr r1, [r4, #0x6c]
 	ldr r2, [r4, #0x74]
@@ -2346,7 +2346,7 @@ _021E6B0E:
 	ldrh r3, [r3, #4]
 	mov r1, #0
 	add r2, r5, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r2, [sp, #0x10]
 	ldr r0, [r4, #0x68]
 	ldrh r2, [r2, #6]

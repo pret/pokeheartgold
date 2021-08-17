@@ -1252,7 +1252,7 @@ _021E62E8:
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x2c]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r5, #0
 	add r0, #0xbc
 	bl GetWindowWidth
@@ -1280,7 +1280,7 @@ _021E62E8:
 	ldr r0, [r5, #0x2c]
 	mov r1, #0
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r5, #0
 	add r0, #0xdc
 	bl GetWindowWidth
@@ -1311,7 +1311,7 @@ _021E62E8:
 	ldr r0, [r5, #0x2c]
 	mov r1, #0
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r5, #0
 	add r0, #0xfc
 	bl GetWindowWidth
@@ -1538,7 +1538,7 @@ ov67_021E6530: ; 0x021E6530
 	ldrh r2, [r4, r2]
 	ldr r0, [r4, #0x2c]
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1569,7 +1569,7 @@ ov67_021E6530: ; 0x021E6530
 	str r3, [sp, #4]
 	ldr r0, [r4, #0x2c]
 	mov r2, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, _021E65BC ; =0x00010200
@@ -1620,7 +1620,7 @@ _021E65CE:
 	ldrb r2, [r2]
 	ldr r0, [r6, #0x2c]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _021E6684 ; =0x000F0200
@@ -1639,7 +1639,7 @@ _021E65CE:
 	ldrb r2, [r2, #1]
 	ldr r0, [r6, #0x2c]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1793,7 +1793,7 @@ _021E671C:
 _021E6758:
 	ldr r0, [r6, #0x2c]
 	mov r1, #0
-	bl sub_0200C4B0
+	bl BufferCountryName
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -1815,7 +1815,7 @@ _021E6778:
 	ldr r0, [r6, #0x2c]
 	ldrb r2, [r2, r5]
 	mov r1, #0
-	bl sub_0200C4E8
+	bl BufferCityName
 	mov r0, #0x20
 	str r0, [sp]
 	mov r3, #0

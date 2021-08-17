@@ -1693,7 +1693,7 @@ _021E6656:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r1, #0x6d
 	lsl r1, r1, #2
 	ldr r0, [r5]
@@ -1712,13 +1712,13 @@ _021E6656:
 	add r2, r3, r2
 	ldr r0, [r5, r0]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r2, [sp, #0x1c]
 	mov r1, #2
-	bl sub_0200CB1C
+	bl BufferMonthNameAbbr
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -1729,7 +1729,7 @@ _021E6656:
 	ldr r2, [sp, #0x20]
 	mov r1, #3
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r2, #0x49
 	lsl r2, r2, #2
 	add r1, r2, #0
@@ -2120,7 +2120,7 @@ _021E6A18:
 	add r2, #0x76
 	ldrb r2, [r5, r2]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r2, #0x49
 	lsl r2, r2, #2
 	add r1, r2, #0

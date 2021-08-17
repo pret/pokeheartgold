@@ -19221,7 +19221,7 @@ ov01_021EEB4C: ; 0x021EEB4C
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r2, [sp, #0x10]
 	add r0, r6, #0
 	add r1, r4, #0
@@ -19387,7 +19387,7 @@ _021EED04:
 	ldr r0, [sp, #0x10]
 	mov r1, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [sp, #0x10]
 	add r1, r6, #0
 	add r2, r4, #0
@@ -19578,7 +19578,7 @@ ov01_021EEE44: ; 0x021EEE44
 	str r0, [sp, #4]
 	add r0, r6, #0
 	mov r3, #6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r2, [sp, #0x10]
 	add r0, r6, #0
 	add r1, r4, #0
@@ -19608,7 +19608,7 @@ ov01_021EEE44: ; 0x021EEE44
 	str r0, [sp, #4]
 	add r0, r6, #0
 	mov r3, #6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r2, [sp, #0x10]
 	add r0, r6, #0
 	add r1, r4, #0
@@ -20284,7 +20284,7 @@ ov01_021EF41C: ; 0x021EF41C
 	ldrb r4, [r1]
 	bl sub_0203E344
 	bl sub_02028E9C
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	beq _021EF464
 	mov r0, #0
@@ -30445,7 +30445,7 @@ ov01_021F3F9C: ; 0x021F3F9C
 	ldr r2, [r4, #4]
 	mov r1, #0
 	add r5, r0, #0
-	bl sub_0200C278
+	bl BufferLandmarkName
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
@@ -30460,7 +30460,7 @@ ov01_021F3F9C: ; 0x021F3F9C
 	str r0, [sp, #4]
 	add r0, r5, #0
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r2, [r4]
 	cmp r2, #0x64
 	blt _021F3FDC
@@ -30482,7 +30482,7 @@ _021F3FEA:
 	str r0, [sp, #4]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r4, #0xc]
 	bl sub_0202CE24
 	add r2, r0, #0
@@ -30506,7 +30506,7 @@ _021F4018:
 	str r0, [sp, #4]
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r4, #0xc]
 	bl sub_0202CE28
 	mov r3, #2
@@ -30516,7 +30516,7 @@ _021F4018:
 	str r0, [sp, #4]
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -32008,7 +32008,7 @@ _021F4B70:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	bl sub_02028E9C
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	b _021F4BAC
@@ -60470,7 +60470,7 @@ _02201EBC:
 	ldr r0, [r7]
 	mov r1, #2
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -60479,7 +60479,7 @@ _02201EBC:
 	ldr r0, [r7]
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -60489,7 +60489,7 @@ _02201EBC:
 	ldr r0, [r7]
 	mov r1, #4
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, sp, #0x18
 	ldrh r1, [r0]
 	ldr r0, [sp, #8]
@@ -61957,7 +61957,7 @@ _02202AA2:
 	add r1, r6, #0
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -62601,7 +62601,7 @@ _02202F82:
 	add r2, r2, r3
 	ldrb r2, [r2, #2]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldrb r3, [r5]
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x18]

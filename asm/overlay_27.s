@@ -1722,7 +1722,7 @@ _0225AD52:
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
 	bl sub_02028E9C
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r7, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
@@ -4000,7 +4000,7 @@ ov27_0225BF84: ; 0x0225BF84
 	add r2, r3, #0
 	ldr r0, [r5, r0]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #2
@@ -4039,7 +4039,7 @@ ov27_0225BFCC: ; 0x0225BFCC
 	ldr r0, _0225C014 ; =0x000004AC
 	mov r3, #3
 	ldr r0, [r4, r0]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #2

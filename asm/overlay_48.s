@@ -5475,7 +5475,7 @@ ov48_0225B0E0: ; 0x0225B0E0
 	ldr r0, [r5, #4]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200C4B0
+	bl BufferCountryName
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #8]
 	ldr r2, [r5, #0xc]
@@ -5491,7 +5491,7 @@ ov48_0225B108: ; 0x0225B108
 	ldr r0, [r5, #4]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
 	mov r1, #3
@@ -5500,7 +5500,7 @@ ov48_0225B108: ; 0x0225B108
 	mov r1, #0
 	add r2, r4, #0
 	add r3, r6, #0
-	bl sub_0200C4E8
+	bl BufferCityName
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #8]
 	ldr r2, [r5, #0xc]

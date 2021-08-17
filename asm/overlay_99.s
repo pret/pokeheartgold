@@ -2892,7 +2892,7 @@ _021E700C:
 	add r0, r2, r0
 	strh r0, [r4, #8]
 	ldr r0, [sp, #8]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	strb r0, [r4, #0x18]
 	str r4, [r7]
 	add sp, #0xc
@@ -3903,7 +3903,7 @@ ov99_021E7758: ; 0x021E7758
 	beq _021E7786
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200BEE8
+	bl BufferSpeciesName
 	mov r0, #1
 	lsl r0, r0, #0xa
 	ldr r0, [r5, r0]
@@ -5304,7 +5304,7 @@ _021E8270:
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -6273,7 +6273,7 @@ ov99_021E89EC: ; 0x021E89EC
 	add r0, r4, #0
 	mov r1, #0
 	mov r3, #7
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5, #0x10]

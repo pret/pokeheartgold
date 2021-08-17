@@ -850,7 +850,7 @@ ov86_021E5FBC: ; 0x021E5FBC
 	lsl r3, r3, #2
 	ldr r0, [r0, r3]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0

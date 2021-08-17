@@ -2400,7 +2400,7 @@ ov08_0221D0F4: ; 0x0221D0F4
 	mov r0, #0xf
 	ldr r3, [r3, #0xc]
 	mov r1, #0xe
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	ldr r1, _0221D140 ; =0x00001FA4
 	str r0, [r4, r1]
 	ldr r0, [r4]
@@ -2432,7 +2432,7 @@ ov08_0221D14C: ; 0x0221D14C
 	bl DestroyMsgData
 	ldr r0, _0221D178 ; =0x00001FA4
 	ldr r0, [r4, r0]
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	ldr r0, _0221D17C ; =0x00001FAC
 	ldr r0, [r4, r0]
 	bl ScrStrBufs_delete
@@ -3464,7 +3464,7 @@ ov08_0221D91C: ; 0x0221D91C
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200C3E8
+	bl BufferTrainerNameFromDataStruct
 	ldr r1, _0221DABC ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -3490,7 +3490,7 @@ _0221D978:
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _0221DABC ; =0x00001FAC
 	add r2, r6, #0
 	ldr r0, [r5, r1]
@@ -3525,7 +3525,7 @@ _0221D9CA:
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _0221DABC ; =0x00001FAC
 	add r2, r6, #0
 	ldr r0, [r5, r1]
@@ -3574,7 +3574,7 @@ _0221DA1C:
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _0221DABC ; =0x00001FAC
 	add r2, r6, #0
 	ldr r0, [r5, r1]
@@ -3606,7 +3606,7 @@ _0221DA6C:
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _0221DABC ; =0x00001FAC
 	add r2, r7, #0
 	ldr r0, [r5, r1]
@@ -4092,7 +4092,7 @@ ov08_0221DDCC: ; 0x0221DDCC
 	ldr r0, _0221DF68 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r6, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r0, _0221DF68 ; =0x00001FAC
 	ldr r1, [sp, #0x1c]
 	ldr r0, [r6, r0]
@@ -4489,7 +4489,7 @@ ov08_0221E120: ; 0x0221E120
 	ldrh r2, [r2, #0x1c]
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200C060
+	bl BufferAbilityName
 	ldr r0, _0221E19C ; =0x00001FAC
 	ldr r2, [sp, #0x10]
 	ldr r0, [r5, r0]
@@ -4560,7 +4560,7 @@ _0221E1CC:
 	ldrh r2, [r5, #0x1a]
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200C0CC
+	bl BufferItemName
 	ldr r0, _0221E238 ; =0x00001FAC
 	ldr r2, [sp, #0x10]
 	ldr r0, [r4, r0]
@@ -4622,7 +4622,7 @@ ov08_0221E244: ; 0x0221E244
 	ldr r2, [sp, #0x10]
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200BFF0
+	bl BufferMoveName
 	ldr r0, _0221E2E4 ; =0x00001FAC
 	ldr r2, [sp, #0x18]
 	ldr r0, [r5, r0]
@@ -4863,7 +4863,7 @@ ov08_0221E408: ; 0x0221E408
 	lsl r2, r2, #0x19
 	ldr r0, [r5, r0]
 	lsr r2, r2, #0x19
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221E5D4 ; =0x00001FAC
 	ldr r1, [sp, #0x1c]
 	ldr r0, [r5, r0]
@@ -4935,7 +4935,7 @@ ov08_0221E408: ; 0x0221E408
 	sub r2, r2, r3
 	mov r1, #0
 	mov r3, #6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	b _0221E53C
 _0221E528:
 	mov r0, #1
@@ -4946,7 +4946,7 @@ _0221E528:
 	ldr r0, [r5, r0]
 	add r2, r1, #0
 	mov r3, #6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 _0221E53C:
 	ldr r0, _0221E5D4 ; =0x00001FAC
 	ldr r1, [sp, #0x10]
@@ -5068,7 +5068,7 @@ ov08_0221E5DC: ; 0x0221E5DC
 	ldrh r2, [r2, #0xa]
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221E6D0 ; =0x00001FAC
 	ldr r2, [sp, #0x10]
 	ldr r0, [r5, r0]
@@ -5178,7 +5178,7 @@ ov08_0221E6D8: ; 0x0221E6D8
 	ldrh r2, [r2, #0xc]
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221E7CC ; =0x00001FAC
 	ldr r2, [sp, #0x10]
 	ldr r0, [r5, r0]
@@ -5289,7 +5289,7 @@ ov08_0221E7D4: ; 0x0221E7D4
 	ldrh r2, [r2, #0xe]
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221E8CC ; =0x00001FAC
 	ldr r2, [sp, #0x10]
 	ldr r0, [r5, r0]
@@ -5402,7 +5402,7 @@ ov08_0221E8D4: ; 0x0221E8D4
 	ldrh r2, [r2, #0x10]
 	ldr r0, [r4, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221E9CC ; =0x00001FAC
 	ldr r2, [sp, #0x10]
 	ldr r0, [r4, r0]
@@ -5515,7 +5515,7 @@ ov08_0221E9D4: ; 0x0221E9D4
 	ldrh r2, [r2, #0x12]
 	ldr r0, [r4, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221EACC ; =0x00001FAC
 	ldr r2, [sp, #0x10]
 	ldr r0, [r4, r0]
@@ -5663,7 +5663,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	ldrh r2, [r7, #0x10]
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221EC68 ; =0x00001FAC
 	ldr r1, [sp, #0x1c]
 	ldr r0, [r5, r0]
@@ -5709,7 +5709,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	ldrh r2, [r7, #0x12]
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221EC68 ; =0x00001FAC
 	ldr r1, [sp, #0x24]
 	ldr r0, [r5, r0]
@@ -5903,7 +5903,7 @@ _0221ED8A:
 	ldr r2, [sp, #0x10]
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221EE14 ; =0x00001FAC
 	ldr r2, [sp, #0x14]
 	ldr r0, [r5, r0]
@@ -6041,7 +6041,7 @@ _0221EEBA:
 	ldr r2, [sp, #0x10]
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221EF44 ; =0x00001FAC
 	ldr r2, [sp, #0x14]
 	ldr r0, [r5, r0]
@@ -6289,7 +6289,7 @@ ov08_0221F07C: ; 0x0221F07C
 	ldr r2, [sp, #0x10]
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221F1AC ; =0x00001FAC
 	ldr r1, [sp, #0x24]
 	ldr r0, [r5, r0]
@@ -6333,7 +6333,7 @@ ov08_0221F07C: ; 0x0221F07C
 	ldr r2, [sp, #0x14]
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221F1AC ; =0x00001FAC
 	ldr r1, [sp, #0x2c]
 	ldr r0, [r5, r0]
@@ -6541,7 +6541,7 @@ ov08_0221F284: ; 0x0221F284
 	ldrb r2, [r2, #3]
 	ldr r0, [r5, r0]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221F3CC ; =0x00001FAC
 	ldr r2, [sp, #0x20]
 	ldr r0, [r5, r0]
@@ -6577,7 +6577,7 @@ ov08_0221F284: ; 0x0221F284
 	ldrb r2, [r2, #2]
 	ldr r0, [r5, r0]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221F3CC ; =0x00001FAC
 	ldr r2, [sp, #0x24]
 	ldr r0, [r5, r0]
@@ -6670,7 +6670,7 @@ ov08_0221F3D0: ; 0x0221F3D0
 	ldrb r2, [r2, #2]
 	ldr r0, [r5, r0]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, _0221F49C ; =0x00001FAC
 	ldr r1, [sp, #0x14]
 	ldr r0, [r5, r0]
@@ -6959,7 +6959,7 @@ ov08_0221F658: ; 0x0221F658
 	ldr r0, _0221F7B0 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r0, _0221F7B0 ; =0x00001FAC
 	ldr r1, [sp, #0x10]
 	ldr r0, [r4, r0]
@@ -8414,7 +8414,7 @@ _022202F0:
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _02220578 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -8439,7 +8439,7 @@ _0222033A:
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -8455,7 +8455,7 @@ _0222033A:
 	ldr r0, [r5, r0]
 	sub r2, r2, r3
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r1, _02220578 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -8498,7 +8498,7 @@ _022203BE:
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _02220578 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -8521,7 +8521,7 @@ _022203F6:
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _02220578 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -8544,7 +8544,7 @@ _0222042C:
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _02220578 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -8567,7 +8567,7 @@ _02220462:
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _02220578 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -8590,7 +8590,7 @@ _02220498:
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _02220578 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -8613,7 +8613,7 @@ _022204CE:
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _02220578 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -8636,7 +8636,7 @@ _02220504:
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _02220578 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -8657,7 +8657,7 @@ _0222053A:
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _02220578 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -8700,12 +8700,12 @@ ov08_0222057C: ; 0x0222057C
 	ldr r0, _022205D8 ; =0x00001FAC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r0, _022205D8 ; =0x00001FAC
 	ldr r2, _022205DC ; =0x00000175
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0200BFF0
+	bl BufferMoveName
 	ldr r1, _022205D8 ; =0x00001FAC
 	add r2, r4, #0
 	ldr r0, [r5, r1]
@@ -13460,11 +13460,11 @@ _02222B9C:
 	add r2, r0, #0
 	ldr r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r0, [r5, #0x14]
 	ldr r2, _02222D70 ; =0x00000175
 	mov r1, #1
-	bl sub_0200BFF0
+	bl BufferMoveName
 	ldr r0, [r5, #0x14]
 	ldr r1, [r5, #0x18]
 	add r2, r4, #0
@@ -14224,7 +14224,7 @@ ov08_022231E8: ; 0x022231E8
 	ldr r3, [r3, #0xc]
 	mov r1, #0xe
 	mov r2, #0
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
@@ -14247,7 +14247,7 @@ ov08_02223228: ; 0x02223228
 	ldr r0, [r4, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r4, #0xc]
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	ldr r0, [r4, #0x14]
 	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x18]
@@ -14758,7 +14758,7 @@ ov08_022235D4: ; 0x022235D4
 	add r2, r2, r7
 	ldrh r2, [r2, #0x3c]
 	mov r1, #0
-	bl sub_0200C0CC
+	bl BufferItemName
 	ldr r0, [r5, #0x14]
 	ldr r1, [r5, #0x18]
 	ldr r2, [sp, #0x14]
@@ -14839,7 +14839,7 @@ ov08_02223678: ; 0x02223678
 	add r2, r2, r6
 	ldrh r2, [r2, #0x3e]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5, #0x14]
 	ldr r1, [r5, #0x18]
 	ldr r2, [sp, #0x14]
@@ -15025,7 +15025,7 @@ ov08_022237C4: ; 0x022237C4
 	ldrb r2, [r2, r3]
 	mov r3, #2
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5, #0x14]
 	ldr r1, [r5, #0x18]
 	ldr r2, [sp, #0x14]
@@ -15063,7 +15063,7 @@ ov08_022237C4: ; 0x022237C4
 	ldrb r2, [r2]
 	mov r3, #2
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5, #0x14]
 	ldr r1, [r5, #0x18]
 	add r2, r7, #0
@@ -15232,7 +15232,7 @@ ov08_022239CC: ; 0x022239CC
 	add r2, r2, r3
 	ldrh r2, [r2, #0x3c]
 	mov r1, #0
-	bl sub_0200C0CC
+	bl BufferItemName
 	ldr r0, [r5, #0x14]
 	ldr r1, [r5, #0x18]
 	add r2, r7, #0

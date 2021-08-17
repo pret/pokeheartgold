@@ -5316,7 +5316,7 @@ ov18_021E8410: ; 0x021E8410
 	add r4, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0, #4]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _021E8472
 	mov r2, #0
@@ -17390,7 +17390,7 @@ _021EE556:
 	mov r1, #8
 	mov r2, #7
 	mov r3, #0x25
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	str r5, [sp]
 	mov r1, #0
 	str r1, [sp, #4]
@@ -17402,7 +17402,7 @@ _021EE556:
 	mov r3, #2
 	bl sub_0200CDF0
 	add r0, r4, #0
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -17626,7 +17626,7 @@ ov18_021EE75C: ; 0x021EE75C
 	ldr r0, [r5, r0]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #1
 	str r0, [sp]
 	mov r1, #0
@@ -18220,7 +18220,7 @@ _021EEC5A:
 	ldr r0, [r5, r0]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -18579,7 +18579,7 @@ _021EEF4A:
 	ldr r0, [r4, r0]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x70
 	str r0, [sp]
 	mov r0, #0x16
@@ -20248,7 +20248,7 @@ _021EFD26:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r4, #0
 	mov r1, #0xc
 	bl _u32_div_f
@@ -20260,7 +20260,7 @@ _021EFD26:
 	str r1, [sp, #4]
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [sp, #0x14]
 	add r0, r7, r0
 	bl GetWindowWidth
@@ -20331,7 +20331,7 @@ _021EFDD6:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r6, #0
 	mov r1, #0xa
 	bl _u32_div_f
@@ -20344,7 +20344,7 @@ _021EFDD6:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [sp, #0x14]
 	add r0, r7, r0
 	bl GetWindowWidth
@@ -21181,7 +21181,7 @@ _021F04E4:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200C278
+	bl BufferLandmarkName
 	mov r0, #0x85
 	pop {r3, r4, r5, pc}
 	nop
@@ -21494,7 +21494,7 @@ _021F0624:
 	bl ov18_021EEB34
 	ldr r0, [r5]
 	ldr r0, [r0, #4]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	ldr r1, _021F082C ; =0x0000065C
 	bne _021F07D0
@@ -29929,7 +29929,7 @@ ov18_021F4A6C: ; 0x021F4A6C
 	bl sub_0200D71C
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	ldr r1, _021F4C9C ; =0x00000668
 	bne _021F4BE8
@@ -30540,7 +30540,7 @@ ov18_021F504C: ; 0x021F504C
 	strb r0, [r4, #0xb]
 	ldr r0, [r5]
 	ldr r0, [r0, #4]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _021F506C
 	mov r0, #0x19
@@ -33795,7 +33795,7 @@ ov18_021F69C0: ; 0x021F69C0
 	ldr r0, [r5]
 	add r4, r1, #0
 	ldr r0, [r0, #4]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _021F69D6
 	mov r2, #0
@@ -38435,7 +38435,7 @@ _021F8CDA:
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r4, #0
 	mov r1, #9
 	bl NewString_ReadMsgData

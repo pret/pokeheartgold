@@ -215,7 +215,7 @@ _02015980:
 	mov r3, #0
 	bl ReadMsgData_NewNarc_NewString
 	str r0, [sp]
-	bl sub_02026AA4
+	bl String_c_str
 	add r4, r0, #0
 	ldrh r1, [r4]
 	ldr r0, _020159D8 ; =0x0000FFFF
@@ -228,13 +228,13 @@ _020159A6:
 	cmp r1, r6
 	bne _020159C0
 	add r0, r4, #0
-	bl sub_0201FB5C
+	bl MsgArray_ControlCodeIsStrVar
 	cmp r0, #0
 	beq _020159B6
 	add r5, r5, #1
 _020159B6:
 	add r0, r4, #0
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	add r4, r0, #0
 	b _020159C2
 _020159C0:
@@ -461,8 +461,8 @@ sub_02015AF4: ; 0x02015AF4
 	.balign 4, 0
 	thumb_func_end sub_02015AF4
 
-	thumb_func_start sub_02015B1C
-sub_02015B1C: ; 0x02015B1C
+	thumb_func_start GetECWordIntoStringByIndex
+GetECWordIntoStringByIndex: ; 0x02015B1C
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -493,7 +493,7 @@ _02015B4C:
 	nop
 _02015B58: .word 0x0000FFFF
 _02015B5C: .word 0x020F612C
-	thumb_func_end sub_02015B1C
+	thumb_func_end GetECWordIntoStringByIndex
 
 	thumb_func_start sub_02015B60
 sub_02015B60: ; 0x02015B60
@@ -22780,8 +22780,8 @@ _0201FB06:
 _0201FB18: .word 0x000030C1
 	thumb_func_end sub_0201FAC8
 
-	thumb_func_start sub_0201FB1C
-sub_0201FB1C: ; 0x0201FB1C
+	thumb_func_start MsgArray_SkipControlCode
+MsgArray_SkipControlCode: ; 0x0201FB1C
 	push {r4, lr}
 	add r4, r0, #0
 	ldrh r1, [r4]
@@ -22803,7 +22803,7 @@ _0201FB3C:
 	pop {r4, pc}
 	.balign 4, 0
 _0201FB40: .word 0x0000FFFE
-	thumb_func_end sub_0201FB1C
+	thumb_func_end MsgArray_SkipControlCode
 
 	thumb_func_start MsgArray_GetControlCode
 MsgArray_GetControlCode: ; 0x0201FB44
@@ -22821,8 +22821,8 @@ _0201FB54:
 _0201FB58: .word 0x0000FFFE
 	thumb_func_end MsgArray_GetControlCode
 
-	thumb_func_start sub_0201FB5C
-sub_0201FB5C: ; 0x0201FB5C
+	thumb_func_start MsgArray_ControlCodeIsStrVar
+MsgArray_ControlCodeIsStrVar: ; 0x0201FB5C
 	push {r3, lr}
 	bl MsgArray_GetControlCode
 	mov r1, #0xff
@@ -22850,7 +22850,7 @@ _0201FB88:
 _0201FB8C:
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_0201FB5C
+	thumb_func_end MsgArray_ControlCodeIsStrVar
 
 	thumb_func_start MsgArray_ControlCodeGetField
 MsgArray_ControlCodeGetField: ; 0x0201FB90
@@ -23764,7 +23764,7 @@ _02020200:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4]
-	bl sub_02026AA4
+	bl String_c_str
 	str r0, [r4]
 	ldr r0, _020202E4 ; =0x021D1F6C
 	str r5, [r4, #0x1c]

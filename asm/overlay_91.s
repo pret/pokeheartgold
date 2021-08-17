@@ -10808,7 +10808,7 @@ ov91_02261808: ; 0x02261808
 	mov r2, #2
 	ldr r0, [r5, #0x5c]
 	add r3, r2, #0
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -10898,7 +10898,7 @@ ov91_022618B0: ; 0x022618B0
 	mov r2, #2
 	ldr r0, [r5, #0x5c]
 	add r3, r2, #0
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

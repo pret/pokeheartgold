@@ -202,7 +202,7 @@ _021E5A94:
 	add r1, r4, #0
 	bl sub_0202F5B8
 	add r0, r7, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0
@@ -247,7 +247,7 @@ _021E5AD4:
 	str r3, [sp, #0xc]
 	bl sub_0206DE38
 	add r0, r7, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _021E5B36
 	ldr r0, [sp, #0x1c]

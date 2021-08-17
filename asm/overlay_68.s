@@ -1251,7 +1251,7 @@ ov68_021E62D4: ; 0x021E62D4
 	add r0, #0xfc
 	ldr r0, [r0]
 	add r3, r7, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #0xfc
@@ -1398,7 +1398,7 @@ ov68_021E6320: ; 0x021E6320
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #0xfc
@@ -1441,7 +1441,7 @@ _021E64A2:
 	ldr r0, [sp, #0x18]
 	add r1, #0x36
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x14]
@@ -1499,7 +1499,7 @@ _021E64C4:
 	ldr r0, [sp, #0x18]
 	add r1, #0x3a
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1509,12 +1509,12 @@ _021E64C4:
 	ldr r0, [r0]
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r1, r4, #0
 	ldr r0, [sp, #0x18]
 	add r1, #0x42
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1525,7 +1525,7 @@ _021E64C4:
 	ldr r0, [r0]
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0x42
@@ -1575,7 +1575,7 @@ _021E65AE:
 	ldr r0, [r0]
 	ldr r2, [sp, #0x18]
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #0xfc
@@ -1606,7 +1606,7 @@ _021E65AE:
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa1
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1616,7 +1616,7 @@ _021E65AE:
 	ldr r0, [r0]
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #0xfc
@@ -1791,7 +1791,7 @@ _021E6720:
 	mov r1, #0
 	add r2, r6, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -1801,7 +1801,7 @@ _021E6720:
 	ldr r0, [r0]
 	add r2, r6, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r2, #1
 	add r0, r5, #0
 	lsl r2, r2, #8
@@ -2144,7 +2144,7 @@ _021E6A5A:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	b _021E6BB0
 _021E6A72:
 	bl ov68_021E6BEC
@@ -2153,7 +2153,7 @@ _021E6A72:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200BFF0
+	bl BufferMoveName
 	b _021E6BB0
 _021E6A86:
 	ldr r0, [r4]
@@ -2164,7 +2164,7 @@ _021E6A86:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	b _021E6BB0
 _021E6A9E:
 	ldr r0, [r4]
@@ -2175,7 +2175,7 @@ _021E6A9E:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	add r0, r4, #0
 	bl ov68_021E6BEC
 	add r2, r0, #0
@@ -2183,7 +2183,7 @@ _021E6A9E:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200BFF0
+	bl BufferMoveName
 	b _021E6BB0
 _021E6ACA:
 	ldr r0, [r4]
@@ -2194,7 +2194,7 @@ _021E6ACA:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	add r0, r4, #0
 	bl ov68_021E6BEC
 	add r2, r0, #0
@@ -2202,7 +2202,7 @@ _021E6ACA:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200BFF0
+	bl BufferMoveName
 	b _021E6BB0
 _021E6AF6:
 	ldr r0, [r4]
@@ -2213,7 +2213,7 @@ _021E6AF6:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	add r0, r4, #0
 	bl ov68_021E6BFC
 	add r2, r0, #0
@@ -2221,7 +2221,7 @@ _021E6AF6:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200BFF0
+	bl BufferMoveName
 	b _021E6BB0
 _021E6B22:
 	ldr r0, [r4]
@@ -2232,7 +2232,7 @@ _021E6B22:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	add r0, r4, #0
 	bl ov68_021E6BEC
 	add r2, r0, #0
@@ -2240,7 +2240,7 @@ _021E6B22:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200BFF0
+	bl BufferMoveName
 	b _021E6BB0
 _021E6B4E:
 	bl ov68_021E6BEC
@@ -2249,7 +2249,7 @@ _021E6B4E:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200BFF0
+	bl BufferMoveName
 	b _021E6BB0
 _021E6B62:
 	ldr r0, [r4]
@@ -2260,7 +2260,7 @@ _021E6B62:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	add r0, r4, #0
 	bl ov68_021E6BEC
 	add r2, r0, #0
@@ -2268,7 +2268,7 @@ _021E6B62:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200BFF0
+	bl BufferMoveName
 	b _021E6BB0
 _021E6B8E:
 	ldr r2, [r4]
@@ -2285,7 +2285,7 @@ _021E6B9E:
 	add r0, #0xfc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BFF0
+	bl BufferMoveName
 _021E6BB0:
 	ldr r1, [r4]
 	add r0, r4, #0

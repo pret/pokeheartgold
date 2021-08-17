@@ -3362,7 +3362,7 @@ _021E728A:
 	add r2, r3, r2
 	mov r1, #3
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	str r3, [sp]
 	mov r0, #1
@@ -3373,7 +3373,7 @@ _021E728A:
 	lsl r2, r2, #0x18
 	mov r1, #4
 	lsr r2, r2, #0x18
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	str r3, [sp]
 	mov r0, #1
@@ -3384,7 +3384,7 @@ _021E728A:
 	lsl r2, r2, #0x18
 	mov r1, #5
 	lsr r2, r2, #0x18
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r4, #0
 	bl ov109_021E7850
 	cmp r0, #1

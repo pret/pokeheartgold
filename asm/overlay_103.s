@@ -3826,7 +3826,7 @@ ov103_021EE644: ; 0x021EE644
 	ldr r0, [r2, r0]
 	ldrh r2, [r5, #0x1c]
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x8a
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #2
@@ -3880,7 +3880,7 @@ ov103_021EE644: ; 0x021EE644
 	add r2, #0xb6
 	ldrh r2, [r6, r2]
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x8a
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #2

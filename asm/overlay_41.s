@@ -3585,7 +3585,7 @@ ov41_022479A8: ; 0x022479A8
 	bl sub_02028F68
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0

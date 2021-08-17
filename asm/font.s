@@ -375,7 +375,7 @@ sub_02002F30: ; 0x02002F30
 	bl GF_AssertFail
 _02002F4A:
 	add r0, r5, #0
-	bl sub_02026AA4
+	bl String_c_str
 	add r1, r0, #0
 	ldr r0, _02002F64 ; =_0211188C
 	add r2, r6, #0
@@ -408,9 +408,9 @@ _02002F82:
 	bl StringSetEmpty
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02026B88
+	bl StringCat_HandleTrainerName
 	add r0, r5, #0
-	bl sub_02026AA4
+	bl String_c_str
 	add r1, r0, #0
 	ldr r0, _02002FA8 ; =_0211188C
 	ldr r0, [r0]
@@ -546,7 +546,7 @@ sub_02003068: ; 0x02003068
 	bl GF_AssertFail
 _02003082:
 	add r0, r5, #0
-	bl sub_02026AA4
+	bl String_c_str
 	add r1, r0, #0
 	ldr r0, _0200309C ; =_0211188C
 	add r2, r6, #0

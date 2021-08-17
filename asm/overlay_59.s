@@ -1624,7 +1624,7 @@ _0223896C:
 	ldrb r2, [r2, r5]
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r4, #0x60]
 	ldr r1, [r4, #0x64]
 	ldr r2, [r4, #0x74]
@@ -1703,7 +1703,7 @@ _02238A32:
 	ldr r0, [r5, #0x60]
 	mov r1, #0
 	mov r3, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5, #0x60]
 	ldr r1, [r5, #0x64]
 	ldr r2, [r5, #0x74]
@@ -4066,7 +4066,7 @@ _02239D1E:
 	mov r2, #5
 	ldr r0, [r5, #0x60]
 	sub r2, r2, r6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	b _02239DEE
 _02239D3A:
 	add r0, #0x4e
@@ -4080,7 +4080,7 @@ _02239D3A:
 	ldr r2, _02239E08 ; =0x000001E5
 	mov r1, #0
 	add r2, r3, r2
-	bl sub_0200C134
+	bl BufferItemNamePlural
 	b _02239D66
 _02239D56:
 	add r2, r5, #0
@@ -4089,7 +4089,7 @@ _02239D56:
 	ldr r2, _02239E08 ; =0x000001E5
 	mov r1, #0
 	add r2, r3, r2
-	bl sub_0200C0CC
+	bl BufferItemName
 _02239D66:
 	mov r0, #0
 	add r2, r5, #0
@@ -4100,7 +4100,7 @@ _02239D66:
 	ldrb r2, [r2]
 	ldr r0, [r5, #0x60]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	b _02239DEE
 _02239D7E:
 	add r0, #0x22
@@ -4124,7 +4124,7 @@ _02239D7E:
 	ldrb r2, [r5, #0x15]
 	ldr r0, [r5, #0x60]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -4133,7 +4133,7 @@ _02239D7E:
 	ldr r0, [r5, #0x60]
 	mov r1, #2
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	mov r3, #1
@@ -4143,7 +4143,7 @@ _02239D7E:
 	ldr r0, [r5, #0x60]
 	mov r1, #3
 	sub r2, r2, r6
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	b _02239DEE
 _02239DDE:
 	add r4, #0x1b
@@ -8247,7 +8247,7 @@ _0223BCE4:
 	ldrb r2, [r4, #6]
 	ldr r0, [r5, #0x60]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5, #0x60]
 	ldr r1, [r5, #0x68]
 	ldr r2, [r5, #0x6c]

@@ -780,7 +780,7 @@ ov12_02237F18: ; 0x02237F18
 	mov r1, #2
 	mov r2, #0xf
 	mov r3, #5
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1627,7 +1627,7 @@ _022386C0:
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	ldr r0, [r4, #0x1c]
 	bl sub_0200E390
 	ldr r0, [r4, #0x20]
@@ -6205,11 +6205,11 @@ _0223AAC4: .word 0x00002478
 ov12_0223AAC8: ; 0x0223AAC8
 	lsl r1, r1, #2
 	add r0, r0, r1
-	ldr r3, _0223AAD4 ; =sub_02028F94
+	ldr r3, _0223AAD4 ; =PlayerProfile_GetTrainerGender
 	ldr r0, [r0, #0x48]
 	bx r3
 	nop
-_0223AAD4: .word sub_02028F94
+_0223AAD4: .word PlayerProfile_GetTrainerGender
 	thumb_func_end ov12_0223AAC8
 
 	thumb_func_start ov12_0223AAD8
@@ -10911,27 +10911,27 @@ ov12_0223CDD0: ; 0x0223CDD0
 	add r2, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0223CDD0
 
 	thumb_func_start ov12_0223CDF4
 ov12_0223CDF4: ; 0x0223CDF4
-	ldr r3, _0223CDFC ; =sub_0200BFF0
+	ldr r3, _0223CDFC ; =BufferMoveName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_0223CDFC: .word sub_0200BFF0
+_0223CDFC: .word BufferMoveName
 	thumb_func_end ov12_0223CDF4
 
 	thumb_func_start ov12_0223CE00
 ov12_0223CE00: ; 0x0223CE00
-	ldr r3, _0223CE08 ; =sub_0200C0CC
+	ldr r3, _0223CE08 ; =BufferItemName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_0223CE08: .word sub_0200C0CC
+_0223CE08: .word BufferItemName
 	thumb_func_end ov12_0223CE00
 
 	thumb_func_start ov12_0223CE0C
@@ -10944,7 +10944,7 @@ ov12_0223CE0C: ; 0x0223CE0C
 	str r3, [sp, #4]
 	ldr r0, [r0, #0x14]
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	thumb_func_end ov12_0223CE0C
@@ -10959,7 +10959,7 @@ ov12_0223CE24: ; 0x0223CE24
 	str r4, [sp]
 	str r4, [sp, #4]
 	ldr r0, [r0, #0x14]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r4, pc}
 _0223CE3C:
@@ -10968,7 +10968,7 @@ _0223CE3C:
 	str r3, [sp, #4]
 	ldr r0, [r0, #0x14]
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -10976,38 +10976,38 @@ _0223CE3C:
 
 	thumb_func_start ov12_0223CE50
 ov12_0223CE50: ; 0x0223CE50
-	ldr r3, _0223CE58 ; =sub_0200C19C
+	ldr r3, _0223CE58 ; =BufferTypeName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_0223CE58: .word sub_0200C19C
+_0223CE58: .word BufferTypeName
 	thumb_func_end ov12_0223CE50
 
 	thumb_func_start ov12_0223CE5C
 ov12_0223CE5C: ; 0x0223CE5C
-	ldr r3, _0223CE64 ; =sub_0200C060
+	ldr r3, _0223CE64 ; =BufferAbilityName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_0223CE64: .word sub_0200C060
+_0223CE64: .word BufferAbilityName
 	thumb_func_end ov12_0223CE5C
 
 	thumb_func_start ov12_0223CE68
 ov12_0223CE68: ; 0x0223CE68
-	ldr r3, _0223CE70 ; =sub_0200C1D4
+	ldr r3, _0223CE70 ; =BufferStatName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_0223CE70: .word sub_0200C1D4
+_0223CE70: .word BufferStatName
 	thumb_func_end ov12_0223CE68
 
 	thumb_func_start ov12_0223CE74
 ov12_0223CE74: ; 0x0223CE74
-	ldr r3, _0223CE7C ; =sub_0200C20C
+	ldr r3, _0223CE7C ; =BufferStatusName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_0223CE7C: .word sub_0200C20C
+_0223CE7C: .word BufferStatusName
 	thumb_func_end ov12_0223CE74
 
 	thumb_func_start ov12_0223CE80
@@ -11025,7 +11025,7 @@ ov12_0223CE80: ; 0x0223CE80
 	add r2, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0223CE80
@@ -11038,11 +11038,11 @@ ov12_0223CEA4: ; 0x0223CEA4
 
 	thumb_func_start ov12_0223CEA8
 ov12_0223CEA8: ; 0x0223CEA8
-	ldr r3, _0223CEB0 ; =sub_0200C240
+	ldr r3, _0223CEB0 ; =BufferFlavorDislikeText
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_0223CEB0: .word sub_0200C240
+_0223CEB0: .word BufferFlavorDislikeText
 	thumb_func_end ov12_0223CEA8
 
 	thumb_func_start ov12_0223CEB4
@@ -11055,7 +11055,7 @@ ov12_0223CEB4: ; 0x0223CEB4
 	add r2, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
-	bl sub_0200C344
+	bl BufferTrainerClassNameFromDataStruct
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0223CEB4
 
@@ -11069,7 +11069,7 @@ ov12_0223CECC: ; 0x0223CECC
 	add r2, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
-	bl sub_0200C3E8
+	bl BufferTrainerNameFromDataStruct
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0223CECC
 
@@ -34167,7 +34167,7 @@ _022483C6:
 	add r2, r0, #0
 	ldr r0, [sp, #0x24]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa1
 	mov r2, #0
@@ -34179,7 +34179,7 @@ _022483C6:
 	ldr r0, [sp, #0x24]
 	mov r3, #3
 	str r1, [sp, #4]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x20]
 	add r2, r6, #0
@@ -64170,7 +64170,7 @@ ov12_02256854: ; 0x02256854
 	bl sub_02028F84
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r7, r0, #0
 	add r0, r4, #0
 	bl PlayerProfile_GetNamePtr
@@ -64217,7 +64217,7 @@ ov12_022568B0: ; 0x022568B0
 	bl sub_02028F84
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r7, r0, #0
 	add r0, r4, #0
 	bl PlayerProfile_GetNamePtr
@@ -94090,7 +94090,7 @@ ov12_0226516C: ; 0x0226516C
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
 	add r0, r4, #0
@@ -94732,7 +94732,7 @@ _02265716:
 	add r0, r7, #0
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r2, [sp, #0x18]
 	add r0, r7, #0
 	add r1, r6, #0
@@ -98209,7 +98209,7 @@ _02267252:
 	ldr r0, [sp, #0x1c]
 	mov r3, #3
 	str r1, [sp, #4]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r1, _02267344 ; =0x000004FA
 	add r0, r4, #0
 	bl NewString_ReadMsgData
@@ -98251,7 +98251,7 @@ _022672B6:
 	str r0, [sp, #4]
 	ldr r0, [sp, #0x1c]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r1, _02267350 ; =0x000004F7
 	add r0, r4, #0
 	bl NewString_ReadMsgData
@@ -98944,7 +98944,7 @@ ov12_0226789C: ; 0x0226789C
 	ldrh r2, [r5, #0x1c]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BFF0
+	bl BufferMoveName
 	ldr r2, [sp, #0x1c]
 	add r0, r4, #0
 	add r1, r6, #0
@@ -99135,7 +99135,7 @@ ov12_02267A58: ; 0x02267A58
 	ldrh r2, [r5, #0x1c]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BFF0
+	bl BufferMoveName
 	ldr r2, [sp, #0x1c]
 	add r0, r4, #0
 	add r1, r6, #0
@@ -99235,7 +99235,7 @@ ov12_02267B40: ; 0x02267B40
 	ldrh r2, [r5, #0x1c]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BFF0
+	bl BufferMoveName
 	ldr r2, [sp, #0x1c]
 	add r0, r4, #0
 	add r1, r6, #0
@@ -99399,7 +99399,7 @@ _02267CDA:
 	add r2, r0, #0
 	ldr r0, [sp, #0x1c]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x28]
 	ldr r2, [sp, #0x24]
@@ -101015,7 +101015,7 @@ _02268972:
 	ldr r0, [sp, #0x24]
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0
@@ -101024,7 +101024,7 @@ _02268972:
 	ldr r0, [sp, #0x24]
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x30]
 	ldr r2, [sp, #0x2c]

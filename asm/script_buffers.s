@@ -223,8 +223,8 @@ BufferRivalsName: ; 0x0200BE6C
 	.balign 4, 0
 	thumb_func_end BufferRivalsName
 
-	thumb_func_start sub_0200BE94
-sub_0200BE94: ; 0x0200BE94
+	thumb_func_start BufferFriendsName
+BufferFriendsName: ; 0x0200BE94
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, r2, #0
@@ -238,7 +238,7 @@ sub_0200BE94: ; 0x0200BE94
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _0200BEC6
 	ldr r2, [r5, #0xc]
@@ -262,10 +262,10 @@ _0200BED0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200BEE4: .word 0x000001BD
-	thumb_func_end sub_0200BE94
+	thumb_func_end BufferFriendsName
 
-	thumb_func_start sub_0200BEE8
-sub_0200BEE8: ; 0x0200BEE8
+	thumb_func_start BufferSpeciesName
+BufferSpeciesName: ; 0x0200BEE8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -288,44 +288,44 @@ sub_0200BEE8: ; 0x0200BEE8
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BEE8
+	thumb_func_end BufferSpeciesName
 
-	thumb_func_start sub_0200BF1C
-sub_0200BF1C: ; 0x0200BF1C
+	thumb_func_start BufferBoxMonSpeciesName
+BufferBoxMonSpeciesName: ; 0x0200BF1C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
 	add r0, r2, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	add r2, r0, #0
 	lsl r2, r2, #0x10
 	add r0, r5, #0
 	add r1, r4, #0
 	lsr r2, r2, #0x10
-	bl sub_0200BEE8
+	bl BufferSpeciesName
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0200BF1C
+	thumb_func_end BufferBoxMonSpeciesName
 
-	thumb_func_start sub_0200BF3C
-sub_0200BF3C: ; 0x0200BF3C
+	thumb_func_start BufferBoxMonSpeciesNameWithArticle
+BufferBoxMonSpeciesNameWithArticle: ; 0x0200BF3C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
 	add r0, r2, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200BF58
+	bl BufferSpeciesNameWithArticle
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0200BF3C
+	thumb_func_end BufferBoxMonSpeciesNameWithArticle
 
-	thumb_func_start sub_0200BF58
-sub_0200BF58: ; 0x0200BF58
+	thumb_func_start BufferSpeciesNameWithArticle
+BufferSpeciesNameWithArticle: ; 0x0200BF58
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -348,17 +348,17 @@ sub_0200BF58: ; 0x0200BF58
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BF58
+	thumb_func_end BufferSpeciesNameWithArticle
 
-	thumb_func_start sub_0200BF8C
-sub_0200BF8C: ; 0x0200BF8C
+	thumb_func_start BufferBoxMonNickname
+BufferBoxMonNickname: ; 0x0200BF8C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r2, #0
 	add r4, r1, #0
 	ldr r2, [r5, #0xc]
 	mov r1, #0x77
-	bl sub_0206E640
+	bl GetBoxMonData
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -366,17 +366,17 @@ sub_0200BF8C: ; 0x0200BF8C
 	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BF8C
+	thumb_func_end BufferBoxMonNickname
 
-	thumb_func_start sub_0200BFAC
-sub_0200BFAC: ; 0x0200BFAC
+	thumb_func_start BufferBoxMonOTName
+BufferBoxMonOTName: ; 0x0200BFAC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r2, #0
 	add r4, r1, #0
 	ldr r2, [r5, #0xc]
 	mov r1, #0x91
-	bl sub_0206E640
+	bl GetBoxMonData
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -384,10 +384,10 @@ sub_0200BFAC: ; 0x0200BFAC
 	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200BFAC
+	thumb_func_end BufferBoxMonOTName
 
-	thumb_func_start sub_0200BFCC
-sub_0200BFCC: ; 0x0200BFCC
+	thumb_func_start BufferIntegerAsString
+BufferIntegerAsString: ; 0x0200BFCC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [sp, #0x14]
@@ -397,17 +397,17 @@ sub_0200BFCC: ; 0x0200BFCC
 	add r2, r3, #0
 	ldr r0, [r5, #0xc]
 	ldr r3, [sp, #0x10]
-	bl sub_02026464
+	bl String16_FormatInteger
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
 	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0200BFCC
+	thumb_func_end BufferIntegerAsString
 
-	thumb_func_start sub_0200BFF0
-sub_0200BFF0: ; 0x0200BFF0
+	thumb_func_start BufferMoveName
+BufferMoveName: ; 0x0200BFF0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -433,10 +433,10 @@ _0200C022:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C024: .word 0x000002EE
-	thumb_func_end sub_0200BFF0
+	thumb_func_end BufferMoveName
 
-	thumb_func_start sub_0200C028
-sub_0200C028: ; 0x0200C028
+	thumb_func_start BufferRibbonNameOrDesc
+BufferRibbonNameOrDesc: ; 0x0200C028
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -462,10 +462,10 @@ sub_0200C028: ; 0x0200C028
 _0200C05C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200C028
+	thumb_func_end BufferRibbonNameOrDesc
 
-	thumb_func_start sub_0200C060
-sub_0200C060: ; 0x0200C060
+	thumb_func_start BufferAbilityName
+BufferAbilityName: ; 0x0200C060
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -491,10 +491,10 @@ sub_0200C060: ; 0x0200C060
 _0200C094:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200C060
+	thumb_func_end BufferAbilityName
 
-	thumb_func_start sub_0200C098
-sub_0200C098: ; 0x0200C098
+	thumb_func_start BufferNatureName
+BufferNatureName: ; 0x0200C098
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -517,10 +517,10 @@ sub_0200C098: ; 0x0200C098
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200C098
+	thumb_func_end BufferNatureName
 
-	thumb_func_start sub_0200C0CC
-sub_0200C0CC: ; 0x0200C0CC
+	thumb_func_start BufferItemName
+BufferItemName: ; 0x0200C0CC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -544,10 +544,10 @@ sub_0200C0CC: ; 0x0200C0CC
 	bl DestroyMsgData
 _0200C0FE:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C0CC
+	thumb_func_end BufferItemName
 
-	thumb_func_start sub_0200C100
-sub_0200C100: ; 0x0200C100
+	thumb_func_start BufferItemNameWithIndefArticle
+BufferItemNameWithIndefArticle: ; 0x0200C100
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -571,10 +571,10 @@ sub_0200C100: ; 0x0200C100
 	bl DestroyMsgData
 _0200C132:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C100
+	thumb_func_end BufferItemNameWithIndefArticle
 
-	thumb_func_start sub_0200C134
-sub_0200C134: ; 0x0200C134
+	thumb_func_start BufferItemNamePlural
+BufferItemNamePlural: ; 0x0200C134
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -598,10 +598,10 @@ sub_0200C134: ; 0x0200C134
 	bl DestroyMsgData
 _0200C166:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C134
+	thumb_func_end BufferItemNamePlural
 
-	thumb_func_start sub_0200C168
-sub_0200C168: ; 0x0200C168
+	thumb_func_start BufferPocketName
+BufferPocketName: ; 0x0200C168
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -625,10 +625,10 @@ sub_0200C168: ; 0x0200C168
 	bl DestroyMsgData
 _0200C19A:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C168
+	thumb_func_end BufferPocketName
 
-	thumb_func_start sub_0200C19C
-sub_0200C19C: ; 0x0200C19C
+	thumb_func_start BufferTypeName
+BufferTypeName: ; 0x0200C19C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -654,10 +654,10 @@ _0200C1CE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C1D0: .word 0x000002DF
-	thumb_func_end sub_0200C19C
+	thumb_func_end BufferTypeName
 
-	thumb_func_start sub_0200C1D4
-sub_0200C1D4: ; 0x0200C1D4
+	thumb_func_start BufferStatName
+BufferStatName: ; 0x0200C1D4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -683,10 +683,10 @@ _0200C206:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C208: .word 0x000001BB
-	thumb_func_end sub_0200C1D4
+	thumb_func_end BufferStatName
 
-	thumb_func_start sub_0200C20C
-sub_0200C20C: ; 0x0200C20C
+	thumb_func_start BufferStatusName
+BufferStatusName: ; 0x0200C20C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -710,10 +710,10 @@ sub_0200C20C: ; 0x0200C20C
 	bl DestroyMsgData
 _0200C23E:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C20C
+	thumb_func_end BufferStatusName
 
-	thumb_func_start sub_0200C240
-sub_0200C240: ; 0x0200C240
+	thumb_func_start BufferFlavorDislikeText
+BufferFlavorDislikeText: ; 0x0200C240
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -739,10 +739,10 @@ _0200C272:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C274: .word 0x0000027F
-	thumb_func_end sub_0200C240
+	thumb_func_end BufferFlavorDislikeText
 
-	thumb_func_start sub_0200C278
-sub_0200C278: ; 0x0200C278
+	thumb_func_start BufferLandmarkName
+BufferLandmarkName: ; 0x0200C278
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -785,10 +785,10 @@ _0200C2B6:
 	bl DestroyMsgData
 _0200C2D2:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C278
+	thumb_func_end BufferLandmarkName
 
-	thumb_func_start sub_0200C2D4
-sub_0200C2D4: ; 0x0200C2D4
+	thumb_func_start BufferTrainerClassName
+BufferTrainerClassName: ; 0x0200C2D4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -814,10 +814,10 @@ _0200C306:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C308: .word 0x000002DA
-	thumb_func_end sub_0200C2D4
+	thumb_func_end BufferTrainerClassName
 
-	thumb_func_start sub_0200C30C
-sub_0200C30C: ; 0x0200C30C
+	thumb_func_start BufferTrainerClassNameWithArticle
+BufferTrainerClassNameWithArticle: ; 0x0200C30C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -843,10 +843,10 @@ _0200C33E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C340: .word 0x000002DB
-	thumb_func_end sub_0200C30C
+	thumb_func_end BufferTrainerClassNameWithArticle
 
-	thumb_func_start sub_0200C344
-sub_0200C344: ; 0x0200C344
+	thumb_func_start BufferTrainerClassNameFromDataStruct
+BufferTrainerClassNameFromDataStruct: ; 0x0200C344
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r4, r2, #0
@@ -872,10 +872,10 @@ _0200C376:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C378: .word 0x000002DA
-	thumb_func_end sub_0200C344
+	thumb_func_end BufferTrainerClassNameFromDataStruct
 
-	thumb_func_start sub_0200C37C
-sub_0200C37C: ; 0x0200C37C
+	thumb_func_start BufferTrainerName
+BufferTrainerName: ; 0x0200C37C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -901,10 +901,10 @@ _0200C3AE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C3B0: .word 0x000002D9
-	thumb_func_end sub_0200C37C
+	thumb_func_end BufferTrainerName
 
-	thumb_func_start sub_0200C3B4
-sub_0200C3B4: ; 0x0200C3B4
+	thumb_func_start BufferFrontierOpponentName
+BufferFrontierOpponentName: ; 0x0200C3B4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -928,10 +928,10 @@ sub_0200C3B4: ; 0x0200C3B4
 	bl DestroyMsgData
 _0200C3E6:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C3B4
+	thumb_func_end BufferFrontierOpponentName
 
-	thumb_func_start sub_0200C3E8
-sub_0200C3E8: ; 0x0200C3E8
+	thumb_func_start BufferTrainerNameFromDataStruct
+BufferTrainerNameFromDataStruct: ; 0x0200C3E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
@@ -946,7 +946,7 @@ sub_0200C3E8: ; 0x0200C3E8
 	bl SetStringAsPlaceholder
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200C3E8
+	thumb_func_end BufferTrainerNameFromDataStruct
 
 	thumb_func_start sub_0200C408
 sub_0200C408: ; 0x0200C408
@@ -1037,8 +1037,8 @@ sub_0200C490: ; 0x0200C490
 	.balign 4, 0
 	thumb_func_end sub_0200C490
 
-	thumb_func_start sub_0200C4B0
-sub_0200C4B0: ; 0x0200C4B0
+	thumb_func_start BufferCountryName
+BufferCountryName: ; 0x0200C4B0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -1064,16 +1064,16 @@ _0200C4E2:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C4E4: .word 0x0000031E
-	thumb_func_end sub_0200C4B0
+	thumb_func_end BufferCountryName
 
-	thumb_func_start sub_0200C4E8
-sub_0200C4E8: ; 0x0200C4E8
+	thumb_func_start BufferCityName
+BufferCityName: ; 0x0200C4E8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, r2, #0
 	add r6, r1, #0
 	add r4, r3, #0
-	bl sub_020916B4
+	bl GetCityNamesMsgdataIdByCountry
 	add r2, r0, #0
 	beq _0200C526
 	cmp r4, #0
@@ -1096,7 +1096,7 @@ sub_0200C4E8: ; 0x0200C4E8
 	bl DestroyMsgData
 _0200C526:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C4E8
+	thumb_func_end BufferCityName
 
 	thumb_func_start sub_0200C528
 sub_0200C528: ; 0x0200C528
@@ -1105,7 +1105,7 @@ sub_0200C528: ; 0x0200C528
 	add r4, r1, #0
 	ldr r1, [r5, #0xc]
 	add r0, r2, #0
-	bl sub_02015B1C
+	bl GetECWordIntoStringByIndex
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1114,8 +1114,8 @@ sub_0200C528: ; 0x0200C528
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0200C528
 
-	thumb_func_start sub_0200C544
-sub_0200C544: ; 0x0200C544
+	thumb_func_start BufferSealName
+BufferSealName: ; 0x0200C544
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -1139,10 +1139,10 @@ sub_0200C544: ; 0x0200C544
 	bl DestroyMsgData
 _0200C576:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C544
+	thumb_func_end BufferSealName
 
-	thumb_func_start sub_0200C578
-sub_0200C578: ; 0x0200C578
+	thumb_func_start BufferSealNamePlural
+BufferSealNamePlural: ; 0x0200C578
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -1166,10 +1166,10 @@ sub_0200C578: ; 0x0200C578
 	bl DestroyMsgData
 _0200C5AA:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C578
+	thumb_func_end BufferSealNamePlural
 
-	thumb_func_start sub_0200C5AC
-sub_0200C5AC: ; 0x0200C5AC
+	thumb_func_start BufferLocationName
+BufferLocationName: ; 0x0200C5AC
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r2, #0
 	add r5, r0, #0
@@ -1245,10 +1245,10 @@ _0200C648:
 	nop
 _0200C64C: .word 0x020F5C1C
 _0200C650: .word 0x00000119
-	thumb_func_end sub_0200C5AC
+	thumb_func_end BufferLocationName
 
-	thumb_func_start sub_0200C654
-sub_0200C654: ; 0x0200C654
+	thumb_func_start BufferFashionName
+BufferFashionName: ; 0x0200C654
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -1272,10 +1272,10 @@ sub_0200C654: ; 0x0200C654
 	bl DestroyMsgData
 _0200C686:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C654
+	thumb_func_end BufferFashionName
 
-	thumb_func_start sub_0200C688
-sub_0200C688: ; 0x0200C688
+	thumb_func_start BufferFashionNameWithArticle
+BufferFashionNameWithArticle: ; 0x0200C688
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -1299,10 +1299,10 @@ sub_0200C688: ; 0x0200C688
 	bl DestroyMsgData
 _0200C6BA:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C688
+	thumb_func_end BufferFashionNameWithArticle
 
-	thumb_func_start sub_0200C6BC
-sub_0200C6BC: ; 0x0200C6BC
+	thumb_func_start BufferContestBackgroundName
+BufferContestBackgroundName: ; 0x0200C6BC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -1326,10 +1326,10 @@ sub_0200C6BC: ; 0x0200C6BC
 	bl DestroyMsgData
 _0200C6EE:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C6BC
+	thumb_func_end BufferContestBackgroundName
 
-	thumb_func_start sub_0200C6F0
-sub_0200C6F0: ; 0x0200C6F0
+	thumb_func_start BufferEasyChatWord
+BufferEasyChatWord: ; 0x0200C6F0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	str r0, [sp, #8]
@@ -1368,7 +1368,7 @@ sub_0200C6F0: ; 0x0200C6F0
 	bl String_dtor
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200C6F0
+	thumb_func_end BufferEasyChatWord
 
 	thumb_func_start sub_0200C74C
 sub_0200C74C: ; 0x0200C74C
@@ -1798,8 +1798,8 @@ _0200CA6E:
 _0200CA90: .word 0x000001AE
 	thumb_func_end sub_0200CA4C
 
-	thumb_func_start sub_0200CA94
-sub_0200CA94: ; 0x0200CA94
+	thumb_func_start BufferSafariZoneAreaName
+BufferSafariZoneAreaName: ; 0x0200CA94
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r4, r2, #0
@@ -1831,7 +1831,7 @@ _0200CAB8:
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200CA94
+	thumb_func_end BufferSafariZoneAreaName
 
 	thumb_func_start sub_0200CAD8
 sub_0200CAD8: ; 0x0200CAD8
@@ -1868,8 +1868,8 @@ _0200CAFC:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200CAD8
 
-	thumb_func_start sub_0200CB1C
-sub_0200CB1C: ; 0x0200CB1C
+	thumb_func_start BufferMonthNameAbbr
+BufferMonthNameAbbr: ; 0x0200CB1C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r3, [r5, #4]
@@ -1901,20 +1901,20 @@ _0200CB3E:
 	bl DestroyMsgData
 _0200CB5A:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200CB1C
+	thumb_func_end BufferMonthNameAbbr
 
-	thumb_func_start sub_0200CB5C
-sub_0200CB5C: ; 0x0200CB5C
+	thumb_func_start ScrStrBufs_UpperFirstChar
+ScrStrBufs_UpperFirstChar: ; 0x0200CB5C
 	ldr r2, [r0, #8]
 	lsl r0, r1, #3
 	add r0, r2, r0
-	ldr r3, _0200CB6C ; =sub_02026C04
+	ldr r3, _0200CB6C ; =StrUpperFirstChar
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bx r3
 	nop
-_0200CB6C: .word sub_02026C04
-	thumb_func_end sub_0200CB5C
+_0200CB6C: .word StrUpperFirstChar
+	thumb_func_end ScrStrBufs_UpperFirstChar
 
 	thumb_func_start sub_0200CB70
 sub_0200CB70: ; 0x0200CB70
@@ -1963,7 +1963,7 @@ StringExpandPlaceholders: ; 0x0200CBBC
 	add r7, r0, #0
 	add r6, r1, #0
 	add r0, r2, #0
-	bl sub_02026AA4
+	bl String_c_str
 	add r5, r0, #0
 	add r0, r6, #0
 	bl StringSetEmpty
@@ -1976,7 +1976,7 @@ _0200CBD8:
 	cmp r1, r0
 	bne _0200CC32
 	add r0, r5, #0
-	bl sub_0201FB5C
+	bl MsgArray_ControlCodeIsStrVar
 	cmp r0, #0
 	beq _0200CC14
 	add r0, r5, #0
@@ -1993,15 +1993,15 @@ _0200CBFC:
 	add r1, r2, r1
 	ldr r1, [r1, #4]
 	add r0, r6, #0
-	bl sub_02026B88
+	bl StringCat_HandleTrainerName
 	add r0, r5, #0
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	add r5, r0, #0
 	b _0200CC3C
 _0200CC14:
 	add r0, r5, #0
 	add r4, r5, #0
-	bl sub_0201FB1C
+	bl MsgArray_SkipControlCode
 	add r5, r0, #0
 	cmp r4, r5
 	bhs _0200CC3C
@@ -2009,7 +2009,7 @@ _0200CC22:
 	ldrh r1, [r4]
 	add r0, r6, #0
 	add r4, r4, #2
-	bl sub_02026B28
+	bl StrAddChar
 	cmp r4, r5
 	blo _0200CC22
 	b _0200CC3C
@@ -2017,7 +2017,7 @@ _0200CC32:
 	ldrh r1, [r5]
 	add r0, r6, #0
 	add r5, r5, #2
-	bl sub_02026B28
+	bl StrAddChar
 _0200CC3C:
 	ldrh r1, [r5]
 	ldr r0, _0200CC48 ; =0x0000FFFF
@@ -2030,8 +2030,8 @@ _0200CC48: .word 0x0000FFFF
 _0200CC4C: .word 0x0000FFFE
 	thumb_func_end StringExpandPlaceholders
 
-	thumb_func_start sub_0200CC50
-sub_0200CC50: ; 0x0200CC50
+	thumb_func_start ScrStrBufs_ResetBuffers
+ScrStrBufs_ResetBuffers: ; 0x0200CC50
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -2051,10 +2051,10 @@ _0200CC5E:
 	blo _0200CC5E
 _0200CC72:
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0200CC50
+	thumb_func_end ScrStrBufs_ResetBuffers
 
-	thumb_func_start sub_0200CC74
-sub_0200CC74: ; 0x0200CC74
+	thumb_func_start MessagePrinter_new
+MessagePrinter_new: ; 0x0200CC74
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	add r4, r3, #0
@@ -2213,10 +2213,10 @@ _0200CD8E:
 	ldr r0, [sp, #8]
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200CC74
+	thumb_func_end MessagePrinter_new
 
-	thumb_func_start sub_0200CD94
-sub_0200CD94: ; 0x0200CD94
+	thumb_func_start MessagePrinter_delete
+MessagePrinter_delete: ; 0x0200CD94
 	push {r4, lr}
 	add r4, r0, #0
 	beq _0200CDAA
@@ -2229,7 +2229,7 @@ _0200CDA4:
 	bl FreeToHeap
 _0200CDAA:
 	pop {r4, pc}
-	thumb_func_end sub_0200CD94
+	thumb_func_end MessagePrinter_delete
 
 	thumb_func_start sub_0200CDAC
 sub_0200CDAC: ; 0x0200CDAC

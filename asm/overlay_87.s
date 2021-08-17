@@ -1928,7 +1928,7 @@ _021E6816:
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -2037,7 +2037,7 @@ ov87_021E68DC: ; 0x021E68DC
 	mov r1, #0xe
 	mov r2, #0
 	mov r3, #0x7a
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	mov r1, #0x16
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -3113,7 +3113,7 @@ ov87_021E71EC: ; 0x021E71EC
 	ldr r0, [r6, #0x3c]
 	ldrh r2, [r3, r2]
 	mov r1, #0
-	bl sub_0200C0CC
+	bl BufferItemName
 	add r0, r7, #2
 	lsl r4, r0, #4
 	ldr r0, _021E7240 ; =0x021E8388
@@ -3153,7 +3153,7 @@ ov87_021E7244: ; 0x021E7244
 	mov r3, #1
 	str r3, [sp, #4]
 	ldr r0, [r0, #0x3c]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0

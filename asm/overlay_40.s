@@ -5362,7 +5362,7 @@ _0222E0D6:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	ldr r0, [sp, #0x20]
 	bl sub_020316F0
 	str r0, [sp, #0x34]
@@ -5386,7 +5386,7 @@ _0222E0D6:
 	ldr r2, [sp, #0x34]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200CB1C
+	bl BufferMonthNameAbbr
 	ldr r2, [sp, #0x38]
 	add r0, r4, #0
 	add r1, r6, #0
@@ -5417,7 +5417,7 @@ _0222E0D6:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	ldr r5, [sp, #0x14]
 	ldr r0, [r7, #0x48]
 	add r5, #0x3c
@@ -5490,7 +5490,7 @@ _0222E33C:
 	add r0, r4, #0
 	mov r1, #0
 	add r2, r6, #0
-	bl sub_0200C4B0
+	bl BufferCountryName
 	ldr r1, [sp, #0x44]
 	ldr r2, [sp, #0x48]
 	add r0, r4, #0
@@ -5533,7 +5533,7 @@ _0222E33C:
 	add r0, r4, #0
 	mov r1, #0
 	add r2, r6, #0
-	bl sub_0200C4E8
+	bl BufferCityName
 	ldr r2, [sp, #0x4c]
 	add r0, r4, #0
 	add r1, r5, #0
@@ -5557,7 +5557,7 @@ _0222E33C:
 	bl String_dtor
 _0222E3F6:
 	add r0, r4, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	ldr r5, [sp, #0x14]
 	ldr r0, [r7, #0x48]
 	add r5, #0x6c
@@ -6097,7 +6097,7 @@ _0222E824:
 	add r0, r7, #0
 	mov r1, #0
 	add r3, r6, #0
-	bl sub_0200C4E8
+	bl BufferCityName
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
 	add r2, r4, #0
@@ -6115,7 +6115,7 @@ _0222E85C:
 	ldr r2, [sp, #0x10]
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0200C4B0
+	bl BufferCountryName
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
 	add r2, r4, #0
@@ -6423,7 +6423,7 @@ _0222EAC0:
 	add r1, r1, #1
 	mov r2, #2
 	mov r3, #1
-	bl sub_02026464
+	bl String16_FormatInteger
 	ldr r2, [sp, #0x1c]
 	ldr r1, _0222EB98 ; =0x00002608
 	add r0, r7, #0
@@ -6733,7 +6733,7 @@ _0222ED4E:
 	ldr r2, [sp, #0x30]
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200CB1C
+	bl BufferMonthNameAbbr
 	b _0222EDA8
 _0222ED6E:
 	ldr r0, [r4, #0x28]
@@ -6789,7 +6789,7 @@ _0222EDA8:
 	mov r2, #2
 	add r1, r1, #1
 	mov r3, #1
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -6870,7 +6870,7 @@ _0222EE7A:
 	ldr r0, [sp, #0x34]
 	bl String_dtor
 	add r0, r5, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	ldr r0, [sp, #0x20]
 	ldr r1, [r4, #0x10]
 	add r0, r0, #4
@@ -7325,7 +7325,7 @@ _0222F1FE:
 	ldr r2, [sp, #0x30]
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200CB1C
+	bl BufferMonthNameAbbr
 	b _0222F258
 _0222F21E:
 	ldr r0, [r4, #0x28]
@@ -7381,7 +7381,7 @@ _0222F258:
 	mov r2, #2
 	add r1, r1, #1
 	mov r3, #1
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -7465,7 +7465,7 @@ _0222F32A:
 	ldr r0, [sp, #0x48]
 	bl String_dtor
 	add r0, r5, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	ldr r0, [sp, #0x20]
 	add r6, #0x10
 	add r0, r0, #4
@@ -7712,7 +7712,7 @@ _0222F500:
 	add r1, r1, #1
 	mov r2, #2
 	mov r3, #1
-	bl sub_02026464
+	bl String16_FormatInteger
 	ldr r2, [sp, #0x18]
 	ldr r1, _0222F5E4 ; =0x00002608
 	add r0, r5, #0
@@ -9266,7 +9266,7 @@ _02230062:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	ldr r0, [sp, #0x14]
 	mov r1, #3
 	ldr r0, [r0, #4]
@@ -9298,7 +9298,7 @@ _02230062:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	ldr r0, [sp, #0x14]
 	mov r1, #2
 	ldr r0, [r0, #4]
@@ -9327,7 +9327,7 @@ _02230062:
 	ldr r1, [sp, #0x4c]
 	mov r2, #4
 	mov r3, #0
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -9367,7 +9367,7 @@ _02230062:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	b _02230206
 _022301F4:
 	ldr r5, [sp, #0x14]
@@ -9464,21 +9464,21 @@ _022302BA:
 	ldr r1, [sp, #0x2c]
 	mov r2, #5
 	mov r3, #2
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, [sp, #0x34]
 	ldr r1, [sp, #0x28]
 	mov r2, #5
 	mov r3, #2
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #1
 	str r0, [sp]
 	mov r2, #2
 	ldr r0, [sp, #0x30]
 	ldr r1, [sp, #0x24]
 	add r3, r2, #0
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #1
 	str r0, [sp]
 	mov r1, #2
@@ -9538,7 +9538,7 @@ _022302BA:
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	add r0, r4, #0
 	bl ScrStrBufs_delete
 	add sp, #0x9c
@@ -27654,7 +27654,7 @@ _022396A6:
 	ldr r2, [sp, #0x24]
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0200CB1C
+	bl BufferMonthNameAbbr
 	b _0223973A
 _022396D0:
 	ldr r0, _022397B0 ; =0x0000088C
@@ -27743,7 +27743,7 @@ _0223973A:
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	add r0, r6, #0
 	bl ScrStrBufs_delete
 	add sp, #0x1fc
@@ -36340,7 +36340,7 @@ _0223DE18:
 	add r0, r6, #0
 	mov r1, #0
 	add r3, r4, #0
-	bl sub_0200C4E8
+	bl BufferCityName
 	ldr r1, [sp, #0x14]
 	add r0, r6, #0
 	add r2, r5, #0
@@ -36358,7 +36358,7 @@ _0223DE50:
 	ldr r2, [sp, #0x10]
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0200C4B0
+	bl BufferCountryName
 	ldr r1, [sp, #0x14]
 	add r0, r6, #0
 	add r2, r5, #0
@@ -46029,7 +46029,7 @@ ov40_02242E4C: ; 0x02242E4C
 	ldr r0, [sp, #0x18]
 	mov r2, #5
 	mov r3, #2
-	bl sub_02026464
+	bl String16_FormatInteger
 	ldr r0, [sp, #0x24]
 	ldr r2, _02242F9C ; =0x000186A0
 	add r1, r4, #0
@@ -46041,7 +46041,7 @@ ov40_02242E4C: ; 0x02242E4C
 	ldr r0, [sp, #0x1c]
 	mov r2, #5
 	mov r3, #2
-	bl sub_02026464
+	bl String16_FormatInteger
 	ldr r0, [sp, #0x24]
 	ldr r2, _02242F9C ; =0x000186A0
 	add r1, r4, #0
@@ -46053,7 +46053,7 @@ ov40_02242E4C: ; 0x02242E4C
 	mov r2, #2
 	ldr r0, [sp, #0x20]
 	add r3, r2, #0
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #1
 	str r0, [sp]
 	mov r1, #2
@@ -46113,7 +46113,7 @@ ov40_02242E4C: ; 0x02242E4C
 	ldr r0, [sp, #0x2c]
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0200CC50
+	bl ScrStrBufs_ResetBuffers
 	add r0, r6, #0
 	bl ScrStrBufs_delete
 	add sp, #0x30
@@ -46950,7 +46950,7 @@ _022435C2:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
 	add r3, r2, #0
-	bl sub_02026464
+	bl String16_FormatInteger
 	mov r0, #0xb
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]

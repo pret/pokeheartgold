@@ -1773,7 +1773,7 @@ _02227D6E:
 	ldr r0, [r4, r0]
 	mov r1, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0xfd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3443,7 +3443,7 @@ _02228A46:
 	ldr r0, [r5, #0x20]
 	mov r1, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r5, #0
 	add r0, #0x44
 	mov r1, #1

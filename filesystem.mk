@@ -412,7 +412,7 @@ MSGDATA_MSG_DIR := files/msgdata/msg
 MSGFILE_TXT := $(sort $(wildcard $(MSGDATA_MSG_DIR)/*.txt))
 MSGFILE_BIN := $(patsubst %.txt,%.bin,$(MSGFILE_TXT))
 
-files/msgdata/msg.narc: %.narc: $(MSGFILE_BIN)
+$(MSGDATA_MSG_DIR).narc: $(MSGFILE_BIN)
 	$(KNARC) -d $* -p $@ -i
 
 $(MSGFILE_BIN): %.bin: %.txt %.key

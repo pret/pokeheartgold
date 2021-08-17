@@ -2148,7 +2148,7 @@ ov69_021E6A8C: ; 0x021E6A8C
 	ldr r0, [r5, r0]
 	ldr r2, [r5, r2]
 	mov r1, #0
-	bl sub_0200C4B0
+	bl BufferCountryName
 	ldr r3, _021E6B54 ; =0x0000C324
 	ldr r0, _021E6B50 ; =0x0000C080
 	ldr r2, [r5, r3]
@@ -2156,7 +2156,7 @@ ov69_021E6A8C: ; 0x021E6A8C
 	ldr r0, [r5, r0]
 	ldr r3, [r5, r3]
 	mov r1, #1
-	bl sub_0200C4E8
+	bl BufferCityName
 	ldr r0, _021E6B58 ; =0x0000C070
 	mov r1, #0xe
 	ldr r0, [r5, r0]

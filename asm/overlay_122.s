@@ -1224,7 +1224,7 @@ _021E6230:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r2, r7, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -1234,7 +1234,7 @@ _021E6230:
 	ldr r0, [r4, r0]
 	ldr r2, [sp, #0x10]
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x15
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -1457,7 +1457,7 @@ _021E6432:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2017,7 +2017,7 @@ _021E68B4:
 	ldr r0, [r5, r0]
 	mov r3, #5
 	mov r4, #0x22
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 _021E68CA:
 	mov r0, #0x97
 	lsl r0, r0, #2
@@ -3684,7 +3684,7 @@ ov122_021E7540: ; 0x021E7540
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r3, r2, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r1, #0
 	str r1, [sp]
 	add r3, r4, #0
@@ -4062,7 +4062,7 @@ ov122_021E7854: ; 0x021E7854
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

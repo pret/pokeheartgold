@@ -1473,7 +1473,7 @@ _0223E8E4:
 	add r0, r6, #0
 	add r0, #0x98
 	ldr r0, [r0]
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	mov r4, #0
 	add r5, r6, #0
 _0223E94A:
@@ -1616,7 +1616,7 @@ _0223EA3C:
 	mov r1, #0xe
 	mov r2, #0
 	mov r3, #0x69
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	add r1, r5, #0
 	add r1, #0x98
 	str r0, [r1]
@@ -2270,7 +2270,7 @@ ov82_0223EFB4: ; 0x0223EFB4
 	str r3, [sp, #4]
 	ldr r0, [r0, #0x24]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	thumb_func_end ov82_0223EFB4
@@ -3476,7 +3476,7 @@ ov82_0223F84C: ; 0x0223F84C
 	add r2, r0, #0
 	ldr r0, [r4, #0x24]
 	mov r1, #0
-	bl sub_0200C19C
+	bl BufferTypeName
 	ldrb r0, [r4, #0xd]
 	bl ov82_0223F6C4
 	mov r1, #0x86

@@ -173,7 +173,7 @@ _021E5A20:
 	add r2, r0, #0
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	mov r0, #2
 	mov r5, #0
 	str r0, [r4, #0x30]
@@ -408,13 +408,13 @@ ov111_021E5BE4: ; 0x021E5BE4
 	add r2, r0, #0
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	add r0, r4, #0
 	bl sub_02070DB0
 	add r2, r0, #0
 	add r0, r7, #0
 	mov r1, #1
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0
@@ -1526,7 +1526,7 @@ _021E64EA:
 	add r2, r0, #0
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	mov r0, #1
 	add r1, r5, #0
 	mov r2, #4
@@ -1920,7 +1920,7 @@ ov111_021E67C4: ; 0x021E67C4
 	mov r2, #0
 	add r3, r5, #0
 	str r5, [r4, #0x18]
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	str r0, [r4, #4]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -1995,7 +1995,7 @@ ov111_021E685C: ; 0x021E685C
 	bl String_dtor
 _021E687A:
 	ldr r0, [r4, #4]
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

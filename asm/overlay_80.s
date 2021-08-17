@@ -1196,7 +1196,7 @@ ov80_0222A7CC: ; 0x0222A7CC
 ov80_0222A7EC: ; 0x0222A7EC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0202907C
@@ -6688,7 +6688,7 @@ ov80_0222CF18: ; 0x0222CF18
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0, #0x44]
-	bl sub_0200C0CC
+	bl BufferItemName
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov80_0222CF18
@@ -6713,7 +6713,7 @@ ov80_0222CF38: ; 0x0222CF38
 	add r1, r4, #0
 	ldr r0, [r0, #0x44]
 	add r2, r6, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -6858,7 +6858,7 @@ ov80_0222D064: ; 0x0222D064
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0, #0x44]
-	bl sub_0200BFF0
+	bl BufferMoveName
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov80_0222D064
@@ -6934,7 +6934,7 @@ ov80_0222D0F8: ; 0x0222D0F8
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0, #0x44]
-	bl sub_0200C19C
+	bl BufferTypeName
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov80_0222D0F8
@@ -8531,7 +8531,7 @@ ov80_0222DD3C: ; 0x0222DD3C
 	bl sub_02096808
 	ldr r0, [r0, #8]
 	bl sub_02028E9C
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _0222DD60
 	mov r0, #0
@@ -12457,7 +12457,7 @@ _0222FB42:
 	ldr r0, [r6]
 	add r1, r5, #0
 	ldr r0, [r0, #0x44]
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	add r5, r5, #1
 	cmp r5, r7
 	blt _0222FB42
@@ -19734,7 +19734,7 @@ ov80_02233594: ; 0x02233594
 	ldr r2, [sp, #0x14]
 	mov r1, #0
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r7, #0
 	mov r1, #2
 	add r2, r4, #0
@@ -20716,7 +20716,7 @@ _02233D82:
 	ldrh r2, [r2]
 	ldr r0, [r0, #0x44]
 	add r1, r6, #0
-	bl sub_0200C3B4
+	bl BufferFrontierOpponentName
 	b _02233F12
 _02233DAA:
 	ldrb r0, [r4, #0x10]

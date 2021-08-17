@@ -2647,7 +2647,7 @@ _02259B02:
 	str r0, [r4, r1]
 	add r1, #0xc
 	ldr r0, [r4, r1]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r1, r0, #0
 	mov r0, #0x78
 	mov r2, #0xfa
@@ -3930,7 +3930,7 @@ ov49_0225A40C: ; 0x0225A40C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_0200C19C
+	bl BufferTypeName
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov49_0225A40C
 
@@ -5989,7 +5989,7 @@ ov49_0225B3A8: ; 0x0225B3A8
 	ldr r0, [r0]
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov49_0225B3A8
@@ -6047,11 +6047,11 @@ ov49_0225B408: ; 0x0225B408
 	add r3, r1, #0
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _0225B414 ; =sub_0200C4B0
+	ldr r3, _0225B414 ; =BufferCountryName
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_0225B414: .word sub_0200C4B0
+_0225B414: .word BufferCountryName
 	thumb_func_end ov49_0225B408
 
 	thumb_func_start ov49_0225B418
@@ -6063,7 +6063,7 @@ ov49_0225B418: ; 0x0225B418
 	ldr r0, [r0]
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_0200C4E8
+	bl BufferCityName
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov49_0225B418
 
@@ -6078,11 +6078,11 @@ _0225B434: .word sub_0200C528
 
 	thumb_func_start ov49_0225B438
 ov49_0225B438: ; 0x0225B438
-	ldr r3, _0225B440 ; =sub_0200CC50
+	ldr r3, _0225B440 ; =ScrStrBufs_ResetBuffers
 	ldr r0, [r0]
 	bx r3
 	nop
-_0225B440: .word sub_0200CC50
+_0225B440: .word ScrStrBufs_ResetBuffers
 	thumb_func_end ov49_0225B438
 
 	thumb_func_start ov49_0225B444
@@ -6104,7 +6104,7 @@ ov49_0225B450: ; 0x0225B450
 	add r0, r3, #0
 	add r7, r1, #0
 	add r6, r2, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	str r0, [sp, #4]
 	mov r0, #0xd1
 	add r1, r4, #0

@@ -492,7 +492,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	ldr r2, [sp, #0x14]
 	add r0, r5, #0
 	add r1, r4, #0

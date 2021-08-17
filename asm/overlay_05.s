@@ -5531,7 +5531,7 @@ _0221E656:
 	add r2, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r0, [sp, #0x14]
 	ldr r2, [sp, #0x20]
 	add r1, r6, #0
@@ -5899,7 +5899,7 @@ ov05_0221E944: ; 0x0221E944
 	mov r0, #0xf
 	mov r1, #0xe
 	mov r2, #0
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	str r0, [sp, #0xc]
 	ldr r0, [r6]
 	ldr r0, [r0, #0x24]
@@ -5935,7 +5935,7 @@ _0221E9A0:
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	ldr r0, [sp, #8]
 	bl ScrStrBufs_delete
 	add sp, #0x14

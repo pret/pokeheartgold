@@ -259,12 +259,12 @@ _02259A80:
 	lsl r3, r2, #1
 	ldr r2, _02259AD8 ; =_02259F28
 	ldrh r2, [r2, r3]
-	bl sub_0200C2D4
+	bl BufferTrainerClassName
 _02259AB4:
 	ldrh r2, [r4, #6]
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200BEE8
+	bl BufferSpeciesName
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -273,7 +273,7 @@ _02259AB4:
 	ldrh r2, [r4, #2]
 	add r0, r5, #0
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop

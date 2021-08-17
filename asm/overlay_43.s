@@ -1490,7 +1490,7 @@ ov43_0222AAA4: ; 0x0222AAA4
 	str r1, [sp, #4]
 	ldr r0, [r5, #0x50]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r2, _0222AB1C ; =0x00002710
 	add r0, r4, #0
 	add r1, r6, #0
@@ -1506,7 +1506,7 @@ ov43_0222AAA4: ; 0x0222AAA4
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x50]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r2, _0222AB1C ; =0x00002710
 	add r0, r4, #0
 	add r1, r6, #0
@@ -1520,7 +1520,7 @@ ov43_0222AAA4: ; 0x0222AAA4
 	ldr r0, [r5, #0x50]
 	mov r1, #3
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
@@ -1606,7 +1606,7 @@ _0222ABB4:
 	mov r1, #2
 	ldr r0, [r5, #0x50]
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #4
@@ -1618,7 +1618,7 @@ _0222ABB4:
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x50]
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #5
@@ -1626,7 +1626,7 @@ _0222ABB4:
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #1
-	bl sub_0200CB1C
+	bl BufferMonthNameAbbr
 	add r0, r6, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1643,7 +1643,7 @@ ov43_0222ABFC: ; 0x0222ABFC
 	ldr r0, [r0, #0x50]
 	mov r1, #0
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -2121,7 +2121,7 @@ _0222AF88:
 	bl sub_02028ED0
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x58]
-	bl sub_02026AA4
+	bl String_c_str
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
 	bl sub_02028F24
@@ -7435,7 +7435,7 @@ _0222D8E4:
 	ldrb r2, [r2]
 	ldr r0, [r0, #0x50]
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -7444,7 +7444,7 @@ _0222D8E4:
 	ldr r2, [r5, #0x14]
 	ldr r0, [r0, #0x50]
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

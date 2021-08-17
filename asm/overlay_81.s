@@ -5305,7 +5305,7 @@ ov81_022408A0: ; 0x022408A0
 	mov r3, #1
 	str r3, [sp, #4]
 	ldr r0, [r0, #0x20]
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -5313,11 +5313,11 @@ ov81_022408A0: ; 0x022408A0
 
 	thumb_func_start ov81_022408B8
 ov81_022408B8: ; 0x022408B8
-	ldr r3, _022408C0 ; =sub_0200BF1C
+	ldr r3, _022408C0 ; =BufferBoxMonSpeciesName
 	ldr r0, [r0, #0x20]
 	bx r3
 	nop
-_022408C0: .word sub_0200BF1C
+_022408C0: .word BufferBoxMonSpeciesName
 	thumb_func_end ov81_022408B8
 
 	thumb_func_start ov81_022408C4
@@ -5345,7 +5345,7 @@ ov81_022408C4: ; 0x022408C4
 	add r0, r4, #0
 	bl CopyU16ArrayToString
 	add r0, r7, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _02240908
 	ldr r1, _02240938 ; =0x00070800
@@ -5399,7 +5399,7 @@ ov81_0224093C: ; 0x0224093C
 	add r1, r4, #0
 	bl sub_02028F58
 	add r0, r7, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _0224097C
 	ldr r1, _022409AC ; =0x00070800
@@ -5459,7 +5459,7 @@ ov81_022409B0: ; 0x022409B0
 	add r2, r0, #0
 	ldr r0, [r5, #0x20]
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	ldr r0, [r5, #0x20]
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x1c]

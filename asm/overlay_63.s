@@ -2080,7 +2080,7 @@ ov63_0221CE94: ; 0x0221CE94
 	ldr r0, [r0]
 	ldr r2, [sp, #0x10]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	add r0, r4, #0
 	add r1, r4, #0
 	add r2, r4, #0
@@ -2165,7 +2165,7 @@ _0221CF84:
 	ldr r0, [r0]
 	ldr r2, [sp, #0x10]
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	add r0, r4, #0
 	add r1, r4, #0
 	add r2, r4, #0
@@ -2207,7 +2207,7 @@ _0221CF84:
 	ldrh r2, [r7, #0xe]
 	ldr r0, [r0]
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r4, #0
 	add r1, r4, #0
 	add r2, r4, #0
@@ -2253,7 +2253,7 @@ _0221CF84:
 	ldr r0, [r0]
 	ldr r2, [sp, #0x10]
 	mov r1, #0
-	bl sub_0200BFAC
+	bl BufferBoxMonOTName
 	add r0, r4, #0
 	add r1, r4, #0
 	add r2, r4, #0
@@ -2318,7 +2318,7 @@ _0221D0BC:
 	ldr r0, [r0]
 	ldr r2, [r7, #0x14]
 	mov r1, #0
-	bl sub_0200C278
+	bl BufferLandmarkName
 	add r0, r4, #0
 	add r1, r4, #0
 	add r2, r4, #0
@@ -2344,7 +2344,7 @@ _0221D0F4:
 	ldr r0, [r0]
 	ldr r2, [r7, #0x14]
 	mov r1, #0
-	bl sub_0200C278
+	bl BufferLandmarkName
 	add r0, r4, #0
 	add r1, r4, #0
 	add r2, r4, #0
@@ -2430,7 +2430,7 @@ _0221D1A4:
 	ldr r0, [r0]
 	ldr r2, [r7, #0x14]
 	mov r1, #0
-	bl sub_0200C278
+	bl BufferLandmarkName
 	add r0, r4, #0
 	add r1, r4, #0
 	add r2, r4, #0
@@ -5538,7 +5538,7 @@ _0221EAB6:
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
 	bl sub_0202CE24
@@ -5552,7 +5552,7 @@ _0221EAB6:
 	ldr r0, [r0]
 	mov r1, #2
 	mov r3, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
 	bl sub_0202CE28
@@ -5565,7 +5565,7 @@ _0221EAB6:
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add r0, r5, #0
 	add r1, r5, #0
 	add r2, r5, #0
@@ -5960,7 +5960,7 @@ _0221EE1A:
 	bl sub_0200DCE8
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #1
 	add r2, sp, #0x2c
 	bne _0221EEFE

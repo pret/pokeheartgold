@@ -563,7 +563,7 @@ ov117_0225F470: ; 0x0225F470
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200C37C
+	bl BufferTrainerName
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0

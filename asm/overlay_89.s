@@ -8148,7 +8148,7 @@ _0225C768:
 	bl sub_02028F68
 	str r0, [sp, #0x1c]
 	add r0, r6, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
