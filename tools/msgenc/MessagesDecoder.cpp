@@ -4,6 +4,8 @@
 void MessagesDecoder::CmdmapRegisterCommand(string &command, uint16_t value)
 {
     cmdmap[value] = command;
+    if (command.rfind("STRVAR_", 0) == 0)
+        strvar_codes.insert(value);
 }
 
 void MessagesDecoder::CharmapRegisterCharacter(string &code, uint16_t value)
@@ -142,13 +144,12 @@ string MessagesDecoder::DecodeMessage(u16string &message, int &i) {
     return decoded;
 }
 
-void MessagesDecoder::WriteBinaryFile(string& filename, void* data, streamsize size)
-{
+template <typename T> void MessagesDecoder::WriteBinaryFile(string& filename, T& data) {
     ofstream outfile(filename, ios_base::binary);
     if (!outfile.good()) {
         throw ofstream::failure("Unable to open file \"" + filename + "\" for writing");
     }
-    outfile.write((const char *)data, size);
+    outfile.write((const char *)&data, sizeof(data));
     outfile.close();
 }
 
@@ -178,6 +179,6 @@ void MessagesDecoder::Convert()
 
 void MessagesDecoder::WriteOutput()
 {
-    WriteBinaryFile(keyfilename, &header.key, sizeof(header.key));
+    WriteBinaryFile(keyfilename, header.key);
     WriteMessagesToText(textfilename);
 }

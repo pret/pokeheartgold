@@ -9,7 +9,7 @@
 #include "MessagesDecoder.h"
 #include "MessagesEncoder.h"
 
-static const string version = "2021.08.17";
+static const char* version = "2021.08.17";
 
 static inline string usage() {
     return "Usage: msgenc -d|-e TXTFILE KEYFILE CHARMAP BINFILE";

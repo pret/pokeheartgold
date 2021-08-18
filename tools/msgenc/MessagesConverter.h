@@ -55,6 +55,7 @@ static inline void DecryptU16String(u16string & message, int & i) {
 class MessagesConverter{
     virtual void CharmapRegisterCharacter(string& code, uint16_t value);
     virtual void CmdmapRegisterCommand(string& command, uint16_t value);
+
 protected:
     ConvertMode mode;
     string textfilename;
@@ -67,8 +68,6 @@ protected:
     vector<string> vec_decoded;
     vector<u16string> vec_encoded;
 
-    set<uint16_t> strvar_codes;
-
     template <typename key_type, typename mapped_type> void CreateInverseMap(map<key_type, mapped_type>const& _in, map<mapped_type, key_type>& _out) {
         for (auto _pair : _in) {
             _out[_pair.second] = _pair.first;
@@ -76,6 +75,7 @@ protected:
     }
     static string ReadTextFile(string& filename);
     static void WriteTextFile(string& filename, string const & contents);
+
 public:
     MessagesConverter(ConvertMode _mode, string &_textfilename, string &_keyfilename, string &_charmapfilename, string &_binfilename) :
         mode(_mode),

@@ -33,7 +33,7 @@ void MessagesConverter::WriteTextFile(string& filename, string const& contents) 
 void MessagesConverter::ReadCharmap() {
     string raw = ReadTextFile(charmapfilename);
     string line;
-    size_t pos, eqpos, last_pos = 0, lineno = 0;
+    size_t pos, eqpos, last_pos, lineno = 0;
 
     for (
         last_pos = 0;
@@ -53,7 +53,7 @@ void MessagesConverter::ReadCharmap() {
         if (eqpos == string::npos) {
             stringstream s;
             s << "charmap syntax error at " << (lineno + 1);
-            throw(runtime_error(s.str()));
+            throw runtime_error(s.str());
         }
         string value = line.substr(0, eqpos);
         string code = line.substr(eqpos + 1);
@@ -61,8 +61,6 @@ void MessagesConverter::ReadCharmap() {
         if (code[0] == '{' && code[code.length() - 1] == '}') {
             code = code.substr(1, code.length() - 2);
             CmdmapRegisterCommand(code, value_i);
-            if (code.rfind("STRVAR_", 0) == 0)
-                strvar_codes.insert(value_i);
         } else {
             CharmapRegisterCharacter(code, value_i);
         }
