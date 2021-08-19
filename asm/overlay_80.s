@@ -28811,7 +28811,7 @@ _02237A58:
 	bl _fsub
 _02237A66:
 	bl _ftoi
-	bl sub_020CCBEC
+	bl FX_Sqrt
 	pop {r3, pc}
 	thumb_func_end ov80_02237A40
 
@@ -34575,7 +34575,7 @@ ov80_0223A75C: ; 0x0223A75C
 	add r1, r4, r1
 	asr r5, r1, #3
 	mov r1, #8
-	bl sub_020CCD3C
+	bl FX_ModS32
 	cmp r0, #0
 	beq _0223A784
 	add r5, r5, #1
@@ -34783,7 +34783,7 @@ ov80_0223A8D4: ; 0x0223A8D4
 	orr r0, r1
 	ldr r1, [r4, #0x10]
 	lsl r1, r1, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	ldr r1, [r4, #4]
 	add r0, r0, r1
 	str r0, [r4]

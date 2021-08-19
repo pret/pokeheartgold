@@ -13432,12 +13432,12 @@ _0222203A:
 
 	thumb_func_start ov07_02222040
 ov07_02222040: ; 0x02222040
-	ldr r3, _02222048 ; =sub_020CCBA0
+	ldr r3, _02222048 ; =FX_Div
 	sub r0, r1, r0
 	lsl r1, r2, #0xc
 	bx r3
 	.balign 4, 0
-_02222048: .word sub_020CCBA0
+_02222048: .word FX_Div
 	thumb_func_end ov07_02222040
 
 	thumb_func_start ov07_0222204C
@@ -13445,10 +13445,10 @@ ov07_0222204C: ; 0x0222204C
 	push {r3, lr}
 	sub r0, r1, r0
 	add r1, r2, #0
-	bl sub_020CCBA0
+	bl FX_Div
 	add r1, sp, #0
 	str r0, [sp]
-	bl sub_020CD788
+	bl FX_Modf
 	cmp r0, #0
 	beq _0222206C
 	mov r0, #1
@@ -14324,10 +14324,10 @@ ov07_02222674: ; 0x02222674
 	lsr r0, r0, #0xc
 	orr r0, r1
 	lsl r1, r2, #9
-	bl sub_020CCBA0
+	bl FX_Div
 	sub r0, r4, r0
 	add r1, sp, #0
-	bl sub_020CD788
+	bl FX_Modf
 	cmp r0, #0
 	beq _022226B2
 	mov r1, #2
@@ -15385,7 +15385,7 @@ ov07_02222DE4: ; 0x02222DE4
 	mul r1, r0
 	add r0, r2, r1
 	lsl r0, r0, #0xc
-	bl sub_020CCBEC
+	bl FX_Sqrt
 	ldr r1, [sp, #8]
 	str r0, [r1]
 	pop {r3, pc}
@@ -15405,7 +15405,7 @@ ov07_02222E0C: ; 0x02222E0C
 	ldr r5, [sp, #0x10]
 	lsl r0, r4, #0xc
 	asr r1, r1, #4
-	bl sub_020CD5DC
+	bl FX_Atan2Idx
 	strh r0, [r5]
 	ldrh r1, [r5]
 	cmp r1, #0
@@ -50477,7 +50477,7 @@ ov07_022344E4: ; 0x022344E4
 	mul r1, r0
 	add r0, r2, r1
 	lsl r0, r0, #0xc
-	bl sub_020CCBEC
+	bl FX_Sqrt
 	asr r1, r0, #0xb
 	lsr r1, r1, #0x14
 	add r1, r0, r1

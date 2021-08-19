@@ -2028,7 +2028,7 @@ _021E6924:
 	str r1, [sp, #0x14]
 	add r0, sp, #0xc
 	add r1, sp, #0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	mov r0, #0x77
 	ldr r1, [sp]
 	lsl r0, r0, #2
@@ -2092,7 +2092,7 @@ _021E69EA:
 	sub r2, #0x3c
 	add r1, r5, r2
 	add r2, sp, #0
-	bl sub_020CCDAC
+	bl VEC_Subtract
 	mov r0, #1
 	ldr r1, [sp]
 	lsl r0, r0, #0xc

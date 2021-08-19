@@ -770,7 +770,7 @@ ov92_0225CB2C: ; 0x0225CB2C
 	lsl r1, r1, #4
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 _0225CB82:
@@ -853,7 +853,7 @@ _0225CBEA:
 	add r0, r7, #0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	ldr r0, _0225CC68 ; =0x0000058A
 	bl sub_02006184
 	cmp r0, #0
@@ -2542,7 +2542,7 @@ ov92_0225DA40: ; 0x0225DA40
 	add r1, r2, #0
 	str r0, [r3]
 	add r0, r2, #0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
 	ldr r3, [sp, #0x20]
@@ -6890,7 +6890,7 @@ _0225FCCE:
 	lsl r1, r1, #4
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	ldr r0, _0225FE78 ; =0x00002B84
 	mov r1, #1
 	add sp, #0x2c
@@ -7015,7 +7015,7 @@ _0225FDCC:
 	lsl r1, r1, #4
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	ldr r0, _0225FE78 ; =0x00002B84
 	mov r2, #1
 	add r1, r0, #0
@@ -7306,7 +7306,7 @@ _02260028:
 	lsl r1, r1, #4
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 _0226007A:
 	ldr r0, _02260268 ; =0x00002B22
 	add sp, #0x44
@@ -7389,7 +7389,7 @@ _022600AE:
 	lsl r1, r1, #4
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	b _02260194
 _02260124:
 	cmp r2, #1
@@ -7444,7 +7444,7 @@ _02260124:
 	lsl r1, r1, #4
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 _02260194:
 	ldr r1, _02260278 ; =0x00002B90
 	ldr r0, [r5, r1]
@@ -7857,7 +7857,7 @@ _02260514:
 	bl _fsub
 _02260522:
 	bl _ftoi
-	bl sub_020CCBEC
+	bl FX_Sqrt
 	add r7, r0, #0
 	bl _itof
 	ldr r1, _02260620 ; =0x45800000
@@ -7871,11 +7871,11 @@ _02260522:
 	bl _dneq
 	beq _0226060A
 	add r0, r7, #0
-	bl sub_020CD4B0
+	bl FX_SinFx64c
 	str r0, [sp, #0x1c]
 	str r1, [sp, #0xc]
 	add r0, r7, #0
-	bl sub_020CD548
+	bl FX_CosFx64c
 	str r0, [sp, #0x20]
 	add r7, r1, #0
 	ldr r0, [sp, #0x1c]
@@ -8026,7 +8026,7 @@ _022606A0:
 	bl _fsub
 _022606AE:
 	bl _ftoi
-	bl sub_020CCBEC
+	bl FX_Sqrt
 	add r6, r0, #0
 	bl _itof
 	ldr r1, _02260774 ; =0x45800000
@@ -8040,11 +8040,11 @@ _022606AE:
 	bl _dneq
 	beq _0226076E
 	add r0, r6, #0
-	bl sub_020CD4B0
+	bl FX_SinFx64c
 	str r0, [sp, #8]
 	add r0, r6, #0
 	add r7, r1, #0
-	bl sub_020CD548
+	bl FX_CosFx64c
 	str r0, [sp, #0xc]
 	add r6, r1, #0
 	ldr r0, [sp, #8]
@@ -8168,7 +8168,7 @@ ov92_02260798: ; 0x02260798
 	add r1, r4, #0
 	mul r1, r4
 	lsl r1, r1, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	str r6, [r5]
 	ldr r1, [sp]
 	str r6, [r5, #4]
@@ -8215,7 +8215,7 @@ ov92_022607F8: ; 0x022607F8
 	lsr r0, r0, #0xc
 	orr r0, r1
 	lsl r1, r2, #2
-	bl sub_020CCBA0
+	bl FX_Div
 	ldr r1, [r5, #4]
 	add r0, r4, r0
 	add r0, r1, r0
@@ -8278,7 +8278,7 @@ _02260888:
 	orr r0, r1
 	ldr r1, [r5, #0x14]
 	lsl r1, r1, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	ldr r1, [r5, #4]
 	add r0, r0, r1
 	str r0, [r5]
@@ -13530,7 +13530,7 @@ _02263286:
 	bl _fsub
 _0226329C:
 	bl _ftoi
-	bl sub_020CCBEC
+	bl FX_Sqrt
 	bl _itof
 	ldr r1, _022632B0 ; =0x45800000
 	bl _fdiv
@@ -14130,7 +14130,7 @@ ov92_02263824: ; 0x02263824
 	bl ov92_022634F8
 	add r0, sp, #0
 	add r1, r4, #0
-	bl sub_020CC070
+	bl MTX_Copy44To43_
 	add sp, #0x40
 	pop {r4, pc}
 	thumb_func_end ov92_02263824

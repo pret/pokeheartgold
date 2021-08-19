@@ -15878,10 +15878,10 @@ _02230E8E:
 	sub r0, r2, r1
 	str r0, [sp, #0x40]
 	add r0, sp, #0
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	ldr r1, _02230F8C ; =0x021DA558
 	add r0, sp, #0
-	bl sub_020D4928
+	bl MI_Copy36B
 	ldr r1, _02230F90 ; =0x021DA51C
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]

@@ -1574,7 +1574,7 @@ ov71_02247514: ; 0x02247514
 	sub sp, #0x50
 	add r4, r0, #0
 	add r0, sp, #0x2c
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	add r0, r4, #0
 	add r0, #0x80
 	ldrh r0, [r0]
@@ -1587,11 +1587,11 @@ ov71_02247514: ; 0x02247514
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #8
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r1, sp, #0x2c
 	add r0, sp, #8
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x82
 	ldrh r0, [r0]
@@ -1604,11 +1604,11 @@ ov71_02247514: ; 0x02247514
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #8
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	add r1, sp, #0x2c
 	add r0, sp, #8
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x84
 	ldrh r0, [r0]
@@ -1621,11 +1621,11 @@ ov71_02247514: ; 0x02247514
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #8
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r1, sp, #0x2c
 	add r0, sp, #8
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -1880,7 +1880,7 @@ ov71_02247738: ; 0x02247738
 	sub sp, #0x4c
 	add r4, r0, #0
 	add r0, sp, #0x28
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	add r0, r4, #0
 	add r0, #0x80
 	ldrh r0, [r0]
@@ -1893,11 +1893,11 @@ ov71_02247738: ; 0x02247738
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #4
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r1, sp, #0x28
 	add r0, sp, #4
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x82
 	ldrh r0, [r0]
@@ -1910,11 +1910,11 @@ ov71_02247738: ; 0x02247738
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #4
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	add r1, sp, #0x28
 	add r0, sp, #4
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x84
 	ldrh r0, [r0]
@@ -1927,11 +1927,11 @@ ov71_02247738: ; 0x02247738
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #4
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r1, sp, #0x28
 	add r0, sp, #4
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
@@ -6422,7 +6422,7 @@ _02249AEC:
 	add r0, #0x1c
 	add r1, #0x10
 	add r2, r5, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov71_02249A98
@@ -7968,7 +7968,7 @@ _0224A744:
 	add r0, #0x1c
 	add r1, #0x10
 	add r2, r5, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	pop {r4, r5, r6, pc}
 _0224A7BA:
 	add r2, r5, #0

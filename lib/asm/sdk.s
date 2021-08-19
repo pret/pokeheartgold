@@ -1856,7 +1856,7 @@ sub_02099948: ; 0x02099948
 	add r2, sp, #0x30
 	blx r3
 	add r0, sp, #0xc0
-	bl sub_020CB6AC
+	bl MTX_Identity43_
 	ldr r0, [r5, #0x40]
 	ldr r0, [r0, #0x20]
 	ldr r0, [r0, #0x14]
@@ -1866,12 +1866,12 @@ sub_02099948: ; 0x02099948
 	bne _02099A28
 	add r1, sp, #0x90
 	add r0, r4, #0x14
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	b _02099A58
 _02099A28:
 	add r1, sp, #0x90
 	add r0, r4, #8
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldr r2, [sp, #0x90]
 	ldr r1, [sp, #0x94]
 	ldr r0, [sp, #0x98]
@@ -1889,7 +1889,7 @@ _02099A58:
 	str r3, [sp, #0xb4]
 	str r2, [sp, #0xb8]
 	str r3, [sp, #0xbc]
-	bl sub_020CCE14
+	bl VEC_DotProduct
 	ldr r1, _02099DB0 ; =0x00000CCD
 	cmp r0, r1
 	bgt _02099A90
@@ -1906,11 +1906,11 @@ _02099AA4:
 	add r0, sp, #0x90
 	add r1, sp, #0xb4
 	add r2, sp, #0x9c
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	add r0, sp, #0x90
 	add r1, sp, #0x9c
 	add r2, sp, #0xa8
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	ldr r7, [sp, #0x9c]
 	ldr r6, [sp, #0xa0]
 	ldr r3, [sp, #0xa4]
@@ -1932,7 +1932,7 @@ _02099AA4:
 	str r7, [sp, #0xd8]
 	str r6, [sp, #0xdc]
 	str r3, [sp, #0xe0]
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	ldr r0, [r5, #0x40]
 	ldr r2, [r4, #0x30]
 	ldr r0, [r0, #0x20]
@@ -1992,11 +1992,11 @@ _02099BCC:
 _02099BF0:
 	add r0, sp, #0x60
 	mov r3, r2
-	bl sub_020CB7B4
+	bl MTX_Scale43_
 	add r0, sp, #0x30
 	add r1, sp, #0x60
 	add r2, sp, #0
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	ldr r0, [r5, #0x40]
 	ldr r0, [r0, #0x20]
 	ldr r3, [r0]
@@ -2159,7 +2159,7 @@ sub_02099DC8: ; 0x02099DC8
 	add r2, sp, #0x30
 	blx r3
 	add r0, sp, #0xc0
-	bl sub_020CB6AC
+	bl MTX_Identity43_
 	ldr r0, [r5, #0x40]
 	ldr r0, [r0, #0x20]
 	ldr r0, [r0]
@@ -2168,12 +2168,12 @@ sub_02099DC8: ; 0x02099DC8
 	bne _02099EA4
 	add r1, sp, #0x90
 	add r0, r4, #0x14
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	b _02099ED4
 _02099EA4:
 	add r1, sp, #0x90
 	add r0, r4, #8
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldr r2, [sp, #0x90]
 	ldr r1, [sp, #0x94]
 	ldr r0, [sp, #0x98]
@@ -2191,7 +2191,7 @@ _02099ED4:
 	str r3, [sp, #0xb4]
 	str r2, [sp, #0xb8]
 	str r3, [sp, #0xbc]
-	bl sub_020CCE14
+	bl VEC_DotProduct
 	ldr r1, _0209A22C ; =0x00000CCD
 	cmp r0, r1
 	bgt _02099F0C
@@ -2208,11 +2208,11 @@ _02099F20:
 	add r0, sp, #0x90
 	add r1, sp, #0xb4
 	add r2, sp, #0x9c
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	add r0, sp, #0x90
 	add r1, sp, #0x9c
 	add r2, sp, #0xa8
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	ldr r7, [sp, #0x9c]
 	ldr r6, [sp, #0xa0]
 	ldr r3, [sp, #0xa4]
@@ -2234,7 +2234,7 @@ _02099F20:
 	str r7, [sp, #0xd8]
 	str r6, [sp, #0xdc]
 	str r3, [sp, #0xe0]
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	ldr r0, [r5, #0x40]
 	ldr r2, [r4, #0x30]
 	ldr r0, [r0, #0x20]
@@ -2294,11 +2294,11 @@ _0209A048:
 _0209A06C:
 	add r0, sp, #0x60
 	mov r3, r2
-	bl sub_020CB7B4
+	bl MTX_Scale43_
 	add r0, sp, #0x60
 	add r1, sp, #0x30
 	add r2, sp, #0
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	ldr r0, [r5, #0x40]
 	ldr r0, [r0, #0x20]
 	ldr r3, [r0]
@@ -2519,11 +2519,11 @@ _0209A3A0:
 _0209A3C4:
 	add r0, sp, #0x60
 	mov r3, r2
-	bl sub_020CB7B4
+	bl MTX_Scale43_
 	add r0, sp, #0x30
 	add r1, sp, #0x60
 	add r2, sp, #0
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	ldr r0, [r5, #0x40]
 	ldr r0, [r0, #0x20]
 	ldr r3, [r0]
@@ -2742,11 +2742,11 @@ _0209A6F0:
 _0209A714:
 	add r0, sp, #0x60
 	mov r3, r2
-	bl sub_020CB7B4
+	bl MTX_Scale43_
 	add r0, sp, #0x60
 	add r1, sp, #0x30
 	add r2, sp, #0
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	ldr r0, [r5, #0x40]
 	ldr r0, [r0, #0x20]
 	ldr r3, [r0]
@@ -2977,7 +2977,7 @@ _0209AA28:
 	ldr r3, [r8, #0x20]
 	mov r2, sb
 	str r3, [sp, #0x2c]
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	ldr r0, [sp, #0x18]
 	cmp r0, #0
 	bne _0209AACC
@@ -2992,25 +2992,25 @@ _0209AA28:
 _0209AACC:
 	add r0, sp, #0x18
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add r1, sp, #0x30
 	mov r0, r8
-	bl sub_020D4928
+	bl MI_Copy36B
 	add r0, sp, #0x18
 	add r1, sp, #0x30
 	mov r2, r0
-	bl sub_020CB630
+	bl MTX_MultVec33
 	add r0, sp, #0xc
 	mov r1, r8
 	mov r2, r0
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	add r0, r6, #0x14
 	add r3, sp, #0
 	ldmia r0, {r0, r1, r2}
 	stmia r3, {r0, r1, r2}
 	mov r0, r3
 	mov r1, r3
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldr r0, [r8, #0x20]
 	ldr r1, [sp, #8]
 	rsb r0, r0, #0
@@ -3141,7 +3141,7 @@ _0209AC90:
 	ldr r3, [r8, #0x20]
 	mov r2, sb
 	str r3, [sp, #0x2c]
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	ldr r0, [sp, #0x18]
 	cmp r0, #0
 	bne _0209AD54
@@ -3156,25 +3156,25 @@ _0209AC90:
 _0209AD54:
 	add r0, sp, #0x18
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add r1, sp, #0x30
 	mov r0, r8
-	bl sub_020D4928
+	bl MI_Copy36B
 	add r0, sp, #0x18
 	add r1, sp, #0x30
 	mov r2, r0
-	bl sub_020CB630
+	bl MTX_MultVec33
 	add r0, sp, #0xc
 	mov r1, r8
 	mov r2, r0
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	add r0, r6, #0x14
 	add r3, sp, #0
 	ldmia r0, {r0, r1, r2}
 	stmia r3, {r0, r1, r2}
 	mov r0, r3
 	mov r1, r3
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldr r0, [r8, #0x20]
 	ldr r1, [sp, #8]
 	rsb r0, r0, #0
@@ -3430,7 +3430,7 @@ _0209B108:
 	ldr r3, [r8, #0x20]
 	mov r2, sb
 	str r3, [sp, #0x2c]
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	ldr r0, [sp, #0x18]
 	cmp r0, #0
 	bne _0209B1AC
@@ -3445,25 +3445,25 @@ _0209B108:
 _0209B1AC:
 	add r0, sp, #0x18
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add r1, sp, #0x30
 	mov r0, r8
-	bl sub_020D4928
+	bl MI_Copy36B
 	add r0, sp, #0x18
 	add r1, sp, #0x30
 	mov r2, r0
-	bl sub_020CB630
+	bl MTX_MultVec33
 	add r0, sp, #0xc
 	mov r1, r8
 	mov r2, r0
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	add r0, r6, #0x14
 	add r3, sp, #0
 	ldmia r0, {r0, r1, r2}
 	stmia r3, {r0, r1, r2}
 	mov r0, r3
 	mov r1, r3
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldr r0, [r8, #0x20]
 	ldr r1, [sp, #8]
 	rsb r0, r0, #0
@@ -3594,7 +3594,7 @@ _0209B370:
 	ldr r3, [r8, #0x20]
 	mov r2, sb
 	str r3, [sp, #0x2c]
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	ldr r0, [sp, #0x18]
 	cmp r0, #0
 	bne _0209B434
@@ -3609,25 +3609,25 @@ _0209B370:
 _0209B434:
 	add r0, sp, #0x18
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add r1, sp, #0x30
 	mov r0, r8
-	bl sub_020D4928
+	bl MI_Copy36B
 	add r0, sp, #0x18
 	add r1, sp, #0x30
 	mov r2, r0
-	bl sub_020CB630
+	bl MTX_MultVec33
 	add r0, sp, #0xc
 	mov r1, r8
 	mov r2, r0
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	add r0, r6, #0x14
 	add r3, sp, #0
 	ldmia r0, {r0, r1, r2}
 	stmia r3, {r0, r1, r2}
 	mov r0, r3
 	mov r1, r3
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldr r0, [r8, #0x20]
 	ldr r1, [sp, #8]
 	rsb r0, r0, #0
@@ -3874,7 +3874,7 @@ _0209B7F0:
 	ldr r3, [r6, #0x40]
 	add r3, r8, r3
 	str r3, [sp, #8]
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	ldrh r0, [r6, #0x20]
 	ldr r2, _0209BAF0 ; =0x021094DC
 	mov sb, #0
@@ -3955,7 +3955,7 @@ _0209B910:
 	mov r2, r0
 	sub r3, r8, r3
 	str r3, [sp, #8]
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	ldrh r0, [r6, #0x20]
 	ldr r2, _0209BAF0 ; =0x021094DC
 	mov lr, #0
@@ -4160,7 +4160,7 @@ _0209BC34:
 	ldr r3, [r8, #0x40]
 	add r3, sl, r3
 	str r3, [sp, #8]
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	ldrh r0, [r8, #0x20]
 	ldr r2, _0209BF3C ; =0x021094DC
 	ldr ip, [sp]
@@ -4241,7 +4241,7 @@ _0209BD60:
 	mov r2, r0
 	sub r3, sl, r3
 	str r3, [sp, #8]
-	bl sub_020CBE9C
+	bl MTX_MultVec43
 	ldrh r0, [r8, #0x20]
 	ldr r2, _0209BF3C ; =0x021094DC
 	mov r8, #0
@@ -5023,7 +5023,7 @@ _0209C938:
 	add r0, sb, #0x84
 	add r1, sb, #0x8a
 	add r2, sp, #0x44
-	bl sub_020CCF18
+	bl VEC_Fx16CrossProduct
 	ldrsh r1, [sp, #0x46]
 	ldrsh r0, [sp, #0x48]
 	ldrsh r2, [sp, #0x44]
@@ -5032,7 +5032,7 @@ _0209C938:
 	add r0, sp, #0x7c
 	add r1, r7, #8
 	str r2, [sp, #0x7c]
-	bl sub_020CCE14
+	bl VEC_DotProduct
 	cmp r0, #0
 	bgt _0209C9A0
 	ldr r0, [r7, #8]
@@ -5077,7 +5077,7 @@ _0209CA08:
 	add r0, sb, #0x84
 	add r1, sb, #0x8a
 	add r2, sp, #0x4a
-	bl sub_020CCF18
+	bl VEC_Fx16CrossProduct
 	ldrsh r1, [sp, #0x4c]
 	ldrsh r0, [sp, #0x4e]
 	ldrsh r2, [sp, #0x4a]
@@ -5086,7 +5086,7 @@ _0209CA08:
 	add r0, sp, #0x88
 	add r1, r7, #8
 	str r2, [sp, #0x88]
-	bl sub_020CCE14
+	bl VEC_DotProduct
 	cmp r0, #0
 	bge _0209CA70
 	ldr r0, [r7, #8]
@@ -5335,7 +5335,7 @@ _0209CCD0:
 	add r0, sp, #0xb8
 	add r1, sp, #0xac
 	str r2, [sp, #0xc0]
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	b _0209CE58
 _0209CE1C:
 	ldr r0, [r7, #8]
@@ -5353,7 +5353,7 @@ _0209CE1C:
 _0209CE4C:
 	add r0, r7, #8
 	add r1, sp, #0xac
-	bl sub_020CCFE0
+	bl VEC_Normalize
 _0209CE58:
 	ldr r2, [sp, #0xac]
 	ldr r1, [sp, #0x10]
@@ -5607,10 +5607,10 @@ sub_0209D1FC: ; 0x0209D1FC
 	add r2, sp, #0
 	add r0, r4, #0x84
 	add r1, r4, #0x8a
-	bl sub_020CCF18
+	bl VEC_Fx16CrossProduct
 	add r0, sp, #0
 	mov r1, r0
-	bl sub_020CD0F8
+	bl VEC_Fx16Normalize
 	ldrsh r1, [sp]
 	ldr lr, [r5, #8]
 	ldrsh r0, [r4, #0x84]
@@ -5734,11 +5734,11 @@ _0209D3DC:
 _0209D3F4:
 	add r1, sp, #6
 	add r0, r4, #0x50
-	bl sub_020CD0F8
+	bl VEC_Fx16Normalize
 _0209D400:
 	add r0, sp, #0
 	add r1, sp, #6
-	bl sub_020CCE50
+	bl VEC_Fx16DotProduct
 	cmp r0, #0x1000
 	beq _0209D424
 	mov r1, #0x1000
@@ -5851,10 +5851,10 @@ _0209D438:
 	sub r1, r6, r2
 	strh r1, [r4, #0x8e]
 	mov r1, r0
-	bl sub_020CD0F8
+	bl VEC_Fx16Normalize
 	add r0, r4, #0x8a
 	mov r1, r0
-	bl sub_020CD0F8
+	bl VEC_Fx16Normalize
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
@@ -6311,7 +6311,7 @@ _0209DC00:
 	mov r2, r1, lsl #1
 	ldrsh r1, [r3, ip]
 	ldrsh r2, [r3, r2]
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	b _0209DC8C
 _0209DC30:
 	ldrh r1, [r0]
@@ -6324,7 +6324,7 @@ _0209DC30:
 	mov r2, r1, lsl #1
 	ldrsh r1, [r3, ip]
 	ldrsh r2, [r3, r2]
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	b _0209DC8C
 _0209DC60:
 	ldrh r1, [r0]
@@ -6337,12 +6337,12 @@ _0209DC60:
 	mov r2, r1, lsl #1
 	ldrsh r1, [r3, ip]
 	ldrsh r2, [r3, r2]
-	bl sub_020CB108
+	bl MTX_RotZ33_
 _0209DC8C:
 	add r0, r4, #8
 	add r1, sp, #0
 	mov r2, r0
-	bl sub_020CB630
+	bl MTX_MultVec33
 	add sp, sp, #0x28
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -6566,7 +6566,7 @@ sub_0209DF48: ; 0x0209DF48
 	mov r2, r2, asr #8
 	str r2, [r0, #4]
 	str lr, [r0, #8]
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
@@ -6597,7 +6597,7 @@ sub_0209DFA4: ; 0x0209DFA4
 	str r2, [ip]
 	mov r2, r2, asr #8
 	str r2, [r0, #8]
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0

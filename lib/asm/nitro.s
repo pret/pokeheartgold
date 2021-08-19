@@ -2,28 +2,33 @@
 	.include "global.inc"
 	.text
 
-	arm_func_start sub_020CAF70
-sub_020CAF70: ; 0x020CAF70
+	; fx_sincos.o
+	; data only
+
+	; fx_mtx22.o
+
+	arm_func_start MTX_Identity22_
+MTX_Identity22_: ; 0x020CAF70
 	mov r1, #0
 	mov r2, #0x1000
 	mov r3, #0
 	stmia r0!, {r2, r3}
 	stmia r0!, {r1, r2}
 	bx lr
-	arm_func_end sub_020CAF70
+	arm_func_end MTX_Identity22_
 
-	thumb_func_start sub_020CAF88
-sub_020CAF88: ; 0x020CAF88
+	thumb_func_start MTX_Rot22_
+MTX_Rot22_: ; 0x020CAF88
 	str r2, [r0]
 	str r1, [r0, #4]
 	neg r1, r1
 	str r1, [r0, #8]
 	str r2, [r0, #0xc]
 	bx lr
-	thumb_func_end sub_020CAF88
+	thumb_func_end MTX_Rot22_
 
-	arm_func_start sub_020CAF94
-sub_020CAF94: ; 0x020CAF94
+	arm_func_start MTX_ScaleApply22
+MTX_ScaleApply22: ; 0x020CAF94
 	stmdb sp!, {r3, lr}
 	ldr ip, [r0]
 	smull lr, ip, r2, ip
@@ -46,10 +51,12 @@ sub_020CAF94: ; 0x020CAF94
 	orr r2, r2, r0, lsl #20
 	str r2, [r1, #0xc]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020CAF94
+	arm_func_end MTX_ScaleApply22
 
-	arm_func_start sub_020CAFEC
-sub_020CAFEC: ; 0x020CAFEC
+	; fx_mtx33.o
+
+	arm_func_start MTX_Identity33_
+MTX_Identity33_: ; 0x020CAFEC
 	mov r2, #0x1000
 	str r2, [r0, #0x20]
 	mov r3, #0
@@ -59,10 +66,10 @@ sub_020CAFEC: ; 0x020CAFEC
 	stmia r0!, {r2, r3}
 	stmia r0!, {r1, r3}
 	bx lr
-	arm_func_end sub_020CAFEC
+	arm_func_end MTX_Identity33_
 
-	arm_func_start sub_020CB010
-sub_020CB010: ; 0x020CB010
+	arm_func_start MTX_ScaleApply33
+MTX_ScaleApply33: ; 0x020CB010
 	stmdb sp!, {r4, lr}
 	ldr r4, [r0]
 	ldr ip, [sp, #8]
@@ -111,10 +118,10 @@ sub_020CB010: ; 0x020CB010
 	orr r2, r2, r0, lsl #20
 	str r2, [r1, #0x20]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020CB010
+	arm_func_end MTX_ScaleApply33
 
-	thumb_func_start sub_020CB0D0
-sub_020CB0D0: ; 0x020CB0D0
+	thumb_func_start MTX_RotX33_
+MTX_RotX33_: ; 0x020CB0D0
 	mov r3, #1
 	lsl r3, r3, #0xc
 	str r3, [r0]
@@ -129,10 +136,10 @@ sub_020CB0D0: ; 0x020CB0D0
 	str r1, [r0, #0x1c]
 	str r2, [r0, #0x20]
 	bx lr
-	thumb_func_end sub_020CB0D0
+	thumb_func_end MTX_RotX33_
 
-	thumb_func_start sub_020CB0EC
-sub_020CB0EC: ; 0x020CB0EC
+	thumb_func_start MTX_RotY33_
+MTX_RotY33_: ; 0x020CB0EC
 	str r2, [r0]
 	str r2, [r0, #0x20]
 	mov r3, #0
@@ -147,10 +154,10 @@ sub_020CB0EC: ; 0x020CB0EC
 	str r2, [r0, #8]
 	str r3, [r0, #0x10]
 	bx lr
-	thumb_func_end sub_020CB0EC
+	thumb_func_end MTX_RotY33_
 
-	thumb_func_start sub_020CB108
-sub_020CB108: ; 0x020CB108
+	thumb_func_start MTX_RotZ33_
+MTX_RotZ33_: ; 0x020CB108
 	stmia r0!, {r2}
 	mov r3, #0
 	stmia r0!, {r1, r3}
@@ -163,10 +170,10 @@ sub_020CB108: ; 0x020CB108
 	str r3, [r0, #8]
 	str r1, [r0, #0xc]
 	bx lr
-	thumb_func_end sub_020CB108
+	thumb_func_end MTX_RotZ33_
 
-	arm_func_start sub_020CB120
-sub_020CB120: ; 0x020CB120
+	arm_func_start MTX_Inverse33
+MTX_Inverse33: ; 0x020CB120
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x50
 	mov sl, r0
@@ -226,7 +233,7 @@ sub_020CB120: ; 0x020CB120
 	addeq sp, sp, #0x50
 	subeq r0, r1, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl sub_020CCC7C
+	bl FX_InvAsync
 	ldr r1, [sl, #8]
 	ldr r2, [sl, #0x1c]
 	ldr fp, [sl, #0x10]
@@ -273,7 +280,7 @@ sub_020CB120: ; 0x020CB120
 	mov r0, r1, lsr #0xc
 	orr r0, r0, r3, lsl #20
 	str r0, [sp, #0x24]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	smull r2, r1, r0, r5
 	mov r2, r2, lsr #0xc
 	orr r2, r2, r1, lsl #20
@@ -351,15 +358,15 @@ sub_020CB120: ; 0x020CB120
 	cmp sb, r0
 	bne _020CB404
 	ldr r1, [sp]
-	bl sub_020D4928
+	bl MI_Copy36B
 _020CB404:
 	mov r0, #0
 	add sp, sp, #0x50
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020CB120
+	arm_func_end MTX_Inverse33
 
-	arm_func_start sub_020CB410
-sub_020CB410: ; 0x020CB410
+	arm_func_start MTX_Concat33
+MTX_Concat33: ; 0x020CB410
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x40
 	mov ip, r2
@@ -496,10 +503,10 @@ sub_020CB410: ; 0x020CB410
 	str r0, [ip]
 	add sp, sp, #0x40
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020CB410
+	arm_func_end MTX_Concat33
 
-	arm_func_start sub_020CB630
-sub_020CB630: ; 0x020CB630
+	arm_func_start MTX_MultVec33
+MTX_MultVec33: ; 0x020CB630
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r4, [r1, #0xc]
 	ldmia r0, {r3, ip}
@@ -531,10 +538,12 @@ sub_020CB630: ; 0x020CB630
 	orr r0, r0, lr, lsl #20
 	str r0, [r2, #8]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020CB630
+	arm_func_end MTX_MultVec33
 
-	arm_func_start sub_020CB6AC
-sub_020CB6AC: ; 0x020CB6AC
+	; fx_mtx43.o
+
+	arm_func_start MTX_Identity43_
+MTX_Identity43_: ; 0x020CB6AC
 	mov r2, #0x1000
 	mov r3, #0
 	stmia r0!, {r2, r3}
@@ -545,10 +554,10 @@ sub_020CB6AC: ; 0x020CB6AC
 	stmia r0!, {r2, r3}
 	stmia r0!, {r1, r3}
 	bx lr
-	arm_func_end sub_020CB6AC
+	arm_func_end MTX_Identity43_
 
-	arm_func_start sub_020CB6D4
-sub_020CB6D4: ; 0x020CB6D4
+	arm_func_start MTX_Copy43To44_
+MTX_Copy43To44_: ; 0x020CB6D4
 	stmdb sp!, {r4}
 	mov ip, #0
 	ldmia r0!, {r2, r3, r4}
@@ -562,10 +571,10 @@ sub_020CB6D4: ; 0x020CB6D4
 	stmia r1!, {r2, r3, r4, ip}
 	ldmia sp!, {r4}
 	bx lr
-	arm_func_end sub_020CB6D4
+	arm_func_end MTX_Copy43To44_
 
-	arm_func_start sub_020CB708
-sub_020CB708: ; 0x020CB708
+	arm_func_start MTX_TransApply43
+MTX_TransApply43: ; 0x020CB708
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -573,7 +582,7 @@ sub_020CB708: ; 0x020CB708
 	mov r4, r3
 	cmp r7, r6
 	beq _020CB728
-	bl sub_020D4928
+	bl MI_Copy36B
 _020CB728:
 	ldr r0, [r7, #0xc]
 	ldr r1, [r7]
@@ -610,10 +619,10 @@ _020CB728:
 	add r0, r2, r0
 	str r0, [r6, #0x2c]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020CB708
+	arm_func_end MTX_TransApply43
 
-	thumb_func_start sub_020CB7B4
-sub_020CB7B4: ; 0x020CB7B4
+	thumb_func_start MTX_Scale43_
+MTX_Scale43_: ; 0x020CB7B4
 	stmia r0!, {r1}
 	mov r1, #0
 	str r3, [r0, #0x1c]
@@ -626,16 +635,16 @@ sub_020CB7B4: ; 0x020CB7B4
 	stmia r0!, {r1, r2, r3}
 	bx lr
 	.align 2, 0
-	thumb_func_end sub_020CB7B4
+	thumb_func_end MTX_Scale43_
 
-	arm_func_start sub_020CB7CC
-sub_020CB7CC: ; 0x020CB7CC
+	arm_func_start MTX_ScaleApply43
+MTX_ScaleApply43: ; 0x020CB7CC
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr ip, [sp, #0x10]
 	mov r5, r0
 	str ip, [sp]
 	mov r4, r1
-	bl sub_020CB010
+	bl MTX_ScaleApply33
 	ldr r0, [r5, #0x24]
 	str r0, [r4, #0x24]
 	ldr r0, [r5, #0x28]
@@ -643,10 +652,10 @@ sub_020CB7CC: ; 0x020CB7CC
 	ldr r0, [r5, #0x2c]
 	str r0, [r4, #0x2c]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020CB7CC
+	arm_func_end MTX_ScaleApply43
 
-	thumb_func_start sub_020CB800
-sub_020CB800: ; 0x020CB800
+	thumb_func_start MTX_RotX43_
+MTX_RotX43_: ; 0x020CB800
 	str r1, [r0, #0x14]
 	neg r1, r1
 	str r1, [r0, #0x1c]
@@ -663,10 +672,10 @@ sub_020CB800: ; 0x020CB800
 	stmia r0!, {r1, r3}
 	bx lr
 	.align 2, 0
-	thumb_func_end sub_020CB800
+	thumb_func_end MTX_RotX43_
 
-	thumb_func_start sub_020CB820
-sub_020CB820: ; 0x020CB820
+	thumb_func_start MTX_RotY43_
+MTX_RotY43_: ; 0x020CB820
 	str r1, [r0, #0x18]
 	mov r3, #0
 	stmia r0!, {r2, r3}
@@ -681,10 +690,10 @@ sub_020CB820: ; 0x020CB820
 	stmia r0!, {r1, r3}
 	bx lr
 	.align 2, 0
-	thumb_func_end sub_020CB820
+	thumb_func_end MTX_RotY43_
 
-	arm_func_start sub_020CB83C
-sub_020CB83C: ; 0x020CB83C
+	arm_func_start MTX_Inverse43
+MTX_Inverse43: ; 0x020CB83C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x5c
 	mov sl, r0
@@ -744,7 +753,7 @@ sub_020CB83C: ; 0x020CB83C
 	addeq sp, sp, #0x5c
 	subeq r0, r1, #1
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl sub_020CCC7C
+	bl FX_InvAsync
 	ldr r1, [sl, #8]
 	ldr r2, [sl, #0x1c]
 	ldr fp, [sl, #0x10]
@@ -791,7 +800,7 @@ sub_020CB83C: ; 0x020CB83C
 	mov r0, r1, lsr #0xc
 	orr r0, r0, r3, lsl #20
 	str r0, [sp, #0x24]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	smull r2, r1, r0, r5
 	mov r2, r2, lsr #0xc
 	orr r2, r2, r1, lsl #20
@@ -908,15 +917,15 @@ sub_020CB83C: ; 0x020CB83C
 	str r1, [sb, #0x2c]
 	bne _020CBBBC
 	ldr r1, [sp]
-	bl sub_020D4944
+	bl MI_Copy48B
 _020CBBBC:
 	mov r0, #0
 	add sp, sp, #0x5c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020CB83C
+	arm_func_end MTX_Inverse43
 
-	arm_func_start sub_020CBBC8
-sub_020CBBC8: ; 0x020CBBC8
+	arm_func_start MTX_Concat43
+MTX_Concat43: ; 0x020CBBC8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x4c
 	mov ip, r2
@@ -1098,10 +1107,10 @@ sub_020CBBC8: ; 0x020CBBC8
 	stmia ip, {r0, r1, r2, r3}
 	add sp, sp, #0x4c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020CBBC8
+	arm_func_end MTX_Concat43
 
-	arm_func_start sub_020CBE9C
-sub_020CBE9C: ; 0x020CBE9C
+	arm_func_start MTX_MultVec43
+MTX_MultVec43: ; 0x020CBE9C
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r4, [r1, #0xc]
 	ldmia r0, {r3, ip}
@@ -1142,10 +1151,10 @@ sub_020CBE9C: ; 0x020CBE9C
 	add r0, r3, r0
 	str r0, [r2, #8]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020CBE9C
+	arm_func_end MTX_MultVec43
 
-	arm_func_start sub_020CBF3C
-sub_020CBF3C: ; 0x020CBF3C
+	arm_func_start MTX_LookAt
+MTX_LookAt: ; 0x020CBF3C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x24
 	mov r6, r0
@@ -1165,18 +1174,18 @@ sub_020CBF3C: ; 0x020CBF3C
 	sub r2, r4, r2
 	mov r4, r3
 	str r2, [sp, #0x20]
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add r1, sp, #0x18
 	add r2, sp, #0xc
 	mov r0, r5
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	add r0, sp, #0xc
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add r0, sp, #0x18
 	add r1, sp, #0xc
 	add r2, sp, #0
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	ldr r1, [sp, #0xc]
 	mov r0, r6
 	str r1, [r4]
@@ -1197,25 +1206,27 @@ sub_020CBF3C: ; 0x020CBF3C
 	str r2, [r4, #0x1c]
 	ldr r2, [sp, #0x20]
 	str r2, [r4, #0x20]
-	bl sub_020CCE14
+	bl VEC_DotProduct
 	rsb r0, r0, #0
 	str r0, [r4, #0x24]
 	mov r0, r6
 	add r1, sp, #0
-	bl sub_020CCE14
+	bl VEC_DotProduct
 	rsb r0, r0, #0
 	str r0, [r4, #0x28]
 	mov r0, r6
 	add r1, sp, #0x18
-	bl sub_020CCE14
+	bl VEC_DotProduct
 	rsb r0, r0, #0
 	str r0, [r4, #0x2c]
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end sub_020CBF3C
+	arm_func_end MTX_LookAt
 
-	arm_func_start sub_020CC044
-sub_020CC044: ; 0x020CC044
+	; fx_mtx44.o
+
+	arm_func_start MTX_Identity44_
+MTX_Identity44_: ; 0x020CC044
 	mov r2, #0x1000
 	mov r3, #0
 	stmia r0!, {r2, r3}
@@ -1227,10 +1238,10 @@ sub_020CC044: ; 0x020CC044
 	stmia r0!, {r1, r3}
 	stmia r0!, {r1, r2}
 	bx lr
-	arm_func_end sub_020CC044
+	arm_func_end MTX_Identity44_
 
-	arm_func_start sub_020CC070
-sub_020CC070: ; 0x020CC070
+	arm_func_start MTX_Copy44To43_
+MTX_Copy44To43_: ; 0x020CC070
 	ldmia r0!, {r2, r3, ip}
 	add r0, r0, #4
 	stmia r1!, {r2, r3, ip}
@@ -1244,10 +1255,10 @@ sub_020CC070: ; 0x020CC070
 	add r0, r0, #4
 	stmia r1!, {r2, r3, ip}
 	bx lr
-	arm_func_end sub_020CC070
+	arm_func_end MTX_Copy44To43_
 
-	arm_func_start sub_020CC0A4
-sub_020CC0A4: ; 0x020CC0A4
+	arm_func_start MTX_TransApply44
+MTX_TransApply44: ; 0x020CC0A4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -1255,7 +1266,7 @@ sub_020CC0A4: ; 0x020CC0A4
 	mov r4, r3
 	cmp r7, r6
 	beq _020CC0C4
-	bl sub_020D4944
+	bl MI_Copy48B
 _020CC0C4:
 	ldr r0, [r7, #0x10]
 	ldr r1, [r7]
@@ -1303,10 +1314,10 @@ _020CC0C4:
 	add r0, r2, r0
 	str r0, [r6, #0x3c]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020CC0A4
+	arm_func_end MTX_TransApply44
 
-	thumb_func_start sub_020CC17C
-sub_020CC17C: ; 0x020CC17C
+	thumb_func_start MTX_RotX44_
+MTX_RotX44_: ; 0x020CC17C
 	str r2, [r0, #0x14]
 	str r2, [r0, #0x28]
 	str r1, [r0, #0x18]
@@ -1325,10 +1336,10 @@ sub_020CC17C: ; 0x020CC17C
 	stmia r0!, {r2, r3}
 	str r1, [r0]
 	bx lr
-	thumb_func_end sub_020CC17C
+	thumb_func_end MTX_RotX44_
 
-	thumb_func_start sub_020CC1A0
-sub_020CC1A0: ; 0x020CC1A0
+	thumb_func_start MTX_RotY44_
+MTX_RotY44_: ; 0x020CC1A0
 	str r2, [r0]
 	str r2, [r0, #0x28]
 	str r1, [r0, #0x20]
@@ -1347,10 +1358,10 @@ sub_020CC1A0: ; 0x020CC1A0
 	stmia r0!, {r1, r2}
 	stmia r0!, {r1, r2, r3}
 	bx lr
-	thumb_func_end sub_020CC1A0
+	thumb_func_end MTX_RotY44_
 
-	thumb_func_start sub_020CC1C4
-sub_020CC1C4: ; 0x020CC1C4
+	thumb_func_start MTX_RotZ44_
+MTX_RotZ44_: ; 0x020CC1C4
 	str r2, [r0]
 	str r2, [r0, #0x14]
 	str r1, [r0, #4]
@@ -1369,10 +1380,10 @@ sub_020CC1C4: ; 0x020CC1C4
 	stmia r0!, {r1, r2, r3}
 	bx lr
 	.align 2, 0
-	thumb_func_end sub_020CC1C4
+	thumb_func_end MTX_RotZ44_
 
-	arm_func_start sub_020CC1E8
-sub_020CC1E8: ; 0x020CC1E8
+	arm_func_start MTX_Concat44
+MTX_Concat44: ; 0x020CC1E8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xe8
 	cmp r2, r1
@@ -1782,10 +1793,10 @@ sub_020CC1E8: ; 0x020CC1E8
 	str r4, [sp]
 	add sp, sp, #0xe8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020CC1E8
+	arm_func_end MTX_Concat44
 
-	arm_func_start sub_020CC84C
-sub_020CC84C: ; 0x020CC84C
+	arm_func_start MTX_PerspectiveW
+MTX_PerspectiveW: ; 0x020CC84C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r4, r0
 	mov r0, r1
@@ -1794,7 +1805,7 @@ sub_020CC84C: ; 0x020CC84C
 	mov r7, r3
 	ldr r6, [sp, #0x1c]
 	ldr r5, [sp, #0x20]
-	bl sub_020CCBA0
+	bl FX_Div
 	ldr r1, [sp, #0x18]
 	ldr r2, _020CC994 ; =0x04000290
 	mov r3, #0
@@ -1828,7 +1839,7 @@ _020CC8B4:
 	str r1, [r5, #0x30]
 	str r1, [r5, #0x34]
 	str r1, [r5, #0x3c]
-	bl sub_020CCC20
+	bl FX_GetDivResultFx64c
 	ldr r2, _020CC994 ; =0x04000290
 	mov r3, #0
 	stmia r2, {r3, r4, r8}
@@ -1843,7 +1854,7 @@ _020CC8B4:
 	mov r1, r3
 	mov r2, #0x1000
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 _020CC930:
 	ldr r4, [sp, #0x18]
 	mov r2, r7, lsl #1
@@ -1867,15 +1878,15 @@ _020CC930:
 	str r7, [r5, #0x28]
 	adc r0, r4, #0
 	str r0, [r5, #0x38]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	str r0, [r5]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020CC994: .word 0x04000290
-	arm_func_end sub_020CC84C
+	arm_func_end MTX_PerspectiveW
 
-	arm_func_start sub_020CC998
-sub_020CC998: ; 0x020CC998
+	arm_func_start MTX_OrthoW
+MTX_OrthoW: ; 0x020CC998
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	str r2, [sp]
@@ -1887,7 +1898,7 @@ sub_020CC998: ; 0x020CC998
 	str r3, [sp, #4]
 	mov fp, r1
 	ldr sb, [sp, #0x38]
-	bl sub_020CCC7C
+	bl FX_InvAsync
 	mov r0, #0
 	str r0, [r8, #4]
 	str r0, [r8, #8]
@@ -1899,7 +1910,7 @@ sub_020CC998: ; 0x020CC998
 	str r0, [r8, #0x24]
 	str r0, [r8, #0x2c]
 	str sb, [r8, #0x3c]
-	bl sub_020CCC20
+	bl FX_GetDivResultFx64c
 	mov r6, r1
 	mov r4, r0
 	ldr r1, _020CCB9C ; =0x04000290
@@ -1917,7 +1928,7 @@ sub_020CC998: ; 0x020CC998
 	umull r0, r1, r4, sb
 	mla r1, r4, r5, r1
 	mla r1, r6, sb, r1
-	bl _ll_div
+	bl _ll_sdiv
 	mov r4, r0
 	mov r6, r1
 _020CCA48:
@@ -1927,7 +1938,7 @@ _020CCA48:
 	adds r0, r0, r4, lsl #13
 	adc r0, r1, #0
 	str r0, [r8]
-	bl sub_020CCC20
+	bl FX_GetDivResultFx64c
 	mov r5, r0
 	mov r7, r1
 	mov r3, #0
@@ -1947,7 +1958,7 @@ _020CCA48:
 	umull r0, r1, r5, sb
 	mla r1, r5, ip, r1
 	mla r1, r7, sb, r1
-	bl _ll_div
+	bl _ll_sdiv
 	mov r5, r0
 	mov r7, r1
 _020CCABC:
@@ -1957,7 +1968,7 @@ _020CCABC:
 	adds r0, r0, r5, lsl #13
 	adc r0, r1, #0
 	str r0, [r8, #0x14]
-	bl sub_020CCC20
+	bl FX_GetDivResultFx64c
 	cmp sb, #0x1000
 	beq _020CCB04
 	mov r2, sb, asr #0x1f
@@ -1968,7 +1979,7 @@ _020CCABC:
 	mov r1, r3
 	mov r2, #0x1000
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 _020CCB04:
 	ldr r3, [sp, #4]
 	ldr r2, [sp]
@@ -2010,28 +2021,30 @@ _020CCB04:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020CCB9C: .word 0x04000290
-	arm_func_end sub_020CC998
+	arm_func_end MTX_OrthoW
 
-	arm_func_start sub_020CCBA0
-sub_020CCBA0: ; 0x020CCBA0
+	; fx_cp.o
+
+	arm_func_start FX_Div
+FX_Div: ; 0x020CCBA0
 	stmdb sp!, {r3, lr}
-	bl sub_020CCCD8
-	bl sub_020CCC44
+	bl FX_DivAsync
+	bl FX_GetDivResult
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020CCBA0
+	arm_func_end FX_Div
 
-	arm_func_start sub_020CCBB0
-sub_020CCBB0: ; 0x020CCBB0
+	arm_func_start FX_Inv
+FX_Inv: ; 0x020CCBB0
 	stmdb sp!, {r3, lr}
-	bl sub_020CCC7C
-	bl sub_020CCC44
+	bl FX_InvAsync
+	bl FX_GetDivResult
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020CCBB0
+	arm_func_end FX_Inv
 
-	arm_func_start sub_020CCBC0
-sub_020CCBC0: ; 0x020CCBC0
+	arm_func_start FX_InvFx64c
+FX_InvFx64c: ; 0x020CCBC0
 	stmdb sp!, {r3, lr}
-	bl sub_020CCC7C
+	bl FX_InvAsync
 	ldr r1, _020CCBE4 ; =0x04000280
 _020CCBCC:
 	ldrh r0, [r1]
@@ -2043,10 +2056,10 @@ _020CCBCC:
 	.align 2, 0
 _020CCBE4: .word 0x04000280
 _020CCBE8: .word 0x040002A0
-	arm_func_end sub_020CCBC0
+	arm_func_end FX_InvFx64c
 
-	arm_func_start sub_020CCBEC
-sub_020CCBEC: ; 0x020CCBEC
+	arm_func_start FX_Sqrt
+FX_Sqrt: ; 0x020CCBEC
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	movle r0, #0
@@ -2057,14 +2070,14 @@ sub_020CCBEC: ; 0x020CCBEC
 	mov r1, #0
 	str r1, [r2, #8]
 	str r0, [r2, #0xc]
-	bl sub_020CCCAC
+	bl FX_GetSqrtResult
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020CCC1C: .word 0x040002B0
-	arm_func_end sub_020CCBEC
+	arm_func_end FX_Sqrt
 
-	arm_func_start sub_020CCC20
-sub_020CCC20: ; 0x020CCC20
+	arm_func_start FX_GetDivResultFx64c
+FX_GetDivResultFx64c: ; 0x020CCC20
 	ldr r1, _020CCC3C ; =0x04000280
 _020CCC24:
 	ldrh r0, [r1]
@@ -2076,10 +2089,10 @@ _020CCC24:
 	.align 2, 0
 _020CCC3C: .word 0x04000280
 _020CCC40: .word 0x040002A0
-	arm_func_end sub_020CCC20
+	arm_func_end FX_GetDivResultFx64c
 
-	arm_func_start sub_020CCC44
-sub_020CCC44: ; 0x020CCC44
+	arm_func_start FX_GetDivResult
+FX_GetDivResult: ; 0x020CCC44
 	ldr r1, _020CCC74 ; =0x04000280
 _020CCC48:
 	ldrh r0, [r1]
@@ -2096,10 +2109,10 @@ _020CCC48:
 	.align 2, 0
 _020CCC74: .word 0x04000280
 _020CCC78: .word 0x040002A0
-	arm_func_end sub_020CCC44
+	arm_func_end FX_GetDivResult
 
-	arm_func_start sub_020CCC7C
-sub_020CCC7C: ; 0x020CCC7C
+	arm_func_start FX_InvAsync
+FX_InvAsync: ; 0x020CCC7C
 	ldr r2, _020CCCA8 ; =0x04000280
 	mov r1, #1
 	strh r1, [r2]
@@ -2113,10 +2126,10 @@ sub_020CCC7C: ; 0x020CCC7C
 	bx lr
 	.align 2, 0
 _020CCCA8: .word 0x04000280
-	arm_func_end sub_020CCC7C
+	arm_func_end FX_InvAsync
 
-	arm_func_start sub_020CCCAC
-sub_020CCCAC: ; 0x020CCCAC
+	arm_func_start FX_GetSqrtResult
+FX_GetSqrtResult: ; 0x020CCCAC
 	ldr r1, _020CCCD0 ; =0x040002B0
 _020CCCB0:
 	ldrh r0, [r1]
@@ -2130,10 +2143,10 @@ _020CCCB0:
 	.align 2, 0
 _020CCCD0: .word 0x040002B0
 _020CCCD4: .word 0x040002B4
-	arm_func_end sub_020CCCAC
+	arm_func_end FX_GetSqrtResult
 
-	arm_func_start sub_020CCCD8
-sub_020CCCD8: ; 0x020CCCD8
+	arm_func_start FX_DivAsync
+FX_DivAsync: ; 0x020CCCD8
 	ldr r3, _020CCCFC ; =0x04000280
 	mov r2, #1
 	strh r2, [r3]
@@ -2145,10 +2158,10 @@ sub_020CCCD8: ; 0x020CCCD8
 	bx lr
 	.align 2, 0
 _020CCCFC: .word 0x04000280
-	arm_func_end sub_020CCCD8
+	arm_func_end FX_DivAsync
 
-	arm_func_start sub_020CCD00
-sub_020CCD00: ; 0x020CCD00
+	arm_func_start FX_DivS32
+FX_DivS32: ; 0x020CCD00
 	ldr r2, _020CCD34 ; =0x04000280
 	mov r3, #0
 	strh r3, [r2]
@@ -2166,10 +2179,10 @@ _020CCD1C:
 	.align 2, 0
 _020CCD34: .word 0x04000280
 _020CCD38: .word 0x040002A0
-	arm_func_end sub_020CCD00
+	arm_func_end FX_DivS32
 
-	arm_func_start sub_020CCD3C
-sub_020CCD3C: ; 0x020CCD3C
+	arm_func_start FX_ModS32
+FX_ModS32: ; 0x020CCD3C
 	ldr r2, _020CCD70 ; =0x04000280
 	mov r3, #0
 	strh r3, [r2]
@@ -2187,10 +2200,12 @@ _020CCD58:
 	.align 2, 0
 _020CCD70: .word 0x04000280
 _020CCD74: .word 0x040002A8
-	arm_func_end sub_020CCD3C
+	arm_func_end FX_ModS32
 
-	arm_func_start sub_020CCD78
-sub_020CCD78: ; 0x020CCD78
+; fx_vec.o
+
+	arm_func_start VEC_Add
+VEC_Add: ; 0x020CCD78
 	ldr ip, [r0]
 	ldr r3, [r1]
 	add r3, ip, r3
@@ -2204,10 +2219,10 @@ sub_020CCD78: ; 0x020CCD78
 	add r0, r3, r0
 	str r0, [r2, #8]
 	bx lr
-	arm_func_end sub_020CCD78
+	arm_func_end VEC_Add
 
-	arm_func_start sub_020CCDAC
-sub_020CCDAC: ; 0x020CCDAC
+	arm_func_start VEC_Subtract
+VEC_Subtract: ; 0x020CCDAC
 	ldr ip, [r0]
 	ldr r3, [r1]
 	sub r3, ip, r3
@@ -2221,10 +2236,10 @@ sub_020CCDAC: ; 0x020CCDAC
 	sub r0, r3, r0
 	str r0, [r2, #8]
 	bx lr
-	arm_func_end sub_020CCDAC
+	arm_func_end VEC_Subtract
 
-	arm_func_start sub_020CCDE0
-sub_020CCDE0: ; 0x020CCDE0
+	arm_func_start VEC_Fx16Add
+VEC_Fx16Add: ; 0x020CCDE0
 	ldrsh ip, [r0]
 	ldrsh r3, [r1]
 	add r3, ip, r3
@@ -2238,10 +2253,10 @@ sub_020CCDE0: ; 0x020CCDE0
 	add r0, r3, r0
 	strh r0, [r2, #4]
 	bx lr
-	arm_func_end sub_020CCDE0
+	arm_func_end VEC_Fx16Add
 
-	arm_func_start sub_020CCE14
-sub_020CCE14: ; 0x020CCE14
+	arm_func_start VEC_DotProduct
+VEC_DotProduct: ; 0x020CCE14
 	stmdb sp!, {r4, lr}
 	ldr r3, [r0, #4]
 	ldr r2, [r1, #4]
@@ -2257,10 +2272,10 @@ sub_020CCE14: ; 0x020CCE14
 	mov r0, r0, lsr #0xc
 	orr r0, r0, r1, lsl #20
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020CCE14
+	arm_func_end VEC_DotProduct
 
-	arm_func_start sub_020CCE50
-sub_020CCE50: ; 0x020CCE50
+	arm_func_start VEC_Fx16DotProduct
+VEC_Fx16DotProduct: ; 0x020CCE50
 	stmdb sp!, {r3, r4, r5, lr}
 	ldrsh lr, [r0, #2]
 	ldrsh ip, [r1, #2]
@@ -2278,10 +2293,10 @@ sub_020CCE50: ; 0x020CCE50
 	mov r0, r2, lsr #0xc
 	orr r0, r0, r1, lsl #20
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020CCE50
+	arm_func_end VEC_Fx16DotProduct
 
-	arm_func_start sub_020CCE94
-sub_020CCE94: ; 0x020CCE94
+	arm_func_start VEC_CrossProduct
+VEC_CrossProduct: ; 0x020CCE94
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldmia r0, {r5, lr}
 	ldr r6, [r1, #8]
@@ -2315,10 +2330,10 @@ sub_020CCE94: ; 0x020CCE94
 	orr r1, r1, r0, lsl #20
 	str r1, [r2, #8]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020CCE94
+	arm_func_end VEC_CrossProduct
 
-	arm_func_start sub_020CCF18
-sub_020CCF18: ; 0x020CCF18
+	arm_func_start VEC_Fx16CrossProduct
+VEC_Fx16CrossProduct: ; 0x020CCF18
 	stmdb sp!, {r4, r5, r6, lr}
 	ldrsh r4, [r1, #4]
 	ldrsh ip, [r0, #2]
@@ -2345,10 +2360,10 @@ sub_020CCF18: ; 0x020CCF18
 	mov r0, r1, asr #0xc
 	strh r0, [r2, #4]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020CCF18
+	arm_func_end VEC_Fx16CrossProduct
 
-	arm_func_start sub_020CCF80
-sub_020CCF80: ; 0x020CCF80
+	arm_func_start VEC_Mag
+VEC_Mag: ; 0x020CCF80
 	ldr r1, [r0, #4]
 	ldr r2, [r0]
 	smull ip, r3, r1, r1
@@ -2375,10 +2390,10 @@ _020CCFB8:
 	.align 2, 0
 _020CCFD8: .word 0x040002B0
 _020CCFDC: .word 0x040002B4
-	arm_func_end sub_020CCF80
+	arm_func_end VEC_Mag
 
-	arm_func_start sub_020CCFE0
-sub_020CCFE0: ; 0x020CCFE0
+	arm_func_start VEC_Normalize
+VEC_Normalize: ; 0x020CCFE0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r2, [r0, #4]
 	ldr r3, [r0]
@@ -2452,10 +2467,10 @@ _020CD054:
 _020CD0EC: .word 0x04000280
 _020CD0F0: .word 0x040002B4
 _020CD0F4: .word 0x040002A0
-	arm_func_end sub_020CCFE0
+	arm_func_end VEC_Normalize
 
-	arm_func_start sub_020CD0F8
-sub_020CD0F8: ; 0x020CD0F8
+	arm_func_start VEC_Fx16Normalize
+VEC_Fx16Normalize: ; 0x020CD0F8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldrsh r5, [r0]
 	ldrsh r2, [r0, #2]
@@ -2534,10 +2549,10 @@ _020CD180:
 _020CD218: .word 0x04000280
 _020CD21C: .word 0x040002B4
 _020CD220: .word 0x040002A0
-	arm_func_end sub_020CD0F8
+	arm_func_end VEC_Fx16Normalize
 
-	arm_func_start sub_020CD224
-sub_020CD224: ; 0x020CD224
+	arm_func_start VEC_MultAdd
+VEC_MultAdd: ; 0x020CD224
 	stmdb sp!, {r4, lr}
 	ldr r4, [r1]
 	ldr lr, [r2]
@@ -2561,10 +2576,10 @@ sub_020CD224: ; 0x020CD224
 	add r0, ip, r0
 	str r0, [r3, #8]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020CD224
+	arm_func_end VEC_MultAdd
 
-	arm_func_start sub_020CD280
-sub_020CD280: ; 0x020CD280
+	arm_func_start VEC_Distance
+VEC_Distance: ; 0x020CD280
 	stmdb sp!, {r4, lr}
 	ldr r3, [r0, #4]
 	ldr r2, [r1, #4]
@@ -2598,10 +2613,12 @@ _020CD2D4:
 	.align 2, 0
 _020CD2F4: .word 0x040002B0
 _020CD2F8: .word 0x040002B4
-	arm_func_end sub_020CD280
+	arm_func_end VEC_Distance
 
-	arm_func_start sub_020CD2FC
-sub_020CD2FC: ; 0x020CD2FC
+	; fx_trig.o
+
+	arm_func_start FX_SinFx64c_internal
+FX_SinFx64c_internal: ; 0x020CD2FC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov lr, #0
 	cmp r1, #1
@@ -2661,10 +2678,10 @@ _020CD3D4: .word 0x03C2857C
 _020CD3D8: .word 0x07E54B84
 _020CD3DC: .word 0x14ABBCE6
 _020CD3E0: .word 0xC90FDAA2
-	arm_func_end sub_020CD2FC
+	arm_func_end FX_SinFx64c_internal
 
-	arm_func_start sub_020CD3E4
-sub_020CD3E4: ; 0x020CD3E4
+	arm_func_start FX_CosFx64c_internal
+FX_CosFx64c_internal: ; 0x020CD3E4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov ip, #0
 	cmp r1, #1
@@ -2717,15 +2734,15 @@ _020CD4A0: .word 0x02D1E41D
 _020CD4A4: .word 0x054387AD
 _020CD4A8: .word 0x0D28D331
 _020CD4AC: .word 0x4EF4F327
-	arm_func_end sub_020CD3E4
+	arm_func_end FX_CosFx64c_internal
 
-	arm_func_start sub_020CD4B0
-sub_020CD4B0: ; 0x020CD4B0
+	arm_func_start FX_SinFx64c
+FX_SinFx64c: ; 0x020CD4B0
 	stmdb sp!, {r4, lr}
 	cmp r0, #0
 	bge _020CD4D0
 	rsb r0, r0, #0
-	bl sub_020CD4B0
+	bl FX_SinFx64c
 	rsbs r0, r0, #0
 	rsc r1, r1, #0
 	ldmia sp!, {r4, pc}
@@ -2751,10 +2768,10 @@ _020CD514:
 	add r2, r4, #1
 	tst r2, #2
 	beq _020CD528
-	bl sub_020CD3E4
+	bl FX_CosFx64c_internal
 	b _020CD52C
 _020CD528:
-	bl sub_020CD2FC
+	bl FX_SinFx64c_internal
 _020CD52C:
 	and r2, r4, #7
 	cmp r2, #3
@@ -2764,15 +2781,15 @@ _020CD52C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020CD544: .word 0x45F306DD
-	arm_func_end sub_020CD4B0
+	arm_func_end FX_SinFx64c
 
-	arm_func_start sub_020CD548
-sub_020CD548: ; 0x020CD548
+	arm_func_start FX_CosFx64c
+FX_CosFx64c: ; 0x020CD548
 	stmdb sp!, {r4, lr}
 	cmp r0, #0
 	bge _020CD560
 	rsb r0, r0, #0
-	bl sub_020CD548
+	bl FX_CosFx64c
 	ldmia sp!, {r4, pc}
 _020CD560:
 	ldr r1, _020CD5D8 ; =0x45F306DD
@@ -2796,10 +2813,10 @@ _020CD5A4:
 	add r2, r4, #1
 	tst r2, #2
 	beq _020CD5B8
-	bl sub_020CD2FC
+	bl FX_SinFx64c_internal
 	b _020CD5BC
 _020CD5B8:
-	bl sub_020CD3E4
+	bl FX_CosFx64c_internal
 _020CD5BC:
 	add r2, r4, #2
 	and r2, r2, #7
@@ -2810,10 +2827,10 @@ _020CD5BC:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020CD5D8: .word 0x45F306DD
-	arm_func_end sub_020CD548
+	arm_func_end FX_CosFx64c
 
-	arm_func_start sub_020CD5DC
-sub_020CD5DC: ; 0x020CD5DC
+	arm_func_start FX_Atan2Idx
+FX_Atan2Idx: ; 0x020CD5DC
 	stmdb sp!, {r4, lr}
 	cmp r0, #0
 	ble _020CD670
@@ -2916,7 +2933,7 @@ _020CD720:
 	cmp r0, #0
 	mov r0, r2
 	beq _020CD75C
-	bl sub_020CCBA0
+	bl FX_Div
 	mov r1, r0, asr #5
 	ldr r0, _020CD780 ; =0x0210D4DC
 	mov r1, r1, lsl #1
@@ -2926,7 +2943,7 @@ _020CD720:
 	mov r0, r0, lsr #0x10
 	ldmia sp!, {r4, pc}
 _020CD75C:
-	bl sub_020CCBA0
+	bl FX_Div
 	mov r1, r0, asr #5
 	ldr r0, _020CD780 ; =0x0210D4DC
 	mov r1, r1, lsl #1
@@ -2937,15 +2954,17 @@ _020CD75C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020CD780: .word 0x0210D4DC
-	arm_func_end sub_020CD5DC
+	arm_func_end FX_Atan2Idx
 
-	arm_func_start sub_020CD784
-sub_020CD784: ; 0x020CD784
+	; fx.o
+
+	arm_func_start FX_Init
+FX_Init: ; 0x020CD784
 	bx lr
-	arm_func_end sub_020CD784
+	arm_func_end FX_Init
 
-	arm_func_start sub_020CD788
-sub_020CD788: ; 0x020CD788
+	arm_func_start FX_Modf
+FX_Modf: ; 0x020CD788
 	cmp r0, #0
 	ldr r2, _020CD7C0 ; =0x7FFFF000
 	blt _020CD7A4
@@ -2963,7 +2982,7 @@ _020CD7A4:
 	bx lr
 	.align 2, 0
 _020CD7C0: .word 0x7FFFF000
-	arm_func_end sub_020CD788
+	arm_func_end FX_Modf
 
 	arm_func_start sub_020CD7C4
 sub_020CD7C4: ; 0x020CD7C4
@@ -5437,12 +5456,12 @@ _020CF544: .word sub_020D0E2C
 sub_020CF548: ; 0x020CF548
 	ldr r1, _020CF55C ; =0x04000400
 	mov r2, #0x1a
-	ldr ip, _020CF560 ; =sub_020D4928
+	ldr ip, _020CF560 ; =MI_Copy36B
 	str r2, [r1]
 	bx ip
 	.align 2, 0
 _020CF55C: .word 0x04000400
-_020CF560: .word sub_020D4928
+_020CF560: .word MI_Copy36B
 	arm_func_end sub_020CF548
 
 	arm_func_start sub_020CF564
@@ -5710,7 +5729,7 @@ sub_020CF8B4: ; 0x020CF8B4
 	mvnne r0, #0
 	ldmneia sp!, {r3, pc}
 	add r0, r2, #0x80
-	bl sub_020D4928
+	bl MI_Copy36B
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -5915,7 +5934,7 @@ sub_020CFB08: ; 0x020CFB08
 	addeq r4, sp, #0x10
 	str ip, [sp, #8]
 	str r4, [sp, #0xc]
-	bl sub_020CC998
+	bl MTX_OrthoW
 	ldr r0, [sp, #0x64]
 	cmp r0, #0
 	addeq sp, sp, #0x50
@@ -5940,7 +5959,7 @@ sub_020CFB6C: ; 0x020CFB6C
 	cmp r4, #0
 	addeq r4, sp, #0
 	mov r3, r4
-	bl sub_020CBF3C
+	bl MTX_LookAt
 	cmp r5, #0
 	addeq sp, sp, #0x30
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -12407,8 +12426,8 @@ sub_020D490C: ; 0x020D490C
 	bx lr
 	arm_func_end sub_020D490C
 
-	arm_func_start sub_020D4928
-sub_020D4928: ; 0x020D4928
+	arm_func_start MI_Copy36B
+MI_Copy36B: ; 0x020D4928
 	ldmia r0!, {r2, r3, ip}
 	stmia r1!, {r2, r3, ip}
 	ldmia r0!, {r2, r3, ip}
@@ -12416,10 +12435,10 @@ sub_020D4928: ; 0x020D4928
 	ldmia r0!, {r2, r3, ip}
 	stmia r1!, {r2, r3, ip}
 	bx lr
-	arm_func_end sub_020D4928
+	arm_func_end MI_Copy36B
 
-	arm_func_start sub_020D4944
-sub_020D4944: ; 0x020D4944
+	arm_func_start MI_Copy48B
+MI_Copy48B: ; 0x020D4944
 	ldmia r0!, {r2, r3, ip}
 	stmia r1!, {r2, r3, ip}
 	ldmia r0!, {r2, r3, ip}
@@ -12429,7 +12448,7 @@ sub_020D4944: ; 0x020D4944
 	ldmia r0!, {r2, r3, ip}
 	stmia r1!, {r2, r3, ip}
 	bx lr
-	arm_func_end sub_020D4944
+	arm_func_end MI_Copy48B
 
 	arm_func_start sub_020D4968
 sub_020D4968: ; 0x020D4968
@@ -22069,7 +22088,7 @@ _020DC554:
 	mov r0, r5
 	mov r1, r4
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 	mov r1, r0
 	mov r0, r7
 	bl sub_020DC394

@@ -2866,7 +2866,7 @@ ov69_021E70A8: ; 0x021E70A8
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r5, r0, #0
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	ldr r0, [r4]
 	ldr r3, _021E711C ; =0x021094DC
 	lsl r0, r0, #0x10
@@ -2879,11 +2879,11 @@ ov69_021E70A8: ; 0x021E70A8
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r5, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	ldr r0, [r4, #8]
 	ldr r3, _021E711C ; =0x021094DC
 	lsl r0, r0, #0x10
@@ -2896,11 +2896,11 @@ ov69_021E70A8: ; 0x021E70A8
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r5, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add sp, #0x24
 	pop {r4, r5, pc}
 	nop
@@ -2924,7 +2924,7 @@ ov69_021E7120: ; 0x021E7120
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r5, r0, #0
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	ldr r0, [r4, #4]
 	ldr r3, _021E7194 ; =0x021094DC
 	neg r0, r0
@@ -2938,11 +2938,11 @@ ov69_021E7120: ; 0x021E7120
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r5, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	ldr r0, [r4, #8]
 	ldr r3, _021E7194 ; =0x021094DC
 	lsl r0, r0, #0x10
@@ -2955,11 +2955,11 @@ ov69_021E7120: ; 0x021E7120
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r5, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add sp, #0x24
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -3397,7 +3397,7 @@ _021E74B6:
 	add r0, r6, #0
 	add r1, sp, #0x4c
 	add r2, sp, #4
-	bl sub_020CB410
+	bl MTX_Concat33
 	ldrh r2, [r4, #0x38]
 	cmp r2, #0
 	beq _021E74DE
@@ -3587,7 +3587,7 @@ _021E762A:
 	mul r0, r5
 	add r0, r1, r0
 	lsl r0, r0, #0xc
-	bl sub_020CCBEC
+	bl FX_Sqrt
 	asr r0, r0, #0xc
 	pop {r3, r4, r5, pc}
 	nop

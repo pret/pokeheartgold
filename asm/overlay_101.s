@@ -4123,7 +4123,7 @@ _021E97BC:
 	bl _ftoi
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_020CCBA0
+	bl FX_Div
 	add r1, r4, #0
 	add r1, #0xe0
 	str r0, [r1]
@@ -4170,7 +4170,7 @@ _021E9828:
 	bl _ftoi
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_020CCBA0
+	bl FX_Div
 	add r4, #0xe4
 	str r0, [r4]
 	add sp, #0x18
@@ -4591,10 +4591,10 @@ ov101_021E9B70: ; 0x021E9B70
 	add r6, r1, #0
 	add r4, r0, #0
 	ldr r0, [r6, #8]
-	bl sub_020CCBB0
+	bl FX_Inv
 	add r5, r0, #0
 	ldr r0, [r6, #0xc]
-	bl sub_020CCBB0
+	bl FX_Inv
 	str r5, [sp, #4]
 	mov r5, #0
 	str r5, [sp, #8]
@@ -10198,7 +10198,7 @@ _021EC682:
 	bl _ftoi
 	add r1, r0, #0
 	ldr r0, [sp, #0x24]
-	bl sub_020CCBA0
+	bl FX_Div
 	str r0, [r5, #0x18]
 	ldr r0, _021EC774 ; =0x0000013A
 	ldrb r0, [r6, r0]
@@ -10243,7 +10243,7 @@ _021EC6EA:
 	bl _ftoi
 	add r1, r0, #0
 	ldr r0, [sp, #0x28]
-	bl sub_020CCBA0
+	bl FX_Div
 	str r0, [r5, #0x1c]
 	mov r0, #6
 	ldrsh r0, [r5, r0]

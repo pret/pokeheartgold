@@ -3641,7 +3641,7 @@ _02203828:
 	add r1, r6, #0
 	mov r2, #0x3c
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 	add r2, r0, #0
 	beq _02203876
 	ldr r0, [r4, #0x14]

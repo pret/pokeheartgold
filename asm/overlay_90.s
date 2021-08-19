@@ -758,7 +758,7 @@ ov90_02258CF0: ; 0x02258CF0
 	add r1, r4, #0
 	mul r1, r4
 	lsl r1, r1, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	str r6, [r5]
 	ldr r1, [sp]
 	str r6, [r5, #4]
@@ -812,7 +812,7 @@ _02258D60:
 	lsr r0, r0, #0xc
 	orr r0, r1
 	lsl r1, r2, #2
-	bl sub_020CCBA0
+	bl FX_Div
 	ldr r1, [r5, #4]
 	add r0, r6, r0
 	add r0, r1, r0

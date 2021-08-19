@@ -1327,7 +1327,7 @@ _022465D8:
 	add r1, r0, #0
 	mov r0, #0x5a
 	lsl r0, r0, #0xe
-	bl sub_020CCBA0
+	bl FX_Div
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #0x18]
@@ -7545,7 +7545,7 @@ ov02_022494C4: ; 0x022494C4
 	sub r0, r1, r0
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	mov r1, #0xbb
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -25542,7 +25542,7 @@ _02251D1A:
 	add r1, r0, #0
 	add r0, sp, #0x14
 	add r2, #0xc
-	bl sub_020CCDAC
+	bl VEC_Subtract
 	ldr r0, [r5, #0x24]
 	bl sub_0202360C
 	strh r0, [r4, #0x18]
@@ -26928,11 +26928,11 @@ ov02_022527B0: ; 0x022527B0
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0x10
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r0, sp, #4
 	add r1, sp, #0x10
 	add r2, sp, #0x34
-	bl sub_020CB630
+	bl MTX_MultVec33
 	ldr r1, [sp]
 	add r0, sp, #0x34
 	bl sub_02023204

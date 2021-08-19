@@ -100459,7 +100459,7 @@ ov12_02268520: ; 0x02268520
 	add r1, r4, r1
 	asr r5, r1, #3
 	mov r1, #8
-	bl sub_020CCD3C
+	bl FX_ModS32
 	cmp r0, #0
 	beq _02268548
 	add r5, r5, #1

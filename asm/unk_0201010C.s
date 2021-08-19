@@ -1164,13 +1164,13 @@ sub_020109BC: ; 0x020109BC
 	ldr r2, _020109D0 ; =0x021094DC
 	add r1, r1, #1
 	lsl r1, r1, #1
-	ldr r3, _020109D4 ; =sub_020CCBA0
+	ldr r3, _020109D4 ; =FX_Div
 	ldrsh r0, [r2, r0]
 	ldrsh r1, [r2, r1]
 	bx r3
 	.balign 4, 0
 _020109D0: .word 0x021094DC
-_020109D4: .word sub_020CCBA0
+_020109D4: .word FX_Div
 	thumb_func_end sub_020109BC
 
 	thumb_func_start sub_020109D8
@@ -1250,7 +1250,7 @@ sub_02010A54: ; 0x02010A54
 	add r0, r4, r0
 	asr r0, r0, #1
 	lsl r0, r0, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	pop {r4, pc}
 	thumb_func_end sub_02010A54
 
@@ -3472,7 +3472,7 @@ _02011A6A:
 	lsr r2, r2, #0xc
 	orr r2, r1
 	sub r0, r0, r2
-	bl sub_020CCBEC
+	bl FX_Sqrt
 	asr r2, r0, #0xc
 	ldr r0, [sp]
 	sub r0, r0, r2

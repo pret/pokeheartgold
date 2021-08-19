@@ -2355,7 +2355,7 @@ ov89_02259C0C: ; 0x02259C0C
 	str r0, [sp, #0x2c]
 	str r0, [sp, #0x30]
 	add r0, sp, #4
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	bl sub_02026E48
 	add r0, r4, #0
 	add r0, #0xcc
@@ -2387,7 +2387,7 @@ ov89_02259C0C: ; 0x02259C0C
 	bl sub_020BEFD4
 	ldr r1, _02259CC8 ; =0x021DA558
 	add r0, sp, #4
-	bl sub_020D4928
+	bl MI_Copy36B
 	ldr r1, _02259CCC ; =0x021DA51C
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
@@ -3301,7 +3301,7 @@ ov89_0225A368: ; 0x0225A368
 	add r1, r4, r1
 	asr r5, r1, #3
 	mov r1, #8
-	bl sub_020CCD3C
+	bl FX_ModS32
 	cmp r0, #0
 	beq _0225A390
 	add r5, r5, #1
@@ -4763,18 +4763,18 @@ _0225ADC0:
 	mov r2, #1
 	lsl r2, r2, #0xc
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 	add r2, r4, #0
 	add r3, r6, #0
 	bl _ll_mul
 	mov r2, #0x64
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 	sub r0, r0, r4
 	sbc r1, r6
 	mov r2, #2
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 	ldr r1, [r5, #4]
 	mov r2, #0x64
 	add r1, r1, r0
@@ -4793,18 +4793,18 @@ _0225ADC0:
 	mov r2, #1
 	lsl r2, r2, #0xc
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 	add r2, r4, #0
 	add r3, r6, #0
 	bl _ll_mul
 	mov r2, #0x64
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 	sub r0, r0, r4
 	sbc r1, r6
 	mov r2, #2
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 	ldr r1, [r5, #8]
 	add r1, r1, r0
 	str r1, [r5, #8]

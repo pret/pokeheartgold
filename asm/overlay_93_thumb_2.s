@@ -180,10 +180,10 @@ _0225FD3C:
 	str r0, [r5, #0x28]
 _0225FD44:
 	ldr r0, [sp, #0x10]
-	bl sub_020CCBB0
+	bl FX_Inv
 	add r5, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_020CCBB0
+	bl FX_Inv
 	str r0, [sp, #8]
 	ldr r0, [sp, #4]
 	mov r1, #7
@@ -4512,7 +4512,7 @@ ov93_02261EB8: ; 0x02261EB8
 	add r1, r7, r1
 	asr r6, r1, #3
 	mov r1, #8
-	bl sub_020CCD3C
+	bl FX_ModS32
 	cmp r0, #0
 	beq _02261EE6
 	add r6, r6, #1

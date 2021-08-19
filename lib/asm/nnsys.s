@@ -7327,13 +7327,13 @@ sub_020BA8D0: ; 0x020BA8D0
 	str lr, [sp, #0x14]
 	bl sub_020BAB58
 	mov r0, r5
-	bl sub_020CCBB0
+	bl FX_Inv
 	mov r1, #0
 	str r0, [sp]
 	mov r0, r4
 	str r1, [sp, #4]
 	str r1, [sp, #8]
-	bl sub_020CCBB0
+	bl FX_Inv
 	mov ip, #0
 	ldr r1, _020BAA0C ; =0x021D94D8
 	str r0, [sp, #0xc]
@@ -11878,7 +11878,7 @@ _020BE64C:
 	beq _020BE690
 	mov r0, r2, lsl #0xc
 	mov r1, r1, lsl #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 _020BE690:
 	str r0, [r7, #0x24]
 	ldrh r1, [r7, #0x22]
@@ -11887,7 +11887,7 @@ _020BE690:
 	beq _020BE6B0
 	mov r0, r6, lsl #0xc
 	mov r1, r1, lsl #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 _020BE6B0:
 	str r0, [r7, #0x28]
 	ldrb r0, [sb, #2]
@@ -12498,9 +12498,9 @@ sub_020BEE44: ; 0x020BEE44
 	str r0, [r1, #0xa4]
 	ldr r0, _020BEF70 ; =0x021DA4E8
 	str r2, [r1, #0xb8]
-	bl sub_020CB6AC
+	bl MTX_Identity43_
 	ldr r0, _020BEF74 ; =0x021DA4A4
-	bl sub_020CC044
+	bl MTX_Identity44_
 	ldr ip, _020BEF78 ; =0x40000200
 	ldr r3, _020BEF7C ; =0xC0080000
 	ldr r2, _020BEF80 ; =0x2D8B62D8
@@ -12530,7 +12530,7 @@ sub_020BEE44: ; 0x020BEE44
 	str r2, [r1, #0xe4]
 	ldr r0, _020BEF94 ; =0x021DA558
 	str r2, [r1, #0xe8]
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	mov r1, #0
 	ldr r0, _020BEF5C ; =0x021DA49C
 	mov r2, #0x1000
@@ -12706,7 +12706,7 @@ sub_020BF0F8: ; 0x020BF0F8
 	bne _020BF128
 	ldr r0, _020BF134 ; =0x021DA4E8
 	ldr r1, _020BF138 ; =0x021DA59C
-	bl sub_020CB83C
+	bl MTX_Inverse43
 	ldr r0, _020BF130 ; =0x021DA49C
 	ldr r1, [r0, #0xfc]
 	orr r1, r1, #8
@@ -12728,7 +12728,7 @@ sub_020BF13C: ; 0x020BF13C
 	add r1, sp, #8
 	bl sub_020D4968
 	ldr r0, [sp]
-	bl sub_020CC044
+	bl MTX_Identity44_
 	mov fp, #0
 _020BF15C:
 	mov r3, fp
@@ -12778,7 +12778,7 @@ _020BF1FC:
 	add r0, sp, #8
 	add r0, r0, fp, lsl #4
 	ldr r0, [r0, fp, lsl #2]
-	bl sub_020CCBC0
+	bl FX_InvFx64c
 	ldr r2, [sp]
 	mov r3, #0
 	mov lr, #0x80000000
@@ -12892,7 +12892,7 @@ sub_020BF388: ; 0x020BF388
 	ldr r0, _020BF3CC ; =0x021DA558
 	ldr r1, _020BF3D0 ; =0x021DA4E8
 	ldr r2, _020BF3D4 ; =0x021DA5CC
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	ldr r3, _020BF3D8 ; =0x021DA49C
 	ldr r0, _020BF3D4 ; =0x021DA5CC
 	ldr r2, [r3, #0xf4]
@@ -12900,10 +12900,10 @@ sub_020BF388: ; 0x020BF388
 	str r2, [sp]
 	ldr r2, [r3, #0xec]
 	ldr r3, [r3, #0xf0]
-	bl sub_020CB7CC
+	bl MTX_ScaleApply43
 	ldr r0, _020BF3D4 ; =0x021DA5CC
 	ldr r1, _020BF3DC ; =0x021DA5FC
-	bl sub_020CB83C
+	bl MTX_Inverse43
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020BF3CC: .word 0x021DA558
@@ -12967,11 +12967,11 @@ sub_020BF450: ; 0x020BF450
 	mov r4, r0
 	add r1, sp, #0
 	mov r0, r5
-	bl sub_020CB6D4
+	bl MTX_Copy43To44_
 	ldr r2, _020BF4B4 ; =0x021DA69C
 	add r1, sp, #0
 	mov r0, r4
-	bl sub_020CC1E8
+	bl MTX_Concat44
 	ldr r0, _020BF4B0 ; =0x021DA49C
 	ldr r1, [r0, #0xfc]
 	orr r1, r1, #0x40
@@ -13217,7 +13217,7 @@ _020BF7CC:
 	beq _020BF7E8
 	ldr r0, [sb, #4]
 	mov r1, r5
-	bl sub_020CCBA0
+	bl FX_Div
 	mov r7, r0
 _020BF7E8:
 	ldr r3, [sp, #0x18]
@@ -13317,7 +13317,7 @@ _020BF940:
 	add r0, sl, #0x28
 	add r1, sl, #0x34
 	add r2, sl, #0x40
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	ldr r0, [sl, #0x28]
 	cmp r0, #0
 	ldreq r0, [sl, #0x2c]
@@ -13333,7 +13333,7 @@ _020BF940:
 _020BF990:
 	add r0, sl, #0x28
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 _020BF99C:
 	ldr r0, [sl, #0x40]
 	cmp r0, #0
@@ -13350,12 +13350,12 @@ _020BF99C:
 _020BF9CC:
 	add r0, sl, #0x40
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 _020BF9D8:
 	add r0, sl, #0x40
 	add r1, sl, #0x28
 	add r2, sl, #0x34
-	bl sub_020CCE94
+	bl VEC_CrossProduct
 	mov r0, #1
 	add sp, sp, #0x70
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -14709,22 +14709,22 @@ _020C0C5C:
 	beq _020C0C9C
 	bl sub_020BF3E0
 	add r1, sp, #0x48
-	bl sub_020CB6D4
+	bl MTX_Copy43To44_
 	add r0, sp, #0x88
 	add r1, sp, #0x48
 	mov r2, r0
-	bl sub_020CC1E8
+	bl MTX_Concat44
 	b _020C0CC0
 _020C0C9C:
 	tst r0, #2
 	beq _020C0CC0
 	ldr r0, _020C0E38 ; =0x021DA4E8
 	add r1, sp, #8
-	bl sub_020CB6D4
+	bl MTX_Copy43To44_
 	add r0, sp, #0x88
 	add r1, sp, #8
 	mov r2, r0
-	bl sub_020CC1E8
+	bl MTX_Concat44
 _020C0CC0:
 	ldr r3, [sp, #0xb8]
 	ldr r2, [sp, #0xbc]
@@ -14733,13 +14733,13 @@ _020C0CC0:
 	str r3, [r5]
 	str r2, [r5, #4]
 	str r1, [r5, #8]
-	bl sub_020CCF80
+	bl VEC_Mag
 	str r0, [r6]
 	add r0, sp, #0x98
-	bl sub_020CCF80
+	bl VEC_Mag
 	str r0, [r6, #4]
 	add r0, sp, #0xa8
-	bl sub_020CCF80
+	bl VEC_Mag
 	ldr r1, _020C0E34 ; =0x021DA49C
 	str r0, [r6, #8]
 	ldr r0, [r1, #0xfc]
@@ -14921,22 +14921,22 @@ _020C0F68:
 	beq _020C0FA8
 	bl sub_020BF3E0
 	add r1, sp, #0x48
-	bl sub_020CB6D4
+	bl MTX_Copy43To44_
 	add r0, sp, #0x88
 	add r1, sp, #0x48
 	mov r2, r0
-	bl sub_020CC1E8
+	bl MTX_Concat44
 	b _020C0FCC
 _020C0FA8:
 	tst r0, #2
 	beq _020C0FCC
 	ldr r0, _020C11A0 ; =0x021DA4E8
 	add r1, sp, #8
-	bl sub_020CB6D4
+	bl MTX_Copy43To44_
 	add r0, sp, #0x88
 	add r1, sp, #8
 	mov r2, r0
-	bl sub_020CC1E8
+	bl MTX_Concat44
 _020C0FCC:
 	ldr r3, [sp, #0xb8]
 	ldr r2, [sp, #0xbc]
@@ -14945,13 +14945,13 @@ _020C0FCC:
 	str r3, [fp]
 	str r2, [fp, #4]
 	str r1, [fp, #8]
-	bl sub_020CCF80
+	bl VEC_Mag
 	str r0, [r6]
 	add r0, sp, #0x98
-	bl sub_020CCF80
+	bl VEC_Mag
 	str r0, [r6, #4]
 	add r0, sp, #0xa8
-	bl sub_020CCF80
+	bl VEC_Mag
 	ldr r1, [sp, #0x9c]
 	str r0, [r6, #8]
 	cmp r1, #0
@@ -14960,7 +14960,7 @@ _020C0FCC:
 	beq _020C1040
 	add r0, sp, #0x98
 	add r1, r7, #0xc
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldr r1, [r7, #0x14]
 	ldr r0, [r7, #0x10]
 	rsb r1, r1, #0
@@ -14970,7 +14970,7 @@ _020C0FCC:
 _020C1040:
 	add r0, sp, #0xa8
 	add r1, r7, #0x18
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldr r1, [r7, #0x1c]
 	ldr r0, [r7, #0x20]
 	rsb r1, r1, #0
@@ -16518,7 +16518,7 @@ _020C2640:
 	bne _020C2640
 	add r0, sp, #0
 	mov r1, r6
-	bl sub_020CC070
+	bl MTX_Copy44To43_
 _020C265C:
 	cmp r5, #0
 	beq _020C2674
@@ -16742,7 +16742,7 @@ sub_020C28F8: ; 0x020C28F8
 	sub r1, r1, r2
 	mov r0, r0, lsl #0xc
 	mov r1, r1, lsl #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	rsb r1, r5, #0
 	mov r5, r0
 	ldr r0, [sp, #0x1c]
@@ -16750,7 +16750,7 @@ sub_020C28F8: ; 0x020C28F8
 	add r0, r6, r0
 	sub r0, r0, #0xbf
 	mov r0, r0, lsl #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	cmp r5, #0
 	cmpge r0, #0
 	blt _020C2984
@@ -16782,7 +16782,7 @@ _020C2998:
 	add r0, r0, r2
 	str r0, [sp, #0xc]
 	sub r0, r0, r1
-	bl sub_020CCC7C
+	bl FX_InvAsync
 	ldr r0, [r5, #0x10]
 	ldr r2, [r5]
 	smull r3, r0, sl, r0
@@ -16828,13 +16828,13 @@ _020C2A78:
 	sub r6, r6, r2
 	sub r7, r7, r1
 	sub r8, r8, r0
-	bl sub_020CCC20
+	bl FX_GetDivResultFx64c
 	mov r5, r0
 	mov sl, r1
 	cmp r4, #0
 	beq _020C2AAC
 	ldr r0, [sp, #8]
-	bl sub_020CCC7C
+	bl FX_InvAsync
 _020C2AAC:
 	mov r0, r6, asr #0x1f
 	umull r2, r1, r5, r6
@@ -16859,7 +16859,7 @@ _020C2AAC:
 	str r0, [fp, #8]
 	cmp r4, #0
 	beq _020C2B70
-	bl sub_020CCC20
+	bl FX_GetDivResultFx64c
 	ldr r2, [sp, #4]
 	umull r6, r5, r0, r2
 	mov r2, r2, asr #0x1f
@@ -19391,10 +19391,10 @@ _020C4AB0:
 	mov r0, r5
 	mov r1, r5
 	str r2, [r5, #0x14]
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add r0, r5, #0xc
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	cmp sl, #0
 	bne _020C4C04
 	ldr r0, [r5, #0x18]
@@ -19414,7 +19414,7 @@ _020C4AB0:
 	add r0, r5, #0x18
 	mov r1, r0
 	str r2, [r5, #0x20]
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add sp, sp, #0x48
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _020C4C04:
@@ -19488,10 +19488,10 @@ _020C4C70:
 	ldr r2, [sp, #0x14]
 	add r2, r3, r2
 	str r2, [r5, #0x14]
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add r0, r5, #0xc
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	cmp r8, #0
 	bne _020C4D6C
 	ldr r2, [r5, #0x18]
@@ -19508,7 +19508,7 @@ _020C4C70:
 	ldr r2, [sp, #0x20]
 	add r2, r3, r2
 	str r2, [r5, #0x20]
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add sp, sp, #0x48
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _020C4D6C:
@@ -19570,7 +19570,7 @@ _020C4DC8:
 _020C4E44:
 	add r0, r5, #0x18
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add sp, sp, #0x48
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
@@ -19639,7 +19639,7 @@ _020C4EB0:
 _020C4F3C:
 	add r0, sl, #0x18
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020C4F50:
@@ -19738,10 +19738,10 @@ _020C4FD0:
 	mov r0, sl
 	mov r1, sl
 	str r2, [sl, #0x14]
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add r0, sl, #0xc
 	mov r1, r0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	cmp r5, #0
 	bne _020C5138
 	ldr r2, [sp, #0x3c]
@@ -19767,7 +19767,7 @@ _020C4FD0:
 	add r0, sl, #0x18
 	mov r1, r0
 	str r2, [sl, #0x20]
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020C5138:
@@ -20610,7 +20610,7 @@ _020C5C40:
 	beq _020C5CCC
 	mov r0, r3, lsl #0xc
 	mov r1, r1, lsl #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 _020C5CCC:
 	str r0, [r4, #0x30]
 	ldrh r1, [r4, #0x2e]
@@ -20619,7 +20619,7 @@ _020C5CCC:
 	beq _020C5CEC
 	mov r0, r5, lsl #0xc
 	mov r1, r1, lsl #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 _020C5CEC:
 	str r0, [r4, #0x34]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -20958,7 +20958,7 @@ sub_020C612C: ; 0x020C612C
 	mov fp, r1, lsl #0xc
 	mov r0, fp
 	mov r1, r8
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r5, [sb, #0x22]
 	ldr r3, [sb, #0x18]
 	ldrsh r0, [sb, #0x20]
@@ -20977,14 +20977,14 @@ sub_020C612C: ; 0x020C612C
 	orr r4, r4, r0, lsl #20
 	str r6, [sl]
 	str r4, [sl, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	mov r1, fp
 	rsb r2, r5, #0
 	mul r0, r2, r0
 	mov r0, r0, asr #0xc
 	str r0, [sl, #4]
 	mov r0, r8
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	sub r0, r5, r4
 	add r1, r7, r6
 	ldr r5, [sb, #0x18]
@@ -21010,7 +21010,7 @@ sub_020C612C: ; 0x020C612C
 	mul r0, r3, r1
 	add r0, r0, r2, lsl #3
 	str r0, [sl, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	mul r0, r7, r0
 	mov r0, r0, asr #0xc
 	str r0, [sl, #0x10]
@@ -21028,12 +21028,12 @@ sub_020C6234: ; 0x020C6234
 	mov r7, r1, lsl #0xc
 	mov r0, r7
 	mov r1, r4
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6]
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r2, [r5, #0x20]
 	mov r1, r7
 	rsb r2, r2, #0
@@ -21041,7 +21041,7 @@ sub_020C6234: ; 0x020C6234
 	mov r2, r0, asr #0xc
 	mov r0, r4
 	str r2, [r6, #4]
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r2, [r5, #0x20]
 	ldrsh r1, [r5, #0x22]
 	ldrh r3, [r5, #0x2c]
@@ -21065,7 +21065,7 @@ sub_020C6234: ; 0x020C6234
 	mov r0, r1, lsl #4
 	add r0, r0, r2, lsl #3
 	str r0, [r6, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r1, [r5, #0x20]
 	mul r0, r1, r0
 	mov r0, r0, asr #0xc
@@ -21141,7 +21141,7 @@ sub_020C63C8: ; 0x020C63C8
 	mov fp, r1, lsl #0xc
 	mov r0, fp
 	mov r1, r8
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r5, [sb, #0x22]
 	ldr r3, [sb, #0x18]
 	ldrsh r0, [sb, #0x20]
@@ -21160,14 +21160,14 @@ sub_020C63C8: ; 0x020C63C8
 	orr r4, r4, r0, lsl #20
 	str r6, [sl]
 	str r4, [sl, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	mov r1, fp
 	rsb r2, r5, #0
 	mul r0, r2, r0
 	mov r0, r0, asr #0xc
 	str r0, [sl, #4]
 	mov r0, r8
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	sub r1, r5, r4
 	add r0, r7, r6
 	ldrh r3, [sb, #0x2c]
@@ -21183,7 +21183,7 @@ sub_020C63C8: ; 0x020C63C8
 	mul r0, r2, r0
 	mov r0, r0, lsl #3
 	str r0, [sl, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	mul r0, r7, r0
 	mov r0, r0, asr #0xc
 	str r0, [sl, #0x10]
@@ -21201,12 +21201,12 @@ sub_020C64A8: ; 0x020C64A8
 	mov r7, r1, lsl #0xc
 	mov r0, r7
 	mov r1, r4
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6]
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r2, [r5, #0x20]
 	mov r1, r7
 	rsb r2, r2, #0
@@ -21214,7 +21214,7 @@ sub_020C64A8: ; 0x020C64A8
 	mov r2, r0, asr #0xc
 	mov r0, r4
 	str r2, [r6, #4]
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r1, [r5, #0x20]
 	ldrsh r0, [r5, #0x22]
 	ldrh r2, [r5, #0x2c]
@@ -21232,7 +21232,7 @@ sub_020C64A8: ; 0x020C64A8
 	mul r0, r2, r0
 	mov r0, r0, lsl #3
 	str r0, [r6, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r1, [r5, #0x20]
 	mul r0, r1, r0
 	mov r0, r0, asr #0xc
@@ -21728,7 +21728,7 @@ sub_020C6C24: ; 0x020C6C24
 	mov fp, r1, lsl #0xc
 	mov r0, fp
 	mov r1, r8
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r0, [sb, #0x22]
 	ldr r3, [sb, #0x18]
 	ldrsh r5, [sb, #0x20]
@@ -21747,13 +21747,13 @@ sub_020C6C24: ; 0x020C6C24
 	orr r4, r4, r0, lsl #20
 	str r7, [sl]
 	str r5, [sl, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	mov r1, fp
 	mul r0, r4, r0
 	mov r0, r0, asr #0xc
 	str r0, [sl, #4]
 	mov r0, r8
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrh r1, [sb, #0x2c]
 	ldrh r8, [sb, #0x2e]
 	ldr r2, [sb, #0x28]
@@ -21779,7 +21779,7 @@ sub_020C6C24: ; 0x020C6C24
 	orr r0, r0, r2, lsl #24
 	add r0, r0, r1, lsl #15
 	str r0, [sl, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	rsb r1, r6, #0
 	mul r0, r1, r0
 	mov r0, r0, asr #0xc
@@ -21798,19 +21798,19 @@ sub_020C6D2C: ; 0x020C6D2C
 	mov r7, r1, lsl #0xc
 	mov r0, r7
 	mov r1, r4
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6]
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r2, [r5, #0x20]
 	mov r1, r7
 	mul r0, r2, r0
 	mov r2, r0, asr #0xc
 	mov r0, r4
 	str r2, [r6, #4]
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrh r2, [r5, #0x2c]
 	ldrh r4, [r5, #0x2e]
 	ldr r1, [r5, #0x28]
@@ -21840,7 +21840,7 @@ sub_020C6D2C: ; 0x020C6D2C
 	orr r0, r0, r1, lsl #24
 	add r0, r0, ip, lsl #15
 	str r0, [r6, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r1, [r5, #0x20]
 	rsb r1, r1, #0
 	mul r0, r1, r0
@@ -21918,7 +21918,7 @@ sub_020C6EDC: ; 0x020C6EDC
 	mov fp, r1, lsl #0xc
 	mov r0, fp
 	mov r1, r8
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r0, [sb, #0x22]
 	ldr r3, [sb, #0x18]
 	ldrsh r5, [sb, #0x20]
@@ -21937,13 +21937,13 @@ sub_020C6EDC: ; 0x020C6EDC
 	orr r4, r4, r0, lsl #20
 	str r7, [sl]
 	str r5, [sl, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	mov r1, fp
 	mul r0, r4, r0
 	mov r0, r0, asr #0xc
 	str r0, [sl, #4]
 	mov r0, r8
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrh r3, [sb, #0x2c]
 	ldrh r1, [sb, #0x2e]
 	rsb r0, r3, #0
@@ -21965,7 +21965,7 @@ sub_020C6EDC: ; 0x020C6EDC
 	ldrh r0, [sb, #0x2e]
 	add r0, r4, r0, lsl #15
 	str r0, [sl, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	rsb r1, r6, #0
 	mul r0, r1, r0
 	mov r0, r0, asr #0xc
@@ -21984,19 +21984,19 @@ sub_020C6FD4: ; 0x020C6FD4
 	mov r7, r1, lsl #0xc
 	mov r0, r7
 	mov r1, r4
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6]
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r2, [r5, #0x20]
 	mov r1, r7
 	mul r0, r2, r0
 	mov r2, r0, asr #0xc
 	mov r0, r4
 	str r2, [r6, #4]
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrh r2, [r5, #0x2c]
 	ldrh r1, [r5, #0x2e]
 	ldrsh r4, [r5, #0x22]
@@ -22022,7 +22022,7 @@ sub_020C6FD4: ; 0x020C6FD4
 	orr r0, r0, r1, lsl #24
 	add r0, r0, ip, lsl #15
 	str r0, [r6, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r1, [r5, #0x20]
 	rsb r1, r1, #0
 	mul r0, r1, r0
@@ -22168,7 +22168,7 @@ sub_020C7268: ; 0x020C7268
 	mov fp, r1, lsl #0xc
 	mov r0, fp
 	mov r1, sl
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r3, [r6, #0x22]
 	ldr r0, [r6, #0x18]
 	ldrsh sb, [r6, #0x20]
@@ -22184,7 +22184,7 @@ sub_020C7268: ; 0x020C7268
 	mov r5, r2, lsr #0xc
 	orr r5, r5, r1, lsl #20
 	str r4, [r7, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	smull r2, r1, r8, sb
 	mov r2, r2, lsr #0xc
 	orr r2, r2, r1, lsl #20
@@ -22193,7 +22193,7 @@ sub_020C7268: ; 0x020C7268
 	str r0, [r7, #4]
 	mov r0, sl
 	mov r1, fp
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldr lr, [r6, #0x1c]
 	ldrsh r2, [r6, #0x20]
 	ldr r8, [r6, #0x24]
@@ -22238,7 +22238,7 @@ sub_020C7268: ; 0x020C7268
 	mul r1, r0, r2
 	mov r0, r1, lsl #4
 	str r0, [r7, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	rsb r1, r5, #0
 	mul r0, r1, r0
 	mov r0, r0, asr #0xc
@@ -22257,19 +22257,19 @@ sub_020C73BC: ; 0x020C73BC
 	mov r7, r1, lsl #0xc
 	mov r0, r7
 	mov r1, r4
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6]
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r2, [r5, #0x20]
 	mov r1, r7
 	mul r0, r2, r0
 	mov r2, r0, asr #0xc
 	mov r0, r4
 	str r2, [r6, #4]
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh lr, [r5, #0x20]
 	ldr r4, [r5, #0x28]
 	ldrsh r0, [r5, #0x22]
@@ -22297,7 +22297,7 @@ sub_020C73BC: ; 0x020C73BC
 	mul r0, r1, r0
 	mov r0, r0, lsl #4
 	str r0, [r6, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r1, [r5, #0x20]
 	rsb r1, r1, #0
 	mul r0, r1, r0
@@ -22379,7 +22379,7 @@ sub_020C7574: ; 0x020C7574
 	mov fp, r1, lsl #0xc
 	mov r0, fp
 	mov r1, r8
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r3, [sb, #0x22]
 	ldr r0, [sb, #0x18]
 	ldrsh r7, [sb, #0x20]
@@ -22395,7 +22395,7 @@ sub_020C7574: ; 0x020C7574
 	mov r6, r2, lsr #0xc
 	orr r6, r6, r1, lsl #20
 	str r4, [sl, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	smull r2, r1, r5, r7
 	mov r2, r2, lsr #0xc
 	orr r2, r2, r1, lsl #20
@@ -22404,7 +22404,7 @@ sub_020C7574: ; 0x020C7574
 	str r0, [sl, #4]
 	mov r0, r8
 	mov r1, fp
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	sub r0, r4, #0x1000
 	ldrh r1, [sb, #0x2c]
 	mul r2, r1, r6
@@ -22415,7 +22415,7 @@ sub_020C7574: ; 0x020C7574
 	mul r0, r1, r0
 	mov r0, r0, lsl #4
 	str r0, [sl, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	rsb r1, r6, #0
 	mul r0, r1, r0
 	mov r0, r0, asr #0xc
@@ -22434,19 +22434,19 @@ sub_020C7640: ; 0x020C7640
 	mov r7, r1, lsl #0xc
 	mov r0, r7
 	mov r1, r4
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6]
 	ldrsh r0, [r5, #0x22]
 	str r0, [r6, #0x14]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r2, [r5, #0x20]
 	mov r1, r7
 	mul r0, r2, r0
 	mov r2, r0, asr #0xc
 	mov r0, r4
 	str r2, [r6, #4]
-	bl sub_020CCCD8
+	bl FX_DivAsync
 	ldrh r1, [r5, #0x2c]
 	ldrsh r0, [r5, #0x20]
 	mul r0, r1, r0
@@ -22459,7 +22459,7 @@ sub_020C7640: ; 0x020C7640
 	mul r0, r1, r0
 	mov r0, r0, lsl #4
 	str r0, [r6, #0x34]
-	bl sub_020CCC44
+	bl FX_GetDivResult
 	ldrsh r1, [r5, #0x20]
 	rsb r1, r1, #0
 	mul r0, r1, r0

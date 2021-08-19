@@ -7115,7 +7115,7 @@ _021E916C:
 	str r0, [sp, #4]
 	str r0, [sp, #8]
 	add r0, sp, #0x18
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	add r6, #0x10
 	add r0, r6, #0
 	add r1, sp, #0xc

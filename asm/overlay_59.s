@@ -2847,7 +2847,7 @@ _02239332:
 	bl _ftoi
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_020CCBA0
+	bl FX_Div
 	str r0, [r4, #0xc]
 	ldrb r0, [r4, #5]
 	cmp r0, #0
@@ -2890,7 +2890,7 @@ _02239396:
 	bl _ftoi
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_020CCBA0
+	bl FX_Div
 	str r0, [r4, #0x10]
 	ldr r0, _022393D0 ; =ov59_02239C90
 	add r1, r4, #0
@@ -8499,7 +8499,7 @@ _0223BEE4:
 	add r1, r0, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	str r0, [r4, #8]
 	mov r0, #0xc
 	strh r0, [r4, #0xe]
@@ -8540,7 +8540,7 @@ _0223BF3C:
 	add r1, r0, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	neg r0, r0
 	str r0, [r4, #8]
 	mov r0, #0xe

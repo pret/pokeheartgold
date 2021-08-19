@@ -13923,7 +13923,7 @@ ov01_021EC31C: ; 0x021EC31C
 	mov r1, #3
 	lsl r0, r0, #0xe
 	lsl r1, r1, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	add r7, r0, #0
 	mov r0, #0x41
 	ldr r1, [r5]
@@ -13948,18 +13948,18 @@ ov01_021EC31C: ; 0x021EC31C
 	mov r1, #1
 	ldr r0, [sp, #0x14]
 	lsl r1, r1, #0x14
-	bl sub_020CCBA0
+	bl FX_Div
 	str r0, [sp, #0x14]
 	cmp r4, #0
 	bgt _021EC398
 	ldr r0, [sp, #0x10]
 	ldr r1, _021EC464 ; =0x000BE8D0
-	bl sub_020CCBA0
+	bl FX_Div
 	b _021EC3A0
 _021EC398:
 	ldr r0, [sp, #0x10]
 	ldr r1, _021EC468 ; =0x000BE811
-	bl sub_020CCBA0
+	bl FX_Div
 _021EC3A0:
 	mov r7, #1
 	lsl r7, r7, #0xc
@@ -13983,7 +13983,7 @@ _021EC3A0:
 _021EC3C8:
 	ldr r1, [sp, #0x14]
 	add r0, r6, #0
-	bl sub_020CCBA0
+	bl FX_Div
 	add r6, r0, #0
 	cmp r7, #0
 	bge _021EC3F0
@@ -14021,7 +14021,7 @@ _021EC3F0:
 _021EC416:
 	ldr r1, [sp, #0x10]
 	add r0, r4, #0
-	bl sub_020CCBA0
+	bl FX_Div
 	add r3, r0, #0
 	cmp r7, #0
 	bge _021EC43E
@@ -21657,7 +21657,7 @@ ov01_021EFE80: ; 0x021EFE80
 	orr r0, r1
 	ldr r1, [r4, #0x10]
 	lsl r1, r1, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	ldr r1, [r4, #4]
 	add r0, r0, r1
 	str r0, [r4]
@@ -21713,7 +21713,7 @@ ov01_021EFEC8: ; 0x021EFEC8
 	add r1, r4, #0
 	mul r1, r4
 	lsl r1, r1, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	str r6, [r5]
 	ldr r1, [sp]
 	str r6, [r5, #4]
@@ -21760,7 +21760,7 @@ ov01_021EFF28: ; 0x021EFF28
 	lsr r0, r0, #0xc
 	orr r0, r1
 	lsl r1, r2, #2
-	bl sub_020CCBA0
+	bl FX_Div
 	ldr r1, [r5, #4]
 	add r0, r4, r0
 	add r0, r1, r0
@@ -24130,14 +24130,14 @@ ov01_021F10C8: ; 0x021F10C8
 	ldr r0, [r3]
 	str r0, [r2]
 	add r0, sp, #0
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	add r0, sp, #0x30
 	bl sub_020BEFD4
 	add r0, sp, #0x24
 	bl sub_020BF004
 	ldr r1, _021F1140 ; =0x021DA558
 	add r0, sp, #0
-	bl sub_020D4928
+	bl MI_Copy36B
 	ldr r1, _021F1144 ; =0x021DA51C
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
@@ -24208,7 +24208,7 @@ _021F1154:
 	mov r1, #1
 	bl sub_02022C60
 	add r0, sp, #0x24
-	bl sub_020CAF70
+	bl MTX_Identity22_
 	mov r2, #0
 	str r2, [sp]
 	ldr r0, _021F1208 ; =0x04000030
@@ -29873,7 +29873,7 @@ ov01_021F3B84: ; 0x021F3B84
 	bl sub_020BEFD4
 	ldr r1, _021F3C04 ; =0x021DA558
 	add r0, r4, #0
-	bl sub_020D4928
+	bl MI_Copy36B
 	ldr r1, _021F3C08 ; =0x021DA51C
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
@@ -45497,7 +45497,7 @@ _021FAEB0:
 	add r0, r0, r1
 	ldr r1, [sp, #0x3c]
 	neg r0, r0
-	bl sub_020CCBA0
+	bl FX_Div
 	str r0, [r7]
 	add r4, r4, #1
 	add r7, #0xc
@@ -47784,7 +47784,7 @@ ov01_021FBF68: ; 0x021FBF68
 	cmp r0, #0
 	beq _021FBFFC
 	add r0, sp, #0x24
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	add r0, r4, #0
 	add r0, #0x70
 	ldrh r0, [r0]
@@ -47797,11 +47797,11 @@ ov01_021FBF68: ; 0x021FBF68
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r1, sp, #0x24
 	add r0, sp, #0
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x74
 	ldrh r0, [r0]
@@ -47814,11 +47814,11 @@ ov01_021FBF68: ; 0x021FBF68
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r1, sp, #0x24
 	add r0, sp, #0
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x72
 	ldrh r0, [r0]
@@ -47831,11 +47831,11 @@ ov01_021FBF68: ; 0x021FBF68
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	add r1, sp, #0x24
 	add r0, sp, #0
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r1, r4, #0
 	add r0, r4, #0
 	add r4, #0x60
@@ -57252,7 +57252,7 @@ ov01_02200540: ; 0x02200540
 	add r0, sp, #0x14
 	add r1, sp, #8
 	add r2, r0, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	add r0, r5, #0
 	bl sub_0205F538
 	add r1, r0, #1
@@ -63959,7 +63959,7 @@ _02203A6E:
 	add r0, sp, #0x14
 	add r1, sp, #8
 	add r2, r0, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	add r0, r5, #0
 	bl sub_0205F538
 	add r1, r0, #1
@@ -64512,17 +64512,17 @@ ov01_02203EA0: ; 0x02203EA0
 	add r0, sp, #8
 	add r1, sp, #0x14
 	add r2, sp, #0x3c
-	bl sub_020CCDAC
+	bl VEC_Subtract
 	add r0, sp, #8
 	add r1, sp, #0x14
-	bl sub_020CD280
+	bl VEC_Distance
 	str r0, [sp, #0x38]
 	mov r1, #3
 	bl _s32_div_f
 	str r0, [sp, #0x38]
 	add r0, sp, #0x3c
 	add r1, r0, #0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	add r0, r5, #0
 	add r1, sp, #0x20
 	bl sub_0205F944
@@ -64603,7 +64603,7 @@ ov01_02203F6C: ; 0x02203F6C
 	add r1, r4, #0
 	add r2, sp, #0xc
 	add r3, sp, #0
-	bl sub_020CD224
+	bl VEC_MultAdd
 	add r0, r5, #0
 	add r1, sp, #0
 	bl sub_02068DA8

@@ -312,7 +312,7 @@ sub_020181EC: ; 0x020181EC
 	cmp r0, #0
 	beq _02018280
 	add r0, sp, #0x24
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	add r0, r4, #0
 	add r0, #0x70
 	ldrh r0, [r0]
@@ -325,11 +325,11 @@ sub_020181EC: ; 0x020181EC
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r1, sp, #0x24
 	add r0, sp, #0
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x74
 	ldrh r0, [r0]
@@ -342,11 +342,11 @@ sub_020181EC: ; 0x020181EC
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r1, sp, #0x24
 	add r0, sp, #0
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x72
 	ldrh r0, [r0]
@@ -359,11 +359,11 @@ sub_020181EC: ; 0x020181EC
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	add r1, sp, #0x24
 	add r0, sp, #0
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r1, r4, #0
 	add r0, r4, #0
 	add r4, #0x60
@@ -2307,7 +2307,7 @@ sub_02019040: ; 0x02019040
 	add r0, sp, #0x1c
 	add r1, r6, #0
 	add r2, #0xc
-	bl sub_020CCDAC
+	bl VEC_Subtract
 	b _020190C6
 _020190BE:
 	mov r0, #0
@@ -2545,7 +2545,7 @@ sub_0201925C: ; 0x0201925C
 	add r0, r2, #0
 	add r2, sp, #0
 	add r4, r3, #0
-	bl sub_020CCDAC
+	bl VEC_Subtract
 	add r2, sp, #0x18
 	ldrb r2, [r2, #0x10]
 	ldr r0, [sp]

@@ -497,7 +497,7 @@ ov48_02258BF4: ; 0x02258BF4
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r5, r0, #0
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	ldr r0, [r4]
 	ldr r3, _02258C68 ; =0x021094DC
 	lsl r0, r0, #0x10
@@ -510,11 +510,11 @@ ov48_02258BF4: ; 0x02258BF4
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r5, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	ldr r0, [r4, #8]
 	ldr r3, _02258C68 ; =0x021094DC
 	lsl r0, r0, #0x10
@@ -527,11 +527,11 @@ ov48_02258BF4: ; 0x02258BF4
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r5, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add sp, #0x24
 	pop {r4, r5, pc}
 	nop
@@ -555,7 +555,7 @@ ov48_02258C6C: ; 0x02258C6C
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r5, r0, #0
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	ldr r0, [r4, #4]
 	ldr r3, _02258CE0 ; =0x021094DC
 	neg r0, r0
@@ -569,11 +569,11 @@ ov48_02258C6C: ; 0x02258C6C
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r5, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	ldr r0, [r4, #8]
 	ldr r3, _02258CE0 ; =0x021094DC
 	lsl r0, r0, #0x10
@@ -586,11 +586,11 @@ ov48_02258C6C: ; 0x02258C6C
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r5, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add sp, #0x24
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -1431,7 +1431,7 @@ _02259312:
 	mul r0, r5
 	add r0, r1, r0
 	lsl r0, r0, #0xc
-	bl sub_020CCBEC
+	bl FX_Sqrt
 	asr r0, r0, #0xc
 	pop {r3, r4, r5, pc}
 	nop
@@ -2320,7 +2320,7 @@ _022599F6:
 	cmp r6, #3
 	blt _022599C0
 	add r0, sp, #0x34
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	mov r0, #0xc1
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -2340,7 +2340,7 @@ _02259A24:
 	add r0, r6, #0
 	add r1, sp, #0x10
 	add r2, sp, #0x34
-	bl sub_020CB410
+	bl MTX_Concat33
 	ldrh r2, [r4, #0x2c]
 	cmp r2, #3
 	beq _02259A44

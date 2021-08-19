@@ -9220,7 +9220,7 @@ _0222B9B8:
 	bl _fsub
 _0222B9C6:
 	bl _ftoi
-	bl sub_020CCBEC
+	bl FX_Sqrt
 	bl _itof
 	ldr r1, _0222BA44 ; =0x45800000
 	bl _fdiv
@@ -9445,7 +9445,7 @@ _0222BBBE:
 	bl _ftoi
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_020CD5DC
+	bl FX_Atan2Idx
 	str r0, [r5, #0x28]
 	ldr r0, [r5, #0x24]
 	add sp, #0x24

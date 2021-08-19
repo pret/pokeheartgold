@@ -16515,8 +16515,8 @@ _ll_mod: ; 0x020F2740
 	b _020F2760
 	arm_func_end _ll_mod
 
-	arm_func_start _ll_div
-_ll_div: ; 0x020F2750
+	arm_func_start _ll_sdiv
+_ll_sdiv: ; 0x020F2750
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
 	eor r4, r1, r3
 	mov r4, r4, asr #1
@@ -16644,7 +16644,7 @@ _020F28EC:
 	blt _020F28D8
 	ldmia sp!, {r4, r5, r6, r7, fp, ip, lr}
 	bx lr
-	arm_func_end _ll_div
+	arm_func_end _ll_sdiv
 
 	arm_func_start _ll_udiv
 _ll_udiv: ; 0x020F2900

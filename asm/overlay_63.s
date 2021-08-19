@@ -6951,7 +6951,7 @@ _0221F6C0:
 	add r0, r1, r0
 	strh r0, [r4, #0x32]
 	ldr r0, [sp, #0x18]
-	bl sub_020CC044
+	bl MTX_Identity44_
 	add r7, r7, #1
 	add r5, r5, #6
 	add r6, r6, #6
@@ -6967,7 +6967,7 @@ _0221F74C:
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
-	bl sub_020CCDE0
+	bl VEC_Fx16Add
 	add r0, r5, #0
 	sub r5, r5, #1
 	cmp r0, #0
@@ -7125,9 +7125,9 @@ _0221F86C:
 	ldrsh r0, [r4, r0]
 	strh r0, [r4, #0x1e]
 	ldr r0, [sp, #0x10]
-	bl sub_020CCDE0
+	bl VEC_Fx16Add
 	ldr r0, [sp, #0xc]
-	bl sub_020CC044
+	bl MTX_Identity44_
 	mov r0, #0x14
 	ldrsh r0, [r4, r0]
 	mov r2, #0x10
@@ -7137,7 +7137,7 @@ _0221F86C:
 	ldrsh r3, [r4, r3]
 	ldr r1, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_020CC0A4
+	bl MTX_TransApply44
 	ldr r0, _0221FA74 ; =0x00001508
 	ldr r2, _0221FA84 ; =0x00002D6B
 	add r0, r7, r0
@@ -7159,7 +7159,7 @@ _0221F86C:
 	strh r1, [r0, #4]
 	add r0, sp, #0x20
 	add r1, r0, #0
-	bl sub_020CD0F8
+	bl VEC_Fx16Normalize
 	add r3, sp, #0x20
 	add r1, sp, #0x20
 	mov r0, #4
@@ -7183,7 +7183,7 @@ _0221F86C:
 	strh r1, [r0, #4]
 	add r0, sp, #0x20
 	add r1, r0, #0
-	bl sub_020CD0F8
+	bl VEC_Fx16Normalize
 	add r1, r6, #0
 	mov r0, #4
 	ldrsh r0, [r1, r0]
@@ -7207,11 +7207,11 @@ _0221F86C:
 	mov r3, #2
 	ldrsh r2, [r2, r3]
 	add r0, sp, #0x28
-	bl sub_020CC17C
+	bl MTX_RotX44_
 	ldr r2, [sp, #0xc]
 	add r0, sp, #0x28
 	add r1, r5, #0
-	bl sub_020CC1E8
+	bl MTX_Concat44
 	ldrh r0, [r4, #0x2a]
 	ldr r3, _0221FA90 ; =0x021094DC
 	asr r0, r0, #4
@@ -7222,11 +7222,11 @@ _0221F86C:
 	mov r3, #2
 	ldrsh r2, [r2, r3]
 	add r0, sp, #0x28
-	bl sub_020CC1A0
+	bl MTX_RotY44_
 	ldr r2, [sp, #0xc]
 	add r0, sp, #0x28
 	add r1, r5, #0
-	bl sub_020CC1E8
+	bl MTX_Concat44
 	ldrh r0, [r4, #0x2c]
 	ldr r3, _0221FA90 ; =0x021094DC
 	asr r0, r0, #4
@@ -7237,11 +7237,11 @@ _0221F86C:
 	mov r3, #2
 	ldrsh r2, [r2, r3]
 	add r0, sp, #0x28
-	bl sub_020CC1C4
+	bl MTX_RotZ44_
 	ldr r2, [sp, #0xc]
 	add r0, sp, #0x28
 	add r1, r5, #0
-	bl sub_020CC1E8
+	bl MTX_Concat44
 	ldr r2, [r4, #8]
 	ldr r0, _0221FA74 ; =0x00001508
 	lsl r2, r2, #0x10

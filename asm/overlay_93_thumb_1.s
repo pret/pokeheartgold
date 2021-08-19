@@ -1332,7 +1332,7 @@ ov93_0225D07C: ; 0x0225D07C
 	str r0, [sp, #0x30]
 	add r0, sp, #4
 	add r4, r1, #0
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	ldr r1, _0225D1B0 ; =0x000015A8
 	add r0, r4, #0
 	add r1, r4, r1
@@ -1389,7 +1389,7 @@ ov93_0225D07C: ; 0x0225D07C
 	bl sub_020BEFD4
 	ldr r1, _0225D1CC ; =0x021DA558
 	add r0, sp, #4
-	bl sub_020D4928
+	bl MI_Copy36B
 	ldr r1, _0225D1D0 ; =0x021DA51C
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]

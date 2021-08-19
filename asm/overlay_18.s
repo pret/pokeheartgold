@@ -30288,7 +30288,7 @@ ov18_021F4E28: ; 0x021F4E28
 	ldrsh r1, [r2, r1]
 	lsl r0, r0, #0x14
 	lsl r1, r1, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	bl _itof
 	ldr r1, _021F4EA8 ; =0x45800000
 	bl _fdiv
@@ -33916,8 +33916,8 @@ ov18_021F6AB0: ; 0x021F6AB0
 	add r4, r1, #0
 	lsl r0, r0, #0x14
 	lsl r1, r2, #0xc
-	bl sub_020CCBA0
-	bl sub_020CCBB0
+	bl FX_Div
+	bl FX_Inv
 	mov r2, #0
 	str r0, [sp, #0xc]
 	str r0, [sp, #0x18]

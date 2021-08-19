@@ -2112,12 +2112,12 @@ ov109_021E68D4: ; 0x021E68D4
 	str r0, [sp, #0xc]
 	mov r0, #1
 	lsl r0, r0, #0xc
-	bl sub_020CCBB0
+	bl FX_Inv
 	str r0, [sp, #0x10]
 	mov r0, #0x1f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_020CCBB0
+	bl FX_Inv
 	str r0, [sp, #4]
 	mov r0, #0x78
 	str r0, [sp]

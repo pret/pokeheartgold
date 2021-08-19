@@ -1093,7 +1093,7 @@ _021E625C:
 	cmp r0, #0
 	beq _021E629C
 	add r0, r7, #0
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	add r0, r4, #0
 	add r0, #0x74
 	ldrh r0, [r0]
@@ -1106,11 +1106,11 @@ _021E625C:
 	mov r3, #2
 	ldrsh r2, [r2, r3]
 	add r0, sp, #0x44
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	add r0, sp, #0x44
 	add r1, r7, #0
 	add r2, r7, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r1, r4, #0
 	ldr r3, [sp]
 	add r0, r4, #0
@@ -1139,7 +1139,7 @@ _021E629C:
 	lsl r0, r0, #2
 	ldrh r4, [r5, r0]
 	add r0, sp, #0x20
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	asr r0, r4, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -1149,10 +1149,10 @@ _021E629C:
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0x20
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	ldr r1, _021E6348 ; =0x021DA558
 	add r0, sp, #0x20
-	bl sub_020D4928
+	bl MI_Copy36B
 	ldr r1, _021E634C ; =0x021DA51C
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
@@ -2011,11 +2011,11 @@ _021E696E:
 	mov r3, #2
 	ldrsh r2, [r2, r3]
 	add r0, sp, #0x10
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	ldr r0, [sp, #8]
 	add r1, sp, #0x10
 	add r2, sp, #0x40
-	bl sub_020CB630
+	bl MTX_MultVec33
 	mov r0, #0xc
 	mul r0, r4
 	add r6, r7, r0
@@ -2107,16 +2107,16 @@ ov61_021E6A48: ; 0x021E6A48
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_020CB6AC
+	bl MTX_Identity43_
 	ldr r0, [r5, #0x64]
 	add r1, r4, #0
 	str r0, [sp]
 	ldr r2, [r5, #0x5c]
 	ldr r3, [r5, #0x60]
 	add r0, r4, #0
-	bl sub_020CB708
+	bl MTX_TransApply43
 	add r0, sp, #0x64
-	bl sub_020CB6AC
+	bl MTX_Identity43_
 	add r0, r5, #0
 	add r0, #0x76
 	ldrh r0, [r0]
@@ -2129,11 +2129,11 @@ ov61_021E6A48: ; 0x021E6A48
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #4
-	bl sub_020CB800
+	bl MTX_RotX43_
 	add r1, sp, #0x64
 	add r0, sp, #4
 	add r2, r1, #0
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	add r0, r5, #0
 	add r0, #0x74
 	ldrh r0, [r0]
@@ -2146,24 +2146,24 @@ ov61_021E6A48: ; 0x021E6A48
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #4
-	bl sub_020CB820
+	bl MTX_RotY43_
 	add r1, sp, #0x64
 	add r0, sp, #4
 	add r2, r1, #0
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	ldr r1, [r5, #0x68]
 	ldr r2, [r5, #0x6c]
 	ldr r3, [r5, #0x70]
 	add r0, sp, #0x34
-	bl sub_020CB7B4
+	bl MTX_Scale43_
 	add r0, sp, #0x64
 	add r1, r4, #0
 	add r2, r4, #0
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	add r0, sp, #0x34
 	add r1, r4, #0
 	add r2, r4, #0
-	bl sub_020CBBC8
+	bl MTX_Concat43
 	add sp, #0x94
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -3175,7 +3175,7 @@ ov61_021E7268: ; 0x021E7268
 	str r0, [sp, #4]
 	add r0, r7, #0
 	mov r1, ip
-	bl sub_020CCDAC
+	bl VEC_Subtract
 	asr r0, r6, #4
 	lsl r3, r0, #1
 	lsl r1, r3, #1
@@ -3185,15 +3185,15 @@ ov61_021E7268: ; 0x021E7268
 	ldrsh r1, [r2, r1]
 	ldrsh r2, [r2, r3]
 	add r0, sp, #0x18
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r0, r7, #0
 	add r1, sp, #0x18
 	add r2, r0, #0
-	bl sub_020CB630
+	bl MTX_MultVec33
 	add r0, r7, #0
 	add r1, sp, #0
 	add r2, r0, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	add r2, r4, #0
 	add r1, r5, #3
 	mov r0, #0x78

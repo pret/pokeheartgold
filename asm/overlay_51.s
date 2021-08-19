@@ -1820,7 +1820,7 @@ ov51_021E69EC: ; 0x021E69EC
 	add r4, r0, #0
 	ldr r0, _021E6A44 ; =0x000030FC
 	ldr r0, [r4, r0]
-	bl sub_020CCBB0
+	bl FX_Inv
 	str r0, [sp, #8]
 	mov r0, #0
 	str r0, [sp, #0xc]
@@ -1828,7 +1828,7 @@ ov51_021E69EC: ; 0x021E69EC
 	mov r0, #0x31
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl sub_020CCBB0
+	bl FX_Inv
 	str r0, [sp, #0x14]
 	bl sub_020D3AB4
 	mov r0, #0
@@ -2074,11 +2074,11 @@ ov51_021E6C00: ; 0x021E6C00
 	sub sp, #0x18
 	mov r0, #1
 	lsl r0, r0, #0xc
-	bl sub_020CCBB0
+	bl FX_Inv
 	add r4, r0, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
-	bl sub_020CCBB0
+	bl FX_Inv
 	mov r1, #0
 	str r4, [sp, #8]
 	str r1, [sp, #0xc]

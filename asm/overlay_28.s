@@ -1168,24 +1168,24 @@ ov28_0225DE04: ; 0x0225DE04
 ov28_0225DE64: ; 0x0225DE64
 	add r2, r0, #0
 	sub r1, #0x64
-	ldr r3, _0225DE74 ; =sub_020CD5DC
+	ldr r3, _0225DE74 ; =FX_Atan2Idx
 	sub r2, #0x54
 	lsl r0, r1, #0xc
 	lsl r1, r2, #0xc
 	bx r3
 	nop
-_0225DE74: .word sub_020CD5DC
+_0225DE74: .word FX_Atan2Idx
 	thumb_func_end ov28_0225DE64
 
 	thumb_func_start ov28_0225DE78
 ov28_0225DE78: ; 0x0225DE78
-	ldr r3, _0225DE84 ; =sub_020CD5DC
+	ldr r3, _0225DE84 ; =FX_Atan2Idx
 	add r2, r0, #0
 	lsl r0, r1, #0xc
 	lsl r1, r2, #0xc
 	bx r3
 	nop
-_0225DE84: .word sub_020CD5DC
+_0225DE84: .word FX_Atan2Idx
 	thumb_func_end ov28_0225DE78
 
 	thumb_func_start ov28_0225DE88

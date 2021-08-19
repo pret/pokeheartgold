@@ -88,14 +88,14 @@ ov13_02227064: ; 0x02227064
 	ldr r0, [r0]
 	ldrb r0, [r0, #9]
 	add r0, r0, #1
-	bl sub_020CCD3C
+	bl FX_ModS32
 	ldr r2, _02227124 ; =0x0224F464
 	mov r1, #5
 	ldr r3, [r2]
 	strb r0, [r3, #9]
 	ldr r0, [r2]
 	ldrb r0, [r0, #9]
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldr r2, _02227124 ; =0x0224F464
 	add r1, r0, #0x47
 	ldr r2, [r2]
@@ -2625,7 +2625,7 @@ _0222920C:
 _0222924C:
 	add r0, sl, #3
 	mov r1, #4
-	bl sub_020CCD3C
+	bl FX_ModS32
 	add r3, sp, #0xd
 	ldrb r1, [r3, sl]
 	mov r5, #0
@@ -5259,7 +5259,7 @@ _0222B590:
 _0222B5A0:
 	mov r0, #0
 	bl sub_020CD944
-	bl sub_020CD784
+	bl FX_Init
 	mvn r0, #0
 	bl sub_020D7F60
 	bl sub_020D9EF0
@@ -8214,14 +8214,14 @@ ov13_0222DAB0: ; 0x0222DAB0
 	ldr r0, _0222DB2C ; =0x0224F508
 	ldrb r0, [r0]
 	add r0, r0, #2
-	bl sub_020CCD3C
+	bl FX_ModS32
 	ldr r1, _0222DB2C ; =0x0224F508
 	b _0222DAEC
 _0222DAD8:
 	ldr r0, _0222DB2C ; =0x0224F508
 	ldrb r0, [r0]
 	add r0, r0, #1
-	bl sub_020CCD3C
+	bl FX_ModS32
 	ldr r1, _0222DB2C ; =0x0224F508
 _0222DAEC:
 	strb r0, [r1]
@@ -11045,7 +11045,7 @@ _0222FCC8:
 	ldrb r0, [r1, #0x53]
 	ldrh r1, [r1, #0x40]
 	mul r0, r2, r0
-	bl sub_020CCD00
+	bl FX_DivS32
 _0222FCEC:
 	str r0, [sp]
 	mov r0, r4
@@ -11448,7 +11448,7 @@ _02230214:
 	ldrh r2, [r1, #0x40]
 	ldrb r1, [r1, #0x53]
 	mul r0, r2, r0
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldr r1, _02230408 ; =0x0224F538
 	strh r0, [r1, #2]
 	bl ov13_022307AC
@@ -11469,7 +11469,7 @@ _02230268:
 	ldrh r2, [r1, #0x40]
 	ldrb r1, [r1, #0x53]
 	mul r0, r2, r0
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldr r1, _02230408 ; =0x0224F538
 	strh r0, [r1, #2]
 	mov r0, #0x13
@@ -11478,7 +11478,7 @@ _02230268:
 	ldr r0, _02230408 ; =0x0224F538
 	mov r1, #0x1c
 	ldrh r0, [r0, #2]
-	bl sub_020CCD3C
+	bl FX_ModS32
 	cmp r0, #0
 	bne _022302CC
 	bl ov13_02230CC4
@@ -11611,7 +11611,7 @@ _02230458:
 _02230484:
 	ldrh r0, [r0, #2]
 	mov r1, #0x1c
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldr r2, _02230514 ; =0x0224F538
 	mov r1, #0x2a
 	ldrb lr, [r2]
@@ -11846,7 +11846,7 @@ ov13_022307AC: ; 0x022307AC
 	ldr r0, _02230850 ; =0x0224F538
 	mov r1, #0x1c
 	ldrh r0, [r0, #2]
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldr r1, _02230850 ; =0x0224F538
 	mov r7, r0
 	ldr r0, [r1, #4]
@@ -12040,7 +12040,7 @@ ov13_02230A58: ; 0x02230A58
 	ldr r0, _02230B0C ; =0x0224F538
 	mov r1, #0x1c
 	ldrh r0, [r0, #2]
-	bl sub_020CCD3C
+	bl FX_ModS32
 	ldr r1, _02230B0C ; =0x0224F538
 	rsb r0, r0, #0x36
 	ldr r1, [r1, #4]
@@ -12103,7 +12103,7 @@ ov13_02230B14: ; 0x02230B14
 	ldr r0, _02230BCC ; =0x0224F538
 	mov r1, #0x1c
 	ldrh r0, [r0, #2]
-	bl sub_020CCD3C
+	bl FX_ModS32
 	mov r5, r0
 	cmp r5, #0x18
 	bne _02230B60
@@ -12127,7 +12127,7 @@ _02230B7C:
 	ldrb r0, [r1, #0x53]
 	ldrh r1, [r1, #0x40]
 	mul r0, r2, r0
-	bl sub_020CCD00
+	bl FX_DivS32
 	bl ov13_02239578
 	bl ov13_02239584
 	bl ov13_02230CC4
@@ -12154,7 +12154,7 @@ ov13_02230BD0: ; 0x02230BD0
 	add r2, r2, #4
 	strh r2, [r0, #2]
 	ldrh r0, [r0, #2]
-	bl sub_020CCD3C
+	bl FX_ModS32
 	cmp r0, #4
 	blt _02230C0C
 	bl ov13_02230A58
@@ -12171,7 +12171,7 @@ _02230C0C:
 	ldrb r0, [r1, #0x53]
 	ldrh r1, [r1, #0x40]
 	mul r0, r2, r0
-	bl sub_020CCD00
+	bl FX_DivS32
 	bl ov13_02239578
 	bl ov13_02239584
 	bl ov13_02230CC4
@@ -12196,7 +12196,7 @@ ov13_02230C68: ; 0x02230C68
 	ldmeqia sp!, {r3, pc}
 	ldrh r0, [r0, #2]
 	mov r1, #0x1c
-	bl sub_020CCD3C
+	bl FX_ModS32
 	ldr r1, _02230CBC ; =0x01FF0000
 	sub r0, r0, #0x32
 	ldr r2, _02230CC0 ; =0x04000010
@@ -15543,7 +15543,7 @@ _022338D0:
 	ldr r0, _02233A5C ; =0x0224F54C
 	mov r1, #0x1d
 	ldrh r0, [r0, #4]
-	bl sub_020CCD3C
+	bl FX_ModS32
 	cmp r0, #0
 	bne _02233930
 	bl ov13_02234CA4
@@ -15888,7 +15888,7 @@ ov13_02233DCC: ; 0x02233DCC
 	ldr r0, _02233E84 ; =0x0224F54C
 	mov r1, #0x1d
 	ldrh r0, [r0, #4]
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldr r1, _02233E84 ; =0x0224F54C
 	mov r4, r0
 	ldr r0, [r1, #8]
@@ -16417,12 +16417,12 @@ ov13_022344F0: ; 0x022344F0
 	ldr r0, _022346F4 ; =0x0224F54C
 	mov r1, #0x1d
 	ldrh r0, [r0, #4]
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldr r1, _022346F4 ; =0x0224F54C
 	mov r4, r0
 	ldrh r0, [r1, #4]
 	mov r1, #0x1d
-	bl sub_020CCD3C
+	bl FX_ModS32
 	ldr r1, _022346F4 ; =0x0224F54C
 	rsb ip, r0, #0x34
 	ldr r1, [r1, #8]
@@ -16566,7 +16566,7 @@ ov13_02234700: ; 0x02234700
 	ldr r0, _02234964 ; =0x0224F54C
 	mov r1, #0x1d
 	ldrh r0, [r0, #4]
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldr r1, _02234968 ; =0x022454FC
 	mov r5, r0
 	ldrh r3, [r1, #4]
@@ -16601,7 +16601,7 @@ _02234788:
 	ldr r0, _02234964 ; =0x0224F54C
 	mov r1, #0x1d
 	ldrh r0, [r0, #4]
-	bl sub_020CCD00
+	bl FX_DivS32
 	mov r3, #0
 _022347B8:
 	cmp r0, #2
@@ -16652,7 +16652,7 @@ _02234864:
 	ldr r0, _02234964 ; =0x0224F54C
 	mov r1, #0x1d
 	ldrh r0, [r0, #4]
-	bl sub_020CCD00
+	bl FX_DivS32
 	mov r3, #0
 _02234878:
 	cmp r0, #6
@@ -16731,7 +16731,7 @@ ov13_02234974: ; 0x02234974
 	mov r4, r0
 	ldrh r0, [r1, #4]
 	mov r1, #0x1d
-	bl sub_020CCD00
+	bl FX_DivS32
 	mov r1, #0
 _02234990:
 	cmp r0, r4
@@ -16754,7 +16754,7 @@ ov13_022349B8: ; 0x022349B8
 	mov r4, r0
 	ldrh r0, [r1, #4]
 	mov r1, #0x1d
-	bl sub_020CCD00
+	bl FX_DivS32
 	add r0, r0, r4
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
@@ -16776,7 +16776,7 @@ ov13_022349DC: ; 0x022349DC
 	ldr r0, _02234A9C ; =0x0224F54C
 	mov r1, #0x1d
 	ldrh r0, [r0, #4]
-	bl sub_020CCD3C
+	bl FX_ModS32
 	mov r5, r0
 	cmp r5, #0x17
 	bne _02234A28
@@ -16830,7 +16830,7 @@ ov13_02234AA4: ; 0x02234AA4
 	add r2, r2, #6
 	strh r2, [r0, #4]
 	ldrh r0, [r0, #4]
-	bl sub_020CCD3C
+	bl FX_ModS32
 	cmp r0, #6
 	blt _02234AE0
 	bl ov13_022344F0
@@ -16875,12 +16875,12 @@ ov13_02234B48: ; 0x02234B48
 	ldmeqia sp!, {r4, pc}
 	ldrh r0, [r0, #4]
 	mov r1, #0x1d
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldr r1, _02234BBC ; =0x0224F54C
 	mov r4, r0
 	ldrh r0, [r1, #4]
 	mov r1, #0x1d
-	bl sub_020CCD3C
+	bl FX_ModS32
 	ldr r2, _02234BC0 ; =0x022455E8
 	ldr r1, _02234BC4 ; =0x01FF0000
 	sub ip, r0, #0x33
@@ -16981,7 +16981,7 @@ _02234CC8:
 	mov r4, r0
 	ldrh r0, [r1, #4]
 	mov r1, #0x1d
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldr r1, _02234D4C ; =0x0224F54C
 	ldrb r2, [r1, #2]
 	add r2, r2, r0
@@ -23011,7 +23011,7 @@ ov13_02239808: ; 0x02239808
 	mov r0, #0x7f
 	bge _02239840
 	rsb r1, r4, #6
-	bl sub_020CCD00
+	bl FX_DivS32
 _02239840:
 	bl ov13_0223ABDC
 	cmp r4, #2
@@ -23022,7 +23022,7 @@ _02239840:
 	bge _0223986C
 	rsb r1, r4, #6
 	mov r0, #0x200
-	bl sub_020CCD00
+	bl FX_DivS32
 	sub r1, r0, #0x100
 _0223986C:
 	ldr r0, _0223987C ; =0x0000FFFF
@@ -31170,7 +31170,7 @@ ov13_02240288: ; 0x02240288
 	mov r6, r0
 	ldrh r1, [r5]
 	add r0, r2, #1
-	bl sub_020CCD3C
+	bl FX_ModS32
 	ldrb r1, [r5, #2]
 	mov r7, r0
 	cmp r7, r1
@@ -31201,7 +31201,7 @@ ov13_022402E0: ; 0x022402E0
 	ldrh r1, [r6]
 	add r0, r2, r1
 	sub r0, r0, #1
-	bl sub_020CCD3C
+	bl FX_ModS32
 	and r1, r0, #0xff
 	strb r0, [r6, #3]
 	add r0, r6, r1, lsl #2
@@ -31350,7 +31350,7 @@ ov13_02240490: ; 0x02240490
 	strb ip, [sp, #1]
 	strb r3, [sp, #2]
 	strb r2, [sp, #3]
-	bl sub_020CCD00
+	bl FX_DivS32
 	ldrb r3, [r4, #8]
 	add r2, sp, #4
 	mov r1, r0
@@ -32629,7 +32629,7 @@ _02241588:
 	mov r1, r8
 	add r4, r4, #1
 	add r0, r0, #4
-	bl sub_020CCD3C
+	bl FX_ModS32
 	cmp r4, #4
 	blt _02241544
 _022415A0:
