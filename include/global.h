@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_GLOBAL_H
 
 #include <nitro.h>
+#include <nitro/code16.h>
 
 void GF_AssertFail(void);
 
