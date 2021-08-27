@@ -96,6 +96,8 @@ public:
     uint16_t GetKey() {
         return header.key;
     }
+
+    void WriteBinaryDecoded(string &filename);
 };
 
 #endif //GUARD_MESSAGESCONVERTER_H

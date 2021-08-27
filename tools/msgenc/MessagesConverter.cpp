@@ -80,4 +80,18 @@ uint16_t MessagesConverter::CalcCRC()
     return crc;
 }
 
+void MessagesConverter::WriteBinaryDecoded(string &filename)
+{
+    ofstream outfile(filename, ios::binary);
+    if (!outfile.good()) {
+        throw ios::failure("Unable to open file " + filename + " for writing");
+    }
+    outfile.write((char *)&header, sizeof(header));
+    outfile.write((char *)alloc_table.data(), alloc_table.size() * sizeof(MsgAlloc));
+    for (auto msg : vec_encoded) {
+        outfile.write((char *)msg.data(), msg.size() * 2);
+    }
+    outfile.close();
+}
+
 MessagesConverter::~MessagesConverter() = default;

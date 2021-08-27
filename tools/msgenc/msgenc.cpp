@@ -25,6 +25,7 @@ static inline void usage() {
     cout << "-k KEY        The 16-bit encryption key for this message bank. Default: computes it from the binary file name" << endl;
     cout << "-v            Print the program version and exit." << endl;
     cout << "-h            Print this message and exit." << endl;
+    cout << "-D DUMPNAME   Dump the intermediate binary (after decryption or before encryption)." << endl;
 }
 
 struct Options {
@@ -35,6 +36,7 @@ struct Options {
     string charmap;
     bool printUsage = false;
     bool printVersion = false;
+    string dumpBinary;
     Options(int argc, char ** argv) {
         for (int i = 1; i < argc; i++) {
             string arg(argv[i]);
@@ -55,6 +57,8 @@ struct Options {
                 key |= 0x10000;
             } else if (arg == "-c") {
                 charmap = argv[++i];
+            } else if (arg == "-D") {
+                dumpBinary = argv[++i];
             } else if (arg[0] != '-') {
                 posargs.push_back(arg);
             } else {
@@ -100,6 +104,8 @@ int main(int argc, char ** argv) {
         converter->ReadInput();
         converter->ReadCharmap();
         converter->Convert();
+        if (!options.dumpBinary.empty())
+            converter->WriteBinaryDecoded(options.dumpBinary);
         converter->WriteOutput();
         if (options.mode == CONV_DECODE) {
             cout << "Key: " << hex << converter->GetKey() << endl;
