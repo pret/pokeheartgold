@@ -44,7 +44,10 @@ struct Options {
                 mode = CONV_ENCODE;
             } else if (arg == "-h") {
                 printUsage = true;
-                break;
+                return;
+            } else if (arg == "-v") {
+                printVersion = true;
+                return;
             } else if (arg == "-k") {
                 key = stoi(argv[++i], nullptr, 0);
                 // If the key is 0, ensure that it is not overridden by the CRC.
