@@ -51,7 +51,7 @@ struct Options {
                 key &= 0xFFFF;
                 key |= 0x10000;
             } else if (arg == "-c") {
-                charmap = arg[++i];
+                charmap = argv[++i];
             } else if (arg[0] != '-') {
                 posargs.push_back(arg);
             } else {
