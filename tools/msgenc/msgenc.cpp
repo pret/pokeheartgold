@@ -10,7 +10,7 @@
 #include "MessagesEncoder.h"
 
 static const char* progname = "msgenc";
-static const char* version = "2021.08.17";
+static const char* version = "2021.08.27";
 
 
 static inline void usage() {
