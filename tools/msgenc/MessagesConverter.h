@@ -17,9 +17,10 @@ static inline uint16_t enc_short(uint16_t value, uint16_t & seed) {
     return value;
 }
 
-enum ConvertMode {
+enum ConvertMode : uint8_t {
     CONV_ENCODE = 0,
-    CONV_DECODE
+    CONV_DECODE,
+    CONV_INVALID = 0xFF,
 };
 
 struct MsgArcHeader
@@ -59,7 +60,6 @@ class MessagesConverter{
 protected:
     ConvertMode mode;
     string textfilename;
-    string keyfilename;
     string charmapfilename;
     string binfilename;
 
@@ -77,18 +77,25 @@ protected:
     static void WriteTextFile(string& filename, string const & contents);
 
 public:
-    MessagesConverter(ConvertMode _mode, string &_textfilename, string &_keyfilename, string &_charmapfilename, string &_binfilename) :
+    MessagesConverter(ConvertMode _mode, string &_textfilename, int _key, string &_charmapfilename, string &_binfilename) :
         mode(_mode),
         textfilename(_textfilename),
-        keyfilename(_keyfilename),
         charmapfilename(_charmapfilename),
         binfilename(_binfilename)
-    {}
+    {
+        header.key = (_key == 0) ? CalcCRC() : static_cast<uint16_t>(_key);
+    }
     void ReadCharmap();
     virtual void ReadInput() = 0;
     virtual void Convert() = 0;
     virtual void WriteOutput() = 0;
     virtual ~MessagesConverter() = 0;
+
+    uint16_t CalcCRC();
+
+    uint16_t GetKey() {
+        return header.key;
+    }
 };
 
 #endif //GUARD_MESSAGESCONVERTER_H

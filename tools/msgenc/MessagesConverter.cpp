@@ -67,4 +67,17 @@ void MessagesConverter::ReadCharmap() {
     }
 }
 
+uint16_t MessagesConverter::CalcCRC()
+{
+    uint16_t crc = 0;
+    for (char d : binfilename) {
+        for (int i = 0; i < 8; i++) {
+            crc = (crc & 0x8000) ? ((crc << 1) ^ 0x8003) : (crc << 1);
+            if (d & 0x80) crc ^= 1;
+            d <<= 1;
+        }
+    }
+    return crc;
+}
+
 MessagesConverter::~MessagesConverter() = default;

@@ -28,15 +28,6 @@ void MessagesEncoder::ReadMessagesFromText(string& fname) {
     debug_printf("%d lines\n", header.count);
 }
 
-void MessagesEncoder::ReadKeyFile(string& keyfname) {
-    ifstream keyfile(keyfname, ios_base::binary);
-    if (!keyfile.good()) {
-        throw ifstream::failure("unable to open file \"" + keyfname + "\" for reading");
-    }
-    keyfile.read((char *)&header.key, 2);
-    keyfile.close();
-}
-
 u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
     u16string encoded;
     bool is_trname = false;
@@ -153,7 +144,6 @@ void MessagesEncoder::WriteMessagesToBin(string& filename) {
 void MessagesEncoder::ReadInput()
 {
     ReadMessagesFromText(textfilename);
-    ReadKeyFile(keyfilename);
 }
 
 void MessagesEncoder::Convert() {

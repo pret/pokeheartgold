@@ -179,6 +179,5 @@ void MessagesDecoder::Convert()
 
 void MessagesDecoder::WriteOutput()
 {
-    WriteBinaryFile(keyfilename, header.key);
     WriteMessagesToText(textfilename);
 }
