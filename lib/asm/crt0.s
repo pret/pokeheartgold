@@ -1,10 +1,10 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public SDK_AUTOLOAD_LIST
-    .public SDK_AUTOLOAD_LIST_END
-    .public SDK_AUTOLOAD_START
-    .public SDK_STATIC_BSS_START
-    .public SDK_STATIC_BSS_END
+	.public SDK_AUTOLOAD_LIST_END
+	.public SDK_AUTOLOAD_START
+	.public SDK_STATIC_BSS_START
+	.public SDK_STATIC_BSS_END
 	.text
 
 	arm_func_start _start

@@ -1,7 +1,7 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public ov60_021EB030
-    .public ov36_021E5C04
+	.public ov36_021E5C04
 
 	.bss
 
