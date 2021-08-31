@@ -389,6 +389,7 @@ filesystem: $(NITROFS_FILES)
 
 clean-filesystem:
 	$(RM) files/msgdata/msg/*.bin
+	$(RM) $(DIFF_ARCS)
 
 # TODO: file rules
 # Some filenames are stripped and replaced with a serial number
