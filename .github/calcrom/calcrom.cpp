@@ -126,7 +126,7 @@ void analyze(string& basedir, string& subdir, string& version = default_version)
 
     string srcbase = basedir + (subdir.empty() ? "" : "/" + subdir);
     string builddir = srcbase + "/build/" + version;
-    string pattern = srcbase + "/{src,asm,lib/{src,asm},modules/*/{src,asm}}/*.{c,s,cpp}";
+    string pattern = srcbase + "/{src,asm,lib/{src,asm},lib/*/{src,asm},}/*.{c,s,cpp}";
     for (char const * & fname : Glob(pattern))
     {
         string fname_s(fname);
