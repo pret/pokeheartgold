@@ -3453,6 +3453,13 @@ _02228B84: .word 0x00007D8C
 _02228B88: .word ov74_022288F8
 	thumb_func_end ov74_022289D4
 
+	.public ov36_021E5C04
+	.public ov36_021E5C24
+	.public _021065C4
+	.public ov112_021F5728
+	.public _021065C4
+	.public ov75_02249964
+
 	thumb_func_start ov74_02228B8C
 ov74_02228B8C: ; 0x02228B8C
 	push {r3, lr}
@@ -3478,12 +3485,12 @@ _02228BA0: ; jump table
 	.short _02228C0C - _02228BA0 - 2 ; case 9
 _02228BB4:
 	ldr r0, _02228C24 ; =SDK_OVERLAY_OVY_36_ID
-	ldr r1, _02228C28 ; =0x021E5C04
+	ldr r1, _02228C28 ; =ov36_021E5C04
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BBE:
 	ldr r0, _02228C24 ; =SDK_OVERLAY_OVY_36_ID
-	ldr r1, _02228C2C ; =0x021E5C24
+	ldr r1, _02228C2C ; =ov36_021E5C24
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BC8:
@@ -3508,20 +3515,20 @@ _02228BE6:
 _02228BEE:
 	bl sub_02005FA0
 	mov r0, #0
-	ldr r1, _02228C44 ; =0x021065C4
+	ldr r1, _02228C44 ; =_021065C4
 	mvn r0, r0
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BFE:
 	bl sub_02005FA0
 	ldr r0, _02228C48 ; =SDK_OVERLAY_OVY_112_ID
-	ldr r1, _02228C4C ; =0x021F5728
+	ldr r1, _02228C4C ; =ov112_021F5728
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C0C:
 	bl sub_02005FA0
 	ldr r0, _02228C50 ; =SDK_OVERLAY_OVY_75_ID
-	ldr r1, _02228C54 ; =0x02249964
+	ldr r1, _02228C54 ; =ov75_02249964
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C1A:
@@ -3532,18 +3539,18 @@ _02228C22:
 	pop {r3, pc}
 	.balign 4, 0
 _02228C24: .word SDK_OVERLAY_OVY_36_ID
-_02228C28: .word 0x021E5C04
-_02228C2C: .word 0x021E5C24
+_02228C28: .word ov36_021E5C04
+_02228C2C: .word ov36_021E5C24
 _02228C30: .word SDK_OVERLAY_OVY_74_ID
 _02228C34: .word _0223B380
 _02228C38: .word _0223B4D8
 _02228C3C: .word _0223B320
 _02228C40: .word 0x0223BD4C
-_02228C44: .word 0x021065C4
+_02228C44: .word _021065C4
 _02228C48: .word SDK_OVERLAY_OVY_112_ID
-_02228C4C: .word 0x021F5728
+_02228C4C: .word ov112_021F5728
 _02228C50: .word SDK_OVERLAY_OVY_75_ID
-_02228C54: .word 0x02249964
+_02228C54: .word ov75_02249964
 _02228C58: .word SDK_OVERLAY_OVY_60_ID
 _02228C5C: .word ov60_021EAFE0
 	thumb_func_end ov74_02228B8C

@@ -441,6 +441,9 @@ _021E5C9C: .word 0x00007FFF
 _021E5CA0: .word 0x00000924
 	thumb_func_end ov60_021E59C8
 
+	.public _02108278
+	.public _0210820C
+
 	thumb_func_start ov60_021E5CA4
 ov60_021E5CA4: ; 0x021E5CA4
 	push {r3, r4, r5, r6, r7, lr}
@@ -479,13 +482,13 @@ _021E5CE6: ; jump table
 	.short _021E5D1A - _021E5CE6 - 2 ; case 5
 _021E5CF2:
 	mov r0, #0
-	ldr r1, _021E5D2C ; =0x02108278
+	ldr r1, _021E5D2C ; =_02108278
 	mvn r0, r0
 	bl RegisterMainOverlay
 	b _021E5D28
 _021E5CFE:
 	mov r0, #0
-	ldr r1, _021E5D30 ; =0x0210820C
+	ldr r1, _021E5D30 ; =_0210820C
 	mvn r0, r0
 	bl RegisterMainOverlay
 	b _021E5D28
@@ -506,8 +509,8 @@ _021E5D28:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021E5D2C: .word 0x02108278
-_021E5D30: .word 0x0210820C
+_021E5D2C: .word _02108278
+_021E5D30: .word _0210820C
 _021E5D34: .word SDK_OVERLAY_OVY_60_ID
 _021E5D38: .word ov60_021EB030
 _021E5D3C: .word SDK_OVERLAY_OVY_62_ID
