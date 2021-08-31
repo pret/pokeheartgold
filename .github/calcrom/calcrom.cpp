@@ -19,6 +19,8 @@
  *      Extra security on ELF header
  *  - 0.1.3 (30 Jun 2020):
  *      Account for diamond/pearl split
+ *  - 0.2.0 (30 Aug 2021):
+ *      Support hgss
  */
 
 #include <iostream>
@@ -26,9 +28,11 @@
 #include <sstream>
 #include <elf.h>
 #include <glob.h>
-#include <string.h>
+#include <cstring>
 #include <vector>
 #include <string>
+#include <cassert>
+#include <algorithm>
 
 using namespace std;
 
@@ -49,61 +53,93 @@ public:
     }
 };
 
-void analyze(string basedir, string subdir, string version) {
-    fstream elf;
+struct Elf32File {
+    ifstream handle;
     Elf32_Ehdr ehdr;
     vector<Elf32_Shdr> shdr;
-    stringstream pattern;
+    vector<Elf32_Sym> symtab;
+    vector<char> shstrtab;
+    vector<char> strtab;
 
+private:
+    void ReadElfHeaderAndVerify() {
+        handle.seekg(0);
+        handle.read((char *)ehdr.e_ident, EI_NIDENT);
+        assert(memcmp(ehdr.e_ident, ELFMAG, SELFMAG) == 0);
+        assert(ehdr.e_ident[EI_CLASS] == ELFCLASS32);
+        assert(ehdr.e_ident[EI_DATA] == ELFDATA2LSB);
+        assert(ehdr.e_ident[EI_VERSION] == EV_CURRENT);
+        handle.read((char*)&ehdr + EI_NIDENT, sizeof(ehdr) - EI_NIDENT);
+        assert(ehdr.e_shentsize == sizeof(Elf32_Shdr));
+    }
+    void ReadSectionHeaders() {
+        shdr.resize(ehdr.e_shnum);
+        handle.seekg(ehdr.e_shoff);
+        handle.read((char*)shdr.data(), ehdr.e_shnum * ehdr.e_shentsize);
+    }
+    void ReadShstrtab() {
+        shstrtab.resize(shdr[ehdr.e_shstrndx].sh_size);
+        handle.seekg(shdr[ehdr.e_shstrndx].sh_offset);
+        handle.read((char*)shstrtab.data(), shdr[ehdr.e_shstrndx].sh_size);
+    }
+    void ReadStrtab() {
+        int i;
+        for (i = 1; i < ehdr.e_shnum; i++) {
+            if (i == ehdr.e_shstrndx) continue;
+            if (shdr[i].sh_type == SHT_STRTAB) break;
+        }
+        assert(i != ehdr.e_shnum);
+        strtab.resize(shdr[i].sh_size);
+        handle.seekg(shdr[i].sh_offset);
+        handle.read((char*)strtab.data(), shdr[i].sh_size);
+    }
+    void ReadSymtab() {
+        auto sec = find_if(shdr.begin(), shdr.end(), [](Elf32_Shdr const& candidate) { return candidate.sh_type == SHT_SYMTAB; });
+        strtab.resize(sec->sh_size);
+        handle.seekg(sec->sh_offset);
+        handle.read((char*)strtab.data(), sec->sh_size);
+    }
+public:
+    Elf32File(string const& filename, bool read_syms = false) : handle(filename, ios::binary) {
+        assert(handle.good());
+        ReadElfHeaderAndVerify();
+        ReadSectionHeaders();
+        ReadShstrtab();
+        if (read_syms) {
+            ReadStrtab();
+            ReadSymtab();
+        }
+    }
+    ~Elf32File() {
+        handle.close();
+    }
+};
+
+string default_version("");
+
+void analyze(string& basedir, string& subdir, string& version = default_version) {
     // Accumulate sizes
     //        src   asm
     // data  _____|_____
     // text       |
     unsigned sizes[2][2] = {{0, 0}, {0, 0}};
-    char * shstrtab = NULL;
-    size_t shstrsz = 0;
-    stringstream builddir;
-    builddir << subdir << "/build/" << version;
-    pattern << basedir << "/" << subdir << "/{src,asm,lib/{src,asm},modules/*/{src,asm}}/*.{c,s,cpp}";
-    for (char const * & fname : Glob(pattern.str()))
+
+    string srcbase = basedir + (subdir.empty() ? "" : "/" + subdir);
+    string builddir = srcbase + "/build/" + version;
+    string pattern = srcbase + "/{src,asm,lib/{src,asm},modules/*/{src,asm}}/*.{c,s,cpp}";
+    for (char const * & fname : Glob(pattern))
     {
         string fname_s(fname);
         string ext = fname_s.substr(fname_s.rfind('.'), 4);
         bool is_asm = ext == ".s";
-        fname_s = fname_s.replace(fname_s.find(subdir), 4, builddir.str());
-        fname_s = fname_s.replace(fname_s.rfind('.'), 4, ".o");
-        elf.open(fname_s, ios_base::in | ios_base::binary);
-        if (!elf.good()) {
-            cerr << "Error: file not found: " << fname_s << endl;
-            return;
-        }
-        elf.read((char *)&ehdr, sizeof(ehdr));
-        if (memcmp(ehdr.e_ident, ELFMAG, SELFMAG) != 0
-            || ehdr.e_ehsize != sizeof(Elf32_Ehdr)
-            || ehdr.e_shentsize != sizeof(Elf32_Shdr))
-        {
-            elf.close();
-            stringstream ss;
-            ss << "Error validating " << fname_s << " as an ELF file" << endl;
-            throw runtime_error(ss.str());
-        }
-        // Read ELF sections
-        elf.seekg(ehdr.e_shoff);
-        shdr.resize(ehdr.e_shnum);
-        elf.read((char *)shdr.data(), ehdr.e_shnum * ehdr.e_shentsize);
+        fname_s = fname_s.replace(0, srcbase.size(), builddir);
+        fname_s = fname_s.replace(fname_s.rfind('.'), string::npos, ".o");
 
-        // Read .shstrtab
-        if (shstrsz < shdr[ehdr.e_shstrndx].sh_size) {
-            shstrtab = (char *)realloc(shstrtab, shdr[ehdr.e_shstrndx].sh_size);
-            shstrsz = shdr[ehdr.e_shstrndx].sh_size;
-        }
-        elf.seekg(shdr[ehdr.e_shstrndx].sh_offset);
-        elf.read(shstrtab, shdr[ehdr.e_shstrndx].sh_size);
-        elf.close();
+        Elf32File elf(fname_s);
 
         // Analyze sections
-        for (Elf32_Shdr & hdr : shdr) {
-            string shname = shstrtab + hdr.sh_name;
+        for (Elf32_Shdr & hdr : elf.shdr) {
+            string shname = elf.shstrtab.data() + hdr.sh_name;
             bool is_text = (shname == ".text" || shname == ".init" || shname == ".itcm");
             bool is_data = (shname == ".data" || shname == ".rodata" || shname == ".sdata" || shname == ".dtcm");
             size_t size = hdr.sh_size + (hdr.sh_size & 3 ? 4 - (hdr.sh_size & 3) : 0);
@@ -113,7 +149,6 @@ void analyze(string basedir, string subdir, string version) {
             }
         }
     }
-    free(shstrtab);
 
     cout << "Analysis of " << (version.empty() ? subdir : version) << " binary:" << endl;
     // Report code
@@ -143,11 +178,17 @@ int main(int argc, char ** argv)
         throw invalid_argument("missing required argument: PROJECT_DIR\n");
     }
 
-    analyze(argv[1], "arm9", "diamond.us");
+    string basepath(argv[1]);
+    string arm9subdir("");
+    string rom1name("heartgold.us");
+    string rom2name("soulsilver.us");
+    string arm7subdir("sub");
+
+    analyze(basepath, arm9subdir, rom1name);
     cout << endl;
-    analyze(argv[1], "arm9", "pearl.us");
+    analyze(basepath, arm9subdir, rom2name);
     cout << endl;
-    analyze(argv[1], "arm7", "");
+    analyze(basepath, arm7subdir);
 
     return 0;
 }

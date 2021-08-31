@@ -1,0 +1,20 @@
+Hi, {STRVAR_1 3, 0, 0}!\nLyra is upstairs.\rShe’s playing games with her Pokémon\nas usual.\rYou didn’t bring your...Pokémon?\n...Oh, I should’ve known.\rYou don’t have your own Pokémon yet.\rWell, I hope I didn’t hurt your\nfeelings, {STRVAR_1 3, 0, 0}.
+Hi, {STRVAR_1 3, 0, 0}!\nEthan is upstairs.\rHe’s having fun with his Pokémon\nas usual.\rYou didn’t bring your...Pokémon?\n...Oh, I should’ve known.\rYou don’t have your own Pokémon yet.\rWell, I hope I didn’t hurt your\nfeelings, {STRVAR_1 3, 0, 0}.
+Hi, {STRVAR_1 3, 0, 0}!\nLyra is not here.\rShe’s been keeping herself busy\nhelping the professor.\fShe’s busier than I am!
+Hi, {STRVAR_1 3, 0, 0}!\nEthan is not here.\rHe’s been keeping himself busy\nhelping the professor.\fHe’s busier than I am!
+Hi, {STRVAR_1 3, 0, 0}!\nLyra is upstairs.\rShe’s playing games with her Pokémon\nas usual.
+Hi, {STRVAR_1 3, 0, 0}!\nEthan is upstairs.\rHe’s having fun with his Pokémon\nas usual.
+                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                        
+                                                                                                           
+                                                                                                           
+                                                                                                                                                                                
+                                                                                                           
+                                                                                                            
+                                                                                                    
+                                                                                                     
+                                                                                                    
+                                                                                                     
+                                                                                                                                
+                                                                                
+                        

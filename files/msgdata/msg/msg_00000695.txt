@@ -1,0 +1,16 @@
+Gina
+Whenever I see a strong Trainer,\nI want to be their cheerleader.\rWhen I’m out on a walk,\nI sometimes pick up items.\rIf I find anything, you can have it!\rWant to give me your number?\nI’ll call whenever I get anything.{YESNO 0}
+I’ll call as soon as I get anything!
+Really? Well, I’ll still be cheering\nfor you!
+If I find an item, you can have it!\nWant to give me your number?{YESNO 0}
+You’re here at last!\nI think this will make you happy.\r
+You must really like phone calls to be\nright nearby and using the phone!
+My {STRVAR_1 0, 10, 0} and I are getting more\nin sync with each other.\rWe battled a wild {STRVAR_1 0, 11, 0} and\nmanaged to beat it in a close match.\fWe’re getting into the groove!\rBye! Let’s chat again!
+My {STRVAR_1 0, 10, 0} and I are getting more\nin sync with each other.\rBut, you know what?\rI still haven’t caught {STRVAR_1 0, 11, 0}.\nIt’s getting beyond frustrating...\rBye! Let’s chat again!
+Would you be my practice partner again\nsometime?\rI’ll be waiting on {STRVAR_1 4, 3, 0}...\rCould you take it a little easier on\nme next time?
+How soon can I expect to see you?\nDon’t forget, {STRVAR_1 4, 3, 0}!
+How soon can I expect to see you?\nDon’t forget, {STRVAR_1 4, 3, 0}!
+Sorry, I haven’t found anything useful\nyet... I promise, if I find anything, you\fcan have it!
+I picked up something nice today.\nI want you to have it, so I called!\rYou will come for it, won’t you?\n{STRVAR_1 4, 3, 0} is where I am.
+I’m getting really impatient, waiting to\ngive you my present!\rHurry over to {STRVAR_1 4, 3, 0}!
+Have you heard about Team Rocket?\rThey’ve taken over the Radio Tower in\nGoldenrod.\rAre the people inside safe?

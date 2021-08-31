@@ -1,0 +1,403 @@
+Champion Ribbon
+Cool Ribbon
+Cool Ribbon Super
+Cool Ribbon Hyper
+Cool Ribbon Master
+Beauty Ribbon
+Beauty Ribbon Super
+Beauty Ribbon Hyper
+Beauty Ribbon Master
+Cute Ribbon
+Cute Ribbon Super
+Cute Ribbon Hyper
+Cute Ribbon Master
+Smart Ribbon
+Smart Ribbon Super
+Smart Ribbon Hyper
+Smart Ribbon Master
+Tough Ribbon
+Tough Ribbon Super
+Tough Ribbon Hyper
+Tough Ribbon Master
+Winning Ribbon
+Victory Ribbon
+Artist Ribbon
+Effort Ribbon
+Marine Ribbon
+Land Ribbon
+Sky Ribbon
+Country Ribbon
+National Ribbon
+Earth Ribbon
+World Ribbon
+Sinnoh Champ Ribbon
+Cool Ribbon
+Cool Ribbon Great
+Cool Ribbon Ultra
+Cool Ribbon Master
+Beauty Ribbon
+Beauty Ribbon Great
+Beauty Ribbon Ultra
+Beauty Ribbon Master
+Cute Ribbon
+Cute Ribbon Great
+Cute Ribbon Ultra
+Cute Ribbon Master
+Smart Ribbon
+Smart Ribbon Great
+Smart Ribbon Ultra
+Smart Ribbon Master
+Tough Ribbon
+Tough Ribbon Great
+Tough Ribbon Ultra
+Tough Ribbon Master
+Ability Ribbon
+Great Ability Ribbon
+Double Ability Ribbon
+Multi Ability Ribbon
+Pair Ability Ribbon
+World Ability Ribbon
+Alert Ribbon
+Shock Ribbon
+Downcast Ribbon
+Careless Ribbon
+Relax Ribbon
+Snooze Ribbon
+Smile Ribbon
+Gorgeous Ribbon
+Royal Ribbon
+Gorgeous Royal Ribbon
+Footprint Ribbon
+Record Ribbon
+History Ribbon
+Legend Ribbon
+Red Ribbon
+Green Ribbon
+Blue Ribbon
+Festival Ribbon
+Carnival Ribbon
+Classic Ribbon
+Premier Ribbon
+Ribbon for clearing the Pokémon League and\nentering the Hall of Fame in another region.
+Hoenn Cool Contest\nNormal Rank winner!
+Hoenn Cool Contest\nSuper Rank winner!
+Hoenn Cool Contest\nHyper Rank winner!
+Hoenn Cool Contest\nMaster Rank winner!
+Hoenn Beauty Contest\nNormal Rank winner!
+Hoenn Beauty Contest\nSuper Rank winner!
+Hoenn Beauty Contest\nHyper Rank winner!
+Hoenn Beauty Contest\nMaster Rank winner!
+Hoenn Cute Contest\nNormal Rank winner!
+Hoenn Cute Contest\nSuper Rank winner!
+Hoenn Cute Contest\nHyper Rank winner!
+Hoenn Cute Contest\nMaster Rank winner!
+Hoenn Smart Contest\nNormal Rank winner!
+Hoenn Smart Contest\nSuper Rank winner!
+Hoenn Smart Contest\nHyper Rank winner!
+Hoenn Smart Contest\nMaster Rank winner!
+Hoenn Tough Contest\nNormal Rank winner!
+Hoenn Tough Contest\nSuper Rank winner!
+Hoenn Tough Contest\nHyper Rank winner!
+Hoenn Tough Contest\nMaster Rank winner!
+Ribbon awarded for clearing Hoenn’s\nBattle Tower’s Lv. 50 challenge.
+Ribbon awarded for clearing Hoenn’s\nBattle Tower’s Lv. 100 challenge.
+Ribbon awarded for being chosen as\na super sketch model in Hoenn.
+Ribbon awarded for being an\nexceptionally hard worker.
+Ribbon awarded for beating the Sinnoh\nChampion and entering the Hall of Fame.
+Super Contest Cool Category\nNormal Rank winner!
+Super Contest Cool Category\nGreat Rank winner!
+Super Contest Cool Category\nUltra Rank winner!
+Super Contest Cool Category\nMaster Rank winner!
+Super Contest Beauty Category\nNormal Rank winner!
+Super Contest Beauty Category\nGreat Rank winner!
+Super Contest Beauty Category\nUltra Rank winner!
+Super Contest Beauty Category\nMaster Rank winner!
+Super Contest Cute Category\nNormal Rank winner!
+Super Contest Cute Category\nGreat Rank winner!
+Super Contest Cute Category\nUltra Rank winner!
+Super Contest Cute Category\nMaster Rank winner!
+Super Contest Smart Category\nNormal Rank winner!
+Super Contest Smart Category\nGreat Rank winner!
+Super Contest Smart Category\nUltra Rank winner!
+Super Contest Smart Category\nMaster Rank winner!
+Super Contest Tough Category\nNormal Rank winner!
+Super Contest Tough Category\nGreat Rank winner!
+Super Contest Tough Category\nUltra Rank winner!
+Super Contest Tough Category\nMaster Rank winner!
+A Ribbon awarded for defeating the\nTower Tycoon at the Battle Tower.
+A Ribbon awarded for defeating the\nTower Tycoon at the Battle Tower.
+A Ribbon awarded for completing the\nBattle Tower Double challenge.
+A Ribbon awarded for completing the\nBattle Tower Multi challenge.
+A Ribbon awarded for completing the\nBattle Tower Link Multi challenge.
+A Ribbon awarded for completing the\nWi-Fi Battle Tower challenge.
+A Ribbon for recalling an invigorating\nevent that created life energy.
+A Ribbon for recalling a thrilling\nevent that made life more exciting.
+A Ribbon for recalling feelings of\nsadness that added spice to life.
+A Ribbon for recalling a careless error\nthat helped steer life decisions.
+A Ribbon for recalling a refreshing\nevent that added sparkle to life.
+A Ribbon for recalling a deep\nslumber that made life soothing.
+A Ribbon for recalling that smiles\nenrich the quality of life.
+An extraordinarily gorgeous and\nextravagant Ribbon.
+An incredibly regal Ribbon with an\nair of nobility.
+A gorgeous and regal Ribbon that\nis the peak of fabulous.
+A Ribbon awarded to a Pokémon deemed\nto have a top-quality footprint.
+A Ribbon awarded for setting an\nincredible record.
+A Ribbon awarded for setting a\nhistorical record.
+A Ribbon awarded for setting a\nlegendary record.
+A commemorative Ribbon obtained in\na Mystery Zone.
+2003 Regional Tournament\nChampion Ribbon
+2003 National Tournament\nChampion Ribbon
+2003 Global Cup\nChampion Ribbon
+2003 Regional Tournament\nRunner-up Ribbon
+2003 National Tournament\nRunner-up Ribbon
+2003 Global Cup\nRunner-up Ribbon
+2003 Regional Tournament\nSemifinalist Ribbon
+2003 National Tournament\nSemifinalist Ribbon
+2003 Global Cup\nSemifinalist Ribbon
+2004 Regional Tournament\nChampion Ribbon
+2004 National Tournament\nChampion Ribbon
+2004 Global Cup\nChampion Ribbon
+2004 Regional Tournament\nRunner-up Ribbon
+2004 National Tournament\nRunner-up Ribbon
+2004 Global Cup\nRunner-up Ribbon
+2004 Regional Tournament\nSemifinalist Ribbon
+2004 National Tournament\nSemifinalist Ribbon
+2004 Global Cup\nSemifinalist Ribbon
+2005 Regional Tournament\nChampion Ribbon
+2005 National Tournament\nChampion Ribbon
+2005 Global Cup\nChampion Ribbon
+2005 Regional Tournament\nRunner-up Ribbon
+2005 National Tournament\nRunner-up Ribbon
+2005 Global Cup\nRunner-up Ribbon
+2005 Regional Tournament\nSemifinalist Ribbon
+2005 National Tournament\nSemifinalist Ribbon
+2005 Global Cup\nSemifinalist Ribbon
+Pokémon Battle Cup\nChampion Ribbon
+Pokémon Battle Cup\nRunner-up Ribbon
+Pokémon Battle Cup\nSemifinalist Ribbon
+Pokémon Battle Cup\nParticipation Ribbon
+Pokémon League\nChampion Ribbon
+Pokémon League\nRunner-up Ribbon
+Pokémon League\nSemifinalist Ribbon
+Pokémon League\nParticipation Ribbon
+Advance Cup\nChampion Ribbon
+Advance Cup\nRunner-up Ribbon
+Advance Cup\nSemifinalist Ribbon
+Advance Cup\nParticipation Ribbon
+Pokémon Tournament\nParticipation Ribbon
+Pokémon Event\nParticipation Ribbon
+Pokémon Festival\nParticipation Ribbon
+A Ribbon awarded for overcoming\ndifficult challenges.
+A Ribbon awarded for overcoming all\ndifficult challenges.
+A Ribbon awarded for winning 100\nmatches in a row.
+A Ribbon awarded for clearing\nthe Darkness Tower.
+A Ribbon awarded for clearing\nthe Red Tower.
+A Ribbon awarded for clearing\nthe Blackiron Tower.
+A Ribbon awarded for clearing\nthe Final Tower.
+A Ribbon awarded for creating\na new legend.
+Pokémon Center Tokyo\nCommemorative Ribbon
+Pokémon Center Osaka\nCommemorative Ribbon
+Pokémon Center Nagoya\nCommemorative Ribbon
+Nintendo World NY\nCommemorative Ribbon
+Summer Holidays Ribbon
+Winter Holidays Ribbon
+Spring Holidays Ribbon
+Evergreen Ribbon
+Special Holiday Ribbon
+Hard Worker Ribbon
+Lots of Friends Ribbon
+Full of Energy Ribbon
+A commemorative Ribbon for a\nbeloved Pokémon.
+A Ribbon that proclaims love for\nPokémon.
+Pokémon Center Sapporo\nCommemorative Ribbon
+Pokémon Center Yokohama\nCommemorative Ribbon
+Pokémon Center Fukuoka\nCommemorative Ribbon
+Pokémon Fan Club\nSpecial Ribbon
+Pokémon Fan Club\nWi-Fi Ribbon
+Wi-Fi Global Event\nCommemorative Ribbon
+Wi-Fi Global Gift\nSpecial Ribbon
+Simultaneous Worldwide Gift\nSpecial Ribbon
+Pokémon Center Opening\nCommemorative Ribbon
+POKéPARK Opening\nCommemorative Ribbon
+POKéPARK Special Ribbon
+Pokémon Concert\nCommemorative Ribbon
+Pokémon League 2006\nChampion Ribbon
+Pokémon League 2006\nRunner-up Ribbon
+Pokémon League 2006\nSemifinalist Ribbon
+Pokémon League 2006\nParticipation Ribbon
+Pokémon League 2007\nChampion Ribbon
+Pokémon League 2007\nRunner-up Ribbon
+Pokémon League 2007\nSemifinalist Ribbon
+Pokémon League 2007\nParticipation Ribbon
+Pokémon League 2008\nChampion Ribbon
+Pokémon League 2008\nRunner-up Ribbon
+Pokémon League 2008\nSemifinalist Ribbon
+Pokémon League 2008\nParticipation Ribbon
+Pokémon League 2009\nChampion Ribbon
+Pokémon League 2009\nRunner-up Ribbon
+Pokémon League 2009\nSemifinalist Ribbon
+Pokémon League 2009\nParticipation Ribbon
+Pokémon League 2010\nChampion Ribbon
+Pokémon League 2010\nRunner-up Ribbon
+Pokémon League 2010\nSemifinalist Ribbon
+Pokémon League 2010\nParticipation Ribbon
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.
+A commemorative Ribbon obtained in\na Mystery Zone.

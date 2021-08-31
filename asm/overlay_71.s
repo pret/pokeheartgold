@@ -47,16 +47,16 @@ _022469A6:
 	mov r0, #0x19
 	lsl r0, r0, #4
 	mov r1, #0x38
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x14]
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xb3
 	mov r3, #0x38
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x10]
 	mov r0, #0x38
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #0xc]
 	ldr r2, [r4]
 	ldr r0, [r2, #0x10]
@@ -71,17 +71,17 @@ _022469EE:
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r2, [r4]
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2, #4]
 	mov r1, #1
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r2, [r4]
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2, #8]
 	mov r1, #2
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
 	bl ov71_02246B28
@@ -93,13 +93,13 @@ _02246A20:
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2]
 	mov r1, #0
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	b _02246A44
 _02246A2C:
 	ldr r0, [r4, #0xc]
 	ldr r2, [r2, #4]
 	mov r1, #1
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
 	bl ov71_02246B28
@@ -137,7 +137,7 @@ _02246A44:
 	mov r1, #5
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	mov r1, #0x53
 	lsl r1, r1, #2
 	strh r0, [r4, r1]
@@ -145,7 +145,7 @@ _02246A44:
 	mov r1, #5
 	ldr r0, [r0, #4]
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	mov r1, #0x15
 	lsl r1, r1, #4
 	strh r0, [r4, r1]
@@ -153,14 +153,14 @@ _02246A44:
 	mov r1, #0x70
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	ldr r1, _02246B14 ; =0x0000014E
 	mov r2, #0
 	strh r0, [r4, r1]
 	ldr r0, [r4]
 	mov r1, #0x70
 	ldr r0, [r0, #4]
-	bl sub_0206E640
+	bl GetBoxMonData
 	ldr r1, _02246B18 ; =0x00000152
 	strh r0, [r4, r1]
 	mov r0, #0
@@ -213,12 +213,12 @@ ov71_02246B28: ; 0x02246B28
 	add r5, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x1c
@@ -248,11 +248,11 @@ ov71_02246B58: ; 0x02246B58
 	bl sub_0200E390
 	bl sub_0203A914
 	ldr r0, [r4, #0xc]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x10]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	ldr r0, [r4, #0x18]
@@ -382,7 +382,7 @@ ov71_02246C6C: ; 0x02246C6C
 	mov r1, #6
 	add r2, sp, #4
 	mov r3, #0x38
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r7, r0, #0
 	beq _02246CA6
 	mov r0, #0
@@ -544,7 +544,7 @@ ov71_02246D9C: ; 0x02246D9C
 	cmp r0, #0
 	bgt _02246DD8
 	ldr r0, _02246E80 ; =0x000006AD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0x1e
 	add r0, #0xf0
@@ -557,8 +557,8 @@ _02246DD8:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02246E7C
-	bl sub_020D0524
-	bl sub_020D0774
+	bl GX_BeginLoadBGExtPltt
+	bl GXS_BeginLoadBGExtPltt
 	add r0, r4, #0
 	mov r1, #0x60
 	bl DC_FlushRange
@@ -566,14 +566,14 @@ _02246DD8:
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D05C4
+	bl GX_LoadBGExtPltt
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D078C
-	bl sub_020D0634
-	bl sub_020D07F0
+	bl GXS_LoadBGExtPltt
+	bl GX_EndLoadBGExtPltt
+	bl GXS_EndLoadBGExtPltt
 	mov r0, #0
 	add r4, #0xec
 	str r0, [r4]
@@ -584,8 +584,8 @@ _02246E1A:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02246E5C
-	bl sub_020D0524
-	bl sub_020D0774
+	bl GX_BeginLoadBGExtPltt
+	bl GXS_BeginLoadBGExtPltt
 	add r0, r4, #0
 	mov r1, #0x60
 	bl DC_FlushRange
@@ -593,14 +593,14 @@ _02246E1A:
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D05C4
+	bl GX_LoadBGExtPltt
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D078C
-	bl sub_020D0634
-	bl sub_020D07F0
+	bl GXS_LoadBGExtPltt
+	bl GX_EndLoadBGExtPltt
+	bl GXS_EndLoadBGExtPltt
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xec
@@ -1034,12 +1034,12 @@ _02247166:
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	ldr r0, [sp, #0x60]
@@ -1052,7 +1052,7 @@ _022471A0:
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	cmp r0, #1
 	bne _022471B8
 	ldr r0, _0224722C ; =0x00000147
@@ -1087,7 +1087,7 @@ _022471B8:
 	ldr r2, [sp, #0x24]
 	lsr r1, r1, #0x18
 	add r3, r7, #0
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldr r1, [sp, #0x20]
 	add r0, r4, #0
 	bl sub_0206DE00
@@ -1111,7 +1111,7 @@ _0224720E:
 	ldrh r0, [r1, #0x10]
 	ldrh r1, [r1, #0x14]
 	lsl r3, r3, #5
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	add sp, #0x48
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1146,7 +1146,7 @@ _02247252:
 	mov r0, #7
 	mov r2, #0
 	add r3, sp, #0x1c
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	add r7, r0, #0
 	beq _022472BA
 	mov r0, #0xa
@@ -1210,7 +1210,7 @@ ov71_022472C4: ; 0x022472C4
 	add r0, r4, #0
 	mov r2, #1
 	add r3, #8
-	bl sub_02007A0C
+	bl GfGfxLoader_GetCellBank
 	str r0, [r5]
 	mov r0, #0x39
 	add r3, r5, #0
@@ -1219,7 +1219,7 @@ ov71_022472C4: ; 0x022472C4
 	add r1, r6, #0
 	mov r2, #1
 	add r3, #0xc
-	bl sub_02007A28
+	bl GfGfxLoader_GetAnimBank
 	str r0, [r5, #4]
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -1574,7 +1574,7 @@ ov71_02247514: ; 0x02247514
 	sub sp, #0x50
 	add r4, r0, #0
 	add r0, sp, #0x2c
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	add r0, r4, #0
 	add r0, #0x80
 	ldrh r0, [r0]
@@ -1587,11 +1587,11 @@ ov71_02247514: ; 0x02247514
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #8
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r1, sp, #0x2c
 	add r0, sp, #8
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x82
 	ldrh r0, [r0]
@@ -1604,11 +1604,11 @@ ov71_02247514: ; 0x02247514
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #8
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	add r1, sp, #0x2c
 	add r0, sp, #8
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x84
 	ldrh r0, [r0]
@@ -1621,11 +1621,11 @@ ov71_02247514: ; 0x02247514
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #8
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r1, sp, #0x2c
 	add r0, sp, #8
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -1715,7 +1715,7 @@ ov71_02247610: ; 0x02247610
 	mov r2, #0
 	mov r3, #0x39
 	add r5, r4, r6
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4, r6]
 	ldr r1, [sp, #4]
 	add r0, r7, #0
@@ -1880,7 +1880,7 @@ ov71_02247738: ; 0x02247738
 	sub sp, #0x4c
 	add r4, r0, #0
 	add r0, sp, #0x28
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	add r0, r4, #0
 	add r0, #0x80
 	ldrh r0, [r0]
@@ -1893,11 +1893,11 @@ ov71_02247738: ; 0x02247738
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #4
-	bl sub_020CB0D0
+	bl MTX_RotX33_
 	add r1, sp, #0x28
 	add r0, sp, #4
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x82
 	ldrh r0, [r0]
@@ -1910,11 +1910,11 @@ ov71_02247738: ; 0x02247738
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #4
-	bl sub_020CB0EC
+	bl MTX_RotY33_
 	add r1, sp, #0x28
 	add r0, sp, #4
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	add r0, r4, #0
 	add r0, #0x84
 	ldrh r0, [r0]
@@ -1927,11 +1927,11 @@ ov71_02247738: ; 0x02247738
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #4
-	bl sub_020CB108
+	bl MTX_RotZ33_
 	add r1, sp, #0x28
 	add r0, sp, #4
 	add r2, r1, #0
-	bl sub_020CB410
+	bl MTX_Concat33
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
@@ -2105,12 +2105,12 @@ ov71_022478C8: ; 0x022478C8
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	mov r1, #0x39
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x68]
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	mov r1, #0x39
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x6c]
 	mov r0, #0
 	str r0, [r4, #0x78]
@@ -2138,9 +2138,9 @@ ov71_02247924: ; 0x02247924
 	add r0, r4, #0
 	bl ov71_0224809C
 	ldr r0, [r4, #0x68]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x6c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x70]
 	bl ov71_02247498
 	ldr r0, [r4, #0x54]
@@ -2154,7 +2154,7 @@ ov71_02247924: ; 0x02247924
 	bl sub_0201BB4C
 	add r0, r4, #0
 	add r0, #0x58
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
@@ -2290,7 +2290,7 @@ ov71_02247A10: ; 0x02247A10
 	ldr r0, [r4, #0x54]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4]
 	bl ov71_022473D0
 	lsl r0, r0, #0x18
@@ -2320,7 +2320,7 @@ ov71_02247A10: ; 0x02247A10
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0x20
 	str r3, [sp]
 	mov r0, #0x39
@@ -2328,7 +2328,7 @@ ov71_02247A10: ; 0x02247A10
 	mov r0, #0x10
 	mov r1, #8
 	mov r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2340,7 +2340,7 @@ ov71_02247A10: ; 0x02247A10
 	mov r0, #0x59
 	mov r1, #0x16
 	mov r3, #2
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2352,7 +2352,7 @@ ov71_02247A10: ; 0x02247A10
 	mov r0, #0x59
 	mov r1, #0x15
 	mov r3, #2
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x39
@@ -2361,7 +2361,7 @@ ov71_02247A10: ; 0x02247A10
 	mov r0, #0x59
 	mov r1, #0x17
 	add r3, r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2373,7 +2373,7 @@ ov71_02247A10: ; 0x02247A10
 	mov r0, #0x59
 	mov r1, #0x16
 	mov r3, #6
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2385,7 +2385,7 @@ ov71_02247A10: ; 0x02247A10
 	mov r0, #0x59
 	mov r1, #0x15
 	mov r3, #6
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x39
@@ -2394,10 +2394,10 @@ ov71_02247A10: ; 0x02247A10
 	mov r1, #0x17
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	ldr r0, [r4, #0x54]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
 	bl ov71_02247ED0
 	mov r1, #0
@@ -2554,11 +2554,11 @@ _02247CBC:
 _02247CC0:
 	ldr r0, [sp, #0xc]
 	ldr r2, [r4, #0x68]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r1, [r4, #0x6c]
 	ldr r2, [r4, #0x68]
 	add r0, r7, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -2568,7 +2568,7 @@ _02247CC0:
 	ldr r2, [r4, #0x6c]
 	add r0, #0x58
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0x6d
@@ -2576,7 +2576,7 @@ _02247CC0:
 	bl sub_0200E948
 	add r0, r4, #0
 	add r0, #0x58
-	bl sub_0201D578
+	bl CopyWindowToVram
 	mov r0, #0
 	str r0, [r4, #8]
 	str r6, [r5]
@@ -2596,16 +2596,16 @@ _02247D04:
 	ldr r2, [r4, #0x68]
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r1, [r4, #0x6c]
 	ldr r2, [r4, #0x68]
 	add r0, r7, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	ldr r0, [r4]
 	bl ov71_02247390
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	cmp r0, #0
 	bne _02247D80
 	ldr r0, [r4, #0x10]
@@ -2636,7 +2636,7 @@ _02247D80:
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -2646,7 +2646,7 @@ _02247D80:
 	ldr r2, [r4, #0x6c]
 	add r0, #0x58
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	add r0, #0x58
 	bl sub_0201D8A0
@@ -2711,7 +2711,7 @@ _02247E06: ; jump table
 	.short _02247EAE - _02247E06 - 2 ; case 4
 _02247E10:
 	ldr r0, _02247ECC ; =0x000006A7
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0x10
@@ -2959,7 +2959,7 @@ ov71_02247FF8: ; 0x02247FF8
 	str r0, [sp, #0x10]
 	mov r0, #0x59
 	mov r1, #9
-	bl sub_02007994
+	bl GfGfxLoader_LoadImageMapping
 	mov r0, #0x39
 	str r0, [sp]
 	add r0, sp, #0x5c
@@ -2968,7 +2968,7 @@ ov71_02247FF8: ; 0x02247FF8
 	mov r1, #0xa
 	mov r2, #1
 	mov r3, #0
-	bl sub_02007974
+	bl GfGfxLoader_PartiallyLoadPalette
 	mov r0, #2
 	add r1, r4, #0
 	str r0, [sp]
@@ -3259,7 +3259,7 @@ _0224822E:
 	str r0, [r4, #0x24]
 _0224825C:
 	ldr r0, _022482E8 ; =0x000005E6
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4, #0x20]
 	add r0, r0, #1
 	str r0, [r4, #0x20]
@@ -3705,7 +3705,7 @@ _022485A4:
 	cmp r0, #0x28
 	bne _022485B8
 	ldr r0, _022485FC ; =0x000006AF
-	bl sub_0200604C
+	bl PlaySE
 _022485B8:
 	mov r0, #0x16
 	lsl r0, r0, #4
@@ -3803,7 +3803,7 @@ ov71_02248604: ; 0x02248604
 	ldr r2, [r2]
 	mov r0, #0x59
 	add r3, r1, #0
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3817,7 +3817,7 @@ ov71_02248604: ; 0x02248604
 	mov r0, #0x59
 	mov r1, #2
 	mov r3, #6
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r1, #0
 	str r1, [sp]
 	add r2, r4, #0
@@ -3830,7 +3830,7 @@ ov71_02248604: ; 0x02248604
 	ldr r2, [r2]
 	mov r0, #0x59
 	mov r3, #2
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -3843,7 +3843,7 @@ ov71_02248604: ; 0x02248604
 	ldr r2, [r2]
 	mov r0, #0x59
 	mov r3, #6
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	ldr r0, [r4]
 	bl ov71_022473A0
 	add r5, r0, #0
@@ -3855,7 +3855,7 @@ ov71_02248604: ; 0x02248604
 	mov r0, #0x59
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x39
@@ -3864,7 +3864,7 @@ ov71_02248604: ; 0x02248604
 	mov r1, #3
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	ldr r0, _02248898 ; =0x0224BCE4
 	lsl r1, r5, #1
 	ldrh r5, [r0, r1]
@@ -3878,7 +3878,7 @@ ov71_02248604: ; 0x02248604
 	mov r1, #3
 	mov r2, #0
 	add r3, r5, #0
-	bl sub_02007950
+	bl GfGfxLoader_GXLoadPalWithSrcOffset
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x40
@@ -3889,7 +3889,7 @@ ov71_02248604: ; 0x02248604
 	mov r1, #3
 	mov r2, #4
 	add r3, r5, #0
-	bl sub_02007950
+	bl GfGfxLoader_GXLoadPalWithSrcOffset
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3903,7 +3903,7 @@ ov71_02248604: ; 0x02248604
 	mov r0, #0x59
 	mov r1, #5
 	mov r3, #3
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3917,7 +3917,7 @@ ov71_02248604: ; 0x02248604
 	mov r0, #0x59
 	mov r1, #5
 	mov r3, #7
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3931,7 +3931,7 @@ ov71_02248604: ; 0x02248604
 	mov r0, #0x59
 	mov r1, #4
 	mov r3, #3
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3945,7 +3945,7 @@ ov71_02248604: ; 0x02248604
 	mov r0, #0x59
 	mov r1, #4
 	mov r3, #7
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x39
 	mov r1, #0x60
 	bl AllocFromHeap
@@ -3958,20 +3958,20 @@ ov71_02248604: ; 0x02248604
 	add r0, r5, #0
 	mov r1, #0x60
 	bl DC_FlushRange
-	bl sub_020D0524
-	bl sub_020D0774
+	bl GX_BeginLoadBGExtPltt
+	bl GXS_BeginLoadBGExtPltt
 	mov r1, #6
 	add r0, r5, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D05C4
+	bl GX_LoadBGExtPltt
 	mov r1, #6
 	add r0, r5, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D078C
-	bl sub_020D0634
-	bl sub_020D07F0
+	bl GXS_LoadBGExtPltt
+	bl GX_EndLoadBGExtPltt
+	bl GXS_EndLoadBGExtPltt
 	add r0, r5, #0
 	bl FreeToHeap
 _0224880A:
@@ -4229,7 +4229,7 @@ ov71_02248A08: ; 0x02248A08
 	str r0, [sp, #0x10]
 	mov r0, #0x59
 	mov r1, #0xd
-	bl sub_02007994
+	bl GfGfxLoader_LoadImageMapping
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #2
@@ -4242,7 +4242,7 @@ ov71_02248A08: ; 0x02248A08
 	mov r0, #0x59
 	mov r1, #0xd
 	mov r2, #1
-	bl sub_02007994
+	bl GfGfxLoader_LoadImageMapping
 	mov r0, #0x39
 	str r0, [sp]
 	add r0, sp, #0x60
@@ -4251,7 +4251,7 @@ ov71_02248A08: ; 0x02248A08
 	mov r1, #0xe
 	mov r2, #1
 	mov r3, #0
-	bl sub_02007974
+	bl GfGfxLoader_PartiallyLoadPalette
 	mov r0, #0x39
 	str r0, [sp]
 	add r0, sp, #0x60
@@ -4260,7 +4260,7 @@ ov71_02248A08: ; 0x02248A08
 	mov r1, #0xe
 	mov r2, #2
 	mov r3, #0
-	bl sub_02007974
+	bl GfGfxLoader_PartiallyLoadPalette
 	mov r0, #1
 	add r1, r7, #0
 	str r0, [sp]
@@ -5744,7 +5744,7 @@ _022495D0:
 	cmp r0, #0xa
 	ble _0224965C
 	ldr r0, _02249664 ; =0x000006AB
-	bl sub_0200604C
+	bl PlaySE
 	add r1, r5, #0
 	add r0, r5, #0
 	add r1, #0x34
@@ -5763,7 +5763,7 @@ _022495FA:
 	cmp r0, #0
 	beq _0224965C
 	ldr r0, _02249668 ; =0x000006AC
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5, #0x20]
 	mov r1, #3
 	bl sub_020248F0
@@ -5889,7 +5889,7 @@ _022496F0:
 	mov r0, #0x59
 	add r1, r7, #0
 	mov r3, #3
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -5901,7 +5901,7 @@ _022496F0:
 	mov r0, #0x59
 	add r1, r7, #0
 	mov r3, #7
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -5913,7 +5913,7 @@ _022496F0:
 	ldr r2, [r4, #0x24]
 	mov r0, #0x59
 	mov r3, #3
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -5925,7 +5925,7 @@ _022496F0:
 	ldr r2, [r4, #0x24]
 	mov r0, #0x59
 	mov r3, #7
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -5935,7 +5935,7 @@ _022496F0:
 	mov r0, #0x59
 	add r1, r6, #0
 	add r3, r5, #0
-	bl sub_02007950
+	bl GfGfxLoader_GXLoadPalWithSrcOffset
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -5946,7 +5946,7 @@ _022496F0:
 	add r1, r6, #0
 	mov r2, #4
 	add r3, r5, #0
-	bl sub_02007950
+	bl GfGfxLoader_GXLoadPalWithSrcOffset
 	mov r1, #3
 	add r3, r1, #0
 	ldr r0, [r4, #0x24]
@@ -6134,7 +6134,7 @@ ov71_022498F0: ; 0x022498F0
 	str r0, [sp, #0x10]
 	mov r0, #0x59
 	mov r1, #9
-	bl sub_02007994
+	bl GfGfxLoader_LoadImageMapping
 	mov r0, #0x39
 	str r0, [sp]
 	add r0, sp, #0x5c
@@ -6143,7 +6143,7 @@ ov71_022498F0: ; 0x022498F0
 	mov r1, #0xa
 	mov r2, #1
 	mov r3, #0
-	bl sub_02007974
+	bl GfGfxLoader_PartiallyLoadPalette
 	mov r0, #0
 	add r1, r4, #0
 	str r0, [sp]
@@ -6422,7 +6422,7 @@ _02249AEC:
 	add r0, #0x1c
 	add r1, #0x10
 	add r2, r5, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov71_02249A98
@@ -6758,7 +6758,7 @@ _02249DCA:
 	cmp r0, #0
 	beq _02249E04
 	ldr r0, _02249E1C ; =0x000006A8
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #1
@@ -6882,7 +6882,7 @@ ov71_02249E6C: ; 0x02249E6C
 	mov r0, #0x59
 	mov r1, #0x13
 	mov r3, #3
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -6894,7 +6894,7 @@ ov71_02249E6C: ; 0x02249E6C
 	mov r0, #0x59
 	mov r1, #0x13
 	mov r3, #7
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -6906,7 +6906,7 @@ ov71_02249E6C: ; 0x02249E6C
 	mov r0, #0x59
 	mov r1, #0x12
 	mov r3, #3
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -6918,7 +6918,7 @@ ov71_02249E6C: ; 0x02249E6C
 	mov r0, #0x59
 	mov r1, #0x12
 	mov r3, #7
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x39
@@ -6927,7 +6927,7 @@ ov71_02249E6C: ; 0x02249E6C
 	mov r0, #0x59
 	mov r1, #0x14
 	add r3, r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x39
@@ -6936,7 +6936,7 @@ ov71_02249E6C: ; 0x02249E6C
 	mov r1, #0x14
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0xc8
 	str r0, [sp]
 	mov r1, #1
@@ -6987,7 +6987,7 @@ ov71_02249E6C: ; 0x02249E6C
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	mov r2, #0xc8
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x20
@@ -6998,7 +6998,7 @@ ov71_02249E6C: ; 0x02249E6C
 	ldr r0, [r4, #0xc]
 	mov r1, #5
 	mov r2, #0xc8
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x20
@@ -7009,7 +7009,7 @@ ov71_02249E6C: ; 0x02249E6C
 	ldr r0, [r4, #0xc]
 	mov r1, #2
 	mov r2, #0xc8
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0x14
 	str r0, [sp]
 	mov r1, #0
@@ -7036,13 +7036,13 @@ ov71_02249E6C: ; 0x02249E6C
 	bl ov71_02247230
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0xc]
 	mov r1, #5
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0xc]
 	mov r1, #2
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224A07C ; =0xFFFFFE80
 	mov r1, #0x50
@@ -7270,7 +7270,7 @@ _0224A206:
 	cmp r0, #0
 	bne _0224A26A
 	ldr r0, _0224A270 ; =0x000006AA
-	bl sub_0200604C
+	bl PlaySE
 	add r1, r5, #0
 	add r0, r5, #0
 	add r1, #0x34
@@ -7397,7 +7397,7 @@ _0224A2F8:
 	mov r0, #0x59
 	add r1, r7, #0
 	mov r3, #3
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7409,7 +7409,7 @@ _0224A2F8:
 	mov r0, #0x59
 	add r1, r7, #0
 	mov r3, #7
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7421,7 +7421,7 @@ _0224A2F8:
 	ldr r2, [r4, #0x24]
 	mov r0, #0x59
 	mov r3, #3
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7433,7 +7433,7 @@ _0224A2F8:
 	ldr r2, [r4, #0x24]
 	mov r0, #0x59
 	mov r3, #7
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -7443,7 +7443,7 @@ _0224A2F8:
 	mov r0, #0x59
 	add r1, r6, #0
 	add r3, r5, #0
-	bl sub_02007950
+	bl GfGfxLoader_GXLoadPalWithSrcOffset
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -7454,7 +7454,7 @@ _0224A2F8:
 	add r1, r6, #0
 	mov r2, #4
 	add r3, r5, #0
-	bl sub_02007950
+	bl GfGfxLoader_GXLoadPalWithSrcOffset
 	mov r1, #3
 	ldr r0, [r4, #0x24]
 	add r2, r1, #0
@@ -7652,7 +7652,7 @@ ov71_0224A510: ; 0x0224A510
 	str r0, [sp, #0x10]
 	mov r0, #0x59
 	mov r1, #9
-	bl sub_02007994
+	bl GfGfxLoader_LoadImageMapping
 	mov r0, #0x39
 	str r0, [sp]
 	add r0, sp, #0x5c
@@ -7661,7 +7661,7 @@ ov71_0224A510: ; 0x0224A510
 	mov r1, #0xa
 	mov r2, #1
 	mov r3, #0
-	bl sub_02007974
+	bl GfGfxLoader_PartiallyLoadPalette
 	mov r0, #1
 	add r1, r4, #0
 	str r0, [sp]
@@ -7968,7 +7968,7 @@ _0224A744:
 	add r0, #0x1c
 	add r1, #0x10
 	add r2, r5, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	pop {r4, r5, r6, pc}
 _0224A7BA:
 	add r2, r5, #0
@@ -8529,7 +8529,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	ldr r2, [r4, #0xc]
 	mov r0, #0x59
 	add r3, r1, #0
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -8541,7 +8541,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r0, #0x59
 	mov r1, #2
 	mov r3, #6
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -8552,7 +8552,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	ldr r2, [r4, #0xc]
 	mov r0, #0x59
 	mov r3, #2
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -8563,7 +8563,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	ldr r2, [r4, #0xc]
 	mov r0, #0x59
 	mov r3, #6
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	ldr r0, [r4]
 	bl ov71_022473A0
 	add r5, r0, #0
@@ -8575,7 +8575,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r0, #0x59
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x39
@@ -8584,7 +8584,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r1, #3
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	ldr r0, _0224ADA8 ; =0x0224BEE8
 	lsl r1, r5, #1
 	ldrh r5, [r0, r1]
@@ -8598,7 +8598,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r1, #3
 	mov r2, #0
 	add r3, r5, #0
-	bl sub_02007950
+	bl GfGfxLoader_GXLoadPalWithSrcOffset
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x40
@@ -8609,7 +8609,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r1, #3
 	mov r2, #4
 	add r3, r5, #0
-	bl sub_02007950
+	bl GfGfxLoader_GXLoadPalWithSrcOffset
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -8621,7 +8621,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r0, #0x59
 	mov r1, #5
 	mov r3, #3
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -8633,7 +8633,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r0, #0x59
 	mov r1, #5
 	mov r3, #7
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -8645,7 +8645,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r0, #0x59
 	mov r1, #4
 	mov r3, #3
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -8657,7 +8657,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r0, #0x59
 	mov r1, #4
 	mov r3, #7
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x39
 	mov r1, #0x60
 	bl AllocFromHeap
@@ -8670,20 +8670,20 @@ ov71_0224AB7C: ; 0x0224AB7C
 	add r0, r5, #0
 	mov r1, #0x60
 	bl DC_FlushRange
-	bl sub_020D0524
-	bl sub_020D0774
+	bl GX_BeginLoadBGExtPltt
+	bl GXS_BeginLoadBGExtPltt
 	mov r1, #6
 	add r0, r5, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D05C4
+	bl GX_LoadBGExtPltt
 	mov r1, #6
 	add r0, r5, #0
 	lsl r1, r1, #0xc
 	mov r2, #0x60
-	bl sub_020D078C
-	bl sub_020D0634
-	bl sub_020D07F0
+	bl GXS_LoadBGExtPltt
+	bl GX_EndLoadBGExtPltt
+	bl GXS_EndLoadBGExtPltt
 	add r0, r5, #0
 	bl FreeToHeap
 _0224AD52:
@@ -9193,12 +9193,12 @@ ov71_0224B138: ; 0x0224B138
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	mov r1, #0x39
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x6c]
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	mov r1, #0x39
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r4, #0x70]
 	mov r1, #0
 	add r0, r4, #0
@@ -9230,9 +9230,9 @@ ov71_0224B198: ; 0x0224B198
 	ldr r0, [r0]
 	bl ov71_0224BA48
 	ldr r0, [r4, #0x6c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x70]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x74]
 	cmp r0, #0
 	beq _0224B1C8
@@ -9243,7 +9243,7 @@ _0224B1C8:
 	bl sub_0201BB4C
 	add r0, r4, #0
 	add r0, #0x5c
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _0224B1E2
@@ -9377,7 +9377,7 @@ ov71_0224B280: ; 0x0224B280
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4]
 	bl ov71_022473D0
 	lsl r0, r0, #0x18
@@ -9407,7 +9407,7 @@ ov71_0224B280: ; 0x0224B280
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0x20
 	str r3, [sp]
 	mov r0, #0x39
@@ -9415,10 +9415,10 @@ ov71_0224B280: ; 0x0224B280
 	mov r0, #0x10
 	mov r1, #8
 	mov r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -9430,7 +9430,7 @@ ov71_0224B280: ; 0x0224B280
 	mov r0, #0x59
 	mov r1, #0x16
 	mov r3, #2
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -9442,7 +9442,7 @@ ov71_0224B280: ; 0x0224B280
 	mov r0, #0x59
 	mov r1, #0x15
 	mov r3, #2
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x39
@@ -9451,7 +9451,7 @@ ov71_0224B280: ; 0x0224B280
 	mov r0, #0x59
 	mov r1, #0x17
 	add r3, r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	add r0, r4, #0
 	bl ov71_0224B720
 	mov r1, #0
@@ -9630,7 +9630,7 @@ _0224B504:
 	bl ov71_02247398
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E640
+	bl GetBoxMonData
 	cmp r0, #0
 	bne _0224B55A
 	ldr r0, [r4]
@@ -9736,11 +9736,11 @@ _0224B5DA:
 _0224B5DE:
 	ldr r0, [sp, #0xc]
 	ldr r2, [r4, #0x6c]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r1, [r4, #0x70]
 	ldr r2, [r4, #0x6c]
 	add r0, r7, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -9750,7 +9750,7 @@ _0224B5DE:
 	ldr r2, [r4, #0x70]
 	add r0, #0x5c
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0x6d
@@ -9758,7 +9758,7 @@ _0224B5DE:
 	bl sub_0200E948
 	add r0, r4, #0
 	add r0, #0x5c
-	bl sub_0201D578
+	bl CopyWindowToVram
 	ldr r0, _0224B6EC ; =0x000004A4
 	bl sub_02006B24
 	mov r0, #0
@@ -9781,15 +9781,15 @@ _0224B62C:
 	ldr r2, [r4, #0x6c]
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r1, [r4, #0x70]
 	ldr r2, [r4, #0x6c]
 	add r0, r7, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -9799,7 +9799,7 @@ _0224B62C:
 	ldr r2, [r4, #0x70]
 	add r0, #0x5c
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	add r0, #0x5c
 	bl sub_0201D8A0
@@ -10050,7 +10050,7 @@ ov71_0224B848: ; 0x0224B848
 	str r0, [sp, #0x10]
 	mov r0, #0x59
 	mov r1, #9
-	bl sub_02007994
+	bl GfGfxLoader_LoadImageMapping
 	mov r0, #0x39
 	str r0, [sp]
 	add r0, sp, #0x5c
@@ -10059,7 +10059,7 @@ ov71_0224B848: ; 0x0224B848
 	mov r1, #0xa
 	mov r2, #1
 	mov r3, #0
-	bl sub_02007974
+	bl GfGfxLoader_PartiallyLoadPalette
 	mov r0, #2
 	add r1, r4, #0
 	str r0, [sp]
@@ -10442,7 +10442,7 @@ _0224BB44:
 	cmp r1, r0
 	bge _0224BBCA
 	ldr r0, _0224BBD0 ; =0x000005E6
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0
 	ldr r1, [r4, #0x30]
 	mvn r0, r0

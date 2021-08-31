@@ -1,0 +1,4 @@
+Where are you off to with Pokémon?\rThe Pokémon League?\rAre your Pokémon loyal enough for\nyou to win?\rLet me see...\r
+Ah! Your Pokémon trusts you\nvery much.\rIt’s nice to see a good Trainer.\rHere. A gift for your journey.\r
+TM37 happens to be Sandstorm.\rIt’s a move that inflicts damage on\nboth your and your foe’s Pokémon.\rHowever, some Pokémon, such as Rock-\nand Ground- and Steel-type\fPokémon, take no damage.\rThere are other ways to avoid taking\ndamage. I’ll let you figure it out.
+If it doesn’t come to trust you some\nmore, it could be tough going.\rTrust is the tie that binds Pokémon\nand Trainers.

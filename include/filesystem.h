@@ -14,8 +14,6 @@ typedef struct NARC
 
 #include "filesystem_files_def.h"
 
-void ReadFromNarcMemberByPathAndId(void * dest, const char * path, s32 file_idx, u32 offset, u32 size);
-void * AllocAndReadFromNarcMemberByPathAndId(const char * path, s32 file_idx, u32 heap_id, u32 offset, u32 size, BOOL r4);
 void ReadWholeNarcMemberByIdPair(void * dest, NarcId narc_id, s32 file_id);
 void * AllocAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, u32 heap_id);
 void * AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, u32 heap_id);

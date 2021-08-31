@@ -1,0 +1,15 @@
+Rt. 39\nSouth to Olivine City
+Moomoo Farm\nEnjoy Our Fresh and Tasty Milk
+Trainer Tips\rUse Headbutt on trees to shake\nPokémon out.\rDifferent kinds of Pokémon drop out\nof trees.\rUse Headbutt on any tree you see!
+MILTANK: Mooo!
+Baoba: ...Ohh!\nWhat you are holding is...\fwhat they call...a Pokédex!\fHaven’t seen one of those in ages.\rMy name is Baoba!\rI used to run a Safari Zone in\nFuchsia City, but it was becoming\fout of date with new entertainment\foptions coming out.\rI decided to go overseas to learn\nthe newest technology and open a\fstate-of-the-art Safari Zone\fin Cianwood.\rIt may be more than a coincidence\nthat we are chatting.\rWhy don’t we register each other’s\nnumbers in the Pokégear?\rI can give you a call once the Safari\nZone is open before I call anyone else!\r
+Do you want to register? {YESNO 0}
+That’s the way!\r
+Huh, I didn’t expect you to say no.\nYou can get hard-to-find Pokémon, too.\rYou’ll be able to make good progress\nwith your Pokédex, too...\r
+{STRVAR_1 3, 0, 0} registered Baoba\nin the Pokégear!
+Baoba: I’ll let you know over the\nPokégear once it’s ready!\r
+Lt. Surge: Hey, you!\rDon’t you want a good memory of us\ntogether? How about taking a\fpicture with me? {YESNO 0}
+Lt. Surge: OK! OK!\rShow me a very good smile!\r
+Lt. Surge: Wow!\nThis turned out to be a really\fgood one!\rWe root for Route 39!
+Lt. Surge: That’s OK...\rLet me know if you change your mind.
+Your Photo Album is full.\rAccess your PC to delete some pictures\nbefore you come back.

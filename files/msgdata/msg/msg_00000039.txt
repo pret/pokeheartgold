@@ -1,0 +1,48 @@
+{ALN_CENTER}VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}
+{ALN_CENTER}Flip the Cards and Collect Coins!
+...x1! ...x2! ...x3!
+Game Over! 0!
+{ALN_CENTER}{STRVAR_1 3, 0, 0}’s\n{ALN_CENTER}Collected Coins
+{ALN_CENTER}Coins Collected in\n{ALN_CENTER}Current Game
+{ALN_CENTER}Open\n{ALN_CENTER}Memo
+{ALN_CENTER}Close\n{ALN_CENTER}Memo
+{ALN_CENTER}Quit
+{ALN_CENTER}By looking at the numbers on the sides of\n{ALN_CENTER}the cards, you can see the hidden number\n{ALN_CENTER}and VOLTORB totals.
+{ALN_CENTER}Touch “Open Memo” to open the Memo Window.\n{ALN_CENTER}Touch the cards to add and remove marks.
+{ALN_CENTER}If you flip the cards in this order,\n{ALN_CENTER}you’ll collect: 3 x 1 x 2 x 1 x 3...\n{ALN_CENTER}A total of 18 Coins! And then...
+{ALN_CENTER}If you select “Quit,”\n{ALN_CENTER}you’ll keep those 18 Coins.
+{ALN_CENTER}But if you find VOLTORB,\n{ALN_CENTER}you’ll lose all your Coins!
+You’ve gathered 50,000 Coins.\nYou cannot gather any more.\r
+Play VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}?
+Play VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}?
+Play
+Game Info
+Quit
+Which set of info?
+How to Play
+Hint!
+About Memos
+Return
+VOLTORB Flip is a game in which you flip\nover cards to find numbers hidden\fbeneath them.\rThe cards are hiding the numbers\n1 through 3...and VOLTORB as well.\rThe first number you flip over will give\nyou that many Coins.\rFrom then on, the next number you\nfind will multiply the total amount of\fCoins you’ve collected by that number.\rIf it’s a 2, your total will be multiplied\nby “x2.”\rIf it’s a 3, your total will be multiplied\nby “x3.”\rBut if you flip over a VOLTORB, it’s\ngame over.\rWhen that happens, you’ll lose all the\nCoins you’ve collected in the\fcurrent game.\rIf you select “Quit,” you’ll withdraw\nfrom the game.\rIf you get to a difficult spot, you might\nwant to end the game early.\rOnce you’ve found all the hidden\n2 and 3 cards, you’ve cleared\fthe game.\rOnce you’ve flipped over all these\ncards, then you’ll advance to the\fnext level.\rAs you move up in levels, you will be\nable to receive more Coins.\fDo your best!\r
+The numbers at the side of the board\ngive you a clue about the numbers\fhidden on the backs of the panels.\rThe larger the number, the more likely\nit is that there are many large numbers\fhidden in that row or column.\rIn the same way, you can tell how many\nVOLTORB are hidden in the row\for column.\rConsider the hidden number totals and\nthe VOLTORB totals carefully as you flip\fover panels.\r
+Select “Open Memo” to mark\nthe cards.\rYou can mark the cards with the\nnumbers 1 through 3, but also with a\fVOLTORB mark.\rWhen you have an idea of the numbers\nhidden on the back of the cards, touch\r“Open Memo” and select the cards\nto mark.\rIf you want to remove a mark, touch the\nmark again, and it will disappear.\r
+Will this be the last card?!
+Is this what you’re expecting?!
+{STRVAR_1 50, 0, 0}! Received {STRVAR_1 50, 0, 0} Coin(s)!
+x{STRVAR_1 50, 0, 0}! Received {STRVAR_1 53, 1, 0} Coins!
+Oh no! You get 0 Coins!
+Game clear!\rYou’ve found all of the hidden x2 and\nx3 cards.\rThis means you’ve found all the Coins\nin this game, so the game is now over.\r
+If you quit now, you will\nreceive {STRVAR_1 53, 0, 0} Coin(s).\fWill you quit?
+  
+   
+You haven’t found any Coins!\nAre you sure you want to quit?
+  
+   
+{STRVAR_1 3, 1, 0}\nreceived {STRVAR_1 53, 0, 0} Coin(s)!\r
+Advanced to Game Lv. {STRVAR_1 50, 0, 0}!\r
+Congratulations!\rYou can receive even more Coins\nin the next game!\r
+Dropped to Game Lv. {STRVAR_1 50, 0, 0}.\r
+           
+              
+Table No. {STRVAR_1 51, 0, 0}
+Next Game Level: {STRVAR_1 50, 1, 0}

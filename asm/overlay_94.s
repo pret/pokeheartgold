@@ -23,7 +23,7 @@ _021E5912:
 	ldr r0, [r4, r1]
 	mov r1, #0
 	mov r2, #0x1c
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, _021E5938 ; =0x00000C65
 	ldrb r1, [r4, r0]
 	add r0, #0x1b
@@ -190,7 +190,7 @@ _021E5A6A:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #0xbc
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r7, r0, #0
 	add r0, r6, #0
 	bl sub_02070DB0
@@ -198,15 +198,15 @@ _021E5A6A:
 	ldr r0, _021E5AE4 ; =0x000007C4
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200BF8C
+	bl BufferBoxMonNickname
 	ldr r1, _021E5AE4 ; =0x000007C4
 	add r2, r7, #0
 	ldr r0, [r5, r1]
 	add r1, r1, #4
 	ldr r1, [r5, r1]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -372,7 +372,7 @@ _021E5BCA:
 	add r3, r4, #0
 	bl sub_02015494
 	ldr r0, _021E5C20 ; =0x00000564
-	bl sub_0200604C
+	bl PlaySE
 	pop {r4, pc}
 _021E5BF6:
 	ldr r0, [r4, #0x18]
@@ -386,7 +386,7 @@ _021E5BF6:
 	add r3, r4, #0
 	bl sub_02015494
 	ldr r0, _021E5C24 ; =0x00000565
-	bl sub_0200604C
+	bl PlaySE
 	pop {r4, pc}
 	nop
 _021E5C18: .word 0x000001E7

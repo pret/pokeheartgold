@@ -1,0 +1,12 @@
+Kyle
+So I don’t forget just how great\nit is to battle with you, how about\fwe exchange phone numbers? {YESNO 0}
+Awesome! I definitely won’t forget\nabout you now!
+I see...\nToo bad...
+Oh! I see you’ve changed your mind\nabout exchanging phone numbers\fwith me!{YESNO 0}
+Hm? Wait, let me guess. You’re nearby,\naren’t you?\rIf you want to talk to me, why don’t\nyou do it in person?
+My {STRVAR_1 0, 10, 0} works really hard!\rEnd of report!
+You know... Yesterday, we beat a\n{STRVAR_1 0, 11, 0}!\rEnd of report!
+Oh no... Just a little while ago, a\n{STRVAR_1 0, 11, 0} got away...\rEnd of report!
+Do you remember?\rThe moment we first battled!\rI want to battle with you again, to\nrelive that tense moment!\rI’m waiting on {STRVAR_1 4, 3, 0}.
+Do you remember?\nWe had plans to battle!\rI’m waiting for you on\n{STRVAR_1 4, 3, 0}, so hurry up!
+So, at last...\nYou’ve finally decided you want to learn\ffrom the best fisherman.\rThat’s great.\nI’ll teach you.\rTo start...\nLook out at the surface of the water.\fBreathe in deeply.\fHold your fishing rod and stand still.\fAim at a point quietly.\fAnd, SHOO-OOOP! Cast out your line!\rWhen you cast your line, keep a good\ngrip, or your Fishing Rod will go with it.\fMake sure to hold on tight!\rThe hook and line will sink down into\nthe water, and you wait, just like that,\fwithout moving.\rWell, if your nose itches or something,\nI suppose it’s OK to move a little bit.\rAnd then, YOINK--you get a bite!\nYANK on the line and pull it out of\fthe water!\rGot it? YOINK and YANK!\nIf you YANK without a YOINK,\fyou’ll look like a fool, pulling up\fnothing! Well, it might not be a YOINK,\fmight be it’s a BLOOP or a PLOOSH or a\fBLOOSH, or even a SPLOOSH-SPLOOSH...\f...Huh? I think we’re losing conn...\fction... Can...hear... Hello...? He...

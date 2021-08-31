@@ -1,0 +1,15 @@
+Sabrina
+Huh? I can’t hear you very well.\nI wonder if it’s our connection?\rTry calling again from somewhere else.
+Hello...\nAnything new going on with you?\fI’m the same as usual.\r
+There are stronger Gym Leaders\nthan me, you know. That’s no good!
+I think I’ve got some free time on\nSundays around noon.\rCould you call me back then?
+Ah, wonderful!\nI’ve got some free time right now.\rWould you like to battle again? {YESNO 0}
+I knew it. That’s just like you.\rSo, I’ll see you at the Fighting Dojo in\nSaffron City then!
+I see...\nYou have the right to refuse an offer.\fI shouldn’t have gotten my hopes up.\fBut I’m still a little disappointed...
+Do you really have some free time to\nbattle me?\rIf you’ve got plans with other people,\nyou should really do that first.
+I’ll be waiting in Saffron City’s\nFighting Dojo. Don’t forget!
+Yeah, this is Sabrina.\nHow are you doing?\r
+So, I’m pretty sure we made plans to\nmeet at the Fighting Dojo in\fSaffron City... Did you really forget?
+I’ll tell you a little about a Psychic’s\ntraining.\rPsychic ability is the power to influence\npeople.\rYou close your eyes and clear your mind\nof excessive thoughts...then you look\fhard at your sleeping self.\rThat’s it.\rTrue Psychics aren’t the kind who can\nmove things around with their minds.\rIt’s about controlling your own mind.
+You... You’ll become even stronger\nthan you are now, I know it...\rYou will defeat every Trainer you face\nand eventually reach the\fglowing glory...\rI just wanted to tell you that.\nTalk to you later!
+You are a great Trainer, with a good\nbalance between intellect, power, and\fyour heart.\rBut above all, the power of your heart\nis what is special.\rWhat do you think of honestly trying to\nstudy how to be a Psychic once to see?\rI bet you could become a better Psychic\nthan me if you tried...

@@ -1,0 +1,41 @@
+{STRVAR_1 6, 0, 0}{CURSOR_X 120}{STRVAR_1 51, 1, 0} BP
+{STRVAR_1 6, 0, 0}\n           {STRVAR_1 51, 1, 0} BP
+NEXT
+QUIT
+If you’ve become a bit of a fanatic\nabout battles, I’m the guy who can\fteach your Pokémon all kinds of moves.\rMay I teach your Pokémon\nmoves in exchange for BP? {YESNO 0}
+Oh, how unlucky! There’s no move I can\nteach that Pokémon!\r
+Oh, what an unhappy thing!\nYou don’t have enough BP!\r
+Giving up on teaching {STRVAR_1 0, 0, 0}\na move!\fThat’s what you want, right? {YESNO 0}
+{STRVAR_1 0, 0, 0} wants to learn the move\n{STRVAR_1 6, 1, 0}...\rBut {STRVAR_1 0, 0, 0} already knows four\nmoves, so it can’t!\rForget a move so that {STRVAR_1 6, 1, 0}\ncan be learned?{YESNO 0}
+{STRVAR_1 6, 2, 0} will be forgotten.\nThat’s OK, right? {YESNO 0}
+So you want to give up on\n{STRVAR_1 6, 1, 0}, am I right? {YESNO 0}
+{STRVAR_1 0, 0, 0} gave up on learning\n{STRVAR_1 6, 1, 0}!\r
+1{PAUSE 20}, 2{PAUSE 20}, and{PAUSE 20}... {PAUSE 20}... Poof!
+{STRVAR_1 0, 0, 0} forgot how to\nuse {STRVAR_1 6, 1, 0}.\rAnd...\r
+{STRVAR_1 0, 0, 0} learned how to use\n{STRVAR_1 6, 1, 0}. Wow!\r
+Well then!\nUntil next time!
+If you’ve poured your whole life into\nPokémon battles, I’m the guy who can\fteach your Pokémon all kinds of moves.\rMay I teach your Pokémon\nmoves in exchange for BP? {YESNO 0}
+Oh no!\nThere’s no move I can teach that\fPokémon!\r
+Oh no!\nYou don’t have enough BP!\r
+Quit trying to teach {STRVAR_1 0, 0, 0} new\nmoves? {YESNO 0}
+{STRVAR_1 0, 0, 0} wants to learn the move\n{STRVAR_1 6, 1, 0}...\rBut {STRVAR_1 0, 0, 0} already knows four\nmoves!\rForget a move so that {STRVAR_1 6, 1, 0}\ncan be learned?{YESNO 0}
+Forget {STRVAR_1 6, 2, 0}, am I\nright? {YESNO 0}
+So you want to give up on\n{STRVAR_1 6, 1, 0}, am I right? {YESNO 0}
+{STRVAR_1 0, 0, 0} gave up on learning\n{STRVAR_1 6, 1, 0}!\r
+1{PAUSE 20}, 2{PAUSE 20}, and{PAUSE 20}... {PAUSE 20}... Poof!
+{STRVAR_1 0, 0, 0} forgot how to\nuse {STRVAR_1 6, 1, 0}.\rAnd...\r
+{STRVAR_1 0, 0, 0} learned how to use\n{STRVAR_1 6, 1, 0}. Great!\r
+Well then! See you next time!
+If you’ve poured your heart and soul\ninto Pokémon battles, I’m the guy who\fcan teach your Pokémon all kinds\fof moves.\rMay I teach your Pokémon\nmoves in exchange for BP? {YESNO 0}
+Oh... There’s no move I can\nteach that Pokémon!\r
+How sad...\nYou don’t have enough BP!\r
+Giving up on teaching {STRVAR_1 0, 0, 0}\na move, right? {YESNO 0}
+{STRVAR_1 0, 0, 0} wants to learn the move\n{STRVAR_1 6, 1, 0}...\rBut {STRVAR_1 0, 0, 0} already knows four\nmoves!\rForget a move so that {STRVAR_1 6, 1, 0}\ncan be learned? {YESNO 0}
+{STRVAR_1 6, 2, 0} will be forgotten.\nDo I have that right? {YESNO 0}
+So you want to give up on\n{STRVAR_1 6, 1, 0}, right? {YESNO 0}
+{STRVAR_1 0, 0, 0} gave up on learning\n{STRVAR_1 6, 1, 0}!\r
+1{PAUSE 20}, 2{PAUSE 20}, and{PAUSE 20}... {PAUSE 20}... Poof!
+{STRVAR_1 0, 0, 0} forgot how to\nuse {STRVAR_1 6, 1, 0}.\rAnd...\r
+{STRVAR_1 0, 0, 0} learned how to use\n{STRVAR_1 6, 1, 0}!\r
+Until next time!\nCome back whenever you’ve got\fBattle Points to spend!
+How in the world do you teach an Egg...

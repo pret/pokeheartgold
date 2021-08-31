@@ -1,0 +1,14 @@
+Jamie
+You’re very good at battling.\nWe should battle again sometime.\rBy challenging a tough Trainer like you,\nI think I can get better, too.\rSo how about it?\nWould you give me your\fphone number? {YESNO 0}
+Let’s battle again sometime!
+That’s too bad...\nLet me know if you change your mind.
+By challenging a tough Trainer like you,\nI think I can get better, too.\rSo how about it? Would you give me\nyour phone number? {YESNO 0}
+
+Huh? You... Aren’t you nearby?\rWhy not come here and just talk to me\nface-to-face?
+Do you remember my\nsweet {STRVAR_1 0, 10, 0}?\r{STRVAR_1 0, 10, 0} runs very fast.\rIt’s exhilarating to ride on its\nback when it really gets going.\rBye-bye!
+Oh, have you ever seen a {STRVAR_1 0, 11, 0}\nbefore?\rI just battled one...\nIt was much faster than I expected.\rI was a little shocked.\nI still won, of course.\rBye-bye!
+Oh, I just saw a wild {STRVAR_1 0, 11, 0}.\nI was trying to catch it when I\fnoticed that I was all out of\fPoké Balls.\rIf you don’t check your items, you\nmay run out at the worst time.\fI hope you learn from my mistake.\rBye-bye!
+Do you want to battle? I’m going to win\nthis time!\rI’ll be waiting for you around\n{STRVAR_1 4, 3, 0}. Look for me, OK?
+Um... {STRVAR_1 3, 0, 0}? What’s wrong?\nDid you forget our deal?\r{STRVAR_1 4, 3, 0}.\nThat’s where I’m waiting.
+Um... {STRVAR_1 3, 0, 0}? What’s wrong?\nDid you forget our deal?\r{STRVAR_1 4, 3, 0}.\nThat’s where I’m waiting.
+Let’s battle again\nsometime!

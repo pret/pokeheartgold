@@ -1,0 +1,51 @@
+I’m the Day-Care Man.\rWe look after the precious Pokémon\nof other Trainers.\rIf you’d like us to raise your\nPokémon, have a word with my wife.
+Ah, it’s you!\rWe were raising your Pokémon,\nand my goodness, were we surprised!\rYour Pokémon was holding an Egg!\rWe don’t know how it got there,\nbut your Pokémon had it.\rYou do want it, don’t you? {YESNO 0}
+Ah, it’s you! Good to see you.\nYour {STRVAR_1 0, 0, 0}’s doing just fine.
+Well then, I’ll hang on to it.\nThanks!
+You have no room for it right now...\nCome back when you’ve made room.
+{STRVAR_1 3, 0, 0} received the Egg from\nthe Day-Care Man.
+You take good care of it.
+                                                                                
+                              
+Ah, it’s you!\nGood to see you!\rYour {STRVAR_1 0, 0, 0} and {STRVAR_1 0, 1, 0}\nare doing just fine.\r
+I really will keep it.\nYou do want this Egg, yes? {YESNO 0}
+Take good care of it!\rThat is, I don’t think we’ll ever find\nanother...\rNo, no, I’m sure we’ll find another one.\nI’m definitely sure of it!\r
+Well all right then, I’ll take it.\nThank you.\rThat is, I don’t think we’ll ever find\nanother...\rNo, no, I’m sure we’ll find another one.\nI’m definitely sure of it!\r
+{STRVAR_1 3, 0, 0}...\nIf we are looking after your Pokémon\fand notice one is holding an Egg, would\fyou like me to contact you by\fphone? Would that be all right? {YESNO 0}
+{STRVAR_1 3, 0, 0}...\nIf we are looking after your Pokémon\fand notice one is holding an Egg, would\fyou like me to contact you by\fphone? Would that be all right? {YESNO 0}
+You can leave it up to us!\rAny Pokémon you’d like to have raised\nyou can leave in my wife’s care.
+I see. Well, that’s fine.\rAny Pokémon you’d like to have raised\nyou can leave in my wife’s care.
+The two seem to get along very well.
+The two seem to get along.
+The two don’t seem to like each\nother much.
+The two play with other\nPokémon rather than with each other...
+I’m the Day-Care Lady.\nWe can raise Pokémon for you.\rWould you like us to raise your\nPokémon? {YESNO 0}
+Which Pokémon should we raise for\nyou?\r
+Fine, we’ll raise your {STRVAR_1 0, 0, 0}\nfor a while.\rCome back for it later.\r
+We can raise two of your Pokémon.\nWould you like us to raise another? {YESNO 0}
+Ah, there you are!\nMy husband was looking for you.
+Oh, fine, then.\nCome again.
+You don’t have enough money...
+Do you want to take back the other\none, too? {YESNO 0}
+Very good.\nCome again.
+Ah, it’s you! Good to see you.\nNow, about your Pokémon...\r
+By level, your {STRVAR_1 0, 0, 0} has\ngrown by about {STRVAR_1 51, 1, 0}.\r
+Your Pokémon team is full.\nMake room, then come see me.
+If you want your {STRVAR_1 0, 0, 0} back,\nit will cost ${STRVAR_1 53, 1, 0}. {YESNO 0}
+Excellent!\nHere’s your Pokémon.\r
+{STRVAR_1 3, 1, 0} took {STRVAR_1 0, 0, 0} back\nfrom the Day-Care Lady.\r
+Oh? But you only have one\nPokémon with you.\rYou can’t go off without a Pokémon.\nCome back another time.
+Do you want your Pokémon back? {YESNO 0}
+If you leave me that Pokémon,\nwhat are you gonna battle with?\rCome back another time.
+Huh? Now, now.\rIf you leave that Pokémon with\nme, you’ll be left with just one.\rYou will be better off if you catch\nsome more, if I do say so myself.
+Now, now.\nThat is merely an Egg!
+Fine, we’ll raise your {STRVAR_1 0, 0, 0}\nfor a while.\rCome back for it later.
+     
+       
+      
+      
+     
+The two seem to get along very well.\r
+The two seem to get along.\r
+The two don’t seem to like each\nother much.\r
+The two play with other\nPokémon rather than with each other...\r

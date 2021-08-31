@@ -1,0 +1,10 @@
+Brock: Wow, it’s not often that we\nget a challenger from Johto.\rI’m Brock, the Pewter Gym Leader.\fI’m an expert on Rock-type Pokémon.\rMy Pokémon are impervious to most\nphysical attacks.\rYou’ll have a hard time inflicting\nany damage.\rCome on!\r
+Brock: Your Pokémon’s powerful\nattacks overcame my\frock-hard resistance...\rYou’re stronger than\nI expected...\fGo ahead--take this Badge.\r
+{STRVAR_1 3, 0, 0} received\nthe Boulder Badge from Brock!
+Brock: I really enjoyed the battle\nwith you, {STRVAR_1 3, 0, 0}!\fI’ll give you the move Rock Slide, too.\rIt can sometimes cause your foe\nto flinch.\r
+Brock: I really enjoyed the battle\nwith you, {STRVAR_1 3, 0, 0}!\fI’ll give you the move Rock Slide, too.\rIt can sometimes cause your foe\nto flinch.\r
+Brock: The world is huge. There are\nstill many strong Trainers like you.\rJust wait and see.\rI’m going to become a lot\nstronger, too.
+Yo! Legend in the making! You look...\freally rocking.\rAre you battling the Gym Leaders\nof Kanto?\rThey’re strong and dedicated people,\njust like Johto’s Gym Leaders.
+Yo! Legend in the making! That Gym\ndidn’t give you much trouble.\rThe way you took charge was\nreally inspiring.\fI mean that seriously.
+Pewter City Pokémon Gym
+Pewter City Pokémon Gym\rLeader: Brock\nCertified Trainer!\f{STRVAR_1 3, 0, 0}

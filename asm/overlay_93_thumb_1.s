@@ -20,7 +20,7 @@ ov93_0225C540: ; 0x0225C540
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov93_0225C6D8
@@ -336,7 +336,7 @@ ov93_0225C768: ; 0x0225C768
 	ldr r2, _0225CA64 ; =0x00003850
 	add r5, r0, #0
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r5, #0
 	add r0, #0xa8
 	mov r1, #0x75
@@ -369,14 +369,14 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #0
 	lsl r2, r2, #8
 	mov r3, #0x75
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r5, #0
 	add r0, #0x8c
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r2, r1, #9
 	mov r3, #0x75
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r5, #0
 	add r0, #0x8c
 	mov r2, #7
@@ -384,7 +384,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #2
 	lsl r2, r2, #6
 	mov r3, #0x75
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r5, #0
 	add r0, #0x8c
 	mov r2, #2
@@ -392,7 +392,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #3
 	lsl r2, r2, #8
 	mov r3, #0x75
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	mov r0, #0x75
 	bl sub_0201AC88
 	str r0, [r5, #0x2c]
@@ -444,19 +444,19 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #0x1b
 	mov r2, #0xc
 	mov r3, #0x75
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r1, r5, #0
 	add r1, #0x80
 	str r0, [r1]
 	mov r0, #0x75
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r1, r5, #0
 	add r1, #0x84
 	str r0, [r1]
 	mov r0, #5
 	lsl r0, r0, #6
 	mov r1, #0x75
-	bl sub_02026354
+	bl String_ctor
 	add r1, r5, #0
 	add r1, #0x88
 	str r0, [r1]
@@ -505,7 +505,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #0x10
 	mov r2, #7
 	mov r3, #0x75
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x20
@@ -518,7 +518,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #0x10
 	mov r2, #7
 	mov r3, #0x75
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	add r0, r5, #0
 	bl ov93_0225D4EC
 	add r0, r5, #0
@@ -564,7 +564,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r0, #1
 	bl sub_02002B50
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r0, [r5, #0x28]
@@ -969,7 +969,7 @@ ov93_0225CD10: ; 0x0225CD10
 	add r5, #0x30
 _0225CD72:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r6, r6, #1
 	add r5, #0x10
 	cmp r6, #5
@@ -1015,22 +1015,22 @@ _0225CD72:
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -1038,15 +1038,15 @@ _0225CD72:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #0x2c]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -1072,7 +1072,7 @@ _0225CD72:
 	add r0, r7, #0
 	bl sub_02007294
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B50
 	mov r0, #0
@@ -1332,7 +1332,7 @@ ov93_0225D07C: ; 0x0225D07C
 	str r0, [sp, #0x30]
 	add r0, sp, #4
 	add r4, r1, #0
-	bl sub_020CAFEC
+	bl MTX_Identity33_
 	ldr r1, _0225D1B0 ; =0x000015A8
 	add r0, r4, #0
 	add r1, r4, r1
@@ -1389,7 +1389,7 @@ ov93_0225D07C: ; 0x0225D07C
 	bl sub_020BEFD4
 	ldr r1, _0225D1CC ; =0x021DA558
 	add r0, sp, #4
-	bl sub_020D4928
+	bl MI_Copy36B
 	ldr r1, _0225D1D0 ; =0x021DA51C
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
@@ -1716,15 +1716,15 @@ ov93_0225D380: ; 0x0225D380
 	add r0, r4, #0
 	add r0, #0x40
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x50
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x60
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1c
@@ -1743,7 +1743,7 @@ ov93_0225D380: ; 0x0225D380
 	add r4, #0x70
 	add r0, r4, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add sp, #0x14
 	pop {r3, r4, pc}
 	nop
@@ -1765,7 +1765,7 @@ ov93_0225D468: ; 0x0225D468
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0
 	add r4, r0, #0
 	str r1, [sp]
@@ -1779,7 +1779,7 @@ ov93_0225D468: ; 0x0225D468
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add r5, #0x70
 	add r0, r5, #0
 	bl sub_0201D5C8
@@ -1806,10 +1806,10 @@ ov93_0225D4B8: ; 0x0225D4B8
 	ldr r2, _0225D4E8 ; =0x000003FF
 	mov r1, #4
 	mov r3, #1
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	ldr r0, [r4, #0x2c]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r4, pc}
 	nop
@@ -1929,7 +1929,7 @@ ov93_0225D5AC: ; 0x0225D5AC
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
 	mov r3, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xc
@@ -1940,7 +1940,7 @@ ov93_0225D5AC: ; 0x0225D5AC
 	str r3, [sp, #0xc]
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0xd
 	str r0, [sp]
 	mov r0, #0xc
@@ -1952,7 +1952,7 @@ ov93_0225D5AC: ; 0x0225D5AC
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
 	mov r3, #0x14
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	b _0225D662
 _0225D604:
 	ldr r0, [r4]
@@ -1975,7 +1975,7 @@ _0225D614:
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
 	mov r3, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r0, #0xd
 	str r0, [sp]
 	mov r0, #0xc
@@ -1987,7 +1987,7 @@ _0225D614:
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
 	mov r3, #0x14
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	b _0225D662
 _0225D64A:
 	mov r0, #0
@@ -2000,11 +2000,11 @@ _0225D64A:
 	str r3, [sp, #0xc]
 	ldr r0, [r4, #0x2c]
 	ldr r2, _0225D670 ; =0x000003FF
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 _0225D662:
 	ldr r0, [r4, #0x2c]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r4, pc}
 	nop
@@ -2183,7 +2183,7 @@ ov93_0225D78C: ; 0x0225D78C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	mov r0, #0
 	add r1, r6, #0
@@ -2222,18 +2222,18 @@ ov93_0225D78C: ; 0x0225D78C
 	add r3, r5, r3
 	bl ov93_02261EB8
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x30]
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x38]
 	mov r0, #0
 	str r0, [sp, #0x34]
@@ -2307,9 +2307,9 @@ _0225D840:
 	cmp r0, #6
 	blt _0225D840
 	ldr r0, [sp, #0x30]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [sp, #0x38]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, _0225D9D4 ; =0x000015A8
 	add r0, r5, r0
 	bl ov93_02261FC8
@@ -2592,7 +2592,7 @@ ov93_0225DB2C: ; 0x0225DB2C
 	mov r1, #0xc9
 	mov r2, #4
 	mov r3, #0x75
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2674,7 +2674,7 @@ ov93_0225DBC8: ; 0x0225DBC8
 	mov r1, #0xc9
 	mov r2, #5
 	mov r3, #0x75
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #5
@@ -2689,7 +2689,7 @@ ov93_0225DBC8: ; 0x0225DBC8
 	mov r1, #0xc9
 	mov r2, #6
 	mov r3, #0x75
-	bl sub_0200319C
+	bl PaletteData_LoadFromNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3168,7 +3168,7 @@ _0225DF76:
 	add r0, #0xc8
 	str r1, [r0]
 	ldr r0, _0225E004 ; =0x00000591
-	bl sub_0200604C
+	bl PlaySE
 	add sp, #8
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4300,7 +4300,7 @@ ov93_0225E7B0: ; 0x0225E7B0
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5]
 	ldr r1, [r0, #0x34]
 	mov r0, #0x27
@@ -4550,7 +4550,7 @@ _0225E97C:
 	add r0, #0xd
 	strb r1, [r4, r0]
 	ldr r0, _0225EA48 ; =0x0000058E
-	bl sub_0200604C
+	bl PlaySE
 	b _0225E9D4
 _0225E9C4:
 	add r0, r4, #0
@@ -4715,7 +4715,7 @@ ov93_0225EAE0: ; 0x0225EAE0
 	mov r1, #0
 	bl ov93_0225D700
 	ldr r0, _0225EB34 ; =0x00000592
-	bl sub_0200604C
+	bl PlaySE
 	pop {r3, pc}
 _0225EAFE:
 	mov r2, #0x91
@@ -4731,7 +4731,7 @@ _0225EAFE:
 	bl ov93_0225D700
 	mov r0, #0x59
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	pop {r3, pc}
 _0225EB20:
 	cmp r1, r2
@@ -4740,7 +4740,7 @@ _0225EB20:
 	bl ov93_0225D700
 	mov r0, #0x59
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 _0225EB32:
 	pop {r3, pc}
 	.balign 4, 0

@@ -1,0 +1,3 @@
+Delete all saved data?
+Once data has been deleted,\nthere is no way to recover it.\rFurthermore, Pokéwalker registered\ndata will also be erased.\rDelete the saved data anyway?
+Deleting all data.\nDon’t turn off the power.

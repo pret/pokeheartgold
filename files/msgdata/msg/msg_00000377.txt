@@ -1,0 +1,31 @@
+You must be {STRVAR_1 3, 0, 0}.\rIt was I who sent an email\nto Professor Elm earlier.\r
+You must be {STRVAR_1 3, 0, 0}.\rIt was I who sent an email\nto Professor Elm earlier.\r
+This is what I want Professor Elm\nto examine.\r
+A friend of mine from Ecruteak gave\nit to me.\rI bet you can’t find this kind of\nEgg in Johto.\rI thought Professor Elm might be able\nto tell what this is.\r“He’s the best when it comes to the\nresearch of Pokémon evolution.”\rThat’s a quote from the famous\nProfessor Oak.\r
+You are returning to Professor Elm?\rHere. Your Pokémon should have\nsome rest.\r
+Sorry to trouble you, having you go\nback and forth.\rBut please make sure to hand it to\nProfessor Elm!
+Life is delightful!\nAlways, new discoveries to be made!
+Kimono Girls? What’re you talking\nabout? I don’t know such people.\fHee hee...\r
+Professor Oak: And with that...\rI’m Professor Oak, a Pokémon\nresearcher!\rSo you’re {STRVAR_1 3, 0, 0}!\rI was just visiting my friend\nMr. Pokémon.\rI heard you were running an errand\nfor Professor Elm, so I waited here.\r
+Professor Oak: And with that...\rI’m Professor Oak, a Pokémon\nresearcher!\rSo you’re {STRVAR_1 3, 0, 0}!\rI was just visiting my friend\nMr. Pokémon.\rI heard you were running an errand\nfor Professor Elm, so I waited here.\r
+Professor Oak: Oh! What’s this?\nA rare Pokémon!\rI see!\nYou must be helping Professor Elm’s\fresearch! I think I understand why\fProfessor Elm gave you that Pokémon.\rYou will treat your Pokémon with love\nand care, it seems.\r
+Professor Oak: ...Ah!\rYou seem to be dependable.\nHow would you like to help me out?\rSee? This is the latest version of\nthe Pokédex.\rIt automatically records data on\nPokémon you’ve seen or caught.\rIt’s a high-tech encyclopedia!\nI’d like you to have it.\r
+{STRVAR_1 3, 0, 0} received the Pokédex\nfrom Professor Oak!
+Go meet many kinds of Pokémon and\ncomplete that Pokédex!\fBut I’ve stayed too long.\rI have to get to Goldenrod for my\nusual radio show.\r{STRVAR_1 3, 0, 0}, I have a feeling that\nthis is not the last time we’ll meet...\rLet’s exchange numbers\njust to be on the safe side.\r
+Go meet many kinds of Pokémon and\ncomplete that Pokédex!\fBut I’ve stayed too long.\rI have to get to Goldenrod for my\nusual radio show.\r{STRVAR_1 3, 0, 0}, I have a feeling that\nthis is not the last time we’ll meet...\rLet’s exchange numbers\njust to be on the safe side.\r
+{STRVAR_1 3, 0, 0} registered Professor Oak\nin the Pokégear!\r
+Hm? That Red Scale! What’s that?\nA red GYARADOS?\fThat’s rare! I... I want it...\r{STRVAR_1 3, 0, 0}, would you\ncare to trade it?\rI can offer this Exp. Share I got\nfrom Professor Oak. {YESNO 0}
+Hm? That Red Scale! What’s that?\nA red GYARADOS?\fThat’s rare! I... I want it...\r{STRVAR_1 3, 0, 0}, would you\ncare to trade it?\rI can offer this Exp. Share I got\nfrom Professor Oak. {YESNO 0}
+                      
+Arrgh, I reckon yer Bag’s full.
+That’s disappointing.\nThat happens to be very rare.
+Hi, {STRVAR_1 3, 0, 0}!\rI have something I want you to have\nand was just about to send an email\fto Professor Oak.\r
+Hi, {STRVAR_1 3, 0, 0}!\rI have something I want you to have\nand was just about to send an email\fto Professor Oak.\r
+The thing is...\nA friend of mine from Hoenn\fcame over to give this to me.\r
+{STRVAR_1 3, 0, 0} received\nthe Blue Orb!\r
+{STRVAR_1 3, 0, 0} received\nthe Red Orb!\r
+That Orb has something to do with\nthe ancient ruins located past\fCianwood City, called the\fEmbedded Tower.\rBut only a handful of Trainers can\nreach there...\rThat’s where you come in.\rProfessor Oak thinks highly of you,\nand you are the proud Champion\fafter all.\rI’m sure you can solve the mystery\nof the Orb and the secret of the ruins.
+The Embedded Tower is past Cianwood,\nsomewhere in the Cliff Cave.\rOr so I heard.\rOr so I remember.\rOr so I believe!
+It’s packed with foreign magazines.\rCan’t even read their titles...
+It’s a big computer.\nHmm. It’s broken.
+A whole pile of strange coins!\fMaybe they’re from another country...

@@ -1,0 +1,20 @@
+Lyra: Grandma!\rLet me introduce my friend.\nThis is {STRVAR_1 3, 0, 0}!\r
+Ah ha.\nThis is your boy...friend.\fI see. Hmm.\r
+Lyra: What? Grandma...!\nWhat are you talking about?\rHe just happens to live nearby...\r
+Grandma: Hahaha.\nI know. I know.\rSince you brought him here, Lyra, you\nmust be sure about his talent.\rRight, {STRVAR_1 3, 0, 0}?\nCome and see us anytime!\r
+Lyra: Well, I better go now...\nSee ya!\r
+Lyra: Oh! I almost forgot!\r
+Lyra: Here!\nThis is my Pokégear number!\r
+{STRVAR_1 3, 0, 0} registered Lyra\nin the Pokégear!\r
+Lyra: You know you can talk to your\nPokémon as they follow you?\rThey do all sorts of cute stuff on the\nroad and in towns.\rI’m taking notes every time they do\nfunny things.\rGive me a call and I’ll share some of\nthem with you.\r
+Lyra: Grandma!\rDon’t you say anything.\rWe are both Trainers, and we are\nsupposed to exchange numbers.\fThat’s all.\r
+Ethan: Grandma!\rLet me introduce my friend.\nThis is {STRVAR_1 3, 0, 0}!\r
+Ah ha.\nThis is your girl...friend.\fI see. Hmm.\r
+Ethan: What? Grandma...!\nWhat are you talking about?\rShe just happens to live nearby...\r
+Hahaha.\nI know. I know.\rSince you took her here, Ethan, you\nmust be sure about her talent.\rRight, {STRVAR_1 3, 0, 0}?\nCome and see us anytime!\r
+Ethan: Well, I better go now...\nSee ya!\r
+Ethan: Oh! I almost forgot!\r
+Ethan: Here!\nThis is my Pokégear number!\r
+{STRVAR_1 3, 0, 0} registered Ethan\nin the Pokégear!\r
+Ethan: You know you can talk to your\nPokémon as they follow you?\rThey do all sorts of cute stuff on the\nroad and in towns.\rI’m taking notes every time they do\nfunny things.\rGive me a call and I’ll share some of\nthem with you.\r
+Ethan: Grandma!\rDon’t you say anything.\rWe are both Trainers, and we are\nsupposed to exchange numbers.\fThat’s all.\r

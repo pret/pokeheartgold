@@ -1,0 +1,35 @@
+Which facility would you\nlike to challenge? {YESNO 0}
+{STRVAR_1 3, 0, 0} has dropped out.\r
+Please choose the Pokémon you wish to\nenter with.\r
+You have chosen a different facility\nand/or level setting from your friend.\fPlease choose again.\r
+Please wait a moment.
+Your win-streak record does not match\nyour friend’s record.\rYour challenge will start from the\nbeginning.\r
+Both you and your friend have chosen\n{STRVAR_1 0, 0, 0}.\rPlease confer with your friend and\nchoose different Pokémon.\r
+Both you and your friend have chosen\n{STRVAR_1 0, 0, 0} and {STRVAR_1 0, 1, 0}.\rPlease confer with your friend and\nchoose different Pokémon.\r
+                                                  
+Both you and your friend have chosen\n{STRVAR_1 0, 0, 0}.\rPlease confer with your friend and\nchoose different Pokémon.\r
+Both you and your friend have chosen\n{STRVAR_1 0, 0, 0} and {STRVAR_1 0, 1, 0}.\rPlease confer with your friend and\nchoose different Pokémon.\r
+You and your friend must choose the\nsame kind of Pokémon to battle.\r
+                                                      
+                                                            
+Which would you like to challenge,\nLevel 50 cap or Open Level? {YESNO 0}
+There is already an ongoing winning\nstreak by {STRVAR_1 0, 0, 0}.\rWould you like to delete that record\nand start a new challenge\fwith {STRVAR_1 0, 1, 0}? {YESNO 0}
+YES
+NO
+Please make your selection again.\r
+Saving...\nDon’t turn off the power.
+Good luck!
+Would you like to play with\n{STRVAR_1 3, 0, 0} again? {YESNO 0}
+  
+   
+Awaiting your friend’s selection.\nPlease wait a moment.
+{STRVAR_1 3, 0, 0} has dropped out.\r
+BATTLE TOWER
+BATTLE FACTORY
+BATTLE CASTLE
+BATTLE HALL
+BATTLE ARCADE
+CANCEL
+LEVEL 50
+OPEN LEVEL
+You and your friend have chosen\ndifferent challenges.\rPlease turn off the power, select new\nPokémon, and enter again!

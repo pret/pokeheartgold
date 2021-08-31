@@ -173,7 +173,7 @@ _021E5A20:
 	add r2, r0, #0
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	mov r0, #2
 	mov r5, #0
 	str r0, [r4, #0x30]
@@ -197,7 +197,7 @@ _021E5A5A:
 	beq _021E5A82
 _021E5A6C:
 	ldr r0, _021E5A9C ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #3
 	str r0, [r4, #0x30]
 	b _021E5A82
@@ -355,7 +355,7 @@ _021E5BA0:
 	beq _021E5BC6
 _021E5BB2:
 	ldr r0, _021E5BE0 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #6
 	str r0, [r4, #0x30]
 	b _021E5BC6
@@ -408,13 +408,13 @@ ov111_021E5BE4: ; 0x021E5BE4
 	add r2, r0, #0
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	add r0, r4, #0
 	bl sub_02070DB0
 	add r2, r0, #0
 	add r0, r7, #0
 	mov r1, #1
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0
@@ -566,13 +566,13 @@ ov111_021E5D2C: ; 0x021E5D2C
 	bl sub_0201EE88
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	str r0, [sp, #0x18]
 	add r0, r4, #0
-	bl sub_0201EE98
+	bl GetWindowX
 	str r0, [sp, #0x10]
 	add r0, r4, #0
-	bl sub_0201EE9C
+	bl GetWindowY
 	str r0, [sp, #0x14]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -637,7 +637,7 @@ _021E5DAC:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x18]
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	cmp r4, #8
 	bhs _021E5DD2
 	mov r4, #0
@@ -654,7 +654,7 @@ _021E5DD8:
 	blo _021E5D9E
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x18]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -715,7 +715,7 @@ _021E5E46:
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x94
 	str r0, [r4]
 	str r5, [r4, #4]
@@ -765,7 +765,7 @@ _021E5E46:
 	mov r0, #1
 	bl sub_0200FBDC
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
 	bl sub_02002B8C
 	ldr r0, _021E5F00 ; =ov111_021E5DF0
@@ -1391,7 +1391,7 @@ _021E63E4:
 	str r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #0x78
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r1, [sp, #0x48]
 	ldr r0, [sp, #0x28]
 	ldr r2, [sp, #0x28]
@@ -1526,7 +1526,7 @@ _021E64EA:
 	add r2, r0, #0
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0200BF1C
+	bl BufferBoxMonSpeciesName
 	mov r0, #1
 	add r1, r5, #0
 	mov r2, #4
@@ -1640,7 +1640,7 @@ _021E65E0:
 	bl sub_0201EE88
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	str r0, [sp]
 	mov r0, #0x74
 	ldrsh r1, [r5, r0]
@@ -1713,7 +1713,7 @@ _021E6646:
 _021E6678:
 	ldr r0, [sp, #4]
 	ldr r1, [sp]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov111_021E65D4
@@ -1757,9 +1757,9 @@ _021E66B0:
 	add r4, #0xc
 _021E66BE:
 	add r0, r4, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r5, r5, #1
 	add r4, #0x10
 	cmp r5, #6
@@ -1782,7 +1782,7 @@ ov111_021E66DC: ; 0x021E66DC
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	str r6, [r4, #4]
 	str r5, [r4]
 	ldr r0, [sp]
@@ -1914,13 +1914,13 @@ ov111_021E67C4: ; 0x021E67C4
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #1
 	mov r1, #2
 	mov r2, #0
 	add r3, r5, #0
 	str r5, [r4, #0x18]
-	bl sub_0200CC74
+	bl MessagePrinter_new
 	str r0, [r4, #4]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -1947,10 +1947,10 @@ ov111_021E67EC: ; 0x021E67EC
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x1d
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x18]
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r4, #8]
 	bl sub_02020080
 	ldr r1, [r4, #0x30]
@@ -1986,16 +1986,16 @@ ov111_021E685C: ; 0x021E685C
 	add r4, r0, #0
 	bl ov111_021E69F4
 	ldr r0, [r4, #0xc]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #8]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _021E687A
-	bl sub_02026380
+	bl String_dtor
 _021E687A:
 	ldr r0, [r4, #4]
-	bl sub_0200CD94
+	bl MessagePrinter_delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -2020,7 +2020,7 @@ ov111_021E6888: ; 0x021E6888
 	and r0, r1
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0
 	str r0, [r4, #0x10]
 	sub r0, r0, #1
@@ -2163,7 +2163,7 @@ ov111_021E69A0: ; 0x021E69A0
 	mov r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x28]
 	cmp r0, #0
 	beq _021E69D4
@@ -2219,10 +2219,10 @@ _021E6A0A:
 	bl sub_0200E9BC
 	add r0, r4, #0
 	add r0, #0x1c
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r4, #0x1c
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _021E6A2A:
 	pop {r4, pc}
 	thumb_func_end ov111_021E69F4
@@ -2305,7 +2305,7 @@ _021E6A92:
 	mov r3, #2
 	bl sub_0201D40C
 	add r0, r4, #0
-	bl sub_0201EE8C
+	bl GetWindowBgId
 	add r7, r0, #0
 	ldr r0, [sp, #0x40]
 	bl sub_0202ADCC
@@ -2325,12 +2325,12 @@ _021E6ADE:
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x30]
 	ldr r2, [sp, #0x34]
 	ldr r3, [sp, #0x3c]
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	str r0, [r6]
 	mov r3, #0
 	str r3, [sp]
@@ -2365,12 +2365,12 @@ ov111_021E6B30: ; 0x021E6B30
 	mov r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r2, [sp, #0x20]
 	ldr r3, [sp, #0x34]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0200BC4C
+	bl ReadMsgData_ExpandPlaceholders
 	add r4, r0, #0
 	add r3, sp, #0x10
 	ldrb r0, [r3, #0x1c]
@@ -2385,7 +2385,7 @@ ov111_021E6B30: ; 0x021E6B30
 	add r0, r5, #0
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov111_021E6B30

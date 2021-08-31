@@ -1,0 +1,2 @@
+When the sun goes down, CLEFAIRY come\nout to play.
+You must be tired from climbing.\nHow about stocking up on supplies? {YESNO 0}

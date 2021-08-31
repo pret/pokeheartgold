@@ -1,0 +1,7 @@
+Erika: Hello...\nLovely weather, isn’t it?\rIt’s so pleasant...\nI’m afraid I might doze off...\rMy name is Erika.\nI am the Leader of Celadon Gym.\r...Oh? You are from Johto, you say?\fHow nice...\rOh. I’m sorry, I didn’t realize that\nyou wished to challenge me.\rI know.\rI have been training myself on\nnot only flower arrangement\fbut also Pokémon battle.\rI shall not lose.\r
+Erika: Oh!\nI concede defeat...\rYou are remarkably strong...\nI shall give you the Rainbow Badge...\r
+{STRVAR_1 3, 0, 0} received\nthe Rainbow Badge.
+Erika: That was a delightful match.\nI felt inspired.\rPlease, I wish you to have this TM19\nas a special token.\rIt is Giga Drain.\nIt is a wonderful move that drains\fhalf the damage it inflicts to heal\fyour Pokémon.\rIt is indeed a horrifying move.\r
+Erika: Losing leaves a\nbitter aftertaste...\rBut knowing that there are strong\nTrainers spurs me to do better...
+Celadon City Pokémon Gym
+Celadon City Pokémon Gym\rGym Leader: Erika\nCertified Trainer!\f{STRVAR_1 3, 0, 0}

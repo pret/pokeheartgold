@@ -1,0 +1,5 @@
+What? I’m the first to arrive!\rThere will soon be a Battle Frontier\npast here.\rI’m in line to be the first one there.\nI haven’t slept for days.\rGet in line if you want to be the second\none in!\r
+Zzz...\n...\rHe is standing...but asleep!\r
+Zzz... Zzz...\n...\rHe doesn’t seem like he’ll wake up\nanytime soon!
+This is the entrance to the\nBattle Frontier.\fYou shouldn’t make a line here.
+The Battle Frontier is open!\rPlease go ahead.

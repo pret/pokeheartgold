@@ -1,0 +1,14 @@
+Gaven
+Wow, you’re tough. I haven’t battled\nthat seriously in a long time.\rCould I get your phone number?\rI’d like to battle again after I\nheal my Pokémon. {YESNO 0}
+How should I beat you? I’m tormented\nby those thoughts all the time...
+OK... I understand...\nBut if you change your mind, give me\fa shout anytime.
+Could I get your phone number?\rI’d like to battle again after I\nheal my Pokémon. {YESNO 0}
+
+Huh? This voice...\nYou’re nearby, aren’t you?\fLet’s talk in person.
+My {STRVAR_1 0, 10, 0} might be greater than\nI imagined.\rI doubt I’ll see a wild {STRVAR_1 0, 10, 0}\nthat’s better than mine.
+A while back, I tried to catch a wild\n{STRVAR_1 0, 11, 0}.\rIt managed to elude me.\rOne wrong decision could mean total\nfailure... You ought to be careful, too.
+I managed to barely defeat\n{STRVAR_1 0, 11, 0} the other day.\rI’ve never seen a wild {STRVAR_1 0, 11, 0}\nget that strong...\rYou shouldn’t let your guard down, even\nagainst a Pokémon you’re used\fto seeing.
+Let’s battle!\rI’ll be waiting on {STRVAR_1 4, 3, 0}.\nGive me a shout when you’re close.
+{STRVAR_1 3, 0, 0}, why aren’t you here?\rI’ll take you down on\n{STRVAR_1 4, 3, 0}!
+{STRVAR_1 3, 0, 0}, why aren’t you here?\rI’ll take you down on\n{STRVAR_1 4, 3, 0}!
+You know, I just can’t get over how\nstrong you are...\rI obsess over how to beat you every\nsingle day...

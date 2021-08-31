@@ -1,0 +1,19 @@
+There’s an odd tree!\nUse the SquirtBottle? {YESNO 0}
+{STRVAR_1 3, 0, 0} used\nthe SquirtBottle!\r
+The odd tree doesn’t like the\nSquirtBottle!\rThe odd tree attacked!\r
+Yo!\rHaven’t you had trouble with a boulder\nblocking your way? Of course you have!\rFor people like you, there’s an HM\nthat will come to your rescue!\r
+Are you the one who took care of the\nodd tree in the way?\rYou’re quite the Trainer!\nTake this!\r
+It contains make-’em-faint Rock Smash.\rYou can even use it to smash boulders\nonce you’ve earned the Violet City\fGym Badge!\rBut beware!\nHidden moves like this are hard for\fyour Pokémon to forget once they’ve\flearned them.\rYou should think carefully which\nPokémon should learn it.
+Your Bag is full!
+An odd tree is blocking the way\nto Ecruteak City.\rIt’s preventing me from shopping.\fSomething should be done about it.
+The odd tree is gone, as if it just\nwalked away...!\fWhat? It was a Pokémon?\rWell, finally I can go to Ecruteak\nto do some shopping.\rIf you follow the path from where the\nodd tree was, you’ll reach\fEcruteak City!
+Rt. 36\nNorth to Ecruteak City
+Ruins of Alph\nNorth Entrance
+Trainer Tips\rThe same kind of Pokémon may look the\nsame, but they can grow differently.\rTheir strengths may look the same\nin the beginning, but those strengths\fcan change as they grow.
+Trainer Tips\rThe move Dig can take you back to\nthe entrance when you use it.\rIf you want to explore a cave or\nsomething similar, a Pokémon with\fDig will be quite useful.
+I’m the Flower Shop’s Floria!\rListen, listen! When I sprinkled water\non that wiggly tree, it jumped right up!\rIt just has to be a Pokémon.\rI bet it would be shocked out of\ndisguising itself if you soaked it!
+I’m the Flower Shop’s Floria!\rListen, listen! When I sprinkled water\non that wiggly tree, it jumped right up!\fIt just has to be a Pokémon.\fIf you soaked it...\rOh, that’s the SquirtBottle!\rSoak the tree for me!\nI want to see what happens!
+That was fun!\rI want to give you this\nfor entertaining me!\r
+With the Berry Pots, you can grow\nany Berry from any region\fwith no worries!\r
+That’s right!\nI’ll give you some Berries, too.\rBerry Pots won’t do any good\nwithout Berries.\r
+You have to plant Berries in the soil.\nYou should water them from time\fto time. Then they’ll grow strong!\rI have to go back to Goldenrod.\fAre you heading for Ecruteak?\rThen you should go north here.\nSee you around!\r

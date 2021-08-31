@@ -1,0 +1,4 @@
+I’m the Fishing Guru’s younger brother.\rYou seem to like fishing.\nAm I right, or am I right?\fPeople say I have keen eyes! {YESNO 0}
+Yes, yes. Just as I thought!\rHere, fishing fan!\nTake this--it’s a Super Rod.\r
+Try your hand at fishing wherever there\nis water.\rRemember--you can catch different\nPokémon depending on which Rod you use.
+Huh?\nMy own eyes deceived me?

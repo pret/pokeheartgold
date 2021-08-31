@@ -1,0 +1,18 @@
+Why? It’s not fair!\nWhy are there only shots of Pokémon?\rWhy aren’t there any shots of ladies?\nI call discrimination!
+Climbing the mountain to enjoy\nits great view is one thing...\rBut sneaking a peek at other people’s\nPC Boxes fills me with a guilty glee.
+Did you know?\nAbout my PC Box, I mean.\rIt’s full of Pokémon everyone longs\nfor, like...\r...No, it would be immodest for me to\nsay. It would sound like bragging.\rIf you really must know, you can always\nfind out yourself.
+I visit every day to check on other\npeople’s Dress-Up Data.\rFor me, it’s like the first step to\nfashion!
+Oh, dear me! Gracious!\nThis is almost scandalous!
+For combinations of Pokémon and\nAccessories, you can get ideas from\fothers by observing what they do.
+The same kind of Accessory can create\nentirely different impressions.\rIt really depends on where and how\nit’s used.
+I won a Backdrop drawing for\nAccessories in the Goldenrod Tunnel.
+What I like to do...\rI like sneaking glances at the people\nchecking out Dress-Up Data.
+Warps to the GTS and the Trainer\nRankings on 1F.
+Warps to the Battle Video Gallery on 3F.
+Connect to Nintendo Wi-Fi\nConnection for Dress-Up Data? {YESNO 0}
+Here, you may post the Dress-Up Data\nof your Pokémon.\rThe Dress-Up Data can be set up and\nsaved in the Goldenrod Tunnel.\rThe Dress-Up Data posted by other\nTrainers may also be viewed here.\rThe data may be sorted by Pokémon\nfor convenient viewing.\r
+Connect to Nintendo Wi-Fi\nConnection for Box Data? {YESNO 0}
+Here, you may post the Box Data\ncontaining your Pokémon.\rChoose a wallpaper, then place your\nPokémon on it to compose your scene.\rWhen you are done, post it for other\nTrainers to see.\rThe Box Data posted by other Trainers\nmay also be viewed here.\r
+USE
+INFO
+CANCEL

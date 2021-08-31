@@ -391,10 +391,24 @@ filesystem: $(NITROFS_FILES)
 # Some filenames are stripped and replaced with a serial number
 # such that the XYZth file is mapped to a/X/Y/Z.
 # Temporary names for now
-DIFF_ARCS := files/a/0/7/5 files/a/1/3/3 files/a/2/5/2
-$(DIFF_ARCS): files/%: files/%.$(buildname)
+define arc_strip_name
+$(2): $(1)
+DIFF_ARCS += $(2)
+.PHONY: $(2)
+endef
+
+$(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
+$(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
+$(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
+$(eval $(call arc_strip_name,files/a/1/3/3.$(buildname),files/a/1/3/3))
+$(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
+
+$(DIFF_ARCS):
 	cp $< $@
 
-.PHONY: $(DIFF_ARCS)
-
 $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
+
+include files/msgdata/msg.mk
+
+#%.narc:
+#	$(KNARC) -d $* -p $@

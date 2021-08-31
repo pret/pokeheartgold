@@ -701,7 +701,7 @@ _02258CBE:
 	mov r0, #1
 	strh r0, [r4, #4]
 	ldr r0, _02258CDC ; =0x000005F1
-	bl sub_0200604C
+	bl PlaySE
 	pop {r4, pc}
 	nop
 _02258CD8: .word ov90_0225C06C
@@ -758,7 +758,7 @@ ov90_02258CF0: ; 0x02258CF0
 	add r1, r4, #0
 	mul r1, r4
 	lsl r1, r1, #0xc
-	bl sub_020CCBA0
+	bl FX_Div
 	str r6, [r5]
 	ldr r1, [sp]
 	str r6, [r5, #4]
@@ -812,7 +812,7 @@ _02258D60:
 	lsr r0, r0, #0xc
 	orr r0, r1
 	lsl r1, r2, #2
-	bl sub_020CCBA0
+	bl FX_Div
 	ldr r1, [r5, #4]
 	add r0, r6, r0
 	add r0, r1, r0
@@ -1341,20 +1341,20 @@ ov90_02259184: ; 0x02259184
 	mov r1, #0x1b
 	mov r2, #0xec
 	add r3, r4, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r5]
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r4, #0
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #8]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #6
 	str r0, [r5, #0xc]
 	mov r0, #0
@@ -1375,46 +1375,46 @@ ov90_022591D4: ; 0x022591D4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #8]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #4]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r4]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov90_022591D4
 
 	thumb_func_start ov90_022591F4
 ov90_022591F4: ; 0x022591F4
-	ldr r3, _022591FC ; =sub_0200CC50
+	ldr r3, _022591FC ; =ScrStrBufs_ResetBuffers
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022591FC: .word sub_0200CC50
+_022591FC: .word ScrStrBufs_ResetBuffers
 	thumb_func_end ov90_022591F4
 
 	thumb_func_start ov90_02259200
 ov90_02259200: ; 0x02259200
-	ldr r3, _0225920C ; =sub_0200BE48
+	ldr r3, _0225920C ; =BufferPlayersName
 	add r2, r1, #0
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bx r3
 	nop
-_0225920C: .word sub_0200BE48
+_0225920C: .word BufferPlayersName
 	thumb_func_end ov90_02259200
 
 	thumb_func_start ov90_02259210
 ov90_02259210: ; 0x02259210
-	ldr r3, _0225921C ; =sub_0200C4B0
+	ldr r3, _0225921C ; =BufferCountryName
 	add r2, r1, #0
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bx r3
 	nop
-_0225921C: .word sub_0200C4B0
+_0225921C: .word BufferCountryName
 	thumb_func_end ov90_02259210
 
 	thumb_func_start ov90_02259220
@@ -1425,7 +1425,7 @@ ov90_02259220: ; 0x02259220
 	ldr r0, [r0, #4]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200C4E8
+	bl BufferCityName
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02259220
@@ -1442,7 +1442,7 @@ ov90_02259234: ; 0x02259234
 	ldr r0, [r0, #4]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov90_02259234
@@ -1458,7 +1458,7 @@ ov90_02259250: ; 0x02259250
 	ldr r0, [r0, #4]
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -1494,11 +1494,11 @@ ov90_0225928C: ; 0x0225928C
 	add r1, r2, #0
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov90_0225928C
 
@@ -1527,11 +1527,11 @@ ov90_022592C4: ; 0x022592C4
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
 	add r4, r3, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #8]
 	ldr r2, [r5, #0xc]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r0, #0
 	ldr r1, [r5, #8]
 	add r2, r0, #0
@@ -1567,11 +1567,11 @@ ov90_02259314: ; 0x02259314
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
 	add r4, r3, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r3, #0
 	ldr r0, [sp, #0x20]
 	str r3, [sp]
@@ -1598,11 +1598,11 @@ ov90_02259350: ; 0x02259350
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
 	add r6, r3, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #8]
 	ldr r2, [r5, #0xc]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, sp, #0x10
 	ldrb r0, [r0, #0x10]
 	mov r1, #0
@@ -1630,7 +1630,7 @@ ov90_0225938C: ; 0x0225938C
 	str r0, [sp, #0x30]
 	add r0, r2, #0
 	str r3, [sp, #0x18]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202ADCC
 	add r4, r0, #0
 	mov r0, #1
@@ -1685,10 +1685,10 @@ _022593EC:
 	bl sub_0201D40C
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r1, [sp, #0x30]
 	mov r0, #0x80
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x24]
 	add r6, r6, #1
 	add r4, #0x10
@@ -1715,9 +1715,9 @@ _0225943E:
 	add r1, r4, #0
 	bl ov90_022594FC
 	ldr r0, [r5, #0x24]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, r5, #4
 	add r6, #0x10
@@ -1778,7 +1778,7 @@ _022594B4:
 	lsl r7, r6, #4
 	add r0, r5, r7
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #1
 	lsl r3, r6, #2
 	str r0, [sp]
@@ -2754,7 +2754,7 @@ _02259C12:
 	bl sub_0201D40C
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #6
@@ -3025,7 +3025,7 @@ ov90_02259E8C: ; 0x02259E8C
 	bl sub_0201D5C8
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02259E8C
@@ -3063,7 +3063,7 @@ _02259ECC:
 	cmp r0, #1
 	bne _02259EDC
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 _02259EDC:
 	pop {r4, pc}
 	.balign 4, 0
@@ -3160,7 +3160,7 @@ ov90_02259F7C: ; 0x02259F7C
 	ldr r0, [r5, #0x34]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0200604C
+	bl PlaySE
 _02259F9A:
 	mov r1, #0x30
 	ldrsh r0, [r5, r1]
@@ -3612,10 +3612,10 @@ ov90_0225A2B0: ; 0x0225A2B0
 	bl sub_0201D40C
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r1, [sp, #0x2c]
 	mov r0, #0x80
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x14]
 	add r0, r7, #0
 	add r1, r6, #0
@@ -3658,9 +3658,9 @@ _0225A33C: .word 0x00000201
 ov90_0225A340: ; 0x0225A340
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4, #0x14]
-	bl sub_02026380
+	bl String_dtor
 	pop {r4, pc}
 	thumb_func_end ov90_0225A340
 
@@ -3805,7 +3805,7 @@ _0225A44C:
 	cmp r6, #1
 	bne _0225A528
 	ldr r0, _0225A530 ; =0x00000581
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4, #0x10]
 	ldr r1, _0225A534 ; =0x0225C228
 	lsl r3, r0, #2
@@ -3938,7 +3938,7 @@ _0225A558:
 	strh r0, [r5, #0x2e]
 	b _0225A5B8
 _0225A586:
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022C60
@@ -6255,7 +6255,7 @@ _0225B6EA:
 	bl sub_0201CA4C
 	ldr r0, [r5]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
 	add r0, #0x48
 	ldrb r0, [r0]
@@ -6278,7 +6278,7 @@ _0225B738:
 	b _0225B7F2
 _0225B750:
 	ldr r0, _0225B7F8 ; =0x00000594
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	add r0, #0x4a
 	ldrb r0, [r0]
@@ -7395,23 +7395,23 @@ _0225BF82: ; jump table
 	.short _0225BFC2 - _0225BF82 - 2 ; case 15
 _0225BFA2:
 	ldr r0, _0225C064 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225BFC8
 _0225BFAA:
 	ldr r0, _0225C064 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225BFC8
 _0225BFB2:
 	ldr r0, _0225C064 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225BFC8
 _0225BFBA:
 	ldr r0, _0225C064 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225BFC8
 _0225BFC2:
 	ldr r0, _0225C068 ; =0x00000642
-	bl sub_0200604C
+	bl PlaySE
 _0225BFC8:
 	cmp r5, #0xf
 	bne _0225BFFC

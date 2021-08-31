@@ -1,0 +1,7 @@
+Hey!\rI am the Karate King!\nI train alone here in the cave!\rYou!\nBattle with me! Hwaaarggh!\r
+I... I’m crushed...\rMy training is still not enough...\nBut a loss is a loss. I admit it.\rAs proof that you defeated me, I’ll give\nyou a rare Fighting-type Pokémon.\r
+{STRVAR_1 3, 0, 0} received TYROGUE from\nthe Karate King!
+TYROGUE is a Fighting type.\nIt evolves into a tougher Pokémon.\rKeep up the hard work. I’ll keep\ntraining too. Farewell!
+You have no room in your party!
+Give a nickname to the TYROGUE you\nreceived? {YESNO 0}
+                         

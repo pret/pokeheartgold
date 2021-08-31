@@ -1993,7 +1993,7 @@ ov42_02227E78: ; 0x02227E78
 	ldr r1, [r1, #0xc]
 	mov r2, #2
 	lsr r3, r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 _02227EBC:
 	mov r0, #0
 	mvn r0, r0
@@ -2008,7 +2008,7 @@ _02227EBC:
 	ldr r1, [r1, #0xc]
 	mov r2, #3
 	lsr r3, r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 _02227EDA:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4977,7 +4977,7 @@ _022293D4:
 	ldrb r1, [r5, #9]
 	ldrb r2, [r5, #0xa]
 	add r3, #0xc
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	str r0, [r4, #8]
 	add r0, r4, #0
 	add sp, #8
@@ -5209,7 +5209,7 @@ _022295B4:
 	ldr r0, [r5, #4]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _022295DC:
 	ldr r1, [r5, #0x14]
 	ldr r0, [r5, #4]
@@ -5319,7 +5319,7 @@ _02229686:
 	ldr r0, [sp, #0x1c]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]

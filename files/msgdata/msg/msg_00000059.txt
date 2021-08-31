@@ -1,0 +1,10 @@
+Morty: The legendary Pokémon did not\nchoose me...\rBut that does not mean that I have\nlost out on my future.\rI will continue my training until I\ndiscover a new future for me.\rSay, do you want to be part of my\ntraining? {YESNO 0}
+{STRVAR_1 3, 0, 0} registered Morty\nin the Pokégear!
+Morty: Give me a call on Tuesday night if\nyou want a battle!
+Morty: Oh...\nThat’s a shame...
+Morty: So, will you be part of my\ntraining? {YESNO 0}
+Morty: Hi, it’s you!\rHow about taking a picture\nhere with me as a memento? {YESNO 0}
+Morty: All right!\nCome and stand next to me.\r
+Morty: Mmmm...\nThis is a pretty good picture!
+Morty: I understand...\nyou must be busy with things.
+Your Photo Album is full.\rAccess your PC and delete\nsome pictures.

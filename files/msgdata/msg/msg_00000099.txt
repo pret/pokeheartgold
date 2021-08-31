@@ -1,0 +1,18 @@
+Please find a partner from the Trainers\nthat are gathered here.\r
+{STRVAR_1 3, 0, 0}, you have not found\na partner for your tag team.\rWould you like to quit looking and\nreturn to the reception counter? {YESNO 0}
+Thank you for choosing a partner.\rI will now show you to your\nMulti Battle Room.\r
+Riley: The partners I have now?\rWell, my {STRVAR_1 0, 0, 0}’s nasty with its\n{STRVAR_1 6, 1, 0}.\rAnd there’s my {STRVAR_1 0, 2, 0}, which\nis a sure hand with {STRVAR_1 6, 3, 0}.\rWould you like to team up with me? {YESNO 0}
+Riley: ...Oh, is that so?\nThat’s too bad.
+Riley: Ahaha, thanks.\nI’ll be waiting for you.\r
+Cheryl: I have {STRVAR_1 0, 0, 0} that\nis very good with {STRVAR_1 6, 1, 0}\rand {STRVAR_1 0, 2, 0} that likes to\nshow off its {STRVAR_1 6, 3, 0}.\rWill you team up with me? {YESNO 0}
+Cheryl: Oh...\nToo bad...
+Cheryl: I’ll go on ahead, then.\r
+Buck: Yo, are you looking to team\nup? Let me tell you what I’ve got.\rMy {STRVAR_1 0, 0, 0}’s first-rate\nwith {STRVAR_1 6, 1, 0}.\rAnd my {STRVAR_1 0, 2, 0} is the best when\nit comes to using {STRVAR_1 6, 3, 0}.\rYou want to go with me, don’t you? {YESNO 0}
+Buck: Huh? What?\nThat’s pretty cold of you!
+Buck: Hehehe! Good choice!\nThere’s no problem when I’m around!\r
+Marley: ...My {STRVAR_1 0, 0, 0} uses\n{STRVAR_1 6, 1, 0} well...\rAnd my {STRVAR_1 0, 2, 0} likes to use\n{STRVAR_1 6, 3, 0}.\r...What do you want?\nAm I supposed to go with you? {YESNO 0}
+Marley: ...Whatever...
+Marley: ...I’ll go ahead...\r
+Mira: Hi, hi!\nI’m with my {STRVAR_1 0, 0, 0}!\fIt’s really good with {STRVAR_1 6, 1, 0}!\rThe other one is my {STRVAR_1 0, 2, 0}.\nIts {STRVAR_1 6, 3, 0} is awesome!\rDo you want to join with me? {YESNO 0}
+Mira: Oh, OK.\nLet’s go another time!
+Mira: OK! I’ll wait for you!\n{STRVAR_1 3, 0, 0}, don’t be long!\r

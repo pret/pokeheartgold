@@ -72,7 +72,7 @@ ov84_0223DD60: ; 0x0223DD60
 	add r0, r5, #0
 	add r0, #0xdc
 	ldr r0, [r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	add r1, r5, #0
 	add r1, #0xd8
 	str r0, [r1]
@@ -607,7 +607,7 @@ _0223E21A:
 	mov r1, #3
 	bl ov84_0223EB08
 	ldr r0, _0223E378 ; =0x00000608
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x18
 	strb r0, [r4, #0xb]
 	mov r0, #3
@@ -639,7 +639,7 @@ _0223E25C:
 	cmp r6, #0x10
 	blt _0223E250
 	ldr r0, _0223E378 ; =0x00000608
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x18
 	strb r0, [r4, #0xb]
 	mov r0, #4
@@ -668,7 +668,7 @@ _0223E294:
 	cmp r6, #0x10
 	blt _0223E288
 	ldr r0, _0223E378 ; =0x00000608
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x18
 	strb r0, [r4, #0xb]
 	mov r0, #5
@@ -704,7 +704,7 @@ _0223E2D0:
 	mov r1, #1
 	bl ov84_0223F82C
 	ldr r0, _0223E37C ; =0x00000623
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xd6
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1028,12 +1028,12 @@ _0223E544:
 	add r0, #0xd4
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r6, #0
 	add r0, #0xd4
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	add r0, r6, #0
 	add r0, #0xd4
 	ldr r0, [r0]
@@ -1046,18 +1046,18 @@ _0223E544:
 	add r0, #0xe8
 	bl ov84_0223F418
 	ldr r0, [r6, #0x68]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r6, #0x6c]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x70]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r6, #0x74]
-	bl sub_02026380
+	bl String_dtor
 	mov r5, #0
 	add r4, r6, #0
 _0223E596:
 	ldr r0, [r4, #0x78]
-	bl sub_02026380
+	bl String_dtor
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #2
@@ -1124,23 +1124,23 @@ ov84_0223E5FC: ; 0x0223E5FC
 	mov r0, #1
 	mov r1, #0x1b
 	mov r3, #0x6e
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	ldr r1, [sp, #0x18]
 	str r0, [r1, #0x68]
 	mov r0, #0x6e
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	ldr r1, [sp, #0x18]
 	str r0, [r1, #0x6c]
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x6e
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, [sp, #0x18]
 	str r0, [r1, #0x70]
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x6e
-	bl sub_02026354
+	bl String_ctor
 	ldr r1, [sp, #0x18]
 	mov r4, #0
 	str r0, [r1, #0x74]
@@ -1150,7 +1150,7 @@ ov84_0223E5FC: ; 0x0223E5FC
 _0223E65C:
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x78]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -1468,7 +1468,7 @@ ov84_0223E8DC: ; 0x0223E8DC
 	ldr r0, [r0]
 	lsl r2, r1, #8
 	mov r3, #0x6e
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r4, #0
 	add r0, #0xd4
 	mov r2, #2
@@ -1476,7 +1476,7 @@ ov84_0223E8DC: ; 0x0223E8DC
 	mov r1, #0
 	lsl r2, r2, #8
 	mov r3, #0x6e
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	add r0, r4, #0
 	mov r1, #3
 	bl ov84_0223EAAC
@@ -1761,7 +1761,7 @@ ov84_0223EB44: ; 0x0223EB44
 	mov r1, #0xba
 	add r2, sp, #0
 	mov r3, #0x6e
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r4, r0, #0
 	ldr r0, [sp]
 	mov r1, #0xe0
@@ -1771,7 +1771,7 @@ ov84_0223EB44: ; 0x0223EB44
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	mov r2, #0xe0
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #4
@@ -1874,7 +1874,7 @@ _0223EC1E:
 _0223EC22:
 	strb r0, [r4, #0xd]
 	ldr r0, _0223EC48 ; =0x000005E5
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	add r0, #0x2e
 	ldrb r1, [r4, #0xd]
@@ -2215,7 +2215,7 @@ _0223EE56:
 	ldr r1, [sp, #4]
 	bl ov84_0223EC4C
 	ldr r0, _0223EE70 ; =0x000005E3
-	bl sub_0200604C
+	bl PlaySE
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2809,7 +2809,7 @@ ov84_0223F28C: ; 0x0223F28C
 	mov r1, #0
 	bl sub_02006154
 	ldr r0, _0223F2B0 ; =0x000005E4
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0xd6
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3598,10 +3598,10 @@ _0223F8BC:
 	add r0, r7, #0
 	add r1, r5, r6
 	add r2, r2, r3
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r5, r6
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -3620,7 +3620,7 @@ ov84_0223F8E4: ; 0x0223F8E4
 _0223F8EA:
 	lsl r0, r4, #4
 	add r0, r5, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10

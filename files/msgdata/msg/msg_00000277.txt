@@ -1,0 +1,33 @@
+   
+
+{STRVAR_1 52, 0, 0}:{STRVAR_1 51, 1, 0}
+???
+Times Joined Pokéathlon
+Pokéathlon 1st Places
+Pokéathlon Last Places
+Bonuses Earned
+Event 1st Place
+Event Last Place
+Connection Participation
+Connection 1st Places
+Connection Last Places
+Time Spent in Pokéathlon
+Hurdle Dash 1st Places
+Pennant Capture 1st Places
+Circle Push 1st Places
+Block Smash 1st Places
+Disc Catch 1st Places
+Lamp Jump 1st Places
+Relay Run 1st Places
+Ring Drop 1st Places
+Snow Throw 1st Places
+Goal Roll 1st Places
+Pokémon Instructions
+Times Pokémon Dashed
+Times Pokémon Jumped
+Times Pokémon Tackled
+Times Pokémon Switched
+Times Pokémon Self-Impeded
+Pokémon Acquired Points
+Pokémon Failed
+Pokémon Fell Down

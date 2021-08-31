@@ -1,0 +1,13 @@
+Please stand by...
+{STRVAR_1 1, 0, 0}
+{STRVAR_1 1, 1, 0} received\n{STRVAR_1 1, 2, 0}’s Egg!
+Landed on a Bonus Area!\nReceived a free {STRVAR_1 8, 0, 0}!
+Oh, no. The Bag is full...\nThe Berry had to be refused.
+Awaiting communication.\nPlease stand by.
+                                     
+                                    
+                                     
+                                    
+Awaiting communication.\nPlease stand by.
+Saving...\nDon’t turn off the power.
+There is an Egg that can’t be traded.\nSpin Trade will be canceled.

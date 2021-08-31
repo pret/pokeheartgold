@@ -1,0 +1,20 @@
+Please!\n{STRVAR_1 28, 0, 0}!
+Go! {STRVAR_1 28, 0, 0}!
+I’ll battle with\n{STRVAR_1 28, 0, 0}!
+It’s {STRVAR_1 28, 0, 0}!
+{STRVAR_1 28, 0, 0}, I’m going\nwith {STRVAR_1 28, 1, 0}!
+Look at {STRVAR_1 28, 0, 0}!
+I’ll show you {STRVAR_1 28, 0, 0}!
+Now!\n{STRVAR_1 28, 0, 0}!
+I’ll show you my\n{STRVAR_1 28, 0, 0} strategy!
+I’ll {STRVAR_1 28, 0, 0}!
+I’ll shock you with\n{STRVAR_1 28, 0, 0}!
+This is the beginning\nof {STRVAR_1 28, 0, 0}!
+This battle is\n{STRVAR_1 28, 0, 0}!
+I don’t think I’ll\never lose at {STRVAR_1 28, 0, 0}!
+Team {STRVAR_1 28, 0, 0} is here!
+You think you can beat\n{STRVAR_1 28, 0, 0}?
+{STRVAR_1 28, 0, 0}!\n{STRVAR_1 28, 1, 0} power!
+This is the {STRVAR_1 28, 0, 0}\nPokémon!
+{STRVAR_1 28, 0, 0} won’t lose!
+Please {STRVAR_1 28, 0, 0}!\n{STRVAR_1 28, 1, 0}!

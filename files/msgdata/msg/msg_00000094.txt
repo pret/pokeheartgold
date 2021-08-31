@@ -1,0 +1,13 @@
+Jasmine: ...This Pokémon always kept\nthe sea lit at night.\r...But it suddenly got sick...\nIt’s gasping for air...\r...I understand that there is a\nwonderful Pharmacy in Cianwood...\rBut that’s across the sea...\nAnd I can’t leave Amphy unattended...\r
+...May I ask you to get some medicine\nfor me? Please?\r
+Jasmine: ...Will that medicine cure\nAmphy? {YESNO 0}
+{STRVAR_1 3, 0, 0} handed the SecretPotion\nto Jasmine.
+Jasmine: ...Um, please don’t be\noffended...\rAmphy will not take anything from\nanyone but me...\r
+Jasmine: ...\rAmphy, how are you feeling?\r
+Amphy: Palu!\nPalulu!\r
+Jasmine: ...Oh, I’m so relieved...\nThis is just so wonderful...\rThank you so very, very much.\n...I will return to the Gym...\r
+Jasmine: ...I see...\r
+...Amphy, hang on!\r
+Amphy: ...\n...Pa...paloo...\r
+Its breathing is slight...
+Amphy: Palu!\nPalulu!

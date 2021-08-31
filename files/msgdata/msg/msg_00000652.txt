@@ -1,0 +1,15 @@
+Lt. Surge
+What? I can’t hear you very well.\nMaybe we’ve got a bad connection?\rTry calling again from somewhere else.
+Hello? What’s up?\nI’m doing great!\r
+Aren’t there any other Trainers you’d\nlike to battle more than me?
+My free time?\nI’m usually available Friday mornings.\fTry calling me again then!
+Hey, you!\rBattle me again!\nWhat do you say? {YESNO 0}
+All right!\rI’ll be waiting for you in Saffron City’s\nFighting Dojo. Don’t be late!
+I see...\nYou must be pretty busy.
+Hmm...\nWell, I appreciate that you want to\fbattle me again, but didn’t you promise\fsomeone else?
+I’ll be waiting for you at the Fighting\nDojo in Saffron City.\fDon’t forget! Come on!
+Yo! This is Lt. Surge.\nHow are you?\r
+Hey, did you forget that I’m standing\nin the Fighting Dojo in Saffron City\fwaiting for you?\rI guess I got here before you.\nI’ll be waiting!
+So, why do you think I put all those\ntraps in the Vermilion Gym?\rThat’s right!\nIt’s to test the intellect of any\fTrainer who comes in to battle!\rPokémon battles aren’t just about\npower or stamina.\rIf you can balance power and\nintelligence, then you’ve got the\fmakings to become a great Trainer!
+When I was fighting for my country,\nI helped raise a lot of Trainers, taught\fthem the ropes.\rBut!\rBy the time you met me, you’d already\nperfected your abilities!\rWhere did you train? Who taught you how\nto battle?\rIt’s so strange and amazing!
+I’ve been studying this region’s\ndialect during my time as Gym Leader\fhere in Vermilion.\rBut there’s still so many sayings that\nI don’t understand.\rHey, will you talk with me some more?\nWe could teach each other some\fnew things to say!

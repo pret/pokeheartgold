@@ -1,0 +1,20 @@
+Hiya, kid!\rI see you’re new in Mahogany Town.\nSince you’re new, you should try a\fyummy RageCandyBar!\rRight now, it can be yours for just\n$300! Want one? {YESNO 0}
+I don’t want to upset you after\nbuying one from me, but...\rBuying a RageCandyBar has nothing to\ndo with whether I’d allow you to\fpass through here.\r...Johto has many places to visit,\nsuch as the Lighthouse at Olivine and\fthe Pharmacy at Cianwood.\rWhy don’t you slow down and\nenjoy sightseeing?
+I don’t want to upset you after\nbuying one from me, but...\rBuying a RageCandyBar has nothing to\ndo with whether I’d allow you to\fpass through here.\r...Johto has many places to visit,\nsuch as the Lighthouse at Olivine and\fthe Pharmacy at Cianwood.\rWhy don’t you slow down and\nenjoy sightseeing?\r
+What? RageCandyBar?\nYou want to buy one?\rRight on!\rSame as before, it can be yours for\njust $300! Want one? {YESNO 0}
+What? RageCandyBar?\nYou want to buy another?\rI think one is enough for you.
+I remember a person from as far as\nKanto came to buy one a long time ago.\rI happened to have none in stock then.\nThat person left rather upset.\rI felt kind of sorry for that.
+I remember a person from as far as\nKanto came to buy one a long time ago.\rI happened to have none in stock then.\nThat person left rather upset.\rI felt kind of sorry for that.\r
+You don’t have enough money.
+You don’t have enough money.\r
+Oh, fine then...
+Oh, fine then...\r
+                                           
+                                            
+Have you seen this guy with a\nblack cape?\rHe has been going back and forth\nbetween here and the Lake of Rage\fsaying strange radio waves are\fbeing transmitted.\rWho is he, I wonder.\n
+Are you off to see the GYARADOS\nrampage at the lake?
+MAGIKARP have returned to\nLake of Rage.\rThat should be splendid news for the\nanglers there.
+Visit Grandma’s shop. She sells\nstuff that nobody else has...\rYou want to buy stuff, right?\nSo buy stuff at my grandma’s!
+Mahogany Town\nHome of the Ninja
+Just a Souvenir Shop\rNothing Suspicious about It\nNo Need to Be Alarmed
+Mahogany Town Pokémon Gym\nLeader: Pryce\fThe Teacher of Winter’s Harshness

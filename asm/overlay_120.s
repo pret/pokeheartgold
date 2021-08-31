@@ -1007,7 +1007,7 @@ _0225F73E:
 	ldr r4, [r5, #0xc]
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201D39C
+	bl AllocWindows
 	str r0, [r4]
 	mov r3, #0
 	str r3, [sp]
@@ -1028,10 +1028,10 @@ _0225F73E:
 	add r1, sp, #0x14
 	mov r2, #2
 	mov r3, #0x1e
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4]
 	bl sub_0201D5C8
 	add r0, r4, #0
@@ -1124,9 +1124,9 @@ _0225F842:
 	str r0, [r1]
 _0225F852:
 	ldr r0, [r4]
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, [r4]
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4]
 	mov r1, #1
 	bl sub_0201D54C
@@ -1443,7 +1443,7 @@ _0225FA9E:
 	ldr r5, [r4, #0xc]
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201D39C
+	bl AllocWindows
 	str r0, [r5]
 	mov r3, #0
 	str r3, [sp]
@@ -1464,10 +1464,10 @@ _0225FA9E:
 	add r1, sp, #0x14
 	mov r2, #2
 	mov r3, #0x1e
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5]
 	bl sub_0201D5C8
 	mov r0, #4
@@ -1541,9 +1541,9 @@ _0225FB84:
 	ldr r0, [r5, #4]
 	bl ov120_0225F294
 	ldr r0, [r5]
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, [r5]
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r5]
 	mov r1, #1
 	bl sub_0201D54C
@@ -1616,7 +1616,7 @@ _0225FBEE:
 	ldr r5, [r4, #0xc]
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201D39C
+	bl AllocWindows
 	str r0, [r5]
 	mov r3, #0
 	str r3, [sp]
@@ -1637,10 +1637,10 @@ _0225FBEE:
 	add r1, sp, #0x14
 	mov r2, #2
 	mov r3, #0x1e
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5]
 	bl sub_0201D5C8
 	mov r0, #4
@@ -1714,9 +1714,9 @@ _0225FCD4:
 	ldr r0, [r5, #4]
 	bl ov120_0225F294
 	ldr r0, [r5]
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	ldr r0, [r5]
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r5]
 	mov r1, #1
 	bl sub_0201D54C
@@ -1756,7 +1756,7 @@ ov120_0225FD14: ; 0x0225FD14
 	bl sub_02007C98
 	add r1, r5, #0
 	add r4, r0, #0
-	bl sub_020B70F4
+	bl NNS_G2dGetUnpackedBGCharacterData
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov120_0225FD14
@@ -1812,7 +1812,7 @@ ov120_0225FD2C: ; 0x0225FD2C
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1841,7 +1841,7 @@ _0225FDB8:
 	ldr r0, [r0, #8]
 	ldr r3, [r3, #0x10]
 	mov r1, #1
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldrh r0, [r4, #0x1e]
 	add sp, #4
 	add r0, r0, #1
@@ -1856,7 +1856,7 @@ _0225FDD6:
 	ldr r0, [r0, #8]
 	ldr r3, [r3, #0x10]
 	mov r1, #3
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldrh r0, [r4, #0x1e]
 	add sp, #4
 	add r0, r0, #1

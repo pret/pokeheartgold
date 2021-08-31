@@ -1,0 +1,16 @@
+                                  
+                                              
+                                                                                    
+Manager: My beloved generator!\rKeep pumping the electricity out to\nprovide a pleasant life for Kanto!
+We’ll have to beef up our security\npresence so something like this will\fnever happen again!
+The generator’s up and running.\nIt’s making electricity to spare.
+The generator’s running again!
+Since the generator’s been fixed, the\nManager has been cheerful.
+All right! We can finally get the\nMagnet Train running again.
+I collect Pokémon.\nDo you have a DUGTRIO?\rWant to trade it for my MAGNETON? {YESNO 0}
+Yay! I got myself a DUGTRIO!\nThanks!
+Huh? That’s not DUGTRIO.\nWhat a letdown...
+You don’t want to trade? Aww...
+Hi, how’s my old MAGNETON doing?
+Staff Mottos:\r1. Electricity is not infinite.\n2. Conserve wherever possible.\f3. Watch out for each other.\f4. Idle hands are not allowed.\f5. Wear shoes with rubber soles.\f6. The Manager is awesome.
+Use electricity wisely\nfor a bright and pleasant life.\f           Kanto Power Plant

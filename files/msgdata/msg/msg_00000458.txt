@@ -1,0 +1,15 @@
+Hello, welcome to our Training Hall.\rYou may battle our best Trainers and\ntheir favorite Pokémon once\fper day.\rWould you like to participate? {YESNO 0}
+                                   
+You are ready!\nPlease go right through.\r
+I see...\nPlease come back again.\r
+Do you want to exit? {YESNO 0}
+Thank you for playing!\r
+I see.\nGood luck!\r
+Oh, hello!\nRight this way, please!\r
+This is the Trainer House--\nthe place for Trainers.\rThe Pokéwalker will bring your\nfriends here!\rYou can challenge various Trainers\nonce a day.\rYou’ll earn Battle Points when you win.\fBring out your best!\r
+Oh! I’ll borrow your Vs. Recorder\nfor a moment.\rLet’s see... Slide open this part here,\nand ticka-tacka-kachunk there!\rAll done!\rNow you can check your Battle Points\nusing your Vs. Recorder!\r
+{STRVAR_1 3, 0, 0}’s Vs. Recorder was\nupgraded.
+You may exchange your Battle Points\nfor fabulous prizes at Johto\fBattle Frontier!\r
+Now that you are ready,\nwould you like to train yourself? {YESNO 0}
+Would you like to battle? {YESNO 0}
+See you tomorrow!

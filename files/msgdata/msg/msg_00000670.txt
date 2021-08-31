@@ -1,0 +1,12 @@
+Alfred
+Well, now that we’ve made each other’s\nacquaintance, shall we trade phone\fnumbers? {YESNO 0}
+Lovely!\nNow I shall be able to call you anytime.
+I see...\rAs to be expected, children prefer to\nspend time with others their own age...
+You don’t really want to trade\nphone numbers with me, do you? {YESNO 0}
+What’s wrong? Aren’t we on the same\nfloor right now?\rWhy not talk in person?
+I was so surprised!\nA few days ago, I received a NOCTOWL\fwhen I traded with someone.\rIt turns out that NOCTOWL was the same\none I gave away in a trade with another\fTrainer years ago!\rI guess that’s a case of “What goes\naround, comes around,” in that it came\fback to me.\rThe world is small after all!
+It’s kind of disappointing.\nA few days ago, I received a NOCTOWL\fwhen I traded with someone.\rIt was such a familiar NOCTOWL...\rI thought it was the NOCTOWL that I had\noriginally trained!\rIt’d somehow found its way back...\nI was so moved...\fBut when I looked closer, I saw that\fit wasn’t the NOCTOWL I thought it was.\rThat kind of thing can’t really happen\nin this world, right?
+You know, whenever I try to catch a\nwild Pokémon, they seem to always run\faway. It’s happened so many times.\rA couple days ago a RATTATA got away\nfrom me...\rYou know, whenever I meet a person or\nPokémon, I always make sure to take off\fmy hat and introduce myself properly,\fand that’s when they run away.\rRATTATA are such impolite creatures...
+Ha ha, would you like to battle again?\nI think that’s a fine idea!\rI’ll meet you at {STRVAR_1 4, 3, 0}!
+Is everything all right?\nDid you forget about our appointment?\rI’m waiting at {STRVAR_1 4, 3, 0}.\nI will see you there!
+Just like this, when calling a young\nperson such as yourself, you can trade\finformation.\rJust like this, Pokémon bring people\ntogether, don’t they?\rTruly, Pokémon are such\nextraordinary creatures.

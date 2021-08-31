@@ -1,0 +1,7 @@
+HALL OF FAME No. {STRVAR_1 53, 0, 0} {STRVAR_34 16, 2, 0} {STRVAR_1 51, 3, 0}, {STRVAR_1 53, 1, 0}
+Lv.{STRVAR_1 52, 0, 0}
+OT/
+{COLOR 3}♂{COLOR 0}
+{COLOR 1}♀{COLOR 0}
+ 
+Return

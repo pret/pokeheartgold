@@ -1,0 +1,25 @@
+You’re a rookie Trainer, aren’t you?\nI can tell!\rThat’s OK! Everyone is a rookie\nat some point!\rIf you’d like, I can teach you a\nfew things.\fOK, then! Follow me!\r
+Ohh... I’m sorry.\nI forgot that you weren’t wearing the\fRunning Shoes!\rI’ll try to go as slow as possible, so\ntry keeping up!\r
+This is a Pokémon Center. They heal\nyour Pokémon in no time at all.\rYou’ll be relying on them a lot, so\nyou better learn about them.\r
+This is a Pokémon Mart.\nThey sell Poké Balls for catching wild\fPokémon and other useful items.\r
+Route 30 is out this way.\rTrainers will be battling their\nPokémon there.\rIf you go a little farther,\nyou’ll see Mr. Pokémon’s House.\r
+This is the sea, as you can see.\rSome Pokémon are found only in water.\r
+Here...\nIt’s my house!\rFor your effort keeping up with me,\nI’ll give you my Running Shoes!\fThey’re still warm!\r...\n...\rGot you, didn’t I?\nDon’t worry, these are brand new!\r
+{STRVAR_1 3, 0, 0} received\nthe Running Shoes from the Guide Gent!
+The instructions read,\n“Touch the Sprint Button on the\fTouch Screen to sprint.”\rIt also says,\n“Hold the B Button down to sprint.”\r
+...Hffp... Hffp...\nI made it...\rI forgot about one thing.\nThis is another token from me!\rTake it.\r
+The Guide Gent loaded the Map Card\non {STRVAR_1 3, 0, 0}’s Pokégear!
+{STRVAR_1 3, 0, 0}’s Pokégear\ncan now show the Town Map!\r
+Select the Pokégear on the\nTouch Screen and then select\fthe Town Map icon.\rYou’ll see the map of the region\nyou’re currently in!\rThe Pokégear becomes more useful as\nyou add Cards.\rI wish you luck on your journey!\r
+...\rYou got a Pokémon at the Lab.\nWhat a waste.\rThat’s a Pokémon that’s too good for\na wimp like you.\r...\nDon’t you get what I’m saying?\rWell, I too have a good Pokémon.\nI’ll show you what I mean!\r
+...\rDo you want to know who I am?\n...\rI’m going to be the world’s greatest\nPokémon Trainer.\r
+Give it back!\nThat’s my Trainer Card!\rOh no!\nYou saw my name...\r
+Did you talk to the old man by the\nPokémon Center?\rHe’ll put a Map of Johto on your\nPokégear.
+When you’re with Pokémon,\ngoing anywhere is fun.
+Mr. Pokémon’s house is still farther\nup ahead.\rYou could use the Running Shoes if\nyou had a pair.\rBut beware of wild Pokémon and\nTrainers!\rWhen you run, the noise will\nattract them.
+I battled the Trainers on the road.\nMy Pokémon lost.\rThey’re a mess! I must take them to\na Pokémon Center.
+A Pokémon I caught had an item.\nI think it’s Mystic Water.\rI don’t need it, so do you want it?\r
+Back to fishing for me, then.
+You don’t have room for this.
+Cherrygrove City\nThe City of Fragrant Flowers
+Guide Gent’s House\nFull-of-Energy, High-Speed Old Man

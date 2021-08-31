@@ -1,0 +1,16 @@
+One of the Elite Four used to be\nthe Leader of Fuchsia’s Gym.
+Koga’s daughter succeeded him as\nthe Gym Leader after he joined\fthe Elite Four.
+The Safari Zone wasn’t open\nfor a while.\rThen it moved to Johto before\nI knew it.\fIt’s sad...\rIt was this city’s main attraction.
+Fuchsia City\nHappening and Passing City
+Fuchsia City Pokémon Gym\nLeader: Janine\fThe Poisonous Ninja Master
+There’s a notice here...\rThe Safari Zone is closed.\fInstead, we have Pal Park.
+Home of the Pal Park Warden
+Shard de Berry!\nShard de Berry!\rYah, yah!\nI trade Berry for Shard.\rIf ya bring me some Shards,\nI will give ya three Berries, yah!\r
+Shard de Berry!\nShard de Berry!\rYah, yah!\nI trade Berry for Shard.\rIf ya bring me some Shards,\nI will give ya three Berries, yah!\rWhich Shard will ya trade for\nde Berry? {YESNO 0}
+More Shards to trade for\nde Berries? {YESNO 0}
+Yah, yah!\nCome back when ya’ve changed\fya mind, yah!\r
+I’ll give ya de Berry set E\nfor de Red Shard, yah!\r
+I’ll give ya de Berry set F\nfor de Blue Shard, yah!\r
+I’ll give ya de Berry set G\nfor de Yellow Shard, yah!\r
+I’ll give ya de Berry set H\nfor de Green Shard, yah!\r
+Ya already have many Berries\nof dis set.\rCome back when ya need more, yah!\r

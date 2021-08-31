@@ -30,7 +30,7 @@ _022598E0:
 	mov r0, #0x70
 	add r1, r6, #0
 	add r3, r5, #0
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4]
 	str r5, [r4, #0x10]
 	str r6, [r4, #0xc]
@@ -50,7 +50,7 @@ _022598E0:
 	mov r2, #0x80
 	bl sub_02026A68
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #8]
 	add r1, sp, #4
 	bl sub_02028F24
@@ -97,7 +97,7 @@ ov23_02259964: ; 0x02259964
 	add r1, r5, #0
 	mov r2, #0
 	mov r3, #0xb
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
 	add r1, r4, #0
@@ -153,7 +153,7 @@ ov23_02259964: ; 0x02259964
 	add r2, r7, #0
 	bl sub_0206EC40
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r7, #0
 	bl FreeToHeap
 _02259A14:
@@ -178,7 +178,7 @@ ov23_02259A24: ; 0x02259A24
 	mov r1, #7
 	mov r2, #0
 	mov r3, #0xb
-	bl sub_02007A44
+	bl GfGfxLoader_LoadFromNarc
 	add r4, r0, #0
 	mov r0, #0x65
 	str r0, [sp]
@@ -211,7 +211,7 @@ ov23_02259A24: ; 0x02259A24
 	bl sub_0202B2D4
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
@@ -397,7 +397,7 @@ ov23_02259B88: ; 0x02259B88
 	mov r0, #1
 	str r0, [r4, #0x10]
 	ldr r0, [r6, #0xc]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x14]
 	add r0, r6, #0
 	bl sub_020555E0
@@ -430,13 +430,13 @@ ov23_02259C1C: ; 0x02259C1C
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xc8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r5, r0, #0
 	add r1, r4, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov23_02259C1C
@@ -468,7 +468,7 @@ ov23_02259C40: ; 0x02259C40
 	mov r1, #0x77
 	bl sub_0206EC40
 	ldr r0, [sp, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	mov r1, #1
 	add r0, sp, #0x14
 	strb r1, [r0]
@@ -545,7 +545,7 @@ ov23_02259C40: ; 0x02259C40
 	add r2, r6, #0
 	bl sub_0206EC40
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x9d

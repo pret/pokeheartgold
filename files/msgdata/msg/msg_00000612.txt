@@ -1,0 +1,20 @@
+Ecruteak used to have two towers,\none in the east and one in the west.
+Have you heard that they are talking\nabout rebuilding the Burned Tower?\rThere will be two towers again!\nI’m looking forward to it!
+Hmm...\nI thought I just heard a woman\fscreaming or something...\rIs that just me?
+Kimono Girls are always rehearsing their\ndances at the Dance Theater there.
+I’m going to rehearse at the\nDance Theater. Care to join me?
+The tower that used to be here...\nI heard that it used to be much taller\fbefore it was burned by a fire.
+Three big Pokémon ran off in different\ndirections. What were they?
+They say that they will start the\nconstruction work to rebuild this\ftower soon!
+Oh!\nThat’s a nice Pokémon you’re walking\fwith! They make you feel uplifted,\fdon’t they?\rThey give us the hope of the light,\nso to speak.\rSpeaking of the light, I heard something\nabout the Lighthouse in Olivine.\rThe Pokémon that serves as the\nbeacon has fallen ill.\fSounds like it’s in trouble.
+The Pokémon at that Lighthouse in\nOlivine has fully recovered.\rI heard that boats can safely sail out\nto sea at night again.
+If you go west from this city, you’ll\nreach a port called Olivine City.\rWhen your Pokémon learns Surf,\nyou can go out to the ocean from\fRoute 40 without a ship!
+Ecruteak City\nA Historical City
+Ecruteak City Pokémon Gym\nLeader: Morty\fThe Mystic Seer of the Future
+Ecruteak Dance Theater
+Burned Tower\nIt was destroyed by a mysterious fire.\rPlease stay away, as it is unsafe.
+Barrier Station to Bell Tower\nNo Trespassing by the Unworthy
+{SIZE 200}Thud!!
+{STRVAR_1 3, 1, 0}: How...? How is this\npossible? How can I lose to\fmere Kimono Girls...?\r
+{STRVAR_1 3, 1, 0}: You were watching me,\n{STRVAR_1 3, 0, 0}...\rYeah, that’s right!\rI never thought defeating five Kimono\nGirls would be so hard...\rI got beaten to a pulp...\r...\rYou must have come here for the same\nreason, right?\rDon’t get cocky just because you\ndefeated Team Rocket!\rThese Kimono Girls are insanely strong.\rGo ahead! See if you can defeat them.\rBut I’m not going back.\nI don’t want to see you win.\r
+In the distant past...\rWhen this tower burned in a fire,\nthree nameless Pokémon perished in it.\rThen, a rainbow-hued Pokémon\ndescended from the sky and\fsomehow brought them back...\rThe people were afraid of power such as\nthe rainbow-hued Pokémon had shown.\rThey tried to control it by force.\rThe nameless Pokémon made no attempt\nto fight back. Instead, their\fgreat sorrow compelled them to leave.\rThis legend has been passed down\nby the Ecruteak Gym Leader. Me?\rI was a Trainer way back when.\nHo ho ho!

@@ -1,0 +1,22 @@
+TV\n
+TV0
+TV1
+TV2
+TV3
+TV4
+TV5
+TV6
+TV7
+TV8
+Clear player’s data
+Clear another player’s data
+Confirm data
+Questionnaire (player)
+Observation (player)
+Records (player)
+Questionnaire {STRVAR_1 50, 0, 0} (another player)
+Observation {STRVAR_1 50, 0, 0} (another player)
+Records {STRVAR_1 50, 0, 0} (another player)
+Id{STRVAR_1 51, 0, 0}　Preview{STRVAR_1 50, 1, 0} {STRVAR_1 51, 2, 0}/{STRVAR_1 51, 3, 0}/{STRVAR_1 51, 4, 0} CRC {STRVAR_1 54, 5, 0}
+No data
+ID: {STRVAR_1 54, 0, 0} {STRVAR_1 3, 1, 0} Country: {STRVAR_1 51, 2, 0}

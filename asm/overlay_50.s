@@ -42,7 +42,7 @@ ov50_021E5924: ; 0x021E5924
 	mov r1, #0
 	mov r2, #0x14
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0x5e
 	str r0, [r4]
 	str r5, [r4, #0xc]
@@ -103,7 +103,7 @@ ov50_021E59A8: ; 0x021E59A8
 	bl sub_02007290
 	mov r1, #0
 	mov r2, #0x14
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	bl sub_02007294
 	bl sub_02004B10

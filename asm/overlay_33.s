@@ -185,10 +185,10 @@ _0225D67E:
 	bl sub_0201CAE0
 	ldr r0, [r4]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0x6e
 	mov r1, #3
 	lsl r0, r0, #2
@@ -203,10 +203,10 @@ _0225D6A8:
 	bl sub_0201CAE0
 	ldr r0, [r4]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #0x6e
 	mov r1, #5
 	lsl r0, r0, #2
@@ -360,10 +360,10 @@ _0225D7F0:
 	ldr r2, [r3, r2]
 	add r1, r5, #0
 	add r2, r2, r6
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, _0225D818 ; =0x000001BA
 	add r4, r4, #1
 	ldrh r0, [r7, r0]
@@ -392,7 +392,7 @@ ov33_0225D820: ; 0x0225D820
 	add r5, #0x18
 _0225D834:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	ldrh r0, [r6, r7]
 	add r4, r4, #1
 	add r5, #0x10
@@ -458,7 +458,7 @@ ov33_0225D84C: ; 0x0225D84C
 	lsl r2, r2, #6
 	add r0, r0, r2
 	add r1, r5, #0
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -480,7 +480,7 @@ ov33_0225D8D4: ; 0x0225D8D4
 	mov r1, #0x1b
 	mov r2, #0xbf
 	mov r3, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x14]
 	ldr r0, _0225D9C8 ; =0x000001BA
 	ldr r3, _0225D9CC ; =0x0225DA50
@@ -526,11 +526,11 @@ _0225D912:
 	ldr r2, [r1]
 	lsl r1, r5, #2
 	ldr r1, [r2, r1]
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	lsl r6, r5, #4
 	str r0, [sp, #0x20]
 	add r0, r4, r6
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r1, r0, #3
 	lsr r0, r1, #0x1f
 	add r0, r1, r0
@@ -563,7 +563,7 @@ _0225D912:
 	add r0, r4, r6
 	bl sub_0201D5C8
 	ldr r0, [sp, #0x20]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
@@ -573,12 +573,12 @@ _0225D912:
 	blo _0225D912
 _0225D9B0:
 	ldr r0, [sp, #0x14]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #4
 	bl sub_02002DB4
 	ldr r0, [r7]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -619,7 +619,7 @@ ov33_0225D9D4: ; 0x0225D9D4
 	bl sub_0201CA4C
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop

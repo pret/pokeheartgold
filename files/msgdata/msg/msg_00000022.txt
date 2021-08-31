@@ -1,0 +1,32 @@
+Performance
+{CURSOR_X 11}Use
+{CURSOR_X 11}Back
+{STRVAR_1 1, 0, 0}
+Lv. {STRVAR_1 52, 0, 0}
+Power
+Stamina
+Skill
+Jump
+Speed
+♂
+♀
+Used NoFlav Juice!
+Used PowerJuice!
+Used Stam. Juice!
+Used Skill Juice!
+Used Jump Juice!
+Used Speed Juice!
+Nothing changed.\r
+Power Performance increased!\r
+Stamina Performance increased!\r
+Skill Performance increased!\r
+Jump Performance increased!\r
+Speed Performance increased!\r
+Power Performance decreased!\r
+Stamina Performance decreased!\r
+Skill Performance decreased!\r
+Jump Performance decreased!\r
+Speed Performance decreased!\r
+Before giving juice
+After giving juice
+♢cond{STRVAR_1 51, 0, 0} rev{STRVAR_1 51, 1, 0} add{STRVAR_1 51, 2, 0} base{STRVAR_1 51, 3, 0}\n min{STRVAR_1 51, 4, 0} max{STRVAR_1 51, 5, 0} result{STRVAR_1 51, 6, 0}

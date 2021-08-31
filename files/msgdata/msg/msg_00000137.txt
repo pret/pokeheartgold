@@ -1,0 +1,50 @@
+Muhaha!\r
+I feel it!\rThe twinkle in your eyes!\nThe twinkle of friendship!\rYou’re quite something.\nYour {STRVAR_1 0, 1, 0} is quite a Pokémon!\rIt’s ready to participate in the\nPokéathlon, bud!\rMost of all, your solidarity with and\ntrust of Pokémon makes me\fbelieve in infinite potential!\rAll right. Follow me!\r
+What do you think?\nThis is the Pokéathlon Dome!\r
+Pokéathlon is a sports festival for\nTrainers and Pokémon!\rInside the Dome are various challenges\nawaiting Trainers and Pokémon to test\ftheir friendship.\fWhy don’t you try it?\r
+You’re amazing, bud!\nThis is a pleasant surprise!\rTo see a Pokéathlete with strong\npotential is such a pleasure! I’m glad\fI held the Pokéathlon here in Johto.\r...My name is Magnus.\nWe shall meet again, bud.\rMagnus: See you, young Pokéathlete!\r
+I feel it!\rThe twinkle in your eyes!\nThe twinkle of friendship!\rYou’re ready to participate in the\nPokéathlon, bud!\rMost of all, your mutual trust and\nteamwork with Pokémon makes me\fbelieve anything is possible!\rAll right. Follow me, bud!\r
+Hmmm...\r
+Running and jumping and...\nThere are so many events for Pokémon\fto choose from. Which one should I try?
+ODDISH: Odd! Odd!
+There is more to Pokémon than battling!
+MEOWTH: Nyaah!
+It’s not good at battles...but no\nPokémon can beat it at running, thanks\fto the walk we take every morning!
+Huff huff!\nEveryday training is the sure way\fto glory!\rDashing 1,000 times!\nThat’s my goal for now.\r
+What’s your goal?\nHaving a goal lets you enjoy life more.
+............\nOh, you have done the dash 1,000 times?\rI thought it was basically impossible,\nbut you make me feel courageous.\rThank you!\nPlease take this!\r
+I’ve become your fan! I would run\nanywhere for you!\fI’ll be supporting you!
+PIDGEY: Po po!
+Have you heard of Aprijuice?\rPokémon can increase their Performance\nwith food and drink.\rAprijuice is a drink developed from\nnutrition research to improve\fPerformance.\rIf you let your Pokémon drink it before\na Pokéathlon event, it will show its\ftrue potential!
+SLOWBRO: Whick!
+Each Pokémon has its unique traits.\rA true Pokéathlete knows them and lets\nthe true Performance of his or her\fPokémon emerge!
+MACHOP: Machao!
+Oh!\nThey look good today!\rThey weren’t so well yesterday, but\nwe’ll win today for sure!
+SLOWPOKE: Moah!
+FARFETCH’D: Teree!
+PSYDUCK: Guack!
+Energy drink!\nWelcome to the Aprijuice stand!\rAre you giving your Pokémon Aprijuice?\nI can explain anything you\fneed to know about it! {YESNO 0}
+Energy drink!\nWelcome to the Aprijuice stand!\rHuh? What’s that confused look about?\nYou don’t know about Aprijuice?\fThere, take this!\r
+{STRVAR_1 3, 0, 0} received\nthe Apriblender!
+You put away the Apriblender\nin the Apricorn Box.\r
+When you have the Apriblender, you can\nmake Aprijuice to let your Pokémon show\ftheir true potential!\rIt’s so easy to make! All you have to\ndo is to put Apricorns in the\fApriblender. Put in as many as you can!\rThe more, the merrier!\nThen you walk!\rYou can run if you want...\n98...99...100 steps!\rHere! Then you open it, give it to your\nPokémon, or drink it yourself.\rYou can buy Aprijuice here.\nWhy don’t you try and see how it works?\rDo you have any more questions? {YESNO 0}
+Aprijuice improves a Pokémon’s\nPerformance! Pokémon have strengths\fand weaknesses.\rBut there is no need to worry. Give it\nAprijuice, and you can max out its\fPerformance!\rYou will need it!\rDo you have any more questions? {YESNO 0}
+Choose from the three Apriblenders.\rThe labels tell you what kind of drink\nit is. Different drinks have\fdifferent effects.\rYou should use them to suit the event\nyou want to participate in. That’s how\fto make a top Pokéathlete.\rBut remember this!\nIf your Pokémon’s Performance is maxed\fout, you cannot make it higher.\rYou should check your Pokémon’s\nPerformance before you\fgive it Aprijuice.\rDo you have any more questions? {YESNO 0}
+Charge yourself with friendship!\nGet in the know about Aprijuice!\fPick one from the shelf!
+So discerning of you!\n{STRVAR_1 3, 0, 0}’s {STRVAR_1 8, 1, 0}!\fOnly ${STRVAR_1 53, 2, 0}! Quite a bargain! {YESNO 0}
+Thank you!\nWhich Pokémon do you want to give it to?\r
+Charge yourself with friendship!\nCome back again when you want more!\r
+That’s a pity!\nCome back when you want to win!\r
+Oh, you don’t have enough money!\r
+{STRVAR_1 3, 0, 0}’s {STRVAR_1 8, 1, 0}!\nOnly ${STRVAR_1 53, 2, 0}! Quite a bargain! {YESNO 0}
+Hi! What can I do for you?\r
+Its richness is {STRVAR_1 52, 3, 0}!\nIts smoothness is {STRVAR_1 52, 4, 0}!\r
+Owner’s Comment\nSomebody, somewhere put it together!\fThe mysterious {STRVAR_1 8, 1, 0}!\rIt may go up.\nIt may go down.\fMay your luck be with this juice!\r
+Owner’s Comment\nNot many people know about it!\rIt’s the newcomer Pokéathlete\n{STRVAR_1 3, 0, 0}’s {STRVAR_1 8, 1, 0}!\rIt’s a long way to perfection!\nBut it’s irresistible to some!\fIt’s a gleam of {STRVAR_1 8, 1, 0}!\r
+Owner’s Comment\nYou know who’s around here!\rThis {STRVAR_1 8, 1, 0} is what has helped\nmake you-know-who who they\fare today!\fTry it if you feel sluggish!\r
+Owner’s Comment\nYou don’t know it?\fThat’s the last thing you want to hear!\rIt is time you try {STRVAR_1 3, 0, 0}’s\n{STRVAR_1 8, 1, 0}, the sign of a new era!\r
+Owner’s Comment\n{STRVAR_1 8, 1, 0} was developed by\fthat popular Pokéathlete!\rYou may never be able to shake hands,\nbut you can still drink the same juice!\rThis is a must-buy juice for every\nPokéathlete!\r
+Owner’s Comment\n{STRVAR_1 8, 1, 0}!\fDeveloped by that elite Pokéathlete!\rYou may never see it again.\nIf you won’t win today, when will you?\rFor those who want to win today, here\nis the juice of victory!\r
+Owner’s Comment\n{STRVAR_1 8, 1, 0} of the legendary\fPokéathlete!\rIt grew side by side with {STRVAR_1 3, 0, 0}!\rThe road to victory is shown when you\ndrink it! This will make you a legend!\r
+It improves your Pokémon’s\nPerformance!\rLet it shine its best with Aprijuice!
+The Pokéathlon Dome\nThe Place for True Pokéathletes!

@@ -1,0 +1,12 @@
+Beverly
+Your Pokémon is so cute and adorable!\nYou love Pokémon just like I do!\rWant to trade phone numbers?\nLet’s chat! It’ll be so much fun!{YESNO 0}
+To be honest, I want a MARILL.\nBut I make do with my cute SNUBBULL.\rAw! I’m just kidding!\nI’m just kidding, SNUBBULL! You’re the\fcutest Pokémon ever, really!
+Oh... That’s disappointing...
+You have such cute and adorable\nPokémon with you! \rWe should totally trade phone\nnumbers, don’t you think?{YESNO 0}
+Oh, sorry to keep you waiting,\n{STRVAR_1 3, 0, 0}. Here, I’ll give you this.\r
+Let’s see... You’re in the National\nPark, aren’t you?\rWell, you should come talk to me in\nperson, don’t you think?
+I spruced up my {STRVAR_1 0, 10, 0} and made\nit even cuter than before!\rI happened to come across a wild\nSNUBBULL recently.\rMy SNUBBULL, I assure you, was far\ncuter than the wild one.\rYou can expect a call from me.
+I spruced up my {STRVAR_1 0, 10, 0} and\nmade it even cuter than before!\rI happened to see a wild MARILL the\nother day. Or so I thought.\rA closer look showed it was\n{STRVAR_1 0, 11, 0}. I was quite miffed.\rYou can expect a call from me.
+My husband got some Nuggets.\rIf you’d like, you could have one as\nthanks for helping me out.\rI’ll be at {STRVAR_1 4, 3, 0}.\nPlease come see me when you can.
+Pardon?\nOh, the Nugget?\rIt’s all right! There’s no need\nto hurry. Come see me in\f{STRVAR_1 4, 3, 0} when you can.
+Are your Pokémon in prime form?\nLet’s chat about Pokémon again.

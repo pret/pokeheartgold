@@ -1,0 +1,20 @@
+EDIT
+QUIT
+SET
+REMOVE
+SHIFT
+OK
+CANCEL
+Choose a Capsule.
+What would you like to do?
+The Capsule was removed.
+Switch with which Capsule?
+The Capsules were switched.
+Finished editing the Capsule.
+Confirming...
+Quit without changing the\nCapsule design?
+There’s no more room!
+There are no Seals left.
+Exit
+   
+     

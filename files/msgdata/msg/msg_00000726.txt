@@ -1,0 +1,4 @@
+Battle? {YESNO 0}
+Fine--next time!
+You got 1 Battle Point!
+Cal

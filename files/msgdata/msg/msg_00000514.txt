@@ -1,0 +1,19 @@
+Fufufufu...\nI’m sorry to disappoint you...\rI’m only joking! I’m the real deal!\rJanine of Fuchsia Gym, that’s me!\r
+Janine: I see... You have defeated\nKoga, my father and a member of the\fElite Four, to come here.\rNo wonder you are strong!\rYou’ve definitely won...\nHere’s the Soul Badge. Take it.\r
+{STRVAR_1 3, 0, 0} received\nthe Soul Badge from Janine!
+Janine: You’re so tough!\nI have a special gift!\rIt’s Poison Jab, a powerful Poison-type\nmove that may poison its victim.\r
+Janine: I’m going to really apply\nmyself and improve my skills.\rI want to become much better than\nboth my father and you!
+Yo, legend in the making!\nWhoops! Take a good look around you.\rThe Trainers all look like the\nGym Leader, Janine.\rWhich of them is the real Janine?
+That was a great battle,\nTrainer from Johto!
+Fooled you!\nHahaha!\r
+Well? Wasn’t my disguise perfect?
+Wahahaha!\rYou betcha! I’m Janine!\r
+That’s right, I’m a boy!\nWhat’s wrong with a boy\fdressing up as Janine?
+Fufufu!\rI’m Janine, the Gym Leader!\fWait, no I’m not! Gotcha!\r
+Fooled you!\nHahaha!\r
+It’s so fun to dress up as Janine,\nour idol!
+I’m Janine!\nHow did you know I was real?\fLet’s battle!\r
+Or not!\r
+I feel stronger dressing up as Janine.
+Fuchsia City Pokémon Gym
+Fuchsia City Pokémon Gym\rLeader: Janine\nCertified Trainer!\f{STRVAR_1 3, 0, 0}

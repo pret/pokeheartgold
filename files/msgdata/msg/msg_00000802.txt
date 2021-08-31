@@ -1,0 +1,176 @@
+SEEN
+OBTAINED
+   
+ 
+   
+   
+   
+   
+INFO
+{STRVAR_1 52, 0, 0}
+HT
+WT
+Search Mode
+Please enter the search criteria.
+Search Results
+RESULTS {STRVAR_1 52, 0, 0}
+Select the Pokédex listing mode.
+List by the first letter in the name.
+List by type.
+List by weight range.
+List by height range.
+List by body style.
+List by area.
+No matching Pokémon were found.
+Not found...
+Searching...
+ORDER
+NAME
+TYPE
+HT
+WT
+AREA
+FORM
+    
+    
+RESET
+START
+CANCEL
+{STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0}
+OK
+CANCEL
+Numerical
+A to Z
+Heaviest
+Lightest
+Tallest
+Smallest
+Dark
+Rock
+Psychic
+Fight
+Grass
+Ice
+Ghost
+Ground
+Electric
+Poison
+Dragon
+Normal
+Steel
+Flying
+Fire
+Water
+Bug
+----
+JOHTO
+KANTO
+UNKNOWN
+----
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+K
+L
+M
+N
+O
+P
+Q
+R
+S
+T
+U
+V
+W
+X
+Y
+Z
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-
+Male
+Female
+West Sea
+East Sea
+Plant Cloak
+Sandy Cloak
+Trash Cloak
+One form
+JP Pokédex
+EN Pokédex
+FR Pokédex
+GE Pokédex
+IT Pokédex
+SP Pokédex
+Area Unknown
+Morning
+Day
+Night
+SWITCH
+{STRVAR_1 4, 0, 0}
+SHOW ALL
+SHOW ALL
+Height Check
+Weight Check
+4’11”
+4’11”
+88.2 lbs.
+90.4 lbs.
+AREA
+SIZE
+Pokédex registration completed.
+Normal Forme
+Attack Forme
+Defense Forme
+Speed Forme
+Land Forme
+Sky Forme
+Altered Forme
+Origin Forme
+ROTOM
+HEAT ROTOM
+WASH ROTOM
+FROST ROTOM
+FAN ROTOM
+MOW ROTOM
+{STRVAR_1 0, 0, 0}
+Normal
+Sunny Form
+Rainy Form
+Snowy Form
+Overcast Form
+Sunshine Form
+Spiky-eared
+{STRVAR_1 0, 0, 0}
+COMPARE
+Compare {STRVAR_1 0, 0, 0}
+FORMS
+SWITCH
+CANCEL
+CANCEL
+RETURN TO LIST
+{STRVAR_1 51, 0, 0}’{STRVAR_1 51, 1, 0}”

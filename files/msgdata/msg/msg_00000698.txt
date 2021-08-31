@@ -1,0 +1,13 @@
+Reena
+Not too shabby... You’re doing\nsomething right if you can beat me,\feven by an unlikely fluke...\rI like you!\nGive me your number!\rYou can be my practice partner! {YESNO 0}
+Don’t get too high and mighty\nabout beating me! It was a fluke!
+I don’t believe it! You’re going to\nregret this!
+Give me your phone number!\rYou are going to be my practice\npartner!{YESNO 0}
+
+What are you saying? \nYou really like Route 27?\rI do too, of course!\rI mean, I’m always on Route 27!
+Listen, pal of mine...\nDo you remember my {STRVAR_1 0, 10, 0}?\rYes, exactly. That lovely {STRVAR_1 0, 10, 0}.\nWouldn’t you agree it’s a perfect match\ffor me?\rFine, you may go.
+Have I ever faced a wild {STRVAR_1 0, 11, 0}?\nYou need to ask?\rI’ve beaten {STRVAR_1 0, 11, 0} on numerous\noccasions!\rFine, you may go.
+Have I ever failed to catch a wild\nPokémon?\rYou need to ask?\rI would never fail to catch a wild\n{STRVAR_1 0, 11, 0}... Oh! Never mind!
+We are going to battle!\rThe place shall be {STRVAR_1 4, 3, 0}!\nDon’t keep me waiting! Got it?
+What are you doing?\rI told you that the place was\f{STRVAR_1 4, 3, 0}! Don’t try to run!
+Don’t be too proud just because you\nhappened to beat me...\fIt was a fluke!

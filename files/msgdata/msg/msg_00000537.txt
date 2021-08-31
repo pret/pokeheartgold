@@ -1,0 +1,31 @@
+Welcome. This is Silph Co.’s\nhead office building.
+Hey, you! The elevator there is out of\norder now.\rSomething is wrong with the electricity,\nand it won’t work right.\rI feel sorry that you wasted a trip,\nso here is a gift for you!\r
+It’s Silph Co.’s latest product.\nIt’s not for sale anywhere yet.
+This elevator is out of order.\rIt may electrocute you. Stay away.
+
+
+
+Steven: We meet again!\nHave you been to Hoenn before?\rIt’s such a beautiful place, with the\nclearest ocean you can imagine.\rYou should visit sometime.\fHey!\rWhy don’t we trade Pokémon?\rI’ve been looking for FORRETRESS.\nI can trade my BELDUM for it. {YESNO 0}
+Steven: Will you trade FORRETRESS\nfor my BELDUM? {YESNO 0}
+Steven: OK, let’s trade!\r
+Steven: That’s too bad.
+Steven: Are you telling me that\nyou think that’s a FORRETRESS?
+Steven: You don’t see FORRETRESS in\nthe Hoenn region.\rIt’s my first time to actually see one.\nThank you so much!\rOh, look at the time. I really must go.\r
+Steven: This Pokémon seems to like\nyou a lot. Do you happen to like\fSteel-type Pokémon?\rI had a feeling.\nThat particular texture!\rThe cool and glowing bodies!\nSuch uniquenesses are only for\fSteel-type Pokémon!\rWhen it comes to the solitariness and\nnobleness you sense through the \frugged body, which is almost rebuffing\fwhen you hug, nothing comes close to\fBELDUM, I must say...\rIn short, my METAGROSS is\ntruly strong and cool!\r...\nOh, it seems that I got carried away.\rIt was a pleasure talking to you.\nBye!\r
+Hello...\nYou’re breaking up...\fI think it depends on how my dad feels.\rI see...\nI’ll be on my way. See you soon.\r
+Steven: You are...\nI remember your eyes.\rWhen I see a Trainer whose eyes\ntwinkle, I always remember.\r
+Steven: You have a Pokédex!\nSo you are also in search of Pokémon.\fLet me see...\rI think I can help you with that.\rLet’s say that you have stones in\nfront of you.\fWhich color would you pick? {YESNO 0}
+GREEN STONE
+RED STONE
+BLUE STONE
+Steven: You chose correctly!\nI will give you {STRVAR_1 0, 1, 0}!\r
+{STRVAR_1 3, 0, 0} received\nthe {STRVAR_1 0, 1, 0} from Steven!
+Steven: Take good care of it.\nYour caring for it will make me\fvery happy.\r
+Steven: I see...\nFor the choice you’ve made,\fI’d like to give you this Pokémon.\rExcept your party is full.\rWhy don’t you go to the PC to make\nsome room? I’ll be waiting here.
+Steven: I will ask again.\nWhich color do you choose? {YESNO 0}
+Would you like to give a nickname\nto {STRVAR_1 0, 1, 0}? {YESNO 0}
+Steven: You did a great job naming it!\r
+QUIT
+Steven: You seem to be quite cautious.\rAre you avoiding any chance when a\nperson might trick you?\fYou really are better than I thought.
+                                     
+                                                                                                                                                 

@@ -1,0 +1,9 @@
+Captain, play with me, please?\rI’m bored! I want to play more!\r
+Wow, you are going to play with me?\rLet’s play hide-and-seek!\nI’ll hide, so close your eyes!\r
+Wow, you are going to play with me?\rLet’s play hide-and-seek!\nI’ll hide, so close your eyes!\r
+Wow, you are going to play with me?\rLet’s play hide-and-seek!\nI’ll hide, so close your eyes!\r
+This little girl keeps asking me to play\nwith her.\rOuch! Please don’t stretch my ear!
+Thank you for playing with her.\rYou may think being a Captain\nis a somewhat easy job, but\fit’s actually quite demanding.\rThat little passenger has gone out\nof the room.\rShe can’t get off the ship, so she\nmust be hiding somewhere\faround here.
+How do you like S.S. Aqua’s ride?\rShe practically skates across\nthe waves.
+Long time no see.\nHow are you doing?\rThe S.S. Aqua is as smooth as she\ncan be!\rBy the way, I found this mysterious\nthing when I went to Sinnoh\fthe other day.\rNow that we’ve met again,\nI would like you to have it.\r
+Your Bag is full.\rYou must like the {STRVAR_1 8, 1, 0} a lot.

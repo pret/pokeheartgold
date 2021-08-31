@@ -1,0 +1,25 @@
+This is the “Potential” room.\nIt is to show the infinite potential\fof both Pokémon and people.
+Only the Pokéathletes who have held\nthe best record in every event\fare allowed here.\rContinue your hard work toward\nbreaking every record there is.
+This is the “Friendship” room.\nPlease go ahead.
+You are quite a Pokéathlete to\ncome here!\rBut you still have a long way\nto become the Top Pokéathlete.\rShall I show you some special\ntechniques? {YESNO 0}
+Hi, {STRVAR_1 3, 0, 0}!\nDo you have anything else\fyou want to know about? {YESNO 0}
+Hi, {STRVAR_1 3, 0, 0}!\nDo you have anything else\fyou want to know about? {YESNO 0}
+About which course? {YESNO 0}
+Which event would you\nlike to know about? {YESNO 0}
+In Hurdle Dash, timing is everything.\rYour Pokémon will pick up speed\nif you let them wait until the last\fmoment before they jump the Hurdles.\r
+Pennant Capture...\rThis event is not only about the\nPennants on the beach, but also\fthe ones other Pokémon have collected.\rIf you bump into them from behind,\nthey will be knocked down and your\fPokémon will grab their Pennants.\rThat’s the way experts fight.\r
+The key is to push other Pokémon out\nof the Circles...which may be obvious.\rActually, your Pokémon can push harder\nif you pick the right moment to tell\fthem to push.\rSo you might be able to push back\npowerful Pokémon if you give frequent\finstructions to push.\r
+Block Smash is not just about smashing.\rDid you ever notice that sometimes\nthere are small cracks in the Blocks?\rWell, if you can hit those cracks,\nthey break real fast!\rIf you can aim at cracks in a row,\nyour Pokémon will feel great and\fthey’ll show great potential.\rOne more thing...\rWhen you make them switch,\nflick your Pokémon upwards\ffor a quicker switch.\r
+Disc Catch is about how long you can\nwait until you catch the Discs.\rBird Pokémon can move around in the\nair, so it’ll be easier to catch Discs\fif you form a team of bird Pokémon.\r
+Lamp Jump is not only about jumping.\rThere are three Pokémon bouncing\ntogether, so one Pokémon can’t jump\fwell if another comes down right when\fthe other wants to go up in the air.\rLetting them jump at the right time\nis the key.\r
+Relay Run requires well-timed switching.\rDid you notice that Pokémon start to\nsweat a little when they become tired?\rIt also indicates they have slowed down\na lot.\rYou shouldn’t allow them to sweat.\rSwitching before they start to sweat,\nthat is the key.\r
+It’s not easy to aim for the top\nby just tackling a lot in Ring Drop.\fDo you know what a “Body Attack” is?\rI call it a Body Attack, anyway...\rYour Pokémon can actually jump\nas it moves forward.\rIf you can let your Pokémon\nBody Attack others, you can drop\fthem off the Ring altogether!\r
+Snow Throw is not just about smashing.\rAre you making sure the Snowballs\nare big?\rBigger Snowballs have a better\nchance of making other Pokémon\ffall down.\rYou can also block other Snowballs\nfrom hitting your Pokémon by having\fyour Pokémon hold on to\fsome Snowballs.\r
+Goal Roll requires the skills of\na Pokéathlete.\rThe situation changes every second,\nbut stay calm as you instruct\fyour Pokémon.\rPositioning is key.\rI recommend keeping one at your own\nGoal to protect it--one in the middle of\fthe field for flexibility and one in\ffront of the Goal you want to\froll the ball into.\r
+I hope you’ll become a Top Pokéathlete.\nGood luck!
+Those who have won at the Pokéathlon\n100 times are commemorated here for\ftheir achievement of creating the new,\flegendary record.
+It is a cool Pokégear to commemorate\nyour 100th victory in the Pokéathlon.\rThat is your model!\nIt is a special Pokégear with\fthe Pokéathlon logo in the back.
+Those Pokéathletes who have come in\nfirst in every event at the Pokéathlon\f50 times are commemorated here for\ftheir overwhelming might and the\farrival of a new legend.
+It’s an awesome Poké Ball to\ncommemorate your 50th victory\fin every Pokéathlon event.\rIt’s your model Poké Ball!\nThe engraving reads, “Stay on Top.”
+{STRVAR_1 3, 0, 0} checked\nthe event records.\r
+DODRIO: Keewn!

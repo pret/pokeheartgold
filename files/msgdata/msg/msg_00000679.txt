@@ -1,0 +1,15 @@
+Kay & Tia
+You had fun battling us, right?\rSo how about we exchange phone\nnumbers, and that way if we want to\fbattle again, we can just give each\fother a call? {YESNO 0}
+All right, now you’ve got our number\nand we have yours.
+Oh? But... Oh well.
+Did you decide you wanted to trade\nnumbers after all? {YESNO 0}
+All right, here you go!\nIt’s an Oval Stone.\r
+Huh?\nWait, aren’t you nearby?\rDo you just really like talking on the\nphone or something? What an odd hobby.
+Our {STRVAR_1 0, 10, 0} is much stronger now!\rWe were battling a {STRVAR_1 0, 11, 0}\nrecently and it was over before we\fknew it!\rOh yeah, by the way, this is Tia.
+Our {STRVAR_1 0, 10, 0} is much stronger now!\rWe were battling a {STRVAR_1 0, 11, 0}\nrecently and it was over before we\fknew it!\rOh yeah, by the way, this is Kay.
+Earlier we saw a {STRVAR_1 0, 11, 0} on\nRoute 15. Didn’t we, Tia?\rYeah, then suddenly a {STRVAR_1 0, 11, 0}\ncame out of nowhere. Didn’t it, Kay?\rYeah, and we were so surprised we just\nran away. Didn’t we, Tia?\rI keep thinking about it, Kay, and\nI think that since we have Pokémon,\fwe should have just battled, right?\rIs it hard to tell who’s who when you’re\ntalking to both of us on the phone?
+We should have another battle, just\nthe three of us.\rWe’re on {STRVAR_1 4, 3, 0}, so come on\nover when you get the chance.
+Didn’t we make plans to have\nanother battle?\rWe’re waiting on {STRVAR_1 4, 3, 0}, so\ndon’t forget, OK?
+Well, since we’re on the phone, how\nabout we give you a quiz?\r...\rSo, who’s speaking right now? Kay or\nTia?\r...\n...\f...\f...\fThe correct answer is...\rEleanor from the Pokémon Fan club,\nwho’s standing next to the twins!
+Hey, Tia found an Oval Stone.\rWe’ll give it to you if you come find us\non {STRVAR_1 4, 3, 0}. Got it?
+We’re waiting on {STRVAR_1 4, 3, 0}.\nWe’ll give you an Oval Stone...

@@ -280,7 +280,7 @@ ov93_0225F268: ; 0x0225F268
 	mov r0, r0, lsl #0xc
 	mov r2, #0x80000
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 	mov r1, r5, asr #0x1f
 	mov r1, r1, lsl #0xc
 	mov r4, r0
@@ -288,7 +288,7 @@ ov93_0225F268: ; 0x0225F268
 	mov r0, r5, lsl #0xc
 	mov r2, #0x80000
 	mov r3, #0
-	bl _ll_div
+	bl _ll_sdiv
 	mov r5, r0
 	ldr r0, _0225F36C ; =0x00007FFF
 	cmp r4, r0
@@ -436,7 +436,7 @@ ov93_0225F44C: ; 0x0225F44C
 	cmp r0, #0
 	bne _0225F4BC
 	ldr r0, _0225F540 ; =0x0000058F
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	strb r0, [r5, #0x274]
 _0225F4BC:
@@ -587,7 +587,7 @@ _0225F6C0:
 	ldr r0, [sp, #0xc]
 	mov r1, #0x40000
 	sub r0, r0, r5
-	bl sub_020CD5DC
+	bl FX_Atan2Idx
 	add r1, r0, #0x8000
 	mov r1, r1, lsl #0x10
 	mov fp, r1, lsr #0x10
@@ -596,7 +596,7 @@ _0225F6E0:
 	ldr r0, [sp, #0xc]
 	mov r1, #0x40000
 	sub r0, r0, r5
-	bl sub_020CD5DC
+	bl FX_Atan2Idx
 	add r1, r0, #0x8000
 	mov r1, r1, lsl #0x10
 	mov fp, r1, lsr #0x10
@@ -606,7 +606,7 @@ _0225F700:
 	mov r1, #0x40000
 	sub r0, r0, r5
 	rsb r1, r1, #0
-	bl sub_020CD5DC
+	bl FX_Atan2Idx
 	mov fp, r0
 	add r0, fp, #0x8000
 	mov r0, r0, lsl #0x10
@@ -803,7 +803,7 @@ ov93_0225F9AC: ; 0x0225F9AC
 	mov r0, r3
 	mov r3, #0
 	mov r2, #0x3200000
-	bl _ll_div
+	bl _ll_sdiv
 	ldmia sp!, {r3, pc}
 	arm_func_end ov93_0225F9AC
 

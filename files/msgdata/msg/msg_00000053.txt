@@ -1,0 +1,26 @@
+Blaine: Hey, you!\rMy Gym on Cinnabar Island was burned\ndown by the eruption!\rBut I will not give up!\nTake a look at this cave.\rWe have turned it into a Gym, and I am\nstill acting as a Gym Leader!\rI will give you the Gym Badge\nif you manage to defeat me!\rAre you ready? Here we go!\r
+Blaine: Awesome. I have burned out...\fTake this Volcano Badge!\r
+{STRVAR_1 3, 0, 0} received\nthe Volcano Badge from Blaine!
+Blaine: Here, I will give you this, too.\nIt’s called Overheat!\rIt has a slight drawback, but it’s\npowerful and well worth it!\r
+Blaine: I did lose this time, but I’m\ngoing to win next time.\rWhen I rebuild my Cinnabar Gym,\nwe have to hold a rematch.
+Blaine: My Fire-type Pokémon will be\neven stronger! Just you watch!
+Wow, to see a Gym in a cave like this?\nI’d love to explore it.\r
+Bitterness leads to improvement\ntomorrow.
+Bitterness leads to improvement\ntomorrow.\r
+I am in the middle of collecting\nbattle records.\rCan you help me?\r
+I didn’t expect you to be so good!\nWho in the world are you?
+I didn’t expect you to be so good!\nWho in the world are you?\r
+Ooh!\nYou look easily defeated!\r
+Pardon me!\nI failed to sense how strong you are.
+Pardon me!\nI failed to sense how strong you are.\r
+A white lab coat is a researcher’s life.\nWe may be living in a cave like this, but\fwe never forget to do the laundry.\r
+This white lab coat makes me feel like I\nhave become smarter for some reason.
+This white lab coat makes me feel like I\nhave become smarter for some reason.\r
+Blaine may have lost his Gym, but he\nnever gives up. His perseverance\fis what motivates me!\r
+Together with Blaine, we will rebuild\nour Gym!
+Together with Blaine, we will rebuild\nour Gym!\r
+We lost the Gym on Cinnabar Island and\nfelt lost before we came here.\r
+We take a step back when we are\ndefeated...\rDon’t you think we are downright\nhonest?\rNever put us in the same category as\nScientists who help bad guys.
+We take a step back when we are\ndefeated...\rDon’t you think we are downright\nhonest?\rNever put us in the same category as\nScientists who help bad guys.\r
+Yo! Legend in the making!\rThis Gym has many Trainers and rocks\nin the way from the rebuilding.\fIt sure won’t be easy to get to Blaine!\rBut keep your cool and defeat the\nTrainers one by one, and you will surely\ffind the path!
+The Gym Leader rebuilding his Gym and\nthe Trainer from Johto who has come to\fchallenge that Gym Leader...\rI have witnessed a hot battle!

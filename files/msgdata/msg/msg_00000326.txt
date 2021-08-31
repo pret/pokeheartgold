@@ -1,0 +1,6 @@
+Mt. Moon ahead.\rMt. Moon Square is on\nthe way to the top!
+Never seen a stone like this before!\rCould it be...\na meteorite from space?
+Touching the meteorite boosted\nthe Speed of a certain Pokémon.
+Touching the meteorite heightened\nthe defensive capabilities of\fa certain Pokémon.
+Touching the meteorite heightened\nthe offensive capabilities of\fa certain Pokémon.
+Touching the meteorite balanced out\nthe attributes of a certain Pokémon.

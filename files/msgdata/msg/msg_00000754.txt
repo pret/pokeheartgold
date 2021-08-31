@@ -1,0 +1,4 @@
+{STRVAR_1 3, 0, 0}
+EXIT
+Do you want to stop playing with the\nFootprint Stamp?
+The Footprint Stamp is now closed.

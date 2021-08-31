@@ -1,0 +1,15 @@
+Chuck
+Huh? Wha...? I can’t hear you.\nMaybe we’ve got a bad connection.\rGo somewhere else and try\ncalling again!
+Hello?!\nOh, hey, sorry for shouting!\rI’m doing great!\r
+You know there’re some stronger\nGym Leaders around.\fDon’t lose heart! Keep going!
+Let’s see... I’m free most Wednesday\nnights. Give me a call then, OK?
+Oh hey! I just finished training.\nDo you want to battle again? {YESNO 0}
+All right!\rI’ll be waiting over at the Fighting Dojo\nin Saffron City!
+Noooooo!\nThat’s terrible!
+Hmm... You’re just battling me, right?\nDon’t you have other plans?
+I’ll be waiting at the Fighting Dojo in\nSaffron City.\fLook forward to it!
+Yo! Chuck here!\nWhat’s up?\r
+Hey, didn’t we make plans to meet at\nthe Fighting Dojo in Saffron City?\fDon’t tell me you forgot?\fCome on, man! I’m waiting!
+You know, I spend a lot of time training\nunder a pounding waterfall every day.\rI guess that’s why I’ve been\ndisagreeing with my wife a lot lately.\rI was thinking of taking her on a trip as\nan apology, but I can’t think of any\fgood places to go.\r...That’s it!\rI should take her to Tohjo Falls! What\ndo you think?
+You know, I’m just going to say this\nonce, but I...\rI really like sweets. They’re the best.\rAfter training every day, the thing\nthat I absolutely look forward to more\fthan anything is sneaking behind my\fwife’s back to eat something sweet.\rFortunately, I haven’t been packing on\ntoo many pounds...\rOh! Don’t tell my wife! Please!
+Lately my Gym’s waterfall device has\nbeen malfunction... Aaaaahh!\rBoomwhooshoowhooshoowhoosh\foowhooshoowhooshoowhoosh\foowhooshoowhooshoowhoosh...!\r...Haa haaa haaaaa. Sorry.\nWhile I was on the phone with you, the\fdevice broke and I just got doused\fwith water.\rI’ll call you back once things have\ncalmed down a bit here!

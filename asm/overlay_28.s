@@ -286,39 +286,39 @@ ov28_0225D764: ; 0x0225D764
 	mov r1, #0x1b
 	mov r2, #0xc4
 	mov r3, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r1, #0x11
 	add r4, r0, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x69
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #0x12
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x1a
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #0x16
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #0x17
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #0x15
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x1b
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov28_0225D764
@@ -332,7 +332,7 @@ ov28_0225D7C4: ; 0x0225D7C4
 	lsl r6, r6, #4
 _0225D7CE:
 	ldr r0, [r5, r6]
-	bl sub_02026380
+	bl String_dtor
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -360,10 +360,10 @@ _0225D7FC:
 	ldr r0, [r7, #0x10]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xff
@@ -421,7 +421,7 @@ ov28_0225D878: ; 0x0225D878
 	add r5, r0, r1
 _0225D882:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #5
@@ -1168,24 +1168,24 @@ ov28_0225DE04: ; 0x0225DE04
 ov28_0225DE64: ; 0x0225DE64
 	add r2, r0, #0
 	sub r1, #0x64
-	ldr r3, _0225DE74 ; =sub_020CD5DC
+	ldr r3, _0225DE74 ; =FX_Atan2Idx
 	sub r2, #0x54
 	lsl r0, r1, #0xc
 	lsl r1, r2, #0xc
 	bx r3
 	nop
-_0225DE74: .word sub_020CD5DC
+_0225DE74: .word FX_Atan2Idx
 	thumb_func_end ov28_0225DE64
 
 	thumb_func_start ov28_0225DE78
 ov28_0225DE78: ; 0x0225DE78
-	ldr r3, _0225DE84 ; =sub_020CD5DC
+	ldr r3, _0225DE84 ; =FX_Atan2Idx
 	add r2, r0, #0
 	lsl r0, r1, #0xc
 	lsl r1, r2, #0xc
 	bx r3
 	nop
-_0225DE84: .word sub_020CD5DC
+_0225DE84: .word FX_Atan2Idx
 	thumb_func_end ov28_0225DE78
 
 	thumb_func_start ov28_0225DE88
@@ -2277,7 +2277,7 @@ _0225E6A2:
 	ldr r2, _0225E728 ; =0x00001001
 	mov r1, #6
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	b _0225E6F6
 _0225E6CC:
 	mov r1, #0xa
@@ -2298,7 +2298,7 @@ _0225E6CC:
 	ldr r0, [r6, #0x10]
 	mov r1, #6
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 _0225E6F6:
 	add r0, r5, #1
 	lsl r0, r0, #0x10
@@ -2320,7 +2320,7 @@ _0225E702:
 _0225E716:
 	ldr r0, [r6, #0x10]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

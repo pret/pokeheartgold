@@ -1,0 +1,46 @@
+Welcome to the Pal Park!\rThis is where top-notch Trainers who\naren’t satisfied with the Safari Zone\fcome to show their Pokémon-catching\ftechniques to their peers.\r...Oh?\rAre you maybe...\nAh, you are {STRVAR_1 3, 0, 0}!\rMy dad told me about you!\nWord is, you’re a hotshot Trainer!\rWe’d be honored if you would\nparticipate in our Catching Shows. {YESNO 0}
+Welcome to the Pal Park!\rThis is where top-notch Trainers who\naren’t satisfied with the Safari Zone\fcome to show their Pokémon-catching\ftechniques to their peers.\r...Oh?\rAre you maybe...\nAh, you are {STRVAR_1 3, 0, 0}!\rMy dad told me about you!\nWord is, you’re a hotshot Trainer!\rWe’d be honored if you would\nparticipate in our Catching Shows. {YESNO 0}
+Yes! You agreed to participate!\nLet’s not waste any time!\rLet me explain how Pal Park works.\nWhat should I explain? {YESNO 0}
+Pal Park is a place where you are\ntimed on the catching of six Pokémon.\rYou are provided with six special\nPoké Balls for the challenge.\rParticipating Trainers are required to\nsupply the six Pokémon that are to\fbe caught.\rIf you do not supply the stock of six\nPokémon, you may not participate in\fthe Catching Show.\r...Would you like to know\nanything else? {YESNO 0}
+At the start of the Catching Show,\nyou will be given six Park Balls.\rUse the Park Balls to catch the\nsix Pokémon you provide.\r...Would you like to know\nanything else? {YESNO 0}
+Insert a Game Boy Advance Pokémon\nRuby, Sapphire, Emerald, FireRed,\for LeafGreen in the Game Pak slot.\rSix of the currently caught Pokémon\ncan migrate from the Game Pak to the\fDS Game Card when your DS is turned on\fand you select “MIGRATE FROM...”\rPlease note that you cannot insert a\nGBA Game Pak into a Nintendo DSi\fto migrate.\r...Would you like to know\nanything else? {YESNO 0}
+Would you like to take part in\na Catching Show now? {YESNO 0}
+Aww, that’s too bad.\rWell, just give me a shout again\nif you’d like to participate.
+Hi there, {STRVAR_1 3, 0, 0}!\rDid you come to participate in\na Catching Show? {YESNO 0}
+Hi there, {STRVAR_1 3, 0, 0}!\rDid you come to participate in\na Catching Show? {YESNO 0}
+OK, here are your Park Balls!\r{STRVAR_1 3, 0, 0} received\nsix Park Balls.\rThe current record holder is\n{STRVAR_1 3, 1, 0} with {STRVAR_1 53, 2, 0} points.\rOK, off you go, {STRVAR_1 3, 0, 0}.\rDazzle us with a masterful display\nof Pokémon catching!\r
+OK, here are your Park Balls!\r{STRVAR_1 3, 0, 0} received\nsix Park Balls.\rThe current record holder is\n{STRVAR_1 3, 1, 0} with {STRVAR_1 53, 2, 0} points.\rOK, off you go, {STRVAR_1 3, 0, 0}.\rDazzle us with a masterful display\nof Pokémon catching!\r
+Oh, hold on. You don’t have enough\nPokémon for a Catching Show.\rYou’ll need to stock us with six\nPokémon to participate.\rYou should make some Pokémon migrate\nfrom Hoenn or another region!
+Yes! You agreed to participate!\nLet’s not waste any time!\rLet me explain how Pal Park works.\nWhat should I explain? {YESNO 0}
+I’m sorry you had to retire.\nI’ll take what Park Balls you\fhave left.\rNext time, please do stay to catch\nall six Pokémon.
+Oh, your PC Boxes are filled. You\nhave no room for six more Pokémon.\rYou won’t be able to accept them,\neven if you do catch them.\rMake enough room in a PC Box and\ncome back for your Catching Show.
+Congratulations!\nThat’s all six Pokémon caught!\rThe audience sure enjoyed watching\nyour Catching Show.\rAll right, let’s see your all-important\nscore from this show!\r...\n...\rCatching Points: {STRVAR_1 53, 0, 0}!\rTime Points: {STRVAR_1 53, 1, 0}!\rType Points: {STRVAR_1 53, 2, 0}!\rThe total is...\r...\n...\r{STRVAR_1 53, 3, 0} points!\r
+Wow! That’s an outstanding record!\nKudos to you!\r
+Good! That’s a decent record.\nProps to you!\r
+Would you like to put all caught\nPokémon in PC Boxes? {YESNO 0}
+Done!\nYour Pokémon have been boxed away.\rYou’ll now have to save the game.\r
+Oh, then it might be fun for you to\ngo for an even better score by\ftrying to catch these six again.\rIf you want to do another Catching\nShow, just come see us!
+If you want to do another Catching\nShow, come see us again, please!\r
+It’s time for your prize!\nHere you are!\r
+Do another Catching Show\nwith the same Pokémon? {YESNO 0}
+The current record holder is\n{STRVAR_1 3, 1, 0} with {STRVAR_1 53, 2, 0} points.\fCan you top that?
+Oh! You’ve topped 2,000 points!\nYou’ve earned this, then!\r
+Keep working on getting a higher\nscore!
+Oh! You’ve topped 2,500 points!\nYou’ve earned this, then!\r
+Oh! You’ve topped 3,000 points!\nYou’ve earned this, then!\r
+Oh! You’ve earned 3,500 points!\nYou’ve earned this, then!\r
+You’ve set an incredible record!\nThere’s nothing left to say!
+Your Bag is full.\nYou should come back later.
+I’ve heard Trainers complain that\nrare Pokémon take longer to appear.\rIs it easier to start with common\nPokémon?
+Oh, me?\nNo, I never catch Pokémon myself.\fBut I enjoy Catching Shows a lot.\rI love to see Johto and Hoenn Pokémon,\nespecially.\rThe regions I’ve never been to\nare so mysterious.
+I feel so happy that I’d like to share\nmy happiness with you today.\rI must crown you with this...\nCrown.\rOh, before you get the wrong idea,\nit’s an Accessory for Pokémon.\r
+I feel so happy that I’d like to share\nmy happiness with you today.\rI feel compelled to give you this\nTiara.\rOh, before you get the wrong idea,\nit’s an Accessory for Pokémon.\r
+I feel so happy that I’d like to share\nmy happiness with you today.\rI wish you would take this\n“Seafloor” Backdrop.\rPlease try using it when dressing up\nyour Pokémon with Accessories.\r
+I feel so happy that I’d like to share\nmy happiness with you today.\rI wish you would take this\n“Underground” Backdrop.\rPlease try using it when dressing up\nyour Pokémon with Accessories.\r
+I feel so happy that I’d like to share\nmy happiness with you today.\rI wish you would take this\n“Sky” Backdrop.\rPlease try using it when dressing up\nyour Pokémon with Accessories.\r
+Not only is there the Pokéathlon and\nthe Safari Zone, but also the\fBattle Frontier and the Pal Park...\rPeople other than me are working\nso hard... How dreamy...\fThis region sets my heart aflutter.
+I came to see {STRVAR_1 3, 0, 0}’s\nCatching Show...\rWow, {STRVAR_1 3, 0, 0}! Are you for real?
+Hi, {STRVAR_1 3, 0, 0}!\nYour Catching Show was awesome!\fI’ll become a Trainer like you!
+{STRVAR_1 3, 0, 0},\nthere’s always a next time!
+My son is a big fan of yours,\n{STRVAR_1 3, 0, 0}.\fAre you...that famous?
+If you want to see rare Pokémon,\nCatching Shows at the Pal Park are\fthe best!

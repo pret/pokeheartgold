@@ -529,7 +529,7 @@ ov117_0225F420: ; 0x0225F420
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
 	ldr r0, [r0, #8]
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov117_0225F420
@@ -543,37 +543,37 @@ ov117_0225F470: ; 0x0225F470
 	mov r1, #0x1b
 	mov r2, #0xbd
 	add r3, r5, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	add r7, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200C37C
+	bl BufferTrainerName
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov117_0225F470
@@ -797,7 +797,7 @@ _0225F560:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r6, #4]
 	add r1, r7, #0
 	bl ov117_0225F470
@@ -815,7 +815,7 @@ _0225F560:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -1259,7 +1259,7 @@ _0225FA30:
 	mov r0, #0x66
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0

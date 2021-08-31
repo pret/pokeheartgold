@@ -1,0 +1,7 @@
+Celadon Condominiums\nThis elevator goes straight to\fthe roof.\rWill you go to the roof? {YESNO 0}
+Celadon Condominiums\nThis elevator goes straight to the\fsecond floor.\rWill you go to the second floor? {YESNO 0}
+Please come again.
+Going up to the roof.\r
+Going down to the second floor.\r
+You’ve arrived at the roof.\r
+You’ve arrived at the second floor.\r

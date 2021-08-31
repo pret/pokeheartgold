@@ -1,0 +1,4 @@
+A sleeping Pokémon is lying in the\nmiddle of the road.\rIt’s a fantastic opportunity to get it,\nbut how do you wake it up?
+There used to be a sleeping Pokémon\nlying in the middle of the road.\fBut it seems to have disappeared.
+The Fast Ship is a great place to\nmeet and battle Trainers.
+Oh? You have some Badges I’ve never\nseen before.\rOh, I get it. You got them in Johto.

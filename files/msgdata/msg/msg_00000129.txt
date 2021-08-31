@@ -1,0 +1,34 @@
+Wait!\r
+Clair: I’m sorry about this.\nHere, take this as my apology.\r
+                           
+That contains Dragon Pulse.\rWell, Dragon Pulse is a kind of er...\nnever mind!\rIt’s huge energy of some kind.\nIf you don’t want it, you don’t\fhave to take it.\r
+Oh? You don’t have any room for this.\rI’m going back to the Gym, so make\nroom, then come see me there.\r
+What’s the matter?\nIf you are headed to the Pokémon\fLeague, go back to New Bark Town\fand Surf along Route 27.\rYour face...is telling me you have\nsome unfinished business...\rCome on!\rWhatever you have to face from now,\ndon’t you dare give up!\rIf you do, I’ll feel even worse\nabout having lost to you!\fGive it your all.\r
+Dragon Shrine\rA shrine revering the Dragon Pokémon\nsaid to have lived in Dragon’s Den.
+{STRVAR_1 3, 1, 0}: ...\nWhat? {STRVAR_1 3, 0, 0}?\rYeah, I am training my Pokémon here.\nYou can laugh at me now...\rBut it needs to be done.\nMy Pokémon aren’t ready to beat you.\fI can’t push them too hard now.\rI have to be disciplined to become\nthe greatest Pokémon Trainer...
+{STRVAR_1 3, 1, 0}: ...\rWhew...\rLearn to stay out\nof my way...
+Clair: It’s still early, and you’ve got\nnothing to do already?\rI may have time to listen to you.\nIf you insist, I can exchange\fnumbers, too! {YESNO 0}
+{STRVAR_1 3, 0, 0} registered Clair\nin the Pokégear!
+Clair: I can battle you on Friday\nnights if you insist!
+Clair: ...
+Clair: So you do want to\nexchange numbers? {YESNO 0}
+{STRVAR_1 3, 1, 0}: ...What?\nAre you here to make fun of\fmy training?\rHumph!\nI took my time coming all the way here,\rbut the Master won’t tell me anything,\nand he’s making a big deal out of it...\rSo I decided to train my Pokémon\nhere instead.\r
+Lance: Hi, {STRVAR_1 3, 0, 0}!\nAnd...you.\fWe met at the Team Rocket hideout.\r
+Lance: Hi, {STRVAR_1 3, 0, 0}!\nAnd...you.\fWe met at the Team Rocket hideout.\r
+{STRVAR_1 3, 1, 0}: You!\nWhere have you been all this time?\rPrepare to lose to me this time.\nI challenge you!\r
+Lance: Calm down.\nI was in a bit of a hurry then.\rSorry for that.\nBut...I always welcome challengers!\rHey!\nHow about a Double Battle?\r
+{STRVAR_1 3, 1, 0}: Humph!\nYou can’t beat me one-on-one, can you?\r
+Lance: Come on.\nA Double Battle is really not bad.\f{STRVAR_1 3, 0, 0}, you’ll be on my side!\r
+Lance: Come on.\nA Double Battle is really not bad.\f{STRVAR_1 3, 0, 0}, you’ll be on my side!\r
+Clair: Well then, you over there!\nWill you team up with me?\r
+{STRVAR_1 3, 1, 0}: You must be kidding!\rThat embarrassing one in the weird\ncostume for me?\fNo way I can battle with her!\r
+{STRVAR_1 3, 0, 0}!\nCome to my side!\fWe’ll beat Lance together!\r
+Lance: Just as I expected.\nYou two make quite a team...\rGoing solo is certainly one way to aim\nfor the top...\rBut that’s not all there is to Pokémon\nbattle. Although I don’t feel it’s\fnecessary to remind you guys.\rSee you, {STRVAR_1 3, 0, 0},\nanother time!\r
+Lance: Just as I expected.\nYou two make quite a team...\rGoing solo is certainly one way to aim\nfor the top...\rBut that’s not all there is to Pokémon\nbattle. Although I don’t feel it’s\fnecessary to remind you guys.\rSee you, {STRVAR_1 3, 0, 0},\nanother time!\r
+Clair: I must excuse myself.\r...{STRVAR_1 3, 0, 0}, it was a fun battle.\rThat goes for you, too, wise guy.\r
+{STRVAR_1 3, 1, 0}: {STRVAR_1 3, 0, 0}...\rIt wasn’t supposed to go this way...\nAnyway, I am not giving up beating you!\rI’ll train my Pokémon and...my own\nheart, too.\rI’ll come back as the toughest\nchallenge for you!\r
+Clair: You...\nseem desperate to take pictures\fwith me. {YESNO 0}
+Clair: Are you ready?\r
+Clair: Excellent one of me!\nAnother cool picture.
+Clair: That’s too bad.
+Your Photo Album is full.\rAccess your PC and delete\nsome pictures.\n

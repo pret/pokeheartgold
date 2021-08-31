@@ -11,11 +11,51 @@ Static main
 	Object main.o
 	Object list_menu.o
 	Object unk_02001AF4.o
+	Object string_util.o
+	Object render_text.o
+	Object font.o
+	Object palette.o
+	Object sound.o
+	Object unk_02004A44.o
+	Object unk_02005D10.o
+	Object sound_chatot.o
 	Object poke_overlay.o
 	Object unk_02007200.o
 	Object overlay_manager.o
 	Object filesystem.o
-	Object unk_020078F0.o
+	Object gf_gfx_loader.o
+	Object unk_02007FD8.o
+	Object unk_02009D48.o
+	Object unk_0200A090.o
+	Object unk_0200B150.o
+	Object msgdata.o
+	Object script_buffers.o
+	Object unk_0200CE7C.o
+	Object unk_0200CF18.o
+	Object unk_0200E320.o
+	Object unk_0200E398.o
+	Object unk_0200FA24.o
+	Object unk_0201010C.o
+	Object unk_02012DD8.o
+	Object unk_02013534.o
+	Object unk_02013FDC.o
+	Object gf_rtc.o
+	Object list_menu_items.o
+	Object unk_02014A08.o
+	Object unk_02014DA0.o
+	Object mail_message.o
+	Object unk_02015A9C.o
+	Object unk_02015D14.o
+	Object unk_02015DD8.o
+	Object unk_020163E0.o
+	Object unk_0201660C.o
+	Object unk_02016EDC.o
+	Object unk_02017FAC.o
+	Object unk_02018000.o
+	Object game_init.o
+	Object heap.o
+	Object bg_window.o
+	Object unk_0201F4C4.o
 	Object error_handling.o
 	Object unk_02025534.o
 	### Vendor libraries ###

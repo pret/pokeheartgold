@@ -1,0 +1,12 @@
+Welcome!\rFeel free to look around anywhere\non this floor.
+Sorry, but you can only tour the\nground floor.\rEver since Johto’s Radio Tower was\ntaken over by a criminal gang,\fwe have had to step up our security.
+Many people are hard at work here\nin the Radio Tower.\rThey must be doing their best to put\non good shows.
+Oh, no, no, no!\rWe’ve been off the air ever since the\nPower Plant shut down.\rAll my efforts to start this station\nwould be wasted if I can’t broadcast.\fI’ll be ruined!
+Ah! So you’re the {STRVAR_1 3, 0, 0} who\nsolved the Power Plant’s problem?\rThanks to you, I never lost my job.\nI tell you, you’re a real lifesaver!\fPlease take this as my thanks.\r
+Ah! So you’re the {STRVAR_1 3, 0, 0} who\nsolved the Power Plant’s problem?\rThanks to you, I never lost my job.\nI tell you, you’re a real lifesaver!\fPlease take this as my thanks.\r
+The Director loaded the EXPN Card\non {STRVAR_1 3, 0, 0}’s Pokégear!\r{STRVAR_1 3, 0, 0}’s Pokégear has been\nupgraded!
+With that thing, you can tune in to\neven more radio programs here in\fKanto.\fGahahahaha!
+Hey there!\nI am the super Music Director!\rHuh? Your Pokégear can’t tune in to my\nmusic shows.\rHow unfortunate!\rIf you upgrade it with the EXPN Card,\nyou can tune in.\fYou’d better get one!
+Hey there!\nI am the super Music Director!\rI’m responsible for the gorgeous\nmelodies that go out over the air.\rDon’t be square. Grab your music\noff the air!
+1F Reception\n2F Sales\f3F Personnel\f4F Production\f5F Director’s Office\n
+Perk Up Pokémon with Mellow Sounds\nof the Poké Flute.\rThe Poké Flute broadcast is only\navailable around the Kanto region.\rTry to tune in around the upper area\nof the radio!

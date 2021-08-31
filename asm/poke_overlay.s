@@ -1,6 +1,15 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D0DF0:
+	.space 0x40
+_021D0E30:
+	.space 0x40
+_021D0E70:
+	.space 0x40
+
 	.text
 
 	thumb_func_start FreeOverlayAllocation
@@ -265,18 +274,18 @@ GetLoadedOverlaysInRegion: ; 0x02007124
 	cmp r0, #2
 	beq _02007138
 _02007130:
-	ldr r0, _0200713C ; =0x021D0DF0
+	ldr r0, _0200713C ; =_021D0DF0
 	bx lr
 _02007134:
-	ldr r0, _02007140 ; =0x021D0E30
+	ldr r0, _02007140 ; =_021D0E30
 	bx lr
 _02007138:
-	ldr r0, _02007144 ; =0x021D0E70
+	ldr r0, _02007144 ; =_021D0E70
 	bx lr
 	.balign 4, 0
-_0200713C: .word 0x021D0DF0
-_02007140: .word 0x021D0E30
-_02007144: .word 0x021D0E70
+_0200713C: .word _021D0DF0
+_02007140: .word _021D0E30
+_02007144: .word _021D0E70
 	thumb_func_end GetLoadedOverlaysInRegion
 
 	thumb_func_start GetOverlayRamBounds

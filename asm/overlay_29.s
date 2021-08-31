@@ -258,7 +258,7 @@ ov29_0225D714: ; 0x0225D714
 	mov r1, #0x1b
 	mov r2, #0xc4
 	mov r3, #8
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x18]
 	mov r0, #4
 	mov r1, #8
@@ -276,17 +276,17 @@ _0225D73A:
 	ldr r0, [r0]
 	add r1, r5, r4
 	add r2, r2, r3
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r5, r4
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r1, r6, #0
 	ldr r0, [sp, #0x18]
 	add r1, #0x18
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r7, r0, #0
 	add r0, r5, r4
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r1, r0, #3
 	lsr r0, r1, #0x1f
 	add r0, r1, r0
@@ -315,7 +315,7 @@ _0225D73A:
 	add r0, r5, r4
 	bl sub_020200FC
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, r4
 	bl sub_0201D8A0
 	add r0, r5, r4
@@ -328,7 +328,7 @@ _0225D73A:
 	mov r0, #4
 	bl sub_02002DB4
 	ldr r0, [sp, #0x18]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -345,7 +345,7 @@ ov29_0225D7D4: ; 0x0225D7D4
 	add r5, r0, r1
 _0225D7DE:
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #3
@@ -1036,7 +1036,7 @@ _0225DCEA:
 	lsr r3, r3, #0x18
 	bl ov29_0225E028
 	ldr r0, _0225DEAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225DE98
 _0225DD42:
 	ldr r0, _0225DEB0 ; =0x021D110C
@@ -1053,7 +1053,7 @@ _0225DD42:
 	mov r1, #0xb
 	bl ov29_0225DB9C
 	ldr r0, _0225DEAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225DE98
 _0225DD68:
 	mov r0, #2
@@ -1064,7 +1064,7 @@ _0225DD68:
 	cmp r0, #1
 	bne _0225DD90
 	ldr r0, _0225DEAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225DE98
 _0225DD80:
 	mov r0, #0x1d
@@ -1126,7 +1126,7 @@ _0225DDB8:
 	mov r3, #0
 	bl ov29_0225E078
 	ldr r0, _0225DEAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225DE98
 _0225DE00:
 	mov r0, #0
@@ -1141,7 +1141,7 @@ _0225DE00:
 	mvn r1, r1
 	bl ov29_0225DEB8
 	ldr r0, _0225DEAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225DE98
 _0225DE22:
 	add r0, r4, #0
@@ -1161,7 +1161,7 @@ _0225DE22:
 	add r3, r1, #0
 	bl ov29_0225E028
 	ldr r0, _0225DEAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225DE98
 _0225DE4E:
 	str r1, [r2, #4]
@@ -1173,7 +1173,7 @@ _0225DE4E:
 	add r3, r1, #0
 	bl ov29_0225E028
 	ldr r0, _0225DEAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225DE98
 _0225DE68:
 	ldr r0, [r4, #0x10]
@@ -1187,7 +1187,7 @@ _0225DE68:
 	mov r3, #3
 	bl ov29_0225E028
 	ldr r0, _0225DEAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	b _0225DE98
 _0225DE86:
 	add r0, r4, #0
@@ -1312,7 +1312,7 @@ _0225DF3E:
 	ldr r0, [r4]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x19
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0xc
 	pop {r3, r4, pc}
 	thumb_func_end ov29_0225DF18

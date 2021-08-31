@@ -1,0 +1,12 @@
+Kenny
+The same opponent, the same Pokémon,\nbut the battle results are different\fevery time!\rI’d like to battle with you again.\nLet’s trade phone numbers!{YESNO 0}
+Once I’ve gotten ready, I’ll give you\na call!
+I see... Well, that’s fine by me.\nI’ve always got my mountain!
+I’d like to battle with you again.\nLet’s exchange numbers! {YESNO 0}
+That’s strange...\nI can hear your voice so clearly...\rWait, you’re nearby, aren’t you!\nLet’s talk in person!
+Pokémon easily develop an affection for\nus nature-loving Hikers!\rNo, no, it’s not just my imagination!\nI’ve got proof! Seriously, my\f{STRVAR_1 0, 10, 0} never disobeys me!
+Hey, listen up!\rYesterday, I ran into a wild\n{STRVAR_1 0, 11, 0}! Just out in nature!\rOf course, my Pokémon were in top form\nfor the battle. It was great.\fIt all happened so naturally!\rHow do I describe this wonderful\nfeeling... How do I put it into words?\fWell, for now, how about...\rHOOOORAY!
+A few days ago, while I was hiking in the\nmountains, a wild {STRVAR_1 0, 11, 0}\fsuddenly jumped out at me.\rI was completely unprepared for the\nexperience, and it ran away.\rIt’s said we Hikers stake our life on\nbeing prepared for anything, so I have\fto count this as a failure as a Hiker!
+We absolutely must have another \nbattle together!\fThat’s why we’re speaking right now!\rAm I right? I hope I am!\nI’ll be waiting on {STRVAR_1 4, 3, 0}!
+We’re having a battle on\n{STRVAR_1 4, 3, 0}, remember. I’m out\fhere, waiting in the midst of nature!
+That’s right... I’m up on this mountain\nalmost the whole year round...\rBaths?\rThere’s no such thing on a mountain!\rInstead, I just look for a flowing\nriver, and wash myself off in that.\rThat’s right! A few days ago, when\nI was bathing in the river, someone\fmistook me for a Swimmer♂!

@@ -176,37 +176,37 @@ ov115_0225F158: ; 0x0225F158
 	mov r1, #0x1b
 	mov r2, #0xbd
 	add r3, r5, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	add r7, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200C37C
+	bl BufferTrainerName
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov115_0225F158
@@ -220,37 +220,37 @@ ov115_0225F1BC: ; 0x0225F1BC
 	mov r1, #0x1b
 	mov r2, #0xbd
 	add r3, r5, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	add r7, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BE6C
+	bl BufferRivalsName
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add r0, r4, #0
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov115_0225F1BC
@@ -333,7 +333,7 @@ _0225F260:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrh r0, [r6, #8]
 	cmp r0, #0x17
 	bne _0225F2D4
@@ -362,7 +362,7 @@ _0225F2DE:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	ldr r0, [sp, #0x14]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #8
@@ -789,7 +789,7 @@ _0225F650:
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1192,7 +1192,7 @@ ov115_0225F968: ; 0x0225F968
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl sub_02028E9C
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov115_0225F968
@@ -1641,7 +1641,7 @@ _0225FC0E:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0x14]
 	ldrh r0, [r0, #6]
@@ -1660,7 +1660,7 @@ _0225FC0E:
 	str r1, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #3
 	str r0, [r6, #4]
 	ldr r0, [r6]
@@ -2194,7 +2194,7 @@ _022601BA:
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r7, #0x9a
 	mov r6, #0
 	add r5, r4, #0
@@ -2272,7 +2272,7 @@ ov115_02260254: ; 0x02260254
 	add r1, r6, #0
 	add r2, sp, #8
 	add r3, r5, #0
-	bl sub_020079F4
+	bl GfGfxLoader_GetPlttData
 	add r5, r0, #0
 	add r0, sp, #0x10
 	ldrh r0, [r0, #0x10]
@@ -2295,7 +2295,7 @@ ov115_02260254: ; 0x02260254
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x20
-	bl sub_020CFD18
+	bl GX_LoadOBJPltt
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0

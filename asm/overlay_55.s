@@ -42,14 +42,14 @@ ov55_021E5924: ; 0x021E5924
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r1, #0x28
 	str r1, [r4]
 	ldr r0, [r5, #0x14]
 	bl ov55_021E5B08
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0x10]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #4]
 	ldrh r0, [r5]
@@ -183,7 +183,7 @@ _021E5A40:
 	add r1, #0x1e
 	lsl r0, r0, #3
 	add r0, r1, r0
-	bl sub_02015920
+	bl MailMsg_IsInit
 	cmp r0, #0
 	beq _021E5A7C
 	ldr r1, [r4, #0x10]
@@ -194,13 +194,13 @@ _021E5A40:
 	add r0, #0x14
 	lsl r1, r1, #3
 	add r1, r2, r1
-	bl sub_02015A24
+	bl MailMsg_copy
 	b _021E5A86
 _021E5A7C:
 	add r0, r4, #0
 	add r0, #0x14
 	mov r1, #3
-	bl sub_02015834
+	bl MailMsg_init_withBank
 _021E5A86:
 	add r1, r4, #0
 	ldr r0, [r4, #8]
@@ -274,7 +274,7 @@ ov55_021E5B08: ; 0x021E5B08
 	mov r1, #0
 	mov r2, #0x38
 	add r6, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0
 	strh r0, [r6]
 	add r0, r4, #0
@@ -282,13 +282,13 @@ ov55_021E5B08: ; 0x021E5B08
 	str r0, [r6, #0xc]
 	mov r0, #8
 	add r1, r5, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r6, #0x14]
 	add r0, r4, #0
 	bl sub_0202B3E8
 	add r1, r0, #0
 	ldr r0, [r6, #0x14]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r4, #0
 	bl sub_0202B3F0
 	strb r0, [r6, #0x13]
@@ -328,7 +328,7 @@ _021E5B8A:
 	add r1, r0, #0
 	lsl r0, r5, #3
 	add r0, r7, r0
-	bl sub_02015A24
+	bl MailMsg_copy
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
@@ -345,7 +345,7 @@ ov55_021E5BAC: ; 0x021E5BAC
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _021E5BBA
-	bl sub_02026380
+	bl String_dtor
 _021E5BBA:
 	add r0, r4, #0
 	bl FreeToHeap

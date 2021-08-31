@@ -1,0 +1,15 @@
+Falkner
+Who? You sound like you’re underwater.\nThis is not a good connection. At all.\rGet another line somewhere else, OK?
+Hello...\nOK, now I can hear you.\fYeah, I’m in top form.\r
+Are there any Gym Leaders you haven’t\nbattled yet?\fStep up! Get on it!
+Let’s see... I’m free Saturday mornings\nusually.\fPlease, give me a call then.
+I was hoping for an invitation!\nWe’re battling again, correct?{YESNO 0}
+Excellent! Glad to hear it.\nI’m looking forward to this.\rI’ll be waiting at the Fighting Dojo in\nSaffron City!
+Sure, sure...\nI know you’ve got a busy schedule...
+I’ve got to say this...\nBefore we battle again, how about you\fkeep any promises you made to\fothers first?
+I’m waiting at the Fighting Dojo in\nSaffron City!\fThat was a promise!
+Hey, this is Falkner.\nHow are you doing?\r
+You know our plans to meet at the\nFighting Dojo in Saffron City?\fThat’s still on your mind, isn’t it?
+My dad told me something when I was\na kid.\rHe said “Falkner, bird Pokémon don’t\njust fly with their wings, they soar\fthrough the sky because that’s what\fthey want to do with all their heart.”\rThat’s just like my dad.
+The scaffolding in my Gym was in bad\nshape when you came to battle, eh?\rEvery year, we give the place a\nthorough scrubbing. It’s a challenge.\rBut the bird Pokémon help us out,\nso we’re able to manage.
+You’ve chatted with Janine in\nFuchsia City, haven’t you?\rAll she ever talks about is her dad,\nyou know? Endlessly.\rI mean, it’s good to have a healthy\nrespect for your dad, but it’s\fbetter to have some self-confidence!\rDon’t you have faith in your\nown abilities?

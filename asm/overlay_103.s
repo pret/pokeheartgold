@@ -19,12 +19,12 @@ ov103_021EC940: ; 0x021EC940
 	mov r1, #0
 	mov r2, #0x2c
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r5, #0
 	bl sub_020072A4
 	str r0, [r4, #8]
 	ldr r0, [r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4]
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
@@ -446,14 +446,14 @@ ov103_021ECC1C: ; 0x021ECC1C
 	add r0, r6, #0
 	add r0, #0xe0
 	mov r2, #0x20
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	mov r0, #0x16
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #4
 	add r0, r6, r0
 	add r1, #0x28
 	mov r2, #0x20
-	bl sub_020D4808
+	bl MIi_CpuCopy32
 	add r0, r7, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -599,19 +599,19 @@ ov103_021ECE18: ; 0x021ECE18
 	mov r1, #0x1b
 	mov r2, #0xe8
 	mov r3, #0x9d
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r1, #0x8a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x9d
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #0x9d
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #0x23
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -630,15 +630,15 @@ ov103_021ECE54: ; 0x021ECE54
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026380
+	bl String_dtor
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov103_021ECE54
@@ -721,7 +721,7 @@ ov103_021ECEEC: ; 0x021ECEEC
 	bl ov103_021ED2B8
 	mov r1, #0x9d
 	add r6, r0, #0
-	bl sub_02014918
+	bl ListMenuItems_ctor
 	mov r1, #0x92
 	lsl r1, r1, #2
 	ldr r2, [r5, #0xc]
@@ -744,7 +744,7 @@ _021ECF28:
 	ldr r1, [r1, r7]
 	add r2, r4, #5
 	add r3, r4, #0
-	bl sub_02014960
+	bl ListMenuItems_AppendFromMsgData
 _021ECF3A:
 	add r0, r4, #1
 	lsl r0, r0, #0x10
@@ -763,7 +763,7 @@ ov103_021ECF48: ; 0x021ECF48
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02014950
+	bl ListMenuItems_dtor
 	mov r0, #9
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #6
@@ -1083,7 +1083,7 @@ _021ED182:
 	lsl r1, r1, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x19
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _021ED1B0:
 	ldrb r0, [r4, #2]
 	add r0, r0, #1
@@ -1134,7 +1134,7 @@ _021ED1E6:
 	lsl r1, r1, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x19
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 _021ED216:
 	mov r0, #0
 	strb r0, [r4, #3]
@@ -1308,7 +1308,7 @@ ov103_021ED314: ; 0x021ED314
 	mov r1, #0
 	lsl r2, r2, #4
 	str r0, [r4, #0xc]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	add r0, r4, #0
 	bl ov103_021ED00C
 	bl ov103_021EC9D8
@@ -1439,7 +1439,7 @@ _021ED49E:
 	cmp r0, #1
 	bne _021ED4B0
 	ldr r0, _021ED4CC ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4, #0x28]
 	pop {r4, pc}
 _021ED4B0:
@@ -1449,7 +1449,7 @@ _021ED4B0:
 	tst r0, r1
 	beq _021ED4C4
 	ldr r0, _021ED4CC ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4, #0x28]
 	pop {r4, pc}
 _021ED4C4:
@@ -1605,7 +1605,7 @@ _021ED5C6:
 	sub r0, r0, #1
 	strh r0, [r4, #0x1c]
 	ldr r0, _021ED740 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0xb
@@ -1624,7 +1624,7 @@ _021ED5E6:
 	add r0, r2, #1
 	strh r0, [r4, #0x1c]
 	ldr r0, _021ED740 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xb
@@ -1705,7 +1705,7 @@ _021ED666:
 	ldrb r0, [r0, r1]
 	strb r0, [r4, #0x1f]
 	ldr r0, _021ED748 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0xc
@@ -1713,7 +1713,7 @@ _021ED666:
 	pop {r3, r4, r5, pc}
 _021ED6A0:
 	ldr r0, _021ED748 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #0xa
@@ -1750,7 +1750,7 @@ _021ED6DC:
 	add r0, r5, #1
 	strh r0, [r4, #0x1c]
 	ldr r0, _021ED740 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xb
@@ -1777,7 +1777,7 @@ _021ED718:
 	sub r0, r0, #1
 	strh r0, [r4, #0x1c]
 	ldr r0, _021ED740 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0xb
@@ -1785,7 +1785,7 @@ _021ED718:
 	pop {r3, r4, r5, pc}
 _021ED734:
 	ldr r0, _021ED740 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 _021ED73A:
 	mov r0, #9
 	pop {r3, r4, r5, pc}
@@ -1991,7 +1991,7 @@ ov103_021ED8D0: ; 0x021ED8D0
 	cmp r0, #1
 	bne _021ED8EE
 	ldr r0, _021ED8F4 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #0x10
@@ -2497,7 +2497,7 @@ ov103_021EDC68: ; 0x021EDC68
 	mov r1, #0
 	mov r2, #0x44
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
 	bl sub_02074904
@@ -3441,7 +3441,7 @@ _021EE3A2:
 	ldr r0, [r1]
 	add r1, #0x48
 	add r1, r1, r5
-	bl sub_0201D4F8
+	bl AddWindow
 	add r6, r6, #1
 	add r4, #8
 	add r5, #0x10
@@ -3462,7 +3462,7 @@ _021EE3C8:
 	ldr r0, [r6, #0xc]
 	add r0, #0x48
 	add r0, r0, r5
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0x1e
@@ -3522,7 +3522,7 @@ ov103_021EE430: ; 0x021EE430
 	add r0, r1, #0
 	add r1, r3, #0
 	add r4, r2, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	ldr r0, [sp, #0x28]
 	add r5, #0x48
@@ -3538,7 +3538,7 @@ ov103_021EE430: ; 0x021EE430
 	add r1, r6, #0
 	bl ov103_021EE3E4
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov103_021EE430
@@ -3565,7 +3565,7 @@ ov103_021EE468: ; 0x021EE468
 	ldr r2, [r5, #0xc]
 	lsl r0, r0, #4
 	ldr r0, [r2, r0]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r4, #0
 	str r4, [sp, #0x1c]
 _021EE49A:
@@ -3585,7 +3585,7 @@ _021EE49A:
 	add r0, r6, r7
 	add r1, #8
 	add r3, r2, #0
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 	mov r0, #8
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3601,7 +3601,7 @@ _021EE49A:
 	add r0, r6, r7
 	add r1, #0x28
 	add r3, r2, #0
-	bl sub_0201D9D8
+	bl BlitBitmapRectToWindow
 	ldr r0, [sp, #0x1c]
 	add r4, #8
 	add r0, r0, #1
@@ -3665,7 +3665,7 @@ ov103_021EE550: ; 0x021EE550
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #0x2c
 	str r1, [sp]
@@ -3691,7 +3691,7 @@ ov103_021EE550: ; 0x021EE550
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #0x18
 	str r1, [sp]
@@ -3719,7 +3719,7 @@ ov103_021EE550: ; 0x021EE550
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #0x18
 	str r1, [sp]
@@ -3785,7 +3785,7 @@ ov103_021EE644: ; 0x021EE644
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r2, #0x8a
 	ldr r3, [r5, #0xc]
 	lsl r2, r2, #2
@@ -3793,7 +3793,7 @@ ov103_021EE644: ; 0x021EE644
 	add r2, #8
 	ldr r2, [r3, r2]
 	mov r1, #2
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r1, #0x6e
 	ldr r2, [r5, #0xc]
 	mov r3, #0
@@ -3826,13 +3826,13 @@ ov103_021EE644: ; 0x021EE644
 	ldr r0, [r2, r0]
 	ldrh r2, [r5, #0x1c]
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x8a
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x8b
 	ldr r2, [r5, #0xc]
 	lsl r1, r1, #2
@@ -3841,9 +3841,9 @@ ov103_021EE644: ; 0x021EE644
 	add r1, r1, #4
 	ldr r1, [r2, r1]
 	add r2, r6, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	mov r1, #0x23
 	ldr r2, [r5, #0xc]
 	lsl r1, r1, #4
@@ -3880,13 +3880,13 @@ ov103_021EE644: ; 0x021EE644
 	add r2, #0xb6
 	ldrh r2, [r6, r2]
 	add r2, r2, #1
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r0, #0x8a
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x8b
 	ldr r2, [r5, #0xc]
 	lsl r1, r1, #2
@@ -3895,9 +3895,9 @@ ov103_021EE644: ; 0x021EE644
 	add r1, r1, #4
 	ldr r1, [r2, r1]
 	add r2, r6, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	mov r1, #0x6e
 	ldr r2, [r5, #0xc]
 	mov r3, #0
@@ -3937,13 +3937,13 @@ ov103_021EE784: ; 0x021EE784
 	ldr r5, [r1, r0]
 	mov r0, #8
 	mov r1, #0x9d
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0202B3E8
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	add r0, r5, #0
 	bl sub_0202B3EC
 	add r3, r0, #0
@@ -3957,9 +3957,9 @@ ov103_021EE784: ; 0x021EE784
 	ldr r0, [r1, r0]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -3975,7 +3975,7 @@ ov103_021EE7DC: ; 0x021EE7DC
 	lsl r6, r6, #2
 	add r0, r4, r6
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5]
 	bl sub_0202AD3C
 	mov r3, #0
@@ -4012,7 +4012,7 @@ ov103_021EE824: ; 0x021EE824
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #9
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	mov r1, #0x8b
 	ldr r2, [r5, #0xc]
 	lsl r1, r1, #2
@@ -4021,9 +4021,9 @@ ov103_021EE824: ; 0x021EE824
 	add r1, r1, #4
 	ldr r1, [r2, r1]
 	add r2, r4, #0
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	bl ov103_021EE7DC
 	pop {r3, r4, r5, pc}
@@ -4065,7 +4065,7 @@ ov103_021EE888: ; 0x021EE888
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov103_021EE888
@@ -4096,7 +4096,7 @@ _021EE8C6:
 	add r2, #8
 	ldr r2, [r3, r2]
 	mov r1, #0xa
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	b _021EE928
 _021EE8DA:
 	mov r2, #0x8a
@@ -4106,7 +4106,7 @@ _021EE8DA:
 	add r2, #8
 	ldr r2, [r3, r2]
 	mov r1, #0xb
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	b _021EE928
 _021EE8EE:
 	mov r2, #0x8a
@@ -4116,7 +4116,7 @@ _021EE8EE:
 	add r2, #8
 	ldr r2, [r3, r2]
 	mov r1, #0xc
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	b _021EE928
 _021EE902:
 	mov r2, #0x8a
@@ -4126,7 +4126,7 @@ _021EE902:
 	add r2, #8
 	ldr r2, [r3, r2]
 	mov r1, #0xd
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	b _021EE928
 _021EE916:
 	mov r2, #0x8a
@@ -4136,7 +4136,7 @@ _021EE916:
 	add r2, #8
 	ldr r2, [r3, r2]
 	mov r1, #0xe
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 _021EE928:
 	add r0, r4, #0
 	bl ov103_021EE7DC
@@ -4158,7 +4158,7 @@ _021EE93A:
 	add r1, r7, #0
 	add r0, #0x48
 	add r0, r0, r6
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x1a
@@ -4176,7 +4176,7 @@ _021EE93A:
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrb r0, [r5, #0x1f]
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #2
@@ -4190,7 +4190,7 @@ _021EE93A:
 	ldr r2, [r5, #0xc]
 	lsl r0, r0, #4
 	ldr r0, [r2, r0]
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r1, #0x86
 	ldr r4, [r5, #0xc]
 	mov r3, #1
@@ -4232,12 +4232,12 @@ ov103_021EE9C8: ; 0x021EE9C8
 	lsr r1, r1, #0x18
 	bl sub_0202B4E8
 	add r6, r0, #0
-	bl sub_02015920
+	bl MailMsg_IsInit
 	cmp r0, #0
 	beq _021EEA1C
 	add r0, r6, #0
 	mov r1, #0x9d
-	bl sub_02015898
+	bl MailMsg_GetExpandedString
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -4253,7 +4253,7 @@ ov103_021EE9C8: ; 0x021EE9C8
 	add r3, r2, #0
 	bl ov103_021EE3E4
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 _021EEA1C:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}

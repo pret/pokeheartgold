@@ -316,7 +316,7 @@ _02258A80:
 	bl sub_0202CF54
 	mov r1, #0x21
 	bl sub_0202D1C0
-	bl sub_020147DC
+	bl GF_RTC_DateTimeToSec
 	ldr r2, [r6, #0xc]
 	str r0, [r2]
 	str r1, [r2, #4]
@@ -957,7 +957,7 @@ _02258FAE:
 	blt _02258FAE
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202ADCC
 	lsl r0, r0, #0x18
 	mov r1, #5
@@ -996,7 +996,7 @@ _02258FAE:
 	mov r1, #3
 	add r3, r2, #0
 	str r6, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0x12
 	lsl r0, r0, #4
 	str r0, [sp]
@@ -1005,7 +1005,7 @@ _02258FAE:
 	mov r2, #4
 	mov r3, #0
 	str r6, [sp, #4]
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -1015,7 +1015,7 @@ _02258FAE:
 	ldr r2, [r2, #0xc]
 	mov r0, #0x58
 	mov r1, #2
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1026,7 +1026,7 @@ _02258FAE:
 	mov r0, #0x58
 	mov r1, #0xb
 	mov r3, #4
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -1036,7 +1036,7 @@ _02258FAE:
 	ldr r2, [r2, #0xc]
 	mov r0, #0x58
 	mov r1, #6
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1047,7 +1047,7 @@ _02258FAE:
 	mov r0, #0x58
 	mov r1, #0xc
 	mov r3, #4
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022C60
@@ -1060,7 +1060,7 @@ _02258FAE:
 	add r0, #0xd4
 	mov r1, #0
 	lsl r2, r2, #4
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [sp, #0x2c]
 	mov r1, #5
 	add r2, sp, #0x38
@@ -1072,7 +1072,7 @@ _02258FAE:
 	ldr r0, [r0, #0xc]
 	add r1, #0xdc
 	mov r2, #0x80
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	ldr r0, [sp, #0x38]
 	mov r2, #0x57
 	ldr r1, [sp, #0x10]
@@ -1080,7 +1080,7 @@ _02258FAE:
 	add r1, r1, r2
 	ldr r0, [r0, #0xc]
 	mov r2, #0x80
-	bl sub_020D47B8
+	bl MIi_CpuCopy16
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -1235,7 +1235,7 @@ ov46_02259210: ; 0x02259210
 	add r0, r2, r0
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020CFC6C
+	bl GX_LoadBGPltt
 _02259246:
 	mov r0, #0xcb
 	lsl r0, r0, #2
@@ -1254,7 +1254,7 @@ _02259254:
 	add r0, r1, r0
 	mov r1, #0
 	mov r2, #0x20
-	bl sub_020CFCC0
+	bl GXS_LoadBGPltt
 _0225926A:
 	ldr r0, _022592B4 ; =0x0000032A
 	ldrsb r1, [r4, r0]
@@ -1340,27 +1340,27 @@ ov46_022592EC: ; 0x022592EC
 	add r0, r4, #0
 	add r7, r1, #0
 	add r6, r2, #0
-	bl sub_0200BD08
+	bl ScrStrBufs_new
 	str r0, [r5]
 	ldr r2, [sp, #0x14]
 	mov r0, #0
 	mov r1, #0x1b
 	add r3, r4, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r5, #4]
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x18]
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r4, #0
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r5, #0x1c]
 	ldr r0, [sp, #0x44]
 	str r6, [r5, #0x20]
-	bl sub_02028EA8
+	bl Sav2_PlayerData_GetOptionsAddr
 	bl sub_0202AD3C
 	str r0, [r5, #0x28]
 	mov r0, #0
@@ -1415,15 +1415,15 @@ _02259394:
 	add r0, r5, #0
 	add r0, #8
 	mov r1, #0xf
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #0x1c]
 	add r1, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r5]
 	ldr r1, [r5, #0x18]
 	ldr r2, [r5, #0x1c]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -1433,7 +1433,7 @@ _02259394:
 	ldr r2, [r5, #0x18]
 	add r0, #8
 	mov r1, #1
-	bl sub_020200A8
+	bl AddTextPrinterParameterized
 	ldr r0, [r5, #0x20]
 	cmp r0, #0
 	bne _022593DE
@@ -1568,15 +1568,15 @@ _022594B0:
 _022594BC:
 	add r0, r4, #0
 	add r0, #8
-	bl sub_0201D520
+	bl RemoveWindow
 	ldr r0, [r4, #0x1c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #0x18]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r4, #4]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov46_02259494
@@ -1589,15 +1589,15 @@ ov46_022594E0: ; 0x022594E0
 	add r5, r1, #0
 	add r0, #8
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [r4, #4]
 	ldr r2, [r4, #0x1c]
 	add r1, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	ldr r0, [r4]
 	ldr r1, [r4, #0x18]
 	ldr r2, [r4, #0x1c]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	mov r0, #0
 	ldr r1, [r4, #0x18]
 	add r2, r0, #0
@@ -1633,7 +1633,7 @@ ov46_02259534: ; 0x02259534
 	ldr r0, [r0]
 	mov r1, #0
 	mov r3, #5
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
 	thumb_func_end ov46_02259534

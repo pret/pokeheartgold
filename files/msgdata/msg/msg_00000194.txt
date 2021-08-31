@@ -1,0 +1,29 @@
+Please choose Pokémon\nno. {STRVAR_1 50, 0, 0}.
+Are you OK with the\nchosen {STRVAR_1 50, 0, 0} Pokémon?
+Please wait a moment.
+  
+   
+SUMMARY
+RENT
+CANCEL
+REMOVE
+Choose the Pokémon to\nbe exchanged.
+Cancel the Pokémon trade?
+  
+   
+Choose the Pokémon you\nwant to receive.
+Will you accept this Pokémon?
+Please wait a moment.
+{STRVAR_1 3, 0, 0} traded\naway {STRVAR_1 0, 1, 0} and\freceived {STRVAR_1 0, 2, 0}.\r
+  
+   
+CANCEL
+SUMMARY
+EXCHANGE
+CLOSE
+BACK
+CANCEL
+RECEIVE
+♂
+♀
+{STRVAR_1 0, 0, 0}

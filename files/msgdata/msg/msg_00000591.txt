@@ -1,0 +1,9 @@
+Hello, hello!\nI am the official Name Rater!\rWant me to rate the nicknames of\nyour Pokémon? {YESNO 0}
+Which Pokémon’s nickname should\nI critique?
+{STRVAR_1 1, 0, 0}, is it? Hmm...\nThat is a decent nickname!\rBut, I can give it a nicer name?\nHow about it? {YESNO 0}
+OK, then. What shall the new\nnickname be?\r
+Done!\nHow about that?\rFrom now on, this Pokémon\nshall be known as {STRVAR_1 1, 0, 0}!\rIt is a better name than before,\nisn’t it?\fGood for you!
+Ah, good. I see.\nDo come visit again if you change\fyour mind.
+Done! From now on, this Pokémon\nshall be known as {STRVAR_1 1, 0, 0}!\rIt looks no different from before?\nThat’s just you!\fThis is vastly superior!\fHow fortunate for you!
+{STRVAR_1 1, 0, 0}, is it?\nThat is a truly impeccable nickname!\rTake good care of {STRVAR_1 1, 0, 0}!
+Now, now.\nThat is merely an Egg!

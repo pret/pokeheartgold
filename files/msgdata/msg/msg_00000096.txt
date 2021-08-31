@@ -1,0 +1,133 @@
+Welcome to the Battle Tower!\rI am your guide to the Single\nand Double Battle Rooms.\r
+Would you like to take the\nBattle Room challenge? {YESNO 0}
+We hope to see you again!
+The Battle Tower is a facility for Single\nor Double Battle challenges.\rOnce entered, your challenge lasts\nuntil you lose.\rIn Single Battle format, you enter with\nthree Pokémon.\rIn Double Battle format, you enter with\nfour Pokémon.\rThe battles are held in Battle Rooms,\nof which there are many in the tower.\rIn each of the Battle Rooms, seven\nTrainers await your challenge.\rIf you manage to defeat all seven,\nyou will earn Battle Points (BP).\rIf you want to interrupt your\nchallenge, please save the game.\rIf you don’t save, you will be\ndisqualified from your challenge.\rPlease be aware of that!\r
+Which Battle Room would you like?\nSingle or Double? {YESNO 0}
+                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                  
+                                    
+Please select the Pokémon you wish\nto enter.\r
+Your Pokémon must all be different.\r
+Held items must all be different.\r
+I will now show you to the Battle Room.
+Congratulations!\nYou’ve beaten all seven Trainers!\r
+Congratulations!\nYou’ve beaten the Tower Tycoon!\rWe present you with these Battle\nPoints in recognition of your talent!\r{STRVAR_1 3, 0, 0} received\n{STRVAR_1 50, 1, 0} BP!\r
+Saving...\nDon’t turn off the power.
+We hope to see you again.
+We’ve been waiting for you!\rBefore entering a Battle Room, your\nprogress will be saved. Please wait.
+                      
+         
+Excuse me!\rYou didn’t save before you quit your\nchallenge last time.\rBecause of that, you have been\ndisqualified from your challenge!\r
+Welcome to the Battle Tower!\rI am your guide to the Multi\nBattle Rooms.\r
+Would you like to take the Multi\nBattle Room challenge? {YESNO 0}
+                          
+The Battle Tower’s Multi Battle Rooms\nare for Multi Battles with a partner.\rTo enter, join another Trainer and\ncompete with two Pokémon each.\rInside the tower is a room named the\nBattle Salon where you can meet\fother Trainers.\rThere, you can find a Trainer to act\nas your partner in the Multi Battles.\rYou can also partner up with a friend\nover wireless communications.\rOnce you have partnered up, you will\nbe shown to a Multi Battle Room.\rIn the Multi Battle Room, seven\ntag teams await your challenge.\rIf you manage to defeat all seven\nteams, you will earn Battle Points.\rIf you want to interrupt your\nchallenge, please save the game.\rIf you don’t save, you will be\ndisqualified from your challenge.\rAlso, if you are on a tag team with\na friend, you may not interrupt\fyour challenge.\r
+                                                                                                                                                                                                                                                                   
+                                    
+Would you like to communicate with\na friend and form a tag team? {YESNO 0}
+One Trainer should select\n“BECOME LEADER.”\rThe other Trainer must select\n“JOIN GROUP.” {YESNO 0}
+                          
+               
+                 
+                     
+I’ll direct you to your Multi Battle\nRoom now.
+Both Trainers have chosen the\nPokémon {STRVAR_1 0, 0, 0}.\rPlease confer with the other Trainer\nand choose different Pokémon.\r
+Both Trainers have chosen the Pokémon\n{STRVAR_1 0, 0, 0} and {STRVAR_1 0, 1, 0}.\rPlease confer with the other Trainer\nand choose different Pokémon.\r
+I will now show you to the Battle Salon.\r
+Welcome to the Battle Tower!\rI am your guide to the Wi-Fi Battle\nRooms.\r
+Would you like to take the Wi-Fi\nBattle Room challenge? {YESNO 0}
+The Battle Tower’s Wi-Fi Battle Rooms\nare places to conduct battles over\fNintendo Wi-Fi Connection.\rAs a result, you will be battling\nTrainers from around the world.\rInside the Battle Tower, there are\nmany Battle Rooms.\rIn each of the Battle Rooms, seven\nTrainers await your challenge.\rIf you manage to defeat all seven,\nyou will earn Battle Points.\rDepending on how you do, you may\neven become the room’s leader!\rAlso, the Wi-Fi Battle Rooms are\noperated on a ranking system.\rTrainers will go up in rank if they\nkeep winning Wi-Fi Battles.\rContrarily, their rankings could go\ndown if they lose consistently.\rTo raise your rank, keep winning,\nespecially against tougher Trainers.\rIf you want to interrupt your\nchallenge, please save the game.\rIf you don’t save, you will be\ndisqualified from your challenge.\r
+We hope to see you again!
+                                
+                                                                                                                                                                                                                                                                      
+                          
+               
+                 
+                                                       
+                             
+OK. I’ll direct you to your Battle Room\nnow.\rAre you ready? {YESNO 0}
+Would you like to save and interrupt\nyour challenge? {YESNO 0}
+                        
+                               
+                      
+I’ve downloaded the Rank {STRVAR_1 51, 0, 0} Battle\nRoom {STRVAR_1 52, 1, 0}’s past leader history.\rPlease confirm it on the Performance\nMonitor next to me.
+Thank you for playing!\r
+Congratulations!\nYou’ve beaten all seven Trainers!\r
+{STRVAR_1 3, 0, 0}, you have also been\npromoted to Rank {STRVAR_1 51, 1, 0}!\r
+Saving...\nDon’t turn off the power.
+Would you like to send these\nresults using Nintendo WFC? {YESNO 0}
+For your 7-win streak, we present\nyou with the BP you have earned!\r{STRVAR_1 3, 0, 0} received\n{STRVAR_1 50, 1, 0} BP.\r
+                          
+Your results were sent out using\nNintendo WFC!\r
+It’s good to see you back.\rYour previous results were not sent\nout using Nintendo WFC.\rWould you like to send them now? {YESNO 0}
+                                          
+                          
+           
+Unfortunately, you have been\ndemoted to Rank {STRVAR_1 51, 0, 0}...\r
+                                 
+                          
+                           
+Your record will be saved.\nPlease wait.
+Congratulations on achieving Rank {STRVAR_1 51, 0, 0}.\nYour winning Pokémon team has won\fspecial Ribbons for this feat!
+                                            
+                    
+Congratulations on achieving your\n50-win streak.\fYour winning Pokémon team has won\fspecial Ribbons for this feat!
+As you can see, Battle Frontier is a\ngreat facility.\rYou know what?\rApparently, similar facilities are\navailable outside of Johto.
+Thank you for playing!\rYour Pokémon will be restored to\nfull...\fOh my!\rI’m not on duty today.\nI’m just here to enjoy myself.
+Me?\rI just made a debut as an Idol!\fI haven’t gotten much work yet.\rSo whenever I have time, I come here\nto battle Pokémon.
+I trained my little guy till we\ncouldn’t take any more.\rHe’s going to do a 50-win streak\nfor sure...\rRight, PIKACHU?
+PIKACHU: ...
+I’ve always loved this kind of\nsee-through elevator since I\fwas young.\rOr not!\rWhen I was young, this kind of\nelevator was unheard of!
+Tee hee!\nAll the Trainers around us look\fso pathetic!\r...Actually, that’s the kind of mind-set\nthat makes you lose with one hit!\rDon’t let your guard down, PIKACHU!
+PIKACHU: Pichuu! Pichuu!
+Congratulations on achieving\na 50-win streak!\rThe Pokémon on your team will be\nprovided with commemorative Ribbons.
+Congratulations on advancing to\nRank {STRVAR_1 50, 0, 0}!\rThe Pokémon on your team will be\nprovided with commemorative Ribbons.
+Congratulations on defeating\nthe Tower Tycoon!\fThe Pokémon on your team will be\fprovided with commemorative Ribbons.
+Congratulations!\rIn honor of your victory, we present\nyou this commemorative print!\r
+The Gold Print was added to\n{STRVAR_1 3, 0, 0}’s Vs. Recorder!\r
+The Silver Print was added to\n{STRVAR_1 3, 0, 0}’s Vs. Recorder!\r
+Congratulations on achieving your\n{STRVAR_1 52, 0, 0}-win streak!\rPlease accept this trophy for your\nfantastic achievement!\fWe’ll send it to your home.\r
+...Uh-oh... You’ve run out of room\nfor decoration goods.\rPlease make room, and come back\nfor your prize.
+Both Trainers have chosen the Pokémon\n{STRVAR_1 0, 0, 0} and {STRVAR_1 0, 1, 0}.\rPlease confer with the other Trainer\nand choose different Pokémon.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs are not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs and {STRVAR_1 0, 1, 0} are not allowed\nto enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, and {STRVAR_1 0, 2, 0}\nare not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\nand {STRVAR_1 0, 3, 0} are not allowed.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, and {STRVAR_1 0, 4, 0}\fare not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0}, and\f{STRVAR_1 0, 5, 0} are not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, and {STRVAR_1 0, 6, 0} \nare not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0}, and\n{STRVAR_1 0, 7, 0} are not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, and {STRVAR_1 0, 8, 0}\fare not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0}, and\f{STRVAR_1 0, 9, 0} are not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\r{STRVAR_1 0, 9, 0}, and {STRVAR_1 0, 10, 0}\nare not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\r{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0}, and\n{STRVAR_1 0, 11, 0} are not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\r{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\n{STRVAR_1 0, 11, 0}, and {STRVAR_1 0, 12, 0}\fare not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\r{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\n{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0}, and\f{STRVAR_1 0, 13, 0} are not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\r{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\n{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0},\r{STRVAR_1 0, 13, 0}, and {STRVAR_1 0, 14, 0}\nare not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\r{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\n{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0},\r{STRVAR_1 0, 13, 0}, {STRVAR_1 0, 14, 0}, and\n{STRVAR_1 0, 15, 0} are not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\r{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\n{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0},\r{STRVAR_1 0, 13, 0}, {STRVAR_1 0, 14, 0},\n{STRVAR_1 0, 15, 0}, and {STRVAR_1 0, 16, 0}\fare not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\r{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\n{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0},\r{STRVAR_1 0, 13, 0}, {STRVAR_1 0, 14, 0},\n{STRVAR_1 0, 15, 0}, {STRVAR_1 0, 16, 0}, and\f{STRVAR_1 0, 17, 0} are not allowed to enter.\rPlease come see me when you are ready.
+Excuse me!\rYou don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\rYou must have {STRVAR_1 50, 0, 0} different Pokémon\nto enter.\rThey also must be holding different\nkinds of items.\rEggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\r{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\n{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\r{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\n{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0},\r{STRVAR_1 0, 13, 0}, {STRVAR_1 0, 14, 0},\n{STRVAR_1 0, 15, 0}, {STRVAR_1 0, 16, 0},\r{STRVAR_1 0, 17, 0}, and {STRVAR_1 0, 18, 0}\nare not allowed to enter.\rPlease come see me when you are ready.
+Thank you so much for participating!\nPlease come again!
+There doesn’t appear to be any\ndata yet...
+DS Wireless Communications will\nbe launched. {YESNO 0}
+We look forward to your next visit.\r
+You can call me the Judge.\rHeheh, it’s actually not my real name,\nbut that’s what everyone calls me.\rIt’s because of this weird power I\nhave. It’s a gift, really.\rI can discern--judge you can say--the\noverall potential of individual Pokémon.\rIf you’d like, I could judge the\nintriguing potential of your Pokémon.\r
+If you’d like, I could judge the\nintriguing potential of your Pokémon.\r
+...Oh.\nYou don’t need me to judge. I get it.
+Judge an Egg?!\nThat’s a tall order even for me.\r
+I see, I see...\rThis Pokémon’s potential is decent all\naround.\rThat’s my determination, and it’s final.\r
+I see, I see...\rThis Pokémon’s potential is above\naverage overall.\rThat’s my determination, and it’s final.\r
+I see, I see...\rThis Pokémon has relatively superior\npotential overall.\rThat’s my determination, and it’s final.\r
+I see, I see...\rThis Pokémon has outstanding potential\noverall.\rThat’s my determination, and it’s final.\r
+Incidentally, I would say the best\npotential lies in its HP.\r
+Incidentally, I would say the best\npotential lies in its Attack stat.\r
+Incidentally, I would say the best\npotential lies in its Defense stat.\r
+Incidentally, I would say the best\npotential lies in its Sp. Atk stat.\r
+Incidentally, I would say the best\npotential lies in its Sp. Def stat.\r
+Incidentally, I would say the best\npotential lies in its Speed stat.\r
+It’s rather decent in that regard.\nThat’s how I judged it.
+It’s very good in that regard.\nThat’s how I judged it.
+It’s fantastic in that regard.\nThat’s how I judged it.
+It can’t be better in that regard.\nThat’s how I judged it.
+A Ribbon will be awarded to the\nparticipating Pokémon!

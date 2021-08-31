@@ -1,0 +1,157 @@
+Welcome!\rFrom here, you can select a Pokémon\nfrom your PC Box and send it to the\fPokéwalker to take along on a Stroll.\r
+Please select the Pokémon\nyou’d like to take along.
+Receive Pokémon\nand gifts.
+Caution!\rAll data saved on the Pokéwalker will\nbe erased.\rBefore erasing it, please be sure to\nconfirm the information.\rThe Pokémon on your Pokéwalker will\nreturn, but all other data on the\fPokéwalker will be erased.\rErase the data on the Pokéwalker?
+All records on the\nPokéwalker will be erased.
+Point at the DS Card\nand select “CONNECT.”
+Connecting to Pokéwalker. Please wait.
+In a place where it’s OK for\nthe Pokéwalker to emit\fnoise, point it at the\fDS Card, press the button,\fand wait five seconds.
+Your Pokémon can now take\na Stroll in the Pokéwalker.
+Carry over the Pokéwalker Step Count?
+                     
+Please select a Pokémon from your\nPC Box.\r
+Select the Route you would\nlike to take a Stroll on.\r
+Saving...\nDo not turn off the power.
+                              
+To use the Pokéwalker, you must have\nat least five open spaces in a PC Box.\rPlease come back once you have opened\nat least five spaces.\r
+The Nintendo DS will connect to\nthe Pokéwalker.{PAUSE 90}
+                        
+Caution!\rYou can send the Pokémon you are out\non a Stroll with back, but will lose the\fability to transfer any other Pokémon\fon the Pokéwalker.\rSend the Pokémon back anyway?
+The Pokémon out on a Stroll\nwill be sent back.
+Any received Pokémon were released\nback into the wild.{PAUSE 120}
+Take a Stroll on the\n{STRVAR_34 19, 0, 0} Route?
+Welcome!\rFrom here, you can select a Pokémon\nfrom your PC Box and send it to the\fPokéwalker to take along on a Stroll.\rPlease come back once you have placed\nat least one Pokémon in a PC Box.\r
+          
+{STRVAR_1 1, 1, 0} went to the Pokéwalker!{PAUSE 120}
+The Pokéwalker has been registered to\nthis DS Card. When sending back your\fPokémon, please return it to\fthis DS Card.\rPlease enjoy your Stroll with your\nPokémon!\r
+Come back, {STRVAR_1 1, 1, 0}!
+{STRVAR_1 1, 1, 0} has arrived!{PAUSE 120}
+             
+Received gift(s)!{PAUSE 120}
+                        
+Pokéwalker records have\nbeen initialized.{PAUSE 120}
+The Pokémon returned!{PAUSE 120}
+Canceled the connection to\nthe Pokéwalker.{PAUSE 120}
+This Pokéwalker has already\nbeen registered.{PAUSE 120}
+Connection failure.{PAUSE 120}
+This Pokéwalker has not yet\nbeen registered.{PAUSE 120}
+There is already a Pokémon on\nthis Pokéwalker.{PAUSE 120}
+This Pokéwalker is not the\nregistered Pokéwalker.{PAUSE 120}
+This Pokéwalker is not the\nregistered Pokéwalker.{PAUSE 120}
+                       
+Connection to the Pokéwalker has\nbeen suspended.{PAUSE 120}
+Connection was disrupted. Please try\nyour connection again.{PAUSE 120}
+There are not any Pokémon on\nthis Pokéwalker.{PAUSE 120}
+{STRVAR_1 1, 1, 0} arrived from its Stroll\non {STRVAR_34 19, 2, 0}!\r
+Collected {STRVAR_1 54, 3, 0} W on the Stroll!\r
+Head out for another Stroll sometime!\r
+Stroll for a bit with the Pokémon you’ve\nsent to the Pokéwalker!\r
+...\nWhat?\rThe collected Watts have unlocked\nsomething on the Pokéwalker!\rA new Route has been found on the\nPokéwalker!\r
+All Pokémon you caught on the Stroll\nhave been sent to the PC Box!\r
+Any items found on the Stroll have been\nplaced in your Bag!\r
+{STRVAR_1 1, 1, 0} took {STRVAR_1 56, 3, 0} steps!
+{STRVAR_1 1, 1, 0}’s level went up one from\nthe Stroll!\r
+Congratulations!\rThe Pokéwalker has reached\n9,999,999 steps!\r
+Received a Starf Berry as a reward!\rPlaced the reward in the Bag!\r
+{STRVAR_34 19, 4, 0} is now available!\r
+On {STRVAR_34 19, 2, 0}:
+walked {STRVAR_1 56, 5, 0} steps.
+collected {STRVAR_1 54, 3, 0} W.
+Steps taken to date:
+{STRVAR_1 56, 6, 0}
+Watts collected to date:
+{STRVAR_1 56, 7, 0} W
+Results of this Stroll:
+Gifts received:
+Pokéwalker records:
+Your Pokémon:
+{STRVAR_1 0, 8, 0}
+{STRVAR_1 0, 9, 0}
+{STRVAR_1 0, 10, 0}
+{STRVAR_1 0, 11, 0}
+Items obtained:
+{STRVAR_1 8, 9, 0}
+Go for a Stroll.
+Receive a gift.
+Return from a Stroll.
+Erase Pokéwalker records.
+Save, then go for a Stroll.
+Send Pokémon back home.
+{ALN_CENTER}Exit
+    
+{STRVAR_1 50, 10, 0}/{STRVAR_1 50, 11, 0}
+Total Watts:
+{STRVAR_1 56, 7, 0} W
+{STRVAR_1 56, 6, 0}
+Total steps:
+Watts required to find the next\nRoute: {STRVAR_1 56, 12, 0} W
+It seems that another Route will\nappear soon.
+You can select where you’d like to take a\nStroll from the many Routes.
+{STRVAR_1 1, 13, 0} is\non a Stroll.
+             
+Refreshing Field
+Noisy Forest
+Rugged Road
+Beautiful Beach
+Suburban Area
+Dim Cave
+Blue Lake
+Town Outskirts
+Hoenn Field
+Warm Beach
+Volcano Path
+Treehouse
+Scary Cave
+Sinnoh Field
+Icy Mountain Rd.
+Big Forest
+White Lake
+Stormy Beach
+Resort
+Quiet Cave
+Beyond the Sea
+Night Sky’s Edge
+Yellow Forest
+Rally
+Sightseeing
+Winner’s Path
+Amity Meadow
+--------
+A wonderfully refreshing field\nfor a Stroll. You can meet many\nkinds of Pokémon here.
+A large natural forest that has\nbeen allowed to grow. Many\nPokémon live deep in the forest.
+A hilly, rugged mountain road.\nThe view from atop the mountain\nis very beautiful.
+This beautiful sea is a popular\nplace for a Stroll. You can meet\nmany Water-type Pokémon.
+A residential area somewhere.\nEven when you take a Stroll\nhere, you can meet Pokémon.
+A dark cave sometimes used as a\ntest of courage. Look closely,\nand you’ll find many Pokémon.
+A deep, blue lake. It’s said that\nsome rare Pokémon live at the\nbottom of this lake.
+The outskirts of a town. Where\npeople have moved away,\nPokémon have moved in.
+A Route that goes deep into the\nHoenn region. You can meet many\nPokémon not in Johto or Kanto.
+A very warm beach in the Hoenn\nregion. You can meet many\nPokémon not in Johto or Kanto.
+A path through a currently\nactive volcano. Very fiery and\nrare Pokémon live here.
+A path that works with the\ntrees of the forest. Pokémon\nhere are always changing.
+A pitch-black cave that seems\nhaunted. It’s said that many\nPokémon live deep inside.
+A Route through the Sinnoh\nregion, far from Johto and\nKanto. Rare Pokémon live here.
+A snow-covered road where a\nmisstep could result in a fall--\nit tests your trust in Pokémon.
+A forest surrounded by many old\ntrees since the olden days.\nMany Pokémon live here.
+A lake concealed in white mist.\nIt lends a very mysterious feel\nto the area.
+Strong waves wash onto this\nbeach. Because people don’t\nvisit, rare Pokémon live here.
+A high-class resort everyone\nwants to visit, famous for the\ncute Pokémon living here.
+A quiet, deep, and empty cave.\nIf you look carefully, you’ll find\nsome rare Pokémon.
+A small island far away on the\nhorizon. If you look to the sea,\nyou can see Pokémon swimming.
+A dark mountain path that gives\nyou the feeling you’ve traveled\nthrough time back to the past.
+Many PIKACHU live in harmony in\nthis forest. Walk through here\nfrequently, and try to find one!
+A fun Route to play with your\nPokéwalker. Take a Stroll and\nvisit the many places!
+You can find many Pokémon on\nthis Route. Take a long walk and\nsee if you can find them all!
+If you’re aiming to be Champion,\nyou’ll want to walk this Route!\nYou’ll meet strong Pokémon!
+You can meet cute Pokémon that\nevolve through friendship and\nfind items to evolve Pokémon!
+                             
+                                            
+{ALN_CENTER}Yes
+{ALN_CENTER}No
+{ALN_CENTER}Save steps
+{ALN_CENTER}Erase steps
+           
+          
+         
+          
+              

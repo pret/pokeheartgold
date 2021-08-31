@@ -1,0 +1,45 @@
+Prof. Elm
+Hello, {STRVAR_1 3, 0, 0}?\rWhat’s wrong?\nIf you’re nearby, you should come talk\fin person!
+Hello, {STRVAR_1 3, 0, 0}?\rWhat’s wrong?\nIf you’re nearby, you should come talk\fto me in person!
+Hello, {STRVAR_1 3, 0, 0}?\rTry not to overdo it.\nBe sure to heal your Pokémon if they\fare hurt.
+Hello, {STRVAR_1 3, 0, 0}?\rTry not to overdo it.\nBe sure to heal your Pokémon if they\fare hurt.
+Oh, {STRVAR_1 3, 0, 0}...\rI just stepped away for a second...\nHow could...?
+Oh, {STRVAR_1 3, 0, 0}...\rI just stepped away for a second...\nHow could...?
+Hello, {STRVAR_1 3, 0, 0}?\rWe’re checking the Egg now. It does\nappear to be a Pokémon Egg.\rWe’ll do a few more tests!
+Hello, {STRVAR_1 3, 0, 0}?\rWe’re checking the Egg now. It does\nappear to be a Pokémon Egg.\rWe’ll do a few more tests!
+Hello, {STRVAR_1 3, 0, 0}?\rDid you see my assistant? He’s at the\nPoké Mart in Violet City.\rHe’s got something very important, so\nbe sure to pick it up!
+Hello, {STRVAR_1 3, 0, 0}?\rDid you see my assistant? He’s at the\nPoké Mart in Violet City.\rHe’s got something very important, so\nbe sure to pick it up!
+Hello, {STRVAR_1 3, 0, 0}?\rHow’s the Egg? Has anything changed?\rIf anything happens, please call.
+Hello, {STRVAR_1 3, 0, 0}?\rHow’s the Egg? Has anything changed?\rIf anything happens, please call.
+Hey, {STRVAR_1 3, 0, 0}, this is great news!\nA Pokémon hatched from that Egg!\rI knew that giving that Egg to you,\n{STRVAR_1 3, 0, 0}, was the right thing to\fdo. I just knew it!\rYou should come here and show me what\nkind of Pokémon it is!
+Hey, {STRVAR_1 3, 0, 0}, this is great news!\nA Pokémon hatched from that Egg!\rI knew that giving that Egg to you,\n{STRVAR_1 3, 0, 0}, was the right thing to\fdo. I just knew it!\rYou should come here and show me what\nkind of Pokémon it is!
+Hello, {STRVAR_1 3, 0, 0}?\rI just made a new discovery.\rThe time it takes for an Egg to hatch\ndepends on the Pokémon.
+Hello, {STRVAR_1 3, 0, 0}?\rI just made a new discovery.\rThe time it takes for an Egg to hatch\ndepends on the Pokémon.
+Hello, {STRVAR_1 3, 0, 0}?\rIt’s still a mystery what kinds of moves\nhatched Pokémon have.\rWe’re investigating that now.
+Hello, {STRVAR_1 3, 0, 0}?\rIt’s still a mystery what kinds of moves\nhatched Pokémon have.\rWe’re investigating that now.
+Hello, {STRVAR_1 3, 0, 0}?\rThere’s something strange on\nthe radio.\rIs something happening in Goldenrod?
+Hello, {STRVAR_1 3, 0, 0}?\rThere’s something strange on\nthe radio.\rIs something happening in Goldenrod?
+Hello, is this {STRVAR_1 3, 0, 0}?\rJust one more Badge to go before you\ncollect all the Johto Badges!\rBlackthorn’s Gym Leader is said to be a\npretty powerful Dragon Tamer!
+Hello, is this {STRVAR_1 3, 0, 0}?\rJust one more Badge to go before you\ncollect all the Johto Badges!\rBlackthorn’s Gym Leader is said to be a\npretty powerful Dragon Tamer!
+Hello, {STRVAR_1 3, 0, 0}?\nYou seem to be doing well.\rYou’ve done so well, I have nothing to\nworry about for you.\rI think you could do anything you try!
+Hello, {STRVAR_1 3, 0, 0}?\nYou seem to be doing well.\rYou’ve done so well, I have nothing to\nworry about for you.\rI think you could do anything you try!
+Hello, {STRVAR_1 3, 0, 0}?\rI have something here for you from\nProfessor Oak.\rCould you swing by my Lab?\nSee you later!
+Hello, {STRVAR_1 3, 0, 0}?\rI have something here for you from\nProfessor Oak.\rCould you swing by my Lab?\nSee you later!
+Hello, {STRVAR_1 3, 0, 0}?\rThere are so many different ways that\nPokémon evolve, aren’t there?!\rSome Pokémon don’t even evolve until\nthey meet certain conditions first!
+Hello, {STRVAR_1 3, 0, 0}?\rThere are so many different ways that\nPokémon evolve, aren’t there?!\rSome Pokémon don’t even evolve until\nthey meet certain conditions first!
+Hello, {STRVAR_1 3, 0, 0}?\rI expect that there are some Pokémon\nin the Kanto region that I don’t know.\rThere are probably also methods of\nevolution that I’m not familiar with yet.\rI should use that perspective and\ndiscover what I can!
+Hello, {STRVAR_1 3, 0, 0}?\rI expect that there are some Pokémon\nin the Kanto region that I don’t know.\rThere are probably also methods of\nevolution that I’m not familiar with yet.\rI should use that perspective and\ndiscover what I can!
+Hello, {STRVAR_1 3, 0, 0}?\rIt seems that Pokémon that have been\ninfected with Pokérus level up better.\fWe’re not quite sure why...
+Hello, {STRVAR_1 3, 0, 0}?\rIt seems that Pokémon that have been\ninfected with Pokérus level up better.\fWe’re not quite sure why...
+H-hello? {STRVAR_1 3, 0, 0}?\rIt’s a disaster!\nUh, um, it’s just terrible!\rWhat should I do?\nIt... Oh, no...\rPlease get back here now!
+H-hello? {STRVAR_1 3, 0, 0}?\rIt’s a disaster!\nUh, um, it’s just terrible!\rWhat should I do?\nIt... Oh, no...\rPlease get back here now!
+Hello, {STRVAR_1 3, 0, 0}?\nWe’ve discovered something!\rThe details are...well, I can’t really\nsay anything, but we want you to carry\fthat Egg!\rMy assistant is at the Poké Mart in\nViolet City. Could you go meet him and\fpick up that Egg?
+Hello, {STRVAR_1 3, 0, 0}?\nWe’ve discovered something!\rThe details are...well, I can’t really\nsay anything, but we want you to carry\fthat Egg!\rMy assistant is at the Poké Mart in\nViolet City. Could you go meet him and\fpick up that Egg?
+{STRVAR_1 3, 0, 0}, how are things going?\rI called because something weird is\nhappening with the radio broadcasts.\rThey were talking about Team Rocket.\r{STRVAR_1 3, 0, 0}, do you know anything\nabout it?\rMaybe Team Rocket has returned.\nNo, that just can’t be true.\rSorry to bug you. Take care!
+{STRVAR_1 3, 0, 0}, how are things going?\rI called because something weird is\nhappening with the radio broadcasts.\rThey were talking about Team Rocket.\r{STRVAR_1 3, 0, 0}, do you know anything\nabout it?\rMaybe Team Rocket has returned.\nNo, that just can’t be true.\rSorry to bug you. Take care!
+Hello, {STRVAR_1 3, 0, 0}?\nHow’s it going?\rI’ve gotten hold of something neat.\nSwing by my Lab and pick it up!\rSee you later!
+Hello, {STRVAR_1 3, 0, 0}?\nHow’s it going?\rI’ve gotten hold of something neat.\nSwing by my Lab and pick it up!\rSee you later!
+Hello, {STRVAR_1 3, 0, 0}?\rI have something here for you.\nCould you swing by my Lab?\rSee you later!
+Hello, {STRVAR_1 3, 0, 0}?\rI have something here for you.\nCould you swing by my Lab?\rSee you later!
+Hello, {STRVAR_1 3, 0, 0}?\rI discovered an odd thing.\nApparently there’s something called\fPokérus that infects Pokémon.\rYes, it’s like a virus, so it’s\ncalled Pokérus.\rIt multiplies fast and infects other\nPokémon, too. But that’s all.\rIt doesn’t seem to do anything, and\nit goes away over time.\rI guess it’s nothing to worry\nabout. Bye!
+Hello, {STRVAR_1 3, 0, 0}?\rI discovered an odd thing.\nApparently there’s something called\fPokérus that infects Pokémon.\rYes, it’s like a virus, so it’s\ncalled Pokérus.\rIt multiplies fast and infects other\nPokémon, too. But that’s all.\rIt doesn’t seem to do anything, and\nit goes away over time.\rI guess it’s nothing to worry\nabout. Bye!

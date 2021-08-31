@@ -1,0 +1,37 @@
+Welcome! This is the Global Trade\nStation, or GTS for short.\rWe enable the trading of Pokémon with\npeople worldwide over Nintendo WFC.\rWould you like to do a global\nPokémon trade? {YESNO 0}
+Hello!\nWelcome to the GTS!\rWould you like to do a global Pokémon\ntrade over Nintendo Wi-Fi\fConnection? {YESNO 0}
+You may trade Pokémon one of two\nways at the GTS.\rYou may offer a Pokémon for trade,\nor search among offered Pokémon.\rShould I describe things in greater\ndetail? {YESNO 0}
+You will be asked to put up the\nPokémon you are offering to trade.\rAt that time, you will be asked what\nPokémon you would like in return.\rIf another player offers your desired\nPokémon in return for your offered\fPokémon, the trade will go through.\rShould I explain anything else? {YESNO 0}
+You may search among the Pokémon\nthat are offered by other Trainers.\rThey will all identify what Pokémon\ntheir Trainers want back in return.\rIf you find one that you want, you\nmust provide us with the kind of\fPokémon wanted in return.\rShould I explain anything else? {YESNO 0}
+Would you like to make a global\nPokémon trade? {YESNO 0}
+Please do visit again.
+I hope you enjoy your visit\nto the GTS!\r
+...Uh-oh!\rI’m sorry, but your team and all\nyour PC Boxes are full.\rIf you wish to use the GTS, you must\nhave room on your team or in a PC Box.
+...Uh-oh!\nYou only have one Pokémon with you.\rIf you wish to use the GTS, you must\nhave at least two Pokémon with you.\rPlease come back with more Pokémon\non your team.
+Such a small world it is, eh?\rEh? Wait, this is a miniature?\nThe real Earth is millions of times bigger\fthan this?\rWhoaaaaaaa!
+They say if you communicate with\nsomeone, their location is\frecorded on this giant globe.
+All I need to do is leave a Pokémon\nhere to trade.\rWho knows, it might be traded while\nI’m asleep tonight.
+Using the equipment here, you can easily\ntrade Pokémon with other Pokémon fans\fon the other side of the world!\rThat’s incredible!
+You can register where you live on\nthis giant globe.\rOnce you do, you can show your location\nto anyone you communicate with.
+Nintendo WFC is so easy to use,\neven I can trade Pokémon now!
+This week, I’ll do it!\rI really want to make the Top 4 of the\nrankings.
+The Global Terminal has three floors.\rYou use warp panels for getting from\none floor to another.\rA blue panel takes you to the GTS on\nthe ground floor.\rTake a green panel to the studios for\nBox Data and Dress-Up Data on 2F.\rTake a pink warp panel to the third\nfloor for the Battle Video Gallery.
+Your favorite is {STRVAR_1 0, 0, 0},\nisn’t it? {YESNO 0}
+Your favorite is that Egg,\nisn’t it? {YESNO 0}
+Yes, I was right!\nI thought so!
+...Oh? Your favorite really is\n{STRVAR_1 0, 0, 0}, isn’t it?
+...Oh? Your favorite really is that Egg,\nisn’t it?
+I want to know everyone’s favorite\nkinds of Pokémon.
+Yo, yo, yo!\rWanna let the world know about you?\nThen you gotta tell me, yo! {YESNO 0}
+Yo, I know all I need to know about\nyou now.\rIf you want to change your message,\nI’m the guy to see, yo!
+Yo! You don’t have anything you want\nto say?\rIf you want to change your message,\nI’m the guy to see, yo!
+There are several portal machines here\nat the Global Terminal.\rYou must set your Vs. Recorder in\nthe machines for communication.\rPlease do give the machines a try, as\nthey guide you through the operation.
+Welcome to the Global Terminal!\rHere, you may join the huge community\nof Trainers worldwide.\rYou may view the records of Trainers\nlike yourself from around the world.\rYou may also trade Pokémon with the\nworld’s Trainers.
+Connect to Nintendo Wi-Fi\nConnection for Trainer Rankings? {YESNO 0}
+Trainer Rankings is a team-based\nranking system for Trainers around\fthe world.\rThe Trainers will be divided into several\ngroups and ranked in many categories.\rIf you join, your Trainer achievements\nare automatically sent to your team.\rIn other words, what you do as a\nTrainer can help your team’s standings.\rBeware!\rIf you enter a ranking category more\nthan once, only the points earned from\fyour previous report will be tallied.\r
+Connect to Nintendo Wi-Fi Connection\nand examine the Battle Video\fRankings? {YESNO 0}
+Battle Video Rankings is a gallery of\npopular Battle Videos.\rStudy many classic battles and sharpen\nyour own Trainer skills.\r
+USE
+INFO
+CANCEL
+The green panel leads to the studios\nfor Box Data and Dress-Up Data on 2F.\rThe pink panel leads to the Battle\nVideo Gallery on 3F.

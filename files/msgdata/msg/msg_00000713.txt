@@ -1,0 +1,11 @@
+Todd
+We should both train our Pokémon some\nmore and have another battle!\rSo we should really exchange phone\nnumbers. Don’t you agree? {YESNO 0}
+OK!\nSee you later!
+Oh, don’t you have any confidence that\nyou can beat me again?
+Hmm? Did you decide that you want\nmy phone number after all? {YESNO 0}
+Huh? Is it just me, or does your voice\nseem unusually loud?\fDon’t tell me...you’re nearby?
+My {STRVAR_1 0, 10, 0} is looking more and\nmore like me. It’s getting cuter!\rAnd, you know?\nNow we can KO {STRVAR_1 0, 11, 0} easily.\rI should challenge the Goldenrod Gym.\rSee you later!
+My {STRVAR_1 0, 10, 0} is looking more and\nmore like me. It’s getting cuter!\rAnd, you know?\nWe just failed to beat {STRVAR_1 0, 11, 0} by\fa tiny margin.\rI’m guessing my Pokémon’s levels\naren’t high enough yet...\rSee you later!
+You must be a lot better now, huh?\rHow about showing me your technique\nin a real battle with me?\rI’ll be waiting on {STRVAR_1 4, 3, 0}.
+Where are you?\nLet’s have our battle soon!\rI’ll be waiting on {STRVAR_1 4, 3, 0}.
+Hello!\rYou know, I was on the sixth floor of\nthe Goldenrod Department Store trying\fout the drawing. It’s so exciting!

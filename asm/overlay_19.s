@@ -15,7 +15,7 @@ ov19_022598C0: ; 0x022598C0
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0xb
 	str r0, [r4]
 	str r5, [r4, #0x14]
@@ -186,7 +186,7 @@ _02259A26:
 	mov r1, #0
 	bl ov19_02259E20
 	ldr r0, _02259A8C ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	str r0, [r5, #0xc]
 	b _02259A88
@@ -203,7 +203,7 @@ _02259A48:
 	mov r1, #1
 	bl ov19_02259E20
 	ldr r0, _02259A90 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #2
 	str r0, [r5, #0xc]
 	b _02259A88
@@ -223,7 +223,7 @@ _02259A70:
 	mov r1, #2
 	bl ov19_02259E20
 	ldr r0, _02259A90 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #3
 	str r0, [r5, #0xc]
 	b _02259A88
@@ -458,7 +458,7 @@ ov19_02259BC0: ; 0x02259BC0
 	add r2, r2, r3
 	mov r1, #7
 	lsl r3, r7, #6
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -485,20 +485,20 @@ ov19_02259C68: ; 0x02259C68
 	ldr r3, [r6]
 	mov r1, #0x1b
 	add r2, r0, #0
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r6, #0x24]
 	ldr r2, [r6]
 	mov r0, #6
 	mov r1, #0x16
-	bl sub_0200BD18
+	bl ScrStrBufs_new_custom
 	str r0, [r6, #0x28]
 	ldr r1, [r6]
 	mov r0, #0x80
-	bl sub_02026354
+	bl String_ctor
 	str r0, [r6, #0x2c]
 	ldr r0, [r6, #0x24]
 	mov r1, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r6, #0x30]
 	mov r4, #0
 	add r5, r6, #0
@@ -506,7 +506,7 @@ _02259CA6:
 	add r1, r4, #0
 	ldr r0, [r6, #0x24]
 	add r1, #0xa
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [r5, #0x34]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -523,19 +523,19 @@ ov19_02259CBC: ; 0x02259CBC
 	add r5, r6, #0
 _02259CC4:
 	ldr r0, [r5, #0x34]
-	bl sub_02026380
+	bl String_dtor
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
 	blt _02259CC4
 	ldr r0, [r6, #0x30]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r6, #0x2c]
-	bl sub_02026380
+	bl String_dtor
 	ldr r0, [r6, #0x28]
-	bl sub_0200BDA0
+	bl ScrStrBufs_delete
 	ldr r0, [r6, #0x24]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	mov r0, #4
 	bl sub_02002DB4
 	pop {r4, r5, r6, pc}
@@ -554,10 +554,10 @@ _02259D00:
 	ldr r0, [r7, #0x18]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201D4F8
+	bl AddWindow
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	add r6, r6, #1
 	add r4, #8
 	add r5, #0x10
@@ -576,9 +576,9 @@ ov19_02259D24: ; 0x02259D24
 	add r5, #0x3c
 _02259D2C:
 	add r0, r5, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #2
@@ -750,7 +750,7 @@ ov19_02259E64: ; 0x02259E64
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	ldrh r0, [r5, #0x32]
 	add r1, r7, #0
 	add r2, r6, #0
@@ -762,11 +762,11 @@ ov19_02259E64: ; 0x02259E64
 	mov r1, #1
 	add r2, r6, #0
 	str r3, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	add r1, r5, #0
 	add r0, r6, #0
 	add r1, #0x18
-	bl sub_020269A0
+	bl CopyU16ArrayToString
 	mov r0, #0
 	mov r1, #2
 	str r0, [sp]
@@ -774,7 +774,7 @@ ov19_02259E64: ; 0x02259E64
 	add r2, r6, #0
 	add r3, r1, #0
 	str r1, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #1
@@ -789,7 +789,7 @@ ov19_02259E64: ; 0x02259E64
 	add r2, r3, r2
 	mov r1, #3
 	mov r3, #4
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	str r3, [sp]
 	mov r0, #1
@@ -800,7 +800,7 @@ ov19_02259E64: ; 0x02259E64
 	lsl r2, r2, #0x18
 	mov r1, #4
 	lsr r2, r2, #0x18
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	mov r3, #2
 	str r3, [sp]
 	mov r0, #1
@@ -811,7 +811,7 @@ ov19_02259E64: ; 0x02259E64
 	lsl r2, r2, #0x18
 	mov r1, #5
 	lsr r2, r2, #0x18
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov19_02259E64
@@ -846,7 +846,7 @@ _02259F20:
 	mov r1, #7
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	add r4, r4, #1
 	cmp r4, #5
 	blt _02259F20
@@ -858,7 +858,7 @@ _02259F20:
 	blt _02259F16
 	ldr r0, [r7, #0x18]
 	mov r1, #7
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -910,12 +910,12 @@ ov19_02259F64: ; 0x02259F64
 	bls _02259FCC
 	ldr r1, [r4, #0x2c]
 	ldr r2, [r4, #0x38]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 	b _02259FD4
 _02259FCC:
 	ldr r1, [r4, #0x2c]
 	ldr r2, [r4, #0x34]
-	bl sub_0200CBBC
+	bl StringExpandPlaceholders
 _02259FD4:
 	mov r1, #0
 	str r1, [sp]

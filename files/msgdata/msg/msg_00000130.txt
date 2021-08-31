@@ -1,0 +1,33 @@
+Hm... Good to see you here.\fNo need to explain why you came.\rClair sent you here, didn’t she?\fThat girl is a handful...\rI am sorry, but I must test you.\rNot to worry, you are to answer only\na few questions.\fReady?\r
+What are Pokémon to you? {YESNO 0}
+What helps you to win battles? {YESNO 0}
+What kind of Trainer do you\nwish to battle? {YESNO 0}
+What is most important for\nraising Pokémon? {YESNO 0}
+Strong Pokémon. Weak Pokémon.\nWhich is more important? {YESNO 0}
+Hm... I see...\nYou care deeply for Pokémon.\rVery commendable.\fThat conviction is what is important!\r{STRVAR_1 3, 0, 0}, don’t lose that belief.\rIt will see you through at the\nPokémon League.\r
+Hah? I didn’t quite catch that...\r
+What was it you said?
+Oh, I understand...\r
+So how did it go?\rI guess there’s no point in asking.\nYou did fail?\f...\f...What? You passed?\r
+{SIZE 200}That can’t be!{SIZE 100}\r
+You’re lying!\nEven I haven’t been approved!\r
+Clair!\rThis child is impeccable,\nin skill and spirit!\rAdmit defeat and confer the\nRising Badge!\r...Or must I inform Lance of this?\r
+I... I understand...\r
+Here, this is the Rising Badge...\nHurry up! Take it!\r
+{STRVAR_1 3, 0, 0} received\nthe Rising Badge from Clair!
+The Rising Badge will enable your\nPokémon to use the move for\fclimbing waterfalls.\rAlso, all Pokémon will know you as\na Trainer and obey your every\fcommand without question.\r
+Clair...\rReflect upon what it is that you\nlack and this child has.\r
+...\n...\r
+By the way...\nHave you heard of LUGIA?\rIt is a Pokémon said to have lived\naround Whirl Islands once...\f...Never mind.\rJust mad words of the old.\n
+By the way...\nHave you heard of LUGIA?\fEr...\rBetween Olivine and Cianwood are\nislands called Whirl Islands.\rThere is a huge waterfall deep in the\ncave there. It is said that LUGIA\rrests in the deep end of the\nwaterfall basin...\rYou need a Silver Wing to reach the\nwaterfall basin, I’ve heard...
+There is a huge waterfall deep in the\ncave there. It is said that LUGIA\rrests in the deep end of the\nwaterfall basin...\rYou need a Silver Wing to reach the\nwaterfall basin, I’ve heard...
+Come again, if you so desire.
+It’s been quite some time since a\nTrainer has gained our Master’s\frare approval.\rIn fact, not since Master Lance.
+You know young Master Lance?\rHe looks so much like our Master\ndid in his youth.\fIt’s in their blood.
+Hm... Good to see you here.\rYour arrival is most fortunate.\nI have something for you.\rTake this DRATINI as proof that I\nnow know your worth.\r
+{STRVAR_1 3, 0, 0} received\nDRATINI from the Master!
+Hm? Your party is full.
+Dragon Pokémon are symbolic of\nour clan.\rYou have shown that you can be\nentrusted with one.
+Clair appears to have learned an\ninvaluable lesson from you.\rI thank you as her grandfather.
+A boy close to your age is in\ntraining here.\rHe is much like Clair when she was\nyounger. It is a little worrisome...
+Give a nickname to the\nDRATINI you received? {YESNO 0}

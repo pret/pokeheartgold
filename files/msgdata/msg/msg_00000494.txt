@@ -1,0 +1,4 @@
+Hello! Welcome to the Celadon\nDepartment Store!\rThe directory is on the wall next to\nthe elevator.
+This department store is part of the\nsame chain as the one in Goldenrod City.\rThey were both renovated at the\nsame time.
+This is my first time here.\nIt’s so big...\fI’m afraid I’ll get lost.
+1F: Service Counter\n2F: Trainer’s Market\f3F: TM Shop\f4F: Wiseman Gifts\f5F: Battle Collection\f6F: Rooftop Atrium

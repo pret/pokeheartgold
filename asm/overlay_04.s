@@ -251,7 +251,7 @@ _0225400C:
 	bl sub_0205C858
 	mov r0, #0x61
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5]
 	add sp, #0x18
 	add r0, r0, #1
@@ -315,7 +315,7 @@ _0225408C:
 	mov r1, #1
 	bl sub_0205C874
 	ldr r0, _022540BC ; =0x00000619
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r6, #0
 	bl sub_0200E390
 	ldr r0, [r5]
@@ -349,7 +349,7 @@ _022540DC:
 	bl sub_0205C858
 	mov r0, #0x61
 	lsl r0, r0, #4
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5]
 	add sp, #0x18
 	add r0, r0, #1
@@ -413,7 +413,7 @@ _0225415C:
 	mov r1, #1
 	bl sub_0205C874
 	ldr r0, _0225418C ; =0x00000619
-	bl sub_0200604C
+	bl PlaySE
 	add r0, r6, #0
 	bl sub_0200E390
 	ldr r0, [r5]
@@ -444,7 +444,7 @@ ov04_02254190: ; 0x02254190
 	ldr r0, [r4, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r4, #4]
 	mov r6, #0
 	ldr r5, [r0, #0x24]
@@ -723,7 +723,7 @@ ov04_02254404: ; 0x02254404
 	bl sub_0202AEA8
 	add r4, r0, #0
 	ldr r0, _02254560 ; =0x00000619
-	bl sub_0200604C
+	bl PlaySE
 	cmp r6, #0
 	bne _022544B6
 	ldr r2, [r4, #4]
@@ -1282,7 +1282,7 @@ _0225482A:
 	mov r2, #0
 	bl ov01_021E8E70
 	ldr r0, _02254B9C ; =0x0000087B
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r6]
 	add sp, #0x98
 	add r0, r0, #1
@@ -1344,7 +1344,7 @@ _022548C6:
 	add r0, r4, #0
 	add r0, #0x38
 	add r1, r0, #0
-	bl sub_020CCFE0
+	bl VEC_Normalize
 	ldr r2, _02254BA4 ; =0x02257350
 	add r3, sp, #0x8c
 	ldmia r2!, {r0, r1}
@@ -1355,7 +1355,7 @@ _022548C6:
 	str r0, [r3]
 	add r0, r4, #0
 	add r0, #0x38
-	bl sub_020CCE14
+	bl VEC_DotProduct
 	str r0, [sp, #0x34]
 	add r1, r4, #0
 	add r1, #0x38
@@ -1367,7 +1367,7 @@ _022548C6:
 	mov r0, #2
 	lsl r0, r0, #0xc
 	add r3, r1, #0
-	bl sub_020CD224
+	bl VEC_MultAdd
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
 	bne _0225494A
@@ -1489,7 +1489,7 @@ _02254A14:
 	add r1, r4, #0
 	add r1, #0x38
 	add r2, r0, #0
-	bl sub_020CCD78
+	bl VEC_Add
 _02254A22:
 	ldrb r1, [r4, #0x17]
 	add r0, r5, #0
@@ -1535,7 +1535,7 @@ _02254A22:
 	add r1, r7, #0
 	str r0, [r3]
 	add r0, r2, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	mov r0, #0x1b
 	ldrsb r0, [r4, r0]
 	ldr r1, [sp, #0x70]
@@ -1567,7 +1567,7 @@ _02254AA6:
 	add r1, r7, #0
 	str r0, [r3]
 	add r0, r2, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	ldr r1, [sp, #0x58]
 	lsl r0, r6, #0x10
 	add r0, r1, r0
@@ -1820,7 +1820,7 @@ ov04_02254CBC: ; 0x02254CBC
 	ldr r0, [r5, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
 	mov r1, #1
 	lsl r1, r1, #8
@@ -2026,7 +2026,7 @@ _02254E6E:
 	cmp r1, #0x1e
 	blt _02254F18
 	ldr r0, _02254F1C ; =0x00000904
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -2189,7 +2189,7 @@ ov04_02254F8C: ; 0x02254F8C
 	mov r1, #0
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x24]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [sp, #4]
 	ldr r2, _02255078 ; =0x02257620
 	ldr r0, [r0, #4]
@@ -3223,7 +3223,7 @@ _0225574A:
 	mov r0, #8
 	str r0, [r4]
 	ldr r0, _022557F8 ; =0x00000902
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5]
 	ldr r1, _022557FC ; =ov04_02255AC4
 	add r2, r4, #0
@@ -3256,7 +3256,7 @@ _02255762:
 	str r0, [r4, #0x54]
 	bl ov04_022558D0
 	ldr r0, _022557F8 ; =0x00000902
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5]
 	ldr r1, _02255800 ; =ov04_022559C8
 	add r2, r4, #0
@@ -3290,7 +3290,7 @@ _022557AA:
 	str r0, [r4, #0x54]
 	bl ov04_022558D0
 	ldr r0, _022557F8 ; =0x00000902
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5]
 	ldr r1, _02255800 ; =ov04_022559C8
 	add r2, r4, #0
@@ -3769,7 +3769,7 @@ _02255B24:
 	mov r0, #0xa
 	str r0, [r4]
 	ldr r0, _02255CB4 ; =0x00000914
-	bl sub_0200604C
+	bl PlaySE
 	b _02255CB0
 _02255B5E:
 	mov r0, #0xc
@@ -4121,7 +4121,7 @@ _02255DEA:
 	add r1, r4, #0
 	add r1, #0x58
 	add r2, r0, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	ldr r0, [sp]
 	add r1, sp, #0x34
 	bl ov01_021F3B1C
@@ -4134,7 +4134,7 @@ _02255DEA:
 	add r1, r4, #0
 	add r1, #0x58
 	add r2, r0, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	add r0, r6, #0
 	add r1, sp, #0x28
 	bl sub_0205F954
@@ -4214,7 +4214,7 @@ _02255ED6:
 	pop {r3, r4, r5, r6, r7, pc}
 _02255EDE:
 	ldr r0, _02255FBC ; =0x00000914
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #5
 	add sp, #0x40
 	str r0, [r4]
@@ -4265,7 +4265,7 @@ _02255F1C:
 	add r1, r4, #0
 	add r1, #0x58
 	add r2, r0, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	add r0, r5, #0
 	add r1, sp, #0x10
 	bl ov01_021F3B1C
@@ -4278,7 +4278,7 @@ _02255F1C:
 	add r1, r4, #0
 	add r1, #0x58
 	add r2, r0, #0
-	bl sub_020CCD78
+	bl VEC_Add
 	add r0, r5, #0
 	add r1, sp, #4
 	bl sub_0205F954
@@ -4339,7 +4339,7 @@ ov04_02255FC0: ; 0x02255FC0
 	ldr r0, [r5, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x24]
 	str r5, [r0]
@@ -4744,7 +4744,7 @@ ov04_02256304: ; 0x02256304
 	ldr r0, [r5, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x24]
 	str r5, [r0]
@@ -5097,7 +5097,7 @@ _022565CE:
 	blo _022565CE
 _022565E4:
 	ldr r0, _0225664C ; =0x00000623
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [sp, #0xc]
 	mov r1, #6
 	str r1, [r0]
@@ -5130,7 +5130,7 @@ _0225660E:
 	blo _0225660E
 _02256628:
 	ldr r0, _0225664C ; =0x00000623
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [sp, #0xc]
 	mov r1, #6
 	str r1, [r0]
@@ -5167,7 +5167,7 @@ ov04_02256650: ; 0x02256650
 	ldr r0, [r4, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r4, #4]
 	mov r1, #4
 	ldr r4, [r0, #0x24]
@@ -5240,7 +5240,7 @@ ov04_022566EC: ; 0x022566EC
 	bpl _0225670A
 	mov r0, #6
 	lsl r0, r0, #8
-	bl sub_0200604C
+	bl PlaySE
 	pop {r4, r5, r6, pc}
 _0225670A:
 	ldr r0, _0225672C ; =0x00001DB4
@@ -5255,7 +5255,7 @@ _0225670A:
 	lsr r2, r2, #0x18
 	bl ov04_02256950
 	ldr r0, _02256730 ; =0x00000903
-	bl sub_0200604C
+	bl PlaySE
 _0225672A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5843,7 +5843,7 @@ ov04_02256B64: ; 0x02256B64
 	ldr r0, [r4, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r4, #4]
 	mov r1, #4
 	ldr r0, [r0, #0x24]
@@ -6240,7 +6240,7 @@ ov04_02256E60: ; 0x02256E60
 	mov r1, #0
 	ldr r0, [r0, #0x24]
 	lsl r2, r2, #2
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r4, [r0, #0x24]
 	add r0, r4, #0

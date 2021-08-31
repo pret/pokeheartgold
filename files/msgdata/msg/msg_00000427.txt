@@ -1,0 +1,11 @@
+Ding-dong!\rTime’s up!\nYour Safari Game is over.\r
+Ding-dong!\rYou’ve run out of Safari Balls.\nYour Safari Game is over.\r
+Ding-dong!\rYou’re out of room for more Pokémon.\nYour Safari Game is over!\r
+Would you like to exit the\nSafari Zone right now? {YESNO 0}
+Place an object? {YESNO 0}
+Placed {STRVAR_1 8, 0, 0}!
+Remove the {STRVAR_1 8, 0, 0}? {YESNO 0}
+Removed the {STRVAR_1 8, 0, 0}!
+You cannot place any more objects in\nthis Area!
+You have no objects that can\nbe placed.
+There’s no space to place\nan object!

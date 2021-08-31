@@ -1,0 +1,14 @@
+Alan
+When I’m reading textbooks and walking,\nI have to look down, so I notice items\fon the ground.\rNext time I find something, I’ll give it\nto you.\rMay I have your phone number? {YESNO 0}
+I’ll call you as soon as I find\nsomething. You can count on it!
+Oh... I thought it would be a good\nbreak to call you when I’m studying...
+If I find something, it’s yours.\nSo may I have your phone number? {YESNO 0}
+This, this! This is yours! Ta-da!\r
+Huh?\nWait. Don’t tell me you’re nearby?\rDid you not notice because you were\ntoo busy looking at the ground, too?
+My {STRVAR_1 0, 10, 0}’s getting stronger,\nexactly as I calculated!\rBy the way, we knocked out a wild\n{STRVAR_1 0, 11, 0} just the other day.\rStudying up in advance worked!\rSee you later!
+My {STRVAR_1 0, 10, 0}’s getting stronger,\nexactly as I calculated!\rBy the way, a wild {STRVAR_1 0, 11, 0} escaped\non me yesterday.\rA computational error on my part...\rSee you later!
+I’ve studied quite a bit since then, and\nI’ve gotten a lot better!\rI’m hanging out on {STRVAR_1 4, 3, 0}.\nCan you come down for a battle?
+If we don’t battle soon, I’ll forget my\nstrategy!\rI’m waiting on {STRVAR_1 4, 3, 0}!
+I haven’t picked up anything yet.\nI’ll call you if I find something.
+Heh heh. I found something really\nawesome earlier!\rI’ll give it to you. Can you come to\n{STRVAR_1 4, 3, 0} and pick it up?
+I have to do my homework, so can you\ncome get your gift right away?\rI’m waiting on {STRVAR_1 4, 3, 0}!

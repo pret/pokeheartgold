@@ -202,7 +202,7 @@ _021E5A94:
 	add r1, r4, #0
 	bl sub_0202F5B8
 	add r0, r7, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0
@@ -230,7 +230,7 @@ _021E5AD4:
 	mov r0, #1
 	mov r1, #0x1b
 	mov r3, #3
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [sp, #0x1c]
 	add r0, r6, #0
 	bl sub_0202B50C
@@ -247,12 +247,12 @@ _021E5AD4:
 	str r3, [sp, #0xc]
 	bl sub_0206DE38
 	add r0, r7, #0
-	bl sub_02028F94
+	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _021E5B36
 	ldr r0, [sp, #0x1c]
 	mov r1, #1
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x18]
 	mov r0, #0
 	str r0, [sp]
@@ -265,7 +265,7 @@ _021E5AD4:
 _021E5B36:
 	ldr r0, [sp, #0x1c]
 	mov r1, #0
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	str r0, [sp, #0x18]
 	mov r2, #0
 	ldr r0, [sp, #0x10]
@@ -281,7 +281,7 @@ _021E5B4E:
 _021E5B56:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_0201585C
+	bl MailMsg_init_fromTemplate
 	lsl r2, r5, #0x18
 	add r0, r6, #0
 	add r1, r7, #0
@@ -292,7 +292,7 @@ _021E5B56:
 	cmp r5, #2
 	blt _021E5B56
 	add r0, sp, #0x20
-	bl sub_0201581C
+	bl MailMsg_init
 	add r0, r6, #0
 	add r1, sp, #0x20
 	mov r2, #2
@@ -305,16 +305,16 @@ _021E5B56:
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	ldr r0, [sp, #0x18]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x1c]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E5BAC: .word 0x000001BD
-_021E5BB0: .word 0x021E5C34
+_021E5BB0: .word ov36_021E5C34
 	thumb_func_end ov36_021E5A38
 
 	thumb_func_start ov36_021E5BB4
@@ -357,9 +357,12 @@ _021E5C00: .word 0x0000DB56
 
 	.rodata
 
-_021E5C04:
-	.byte 0x9D, 0x59, 0x1E, 0x02, 0xB5, 0x59, 0x1E, 0x02, 0x1D, 0x5A, 0x1E, 0x02
-	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x49, 0x59, 0x1E, 0x02, 0x61, 0x59, 0x1E, 0x02, 0x81, 0x59, 0x1E, 0x02
-	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x01, 0x59, 0x1E, 0x02, 0x19, 0x59, 0x1E, 0x02, 0x2D, 0x59, 0x1E, 0x02
-	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x02, 0x04, 0x07, 0x08, 0x52, 0x00, 0x18, 0x00, 0x03, 0x01, 0x0A, 0xFF
-	.byte 0x07, 0x00, 0x00, 0x00
+	.public ov36_021E5C04
+ov36_021E5C04:
+	.word ov36_021E599C, ov36_021E59B4, ov36_021E5A1C, 0xFFFFFFFF
+ov36_021E5C14:
+	.word ov36_021E5948, ov36_021E5960, ov36_021E5980, 0xFFFFFFFF
+ov36_021E5C24:
+	.word ov36_021E5900, ov36_021E5918, ov36_021E592C, 0xFFFFFFFF
+ov36_021E5C34:
+	.byte 0x02, 0x04, 0x07, 0x08, 0x52, 0x00, 0x18, 0x00, 0x03, 0x01, 0x0A, 0xFF, 0x07, 0x00, 0x00, 0x00

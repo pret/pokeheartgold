@@ -35,7 +35,7 @@ _021E591A:
 _021E5936:
 	ldr r2, _021E5A84 ; =0x000004C8
 	mov r1, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -95,14 +95,14 @@ _021E59B6:
 	mov r1, #0x1b
 	lsl r2, r2, #2
 	mov r3, #0x49
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	mov r1, #0x8a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x49
-	bl sub_02026354
+	bl String_ctor
 	mov r1, #0x8f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -120,12 +120,12 @@ _021E59B6:
 #else
 	mov r1, #1
 #endif
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	mov r0, #0x46
 	str r0, [sp]
 	mov r0, #0xff
@@ -144,7 +144,7 @@ _021E59B6:
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	mov r1, #0xfe
 	ldr r0, _021E5A98 ; =0x00000257
 	mov r2, #1
@@ -222,13 +222,13 @@ _021E5AD6:
 	lsl r0, r0, #2
 	add r4, r6, r0
 	add r0, r4, #4
-	bl sub_0201D520
+	bl RemoveWindow
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200BB44
+	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
 	bl ov76_021E5EE0
 	mov r4, #0
@@ -407,7 +407,7 @@ _021E5C4A:
 	ldr r2, [r5, #4]
 	add r0, #0xc0
 	mov r1, #6
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -420,10 +420,10 @@ _021E5C4A:
 	ldr r2, [r5, #4]
 	add r0, #0xc0
 	mov r1, #0x13
-	bl sub_02007914
+	bl GfGfxLoader_LoadScrnData
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl sub_0201BF7C
+	bl BgCommitTilemapBufferToVram
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022C60
@@ -771,7 +771,7 @@ ov76_021E5F1C: ; 0x021E5F1C
 	ldr r2, [sp, #0x10]
 	add r0, #0xc0
 	mov r3, #3
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -783,7 +783,7 @@ ov76_021E5F1C: ; 0x021E5F1C
 	add r0, #0xc0
 	mov r1, #5
 	mov r3, #7
-	bl sub_020078F0
+	bl GfGfxLoader_LoadCharData
 	mov r0, #0xe0
 	str r0, [sp]
 	mov r0, #0x49
@@ -792,7 +792,7 @@ ov76_021E5F1C: ; 0x021E5F1C
 	add r0, #0xc0
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	mov r0, #0xe0
 	str r0, [sp]
 	mov r0, #0x49
@@ -801,7 +801,7 @@ ov76_021E5F1C: ; 0x021E5F1C
 	add r0, #0xc0
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_02007938
+	bl GfGfxLoader_GXLoadPal
 	ldr r0, _021E6074 ; =0x00000498
 	mov r4, #0
 	add r0, r7, r0
@@ -821,7 +821,7 @@ _021E5FB2:
 	mov r2, #1
 	add r3, r3, r5
 	add r6, r7, r5
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	ldr r1, _021E6078 ; =0x00000468
 	ldr r3, [sp, #0x18]
 	str r0, [r6, r1]
@@ -832,7 +832,7 @@ _021E5FB2:
 	add r0, #0xc0
 	mov r2, #1
 	add r3, r3, r5
-	bl sub_020079D8
+	bl GfGfxLoader_GetScrnData
 	mov r1, #0x12
 	lsl r1, r1, #6
 	str r0, [r6, r1]
@@ -849,7 +849,7 @@ _021E5FB2:
 	ldr r3, [r3, #8]
 	mov r1, #2
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	mov r0, #0x4b
 	lsl r0, r0, #4
 	ldr r3, [r7, r0]
@@ -858,7 +858,7 @@ _021E5FB2:
 	ldr r3, [r3, #8]
 	mov r1, #3
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, _021E6074 ; =0x00000498
 	mov r1, #6
 	ldr r3, [r7, r0]
@@ -866,7 +866,7 @@ _021E5FB2:
 	add r2, r3, #0
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	mov r0, #0x4b
 	lsl r0, r0, #4
 	ldr r3, [r7, r0]
@@ -875,19 +875,19 @@ _021E5FB2:
 	ldr r3, [r3, #8]
 	mov r1, #7
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [sp, #0x10]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0x10]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0x10]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0x10]
 	mov r1, #7
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #2
 	mov r1, #0
 	bl sub_02022C60
@@ -1765,10 +1765,10 @@ _021E671A:
 	add r2, r3, #0
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r6, #4]
 	mov r1, #7
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, _021E680C ; =0x00000498
 	mov r1, #6
 	add r0, r6, r0
@@ -1778,20 +1778,20 @@ _021E671A:
 	ldr r0, [r6, #4]
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r6, #4]
 	mov r1, #6
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r3, [r7, r5]
 	ldr r0, [r6, #4]
 	add r2, r3, #0
 	ldr r3, [r3, #8]
 	mov r1, #3
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r6, #4]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #4]
 	mov r1, #2
 	ldr r3, [r0, r5]
@@ -1799,10 +1799,10 @@ _021E671A:
 	add r2, r3, #0
 	ldr r3, [r3, #8]
 	add r2, #0xc
-	bl sub_0201C0A8
+	bl BG_LoadScreenTilemapData
 	ldr r0, [r6, #4]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x60
@@ -2011,7 +2011,7 @@ ov76_021E6904: ; 0x021E6904
 	ldr r0, [r4, #4]
 	ldr r2, _021E6940 ; =0x021E6E98
 	add r1, r4, r1
-	bl sub_0201D4F8
+	bl AddWindow
 	mov r2, #0
 	str r2, [sp]
 	ldr r0, [r4, #4]
@@ -2234,7 +2234,7 @@ ov76_021E6A94: ; 0x021E6A94
 	ldrh r4, [r0, r1]
 	add r0, r5, #4
 	mov r1, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x10]
 	cmp r4, r0
 	bne _021E6B18
@@ -2252,7 +2252,7 @@ _021E6AC8:
 	ldrb r6, [r1, #3]
 	ldr r0, [r5]
 	ldr r1, [r1, #4]
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	str r6, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -2281,7 +2281,7 @@ _021E6AC8:
 	beq _021E6AC8
 _021E6B18:
 	add r0, r5, #4
-	bl sub_0201D578
+	bl CopyWindowToVram
 _021E6B1E:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -2458,7 +2458,7 @@ _021E6C42:
 	add r1, r4, r1
 	ldr r1, [r1, #0x10]
 	mov r2, #0x20
-	bl sub_020CFD18
+	bl GX_LoadOBJPltt
 	mov r0, #0x49
 	str r0, [sp]
 	lsl r5, r6, #4

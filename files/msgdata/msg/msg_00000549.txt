@@ -1,0 +1,19 @@
+Lyra: {STRVAR_1 3, 0, 0}!\rProfessor Elm was looking for you.\nDid you go to his lab?
+Ethan: {STRVAR_1 3, 0, 0}!\rProfessor Elm was looking for you.\nDid you go to his lab?
+Lyra: My MARILL is super cute...\nBut your {STRVAR_1 0, 1, 0} looks pretty\fgood, too, {STRVAR_1 3, 0, 0}!
+Ethan: My MARILL is super cool...\nBut your {STRVAR_1 0, 1, 0} looks pretty\fgood, too, {STRVAR_1 3, 0, 0}!
+MARILL: Qurururoon.
+Lyra: Isn’t it strange that when we are\nwith Pokémon, going out is just so much\fmore fun!\r{STRVAR_1 3, 0, 0}!\nTry going to different places and talk\fto your Pokémon!\rI bet you’ll find out so many things\nabout them!
+Ethan: Isn’t it strange that when we\nare with Pokémon, going out is just so\fmuch more fun!\r{STRVAR_1 3, 0, 0}!\nTry going to different places and talk\fto your Pokémon!\rI bet you’ll find so many things\nabout them!
+Lyra: Hi, {STRVAR_1 3, 0, 0}!\nHow are your Pokémon?\fDon’t forget to talk to...\rWhat’s that?\nYour Pokémon is holding a leaf...\rCould that be a Shiny Leaf?\nLegend has it that only Pokémon\fthat have formed a close bond with\fpeople can find such leaves...\rPeople used to turn the leaves into a\nbeautiful crown when they managed\fto collect five of them.\rWow!\nI knew you could obtain one,\f{STRVAR_1 3, 0, 0}!\fLet me see it when you find another!
+Ethan: Hi, {STRVAR_1 3, 0, 0}!\nHow are your Pokémon?\fDon’t forget to talk to...\rWhat’s that?\nYour Pokémon is holding a leaf...\rCould that be a Shiny Leaf?\nLegend has it that only Pokémon\fthat have formed a close bond with\fpeople can find such leaves...\rPeople used to turn the leaves into a\nbeautiful crown when they managed\fto collect five of them.\rWow!\nI knew you could obtain one,\f{STRVAR_1 3, 0, 0}!\fLet me see it when you find another!
+Lyra: Hi, {STRVAR_1 3, 0, 0}!\nHow is your Pokémon you’re\fwalking with?\rYou can talk to it as you walk from time\nto time to nurture your friendship!\r...\nOh!\rYou found a Shiny Leaf!\nLet me see!\rHa! You’ve collected...\r{STRVAR_1 50, 1, 0}!\rWay to go!\nKeep it up and collect {STRVAR_1 50, 2, 0} more!
+Ethan: Hi, {STRVAR_1 3, 0, 0}!\nHow is your Pokémon you’re\fwalking with?\rYou can talk to it as you walk from time\nto time to nurture your friendship!\r...\nOh!\rYou found a Shiny Leaf!\nLet me see!\rHa! You’ve collected...\r{STRVAR_1 50, 1, 0}!\rWay to go!\nKeep it up and collect {STRVAR_1 50, 2, 0} more!
+Lyra: Hi, {STRVAR_1 3, 0, 0}!\nHow is your Pokémon you’re\fwalking with?\rYou can talk to it as you walk from time\nto time to nurture your friendship!\r...\rHa! You have already collected five\fShiny Leaves!\rLet me turn them into a crown!\nAnd what’s more...\fI will give you this, too!\r
+Ethan: Hi, {STRVAR_1 3, 0, 0}!\nHow is your Pokémon you’re\fwalking with?\rYou can talk to it as you walk from time\nto time to nurture your friendship!\r...\rHa! You have already collected five\fShiny Leaves!\rLet me turn them into a crown!\nAnd what’s more...\fI will give you this, too!\r
+Lyra: Cherish your friendship with\nPokémon for years to come!
+Ethan: Cherish your friendship with\nPokémon for years to come!
+Lyra: Hi, {STRVAR_1 3, 0, 0}!\nHow is your Pokémon?\rYou can talk to it as you walk from time\nto time to nurture your friendship!\r...\rOh, I get it.\nAre you here to check on the award\fwith {STRVAR_1 1, 1, 0}?\r
+Ethan: Hi, {STRVAR_1 3, 0, 0}!\nHow is your Pokémon?\rYou can talk to it as you walk from time\nto time to nurture your friendship!\r...\rOh, I get it.\nAre you here to check on the award\fwith {STRVAR_1 1, 1, 0}?\r
+It’s a Wii!\rWii is huge in Johto, too!
+You shouldn’t mess with someone\nelse’s PC!

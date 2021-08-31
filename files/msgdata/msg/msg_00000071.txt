@@ -1,0 +1,4 @@
+Goldenrod City\nRadio Tower Elevator\fNext stop: Observation Deck\r
+Goldenrod City\nRadio Tower Elevator\fNext stop: 5F\r
+You’ve arrived at the Observation Deck.
+You have arrived at 5F.

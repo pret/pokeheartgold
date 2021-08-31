@@ -1,0 +1,19 @@
+Lyra: {STRVAR_1 3, 0, 0}!\nYou can catch wild Pokémon\fwith Poké Balls.\rFollow me!\r
+Ethan: {STRVAR_1 3, 0, 0}!\nYou can catch wild Pokémon\fwith Poké Balls.\rFollow me!\r
+...Just like that!\r...\nHuh? Was I too fast?\rI’ll try again. Come this way!\r
+See? Just like that!\rIt’s better to lower your\ntarget’s HP more than I did,\for make it sleep or something.\rYou can try all kinds of things\nto see what works.\rI’ll give you these. Good luck!\r
+See? Just like that!\rIt’s better to lower your\ntarget’s HP more than I did,\for make it sleep or something.\rYou can try all kinds of things\nto see what works.\rI’ll give you these. Good luck!\r
+                      
+                      
+Lyra: See you!\r
+Ethan: See ya!\r
+Hey, how are your Pokémon?\rIf they’re weak and not ready for\nbattle, keep out of the tall grass.
+Do you see those ledges?\nIt’s scary to jump off them.\rBut you can go to New Bark Town\nwithout walking through tall grass.
+I wanted to take a break, so I\nsaved to record my progress.
+I’m waiting for Pokémon that\nappear only in the daytime.
+I’m waiting for Pokémon that\nappear only at night.
+I’m waiting for Pokémon that\nappear only in the morning.
+Rt. 29\nWest to Cherrygrove City
+Rt. 29\nEast to New Bark Town
+Lyra: There you are!\r
+Ethan: There you are!\r

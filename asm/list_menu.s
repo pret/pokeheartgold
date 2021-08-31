@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start sub_020011DC
-sub_020011DC: ; 0x020011DC
+	thumb_func_start ListMenuInit
+ListMenuInit: ; 0x020011DC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -25,7 +25,7 @@ sub_020011DC: ; 0x020011DC
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	ldr r0, [sp]
-	bl sub_02015788
+	bl ListMenuCursorNew
 	str r0, [r4, #0x28]
 	strh r6, [r4, #0x2c]
 	add r1, r4, #0
@@ -151,31 +151,32 @@ _020012E0:
 	lsr r2, r2, #0x10
 	orr r1, r2
 	orr r1, r3
-	bl sub_020157D8
+	bl ListMenuCursorSetColor
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r4, #0xc]
 	lsl r1, r1, #0x1c
 	lsr r1, r1, #0x1c
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrh r1, [r4, #0x2c]
 	ldrh r3, [r4, #0x12]
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_02001688
+	bl ListMenuPrintEntries
 	add r0, r4, #0
-	bl sub_02001720
+	bl ListMenuDrawCursor
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_02001AD8
+	bl ListMenuCallSelectionChangedCallback
+	; static inline void ListMenuCopyToVram(struct ListMenu * list);
 	ldr r0, [r5, #0xc]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_020011DC
+	thumb_func_end ListMenuInit
 
-	thumb_func_start sub_02001338
-sub_02001338: ; 0x02001338
+	thumb_func_start ListMenu_ProcessInput
+ListMenu_ProcessInput: ; 0x02001338
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -208,7 +209,7 @@ _0200136A:
 	tst r1, r5
 	beq _02001388
 	add r1, r2, #0
-	bl sub_02001A18
+	bl ListMenuChangeSelection
 	cmp r0, #0
 	bne _02001382
 	mov r0, #1
@@ -225,7 +226,7 @@ _02001388:
 	beq _020013A8
 	add r1, r2, #0
 	add r3, r2, #0
-	bl sub_02001A18
+	bl ListMenuChangeSelection
 	cmp r0, #0
 	bne _020013A2
 	mov r0, #2
@@ -276,7 +277,7 @@ _020013E0:
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0
-	bl sub_02001A18
+	bl ListMenuChangeSelection
 	cmp r0, #0
 	bne _020013FE
 	mov r0, #3
@@ -295,7 +296,7 @@ _02001404:
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
 	add r3, r1, #0
-	bl sub_02001A18
+	bl ListMenuChangeSelection
 	cmp r0, #0
 	bne _02001422
 	mov r0, #4
@@ -311,10 +312,10 @@ _02001428:
 	pop {r4, r5, r6, pc}
 	nop
 _02001430: .word 0x021D110C
-	thumb_func_end sub_02001338
+	thumb_func_end ListMenu_ProcessInput
 
-	thumb_func_start sub_02001434
-sub_02001434: ; 0x02001434
+	thumb_func_start DestroyListMenu
+DestroyListMenu: ; 0x02001434
 	push {r4, lr}
 	add r4, r0, #0
 	cmp r1, #0
@@ -328,39 +329,40 @@ _02001440:
 	strh r0, [r2]
 _02001448:
 	ldr r0, [r4, #0x28]
-	bl sub_020157B8
+	bl DestroyListMenuCursorObj
 	add r0, r4, #0
 	add r0, #0x34
 	ldrb r0, [r0]
 	add r1, r4, #0
-	bl sub_0201AB80
+	bl FreeToHeapExplicit
 	pop {r4, pc}
-	thumb_func_end sub_02001434
+	thumb_func_end DestroyListMenu
 
-	thumb_func_start sub_0200145C
-sub_0200145C: ; 0x0200145C
+	thumb_func_start RedrawListMenu
+RedrawListMenu: ; 0x0200145C
 	push {r4, lr}
 	add r4, r0, #0
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r4, #0xc]
 	lsl r1, r1, #0x1c
 	lsr r1, r1, #0x1c
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrh r1, [r4, #0x2c]
 	ldrh r3, [r4, #0x12]
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_02001688
+	bl ListMenuPrintEntries
 	add r0, r4, #0
-	bl sub_02001720
+	bl ListMenuDrawCursor
+	; static inline void ListMenuCopyToVram(struct ListMenu * list);
 	ldr r0, [r4, #0xc]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200145C
+	thumb_func_end RedrawListMenu
 
-	thumb_func_start sub_02001488
-sub_02001488: ; 0x02001488
+	thumb_func_start ListMenuOverrideSetColors
+ListMenuOverrideSetColors: ; 0x02001488
 	push {r3, r4, r5, r6}
 	add r4, r0, #0
 	add r4, #0x20
@@ -403,20 +405,20 @@ sub_02001488: ; 0x02001488
 	strb r1, [r0]
 	pop {r3, r4, r5, r6}
 	bx lr
-	thumb_func_end sub_02001488
+	thumb_func_end ListMenuOverrideSetColors
 
-	thumb_func_start sub_020014DC
-sub_020014DC: ; 0x020014DC
+	thumb_func_start ListMenuGetCurrentItemArrayId
+ListMenuGetCurrentItemArrayId: ; 0x020014DC
 	ldrh r2, [r0, #0x2c]
 	ldrh r0, [r0, #0x2e]
 	add r0, r2, r0
 	strh r0, [r1]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020014DC
+	thumb_func_end ListMenuGetCurrentItemArrayId
 
-	thumb_func_start sub_020014E8
-sub_020014E8: ; 0x020014E8
+	thumb_func_start ListMenuGetScrollAndRow
+ListMenuGetScrollAndRow: ; 0x020014E8
 	cmp r1, #0
 	beq _020014F0
 	ldrh r3, [r0, #0x2c]
@@ -429,20 +431,20 @@ _020014F0:
 _020014F8:
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020014E8
+	thumb_func_end ListMenuGetScrollAndRow
 
-	thumb_func_start sub_020014FC
-sub_020014FC: ; 0x020014FC
+	thumb_func_start ListMenuGetValueByArrayId
+ListMenuGetValueByArrayId: ; 0x020014FC
 	ldr r2, [r0]
 	lsl r0, r1, #3
 	add r0, r2, r0
 	ldr r0, [r0, #4]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020014FC
+	thumb_func_end ListMenuGetValueByArrayId
 
-	thumb_func_start sub_02001508
-sub_02001508: ; 0x02001508
+	thumb_func_start ListMenuGetTemplateField
+ListMenuGetTemplateField: ; 0x02001508
 	push {r4, lr}
 	add r4, r0, #0
 	cmp r1, #0x13
@@ -507,7 +509,7 @@ _02001568:
 	lsr r0, r0, #0x1a
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02002FAC
+	bl GetFontAttribute
 	ldrh r1, [r4, #0x1a]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x1c
@@ -563,10 +565,10 @@ _020015CA:
 	mov r0, #0
 	mvn r0, r0
 	pop {r4, pc}
-	thumb_func_end sub_02001508
+	thumb_func_end ListMenuGetTemplateField
 
-	thumb_func_start sub_020015D0
-sub_020015D0: ; 0x020015D0
+	thumb_func_start ListMenuPrint
+ListMenuPrint: ; 0x020015D0
 	push {r4, r5, r6, lr}
 	sub sp, #0x18
 	add r5, r1, #0
@@ -619,7 +621,7 @@ sub_020015D0: ; 0x020015D0
 	ldrb r1, [r6]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x19
-	bl sub_02020150
+	bl AddTextPrinterParameterized3
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 _02001640:
@@ -655,14 +657,14 @@ _02001640:
 	ldr r0, [r6, #0xc]
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x1a
-	bl sub_02020150
+	bl AddTextPrinterParameterized3
 _02001684:
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_020015D0
+	thumb_func_end ListMenuPrint
 
-	thumb_func_start sub_02001688
-sub_02001688: ; 0x02001688
+	thumb_func_start ListMenuPrintEntries
+ListMenuPrintEntries: ; 0x02001688
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -675,7 +677,7 @@ sub_02001688: ; 0x02001688
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r6, r2, #0
-	bl sub_02002FAC
+	bl GetFontAttribute
 	ldrh r1, [r5, #0x1a]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x1c
@@ -727,7 +729,7 @@ _020016F6:
 	ldr r1, [r2, r1]
 	ldr r2, [sp, #4]
 	add r3, r7, #0
-	bl sub_020015D0
+	bl ListMenuPrint
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -742,10 +744,10 @@ _0200171A:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02001688
+	thumb_func_end ListMenuPrintEntries
 
-	thumb_func_start sub_02001720
-sub_02001720: ; 0x02001720
+	thumb_func_start ListMenuDrawCursor
+ListMenuDrawCursor: ; 0x02001720
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldrh r0, [r4, #0x1a]
@@ -754,7 +756,7 @@ sub_02001720: ; 0x02001720
 	lsr r0, r0, #0x1a
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02002FAC
+	bl GetFontAttribute
 	ldrh r1, [r4, #0x1a]
 	ldrh r5, [r4, #0x2e]
 	lsl r2, r1, #0x19
@@ -788,13 +790,13 @@ _02001766: ; jump table
 _0200176E:
 	ldr r0, [r4, #0x28]
 	ldr r1, [r4, #0xc]
-	bl sub_020157F0
+	bl ListMenuUpdateCursorObj
 _02001776:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02001720
+	thumb_func_end ListMenuDrawCursor
 
-	thumb_func_start sub_02001778
-sub_02001778: ; 0x02001778
+	thumb_func_start ListMenuErasePrintedCursor
+ListMenuErasePrintedCursor: ; 0x02001778
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -821,7 +823,7 @@ _0200179E:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #1
-	bl sub_02002FAC
+	bl GetFontAttribute
 	ldrh r1, [r4, #0x1a]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x1c
@@ -844,14 +846,14 @@ _0200179E:
 	lsl r3, r3, #0x10
 	lsr r1, r1, #0x1c
 	lsr r3, r3, #0x10
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 _020017DC:
 	add sp, #8
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02001778
+	thumb_func_end ListMenuErasePrintedCursor
 
-	thumb_func_start sub_020017E0
-sub_020017E0: ; 0x020017E0
+	thumb_func_start ListMenuUpdateSelectedRowIndexAndScroll
+ListMenuUpdateSelectedRowIndexAndScroll: ; 0x020017E0
 	push {r4, r5, r6, r7}
 	ldrh r4, [r0, #0x2e]
 	ldrh r3, [r0, #0x2c]
@@ -1016,10 +1018,10 @@ _020018F8:
 	pop {r4, r5, r6, r7}
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020017E0
+	thumb_func_end ListMenuUpdateSelectedRowIndexAndScroll
 
-	thumb_func_start sub_02001900
-sub_02001900: ; 0x02001900
+	thumb_func_start ListMenuScroll
+ListMenuScroll: ; 0x02001900
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -1032,12 +1034,12 @@ sub_02001900: ; 0x02001900
 	ldr r0, [r5, #0xc]
 	lsl r1, r1, #0x1c
 	lsr r1, r1, #0x1c
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldrh r1, [r5, #0x2c]
 	ldrh r3, [r5, #0x12]
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_02001688
+	bl ListMenuPrintEntries
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _0200192C:
@@ -1047,7 +1049,7 @@ _0200192C:
 	lsr r0, r0, #0x1a
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02002FAC
+	bl GetFontAttribute
 	ldrh r1, [r5, #0x1a]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x1c
@@ -1069,12 +1071,12 @@ _0200192C:
 	mov r1, #1
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201EC48
+	bl ScrollWindow
 	ldrh r1, [r5, #0x2c]
 	add r0, r5, #0
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_02001688
+	bl ListMenuPrintEntries
 	ldrb r0, [r5, #0x17]
 	lsl r0, r0, #0x1c
 	lsr r2, r0, #0x1c
@@ -1085,10 +1087,10 @@ _0200192C:
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	ldr r0, [r5, #0xc]
-	bl sub_0201EE90
+	bl GetWindowWidth
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0201EE94
+	bl GetWindowHeight
 	lsl r0, r0, #3
 	lsl r1, r4, #0x13
 	sub r0, r0, r6
@@ -1103,7 +1105,7 @@ _0200192C:
 	lsl r1, r1, #0x1c
 	lsr r1, r1, #0x1c
 	add r3, r6, #0
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _020019BA:
@@ -1119,7 +1121,7 @@ _020019BA:
 	mov r1, #0
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201EC48
+	bl ScrollWindow
 	ldrh r0, [r5, #0x12]
 	ldrh r1, [r5, #0x2c]
 	add r3, r4, #0
@@ -1130,9 +1132,9 @@ _020019BA:
 	add r0, r5, #0
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x10
-	bl sub_02001688
+	bl ListMenuPrintEntries
 	ldr r0, [r5, #0xc]
-	bl sub_0201EE90
+	bl GetWindowWidth
 	lsl r0, r0, #0x13
 	lsr r0, r0, #0x10
 	str r0, [sp]
@@ -1146,14 +1148,14 @@ _020019BA:
 	ldr r0, [r5, #0xc]
 	lsl r1, r1, #0x1c
 	lsr r1, r1, #0x1c
-	bl sub_0201DA74
+	bl FillWindowPixelRect
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02001900
+	thumb_func_end ListMenuScroll
 
-	thumb_func_start sub_02001A18
-sub_02001A18: ; 0x02001A18
+	thumb_func_start ListMenuChangeSelection
+ListMenuChangeSelection: ; 0x02001A18
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	str r1, [sp]
@@ -1171,7 +1173,7 @@ sub_02001A18: ; 0x02001A18
 _02001A34:
 	ldr r1, [sp, #8]
 	add r0, r4, #0
-	bl sub_020017E0
+	bl ListMenuUpdateSelectedRowIndexAndScroll
 	orr r5, r0
 	cmp r0, #2
 	bne _02001A5E
@@ -1220,38 +1222,40 @@ _02001A88:
 _02001A8E:
 	ldr r1, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_02001778
+	bl ListMenuErasePrintedCursor
 	add r0, r4, #0
-	bl sub_02001720
+	bl ListMenuDrawCursor
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02001AD8
+	bl ListMenuCallSelectionChangedCallback
+	; static inline void ListMenuCopyToVram(struct ListMenu * list);
 	ldr r0, [r4, #0xc]
-	bl sub_0201D578
+	bl CopyWindowToVram
 	b _02001AD2
 _02001AAC:
 	ldr r1, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_02001778
+	bl ListMenuErasePrintedCursor
 	ldr r2, [sp, #8]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_02001900
+	bl ListMenuScroll
 	add r0, r4, #0
-	bl sub_02001720
+	bl ListMenuDrawCursor
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02001AD8
+	bl ListMenuCallSelectionChangedCallback
+	; static inline void ListMenuCopyToVram(struct ListMenu * list);
 	ldr r0, [r4, #0xc]
-	bl sub_0201D578
+	bl CopyWindowToVram
 _02001AD2:
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02001A18
+	thumb_func_end ListMenuChangeSelection
 
-	thumb_func_start sub_02001AD8
-sub_02001AD8: ; 0x02001AD8
+	thumb_func_start ListMenuCallSelectionChangedCallback
+ListMenuCallSelectionChangedCallback: ; 0x02001AD8
 	push {r3, r4, r5, lr}
 	ldr r3, [r0, #4]
 	add r2, r1, #0
@@ -1267,4 +1271,4 @@ sub_02001AD8: ; 0x02001AD8
 	blx r3
 _02001AF2:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02001AD8
+	thumb_func_end ListMenuCallSelectionChangedCallback

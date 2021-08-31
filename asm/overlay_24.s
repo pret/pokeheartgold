@@ -14,7 +14,7 @@ ov24_022598C0: ; 0x022598C0
 	mov r1, #0
 	mov r2, #0xc0
 	add r4, r0, #0
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	mov r0, #3
 	str r0, [r4]
 	ldr r0, [r5, #0xc]
@@ -235,13 +235,13 @@ ov24_02259A4C: ; 0x02259A4C
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0200BE48
+	bl BufferPlayersName
 	b _02259AB4
 _02259A80:
 	ldrb r1, [r4]
 	add r0, r6, #0
 	add r1, #0x4e
-	bl sub_0200BBA0
+	bl NewString_ReadMsgData
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -250,21 +250,21 @@ _02259A80:
 	mov r1, #0
 	add r2, r6, #0
 	str r3, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r6, #0
-	bl sub_02026380
+	bl String_dtor
 	ldrb r2, [r4]
 	add r0, r5, #0
 	mov r1, #2
 	lsl r3, r2, #1
 	ldr r2, _02259AD8 ; =_02259F28
 	ldrh r2, [r2, r3]
-	bl sub_0200C2D4
+	bl BufferTrainerClassName
 _02259AB4:
 	ldrh r2, [r4, #6]
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200BEE8
+	bl BufferSpeciesName
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -273,7 +273,7 @@ _02259AB4:
 	ldrh r2, [r4, #2]
 	add r0, r5, #0
 	add r3, r1, #0
-	bl sub_0200BFCC
+	bl BufferIntegerAsString
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
@@ -317,7 +317,7 @@ ov24_02259AF8: ; 0x02259AF8
 _02259B10:
 	ldr r1, [r5]
 	mov r0, #0xc
-	bl sub_02026354
+	bl String_ctor
 	add r7, r0, #0
 	ldr r0, [r5, #0x10]
 	mov r1, #0x77
@@ -330,9 +330,9 @@ _02259B10:
 	add r1, r6, #0
 	add r2, r7, #0
 	str r3, [sp, #4]
-	bl sub_0200BE3C
+	bl BufferString
 	add r0, r7, #0
-	bl sub_02026380
+	bl String_dtor
 	ldrb r0, [r5, #0x15]
 	cmp r0, #6
 	blo _02259B48

@@ -1,0 +1,12 @@
+So many people have gone up\nthe tower with a Rainbow Wing\fto try and bring back HO-OH.\rBut none succeeded in making\nHO-OH appear...\rThe Rainbow Wing is merely to permit you\nto go up this tower.\rWhat HO-OH has longed for is the\ninvisible trust between people and\fPokémon...\rOr the person who can restore such\na relationship...\r
+A long time ago, there used to be a\nPokémon at the top of this tower,\fnamely HO-OH.\rBut it flew away, and no one has seen it\nsince...\rIf anyone who could restore deep trust\nbetween people and Pokémon were to\fcome here with something linked to\fHO-OH... It may come down for such\fa person...\r
+That thing you have...!\r
+You have done it...\nPlease come through.
+That Rainbow Wing will merely permit you\nto go up the tower.\rIf you are not the kind of person who\nwould restore the trust between people\fand Pokémon, HO-OH will never show\fitself to you...
+Hmmm.\rSo it was you and the Bell!
+You are quite a remarkable Trainer\nfor your age...
+Morty: Bell Tower is where\npeople and Pokémon test their trust.\rYou may be born with some talent...\fCan we exchange numbers?\rI would love to examine the trust\nyou have with your Pokémon. {YESNO 0}
+{STRVAR_1 3, 0, 0} registered Morty\nin the Pokégear!
+Morty: Give me a call on Tuesday nights.\nI should be free and ready.
+Morty: I really wanted to see the\ntrust you have with your Pokémon...
+Morty: Do you want to exchange\nnumbers? {YESNO 0}

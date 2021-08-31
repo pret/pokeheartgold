@@ -185,7 +185,7 @@ _021E5A64:
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldrb r0, [r5, r0]

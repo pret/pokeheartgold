@@ -1,0 +1,10 @@
+Your name? {YESNO 0}
+{STRVAR_1 1, 0, 0}’s nickname? {YESNO 0}
+Box name? {YESNO 0}
+This boy’s name? {YESNO 0}
+                    
+Group name? {YESNO 0}
+                      
+Group
+Your friend’s name? {YESNO 0}
+        

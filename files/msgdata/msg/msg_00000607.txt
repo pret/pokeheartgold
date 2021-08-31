@@ -1,0 +1,9 @@
+Pokémon get more friendly if you\nspend time with them.
+They can shine like a bright light--\nlike a beacon at night to guide us...\rThey can take us across the water on\ntheir backs when we are without\fa boat...\rPokémon are helping us everywhere.\fI can’t imagine a life without them!
+There’s a person in Cianwood City\nacross the sea.\rI heard him bragging about his\nrare Pokémon.
+...There!\nAll done!\fIt’s sure to surprise anyone!\r
+Oh, are you a Trainer?\rYou came at just the right time!\nI just finished putting my Ball Capsule\fon my Poké Ball.\rDo you want to battle and be\namazed by my decoration? {YESNO 0}
+All right!\nHere I come!\r
+You can turn your Poké Balls into your\nown special creations by adding Seals.\rHow cool is it to have a Poké Ball that\nonly you have in the entire world?\fGive it a whirl!\rOh, remember to put the Ball Capsule\non a Poké Ball once it’s ready!
+Oh, really?\rTalk to me if you want to see my\nBall Capsule sometime!
+Now you want to see my Ball Capsule?\rBattle me so I can show it to you! {YESNO 0}

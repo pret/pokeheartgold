@@ -50,7 +50,7 @@ ov56_021E5C20: ; 0x021E5C20
 	bl sub_0202ADCC
 	strb r0, [r4, #0xb]
 	mov r0, #1
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #8]
 	bl sub_020183F0
@@ -83,7 +83,7 @@ ov56_021E5CB4: ; 0x021E5CB4
 	bl sub_02007290
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_02002B34
+	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4, #0x1c]
 	ldrb r1, [r4, #0xa]
 	ldr r0, [r0, #8]
@@ -107,7 +107,7 @@ _021E5CE8:
 	ldr r0, [r6, #0x1c]
 	add r0, #0x1e
 	add r0, r0, r5
-	bl sub_02015920
+	bl MailMsg_IsInit
 	cmp r0, #0
 	beq _021E5CFA
 	mov r0, #0
@@ -240,7 +240,7 @@ _021E5DC4:
 	pop {r4, pc}
 _021E5DC8:
 	ldr r0, _021E5DD8 ; =0x000005E3
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -269,7 +269,7 @@ ov56_021E5DDC: ; 0x021E5DDC
 	cmp r0, #0
 	beq _021E5E10
 	ldr r0, _021E5EF0 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #2
 	strb r0, [r4, #0xc]
 	mov r0, #0
@@ -279,7 +279,7 @@ _021E5E10:
 	mov r1, #3
 	strh r1, [r0]
 	ldr r0, _021E5EF4 ; =0x000005E3
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
 	strb r1, [r0, #2]
@@ -289,7 +289,7 @@ _021E5E10:
 	pop {r3, r4, r5, pc}
 _021E5E2A:
 	ldr r0, _021E5EF0 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #3
 	strb r0, [r4, #0xc]
 	mov r0, #0
@@ -304,7 +304,7 @@ _021E5E38:
 	ldr r0, [r4, #0x1c]
 	strb r1, [r0, #3]
 	ldr r0, _021E5EF0 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E5E52:
@@ -312,7 +312,7 @@ _021E5E52:
 	tst r0, r2
 	beq _021E5E66
 	ldr r0, _021E5EF0 ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #3
 	strb r0, [r4, #0xc]
 	mov r0, #0
@@ -378,7 +378,7 @@ _021E5EC8:
 	pop {r3, r4, r5, pc}
 _021E5ED0:
 	ldr r0, _021E5EF8 ; =0x000005DC
-	bl sub_0200604C
+	bl PlaySE
 	ldrb r1, [r4, #0x11]
 	cmp r1, #3
 	bne _021E5EE4
@@ -434,7 +434,7 @@ _021E5F3A:
 	cmp r4, #3
 	bne _021E5F4E
 	ldr r0, _021E5FAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #3
 	strb r0, [r5, #0xc]
 	add sp, #8
@@ -451,7 +451,7 @@ _021E5F4E:
 	ldr r0, [r5, #0x1c]
 	strb r1, [r0, #3]
 	ldr r0, _021E5FAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	add sp, #8
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -461,7 +461,7 @@ _021E5F6C:
 	cmp r0, #0
 	beq _021E5F86
 	ldr r0, _021E5FAC ; =0x000005DD
-	bl sub_0200604C
+	bl PlaySE
 	mov r0, #2
 	strb r0, [r5, #0xc]
 	add sp, #8
@@ -472,7 +472,7 @@ _021E5F86:
 	mov r1, #3
 	strh r1, [r0]
 	ldr r0, _021E5FB0 ; =0x000005E3
-	bl sub_0200604C
+	bl PlaySE
 	ldr r0, [r5, #0x1c]
 	mov r1, #0
 	strb r1, [r0, #2]
@@ -534,15 +534,15 @@ _021E5FF2:
 	add r0, r5, #0
 	add r0, #0x9c
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r1, [r5]
 	mov r0, #0x4c
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
 	mov r1, #2
 	add r2, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _021E6094 ; =0x0001020F
@@ -555,7 +555,7 @@ _021E5FF2:
 	str r3, [sp, #0xc]
 	bl sub_020200FC
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	b _021E6088
 _021E603E:
 	ldr r1, _021E6098 ; =0x021D110C
@@ -587,7 +587,7 @@ _021E606A:
 	bl sub_0200E9BC
 	add r0, r5, #0
 	add r0, #0x9c
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #0
 	strh r0, [r5, #8]
 	ldrb r1, [r5, #0xd]
@@ -614,7 +614,7 @@ ov56_021E609C: ; 0x021E609C
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [r4, #0x18]
 	add r1, sp, #0
 	str r0, [sp]
@@ -727,15 +727,15 @@ _021E6162:
 	add r0, r5, #0
 	add r0, #0x9c
 	mov r1, #0xff
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	ldr r1, [r5]
 	mov r0, #0x4c
-	bl sub_02026354
+	bl String_ctor
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
 	mov r1, #3
 	add r2, r4, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r3, #0
 	str r3, [sp]
 	ldrb r0, [r5, #0x10]
@@ -750,7 +750,7 @@ _021E6162:
 	bl sub_020200FC
 	strb r0, [r5, #0xf]
 	add r0, r4, #0
-	bl sub_02026380
+	bl String_dtor
 	add r0, r5, #0
 	bl ov56_021E5D08
 	ldrb r0, [r5, #0x16]
@@ -782,7 +782,7 @@ _021E61E2:
 	bl sub_0200E9BC
 	add r0, r5, #0
 	add r0, #0x9c
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #0
 	strh r0, [r5, #8]
 	cmp r4, #0
@@ -1155,7 +1155,7 @@ ov56_021E64C8: ; 0x021E64C8
 	add r0, #0x24
 	beq _021E64DC
 	ldr r0, [r4, #0x20]
-	bl sub_0200BB44
+	bl DestroyMsgData
 _021E64DC:
 	add r0, r4, #0
 	bl ov56_021E6A7C
@@ -1375,7 +1375,7 @@ ov56_021E6650: ; 0x021E6650
 	bl NARC_ReadWholeMember
 	add r0, r6, #0
 	add r1, sp, #0x28
-	bl sub_020B70A8
+	bl NNS_G2dGetUnpackedCharacterData
 	ldr r3, [sp, #0x28]
 	mov r0, #0
 	str r0, [sp]
@@ -1383,7 +1383,7 @@ ov56_021E6650: ; 0x021E6650
 	ldr r0, [r5, #0x18]
 	ldr r3, [r3, #0x10]
 	mov r1, #1
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	ldr r3, [sp, #0x28]
 	mov r0, #0
 	str r0, [sp]
@@ -1391,7 +1391,7 @@ ov56_021E6650: ; 0x021E6650
 	ldr r0, [r5, #0x18]
 	ldr r3, [r3, #0x10]
 	mov r1, #4
-	bl sub_0201C0C0
+	bl BG_LoadCharTilesData
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -1407,7 +1407,7 @@ ov56_021E6650: ; 0x021E6650
 	bl NARC_ReadWholeMember
 	add r0, r6, #0
 	add r1, sp, #0x24
-	bl sub_020B7140
+	bl NNS_G2dGetUnpackedPaletteData
 	ldr r2, [sp, #0x24]
 	mov r0, #4
 	ldr r1, [r2, #0xc]
@@ -1415,19 +1415,19 @@ ov56_021E6650: ; 0x021E6650
 	mov r3, #0
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
-	bl sub_0201C260
+	bl BG_LoadPlttData
 	ldr r0, [r5]
 	bl sub_020030E8
 	str r0, [r5, #0x30]
 	ldr r3, [r5]
 	mov r1, #0
 	mov r2, #0xe0
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	ldr r0, [r5, #0x30]
 	ldr r3, [r5]
 	mov r1, #2
 	mov r2, #0x60
-	bl sub_02003120
+	bl PaletteData_AllocBuffers
 	mov r0, #0x60
 	str r0, [sp]
 	ldr r1, [sp, #0x24]
@@ -1435,7 +1435,7 @@ ov56_021E6650: ; 0x021E6650
 	ldr r0, [r5, #0x30]
 	ldr r1, [r1, #0xc]
 	add r3, r2, #0
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 	ldrb r0, [r5, #0xc]
 	cmp r0, #1
 	bne _021E6768
@@ -1447,7 +1447,7 @@ ov56_021E6650: ; 0x021E6650
 	mov r2, #0
 	add r1, #0x60
 	mov r3, #0x10
-	bl sub_0200316C
+	bl PaletteData_LoadPalette
 _021E6768:
 	mov r0, #2
 	str r0, [sp]
@@ -1458,7 +1458,7 @@ _021E6768:
 	ldr r0, [r5, #0x30]
 	ldr r3, [r5]
 	mov r1, #0x14
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -1469,7 +1469,7 @@ _021E6768:
 	ldr r3, [r5]
 	mov r1, #0x10
 	mov r2, #7
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -1480,7 +1480,7 @@ _021E6768:
 	ldr r3, [r5]
 	mov r1, #0x10
 	mov r2, #8
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -1491,7 +1491,7 @@ _021E6768:
 	ldr r3, [r5]
 	mov r1, #0x26
 	mov r2, #0x19
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -1503,7 +1503,7 @@ _021E6768:
 	ldr r3, [r5]
 	mov r1, #0x26
 	add r2, #0x1a
-	bl sub_02003200
+	bl PaletteData_LoadNarc
 	mov r0, #0x10
 	mov r1, #0
 	str r0, [sp]
@@ -1541,7 +1541,7 @@ _021E6768:
 	add r1, r5, #0
 	ldr r0, [r5, #0x3c]
 	add r1, #0x44
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	add r0, r4, #0
 	mov r1, #0x24
 	bl NARC_GetMemberSize
@@ -1556,7 +1556,7 @@ _021E6768:
 	add r1, r5, #0
 	ldr r0, [r5, #0x40]
 	add r1, #0x48
-	bl sub_020B71D8
+	bl NNS_G2dGetUnpackedScreenData
 	add r0, r4, #0
 	bl NARC_dtor
 	mov r3, #0
@@ -1569,7 +1569,7 @@ _021E6768:
 	ldr r0, [r5, #0x18]
 	ldr r2, _021E691C ; =0x00002001
 	mov r1, #4
-	bl sub_0201C8C4
+	bl FillBgTilemapRect
 	mov r2, #0
 	ldr r0, [r5, #0x44]
 	mov r1, #0x20
@@ -1595,10 +1595,10 @@ _021E6768:
 	bl sub_0201C4EC
 	ldr r0, [r5, #0x18]
 	mov r1, #3
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5, #0x18]
 	mov r1, #4
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	ldrb r0, [r5, #0xc]
 	cmp r0, #0
 	beq _021E6916
@@ -1627,7 +1627,7 @@ _021E6768:
 	bl sub_0201C4EC
 	ldr r0, [r5, #0x18]
 	mov r1, #2
-	bl sub_0201EFBC
+	bl ScheduleBgTilemapBufferTransfer
 	mov r2, #0
 	strb r2, [r5, #0x14]
 	ldr r0, _021E6920 ; =ov56_021E63FC
@@ -1659,10 +1659,10 @@ ov56_021E692C: ; 0x021E692C
 	bl FreeToHeap
 	ldr r0, [r4, #0x30]
 	mov r1, #2
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x30]
 	mov r1, #0
-	bl sub_02003150
+	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x30]
 	bl sub_02003104
 	mov r1, #0
@@ -1780,11 +1780,11 @@ ov56_021E696C: ; 0x021E696C
 _021E6A3A:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0201D978
+	bl FillWindowPixelBuffer
 	cmp r4, #5
 	bge _021E6A4C
 	add r0, r5, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 _021E6A4C:
 	add r4, r4, #1
 	add r5, #0x10
@@ -1816,9 +1816,9 @@ ov56_021E6A7C: ; 0x021E6A7C
 	add r4, #0x4c
 _021E6A8C:
 	add r0, r4, #0
-	bl sub_0201D8C8
+	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
-	bl sub_0201D520
+	bl RemoveWindow
 	add r5, r5, #1
 	add r4, #0x10
 	cmp r5, #6
@@ -1840,14 +1840,14 @@ _021E6AB2:
 	ldr r0, [r4, #0x1c]
 	add r0, #0x1e
 	add r0, r0, r5
-	bl sub_02015920
+	bl MailMsg_IsInit
 	cmp r0, #0
 	beq _021E6AF4
 	ldr r0, [r4, #0x1c]
 	ldr r1, [r4]
 	add r0, #0x1e
 	add r0, r0, r5
-	bl sub_02015898
+	bl MailMsg_GetExpandedString
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp]
@@ -1862,9 +1862,9 @@ _021E6AB2:
 	mov r3, #0
 	bl sub_020200FC
 	ldr r0, [sp, #0x10]
-	bl sub_02026380
+	bl String_dtor
 	add r0, r6, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 _021E6AF4:
 	add r7, r7, #1
 	add r5, #8
@@ -1878,11 +1878,11 @@ _021E6AF4:
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xe9
-	bl sub_0200BAF8
+	bl NewMsgDataFromNarc
 	str r0, [r4, #0x20]
 	ldr r1, [r4]
 	mov r0, #0x10
-	bl sub_02026354
+	bl String_ctor
 	add r5, r0, #0
 	add r0, r4, #0
 	str r0, [sp, #0x18]
@@ -1891,11 +1891,11 @@ _021E6AF4:
 	str r0, [sp, #0x18]
 _021E6B26:
 	add r0, r5, #0
-	bl sub_020263AC
+	bl StringSetEmpty
 	ldr r0, [r4, #0x20]
 	add r1, r6, #0
 	add r2, r5, #0
-	bl sub_0200BB6C
+	bl ReadMsgDataIntoString
 	mov r0, #1
 	add r1, r5, #0
 	mov r2, #0
@@ -1925,12 +1925,12 @@ _021E6B26:
 	ldr r1, [sp, #0x14]
 	ldr r0, [sp, #0x18]
 	add r0, r0, r1
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add r6, r6, #1
 	cmp r6, #2
 	blt _021E6B26
 	add r0, r5, #0
-	bl sub_02026380
+	bl String_dtor
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 _021E6B88:
@@ -1948,7 +1948,7 @@ _021E6B88:
 	bl sub_020200FC
 	add r4, #0x8c
 	add r0, r4, #0
-	bl sub_0201D578
+	bl CopyWindowToVram
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2106,7 +2106,7 @@ _021E6CC4:
 	add r0, sp, #0x60
 	mov r1, #0
 	mov r2, #0x34
-	bl sub_020D4994
+	bl MIi_CpuFill8
 	ldr r0, [sp, #0x10]
 	mov r1, #0x80
 	sub r1, r1, r0

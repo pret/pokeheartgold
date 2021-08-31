@@ -8,6 +8,7 @@ using namespace std;
 
 bool debug = false;
 bool pack_no_fnt = true;
+bool output_header = false;
 
 void PrintError(NarcError error)
 {
@@ -40,6 +41,7 @@ static inline void usage() {
     cout << "\t-n\tBuild the filename table (default: discards filenames)" << endl;
     cout << "\t-D/--debug\tPrint additional debug messages" << endl;
     cout << "\t-h/--help\tPrint this message and exit" << endl;
+    cout << "\t-i\tOutput a .naix header" << endl;
 }
 
 int main(int argc, char* argv[])
@@ -103,6 +105,9 @@ int main(int argc, char* argv[])
         }
         else if (!strcmp(argv[i], "-n")) {
             pack_no_fnt = false;
+        }
+        else if (!strcmp(argv[i], "-i")) {
+            output_header = true;
         }
         else {
             usage();
