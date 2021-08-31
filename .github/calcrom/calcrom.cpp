@@ -1,14 +1,18 @@
 /*
  * CALCROM.CPP
- * © PikalaxALT 2020
+ * © PikalaxALT 2020-2021
  *
- * Simple C++ executable to measure the completion rate of Pokémon Diamond
+ * Permission is granted to copy and/or modify this code under GPL 3.0.
+ *
+ * Simple C++ executable to measure the completion rate of Nintendo DS
  * reverse engineering (decompilation).
+ * Similar in scope to calcrom.pl from pret-agb projects, but designed
+ * to cope with restrictions imposed by the DS toolchain.
  *
  * Requirements:
  *  - Must have C++11 compliant compiler.
  *  - MacOS X: Must provide elf.h on the include (-I) path.
- *  - Must be placed in ".travis/calcrom/".
+ *  - Must be placed in ".github/calcrom/".
  *
  * Changelog:
  *  - 0.1.0 (26 May 2020):
@@ -21,11 +25,12 @@
  *      Account for diamond/pearl split
  *  - 0.2.0 (30 Aug 2021):
  *      Support hgss
+ *  - 0.2.1 (31 Aug 2021):
+ *      Make calcrom more generic and configurable via command line
  */
 
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <elf.h>
 #include <glob.h>
 #include <cstring>
@@ -36,19 +41,21 @@
 
 using namespace std;
 
+// Wraps glob results from <glob.h>
 struct Glob : public vector<char const *> {
     glob_t glob_result;
+    int glob_flags;
 public:
-    Glob(string const & pattern) {
-        int result = glob(pattern.c_str(), GLOB_TILDE | GLOB_BRACE, NULL, &glob_result);
+    // Call glob with the supplied pattern
+    Glob(const char * pattern, int _glob_flags) : glob_flags(_glob_flags) {
+        int result = glob(pattern, glob_flags, nullptr, &glob_result);
         if (result) {
-            stringstream ss;
-            ss << "Glob(" << pattern << ") failed with error " << result << endl;
-            throw runtime_error(ss.str());
+            throw runtime_error(string("Glob(") + pattern + ") failed with error " + to_string(result));
         }
         assign(glob_result.gl_pathv, glob_result.gl_pathv + glob_result.gl_pathc);
     };
-    void operator~() {
+    Glob(const string& pattern, int _glob_flags) : Glob(pattern.c_str(), _glob_flags) {}
+    ~Glob() {
         globfree(&glob_result);
     }
 };
@@ -95,6 +102,7 @@ private:
     }
     void ReadSymtab() {
         auto sec = find_if(shdr.begin(), shdr.end(), [](Elf32_Shdr const& candidate) { return candidate.sh_type == SHT_SYMTAB; });
+        assert(sec != shdr.end());
         strtab.resize(sec->sh_size);
         handle.seekg(sec->sh_offset);
         handle.read((char*)strtab.data(), sec->sh_size);
@@ -131,10 +139,10 @@ void analyze(string& basedir, string& subdir, string& version = default_version)
     string srcbase = basedir + (subdir.empty() ? "" : "/" + subdir);
     string builddir = srcbase + "/build/" + version;
     string pattern = srcbase + "/{src,asm,lib/{src,asm},lib/{!syscall}/{src,asm}}/*.{c,s,cpp}";
-    for (char const * & fname : Glob(pattern))
+    for (char const * & fname : Glob(pattern, GLOB_TILDE | GLOB_BRACE | GLOB_NOSORT))
     {
         string fname_s(fname);
-        string ext = fname_s.substr(fname_s.rfind('.'), 4);
+        string ext = fname_s.substr(fname_s.rfind('.'), string::npos);
         bool is_asm = ext == ".s";
         fname_s = fname_s.replace(0, srcbase.size(), builddir);
         fname_s = fname_s.replace(fname_s.rfind('.'), string::npos, ".o");
@@ -178,24 +186,60 @@ void analyze(string& basedir, string& subdir, string& version = default_version)
     // Let vectors fall to gc
 }
 
+class missing_option : public invalid_argument {
+public:
+    missing_option(string& error) : invalid_argument{error.c_str()} {}
+};
+
+struct Options {
+    string arm9subdir = "";
+    string arm7subdir = "sub";
+    string projectdir = ".";
+    vector<string> romnames;
+    Options(int argc, char ** argv) {
+        for (int i = 1; i < argc; i++) {
+            string arg = argv[i];
+            if (arg == "-9") {
+                if (++i == argc) throw missing_option(arg);
+                arm9subdir = argv[i];
+            } else if (arg == "-7") {
+                if (++i == argc) throw missing_option(arg);
+                arm7subdir = argv[i];
+            } else if (arg == "-d") {
+                if (++i == argc) throw missing_option(arg);
+                projectdir = argv[i];
+            } else if (arg[0] != '-') {
+                romnames.push_back(arg);
+            } else {
+                throw invalid_argument(arg);
+            }
+        }
+    }
+};
+
 int main(int argc, char ** argv)
 {
-    if (argc < 2) {
-        cout << "usage: calcrom PROJECT_DIR" << endl;
-        throw invalid_argument("missing required argument: PROJECT_DIR\n");
+    try {
+        Options options(argc, argv);
+
+        for (string &romname: options.romnames)
+        {
+            analyze(options.projectdir, options.arm9subdir, romname);
+            cout << endl;
+        }
+        analyze(options.projectdir, options.arm7subdir);
+    } catch (missing_option& e) {
+        cerr << "Missing value for option " << e.what() << endl;
+        return 1;
+    } catch (invalid_argument& e) {
+        cerr << "Unrecognized option flag: " << e.what() << endl;
+        return 1;
+    } catch (runtime_error& e) {
+        cerr << e.what() << endl;
+        return 1;
+    } catch (exception& e) {
+        cerr << "Unhandled exception: " << e.what() << endl;
+        return 1;
     }
-
-    string basepath(argv[1]);
-    string arm9subdir("");
-    string rom1name("heartgold.us");
-    string rom2name("soulsilver.us");
-    string arm7subdir("sub");
-
-    analyze(basepath, arm9subdir, rom1name);
-    cout << endl;
-    analyze(basepath, arm9subdir, rom2name);
-    cout << endl;
-    analyze(basepath, arm7subdir);
-
     return 0;
 }
