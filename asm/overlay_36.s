@@ -29,19 +29,21 @@ ov36_021E5918: ; 0x021E5918
 	.balign 4, 0
 	thumb_func_end ov36_021E5918
 
+	.public _02106068
+
 	thumb_func_start ov36_021E592C
 ov36_021E592C: ; 0x021E592C
 	push {r3, lr}
 	mov r0, #0x4b
 	bl sub_0201A9C4
 	mov r0, #0
-	ldr r1, _021E5944 ; =0x02106068
+	ldr r1, _021E5944 ; =_02106068
 	mvn r0, r0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_021E5944: .word 0x02106068
+_021E5944: .word _02106068
 	thumb_func_end ov36_021E592C
 
 	thumb_func_start ov36_021E5948
@@ -74,19 +76,21 @@ ov36_021E5960: ; 0x021E5960
 	pop {r4, pc}
 	thumb_func_end ov36_021E5960
 
+	.public _020FA15C
+
 	thumb_func_start ov36_021E5980
 ov36_021E5980: ; 0x021E5980
 	push {r3, lr}
 	mov r0, #0x4b
 	bl sub_0201A9C4
 	mov r0, #0
-	ldr r1, _021E5998 ; =0x020FA15C
+	ldr r1, _021E5998 ; =_020FA15C
 	mvn r0, r0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_021E5998: .word 0x020FA15C
+_021E5998: .word _020FA15C
 	thumb_func_end ov36_021E5980
 
 	thumb_func_start ov36_021E599C
@@ -146,19 +150,21 @@ _021E5A0C:
 	.balign 4, 0
 	thumb_func_end ov36_021E59B4
 
+	.public _020FA16C
+
 	thumb_func_start ov36_021E5A1C
 ov36_021E5A1C: ; 0x021E5A1C
 	push {r3, lr}
 	mov r0, #0x4b
 	bl sub_0201A9C4
 	mov r0, #0
-	ldr r1, _021E5A34 ; =0x020FA16C
+	ldr r1, _021E5A34 ; =_020FA16C
 	mvn r0, r0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_021E5A34: .word 0x020FA16C
+_021E5A34: .word _020FA16C
 	thumb_func_end ov36_021E5A1C
 
 	thumb_func_start ov36_021E5A38
