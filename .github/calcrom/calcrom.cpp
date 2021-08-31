@@ -122,7 +122,11 @@ void analyze(string& basedir, string& subdir, string& version = default_version)
     //        src   asm
     // data  _____|_____
     // text       |
-    unsigned sizes[2][2] = {{0, 0}, {0, 0x800 /* libsyscall.a */}};
+    unsigned sizes[2][2] = {{0, 0}, {0, 0}};
+
+    if (!version.empty()) {
+        sizes[1][1] = 0x800; // libsyscall.a
+    }
 
     string srcbase = basedir + (subdir.empty() ? "" : "/" + subdir);
     string builddir = srcbase + "/build/" + version;
