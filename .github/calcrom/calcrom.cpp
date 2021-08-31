@@ -122,11 +122,11 @@ void analyze(string& basedir, string& subdir, string& version = default_version)
     //        src   asm
     // data  _____|_____
     // text       |
-    unsigned sizes[2][2] = {{0, 0}, {0, 0}};
+    unsigned sizes[2][2] = {{0, 0}, {0, 0x800 /* libsyscall.a */}};
 
     string srcbase = basedir + (subdir.empty() ? "" : "/" + subdir);
     string builddir = srcbase + "/build/" + version;
-    string pattern = srcbase + "/{src,asm,lib/{src,asm},lib/*/{src,asm},}/*.{c,s,cpp}";
+    string pattern = srcbase + "/{src,asm,lib/{src,asm},lib/{!syscall}/{src,asm}}/*.{c,s,cpp}";
     for (char const * & fname : Glob(pattern))
     {
         string fname_s(fname);
@@ -134,6 +134,9 @@ void analyze(string& basedir, string& subdir, string& version = default_version)
         bool is_asm = ext == ".s";
         fname_s = fname_s.replace(0, srcbase.size(), builddir);
         fname_s = fname_s.replace(fname_s.rfind('.'), string::npos, ".o");
+#ifndef NDEBUG
+        cerr << fname << " --> " << fname_s << endl;
+#endif
 
         Elf32File elf(fname_s);
 
