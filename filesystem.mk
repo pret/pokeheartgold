@@ -384,8 +384,11 @@ NITROFS_FILES := \
 	files/pbr/zukan.narc \
 	files/dwc/utility.bin
 
-.PHONY: filesystem
+.PHONY: filesystem clean-filesystem
 filesystem: $(NITROFS_FILES)
+
+clean-filesystem:
+	$(RM) files/msgdata/msg/*.bin
 
 # TODO: file rules
 # Some filenames are stripped and replaced with a serial number

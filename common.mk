@@ -47,16 +47,17 @@ NATIVE_TOOLS := \
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 
 # Directories
+LIB_SUBDIRS               := cw dwc nitro nnsys
 SRC_SUBDIR                := src
 ASM_SUBDIR                := asm
-LIB_SRC_SUBDIR            := lib/src
-LIB_ASM_SUBDIR            := lib/asm
+LIB_SRC_SUBDIR            := lib/src $(LIB_SUBDIRS:%=lib/%/src)
+LIB_ASM_SUBDIR            := lib/asm $(LIB_SUBDIRS:%=lib/%/asm)
 ALL_SUBDIRS               := $(SRC_SUBDIR) $(ASM_SUBDIR) $(LIB_SRC_SUBDIR) $(LIB_ASM_SUBDIR)
 
-SRC_BUILDDIR              := $(BUILD_DIR)/$(SRC_SUBDIR)
-ASM_BUILDDIR              := $(BUILD_DIR)/$(ASM_SUBDIR)
-LIB_SRC_BUILDDIR          := $(BUILD_DIR)/$(LIB_SRC_SUBDIR)
-LIB_ASM_BUILDDIR          := $(BUILD_DIR)/$(LIB_ASM_SUBDIR)
+SRC_BUILDDIR              := $(addprefix $(BUILD_DIR)/,$(SRC_SUBDIR))
+ASM_BUILDDIR              := $(addprefix $(BUILD_DIR)/,$(ASM_SUBDIR))
+LIB_SRC_BUILDDIR          := $(addprefix $(BUILD_DIR)/,$(LIB_SRC_SUBDIR))
+LIB_ASM_BUILDDIR          := $(addprefix $(BUILD_DIR)/,$(LIB_ASM_SUBDIR))
 
 C_SRCS                    := $(foreach dname,$(SRC_SUBDIR),$(wildcard $(dname)/*.c))
 ASM_SRCS                  := $(foreach dname,$(ASM_SUBDIR),$(wildcard $(dname)/*.s))
