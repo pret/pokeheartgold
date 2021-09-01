@@ -658,7 +658,7 @@ ov86_021E5E54: ; 0x021E5E54
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
 	bl sub_02022CC8
@@ -2612,7 +2612,7 @@ ov86_021E6E98: ; 0x021E6E98
 	add r5, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

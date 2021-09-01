@@ -1050,7 +1050,7 @@ _02258FAE:
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x58
 	add r1, r6, #0
 	bl NARC_ctor

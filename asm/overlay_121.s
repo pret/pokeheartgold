@@ -298,7 +298,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	bl ov121_021E6194
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r5, #0
 	mov r1, #0x9e
 	bl ov121_021E62A0

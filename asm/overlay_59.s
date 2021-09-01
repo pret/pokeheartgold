@@ -3666,7 +3666,7 @@ ov59_022399F0: ; 0x022399F0
 	bl ov59_02239A24
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r4, pc}
 	thumb_func_end ov59_022399F0
 
@@ -3676,7 +3676,7 @@ ov59_02239A08: ; 0x02239A08
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov59_02239C70
 	add r0, r4, #0
@@ -7701,7 +7701,7 @@ ov59_0223B8B0: ; 0x0223B8B0
 	bl ov59_0223B8E4
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r4, pc}
 	thumb_func_end ov59_0223B8B0
 
@@ -7711,7 +7711,7 @@ ov59_0223B8C8: ; 0x0223B8C8
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov59_0223BA44
 	add r0, r4, #0
@@ -8985,7 +8985,7 @@ ov59_0223C298: ; 0x0223C298
 	str r0, [r4, #0xc]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, _0223C300 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -9019,7 +9019,7 @@ ov59_0223C304: ; 0x0223C304
 	mov r0, #2
 	str r0, [r2]
 	str r3, [r1]
-	bl sub_020BEF98
+	bl NNS_G3dGlbFlushP
 	bl sub_020B7350
 	ldr r0, [r4, #0xc]
 	bl sub_02008120
@@ -9163,13 +9163,13 @@ ov59_0223C3F0: ; 0x0223C3F0
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_020CF82C
+	bl G3X_SetFog
 	mov r0, #0
 	ldr r2, _0223C468 ; =0x00007FFF
 	add r1, r0, #0
 	mov r3, #0x3f
 	str r0, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _0223C46C ; =0x04000540
 	mov r0, #2
 	str r0, [r1]

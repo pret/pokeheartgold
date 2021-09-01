@@ -2120,19 +2120,19 @@ ov85_021E6874: ; 0x021E6874
 	sub sp, #4
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -2203,19 +2203,19 @@ ov85_021E692C: ; 0x021E692C
 	push {r3, lr}
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -2288,7 +2288,7 @@ _021E69CE:
 	add r2, r0, #0
 	mov r3, #0x3f
 	str r1, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _021E6A24 ; =0x04000540
 	mov r0, #2
 	str r0, [r1]
@@ -7482,7 +7482,7 @@ _021E90F8:
 	str r0, [sp, #0x38]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

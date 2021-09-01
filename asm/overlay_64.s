@@ -799,7 +799,7 @@ _021E5EF0:
 	str r0, [r5, r1]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -2478,7 +2478,7 @@ _021E6C84:
 	mov r2, #0x3b
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [sp, #0x1c]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x14]
 	str r0, [sp, #0x18]
 	add r0, r0, r1

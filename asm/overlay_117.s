@@ -91,7 +91,7 @@ _0225F0A2:
 	blt _0225F0A2
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [sp, #0x18]
 	ldr r0, [r0]
 	add r1, r0, #1
@@ -715,7 +715,7 @@ _0225F560:
 	bl sub_02024A04
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #5
 	mov r1, #0x6a
 	lsl r0, r0, #0x12

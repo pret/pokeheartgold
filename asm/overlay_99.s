@@ -741,7 +741,7 @@ _021E5EC6:
 _021E5ECA:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
 	bl sub_02022CC8
@@ -784,7 +784,7 @@ _021E5ECA:
 	bl sub_0201BC8C
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
 	bl sub_02022CC8

@@ -1172,7 +1172,7 @@ ov41_022466F0: ; 0x022466F0
 	bl sub_020CF704
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _02246764 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -1206,7 +1206,7 @@ ov41_022466F0: ; 0x022466F0
 	add r1, r0, #0
 	mov r3, #0x3f
 	str r0, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r2, _02246770 ; =0x04000540
 	mov r0, #2
 	ldr r1, _02246774 ; =0xBFFF0000
@@ -1253,7 +1253,7 @@ ov41_02246778: ; 0x02246778
 	bl sub_02022CBC
 	mov r0, #0x1f
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x13
 	mov r1, #1
 	bl sub_02022CC8

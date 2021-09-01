@@ -514,7 +514,7 @@ _021E5D04:
 	add r2, #0x58
 	bl sub_0201F51C
 	ldr r0, [r7, #0x5c]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [sp, #8]
 	ldr r0, [r5, #0x54]
 	mov r1, #0

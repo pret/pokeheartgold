@@ -1736,7 +1736,7 @@ ov05_0221C80C: ; 0x0221C80C
 	bne _0221C850
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	add r3, r0, #0
@@ -2082,7 +2082,7 @@ _0221CACC:
 	bne _0221CADC
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 _0221CADC:
 	add r0, r4, #0
 	bl ov05_0221E9C4
@@ -2116,7 +2116,7 @@ _0221CADC:
 	bne _0221CB2A
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 _0221CB2A:
 	ldr r0, _0221CB5C ; =0x00000B82
 	ldrb r1, [r4, r0]
@@ -2438,7 +2438,7 @@ ov05_0221CD24: ; 0x0221CD24
 	bl sub_0200D3F8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2664,7 +2664,7 @@ ov05_0221CEB8: ; 0x0221CEB8
 	bl sub_0201CAE0
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	cmp r7, #1
 	bne _0221CF88
 	ldr r0, [r5, #0xc]
@@ -2699,13 +2699,13 @@ _0221CF88:
 	bne _0221CFC8
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x80
 	pop {r3, r4, r5, r6, r7, pc}
 _0221CFC8:
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 _0221CFD0:
 	add sp, #0x80
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2780,7 +2780,7 @@ ov05_0221D054: ; 0x0221D054
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #0xc]
 	mov r1, #3
 	bl sub_0201BB4C
@@ -4241,7 +4241,7 @@ ov05_0221DC34: ; 0x0221DC34
 	add r4, r0, #0
 	mov r0, #0x1e
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #0xc]
 	mov r1, #3
 	bl sub_0201BB4C

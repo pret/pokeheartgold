@@ -1852,7 +1852,7 @@ ov110_021E6730: ; 0x021E6730
 	bl ov110_021E6764
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r4, pc}
 	thumb_func_end ov110_021E6730
 
@@ -1862,7 +1862,7 @@ ov110_021E6748: ; 0x021E6748
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov110_021E6898
 	add r0, r4, #0

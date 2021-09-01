@@ -275,7 +275,7 @@ sub_020181B0: ; 0x020181B0
 	bl memset
 	ldr r1, [r5, #8]
 	add r0, r4, #0
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	mov r0, #1
 	str r0, [r4, #0x6c]
 	lsl r0, r0, #0xc
@@ -503,7 +503,7 @@ sub_02018324: ; 0x02018324
 	bl GF_AssertFail
 _02018332:
 	ldr r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	str r0, [r4, #4]
 	cmp r0, #0
 	beq _0201835E
@@ -530,7 +530,7 @@ _0201835E:
 _02018360:
 	str r0, [r4, #8]
 	ldr r0, [r4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0xc]
 	cmp r0, #0
 	beq _0201837A

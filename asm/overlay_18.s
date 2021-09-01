@@ -22522,7 +22522,7 @@ ov18_021F0FC8: ; 0x021F0FC8
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -38162,7 +38162,7 @@ ov18_021F8B10: ; 0x021F8B10
 	bl sub_0201BB68
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r5, _021F8BE0 ; =_021FBD7C
 	add r3, sp, #0x48
 	ldmia r5!, {r0, r1}

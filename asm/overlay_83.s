@@ -2980,7 +2980,7 @@ ov83_0223F734: ; 0x0223F734
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
 	bl sub_02022CC8
@@ -3271,7 +3271,7 @@ ov83_0223F804: ; 0x0223F804
 	strh r2, [r1]
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -12324,7 +12324,7 @@ ov83_02244394: ; 0x02244394
 	bl ov83_0224474C
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #4
 	bl ov83_02244780
@@ -12360,7 +12360,7 @@ ov83_0224442C: ; 0x0224442C
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
 	bl sub_02022CC8
@@ -12595,7 +12595,7 @@ ov83_022444E0: ; 0x022444E0
 	strh r2, [r1]
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0xb8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -15119,12 +15119,12 @@ _0224599C: .word 0x00000633
 
 	thumb_func_start ov83_022459A0
 ov83_022459A0: ; 0x022459A0
-	ldr r3, _022459A8 ; =sub_02022C60
+	ldr r3, _022459A8 ; =GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_022459A8: .word sub_02022C60
+_022459A8: .word GX_EngineAToggleLayers
 	thumb_func_end ov83_022459A0
 
 	thumb_func_start ov83_022459AC
@@ -17938,7 +17938,7 @@ _02247124:
 	bl sub_02022CC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop

@@ -2813,7 +2813,7 @@ ov109_021E6E9C: ; 0x021E6E9C
 	str r0, [r4]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r4, pc}
 	thumb_func_end ov109_021E6E9C
 
@@ -2823,7 +2823,7 @@ ov109_021E6EC0: ; 0x021E6EC0
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov109_021E6F60
 	add r0, r4, #0

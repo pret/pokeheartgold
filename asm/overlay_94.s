@@ -132,7 +132,7 @@ _021E59E8:
 _021E59F6:
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov94_021E5BA0
 	ldr r0, [r4]

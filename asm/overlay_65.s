@@ -140,7 +140,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl sub_0201BC28
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r1, #6
 	lsl r1, r1, #6
 	ldr r1, [r4, r1]
@@ -345,7 +345,7 @@ ov65_0221C08C: ; 0x0221C08C
 	bl sub_0201BC28
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	bl ov65_0221D3B8
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1207,7 +1207,7 @@ _0221C84C:
 	str r0, [r4, #0x58]
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _0221C9AC ; =0x00002224
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -1252,7 +1252,7 @@ _0221C890:
 	bl sub_0201BC28
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #0x58]
 	add r0, r0, #1
 	str r0, [r4, #0x58]

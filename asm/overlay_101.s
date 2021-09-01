@@ -893,7 +893,7 @@ _021E7DAA:
 	bl sub_02003B50
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -966,7 +966,7 @@ _021E7E66:
 	blt _021E7E66
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
 	bl sub_02022CC8
@@ -13011,7 +13011,7 @@ _021EDC30:
 	blt _021EDC30
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -13077,7 +13077,7 @@ _021EDCAE:
 	blt _021EDCAE
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
 	bl sub_02022CC8
@@ -13343,7 +13343,7 @@ _021EDE84:
 	bl sub_0201B1E4
 	mov r0, #0xf
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0xf
 	mov r1, #0
 	bl sub_02022CC8
@@ -14875,7 +14875,7 @@ _021EEB20:
 	bl sub_02003B50
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -17502,7 +17502,7 @@ _021EFF7C:
 	blt _021EFF7C
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -27066,7 +27066,7 @@ _021F4790:
 	bl sub_02003B50
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

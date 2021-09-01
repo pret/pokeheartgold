@@ -426,19 +426,19 @@ _021E5C4A:
 	bl BgCommitTilemapBufferToVram
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021E5D8C ; =0x021D116C
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -890,7 +890,7 @@ _021E5FB2:
 	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1160,7 +1160,7 @@ _021E6280:
 	blo _021E6280
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -1349,7 +1349,7 @@ _021E63BE:
 	bl ov76_021E6D80
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

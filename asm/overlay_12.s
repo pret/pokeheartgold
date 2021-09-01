@@ -487,10 +487,10 @@ ov12_02237CC4: ; 0x02237CC4
 	bl RemoveWindow
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #4]
 	mov r1, #1
 	bl sub_0201BB4C
@@ -560,7 +560,7 @@ _02237D1A:
 	orr r2, r0
 	strh r2, [r1]
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r5, #0
 	bl ov12_0223B708
 	add r4, r0, #0
@@ -664,7 +664,7 @@ _02237D1A:
 	bl sub_02022D24
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -1796,7 +1796,7 @@ _02238838:
 	orr r2, r0
 	strh r2, [r1]
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov12_0226604C
 	add r0, r5, #0
@@ -1902,7 +1902,7 @@ _02238838:
 	bl sub_02022D24
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -1986,10 +1986,10 @@ ov12_02238A30: ; 0x02238A30
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201BB4C
@@ -3507,7 +3507,7 @@ ov12_02239664: ; 0x02239664
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _022396D0 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -3544,13 +3544,13 @@ ov12_02239664: ; 0x02239664
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_020CF82C
+	bl G3X_SetFog
 	mov r0, #0
 	ldr r2, _022396DC ; =0x00007FFF
 	add r1, r0, #0
 	mov r3, #0x3f
 	str r0, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _022396E0 ; =0xBFFF0000
 	ldr r0, _022396E4 ; =0x04000580
 	str r1, [r0]
@@ -4096,7 +4096,7 @@ _02239A46:
 	bl sub_02022D24
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r2, _02239C14 ; =0x04000304
 	mov r3, #2
 	ldrh r1, [r2]
@@ -4750,7 +4750,7 @@ ov12_0223A088: ; 0x0223A088
 	bl sub_0201D54C
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #4]
 	mov r1, #1
 	bl sub_0201BB4C

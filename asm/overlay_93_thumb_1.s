@@ -557,7 +557,7 @@ ov93_0225C768: ; 0x0225C768
 	bl sub_02022D24
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -976,10 +976,10 @@ _0225CD72:
 	blt _0225CD72
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #0x2c]
 	mov r1, #1
 	bl sub_0201BB4C
@@ -1162,7 +1162,7 @@ ov93_0225CF34: ; 0x0225CF34
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _0225CFA0 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -1199,13 +1199,13 @@ ov93_0225CF34: ; 0x0225CF34
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_020CF82C
+	bl G3X_SetFog
 	mov r0, #0
 	ldr r2, _0225CFAC ; =0x00007FFF
 	add r1, r0, #0
 	mov r3, #0x3f
 	str r0, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _0225CFB0 ; =0xBFFF0000
 	ldr r0, _0225CFB4 ; =0x04000580
 	str r1, [r0]
@@ -1386,7 +1386,7 @@ ov93_0225D07C: ; 0x0225D07C
 	add r1, r0, #0
 	bl sub_020BF0A8
 	add r0, sp, #0x28
-	bl sub_020BEFD4
+	bl NNS_G3dGlbSetBaseTrans
 	ldr r1, _0225D1CC ; =0x021DA558
 	add r0, sp, #4
 	bl MI_Copy36B
@@ -1396,8 +1396,8 @@ ov93_0225D07C: ; 0x0225D07C
 	bic r2, r0
 	add r0, sp, #0x34
 	str r2, [r1, #0x7c]
-	bl sub_020BF004
-	bl sub_020BEF98
+	bl NNS_G3dGlbSetBaseScale
+	bl NNS_G3dGlbFlushP
 	add r1, r4, #0
 	add r1, #0xd4
 	ldr r1, [r1]
@@ -1573,7 +1573,7 @@ _0225D248:
 	strh r0, [r1]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r4, #0
 	ldr r6, _0225D37C ; =0x02262B94
 	add r7, r4, #0
@@ -4917,7 +4917,7 @@ ov93_0225EC98: ; 0x0225EC98
 	mov r2, #0x75
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r5, #4]
 	bl sub_0201F668
 	ldr r6, [r5, #4]

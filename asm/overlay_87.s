@@ -419,7 +419,7 @@ ov87_021E5C38: ; 0x021E5C38
 _021E5C4E:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1e
 	strb r0, [r5, #0xf]
 	mov r0, #1
@@ -431,7 +431,7 @@ _021E5C60:
 	bne _021E5C7C
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -451,7 +451,7 @@ _021E5C80:
 	beq _021E5CDE
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -692,10 +692,10 @@ _021E5E20:
 	bl sub_0201BC8C
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl sub_02022CC8
@@ -1036,7 +1036,7 @@ _021E610A:
 _021E613E:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl sub_02022CC8
@@ -1336,7 +1336,7 @@ _021E63BA:
 	bne _021E63DE
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov87_021E7998
 	add r0, r4, #0
@@ -1485,7 +1485,7 @@ ov87_021E64F8: ; 0x021E64F8
 _021E650C:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -2298,7 +2298,7 @@ ov87_021E6B38: ; 0x021E6B38
 	bl ov87_021E6EF4
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -2322,7 +2322,7 @@ ov87_021E6BB8: ; 0x021E6BB8
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
 	bl sub_02022CC8
@@ -2534,10 +2534,10 @@ ov87_021E6C60: ; 0x021E6C60
 	bl sub_0201CAE0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -4465,7 +4465,7 @@ _021E7B96:
 	bl sub_02022CC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop

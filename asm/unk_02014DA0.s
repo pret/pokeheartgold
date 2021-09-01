@@ -937,7 +937,7 @@ sub_020153D8: ; 0x020153D8
 	bl sub_0202313C
 	bl sub_02023154
 _020153F4:
-	bl sub_020BEF98
+	bl NNS_G3dGlbFlushP
 	ldr r0, [r4]
 	ldr r1, _02015410 ; =0x021DA4E8
 	bl sub_020981D4
@@ -946,7 +946,7 @@ _020153F4:
 	beq _0201540A
 	bl sub_02023148
 _0201540A:
-	bl sub_020BEF98
+	bl NNS_G3dGlbFlushP
 	pop {r4, pc}
 	.balign 4, 0
 _02015410: .word 0x021DA4E8

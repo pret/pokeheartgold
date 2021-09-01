@@ -540,7 +540,7 @@ _021E5D62:
 	bl sub_0202055C
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	bl sub_0203A964
 	add r0, r4, #0
 	bl ov54_021E6B5C
@@ -2142,7 +2142,7 @@ ov54_021E6A7C: ; 0x021E6A7C
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

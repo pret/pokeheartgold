@@ -2020,7 +2020,7 @@ _021E6738:
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021E6790 ; =0x00000D6C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -6877,7 +6877,7 @@ ov96_021E8BB4: ; 0x021E8BB4
 	add r2, r5, #0
 	bl AllocAndReadWholeNarcMemberByIdPair
 	add r5, r0, #0
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x38]
 	add r0, r0, r1
 	ldrb r1, [r4, #6]
@@ -7121,7 +7121,7 @@ _021E8DAA:
 	str r0, [sp, #0x3c]
 _021E8DB4:
 	ldr r0, [sp, #0x34]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x14]
 	str r0, [sp, #0x2c]
 	add r0, r0, r1
@@ -16422,7 +16422,7 @@ _021ED3AE:
 	bl sub_02022CC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [sp, #0xc]
 	mov r1, #0
 	add r0, #0xb5
@@ -19426,7 +19426,7 @@ ov96_021EEA94: ; 0x021EEA94
 	str r0, [sp, #0x14]
 	bl NARC_AllocAndReadWholeMember
 	str r0, [sp, #0x10]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r5, r0, #0
 	beq _021EEAE8
 	add r0, #0x3c
@@ -19895,7 +19895,7 @@ _021EEE44:
 	bl sub_0203A994
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
 	bl sub_02022CC8
@@ -20037,16 +20037,16 @@ ov96_021EEF0C: ; 0x021EEF0C
 	bl sub_0201C1C4
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201C2D8
@@ -20265,7 +20265,7 @@ _021EF124:
 	bl sub_0203A994
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -21144,7 +21144,7 @@ ov96_021EF818: ; 0x021EF818
 	bl sub_0200D3F8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -23065,7 +23065,7 @@ _021F07F6:
 	bl ov96_021F424C
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -23606,7 +23606,7 @@ ov96_021F0BD4: ; 0x021F0BD4
 	bl sub_0201CAE0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0xf0
 	pop {r3, r4, r5, pc}
 	nop
@@ -32614,10 +32614,10 @@ _021F5288:
 _021F5374:
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -33309,7 +33309,7 @@ ov96_021F584C: ; 0x021F584C
 	bl sub_0201CAE0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0xb8
 	pop {r3, r4, r5, pc}
 	nop
@@ -34340,7 +34340,7 @@ ov96_021F6138: ; 0x021F6138
 	add r1, r0, #0
 	mov r3, #0x3f
 	str r0, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _021F61C0 ; =0xBFFF0000
 	ldr r0, _021F61C4 ; =0x04000580
 	str r1, [r0]
@@ -34389,7 +34389,7 @@ ov96_021F61C8: ; 0x021F61C8
 	add r1, sp, #0x38
 	mov r2, #1
 	bl sub_020C2528
-	bl sub_020BEF98
+	bl NNS_G3dGlbFlushP
 	mov r0, #3
 	str r0, [sp, #0x34]
 	mov r0, #0x40
@@ -37658,7 +37658,7 @@ _021F7BB4:
 _021F7BCC:
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -41546,7 +41546,7 @@ _021F9ABA:
 _021F9AE2:
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -42104,7 +42104,7 @@ ov96_021F9E5C: ; 0x021F9E5C
 	bl sub_0201CAE0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0xf0
 	pop {r3, r4, r5, pc}
 	nop
@@ -47820,7 +47820,7 @@ _021FCCD2:
 	bl ov96_021FD060
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -48195,7 +48195,7 @@ ov96_021FCF00: ; 0x021FCF00
 	bl sub_0201CAE0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0xd4
 	pop {r4, r5, pc}
 	nop
@@ -57604,7 +57604,7 @@ _02201A8A:
 	bl ov96_02201E10
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -57967,7 +57967,7 @@ ov96_02201CB0: ; 0x02201CB0
 	bl sub_0201CAE0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0xd4
 	pop {r4, r5, pc}
 	nop
@@ -63758,7 +63758,7 @@ _02204D26:
 	bl ov96_02205048
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -64086,7 +64086,7 @@ ov96_02204F40: ; 0x02204F40
 	bl sub_0201CAE0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x9c
 	pop {r4, r5, pc}
 	nop
@@ -73107,7 +73107,7 @@ _0220968E:
 	bl ov96_021E5DFC
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -73818,7 +73818,7 @@ _02209C44:
 	bl sub_02002CEC
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #3
@@ -83256,7 +83256,7 @@ _0220E5A2:
 	bl ov96_0220FF64
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -84358,7 +84358,7 @@ _0220EDD4:
 	bl sub_02002CEC
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0xdc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -89370,7 +89370,7 @@ _022115BE:
 	bl ov96_022147FC
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -89853,7 +89853,7 @@ ov96_022118C4: ; 0x022118C4
 	bl sub_0201CAE0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0xd4
 	pop {r4, r5, pc}
 	nop
@@ -98613,7 +98613,7 @@ _02215C84:
 	bl sub_0203A994
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -99795,7 +99795,7 @@ _02216584:
 	bl sub_02002CEC
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0xdc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

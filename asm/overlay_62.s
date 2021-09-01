@@ -549,7 +549,7 @@ ov62_021E5CF4: ; 0x021E5CF4
 	bl sub_0200D3F8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

@@ -1052,7 +1052,7 @@ _0225F73E:
 	bl ov120_0225F9D4
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r5, #0x10]
 	ldr r1, _0225F8A4 ; =ov120_0225F8B0
 	ldr r0, [r0, #4]
@@ -2041,10 +2041,10 @@ _0225FF2E:
 	mov r0, #2
 	mov r1, #1
 	ldr r5, [r4, #0xc]
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -2211,7 +2211,7 @@ _0226008C:
 	add r0, #0x4d
 	strb r1, [r0]
 	mov r0, #8
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	str r0, [r4]
 _022600C4:
@@ -2229,7 +2229,7 @@ _022600D4:
 	add r0, #0x4c
 	strb r1, [r0]
 	mov r0, #2
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #6
 	str r0, [r4]
 	b _0226011A

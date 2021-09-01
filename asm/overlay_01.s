@@ -939,16 +939,16 @@ ov01_021E6138: ; 0x021E6138
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201BB4C
@@ -1137,7 +1137,7 @@ _021E6294:
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
 	str r2, [r1, #0x7c]
-	bl sub_020BEF98
+	bl NNS_G3dGlbFlushP
 	ldr r0, [r4, #0x44]
 	bl ov01_021F13EC
 	bl sub_020237B0
@@ -1150,7 +1150,7 @@ _021E6294:
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
 	str r2, [r1, #0x7c]
-	bl sub_020BEF98
+	bl NNS_G3dGlbFlushP
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
 	bl ov01_021E6768
@@ -1268,7 +1268,7 @@ ov01_021E63B8: ; 0x021E63B8
 	add r5, r0, #0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021E6454 ; =0x0210F6DC
 	ldr r0, [r0]
 	lsl r1, r0, #1
@@ -1474,7 +1474,7 @@ ov01_021E6580: ; 0x021E6580
 	add r4, r0, #0
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	bl sub_02022D24
 	bl ov01_021EA8E0
 	str r0, [r4, #0x48]
@@ -10226,7 +10226,7 @@ _021EA88C:
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #8]
 	ldr r3, [r4, #0xc]
-	bl sub_020CF82C
+	bl G3X_SetFog
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EA864
@@ -11425,7 +11425,7 @@ _021EB0C8:
 	bl NARC_AllocAndReadWholeMember
 	str r0, [r7, r6]
 	ldr r0, [r7, r6]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r1, r5, r6
 	str r0, [r1, #0x10]
 	add r0, r4, #0
@@ -11601,7 +11601,7 @@ _021EB208:
 	str r0, [r4, #0x10]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021EB1F4
@@ -12221,7 +12221,7 @@ _021EB69A:
 	strh r0, [r1]
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4]
 	add r0, #8
 	bl ov01_021EB5A4
@@ -12796,7 +12796,7 @@ _021EBAFE:
 	beq _021EBB28
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r2, _021EBB3C ; =0x0400000C
 	mov r1, #3
 	ldrh r3, [r2]
@@ -12884,7 +12884,7 @@ ov01_021EBB90: ; 0x021EBB90
 	beq _021EBBCE
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021EBC90 ; =0x0400000C
 	mov r2, #3
 	ldrh r3, [r0]
@@ -13011,7 +13011,7 @@ ov01_021EBCA4: ; 0x021EBCA4
 	beq _021EBCD8
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021EBD0C ; =0x0400000C
 	mov r2, #3
 	ldrh r3, [r0]
@@ -13619,7 +13619,7 @@ ov01_021EC114: ; 0x021EC114
 	beq _021EC1B4
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r1, #0xc
 	mov r0, #0x42
 	lsl r0, r0, #2
@@ -16386,7 +16386,7 @@ _021ED5B2:
 	bl ov01_021EB818
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021ED70C ; =0x00000F62
 	mov r1, #1
 	add sp, #0x10
@@ -16437,7 +16437,7 @@ _021ED656:
 	bl ov01_021EB818
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021ED70C ; =0x00000F62
 	mov r1, #3
 	add sp, #0x10
@@ -23751,13 +23751,13 @@ _021F0DFC:
 	ldr r0, [r0]
 	str r4, [r0, #4]
 	mov r0, #2
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	bl sub_020CE89C
 	mov r2, #2
 	ldr r1, _021F0E60 ; =0x06840000
@@ -24132,9 +24132,9 @@ ov01_021F10C8: ; 0x021F10C8
 	add r0, sp, #0
 	bl MTX_Identity33_
 	add r0, sp, #0x30
-	bl sub_020BEFD4
+	bl NNS_G3dGlbSetBaseTrans
 	add r0, sp, #0x24
-	bl sub_020BF004
+	bl NNS_G3dGlbSetBaseScale
 	ldr r1, _021F1140 ; =0x021DA558
 	add r0, sp, #0
 	bl MI_Copy36B
@@ -24182,7 +24182,7 @@ _021F1154:
 	bl sub_02022BE8
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r5, _021F11FC ; =0x022067FC
 	add r3, sp, #0x34
 	add r2, r3, #0
@@ -24206,7 +24206,7 @@ _021F1154:
 	bl sub_0201BB68
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, sp, #0x24
 	bl MTX_Identity22_
 	mov r2, #0
@@ -24241,7 +24241,7 @@ _021F1154:
 	bl sub_0201CAE0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x6c
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -25501,7 +25501,7 @@ ov01_021F1A48: ; 0x021F1A48
 	ldr r0, [r4]
 	add r6, r1, #0
 	add r5, r2, #0
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	cmp r0, #0
 	beq _021F1A78
 	bl sub_0201F53C
@@ -25511,13 +25511,13 @@ ov01_021F1A48: ; 0x021F1A48
 	ldr r1, [r0, #8]
 	bl DC_FlushRange
 	ldr r0, [r4]
-	bl sub_020C26C0
+	bl NNS_G3dResDefaultSetup
 	cmp r0, #0
 	bne _021F1A78
 	bl GF_AssertFail
 _021F1A78:
 	ldr r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _021F1AA2
 	add r2, r0, #0
@@ -25548,7 +25548,7 @@ _021F1AA4:
 _021F1AAE:
 	ldr r1, [r5]
 	add r0, r6, #0
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021F1A48
 
@@ -29870,7 +29870,7 @@ ov01_021F3B84: ; 0x021F3B84
 	add r0, r1, #0
 	add r4, r2, #0
 	add r5, r3, #0
-	bl sub_020BEFD4
+	bl NNS_G3dGlbSetBaseTrans
 	ldr r1, _021F3C04 ; =0x021DA558
 	add r0, r4, #0
 	bl MI_Copy36B
@@ -29880,8 +29880,8 @@ ov01_021F3B84: ; 0x021F3B84
 	bic r2, r0
 	add r0, r5, #0
 	str r2, [r1, #0x7c]
-	bl sub_020BF004
-	bl sub_020BEF98
+	bl NNS_G3dGlbSetBaseScale
+	bl NNS_G3dGlbFlushP
 	add r2, sp, #0
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x18]
@@ -31337,13 +31337,13 @@ ov01_021F467C: ; 0x021F467C
 	add r4, r1, #0
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	bl sub_020CE89C
 	mov r0, #4
 	add r1, r0, #0
@@ -31388,7 +31388,7 @@ ov01_021F46DC: ; 0x021F46DC
 	bl sub_020CDC04
 	mov r0, #0xe
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, [r4]
 	mov r0, #4
 	bl FreeToHeapExplicit
@@ -33020,7 +33020,7 @@ _021F5352:
 	bne _021F53A8
 	sub r0, #0x10
 	ldr r0, [r2, r0]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _021F5392
 	add r2, r0, #0
@@ -35694,7 +35694,7 @@ _021F66CE:
 _021F66D4:
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	add r5, r0, #0
 	ldrb r0, [r5, #9]
 	cmp r0, #1
@@ -35730,7 +35730,7 @@ _021F670E:
 _021F6716:
 	ldr r0, [r4, #0xc]
 	add r1, r5, #0
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #8]
 	cmp r0, #0
@@ -35828,14 +35828,14 @@ ov01_021F67B4: ; 0x021F67B4
 	bl GF_AssertFail
 _021F67DE:
 	ldr r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	ldrb r0, [r0, #9]
 	cmp r0, #1
 	beq _021F67EE
 	bl GF_AssertFail
 _021F67EE:
 	ldr r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _021F6818
 	add r2, r0, #0
@@ -35865,7 +35865,7 @@ _021F681A:
 _021F6822:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -44848,7 +44848,7 @@ _021FAA44:
 	mov r2, #0
 	bl ov01_021FA238
 	str r0, [r5, #0x10]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r4, r0, #0
 	ldr r0, [sp, #0x18]
 	bl ov01_021FA2AC
@@ -47129,7 +47129,7 @@ _021FBA70:
 	str r0, [r5, r1]
 	sub r0, r1, #4
 	ldr r0, [r5, r0]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, _021FBCA8 ; =0x000008A4
 	str r0, [r5, r1]
 	ldrh r0, [r6, #0xc]
@@ -47137,7 +47137,7 @@ _021FBA70:
 	beq _021FBAB2
 	sub r0, r1, #4
 	ldr r0, [r5, r0]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, _021FBCAC ; =0x000008A8
 	str r0, [r5, r1]
 	b _021FBAB8
@@ -47252,7 +47252,7 @@ _021FBB7C:
 	bge _021FBBDA
 	ldr r0, [sp, #0x14]
 	ldr r0, [r0, #4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _021FBBC0
 	add r1, r0, #0
@@ -47310,7 +47310,7 @@ _021FBBEC:
 	mov r1, #0
 	bl ov01_022040A4
 	ldr r0, [r5, #4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r4, r0, #0
 	beq _021FBC2C
 	bl sub_0201F668
@@ -47403,7 +47403,7 @@ ov01_021FBCD8: ; 0x021FBCD8
 	add r2, r5, #0
 	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	str r0, [r4, #4]
 	cmp r0, #0
 	beq _021FBD16
@@ -47430,7 +47430,7 @@ _021FBD16:
 _021FBD18:
 	str r0, [r4, #8]
 	ldr r0, [r4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0xc]
 	cmp r0, #0
 	beq _021FBD32
@@ -47451,7 +47451,7 @@ ov01_021FBD38: ; 0x021FBD38
 	add r4, r0, #0
 	add r0, r1, #0
 	str r1, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	str r0, [r4, #4]
 	cmp r0, #0
 	beq _021FBD6A
@@ -47478,7 +47478,7 @@ _021FBD6A:
 _021FBD6C:
 	str r0, [r4, #8]
 	ldr r0, [r4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0xc]
 	cmp r0, #0
 	beq _021FBD86
@@ -47747,7 +47747,7 @@ ov01_021FBF2C: ; 0x021FBF2C
 	bl memset
 	ldr r1, [r5, #8]
 	add r0, r4, #0
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	mov r0, #1
 	str r0, [r4, #0x6c]
 	lsl r0, r0, #0xc
@@ -47940,7 +47940,7 @@ ov01_021FC05C: ; 0x021FC05C
 	bl sub_0201BB68
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021FC0A4 ; =0x00000647
 	bl PlaySE
 	add sp, #4
@@ -48166,7 +48166,7 @@ ov01_021FC1FC: ; 0x021FC1FC
 	strh r1, [r0]
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, _021FC258 ; =0x0400000C
 	mov r0, #3
 	ldrh r2, [r1]
@@ -48191,7 +48191,7 @@ ov01_021FC1FC: ; 0x021FC1FC
 	bl sub_0201CB04
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov01_021FC1E0
 	add sp, #8
@@ -48212,7 +48212,7 @@ ov01_021FC260: ; 0x021FC260
 	strh r1, [r0]
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, _021FC2BC ; =0x0400000E
 	mov r0, #3
 	ldrh r2, [r1]
@@ -48236,7 +48236,7 @@ ov01_021FC260: ; 0x021FC260
 	bl sub_0201CB04
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov01_021FC1E0
 	add sp, #8
@@ -48363,7 +48363,7 @@ _021FC376:
 	bl sub_0201BB68
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _021FC4B2
 _021FC392:
 	ldr r0, [r4]
@@ -48433,7 +48433,7 @@ _021FC40E:
 	beq _021FC4B2
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021FC4B8 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -48497,7 +48497,7 @@ _021FC498:
 	bl sub_0201CB04
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _021FC4AE:
@@ -64150,7 +64150,7 @@ ov01_02203BB4: ; 0x02203BB4
 	add r1, #0x40
 	bl sub_02026E18
 	ldr r0, [r4, #0x58]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0x50]
 	add r0, r4, #0
 	mov r1, #0
@@ -64880,7 +64880,7 @@ ov01_02204168: ; 0x02204168
 	add r5, r0, #0
 	ldr r0, [r1]
 	add r4, r2, #0
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _02204198
 	add r2, r0, #0
@@ -64914,7 +64914,7 @@ _0220419A:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	ldr r1, [r0, #0x54]
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	ldr r1, [r5, #0x10]
 	ldr r2, [r5, #0xc]
 	lsl r0, r1, #2
@@ -68133,7 +68133,7 @@ ov01_0220589C: ; 0x0220589C
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
 	str r0, [r4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r6, r0, #0
 	mov r1, #0
 	bl sub_02020888
@@ -68796,7 +68796,7 @@ _02205E12:
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
 	add r5, r0, #0
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x38]
 	mov r2, #0x40
 	add r0, r0, r1
@@ -69190,7 +69190,7 @@ _02206142:
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
 	add r6, r0, #0
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x38]
 	mov r2, #0x40
 	add r0, r0, r1

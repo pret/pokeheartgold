@@ -759,7 +759,7 @@ ov43_0222A48C: ; 0x0222A48C
 	bl ov43_0222A998
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0

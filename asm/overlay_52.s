@@ -1023,7 +1023,7 @@ ov52_021E888C: ; 0x021E888C
 	bl sub_02024A04
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

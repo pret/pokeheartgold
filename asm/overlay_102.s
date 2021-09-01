@@ -4171,7 +4171,7 @@ ov102_021E94CC: ; 0x021E94CC
 	bl ov102_021EC248
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

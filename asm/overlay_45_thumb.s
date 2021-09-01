@@ -8047,7 +8047,7 @@ _0222D732:
 	thumb_func_start ov45_0222D740
 ov45_0222D740: ; 0x0222D740
 	push {r4, lr}
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _0222D76A
 	add r2, r0, #0
@@ -14509,7 +14509,7 @@ _022304E2:
 	add r0, r5, #0
 	bl ov45_0222D740
 	add r0, r5, #0
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _02230572
 	add r2, r0, #0
@@ -15152,7 +15152,7 @@ ov45_022309E8: ; 0x022309E8
 	bl ov49_02258830
 	ldr r0, [sp]
 	str r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	str r0, [r4, #4]
 	cmp r0, #0
 	beq _02230A22
@@ -15179,7 +15179,7 @@ _02230A22:
 _02230A24:
 	str r0, [r4, #8]
 	ldr r0, [r4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
@@ -15889,7 +15889,7 @@ _02230E8E:
 	add r0, r5, #0
 	str r2, [r1, #0x7c]
 	bl sub_02023E94
-	bl sub_020BF004
+	bl NNS_G3dGlbSetBaseScale
 	add r0, sp, #0x38
 	add r1, sp, #0x24
 	bl sub_0201FA34

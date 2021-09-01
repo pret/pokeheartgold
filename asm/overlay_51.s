@@ -291,7 +291,7 @@ _021E5CC4:
 	beq _021E5D3C
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 _021E5D3C:
 	mov r0, #1
 	add sp, #0xc
@@ -1355,7 +1355,7 @@ ov51_021E6644: ; 0x021E6644
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
 	bl sub_02022CC8
@@ -3879,7 +3879,7 @@ _021E7AB2:
 	bl NARC_dtor
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

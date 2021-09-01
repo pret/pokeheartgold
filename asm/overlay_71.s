@@ -1726,7 +1726,7 @@ ov71_02247610: ; 0x02247610
 	ldr r0, [r4, r6]
 	cmp r0, #0
 	beq _022476AC
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	str r0, [r5, #0x58]
 	cmp r0, #0
 	beq _02247674
@@ -1753,7 +1753,7 @@ _02247674:
 _02247676:
 	str r0, [r5, #0x5c]
 	ldr r0, [r5]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r5, #0x60]
 	bl sub_0201F668
 	ldr r0, [r5]
@@ -1761,7 +1761,7 @@ _02247676:
 	bl sub_0201F64C
 	ldr r1, [r5, #0x5c]
 	add r0, r5, #4
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	ldr r0, [sp, #0x20]
 	mov r1, #0x1f
 	str r0, [r5, #0x68]
@@ -2267,7 +2267,7 @@ ov71_02247A10: ; 0x02247A10
 	bl sub_0201B1E4
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r2, _02247C24 ; =0x04000008
 	mov r0, #3
 	ldrh r3, [r2]
@@ -2435,7 +2435,7 @@ ov71_02247A10: ; 0x02247A10
 	bl ov71_022476EC
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -2832,7 +2832,7 @@ ov71_02247ED0: ; 0x02247ED0
 	add r1, r0, #0
 	mov r3, #0x3f
 	str r0, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _02247F84 ; =0x04000540
 	mov r0, #2
 	str r0, [r1]
@@ -3988,7 +3988,7 @@ _0224880A:
 	bl sub_0201BC28
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -4114,7 +4114,7 @@ ov71_022488E4: ; 0x022488E4
 	ldr r2, _022489D8 ; =0x00007FFF
 	mov r3, #0x3f
 	str r1, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _022489DC ; =0x04000540
 	mov r0, #2
 	str r0, [r1]
@@ -4129,7 +4129,7 @@ ov71_022488E4: ; 0x022488E4
 	bl sub_02027008
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, _022489E4 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -5960,7 +5960,7 @@ _022496F0:
 	bl sub_0201BC8C
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -6029,7 +6029,7 @@ ov71_022497E0: ; 0x022497E0
 	ldr r2, _022498C8 ; =0x00007FFF
 	mov r3, #0x3f
 	str r1, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _022498CC ; =0x04000540
 	mov r0, #2
 	str r0, [r1]
@@ -6044,7 +6044,7 @@ ov71_022497E0: ; 0x022497E0
 	bl sub_02027008
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, _022498D4 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -7049,7 +7049,7 @@ ov71_02249E6C: ; 0x02249E6C
 	bl ov71_0224A0B8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -7468,7 +7468,7 @@ _0224A2F8:
 	bl sub_0201BC8C
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -7540,7 +7540,7 @@ ov71_0224A3F0: ; 0x0224A3F0
 	ldr r2, _0224A4E4 ; =0x00007FFF
 	mov r3, #0x3f
 	str r1, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _0224A4E8 ; =0x04000540
 	mov r0, #2
 	str r0, [r1]
@@ -7555,7 +7555,7 @@ ov71_0224A3F0: ; 0x0224A3F0
 	bl sub_02027008
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, _0224A4F0 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -8708,7 +8708,7 @@ _0224AD52:
 	bl sub_0201BC28
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -8791,7 +8791,7 @@ ov71_0224ADE4: ; 0x0224ADE4
 	ldr r2, _0224AEDC ; =0x00007FFF
 	mov r3, #0x3f
 	str r1, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _0224AEE0 ; =0x04000540
 	mov r0, #2
 	str r0, [r1]
@@ -8806,7 +8806,7 @@ ov71_0224ADE4: ; 0x0224ADE4
 	bl sub_02027008
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, _0224AEE8 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -9354,7 +9354,7 @@ ov71_0224B280: ; 0x0224B280
 	bl sub_0201B1E4
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r2, _0224B444 ; =0x04000008
 	mov r0, #3
 	ldrh r3, [r2]
@@ -9495,7 +9495,7 @@ ov71_0224B280: ; 0x0224B280
 	bl ov71_0224B848
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -9923,7 +9923,7 @@ ov71_0224B720: ; 0x0224B720
 	add r1, r0, #0
 	mov r3, #0x3f
 	str r0, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _0224B7D4 ; =0x04000540
 	mov r0, #2
 	str r0, [r1]

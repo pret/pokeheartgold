@@ -1243,13 +1243,13 @@ _0222799C:
 _022279B0:
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _02227ABE
 _022279CA:
 	add r2, r1, #0
@@ -1353,13 +1353,13 @@ _02227A4E:
 _02227A9E:
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x51
 	mov r1, #0xf
 	lsl r0, r0, #2
@@ -7622,7 +7622,7 @@ _0222AC8C:
 	bl ov74_0222A94C
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #3
 	str r0, [r5]
 _0222ACC4:
@@ -7649,7 +7649,7 @@ ov74_0222ACD8: ; 0x0222ACD8
 _0222ACEC:
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r5]
 	mov r1, #0
 	bl sub_0201CAE0
@@ -10024,7 +10024,7 @@ ov74_0222C014: ; 0x0222C014
 	bl ov74_0222B144
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -10142,7 +10142,7 @@ _0222C0FE:
 	bl ov74_0222B5F8
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	bl ov74_0222BF18
 	mov r0, #4
 	str r0, [r4]
@@ -10267,7 +10267,7 @@ _0222C202:
 	bl ov74_0222B760
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _0222C2D0
 _0222C222:
 	mov r5, #0
@@ -10659,7 +10659,7 @@ _0222C54E:
 	str r0, [r5]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _0222CD3A
 _0222C570:
 	bl ov74_0223615C
@@ -10686,7 +10686,7 @@ _0222C57E:
 	bl sub_0201CAE0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r6, r4, #0
 	add r6, #0xdc
 	add r0, r6, #0
@@ -14471,7 +14471,7 @@ _0222E410:
 	bl PlaySE
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _0222E5D0 ; =0x00002BD0
 	mov r1, #0
 	add r0, r4, r0
@@ -14536,7 +14536,7 @@ _0222E48E:
 	bl ov74_0222DE8C
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0xa
 	str r0, [r5]
 	b _0222E79C
@@ -14561,7 +14561,7 @@ _0222E4C4:
 	bl sub_0200E580
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov74_0222DEF0
 	mov r0, #5
@@ -17089,7 +17089,7 @@ _0222F976:
 	bl PlaySE
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _0222FB70 ; =0x00002BC4
 	mov r1, #0
 	add r0, r4, r0
@@ -17154,7 +17154,7 @@ _0222F9F4:
 	bl ov74_0222F624
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0xa
 	str r0, [r5]
 	b _0222FB2C
@@ -17179,7 +17179,7 @@ _0222FA2A:
 	bl sub_0200E580
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov74_0222F688
 	mov r0, #5
@@ -21874,7 +21874,7 @@ ov74_02231CFC: ; 0x02231CFC
 	bl sub_02009D48
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x2c
 	pop {pc}
 	thumb_func_end ov74_02231CFC
@@ -23905,7 +23905,7 @@ _02232C54:
 	bl BgCommitTilemapBufferToVram
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r1, #7
 	mov r0, #0
 	lsl r1, r1, #6
@@ -23985,7 +23985,7 @@ _02232DCE:
 	blt _02232DCE
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _02232E38 ; =0x00000498
 	add r0, r6, r0
 	bl ov74_02232DA4
@@ -24704,7 +24704,7 @@ _022333BA:
 	bl sub_0201A0FC
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #4]
 	cmp r0, #1
 	bne _022333FA
@@ -24931,7 +24931,7 @@ _02233588:
 	bl sub_0201A0FC
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #0
 	bl ov74_02232758
@@ -29637,7 +29637,7 @@ _0223580C:
 	bne _0223587E
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _02235886
 _0223587E:
 	mov r0, #0x10

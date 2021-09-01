@@ -5674,8 +5674,8 @@ _020CF824: .word 0x04000600
 _020CF828: .word 0x04000440
 	arm_func_end sub_020CF79C
 
-	arm_func_start sub_020CF82C
-sub_020CF82C: ; 0x020CF82C
+	arm_func_start G3X_SetFog
+G3X_SetFog: ; 0x020CF82C
 	cmp r0, #0
 	beq _020CF860
 	ldr ip, _020CF878 ; =0x0400035C
@@ -5700,7 +5700,7 @@ _020CF860:
 _020CF878: .word 0x0400035C
 _020CF87C: .word 0x04000060
 _020CF880: .word 0x0000CF7F
-	arm_func_end sub_020CF82C
+	arm_func_end G3X_SetFog
 
 	arm_func_start sub_020CF884
 sub_020CF884: ; 0x020CF884
@@ -5757,8 +5757,8 @@ _020CF908: .word sub_020D490C
 _020CF90C: .word 0x04000360
 	arm_func_end sub_020CF8FC
 
-	arm_func_start sub_020CF910
-sub_020CF910: ; 0x020CF910
+	arm_func_start G3X_SetClearColor
+G3X_SetClearColor: ; 0x020CF910
 	ldr ip, [sp]
 	orr r0, r0, r1, lsl #16
 	orr r1, r0, r3, lsl #24
@@ -5770,7 +5770,7 @@ sub_020CF910: ; 0x020CF910
 	bx lr
 	.align 2, 0
 _020CF934: .word 0x04000350
-	arm_func_end sub_020CF910
+	arm_func_end G3X_SetClearColor
 
 	arm_func_start sub_020CF938
 sub_020CF938: ; 0x020CF938

@@ -284,16 +284,16 @@ ov57_02237B20: ; 0x02237B20
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -558,7 +558,7 @@ _02237D5C:
 	orr r2, r0
 	strh r2, [r1]
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r5, _02237E34 ; =0x0223BD0C
 	add r3, sp, #0x38
 	mov r2, #0xe
@@ -2376,7 +2376,7 @@ ov57_02238B48: ; 0x02238B48
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _02238BB4 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -2413,13 +2413,13 @@ ov57_02238B48: ; 0x02238B48
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_020CF82C
+	bl G3X_SetFog
 	mov r0, #0
 	ldr r2, _02238BC0 ; =0x00007FFF
 	add r1, r0, #0
 	mov r3, #0x3f
 	str r0, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _02238BC4 ; =0xBFFF0000
 	ldr r0, _02238BC8 ; =0x04000580
 	str r1, [r0]
@@ -4452,7 +4452,7 @@ ov57_02239B94: ; 0x02239B94
 	bl sub_02022D24
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -5862,7 +5862,7 @@ _0223A708:
 	bne _0223A7C0
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl sub_02022CC8
@@ -5984,7 +5984,7 @@ _0223A820:
 	bne _0223A8EC
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #3
 	add r1, r0, #0
 	bl sub_0201BB68
@@ -6387,7 +6387,7 @@ _0223AB74: ; jump table
 _0223AB84:
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xa
@@ -6568,7 +6568,7 @@ _0223ACF6:
 	bl ov07_02233ECC
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov57_0223B9C8
 	ldr r0, _0223AE9C ; =0x00000408
@@ -6655,7 +6655,7 @@ _0223AD7A:
 	bl ov57_0223BB5C
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _0223AE90 ; =0x00000404
 	ldr r1, [r4, r0]
 	add r1, r1, #1
@@ -6717,7 +6717,7 @@ _0223AE4C:
 	bne _0223AE88
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #1
 	bl ov57_0223B948

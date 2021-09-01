@@ -2042,7 +2042,7 @@ _021E692C:
 _021E6968:
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

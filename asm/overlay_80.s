@@ -2092,7 +2092,7 @@ ov80_0222ADE8: ; 0x0222ADE8
 	bl sub_0201BB68
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0222ADE8
@@ -2138,7 +2138,7 @@ ov80_0222AE30: ; 0x0222AE30
 	bl sub_020CF15C
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, pc}
 	nop
 _0222AE64: .word 0x04000050
@@ -14914,12 +14914,12 @@ _02230F06:
 	bne _02230F14
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _02230FB6
 _02230F14:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _02230FB6
 _02230F1E:
 	ldrb r1, [r4, #5]
@@ -20834,7 +20834,7 @@ _02233E92:
 _02233E9C:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _02233F12
 _02233EA6:
 	ldrb r0, [r4, #0x1f]
@@ -22293,7 +22293,7 @@ ov80_02234968: ; 0x02234968
 	bl FreeToHeap
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -22304,7 +22304,7 @@ ov80_02234968: ; 0x02234968
 _02234A1E:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -30608,7 +30608,7 @@ _022386D4:
 	bl sub_02022D24
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -30685,10 +30685,10 @@ ov80_0223885C: ; 0x0223885C
 	bl ov80_0223927C
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4]
 	mov r1, #1
 	bl sub_0201BB4C
@@ -31408,7 +31408,7 @@ _02238EA2:
 	mov r0, #1
 	strh r2, [r1]
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r4, _02238F0C ; =0x0223D59C
 	add r3, sp, #0
 	ldmia r4!, {r0, r1}
@@ -31907,7 +31907,7 @@ ov80_022392F8: ; 0x022392F8
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _02239364 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -31944,13 +31944,13 @@ ov80_022392F8: ; 0x022392F8
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_020CF82C
+	bl G3X_SetFog
 	mov r0, #0
 	ldr r2, _02239370 ; =0x00007FFF
 	add r1, r0, #0
 	mov r3, #0x3f
 	str r0, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _02239374 ; =0xBFFF0000
 	ldr r0, _02239378 ; =0x04000580
 	str r1, [r0]

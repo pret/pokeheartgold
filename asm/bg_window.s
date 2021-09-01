@@ -111,7 +111,7 @@ _0201AD38: ; jump table
 _0201AD48:
 	mov r0, #1
 	add r1, r6, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldrb r3, [r4, #0x14]
 	ldrb r1, [r4, #0x12]
 	ldrb r0, [r4, #0x11]
@@ -156,7 +156,7 @@ _0201AD96:
 _0201ADA0:
 	mov r0, #2
 	add r1, r6, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldrb r3, [r4, #0x14]
 	ldrb r1, [r4, #0x12]
 	ldrb r0, [r4, #0x11]
@@ -201,7 +201,7 @@ _0201ADEE:
 _0201ADF8:
 	mov r0, #4
 	add r1, r6, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0201AE0E
@@ -287,7 +287,7 @@ _0201AE90:
 _0201AE9A:
 	mov r0, #8
 	add r1, r6, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0201AEB0
@@ -2165,19 +2165,19 @@ _0201BC3A: ; jump table
 	.short _0201BC82 - _0201BC3A - 2 ; case 7
 _0201BC4A:
 	mov r0, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, pc}
 _0201BC52:
 	mov r0, #2
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, pc}
 _0201BC5A:
 	mov r0, #4
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, pc}
 _0201BC62:
 	mov r0, #8
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, pc}
 _0201BC6A:
 	mov r0, #1

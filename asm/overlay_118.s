@@ -42,10 +42,10 @@ _0225F050:
 	mov r0, #2
 	mov r1, #1
 	ldr r5, [r4, #0xc]
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -156,10 +156,10 @@ _0225F150:
 	bl ov01_021EFEC8
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	str r0, [r5, #0x1c]
 	mov r0, #4
@@ -194,7 +194,7 @@ _0225F18E:
 	cmp r2, #5
 	bls _0225F218
 	mov r0, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	str r0, [r5, #0x1c]
 	mov r0, #0

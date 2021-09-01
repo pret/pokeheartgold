@@ -48,7 +48,7 @@ ov49_02258830: ; 0x02258830
 	add r7, r3, #0
 	bl sub_02007C98
 	add r4, r0, #0
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r6, r0, #0
 	bl sub_0201F668
 	add r0, r6, #0
@@ -69,14 +69,14 @@ ov49_02258830: ; 0x02258830
 	add r2, r6, #0
 	bl memcpy
 	ldr r0, [r5]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [sp, #0xc]
 	ldr r2, [sp, #8]
 	add r5, r0, #0
-	bl sub_020BE404
+	bl NNS_G3dTexSetTexKey
 	ldr r1, [sp, #4]
 	add r0, r5, #0
-	bl sub_020BE530
+	bl NNS_G3dPlttSetPlttKey
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x10
@@ -4368,7 +4368,7 @@ _0225A742:
 	str r0, [r5, r1]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -4477,7 +4477,7 @@ ov49_0225A854: ; 0x0225A854
 	sub sp, #0xc
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _0225A964 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -4518,13 +4518,13 @@ ov49_0225A854: ; 0x0225A854
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_020CF82C
+	bl G3X_SetFog
 	mov r1, #0
 	ldr r0, _0225A974 ; =0x00006B5A
 	ldr r2, _0225A978 ; =0x00007FFF
 	mov r3, #0x3f
 	str r1, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _0225A97C ; =0xBFFF0000
 	ldr r0, _0225A980 ; =0x04000580
 	ldr r2, _0225A984 ; =0xFFFFF224
@@ -10501,7 +10501,7 @@ ov49_0225D528: ; 0x0225D528
 	add r4, r0, #0
 	bl ov49_02258830
 	ldr r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	str r0, [r4, #4]
 	cmp r0, #0
 	beq _0225D55C
@@ -10528,7 +10528,7 @@ _0225D55C:
 _0225D55E:
 	str r0, [r4, #8]
 	ldr r0, [r4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
@@ -11020,7 +11020,7 @@ _0225D8B2:
 	mov r2, #0
 	bl sub_02007C98
 	str r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	str r0, [r4, #4]
 	cmp r0, #0
 	beq _0225D8F2
@@ -11047,7 +11047,7 @@ _0225D8F2:
 _0225D8F4:
 	str r0, [r4, #8]
 	ldr r0, [r5, #0x20]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0xc]
 	add r7, r7, #1
 	add r6, r6, #4
@@ -11203,7 +11203,7 @@ _0225DA18:
 	mov r5, #0
 _0225DA1C:
 	ldr r0, [r4, #0x20]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r1, sp, #0x10
 	add r2, sp, #0xc
 	add r6, r0, #0
@@ -11354,7 +11354,7 @@ _0225DB30:
 	lsl r0, r0, #2
 	add r0, r1, r0
 	ldr r0, [r0, #0x20]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldrb r1, [r5, #2]
 	lsl r2, r1, #4
 	ldr r1, [sp]
@@ -11366,7 +11366,7 @@ _0225DB30:
 	add r1, r0, r1
 	ldr r0, [r1, #4]
 	ldr r1, [r1, #0xc]
-	bl sub_020BED00
+	bl NNS_G3dBindMdlSet
 	cmp r0, #0
 	bne _0225DB6A
 	bl GF_AssertFail
@@ -26598,7 +26598,7 @@ _022656A2:
 	str r0, [r5, r1]
 	add r0, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	ldr r1, _02265710 ; =0x00010554
 	str r0, [r5, r1]
 	add r0, r1, #0
@@ -26699,7 +26699,7 @@ ov49_02265760: ; 0x02265760
 _0226576A:
 	ldr r0, _022657AC ; =0x00010640
 	ldr r0, [r5, r0]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r1, sp, #4
 	add r2, sp, #0
 	add r6, r0, #0
@@ -26768,7 +26768,7 @@ _022657D8:
 	add r1, r5, r0
 	ldr r0, _02265850 ; =0x00010640
 	ldr r0, [r1, r0]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldrb r1, [r4]
 	lsl r1, r1, #4
 	add r2, r5, r1
@@ -27065,7 +27065,7 @@ _022659EC:
 	ldr r1, [sp]
 	add r1, r1, r2
 	ldr r0, [r1, r0]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [sp, #0xc]
 	mov r2, #0
 	str r0, [r1, #0xc]

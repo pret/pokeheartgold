@@ -2460,7 +2460,7 @@ ov70_02238B80: ; 0x02238B80
 	bl sub_02009D48
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -3222,7 +3222,7 @@ ov70_02239134: ; 0x02239134
 	bl sub_0201C1C4
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -3373,13 +3373,13 @@ ov70_02239304: ; 0x02239304
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _0223932C ; =0x00000DCC
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -3783,13 +3783,13 @@ ov70_02239658: ; 0x02239658
 	beq _0223968E
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #0xb
@@ -6388,10 +6388,10 @@ _0223ABAE:
 _0223ABB8:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x38
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -10754,7 +10754,7 @@ ov70_0223CE44: ; 0x0223CE44
 	bl sub_0201C1C4
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -16301,7 +16301,7 @@ ov70_0223FA08: ; 0x0223FA08
 	bl sub_0201C1C4
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -25259,16 +25259,16 @@ ov70_02244038: ; 0x02244038
 	bl ov70_0224458C
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl sub_02022CC8
@@ -25418,7 +25418,7 @@ ov70_022441A4: ; 0x022441A4
 	bl sub_0201B1E4
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0201CAE0
@@ -25439,7 +25439,7 @@ ov70_022441A4: ; 0x022441A4
 	bl sub_0201B1E4
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r5, _02244288 ; =0x02246020
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}

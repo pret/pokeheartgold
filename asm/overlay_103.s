@@ -2787,7 +2787,7 @@ ov103_021EDEA8: ; 0x021EDEA8
 	add r5, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

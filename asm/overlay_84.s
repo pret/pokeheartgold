@@ -1514,7 +1514,7 @@ ov84_0223E958: ; 0x0223E958
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
 	bl sub_02022CC8
@@ -1659,7 +1659,7 @@ ov84_0223E9E4: ; 0x0223E9E4
 	strh r2, [r1]
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x64
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -2903,7 +2903,7 @@ _0223F34E:
 	bl sub_02022CC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

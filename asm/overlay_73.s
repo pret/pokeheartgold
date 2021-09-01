@@ -1130,7 +1130,7 @@ _021E6232:
 	str r0, [sp, #0x38]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -5378,7 +5378,7 @@ _021E832A:
 	blt _021E832A
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -5586,10 +5586,10 @@ ov73_021E84D0: ; 0x021E84D0
 	bl ov73_021E8A08
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl sub_02022CC8
@@ -5747,7 +5747,7 @@ ov73_021E8628: ; 0x021E8628
 	bl sub_0201B1E4
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0201CAE0
@@ -5768,7 +5768,7 @@ ov73_021E8628: ; 0x021E8628
 	bl sub_0201B1E4
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r5, _021E8704 ; =0x021EA728
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}

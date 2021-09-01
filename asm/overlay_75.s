@@ -951,10 +951,10 @@ _0224707C:
 	bl sub_0200FA24
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl sub_02022CC8
@@ -963,7 +963,7 @@ _0224707C:
 	bl sub_02022CC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -1628,7 +1628,7 @@ _02247636:
 	add r4, r0, #0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3073,7 +3073,7 @@ _02248168:
 	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r5, #0
 	mov r1, #0
 	add r0, #0xbc
@@ -3290,7 +3290,7 @@ _0224837C:
 	bl sub_0201CAE0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r5, #0
 	mov r1, #0
 	add r0, #0xa8

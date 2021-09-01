@@ -113,7 +113,7 @@ _0225F0B8:
 	blt _0225F0B8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r7]
 	add r0, r0, #1
 	str r0, [r7]
@@ -510,7 +510,7 @@ _0225F40E:
 	blt _0225F40E
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -874,7 +874,7 @@ _0225F710:
 	blt _0225F710
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r7]
 	add r0, r0, #1
 	str r0, [r7]
@@ -1332,7 +1332,7 @@ _0225FACC:
 	blt _0225FACC
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl AllocWindows
@@ -1963,7 +1963,7 @@ _0225FFC8:
 	bl sub_02024830
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -2302,7 +2302,7 @@ _022602EA:
 	blt _022602EA
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl AllocWindows

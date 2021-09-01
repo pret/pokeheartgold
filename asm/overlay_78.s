@@ -1458,7 +1458,7 @@ ov78_021E636C: ; 0x021E636C
 	bl ov78_021E66D4
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -1559,7 +1559,7 @@ ov78_021E65BC: ; 0x021E65BC
 	str r0, [sp, #0x10]
 	bl NARC_AllocAndReadWholeMember
 	str r0, [sp, #0x14]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r5, r0, #0
 	ldr r0, [r5, #0x14]
 	mov r1, #2
@@ -1736,7 +1736,7 @@ _021E6738:
 	ldr r2, [sp, #0xc]
 	bl NARC_AllocAndReadWholeMember
 	str r0, [sp, #0x10]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x14]
 	str r0, [sp, #0x24]
 	add r6, r0, r1

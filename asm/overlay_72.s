@@ -1662,7 +1662,7 @@ _02238592:
 	bl sub_02024830
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -1972,10 +1972,10 @@ ov72_0223886C: ; 0x0223886C
 	bl ov72_02238EE4
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl sub_02022CC8
@@ -2135,7 +2135,7 @@ ov72_022389C8: ; 0x022389C8
 	bl sub_0201B1E4
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0201CAE0
@@ -2156,7 +2156,7 @@ ov72_022389C8: ; 0x022389C8
 	bl sub_0201B1E4
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r5, _02238AE0 ; =0x0223B448
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}

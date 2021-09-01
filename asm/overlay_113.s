@@ -2102,7 +2102,7 @@ ov113_021E6988: ; 0x021E6988
 	bl ov113_021E69CC
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -2118,7 +2118,7 @@ ov113_021E69A8: ; 0x021E69A8
 	bl sub_02022CC8
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov113_021E6AB0
 	add r0, r4, #0

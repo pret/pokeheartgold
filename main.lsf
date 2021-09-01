@@ -59,6 +59,7 @@ Static main
 	Object heap.o
 	Object bg_window.o
 	Object unk_0201F4C4.o
+	Object unk_0201F79C.o
 	Object error_handling.o
 	Object unk_02025534.o
 	### Vendor libraries ###

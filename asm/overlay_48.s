@@ -1920,7 +1920,7 @@ _022596F4:
 	bl sub_0203A880
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -1997,7 +1997,7 @@ ov48_02259798: ; 0x02259798
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _02259808 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -2036,13 +2036,13 @@ ov48_02259798: ; 0x02259798
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_020CF82C
+	bl G3X_SetFog
 	mov r1, #0
 	ldr r0, _02259814 ; =0x00006B5A
 	ldr r2, _02259818 ; =0x00007FFF
 	mov r3, #0x3f
 	str r1, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _0225981C ; =0xBFFF0000
 	ldr r0, _02259820 ; =0x04000580
 	str r1, [r0]

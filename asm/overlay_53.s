@@ -786,7 +786,7 @@ _021E5FA0:
 	bne _021E5FAE
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _021E60BE
 _021E5FAE:
 	cmp r4, #0x66
@@ -904,7 +904,7 @@ _021E6084:
 	bne _021E6096
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _021E60BE
 _021E6096:
 	cmp r4, #0x66
@@ -4702,7 +4702,7 @@ ov53_021E7F24: ; 0x021E7F24
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

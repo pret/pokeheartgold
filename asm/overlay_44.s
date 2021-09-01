@@ -940,7 +940,7 @@ _0222A542:
 	str r2, [r5, r1]
 	mov r0, #0xf
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0xf
 	mov r1, #0
 	bl sub_02022CC8
@@ -2126,16 +2126,16 @@ ov44_0222AEC0: ; 0x0222AEC0
 	mov r0, #1
 	add r5, r1, #0
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl sub_02022CC8
@@ -2338,12 +2338,12 @@ _0222B07C:
 
 	thumb_func_start ov44_0222B0A4
 ov44_0222B0A4: ; 0x0222B0A4
-	ldr r3, _0222B0AC ; =sub_02022C60
+	ldr r3, _0222B0AC ; =GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_0222B0AC: .word sub_02022C60
+_0222B0AC: .word GX_EngineAToggleLayers
 	thumb_func_end ov44_0222B0A4
 
 	thumb_func_start ov44_0222B0B0
@@ -18796,10 +18796,10 @@ ov44_0223325C: ; 0x0223325C
 	bl sub_0201CAE0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8

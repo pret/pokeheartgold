@@ -1109,7 +1109,7 @@ ov02_02246398: ; 0x02246398
 	bl sub_0201BB68
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl NARC_dtor
 	add sp, #0x10
@@ -1125,7 +1125,7 @@ ov02_02246444: ; 0x02246444
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldrb r1, [r4, #0xe]
 	mov r0, #0
 	bl sub_0201BB68
@@ -1704,7 +1704,7 @@ ov02_0224686C: ; 0x0224686C
 	bl sub_0201BB68
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl NARC_dtor
 	ldr r0, [r5, #4]
@@ -1769,7 +1769,7 @@ ov02_02246964: ; 0x02246964
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldrb r1, [r4, #0x1a]
 	mov r0, #1
 	bl sub_0201BB68
@@ -8957,7 +8957,7 @@ ov02_02249EC0: ; 0x02249EC0
 	strh r0, [r2, #4]
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r2, r5, #0
 	add r0, r4, #0
 #ifdef HEARTGOLD
@@ -9002,7 +9002,7 @@ ov02_02249EC0: ; 0x02249EC0
 	str r0, [r5, r1]
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02249F68: .word 0x0400000A
@@ -9036,7 +9036,7 @@ ov02_02249F6C: ; 0x02249F6C
 	strh r0, [r2, #4]
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov02_0224A080
@@ -9050,7 +9050,7 @@ ov02_02249F6C: ; 0x02249F6C
 	str r0, [r5, r1]
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02249FD0: .word 0x0400000A
@@ -9062,7 +9062,7 @@ ov02_02249FD4: ; 0x02249FD4
 	add r4, r0, #0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -9089,7 +9089,7 @@ ov02_02249FD4: ; 0x02249FD4
 	bl sub_0205B4EC
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r4, pc}
 	nop
 _0224A024: .word 0x04000008
@@ -9101,7 +9101,7 @@ ov02_0224A028: ; 0x0224A028
 	add r4, r0, #0
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -9125,7 +9125,7 @@ ov02_0224A028: ; 0x0224A028
 	bl sub_0205B4EC
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r4, pc}
 	nop
 _0224A070: .word 0x04000008
@@ -12763,7 +12763,7 @@ _0224BBC4:
 	bl ov01_021FB90C
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _0224BC02
 	add r2, r0, #0
@@ -12788,7 +12788,7 @@ _0224BC02:
 	mov r5, #0
 _0224BC04:
 	ldr r0, [r7]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _0224BC2E
 	add r2, r0, #0
@@ -13081,7 +13081,7 @@ _0224BE56:
 	mov r0, #0xd0
 	bl ov01_021FB90C
 	ldr r0, [r0]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _0224BE88
 	add r2, r0, #0
@@ -15173,7 +15173,7 @@ _0224CE5C:
 	mov r0, #0x6b
 	bl ov01_021FB90C
 	ldr r0, [r0]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _0224CE8E
 	add r2, r0, #0
@@ -25217,10 +25217,10 @@ _022519D4:
 	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r6, #0
 	mov r1, #0
 	add r0, #0x63
@@ -25307,10 +25307,10 @@ ov02_02251B70: ; 0x02251B70
 	add r6, r0, r1
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r4, #0
 _02251B88:
 	lsl r0, r4, #2

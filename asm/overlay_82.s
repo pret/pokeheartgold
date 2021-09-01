@@ -1732,7 +1732,7 @@ ov82_0223EB3C: ; 0x0223EB3C
 	bl ov82_0223EE38
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #5
 	bl ov82_0223EE6C
@@ -1767,7 +1767,7 @@ ov82_0223EBB8: ; 0x0223EBB8
 	str r0, [r2]
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
 	bl sub_02022CC8
@@ -1965,7 +1965,7 @@ ov82_0223EC68: ; 0x0223EC68
 	mov r0, #1
 	strh r2, [r1]
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x9c
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -3775,7 +3775,7 @@ _0223FAD4:
 	bl sub_02022CC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [sp, #0x18]
 	bl NARC_dtor
 	add sp, #0x1c

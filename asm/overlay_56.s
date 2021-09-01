@@ -875,7 +875,7 @@ _021E62A2:
 	bl sub_0201A0FC
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0
 	bl sub_0200FBE8
 	mov r1, #4

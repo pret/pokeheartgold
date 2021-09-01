@@ -89,7 +89,7 @@ ov98_0221E5E0: ; 0x0221E5E0
 	str r0, [r4, #0xc]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

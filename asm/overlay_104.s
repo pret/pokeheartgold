@@ -588,7 +588,7 @@ _021E5D76:
 	ldr r0, [sp]
 	add r0, r0, r4
 	ldr r0, [r0, #0x5c]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
 	cmp r0, #2

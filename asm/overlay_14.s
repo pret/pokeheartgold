@@ -26246,7 +26246,7 @@ ov14_021F297C: ; 0x021F297C
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8

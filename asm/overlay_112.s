@@ -4360,7 +4360,7 @@ ov112_021E7AC8: ; 0x021E7AC8
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1b
 	mov r1, #0
 	bl sub_02022CC8
@@ -8768,7 +8768,7 @@ ov112_021EA1AC: ; 0x021EA1AC
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -24056,7 +24056,7 @@ ov112_021F196C: ; 0x021F196C
 	bl sub_02009FC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -25004,7 +25004,7 @@ _021F2142:
 	add r2, r7, #0
 	bl NARC_AllocAndReadWholeMember
 	str r0, [sp, #0x24]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x14]
 	str r0, [sp, #0x20]
 	add r0, r0, r1

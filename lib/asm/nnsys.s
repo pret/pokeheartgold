@@ -11436,8 +11436,8 @@ sub_020BE0E4: ; 0x020BE0E4
 	bx lr
 	arm_func_end sub_020BE0E4
 
-	arm_func_start sub_020BE120
-sub_020BE120: ; 0x020BE120
+	arm_func_start NNS_G3dRenderObjInit
+NNS_G3dRenderObjInit: ; 0x020BE120
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -11460,7 +11460,7 @@ sub_020BE120: ; 0x020BE120
 _020BE168: .word _02110A20
 _020BE16C: .word _02110A1C
 _020BE170: .word _02110A18
-	arm_func_end sub_020BE120
+	arm_func_end NNS_G3dRenderObjInit
 
 	arm_func_start sub_020BE174
 sub_020BE174: ; 0x020BE174
@@ -11657,35 +11657,35 @@ _020BE3CC:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020BE388
 
-	arm_func_start sub_020BE3DC
-sub_020BE3DC: ; 0x020BE3DC
+	arm_func_start NNS_G3dTexGetRequiredSize
+NNS_G3dTexGetRequiredSize: ; 0x020BE3DC
 	cmp r0, #0
 	ldrneh r0, [r0, #0xc]
 	movne r0, r0, lsl #3
 	moveq r0, #0
 	bx lr
-	arm_func_end sub_020BE3DC
+	arm_func_end NNS_G3dTexGetRequiredSize
 
-	arm_func_start sub_020BE3F0
-sub_020BE3F0: ; 0x020BE3F0
+	arm_func_start NNS_G3dTex4x4GetRequiredSize
+NNS_G3dTex4x4GetRequiredSize: ; 0x020BE3F0
 	cmp r0, #0
 	ldrneh r0, [r0, #0x1c]
 	movne r0, r0, lsl #3
 	moveq r0, #0
 	bx lr
-	arm_func_end sub_020BE3F0
+	arm_func_end NNS_G3dTex4x4GetRequiredSize
 
-	arm_func_start sub_020BE404
-sub_020BE404: ; 0x020BE404
+	arm_func_start NNS_G3dTexSetTexKey
+NNS_G3dTexSetTexKey: ; 0x020BE404
 	cmp r1, #0
 	strne r1, [r0, #8]
 	cmp r2, #0
 	strne r2, [r0, #0x18]
 	bx lr
-	arm_func_end sub_020BE404
+	arm_func_end NNS_G3dTexSetTexKey
 
-	arm_func_start sub_020BE418
-sub_020BE418: ; 0x020BE418
+	arm_func_start NNS_G3dTexLoad
+NNS_G3dTexLoad: ; 0x020BE418
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	movs r8, r1
 	mov sb, r0
@@ -11736,7 +11736,7 @@ _020BE4BC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020BE4CC: .word 0x0001FFFF
-	arm_func_end sub_020BE418
+	arm_func_end NNS_G3dTexLoad
 
 	arm_func_start sub_020BE4D0
 sub_020BE4D0: ; 0x020BE4D0
@@ -11762,23 +11762,23 @@ _020BE4F4:
 	bx lr
 	arm_func_end sub_020BE4D0
 
-	arm_func_start sub_020BE51C
-sub_020BE51C: ; 0x020BE51C
+	arm_func_start NNS_G3dPlttGetRequiredSize
+NNS_G3dPlttGetRequiredSize: ; 0x020BE51C
 	cmp r0, #0
 	ldrneh r0, [r0, #0x30]
 	movne r0, r0, lsl #3
 	moveq r0, #0
 	bx lr
-	arm_func_end sub_020BE51C
+	arm_func_end NNS_G3dPlttGetRequiredSize
 
-	arm_func_start sub_020BE530
-sub_020BE530: ; 0x020BE530
+	arm_func_start NNS_G3dPlttSetPlttKey
+NNS_G3dPlttSetPlttKey: ; 0x020BE530
 	str r1, [r0, #0x2c]
 	bx lr
-	arm_func_end sub_020BE530
+	arm_func_end NNS_G3dPlttSetPlttKey
 
-	arm_func_start sub_020BE538
-sub_020BE538: ; 0x020BE538
+	arm_func_start NNS_G3dPlttLoad
+NNS_G3dPlttLoad: ; 0x020BE538
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r5, r1
 	mov r4, r0
@@ -11800,7 +11800,7 @@ _020BE54C:
 	ldmeqia sp!, {r3, r4, r5, pc}
 	bl sub_020D0B74
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020BE538
+	arm_func_end NNS_G3dPlttLoad
 
 	arm_func_start sub_020BE588
 sub_020BE588: ; 0x020BE588
@@ -12379,8 +12379,8 @@ _020BECDC:
 	bx lr
 	arm_func_end sub_020BEC7C
 
-	arm_func_start sub_020BED00
-sub_020BED00: ; 0x020BED00
+	arm_func_start NNS_G3dBindMdlSet
+NNS_G3dBindMdlSet: ; 0x020BED00
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	ldrb r0, [sl, #9]
@@ -12431,7 +12431,7 @@ _020BED78:
 _020BEDA8:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020BED00
+	arm_func_end NNS_G3dBindMdlSet
 
 	arm_func_start sub_020BEDB0
 sub_020BEDB0: ; 0x020BEDB0
@@ -12569,8 +12569,8 @@ _020BEF90: .word 0x800003E0
 _020BEF94: .word 0x021DA558
 	arm_func_end sub_020BEE44
 
-	arm_func_start sub_020BEF98
-sub_020BEF98: ; 0x020BEF98
+	arm_func_start NNS_G3dGlbFlushP
+NNS_G3dGlbFlushP: ; 0x020BEF98
 	stmdb sp!, {r3, lr}
 	ldr r0, _020BEFCC ; =0x021DA49C
 	ldr r1, _020BEFD0 ; =0x021DA49C
@@ -12587,10 +12587,10 @@ sub_020BEF98: ; 0x020BEF98
 	.align 2, 0
 _020BEFCC: .word 0x021DA49C
 _020BEFD0: .word 0x021DA49C
-	arm_func_end sub_020BEF98
+	arm_func_end NNS_G3dGlbFlushP
 
-	arm_func_start sub_020BEFD4
-sub_020BEFD4: ; 0x020BEFD4
+	arm_func_start NNS_G3dGlbSetBaseTrans
+NNS_G3dGlbSetBaseTrans: ; 0x020BEFD4
 	cmp r0, #0
 	bxeq lr
 	ldr r3, _020BEFFC ; =0x021DA57C
@@ -12604,10 +12604,10 @@ sub_020BEFD4: ; 0x020BEFD4
 	.align 2, 0
 _020BEFFC: .word 0x021DA57C
 _020BF000: .word 0x021DA49C
-	arm_func_end sub_020BEFD4
+	arm_func_end NNS_G3dGlbSetBaseTrans
 
-	arm_func_start sub_020BF004
-sub_020BF004: ; 0x020BF004
+	arm_func_start NNS_G3dGlbSetBaseScale
+NNS_G3dGlbSetBaseScale: ; 0x020BF004
 	cmp r0, #0
 	bxeq lr
 	ldr r3, _020BF02C ; =0x021DA588
@@ -12621,7 +12621,7 @@ sub_020BF004: ; 0x020BF004
 	.align 2, 0
 _020BF02C: .word 0x021DA588
 _020BF030: .word 0x021DA49C
-	arm_func_end sub_020BF004
+	arm_func_end NNS_G3dGlbSetBaseScale
 
 	arm_func_start sub_020BF034
 sub_020BF034: ; 0x020BF034
@@ -13569,8 +13569,8 @@ _020BFCB8:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020BFC60
 
-	arm_func_start sub_020BFCC8
-sub_020BFCC8: ; 0x020BFCC8
+	arm_func_start NNS_G3dDraw
+NNS_G3dDraw: ; 0x020BFCC8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x188
 	mov r4, r0
@@ -13632,7 +13632,7 @@ _020BFD7C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020BFDA0: .word 0x021DA700
-	arm_func_end sub_020BFCC8
+	arm_func_end NNS_G3dDraw
 
 	arm_func_start sub_020BFDA4
 sub_020BFDA4: ; 0x020BFDA4
@@ -16555,8 +16555,8 @@ sub_020C2698: ; 0x020C2698
 _020C26BC: .word 0x04000600
 	arm_func_end sub_020C2698
 
-	arm_func_start sub_020C26C0
-sub_020C26C0: ; 0x020C26C0
+	arm_func_start NNS_G3dResDefaultSetup
+NNS_G3dResDefaultSetup: ; 0x020C26C0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	ldr r2, [sl]
@@ -16595,16 +16595,16 @@ _020C2738:
 	mov r0, sl
 	mov r6, r5
 	mov r7, r5
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	movs r4, r0
 	beq _020C289C
-	bl sub_020BE3DC
+	bl NNS_G3dTexGetRequiredSize
 	mov sb, r0
 	mov r0, r4
-	bl sub_020BE3F0
+	bl NNS_G3dTex4x4GetRequiredSize
 	mov r8, r0
 	mov r0, r4
-	bl sub_020BE51C
+	bl NNS_G3dPlttGetRequiredSize
 	str r0, [sp]
 	cmp sb, #0
 	beq _020C27A0
@@ -16680,27 +16680,27 @@ _020C2868:
 	mov r0, r4
 	mov r1, fp
 	mov r2, r8
-	bl sub_020BE404
+	bl NNS_G3dTexSetTexKey
 	mov r0, r4
 	mov r1, sb
-	bl sub_020BE530
+	bl NNS_G3dPlttSetPlttKey
 	mov r0, r4
 	mov r1, #1
-	bl sub_020BE418
+	bl NNS_G3dTexLoad
 	mov r0, r4
 	mov r1, #1
-	bl sub_020BE538
+	bl NNS_G3dPlttLoad
 _020C289C:
 	ldr r1, [sl]
 	ldr r0, _020C28E4 ; =0x30444D42
 	cmp r1, r0
 	bne _020C28C4
 	mov r0, sl
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r4, #0
 	beq _020C28C4
 	mov r1, r4
-	bl sub_020BED00
+	bl NNS_G3dBindMdlSet
 _020C28C4:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -16718,7 +16718,7 @@ _020C28E8: .word _02110924
 _020C28EC: .word _0211092C
 _020C28F0: .word _02110930
 _020C28F4: .word _02110928
-	arm_func_end sub_020C26C0
+	arm_func_end NNS_G3dResDefaultSetup
 
 	arm_func_start sub_020C28F8
 sub_020C28F8: ; 0x020C28F8
@@ -18156,16 +18156,16 @@ _020C3B38:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020C39D8
 
-	arm_func_start sub_020C3B40
-sub_020C3B40: ; 0x020C3B40
+	arm_func_start NNS_G3dGetMdlSet
+NNS_G3dGetMdlSet: ; 0x020C3B40
 	ldrh r1, [r0, #0xc]
 	ldr r1, [r0, r1]
 	add r0, r0, r1
 	bx lr
-	arm_func_end sub_020C3B40
+	arm_func_end NNS_G3dGetMdlSet
 
-	arm_func_start sub_020C3B50
-sub_020C3B50: ; 0x020C3B50
+	arm_func_start NNS_G3dGetTex
+NNS_G3dGetTex: ; 0x020C3B50
 	ldrh r2, [r0, #0xc]
 	ldrh r1, [r0, #0xe]
 	add r3, r0, r2
@@ -18184,7 +18184,7 @@ _020C3B80:
 	bx lr
 	.align 2, 0
 _020C3B8C: .word 0x30585442
-	arm_func_end sub_020C3B50
+	arm_func_end NNS_G3dGetTex
 
 	arm_func_start sub_020C3B90
 sub_020C3B90: ; 0x020C3B90

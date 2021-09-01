@@ -1293,7 +1293,7 @@ ov90_022590CC: ; 0x022590CC
 	bl sub_0203A880
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -3627,7 +3627,7 @@ ov90_0225A2B0: ; 0x0225A2B0
 	mov r0, #1
 	mov r1, #0
 	str r6, [r5, #0x10]
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -3720,7 +3720,7 @@ ov90_0225A350: ; 0x0225A350
 	bl sub_02002DB4
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3941,7 +3941,7 @@ _0225A586:
 	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0
@@ -3954,7 +3954,7 @@ _0225A586:
 	bl sub_0201CAE0
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0225A5B8:
