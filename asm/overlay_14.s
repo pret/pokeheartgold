@@ -11643,7 +11643,7 @@ ov14_021EB1E0: ; 0x021EB1E0
 	ldr r0, [r4, #0x30]
 	pop {r4, pc}
 _021EB1F6:
-	ldr r0, _021EB214 ; =0x021D110C
+	ldr r0, _021EB214 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -11657,7 +11657,7 @@ _021EB20A:
 	pop {r4, pc}
 	nop
 _021EB210: .word 0x000005DD
-_021EB214: .word 0x021D110C
+_021EB214: .word gMain
 	thumb_func_end ov14_021EB1E0
 
 	thumb_func_start ov14_021EB218
@@ -12172,7 +12172,7 @@ _021EB63A:
 	bl sub_02019F74
 	cmp r0, #0x1e
 	bne _021EB66C
-	ldr r0, _021EB700 ; =0x021D110C
+	ldr r0, _021EB700 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -12253,7 +12253,7 @@ _021EB6F0: .word ov14_021EA180
 _021EB6F4: .word 0x000005DD
 _021EB6F8: .word 0x000005DC
 _021EB6FC: .word 0x00000632
-_021EB700: .word 0x021D110C
+_021EB700: .word gMain
 _021EB704:
 	bl PlaySE
 	add r0, r4, #0
@@ -16902,7 +16902,7 @@ _021EDD24:
 	bl sub_02019F74
 	cmp r0, #0x1e
 	bne _021EDE12
-	ldr r0, _021EDDC0 ; =0x021D110C
+	ldr r0, _021EDDC0 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -16962,7 +16962,7 @@ _021EDDB0: .word ov14_021EA130
 _021EDDB4: .word 0x000005DD
 _021EDDB8: .word 0x000005F3
 _021EDDBC: .word 0x000005DC
-_021EDDC0: .word 0x021D110C
+_021EDDC0: .word gMain
 _021EDDC4:
 	add r0, r4, #0
 	add r1, r5, #0
@@ -18576,7 +18576,7 @@ _021EEABE:
 	beq _021EEACC
 	b _021EEBD6
 _021EEACC:
-	ldr r0, _021EEBF8 ; =0x021D110C
+	ldr r0, _021EEBF8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -18703,7 +18703,7 @@ _021EEBE8: .word ov14_021EA674
 _021EEBEC: .word 0x000005DD
 _021EEBF0: .word 0x000005DC
 _021EEBF4: .word 0x00000632
-_021EEBF8: .word 0x021D110C
+_021EEBF8: .word gMain
 	thumb_func_end ov14_021EE87C
 
 	thumb_func_start ov14_021EEBFC
@@ -36838,7 +36838,7 @@ ov14_021F7B7C: ; 0x021F7B7C
 	mov r0, #0
 	pop {r3, pc}
 _021F7B92:
-	ldr r0, _021F7BB4 ; =0x021D110C
+	ldr r0, _021F7BB4 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	lsl r0, r0, #0xa
@@ -36857,7 +36857,7 @@ _021F7BB0:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_021F7BB4: .word 0x021D110C
+_021F7BB4: .word gMain
 _021F7BB8: .word 0x021F86C8
 	thumb_func_end ov14_021F7B7C
 

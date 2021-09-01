@@ -27623,3 +27623,4 @@
 .public sub_02025504
 .public sub_0201FFB0
 .public sub_020210A0
+.public gMain

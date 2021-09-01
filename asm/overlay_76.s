@@ -58,7 +58,7 @@ _021E5936:
 	str r0, [r4, #0x10]
 	mov r0, #0
 	str r0, [r4, #0x14]
-	ldr r0, _021E5A90 ; =0x021D116C
+	ldr r0, _021E5A90 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl sub_02022D3C
@@ -182,7 +182,7 @@ _021E5A7C:
 _021E5A84: .word 0x000004C8
 _021E5A88: .word 0xFFFFE0FF
 _021E5A8C: .word 0x04001000
-_021E5A90: .word 0x021D116C
+_021E5A90: .word gMain + 0x60
 _021E5A94: .word 0x00010200
 _021E5A98: .word 0x00000257
 _021E5A9C: .word ov76_021E5D94
@@ -324,12 +324,12 @@ _021E5BAA:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _021E5BEE
-	ldr r0, _021E5D80 ; =0x021D110C
+	ldr r0, _021E5D80 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #8
 	tst r0, r1
 	bne _021E5BC4
-	ldr r0, _021E5D84 ; =0x021D114C
+	ldr r0, _021E5D84 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E5BEE
@@ -439,7 +439,7 @@ _021E5C4A:
 	mov r0, #2
 	mov r1, #1
 	bl GX_EngineAToggleLayers
-	ldr r0, _021E5D8C ; =0x021D116C
+	ldr r0, _021E5D8C ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl sub_02022D3C
@@ -467,12 +467,12 @@ _021E5CD4:
 	str r0, [r4]
 	b _021E5D74
 _021E5CE8:
-	ldr r0, _021E5D80 ; =0x021D110C
+	ldr r0, _021E5D80 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #9
 	tst r0, r1
 	bne _021E5CFA
-	ldr r0, _021E5D84 ; =0x021D114C
+	ldr r0, _021E5D84 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E5D18
@@ -506,12 +506,12 @@ _021E5D18:
 	str r0, [r4]
 	b _021E5D74
 _021E5D34:
-	ldr r0, _021E5D80 ; =0x021D110C
+	ldr r0, _021E5D80 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #9
 	tst r0, r1
 	bne _021E5D46
-	ldr r0, _021E5D84 ; =0x021D114C
+	ldr r0, _021E5D84 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E5D74
@@ -545,10 +545,10 @@ _021E5D74:
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E5D80: .word 0x021D110C
-_021E5D84: .word 0x021D114C
+_021E5D80: .word gMain
+_021E5D84: .word gMain + 0x40
 _021E5D88: .word 0x00001370
-_021E5D8C: .word 0x021D116C
+_021E5D8C: .word gMain + 0x60
 _021E5D90: .word 0x000003F9
 	thumb_func_end ov76_021E5B60
 
@@ -1982,7 +1982,7 @@ ov76_021E68DC: ; 0x021E68DC
 	ldrh r0, [r1]
 	cmp r0, #0
 	beq _021E68FC
-	ldr r0, _021E6900 ; =0x021D116C
+	ldr r0, _021E6900 ; =gMain + 0x60
 	mov r2, #0
 	strh r2, [r1]
 	ldrb r1, [r0, #9]
@@ -1998,7 +1998,7 @@ _021E68F8:
 _021E68FC:
 	pop {r3, pc}
 	nop
-_021E6900: .word 0x021D116C
+_021E6900: .word gMain + 0x60
 	thumb_func_end ov76_021E68DC
 
 	thumb_func_start ov76_021E6904

@@ -1,13 +1,18 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D1584:
+	.space 0x1C
+
 	.text
 
 	thumb_func_start sub_0201A748
 sub_0201A748: ; 0x0201A748
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0201A76C ; =0x021D110C
+	ldr r0, _0201A76C ; =gMain
 	ldr r0, [r0, #0x74]
 	cmp r0, #0
 	beq _0201A758
@@ -16,42 +21,42 @@ _0201A758:
 	add r0, r4, #0
 	mov r1, #4
 	bl AllocFromHeapAtEnd
-	ldr r1, _0201A76C ; =0x021D110C
+	ldr r1, _0201A76C ; =gMain
 	str r0, [r1, #0x74]
 	ldr r1, _0201A770 ; =0x2F93A1BC
 	str r1, [r0]
 	pop {r4, pc}
 	nop
-_0201A76C: .word 0x021D110C
+_0201A76C: .word gMain
 _0201A770: .word 0x2F93A1BC
 	thumb_func_end sub_0201A748
 
 	thumb_func_start sub_0201A774
 sub_0201A774: ; 0x0201A774
 	push {r3, lr}
-	ldr r0, _0201A798 ; =0x021D110C
+	ldr r0, _0201A798 ; =gMain
 	ldr r0, [r0, #0x74]
 	cmp r0, #0
 	bne _0201A782
 	bl GF_AssertFail
 _0201A782:
-	ldr r0, _0201A798 ; =0x021D110C
+	ldr r0, _0201A798 ; =gMain
 	mov r2, #0
 	ldr r1, [r0, #0x74]
 	str r2, [r1]
 	ldr r0, [r0, #0x74]
 	bl FreeToHeap
-	ldr r0, _0201A798 ; =0x021D110C
+	ldr r0, _0201A798 ; =gMain
 	mov r1, #0
 	str r1, [r0, #0x74]
 	pop {r3, pc}
 	.balign 4, 0
-_0201A798: .word 0x021D110C
+_0201A798: .word gMain
 	thumb_func_end sub_0201A774
 
 	thumb_func_start sub_0201A79C
 sub_0201A79C: ; 0x0201A79C
-	ldr r0, _0201A7B4 ; =0x021D110C
+	ldr r0, _0201A7B4 ; =gMain
 	ldr r0, [r0, #0x74]
 	cmp r0, #0
 	beq _0201A7B0
@@ -65,7 +70,7 @@ _0201A7B0:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_0201A7B4: .word 0x021D110C
+_0201A7B4: .word gMain
 _0201A7B8: .word 0x2F93A1BC
 	thumb_func_end sub_0201A79C
 
@@ -112,21 +117,21 @@ _0201A7F2:
 	add r1, r6, r1
 	mov r2, #4
 	bl sub_020D2CA0
-	ldr r1, _0201A8E4 ; =0x021D1584
+	ldr r1, _0201A8E4 ; =_021D1584
 	str r0, [r1]
 	ldr r1, [sp, #4]
 	add r1, r1, #1
 	lsl r1, r1, #2
 	add r1, r0, r1
-	ldr r0, _0201A8E4 ; =0x021D1584
+	ldr r0, _0201A8E4 ; =_021D1584
 	str r1, [r0, #4]
 	ldr r0, [sp, #4]
 	lsl r0, r0, #2
 	add r2, r1, r0
-	ldr r1, _0201A8E4 ; =0x021D1584
+	ldr r1, _0201A8E4 ; =_021D1584
 	str r2, [r1, #8]
 	add r1, r2, r0
-	ldr r0, _0201A8E4 ; =0x021D1584
+	ldr r0, _0201A8E4 ; =_021D1584
 	str r1, [r0, #0xc]
 	add r1, r1, r7
 	str r1, [r0, #0x10]
@@ -136,7 +141,7 @@ _0201A7F2:
 	mov r7, #0
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
-	ldr r0, _0201A8E4 ; =0x021D1584
+	ldr r0, _0201A8E4 ; =_021D1584
 	cmp r4, #0
 	strh r1, [r0, #0x1a]
 	strh r1, [r0, #0x18]
@@ -165,11 +170,11 @@ _0201A866:
 	ldr r1, [r5]
 	mov r2, #0
 	bl sub_020B535C
-	ldr r1, _0201A8E4 ; =0x021D1584
+	ldr r1, _0201A8E4 ; =_021D1584
 	ldr r2, [r1]
 	ldr r1, [sp]
 	str r0, [r2, r1]
-	ldr r0, _0201A8E4 ; =0x021D1584
+	ldr r0, _0201A8E4 ; =_021D1584
 	ldr r0, [r0, #0x10]
 	strb r7, [r0, r7]
 	b _0201A886
@@ -188,7 +193,7 @@ _0201A894:
 	add r1, r0, #1
 	cmp r4, r1
 	bhs _0201A8B4
-	ldr r3, _0201A8E4 ; =0x021D1584
+	ldr r3, _0201A8E4 ; =_021D1584
 	lsl r2, r4, #2
 	mov r0, #0
 _0201A8A2:
@@ -204,7 +209,7 @@ _0201A8A2:
 _0201A8B4:
 	cmp r4, r6
 	bhs _0201A8C6
-	ldr r0, _0201A8E4 ; =0x021D1584
+	ldr r0, _0201A8E4 ; =_021D1584
 _0201A8BA:
 	ldrh r2, [r0, #0x1a]
 	ldr r1, [r0, #0x10]
@@ -216,7 +221,7 @@ _0201A8C6:
 	mov r4, #0
 	cmp r6, #0
 	bls _0201A8DE
-	ldr r0, _0201A8E4 ; =0x021D1584
+	ldr r0, _0201A8E4 ; =_021D1584
 	add r3, r4, #0
 	add r2, r4, #0
 _0201A8D2:
@@ -230,12 +235,12 @@ _0201A8DE:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0201A8E4: .word 0x021D1584
+_0201A8E4: .word _021D1584
 	thumb_func_end sub_0201A7BC
 
 	thumb_func_start sub_0201A8E8
 sub_0201A8E8: ; 0x0201A8E8
-	ldr r1, _0201A90C ; =0x021D1584
+	ldr r1, _0201A90C ; =_021D1584
 	ldrh r0, [r1, #0x16]
 	ldrh r3, [r1, #0x18]
 	cmp r0, r3
@@ -257,7 +262,7 @@ _0201A906:
 _0201A90A:
 	bx lr
 	.balign 4, 0
-_0201A90C: .word 0x021D1584
+_0201A90C: .word _021D1584
 	thumb_func_end sub_0201A8E8
 
 	thumb_func_start sub_0201A910
@@ -291,7 +296,7 @@ sub_0201A928: ; 0x0201A928
 	bne _0201A940
 	bl GF_AssertFail
 _0201A940:
-	ldr r1, _0201A9C0 ; =0x021D1584
+	ldr r1, _0201A9C0 ; =_021D1584
 	ldr r0, [r1, #0x10]
 	ldrh r3, [r1, #0x1a]
 	ldrb r2, [r0, r5]
@@ -318,7 +323,7 @@ _0201A940:
 	mov r2, #0
 	lsl r4, r7, #2
 	bl sub_020B535C
-	ldr r1, _0201A9C0 ; =0x021D1584
+	ldr r1, _0201A9C0 ; =_021D1584
 	ldr r2, [r1]
 	str r0, [r2, r4]
 	ldr r0, [r1]
@@ -354,7 +359,7 @@ _0201A9BA:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0201A9C0: .word 0x021D1584
+_0201A9C0: .word _021D1584
 	thumb_func_end sub_0201A928
 
 	thumb_func_start sub_0201A9C4
@@ -366,7 +371,7 @@ sub_0201A9C4: ; 0x0201A9C4
 	bne _0201A9D4
 	bl GF_AssertFail
 _0201A9D4:
-	ldr r0, _0201AA34 ; =0x021D1584
+	ldr r0, _0201AA34 ; =_021D1584
 	ldr r1, [r0]
 	ldr r0, [r0, #0x10]
 	ldrb r0, [r0, r4]
@@ -375,7 +380,7 @@ _0201A9D4:
 	cmp r0, #0
 	beq _0201AA32
 	bl sub_020B5394
-	ldr r1, _0201AA34 ; =0x021D1584
+	ldr r1, _0201AA34 ; =_021D1584
 	ldr r0, [r1, #0x10]
 	ldrb r0, [r0, r4]
 	lsl r2, r0, #2
@@ -392,7 +397,7 @@ _0201A9D4:
 _0201AA06:
 	bl GF_AssertFail
 _0201AA0A:
-	ldr r1, _0201AA34 ; =0x021D1584
+	ldr r1, _0201AA34 ; =_021D1584
 	mov r0, #0
 	ldr r2, [r1, #0x10]
 	ldr r3, [r1]
@@ -415,7 +420,7 @@ _0201AA0A:
 _0201AA32:
 	pop {r4, pc}
 	.balign 4, 0
-_0201AA34: .word 0x021D1584
+_0201AA34: .word _021D1584
 	thumb_func_end sub_0201A9C4
 
 	thumb_func_start sub_0201AA38
@@ -469,7 +474,7 @@ _0201AA8A:
 AllocFromHeap: ; 0x0201AA8C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _0201AAC8 ; =0x021D1584
+	ldr r0, _0201AAC8 ; =_021D1584
 	mov r4, #0
 	ldrh r2, [r0, #0x14]
 	cmp r5, r2
@@ -486,7 +491,7 @@ AllocFromHeap: ; 0x0201AA8C
 _0201AAAE:
 	cmp r4, #0
 	beq _0201AAC0
-	ldr r0, _0201AAC8 ; =0x021D1584
+	ldr r0, _0201AAC8 ; =_021D1584
 	lsl r1, r5, #1
 	ldr r2, [r0, #0xc]
 	ldrh r0, [r2, r1]
@@ -499,13 +504,13 @@ _0201AAC4:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0201AAC8: .word 0x021D1584
+_0201AAC8: .word _021D1584
 	thumb_func_end AllocFromHeap
 
 	thumb_func_start AllocFromHeapAtEnd
 AllocFromHeapAtEnd: ; 0x0201AACC
 	push {r3, r4, r5, lr}
-	ldr r2, _0201AB08 ; =0x021D1584
+	ldr r2, _0201AB08 ; =_021D1584
 	add r5, r0, #0
 	ldrh r0, [r2, #0x14]
 	mov r4, #0
@@ -523,7 +528,7 @@ AllocFromHeapAtEnd: ; 0x0201AACC
 _0201AAEE:
 	cmp r4, #0
 	beq _0201AB00
-	ldr r0, _0201AB08 ; =0x021D1584
+	ldr r0, _0201AB08 ; =_021D1584
 	lsl r1, r5, #1
 	ldr r2, [r0, #0xc]
 	ldrh r0, [r2, r1]
@@ -536,7 +541,7 @@ _0201AB04:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0201AB08: .word 0x021D1584
+_0201AB08: .word _021D1584
 	thumb_func_end AllocFromHeapAtEnd
 
 	thumb_func_start FreeToHeap
@@ -547,7 +552,7 @@ FreeToHeap: ; 0x0201AB0C
 	ldr r0, [r0]
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
-	ldr r0, _0201AB7C ; =0x021D1584
+	ldr r0, _0201AB7C ; =_021D1584
 	ldrh r1, [r0, #0x14]
 	cmp r4, r1
 	bhs _0201AB74
@@ -560,7 +565,7 @@ FreeToHeap: ; 0x0201AB0C
 	bne _0201AB32
 	bl GF_AssertFail
 _0201AB32:
-	ldr r0, _0201AB7C ; =0x021D1584
+	ldr r0, _0201AB7C ; =_021D1584
 	lsl r5, r4, #1
 	ldr r0, [r0, #0xc]
 	ldrh r0, [r0, r5]
@@ -569,14 +574,14 @@ _0201AB32:
 	add r0, r4, #0
 	bl sub_0201AC84
 _0201AB44:
-	ldr r0, _0201AB7C ; =0x021D1584
+	ldr r0, _0201AB7C ; =_021D1584
 	ldr r0, [r0, #0xc]
 	ldrh r0, [r0, r5]
 	cmp r0, #0
 	bne _0201AB52
 	bl GF_AssertFail
 _0201AB52:
-	ldr r0, _0201AB7C ; =0x021D1584
+	ldr r0, _0201AB7C ; =_021D1584
 	ldr r1, [r0, #0xc]
 	ldrh r0, [r1, r5]
 	sub r0, r0, #1
@@ -594,7 +599,7 @@ _0201AB74:
 	bl GF_AssertFail
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0201AB7C: .word 0x021D1584
+_0201AB7C: .word _021D1584
 	thumb_func_end FreeToHeap
 
 	thumb_func_start FreeToHeapExplicit
@@ -607,7 +612,7 @@ FreeToHeapExplicit: ; 0x0201AB80
 	bne _0201AB92
 	bl GF_AssertFail
 _0201AB92:
-	ldr r0, _0201ABE8 ; =0x021D1584
+	ldr r0, _0201ABE8 ; =_021D1584
 	ldrh r1, [r0, #0x14]
 	cmp r5, r1
 	bhs _0201ABE2
@@ -632,7 +637,7 @@ _0201ABBC:
 	add r0, r6, #0
 	add r1, r4, #0
 	bl sub_020B5530
-	ldr r0, _0201ABE8 ; =0x021D1584
+	ldr r0, _0201ABE8 ; =_021D1584
 	lsl r4, r5, #1
 	ldr r0, [r0, #0xc]
 	ldrh r0, [r0, r4]
@@ -640,7 +645,7 @@ _0201ABBC:
 	bne _0201ABD6
 	bl GF_AssertFail
 _0201ABD6:
-	ldr r0, _0201ABE8 ; =0x021D1584
+	ldr r0, _0201ABE8 ; =_021D1584
 	ldr r1, [r0, #0xc]
 	ldrh r0, [r1, r4]
 	sub r0, r0, #1
@@ -650,13 +655,13 @@ _0201ABE2:
 	bl GF_AssertFail
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0201ABE8: .word 0x021D1584
+_0201ABE8: .word _021D1584
 	thumb_func_end FreeToHeapExplicit
 
 	thumb_func_start sub_0201ABEC
 sub_0201ABEC: ; 0x0201ABEC
 	push {r3, lr}
-	ldr r1, _0201AC10 ; =0x021D1584
+	ldr r1, _0201AC10 ; =_021D1584
 	ldrh r2, [r1, #0x14]
 	cmp r0, r2
 	bhs _0201AC06
@@ -672,13 +677,13 @@ _0201AC06:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_0201AC10: .word 0x021D1584
+_0201AC10: .word _021D1584
 	thumb_func_end sub_0201ABEC
 
 	thumb_func_start sub_0201AC14
 sub_0201AC14: ; 0x0201AC14
 	push {r4, lr}
-	ldr r4, _0201AC34 ; =0x021D1584
+	ldr r4, _0201AC34 ; =_021D1584
 	ldrh r3, [r4, #0x14]
 	cmp r1, r3
 	bhs _0201AC2E
@@ -693,7 +698,7 @@ _0201AC2E:
 	bl GF_AssertFail
 	pop {r4, pc}
 	.balign 4, 0
-_0201AC34: .word 0x021D1584
+_0201AC34: .word _021D1584
 	thumb_func_end sub_0201AC14
 
 	thumb_func_start sub_0201AC38
@@ -713,7 +718,7 @@ _0201AC4A:
 	cmp r0, r4
 	blo _0201AC78
 	sub r2, r5, #4
-	ldr r0, _0201AC80 ; =0x021D1584
+	ldr r0, _0201AC80 ; =_021D1584
 	ldr r2, [r2]
 	ldr r1, [r0]
 	lsl r2, r2, #0x18
@@ -731,7 +736,7 @@ _0201AC78:
 	bl GF_AssertFail
 	pop {r3, r4, r5, pc}
 	nop
-_0201AC80: .word 0x021D1584
+_0201AC80: .word _021D1584
 	thumb_func_end sub_0201AC38
 
 	thumb_func_start sub_0201AC84

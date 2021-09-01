@@ -1145,7 +1145,7 @@ ov90_02258FF0: ; 0x02258FF0
 	ldr r0, [sp]
 	str r6, [r5, #4]
 	str r0, [r5, #8]
-	ldr r0, _02259080 ; =0x021D116C
+	ldr r0, _02259080 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl sub_02022D3C
@@ -1197,7 +1197,7 @@ _02259024:
 _0225907C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02259080: .word 0x021D116C
+_02259080: .word gMain + 0x60
 	thumb_func_end ov90_02258FF0
 
 	thumb_func_start ov90_02259084

@@ -261,7 +261,7 @@ _02258A4A:
 	mov r0, #4
 	mov r1, #1
 	bl sub_02022CC8
-	ldr r0, _02258AF4 ; =0x021D116C
+	ldr r0, _02258AF4 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl sub_02022D3C
@@ -302,7 +302,7 @@ _02258AE4: .word 0x0225CA58
 _02258AE8: .word 0x0225C9EC
 _02258AEC: .word 0x00200010
 _02258AF0: .word 0x0225CA00
-_02258AF4: .word 0x021D116C
+_02258AF4: .word gMain + 0x60
 _02258AF8: .word ov89_02258FF4
 _02258AFC: .word 0x0000EA60
 _02258B00: .word ov89_0225901C
@@ -377,7 +377,7 @@ _02258B7A:
 	str r0, [r5]
 	b _02258E4A
 _02258B88:
-	ldr r0, _02258E60 ; =0x021D114C
+	ldr r0, _02258E60 ; =gMain + 0x40
 	ldrh r1, [r0, #0x24]
 	cmp r1, #0
 	beq _02258BF4
@@ -392,7 +392,7 @@ _02258B88:
 	mov r2, #0x92
 	lsl r2, r2, #4
 	ldrb r1, [r4, r2]
-	ldr r7, _02258E60 ; =0x021D114C
+	ldr r7, _02258E60 ; =gMain + 0x40
 	mov r3, #0xc
 	add r6, r1, #0
 	mul r6, r3
@@ -718,7 +718,7 @@ _02258E4A:
 	b _02258E74
 	nop
 _02258E5C: .word 0x000009BC
-_02258E60: .word 0x021D114C
+_02258E60: .word gMain + 0x40
 _02258E64: .word 0x00000555
 _02258E68: .word 0x000008D8
 _02258E6C: .word 0x000005E5

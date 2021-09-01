@@ -2347,7 +2347,7 @@ _021E9356:
 	thumb_func_start ov52_021E9364
 ov52_021E9364: ; 0x021E9364
 	push {r3, r4, r5, lr}
-	ldr r1, _021E9410 ; =0x021D114C
+	ldr r1, _021E9410 ; =gMain + 0x40
 	add r4, r0, #0
 	ldrh r0, [r1, #0x20]
 	ldr r3, _021E9414 ; =0x0000FFFF
@@ -2380,7 +2380,7 @@ _021E9398:
 	blt _021E93CE
 	cmp r3, #0x28
 	bgt _021E93CE
-	ldr r0, _021E9410 ; =0x021D114C
+	ldr r0, _021E9410 ; =gMain + 0x40
 	ldrh r2, [r0, #0x22]
 	ldr r0, _021E941C ; =0x00005CAC
 	ldr r1, [r4, r0]
@@ -2405,7 +2405,7 @@ _021E93BC:
 _021E93CE:
 	cmp r3, #0x28
 	bgt _021E93FE
-	ldr r0, _021E9410 ; =0x021D114C
+	ldr r0, _021E9410 ; =gMain + 0x40
 	ldrh r2, [r0, #0x22]
 	ldr r0, _021E941C ; =0x00005CAC
 	ldr r1, [r4, r0]
@@ -2429,7 +2429,7 @@ _021E93EA:
 	add r0, r4, r0
 	bl ov52_021E9424
 _021E93FE:
-	ldr r1, _021E9410 ; =0x021D114C
+	ldr r1, _021E9410 ; =gMain + 0x40
 	ldr r0, _021E9418 ; =0x00005CA8
 	ldrh r2, [r1, #0x20]
 	str r2, [r4, r0]
@@ -2438,7 +2438,7 @@ _021E93FE:
 	str r1, [r4, r0]
 	pop {r3, r4, r5, pc}
 	nop
-_021E9410: .word 0x021D114C
+_021E9410: .word gMain + 0x40
 _021E9414: .word 0x0000FFFF
 _021E9418: .word 0x00005CA8
 _021E941C: .word 0x00005CAC

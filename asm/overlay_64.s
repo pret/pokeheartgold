@@ -1321,7 +1321,7 @@ _021E63AC:
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov64_021E677C
-	ldr r0, _021E64F0 ; =0x021D110C
+	ldr r0, _021E64F0 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1371,7 +1371,7 @@ _021E6410:
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	bl sub_02019F74
-	ldr r1, _021E64F0 ; =0x021D110C
+	ldr r1, _021E64F0 ; =gMain
 	ldr r2, [r1, #0x4c]
 	mov r1, #0x10
 	tst r1, r2
@@ -1475,7 +1475,7 @@ _021E64E2:
 	nop
 _021E64E8: .word _021E6E7C
 _021E64EC: .word 0x000005DC
-_021E64F0: .word 0x021D110C
+_021E64F0: .word gMain
 _021E64F4: .word 0x0000060D
 	thumb_func_end ov64_021E62C8
 

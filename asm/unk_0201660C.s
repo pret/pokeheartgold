@@ -369,7 +369,7 @@ _020168B0:
 	lsr r0, r0, #0x1f
 	cmp r0, #1
 	bne _020168E2
-	ldr r0, _020168F0 ; =0x021D110C
+	ldr r0, _020168F0 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
@@ -387,13 +387,13 @@ _020168B0:
 	mov r0, #0
 	pop {r4, pc}
 _020168E2:
-	ldr r1, _020168F0 ; =0x021D110C
+	ldr r1, _020168F0 ; =gMain
 	add r0, r4, #0
 	ldr r1, [r1, #0x48]
 	bl sub_02016804
 	pop {r4, pc}
 	nop
-_020168F0: .word 0x021D110C
+_020168F0: .word gMain
 	thumb_func_end sub_02016884
 
 	thumb_func_start sub_020168F4

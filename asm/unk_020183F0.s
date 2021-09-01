@@ -1417,7 +1417,7 @@ _02018E88: .word 0x000005DC
 sub_02018E8C: ; 0x02018E8C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _02018FDC ; =0x021D110C
+	ldr r0, _02018FDC ; =gMain
 	ldr r1, [r0, #0x48]
 	ldr r0, _02018FE0 ; =0x00000CF3
 	tst r0, r1
@@ -1431,7 +1431,7 @@ sub_02018E8C: ; 0x02018E8C
 	add r0, #0x27
 	strb r1, [r0]
 _02018EAA:
-	ldr r0, _02018FDC ; =0x021D110C
+	ldr r0, _02018FDC ; =gMain
 	mov r1, #2
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1525,7 +1525,7 @@ _02018F48:
 	add r0, r5, #0
 	bl sub_02018DF4
 _02018F6E:
-	ldr r0, _02018FDC ; =0x021D110C
+	ldr r0, _02018FDC ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0x80
 	tst r0, r1
@@ -1580,7 +1580,7 @@ _02018FD6:
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02018FDC: .word 0x021D110C
+_02018FDC: .word gMain
 _02018FE0: .word 0x00000CF3
 _02018FE4: .word 0x000005DC
 	thumb_func_end sub_02018E8C

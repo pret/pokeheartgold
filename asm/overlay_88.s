@@ -148,7 +148,7 @@ _0225891E:
 	str r0, [r5]
 	b _022589EA
 _0225892E:
-	ldr r0, _022589F8 ; =0x021D110C
+	ldr r0, _022589F8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -245,7 +245,7 @@ _022589EA:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_022589F8: .word 0x021D110C
+_022589F8: .word gMain
 	thumb_func_end ov88_022588C4
 
 	thumb_func_start ov88_022589FC
@@ -411,7 +411,7 @@ ov88_02258B34: ; 0x02258B34
 	add r0, r7, #0
 	bl sub_0201AC88
 	str r0, [r5]
-	ldr r0, _02258C54 ; =0x021D116C
+	ldr r0, _02258C54 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl sub_02022D3C
@@ -533,7 +533,7 @@ _02258B5C:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02258C50: .word 0x02259934
-_02258C54: .word 0x021D116C
+_02258C54: .word gMain + 0x60
 _02258C58: .word 0x022599C0
 _02258C5C: .word 0x02259944
 	thumb_func_end ov88_02258B34
@@ -556,14 +556,14 @@ _02258C68:
 	blt _02258C68
 	ldr r0, [r6]
 	bl FreeToHeap
-	ldr r0, _02258C94 ; =0x021D116C
+	ldr r0, _02258C94 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl sub_02022D3C
 	pop {r4, r5, r6, pc}
 	nop
 _02258C90: .word 0x02259944
-_02258C94: .word 0x021D116C
+_02258C94: .word gMain + 0x60
 	thumb_func_end ov88_02258C60
 
 	thumb_func_start ov88_02258C98

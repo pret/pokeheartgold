@@ -5375,7 +5375,7 @@ _0223A310: .word 0x00000F54
 ov72_0223A314: ; 0x0223A314
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0223A344 ; =0x021D110C
+	ldr r0, _0223A344 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -5383,7 +5383,7 @@ ov72_0223A314: ; 0x0223A314
 	mov r0, #2
 	tst r0, r1
 	bne _0223A330
-	ldr r0, _0223A348 ; =0x021D114C
+	ldr r0, _0223A348 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0223A33E
@@ -5398,8 +5398,8 @@ _0223A33E:
 	mov r0, #3
 	pop {r4, pc}
 	nop
-_0223A344: .word 0x021D110C
-_0223A348: .word 0x021D114C
+_0223A344: .word gMain
+_0223A348: .word gMain + 0x40
 _0223A34C: .word 0x00000E58
 	thumb_func_end ov72_0223A314
 
@@ -6367,7 +6367,7 @@ _0223AA98: .word 0x00000E0C
 	thumb_func_start ov72_0223AA9C
 ov72_0223AA9C: ; 0x0223AA9C
 	push {r4, lr}
-	ldr r1, _0223AB78 ; =0x021D110C
+	ldr r1, _0223AB78 ; =gMain
 	mov r3, #0x40
 	ldr r2, [r1, #0x4c]
 	add r4, r0, #0
@@ -6469,7 +6469,7 @@ _0223AB74:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_0223AB78: .word 0x021D110C
+_0223AB78: .word gMain
 _0223AB7C: .word 0x0000130F
 _0223AB80: .word 0x000005DC
 	thumb_func_end ov72_0223AA9C
@@ -7075,7 +7075,7 @@ _0223AFBE:
 	strb r0, [r4]
 	b _0223B074
 _0223AFE6:
-	ldr r0, _0223B080 ; =0x021D110C
+	ldr r0, _0223B080 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -7146,7 +7146,7 @@ _0223B074:
 	.balign 4, 0
 _0223B078: .word 0x0223B4C8
 _0223B07C: .word 0x000005DC
-_0223B080: .word 0x021D110C
+_0223B080: .word gMain
 	thumb_func_end ov72_0223AF7C
 
 	thumb_func_start ov72_0223B084

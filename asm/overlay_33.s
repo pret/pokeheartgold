@@ -213,11 +213,11 @@ _0225D6A8:
 	strh r1, [r4, r0]
 	pop {r4, pc}
 _0225D6D2:
-	ldr r0, _0225D6F0 ; =0x021D114C
+	ldr r0, _0225D6F0 ; =gMain + 0x40
 	ldrh r0, [r0, #0x26]
 	cmp r0, #0
 	beq _0225D6E0
-	ldr r0, _0225D6F4 ; =0x021D110C
+	ldr r0, _0225D6F4 ; =gMain
 	mov r1, #1
 	str r1, [r0, #0x5c]
 _0225D6E0:
@@ -226,8 +226,8 @@ _0225D6E0:
 _0225D6E4: .word 0x000001BA
 _0225D6E8: .word 0x0225DA50
 _0225D6EC: .word 0x0000FFFF
-_0225D6F0: .word 0x021D114C
-_0225D6F4: .word 0x021D110C
+_0225D6F0: .word gMain + 0x40
+_0225D6F4: .word gMain
 	thumb_func_end ov33_0225D5D0
 
 	thumb_func_start ov33_0225D6F8

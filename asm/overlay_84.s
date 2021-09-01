@@ -714,7 +714,7 @@ _0223E2D0:
 	strb r0, [r4, #8]
 	b _0223E372
 _0223E2FC:
-	ldr r1, _0223E380 ; =0x021D110C
+	ldr r1, _0223E380 ; =gMain
 	ldr r1, [r1, #0x48]
 	bl ov84_0223EBE8
 	bl sub_0203769C
@@ -778,7 +778,7 @@ _0223E372:
 	nop
 _0223E378: .word 0x00000608
 _0223E37C: .word 0x00000623
-_0223E380: .word 0x021D110C
+_0223E380: .word gMain
 	thumb_func_end ov84_0223E1A8
 
 	thumb_func_start ov84_0223E384

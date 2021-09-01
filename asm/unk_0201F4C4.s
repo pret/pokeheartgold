@@ -1,6 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D15A0:
+	.space 0x4
+
 	.text
 
 	thumb_func_start sub_0201F4C4

@@ -18343,7 +18343,7 @@ _021EE4B8:
 	ldr r0, _021EE55C ; =0x000005DC
 	bl PlaySE
 _021EE4EE:
-	ldr r0, _021EE560 ; =0x021D110C
+	ldr r0, _021EE560 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	tst r1, r0
@@ -18400,7 +18400,7 @@ _021EE55A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021EE55C: .word 0x000005DC
-_021EE560: .word 0x021D110C
+_021EE560: .word gMain
 _021EE564: .word 0x0000FFFE
 	thumb_func_end ov01_021EE49C
 
@@ -49407,7 +49407,7 @@ _021FCAD8:
 
 	thumb_func_start ov01_021FCAE8
 ov01_021FCAE8: ; 0x021FCAE8
-	ldr r0, _021FCAF8 ; =0x021D110C
+	ldr r0, _021FCAF8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r1, r0
@@ -49416,12 +49416,12 @@ ov01_021FCAE8: ; 0x021FCAE8
 _021FCAF4:
 	bx lr
 	nop
-_021FCAF8: .word 0x021D110C
+_021FCAF8: .word gMain
 	thumb_func_end ov01_021FCAE8
 
 	thumb_func_start ov01_021FCAFC
 ov01_021FCAFC: ; 0x021FCAFC
-	ldr r0, _021FCB10 ; =0x021D110C
+	ldr r0, _021FCB10 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -49432,7 +49432,7 @@ _021FCB0A:
 	mov r0, #0
 	bx lr
 	nop
-_021FCB10: .word 0x021D110C
+_021FCB10: .word gMain
 	thumb_func_end ov01_021FCAFC
 
 	thumb_func_start ov01_021FCB14

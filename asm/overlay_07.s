@@ -1262,7 +1262,7 @@ ov07_0221C6B4: ; 0x0221C6B4
 	mov r1, #1
 	add r2, #0x8d
 	strb r1, [r2]
-	ldr r3, _0221C6E8 ; =0x021D110C
+	ldr r3, _0221C6E8 ; =gMain
 	lsl r2, r1, #9
 	ldr r4, [r3, #0x44]
 	tst r2, r4
@@ -1285,7 +1285,7 @@ _0221C6E4:
 	pop {r3, r4}
 	bx lr
 	.balign 4, 0
-_0221C6E8: .word 0x021D110C
+_0221C6E8: .word gMain
 	thumb_func_end ov07_0221C6B4
 
 	thumb_func_start ov07_0221C6EC

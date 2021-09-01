@@ -175,7 +175,7 @@ ov56_021E5D44: ; 0x021E5D44
 	mov r0, #0
 	pop {r4, pc}
 _021E5D5A:
-	ldr r0, _021E5DA0 ; =0x021D110C
+	ldr r0, _021E5DA0 ; =gMain
 	ldr r0, [r0, #0x44]
 	cmp r0, #0
 	beq _021E5D9A
@@ -190,7 +190,7 @@ _021E5D6C:
 	mov r0, #1
 	pop {r4, pc}
 _021E5D74:
-	ldr r0, _021E5DA0 ; =0x021D110C
+	ldr r0, _021E5DA0 ; =gMain
 	ldr r0, [r0, #0x44]
 	cmp r0, #0
 	beq _021E5D80
@@ -214,14 +214,14 @@ _021E5D9A:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_021E5DA0: .word 0x021D110C
+_021E5DA0: .word gMain
 	thumb_func_end ov56_021E5D44
 
 	thumb_func_start ov56_021E5DA4
 ov56_021E5DA4: ; 0x021E5DA4
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021E5DD4 ; =0x021D110C
+	ldr r0, _021E5DD4 ; =gMain
 	ldr r0, [r0, #0x48]
 	cmp r0, #0
 	beq _021E5DB6
@@ -244,14 +244,14 @@ _021E5DC8:
 	mov r0, #1
 	pop {r4, pc}
 	nop
-_021E5DD4: .word 0x021D110C
+_021E5DD4: .word gMain
 _021E5DD8: .word 0x000005E3
 	thumb_func_end ov56_021E5DA4
 
 	thumb_func_start ov56_021E5DDC
 ov56_021E5DDC: ; 0x021E5DDC
 	push {r3, r4, r5, lr}
-	ldr r1, _021E5EEC ; =0x021D110C
+	ldr r1, _021E5EEC ; =gMain
 	add r4, r0, #0
 	ldr r2, [r1, #0x48]
 	mov r1, #1
@@ -392,7 +392,7 @@ _021E5EE6:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021E5EEC: .word 0x021D110C
+_021E5EEC: .word gMain
 _021E5EF0: .word 0x000005DD
 _021E5EF4: .word 0x000005E3
 _021E5EF8: .word 0x000005DC
@@ -419,7 +419,7 @@ _021E5F18:
 	strh r1, [r0]
 	add r0, sp, #4
 	str r0, [sp]
-	ldr r3, _021E5FA8 ; =0x021D114C
+	ldr r3, _021E5FA8 ; =gMain + 0x40
 	ldr r0, [r5, #0x18]
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
@@ -483,7 +483,7 @@ _021E5F86:
 	pop {r3, r4, r5, pc}
 	nop
 _021E5FA4: .word 0x021E6E20
-_021E5FA8: .word 0x021D114C
+_021E5FA8: .word gMain + 0x40
 _021E5FAC: .word 0x000005DD
 _021E5FB0: .word 0x000005E3
 	thumb_func_end ov56_021E5EFC
@@ -558,7 +558,7 @@ _021E5FF2:
 	bl String_dtor
 	b _021E6088
 _021E603E:
-	ldr r1, _021E6098 ; =0x021D110C
+	ldr r1, _021E6098 ; =gMain
 	ldr r2, [r1, #0x48]
 	mov r1, #3
 	tst r1, r2
@@ -603,7 +603,7 @@ _021E6088:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E6094: .word 0x0001020F
-_021E6098: .word 0x021D110C
+_021E6098: .word gMain
 	thumb_func_end ov56_021E5FDC
 
 	thumb_func_start ov56_021E609C

@@ -1443,7 +1443,7 @@ _021ED49E:
 	ldr r0, [r4, #0x28]
 	pop {r4, pc}
 _021ED4B0:
-	ldr r0, _021ED4D0 ; =0x021D110C
+	ldr r0, _021ED4D0 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -1458,7 +1458,7 @@ _021ED4C4:
 	.balign 4, 0
 _021ED4C8: .word 0x00000235
 _021ED4CC: .word 0x000005DC
-_021ED4D0: .word 0x021D110C
+_021ED4D0: .word gMain
 	thumb_func_end ov103_021ED47C
 
 	thumb_func_start ov103_021ED4D4
@@ -1725,7 +1725,7 @@ _021ED6B2:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	bl sub_02019F74
-	ldr r1, _021ED74C ; =0x021D110C
+	ldr r1, _021ED74C ; =gMain
 	mov r2, #0x10
 	ldr r1, [r1, #0x4c]
 	tst r2, r1
@@ -1793,7 +1793,7 @@ _021ED73A:
 _021ED740: .word 0x000005DC
 _021ED744: .word 0x000002E2
 _021ED748: .word 0x000005DD
-_021ED74C: .word 0x021D110C
+_021ED74C: .word gMain
 	thumb_func_end ov103_021ED5B4
 
 	thumb_func_start ov103_021ED750
@@ -4409,7 +4409,7 @@ ov103_021EEB04: ; 0x021EEB04
 	mov r0, #1
 	pop {r3, pc}
 _021EEB18:
-	ldr r0, _021EEB30 ; =0x021D110C
+	ldr r0, _021EEB30 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -4421,7 +4421,7 @@ _021EEB26:
 	pop {r3, pc}
 	nop
 _021EEB2C: .word 0x021EEFB4
-_021EEB30: .word 0x021D110C
+_021EEB30: .word gMain
 	thumb_func_end ov103_021EEB04
 
 	.rodata

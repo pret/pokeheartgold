@@ -1120,7 +1120,7 @@ _021E621C:
 _021E6240:
 	cmp r2, #0
 	bne _021E625E
-	ldr r0, _021E6284 ; =0x021D110C
+	ldr r0, _021E6284 ; =gMain
 	ldr r2, [r0, #0x48]
 	mov r0, #1
 	and r0, r2
@@ -1151,7 +1151,7 @@ _021E6274:
 	nop
 _021E627C: .word 0x021E8500
 _021E6280: .word 0x000003E2
-_021E6284: .word 0x021D110C
+_021E6284: .word gMain
 _021E6288: .word 0x000005DC
 	thumb_func_end ov53_021E611C
 
@@ -1362,7 +1362,7 @@ _021E6406:
 	str r0, [sp, #0x14]
 	b _021E6490
 _021E6428:
-	ldr r0, _021E64A8 ; =0x021D110C
+	ldr r0, _021E64A8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	and r0, r1
@@ -1373,7 +1373,7 @@ _021E6428:
 	cmp r0, #2
 	bne _021E6490
 _021E643C:
-	ldr r0, _021E64AC ; =0x021D114C
+	ldr r0, _021E64AC ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E6448
@@ -1424,8 +1424,8 @@ _021E6498: .word 0x0000FFFF
 _021E649C: .word _021E84F8
 _021E64A0: .word 0x00010200
 _021E64A4: .word 0x000F0200
-_021E64A8: .word 0x021D110C
-_021E64AC: .word 0x021D114C
+_021E64A8: .word gMain
+_021E64AC: .word gMain + 0x40
 _021E64B0: .word 0x000005DC
 	thumb_func_end ov53_021E628C
 
@@ -2080,7 +2080,7 @@ _021E699A:
 	ldrb r7, [r5, r0]
 	b _021E6B30
 _021E69C2:
-	ldr r0, _021E6B88 ; =0x021D114C
+	ldr r0, _021E6B88 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E6A22
@@ -2130,7 +2130,7 @@ _021E6A22:
 	ldrb r0, [r5, r0]
 	cmp r0, #0
 	bne _021E6A52
-	ldr r0, _021E6B98 ; =0x021D110C
+	ldr r0, _021E6B98 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
@@ -2148,7 +2148,7 @@ _021E6A22:
 	strb r1, [r5, r0]
 	b _021E6B30
 _021E6A52:
-	ldr r0, _021E6B98 ; =0x021D110C
+	ldr r0, _021E6B98 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -2298,11 +2298,11 @@ _021E6B78:
 	nop
 _021E6B80: .word 0x021E8650
 _021E6B84: .word 0x00000166
-_021E6B88: .word 0x021D114C
+_021E6B88: .word gMain + 0x40
 _021E6B8C: .word 0x00000163
 _021E6B90: .word 0x021E8604
 _021E6B94: .word 0x000005DC
-_021E6B98: .word 0x021D110C
+_021E6B98: .word gMain
 	thumb_func_end ov53_021E6988
 
 	thumb_func_start ov53_021E6B9C
@@ -2494,7 +2494,7 @@ _021E6CEE:
 	add r2, r2, #1
 	sub r1, r1, #1
 	bne _021E6CEE
-	ldr r0, _021E6DDC ; =0x021D114C
+	ldr r0, _021E6DDC ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E6D38
@@ -2527,7 +2527,7 @@ _021E6D38:
 	ldrb r0, [r5, r0]
 	cmp r0, #0
 	bne _021E6D5E
-	ldr r0, _021E6DEC ; =0x021D110C
+	ldr r0, _021E6DEC ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0x31
 	tst r0, r1
@@ -2544,7 +2544,7 @@ _021E6D5E:
 	add r0, r5, #0
 	mov r1, #0
 	bl ov53_021E6BEC
-	ldr r0, _021E6DEC ; =0x021D110C
+	ldr r0, _021E6DEC ; =gMain
 	mov r1, #0x20
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -2601,11 +2601,11 @@ _021E6DD0:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021E6DD8: .word 0x021E8530
-_021E6DDC: .word 0x021D114C
+_021E6DDC: .word gMain + 0x40
 _021E6DE0: .word 0x00000163
 _021E6DE4: .word 0x000005DC
 _021E6DE8: .word 0x00000162
-_021E6DEC: .word 0x021D110C
+_021E6DEC: .word gMain
 	thumb_func_end ov53_021E6CE0
 
 	thumb_func_start ov53_021E6DF0
@@ -4666,7 +4666,7 @@ ov53_021E7ECC: ; 0x021E7ECC
 	bl sub_02025358
 	cmp r0, #0
 	beq _021E7EFA
-	ldr r0, _021E7F20 ; =0x021D110C
+	ldr r0, _021E7F20 ; =gMain
 	mov r1, #1
 	str r1, [r0, #0x5c]
 	add r0, r4, #0
@@ -4680,7 +4680,7 @@ _021E7EFA:
 	bl ov53_021E7E94
 	cmp r0, #0
 	beq _021E7F10
-	ldr r0, _021E7F20 ; =0x021D110C
+	ldr r0, _021E7F20 ; =gMain
 	mov r1, #1
 	str r1, [r0, #0x5c]
 	pop {r3, r4, r5, pc}
@@ -4692,7 +4692,7 @@ _021E7F18:
 	pop {r3, r4, r5, pc}
 	nop
 _021E7F1C: .word 0x021E8510
-_021E7F20: .word 0x021D110C
+_021E7F20: .word gMain
 	thumb_func_end ov53_021E7ECC
 
 	thumb_func_start ov53_021E7F24
@@ -5332,7 +5332,7 @@ _021E8418:
 	bl GF_AssertFail
 	b _021E84AA
 _021E841E:
-	ldr r0, _021E84D0 ; =0x021D110C
+	ldr r0, _021E84D0 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -5417,7 +5417,7 @@ _021E84C2:
 	nop
 _021E84C8: .word 0x021E887C
 _021E84CC: .word 0x000005DC
-_021E84D0: .word 0x021D110C
+_021E84D0: .word gMain
 	thumb_func_end ov53_021E83D4
 
 	thumb_func_start ov53_021E84D4

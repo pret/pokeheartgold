@@ -190,7 +190,7 @@ _021E5A5A:
 	bl sub_02025358
 	cmp r0, #0
 	bne _021E5A6C
-	ldr r0, _021E5A98 ; =0x021D110C
+	ldr r0, _021E5A98 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -220,7 +220,7 @@ _021E5A92:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_021E5A98: .word 0x021D110C
+_021E5A98: .word gMain
 _021E5A9C: .word 0x000005DC
 	thumb_func_end ov111_021E59E4
 
@@ -348,7 +348,7 @@ _021E5BA0:
 	bl sub_02025358
 	cmp r0, #0
 	bne _021E5BB2
-	ldr r0, _021E5BDC ; =0x021D110C
+	ldr r0, _021E5BDC ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -376,7 +376,7 @@ _021E5BD6:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021E5BDC: .word 0x021D110C
+_021E5BDC: .word gMain
 _021E5BE0: .word 0x000005DC
 	thumb_func_end ov111_021E5AA0
 

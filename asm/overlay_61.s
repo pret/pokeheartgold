@@ -81,7 +81,7 @@ _021E5950:
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
-	ldr r0, _021E5A30 ; =0x021D116C
+	ldr r0, _021E5A30 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl sub_02022D3C
@@ -123,7 +123,7 @@ _021E5A20: .word 0x00000598
 _021E5A24: .word 0x00000578
 _021E5A28: .word 0x000003A5
 _021E5A2C: .word ov61_021E60B8
-_021E5A30: .word 0x021D116C
+_021E5A30: .word gMain + 0x60
 _021E5A34: .word 0x00000574
 	thumb_func_end ov61_021E5900
 
@@ -2601,7 +2601,7 @@ ov61_021E6E40: ; 0x021E6E40
 	bl sub_0202534C
 	cmp r0, #0
 	bne _021E6EB6
-	ldr r0, _021E6F74 ; =0x021D110C
+	ldr r0, _021E6F74 ; =gMain
 	mov r1, #1
 	ldr r2, [r0, #0x48]
 	add r0, r2, #0
@@ -2658,14 +2658,14 @@ _021E6EA2:
 	add r4, r0, #0
 	b _021E6F62
 _021E6EB6:
-	ldr r0, _021E6F74 ; =0x021D110C
+	ldr r0, _021E6F74 ; =gMain
 	ldr r0, [r0, #0x44]
 	cmp r0, #0
 	bne _021E6F62
 	bl sub_02025358
 	cmp r0, #0
 	beq _021E6F62
-	ldr r1, _021E6F78 ; =0x021D114C
+	ldr r1, _021E6F78 ; =gMain + 0x40
 	add r2, sp, #0xc
 	ldrh r0, [r1, #0x20]
 	ldrh r1, [r1, #0x22]
@@ -2757,8 +2757,8 @@ _021E6F6C:
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	nop
-_021E6F74: .word 0x021D110C
-_021E6F78: .word 0x021D114C
+_021E6F74: .word gMain
+_021E6F78: .word gMain + 0x40
 _021E6F7C: .word 0x000005EA
 	thumb_func_end ov61_021E6E40
 

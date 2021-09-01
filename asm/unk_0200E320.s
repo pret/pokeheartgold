@@ -7,7 +7,7 @@
 sub_0200E320: ; 0x0200E320
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _0200E338 ; =0x021D110C
+	ldr r0, _0200E338 ; =gMain
 	add r4, r1, #0
 	add r3, r2, #0
 	ldr r0, [r0, #0x18]
@@ -16,14 +16,14 @@ sub_0200E320: ; 0x0200E320
 	bl sub_0201F8C0
 	pop {r3, r4, r5, pc}
 	nop
-_0200E338: .word 0x021D110C
+_0200E338: .word gMain
 	thumb_func_end sub_0200E320
 
 	thumb_func_start sub_0200E33C
 sub_0200E33C: ; 0x0200E33C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _0200E354 ; =0x021D110C
+	ldr r0, _0200E354 ; =gMain
 	add r4, r1, #0
 	add r3, r2, #0
 	ldr r0, [r0, #0x1c]
@@ -32,14 +32,14 @@ sub_0200E33C: ; 0x0200E33C
 	bl sub_0201F8C0
 	pop {r3, r4, r5, pc}
 	nop
-_0200E354: .word 0x021D110C
+_0200E354: .word gMain
 	thumb_func_end sub_0200E33C
 
 	thumb_func_start sub_0200E358
 sub_0200E358: ; 0x0200E358
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _0200E370 ; =0x021D110C
+	ldr r0, _0200E370 ; =gMain
 	add r4, r1, #0
 	add r3, r2, #0
 	ldr r0, [r0, #0x24]
@@ -48,14 +48,14 @@ sub_0200E358: ; 0x0200E358
 	bl sub_0201F8C0
 	pop {r3, r4, r5, pc}
 	nop
-_0200E370: .word 0x021D110C
+_0200E370: .word gMain
 	thumb_func_end sub_0200E358
 
 	thumb_func_start sub_0200E374
 sub_0200E374: ; 0x0200E374
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _0200E38C ; =0x021D110C
+	ldr r0, _0200E38C ; =gMain
 	add r4, r1, #0
 	add r3, r2, #0
 	ldr r0, [r0, #0x20]
@@ -64,7 +64,7 @@ sub_0200E374: ; 0x0200E374
 	bl sub_0201F8C0
 	pop {r3, r4, r5, pc}
 	nop
-_0200E38C: .word 0x021D110C
+_0200E38C: .word gMain
 	thumb_func_end sub_0200E374
 
 	thumb_func_start sub_0200E390

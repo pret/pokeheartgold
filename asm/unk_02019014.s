@@ -1,6 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D1108:
+	.space 0x4
+
 	.text
 
 	thumb_func_start sub_02019014
@@ -472,7 +477,7 @@ _02019394:
 	cmp r0, #0
 	beq _0201945A
 	ldr r1, [r4, #0x10]
-	ldr r0, _02019480 ; =0x021D1108
+	ldr r0, _02019480 ; =_021D1108
 	str r1, [r0]
 	ldr r0, _02019484 ; =sub_02019520
 	ldr r1, _02019488 ; =sub_02019548
@@ -582,7 +587,7 @@ _0201947C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02019480: .word 0x021D1108
+_02019480: .word _021D1108
 _02019484: .word sub_02019520
 _02019488: .word sub_02019548
 _0201948C: .word 0x020F6288
@@ -664,7 +669,7 @@ sub_02019520: ; 0x02019520
 	add r4, r2, #0
 	bl sub_020D3A38
 	add r6, r0, #0
-	ldr r0, _02019544 ; =0x021D1108
+	ldr r0, _02019544 ; =_021D1108
 	add r1, r5, #0
 	ldr r0, [r0]
 	add r2, r4, #0
@@ -675,7 +680,7 @@ sub_02019520: ; 0x02019520
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02019544: .word 0x021D1108
+_02019544: .word _021D1108
 	thumb_func_end sub_02019520
 
 	thumb_func_start sub_02019548
@@ -685,7 +690,7 @@ sub_02019548: ; 0x02019548
 	beq _02019564
 	bl sub_020D3A38
 	add r4, r0, #0
-	ldr r0, _02019568 ; =0x021D1108
+	ldr r0, _02019568 ; =_021D1108
 	add r1, r5, #0
 	ldr r0, [r0]
 	bl sub_020B5530
@@ -694,7 +699,7 @@ sub_02019548: ; 0x02019548
 _02019564:
 	pop {r3, r4, r5, pc}
 	nop
-_02019568: .word 0x021D1108
+_02019568: .word _021D1108
 	thumb_func_end sub_02019548
 
 	thumb_func_start sub_0201956C
@@ -1661,7 +1666,7 @@ _02019C26:
 	ldrb r0, [r5, #0xc]
 	cmp r0, #1
 	bne _02019C4C
-	ldr r0, _02019D14 ; =0x021D110C
+	ldr r0, _02019D14 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0xf3
 	tst r1, r0
@@ -1675,7 +1680,7 @@ _02019C46:
 	sub r0, #0xf4
 	pop {r3, r4, r5, r6, r7, pc}
 _02019C4C:
-	ldr r0, _02019D14 ; =0x021D110C
+	ldr r0, _02019D14 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1758,7 +1763,7 @@ _02019CE0:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _02019CF0:
-	ldr r0, _02019D14 ; =0x021D110C
+	ldr r0, _02019D14 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1779,7 +1784,7 @@ _02019D0E:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02019D14: .word 0x021D110C
+_02019D14: .word gMain
 	thumb_func_end sub_02019BE4
 
 	thumb_func_start sub_02019D18
@@ -1825,7 +1830,7 @@ _02019D5A:
 	ldrb r0, [r5, #0xc]
 	cmp r0, #1
 	bne _02019D80
-	ldr r0, _02019E48 ; =0x021D110C
+	ldr r0, _02019E48 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0xf3
 	tst r1, r0
@@ -1839,7 +1844,7 @@ _02019D7A:
 	sub r0, #0xf4
 	pop {r3, r4, r5, r6, r7, pc}
 _02019D80:
-	ldr r0, _02019E48 ; =0x021D110C
+	ldr r0, _02019E48 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	tst r1, r0
@@ -1922,7 +1927,7 @@ _02019E14:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _02019E24:
-	ldr r0, _02019E48 ; =0x021D110C
+	ldr r0, _02019E48 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1943,7 +1948,7 @@ _02019E42:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02019E48: .word 0x021D110C
+_02019E48: .word gMain
 	thumb_func_end sub_02019D18
 
 	thumb_func_start sub_02019E4C

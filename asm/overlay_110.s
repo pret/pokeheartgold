@@ -492,7 +492,7 @@ _021E5C70:
 	mov r0, #5
 	pop {r4, pc}
 _021E5C8E:
-	ldr r2, _021E5CC4 ; =0x021D114C
+	ldr r2, _021E5CC4 ; =gMain + 0x40
 	add r0, r4, #0
 	ldrh r1, [r2, #0x20]
 	ldrh r2, [r2, #0x22]
@@ -516,7 +516,7 @@ _021E5CA2:
 	.balign 4, 0
 _021E5CBC: .word _021E6D8C
 _021E5CC0: .word 0x000005DC
-_021E5CC4: .word 0x021D114C
+_021E5CC4: .word gMain + 0x40
 _021E5CC8: .word 0x0000091B
 	thumb_func_end ov110_021E5C60
 
@@ -796,7 +796,7 @@ _021E5EC8:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _021E5ECE:
-	ldr r1, _021E5F80 ; =0x021D114C
+	ldr r1, _021E5F80 ; =gMain + 0x40
 	mov r0, #0x20
 	ldrsh r6, [r1, r0]
 	mov r0, #0x22
@@ -885,7 +885,7 @@ _021E5F70:
 	nop
 _021E5F78: .word 0x000005EA
 _021E5F7C: .word 0x0000091B
-_021E5F80: .word 0x021D114C
+_021E5F80: .word gMain + 0x40
 	thumb_func_end ov110_021E5E1C
 
 	thumb_func_start ov110_021E5F84

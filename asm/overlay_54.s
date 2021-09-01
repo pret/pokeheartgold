@@ -1615,7 +1615,7 @@ ov54_021E6624: ; 0x021E6624
 	lsr r1, r1, #0x1d
 	cmp r1, #6
 	beq _021E6686
-	ldr r3, _021E6810 ; =0x021D110C
+	ldr r3, _021E6810 ; =gMain
 	ldr r5, [r3, #0x48]
 	mov r3, #0x10
 	tst r3, r5
@@ -1652,7 +1652,7 @@ _021E667E:
 	bl ov54_021E6BB8
 	b _021E66DC
 _021E6686:
-	ldr r2, _021E6810 ; =0x021D110C
+	ldr r2, _021E6810 ; =gMain
 	ldr r3, [r2, #0x48]
 	mov r2, #0x20
 	tst r2, r3
@@ -1693,7 +1693,7 @@ _021E66B4:
 	ldr r0, _021E6814 ; =0x000005DC
 	bl PlaySE
 _021E66DC:
-	ldr r0, _021E6810 ; =0x021D110C
+	ldr r0, _021E6810 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1839,7 +1839,7 @@ _021E6802:
 _021E680E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E6810: .word 0x021D110C
+_021E6810: .word gMain
 _021E6814: .word 0x000005DC
 _021E6818: .word 0x0000061A
 	thumb_func_end ov54_021E6624
@@ -1847,7 +1847,7 @@ _021E6818: .word 0x0000061A
 	thumb_func_start ov54_021E681C
 ov54_021E681C: ; 0x021E681C
 	push {r3, r4, r5, lr}
-	ldr r1, _021E69B8 ; =0x021D114C
+	ldr r1, _021E69B8 ; =gMain + 0x40
 	add r4, r0, #0
 	ldrh r1, [r1, #0x24]
 	cmp r1, #0
@@ -2025,7 +2025,7 @@ _021E6960:
 	bl PlaySE
 	pop {r3, r4, r5, pc}
 _021E6998:
-	ldr r1, _021E69D0 ; =0x021D110C
+	ldr r1, _021E69D0 ; =gMain
 	ldr r1, [r1, #0x48]
 	cmp r1, #0
 	beq _021E69B4
@@ -2041,13 +2041,13 @@ _021E6998:
 _021E69B4:
 	pop {r3, r4, r5, pc}
 	nop
-_021E69B8: .word 0x021D114C
+_021E69B8: .word gMain + 0x40
 _021E69BC: .word 0x021E6D68
 _021E69C0: .word 0x021E6DA8
 _021E69C4: .word 0x0000061A
 _021E69C8: .word 0x021E6DAC
 _021E69CC: .word 0x000005DC
-_021E69D0: .word 0x021D110C
+_021E69D0: .word gMain
 	thumb_func_end ov54_021E681C
 
 	thumb_func_start ov54_021E69D4

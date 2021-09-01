@@ -1357,7 +1357,7 @@ _02254936:
 	strb r0, [r4]
 	pop {r3, r4, r5, pc}
 _02254954:
-	ldr r0, _02254990 ; =0x021D110C
+	ldr r0, _02254990 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -1383,7 +1383,7 @@ _02254980:
 _02254984: .word 0x022598A0
 _02254988: .word 0x0225912C
 _0225498C: .word 0x0000FFFF
-_02254990: .word 0x021D110C
+_02254990: .word gMain
 _02254994: .word 0x000005DC
 _02254998: .word ov03_0225499C
 	thumb_func_end ov03_022548E0
@@ -2494,7 +2494,7 @@ ov03_02255280: ; 0x02255280
 	bl sub_0205B624
 	cmp r0, #0
 	beq _022552BE
-	ldr r0, _022552C4 ; =0x021D110C
+	ldr r0, _022552C4 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -2516,7 +2516,7 @@ _022552BE:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _022552C0: .word 0x022598A0
-_022552C4: .word 0x021D110C
+_022552C4: .word gMain
 	thumb_func_end ov03_02255280
 
 	thumb_func_start ov03_022552C8
@@ -2531,7 +2531,7 @@ ov03_022552C8: ; 0x022552C8
 	bl sub_0205B624
 	cmp r0, #0
 	beq _022552FC
-	ldr r0, _02255304 ; =0x021D110C
+	ldr r0, _02255304 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -2547,7 +2547,7 @@ _022552FC:
 	pop {r3, pc}
 	nop
 _02255300: .word 0x022598A0
-_02255304: .word 0x021D110C
+_02255304: .word gMain
 _02255308: .word ov03_0225530C
 	thumb_func_end ov03_022552C8
 
@@ -2838,7 +2838,7 @@ ov03_0225554C: ; 0x0225554C
 	bl sub_0205B624
 	cmp r0, #0
 	beq _02255582
-	ldr r0, _02255588 ; =0x021D110C
+	ldr r0, _02255588 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -2858,7 +2858,7 @@ _02255582:
 	pop {r4, pc}
 	.balign 4, 0
 _02255584: .word 0x022598A0
-_02255588: .word 0x021D110C
+_02255588: .word gMain
 	thumb_func_end ov03_0225554C
 
 	thumb_func_start ov03_0225558C
@@ -3427,7 +3427,7 @@ ov03_02255A2C: ; 0x02255A2C
 	bl sub_0205B624
 	cmp r0, #0
 	beq _02255A66
-	ldr r0, _02255A6C ; =0x021D110C
+	ldr r0, _02255A6C ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -3448,7 +3448,7 @@ _02255A66:
 	pop {r4, pc}
 	.balign 4, 0
 _02255A68: .word 0x022598A0
-_02255A6C: .word 0x021D110C
+_02255A6C: .word gMain
 	thumb_func_end ov03_02255A2C
 
 	thumb_func_start ov03_02255A70
@@ -3537,7 +3537,7 @@ ov03_02255B04: ; 0x02255B04
 	bl sub_0205B624
 	cmp r0, #0
 	beq _02255B38
-	ldr r0, _02255B40 ; =0x021D110C
+	ldr r0, _02255B40 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -3554,7 +3554,7 @@ _02255B38:
 	pop {r3, r4, r5, pc}
 	nop
 _02255B3C: .word 0x022598A0
-_02255B40: .word 0x021D110C
+_02255B40: .word gMain
 	thumb_func_end ov03_02255B04
 
 	thumb_func_start ov03_02255B44
@@ -4891,7 +4891,7 @@ _0225658E:
 	bl sub_0205B624
 	cmp r0, #0
 	beq _0225663A
-	ldr r0, _02256640 ; =0x021D110C
+	ldr r0, _02256640 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -4909,7 +4909,7 @@ _022565AC:
 	str r0, [r4, #0x7c]
 	b _0225663A
 _022565C0:
-	ldr r1, _02256640 ; =0x021D110C
+	ldr r1, _02256640 ; =gMain
 	ldr r2, [r1, #0x48]
 	mov r1, #3
 	tst r1, r2
@@ -4963,7 +4963,7 @@ _0225663A:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_02256640: .word 0x021D110C
+_02256640: .word gMain
 	thumb_func_end ov03_022564A8
 
 	thumb_func_start ov03_02256644
@@ -6860,7 +6860,7 @@ _0225750C: .word 0x0000FFFF
 	thumb_func_start ov03_02257510
 ov03_02257510: ; 0x02257510
 	push {r4, r5, r6, lr}
-	ldr r1, _02257604 ; =0x021D110C
+	ldr r1, _02257604 ; =gMain
 	mov r2, #0x40
 	ldr r1, [r1, #0x48]
 	add r5, r0, #0
@@ -6953,7 +6953,7 @@ _022575B0:
 	add r0, r5, #0
 	bl ov03_022573D4
 _022575CE:
-	ldr r0, _02257604 ; =0x021D110C
+	ldr r0, _02257604 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -6980,7 +6980,7 @@ _02257600:
 	mov r0, #3
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02257604: .word 0x021D110C
+_02257604: .word gMain
 _02257608: .word 0x0225947A
 _0225760C: .word 0x000005DC
 _02257610: .word 0x0225947B
@@ -7619,7 +7619,7 @@ ov03_02257ADC: ; 0x02257ADC
 	mov r0, #7
 	pop {r4, pc}
 _02257B02:
-	ldr r0, _02257B44 ; =0x021D110C
+	ldr r0, _02257B44 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -7649,7 +7649,7 @@ _02257B38:
 	.balign 4, 0
 _02257B3C: .word 0x00000286
 _02257B40: .word 0x00000637
-_02257B44: .word 0x021D110C
+_02257B44: .word gMain
 _02257B48: .word 0x000005DC
 	thumb_func_end ov03_02257ADC
 
@@ -8166,12 +8166,12 @@ ov03_02257F24: ; 0x02257F24
 	mov r0, #0xd
 	pop {r4, pc}
 _02257F3A:
-	ldr r0, _02257FEC ; =0x021D110C
+	ldr r0, _02257FEC ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _02257F4C
-	ldr r0, _02257FF0 ; =0x021D114C
+	ldr r0, _02257FF0 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _02257FE6
@@ -8250,8 +8250,8 @@ _02257FE6:
 	mov r0, #0xd
 	pop {r4, pc}
 	nop
-_02257FEC: .word 0x021D110C
-_02257FF0: .word 0x021D114C
+_02257FEC: .word gMain
+_02257FF0: .word gMain + 0x40
 _02257FF4: .word 0x00000283
 	thumb_func_end ov03_02257F24
 
@@ -8268,12 +8268,12 @@ ov03_02257FF8: ; 0x02257FF8
 	mov r0, #0xe
 	pop {r4, pc}
 _0225800E:
-	ldr r0, _02258070 ; =0x021D110C
+	ldr r0, _02258070 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _02258020
-	ldr r0, _02258074 ; =0x021D114C
+	ldr r0, _02258074 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0225806A
@@ -8313,8 +8313,8 @@ _0225806A:
 	mov r0, #0xe
 	pop {r4, pc}
 	nop
-_02258070: .word 0x021D110C
-_02258074: .word 0x021D114C
+_02258070: .word gMain
+_02258074: .word gMain + 0x40
 	thumb_func_end ov03_02257FF8
 
 	thumb_func_start ov03_02258078
@@ -8330,12 +8330,12 @@ ov03_02258078: ; 0x02258078
 	mov r0, #0xf
 	pop {r4, pc}
 _0225808E:
-	ldr r0, _022580F0 ; =0x021D110C
+	ldr r0, _022580F0 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _022580A0
-	ldr r0, _022580F4 ; =0x021D114C
+	ldr r0, _022580F4 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _022580EA
@@ -8375,8 +8375,8 @@ _022580EA:
 	mov r0, #0xf
 	pop {r4, pc}
 	nop
-_022580F0: .word 0x021D110C
-_022580F4: .word 0x021D114C
+_022580F0: .word gMain
+_022580F4: .word gMain + 0x40
 	thumb_func_end ov03_02258078
 
 	thumb_func_start ov03_022580F8
@@ -10027,7 +10027,7 @@ ov03_02258D88: ; 0x02258D88
 	mov r0, #1
 	pop {r4, pc}
 _02258DAC:
-	ldr r0, _02258DE0 ; =0x021D110C
+	ldr r0, _02258DE0 ; =gMain
 	ldr r1, [r0, #0x48]
 	ldr r0, _02258DE4 ; =0x00000CF3
 	tst r0, r1
@@ -10039,7 +10039,7 @@ _02258DAC:
 	mov r1, #0
 	bl sub_02018410
 _02258DC4:
-	ldr r0, _02258DE0 ; =0x021D110C
+	ldr r0, _02258DE0 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -10053,7 +10053,7 @@ _02258DD8:
 	pop {r4, pc}
 	.balign 4, 0
 _02258DDC: .word 0x000005DD
-_02258DE0: .word 0x021D110C
+_02258DE0: .word gMain
 _02258DE4: .word 0x00000CF3
 	thumb_func_end ov03_02258D88
 

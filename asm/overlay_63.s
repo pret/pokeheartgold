@@ -5067,7 +5067,7 @@ _0221E782:
 	bl sub_0200FB5C
 	cmp r0, #1
 	bne _0221E874
-	ldr r0, _0221E898 ; =0x021D110C
+	ldr r0, _0221E898 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -5195,7 +5195,7 @@ _0221E888: .word 0x00013064
 _0221E88C: .word 0x00013048
 _0221E890: .word 0x0221FE18
 _0221E894: .word 0x0221FE78
-_0221E898: .word 0x021D110C
+_0221E898: .word gMain
 _0221E89C: .word 0x0221FE88
 _0221E8A0: .word 0x0221FEF8
 _0221E8A4: .word 0x0221FEE8

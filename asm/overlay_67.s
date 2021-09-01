@@ -389,7 +389,7 @@ ov67_021E5C04: ; 0x021E5C04
 	bl sub_02025320
 	cmp r0, #1
 	beq _021E5C1C
-	ldr r0, _021E5C38 ; =0x021D110C
+	ldr r0, _021E5C38 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r1, r0
@@ -407,7 +407,7 @@ _021E5C30:
 	pop {r4, pc}
 	nop
 _021E5C34: .word _021E6D4C
-_021E5C38: .word 0x021D110C
+_021E5C38: .word gMain
 _021E5C3C: .word 0x000005DD
 _021E5C40: .word 0x0000049C
 	thumb_func_end ov67_021E5C04

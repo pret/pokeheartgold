@@ -724,7 +724,7 @@ _0223E314:
 	strb r0, [r4, #8]
 	b _0223E5B6
 _0223E31E:
-	ldr r1, _0223E5BC ; =0x021D110C
+	ldr r1, _0223E5BC ; =gMain
 	ldr r1, [r1, #0x48]
 	bl ov82_0223F300
 	add r0, r4, #0
@@ -1030,7 +1030,7 @@ _0223E5B6:
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0223E5BC: .word 0x021D110C
+_0223E5BC: .word gMain
 _0223E5C0: .word 0x000005DD
 _0223E5C4: .word 0x000005F3
 _0223E5C8: .word 0x000005DC
@@ -2680,7 +2680,7 @@ ov82_0223F2F8: ; 0x0223F2F8
 	thumb_func_start ov82_0223F300
 ov82_0223F300: ; 0x0223F300
 	push {r3, r4, r5, lr}
-	ldr r1, _0223F480 ; =0x021D110C
+	ldr r1, _0223F480 ; =gMain
 	add r4, r0, #0
 	ldr r2, [r1, #0x48]
 	mov r1, #0x20
@@ -2719,7 +2719,7 @@ _0223F342:
 _0223F348:
 	mov r0, #1
 _0223F34A:
-	ldr r1, _0223F480 ; =0x021D110C
+	ldr r1, _0223F480 ; =gMain
 	ldr r2, [r1, #0x48]
 	mov r1, #0x10
 	tst r1, r2
@@ -2757,7 +2757,7 @@ _0223F388:
 _0223F38E:
 	mov r0, #1
 _0223F390:
-	ldr r1, _0223F480 ; =0x021D110C
+	ldr r1, _0223F480 ; =gMain
 	ldr r2, [r1, #0x48]
 	mov r1, #0x40
 	tst r1, r2
@@ -2820,7 +2820,7 @@ _0223F3F4:
 _0223F3FA:
 	mov r0, #1
 _0223F3FC:
-	ldr r1, _0223F480 ; =0x021D110C
+	ldr r1, _0223F480 ; =gMain
 	ldr r2, [r1, #0x48]
 	mov r1, #0x80
 	tst r1, r2
@@ -2883,7 +2883,7 @@ _0223F470:
 	bl ov82_0223FCFC
 	pop {r3, r4, r5, pc}
 	nop
-_0223F480: .word 0x021D110C
+_0223F480: .word gMain
 _0223F484: .word 0x000005DC
 	thumb_func_end ov82_0223F300
 
@@ -2891,7 +2891,7 @@ _0223F484: .word 0x000005DC
 ov82_0223F488: ; 0x0223F488
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
-	ldr r0, _0223F538 ; =0x021D114C
+	ldr r0, _0223F538 ; =gMain + 0x40
 	ldrh r1, [r0, #0x24]
 	cmp r1, #0
 	beq _0223F532
@@ -2976,12 +2976,12 @@ _0223F532:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0223F538: .word 0x021D114C
+_0223F538: .word gMain + 0x40
 	thumb_func_end ov82_0223F488
 
 	thumb_func_start ov82_0223F53C
 ov82_0223F53C: ; 0x0223F53C
-	ldr r1, _0223F554 ; =0x021D110C
+	ldr r1, _0223F554 ; =gMain
 	ldr r2, [r1, #0x48]
 	mov r1, #1
 	tst r2, r1
@@ -2995,7 +2995,7 @@ _0223F550:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_0223F554: .word 0x021D110C
+_0223F554: .word gMain
 	thumb_func_end ov82_0223F53C
 
 	thumb_func_start ov82_0223F558

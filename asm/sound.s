@@ -101,7 +101,7 @@ _02004232:
 	bl sub_02004300
 _02004236:
 	bl sub_020C79B4
-	ldr r0, _020042E8 ; =0x021D110C
+	ldr r0, _020042E8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	lsl r0, r0, #0xc
@@ -186,7 +186,7 @@ _020042DA:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020042E4: .word 0x000BEBF0
-_020042E8: .word 0x021D110C
+_020042E8: .word gMain
 _020042EC: .word 0x000BEB94
 _020042F0: .word 0x000BEC74
 _020042F4: .word 0x000BEC58

@@ -240,7 +240,7 @@ _02259A90: .word 0x000005DC
 
 	thumb_func_start ov19_02259A94
 ov19_02259A94: ; 0x02259A94
-	ldr r0, _02259AB8 ; =0x021D110C
+	ldr r0, _02259AB8 ; =gMain
 	ldr r2, [r0, #0x48]
 	mov r0, #3
 	add r1, r2, #0
@@ -262,7 +262,7 @@ _02259AAE:
 _02259AB6:
 	bx lr
 	.balign 4, 0
-_02259AB8: .word 0x021D110C
+_02259AB8: .word gMain
 	thumb_func_end ov19_02259A94
 
 	thumb_func_start ov19_02259ABC

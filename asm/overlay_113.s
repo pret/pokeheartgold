@@ -839,7 +839,7 @@ _021E5F44: .word 0x000005DC
 	thumb_func_start ov113_021E5F48
 ov113_021E5F48: ; 0x021E5F48
 	push {r3, lr}
-	ldr r1, _021E5F8C ; =0x021D110C
+	ldr r1, _021E5F8C ; =gMain
 	ldr r2, [r1, #0x48]
 	ldr r1, _021E5F90 ; =0x00000CF3
 	tst r1, r2
@@ -847,7 +847,7 @@ ov113_021E5F48: ; 0x021E5F48
 	mov r1, #0
 	str r1, [r0, #0x14]
 _021E5F58:
-	ldr r1, _021E5F8C ; =0x021D110C
+	ldr r1, _021E5F8C ; =gMain
 	ldr r3, [r1, #0x48]
 	mov r1, #2
 	add r2, r3, #0
@@ -873,7 +873,7 @@ _021E5F86:
 	add r0, r1, #0
 	pop {r3, pc}
 	nop
-_021E5F8C: .word 0x021D110C
+_021E5F8C: .word gMain
 _021E5F90: .word 0x00000CF3
 	thumb_func_end ov113_021E5F48
 
