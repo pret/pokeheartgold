@@ -65,5 +65,5 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         run: |
           sudo chmod 755 $GITHUB_WORKSPACE/.github/calcrom/webhook.sh
-          $GITHUB_WORKSPACE/.github/calcrom/webhook.sh pokediamond "$CALCROM_WEBHOOK_URL"
+          $GITHUB_WORKSPACE/.github/calcrom/webhook.sh pokeheartgold "$CALCROM_WEBHOOK_URL"
         continue-on-error: true

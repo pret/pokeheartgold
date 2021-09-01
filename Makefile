@@ -32,7 +32,7 @@ tidy:
 	$(RM) -r $(BUILD_DIR)
 	$(RM) $(ROM)
 
-clean: tidy clean-tools
+clean: tidy clean-filesystem clean-tools
 	@$(MAKE) -C lib/syscall clean
 	@$(MAKE) -C sub clean
 

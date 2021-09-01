@@ -1,5 +1,8 @@
 CXX := g++
 CXXFLAGS := -g -O3 -std=c++11
+ifeq ($(DEBUG),)
+CXXFLAGS += -DNDEBUG
+endif
 
 ifeq ($(OS),Windows_NT)
 EXE := .exe
