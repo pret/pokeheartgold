@@ -1,8 +1,8 @@
 ; Temporary file to declare the static BSS section for ARM9
 	.bss
 
-_021D2194:
-	.space 0x13754
+_021D21F4:
+	.space 0x136F4
 
 	.public __global_destructor_chain
 __global_destructor_chain: ; 0x021E58E8

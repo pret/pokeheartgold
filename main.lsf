@@ -63,6 +63,9 @@ Static main
 	Object math_util.o
 	Object text.o
 	Object unk_0202055C.o
+	Object unk_02020654.o
+	Object unk_020210A0.o
+	Object unk_020215A0.o
 	Object error_handling.o
 	Object unk_02025534.o
 	### Vendor libraries ###

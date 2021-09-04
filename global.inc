@@ -27624,3 +27624,8 @@
 .public sub_0201FFB0
 .public sub_020210A0
 .public gMain
+.public sub_0202068C
+.public sub_020206C8
+.public sub_020206E0
+.public sub_02020738
+.public sub_02020764
