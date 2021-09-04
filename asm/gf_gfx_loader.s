@@ -1,6 +1,26 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F5950:
+	.word sub_020B80A0
+	.word sub_020B82CC
+	.word sub_020B80A0
+	.word sub_020B82CC
+	.word sub_020CFE74
+	.word sub_020CFECC
+
+_020F5968:
+	.word GX_LoadBGPltt
+	.word GX_LoadOBJPltt
+	.word GX_LoadBGExtPltt
+	.word GX_LoadOBJExtPltt
+	.word GXS_LoadBGPltt
+	.word GXS_LoadOBJPltt
+	.word GXS_LoadBGExtPltt
+	.word GXS_LoadOBJExtPltt
+
 	.text
 
 	thumb_func_start GfGfxLoader_LoadCharData

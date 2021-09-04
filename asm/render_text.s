@@ -1,6 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F56BC:
+	.byte 0x00, 0x01, 0x02, 0x01
+
 	.bss
 
 _02111884:
@@ -963,7 +968,7 @@ _02002872:
 	ldr r1, [sp, #0x20]
 	lsl r2, r2, #0x19
 	lsr r3, r2, #0x1e
-	ldr r2, _020029D4 ; =0x020F56BC
+	ldr r2, _020029D4 ; =_020F56BC
 	ldr r0, [r0]
 	ldrb r2, [r2, r3]
 	lsl r3, r2, #2
@@ -994,7 +999,7 @@ _02002872:
 	ldr r1, [sp, #0x20]
 	lsl r2, r2, #0x19
 	lsr r3, r2, #0x1e
-	ldr r2, _020029D4 ; =0x020F56BC
+	ldr r2, _020029D4 ; =_020F56BC
 	ldr r0, [r0]
 	ldrb r2, [r2, r3]
 	mov r3, ip
@@ -1021,7 +1026,7 @@ _02002872:
 	ldr r0, [r5, #4]
 	lsl r2, r2, #0x19
 	lsr r3, r2, #0x1e
-	ldr r2, _020029D4 ; =0x020F56BC
+	ldr r2, _020029D4 ; =_020F56BC
 	add r7, #0x14
 	ldrb r2, [r2, r3]
 	ldr r3, [sp, #0x18]
@@ -1049,7 +1054,7 @@ _02002872:
 	ldr r1, [sp, #0x20]
 	lsl r2, r2, #0x19
 	lsr r3, r2, #0x1e
-	ldr r2, _020029D4 ; =0x020F56BC
+	ldr r2, _020029D4 ; =_020F56BC
 	ldr r0, [r0]
 	ldrb r2, [r2, r3]
 	ldr r3, [sp, #0x10]
@@ -1088,7 +1093,7 @@ _020029CC:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020029D0: .word _02111884
-_020029D4: .word 0x020F56BC
+_020029D4: .word _020F56BC
 	thumb_func_end TextPrinterDrawDownArrow
 
 	thumb_func_start TextPrinterClearDownArrow

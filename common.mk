@@ -130,6 +130,9 @@ clean-tools:
 
 $(LCF): $(LSF) $(LCF_TEMPLATE)
 	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
+ifeq ($(PROC),arm946e)
+	echo "KEEP_SECTION\n{\n\t.exceptix\n}" >> $@
+endif
 
 $(NEF): $(LCF) $(ALL_OBJS)
 	cd $(BUILD_DIR) && $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) $(ALL_OBJS:$(BUILD_DIR)/%=%)

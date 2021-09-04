@@ -8,6 +8,7 @@
 Static main
 {
 	Address 0x02000000
+	Object pm_version.o
 	Object main.o
 	Object list_menu.o
 	Object unk_02001AF4.o
@@ -74,6 +75,7 @@ Static main
 	Object timer3.o
 	Object error_handling.o
 	Object unk_02025534.o
+	Object unk_02025C44.o
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o
