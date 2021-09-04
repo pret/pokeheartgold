@@ -76,6 +76,7 @@ Static main
 	Object error_handling.o
 	Object unk_02025534.o
 	Object unk_02025C44.o
+	Object scrcmd.o
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o
