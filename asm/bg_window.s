@@ -1,6 +1,35 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F62C4:
+	.byte 0x10, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00
+_020F62CC:
+	.word sub_0201D650
+	.word sub_0201D6D0
+	.word sub_0201D650
+_020F62D8:
+	.word sub_0201D928
+	.word sub_0201D964
+	.word sub_0201D928
+_020F62E4:
+	.word sub_0201D900
+	.word sub_0201D93C
+	.word sub_0201D900
+_020F62F0:
+	.word sub_0201D820
+	.word sub_0201D874
+	.word sub_0201D820
+_020F62FC:
+	.word sub_0201D7F4
+	.word sub_0201D838
+	.word sub_0201D7F4
+_020F6308:
+	.word sub_0201D72C
+	.word sub_0201D79C
+	.word sub_0201D72C
+
 	.text
 
 	thumb_func_start sub_0201AC88
@@ -5709,12 +5738,12 @@ _0201D5AA:
 	ldrb r1, [r1, #0x1c]
 	add r0, r4, #0
 	lsl r2, r1, #2
-	ldr r1, _0201D5C4 ; =0x020F62FC
+	ldr r1, _0201D5C4 ; =_020F62FC
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r4, pc}
 	nop
-_0201D5C4: .word 0x020F62FC
+_0201D5C4: .word _020F62FC
 	thumb_func_end CopyWindowToVram
 
 	thumb_func_start sub_0201D5C8
@@ -5752,12 +5781,12 @@ _0201D5FA:
 	ldrb r1, [r1, #0x1c]
 	add r0, r4, #0
 	lsl r2, r1, #2
-	ldr r1, _0201D614 ; =0x020F62F0
+	ldr r1, _0201D614 ; =_020F62F0
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r4, pc}
 	nop
-_0201D614: .word 0x020F62F0
+_0201D614: .word _020F62F0
 	thumb_func_end sub_0201D5C8
 
 	thumb_func_start sub_0201D618
@@ -5770,12 +5799,12 @@ sub_0201D618: ; 0x0201D618
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D630 ; =0x020F62CC
+	ldr r1, _0201D630 ; =_020F62CC
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D630: .word 0x020F62CC
+_0201D630: .word _020F62CC
 	thumb_func_end sub_0201D618
 
 	thumb_func_start sub_0201D634
@@ -5788,12 +5817,12 @@ sub_0201D634: ; 0x0201D634
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D64C ; =0x020F6308
+	ldr r1, _0201D64C ; =_020F6308
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D64C: .word 0x020F6308
+_0201D64C: .word _020F6308
 	thumb_func_end sub_0201D634
 
 	thumb_func_start sub_0201D650
@@ -5880,7 +5909,7 @@ sub_0201D6D0: ; 0x0201D6D0
 	cmp r3, #0
 	beq _0201D724
 	ldrb r2, [r1, #0x1d]
-	ldr r1, _0201D728 ; =0x020F62C4
+	ldr r1, _0201D728 ; =_020F62C4
 	ldrb r6, [r1, r2]
 	ldrb r1, [r0, #6]
 	add r2, r1, #0
@@ -5918,7 +5947,7 @@ _0201D724:
 	pop {r4, r5, r6, r7}
 	bx lr
 	.balign 4, 0
-_0201D728: .word 0x020F62C4
+_0201D728: .word _020F62C4
 	thumb_func_end sub_0201D6D0
 
 	thumb_func_start sub_0201D72C
@@ -5997,7 +6026,7 @@ sub_0201D79C: ; 0x0201D79C
 	cmp r3, #0
 	beq _0201D7EA
 	ldrb r2, [r1, #0x1d]
-	ldr r1, _0201D7F0 ; =0x020F62C4
+	ldr r1, _0201D7F0 ; =_020F62C4
 	mov r4, #0
 	ldrb r6, [r1, r2]
 	ldrb r1, [r0, #6]
@@ -6032,7 +6061,7 @@ _0201D7EA:
 	pop {r4, r5, r6, r7}
 	bx lr
 	nop
-_0201D7F0: .word 0x020F62C4
+_0201D7F0: .word _020F62C4
 	thumb_func_end sub_0201D79C
 
 	thumb_func_start sub_0201D7F4
@@ -6158,12 +6187,12 @@ ClearWindowTilemapAndCopyToVram: ; 0x0201D8C8
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D8E0 ; =0x020F62E4
+	ldr r1, _0201D8E0 ; =_020F62E4
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D8E0: .word 0x020F62E4
+_0201D8E0: .word _020F62E4
 	thumb_func_end ClearWindowTilemapAndCopyToVram
 
 	thumb_func_start sub_0201D8E4
@@ -6176,12 +6205,12 @@ sub_0201D8E4: ; 0x0201D8E4
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D8FC ; =0x020F62D8
+	ldr r1, _0201D8FC ; =_020F62D8
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D8FC: .word 0x020F62D8
+_0201D8FC: .word _020F62D8
 	thumb_func_end sub_0201D8E4
 
 	thumb_func_start sub_0201D900

@@ -1,6 +1,13 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F6288:
+	.word ov39_02228140, ov39_02228308, ov39_02228370, 0xFFFFFFFF
+_020F6298:
+	.word sub_02019BA0, BgCommitTilemapBufferToVram, ScheduleBgTilemapBufferTransfer
+
 	.bss
 
 _021D1108:
@@ -489,7 +496,7 @@ _02019394:
 	str r0, [r5]
 	b _0201945A
 _020193B6:
-	ldr r0, _0201948C ; =0x020F6288
+	ldr r0, _0201948C ; =_020F6288
 	add r1, r4, #0
 	mov r2, #0x7b
 	bl OverlayManager_new
@@ -543,7 +550,7 @@ _0201940E:
 	str r0, [r5]
 	b _0201945A
 _02019426:
-	ldr r0, _0201948C ; =0x020F6288
+	ldr r0, _0201948C ; =_020F6288
 	add r1, r4, #0
 	mov r2, #0x7b
 	bl OverlayManager_new
@@ -590,7 +597,7 @@ _0201947C:
 _02019480: .word _021D1108
 _02019484: .word sub_02019520
 _02019488: .word sub_02019548
-_0201948C: .word 0x020F6288
+_0201948C: .word _020F6288
 	thumb_func_end sub_0201935C
 
 	thumb_func_start sub_02019490
@@ -1027,7 +1034,7 @@ _0201979E:
 	ldr r0, [r0]
 	lsl r2, r2, #0x11
 	lsr r3, r2, #0xf
-	ldr r2, _020197EC ; =0x020F6298
+	ldr r2, _020197EC ; =_020F6298
 	ldr r2, [r2, r3]
 	blx r2
 	ldrh r1, [r4, #4]
@@ -1038,7 +1045,7 @@ _020197E6:
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_020197EC: .word 0x020F6298
+_020197EC: .word _020F6298
 _020197F0: .word 0xFFFFEFFF
 	thumb_func_end sub_020196E8
 
@@ -1175,14 +1182,14 @@ _020198B8:
 	ldr r0, [r0]
 	lsl r2, r2, #0x11
 	lsr r3, r2, #0xf
-	ldr r2, _020198F8 ; =0x020F6298
+	ldr r2, _020198F8 ; =_020F6298
 	ldr r2, [r2, r3]
 	blx r2
 _020198F4:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020198F8: .word 0x020F6298
+_020198F8: .word _020F6298
 	thumb_func_end sub_0201980C
 
 	thumb_func_start sub_020198FC

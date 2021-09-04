@@ -1,6 +1,13 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F61B8:
+	.byte 0x06
+_020F61B9:
+	.byte 0x04, 0x10, 0x06
+
 	.text
 
 	thumb_func_start sub_0201660C
@@ -75,14 +82,14 @@ _02016680:
 	strb r1, [r0]
 	ldrb r0, [r4, #0x13]
 	lsl r1, r0, #1
-	ldr r0, _020166F4 ; =0x020F61B8
+	ldr r0, _020166F4 ; =_020F61B8
 	ldrb r1, [r0, r1]
 	add r0, r5, #0
 	add r0, #0x72
 	strb r1, [r0]
 	ldrb r0, [r4, #0x13]
 	lsl r1, r0, #1
-	ldr r0, _020166F8 ; =0x020F61B9
+	ldr r0, _020166F8 ; =_020F61B9
 	ldrb r1, [r0, r1]
 	add r0, r5, #0
 	add r0, #0x73
@@ -123,8 +130,8 @@ _02016680:
 	bl sub_020167C4
 	pop {r3, r4, r5, pc}
 	nop
-_020166F4: .word 0x020F61B8
-_020166F8: .word 0x020F61B9
+_020166F4: .word _020F61B8
+_020166F8: .word _020F61B9
 	thumb_func_end sub_02016644
 
 	thumb_func_start sub_020166FC

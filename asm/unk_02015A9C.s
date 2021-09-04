@@ -1,6 +1,26 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F6120:
+	.byte 0x01
+_020F6121:
+	.byte 0x00, 0x02, 0x01, 0x03, 0x02, 0x04, 0x03, 0x05, 0x04, 0x07, 0x05
+_020F612C:
+	.byte 0xED, 0x00, 0xEF, 0x02
+	.byte 0xDF, 0x02, 0xD1, 0x02, 0x1D, 0x01, 0x1E, 0x01, 0x1F, 0x01, 0x20, 0x01, 0x21, 0x01, 0x22, 0x01
+	.byte 0x23, 0x01
+_020F6142:
+	.byte 0xF0, 0x01, 0xD4, 0x01, 0x12, 0x00, 0x7C, 0x00, 0x26, 0x00, 0x26, 0x00, 0x6B, 0x00
+	.byte 0x68, 0x00, 0x2F, 0x00, 0x20, 0x00, 0x17, 0x00, 0xF8, 0x60, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00
+	.byte 0xEC, 0x60, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00, 0x14, 0x61, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00
+	.byte 0x18, 0x61, 0x0F, 0x02, 0x04, 0x00, 0x00, 0x00, 0x0C, 0x61, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00
+	.byte 0x08, 0x61, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00, 0xF4, 0x60, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00
+	.byte 0xF0, 0x60, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFC, 0x60, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00
+	.byte 0x10, 0x61, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00, 0x04, 0x61, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00
+	.byte 0x00, 0x61, 0x0F, 0x02, 0x02, 0x00, 0x00, 0x00
+
 	.text
 
 	thumb_func_start EasyChatManager_new
@@ -9,7 +29,7 @@ EasyChatManager_new: ; 0x02015A9C
 	mov r1, #0x30
 	add r6, r0, #0
 	bl AllocFromHeap
-	ldr r4, _02015AD0 ; =0x020F612C
+	ldr r4, _02015AD0 ; =_020F612C
 	str r0, [sp]
 	mov r7, #0
 	add r5, r0, #0
@@ -30,7 +50,7 @@ _02015AAE:
 	ldr r0, [sp]
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02015AD0: .word 0x020F612C
+_02015AD0: .word _020F612C
 	thumb_func_end EasyChatManager_new
 
 	thumb_func_start EasyChatManager_delete
@@ -88,7 +108,7 @@ GetECWordIntoStringByIndex: ; 0x02015B1C
 	ldr r0, [sp, #8]
 	mov r3, #0
 	lsl r1, r0, #1
-	ldr r0, _02015B5C ; =0x020F612C
+	ldr r0, _02015B5C ; =_020F612C
 	ldrh r0, [r0, r1]
 	str r0, [sp, #8]
 	str r4, [sp]
@@ -105,13 +125,13 @@ _02015B4C:
 	pop {r3, r4, pc}
 	nop
 _02015B58: .word 0x0000FFFF
-_02015B5C: .word 0x020F612C
+_02015B5C: .word _020F612C
 	thumb_func_end GetECWordIntoStringByIndex
 
 	thumb_func_start GetECWordIndexByPair
 GetECWordIndexByPair: ; 0x02015B60
 	push {r4, r5}
-	ldr r4, _02015BA4 ; =0x020F612C
+	ldr r4, _02015BA4 ; =_020F612C
 	mov r2, #0
 _02015B66:
 	ldrh r3, [r4]
@@ -121,7 +141,7 @@ _02015B66:
 	add r3, r4, #0
 	cmp r2, #0
 	bls _02015B8A
-	ldr r0, _02015BA8 ; =0x020F6142
+	ldr r0, _02015BA8 ; =_020F6142
 _02015B76:
 	lsl r5, r4, #1
 	ldrh r5, [r0, r5]
@@ -148,8 +168,8 @@ _02015B94:
 	pop {r4, r5}
 	bx lr
 	nop
-_02015BA4: .word 0x020F612C
-_02015BA8: .word 0x020F6142
+_02015BA4: .word _020F612C
+_02015BA8: .word _020F6142
 _02015BAC: .word 0x0000FFFF
 	thumb_func_end GetECWordIndexByPair
 
@@ -157,7 +177,7 @@ _02015BAC: .word 0x0000FFFF
 GetCategoryAndMsgNoByECWordIdx: ; 0x02015BB0
 	push {r3, r4, r5, r6}
 	ldr r3, _02015BE8 ; =0x00000FFF
-	ldr r6, _02015BEC ; =0x020F6142
+	ldr r6, _02015BEC ; =_020F6142
 	and r3, r0
 	mov r0, #0
 	add r5, r0, #0
@@ -167,7 +187,7 @@ _02015BBC:
 	cmp r3, r0
 	bhs _02015BD8
 	str r5, [r1]
-	ldr r1, _02015BEC ; =0x020F6142
+	ldr r1, _02015BEC ; =_020F6142
 	lsl r4, r5, #1
 	ldrh r1, [r1, r4]
 	sub r0, r0, r1
@@ -186,7 +206,7 @@ _02015BD8:
 	bx lr
 	nop
 _02015BE8: .word 0x00000FFF
-_02015BEC: .word 0x020F6142
+_02015BEC: .word _020F6142
 	thumb_func_end GetCategoryAndMsgNoByECWordIdx
 
 	thumb_func_start sub_02015BF0
@@ -200,13 +220,13 @@ sub_02015BF4: ; 0x02015BF4
 	push {r3, lr}
 	mov r2, #0
 	str r2, [r0]
-	ldr r3, _02015C20 ; =0x020F6120
+	ldr r3, _02015C20 ; =_020F6120
 	str r2, [r0, #4]
 _02015BFE:
 	ldrb r1, [r3]
 	cmp r1, #2
 	bne _02015C10
-	ldr r1, _02015C24 ; =0x020F6121
+	ldr r1, _02015C24 ; =_020F6121
 	lsl r2, r2, #1
 	ldrb r1, [r1, r2]
 	bl sub_02015CFC
@@ -221,8 +241,8 @@ _02015C18:
 	bl sub_0202893C
 	pop {r3, pc}
 	.balign 4, 0
-_02015C20: .word 0x020F6120
-_02015C24: .word 0x020F6121
+_02015C20: .word _020F6120
+_02015C24: .word _020F6121
 	thumb_func_end sub_02015BF4
 
 	thumb_func_start sub_02015C28
@@ -327,7 +347,7 @@ _02015CBE:
 sub_02015CC8: ; 0x02015CC8
 	push {r3, r4}
 	mov r3, #0
-	ldr r4, _02015CEC ; =0x020F6142
+	ldr r4, _02015CEC ; =_020F6142
 	add r2, r3, #0
 _02015CD0:
 	ldrh r1, [r4]
@@ -344,7 +364,7 @@ _02015CD0:
 	pop {r3, r4}
 	bx lr
 	nop
-_02015CEC: .word 0x020F6142
+_02015CEC: .word _020F6142
 	thumb_func_end sub_02015CC8
 
 	thumb_func_start sub_02015CF0

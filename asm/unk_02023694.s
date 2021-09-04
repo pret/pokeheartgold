@@ -1,6 +1,15 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F6314:
+	.word sub_02025010
+	.word sub_02024EB4
+_020F631C:
+	.word sub_02025020
+	.word sub_02025014
+
 	.bss
 
 _021D2208:

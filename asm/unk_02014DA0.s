@@ -1,6 +1,24 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F6078:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00
+_020F6084:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_020F6090:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00
+_020F609C:
+	.byte 0xA5, 0x4F, 0x01, 0x02
+	.byte 0xD1, 0x4F, 0x01, 0x02, 0xFD, 0x4F, 0x01, 0x02, 0x29, 0x50, 0x01, 0x02, 0x55, 0x50, 0x01, 0x02
+	.byte 0x81, 0x50, 0x01, 0x02, 0xAD, 0x50, 0x01, 0x02, 0xD9, 0x50, 0x01, 0x02, 0x05, 0x51, 0x01, 0x02
+	.byte 0x31, 0x51, 0x01, 0x02, 0x5D, 0x51, 0x01, 0x02, 0x89, 0x51, 0x01, 0x02, 0xB5, 0x51, 0x01, 0x02
+	.byte 0xE1, 0x51, 0x01, 0x02, 0x0D, 0x52, 0x01, 0x02, 0x39, 0x52, 0x01, 0x02
+_020F60DC:
+	.byte 0x1F, 0x01, 0xFF, 0xFF
+
 	.bss
 
 _021D10A0:
@@ -65,20 +83,20 @@ _02014DEC:
 	add r2, r4, #0
 	ldr r0, [sp, #8]
 	str r7, [r4, #0x18]
-	ldr r3, _02014EAC ; =0x020F6090
+	ldr r3, _02014EAC ; =_020F6090
 	str r0, [r4, #0x1c]
 	ldmia r3!, {r0, r1}
 	add r2, #0x34
 	stmia r2!, {r0, r1}
 	ldr r0, [r3]
-	ldr r3, _02014EB0 ; =0x020F6078
+	ldr r3, _02014EB0 ; =_020F6078
 	str r0, [r2]
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
 	add r2, #0x40
 	stmia r2!, {r0, r1}
 	ldr r0, [r3]
-	ldr r3, _02014EB4 ; =0x020F6084
+	ldr r3, _02014EB4 ; =_020F6084
 	str r0, [r2]
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -116,10 +134,10 @@ _02014DEC:
 	strh r0, [r4, #0x30]
 	str r3, [sp]
 	ldr r0, [r4, #0x20]
-	ldr r1, _02014EAC ; =0x020F6090
+	ldr r1, _02014EAC ; =_020F6090
 	str r0, [sp, #4]
 	ldrh r2, [r4, #0x30]
-	ldr r0, _02014EB4 ; =0x020F6084
+	ldr r0, _02014EB4 ; =_020F6084
 	bl sub_02023308
 	add r0, r4, #0
 	mov r1, #0
@@ -132,14 +150,14 @@ _02014E80:
 	str r0, [sp]
 	mov r0, #0x3f
 	str r0, [sp, #4]
-	ldr r0, _02014EB8 ; =0x020F609C
+	ldr r0, _02014EB8 ; =_020F609C
 	mov r1, #0x14
 	ldr r0, [r0, r5]
 	mov r2, #0xc8
 	mov r3, #5
 	bl sub_020988F4
 	str r0, [r4]
-	ldr r1, _02014EB0 ; =0x020F6078
+	ldr r1, _02014EB0 ; =_020F6078
 	add r0, r4, #0
 	bl sub_020154E4
 	add r0, r4, #0
@@ -147,10 +165,10 @@ _02014E80:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02014EA8: .word _021D10A8
-_02014EAC: .word 0x020F6090
-_02014EB0: .word 0x020F6078
-_02014EB4: .word 0x020F6084
-_02014EB8: .word 0x020F609C
+_02014EAC: .word _020F6090
+_02014EB0: .word _020F6078
+_02014EB4: .word _020F6084
+_02014EB8: .word _020F609C
 	thumb_func_end sub_02014DB4
 
 	thumb_func_start sub_02014EBC
@@ -1129,7 +1147,7 @@ _0201550C: .word _021D10A0
 
 	thumb_func_start sub_02015510
 sub_02015510: ; 0x02015510
-	ldr r2, _02015520 ; =0x020F6078
+	ldr r2, _02015520 ; =_020F6078
 	add r3, r0, #0
 	ldmia r2!, {r0, r1}
 	stmia r3!, {r0, r1}
@@ -1137,7 +1155,7 @@ sub_02015510: ; 0x02015510
 	str r0, [r3]
 	bx lr
 	nop
-_02015520: .word 0x020F6078
+_02015520: .word _020F6078
 	thumb_func_end sub_02015510
 
 	thumb_func_start sub_02015524
@@ -1537,7 +1555,7 @@ ListMenuCursorNew: ; 0x02015788
 	str r0, [r4]
 	mov r0, #4
 	bl String_ctor
-	ldr r1, _020157B4 ; =0x020F60DC
+	ldr r1, _020157B4 ; =_020F60DC
 	str r0, [r4, #4]
 	bl CopyU16ArrayToString
 _020157AA:
@@ -1545,7 +1563,7 @@ _020157AA:
 	pop {r3, r4, r5, pc}
 	nop
 _020157B0: .word 0x0001020F
-_020157B4: .word 0x020F60DC
+_020157B4: .word _020F60DC
 	thumb_func_end ListMenuCursorNew
 
 	thumb_func_start DestroyListMenuCursorObj
