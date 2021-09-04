@@ -131,13 +131,13 @@ sub_0201F590: ; 0x0201F590
 	mov r1, #0
 	add r3, r1, #0
 	bl sub_02026EB4
-	ldr r1, _0201F5B4 ; =0x021D15A0
+	ldr r1, _0201F5B4 ; =_021D15A0
 	str r0, [r1]
 	add sp, #8
 	pop {r3, pc}
 	nop
 _0201F5B0: .word sub_0201F5B8
-_0201F5B4: .word 0x021D15A0
+_0201F5B4: .word _021D15A0
 	thumb_func_end sub_0201F590
 
 	thumb_func_start sub_0201F5B8
@@ -204,12 +204,12 @@ _0201F638: .word 0x04000580
 
 	thumb_func_start sub_0201F63C
 sub_0201F63C: ; 0x0201F63C
-	ldr r0, _0201F644 ; =0x021D15A0
+	ldr r0, _0201F644 ; =_021D15A0
 	ldr r3, _0201F648 ; =sub_02026F54
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_0201F644: .word 0x021D15A0
+_0201F644: .word _021D15A0
 _0201F648: .word sub_02026F54
 	thumb_func_end sub_0201F63C
 

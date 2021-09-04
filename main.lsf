@@ -60,7 +60,8 @@ Static main
 	Object bg_window.o
 	Object unk_0201F4C4.o
 	Object unk_0201F79C.o
-	Object unk_0201FFE0.o
+	Object math_util.o
+	Object text.o
 	Object unk_0202055C.o
 	Object error_handling.o
 	Object unk_02025534.o
