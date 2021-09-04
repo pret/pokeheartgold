@@ -2,7 +2,6 @@
 
 #include "global.h"
 #include "filesystem.h"
-#include "msgdata/msg.naix"
 
 static void ReadFromNarcMemberByPathAndId(void * dest, const char * path, s32 file_idx, u32 offset, u32 size)
 {

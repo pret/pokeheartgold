@@ -17,4 +17,4 @@ tidy:
 
 clean: tidy
 
-all: $(SBIN)
+all: $(SBIN) $(ELF)
