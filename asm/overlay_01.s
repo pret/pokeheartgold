@@ -809,7 +809,7 @@ _021E6032:
 	sub r2, r2, #1
 	bne _021E6032
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -23758,7 +23758,7 @@ _021F0DFC:
 	mov r0, #8
 	mov r1, #0
 	bl GX_EngineAToggleLayers
-	bl sub_020CE89C
+	bl GX_ResetBankForBG
 	mov r2, #2
 	ldr r1, _021F0E60 ; =0x06840000
 	mov r0, #0
@@ -24179,7 +24179,7 @@ _021F1154:
 	sub r2, r2, #1
 	bne _021F1154
 	add r0, sp, #0x44
-	bl sub_02022BE8
+	bl GX_SetBanks
 	mov r0, #1
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -31344,7 +31344,7 @@ ov01_021F467C: ; 0x021F467C
 	mov r0, #8
 	mov r1, #0
 	bl GX_EngineAToggleLayers
-	bl sub_020CE89C
+	bl GX_ResetBankForBG
 	mov r0, #4
 	add r1, r0, #0
 	bl AllocFromHeap
@@ -31385,7 +31385,7 @@ ov01_021F46DC: ; 0x021F46DC
 	add r3, r1, #0
 	bl ov01_021F44B4
 	mov r0, #4
-	bl sub_020CDC04
+	bl GX_SetBankForBG
 	mov r0, #0xe
 	mov r1, #1
 	bl GX_EngineAToggleLayers

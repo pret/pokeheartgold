@@ -35,7 +35,7 @@ SourceFileType GetFileType(std::string& path)
         return SourceFileType::Cpp;
     else if (extension == "s")
         return SourceFileType::Asm;
-    else if (extension == "h")
+    else if (extension == "h" || extension == "naix" /* NITRO archive index */)
         return SourceFileType::Header;
     else if (extension == "inc")
         return SourceFileType::Inc;

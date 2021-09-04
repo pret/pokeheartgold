@@ -66,6 +66,9 @@ Static main
 	Object unk_02020654.o
 	Object unk_020210A0.o
 	Object unk_020215A0.o
+	Object unk_02022588.o
+	Object GX_layers.o
+	Object unk_02022D74.o
 	Object error_handling.o
 	Object unk_02025534.o
 	### Vendor libraries ###

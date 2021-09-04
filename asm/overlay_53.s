@@ -345,7 +345,7 @@ _021E5BE8:
 	sub r2, r2, #1
 	bne _021E5BE8
 	add r0, sp, #0x50
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r0, [r4]
 	bl sub_0201AC88
 	add r3, sp, #0x40

@@ -4406,7 +4406,7 @@ ov102_021E978C: ; 0x021E978C
 	add r2, r0, #0
 	bl sub_020CD9FC
 	ldr r0, _021E981C ; =0x021EC760
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r0, _021E9820 ; =0x021EC6A8
 	bl sub_0201ACB0
 	mov r1, #0

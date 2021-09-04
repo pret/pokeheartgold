@@ -2242,7 +2242,7 @@ ov71_02247A10: ; 0x02247A10
 	sub sp, #0x1c
 	add r4, r0, #0
 	ldr r0, _02247C0C ; =0x0224BCBC
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r2, _02247C10 ; =0x04000304
 	ldr r0, _02247C14 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -3750,7 +3750,7 @@ ov71_02248604: ; 0x02248604
 	sub sp, #0x10
 	add r4, r0, #0
 	ldr r0, _02248880 ; =0x0224BD54
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r2, _02248884 ; =0x04000304
 	ldr r0, _02248888 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -5817,7 +5817,7 @@ ov71_02249670: ; 0x02249670
 	sub sp, #0x14
 	add r4, r0, #0
 	ldr r0, _022497B4 ; =0x0224BDC0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r2, _022497B8 ; =0x04000304
 	ldr r0, _022497BC ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -6838,7 +6838,7 @@ ov71_02249E6C: ; 0x02249E6C
 	sub sp, #0x10
 	add r4, r0, #0
 	ldr r0, _0224A064 ; =0x0224BE54
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r2, _0224A068 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -7325,7 +7325,7 @@ ov71_0224A278: ; 0x0224A278
 	sub sp, #0x14
 	add r4, r0, #0
 	ldr r0, _0224A3C8 ; =0x0224BEC0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r2, _0224A3CC ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -8486,7 +8486,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	sub sp, #0x10
 	add r4, r0, #0
 	ldr r0, _0224AD94 ; =0x0224BF54
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r2, _0224AD98 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -9334,7 +9334,7 @@ ov71_0224B280: ; 0x0224B280
 	sub sp, #0x1c
 	add r4, r0, #0
 	ldr r0, _0224B430 ; =0x0224BFDC
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r2, _0224B434 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb

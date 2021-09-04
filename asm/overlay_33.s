@@ -234,10 +234,10 @@ _0225D6F4: .word gMain
 ov33_0225D6F8: ; 0x0225D6F8
 	push {r3, lr}
 	mov r0, #0x80
-	bl sub_020CE650
+	bl GX_SetBankForSubBG
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_020CE6F8
+	bl GX_SetBankForSubOBJ
 	ldr r2, _0225D718 ; =0x04001000
 	ldr r0, _0225D71C ; =0xFFCFFFEF
 	ldr r1, [r2]

@@ -5298,9 +5298,9 @@ ov13_0222B620: ; 0x0222B620
 	mov r0, #0
 	bl sub_020CD944
 	mov r0, #1
-	bl sub_020CDC04
+	bl GX_SetBankForBG
 	mov r0, #2
-	bl sub_020CDE94
+	bl GX_SetBankForOBJ
 	mov r1, #0
 	mov r2, r1
 	mov r0, #1
@@ -5346,9 +5346,9 @@ ov13_0222B620: ; 0x0222B620
 	str lr, [r3, #0x1c]
 	bl sub_020CF178
 	mov r0, #0x80
-	bl sub_020CE650
+	bl GX_SetBankForSubBG
 	mov r0, #0x100
-	bl sub_020CE6F8
+	bl GX_SetBankForSubOBJ
 	mov r0, #0
 	bl sub_020CDA64
 	ldr r1, _0222B88C ; =0x04001000
@@ -33555,37 +33555,37 @@ ov13_02242154: ; 0x02242154
 	bl ov13_0224225C
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0]
-	bl sub_020CDC04
+	bl GX_SetBankForBG
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #4]
-	bl sub_020CDE94
+	bl GX_SetBankForOBJ
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #8]
-	bl sub_020CDFE4
+	bl GX_SetBankForBGExtPltt
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #0xc]
-	bl sub_020CE0E4
+	bl GX_SetBankForOBJExtPltt
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #0x10]
-	bl sub_020CE190
+	bl GX_SetBankForTex
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #0x14]
-	bl sub_020CE368
+	bl GX_SetBankForTexPltt
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #0x18]
 	bl sub_020CE450
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #0x1c]
-	bl sub_020CE650
+	bl GX_SetBankForSubBG
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #0x20]
-	bl sub_020CE6F8
+	bl GX_SetBankForSubOBJ
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #0x24]
-	bl sub_020CE768
+	bl GX_SetBankForSubBGExtPltt
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #0x28]
-	bl sub_020CE7E8
+	bl GX_SetBankForSubOBJExtPltt
 	ldr r0, _02242250 ; =0x0224F610
 	ldr r0, [r0, #0x30]
 	bl sub_020CE630

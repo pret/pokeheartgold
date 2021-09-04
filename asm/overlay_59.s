@@ -2949,7 +2949,7 @@ _02239412:
 	sub r2, r2, #1
 	bne _02239412
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -7148,7 +7148,7 @@ _0223B41E:
 	sub r2, r2, #1
 	bne _0223B41E
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

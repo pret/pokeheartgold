@@ -406,7 +406,7 @@ ov41_02246150: ; 0x02246150
 	bl sub_02022D3C
 	bl ov41_022467D4
 	bl ov41_022467C8
-	bl sub_020CE90C
+	bl GX_ResetBankForTex
 	pop {r3, pc}
 	nop
 _0224616C: .word gMain + 0x60
@@ -1158,7 +1158,7 @@ _022466DA:
 	sub r2, r2, #1
 	bne _022466DA
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

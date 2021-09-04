@@ -243,11 +243,11 @@ ov64_021E5AE4: ; 0x021E5AE4
 
 	thumb_func_start ov64_021E5B00
 ov64_021E5B00: ; 0x021E5B00
-	ldr r3, _021E5B08 ; =sub_02022BE8
+	ldr r3, _021E5B08 ; =GX_SetBanks
 	ldr r0, _021E5B0C ; =0x021E6FAC
 	bx r3
 	nop
-_021E5B08: .word sub_02022BE8
+_021E5B08: .word GX_SetBanks
 _021E5B0C: .word 0x021E6FAC
 	thumb_func_end ov64_021E5B00
 

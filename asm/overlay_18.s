@@ -471,11 +471,11 @@ _021E5C70: .word 0x00003FF8
 
 	thumb_func_start ov18_021E5C74
 ov18_021E5C74: ; 0x021E5C74
-	ldr r3, _021E5C7C ; =sub_02022BE8
+	ldr r3, _021E5C7C ; =GX_SetBanks
 	ldr r0, _021E5C80 ; =_021F98B0
 	bx r3
 	nop
-_021E5C7C: .word sub_02022BE8
+_021E5C7C: .word GX_SetBanks
 _021E5C80: .word _021F98B0
 	thumb_func_end ov18_021E5C74
 

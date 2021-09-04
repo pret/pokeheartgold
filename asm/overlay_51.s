@@ -703,7 +703,7 @@ _021E60DE:
 	sub r2, r2, #1
 	bne _021E60DE
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

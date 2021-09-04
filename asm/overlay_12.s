@@ -1709,7 +1709,7 @@ _022387BE:
 	sub r2, r2, #1
 	bne _022387BE
 	add r0, sp, #0x20
-	bl sub_02022BE8
+	bl GX_SetBanks
 	mov r1, #6
 	mov r2, #2
 	mov r0, #0
@@ -3641,7 +3641,7 @@ _02239766:
 	sub r2, r2, #1
 	bne _02239766
 	add r0, sp, #0x28
-	bl sub_02022BE8
+	bl GX_SetBanks
 _02239774:
 	ldr r1, _022397C8 ; =0x000023FF
 	ldrb r2, [r4, r1]
@@ -3660,7 +3660,7 @@ _0223978A:
 	sub r2, r2, #1
 	bne _0223978A
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 _02239798:
 	add r0, r4, #0
 	add r0, #0x88
@@ -3987,7 +3987,7 @@ _02239A46:
 	sub r2, r2, #1
 	bne _02239A46
 	add r0, sp, #0x40
-	bl sub_02022BE8
+	bl GX_SetBanks
 	mov r1, #6
 	mov r2, #2
 	mov r0, #0

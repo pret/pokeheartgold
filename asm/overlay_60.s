@@ -560,7 +560,7 @@ _021E5D86:
 	sub r2, r2, #1
 	bne _021E5D86
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -2595,7 +2595,7 @@ _021E6E1E:
 	sub r2, r2, #1
 	bne _021E6E1E
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

@@ -352,7 +352,7 @@ ov88_02258ABC: ; 0x02258ABC
 	add r1, r4, #0
 	bl sub_0202055C
 	ldr r0, _02258AF0 ; =0x02259958
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov88_02258B34

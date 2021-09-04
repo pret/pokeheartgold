@@ -4258,7 +4258,7 @@ _021E79DA:
 	sub r2, r2, #1
 	bne _021E79DA
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -18880,7 +18880,7 @@ _021EF166:
 	sub r2, r2, #1
 	bne _021EF166
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -22498,7 +22498,7 @@ _021F0DFE:
 	sub r2, r2, #1
 	bne _021F0DFE
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

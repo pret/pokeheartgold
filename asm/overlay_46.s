@@ -915,7 +915,7 @@ ov46_02258F78: ; 0x02258F78
 	ldr r0, _022591F8 ; =0x04001050
 	strh r1, [r0]
 	ldr r0, _022591FC ; =0x022595B4
-	bl sub_02022BE8
+	bl GX_SetBanks
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201C2D8

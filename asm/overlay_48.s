@@ -1620,7 +1620,7 @@ ov48_02259464: ; 0x02259464
 	add r1, r4, #0
 	bl sub_0202055C
 	ldr r0, _022594A4 ; =0x0225B210
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0

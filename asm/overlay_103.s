@@ -85,11 +85,11 @@ _021EC9D4: .word 0x00003FF8
 
 	thumb_func_start ov103_021EC9D8
 ov103_021EC9D8: ; 0x021EC9D8
-	ldr r3, _021EC9E0 ; =sub_02022BE8
+	ldr r3, _021EC9E0 ; =GX_SetBanks
 	ldr r0, _021EC9E4 ; =0x021EEC30
 	bx r3
 	nop
-_021EC9E0: .word sub_02022BE8
+_021EC9E0: .word GX_SetBanks
 _021EC9E4: .word 0x021EEC30
 	thumb_func_end ov103_021EC9D8
 

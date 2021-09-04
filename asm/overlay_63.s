@@ -184,11 +184,11 @@ _0221BFB8: .word 0x0221FD18
 
 	thumb_func_start ov63_0221BFBC
 ov63_0221BFBC: ; 0x0221BFBC
-	ldr r3, _0221BFC4 ; =sub_02022BE8
+	ldr r3, _0221BFC4 ; =GX_SetBanks
 	ldr r0, _0221BFC8 ; =0x0221FD58
 	bx r3
 	nop
-_0221BFC4: .word sub_02022BE8
+_0221BFC4: .word GX_SetBanks
 _0221BFC8: .word 0x0221FD58
 	thumb_func_end ov63_0221BFBC
 

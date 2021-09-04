@@ -1976,7 +1976,7 @@ _0225D5B8:
 	sub r2, r2, #1
 	bne _0225D5B8
 	add r0, sp, #4
-	bl sub_02022BE8
+	bl GX_SetBanks
 	mov r1, #6
 	mov r2, #2
 	mov r0, #0

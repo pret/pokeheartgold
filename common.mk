@@ -107,7 +107,7 @@ DUMMY != mkdir -p $(ALL_BUILDDIRS)
 all: tools
 
 ifeq ($(NODEP),)
-$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I $(PROJECT_ROOT)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
+$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I ./files -I $(PROJECT_ROOT)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
 else
 $(BUILD_DIR)/%.o: dep :=
 endif

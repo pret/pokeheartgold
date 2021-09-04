@@ -576,11 +576,11 @@ _021E5D34:
 
 	thumb_func_start ov106_021E5D38
 ov106_021E5D38: ; 0x021E5D38
-	ldr r3, _021E5D40 ; =sub_02022BE8
+	ldr r3, _021E5D40 ; =GX_SetBanks
 	ldr r0, _021E5D44 ; =0x021E6DB0
 	bx r3
 	nop
-_021E5D40: .word sub_02022BE8
+_021E5D40: .word GX_SetBanks
 _021E5D44: .word 0x021E6DB0
 	thumb_func_end ov106_021E5D38
 
@@ -968,7 +968,7 @@ ov106_021E601C: ; 0x021E601C
 	mov r0, #8
 	mov r1, #0
 	bl GX_EngineAToggleLayers
-	bl sub_020CE89C
+	bl GX_ResetBankForBG
 	ldr r6, _021E6060 ; =0x021E6DD8
 	add r3, sp, #0
 	mov r2, #5
@@ -997,7 +997,7 @@ ov106_021E6064: ; 0x021E6064
 	add r3, r1, #0
 	bl ov106_021E5E5C
 	mov r0, #4
-	bl sub_020CDC04
+	bl GX_SetBankForBG
 	mov r0, #0xe
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1462,11 +1462,11 @@ _021E6404: .word 0x00003FF8
 
 	thumb_func_start ov106_021E6408
 ov106_021E6408: ; 0x021E6408
-	ldr r3, _021E6410 ; =sub_02022BE8
+	ldr r3, _021E6410 ; =GX_SetBanks
 	ldr r0, _021E6414 ; =0x021E6FE8
 	bx r3
 	nop
-_021E6410: .word sub_02022BE8
+_021E6410: .word GX_SetBanks
 _021E6414: .word 0x021E6FE8
 	thumb_func_end ov106_021E6408
 

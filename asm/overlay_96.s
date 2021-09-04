@@ -12704,7 +12704,7 @@ _021EB6B2:
 	sub r2, r2, #1
 	bne _021EB6B2
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -19973,7 +19973,7 @@ _021EEED6:
 	sub r2, r2, #1
 	bne _021EEED6
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -20396,7 +20396,7 @@ _021EF26A:
 	sub r2, r2, #1
 	bne _021EF26A
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -23258,7 +23258,7 @@ _021F0A66:
 	sub r2, r2, #1
 	bne _021F0A66
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -32928,7 +32928,7 @@ _021F563A:
 	sub r2, r2, #1
 	bne _021F563A
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -37806,7 +37806,7 @@ _021F7D1A:
 	sub r2, r2, #1
 	bne _021F7D1A
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -41937,7 +41937,7 @@ _021F9E46:
 	sub r2, r2, #1
 	bne _021F9E46
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -48046,7 +48046,7 @@ _021FCEEA:
 	sub r2, r2, #1
 	bne _021FCEEA
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -57818,7 +57818,7 @@ _02201C9A:
 	sub r2, r2, #1
 	bne _02201C9A
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -63973,7 +63973,7 @@ _02204F2A:
 	sub r2, r2, #1
 	bne _02204F2A
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -73282,7 +73282,7 @@ _0220982A:
 	sub r2, r2, #1
 	bne _0220982A
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -83626,7 +83626,7 @@ _0220E872:
 	sub r2, r2, #1
 	bne _0220E872
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -89593,7 +89593,7 @@ _022117D6:
 	sub r2, r2, #1
 	bne _022117D6
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -99040,7 +99040,7 @@ _02215FB2:
 	sub r2, r2, #1
 	bne _02215FB2
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

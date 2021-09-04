@@ -1478,7 +1478,7 @@ _02227B88:
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	add r0, sp, #0x18
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add r0, sp, #8
 	bl sub_0201ACB0
 	ldr r2, _02227CA4 ; =0x04000304
@@ -3703,7 +3703,7 @@ _02228D70:
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	add r0, sp, #0x20
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add r0, sp, #0x10
 	bl sub_0201ACB0
 	mov r1, #0
@@ -17450,7 +17450,7 @@ _0222FCAE:
 	sub r2, r2, #1
 	bne _0222FCAE
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -23564,7 +23564,7 @@ _02232A54:
 	sub r2, r2, #1
 	bne _02232A54
 	add r0, sp, #0x10
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r0, [r4, #0x20]
 	bl ov74_02232974
 	ldr r0, _02232AC4 ; =gMain + 0x60

@@ -1319,7 +1319,7 @@ _021E62EA:
 	sub r2, r2, #1
 	bne _021E62EA
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

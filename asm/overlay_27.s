@@ -17,10 +17,10 @@ ov27_02259F80: ; 0x02259F80
 	mov r0, #0
 	bl sub_020CDA64
 	mov r0, #0x80
-	bl sub_020CE650
+	bl GX_SetBankForSubBG
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_020CE6F8
+	bl GX_SetBankForSubOBJ
 	ldr r2, _0225A174 ; =0x04001000
 	ldr r0, _0225A178 ; =0xFFCFFFEF
 	ldr r1, [r2]
@@ -4404,10 +4404,10 @@ ov27_0225C250: ; 0x0225C250
 	mov r0, #0
 	bl sub_020CDA64
 	mov r0, #0x80
-	bl sub_020CE650
+	bl GX_SetBankForSubBG
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_020CE6F8
+	bl GX_SetBankForSubOBJ
 	ldr r2, _0225C37C ; =0x04001000
 	ldr r0, _0225C380 ; =0xFFCFFFEF
 	ldr r1, [r2]

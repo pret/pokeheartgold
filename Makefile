@@ -36,7 +36,7 @@ clean: tidy clean-filesystem clean-tools
 	@$(MAKE) -C lib/syscall clean
 	@$(MAKE) -C sub clean
 
-main: filesystem $(SBIN)
+main: $(SBIN) $(ELF)
 sub: ; @$(MAKE) -C sub
 
 ROMSPEC        := rom.rsf

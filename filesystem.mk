@@ -414,5 +414,9 @@ $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
 
 include files/msgdata/msg.mk
 
+%.naix: %.narc ;
+
+MWCFLAGS += -I./files
+
 #%.narc:
 #	$(KNARC) -d $* -p $@

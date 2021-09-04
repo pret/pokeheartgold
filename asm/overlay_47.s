@@ -281,7 +281,7 @@ ov47_02258A1C: ; 0x02258A1C
 	add r1, r4, #0
 	bl sub_0202055C
 	ldr r0, _02258A5C ; =0x02259EC0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0

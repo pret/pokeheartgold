@@ -4218,7 +4218,7 @@ ov49_0225A5EC: ; 0x0225A5EC
 	add r1, r6, #0
 	bl sub_0202055C
 	ldr r0, _0225A7A0 ; =0x022697CC
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r0, _0225A7A4 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]

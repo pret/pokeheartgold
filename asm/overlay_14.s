@@ -190,11 +190,11 @@ _021E5A5C: .word ov14_021E5A44
 
 	thumb_func_start ov14_021E5A60
 ov14_021E5A60: ; 0x021E5A60
-	ldr r3, _021E5A68 ; =sub_02022BE8
+	ldr r3, _021E5A68 ; =GX_SetBanks
 	ldr r0, _021E5A6C ; =0x021F7CE4
 	bx r3
 	nop
-_021E5A68: .word sub_02022BE8
+_021E5A68: .word GX_SetBanks
 _021E5A6C: .word 0x021F7CE4
 	thumb_func_end ov14_021E5A60
 

@@ -1930,7 +1930,7 @@ _022595B4:
 	and r1, r2
 	str r1, [r0]
 	ldr r0, _022596B0 ; =0x0225C2CC
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add r0, r4, #0
 	strh r5, [r4, #2]
 	bl ov90_0225C178
@@ -4151,7 +4151,7 @@ _0225A6EA:
 	and r1, r2
 	str r1, [r0]
 	ldr r0, _0225A830 ; =0x0225C2F4
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x34
