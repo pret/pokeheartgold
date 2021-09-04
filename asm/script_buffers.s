@@ -1,6 +1,17 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F5C1C:
+	.byte 0x17, 0x01, 0x19, 0x01
+	.byte 0x18, 0x01, 0x00, 0x00
+_020F5C24:
+	.byte 0x40, 0x01
+_020F5C26:
+	.byte 0x08, 0x00, 0x60, 0x01, 0x10, 0x00, 0xA0, 0x01, 0x10, 0x00
+	.byte 0xE0, 0x01, 0x10, 0x00, 0x20, 0x02, 0x10, 0x00, 0x60, 0x02, 0x10, 0x00, 0xA0, 0x02, 0x10, 0x00
+
 	.text
 
 	thumb_func_start ScrStrBufs_new
@@ -1180,7 +1191,7 @@ BufferLocationName: ; 0x0200C5AC
 	add r0, r4, #0
 	bl sub_02017FCC
 	add r4, r0, #0
-	ldr r2, _0200C64C ; =0x020F5C1C
+	ldr r2, _0200C64C ; =_020F5C1C
 	lsl r3, r6, #1
 	ldrh r2, [r2, r3]
 	ldr r3, [r5, #4]
@@ -1243,7 +1254,7 @@ _0200C620:
 _0200C648:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0200C64C: .word 0x020F5C1C
+_0200C64C: .word _020F5C1C
 _0200C650: .word 0x00000119
 	thumb_func_end BufferLocationName
 
@@ -2236,7 +2247,7 @@ sub_0200CDAC: ; 0x0200CDAC
 	push {r3, r4, r5, lr}
 	sub sp, #0x18
 	add r4, r0, #0
-	ldr r0, _0200CDE8 ; =0x020F5C26
+	ldr r0, _0200CDE8 ; =_020F5C26
 	lsl r5, r1, #2
 	ldrh r1, [r0, r5]
 	lsl r3, r3, #0x10
@@ -2254,7 +2265,7 @@ sub_0200CDAC: ; 0x0200CDAC
 	ldr r1, [r4, #4]
 	add r0, r2, #0
 	ldr r2, [r1, #0x14]
-	ldr r1, _0200CDEC ; =0x020F5C24
+	ldr r1, _0200CDEC ; =_020F5C24
 	ldrh r1, [r1, r5]
 	add r1, r2, r1
 	mov r2, #0
@@ -2263,8 +2274,8 @@ sub_0200CDAC: ; 0x0200CDAC
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0200CDE8: .word 0x020F5C26
-_0200CDEC: .word 0x020F5C24
+_0200CDE8: .word _020F5C26
+_0200CDEC: .word _020F5C24
 	thumb_func_end sub_0200CDAC
 
 	thumb_func_start sub_0200CDF0
