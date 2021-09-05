@@ -9535,7 +9535,7 @@ ov45_0222E14C: ; 0x0222E14C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	ldr r0, _0222E19C ; =0x020F5670
+	ldr r0, _0222E19C ; =gGameLanguage
 	add r6, r2, #0
 	ldrb r4, [r0]
 	mov r0, #1
@@ -9568,7 +9568,7 @@ ov45_0222E14C: ; 0x0222E14C
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222E19C: .word 0x020F5670
+_0222E19C: .word gGameLanguage
 	thumb_func_end ov45_0222E14C
 
 	thumb_func_start ov45_0222E1A0
@@ -9576,7 +9576,7 @@ ov45_0222E1A0: ; 0x0222E1A0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	ldr r0, _0222E1FC ; =0x020F5670
+	ldr r0, _0222E1FC ; =gGameLanguage
 	add r6, r2, #0
 	ldrb r4, [r0]
 	mov r0, #1
@@ -9613,7 +9613,7 @@ ov45_0222E1A0: ; 0x0222E1A0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0222E1FC: .word 0x020F5670
+_0222E1FC: .word gGameLanguage
 	thumb_func_end ov45_0222E1A0
 
 	thumb_func_start ov45_0222E200
@@ -9639,7 +9639,7 @@ ov45_0222E200: ; 0x0222E200
 	beq _0222E290
 	b _0222E2DE
 _0222E22A:
-	ldr r0, _0222E338 ; =0x020F5670
+	ldr r0, _0222E338 ; =gGameLanguage
 	mov r1, #1
 	ldrb r6, [r0]
 	str r1, [sp]
@@ -9667,7 +9667,7 @@ _0222E22A:
 	mov r1, #0x12
 	b _0222E2E4
 _0222E266:
-	ldr r0, _0222E338 ; =0x020F5670
+	ldr r0, _0222E338 ; =gGameLanguage
 	mov r1, #1
 	ldrb r6, [r0]
 	str r1, [sp]
@@ -9687,7 +9687,7 @@ _0222E266:
 	mov r1, #0x13
 	b _0222E2E4
 _0222E290:
-	ldr r0, _0222E338 ; =0x020F5670
+	ldr r0, _0222E338 ; =gGameLanguage
 	mov r1, #1
 	ldrb r6, [r0]
 	str r1, [sp]
@@ -9732,7 +9732,7 @@ _0222E2E4:
 	add r5, r0, #0
 	b _0222E320
 _0222E2EE:
-	ldr r0, _0222E338 ; =0x020F5670
+	ldr r0, _0222E338 ; =gGameLanguage
 	mov r1, #1
 	ldrb r0, [r0]
 	str r1, [sp]
@@ -9765,7 +9765,7 @@ _0222E320:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0222E338: .word 0x020F5670
+_0222E338: .word gGameLanguage
 	thumb_func_end ov45_0222E200
 
 	thumb_func_start ov45_0222E33C
@@ -9779,7 +9779,7 @@ ov45_0222E33C: ; 0x0222E33C
 	mov r1, #0
 	add r6, r3, #0
 	bl sub_0200C74C
-	ldr r0, _0222E398 ; =0x020F5670
+	ldr r0, _0222E398 ; =gGameLanguage
 	mov r1, #1
 	ldrb r0, [r0]
 	str r1, [sp]
@@ -9811,7 +9811,7 @@ ov45_0222E33C: ; 0x0222E33C
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0222E398: .word 0x020F5670
+_0222E398: .word gGameLanguage
 	thumb_func_end ov45_0222E33C
 
 	thumb_func_start ov45_0222E39C
@@ -9825,7 +9825,7 @@ ov45_0222E39C: ; 0x0222E39C
 	str r3, [sp, #8]
 	cmp r1, #0
 	bls _0222E3D4
-	ldr r0, _0222E410 ; =0x020F5670
+	ldr r0, _0222E410 ; =gGameLanguage
 	add r5, r6, #0
 	ldrb r0, [r0]
 	str r0, [sp, #0xc]
@@ -9873,7 +9873,7 @@ _0222E3EC:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222E410: .word 0x020F5670
+_0222E410: .word gGameLanguage
 	thumb_func_end ov45_0222E39C
 
 	thumb_func_start ov45_0222E414
@@ -9984,7 +9984,7 @@ _0222E4C4:
 	mov r4, #0
 	cmp r1, #0
 	bls _0222E4FC
-	ldr r0, _0222E534 ; =0x020F5670
+	ldr r0, _0222E534 ; =gGameLanguage
 	add r5, r6, #0
 	ldrb r0, [r0]
 	str r0, [sp, #0xc]
@@ -10031,7 +10031,7 @@ _0222E51C:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222E534: .word 0x020F5670
+_0222E534: .word gGameLanguage
 _0222E538: .word 0x02254BCA
 _0222E53C: .word 0x02254BD2
 	thumb_func_end ov45_0222E4A8

@@ -243,7 +243,7 @@ _0222A0A4:
 	blt _0222A092
 	mov r0, #0
 	strb r0, [r4, #0x1e]
-	ldr r0, _0222A13C ; =0x020F5670
+	ldr r0, _0222A13C ; =gGameLanguage
 	mov r1, #0x19
 	ldrb r0, [r0]
 	strb r0, [r4, #0x1f]
@@ -305,7 +305,7 @@ _0222A12C: .word 0xFFF07FFF
 _0222A130: .word 0xFE0FFFFF
 _0222A134: .word 0xC1FFFFFF
 _0222A138: .word 0x000001FE
-_0222A13C: .word 0x020F5670
+_0222A13C: .word gGameLanguage
 	thumb_func_end ov80_02229F6C
 
 	thumb_func_start ov80_0222A140
@@ -26394,7 +26394,7 @@ _0223686E:
 	blt _0223685C
 	mov r0, #0
 	strb r0, [r5, #0x1e]
-	ldr r0, _02236908 ; =0x020F5670
+	ldr r0, _02236908 ; =gGameLanguage
 	mov r1, #0x19
 	ldrb r0, [r0]
 	strb r0, [r5, #0x1f]
@@ -26456,7 +26456,7 @@ _022368F8: .word 0xFFF07FFF
 _022368FC: .word 0xFE0FFFFF
 _02236900: .word 0xC1FFFFFF
 _02236904: .word 0x000001FE
-_02236908: .word 0x020F5670
+_02236908: .word gGameLanguage
 	thumb_func_end ov80_02236734
 
 	thumb_func_start ov80_0223690C

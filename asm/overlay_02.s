@@ -23192,7 +23192,7 @@ ov02_02250A60: ; 0x02250A60
 	mov r0, #4
 	bl sub_02019014
 	str r0, [r4, #8]
-	ldr r0, _02250AC4 ; =0x020F566C
+	ldr r0, _02250AC4 ; =gGameVersion
 	ldrb r0, [r0]
 	str r0, [r4, #0x24]
 	ldr r1, [r5, #0x24]
@@ -23223,7 +23223,7 @@ ov02_02250A60: ; 0x02250A60
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	nop
-_02250AC4: .word 0x020F566C
+_02250AC4: .word gGameVersion
 	thumb_func_end ov02_02250A60
 
 	thumb_func_start ov02_02250AC8
@@ -24601,7 +24601,7 @@ ov02_022515A4: ; 0x022515A4
 	mov r1, #0xe4
 	bl AllocFromHeapAtEnd
 	add r2, r0, #0
-	ldr r0, _022515C8 ; =0x020F566C
+	ldr r0, _022515C8 ; =gGameVersion
 	ldrb r1, [r0]
 	add r0, r2, #0
 	add r0, #0xe0
@@ -24611,7 +24611,7 @@ ov02_022515A4: ; 0x022515A4
 	bl sub_02050530
 	pop {r4, pc}
 	nop
-_022515C8: .word 0x020F566C
+_022515C8: .word gGameVersion
 _022515CC: .word ov02_022515D0
 	thumb_func_end ov02_022515A4
 
@@ -25502,7 +25502,7 @@ ov02_02251CF0: ; 0x02251CF0
 	str r0, [r1, #0x24]
 	ldr r0, [r5, #4]
 	ldr r4, [r0, #0x24]
-	ldr r0, _02251DAC ; =0x020F566C
+	ldr r0, _02251DAC ; =gGameVersion
 	ldrb r0, [r0]
 	strh r0, [r4, #0x1a]
 	ldrh r0, [r4, #0x1a]
@@ -25572,7 +25572,7 @@ _02251D1A:
 	add sp, #0x20
 	pop {r3, r4, r5, pc}
 	nop
-_02251DAC: .word 0x020F566C
+_02251DAC: .word gGameVersion
 _02251DB0: .word 0x0029AEC1
 _02251DB4: .word 0x02253C74
 _02251DB8: .word 0x000005C1

@@ -29087,7 +29087,7 @@ _02245A90:
 	mov r1, #0xc
 	mov r2, #0
 	bl sub_0206E540
-	ldr r1, _02245C44 ; =0x020F5670
+	ldr r1, _02245C44 ; =gGameLanguage
 	ldrb r1, [r1]
 	cmp r1, r0
 	beq _02245ABE
@@ -29291,7 +29291,7 @@ _02245C34: .word 0x00002E4C
 _02245C38: .word 0x00002FCC
 _02245C3C: .word 0x00003144
 _02245C40: .word 0x00000469
-_02245C44: .word 0x020F5670
+_02245C44: .word gGameLanguage
 _02245C48: .word 0x0000219C
 _02245C4C: .word 0x00002DA4
 _02245C50: .word 0x0226C354

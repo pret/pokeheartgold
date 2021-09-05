@@ -39,7 +39,7 @@ ov69_021E5900: ; 0x021E5900
 	bl memset
 	mov r0, #0x31
 	str r0, [r5]
-	ldr r0, _021E5A14 ; =0x020F5670
+	ldr r0, _021E5A14 ; =gGameLanguage
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _021E595E
@@ -116,7 +116,7 @@ _021E5960:
 _021E5A08: .word 0xFFFFE0FF
 _021E5A0C: .word 0x04001000
 _021E5A10: .word 0x0000C33C
-_021E5A14: .word 0x020F5670
+_021E5A14: .word gGameLanguage
 _021E5A18: .word 0x0000C324
 _021E5A1C: .word 0x0000C328
 _021E5A20: .word 0x0000C334

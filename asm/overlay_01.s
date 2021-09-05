@@ -60414,7 +60414,7 @@ _02201E46:
 	mov r2, #0x20
 	bl sub_020322AC
 	str r0, [sp, #0x14]
-	ldr r0, _02201F08 ; =0x020F566C
+	ldr r0, _02201F08 ; =gGameVersion
 	ldr r2, [sp, #0x14]
 	ldrb r5, [r0]
 	mov r0, #1
@@ -60498,7 +60498,7 @@ _02201EBC:
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02201F08: .word 0x020F566C
+_02201F08: .word gGameVersion
 _02201F0C: .word 0x00001388
 	thumb_func_end ov01_02201DA4
 

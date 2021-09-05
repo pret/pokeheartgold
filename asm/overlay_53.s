@@ -1615,7 +1615,7 @@ ov53_021E65E0: ; 0x021E65E0
 	mov r0, #0x78
 	mov r3, #7
 	bl GfGfxLoader_LoadCharData
-	ldr r0, _021E66A0 ; =0x020F566C
+	ldr r0, _021E66A0 ; =gGameVersion
 	ldrb r0, [r0]
 	cmp r0, #7
 	bne _021E662E
@@ -1673,7 +1673,7 @@ _021E6632:
 	add sp, #0x14
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021E66A0: .word 0x020F566C
+_021E66A0: .word gGameVersion
 _021E66A4: .word 0x00000136
 	thumb_func_end ov53_021E65E0
 

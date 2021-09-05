@@ -17634,7 +17634,7 @@ ov70_02240500: ; 0x02240500
 	mov r1, #0xc
 	mov r2, #0
 	bl sub_0206E540
-	ldr r1, _0224053C ; =0x020F5670
+	ldr r1, _0224053C ; =gGameLanguage
 	ldrb r1, [r1]
 	cmp r1, r0
 	beq _0224053A
@@ -17646,7 +17646,7 @@ ov70_02240500: ; 0x02240500
 _0224053A:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0224053C: .word 0x020F5670
+_0224053C: .word gGameLanguage
 	thumb_func_end ov70_02240500
 
 	thumb_func_start ov70_02240540

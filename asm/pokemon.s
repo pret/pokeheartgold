@@ -326,7 +326,7 @@ _0206DF4A:
 	mov r1, #7
 	add r2, sp, #0x3c
 	bl sub_0206ED70
-	ldr r2, _0206E100 ; =0x020F5670
+	ldr r2, _0206E100 ; =gGameLanguage
 	add r0, r5, #0
 	mov r1, #0xc
 	bl sub_0206ED70
@@ -358,7 +358,7 @@ _0206DF4A:
 	mov r1, #0x9c
 	add r2, sp, #0x28
 	bl sub_0206ED70
-	ldr r2, _0206E104 ; =0x020F566C
+	ldr r2, _0206E104 ; =gGameVersion
 	add r0, r5, #0
 	mov r1, #0x7a
 	bl sub_0206ED70
@@ -510,8 +510,8 @@ _0206E0D0:
 	bx r3
 	nop
 _0206E0FC: .word 0xFFFF0000
-_0206E100: .word 0x020F5670
-_0206E104: .word 0x020F566C
+_0206E100: .word gGameLanguage
+_0206E104: .word gGameVersion
 	thumb_func_end sub_0206DED0
 
 	thumb_func_start sub_0206E108
@@ -9347,7 +9347,7 @@ sub_0207213C: ; 0x0207213C
 	str r2, [sp]
 	mov r2, #0
 	bl sub_0208F270
-	ldr r2, _02072178 ; =0x020F566C
+	ldr r2, _02072178 ; =gGameVersion
 	add r0, r4, #0
 	mov r1, #0x7a
 	bl sub_0206ED70
@@ -9365,7 +9365,7 @@ sub_0207213C: ; 0x0207213C
 	add sp, #0x10
 	bx r3
 	nop
-_02072178: .word 0x020F566C
+_02072178: .word gGameVersion
 	thumb_func_end sub_0207213C
 
 	thumb_func_start sub_0207217C

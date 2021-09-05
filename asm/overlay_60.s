@@ -73,7 +73,7 @@ ov60_021E5900: ; 0x021E5900
 	add r1, r4, #0
 	bl sub_0201A0FC
 	bl sub_02022D24
-	ldr r0, _021E59C4 ; =0x020F566C
+	ldr r0, _021E59C4 ; =gGameVersion
 	ldrb r1, [r0]
 	mov r0, #0xb3
 	lsl r0, r0, #2
@@ -85,7 +85,7 @@ _021E59B4: .word 0x00007FFF
 _021E59B8: .word 0xFFFFE0FF
 _021E59BC: .word 0x04001000
 _021E59C0: .word ov60_021E5D44
-_021E59C4: .word 0x020F566C
+_021E59C4: .word gGameVersion
 	thumb_func_end ov60_021E5900
 
 	thumb_func_start ov60_021E59C8

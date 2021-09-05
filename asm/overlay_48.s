@@ -1547,7 +1547,7 @@ ov48_022593F4: ; 0x022593F4
 	bic r4, r2
 	mov r3, #1
 	bic r4, r3
-	ldr r3, _02259460 ; =0x020F5670
+	ldr r3, _02259460 ; =gGameLanguage
 	str r4, [r0, #4]
 	ldrb r3, [r3]
 	cmp r3, #1
@@ -1601,7 +1601,7 @@ _02259452:
 	pop {r4, r5, r6, r7}
 	bx lr
 	.balign 4, 0
-_02259460: .word 0x020F5670
+_02259460: .word gGameLanguage
 	thumb_func_end ov48_022593F4
 
 	thumb_func_start ov48_02259464

@@ -28972,3 +28972,5 @@
 .public sub_020669F0
 .public sub_0206D328
 .public sub_0202ADEC
+.public gGameLanguage
+.public gGameVersion

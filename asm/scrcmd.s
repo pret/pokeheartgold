@@ -23016,7 +23016,7 @@ _0204B966:
 	blt _0204B954
 	mov r0, #0
 	strb r0, [r5, #0x1e]
-	ldr r0, _0204BA00 ; =0x020F5670
+	ldr r0, _0204BA00 ; =gGameLanguage
 	mov r1, #0x19
 	ldrb r0, [r0]
 	strb r0, [r5, #0x1f]
@@ -23078,7 +23078,7 @@ _0204B9F0: .word 0xFFF07FFF
 _0204B9F4: .word 0xFE0FFFFF
 _0204B9F8: .word 0xC1FFFFFF
 _0204B9FC: .word 0x000001FE
-_0204BA00: .word 0x020F5670
+_0204BA00: .word gGameLanguage
 	thumb_func_end sub_0204B834
 
 	thumb_func_start sub_0204BA04
@@ -87365,12 +87365,12 @@ sub_02069528: ; 0x02069528
 	add r1, r7, #0
 	add r1, #0xbc
 	str r0, [r1]
-	ldr r0, _02069658 ; =0x020F566C
+	ldr r0, _02069658 ; =gGameVersion
 	ldrb r1, [r0]
 	add r0, r7, #0
 	add r0, #0xb8
 	strb r1, [r0]
-	ldr r0, _0206965C ; =0x020F5670
+	ldr r0, _0206965C ; =gGameLanguage
 	ldrb r1, [r0]
 	add r0, r7, #0
 	add r0, #0xb9
@@ -87473,8 +87473,8 @@ _02069654:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02069658: .word 0x020F566C
-_0206965C: .word 0x020F5670
+_02069658: .word gGameVersion
+_0206965C: .word gGameLanguage
 	thumb_func_end sub_02069528
 
 	thumb_func_start sub_02069660
@@ -96155,7 +96155,7 @@ _0206D94C:
 	bl sub_0206E540
 	add r1, sp, #0
 	strb r0, [r1]
-	ldr r0, _0206D9C8 ; =0x020F5670
+	ldr r0, _0206D9C8 ; =gGameLanguage
 	ldrb r1, [r1]
 	ldrb r0, [r0]
 	cmp r1, r0
@@ -96170,7 +96170,7 @@ _0206D96A:
 	bl sub_0206E540
 	add r1, sp, #0
 	strb r0, [r1]
-	ldr r0, _0206D9CC ; =0x020F566C
+	ldr r0, _0206D9CC ; =gGameVersion
 	ldrb r1, [r1]
 	ldrb r0, [r0]
 	cmp r1, r0
@@ -96210,8 +96210,8 @@ _0206D9C0:
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
-_0206D9C8: .word 0x020F5670
-_0206D9CC: .word 0x020F566C
+_0206D9C8: .word gGameLanguage
+_0206D9CC: .word gGameVersion
 	thumb_func_end sub_0206D8D0
 
 	thumb_func_start sub_0206D9D0
@@ -96297,7 +96297,7 @@ _0206DA64:
 	bl sub_0206E540
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
-	ldr r0, _0206DB24 ; =0x020F566C
+	ldr r0, _0206DB24 ; =gGameVersion
 	ldrb r0, [r0]
 	cmp r1, r0
 	beq _0206DA80
@@ -96374,7 +96374,7 @@ _0206DB18:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0206DB24: .word 0x020F566C
+_0206DB24: .word gGameVersion
 	thumb_func_end sub_0206D9D0
 
 	thumb_func_start sub_0206DB28
