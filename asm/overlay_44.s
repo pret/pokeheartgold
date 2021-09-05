@@ -2934,7 +2934,7 @@ ov44_0222B528: ; 0x0222B528
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0x1f
-	bl sub_020272C8
+	bl SavArray_get
 	bl sub_02031710
 	mov r0, #0x16
 	lsl r0, r0, #4

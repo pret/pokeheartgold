@@ -749,28 +749,28 @@ _021E5E8E:
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5ECE
 _021E5E9E:
 	mov r2, #2
 	ldr r1, _021E5ED8 ; =0x06820000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5ECE
 _021E5EAC:
 	mov r2, #2
 	ldr r1, _021E5EDC ; =0x06840000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5ECE
 _021E5EBA:
 	mov r2, #2
 	ldr r1, _021E5EE0 ; =0x06860000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5ECE
 _021E5EC8:
 	mov r0, #0
@@ -900,28 +900,28 @@ _021E5FA6:
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5FDE
 _021E5FB6:
 	mov r2, #2
 	ldr r1, _021E600C ; =0x06820000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5FDE
 _021E5FC4:
 	mov r2, #2
 	ldr r1, _021E6010 ; =0x06840000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5FDE
 _021E5FD2:
 	mov r2, #2
 	ldr r1, _021E6014 ; =0x06860000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 _021E5FDE:
 	ldr r5, [r4, #0x10]
 	ldr r1, [r4, #0x1c]

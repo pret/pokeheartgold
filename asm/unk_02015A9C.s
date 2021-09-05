@@ -253,7 +253,7 @@ sub_02015C28: ; 0x02015C28
 	bl sub_02028900
 	add r0, r4, #0
 	mov r1, #0x1e
-	bl sub_020272C8
+	bl SavArray_get
 	pop {r4, pc}
 	thumb_func_end sub_02015C28
 

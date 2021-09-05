@@ -502,7 +502,7 @@ _0221C114:
 	mov r2, #0x7d00
 	add r3, r1, #0x1000
 	ldr r4, [r3, #0x4e4]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _0221C15C ; =0x0224CF4C
 	mov r0, #0
 	str r0, [r1]
@@ -2450,7 +2450,7 @@ ov13_0221DBB4: ; 0x0221DBB4
 	mov r0, #0
 	mov r2, #0x220
 	strb r3, [r6, #0x4b2]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 _0221DC34:
 	ldr r0, [r5, #0x14]
 	cmp r4, #0

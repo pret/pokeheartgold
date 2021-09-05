@@ -3013,7 +3013,7 @@ _0201C238:
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r5, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	lsl r0, r7, #0x18
 	ldrb r2, [r4, r6]
 	ldr r3, [sp, #0x20]
@@ -6309,7 +6309,7 @@ _0201D994:
 	ldrb r4, [r4, #7]
 	mul r2, r4
 	mul r2, r3
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	pop {r3, r4, r5, pc}
 	thumb_func_end FillWindowPixelBuffer
 
@@ -6332,7 +6332,7 @@ sub_0201D9B0: ; 0x0201D9B0
 	orr r0, r4
 	lsl r2, r2, #5
 	mul r2, r3
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	pop {r4, pc}
 	thumb_func_end sub_0201D9B0
 

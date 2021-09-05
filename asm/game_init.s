@@ -360,30 +360,30 @@ InitGraphicMemory: ; 0x0201A348
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0xe
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	bl sub_020CEB60
 	mov r1, #7
 	mov r2, #1
 	mov r0, #0xc0
 	lsl r1, r1, #0x18
 	lsl r2, r2, #0xa
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r2, #1
 	ldr r1, _0201A39C ; =0x07000400
 	mov r0, #0xc0
 	lsl r2, r2, #0xa
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r1, #5
 	mov r2, #1
 	mov r0, #0
 	lsl r1, r1, #0x18
 	lsl r2, r2, #0xa
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r2, #1
 	ldr r1, _0201A3A0 ; =0x05000400
 	mov r0, #0
 	lsl r2, r2, #0xa
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	pop {r3, pc}
 	.balign 4, 0
 _0201A398: .word 0x000001FF

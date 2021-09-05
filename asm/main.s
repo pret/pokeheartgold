@@ -75,7 +75,7 @@ _02000D2C:
 	cmp r0, #0
 	bne _02000D40
 	mov r0, #0
-	bl sub_0209263C
+	bl ShowSaveDataReadError
 	b _02000D82
 _02000D40:
 	; static inline int OS_GetResetParameter();

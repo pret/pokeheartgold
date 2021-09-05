@@ -3007,7 +3007,7 @@ sub_020CD7C4: ; 0x020CD7C4
 	bne _020CD838
 	mvn r4, #2
 _020CD814:
-	bl sub_020D15C4
+	bl OS_GetLockID
 	mov r6, r0
 	cmp r6, r4
 	bne _020CD828
@@ -8179,8 +8179,8 @@ sub_020D15BC: ; 0x020D15BC
 	bx lr
 	arm_func_end sub_020D15BC
 
-	arm_func_start sub_020D15C4
-sub_020D15C4: ; 0x020D15C4
+	arm_func_start OS_GetLockID
+OS_GetLockID: ; 0x020D15C4
 	ldr r3, _020D1614 ; =0x027FFFB0
 	ldr r1, [r3]
 	clz r2, r1
@@ -8205,10 +8205,10 @@ _020D15F8:
 	.align 2, 0
 _020D1614: .word 0x027FFFB0
 _020D1618: .word 0xFFFFFFFD
-	arm_func_end sub_020D15C4
+	arm_func_end OS_GetLockID
 
-	arm_func_start sub_020D161C
-sub_020D161C: ; 0x020D161C
+	arm_func_start OS_ReleaseLockID
+OS_ReleaseLockID: ; 0x020D161C
 	ldr r3, _020D1648 ; =0x027FFFB0
 	cmp r0, #0x60
 	addpl r3, r3, #4
@@ -8222,7 +8222,7 @@ sub_020D161C: ; 0x020D161C
 	bx lr
 	.align 2, 0
 _020D1648: .word 0x027FFFB0
-	arm_func_end sub_020D161C
+	arm_func_end OS_ReleaseLockID
 
 	arm_func_start sub_020D164C
 sub_020D164C: ; 0x020D164C
@@ -11329,7 +11329,7 @@ OS_ResetSystem: ; 0x020D3B84
 	beq _020D3BAC
 	bl sub_020D3F48
 _020D3BAC:
-	bl sub_020D15C4
+	bl OS_GetLockID
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_020DC96C
@@ -12346,8 +12346,8 @@ _020D4850:
 	bx lr
 	arm_func_end sub_020D4830
 
-	arm_func_start sub_020D4858
-sub_020D4858: ; 0x020D4858
+	arm_func_start MIi_CpuClearFast
+MIi_CpuClearFast: ; 0x020D4858
 	stmdb sp!, {r4, r5, r6, r7, r8, sb}
 	add sb, r1, r2
 	mov ip, r2, lsr #5
@@ -12377,7 +12377,7 @@ _020D48A8:
 	blt _020D4898
 	ldmia sp!, {r4, r5, r6, r7, r8, sb}
 	bx lr
-	arm_func_end sub_020D4858
+	arm_func_end MIi_CpuClearFast
 
 	arm_func_start sub_020D48B4
 sub_020D48B4: ; 0x020D48B4
@@ -17225,7 +17225,7 @@ sub_020D8590: ; 0x020D8590
 	sub sp, sp, #0x10
 	ldr r1, _020D86B0 ; =0x021E363C
 	str r0, [r1, #4]
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r1, _020D86B0 ; =0x021E363C
 	mov r2, #0
 	str r0, [r1]
@@ -22269,7 +22269,7 @@ sub_020DC7A8: ; 0x020DC7A8
 	str r0, [r4, #0xc]
 	str r0, [r4, #0x18]
 	str r1, [r4]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _020DC8A0 ; =0x021E37C0
 	mov r1, #0x60
 	bl DC_FlushRange
@@ -22396,15 +22396,15 @@ sub_020DC93C: ; 0x020DC93C
 _020DC954: .word 0x021E3820
 	arm_func_end sub_020DC93C
 
-	arm_func_start sub_020DC958
-sub_020DC958: ; 0x020DC958
+	arm_func_start CARD_GetResultCode
+CARD_GetResultCode: ; 0x020DC958
 	ldr r0, _020DC968 ; =0x021E3820
 	ldr r0, [r0]
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _020DC968: .word 0x021E3820
-	arm_func_end sub_020DC958
+	arm_func_end CARD_GetResultCode
 
 	arm_func_start sub_020DC96C
 sub_020DC96C: ; 0x020DC96C
@@ -22428,29 +22428,29 @@ sub_020DC988: ; 0x020DC988
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020DC988
 
-	arm_func_start sub_020DC9A4
-sub_020DC9A4: ; 0x020DC9A4
+	arm_func_start CARD_LockBackup
+CARD_LockBackup: ; 0x020DC9A4
 	ldr ip, _020DC9B0 ; =sub_020DC698
 	mov r1, #2
 	bx ip
 	.align 2, 0
 _020DC9B0: .word sub_020DC698
-	arm_func_end sub_020DC9A4
+	arm_func_end CARD_LockBackup
 
-	arm_func_start sub_020DC9B4
-sub_020DC9B4: ; 0x020DC9B4
+	arm_func_start CARD_UnlockBackup
+CARD_UnlockBackup: ; 0x020DC9B4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl CARD_TryWaitBackupAsync
 	cmp r0, #0
 	bne _020DC9CC
-	bl sub_020DD198
+	bl CARD_WaitBackupAsync
 _020DC9CC:
 	mov r0, r4
 	mov r1, #2
 	bl sub_020DC71C
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DC9B4
+	arm_func_end CARD_UnlockBackup
 
 	arm_func_start sub_020DC9DC
 sub_020DC9DC: ; 0x020DC9DC
@@ -22853,8 +22853,8 @@ _020DCF5C: .word _version_NINTENDO_BACKUP
 _020DCF60: .word 0x021E3820
 	arm_func_end sub_020DCD74
 
-	arm_func_start sub_020DCF64
-sub_020DCF64: ; 0x020DCF64
+	arm_func_start CARDi_RequestStreamCommand
+CARDi_RequestStreamCommand: ; 0x020DCF64
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	ldr r4, _020DD03C ; =0x021E3820
@@ -22917,7 +22917,7 @@ _020DD03C: .word 0x021E3820
 _020DD040: .word _version_NINTENDO_BACKUP
 _020DD044: .word sub_020DCD74
 _020DD048: .word 0x021E16A0
-	arm_func_end sub_020DCF64
+	arm_func_end CARDi_RequestStreamCommand
 
 	arm_func_start sub_020DD04C
 sub_020DD04C: ; 0x020DD04C
@@ -22929,8 +22929,8 @@ sub_020DD04C: ; 0x020DD04C
 _020DD05C: .word 0x021E3820
 	arm_func_end sub_020DD04C
 
-	arm_func_start sub_020DD060
-sub_020DD060: ; 0x020DD060
+	arm_func_start CARD_IdentifyBackup
+CARD_IdentifyBackup: ; 0x020DD060
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	ldr r0, _020DD18C ; =_version_NINTENDO_BACKUP
@@ -23015,15 +23015,15 @@ _020DD174:
 _020DD18C: .word _version_NINTENDO_BACKUP
 _020DD190: .word 0x021E3820
 _020DD194: .word 0x021E16A0
-	arm_func_end sub_020DD060
+	arm_func_end CARD_IdentifyBackup
 
-	arm_func_start sub_020DD198
-sub_020DD198: ; 0x020DD198
+	arm_func_start CARD_WaitBackupAsync
+CARD_WaitBackupAsync: ; 0x020DD198
 	ldr ip, _020DD1A0 ; =sub_020DC8F0
 	bx ip
 	.align 2, 0
 _020DD1A0: .word sub_020DC8F0
-	arm_func_end sub_020DD198
+	arm_func_end CARD_WaitBackupAsync
 
 	arm_func_start CARD_TryWaitBackupAsync
 CARD_TryWaitBackupAsync: ; 0x020DD1A4
@@ -23943,7 +23943,7 @@ sub_020DDCF4: ; 0x020DDCF4
 	ldr r0, _020DDD40 ; =0x0000FFFD
 	cmp r1, r0
 	ldmneia sp!, {r3, pc}
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r1, _020DDD3C ; =_02110FBC
 	strh r0, [r1]
 	ldmia sp!, {r3, pc}
@@ -24065,7 +24065,7 @@ sub_020DDE94: ; 0x020DDE94
 	ldr r0, _020DDFCC ; =_02110FBC
 	strb r1, [r6]
 	ldrh r0, [r0]
-	bl sub_020DC9A4
+	bl CARD_LockBackup
 	ldr r0, _020DDFCC ; =_02110FBC
 	ldrh r0, [r0]
 	bl sub_020D1548
@@ -24134,7 +24134,7 @@ _020DDF98:
 	bl sub_020D1580
 	ldr r0, _020DDFCC ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020DC9B4
+	bl CARD_UnlockBackup
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
@@ -24161,7 +24161,7 @@ sub_020DDFE0: ; 0x020DDFE0
 	ldrh r0, [r2]
 	mov r5, r1
 	strb r3, [r7]
-	bl sub_020DC9A4
+	bl CARD_LockBackup
 	ldr r0, _020DE0B4 ; =_02110FBC
 	ldrh r0, [r0]
 	bl sub_020D1548
@@ -24202,7 +24202,7 @@ _020DE084:
 	bl sub_020D1580
 	ldr r0, _020DE0B4 ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020DC9B4
+	bl CARD_UnlockBackup
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020DE0AC: .word 0x021E4158
@@ -24226,7 +24226,7 @@ sub_020DE0C8: ; 0x020DE0C8
 	mov r1, #8
 	ldrh r0, [r0]
 	strb r1, [r3]
-	bl sub_020DC9A4
+	bl CARD_LockBackup
 	ldr r0, _020DE230 ; =_02110FBC
 	ldrh r0, [r0]
 	bl sub_020D1548
@@ -24305,7 +24305,7 @@ _020DE1FC:
 	bl sub_020D1580
 	ldr r0, _020DE230 ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020DC9B4
+	bl CARD_UnlockBackup
 	ldrb r0, [sp]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -26640,7 +26640,7 @@ _020E0170:
 	mov r1, sl
 	mov r0, #0
 	mov r2, #0x820
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, sl, #0x800
 	mov r2, #0
 	strh r2, [r0, #8]
@@ -27676,7 +27676,7 @@ sub_020E0FB8: ; 0x020E0FB8
 	add r0, sp, #0
 	str r3, [sp]
 	bl SVC_CpuSet
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r1, _020E0FEC ; =0x021E4D40
 	strh r0, [r1, #6]
 	ldmia sp!, {r3, pc}
@@ -28535,7 +28535,7 @@ sub_020E1A3C: ; 0x020E1A3C
 	cmp r7, #1
 	mov r0, #1
 	bhi _020E1B8C
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r1, _020E1BA8 ; =0x021E4F2C
 	strh r0, [r1]
 	ldrh r0, [r1]
@@ -28619,7 +28619,7 @@ _020E1AFC:
 _020E1B8C:
 	cmp r7, #2
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r1, _020E1BE0 ; =0x021E4F60
 	strh r0, [r1]
 	mov r0, #0

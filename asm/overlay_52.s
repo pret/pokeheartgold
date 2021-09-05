@@ -518,7 +518,7 @@ _021E84DC:
 	add r1, r1, #4
 	mov r0, #0
 	add r1, r7, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E8558: .word 0x0000433D

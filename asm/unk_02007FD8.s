@@ -64,7 +64,7 @@ sub_02007FD4: ; 0x02007FD4
 	mov r0, #0
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0xba
 	lsl r0, r0, #2
 	add r1, r0, #0
@@ -99,7 +99,7 @@ sub_02007FD4: ; 0x02007FD4
 	ldr r1, [r4, r1]
 	mov r0, #0
 	mov r2, #4
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r5, #0
 	mov r1, #0xc0
 	bl AllocFromHeap
@@ -109,7 +109,7 @@ sub_02007FD4: ; 0x02007FD4
 	ldr r1, [r4, r1]
 	mov r0, #0
 	mov r2, #4
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r6, #0
 	add r5, r4, #0
 	add r7, r6, #0
@@ -117,7 +117,7 @@ _0200805A:
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #0xac
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r6, r6, #1
 	add r5, #0xac
 	cmp r6, #4
@@ -900,7 +900,7 @@ _02008654:
 	mov r0, #0
 	add r1, r5, #0
 	mov r2, #0xac
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, [r4, r6]
 	mov r0, #1
 	bic r1, r0

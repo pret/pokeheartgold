@@ -3517,7 +3517,7 @@ _021E737E:
 	add r1, r2, r1
 	mov r2, #0x22
 	lsl r2, r2, #6
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _021E73CC ; =_0221A684
 	mov r1, #0
 	str r1, [r0]

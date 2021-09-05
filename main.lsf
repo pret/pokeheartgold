@@ -83,7 +83,10 @@ Static main
 	Object unk_02026E30.o
 	Object unk_02026E84.o
 	Object unk_02026EB4.o
-	Object unk_02026FE8.o
+	Object unk_02027010.o
+	Object unk_020270C4.o
+	Object save.o
+	Object sav_system_info.o
 	Object scrcmd.o
 	### Vendor libraries ###
 	Object middleware.o

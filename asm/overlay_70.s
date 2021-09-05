@@ -8437,7 +8437,7 @@ ov70_0223BC7C: ; 0x0223BC7C
 	str r0, [r4, r1]
 	ldr r1, [r4, r1]
 	mov r0, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0x3d
 	bl ov70_0223F684
 	ldr r1, _0223BCCC ; =0x000011C4
@@ -14451,7 +14451,7 @@ ov70_0223ECCC: ; 0x0223ECCC
 	str r0, [r4, r1]
 	ldr r1, [r4, r1]
 	mov r0, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r2, _0223ED20 ; =0x000011C4
 	mov r0, #0x3d
 	ldr r2, [r4, r2]
@@ -15719,7 +15719,7 @@ ov70_0223F684: ; 0x0223F684
 	ldr r2, _0223F6DC ; =0x000001EE
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r2, #0
 	str r2, [sp]
 	add r0, sp, #8

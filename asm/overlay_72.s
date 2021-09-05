@@ -3934,7 +3934,7 @@ ov72_022397E8: ; 0x022397E8
 	ldr r2, _02239858 ; =0x00000A38
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #3
 	add sp, #8
 	pop {r4, pc}

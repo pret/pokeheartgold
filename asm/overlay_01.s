@@ -6750,7 +6750,7 @@ ov01_021E8DB4: ; 0x021E8DB4
 	mov r0, #0
 	add r1, r4, #0
 	lsl r2, r2, #6
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -23763,7 +23763,7 @@ _021F0DFC:
 	ldr r1, _021F0E60 ; =0x06840000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _021F0E64 ; =0xC0320C04
 	ldr r2, _021F0E68 ; =0x04000064
 	ldr r1, _021F0E5C ; =0x02209B64
@@ -29125,7 +29125,7 @@ ov01_021F3638: ; 0x021F3638
 	ldr r2, _021F365C ; =0x00000704
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov01_021F3610
@@ -31122,28 +31122,28 @@ _021F44EA:
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F452A
 _021F44FA:
 	mov r2, #2
 	ldr r1, _021F4538 ; =0x06820000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F452A
 _021F4508:
 	mov r2, #2
 	ldr r1, _021F453C ; =0x06840000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F452A
 _021F4516:
 	mov r2, #2
 	ldr r1, _021F4540 ; =0x06860000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F452A
 _021F4524:
 	mov r0, #0
@@ -31276,28 +31276,28 @@ _021F4606:
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F463E
 _021F4616:
 	mov r2, #2
 	ldr r1, _021F466C ; =0x06820000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F463E
 _021F4624:
 	mov r2, #2
 	ldr r1, _021F4670 ; =0x06840000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F463E
 _021F4632:
 	mov r2, #2
 	ldr r1, _021F4674 ; =0x06860000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 _021F463E:
 	ldr r5, [r4, #0x10]
 	ldr r1, [r4, #0x1c]
@@ -31681,7 +31681,7 @@ _021F4894:
 	mov r2, #2
 	ldr r1, [r1]
 	lsl r2, r2, #0xa
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, [sp]
 	cmp r0, #0
 	beq _021F4944
@@ -33309,7 +33309,7 @@ ov01_021F5568: ; 0x021F5568
 	str r0, [r1, r2]
 	ldr r1, [r4, r5]
 	sub r2, #0x60
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r2, [r4, r5]
 	ldr r1, _021F55EC ; =0x0000086C
 	mov r0, #0
@@ -64703,7 +64703,7 @@ _0220403E:
 	ldr r1, [r4, #8]
 	mov r0, #0
 	add r2, r6, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r7, #0
 	lsl r1, r5, #2
 	bl AllocFromHeap
@@ -64964,7 +64964,7 @@ ov01_022041D8: ; 0x022041D8
 	ldr r1, [r4, #0x10]
 	mov r0, #0
 	add r2, r6, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r5, #0
 	lsl r1, r7, #2
 	bl AllocFromHeap
@@ -65783,7 +65783,7 @@ ov01_02204744: ; 0x02204744
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x78
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	bl GF_RTC_GetTimeOfDay
 	str r0, [r4]
 	add r0, r4, #0

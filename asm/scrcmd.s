@@ -5165,7 +5165,7 @@ sub_02043008: ; 0x02043008
 	mov r1, #4
 	ldr r0, [r0, #0xc]
 	add r2, sp, #0
-	bl sub_02027104
+	bl LoadHallOfFame
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0203FE2C
@@ -11222,7 +11222,7 @@ sub_02045F18: ; 0x02045F18
 	mov r1, #0x20
 	ldr r0, [r0, #0xc]
 	add r2, sp, #0
-	bl sub_02027104
+	bl LoadHallOfFame
 	ldr r1, [sp]
 	add r4, r0, #0
 	cmp r1, #0
@@ -25425,7 +25425,7 @@ sub_0204CB7C: ; 0x0204CB7C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_020272C8
+	bl SavArray_get
 	bl sub_0206CFD4
 	strh r0, [r5]
 	mov r0, #0
@@ -25440,7 +25440,7 @@ sub_0204CBAC: ; 0x0204CBAC
 	ldr r0, [r0]
 	mov r1, #7
 	ldr r0, [r0, #0xc]
-	bl sub_020272C8
+	bl SavArray_get
 	bl sub_0206C708
 	mov r0, #0
 	pop {r3, pc}
@@ -25455,7 +25455,7 @@ sub_0204CBC4: ; 0x0204CBC4
 	ldr r5, [r0]
 	mov r1, #7
 	ldr r0, [r5, #0xc]
-	bl sub_020272C8
+	bl SavArray_get
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl sub_02074904
@@ -25500,7 +25500,7 @@ sub_0204CBF8: ; 0x0204CBF8
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #7
-	bl sub_020272C8
+	bl SavArray_get
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl sub_02074904
@@ -25544,7 +25544,7 @@ sub_0204CC58: ; 0x0204CC58
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #7
-	bl sub_020272C8
+	bl SavArray_get
 	lsl r1, r4, #0x18
 	ldr r2, [r7]
 	lsr r1, r1, #0x18
@@ -25582,7 +25582,7 @@ sub_0204CCAC: ; 0x0204CCAC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_020272C8
+	bl SavArray_get
 	ldr r2, [r6]
 	add r1, r5, #0
 	bl sub_0206C1A0
@@ -25638,7 +25638,7 @@ sub_0204CD34: ; 0x0204CD34
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #7
-	bl sub_020272C8
+	bl SavArray_get
 	lsl r1, r6, #0x18
 	add r2, r0, #0
 	add r0, r4, #0
@@ -25729,7 +25729,7 @@ sub_0204CE00: ; 0x0204CE00
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_020272C8
+	bl SavArray_get
 	bl sub_0206D02C
 	strh r0, [r5]
 	mov r0, #0
@@ -25753,7 +25753,7 @@ sub_0204CE30: ; 0x0204CE30
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_020272C8
+	bl SavArray_get
 	bl sub_020292F8
 	strh r0, [r5]
 	mov r0, #0
@@ -30287,7 +30287,7 @@ sub_0204F320: ; 0x0204F320
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x44
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, [r6, #0xc]
 	bl sub_02074904
 	str r0, [r4]
@@ -31470,7 +31470,7 @@ sub_0204FC78: ; 0x0204FC78
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x44
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, [r6, #0xc]
 	bl sub_02074904
 	str r0, [r4]
@@ -32147,7 +32147,7 @@ sub_020501B8: ; 0x020501B8
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x44
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, [r6, #0xc]
 	bl sub_02074904
 	str r0, [r4]
@@ -32412,11 +32412,11 @@ _020503CC: .word 0x0000044C
 
 	thumb_func_start sub_020503D0
 sub_020503D0: ; 0x020503D0
-	ldr r3, _020503D8 ; =sub_020272C8
+	ldr r3, _020503D8 ; =SavArray_get
 	mov r1, #4
 	bx r3
 	nop
-_020503D8: .word sub_020272C8
+_020503D8: .word SavArray_get
 	thumb_func_end sub_020503D0
 
 	thumb_func_start sub_020503DC
@@ -37286,7 +37286,7 @@ sub_02052A50: ; 0x02052A50
 	add r6, r1, #0
 	mov r1, #0xb
 	add r2, sp, #0
-	bl sub_02027104
+	bl LoadHallOfFame
 	add r4, r0, #0
 	ldr r0, [sp]
 	cmp r0, #1
@@ -37308,7 +37308,7 @@ _02052A74:
 	bl sub_0202E0F8
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_02027110
+	bl SaveHallOfFame
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x14
@@ -43321,7 +43321,7 @@ sub_020557F8: ; 0x020557F8
 	add r4, r0, #0
 	mov r0, #0
 	mov r2, #0x4c
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _02055820 ; =0x021D4178
 	add r0, r4, #0
 	bl sub_0205592C
@@ -54479,7 +54479,7 @@ sub_0205AC88: ; 0x0205AC88
 	ldr r2, _0205ACF4 ; =0x000004E8
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0x4e
 	str r5, [r4]
 	mov r1, #1
@@ -54497,7 +54497,7 @@ sub_0205AC88: ; 0x0205AC88
 	ldr r0, [r4, r1]
 	mov r1, #8
 	ldr r0, [r0, #0xc]
-	bl sub_020272C8
+	bl SavArray_get
 	ldr r1, _0205AD00 ; =0x000004D8
 	ldr r2, _0205AD04 ; =0x00002710
 	str r0, [r4, r1]
@@ -83740,7 +83740,7 @@ sub_02067A60: ; 0x02067A60
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x24
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	pop {r4, pc}
 	thumb_func_end sub_02067A60
@@ -93608,7 +93608,7 @@ sub_0206C510: ; 0x0206C510
 	add r1, r4, #0
 	mov r2, #0xb4
 	str r0, [sp, #0x1c]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r7, #0
 	mov r1, #5
 	mov r2, #0
@@ -96617,7 +96617,7 @@ sub_0206DCE4: ; 0x0206DCE4
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0xec
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	ldrh r2, [r4, #6]
 	add r0, #8
@@ -96638,7 +96638,7 @@ sub_0206DD0C: ; 0x0206DD0C
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x88
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	ldrh r2, [r4, #6]
 	add r0, #8
@@ -96855,7 +96855,7 @@ sub_0206DE38: ; 0x0206DE38
 	mov r0, #0
 	add r1, sp, #0x14
 	mov r2, #0x18
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r5, #0
 	mov r1, #0xab
 	add r2, sp, #0x14
@@ -104648,7 +104648,7 @@ _020717AA:
 	mov r0, #0
 	add r1, sp, #4
 	mov r2, #0x18
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	mov r1, #0xab
 	add r2, sp, #4
@@ -106979,7 +106979,7 @@ sub_02072894: ; 0x02072894
 	add r1, sp, #0
 	add r1, #1
 	mov r2, #0x18
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	mov r1, #0xa2
 	add r2, sp, #0
@@ -107607,7 +107607,7 @@ sub_02072D64: ; 0x02072D64
 	str r1, [sp]
 	mov r0, #0
 	mov r2, #0xec
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, [sp]
 	bl sub_02070DB0
 	ldr r1, [r4]
@@ -111470,11 +111470,11 @@ _02074900:
 
 	thumb_func_start sub_02074904
 sub_02074904: ; 0x02074904
-	ldr r3, _0207490C ; =sub_020272C8
+	ldr r3, _0207490C ; =SavArray_get
 	mov r1, #2
 	bx r3
 	nop
-_0207490C: .word sub_020272C8
+_0207490C: .word SavArray_get
 	thumb_func_end sub_02074904
 
 	thumb_func_start sub_02074910
@@ -113911,7 +113911,7 @@ sub_02075A7C: ; 0x02075A7C
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0xbc
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	bl sub_02026E8C
 	str r0, [sp, #0x1c]
 	bl sub_02026E84
@@ -114109,7 +114109,7 @@ sub_02075A7C: ; 0x02075A7C
 	ldr r1, [r4, #0x3c]
 	mov r0, #0
 	mov r2, #0x3c
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, [sp, #0x38]
 	ldr r0, [r4, #0x3c]
 	str r1, [r0, #0x2c]
@@ -116176,7 +116176,7 @@ _02076D62:
 	mov r0, #0
 	add r1, sp, #8
 	mov r2, #0x18
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r5, #0
 	mov r1, #0xab
 	add r2, sp, #8
@@ -119836,11 +119836,11 @@ _02078794:
 
 	thumb_func_start sub_0207879C
 sub_0207879C: ; 0x0207879C
-	ldr r3, _020787A4 ; =sub_020272C8
+	ldr r3, _020787A4 ; =SavArray_get
 	mov r1, #3
 	bx r3
 	nop
-_020787A4: .word sub_020272C8
+_020787A4: .word SavArray_get
 	thumb_func_end sub_0207879C
 
 	thumb_func_start sub_020787A8
@@ -166240,7 +166240,7 @@ sub_0208F918: ; 0x0208F918
 	mov r0, #0
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	bl sub_0203769C
 	cmp r0, #0
 	bne _0208F956
@@ -172323,8 +172323,8 @@ _02092634: .word gMain
 _02092638: .word gMain + 0x40
 	thumb_func_end sub_0209256C
 
-	thumb_func_start sub_0209263C
-sub_0209263C: ; 0x0209263C
+	thumb_func_start ShowSaveDataReadError
+ShowSaveDataReadError: ; 0x0209263C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x1c
 	add r4, r0, #0
@@ -172483,7 +172483,7 @@ _020927C0: .word 0x021082A0
 _020927C4: .word 0x000001F7
 _020927C8: .word 0x00006C21
 _020927CC: .word 0x02108288
-	thumb_func_end sub_0209263C
+	thumb_func_end ShowSaveDataReadError
 
 	thumb_func_start sub_020927D0
 sub_020927D0: ; 0x020927D0
@@ -172647,8 +172647,8 @@ _0209295C: .word 0x00006C21
 _02092960: .word 0x02108288
 	thumb_func_end sub_020927D0
 
-	thumb_func_start sub_02092964
-sub_02092964: ; 0x02092964
+	thumb_func_start ShowSaveDataWriteError
+ShowSaveDataWriteError: ; 0x02092964
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r4, r0, #0
@@ -172815,7 +172815,7 @@ _02092AF4: .word 0x021082FC
 _02092AF8: .word 0x000001F7
 _02092AFC: .word 0x00006C21
 _02092B00: .word 0x021082E4
-	thumb_func_end sub_02092964
+	thumb_func_end ShowSaveDataWriteError
 
 	thumb_func_start sub_02092B04
 sub_02092B04: ; 0x02092B04

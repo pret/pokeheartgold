@@ -151,3 +151,37 @@ _02026FDC: .word 0x00007FFF
 _02026FE0: .word 0xBFFF0000
 _02026FE4: .word 0x04000580
 	thumb_func_end sub_02026F6C
+
+	thumb_func_start sub_02026FE8
+sub_02026FE8: ; 0x02026FE8
+	push {r3, r4, lr}
+	sub sp, #4
+	ldr r4, [sp, #0x10]
+	str r4, [sp]
+	bl sub_020B67BC
+	add sp, #4
+	pop {r3, r4, pc}
+	thumb_func_end sub_02026FE8
+
+	thumb_func_start sub_02026FF8
+sub_02026FF8: ; 0x02026FF8
+	push {r3, lr}
+	bl sub_020B6B1C
+	pop {r3, pc}
+	thumb_func_end sub_02026FF8
+
+	thumb_func_start sub_02027000
+sub_02027000: ; 0x02027000
+	ldr r3, _02027004 ; =sub_020B5A24
+	bx r3
+	.balign 4, 0
+_02027004: .word sub_020B5A24
+	thumb_func_end sub_02027000
+
+	thumb_func_start sub_02027008
+sub_02027008: ; 0x02027008
+	ldr r3, _0202700C ; =sub_020B5D18
+	bx r3
+	.balign 4, 0
+_0202700C: .word sub_020B5D18
+	thumb_func_end sub_02027008

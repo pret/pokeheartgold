@@ -546,8 +546,8 @@ _0201FF90: .word 0x41C64E6D
 _0201FF94: .word 0x00006073
 	thumb_func_end sub_0201FF78
 
-	thumb_func_start sub_0201FF98
-sub_0201FF98: ; 0x0201FF98
+	thumb_func_start MATH_CalcCRC16CCITT
+MATH_CalcCRC16CCITT: ; 0x0201FF98
 	add r3, r0, #0
 	add r2, r1, #0
 	ldr r0, _0201FFA8 ; =_021D15A4
@@ -558,7 +558,7 @@ sub_0201FF98: ; 0x0201FF98
 	nop
 _0201FFA8: .word _021D15A4
 _0201FFAC: .word sub_020E3A2C
-	thumb_func_end sub_0201FF98
+	thumb_func_end MATH_CalcCRC16CCITT
 
 	thumb_func_start sub_0201FFB0
 sub_0201FFB0: ; 0x0201FFB0

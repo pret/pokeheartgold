@@ -30236,7 +30236,7 @@ ov13_0223F664: ; 0x0223F664
 	bne _0223F6A0
 	bl sub_020D3F48
 _0223F6A0:
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r2, _0223F7F4 ; =0x0224F5CC
 	add r1, sp, #0x18
 	ldr r3, [r2]
@@ -30354,7 +30354,7 @@ ov13_0223F814: ; 0x0223F814
 	ldr r0, _0223F898 ; =0x0224F5CC
 	ldr r0, [r0]
 	ldrh r0, [r0, #0xe4]
-	bl sub_020D161C
+	bl OS_ReleaseLockID
 	ldr r0, _0223F898 ; =0x0224F5CC
 	mov r2, #0
 	ldr r1, [r0]
@@ -33175,7 +33175,7 @@ ov13_02241C68: ; 0x02241C68
 	mov r0, #0x200
 	mov r2, #0x800
 	str r1, [r3]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r5, #0
 	ldr r7, _02241CFC ; =0x0224F608
 	mov r6, r5
@@ -33624,28 +33624,28 @@ ov13_0224225C: ; 0x0224225C
 	mov r0, #0
 	mov r1, #0x6800000
 	mov r2, #0x40000
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _022422D4 ; =0x06880000
 	mov r0, #0
 	mov r2, #0x24000
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	bl sub_020CEB60
 	mov r0, #0x200
 	mov r1, #0x7000000
 	mov r2, #0x400
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0
 	mov r1, #0x5000000
 	mov r2, #0x400
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0x200
 	ldr r1, _022422D8 ; =0x07000400
 	mov r2, #0x400
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0
 	ldr r1, _022422DC ; =0x05000400
 	mov r2, #0x400
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _022422D0: .word 0x000001F3

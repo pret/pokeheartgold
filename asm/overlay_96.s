@@ -11944,7 +11944,7 @@ ov96_021EB180: ; 0x021EB180
 	mov r0, #0
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	str r6, [r4]
 	add r2, r4, #0
 	ldmia r5!, {r0, r1}
@@ -45943,7 +45943,7 @@ ov96_021FBE20: ; 0x021FBE20
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r5, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov96_021FBE20
@@ -46434,7 +46434,7 @@ ov96_021FC188: ; 0x021FC188
 	mov r0, #0
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	str r5, [r4]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}

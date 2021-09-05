@@ -5777,7 +5777,7 @@ sub_020B9330: ; 0x020B9330
 	add r0, r0, r5, lsl #5
 	add r1, r0, #0x10
 	mvn r0, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _020B9454 ; =0x021D94D8
 	ldr r1, [r0, #4]
 	ldr ip, [r0, #0xc]
@@ -6625,7 +6625,7 @@ _020B9F68:
 	mov r0, r5
 	mov r2, r4
 	add r1, r7, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r6, r6, #1
 	cmp r6, #0x20
 	add r7, r7, #0x20
@@ -6636,7 +6636,7 @@ _020B9F68:
 	ldr r1, _020B9FC4 ; =0x021D9568
 	mov r2, #0x100
 	strh r0, [r3, #2]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _020B9FB4 ; =0x021D94D8
 	mov r1, #0
 	str r1, [r0, #4]
@@ -6705,7 +6705,7 @@ _020BA06C:
 	mov r0, r7
 	mov r2, r6
 	add r1, r8, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldrh r0, [r5]
 	add r4, r4, #1
 	add r8, r8, #0x20
@@ -6718,7 +6718,7 @@ _020BA090:
 	ldr r1, _020BA0D4 ; =0x021D9568
 	mov r2, #0x100
 	strh r0, [r3, #2]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _020BA0D8 ; =0x04000444
 	mov r1, #0
 	str r1, [r0]
@@ -9569,7 +9569,7 @@ sub_020BC704: ; 0x020BC704
 	ldr r2, [sp, #0x18]
 	mov r1, ip
 	mov r2, r2, lsl #3
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldmia sp!, {r3, r4, r5, pc}
 _020BC734:
 	ldr r4, [sp, #0x18]
@@ -10071,7 +10071,7 @@ sub_020BCE24: ; 0x020BCE24
 	mov r0, r1
 	mul r2, lr, r2
 	ldr r1, [r3]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020BCE24
 
@@ -10103,7 +10103,7 @@ _020BCECC:
 	mov r0, r6
 	mov r1, sb
 	mov r2, r4
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, [r7, #8]
 	add r8, r8, #1
 	cmp r8, r0
@@ -13177,7 +13177,7 @@ _020BF73C:
 	mov r1, sl
 	mov r0, #0
 	mov r2, #0x58
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mvn r0, #0
 	str r0, [sl]
 	add fp, sp, #0x40
@@ -13433,7 +13433,7 @@ sub_020BFAC4: ; 0x020BFAC4
 	mov r1, r5
 	mov r0, #0
 	mov r2, #0x188
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #1
 	str r0, [r5, #0xc4]
 	str r0, [r5, #8]
@@ -15089,7 +15089,7 @@ sub_020C11B4: ; 0x020C11B4
 	mov r4, r5
 	str r3, [sp, #0x14]
 	add r6, r6, #3
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	bl sub_020C23F4
 	mov r0, r5
 	ldr r1, _020C1900 ; =0x04000440

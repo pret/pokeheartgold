@@ -7043,7 +7043,7 @@ ov112_021E93BC: ; 0x021E93BC
 	asr r2, r2, #3
 	lsl r2, r2, #1
 	str r0, [sp, #0x10]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0
 	ldr r1, [sp, #0x3c]
 	str r0, [sp, #0x14]
@@ -12622,12 +12622,12 @@ ov112_021EC000: ; 0x021EC000
 	ldr r2, _021EC02C ; =0x000006C8
 	mov r0, #0
 	add r1, r4, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021EC030 ; =0x00009D70
 	ldr r2, _021EC034 ; =0x00000D4C
 	mov r0, #0
 	add r1, r4, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0x10
 	pop {r4, pc}
 	nop
@@ -14962,12 +14962,12 @@ ov112_021ED264: ; 0x021ED264
 	ldr r2, _021ED2D8 ; =0x000006C8
 	mov r0, #0
 	add r1, r4, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021ED2DC ; =0x00009D70
 	ldr r2, _021ED2E0 ; =0x00000D4C
 	mov r0, #0
 	add r1, r4, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0xe
@@ -15255,7 +15255,7 @@ ov112_021ED4D4: ; 0x021ED4D4
 	mov r0, #0
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021ED520 ; =0x00009D44
 	ldr r2, _021ED524 ; =0x0000AABC
 	ldr r3, _021ED528 ; =0x0000B184
@@ -15754,7 +15754,7 @@ ov112_021ED8DC: ; 0x021ED8DC
 	ldr r2, _021ED90C ; =0x000006C8
 	mov r0, #0
 	add r1, r4, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _021ED910 ; =0x00009D70
 	ldr r1, _021ED914 ; =0x0000B184
 	add r0, r4, r0
@@ -16454,7 +16454,7 @@ ov112_021EDE68: ; 0x021EDE68
 	mov r0, #0
 	add r1, r4, r1
 	lsl r2, r2, #2
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021EDEF8 ; =0x0000AABC
 	mov r0, #0x20
 	ldrb r2, [r4, r1]
@@ -16687,7 +16687,7 @@ ov112_021EE044: ; 0x021EE044
 	mov r0, #0
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021EE0EC ; =0x000010E7
 	mov r0, #4
 	ldrb r2, [r4, r1]
@@ -16704,7 +16704,7 @@ _021EE088:
 	mov r0, #0
 	add r1, r4, r1
 	lsl r2, r2, #2
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021EE0F0 ; =0x0000AABC
 	mov r0, #0x20
 	ldrb r2, [r4, r1]
@@ -20503,7 +20503,7 @@ _021EFDCC:
 	mov r0, #0
 	add r1, sp, #0x10
 	mov r2, #0x1c
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r6, _021EFEBC ; =0x00009DAC
 	mov r4, #0
 	add r5, r7, #0
@@ -20539,12 +20539,12 @@ _021EFE24:
 	ldr r2, _021EFECC ; =0x000006C8
 	mov r0, #0
 	add r1, r7, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021EFED0 ; =0x00009D70
 	ldr r2, _021EFED4 ; =0x00000D4C
 	mov r0, #0
 	add r1, r7, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 _021EFE60:
 	mov r0, #0x13
 	mov r1, #0x9a
@@ -27243,7 +27243,7 @@ ov112_021F3244: ; 0x021F3244
 	mov r0, #0
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	bl sub_020327DC
 	add r0, r4, #0
@@ -27255,7 +27255,7 @@ ov112_021F3244: ; 0x021F3244
 	bl ov112_021F33D8
 	ldr r1, _021F3288 ; =0x000001F2
 	add r0, r4, #0
-	bl sub_0201FF98
+	bl MATH_CalcCRC16CCITT
 	ldr r1, _021F3288 ; =0x000001F2
 	strh r0, [r4, r1]
 	pop {r4, r5, r6, pc}
@@ -27286,7 +27286,7 @@ ov112_021F328C: ; 0x021F328C
 _021F32B6:
 	ldr r0, [sp, #4]
 	ldr r1, _021F3368 ; =0x000001F2
-	bl sub_0201FF98
+	bl MATH_CalcCRC16CCITT
 	ldr r2, _021F3368 ; =0x000001F2
 	ldr r1, [sp, #4]
 	ldrh r1, [r1, r2]

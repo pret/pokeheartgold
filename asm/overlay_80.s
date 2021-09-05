@@ -25378,7 +25378,7 @@ ov80_0223608C: ; 0x0223608C
 	ldr r1, [r1]
 	mov r0, #0
 	mov r2, #0x44
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, [r5]
 	bl sub_02074904
 	add r1, r5, #0

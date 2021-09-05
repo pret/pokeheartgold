@@ -4304,7 +4304,7 @@ _021E7ADA:
 	mov r0, #0
 	add r1, r5, #0
 	mov r2, #0x48
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	bl sub_02028F84
 	str r0, [r5]
@@ -7452,7 +7452,7 @@ ov73_021E9378: ; 0x021E9378
 	ldr r2, _021E93E8 ; =0x00000A38
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #3
 	add sp, #8
 	pop {r4, pc}

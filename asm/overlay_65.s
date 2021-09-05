@@ -43,7 +43,7 @@ ov65_0221BE20: ; 0x0221BE20
 	ldr r2, _0221BFA8 ; =0x000036CC
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0x1a
 	bl sub_0201AC88
 	mov r1, #6

@@ -341,7 +341,7 @@ ov36_021E5BC8: ; 0x021E5BC8
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
-	bl sub_020274A8
+	bl Sav2_InitDynamicRegion
 	add r0, r4, #0
 	bl sub_0203E398
 	add r0, r4, #0

@@ -23910,7 +23910,7 @@ ov18_021F1A7C: ; 0x021F1A7C
 	mov r0, #0
 	add r1, sp, #0x30
 	mov r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _021F1BC4 ; =0x00000147
 	cmp r4, r0
 	bne _021F1AC6

@@ -6625,7 +6625,7 @@ sub_0209E00C: ; 0x0209E00C
 	bne _0209E06C
 	mvn r4, #2
 _0209E04C:
-	bl sub_020D15C4
+	bl OS_GetLockID
 	cmp r0, r4
 	moveq r0, #7
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
@@ -30285,13 +30285,13 @@ _020B1CA4:
 	mov r1, r7
 	mov r2, r6
 	mov r0, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _020B1CCC
 _020B1CB8:
 	mov r1, r7
 	mov r2, r6
 	mov r0, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r4, #0
 _020B1CCC:
 	ldr r0, _020B1CF0 ; =0x021D6040
@@ -33033,7 +33033,7 @@ _020B4048:
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r1, r0
 	mov r0, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	subs lr, r4, #1
 	mov r5, #0
 	beq _020B40A8
