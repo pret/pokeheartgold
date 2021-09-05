@@ -570,7 +570,7 @@ ov72_02237CF4: ; 0x02237CF4
 	add r5, r0, #0
 	add r0, #0x1c
 	add r4, r1, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r0, _02237D40 ; =0x0223B834
 	add r1, r5, #0
 	mov r2, #0x64

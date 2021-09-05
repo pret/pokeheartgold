@@ -11883,7 +11883,7 @@ ov41_0224B630: ; 0x0224B630
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	ldr r0, [r5, #0x68]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	str r0, [r4, r1]

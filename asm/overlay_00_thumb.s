@@ -391,7 +391,7 @@ _021E5BF6:
 	ldr r2, _021E5C7C ; =0x000029E7
 	bl ov00_021ED730
 	add r0, sp, #0x14
-	bl sub_020D3C5C
+	bl OS_GetOwnerInfo
 	mov r1, #0
 	ldr r2, _021E5C80 ; =ov00_021E61A8
 	add r0, sp, #0x18

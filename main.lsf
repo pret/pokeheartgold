@@ -87,7 +87,11 @@ Static main
 	Object unk_020270C4.o
 	Object save.o
 	Object sav_system_info.o
+	Object player_data.o
+	Object unk_020290B4.o
+	Object daycare.o
 	Object scrcmd.o
+	Object pokemon.o
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o

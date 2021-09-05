@@ -6526,7 +6526,7 @@ ov38_02221810: ; 0x02221810
 	sub sp, sp, #0x14
 	mov sb, r0
 	add r0, sp, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	mov r6, #0
 	add r7, sp, #0
 	mov r8, r6

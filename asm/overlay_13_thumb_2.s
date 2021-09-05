@@ -8673,7 +8673,7 @@ _02224A20: .word 0x0224E464
 	thumb_func_start ov13_02224A24
 ov13_02224A24: ; 0x02224A24
 	push {r3, lr}
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0

@@ -316,7 +316,7 @@ ov80_0222A140: ; 0x0222A140
 	add r6, r0, #0
 	add r0, r5, #0
 	add r4, r2, #0
-	bl sub_0206DCE4
+	bl ZeroMonData
 	cmp r4, #0x78
 	bne _0222A158
 	mov r4, #0x32
@@ -2464,7 +2464,7 @@ _0222B06C: .word 0x00000D88
 ov80_0222B070: ; 0x0222B070
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0206DD28
+	bl SizeOfStructPokemon
 	add r4, r0, #0
 	ldr r0, _0222B0B0 ; =0x000006FC
 	ldr r0, [r5, r0]
@@ -2509,7 +2509,7 @@ ov80_0222B0B8: ; 0x0222B0B8
 	bl sub_0203769C
 	cmp r5, r0
 	beq _0222B0E2
-	bl sub_0206DD28
+	bl SizeOfStructPokemon
 	ldr r1, _0222B0E4 ; =0x00000D8C
 	add r2, r0, #0
 	ldr r1, [r4, r1]
@@ -3718,7 +3718,7 @@ ov80_0222B968: ; 0x0222B968
 	mov r1, #0
 	bl ov80_02237B24
 	str r0, [sp]
-	bl sub_0206DD28
+	bl SizeOfStructPokemon
 	add r6, r0, #0
 	ldr r0, [sp]
 	mov r4, #0
@@ -3782,10 +3782,10 @@ ov80_0222B9CC: ; 0x0222B9CC
 	ldrb r0, [r0, #0x10]
 	bl ov80_02237B24
 	str r0, [sp, #8]
-	bl sub_0206DD28
+	bl SizeOfStructPokemon
 	add r5, r0, #0
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	ldr r0, [sp, #8]
 	mov r7, #0
@@ -4200,7 +4200,7 @@ ov80_0222BCE0: ; 0x0222BCE0
 	mov r1, #0
 	bl ov80_022380E8
 	str r0, [sp]
-	bl sub_0206DD28
+	bl SizeOfStructPokemon
 	add r6, r0, #0
 	ldr r0, [sp]
 	mov r4, #0
@@ -4264,10 +4264,10 @@ ov80_0222BD44: ; 0x0222BD44
 	ldrb r0, [r0, #0x10]
 	bl ov80_022380E8
 	str r0, [sp, #8]
-	bl sub_0206DD28
+	bl SizeOfStructPokemon
 	add r5, r0, #0
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	ldr r0, [sp, #8]
 	mov r7, #0
@@ -12204,7 +12204,7 @@ _0222F93C:
 	b _0222FBE6
 _0222F954:
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov80_02237120
@@ -12240,7 +12240,7 @@ _0222F99C:
 	cmp r1, #0x12
 	blt _0222F99C
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x10]
@@ -13089,7 +13089,7 @@ _02230038:
 	add r6, r4, r0
 _02230078:
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov80_02237120
@@ -13426,7 +13426,7 @@ _022302A6:
 	add r3, sp, #0x28
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r7, #0
 	add r4, sp, #0x4c
@@ -13510,7 +13510,7 @@ _0223035C:
 	add r3, sp, #0x28
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r7, #0
 	add r4, sp, #0x4c
@@ -14024,7 +14024,7 @@ ov80_022307F0: ; 0x022307F0
 	ldr r0, [r5, r0]
 	bl sub_020744D0
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	ldr r0, [sp, #4]
 	mov r7, #0
@@ -14317,7 +14317,7 @@ ov80_02230A60: ; 0x02230A60
 	ldr r0, [r4, r0]
 	bl sub_020744D0
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -15175,7 +15175,7 @@ ov80_022310C4: ; 0x022310C4
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	ldr r1, _022313AC ; =0x00000D8C
 	str r0, [r4, r1]
 	ldr r0, _022313A8 ; =0x000006F8
@@ -18205,7 +18205,7 @@ _02232938:
 	mov r3, #0
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r7, #0
 	add r4, sp, #0x3c
@@ -21588,7 +21588,7 @@ _02234458:
 	mov r3, #0
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r7, #0
 	add r4, sp, #0x3c
@@ -26490,7 +26490,7 @@ ov80_0223690C: ; 0x0223690C
 	add r0, r0, #4
 	str r1, [r7, r0]
 	ldr r0, [r5, #4]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
 	ldrb r1, [r5, #0xe]
 	ldr r0, [r7, #4]
@@ -26611,7 +26611,7 @@ ov80_02236A34: ; 0x02236A34
 	str r4, [sp]
 	bl ov80_0222A480
 	ldr r0, [sp, #0x28]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
 	mov r6, #0
 	cmp r7, #0
@@ -27364,7 +27364,7 @@ ov80_02236F24: ; 0x02236F24
 	ldr r1, [sp, #0x10]
 	bl sub_020744DC
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r7, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r6, #0
@@ -27423,7 +27423,7 @@ _02236FFC:
 	cmp r7, #4
 	blt _02236FFC
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r6, #0
@@ -27487,7 +27487,7 @@ _0223704E:
 	ldr r0, [r4, #0x10]
 	bl sub_020744DC
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp, #8]
@@ -27599,7 +27599,7 @@ ov80_02237130: ; 0x02237130
 	ldr r0, [r5, r0]
 	bl sub_020744D0
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r0, #0xa
 	lsl r0, r0, #6
@@ -27669,7 +27669,7 @@ _022371D4:
 	add r3, r5, r3
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x10]
@@ -28244,7 +28244,7 @@ ov80_022375D0: ; 0x022375D0
 	ldr r1, [sp, #0x18]
 	bl sub_020744DC
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x18]
 	mov r6, #0
@@ -28344,7 +28344,7 @@ _022376D4:
 	add r3, r6, r3
 	bl ov80_02237894
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp, #0xc]
@@ -28426,7 +28426,7 @@ _0223777E:
 	ldr r1, [sp, #0x10]
 	bl sub_020744DC
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 _022377D0:
 	add r0, r5, #0
@@ -29031,7 +29031,7 @@ _02237BF0:
 	mov r6, #2
 _02237BF2:
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x14]
@@ -29093,7 +29093,7 @@ _02237C70:
 	cmp r7, #4
 	blt _02237C70
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r6, #0
@@ -29156,7 +29156,7 @@ _02237CC0:
 	ldr r0, [r4, #0x10]
 	bl sub_020744DC
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp, #8]
@@ -29334,7 +29334,7 @@ ov80_02237E30: ; 0x02237E30
 	bl ov80_02237B58
 	str r0, [sp]
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	ldr r0, [sp]
 	mov r7, #0
@@ -29820,7 +29820,7 @@ _022381C8:
 	mov r5, #2
 _022381CA:
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x1c]
@@ -29883,7 +29883,7 @@ _0223824A:
 	cmp r6, #4
 	blt _0223824A
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r5, #0
@@ -29947,7 +29947,7 @@ _0223829A:
 	ldr r0, [r4, #0x10]
 	bl sub_020744DC
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp, #8]
@@ -30084,7 +30084,7 @@ ov80_022383C0: ; 0x022383C0
 	bl ov80_0223811C
 	str r0, [sp]
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r7, r0, #0
 	ldr r0, [sp]
 	mov r6, #0

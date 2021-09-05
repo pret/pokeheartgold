@@ -8287,7 +8287,7 @@ sub_0209F630: ; 0x0209F630
 	adds r4, r4, r0
 _0209F6AC:
 	add r0, sp, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldrb r0, [sp, #1]
 	ldr r5, _0209F800 ; =0x5D588B65
 	ldr r6, _0209F804 ; =0x00269EC3
@@ -8471,7 +8471,7 @@ sub_0209F8A0: ; 0x0209F8A0
 	adds r4, r4, r0
 _0209F93C:
 	add r0, sp, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldrb r0, [sp, #1]
 	ldr r5, _0209FA34 ; =0x5D588B65
 	ldr r6, _0209FA38 ; =0x00269EC3
@@ -13651,7 +13651,7 @@ _020A3A64:
 	str r5, [r2, #0x6c]
 	add r1, r4, #0x400
 	strh r1, [r2, #8]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r0, _020A3BA8 ; =0x021D4620
 	mov r2, #0
 	strb r2, [r0, #1]

@@ -759,7 +759,7 @@ ov112_021E5E28: ; 0x021E5E28
 	ldr r4, [r0, #0x20]
 	add r5, r4, #0
 	add r5, #0x10
-	bl sub_020D3CE0
+	bl OS_GetOwnerRtcOffset
 	str r0, [r4, #0x10]
 	str r1, [r5, #4]
 	add r5, #8
@@ -10385,7 +10385,7 @@ _021EAEAE:
 	cmp r6, #0
 	beq _021EAF04
 	mov r0, #0x9a
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	bl sub_02070DB0
 	add r4, r0, #0
@@ -16621,7 +16621,7 @@ ov112_021EDFE8: ; 0x021EDFE8
 	add r5, r0, #0
 	mov r0, #0x9a
 	mov r6, #1
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
 	ldr r0, _021EE03C ; =0x0001E440
 	add r1, r4, #0
@@ -17679,7 +17679,7 @@ ov112_021EE7A8: ; 0x021EE7A8
 	bl sub_020270D8
 	str r0, [sp, #4]
 	mov r0, #0x9a
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
 	bl sub_02070DB0
 	add r6, r0, #0
@@ -18080,7 +18080,7 @@ ov112_021EEAF0: ; 0x021EEAF0
 	bl sub_020270D8
 	add r7, r0, #0
 	mov r0, #0x9a
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
 	ldr r0, _021EECC4 ; =0x0001E438
 	mov r1, #0x9a
@@ -18178,7 +18178,7 @@ _021EEBA4:
 	add r1, r5, r2
 	bl CopyU16ArrayToString
 	add r0, r4, #0
-	bl sub_0206DCE4
+	bl ZeroMonData
 	add r0, r4, #0
 	bl sub_02070DB0
 	add r6, r0, #0

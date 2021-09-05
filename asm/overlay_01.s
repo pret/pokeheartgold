@@ -60741,9 +60741,9 @@ ov01_022020CC: ; 0x022020CC
 	pop {r3, r4, r5, r6, r7, pc}
 _022020F2:
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
-	bl sub_0206DCE4
+	bl ZeroMonData
 	mov r0, #1
 	mov r1, #0xd
 	bl sub_02017FE4
@@ -60882,9 +60882,9 @@ ov01_022021F8: ; 0x022021F8
 	pop {r4, r5, r6, r7, pc}
 _02202224:
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
-	bl sub_0206DCE4
+	bl ZeroMonData
 	ldr r0, [sp, #0x14]
 	bl sub_02028F84
 	mov r1, #0

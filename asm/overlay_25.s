@@ -269,7 +269,7 @@ ov25_02259AAC: ; 0x02259AAC
 	add r0, r0, #4
 	str r1, [r6, r0]
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
 	ldr r0, [sp, #0xc]
 	bl sub_02074640
@@ -345,7 +345,7 @@ ov25_02259B90: ; 0x02259B90
 	add r4, r1, #0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0206DCE4
+	bl ZeroMonData
 	add r0, r6, #0
 	add r0, #0x22
 	ldrb r0, [r0]
@@ -543,7 +543,7 @@ ov25_02259D14: ; 0x02259D14
 	add r0, r0, r4
 	str r1, [r0, #0x18]
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	ldr r0, [sp]
 	mov r1, #6

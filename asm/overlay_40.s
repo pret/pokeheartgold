@@ -35168,7 +35168,7 @@ ov40_0223D544: ; 0x0223D544
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02028D30
+	bl Sav2_SysInfo_get
 	bl sub_02028DD8
 	str r0, [sp]
 	mov r0, #0x6d

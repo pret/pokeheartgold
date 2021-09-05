@@ -113,7 +113,7 @@ ov36_021E59B4: ; 0x021E59B4
 	bl sub_020072A4
 	ldr r4, [r0, #8]
 	add r0, r4, #0
-	bl sub_02028D30
+	bl Sav2_SysInfo_get
 	add r5, r0, #0
 	mov r0, #0x4b
 	add r1, r4, #0
@@ -122,22 +122,22 @@ ov36_021E59B4: ; 0x021E59B4
 	mov r1, #0
 	bl sub_0202ACF4
 	add r0, r5, #0
-	bl sub_02028D74
+	bl Sav2_SysInfo_MacAddressIsMine
 	cmp r0, #0
 	beq _021E59E8
 	add r0, r5, #0
-	bl sub_02028DA4
+	bl Sav2_SysInfo_RTCOffsetIsMine
 	cmp r0, #0
 	bne _021E5A0C
 _021E59E8:
 	add r0, r4, #0
-	bl sub_02028D3C
+	bl Sav2_SysInfo_RTC_get
 	bl sub_02028E4C
 	add r0, r4, #0
 	bl sub_0202A988
 	bl sub_0202A8A8
 	add r0, r5, #0
-	bl sub_02028D48
+	bl Sav2_SysInfo_InitFromSystem
 	add r0, r4, #0
 	bl sub_02074904
 	bl sub_02071E2C
@@ -174,11 +174,11 @@ ov36_021E5A38: ; 0x021E5A38
 	add r6, r1, #0
 	add r0, r6, #0
 	add r5, r2, #0
-	bl sub_02028D30
-	bl sub_02028D48
+	bl Sav2_SysInfo_get
+	bl Sav2_SysInfo_InitFromSystem
 	add r0, r6, #0
-	bl sub_02028D3C
-	bl sub_02028DE8
+	bl Sav2_SysInfo_RTC_get
+	bl Sav2_SysInfo_RTC_init
 	add r0, r6, #0
 	bl sub_0202A988
 	bl sub_0202A8A8
@@ -242,7 +242,7 @@ _021E5AD4:
 	bl sub_0202B50C
 	str r0, [sp, #0x14]
 	mov r0, #3
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]

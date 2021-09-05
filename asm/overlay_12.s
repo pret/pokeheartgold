@@ -64832,7 +64832,7 @@ _02256D7A:
 	b _02256EC8
 _02256D8A:
 	mov r0, #5
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
 	add r0, r7, #0
 	bl ov12_0223A7E0
@@ -82170,7 +82170,7 @@ _0225F5CE:
 	str r0, [sp, #0x14]
 _0225F5DC:
 	mov r0, #5
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r5, #0
 _0225F5E6:

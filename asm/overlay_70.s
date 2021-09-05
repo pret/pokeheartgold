@@ -1381,7 +1381,7 @@ ov70_02238304: ; 0x02238304
 	add r5, r0, #0
 	add r0, #0x1c
 	add r4, r1, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r0, _02238350 ; =0x02246814
 	add r1, r5, #0
 	mov r2, #0x64
@@ -15773,7 +15773,7 @@ ov70_0223F6E4: ; 0x0223F6E4
 	ldr r0, [r4, r0]
 	mov r1, #0
 	bl sub_02071D6C
-	bl sub_0206DD28
+	bl SizeOfStructPokemon
 	add r2, r0, #0
 	mov r0, #0x49
 	lsl r0, r0, #2
@@ -17371,7 +17371,7 @@ _0224030A:
 	cmp r0, #0
 	beq _0224036A
 	mov r0, #0x3d
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -17415,7 +17415,7 @@ _02240372:
 	cmp r0, #0
 	beq _022403E6
 	mov r0, #0x3d
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -18286,7 +18286,7 @@ ov70_022409C0: ; 0x022409C0
 	cmp r0, #0x12
 	beq _02240A1A
 	mov r0, #0x3d
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	mov r2, #0x12
 	lsl r2, r2, #4
 	add r4, r0, #0
@@ -19646,7 +19646,7 @@ ov70_022414A0: ; 0x022414A0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x3d
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	ldr r1, _02241640 ; =0x000011F0
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x24]
@@ -19938,7 +19938,7 @@ _022416F0:
 	bl ov70_02241868
 	add r6, r0, #0
 	mov r0, #0x3d
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r7, r0, #0
 	ldr r0, [r5]
 	add r1, r7, #0

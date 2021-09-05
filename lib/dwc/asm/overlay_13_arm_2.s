@@ -5053,7 +5053,7 @@ _0222B2C0:
 	strh r2, [r0, #0xe]
 	ldr r0, [r1, #4]
 	add r0, r0, #0x110
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r0, _0222B35C ; =ov13_0222B414
 	ldr r1, _0222B360 ; =ov13_0222B424
 	bl ov13_02222C1C
@@ -7433,7 +7433,7 @@ ov13_0222D088: ; 0x0222D088
 	bl ov13_022408A0
 	mov fp, r0
 	add r0, sp, #0x14
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldrb r1, [sp, #0x15]
 	ldr r2, _0222D24C ; =0x022461CC
 	add r0, sp, #0x1a
@@ -22057,7 +22057,7 @@ ov13_02238C4C: ; 0x02238C4C
 	mov r0, #2
 	bl ov13_02227964
 	add r0, sp, #0x16
-	bl sub_020D3C5C
+	bl OS_GetOwnerInfo
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #0x16
@@ -25503,7 +25503,7 @@ _0223B814:
 	add r1, r1, #0x1300
 	strh r0, [r1, #0x7c]
 	add r0, sp, #0
-	bl sub_020D3C5C
+	bl OS_GetOwnerInfo
 	ldr r1, _0223B8F4 ; =0x0224F5B4
 	ldr r0, _0223B900 ; =0x02245828
 	ldr r1, [r1]
@@ -26814,7 +26814,7 @@ ov13_0223CA14: ; 0x0223CA14
 	mov r5, r0
 	add r0, sp, #0x28
 	mov r4, r1
-	bl sub_020D3C5C
+	bl OS_GetOwnerInfo
 	ldrb r2, [sp, #0x12]
 	ldrb r1, [sp, #0x29]
 	ldrh r3, [sp, #0x42]
@@ -28452,7 +28452,7 @@ ov13_0223DF3C: ; 0x0223DF3C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r2, _0223E008 ; =0x027FFC3C
 	ldrh r0, [sp]
 	ldr r3, [r2]

@@ -1095,7 +1095,7 @@ _021E8A54:
 	mov r1, #0x30
 	add r0, sp, #0x16
 	strb r1, [r4, #0x1d]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r5, _021E8C4C ; =_02216560
 	add r7, sp, #0x16
 	add r8, r4, #0x1f
@@ -1110,7 +1110,7 @@ _021E8A84:
 	add r8, r8, #2
 	blt _021E8A84
 	add r0, sp, #0x38
-	bl sub_020D3C5C
+	bl OS_GetOwnerInfo
 	ldrb r0, [sp, #0x38]
 	ldr r2, _021E8C4C ; =_02216560
 	mov r1, #3
@@ -6664,7 +6664,7 @@ ov00_021ED5E4: ; 0x021ED5E4
 	cmpeq r1, r0
 	bne _021ED6A8
 	add r0, sp, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	bl sub_020D34B0
 	mov r2, r1, lsl #0x18
 	ldr ip, [sp]

@@ -2122,7 +2122,7 @@ ov74_022280B4: ; 0x022280B4
 	str r0, [r5, #0x34]
 _022280D4:
 	ldr r0, [r5, #4]
-	bl sub_02028D30
+	bl Sav2_SysInfo_get
 	bl sub_02028DC8
 	cmp r0, #1
 	bne _022280E6
@@ -4132,7 +4132,7 @@ ov74_02229084: ; 0x02229084
 	add r3, r2, #0
 	bl ov74_02235568
 	add r0, sp, #0x10
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	add r0, sp, #0x10
 	bl ov74_022311F4
 	add r1, sp, #0x1c
@@ -27930,7 +27930,7 @@ ov74_02234A9C: ; 0x02234A9C
 	add r4, r1, #0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0206DD0C
+	bl ZeroBoxMonData
 	add r0, r4, #0
 	bl sub_0206DDD8
 	mov r1, #0
@@ -30480,7 +30480,7 @@ ov74_02235ED0: ; 0x02235ED0
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, sp, #4
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	add r0, sp, #4
 	ldrh r1, [r0, #2]
 	mov r2, #0

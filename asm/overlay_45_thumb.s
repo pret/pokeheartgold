@@ -3698,7 +3698,7 @@ ov45_0222B8A0: ; 0x0222B8A0
 	bl sub_0202CA44
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
-	bl sub_02028D3C
+	bl Sav2_SysInfo_RTC_get
 	str r0, [sp, #8]
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0

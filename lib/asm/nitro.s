@@ -11369,8 +11369,8 @@ _020D3C38: .word 0x027E3F80
 _020D3C3C: .word 0x00000800
 	arm_func_end OS_ResetSystem
 
-	arm_func_start sub_020D3C40
-sub_020D3C40: ; 0x020D3C40
+	arm_func_start OS_GetMacAddress
+OS_GetMacAddress: ; 0x020D3C40
 	ldr ip, _020D3C54 ; =sub_020D4A50
 	mov r1, r0
 	ldr r0, _020D3C58 ; =0x027FFCF4
@@ -11379,10 +11379,10 @@ sub_020D3C40: ; 0x020D3C40
 	.align 2, 0
 _020D3C54: .word sub_020D4A50
 _020D3C58: .word 0x027FFCF4
-	arm_func_end sub_020D3C40
+	arm_func_end OS_GetMacAddress
 
-	arm_func_start sub_020D3C5C
-sub_020D3C5C: ; 0x020D3C5C
+	arm_func_start OS_GetOwnerInfo
+OS_GetOwnerInfo: ; 0x020D3C5C
 	stmdb sp!, {r4, lr}
 	ldr ip, _020D3CDC ; =0x027FFC80
 	mov r4, r0
@@ -11417,17 +11417,17 @@ sub_020D3C5C: ; 0x020D3C5C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D3CDC: .word 0x027FFC80
-	arm_func_end sub_020D3C5C
+	arm_func_end OS_GetOwnerInfo
 
-	arm_func_start sub_020D3CE0
-sub_020D3CE0: ; 0x020D3CE0
+	arm_func_start OS_GetOwnerRtcOffset
+OS_GetOwnerRtcOffset: ; 0x020D3CE0
 	ldr r1, _020D3CF0 ; =0x027FFC80
 	ldr r0, [r1, #0x68]
 	ldr r1, [r1, #0x6c]
 	bx lr
 	.align 2, 0
 _020D3CF0: .word 0x027FFC80
-	arm_func_end sub_020D3CE0
+	arm_func_end OS_GetOwnerRtcOffset
 
 	arm_func_start sub_020D3CF4
 sub_020D3CF4: ; 0x020D3CF4
@@ -25077,7 +25077,7 @@ sub_020DEBEC: ; 0x020DEBEC
 	strh r1, [sp, #0x1a]
 	str r4, [sp, #0x1c]
 	strh r3, [sp, #0x12]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 _020DEC54:
 	bl sub_020D3A38
 	mov r8, r0
@@ -25344,7 +25344,7 @@ sub_020DEFD4: ; 0x020DEFD4
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	mov r2, #0
 	add r3, sp, #0
 	mov r1, r2
@@ -25386,7 +25386,7 @@ sub_020DF064: ; 0x020DF064
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	mov r1, #0
 	add r3, sp, #0
 	mov r2, r1

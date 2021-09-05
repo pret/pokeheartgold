@@ -22,7 +22,7 @@ ov24_022598C0: ; 0x022598C0
 	mov r0, #0x14
 	strh r0, [r4, #0x18]
 	ldr r0, [r4]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #4]
 	bl sub_0202A634
@@ -450,7 +450,7 @@ ov24_02259C10: ; 0x02259C10
 	sub sp, #8
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0

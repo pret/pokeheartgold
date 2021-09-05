@@ -35,7 +35,7 @@ _022598E0:
 	str r5, [r4, #0x10]
 	str r6, [r4, #0xc]
 	add r0, r5, #0
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	str r0, [r4, #4]
 	add r0, r5, #0
 	bl sub_02028ED0
@@ -89,7 +89,7 @@ ov23_02259964: ; 0x02259964
 	mov r0, #0xb
 	add r5, r1, #0
 	str r3, [sp, #0x10]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -170,7 +170,7 @@ ov23_02259A24: ; 0x02259A24
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
 	mov r0, #1
 	str r0, [sp]

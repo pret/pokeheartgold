@@ -2260,7 +2260,7 @@ _02232EEC:
 	ldrb r1, [r0, #0x39]
 	add r0, sp, #0x24
 	strb r1, [sp, #0x23]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldrh r8, [sp, #0x20]
 	ldrb r7, [sp, #0x22]
 	ldrb r6, [sp, #0x23]
@@ -2734,7 +2734,7 @@ ov45_022335A0: ; 0x022335A0
 	ldrb r1, [r0, #0x39]
 	add r0, sp, #0x24
 	strb r1, [sp, #0x23]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r0, [r4]
 	add r3, sp, #0x38
 	str r0, [sp, #0x30]
@@ -4258,7 +4258,7 @@ _02234B34:
 	ldrb r1, [r0, #0x39]
 	add r0, sp, #0x2c
 	strb r1, [sp, #0x2b]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r0, _02234D58 ; =0x02254F58
 	ldr r1, _02234D54 ; =0x022577C4
 	ldr r5, [r0, #0x10]
@@ -4474,7 +4474,7 @@ _02234E2C:
 	ldrb r1, [r0, #0x39]
 	add r0, sp, #0x2c
 	strb r1, [sp, #0x2b]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldrh r1, [sp, #0x28]
 	ldrb r0, [sp, #0x2a]
 	ldrb sb, [sp, #0x2b]
@@ -4700,7 +4700,7 @@ _02235184:
 	ldrb r1, [r0, #0x39]
 	add r0, sp, #0x2c
 	strb r1, [sp, #0x2b]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r0, _022353E0 ; =0x02254F58
 	ldr r1, _022353DC ; =0x022577C4
 	ldr r5, [r0, #8]

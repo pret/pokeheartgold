@@ -1849,9 +1849,9 @@ _022469F8:
 	str r7, [r4, #0x14]
 	mov r0, #4
 	str r0, [r4]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	str r0, [r4, #0xc]
-	bl sub_0206DCE4
+	bl ZeroMonData
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -3836,9 +3836,9 @@ ov02_02247910: ; 0x02247910
 	mov r0, #0xb
 	str r2, [sp, #0x18]
 	add r5, r3, #0
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	str r0, [sp, #0x1c]
-	bl sub_0206DCE4
+	bl ZeroMonData
 	ldrb r0, [r6, #0xd]
 	mov r7, #0
 	cmp r0, #0
@@ -3963,9 +3963,9 @@ ov02_02247A18: ; 0x02247A18
 	str r2, [sp, #0x14]
 	add r6, r3, #0
 	ldr r7, [sp, #0x38]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
-	bl sub_0206DCE4
+	bl ZeroMonData
 	ldr r0, [sp, #0xc]
 	mov r1, #0x12
 	mov r5, #1
@@ -5115,7 +5115,7 @@ ov02_022482BC: ; 0x022482BC
 	add r5, r1, #0
 	mov r0, #4
 	add r6, r2, #0
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #4
@@ -25974,7 +25974,7 @@ _022520B8:
 	bl MIi_CpuFill8
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x38]
-	bl sub_02028D3C
+	bl Sav2_SysInfo_RTC_get
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18

@@ -6722,10 +6722,10 @@ ov65_0221F5A0: ; 0x0221F5A0
 	add r6, r2, #0
 	str r3, [sp, #8]
 	ldr r5, [sp, #0x30]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	str r0, [sp, #0xc]
 	mov r0, #0x1a
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0

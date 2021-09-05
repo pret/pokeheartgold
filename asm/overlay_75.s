@@ -4059,7 +4059,7 @@ ov75_02248994: ; 0x02248994
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #4]
-	bl sub_02028D30
+	bl Sav2_SysInfo_get
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202C08C

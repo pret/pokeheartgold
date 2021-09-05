@@ -4348,7 +4348,7 @@ ov13_0221F648: ; 0x0221F648
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	mov r1, #0
 	add r2, sp, #0
 	mov r3, r1

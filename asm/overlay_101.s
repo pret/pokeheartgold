@@ -18430,7 +18430,7 @@ ov101_021F0694: ; 0x021F0694
 	str r0, [sp, #0x2c]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x24]
-	bl sub_02028D3C
+	bl Sav2_SysInfo_RTC_get
 	str r0, [sp, #0x30]
 	add r0, sp, #0
 	bl ov101_021F1D74
