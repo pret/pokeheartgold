@@ -79,6 +79,11 @@ Static main
 	Object unk_02025E88.o
 	Object pm_string.o
 	Object unk_02026C44.o
+	Object unk_02026DE0.o
+	Object unk_02026E30.o
+	Object unk_02026E84.o
+	Object unk_02026EB4.o
+	Object unk_02026FE8.o
 	Object scrcmd.o
 	### Vendor libraries ###
 	Object middleware.o
