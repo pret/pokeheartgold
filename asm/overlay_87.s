@@ -3176,7 +3176,7 @@ ov87_021E7264: ; 0x021E7264
 	mov r6, #4
 	lsl r7, r7, #4
 _021E7270:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #9
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -3198,7 +3198,7 @@ _021E7270:
 ov87_021E7294: ; 0x021E7294
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r7, #0
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1e
@@ -3210,7 +3210,7 @@ ov87_021E7294: ; 0x021E7294
 	lsr r6, r0, #0x18
 	add r4, r7, #0
 _021E72B0:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #9
 	bl _s32_div_f
 	mov r0, #0x36
@@ -3315,7 +3315,7 @@ _021E7358:
 	add r2, r2, #2
 	cmp r1, #4
 	blt _021E7358
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1e
 	add r4, sp, #8
@@ -3339,7 +3339,7 @@ _021E7380:
 	strh r2, [r1, r0]
 	b _021E73C6
 _021E7390:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r7, #0
 	bl _u32_div_f
 	strh r1, [r4]

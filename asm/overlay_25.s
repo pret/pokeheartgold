@@ -99,7 +99,7 @@ _02259988:
 	cmp r4, #0
 	beq _022599C4
 	add r0, r4, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r6, r0, #0
 	cmp r6, #7
 	bls _0225999C
@@ -139,7 +139,7 @@ _022599DE:
 	cmp r4, #0
 	beq _02259A1A
 	add r0, r4, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r6, r0, #0
 	cmp r6, #0xa
 	bls _022599F2

@@ -6780,7 +6780,7 @@ _0222EDA8:
 	ldr r0, [sp, #0x34]
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x28]
-	bl sub_02026598
+	bl String16_FormatUnsignedLongLong
 	mov r0, #1
 	str r0, [sp]
 	ldr r1, [sp, #0x20]
@@ -7372,7 +7372,7 @@ _0222F258:
 	ldr r0, [sp, #0x48]
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x28]
-	bl sub_02026598
+	bl String16_FormatUnsignedLongLong
 	mov r0, #1
 	str r0, [sp]
 	ldr r1, [sp, #0x20]
@@ -20459,7 +20459,7 @@ _02235B66:
 	add r1, r7, #0
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl sub_02026820
+	bl StringCountLines
 	mov r5, #0
 	str r0, [sp, #0x14]
 	cmp r0, #0
@@ -20469,7 +20469,7 @@ _02235C18:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_02026860
+	bl StringGetLineN
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
@@ -20595,7 +20595,7 @@ _02235C96:
 	add r1, r7, #0
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl sub_02026820
+	bl StringCountLines
 	mov r5, #0
 	str r0, [sp, #0x14]
 	cmp r0, #0
@@ -20605,7 +20605,7 @@ _02235D48:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_02026860
+	bl StringGetLineN
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
@@ -46955,7 +46955,7 @@ _022435C2:
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]
 	ldr r1, [sp, #4]
-	bl sub_02026AC4
+	bl StringCat
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
@@ -49460,7 +49460,7 @@ _02244982:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x10]
 	mov r2, #8
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	b _022449CC
 _0224499E:
 	add r0, r4, #0
@@ -49480,7 +49480,7 @@ _0224499E:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x10]
 	mov r2, #8
-	bl sub_02026A68
+	bl CopyStringToU16Array
 _022449CC:
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x28]

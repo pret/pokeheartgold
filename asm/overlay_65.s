@@ -999,7 +999,7 @@ _0221C6A6:
 	bl sub_0203769C
 	cmp r0, #0
 	bne _0221C6CA
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x3c
 	bl _s32_div_f
 	lsl r0, r1, #0x10

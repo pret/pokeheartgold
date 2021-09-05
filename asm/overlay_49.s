@@ -1506,7 +1506,7 @@ ov49_02259294: ; 0x02259294
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	add r1, r4, #0
 	bl _u32_div_f
 	ldrb r0, [r5, r1]
@@ -10152,7 +10152,7 @@ _0225D2DE:
 	add r1, r4, r6
 	add r1, #0xc0
 	str r0, [r1]
-	bl sub_0201FDB8
+	bl MTRandom
 	add r1, r4, #0
 	add r1, #0xcc
 	ldrb r1, [r1]
@@ -10164,7 +10164,7 @@ _0225D2F8:
 	add r1, r4, r6
 	add r1, #0xc0
 	str r0, [r1]
-	bl sub_0201FDB8
+	bl MTRandom
 	add r1, r4, #0
 	add r1, #0xcc
 	ldrb r1, [r1]
@@ -11803,7 +11803,7 @@ _0225DE8C:
 	bl ov49_0225D5A0
 	cmp r0, #1
 	bne _0225DEBA
-	bl sub_0201FDB8
+	bl MTRandom
 	add r1, r4, #0
 	add r1, #0xcc
 	ldrb r1, [r1]
@@ -14676,7 +14676,7 @@ ov49_0225F374: ; 0x0225F374
 	strb r0, [r4, #4]
 	mov r0, #1
 	strb r0, [r4, #5]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #3
 	and r0, r1
 	strb r0, [r4, #6]
@@ -14755,7 +14755,7 @@ _0225F3C0:
 	strb r3, [r4, #4]
 	mov r0, #1
 	strb r0, [r4, #5]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #3
 	and r0, r1
 	strb r0, [r4, #6]
@@ -23042,7 +23042,7 @@ _022639D8:
 	mov r0, #0
 	strh r0, [r4, #0xa]
 	ldr r0, [sp, #0x4c]
-	bl sub_02026800
+	bl StringGetLength
 	str r0, [sp, #0x50]
 	add r0, r5, #0
 	bl ov49_0225CB70
@@ -24158,7 +24158,7 @@ _02264392:
 	mov r0, #0
 	strh r0, [r4, #0xa]
 	ldr r0, [sp, #0x20]
-	bl sub_02026800
+	bl StringGetLength
 	str r0, [sp, #0x24]
 	add r0, r5, #0
 	bl ov49_0225CB70
@@ -25784,7 +25784,7 @@ _02265092:
 	add r1, r0, #0
 	b _022650C4
 _022650A0:
-	bl sub_0201FDB8
+	bl MTRandom
 	add r1, r4, #0
 	bl _u32_div_f
 	add r0, r5, #0

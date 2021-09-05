@@ -65,7 +65,7 @@ ov80_02229F04: ; 0x02229F04
 	add r4, r0, #0
 	add r1, r5, #0
 	mov r2, #8
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
@@ -152,9 +152,9 @@ _02229FE8:
 	cmp r6, #0
 	bne _0222A026
 _02229FF8:
-	bl sub_0201FD44
+	bl LCRandom
 	add r5, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	lsl r0, r0, #0x10
 	add r6, r5, #0
 	orr r6, r0
@@ -783,9 +783,9 @@ ov80_0222A4EC: ; 0x0222A4EC
 	str r1, [sp, #0x14]
 	add r5, r2, #0
 	add r4, r3, #0
-	bl sub_0201FD44
+	bl LCRandom
 	add r6, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	lsl r0, r0, #0x10
 	add r2, r6, #0
 	orr r2, r0
@@ -943,7 +943,7 @@ _0222A5F8:
 	ldr r0, [sp, #0x94]
 	str r0, [sp, #0xc]
 _0222A60A:
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, [sp]
 	ldrh r1, [r1, #2]
 	bl _s32_div_f
@@ -7121,7 +7121,7 @@ ov80_0222D260: ; 0x0222D260
 	add r0, r4, #0
 	bl ov80_0222BE10
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	strh r1, [r5]
@@ -13135,7 +13135,7 @@ ov80_022300D4: ; 0x022300D4
 	add r4, r0, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #6
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -23197,7 +23197,7 @@ _022350D4:
 	mov r4, #0
 	b _02235104
 _022350E4:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1e
 	sub r1, r1, r2
@@ -26841,7 +26841,7 @@ _02236BB2:
 	ldrh r0, [r0, r1]
 	sub r5, r0, r4
 _02236BBE:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _s32_div_f
 	add r0, r4, r1
@@ -27030,7 +27030,7 @@ _02236CFC:
 	ldrh r0, [r0, #0xa]
 	sub r0, r1, r0
 	str r0, [sp, #0x1c]
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, [sp, #0x1c]
 	add r1, r1, #1
 	bl _s32_div_f
@@ -27043,7 +27043,7 @@ _02236CFC:
 	str r0, [sp, #0x20]
 	b _02236D4A
 _02236D30:
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, [sp, #0x1c]
 	add r1, r1, #1
 	bl _s32_div_f
@@ -27814,7 +27814,7 @@ ov80_022372D8: ; 0x022372D8
 	lsl r0, r6, #3
 	add r6, r1, r0
 _022372FE:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xc
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -27896,7 +27896,7 @@ _0223738E:
 	add r0, r0, r1
 	str r0, [sp, #0xc]
 _02237398:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	bl _u32_div_f
@@ -27958,7 +27958,7 @@ _02237406:
 	cmp r4, r0
 	bne _022373BC
 _0223740C:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x1d
 	sub r2, r2, r1
@@ -28076,7 +28076,7 @@ _022374D6:
 	add r0, r0, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _s32_div_f
 	ldr r0, [sp, #0x10]
@@ -28858,7 +28858,7 @@ _02237AAA:
 	ldrh r0, [r0, r1]
 	sub r5, r0, r4
 _02237AB6:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _s32_div_f
 	add r0, r4, r1
@@ -29636,7 +29636,7 @@ _02238070:
 	ldrh r0, [r0, r1]
 	sub r5, r0, r4
 _0223807C:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _s32_div_f
 	add r0, r4, r1

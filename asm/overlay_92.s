@@ -119,7 +119,7 @@ ov92_0225C5C4: ; 0x0225C5C4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0xb8
 	add r5, r0, #0
-	bl sub_0201FD2C
+	bl GetLCRNGSeed
 	add r1, r5, #0
 	add r1, #0x80
 	str r0, [r1]
@@ -7461,9 +7461,9 @@ _02260194:
 _022601AC:
 	b _02260408
 _022601AE:
-	bl sub_0201FD2C
+	bl GetLCRNGSeed
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	add r6, r0, #0
 	add r0, r4, #0
 	bl SetLCRNGSeed
@@ -7505,7 +7505,7 @@ _022601EE:
 	asr r0, r0, #0x10
 	cmp r1, #0
 	bne _02260224
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r0, r0, #0x1f
 	sub r0, r0, r1
@@ -7557,7 +7557,7 @@ _02260288:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	bne _022602A8
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r0, r0, #0x1f
 	sub r0, r0, r2

@@ -4627,7 +4627,7 @@ ov91_0225E7E8: ; 0x0225E7E8
 	ldr r0, [sp, #0x20]
 	cmp r0, #0
 	beq _0225E87E
-	bl sub_0201FDB8
+	bl MTRandom
 	ldr r2, [r5, #0x10]
 	add r1, r0, #0
 	cmp r2, #0

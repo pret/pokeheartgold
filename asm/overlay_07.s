@@ -23351,7 +23351,7 @@ _02226CFC:
 	ldr r1, _02226EFC ; =0x0000A0C0
 	add r0, #0x44
 	strh r1, [r0]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	bl _s32_div_f
 	add r1, #0x23
@@ -23391,7 +23391,7 @@ _02226D56:
 	ldr r1, _02226F00 ; =0x000056C0
 	add r0, #0x44
 	strh r1, [r0]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	bl _s32_div_f
 	add r1, #0x23
@@ -23399,7 +23399,7 @@ _02226D56:
 	str r1, [r4, #0x3c]
 	pop {r3, r4, r5, r6, pc}
 _02226DA8:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -23434,7 +23434,7 @@ _02226DDA:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _02226DEC:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -23466,7 +23466,7 @@ _02226E16:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _02226E2E:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -23498,7 +23498,7 @@ _02226E58:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _02226E70:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -30114,7 +30114,7 @@ _0222A41C:
 	strb r0, [r4, #0xc]
 	b _0222A49E
 _0222A42C:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	add r5, r1, #0
@@ -30369,7 +30369,7 @@ _0222A606:
 	add r1, r5, #0
 	add r1, #0x21
 	strb r0, [r1]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	add r1, #0xa
@@ -30377,7 +30377,7 @@ _0222A606:
 	add r1, r4, r1
 	add r0, #0x22
 	strb r1, [r0]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #6
 	bl _s32_div_f
 	add r0, r5, #0
@@ -30400,7 +30400,7 @@ _0222A606:
 	str r0, [sp, #0x18]
 	add r0, r1, r0
 	str r0, [sp, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r2, [sp, #8]
 	mov r1, #6
 	ldrsh r1, [r2, r1]
@@ -30412,7 +30412,7 @@ _0222A606:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp, #0x14]
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r2, [sp, #8]
 	mov r1, #4
 	ldrsh r1, [r2, r1]
@@ -31187,7 +31187,7 @@ ov07_0222ACAC: ; 0x0222ACAC
 	add r6, r4, #2
 	add r5, r4, #4
 _0222ACE0:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x1e
 	sub r2, r2, r1
@@ -48516,7 +48516,7 @@ _022335D6:
 	bl ov07_02232540
 	cmp r0, #1
 	bne _0223372C
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x14
 	bl _s32_div_f
 	add r1, #0xa
@@ -48865,7 +48865,7 @@ _02233896:
 	bl ov07_02232540
 	cmp r0, #1
 	bne _022339EC
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x14
 	bl _s32_div_f
 	add r1, #0xa
@@ -49549,7 +49549,7 @@ _02233DDC:
 	add r0, #0x21
 	strb r2, [r0]
 	bl ov07_0221C69C
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r0, r0, #0x1f
 	sub r0, r0, r1

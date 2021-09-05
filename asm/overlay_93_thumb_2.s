@@ -164,7 +164,7 @@ _0225FD1E:
 	mov r4, #0
 	b _0225FD44
 _0225FD28:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #7
 	and r0, r1
 	add r4, r0, #1
@@ -1029,7 +1029,7 @@ _02260396:
 	bl sub_0200DC4C
 	ldr r0, [r6]
 	bl sub_0200DC0C
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x13
 	sub r2, r2, r1
@@ -1040,7 +1040,7 @@ _02260396:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r5, #4]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x12
 	sub r2, r2, r1
@@ -1051,13 +1051,13 @@ _02260396:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r5, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	bl _s32_div_f
 	lsl r0, r1, #0xc
 	str r0, [r5, #0xc]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	lsl r1, r1, #0xe
 	bl _s32_div_f
@@ -1065,7 +1065,7 @@ _02260396:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r5, #0x10]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xf
 	bl _s32_div_f
 	add r1, #0x14
@@ -1124,7 +1124,7 @@ _0226046E:
 	mov r2, #0x60
 	lsl r3, r3, #0x10
 	bl sub_0200DDF4
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	add r0, r5, #0
@@ -1132,7 +1132,7 @@ _0226046E:
 	bl sub_0200DC4C
 	ldr r0, [r5]
 	bl sub_0200DC0C
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x13
 	sub r2, r2, r1
@@ -1143,7 +1143,7 @@ _0226046E:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r4, #4]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x12
 	sub r2, r2, r1
@@ -1154,13 +1154,13 @@ _0226046E:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r4, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	bl _s32_div_f
 	lsl r0, r1, #0xc
 	str r0, [r4, #0xc]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	lsl r1, r1, #0xe
 	bl _s32_div_f
@@ -1168,7 +1168,7 @@ _0226046E:
 	lsl r0, r0, #0x10
 	add r0, r1, r0
 	str r0, [r4, #0x10]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xf
 	bl _s32_div_f
 	add r1, #0x14
@@ -1225,7 +1225,7 @@ _02260544:
 	bl sub_0200DC4C
 	ldr r0, [r5]
 	bl sub_0200DC0C
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x13
 	sub r2, r2, r1
@@ -1236,7 +1236,7 @@ _02260544:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r4, #4]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x12
 	sub r2, r2, r1
@@ -1247,13 +1247,13 @@ _02260544:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r4, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	bl _s32_div_f
 	lsl r0, r1, #0xc
 	str r0, [r4, #0xc]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	lsl r1, r1, #0xe
 	bl _s32_div_f
@@ -1261,7 +1261,7 @@ _02260544:
 	lsl r0, r0, #0x10
 	add r0, r1, r0
 	str r0, [r4, #0x10]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xf
 	bl _s32_div_f
 	add r1, #0x14
@@ -5331,7 +5331,7 @@ _022624BA:
 	ldr r0, [r5]
 	mov r1, #1
 	bl sub_0200DCE8
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x14
 	sub r2, r2, r1
@@ -5342,7 +5342,7 @@ _022624BA:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r5, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x16
 	sub r2, r2, r1

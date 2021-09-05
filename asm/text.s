@@ -596,8 +596,8 @@ _02020408: .word _021D1F6C
 _0202040C: .word _021D1F94
 	thumb_func_end sub_0202036C
 
-	thumb_func_start sub_02020410
-sub_02020410: ; 0x02020410
+	thumb_func_start DecompressGlyphTile
+DecompressGlyphTile: ; 0x02020410
 	ldrh r2, [r0]
 	lsr r2, r2, #8
 	lsl r3, r2, #1
@@ -682,7 +682,7 @@ sub_02020410: ; 0x02020410
 	bx lr
 	.balign 4, 0
 _020204B4: .word _021D1F94
-	thumb_func_end sub_02020410
+	thumb_func_end DecompressGlyphTile
 
 	thumb_func_start sub_020204B8
 sub_020204B8: ; 0x020204B8

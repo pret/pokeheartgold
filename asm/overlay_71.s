@@ -3364,7 +3364,7 @@ ov71_022482EC: ; 0x022482EC
 	str r1, [r4, r0]
 	add r0, r0, #4
 	str r1, [r4, r0]
-	bl sub_0201FDB8
+	bl MTRandom
 	add r1, r4, #0
 	add r1, #0xbc
 	str r0, [r1]
@@ -4275,12 +4275,12 @@ ov71_02248A08: ; 0x02248A08
 	str r0, [sp, #0x14]
 	add r4, r7, #0
 _02248AA2:
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0xe8
 	bl _u32_div_f
 	add r6, r1, #0
 	add r6, #0xc
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x71
 	lsl r1, r1, #2
 	bl _u32_div_f

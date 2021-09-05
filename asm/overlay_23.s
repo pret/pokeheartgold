@@ -48,7 +48,7 @@ _022598E0:
 	add r5, r0, #0
 	add r1, sp, #4
 	mov r2, #0x80
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r5, #0
 	bl String_dtor
 	ldr r0, [r4, #8]

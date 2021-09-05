@@ -2574,7 +2574,7 @@ _02246F88:
 	add r2, sp, #0x24
 	bl ov02_02248190
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -2721,7 +2721,7 @@ _022470B8:
 	add r2, sp, #0x10
 	bl ov02_02248190
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	cmp r1, r4
@@ -3360,7 +3360,7 @@ _022475E2:
 	bls _022475E8
 	mov r4, #0x64
 _022475E8:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -3439,7 +3439,7 @@ _02247668:
 ov02_0224766C: ; 0x0224766C
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -3457,7 +3457,7 @@ _02247686:
 	thumb_func_start ov02_0224768C
 ov02_0224768C: ; 0x0224768C
 	push {r3, lr}
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -3544,7 +3544,7 @@ _0224771A:
 	thumb_func_start ov02_02247720
 ov02_02247720: ; 0x02247720
 	push {r3, lr}
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -3584,7 +3584,7 @@ _0224775E:
 	thumb_func_start ov02_02247764
 ov02_02247764: ; 0x02247764
 	push {r3, lr}
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -3618,7 +3618,7 @@ _02247798:
 	thumb_func_start ov02_0224779C
 ov02_0224779C: ; 0x0224779C
 	push {r3, lr}
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -3640,7 +3640,7 @@ _022477BA:
 	thumb_func_start ov02_022477C0
 ov02_022477C0: ; 0x022477C0
 	push {r3, lr}
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -3736,7 +3736,7 @@ ov02_02247854: ; 0x02247854
 	ldrb r0, [r1, #0xe]
 	cmp r0, #0x1c
 	bne _02247890
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -3756,7 +3756,7 @@ ov02_02247854: ; 0x02247854
 	lsr r0, r0, #0x18
 	pop {r4, pc}
 _02247890:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x19
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -3784,7 +3784,7 @@ _022478B8:
 	lsl r0, r2, #0x18
 _022478BE:
 	lsr r5, r0, #0x18
-	bl sub_0201FD44
+	bl LCRandom
 	sub r1, r5, r4
 	add r1, r1, #1
 	lsl r1, r1, #0x18
@@ -3803,7 +3803,7 @@ _022478BE:
 	cmp r0, #0x2e
 	bne _02247908
 _022478E8:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -3855,7 +3855,7 @@ ov02_02247910: ; 0x02247910
 	beq _02247994
 	cmp r0, #0xff
 	beq _02247994
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -3873,7 +3873,7 @@ ov02_02247910: ; 0x02247910
 _02247970:
 	cmp r0, #0x1c
 	bne _02247994
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -3987,7 +3987,7 @@ _02247A4E:
 	ldrb r0, [r7, #0xe]
 	cmp r0, #0x38
 	bne _02247AD4
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -4483,7 +4483,7 @@ _02247E16:
 _02247E50:
 	cmp r0, #0
 	bne _02247E62
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	add r0, sp, #0x18
@@ -4881,7 +4881,7 @@ _02248132:
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
 _02248138:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	add r0, sp, #0x10
@@ -4906,7 +4906,7 @@ ov02_02248150: ; 0x02248150
 	ldrb r0, [r0, #0x14]
 	cmp r1, r0
 	bne _0224818C
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -5019,7 +5019,7 @@ _02248220:
 	sub r0, r0, #5
 	cmp r4, r0
 	bgt _02248240
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -5228,7 +5228,7 @@ _022483AC:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _022483C0:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -5253,7 +5253,7 @@ _022483E8:
 	mov r0, #0
 	b _022483FE
 _022483F0:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -5315,7 +5315,7 @@ ov02_02248444: ; 0x02248444
 	ldrb r0, [r0, #0x11]
 	cmp r0, #0
 	beq _02248470
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, _02248554 ; =0x02253290
 	lsr r2, r0, #0x1f
 	ldr r3, [r1, #0x48]
@@ -5409,19 +5409,19 @@ _02248500:
 	beq _02248534
 	cmp r6, #0
 	ble _02248534
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	cmp r1, #0x32
 	bge _02248534
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r6, #0
 	bl _s32_div_f
 	ldr r0, [sp, #4]
 	ldrb r4, [r0, r1]
 	b _02248542
 _02248534:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r7, #0
 	bl _s32_div_f
 	ldr r0, [sp, #8]
@@ -5500,7 +5500,7 @@ ov02_022485B0: ; 0x022485B0
 	cmp r0, #0x2e
 	bne _02248614
 _022485CC:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -12561,7 +12561,7 @@ _0224BA42:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _0224BA50:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -19803,7 +19803,7 @@ ov02_0224F108: ; 0x0224F108
 	add r6, r0, #0
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	ldrb r0, [r5, #0x11]
@@ -25829,7 +25829,7 @@ _02251F90:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _02251F9C:
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x64
 	bl _u32_div_f
 	ldrh r0, [r5, #0x12]
@@ -25892,7 +25892,7 @@ ov02_02251FDC: ; 0x02251FDC
 	mov r1, #0xff
 	add r4, r0, #0
 	bl MIi_CpuFill8
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xfa
 	lsl r1, r1, #2
 	bl _s32_div_f
@@ -26055,7 +26055,7 @@ _02252164:
 	ldr r0, [sp, #0x28]
 	cmp r0, #0
 	beq _022521AC
-	bl sub_0201FDB8
+	bl MTRandom
 	ldr r2, [sp, #0x28]
 	mov r1, #0x64
 	mul r1, r2
@@ -26197,7 +26197,7 @@ _02252276:
 	mov r0, #0xff
 	pop {r4, r5, r6, r7, pc}
 _0225228E:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _s32_div_f
 	ldr r0, [sp, #8]
@@ -28133,7 +28133,7 @@ _02253168: .word 0x02253D54
 	thumb_func_start ov02_0225316C
 ov02_0225316C: ; 0x0225316C
 	push {r3, lr}
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x27
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -28213,7 +28213,7 @@ _022531EE:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _02253206:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	lsl r0, r1, #0x18

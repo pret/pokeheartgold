@@ -177,7 +177,7 @@ _02259A0C:
 	lsl r0, r0, #0x1e
 	lsr r0, r0, #0x1f
 	beq _02259A22
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -354,7 +354,7 @@ ov24_02259B50: ; 0x02259B50
 	mov r1, #8
 	bl AllocFromHeapAtEnd
 	add r6, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -384,7 +384,7 @@ _02259B82:
 	add r0, r0, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	ldrb r0, [r5, r7]
@@ -582,7 +582,7 @@ _02259D0A:
 	add r7, r5, #0
 	str r0, [sp, #4]
 _02259D26:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	ldr r2, [sp]
@@ -631,7 +631,7 @@ _02259D7E:
 	add r3, #8
 	cmp r2, #8
 	blt _02259D60
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	ldrb r0, [r6, r1]
@@ -644,7 +644,7 @@ _02259D7E:
 	add r0, r7, #0
 	add r0, #0x7a
 	ldrh r4, [r0]
-	bl sub_0201FD44
+	bl LCRandom
 	lsl r1, r4, #1
 	bl _s32_div_f
 	sub r0, r1, r4

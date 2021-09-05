@@ -39,6 +39,7 @@ _0201FBC6:
 	mov r1, #0
 	bl _fgr
 	bls _0201FC06
+	; r4 / 4096. * 4096. + 0.5
 	add r0, r4, #0
 	bl _itof
 	ldr r1, _0201FC2C ; =0x45800000
@@ -52,6 +53,7 @@ _0201FBC6:
 	bl _fadd
 	b _0201FC22
 _0201FC06:
+	; r4 / 4096. * 4096. - 0.5
 	add r0, r4, #0
 	bl _itof
 	ldr r1, _0201FC2C ; =0x45800000
@@ -206,14 +208,14 @@ sub_0201FD20: ; 0x0201FD20
 _0201FD28: .word sub_0201FCC0
 	thumb_func_end sub_0201FD20
 
-	thumb_func_start sub_0201FD2C
-sub_0201FD2C: ; 0x0201FD2C
+	thumb_func_start GetLCRNGSeed
+GetLCRNGSeed: ; 0x0201FD2C
 	ldr r0, _0201FD34 ; =_021D15A4
 	ldr r0, [r0, #4]
 	bx lr
 	nop
 _0201FD34: .word _021D15A4
-	thumb_func_end sub_0201FD2C
+	thumb_func_end GetLCRNGSeed
 
 	thumb_func_start SetLCRNGSeed
 SetLCRNGSeed: ; 0x0201FD38
@@ -224,8 +226,8 @@ SetLCRNGSeed: ; 0x0201FD38
 _0201FD40: .word _021D15A4
 	thumb_func_end SetLCRNGSeed
 
-	thumb_func_start sub_0201FD44
-sub_0201FD44: ; 0x0201FD44
+	thumb_func_start LCRandom
+LCRandom: ; 0x0201FD44
 	ldr r1, _0201FD5C ; =_021D15A4
 	ldr r0, _0201FD60 ; =0x41C64E6D
 	ldr r2, [r1, #4]
@@ -242,17 +244,17 @@ sub_0201FD44: ; 0x0201FD44
 _0201FD5C: .word _021D15A4
 _0201FD60: .word 0x41C64E6D
 _0201FD64: .word 0x00006073
-	thumb_func_end sub_0201FD44
+	thumb_func_end LCRandom
 
-	thumb_func_start sub_0201FD68
-sub_0201FD68: ; 0x0201FD68
+	thumb_func_start PRandom
+PRandom: ; 0x0201FD68
 	ldr r1, _0201FD70 ; =0x6C078965
 	mul r1, r0
 	add r0, r1, #1
 	bx lr
 	.balign 4, 0
 _0201FD70: .word 0x6C078965
-	thumb_func_end sub_0201FD68
+	thumb_func_end PRandom
 
 	thumb_func_start SetMTRNGSeed
 SetMTRNGSeed: ; 0x0201FD74
@@ -289,8 +291,8 @@ _0201FDB0: .word _021D15AC + 0x4
 _0201FDB4: .word 0x6C078965
 	thumb_func_end SetMTRNGSeed
 
-	thumb_func_start sub_0201FDB8
-sub_0201FDB8: ; 0x0201FDB8
+	thumb_func_start MTRandom
+MTRandom: ; 0x0201FDB8
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r0, _0201FE9C ; =0x0210F6CC
 	ldr r1, [r0]
@@ -422,7 +424,7 @@ _0201FEBC: .word _021D15A4
 _0201FEC0: .word _021D1BA4
 _0201FEC4: .word 0x9D2C5680
 _0201FEC8: .word 0xEFC60000
-	thumb_func_end sub_0201FDB8
+	thumb_func_end MTRandom
 
 	thumb_func_start sub_0201FECC
 sub_0201FECC: ; 0x0201FECC

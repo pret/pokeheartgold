@@ -568,7 +568,7 @@ _02246D5E:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, [r4, #0x1c]
-	bl sub_020267A4
+	bl StringCompare
 	cmp r0, #0
 	beq _02246D82
 	add r0, r5, #0
@@ -646,7 +646,7 @@ ov75_02246DFC: ; 0x02246DFC
 	ldr r4, [r0]
 	add r1, sp, #0
 	ldr r0, [r4, #0x1c]
-	bl sub_020266FC
+	bl String_atoi
 	ldr r2, _02246E38 ; =0x00002710
 	mov r3, #0
 	bl _ull_mod
@@ -709,7 +709,7 @@ ov75_02246E78: ; 0x02246E78
 	ldr r4, [r0]
 	add r1, sp, #0
 	ldr r0, [r4, #0x1c]
-	bl sub_020266FC
+	bl String_atoi
 	mov r1, #0x41
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2873,7 +2873,7 @@ ov75_02248034: ; 0x02248034
 	mov r1, #0x2c
 	bl NewString_ReadMsgData
 	str r0, [sp, #0xc]
-	bl sub_02026800
+	bl StringGetLength
 	mov r1, #0x74
 	bl String_ctor
 	add r6, r0, #0
@@ -2892,7 +2892,7 @@ _0224806E:
 	ldr r1, [sp, #0xc]
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_02026860
+	bl StringGetLineN
 	str r5, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -2948,7 +2948,7 @@ _022480D6:
 	mov r1, #0x2c
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x14]
-	bl sub_02026820
+	bl StringCountLines
 	add r1, r5, #0
 	mov r2, #0
 	add r1, #0xac
@@ -3000,7 +3000,7 @@ _022480D6:
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x14]
-	bl sub_02026800
+	bl StringGetLength
 	mov r1, #0x74
 	bl String_ctor
 	add r7, r0, #0
@@ -3014,7 +3014,7 @@ _02248168:
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
 	add r2, r6, #0
-	bl sub_02026860
+	bl StringGetLineN
 	str r4, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -5958,7 +5958,7 @@ _02249794:
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	mov r2, #0x64
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	ldr r7, [sp, #4]
 	mov r6, #0
 _022497BE:
@@ -6039,7 +6039,7 @@ ov75_02249838: ; 0x02249838
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0x64
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	ldrh r1, [r4]
 	ldr r0, _0224987C ; =0x0000FFFF
 	cmp r1, r0

@@ -12461,8 +12461,8 @@ _021ED7E4:
 	bx lr
 	thumb_func_end ov101_021ED7D8
 
-	thumb_func_start ov101_021ED7F8
-ov101_021ED7F8: ; 0x021ED7F8
+	thumb_func_start ov101_Radio_OvyInit
+ov101_Radio_OvyInit: ; 0x021ED7F8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl sub_020072A4
@@ -12540,10 +12540,10 @@ _021ED8A4: .word SDK_OVERLAY_OVY_100_ID
 _021ED8A8: .word SDK_OVERLAY_OVY_26_ID
 _021ED8AC: .word 0x000009F4
 _021ED8B0: .word 0x021F7372
-	thumb_func_end ov101_021ED7F8
+	thumb_func_end ov101_Radio_OvyInit
 
-	thumb_func_start ov101_021ED8B4
-ov101_021ED8B4: ; 0x021ED8B4
+	thumb_func_start ov101_Radio_OvyExec
+ov101_Radio_OvyExec: ; 0x021ED8B4
 	push {r4, lr}
 	add r4, r1, #0
 	bl sub_02007290
@@ -12602,10 +12602,10 @@ _021ED91E:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021ED8B4
+	thumb_func_end ov101_Radio_OvyExec
 
-	thumb_func_start ov101_021ED924
-ov101_021ED924: ; 0x021ED924
+	thumb_func_start ov101_Radio_OvyExit
+ov101_Radio_OvyExit: ; 0x021ED924
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl sub_02007290
@@ -12642,7 +12642,7 @@ _021ED948:
 	nop
 _021ED978: .word SDK_OVERLAY_OVY_26_ID
 _021ED97C: .word SDK_OVERLAY_OVY_100_ID
-	thumb_func_end ov101_021ED924
+	thumb_func_end ov101_Radio_OvyExit
 
 	thumb_func_start ov101_021ED980
 ov101_021ED980: ; 0x021ED980
@@ -22073,7 +22073,7 @@ _021F2284:
 	ldrh r2, [r5, #4]
 	cmp r2, #0x95
 	bne _021F229C
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0xa
 	bl _u32_div_f
 	add r1, #0x95
@@ -22083,7 +22083,7 @@ _021F2284:
 _021F229C:
 	cmp r2, #4
 	bne _021F22B0
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #3
 	bl _u32_div_f
 	add r0, r1, #2
@@ -22110,7 +22110,7 @@ _021F22CE:
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _021F22D8:
-	bl sub_0201FD44
+	bl LCRandom
 	ldrh r1, [r5, #2]
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x14
@@ -23198,7 +23198,7 @@ _021F2AB2:
 _021F2AD6:
 	cmp r4, #0
 	beq _021F2AF2
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -23255,7 +23255,7 @@ _021F2B3A:
 	bl sub_020503DC
 	cmp r0, #0
 	beq _021F2B58
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	add r1, #0x14
@@ -23263,7 +23263,7 @@ _021F2B3A:
 	lsr r0, r0, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _021F2B58:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -23423,9 +23423,9 @@ _021F2C6E:
 ov101_021F2C78: ; 0x021F2C78
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	add r5, r0, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	add r2, r5, #0
 	eor r2, r0
 	lsl r0, r2, #0x10
@@ -23669,7 +23669,7 @@ _021F2E1C:
 	add r0, sp, #0x80
 	strh r1, [r0, #0x22]
 _021F2E34:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	bl _s32_div_f
 	add r0, sp, #0x94
@@ -23695,7 +23695,7 @@ _021F2E5C:
 _021F2E60:
 	add r4, sp, #0x14
 _021F2E62:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xc
 	bl _s32_div_f
 	lsl r0, r1, #1
@@ -23810,7 +23810,7 @@ _021F2F28:
 _021F2F34:
 	add r0, r4, #0
 	bl FreeToHeap
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, sp, #0
 	ldrb r1, [r1, #0xf]
 	bl _s32_div_f
@@ -23941,7 +23941,7 @@ _021F3036:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _021F3042:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xb
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -24767,7 +24767,7 @@ _021F3642:
 	bl ov101_021F2208
 	b _021F36E6
 _021F3696:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	add r2, r1, #0
@@ -25397,7 +25397,7 @@ _021F3B56:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021F3B62:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	add r2, r1, #0
@@ -25485,7 +25485,7 @@ _021F3BFA:
 	add r0, #0xb
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -25708,7 +25708,7 @@ _021F3DA0:
 	add r3, r3, #1
 	cmp r1, #0x49
 	blt _021F3D8E
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	ldrb r4, [r5, r1]
@@ -25757,7 +25757,7 @@ _021F3DFA:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021F3E06:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xfa
 	lsl r1, r1, #2
 	bl _s32_div_f
@@ -25765,7 +25765,7 @@ _021F3E06:
 	lsl r0, r0, #2
 	cmp r1, r0
 	bge _021F3E42
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xe1
 	lsl r1, r1, #2
 	bl _s32_div_f
@@ -25826,7 +25826,7 @@ _021F3E88:
 	add r3, r3, #2
 	cmp r2, #0x49
 	blt _021F3E7A
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	add r1, #0xa
@@ -26107,7 +26107,7 @@ _021F4094:
 	bl ov101_021F2208
 	b _021F40DE
 _021F40AC:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	add r2, r1, #0
@@ -26367,7 +26367,7 @@ ov101_021F4274: ; 0x021F4274
 	mov r0, #0x9c
 	pop {r3, r4, r5, r6, r7, pc}
 _021F4292:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	add r1, #0xac
@@ -29784,7 +29784,7 @@ ov101_021F5CA0: ; 0x021F5CA0
 	bne _021F5CBE
 	add r0, r4, #0
 	mov r1, #0x46
-	bl sub_020268EC
+	bl String_RadioAddStatic
 _021F5CBE:
 	lsl r0, r6, #4
 	str r0, [sp]
@@ -29834,7 +29834,7 @@ _021F5CFE:
 	strb r1, [r0]
 	ldr r0, [r4, #0x48]
 	ldr r1, [r4, #0x6c]
-	bl sub_02026860
+	bl StringGetLineN
 	ldr r1, [r4, #0x48]
 	add r0, r4, #0
 	mov r2, #1
@@ -29873,7 +29873,7 @@ ov101_021F5D40: ; 0x021F5D40
 	add r0, #0x62
 	strb r1, [r0]
 	ldr r0, [r4, #0x6c]
-	bl sub_02026820
+	bl StringCountLines
 	add r1, r4, #0
 	add r1, #0x63
 	strb r0, [r1]
@@ -29893,7 +29893,7 @@ ov101_021F5D40: ; 0x021F5D40
 	strb r1, [r0]
 	ldr r0, [r4, #0x48]
 	ldr r1, [r4, #0x6c]
-	bl sub_02026860
+	bl StringGetLineN
 	add r2, r4, #0
 	add r2, #0x66
 	ldrb r2, [r2]
@@ -30097,7 +30097,7 @@ ov101_021F5EF4: ; 0x021F5EF4
 	ldr r4, [r0, #0x1c]
 	cmp r1, #4
 	bne _021F5F1A
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, _021F5F34 ; =0x000061A8
 	bl _s32_div_f
 	add r0, r1, #0
@@ -30801,7 +30801,7 @@ ov101_021F6420: ; 0x021F6420
 	ldr r2, [r5, #0x50]
 	mov r1, #1
 	bl ReadMsgDataIntoString
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x16
 	bl _s32_div_f
 	strh r1, [r4, #6]
@@ -31019,7 +31019,7 @@ _021F65EE:
 	lsr r1, r0, #0x18
 	cmp r1, #0x24
 	blo _021F65B0
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r6, #0
 	bl _s32_div_f
 	add r0, r4, r1
@@ -31256,7 +31256,7 @@ _021F67CA:
 	lsr r1, r1, #0x18
 	cmp r1, #0xd
 	blo _021F67B4
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	strh r1, [r5, #6]
@@ -31695,7 +31695,7 @@ _021F6B3A:
 	blt _021F6B2A
 	mov r5, #0
 _021F6B44:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r6, #0
 	bl _s32_div_f
 	add r0, r4, r1
@@ -31911,7 +31911,7 @@ ov101_021F6CB0: ; 0x021F6CB0
 	mov r4, #0
 	mov r7, #0x1c
 _021F6CDC:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r0, r0, #0x1c
 	sub r0, r0, r1
@@ -32239,17 +32239,17 @@ _021F6F5C:
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov101_021F6FCC
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	add r0, r1, #1
 	lsl r6, r0, #1
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xd
 	bl _s32_div_f
 	lsl r0, r1, #0x18
 	lsr r7, r0, #0x18
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xd
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -32392,7 +32392,7 @@ _021F708C:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 _021F7098:
-	bl sub_0201FD44
+	bl LCRandom
 	ldrh r1, [r5, #0xa]
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -32646,7 +32646,7 @@ _021F7274:
 	beq _021F7292
 	cmp r0, #1
 	bne _021F72AA
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xfa
 	lsl r1, r1, #2
 	bl _s32_div_f
@@ -32655,7 +32655,7 @@ _021F7274:
 	cmp r1, r0
 	bge _021F72AA
 _021F7292:
-	bl sub_0201FD44
+	bl LCRandom
 	ldrh r1, [r5, #0xc]
 	bl _s32_div_f
 	lsl r0, r1, #1
@@ -32666,7 +32666,7 @@ _021F7292:
 	ldrh r0, [r1, r0]
 	pop {r4, r5, r6, r7, pc}
 _021F72AA:
-	bl sub_0201FD44
+	bl LCRandom
 	ldrh r1, [r5, #0xe]
 	bl _s32_div_f
 	lsl r0, r1, #1

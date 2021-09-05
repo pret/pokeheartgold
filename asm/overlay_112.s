@@ -4626,7 +4626,7 @@ ov112_021E7CC8: ; 0x021E7CC8
 	add r1, #0x3c
 	add r0, r4, #0
 	add r1, r5, r1
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	ldr r0, _021E7D6C ; =0x00001028
 	mov r1, #1
 	str r1, [r5, r0]
@@ -6036,7 +6036,7 @@ ov112_021E8B74: ; 0x021E8B74
 	mov r7, #0
 	str r7, [sp, #8]
 _021E8B94:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -6353,7 +6353,7 @@ _021E8D24:
 	add r4, r0, #0
 	add r1, #0x28
 	mov r2, #0x15
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r4, #0
 	bl String_dtor
 	add r0, sp, #0x3c
@@ -9475,12 +9475,12 @@ ov112_021EA76C: ; 0x021EA76C
 	mov r0, #1
 	add r4, r2, r1
 	strb r0, [r2, r1]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #6
 	bl _u32_div_f
 	add r0, r1, #2
 	strb r0, [r4, #3]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	bl _u32_div_f
@@ -9489,12 +9489,12 @@ ov112_021EA76C: ; 0x021EA76C
 	strh r0, [r4, #4]
 	mov r0, #0x74
 	strh r0, [r4, #6]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x28
 	bl _u32_div_f
 	add r1, #0x28
 	strb r1, [r4, #2]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x3c
 	bl _u32_div_f
 	add r1, #0x78
@@ -9520,7 +9520,7 @@ ov112_021EA7D0: ; 0x021EA7D0
 	mov r0, #1
 	add r4, r2, r1
 	strb r0, [r2, r1]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #5
 	bl _u32_div_f
 	mov r0, #0
@@ -9528,7 +9528,7 @@ ov112_021EA7D0: ; 0x021EA7D0
 	mvn r0, r0
 	mul r0, r1
 	strb r0, [r4, #3]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	bl _u32_div_f
@@ -9537,12 +9537,12 @@ ov112_021EA7D0: ; 0x021EA7D0
 	strh r0, [r4, #4]
 	sub r0, #0xed
 	strh r0, [r4, #6]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x28
 	bl _u32_div_f
 	add r1, #0x28
 	strb r1, [r4, #2]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x3c
 	bl _u32_div_f
 	add r1, #0x78
@@ -13051,7 +13051,7 @@ ov112_021EC338: ; 0x021EC338
 	mov r0, #0x1a
 	pop {r4, pc}
 _021EC354:
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0xb4
 	bl _u32_div_f
 	ldr r0, _021EC370 ; =0x0001F2D0
@@ -15084,7 +15084,7 @@ ov112_021ED35C: ; 0x021ED35C
 	bl ov112_021ED330
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0xff
 	bl _u32_div_f
 	cmp r5, r1
@@ -17260,7 +17260,7 @@ ov112_021EE4D0: ; 0x021EE4D0
 	mov r0, #0x37
 	pop {r4, pc}
 _021EE4E6:
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0xb4
 	bl _u32_div_f
 	ldr r0, _021EE50C ; =0x0001F2D0
@@ -17726,7 +17726,7 @@ _021EE804:
 	b _021EE854
 _021EE81E:
 	ldr r7, _021EE8AC ; =0x00009D44
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x18
 	bl _u32_div_f
 	add r3, r1, #0
@@ -18111,7 +18111,7 @@ _021EEB3A:
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq _021EEBA4
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x18
 	bl _u32_div_f
 	add r3, r1, #0
@@ -18182,7 +18182,7 @@ _021EEBA4:
 	add r0, r4, #0
 	bl sub_02070DB0
 	add r6, r0, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x18
 	bl _u32_div_f
 	ldr r0, [sp, #0x10]
@@ -23307,10 +23307,10 @@ ov112_021F13CC: ; 0x021F13CC
 	bl ReadMsgData_ExpandPlaceholders
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r0, r4, r0
 	ldr r1, [r5, #4]
 	add r0, r0, #2
@@ -23324,7 +23324,7 @@ ov112_021F13CC: ; 0x021F13CC
 	bl StrAddChar
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_02026AC4
+	bl StringCat
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -23442,14 +23442,14 @@ _021F1514:
 	ldr r0, [r5, #0x64]
 	bl NewString_ReadMsgData
 	add r6, r0, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r0, r0, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r6, #0
 	add r1, sp, #0
 	mov r2, #0x13
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r5, #0
 	add r1, sp, #0
 	mov r2, #4
@@ -23472,14 +23472,14 @@ ov112_021F1548: ; 0x021F1548
 	add r1, r2, #0
 	bl NewString_ReadMsgData
 	add r4, r0, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r0, r0, #1
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	add r0, r4, #0
 	add r1, sp, #0
 	add r2, r7, #0
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r6, #0

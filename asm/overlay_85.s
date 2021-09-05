@@ -1619,7 +1619,7 @@ _021E64B8:
 	ldr r4, [r0, r6]
 	ldr r0, _021E6524 ; =0x021EA72C
 	ldr r7, [r0, r6]
-	bl sub_0201FD44
+	bl LCRandom
 	sub r1, r7, r4
 	add r1, r1, #1
 	bl _u32_div_f

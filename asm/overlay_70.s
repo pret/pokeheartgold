@@ -18087,7 +18087,7 @@ ov70_02240854: ; 0x02240854
 	bl sub_02027550
 	mov r0, #0x1f
 	str r0, [r4, #0x2c]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x3c
 	bl _s32_div_f
 	lsl r0, r1, #0x10

@@ -1103,7 +1103,7 @@ _0221C2F4:
 _0221C2F8:
 	sub r0, r0, #6
 	ldrsb r4, [r5, r0]
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	lsr r0, r4, #0x1f
@@ -1114,7 +1114,7 @@ _0221C2F8:
 	asr r6, r0, #0x10
 	ldr r0, _0221C424 ; =0x00000B7D
 	ldrsb r4, [r5, r0]
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	lsr r0, r4, #0x1f

@@ -1020,7 +1020,7 @@ _021E6032:
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	beq _021E610E
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r0, #0x91
 	lsl r0, r0, #2
 	lsl r2, r6, #0x18
@@ -6310,7 +6310,7 @@ _021E890A:
 ov122_021E8910: ; 0x021E8910
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x64
 	bl _u32_div_f
 	add r0, r7, #0
@@ -6578,7 +6578,7 @@ ov122_021E8AE0: ; 0x021E8AE0
 _021E8AF4:
 	cmp r5, #0
 	beq _021E8B06
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x19
 	bl _u32_div_f
 	lsl r0, r1, #0x18

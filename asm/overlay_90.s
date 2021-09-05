@@ -2592,7 +2592,7 @@ ov90_02259B38: ; 0x02259B38
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x64
 	bl _u32_div_f
 	mov r3, #0

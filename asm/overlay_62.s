@@ -1456,7 +1456,7 @@ _021E6414:
 _021E641C:
 	cmp r4, #0
 	beq _021E6472
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, _021E6478 ; =0x00001002
 	mul r1, r0
 	asr r0, r1, #0xf
@@ -1465,7 +1465,7 @@ _021E641C:
 	asr r1, r0, #0x10
 	ldr r0, _021E647C ; =0x00001333
 	add r6, r1, r0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x3e
 	mul r1, r0
 	asr r0, r1, #0xf
@@ -1473,7 +1473,7 @@ _021E641C:
 	add r0, r1, r0
 	asr r5, r0, #0x10
 	add r5, #0x3c
-	bl sub_0201FD44
+	bl LCRandom
 	lsl r1, r0, #4
 	asr r0, r1, #0xf
 	lsr r0, r0, #0x10

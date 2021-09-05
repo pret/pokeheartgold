@@ -53,7 +53,7 @@ ov39_02227088: ; 0x02227088
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #0x14
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r4, #0
 	bl String_dtor
 	mov r4, #0

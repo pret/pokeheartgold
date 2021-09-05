@@ -280,7 +280,7 @@ _0225F208:
 	beq _0225F230
 	add r4, r5, #0
 _0225F212:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r6, #0
 	bl _u32_div_f
 	lsl r2, r1, #1

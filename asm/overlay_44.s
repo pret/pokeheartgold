@@ -17402,7 +17402,7 @@ ov44_022328A0: ; 0x022328A0
 	str r0, [r4, #0x10]
 	ldr r0, _022328DC ; =ov44_02232910
 	str r0, [r4, #0x18]
-	bl sub_0201FDB8
+	bl MTRandom
 	ldr r1, _022328E0 ; =0x000003FF
 	add r2, r4, #0
 	and r1, r0
@@ -17827,14 +17827,14 @@ ov44_02232BE4: ; 0x02232BE4
 	ldrsh r0, [r5, r0]
 	cmp r0, #0
 	bgt _02232C26
-	bl sub_0201FDB8
+	bl MTRandom
 	ldr r1, _02232C2C ; =0x000003FF
 	and r1, r0
 	mov r0, #1
 	lsl r0, r0, #8
 	add r0, r1, r0
 	strh r0, [r5, #8]
-	bl sub_0201FDB8
+	bl MTRandom
 	add r4, r0, #0
 	mov r1, #3
 	and r4, r1

@@ -94,7 +94,7 @@ sub_02002CEC: ; 0x02002CEC
 	ldrh r3, [r3, r4]
 	mov r0, #0x10  ; graphic/font.narc
 	mov r2, #1
-	bl sub_02025E88
+	bl FontData_new
 	ldr r2, _02002D34 ; =_0211188C
 	ldr r1, [r2]
 	add r1, r1, r4
@@ -144,7 +144,7 @@ _02002D62:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_02025ED8
+	bl FontData_ModeSwitch
 	pop {r3, r4, r5, pc}
 	nop
 _02002D78: .word _0211188C
@@ -175,7 +175,7 @@ _02002D9C:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_02025ED8
+	bl FontData_ModeSwitch
 	pop {r4, pc}
 	.balign 4, 0
 _02002DB0: .word _0211188C
@@ -272,7 +272,7 @@ _02002E50:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02002E70
-	bl sub_02025EC0
+	bl FontData_delete
 	ldr r0, _02002E74 ; =_0211188C
 	mov r2, #0
 	ldr r1, [r0]
@@ -296,7 +296,7 @@ sub_02002E7C: ; 0x02002E7C
 	add r0, r2, r0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0202604C
+	bl TryLoadGlyph
 	ldr r0, _02002E94 ; =_0211188C
 	ldr r0, [r0]
 	pop {r3, pc}
@@ -354,7 +354,7 @@ _02002EE2:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_020261CC
+	bl GetStringWidth
 	pop {r4, r5, r6, pc}
 	nop
 _02002EF8: .word _0211188C
@@ -382,7 +382,7 @@ _02002F16:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_02026218
+	bl GetStringWidthFirstLine
 	pop {r4, r5, r6, pc}
 	nop
 _02002F2C: .word _0211188C
@@ -412,7 +412,7 @@ _02002F4A:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_020261CC
+	bl GetStringWidth
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02002F64: .word _0211188C
@@ -446,7 +446,7 @@ _02002F82:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_02026270
+	bl StringAllCharsValid
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02002FA8: .word _0211188C
@@ -583,7 +583,7 @@ _02003082:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_020262D4
+	bl GetStringWidthMultiline
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0200309C: .word _0211188C
@@ -605,8 +605,8 @@ _020030B2:
 	.balign 4, 0
 	thumb_func_end sub_020030A0
 
-	thumb_func_start sub_020030B8
-sub_020030B8: ; 0x020030B8
+	thumb_func_start FontI_GetGlyphWidth
+FontI_GetGlyphWidth: ; 0x020030B8
 	push {r3, r4, r5, lr}
 	lsl r4, r0, #2
 	ldr r0, _020030E4 ; =_0211188C
@@ -625,8 +625,8 @@ _020030D0:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0202633C
+	bl GetGlyphWidth
 	pop {r3, r4, r5, pc}
 	nop
 _020030E4: .word _0211188C
-	thumb_func_end sub_020030B8
+	thumb_func_end FontI_GetGlyphWidth

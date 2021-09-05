@@ -5231,7 +5231,7 @@ _02248598:
 	str r0, [r5]
 	mov r0, #0x12
 	str r0, [r4]
-	bl sub_0201FDB8
+	bl MTRandom
 	ldr r2, [sp, #0x10]
 	mov r1, #0x6c
 	sub r1, r1, r2
@@ -5239,7 +5239,7 @@ _02248598:
 	ldr r0, [r5]
 	add r0, r0, r1
 	str r0, [r5]
-	bl sub_0201FDB8
+	bl MTRandom
 	ldr r2, [sp, #0x14]
 	mov r1, #0x7d
 	sub r1, r1, r2
@@ -6946,14 +6946,14 @@ _022491A2:
 	add r1, sp, #0x14
 	add r2, sp, #0x10
 	bl ov41_02249B94
-	bl sub_0201FDB8
+	bl MTRandom
 	ldr r2, [sp, #0x14]
 	mov r1, #0x6c
 	sub r1, r1, r2
 	bl _u32_div_f
 	add r1, #0xa
 	str r1, [sp, #0xc]
-	bl sub_0201FDB8
+	bl MTRandom
 	ldr r2, [sp, #0x10]
 	mov r1, #0x7d
 	sub r1, r1, r2

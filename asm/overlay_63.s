@@ -4572,7 +4572,7 @@ _0221E39C:
 	add r5, #0x90
 	ldr r0, [r0]
 	ldr r1, [r5]
-	bl sub_020267A4
+	bl StringCompare
 	cmp r0, #0
 	beq _0221E3CC
 	mov r5, #2
@@ -4847,13 +4847,13 @@ _0221E5BC:
 	ldrh r0, [r4, r0]
 	cmp r2, r0
 	bne _0221E62C
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xe0
 	bl _s32_div_f
 	add r1, #0x10
 	lsl r0, r1, #0x10
 	asr r5, r0, #0x10
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1a
 	sub r1, r1, r2
@@ -4872,7 +4872,7 @@ _0221E5BC:
 	mov r1, #0xe
 	mov r2, #0
 	bl ov63_0221C16C
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xff
 	bl _s32_div_f
 	ldr r0, _0221E87C ; =0x00013068
@@ -6822,7 +6822,7 @@ ov63_0221F614: ; 0x0221F614
 	mov r0, #0x3e
 	bl AllocFromHeap
 	str r0, [sp, #0x28]
-	bl sub_0201FD44
+	bl LCRandom
 	str r0, [sp, #0x20]
 	ldr r0, _0221F7AC ; =0x00003594
 	bl SetLCRNGSeed
@@ -6858,7 +6858,7 @@ _0221F652:
 	mov r0, #0
 	str r0, [sp, #0x1c]
 _0221F66A:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x13
 	sub r1, r1, r2
@@ -6871,7 +6871,7 @@ _0221F66A:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x13
 	sub r1, r1, r2
@@ -6884,7 +6884,7 @@ _0221F66A:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp, #4]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x29
 	lsl r1, r1, #4
 	bl _s32_div_f
@@ -6917,7 +6917,7 @@ _0221F6C0:
 	strh r0, [r4, #0x28]
 	strh r0, [r4, #0x2a]
 	strh r0, [r4, #0x2c]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x17
 	sub r2, r2, r1
@@ -6928,7 +6928,7 @@ _0221F6C0:
 	lsl r0, r0, #8
 	add r0, r1, r0
 	strh r0, [r4, #0x2e]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x17
 	sub r2, r2, r1
@@ -6939,7 +6939,7 @@ _0221F6C0:
 	lsl r0, r0, #8
 	add r0, r1, r0
 	strh r0, [r4, #0x30]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x17
 	sub r2, r2, r1
@@ -6957,7 +6957,7 @@ _0221F6C0:
 	add r6, r6, #6
 	cmp r7, #4
 	blt _0221F6C0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #7
 	and r0, r1
 	sub r5, r0, #1

@@ -2317,7 +2317,7 @@ ov60_021E6B68: ; 0x021E6B68
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl sub_02022D3C
-	bl sub_0201FD2C
+	bl GetLCRNGSeed
 	mov r1, #0x53
 	lsl r1, r1, #2
 	str r0, [r4, r1]

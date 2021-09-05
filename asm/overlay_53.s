@@ -1209,7 +1209,7 @@ _021E62C2:
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026820
+	bl StringCountLines
 	lsl r1, r0, #1
 	mov r0, #0x18
 	sub r1, r0, r1
@@ -1223,7 +1223,7 @@ _021E6304:
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026820
+	bl StringCountLines
 	lsl r6, r0, #1
 _021E6316:
 	cmp r5, #3

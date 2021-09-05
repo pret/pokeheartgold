@@ -287,7 +287,7 @@ _02015C5E:
 	blo _02015C54
 	cmp r5, #0
 	beq _02015CA0
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _u32_div_f
 	ldr r3, [r4, #4]

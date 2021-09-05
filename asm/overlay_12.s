@@ -2059,7 +2059,7 @@ _02238AB8:
 	add r5, r5, #4
 	cmp r6, #4
 	blt _02238AB8
-	bl sub_0201FD2C
+	bl GetLCRNGSeed
 	ldr r1, _02238D4C ; =0x00002434
 	ldr r2, [sp, #4]
 	str r0, [r4, r1]
@@ -97011,7 +97011,7 @@ _0226690E:
 	strb r0, [r4, #4]
 	mov r0, #0xa
 	strb r0, [r4, #5]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r3, r0, #0x1d
 	ldrb r2, [r4, #5]

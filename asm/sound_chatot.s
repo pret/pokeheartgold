@@ -93,7 +93,7 @@ _02006D2C:
 	bl sub_02006DB8
 	mov r0, #0xe
 	bl sub_02005600
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x13
 	sub r1, r1, r2

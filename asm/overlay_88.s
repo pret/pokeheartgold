@@ -1972,11 +1972,11 @@ _022596BC:
 	ldr r2, [sp, #0x34]
 	bl ReadMsgDataIntoString
 	ldr r0, [sp, #0x34]
-	bl sub_02026820
+	bl StringCountLines
 	str r0, [sp, #0x30]
 	ldr r0, [sp, #0x34]
 	ldrb r6, [r5, #8]
-	bl sub_02026800
+	bl StringGetLength
 	ldr r1, [sp, #0x1c]
 	add r0, r0, #1
 	bl String_ctor
@@ -1989,7 +1989,7 @@ _02259720:
 	ldr r1, [sp, #0x34]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl sub_02026860
+	bl StringGetLineN
 	ldrb r0, [r5, #9]
 	cmp r0, #0
 	beq _0225973A

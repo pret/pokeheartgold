@@ -185,7 +185,7 @@ ov36_021E5A38: ; 0x021E5A38
 	add r0, r6, #0
 	bl sub_0202C854
 	add r4, r0, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #1
@@ -195,7 +195,7 @@ ov36_021E5A38: ; 0x021E5A38
 	add r0, r6, #0
 	bl sub_02028E9C
 	add r7, r0, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	add r4, r0, #0
 	cmp r5, #0
 	beq _021E5A94
@@ -227,7 +227,7 @@ _021E5A94:
 	add r5, r0, #0
 	mov r4, #0
 _021E5AD4:
-	bl sub_0201FDB8
+	bl MTRandom
 	add r4, r4, #1
 	stmia r5!, {r0}
 	cmp r4, #0xa

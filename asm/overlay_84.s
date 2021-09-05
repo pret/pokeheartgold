@@ -133,7 +133,7 @@ _0223DE42:
 	bl ov84_0223EDA0
 	ldr r1, [r5, #0x24]
 	strh r0, [r1]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1c
 	sub r1, r1, r2
@@ -1860,7 +1860,7 @@ ov84_0223EBE8: ; 0x0223EBE8
 	ldrb r0, [r4, #0xc]
 	cmp r0, #1
 	bne _0223EC1E
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1c
 	sub r1, r1, r2
@@ -2099,10 +2099,10 @@ _0223ED8C:
 
 	thumb_func_start ov84_0223EDA0
 ov84_0223EDA0: ; 0x0223EDA0
-	ldr r3, _0223EDA4 ; =sub_0201FD44
+	ldr r3, _0223EDA4 ; =LCRandom
 	bx r3
 	.balign 4, 0
-_0223EDA4: .word sub_0201FD44
+_0223EDA4: .word LCRandom
 	thumb_func_end ov84_0223EDA0
 
 	thumb_func_start ov84_0223EDA8
@@ -2586,7 +2586,7 @@ _0223F0D8:
 	ldrb r0, [r0]
 	add r4, r1, r0
 _0223F0F4:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r7, #0
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -2660,7 +2660,7 @@ ov84_0223F178: ; 0x0223F178
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	mov r5, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10

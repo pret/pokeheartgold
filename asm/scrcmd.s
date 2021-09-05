@@ -4948,7 +4948,7 @@ sub_02042E5C: ; 0x02042E5C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0203EAB0
+	bl Radio_new
 	str r0, [r4]
 	ldr r1, _02042E88 ; =sub_02042974
 	add r0, r5, #0
@@ -9001,7 +9001,7 @@ sub_02044D8C: ; 0x02044D8C
 	ldr r0, [r5]
 	bl sub_020403AC
 	add r5, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _s32_div_f
 	strh r1, [r4]
@@ -9027,7 +9027,7 @@ sub_02044DC4: ; 0x02044DC4
 	ldr r0, [r5]
 	bl sub_020403AC
 	add r5, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _s32_div_f
 	strh r1, [r4]
@@ -10827,7 +10827,7 @@ _02045C10:
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
 _02045C28:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r6, #0
 	bl _s32_div_f
 	mov r4, #0
@@ -11366,7 +11366,7 @@ sub_02046038: ; 0x02046038
 	bls _0204605A
 	mov r4, #0x64
 _0204605A:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x65
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -11614,7 +11614,7 @@ sub_020461A0: ; 0x020461A0
 	str r0, [sp]
 	ldr r1, [sp]
 	add r0, r7, #0
-	bl sub_020267A4
+	bl StringCompare
 	cmp r0, #0
 	bne _0204626C
 	mov r0, #1
@@ -13653,7 +13653,7 @@ sub_0204723C: ; 0x0204723C
 	ldrh r0, [r0, #8]
 	cmp r0, #0x95
 	bne _02047274
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	add r1, #0x95
@@ -19148,7 +19148,7 @@ _02049BF4:
 	mov r1, #0
 	mov r2, #2
 	bl sub_0202C848
-	bl sub_0201FDB8
+	bl MTRandom
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -22445,7 +22445,7 @@ sub_0204B510: ; 0x0204B510
 	ldrb r0, [r4, #0xf]
 	cmp r0, #6
 	bne _0204B520
-	bl sub_0201FD44
+	bl LCRandom
 	pop {r4, pc}
 _0204B520:
 	ldr r0, [r4, #8]
@@ -22842,7 +22842,7 @@ sub_0204B7D0: ; 0x0204B7D0
 	add r4, r0, #0
 	add r1, r5, #0
 	mov r2, #8
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
@@ -23898,7 +23898,7 @@ sub_0204BFF0: ; 0x0204BFF0
 	bl sub_0206E540
 	add r6, r0, #0
 	bl sub_020D34B0
-	bl sub_0201FD68
+	bl PRandom
 	add r1, r0, #0
 	ldr r0, [sp, #0x18]
 	str r1, [sp, #0x38]
@@ -23912,7 +23912,7 @@ sub_0204BFF0: ; 0x0204BFF0
 	beq _0204C074
 _0204C05C:
 	ldr r0, [sp, #0x38]
-	bl sub_0201FD68
+	bl PRandom
 	add r1, r0, #0
 	add r0, r6, #0
 	str r1, [sp, #0x38]
@@ -23973,7 +23973,7 @@ _0204C074:
 	add r0, r0, r1
 	str r0, [sp, #0x34]
 	bne _0204C166
-	bl sub_0201FD44
+	bl LCRandom
 	add r6, r0, #0
 	mov r0, #0x1f
 	and r0, r6
@@ -24000,7 +24000,7 @@ _0204C074:
 	mov r1, #0x48
 	add r2, sp, #0x38
 	bl sub_0206EC40
-	bl sub_0201FD44
+	bl LCRandom
 	add r6, r0, #0
 	mov r0, #0x1f
 	and r0, r6
@@ -30373,7 +30373,7 @@ _0204F3E2:
 	ldr r1, _0204F3F4 ; =0x0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	ldr r0, [r5, #8]
 	str r4, [r0]
 	mov r0, #1
@@ -30478,7 +30478,7 @@ sub_0204F448: ; 0x0204F448
 	ldr r1, _0204F4D4 ; =0x02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	ldr r0, [r6, #8]
 	str r4, [r0]
 	mov r0, #3
@@ -31556,7 +31556,7 @@ _0204FD3A:
 	ldr r1, _0204FD4C ; =0x0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	ldr r0, [r5, #0xc]
 	str r4, [r0]
 	mov r0, #1
@@ -31661,7 +31661,7 @@ sub_0204FDA0: ; 0x0204FDA0
 	ldr r1, _0204FE2C ; =0x02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	ldr r0, [r6, #0xc]
 	str r4, [r0]
 	mov r0, #3
@@ -32233,7 +32233,7 @@ _0205027A:
 	ldr r1, _0205028C ; =0x0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	ldr r0, [r5, #0xc]
 	str r4, [r0]
 	mov r0, #1
@@ -32338,7 +32338,7 @@ sub_020502E0: ; 0x020502E0
 	ldr r1, _0205036C ; =0x02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	ldr r0, [r6, #0xc]
 	str r4, [r0]
 	mov r0, #3
@@ -32753,7 +32753,7 @@ _020505FA:
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #8]
 	add r0, r5, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -43577,7 +43577,7 @@ _020559C4:
 sub_020559D0: ; 0x020559D0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -43698,7 +43698,7 @@ _02055A94:
 	mov r0, #0
 	b _02055AB6
 _02055AA4:
-	bl sub_0201FD44
+	bl LCRandom
 	add r6, #0x14
 	lsl r1, r6, #0x10
 	lsr r1, r1, #0x10
@@ -50088,7 +50088,7 @@ sub_02058AEC: ; 0x02058AEC
 	ldr r1, _02058B80 ; =0x02103A1C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	str r4, [r7]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -50216,7 +50216,7 @@ _02058C5C:
 	ldr r0, [r5, #0x24]
 	ldr r1, _02058C7C ; =0x0210159C
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	str r4, [r5, #4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -53584,7 +53584,7 @@ _0205A5DA:
 	ldr r0, [r0, r1]
 	pop {r3, r4, r5, r6, r7, pc}
 _0205A5E2:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -53598,7 +53598,7 @@ _0205A5E2:
 	ldr r0, [r1, r0]
 	pop {r3, r4, r5, r6, r7, pc}
 _0205A5FE:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1e
 	sub r1, r1, r2
@@ -53612,7 +53612,7 @@ _0205A5FE:
 	ldr r0, [r1, r0]
 	pop {r3, r4, r5, r6, r7, pc}
 _0205A61A:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -53626,7 +53626,7 @@ _0205A61A:
 	ldr r0, [r1, r0]
 	pop {r3, r4, r5, r6, r7, pc}
 _0205A636:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1e
 	sub r1, r1, r2
@@ -53640,7 +53640,7 @@ _0205A636:
 	ldr r0, [r1, r0]
 	pop {r3, r4, r5, r6, r7, pc}
 _0205A652:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1e
 	sub r1, r1, r2
@@ -53654,7 +53654,7 @@ _0205A652:
 	ldr r0, [r1, r0]
 	pop {r3, r4, r5, r6, r7, pc}
 _0205A66E:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1e
 	sub r1, r1, r2
@@ -70982,7 +70982,7 @@ sub_02061E20: ; 0x02061E20
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0201FD44
+	bl LCRandom
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -71002,7 +71002,7 @@ sub_02061E44: ; 0x02061E44
 	add r5, r1, #0
 	bl sub_02061E6C
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
@@ -77419,7 +77419,7 @@ sub_02064B54: ; 0x02064B54
 	str r0, [r4, #0x20]
 	ldr r1, _02064BEC ; =0x0210159C
 	add r0, r5, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r7, r0]
@@ -77757,7 +77757,7 @@ sub_02064E18: ; 0x02064E18
 	ldr r1, _02064EB0 ; =0x0210159C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r7, r0]
@@ -78316,7 +78316,7 @@ _02065280:
 	ldr r1, _02065308 ; =0x0210159C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r7, r0]
@@ -81931,9 +81931,9 @@ _02066CF0: .word 0x0000403D
 sub_02066CF4: ; 0x02066CF4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r5, #0
@@ -81990,7 +81990,7 @@ sub_02066D60: ; 0x02066D60
 	push {r4, lr}
 	bl sub_020503D0
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x62
 	bl _s32_div_f
 	add r1, r1, #2
@@ -82182,7 +82182,7 @@ sub_02066E94: ; 0x02066E94
 	add r5, r0, #0
 	bl sub_02066AAC
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x1e
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -82292,7 +82292,7 @@ _02066F64:
 	ldr r1, _02066F8C ; =0x0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	ldr r0, [r5, #0x14]
 	str r4, [r0]
 	mov r0, #1
@@ -82408,7 +82408,7 @@ sub_02066FEC: ; 0x02066FEC
 	ldr r1, _02067084 ; =0x02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	ldr r0, [r6, #0x14]
 	str r4, [r0]
 	mov r0, #3
@@ -83202,7 +83202,7 @@ _02067650:
 	bl sub_0202DA28
 	cmp r0, #0
 	beq _0206768A
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r0, r0, #0x1c
 	sub r0, r0, r1
@@ -83467,7 +83467,7 @@ _02067850:
 	mov r4, #0x19
 	mov r5, #0x10
 _02067854:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	add r0, r5, r1
@@ -83537,7 +83537,7 @@ _020678D6:
 	mov r0, #0
 	b _020678EC
 _020678DE:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r5, #0
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -84557,7 +84557,7 @@ sub_0206809C: ; 0x0206809C
 	str r0, [r4, r1]
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0203EAB0
+	bl Radio_new
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -86495,7 +86495,7 @@ sub_02068E70: ; 0x02068E70
 	mov r1, #3
 	bl sub_0202AEA8
 	add r5, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xf
 	bl _s32_div_f
 	strb r1, [r5]
@@ -86503,7 +86503,7 @@ sub_02068E70: ; 0x02068E70
 	ldr r7, _02068EAC ; =0x020FE82C
 	lsl r4, r0, #3
 	add r6, r7, r4
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, [r7, r4]
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -93199,7 +93199,7 @@ _0206C20E:
 	blt _0206C1F6
 	cmp r6, #2
 	bne _0206C24E
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -93214,7 +93214,7 @@ _0206C230:
 _0206C232:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, _0206C270 ; =0x00007FFF
 	cmp r0, r1
 	blo _0206C248
@@ -93229,7 +93229,7 @@ _0206C248:
 _0206C24E:
 	cmp r6, #1
 	bne _0206C266
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, _0206C270 ; =0x00007FFF
 	cmp r0, r1
 	blo _0206C260
@@ -93256,7 +93256,7 @@ sub_0206C274: ; 0x0206C274
 	bl sub_0206C1E4
 	add r1, r0, #0
 	bpl _0206C290
-	bl sub_0201FDB8
+	bl MTRandom
 	add r1, r0, #0
 	ldr r0, [sp]
 	bl sub_02029334
@@ -93272,7 +93272,7 @@ _0206C290:
 	add r6, r0, #0
 	lsl r7, r7, #4
 _0206C2A8:
-	bl sub_0201FDB8
+	bl MTRandom
 	add r4, r0, #0
 	bl sub_0206FE2C
 	cmp r6, r0
@@ -93369,7 +93369,7 @@ _0206C348:
 	add r7, sp, #8
 	add r7, #2
 _0206C352:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #6
 	sub r1, r1, r5
 	bl _s32_div_f
@@ -93411,7 +93411,7 @@ _0206C39E:
 	add r5, #3
 	mov r7, #0x1f
 _0206C3A8:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r0, r0, #0x1f
 	sub r0, r0, r1
@@ -94215,7 +94215,7 @@ sub_0206C9B0: ; 0x0206C9B0
 	mov r5, #0
 _0206C9E8:
 	add r0, r4, #0
-	bl sub_0201FD68
+	bl PRandom
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -94677,7 +94677,7 @@ _0206CD50:
 	ldr r0, [sp]
 	bl sub_0206CCC4
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	mul r1, r0
 	add r0, r1, #0
@@ -95162,7 +95162,7 @@ _0206D09C:
 	beq _0206D170
 _0206D15C:
 	add r0, r7, #0
-	bl sub_0201FD68
+	bl PRandom
 	add r7, r0, #0
 	ldr r0, [sp, #0x2c]
 	add r1, r7, #0
@@ -95449,7 +95449,7 @@ _0206D3D4:
 	blo _0206D3AC
 	cmp r5, #2
 	bne _0206D418
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -96325,7 +96325,7 @@ _0206DA80:
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_020267A4
+	bl StringCompare
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	bl String_dtor
@@ -96354,7 +96354,7 @@ _0206DAD2:
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_020267A4
+	bl StringCompare
 	add r4, r0, #0
 	add r0, r6, #0
 	bl String_dtor
@@ -96882,9 +96882,9 @@ sub_0206DED0: ; 0x0206DED0
 	ldr r0, [sp, #0x30]
 	cmp r0, #0
 	bne _0206DEFA
-	bl sub_0201FD44
+	bl LCRandom
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	lsl r0, r0, #0x10
 	orr r0, r4
 	str r0, [sp, #0x34]
@@ -96899,9 +96899,9 @@ _0206DEFA:
 	ldr r7, _0206E0FC ; =0xFFFF0000
 	add r6, r7, #0
 _0206DF0E:
-	bl sub_0201FD44
+	bl LCRandom
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, [sp, #0x34]
 	lsl r0, r0, #0x10
 	add r3, r4, #0
@@ -97008,7 +97008,7 @@ _0206DF4A:
 	bl sub_0206ED70
 	b _0206E08E
 _0206E00A:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x1f
 	str r0, [sp, #8]
 	and r0, r1
@@ -97037,7 +97037,7 @@ _0206E00A:
 	mov r1, #0x48
 	add r2, sp, #4
 	bl sub_0206ED70
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x1f
 	str r0, [sp, #8]
 	and r0, r1
@@ -97131,9 +97131,9 @@ sub_0206E108: ; 0x0206E108
 	add r6, r0, #0
 	add r7, r1, #0
 _0206E116:
-	bl sub_0201FD44
+	bl LCRandom
 	add r5, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	lsl r0, r0, #0x10
 	orr r5, r0
 	add r0, r5, #0
@@ -97175,9 +97175,9 @@ sub_0206E14C: ; 0x0206E14C
 	sub r0, r0, #1
 	str r0, [sp, #0x20]
 _0206E16C:
-	bl sub_0201FD44
+	bl LCRandom
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	lsl r0, r0, #0x10
 	orr r4, r0
 	mov r3, #3
@@ -99480,7 +99480,7 @@ _0206F272:
 	add r0, r4, #0
 	add r1, sp, #0xc
 	mov r2, #0xb
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, sp, #0x20
 	add r0, #2
 	add r1, sp, #0xc
@@ -99495,7 +99495,7 @@ _0206F29E:
 	ldr r1, [sp, #8]
 	add r0, r4, #0
 	mov r2, #0xb
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add sp, #0x50
 	pop {r3, r4, r5, r6, r7, pc}
 _0206F2AC:
@@ -99567,7 +99567,7 @@ _0206F322:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #8
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add sp, #0x50
 	pop {r3, r4, r5, r6, r7, pc}
 _0206F330:
@@ -99779,7 +99779,7 @@ _0206F4AE:
 	ldr r1, [sp, #8]
 	add r4, r0, #0
 	mov r2, #0xb
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x50
@@ -101162,7 +101162,7 @@ sub_0206FE90: ; 0x0206FE90
 	str r2, [sp]
 	cmp r6, #5
 	bne _0206FEA8
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #1
 	tst r0, r1
 	bne _0206FF7C
@@ -101451,12 +101451,12 @@ sub_02070094: ; 0x02070094
 	lsr r0, r0, #0x10
 	eor r0, r1
 	lsr r7, r0, #3
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #7
 	and r0, r1
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #7
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -101467,7 +101467,7 @@ _020700C0:
 	bl sub_020726C0
 	tst r0, r7
 	beq _020700F0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #1
 	tst r0, r1
 	beq _020700E2
@@ -101485,7 +101485,7 @@ _020700E2:
 	lsr r5, r0, #0x10
 	b _02070112
 _020700F0:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #1
 	tst r0, r1
 	beq _02070112
@@ -104863,7 +104863,7 @@ sub_02071950: ; 0x02071950
 	add r5, r0, #0
 	bl sub_02074640
 	add r6, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #1
 	lsl r1, r1, #0xe
 	cmp r0, r1
@@ -104876,7 +104876,7 @@ sub_02071950: ; 0x02071950
 	cmp r0, r1
 	bne _020719F6
 _02071974:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r6, #0
 	bl _s32_div_f
 	add r0, r5, #0
@@ -104906,7 +104906,7 @@ _02071974:
 	add r5, sp, #0
 	mov r6, #7
 _020719BC:
-	bl sub_0201FD44
+	bl LCRandom
 	strb r0, [r5]
 	ldrb r2, [r5]
 	add r1, r2, #0
@@ -105061,7 +105061,7 @@ sub_02071ACC: ; 0x02071ACC
 	add r5, r0, #0
 	bl sub_02074640
 	add r7, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	cmp r1, #0
@@ -106010,7 +106010,7 @@ sub_020721A4: ; 0x020721A4
 	add r7, r2, #0
 	tst r0, r1
 	bne _0207223E
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	add r4, r1, #0
@@ -106867,7 +106867,7 @@ sub_02072788: ; 0x02072788
 	bne _020727F8
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_020267A4
+	bl StringCompare
 	cmp r0, #0
 	bne _020727F8
 	mov r4, #1
@@ -108511,7 +108511,7 @@ _02073422:
 	add r6, r0, #0
 	add r1, r5, #0
 	mov r2, #8
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r6, #0
 	bl String_dtor
 _0207343A:
@@ -108775,7 +108775,7 @@ sub_02073604: ; 0x02073604
 	str r1, [sp, #0x10]
 	add r4, r0, #0
 	str r2, [sp, #0x14]
-	bl sub_0201FD2C
+	bl GetLCRNGSeed
 	str r0, [sp, #0x68]
 	ldr r0, [sp, #0x10]
 	mov r1, #6
@@ -108875,7 +108875,7 @@ _02073690:
 	cmp r0, #0
 	ble _020736EC
 _020736DA:
-	bl sub_0201FD44
+	bl LCRandom
 	str r0, [sp, #0x6c]
 	add r0, r4, r5
 	add r0, #0x29
@@ -108988,7 +108988,7 @@ _0207377A:
 	cmp r0, #0
 	ble _020737D6
 _020737C4:
-	bl sub_0201FD44
+	bl LCRandom
 	str r0, [sp, #0x18]
 	add r0, r4, r5
 	add r0, #0x29
@@ -109117,7 +109117,7 @@ _02073884:
 	cmp r0, #0
 	ble _020738E0
 _020738CE:
-	bl sub_0201FD44
+	bl LCRandom
 	str r0, [sp, #0x1c]
 	add r0, r4, r5
 	add r0, #0x29
@@ -109241,7 +109241,7 @@ _02073998:
 	cmp r0, #0
 	ble _020739E0
 _020739CE:
-	bl sub_0201FD44
+	bl LCRandom
 	str r0, [sp, #0x20]
 	add r0, r4, r5
 	add r0, #0x29
@@ -110042,7 +110042,7 @@ _02073F46:
 	mul r2, r1
 	add r1, r3, r2
 	mov r2, #0x14
-	bl sub_02026A68
+	bl CopyStringToU16Array
 _02073F5C:
 	pop {r3, pc}
 	nop
@@ -120436,7 +120436,7 @@ sub_02078B9C: ; 0x02078B9C
 	str r0, [r2, #8]
 	add r0, r5, #0
 	str r2, [r6, #0x10]
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02078BD0: .word 0x0210125C
@@ -120510,7 +120510,7 @@ sub_02078C18: ; 0x02078C18
 	ldr r1, _02078C5C ; =0x02101260
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -120552,7 +120552,7 @@ sub_02078C74: ; 0x02078C74
 	ldr r1, _02078CB0 ; =0x02101270
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -120598,7 +120598,7 @@ sub_02078CC8: ; 0x02078CC8
 	ldr r1, _02078D0C ; =0x021012A0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -140634,7 +140634,7 @@ sub_02082E28: ; 0x02082E28
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	bne _02082E52
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x12
 	bl _s32_div_f
 	mov r0, #0x17
@@ -140649,7 +140649,7 @@ sub_02082E28: ; 0x02082E28
 _02082E52:
 	cmp r0, #1
 	bne _02082E6E
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x12
 	bl _s32_div_f
 	mov r0, #0x17
@@ -140672,7 +140672,7 @@ _02082E6E:
 	add r4, #0x1c
 	add r1, r4, #0
 	mov r2, #0xa
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	pop {r4, r5, r6, pc}
 _02082E8A:
 	cmp r0, #3
@@ -140696,7 +140696,7 @@ _02082E8A:
 	add r4, #0x1c
 	add r1, r4, #0
 	mov r2, #0xa
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	pop {r4, r5, r6, pc}
 _02082EB8:
 	mov r0, #1
@@ -141327,7 +141327,7 @@ sub_02083334: ; 0x02083334
 	beq _020833E8
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_02026A68
+	bl CopyStringToU16Array
 _020833E8:
 	add r1, r4, #0
 	mov r0, #1
@@ -146909,7 +146909,7 @@ _02085FC0:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	add r1, r7, #0
-	bl sub_02026AC4
+	bl StringCat
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -160140,7 +160140,7 @@ sub_0208C73C: ; 0x0208C73C
 	lsl r2, r2, #4
 	ldr r0, [r1, r3]
 	ldr r1, [r1, r2]
-	bl sub_020267A4
+	bl StringCompare
 	cmp r0, #0
 	bne _0208C774
 	mov r0, #1
@@ -166839,7 +166839,7 @@ _0208FD4C:
 	mov r0, #0x3d
 	lsl r0, r0, #6
 	str r3, [r4, r0]
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, _0208FD78 ; =0x00000F44
 	mov r2, #0x2f
 	str r0, [r4, r1]
@@ -173822,7 +173822,7 @@ _02093250:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _0209326A:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x11
 	bl _s32_div_f
 	lsl r0, r1, #1
@@ -180784,7 +180784,7 @@ sub_020968B0: ; 0x020968B0
 	ldr r1, _0209690C ; =0x02108584
 	add r0, r5, #0
 	str r5, [r4, #0x24]
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -181958,7 +181958,7 @@ sub_020970E4: ; 0x020970E4
 	ldr r0, [r4, #0x28]
 	ldr r1, _02097104 ; =0x02108EA0
 	ldr r2, [r4, #0x24]
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -182037,7 +182037,7 @@ _0209718C:
 	str r4, [r0, #4]
 	ldr r0, [r5, #0x28]
 	ldr r2, [r5, #0x24]
-	bl sub_0203DFB4
+	bl SwitchToPokegearApp
 	ldr r0, [r5, #0x24]
 	mov r1, #3
 	str r1, [r0]

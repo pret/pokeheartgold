@@ -3707,11 +3707,11 @@ ov45_0222B8A0: ; 0x0222B8A0
 	add r4, r0, #0
 	add r1, #0x28
 	mov r2, #8
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #8
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #0
@@ -5979,7 +5979,7 @@ _0222C908:
 	add r5, r5, r0
 	cmp r1, #9
 	blt _0222C908
-	bl sub_0201FDB8
+	bl MTRandom
 	add r1, r5, #0
 	bl _u32_div_f
 	mov r3, #0
