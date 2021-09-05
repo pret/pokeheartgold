@@ -879,7 +879,7 @@ _021E5FD0:
 	add r0, r5, #0
 	add r1, r1, #4
 	add r2, r4, #0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r2, _021E601C ; =_0221A680
 	ldr r1, _021E6024 ; =0x00001078
 	ldr r3, [r2]
@@ -952,7 +952,7 @@ _021E6062:
 	add r0, r5, #0
 	add r1, r1, #4
 	add r2, r4, #0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, _021E60D8 ; =_0221A680
 	mov r2, #1
 	ldr r1, [r0]
@@ -1042,7 +1042,7 @@ _021E6112:
 	add r0, r5, #0
 	add r1, r1, #4
 	add r2, r4, #0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, _021E6198 ; =_0221A680
 	mov r2, #1
 	ldr r1, [r0]
@@ -1532,7 +1532,7 @@ _021E64E2:
 	add r0, r4, #4
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	bl ov00_021EE490
 	cmp r0, #0
 	bne _021E651E

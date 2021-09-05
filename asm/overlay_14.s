@@ -29960,7 +29960,7 @@ _021F4660:
 	ldr r0, [r0, #0x14]
 	add r1, r4, #0
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #9
 	lsl r0, r0, #6
 	str r0, [sp]
@@ -30355,7 +30355,7 @@ ov14_021F4958: ; 0x021F4958
 	ldr r0, [r0, #0x14]
 	add r1, r1, r4
 	lsl r2, r2, #0xa
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, r7, #0
 	bl FreeToHeap
 	add r0, r5, #0

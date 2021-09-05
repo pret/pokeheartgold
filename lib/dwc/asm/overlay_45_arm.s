@@ -355,7 +355,7 @@ ov45_02231514: ; 0x02231514
 	ldr r2, [sp, #0x10]
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 _02231580:
 	cmp r4, #0
 	beq _022315C8
@@ -8948,7 +8948,7 @@ _02238BAC:
 	ldr r2, [r5, #0x30]
 	add r1, r4, #0x10
 	mov r2, r2, lsl #3
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 _02238C00:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
@@ -11448,7 +11448,7 @@ ov45_0223AEDC: ; 0x0223AEDC
 	ldmeqia sp!, {r3, pc}
 	add r0, r0, #0x5c
 	mov r2, #0x2d8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end ov45_0223AEDC
@@ -11460,7 +11460,7 @@ ov45_0223AF04: ; 0x0223AF04
 	mov r0, r1
 	add r1, r4, #0x5c
 	mov r2, #0x2d8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #1
 	str r0, [r4, #0x334]
 	ldmia sp!, {r4, pc}

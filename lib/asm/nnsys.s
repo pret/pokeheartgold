@@ -26161,7 +26161,7 @@ _020CA4DC:
 	add r0, r5, #0x3c
 	mov r2, r6
 	add r1, r0, r1, lsl #2
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r2, r6
 	add r0, r5, #0x3c
 	mov r1, #0

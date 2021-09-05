@@ -96548,7 +96548,7 @@ ov12_02266508: ; 0x02266508
 	add r1, r7, #0
 	add r1, #0x1c
 	mov r2, #0x22
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 _02266526:
 	ldr r0, _02266628 ; =0x0000068E
 	mov r1, #0
@@ -103751,7 +103751,7 @@ _02269E82:
 	ldr r0, _02269F4C ; =0x0226E218
 	add r1, sp, #8
 	mov r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #3
@@ -103935,7 +103935,7 @@ ov12_02269FA4: ; 0x02269FA4
 	ldr r0, _0226A290 ; =0x0226E210
 	add r1, sp, #0x50
 	mov r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r1, sp, #0x58
 	add r0, r6, #0
 	add r1, #2

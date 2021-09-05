@@ -814,14 +814,14 @@ _02008586:
 	thumb_func_start sub_020085C8
 sub_020085C8: ; 0x020085C8
 	add r2, r0, #0
-	ldr r3, _020085D8 ; =sub_020D4A50
+	ldr r3, _020085D8 ; =MIi_CpuCopy8
 	add r2, #0x84
 	add r0, r1, #0
 	add r1, r2, #0
 	mov r2, #0x28
 	bx r3
 	nop
-_020085D8: .word sub_020D4A50
+_020085D8: .word MIi_CpuCopy8
 	thumb_func_end sub_020085C8
 
 	thumb_func_start sub_020085DC
@@ -1029,7 +1029,7 @@ _02008654:
 	add r1, r4, r6
 	add r1, #0x84
 	mov r2, #0x28
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 _02008764:
 	add r0, r4, r6
 	add sp, #0xc

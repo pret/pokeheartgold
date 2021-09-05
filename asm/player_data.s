@@ -86,11 +86,11 @@ sub_02028ED0: ; 0x02028ED0
 
 	thumb_func_start sub_02028EE4
 sub_02028EE4: ; 0x02028EE4
-	ldr r3, _02028EEC ; =sub_020D4A50
+	ldr r3, _02028EEC ; =MIi_CpuCopy8
 	mov r2, #0x20
 	bx r3
 	nop
-_02028EEC: .word sub_020D4A50
+_02028EEC: .word MIi_CpuCopy8
 	thumb_func_end sub_02028EE4
 
 	thumb_func_start sub_02028EF0

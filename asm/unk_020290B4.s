@@ -17,11 +17,11 @@ sub_020290B8: ; 0x020290B8
 
 	thumb_func_start sub_020290BC
 sub_020290BC: ; 0x020290BC
-	ldr r3, _020290C4 ; =sub_020D4A50
+	ldr r3, _020290C4 ; =MIi_CpuCopy8
 	mov r2, #0x20
 	bx r3
 	nop
-_020290C4: .word sub_020D4A50
+_020290C4: .word MIi_CpuCopy8
 	thumb_func_end sub_020290BC
 
 	thumb_func_start sub_020290C8

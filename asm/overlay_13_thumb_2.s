@@ -4210,10 +4210,10 @@ ov13_02222968: ; 0x02222968
 	add r3, r0, #0
 	add r0, r1, #0
 	add r1, r3, #0
-	ldr r3, _02222974 ; =sub_020D4A50
+	ldr r3, _02222974 ; =MIi_CpuCopy8
 	bx r3
 	nop
-_02222974: .word sub_020D4A50
+_02222974: .word MIi_CpuCopy8
 	thumb_func_end ov13_02222968
 
 	thumb_func_start ov13_02222978
@@ -4585,7 +4585,7 @@ ov13_02222BC0: ; 0x02222BC0
 	ldrh r2, [r4, #0xa]
 	add r0, r5, #4
 	add r1, #0xc
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov13_02222BC0
@@ -5101,7 +5101,7 @@ _02222F88:
 	add r1, r2, r1
 	ldr r2, [r7, #0x28]
 	add r0, #0x2c
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	bl sub_020AF9BC
 	ldr r2, [r7]
 	ldr r3, _022230E0 ; =0x0030BFFE
@@ -6004,7 +6004,7 @@ ov13_02223634: ; 0x02223634
 	ldr r1, [r1, #0x24]
 	add r0, r5, #0
 	mov r2, #0x50
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	b _02223660
 _02223656:
 	ldr r0, [r1, #0x24]
@@ -6857,7 +6857,7 @@ ov13_02223CA0: ; 0x02223CA0
 	ldr r1, [r1, #0x28]
 	add r0, r5, #0
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	b _02223CCC
 _02223CC2:
 	ldr r0, [r1, #0x28]

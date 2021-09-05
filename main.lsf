@@ -90,6 +90,10 @@ Static main
 	Object player_data.o
 	Object unk_020290B4.o
 	Object daycare.o
+	Object pokedex.o
+	Object unk_0202A888.o
+	Object options.o
+	Object unk_0202ADEC.o
 	Object scrcmd.o
 	Object pokemon.o
 	### Vendor libraries ###

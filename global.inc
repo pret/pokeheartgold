@@ -27317,7 +27317,7 @@
 .public sub_020D48B4
 .public MI_Copy36B
 .public sub_020D4968
-.public sub_020D4A50
+.public MIi_CpuCopy8
 .public sub_020D4BD0
 .public MI_UncompressLZ8
 .public sub_020D4D5C
@@ -28971,3 +28971,4 @@
 .public sub_02055408
 .public sub_020669F0
 .public sub_0206D328
+.public sub_0202ADEC

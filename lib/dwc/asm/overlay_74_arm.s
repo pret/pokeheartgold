@@ -823,7 +823,7 @@ _02237C20:
 	ldr r0, [r0, r2, lsl #2]
 	mov r1, r8
 	mov r2, sl, lsl #2
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	cmp sb, #0
 	beq _02237DF8
 	mov r0, #0xff
@@ -4431,7 +4431,7 @@ _0223AE50:
 	ldr r0, [r4]
 	ldr r1, [r5]
 	mov r2, r2, lsl #2
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, [r4, #4]
 	str r0, [r5, #4]
 	ldr r0, [r5, #4]
@@ -4476,7 +4476,7 @@ ov74_0223AEB4: ; 0x0223AEB4
 	ldr r2, [r5, #4]
 	mov r1, r6
 	mov r2, r2, lsl #2
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, [r5]
 	bl ov74_0223B230
 _0223AF20:

@@ -111,7 +111,7 @@ sub_02018498: ; 0x02018498
 	add r0, r7, #0
 	add r1, r4, #4
 	mov r2, #0x18
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	str r5, [r4]
 	add r0, sp, #8
 	ldrb r1, [r0, #0x18]
