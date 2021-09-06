@@ -30,14 +30,14 @@ sub_02028E70: ; 0x02028E70
 	pop {r4, pc}
 	thumb_func_end sub_02028E70
 
-	thumb_func_start sub_02028E9C
-sub_02028E9C: ; 0x02028E9C
+	thumb_func_start Sav2_PlayerData_GetProfileAddr
+Sav2_PlayerData_GetProfileAddr: ; 0x02028E9C
 	push {r3, lr}
 	mov r1, #1
 	bl SavArray_get
 	add r0, r0, #4
 	pop {r3, pc}
-	thumb_func_end sub_02028E9C
+	thumb_func_end Sav2_PlayerData_GetProfileAddr
 
 	thumb_func_start Sav2_PlayerData_GetOptionsAddr
 Sav2_PlayerData_GetOptionsAddr: ; 0x02028EA8
@@ -194,11 +194,11 @@ sub_02028F80: ; 0x02028F80
 	bx lr
 	thumb_func_end sub_02028F80
 
-	thumb_func_start sub_02028F84
-sub_02028F84: ; 0x02028F84
+	thumb_func_start PlayerProfile_GetTrainerID
+PlayerProfile_GetTrainerID: ; 0x02028F84
 	ldr r0, [r0, #0x10]
 	bx lr
-	thumb_func_end sub_02028F84
+	thumb_func_end PlayerProfile_GetTrainerID
 
 	thumb_func_start sub_02028F88
 sub_02028F88: ; 0x02028F88

@@ -431,9 +431,9 @@ ov44_0222A168: ; 0x0222A168
 	mov r1, #0x16
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp]
-	bl sub_02074640
+	bl GetPartyCount
 	mov r5, #0
 	add r7, r0, #0
 	add r4, r5, #0
@@ -442,17 +442,17 @@ ov44_0222A168: ; 0x0222A168
 _0222A184:
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0222A1AA
 	add r0, r6, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _0222A1AA
 	add r5, r5, #1
@@ -3169,7 +3169,7 @@ ov44_0222B778: ; 0x0222B778
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	str r1, [sp]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #0x14]
 	mov r0, #0x16
 	lsl r0, r0, #4
@@ -3179,7 +3179,7 @@ ov44_0222B778: ; 0x0222B778
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #0xc]
 	mov r0, #0x16
 	lsl r0, r0, #4
@@ -3187,7 +3187,7 @@ ov44_0222B778: ; 0x0222B778
 	bl sub_0202CA44
 	str r0, [sp, #8]
 	ldr r0, [sp, #0xc]
-	bl sub_02074640
+	bl GetPartyCount
 	mov r6, #0
 	str r0, [sp, #4]
 	cmp r0, #0
@@ -3196,17 +3196,17 @@ ov44_0222B778: ; 0x0222B778
 _0222B7C0:
 	ldr r0, [sp, #0xc]
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, [r5, #4]
 	mov r2, #0
 	strh r0, [r1, r4]
 	add r0, r7, #0
 	mov r1, #6
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, [r5, #4]
 	add r6, r6, #1
 	add r1, r1, r4
@@ -4388,7 +4388,7 @@ ov44_0222C120: ; 0x0222C120
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x35
 	add r6, r0, #0
 	bl sub_02028F68

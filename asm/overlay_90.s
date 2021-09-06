@@ -149,7 +149,7 @@ _022588E0:
 	cmp r0, r1
 	bne _022588F8
 	ldr r0, [r5]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	pop {r3, r4, r5, pc}
 _022588F8:
 	add r0, r4, #0

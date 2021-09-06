@@ -380,7 +380,7 @@ ov30_0225D83C: ; 0x0225D83C
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r4, #0x3c]
 	mov r1, #0

@@ -4348,7 +4348,7 @@ _02240114:
 	add r1, #8
 	ldrh r1, [r4, r1]
 	add r1, r1, #2
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	bl sub_02070DB0
 	add r2, r0, #0
 	add r0, r4, #0
@@ -4359,7 +4359,7 @@ _02240114:
 	ldr r0, [r4, r1]
 	add r1, r1, #6
 	ldrh r1, [r4, r1]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	bl sub_02070DB0
 	add r2, r0, #0
 	add r0, r4, #0
@@ -5330,7 +5330,7 @@ ov81_022408C4: ; 0x022408C4
 	ldr r0, [r0, r1]
 	str r2, [sp, #0x10]
 	add r6, r3, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #0x64
@@ -5444,7 +5444,7 @@ ov81_022409B0: ; 0x022409B0
 	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x4c]
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x64
@@ -5495,7 +5495,7 @@ ov81_022409B0: ; 0x022409B0
 	add r0, r7, #0
 	mov r1, #0xb0
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #1
 	bne _02240AC8
 	add r0, r7, #0
@@ -6042,7 +6042,7 @@ ov81_02240E78: ; 0x02240E78
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r0, #0
 	mov r0, #7
 	lsl r0, r0, #6
@@ -6130,12 +6130,12 @@ ov81_02240F48: ; 0x02240F48
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #0x1c
@@ -6213,7 +6213,7 @@ ov81_02241008: ; 0x02241008
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	mov r0, #0x3e
 	lsl r0, r0, #4
 	strh r4, [r5, r0]
@@ -6266,10 +6266,10 @@ _02241062:
 	lsl r0, r0, #6
 	ldrh r1, [r7, r1]
 	ldr r0, [r5, r0]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x3e
 	lsl r1, r1, #4
 	strh r0, [r6, r1]
@@ -6295,10 +6295,10 @@ _0224109C:
 	lsl r0, r0, #6
 	ldrh r1, [r6, r1]
 	ldr r0, [r5, r0]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x3e
 	lsl r1, r1, #4
 	strh r0, [r4, r1]
@@ -8010,7 +8010,7 @@ _02241E0A:
 	lsl r2, r2, #2
 	ldrh r1, [r1, r2]
 	ldr r0, [r5, r0]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r2, r0, #0
 	mov r0, #0x90
 	str r0, [sp]
@@ -8070,7 +8070,7 @@ ov81_02241E68: ; 0x02241E68
 	sub r0, #0xbc
 	ldr r0, [r5, r0]
 	add r1, r7, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r3, #0x50
 	add r2, r0, #0
 	mov r0, #0x90
@@ -8088,7 +8088,7 @@ _02241EB0:
 	sub r0, #0xbc
 	ldr r0, [r5, r0]
 	add r1, r7, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r3, #0x70
 	add r2, r0, #0
 	mov r0, #0x90
@@ -8127,7 +8127,7 @@ ov81_02241EDC: ; 0x02241EDC
 	sub r0, #0xb8
 	ldr r0, [r5, r0]
 	add r1, r7, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r3, #0x50
 	add r2, r0, #0
 	mov r0, #0x90
@@ -8145,7 +8145,7 @@ _02241F24:
 	sub r0, #0xb8
 	ldr r0, [r5, r0]
 	add r1, r7, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r3, #0x70
 	add r2, r0, #0
 	mov r0, #0x90
@@ -8560,17 +8560,17 @@ ov81_02242218: ; 0x02242218
 	bhs _022422FA
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
 	str r0, [sp, #0x1c]
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	ldr r0, [sp, #0x1c]
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x18]

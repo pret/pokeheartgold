@@ -245,7 +245,7 @@ ov25_02259AAC: ; 0x02259AAC
 	ldr r5, [r4, #0xc]
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r0, #0x94
@@ -272,7 +272,7 @@ ov25_02259AAC: ; 0x02259AAC
 	bl AllocMonZeroed
 	add r5, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_02074640
+	bl GetPartyCount
 	add r7, r0, #0
 	ldr r0, [r6, #4]
 	mov r1, #6
@@ -283,19 +283,19 @@ ov25_02259AAC: ; 0x02259AAC
 _02259B12:
 	ldr r0, [sp, #0xc]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r5, #0
 	bl sub_0207188C
 	add r0, r5, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0x32
 	bls _02259B50
 	add r0, r5, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x32
 	bl sub_0206FD00
 	str r0, [sp, #0x10]
@@ -411,7 +411,7 @@ _02259BEC:
 	add r0, r4, #0
 	add r1, #0x42
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #8
 	strb r0, [r1]
 	add r1, r5, #0

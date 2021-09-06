@@ -278,25 +278,25 @@ ov55_021E5B08: ; 0x021E5B08
 	mov r0, #0
 	strh r0, [r6]
 	add r0, r4, #0
-	bl sub_0202B3E4
+	bl Mail_GetOTID
 	str r0, [r6, #0xc]
 	mov r0, #8
 	add r1, r5, #0
 	bl String_ctor
 	str r0, [r6, #0x14]
 	add r0, r4, #0
-	bl sub_0202B3E8
+	bl Mail_GetAuthorNamePtr
 	add r1, r0, #0
 	ldr r0, [r6, #0x14]
 	bl CopyU16ArrayToString
 	add r0, r4, #0
-	bl sub_0202B3F0
+	bl Mail_GetType
 	strb r0, [r6, #0x13]
 	add r0, r4, #0
-	bl sub_0202B3FC
+	bl Mail_GetLanguage
 	strb r0, [r6, #0x11]
 	add r0, r4, #0
-	bl sub_0202B400
+	bl Mail_GetVersion
 	strb r0, [r6, #0x12]
 	mov r5, #0
 	mov r7, #2
@@ -324,7 +324,7 @@ _021E5B8A:
 	lsl r1, r5, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl sub_0202B4E8
+	bl Mail_GetUnk20Array
 	add r1, r0, #0
 	lsl r0, r5, #3
 	add r0, r7, r0
@@ -367,7 +367,7 @@ _021E5BD0:
 	add r0, r6, #0
 	add r1, r4, r1
 	lsr r2, r2, #0x18
-	bl sub_0202B4F8
+	bl Mail_CopyToUnk20Array
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
@@ -375,7 +375,7 @@ _021E5BD0:
 	blo _021E5BD0
 	ldrb r1, [r7, #0x13]
 	add r0, r6, #0
-	bl sub_0202B3F4
+	bl Mail_SetType
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov55_021E5BC4

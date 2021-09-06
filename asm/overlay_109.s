@@ -3319,7 +3319,7 @@ ov109_021E7248: ; 0x021E7248
 _021E728A:
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #0x28]
 	mov r1, #0

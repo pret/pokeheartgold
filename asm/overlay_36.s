@@ -139,7 +139,7 @@ _021E59E8:
 	add r0, r5, #0
 	bl Sav2_SysInfo_InitFromSystem
 	add r0, r4, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	bl sub_02071E2C
 _021E5A0C:
 	add r0, r4, #0
@@ -193,7 +193,7 @@ ov36_021E5A38: ; 0x021E5A38
 	add r0, r6, #0
 	bl sub_020674BC
 	add r0, r6, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	bl MTRandom
 	add r4, r0, #0
@@ -239,7 +239,7 @@ _021E5AD4:
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0x1c]
 	add r0, r6, #0
-	bl sub_0202B50C
+	bl Sav2_Mailbox_get
 	str r0, [sp, #0x14]
 	mov r0, #3
 	bl AllocMonZeroed
@@ -266,7 +266,7 @@ _021E5AD4:
 	ldr r3, [sp, #0x18]
 	mov r1, #9
 	mov r2, #1
-	bl sub_0202B2D4
+	bl CreateKenyaMail
 	b _021E5B4E
 _021E5B36:
 	ldr r0, [sp, #0x1c]
@@ -278,7 +278,7 @@ _021E5B36:
 	ldr r3, [sp, #0x18]
 	mov r1, #9
 	str r2, [sp]
-	bl sub_0202B2D4
+	bl CreateKenyaMail
 _021E5B4E:
 	ldr r4, _021E5BB0 ; =0x021E5C34
 	add r6, r0, #0
@@ -292,7 +292,7 @@ _021E5B56:
 	add r0, r6, #0
 	add r1, r7, #0
 	lsr r2, r2, #0x18
-	bl sub_0202B4F8
+	bl Mail_CopyToUnk20Array
 	add r5, r5, #1
 	add r4, #8
 	cmp r5, #2
@@ -302,12 +302,12 @@ _021E5B56:
 	add r0, r6, #0
 	add r1, sp, #0x20
 	mov r2, #2
-	bl sub_0202B4F8
+	bl Mail_CopyToUnk20Array
 	mov r1, #0
 	ldr r0, [sp, #0x14]
 	add r2, r1, #0
 	add r3, r6, #0
-	bl sub_0202B554
+	bl Mailbox_CopyMailToSlotI
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	ldr r0, [sp, #0x18]
@@ -345,7 +345,7 @@ ov36_021E5BC8: ; 0x021E5BC8
 	add r0, r4, #0
 	bl sub_0203E398
 	add r0, r4, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, _021E5BFC ; =0x00000BB8
 	bl sub_02029028
 	add r0, r4, #0

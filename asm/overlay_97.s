@@ -218,7 +218,7 @@ _0221E76A:
 	bl sub_020270D8
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -517,39 +517,39 @@ _0221E9B4:
 	cmp r6, #0x12
 	bne _0221EA20
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	ldr r1, [r5, #0x14]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0
 	strh r0, [r4, #0xc]
 	add r0, r6, #0
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [r4, #0x10]
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strh r0, [r4, #0xe]
 	ldr r2, [sp, #4]
 	add r0, r6, #0
 	mov r1, #0x75
-	bl sub_0206E540
+	bl GetMonData
 	add r0, r6, #0
 	bl sub_0207003C
 	strb r0, [r4, #0x1c]
 	add r0, r6, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strb r0, [r4, #0x1d]
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	ldr r1, [r5, #0x14]
 	ldr r2, [sp]
 	lsl r1, r1, #0x18
@@ -619,7 +619,7 @@ ov97_0221EA88: ; 0x0221EA88
 	bl sub_02074670
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r0, #0
 	add r0, sp, #0
 	add r2, sp, #8
@@ -837,32 +837,32 @@ _0221EC3C:
 	cmp r6, #0x12
 	ldr r0, [r5, #0x2c]
 	bne _0221ED1C
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
 	add r7, r0, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0
 	add r6, r0, #0
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x70]
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #0x70
 	strh r0, [r1, #4]
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #0x70
 	strb r0, [r1, #7]
 	add r2, sp, #0x78
 	add r0, r6, #0
 	mov r1, #0x75
 	add r2, #2
-	bl sub_0206E540
+	bl GetMonData
 	add r0, r6, #0
 	bl sub_0207003C
 	add r1, sp, #0x70
@@ -870,12 +870,12 @@ _0221EC3C:
 	add r0, r6, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #0x70
 	strb r0, [r1, #8]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	bl sub_02070DB0
 	lsl r1, r4, #0x18
 	add r6, r0, #0

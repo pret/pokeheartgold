@@ -38120,28 +38120,28 @@ ov18_021F8AB8: ; 0x021F8AB8
 	ldr r0, [r5, #0xc]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x91
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x92
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0xb1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0xb2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x25
 	lsl r1, r1, #4
 	str r0, [r5, r1]

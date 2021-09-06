@@ -207,7 +207,7 @@ _02253F84:
 	ldr r0, [r1]
 	ldr r0, [r0, #0x68]
 	bl sub_0203E344
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, _02254050 ; =0x022598A0
 	ldr r1, [r1]
 	str r0, [r1, #0x78]
@@ -502,7 +502,7 @@ _02254172:
 	ldr r0, _022542C4 ; =0x022598A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7c]
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	add r2, r0, #0
 	mov r1, #2
 	lsl r2, r2, #0x10
@@ -702,7 +702,7 @@ ov03_022543AC: ; 0x022543AC
 	ldr r0, _0225441C ; =0x022598A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x78]
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -4686,7 +4686,7 @@ ov03_022563F8: ; 0x022563F8
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
 	ldr r2, [r4, #0x6c]
@@ -5450,7 +5450,7 @@ ov03_02256A2C: ; 0x02256A2C
 	ldr r0, [r0, #0xc]
 	str r1, [sp, #0xc]
 	str r2, [sp, #0x10]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r6, r0, #0
 	mov r0, #0xb
 	bl sub_02074944
@@ -5459,7 +5459,7 @@ ov03_02256A2C: ; 0x02256A2C
 	cmp r0, #0xa
 	bne _02256A84
 	add r0, r6, #0
-	bl sub_02074640
+	bl GetPartyCount
 	add r7, r0, #0
 	add r5, r7, #0
 	mov r4, #0
@@ -5468,10 +5468,10 @@ ov03_02256A2C: ; 0x02256A2C
 _02256A5C:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _02256A72
 	sub r5, r5, #1
@@ -5888,7 +5888,7 @@ ov03_02256D34: ; 0x02256D34
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x92
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -9668,7 +9668,7 @@ ov03_02258A18: ; 0x02258A18
 	lsl r0, r0, #2
 	add r4, r1, r0
 	ldr r0, [r5, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	add r2, r0, #0
 	lsl r2, r2, #0x18
@@ -9847,13 +9847,13 @@ ov03_02258C00: ; 0x02258C00
 	bl sub_02040374
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #4]
-	bl sub_02074640
+	bl GetPartyCount
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02028E9C
-	bl sub_02028F84
+	bl Sav2_PlayerData_GetProfileAddr
+	bl PlayerProfile_GetTrainerID
 	str r0, [sp, #0xc]
 	ldr r0, _02258CD8 ; =0x00000165
 	bl sub_0203B36C
@@ -9868,24 +9868,24 @@ ov03_02258C00: ; 0x02258C00
 _02258C62:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _02258CC4
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, [sp, #0xc]
 	cmp r1, r0
 	bne _02258CC4
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, [sp, #0x10]
 	add r2, sp, #0x14
 	ldrh r1, [r2, r1]
@@ -9894,13 +9894,13 @@ _02258C62:
 	add r0, r4, #0
 	mov r1, #0x98
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _02258CC4
 	add r0, r4, #0
 	mov r1, #0x99
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r7, r0
 	bne _02258CC4
 	ldr r0, [sp]

@@ -2880,7 +2880,7 @@ ov45_0222B244: ; 0x0222B244
 	bl GF_AssertFail
 _0222B254:
 	ldr r0, [r4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, _0222B26C ; =0x00000528
 	ldr r1, [r4, r1]
 	bl sub_02078DD8
@@ -3686,10 +3686,10 @@ ov45_0222B8A0: ; 0x0222B8A0
 	str r1, [sp]
 	add r0, r1, #0
 	add r4, r2, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #0x18]
 	ldr r0, [sp]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	bl sub_0202A634
@@ -3718,10 +3718,10 @@ ov45_0222B8A0: ; 0x0222B8A0
 	mvn r0, r0
 	str r0, [r5, #0x20]
 	ldr r0, [sp, #0x18]
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	str r0, [r5, #0x24]
 	ldr r0, [sp, #0x14]
-	bl sub_02074640
+	bl GetPartyCount
 	str r0, [sp, #4]
 	mov r4, #0
 	add r6, r5, #0
@@ -3731,25 +3731,25 @@ _0222B910:
 	bge _0222B950
 	ldr r0, [sp, #0x14]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r6, #0
 	add r1, #0x40
 	strh r0, [r1]
 	add r0, r7, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r5, r4
 	add r1, #0x4c
 	strb r0, [r1]
 	add r0, r7, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r5, r4
 	add r1, #0x52
 	strb r0, [r1]

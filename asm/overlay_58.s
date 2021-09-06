@@ -310,7 +310,7 @@ _02237B10:
 	bl sub_020746BC
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #7
 	bl sub_02097F0C
 	add sp, #0x24
@@ -430,7 +430,7 @@ ov58_02237BD4: ; 0x02237BD4
 	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
@@ -450,7 +450,7 @@ ov58_02237BD4: ; 0x02237BD4
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0202B50C
+	bl Sav2_Mailbox_get
 	str r0, [r4, #8]
 	mov r0, #0
 	str r0, [r4, #0x1c]

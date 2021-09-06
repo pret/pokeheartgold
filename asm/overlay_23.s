@@ -114,18 +114,18 @@ ov23_02259964: ; 0x02259964
 	add r1, r6, #0
 	bl sub_0202ECC0
 	ldr r0, [r7, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
 	add r7, r0, #0
 	bl sub_02074524
 	cmp r5, #7
 	bne _02259A14
 	add r0, r7, #0
-	bl sub_02074640
+	bl GetPartyCount
 	add r1, r0, #0
 	add r0, r7, #0
 	sub r1, r1, #1
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r5, #0xd
 	str r0, [sp, #0x14]
 	mov r0, #0xb
@@ -146,7 +146,7 @@ ov23_02259964: ; 0x02259964
 	add r0, r6, #0
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_0202B2D4
+	bl CreateKenyaMail
 	add r7, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #0xaa
@@ -208,7 +208,7 @@ ov23_02259A24: ; 0x02259A24
 	add r0, r5, #0
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_0202B2D4
+	bl CreateKenyaMail
 	add r7, r0, #0
 	add r0, r6, #0
 	bl String_dtor
@@ -229,10 +229,10 @@ ov23_02259AA0: ; 0x02259AA0
 	ldr r0, [r0, #0xc]
 	add r4, r2, #0
 	add r5, r1, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
 	str r0, [sp, #4]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r5, #0
 	str r0, [sp]
 	bl sub_0206D894
@@ -245,7 +245,7 @@ _02259AC8:
 	ldr r0, [sp]
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	beq _02259ADE
@@ -255,7 +255,7 @@ _02259AC8:
 _02259ADE:
 	ldr r0, [sp, #4]
 	mov r6, #0
-	bl sub_02074640
+	bl GetPartyCount
 	add r7, r0, #0
 	add r5, r6, #0
 	cmp r7, #0
@@ -263,23 +263,23 @@ _02259ADE:
 _02259AEE:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #3
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #1
 	beq _02259B22
 	add r0, r4, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _02259B22
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _02259B22
 	add r6, r6, #1
@@ -297,7 +297,7 @@ _02259B32:
 	ldr r0, [sp]
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	beq _02259B48
@@ -342,7 +342,7 @@ ov23_02259B68: ; 0x02259B68
 	ldr r0, [r5, #0xc]
 	add r6, r1, #0
 	add r4, r2, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	ldr r2, [r6, #4]
 	add r1, r4, #0
 	bl sub_02074740
@@ -361,13 +361,13 @@ ov23_02259B88: ; 0x02259B88
 	add r7, r2, #0
 	add r5, r1, #0
 	add r4, r3, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r7, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0xa1
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r2, r0, #0
 	ldr r0, [r6, #0x20]
 	ldr r0, [r0]

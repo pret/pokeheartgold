@@ -1190,7 +1190,7 @@ ov95_021E623C: ; 0x021E623C
 	ldr r4, [r0, #0xc]
 	mov r2, #0
 	add r0, r4, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #2
@@ -1239,7 +1239,7 @@ ov95_021E62A4: ; 0x021E62A4
 	mov r1, #5
 	ldr r0, [r0, #0xc]
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
@@ -1449,13 +1449,13 @@ _021E643C:
 	mov r1, #5
 	ldr r0, [r0, #0xc]
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r6, r0, #0
 	ldr r0, [r4]
 	mov r1, #0x70
 	ldr r0, [r0, #0xc]
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	lsl r0, r6, #0x10
 	lsl r1, r1, #0x18
@@ -1728,13 +1728,13 @@ _021E668A:
 	mov r1, #5
 	ldr r0, [r0, #0xc]
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r6, r0, #0
 	ldr r0, [r4]
 	mov r1, #0x70
 	ldr r0, [r0, #0xc]
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	lsl r0, r6, #0x10
 	lsl r1, r1, #0x18
@@ -2724,7 +2724,7 @@ _021E6EAC:
 	mov r1, #5
 	ldr r0, [r0, #0xc]
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r4, r0, #0
 	add r1, r5, #0
 	lsl r2, r4, #0x10

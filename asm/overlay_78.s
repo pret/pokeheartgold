@@ -36,7 +36,7 @@ _021E593C:
 	bl GF_AssertFail
 _021E5946:
 	ldr r0, [r5]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r7, r0, #0
 	mov r0, #0x52
 	str r0, [r4]
@@ -45,11 +45,11 @@ _021E5946:
 	ldr r0, [r5, #4]
 	str r0, [r4, #4]
 	ldr r0, [r4, #8]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #0xc]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	str r0, [r4, #0x10]
 	mov r0, #0
 	add r1, r0, #0
@@ -1220,7 +1220,7 @@ ov78_021E628C: ; 0x021E628C
 	ldr r0, [r5, #0x10]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	bl sub_0206A304
 	add r2, r0, #0
 	add r0, sp, #0
@@ -1688,12 +1688,12 @@ ov78_021E66D4: ; 0x021E66D4
 	mov r1, #5
 	mov r2, #0
 	add r5, r3, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x20]
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_0206FF88

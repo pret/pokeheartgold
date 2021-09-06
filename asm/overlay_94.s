@@ -46,7 +46,7 @@ ov94_021E593C: ; 0x021E593C
 	sub r1, #0x1b
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r1, [r4]
 	add r6, r0, #0
 	cmp r1, #0xa
@@ -74,7 +74,7 @@ _021E596A: ; jump table
 _021E5980:
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r2, _021E5ADC ; =0x000001DF
 	str r0, [r4, #0xc]
 	cmp r0, r2

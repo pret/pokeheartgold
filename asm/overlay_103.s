@@ -28,7 +28,7 @@ ov103_021EC940: ; 0x021EC940
 	str r0, [r4]
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
-	bl sub_0202B50C
+	bl Sav2_Mailbox_get
 	str r0, [r4, #4]
 	mov r0, #8
 	str r0, [r4, #0x28]
@@ -881,7 +881,7 @@ _021ED01E:
 	ldr r0, [r5, #4]
 	mov r1, #0
 	mov r3, #0x9d
-	bl sub_0202B574
+	bl Mailbox_AllocAndFetchMailI
 	ldr r1, [r5, #0xc]
 	add r2, r1, r6
 	mov r1, #0x9f
@@ -892,7 +892,7 @@ _021ED01E:
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0202B0B8
+	bl Mail_TypeIsValid
 	cmp r0, #1
 	bne _021ED070
 	mov r0, #0x2e
@@ -1175,7 +1175,7 @@ ov103_021ED23C: ; 0x021ED23C
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0202B3F0
+	bl Mail_GetType
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1224,8 +1224,8 @@ ov103_021ED2B8: ; 0x021ED2B8
 	push {r3, lr}
 	ldr r0, [r0, #8]
 	ldr r0, [r0]
-	bl sub_02074904
-	bl sub_02074640
+	bl SavArray_PlayerParty_get
+	bl GetPartyCount
 	cmp r0, #0
 	ble _021ED2CE
 	mov r0, #4
@@ -1944,7 +1944,7 @@ _021ED864:
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0202B3F0
+	bl Mail_GetType
 	bl sub_0207808C
 	add r2, r0, #0
 	add r0, r4, #0
@@ -2442,7 +2442,7 @@ ov103_021EDC00: ; 0x021EDC00
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0202B3F0
+	bl Mail_GetType
 	bl sub_0207808C
 	strh r0, [r5, #0x22]
 	ldrh r1, [r5, #0x22]
@@ -2474,14 +2474,14 @@ _021EDC46:
 
 	thumb_func_start ov103_021EDC58
 ov103_021EDC58: ; 0x021EDC58
-	ldr r3, _021EDC64 ; =sub_0202B544
+	ldr r3, _021EDC64 ; =Mailbox_DeleteSlotI
 	add r2, r0, #0
 	ldr r0, [r2, #4]
 	mov r1, #0
 	ldrb r2, [r2, #0x1f]
 	bx r3
 	.balign 4, 0
-_021EDC64: .word sub_0202B544
+_021EDC64: .word Mailbox_DeleteSlotI
 	thumb_func_end ov103_021EDC58
 
 	thumb_func_start ov103_021EDC68
@@ -2500,7 +2500,7 @@ ov103_021EDC68: ; 0x021EDC68
 	bl MIi_CpuFill8
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
@@ -2558,9 +2558,9 @@ ov103_021EDCE0: ; 0x021EDCE0
 	bhi _021EDD08
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r2, r0, #0
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
@@ -2658,13 +2658,13 @@ ov103_021EDD98: ; 0x021EDD98
 	bne _021EDDD8
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
 	add r1, #0x21
 	ldrb r1, [r1]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x19
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r0, #0
 	ldr r0, [r4, #0x14]
 	bl sub_02090F70
@@ -3559,7 +3559,7 @@ ov103_021EE468: ; 0x021EE468
 	add r6, #0x48
 	lsl r7, r2, #4
 	str r0, [sp, #0x20]
-	bl sub_0202B3E8
+	bl Mail_GetAuthorNamePtr
 	add r1, r0, #0
 	mov r0, #0x23
 	ldr r2, [r5, #0xc]
@@ -3609,7 +3609,7 @@ _021EE49A:
 	cmp r0, #8
 	blo _021EE49A
 	ldr r0, [sp, #0x20]
-	bl sub_0202B3EC
+	bl Mail_GetAuthorGender
 	cmp r0, #0
 	bne _021EE514
 	mov r0, #4
@@ -3940,12 +3940,12 @@ ov103_021EE784: ; 0x021EE784
 	bl String_ctor
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0202B3E8
+	bl Mail_GetAuthorNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl CopyU16ArrayToString
 	add r0, r5, #0
-	bl sub_0202B3EC
+	bl Mail_GetAuthorGender
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -4184,7 +4184,7 @@ _021EE93A:
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0202B3E8
+	bl Mail_GetAuthorNamePtr
 	add r1, r0, #0
 	mov r0, #0x23
 	ldr r2, [r5, #0xc]
@@ -4230,7 +4230,7 @@ ov103_021EE9C8: ; 0x021EE9C8
 	ldr r0, [r1, r0]
 	lsl r1, r2, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0202B4E8
+	bl Mail_GetUnk20Array
 	add r6, r0, #0
 	bl MailMsg_IsInit
 	cmp r0, #0

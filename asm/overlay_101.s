@@ -12520,7 +12520,7 @@ ov101_Radio_OvyInit: ; 0x021ED7F8
 	str r0, [r1, #0x30]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x34]
 	add r0, r4, #0
@@ -31196,7 +31196,7 @@ ov101_021F6710: ; 0x021F6710
 	bl sub_020503D0
 	add r7, r0, #0
 	ldr r0, [r6, #4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp]
 	mov r0, #1
 	strb r0, [r5, #8]

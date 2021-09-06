@@ -240,7 +240,7 @@ BufferFriendsName: ; 0x0200BE94
 	add r5, r0, #0
 	add r0, r2, #0
 	add r6, r1, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	ldr r2, _0200BEE4 ; =0x000001BD
 	ldr r3, [r5, #4]

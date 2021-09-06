@@ -1,6 +1,13 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F6784:
+	.byte 0x07, 0x05, 0x02, 0x04, 0x03, 0x04, 0x04, 0x05, 0x07, 0x05, 0x07, 0x04
+	.byte 0x03, 0x01, 0x03, 0x07, 0x06, 0x04, 0x05, 0x04, 0x02, 0x07, 0x01, 0x04, 0x04, 0x02, 0x03, 0x06
+	.byte 0x01, 0x02, 0x06, 0x00
+
 	.text
 
 	thumb_func_start sub_0202ADEC
@@ -64,17 +71,17 @@ sub_0202AE38: ; 0x0202AE38
 
 	thumb_func_start sub_0202AE40
 sub_0202AE40: ; 0x0202AE40
-	ldr r0, _0202AE48 ; =0x020F6784
+	ldr r0, _0202AE48 ; =_020F6784
 	ldrb r0, [r0, r1]
 	bx lr
 	nop
-_0202AE48: .word 0x020F6784
+_0202AE48: .word _020F6784
 	thumb_func_end sub_0202AE40
 
 	thumb_func_start sub_0202AE4C
 sub_0202AE4C: ; 0x0202AE4C
 	push {r3, lr}
-	ldr r0, _0202AE64 ; =0x020F6784
+	ldr r0, _0202AE64 ; =_020F6784
 	ldrb r0, [r0, r1]
 	cmp r0, #0
 	bgt _0202AE5E
@@ -85,7 +92,7 @@ _0202AE5E:
 	sub r0, r0, #1
 	pop {r3, pc}
 	nop
-_0202AE64: .word 0x020F6784
+_0202AE64: .word _020F6784
 	thumb_func_end sub_0202AE4C
 
 	thumb_func_start sub_0202AE68

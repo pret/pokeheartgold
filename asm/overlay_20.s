@@ -10,13 +10,13 @@ ov20_022598C0: ; 0x022598C0
 	mov r1, #0
 	add r2, r1, #0
 	add r5, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r5, #0
 	mov r1, #0x46
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -25,7 +25,7 @@ ov20_022598C0: ; 0x022598C0
 	add r0, r5, #0
 	mov r1, #0x47
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -34,7 +34,7 @@ ov20_022598C0: ; 0x022598C0
 	add r0, r5, #0
 	mov r1, #0x48
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -43,7 +43,7 @@ ov20_022598C0: ; 0x022598C0
 	add r0, r5, #0
 	mov r1, #0x49
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -51,7 +51,7 @@ ov20_022598C0: ; 0x022598C0
 	add r0, r5, #0
 	mov r1, #0x4a
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -59,7 +59,7 @@ ov20_022598C0: ; 0x022598C0
 	add r0, r5, #0
 	mov r1, #0x4b
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -243,13 +243,13 @@ ov20_02259A88: ; 0x02259A88
 	bl sub_020403AC
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r7, #0
@@ -318,9 +318,9 @@ ov20_02259B40: ; 0x02259B40
 	bl sub_020403AC
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl sub_020503D0
@@ -417,13 +417,13 @@ ov20_02259BF4: ; 0x02259BF4
 	bl sub_020403AC
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	str r0, [sp, #4]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r5, r0, #0
 	ldr r0, [sp, #4]
 	bl ov20_022598C0

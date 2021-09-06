@@ -3201,7 +3201,7 @@ ov74_02228920: ; 0x02228920
 	add r0, r0, #4
 	str r1, [r4, r0]
 	ldr r0, [r4, #4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #4]
 	bl sub_0202A634
@@ -4241,7 +4241,7 @@ ov74_02229200: ; 0x02229200
 	bl sub_020072A4
 	ldr r0, [r0, #8]
 	str r0, [r4, #8]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	bl sub_0202A634
@@ -6148,7 +6148,7 @@ _0222A10E:
 	add r0, #8
 	mov r1, #0x98
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #3
 	blt _0222A120
 	cmp r0, #0xe
@@ -15161,7 +15161,7 @@ _0222E9F0:
 	ldr r0, [sp, #0x20]
 	bl String_dtor
 	add r0, r7, #0
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -24546,7 +24546,7 @@ ov74_02233230: ; 0x02233230
 	bl sub_020072A4
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x10]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #0x14]
 	ldr r0, [r4, #0x10]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -30020,7 +30020,7 @@ ov74_02235B14: ; 0x02235B14
 	mov r1, #0
 	add r0, r6, #0
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r3, #0
 	str r3, [sp]
 	mov r1, #0xa
@@ -30156,12 +30156,12 @@ _02235C6C:
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x85
 	lsl r1, r1, #2
 	add r3, r0, #0

@@ -49505,7 +49505,7 @@ _022449EA:
 _022449F2:
 	ldr r0, [sp]
 	ldr r0, [r0, #4]
-	bl sub_02074640
+	bl GetPartyCount
 	mov r6, #0
 	str r0, [sp, #0x18]
 	cmp r0, #0
@@ -49514,11 +49514,11 @@ _02244A02:
 	ldr r0, [sp]
 	add r1, r6, #0
 	ldr r0, [r0, #4]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0xac
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _02244A5C
 	mov r0, #0
@@ -49528,7 +49528,7 @@ _02244A02:
 	add r0, r7, #0
 	mov r1, #0x75
 	add r2, r5, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r0, r4, #0
 	bl StringSetEmpty
 	add r0, r4, #0

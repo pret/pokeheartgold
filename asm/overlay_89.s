@@ -2643,9 +2643,9 @@ ov89_02259E50: ; 0x02259E50
 	mov r2, #0x48
 	bl MIi_CpuFill8
 	add r0, r4, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #4]
-	bl sub_02074640
+	bl GetPartyCount
 	add r7, r0, #0
 	mov r6, #0
 	cmp r7, #0
@@ -2653,26 +2653,26 @@ ov89_02259E50: ; 0x02259E50
 _02259E78:
 	ldr r0, [sp, #4]
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0xae
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0
 	strh r0, [r5, #2]
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [r5, #4]
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strb r0, [r5, #8]
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	ldr r0, [sp]
 	bl ov89_0225C830

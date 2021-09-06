@@ -2321,7 +2321,7 @@ ov43_0222B0A0: ; 0x0222B0A0
 	bl String_ctor
 	str r0, [sp, #0x1c]
 	ldr r0, [r5, #4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [sp, #0x24]
 	mov r1, #0
@@ -6305,7 +6305,7 @@ ov43_0222D028: ; 0x0222D028
 	add r5, r0, #0
 	ldr r0, [r1, #4]
 	add r4, r2, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r4, #0x50]
 	mov r1, #0

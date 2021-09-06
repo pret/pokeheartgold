@@ -850,7 +850,7 @@ sub_0202998C: ; 0x0202998C
 	add r0, r2, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	ldr r0, _020299C8 ; =0x00000182
@@ -1048,7 +1048,7 @@ sub_02029AF0: ; 0x02029AF0
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r2, r0, #0
 	ldr r0, _02029BDC ; =0x000001A6
 	cmp r4, r0
@@ -2251,13 +2251,13 @@ sub_0202A36C: ; 0x0202A36C
 	add r0, r1, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	mov r1, #0
 	ldr r0, [sp]
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	bl sub_0206FF88
@@ -2351,18 +2351,18 @@ sub_0202A434: ; 0x0202A434
 	add r0, r7, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r7, #0
 	mov r1, #0xc
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0
 	str r0, [sp, #4]
 	add r0, r7, #0
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp]
 	add r0, r7, #0
 	bl sub_0206FF88

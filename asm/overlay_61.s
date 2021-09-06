@@ -2881,14 +2881,14 @@ _021E6FEA:
 	ldr r0, _021E7104 ; =0x00000578
 	ldr r0, [r1, r0]
 	mov r1, #5
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x1c]
 	ldr r1, [sp, #0x10]
 	ldr r0, _021E7104 ; =0x00000578
 	mov r2, #0
 	ldr r0, [r1, r0]
 	mov r1, #0x6f
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x10]
 	ldr r0, _021E7104 ; =0x00000578

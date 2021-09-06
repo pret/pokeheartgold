@@ -3455,7 +3455,7 @@ _021E749C:
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _021E74DA
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	ldr r1, _021E7560 ; =0x00004A3C
 	str r0, [r5, r1]
 	mov r1, #1
@@ -4293,7 +4293,7 @@ ov73_021E7AC0: ; 0x021E7AC0
 	add r5, r1, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp, #4]
@@ -4306,7 +4306,7 @@ _021E7ADA:
 	mov r2, #0x48
 	bl MIi_CpuClearFast
 	add r0, r4, #0
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	str r0, [r5]
 	add r0, r4, #0
 	bl PlayerProfile_GetTrainerGender

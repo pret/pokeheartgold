@@ -483,7 +483,7 @@ _021E5CAE:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r4, #0
 	bl sub_02028EE4
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3692,7 +3692,7 @@ _021E7416:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp]
 	mov r0, #0x7e
 	lsl r0, r0, #2
@@ -4586,7 +4586,7 @@ _021E7B18:
 	ldr r0, [sp]
 	bl ov96_021E5F34
 	add r6, r0, #0
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	str r0, [sp, #0x28]
 	add r0, r6, #0
 	bl PlayerProfile_GetNamePtr

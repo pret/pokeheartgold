@@ -1771,7 +1771,7 @@ ov113_021E6680: ; 0x021E6680
 	str r0, [r4, #0x58]
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, [r4]
 	bl sub_02028F68
 	str r0, [r4, #0x5c]

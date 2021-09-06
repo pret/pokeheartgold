@@ -277,14 +277,14 @@ ov53_021E5B48: ; 0x021E5B48
 	ldr r5, [r4]
 	bl sub_02002DB4
 	ldr r0, [r4, #4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	ldr r1, [r1, #0x18]
 	bl sub_02028F44
 	ldr r0, [r4, #4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]

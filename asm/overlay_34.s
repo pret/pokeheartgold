@@ -349,7 +349,7 @@ ov34_0225D7A8: ; 0x0225D7A8
 	ldr r0, [r0]
 	str r0, [r4, #8]
 	ldr r0, [r5, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #0x10]
 	mov r0, #2
 	mov r1, #0xa9
@@ -1338,7 +1338,7 @@ _0225DFD0:
 	blt _0225DF94
 _0225DFD8:
 	bl sub_02035784
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	mov r1, #0x27
 	lsl r1, r1, #4
 	ldr r2, [r4, r1]
@@ -1721,7 +1721,7 @@ ov34_0225E2BC: ; 0x0225E2BC
 	add r7, r2, #0
 	str r3, [sp, #8]
 	str r4, [sp, #0xc]
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	cmp r5, r0
 	beq _0225E2E0
 	add r0, r6, #0
@@ -2046,7 +2046,7 @@ _0225E53A:
 	add r4, r0, #0
 	beq _0225E55C
 	ldr r0, [r5, #0x10]
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	add r3, r0, #0
 	ldr r1, [r5, #0x10]
 	add r0, r5, #0

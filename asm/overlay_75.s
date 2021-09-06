@@ -4926,7 +4926,7 @@ _0224902E:
 	bne _0224906C
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r4, #0x20]
 	mov r1, #0

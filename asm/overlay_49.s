@@ -2631,7 +2631,7 @@ _02259B02:
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r0, [r5]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0xfd
 	lsl r1, r1, #2
 	str r0, [r4, r1]

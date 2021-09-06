@@ -746,7 +746,7 @@ ov19_02259E64: ; 0x02259E64
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0

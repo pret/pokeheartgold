@@ -6355,9 +6355,9 @@ ov59_0223AE20: ; 0x0223AE20
 	sub sp, #0xc
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [r5, #0x10]
-	bl sub_02074640
+	bl GetPartyCount
 	mov r6, #0
 	add r4, r6, #0
 	str r0, [sp, #4]
@@ -6370,11 +6370,11 @@ ov59_0223AE20: ; 0x0223AE20
 _0223AE44:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _0223AE76
 	ldr r0, [r5]
@@ -7917,22 +7917,22 @@ ov59_0223BA64: ; 0x0223BA64
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strh r0, [r5, #4]
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strb r0, [r5, #7]
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strb r0, [r5, #6]
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	ldrh r0, [r5, #4]
 	mov r2, #0x1c
@@ -7947,7 +7947,7 @@ ov59_0223BA64: ; 0x0223BA64
 	ldr r2, [r5, #0xc]
 	add r0, r4, #0
 	mov r1, #0x77
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r5, #0
 	ldr r0, [r5]
 	add r1, #0x1e

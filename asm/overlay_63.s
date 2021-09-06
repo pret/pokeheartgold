@@ -4270,7 +4270,7 @@ ov63_0221E114: ; 0x0221E114
 	ldr r0, [r6]
 	mov r7, #0
 	ldr r0, [r0, #4]
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, #0
 	bhi _0221E148
 	b _0221E2EC
@@ -4283,14 +4283,14 @@ _0221E150:
 	ldr r0, [r6]
 	add r1, r7, #0
 	ldr r0, [r0, #4]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r4, r0, #0
 	bl sub_0206DD40
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221E172
 	b _0221E2D4
@@ -4305,22 +4305,22 @@ _0221E172:
 	str r4, [r1, r0]
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0
 	strh r0, [r5, #0xc]
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [r5, #8]
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strb r0, [r5, #0x10]
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strb r0, [r5, #0x11]
 	ldr r0, [r5, #8]
 	mov r2, #0
@@ -4334,12 +4334,12 @@ _0221E172:
 	add r0, r4, #0
 	mov r1, #0x99
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [r5, #0x14]
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strh r0, [r5, #0xe]
 	str r7, [r5, #0x18]
 	ldrh r0, [r5, #0xc]
@@ -4465,7 +4465,7 @@ _0221E2D4:
 	ldr r0, [r6]
 	add r7, r7, #1
 	ldr r0, [r0, #4]
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r7, r0
 	bhs _0221E2EC
 	b _0221E150
@@ -4495,7 +4495,7 @@ ov63_0221E310: ; 0x0221E310
 	add r0, r4, #0
 	mov r1, #0x7a
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	sub r1, r0, #1
 	cmp r1, #2
 	bhi _0221E334
@@ -4522,7 +4522,7 @@ _0221E350:
 	add r0, r4, #0
 	mov r1, #0x6e
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221E362
 	mov r5, #7
@@ -4545,12 +4545,12 @@ _0221E372:
 	b _0221E3F6
 _0221E382:
 	add r0, r6, #0
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r7, r0
 	beq _0221E39C
 	mov r5, #2
@@ -4566,7 +4566,7 @@ _0221E39C:
 	ldr r2, [r2]
 	add r0, r4, #0
 	mov r1, #0x91
-	bl sub_0206E540
+	bl GetMonData
 	add r0, r5, #0
 	add r0, #0x8c
 	add r5, #0x90
@@ -4581,7 +4581,7 @@ _0221E3CC:
 	add r0, r4, #0
 	mov r1, #0x99
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x7d
 	lsl r1, r1, #4
 	cmp r0, r1
@@ -4592,7 +4592,7 @@ _0221E3E2:
 	add r0, r4, #0
 	mov r1, #0x93
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _0221E3F4
 	mov r5, #0

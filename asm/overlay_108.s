@@ -6140,13 +6140,13 @@ ov108_021E8968: ; 0x021E8968
 	lsl r1, r1, #4
 	strb r0, [r5, r1]
 	ldr r0, [r4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	ldr r0, [r5, #0x20]
 	bl sub_0202F720
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	str r0, [sp, #4]
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerGender

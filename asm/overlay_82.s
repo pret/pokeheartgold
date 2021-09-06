@@ -1664,7 +1664,7 @@ _0223EA3C:
 	add r1, #0xc
 	ldr r0, [r5, r1]
 	mov r1, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r0, #0
 	mov r0, #0x82
 	lsl r0, r0, #2
@@ -1747,7 +1747,7 @@ ov82_0223EB9C: ; 0x0223EB9C
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r4, #0xa8
 	add r1, r0, #0
 	add r0, r4, #0
@@ -2286,10 +2286,10 @@ ov82_0223EFCC: ; 0x0223EFCC
 	mov r1, #0
 	add r7, r2, #0
 	add r4, r3, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0xb3
 	add r2, sp, #0x10
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #0x30
 	ldrb r1, [r1, #0x18]
 	add r0, r5, #0
@@ -2608,7 +2608,7 @@ ov82_0223F224: ; 0x0223F224
 	ldr r2, [r2]
 	strb r1, [r2, #0x12]
 	ldr r0, [r4, r0]
-	bl sub_02074640
+	bl GetPartyCount
 	add r1, r4, #0
 	add r1, #0xa4
 	ldr r1, [r1]
@@ -2659,7 +2659,7 @@ ov82_0223F224: ; 0x0223F224
 	add r0, r4, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r4, #0xa4
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -3307,7 +3307,7 @@ ov82_0223F74C: ; 0x0223F74C
 	add r0, #0xa0
 	ldr r0, [r0]
 	add r4, r1, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	mov r0, #0x89
 	lsl r0, r0, #2
 	strh r4, [r5, r0]
@@ -3349,10 +3349,10 @@ _0223F790:
 	sub r0, #0x14
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0xa1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _0223F7B0 ; =0x0000022A
 	strh r0, [r5, r1]
 	pop {r3, r4, r5, pc}

@@ -1836,9 +1836,9 @@ ov106_021E66FC: ; 0x021E66FC
 	ldr r0, [r0]
 	str r1, [sp, #0x18]
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r4, r0, #0
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, #0
 	bne _021E6720
 	mov r5, #0
@@ -1848,24 +1848,24 @@ ov106_021E66FC: ; 0x021E66FC
 _021E6720:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _021E6810 ; =0x000001ED
 	cmp r0, r1
 	bne _021E675E
 	add r0, r6, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r6, #0
