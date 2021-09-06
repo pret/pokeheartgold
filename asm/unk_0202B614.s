@@ -1476,3 +1476,12 @@ _0202C022:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0202BF80
+
+	thumb_func_start sub_0202C028
+sub_0202C028: ; 0x0202C028
+	ldr r3, _0202C030 ; =SavArray_get
+	mov r1, #0xc
+	bx r3
+	nop
+_0202C030: .word SavArray_get
+	thumb_func_end sub_0202C028

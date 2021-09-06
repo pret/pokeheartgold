@@ -98,7 +98,9 @@ Static main
 	Object unk_0202AEC0.o
 	Object mail.o
 	Object unk_0202B614.o
-	Object unk_0202C028.o
+	Object unk_0202C034.o
+	Object unk_0202C730.o
+	Object unk_0202C948.o
 	Object scrcmd.o
 	Object pokemon.o
 	### Vendor libraries ###
