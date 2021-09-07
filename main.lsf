@@ -100,7 +100,12 @@ Static main
 	Object unk_0202B614.o
 	Object unk_0202C034.o
 	Object unk_0202C730.o
-	Object unk_0202C948.o
+	Object coins.o
+	Object unk_0202C9A0.o
+	Object unk_0202CA24.o
+	Object seal_case.o
+	Object unk_0202CC54.o
+	Object igt.o
 	Object scrcmd.o
 	Object pokemon.o
 	### Vendor libraries ###
