@@ -110,6 +110,10 @@ Static main
 	Object unk_0202CF1C.o
 	Object unk_0202D230.o
 	Object unk_0202D938.o
+	Object unk_0202D968.o
+	Object unk_0202DB34.o
+	Object unk_0202DBA8.o
+	Object hall_of_fame.o
 	Object scrcmd.o
 	Object pokemon.o
 	### Vendor libraries ###
