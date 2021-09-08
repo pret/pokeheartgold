@@ -1,6 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D2AFC:
+	.space 0x1628
+
 	.text
 
 	thumb_func_start sub_02030A98
@@ -934,7 +939,7 @@ sub_02031008: ; 0x02031008
 	ldr r0, _02031074 ; =0x00001624
 	add r0, r4, r0
 	bl sub_02030F94
-	ldr r1, _02031078 ; =0x021D2AFC
+	ldr r1, _02031078 ; =_021D2AFC
 	ldr r2, _02031058 ; =0x00001628
 	add r0, r4, #0
 	bl MIi_CpuCopy8
@@ -948,15 +953,15 @@ _02031068: .word 0x00001618
 _0203106C: .word 0x0000161C
 _02031070: .word 0x00001620
 _02031074: .word 0x00001624
-_02031078: .word 0x021D2AFC
+_02031078: .word _021D2AFC
 	thumb_func_end sub_02031008
 
 	thumb_func_start sub_0203107C
 sub_0203107C: ; 0x0203107C
-	ldr r0, _02031080 ; =0x021D2AFC
+	ldr r0, _02031080 ; =_021D2AFC
 	bx lr
 	.balign 4, 0
-_02031080: .word 0x021D2AFC
+_02031080: .word _021D2AFC
 	thumb_func_end sub_0203107C
 
 	thumb_func_start sub_02031084
@@ -965,12 +970,12 @@ sub_02031084: ; 0x02031084
 	mov r1, #0x13
 	bl SavArray_get
 	add r1, r0, #0
-	ldr r0, _02031098 ; =0x021D2AFC
+	ldr r0, _02031098 ; =_021D2AFC
 	ldr r2, _0203109C ; =0x00001628
 	bl MIi_CpuCopy8
 	pop {r3, pc}
 	.balign 4, 0
-_02031098: .word 0x021D2AFC
+_02031098: .word _021D2AFC
 _0203109C: .word 0x00001628
 	thumb_func_end sub_02031084
 
@@ -979,12 +984,12 @@ sub_020310A0: ; 0x020310A0
 	push {r3, lr}
 	mov r1, #0x13
 	bl SavArray_get
-	ldr r1, _020310B4 ; =0x021D2AFC
+	ldr r1, _020310B4 ; =_021D2AFC
 	ldr r2, _020310B8 ; =0x00001628
 	bl MIi_CpuCopy8
 	pop {r3, pc}
 	nop
-_020310B4: .word 0x021D2AFC
+_020310B4: .word _021D2AFC
 _020310B8: .word 0x00001628
 	thumb_func_end sub_020310A0
 

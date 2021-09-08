@@ -30645,7 +30645,7 @@ ov74_02236034: ; 0x02236034
 	bl sub_020D1004
 	mov r0, #2
 	lsl r0, r0, #0xc
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldr r1, _02236068 ; =0x04000208
 	ldrh r0, [r1]
 	mov r0, #1
@@ -30654,7 +30654,7 @@ ov74_02236034: ; 0x02236034
 _0223605C:
 	mov r0, #2
 	lsl r0, r0, #0xc
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	pop {r3, pc}
 	nop
 _02236068: .word 0x04000208
@@ -30679,7 +30679,7 @@ ov74_02236074: ; 0x02236074
 	bl sub_020D1004
 	mov r0, #2
 	lsl r0, r0, #0xc
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldr r1, _02236098 ; =0x04000208
 	ldrh r0, [r1]
 	mov r0, #1

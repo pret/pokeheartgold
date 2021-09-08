@@ -26,7 +26,7 @@ Init_Timer3: ; 0x02025404
 	mov r0, #0x40
 	bl sub_020D1004
 	mov r0, #0x40
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	pop {r3, pc}
 	.balign 4, 0
 _0202542C: .word _021D2210

@@ -7564,7 +7564,7 @@ _020D0F28:
 	cmp r1, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r4
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D0F58: .word 0x021E1618
@@ -7757,7 +7757,7 @@ sub_020D1118: ; 0x020D1118
 	ldr r3, _020D1158 ; =0x021E1620
 	str r1, [ip, r6]
 	str r2, [r3, r6]
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	and r1, r0, r5, lsl r4
 	ldr r0, _020D115C ; =0x021E161C
 	str r1, [r0, r6]
@@ -7780,7 +7780,7 @@ sub_020D1160: ; 0x020D1160
 	ldr r3, _020D11A0 ; =0x021E1650
 	str r1, [ip, r4]
 	str r2, [r3, r4]
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldr r0, _020D11A4 ; =0x021E164C
 	mov r1, #1
 	str r1, [r0, r4]
@@ -7791,8 +7791,8 @@ _020D11A0: .word 0x021E1650
 _020D11A4: .word 0x021E164C
 	arm_func_end sub_020D1160
 
-	arm_func_start sub_020D11A8
-sub_020D11A8: ; 0x020D11A8
+	arm_func_start OS_SetIrqMask
+OS_SetIrqMask: ; 0x020D11A8
 	ldr r3, _020D11D0 ; =0x04000208
 	mov r1, #0
 	ldrh r2, [r3]
@@ -7805,10 +7805,10 @@ sub_020D11A8: ; 0x020D11A8
 	bx lr
 	.align 2, 0
 _020D11D0: .word 0x04000208
-	arm_func_end sub_020D11A8
+	arm_func_end OS_SetIrqMask
 
-	arm_func_start sub_020D11D4
-sub_020D11D4: ; 0x020D11D4
+	arm_func_start OS_EnableIrqMask
+OS_EnableIrqMask: ; 0x020D11D4
 	ldr r3, _020D1200 ; =0x04000208
 	mov r1, #0
 	ldrh r2, [r3]
@@ -7822,10 +7822,10 @@ sub_020D11D4: ; 0x020D11D4
 	bx lr
 	.align 2, 0
 _020D1200: .word 0x04000208
-	arm_func_end sub_020D11D4
+	arm_func_end OS_EnableIrqMask
 
-	arm_func_start sub_020D1204
-sub_020D1204: ; 0x020D1204
+	arm_func_start OS_DisableIrqMask
+OS_DisableIrqMask: ; 0x020D1204
 	ldr ip, _020D1230 ; =0x04000208
 	mov r2, #0
 	ldrh r3, [ip]
@@ -7839,10 +7839,10 @@ sub_020D1204: ; 0x020D1204
 	bx lr
 	.align 2, 0
 _020D1230: .word 0x04000208
-	arm_func_end sub_020D1204
+	arm_func_end OS_DisableIrqMask
 
-	arm_func_start sub_020D1234
-sub_020D1234: ; 0x020D1234
+	arm_func_start OS_ResetRequestIrqMask
+OS_ResetRequestIrqMask: ; 0x020D1234
 	ldr r3, _020D125C ; =0x04000208
 	mov r1, #0
 	ldrh r2, [r3]
@@ -7855,7 +7855,7 @@ sub_020D1234: ; 0x020D1234
 	bx lr
 	.align 2, 0
 _020D125C: .word 0x04000208
-	arm_func_end sub_020D1234
+	arm_func_end OS_ResetRequestIrqMask
 
 	arm_func_start sub_020D1260
 sub_020D1260: ; 0x020D1260
@@ -10701,7 +10701,7 @@ sub_020D33C0: ; 0x020D33C0
 	strh r2, [r3]
 	bl sub_020D1004
 	mov r0, #8
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldr r0, _020D342C ; =0x021E19D4
 	mov r1, #0
 	str r1, [r0, #4]
@@ -10873,7 +10873,7 @@ _020D3630:
 	strh r3, [r2]
 	mov r0, #0x10
 	strh r1, [r2, #2]
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D364C: .word 0x04000106
@@ -10897,7 +10897,7 @@ sub_020D365C: ; 0x020D365C
 	str r2, [r1, #4]
 	mov r0, #0x10
 	str r2, [r1, #8]
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020D3698: .word 0x021E19E4
@@ -11094,7 +11094,7 @@ sub_020D38EC: ; 0x020D38EC
 	mov r2, #0
 	mov r0, #0x10
 	strh r2, [r1]
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r0, _020D39D4 ; =OSi_IntrTable
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0xff8]
@@ -11168,7 +11168,7 @@ sub_020D39DC: ; 0x020D39DC
 	str r2, [r1, #0xc]
 	mov r0, #4
 	str r2, [r1, #0x10]
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r0, _020D3A20 ; =0x021E19F0
 	mov r1, #0
 	str r1, [r0, #8]
@@ -11342,9 +11342,9 @@ _020D3BAC:
 	ldr r0, _020D3C24 ; =0x00000003
 	bl sub_020D4294
 	ldr r0, _020D3C28 ; =0x00040000
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	ldr r0, _020D3C2C ; =0xFFFBFFFF
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldr r1, _020D3C30 ; =0x027FFC20
 	ldr r0, _020D3C34 ; =0x00000010
 	str r4, [r1]
@@ -12093,7 +12093,7 @@ _020D44E0:
 	str r3, [r2]
 	bl sub_020D1004
 	mov r0, #0x200000
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	bl sub_020D45A0
 	mov r0, r4
 	bl sub_020D3A4C
@@ -12134,7 +12134,7 @@ sub_020D45A0: ; 0x020D45A0
 	orr r3, r3, r5, lsr #2
 	bl sub_01FF8448
 	mov r0, #0x200000
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 _020D4618:
 	ldr r3, _020D4648 ; =0x84400000
@@ -12144,7 +12144,7 @@ _020D4618:
 	orr r3, r3, r5, lsr #2
 	bl sub_01FF8448
 	mov r0, #0x200000
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D463C: .word 0x021E1A20
@@ -12157,7 +12157,7 @@ _020D4648: .word 0x84400000
 sub_020D464C: ; 0x020D464C
 	stmdb sp!, {r3, lr}
 	mov r0, #0x200000
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r2, _020D46A4 ; =0x04000600
 	ldr r0, _020D46A8 ; =0x021E1A20
 	ldr r1, [r2]
@@ -14776,12 +14776,12 @@ _020D658C:
 	ldr r1, _020D6648 ; =0x04000184
 	mov r0, #0x40000
 	strh r2, [r1]
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldr r1, _020D664C ; =sub_020D674C
 	mov r0, #0x40000
 	bl sub_020D1004
 	mov r0, #0x40000
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r5, #0
 	ldr r3, _020D6650 ; =0x04000180
 	mov r1, r5
@@ -20752,14 +20752,14 @@ PM_GoSleepMode: ; 0x020DB43C
 	bl sub_020D3A38
 	str r0, [sp, #8]
 	ldr r0, _020DB668 ; =0x003FFFFF
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	str r0, [sp, #4]
 	bl sub_020D3438
 	cmp r0, #0
 	movne r0, #8
 	moveq r0, r4
 	orr r0, r0, #0x40000
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	ldr r0, [sp, #8]
 	bl sub_020D3A4C
 	ldr r2, _020DB664 ; =0x04000208
@@ -20869,7 +20869,7 @@ _020DB618:
 	bl sub_020D3AA8
 	bl sub_020D3A38
 	ldr r0, [sp, #4]
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	ldr r0, [sp, #8]
 	bl sub_020D3A4C
 	ldr r1, _020DB664 ; =0x04000208
@@ -23165,9 +23165,9 @@ sub_020DD314: ; 0x020DD314
 	cmp r0, #0
 	bne _020DD3D8
 	mov r0, #0x80000
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	mov r0, #0x80000
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldr r4, _020DD3E0 ; =0x021E3820
 	bl sub_020DD660
 	bl sub_020DDBC0
@@ -23302,9 +23302,9 @@ _020DD52C:
 	mov r0, #0x80000
 	bl sub_020D1004
 	mov r0, #0x80000
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	mov r0, #0x80000
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, r7
 	bl sub_020D3A4C
 	bl sub_020DD2C0
@@ -28342,7 +28342,7 @@ sub_020E1798: ; 0x020E1798
 	addeq sp, sp, #0x10
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, #0x40000
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	ldr r3, _020E1968 ; =0x04000208
 	mov r2, #1
 	ldrh r5, [r3]
@@ -28444,7 +28444,7 @@ _020E1938:
 	mov r0, r4
 	ldrh r1, [r2]
 	strh r5, [r2]
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0

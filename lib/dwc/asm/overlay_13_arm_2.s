@@ -30656,7 +30656,7 @@ ov13_0223FC04: ; 0x0223FC04
 	bl ov13_022402E0
 	mov r4, r0
 	mov r0, #1
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	mov r6, r0
 	cmp r5, #0
 	mov r0, #0x228
@@ -30733,7 +30733,7 @@ _0223FD2C:
 	bl sub_020D3F48
 _0223FD48:
 	mov r0, r6
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, r4
 	strb r8, [r4, #0xc]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -31165,7 +31165,7 @@ ov13_02240288: ; 0x02240288
 	mov r5, r0
 	mov r0, #1
 	mov r4, r1
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldrb r2, [r5, #3]
 	mov r6, r0
 	ldrh r1, [r5]
@@ -31182,7 +31182,7 @@ _022402C4:
 	add r1, r5, r1, lsl #2
 	str r4, [r1, #4]
 	strb r7, [r5, #3]
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov13_02240288
 
@@ -31192,7 +31192,7 @@ ov13_022402E0: ; 0x022402E0
 	mov r6, r0
 	mov r0, #1
 	mov r4, #0
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldrb r2, [r6, #3]
 	ldrb r1, [r6, #2]
 	mov r5, r0
@@ -31208,7 +31208,7 @@ ov13_022402E0: ; 0x022402E0
 	ldr r4, [r0, #4]
 _02240328:
 	mov r0, r5
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov13_022402E0
@@ -32373,7 +32373,7 @@ ov13_02241240: ; 0x02241240
 	mov r6, r0
 	mov r0, #1
 	mov r4, r1
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r1, _02241288 ; =0x0224F5E4
 	mov r5, r0
 	ldr r0, [r1]
@@ -32385,7 +32385,7 @@ ov13_02241240: ; 0x02241240
 	bl sub_020D3F48
 _02241278:
 	mov r0, r5
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
@@ -32410,7 +32410,7 @@ ov13_022412B0: ; 0x022412B0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #1
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r1, [r5]
 	mov r4, r0
 	cmp r1, #0
@@ -32419,7 +32419,7 @@ ov13_022412B0: ; 0x022412B0
 	ldr r0, [r0]
 	bl sub_020B5530
 	mov r0, r4
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, #0
 	str r0, [r5]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -32432,7 +32432,7 @@ ov13_022412F4: ; 0x022412F4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #1
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	mov r4, r0
 	cmp r5, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -32441,7 +32441,7 @@ ov13_022412F4: ; 0x022412F4
 	ldr r0, [r0]
 	bl sub_020B5530
 	mov r0, r4
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _0224132C: .word 0x0224F5E4
@@ -33025,9 +33025,9 @@ ov13_02241AC0: ; 0x02241AC0
 	ldr r2, [r0]
 	ldr r0, _02241B28 ; =0x00040018
 	str r2, [r1, #4]
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	mov r0, #1
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, #1
 	bl sub_020D108C
 	ldr r2, _02241B24 ; =0x0224F600
@@ -33036,7 +33036,7 @@ ov13_02241AC0: ; 0x02241AC0
 	mov r0, #1
 	bl sub_020D1004
 	mov r0, #1
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldr r2, _02241B30 ; =0x04000208
 	mov r0, #1
 	ldrh r1, [r2]
@@ -33060,7 +33060,7 @@ ov13_02241B34: ; 0x02241B34
 	ldr r0, _02241B6C ; =0x0224F600
 	strh r1, [r2]
 	ldr r0, [r0, #4]
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	ldr r1, _02241B6C ; =0x0224F600
 	mov r0, #1
 	ldr r1, [r1]
@@ -33117,7 +33117,7 @@ ov13_02241BE0: ; 0x02241BE0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldmia r4, {r2, r3}
 	str r3, [r2, #4]
 	ldr r3, [r4]
@@ -33126,7 +33126,7 @@ ov13_02241BE0: ; 0x02241BE0
 	str r3, [r2]
 	str r1, [r4, #4]
 	str r1, [r4]
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldmia sp!, {r4, pc}
 	arm_func_end ov13_02241BE0
 
@@ -33136,13 +33136,13 @@ ov13_02241C18: ; 0x02241C18
 	mov r5, r0
 	mov r0, #1
 	mov r4, r1
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r1, [r5]
 	str r4, [r1, #4]
 	ldr r1, [r5]
 	stmia r4, {r1, r5}
 	str r4, [r5]
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov13_02241C18
 
@@ -33370,7 +33370,7 @@ ov13_02241EBC: ; 0x02241EBC
 	mov r8, r1, asr #2
 	mov r0, #1
 	strh r8, [r6, #0xa]
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	mov r7, r0
 	cmp sl, #0
 	mov r0, #0x1a0
@@ -33450,7 +33450,7 @@ _02242018:
 	ldrh r1, [r6, #8]
 	mov r0, r7
 	str r1, [r4]
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, r6
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.balign 4, 0
@@ -33856,7 +33856,7 @@ ov13_0224253C: ; 0x0224253C
 	strb r6, [r4, #0x10]
 	mov r0, #1
 	strb r1, [r4, #0x11]
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r1, _022425C4 ; =0x0224F644
 	mov r5, r0
 	ldr r0, [r1]
@@ -33874,7 +33874,7 @@ _022425AC:
 	b _02242594
 _022425B4:
 	mov r0, r5
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.balign 4, 0

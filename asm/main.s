@@ -439,7 +439,7 @@ _02001020:
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_0203AA44
+	bl ShowCommunicationError
 	bl sub_02038D90
 	bl sub_02000F14
 	bl DoSoundUpdateFrame

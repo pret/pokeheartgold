@@ -132,6 +132,13 @@ Static main
 	Object unk_02032774.o
 	Object unk_02032844.o
 	Object unk_02033AE0.o
+	Object unk_02034354.o
+	Object unk_02034B0C.o
+	Object unk_02035900.o
+	Object unk_020379A0.o
+	Object unk_02037C94.o
+	Object unk_0203A3B0.o
+	Object communication_error.o
 	Object scrcmd.o
 	Object pokemon.o
 	### Vendor libraries ###

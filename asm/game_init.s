@@ -61,12 +61,12 @@ _0201A0DC: .word sub_020D422C
 sub_0201A0E0: ; 0x0201A0E0
 	push {r3, lr}
 	mov r0, #1
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r1, _0201A0F8 ; =sub_0201A0C0
 	mov r0, #1
 	bl sub_020D1004
 	mov r0, #1
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	pop {r3, pc}
 	.balign 4, 0
 _0201A0F8: .word sub_0201A0C0
@@ -153,7 +153,7 @@ sub_0201A16C: ; 0x0201A16C
 	bne _0201A18A
 	ldr r0, [r2, #8]
 	mov r0, #2
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	mov r0, #0
 	bl sub_020CD910
 	b _0201A1A0
@@ -163,7 +163,7 @@ _0201A18A:
 	mov r0, #2
 	bl sub_020D1004
 	mov r0, #2
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, #1
 	bl sub_020CD910
 _0201A1A0:
@@ -293,10 +293,10 @@ InitSystemForTheGame: ; 0x0201A200
 	mov r0, #1
 	bl sub_020D1004
 	mov r0, #1
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, #1
 	lsl r0, r0, #0x12
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldr r1, _0201A340 ; =0x04000208
 	ldrh r0, [r1]
 	mov r0, #1

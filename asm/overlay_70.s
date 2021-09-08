@@ -17447,7 +17447,7 @@ _022403BE:
 _022403C6:
 	mov r0, #3
 	mov r1, #1
-	bl sub_0203AA44
+	bl ShowCommunicationError
 _022403CE:
 	b _022403CE
 _022403D0:

@@ -83484,12 +83484,12 @@ _02096346:
 	mov r1, #0
 	bl sub_0200FBF4
 	mov r0, #1
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r1, _02096550 ; =sub_02096318
 	mov r0, #1
 	bl sub_020D1004
 	mov r0, #1
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
