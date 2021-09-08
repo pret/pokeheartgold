@@ -15791,7 +15791,7 @@ _0223F718:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, r5, #0
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 _0223F730:
 	ldr r0, [r4]
 	ldr r0, [r0, #0x1c]
@@ -17640,9 +17640,9 @@ ov70_02240500: ; 0x02240500
 	beq _0224053A
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl sub_020325EC
+	bl Sav2_Pokewalker_get
 	mov r1, #0x14
-	bl sub_02032744
+	bl Pokewalker_UnlockCourse
 _0224053A:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -18297,7 +18297,7 @@ ov70_022409C0: ; 0x022409C0
 	ldr r0, [r0, #0xc]
 	bl sub_02074058
 	add r1, r4, #0
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 	mov r2, #0x12
 	ldr r0, [r5]
 	lsl r2, r2, #4
@@ -23694,7 +23694,7 @@ ov70_0224342C: ; 0x0224342C
 _0224343C:
 	ldrh r1, [r5]
 	ldr r0, [sp]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	beq _0224344A
 	add r4, r4, #1
@@ -23740,7 +23740,7 @@ ov70_02243458: ; 0x02243458
 _02243492:
 	ldrh r1, [r5]
 	add r0, r7, #0
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	beq _022434AA
 	ldrh r2, [r5]

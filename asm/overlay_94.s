@@ -111,9 +111,9 @@ _021E59C6:
 	ldr r0, [r5, r0]
 	ldr r0, [r0, #0x1c]
 	bl sub_0203E344
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	add r1, r6, #0
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

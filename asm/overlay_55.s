@@ -151,11 +151,11 @@ _021E5A04:
 	ldr r0, [r5, #0x14]
 	bl ov55_021E5BC4
 	ldr r0, [r5, #0x10]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #2
 	bl sub_0202D1C0
 	ldr r0, [r5, #0x10]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x2e
 	bl sub_0202D0FC
 	mov r0, #1

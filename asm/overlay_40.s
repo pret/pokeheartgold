@@ -8513,7 +8513,7 @@ ov40_0222FB28: ; 0x0222FB28
 	mov r1, #0x83
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	add r1, r4, #0
 	bl sub_0202D1C0
 	pop {r4, pc}
@@ -20668,7 +20668,7 @@ ov40_02235DAC: ; 0x02235DAC
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [sp]
 	add r7, r6, #0
 	cmp r6, r4
@@ -20679,7 +20679,7 @@ ov40_02235DAC: ; 0x02235DAC
 _02235DE6:
 	ldrh r1, [r5]
 	ldr r0, [sp]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	bne _02235DF6
 	ldr r0, _02235E30 ; =0x0000FFFF
@@ -20752,7 +20752,7 @@ ov40_02235E34: ; 0x02235E34
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [sp, #4]
 	mov r0, #0x75
 	ldr r7, [sp]
@@ -20768,7 +20768,7 @@ ov40_02235E34: ; 0x02235E34
 _02235E92:
 	ldrh r1, [r5]
 	ldr r0, [sp, #4]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	bne _02235EA4
 	ldr r0, _02235F9C ; =0x0000FFFF
@@ -27490,7 +27490,7 @@ _02239558:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	ldr r1, [r6, r5]
 	bl sub_0202D18C
 	pop {r4, r5, r6, pc}
@@ -37985,7 +37985,7 @@ ov40_0223EBB8: ; 0x0223EBB8
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [sp]
 	add r7, r6, #0
 	cmp r6, r4
@@ -37996,7 +37996,7 @@ ov40_0223EBB8: ; 0x0223EBB8
 _0223EBF2:
 	ldrh r1, [r5]
 	ldr r0, [sp]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	bne _0223EC02
 	ldr r0, _0223EC3C ; =0x0000FFFF
@@ -38068,7 +38068,7 @@ ov40_0223EC40: ; 0x0223EC40
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [sp, #4]
 	ldr r0, _0223ED98 ; =0x000004C8
 	mov r1, #0
@@ -38083,7 +38083,7 @@ ov40_0223EC40: ; 0x0223EC40
 _0223EC9A:
 	ldrh r1, [r5]
 	ldr r0, [sp, #4]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	bne _0223ECAC
 	ldr r0, _0223ED9C ; =0x0000FFFF

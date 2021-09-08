@@ -25,7 +25,7 @@ ov24_022598C0: ; 0x022598C0
 	bl AllocMonZeroed
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #4]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	bl sub_0202A55C
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18

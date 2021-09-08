@@ -24001,7 +24001,7 @@ ov101_021F30AC: ; 0x021F30AC
 	mov r0, #0
 	strh r0, [r4, #0x20]
 	ldr r0, [r5, #0x1c]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	ldrb r1, [r4, #0x1a]
 	add r6, r0, #0
 	cmp r1, #2
@@ -24097,7 +24097,7 @@ _021F315A: ; jump table
 _021F3166:
 	bl ov101_021F2110
 	ldr r0, [r5, #0x1c]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	add r6, r0, #0
 	bl sub_0202A55C
 	add r1, r4, #0
@@ -30142,7 +30142,7 @@ ov101_021F5F40: ; 0x021F5F40
 	add r4, r0, #0
 	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	bl sub_0202A55C
 	ldrb r1, [r4, #4]
 	mov r2, #1
@@ -32296,7 +32296,7 @@ ov101_021F6FCC: ; 0x021F6FCC
 	add r7, r0, #0
 	ldr r0, [r7, #4]
 	add r5, r1, #0
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [sp, #8]
 	ldr r0, [r7, #4]
 	bl sub_020503D0

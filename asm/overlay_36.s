@@ -222,7 +222,7 @@ _021E5A94:
 	bl sub_0202A96C
 	bl sub_0202AE0C
 	add r0, r6, #0
-	bl sub_020325EC
+	bl Sav2_Pokewalker_get
 	bl sub_02032728
 	add r5, r0, #0
 	mov r4, #0

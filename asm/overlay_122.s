@@ -5250,7 +5250,7 @@ _021E80A4:
 	add r1, r4, #0
 	bl sub_0201A0FC
 	ldr r0, [r5, #0x10]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #6
 	bl sub_0202D1C0
 	pop {r3, r4, r5, pc}

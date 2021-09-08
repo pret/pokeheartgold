@@ -215,7 +215,7 @@ ov113_021E5A7C: ; 0x021E5A7C
 	strb r0, [r5, #0x19]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]

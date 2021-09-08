@@ -5898,7 +5898,7 @@ ov03_02256D34: ; 0x02256D34
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x97
 	lsl r1, r1, #2
 	str r0, [r4, r1]

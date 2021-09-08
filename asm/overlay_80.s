@@ -6993,7 +6993,7 @@ ov80_0222D168: ; 0x0222D168
 	bl ov80_0222BE10
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x45
 	add r2, r5, #0
 	bl sub_0202D144
@@ -7019,7 +7019,7 @@ ov80_0222D1A0: ; 0x0222D1A0
 	bl ov80_0222BE10
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x46
 	add r2, r5, #0
 	bl sub_0202D144
@@ -8949,7 +8949,7 @@ ov80_0222E078: ; 0x0222E078
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	add r1, r4, #0
 	bl sub_0202D0FC
 	mov r0, #0
@@ -8970,7 +8970,7 @@ ov80_0222E09C: ; 0x0222E09C
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	add r1, r4, #0
 	add r2, r6, #0
 	bl sub_0202D144
@@ -8988,7 +8988,7 @@ ov80_0222E0C8: ; 0x0222E0C8
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	add r1, r4, #0
 	bl sub_0202D1C0
 	mov r0, #0
@@ -14291,7 +14291,7 @@ ov80_022309F8: ; 0x022309F8
 	bl ov80_02230AE4
 	ldr r0, _02230A5C ; =0x000004F8
 	ldr r0, [r4, r0]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x41
 	bl sub_0202D0FC
 _02230A4C:
@@ -19318,7 +19318,7 @@ _02233244:
 	bl sub_02031228
 _0223326A:
 	add r0, r6, #0
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x42
 	add r2, r4, #0
 	bl sub_0202D144
@@ -23804,7 +23804,7 @@ _022354D8:
 	bl sub_0204B068
 	strh r0, [r4]
 	ldr r0, [r5, #8]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	ldrh r2, [r4]
 	mov r1, #0x45
 	bl sub_0202D144

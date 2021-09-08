@@ -41,8 +41,9 @@ sub_020293FC: ; 0x020293FC
 _02029404: .word MIi_CpuCopy8
 	thumb_func_end sub_020293FC
 
-	thumb_func_start sub_02029408
-sub_02029408: ; 0x02029408
+; Was inlined in Diamond, not anymore
+	thumb_func_start DexSpeciesIsInvalid
+DexSpeciesIsInvalid: ; 0x02029408
 	push {r3, lr}
 	cmp r0, #0
 	beq _02029414
@@ -58,7 +59,7 @@ _0202941C:
 	pop {r3, pc}
 	.balign 4, 0
 _02029420: .word 0x000001ED
-	thumb_func_end sub_02029408
+	thumb_func_end DexSpeciesIsInvalid
 
 	thumb_func_start sub_02029424
 sub_02029424: ; 0x02029424
@@ -341,7 +342,7 @@ _020295F8:
 	lsl r1, r4, #0x10
 	add r0, r5, #0
 	lsr r1, r1, #0x10
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	bne _0202960A
 	mov r0, #0
@@ -400,7 +401,7 @@ _02029662:
 	lsl r1, r6, #0x10
 	add r0, r7, #0
 	lsr r1, r1, #0x10
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	bne _02029674
 	mov r0, #0
@@ -573,7 +574,7 @@ _020297AC:
 	lsl r1, r4, #0x10
 	add r0, r5, #0
 	lsr r1, r1, #0x10
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	bne _020297BE
 	mov r0, #0
@@ -625,7 +626,7 @@ _0202980A:
 	lsl r1, r5, #0x10
 	add r0, r6, #0
 	lsr r1, r1, #0x10
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	bne _0202981C
 	mov r0, #0
@@ -906,7 +907,7 @@ _020299F8:
 	lsl r1, r5, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	bne _02029A0A
 	mov r0, #0
@@ -951,7 +952,7 @@ _02029A46:
 	lsl r1, r5, #0x10
 	add r0, r6, #0
 	lsr r1, r1, #0x10
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	bne _02029A58
 	mov r0, #0
@@ -1530,7 +1531,7 @@ _02029E5E:
 	lsl r1, r4, #0x10
 	add r0, r6, #0
 	lsr r1, r1, #0x10
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #1
 	bne _02029E6E
 	add r5, r5, #1
@@ -1622,7 +1623,7 @@ _02029F04:
 _02029F0E:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #1
 	bne _02029F28
 	lsl r0, r4, #1
@@ -1762,7 +1763,7 @@ Pokedex_CheckMonCaughtFlag: ; 0x02029FF8
 	bl GF_AssertFail
 _0202A00A:
 	add r0, r4, #0
-	bl sub_02029408
+	bl DexSpeciesIsInvalid
 	cmp r0, #0
 	beq _0202A018
 	mov r0, #0
@@ -1793,8 +1794,8 @@ _0202A03C:
 _0202A040: .word 0xBEEFCAFE
 	thumb_func_end Pokedex_CheckMonCaughtFlag
 
-	thumb_func_start sub_0202A044
-sub_0202A044: ; 0x0202A044
+	thumb_func_start Pokedex_CheckMonSeenFlag
+Pokedex_CheckMonSeenFlag: ; 0x0202A044
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -1805,7 +1806,7 @@ sub_0202A044: ; 0x0202A044
 	bl GF_AssertFail
 _0202A056:
 	add r0, r4, #0
-	bl sub_02029408
+	bl DexSpeciesIsInvalid
 	cmp r0, #0
 	beq _0202A064
 	mov r0, #0
@@ -1830,10 +1831,10 @@ _0202A082:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0202A084: .word 0xBEEFCAFE
-	thumb_func_end sub_0202A044
+	thumb_func_end Pokedex_CheckMonSeenFlag
 
-	thumb_func_start sub_0202A088
-sub_0202A088: ; 0x0202A088
+	thumb_func_start Pokedex_GetSeenSpindaPersonality
+Pokedex_GetSeenSpindaPersonality: ; 0x0202A088
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -1856,7 +1857,7 @@ _0202A0AA:
 	pop {r4, r5, r6, pc}
 	nop
 _0202A0B0: .word 0xBEEFCAFE
-	thumb_func_end sub_0202A088
+	thumb_func_end Pokedex_GetSeenSpindaPersonality
 
 	thumb_func_start sub_0202A0B4
 sub_0202A0B4: ; 0x0202A0B4
@@ -1871,7 +1872,7 @@ sub_0202A0B4: ; 0x0202A0B4
 	bl GF_AssertFail
 _0202A0C8:
 	add r0, r4, #0
-	bl sub_02029408
+	bl DexSpeciesIsInvalid
 	cmp r0, #0
 	beq _0202A0D8
 	mov r0, #0
@@ -2269,7 +2270,7 @@ sub_0202A36C: ; 0x0202A36C
 	bl GF_AssertFail
 _0202A3A2:
 	add r0, r4, #0
-	bl sub_02029408
+	bl DexSpeciesIsInvalid
 	cmp r0, #0
 	bne _0202A426
 	sub r0, r4, #1
@@ -2342,8 +2343,8 @@ _0202A42C: .word 0xBEEFCAFE
 _0202A430: .word 0x00000147
 	thumb_func_end sub_0202A36C
 
-	thumb_func_start sub_0202A434
-sub_0202A434: ; 0x0202A434
+	thumb_func_start Pokedex_SetMonCaughtFlag
+Pokedex_SetMonCaughtFlag: ; 0x0202A434
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r1, #0
@@ -2374,7 +2375,7 @@ sub_0202A434: ; 0x0202A434
 	bl GF_AssertFail
 _0202A476:
 	add r0, r4, #0
-	bl sub_02029408
+	bl DexSpeciesIsInvalid
 	cmp r0, #0
 	bne _0202A530
 	sub r0, r4, #1
@@ -2470,7 +2471,7 @@ _0202A530:
 	.balign 4, 0
 _0202A534: .word 0xBEEFCAFE
 _0202A538: .word 0x00000147
-	thumb_func_end sub_0202A434
+	thumb_func_end Pokedex_SetMonCaughtFlag
 
 	thumb_func_start sub_0202A53C
 sub_0202A53C: ; 0x0202A53C
@@ -2620,14 +2621,14 @@ _0202A62C: .word 0xBEEFCAFE
 _0202A630: .word 0x00000336
 	thumb_func_end sub_0202A614
 
-	thumb_func_start sub_0202A634
-sub_0202A634: ; 0x0202A634
+	thumb_func_start Sav2_Pokedex_get
+Sav2_Pokedex_get: ; 0x0202A634
 	ldr r3, _0202A63C ; =SavArray_get
 	mov r1, #6
 	bx r3
 	nop
 _0202A63C: .word SavArray_get
-	thumb_func_end sub_0202A634
+	thumb_func_end Sav2_Pokedex_get
 
 	thumb_func_start sub_0202A640
 sub_0202A640: ; 0x0202A640

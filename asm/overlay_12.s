@@ -9572,7 +9572,7 @@ _0223C2CE:
 	bne _0223C2EE
 	ldr r0, [r5, #0x60]
 	add r1, r6, #0
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 _0223C2EE:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov12_0223C288
@@ -9604,7 +9604,7 @@ ov12_0223C2F0: ; 0x0223C2F0
 	bl ov12_0223A880
 	add r1, r0, #0
 	ldr r0, [r5, #0x60]
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 _0223C32C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

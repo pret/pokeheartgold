@@ -1062,7 +1062,7 @@ ov14_021E611C: ; 0x021E611C
 	ldr r2, [r6, #4]
 	bl ov14_021E60C0
 	ldr r1, [r6]
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 	ldr r7, [r4, #4]
 	ldr r0, [r5, #8]
 	sub r7, #0x1e
@@ -1107,7 +1107,7 @@ ov14_021E6184: ; 0x021E6184
 	ldr r2, [r4, #4]
 	bl ov14_021E60C0
 	ldr r1, [r4]
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 	ldr r0, [r5, #8]
 	ldr r1, [r4]
 	bl sub_02074524

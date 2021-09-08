@@ -13,16 +13,16 @@ _020F67DC:
 
 	.text
 
-	thumb_func_start sub_0202CF1C
-sub_0202CF1C: ; 0x0202CF1C
+	thumb_func_start GameStats_sizeof
+GameStats_sizeof: ; 0x0202CF1C
 	mov r0, #7
 	lsl r0, r0, #6
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0202CF1C
+	thumb_func_end GameStats_sizeof
 
-	thumb_func_start sub_0202CF24
-sub_0202CF24: ; 0x0202CF24
+	thumb_func_start GameStats_init
+GameStats_init: ; 0x0202CF24
 	push {r4, lr}
 	add r4, r0, #0
 	mov r2, #7
@@ -30,7 +30,7 @@ sub_0202CF24: ; 0x0202CF24
 	add r1, r4, #0
 	lsl r2, r2, #6
 	bl sub_020D47EC
-	ldr r1, _0202CF4C ; =0x027FFC3C
+	ldr r1, _0202CF4C ; =0x027FFC3C ; HW_VBLANK_COUNT_BUF
 	ldr r0, [r1]
 	ldr r1, [r1]
 	lsl r0, r0, #8
@@ -42,18 +42,18 @@ sub_0202CF24: ; 0x0202CF24
 	bl sub_0202CF60
 	pop {r4, pc}
 	.balign 4, 0
-_0202CF4C: .word 0x027FFC3C
+_0202CF4C: .word 0x027FFC3C ; HW_VBLANK_COUNT_BUF
 _0202CF50: .word 0x000001BE
-	thumb_func_end sub_0202CF24
+	thumb_func_end GameStats_init
 
-	thumb_func_start sub_0202CF54
-sub_0202CF54: ; 0x0202CF54
+	thumb_func_start Sav2_GameStats_get
+Sav2_GameStats_get: ; 0x0202CF54
 	ldr r3, _0202CF5C ; =SavArray_get
 	mov r1, #0x10
 	bx r3
 	nop
 _0202CF5C: .word SavArray_get
-	thumb_func_end sub_0202CF54
+	thumb_func_end Sav2_GameStats_get
 
 	thumb_func_start sub_0202CF60
 sub_0202CF60: ; 0x0202CF60
@@ -429,8 +429,8 @@ sub_0202D208: ; 0x0202D208
 _0202D210: .word sub_0202D18C
 	thumb_func_end sub_0202D208
 
-	thumb_func_start sub_0202D214
-sub_0202D214: ; 0x0202D214
+	thumb_func_start GameStats_IncSpeciesCaught
+GameStats_IncSpeciesCaught: ; 0x0202D214
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
@@ -444,4 +444,4 @@ sub_0202D214: ; 0x0202D214
 _0202D22C:
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202D214
+	thumb_func_end GameStats_IncSpeciesCaught

@@ -3204,7 +3204,7 @@ ov74_02228920: ; 0x02228920
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #4]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [r4, #8]
 	ldr r0, [r4, #4]
 	bl sub_02028EC0
@@ -4244,7 +4244,7 @@ ov74_02229200: ; 0x02229200
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #8]
 	bl Sav2_PlayerData_GetOptionsAddr

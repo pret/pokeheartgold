@@ -3174,7 +3174,7 @@ ov44_0222B778: ; 0x0222B778
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [sp, #0x10]
 	mov r0, #0x16
 	lsl r0, r0, #4

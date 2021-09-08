@@ -23921,7 +23921,7 @@ ov18_021F1A7C: ; 0x021F1A7C
 	ldr r0, [r5]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0202A088
+	bl Pokedex_GetSeenSpindaPersonality
 	add r6, r0, #0
 	b _021F1AC8
 _021F1AC6:
@@ -33838,7 +33838,7 @@ ov18_021F69E8: ; 0x021F69E8
 	ldr r0, [r5]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0202A088
+	bl Pokedex_GetSeenSpindaPersonality
 	add r6, r0, #0
 	b _021F6A22
 _021F6A20:
@@ -36881,7 +36881,7 @@ ov18_021F8198: ; 0x021F8198
 _021F81AE:
 	ldrh r1, [r4]
 	ldr r0, [sp, #4]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	beq _021F81CA
 	ldr r1, [r5]
@@ -37435,7 +37435,7 @@ _021F85BA:
 	tst r0, r2
 	bne _021F85EA
 	ldr r0, [sp, #0x30]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	beq _021F85EA
 	ldr r1, [r4]
@@ -37470,7 +37470,7 @@ _021F8604:
 	tst r0, r7
 	beq _021F862C
 	ldr r0, [sp, #0x30]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	beq _021F862C
 	ldr r1, [r4]

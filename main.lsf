@@ -114,6 +114,24 @@ Static main
 	Object unk_0202DB34.o
 	Object unk_0202DBA8.o
 	Object hall_of_fame.o
+	Object unk_0202E41C.o
+	Object unk_0202E4B0.o
+	Object unk_0202EB30.o
+	Object unk_0202ECC0.o
+	Object unk_0202ED18.o
+	Object unk_0202ED74.o
+	Object unk_0202F574.o
+	Object unk_0202FA5C.o
+	Object unk_02030A98.o
+	Object unk_0203170C.o
+	Object unk_020318C8.o
+	Object unk_02031904.o
+	Object unk_02031AF0.o
+	Object unk_02031B0C.o
+	Object pokewalker.o
+	Object unk_02032774.o
+	Object unk_02032844.o
+	Object unk_02033AE0.o
 	Object scrcmd.o
 	Object pokemon.o
 	### Vendor libraries ###

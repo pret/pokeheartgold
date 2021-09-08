@@ -5599,7 +5599,7 @@ _0224866C:
 	cmp r4, #4
 	blt _0224866C
 	ldr r0, [r7, #0xc]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [r5, #0x18]
 	ldr r0, [r7, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr

@@ -3230,7 +3230,7 @@ ov99_021E723C: ; 0x021E723C
 	push {r3, lr}
 	bl ov99_021E71DC
 	mov r1, #0
-	bl sub_0202A088
+	bl Pokedex_GetSeenSpindaPersonality
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov99_021E723C

@@ -217,7 +217,7 @@ ov17_02201D30: ; 0x02201D30
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	str r0, [r5, #0x10]
 	ldr r0, [r5]
 	bl ov16_022014A0

@@ -2672,7 +2672,7 @@ _0222B0F4: .word ov45_0222BD94
 ov45_0222B0F8: ; 0x0222B0F8
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x2f
 	bl sub_0202D0FC
 	pop {r3, pc}
@@ -2682,7 +2682,7 @@ ov45_0222B0F8: ; 0x0222B0F8
 ov45_0222B108: ; 0x0222B108
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x77
 	bl sub_0202D0FC
 	pop {r3, pc}
@@ -3692,7 +3692,7 @@ ov45_0222B8A0: ; 0x0222B8A0
 	bl SavArray_PlayerParty_get
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	bl sub_0202CA44

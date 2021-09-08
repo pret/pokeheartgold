@@ -96,7 +96,7 @@ _021E80D6:
 	str r0, [r4, r1]
 	add r0, r6, #0
 	bl sub_020072A4
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	str r0, [r4, #8]
 	add r0, r6, #0
 	bl sub_020072A4

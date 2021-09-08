@@ -313,7 +313,7 @@ _02258A80:
 	add r0, #0x70
 	bl ov46_02259474
 	ldr r0, [r5]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x21
 	bl sub_0202D1C0
 	bl GF_RTC_DateTimeToSec

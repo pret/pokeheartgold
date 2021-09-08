@@ -7988,8 +7988,8 @@ _0207177C:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02071754
 
-	thumb_func_start sub_02071780
-sub_02071780: ; 0x02071780
+	thumb_func_start CopyBoxPokemonToPokemon
+CopyBoxPokemonToPokemon: ; 0x02071780
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r5, r0, #0
@@ -8050,7 +8050,7 @@ _020717AA:
 	bl sub_0206E250
 	add sp, #0x1c
 	pop {r4, r5, pc}
-	thumb_func_end sub_02071780
+	thumb_func_end CopyBoxPokemonToPokemon
 
 	thumb_func_start sub_02071808
 sub_02071808: ; 0x02071808
@@ -14873,7 +14873,7 @@ _0207490C: .word SavArray_get
 	thumb_func_start sub_02074910
 sub_02074910: ; 0x02074910
 	push {r3, lr}
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	bl sub_0207491C
 	pop {r3, pc}
 	thumb_func_end sub_02074910
@@ -18454,7 +18454,7 @@ _02076478:
 	bne _020764F4
 	ldr r0, [r4, #0x48]
 	ldr r1, [r4, #0x28]
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 	ldr r0, [r4, #0x50]
 	mov r1, #0xd
 	bl sub_0202D0FC
@@ -19583,7 +19583,7 @@ _02076D62:
 	bl sub_02074524
 	ldr r0, [r4, #0x48]
 	add r1, r5, #0
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 	ldr r0, [r4, #0x50]
 	mov r1, #0xd
 	bl sub_0202D0FC
@@ -54061,7 +54061,7 @@ _02087C9E:
 	lsl r1, r1, #2
 	str r0, [r2, r1]
 	ldr r0, [r5, #0xc]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x51
 	ldr r2, [r5, #0x10]
 	lsl r1, r1, #2
@@ -57037,7 +57037,7 @@ _0208948A:
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 	b _020894B4
 _020894AE:
 	bl sub_0208A520
@@ -57478,7 +57478,7 @@ sub_020897F0: ; 0x020897F0
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
@@ -64676,7 +64676,7 @@ sub_0208D0A4: ; 0x0208D0A4
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -72153,7 +72153,7 @@ sub_02090C94: ; 0x02090C94
 	strb r5, [r4]
 	strb r7, [r4, #1]
 	add r0, r6, #0
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [r4, #0xc]
 	add r0, r6, #0
 	bl sub_02015C28
@@ -74038,7 +74038,7 @@ sub_02091914: ; 0x02091914
 _02091932:
 	ldrh r1, [r5]
 	ldr r0, [sp, #8]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	beq _02091960
 	ldrh r3, [r5]
@@ -76731,7 +76731,7 @@ _02092EC4:
 	cmp r6, #6
 	blo _02092F2E
 	ldr r0, [r4, #0x38]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	bl sub_0202A55C
 	cmp r0, #0
 	beq _02092F2E
@@ -77011,7 +77011,7 @@ sub_020930C4: ; 0x020930C4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	bl sub_02029E0C
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
@@ -83209,7 +83209,7 @@ _0209612C:
 _0209613C:
 	ldr r0, [sp, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	add r6, r0, #0
 	ldr r0, [sp, #0x1c]
 	ldr r0, [r0, #0xc]
@@ -83236,7 +83236,7 @@ _02096172:
 	bl GetPartyMonByIndex
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 	mov r0, #4
 	str r0, [r7]
 	ldr r0, [sp, #0x1c]
@@ -85305,7 +85305,7 @@ sub_0209707C: ; 0x0209707C
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x18]
 	ldr r0, [r5, #0xc]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	str r0, [r4, #0x1c]
 	ldr r0, [r4, #0x18]
 	bl sub_0202ADCC

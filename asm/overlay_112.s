@@ -4210,11 +4210,11 @@ ov112_021E795C: ; 0x021E795C
 	ldr r1, _021E799C ; =0x0001E43C
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl sub_020325EC
+	bl Sav2_Pokewalker_get
 	ldr r1, _021E79A0 ; =0x0001E440
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	ldr r1, _021E79A4 ; =0x0001E444
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -7309,7 +7309,7 @@ ov112_021E95A0: ; 0x021E95A0
 	add r2, sp, #0
 	bl sub_02032674
 	ldr r0, [r6, #0x20]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	bl sub_0202A55C
 	cmp r0, #0
 	beq _021E95C4
@@ -7336,7 +7336,7 @@ _021E95CE:
 	ldr r0, _021E9604 ; =0x0001E440
 	add r1, r4, #0
 	ldr r0, [r6, r0]
-	bl sub_02032744
+	bl Pokewalker_UnlockCourse
 	ldr r0, _021E960C ; =0x0001EC78
 	add sp, #8
 	str r4, [r6, r0]
@@ -7361,7 +7361,7 @@ ov112_021E9610: ; 0x021E9610
 	add r6, r0, #0
 	ldr r0, [r6, #0x20]
 	str r1, [sp]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	bl sub_0202A55C
 	cmp r0, #0
 	beq _021E9628
@@ -17772,7 +17772,7 @@ _021EE854:
 	ldr r0, _021EE8B8 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 _021EE890:
 	add r0, r4, #0
 	bl FreeToHeap
@@ -17821,7 +17821,7 @@ _021EE8E6:
 	str r0, [sp]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 	add r0, r5, #0
 	mov r1, #8
 	add r2, sp, #0
@@ -18150,7 +18150,7 @@ _021EEB3A:
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 _021EEBA4:
 	ldr r0, [sp, #8]
 	add r6, #0x10
@@ -18254,7 +18254,7 @@ _021EEBA4:
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 	ldr r0, _021EECEC ; =0x0001E430
 	ldr r0, [r5, r0]
 	cmp r0, #0
@@ -22750,7 +22750,7 @@ _021F0FB8:
 _021F0FC2:
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_020325EC
+	bl Sav2_Pokewalker_get
 	ldr r0, [r5]
 	ldr r0, [r0]
 	bl Sav2_PlayerData_GetProfileAddr

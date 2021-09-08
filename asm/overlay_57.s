@@ -5445,7 +5445,7 @@ _0223A39A:
 	bl ov57_022394AC
 	ldr r0, [r4]
 	ldr r0, [r0, #0x28]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #7
 	bl sub_0202D1C0
 	mov r0, #0xfb
