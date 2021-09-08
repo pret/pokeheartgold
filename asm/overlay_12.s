@@ -9612,13 +9612,13 @@ _0223C32C:
 
 	thumb_func_start ov12_0223C330
 ov12_0223C330: ; 0x0223C330
-	ldr r3, _0223C33C ; =sub_02029FF8
+	ldr r3, _0223C33C ; =Pokedex_CheckMonCaughtFlag
 	lsl r1, r1, #0x10
 	ldr r0, [r0, #0x60]
 	lsr r1, r1, #0x10
 	bx r3
 	nop
-_0223C33C: .word sub_02029FF8
+_0223C33C: .word Pokedex_CheckMonCaughtFlag
 	thumb_func_end ov12_0223C330
 
 	thumb_func_start ov12_0223C340

@@ -302,7 +302,7 @@ _021E5B12:
 	ldr r0, [r4]
 	ldr r1, _021E5B5C ; =0x000001E7
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #1
 	bne _021E5B32
 	ldr r0, [r4]
@@ -1796,7 +1796,7 @@ ov18_021E673C: ; 0x021E673C
 	ldr r0, [r5]
 	ldrh r1, [r5, r1]
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021E675E
 	mov r5, #0
@@ -21322,7 +21322,7 @@ _021F05FE:
 	ldr r0, [r5]
 	ldrh r1, [r5, r1]
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F0622
 	mov r4, #2
@@ -36117,7 +36117,7 @@ ov18_021F7B94: ; 0x021F7B94
 	ldr r0, [r5]
 	ldrh r1, [r5, r1]
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	bne _021F7BDE
 	mov r0, #0
@@ -36260,7 +36260,7 @@ _021F7CC6:
 	ldr r0, [r4]
 	ldrh r1, [r4, r1]
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F7CE0
 	mov r0, #1
@@ -36361,7 +36361,7 @@ _021F7D84:
 	ldr r0, [r4]
 	ldrh r1, [r4, r1]
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F7D9E
 	mov r0, #1
@@ -36926,7 +36926,7 @@ _021F81F8:
 	strh r0, [r5]
 	ldrh r1, [r4]
 	ldr r0, [sp]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F8214
 	mov r0, #2
@@ -37547,7 +37547,7 @@ _021F8680:
 	bgt _021F86BA
 	ldr r0, [sp, #0x2c]
 	add r1, r2, #0
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F86BA
 	ldr r1, [r5]
@@ -37626,7 +37626,7 @@ _021F8710:
 	bgt _021F874E
 	ldr r0, [sp, #0x2c]
 	add r1, r2, #0
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F874E
 	ldr r1, [r5]
@@ -37727,7 +37727,7 @@ _021F87E0:
 	cmp r1, r0
 	bne _021F880A
 	ldr r0, [sp, #0x34]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F880A
 	ldr r0, [sp, #4]

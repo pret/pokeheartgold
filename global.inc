@@ -25036,7 +25036,7 @@
 .public sub_02029F60
 .public sub_02029F74
 .public sub_02029FAC
-.public sub_02029FF8
+.public Pokedex_CheckMonCaughtFlag
 .public sub_0202A044
 .public sub_0202A088
 .public sub_0202A0B4
@@ -28978,5 +28978,10 @@
 .public sub_0202C7B4
 .public sub_0202C88C
 .public sub_0202CAE4
+.public sub_0202D214
+.public sub_0202D240
+.public sub_0202D254
+.public sub_0202D274
+.public sub_0202D640
 .public gGameLanguage
 .public gGameVersion

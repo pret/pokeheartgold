@@ -32491,7 +32491,7 @@ _021F713E:
 	strh r4, [r1, r0]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	bne _021F7168
 	ldrh r1, [r5, #0xe]

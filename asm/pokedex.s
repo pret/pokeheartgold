@@ -1497,7 +1497,7 @@ _02029E22:
 	lsl r1, r4, #0x10
 	add r0, r6, #0
 	lsr r1, r1, #0x10
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #1
 	bne _02029E32
 	add r5, r5, #1
@@ -1579,7 +1579,7 @@ _02029EB0:
 _02029EBA:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #1
 	bne _02029ED4
 	lsl r0, r4, #1
@@ -1689,7 +1689,7 @@ _02029F7E:
 	lsl r1, r4, #0x10
 	add r0, r6, #0
 	lsr r1, r1, #0x10
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #1
 	bne _02029F9E
 	lsl r0, r4, #0x10
@@ -1721,7 +1721,7 @@ sub_02029FAC: ; 0x02029FAC
 _02029FBA:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #1
 	bne _02029FDE
 	lsl r0, r4, #1
@@ -1750,8 +1750,8 @@ _02029FDE:
 _02029FF4: .word 0x000001ED
 	thumb_func_end sub_02029FAC
 
-	thumb_func_start sub_02029FF8
-sub_02029FF8: ; 0x02029FF8
+	thumb_func_start Pokedex_CheckMonCaughtFlag
+Pokedex_CheckMonCaughtFlag: ; 0x02029FF8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -1791,7 +1791,7 @@ _0202A03C:
 	pop {r3, r4, r5, pc}
 	nop
 _0202A040: .word 0xBEEFCAFE
-	thumb_func_end sub_02029FF8
+	thumb_func_end Pokedex_CheckMonCaughtFlag
 
 	thumb_func_start sub_0202A044
 sub_0202A044: ; 0x0202A044

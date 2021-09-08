@@ -106,6 +106,10 @@ Static main
 	Object seal_case.o
 	Object unk_0202CC54.o
 	Object igt.o
+	Object sav_chatot.o
+	Object unk_0202CF1C.o
+	Object unk_0202D230.o
+	Object unk_0202D938.o
 	Object scrcmd.o
 	Object pokemon.o
 	### Vendor libraries ###
