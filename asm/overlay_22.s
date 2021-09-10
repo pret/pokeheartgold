@@ -11,7 +11,7 @@ ov22_022598C0: ; 0x022598C0
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19,7 +19,7 @@ ov22_022598C0: ; 0x022598C0
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -89,7 +89,7 @@ ov22_02259934: ; 0x02259934
 ov22_02259960: ; 0x02259960
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -99,7 +99,7 @@ ov22_02259960: ; 0x02259960
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02028EB4
+	bl Sav2_PlayerData_GetCoinsAddr
 	bl sub_0202C950
 	strh r0, [r4]
 	mov r0, #0
@@ -114,14 +114,14 @@ ov22_0225998C: ; 0x0225998C
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl sub_020403AC
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02028EB4
+	bl Sav2_PlayerData_GetCoinsAddr
 	add r1, r5, #0
 	bl sub_0202C954
 	mov r0, #0
@@ -136,14 +136,14 @@ ov22_022599B8: ; 0x022599B8
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl sub_020403AC
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02028EB4
+	bl Sav2_PlayerData_GetCoinsAddr
 	add r1, r5, #0
 	bl sub_0202C98C
 	mov r0, #0
@@ -158,14 +158,14 @@ ov22_022599E4: ; 0x022599E4
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl sub_02040374
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02028EB4
+	bl Sav2_PlayerData_GetCoinsAddr
 	ldrh r1, [r5]
 	bl sub_0202C98C
 	mov r0, #0
@@ -180,7 +180,7 @@ ov22_02259A10: ; 0x02259A10
 	add r1, r6, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r6, #0
 	add r0, #0x80
@@ -188,10 +188,10 @@ ov22_02259A10: ; 0x02259A10
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02028EB4
+	bl Sav2_PlayerData_GetCoinsAddr
 	bl sub_0202C950
 	cmp r0, r6
 	bhs _02259A46
@@ -213,7 +213,7 @@ ov22_02259A50: ; 0x02259A50
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -221,14 +221,14 @@ ov22_02259A50: ; 0x02259A50
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl sub_02040374
 	add r5, r0, #0
 	ldr r0, [r6, #0xc]
-	bl sub_02028EB4
+	bl Sav2_PlayerData_GetCoinsAddr
 	bl sub_0202C950
 	ldrh r1, [r5]
 	cmp r0, r1
@@ -251,7 +251,7 @@ ov22_02259A9C: ; 0x02259A9C
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -259,14 +259,14 @@ ov22_02259A9C: ; 0x02259A9C
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl sub_020403AC
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02028EB4
+	bl Sav2_PlayerData_GetCoinsAddr
 	add r1, r5, #0
 	bl sub_0202C974
 	strh r0, [r6]
@@ -281,7 +281,7 @@ ov22_02259ADC: ; 0x02259ADC
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -303,7 +303,7 @@ ov22_02259B08: ; 0x02259B08
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -325,7 +325,7 @@ ov22_02259B34: ; 0x02259B34
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -333,7 +333,7 @@ ov22_02259B34: ; 0x02259B34
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]

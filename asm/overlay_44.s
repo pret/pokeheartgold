@@ -3217,11 +3217,11 @@ _0222B7C0:
 	blt _0222B7C0
 _0222B7F0:
 	ldr r0, [sp, #0x14]
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x18]
 	ldr r0, [sp, #0x14]
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x19]
 	ldr r0, [sp, #0x10]
@@ -3238,7 +3238,7 @@ _0222B7F0:
 	mov r1, #0
 	strb r1, [r0, #0x1c]
 	ldr r0, [sp, #0x14]
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x1d]
 	ldr r0, [sp, #0x14]
@@ -4391,7 +4391,7 @@ ov44_0222C120: ; 0x0222C120
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x35
 	add r6, r0, #0
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
 	mov r0, #0x2e
 	lsl r0, r0, #4
@@ -11131,14 +11131,14 @@ ov44_0222F780: ; 0x0222F780
 	cmp r6, r0
 	beq _0222F7BA
 	mov r0, #0x35
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r4, r0, #0
 	ldr r0, [r5]
 	add r1, r6, #0
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02028F24
+	bl CopyPlayerName
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -12696,14 +12696,14 @@ _02230322:
 	mov r3, #0x68
 	bl sub_020200FC
 	mov r0, #0x35
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r6, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
 	bl sub_0202C298
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_02028F24
+	bl CopyPlayerName
 	ldr r0, _0223069C ; =0x00000B1C
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -15297,14 +15297,14 @@ ov44_02231918: ; 0x02231918
 	cmp r6, r0
 	beq _02231950
 	mov r0, #0x35
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r4, r0, #0
 	ldr r0, [r5]
 	add r1, r6, #0
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02028F24
+	bl CopyPlayerName
 	ldr r0, _02231954 ; =0x00000B1C
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -19954,7 +19954,7 @@ ov44_02233CA0: ; 0x02233CA0
 	add r0, r2, #0
 	add r4, r3, #0
 	bl sub_02034818
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -20621,7 +20621,7 @@ ov44_022340EC: ; 0x022340EC
 	bl GF_AssertFail
 _0223413C:
 	add r0, r6, #0
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	add r1, sp, #4
 	strh r0, [r1, #0xa]
 	b _0223415C

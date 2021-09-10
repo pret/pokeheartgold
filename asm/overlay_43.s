@@ -1538,14 +1538,14 @@ ov43_0222AB20: ; 0x0222AB20
 	bl sub_0202C6F4
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r5, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_02028F24
+	bl CopyPlayerName
 	ldr r0, [r4, #0x50]
 	mov r1, #0
 	add r2, r5, #0
@@ -1563,7 +1563,7 @@ ov43_0222AB5C: ; 0x0222AB5C
 	add r6, r1, #0
 	add r0, r3, #0
 	add r7, r2, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202C6F4
@@ -1571,7 +1571,7 @@ ov43_0222AB5C: ; 0x0222AB5C
 	bl sub_0202C298
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02028F24
+	bl CopyPlayerName
 	ldr r0, [r5, #0x50]
 	mov r1, #0
 	add r2, r4, #0
@@ -2118,13 +2118,13 @@ _0222AF88:
 	cmp r0, #0
 	beq _0222B08A
 	add r0, r7, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x58]
 	bl String_c_str
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_02028F24
+	bl CopyPlayerName
 	ldr r0, [r6, #0x50]
 	ldr r2, [sp, #0xc]
 	mov r1, #0

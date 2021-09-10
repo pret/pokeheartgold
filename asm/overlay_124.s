@@ -123,7 +123,7 @@ _02260D24:
 	ldr r0, [r6, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r4, #0
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #1
 	bne _02260D36
 	add r5, r5, #1

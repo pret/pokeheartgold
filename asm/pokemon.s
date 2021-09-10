@@ -10239,7 +10239,7 @@ sub_02072788: ; 0x02072788
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r7, r0, #0
 	mov r0, #8
 	add r1, r6, #0
@@ -15663,10 +15663,10 @@ sub_02074ED8: ; 0x02074ED8
 
 	thumb_func_start sub_02074EDC
 sub_02074EDC: ; 0x02074EDC
-	ldr r3, _02074EE0 ; =sub_02028ECC
+	ldr r3, _02074EE0 ; =PlayerProfile_sizeof
 	bx r3
 	.balign 4, 0
-_02074EE0: .word sub_02028ECC
+_02074EE0: .word PlayerProfile_sizeof
 	thumb_func_end sub_02074EDC
 
 	thumb_func_start sub_02074EE4
@@ -16004,7 +16004,7 @@ _020750F4:
 	add r0, #0xf8
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -16029,7 +16029,7 @@ _0207511C:
 	mov r0, #0
 	pop {r4, pc}
 _0207512A:
-	bl sub_02028ECC
+	bl PlayerProfile_sizeof
 	add r4, #0x20
 	add r2, r0, #0
 	mov r0, #0x19
@@ -16633,10 +16633,10 @@ sub_02075554: ; 0x02075554
 	bl PlayerProfile_GetTrainerID
 	str r0, [r4, #0x10]
 	add r0, r6, #0
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	strb r0, [r4, #0x14]
 	add r0, r6, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	strb r0, [r4, #0x15]
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerGender
@@ -21063,7 +21063,7 @@ sub_0207791C: ; 0x0207791C
 	thumb_func_start sub_02077924
 sub_02077924: ; 0x02077924
 	push {r3, lr}
-	bl sub_02028EB4
+	bl Sav2_PlayerData_GetCoinsAddr
 	bl sub_0202C950
 	pop {r3, pc}
 	thumb_func_end sub_02077924
@@ -23829,7 +23829,7 @@ sub_02078B9C: ; 0x02078B9C
 	str r0, [r2, #8]
 	add r0, r5, #0
 	str r2, [r6, #0x10]
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02078BD0: .word 0x0210125C
@@ -23903,7 +23903,7 @@ sub_02078C18: ; 0x02078C18
 	ldr r1, _02078C5C ; =0x02101260
 	add r0, r5, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -23945,7 +23945,7 @@ sub_02078C74: ; 0x02078C74
 	ldr r1, _02078CB0 ; =0x02101270
 	add r0, r5, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -23991,7 +23991,7 @@ sub_02078CC8: ; 0x02078CC8
 	ldr r1, _02078D0C ; =0x021012A0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -24133,13 +24133,13 @@ sub_02078DD8: ; 0x02078DD8
 	bl PlayerProfile_GetTrainerGender
 	strb r0, [r4, #0x1e]
 	add r0, r5, #0
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	strb r0, [r4, #0x1d]
 	add r0, r5, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	strb r0, [r4, #0x18]
 	add r0, r5, #0
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	strb r0, [r4, #0x19]
 	add r0, r4, #0
 	mov r1, #0x24
@@ -69038,7 +69038,7 @@ sub_0208F504: ; 0x0208F504
 	str r0, [sp]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #7
@@ -76687,7 +76687,7 @@ sub_02092E54: ; 0x02092E54
 	bl sub_0202F57C
 	add r7, r0, #0
 	ldr r0, [r4, #0x38]
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	str r0, [sp]
 	add r0, r5, #0
 	bl sub_02066E74
@@ -84177,7 +84177,7 @@ sub_020968B0: ; 0x020968B0
 	ldr r1, _0209690C ; =0x02108584
 	add r0, r5, #0
 	str r5, [r4, #0x24]
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -85351,7 +85351,7 @@ sub_020970E4: ; 0x020970E4
 	ldr r0, [r4, #0x28]
 	ldr r1, _02097104 ; =0x02108EA0
 	ldr r2, [r4, #0x24]
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -85430,7 +85430,7 @@ _0209718C:
 	str r4, [r0, #4]
 	ldr r0, [r5, #0x28]
 	ldr r2, [r5, #0x24]
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	ldr r0, [r5, #0x24]
 	mov r1, #3
 	str r1, [r0]

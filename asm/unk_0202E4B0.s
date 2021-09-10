@@ -303,7 +303,7 @@ sub_0202E66C: ; 0x0202E66C
 	str r0, [sp, #8]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -811,7 +811,7 @@ _0202EA54:
 	ldr r0, [r5]
 	str r0, [r4, #8]
 	ldr r0, [sp, #4]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	str r0, [r4, #0xc]
 	ldr r0, [r7]
 	add r6, r6, #1

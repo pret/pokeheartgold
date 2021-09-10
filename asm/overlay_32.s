@@ -561,7 +561,7 @@ _0225D9A0:
 	bl String_ctor
 	str r0, [sp, #0x14]
 	mov r0, #8
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
 	bl GetWindowWidth
@@ -581,7 +581,7 @@ _0225D9D4:
 	bl sub_0202C254
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl sub_02028F24
+	bl CopyPlayerName
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]

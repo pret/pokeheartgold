@@ -1398,7 +1398,7 @@ _022384D6:
 	add r1, #0xf8
 	ldr r0, [r5, #0x48]
 	ldr r1, [r1]
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	ldr r0, [r5, #0x48]
 	bl FreeToHeap
 	ldr r0, [sp]
@@ -2023,13 +2023,13 @@ ov12_02238A68: ; 0x02238A68
 	add r5, r1, #0
 _02238A7A:
 	mov r0, #5
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r1, r0, #0
 	add r0, r5, #0
 	str r1, [r6, #0x48]
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3365,7 +3365,7 @@ _0223956A:
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov12_0223AA40
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	cmp r0, #GAME_VERSION
 	beq _0223957C
 	mov r7, #1
@@ -5021,7 +5021,7 @@ _0223A2BC:
 	add r7, r0, #0
 	ldr r0, [r5, #0x48]
 	mov r1, #5
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	mov r1, #0x71
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -5076,7 +5076,7 @@ _0223A30E:
 	add r0, r4, r7
 	ldr r0, [r0, #0x48]
 	mov r1, #5
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	mov r1, #0x71
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -5089,7 +5089,7 @@ _0223A30E:
 	add r0, r4, r6
 	ldr r0, [r0, #0x48]
 	mov r1, #5
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	mov r1, #0x71
 	lsl r1, r1, #2
 	ldr r3, [r4, r1]
@@ -5287,7 +5287,7 @@ _0223A4DA:
 	add r0, #0xf8
 	ldr r0, [r0]
 	mov r1, #5
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	ldr r1, [sp, #8]
 	add r4, r4, #1
 	lsl r1, r1, #2
@@ -5348,7 +5348,7 @@ _0223A538:
 	add r0, r7, r0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	lsl r1, r4, #2
 	add r1, r6, r1
 	str r0, [r1, #0x14]
@@ -5359,7 +5359,7 @@ _0223A538:
 	add r0, #0xf8
 	ldr r0, [r0]
 	mov r1, #5
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	lsl r1, r4, #2
 	add r1, r6, r1
 	str r0, [r1, #0x14]
@@ -9498,7 +9498,7 @@ ov12_0223C24C: ; 0x0223C24C
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	cmp r4, #8
@@ -9513,7 +9513,7 @@ _0223C262:
 	add r4, r1, #0
 	mul r4, r0
 	add r0, r6, #0
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	cmp r4, r0
 	bls _0223C27E
 	add r4, r0, #0
@@ -9714,7 +9714,7 @@ _0223C3E8:
 	add r5, r6, #0
 _0223C3EC:
 	ldr r0, [r5, #0x48]
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	cmp r0, #0
 	beq _0223C3FE
 	add r4, r4, #1
@@ -17007,7 +17007,7 @@ _0223FC86:
 	mov r1, #0
 	bl ov12_0223AA40
 	add r1, r4, #0
-	bl sub_02029044
+	bl PlayerProfile_AddMoney
 	b _0223FCAE
 _0223FC96:
 	ldr r0, [r5, #0x68]
@@ -17018,7 +17018,7 @@ _0223FC96:
 	mov r1, #0
 	bl ov12_0223AA40
 	add r1, r4, #0
-	bl sub_02029068
+	bl PlayerProfile_SubMoney
 _0223FCAE:
 	cmp r4, #0
 	beq _0223FCBA
@@ -17779,7 +17779,7 @@ _02240282:
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_02029044
+	bl PlayerProfile_AddMoney
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -39814,7 +39814,7 @@ _0224AF44:
 	pop {r3, r4, r5, r6, r7, pc}
 _0224AF5E:
 	ldr r0, [sp, #0x28]
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	cmp r0, #8
 	blt _0224AF6E
 	add sp, #0x30
@@ -39823,27 +39823,27 @@ _0224AF5E:
 _0224AF6E:
 	ldr r0, [sp, #0x28]
 	mov r6, #0xa
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	cmp r0, #1
 	blt _0224AF7C
 	mov r6, #0x14
 _0224AF7C:
 	ldr r0, [sp, #0x28]
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	cmp r0, #2
 	blt _0224AF88
 	mov r6, #0x1e
 _0224AF88:
 	ldr r0, [sp, #0x28]
 	mov r1, #3
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	beq _0224AF96
 	mov r6, #0x32
 _0224AF96:
 	ldr r0, [sp, #0x28]
 	mov r1, #5
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	beq _0224AFA4
 	mov r6, #0x46
@@ -87410,7 +87410,7 @@ _02261F0E:
 	add r0, r5, #0
 	add r1, r6, #0
 	bl ov12_0223AA40
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	cmp r0, #0
 	beq _02261F24
 	cmp r0, #0xc

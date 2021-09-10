@@ -1412,7 +1412,7 @@ _0203043E:
 	add r0, #0xf8
 	ldr r0, [r0]
 	add r1, r6, #0
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1675,7 +1675,7 @@ _02030614:
 	add r1, #0xf8
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	ldr r0, [sp, #0x14]
 	add r5, r5, #4
 	add r1, r0, r7

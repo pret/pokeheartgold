@@ -3615,7 +3615,7 @@ _0225E246:
 	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x2c]
 	mov r1, #0x71
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r7, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0

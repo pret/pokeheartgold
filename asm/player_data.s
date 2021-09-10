@@ -3,14 +3,14 @@
 
 	.text
 
-	thumb_func_start sub_02028E6C
-sub_02028E6C: ; 0x02028E6C
+	thumb_func_start Sav2_PlayerData_sizeof
+Sav2_PlayerData_sizeof: ; 0x02028E6C
 	mov r0, #0x2c
 	bx lr
-	thumb_func_end sub_02028E6C
+	thumb_func_end Sav2_PlayerData_sizeof
 
-	thumb_func_start sub_02028E70
-sub_02028E70: ; 0x02028E70
+	thumb_func_start Sav2_PlayerData_init
+Sav2_PlayerData_init: ; 0x02028E70
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0
@@ -20,7 +20,7 @@ sub_02028E70: ; 0x02028E70
 	add r0, r4, #0
 	bl sub_0202ACA8
 	add r0, r4, #4
-	bl sub_02028EF0
+	bl PlayerProfile_init
 	add r0, r4, #0
 	add r0, #0x24
 	bl sub_0202C948
@@ -28,7 +28,7 @@ sub_02028E70: ; 0x02028E70
 	add r0, r4, #0
 	bl sub_0202CDB0
 	pop {r4, pc}
-	thumb_func_end sub_02028E70
+	thumb_func_end Sav2_PlayerData_init
 
 	thumb_func_start Sav2_PlayerData_GetProfileAddr
 Sav2_PlayerData_GetProfileAddr: ; 0x02028E9C
@@ -48,53 +48,53 @@ Sav2_PlayerData_GetOptionsAddr: ; 0x02028EA8
 _02028EB0: .word SavArray_get
 	thumb_func_end Sav2_PlayerData_GetOptionsAddr
 
-	thumb_func_start sub_02028EB4
-sub_02028EB4: ; 0x02028EB4
+	thumb_func_start Sav2_PlayerData_GetCoinsAddr
+Sav2_PlayerData_GetCoinsAddr: ; 0x02028EB4
 	push {r3, lr}
 	mov r1, #1
 	bl SavArray_get
 	add r0, #0x24
 	pop {r3, pc}
-	thumb_func_end sub_02028EB4
+	thumb_func_end Sav2_PlayerData_GetCoinsAddr
 
-	thumb_func_start sub_02028EC0
-sub_02028EC0: ; 0x02028EC0
+	thumb_func_start Sav2_PlayerData_GetIGTAddr
+Sav2_PlayerData_GetIGTAddr: ; 0x02028EC0
 	push {r3, lr}
 	mov r1, #1
 	bl SavArray_get
 	add r0, #0x26
 	pop {r3, pc}
-	thumb_func_end sub_02028EC0
+	thumb_func_end Sav2_PlayerData_GetIGTAddr
 
-	thumb_func_start sub_02028ECC
-sub_02028ECC: ; 0x02028ECC
+	thumb_func_start PlayerProfile_sizeof
+PlayerProfile_sizeof: ; 0x02028ECC
 	mov r0, #0x20
 	bx lr
-	thumb_func_end sub_02028ECC
+	thumb_func_end PlayerProfile_sizeof
 
-	thumb_func_start sub_02028ED0
-sub_02028ED0: ; 0x02028ED0
+	thumb_func_start PlayerProfile_new
+PlayerProfile_new: ; 0x02028ED0
 	push {r4, lr}
 	mov r1, #0x20
 	bl AllocFromHeap
 	add r4, r0, #0
-	bl sub_02028EF0
+	bl PlayerProfile_init
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02028ED0
+	thumb_func_end PlayerProfile_new
 
-	thumb_func_start sub_02028EE4
-sub_02028EE4: ; 0x02028EE4
+	thumb_func_start PlayerProfile_Copy
+PlayerProfile_Copy: ; 0x02028EE4
 	ldr r3, _02028EEC ; =MIi_CpuCopy8
 	mov r2, #0x20
 	bx r3
 	nop
 _02028EEC: .word MIi_CpuCopy8
-	thumb_func_end sub_02028EE4
+	thumb_func_end PlayerProfile_Copy
 
-	thumb_func_start sub_02028EF0
-sub_02028EF0: ; 0x02028EF0
+	thumb_func_start PlayerProfile_init
+PlayerProfile_init: ; 0x02028EF0
 	push {r4, lr}
 	mov r1, #0
 	mov r2, #0x20
@@ -104,13 +104,13 @@ sub_02028EF0: ; 0x02028EF0
 	strb r0, [r4, #0x19]
 	add r0, r4, #0
 	mov r1, #GAME_VERSION
-	bl sub_02029080
+	bl PlayerProfile_SetVersion
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02028EF0
+	thumb_func_end PlayerProfile_init
 
-	thumb_func_start sub_02028F0C
-sub_02028F0C: ; 0x02028F0C
+	thumb_func_start PlayerProfile_IsNameEmpty
+PlayerProfile_IsNameEmpty: ; 0x02028F0C
 	mov r2, #0
 _02028F0E:
 	ldrh r1, [r0]
@@ -125,10 +125,10 @@ _02028F18:
 	blt _02028F0E
 	mov r0, #1
 	bx lr
-	thumb_func_end sub_02028F0C
+	thumb_func_end PlayerProfile_IsNameEmpty
 
-	thumb_func_start sub_02028F24
-sub_02028F24: ; 0x02028F24
+	thumb_func_start CopyPlayerName
+CopyPlayerName: ; 0x02028F24
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -143,10 +143,10 @@ _02028F38:
 	bl CopyU16StringArray
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02028F24
+	thumb_func_end CopyPlayerName
 
-	thumb_func_start sub_02028F44
-sub_02028F44: ; 0x02028F44
+	thumb_func_start PlayerName_StringToFlat
+PlayerName_StringToFlat: ; 0x02028F44
 	ldr r3, _02028F50 ; =CopyStringToU16Array
 	add r2, r0, #0
 	add r0, r1, #0
@@ -155,7 +155,7 @@ sub_02028F44: ; 0x02028F44
 	bx r3
 	.balign 4, 0
 _02028F50: .word CopyStringToU16Array
-	thumb_func_end sub_02028F44
+	thumb_func_end PlayerName_StringToFlat
 
 	thumb_func_start PlayerProfile_GetNamePtr
 PlayerProfile_GetNamePtr: ; 0x02028F54
@@ -163,8 +163,8 @@ PlayerProfile_GetNamePtr: ; 0x02028F54
 	.balign 4, 0
 	thumb_func_end PlayerProfile_GetNamePtr
 
-	thumb_func_start sub_02028F58
-sub_02028F58: ; 0x02028F58
+	thumb_func_start PlayerName_FlatToString
+PlayerName_FlatToString: ; 0x02028F58
 	ldr r3, _02028F64 ; =CopyU16ArrayToString
 	add r2, r0, #0
 	add r0, r1, #0
@@ -172,10 +172,10 @@ sub_02028F58: ; 0x02028F58
 	bx r3
 	nop
 _02028F64: .word CopyU16ArrayToString
-	thumb_func_end sub_02028F58
+	thumb_func_end PlayerName_FlatToString
 
-	thumb_func_start sub_02028F68
-sub_02028F68: ; 0x02028F68
+	thumb_func_start PlayerProfile_GetPlayerName_NewString
+PlayerProfile_GetPlayerName_NewString: ; 0x02028F68
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #8
@@ -183,16 +183,16 @@ sub_02028F68: ; 0x02028F68
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02028F68
+	thumb_func_end PlayerProfile_GetPlayerName_NewString
 
-	thumb_func_start sub_02028F80
-sub_02028F80: ; 0x02028F80
+	thumb_func_start PlayerProfile_SetTrainerID
+PlayerProfile_SetTrainerID: ; 0x02028F80
 	str r1, [r0, #0x10]
 	bx lr
-	thumb_func_end sub_02028F80
+	thumb_func_end PlayerProfile_SetTrainerID
 
 	thumb_func_start PlayerProfile_GetTrainerID
 PlayerProfile_GetTrainerID: ; 0x02028F84
@@ -200,19 +200,19 @@ PlayerProfile_GetTrainerID: ; 0x02028F84
 	bx lr
 	thumb_func_end PlayerProfile_GetTrainerID
 
-	thumb_func_start sub_02028F88
-sub_02028F88: ; 0x02028F88
+	thumb_func_start PlayerProfile_GetTrainerID_VisibleHalf
+PlayerProfile_GetTrainerID_VisibleHalf: ; 0x02028F88
 	ldr r0, [r0, #0x10]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bx lr
-	thumb_func_end sub_02028F88
+	thumb_func_end PlayerProfile_GetTrainerID_VisibleHalf
 
-	thumb_func_start sub_02028F90
-sub_02028F90: ; 0x02028F90
+	thumb_func_start PlayerProfile_SetTrainerGender
+PlayerProfile_SetTrainerGender: ; 0x02028F90
 	strb r1, [r0, #0x18]
 	bx lr
-	thumb_func_end sub_02028F90
+	thumb_func_end PlayerProfile_SetTrainerGender
 
 	thumb_func_start PlayerProfile_GetTrainerGender
 PlayerProfile_GetTrainerGender: ; 0x02028F94
@@ -220,8 +220,8 @@ PlayerProfile_GetTrainerGender: ; 0x02028F94
 	bx lr
 	thumb_func_end PlayerProfile_GetTrainerGender
 
-	thumb_func_start sub_02028F98
-sub_02028F98: ; 0x02028F98
+	thumb_func_start PlayerProfile_TestBadgeFlag
+PlayerProfile_TestBadgeFlag: ; 0x02028F98
 	cmp r1, #0x10
 	blt _02028FA0
 	mov r0, #0
@@ -250,10 +250,10 @@ _02028FC4:
 	mov r0, #0
 _02028FC6:
 	bx lr
-	thumb_func_end sub_02028F98
+	thumb_func_end PlayerProfile_TestBadgeFlag
 
-	thumb_func_start sub_02028FC8
-sub_02028FC8: ; 0x02028FC8
+	thumb_func_start PlayerProfile_SetBadgeFlag
+PlayerProfile_SetBadgeFlag: ; 0x02028FC8
 	cmp r1, #0x10
 	bge _02028FEC
 	cmp r1, #8
@@ -276,10 +276,10 @@ _02028FDE:
 _02028FEC:
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02028FC8
+	thumb_func_end PlayerProfile_SetBadgeFlag
 
-	thumb_func_start sub_02028FF0
-sub_02028FF0: ; 0x02028FF0
+	thumb_func_start PlayerProfile_CountBadges
+PlayerProfile_CountBadges: ; 0x02028FF0
 	push {r3, r4}
 	ldrb r4, [r0, #0x1a]
 	mov r3, #0
@@ -312,16 +312,16 @@ _0202901C:
 	pop {r3, r4}
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02028FF0
+	thumb_func_end PlayerProfile_CountBadges
 
-	thumb_func_start sub_02029024
-sub_02029024: ; 0x02029024
+	thumb_func_start PlayerProfile_GetMoney
+PlayerProfile_GetMoney: ; 0x02029024
 	ldr r0, [r0, #0x14]
 	bx lr
-	thumb_func_end sub_02029024
+	thumb_func_end PlayerProfile_GetMoney
 
-	thumb_func_start sub_02029028
-sub_02029028: ; 0x02029028
+	thumb_func_start PlayerProfile_SetMoney
+PlayerProfile_SetMoney: ; 0x02029028
 	ldr r2, _02029038 ; =0x000F423F
 	cmp r1, r2
 	bls _02029030
@@ -332,22 +332,22 @@ _02029030:
 	bx lr
 	nop
 _02029038: .word 0x000F423F
-	thumb_func_end sub_02029028
+	thumb_func_end PlayerProfile_SetMoney
 
-	thumb_func_start sub_0202903C
-sub_0202903C: ; 0x0202903C
+	thumb_func_start PlayerProfile_GetAvatar
+PlayerProfile_GetAvatar: ; 0x0202903C
 	ldrb r0, [r0, #0x1b]
 	bx lr
-	thumb_func_end sub_0202903C
+	thumb_func_end PlayerProfile_GetAvatar
 
-	thumb_func_start sub_02029040
-sub_02029040: ; 0x02029040
+	thumb_func_start PlayerProfile_SetAvatar
+PlayerProfile_SetAvatar: ; 0x02029040
 	strb r1, [r0, #0x1b]
 	bx lr
-	thumb_func_end sub_02029040
+	thumb_func_end PlayerProfile_SetAvatar
 
-	thumb_func_start sub_02029044
-sub_02029044: ; 0x02029044
+	thumb_func_start PlayerProfile_AddMoney
+PlayerProfile_AddMoney: ; 0x02029044
 	ldr r2, _02029064 ; =0x000F423F
 	cmp r1, r2
 	bls _0202904E
@@ -368,10 +368,10 @@ _0202905E:
 	bx lr
 	nop
 _02029064: .word 0x000F423F
-	thumb_func_end sub_02029044
+	thumb_func_end PlayerProfile_AddMoney
 
-	thumb_func_start sub_02029068
-sub_02029068: ; 0x02029068
+	thumb_func_start PlayerProfile_SubMoney
+PlayerProfile_SubMoney: ; 0x02029068
 	ldr r2, [r0, #0x14]
 	cmp r2, r1
 	bhs _02029072
@@ -384,19 +384,19 @@ _02029074:
 	ldr r0, [r0, #0x14]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02029068
+	thumb_func_end PlayerProfile_SubMoney
 
-	thumb_func_start sub_0202907C
-sub_0202907C: ; 0x0202907C
+	thumb_func_start PlayerProfile_GetVersion
+PlayerProfile_GetVersion: ; 0x0202907C
 	ldrb r0, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_0202907C
+	thumb_func_end PlayerProfile_GetVersion
 
-	thumb_func_start sub_02029080
-sub_02029080: ; 0x02029080
+	thumb_func_start PlayerProfile_SetVersion
+PlayerProfile_SetVersion: ; 0x02029080
 	strb r1, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_02029080
+	thumb_func_end PlayerProfile_SetVersion
 
 	thumb_func_start sub_02029084
 sub_02029084: ; 0x02029084
@@ -404,20 +404,20 @@ sub_02029084: ; 0x02029084
 	bx lr
 	thumb_func_end sub_02029084
 
-	thumb_func_start sub_02029088
-sub_02029088: ; 0x02029088
+	thumb_func_start PlayerProfile_GetLanguage
+PlayerProfile_GetLanguage: ; 0x02029088
 	ldrb r0, [r0, #0x19]
 	bx lr
-	thumb_func_end sub_02029088
+	thumb_func_end PlayerProfile_GetLanguage
 
-	thumb_func_start sub_0202908C
-sub_0202908C: ; 0x0202908C
+	thumb_func_start PlayerProfile_SetLanguage
+PlayerProfile_SetLanguage: ; 0x0202908C
 	strb r1, [r0, #0x19]
 	bx lr
-	thumb_func_end sub_0202908C
+	thumb_func_end PlayerProfile_SetLanguage
 
-	thumb_func_start sub_02029090
-sub_02029090: ; 0x02029090
+	thumb_func_start PlayerProfile_SetGameClearFlag
+PlayerProfile_SetGameClearFlag: ; 0x02029090
 	ldrb r2, [r0, #0x1d]
 	mov r1, #1
 	bic r2, r1
@@ -426,22 +426,22 @@ sub_02029090: ; 0x02029090
 	strb r1, [r0, #0x1d]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02029090
+	thumb_func_end PlayerProfile_SetGameClearFlag
 
-	thumb_func_start sub_020290A0
-sub_020290A0: ; 0x020290A0
+	thumb_func_start PlayerProfile_GetGameClearFlag
+PlayerProfile_GetGameClearFlag: ; 0x020290A0
 	ldrb r0, [r0, #0x1d]
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
 	bx lr
-	thumb_func_end sub_020290A0
+	thumb_func_end PlayerProfile_GetGameClearFlag
 
-	thumb_func_start sub_020290A8
-sub_020290A8: ; 0x020290A8
+	thumb_func_start PlayerProfile_SetNatDexFlag
+PlayerProfile_SetNatDexFlag: ; 0x020290A8
 	ldrb r2, [r0, #0x1d]
 	mov r1, #2
 	orr r1, r2
 	strb r1, [r0, #0x1d]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020290A8
+	thumb_func_end PlayerProfile_SetNatDexFlag

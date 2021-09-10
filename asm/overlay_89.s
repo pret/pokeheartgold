@@ -8137,7 +8137,7 @@ ov89_0225C724: ; 0x0225C724
 	pop {r3, r4, r5, r6, r7, pc}
 _0225C768:
 	mov r0, #0x7d
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
@@ -8145,7 +8145,7 @@ _0225C768:
 	bl ov45_0222A844
 	add r0, r6, #0
 	mov r1, #0x7d
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	str r0, [sp, #0x1c]
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerGender

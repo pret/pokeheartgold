@@ -947,7 +947,7 @@ _020351EA:
 	add r0, r3, #0
 	bl sub_02035798
 	add r1, r4, #0
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	pop {r4, r5, r6, pc}
 _02035202:
 	add r5, r5, #1
@@ -1078,12 +1078,12 @@ sub_020352D8: ; 0x020352D8
 	ble _020352FE
 	bl GF_AssertFail
 _020352FE:
-	bl sub_02028ECC
+	bl PlayerProfile_sizeof
 	cmp r0, #0x20
 	beq _0203530A
 	bl GF_AssertFail
 _0203530A:
-	bl sub_02028ECC
+	bl PlayerProfile_sizeof
 	add r1, r5, #0
 	add r2, r0, #0
 	add r0, r4, #0

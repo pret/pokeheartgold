@@ -3291,13 +3291,13 @@ _021E738E:
 	ldr r0, [r7, r0]
 	cmp r0, #0
 	beq _021E7448
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	str r0, [sp, #0x24]
 	mov r0, #0xce
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	ldr r1, [r4, #0x2c]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #1
@@ -3694,7 +3694,7 @@ _021E767A:
 	mov r0, #0xce
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	str r0, [sp, #0x10]
 	bl sub_0203769C
 	cmp r4, r0
@@ -4641,7 +4641,7 @@ ov73_021E7D54: ; 0x021E7D54
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021E7D66:
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	cmp r0, #0
 	beq _021E7D70
 	add r4, r5, #0

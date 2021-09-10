@@ -670,7 +670,7 @@ _0221BF56:
 	bl sub_02034818
 	cmp r0, #0
 	beq _0221BF72
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	cmp r0, #0
 	bne _0221BF72
 	mov r0, #0xbd

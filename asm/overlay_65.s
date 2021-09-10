@@ -209,11 +209,11 @@ ov65_0221BFEC: ; 0x0221BFEC
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0x1a
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0x1a
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r6, r0, #0
 	mov r0, #0x19
 	lsl r0, r0, #4
@@ -2284,7 +2284,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	bl memset
 	ldr r0, [r4, #4]
 	mov r1, #0x1a
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	mov r1, #0x66
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3915,10 +3915,10 @@ ov65_0221DEA0: ; 0x0221DEA0
 	bl PlayerProfile_GetTrainerID
 	str r0, [r4, #0x10]
 	add r0, r6, #0
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	strb r0, [r4, #0x14]
 	add r0, r6, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	strb r0, [r4, #0x15]
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerGender
@@ -4671,7 +4671,7 @@ _0221E4C0:
 	ldr r0, _0221E544 ; =0x0000367C
 	str r4, [r5, r0]
 	mov r0, #0x1a
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r6, r0, #0
 	ldr r0, _0221E548 ; =0x000036A0
 	add r1, r4, #0
@@ -4679,7 +4679,7 @@ _0221E4C0:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_02028F24
+	bl CopyPlayerName
 	mov r0, #0xda
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -6820,7 +6820,7 @@ _0221F664:
 	eor r0, r1
 	bl sub_02034818
 	ldr r1, [r5, #0x34]
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	ldr r1, _0221F710 ; =0x000001B9
 	add r0, r7, #0
 	str r6, [r5, #0x28]

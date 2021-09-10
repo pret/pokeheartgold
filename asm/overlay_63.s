@@ -4560,7 +4560,7 @@ _0221E39C:
 	add r1, #0x8c
 	ldr r1, [r1]
 	add r0, r6, #0
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	add r2, r5, #0
 	add r2, #0x90
 	ldr r2, [r2]
@@ -5528,7 +5528,7 @@ _0221EAB6:
 	bl BufferPlayersName
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]

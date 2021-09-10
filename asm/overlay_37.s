@@ -3476,7 +3476,7 @@ _021E74F0:
 	cmp r0, #0
 	beq _021E7540
 	ldr r1, [r4, #0x14]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	ldr r0, [sp, #0x14]
 	cmp r0, r6
 	bne _021E7524

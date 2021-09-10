@@ -395,10 +395,10 @@ sub_0202F7D8: ; 0x0202F7D8
 	bl PlayerProfile_GetTrainerGender
 	strb r0, [r4, #0x11]
 	add r0, r5, #0
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	strb r0, [r4, #0x13]
 	mov r0, #0x10
 	add r1, r7, #0
@@ -406,7 +406,7 @@ sub_0202F7D8: ; 0x0202F7D8
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	add r1, r4, #0
 	add r0, r7, #0
 	add r1, #0x18
@@ -436,20 +436,20 @@ sub_0202F844: ; 0x0202F844
 	add r5, r0, r1
 	ldr r1, [r5, #0x14]
 	add r0, r4, #0
-	bl sub_02028F80
+	bl PlayerProfile_SetTrainerID
 	ldrb r1, [r5, #0x11]
 	add r0, r4, #0
-	bl sub_02028F90
+	bl PlayerProfile_SetTrainerGender
 	ldrb r1, [r5, #0x12]
 	add r0, r4, #0
-	bl sub_0202908C
+	bl PlayerProfile_SetLanguage
 	ldrb r1, [r5, #0x13]
 	add r0, r4, #0
-	bl sub_02029080
+	bl PlayerProfile_SetVersion
 	add r5, #0x18
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02028F24
+	bl CopyPlayerName
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0202F844

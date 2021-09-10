@@ -917,10 +917,10 @@ sub_020320E0: ; 0x020320E0
 	bl PlayerProfile_GetTrainerGender
 	strb r0, [r4, #4]
 	add r0, r5, #0
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	strb r0, [r4, #5]
 	add r0, r5, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	strb r0, [r4, #6]
 	add r0, r4, #0
 	add r0, #8

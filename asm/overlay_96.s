@@ -449,7 +449,7 @@ ov96_021E5C80: ; 0x021E5C80
 ov96_021E5C90: ; 0x021E5C90
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_02028ECC
+	bl PlayerProfile_sizeof
 	add r1, r0, #0
 	mov r0, #0xa1
 	lsl r0, r0, #2
@@ -464,7 +464,7 @@ _021E5CAE:
 	ldr r0, [r5, r6]
 	add r1, r4, #0
 	bl ov96_021E5D24
-	bl sub_02028EF0
+	bl PlayerProfile_init
 	add r4, r4, #1
 	cmp r4, #4
 	blt _021E5CAE
@@ -485,7 +485,7 @@ _021E5CAE:
 	ldr r0, [r0]
 	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r4, #0
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	pop {r3, r4, r5, r6, r7, pc}
 _021E5CEC:
 	sub r0, #0xa
@@ -503,7 +503,7 @@ _021E5CF8:
 	add r0, r6, #0
 	bl sub_02034818
 	add r1, r4, #0
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	ldrb r0, [r5, r7]
 	add r6, r6, #1
 	cmp r6, r0
@@ -520,7 +520,7 @@ ov96_021E5D24: ; 0x021E5D24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02028ECC
+	bl PlayerProfile_sizeof
 	mul r0, r4
 	add r0, r5, r0
 	pop {r3, r4, r5, pc}
@@ -4602,7 +4602,7 @@ _021E7B4C:
 	cmp r1, #8
 	blo _021E7B4C
 	add r0, r6, #0
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	add r1, sp, #0x20
 	strb r0, [r1, #0x1c]
 	ldr r0, [sp, #0x18]
@@ -5931,7 +5931,7 @@ _021E8504:
 	bl String_c_str
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_02028F24
+	bl CopyPlayerName
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #0
@@ -8795,7 +8795,7 @@ ov96_021E99FC: ; 0x021E99FC
 	thumb_func_start ov96_021E9A04
 ov96_021E9A04: ; 0x021E9A04
 	push {r3, lr}
-	bl sub_02028ECC
+	bl PlayerProfile_sizeof
 	lsl r0, r0, #2
 	pop {r3, pc}
 	.balign 4, 0
@@ -30498,7 +30498,7 @@ _021F425A:
 	ldr r1, [sp, #0x10]
 	bl ov96_021E5F34
 	ldr r1, [r5]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	mov r1, #0
 	add r4, r0, #0
 	str r1, [sp]
@@ -30540,7 +30540,7 @@ _021F42D2:
 	add r1, r4, #0
 	bl ov96_021E5F34
 	ldr r1, [r5]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -36132,7 +36132,7 @@ _021F6F8E:
 	ldr r1, [sp, #0x14]
 	bl ov96_021E5F34
 	ldr r1, [r7, #0x54]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	mov r1, #0
 	add r4, r0, #0
 	str r1, [sp]
@@ -36159,7 +36159,7 @@ _021F6FE4:
 	add r1, r5, #0
 	bl ov96_021E5F34
 	ldr r1, [r7, #0x54]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -39729,7 +39729,7 @@ ov96_021F8BC0: ; 0x021F8BC0
 	add r4, r2, #0
 	bl ov96_021E5F34
 	ldr r1, [r5]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r6, r0, #0
 	mov r0, #0x37
 	mvn r0, r0
@@ -40338,7 +40338,7 @@ _021F908C:
 	ldr r1, [sp, #0x18]
 	bl ov96_021E5F34
 	ldr r1, [r6]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
 	ldr r0, [r7, #0x24]
 	bl ov96_021EB5B8
@@ -61225,7 +61225,7 @@ _02203846:
 	bl ov96_021E5F34
 	ldr r1, [sp, #0x10]
 	ldr r1, [r1, #0x44]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -62219,7 +62219,7 @@ ov96_02203FFC: ; 0x02203FFC
 	ldr r0, [r5, #4]
 	bl ov96_021E5F34
 	ldr r1, [r5]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	mov r1, #0
 	add r4, r0, #0
 	str r1, [sp]
@@ -87558,7 +87558,7 @@ _022106E4:
 	add r1, r4, #0
 	bl ov96_021E5F34
 	ldr r1, [r5, #4]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	lsl r7, r7, #4
 	str r0, [sp, #0x20]
 	add r0, r6, r7
@@ -94966,7 +94966,7 @@ _02214140:
 	add r1, r4, #0
 	bl ov96_021E5F34
 	ldr r1, [r5, #0x58]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -95876,7 +95876,7 @@ ov96_022147FC: ; 0x022147FC
 	ldr r0, [r5, #4]
 	bl ov96_021E5F34
 	ldr r1, [r5]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	mov r1, #0
 	add r4, r0, #0
 	str r1, [sp]
@@ -106719,7 +106719,7 @@ ov96_02219B30: ; 0x02219B30
 	ldr r0, [r5]
 	bl ov96_021E5F34
 	ldr r1, [r5, #4]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	mov r1, #0
 	add r4, r0, #0
 	str r1, [sp]

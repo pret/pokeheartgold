@@ -1199,7 +1199,7 @@ ov80_0222A7EC: ; 0x0222A7EC
 	bl PlayerProfile_GetTrainerGender
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	cmp r0, #0
 	bgt _0222A804
 	beq _0222A822
@@ -9138,7 +9138,7 @@ _0222E1EA:
 	mov r1, #1
 	eor r0, r1
 	bl sub_02034818
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	cmp r0, #0xc
 	bne _0222E210
 	add r0, r6, #0
@@ -26779,10 +26779,10 @@ _02236B48:
 	bl GF_AssertFail
 _02236B56:
 	add r0, r5, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	cmp r5, #0
 	beq _02236B6C
 	cmp r0, #0
@@ -27462,7 +27462,7 @@ _0223704E:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	ldrb r1, [r5, #6]
 	add r0, sp, #0x14
 	mov r2, #0xb
@@ -28405,7 +28405,7 @@ _0223777E:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	add r1, r7, #1
 	lsl r1, r1, #1
 	add r1, r5, r1
@@ -29131,7 +29131,7 @@ _02237CC0:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	ldrb r1, [r5, #0x11]
 	add r0, sp, #0x18
 	mov r2, #0xb
@@ -29921,7 +29921,7 @@ _0223829A:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	ldrb r1, [r7, #0x11]
 	add r0, sp, #0x20
 	mov r2, #0xb

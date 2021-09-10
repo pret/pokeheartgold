@@ -1231,7 +1231,7 @@ _0225DF12:
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 _0225DF2A:
 	add r2, r0, #0
 	mov r0, #1
@@ -2511,7 +2511,7 @@ ov31_0225E95C: ; 0x0225E95C
 _0225E97A:
 	sub r0, #0x3b
 	ldr r0, [r5, r0]
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 _0225E982:
 	add r1, r0, #0
 	add r0, r5, #0

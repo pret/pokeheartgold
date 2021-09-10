@@ -2796,7 +2796,7 @@ _0225DA5C:
 _0225DA60:
 	ldr r0, [r5, #8]
 	ldr r1, [sp, #0x24]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	ldr r1, [sp, #0x2c]
 	add r0, sp, #0x30
 	lsl r1, r1, #0x18

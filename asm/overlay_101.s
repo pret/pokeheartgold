@@ -23136,7 +23136,7 @@ _021F2A56:
 	mov r0, #0
 	strh r0, [r4, #0x20]
 	ldr r0, [r5, #0x24]
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	ldr r0, [r4, #0x10]
@@ -25843,7 +25843,7 @@ ov101_021F3EA8: ; 0x021F3EA8
 	add r5, r0, #0
 	ldr r0, [r5, #0x24]
 	add r4, r1, #0
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	cmp r0, #0x10
 	blt _021F3EC8
 	add r0, r4, #0
@@ -26215,7 +26215,7 @@ _021F4168:
 	mov r1, #1
 	bl sub_0202F730
 	ldr r0, [r5, #0x1c]
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	add r1, r0, #0
 	add r0, r6, #0
 	bl sub_0202F784
@@ -26376,12 +26376,12 @@ _021F4292:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F42A4:
 	ldr r0, [r5, #0x24]
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r5, #0
@@ -26444,7 +26444,7 @@ _021F4320:
 _021F4324:
 	ldr r0, [r5, #0x24]
 	mov r1, #0xd
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	ldr r0, [r5, #0x28]
 	beq _021F434C
@@ -26525,7 +26525,7 @@ _021F43CA:
 _021F43CE:
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	beq _021F43DE
 	mov r0, #0xa2
@@ -26580,7 +26580,7 @@ _021F443C:
 _021F4440:
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	beq _021F4450
 	mov r0, #0x9e
@@ -31206,14 +31206,14 @@ ov101_021F6710: ; 0x021F6710
 	strb r0, [r5, #9]
 	ldr r0, [sp]
 	mov r1, #2
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	strb r0, [r5, #0xa]
 	add r0, r7, #0
 	mov r1, #0xc6
 	bl sub_020503DC
 	strb r0, [r5, #0xb]
 	ldr r0, [sp]
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	cmp r1, #8

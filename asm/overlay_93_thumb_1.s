@@ -1839,7 +1839,7 @@ _0225D504:
 	beq _0225D58E
 	bl ov90_022588CC
 	mov r1, #0x75
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	ldr r1, [r5]
 	add r6, r0, #0
 	add r1, r1, r4

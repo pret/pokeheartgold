@@ -70,7 +70,7 @@ ov36_021E5960: ; 0x021E5960
 	mov r2, #1
 	bl ov36_021E5A38
 	add r0, r4, #0
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	bl sub_0201838C
 	mov r0, #1
 	pop {r4, pc}
@@ -143,7 +143,7 @@ _021E59E8:
 	bl sub_02071E2C
 _021E5A0C:
 	add r0, r4, #0
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	bl sub_0201838C
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -201,7 +201,7 @@ ov36_021E5A38: ; 0x021E5A38
 	beq _021E5A94
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02028F80
+	bl PlayerProfile_SetTrainerID
 _021E5A94:
 	add r0, r6, #0
 	bl sub_0202F57C
@@ -217,7 +217,7 @@ _021E5A94:
 	lsl r1, r1, #0x18
 	add r0, r7, #0
 	lsr r1, r1, #0x18
-	bl sub_02029040
+	bl PlayerProfile_SetAvatar
 	add r0, r6, #0
 	bl sub_0202A96C
 	bl sub_0202AE0C
@@ -347,7 +347,7 @@ ov36_021E5BC8: ; 0x021E5BC8
 	add r0, r4, #0
 	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, _021E5BFC ; =0x00000BB8
-	bl sub_02029028
+	bl PlayerProfile_SetMoney
 	add r0, r4, #0
 	bl sub_020503D0
 	ldr r1, _021E5C00 ; =0x0000DB56

@@ -5397,7 +5397,7 @@ ov81_0224093C: ; 0x0224093C
 	bl FillWindowPixelBuffer
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	add r0, r7, #0
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0

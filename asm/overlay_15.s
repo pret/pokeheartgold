@@ -7896,7 +7896,7 @@ _021FD264:
 	ldr r1, [r4, r1]
 	ldr r0, [r4, r0]
 	mul r1, r2
-	bl sub_02029044
+	bl PlayerProfile_AddMoney
 	mov r0, #0x1a
 	lsl r0, r0, #6
 	ldrsh r0, [r4, r0]
@@ -11753,7 +11753,7 @@ _021FF160:
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]

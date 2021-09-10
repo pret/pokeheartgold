@@ -3480,7 +3480,7 @@ _021E7510:
 	beq _021E7550
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	beq _021E7550
 	ldr r0, [r5, #0xc]
@@ -19213,7 +19213,7 @@ ov01_021EEB4C: ; 0x021EEB4C
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -19355,7 +19355,7 @@ _021EECBA:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02028EB4
+	bl Sav2_PlayerData_GetCoinsAddr
 	bl sub_0202C950
 	add r2, r0, #0
 	b _021EED04
@@ -19600,7 +19600,7 @@ ov01_021EEE44: ; 0x021EEE44
 	bl AddTextPrinterParameterized
 	ldr r0, [r7, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -19805,7 +19805,7 @@ ov01_021EF050: ; 0x021EF050
 ov01_021EF064: ; 0x021EF064
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -19813,7 +19813,7 @@ ov01_021EF064: ; 0x021EF064
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -19838,7 +19838,7 @@ _021EF0A0: .word 0x022067C8
 ov01_021EF0A4: ; 0x021EF0A4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -19846,7 +19846,7 @@ ov01_021EF0A4: ; 0x021EF0A4
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -19874,7 +19874,7 @@ ov01_021EF0F0: ; 0x021EF0F0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -19882,7 +19882,7 @@ ov01_021EF0F0: ; 0x021EF0F0
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -19906,7 +19906,7 @@ ov01_021EF0F0: ; 0x021EF0F0
 	bl DestroyMsgData
 	ldr r1, _021EF150 ; =ov01_021EF348
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -19919,16 +19919,16 @@ ov01_021EF154: ; 0x021EF154
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp]
@@ -19950,16 +19950,16 @@ ov01_021EF194: ; 0x021EF194
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp]
@@ -19972,7 +19972,7 @@ ov01_021EF194: ; 0x021EF194
 	bl ov01_021EF564
 	ldr r1, _021EF1DC ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -20037,7 +20037,7 @@ _021EF23A:
 _021EF24C:
 	ldr r1, _021EF264 ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -20059,7 +20059,7 @@ ov01_021EF268: ; 0x021EF268
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -20067,7 +20067,7 @@ ov01_021EF268: ; 0x021EF268
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	ldr r1, [r5, #8]
 	add r2, r0, #0
 	add r0, r1, #1
@@ -20095,7 +20095,7 @@ ov01_021EF268: ; 0x021EF268
 	bl ScrStrBufs_delete
 	ldr r1, _021EF2DC ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -20108,7 +20108,7 @@ ov01_021EF2E0: ; 0x021EF2E0
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, r5, #0
@@ -20125,7 +20125,7 @@ ov01_021EF2E0: ; 0x021EF2E0
 	bl ov01_021EF4DC
 	ldr r1, _021EF318 ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -20149,7 +20149,7 @@ ov01_021EF31C: ; 0x021EF31C
 	bl ov01_021EF4DC
 	ldr r1, _021EF344 ; =ov01_021EF348
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -20174,7 +20174,7 @@ ov01_021EF35C: ; 0x021EF35C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -20191,7 +20191,7 @@ ov01_021EF35C: ; 0x021EF35C
 	bl ov01_021EF4DC
 	ldr r1, _021EF394 ; =ov01_021EF348
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -20204,7 +20204,7 @@ ov01_021EF398: ; 0x021EF398
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -20226,7 +20226,7 @@ ov01_021EF398: ; 0x021EF398
 	bl ov01_021EF4DC
 	ldr r1, _021EF3DC ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -20239,7 +20239,7 @@ ov01_021EF3E0: ; 0x021EF3E0
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -20255,7 +20255,7 @@ ov01_021EF3E0: ; 0x021EF3E0
 	bl ov01_021EF4DC
 	ldr r1, _021EF418 ; =ov01_021EF348
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -20306,7 +20306,7 @@ _021EF464:
 _021EF474:
 	ldr r1, _021EF484 ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -20335,7 +20335,7 @@ ov01_021EF488: ; 0x021EF488
 	bl ov01_021EF4DC
 	ldr r1, _021EF4C0 ; =ov01_021EF348
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -30431,7 +30431,7 @@ _021F3F86:
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r5, #8]
 	add r0, r4, #0
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	str r0, [r5, #0xc]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -30451,7 +30451,7 @@ ov01_021F3F9C: ; 0x021F3F9C
 	mov r1, #1
 	bl BufferPlayersName
 	ldr r0, [r4, #8]
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -37003,7 +37003,7 @@ _021F7016:
 	bl sub_0202C6F4
 	add r6, r0, #0
 	mov r0, #4
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r1, r5, #0
 	add r1, #0x8c
 	add r4, r0, #0
@@ -37012,7 +37012,7 @@ _021F7016:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02028F24
+	bl CopyPlayerName
 	ldr r0, [r5, #0x38]
 	mov r1, #0
 	add r2, r4, #0
@@ -57987,7 +57987,7 @@ ov01_02200AF0: ; 0x02200AF0
 	bl sub_020402F0
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x1c]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r0, #0x80
@@ -57995,7 +57995,7 @@ ov01_02200AF0: ; 0x02200AF0
 	bl sub_020403AC
 	str r0, [sp, #0x30]
 	ldr r0, [sp, #0x1c]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r0, #0x80
@@ -58003,13 +58003,13 @@ ov01_02200AF0: ; 0x02200AF0
 	bl sub_020403AC
 	str r0, [sp, #0x34]
 	ldr r0, [sp, #0x1c]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [sp, #0x38]
 	ldr r0, [sp, #0x1c]
 	mov r1, #0x1b
@@ -58130,7 +58130,7 @@ _02200C14:
 	bl ov01_02200E00
 	ldr r0, [sp, #0x1c]
 	ldr r1, _02200C68 ; =ov01_02200C6C
-	bl sub_0203FD58
+	bl SetupNativeScript
 	ldr r0, [sp, #0x20]
 	bl DestroyMsgData
 	mov r0, #1
@@ -58859,7 +58859,7 @@ ov01_022011D4: ; 0x022011D4
 	add r1, #0x80
 	ldr r1, [r1]
 	str r1, [sp, #4]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -58867,7 +58867,7 @@ ov01_022011D4: ; 0x022011D4
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -58875,7 +58875,7 @@ ov01_022011D4: ; 0x022011D4
 	bl sub_02040374
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -58883,7 +58883,7 @@ ov01_022011D4: ; 0x022011D4
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -59004,7 +59004,7 @@ ov01_02201304: ; 0x02201304
 	add r1, #0x80
 	ldr r1, [r1]
 	str r1, [sp, #4]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -59145,7 +59145,7 @@ ov01_02201424: ; 0x02201424
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -59153,7 +59153,7 @@ ov01_02201424: ; 0x02201424
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -59180,7 +59180,7 @@ ov01_02201470: ; 0x02201470
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -59188,7 +59188,7 @@ ov01_02201470: ; 0x02201470
 	bl sub_02040374
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -59260,7 +59260,7 @@ ov01_02201518: ; 0x02201518
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -59268,7 +59268,7 @@ ov01_02201518: ; 0x02201518
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -59276,14 +59276,14 @@ ov01_02201518: ; 0x02201518
 	bl sub_020403AC
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_020403AC
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -59314,7 +59314,7 @@ ov01_02201594: ; 0x02201594
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -59322,7 +59322,7 @@ ov01_02201594: ; 0x02201594
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -59604,7 +59604,7 @@ ov01_022017DC: ; 0x022017DC
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -59612,7 +59612,7 @@ ov01_022017DC: ; 0x022017DC
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -59620,7 +59620,7 @@ ov01_022017DC: ; 0x022017DC
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -59651,7 +59651,7 @@ ov01_02201844: ; 0x02201844
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -59659,7 +59659,7 @@ ov01_02201844: ; 0x02201844
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -59812,7 +59812,7 @@ ov01_0220197C: ; 0x0220197C
 ov01_02201990: ; 0x02201990
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -59829,7 +59829,7 @@ ov01_02201990: ; 0x02201990
 ov01_022019B0: ; 0x022019B0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -59837,7 +59837,7 @@ ov01_022019B0: ; 0x022019B0
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -59859,7 +59859,7 @@ ov01_022019B0: ; 0x022019B0
 ov01_022019F0: ; 0x022019F0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -59880,7 +59880,7 @@ ov01_022019F0: ; 0x022019F0
 ov01_02201A18: ; 0x02201A18
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -59912,7 +59912,7 @@ ov01_02201A40: ; 0x02201A40
 ov01_02201A50: ; 0x02201A50
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -59920,7 +59920,7 @@ ov01_02201A50: ; 0x02201A50
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -59928,7 +59928,7 @@ ov01_02201A50: ; 0x02201A50
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -59936,7 +59936,7 @@ ov01_02201A50: ; 0x02201A50
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -59959,7 +59959,7 @@ ov01_02201A50: ; 0x02201A50
 ov01_02201AB8: ; 0x02201AB8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -59967,7 +59967,7 @@ ov01_02201AB8: ; 0x02201AB8
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -60031,7 +60031,7 @@ _02201B3C: .word 0x0000FFFF
 ov01_02201B40: ; 0x02201B40
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r6, #0
 	add r0, #0x80
@@ -60040,7 +60040,7 @@ ov01_02201B40: ; 0x02201B40
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	add r0, r6, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r6, #0
 	add r0, #0x80
@@ -60136,7 +60136,7 @@ ov01_02201C08: ; 0x02201C08
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r6, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60190,7 +60190,7 @@ ov01_02201C60: ; 0x02201C60
 ov01_02201C70: ; 0x02201C70
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60226,7 +60226,7 @@ ov01_02201C9C: ; 0x02201C9C
 ov01_02201CB4: ; 0x02201CB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60248,7 +60248,7 @@ ov01_02201CB4: ; 0x02201CB4
 ov01_02201CE0: ; 0x02201CE0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -60292,7 +60292,7 @@ ov01_02201D1C: ; 0x02201D1C
 	str r0, [r4]
 	ldr r1, _02201D48 ; =0x02042975
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -60309,7 +60309,7 @@ ov01_02201D4C: ; 0x02201D4C
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60317,7 +60317,7 @@ ov01_02201D4C: ; 0x02201D4C
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60332,7 +60332,7 @@ ov01_02201D4C: ; 0x02201D4C
 	str r0, [r4]
 	ldr r1, _02201DA0 ; =0x02042975
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
@@ -60356,7 +60356,7 @@ ov01_02201DA4: ; 0x02201DA4
 	bl sub_020402F0
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60364,7 +60364,7 @@ ov01_02201DA4: ; 0x02201DA4
 	bl sub_020403AC
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60372,7 +60372,7 @@ ov01_02201DA4: ; 0x02201DA4
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60380,7 +60380,7 @@ ov01_02201DA4: ; 0x02201DA4
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -60506,7 +60506,7 @@ _02201F0C: .word 0x00001388
 ov01_02201F10: ; 0x02201F10
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -60664,7 +60664,7 @@ _02202058: .word 0x0000019F
 ov01_0220205C: ; 0x0220205C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -60828,7 +60828,7 @@ _022021A8: .word 0x00000146
 ov01_022021AC: ; 0x022021AC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60836,7 +60836,7 @@ ov01_022021AC: ; 0x022021AC
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60988,7 +60988,7 @@ ov01_02202308: ; 0x02202308
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -61013,7 +61013,7 @@ _02202336:
 ov01_0220233C: ; 0x0220233C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -61021,7 +61021,7 @@ ov01_0220233C: ; 0x0220233C
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -61164,7 +61164,7 @@ ov01_02202430: ; 0x02202430
 	str r0, [r7]
 	ldr r1, _0220247C ; =0x02042975
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -61179,7 +61179,7 @@ ov01_02202480: ; 0x02202480
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61203,7 +61203,7 @@ ov01_02202480: ; 0x02202480
 ov01_022024B8: ; 0x022024B8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61211,7 +61211,7 @@ ov01_022024B8: ; 0x022024B8
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61247,7 +61247,7 @@ ov01_022024FC: ; 0x022024FC
 ov01_02202510: ; 0x02202510
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61255,7 +61255,7 @@ ov01_02202510: ; 0x02202510
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61322,7 +61322,7 @@ _022025A2:
 ov01_022025A8: ; 0x022025A8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61330,7 +61330,7 @@ ov01_022025A8: ; 0x022025A8
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61354,7 +61354,7 @@ ov01_022025EC: ; 0x022025EC
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61396,7 +61396,7 @@ _02202640:
 ov01_02202648: ; 0x02202648
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61418,7 +61418,7 @@ ov01_02202648: ; 0x02202648
 ov01_02202674: ; 0x02202674
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61426,7 +61426,7 @@ ov01_02202674: ; 0x02202674
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61448,7 +61448,7 @@ ov01_02202674: ; 0x02202674
 ov01_022026B4: ; 0x022026B4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61456,7 +61456,7 @@ ov01_022026B4: ; 0x022026B4
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61508,7 +61508,7 @@ ov01_0220271C: ; 0x0220271C
 	mov r1, #0
 	add r4, r0, #0
 	str r1, [sp, #0x18]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -61516,7 +61516,7 @@ ov01_0220271C: ; 0x0220271C
 	bl sub_02040374
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -61524,7 +61524,7 @@ ov01_0220271C: ; 0x0220271C
 	bl sub_02040374
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -61643,7 +61643,7 @@ ov01_02202834: ; 0x02202834
 	sub sp, #0x10
 	add r4, r0, #0
 	mov r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -61747,7 +61747,7 @@ _02202904: .word 0x0000017E
 ov01_02202908: ; 0x02202908
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -61773,7 +61773,7 @@ ov01_02202930: ; 0x02202930
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61840,7 +61840,7 @@ ov01_022029B0: ; 0x022029B0
 	bl sub_0206DB28
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -61848,7 +61848,7 @@ ov01_022029B0: ; 0x022029B0
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -61856,7 +61856,7 @@ ov01_022029B0: ; 0x022029B0
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -61907,7 +61907,7 @@ ov01_02202A28: ; 0x02202A28
 	str r0, [r4, #8]
 	add r0, r4, #0
 	ldrb r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -61972,7 +61972,7 @@ ov01_02202ABC: ; 0x02202ABC
 	bl sub_0206DB28
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -61980,7 +61980,7 @@ ov01_02202ABC: ; 0x02202ABC
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -61999,7 +61999,7 @@ ov01_02202ABC: ; 0x02202ABC
 ov01_02202B00: ; 0x02202B00
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -62007,7 +62007,7 @@ ov01_02202B00: ; 0x02202B00
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -62015,7 +62015,7 @@ ov01_02202B00: ; 0x02202B00
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -62056,7 +62056,7 @@ _02202B74:
 ov01_02202B78: ; 0x02202B78
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -62064,7 +62064,7 @@ ov01_02202B78: ; 0x02202B78
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -62072,7 +62072,7 @@ ov01_02202B78: ; 0x02202B78
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -62096,7 +62096,7 @@ ov01_02202B78: ; 0x02202B78
 ov01_02202BD0: ; 0x02202BD0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -62104,7 +62104,7 @@ ov01_02202BD0: ; 0x02202BD0
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -62140,7 +62140,7 @@ _02202C24: .word 0x022093E2
 ov01_02202C28: ; 0x02202C28
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -62148,7 +62148,7 @@ ov01_02202C28: ; 0x02202C28
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -62456,7 +62456,7 @@ ov01_02202E68: ; 0x02202E68
 	bl sub_020402F0
 	add r4, r0, #0
 	ldr r0, [sp, #0x14]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #0x14]
 	add r0, #0x80
@@ -62464,7 +62464,7 @@ ov01_02202E68: ; 0x02202E68
 	bl sub_020403AC
 	add r5, r0, #0
 	ldr r0, [sp, #0x14]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #0x14]
 	add r0, #0x80
@@ -62472,7 +62472,7 @@ ov01_02202E68: ; 0x02202E68
 	bl sub_020403AC
 	add r7, r0, #0
 	ldr r0, [sp, #0x14]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #0x14]
 	add r0, #0x80
@@ -62480,7 +62480,7 @@ ov01_02202E68: ; 0x02202E68
 	bl sub_020403AC
 	add r6, r0, #0
 	ldr r0, [sp, #0x14]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	ldr r1, [sp, #0x14]
 	str r0, [sp, #0x20]
 	str r0, [r1, #0x64]
@@ -62652,7 +62652,7 @@ _02203002:
 	bl ov01_021F6ABC
 	ldr r0, [sp, #0x14]
 	ldr r1, _02203058 ; =ov01_0220305C
-	bl sub_0203FD58
+	bl SetupNativeScript
 	ldr r1, [sp, #0x14]
 	ldr r0, [sp, #0x28]
 	ldr r1, [r1, #0x64]
@@ -62703,7 +62703,7 @@ _02203090: .word 0x0000EEEE
 ov01_02203094: ; 0x02203094
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -62711,7 +62711,7 @@ ov01_02203094: ; 0x02203094
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -62719,7 +62719,7 @@ ov01_02203094: ; 0x02203094
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -62782,7 +62782,7 @@ ov01_02203138: ; 0x02203138
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -62790,7 +62790,7 @@ ov01_02203138: ; 0x02203138
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -67100,7 +67100,7 @@ ov01_02205164: ; 0x02205164
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -67108,7 +67108,7 @@ ov01_02205164: ; 0x02205164
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -67447,7 +67447,7 @@ _022053E8:
 ov01_022053EC: ; 0x022053EC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -69391,8 +69391,11 @@ _022062DC:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x02, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x03, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x25, 0x59, 0x1E, 0x02, 0xE5, 0x5B, 0x1E, 0x02
-	.byte 0x25, 0x5C, 0x1E, 0x02, 0xFF, 0xFF, 0xFF, 0xFF, 0x60, 0x40, 0x20, 0x00, 0x40, 0x60, 0x7F, 0x2E
+	.byte 0x03, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
+	.public ov01_02206378
+ov01_02206378:
+	.word ov01_021E5924, ov01_021E5BE4, ov01_021E5C24, 0xFFFFFFFF
+	.byte 0x60, 0x40, 0x20, 0x00, 0x40, 0x60, 0x7F, 0x2E
 	.byte 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x40, 0x60, 0x7F, 0x2E, 0x40, 0x60, 0x40, 0x60, 0x6C, 0x2E, 0x60
 	.byte 0x6C, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x48, 0x6C
 	.byte 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x40, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x54, 0x08, 0x01, 0x00

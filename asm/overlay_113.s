@@ -1773,7 +1773,7 @@ ov113_021E6680: ; 0x021E6680
 	ldr r0, [r0, #4]
 	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, [r4]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	str r0, [r4, #0x5c]
 	pop {r4, pc}
 	thumb_func_end ov113_021E6680

@@ -3582,7 +3582,7 @@ ov41_022479A8: ; 0x022479A8
 	beq _022479E8
 	add r0, r4, #0
 	mov r1, #0xd
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r5, r0, #0
 	add r0, r4, #0
 	bl PlayerProfile_GetTrainerGender

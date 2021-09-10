@@ -4597,7 +4597,7 @@ ov112_021E7CC8: ; 0x021E7CC8
 	ldr r0, [r5, #0x20]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x9a
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
 	ldr r1, _021E7D60 ; =0x00001024
 	mov r0, #1
@@ -6687,7 +6687,7 @@ ov112_021E90FC: ; 0x021E90FC
 	ldr r0, [r1, #0x20]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x9a
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
 	mov r0, #5
 	mov r1, #0x9a
@@ -17916,7 +17916,7 @@ ov112_021EE9A4: ; 0x021EE9A4
 	mov r1, #0x9a
 	add r7, r2, #0
 	str r3, [sp, #4]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r6, r0, #0
 	add r0, r4, #0
 	bl PlayerProfile_GetTrainerID
@@ -18085,7 +18085,7 @@ ov112_021EEAF0: ; 0x021EEAF0
 	ldr r0, _021EECC4 ; =0x0001E438
 	mov r1, #0x9a
 	ldr r0, [r5, r0]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	str r0, [sp, #0xc]
 	ldr r0, _021EECC8 ; =0x0001E440
 	add r2, sp, #0x18
@@ -27391,13 +27391,13 @@ ov112_021F336C: ; 0x021F336C
 	bl PlayerProfile_GetTrainerGender
 	strb r0, [r5, #7]
 	add r0, r4, #0
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	strb r0, [r5, #5]
 	add r0, r4, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	strb r0, [r5, #6]
 	add r0, r4, #0
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	strb r0, [r5, #4]
 	add r0, r4, #0
 	bl PlayerProfile_GetNamePtr

@@ -3791,7 +3791,7 @@ ov49_0225A334: ; 0x0225A334
 	mov r0, #0x77
 	add r4, r1, #0
 	add r7, r2, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r6, r0, #0
 	ldr r0, [r5, #0x34]
 	bl ov45_0222A53C
@@ -7212,7 +7212,7 @@ _0225BC40:
 	mov r3, #4
 	bl ov49_0225BB14
 	ldr r0, [sp, #0x34]
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x38]
 	ldr r1, [sp, #0x10]
@@ -7227,7 +7227,7 @@ _0225BC40:
 	str r7, [sp, #8]
 	bl ov49_0225C3DC
 	ldr r0, [sp, #0x10]
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	add r1, r0, #0
 	mov r0, #2
 	str r0, [sp]

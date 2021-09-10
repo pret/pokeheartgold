@@ -228,7 +228,7 @@ ov20_02259A88: ; 0x02259A88
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -236,7 +236,7 @@ ov20_02259A88: ; 0x02259A88
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -311,7 +311,7 @@ ov20_02259B40: ; 0x02259B40
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -345,7 +345,7 @@ ov20_02259B88: ; 0x02259B88
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -353,7 +353,7 @@ ov20_02259B88: ; 0x02259B88
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -361,7 +361,7 @@ ov20_02259B88: ; 0x02259B88
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -394,7 +394,7 @@ ov20_02259BF4: ; 0x02259BF4
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -402,7 +402,7 @@ ov20_02259BF4: ; 0x02259BF4
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -410,7 +410,7 @@ ov20_02259BF4: ; 0x02259BF4
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]

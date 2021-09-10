@@ -28299,21 +28299,21 @@ _02239C2A:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	bl sub_0202CE24
 	ldr r1, _02239ED8 ; =0x00000728
 	strh r0, [r5, r1]
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	bl sub_0202CE28
 	ldr r1, _02239EDC ; =0x0000072A
 	strb r0, [r5, r1]
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	bl sub_0202CE2C
 	ldr r1, _02239EE0 ; =0x0000072B
 	strb r0, [r5, r1]

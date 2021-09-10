@@ -4718,7 +4718,7 @@ _02039F82:
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_02034818
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	add r3, r0, #0
 	ldr r0, [sp]
 	add r1, r4, #0
@@ -5118,7 +5118,7 @@ _0203A2B6:
 	bne _0203A2FC
 	ldr r1, [sp, #4]
 	add r0, r6, #0
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	str r0, [sp, #0xc]
 	ldr r2, [sp, #0xc]
 	add r0, r4, #0
@@ -5182,7 +5182,7 @@ _0203A334:
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	add r3, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0

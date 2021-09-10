@@ -3207,13 +3207,13 @@ ov74_02228920: ; 0x02228920
 	bl Sav2_Pokedex_get
 	str r0, [r4, #8]
 	ldr r0, [r4, #4]
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	bl sub_0202A5F4
 	str r0, [r4, #0x4c]
 	ldr r0, [r4, #0xc]
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	str r0, [r4, #0x50]
 	mov r0, #0x51
 	mov r1, #0xf
@@ -3669,7 +3669,7 @@ _02228D30:
 	cmp r6, #8
 	blt _02228D30
 	ldr r0, [r7, #0x10]
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	add r1, r0, #0
 	ldr r0, _02228D5C ; =0x0223D090
 	bl ov74_02228CB4
@@ -4095,7 +4095,7 @@ ov74_02229084: ; 0x02229084
 	mov r1, #0
 	bl BufferPlayersName
 	ldr r0, [r5, #0x10]
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]

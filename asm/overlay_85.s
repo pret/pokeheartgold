@@ -673,7 +673,7 @@ _021E5DD6:
 	add r1, #0x98
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 _021E5DFE:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -9269,13 +9269,13 @@ _021E9EF2:
 	ldr r0, [r7, r0]
 	cmp r0, #0
 	beq _021E9FAC
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	str r0, [sp, #0x24]
 	mov r0, #0xdd
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	ldr r1, [r4, #0x3c]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #1
@@ -9687,7 +9687,7 @@ _021EA1FA:
 	mov r0, #0xdd
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	str r0, [sp, #0x10]
 	bl sub_0203769C
 	cmp r4, r0

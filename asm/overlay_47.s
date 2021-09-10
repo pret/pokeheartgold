@@ -695,7 +695,7 @@ ov47_02258D78: ; 0x02258D78
 	add r5, r0, #0
 	add r0, r7, #0
 	add r4, r1, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r6, r0, #0
 	ldr r0, [r5, #0x30]
 	bl ov45_0222A5C0

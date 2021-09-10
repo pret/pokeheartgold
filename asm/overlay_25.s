@@ -179,7 +179,7 @@ ov25_02259A30: ; 0x02259A30
 	push {r3, r4, r5, lr}
 	sub sp, #0x18
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -224,7 +224,7 @@ _02259A7E:
 	bl ov01_021EF564
 	ldr r1, _02259AA8 ; =0x021EF349
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #0x18
 	pop {r3, r4, r5, pc}

@@ -10,7 +10,7 @@ ov21_022598C0: ; 0x022598C0
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -46,7 +46,7 @@ _02259908: .word 0x022599F0
 ov21_0225990C: ; 0x0225990C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -54,7 +54,7 @@ ov21_0225990C: ; 0x0225990C
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -93,7 +93,7 @@ ov21_02259960: ; 0x02259960
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -101,7 +101,7 @@ ov21_02259960: ; 0x02259960
 	bl sub_02040374
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -109,7 +109,7 @@ ov21_02259960: ; 0x02259960
 	bl sub_02040374
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]

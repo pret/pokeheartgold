@@ -15034,7 +15034,7 @@ ov02_0224CD38: ; 0x0224CD38
 	bl sub_02015D14
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	add r1, r0, #0
 	str r5, [sp]
 	add r0, sp, #0x10
@@ -15064,7 +15064,7 @@ ov02_0224CD74: ; 0x0224CD74
 	bl sub_02015D14
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	add r1, r0, #0
 	str r5, [sp]
 	add r0, sp, #0x10

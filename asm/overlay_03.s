@@ -212,7 +212,7 @@ _02253F84:
 	ldr r1, [r1]
 	str r0, [r1, #0x78]
 	mov r0, #4
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	ldr r1, _02254050 ; =0x022598A0
 	ldr r2, [r1]
 	str r0, [r2, #0x7c]
@@ -1538,7 +1538,7 @@ _02254A70:
 	add r0, sp, #0xc
 	ldrh r0, [r0]
 	bl sub_02034818
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	mov r1, #2
 	add r2, r0, #0
 	str r1, [sp]
@@ -7245,7 +7245,7 @@ _02257808:
 	mov r1, #0x92
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	pop {r3, pc}
 	thumb_func_end ov03_022577F4
 
@@ -8024,7 +8024,7 @@ _02257E18:
 	sub r0, #0x3b
 	ldr r0, [r2, r0]
 	mul r1, r4
-	bl sub_02029068
+	bl PlayerProfile_SubMoney
 	pop {r4, pc}
 	.balign 4, 0
 _02257E30: .word 0x00000283
@@ -9501,7 +9501,7 @@ ov03_0225894C: ; 0x0225894C
 	str r0, [r4]
 	ldr r1, _02258974 ; =0x02042975
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -9512,7 +9512,7 @@ _02258974: .word 0x02042975
 ov03_02258978: ; 0x02258978
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -9539,7 +9539,7 @@ ov03_02258998: ; 0x02258998
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -9565,7 +9565,7 @@ ov03_022589D4: ; 0x022589D4
 	add r0, r6, #0
 	bl sub_020402F0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9573,7 +9573,7 @@ ov03_022589D4: ; 0x022589D4
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -9598,7 +9598,7 @@ ov03_02258A18: ; 0x02258A18
 	add r0, r5, #0
 	bl sub_020402F0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -9806,7 +9806,7 @@ _02258BC6:
 ov03_02258BDC: ; 0x02258BDC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -9840,7 +9840,7 @@ ov03_02258C00: ; 0x02258C00
 	str r1, [r5, #8]
 	ldrb r1, [r2]
 	str r1, [sp, #8]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -9933,7 +9933,7 @@ ov03_02258CDC: ; 0x02258CDC
 	bl sub_0202F57C
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0202F784

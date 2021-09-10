@@ -18,7 +18,7 @@ sub_02040894: ; 0x02040894
 	thumb_func_start sub_02040898
 sub_02040898: ; 0x02040898
 	push {r3, lr}
-	bl sub_0203FD60
+	bl StopScript
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -31,10 +31,10 @@ sub_020408A4: ; 0x020408A4
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -43,7 +43,7 @@ sub_020408A4: ; 0x020408A4
 	ldr r1, _020408D4 ; =sub_020408D8
 	add r0, r5, #0
 	str r4, [r5, #0x64]
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -78,7 +78,7 @@ _020408FA:
 sub_02040900: ; 0x02040900
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -112,7 +112,7 @@ sub_02040930: ; 0x02040930
 	add r1, r2, #1
 	str r1, [r4, #8]
 	ldrb r5, [r2]
-	bl sub_0203FE44
+	bl ScriptReadWord
 	lsl r1, r5, #2
 	add r1, r4, r1
 	str r0, [r1, #0x64]
@@ -129,7 +129,7 @@ sub_0204094C: ; 0x0204094C
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE44
+	bl ScriptReadWord
 	ldrb r1, [r0]
 	lsl r0, r4, #2
 	add r0, r5, r0
@@ -142,7 +142,7 @@ sub_0204094C: ; 0x0204094C
 sub_02040968: ; 0x02040968
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	ldr r2, [r4, #8]
 	add r1, r2, #1
 	str r1, [r4, #8]
@@ -157,7 +157,7 @@ sub_02040968: ; 0x02040968
 sub_02040980: ; 0x02040980
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	ldr r2, [r4, #8]
 	add r1, r2, #1
 	str r1, [r4, #8]
@@ -194,10 +194,10 @@ sub_0204099C: ; 0x0204099C
 sub_020409BC: ; 0x020409BC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	ldrb r0, [r0]
 	strb r0, [r4]
 	mov r0, #0
@@ -283,7 +283,7 @@ sub_02040A40: ; 0x02040A40
 	ldr r1, [r1, #0x64]
 	lsl r1, r1, #0x18
 	lsr r5, r1, #0x18
-	bl sub_0203FE44
+	bl ScriptReadWord
 	ldrb r1, [r0]
 	add r0, r5, #0
 	bl sub_020409D4
@@ -296,7 +296,7 @@ sub_02040A40: ; 0x02040A40
 sub_02040A68: ; 0x02040A68
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	ldr r2, [r4, #8]
 	ldrb r0, [r0]
 	add r1, r2, #1
@@ -318,7 +318,7 @@ sub_02040A68: ; 0x02040A68
 sub_02040A90: ; 0x02040A90
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	ldr r2, [r4, #8]
 	ldrb r0, [r0]
 	add r1, r2, #1
@@ -334,10 +334,10 @@ sub_02040A90: ; 0x02040A90
 sub_02040AAC: ; 0x02040AAC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	ldrb r4, [r0]
 	add r0, r5, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	ldrb r1, [r0]
 	add r0, r4, #0
 	bl sub_020409D4
@@ -351,7 +351,7 @@ sub_02040AAC: ; 0x02040AAC
 sub_02040ACC: ; 0x02040ACC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -359,7 +359,7 @@ sub_02040ACC: ; 0x02040ACC
 	bl sub_02040374
 	ldrh r5, [r0]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_020409D4
@@ -373,7 +373,7 @@ sub_02040ACC: ; 0x02040ACC
 sub_02040AF8: ; 0x02040AF8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -381,7 +381,7 @@ sub_02040AF8: ; 0x02040AF8
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -411,10 +411,10 @@ sub_02040B30: ; 0x02040B30
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_020400AC
+	bl CreateScriptContext
 	str r0, [r6]
 	ldrb r0, [r4]
 	add r0, r0, #1
@@ -444,10 +444,10 @@ sub_02040B68: ; 0x02040B68
 	bl sub_020402F0
 	str r0, [sp]
 	add r0, r6, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r7, #0
-	bl sub_020400AC
+	bl CreateScriptContext
 	ldr r1, [sp]
 	str r0, [r1]
 	ldrb r1, [r4]
@@ -464,7 +464,7 @@ sub_02040B68: ; 0x02040B68
 	strb r0, [r5]
 	ldr r1, _02040BC8 ; =sub_02040BCC
 	add r0, r6, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -528,12 +528,12 @@ sub_02040BFC: ; 0x02040BFC
 sub_02040C2C: ; 0x02040C2C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r2, r0, #0
 	ldr r1, [r4, #8]
 	add r0, r4, #0
 	add r1, r1, r2
-	bl sub_0203FE0C
+	bl ScriptJump
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end sub_02040C2C
@@ -552,7 +552,7 @@ sub_02040C44: ; 0x02040C44
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r7, r0, #0
 	ldr r0, [r6]
 	bl sub_0205F24C
@@ -561,7 +561,7 @@ sub_02040C44: ; 0x02040C44
 	ldr r1, [r5, #8]
 	add r0, r5, #0
 	add r1, r1, r7
-	bl sub_0203FE0C
+	bl ScriptJump
 _02040C78:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -579,14 +579,14 @@ sub_02040C7C: ; 0x02040C7C
 	str r0, [r5, #8]
 	ldrb r4, [r1]
 	add r0, r5, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r2, r0, #0
 	cmp r6, r4
 	bne _02040CA6
 	ldr r1, [r5, #8]
 	add r0, r5, #0
 	add r1, r1, r2
-	bl sub_0203FE0C
+	bl ScriptJump
 _02040CA6:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -607,7 +607,7 @@ sub_02040CAC: ; 0x02040CAC
 	str r0, [r5, #8]
 	ldrb r4, [r1]
 	add r0, r5, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r2, r0, #0
 	ldr r0, [r6]
 	cmp r0, r4
@@ -615,7 +615,7 @@ sub_02040CAC: ; 0x02040CAC
 	ldr r1, [r5, #8]
 	add r0, r5, #0
 	add r1, r1, r2
-	bl sub_0203FE0C
+	bl ScriptJump
 _02040CDC:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -625,12 +625,12 @@ _02040CDC:
 sub_02040CE0: ; 0x02040CE0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r2, r0, #0
 	ldr r1, [r4, #8]
 	add r0, r4, #0
 	add r1, r1, r2
-	bl sub_0203FE10
+	bl ScriptCall
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end sub_02040CE0
@@ -638,7 +638,7 @@ sub_02040CE0: ; 0x02040CE0
 	thumb_func_start sub_02040CF8
 sub_02040CF8: ; 0x02040CF8
 	push {r3, lr}
-	bl sub_0203FE20
+	bl ScriptReturn
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -652,7 +652,7 @@ sub_02040D04: ; 0x02040D04
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r1, r0, #0
 	lsl r0, r4, #1
 	add r3, r4, r0
@@ -665,7 +665,7 @@ sub_02040D04: ; 0x02040D04
 	ldr r2, [r5, #8]
 	add r0, r5, #0
 	add r1, r2, r1
-	bl sub_0203FE0C
+	bl ScriptJump
 _02040D30:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -681,7 +681,7 @@ sub_02040D38: ; 0x02040D38
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r1, r0, #0
 	lsl r0, r4, #1
 	add r3, r4, r0
@@ -694,7 +694,7 @@ sub_02040D38: ; 0x02040D38
 	ldr r2, [r5, #8]
 	add r0, r5, #0
 	add r1, r2, r1
-	bl sub_0203FE10
+	bl ScriptCall
 _02040D64:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -708,7 +708,7 @@ sub_02040D6C: ; 0x02040D6C
 	add r1, r0, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02040410
@@ -722,7 +722,7 @@ sub_02040D84: ; 0x02040D84
 	add r1, r0, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02040424
@@ -737,7 +737,7 @@ sub_02040D9C: ; 0x02040D9C
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_020403FC
@@ -753,7 +753,7 @@ sub_02040DB8: ; 0x02040DB8
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -761,7 +761,7 @@ sub_02040DB8: ; 0x02040DB8
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -782,7 +782,7 @@ sub_02040DF4: ; 0x02040DF4
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -803,7 +803,7 @@ sub_02040E1C: ; 0x02040E1C
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -821,7 +821,7 @@ sub_02040E1C: ; 0x02040E1C
 sub_02040E44: ; 0x02040E44
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -840,7 +840,7 @@ sub_02040E44: ; 0x02040E44
 sub_02040E68: ; 0x02040E68
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -862,7 +862,7 @@ sub_02040E8C: ; 0x02040E8C
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -880,7 +880,7 @@ sub_02040E8C: ; 0x02040E8C
 sub_02040EB4: ; 0x02040EB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -888,7 +888,7 @@ sub_02040EB4: ; 0x02040EB4
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -904,7 +904,7 @@ sub_02040EB4: ; 0x02040EB4
 sub_02040EE4: ; 0x02040EE4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -912,7 +912,7 @@ sub_02040EE4: ; 0x02040EE4
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -928,7 +928,7 @@ sub_02040EE4: ; 0x02040EE4
 sub_02040F14: ; 0x02040F14
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -936,7 +936,7 @@ sub_02040F14: ; 0x02040F14
 	bl sub_02040374
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -947,7 +947,7 @@ sub_02040F14: ; 0x02040F14
 sub_02040F38: ; 0x02040F38
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -955,7 +955,7 @@ sub_02040F38: ; 0x02040F38
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -971,7 +971,7 @@ sub_02040F38: ; 0x02040F38
 sub_02040F68: ; 0x02040F68
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -979,7 +979,7 @@ sub_02040F68: ; 0x02040F68
 	bl sub_02040374
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -1027,7 +1027,7 @@ _02040FBC:
 _02040FDC:
 	ldr r1, _02040FEC ; =0x021EF349
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -1039,7 +1039,7 @@ _02040FEC: .word 0x021EF349
 sub_02040FF0: ; 0x02040FF0
 	push {r3, lr}
 	ldr r1, _02040FFC ; =sub_02041000
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -1066,7 +1066,7 @@ _02041014: .word gMain
 sub_02041018: ; 0x02041018
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -1075,7 +1075,7 @@ sub_02041018: ; 0x02041018
 	str r0, [r4, #0x64]
 	ldr r1, _0204103C ; =sub_02041040
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -1109,7 +1109,7 @@ _02041060: .word gMain
 sub_02041064: ; 0x02041064
 	push {r3, lr}
 	ldr r1, _02041070 ; =sub_02041074
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -1180,7 +1180,7 @@ _020410DC: .word gMain
 sub_020410E0: ; 0x020410E0
 	push {r3, lr}
 	ldr r1, _020410EC ; =sub_020410F0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -1373,7 +1373,7 @@ sub_020411D8: ; 0x020411D8
 	strh r1, [r0]
 	ldr r1, _0204126C ; =sub_02041270
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -1503,10 +1503,10 @@ sub_02041328: ; 0x02041328
 	ldrb r0, [r1]
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r0, r4, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -1561,7 +1561,7 @@ sub_020413D4: ; 0x020413D4
 	add r1, r2, #1
 	str r1, [r0, #8]
 	ldrb r5, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xd2
@@ -1614,7 +1614,7 @@ sub_0204142C: ; 0x0204142C
 _02041442:
 	ldr r1, _02041450 ; =sub_02041454
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -1666,7 +1666,7 @@ sub_0204146C: ; 0x0204146C
 	ldrb r0, [r1]
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [sp, #0x1c]
 	ldr r0, [r5, #0x78]
 	ldr r1, [sp, #0x10]
@@ -1705,7 +1705,7 @@ sub_0204146C: ; 0x0204146C
 	ldr r1, _0204151C ; =sub_02041520
 	str r0, [r5, #0x64]
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1803,11 +1803,11 @@ _020415C0: .word gMain
 sub_020415C4: ; 0x020415C4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [r4, #0x64]
 	ldr r1, _020415DC ; =sub_020415E0
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -1917,7 +1917,7 @@ sub_02041684: ; 0x02041684
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1939,7 +1939,7 @@ sub_02041684: ; 0x02041684
 	ldr r1, _020416E0 ; =sub_020416E4
 	add r0, r5, #0
 	str r7, [r5, #0x64]
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2055,7 +2055,7 @@ sub_02041770: ; 0x02041770
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x28]
@@ -2150,7 +2150,7 @@ sub_0204184C: ; 0x0204184C
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2158,7 +2158,7 @@ sub_0204184C: ; 0x0204184C
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -2184,7 +2184,7 @@ sub_02041890: ; 0x02041890
 	bl ov01_021EDC84
 	ldr r1, _020418B0 ; =sub_020418B4
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2226,7 +2226,7 @@ sub_020418DC: ; 0x020418DC
 	bl ov01_021EDC84
 	ldr r1, _020418FC ; =sub_02041900
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2316,7 +2316,7 @@ sub_02041988: ; 0x02041988
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2324,7 +2324,7 @@ sub_02041988: ; 0x02041988
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2332,7 +2332,7 @@ sub_02041988: ; 0x02041988
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -2362,7 +2362,7 @@ sub_020419E8: ; 0x020419E8
 	bl ov01_021EDFA4
 	ldr r1, _02041A08 ; =sub_020418B4
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2379,7 +2379,7 @@ sub_02041A0C: ; 0x02041A0C
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2390,7 +2390,7 @@ sub_02041A0C: ; 0x02041A0C
 	bl ov01_021EE014
 	ldr r1, _02041A44 ; =sub_020418B4
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -2407,7 +2407,7 @@ sub_02041A48: ; 0x02041A48
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2415,7 +2415,7 @@ sub_02041A48: ; 0x02041A48
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2427,7 +2427,7 @@ sub_02041A48: ; 0x02041A48
 	bl ov01_021EE0EC
 	ldr r1, _02041A94 ; =sub_020418B4
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2450,7 +2450,7 @@ sub_02041A98: ; 0x02041A98
 	bl ov01_021EE974
 	ldr r1, _02041AC0 ; =sub_020418B4
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2497,7 +2497,7 @@ sub_02041AE4: ; 0x02041AE4
 sub_02041B04: ; 0x02041B04
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2505,7 +2505,7 @@ sub_02041B04: ; 0x02041B04
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2552,7 +2552,7 @@ sub_02041B74: ; 0x02041B74
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2560,7 +2560,7 @@ sub_02041B74: ; 0x02041B74
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2568,7 +2568,7 @@ sub_02041B74: ; 0x02041B74
 	bl sub_020403AC
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -2695,7 +2695,7 @@ _02041C8E:
 sub_02041C98: ; 0x02041C98
 	push {r3, lr}
 	ldr r1, _02041CA4 ; =sub_02041CA8
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -2812,7 +2812,7 @@ sub_02041D40: ; 0x02041D40
 	bl sub_0205F708
 	ldr r1, _02041D94 ; =sub_02041E60
 	add r0, r6, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02041D8A:
@@ -3026,7 +3026,7 @@ _02041F1A:
 _02041F38:
 	ldr r0, [sp]
 	ldr r1, _02041F4C ; =sub_02041D98
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3052,7 +3052,7 @@ sub_02041F60: ; 0x02041F60
 	add r1, r0, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	ldr r0, [r5, #0x3c]
 	add r1, r4, #0
@@ -3076,7 +3076,7 @@ sub_02041F8C: ; 0x02041F8C
 	add r1, r0, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	ldr r0, [r5, #0x3c]
 	add r1, r4, #0
@@ -3102,7 +3102,7 @@ sub_02041FB8: ; 0x02041FB8
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -3136,7 +3136,7 @@ sub_02042000: ; 0x02042000
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -3161,7 +3161,7 @@ sub_02042034: ; 0x02042034
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3169,7 +3169,7 @@ sub_02042034: ; 0x02042034
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3261,7 +3261,7 @@ sub_02042110: ; 0x02042110
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3269,7 +3269,7 @@ sub_02042110: ; 0x02042110
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3456,7 +3456,7 @@ sub_020422B4: ; 0x020422B4
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -3464,7 +3464,7 @@ sub_020422B4: ; 0x020422B4
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -3488,7 +3488,7 @@ sub_020422F8: ; 0x020422F8
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -3500,7 +3500,7 @@ sub_020422F8: ; 0x020422F8
 	bl sub_0205EE60
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -3508,7 +3508,7 @@ sub_020422F8: ; 0x020422F8
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -3539,7 +3539,7 @@ _02042368:
 sub_0204236C: ; 0x0204236C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3561,7 +3561,7 @@ sub_02042394: ; 0x02042394
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3569,7 +3569,7 @@ sub_02042394: ; 0x02042394
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3577,7 +3577,7 @@ sub_02042394: ; 0x02042394
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3660,7 +3660,7 @@ _0204244C:
 sub_02042478: ; 0x02042478
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -3686,7 +3686,7 @@ sub_02042478: ; 0x02042478
 sub_020424AC: ; 0x020424AC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -3700,7 +3700,7 @@ sub_020424AC: ; 0x020424AC
 	bl sub_0205EE60
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	cmp r5, #0
 	beq _020424E2
@@ -3716,7 +3716,7 @@ _020424E2:
 sub_020424E8: ; 0x020424E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3726,7 +3726,7 @@ sub_020424E8: ; 0x020424E8
 	mov r0, #0
 	strh r0, [r4]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3751,7 +3751,7 @@ _0204252A:
 sub_02042530: ; 0x02042530
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3759,7 +3759,7 @@ sub_02042530: ; 0x02042530
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3795,7 +3795,7 @@ sub_02042574: ; 0x02042574
 	str r0, [r4]
 	ldr r1, _020425A0 ; =sub_020429F8
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -3819,7 +3819,7 @@ sub_020425A4: ; 0x020425A4
 	str r0, [r4]
 	ldr r1, _020425D0 ; =sub_020429F8
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -3850,7 +3850,7 @@ sub_020425D4: ; 0x020425D4
 sub_020425F8: ; 0x020425F8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -3888,7 +3888,7 @@ _02042636:
 sub_02042644: ; 0x02042644
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -3896,7 +3896,7 @@ sub_02042644: ; 0x02042644
 	bl sub_02040374
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -3951,7 +3951,7 @@ _020426B6:
 sub_020426C4: ; 0x020426C4
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -3959,7 +3959,7 @@ sub_020426C4: ; 0x020426C4
 	bl sub_02040374
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -3967,7 +3967,7 @@ sub_020426C4: ; 0x020426C4
 	bl sub_02040374
 	str r0, [sp]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -4030,7 +4030,7 @@ _0204275C:
 sub_02042768: ; 0x02042768
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -4038,7 +4038,7 @@ sub_02042768: ; 0x02042768
 	bl sub_02040374
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -4046,7 +4046,7 @@ sub_02042768: ; 0x02042768
 	bl sub_02040374
 	str r0, [sp]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -4113,7 +4113,7 @@ sub_0204280C: ; 0x0204280C
 	add r1, r2, #1
 	str r1, [r4, #8]
 	ldrb r6, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -4161,7 +4161,7 @@ sub_02042860: ; 0x02042860
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4169,7 +4169,7 @@ sub_02042860: ; 0x02042860
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4197,7 +4197,7 @@ _020428C4:
 	ldr r1, _020428D4 ; =sub_020429F8
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -4208,7 +4208,7 @@ _020428D4: .word sub_020429F8
 sub_020428D8: ; 0x020428D8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4216,7 +4216,7 @@ sub_020428D8: ; 0x020428D8
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4258,7 +4258,7 @@ _02042944: .word SDK_OVERLAY_OVY_26_ID
 sub_02042948: ; 0x02042948
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4485,7 +4485,7 @@ sub_02042ACC: ; 0x02042ACC
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -4503,7 +4503,7 @@ sub_02042ACC: ; 0x02042ACC
 sub_02042AFC: ; 0x02042AFC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -4527,7 +4527,7 @@ sub_02042B1C: ; 0x02042B1C
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4535,7 +4535,7 @@ sub_02042B1C: ; 0x02042B1C
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4595,7 +4595,7 @@ sub_02042BAC: ; 0x02042BAC
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4678,11 +4678,11 @@ sub_02042C44: ; 0x02042C44
 sub_02042C5C: ; 0x02042C5C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [r4, #0x64]
 	ldr r1, _02042C74 ; =sub_02042C78
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -4748,7 +4748,7 @@ _02042CDC: .word SDK_OVERLAY_OVY_26_ID
 sub_02042CE0: ; 0x02042CE0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -4766,7 +4766,7 @@ sub_02042D00: ; 0x02042D00
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4774,7 +4774,7 @@ sub_02042D00: ; 0x02042D00
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4782,7 +4782,7 @@ sub_02042D00: ; 0x02042D00
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4812,10 +4812,10 @@ sub_02042D58: ; 0x02042D58
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4845,7 +4845,7 @@ _02042DA0:
 	bl sub_0203F204
 	ldr r1, _02042DBC ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4856,10 +4856,10 @@ _02042DBC: .word sub_02042974
 sub_02042DC0: ; 0x02042DC0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4887,7 +4887,7 @@ _02042DF4:
 sub_02042DFC: ; 0x02042DFC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4915,7 +4915,7 @@ sub_02042E2C: ; 0x02042E2C
 	bl sub_0203F964
 	ldr r1, _02042E44 ; =sub_020429F8
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -4952,7 +4952,7 @@ sub_02042E5C: ; 0x02042E5C
 	str r0, [r4]
 	ldr r1, _02042E88 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -4963,7 +4963,7 @@ _02042E88: .word sub_02042974
 sub_02042E8C: ; 0x02042E8C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -4971,7 +4971,7 @@ sub_02042E8C: ; 0x02042E8C
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5007,7 +5007,7 @@ sub_02042E8C: ; 0x02042E8C
 	bl sub_0203F0A8
 	ldr r1, _02042F00 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5051,7 +5051,7 @@ sub_02042F04: ; 0x02042F04
 	bl sub_0203E868
 	ldr r1, _02042F58 ; =sub_020429A0
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5067,7 +5067,7 @@ sub_02042F5C: ; 0x02042F5C
 	bl sub_0203F4C8
 	ldr r1, _02042F74 ; =sub_020429F8
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -5112,7 +5112,7 @@ sub_02042F98: ; 0x02042F98
 	str r0, [r4]
 	ldr r1, _02042FC0 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5123,7 +5123,7 @@ _02042FC0: .word sub_02042974
 sub_02042FC4: ; 0x02042FC4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -5149,7 +5149,7 @@ sub_02042FDC: ; 0x02042FDC
 	str r0, [r4]
 	ldr r1, _02043004 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5168,7 +5168,7 @@ sub_02043008: ; 0x02043008
 	bl LoadHallOfFame
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -5191,7 +5191,7 @@ _0204303A:
 sub_02043044: ; 0x02043044
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5199,7 +5199,7 @@ sub_02043044: ; 0x02043044
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5222,7 +5222,7 @@ sub_02043044: ; 0x02043044
 	bl sub_0203F844
 	ldr r1, _020430A0 ; =sub_020429F8
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	b _0204309C
 _02043098:
 	mov r0, #0
@@ -5238,7 +5238,7 @@ _020430A0: .word sub_020429F8
 sub_020430A4: ; 0x020430A4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -5298,7 +5298,7 @@ _02043106:
 	str r0, [r6]
 	ldr r1, _02043120 ; =sub_020429F8
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5309,7 +5309,7 @@ _02043120: .word sub_020429F8
 sub_02043124: ; 0x02043124
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -5372,7 +5372,7 @@ _02043196:
 	str r0, [r6]
 	ldr r1, _020431B0 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5384,7 +5384,7 @@ sub_020431B4: ; 0x020431B4
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -5409,7 +5409,7 @@ sub_020431E4: ; 0x020431E4
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -5437,7 +5437,7 @@ sub_02043214: ; 0x02043214
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -5470,7 +5470,7 @@ _0204325C:
 	add r2, sp, #0xc
 	bl GetMonData
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -5512,7 +5512,7 @@ sub_020432A0: ; 0x020432A0
 	str r0, [r4]
 	ldr r1, _020432C8 ; =sub_020429D4
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5523,7 +5523,7 @@ _020432C8: .word sub_020429D4
 sub_020432CC: ; 0x020432CC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -5550,7 +5550,7 @@ sub_020432FC: ; 0x020432FC
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5558,7 +5558,7 @@ sub_020432FC: ; 0x020432FC
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5566,7 +5566,7 @@ sub_020432FC: ; 0x020432FC
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5595,7 +5595,7 @@ sub_0204335C: ; 0x0204335C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5603,7 +5603,7 @@ sub_0204335C: ; 0x0204335C
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5611,7 +5611,7 @@ sub_0204335C: ; 0x0204335C
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5645,7 +5645,7 @@ sub_020433BC: ; 0x020433BC
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5653,7 +5653,7 @@ sub_020433BC: ; 0x020433BC
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -5672,16 +5672,16 @@ sub_02043400: ; 0x02043400
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r4, [sp]
 	add r3, r0, #0
 	str r6, [sp, #4]
@@ -5704,7 +5704,7 @@ sub_02043400: ; 0x02043400
 sub_02043448: ; 0x02043448
 	push {r3, lr}
 	ldr r1, _02043454 ; =sub_02043458
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -5730,7 +5730,7 @@ sub_0204346C: ; 0x0204346C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5738,9 +5738,9 @@ sub_0204346C: ; 0x0204346C
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5748,7 +5748,7 @@ sub_0204346C: ; 0x0204346C
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5756,7 +5756,7 @@ sub_0204346C: ; 0x0204346C
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5780,12 +5780,12 @@ sub_020434DC: ; 0x020434DC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5793,7 +5793,7 @@ sub_020434DC: ; 0x020434DC
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5801,7 +5801,7 @@ sub_020434DC: ; 0x020434DC
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r4, [sp]
 	mov r2, #0
 	add r5, #0x80
@@ -5839,7 +5839,7 @@ sub_02043548: ; 0x02043548
 	bl sub_0203B960
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -5854,7 +5854,7 @@ sub_02043548: ; 0x02043548
 sub_02043574: ; 0x02043574
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -5874,7 +5874,7 @@ sub_02043574: ; 0x02043574
 sub_02043598: ; 0x02043598
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -5882,7 +5882,7 @@ sub_02043598: ; 0x02043598
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -5914,7 +5914,7 @@ _020435E2:
 sub_020435E8: ; 0x020435E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5938,7 +5938,7 @@ sub_020435E8: ; 0x020435E8
 sub_02043618: ; 0x02043618
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5962,7 +5962,7 @@ sub_02043618: ; 0x02043618
 sub_02043648: ; 0x02043648
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5987,10 +5987,10 @@ sub_02043678: ; 0x02043678
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5998,7 +5998,7 @@ sub_02043678: ; 0x02043678
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6046,7 +6046,7 @@ sub_020436C4: ; 0x020436C4
 sub_020436F4: ; 0x020436F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6076,7 +6076,7 @@ sub_02043724: ; 0x02043724
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6106,7 +6106,7 @@ sub_02043724: ; 0x02043724
 	str r0, [r4]
 	ldr r1, _02043788 ; =sub_0204378C
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
@@ -6139,7 +6139,7 @@ _020437AE:
 sub_020437B4: ; 0x020437B4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6261,7 +6261,7 @@ sub_02043884: ; 0x02043884
 sub_0204389C: ; 0x0204389C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6282,7 +6282,7 @@ sub_0204389C: ; 0x0204389C
 sub_020438C4: ; 0x020438C4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -6313,7 +6313,7 @@ sub_020438EC: ; 0x020438EC
 	bl sub_0202D9C4
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -6321,7 +6321,7 @@ sub_020438EC: ; 0x020438EC
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -6342,7 +6342,7 @@ sub_020438EC: ; 0x020438EC
 sub_02043938: ; 0x02043938
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6364,7 +6364,7 @@ sub_02043938: ; 0x02043938
 sub_02043964: ; 0x02043964
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6400,7 +6400,7 @@ sub_02043990: ; 0x02043990
 	bl sub_020402F0
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6408,7 +6408,7 @@ sub_02043990: ; 0x02043990
 	bl sub_020403AC
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6441,7 +6441,7 @@ sub_02043990: ; 0x02043990
 	strb r0, [r7]
 	ldr r1, _02043A24 ; =0x021EF349
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6456,7 +6456,7 @@ sub_02043A28: ; 0x02043A28
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6464,7 +6464,7 @@ sub_02043A28: ; 0x02043A28
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6472,7 +6472,7 @@ sub_02043A28: ; 0x02043A28
 	bl sub_020403AC
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6480,7 +6480,7 @@ sub_02043A28: ; 0x02043A28
 	bl sub_020403AC
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	ldr r2, [sp]
 	ldr r3, [sp, #4]
@@ -6490,7 +6490,7 @@ sub_02043A28: ; 0x02043A28
 	ldr r1, _02043A94 ; =sub_02043A98
 	add r0, r5, #0
 	str r6, [r5, #0x64]
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -6529,7 +6529,7 @@ sub_02043AC0: ; 0x02043AC0
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6537,7 +6537,7 @@ sub_02043AC0: ; 0x02043AC0
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6545,7 +6545,7 @@ sub_02043AC0: ; 0x02043AC0
 	bl sub_020403AC
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6553,7 +6553,7 @@ sub_02043AC0: ; 0x02043AC0
 	bl sub_020403AC
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	ldr r2, [sp]
 	ldr r3, [sp, #4]
@@ -6563,7 +6563,7 @@ sub_02043AC0: ; 0x02043AC0
 	ldr r1, _02043B2C ; =sub_02043B30
 	add r0, r5, #0
 	str r6, [r5, #0x64]
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -6597,7 +6597,7 @@ _02043B50:
 	thumb_func_start sub_02043B58
 sub_02043B58: ; 0x02043B58
 	push {r3, lr}
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -6606,7 +6606,7 @@ sub_02043B58: ; 0x02043B58
 	thumb_func_start sub_02043B64
 sub_02043B64: ; 0x02043B64
 	push {r3, lr}
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -6648,7 +6648,7 @@ sub_02043BA4: ; 0x02043BA4
 	push {r3, r4, lr}
 	sub sp, #0x14
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -6656,7 +6656,7 @@ sub_02043BA4: ; 0x02043BA4
 	bl sub_020403AC
 	str r0, [sp]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -6664,7 +6664,7 @@ sub_02043BA4: ; 0x02043BA4
 	bl sub_020403AC
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -6672,7 +6672,7 @@ sub_02043BA4: ; 0x02043BA4
 	bl sub_020403AC
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -6680,7 +6680,7 @@ sub_02043BA4: ; 0x02043BA4
 	bl sub_020403AC
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -6703,7 +6703,7 @@ sub_02043BA4: ; 0x02043BA4
 sub_02043C24: ; 0x02043C24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6741,7 +6741,7 @@ sub_02043C54: ; 0x02043C54
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6749,7 +6749,7 @@ sub_02043C54: ; 0x02043C54
 	bl sub_02040374
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -6778,7 +6778,7 @@ sub_02043CB4: ; 0x02043CB4
 	bl Sav2_Pokedex_get
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -6802,7 +6802,7 @@ sub_02043CE4: ; 0x02043CE4
 	bl Sav2_Pokedex_get
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -6826,7 +6826,7 @@ sub_02043D14: ; 0x02043D14
 	bl Sav2_Pokedex_get
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -6850,7 +6850,7 @@ sub_02043D44: ; 0x02043D44
 	bl Sav2_Pokedex_get
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -6890,7 +6890,7 @@ sub_02043D78: ; 0x02043D78
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6898,7 +6898,7 @@ sub_02043D78: ; 0x02043D78
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -6947,7 +6947,7 @@ sub_02043E08: ; 0x02043E08
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6955,7 +6955,7 @@ sub_02043E08: ; 0x02043E08
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6987,7 +6987,7 @@ sub_02043E5C: ; 0x02043E5C
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6995,7 +6995,7 @@ sub_02043E5C: ; 0x02043E5C
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7031,7 +7031,7 @@ sub_02043EB8: ; 0x02043EB8
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7039,7 +7039,7 @@ sub_02043EB8: ; 0x02043EB8
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7064,7 +7064,7 @@ sub_02043EB8: ; 0x02043EB8
 sub_02043F0C: ; 0x02043F0C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7072,7 +7072,7 @@ sub_02043F0C: ; 0x02043F0C
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7107,7 +7107,7 @@ sub_02043F54: ; 0x02043F54
 	bl sub_0203F818
 	ldr r1, _02043F6C ; =sub_020429F8
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -7122,7 +7122,7 @@ sub_02043F70: ; 0x02043F70
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r5, [r1, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -7166,7 +7166,7 @@ sub_02043FC4: ; 0x02043FC4
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -7195,7 +7195,7 @@ sub_02043FEC: ; 0x02043FEC
 sub_02043FFC: ; 0x02043FFC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7216,7 +7216,7 @@ sub_02043FFC: ; 0x02043FFC
 sub_02044024: ; 0x02044024
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -7228,7 +7228,7 @@ sub_02044024: ; 0x02044024
 	bl sub_02037AC0
 	ldr r1, _02044050 ; =sub_02044054
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -7271,7 +7271,7 @@ sub_0204407C: ; 0x0204407C
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -7289,7 +7289,7 @@ sub_0204407C: ; 0x0204407C
 sub_020440AC: ; 0x020440AC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7316,7 +7316,7 @@ sub_020440AC: ; 0x020440AC
 	thumb_func_start sub_020440E4
 sub_020440E4: ; 0x020440E4
 	push {r4, lr}
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	cmp r4, #5
 	beq _02044104
@@ -7365,7 +7365,7 @@ sub_02044124: ; 0x02044124
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7422,7 +7422,7 @@ sub_020441A0: ; 0x020441A0
 	bl sub_02037FF0
 	ldr r1, _020441C0 ; =sub_020441C4
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -7453,10 +7453,10 @@ sub_020441D8: ; 0x020441D8
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7488,7 +7488,7 @@ sub_020441D8: ; 0x020441D8
 sub_02044230: ; 0x02044230
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7527,7 +7527,7 @@ sub_02044270: ; 0x02044270
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -7556,7 +7556,7 @@ sub_020442AC: ; 0x020442AC
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -7564,7 +7564,7 @@ sub_020442AC: ; 0x020442AC
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -7586,11 +7586,11 @@ sub_020442AC: ; 0x020442AC
 sub_020442FC: ; 0x020442FC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [r4, #0x64]
 	ldr r1, _02044314 ; =sub_02044318
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -7665,7 +7665,7 @@ sub_02044380: ; 0x02044380
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7673,7 +7673,7 @@ sub_02044380: ; 0x02044380
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -7691,11 +7691,11 @@ sub_02044380: ; 0x02044380
 sub_020443BC: ; 0x020443BC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [r4, #0x64]
 	ldr r1, _020443D4 ; =sub_020443D8
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -7740,11 +7740,11 @@ _02044410:
 sub_02044418: ; 0x02044418
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [r4, #0x64]
 	ldr r1, _02044430 ; =sub_02044434
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -7841,7 +7841,7 @@ sub_020444CC: ; 0x020444CC
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -7849,7 +7849,7 @@ sub_020444CC: ; 0x020444CC
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -7886,7 +7886,7 @@ sub_02044534: ; 0x02044534
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -7894,7 +7894,7 @@ sub_02044534: ; 0x02044534
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -7925,7 +7925,7 @@ sub_0204458C: ; 0x0204458C
 	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -7934,7 +7934,7 @@ sub_0204458C: ; 0x0204458C
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl sub_02029040
+	bl PlayerProfile_SetAvatar
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -7953,7 +7953,7 @@ sub_020445C0: ; 0x020445C0
 sub_020445CC: ; 0x020445CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7981,7 +7981,7 @@ sub_020445F8: ; 0x020445F8
 	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -8014,7 +8014,7 @@ sub_02044640: ; 0x02044640
 	bl sub_02058284
 	ldr r1, _02044654 ; =sub_02044658
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -8045,7 +8045,7 @@ sub_02044674: ; 0x02044674
 	bl sub_020582A8
 	ldr r1, _02044688 ; =sub_02044658
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -8066,7 +8066,7 @@ sub_0204468C: ; 0x0204468C
 	thumb_func_start sub_0204469C
 sub_0204469C: ; 0x0204469C
 	push {r3, lr}
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	bl sub_02057F28
 	mov r0, #0
 	pop {r3, pc}
@@ -8077,7 +8077,7 @@ sub_0204469C: ; 0x0204469C
 sub_020446AC: ; 0x020446AC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8085,7 +8085,7 @@ sub_020446AC: ; 0x020446AC
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8107,7 +8107,7 @@ sub_020446AC: ; 0x020446AC
 sub_020446EC: ; 0x020446EC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8115,7 +8115,7 @@ sub_020446EC: ; 0x020446EC
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8123,7 +8123,7 @@ sub_020446EC: ; 0x020446EC
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8145,7 +8145,7 @@ sub_0204473C: ; 0x0204473C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8153,7 +8153,7 @@ sub_0204473C: ; 0x0204473C
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8161,7 +8161,7 @@ sub_0204473C: ; 0x0204473C
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8169,7 +8169,7 @@ sub_0204473C: ; 0x0204473C
 	bl sub_020403AC
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8177,7 +8177,7 @@ sub_0204473C: ; 0x0204473C
 	bl sub_020403AC
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8207,7 +8207,7 @@ sub_0204473C: ; 0x0204473C
 sub_020447CC: ; 0x020447CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8215,7 +8215,7 @@ sub_020447CC: ; 0x020447CC
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8234,7 +8234,7 @@ sub_020447CC: ; 0x020447CC
 sub_02044804: ; 0x02044804
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8242,7 +8242,7 @@ sub_02044804: ; 0x02044804
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8261,7 +8261,7 @@ sub_02044804: ; 0x02044804
 sub_0204483C: ; 0x0204483C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8269,7 +8269,7 @@ sub_0204483C: ; 0x0204483C
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8277,7 +8277,7 @@ sub_0204483C: ; 0x0204483C
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8298,7 +8298,7 @@ sub_0204483C: ; 0x0204483C
 sub_0204488C: ; 0x0204488C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8306,7 +8306,7 @@ sub_0204488C: ; 0x0204488C
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8314,7 +8314,7 @@ sub_0204488C: ; 0x0204488C
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8335,7 +8335,7 @@ sub_0204488C: ; 0x0204488C
 sub_020448DC: ; 0x020448DC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8343,7 +8343,7 @@ sub_020448DC: ; 0x020448DC
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8377,7 +8377,7 @@ sub_02044928: ; 0x02044928
 	bl sub_020402F0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -8395,13 +8395,13 @@ _02044950:
 sub_02044954: ; 0x02044954
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8409,7 +8409,7 @@ sub_02044954: ; 0x02044954
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8596,7 +8596,7 @@ sub_02044AB8: ; 0x02044AB8
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -8651,7 +8651,7 @@ sub_02044B10: ; 0x02044B10
 	add r1, r2, #1
 	str r1, [r4, #8]
 	ldrb r5, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -8783,7 +8783,7 @@ sub_02044BE8: ; 0x02044BE8
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8791,7 +8791,7 @@ sub_02044BE8: ; 0x02044BE8
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8799,7 +8799,7 @@ sub_02044BE8: ; 0x02044BE8
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -8842,7 +8842,7 @@ sub_02044C64: ; 0x02044C64
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -8868,7 +8868,7 @@ sub_02044C98: ; 0x02044C98
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -8904,7 +8904,7 @@ sub_02044CCC: ; 0x02044CCC
 	str r0, [r4]
 	ldr r1, _02044CF8 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -8918,7 +8918,7 @@ sub_02044CFC: ; 0x02044CFC
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -8937,7 +8937,7 @@ sub_02044CFC: ; 0x02044CFC
 sub_02044D28: ; 0x02044D28
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8945,7 +8945,7 @@ sub_02044D28: ; 0x02044D28
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8968,7 +8968,7 @@ sub_02044D28: ; 0x02044D28
 sub_02044D68: ; 0x02044D68
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -8987,7 +8987,7 @@ sub_02044D68: ; 0x02044D68
 sub_02044D8C: ; 0x02044D8C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -8995,7 +8995,7 @@ sub_02044D8C: ; 0x02044D8C
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -9013,7 +9013,7 @@ sub_02044D8C: ; 0x02044D8C
 sub_02044DC4: ; 0x02044DC4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9021,7 +9021,7 @@ sub_02044DC4: ; 0x02044DC4
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -9039,7 +9039,7 @@ sub_02044DC4: ; 0x02044DC4
 sub_02044DFC: ; 0x02044DFC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9047,7 +9047,7 @@ sub_02044DFC: ; 0x02044DFC
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9070,7 +9070,7 @@ sub_02044DFC: ; 0x02044DFC
 sub_02044E40: ; 0x02044E40
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9078,7 +9078,7 @@ sub_02044E40: ; 0x02044E40
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9086,7 +9086,7 @@ sub_02044E40: ; 0x02044E40
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9111,7 +9111,7 @@ sub_02044E40: ; 0x02044E40
 sub_02044E9C: ; 0x02044E9C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9119,7 +9119,7 @@ sub_02044E9C: ; 0x02044E9C
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9127,7 +9127,7 @@ sub_02044E9C: ; 0x02044E9C
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9158,7 +9158,7 @@ _02044EF8:
 sub_02044F00: ; 0x02044F00
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9181,7 +9181,7 @@ sub_02044F00: ; 0x02044F00
 sub_02044F30: ; 0x02044F30
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9189,7 +9189,7 @@ sub_02044F30: ; 0x02044F30
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9218,7 +9218,7 @@ sub_02044F74: ; 0x02044F74
 	bl Sav2_Pokedex_get
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -9247,7 +9247,7 @@ sub_02044FAC: ; 0x02044FAC
 	bl Sav2_Pokedex_get
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -9276,7 +9276,7 @@ sub_02044FE4: ; 0x02044FE4
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9291,7 +9291,7 @@ sub_02044FE4: ; 0x02044FE4
 	str r0, [r4]
 	ldr r1, _02045024 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -9302,7 +9302,7 @@ _02045024: .word sub_02042974
 sub_02045028: ; 0x02045028
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -9316,7 +9316,7 @@ sub_02045028: ; 0x02045028
 sub_02045040: ; 0x02045040
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -9333,13 +9333,13 @@ sub_02045040: ; 0x02045040
 sub_02045060: ; 0x02045060
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9374,13 +9374,13 @@ _020450B4: .word 0xFFFF0000
 sub_020450B8: ; 0x020450B8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	ldr r1, [r5, #8]
 	add r2, r1, #1
 	str r2, [r5, #8]
@@ -9431,10 +9431,10 @@ _02045126:
 sub_0204512C: ; 0x0204512C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9456,10 +9456,10 @@ sub_0204512C: ; 0x0204512C
 sub_02045160: ; 0x02045160
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r5, #0x80
 	add r6, r0, #0
 	ldr r0, [r5]
@@ -9638,7 +9638,7 @@ sub_020452B0: ; 0x020452B0
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -9662,7 +9662,7 @@ sub_020452E0: ; 0x020452E0
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -9686,7 +9686,7 @@ sub_02045310: ; 0x02045310
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -9710,7 +9710,7 @@ sub_02045340: ; 0x02045340
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9754,7 +9754,7 @@ sub_02045394: ; 0x02045394
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	ldr r0, _020453CC ; =SDK_OVERLAY_OVY_23_ID
 	mov r1, #2
@@ -9781,7 +9781,7 @@ sub_020453D0: ; 0x020453D0
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9789,7 +9789,7 @@ sub_020453D0: ; 0x020453D0
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9840,7 +9840,7 @@ sub_02045440: ; 0x02045440
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9861,7 +9861,7 @@ sub_02045440: ; 0x02045440
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
-	bl sub_020290A8
+	bl PlayerProfile_SetNatDexFlag
 	b _020454A0
 _02045486:
 	cmp r4, #2
@@ -9885,7 +9885,7 @@ sub_020454A4: ; 0x020454A4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9893,7 +9893,7 @@ sub_020454A4: ; 0x020454A4
 	bl sub_02040374
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9955,7 +9955,7 @@ sub_02045540: ; 0x02045540
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -9975,7 +9975,7 @@ sub_02045540: ; 0x02045540
 sub_02045568: ; 0x02045568
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -9992,7 +9992,7 @@ sub_02045568: ; 0x02045568
 sub_02045588: ; 0x02045588
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -10013,7 +10013,7 @@ sub_02045588: ; 0x02045588
 sub_020455B0: ; 0x020455B0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10021,7 +10021,7 @@ sub_020455B0: ; 0x020455B0
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10044,7 +10044,7 @@ sub_020455B0: ; 0x020455B0
 sub_020455F0: ; 0x020455F0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -10068,7 +10068,7 @@ sub_0204560C: ; 0x0204560C
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10079,7 +10079,7 @@ sub_0204560C: ; 0x0204560C
 	bl sub_020270D8
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10087,7 +10087,7 @@ sub_0204560C: ; 0x0204560C
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10095,7 +10095,7 @@ sub_0204560C: ; 0x0204560C
 	bl sub_020403AC
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10103,7 +10103,7 @@ sub_0204560C: ; 0x0204560C
 	bl sub_020403AC
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -10162,7 +10162,7 @@ sub_020456D8: ; 0x020456D8
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10172,7 +10172,7 @@ sub_020456D8: ; 0x020456D8
 	ldr r0, [r6, #0xc]
 	bl sub_020270D8
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10180,7 +10180,7 @@ sub_020456D8: ; 0x020456D8
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10188,7 +10188,7 @@ sub_020456D8: ; 0x020456D8
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10196,7 +10196,7 @@ sub_020456D8: ; 0x020456D8
 	bl sub_020403AC
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -10312,7 +10312,7 @@ sub_020457D4: ; 0x020457D4
 sub_02045818: ; 0x02045818
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -10331,7 +10331,7 @@ sub_02045818: ; 0x02045818
 sub_0204583C: ; 0x0204583C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10387,7 +10387,7 @@ sub_0204588C: ; 0x0204588C
 sub_020458A4: ; 0x020458A4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -10408,7 +10408,7 @@ sub_020458A4: ; 0x020458A4
 sub_020458CC: ; 0x020458CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -10425,7 +10425,7 @@ sub_020458CC: ; 0x020458CC
 sub_020458EC: ; 0x020458EC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10433,7 +10433,7 @@ sub_020458EC: ; 0x020458EC
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10456,7 +10456,7 @@ sub_0204592C: ; 0x0204592C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -10517,7 +10517,7 @@ sub_020459AC: ; 0x020459AC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -10633,7 +10633,7 @@ sub_02045A74: ; 0x02045A74
 sub_02045A88: ; 0x02045A88
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -10653,7 +10653,7 @@ sub_02045AAC: ; 0x02045AAC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10661,7 +10661,7 @@ sub_02045AAC: ; 0x02045AAC
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10669,7 +10669,7 @@ sub_02045AAC: ; 0x02045AAC
 	bl sub_020403AC
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10677,7 +10677,7 @@ sub_02045AAC: ; 0x02045AAC
 	bl sub_020403AC
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10685,7 +10685,7 @@ sub_02045AAC: ; 0x02045AAC
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10718,7 +10718,7 @@ _02045B2A:
 sub_02045B40: ; 0x02045B40
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -10726,7 +10726,7 @@ sub_02045B40: ; 0x02045B40
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -10734,7 +10734,7 @@ sub_02045B40: ; 0x02045B40
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -10764,7 +10764,7 @@ _02045B94:
 sub_02045BA4: ; 0x02045BA4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10786,7 +10786,7 @@ sub_02045BCC: ; 0x02045BCC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -10863,7 +10863,7 @@ _02045C60: .word 0x0000FFFF
 sub_02045C64: ; 0x02045C64
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -10881,7 +10881,7 @@ _02045C80: .word gMain + 0x60
 sub_02045C84: ; 0x02045C84
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10924,7 +10924,7 @@ sub_02045CC4: ; 0x02045CC4
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -10942,7 +10942,7 @@ sub_02045CC4: ; 0x02045CC4
 sub_02045CFC: ; 0x02045CFC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10964,7 +10964,7 @@ sub_02045CFC: ; 0x02045CFC
 sub_02045D28: ; 0x02045D28
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -10972,7 +10972,7 @@ sub_02045D28: ; 0x02045D28
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11006,7 +11006,7 @@ sub_02045D6C: ; 0x02045D6C
 sub_02045D7C: ; 0x02045D7C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11014,7 +11014,7 @@ sub_02045D7C: ; 0x02045D7C
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11055,7 +11055,7 @@ _02045DE4: .word 0x0000FFFF
 sub_02045DE8: ; 0x02045DE8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11089,7 +11089,7 @@ sub_02045E1C: ; 0x02045E1C
 	bl sub_020503D0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -11113,7 +11113,7 @@ _02045E4E:
 sub_02045E54: ; 0x02045E54
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -11160,7 +11160,7 @@ sub_02045EA8: ; 0x02045EA8
 	bl Sav2_Pokedex_get
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -11182,7 +11182,7 @@ sub_02045ED8: ; 0x02045ED8
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11210,7 +11210,7 @@ _02045F0A:
 sub_02045F18: ; 0x02045F18
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -11262,7 +11262,7 @@ _02045F76:
 sub_02045F80: ; 0x02045F80
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11284,7 +11284,7 @@ sub_02045F80: ; 0x02045F80
 	str r0, [r4]
 	ldr r1, _02045FC0 ; =sub_020429F8
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -11295,7 +11295,7 @@ _02045FC0: .word sub_020429F8
 sub_02045FC4: ; 0x02045FC4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -11303,7 +11303,7 @@ sub_02045FC4: ; 0x02045FC4
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -11356,7 +11356,7 @@ sub_02046038: ; 0x02046038
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -11387,7 +11387,7 @@ _02046072:
 sub_02046078: ; 0x02046078
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -11395,7 +11395,7 @@ sub_02046078: ; 0x02046078
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -11461,7 +11461,7 @@ _02046102:
 sub_02046108: ; 0x02046108
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11482,7 +11482,7 @@ sub_02046108: ; 0x02046108
 sub_02046130: ; 0x02046130
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11504,7 +11504,7 @@ sub_02046130: ; 0x02046130
 sub_0204615C: ; 0x0204615C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11512,7 +11512,7 @@ sub_0204615C: ; 0x0204615C
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -11539,7 +11539,7 @@ sub_020461A0: ; 0x020461A0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -11547,7 +11547,7 @@ sub_020461A0: ; 0x020461A0
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -11555,7 +11555,7 @@ sub_020461A0: ; 0x020461A0
 	bl sub_020403AC
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -11563,7 +11563,7 @@ sub_020461A0: ; 0x020461A0
 	bl sub_020403AC
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -11571,7 +11571,7 @@ sub_020461A0: ; 0x020461A0
 	bl sub_020403AC
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -11658,7 +11658,7 @@ sub_020462A8: ; 0x020462A8
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -11708,7 +11708,7 @@ sub_020462F0: ; 0x020462F0
 sub_02046300: ; 0x02046300
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11716,7 +11716,7 @@ sub_02046300: ; 0x02046300
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11724,7 +11724,7 @@ sub_02046300: ; 0x02046300
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11752,7 +11752,7 @@ sub_02046300: ; 0x02046300
 sub_02046360: ; 0x02046360
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11785,7 +11785,7 @@ sub_0204639C: ; 0x0204639C
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -11937,7 +11937,7 @@ _0204647E:
 	bl sub_02050624
 	ldr r1, _020464DC ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11955,7 +11955,7 @@ sub_020464E0: ; 0x020464E0
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11963,7 +11963,7 @@ sub_020464E0: ; 0x020464E0
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11971,7 +11971,7 @@ sub_020464E0: ; 0x020464E0
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -11991,7 +11991,7 @@ sub_020464E0: ; 0x020464E0
 	str r0, [r4]
 	ldr r1, _02046550 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -12015,7 +12015,7 @@ sub_02046554: ; 0x02046554
 	str r0, [r4]
 	ldr r1, _02046580 ; =sub_020429F8
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -12042,7 +12042,7 @@ sub_02046584: ; 0x02046584
 sub_020465A0: ; 0x020465A0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12050,7 +12050,7 @@ sub_020465A0: ; 0x020465A0
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12058,7 +12058,7 @@ sub_020465A0: ; 0x020465A0
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12085,7 +12085,7 @@ sub_020465A0: ; 0x020465A0
 sub_020465FC: ; 0x020465FC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12093,7 +12093,7 @@ sub_020465FC: ; 0x020465FC
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12101,7 +12101,7 @@ sub_020465FC: ; 0x020465FC
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12125,7 +12125,7 @@ sub_020465FC: ; 0x020465FC
 	bl sub_0203FC14
 	ldr r1, _02046670 ; =sub_020429F8
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	b _0204666A
 _02046666:
 	mov r0, #0
@@ -12141,7 +12141,7 @@ _02046670: .word sub_020429F8
 sub_02046674: ; 0x02046674
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12168,7 +12168,7 @@ _020466A2:
 sub_020466A8: ; 0x020466A8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -12205,7 +12205,7 @@ sub_020466E0: ; 0x020466E0
 	add r1, #0x80
 	ldr r1, [r1]
 	str r1, [sp]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12213,7 +12213,7 @@ sub_020466E0: ; 0x020466E0
 	bl sub_02040374
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12221,7 +12221,7 @@ sub_020466E0: ; 0x020466E0
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12229,7 +12229,7 @@ sub_020466E0: ; 0x020466E0
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12237,7 +12237,7 @@ sub_020466E0: ; 0x020466E0
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -12452,7 +12452,7 @@ _020468F0: .word 0x000001DF
 sub_020468F4: ; 0x020468F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -12469,7 +12469,7 @@ sub_020468F4: ; 0x020468F4
 sub_02046914: ; 0x02046914
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -12517,7 +12517,7 @@ sub_02046970: ; 0x02046970
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -12554,7 +12554,7 @@ sub_020469B4: ; 0x020469B4
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -12605,7 +12605,7 @@ sub_02046A1C: ; 0x02046A1C
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12613,7 +12613,7 @@ sub_02046A1C: ; 0x02046A1C
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12733,7 +12733,7 @@ sub_02046B1C: ; 0x02046B1C
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -12771,7 +12771,7 @@ sub_02046B64: ; 0x02046B64
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	cmp r0, #1
 	bne _02046B88
 	ldr r0, [r4, #0x40]
@@ -12932,7 +12932,7 @@ _02046CAC:
 sub_02046CB4: ; 0x02046CB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12969,7 +12969,7 @@ sub_02046CF0: ; 0x02046CF0
 	beq _02046D08
 	ldr r1, _02046D0C ; =sub_02046D40
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 _02046D08:
 	mov r0, #1
 	pop {r4, pc}
@@ -12981,7 +12981,7 @@ _02046D0C: .word sub_02046D40
 sub_02046D10: ; 0x02046D10
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13172,7 +13172,7 @@ _02046E7C:
 sub_02046E80: ; 0x02046E80
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r4, #0x80
 	ldr r0, [r4]
@@ -13196,7 +13196,7 @@ sub_02046E9C: ; 0x02046E9C
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13204,7 +13204,7 @@ sub_02046E9C: ; 0x02046E9C
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13212,7 +13212,7 @@ sub_02046E9C: ; 0x02046E9C
 	bl sub_02040374
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13220,7 +13220,7 @@ sub_02046E9C: ; 0x02046E9C
 	bl sub_02040374
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13228,7 +13228,7 @@ sub_02046E9C: ; 0x02046E9C
 	bl sub_02040374
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13257,7 +13257,7 @@ sub_02046E9C: ; 0x02046E9C
 sub_02046F34: ; 0x02046F34
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13343,7 +13343,7 @@ sub_02046FC8: ; 0x02046FC8
 	bl sub_0202ED7C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -13369,7 +13369,7 @@ sub_02046FFC: ; 0x02046FFC
 	bl sub_0202ED7C
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -13378,7 +13378,7 @@ sub_02046FFC: ; 0x02046FFC
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -13414,7 +13414,7 @@ sub_02047060: ; 0x02047060
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13422,7 +13422,7 @@ sub_02047060: ; 0x02047060
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13430,7 +13430,7 @@ sub_02047060: ; 0x02047060
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13492,7 +13492,7 @@ sub_020470F4: ; 0x020470F4
 	str r0, [r4]
 	ldr r1, _0204711C ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -13503,7 +13503,7 @@ _0204711C: .word sub_02042974
 sub_02047120: ; 0x02047120
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13511,7 +13511,7 @@ sub_02047120: ; 0x02047120
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13546,7 +13546,7 @@ sub_02047168: ; 0x02047168
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13554,7 +13554,7 @@ sub_02047168: ; 0x02047168
 	bl sub_02040374
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13615,7 +13615,7 @@ _02047208:
 sub_0204720C: ; 0x0204720C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13639,7 +13639,7 @@ sub_0204720C: ; 0x0204720C
 sub_0204723C: ; 0x0204723C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13671,7 +13671,7 @@ _02047276:
 sub_0204727C: ; 0x0204727C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13740,7 +13740,7 @@ sub_020472E8: ; 0x020472E8
 sub_02047304: ; 0x02047304
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -13754,7 +13754,7 @@ sub_02047304: ; 0x02047304
 sub_0204731C: ; 0x0204731C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13856,10 +13856,10 @@ _020473D4: .word 0x020FACDC
 sub_020473D8: ; 0x020473D8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13950,7 +13950,7 @@ _0204747E:
 _0204748A:
 	ldr r1, _02047498 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -13981,7 +13981,7 @@ _020474BA:
 	str r0, [r4]
 	ldr r1, _020474D4 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -14000,13 +14000,13 @@ sub_020474D8: ; 0x020474D8
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r6, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r4, [sp]
 	add r5, #0x80
 	str r0, [sp, #4]
@@ -14032,13 +14032,13 @@ sub_02047518: ; 0x02047518
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r6, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r4, [sp]
 	add r5, #0x80
 	str r0, [sp, #4]
@@ -14056,7 +14056,7 @@ sub_02047518: ; 0x02047518
 sub_02047558: ; 0x02047558
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -14070,7 +14070,7 @@ sub_02047558: ; 0x02047558
 sub_02047570: ; 0x02047570
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14114,7 +14114,7 @@ _020475BC:
 sub_020475C0: ; 0x020475C0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14141,7 +14141,7 @@ _020475E8:
 sub_020475F0: ; 0x020475F0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14212,7 +14212,7 @@ sub_02047664: ; 0x02047664
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r6, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14269,7 +14269,7 @@ _020476CA:
 	bl ov01_021F6A9C
 	ldr r1, _020476E4 ; =sub_020476E8
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #3
 	str r0, [r4, #0x1c]
 	mov r0, #1
@@ -14318,7 +14318,7 @@ sub_0204771C: ; 0x0204771C
 	bl ov01_021F6A9C
 	ldr r1, _02047740 ; =sub_02047744
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	mov r0, #1
@@ -14361,7 +14361,7 @@ sub_02047778: ; 0x02047778
 	add r1, r0, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0203E33C
@@ -14376,7 +14376,7 @@ sub_02047790: ; 0x02047790
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	mov r1, #3
 	add r3, r4, #0
 	str r0, [r4, #0x64]
@@ -14386,7 +14386,7 @@ sub_02047790: ; 0x02047790
 	bl ov01_021F6ABC
 	ldr r1, _020477BC ; =sub_020477C0
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -14464,7 +14464,7 @@ sub_02047830: ; 0x02047830
 	bl ov01_021F6B20
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14472,7 +14472,7 @@ sub_02047830: ; 0x02047830
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14480,7 +14480,7 @@ sub_02047830: ; 0x02047830
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -14520,7 +14520,7 @@ sub_02047888: ; 0x02047888
 	bl ov01_021F6B34
 	ldr r1, _020478CC ; =sub_020478D0
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
@@ -14573,7 +14573,7 @@ sub_02047914: ; 0x02047914
 	ldr r0, [r5, #0xc]
 	add r6, r1, #0
 	bl Sav2_PlayerData_GetProfileAddr
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl sub_0202ED88
@@ -14618,10 +14618,10 @@ sub_02047964: ; 0x02047964
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #8
@@ -14653,7 +14653,7 @@ sub_02047964: ; 0x02047964
 	ldr r1, _020479D0 ; =sub_020479D4
 	add r0, r5, #0
 	str r7, [r5, #0x64]
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -14707,7 +14707,7 @@ _02047A26:
 	add r0, r5, #0
 	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r6, #0
-	bl sub_02029068
+	bl PlayerProfile_SubMoney
 	add r0, r5, #0
 	bl sub_0202ED88
 	ldr r2, [r4]
@@ -14719,7 +14719,7 @@ _02047A44:
 	add r0, r5, #0
 	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r6, #0
-	bl sub_02029044
+	bl PlayerProfile_AddMoney
 	add r0, r5, #0
 	bl sub_0202ED88
 	ldr r2, [r4]
@@ -14746,10 +14746,10 @@ _02047A6A:
 sub_02047A7C: ; 0x02047A7C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14780,7 +14780,7 @@ _02047AC2:
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	ldr r1, _02047AE4 ; =0x000F423F
 	cmp r0, r1
 	bne _02047ADC
@@ -14801,7 +14801,7 @@ _02047AE4: .word 0x000F423F
 sub_02047AE8: ; 0x02047AE8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14809,7 +14809,7 @@ sub_02047AE8: ; 0x02047AE8
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14817,7 +14817,7 @@ sub_02047AE8: ; 0x02047AE8
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14838,7 +14838,7 @@ sub_02047AE8: ; 0x02047AE8
 sub_02047B38: ; 0x02047B38
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -14890,7 +14890,7 @@ sub_02047B7C: ; 0x02047B7C
 sub_02047B8C: ; 0x02047B8C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	lsl r0, r0, #0x18
 	add r4, #0x80
 	lsr r1, r0, #0x18
@@ -14926,7 +14926,7 @@ sub_02047BB4: ; 0x02047BB4
 sub_02047BC4: ; 0x02047BC4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	lsl r0, r0, #0x18
 	add r4, #0x80
 	lsr r1, r0, #0x18
@@ -14940,7 +14940,7 @@ sub_02047BC4: ; 0x02047BC4
 sub_02047BDC: ; 0x02047BDC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	lsl r0, r0, #0x18
 	add r4, #0x80
 	lsr r1, r0, #0x18
@@ -15082,7 +15082,7 @@ _02047CB8: .word 0x020FACB0
 sub_02047CBC: ; 0x02047CBC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15090,7 +15090,7 @@ sub_02047CBC: ; 0x02047CBC
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r5, #0x80
 	add r6, r0, #0
 	ldr r0, [r5]
@@ -15115,7 +15115,7 @@ _02047CF6:
 sub_02047CFC: ; 0x02047CFC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15136,7 +15136,7 @@ sub_02047CFC: ; 0x02047CFC
 sub_02047D24: ; 0x02047D24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15162,7 +15162,7 @@ sub_02047D24: ; 0x02047D24
 sub_02047D58: ; 0x02047D58
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -15187,7 +15187,7 @@ sub_02047D7C: ; 0x02047D7C
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15221,7 +15221,7 @@ sub_02047DB0: ; 0x02047DB0
 sub_02047DC8: ; 0x02047DC8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15229,7 +15229,7 @@ sub_02047DC8: ; 0x02047DC8
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15374,7 +15374,7 @@ sub_02047EB4: ; 0x02047EB4
 sub_02047EC4: ; 0x02047EC4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15388,7 +15388,7 @@ sub_02047EC4: ; 0x02047EC4
 	bl sub_020402F0
 	add r7, r0, #0
 	mov r0, #4
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -15416,7 +15416,7 @@ sub_02047F14: ; 0x02047F14
 	bl sub_0202F57C
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -15443,7 +15443,7 @@ _02047F4C:
 sub_02047F54: ; 0x02047F54
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15470,7 +15470,7 @@ _02047F7C:
 sub_02047F84: ; 0x02047F84
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15497,7 +15497,7 @@ _02047FAE:
 sub_02047FB4: ; 0x02047FB4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -15514,7 +15514,7 @@ sub_02047FB4: ; 0x02047FB4
 sub_02047FD4: ; 0x02047FD4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15541,7 +15541,7 @@ _02047FFE:
 sub_02048004: ; 0x02048004
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15562,7 +15562,7 @@ sub_02048004: ; 0x02048004
 sub_0204802C: ; 0x0204802C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15592,7 +15592,7 @@ sub_02048060: ; 0x02048060
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x8c
 	add r7, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r7, #0
 	add r0, #0x80
@@ -15608,7 +15608,7 @@ _0204807C:
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r5, #0
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #1
 	bne _02048098
 	add r0, r6, #1
@@ -15730,7 +15730,7 @@ sub_02048158: ; 0x02048158
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -15760,7 +15760,7 @@ sub_02048194: ; 0x02048194
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -15798,7 +15798,7 @@ sub_020481DC: ; 0x020481DC
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -15937,7 +15937,7 @@ sub_020482F4: ; 0x020482F4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -16023,7 +16023,7 @@ _02048398: .word 0x0000FFFF
 sub_0204839C: ; 0x0204839C
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -16065,7 +16065,7 @@ sub_020483D8: ; 0x020483D8
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16162,7 +16162,7 @@ sub_02048490: ; 0x02048490
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16195,7 +16195,7 @@ sub_020484D8: ; 0x020484D8
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16223,7 +16223,7 @@ sub_02048510: ; 0x02048510
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16251,7 +16251,7 @@ sub_02048548: ; 0x02048548
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16279,7 +16279,7 @@ sub_02048580: ; 0x02048580
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16308,7 +16308,7 @@ sub_020485BC: ; 0x020485BC
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16337,7 +16337,7 @@ sub_020485F4: ; 0x020485F4
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16372,7 +16372,7 @@ sub_0204863C: ; 0x0204863C
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -16420,7 +16420,7 @@ sub_0204869C: ; 0x0204869C
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r6, [r1]
-	bl sub_0203FE44
+	bl ScriptReadWord
 	ldr r1, [r5, #8]
 	str r0, [sp, #8]
 	add r2, r1, #1
@@ -16463,7 +16463,7 @@ sub_020486F0: ; 0x020486F0
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16500,7 +16500,7 @@ sub_02048738: ; 0x02048738
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16538,7 +16538,7 @@ sub_02048794: ; 0x02048794
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16574,7 +16574,7 @@ sub_020487CC: ; 0x020487CC
 	bl PlayerProfile_GetTrainerGender
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #2
@@ -16602,7 +16602,7 @@ sub_02048818: ; 0x02048818
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -16610,7 +16610,7 @@ sub_02048818: ; 0x02048818
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	ldr r1, [r5, #8]
 	str r0, [sp, #8]
 	add r0, r1, #1
@@ -16783,7 +16783,7 @@ sub_02048994: ; 0x02048994
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16809,7 +16809,7 @@ sub_020489CC: ; 0x020489CC
 	add r0, r0, #1
 	str r0, [r4, #8]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -16830,7 +16830,7 @@ sub_020489F4: ; 0x020489F4
 	add r0, r0, #1
 	str r0, [r4, #8]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -16859,7 +16859,7 @@ sub_02048A1C: ; 0x02048A1C
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16899,7 +16899,7 @@ sub_02048A7C: ; 0x02048A7C
 	str r0, [r4, #8]
 	add r0, r4, #0
 	ldrb r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -16907,7 +16907,7 @@ sub_02048A7C: ; 0x02048A7C
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -16956,7 +16956,7 @@ sub_02048AF4: ; 0x02048AF4
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -16984,7 +16984,7 @@ sub_02048B2C: ; 0x02048B2C
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17013,7 +17013,7 @@ sub_02048B64: ; 0x02048B64
 	str r0, [r4, #8]
 	add r0, r4, #0
 	ldrb r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -17021,7 +17021,7 @@ sub_02048B64: ; 0x02048B64
 	bl sub_020403AC
 	str r0, [sp]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -17059,7 +17059,7 @@ sub_02048BCC: ; 0x02048BCC
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17092,7 +17092,7 @@ sub_02048C10: ; 0x02048C10
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17120,7 +17120,7 @@ sub_02048C48: ; 0x02048C48
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17148,7 +17148,7 @@ sub_02048C80: ; 0x02048C80
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17178,7 +17178,7 @@ sub_02048CBC: ; 0x02048CBC
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17206,7 +17206,7 @@ sub_02048CF4: ; 0x02048CF4
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17235,7 +17235,7 @@ sub_02048D2C: ; 0x02048D2C
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17268,7 +17268,7 @@ sub_02048D74: ; 0x02048D74
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -17276,7 +17276,7 @@ sub_02048D74: ; 0x02048D74
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	add r0, r0, #1
@@ -17329,7 +17329,7 @@ sub_02048DF0: ; 0x02048DF0
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17357,7 +17357,7 @@ sub_02048E28: ; 0x02048E28
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17385,7 +17385,7 @@ sub_02048E60: ; 0x02048E60
 	str r0, [r5, #8]
 	add r0, r5, #0
 	ldrb r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17449,7 +17449,7 @@ sub_02048EE0: ; 0x02048EE0
 	bl sub_020503D0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17474,7 +17474,7 @@ sub_02048F10: ; 0x02048F10
 	bl sub_020270D8
 	str r0, [sp, #0x20]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -17482,7 +17482,7 @@ sub_02048F10: ; 0x02048F10
 	bl sub_02040374
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -17490,7 +17490,7 @@ sub_02048F10: ; 0x02048F10
 	bl sub_02040374
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -17498,7 +17498,7 @@ sub_02048F10: ; 0x02048F10
 	bl sub_02040374
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -17717,10 +17717,10 @@ _02049108: .word 0x021D416C
 sub_0204910C: ; 0x0204910C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -17736,7 +17736,7 @@ sub_0204910C: ; 0x0204910C
 	thumb_func_start sub_02049134
 sub_02049134: ; 0x02049134
 	push {r3, lr}
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	bl sub_02005D48
 	mov r0, #0
 	pop {r3, pc}
@@ -17746,7 +17746,7 @@ sub_02049134: ; 0x02049134
 	thumb_func_start sub_02049144
 sub_02049144: ; 0x02049144
 	push {r3, lr}
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	bl sub_02004A90
 	mov r1, #0
 	bl sub_02005EB4
@@ -17772,7 +17772,7 @@ sub_02049158: ; 0x02049158
 sub_02049170: ; 0x02049170
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -17786,16 +17786,16 @@ sub_02049170: ; 0x02049170
 sub_02049188: ; 0x02049188
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02005F50
 	ldr r1, _020491AC ; =sub_020491B0
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -17820,14 +17820,14 @@ _020491BE:
 sub_020491C4: ; 0x020491C4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	mov r0, #0x7f
 	mov r2, #0
 	bl sub_02005F10
 	ldr r1, _020491E4 ; =sub_020491B0
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -17854,7 +17854,7 @@ sub_020491E8: ; 0x020491E8
 	thumb_func_start sub_02049204
 sub_02049204: ; 0x02049204
 	push {r3, lr}
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	bl sub_02005E44
 	mov r0, #0
 	pop {r3, pc}
@@ -17878,7 +17878,7 @@ sub_02049214: ; 0x02049214
 sub_02049228: ; 0x02049228
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -17893,7 +17893,7 @@ sub_02049228: ; 0x02049228
 sub_02049244: ; 0x02049244
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -17908,7 +17908,7 @@ sub_02049244: ; 0x02049244
 sub_02049260: ; 0x02049260
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -17917,7 +17917,7 @@ sub_02049260: ; 0x02049260
 	str r0, [r4, #0x64]
 	ldr r1, _02049284 ; =sub_02049288
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -17945,7 +17945,7 @@ sub_020492A0: ; 0x020492A0
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -17953,7 +17953,7 @@ sub_020492A0: ; 0x020492A0
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -17975,7 +17975,7 @@ sub_020492A0: ; 0x020492A0
 sub_020492E0: ; 0x020492E0
 	push {r3, lr}
 	ldr r1, _020492EC ; =sub_020492F0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -18000,7 +18000,7 @@ _020492FE:
 sub_02049304: ; 0x02049304
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -18015,7 +18015,7 @@ sub_02049304: ; 0x02049304
 sub_02049320: ; 0x02049320
 	push {r3, lr}
 	ldr r1, _0204932C ; =sub_02049330
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -18040,7 +18040,7 @@ _0204933E:
 sub_02049344: ; 0x02049344
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18069,7 +18069,7 @@ _02049374:
 sub_0204937C: ; 0x0204937C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -18130,7 +18130,7 @@ sub_020493D4: ; 0x020493D4
 sub_020493E4: ; 0x020493E4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -18138,7 +18138,7 @@ sub_020493E4: ; 0x020493E4
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -18161,7 +18161,7 @@ sub_02049418: ; 0x02049418
 sub_0204941C: ; 0x0204941C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -18180,7 +18180,7 @@ sub_0204941C: ; 0x0204941C
 sub_02049440: ; 0x02049440
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -18201,7 +18201,7 @@ sub_02049460: ; 0x02049460
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -18288,7 +18288,7 @@ _02049500:
 sub_0204952C: ; 0x0204952C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18296,7 +18296,7 @@ sub_0204952C: ; 0x0204952C
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18350,7 +18350,7 @@ sub_0204959C: ; 0x0204959C
 	bl sub_020402F0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -18377,7 +18377,7 @@ sub_020495C4: ; 0x020495C4
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18385,7 +18385,7 @@ sub_020495C4: ; 0x020495C4
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -18413,7 +18413,7 @@ sub_02049618: ; 0x02049618
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -18442,7 +18442,7 @@ sub_02049648: ; 0x02049648
 	bl sub_020402F0
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18450,7 +18450,7 @@ sub_02049648: ; 0x02049648
 	bl sub_020403AC
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18506,7 +18506,7 @@ sub_020496DC: ; 0x020496DC
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18514,7 +18514,7 @@ sub_020496DC: ; 0x020496DC
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18522,7 +18522,7 @@ sub_020496DC: ; 0x020496DC
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18559,7 +18559,7 @@ sub_02049750: ; 0x02049750
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18567,7 +18567,7 @@ sub_02049750: ; 0x02049750
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18575,7 +18575,7 @@ sub_02049750: ; 0x02049750
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -18624,7 +18624,7 @@ sub_020497D8: ; 0x020497D8
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18632,7 +18632,7 @@ sub_020497D8: ; 0x020497D8
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18640,7 +18640,7 @@ sub_020497D8: ; 0x020497D8
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -18689,7 +18689,7 @@ sub_02049860: ; 0x02049860
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -18708,7 +18708,7 @@ sub_02049860: ; 0x02049860
 sub_02049894: ; 0x02049894
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18748,7 +18748,7 @@ sub_020498D4: ; 0x020498D4
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -18766,7 +18766,7 @@ sub_020498D4: ; 0x020498D4
 sub_02049904: ; 0x02049904
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18810,7 +18810,7 @@ sub_02049950: ; 0x02049950
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -18828,7 +18828,7 @@ sub_02049950: ; 0x02049950
 sub_02049980: ; 0x02049980
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -18902,7 +18902,7 @@ sub_02049A00: ; 0x02049A00
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r6, r0, #0
 	ldr r0, [r4]
 	bl sub_0205F24C
@@ -18916,7 +18916,7 @@ sub_02049A00: ; 0x02049A00
 	ldr r1, [r7, #8]
 	add r0, r7, #0
 	add r1, r1, r6
-	bl sub_0203FE0C
+	bl ScriptJump
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _02049A3E:
@@ -18935,7 +18935,7 @@ sub_02049A44: ; 0x02049A44
 	bl sub_020402F0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -18967,7 +18967,7 @@ sub_02049A6C: ; 0x02049A6C
 	ldr r0, [r0]
 	ldr r7, [r0, #0xc]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	cmp r0, #7
 	bls _02049AA0
 	b _02049CA2
@@ -18989,7 +18989,7 @@ _02049AAC: ; jump table
 	.short _02049C56 - _02049AAC - 2 ; case 7
 _02049ABC:
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -18997,7 +18997,7 @@ _02049ABC:
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -19012,7 +19012,7 @@ _02049ABC:
 	pop {r4, r5, r6, r7, pc}
 _02049AF2:
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -19020,7 +19020,7 @@ _02049AF2:
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -19035,7 +19035,7 @@ _02049AF2:
 	pop {r4, r5, r6, r7, pc}
 _02049B28:
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -19043,7 +19043,7 @@ _02049B28:
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -19058,7 +19058,7 @@ _02049B28:
 	b _02049CA2
 _02049B5E:
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -19066,7 +19066,7 @@ _02049B5E:
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -19086,7 +19086,7 @@ _02049B94:
 	bl sub_0202C7E0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -19105,7 +19105,7 @@ _02049B94:
 	pop {r4, r5, r6, r7, pc}
 _02049BCA:
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -19132,7 +19132,7 @@ _02049BF4:
 	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r6, #0
 	add r4, r0, #0
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #1
@@ -19162,7 +19162,7 @@ _02049BF4:
 	b _02049CA2
 _02049C56:
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -19208,10 +19208,10 @@ _02049CA2:
 sub_02049CA8: ; 0x02049CA8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19261,10 +19261,10 @@ sub_02049D04: ; 0x02049D04
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [sp]
 	add r0, r7, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r7, #0
 	add r0, #0x80
@@ -19272,7 +19272,7 @@ sub_02049D04: ; 0x02049D04
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [sp, #4]
 	add r0, r7, #0
 	add r0, #0x80
@@ -19623,7 +19623,7 @@ sub_02049FC8: ; 0x02049FC8
 	ldr r1, [r1]
 	add r1, #0xa0
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19631,7 +19631,7 @@ sub_02049FC8: ; 0x02049FC8
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19639,7 +19639,7 @@ sub_02049FC8: ; 0x02049FC8
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19647,7 +19647,7 @@ sub_02049FC8: ; 0x02049FC8
 	bl sub_02040374
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -19678,7 +19678,7 @@ sub_02049FC8: ; 0x02049FC8
 sub_0204A048: ; 0x0204A048
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19699,7 +19699,7 @@ sub_0204A048: ; 0x0204A048
 sub_0204A070: ; 0x0204A070
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19721,7 +19721,7 @@ sub_0204A098: ; 0x0204A098
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19729,7 +19729,7 @@ sub_0204A098: ; 0x0204A098
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19737,7 +19737,7 @@ sub_0204A098: ; 0x0204A098
 	bl sub_020403AC
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19839,7 +19839,7 @@ sub_0204A184: ; 0x0204A184
 	ldr r1, [r1]
 	add r1, #0xa0
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19847,7 +19847,7 @@ sub_0204A184: ; 0x0204A184
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19870,7 +19870,7 @@ _0204A1CC:
 	sub r0, r0, #5
 	strb r6, [r4, r0]
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 _0204A1DC:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -19924,7 +19924,7 @@ sub_0204A230: ; 0x0204A230
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19932,7 +19932,7 @@ sub_0204A230: ; 0x0204A230
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -19959,7 +19959,7 @@ sub_0204A230: ; 0x0204A230
 sub_0204A27C: ; 0x0204A27C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -20028,7 +20028,7 @@ sub_0204A2EC: ; 0x0204A2EC
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r4, [r1, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -20052,7 +20052,7 @@ sub_0204A31C: ; 0x0204A31C
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r4, [r1, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -20084,7 +20084,7 @@ sub_0204A360: ; 0x0204A360
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r4, [r1, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -20116,7 +20116,7 @@ sub_0204A3A4: ; 0x0204A3A4
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r5, [r1, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -20124,7 +20124,7 @@ sub_0204A3A4: ; 0x0204A3A4
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -23441,7 +23441,7 @@ _0204BC94: .word ReadWholeNarcMemberByIdPair
 sub_0204BC98: ; 0x0204BC98
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -23467,7 +23467,7 @@ sub_0204BC98: ; 0x0204BC98
 sub_0204BCCC: ; 0x0204BCCC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -23495,7 +23495,7 @@ sub_0204BCCC: ; 0x0204BCCC
 sub_0204BD04: ; 0x0204BD04
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -23503,7 +23503,7 @@ sub_0204BD04: ; 0x0204BD04
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -23512,7 +23512,7 @@ sub_0204BD04: ; 0x0204BD04
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -23583,7 +23583,7 @@ sub_0204BDA4: ; 0x0204BDA4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	cmp r0, #8
 	bls _0204BDB4
 	b _0204BF8C
@@ -23627,7 +23627,7 @@ _0204BDEE:
 	b _0204BF8C
 _0204BDFC:
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -23648,7 +23648,7 @@ _0204BE22:
 	b _0204BF8C
 _0204BE28:
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -23662,7 +23662,7 @@ _0204BE28:
 	b _0204BF8C
 _0204BE48:
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -23726,7 +23726,7 @@ _0204BEB6:
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -23734,7 +23734,7 @@ _0204BEB6:
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -23773,7 +23773,7 @@ _0204BF22:
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -23781,7 +23781,7 @@ _0204BF22:
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -24147,7 +24147,7 @@ _0204C25E:
 	bne _0204C2B6
 	ldr r0, [sp, #0x10]
 	mov r1, #0x20
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r5, r0, #0
 	ldr r0, [sp, #0x10]
 	bl PlayerProfile_GetTrainerID
@@ -25005,7 +25005,7 @@ _0204C838: .word 0x000001F5
 sub_0204C83C: ; 0x0204C83C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -25041,7 +25041,7 @@ sub_0204C874: ; 0x0204C874
 	bl sub_020503D0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -25091,7 +25091,7 @@ sub_0204C8D4: ; 0x0204C8D4
 	bl AllocMonZeroed
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -25192,7 +25192,7 @@ _0204C990:
 sub_0204C9C0: ; 0x0204C9C0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -25200,7 +25200,7 @@ sub_0204C9C0: ; 0x0204C9C0
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -25270,10 +25270,10 @@ sub_0204CA50: ; 0x0204CA50
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_02029044
+	bl PlayerProfile_AddMoney
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0204CA50
@@ -25288,10 +25288,10 @@ sub_0204CA74: ; 0x0204CA74
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_02029068
+	bl PlayerProfile_SubMoney
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0204CA74
@@ -25306,14 +25306,14 @@ sub_0204CA98: ; 0x0204CA98
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl sub_020403AC
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_02029068
+	bl PlayerProfile_SubMoney
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -25329,7 +25329,7 @@ sub_0204CAC8: ; 0x0204CAC8
 	bl Sav2_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -25337,10 +25337,10 @@ sub_0204CAC8: ; 0x0204CAC8
 	bl sub_02040374
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE44
+	bl ScriptReadWord
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	cmp r0, r4
 	bhs _0204CB04
 	mov r0, #0
@@ -25363,7 +25363,7 @@ sub_0204CB0C: ; 0x0204CB0C
 	bl Sav2_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -25371,14 +25371,14 @@ sub_0204CB0C: ; 0x0204CB0C
 	bl sub_02040374
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	cmp r0, r4
 	bhs _0204CB52
 	mov r0, #0
@@ -25417,7 +25417,7 @@ sub_0204CB7C: ; 0x0204CB7C
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r4, [r1, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -25484,7 +25484,7 @@ sub_0204CBF8: ; 0x0204CBF8
 	add r7, r0, #0
 	add r0, r4, #0
 	ldr r6, [r5, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -25492,7 +25492,7 @@ sub_0204CBF8: ; 0x0204CBF8
 	bl sub_02040374
 	str r0, [sp]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -25528,7 +25528,7 @@ sub_0204CC58: ; 0x0204CC58
 	add r7, r0, #0
 	add r0, r4, #0
 	ldr r5, [r5, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -25536,7 +25536,7 @@ sub_0204CC58: ; 0x0204CC58
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -25566,7 +25566,7 @@ sub_0204CCAC: ; 0x0204CCAC
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -25574,7 +25574,7 @@ sub_0204CCAC: ; 0x0204CCAC
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -25603,7 +25603,7 @@ sub_0204CCFC: ; 0x0204CCFC
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -25627,7 +25627,7 @@ sub_0204CD34: ; 0x0204CD34
 	add r1, #0x80
 	ldr r4, [r1]
 	ldr r5, [r4, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, #0x80
 	add r1, r0, #0
 	ldr r0, [r6]
@@ -25662,7 +25662,7 @@ sub_0204CD74: ; 0x0204CD74
 	bl sub_020402F0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -25670,7 +25670,7 @@ sub_0204CD74: ; 0x0204CD74
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -25678,7 +25678,7 @@ sub_0204CD74: ; 0x0204CD74
 	bl sub_020403AC
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -25686,7 +25686,7 @@ sub_0204CD74: ; 0x0204CD74
 	bl sub_020403AC
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -25721,7 +25721,7 @@ sub_0204CE00: ; 0x0204CE00
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r4, [r1, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -25745,7 +25745,7 @@ sub_0204CE30: ; 0x0204CE30
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r4, [r1, #0xc]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -25926,7 +25926,7 @@ sub_0204CFB8: ; 0x0204CFB8
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -25934,7 +25934,7 @@ sub_0204CFB8: ; 0x0204CFB8
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -26035,7 +26035,7 @@ sub_0204D088: ; 0x0204D088
 	ldr r0, [r5, #0xc]
 	bl Sav2_Pokedex_get
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26043,7 +26043,7 @@ sub_0204D088: ; 0x0204D088
 	bl sub_020403AC
 	str r0, [sp, #0x14]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26051,7 +26051,7 @@ sub_0204D088: ; 0x0204D088
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26059,7 +26059,7 @@ sub_0204D088: ; 0x0204D088
 	bl sub_020403AC
 	str r0, [sp, #0x18]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26067,7 +26067,7 @@ sub_0204D088: ; 0x0204D088
 	bl sub_020403AC
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26075,7 +26075,7 @@ sub_0204D088: ; 0x0204D088
 	bl sub_020403AC
 	str r0, [sp, #0x20]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -26112,7 +26112,7 @@ sub_0204D088: ; 0x0204D088
 sub_0204D154: ; 0x0204D154
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26137,7 +26137,7 @@ sub_0204D180: ; 0x0204D180
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26145,7 +26145,7 @@ sub_0204D180: ; 0x0204D180
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -26185,7 +26185,7 @@ sub_0204D1DC: ; 0x0204D1DC
 	bl Sav2_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26193,7 +26193,7 @@ sub_0204D1DC: ; 0x0204D1DC
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -26235,7 +26235,7 @@ sub_0204D248: ; 0x0204D248
 	bl Sav2_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26243,7 +26243,7 @@ sub_0204D248: ; 0x0204D248
 	bl sub_020403AC
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -26288,7 +26288,7 @@ _0204D2C8:
 sub_0204D2D0: ; 0x0204D2D0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26296,7 +26296,7 @@ sub_0204D2D0: ; 0x0204D2D0
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26304,7 +26304,7 @@ sub_0204D2D0: ; 0x0204D2D0
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26331,7 +26331,7 @@ sub_0204D328: ; 0x0204D328
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r7, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26339,7 +26339,7 @@ sub_0204D328: ; 0x0204D328
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26347,7 +26347,7 @@ sub_0204D328: ; 0x0204D328
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -26409,7 +26409,7 @@ sub_0204D3CC: ; 0x0204D3CC
 	add r1, #0x80
 	ldr r1, [r1]
 	str r1, [sp, #4]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26417,7 +26417,7 @@ sub_0204D3CC: ; 0x0204D3CC
 	bl sub_02040374
 	str r0, [sp]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -26493,7 +26493,7 @@ _0204D488: .word 0x00000000
 sub_0204D48C: ; 0x0204D48C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26501,7 +26501,7 @@ sub_0204D48C: ; 0x0204D48C
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26528,7 +26528,7 @@ sub_0204D4D0: ; 0x0204D4D0
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r7, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26536,7 +26536,7 @@ sub_0204D4D0: ; 0x0204D4D0
 	bl sub_02040374
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -26598,7 +26598,7 @@ sub_0204D564: ; 0x0204D564
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26606,7 +26606,7 @@ sub_0204D564: ; 0x0204D564
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -26641,7 +26641,7 @@ sub_0204D5C0: ; 0x0204D5C0
 	add r1, r6, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r6, #0
 	add r0, #0x80
@@ -26649,7 +26649,7 @@ sub_0204D5C0: ; 0x0204D5C0
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, #0x80
 	add r1, r0, #0
 	ldr r0, [r6]
@@ -26696,7 +26696,7 @@ sub_0204D634: ; 0x0204D634
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r7, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26704,7 +26704,7 @@ sub_0204D634: ; 0x0204D634
 	bl sub_02040374
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -26761,7 +26761,7 @@ sub_0204D6C0: ; 0x0204D6C0
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26769,7 +26769,7 @@ sub_0204D6C0: ; 0x0204D6C0
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -26795,7 +26795,7 @@ sub_0204D708: ; 0x0204D708
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26803,7 +26803,7 @@ sub_0204D708: ; 0x0204D708
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26893,7 +26893,7 @@ sub_0204D7D8: ; 0x0204D7D8
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26901,7 +26901,7 @@ sub_0204D7D8: ; 0x0204D7D8
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -26939,7 +26939,7 @@ _0204D82E:
 sub_0204D840: ; 0x0204D840
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26947,7 +26947,7 @@ sub_0204D840: ; 0x0204D840
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26955,7 +26955,7 @@ sub_0204D840: ; 0x0204D840
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -26982,7 +26982,7 @@ sub_0204D840: ; 0x0204D840
 sub_0204D8A0: ; 0x0204D8A0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -27003,7 +27003,7 @@ sub_0204D8A0: ; 0x0204D8A0
 sub_0204D8C8: ; 0x0204D8C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -27027,7 +27027,7 @@ sub_0204D8F0: ; 0x0204D8F0
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -27035,7 +27035,7 @@ sub_0204D8F0: ; 0x0204D8F0
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -27043,7 +27043,7 @@ sub_0204D8F0: ; 0x0204D8F0
 	bl sub_02040374
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -27075,7 +27075,7 @@ sub_0204D95C: ; 0x0204D95C
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -27097,7 +27097,7 @@ sub_0204D988: ; 0x0204D988
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27142,7 +27142,7 @@ sub_0204D9E0: ; 0x0204D9E0
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r7, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -27150,7 +27150,7 @@ sub_0204D9E0: ; 0x0204D9E0
 	bl sub_02040374
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27207,7 +27207,7 @@ sub_0204DA68: ; 0x0204DA68
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r7, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27265,7 +27265,7 @@ sub_0204DAE4: ; 0x0204DAE4
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27309,7 +27309,7 @@ sub_0204DB3C: ; 0x0204DB3C
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27356,7 +27356,7 @@ _0204DB9C: .word 0x00000000
 sub_0204DBA0: ; 0x0204DBA0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -27364,7 +27364,7 @@ sub_0204DBA0: ; 0x0204DBA0
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -27392,7 +27392,7 @@ sub_0204DBE8: ; 0x0204DBE8
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -27400,7 +27400,7 @@ sub_0204DBE8: ; 0x0204DBE8
 	bl sub_02040374
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27474,7 +27474,7 @@ sub_0204DC90: ; 0x0204DC90
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -27482,7 +27482,7 @@ sub_0204DC90: ; 0x0204DC90
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27505,7 +27505,7 @@ sub_0204DCD4: ; 0x0204DCD4
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -27513,7 +27513,7 @@ sub_0204DCD4: ; 0x0204DCD4
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -27521,7 +27521,7 @@ sub_0204DCD4: ; 0x0204DCD4
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27548,7 +27548,7 @@ sub_0204DD34: ; 0x0204DD34
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -27556,7 +27556,7 @@ sub_0204DD34: ; 0x0204DD34
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -27628,7 +27628,7 @@ sub_0204DDE4: ; 0x0204DDE4
 	add r1, #0x80
 	ldr r1, [r1]
 	str r1, [sp, #4]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27742,7 +27742,7 @@ sub_0204DEE4: ; 0x0204DEE4
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -27793,7 +27793,7 @@ sub_0204DF54: ; 0x0204DF54
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r7, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -27801,7 +27801,7 @@ sub_0204DF54: ; 0x0204DF54
 	bl sub_02040374
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27863,7 +27863,7 @@ sub_0204DFE4: ; 0x0204DFE4
 	add r1, #0x80
 	ldr r1, [r1]
 	str r1, [sp, #4]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -27871,7 +27871,7 @@ sub_0204DFE4: ; 0x0204DFE4
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -27971,7 +27971,7 @@ sub_0204E0BC: ; 0x0204E0BC
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r7, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -27979,7 +27979,7 @@ sub_0204E0BC: ; 0x0204E0BC
 	bl sub_02040374
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -28037,7 +28037,7 @@ _0204E14C: .word 0x00000000
 sub_0204E150: ; 0x0204E150
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28045,7 +28045,7 @@ sub_0204E150: ; 0x0204E150
 	bl sub_02040374
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28094,7 +28094,7 @@ sub_0204E1C4: ; 0x0204E1C4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -28176,7 +28176,7 @@ _0204E250:
 sub_0204E26C: ; 0x0204E26C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28184,7 +28184,7 @@ sub_0204E26C: ; 0x0204E26C
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28192,7 +28192,7 @@ sub_0204E26C: ; 0x0204E26C
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28225,7 +28225,7 @@ sub_0204E2D8: ; 0x0204E2D8
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28233,7 +28233,7 @@ sub_0204E2D8: ; 0x0204E2D8
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28269,7 +28269,7 @@ sub_0204E338: ; 0x0204E338
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -28346,7 +28346,7 @@ sub_0204E3CC: ; 0x0204E3CC
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -28354,7 +28354,7 @@ sub_0204E3CC: ; 0x0204E3CC
 	bl sub_02040374
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -28421,7 +28421,7 @@ sub_0204E470: ; 0x0204E470
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -28429,7 +28429,7 @@ sub_0204E470: ; 0x0204E470
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -28472,7 +28472,7 @@ _0204E4DA:
 sub_0204E4E0: ; 0x0204E4E0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28480,7 +28480,7 @@ sub_0204E4E0: ; 0x0204E4E0
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28508,7 +28508,7 @@ sub_0204E528: ; 0x0204E528
 	mov r2, #0
 	add r1, sp, #0
 	strb r2, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -28520,7 +28520,7 @@ sub_0204E528: ; 0x0204E528
 	str r0, [r4, #8]
 	add r0, r4, #0
 	ldrb r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -28577,7 +28577,7 @@ _0204E5AA:
 sub_0204E5BC: ; 0x0204E5BC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28585,7 +28585,7 @@ sub_0204E5BC: ; 0x0204E5BC
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28593,7 +28593,7 @@ sub_0204E5BC: ; 0x0204E5BC
 	bl sub_02040374
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -28622,7 +28622,7 @@ sub_0204E610: ; 0x0204E610
 	bl Sav2_Pokedex_get
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -28652,7 +28652,7 @@ sub_0204E640: ; 0x0204E640
 sub_0204E654: ; 0x0204E654
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28690,7 +28690,7 @@ sub_0204E684: ; 0x0204E684
 sub_0204E6A0: ; 0x0204E6A0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28698,7 +28698,7 @@ sub_0204E6A0: ; 0x0204E6A0
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28714,7 +28714,7 @@ _0204E6D2:
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r4, #0
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	strh r0, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -28724,7 +28724,7 @@ _0204E6D2:
 sub_0204E6E8: ; 0x0204E6E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28740,7 +28740,7 @@ _0204E706:
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r4, #0
-	bl sub_02028FC8
+	bl PlayerProfile_SetBadgeFlag
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -28750,7 +28750,7 @@ _0204E706:
 sub_0204E71C: ; 0x0204E71C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28772,7 +28772,7 @@ sub_0204E71C: ; 0x0204E71C
 sub_0204E748: ; 0x0204E748
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28783,7 +28783,7 @@ sub_0204E748: ; 0x0204E748
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -28806,7 +28806,7 @@ sub_0204E774: ; 0x0204E774
 sub_0204E788: ; 0x0204E788
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28852,7 +28852,7 @@ sub_0204E7C8: ; 0x0204E7C8
 sub_0204E7DC: ; 0x0204E7DC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28900,7 +28900,7 @@ _0204E834:
 sub_0204E838: ; 0x0204E838
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -28946,7 +28946,7 @@ sub_0204E878: ; 0x0204E878
 sub_0204E88C: ; 0x0204E88C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -29006,7 +29006,7 @@ _0204E8FA:
 	b _0204E924
 _0204E902:
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -29052,7 +29052,7 @@ _0204E954:
 	b _0204E97A
 _0204E95A:
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -29098,7 +29098,7 @@ _0204E9AC:
 	b _0204E9D2
 _0204E9B2:
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -29123,7 +29123,7 @@ sub_0204E9D8: ; 0x0204E9D8
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29131,7 +29131,7 @@ sub_0204E9D8: ; 0x0204E9D8
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29139,7 +29139,7 @@ sub_0204E9D8: ; 0x0204E9D8
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -29163,7 +29163,7 @@ sub_0204EA30: ; 0x0204EA30
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29171,7 +29171,7 @@ sub_0204EA30: ; 0x0204EA30
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29179,7 +29179,7 @@ sub_0204EA30: ; 0x0204EA30
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -29203,7 +29203,7 @@ sub_0204EA88: ; 0x0204EA88
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29211,7 +29211,7 @@ sub_0204EA88: ; 0x0204EA88
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29219,7 +29219,7 @@ sub_0204EA88: ; 0x0204EA88
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -29243,7 +29243,7 @@ sub_0204EAE0: ; 0x0204EAE0
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29251,7 +29251,7 @@ sub_0204EAE0: ; 0x0204EAE0
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29259,7 +29259,7 @@ sub_0204EAE0: ; 0x0204EAE0
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -29283,7 +29283,7 @@ sub_0204EB38: ; 0x0204EB38
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29291,7 +29291,7 @@ sub_0204EB38: ; 0x0204EB38
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -29312,7 +29312,7 @@ sub_0204EB38: ; 0x0204EB38
 sub_0204EB7C: ; 0x0204EB7C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -29320,7 +29320,7 @@ sub_0204EB7C: ; 0x0204EB7C
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -29337,7 +29337,7 @@ sub_0204EB7C: ; 0x0204EB7C
 sub_0204EBB0: ; 0x0204EBB0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -29345,7 +29345,7 @@ sub_0204EBB0: ; 0x0204EBB0
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -29364,7 +29364,7 @@ sub_0204EBB0: ; 0x0204EBB0
 sub_0204EBE8: ; 0x0204EBE8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -29388,7 +29388,7 @@ sub_0204EBE8: ; 0x0204EBE8
 	str r0, [r6]
 	ldr r1, _0204EC2C ; =sub_020429F8
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -29399,7 +29399,7 @@ _0204EC2C: .word sub_020429F8
 sub_0204EC30: ; 0x0204EC30
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29437,7 +29437,7 @@ _0204EC6E:
 sub_0204EC7C: ; 0x0204EC7C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -29445,7 +29445,7 @@ sub_0204EC7C: ; 0x0204EC7C
 	bl sub_02040374
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -29511,7 +29511,7 @@ sub_0204ECD0: ; 0x0204ECD0
 	bl sub_0203F9C4
 	ldr r1, _0204ED38 ; =sub_020429F8
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	add r0, r6, #0
 	bl FreeToHeap
 	add sp, #8
@@ -29524,7 +29524,7 @@ _0204ED38: .word sub_020429F8
 sub_0204ED3C: ; 0x0204ED3C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -29554,7 +29554,7 @@ sub_0204ED3C: ; 0x0204ED3C
 sub_0204ED7C: ; 0x0204ED7C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -29562,7 +29562,7 @@ sub_0204ED7C: ; 0x0204ED7C
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -29598,7 +29598,7 @@ _0204EDD8: .word 0x0000FFFF
 sub_0204EDDC: ; 0x0204EDDC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29634,7 +29634,7 @@ _0204EE12:
 sub_0204EE20: ; 0x0204EE20
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -29648,7 +29648,7 @@ sub_0204EE20: ; 0x0204EE20
 sub_0204EE38: ; 0x0204EE38
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -29663,7 +29663,7 @@ sub_0204EE50: ; 0x0204EE50
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r6, #0
 	add r0, #0x80
@@ -29671,7 +29671,7 @@ sub_0204EE50: ; 0x0204EE50
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r6, #0
 	add r0, #0x80
@@ -29771,10 +29771,10 @@ sub_0204EF40: ; 0x0204EF40
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -29782,7 +29782,7 @@ sub_0204EF40: ; 0x0204EF40
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -30055,7 +30055,7 @@ _0204F16E:
 sub_0204F174: ; 0x0204F174
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -30083,7 +30083,7 @@ sub_0204F174: ; 0x0204F174
 sub_0204F1AC: ; 0x0204F1AC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -30091,7 +30091,7 @@ sub_0204F1AC: ; 0x0204F1AC
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -30373,7 +30373,7 @@ _0204F3E2:
 	ldr r1, _0204F3F4 ; =0x0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	ldr r0, [r5, #8]
 	str r4, [r0]
 	mov r0, #1
@@ -30478,7 +30478,7 @@ sub_0204F448: ; 0x0204F448
 	ldr r1, _0204F4D4 ; =0x02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	ldr r0, [r6, #8]
 	str r4, [r0]
 	mov r0, #3
@@ -30544,7 +30544,7 @@ sub_0204F500: ; 0x0204F500
 	ldrb r0, [r2]
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #8]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #8]
 	add r0, #0x80
@@ -30552,7 +30552,7 @@ sub_0204F500: ; 0x0204F500
 	bl sub_02040374
 	add r5, r0, #0
 	ldr r0, [sp, #8]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #8]
 	add r0, #0x80
@@ -30745,7 +30745,7 @@ sub_0204F6D0: ; 0x0204F6D0
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -30831,7 +30831,7 @@ sub_0204F778: ; 0x0204F778
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -30895,7 +30895,7 @@ _0204F7F8: .word 0x00002710
 sub_0204F7FC: ; 0x0204F7FC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -31005,10 +31005,10 @@ sub_0204F8DC: ; 0x0204F8DC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -31016,7 +31016,7 @@ sub_0204F8DC: ; 0x0204F8DC
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -31131,7 +31131,7 @@ _0204F9D4:
 sub_0204F9DC: ; 0x0204F9DC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -31242,7 +31242,7 @@ _0204FA9A:
 sub_0204FAD4: ; 0x0204FAD4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -31250,7 +31250,7 @@ sub_0204FAD4: ; 0x0204FAD4
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -31258,7 +31258,7 @@ sub_0204FAD4: ; 0x0204FAD4
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -31556,7 +31556,7 @@ _0204FD3A:
 	ldr r1, _0204FD4C ; =0x0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	ldr r0, [r5, #0xc]
 	str r4, [r0]
 	mov r0, #1
@@ -31661,7 +31661,7 @@ sub_0204FDA0: ; 0x0204FDA0
 	ldr r1, _0204FE2C ; =0x02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	ldr r0, [r6, #0xc]
 	str r4, [r0]
 	mov r0, #3
@@ -31719,10 +31719,10 @@ sub_0204FE78: ; 0x0204FE78
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -31730,7 +31730,7 @@ sub_0204FE78: ; 0x0204FE78
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -31845,7 +31845,7 @@ _0204FF70:
 sub_0204FF78: ; 0x0204FF78
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -31919,7 +31919,7 @@ _0204FFE8:
 sub_02050014: ; 0x02050014
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -31927,7 +31927,7 @@ sub_02050014: ; 0x02050014
 	bl sub_020403AC
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -31935,7 +31935,7 @@ sub_02050014: ; 0x02050014
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -32233,7 +32233,7 @@ _0205027A:
 	ldr r1, _0205028C ; =0x0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	ldr r0, [r5, #0xc]
 	str r4, [r0]
 	mov r0, #1
@@ -32338,7 +32338,7 @@ sub_020502E0: ; 0x020502E0
 	ldr r1, _0205036C ; =0x02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	ldr r0, [r6, #0xc]
 	str r4, [r0]
 	mov r0, #3
@@ -32753,7 +32753,7 @@ _020505FA:
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #8]
 	add r0, r5, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -35208,7 +35208,7 @@ _0205193C:
 	bl sub_020744BC
 	str r0, [r5, #4]
 	add r0, r6, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r1, r5, #0
 	add r1, #0xf8
 	str r0, [r1]
@@ -35425,7 +35425,7 @@ sub_02051AAC: ; 0x02051AAC
 	add r0, r4, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl sub_02028F24
+	bl CopyPlayerName
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
@@ -35438,7 +35438,7 @@ sub_02051AAC: ; 0x02051AAC
 	mov r1, #1
 	ldr r0, [r0]
 	eor r1, r2
-	bl sub_02028F90
+	bl PlayerProfile_SetTrainerGender
 	add r0, r4, #0
 	add r1, r5, #0
 	bl sub_02052504
@@ -35661,7 +35661,7 @@ _02051CF4:
 	add r1, #0xf8
 	ldr r1, [r1]
 	add r0, r6, #0
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02051CE4
 
@@ -36315,7 +36315,7 @@ _020521F6:
 	cmp r0, #0
 	beq _020522E4
 	ldr r0, [sp, #0x20]
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	add r4, r0, #0
 	ldr r0, [sp, #0x20]
 	bl PlayerProfile_GetTrainerGender
@@ -36388,10 +36388,10 @@ sub_0205230C: ; 0x0205230C
 	cmp r0, #0
 	beq _02052394
 	ldr r0, [sp]
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	sub r1, r7, r0
 	asr r0, r1, #1
 	lsr r0, r0, #0x1e
@@ -36412,7 +36412,7 @@ sub_0205230C: ; 0x0205230C
 _02052362:
 	ldr r0, [sp]
 	sub r1, r7, r4
-	bl sub_02029028
+	bl PlayerProfile_SetMoney
 	ldr r0, [sp, #4]
 	mov r1, #2
 	add r2, r4, #0
@@ -36467,7 +36467,7 @@ sub_0205239C: ; 0x0205239C
 	add r0, #0xf8
 	ldr r0, [r0]
 	add r1, r6, #0
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	ldr r0, [r5, #4]
 	add r1, r7, #0
 	bl sub_020748B8
@@ -37607,7 +37607,7 @@ sub_02052CB4: ; 0x02052CB4
 	bl SavArray_PlayerParty_get
 	str r0, [r5, #8]
 	ldr r0, [r4, #0xc]
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	str r0, [r5, #0xc]
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -37635,7 +37635,7 @@ _02052D3A:
 	add r0, r6, #0
 	bl sub_02066604
 	ldr r0, [sp, #4]
-	bl sub_02029090
+	bl PlayerProfile_SetGameClearFlag
 	ldr r0, [r5, #0x3c]
 	cmp r0, #0
 	bne _02052D70
@@ -46600,7 +46600,7 @@ sub_02057184: ; 0x02057184
 _020571CC:
 	ldr r0, [sp, #0x14]
 	mov r7, #2
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	cmp r0, #0
 	bne _020571DC
 	mov r7, #1
@@ -50088,7 +50088,7 @@ sub_02058AEC: ; 0x02058AEC
 	ldr r1, _02058B80 ; =0x02103A1C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	str r4, [r7]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -50216,7 +50216,7 @@ _02058C5C:
 	ldr r0, [r5, #0x24]
 	ldr r1, _02058C7C ; =0x0210159C
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	str r4, [r5, #4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -53944,7 +53944,7 @@ sub_0205A894: ; 0x0205A894
 	bl GF_AssertFail
 _0205A8AA:
 	add r0, r4, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0205A894
@@ -53968,7 +53968,7 @@ _0205A8BA:
 	lsl r1, r4, #2
 	str r0, [r5, r1]
 	add r0, r6, #0
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	str r0, [sp]
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerGender
@@ -54113,7 +54113,7 @@ _0205A9DA:
 	cmp r0, #4
 	beq _0205AA0C
 	ldr r0, [r5, #8]
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	add r4, r0, #0
 	ldr r0, [r5, #8]
 	bl PlayerProfile_GetTrainerGender
@@ -54253,7 +54253,7 @@ _0205AADE:
 	mov r1, #1
 	bl BufferPlayersName
 	add r0, r4, #0
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	add r4, r0, #0
 	cmp r4, #1
 	blt _0205AB1C
@@ -54404,7 +54404,7 @@ sub_0205ABD8: ; 0x0205ABD8
 	bl PlayerProfile_GetTrainerGender
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0
@@ -54799,7 +54799,7 @@ _0205AEEC:
 	cmp r6, #0
 	beq _0205AF6A
 	ldr r0, [sp, #0xc]
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	strb r0, [r5, #0x14]
 	ldr r0, [sp, #0xc]
 	bl PlayerProfile_GetTrainerID
@@ -57924,7 +57924,7 @@ sub_0205C278: ; 0x0205C278
 	bl GF_AssertFail
 _0205C28E:
 	add r0, r4, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0205C278
@@ -57933,7 +57933,7 @@ _0205C28E:
 sub_0205C298: ; 0x0205C298
 	push {r3, lr}
 	bl Sav2_PlayerData_GetProfileAddr
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	cmp r0, #0
 	bne _0205C2AA
 	mov r0, #1
@@ -77419,7 +77419,7 @@ sub_02064B54: ; 0x02064B54
 	str r0, [r4, #0x20]
 	ldr r1, _02064BEC ; =0x0210159C
 	add r0, r5, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r7, r0]
@@ -77757,7 +77757,7 @@ sub_02064E18: ; 0x02064E18
 	ldr r1, _02064EB0 ; =0x0210159C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r7, r0]
@@ -78316,7 +78316,7 @@ _02065280:
 	ldr r1, _02065308 ; =0x0210159C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r7, r0]
@@ -82292,7 +82292,7 @@ _02066F64:
 	ldr r1, _02066F8C ; =0x0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	ldr r0, [r5, #0x14]
 	str r4, [r0]
 	mov r0, #1
@@ -82408,7 +82408,7 @@ sub_02066FEC: ; 0x02066FEC
 	ldr r1, _02067084 ; =0x02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl SwitchToPokegearApp
+	bl ScrUnk80_AddOvyMan
 	ldr r0, [r6, #0x14]
 	str r4, [r0]
 	mov r0, #3
@@ -83115,7 +83115,7 @@ sub_0206759C: ; 0x0206759C
 _020675C2:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	beq _020675FC
 	add r0, r5, #0
@@ -83349,7 +83349,7 @@ _0206773E:
 	add r7, r0, #0
 	bl ZeroMonData
 	ldr r0, [sp, #0x18]
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -84391,7 +84391,7 @@ _02067F7A:
 	ldr r0, [r1, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #1
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _02067F8E
 	mov r0, #2
@@ -84478,7 +84478,7 @@ _0206801E:
 	ldr r0, [r1, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #4
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _02068032
 	mov r0, #2
@@ -84584,7 +84584,7 @@ _020680F2:
 	ldr r0, [r1, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #3
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _02068106
 	mov r0, #2
@@ -84699,7 +84699,7 @@ _020681D2:
 	ldr r0, [r1, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #2
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _020681E6
 	mov r0, #2
@@ -84793,7 +84793,7 @@ _02068282:
 	ldr r0, [r1, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _02068296
 	mov r0, #2
@@ -84890,7 +84890,7 @@ _02068338:
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #7
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _0206834E
 	mov r0, #2
@@ -84979,7 +84979,7 @@ _020683E2:
 	ldr r0, [r1, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0xf
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _020683F6
 	mov r0, #2
@@ -85584,7 +85584,7 @@ _0206887C:
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #6
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _02068892
 	mov r0, #2
@@ -86467,7 +86467,7 @@ sub_02068E24: ; 0x02068E24
 	ldr r0, [r5, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0xa
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	beq _02068E60
 	mov r0, #0
@@ -86690,7 +86690,7 @@ sub_02068FC8: ; 0x02068FC8
 	bl sub_020691E8
 	str r0, [sp, #0x24]
 	add r0, r7, #0
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	str r0, [sp]
 	str r5, [sp, #4]
 	ldr r0, [sp, #0x10]
@@ -86699,7 +86699,7 @@ sub_02068FC8: ; 0x02068FC8
 	mov r1, #GAME_VERSION
 	bl sub_020692A0
 	add r0, r7, #0
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	str r0, [sp, #0x28]
 	add r0, r7, #0
 	bl PlayerProfile_GetTrainerGender
@@ -86708,7 +86708,7 @@ sub_02068FC8: ; 0x02068FC8
 	bl PlayerProfile_GetNamePtr
 	str r0, [sp, #0x30]
 	add r0, r7, #0
-	bl sub_02029024
+	bl PlayerProfile_GetMoney
 	str r0, [sp, #0x34]
 	ldr r0, [r6, #0xc]
 	bl Sav2_Pokedex_get
@@ -86734,7 +86734,7 @@ sub_02068FC8: ; 0x02068FC8
 	str r5, [sp, #0xc]
 	bl sub_020692C4
 	ldr r0, [sp, #0x20]
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	str r0, [sp, #0x40]
 	add r0, r6, #0
 	add r1, sp, #0x94
@@ -87220,7 +87220,7 @@ _02069426:
 _02069442:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	beq _02069454
 	ldrh r0, [r6, #6]
@@ -87401,7 +87401,7 @@ sub_02069528: ; 0x02069528
 	add r0, #0xc8
 	strb r1, [r0]
 	add r0, r4, #0
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	add r1, r0, #0
 	add r0, r7, #0
 	add r0, #0xc8
@@ -92309,7 +92309,7 @@ sub_0206BB2C: ; 0x0206BB2C
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -92332,7 +92332,7 @@ sub_0206BB5C: ; 0x0206BB5C
 	mov r1, #0x15
 	bl sub_020402F0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -92341,7 +92341,7 @@ sub_0206BB5C: ; 0x0206BB5C
 	str r0, [r4, #0x64]
 	ldr r1, _0206BB8C ; =sub_0206BB90
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -92375,7 +92375,7 @@ sub_0206BBAC: ; 0x0206BBAC
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -92383,7 +92383,7 @@ sub_0206BBAC: ; 0x0206BBAC
 	bl sub_020403AC
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -92391,7 +92391,7 @@ sub_0206BBAC: ; 0x0206BBAC
 	bl sub_020403AC
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -92399,7 +92399,7 @@ sub_0206BBAC: ; 0x0206BBAC
 	bl sub_020403AC
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -92432,7 +92432,7 @@ sub_0206BC2C: ; 0x0206BC2C
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -92458,7 +92458,7 @@ sub_0206BC64: ; 0x0206BC64
 	mov r1, #0x15
 	bl sub_020402F0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -94154,7 +94154,7 @@ _0206C922:
 	str r0, [sp, #0x18]
 	add r0, r4, #0
 	mov r1, #0x20
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0x91
@@ -96541,7 +96541,7 @@ _0206DC4C:
 sub_0206DC50: ; 0x0206DC50
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -96549,7 +96549,7 @@ sub_0206DC50: ; 0x0206DC50
 	bl sub_020403AC
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80

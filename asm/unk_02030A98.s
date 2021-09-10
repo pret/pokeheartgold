@@ -1667,7 +1667,7 @@ _02031566:
 	bl PlayerProfile_GetTrainerGender
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #0

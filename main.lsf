@@ -139,6 +139,8 @@ Static main
 	Object unk_02037C94.o
 	Object unk_0203A3B0.o
 	Object communication_error.o
+	Object script.o
+	Object fieldmap.o
 	Object scrcmd.o
 	Object pokemon.o
 	### Vendor libraries ###

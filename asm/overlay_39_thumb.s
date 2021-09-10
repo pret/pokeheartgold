@@ -609,7 +609,7 @@ ov39_022274D4: ; 0x022274D4
 	pop {r3, r4, r5, r6, r7, pc}
 _022274E8:
 	ldr r0, [r5]
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	mov r1, #0x66
 	lsl r1, r1, #2
 	add r1, r5, r1

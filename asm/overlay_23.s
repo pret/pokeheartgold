@@ -38,9 +38,9 @@ _022598E0:
 	bl AllocMonZeroed
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	str r0, [r4, #8]
-	bl sub_02028EF0
+	bl PlayerProfile_init
 	add r6, #0xd
 	add r0, r5, #0
 	add r1, r6, #0
@@ -53,11 +53,11 @@ _022598E0:
 	bl String_dtor
 	ldr r0, [r4, #8]
 	add r1, sp, #4
-	bl sub_02028F24
+	bl CopyPlayerName
 	ldr r1, [r4]
 	ldr r0, [r4, #8]
 	ldr r1, [r1, #0x40]
-	bl sub_02028F90
+	bl PlayerProfile_SetTrainerGender
 	add r0, r4, #0
 	add sp, #0x104
 	pop {r3, r4, r5, r6, pc}

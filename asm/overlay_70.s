@@ -15804,7 +15804,7 @@ _0223F730:
 	bl CopyU16StringArrayN
 	ldr r0, [r4]
 	ldr r0, [r0, #0x1c]
-	bl sub_02028F88
+	bl PlayerProfile_GetTrainerID_VisibleHalf
 	mov r1, #0x47
 	lsl r1, r1, #2
 	strh r0, [r5, r1]
@@ -15820,7 +15820,7 @@ _0223F730:
 	strb r0, [r5, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x1c]
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	mov r1, #0x12
 	lsl r1, r1, #4
 	strb r0, [r5, r1]
@@ -20089,22 +20089,22 @@ ov70_0224182C: ; 0x0224182C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0x3d
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r4, r0, #0
-	bl sub_02028EF0
+	bl PlayerProfile_init
 	mov r1, #0x43
 	lsl r1, r1, #2
 	add r0, r4, #0
 	add r1, r5, r1
-	bl sub_02028F24
+	bl CopyPlayerName
 	ldr r1, _02241860 ; =0x00000122
 	add r0, r4, #0
 	ldrb r1, [r5, r1]
-	bl sub_02029080
+	bl PlayerProfile_SetVersion
 	ldr r1, _02241864 ; =0x00000123
 	add r0, r4, #0
 	ldrb r1, [r5, r1]
-	bl sub_0202908C
+	bl PlayerProfile_SetLanguage
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

@@ -21407,7 +21407,7 @@ _021F0624:
 	ldr r0, [r5]
 	mov r1, #0x25
 	ldr r0, [r0, #4]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r6, r0, #0
 	mov r3, #0
 	ldr r0, _021F0828 ; =0x00020100

@@ -169,7 +169,7 @@ ov45_02229FF4: ; 0x02229FF4
 	add r5, r4, #0
 _0222A046:
 	add r0, r7, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r1, r5, #0
 	add r1, #0xe8
 	add r6, r6, #1
@@ -1341,7 +1341,7 @@ ov45_0222A844: ; 0x0222A844
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #8
-	bl sub_02028F24
+	bl CopyPlayerName
 	mov r0, #0x20
 	add r1, r7, #0
 	bl String_ctor
@@ -1352,7 +1352,7 @@ ov45_0222A844: ; 0x0222A844
 	str r0, [sp, #4]
 	ldr r1, [sp, #4]
 	add r0, r4, #0
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r6, #0
@@ -1382,7 +1382,7 @@ _0222A8A2:
 	add r7, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_02028F44
+	bl PlayerName_StringToFlat
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
@@ -1392,28 +1392,28 @@ _0222A8D0:
 	bl ov45_0222A9A0
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02028F80
+	bl PlayerProfile_SetTrainerID
 	add r0, r5, #0
 	bl ov45_0222A9CC
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02028F90
+	bl PlayerProfile_SetTrainerGender
 	add r0, r5, #0
 	bl ov45_0222AA5C
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl sub_02029040
+	bl PlayerProfile_SetAvatar
 	add r0, r5, #0
 	bl ov45_0222AA10
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl sub_0202908C
+	bl PlayerProfile_SetLanguage
 	add r0, r4, #0
-	bl sub_02029090
+	bl PlayerProfile_SetGameClearFlag
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3702,7 +3702,7 @@ ov45_0222B8A0: ; 0x0222B8A0
 	str r0, [sp, #8]
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r1, r5, #0
 	add r4, r0, #0
 	add r1, #0x28
@@ -3770,12 +3770,12 @@ _0222B958:
 	add r1, #0x58
 	strb r0, [r1]
 	ldr r0, [sp, #0x18]
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	add r1, r5, #0
 	add r1, #0x59
 	strb r0, [r1]
 	ldr r0, [sp, #0x18]
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	add r1, r5, #0
 	add r1, #0x5a
 	strh r0, [r1]
@@ -3802,7 +3802,7 @@ _0222B958:
 	add r1, #0x5f
 	strb r0, [r1]
 	ldr r0, [sp, #0x18]
-	bl sub_020290A0
+	bl PlayerProfile_GetGameClearFlag
 	add r1, r5, #0
 	add r1, #0x60
 	strb r0, [r1]
@@ -4239,7 +4239,7 @@ ov45_0222BCC8: ; 0x0222BCC8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
@@ -6793,7 +6793,7 @@ ov45_0222CE78: ; 0x0222CE78
 	mov r4, #0
 _0222CE80:
 	add r0, r6, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	str r0, [r5, #0x20]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -9506,25 +9506,25 @@ _0222E0F4:
 	cmp r0, #0
 	beq _0222E124
 	ldr r1, [r5, #0x10]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 _0222E124:
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0
 	beq _0222E130
 	ldr r1, [r5, #0x14]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 _0222E130:
 	ldr r0, [sp, #0x20]
 	cmp r0, #0
 	beq _0222E13C
 	ldr r1, [r5, #0x18]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 _0222E13C:
 	ldr r0, [sp, #0x24]
 	cmp r0, #0
 	beq _0222E148
 	ldr r1, [r5, #0x1c]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 _0222E148:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

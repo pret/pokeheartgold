@@ -282,14 +282,14 @@ ov53_021E5B48: ; 0x021E5B48
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	ldr r1, [r1, #0x18]
-	bl sub_02028F44
+	bl PlayerName_StringToFlat
 	ldr r0, [r4, #4]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	ldr r1, [r1, #4]
-	bl sub_02028F90
+	bl PlayerProfile_SetTrainerGender
 	ldr r0, [r4, #4]
 	bl sub_0202A954
 	mov r1, #0x49

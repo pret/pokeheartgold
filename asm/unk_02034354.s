@@ -72,7 +72,7 @@ _0203438A:
 	ldr r2, [r2]
 	ldr r0, [sp, #8]
 	ldr r1, [r2, r1]
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 _020343DA:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -165,7 +165,7 @@ _02034470:
 	mov r1, #0xd3
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
-	bl sub_02028EE4
+	bl PlayerProfile_Copy
 	mov r0, #0x68
 	add r5, r4, #0
 	mul r5, r0
@@ -297,7 +297,7 @@ sub_0203453C: ; 0x0203453C
 	lsl r1, r1, #2
 	add r1, r2, r1
 	ldr r0, [r1, r0]
-	bl sub_02028F0C
+	bl PlayerProfile_IsNameEmpty
 	cmp r0, #1
 	beq _020345C4
 	ldr r2, _020345C8 ; =0x021D4130
@@ -425,7 +425,7 @@ _02034666:
 	strb r4, [r0]
 	ldr r0, _020346CC ; =0x021D4130
 	ldr r6, [r0]
-	bl sub_02028ECC
+	bl PlayerProfile_sizeof
 	add r2, r0, #0
 	mov r0, #0xd3
 	add r1, r6, r7
@@ -489,7 +489,7 @@ sub_020346E8: ; 0x020346E8
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02028EF0
+	bl PlayerProfile_init
 	ldr r0, _02034710 ; =0x021D4130
 	mov r2, #0
 	ldr r0, [r0]
