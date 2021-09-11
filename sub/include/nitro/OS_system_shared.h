@@ -10,8 +10,8 @@
  * Include OS_system.h from the specific proc's lib
  */
 
-#ifndef POKEDIAMOND_OS_SYSTEM_SHARED_H
-#define POKEDIAMOND_OS_SYSTEM_SHARED_H
+#ifndef NITRO_OS_SYSTEM_SHARED_H
+#define NITRO_OS_SYSTEM_SHARED_H
 
 #include "nitro/consts_shared.h"
 
@@ -31,4 +31,4 @@ typedef enum {
     OS_INTRMODE_ENABLE = 0
 } OSIntrMode;
 
-#endif //POKEDIAMOND_OS_SYSTEM_SHARED_H
+#endif //NITRO_OS_SYSTEM_SHARED_H

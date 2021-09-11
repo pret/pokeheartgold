@@ -5,8 +5,8 @@
  * Thank You!
  */
 
-#ifndef POKEDIAMOND_REGISTERS_SHARED_H
-#define POKEDIAMOND_REGISTERS_SHARED_H
+#ifndef NITRO_REGISTERS_SHARED_H
+#define NITRO_REGISTERS_SHARED_H
 
 #include "nitro/types.h"
 
@@ -25,4 +25,4 @@
 
 #define REG_OS_TM0CNT_H_PS_SHIFT                           0
 
-#endif //POKEDIAMOND_REGISTERS_SHARED_H
+#endif //NITRO_REGISTERS_SHARED_H

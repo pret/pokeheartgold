@@ -10,8 +10,8 @@
  * Include mmap.h from the specific proc's lib
  */
 
-#ifndef POKEDIAMOND_MMAP_SHARED_H
-#define POKEDIAMOND_MMAP_SHARED_H
+#ifndef NITRO_MMAP_SHARED_H
+#define NITRO_MMAP_SHARED_H
 
 #define HW_MAIN_MEM             0x02000000
 #define HW_MAIN_MEM_SIZE        0x00400000
@@ -31,4 +31,4 @@
 
 #define HW_BUTTON_XY_BUF        (HW_MAIN_MEM + 0x007FFFA8)
 
-#endif //POKEDIAMOND_MMAP_SHARED_H
+#endif //NITRO_MMAP_SHARED_H

@@ -1,5 +1,5 @@
-#ifndef POKEDIAMOND_ARM7_MMAP_H
-#define POKEDIAMOND_ARM7_MMAP_H
+#ifndef NITRO_SUB_MMAP_H
+#define NITRO_SUB_MMAP_H
 
 #include "nitro/mmap_shared.h"
 
@@ -27,4 +27,4 @@
 #define HW_VBLANK_COUNT_BUF         (HW_MAIN_MEM + 0x007ffc3c)
 #define HW_LOCK_ID_FLAG_SUB         (HW_MAIN_MEM + 0x007fffb8)
 
-#endif //POKEDIAMOND_ARM7_MMAP_H
+#endif //NITRO_SUB_MMAP_H

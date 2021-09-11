@@ -10,8 +10,8 @@
  * Include OS_spinLock.h from the specific proc's lib
  */
 
-#ifndef POKEDIAMOND_OS_SPINLOCK_SHARED_H
-#define POKEDIAMOND_OS_SPINLOCK_SHARED_H
+#ifndef NITRO_OS_SPINLOCK_SHARED_H
+#define NITRO_OS_SPINLOCK_SHARED_H
 
 #include "nitro/types.h"
 
@@ -21,4 +21,4 @@ typedef volatile struct OSLockWord {
     u16 extension;
 } OSLockWord;
 
-#endif //POKEDIAMOND_OS_SPINLOCK_SHARED_H
+#endif //NITRO_OS_SPINLOCK_SHARED_H

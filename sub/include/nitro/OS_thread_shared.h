@@ -10,8 +10,8 @@
  * Include OS_thread.h from the specific proc's lib
  */
 
-#ifndef POKEDIAMOND_OS_THREAD_SHARED_H
-#define POKEDIAMOND_OS_THREAD_SHARED_H
+#ifndef NITRO_OS_THREAD_SHARED_H
+#define NITRO_OS_THREAD_SHARED_H
 
 #include "nitro/types.h"
 
@@ -128,4 +128,4 @@ static inline void OS_SetCurrentThread(OSThread *thread)
 
 #define OSi_GetCurrentThread()          (*OSi_CurrentThreadPtr)
 
-#endif //POKEDIAMOND_OS_THREAD_SHARED_H
+#endif //NITRO_OS_THREAD_SHARED_H

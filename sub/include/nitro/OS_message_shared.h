@@ -10,8 +10,8 @@
  * Include OS_message.h from the specific proc's lib
  */
 
-#ifndef POKEDIAMOND_OS_MESSAGE_SHARED_H
-#define POKEDIAMOND_OS_MESSAGE_SHARED_H
+#ifndef NITRO_OS_MESSAGE_SHARED_H
+#define NITRO_OS_MESSAGE_SHARED_H
 
 #include "nitro/types.h"
 #include "nitro/OS_thread_shared.h"
@@ -31,4 +31,4 @@ typedef struct OSMessageQueue
     s32 usedCount;
 } OSMessageQueue;
 
-#endif //POKEDIAMOND_OS_MESSAGE_SHARED_H
+#endif //NITRO_OS_MESSAGE_SHARED_H

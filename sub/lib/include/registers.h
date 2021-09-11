@@ -1,5 +1,5 @@
-#ifndef POKEDIAMOND_ARM7_REGISTERS_H
-#define POKEDIAMOND_ARM7_REGISTERS_H
+#ifndef NITRO_SUB_REGISTERS_H
+#define NITRO_SUB_REGISTERS_H
 
 #include "nitro/registers_shared.h"
 
@@ -34,4 +34,4 @@
 #define EXTKEYIN_PEN (1<<6)
 #define EXTKEYIN_HINGE (1<<7)
 
-#endif //POKEDIAMOND_ARM7_REGISTERS_H
+#endif //NITRO_SUB_REGISTERS_H

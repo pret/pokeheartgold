@@ -10,8 +10,8 @@
  * Include consts.h from the specific proc's lib
  */
 
-#ifndef POKEDIAMOND_OS_SYSTEMWORK_SHARED_H
-#define POKEDIAMOND_OS_SYSTEMWORK_SHARED_H
+#ifndef NITRO_OS_SYSTEMWORK_SHARED_H
+#define NITRO_OS_SYSTEMWORK_SHARED_H
 
 #include "nitro/types.h"
 #include "nitro/mmap_shared.h"
@@ -63,4 +63,4 @@ typedef struct {
 
 #define OS_GetSystemWork()      ((OSSystemWork *)HW_MAIN_MEM_SYSTEM)
 
-#endif //POKEDIAMOND_OS_SYSTEMWORK_SHARED_H
+#endif //NITRO_OS_SYSTEMWORK_SHARED_H

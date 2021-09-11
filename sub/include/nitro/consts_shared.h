@@ -10,8 +10,8 @@
  * Include consts.h from the specific proc's lib
  */
 
-#ifndef POKEDIAMOND_CONSTS_SHARED_H
-#define POKEDIAMOND_CONSTS_SHARED_H
+#ifndef NITRO_CONSTS_SHARED_H
+#define NITRO_CONSTS_SHARED_H
 
 #include "nitro/types.h"
 #include "nitro/mmap_shared.h"
@@ -40,4 +40,4 @@
 
 #define OSi_GetArenaInfo()         (*(OSArenaInfo*)HW_ARENA_INFO_BUF)
 
-#endif //POKEDIAMOND_CONSTS_SHARED_H
+#endif //NITRO_CONSTS_SHARED_H

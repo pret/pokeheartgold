@@ -5,8 +5,8 @@
  * Thank You!
  */
 
-#ifndef POKEDIAMOND_TYPES_H
-#define POKEDIAMOND_TYPES_H
+#ifndef NITRO_TYPES_H
+#define NITRO_TYPES_H
 
 typedef unsigned char u8;
 typedef unsigned short int u16;
@@ -56,4 +56,4 @@ typedef int BOOL;
 
 #define SDK_FORCE_EXPORT __declspec(force_export)
 
-#endif //POKEDIAMOND_TYPES_H
+#endif //NITRO_TYPES_H

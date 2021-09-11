@@ -1,5 +1,5 @@
-#ifndef POKEDIAMOND_ARM7_OS_CONTEXT_H
-#define POKEDIAMOND_ARM7_OS_CONTEXT_H
+#ifndef NITRO_SUB_OS_CONTEXT_H
+#define NITRO_SUB_OS_CONTEXT_H
 
 #include "nitro/types.h"
 
@@ -17,4 +17,4 @@ void OS_InitContext(register OSContext *context, register u32 newpc, register u3
 BOOL OS_SaveContext(register OSContext *context);
 void OS_LoadContext(register OSContext *context);
 
-#endif //POKEDIAMOND_ARM7_OS_CONTEXT_H
+#endif //NITRO_SUB_OS_CONTEXT_H

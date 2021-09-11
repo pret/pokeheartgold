@@ -10,8 +10,8 @@
  * Include OS_mutex.h from the specific proc's lib
  */
 
-#ifndef POKEDIAMOND_OS_MUTEX_SHARED_H
-#define POKEDIAMOND_OS_MUTEX_SHARED_H
+#ifndef NITRO_OS_MUTEX_SHARED_H
+#define NITRO_OS_MUTEX_SHARED_H
 
 #include "nitro/OS_thread_shared.h"
 #include "nitro/types.h"
@@ -23,4 +23,4 @@ struct OSMutex {
     OSMutexLink link;
 };
 
-#endif //POKEDIAMOND_OS_MUTEX_SHARED_H
+#endif //NITRO_OS_MUTEX_SHARED_H

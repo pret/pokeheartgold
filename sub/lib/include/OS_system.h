@@ -1,5 +1,5 @@
-#ifndef POKEDIAMOND_ARM7_OS_SYSTEM_H
-#define POKEDIAMOND_ARM7_OS_SYSTEM_H
+#ifndef NITRO_SUB_OS_SYSTEM_H
+#define NITRO_SUB_OS_SYSTEM_H
 
 #include "nitro/types.h"
 #include "consts.h"
@@ -13,4 +13,4 @@ OSIntrMode OS_RestoreInterrupts_IrqAndFiq(OSIntrMode state);
 OSProcMode OS_GetProcMode(void);
 void OS_SpinWait(u32 cycle);
 
-#endif //POKEDIAMOND_ARM7_OS_SYSTEM_H
+#endif //NITRO_SUB_OS_SYSTEM_H

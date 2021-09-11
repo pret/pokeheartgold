@@ -1,5 +1,5 @@
-#ifndef POKEDIAMOND_ARM7_OS_THREAD_H
-#define POKEDIAMOND_ARM7_OS_THREAD_H
+#ifndef NITRO_SUB_OS_THREAD_H
+#define NITRO_SUB_OS_THREAD_H
 
 #include "OS_context.h"
 #include "nitro/OS_thread_shared.h"
@@ -22,4 +22,4 @@ u32 OS_DisableScheduler(void);
 u32 OS_EnableScheduler(void);
 void OS_SetThreadDestructor(OSThread *thread, OSThreadDestructor dtor);
 
-#endif //POKEDIAMOND_ARM7_OS_THREAD_H
+#endif //NITRO_SUB_OS_THREAD_H
