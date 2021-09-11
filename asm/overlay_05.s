@@ -150,7 +150,7 @@ _0221BB0A:
 	mov r0, #0
 	lsl r1, r1, #0x18
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add sp, #0x28
 	pop {r4, pc}
 	nop

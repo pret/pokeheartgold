@@ -261,7 +261,7 @@ ov20_02259A88: ; 0x02259A88
 	bl ov20_022599A0
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066B50
 	add r1, sp, #0
 	strh r0, [r1]
@@ -323,7 +323,7 @@ ov20_02259B40: ; 0x02259B40
 	bl GetPartyMonByIndex
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov20_022598C0
@@ -368,7 +368,7 @@ ov20_02259B88: ; 0x02259B88
 	bl sub_020403AC
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066B50
 	add r1, sp, #4
 	strh r0, [r1]

@@ -39,12 +39,12 @@ ov60_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x1e
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0xbe
 	add r0, r4, #0
 	lsl r1, r1, #2
 	mov r2, #0x1e
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0xbe
 	mov r1, #0
 	lsl r2, r2, #2
@@ -93,7 +93,7 @@ ov60_021E59C8: ; 0x021E59C8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r5]
 	cmp r0, #6
@@ -448,7 +448,7 @@ _021E5CA0: .word 0x00000924
 ov60_021E5CA4: ; 0x021E5CA4
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r6, r0, #0
 	mov r0, #0x2e
 	lsl r0, r0, #4
@@ -462,9 +462,9 @@ ov60_021E5CA4: ; 0x021E5CA4
 	add r0, r6, #0
 	bl ov60_021E61C8
 	add r0, r7, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r5, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	cmp r4, #5
 	bhi _021E5CF2
 	add r0, r4, r4
@@ -626,7 +626,7 @@ _021E5DEC:
 	add r0, #0x80
 	add r1, r4, #0
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0x2e
 	add r1, r6, #0
 	add r2, r4, #0
@@ -2298,11 +2298,11 @@ ov60_021E6B68: ; 0x021E6B68
 	mov r0, #3
 	mov r1, #0x4a
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E6BFC ; =0x0000062C
 	add r0, r4, #0
 	mov r2, #0x4a
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E6BFC ; =0x0000062C
 	mov r1, #0
 	add r4, r0, #0
@@ -2341,7 +2341,7 @@ _021E6C04: .word gMain + 0x60
 ov60_021E6C08: ; 0x021E6C08
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, _021E6CE0 ; =0x00000628
 	ldrb r0, [r4, r0]
@@ -2462,7 +2462,7 @@ _021E6CF8: .word 0x0000062A
 ov60_021E6CFC: ; 0x021E6CFC
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r6, r0, #0
 	ldr r1, _021E6DEC ; =0x00007FFF
 	mov r0, #0
@@ -2561,9 +2561,9 @@ _021E6D98:
 	ldr r0, [r6, r0]
 	bl SetLCRNGSeed
 	ldr r0, [sp]
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x4a
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _021E6E0C ; =SDK_OVERLAY_OVY_60_ID
 	ldr r1, _021E6E10 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
@@ -8057,7 +8057,7 @@ ov60_021E99B8: ; 0x021E99B8
 	add r0, r0, r1
 	mov r1, #0x4a
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0
 	str r0, [sp, #0x1c]
 _021E99DE:

@@ -419,25 +419,25 @@ _0222BAB4:
 	mov r0, #0
 	lsl r1, r1, #0x18
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x62
 	mov r2, #2
 	mov r0, #0
 	lsl r1, r1, #0x14
 	lsl r2, r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x19
 	mov r2, #1
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x66
 	mov r2, #2
 	mov r0, #0
 	lsl r1, r1, #0x14
 	lsl r2, r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0
 	ldr r2, _0222BC1C ; =0x02244CC8
 	add r0, r4, #0
@@ -15893,7 +15893,7 @@ ov40_02233550: ; 0x02233550
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	bl sub_02066E18
 	str r0, [sp, #0x30]
@@ -16076,7 +16076,7 @@ _022336A2:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r7, r0]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	bl sub_02066E18
 	str r0, [sp, #0x7c]

@@ -14,7 +14,7 @@ ov32_0225D520: ; 0x0225D520
 	mov r1, #8
 	lsl r2, r0, #0xf
 	add r4, r3, #0
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r0, _0225D5C0 ; =0x04001050
 	mov r1, #0
 	strh r1, [r0]
@@ -98,7 +98,7 @@ ov32_0225D5CC: ; 0x0225D5CC
 	add r0, r5, #0
 	bl sub_02007234
 	mov r0, #8
-	bl sub_0201A9C4
+	bl DestroyHeap
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov32_0225D5CC
 

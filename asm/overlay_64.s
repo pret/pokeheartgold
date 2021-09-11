@@ -32,19 +32,19 @@ ov64_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x3b
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x1d
 	add r0, r5, #0
 	lsl r1, r1, #4
 	mov r2, #0x3b
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x1d
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
 	bl MIi_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4]
 	bl sub_0202E298
 	mov r1, #0x6e
@@ -87,7 +87,7 @@ _021E59C4: .word ov64_021E5A88
 ov64_021E59C8: ; 0x021E59C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -108,9 +108,9 @@ ov64_021E59C8: ; 0x021E59C8
 	bl NARC_dtor
 	bl sub_02021238
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x3b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -120,7 +120,7 @@ ov64_021E59C8: ; 0x021E59C8
 ov64_021E5A18: ; 0x021E5A18
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #3

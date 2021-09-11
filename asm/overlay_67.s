@@ -7,17 +7,17 @@
 ov67_021E5900: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r2, #2
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x48
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E5964 ; =0x000004AC
 	add r0, r4, #0
 	mov r2, #0x48
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E5964 ; =0x000004AC
 	mov r1, #0
 	add r4, r0, #0
@@ -53,12 +53,12 @@ _021E5964: .word 0x000004AC
 ov67_021E5968: ; 0x021E5968
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	ldr r0, [r4]
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -69,7 +69,7 @@ ov67_021E5984: ; 0x021E5984
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #8

@@ -5290,7 +5290,7 @@ ov04_02256758: ; 0x02256758
 	mov r2, #0x20
 	str r0, [sp, #8]
 	str r1, [sp, #0xc]
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0
 	str r0, [sp, #0x14]
 _0225676A:
@@ -5929,7 +5929,7 @@ ov04_02256C20: ; 0x02256C20
 	mov r2, #0x20
 	str r0, [sp, #8]
 	str r1, [sp, #0xc]
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	ldr r4, [sp, #8]
 	ldr r6, _02256CFC ; =0x00000101
 	mov r5, #0
@@ -6364,7 +6364,7 @@ ov04_02256F50: ; 0x02256F50
 	ldr r0, [sp, #8]
 	mov r2, #0x20
 	add r0, r0, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	ldr r4, [sp, #8]
 	mov r5, #0
 	add r4, #0x14

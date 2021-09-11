@@ -264,7 +264,7 @@ _02023800:
 	ldr r0, [r0]
 	ldr r1, [r5, #4]
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	ldr r0, [r5]
 	ldr r1, [r5, #4]
 	bl sub_0202068C

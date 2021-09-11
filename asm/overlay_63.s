@@ -28,17 +28,17 @@ ov63_0221BE20: ; 0x0221BE20
 	strh r0, [r3]
 	mov r0, #3
 	mov r1, #0x3e
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _0221BF1C ; =0x0001306C
 	add r0, r4, #0
 	mov r2, #0x3e
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _0221BF1C ; =0x0001306C
 	mov r1, #0
 	add r5, r0, #0
 	bl MIi_CpuFill8
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r5]
 	mov r0, #0
 	mov r1, #0x1b
@@ -117,7 +117,7 @@ _0221BF24: .word 0x0001304C
 ov63_0221BF28: ; 0x0221BF28
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov63_0221C118
 	add r0, r4, #0
@@ -146,9 +146,9 @@ ov63_0221BF28: ; 0x0221BF28
 	ldr r0, [r4]
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x3e
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -157,7 +157,7 @@ ov63_0221BF28: ; 0x0221BF28
 	thumb_func_start ov63_0221BF88
 ov63_0221BF88: ; 0x0221BF88
 	push {r4, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, _0221BFB4 ; =0x0001304C
 	add r4, r0, #0
 	ldr r1, [r4, r1]

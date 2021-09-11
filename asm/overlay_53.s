@@ -12,12 +12,12 @@ ov53_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x50
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #6
 	add r0, r5, #0
 	lsl r1, r1, #6
 	mov r2, #0x50
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #6
 	mov r1, #0
 	lsl r2, r2, #6
@@ -26,7 +26,7 @@ ov53_021E5900: ; 0x021E5900
 	mov r0, #0x50
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -77,7 +77,7 @@ ov53_021E5994: ; 0x021E5994
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	mov r6, #0
@@ -271,7 +271,7 @@ _021E5B44: .word ov53_021E5BCC
 ov53_021E5B48: ; 0x021E5B48
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #4
 	ldr r5, [r4]
@@ -306,9 +306,9 @@ ov53_021E5B48: ; 0x021E5B48
 	ldr r0, [r4, r0]
 	bl sub_0208311C
 	add r0, r6, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r5, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _021E5BC4 ; =SDK_OVERLAY_OVY_36_ID
 	ldr r1, _021E5BC8 ; =0x021E5C14
 	bl RegisterMainOverlay

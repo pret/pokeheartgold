@@ -20,12 +20,12 @@ _02237D52:
 	mov r0, #3
 	mov r1, #0x86
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0xa7
 	add r0, r6, #0
 	lsl r1, r1, #2
 	mov r2, #0x86
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0xa7
 	mov r1, #0
 	lsl r2, r2, #2
@@ -34,7 +34,7 @@ _02237D52:
 	mov r0, #0x86
 	str r0, [r4]
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov59_02237E94
@@ -43,7 +43,7 @@ _02237D52:
 	str r0, [r5]
 	b _02237DA4
 _02237D94:
-	bl sub_02007290
+	bl OverlayManager_GetData
 	bl ov59_02237F3C
 	cmp r0, #0
 	beq _02237DA4
@@ -58,7 +58,7 @@ _02237DA4:
 ov59_02237DA8: ; 0x02237DA8
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #0x10
@@ -159,7 +159,7 @@ _02237E5A:
 ov59_02237E68: ; 0x02237E68
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov59_02237F74
 	cmp r0, #0
@@ -170,9 +170,9 @@ _02237E7E:
 	add r0, r4, #0
 	bl ov59_02237F28
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x86
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov59_02237E68
@@ -5668,12 +5668,12 @@ _0223A8F2:
 	mov r0, #3
 	mov r1, #0x86
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0xbd
 	add r0, r6, #0
 	lsl r1, r1, #2
 	mov r2, #0x86
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0xbd
 	mov r1, #0
 	lsl r2, r2, #2
@@ -5682,7 +5682,7 @@ _0223A8F2:
 	mov r0, #0x86
 	str r0, [r4]
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov59_0223A9E4
@@ -5691,7 +5691,7 @@ _0223A8F2:
 	str r0, [r5]
 	b _0223A944
 _0223A934:
-	bl sub_02007290
+	bl OverlayManager_GetData
 	bl ov59_0223AABC
 	cmp r0, #0
 	beq _0223A944
@@ -5706,7 +5706,7 @@ _0223A944:
 ov59_0223A948: ; 0x0223A948
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #8
@@ -5766,7 +5766,7 @@ _0223A9A2:
 ov59_0223A9B8: ; 0x0223A9B8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov59_0223AB00
 	cmp r0, #0
@@ -5777,9 +5777,9 @@ _0223A9CE:
 	add r0, r4, #0
 	bl ov59_0223AA6C
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x86
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov59_0223A9B8

@@ -43,11 +43,11 @@ _021E80D6:
 	mov r0, #3
 	mov r1, #0x27
 	lsl r2, r2, #6
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E8234 ; =0x00005CB0
 	add r0, r6, #0
 	mov r2, #0x27
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E8234 ; =0x00005CB0
 	mov r1, #0
 	add r4, r0, #0
@@ -89,17 +89,17 @@ _021E80D6:
 	add r3, r0, #0
 	bl sub_0200FA24
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	bl sub_0202C9D8
 	bl sub_0202C9E4
 	ldr r1, _021E8238 ; =0x00005B98
 	str r0, [r4, r1]
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	bl Sav2_GameStats_get
 	str r0, [r4, #8]
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0xc]
 	add r0, r4, #0
@@ -141,7 +141,7 @@ _021E80D6:
 	str r0, [r5]
 	b _021E8224
 _021E8216:
-	bl sub_02007290
+	bl OverlayManager_GetData
 	mov r0, #0
 	str r0, [r5]
 	add sp, #0xc
@@ -165,7 +165,7 @@ _021E8244: .word 0xFFFF7FFF
 ov52_021E8248: ; 0x021E8248
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	cmp r1, #0
@@ -218,7 +218,7 @@ _021E82A8: .word 0x00004318
 ov52_021E82AC: ; 0x021E82AC
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r6, r0, #0
 	ldr r0, _021E8374 ; =0x00005B98
 	mov r1, #0x2d
@@ -279,7 +279,7 @@ _021E82FC:
 	add r0, r6, #0
 	bl ov52_021E8568
 	ldr r0, [sp]
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	ldr r2, _021E8378 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -289,7 +289,7 @@ _021E82FC:
 	add r1, r0, #0
 	bl sub_0201A0FC
 	mov r0, #0x27
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

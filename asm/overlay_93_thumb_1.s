@@ -7,16 +7,16 @@
 ov93_0225C540: ; 0x0225C540
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x75
 	lsl r2, r0, #0x11
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0x40
 	mov r2, #0x75
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x40
@@ -33,10 +33,10 @@ ov93_0225C574: ; 0x0225C574
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov93_0225C730
@@ -199,11 +199,11 @@ _0225C6BC: .word _022629F8
 ov93_0225C6C0: ; 0x0225C6C0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r0, r4, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x75
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ov93_0225C6C0
@@ -332,7 +332,7 @@ ov93_0225C768: ; 0x0225C768
 	ldr r1, _0225CA64 ; =0x00003850
 	add r0, r4, #0
 	mov r2, #0x75
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _0225CA64 ; =0x00003850
 	add r5, r0, #0
 	mov r1, #0
@@ -341,14 +341,14 @@ ov93_0225C768: ; 0x0225C768
 	add r0, #0xa8
 	mov r1, #0x75
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0x75
 	bl ov93_0225CF14
 	add r1, r5, #0
 	add r1, #0x98
 	str r0, [r1]
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r5]
 	add r0, r5, #0
 	bl ov93_022626FC
@@ -618,7 +618,7 @@ ov93_0225CA8C: ; 0x0225CA8C
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r1, [r4]
 	add r2, r1, #0
@@ -932,7 +932,7 @@ _0225CD0C: .word 0x0000384C
 ov93_0225CD10: ; 0x0225CD10
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, _0225CE94 ; =0x00002FD0
 	ldr r1, [r4, r0]
@@ -1070,7 +1070,7 @@ _0225CD72:
 	bl ov93_0225CFB8
 	bl sub_02021238
 	add r0, r7, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -1472,25 +1472,25 @@ _0225D1E8:
 	mov r0, #0
 	lsl r1, r1, #0x18
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x62
 	mov r2, #2
 	mov r0, #0
 	lsl r1, r1, #0x14
 	lsl r2, r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x19
 	mov r2, #1
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x66
 	mov r2, #2
 	mov r0, #0
 	lsl r1, r1, #0x14
 	lsl r2, r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r4, _0225D370 ; =0x02262A44
 	add r3, sp, #0
 	add r2, r3, #0
@@ -4980,7 +4980,7 @@ _0225ED2A:
 	ldr r1, [r2, #0x14]
 	add r1, r2, r1
 	sub r1, r1, r0
-	bl sub_0201AC38
+	bl ReallocFromHeap
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov93_0225EC98

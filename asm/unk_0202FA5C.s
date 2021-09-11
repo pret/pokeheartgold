@@ -253,7 +253,7 @@ sub_0202FBD4: ; 0x0202FBD4
 	ldr r2, _0202FBEC ; =0x00001D50
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r0, #0
 	mvn r0, r0
 	str r0, [r4]

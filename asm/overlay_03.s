@@ -5667,7 +5667,7 @@ ov03_02256BA8: ; 0x02256BA8
 	pop {r3, r4, r5, r6, r7, pc}
 _02256BCA:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r1, r6, #0
 	bl sub_020669B4
 	add r1, r0, #0
@@ -5903,7 +5903,7 @@ ov03_02256D34: ; 0x02256D34
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -9856,7 +9856,7 @@ ov03_02258C00: ; 0x02258C00
 	bl PlayerProfile_GetTrainerID
 	str r0, [sp, #0xc]
 	ldr r0, _02258CD8 ; =0x00000165
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	mov r5, #0

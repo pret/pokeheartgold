@@ -6352,7 +6352,7 @@ sub_02043938: ; 0x02043938
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066AF0
 	strh r0, [r4]
 	mov r0, #0
@@ -6374,7 +6374,7 @@ sub_02043964: ; 0x02043964
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r1, r4, #0
 	bl sub_02066AE0
 	mov r0, #0
@@ -9486,7 +9486,7 @@ sub_02045188: ; 0x02045188
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	str r0, [sp, #4]
 	add r0, r5, #0
 	add r0, #0x80
@@ -10611,7 +10611,7 @@ sub_02045A60: ; 0x02045A60
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066820
 	mov r0, #0
 	pop {r3, pc}
@@ -10623,7 +10623,7 @@ sub_02045A74: ; 0x02045A74
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066830
 	mov r0, #0
 	pop {r3, pc}
@@ -10895,7 +10895,7 @@ sub_02045C84: ; 0x02045C84
 	ldr r0, [r5]
 	ldrb r4, [r1]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	cmp r4, #0
 	beq _02045CB8
 	add r1, r6, #0
@@ -10952,7 +10952,7 @@ sub_02045CFC: ; 0x02045CFC
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066D40
 	strh r0, [r4]
 	mov r0, #0
@@ -11086,7 +11086,7 @@ sub_02045E1C: ; 0x02045E1C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -11192,7 +11192,7 @@ sub_02045ED8: ; 0x02045ED8
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r5, r0, #0
 	cmp r4, #1
 	bls _02045F0A
@@ -12476,13 +12476,13 @@ sub_02046914: ; 0x02046914
 	bl sub_020403AC
 	add r6, r0, #0
 	mov r0, #0xb
-	bl sub_0201ABEC
+	bl GF_ExpHeap_FndGetTotalFreeSize
 	add r4, r0, #0
 	mov r0, #4
-	bl sub_0201ABEC
+	bl GF_ExpHeap_FndGetTotalFreeSize
 	add r7, r0, #0
 	mov r0, #0x20
-	bl sub_0201ABEC
+	bl GF_ExpHeap_FndGetTotalFreeSize
 	add r5, r0, #0
 	cmp r6, #0
 	bne _0204694E
@@ -15290,7 +15290,7 @@ sub_02047E40: ; 0x02047E40
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066A1C
 	mov r0, #0
 	pop {r3, pc}
@@ -15832,7 +15832,7 @@ sub_02048218: ; 0x02048218
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r0, sp, #0xc
 	bl GF_RTC_CopyDate
 	add r0, r4, #0
@@ -15956,7 +15956,7 @@ sub_020482F4: ; 0x020482F4
 	mov r6, #0
 	ldr r0, [r0, #0xc]
 	add r4, r6, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r0, sp, #4
 	bl GF_RTC_CopyDate
 	add r5, #0x80
@@ -16672,7 +16672,7 @@ sub_020488A4: ; 0x020488A4
 	ldr r0, [r4]
 	ldrb r5, [r1]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066AF0
 	mov r1, #4
 	bl sub_02048880
@@ -16710,7 +16710,7 @@ sub_020488F4: ; 0x020488F4
 	ldr r0, [r4]
 	ldrb r5, [r1]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066B00
 	mov r1, #4
 	bl sub_02048880
@@ -16748,7 +16748,7 @@ sub_02048944: ; 0x02048944
 	ldr r0, [r4]
 	ldrb r5, [r1]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066B28
 	mov r1, #4
 	bl sub_02048880
@@ -17305,7 +17305,7 @@ sub_02048DBC: ; 0x02048DBC
 	ldr r0, [r5]
 	ldrb r4, [r1]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066B28
 	add r2, r0, #0
 	ldr r0, [r6]
@@ -17446,7 +17446,7 @@ sub_02048EE0: ; 0x02048EE0
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -17651,7 +17651,7 @@ sub_0204908C: ; 0x0204908C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066CF4
 	mov r0, #0
 	pop {r3, pc}
@@ -18470,12 +18470,12 @@ sub_02049648: ; 0x02049648
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #1
 	bne _020496BE
 	ldr r0, [r7, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066AD0
 	str r0, [sp, #0x18]
 _020496BE:
@@ -20567,7 +20567,7 @@ sub_0204A6A8: ; 0x0204A6A8
 	mov r0, #0
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020667E0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -20577,7 +20577,7 @@ sub_0204A6A8: ; 0x0204A6A8
 sub_0204A6E8: ; 0x0204A6E8
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020667F0
 	pop {r3, pc}
 	.balign 4, 0
@@ -20910,7 +20910,7 @@ _0204A972:
 	cmp r1, #6
 	bne _0204A9A6
 	add r0, r6, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066E48
 	b _0204A9B8
 _0204A9A6:
@@ -23874,7 +23874,7 @@ sub_0204BFF0: ; 0x0204BFF0
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	str r0, [sp, #0xc]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -24345,7 +24345,7 @@ sub_0204C3E4: ; 0x0204C3E4
 	cmp r4, r0
 	bne _0204C410
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #0
 	bl sub_02066B9C
 _0204C410:
@@ -25038,7 +25038,7 @@ sub_0204C874: ; 0x0204C874
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -26027,7 +26027,7 @@ sub_0204D088: ; 0x0204D088
 	ldr r0, [r0]
 	ldr r0, [r0, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -26814,7 +26814,7 @@ sub_0204D708: ; 0x0204D708
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r7, r0, #0
 	ldr r0, [r6, #0xc]
 	bl SavArray_PlayerParty_get
@@ -28760,7 +28760,7 @@ sub_0204E71C: ; 0x0204E71C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020665F8
 	strh r0, [r4]
 	mov r0, #0
@@ -28796,7 +28796,7 @@ sub_0204E774: ; 0x0204E774
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020665EC
 	mov r0, #0
 	pop {r3, pc}
@@ -28816,7 +28816,7 @@ sub_0204E788: ; 0x0204E788
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	strh r0, [r4]
 	mov r0, #0
@@ -28830,7 +28830,7 @@ sub_0204E7B4: ; 0x0204E7B4
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066624
 	mov r0, #0
 	pop {r3, pc}
@@ -28842,7 +28842,7 @@ sub_0204E7C8: ; 0x0204E7C8
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066634
 	mov r0, #0
 	pop {r3, pc}
@@ -28862,7 +28862,7 @@ sub_0204E7DC: ; 0x0204E7DC
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020666B4
 	strh r0, [r4]
 	mov r0, #0
@@ -28882,14 +28882,14 @@ sub_0204E808: ; 0x0204E808
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066694
 	b _0204E834
 _0204E826:
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020666A4
 _0204E834:
 	mov r0, #0
@@ -28910,7 +28910,7 @@ sub_0204E838: ; 0x0204E838
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066684
 	strh r0, [r4]
 	mov r0, #0
@@ -28924,7 +28924,7 @@ sub_0204E864: ; 0x0204E864
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066664
 	mov r0, #0
 	pop {r3, pc}
@@ -28936,7 +28936,7 @@ sub_0204E878: ; 0x0204E878
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066674
 	mov r0, #0
 	pop {r3, pc}
@@ -28956,7 +28956,7 @@ sub_0204E88C: ; 0x0204E88C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066614
 	strh r0, [r4]
 	mov r0, #0
@@ -28970,7 +28970,7 @@ sub_0204E8B8: ; 0x0204E8B8
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066604
 	mov r0, #0
 	pop {r3, pc}
@@ -28983,7 +28983,7 @@ sub_0204E8CC: ; 0x0204E8CC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r2, [r5, #8]
 	add r4, r0, #0
 	add r1, r2, #1
@@ -29031,7 +29031,7 @@ sub_0204E928: ; 0x0204E928
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r2, [r5, #8]
 	add r4, r0, #0
 	add r1, r2, #1
@@ -29077,7 +29077,7 @@ sub_0204E980: ; 0x0204E980
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r2, [r5, #8]
 	add r4, r0, #0
 	add r1, r2, #1
@@ -32410,14 +32410,14 @@ _020503C8: .word memset
 _020503CC: .word 0x0000044C
 	thumb_func_end sub_020503C0
 
-	thumb_func_start sub_020503D0
-sub_020503D0: ; 0x020503D0
+	thumb_func_start SavArray_Flags_get
+SavArray_Flags_get: ; 0x020503D0
 	ldr r3, _020503D8 ; =SavArray_get
 	mov r1, #4
 	bx r3
 	nop
 _020503D8: .word SavArray_get
-	thumb_func_end sub_020503D0
+	thumb_func_end SavArray_Flags_get
 
 	thumb_func_start sub_020503DC
 sub_020503DC: ; 0x020503DC
@@ -33047,7 +33047,7 @@ _02050800:
 	pop {r3, r4, r5, r6, r7, pc}
 _0205080A:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #0
 	beq _02050822
@@ -33442,7 +33442,7 @@ sub_02050B08: ; 0x02050B08
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	str r0, [sp]
 	add r0, r4, #0
 	bl sub_020517E8
@@ -33502,7 +33502,7 @@ sub_02050B90: ; 0x02050B90
 	ldr r0, [r0, #0xc]
 	add r4, r2, #0
 	add r5, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	str r0, [sp]
 	add r0, r4, #0
 	bl sub_020517E8
@@ -33634,7 +33634,7 @@ _02050C8A:
 	pop {r4, r5, r6, pc}
 _02050CBE:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #0
 	beq _02050CD6
@@ -35041,7 +35041,7 @@ sub_020517FC: ; 0x020517FC
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #2
 	mov r2, #5
 	bl sub_02066930
@@ -35203,7 +35203,7 @@ _0205193C:
 	mov r0, #0
 	mov r2, #0x34
 	str r0, [r5, #0x18]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r6, #0
 	bl sub_020744BC
 	str r0, [r5, #4]
@@ -35816,7 +35816,7 @@ _02051E14:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r7, #0
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -35831,7 +35831,7 @@ _02051E14:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066810
 	mov r1, #0x5a
 	lsl r1, r1, #2
@@ -35845,7 +35845,7 @@ _02051E14:
 	cmp r0, r1
 	bhs _02051EA8
 	add r0, r4, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066794
 	mov r1, #0x5b
 	lsl r1, r1, #2
@@ -36378,7 +36378,7 @@ sub_0205230C: ; 0x0205230C
 	ldr r0, [r6, #0xc]
 	add r5, r1, #0
 	str r2, [sp]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	ldr r0, [r6, #0xc]
 	bl sub_0202ED88
@@ -36483,7 +36483,7 @@ sub_0205239C: ; 0x0205239C
 	bl sub_020293FC
 	ldr r0, [r4, #0xc]
 	mov r6, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r7, r0, #0
 	bl sub_02066860
 	cmp r0, #0
@@ -37387,7 +37387,7 @@ _02052B20:
 	mov r1, #4
 	mov r0, #3
 	lsl r2, r1, #0xf
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r6, #0
 	add r1, r5, #0
 	bl sub_02052D84
@@ -37557,7 +37557,7 @@ _02052C86:
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r0, #4
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
 	bl OS_ResetSystem
 	add sp, #0xc
@@ -37584,7 +37584,7 @@ sub_02052CB4: ; 0x02052CB4
 	bl AllocFromHeap
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -38056,7 +38056,7 @@ _02053088:
 	bl sub_0203B16C
 _020530A6:
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	str r0, [sp]
 	add r0, r4, #0
 	add r1, r7, #0
@@ -38137,7 +38137,7 @@ _02053134:
 	mov r1, #0
 	bl sub_0202ED58
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066A2C
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -38285,7 +38285,7 @@ _02053296:
 	ldr r0, [r0]
 	bl sub_0203AFB4
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #0
 	add r5, r0, #0
 	bl sub_02066C74
@@ -38442,7 +38442,7 @@ sub_020533C0: ; 0x020533C0
 	bl sub_0203B968
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
 	bl sub_0203B5FC
@@ -38546,7 +38546,7 @@ sub_0205348C: ; 0x0205348C
 	bl sub_0205064C
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r7, r0, #0
 	add r0, r6, #0
 	bl sub_02050654
@@ -38641,7 +38641,7 @@ sub_02053550: ; 0x02053550
 	bl sub_02050650
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r0, r7, #0
 	bl sub_02050654
 	add r4, r0, #0
@@ -38746,7 +38746,7 @@ sub_02053620: ; 0x02053620
 	cmp r0, #0
 	beq _02053650
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_020533C0
@@ -42159,7 +42159,7 @@ sub_02054F60: ; 0x02054F60
 	cmp r0, #2
 	bne _02054F82
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066A3C
 	cmp r0, #0
 	bne _02054F82
@@ -42201,7 +42201,7 @@ _02054FBE:
 _02054FC4:
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r1, r4, #0
 	bl sub_020667A4
 	cmp r0, #0
@@ -42977,7 +42977,7 @@ _0205559E:
 	bl sub_02031968
 	bl sub_02031AE4
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066E94
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02055508
@@ -52437,7 +52437,7 @@ _02059DC8:
 	mov r0, #3
 	mov r1, #0x1f
 	lsl r2, r2, #6
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	add r0, r4, #0
 	bl sub_02059E1C
 	add r5, r0, #0
@@ -52964,7 +52964,7 @@ sub_0205A1D4: ; 0x0205A1D4
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0x1f
-	bl sub_0201A9C4
+	bl DestroyHeap
 _0205A1EC:
 	pop {r4, pc}
 	.balign 4, 0
@@ -54507,7 +54507,7 @@ sub_0205AC88: ; 0x0205AC88
 	ldr r0, [r0, #0x40]
 	str r0, [r4, #8]
 	mov r0, #0xb
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	mov r0, #0x57
 	bl sub_0205B3B8
 	ldr r1, _0205AD08 ; =0x000004DC
@@ -54570,7 +54570,7 @@ sub_0205AD3C: ; 0x0205AD3C
 	ldr r0, [r4, r0]
 	bl sub_0205B3CC
 	mov r0, #0x57
-	bl sub_0201A9C4
+	bl DestroyHeap
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -77167,7 +77167,7 @@ sub_020649B8: ; 0x020649B8
 	ldr r0, [r0]
 	str r0, [r5]
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	ldrh r1, [r5, #8]
 	mov r2, #1
@@ -77179,7 +77179,7 @@ sub_020649B8: ; 0x020649B8
 	orr r0, r1
 	strh r0, [r5, #8]
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020666B4
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -78827,7 +78827,7 @@ _020656A2:
 	pop {r3, r4, r5, r6, r7, pc}
 _020656B0:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020668A0
 	cmp r0, #1
 	bne _020656C2
@@ -78835,7 +78835,7 @@ _020656B0:
 	pop {r3, r4, r5, r6, r7, pc}
 _020656C2:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066870
 	cmp r0, #1
 	bne _020656D4
@@ -81946,7 +81946,7 @@ sub_02066CF4: ; 0x02066CF4
 sub_02066D10: ; 0x02066D10
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0202C854
@@ -81988,7 +81988,7 @@ _02066D5C: .word 0x00004041
 	thumb_func_start sub_02066D60
 sub_02066D60: ; 0x02066D60
 	push {r4, lr}
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	bl LCRandom
 	mov r1, #0x62
@@ -83766,7 +83766,7 @@ sub_02067A88: ; 0x02067A88
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #0
 	bl sub_020668C0
 	ldr r1, [r5, #0x20]
@@ -83785,7 +83785,7 @@ sub_02067A88: ; 0x02067A88
 	add r0, #0x7c
 	strh r1, [r0]
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066860
 	cmp r0, #0
 	bne _02067AE0
@@ -83811,10 +83811,10 @@ sub_02067AE4: ; 0x02067AE4
 	cmp r0, #1
 	beq _02067B84
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020668B0
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #0
 	bl sub_020668C0
 	ldr r1, [r5, #0x20]
@@ -83843,7 +83843,7 @@ sub_02067AE4: ; 0x02067AE4
 	cmp r0, #0
 	bne _02067B56
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	bl sub_020668E0
 	add r0, r4, #0
@@ -83880,7 +83880,7 @@ sub_02067B88: ; 0x02067B88
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066850
 	ldr r0, [r4, #0xc]
 	bl sub_0202D9C4
@@ -83894,7 +83894,7 @@ sub_02067BA4: ; 0x02067BA4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066850
 	ldr r0, [r4, #0xc]
 	bl sub_0202D9C4
@@ -83907,7 +83907,7 @@ sub_02067BA4: ; 0x02067BA4
 sub_02067BC0: ; 0x02067BC0
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066850
 	pop {r3, pc}
 	.balign 4, 0
@@ -83917,7 +83917,7 @@ sub_02067BC0: ; 0x02067BC0
 sub_02067BD0: ; 0x02067BD0
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	bl sub_02066634
 	add r0, r4, #0
@@ -84493,7 +84493,7 @@ _02068032:
 _02068040:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #1
 	bne _02068054
@@ -84502,7 +84502,7 @@ _02068040:
 _02068054:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020666B4
 	cmp r0, #1
 	bne _02068068
@@ -84511,13 +84511,13 @@ _02068054:
 _02068068:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066860
 	cmp r0, #1
 	beq _02068088
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020668A0
 	cmp r0, #1
 	bne _0206808C
@@ -84607,7 +84607,7 @@ _02068116:
 _02068122:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #1
 	bne _02068136
@@ -84616,7 +84616,7 @@ _02068122:
 _02068136:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020666B4
 	cmp r0, #1
 	bne _0206814A
@@ -84994,7 +84994,7 @@ _020683F6:
 _02068402:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #1
 	bne _02068416
@@ -85003,7 +85003,7 @@ _02068402:
 _02068416:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020666B4
 	cmp r0, #1
 	bne _0206842A
@@ -85188,7 +85188,7 @@ _02068566:
 _02068574:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #1
 	bne _02068588
@@ -85197,7 +85197,7 @@ _02068574:
 _02068588:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020666B4
 	cmp r0, #1
 	bne _0206859C
@@ -85206,13 +85206,13 @@ _02068588:
 _0206859C:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066860
 	cmp r0, #1
 	beq _020685BC
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020668A0
 	cmp r0, #1
 	bne _020685C0
@@ -85328,7 +85328,7 @@ _0206868A:
 _0206868E:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #1
 	bne _020686A2
@@ -85337,7 +85337,7 @@ _0206868E:
 _020686A2:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020666B4
 	cmp r0, #1
 	bne _020686B6
@@ -85431,7 +85431,7 @@ sub_02068750: ; 0x02068750
 	pop {r3, pc}
 _02068760:
 	ldr r0, [r1, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020668A0
 	cmp r0, #1
 	bne _02068772
@@ -86651,7 +86651,7 @@ sub_02068F98: ; 0x02068F98
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r1, r0, #0
 	add r0, r4, #0
 	add r2, r6, #0
@@ -86745,7 +86745,7 @@ sub_02068FC8: ; 0x02068FC8
 	add r2, sp, #0x78
 	bl sub_02055640
 	ldr r0, [r6, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066614
 	add r1, sp, #0x78
 	str r1, [sp]
@@ -86910,7 +86910,7 @@ sub_020691E8: ; 0x020691E8
 	add r7, r0, #0
 	bl Sav2_GameStats_get
 	add r0, r7, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r6, r0, #0
 	add r0, r7, #0
 	bl sub_0203107C
@@ -87768,7 +87768,7 @@ sub_0206983C: ; 0x0206983C
 	add r1, r2, #0
 	add r0, #0x14
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r5, #0
 	ldr r1, [r5, #0xc]
 	add r0, #0x14
@@ -92442,7 +92442,7 @@ sub_0206BC2C: ; 0x0206BC2C
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	ldr r0, [r4]
 	bl sub_0206BD00
 	mov r0, #0
@@ -92538,7 +92538,7 @@ sub_0206BCEC: ; 0x0206BCEC
 	mov r0, #0xb
 	mov r1, #0x14
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	bl sub_0206BCD4
 	pop {r3, pc}
 	thumb_func_end sub_0206BCEC
@@ -92548,7 +92548,7 @@ sub_0206BD00: ; 0x0206BD00
 	push {r3, lr}
 	bl FreeToHeap
 	mov r0, #0x14
-	bl sub_0201A9C4
+	bl DestroyHeap
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_0206BD00
@@ -96400,7 +96400,7 @@ sub_0206DB34: ; 0x0206DB34
 	add r4, r0, #0
 	beq _0206DB56
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066870
 	cmp r0, #0
 	beq _0206DB56

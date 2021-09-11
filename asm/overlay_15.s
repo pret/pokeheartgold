@@ -33,17 +33,17 @@ ov15_021F9380: ; 0x021F9380
 	mov r0, #3
 	mov r1, #6
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021F95F4 ; =0x0000094C
 	add r0, r5, #0
 	mov r2, #6
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021F95F4 ; =0x0000094C
 	mov r1, #0
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -279,7 +279,7 @@ _021F9604: .word 0x04000304
 ov15_021F9608: ; 0x021F9608
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #0x25
@@ -564,7 +564,7 @@ _021F9810:
 ov15_021F982C: ; 0x021F982C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov15_021FDC6C
 	add r0, r4, #0
@@ -622,13 +622,13 @@ ov15_021F982C: ; 0x021F982C
 	ldr r0, [r4, r0]
 	bl NARC_dtor
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	bl sub_02004B10
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
 	mov r0, #6
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -9280,7 +9280,7 @@ ov15_021FDD70: ; 0x021FDD70
 	mov r1, #6
 	add r0, r7, r0
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	ldr r0, _021FDF18 ; =0x0000081C
 	add r4, r7, r0
 	ldr r0, _021FDF1C ; =0x00000615

@@ -116,7 +116,7 @@ _02037D48:
 	cmp r0, #0
 	beq _02037D56
 	mov r0, #0x30
-	bl sub_0201A9C4
+	bl DestroyHeap
 _02037D56:
 	bl sub_0203A914
 	bl sub_02034DE0
@@ -124,7 +124,7 @@ _02037D56:
 	ldr r0, [r0]
 	bl FreeToHeap
 	mov r0, #0xf
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _02037D74 ; =0x021D4150
 	mov r1, #0
 	str r1, [r0]
@@ -162,7 +162,7 @@ sub_02037D8C: ; 0x02037D8C
 	ldr r2, _02037DC8 ; =0x00007080
 	mov r0, #3
 	mov r1, #0xf
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	add r0, r6, #0
 	add r1, r7, #0
 	bl sub_02037C98
@@ -196,7 +196,7 @@ sub_02037DD4: ; 0x02037DD4
 	ldr r2, _02037E10 ; =0x00007080
 	mov r0, #3
 	mov r1, #0xf
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	add r0, r6, #0
 	add r1, r7, #0
 	bl sub_02037C98
@@ -373,7 +373,7 @@ sub_02037F18: ; 0x02037F18
 	ldr r2, _02037F5C ; =0x00007080
 	mov r0, #3
 	mov r1, #0xf
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	cmp r0, #0
 	bne _02037F36
 	bl sub_020399EC
@@ -652,7 +652,7 @@ sub_02038114: ; 0x02038114
 	ldr r2, _02038140 ; =0x00007080
 	mov r0, #3
 	mov r1, #0xf
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02037C98
@@ -677,7 +677,7 @@ sub_02038148: ; 0x02038148
 	ldr r2, _02038174 ; =0x00007080
 	mov r0, #3
 	mov r1, #0xf
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02037C98
@@ -2260,7 +2260,7 @@ sub_02038D28: ; 0x02038D28
 	mov r0, #3
 	mov r1, #0xf
 	lsl r2, r2, #0xc
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	add r0, r4, #0
 	mov r1, #0x11
 	bl sub_02037C98
@@ -3184,7 +3184,7 @@ sub_02039418: ; 0x02039418
 	add r2, r1, #0
 	mov r0, #3
 	add r2, #0xf1
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	mov r0, #0xf
 	mov r1, #0x68
 	bl AllocFromHeap
@@ -3233,7 +3233,7 @@ sub_0203946C: ; 0x0203946C
 	mov r1, #0
 	str r1, [r0]
 	mov r0, #0xf
-	bl sub_0201A9C4
+	bl DestroyHeap
 _02039498:
 	pop {r3, pc}
 	nop
@@ -3252,7 +3252,7 @@ sub_020394A0: ; 0x020394A0
 	add r2, r1, #0
 	mov r0, #3
 	add r2, #0xf1
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	mov r0, #0xf
 	mov r1, #0x68
 	bl AllocFromHeap
@@ -3301,7 +3301,7 @@ sub_020394F4: ; 0x020394F4
 	mov r1, #0
 	str r1, [r0]
 	mov r0, #0xf
-	bl sub_0201A9C4
+	bl DestroyHeap
 _02039520:
 	pop {r3, pc}
 	nop
@@ -3320,7 +3320,7 @@ sub_02039528: ; 0x02039528
 	add r2, r1, #0
 	mov r0, #3
 	add r2, #0xf1
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	mov r0, #0xf
 	mov r1, #0x68
 	bl AllocFromHeap
@@ -3369,7 +3369,7 @@ sub_0203957C: ; 0x0203957C
 	mov r1, #0
 	str r1, [r0]
 	mov r0, #0xf
-	bl sub_0201A9C4
+	bl DestroyHeap
 _020395A8:
 	pop {r3, pc}
 	nop
@@ -3502,7 +3502,7 @@ sub_02039694: ; 0x02039694
 	mov r0, #3
 	mov r1, #0x30
 	lsl r2, r2, #0xa
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	mov r0, #1
 	add r1, r0, #0
 	lsl r2, r0, #9
@@ -3556,7 +3556,7 @@ _02039712:
 	ldr r2, _02039760 ; =0x00007080
 	mov r0, #3
 	mov r1, #0xf
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	add r0, r5, #0
 	mov r1, #0x17
 	bl sub_02037C98
@@ -3604,7 +3604,7 @@ sub_0203976C: ; 0x0203976C
 	ldr r2, _020397BC ; =0x00007080
 	mov r0, #3
 	mov r1, #0xf
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	add r0, r5, #0
 	mov r1, #0x21
 	bl sub_02037C98
@@ -4200,7 +4200,7 @@ sub_02039BA0: ; 0x02039BA0
 	mov r1, #0x30
 	mov r0, #3
 	lsl r2, r1, #0xd
-	bl sub_0201A91C
+	bl CreateHeapAtEnd
 	mov r0, #1
 	add r1, r0, #0
 	lsl r2, r0, #9

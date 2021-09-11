@@ -77,7 +77,7 @@ _02025484: .word sub_02025438
 sub_02025488: ; 0x02025488
 	push {r4, r5, lr}
 	sub sp, #0xc
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020254EC ; =0x0400010C
 	add r3, sp, #0
 	ldrh r1, [r1]
@@ -109,7 +109,7 @@ sub_02025488: ; 0x02025488
 	str r2, [sp, #4]
 	str r3, [sp, #8]
 _020254CC:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r2, [sp, #4]
 	ldr r1, [sp, #8]
 	lsr r0, r2, #0x10

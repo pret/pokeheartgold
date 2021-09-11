@@ -17,7 +17,7 @@ sub_0202CA2C: ; 0x0202CA2C
 	ldr r2, _0202CA40 ; =0x00000FF8
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r0, #0x1a
 	bl sub_0202893C
 	pop {r3, pc}

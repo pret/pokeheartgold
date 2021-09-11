@@ -19,7 +19,7 @@ sub_0202CE38: ; 0x0202CE38
 	mov r0, #0
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}

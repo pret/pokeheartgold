@@ -11,11 +11,11 @@ ov56_021E5C20: ; 0x021E5C20
 	mov r0, #3
 	mov r1, #0x29
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r5, #0
 	mov r1, #0xc4
 	mov r2, #0x29
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0xc4
 	add r4, r0, #0
@@ -23,7 +23,7 @@ ov56_021E5C20: ; 0x021E5C20
 	mov r0, #0x29
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4, #0x1c]
 	ldrh r0, [r0]
 	ldr r1, _021E5C98 ; =0x0000FFFF
@@ -64,7 +64,7 @@ _021E5C98: .word 0x0000FFFF
 	thumb_func_start ov56_021E5C9C
 ov56_021E5C9C: ; 0x021E5C9C
 	push {r3, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	bl ov56_021E6228
 	cmp r0, #0
 	beq _021E5CAE
@@ -80,7 +80,7 @@ _021E5CAE:
 ov56_021E5CB4: ; 0x021E5CB4
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
@@ -90,9 +90,9 @@ ov56_021E5CB4: ; 0x021E5CB4
 	ldr r5, [r4]
 	bl sub_02018410
 	add r0, r6, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r5, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov56_021E5CB4

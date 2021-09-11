@@ -12,24 +12,24 @@ ov75_02246960: ; 0x02246960
 	mov r0, #3
 	mov r1, #0x73
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	mov r2, #0x57
 	mov r0, #0
 	mov r1, #0x59
 	lsl r2, r2, #4
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x47
 	add r0, r5, #0
 	lsl r1, r1, #2
 	mov r2, #0x73
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x47
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
 	bl MIi_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -63,7 +63,7 @@ _022469D4: .word 0x0000047D
 ov75_022469D8: ; 0x022469D8
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x7c]
 	cmp r0, #1
@@ -207,7 +207,7 @@ _02246AFC: .word 0x02249910
 ov75_02246B00: ; 0x02246B00
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov75_02246B98
 	mov r0, #0x45
@@ -219,11 +219,11 @@ ov75_02246B00: ; 0x02246B00
 	ldr r0, [r4, r0]
 	bl String_dtor
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x73
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0x59
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _02246B40 ; =SDK_OVERLAY_OVY_60_ID
 	ldr r1, _02246B44 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
@@ -258,7 +258,7 @@ ov75_02246B48: ; 0x02246B48
 	mov r1, #2
 	lsl r1, r1, #0x10
 	mov r2, #0
-	bl sub_020B535C
+	bl NNS_FndCreateExpHeapEx
 	str r0, [r4, #0x10]
 	bl sub_02034D8C
 	mov r0, #4
@@ -278,7 +278,7 @@ ov75_02246B98: ; 0x02246B98
 	cmp r0, #1
 	bne _02246BC4
 	ldr r0, [r4, #0x10]
-	bl sub_020B5394
+	bl NNS_FndDestroyExpHeap
 	ldr r0, [r4, #0xc]
 	bl FreeToHeap
 	bl UnloadOVY38
@@ -333,16 +333,16 @@ ov75_02246BF0: ; 0x02246BF0
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r6, r0, #0
 	ldr r0, _02246C14 ; =0x02249BE0
 	add r1, r5, #0
 	ldr r0, [r0]
 	add r2, r4, #0
-	bl sub_020B53A0
+	bl NNS_FndAllocFromExpHeapEx
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -354,14 +354,14 @@ ov75_02246C18: ; 0x02246C18
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	beq _02246C34
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r4, r0, #0
 	ldr r0, _02246C38 ; =0x02249BE0
 	add r1, r5, #0
 	ldr r0, [r0]
-	bl sub_020B5530
+	bl NNS_FndFreeToExpHeap
 	add r0, r4, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 _02246C34:
 	pop {r3, r4, r5, pc}
 	nop
@@ -763,7 +763,7 @@ ov75_02246EDC: ; 0x02246EDC
 	cmp r0, #0
 	beq _02246EF4
 	ldr r0, [r4, #4]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066950
 _02246EF4:
 	add r0, r4, #0
@@ -815,17 +815,17 @@ ov75_02246F0C: ; 0x02246F0C
 	mov r0, #3
 	mov r1, #0x74
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _02247100 ; =0x0000041C
 	add r0, r4, #0
 	mov r2, #0x74
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _02247100 ; =0x0000041C
 	mov r1, #0
 	add r5, r0, #0
 	bl MIi_CpuFill8
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r5]
 	mov r0, #0x74
 	bl sub_0201AC88
@@ -999,7 +999,7 @@ _02247114: .word ov75_02247234
 ov75_02247118: ; 0x02247118
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	cmp r1, #0
@@ -1057,7 +1057,7 @@ _0224717C: .word 0x02249B30
 ov75_02247180: ; 0x02247180
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -1110,9 +1110,9 @@ _022471A4:
 	bl sub_02002B8C
 	bl sub_0203A914
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x74
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _02247230 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -1165,25 +1165,25 @@ _02247270:
 	mov r0, #0
 	lsl r1, r1, #0x18
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x62
 	mov r2, #2
 	mov r0, #0
 	lsl r1, r1, #0x14
 	lsl r2, r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x19
 	mov r2, #1
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x66
 	mov r2, #2
 	mov r0, #0
 	lsl r1, r1, #0x14
 	lsl r2, r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r5, _02247410 ; =0x0224997C
 	add r3, sp, #0x38
 	add r2, r3, #0

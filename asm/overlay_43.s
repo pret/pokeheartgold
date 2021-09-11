@@ -14,17 +14,17 @@ ov43_02229EE0: ; 0x02229EE0
 	mov r0, #3
 	mov r1, #0x33
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _02229FA8 ; =0x000005A4
 	add r0, r5, #0
 	mov r2, #0x33
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _02229FA8 ; =0x000005A4
 	mov r1, #0
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r1, #0x9f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -100,7 +100,7 @@ ov43_02229FB4: ; 0x02229FB4
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -230,7 +230,7 @@ _0222A0A8: .word 0x0000021D
 ov43_0222A0AC: ; 0x0222A0AC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -282,9 +282,9 @@ ov43_0222A0AC: ; 0x0222A0AC
 	ldr r1, [r4, r1]
 	bl ov43_0222A2F0
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x33
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _0222A144 ; =SDK_OVERLAY_OVY_42_ID
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -6434,7 +6434,7 @@ ov43_0222D134: ; 0x0222D134
 	ldr r0, [r4, #4]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #2
 	mov r2, #0x1b
 	bl sub_02066930

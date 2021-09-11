@@ -12,12 +12,12 @@ ov96_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x5c
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0xd7
 	add r0, r5, #0
 	lsl r1, r1, #4
 	mov r2, #0x5c
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0xd7
 	mov r1, #0
 	lsl r2, r2, #4
@@ -28,7 +28,7 @@ ov96_021E5900: ; 0x021E5900
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r2, #0x7e
 	lsl r2, r2, #2
 	add r5, sp, #4
@@ -148,7 +148,7 @@ _021E5A3C: .word 0x00000614
 	thumb_func_start ov96_021E5A40
 ov96_021E5A40: ; 0x021E5A40
 	push {r3, r4, r5, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	mov r0, #0xed
 	lsl r0, r0, #2
@@ -316,10 +316,10 @@ _021E5B84: .word 0x00000D28
 ov96_021E5B88: ; 0x021E5B88
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0x5c
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
 	bne _021E5BA0
 	bl GF_AssertFail
@@ -365,9 +365,9 @@ _021E5BBC:
 	ldr r0, [r4, r0]
 	bl ov96_021E8810
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x5c
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2872,7 +2872,7 @@ _021E6DBA:
 	mov r1, #0x11
 	bl ov96_021E5FC8
 	mov r0, #0x5c
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
 	bne _021E6DD8
 	bl GF_AssertFail
@@ -3224,7 +3224,7 @@ ov96_021E7080: ; 0x021E7080
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x5c
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
 	bne _021E7092
 	bl GF_AssertFail
@@ -3846,7 +3846,7 @@ ov96_021E7544: ; 0x021E7544
 	add r2, r6, #0
 	bl sub_020321A0
 	mov r0, #0x5c
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
 	bne _021E757E
 	bl GF_AssertFail
@@ -3865,7 +3865,7 @@ ov96_021E7590: ; 0x021E7590
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x5c
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
 	bne _021E75A2
 	bl GF_AssertFail
@@ -4080,7 +4080,7 @@ ov96_021E7718: ; 0x021E7718
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	str r0, [sp]
 	mov r0, #0x1d
 	lsl r0, r0, #4
@@ -11965,7 +11965,7 @@ ov96_021EB180: ; 0x021EB180
 	ldr r1, [r4, r1]
 	mov r0, #0
 	mul r2, r3
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r2, [r4, #8]
 	mov r1, #0xc
 	ldr r0, [r4]
@@ -11979,7 +11979,7 @@ ov96_021EB180: ; 0x021EB180
 	ldr r1, [r4, r1]
 	mov r0, #0
 	mul r2, r3
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r1, r4, #0
 	ldr r0, [r4, #8]
 	ldr r2, [r4]
@@ -16176,7 +16176,7 @@ _021ED1FC:
 	mov r0, #0x5c
 	mov r1, #0x87
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r0, _021ED46C ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	bl HandleLoadOverlay
@@ -16506,7 +16506,7 @@ ov96_021ED48C: ; 0x021ED48C
 	ldr r0, _021ED520 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #0x87
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -20081,7 +20081,7 @@ ov96_021EEFAC: ; 0x021EEFAC
 	mov r1, #0x9f
 	mov r0, #0x5c
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -20164,7 +20164,7 @@ ov96_021EF05C: ; 0x021EF05C
 	add r0, r5, #0
 	bl ov96_021E5DAC
 	mov r0, #0x9f
-	bl sub_0201A9C4
+	bl DestroyHeap
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov96_021EF05C
 
@@ -20355,7 +20355,7 @@ _021EF1EA:
 	ldr r0, _021EF238 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #0x88
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -20435,7 +20435,7 @@ ov96_021EF2A0: ; 0x021EF2A0
 ov96_021EF2AC: ; 0x021EF2AC
 	push {r3, lr}
 	bl ov96_021E5D60
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #0xef
 	bl sub_020503DC
 	pop {r3, pc}
@@ -20451,7 +20451,7 @@ ov96_021EF2C0: ; 0x021EF2C0
 	mov r0, #0x5c
 	mov r1, #0x88
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r0, _021EF390 ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	mov r6, #0x88
@@ -22236,7 +22236,7 @@ _021F013C:
 	mov r0, #0x5c
 	mov r1, #0x8c
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -23232,7 +23232,7 @@ ov96_021F095C: ; 0x021F095C
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x8c
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -26430,7 +26430,7 @@ _021F23CE:
 	mov r0, #0
 	add r1, sp, #0x10c
 	lsl r2, r2, #6
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r0, #0
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x14]
@@ -32268,7 +32268,7 @@ _021F504A:
 	mov r0, #0x5c
 	mov r1, #0x8f
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -32907,7 +32907,7 @@ _021F5598:
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x8f
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -37407,7 +37407,7 @@ _021F7964:
 	mov r0, #0x5c
 	mov r1, #0x89
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -37783,7 +37783,7 @@ _021F7CB6:
 	strb r1, [r0, #9]
 	bl sub_02022D3C
 	mov r0, #0x89
-	bl sub_0201A9C4
+	bl DestroyHeap
 	bl sub_0203A914
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -40868,7 +40868,7 @@ _021F94DE:
 	mov r0, #0x5c
 	mov r1, #0x8a
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -41917,7 +41917,7 @@ ov96_021F9D58: ; 0x021F9D58
 	strb r1, [r0, #9]
 	bl sub_02022D3C
 	mov r0, #0x8a
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -47215,7 +47215,7 @@ _021FC79C:
 	mov r0, #0x5c
 	mov r1, #0x90
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -47858,7 +47858,7 @@ _021FCD4A:
 	b _021FCD68
 _021FCD52:
 	mov r0, #0x5c
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
 	bne _021FCD60
 	bl GF_AssertFail
@@ -48025,7 +48025,7 @@ ov96_021FCE10: ; 0x021FCE10
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x90
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -57031,7 +57031,7 @@ _02201588:
 	mov r0, #0x5c
 	mov r1, #0x92
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -57629,7 +57629,7 @@ _02201AE2:
 	cmp r0, #0
 	beq _02201AFE
 	mov r0, #0x5c
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
 	bne _02201AF8
 	bl GF_AssertFail
@@ -57793,7 +57793,7 @@ _02201BF0:
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x92
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -63177,7 +63177,7 @@ _02204820:
 	mov r0, #0x5c
 	mov r1, #0x8b
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -63952,7 +63952,7 @@ ov96_02204E58: ; 0x02204E58
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x8b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -64564,7 +64564,7 @@ _02205408:
 	ldr r0, [sp, #0x18]
 	bl ov96_0220764C
 	mov r0, #0x5c
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
 	bne _0220541C
 	bl GF_AssertFail
@@ -72862,7 +72862,7 @@ _0220947C:
 	mov r0, #0x5c
 	mov r1, #0x8d
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -73262,7 +73262,7 @@ _022097CA:
 	strb r1, [r0, #9]
 	bl sub_02022D3C
 	mov r0, #0x8d
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -83092,7 +83092,7 @@ _0220E41C:
 	mov r0, #0x5c
 	mov r1, #0x8e
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -83379,7 +83379,7 @@ ov96_0220E670: ; 0x0220E670
 	strb r1, [r0, #9]
 	bl sub_02022D3C
 	mov r0, #0x8e
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -88347,7 +88347,7 @@ _02210CCC:
 	mov r0, #0x5c
 	mov r1, #0x93
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -89568,7 +89568,7 @@ _0221172E:
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x93
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -98444,7 +98444,7 @@ _02215AF2:
 	mov r0, #0x5c
 	mov r1, #0x91
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -98735,7 +98735,7 @@ ov96_02215D4C: ; 0x02215D4C
 	strb r1, [r0, #9]
 	bl sub_02022D3C
 	mov r0, #0x91
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop

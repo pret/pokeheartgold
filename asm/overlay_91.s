@@ -7,16 +7,16 @@
 ov91_0225C540: ; 0x0225C540
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x6a
 	lsl r2, r0, #0x11
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0x88
 	mov r2, #0x6a
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x88
 	add r4, r0, #0
@@ -45,10 +45,10 @@ ov91_0225C58C: ; 0x0225C58C
 	sub sp, #0x28
 	add r6, r0, #0
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #8
@@ -585,10 +585,10 @@ ov91_0225C9EC: ; 0x0225C9EC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0225CA0A
@@ -603,9 +603,9 @@ _0225CA0A:
 	add r0, r6, #0
 	bl ov91_0225CC38
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x6a
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
 	mov r1, #1
 	bl sub_020398D4
@@ -6390,7 +6390,7 @@ ov91_0225F508: ; 0x0225F508
 	mov r2, #0x20
 	add r0, r5, r0
 	add r4, r1, #0
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	bl ov91_0225F414
 	ldr r0, _0225F63C ; =0x00001AB4
 	ldr r1, [r5, #0x10]

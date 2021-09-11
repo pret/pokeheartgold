@@ -38,7 +38,7 @@ _021E5916:
 	mov r0, #3
 	mov r1, #0x32
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0x54
 	mov r1, #0x32
 	bl NARC_ctor
@@ -46,7 +46,7 @@ _021E5916:
 	ldr r1, _021E5A9C ; =0x00004A8C
 	add r0, r7, #0
 	mov r2, #0x32
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E5A9C ; =0x00004A8C
 	mov r1, #0
 	add r4, r0, #0
@@ -55,7 +55,7 @@ _021E5916:
 	bl sub_0201AC88
 	str r0, [r4]
 	add r0, r7, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4, #8]
 	ldr r1, [r0]
 	ldr r0, _021E5AA0 ; =0x00004A0C
@@ -161,7 +161,7 @@ _021E5A54:
 	str r0, [r5]
 	b _021E5A8E
 _021E5A80:
-	bl sub_02007290
+	bl OverlayManager_GetData
 	mov r0, #0
 	str r0, [r5]
 	add sp, #0xc
@@ -187,7 +187,7 @@ _021E5AB4: .word ov73_021E5C74
 ov73_021E5AB8: ; 0x021E5AB8
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl sub_0203769C
 	cmp r0, #0
@@ -306,7 +306,7 @@ _021E5BA8: .word 0x00010300
 ov73_021E5BAC: ; 0x021E5BAC
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r6, r0, #0
 	ldr r0, [r6, #0x20]
 	bl sub_0200E390
@@ -362,7 +362,7 @@ _021E5BD8:
 	add r0, r6, #0
 	bl ov73_021E5ED4
 	ldr r0, [sp]
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	ldr r2, _021E5C70 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -374,7 +374,7 @@ _021E5BD8:
 	add r1, r0, #0
 	bl sub_0201A0FC
 	mov r0, #0x32
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -4802,11 +4802,11 @@ _021E7E62:
 	mov r0, #3
 	mov r1, #0x96
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E7F88 ; =0x000012CC
 	add r0, r6, #0
 	mov r2, #0x96
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E7F88 ; =0x000012CC
 	mov r1, #0
 	add r4, r0, #0
@@ -4876,7 +4876,7 @@ _021E7E62:
 	mov r1, #2
 	lsl r1, r1, #0x10
 	mov r2, #0
-	bl sub_020B535C
+	bl NNS_FndCreateExpHeapEx
 	str r0, [r4, #0x28]
 	ldr r1, _021E7FAC ; =0x0000047D
 	mov r0, #0xb
@@ -4924,7 +4924,7 @@ _021E7FB4: .word 0xFFFF7FFF
 ov73_021E7FB8: ; 0x021E7FB8
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	bl ov00_021ECB40
 	bl ov72_022378DC
@@ -5028,7 +5028,7 @@ _021E8088: .word 0x00000BF8
 ov73_021E808C: ; 0x021E808C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
 	bl FreeToHeap
@@ -5055,12 +5055,12 @@ ov73_021E808C: ; 0x021E808C
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
 	mov r0, #0x96
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5114,7 +5114,7 @@ ov73_021E8148: ; 0x021E8148
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r1, #0
 	str r0, [r4]
 	add r0, r4, #0
@@ -5455,16 +5455,16 @@ ov73_021E83F4: ; 0x021E83F4
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r6, r0, #0
 	ldr r0, _021E8418 ; =0x021EA940
 	add r1, r5, #0
 	ldr r0, [r0, #4]
 	add r2, r4, #0
-	bl sub_020B53A0
+	bl NNS_FndAllocFromExpHeapEx
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5476,14 +5476,14 @@ ov73_021E841C: ; 0x021E841C
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	beq _021E8438
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r4, r0, #0
 	ldr r0, _021E843C ; =0x021EA940
 	add r1, r5, #0
 	ldr r0, [r0, #4]
-	bl sub_020B5530
+	bl NNS_FndFreeToExpHeap
 	add r0, r4, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 _021E8438:
 	pop {r3, r4, r5, pc}
 	nop

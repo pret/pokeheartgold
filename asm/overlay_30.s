@@ -12,7 +12,7 @@ ov30_0225D520: ; 0x0225D520
 	str r2, [sp]
 	mov r1, #8
 	lsl r2, r0, #0xf
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	bl sub_020CDA64
 	mov r0, #0x80
@@ -179,7 +179,7 @@ _0225D69E:
 	mov r1, #4
 	bl sub_0201BB4C
 	mov r0, #8
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _0225D6F8 ; =ov30_0225DC18
 	blx ov123_0225F610
 	cmp r0, #0

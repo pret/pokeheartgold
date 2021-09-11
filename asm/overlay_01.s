@@ -27,7 +27,7 @@ ov01_021E5924: ; 0x021E5924
 	mov r1, #0
 	ldr r5, _021E5B9C ; =0x00DCE6A1
 	str r1, [sp, #4]
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r1, [r6]
 	add r4, r0, #0
 	cmp r1, #3
@@ -126,7 +126,7 @@ _021E59F0:
 	mul r7, r1
 	mov r0, #3
 	mov r1, #4
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _021E5A12
@@ -153,7 +153,7 @@ _021E5A12:
 	bl _u32_div_f
 	cmp r1, #0
 	beq _021E5A50
-	ldr r0, _021E5BD0 ; =0x0203E349
+	ldr r0, _021E5BD0 ; =sub_0203E348
 	mov r1, #0
 	mov r2, #0x7b
 	bl sub_0200E320
@@ -185,7 +185,7 @@ _021E5A50:
 	bl _u32_div_f
 	cmp r1, #0
 	beq _021E5AA8
-	ldr r0, _021E5BD0 ; =0x0203E349
+	ldr r0, _021E5BD0 ; =sub_0203E348
 	ldr r2, _021E5BD8 ; =0x00000315
 	mov r1, #0
 	bl sub_0200E320
@@ -282,11 +282,11 @@ _021E5B70:
 	cmp r0, #0
 	bne _021E5B8E
 	mov r2, #0xfa
-	ldr r0, _021E5BDC ; =0x02096595
+	ldr r0, _021E5BDC ; =sub_02096594
 	mov r1, #0
 	lsl r2, r2, #2
 	bl sub_0200E320
-	ldr r0, _021E5BDC ; =0x02096595
+	ldr r0, _021E5BDC ; =sub_02096594
 	ldr r2, _021E5BE0 ; =0x00000578
 	mov r1, #0
 	bl sub_0200E320
@@ -311,17 +311,17 @@ _021E5BC0: .word SDK_OVERLAY_OVY_3_ID
 _021E5BC4: .word ov01_021E66B8
 _021E5BC8: .word 0x000003A1
 _021E5BCC: .word 0x00000D69
-_021E5BD0: .word 0x0203E349
+_021E5BD0: .word sub_0203E348
 _021E5BD4: .word 0x00001079
 _021E5BD8: .word 0x00000315
-_021E5BDC: .word 0x02096595
+_021E5BDC: .word sub_02096594
 _021E5BE0: .word 0x00000578
 	thumb_func_end ov01_021E5924
 
 	thumb_func_start ov01_021E5BE4
 ov01_021E5BE4: ; 0x021E5BE4
 	push {r4, lr}
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	bl ov01_021E5ED4
 	cmp r0, #0
@@ -356,7 +356,7 @@ ov01_021E5C24: ; 0x021E5C24
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	ldr r5, _021E5E7C ; =0x002AAACF
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	ldr r0, [r4, #0x2c]
 	bl ov01_021F50F0
@@ -468,7 +468,7 @@ _021E5CFA:
 	bl _u32_div_f
 	cmp r1, #0
 	beq _021E5D34
-	ldr r0, _021E5E9C ; =0x0203E349
+	ldr r0, _021E5E9C ; =sub_0203E348
 	ldr r2, _021E5EA0 ; =0x00001EA5
 	mov r1, #0
 	bl sub_0200E320
@@ -492,7 +492,7 @@ _021E5D34:
 	bl _u32_div_f
 	cmp r1, #0
 	beq _021E5D72
-	ldr r0, _021E5E9C ; =0x0203E349
+	ldr r0, _021E5E9C ; =sub_0203E348
 	ldr r2, _021E5EA8 ; =0x000004DD
 	mov r1, #0
 	bl sub_0200E320
@@ -581,7 +581,7 @@ _021E5E12:
 	mov r0, #0
 	str r0, [r4, #4]
 	mov r0, #4
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, [r4, #0x74]
 	ldr r0, [r0]
 	lsl r0, r0, #8
@@ -609,7 +609,7 @@ _021E5E8C: .word ov01_021E66DC
 _021E5E90: .word 0x0000018D
 _021E5E94: .word ov01_021E66E0
 _021E5E98: .word 0x000008AD
-_021E5E9C: .word 0x0203E349
+_021E5E9C: .word sub_0203E348
 _021E5EA0: .word 0x00001EA5
 _021E5EA4: .word 0x000004EB
 _021E5EA8: .word 0x000004DD
@@ -730,10 +730,10 @@ _021E5F3E:
 	ldr r0, [r0, #0xc]
 	bl ov01_021EB2B8
 	add r0, r6, #0
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	cmp r6, r0
 	beq _021E5FB8
 	add r0, r5, #0
@@ -1497,7 +1497,7 @@ ov01_021E6580: ; 0x021E6580
 	cmp r5, #3
 	bne _021E65D8
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020669A4
 	cmp r0, #0
 	beq _021E65D8
@@ -1691,7 +1691,7 @@ ov01_021E66E4: ; 0x021E66E4
 	ldr r1, [r4, #0xc]
 	mov r0, #0
 	add r2, r7, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r6, #0
 	bl sub_0201F82C
 	add r1, r0, #0
@@ -1885,7 +1885,7 @@ _021E6864:
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x14
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _021E687A:
 	pop {r4, pc}
 	thumb_func_end ov01_021E683C
@@ -2256,7 +2256,7 @@ _021E6B12:
 	bl sub_0205442C
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #1
 	bne _021E6B36
@@ -2287,7 +2287,7 @@ _021E6B66:
 	lsr r0, r0, #0x1f
 	beq _021E6B86
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066674
 	add r0, r4, #0
 	bl ov01_021E7628
@@ -2310,7 +2310,7 @@ _021E6B94:
 	bl sub_0205DD94
 	add r7, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #2
 	bl sub_020668C0
 	cmp r0, #0
@@ -2990,7 +2990,7 @@ _021E7132:
 	add r2, sp, #0
 	bl ov01_021E7AB8
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020668A0
 	cmp r0, #1
 	bne _021E7172
@@ -3015,7 +3015,7 @@ _021E716C:
 _021E7172:
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B324
+	bl MapHeader_HasWildEncounters
 	cmp r0, #0
 	beq _021E718E
 	add r0, r4, #0
@@ -3535,7 +3535,7 @@ _021E758C:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75AC:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066860
 	cmp r0, #0
 	beq _021E75D6
@@ -3920,7 +3920,7 @@ ov01_021E78E4: ; 0x021E78E4
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	mov r5, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	bl sub_02066DB8
 	add r0, r0, #1
@@ -3946,7 +3946,7 @@ ov01_021E790C: ; 0x021E790C
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r6, #0
@@ -3995,7 +3995,7 @@ ov01_021E794C: ; 0x021E794C
 _021E797A:
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r4, #0
@@ -4039,7 +4039,7 @@ ov01_021E79CC: ; 0x021E79CC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066860
 	cmp r0, #0
 	bne _021E79E2
@@ -4073,7 +4073,7 @@ ov01_021E7A08: ; 0x021E7A08
 	bl sub_0202ED88
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r1, _021E7A5C ; =0x00000984
 	bl sub_020503DC
 	cmp r0, #0
@@ -4112,7 +4112,7 @@ ov01_021E7A60: ; 0x021E7A60
 	bl sub_0206DB28
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066870
 	cmp r0, #0
 	bne _021E7A7C
@@ -4518,7 +4518,7 @@ ov01_021E7D58: ; 0x021E7D58
 	ldr r0, [r5, #0xc]
 	add r7, r2, #0
 	add r4, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r6, r0, #0
 	lsl r0, r7, #3
 	add r0, r4, r0
@@ -10153,7 +10153,7 @@ ov01_021EA824: ; 0x021EA824
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x38
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -10282,7 +10282,7 @@ ov01_021EA8E0: ; 0x021EA8E0
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x48
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -21182,7 +21182,7 @@ ov01_021EFAF8: ; 0x021EFAF8
 	bne _021EFB36
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
@@ -26412,7 +26412,7 @@ _021F2134: ; jump table
 _021F2148:
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066A3C
 	cmp r0, #0
 	bne _021F2172
@@ -26785,7 +26785,7 @@ _021F2412:
 _021F2476:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066A3C
 	cmp r0, #0
 	bne _021F249A
@@ -30414,7 +30414,7 @@ ov01_021F3F50: ; 0x021F3F50
 	bl Sav2_Pokedex_get
 	add r7, r0, #0
 	ldr r0, [r6]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	str r0, [r5, #4]
 	add r0, r7, #0
 	bl sub_0202A5F4
@@ -31352,7 +31352,7 @@ ov01_021F467C: ; 0x021F467C
 	mov r0, #0
 	add r1, r7, #0
 	mov r2, #4
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r6, _021F46D8 ; =0x02206B94
 	add r3, sp, #0
 	mov r2, #5
@@ -31713,7 +31713,7 @@ _021F4944:
 	add r1, r2, r1
 	mov r2, #0x81
 	lsl r2, r2, #2
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r6, #1
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
@@ -33316,7 +33316,7 @@ ov01_021F5568: ; 0x021F5568
 	add r1, r2, r1
 	mov r2, #0x81
 	lsl r2, r2, #2
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r6, r5
 	mov r1, #1
 	add r0, #0x80
@@ -45653,7 +45653,7 @@ ov01_021FB04C: ; 0x021FB04C
 	mov r0, #0
 	mov r2, #0x18
 	add r4, r1, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r5, #0
 	mov r1, #4
 	add r2, sp, #0
@@ -46830,12 +46830,12 @@ ov01_021FB82C: ; 0x021FB82C
 	thumb_func_start ov01_021FB878
 ov01_021FB878: ; 0x021FB878
 	ldr r2, [r1, #0x14]
-	ldr r3, _021FB884 ; =sub_0201AC38
+	ldr r3, _021FB884 ; =ReallocFromHeap
 	add r1, r1, r2
 	sub r1, r1, r0
 	bx r3
 	nop
-_021FB884: .word sub_0201AC38
+_021FB884: .word ReallocFromHeap
 	thumb_func_end ov01_021FB878
 
 	thumb_func_start ov01_021FB888
@@ -48385,7 +48385,7 @@ _021FC3A8:
 	strh r0, [r4, #0xa]
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B324
+	bl MapHeader_HasWildEncounters
 	cmp r0, #0
 	beq _021FC3F4
 	mov r0, #0xa
@@ -48524,7 +48524,7 @@ ov01_021FC4C4: ; 0x021FC4C4
 	str r0, [sp]
 	add r7, r1, #0
 	str r3, [sp, #4]
-	bl sub_0201A910
+	bl CreateHeap
 	cmp r0, #1
 	beq _021FC4E6
 	bl GF_AssertFail
@@ -48583,7 +48583,7 @@ _021FC542:
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021FC520
@@ -50178,7 +50178,7 @@ ov01_021FD064: ; 0x021FD064
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #0x86
@@ -60290,13 +60290,13 @@ ov01_02201D1C: ; 0x02201D1C
 	mov r1, #2
 	bl sub_0203ED24
 	str r0, [r4]
-	ldr r1, _02201D48 ; =0x02042975
+	ldr r1, _02201D48 ; =sub_02042974
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02201D48: .word 0x02042975
+_02201D48: .word sub_02042974
 	thumb_func_end ov01_02201D1C
 
 	thumb_func_start ov01_02201D4C
@@ -60330,13 +60330,13 @@ ov01_02201D4C: ; 0x02201D4C
 	add r1, r6, #0
 	bl sub_0203ED80
 	str r0, [r4]
-	ldr r1, _02201DA0 ; =0x02042975
+	ldr r1, _02201DA0 ; =sub_02042974
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
-_02201DA0: .word 0x02042975
+_02201DA0: .word sub_02042974
 	thumb_func_end ov01_02201D4C
 
 	thumb_func_start ov01_02201DA4
@@ -60952,7 +60952,7 @@ _02202276:
 	ldr r0, [r0]
 	ldr r0, [r0, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r1, r0, #0
 	mov r0, #0
 	bl sub_02017FE4
@@ -61162,13 +61162,13 @@ ov01_02202430: ; 0x02202430
 	ldr r0, [r0]
 	bl sub_0203FA38
 	str r0, [r7]
-	ldr r1, _0220247C ; =0x02042975
+	ldr r1, _0220247C ; =sub_02042974
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0220247C: .word 0x02042975
+_0220247C: .word sub_02042974
 	thumb_func_end ov01_02202430
 
 	thumb_func_start ov01_02202480
@@ -61265,7 +61265,7 @@ ov01_02202510: ; 0x02202510
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066ECC
 	mov r1, #0x1e
 	bl _s32_div_f
@@ -62859,7 +62859,7 @@ ov01_022031C0: ; 0x022031C0
 	mov r1, #4
 	mov r2, #0x20
 	str r5, [r4]
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	bl ov01_022031F8
 	add r0, r4, #0
@@ -64955,7 +64955,7 @@ ov01_022041D8: ; 0x022041D8
 	str r1, [r4, #0x1c]
 	add r1, r5, #0
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	lsl r6, r7, #5
 	add r0, r5, #0
 	add r1, r6, #0
@@ -67197,7 +67197,7 @@ ov01_02205218: ; 0x02205218
 	add r0, r4, #4
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0x14
 	mov r1, #0x67

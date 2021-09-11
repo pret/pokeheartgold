@@ -271,7 +271,7 @@ _020B503C:
 	sub r2, r2, r1
 	beq _020B5060
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _020B5060:
 	ldr r2, [sp, #8]
 	ldr r1, _020B5104 ; =0x00005544
@@ -490,8 +490,8 @@ _020B5314:
 _020B5358: .word 0x00004652
 	arm_func_end sub_020B526C
 
-	arm_func_start sub_020B535C
-sub_020B535C: ; 0x020B535C
+	arm_func_start NNS_FndCreateExpHeapEx
+NNS_FndCreateExpHeapEx: ; 0x020B535C
 	stmdb sp!, {r3, lr}
 	add r1, r1, r0
 	add r0, r0, #3
@@ -508,18 +508,18 @@ _020B5384:
 _020B538C:
 	bl sub_020B4F14
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020B535C
+	arm_func_end NNS_FndCreateExpHeapEx
 
-	arm_func_start sub_020B5394
-sub_020B5394: ; 0x020B5394
+	arm_func_start NNS_FndDestroyExpHeap
+NNS_FndDestroyExpHeap: ; 0x020B5394
 	ldr ip, _020B539C ; =sub_020B4E4C
 	bx ip
 	.align 2, 0
 _020B539C: .word sub_020B4E4C
-	arm_func_end sub_020B5394
+	arm_func_end NNS_FndDestroyExpHeap
 
-	arm_func_start sub_020B53A0
-sub_020B53A0: ; 0x020B53A0
+	arm_func_start NNS_FndAllocFromExpHeapEx
+NNS_FndAllocFromExpHeapEx: ; 0x020B53A0
 	stmdb sp!, {r3, lr}
 	cmp r1, #0
 	moveq r1, #1
@@ -533,10 +533,10 @@ _020B53C4:
 	rsb r2, r2, #0
 	bl sub_020B51BC
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020B53A0
+	arm_func_end NNS_FndAllocFromExpHeapEx
 
-	arm_func_start sub_020B53D0
-sub_020B53D0: ; 0x020B53D0
+	arm_func_start NNS_FndResizeForMBlockExpHeap
+NNS_FndResizeForMBlockExpHeap: ; 0x020B53D0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x10
 	mov r4, r1
@@ -612,7 +612,7 @@ _020B54C8:
 	beq _020B5520
 	mov r1, r6
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	b _020B5520
 _020B54F0:
 	add r0, sb, r4
@@ -633,10 +633,10 @@ _020B5520:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020B552C: .word 0x00004652
-	arm_func_end sub_020B53D0
+	arm_func_end NNS_FndResizeForMBlockExpHeap
 
-	arm_func_start sub_020B5530
-sub_020B5530: ; 0x020B5530
+	arm_func_start NNS_FndFreeToExpHeap
+NNS_FndFreeToExpHeap: ; 0x020B5530
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	sub r4, r1, #0x10
@@ -652,10 +652,10 @@ sub_020B5530: ; 0x020B5530
 	bl sub_020B526C
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020B5530
+	arm_func_end NNS_FndFreeToExpHeap
 
-	arm_func_start sub_020B556C
-sub_020B556C: ; 0x020B556C
+	arm_func_start NNS_FndGetTotalFreeSizeForExpHeap
+NNS_FndGetTotalFreeSizeForExpHeap: ; 0x020B556C
 	ldr r2, [r0, #0x24]
 	mov r0, #0
 	cmp r2, #0
@@ -667,7 +667,7 @@ _020B557C:
 	cmp r2, #0
 	bne _020B557C
 	bx lr
-	arm_func_end sub_020B556C
+	arm_func_end NNS_FndGetTotalFreeSizeForExpHeap
 
 	arm_func_start sub_020B5594
 sub_020B5594: ; 0x020B5594
@@ -677,11 +677,11 @@ sub_020B5594: ; 0x020B5594
 	bx lr
 	arm_func_end sub_020B5594
 
-	arm_func_start sub_020B55A4
-sub_020B55A4: ; 0x020B55A4
+	arm_func_start NNS_FndGetSizeForMBlockExpHeap
+NNS_FndGetSizeForMBlockExpHeap: ; 0x020B55A4
 	ldr r0, [r0, #-0xc]
 	bx lr
-	arm_func_end sub_020B55A4
+	arm_func_end NNS_FndGetSizeForMBlockExpHeap
 
 	arm_func_start sub_020B55AC
 sub_020B55AC: ; 0x020B55AC
@@ -734,7 +734,7 @@ sub_020B5600: ; 0x020B5600
 	beq _020B5650
 	mov r1, r3
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _020B5650:
 	mov r0, r5
 	str r6, [r4]
@@ -761,7 +761,7 @@ sub_020B565C: ; 0x020B565C
 	beq _020B56A8
 	mov r1, r5
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _020B56A8:
 	mov r0, r5
 	str r5, [r4, #4]
@@ -949,7 +949,7 @@ sub_020B5888: ; 0x020B5888
 	beq _020B58C0
 	mov r1, r4
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _020B58C0:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
@@ -965,21 +965,21 @@ sub_020B58C8: ; 0x020B58C8
 
 	arm_func_start sub_020B58D8
 sub_020B58D8: ; 0x020B58D8
-	ldr ip, _020B58E8 ; =sub_020B53A0
+	ldr ip, _020B58E8 ; =NNS_FndAllocFromExpHeapEx
 	mov r2, r0
 	ldmib r2, {r0, r2}
 	bx ip
 	.align 2, 0
-_020B58E8: .word sub_020B53A0
+_020B58E8: .word NNS_FndAllocFromExpHeapEx
 	arm_func_end sub_020B58D8
 
 	arm_func_start sub_020B58EC
 sub_020B58EC: ; 0x020B58EC
-	ldr ip, _020B58F8 ; =sub_020B5530
+	ldr ip, _020B58F8 ; =NNS_FndFreeToExpHeap
 	ldr r0, [r0, #4]
 	bx ip
 	.align 2, 0
-_020B58F8: .word sub_020B5530
+_020B58F8: .word NNS_FndFreeToExpHeap
 	arm_func_end sub_020B58EC
 
 	arm_func_start sub_020B58FC
@@ -1060,8 +1060,8 @@ sub_020B5990: ; 0x020B5990
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020B5990
 
-	arm_func_start sub_020B59A4
-sub_020B59A4: ; 0x020B59A4
+	arm_func_start NNS_FndInitAllocatorForExpHeap
+NNS_FndInitAllocatorForExpHeap: ; 0x020B59A4
 	ldr ip, _020B59B8 ; =0x02109200
 	mov r3, #0
 	str ip, [r0]
@@ -1069,7 +1069,7 @@ sub_020B59A4: ; 0x020B59A4
 	bx lr
 	.align 2, 0
 _020B59B8: .word 0x02109200
-	arm_func_end sub_020B59A4
+	arm_func_end NNS_FndInitAllocatorForExpHeap
 
 	arm_func_start sub_020B59BC
 sub_020B59BC: ; 0x020B59BC
@@ -4189,7 +4189,7 @@ _020B7F14:
 _020B7F64:
 	mov r2, r4
 	mov r0, #0xc0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	b _020B7FC8
 _020B7F74:
 	ldr r2, [r5]
@@ -11444,7 +11444,7 @@ NNS_G3dRenderObjInit: ; 0x020BE120
 	mov r1, r5
 	mov r0, #0
 	mov r2, #0x54
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r0, _020BE168 ; =_02110A20
 	ldr r1, _020BE16C ; =_02110A1C
 	ldr r2, [r0]
@@ -13581,15 +13581,15 @@ NNS_G3dDraw: ; 0x020BFCC8
 	add r1, r4, #0x3c
 	mov r0, #0
 	mov r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r1, r4, #0x44
 	mov r0, #0
 	mov r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r1, r4, #0x4c
 	mov r0, #0
 	mov r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, [r4, #8]
 	cmp r1, #0
 	beq _020BFD28
@@ -24251,7 +24251,7 @@ _020C8C80:
 	bic r0, r0, #1
 	orr r0, r0, #1
 	str r0, [sl, #0x24]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r2, #1
 	mov r0, sl
@@ -24260,7 +24260,7 @@ _020C8C80:
 	bl sub_020C8EA8
 	mov r0, r4
 	str fp, [sl, #0x2c]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -24486,13 +24486,13 @@ sub_020C8FA4: ; 0x020C8FA4
 	beq _020C8FF4
 	mov r5, #1
 _020C8FCC:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r6, r0
 	mov r0, r4
 	mov r1, r5
 	bl sub_020C8EA8
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, [r4, #0x38]
 	cmp r0, #0
 	bne _020C8FCC
@@ -24716,11 +24716,11 @@ sub_020C927C: ; 0x020C927C
 	mov r0, #0
 	ldr r2, [r4, #0x14]
 	str r0, [r4, #0x1c]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4, #0x14]
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x14]
 	bl DC_FlushRange
@@ -26190,7 +26190,7 @@ sub_020CA578: ; 0x020CA578
 	mov r7, r0
 	mov r6, r2
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r5, r0
 	mov r0, r4
 	bl sub_020C961C
@@ -26206,7 +26206,7 @@ _020CA5BC:
 	mov r0, r4
 	bl sub_020C961C
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020CA578
 
@@ -26826,7 +26826,7 @@ sub_020CADF0: ; 0x020CADF0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r0, r8
 	mov r1, #0
@@ -26852,7 +26852,7 @@ _020CAE48:
 	bne _020CAE18
 _020CAE54:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_020CADF0
 
@@ -26860,13 +26860,13 @@ _020CAE54:
 sub_020CAE60: ; 0x020CAE60
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	ldr r0, _020CAE88 ; =0x021E095C
 	mov r1, r5
 	bl sub_020B4BAC
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020CAE88: .word 0x021E095C

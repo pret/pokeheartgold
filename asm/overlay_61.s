@@ -12,11 +12,11 @@ ov61_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x2e
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E5A20 ; =0x00000598
 	add r0, r5, #0
 	mov r2, #0x2e
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E5A20 ; =0x00000598
 	add r4, r0, #0
 	mov r1, #0
@@ -26,9 +26,9 @@ ov61_021E5900: ; 0x021E5900
 	add r0, #0x20
 	mov r2, #0x20
 	str r1, [r4, #4]
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	ldr r0, [r5, #4]
 	bl sub_0202ADCC
@@ -132,7 +132,7 @@ ov61_021E5A38: ; 0x021E5A38
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x40
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	mov r6, #0
@@ -759,10 +759,10 @@ _021E5F70: .word 0x00000584
 ov61_021E5F74: ; 0x021E5F74
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r6, r0, #0
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
@@ -840,9 +840,9 @@ ov61_021E5F74: ; 0x021E5F74
 	ldr r0, [r4, #0xc]
 	bl sub_02026F54
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x2e
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

@@ -27,7 +27,7 @@ ov65_0221BE20: ; 0x0221BE20
 	ldr r2, _0221BFA4 ; =0x00070FA0
 	mov r0, #3
 	mov r1, #0x1a
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #4
 	mov r1, #0x1a
 	bl sub_02002CEC
@@ -38,7 +38,7 @@ ov65_0221BE20: ; 0x0221BE20
 	ldr r1, _0221BFA8 ; =0x000036CC
 	add r0, r6, #0
 	mov r2, #0x1a
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	add r4, r0, #0
 	ldr r2, _0221BFA8 ; =0x000036CC
 	mov r0, #0
@@ -456,7 +456,7 @@ ov65_0221C250: ; 0x0221C250
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	mov r6, #0
@@ -1813,10 +1813,10 @@ _0221CD70: .word 0x000007B4
 ov65_0221CD74: ; 0x0221CD74
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r1, [r4, #0x68]
 	str r1, [r0, #0x24]
 	add r0, r4, #0
@@ -1863,14 +1863,14 @@ ov65_0221CD74: ; 0x0221CD74
 	ldr r0, [r4, r0]
 	bl String_dtor
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
 	mov r0, #4
 	bl sub_02002DB4
 	mov r0, #0x1a
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2212,7 +2212,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, r1, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	mov r2, #6
 	ldr r0, _0221D1B0 ; =0x00000674
@@ -6764,7 +6764,7 @@ ov65_0221F5A0: ; 0x0221F5A0
 	bne _0221F62C
 _0221F614:
 	ldr r0, [r5, #0x10]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	str r0, [sp, #0x10]
 	bl sub_02066E28
 	cmp r0, #0

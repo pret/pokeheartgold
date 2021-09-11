@@ -11,17 +11,17 @@ ov14_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #9
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r5, #0
 	mov r1, #0x38
 	mov r2, #9
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x38
 	add r4, r0, #0
 	bl MIi_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4]
 	ldr r0, [r0]
 	bl sub_020270D8
@@ -56,7 +56,7 @@ ov14_021E5900: ; 0x021E5900
 ov14_021E596C: ; 0x021E596C
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r1, r4, #0
 	bl ov14_021EAF8C
 	cmp r0, #0
@@ -73,15 +73,15 @@ _021E5982:
 ov14_021E5988: ; 0x021E5988
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r1, r0, #0
 	ldr r0, [r1, #4]
 	ldrb r1, [r1, #0x1f]
 	bl sub_02073E84
 	add r0, r4, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #9
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -11413,7 +11413,7 @@ ov14_021EAFAC: ; 0x021EAFAC
 	mov r0, #3
 	mov r1, #0xa
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021EB0D8 ; =0x000088E0
 	mov r0, #0xa
 	bl AllocFromHeap
@@ -11550,7 +11550,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	ldr r0, [r4, #0x34]
 	bl FreeToHeap
 	mov r0, #0xa
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, [r4, #0x30]
 	pop {r4, pc}
 	nop

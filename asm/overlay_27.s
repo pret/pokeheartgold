@@ -13,7 +13,7 @@ ov27_02259F80: ; 0x02259F80
 	ldr r2, _0225A170 ; =0x00018D00
 	mov r0, #3
 	mov r1, #8
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	bl sub_020CDA64
 	mov r0, #0x80
@@ -340,7 +340,7 @@ _0225A246:
 	mov r1, #4
 	bl sub_0201BB4C
 	mov r0, #8
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _0225A2C4 ; =ov27_0225C24C
 	blx ov123_0225F688
 	cmp r0, #0
@@ -3700,7 +3700,7 @@ ov27_0225BD50: ; 0x0225BD50
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02067584
@@ -4400,7 +4400,7 @@ ov27_0225C250: ; 0x0225C250
 	mov r1, #8
 	lsl r2, r0, #0xf
 	str r3, [sp, #4]
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	bl sub_020CDA64
 	mov r0, #0x80
@@ -4577,7 +4577,7 @@ _0225C3C4:
 	mov r1, #4
 	bl sub_0201BB4C
 	mov r0, #8
-	bl sub_0201A9C4
+	bl DestroyHeap
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

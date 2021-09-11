@@ -22,7 +22,7 @@ ov97_0221E5D4: ; 0x0221E5D4
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	cmp r0, #5
@@ -103,7 +103,7 @@ _0221E66E:
 	cmp r0, #0
 	beq _0221E68A
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov97_0221E98C
@@ -123,7 +123,7 @@ _0221E68A:
 	thumb_func_start ov97_0221E69C
 ov97_0221E69C: ; 0x0221E69C
 	push {r4, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -150,7 +150,7 @@ ov97_0221E69C: ; 0x0221E69C
 ov97_0221E6DC: ; 0x0221E6DC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 _0221E6E6:
 	add r0, r5, #0
@@ -173,13 +173,13 @@ ov97_0221E700: ; 0x0221E700
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0x34
 	mov r2, #0x5c
 	ldr r5, [r7]
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0

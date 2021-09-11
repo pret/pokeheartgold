@@ -23,12 +23,12 @@ _021E7752:
 	mov r0, #3
 	mov r1, #0x22
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	mov r2, #0xa
 	mov r0, #3
 	mov r1, #0x23
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r5, #0
 	bl ov102_021E7888
 	ldr r0, [r0, #0x14]
@@ -39,7 +39,7 @@ _021E7752:
 	str r0, [r4]
 	b _021E77B2
 _021E778A:
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
 	bl ov102_021E9464
@@ -67,7 +67,7 @@ _021E77B2:
 	thumb_func_start ov102_021E77B8
 ov102_021E77B8: ; 0x021E77B8
 	push {r4, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, _021E77F4 ; =gMain
 	ldr r1, [r0, #0x48]
@@ -169,13 +169,13 @@ _021E7864:
 ov102_021E7868: ; 0x021E7868
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r1, r4, #0
 	bl ov102_021E7A24
 	mov r0, #0x22
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0x23
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -187,13 +187,13 @@ ov102_021E7888: ; 0x021E7888
 	mov r1, #0x7c
 	mov r2, #0x22
 	add r5, r0, #0
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x7c
 	add r4, r0, #0
 	bl MIi_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4]
 	bl sub_02090D70
 	str r0, [r4, #4]
@@ -411,7 +411,7 @@ ov102_021E7A24: ; 0x021E7A24
 	ldr r0, [r5, #0x18]
 	bl sub_020918C0
 	add r0, r4, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov102_021E7A24
 
@@ -5853,13 +5853,13 @@ ov102_021EA2B4: ; 0x021EA2B4
 	add r0, r2, r0
 	str r0, [sp, #0xc]
 _021EA2E2:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r4, r0, #0
 	add r0, sp, #0
 	bl sub_02024714
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r5, #0
 	beq _021EA30C
 	add r0, r5, #0

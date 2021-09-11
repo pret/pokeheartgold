@@ -28,17 +28,17 @@ _021E5920:
 ov50_021E5924: ; 0x021E5924
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r2, #1
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x5e
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0x14
 	mov r2, #0x5e
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x14
 	add r4, r0, #0
@@ -56,7 +56,7 @@ ov50_021E5924: ; 0x021E5924
 ov50_021E595C: ; 0x021E595C
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #4
 	bhi _021E59A0
@@ -100,15 +100,15 @@ _021E59A4:
 ov50_021E59A8: ; 0x021E59A8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	mov r1, #0
 	mov r2, #0x14
 	bl MIi_CpuFill8
 	add r0, r4, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	bl sub_02004B10
 	mov r0, #0x5e
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ov50_021E59A8

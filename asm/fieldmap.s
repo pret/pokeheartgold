@@ -1741,7 +1741,7 @@ sub_02040374: ; 0x02040374
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #1
 	lsl r1, r1, #0xe
 	cmp r4, r1
@@ -1820,7 +1820,7 @@ sub_020403FC: ; 0x020403FC
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r1, r4, #0
 	bl sub_020503DC
 	pop {r4, pc}
@@ -1832,7 +1832,7 @@ sub_02040410: ; 0x02040410
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r1, r4, #0
 	bl sub_02050408
 	pop {r4, pc}
@@ -1844,7 +1844,7 @@ sub_02040424: ; 0x02040424
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r1, r4, #0
 	bl sub_02050430
 	pop {r4, pc}
@@ -1855,7 +1855,7 @@ sub_02040424: ; 0x02040424
 sub_02040438: ; 0x02040438
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #1
 	add r4, r0, #0
 	bl sub_0205045C
@@ -1883,7 +1883,7 @@ sub_02040438: ; 0x02040438
 sub_02040470: ; 0x02040470
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #0xaa
 	lsl r1, r1, #4
 	bl sub_0205045C
@@ -1979,7 +1979,7 @@ _02040510:
 sub_02040514: ; 0x02040514
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #0x55
 	lsl r1, r1, #4
 	add r1, r4, r1
@@ -1993,7 +1993,7 @@ sub_02040514: ; 0x02040514
 sub_0204052C: ; 0x0204052C
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #0x55
 	lsl r1, r1, #4
 	add r1, r4, r1
@@ -2007,7 +2007,7 @@ sub_0204052C: ; 0x0204052C
 sub_02040544: ; 0x02040544
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #0x55
 	lsl r1, r1, #4
 	add r1, r4, r1

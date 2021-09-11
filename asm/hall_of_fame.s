@@ -13,13 +13,13 @@ _0202E0E0: .word 0x00002AB0
 
 	thumb_func_start sub_0202E0E4
 sub_0202E0E4: ; 0x0202E0E4
-	ldr r3, _0202E0F0 ; =sub_020D47EC
+	ldr r3, _0202E0F0 ; =MIi_CpuClear32
 	add r1, r0, #0
 	mov r0, #0
 	ldr r2, _0202E0F4 ; =0x00002AB0
 	bx r3
 	nop
-_0202E0F0: .word sub_020D47EC
+_0202E0F0: .word MIi_CpuClear32
 _0202E0F4: .word 0x00002AB0
 	thumb_func_end sub_0202E0E4
 

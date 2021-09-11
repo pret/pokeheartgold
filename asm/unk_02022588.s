@@ -25,7 +25,7 @@ sub_02022588: ; 0x02022588
 	mov r2, #0x28
 	str r1, [r0]
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r0, _020225E0 ; =_021D21F8
 	mov r1, #0x30
 	ldr r0, [r0]

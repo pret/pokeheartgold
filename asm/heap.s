@@ -8,74 +8,8 @@ _021D1584:
 
 	.text
 
-	thumb_func_start sub_0201A748
-sub_0201A748: ; 0x0201A748
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, _0201A76C ; =gMain
-	ldr r0, [r0, #0x74]
-	cmp r0, #0
-	beq _0201A758
-	bl GF_AssertFail
-_0201A758:
-	add r0, r4, #0
-	mov r1, #4
-	bl AllocFromHeapAtEnd
-	ldr r1, _0201A76C ; =gMain
-	str r0, [r1, #0x74]
-	ldr r1, _0201A770 ; =0x2F93A1BC
-	str r1, [r0]
-	pop {r4, pc}
-	nop
-_0201A76C: .word gMain
-_0201A770: .word 0x2F93A1BC
-	thumb_func_end sub_0201A748
-
-	thumb_func_start sub_0201A774
-sub_0201A774: ; 0x0201A774
-	push {r3, lr}
-	ldr r0, _0201A798 ; =gMain
-	ldr r0, [r0, #0x74]
-	cmp r0, #0
-	bne _0201A782
-	bl GF_AssertFail
-_0201A782:
-	ldr r0, _0201A798 ; =gMain
-	mov r2, #0
-	ldr r1, [r0, #0x74]
-	str r2, [r1]
-	ldr r0, [r0, #0x74]
-	bl FreeToHeap
-	ldr r0, _0201A798 ; =gMain
-	mov r1, #0
-	str r1, [r0, #0x74]
-	pop {r3, pc}
-	.balign 4, 0
-_0201A798: .word gMain
-	thumb_func_end sub_0201A774
-
-	thumb_func_start sub_0201A79C
-sub_0201A79C: ; 0x0201A79C
-	ldr r0, _0201A7B4 ; =gMain
-	ldr r0, [r0, #0x74]
-	cmp r0, #0
-	beq _0201A7B0
-	ldr r1, [r0]
-	ldr r0, _0201A7B8 ; =0x2F93A1BC
-	cmp r1, r0
-	bne _0201A7B0
-	mov r0, #1
-	bx lr
-_0201A7B0:
-	mov r0, #0
-	bx lr
-	.balign 4, 0
-_0201A7B4: .word gMain
-_0201A7B8: .word 0x2F93A1BC
-	thumb_func_end sub_0201A79C
-
-	thumb_func_start sub_0201A7BC
-sub_0201A7BC: ; 0x0201A7BC
+	thumb_func_start InitHeapSystem
+InitHeapSystem: ; 0x0201A7BC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -104,7 +38,7 @@ _0201A7E8:
 	mov r0, #0
 	add r1, r3, #0
 	mov r2, #4
-	bl sub_020D2CA0
+	bl OS_AllocFromArenaLo
 _0201A7F2:
 	ldr r1, [sp, #4]
 	lsl r7, r6, #1
@@ -116,7 +50,7 @@ _0201A7F2:
 	mov r0, #0
 	add r1, r6, r1
 	mov r2, #4
-	bl sub_020D2CA0
+	bl OS_AllocFromArenaLo
 	ldr r1, _0201A8E4 ; =_021D1584
 	str r0, [r1]
 	ldr r1, [sp, #4]
@@ -157,19 +91,19 @@ _0201A850:
 	ldr r1, [r5]
 	mov r0, #0
 	mov r2, #4
-	bl sub_020D2CA0
+	bl OS_AllocFromArenaLo
 	b _0201A866
 _0201A85C:
 	ldr r1, [r5]
 	mov r0, #2
 	mov r2, #4
-	bl sub_020D2D0C
+	bl OS_AllocFromArenaHi
 _0201A866:
 	cmp r0, #0
 	beq _0201A882
 	ldr r1, [r5]
 	mov r2, #0
-	bl sub_020B535C
+	bl NNS_FndCreateExpHeapEx
 	ldr r1, _0201A8E4 ; =_021D1584
 	ldr r2, [r1]
 	ldr r1, [sp]
@@ -236,10 +170,10 @@ _0201A8DE:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0201A8E4: .word _021D1584
-	thumb_func_end sub_0201A7BC
+	thumb_func_end InitHeapSystem
 
-	thumb_func_start sub_0201A8E8
-sub_0201A8E8: ; 0x0201A8E8
+	thumb_func_start FindFirstAvailableHeapHandle
+FindFirstAvailableHeapHandle: ; 0x0201A8E8
 	ldr r1, _0201A90C ; =_021D1584
 	ldrh r0, [r1, #0x16]
 	ldrh r3, [r1, #0x18]
@@ -263,35 +197,35 @@ _0201A90A:
 	bx lr
 	.balign 4, 0
 _0201A90C: .word _021D1584
-	thumb_func_end sub_0201A8E8
+	thumb_func_end FindFirstAvailableHeapHandle
 
-	thumb_func_start sub_0201A910
-sub_0201A910: ; 0x0201A910
+	thumb_func_start CreateHeap
+CreateHeap: ; 0x0201A910
 	push {r3, lr}
 	mov r3, #4
-	bl sub_0201A928
+	bl CreateHeapInternal
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201A910
+	thumb_func_end CreateHeap
 
-	thumb_func_start sub_0201A91C
-sub_0201A91C: ; 0x0201A91C
+	thumb_func_start CreateHeapAtEnd
+CreateHeapAtEnd: ; 0x0201A91C
 	push {r3, lr}
 	mov r3, #3
 	mvn r3, r3
-	bl sub_0201A928
+	bl CreateHeapInternal
 	pop {r3, pc}
-	thumb_func_end sub_0201A91C
+	thumb_func_end CreateHeapAtEnd
 
-	thumb_func_start sub_0201A928
-sub_0201A928: ; 0x0201A928
+	thumb_func_start CreateHeapInternal
+CreateHeapInternal: ; 0x0201A928
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
 	add r5, r1, #0
 	str r2, [sp]
 	add r7, r3, #0
-	bl sub_020D3A9C
+	bl OS_GetProcMode
 	cmp r0, #0x12
 	bne _0201A940
 	bl GF_AssertFail
@@ -311,18 +245,18 @@ _0201A940:
 	ldr r1, [sp]
 	add r0, r6, #0
 	add r2, r7, #0
-	bl sub_020B53A0
+	bl NNS_FndAllocFromExpHeapEx
 	str r0, [sp, #4]
 	cmp r0, #0
 	beq _0201A9AA
-	bl sub_0201A8E8
+	bl FindFirstAvailableHeapHandle
 	add r7, r0, #0
 	bmi _0201A9A4
 	ldr r0, [sp, #4]
 	ldr r1, [sp]
 	mov r2, #0
 	lsl r4, r7, #2
-	bl sub_020B535C
+	bl NNS_FndCreateExpHeapEx
 	ldr r1, _0201A9C0 ; =_021D1584
 	ldr r2, [r1]
 	str r0, [r2, r4]
@@ -360,13 +294,13 @@ _0201A9BA:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0201A9C0: .word _021D1584
-	thumb_func_end sub_0201A928
+	thumb_func_end CreateHeapInternal
 
-	thumb_func_start sub_0201A9C4
-sub_0201A9C4: ; 0x0201A9C4
+	thumb_func_start DestroyHeap
+DestroyHeap: ; 0x0201A9C4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_020D3A9C
+	bl OS_GetProcMode
 	cmp r0, #0x12
 	bne _0201A9D4
 	bl GF_AssertFail
@@ -379,7 +313,7 @@ _0201A9D4:
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _0201AA32
-	bl sub_020B5394
+	bl NNS_FndDestroyExpHeap
 	ldr r1, _0201AA34 ; =_021D1584
 	ldr r0, [r1, #0x10]
 	ldrb r0, [r0, r4]
@@ -392,7 +326,7 @@ _0201A9D4:
 	beq _0201AA06
 	cmp r1, #0
 	beq _0201AA06
-	bl sub_020B5530
+	bl NNS_FndFreeToExpHeap
 	b _0201AA0A
 _0201AA06:
 	bl GF_AssertFail
@@ -421,10 +355,10 @@ _0201AA32:
 	pop {r4, pc}
 	.balign 4, 0
 _0201AA34: .word _021D1584
-	thumb_func_end sub_0201A9C4
+	thumb_func_end DestroyHeap
 
-	thumb_func_start sub_0201AA38
-sub_0201AA38: ; 0x0201AA38
+	thumb_func_start AllocFromHeapInternal
+AllocFromHeapInternal: ; 0x0201AA38
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -434,16 +368,16 @@ sub_0201AA38: ; 0x0201AA38
 	bne _0201AA4A
 	bl GF_AssertFail
 _0201AA4A:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r4, #0x10
 	str r0, [sp]
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl sub_020B53A0
+	bl NNS_FndAllocFromExpHeapEx
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r4, #0
 	beq _0201AA78
 	ldr r1, [r4, #0xc]
@@ -457,18 +391,18 @@ _0201AA4A:
 _0201AA78:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0201AA38
+	thumb_func_end AllocFromHeapInternal
 
-	thumb_func_start sub_0201AA7C
-sub_0201AA7C: ; 0x0201AA7C
+	thumb_func_start AllocFail
+AllocFail: ; 0x0201AA7C
 	push {r3, lr}
 	bl sub_02037D78
 	cmp r0, #0
 	beq _0201AA8A
-	bl sub_02096338
+	bl PrintErrorMessageAndReset
 _0201AA8A:
 	pop {r3, pc}
-	thumb_func_end sub_0201AA7C
+	thumb_func_end AllocFail
 
 	thumb_func_start AllocFromHeap
 AllocFromHeap: ; 0x0201AA8C
@@ -486,7 +420,7 @@ AllocFromHeap: ; 0x0201AA8C
 	lsl r0, r0, #2
 	ldr r0, [r2, r0]
 	mov r2, #4
-	bl sub_0201AA38
+	bl AllocFromHeapInternal
 	add r4, r0, #0
 _0201AAAE:
 	cmp r4, #0
@@ -499,7 +433,7 @@ _0201AAAE:
 	strh r0, [r2, r1]
 	b _0201AAC4
 _0201AAC0:
-	bl sub_0201AA7C
+	bl AllocFail
 _0201AAC4:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -523,7 +457,7 @@ AllocFromHeapAtEnd: ; 0x0201AACC
 	lsl r2, r2, #2
 	ldr r0, [r0, r2]
 	sub r2, r4, #4
-	bl sub_0201AA38
+	bl AllocFromHeapInternal
 	add r4, r0, #0
 _0201AAEE:
 	cmp r4, #0
@@ -536,7 +470,7 @@ _0201AAEE:
 	strh r0, [r2, r1]
 	b _0201AB04
 _0201AB00:
-	bl sub_0201AA7C
+	bl AllocFail
 _0201AB04:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -572,7 +506,7 @@ _0201AB32:
 	cmp r0, #0
 	bne _0201AB44
 	add r0, r4, #0
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 _0201AB44:
 	ldr r0, _0201AB7C ; =_021D1584
 	ldr r0, [r0, #0xc]
@@ -586,14 +520,14 @@ _0201AB52:
 	ldrh r0, [r1, r5]
 	sub r0, r0, #1
 	strh r0, [r1, r5]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	sub r6, #0x10
 	add r4, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_020B5530
+	bl NNS_FndFreeToExpHeap
 	add r0, r4, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	pop {r3, r4, r5, r6, r7, pc}
 _0201AB74:
 	bl GF_AssertFail
@@ -607,7 +541,7 @@ FreeToHeapExplicit: ; 0x0201AB80
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020D3A9C
+	bl OS_GetProcMode
 	cmp r0, #0x12
 	bne _0201AB92
 	bl GF_AssertFail
@@ -636,7 +570,7 @@ _0201ABBC:
 	sub r4, #0x10
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_020B5530
+	bl NNS_FndFreeToExpHeap
 	ldr r0, _0201ABE8 ; =_021D1584
 	lsl r4, r5, #1
 	ldr r0, [r0, #0xc]
@@ -658,8 +592,8 @@ _0201ABE2:
 _0201ABE8: .word _021D1584
 	thumb_func_end FreeToHeapExplicit
 
-	thumb_func_start sub_0201ABEC
-sub_0201ABEC: ; 0x0201ABEC
+	thumb_func_start GF_ExpHeap_FndGetTotalFreeSize
+GF_ExpHeap_FndGetTotalFreeSize: ; 0x0201ABEC
 	push {r3, lr}
 	ldr r1, _0201AC10 ; =_021D1584
 	ldrh r2, [r1, #0x14]
@@ -670,7 +604,7 @@ sub_0201ABEC: ; 0x0201ABEC
 	ldrb r0, [r1, r0]
 	lsl r0, r0, #2
 	ldr r0, [r2, r0]
-	bl sub_020B556C
+	bl NNS_FndGetTotalFreeSizeForExpHeap
 	pop {r3, pc}
 _0201AC06:
 	bl GF_AssertFail
@@ -678,10 +612,10 @@ _0201AC06:
 	pop {r3, pc}
 	nop
 _0201AC10: .word _021D1584
-	thumb_func_end sub_0201ABEC
+	thumb_func_end GF_ExpHeap_FndGetTotalFreeSize
 
-	thumb_func_start sub_0201AC14
-sub_0201AC14: ; 0x0201AC14
+	thumb_func_start GF_ExpHeap_FndInitAllocator
+GF_ExpHeap_FndInitAllocator: ; 0x0201AC14
 	push {r4, lr}
 	ldr r4, _0201AC34 ; =_021D1584
 	ldrh r3, [r4, #0x14]
@@ -692,28 +626,28 @@ sub_0201AC14: ; 0x0201AC14
 	ldrb r1, [r4, r1]
 	lsl r1, r1, #2
 	ldr r1, [r3, r1]
-	bl sub_020B59A4
+	bl NNS_FndInitAllocatorForExpHeap
 	pop {r4, pc}
 _0201AC2E:
 	bl GF_AssertFail
 	pop {r4, pc}
 	.balign 4, 0
 _0201AC34: .word _021D1584
-	thumb_func_end sub_0201AC14
+	thumb_func_end GF_ExpHeap_FndInitAllocator
 
-	thumb_func_start sub_0201AC38
-sub_0201AC38: ; 0x0201AC38
+	thumb_func_start ReallocFromHeap
+ReallocFromHeap: ; 0x0201AC38
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020D3A9C
+	bl OS_GetProcMode
 	cmp r0, #0x12
 	bne _0201AC4A
 	bl GF_AssertFail
 _0201AC4A:
 	add r0, r5, #0
 	sub r0, #0x10
-	bl sub_020B55A4
+	bl NNS_FndGetSizeForMBlockExpHeap
 	add r4, #0x10
 	cmp r0, r4
 	blo _0201AC78
@@ -730,17 +664,17 @@ _0201AC4A:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, r5, #0
-	bl sub_020B53D0
+	bl NNS_FndResizeForMBlockExpHeap
 	pop {r3, r4, r5, pc}
 _0201AC78:
 	bl GF_AssertFail
 	pop {r3, r4, r5, pc}
 	nop
 _0201AC80: .word _021D1584
-	thumb_func_end sub_0201AC38
+	thumb_func_end ReallocFromHeap
 
-	thumb_func_start sub_0201AC84
-sub_0201AC84: ; 0x0201AC84
+	thumb_func_start GF_heap_c_dummy_return_true
+GF_heap_c_dummy_return_true: ; 0x0201AC84
 	mov r0, #1
 	bx lr
-	thumb_func_end sub_0201AC84
+	thumb_func_end GF_heap_c_dummy_return_true

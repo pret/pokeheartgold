@@ -12,17 +12,17 @@ ov46_02258800: ; 0x02258800
 	mov r0, #3
 	mov r1, #0x77
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _02258918 ; =0x00000404
 	add r0, r4, #0
 	mov r2, #0x77
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _02258918 ; =0x00000404
 	mov r1, #0
 	add r5, r0, #0
 	bl memset
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r1, _0225891C ; =0x0000047D
@@ -145,10 +145,10 @@ ov46_0225892C: ; 0x0225892C
 	sub sp, #0x10
 	add r6, r0, #0
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r6, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0xf
@@ -510,7 +510,7 @@ _02258C34: .word gMain
 	thumb_func_start ov46_02258C38
 ov46_02258C38: ; 0x02258C38
 	push {r4, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -551,7 +551,7 @@ _02258C68:
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0x77
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _02258CB0 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -571,17 +571,17 @@ ov46_02258CB4: ; 0x02258CB4
 	mov r0, #3
 	mov r1, #0x77
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _02258D98 ; =0x00000404
 	add r0, r5, #0
 	mov r2, #0x77
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _02258D98 ; =0x00000404
 	mov r1, #0
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r0, [r0]
 	mov r1, #0x77
 	str r0, [r4]
@@ -677,10 +677,10 @@ ov46_02258DA8: ; 0x02258DA8
 	sub sp, #0xc
 	add r6, r0, #0
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r6, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0xa
@@ -846,7 +846,7 @@ _02258EF8: .word 0x0000FFFF
 	thumb_func_start ov46_02258EFC
 ov46_02258EFC: ; 0x02258EFC
 	push {r4, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -884,7 +884,7 @@ _02258F2C:
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0x77
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _02258F6C ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]

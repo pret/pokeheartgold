@@ -252,17 +252,17 @@ ov18_021E5AA0: ; 0x021E5AA0
 	mov r0, #3
 	mov r1, #0x25
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E5B4C ; =0x00001910
 	add r0, r5, #0
 	mov r2, #0x25
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E5B4C ; =0x00001910
 	mov r1, #0
 	add r4, r0, #0
 	bl MIi_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4]
 	ldr r0, _021E5B50 ; =0x0000085C
 	mov r1, #5
@@ -337,7 +337,7 @@ _021E5B60: .word 0x0000185C
 ov18_021E5B64: ; 0x021E5B64
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r1, r4, #0
 	bl ov18_021E8BF4
 	cmp r0, #0
@@ -354,7 +354,7 @@ _021E5B7A:
 ov18_021E5B80: ; 0x021E5B80
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r6, _021E5C08 ; =SDK_OVERLAY_OVY_123_ID
 	add r4, r0, #0
 	mov r0, #0
@@ -387,9 +387,9 @@ _021E5BA8:
 	bl AllocFromHeapAtEnd
 _021E5BD0:
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x25
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	mov r1, #0x7f
 	bl sub_02005B50
@@ -5495,12 +5495,12 @@ ov18_021E8528: ; 0x021E8528
 	sub r1, #8
 	ldr r1, [r5, r1]
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, _021E8644 ; =0x00001904
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r6, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, _021E8640 ; =0x000018FC
 	mov r2, #1
 	ldr r0, [r5, r1]
@@ -21175,7 +21175,7 @@ _021F04E0:
 	pop {r3, r4, r5, pc}
 _021F04E4:
 	bl ov18_021E8AE0
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r2, r0, #0
 	mov r0, #0x66
 	lsl r0, r0, #4
@@ -36549,7 +36549,7 @@ ov18_021F7ED4: ; 0x021F7ED4
 	mov r0, #0
 	sub r2, #0xc0
 	str r3, [sp, #0x14]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, _021F8160 ; =0x000003DA
 	mov r0, #0x25
 	bl AllocFromHeapAtEnd
@@ -37830,7 +37830,7 @@ ov18_021F8884: ; 0x021F8884
 	add r1, r5, r2
 	mov r0, #0
 	lsr r2, r2, #1
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	cmp r4, #1
 	ldr r0, _021F8904 ; =0x0000102C
 	bne _021F88D6

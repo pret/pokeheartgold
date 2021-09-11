@@ -7,7 +7,7 @@
 ov101_021E7740: ; 0x021E7740
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	ldr r0, _021E7790 ; =SDK_OVERLAY_OVY_26_ID
 	mov r1, #2
@@ -15,11 +15,11 @@ ov101_021E7740: ; 0x021E7740
 	mov r0, #3
 	mov r1, #0x5b
 	lsl r2, r0, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E7794 ; =0x000009F4
 	add r0, r4, #0
 	mov r2, #0x5b
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E7794 ; =0x000009F4
 	add r4, r0, #0
 	mov r1, #0
@@ -49,7 +49,7 @@ _021E7798: .word 0x021F7372
 ov101_021E779C: ; 0x021E779C
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #0xd
 	bhi _021E782E
@@ -131,7 +131,7 @@ _021E782E:
 ov101_021E7834: ; 0x021E7834
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov101_021E7B54
 	ldr r0, [r4, #0x38]
@@ -147,9 +147,9 @@ ov101_021E7834: ; 0x021E7834
 _021E7858:
 	ldr r4, [r4]
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r4, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _021E7870 ; =SDK_OVERLAY_OVY_26_ID
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -12465,7 +12465,7 @@ _021ED7E4:
 ov101_Radio_OvyInit: ; 0x021ED7F8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	ldr r0, _021ED8A4 ; =SDK_OVERLAY_OVY_100_ID
 	mov r1, #2
@@ -12477,11 +12477,11 @@ ov101_Radio_OvyInit: ; 0x021ED7F8
 	mov r0, #3
 	mov r1, #0x5b
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021ED8AC ; =0x000009F4
 	add r0, r4, #0
 	mov r2, #0x5b
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021ED8AC ; =0x000009F4
 	mov r1, #0
 	add r4, r0, #0
@@ -12510,7 +12510,7 @@ ov101_Radio_OvyInit: ; 0x021ED7F8
 	str r0, [r1, #0x28]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x2c]
 	ldr r0, [r4, #0x10]
@@ -12546,7 +12546,7 @@ _021ED8B0: .word 0x021F7372
 ov101_Radio_OvyExec: ; 0x021ED8B4
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #0xd
 	bhi _021ED91E
@@ -12608,7 +12608,7 @@ _021ED91E:
 ov101_Radio_OvyExit: ; 0x021ED924
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov101_021EDAF8
 	ldr r0, [r4, #0x38]
@@ -12630,9 +12630,9 @@ _021ED948:
 	bl FreeToHeap
 	ldr r4, [r4]
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r4, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _021ED978 ; =SDK_OVERLAY_OVY_26_ID
 	bl UnloadOverlayByID
 	ldr r0, _021ED97C ; =SDK_OVERLAY_OVY_100_ID
@@ -14525,17 +14525,17 @@ _021EE8E4: .word 0x00030100
 ov101_021EE8E8: ; 0x021EE8E8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r2, #2
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x5b
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0x5b
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x4c
@@ -14554,7 +14554,7 @@ ov101_021EE8E8: ; 0x021EE8E8
 ov101_021EE924: ; 0x021EE924
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #9
 	bhi _021EE99E
@@ -14624,7 +14624,7 @@ _021EE99E:
 ov101_021EE9A4: ; 0x021EE9A4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov101_021EEA2C
 	ldr r2, [r4, #0xc]
@@ -14634,9 +14634,9 @@ ov101_021EE9A4: ; 0x021EE9A4
 	strb r0, [r2, #5]
 	ldr r4, [r4]
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r4, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -16524,17 +16524,17 @@ _021EF844: .word 0x00000941
 ov101_021EF848: ; 0x021EF848
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x5b
 	lsl r2, r0, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x51
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #0x5b
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x51
 	add r4, r0, #0
 	mov r1, #0
@@ -16558,7 +16558,7 @@ ov101_021EF848: ; 0x021EF848
 ov101_021EF890: ; 0x021EF890
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #0xe
 	bhi _021EF93C
@@ -16652,7 +16652,7 @@ _021EF93C:
 ov101_021EF940: ; 0x021EF940
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov101_021EFA04
 	ldr r2, [r4, #0xc]
@@ -16662,9 +16662,9 @@ ov101_021EF940: ; 0x021EF940
 	strb r0, [r2, #5]
 	ldr r4, [r4]
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r4, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -21906,7 +21906,7 @@ ov101_021F2110: ; 0x021F2110
 	ldr r0, [r4, #0x50]
 	bl BufferString
 	ldrh r0, [r4, #0x30]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r2, r0, #0
 	ldr r0, [r4, #0x50]
 	mov r1, #2
@@ -21915,7 +21915,7 @@ ov101_021F2110: ; 0x021F2110
 	add r0, #0x98
 	ldr r0, [r0]
 	ldrh r0, [r0, #6]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r2, r0, #0
 	ldr r0, [r4, #0x50]
 	mov r1, #3
@@ -23650,7 +23650,7 @@ ov101_021F2E04: ; 0x021F2E04
 	add r6, r0, #0
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_0203B324
+	bl MapHeader_HasWildEncounters
 	cmp r0, #0
 	bne _021F2E1C
 	add sp, #0xc4
@@ -23659,7 +23659,7 @@ ov101_021F2E04: ; 0x021F2E04
 _021F2E1C:
 	add r0, sp, #0
 	add r1, r6, #0
-	bl sub_0203B88C
+	bl WildEncounters_ReadFromNarc
 	cmp r5, #0xb
 	bne _021F2E4A
 	cmp r4, #2
@@ -26609,17 +26609,17 @@ _021F447C: .word 0x0000099F
 ov101_021F4480: ; 0x021F4480
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r2, #2
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x5b
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0x6c
 	mov r2, #0x5b
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x6c
@@ -26638,7 +26638,7 @@ ov101_021F4480: ; 0x021F4480
 ov101_021F44BC: ; 0x021F44BC
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #9
 	bhi _021F4526
@@ -26700,7 +26700,7 @@ _021F4526:
 ov101_021F452C: ; 0x021F452C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov101_021F45D4
 	ldr r2, [r4, #0xc]
@@ -26710,9 +26710,9 @@ ov101_021F452C: ; 0x021F452C
 	strb r0, [r2, #5]
 	ldr r4, [r4]
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r4, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -30942,7 +30942,7 @@ ov101_021F6514: ; 0x021F6514
 	mov r2, #0x24
 	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #1
 	strb r1, [r4, #8]
 	add r7, r0, #0
@@ -31193,7 +31193,7 @@ ov101_021F6710: ; 0x021F6710
 	mov r2, #0xd
 	bl MIi_CpuFill8
 	ldr r0, [r6, #4]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r7, r0, #0
 	ldr r0, [r6, #4]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -31365,7 +31365,7 @@ _021F6890:
 	cmp r0, #4
 	bne _021F68B2
 	ldr r0, [r5, #4]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r1, _021F6900 ; =0x00000AB6
 	bl sub_02050408
 _021F68B2:
@@ -31453,7 +31453,7 @@ _021F6948:
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066ECC
 	mov r1, #0x1e
 	bl _s32_div_f
@@ -31653,7 +31653,7 @@ ov101_021F6AAC: ; 0x021F6AAC
 	mov r2, #0x14
 	bl MIi_CpuFill8
 	ldr r0, [r5, #4]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #1
 	strb r1, [r4, #0xa]
 	add r5, r0, #0
@@ -32059,7 +32059,7 @@ _021F6DDA:
 	b _021F6F0C
 _021F6DE6:
 	ldrh r0, [r4, #8]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r2, r0, #0
 	ldr r0, [r6, #0x44]
 	mov r1, #0
@@ -32299,7 +32299,7 @@ ov101_021F6FCC: ; 0x021F6FCC
 	bl Sav2_Pokedex_get
 	str r0, [sp, #8]
 	ldr r0, [r7, #4]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #2
 	mov r2, #0x19
 	bl sub_02066930
@@ -32329,7 +32329,7 @@ ov101_021F6FCC: ; 0x021F6FCC
 	add r6, #0xa
 _021F7020:
 	add r0, r4, #0
-	bl sub_0203B324
+	bl MapHeader_HasWildEncounters
 	cmp r0, #0
 	beq _021F707C
 	add r0, r4, #0
@@ -32399,7 +32399,7 @@ _021F7098:
 	lsr r0, r0, #0xf
 	add r6, r5, r0
 	ldrh r0, [r6, #0x38]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	add r0, r5, #0
@@ -32516,7 +32516,7 @@ ov101_021F7174: ; 0x021F7174
 	add r4, r1, #0
 	add r0, sp, #0
 	add r1, r2, #0
-	bl sub_0203B88C
+	bl WildEncounters_ReadFromNarc
 	add r0, sp, #0
 	ldrb r0, [r0]
 	cmp r0, #0

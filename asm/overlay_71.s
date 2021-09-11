@@ -16,11 +16,11 @@ _02246970:
 	mov r0, #3
 	mov r1, #0x38
 	lsl r2, r0, #0xf
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #3
 	mov r1, #0x39
 	lsl r2, r0, #0xf
-	bl sub_0201A910
+	bl CreateHeap
 	bl ov71_022473E4
 	mov r1, #0xfd
 	mov r0, #3
@@ -31,13 +31,13 @@ _02246970:
 	add r0, r5, #0
 	lsl r1, r1, #2
 	mov r2, #0x38
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	add r4, r0, #0
 	bne _022469A6
 	b _02246B06
 _022469A6:
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4]
 	mov r0, #0
 	str r0, [r4, #4]
@@ -237,10 +237,10 @@ _02246B52:
 ov71_02246B58: ; 0x02246B58
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0x51
 	lsl r0, r0, #2
@@ -259,13 +259,13 @@ ov71_02246B58: ; 0x02246B58
 	bl sub_02024504
 	bl sub_0200B244
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x38
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0x39
-	bl sub_0201A9C4
+	bl DestroyHeap
 	add r0, r6, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -275,7 +275,7 @@ ov71_02246B58: ; 0x02246B58
 ov71_02246BB8: ; 0x02246BB8
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r3, [r4, #4]
 	cmp r3, #7
@@ -3389,7 +3389,7 @@ _02248354: .word ov71_02248B60
 ov71_02248358: ; 0x02248358
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r4, r0, #0
 	cmp r5, #0
 	beq _022483A4
@@ -3421,7 +3421,7 @@ _02248394:
 	bl FreeToHeap
 _022483A4:
 	add r0, r4, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov71_02248358
 
@@ -3772,7 +3772,7 @@ ov71_02248604: ; 0x02248604
 	mov r1, #6
 	mov r3, #1
 	bl sub_0201B1E4
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r5, r0, #0
 	add r0, r4, #0
 	add r0, #0xc0
@@ -3789,7 +3789,7 @@ ov71_02248604: ; 0x02248604
 	mov r3, #2
 	bl sub_0201B1E4
 	add r0, r5, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3954,7 +3954,7 @@ ov71_02248604: ; 0x02248604
 	mov r0, #0
 	add r1, r5, #0
 	mov r2, #0x60
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r5, #0
 	mov r1, #0x60
 	bl DC_FlushRange
@@ -8504,7 +8504,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r1, #6
 	mov r3, #1
 	bl sub_0201B1E4
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224ADA4 ; =0x0224BF38
@@ -8517,7 +8517,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r3, #2
 	bl sub_0201B1E4
 	add r0, r5, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -8666,7 +8666,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	mov r0, #0
 	add r1, r5, #0
 	mov r2, #0x60
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r5, #0
 	mov r1, #0x60
 	bl DC_FlushRange

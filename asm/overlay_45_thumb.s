@@ -18,11 +18,11 @@ ov45_02229EE0: ; 0x02229EE0
 	mov r0, #3
 	mov r1, #0x6f
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0x10
 	mov r2, #0x6f
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	add r5, r0, #0
 	add r2, r5, #0
 	mov r1, #0x10
@@ -33,7 +33,7 @@ _02229F18:
 	sub r1, r1, #1
 	bne _02229F18
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #0x6f
@@ -69,7 +69,7 @@ _02229F6C: .word ov45_02229FE0
 	thumb_func_start ov45_02229F70
 ov45_02229F70: ; 0x02229F70
 	push {r3, r4, r5, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5, #8]
 	bl ov45_0222CD90
@@ -90,7 +90,7 @@ _02229F8E:
 ov45_02229F94: ; 0x02229F94
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl sub_0200E390
@@ -103,9 +103,9 @@ ov45_02229F94: ; 0x02229F94
 	ldr r0, [r4, #4]
 	bl ov45_0222A0F0
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x6f
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _02229FDC ; =SDK_OVERLAY_OVY_42_ID
 	bl UnloadOverlayByID
 	bl UnloadOVY38
@@ -764,12 +764,12 @@ ov45_0222A43C: ; 0x0222A43C
 	add r2, r0, #0
 	lsl r1, r1, #4
 	add r1, r2, r1
-	ldr r3, _0222A44C ; =sub_020D47EC
+	ldr r3, _0222A44C ; =MIi_CpuClear32
 	mov r0, #0
 	mov r2, #4
 	bx r3
 	.balign 4, 0
-_0222A44C: .word sub_020D47EC
+_0222A44C: .word MIi_CpuClear32
 	thumb_func_end ov45_0222A43C
 
 	thumb_func_start ov45_0222A450
@@ -5202,7 +5202,7 @@ ov45_0222C388: ; 0x0222C388
 	mvn r0, r0
 	add r1, r4, #0
 	mov r2, #0x6c
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov45_0222C388

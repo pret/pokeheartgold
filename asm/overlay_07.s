@@ -15122,13 +15122,13 @@ _02222C20:
 	add r0, r6, #0
 	add r1, #0x20
 	lsl r2, r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r2, #0x32
 	lsl r2, r2, #4
 	add r1, r4, r2
 	add r0, r6, #0
 	sub r2, #0x20
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r2, _02222C58 ; =ov07_02222BC8
 	ldr r3, _02222C5C ; =ov07_02222BDC
 	add r0, r4, #0
@@ -34491,11 +34491,11 @@ ov07_0222C850: ; 0x0222C850
 	lsr r0, r0, #0x10
 	orr r0, r2
 	mov r2, #3
-	ldr r3, _0222C86C ; =sub_020D47EC
+	ldr r3, _0222C86C ; =MIi_CpuClear32
 	lsl r2, r2, #8
 	bx r3
 	.balign 4, 0
-_0222C86C: .word sub_020D47EC
+_0222C86C: .word MIi_CpuClear32
 	thumb_func_end ov07_0222C850
 
 	thumb_func_start ov07_0222C870

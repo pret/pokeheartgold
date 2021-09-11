@@ -557,7 +557,7 @@ ov23_02259C40: ; 0x02259C40
 	add r2, r4, #0
 	bl sub_0206EC40
 	ldr r0, [sp, #0x30]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r3, r0, #0
 	ldr r0, [sp, #0x38]
 	ldr r2, [sp, #0x34]

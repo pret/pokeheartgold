@@ -34,12 +34,12 @@ ov86_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x79
 	lsl r2, r0, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0xe5
 	add r0, r4, #0
 	lsl r1, r1, #2
 	mov r2, #0x79
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0xe5
 	add r5, r0, #0
 	mov r1, #0
@@ -50,7 +50,7 @@ ov86_021E5900: ; 0x021E5900
 	bl sub_0201AC88
 	str r0, [r5, #0xc]
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	mov r0, #0x89
 	ldr r1, [r4]
@@ -142,7 +142,7 @@ _021E5A3C: .word ov86_021E5CDC
 ov86_021E5A40: ; 0x021E5A40
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	cmp r1, #0
@@ -192,7 +192,7 @@ _021E5A8E:
 ov86_021E5AA4: ; 0x021E5AA4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov86_021E6FF4
 	mov r0, #0x87
@@ -239,12 +239,12 @@ ov86_021E5AA4: ; 0x021E5AA4
 	mov r0, #4
 	bl sub_02002DB4
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
 	mov r0, #0x79
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

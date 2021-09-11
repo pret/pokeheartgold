@@ -12,17 +12,17 @@ ov105_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x97
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r5, #0
 	mov r1, #0xa8
 	mov r2, #0x97
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0xa8
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	add r0, r4, #0
 	ldrb r1, [r5]
@@ -109,7 +109,7 @@ ov105_021E59DC: ; 0x021E59DC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x3c
 	add r6, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	add r1, r5, #0
 	add r1, #0x9f
@@ -265,7 +265,7 @@ ov105_021E5B14: ; 0x021E5B14
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r0, [sp]
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r7, r0, #0
 	str r0, [sp, #4]
 	add r6, r0, #4
@@ -290,10 +290,10 @@ _021E5B28:
 	ldr r0, [r0]
 	bl sub_02023120
 	ldr r0, [sp]
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	bl sub_0201F63C
 	mov r0, #0x97
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -459,7 +459,7 @@ ov105_021E5CA4: ; 0x021E5CA4
 	add r0, #0x80
 	mov r1, #0x97
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r7, #0
 	add r0, #0x9c
 	ldrb r0, [r0]

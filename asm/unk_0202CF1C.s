@@ -29,7 +29,7 @@ GameStats_init: ; 0x0202CF24
 	mov r0, #0
 	add r1, r4, #0
 	lsl r2, r2, #6
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, _0202CF4C ; =0x027FFC3C ; HW_VBLANK_COUNT_BUF
 	ldr r0, [r1]
 	ldr r1, [r1]

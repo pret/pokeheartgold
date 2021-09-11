@@ -55,12 +55,12 @@ _02201C22:
 	mov r0, #3
 	mov r1, #0x83
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x6b
 	add r0, r6, #0
 	lsl r1, r1, #2
 	mov r2, #0x83
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x6b
 	mov r1, #0
 	lsl r2, r2, #2
@@ -69,7 +69,7 @@ _02201C22:
 	mov r0, #0x83
 	str r0, [r4]
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov17_02201D30
@@ -78,7 +78,7 @@ _02201C22:
 	str r0, [r5]
 	b _02201C74
 _02201C64:
-	bl sub_02007290
+	bl OverlayManager_GetData
 	bl ov17_02201DF0
 	cmp r0, #0
 	beq _02201C74
@@ -93,7 +93,7 @@ _02201C74:
 ov17_02201C78: ; 0x02201C78
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #9
@@ -168,7 +168,7 @@ _02201CF4:
 ov17_02201D04: ; 0x02201D04
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov17_02201E3C
 	cmp r0, #0
@@ -179,9 +179,9 @@ _02201D1A:
 	add r0, r4, #0
 	bl ov17_02201DD8
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x83
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov17_02201D04

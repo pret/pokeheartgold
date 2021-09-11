@@ -28,17 +28,17 @@ _021E5920:
 ov55_021E5924: ; 0x021E5924
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r2, #1
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x28
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0x1c
 	mov r2, #0x28
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
@@ -82,10 +82,10 @@ ov55_021E598C: ; 0x021E598C
 	sub sp, #4
 	add r5, r0, #0
 	add r6, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	ldr r0, [r6]
 	cmp r0, #4
@@ -251,14 +251,14 @@ _021E5AE4: .word 0x021E5C04
 ov55_021E5AE8: ; 0x021E5AE8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	bl ov55_021E5BAC
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	ldr r0, [r4]
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov55_021E5AE8

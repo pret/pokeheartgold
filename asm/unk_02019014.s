@@ -424,17 +424,17 @@ sub_020192D0: ; 0x020192D0
 	mov r0, #3
 	mov r1, #0x7b
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0x80
 	mov r2, #0x7b
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x80
 	add r5, r0, #0
 	bl MIi_CpuFill8
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r5]
 	ldr r1, _02019358 ; =0x0000047D
 	mov r0, #0xb
@@ -453,7 +453,7 @@ _02019358: .word 0x0000047D
 sub_0201935C: ; 0x0201935C
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	cmp r1, #8
@@ -604,15 +604,15 @@ _0201948C: .word _020F6288
 sub_02019490: ; 0x02019490
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl sub_020194F8
 	ldr r0, [r4]
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x7b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02019490
@@ -638,7 +638,7 @@ sub_020194B4: ; 0x020194B4
 	mov r1, #2
 	lsl r1, r1, #0x10
 	mov r2, #0
-	bl sub_020B535C
+	bl NNS_FndCreateExpHeapEx
 	str r0, [r4, #0x10]
 	bl sub_02034D8C
 	mov r0, #4
@@ -657,7 +657,7 @@ sub_020194F8: ; 0x020194F8
 	cmp r0, #1
 	bne _0201951E
 	ldr r0, [r4, #0x10]
-	bl sub_020B5394
+	bl NNS_FndDestroyExpHeap
 	ldr r0, [r4, #0xc]
 	bl FreeToHeap
 	bl UnloadOVY38
@@ -674,16 +674,16 @@ sub_02019520: ; 0x02019520
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r6, r0, #0
 	ldr r0, _02019544 ; =_021D1108
 	add r1, r5, #0
 	ldr r0, [r0]
 	add r2, r4, #0
-	bl sub_020B53A0
+	bl NNS_FndAllocFromExpHeapEx
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -695,14 +695,14 @@ sub_02019548: ; 0x02019548
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	beq _02019564
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r4, r0, #0
 	ldr r0, _02019568 ; =_021D1108
 	add r1, r5, #0
 	ldr r0, [r0]
-	bl sub_020B5530
+	bl NNS_FndFreeToExpHeap
 	add r0, r4, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 _02019564:
 	pop {r3, r4, r5, pc}
 	nop

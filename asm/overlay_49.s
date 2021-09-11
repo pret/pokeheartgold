@@ -2587,23 +2587,23 @@ ov49_02259AA4: ; 0x02259AA4
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r2, #0x3a
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x77
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	mov r2, #0x3d
 	mov r0, #3
 	mov r1, #0x78
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0xfe
 	add r0, r4, #0
 	lsl r1, r1, #2
 	mov r2, #0x77
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0xfe
 	mov r1, #0
 	lsl r2, r2, #2
@@ -2803,10 +2803,10 @@ ov49_02259C90: ; 0x02259C90
 	sub sp, #0xc
 	add r6, r0, #0
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r0, [r5]
 	cmp r0, #8
 	bhi _02259D58
@@ -3103,10 +3103,10 @@ _02259EF4: .word gMain
 ov49_02259EF8: ; 0x02259EF8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldrb r1, [r4, #1]
 	str r1, [r0, #0x18]
 	mov r0, #0
@@ -3186,9 +3186,9 @@ ov49_02259EF8: ; 0x02259EF8
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0x77
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0x78
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
 	bl sub_0200616C
 	mov r0, #0
@@ -9483,7 +9483,7 @@ ov49_0225CDEC: ; 0x0225CDEC
 	add r1, r4, #0
 	add r0, r5, r0
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	ldr r0, _0225CE84 ; =0x00000494
 	add r1, r7, #0
 	add r0, r5, r0
@@ -26123,7 +26123,7 @@ ov49_022652E8: ; 0x022652E8
 	add r1, r5, #0
 	add r0, r4, r0
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r1, r6, #0
 	add r2, r5, #0

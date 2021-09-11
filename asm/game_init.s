@@ -212,7 +212,7 @@ _0201A1EE:
 	ldr r0, _0201A1FC ; =_020F62A4
 	mov r1, #4
 	mov r2, #0xa1
-	bl sub_0201A7BC
+	bl InitHeapSystem
 	add sp, #0x30
 	pop {r3, pc}
 	.balign 4, 0
@@ -239,7 +239,7 @@ InitSystemForTheGame: ; 0x0201A200
 	add r1, r0, #0
 	mov r0, #0
 	mov r2, #4
-	bl sub_020D2CA0
+	bl OS_AllocFromArenaLo
 	add r1, r0, #0
 	mov r0, #0xa0
 	bl sub_0201F834
@@ -250,7 +250,7 @@ InitSystemForTheGame: ; 0x0201A200
 	add r1, r0, #0
 	mov r0, #0
 	mov r2, #4
-	bl sub_020D2CA0
+	bl OS_AllocFromArenaLo
 	add r1, r0, #0
 	mov r0, #0x20
 	bl sub_0201F834
@@ -261,7 +261,7 @@ InitSystemForTheGame: ; 0x0201A200
 	add r1, r0, #0
 	mov r0, #0
 	mov r2, #4
-	bl sub_020D2CA0
+	bl OS_AllocFromArenaLo
 	add r1, r0, #0
 	mov r0, #0x20
 	bl sub_0201F834
@@ -272,7 +272,7 @@ InitSystemForTheGame: ; 0x0201A200
 	add r1, r0, #0
 	mov r0, #0
 	mov r2, #4
-	bl sub_020D2CA0
+	bl OS_AllocFromArenaLo
 	add r1, r0, #0
 	mov r0, #4
 	bl sub_0201F834
@@ -312,7 +312,7 @@ InitSystemForTheGame: ; 0x0201A200
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #4
-	bl sub_020D2CA0
+	bl OS_AllocFromArenaLo
 	add r5, r0, #0
 	bne _0201A2F4
 	bl GF_AssertFail
@@ -904,3 +904,69 @@ sub_0201A738: ; 0x0201A738
 	.balign 4, 0
 _0201A744: .word gMain + 0x60
 	thumb_func_end sub_0201A738
+
+	thumb_func_start sub_0201A748
+sub_0201A748: ; 0x0201A748
+	push {r4, lr}
+	add r4, r0, #0
+	ldr r0, _0201A76C ; =gMain
+	ldr r0, [r0, #0x74]
+	cmp r0, #0
+	beq _0201A758
+	bl GF_AssertFail
+_0201A758:
+	add r0, r4, #0
+	mov r1, #4
+	bl AllocFromHeapAtEnd
+	ldr r1, _0201A76C ; =gMain
+	str r0, [r1, #0x74]
+	ldr r1, _0201A770 ; =0x2F93A1BC
+	str r1, [r0]
+	pop {r4, pc}
+	nop
+_0201A76C: .word gMain
+_0201A770: .word 0x2F93A1BC
+	thumb_func_end sub_0201A748
+
+	thumb_func_start sub_0201A774
+sub_0201A774: ; 0x0201A774
+	push {r3, lr}
+	ldr r0, _0201A798 ; =gMain
+	ldr r0, [r0, #0x74]
+	cmp r0, #0
+	bne _0201A782
+	bl GF_AssertFail
+_0201A782:
+	ldr r0, _0201A798 ; =gMain
+	mov r2, #0
+	ldr r1, [r0, #0x74]
+	str r2, [r1]
+	ldr r0, [r0, #0x74]
+	bl FreeToHeap
+	ldr r0, _0201A798 ; =gMain
+	mov r1, #0
+	str r1, [r0, #0x74]
+	pop {r3, pc}
+	.balign 4, 0
+_0201A798: .word gMain
+	thumb_func_end sub_0201A774
+
+	thumb_func_start sub_0201A79C
+sub_0201A79C: ; 0x0201A79C
+	ldr r0, _0201A7B4 ; =gMain
+	ldr r0, [r0, #0x74]
+	cmp r0, #0
+	beq _0201A7B0
+	ldr r1, [r0]
+	ldr r0, _0201A7B8 ; =0x2F93A1BC
+	cmp r1, r0
+	bne _0201A7B0
+	mov r0, #1
+	bx lr
+_0201A7B0:
+	mov r0, #0
+	bx lr
+	.balign 4, 0
+_0201A7B4: .word gMain
+_0201A7B8: .word 0x2F93A1BC
+	thumb_func_end sub_0201A79C

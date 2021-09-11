@@ -16,12 +16,12 @@ ov84_0223DD60: ; 0x0223DD60
 	mov r0, #3
 	mov r1, #0x6e
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0xf3
 	add r0, r4, #0
 	lsl r1, r1, #2
 	mov r2, #0x6e
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0xf3
 	mov r1, #0
 	lsl r2, r2, #2
@@ -34,7 +34,7 @@ ov84_0223DD60: ; 0x0223DD60
 	str r0, [r1]
 	add r0, r4, #0
 	str r4, [r5]
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	add r0, r5, #0
 	ldr r1, [r4]
@@ -167,7 +167,7 @@ _0223DEB4: .word 0x0223FA20
 ov84_0223DEB8: ; 0x0223DEB8
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldrb r1, [r4, #0xe]
 	cmp r1, #0xff
@@ -321,7 +321,7 @@ _0223DFE4:
 ov84_0223DFF0: ; 0x0223DFF0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0x36
 	lsl r0, r0, #4
@@ -332,12 +332,12 @@ ov84_0223DFF0: ; 0x0223DFF0
 	add r0, r4, #0
 	bl ov84_0223E4B8
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
 	mov r0, #0x6e
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _0223E02C ; =SDK_OVERLAY_OVY_80_ID
 	bl UnloadOverlayByID
 	mov r0, #1

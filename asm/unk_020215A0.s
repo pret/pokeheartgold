@@ -44,7 +44,7 @@ sub_020215C0: ; 0x020215C0
 	mov r2, #0x3c
 	str r1, [r0]
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, _02021680 ; =_021D21F4
 	ldr r2, [r5]
 	ldr r0, [r1]

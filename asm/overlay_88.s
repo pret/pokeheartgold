@@ -8,18 +8,18 @@ ov88_02258800: ; 0x02258800
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r2, #5
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x72
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x27
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #0x72
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x27
 	mov r1, #0
 	lsl r2, r2, #4
@@ -99,10 +99,10 @@ ov88_022588C4: ; 0x022588C4
 	sub sp, #0xc
 	add r6, r0, #0
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r6, r0, #0
 	ldr r0, [r5]
 	cmp r0, #4
@@ -252,10 +252,10 @@ _022589F8: .word gMain
 ov88_022589FC: ; 0x022589FC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r0, #2
 	lsl r0, r0, #8
 	add r0, r4, r0
@@ -284,9 +284,9 @@ ov88_022589FC: ; 0x022589FC
 	add r0, r4, #0
 	bl ov88_02258AF4
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x72
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

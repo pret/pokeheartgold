@@ -81,7 +81,7 @@ _021E5918:
 	add r0, #0x1f
 	bic r0, r1
 	add r1, r4, #0
-	bl sub_020B535C
+	bl NNS_FndCreateExpHeapEx
 	ldr r4, _021E5AC4 ; =_0221A680
 	mov r6, #0
 	ldr r2, [r4]
@@ -251,7 +251,7 @@ ov00_021E5AE8: ; 0x021E5AE8
 	beq _021E5B20
 	add r0, r0, #4
 	ldr r0, [r2, r0]
-	bl sub_020B5394
+	bl NNS_FndDestroyExpHeap
 	ldr r0, _021E5B58 ; =_0221A680
 	ldr r1, [r0]
 	ldr r0, _021E5B5C ; =0x00000F98
@@ -267,7 +267,7 @@ _021E5B20:
 	ldr r1, [r0]
 	ldr r0, _021E5B60 ; =0x00000F94
 	ldr r0, [r1, r0]
-	bl sub_020B5394
+	bl NNS_FndDestroyExpHeap
 	ldr r0, _021E5B58 ; =_0221A680
 	ldr r1, _021E5B64 ; =0x00001084
 	ldr r2, [r0]
@@ -1646,7 +1646,7 @@ ov00_021E65D4: ; 0x021E65D4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r7, r0, #0
 	ldr r0, _021E662C ; =_0221A680
 	add r2, r6, #0
@@ -1654,7 +1654,7 @@ ov00_021E65D4: ; 0x021E65D4
 	ldr r0, _021E6630 ; =0x00000F94
 	ldr r0, [r1, r0]
 	add r1, r5, #0
-	bl sub_020B53A0
+	bl NNS_FndAllocFromExpHeapEx
 	add r4, r0, #0
 	bne _021E660E
 	ldr r0, _021E662C ; =_0221A680
@@ -1667,7 +1667,7 @@ ov00_021E65D4: ; 0x021E65D4
 	ldr r0, [r0, r1]
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020B53A0
+	bl NNS_FndAllocFromExpHeapEx
 	add r4, r0, #0
 _021E660E:
 	cmp r4, #0
@@ -1675,12 +1675,12 @@ _021E660E:
 	mov r0, #1
 	bl sub_02039AD8
 	add r0, r7, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6622:
 	add r0, r7, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1694,7 +1694,7 @@ ov00_021E6638: ; 0x021E6638
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	beq _021E6682
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_020B55AC
@@ -1713,7 +1713,7 @@ _021E6662:
 	add r0, r0, #4
 	ldr r0, [r2, r0]
 	add r1, r5, #0
-	bl sub_020B5530
+	bl NNS_FndFreeToExpHeap
 	b _021E667C
 _021E666E:
 	ldr r0, _021E6684 ; =_0221A680
@@ -1721,10 +1721,10 @@ _021E666E:
 	ldr r0, _021E668C ; =0x00000F94
 	ldr r0, [r1, r0]
 	add r1, r5, #0
-	bl sub_020B5530
+	bl NNS_FndFreeToExpHeap
 _021E667C:
 	add r0, r4, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 _021E6682:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3234,7 +3234,7 @@ ov00_021E714C: ; 0x021E714C
 	bic r0, r1
 	mov r1, #0xf
 	lsl r1, r1, #0xc
-	bl sub_020B535C
+	bl NNS_FndCreateExpHeapEx
 	ldr r2, _021E7208 ; =_0221A680
 	ldr r1, _021E7218 ; =0x00000F9C
 	ldr r3, [r2]
@@ -3247,7 +3247,7 @@ ov00_021E714C: ; 0x021E714C
 	ldr r1, [r0]
 	ldr r0, _021E7218 ; =0x00000F9C
 	ldr r0, [r1, r0]
-	bl sub_020B556C
+	bl NNS_FndGetTotalFreeSizeForExpHeap
 	ldr r1, _021E7208 ; =_0221A680
 	ldr r2, [r1]
 	mov r1, #0xfa
@@ -3269,7 +3269,7 @@ _021E71B4:
 	beq _021E7204
 	sub r0, #0xe8
 	ldr r0, [r4, r0]
-	bl sub_020B556C
+	bl NNS_FndGetTotalFreeSizeForExpHeap
 	mov r1, #0xfa
 	lsl r1, r1, #4
 	ldr r2, [r4, r1]
@@ -3281,7 +3281,7 @@ _021E71B4:
 _021E71E6:
 	sub r0, r1, #4
 	ldr r0, [r4, r0]
-	bl sub_020B5394
+	bl NNS_FndDestroyExpHeap
 	ldr r0, _021E7208 ; =_0221A680
 	ldr r1, [r0]
 	ldr r0, _021E7214 ; =0x00000F98

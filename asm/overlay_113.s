@@ -20,12 +20,12 @@ _021E5912:
 	mov r0, #3
 	mov r1, #0x98
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x16
 	add r0, r6, #0
 	lsl r1, r1, #4
 	mov r2, #0x98
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x16
 	mov r1, #0
 	lsl r2, r2, #4
@@ -34,7 +34,7 @@ _021E5912:
 	mov r0, #0x98
 	str r0, [r4]
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov113_021E5A7C
@@ -43,7 +43,7 @@ _021E5912:
 	str r0, [r5]
 	b _021E5964
 _021E5954:
-	bl sub_02007290
+	bl OverlayManager_GetData
 	bl ov113_021E5B70
 	cmp r0, #0
 	beq _021E5964
@@ -58,7 +58,7 @@ _021E5964:
 ov113_021E5968: ; 0x021E5968
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #4
@@ -110,7 +110,7 @@ _021E59B2:
 ov113_021E59C8: ; 0x021E59C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov113_021E5BB0
 	cmp r0, #0
@@ -122,9 +122,9 @@ _021E59DE:
 	add r0, r4, #0
 	bl ov113_021E5B60
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x98
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov113_021E59C8
@@ -219,7 +219,7 @@ ov113_021E5A7C: ; 0x021E5A7C
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066B70
 	add r1, r5, #0
 	add r1, #0x3c

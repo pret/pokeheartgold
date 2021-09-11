@@ -679,17 +679,17 @@ ov92_0225CAB4: ; 0x0225CAB4
 	mov r0, #3
 	mov r1, #0x71
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0xd0
 	mov r2, #0x71
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0xd0
 	str r0, [sp, #4]
 	bl memset
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r1, [sp, #4]
 	ldr r6, [sp, #4]
 	add r1, #0x88
@@ -1070,7 +1070,7 @@ _0225CDF0: .word 0x3F4CCCCD
 ov92_0225CDF4: ; 0x0225CDF4
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov92_0225D8E4
 	cmp r0, #0
@@ -1726,13 +1726,13 @@ ov92_0225D36C: ; 0x0225D36C
 	add r6, r0, #0
 	cmp r1, #0
 	bne _0225D3AC
-	bl sub_02007290
+	bl OverlayManager_GetData
 	bl ov92_0225D8E4
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x71
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
 	mov r1, #1
 	bl sub_020398D4
@@ -1846,7 +1846,7 @@ ov92_0225D3CC: ; 0x0225D3CC
 	add r0, r4, #0
 	mov r1, #0x71
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -1982,25 +1982,25 @@ _0225D5B8:
 	mov r0, #0
 	lsl r1, r1, #0x18
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x62
 	mov r2, #2
 	mov r0, #0
 	lsl r1, r1, #0x14
 	lsl r2, r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x19
 	mov r2, #1
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x66
 	mov r2, #2
 	mov r0, #0
 	lsl r1, r1, #0x14
 	lsl r2, r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r5, _0225D7B8 ; =0x02263934
 	add r3, sp, #0xac
 	mov r2, #0xe

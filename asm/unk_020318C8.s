@@ -17,7 +17,7 @@ sub_020318CC: ; 0x020318CC
 	add r2, r0, #0
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r0, #0
 	mvn r0, r0
 	str r0, [r4]

@@ -5106,7 +5106,7 @@ _021E8090: .word 0x04001000
 ov122_021E8094: ; 0x021E8094
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	bne _021E80A4
 	bl GF_AssertFail
@@ -5124,12 +5124,12 @@ _021E80A4:
 	mov r1, #0xa0
 	mov r0, #3
 	lsl r2, r1, #0xb
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x26
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #0xa0
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x26
 	mov r1, #0
 	lsl r2, r2, #4
@@ -5268,7 +5268,7 @@ _021E8224: .word ov122_021E8004
 ov122_021E8228: ; 0x021E8228
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -5309,9 +5309,9 @@ ov122_021E8228: ; 0x021E8228
 	bl NARC_dtor
 	bl ov122_021E8068
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0xa0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov122_021E8228
@@ -5336,7 +5336,7 @@ _021E82BE:
 	str r0, [r4]
 	b _021E8300
 _021E82CA:
-	bl sub_02007290
+	bl OverlayManager_GetData
 	mov r1, #6
 	str r1, [sp]
 	mov r1, #1
@@ -5374,7 +5374,7 @@ ov122_021E8308: ; 0x021E8308
 	sub sp, #0xc
 	add r4, r1, #0
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #0
 	beq _021E8320
@@ -5418,7 +5418,7 @@ _021E8358:
 	thumb_func_start ov122_021E8360
 ov122_021E8360: ; 0x021E8360
 	push {r3, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	mov r1, #0x8f
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]

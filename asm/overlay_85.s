@@ -8,7 +8,7 @@ ov85_021E5900: ; 0x021E5900
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	mov r0, #1
 	add r1, r0, #0
@@ -23,11 +23,11 @@ ov85_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x66
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E5A28 ; =0x00000DCC
 	add r0, r5, #0
 	mov r2, #0x66
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E5A28 ; =0x00000DCC
 	add r6, r0, #0
 	mov r1, #0
@@ -139,7 +139,7 @@ _021E5A30: .word 0x021EA788
 ov85_021E5A34: ; 0x021E5A34
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl sub_02021238
 	cmp r0, #1
@@ -173,9 +173,9 @@ _021E5A4A:
 	ldr r0, [r4, r0]
 	bl NARC_dtor
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x66
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #2
 	bl sub_0201A738
 	mov r0, #1
@@ -185,7 +185,7 @@ _021E5A4A:
 	thumb_func_start ov85_021E5AAC
 ov85_021E5AAC: ; 0x021E5AAC
 	push {r3, r4, r5, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	bl ov85_021E74AC
 	ldr r4, _021E5AEC ; =0x021EA800
@@ -6453,7 +6453,7 @@ ov85_021E88AC: ; 0x021E88AC
 	sub sp, #0xc
 	add r5, r1, #0
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r6, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -6483,7 +6483,7 @@ _021E88C8:
 	mov r0, #3
 	mov r1, #0x66
 	lsl r2, r2, #7
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0xd9
 	mov r1, #0x66
 	bl NARC_ctor
@@ -6494,7 +6494,7 @@ _021E890A:
 	ldr r1, _021E89FC ; =0x00004AB0
 	add r0, r4, #0
 	mov r2, #0x66
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E89FC ; =0x00004AB0
 	add r4, r0, #0
 	mov r1, #0
@@ -6597,7 +6597,7 @@ _021E8A04: .word ov85_021E8BB0
 	thumb_func_start ov85_021E8A08
 ov85_021E8A08: ; 0x021E8A08
 	push {r4, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl sub_02025358
 	cmp r0, #0
@@ -6723,7 +6723,7 @@ _021E8B04: .word 0x00010300
 ov85_021E8B08: ; 0x021E8B08
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r6, r0, #0
 	ldr r0, [r6, #0x30]
 	bl sub_0200E390
@@ -6779,9 +6779,9 @@ _021E8B34:
 	add r0, r6, #0
 	bl ov85_021E8E00
 	ldr r0, [sp]
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x66
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

@@ -1575,7 +1575,7 @@ _02238446:
 	mov r0, #3
 	mov r1, #0x3d
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	bl LoadDwcOverlay
 	bl LoadOVY38
 	mov r0, #0x3d
@@ -1583,7 +1583,7 @@ _02238446:
 	ldr r1, _02238590 ; =0x00001608
 	add r0, r6, #0
 	mov r2, #0x3d
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _02238590 ; =0x00001608
 	mov r1, #0
 	add r4, r0, #0
@@ -1671,7 +1671,7 @@ _02238446:
 	mov r1, #2
 	lsl r1, r1, #0x10
 	mov r2, #0
-	bl sub_020B535C
+	bl NNS_FndCreateExpHeapEx
 	str r0, [r4, #0x50]
 	mov r0, #1
 	str r0, [r5]
@@ -1710,7 +1710,7 @@ _022385BC: .word 0x00020020
 ov70_022385C0: ; 0x022385C0
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov00_021ECB40
 	bl ov70_022378DC
@@ -1853,7 +1853,7 @@ _022386F0: .word 0x00000BF4
 ov70_022386F4: ; 0x022386F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x4c]
 	bl FreeToHeap
@@ -1891,7 +1891,7 @@ ov70_022386F4: ; 0x022386F4
 	ldr r0, [r4]
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #4
 	bl sub_02002DB4
 	mov r2, #1
@@ -1908,7 +1908,7 @@ ov70_022386F4: ; 0x022386F4
 	add r1, r0, #0
 	bl sub_0201A0FC
 	mov r0, #0x3d
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1983,7 +1983,7 @@ ov70_02238818: ; 0x02238818
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r1, #0
 	str r0, [r4]
 	add r0, r4, #0
@@ -2724,16 +2724,16 @@ ov70_02238DF8: ; 0x02238DF8
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r6, r0, #0
 	ldr r0, _02238E1C ; =0x02246944
 	add r1, r5, #0
 	ldr r0, [r0]
 	add r2, r4, #0
-	bl sub_020B53A0
+	bl NNS_FndAllocFromExpHeapEx
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2745,14 +2745,14 @@ ov70_02238E20: ; 0x02238E20
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	beq _02238E3C
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r4, r0, #0
 	ldr r0, _02238E40 ; =0x02246944
 	add r1, r5, #0
 	ldr r0, [r0]
-	bl sub_020B5530
+	bl NNS_FndFreeToExpHeap
 	add r0, r4, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 _02238E3C:
 	pop {r3, r4, r5, pc}
 	nop
@@ -18419,7 +18419,7 @@ _02240AB0:
 _02240AF4:
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r6, r0, #0
 	bl sub_02066E28
 	cmp r0, #0
@@ -18543,7 +18543,7 @@ _02240BC2:
 _02240BFC:
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r6, r0, #0
 	bl sub_02066E28
 	cmp r0, #0

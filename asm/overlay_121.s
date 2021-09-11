@@ -16,7 +16,7 @@ ov121_021E5900: ; 0x021E5900
 ov121_021E590C: ; 0x021E590C
 	push {r3, r4, lr}
 	sub sp, #0xc
-	bl sub_02007290
+	bl OverlayManager_GetData
 	mov r1, #0x23
 	add r4, r0, #0
 	lsl r1, r1, #4
@@ -106,7 +106,7 @@ _021E59B0:
 	thumb_func_start ov121_021E59BC
 ov121_021E59BC: ; 0x021E59BC
 	push {r3, r4, r5, r6, r7, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, _021E5AE0 ; =gMain + 0x60
 	mov r1, #0
@@ -219,7 +219,7 @@ _021E5AC4:
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0x9e
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -232,18 +232,18 @@ _021E5AE8: .word 0x0000025E
 ov121_021E5AEC: ; 0x021E5AEC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r2, #1
 	add r4, r0, #0
 	mov r0, #3
 	mov r1, #0x9e
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x9b
 	add r0, r5, #0
 	lsl r1, r1, #2
 	mov r2, #0x9e
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x9b
 	mov r1, #0
 	lsl r2, r2, #2

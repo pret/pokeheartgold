@@ -11,12 +11,12 @@ ov62_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x62
 	lsl r2, r0, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x4f
 	add r0, r4, #0
 	lsl r1, r1, #2
 	mov r2, #0x62
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x4f
 	mov r1, #0
 	lsl r2, r2, #2
@@ -90,7 +90,7 @@ _021E59BC: .word ov62_021E5A9C
 ov62_021E59C0: ; 0x021E59C0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, #0xf0
 	bl ov62_021E61FC
@@ -108,11 +108,11 @@ ov62_021E59C0: ; 0x021E59C0
 	mov r0, #4
 	bl sub_02002DB4
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x4e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _021E5A14 ; =SDK_OVERLAY_OVY_60_ID
 	ldr r1, _021E5A18 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
@@ -126,7 +126,7 @@ _021E5A18: .word ov60_021EAFE0
 	thumb_func_start ov62_021E5A1C
 ov62_021E5A1C: ; 0x021E5A1C
 	push {r4, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0x4a
 	lsl r0, r0, #2

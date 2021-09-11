@@ -3936,17 +3936,17 @@ ov112_021E76CC: ; 0x021E76CC
 	mov r0, #3
 	mov r1, #0x9a
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E7764 ; =0x0001F378
 	add r0, r4, #0
 	mov r2, #0x9a
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E7764 ; =0x0001F378
 	mov r1, #0
 	add r5, r0, #0
 	bl memset
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r0, [r0, #8]
 	str r0, [r5, #0x20]
 	add r0, r5, #0
@@ -4055,7 +4055,7 @@ ov112_021E7830: ; 0x021E7830
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	cmp r1, #4
@@ -4166,7 +4166,7 @@ _021E790C: .word 0x0001E52C
 ov112_021E7910: ; 0x021E7910
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
@@ -4175,12 +4175,12 @@ ov112_021E7910: ; 0x021E7910
 	add r0, r4, #0
 	bl ov112_021E77E4
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
 	mov r0, #0x9a
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0x10
 	bl sub_0201A738
 	ldr r0, _021E7954 ; =SDK_OVERLAY_OVY_60_ID
@@ -26674,7 +26674,7 @@ _021F2DE0: .word 0xFFFFFBFF
 ov112_021F2DE4: ; 0x021F2DE4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	bne _021F2DF4
 	bl GF_AssertFail
@@ -26682,12 +26682,12 @@ _021F2DF4:
 	mov r0, #3
 	mov r1, #0x9b
 	lsl r2, r0, #0x11
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x15
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #0x9b
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x15
 	mov r1, #0
 	lsl r2, r2, #4
@@ -26731,7 +26731,7 @@ _021F2E6C: .word ov112_021F2EB0
 ov112_021F2E70: ; 0x021F2E70
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	bl ov112_021F1324
 	add r0, r5, #0
@@ -26746,9 +26746,9 @@ ov112_021F2E70: ; 0x021F2E70
 	bl sub_02022D3C
 	bl ov112_021F0DC0
 	add r0, r4, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x9b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021F2EAC: .word gMain + 0x60
@@ -26794,7 +26794,7 @@ ov112_021F2EF4: ; 0x021F2EF4
 	sub sp, #0xc
 	add r4, r1, #0
 	add r6, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #4
@@ -26886,7 +26886,7 @@ ov112_021F2FAC: ; 0x021F2FAC
 	sub sp, #0xc
 	add r4, r1, #0
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #0
 	beq _021F2FC8
@@ -26940,7 +26940,7 @@ _021F3012:
 	thumb_func_start ov112_021F3018
 ov112_021F3018: ; 0x021F3018
 	push {r4, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov112_021F2CD4
 	cmp r0, #0
@@ -27709,7 +27709,7 @@ _021F35F6:
 ov112_021F3608: ; 0x021F3608
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r5, _021F362C ; =0x021FF4D4
 	add r7, r0, #0
 	mov r4, #0
@@ -27731,7 +27731,7 @@ _021F362C: .word 0x021FF4D4
 ov112_021F3630: ; 0x021F3630
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r5, _021F3660 ; =0x021FF4D4
 	add r6, r0, #0
 	mov r4, #0

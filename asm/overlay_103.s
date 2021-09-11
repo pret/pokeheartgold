@@ -11,17 +11,17 @@ ov103_021EC940: ; 0x021EC940
 	mov r0, #3
 	mov r1, #0x9c
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r5, #0
 	mov r1, #0x2c
 	mov r2, #0x9c
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x2c
 	add r4, r0, #0
 	bl MIi_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4, #8]
 	ldr r0, [r0]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -41,7 +41,7 @@ ov103_021EC940: ; 0x021EC940
 ov103_021EC988: ; 0x021EC988
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r1, r4, #0
 	bl ov103_021ED2D4
 	cmp r0, #0
@@ -57,9 +57,9 @@ _021EC99E:
 	thumb_func_start ov103_021EC9A4
 ov103_021EC9A4: ; 0x021EC9A4
 	push {r3, lr}
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x9c
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ov103_021EC9A4
@@ -1299,7 +1299,7 @@ ov103_021ED314: ; 0x021ED314
 	mov r0, #3
 	mov r1, #0x9d
 	lsl r2, r0, #0x11
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x2f
 	mov r0, #0x9d
 	lsl r1, r1, #4
@@ -1390,7 +1390,7 @@ ov103_021ED3E8: ; 0x021ED3E8
 	mov r0, #0
 	str r0, [r4, #0xc]
 	mov r0, #0x9d
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, [r4, #0x28]
 	pop {r4, pc}
 	nop

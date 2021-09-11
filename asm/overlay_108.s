@@ -7,17 +7,17 @@
 ov108_021E5900: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r2, #5
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x5f
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E5944 ; =0x000184EC
 	add r0, r4, #0
 	mov r2, #0x5f
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E5944 ; =0x000184EC
 	mov r1, #0
 	add r4, r0, #0
@@ -41,7 +41,7 @@ _021E5944: .word 0x000184EC
 ov108_021E5948: ; 0x021E5948
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r6, r0, #0
 	bl ov108_021E5A48
 	ldr r2, _021E5974 ; =0x000184EC
@@ -50,9 +50,9 @@ ov108_021E5948: ; 0x021E5948
 	mov r1, #0
 	bl MIi_CpuFill8
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r4, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
@@ -63,7 +63,7 @@ _021E5974: .word 0x000184EC
 ov108_021E5978: ; 0x021E5978
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #7
 	bhi _021E59DE
@@ -175,7 +175,7 @@ ov108_021E5A48: ; 0x021E5A48
 	bl sub_0202F680
 	ldr r0, [r4, #0x14]
 	ldr r0, [r0]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r1, _021E5A74 ; =0x000184E8
 	ldr r1, [r4, r1]
 	bl sub_02066A64
@@ -5977,15 +5977,15 @@ _021E8862:
 	mov r0, #3
 	mov r1, #0x5f
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	mov r1, #0x53
 	add r6, r0, #0
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #0x5f
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x53
 	mov r1, #0
 	lsl r2, r2, #4
@@ -6005,7 +6005,7 @@ _021E8862:
 	str r0, [r5]
 	b _021E88C0
 _021E88B0:
-	bl sub_02007290
+	bl OverlayManager_GetData
 	bl ov108_021E929C
 	cmp r0, #0
 	beq _021E88C0
@@ -6020,7 +6020,7 @@ _021E88C0:
 ov108_021E88C4: ; 0x021E88C4
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov108_021E9304
 	cmp r0, #0
@@ -6038,9 +6038,9 @@ _021E88DA:
 	lsl r2, r2, #4
 	bl MIi_CpuFill8
 	add r0, r6, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r5, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -6050,7 +6050,7 @@ _021E88DA:
 ov108_021E8904: ; 0x021E8904
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #4
@@ -6642,7 +6642,7 @@ ov108_021E8CD4: ; 0x021E8CD4
 	add r0, r5, #4
 	add r1, r4, #0
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0x28
 	add r1, r4, #0
 	bl NARC_ctor

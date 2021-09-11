@@ -2062,17 +2062,17 @@ ov41_02246DE0: ; 0x02246DE0
 	mov r0, #3
 	mov r1, #0xd
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r2, #1
 	mov r0, #3
 	mov r1, #0xe
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x6f
 	add r0, r5, #0
 	lsl r1, r1, #4
 	mov r2, #0xd
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x6f
 	mov r1, #0
 	lsl r2, r2, #4
@@ -2083,7 +2083,7 @@ ov41_02246DE0: ; 0x02246DE0
 	bl sub_0201A0FC
 	bl sub_0201A108
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	ldr r1, _02246EF4 ; =0x000006DC
@@ -2184,11 +2184,11 @@ ov41_02246F08: ; 0x02246F08
 	sub sp, #0xc
 	add r7, r0, #0
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r7, #0
 	mov r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r1, [r5]
 	cmp r1, #0xc
 	bhi _02246FD6
@@ -2467,10 +2467,10 @@ _0224714C: .word 0x0000047C
 ov41_02247150: ; 0x02247150
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	mov r0, #0x1b
 	lsl r0, r0, #6
@@ -2552,11 +2552,11 @@ _022471AA:
 	bl GF_AssertFail
 _0224721A:
 	add r0, r6, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0xd
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0xe
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -12378,17 +12378,17 @@ ov41_0224BA10: ; 0x0224BA10
 	mov r0, #3
 	mov r1, #0xd
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r2, #1
 	mov r0, #3
 	mov r1, #0xe
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x1a
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #0xd
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x1a
 	mov r1, #0
 	lsl r2, r2, #4
@@ -12399,7 +12399,7 @@ ov41_0224BA10: ; 0x0224BA10
 	bl sub_0201A0FC
 	bl sub_0201A108
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
@@ -12453,7 +12453,7 @@ ov41_0224BACC: ; 0x0224BACC
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	bl sub_02026E48
 	bl sub_020B7350
@@ -12560,7 +12560,7 @@ _0224BBA0: .word 0x000005DD
 ov41_0224BBA4: ; 0x0224BBA4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	bl ov41_0224B57C
@@ -12577,11 +12577,11 @@ ov41_0224BBA4: ; 0x0224BBA4
 	bl sub_0201A0FC
 	bl sub_0201A108
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0xd
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0xe
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

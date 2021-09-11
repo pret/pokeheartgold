@@ -5429,13 +5429,13 @@ ov93_02262598: ; 0x02262598
 	mov r1, #0xc
 	mov r2, #0x75
 	add r5, r0, #0
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0xc
 	add r4, r0, #0
 	bl MIi_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -5446,7 +5446,7 @@ ov93_02262598: ; 0x02262598
 ov93_022625BC: ; 0x022625BC
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	add r1, r0, #0
@@ -5602,9 +5602,9 @@ _022626E4:
 ov93_022626E8: ; 0x022626E8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r0, r4, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0

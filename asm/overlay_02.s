@@ -216,7 +216,7 @@ ov02_02245D18: ; 0x02245D18
 	ldr r1, [r4]
 	add r0, #0xbc
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	ldr r3, [r4]
 	add r0, #0xc
@@ -341,7 +341,7 @@ ov02_02245E04: ; 0x02245E04
 	add r0, #0x8c
 	add r1, r6, #0
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	ldrh r1, [r5]
 	ldrb r2, [r5, #2]
 	add r0, r4, #0
@@ -2298,7 +2298,7 @@ _02246D6C:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246D76:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #0
 	beq _02246D88
@@ -2346,7 +2346,7 @@ _02246DDA:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246DE0:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	str r0, [sp, #0x14]
 	bl sub_02066860
 	str r0, [sp, #0xc]
@@ -2437,7 +2437,7 @@ _02246E8C:
 	b _02246F26
 _02246EA0:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066AD0
 	ldr r1, [sp, #0x20]
 	mov r2, #0xb
@@ -2515,13 +2515,13 @@ _02246F40:
 	mov r7, #0
 _02246F42:
 	mov r0, #4
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
 	bne _02246F50
 	bl GF_AssertFail
 _02246F50:
 	mov r0, #0xb
-	bl sub_0201AC84
+	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
 	bne _02246F5E
 	bl GF_AssertFail
@@ -2587,7 +2587,7 @@ _02246F88:
 _02246FDA:
 	ldr r0, [sp, #0x20]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066860
 	str r0, [sp, #0x18]
 	cmp r0, #0
@@ -2789,7 +2789,7 @@ ov02_02247170: ; 0x02247170
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	str r1, [sp, #8]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205C67C
@@ -2943,7 +2943,7 @@ _022472BA:
 	b _0224734C
 _022472CE:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066AD0
 	ldr r1, [sp, #0x1c]
 	mov r2, #0xb
@@ -4678,7 +4678,7 @@ _02247FCA:
 	bhi _02248008
 _02247FE0:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	mov r5, #0
 _02247FEA:
@@ -5575,7 +5575,7 @@ _02248642:
 	strb r0, [r5, #0xf]
 	strb r0, [r5, #0x10]
 	ldr r0, [r7, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r6, r0, #0
 	ldr r0, [r7, #0x20]
 	ldr r1, [r0]
@@ -12356,7 +12356,7 @@ ov02_0224B88C: ; 0x0224B88C
 	add r0, r4, #0
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0x67
 	mov r1, #0x83
 	mov r2, #4
@@ -12528,7 +12528,7 @@ ov02_0224B998: ; 0x0224B998
 	add r0, sp, #8
 	bl sub_0202DA44
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r1, [sp, #4]
 	mov r2, #2
 	bl sub_02066BE8
@@ -12539,7 +12539,7 @@ _0224BA14:
 	add r0, sp, #8
 	bl sub_0202DA44
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r1, [sp, #4]
 	mov r2, #1
 	bl sub_02066BE8
@@ -15662,7 +15662,7 @@ ov02_0224D1E4: ; 0x0224D1E4
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r1, #3
@@ -15697,7 +15697,7 @@ ov02_0224D22C: ; 0x0224D22C
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r1, #3
@@ -15831,7 +15831,7 @@ ov02_0224D310: ; 0x0224D310
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r2, #4
@@ -15866,7 +15866,7 @@ ov02_0224D358: ; 0x0224D358
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r2, #4
@@ -16001,7 +16001,7 @@ ov02_0224D43C: ; 0x0224D43C
 	add r0, r4, r0
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	ldr r0, _0224D464 ; =0x000001CA
 	mov r1, #0
 	strh r1, [r4, r0]
@@ -16215,7 +16215,7 @@ ov02_0224D5B4: ; 0x0224D5B4
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	ldr r0, [r5, #0x40]
 	bl sub_0205C654
 	add r6, r0, #0
@@ -16584,7 +16584,7 @@ ov02_0224D880: ; 0x0224D880
 	mov r1, #4
 	add r0, r5, r0
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r5, #0
 	mov r1, #0x86
 	mov r2, #8
@@ -16760,7 +16760,7 @@ ov02_0224D9C0: ; 0x0224D9C0
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	str r0, [sp]
@@ -16875,7 +16875,7 @@ ov02_0224DAA4: ; 0x0224DAA4
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	str r0, [sp]
@@ -17154,7 +17154,7 @@ ov02_0224DCB0: ; 0x0224DCB0
 	mov r1, #4
 	add r0, r6, r0
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r6, #0
 	mov r1, #0x86
 	mov r2, #8
@@ -18072,7 +18072,7 @@ ov02_0224E35C: ; 0x0224E35C
 	sub sp, #0x1c
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl sub_0203B9C4
@@ -19627,7 +19627,7 @@ ov02_0224EF94: ; 0x0224EF94
 	add r7, r0, #0
 	ldr r0, [r7, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r2, r0, #0
 	mov r0, #0x12
 	lsl r0, r0, #4
@@ -19816,7 +19816,7 @@ _0224F124:
 	cmp r7, #0
 	beq _0224F13E
 	ldr r0, [r6, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r1, r7, #0
 	bl sub_020503DC
 	cmp r0, #0
@@ -22326,7 +22326,7 @@ _022503BA:
 	lsr r0, r0, #0x18
 	bne _02250404
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066654
 	mov r1, #1
 	add r0, sp, #0
@@ -22441,7 +22441,7 @@ ov02_022504A0: ; 0x022504A0
 	bl BufferPlayersName
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #3
@@ -23382,7 +23382,7 @@ ov02_02250BC4: ; 0x02250BC4
 	strh r0, [r5, #0x12]
 	add r0, r5, #0
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r5, #0
 	add r0, #0x14
 	mov r1, #0xae
@@ -24106,7 +24106,7 @@ ov02_022511AC: ; 0x022511AC
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #0xae
@@ -24680,7 +24680,7 @@ _02251644:
 	add r0, #0xc
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0x1c
 	mov r1, #0xae
@@ -25867,7 +25867,7 @@ ov02_02251FDC: ; 0x02251FDC
 	ldr r0, [r0, #0x38]
 	add r6, r1, #0
 	str r2, [sp, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x38]
@@ -27004,7 +27004,7 @@ ov02_02252898: ; 0x02252898
 	ldr r0, [sp, #8]
 	mov r2, #0x20
 	add r0, #0xc
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	ldr r0, [sp, #8]
 	mov r1, #0xae
 	add r0, #0x1c
@@ -27404,7 +27404,7 @@ ov02_02252BA4: ; 0x02252BA4
 	add r0, r0, #4
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	ldr r4, [sp, #8]
 	mov r5, #0
 	add r4, #0x14
@@ -27976,7 +27976,7 @@ _02253018:
 	str r0, [r2]
 	add r0, r7, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r2, r7, #0
 	add r2, #0xef
 	ldrb r2, [r2]

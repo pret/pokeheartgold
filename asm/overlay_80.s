@@ -567,7 +567,7 @@ ov80_0222A334: ; 0x0222A334
 	mov r2, #4
 	bl sub_0207217C
 	ldr r0, _0222A3B8 ; =0x00000113
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r3, r0, #0
 	mov r0, #0xb
 	str r0, [sp]
@@ -7250,7 +7250,7 @@ ov80_0222D334: ; 0x0222D334
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r1, r6, #0
 	bl sub_020504A4
 	strh r4, [r0]
@@ -7271,7 +7271,7 @@ ov80_0222D360: ; 0x0222D360
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r1, r6, #0
 	bl sub_020504A4
 	ldrh r0, [r0]
@@ -12737,7 +12737,7 @@ ov80_0222FD08: ; 0x0222FD08
 	bne _0222FD8E
 	ldr r0, _0222FEE8 ; =0x000004F8
 	ldr r0, [r2, r0]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066E48
 	b _0222FDA2
 _0222FD8E:
@@ -15204,7 +15204,7 @@ ov80_022310C4: ; 0x022310C4
 	bne _02231158
 	ldr r0, _022313B0 ; =0x000006FC
 	ldr r0, [r1, r0]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066E48
 	b _02231164
 _02231158:
@@ -17710,7 +17710,7 @@ _02232520:
 	cmp r2, #3
 	bne _02232546
 	ldr r0, [r0, #4]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066E48
 	b _02232552
 _02232546:
@@ -21202,7 +21202,7 @@ ov80_022340E8: ; 0x022340E8
 	cmp r2, #3
 	bne _02234174
 	ldr r0, [r0, #4]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066E48
 	b _02234180
 _02234174:
@@ -30502,7 +30502,7 @@ ov80_02238648: ; 0x02238648
 	mov r0, #3
 	mov r1, #0x65
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0x65
 	mov r1, #0xc4
 	bl AllocFromHeap
@@ -30761,7 +30761,7 @@ ov80_0223885C: ; 0x0223885C
 	bl sub_0201A0FC
 	bl sub_0201A108
 	mov r0, #0x65
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -31224,25 +31224,25 @@ _02238CF4:
 	mov r0, #0
 	lsl r1, r1, #0x18
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x62
 	mov r2, #2
 	mov r0, #0
 	lsl r1, r1, #0x14
 	lsl r2, r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x19
 	mov r2, #1
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x12
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0x66
 	mov r2, #2
 	mov r0, #0
 	lsl r1, r1, #0x14
 	lsl r2, r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r6, _02238EFC ; =0x0223D560
 	add r3, sp, #0x1c
 	add r2, r3, #0
@@ -33708,7 +33708,7 @@ _0223A05E:
 	add r1, r0, #0
 	mov r0, #0
 	lsl r2, r2, #0xe
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #1

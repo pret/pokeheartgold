@@ -240,7 +240,7 @@ ov106_021E5AA8: ; 0x021E5AA8
 	mov r1, #0x99
 	mov r2, #4
 	str r3, [sp, #0x10]
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x10]

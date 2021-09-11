@@ -10,7 +10,7 @@ ov36_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x4b
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
@@ -20,7 +20,7 @@ ov36_021E5900: ; 0x021E5900
 	thumb_func_start ov36_021E5918
 ov36_021E5918: ; 0x021E5918
 	push {r3, lr}
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r1, [r0, #8]
 	mov r0, #0x4b
 	bl ov36_021E5BC8
@@ -35,7 +35,7 @@ ov36_021E5918: ; 0x021E5918
 ov36_021E592C: ; 0x021E592C
 	push {r3, lr}
 	mov r0, #0x4b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
 	ldr r1, _021E5944 ; =_02106068
 	mvn r0, r0
@@ -53,7 +53,7 @@ ov36_021E5948: ; 0x021E5948
 	mov r0, #3
 	mov r1, #0x4b
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
@@ -63,7 +63,7 @@ ov36_021E5948: ; 0x021E5948
 	thumb_func_start ov36_021E5960
 ov36_021E5960: ; 0x021E5960
 	push {r4, lr}
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r4, [r0, #8]
 	mov r0, #0x4b
 	add r1, r4, #0
@@ -82,7 +82,7 @@ ov36_021E5960: ; 0x021E5960
 ov36_021E5980: ; 0x021E5980
 	push {r3, lr}
 	mov r0, #0x4b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
 	ldr r1, _021E5998 ; =_020FA15C
 	mvn r0, r0
@@ -100,7 +100,7 @@ ov36_021E599C: ; 0x021E599C
 	mov r0, #3
 	mov r1, #0x4b
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
@@ -110,7 +110,7 @@ ov36_021E599C: ; 0x021E599C
 	thumb_func_start ov36_021E59B4
 ov36_021E59B4: ; 0x021E59B4
 	push {r3, r4, r5, lr}
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r4, [r0, #8]
 	add r0, r4, #0
 	bl Sav2_SysInfo_get
@@ -156,7 +156,7 @@ _021E5A0C:
 ov36_021E5A1C: ; 0x021E5A1C
 	push {r3, lr}
 	mov r0, #0x4b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
 	ldr r1, _021E5A34 ; =_020FA16C
 	mvn r0, r0
@@ -349,11 +349,11 @@ ov36_021E5BC8: ; 0x021E5BC8
 	ldr r1, _021E5BFC ; =0x00000BB8
 	bl PlayerProfile_SetMoney
 	add r0, r4, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r1, _021E5C00 ; =0x0000DB56
 	bl sub_02066B60
 	add r0, r4, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020665EC
 	pop {r4, pc}
 	.balign 4, 0
