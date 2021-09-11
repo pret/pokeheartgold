@@ -24,7 +24,7 @@ _027E0014:
 	str r3, [r0, #0xc]
 	cmp r2, r1
 	beq _027E004C
-	bl sub_037FAE94
+	bl OS_Terminate
 _027E004C:
 	ldr r0, _027E00B4 ; =0x03809884
 	mov r1, #0

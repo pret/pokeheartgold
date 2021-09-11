@@ -13,6 +13,11 @@ Autoload wram
 {
 	Address 0x037F8000
 	Object sub.wram.o
+	Object OS_thread.o
+	Object OS_context.o
+	Object OS_message.o
+	Object OS_mutex.o
+	Object sub.wram_1.o
 	Object libsyscall.o
 	Object sub.wram_2.o
 }
