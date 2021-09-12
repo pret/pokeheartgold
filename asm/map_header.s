@@ -3,20 +3,36 @@
 
 	.rodata
 
-_020F6BAC:
-	.byte 0xF5, 0x01, 0xDB, 0x01
-	.byte 0xAC, 0x01, 0xB2, 0x01, 0x66, 0x01, 0x89, 0x01, 0xE2, 0x01, 0xFC, 0x01, 0x97, 0x01, 0x45, 0x00
-	.byte 0x9E, 0x00, 0xA6, 0x00, 0xEC, 0x00, 0xB9, 0x00, 0xE2, 0x00, 0x51, 0x00, 0xF6, 0x00, 0x25, 0x01
-	.byte 0x02, 0x02, 0xFF, 0x01, 0xD2, 0x01, 0xA9, 0x00, 0x10, 0x02, 0x16, 0x02, 0x00, 0x00, 0x00, 0x00
-_020F6BE0:
-	.byte 0xFF
-	.byte 0x00, 0x0F, 0x00
-	.byte 0x00, 0x00
-	.byte 0x8B, 0x00
-	.byte 0x8F, 0x01
-	.byte 0x03, 0x00
-	.byte 0xE8, 0x03
-	.byte 0xE8, 0x03
+sPokemonCenterSecondFloorMaps:
+	.short 0x01F5
+	.short 0x01DB
+	.short 0x01AC
+	.short 0x01B2
+	.short 0x0166
+	.short 0x0189
+	.short 0x01E2
+	.short 0x01FC
+	.short 0x0197
+	.short 0x0045
+	.short 0x009E
+	.short 0x00A6
+	.short 0x00EC
+	.short 0x00B9
+	.short 0x00E2
+	.short 0x0051
+	.short 0x00F6
+	.short 0x0125
+	.short 0x0202
+	.short 0x01FF
+	.short 0x01D2
+	.short 0x00A9
+	.short 0x0210
+	.short 0x0216
+	.short 0x0000
+
+	.balign 4, 0
+sMapHeaders:
+	.byte 0xFF, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x8B, 0x00, 0x8F, 0x01, 0x03, 0x00, 0xE8, 0x03, 0xE8, 0x03
 	.byte 0x00, 0x00, 0x00, 0xA6, 0x00, 0x02, 0x30, 0x0E, 0xFF, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x8B, 0x00
 	.byte 0x8F, 0x01, 0x03, 0x00, 0xE8, 0x03, 0xE8, 0x03, 0x00, 0x00, 0x00, 0xA6, 0x00, 0x00, 0x30, 0x00
 	.byte 0xFF, 0x1A, 0x0F, 0x00, 0x4A, 0x00, 0xBD, 0x03, 0xD6, 0x02, 0xE2, 0x02, 0x27, 0x04, 0x27, 0x04
@@ -843,112 +859,112 @@ _0203B278:
 	.balign 4, 0
 	thumb_func_end MapNumberBoundsCheck
 
-	thumb_func_start sub_0203B27C
-sub_0203B27C: ; 0x0203B27C
+	thumb_func_start MapHeader_GetAreaDataBank
+MapHeader_GetAreaDataBank: ; 0x0203B27C
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B28C ; =_020F6BE0 + 1
+	ldr r0, _0203B28C ; =sMapHeaders + 1
 	ldrb r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_0203B28C: .word _020F6BE0 + 1
-	thumb_func_end sub_0203B27C
+_0203B28C: .word sMapHeaders + 1
+	thumb_func_end MapHeader_GetAreaDataBank
 
-	thumb_func_start sub_0203B290
-sub_0203B290: ; 0x0203B290
+	thumb_func_start MapHeader_GetMoveModelBank
+MapHeader_GetMoveModelBank: ; 0x0203B290
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B2A8 ; =_020F6BE0
+	ldr r0, _0203B2A8 ; =sMapHeaders
 	add r0, r0, r1
 	ldrh r0, [r0, #2]
 	lsl r0, r0, #0x1c
 	lsr r0, r0, #0x1c
 	pop {r3, pc}
 	nop
-_0203B2A8: .word _020F6BE0
-	thumb_func_end sub_0203B290
+_0203B2A8: .word sMapHeaders
+	thumb_func_end MapHeader_GetMoveModelBank
 
-	thumb_func_start sub_0203B2AC
-sub_0203B2AC: ; 0x0203B2AC
+	thumb_func_start MapHeader_GetMatrixId
+MapHeader_GetMatrixId: ; 0x0203B2AC
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B2BC ; =_020F6BE0 + 4
+	ldr r0, _0203B2BC ; =sMapHeaders + 4
 	ldrh r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_0203B2BC: .word _020F6BE0 + 4
-	thumb_func_end sub_0203B2AC
+_0203B2BC: .word sMapHeaders + 4
+	thumb_func_end MapHeader_GetMatrixId
 
-	thumb_func_start sub_0203B2C0
-sub_0203B2C0: ; 0x0203B2C0
+	thumb_func_start MapHeader_GetMsgBank
+MapHeader_GetMsgBank: ; 0x0203B2C0
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B2D0 ; =_020F6BE0 + 10
+	ldr r0, _0203B2D0 ; =sMapHeaders + 10
 	ldrh r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_0203B2D0: .word _020F6BE0 + 10
-	thumb_func_end sub_0203B2C0
+_0203B2D0: .word sMapHeaders + 10
+	thumb_func_end MapHeader_GetMsgBank
 
-	thumb_func_start sub_0203B2D4
-sub_0203B2D4: ; 0x0203B2D4
+	thumb_func_start MapHeader_GetScriptsBank
+MapHeader_GetScriptsBank: ; 0x0203B2D4
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B2E4 ; =_020F6BE0 + 6
+	ldr r0, _0203B2E4 ; =sMapHeaders + 6
 	ldrh r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_0203B2E4: .word _020F6BE0 + 6
-	thumb_func_end sub_0203B2D4
+_0203B2E4: .word sMapHeaders + 6
+	thumb_func_end MapHeader_GetScriptsBank
 
-	thumb_func_start sub_0203B2E8
-sub_0203B2E8: ; 0x0203B2E8
+	thumb_func_start MapHeader_GetLevelScriptsBank
+MapHeader_GetLevelScriptsBank: ; 0x0203B2E8
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B2F8 ; =_020F6BE0 + 8
+	ldr r0, _0203B2F8 ; =sMapHeaders + 8
 	ldrh r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_0203B2F8: .word _020F6BE0 + 8
-	thumb_func_end sub_0203B2E8
+_0203B2F8: .word sMapHeaders + 8
+	thumb_func_end MapHeader_GetLevelScriptsBank
 
-	thumb_func_start sub_0203B2FC
-sub_0203B2FC: ; 0x0203B2FC
+	thumb_func_start MapHeader_GetDayMusicId
+MapHeader_GetDayMusicId: ; 0x0203B2FC
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B30C ; =_020F6BE0 + 12
+	ldr r0, _0203B30C ; =sMapHeaders + 12
 	ldrh r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_0203B30C: .word _020F6BE0 + 12
-	thumb_func_end sub_0203B2FC
+_0203B30C: .word sMapHeaders + 12
+	thumb_func_end MapHeader_GetDayMusicId
 
-	thumb_func_start sub_0203B310
-sub_0203B310: ; 0x0203B310
+	thumb_func_start MapHeader_GetNightMusicId
+MapHeader_GetNightMusicId: ; 0x0203B310
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B320 ; =_020F6BE0 + 14
+	ldr r0, _0203B320 ; =sMapHeaders + 14
 	ldrh r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_0203B320: .word _020F6BE0 + 14
-	thumb_func_end sub_0203B310
+_0203B320: .word sMapHeaders + 14
+	thumb_func_end MapHeader_GetNightMusicId
 
 	thumb_func_start MapHeader_HasWildEncounters
 MapHeader_HasWildEncounters: ; 0x0203B324
@@ -956,7 +972,7 @@ MapHeader_HasWildEncounters: ; 0x0203B324
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B340 ; =_020F6BE0
+	ldr r0, _0203B340 ; =sMapHeaders
 	ldrb r0, [r0, r1]
 	cmp r0, #0xff
 	beq _0203B33A
@@ -966,7 +982,7 @@ _0203B33A:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_0203B340: .word _020F6BE0
+_0203B340: .word sMapHeaders
 	thumb_func_end MapHeader_HasWildEncounters
 
 	thumb_func_start MapHeader_GetWildEncounterBank
@@ -975,11 +991,11 @@ MapHeader_GetWildEncounterBank: ; 0x0203B344
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B354 ; =_020F6BE0
+	ldr r0, _0203B354 ; =sMapHeaders
 	ldrb r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_0203B354: .word _020F6BE0
+_0203B354: .word sMapHeaders
 	thumb_func_end MapHeader_GetWildEncounterBank
 
 	thumb_func_start MapHeader_GetEventsBank
@@ -988,11 +1004,11 @@ MapHeader_GetEventsBank: ; 0x0203B358
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B368 ; =_020F6BE0 + 16
+	ldr r0, _0203B368 ; =sMapHeaders + 16
 	ldrh r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_0203B368: .word _020F6BE0 + 16
+_0203B368: .word sMapHeaders + 16
 	thumb_func_end MapHeader_GetEventsBank
 
 	thumb_func_start MapHeader_GetMapSec
@@ -1001,14 +1017,14 @@ MapHeader_GetMapSec: ; 0x0203B36C
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B384 ; =_020F6BE0
+	ldr r0, _0203B384 ; =sMapHeaders
 	add r0, r0, r1
 	ldrh r0, [r0, #0x12]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, pc}
 	nop
-_0203B384: .word _020F6BE0
+_0203B384: .word sMapHeaders
 	thumb_func_end MapHeader_GetMapSec
 
 	thumb_func_start sub_0203B388
@@ -1017,7 +1033,7 @@ sub_0203B388: ; 0x0203B388
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B3A4 ; =_020F6BE0
+	ldr r0, _0203B3A4 ; =sMapHeaders
 	add r0, r0, r1
 	ldrh r0, [r0, #0x12]
 	lsl r0, r0, #0x14
@@ -1026,7 +1042,7 @@ sub_0203B388: ; 0x0203B388
 	lsr r0, r0, #0x18
 	pop {r3, pc}
 	nop
-_0203B3A4: .word _020F6BE0
+_0203B3A4: .word sMapHeaders
 	thumb_func_end sub_0203B388
 
 	thumb_func_start sub_0203B3A8
@@ -1035,7 +1051,7 @@ sub_0203B3A8: ; 0x0203B3A8
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B3C4 ; =_020F6BE0
+	ldr r0, _0203B3C4 ; =sMapHeaders
 	add r0, r0, r1
 	ldrh r0, [r0, #0x12]
 	lsl r0, r0, #0x10
@@ -1044,24 +1060,24 @@ sub_0203B3A8: ; 0x0203B3A8
 	lsr r0, r0, #0x18
 	pop {r3, pc}
 	nop
-_0203B3C4: .word _020F6BE0
+_0203B3C4: .word sMapHeaders
 	thumb_func_end sub_0203B3A8
 
-	thumb_func_start sub_0203B3C8
-sub_0203B3C8: ; 0x0203B3C8
+	thumb_func_start MapHeader_IsKanto
+MapHeader_IsKanto: ; 0x0203B3C8
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B3E0 ; =_020F6BE0
+	ldr r0, _0203B3E0 ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
 	pop {r3, pc}
 	nop
-_0203B3E0: .word _020F6BE0
-	thumb_func_end sub_0203B3C8
+_0203B3E0: .word sMapHeaders
+	thumb_func_end MapHeader_IsKanto
 
 	thumb_func_start MapHeader_GetWeatherType
 MapHeader_GetWeatherType: ; 0x0203B3E4
@@ -1069,95 +1085,95 @@ MapHeader_GetWeatherType: ; 0x0203B3E4
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B3FC ; =_020F6BE0
+	ldr r0, _0203B3FC ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x19
 	pop {r3, pc}
 	nop
-_0203B3FC: .word _020F6BE0
+_0203B3FC: .word sMapHeaders
 	thumb_func_end MapHeader_GetWeatherType
 
-	thumb_func_start sub_0203B400
-sub_0203B400: ; 0x0203B400
+	thumb_func_start MapHeader_GetCameraType
+MapHeader_GetCameraType: ; 0x0203B400
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B418 ; =_020F6BE0
+	ldr r0, _0203B418 ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #0xe
 	lsr r0, r0, #0x1a
 	pop {r3, pc}
 	nop
-_0203B418: .word _020F6BE0
-	thumb_func_end sub_0203B400
+_0203B418: .word sMapHeaders
+	thumb_func_end MapHeader_GetCameraType
 
-	thumb_func_start sub_0203B41C
-sub_0203B41C: ; 0x0203B41C
+	thumb_func_start MapHeader_GetBattleBg
+MapHeader_GetBattleBg: ; 0x0203B41C
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B434 ; =_020F6BE0
+	ldr r0, _0203B434 ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #7
 	lsr r0, r0, #0x1b
 	pop {r3, pc}
 	nop
-_0203B434: .word _020F6BE0
-	thumb_func_end sub_0203B41C
+_0203B434: .word sMapHeaders
+	thumb_func_end MapHeader_GetBattleBg
 
-	thumb_func_start sub_0203B438
-sub_0203B438: ; 0x0203B438
+	thumb_func_start MapHeader_IsEscapeRopeAllowed
+MapHeader_IsEscapeRopeAllowed: ; 0x0203B438
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B450 ; =_020F6BE0
+	ldr r0, _0203B450 ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #4
 	lsr r0, r0, #0x1f
 	pop {r3, pc}
 	nop
-_0203B450: .word _020F6BE0
-	thumb_func_end sub_0203B438
+_0203B450: .word sMapHeaders
+	thumb_func_end MapHeader_IsEscapeRopeAllowed
 
-	thumb_func_start sub_0203B454
-sub_0203B454: ; 0x0203B454
+	thumb_func_start MapHeader_IsFlyAllowed
+MapHeader_IsFlyAllowed: ; 0x0203B454
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B46C ; =_020F6BE0
+	ldr r0, _0203B46C ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #3
 	lsr r0, r0, #0x1f
 	pop {r3, pc}
 	nop
-_0203B46C: .word _020F6BE0
-	thumb_func_end sub_0203B454
+_0203B46C: .word sMapHeaders
+	thumb_func_end MapHeader_IsFlyAllowed
 
-	thumb_func_start sub_0203B470
-sub_0203B470: ; 0x0203B470
+	thumb_func_start MapHeader_IsBikeAllowed
+MapHeader_IsBikeAllowed: ; 0x0203B470
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B488 ; =_020F6BE0
+	ldr r0, _0203B488 ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #6
 	lsr r0, r0, #0x1f
 	pop {r3, pc}
 	nop
-_0203B488: .word _020F6BE0
-	thumb_func_end sub_0203B470
+_0203B488: .word sMapHeaders
+	thumb_func_end MapHeader_IsBikeAllowed
 
 	thumb_func_start sub_0203B48C
 sub_0203B48C: ; 0x0203B48C
@@ -1165,14 +1181,14 @@ sub_0203B48C: ; 0x0203B48C
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B4A4 ; =_020F6BE0
+	ldr r0, _0203B4A4 ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #2
 	lsr r0, r0, #0x1f
 	pop {r3, pc}
 	nop
-_0203B4A4: .word _020F6BE0
+_0203B4A4: .word sMapHeaders
 	thumb_func_end sub_0203B48C
 
 	thumb_func_start sub_0203B4A8
@@ -1181,14 +1197,14 @@ sub_0203B4A8: ; 0x0203B4A8
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B4C0 ; =_020F6BE0
+	ldr r0, _0203B4C0 ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #1
 	lsr r0, r0, #0x1f
 	pop {r3, pc}
 	nop
-_0203B4C0: .word _020F6BE0
+_0203B4C0: .word sMapHeaders
 	thumb_func_end sub_0203B4A8
 
 	thumb_func_start sub_0203B4C4
@@ -1197,13 +1213,13 @@ sub_0203B4C4: ; 0x0203B4C4
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B4D8 ; =_020F6BE0
+	ldr r0, _0203B4D8 ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsr r0, r0, #0x1f
 	pop {r3, pc}
 	.balign 4, 0
-_0203B4D8: .word _020F6BE0
+_0203B4D8: .word sMapHeaders
 	thumb_func_end sub_0203B4C4
 
 	thumb_func_start sub_0203B4DC
@@ -1212,23 +1228,23 @@ sub_0203B4DC: ; 0x0203B4DC
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B4F4 ; =_020F6BE0
+	ldr r0, _0203B4F4 ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #0x14
 	lsr r0, r0, #0x1c
 	pop {r3, pc}
 	nop
-_0203B4F4: .word _020F6BE0
+_0203B4F4: .word sMapHeaders
 	thumb_func_end sub_0203B4DC
 
-	thumb_func_start sub_0203B4F8
-sub_0203B4F8: ; 0x0203B4F8
+	thumb_func_start MapHeader_GetFollowMode
+MapHeader_GetFollowMode: ; 0x0203B4F8
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
 	mul r1, r0
-	ldr r0, _0203B514 ; =_020F6BE0
+	ldr r0, _0203B514 ; =sMapHeaders
 	add r0, r0, r1
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #0xc
@@ -1237,17 +1253,17 @@ sub_0203B4F8: ; 0x0203B4F8
 	lsr r0, r0, #0x18
 	pop {r3, pc}
 	nop
-_0203B514: .word _020F6BE0
-	thumb_func_end sub_0203B4F8
+_0203B514: .word sMapHeaders
+	thumb_func_end MapHeader_GetFollowMode
 
-	thumb_func_start sub_0203B518
-sub_0203B518: ; 0x0203B518
+	thumb_func_start MapHeader_GetWorldMapCoords
+MapHeader_GetWorldMapCoords: ; 0x0203B518
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
-	ldr r2, _0203B53C ; =_020F6BE0
+	ldr r2, _0203B53C ; =sMapHeaders
 	mul r1, r0
 	add r1, r2, r1
 	ldrh r0, [r1, #2]
@@ -1260,14 +1276,14 @@ sub_0203B518: ; 0x0203B518
 	strh r0, [r4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0203B53C: .word _020F6BE0
-	thumb_func_end sub_0203B518
+_0203B53C: .word sMapHeaders
+	thumb_func_end MapHeader_GetWorldMapCoords
 
-	thumb_func_start sub_0203B540
-sub_0203B540: ; 0x0203B540
+	thumb_func_start MapHeader_IsOutdoors
+MapHeader_IsOutdoors: ; 0x0203B540
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203B454
+	bl MapHeader_IsFlyAllowed
 	cmp r0, #0
 	bne _0203B550
 	mov r0, #0
@@ -1283,12 +1299,12 @@ _0203B55E:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203B540
+	thumb_func_end MapHeader_IsOutdoors
 
-	thumb_func_start sub_0203B564
-sub_0203B564: ; 0x0203B564
+	thumb_func_start MapHeader_MapIsOnMainMatrix
+MapHeader_MapIsOnMainMatrix: ; 0x0203B564
 	push {r3, lr}
-	bl sub_0203B2AC
+	bl MapHeader_GetMatrixId
 	cmp r0, #0
 	bne _0203B572
 	mov r0, #1
@@ -1297,7 +1313,7 @@ _0203B572:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203B564
+	thumb_func_end MapHeader_MapIsOnMainMatrix
 
 	thumb_func_start sub_0203B578
 sub_0203B578: ; 0x0203B578
@@ -1370,9 +1386,9 @@ sub_0203B5D8: ; 0x0203B5D8
 	bx lr
 	thumb_func_end sub_0203B5D8
 
-	thumb_func_start sub_0203B5DC
-sub_0203B5DC: ; 0x0203B5DC
-	ldr r3, _0203B5F8 ; =_020F6BAC
+	thumb_func_start MapHeader_MapIsPokemonCenterSecondFloor
+MapHeader_MapIsPokemonCenterSecondFloor: ; 0x0203B5DC
+	ldr r3, _0203B5F8 ; =sPokemonCenterSecondFloorMaps
 	mov r2, #0
 _0203B5E0:
 	ldrh r1, [r3]
@@ -1388,8 +1404,8 @@ _0203B5EA:
 	mov r0, #0
 	bx lr
 	nop
-_0203B5F8: .word _020F6BAC
-	thumb_func_end sub_0203B5DC
+_0203B5F8: .word sPokemonCenterSecondFloorMaps
+	thumb_func_end MapHeader_MapIsPokemonCenterSecondFloor
 
 	thumb_func_start sub_0203B5FC
 sub_0203B5FC: ; 0x0203B5FC
@@ -1404,8 +1420,8 @@ _0203B608:
 	bx lr
 	thumb_func_end sub_0203B5FC
 
-	thumb_func_start sub_0203B60C
-sub_0203B60C: ; 0x0203B60C
+	thumb_func_start MapHeader_GetMapEvolutionMethod
+MapHeader_GetMapEvolutionMethod: ; 0x0203B60C
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0203B60C
+	thumb_func_end MapHeader_GetMapEvolutionMethod

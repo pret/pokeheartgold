@@ -184,7 +184,7 @@ ov25_02259A30: ; 0x02259A30
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80

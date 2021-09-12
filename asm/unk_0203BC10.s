@@ -1776,7 +1776,7 @@ sub_0203C920: ; 0x0203C920
 	ldr r0, [r0]
 	strh r0, [r5, #0x18]
 	ldrh r0, [r5, #0x1a]
-	bl sub_0203B564
+	bl MapHeader_MapIsOnMainMatrix
 	cmp r0, #0
 	beq _0203C9BA
 	str r6, [r5, #0x10]
@@ -1787,7 +1787,7 @@ _0203C9BA:
 	add r1, sp, #0xc
 	add r1, #2
 	add r2, sp, #0xc
-	bl sub_0203B518
+	bl MapHeader_GetWorldMapCoords
 	add r1, sp, #0xc
 	mov r0, #2
 	ldrsh r2, [r1, r0]
@@ -2290,7 +2290,7 @@ _0203CDF6:
 	add r7, r0, #0
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B60C
+	bl MapHeader_GetMapEvolutionMethod
 	strh r0, [r7, #2]
 	mov r0, #0
 	strb r0, [r7, #1]

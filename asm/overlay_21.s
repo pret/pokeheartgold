@@ -58,7 +58,7 @@ ov21_0225990C: ; 0x0225990C
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	mov r5, #0
 	ldr r2, _02259958 ; =0x022599F0
 	strh r5, [r4]
@@ -113,7 +113,7 @@ ov21_02259960: ; 0x02259960
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp]
 	mov r4, #0
 	ldr r0, [sp, #8]

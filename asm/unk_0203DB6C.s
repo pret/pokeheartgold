@@ -429,7 +429,7 @@ _0203DE2A:
 	bge _0203DE5E
 	ldrh r1, [r5, #0xe]
 	ldr r0, [sp]
-	bl sub_020403AC
+	bl VarGet
 	ldrh r1, [r5, #0xc]
 	cmp r1, r0
 	bne _0203DE5E

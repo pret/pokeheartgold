@@ -9543,7 +9543,7 @@ ov03_02258998: ; 0x02258998
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r2, r0, #0
 	lsl r2, r2, #0x18
 	ldr r0, [r6]
@@ -9602,7 +9602,7 @@ ov03_02258A18: ; 0x02258A18
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
 	bl sub_0205C654

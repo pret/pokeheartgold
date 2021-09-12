@@ -1718,7 +1718,7 @@ ScriptRunByIndex: ; 0x02040340
 	thumb_func_start LoadScriptsForCurrentMap
 LoadScriptsForCurrentMap: ; 0x02040358
 	push {r3, lr}
-	bl sub_0203B2D4
+	bl MapHeader_GetScriptsBank
 	add r1, r0, #0
 	mov r0, #0xc
 	mov r2, #0xb
@@ -1729,10 +1729,10 @@ LoadScriptsForCurrentMap: ; 0x02040358
 
 	thumb_func_start GetCurrentMapMessageBank
 GetCurrentMapMessageBank: ; 0x0204036C
-	ldr r3, _02040370 ; =sub_0203B2C0
+	ldr r3, _02040370 ; =MapHeader_GetMsgBank
 	bx r3
 	.balign 4, 0
-_02040370: .word sub_0203B2C0
+_02040370: .word MapHeader_GetMsgBank
 	thumb_func_end GetCurrentMapMessageBank
 
 	thumb_func_start sub_02040374
@@ -1765,8 +1765,8 @@ _0204039A:
 _020403A8: .word 0x00007FD6
 	thumb_func_end sub_02040374
 
-	thumb_func_start sub_020403AC
-sub_020403AC: ; 0x020403AC
+	thumb_func_start VarGet
+VarGet: ; 0x020403AC
 	push {r4, lr}
 	add r4, r1, #0
 	bl sub_02040374
@@ -1777,7 +1777,7 @@ _020403BA:
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020403AC
+	thumb_func_end VarGet
 
 	thumb_func_start sub_020403C0
 sub_020403C0: ; 0x020403C0
@@ -1809,7 +1809,7 @@ _020403E6:
 	add r1, r4, r1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020403AC
+	bl VarGet
 	pop {r3, r4, r5, pc}
 	nop
 _020403F8: .word 0x00004020
@@ -2453,11 +2453,11 @@ _02040858:
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	add r0, r5, #0
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_020403AC
+	bl VarGet
 	cmp r7, r0
 	bne _02040886
 	ldrb r0, [r4, #5]

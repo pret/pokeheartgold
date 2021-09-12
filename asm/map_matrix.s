@@ -143,7 +143,7 @@ sub_0203AFB4: ; 0x0203AFB4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0203B2AC
+	bl MapHeader_GetMatrixId
 	add r6, r0, #0
 	add r0, r4, #4
 	add r1, r6, #0

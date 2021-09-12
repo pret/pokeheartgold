@@ -153,6 +153,8 @@ Static main
 	Object script.o
 	Object fieldmap.o
 	Object scrcmd.o
+	Object scrcmd_2.o
+	Object scrcmd_3.o
 	Object pokemon.o
 	### Vendor libraries ###
 	Object middleware.o

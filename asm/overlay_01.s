@@ -1276,7 +1276,7 @@ ov01_021E63B8: ; 0x021E63B8
 	str r1, [r0]
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B27C
+	bl MapHeader_GetAreaDataBank
 	bl ov01_021FB888
 	str r0, [r5, #0x34]
 	bl ov01_021FB934
@@ -1290,7 +1290,7 @@ ov01_021E63B8: ; 0x021E63B8
 	str r0, [r1]
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B290
+	bl MapHeader_GetMoveModelBank
 	add r4, r0, #0
 	ldr r0, [r5, #0x38]
 	cmp r0, #0
@@ -4411,11 +4411,11 @@ ov01_021E7C70: ; 0x021E7C70
 	beq _021E7CBA
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B564
+	bl MapHeader_MapIsOnMainMatrix
 	cmp r0, #1
 	bne _021E7CFC
 	ldr r0, [sp, #8]
-	bl sub_0203B564
+	bl MapHeader_MapIsOnMainMatrix
 	cmp r0, #0
 	bne _021E7CFC
 	ldr r0, [r4, #0x40]
@@ -4441,11 +4441,11 @@ _021E7CBA:
 	beq _021E7CFC
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B564
+	bl MapHeader_MapIsOnMainMatrix
 	cmp r0, #1
 	bne _021E7CFC
 	ldr r0, [sp, #8]
-	bl sub_0203B564
+	bl MapHeader_MapIsOnMainMatrix
 	cmp r0, #0
 	bne _021E7CFC
 	ldr r0, [r4, #0x40]
@@ -19810,7 +19810,7 @@ ov01_021EF064: ; 0x021EF064
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -19843,7 +19843,7 @@ ov01_021EF0A4: ; 0x021EF0A4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -19851,7 +19851,7 @@ ov01_021EF0A4: ; 0x021EF0A4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	mov r0, #1
 	mov r1, #0x1b
@@ -19879,7 +19879,7 @@ ov01_021EF0F0: ; 0x021EF0F0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -19887,7 +19887,7 @@ ov01_021EF0F0: ; 0x021EF0F0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	mov r0, #1
 	mov r1, #0x1b
@@ -20064,7 +20064,7 @@ ov01_021EF268: ; 0x021EF268
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -20179,7 +20179,7 @@ ov01_021EF35C: ; 0x021EF35C
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -20209,7 +20209,7 @@ ov01_021EF398: ; 0x021EF398
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, r5, #0
@@ -20244,7 +20244,7 @@ ov01_021EF3E0: ; 0x021EF3E0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r2, r0, #0
 	mov r3, #0
 	str r3, [sp]
@@ -57992,7 +57992,7 @@ ov01_02200AF0: ; 0x02200AF0
 	ldr r0, [sp, #0x1c]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp, #0x30]
 	ldr r0, [sp, #0x1c]
 	bl ScriptReadHalfword
@@ -58000,7 +58000,7 @@ ov01_02200AF0: ; 0x02200AF0
 	ldr r0, [sp, #0x1c]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp, #0x34]
 	ldr r0, [sp, #0x1c]
 	bl ScriptReadHalfword
@@ -58864,7 +58864,7 @@ ov01_022011D4: ; 0x022011D4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -59150,14 +59150,14 @@ ov01_02201424: ; 0x02201424
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r1, sp, #0
 	strh r0, [r1]
 	ldr r0, [r4, #0xc]
@@ -59265,7 +59265,7 @@ ov01_02201518: ; 0x02201518
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -59273,7 +59273,7 @@ ov01_02201518: ; 0x02201518
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -59281,13 +59281,13 @@ ov01_02201518: ; 0x02201518
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get
@@ -59319,7 +59319,7 @@ ov01_02201594: ; 0x02201594
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -59656,7 +59656,7 @@ ov01_02201844: ; 0x02201844
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -59816,7 +59816,7 @@ ov01_02201990: ; 0x02201990
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020403AC
+	bl VarGet
 	add r1, r0, #0
 	mov r0, #1
 	bl sub_02005B50
@@ -59834,7 +59834,7 @@ ov01_022019B0: ; 0x022019B0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -59864,7 +59864,7 @@ ov01_022019F0: ; 0x022019F0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r1, r0, #0
 	add r4, #0x80
 	ldr r0, [r4]
@@ -59885,7 +59885,7 @@ ov01_02201A18: ; 0x02201A18
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r1, r0, #0
 	add r4, #0x80
 	ldr r0, [r4]
@@ -59917,7 +59917,7 @@ ov01_02201A50: ; 0x02201A50
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -59925,7 +59925,7 @@ ov01_02201A50: ; 0x02201A50
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -59933,7 +59933,7 @@ ov01_02201A50: ; 0x02201A50
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -59941,7 +59941,7 @@ ov01_02201A50: ; 0x02201A50
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	str r0, [sp]
 	ldr r0, [r5]
@@ -59964,7 +59964,7 @@ ov01_02201AB8: ; 0x02201AB8
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -59972,7 +59972,7 @@ ov01_02201AB8: ; 0x02201AB8
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -60036,7 +60036,7 @@ ov01_02201B40: ; 0x02201B40
 	add r0, r6, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	add r0, r6, #0
@@ -60141,7 +60141,7 @@ ov01_02201C08: ; 0x02201C08
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -60314,7 +60314,7 @@ ov01_02201D4C: ; 0x02201D4C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -60361,7 +60361,7 @@ ov01_02201DA4: ; 0x02201DA4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -60511,7 +60511,7 @@ ov01_02201F10: ; 0x02201F10
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r1, r0, #0
 	ldr r0, [r4, #0x74]
 	bl ov03_02258CFC
@@ -60833,7 +60833,7 @@ ov01_022021AC: ; 0x022021AC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -61018,7 +61018,7 @@ ov01_0220233C: ; 0x0220233C
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -61184,7 +61184,7 @@ ov01_02202480: ; 0x02202480
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	add r6, r0, #0
 	ldr r0, [r5]
@@ -61327,7 +61327,7 @@ ov01_022025A8: ; 0x022025A8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -61359,7 +61359,7 @@ ov01_022025EC: ; 0x022025EC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61423,7 +61423,7 @@ ov01_02202674: ; 0x02202674
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -61453,7 +61453,7 @@ ov01_022026B4: ; 0x022026B4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -61461,7 +61461,7 @@ ov01_022026B4: ; 0x022026B4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -61751,7 +61751,7 @@ ov01_02202908: ; 0x02202908
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020403AC
+	bl VarGet
 	cmp r0, #0
 	beq _02202926
 	mov r0, #8
@@ -61778,7 +61778,7 @@ ov01_02202930: ; 0x02202930
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r5, [r5]
@@ -61977,7 +61977,7 @@ ov01_02202ABC: ; 0x02202ABC
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -62004,7 +62004,7 @@ ov01_02202B00: ; 0x02202B00
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -62012,7 +62012,7 @@ ov01_02202B00: ; 0x02202B00
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -62061,7 +62061,7 @@ ov01_02202B78: ; 0x02202B78
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -62069,7 +62069,7 @@ ov01_02202B78: ; 0x02202B78
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -62077,7 +62077,7 @@ ov01_02202B78: ; 0x02202B78
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	add r7, r0, #0
 	ldr r0, [r5]
@@ -62101,7 +62101,7 @@ ov01_02202BD0: ; 0x02202BD0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -62145,7 +62145,7 @@ ov01_02202C28: ; 0x02202C28
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -62461,7 +62461,7 @@ ov01_02202E68: ; 0x02202E68
 	ldr r0, [sp, #0x14]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [sp, #0x14]
 	bl ScriptReadHalfword
@@ -62469,7 +62469,7 @@ ov01_02202E68: ; 0x02202E68
 	ldr r0, [sp, #0x14]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	ldr r0, [sp, #0x14]
 	bl ScriptReadHalfword
@@ -62477,7 +62477,7 @@ ov01_02202E68: ; 0x02202E68
 	ldr r0, [sp, #0x14]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	ldr r0, [sp, #0x14]
 	bl ScriptReadHalfword
@@ -62708,7 +62708,7 @@ ov01_02203094: ; 0x02203094
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -62716,7 +62716,7 @@ ov01_02203094: ; 0x02203094
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -62787,7 +62787,7 @@ ov01_02203138: ; 0x02203138
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -62795,7 +62795,7 @@ ov01_02203138: ; 0x02203138
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x28
@@ -67105,7 +67105,7 @@ ov01_02205164: ; 0x02205164
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -67113,7 +67113,7 @@ ov01_02205164: ; 0x02205164
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x28
@@ -67452,7 +67452,7 @@ ov01_022053EC: ; 0x022053EC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	ldr r6, _02205420 ; =SDK_OVERLAY_OVY_25_ID
 	add r4, r0, #0
 	add r0, r6, #0

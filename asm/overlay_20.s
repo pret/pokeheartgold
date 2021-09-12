@@ -240,7 +240,7 @@ ov20_02259A88: ; 0x02259A88
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
@@ -315,7 +315,7 @@ ov20_02259B40: ; 0x02259B40
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get
@@ -350,7 +350,7 @@ ov20_02259B88: ; 0x02259B88
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -358,14 +358,14 @@ ov20_02259B88: ; 0x02259B88
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
@@ -399,7 +399,7 @@ ov20_02259BF4: ; 0x02259BF4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -407,14 +407,14 @@ ov20_02259BF4: ; 0x02259BF4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get

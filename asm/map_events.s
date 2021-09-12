@@ -446,7 +446,7 @@ sub_0203B8C4: ; 0x0203B8C4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
-	bl sub_0203B2E8
+	bl MapHeader_GetLevelScriptsBank
 	mov r1, #0x82
 	lsl r1, r1, #4
 	mov r2, #1

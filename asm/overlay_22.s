@@ -16,7 +16,7 @@ ov22_022598C0: ; 0x022598C0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -24,7 +24,7 @@ ov22_022598C0: ; 0x022598C0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -118,7 +118,7 @@ ov22_0225998C: ; 0x0225998C
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
@@ -140,7 +140,7 @@ ov22_022599B8: ; 0x022599B8
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
@@ -263,7 +263,7 @@ ov22_02259A9C: ; 0x02259A9C
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
@@ -285,7 +285,7 @@ ov22_02259ADC: ; 0x02259ADC
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl sub_02031968
@@ -307,7 +307,7 @@ ov22_02259B08: ; 0x02259B08
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl sub_02031968
@@ -337,7 +337,7 @@ ov22_02259B34: ; 0x02259B34
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r6, #0xc]
 	bl sub_02031968

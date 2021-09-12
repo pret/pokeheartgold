@@ -26858,7 +26858,7 @@ _021F464C:
 	pop {r3, r4, r5, pc}
 _021F465C:
 	add r0, r5, #0
-	bl sub_0203B3C8
+	bl MapHeader_IsKanto
 	cmp r0, #0
 	beq _021F4690
 	ldr r0, [r4, #0xc]
@@ -27841,7 +27841,7 @@ _021F4DD6:
 	ldr r4, [r7, #0xc]
 	ldr r5, [r4, #0x20]
 	ldrh r0, [r5, #0x10]
-	bl sub_0203B3C8
+	bl MapHeader_IsKanto
 	add r3, r0, #0
 	add r0, r7, #0
 	add r0, #0x30
@@ -32333,7 +32333,7 @@ _021F7020:
 	cmp r0, #0
 	beq _021F707C
 	add r0, r4, #0
-	bl sub_0203B3C8
+	bl MapHeader_IsKanto
 	add r1, r7, #0
 	add r1, #0x66
 	ldrb r1, [r1]
