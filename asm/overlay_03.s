@@ -206,7 +206,7 @@ _02253F84:
 	str r0, [r2, #0x74]
 	ldr r0, [r1]
 	ldr r0, [r0, #0x68]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, _02254050 ; =0x022598A0
 	ldr r1, [r1]

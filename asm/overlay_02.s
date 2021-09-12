@@ -18280,7 +18280,7 @@ ov02_0224E4EC: ; 0x0224E4EC
 	add r4, r0, #0
 	bl MIi_CpuFill8
 	add r0, r5, #0
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	str r0, [r4]
 	mov r0, #0x43
 	lsl r0, r0, #2

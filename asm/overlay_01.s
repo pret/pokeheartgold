@@ -621,7 +621,7 @@ _021E5EB4: .word SDK_OVERLAY_OVY_3_ID
 	thumb_func_start ov01_021E5EB8
 ov01_021E5EB8: ; 0x021E5EB8
 	push {r3, lr}
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl sub_0202A998
 	bl sub_0202AEBC
 	cmp r0, #0
@@ -20270,7 +20270,7 @@ ov01_021EF41C: ; 0x021EF41C
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	ldr r0, [r5, #8]
 	add r1, r0, #1
@@ -20282,7 +20282,7 @@ ov01_021EF41C: ; 0x021EF41C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldrb r4, [r1]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0

@@ -72858,7 +72858,7 @@ _0209112E:
 	bl sub_0205064C
 	add r6, r0, #0
 	ldr r5, [r4, #0xc]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	ldr r0, [r6, #0x20]
@@ -72886,7 +72886,7 @@ _0209112E:
 	add r1, r5, #0
 	bl sub_02093134
 	add r0, r6, #0
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	ldr r1, [r4, #0xc]
 	bl sub_0202ECC0
 	ldr r0, [r4, #4]
@@ -72909,7 +72909,7 @@ _0209119A:
 	bl GetMonData
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [sp]
 	mov r0, #0
@@ -76465,7 +76465,7 @@ _02092CC8:
 	bl MapMatrix_Free
 _02092CE2:
 	add r0, r5, #0
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	strb r0, [r4, #7]
@@ -82852,7 +82852,7 @@ _02095E72:
 	ldr r0, [r4, #4]
 	str r1, [r0, #4]
 	add r0, r5, #0
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	ldr r1, [r4, #4]
 	str r0, [r1]
 	ldrh r1, [r4, #0xc]
@@ -87046,7 +87046,7 @@ sub_02097D3C: ; 0x02097D3C
 	bl AllocFromHeapAtEnd
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	ldr r1, [r4, #4]
 	add r2, r4, #0
 	str r0, [r1, #4]

@@ -665,11 +665,11 @@ sub_0203E340: ; 0x0203E340
 	bx lr
 	thumb_func_end sub_0203E340
 
-	thumb_func_start sub_0203E344
-sub_0203E344: ; 0x0203E344
+	thumb_func_start ScriptEnvironment_GetSav2Ptr
+ScriptEnvironment_GetSav2Ptr: ; 0x0203E344
 	ldr r0, [r0, #0xc]
 	bx lr
-	thumb_func_end sub_0203E344
+	thumb_func_end ScriptEnvironment_GetSav2Ptr
 
 	thumb_func_start sub_0203E348
 sub_0203E348: ; 0x0203E348

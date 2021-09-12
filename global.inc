@@ -26544,7 +26544,7 @@
 .public sub_0203E30C
 .public sub_0203E33C
 .public sub_0203E340
-.public sub_0203E344
+.public ScriptEnvironment_GetSav2Ptr
 .public sub_0203E348
 .public sub_0203E354
 .public sub_0203E368
@@ -29232,3 +29232,6 @@
 .public sub_0206A798
 .public sub_0206A860
 .public sub_0206DCC4
+.public sub_0205BB1C
+.public sub_02066B00
+.public sub_02066B28

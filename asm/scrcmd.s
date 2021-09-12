@@ -7370,12 +7370,12 @@ sub_02044124: ; 0x02044124
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, #0x80
 	str r0, [sp, #4]
 	ldr r0, [r5]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl sub_02015C28
 	add r5, r0, #0
 	cmp r4, #0
@@ -7809,7 +7809,7 @@ sub_02044490: ; 0x02044490
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r4, #0x80
 	add r5, r0, #0
@@ -7837,7 +7837,7 @@ sub_020444CC: ; 0x020444CC
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, r0, #0
 	add r0, r4, #0
@@ -7882,7 +7882,7 @@ sub_02044534: ; 0x02044534
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, r0, #0
 	add r0, r4, #0
@@ -7921,7 +7921,7 @@ sub_0204458C: ; 0x0204458C
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r5, #0
@@ -7977,7 +7977,7 @@ sub_020445F8: ; 0x020445F8
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r5, #0
@@ -8509,7 +8509,7 @@ sub_02044A1C: ; 0x02044A1C
 	add r0, #0x80
 	ldr r4, [r0]
 	add r0, r4, #0
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl sub_0202A998
 	bl sub_0202AEBC
 	cmp r0, #1
@@ -8530,7 +8530,7 @@ sub_02044A44: ; 0x02044A44
 	add r0, #0x80
 	ldr r4, [r0]
 	add r0, r4, #0
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl sub_0202A998
 	bl sub_0202AEBC
 	cmp r0, #1
@@ -8556,7 +8556,7 @@ sub_02044A6C: ; 0x02044A6C
 	str r1, [r0, #8]
 	add r0, r4, #0
 	ldrb r5, [r2]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl sub_0202A998
 	bl sub_0202AEBC
 	cmp r0, #1
@@ -10064,7 +10064,7 @@ sub_0204560C: ; 0x0204560C
 	add r0, #0x80
 	ldr r6, [r0]
 	add r0, r6, #0
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #8]
 	add r0, r5, #0
@@ -10158,7 +10158,7 @@ sub_020456D8: ; 0x020456D8
 	add r0, #0x80
 	ldr r6, [r0]
 	add r0, r6, #0
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #8]
 	add r0, r5, #0
@@ -13266,7 +13266,7 @@ sub_02046F34: ; 0x02046F34
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
@@ -13288,7 +13288,7 @@ sub_02046F6C: ; 0x02046F6C
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl sub_0202ED7C
 	ldr r2, [r4, #8]
 	add r1, r2, #1
@@ -13339,7 +13339,7 @@ sub_02046FC8: ; 0x02046FC8
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl sub_0202ED7C
 	add r4, r0, #0
 	add r0, r5, #0
@@ -13365,7 +13365,7 @@ sub_02046FFC: ; 0x02046FFC
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl sub_0202ED7C
 	add r6, r0, #0
 	add r0, r4, #0
