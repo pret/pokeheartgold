@@ -157,6 +157,11 @@ Static main
 	Object scrcmd_3.o
 	Object scrcmd_4.o
 	Object scrcmd_5.o
+	Object scrcmd_6.o
+	Object scrcmd_7.o
+	Object scrcmd_8.o
+	Object scrcmd_9.o
+	Object scrcmd_10.o
 	Object pokemon.o
 	### Vendor libraries ###
 	Object middleware.o

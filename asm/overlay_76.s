@@ -500,7 +500,7 @@ _021E5D18:
 	cmp r1, r0
 	blt _021E5D74
 	ldr r0, _021E5D90 ; =0x000003F9
-	bl sub_02005D48
+	bl PlayBGM
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

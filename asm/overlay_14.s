@@ -24,7 +24,7 @@ ov14_021E5900: ; 0x021E5900
 	bl OverlayManager_GetField18
 	str r0, [r4]
 	ldr r0, [r0]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	str r0, [r4, #4]
 	bl sub_02073D4C
 	strb r0, [r4, #0x1f]
@@ -1031,7 +1031,7 @@ _021E60F0:
 	pop {r3, r4, r5, pc}
 _021E60F8:
 	ldr r0, [r5, #4]
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov14_021E60C0
 
@@ -30498,7 +30498,7 @@ _021F4A8A:
 	ldr r0, [r0, #4]
 	ldr r1, [sp, #4]
 	add r2, r3, r2
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	str r0, [sp, #0x28]
 	bl sub_0206DDD8
 	str r0, [sp, #0x24]

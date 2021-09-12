@@ -13160,7 +13160,7 @@ _0223E29A:
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x10]
 	add r2, r4, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	ldr r2, [r5, r6]
 	lsl r1, r4, #2
 	add r1, r2, r1
@@ -13181,7 +13181,7 @@ _0223E2BA:
 	ldr r1, [sp, #0x10]
 	add r2, r4, #0
 	add r7, r5, r6
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	ldr r1, [sp, #0x1c]
 	str r4, [sp]
 	str r1, [sp, #4]
@@ -13431,7 +13431,7 @@ _0223E4CE:
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov70_0223E49C
@@ -18295,7 +18295,7 @@ ov70_022409C0: ; 0x022409C0
 	add r2, r2, #2
 	ldrh r2, [r5, r2]
 	ldr r0, [r0, #0xc]
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	add r1, r4, #0
 	bl CopyBoxPokemonToPokemon
 	mov r2, #0x12

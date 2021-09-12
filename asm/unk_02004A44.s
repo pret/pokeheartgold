@@ -778,7 +778,7 @@ _02004FF8:
 	add r0, r4, #0
 	bl sub_020052C8
 	add r0, r5, #0
-	bl sub_02005D48
+	bl PlayBGM
 	b _0200505A
 _02005006:
 	mov r0, #1
@@ -925,7 +925,7 @@ _02005130:
 	pop {r3, r4, r5, r6, r7, pc}
 _0200513C:
 	add r0, r5, #0
-	bl sub_02005D48
+	bl PlayBGM
 _02005142:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1047,7 +1047,7 @@ sub_02005228: ; 0x02005228
 	mov r0, #1
 	bl sub_020059E0
 	add r0, r4, #0
-	bl sub_02005D48
+	bl PlayBGM
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02005228
@@ -1063,7 +1063,7 @@ sub_02005260: ; 0x02005260
 	mov r0, #4
 	bl sub_02005060
 	add r0, r4, #0
-	bl sub_02005D48
+	bl PlayBGM
 	pop {r4, pc}
 	thumb_func_end sub_02005260
 
@@ -1079,7 +1079,7 @@ sub_02005280: ; 0x02005280
 	mov r0, #1
 	bl sub_020059E0
 	add r0, r4, #0
-	bl sub_02005D48
+	bl PlayBGM
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02005280
@@ -1096,7 +1096,7 @@ sub_020052A4: ; 0x020052A4
 	mov r0, #1
 	bl sub_020059E0
 	add r0, r4, #0
-	bl sub_02005D48
+	bl PlayBGM
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_020052A4
@@ -1126,7 +1126,7 @@ sub_020052E4: ; 0x020052E4
 	add r0, r5, #0
 	bl sub_02005060
 	add r0, r4, #0
-	bl sub_02005D48
+	bl PlayBGM
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_020052E4
@@ -1138,7 +1138,7 @@ sub_02005304: ; 0x02005304
 	bl GetSoundDataPointer
 	bl sub_02005B20
 	add r0, r4, #0
-	bl sub_02005D48
+	bl PlayBGM
 	pop {r4, pc}
 	thumb_func_end sub_02005304
 
@@ -2459,7 +2459,7 @@ _02005C3C:
 	cmp r4, r0
 	beq _02005C60
 	add r0, r4, #0
-	bl sub_02005D48
+	bl PlayBGM
 _02005C60:
 	mov r0, #0
 	add r1, r5, #0

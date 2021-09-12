@@ -486,7 +486,7 @@ ov24_02259C10: ; 0x02259C10
 	cmp r0, #6
 	blo _02259C8A
 	ldr r0, [r4, #4]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r5, r0, #0
 	ldr r0, [r4, #0x10]
 	bl sub_02070DB0

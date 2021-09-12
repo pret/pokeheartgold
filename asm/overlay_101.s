@@ -24732,7 +24732,7 @@ _021F3634:
 	pop {r4, r5, r6, pc}
 _021F3642:
 	ldr r0, [r4, #0x1c]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r6, r0, #0
 	bl sub_02073D4C
 	add r1, r0, #0
@@ -27425,7 +27425,7 @@ _021F4AA0:
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x20]
 	ldrh r0, [r0, #2]
-	bl sub_02005D48
+	bl PlayBGM
 	bl sub_0203E354
 	ldr r0, [r4, #8]
 	add r0, r0, #1

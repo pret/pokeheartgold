@@ -13837,7 +13837,7 @@ _021EBF44:
 	lsl r0, r0, #4
 	bl PlaySE
 	ldr r0, _021EC004 ; =0x00000476
-	bl sub_02005D48
+	bl PlayBGM
 	add r0, r4, #0
 	add r0, #0xb1
 	ldrb r0, [r0]
@@ -21804,7 +21804,7 @@ _021EFDC0: ; jump table
 _021EFDCC:
 	mov r0, #0x47
 	lsl r0, r0, #4
-	bl sub_02005D48
+	bl PlayBGM
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -37676,7 +37676,7 @@ _021F7BCC:
 	b _021F7C32
 _021F7BFC:
 	ldr r0, _021F7C48 ; =0x00000473
-	bl sub_02005D48
+	bl PlayBGM
 	mov r0, #6
 	mov r1, #1
 	str r0, [sp]

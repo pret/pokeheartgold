@@ -9517,7 +9517,7 @@ ov03_02258978: ; 0x02258978
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r0, #0
 	ldr r0, [r4, #0x74]
 	bl sub_02097720
@@ -9570,14 +9570,14 @@ ov03_022589D4: ; 0x022589D4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r0, #0
 	add r0, r6, #0
 	bl ov02_0224E754
@@ -9811,7 +9811,7 @@ ov03_02258BDC: ; 0x02258BDC
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
@@ -9844,7 +9844,7 @@ ov03_02258C00: ; 0x02258C00
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get

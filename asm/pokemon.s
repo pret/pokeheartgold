@@ -13583,8 +13583,8 @@ _02074044:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02074014
 
-	thumb_func_start sub_02074058
-sub_02074058: ; 0x02074058
+	thumb_func_start PCStorage_GetMonByIndexPair
+PCStorage_GetMonByIndexPair: ; 0x02074058
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13616,7 +13616,7 @@ _02074086:
 	add r0, r1, r0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_02074058
+	thumb_func_end PCStorage_GetMonByIndexPair
 
 	thumb_func_start sub_02074094
 sub_02074094: ; 0x02074094
@@ -54183,7 +54183,7 @@ _02087D88:
 	ldr r0, [r5, #0x28]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
-	bl sub_02054FA8
+	bl GetMapMusic
 	bl sub_02004AC8
 	mov r0, #0
 	add r1, r4, #0
@@ -76988,7 +76988,7 @@ _02093088:
 	pop {r4, pc}
 _0209309C:
 	ldr r0, [r4, #0xc]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	bl sub_02073DFC
 	cmp r0, #0
 	beq _020930AE

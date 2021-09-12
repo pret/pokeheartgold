@@ -2605,12 +2605,12 @@ _021E6CD6:
 	cmp r1, r0
 	bne _021E6CE8
 	ldrh r0, [r4, #0x18]
-	bl sub_02005D48
+	bl PlayBGM
 	b _021E6CF0
 _021E6CE8:
 	lsl r0, r1, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02005D48
+	bl PlayBGM
 _021E6CF0:
 	mov r0, #1
 	pop {r3, r4, r5, pc}

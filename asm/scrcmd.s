@@ -38,7 +38,7 @@ sub_020408A4: ; 0x020408A4
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02040374
+	bl GetVarPointer
 	strh r7, [r0]
 	ldr r1, _020408D4 ; =sub_020408D8
 	add r0, r5, #0
@@ -59,7 +59,7 @@ sub_020408D8: ; 0x020408D8
 	lsl r1, r1, #0x10
 	ldr r0, [r0]
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	ldrh r1, [r0]
 	sub r1, r1, #1
 	strh r1, [r0]
@@ -356,7 +356,7 @@ sub_02040ACC: ; 0x02040ACC
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	ldrh r5, [r0]
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -378,7 +378,7 @@ sub_02040AF8: ; 0x02040AF8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -386,7 +386,7 @@ sub_02040AF8: ; 0x02040AF8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r0, #0
 	ldrh r0, [r4]
 	ldrh r1, [r1]
@@ -758,14 +758,14 @@ sub_02040DB8: ; 0x02040DB8
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldrh r1, [r6]
 	add r0, r5, #0
@@ -786,7 +786,7 @@ sub_02040DF4: ; 0x02040DF4
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r0, #0
 	ldrh r1, [r1]
 	add r0, r4, #0
@@ -807,7 +807,7 @@ sub_02040E1C: ; 0x02040E1C
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r0, #0
 	ldrh r1, [r1]
 	add r0, r4, #0
@@ -885,7 +885,7 @@ sub_02040EB4: ; 0x02040EB4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -909,7 +909,7 @@ sub_02040EE4: ; 0x02040EE4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -933,7 +933,7 @@ sub_02040F14: ; 0x02040F14
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -952,14 +952,14 @@ sub_02040F38: ; 0x02040F38
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	ldrh r0, [r0]
 	strh r0, [r4]
 	mov r0, #0
@@ -976,7 +976,7 @@ sub_02040F68: ; 0x02040F68
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -1728,7 +1728,7 @@ sub_02041520: ; 0x02041520
 	lsl r1, r1, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	ldr r0, [r4, #0x68]
 	bl ov01_021F3D84
@@ -1824,7 +1824,7 @@ sub_020415E0: ; 0x020415E0
 	lsl r1, r1, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	ldr r0, _0204166C ; =gMain
 	ldr r1, _02041670 ; =0x0000FFFF
@@ -1963,7 +1963,7 @@ sub_020416E4: ; 0x020416E4
 	lsl r1, r1, #0x10
 	add r0, r6, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
 	mov r1, #4
@@ -2059,7 +2059,7 @@ sub_02041770: ; 0x02041770
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x28]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #0x2c]
 	add r0, r5, #0
 	add r0, #0x80
@@ -2200,7 +2200,7 @@ sub_020418B4: ; 0x020418B4
 	lsl r1, r1, #0x10
 	ldr r0, [r0]
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	ldrh r1, [r0]
 	ldr r0, _020418D8 ; =0x0000EEEE
 	cmp r1, r0
@@ -2243,7 +2243,7 @@ sub_02041900: ; 0x02041900
 	lsl r1, r1, #0x10
 	add r0, r5, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -2412,7 +2412,7 @@ sub_02041A48: ; 0x02041A48
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -2420,7 +2420,7 @@ sub_02041A48: ; 0x02041A48
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r2, r0, #0
 	ldr r0, [r4]
 	add r1, r6, #0
@@ -3461,14 +3461,14 @@ sub_020422B4: ; 0x020422B4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205C67C
@@ -3505,14 +3505,14 @@ sub_020422F8: ; 0x020422F8
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	cmp r5, #0
 	beq _0204235A
@@ -3544,7 +3544,7 @@ sub_0204236C: ; 0x0204236C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -3721,7 +3721,7 @@ sub_020424E8: ; 0x020424E8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	mov r0, #0
 	strh r0, [r4]
@@ -3764,7 +3764,7 @@ sub_02042530: ; 0x02042530
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -3855,7 +3855,7 @@ sub_020425F8: ; 0x020425F8
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
@@ -3893,7 +3893,7 @@ sub_02042644: ; 0x02042644
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -3901,7 +3901,7 @@ sub_02042644: ; 0x02042644
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r6, r0, #0
 	ldr r0, [r4]
@@ -3956,7 +3956,7 @@ sub_020426C4: ; 0x020426C4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -3964,7 +3964,7 @@ sub_020426C4: ; 0x020426C4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp]
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -3972,7 +3972,7 @@ sub_020426C4: ; 0x020426C4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r7, r0, #0
 	ldr r0, [r4]
@@ -4035,7 +4035,7 @@ sub_02042768: ; 0x02042768
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -4043,7 +4043,7 @@ sub_02042768: ; 0x02042768
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp]
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -4051,7 +4051,7 @@ sub_02042768: ; 0x02042768
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r7, r0, #0
 	ldr r0, [r4]
@@ -4118,7 +4118,7 @@ sub_0204280C: ; 0x0204280C
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
@@ -4221,7 +4221,7 @@ sub_020428D8: ; 0x020428D8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	mov r0, #0x20
 	bl sub_02095EF8
@@ -4263,7 +4263,7 @@ sub_02042948: ; 0x02042948
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -4489,7 +4489,7 @@ sub_02042ACC: ; 0x02042ACC
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	ldr r1, [r4]
 	ldr r1, [r1, #4]
 	strh r1, [r0]
@@ -4507,7 +4507,7 @@ sub_02042AFC: ; 0x02042AFC
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	bl sub_0203769C
 	strh r0, [r4]
@@ -4704,7 +4704,7 @@ sub_02042C78: ; 0x02042C78
 	lsl r1, r1, #0x10
 	ldr r0, [r0]
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	ldr r0, [r4]
 	ldrb r0, [r0]
 	cmp r0, #3
@@ -4753,7 +4753,7 @@ sub_02042CE0: ; 0x02042CE0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r0, #0
 	ldr r0, [r4, #0x74]
 	bl sub_020961D8
@@ -4779,7 +4779,7 @@ sub_02042D00: ; 0x02042D00
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -4820,7 +4820,7 @@ sub_02042D58: ; 0x02042D58
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r5, #0
 	add r1, #0x80
 	add r6, r0, #0
@@ -4864,7 +4864,7 @@ sub_02042DC0: ; 0x02042DC0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -5172,7 +5172,7 @@ sub_02043008: ; 0x02043008
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	mov r1, #0
 	strh r1, [r0]
 	ldr r1, [sp]
@@ -5204,7 +5204,7 @@ sub_02043044: ; 0x02043044
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -5243,7 +5243,7 @@ sub_020430A4: ; 0x020430A4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r0, #0
 	ldr r0, [r4, #0x74]
 	bl sub_02078B78
@@ -5314,7 +5314,7 @@ sub_02043124: ; 0x02043124
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
@@ -5389,7 +5389,7 @@ sub_020431B4: ; 0x020431B4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -5414,7 +5414,7 @@ sub_020431E4: ; 0x020431E4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	mov r2, #0
 	str r2, [sp]
 	str r2, [sp, #4]
@@ -5475,7 +5475,7 @@ _0204325C:
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #5
@@ -5527,7 +5527,7 @@ sub_020432CC: ; 0x020432CC
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	bl sub_0205A894
 	add r5, r0, #0
@@ -5563,7 +5563,7 @@ sub_020432FC: ; 0x020432FC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -5571,7 +5571,7 @@ sub_020432FC: ; 0x020432FC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r3, r0, #0
 	ldr r0, _02043358 ; =0x0000FFFF
 	add r5, #0x80
@@ -5600,7 +5600,7 @@ sub_0204335C: ; 0x0204335C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -5608,7 +5608,7 @@ sub_0204335C: ; 0x0204335C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -5616,7 +5616,7 @@ sub_0204335C: ; 0x0204335C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	ldr r1, _020433B8 ; =0x0000FFFF
 	add r5, #0x80
 	strh r1, [r4]
@@ -5843,7 +5843,7 @@ sub_02043548: ; 0x02043548
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	ldr r1, [r5]
 	strh r1, [r0]
 	mov r0, #0
@@ -5859,7 +5859,7 @@ sub_02043574: ; 0x02043574
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	ldr r1, [r4]
 	ldr r1, [r1, #0x20]
@@ -5886,7 +5886,7 @@ sub_02043598: ; 0x02043598
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	mov r0, #0
 	strh r0, [r4]
@@ -6144,7 +6144,7 @@ sub_020437B4: ; 0x020437B4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -6266,7 +6266,7 @@ sub_0204389C: ; 0x0204389C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -6318,14 +6318,14 @@ sub_020438EC: ; 0x020438EC
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #2
@@ -6347,7 +6347,7 @@ sub_02043938: ; 0x02043938
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -6507,7 +6507,7 @@ sub_02043A98: ; 0x02043A98
 	lsl r1, r1, #0x10
 	ldr r0, [r0]
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	bl ov03_02255BFC
 	cmp r0, #0
@@ -6580,7 +6580,7 @@ sub_02043B30: ; 0x02043B30
 	lsl r1, r1, #0x10
 	ldr r0, [r0]
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	bl ov03_02255C64
 	cmp r0, #0
@@ -6708,7 +6708,7 @@ sub_02043C24: ; 0x02043C24
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -6746,7 +6746,7 @@ sub_02043C54: ; 0x02043C54
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -6782,7 +6782,7 @@ sub_02043CB4: ; 0x02043CB4
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02029EF4
@@ -6806,7 +6806,7 @@ sub_02043CE4: ; 0x02043CE4
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02029EA0
@@ -6830,7 +6830,7 @@ sub_02043D14: ; 0x02043D14
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02029E48
@@ -6854,7 +6854,7 @@ sub_02043D44: ; 0x02043D44
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02029E0C
@@ -6895,14 +6895,14 @@ sub_02043D78: ; 0x02043D78
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	cmp r6, #0
 	bne _02043DE6
@@ -7126,7 +7126,7 @@ sub_02043F70: ; 0x02043F70
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_02027500
@@ -7170,7 +7170,7 @@ sub_02043FC4: ; 0x02043FC4
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov01_021F43E8
@@ -7200,7 +7200,7 @@ sub_02043FFC: ; 0x02043FFC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -7275,7 +7275,7 @@ sub_0204407C: ; 0x0204407C
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl sub_0205A6AC
@@ -7294,7 +7294,7 @@ sub_020440AC: ; 0x020440AC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7461,7 +7461,7 @@ sub_020441D8: ; 0x020441D8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7493,7 +7493,7 @@ sub_02044230: ; 0x02044230
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7531,7 +7531,7 @@ sub_02044270: ; 0x02044270
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r6]
 	bl sub_0205F24C
@@ -7568,7 +7568,7 @@ sub_020442AC: ; 0x020442AC
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r6]
 	bl sub_0205F24C
@@ -7612,7 +7612,7 @@ sub_02044318: ; 0x02044318
 	lsl r1, r1, #0x10
 	add r0, r6, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	cmp r4, #0
 	bne _02044340
 	mov r0, #0
@@ -7711,7 +7711,7 @@ sub_020443D8: ; 0x020443D8
 	lsl r1, r1, #0x10
 	ldr r0, [r0]
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7760,7 +7760,7 @@ sub_02044434: ; 0x02044434
 	lsl r1, r1, #0x10
 	ldr r0, [r0]
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -7853,7 +7853,7 @@ sub_020444CC: ; 0x020444CC
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl PlayerProfile_GetTrainerID
@@ -7898,7 +7898,7 @@ sub_02044534: ; 0x02044534
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl PlayerProfile_GetTrainerID
@@ -7985,7 +7985,7 @@ sub_020445F8: ; 0x020445F8
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl PlayerProfile_GetTrainerGender
@@ -8090,7 +8090,7 @@ sub_020446AC: ; 0x020446AC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -8600,7 +8600,7 @@ sub_02044AB8: ; 0x02044AB8
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov04_02256058
@@ -8655,7 +8655,7 @@ sub_02044B10: ; 0x02044B10
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
@@ -8788,7 +8788,7 @@ sub_02044BE8: ; 0x02044BE8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -8796,14 +8796,14 @@ sub_02044BE8: ; 0x02044BE8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	bl sub_0205C6DC
@@ -8922,7 +8922,7 @@ sub_02044CFC: ; 0x02044CFC
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Sav2_Mailbox_get
@@ -8973,7 +8973,7 @@ sub_02044D68: ; 0x02044D68
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
@@ -8992,7 +8992,7 @@ sub_02044D8C: ; 0x02044D8C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -9018,7 +9018,7 @@ sub_02044DC4: ; 0x02044DC4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -9091,7 +9091,7 @@ sub_02044E40: ; 0x02044E40
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -9132,7 +9132,7 @@ sub_02044E9C: ; 0x02044E9C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -9194,7 +9194,7 @@ sub_02044F30: ; 0x02044F30
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -9222,7 +9222,7 @@ sub_02044F74: ; 0x02044F74
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	mov r0, #0
 	strh r0, [r4]
@@ -9251,7 +9251,7 @@ sub_02044FAC: ; 0x02044FAC
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	mov r0, #0
 	strh r0, [r4]
@@ -9306,7 +9306,7 @@ sub_02045028: ; 0x02045028
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -9345,13 +9345,13 @@ sub_02045060: ; 0x02045060
 	add r0, #0x80
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	add r1, r6, #0
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r6, r0, #0
 	ldr r0, [r5]
@@ -9642,7 +9642,7 @@ sub_020452B0: ; 0x020452B0
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov23_02259B50
@@ -9666,7 +9666,7 @@ sub_020452E0: ; 0x020452E0
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov23_02259B58
@@ -9690,7 +9690,7 @@ sub_02045310: ; 0x02045310
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov23_02259B60
@@ -9794,7 +9794,7 @@ sub_020453D0: ; 0x020453D0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r7, r0, #0
 	ldr r0, _02045424 ; =SDK_OVERLAY_OVY_23_ID
 	mov r1, #2
@@ -9845,7 +9845,7 @@ sub_02045440: ; 0x02045440
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	mov r0, #0
 	strh r0, [r6]
@@ -9890,7 +9890,7 @@ sub_020454A4: ; 0x020454A4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -9959,7 +9959,7 @@ sub_02045540: ; 0x02045540
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, sp, #0
 	bl GF_RTC_CopyDate
@@ -9980,7 +9980,7 @@ sub_02045568: ; 0x02045568
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r0, #0
 	ldr r0, [r4, #0x74]
 	bl ov03_022566B0
@@ -10048,7 +10048,7 @@ sub_020455F0: ; 0x020455F0
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	mov r1, #GAME_VERSION
 	strh r1, [r0]
 	mov r0, #0
@@ -10073,10 +10073,10 @@ sub_0204560C: ; 0x0204560C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r6, #0xc]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -10167,10 +10167,10 @@ sub_020456D8: ; 0x020456D8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r6, #0xc]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r1, r0, #0
@@ -10336,12 +10336,12 @@ sub_0204583C: ; 0x0204583C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	bl sub_02073DFC
 	strh r0, [r4]
 	mov r0, #0
@@ -10438,7 +10438,7 @@ sub_020458EC: ; 0x020458EC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -10522,7 +10522,7 @@ sub_020459AC: ; 0x020459AC
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	str r0, [sp]
 	ldr r0, [r4]
@@ -10638,7 +10638,7 @@ sub_02045A88: ; 0x02045A88
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
@@ -10769,7 +10769,7 @@ sub_02045BA4: ; 0x02045BA4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -10791,7 +10791,7 @@ sub_02045BCC: ; 0x02045BCC
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	str r0, [sp]
 	ldr r0, [r4]
@@ -10867,7 +10867,7 @@ sub_02045C64: ; 0x02045C64
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	ldr r1, _02045C80 ; =gMain + 0x60
 	ldrb r1, [r1, #0xa]
 	strh r1, [r0]
@@ -10947,7 +10947,7 @@ sub_02045CFC: ; 0x02045CFC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -11011,7 +11011,7 @@ sub_02045D7C: ; 0x02045D7C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -11060,7 +11060,7 @@ sub_02045DE8: ; 0x02045DE8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -11093,7 +11093,7 @@ sub_02045E1C: ; 0x02045E1C
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_02066DA8
@@ -11118,7 +11118,7 @@ sub_02045E54: ; 0x02045E54
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	ldr r6, [r4]
 	add r5, r0, #0
@@ -11164,7 +11164,7 @@ sub_02045EA8: ; 0x02045EA8
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
@@ -11187,7 +11187,7 @@ sub_02045ED8: ; 0x02045ED8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r6, r0, #0
 	ldr r0, [r5]
@@ -11215,7 +11215,7 @@ sub_02045F18: ; 0x02045F18
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
@@ -11300,7 +11300,7 @@ sub_02045FC4: ; 0x02045FC4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -11308,7 +11308,7 @@ sub_02045FC4: ; 0x02045FC4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
@@ -11360,7 +11360,7 @@ sub_02046038: ; 0x02046038
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	cmp r4, #0x64
 	bls _0204605A
@@ -11400,7 +11400,7 @@ sub_02046078: ; 0x02046078
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -11466,7 +11466,7 @@ sub_02046108: ; 0x02046108
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -11487,7 +11487,7 @@ sub_02046130: ; 0x02046130
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -11516,7 +11516,7 @@ sub_0204615C: ; 0x0204615C
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	mov r1, #0
 	strh r1, [r0]
 	ldr r1, _0204619C ; =0x0000012A
@@ -11544,7 +11544,7 @@ sub_020461A0: ; 0x020461A0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -11662,7 +11662,7 @@ sub_020462A8: ; 0x020462A8
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x10
@@ -11789,7 +11789,7 @@ sub_0204639C: ; 0x0204639C
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_020691E8
@@ -12055,7 +12055,7 @@ sub_020465A0: ; 0x020465A0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -12063,7 +12063,7 @@ sub_020465A0: ; 0x020465A0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r7, r0, #0
 	ldr r0, [r5]
@@ -12106,7 +12106,7 @@ sub_020465FC: ; 0x020465FC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12146,7 +12146,7 @@ sub_02046674: ; 0x02046674
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12172,7 +12172,7 @@ sub_020466A8: ; 0x020466A8
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	mov r1, #0
 	strh r1, [r0]
 	ldr r1, _020466DC ; =gMain
@@ -12210,7 +12210,7 @@ sub_020466E0: ; 0x020466E0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #4]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -12218,7 +12218,7 @@ sub_020466E0: ; 0x020466E0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -12226,7 +12226,7 @@ sub_020466E0: ; 0x020466E0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -12234,14 +12234,14 @@ sub_020466E0: ; 0x020466E0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [sp, #4]
 	mov r1, #0
@@ -12370,7 +12370,7 @@ _02046842:
 	cmp r4, #2
 	blt _02046808
 	ldr r0, [sp]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	str r0, [sp, #4]
 	mov r7, #0
 _02046852:
@@ -12379,7 +12379,7 @@ _02046854:
 	ldr r0, [sp, #4]
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	mov r1, #5
 	mov r2, #0
 	add r4, r0, #0
@@ -12521,7 +12521,7 @@ sub_02046970: ; 0x02046970
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	bl GF_RTC_DateTimeToSec
 	add r2, r5, #0
@@ -12618,7 +12618,7 @@ sub_02046A1C: ; 0x02046A1C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	mov r0, #0
 	strh r0, [r6]
@@ -12737,7 +12737,7 @@ sub_02046B1C: ; 0x02046B1C
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4, #0x3c]
 	mov r1, #0xfd
@@ -13209,7 +13209,7 @@ sub_02046E9C: ; 0x02046E9C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -13217,7 +13217,7 @@ sub_02046E9C: ; 0x02046E9C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #0x14]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -13225,7 +13225,7 @@ sub_02046E9C: ; 0x02046E9C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -13233,7 +13233,7 @@ sub_02046E9C: ; 0x02046E9C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	ldr r1, [sp, #0x10]
 	lsl r3, r7, #0x18
 	str r1, [sp]
@@ -13262,7 +13262,7 @@ sub_02046F34: ; 0x02046F34
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -13382,7 +13382,7 @@ sub_02046FFC: ; 0x02046FFC
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	cmp r5, #0x4b
 	bhs _02047056
@@ -13516,7 +13516,7 @@ sub_02047120: ; 0x02047120
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -13551,7 +13551,7 @@ sub_02047168: ; 0x02047168
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -13559,7 +13559,7 @@ sub_02047168: ; 0x02047168
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -13644,7 +13644,7 @@ sub_0204723C: ; 0x0204723C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -13676,7 +13676,7 @@ sub_0204727C: ; 0x0204727C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -13759,7 +13759,7 @@ sub_0204731C: ; 0x0204731C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -13864,7 +13864,7 @@ sub_020473D8: ; 0x020473D8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -14075,7 +14075,7 @@ sub_02047570: ; 0x02047570
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -14119,7 +14119,7 @@ sub_020475C0: ; 0x020475C0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -14146,7 +14146,7 @@ sub_020475F0: ; 0x020475F0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -14217,7 +14217,7 @@ sub_02047664: ; 0x02047664
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -14288,7 +14288,7 @@ sub_020476E8: ; 0x020476E8
 	lsl r1, r1, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r0, r4, #0
 	bl ov01_021F6B00
 	add r5, r0, #0
@@ -14337,7 +14337,7 @@ sub_02047744: ; 0x02047744
 	lsl r1, r1, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r0, r4, #0
 	bl ov01_021F6B00
 	add r5, r0, #0
@@ -14403,7 +14403,7 @@ sub_020477C0: ; 0x020477C0
 	lsl r1, r1, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov01_021F6B00
@@ -14508,7 +14508,7 @@ sub_02047888: ; 0x02047888
 	lsl r1, r1, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r3, r0, #0
 	add r0, r4, #0
 	mov r1, #3
@@ -14541,7 +14541,7 @@ sub_020478D0: ; 0x020478D0
 	lsl r1, r1, #0x10
 	add r0, r6, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	ldrh r1, [r0]
 	ldr r0, _02047904 ; =0x0000EEEE
 	cmp r1, r0
@@ -14675,7 +14675,7 @@ sub_020479D4: ; 0x020479D4
 	lsl r1, r1, #0x10
 	ldr r0, [r0]
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r4, [r0]
@@ -14754,7 +14754,7 @@ sub_02047A7C: ; 0x02047A7C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	cmp r6, #0
 	bne _02047AC2
@@ -14814,7 +14814,7 @@ sub_02047AE8: ; 0x02047AE8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -14822,7 +14822,7 @@ sub_02047AE8: ; 0x02047AE8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	lsl r1, r4, #0x18
 	add r5, #0x80
 	add r3, r0, #0
@@ -14843,7 +14843,7 @@ sub_02047B38: ; 0x02047B38
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -15087,7 +15087,7 @@ sub_02047CBC: ; 0x02047CBC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadWord
@@ -15141,7 +15141,7 @@ sub_02047D24: ; 0x02047D24
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15167,7 +15167,7 @@ sub_02047D58: ; 0x02047D58
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r0, #0
 	add r4, #0x80
 	ldrh r1, [r1]
@@ -15192,7 +15192,7 @@ sub_02047D7C: ; 0x02047D7C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r1, r0, #0
 	add r5, #0x80
 	ldrh r1, [r1]
@@ -15226,7 +15226,7 @@ sub_02047DC8: ; 0x02047DC8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -15234,7 +15234,7 @@ sub_02047DC8: ; 0x02047DC8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15379,7 +15379,7 @@ sub_02047EC4: ; 0x02047EC4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -15420,7 +15420,7 @@ sub_02047F14: ; 0x02047F14
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0202F890
@@ -15448,7 +15448,7 @@ sub_02047F54: ; 0x02047F54
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -15475,7 +15475,7 @@ sub_02047F84: ; 0x02047F84
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -15501,7 +15501,7 @@ sub_02047FB4: ; 0x02047FB4
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	bl ov02_0225316C
 	strh r0, [r4]
@@ -15519,7 +15519,7 @@ sub_02047FD4: ; 0x02047FD4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -15546,7 +15546,7 @@ sub_02048004: ; 0x02048004
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -15567,7 +15567,7 @@ sub_0204802C: ; 0x0204802C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]

@@ -29001,7 +29001,7 @@ _022459AC:
 	cmp r0, #0
 	bne _02245A0A
 	ldr r0, _02245C40 ; =0x00000469
-	bl sub_02005D48
+	bl PlayBGM
 	ldr r1, [r4, #4]
 	ldr r0, _02245C3C ; =0x00003144
 	mov r2, #1
@@ -30774,7 +30774,7 @@ _02246826:
 	mov r0, #9
 	str r0, [r4, #0x28]
 	ldr r0, _02246920 ; =0x00000469
-	bl sub_02005D48
+	bl PlayBGM
 	ldr r0, [r4]
 	mov r1, #2
 	bl ov12_0223BD3C
@@ -45461,11 +45461,11 @@ _0224DAB2: ; jump table
 	.short _0224DB10 - _0224DAB2 - 2 ; case 46
 _0224DB10:
 	ldr r0, _0224DB2C ; =0x0000046B
-	bl sub_02005D48
+	bl PlayBGM
 	b _0224DB3C
 _0224DB18:
 	ldr r0, _0224DB30 ; =0x0000047C
-	bl sub_02005D48
+	bl PlayBGM
 	b _0224DB3C
 _0224DB20:
 	ldr r0, _0224DB34 ; =0x00000468
@@ -45477,7 +45477,7 @@ _0224DB2C: .word 0x0000046B
 _0224DB30: .word 0x0000047C
 _0224DB34: .word 0x00000468
 _0224DB38:
-	bl sub_02005D48
+	bl PlayBGM
 _0224DB3C:
 	ldr r0, [sp]
 	mov r1, #2
@@ -74090,7 +74090,7 @@ ov12_0225B434: ; 0x0225B434
 	add r6, r0, #0
 	ldrh r0, [r4, #2]
 	add r5, r1, #0
-	bl sub_02005D48
+	bl PlayBGM
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]

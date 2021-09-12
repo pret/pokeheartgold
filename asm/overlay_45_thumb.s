@@ -4123,7 +4123,7 @@ _0222BC08:
 	cmp r0, #0
 	bne _0222BC1E
 	ldr r0, _0222BC38 ; =0x00000481
-	bl sub_02005D48
+	bl PlayBGM
 _0222BC1E:
 	ldrb r1, [r5]
 	mov r0, #0x10

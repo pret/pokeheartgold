@@ -14,7 +14,7 @@ ov21_022598C0: ; 0x022598C0
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	mov r4, #0
 	ldr r7, _02259908 ; =0x022599F0
 	str r0, [sp]
@@ -51,7 +51,7 @@ ov21_0225990C: ; 0x0225990C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -98,7 +98,7 @@ ov21_02259960: ; 0x02259960
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #8]
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -106,7 +106,7 @@ ov21_02259960: ; 0x02259960
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl ScriptReadHalfword

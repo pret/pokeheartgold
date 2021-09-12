@@ -15,14 +15,14 @@ sub_020270C4: ; 0x020270C4
 	pop {r4, pc}
 	thumb_func_end sub_020270C4
 
-	thumb_func_start sub_020270D8
-sub_020270D8: ; 0x020270D8
+	thumb_func_start GetStoragePCPointer
+GetStoragePCPointer: ; 0x020270D8
 	ldr r3, _020270E0 ; =SavArray_get
 	mov r1, #0x29
 	bx r3
 	nop
 _020270E0: .word SavArray_get
-	thumb_func_end sub_020270D8
+	thumb_func_end GetStoragePCPointer
 
 	thumb_func_start sub_020270E4
 sub_020270E4: ; 0x020270E4

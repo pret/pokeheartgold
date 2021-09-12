@@ -1735,8 +1735,8 @@ GetCurrentMapMessageBank: ; 0x0204036C
 _02040370: .word MapHeader_GetMsgBank
 	thumb_func_end GetCurrentMapMessageBank
 
-	thumb_func_start sub_02040374
-sub_02040374: ; 0x02040374
+	thumb_func_start GetVarPointer
+GetVarPointer: ; 0x02040374
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
@@ -1763,13 +1763,13 @@ _0204039A:
 	pop {r3, r4, r5, pc}
 	nop
 _020403A8: .word 0x00007FD6
-	thumb_func_end sub_02040374
+	thumb_func_end GetVarPointer
 
 	thumb_func_start VarGet
 VarGet: ; 0x020403AC
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02040374
+	bl GetVarPointer
 	cmp r0, #0
 	beq _020403BA
 	ldrh r4, [r0]
@@ -1783,7 +1783,7 @@ _020403BA:
 sub_020403C0: ; 0x020403C0
 	push {r4, lr}
 	add r4, r2, #0
-	bl sub_02040374
+	bl GetVarPointer
 	cmp r0, #0
 	bne _020403D0
 	mov r0, #0

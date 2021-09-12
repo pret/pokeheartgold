@@ -233,7 +233,7 @@ ov20_02259A88: ; 0x02259A88
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword

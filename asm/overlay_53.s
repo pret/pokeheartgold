@@ -2998,7 +2998,7 @@ _021E70B8:
 	add r1, r5, #0
 	bl sub_02005EB4
 	ldr r0, _021E7408 ; =0x000003F1
-	bl sub_02005D48
+	bl PlayBGM
 	mov r0, #7
 	str r0, [r4, #0xc]
 	bl _021E7CF8
@@ -3604,7 +3604,7 @@ _021E762A:
 	add r1, r5, #0
 	bl sub_02005EB4
 	ldr r0, _021E793C ; =0x000003F2
-	bl sub_02005D48
+	bl PlayBGM
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r5, #0

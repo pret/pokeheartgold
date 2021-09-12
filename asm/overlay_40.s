@@ -21740,7 +21740,7 @@ ov40_022365A0: ; 0x022365A0
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	str r0, [r4]
 	mov r0, #0x83
 	mov r2, #0x1a
@@ -23673,7 +23673,7 @@ ov40_0223757C: ; 0x0223757C
 	ldr r4, [r5, r0]
 	sub r0, #0x30
 	ldr r0, [r5, r0]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	ldr r0, _0223763C ; =0x0000017A
 	ldrb r1, [r4, r0]
 	cmp r1, #0x10
@@ -23768,7 +23768,7 @@ ov40_02237644: ; 0x02237644
 	ldr r4, [r5, r0]
 	sub r0, #0x30
 	ldr r0, [r5, r0]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	ldr r1, _022376F8 ; =0x0000017A
 	ldrb r2, [r4, r1]
 	cmp r2, #0x10

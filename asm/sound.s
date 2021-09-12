@@ -253,7 +253,7 @@ _02004352:
 	ldrh r0, [r4, r0]
 	cmp r0, #0
 	beq _020043A0
-	bl sub_02005D48
+	bl PlayBGM
 	pop {r4, pc}
 _02004374:
 	bl sub_02005F88
@@ -267,7 +267,7 @@ _02004374:
 	ldrh r0, [r4, r0]
 	cmp r0, #0
 	beq _02004394
-	bl sub_02005D48
+	bl PlayBGM
 _02004394:
 	ldr r1, _020043AC ; =0x000BEBF8
 	mov r0, #0x7f

@@ -121,7 +121,7 @@ sub_020482F4: ; 0x020482F4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp]
 	add r0, r5, #0
 	add r0, #0x80
@@ -207,7 +207,7 @@ sub_0204839C: ; 0x0204839C
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r6, r0, #0
 	ldr r0, [r4]

@@ -2874,7 +2874,7 @@ sub_0203F844: ; 0x0203F844
 	bl SavArray_get
 	str r0, [r4, #8]
 	ldr r0, [r5, #0xc]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #0xc]
 	bl Sav2_Pokedex_get

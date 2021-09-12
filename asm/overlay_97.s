@@ -215,7 +215,7 @@ ov97_0221E700: ; 0x0221E700
 	mov r6, #1
 _0221E76A:
 	ldr r0, [r5]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r7, r0, #0
 	ldr r0, [r5]
 	bl SavArray_PlayerParty_get
@@ -371,7 +371,7 @@ _0221E894: .word sub_02093594
 ov97_0221E898: ; 0x0221E898
 	push {r3, r4, r5, lr}
 	add r5, r3, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	mov r1, #0xac
 	mov r2, #0
 	add r4, r0, #0
@@ -433,7 +433,7 @@ _0221E908:
 ov97_0221E91C: ; 0x0221E91C
 	push {r3, r4, r5, lr}
 	add r4, r3, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	mov r1, #0xac
 	mov r2, #0
 	add r5, r0, #0
@@ -558,7 +558,7 @@ _0221E9B4:
 	b _0221EA6A
 _0221EA20:
 	ldr r0, [r0]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	ldr r2, [r5, #0x14]
 	add r1, r6, #0
 	add r3, sp, #0xc
@@ -582,10 +582,10 @@ _0221EA20:
 	strb r0, [r4, #0x1d]
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	ldr r1, [r5, #0x10]
 	ldr r2, [r5, #0x14]
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	ldr r1, [sp]
 	bl ov97_0221EB38
 _0221EA6A:
@@ -930,7 +930,7 @@ _0221ED04:
 	add sp, #0xc0
 	pop {r3, r4, r5, r6, r7, pc}
 _0221ED1C:
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r1, r6, #0
 	add r2, r4, #0
 	add r3, sp, #0x2c
@@ -955,10 +955,10 @@ _0221ED1C:
 	ldrh r1, [r1, #0x3e]
 	strb r1, [r0, #8]
 	ldr r0, [r5, #0x2c]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	add r1, sp, #0xc
 	add r1, #2
 	add r4, r0, #0

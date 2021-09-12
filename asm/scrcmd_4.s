@@ -441,7 +441,7 @@ sub_02048738: ; 0x02048738
 	add r0, #0x80
 	ldr r4, [r0]
 	ldr r0, [r4, #0xc]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #0x10
@@ -467,7 +467,7 @@ sub_02048738: ; 0x02048738
 	add r2, r1, #0
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r4, #0

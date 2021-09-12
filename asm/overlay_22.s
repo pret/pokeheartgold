@@ -94,7 +94,7 @@ ov22_02259960: ; 0x02259960
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -162,7 +162,7 @@ ov22_022599E4: ; 0x022599E4
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
@@ -185,7 +185,7 @@ ov22_02259A10: ; 0x02259A10
 	add r0, r6, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r6, #0
 	bl ScriptReadWord
@@ -218,14 +218,14 @@ ov22_02259A50: ; 0x02259A50
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r6, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
@@ -256,7 +256,7 @@ ov22_02259A9C: ; 0x02259A9C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -330,7 +330,7 @@ ov22_02259B34: ; 0x02259B34
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
