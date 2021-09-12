@@ -2230,7 +2230,7 @@ _0203CD68:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -2479,7 +2479,7 @@ sub_0203CF74: ; 0x0203CF74
 	bl SavArray_PlayerParty_get
 	str r0, [r5]
 	ldr r0, [r4, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [r5, #4]
 	ldr r0, [r4, #0xc]
 	bl Sav2_Mailbox_get
@@ -2559,7 +2559,7 @@ _0203D01C:
 	ldrh r0, [r1, #4]
 	mov r1, #6
 	mov r2, #0xb
-	bl sub_02077D88
+	bl GetItemAttr
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	mov r0, #0
@@ -3340,7 +3340,7 @@ sub_0203D664: ; 0x0203D664
 	str r0, [sp]
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	add r4, r0, #0
 	mov r5, #0
 	mov r6, #1
@@ -3793,7 +3793,7 @@ sub_0203D9E8: ; 0x0203D9E8
 	bl Sav2_Pokedex_get
 	str r0, [sp, #0x28]
 	ldr r0, [r4, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [sp, #0x2c]
 	ldr r0, [r4, #0xc]
 	bl Sav2_GameStats_get
@@ -3825,7 +3825,7 @@ _0203DA72:
 	bl Sav2_Pokedex_get
 	str r0, [sp, #0x34]
 	ldr r0, [r4, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [sp, #0x38]
 	ldr r0, [r4, #0xc]
 	bl Sav2_GameStats_get

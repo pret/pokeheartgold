@@ -23578,15 +23578,15 @@ _022374CE:
 _022374D0:
 	add r0, r5, #0
 	mov r1, #0x6d
-	bl sub_0206FA8C
+	bl AllocAndLoadMonPersonal
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0206FFC8
+	bl GetGenderBySpeciesAndPersonality
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x14]
 	add r1, r6, #0
-	bl sub_02070068
+	bl CalcShininessByOtIdAndPersonality
 	lsl r3, r7, #0x18
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x1c]
@@ -23621,7 +23621,7 @@ _022374D0:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [sp, #0x18]
-	bl sub_0206FBB0
+	bl FreeMonPersonal
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -49543,7 +49543,7 @@ _02244A02:
 	add r0, r7, #0
 	mov r1, #0xb3
 	mov r2, #0
-	bl sub_0206EC40
+	bl SetMonData
 _02244A54:
 	ldr r0, [sp, #0x18]
 	add r6, r6, #1

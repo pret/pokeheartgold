@@ -1847,7 +1847,7 @@ _021E67D0:
 	ldrh r0, [r5, r1]
 	sub r1, #8
 	ldr r1, [r5, r1]
-	bl sub_0206FFC8
+	bl GetGenderBySpeciesAndPersonality
 	mov r2, #0x61
 	lsl r2, r2, #2
 	str r0, [sp, #0x20]
@@ -1893,7 +1893,7 @@ _021E67D0:
 	ldr r0, [r5, r1]
 	sub r1, r1, #4
 	ldr r1, [r5, r1]
-	bl sub_02070068
+	bl CalcShininessByOtIdAndPersonality
 	cmp r0, #0
 	beq _021E685C
 	mov r7, #1
@@ -1913,7 +1913,7 @@ _021E685E:
 	str r0, [sp, #0x18]
 	ldrh r0, [r5, r1]
 	ldr r1, [sp, #0x18]
-	bl sub_0206FFC8
+	bl GetGenderBySpeciesAndPersonality
 	add r2, r0, #0
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
@@ -2464,7 +2464,7 @@ _021E6C84:
 	ldrh r0, [r5, r1]
 	sub r1, #8
 	ldr r1, [r5, r1]
-	bl sub_0206FFC8
+	bl GetGenderBySpeciesAndPersonality
 	mov r1, #0x66
 	lsl r1, r1, #2
 	add r2, r0, #0
@@ -2579,7 +2579,7 @@ _021E6DCE:
 	ldr r0, [r5, r1]
 	sub r1, r1, #4
 	ldr r1, [r5, r1]
-	bl sub_02070068
+	bl CalcShininessByOtIdAndPersonality
 	cmp r0, #0
 	beq _021E6E02
 	add r4, #0x20

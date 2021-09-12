@@ -3878,7 +3878,7 @@ ov01_021E788C: ; 0x021E788C
 	bl SavArray_PlayerParty_get
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020293D4
+	bl Sav2_DayCare_get
 	add r1, r5, #0
 	add r2, r4, #0
 	bl sub_0206CD1C
@@ -3961,7 +3961,7 @@ _021E7932:
 	bl GetPartyMonByIndex
 	mov r1, #5
 	add r2, r5, #0
-	bl sub_0206FE90
+	bl MonApplyFriendshipMod
 	add r4, r4, #1
 	cmp r4, r7
 	blt _021E7932
@@ -36677,7 +36677,7 @@ _021F6DB4:
 	pop {r3, r4, r5, r6, pc}
 _021F6DC8:
 	ldr r0, [r6, #0x34]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _021F6E40 ; =0x000001B5
 	mov r2, #1
 	mov r3, #4
@@ -37675,7 +37675,7 @@ _021F7524:
 	bl GetMonData
 	add r6, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_0206FF88
+	bl GetMonGender
 	str r0, [sp, #8]
 	lsl r1, r6, #0x10
 	ldr r2, [sp, #8]
@@ -37684,7 +37684,7 @@ _021F7524:
 	bl sub_02069D70
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
-	bl sub_0207003C
+	bl MonIsShiny
 	str r0, [sp, #4]
 	lsl r2, r6, #0x18
 	ldrb r1, [r4, #0x17]
@@ -59046,13 +59046,13 @@ _02201366:
 	ble _022013BA
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r2, [sp, #8]
 	mov r1, #0x70
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
 	mov r3, #4
-	bl sub_02078398
+	bl Bag_AddItem
 	cmp r0, #0
 	bne _02201392
 	ldr r0, [sp]
@@ -59076,7 +59076,7 @@ _0220139C:
 	bl GetPartyMonByIndex
 	mov r1, #6
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 _022013B2:
 	add r5, r5, #1
 	add r4, r4, #4
@@ -59166,7 +59166,7 @@ ov01_02201424: ; 0x02201424
 	bl GetPartyMonByIndex
 	mov r1, #0x70
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -60781,7 +60781,7 @@ _02202138:
 	add r0, r5, #0
 	add r1, #0x36
 	add r2, #2
-	bl sub_0206EC40
+	bl SetMonData
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x42
@@ -60793,10 +60793,10 @@ _02202138:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #8]
 	add r1, r5, #0
-	bl sub_02074524
+	bl AddMonToParty
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [r7, #0xc]
@@ -60904,7 +60904,7 @@ _02202224:
 	mov r2, #0x1e
 	mov r3, #0x20
 	str r4, [sp, #0xc]
-	bl sub_0206DE38
+	bl CreateMon
 	add r2, sp, #0x20
 	mov r1, #1
 	add r0, sp, #0x20
@@ -60912,7 +60912,7 @@ _02202224:
 	add r0, r5, #0
 	mov r1, #0x70
 	add r2, #1
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r6, _02202304 ; =0x022093BA
 	mov r4, #0
 	add r7, sp, #0x20
@@ -60921,7 +60921,7 @@ _02202276:
 	add r0, r5, #0
 	add r1, #0x36
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x42
@@ -60932,7 +60932,7 @@ _02202276:
 	add r0, r5, #0
 	add r1, #0x3a
 	add r2, sp, #0x20
-	bl sub_0206EC40
+	bl SetMonData
 	add r4, r4, #1
 	add r6, r6, #2
 	cmp r4, #4
@@ -60945,7 +60945,7 @@ _02202276:
 	add r0, r5, #0
 	mov r1, #6
 	add r2, #2
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #0x10]
 	add r0, #0x80
 	str r0, [sp, #0x10]
@@ -60967,7 +60967,7 @@ _02202276:
 	bl sub_020720FC
 	ldr r0, [sp, #0x1c]
 	add r1, r5, #0
-	bl sub_02074524
+	bl AddMonToParty
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x18]
@@ -61384,7 +61384,7 @@ ov01_022025EC: ; 0x022025EC
 	add r0, r6, #0
 	mov r1, #0xba
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 _02202640:
 	mov r0, #0
 	add sp, #4
@@ -61406,7 +61406,7 @@ ov01_02202648: ; 0x02202648
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202CBE8
+	bl Sav2_SealCase_get
 	bl sub_0202CD74
 	strh r0, [r4]
 	mov r0, #0
@@ -61436,7 +61436,7 @@ ov01_02202674: ; 0x02202674
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202CBE8
+	bl Sav2_SealCase_get
 	add r1, r6, #0
 	bl sub_0202CD94
 	strh r0, [r4]
@@ -61466,7 +61466,7 @@ ov01_022026B4: ; 0x022026B4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202CBE8
+	bl Sav2_SealCase_get
 	lsl r2, r4, #0x10
 	add r1, r6, #0
 	asr r2, r2, #0x10
@@ -61534,7 +61534,7 @@ ov01_0220271C: ; 0x0220271C
 	str r0, [sp, #4]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_0202CBE8
+	bl Sav2_SealCase_get
 	str r0, [sp, #0x10]
 	mov r0, #0x20
 	mov r1, #0x9a
@@ -62751,7 +62751,7 @@ ov01_02203094: ; 0x02203094
 	add r1, r0, #0
 	ldr r0, [sp]
 	add r2, r4, #0
-	bl sub_02071900
+	bl Species_LoadLearnsetTable
 	mov r2, #0
 	cmp r0, #0
 	ble _0220312E

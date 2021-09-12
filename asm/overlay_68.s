@@ -1034,7 +1034,7 @@ ov68_021E614C: ; 0x021E614C
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x36
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0
 	str r0, [sp]
 	ldr r1, [r4]
@@ -1042,18 +1042,18 @@ ov68_021E614C: ; 0x021E614C
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x3e
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	bl ov68_021E6BEC
 	mov r1, #0
-	bl sub_0207332C
+	bl WazaGetMaxPp
 	str r0, [sp]
 	ldr r1, [r4]
 	add r2, sp, #0
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x3a
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [r4]
 	mov r1, #0
 	strb r1, [r0, #0x1a]
@@ -1392,7 +1392,7 @@ ov68_021E6320: ; 0x021E6320
 	bl ReadMsgDataIntoString
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r5, #0
 	add r0, #0xfc
@@ -1426,7 +1426,7 @@ ov68_021E6320: ; 0x021E6320
 	str r0, [sp, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	mov r4, #0
@@ -1780,7 +1780,7 @@ _021E6720:
 	ldr r0, [r0, #4]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0207332C
+	bl WazaGetMaxPp
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1983,7 +1983,7 @@ ov68_021E68D4: ; 0x021E68D4
 	beq _021E69EE
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_02073314
+	bl GetWazaAttr
 	add r2, r0, #0
 	cmp r2, #1
 	bhi _021E692E
@@ -2014,7 +2014,7 @@ _021E693C:
 	bl ov68_021E6234
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_02073314
+	bl GetWazaAttr
 	add r2, r0, #0
 	bne _021E696E
 	mov r1, #0x21
@@ -2138,7 +2138,7 @@ _021E6A44: ; jump table
 _021E6A5A:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2158,7 +2158,7 @@ _021E6A72:
 _021E6A86:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2169,7 +2169,7 @@ _021E6A86:
 _021E6A9E:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2188,7 +2188,7 @@ _021E6A9E:
 _021E6ACA:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2207,7 +2207,7 @@ _021E6ACA:
 _021E6AF6:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2226,7 +2226,7 @@ _021E6AF6:
 _021E6B22:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2254,7 +2254,7 @@ _021E6B4E:
 _021E6B62:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2902,13 +2902,13 @@ ov68_021E7028: ; 0x021E7028
 	bne _021E7044
 	add r0, r1, #0
 	mov r1, #3
-	bl sub_02073314
+	bl GetWazaAttr
 	add r6, r0, #0
 	b _021E7050
 _021E7044:
 	add r0, r1, #0
 	mov r1, #0xb
-	bl sub_02073314
+	bl GetWazaAttr
 	add r6, r0, #0
 	add r6, #0x12
 _021E7050:
@@ -3023,7 +3023,7 @@ ov68_021E7124: ; 0x021E7124
 	add r5, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl sub_02073314
+	bl GetWazaAttr
 	add r4, r0, #0
 	bl sub_02077830
 	add r6, r0, #0
@@ -3175,7 +3175,7 @@ ov68_021E7224: ; 0x021E7224
 	add r1, r0, #0
 	add r0, r6, #0
 	mov r2, #0x1c
-	bl sub_0206FBC4
+	bl GetMonBaseStat_HandleAlternateForme
 	add r3, r0, #0
 	mov r2, #1
 	ldr r0, [r5, #0x18]

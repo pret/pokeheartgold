@@ -959,8 +959,8 @@ BufferTrainerNameFromDataStruct: ; 0x0200C3E8
 	.balign 4, 0
 	thumb_func_end BufferTrainerNameFromDataStruct
 
-	thumb_func_start sub_0200C408
-sub_0200C408: ; 0x0200C408
+	thumb_func_start BufferDecorationName
+BufferDecorationName: ; 0x0200C408
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -986,7 +986,7 @@ _0200C43A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C43C: .word 0x000002E1
-	thumb_func_end sub_0200C408
+	thumb_func_end BufferDecorationName
 
 	thumb_func_start sub_0200C440
 sub_0200C440: ; 0x0200C440
@@ -1844,8 +1844,8 @@ _0200CAB8:
 	.balign 4, 0
 	thumb_func_end BufferSafariZoneAreaName
 
-	thumb_func_start sub_0200CAD8
-sub_0200CAD8: ; 0x0200CAD8
+	thumb_func_start BufferPokewalkerMessage
+BufferPokewalkerMessage: ; 0x0200CAD8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -1877,7 +1877,7 @@ _0200CAFC:
 	add r0, r6, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200CAD8
+	thumb_func_end BufferPokewalkerMessage
 
 	thumb_func_start BufferMonthNameAbbr
 BufferMonthNameAbbr: ; 0x0200CB1C

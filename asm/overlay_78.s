@@ -925,7 +925,7 @@ _021E6096:
 	bl GF_AssertFail
 _021E60B2:
 	ldr r0, [r5, #0x10]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [sp, #0x1c]
 	ldr r0, [r5, #0x38]
 	ldr r2, [sp, #0x10]
@@ -1696,10 +1696,10 @@ ov78_021E66D4: ; 0x021E66D4
 	bl GetMonData
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0206FF88
+	bl GetMonGender
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	str r0, [sp, #0x18]
 	cmp r5, #0
 	beq _021E6714

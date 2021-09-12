@@ -21395,7 +21395,7 @@ ov74_0223195C: ; 0x0223195C
 	bl sub_020270F8
 	str r0, [sp]
 	add r0, sp, #8
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r6, r0, #0
 	mov r4, #0
 	add r5, r7, #0
@@ -27864,7 +27864,7 @@ ov74_02234A0C: ; 0x02234A0C
 	add r1, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0206FDA8
+	bl CalcLevelBySpeciesAndExp
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_02234A0C
 
@@ -27885,7 +27885,7 @@ ov74_02234A34: ; 0x02234A34
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0x19
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	cmp r0, #0
 	beq _02234A8E
 	ldr r2, _02234A98 ; =0x0223CBA0
@@ -27896,7 +27896,7 @@ _02234A62:
 	bne _02234A72
 	add r0, r5, #0
 	mov r1, #0x18
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	b _02234A7A
 _02234A72:
 	add r4, r4, #1
@@ -27911,12 +27911,12 @@ _02234A7A:
 	bne _02234A96
 	add r0, r5, #0
 	mov r1, #0x18
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	pop {r4, r5, r6, pc}
 _02234A8E:
 	add r0, r5, #0
 	mov r1, #0x18
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 _02234A96:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -27932,7 +27932,7 @@ ov74_02234A9C: ; 0x02234A9C
 	add r0, r4, #0
 	bl ZeroBoxMonData
 	add r0, r4, #0
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	mov r1, #0
 	str r0, [sp]
 	add r0, r6, #0
@@ -27942,7 +27942,7 @@ ov74_02234A9C: ; 0x02234A9C
 	add r0, r4, #0
 	mov r1, #0
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0xb
 	mov r2, #0
@@ -27953,7 +27953,7 @@ ov74_02234A9C: ; 0x02234A9C
 	add r0, r4, #0
 	mov r1, #5
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0xc
 	mov r2, #0
@@ -27969,7 +27969,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #6
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #1
 	mov r2, #0
@@ -27978,7 +27978,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #7
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x19
 	mov r2, #0
@@ -27987,13 +27987,13 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	mov r0, #0x46
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	add r1, r4, #0
 	bl ov74_02234A34
@@ -28001,7 +28001,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0xa
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #8
 	mov r2, #0
@@ -28010,7 +28010,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0xb
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #3
 	mov r2, #0
@@ -28019,7 +28019,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0xc
 	add r2, sp, #4
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x1a
 	mov r2, #0
@@ -28028,7 +28028,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0xd
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x1b
 	mov r2, #0
@@ -28037,7 +28037,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0xe
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x1c
 	mov r2, #0
@@ -28046,7 +28046,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0xf
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x1d
 	mov r2, #0
@@ -28055,7 +28055,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0x10
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x1e
 	mov r2, #0
@@ -28064,7 +28064,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0x11
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x1f
 	mov r2, #0
@@ -28073,7 +28073,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0x12
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x16
 	mov r2, #0
@@ -28082,7 +28082,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0x13
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x17
 	mov r2, #0
@@ -28091,7 +28091,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0x14
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x18
 	mov r2, #0
@@ -28100,7 +28100,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0x15
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x21
 	mov r2, #0
@@ -28109,7 +28109,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0x16
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x2f
 	mov r2, #0
@@ -28118,7 +28118,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0x17
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x30
 	mov r2, #0
@@ -28127,7 +28127,7 @@ _02234AFE:
 	add r0, r4, #0
 	mov r1, #0x18
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	mov r5, #0
 	add r7, r5, #0
 _02234C8E:
@@ -28141,7 +28141,7 @@ _02234C8E:
 	add r0, r4, #0
 	add r1, #0x36
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x15
 	mov r2, #0
@@ -28156,7 +28156,7 @@ _02234C8E:
 	add r0, r4, #0
 	add r1, #0x3e
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x42
@@ -28167,7 +28167,7 @@ _02234C8E:
 	add r0, r4, #0
 	add r1, #0x3a
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r5, r5, #1
 	add r7, r7, #2
 	cmp r5, #4
@@ -28180,7 +28180,7 @@ _02234C8E:
 	add r0, r4, #0
 	mov r1, #0x46
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x28
 	mov r2, #0
@@ -28189,7 +28189,7 @@ _02234C8E:
 	add r0, r4, #0
 	mov r1, #0x47
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x29
 	mov r2, #0
@@ -28198,7 +28198,7 @@ _02234C8E:
 	add r0, r4, #0
 	mov r1, #0x48
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x2a
 	mov r2, #0
@@ -28207,7 +28207,7 @@ _02234C8E:
 	add r0, r4, #0
 	mov r1, #0x49
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x2b
 	mov r2, #0
@@ -28216,7 +28216,7 @@ _02234C8E:
 	add r0, r4, #0
 	mov r1, #0x4a
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x2c
 	mov r2, #0
@@ -28225,7 +28225,7 @@ _02234C8E:
 	add r0, r4, #0
 	mov r1, #0x4b
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x2d
 	mov r2, #0
@@ -28234,7 +28234,7 @@ _02234C8E:
 	add r0, r4, #0
 	mov r1, #0x4c
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x32
 	mov r2, #0
@@ -28252,7 +28252,7 @@ _02234D9C:
 	add r0, r4, #0
 	add r1, #0x4e
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r5, r5, #1
 	cmp r5, r7
 	blt _02234D9C
@@ -28274,7 +28274,7 @@ _02234DC8:
 	add r0, r4, #0
 	add r1, #0x52
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r5, r5, #1
 	cmp r5, r7
 	blt _02234DC8
@@ -28296,7 +28296,7 @@ _02234DF4:
 	add r0, r4, #0
 	add r1, #0x56
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r5, r5, #1
 	cmp r5, r7
 	blt _02234DF4
@@ -28318,7 +28318,7 @@ _02234E20:
 	add r0, r4, #0
 	add r1, #0x5a
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r5, r5, #1
 	cmp r5, r7
 	blt _02234E20
@@ -28340,7 +28340,7 @@ _02234E4C:
 	add r0, r4, #0
 	add r1, #0x5e
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r5, r5, #1
 	cmp r5, r7
 	blt _02234E4C
@@ -28353,7 +28353,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x62
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x44
 	mov r2, #0
@@ -28362,7 +28362,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x63
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x45
 	mov r2, #0
@@ -28371,7 +28371,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x64
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x46
 	mov r2, #0
@@ -28380,7 +28380,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x65
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x47
 	mov r2, #0
@@ -28389,7 +28389,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x66
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x48
 	mov r2, #0
@@ -28398,7 +28398,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x67
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x49
 	mov r2, #0
@@ -28407,7 +28407,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x68
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x4a
 	mov r2, #0
@@ -28416,7 +28416,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x69
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x4b
 	mov r2, #0
@@ -28425,7 +28425,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x6a
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x4c
 	mov r2, #0
@@ -28434,7 +28434,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x6b
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x4d
 	mov r2, #0
@@ -28443,7 +28443,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x6c
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x4e
 	mov r2, #0
@@ -28452,7 +28452,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x6d
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x50
 	mov r2, #0
@@ -28461,14 +28461,14 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x6e
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r4, #0
-	bl sub_0206FF90
+	bl GetBoxMonGender
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x6f
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
@@ -28502,7 +28502,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #0x70
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 _02234FDE:
 	add r0, r4, #0
 	mov r1, #5
@@ -28547,7 +28547,7 @@ _02235024:
 	add r0, r4, #0
 	mov r1, #0x70
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 _0223502E:
 	add r0, r6, #0
 	mov r1, #2
@@ -28561,7 +28561,7 @@ _0223502E:
 	add r0, r4, #0
 	mov r1, #0x76
 	add r2, sp, #0xc
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #3
 	mov r2, #0
@@ -28575,7 +28575,7 @@ _0223502E:
 	add r0, r4, #0
 	mov r1, #0x4d
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 _0223506E:
 	add r0, r6, #0
 	mov r1, #0x25
@@ -28585,7 +28585,7 @@ _0223506E:
 	add r0, r4, #0
 	mov r1, #0x7a
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #7
 	add r2, sp, #0x24
@@ -28598,7 +28598,7 @@ _0223506E:
 	add r0, r4, #0
 	mov r1, #0x90
 	add r2, sp, #0xc
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x23
 	mov r2, #0
@@ -28607,7 +28607,7 @@ _0223506E:
 	add r0, r4, #0
 	mov r1, #0x99
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x22
 	mov r2, #0
@@ -28616,7 +28616,7 @@ _0223506E:
 	add r0, r4, #0
 	mov r1, #0x9a
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x26
 	mov r2, #0
@@ -28625,7 +28625,7 @@ _0223506E:
 	add r0, r4, #0
 	mov r1, #0x9b
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x24
 	mov r2, #0
@@ -28634,7 +28634,7 @@ _0223506E:
 	add r0, r4, #0
 	mov r1, #0x9c
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r6, #0
 	mov r1, #0x31
 	mov r2, #0
@@ -28643,10 +28643,10 @@ _0223506E:
 	add r0, r4, #0
 	mov r1, #0x9d
 	add r2, sp, #8
-	bl sub_0206ED70
+	bl SetBoxMonData
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -29997,10 +29997,10 @@ ov74_02235B14: ; 0x02235B14
 	add r5, r2, #0
 	add r7, r3, #0
 	ldr r4, [sp, #0x44]
-	bl sub_0206FF88
+	bl GetMonGender
 	str r0, [sp, #0x24]
 	add r0, r6, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]

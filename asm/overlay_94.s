@@ -193,7 +193,7 @@ _021E5A6A:
 	bl NewString_ReadMsgData
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _021E5AE4 ; =0x000007C4
 	mov r1, #0

@@ -4198,7 +4198,7 @@ ov112_021E795C: ; 0x021E795C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _021E7994 ; =0x0001E434
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
@@ -6059,7 +6059,7 @@ _021E8B94:
 	ldr r0, [sp, #0x14]
 	ldrb r1, [r4, #6]
 	ldrh r0, [r6, r0]
-	bl sub_0206FA6C
+	bl AllocAndLoadMonPersonal_HandleAlternateForme
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
 	mov r1, #0
@@ -6101,7 +6101,7 @@ _021E8BDA:
 	strb r1, [r5, #0xd]
 	ldr r0, [sp, #0xc]
 	mov r1, #0x1c
-	bl sub_0206FAA8
+	bl GetPersonalAttr
 	ldrb r1, [r5, #0xe]
 	mov r2, #1
 	lsl r0, r0, #0x18
@@ -6118,7 +6118,7 @@ _021E8BDA:
 	ldr r0, [sp, #4]
 	strb r1, [r0, r7]
 	ldr r0, [sp, #0xc]
-	bl sub_0206FBB0
+	bl FreeMonPersonal
 	ldr r0, [sp, #8]
 	add r7, r7, #1
 	add r0, r0, #2
@@ -6237,7 +6237,7 @@ _021E8CDE:
 	strh r0, [r7]
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	mov r4, #0
 	add r6, r7, #0
 _021E8D24:
@@ -6278,7 +6278,7 @@ _021E8D24:
 	ldr r0, _021E9028 ; =0x0001E430
 	strb r1, [r7, #0xd]
 	ldr r0, [r5, r0]
-	bl sub_02070044
+	bl BoxMonIsShiny
 	lsl r0, r0, #0x1f
 	ldrb r2, [r7, #0xe]
 	mov r1, #2
@@ -6303,13 +6303,13 @@ _021E8D24:
 	ldr r0, _021E9028 ; =0x0001E430
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	ldrh r0, [r7]
 	mov r1, #0x9a
-	bl sub_0206FA8C
+	bl AllocAndLoadMonPersonal
 	mov r1, #0x1c
 	add r4, r0, #0
-	bl sub_0206FAA8
+	bl GetPersonalAttr
 	ldrb r1, [r7, #0xe]
 	mov r2, #1
 	lsl r0, r0, #0x18
@@ -6320,10 +6320,10 @@ _021E8D24:
 	orr r0, r1
 	strb r0, [r7, #0xe]
 	add r0, r4, #0
-	bl sub_0206FBB0
+	bl FreeMonPersonal
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
-	bl sub_0206FF90
+	bl GetBoxMonGender
 	ldrb r2, [r7, #0xd]
 	mov r1, #0x60
 	lsl r0, r0, #0x1e
@@ -7330,7 +7330,7 @@ _021E95CE:
 	ldr r0, _021E9604 ; =0x0001E440
 	add r1, r4, #0
 	ldr r0, [r6, r0]
-	bl sub_0203272C
+	bl Pokewalker_CourseIsUnlocked
 	cmp r0, #0
 	bne _021E95F6
 	ldr r0, _021E9604 ; =0x0001E440
@@ -7377,7 +7377,7 @@ _021E962A:
 _021E9632:
 	ldr r0, [r6, r7]
 	add r1, r4, #0
-	bl sub_0203272C
+	bl Pokewalker_CourseIsUnlocked
 	cmp r0, #0
 	bne _021E9656
 	mov r0, #0xc0
@@ -10387,7 +10387,7 @@ _021EAEAE:
 	mov r0, #0x9a
 	bl AllocMonZeroed
 	add r6, r0, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r4, r0, #0
 	ldr r0, _021EAF28 ; =0x0001E440
 	add r1, r4, #0
@@ -13857,7 +13857,7 @@ ov112_021EC950: ; 0x021EC950
 _021EC970:
 	ldr r0, [r6, r7]
 	add r1, r4, #0
-	bl sub_0203272C
+	bl Pokewalker_CourseIsUnlocked
 	cmp r0, #0
 	beq _021EC984
 	ldr r0, _021EC998 ; =0x0001EC58
@@ -14477,7 +14477,7 @@ ov112_021ECE28: ; 0x021ECE28
 	lsl r2, r2, #0x18
 	mov r1, #0
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0x15
@@ -17681,7 +17681,7 @@ ov112_021EE7A8: ; 0x021EE7A8
 	mov r0, #0x9a
 	bl AllocMonZeroed
 	add r4, r0, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r6, r0, #0
 	ldr r0, _021EE89C ; =0x0001E440
 	add r2, sp, #8
@@ -17738,7 +17738,7 @@ _021EE81E:
 	add r2, r5, r7
 	bl ov112_021EE9A4
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r1, _021EE8B0 ; =0x0001E438
@@ -17806,7 +17806,7 @@ ov112_021EE8BC: ; 0x021EE8BC
 	add r4, r6, #0
 _021EE8D8:
 	add r0, r7, #0
-	bl sub_0206FCA8
+	bl CalcBoxMonExpToNextLevel
 	cmp r4, r0
 	blt _021EE8E6
 	add r4, r0, #0
@@ -17825,15 +17825,15 @@ _021EE8E6:
 	add r0, r5, #0
 	mov r1, #8
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 	cmp r6, #0
 	beq _021EE91C
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #8
-	bl sub_0206FE90
+	bl MonApplyFriendshipMod
 _021EE91C:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -17864,7 +17864,7 @@ ov112_021EE920: ; 0x021EE920
 	ldr r0, [r4, r0]
 	mov r2, #1
 	mov r3, #0x9a
-	bl sub_02078398
+	bl Bag_AddItem
 	ldr r0, _021EE960 ; =0x0001F376
 	mov r1, #1
 	strh r1, [r4, r0]
@@ -17898,7 +17898,7 @@ ov112_021EE970: ; 0x021EE970
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl sub_0206ED70
+	bl SetBoxMonData
 _021EE99C:
 	add sp, #4
 	pop {r3, r4, pc}
@@ -17930,7 +17930,7 @@ ov112_021EE9A4: ; 0x021EE9A4
 	add r0, r5, #0
 	mov r1, #0x91
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #8
@@ -17979,33 +17979,33 @@ _021EEA06:
 	ldrb r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r3, #0x20
-	bl sub_0206DE38
+	bl CreateMon
 	add r0, r5, #0
 	mov r1, #6
 	add r2, r4, #2
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	mov r1, #0x36
 	add r2, r4, #4
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	mov r1, #0x37
 	add r2, r4, #6
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x38
 	add r2, #8
-	bl sub_0206EC40
+	bl SetMonData
 	add r4, #0xa
 	add r0, r5, #0
 	mov r1, #0x39
 	add r2, r4, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	mov r1, #0x70
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov112_021EE9E4
@@ -18025,7 +18025,7 @@ _021EEA86:
 	mov r2, #1
 	ldr r0, [r5, r0]
 	mov r3, #0x9a
-	bl sub_02078398
+	bl Bag_AddItem
 _021EEA98:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -18042,7 +18042,7 @@ _021EEAA6:
 	mov r2, #1
 	ldr r0, [r5, r0]
 	mov r3, #0x9a
-	bl sub_02078398
+	bl Bag_AddItem
 _021EEAB8:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -18059,7 +18059,7 @@ _021EEAB8:
 	ldr r0, [r5, r0]
 	mov r2, #1
 	mov r3, #0x9a
-	bl sub_02078398
+	bl Bag_AddItem
 _021EEADA:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -18123,7 +18123,7 @@ _021EEB3A:
 	add r2, r6, #0
 	bl ov112_021EE9A4
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r1, _021EECC4 ; =0x0001E438
@@ -18132,7 +18132,7 @@ _021EEB3A:
 	mov r3, #0xe9
 	bl sub_0208F270
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r1, sp, #0x24
@@ -18180,7 +18180,7 @@ _021EEBA4:
 	add r0, r4, #0
 	bl ZeroMonData
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r6, r0, #0
 	bl MTRandom
 	mov r1, #0x18
@@ -18206,13 +18206,13 @@ _021EEBA4:
 	strb r1, [r0, #1]
 	add r0, r6, #0
 	mov r1, #0x9d
-	bl sub_0206ED70
+	bl SetBoxMonData
 	ldr r2, [sp, #4]
 	add r0, r6, #0
 	mov r1, #0x91
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r3, _021EECE0 ; =0x0000AD1A
@@ -18225,19 +18225,19 @@ _021EEBA4:
 	add r0, r6, #0
 	mov r1, #0xa
 	add r2, r5, r2
-	bl sub_0206ED70
+	bl SetBoxMonData
 	mov r1, #1
 	add r0, sp, #0x18
 	strb r1, [r0]
 	add r0, r6, #0
 	mov r1, #0x6e
 	add r2, sp, #0x18
-	bl sub_0206ED70
+	bl SetBoxMonData
 	ldr r2, _021EECE8 ; =0x0000AD30
 	add r0, r6, #0
 	mov r1, #0x9b
 	add r2, r5, r2
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r7, #0
 	add r1, sp, #0x24
 	add r2, sp, #0x20
@@ -18994,7 +18994,7 @@ ov112_021EF1F0: ; 0x021EF1F0
 	add r2, #0x18
 	bl GetBoxMonData
 	add r0, r4, #0
-	bl sub_02070044
+	bl BoxMonIsShiny
 	strh r0, [r5, #0x10]
 	add r0, r4, #0
 	mov r1, #0x6f
@@ -19134,7 +19134,7 @@ ov112_021EF31C: ; 0x021EF31C
 	add r2, #0x1a
 	bl GetMonData
 	add r0, r6, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	add r1, r5, #0
 	add r1, #0x31
 	strb r0, [r1]
@@ -19252,7 +19252,7 @@ _021EF414:
 	add r2, #2
 	bl GetMonData
 	add r0, r7, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	add r1, sp, #0x34
 	strb r0, [r1, #6]
 	add r0, r7, #0
@@ -19671,7 +19671,7 @@ ov112_021EF758: ; 0x021EF758
 	ldr r0, [r5, r0]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	ldr r0, _021EF8A8 ; =0x000010F0
 	ldr r1, [r5, r0]
 	ldr r0, _021EF8AC ; =0x0001D758
@@ -19843,7 +19843,7 @@ ov112_021EF8D4: ; 0x021EF8D4
 	ldr r0, [r5, r0]
 	mov r1, #1
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	mov r0, #0xc
 	mov r1, #0x9a
 	bl String_ctor
@@ -19963,7 +19963,7 @@ ov112_021EF9D4: ; 0x021EF9D4
 	ldr r0, [r4, r0]
 	mov r1, #4
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x30
@@ -20739,7 +20739,7 @@ ov112_021EFF84: ; 0x021EFF84
 	ldr r0, [r5, r0]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	ldr r0, _021F00B8 ; =0x000010F0
 	ldr r1, [r5, r0]
 	ldr r0, _021F00BC ; =0x0001D758
@@ -20903,7 +20903,7 @@ ov112_021F0114: ; 0x021F0114
 	ldr r0, [r4, r0]
 	mov r1, #4
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x30
@@ -21033,7 +21033,7 @@ ov112_021F01CC: ; 0x021F01CC
 	ldr r0, [r5, r0]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	ldr r0, _021F0300 ; =0x000010F0
 	ldr r1, [r5, r0]
 	ldr r0, _021F0304 ; =0x0001D758

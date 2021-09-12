@@ -222,7 +222,7 @@ ov71_02246B28: ; 0x02246B28
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x1c
-	bl sub_0206FBC4
+	bl GetMonBaseStat_HandleAlternateForme
 	cmp r0, #0
 	bne _02246B52
 	mov r0, #1
@@ -1024,7 +1024,7 @@ _02247164:
 	ldr r4, [r0, #4]
 _02247166:
 	add r0, r4, #0
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	str r0, [sp, #0x20]
 	add r0, sp, #0x38
 	add r1, r4, #0
@@ -1090,7 +1090,7 @@ _022471B8:
 	bl BG_LoadCharTilesData
 	ldr r1, [sp, #0x20]
 	add r0, r4, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	ldr r0, [sp, #0x24]
 	bl FreeToHeap
 _02247202:

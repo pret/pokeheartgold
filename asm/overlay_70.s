@@ -4709,7 +4709,7 @@ ov70_02239D8C: ; 0x02239D8C
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [sp]
 	mov r0, #0x8a
 	lsl r0, r0, #2
@@ -5614,7 +5614,7 @@ ov70_0223A4F4: ; 0x0223A4F4
 	ldr r0, [sp, #0x24]
 	add r6, r1, #0
 	add r4, r2, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _0223A56C ; =0x00000B9C
 	mov r1, #0
@@ -6068,7 +6068,7 @@ ov70_0223A8BC: ; 0x0223A8BC
 	lsl r0, r0, #4
 	add r0, r4, r0
 	add r0, r0, r5
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [sp]
 	mov r0, #0xd3
 	lsl r0, r0, #2
@@ -8581,7 +8581,7 @@ _0223BDC2:
 	cmp r0, #0
 	beq _0223BDF0
 	mov r1, #0x12
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	ldr r1, _0223BE7C ; =0x000011C4
 	ldr r2, [r4, r1]
 	str r0, [r2, #0x20]
@@ -9566,7 +9566,7 @@ _0223C56E:
 	bl ov70_0223F1D8
 	add r0, r5, #0
 	mov r1, #0x12
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	ldr r1, _0223C600 ; =0x000011C4
 	ldr r2, [r4, r1]
 	str r0, [r2, #0x20]
@@ -12969,7 +12969,7 @@ ov70_0223E0BC: ; 0x0223E0BC
 ov70_0223E114: ; 0x0223E114
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0206FD70
+	bl CalcBoxMonLevel
 	strb r0, [r4, #3]
 	pop {r4, pc}
 	thumb_func_end ov70_0223E114
@@ -13025,7 +13025,7 @@ ov70_0223E170: ; 0x0223E170
 	add r7, r2, #0
 	add r6, r3, #0
 	ldr r4, [sp, #0x40]
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	add r0, r5, #0
 	mov r1, #0xac
 	mov r2, #0
@@ -13067,7 +13067,7 @@ ov70_0223E170: ; 0x0223E170
 _0223E1DA:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0
 	beq _0223E248
@@ -13237,7 +13237,7 @@ _0223E336:
 	ldr r0, [r0, #8]
 	bl GetPartyMonByIndex
 	str r0, [sp, #0x24]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	ldr r1, _0223E470 ; =0x000011F4
 	lsl r6, r4, #2
 	ldr r1, [r5, r1]
@@ -13425,7 +13425,7 @@ _0223E4C0:
 	add r0, r5, #0
 	add r1, r4, #0
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	pop {r3, r4, r5, r6, r7, pc}
 _0223E4CE:
 	add r0, r7, #0
@@ -13460,7 +13460,7 @@ ov70_0223E4FC: ; 0x0223E4FC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	mov r4, #0
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	ldr r5, _0223E534 ; =0x02245700
 	str r0, [sp]
 	add r6, r4, #0
@@ -13476,7 +13476,7 @@ _0223E50C:
 	blt _0223E50C
 	ldr r1, [sp]
 	add r0, r7, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	cmp r4, #0
 	beq _0223E530
 	mov r0, #1
@@ -13492,7 +13492,7 @@ _0223E534: .word 0x02245700
 ov70_0223E538: ; 0x0223E538
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #5
@@ -13506,7 +13506,7 @@ ov70_0223E538: ; 0x0223E538
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	cmp r6, #0
 	ble _0223E592
 	ldr r1, _0223E598 ; =0x000001DF
@@ -13546,7 +13546,7 @@ _0223E598: .word 0x000001DF
 ov70_0223E59C: ; 0x0223E59C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #6
@@ -13555,7 +13555,7 @@ ov70_0223E59C: ; 0x0223E59C
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	cmp r4, #0x70
 	bne _0223E5C2
 	mov r0, #1
@@ -13669,7 +13669,7 @@ ov70_0223E658: ; 0x0223E658
 	add r0, sp, #0
 	strb r1, [r0, #2]
 	add r0, r5, #0
-	bl sub_0206FD70
+	bl CalcBoxMonLevel
 	add r1, sp, #0
 	strb r0, [r1, #3]
 	add r0, sp, #0
@@ -13705,7 +13705,7 @@ ov70_0223E690: ; 0x0223E690
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0206FD70
+	bl CalcBoxMonLevel
 	add r1, sp, #0
 	strb r0, [r1, #9]
 	add r0, r4, #0
@@ -13728,7 +13728,7 @@ ov70_0223E690: ; 0x0223E690
 	sub r0, #8
 	mul r0, r1
 	add r0, r2, r0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	mov r1, #5
 	mov r2, #0
 	add r5, r0, #0
@@ -14654,7 +14654,7 @@ _0223EE5E:
 	ldr r1, _0223EEDC ; =0x00000B84
 	strh r0, [r4, r1]
 	mov r1, #0x12
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	ldr r1, _0223EED8 ; =0x000011C4
 	ldr r2, [r4, r1]
 	str r0, [r2, #0x20]
@@ -15553,7 +15553,7 @@ ov70_0223F508: ; 0x0223F508
 	bl GetBoxMonData
 	add r6, r0, #1
 	ldr r0, [sp, #0xc]
-	bl sub_0206FD70
+	bl CalcBoxMonLevel
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #0x68
@@ -17378,7 +17378,7 @@ _0224030A:
 	ldr r0, [r0]
 	bl sub_0202DB64
 	add r0, r5, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _022403F8 ; =0x00000B9C
 	mov r1, #0
@@ -17422,7 +17422,7 @@ _02240372:
 	ldr r0, [r0]
 	bl sub_0202DB64
 	add r0, r5, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _022403F8 ; =0x00000B9C
 	mov r1, #0
@@ -18431,11 +18431,11 @@ _02240B0E:
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [r5]
 	mov r1, #0
 	ldr r0, [r0]
@@ -18447,7 +18447,7 @@ _02240B2C:
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0, #8]
-	bl sub_02074524
+	bl AddMonToParty
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
 	bl GetPartyCount
@@ -18468,7 +18468,7 @@ _02240B54:
 	add r2, sp, #4
 	bl sub_02073D9C
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [sp, #0x20]
@@ -18558,18 +18558,18 @@ _02240C16:
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #0x20]
 	cmp r0, #0x12
 	bne _02240C58
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0, #8]
-	bl sub_02074524
+	bl AddMonToParty
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
 	bl GetPartyCount
@@ -18590,7 +18590,7 @@ _02240C58:
 	add r2, sp, #4
 	bl sub_02073D9C
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [sp, #0x20]
@@ -19676,7 +19676,7 @@ _022414D8:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r1, r4, #0
 	add r1, #0xf8
 	str r0, [r1]
@@ -19709,7 +19709,7 @@ _0224151C:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r1, r4, #0
 	add r1, #0xfc
 	str r0, [r1]
@@ -19742,7 +19742,7 @@ _02241560:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r1, r4, #0
 	add r1, #0xfc
 	str r0, [r1]
@@ -19753,7 +19753,7 @@ _02241560:
 	bl sub_0202DB64
 	ldr r0, _02241640 ; =0x000011F0
 	ldr r0, [r4, r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r1, r4, #0
 	add r1, #0xf8
 	str r0, [r1]
@@ -19783,7 +19783,7 @@ _022415B2:
 	bl sub_0202DB64
 	ldr r0, _02241640 ; =0x000011F0
 	ldr r0, [r4, r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r1, r4, #0
 	add r1, #0xf8
 	str r0, [r1]
@@ -19796,7 +19796,7 @@ _022415B2:
 	sub r0, #8
 	mul r0, r1
 	add r0, r2, r0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r1, r4, #0
 	add r1, #0xfc
 	str r0, [r1]
@@ -19893,7 +19893,7 @@ _0224166E:
 	add r1, r6, #0
 	mov r2, #1
 	lsr r3, r3, #0x10
-	bl sub_02070E34
+	bl GetMonEvolution
 	add r2, r0, #0
 	beq _022416DA
 	ldr r3, [r5]
@@ -19981,7 +19981,7 @@ _02241742:
 	add r1, r6, #0
 	mov r2, #1
 	lsr r3, r3, #0x10
-	bl sub_02070E34
+	bl GetMonEvolution
 	add r2, r0, #0
 	beq _02241798
 	ldr r3, [r5]
@@ -20168,7 +20168,7 @@ ov70_022418A4: ; 0x022418A4
 	bl GetPartyMonByIndex
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _022418D4:
@@ -20187,7 +20187,7 @@ _022418D4:
 	add r2, sp, #0
 	bl sub_02073D9C
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [sp, #4]

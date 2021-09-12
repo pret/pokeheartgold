@@ -228,8 +228,8 @@ sub_02032728: ; 0x02032728
 	bx lr
 	thumb_func_end sub_02032728
 
-	thumb_func_start sub_0203272C
-sub_0203272C: ; 0x0203272C
+	thumb_func_start Pokewalker_CourseIsUnlocked
+Pokewalker_CourseIsUnlocked: ; 0x0203272C
 	cmp r1, #0x20
 	blt _02032734
 	mov r0, #0
@@ -243,7 +243,7 @@ _02032734:
 	mov r0, #1
 	and r0, r2
 	bx lr
-	thumb_func_end sub_0203272C
+	thumb_func_end Pokewalker_CourseIsUnlocked
 
 	thumb_func_start Pokewalker_UnlockCourse
 Pokewalker_UnlockCourse: ; 0x02032744

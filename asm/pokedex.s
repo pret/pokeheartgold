@@ -1129,7 +1129,7 @@ _02029B8E:
 	cmp r2, #0
 	bne _02029BA4
 	add r0, r6, #0
-	bl sub_0206FF88
+	bl GetMonGender
 	cmp r0, #0
 	bne _02029BA0
 	mov r2, #0
@@ -1200,7 +1200,7 @@ sub_02029C04: ; 0x02029C04
 	add r0, r6, #0
 	mov r1, #0x12
 	add r4, r2, #0
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	cmp r0, #0xff
 	bne _02029C26
 	cmp r4, #0
@@ -1573,7 +1573,7 @@ sub_02029EA0: ; 0x02029EA0
 	beq _02029EB0
 	bl GF_AssertFail
 _02029EB0:
-	bl sub_0207187C
+	bl LoadSpeciesToJohtoDexNoLUT
 	add r6, r0, #0
 	mov r5, #0
 	mov r4, #1
@@ -1616,7 +1616,7 @@ sub_02029EF4: ; 0x02029EF4
 	beq _02029F04
 	bl GF_AssertFail
 _02029F04:
-	bl sub_0207187C
+	bl LoadSpeciesToJohtoDexNoLUT
 	add r6, r0, #0
 	mov r5, #0
 	mov r4, #1
@@ -1715,7 +1715,7 @@ _02029FA8: .word 0x000001ED
 sub_02029FAC: ; 0x02029FAC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0207187C
+	bl LoadSpeciesToJohtoDexNoLUT
 	add r6, r0, #0
 	mov r5, #0
 	mov r4, #1
@@ -2261,7 +2261,7 @@ sub_0202A36C: ; 0x0202A36C
 	bl GetMonData
 	str r0, [sp, #4]
 	ldr r0, [sp]
-	bl sub_0206FF88
+	bl GetMonGender
 	add r6, r0, #0
 	ldr r1, [r5]
 	ldr r0, _0202A42C ; =0xBEEFCAFE
@@ -2366,7 +2366,7 @@ Pokedex_SetMonCaughtFlag: ; 0x0202A434
 	bl GetMonData
 	str r0, [sp]
 	add r0, r7, #0
-	bl sub_0206FF88
+	bl GetMonGender
 	add r6, r0, #0
 	ldr r1, [r5]
 	ldr r0, _0202A534 ; =0xBEEFCAFE
@@ -2432,7 +2432,7 @@ _0202A4DA:
 	cmp r4, #0xc9
 	bne _0202A4F8
 	add r0, r7, #0
-	bl sub_02070D98
+	bl GetMonUnownLetter
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #1

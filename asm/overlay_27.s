@@ -1285,7 +1285,7 @@ _0225A9D0:
 	beq _0225AA2E
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	add r4, r0, #0
 	bl sub_020781C4
 	cmp r0, #0
@@ -1726,7 +1726,7 @@ _0225AD52:
 	add r7, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	add r1, r4, #0
 	add r1, #0x64
 	str r1, [sp]
@@ -2726,7 +2726,7 @@ _0225B55A:
 _0225B57E:
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	add r6, r0, #0
 	add r0, r4, #0
 	sub r0, #8

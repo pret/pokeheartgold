@@ -5949,7 +5949,7 @@ _021E8546:
 	strb r0, [r5, #0x14]
 	str r0, [r5, #8]
 	ldrh r0, [r5, #4]
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	beq _021E856A

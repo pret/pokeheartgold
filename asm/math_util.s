@@ -493,8 +493,8 @@ _0201FF3E:
 	bx lr
 	thumb_func_end sub_0201FF28
 
-	thumb_func_start sub_0201FF44
-sub_0201FF44: ; 0x0201FF44
+	thumb_func_start _MonEncryptSegment
+_MonEncryptSegment: ; 0x0201FF44
 	push {r0, r1, r2, r3}
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
@@ -504,7 +504,7 @@ sub_0201FF44: ; 0x0201FF44
 	add r7, sp, #0x20
 _0201FF52:
 	add r0, r7, #0
-	bl sub_0201FF78
+	bl MonEncryptionLCRNG
 	ldrh r1, [r5]
 	add r4, r4, #1
 	eor r0, r1
@@ -518,18 +518,18 @@ _0201FF66:
 	add sp, #0x10
 	bx r3
 	.balign 4, 0
-	thumb_func_end sub_0201FF44
+	thumb_func_end _MonEncryptSegment
 
-	thumb_func_start sub_0201FF70
-sub_0201FF70: ; 0x0201FF70
-	ldr r3, _0201FF74 ; =sub_0201FF44
+	thumb_func_start _MonDecryptSegment
+_MonDecryptSegment: ; 0x0201FF70
+	ldr r3, _0201FF74 ; =_MonEncryptSegment
 	bx r3
 	.balign 4, 0
-_0201FF74: .word sub_0201FF44
-	thumb_func_end sub_0201FF70
+_0201FF74: .word _MonEncryptSegment
+	thumb_func_end _MonDecryptSegment
 
-	thumb_func_start sub_0201FF78
-sub_0201FF78: ; 0x0201FF78
+	thumb_func_start MonEncryptionLCRNG
+MonEncryptionLCRNG: ; 0x0201FF78
 	ldr r2, [r0]
 	ldr r1, _0201FF90 ; =0x41C64E6D
 	add r3, r2, #0
@@ -544,7 +544,7 @@ sub_0201FF78: ; 0x0201FF78
 	nop
 _0201FF90: .word 0x41C64E6D
 _0201FF94: .word 0x00006073
-	thumb_func_end sub_0201FF78
+	thumb_func_end MonEncryptionLCRNG
 
 	thumb_func_start MATH_CalcCRC16CCITT
 MATH_CalcCRC16CCITT: ; 0x0201FF98

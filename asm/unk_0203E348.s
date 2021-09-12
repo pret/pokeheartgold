@@ -221,7 +221,7 @@ sub_0203E3FC: ; 0x0203E3FC
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r6, r1, #0
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _0203E45C ; =_020FA1B8
 	mov r2, #0xb
 	bl sub_02078644
@@ -268,7 +268,7 @@ sub_0203E460: ; 0x0203E460
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	add r6, r0, #0
 	cmp r4, #0
 	beq _0203E47A
@@ -362,7 +362,7 @@ sub_0203E4FC: ; 0x0203E4FC
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r5, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [r4, #4]
 	ldr r0, [r5, #0xc]
 	bl Sav2_Mailbox_get
@@ -2223,10 +2223,10 @@ _0203F354:
 	ldr r0, [r4, #0x38]
 	str r0, [r4, #0x4c]
 	ldr r0, [r4, #0x3c]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [r4, #0x44]
 	ldr r0, [r4, #0x40]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [r4, #0x48]
 	ldr r0, [r5, #0xc]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -2288,7 +2288,7 @@ _0203F3C2:
 	mov r0, #0
 	mov r2, #1
 	lsr r3, r3, #0x10
-	bl sub_02070E34
+	bl GetMonEvolution
 	str r0, [sp, #0x1c]
 	cmp r0, #0
 	beq _0203F440
@@ -2306,7 +2306,7 @@ _0203F3C2:
 	bl Sav2_Pokedex_get
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [sp, #0x24]
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get
@@ -2344,7 +2344,7 @@ _0203F446:
 	bl GetPartyMonByIndex
 	add r1, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [r4, #0x5c]
 	bl sub_02075D4C
 	mov r0, #0x1a
@@ -2654,7 +2654,7 @@ _0203F6BE:
 	ldr r2, [r4, #0xc]
 	mov r1, #0x76
 	add r2, #0x1c
-	bl sub_0206EC40
+	bl SetMonData
 	pop {r4, r5, r6, pc}
 _0203F6CA:
 	ldr r0, [r5, #0xc]
@@ -2906,7 +2906,7 @@ sub_0203F844: ; 0x0203F844
 	bl sub_0203A040
 	str r0, [r4, #0x34]
 	ldr r0, [r5, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [r4, #0x2c]
 	add r0, r5, #0
 	add r1, sp, #0
@@ -3193,7 +3193,7 @@ sub_0203FAE8: ; 0x0203FAE8
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r5, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [r4, #4]
 	ldr r0, [r5, #0xc]
 	bl Sav2_Mailbox_get

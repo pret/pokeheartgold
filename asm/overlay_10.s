@@ -56,7 +56,7 @@ _0221BE5A:
 	mov r4, #0
 _0221BE7C:
 	add r0, r4, #0
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	tst r0, r7
 	beq _0221BE90
 	mov r0, #0xd6
@@ -2483,11 +2483,11 @@ _0221D122:
 	add r7, r5, r3
 	ldrh r0, [r7, r6]
 	mov r1, #0x18
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	add r4, r0, #0
 	ldrh r0, [r7, r6]
 	mov r1, #0x19
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	add r6, r0, #0
 	cmp r4, #0
 	beq _0221D15E
@@ -2595,12 +2595,12 @@ _0221D1E2:
 	ldrh r0, [r6, r1]
 	str r1, [sp]
 	mov r1, #0x18
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	add r4, r0, #0
 	ldr r0, [sp]
 	mov r1, #0x19
 	ldrh r0, [r6, r0]
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	cmp r4, #0
 	beq _0221D228
 	cmp r0, #0
@@ -5659,7 +5659,7 @@ _0221E9D0:
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	bl ov10_0221EF34
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _0221E9F0 ; =0x00003108
 	ldrb r1, [r5, r1]
 	tst r0, r1
@@ -5698,7 +5698,7 @@ _0221EA20:
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	bl ov10_0221EF34
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _0221EA40 ; =0x00003108
 	ldrb r1, [r5, r1]
 	tst r0, r1
@@ -8271,7 +8271,7 @@ ov10_0221FD34: ; 0x0221FD34
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x24]
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _0221FE84 ; =0x00003108
 	ldrb r1, [r4, r1]
 	tst r0, r1
@@ -8350,7 +8350,7 @@ _0221FDEE:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x1c]
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _0221FE84 ; =0x00003108
 	ldrb r1, [r4, r1]
 	tst r0, r1
@@ -9639,7 +9639,7 @@ _02220816:
 	b _02220A62
 _02220818:
 	mov r0, #5
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0
@@ -9668,7 +9668,7 @@ _02220834:
 	beq _02220922
 _02220852:
 	mov r0, #4
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0
@@ -9693,7 +9693,7 @@ _0222086E:
 	tst r0, r1
 	beq _02220922
 	mov r0, #3
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0
@@ -9718,7 +9718,7 @@ _022208A2:
 	tst r0, r1
 	beq _02220922
 	mov r0, #2
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0
@@ -9743,7 +9743,7 @@ _022208D6:
 	tst r0, r1
 	beq _02220922
 	mov r0, #1
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0
@@ -9771,7 +9771,7 @@ _02220922:
 	b _02220A62
 _02220924:
 	mov r0, #0
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0

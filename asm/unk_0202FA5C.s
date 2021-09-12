@@ -1136,18 +1136,18 @@ _0203024C: .word 0x000001D3
 
 	thumb_func_start sub_02030250
 sub_02030250: ; 0x02030250
-	ldr r3, _02030254 ; =sub_0201FF44
+	ldr r3, _02030254 ; =_MonEncryptSegment
 	bx r3
 	.balign 4, 0
-_02030254: .word sub_0201FF44
+_02030254: .word _MonEncryptSegment
 	thumb_func_end sub_02030250
 
 	thumb_func_start sub_02030258
 sub_02030258: ; 0x02030258
-	ldr r3, _0203025C ; =sub_0201FF70
+	ldr r3, _0203025C ; =_MonDecryptSegment
 	bx r3
 	.balign 4, 0
-_0203025C: .word sub_0201FF70
+_0203025C: .word _MonDecryptSegment
 	thumb_func_end sub_02030258
 
 	thumb_func_start sub_02030260
@@ -1807,10 +1807,10 @@ _0203074C:
 	add r0, r4, #0
 	mov r1, #0xa2
 	add r2, sp, #4
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl sub_02074524
+	bl AddMonToParty
 	ldrh r0, [r7, #2]
 	add r6, r6, #1
 	add r5, #0x70

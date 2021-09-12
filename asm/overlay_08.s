@@ -490,13 +490,13 @@ _0221C200:
 	ldrh r0, [r4, #0x22]
 	ldr r2, [r4, #0xc]
 	mov r1, #0x24
-	bl sub_02077D88
+	bl GetItemAttr
 	cmp r0, #0
 	beq _0221C236
 	ldrh r0, [r4, #0x22]
 	ldr r2, [r4, #0xc]
 	mov r1, #0x25
-	bl sub_02077D88
+	bl GetItemAttr
 	cmp r0, #0
 	bne _0221C236
 	ldrb r1, [r4, #0x11]
@@ -528,7 +528,7 @@ _0221C236:
 	ldrh r0, [r4, #0x22]
 	ldr r2, [r4, #0xc]
 	mov r1, #0x25
-	bl sub_02077D88
+	bl GetItemAttr
 	cmp r0, #0
 	beq _0221C266
 	ldr r0, _0221C30C ; =0x00002079
@@ -544,7 +544,7 @@ _0221C266:
 	ldrh r0, [r4, #0x22]
 	ldr r2, [r4, #0xc]
 	mov r1, #0x17
-	bl sub_02077D88
+	bl GetItemAttr
 	cmp r0, #0
 	bne _0221C2D6
 	add r2, r4, #0
@@ -1470,7 +1470,7 @@ ov08_0221C9A4: ; 0x0221C9A4
 	mov r1, #0x25
 	ldrh r0, [r2, #0x22]
 	ldr r2, [r2, #0xc]
-	bl sub_02077D88
+	bl GetItemAttr
 	cmp r0, #0
 	beq _0221C9C2
 	mov r0, #0x18
@@ -2569,7 +2569,7 @@ _0221D27E:
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	add r6, #0x1b
-	bl sub_0206FF88
+	bl GetMonGender
 	ldrb r1, [r6, r5]
 	mov r2, #7
 	bic r1, r2
@@ -2622,7 +2622,7 @@ _0221D27E:
 	ldrh r0, [r4, #8]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x19
-	bl sub_0206FD00
+	bl GetMonExpBySpeciesAndLevel
 	str r0, [r4, #0x24]
 	ldrb r0, [r6, r5]
 	lsl r0, r0, #0x19
@@ -2638,7 +2638,7 @@ _0221D316:
 	add r1, r1, #1
 	add r4, r0, r5
 	ldrh r0, [r4, #8]
-	bl sub_0206FD00
+	bl GetMonExpBySpeciesAndLevel
 _0221D322:
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #4]
@@ -2725,23 +2725,23 @@ _0221D3A0:
 	strb r0, [r5, #3]
 	ldrh r0, [r5]
 	ldrb r1, [r5, #3]
-	bl sub_0207332C
+	bl WazaGetMaxPp
 	strb r0, [r5, #3]
 	ldrh r0, [r5]
 	mov r1, #3
-	bl sub_02073314
+	bl GetWazaAttr
 	strb r0, [r5, #4]
 	ldrh r0, [r5]
 	mov r1, #1
-	bl sub_02073314
+	bl GetWazaAttr
 	strb r0, [r5, #5]
 	ldrh r0, [r5]
 	mov r1, #4
-	bl sub_02073314
+	bl GetWazaAttr
 	strb r0, [r5, #6]
 	ldrh r0, [r5]
 	mov r1, #2
-	bl sub_02073314
+	bl GetWazaAttr
 	strb r0, [r5, #7]
 _0221D40C:
 	add r0, r4, #1
@@ -3485,7 +3485,7 @@ _0221D978:
 	bl NewString_ReadMsgData
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0
@@ -3520,7 +3520,7 @@ _0221D9CA:
 	bl NewString_ReadMsgData
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0
@@ -3569,7 +3569,7 @@ _0221DA1C:
 	mul r0, r4
 	add r0, r5, r0
 	ldr r0, [r0, #4]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0
@@ -3601,7 +3601,7 @@ _0221DA6C:
 	bl NewString_ReadMsgData
 	add r7, r0, #0
 	ldr r0, [r4, r6]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0
@@ -4087,7 +4087,7 @@ ov08_0221DDCC: ; 0x0221DDCC
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x24]
 	ldr r0, [r7, r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _0221DF68 ; =0x00001FAC
 	mov r1, #0
@@ -6954,7 +6954,7 @@ ov08_0221F658: ; 0x0221F658
 	bl NewString_ReadMsgData
 	add r6, r0, #0
 	ldr r0, [r5, r7]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _0221F7B0 ; =0x00001FAC
 	mov r1, #0
@@ -7732,7 +7732,7 @@ _0221FD20:
 	ldr r0, [r5]
 	mov r1, #5
 	ldrh r0, [r0, #0x24]
-	bl sub_02073314
+	bl GetWazaAttr
 	add r1, sp, #0x14
 	strb r0, [r1, #2]
 	ldrb r0, [r1, #2]
@@ -7909,7 +7909,7 @@ ov08_0221FDA4: ; 0x0221FDA4
 _0221FEE0:
 	ldrh r0, [r1, #0x24]
 	mov r1, #5
-	bl sub_02073314
+	bl GetWazaAttr
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -7930,7 +7930,7 @@ _0221FEE0:
 	ldr r0, [r5]
 	mov r1, #4
 	ldrh r0, [r0, #0x24]
-	bl sub_02073314
+	bl GetWazaAttr
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #6
@@ -7938,7 +7938,7 @@ _0221FEE0:
 	ldr r0, [r5]
 	mov r1, #2
 	ldrh r0, [r0, #0x24]
-	bl sub_02073314
+	bl GetWazaAttr
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #7
@@ -7946,7 +7946,7 @@ _0221FEE0:
 	ldr r0, [r5]
 	mov r1, #1
 	ldrh r0, [r0, #0x24]
-	bl sub_02073314
+	bl GetWazaAttr
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0xa
@@ -8049,7 +8049,7 @@ _02220008:
 	mov r1, #0x25
 	ldrh r0, [r2, #0x22]
 	ldr r2, [r2, #0xc]
-	bl sub_02077D88
+	bl GetItemAttr
 	cmp r0, #0
 	bne _0222002A
 	add r0, r5, #0
@@ -8210,7 +8210,7 @@ ov08_02220084: ; 0x02220084
 _02220176:
 	ldrh r0, [r1, #0x24]
 	mov r1, #5
-	bl sub_02073314
+	bl GetWazaAttr
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -8409,7 +8409,7 @@ _022202F0:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
@@ -8434,7 +8434,7 @@ _0222033A:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
@@ -8493,7 +8493,7 @@ _022203BE:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
@@ -8516,7 +8516,7 @@ _022203F6:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
@@ -8539,7 +8539,7 @@ _0222042C:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
@@ -8562,7 +8562,7 @@ _02220462:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
@@ -8585,7 +8585,7 @@ _02220498:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
@@ -8608,7 +8608,7 @@ _022204CE:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
@@ -8631,7 +8631,7 @@ _02220504:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
@@ -8652,7 +8652,7 @@ _0222053A:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02220578 ; =0x00001FAC
 	mov r1, #0
@@ -8695,7 +8695,7 @@ ov08_0222057C: ; 0x0222057C
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _022205D8 ; =0x00001FAC
 	mov r1, #0
@@ -10106,7 +10106,7 @@ ov08_02221088: ; 0x02221088
 _0222111E:
 	ldrh r0, [r1, #0x24]
 	mov r1, #1
-	bl sub_02073314
+	bl GetWazaAttr
 	ldr r1, _02221148 ; =0x00002020
 	add r2, r0, #0
 	ldr r1, [r5, r1]
@@ -10332,7 +10332,7 @@ _022212DC:
 	cmp r0, #0
 	beq _02221312
 	mov r1, #3
-	bl sub_02073314
+	bl GetWazaAttr
 	add r3, r0, #0
 	ldr r1, _02221320 ; =0x0000201C
 	lsl r3, r3, #0x18
@@ -10378,7 +10378,7 @@ _0222133C:
 	lsl r1, r4, #2
 	add r6, r7, r1
 	mov r1, #0xb
-	bl sub_02073314
+	bl GetWazaAttr
 	add r3, r0, #0
 	ldr r1, _022213B4 ; =0x0000200C
 	ldr r2, _022213B8 ; =0x0000B010
@@ -10408,7 +10408,7 @@ _0222137A:
 	cmp r0, #0
 	beq _022213B2
 	mov r1, #0xb
-	bl sub_02073314
+	bl GetWazaAttr
 	add r3, r0, #0
 	ldr r1, _022213C0 ; =0x0000201C
 	add r3, #0x12
@@ -13436,7 +13436,7 @@ _02222B9C:
 	ldrh r0, [r4, #0x1c]
 	ldr r2, [r4, #0xc]
 	mov r1, #7
-	bl sub_02077D88
+	bl GetItemAttr
 	add r6, r0, #0
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
@@ -13456,7 +13456,7 @@ _02222B9C:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5, #0x14]
 	mov r1, #0
@@ -15520,7 +15520,7 @@ _02223C0A:
 	ldr r2, [r4]
 	mov r1, #0xd
 	ldr r2, [r2, #0xc]
-	bl sub_02077D88
+	bl GetItemAttr
 	add r7, r0, #0
 	ldr r1, _02223CC8 ; =0x02225CE0
 	mov r0, #0

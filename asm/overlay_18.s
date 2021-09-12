@@ -24731,7 +24731,7 @@ _021F2174:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #6
-	bl sub_0206FBC4
+	bl GetMonBaseStat_HandleAlternateForme
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #4]
@@ -24750,7 +24750,7 @@ _021F2174:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #7
-	bl sub_0206FBC4
+	bl GetMonBaseStat_HandleAlternateForme
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	beq _021F21B6
@@ -38115,7 +38115,7 @@ ov18_021F8AB8: ; 0x021F8AB8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0206DD40
+	bl AcquireMonLock
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	mov r1, #5
@@ -38147,7 +38147,7 @@ ov18_021F8AB8: ; 0x021F8AB8
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_0206DD8C
+	bl ReleaseMonLock
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F8AB8

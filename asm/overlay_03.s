@@ -5957,14 +5957,14 @@ ov03_02256D34: ; 0x02256D34
 	bhi _02256DF8
 _02256DEA:
 	ldr r0, [r5, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	b _02256E04
 _02256DF8:
 	ldr r0, [r5, #0xc]
-	bl sub_0202CBE8
+	bl Sav2_SealCase_get
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -7831,7 +7831,7 @@ ov03_02257CA0: ; 0x02257CA0
 	ldrh r2, [r4, r2]
 	ldr r0, [r4, r0]
 	mov r3, #0xb
-	bl sub_02078384
+	bl Bag_HasSpaceForItem
 	b _02257D4C
 _02257CC2:
 	cmp r0, #1
@@ -7875,7 +7875,7 @@ _02257D06:
 	add r2, #0x3a
 	ldrh r2, [r4, r2]
 	mov r3, #0xb
-	bl sub_02078384
+	bl Bag_HasSpaceForItem
 	cmp r0, #0
 	bne _02257D26
 	mov r0, #0xa6
@@ -8055,7 +8055,7 @@ _02257E54:
 	ldrh r1, [r3, r1]
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_02078398
+	bl Bag_AddItem
 	pop {r3, pc}
 	.balign 4, 0
 _02257E68: .word 0x000001E5
@@ -8086,7 +8086,7 @@ _02257E82:
 	ldrh r2, [r4, r2]
 	ldr r0, [r4, r0]
 	mov r3, #0xb
-	bl sub_02078398
+	bl Bag_AddItem
 	b _02257EF0
 _02257EA0:
 	cmp r0, #3
@@ -8202,7 +8202,7 @@ _02257F5E:
 	mov r1, #0xc
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_02078398
+	bl Bag_AddItem
 	cmp r0, #1
 	bne _02257F9E
 	mov r0, #0xa6
@@ -8416,7 +8416,7 @@ ov03_02258120: ; 0x02258120
 	add r0, r1, #0
 	mov r1, #0
 	mov r2, #0xb
-	bl sub_02077D88
+	bl GetItemAttr
 	pop {r3, pc}
 _02258138:
 	cmp r0, #1
@@ -9234,7 +9234,7 @@ ov03_02258764: ; 0x02258764
 	bl sub_02050650
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _022587C8 ; =0x022597F0
 	mov r2, #0xb
 	bl sub_02078644

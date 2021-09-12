@@ -159,14 +159,14 @@ _02229FF8:
 	add r6, r5, #0
 	orr r6, r0
 	add r0, r6, #0
-	bl sub_0206FE2C
+	bl GetNatureFromPersonality
 	add r1, sp, #8
 	ldrb r1, [r1, #0xb]
 	cmp r1, r0
 	bne _02229FF8
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_02070068
+	bl CalcShininessByOtIdAndPersonality
 	cmp r0, #1
 	beq _02229FF8
 	str r6, [r4, #0x10]
@@ -208,7 +208,7 @@ _0222A028:
 	str r0, [r4, #0x14]
 _0222A068:
 	add r0, r5, #0
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	add r1, sp, #8
 	ldrb r1, [r1, #0xa]
 	tst r0, r1
@@ -230,7 +230,7 @@ _0222A08C:
 	lsr r7, r0, #0x18
 _0222A092:
 	add r0, r5, #0
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	add r1, sp, #8
 	ldrb r1, [r1, #0xa]
 	tst r0, r1
@@ -250,7 +250,7 @@ _0222A0A4:
 	ldrh r0, [r4]
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	cmp r0, #0
 	beq _0222A0E8
 	ldr r2, [r4, #0x10]
@@ -266,7 +266,7 @@ _0222A0D4:
 	mov r1, #0x18
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	add r1, r4, #0
 	add r1, #0x20
 	strb r0, [r1]
@@ -276,7 +276,7 @@ _0222A0E8:
 	mov r1, #0x18
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	add r1, r4, #0
 	add r1, #0x20
 	strb r0, [r1]
@@ -344,13 +344,13 @@ _0222A15E:
 	add r0, r5, #0
 	lsl r1, r1, #0x15
 	lsr r1, r1, #0x15
-	bl sub_0206DE38
+	bl CreateMon
 	add r0, r5, #0
 	mov r1, #0xaf
 	add r2, sp, #0x1c
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 	ldrh r0, [r6]
 	add r2, sp, #0x14
 	add r2, #1
@@ -360,11 +360,11 @@ _0222A15E:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0x70
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	mov r1, #6
 	add r2, r6, #2
-	bl sub_0206EC40
+	bl SetMonData
 	mov r4, #0
 	str r6, [sp, #0x10]
 	add r7, r4, #0
@@ -378,7 +378,7 @@ _0222A1BC:
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x36
-	bl sub_0206EC40
+	bl SetMonData
 	ldrb r0, [r6, #0x1e]
 	add r2, sp, #0x14
 	add r2, #1
@@ -391,7 +391,7 @@ _0222A1BC:
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x3e
-	bl sub_0206EC40
+	bl SetMonData
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x42
@@ -403,7 +403,7 @@ _0222A1BC:
 	add r0, r5, #0
 	add r1, #0x3a
 	add r2, sp, #0x14
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #0x10]
 	add r4, r4, #1
 	add r0, r0, #2
@@ -416,7 +416,7 @@ _0222A1BC:
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	add r2, sp, #0x18
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x18]
 	add r0, sp, #0x14
@@ -424,7 +424,7 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0xd
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x19]
 	add r0, sp, #0x14
@@ -432,7 +432,7 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0xe
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x1a]
 	add r0, sp, #0x14
@@ -440,7 +440,7 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0xf
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x1b]
 	add r0, sp, #0x14
@@ -448,7 +448,7 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x1c]
 	add r0, sp, #0x14
@@ -456,7 +456,7 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0x11
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x1d]
 	add r0, sp, #0x14
@@ -464,17 +464,17 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0x12
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r6, #0
 	add r0, r5, #0
 	mov r1, #0xa
 	add r2, #0x20
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r6, #0
 	add r0, r5, #0
 	mov r1, #9
 	add r2, #0x21
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [r6, #0x14]
 	lsl r0, r0, #1
 	lsr r0, r0, #0x1f
@@ -493,7 +493,7 @@ _0222A1BC:
 	add r0, r5, #0
 	mov r1, #0x77
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -504,15 +504,15 @@ _0222A2E4:
 	add r0, r5, #0
 	mov r1, #0x75
 	add r2, #0x22
-	bl sub_0206EC40
+	bl SetMonData
 _0222A2F0:
 	add r6, #0x1f
 	add r0, r5, #0
 	mov r1, #0xc
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -587,11 +587,11 @@ ov80_0222A334: ; 0x0222A334
 	add r0, r4, #0
 	mov r1, #0x91
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #7
 	add r2, sp, #8
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, #0
@@ -611,7 +611,7 @@ ov80_0222A3BC: ; 0x0222A3BC
 	bl ov80_0222A334
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02074524
+	bl AddMonToParty
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0222A3BC
@@ -3801,7 +3801,7 @@ _0222BA0E:
 	ldr r0, [sp, #4]
 	add r1, r6, #0
 	ldr r0, [r0, #0x28]
-	bl sub_02074524
+	bl AddMonToParty
 	ldr r0, [sp, #8]
 	add r7, r7, #1
 	add r4, r4, r5
@@ -4283,7 +4283,7 @@ _0222BD86:
 	ldr r0, [sp, #4]
 	add r1, r6, #0
 	ldr r0, [r0, #0x70]
-	bl sub_02074524
+	bl AddMonToParty
 	ldr r0, [sp, #8]
 	add r7, r7, #1
 	add r4, r4, r5
@@ -12452,7 +12452,7 @@ _0222FB42:
 	add r1, r5, #0
 	ldr r0, [r4, r0]
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r5, #0
@@ -14588,7 +14588,7 @@ ov80_02230C10: ; 0x02230C10
 	bl GetPartyMonByIndex
 	add r1, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02074524
+	bl AddMonToParty
 	ldrb r0, [r5, #4]
 	cmp r0, #1
 	bne _02230CA4
@@ -14598,7 +14598,7 @@ ov80_02230C10: ; 0x02230C10
 	bl GetPartyMonByIndex
 	add r1, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02074524
+	bl AddMonToParty
 	b _02230CB8
 _02230CA4:
 	add r0, #0xfe
@@ -14609,7 +14609,7 @@ _02230CA4:
 	ldr r1, _02230CDC ; =0x00000D8C
 	ldr r0, [r5, #0xc]
 	ldr r1, [r4, r1]
-	bl sub_02074524
+	bl AddMonToParty
 _02230CB8:
 	ldr r0, _02230CE0 ; =ov80_02230D5C
 	ldr r1, _02230CE4 ; =0x0223BDEC
@@ -14864,7 +14864,7 @@ _02230E9A:
 	bl GetPartyMonByIndex
 	mov r1, #6
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r5, r5, #1
 	add r6, r6, #2
 	cmp r5, r7
@@ -17052,7 +17052,7 @@ _02232002:
 	bl GetPartyMonByIndex
 	mov r1, #6
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r5, r5, #1
 	add r6, r6, #2
 	cmp r5, #3
@@ -17978,7 +17978,7 @@ _0223278E:
 	add r1, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0, #0x28]
-	bl sub_02074524
+	bl AddMonToParty
 	ldr r0, [r6]
 	add r1, r5, #0
 	ldr r0, [r0, #0x28]
@@ -17988,7 +17988,7 @@ _0223278E:
 	add r4, r0, #0
 	mov r1, #6
 	add r2, sp, #0x14
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
@@ -18000,14 +18000,14 @@ _0223278E:
 	mov r2, #0
 	bl GetMonData
 	mov r1, #0x32
-	bl sub_0206FD00
+	bl GetMonExpBySpeciesAndLevel
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 _022327EE:
 	add r0, r5, #1
 	lsl r0, r0, #0x10
@@ -18263,7 +18263,7 @@ _022329CE:
 	add r0, r6, #0
 	mov r1, #0xa3
 	add r2, #2
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0
 	str r0, [sp]
 	lsl r2, r4, #0x18
@@ -18276,7 +18276,7 @@ _022329CE:
 	add r0, r6, #0
 	mov r1, #0x3a
 	add r2, sp, #8
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0
 	str r0, [sp]
 	lsl r2, r4, #0x18
@@ -18289,7 +18289,7 @@ _022329CE:
 	add r0, r6, #0
 	mov r1, #0x3b
 	add r2, sp, #8
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0
 	str r0, [sp]
 	lsl r2, r4, #0x18
@@ -18302,7 +18302,7 @@ _022329CE:
 	add r0, r6, #0
 	mov r1, #0x3c
 	add r2, sp, #8
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #3
@@ -18315,7 +18315,7 @@ _022329CE:
 	add r0, r6, #0
 	mov r1, #0x3d
 	add r2, sp, #8
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0
 	str r0, [sp]
 	lsl r2, r4, #0x18
@@ -18328,7 +18328,7 @@ _022329CE:
 	add r0, r6, #0
 	mov r1, #0xa0
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0
 	str r0, [sp]
 	lsl r2, r4, #0x18
@@ -18342,7 +18342,7 @@ _022329CE:
 	add r0, r6, #0
 	mov r1, #6
 	add r2, #2
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #4]
 	add r4, r4, #1
 	cmp r4, r0
@@ -20030,14 +20030,14 @@ _0223381A:
 	mov r2, #0
 	bl GetMonData
 	sub r1, r7, #3
-	bl sub_0206FD00
+	bl GetMonExpBySpeciesAndLevel
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 	ldr r0, [sp, #4]
 	add r5, r5, #1
 	cmp r5, r0
@@ -20064,11 +20064,11 @@ _0223386E:
 	str r1, [sp, #0x14]
 	mov r1, #0xa4
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #0xa3
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	add r0, #0xa4
 	ldr r0, [r0]
@@ -20076,7 +20076,7 @@ _0223386E:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	add r0, #0xb4
 	ldr r0, [r0]
@@ -20084,7 +20084,7 @@ _0223386E:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	add r0, #0xc4
 	ldr r0, [r0]
@@ -20092,7 +20092,7 @@ _0223386E:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	add r0, #0xd4
 	ldr r0, [r0]
@@ -20100,7 +20100,7 @@ _0223386E:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -20108,7 +20108,7 @@ _0223386E:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp]
 	add r5, r5, #4
 	add r1, r0, #1
@@ -20477,7 +20477,7 @@ _02233BAC:
 	bl GetPartyMonByIndex
 	mov r1, #6
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r5, r5, #1
 	add r6, r6, #2
 	cmp r5, #3
@@ -21384,7 +21384,7 @@ _022342E4:
 	add r1, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0, #0x70]
-	bl sub_02074524
+	bl AddMonToParty
 	ldr r0, [r6]
 	add r1, r5, #0
 	ldr r0, [r0, #0x70]
@@ -21394,7 +21394,7 @@ _022342E4:
 	add r4, r0, #0
 	mov r1, #6
 	add r2, sp, #0x18
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
@@ -21406,14 +21406,14 @@ _022342E4:
 	mov r2, #0
 	bl GetMonData
 	mov r1, #0x32
-	bl sub_0206FD00
+	bl GetMonExpBySpeciesAndLevel
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #0x14
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 _02234344:
 	add r0, r5, #1
 	lsl r0, r0, #0x10
@@ -21644,7 +21644,7 @@ _022344EA:
 	add r0, r6, #0
 	mov r1, #6
 	add r2, sp, #4
-	bl sub_0206EC40
+	bl SetMonData
 	add r4, r4, #1
 	cmp r4, r7
 	blt _022344EA
@@ -22946,7 +22946,7 @@ _02234EDA:
 	add r0, r6, #0
 	mov r1, #0xa3
 	add r2, sp, #4
-	bl sub_0206EC40
+	bl SetMonData
 	add r5, r5, #1
 	cmp r5, r7
 	blt _02234EDA
@@ -23009,7 +23009,7 @@ _02234F82:
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 _02234F90:
 	ldr r0, [sp, #8]
 	add r5, r5, #1
@@ -23075,7 +23075,7 @@ _02234FFC:
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 _0223500A:
 	ldr r0, [sp, #8]
 	add r5, r5, #1
@@ -23140,7 +23140,7 @@ _02235074:
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 _02235082:
 	ldr r0, [sp, #8]
 	add r5, r5, #1
@@ -23209,7 +23209,7 @@ _022350E4:
 	ldr r0, [sp, #8]
 	mov r1, #0xa0
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 	b _0223510A
 _02235104:
 	add r7, r7, #1
@@ -23284,7 +23284,7 @@ _02235182:
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x14
-	bl sub_0206EC40
+	bl SetMonData
 	b _0223519C
 _02235192:
 	ldr r0, [sp, #8]
@@ -23345,7 +23345,7 @@ _022351EC:
 	bl GetPartyMonByIndex
 	add r1, r7, #0
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r4, r4, #1
 	cmp r4, r5
 	blt _022351EC
@@ -23396,7 +23396,7 @@ _02235248:
 	bl GetPartyMonByIndex
 	add r1, r7, #0
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r4, r4, #1
 	cmp r4, r5
 	blt _02235248
@@ -23434,14 +23434,14 @@ _02235290:
 	mov r2, #0
 	bl GetMonData
 	add r1, r6, #0
-	bl sub_0206FD00
+	bl GetMonExpBySpeciesAndLevel
 	str r0, [sp, #4]
 	add r0, r5, #0
 	mov r1, #8
 	add r2, sp, #4
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 	add r4, r4, #1
 	cmp r4, r7
 	blt _02235272
@@ -23611,7 +23611,7 @@ ov80_02235364: ; 0x02235364
 	bl GetPartyMonByIndex
 	mov r1, #6
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov80_02235364
@@ -25386,7 +25386,7 @@ ov80_0223608C: ; 0x0223608C
 	ldr r1, [r1]
 	str r0, [r1]
 	ldr r0, [r5]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	add r1, r5, #0
 	add r1, #0xa8
 	ldr r1, [r1]
@@ -26310,14 +26310,14 @@ _022367BE:
 	add r7, r6, #0
 	orr r7, r0
 	add r0, r7, #0
-	bl sub_0206FE2C
+	bl GetNatureFromPersonality
 	add r1, sp, #8
 	ldrb r1, [r1, #0xb]
 	cmp r1, r0
 	bne _022367BE
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl sub_02070068
+	bl CalcShininessByOtIdAndPersonality
 	cmp r0, #1
 	beq _022367BE
 	str r7, [r5, #0x10]
@@ -26359,7 +26359,7 @@ _022367F2:
 	str r0, [r5, #0x14]
 _02236832:
 	add r0, r4, #0
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	add r1, sp, #8
 	ldrb r1, [r1, #0xa]
 	tst r0, r1
@@ -26381,7 +26381,7 @@ _02236856:
 	lsr r6, r0, #0x18
 _0223685C:
 	add r0, r4, #0
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	add r1, sp, #8
 	ldrb r1, [r1, #0xa]
 	tst r0, r1
@@ -26401,7 +26401,7 @@ _0223686E:
 	ldrh r0, [r5]
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	cmp r0, #0
 	beq _022368B2
 	ldr r2, [r5, #0x10]
@@ -26417,7 +26417,7 @@ _0223689E:
 	mov r1, #0x18
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	add r1, r5, #0
 	add r1, #0x20
 	strb r0, [r1]
@@ -26427,7 +26427,7 @@ _022368B2:
 	mov r1, #0x18
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	add r1, r5, #0
 	add r1, #0x20
 	strb r0, [r1]
@@ -26506,7 +26506,7 @@ _02236964:
 	ldr r0, [sp, #8]
 	bl GetPartyMonByIndex
 	add r1, r4, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
@@ -26518,14 +26518,14 @@ _02236964:
 	mov r2, #0
 	bl GetMonData
 	mov r1, #0x32
-	bl sub_0206FD00
+	bl GetMonExpBySpeciesAndLevel
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 _022369A6:
 	add r0, r7, #0
 	add r1, r4, #0
@@ -26630,7 +26630,7 @@ _02236A62:
 	ldr r0, [sp, #0xc]
 	add r1, r4, #0
 	ldr r0, [r0, #4]
-	bl sub_02074524
+	bl AddMonToParty
 	add r6, r6, #1
 	add r5, #0x38
 	cmp r6, r7
@@ -27376,7 +27376,7 @@ _02236F94:
 	ldr r0, [r5, r0]
 	bl GetPartyMonByIndex
 	add r1, r7, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #0
@@ -27435,7 +27435,7 @@ _0223701C:
 	ldr r0, [r5, r0]
 	bl GetPartyMonByIndex
 	add r1, r7, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #1
@@ -27501,7 +27501,7 @@ _022370B6:
 	ldr r0, [r5, r0]
 	bl GetPartyMonByIndex
 	add r1, r7, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #3
@@ -28258,7 +28258,7 @@ _02237642:
 	ldr r0, [sp, #0x1c]
 	bl GetPartyMonByIndex
 	ldr r1, [sp, #0x20]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r1, [sp, #0x20]
 	add r0, r4, #0
 	mov r2, #0
@@ -28487,7 +28487,7 @@ _0223783A:
 	lsl r0, r0, #2
 	ldr r0, [r3, r0]
 	ldr r1, [r1, r2]
-	bl sub_02070068
+	bl CalcShininessByOtIdAndPersonality
 	pop {r4, pc}
 	.balign 4, 0
 _0223784C: .word 0x0003D0A9
@@ -29043,7 +29043,7 @@ _02237C04:
 	add r1, r6, #0
 	bl GetPartyMonByIndex
 	add r1, r7, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #0
@@ -29104,7 +29104,7 @@ _02237C90:
 	add r1, r6, #0
 	bl GetPartyMonByIndex
 	add r1, r7, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #1
@@ -29169,7 +29169,7 @@ _02237D28:
 	add r1, r6, #0
 	bl GetPartyMonByIndex
 	add r1, r7, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #3
@@ -29273,14 +29273,14 @@ _02237DAC:
 	add r0, r5, #0
 	mov r1, #0xa3
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 _02237DDE:
 	mov r0, #0
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #0xa0
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 _02237DEC:
 	add r4, r4, #1
 	cmp r4, r6
@@ -29318,7 +29318,7 @@ ov80_02237E18: ; 0x02237E18
 	bl ov80_02237DF4
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02074524
+	bl AddMonToParty
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov80_02237E18
@@ -29832,7 +29832,7 @@ _022381DC:
 	add r1, r5, #0
 	bl GetPartyMonByIndex
 	add r1, r6, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0
@@ -29894,7 +29894,7 @@ _0223826A:
 	add r1, r5, #0
 	bl GetPartyMonByIndex
 	add r1, r6, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #1
@@ -29960,7 +29960,7 @@ _02238304:
 	add r1, r5, #0
 	bl GetPartyMonByIndex
 	add r1, r6, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #3
@@ -30067,7 +30067,7 @@ ov80_022383A8: ; 0x022383A8
 	bl ov80_02238384
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02074524
+	bl AddMonToParty
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov80_022383A8
@@ -30111,7 +30111,7 @@ _022383EC:
 	str r1, [sp, #4]
 	mov r1, #6
 	add r2, sp, #4
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp]
 	add r6, r6, #1
 	add r4, #0x38

@@ -143,7 +143,7 @@ typedef enum NarcId
     NARC_a_1_3_5,
     NARC_a_1_3_6,
     NARC_a_1_3_7,
-    NARC_a_1_3_8,
+    NARC_poketool_johtozukan,
     NARC_a_1_3_9,
     NARC_a_1_4_0,
     NARC_a_1_4_1,

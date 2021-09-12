@@ -173,17 +173,17 @@ sub_0202B730: ; 0x0202B730
 	str r0, [sp, #0xc]
 	ldrh r1, [r5, #8]
 	add r0, r4, #0
-	bl sub_0206DE38
+	bl CreateMon
 	add r2, r5, #0
 	add r0, r4, #0
 	mov r1, #0x75
 	add r2, #0xa
-	bl sub_0206EC40
+	bl SetMonData
 	add r5, #0x33
 	add r0, r4, #0
 	mov r1, #0x70
 	add r2, r5, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

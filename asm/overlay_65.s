@@ -660,7 +660,7 @@ _0221C3F0:
 	add r0, r5, #0
 	add r1, r4, #0
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r7, #0
 	add r1, r4, r6
@@ -1376,7 +1376,7 @@ ov65_0221C9D8: ; 0x0221C9D8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0206DD40
+	bl AcquireMonLock
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x9b
@@ -1415,13 +1415,13 @@ ov65_0221C9D8: ; 0x0221C9D8
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0206DD8C
+	bl ReleaseMonLock
 	ldrh r0, [r4]
 	cmp r0, #0
 	beq _0221CA50
 	ldrb r1, [r4, #6]
 	mov r2, #0x1c
-	bl sub_0206FBC4
+	bl GetMonBaseStat_HandleAlternateForme
 	strh r0, [r4, #0xa]
 _0221CA50:
 	cmp r6, #0
@@ -5031,7 +5031,7 @@ _0221E77C:
 	pop {r3, r4, r5, r6, r7, pc}
 _0221E7C2:
 	ldr r0, [r5, #4]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _0221E84C ; =0x000001B5
 	mov r2, #1
 	mov r3, #0x1a
@@ -5268,7 +5268,7 @@ ov65_0221E9A8: ; 0x0221E9A8
 	ldr r0, [r4, r0]
 	ldr r1, [r1]
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6060,7 +6060,7 @@ ov65_0221F028: ; 0x0221F028
 	ldr r0, [r4, r0]
 	ldr r1, [r1]
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6074,7 +6074,7 @@ ov65_0221F028: ; 0x0221F028
 	ldr r0, [r4, r0]
 	sub r1, r1, #6
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6528,7 +6528,7 @@ ov65_0221F3F4: ; 0x0221F3F4
 	ldr r0, [r4, r0]
 	sub r1, r1, #6
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6731,12 +6731,12 @@ ov65_0221F5A0: ; 0x0221F5A0
 	add r1, r6, #0
 	bl GetPartyMonByIndex
 	ldr r1, [sp, #0xc]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
 	bl GetPartyMonByIndex
 	add r1, r4, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
@@ -6776,7 +6776,7 @@ _0221F62C:
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
@@ -6792,11 +6792,11 @@ _0221F62C:
 	add r0, r4, #0
 	mov r1, #9
 	add r2, #1
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #0xbb
 	add r2, sp, #0x14
-	bl sub_0206EC40
+	bl SetMonData
 _0221F664:
 	bl sub_0203769C
 	bl sub_02034818
@@ -6811,10 +6811,10 @@ _0221F664:
 	bl sub_02072894
 	ldr r0, [sp, #0xc]
 	ldr r1, [r5, #0x38]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r1, [r5, #0x3c]
 	add r0, r4, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	bl sub_0203769C
 	mov r1, #1
 	eor r0, r1
@@ -6839,13 +6839,13 @@ _0221F6BC:
 	bl GetPartyMonByIndex
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
 	bl GetPartyMonByIndex
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r7, #0
 	add r1, r6, #0
 	bl sub_02074708

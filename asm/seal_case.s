@@ -32,14 +32,14 @@ sub_0202CBDC: ; 0x0202CBDC
 _0202CBE4: .word MIi_CpuCopy8
 	thumb_func_end sub_0202CBDC
 
-	thumb_func_start sub_0202CBE8
-sub_0202CBE8: ; 0x0202CBE8
+	thumb_func_start Sav2_SealCase_get
+Sav2_SealCase_get: ; 0x0202CBE8
 	ldr r3, _0202CBF0 ; =SavArray_get
 	mov r1, #0x11
 	bx r3
 	nop
 _0202CBF0: .word SavArray_get
-	thumb_func_end sub_0202CBE8
+	thumb_func_end Sav2_SealCase_get
 
 	thumb_func_start sub_0202CBF4
 sub_0202CBF4: ; 0x0202CBF4

@@ -488,7 +488,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	bl String_ctor
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -1201,7 +1201,7 @@ ov95_021E623C: ; 0x021E623C
 	add r0, r4, #0
 	mov r1, #0x4c
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, sp, #0x3c
 	add r1, r4, #0
 	mov r2, #2
@@ -1243,7 +1243,7 @@ ov95_021E62A4: ; 0x021E62A4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0206FDFC
+	bl GetMonNature
 	ldr r0, [r5, #0x70]
 	mov r1, #1
 	bl sub_02008550

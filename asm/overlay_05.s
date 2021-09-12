@@ -36,7 +36,7 @@ ov05_0221BA00: ; 0x0221BA00
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _0221BA58
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _0221BA6C ; =0x000001D1
 	ldr r3, [r5, #0x24]
 	mov r2, #1
@@ -4742,7 +4742,7 @@ _0221E036:
 	ldr r0, _0221E074 ; =0x00000222
 	strb r1, [r7, r0]
 	add r0, r4, #0
-	bl sub_0206FF88
+	bl GetMonGender
 	ldr r1, _0221E078 ; =0x00000221
 	strb r0, [r5, r1]
 	add r0, r4, #0
@@ -5527,7 +5527,7 @@ _0221E656:
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x18]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #0

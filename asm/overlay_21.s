@@ -21,7 +21,7 @@ ov21_022598C0: ; 0x022598C0
 	add r5, r4, #0
 _022598E0:
 	ldr r0, [r6, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	lsl r1, r4, #2
 	ldrh r1, [r7, r1]
 	mov r2, #4
@@ -124,7 +124,7 @@ ov21_02259960: ; 0x02259960
 _022599B0:
 	ldr r0, [r6, #0xc]
 	lsl r7, r4, #2
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _022599EC ; =0x022599F0
 	mov r2, #4
 	ldrh r1, [r1, r7]

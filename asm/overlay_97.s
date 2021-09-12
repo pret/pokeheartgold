@@ -407,7 +407,7 @@ ov97_0221E898: ; 0x0221E898
 	add r2, #0x18
 	bl GetBoxMonData
 	add r0, r4, #0
-	bl sub_02070044
+	bl BoxMonIsShiny
 	strh r0, [r5, #0x10]
 	add r0, r4, #0
 	mov r1, #0x6f
@@ -540,7 +540,7 @@ _0221E9B4:
 	mov r1, #0x75
 	bl GetMonData
 	add r0, r6, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	strb r0, [r4, #0x1c]
 	add r0, r6, #0
 	mov r1, #0x6f
@@ -864,7 +864,7 @@ _0221EC3C:
 	add r2, #2
 	bl GetMonData
 	add r0, r6, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	add r1, sp, #0x70
 	strb r0, [r1, #6]
 	add r0, r6, #0
@@ -876,7 +876,7 @@ _0221EC3C:
 	add r0, r7, #0
 	add r1, r4, #0
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	lsl r1, r4, #0x18
 	add r6, r0, #0
 	add r0, r7, #0

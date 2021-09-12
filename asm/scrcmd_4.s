@@ -743,7 +743,7 @@ sub_02048994: ; 0x02048994
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r4, #0
-	bl sub_0200C408
+	bl BufferDecorationName
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

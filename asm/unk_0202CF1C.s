@@ -77,7 +77,7 @@ sub_0202CF60: ; 0x0202CF60
 	lsl r3, r3, #0x10
 	sub r1, #8
 	add r2, r2, r3
-	bl sub_0201FF44
+	bl _MonEncryptSegment
 _0202CF8E:
 	pop {r4, pc}
 	thumb_func_end sub_0202CF60
@@ -99,7 +99,7 @@ sub_0202CF90: ; 0x0202CF90
 	add r0, #8
 	lsl r2, r2, #0x10
 	add r2, r3, r2
-	bl sub_0201FF70
+	bl _MonDecryptSegment
 _0202CFB2:
 	pop {r4, pc}
 	thumb_func_end sub_0202CF90

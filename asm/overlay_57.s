@@ -3629,7 +3629,7 @@ ov57_022394D8: ; 0x022394D8
 	ldr r0, [r0, #4]
 	mov r1, #0xa2
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 _02239504:
 	cmp r7, #0xff
 	beq _0223951E
@@ -3642,7 +3642,7 @@ _02239504:
 	add r0, r1, r0
 	ldr r0, [r0, #4]
 	mov r1, #0xa2
-	bl sub_0206EC40
+	bl SetMonData
 _0223951E:
 	add r2, r5, #4
 	ldr r1, [r2, r6]
@@ -5468,7 +5468,7 @@ _0223A39A:
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0xab
-	bl sub_0206EC40
+	bl SetMonData
 _0223A3E2:
 	mov r0, #0xff
 	mov r1, #0xb
@@ -6498,12 +6498,12 @@ _0223AC4A:
 	mov r1, #0xa2
 	ldr r0, [r4, r0]
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, _0223AEA0 ; =0x00000458
 	mov r1, #0xab
 	ldr r0, [r4, r0]
 	add r2, sp, #0x44
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0x34
 	add r1, sp, #0x38
 	bl ov07_02232694
@@ -7954,7 +7954,7 @@ ov57_0223B7C4: ; 0x0223B7C4
 	add r1, #0x6c
 	ldr r0, [r0, #4]
 	ldr r1, [r5, r1]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	pop {r3, r4, r5, r6, r7, pc}
 _0223B7EA:
 	ldr r1, [r5]
@@ -7975,7 +7975,7 @@ _0223B7F6:
 	ldr r1, _0223B824 ; =0x00000458
 	add r0, r7, #0
 	ldr r1, [r5, r1]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	pop {r3, r4, r5, r6, r7, pc}
 _0223B814:
 	ldr r1, [r5]
@@ -8232,7 +8232,7 @@ ov57_0223B9C8: ; 0x0223B9C8
 	add r4, r0, #0
 	ldr r0, _0223BA14 ; =0x00000458
 	ldr r0, [r5, r0]
-	bl sub_0206FDFC
+	bl GetMonNature
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -8569,7 +8569,7 @@ ov57_0223BC4C: ; 0x0223BC4C
 	ldr r0, [r0, #4]
 	mov r1, #0xa2
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 _0223BC70:
 	mov r0, #0xff
 	str r0, [r4, r6]

@@ -3772,7 +3772,7 @@ sub_02042530: ; 0x02042530
 	bl SavArray_PlayerParty_get
 	add r1, r6, #0
 	bl GetPartyMonByIndex
-	bl sub_02070D98
+	bl GetMonUnownLetter
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -8095,7 +8095,7 @@ sub_020446AC: ; 0x020446AC
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	add r1, r6, #0
 	bl sub_020784C4
 	strh r0, [r4]
@@ -10297,7 +10297,7 @@ sub_020457D4: ; 0x020457D4
 	add r1, r5, #0
 	mov r2, #0x32
 	mov r3, #0x20
-	bl sub_0206DE38
+	bl CreateMon
 	add r0, r6, #0
 	add r1, r4, #0
 	bl sub_0202A36C
@@ -10494,9 +10494,9 @@ _0204596C:
 	add r0, r4, #0
 	mov r1, #0x70
 	add r2, sp, #4
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 	add r0, r7, #0
 	add r1, r4, #0
 	bl Pokedex_SetMonCaughtFlag
@@ -12337,14 +12337,14 @@ _020467F8:
 	blt _020467C2
 _020467FE:
 	ldr r0, [sp]
-	bl sub_020293D4
+	bl Sav2_DayCare_get
 	add r7, r0, #0
 	mov r4, #0
 _02046808:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_020292DC
-	bl sub_020292E4
+	bl Sav2_DayCare_GetMonX
+	bl DayCareMon_GetBoxMon
 	mov r1, #5
 	mov r2, #0
 	add r5, r0, #0
@@ -12410,7 +12410,7 @@ _0204688C:
 	mov r0, #0x20
 	bl AllocMonZeroed
 	add r5, r0, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r4, r0, #0
 	ldr r0, [sp]
 	bl Sav2_Pokewalker_get
@@ -12701,7 +12701,7 @@ _02046AE4:
 	bhi _02046B12
 _02046AEE:
 	add r0, r7, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	cmp r0, #0
 	beq _02046B12
 	mov r0, #1

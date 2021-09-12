@@ -456,7 +456,7 @@ ov24_02259C10: ; 0x02259C10
 	mov r1, #0
 	bl GetPartyMonByIndex
 	add r1, r5, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [r4, #0xc]
 	add r1, sp, #0
 	mov r2, #0
@@ -489,7 +489,7 @@ ov24_02259C10: ; 0x02259C10
 	bl GetStoragePCPointer
 	add r5, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_02073BB8
@@ -498,7 +498,7 @@ ov24_02259C10: ; 0x02259C10
 _02259C8A:
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
-	bl sub_02074524
+	bl AddMonToParty
 _02259C92:
 	add sp, #8
 	pop {r3, r4, r5, pc}

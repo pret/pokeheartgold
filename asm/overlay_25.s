@@ -285,7 +285,7 @@ _02259B12:
 	add r1, r4, #0
 	bl GetPartyMonByIndex
 	add r1, r5, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r5, #0
 	mov r1, #0xa1
 	mov r2, #0
@@ -297,14 +297,14 @@ _02259B12:
 	mov r2, #0
 	bl GetMonData
 	mov r1, #0x32
-	bl sub_0206FD00
+	bl GetMonExpBySpeciesAndLevel
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	mov r1, #8
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 _02259B50:
 	add r0, r6, #0
 	add r1, r5, #0
@@ -365,7 +365,7 @@ _02259BAA:
 	add r0, r4, #0
 	lsr r1, r1, #0x15
 	and r3, r5
-	bl sub_0206E21C
+	bl CreateMonWithFixedIVs
 	ldrh r0, [r6]
 	add r2, sp, #8
 	add r2, #1
@@ -375,11 +375,11 @@ _02259BAA:
 	strb r1, [r0, #1]
 	add r0, r4, #0
 	mov r1, #0x70
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #6
 	add r2, r6, #2
-	bl sub_0206EC40
+	bl SetMonData
 	mov r5, #0
 	str r6, [sp, #4]
 	add r7, r5, #0
@@ -393,7 +393,7 @@ _02259BEC:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x36
-	bl sub_0206EC40
+	bl SetMonData
 	ldrb r0, [r6, #0x1e]
 	add r2, sp, #8
 	add r2, #1
@@ -406,7 +406,7 @@ _02259BEC:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x3e
-	bl sub_0206EC40
+	bl SetMonData
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x42
@@ -418,7 +418,7 @@ _02259BEC:
 	add r0, r4, #0
 	add r1, #0x3a
 	add r2, sp, #8
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #4]
 	add r5, r5, #1
 	add r0, r0, #2
@@ -431,7 +431,7 @@ _02259BEC:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 	mov r5, #0
 	add r7, sp, #8
 _02259C5A:
@@ -443,7 +443,7 @@ _02259C5A:
 	add r0, r4, #0
 	add r1, #0xd
 	add r2, #1
-	bl sub_0206EC40
+	bl SetMonData
 	add r5, r5, #1
 	cmp r5, #6
 	blt _02259C5A
@@ -451,12 +451,12 @@ _02259C5A:
 	add r0, r4, #0
 	mov r1, #0xa
 	add r2, #0x20
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r6, #0
 	add r0, r4, #0
 	mov r1, #9
 	add r2, #0x21
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, sp, #0x10
 	mov r1, #0xb
 	bl StringFillEOS
@@ -468,14 +468,14 @@ _02259C5A:
 	add r0, r4, #0
 	mov r1, #0x75
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add r6, #0x1f
 	add r0, r4, #0
 	mov r1, #0xc
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

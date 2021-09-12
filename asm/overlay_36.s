@@ -251,7 +251,7 @@ _021E5AD4:
 	mov r2, #1
 	str r0, [sp, #0x10]
 	str r3, [sp, #0xc]
-	bl sub_0206DE38
+	bl CreateMon
 	add r0, r7, #0
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0

@@ -1643,12 +1643,12 @@ _021E64E4:
 	add r0, #0xcc
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1c]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	lsl r1, r4, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #1
 	mov r3, #0x66
-	bl sub_02078398
+	bl Bag_AddItem
 	add r4, r0, #0
 	ldr r0, _021E6528 ; =0x000004A1
 	bl sub_02006B24
@@ -6208,7 +6208,7 @@ ov85_021E86CC: ; 0x021E86CC
 	bl sub_0208F260
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov85_021E86CC

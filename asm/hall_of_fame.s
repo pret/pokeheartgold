@@ -81,7 +81,7 @@ _0202E162:
 	add r1, r7, #0
 	bl GetPartyMonByIndex
 	add r4, r0, #0
-	bl sub_0206DD40
+	bl AcquireMonLock
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #0x4c
@@ -164,7 +164,7 @@ _0202E224:
 _0202E226:
 	ldr r1, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_0206DD8C
+	bl ReleaseMonLock
 	ldr r0, [sp, #0x10]
 	add r7, r7, #1
 	cmp r7, r0

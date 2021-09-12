@@ -4349,7 +4349,7 @@ _02240114:
 	ldrh r1, [r4, r1]
 	add r1, r1, #2
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #1
@@ -4360,7 +4360,7 @@ _02240114:
 	add r1, r1, #6
 	ldrh r1, [r4, r1]
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #2
@@ -5455,7 +5455,7 @@ ov81_022409B0: ; 0x022409B0
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5, #0x20]
 	mov r1, #0
@@ -5499,7 +5499,7 @@ ov81_022409B0: ; 0x022409B0
 	cmp r0, #1
 	bne _02240AC8
 	add r0, r7, #0
-	bl sub_0206FF88
+	bl GetMonGender
 	add r7, r0, #0
 	add r0, r4, #0
 	bl GetWindowWidth
@@ -6139,7 +6139,7 @@ ov81_02240F48: ; 0x02240F48
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #0x1c
-	bl sub_0206FBC4
+	bl GetMonBaseStat_HandleAlternateForme
 	cmp r0, #0
 	bne _02240FA0
 	ldr r0, [r5, r4]

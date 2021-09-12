@@ -1766,7 +1766,7 @@ _0221CC04:
 	add r5, r0, r1
 	ldr r0, [sp, #0xc]
 	ldr r0, [r0]
-	bl sub_0207003C
+	bl MonIsShiny
 	cmp r0, #1
 	bne _0221CC62
 	add r5, #0x20
@@ -2062,7 +2062,7 @@ ov63_0221CE94: ; 0x0221CE94
 	add r5, #0x14
 	add r7, r2, r1
 	str r0, [sp, #0x14]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [sp, #0x10]
 	add r0, r5, r6
 	mov r1, #0
@@ -4285,7 +4285,7 @@ _0221E150:
 	ldr r0, [r0, #4]
 	bl GetPartyMonByIndex
 	add r4, r0, #0
-	bl sub_0206DD40
+	bl AcquireMonLock
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0x4c
@@ -4461,7 +4461,7 @@ _0221E1F2:
 _0221E2D4:
 	ldr r1, [sp, #0x14]
 	add r0, r4, #0
-	bl sub_0206DD8C
+	bl ReleaseMonLock
 	ldr r0, [r6]
 	add r7, r7, #1
 	ldr r0, [r0, #4]
@@ -4490,7 +4490,7 @@ ov63_0221E310: ; 0x0221E310
 	add r5, r0, #0
 	add r0, r4, #0
 	add r6, r2, #0
-	bl sub_0206DD40
+	bl AcquireMonLock
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #0x7a
@@ -4602,7 +4602,7 @@ _0221E3F4:
 _0221E3F6:
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl sub_0206DD8C
+	bl ReleaseMonLock
 	add r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

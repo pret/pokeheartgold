@@ -951,7 +951,7 @@ ov16_02201AA0: ; 0x02201AA0
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldrb r1, [r4, #0x14]
 	cmp r1, #1
 	beq _02201ABA

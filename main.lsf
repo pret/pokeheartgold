@@ -162,7 +162,12 @@ Static main
 	Object scrcmd_8.o
 	Object scrcmd_9.o
 	Object scrcmd_10.o
+	Object scrcmd_11.o
+	Object scrcmd_12.o
+	Object scrcmd_13.o
+	Object scrcmd_14.o
 	Object pokemon.o
+	Object unk_02072914.o
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o

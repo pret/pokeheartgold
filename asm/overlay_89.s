@@ -5018,7 +5018,7 @@ _0225AFF8: .word 0xFF00FFFF
 ov89_0225AFFC: ; 0x0225AFFC
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl sub_0206FE2C
+	bl GetNatureFromPersonality
 	ldr r1, _0225B00C ; =0x0225CE34
 	ldrb r0, [r1, r0]
 	pop {r3, pc}

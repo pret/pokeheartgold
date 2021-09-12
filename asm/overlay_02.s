@@ -1862,7 +1862,7 @@ _022469F8:
 	mov r1, #0x95
 	mov r2, #0x64
 	mov r3, #0x20
-	bl sub_0206DE38
+	bl CreateMon
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3848,7 +3848,7 @@ ov02_02247910: ; 0x02247910
 	bne _02247970
 	ldr r0, [sp, #0x10]
 	mov r1, #0x12
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	cmp r0, #0
 	beq _02247994
 	cmp r0, #0xfe
@@ -3884,12 +3884,12 @@ _02247970:
 	lsr r0, r0, #0x10
 	bne _02247994
 	ldr r0, [sp, #0x44]
-	bl sub_0206FDFC
+	bl GetMonNature
 	str r0, [sp, #0x20]
 	mov r7, #1
 _02247994:
 	add r0, r5, #0
-	bl sub_02070094
+	bl GenerateShinyPersonality
 	add r4, r0, #0
 	cmp r7, #0
 	beq _022479E2
@@ -3899,7 +3899,7 @@ _022479A0:
 	bne _022479C8
 	ldr r0, [sp, #0x10]
 	add r1, r4, #0
-	bl sub_0206FFC8
+	bl GetGenderBySpeciesAndPersonality
 	add r7, r0, #0
 	cmp r7, #2
 	bne _022479B8
@@ -3909,19 +3909,19 @@ _022479B8:
 	cmp r7, r0
 	bne _022479E2
 	add r0, r5, #0
-	bl sub_02070094
+	bl GenerateShinyPersonality
 	add r4, r0, #0
 	b _022479A0
 _022479C8:
 	cmp r0, #0x1c
 	bne _022479A0
 	add r0, r4, #0
-	bl sub_0206FE2C
+	bl GetNatureFromPersonality
 	ldr r1, [sp, #0x20]
 	cmp r0, r1
 	beq _022479E2
 	add r0, r5, #0
-	bl sub_02070094
+	bl GenerateShinyPersonality
 	add r4, r0, #0
 	b _022479A0
 _022479E2:
@@ -3935,7 +3935,7 @@ _022479E2:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
-	bl sub_0206DE38
+	bl CreateMon
 	ldr r0, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
 	ldr r3, [sp, #0x48]
@@ -3969,7 +3969,7 @@ ov02_02247A18: ; 0x02247A18
 	ldr r0, [sp, #0xc]
 	mov r1, #0x12
 	mov r5, #1
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	cmp r0, #0
 	beq _02247A4C
 	cmp r0, #0xfe
@@ -4022,11 +4022,11 @@ _02247A90:
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
 	mov r3, #0x20
-	bl sub_0206E14C
+	bl CreateMonWithGenderNatureLetter
 	add r0, r4, #0
 	mov r1, #7
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #0x14]
 	ldr r3, [sp, #0x40]
 	add r1, r7, #0
@@ -4056,7 +4056,7 @@ _02247AE0:
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
 	mov r3, #0x20
-	bl sub_0206E108
+	bl CreateMonWithNature
 	mov r5, #0
 _02247AF8:
 	add r1, r5, #0
@@ -4092,12 +4092,12 @@ _02247B26:
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
 	mov r3, #0x20
-	bl sub_0206E108
+	bl CreateMonWithNature
 _02247B3C:
 	add r0, r4, #0
 	mov r1, #7
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #0x14]
 	ldr r3, [sp, #0x40]
 	add r1, r7, #0
@@ -4841,14 +4841,14 @@ _022480E6:
 	str r0, [sp, #0xc]
 	ldr r0, [r6, r0]
 	mov r1, #6
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	ldr r0, [sp, #0xc]
 	mov r1, #7
 	ldr r0, [r6, r0]
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	ldr r0, [sp, #8]
@@ -5151,22 +5151,22 @@ ov02_022482BC: ; 0x022482BC
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	add r2, r7, #0
-	bl sub_0206E21C
+	bl CreateMonWithFixedIVs
 	add r0, r4, #0
 	mov r1, #7
 	add r2, sp, #0x30
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x14
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #0xa3
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [r6, #8]
 	add r1, r4, #0
-	bl sub_02074524
+	bl AddMonToParty
 	cmp r0, #0
 	bne _02248350
 	bl GF_AssertFail
@@ -5473,13 +5473,13 @@ _02248578:
 	add r0, r4, #0
 	mov r1, #0x70
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 _022485A2:
 	lsl r0, r7, #2
 	add r0, r6, r0
 	ldr r0, [r0, #4]
 	add r1, r4, #0
-	bl sub_02074524
+	bl AddMonToParty
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224855C
 
@@ -20109,7 +20109,7 @@ ov02_0224F324: ; 0x0224F324
 	lsr r0, r0, #0x10
 	mov r1, #5
 	mov r2, #0xb
-	bl sub_02077D88
+	bl GetItemAttr
 	bl ov02_0224F820
 	b _0224F354
 _0224F34E:
@@ -20250,7 +20250,7 @@ _0224F420:
 	bl GetMonData
 	strb r0, [r5, #7]
 	add r0, r7, #0
-	bl sub_0206FDFC
+	bl GetMonNature
 	lsl r1, r0, #2
 	ldr r0, _0224F4B4 ; =0x02253AC0
 	mov r2, #0
@@ -21477,7 +21477,7 @@ _0224FD30:
 _0224FD3E:
 	bl SavArray_PlayerParty_get
 	bl sub_02054388
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [sp, #4]
 	ldr r0, [r5, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -22334,7 +22334,7 @@ _022503BA:
 	add r0, r7, #0
 	add r1, r5, #0
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
@@ -22423,7 +22423,7 @@ ov02_022504A0: ; 0x022504A0
 	bl SavArray_PlayerParty_get
 	bl sub_02054388
 	add r6, r0, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -22522,7 +22522,7 @@ _0225057E:
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	pop {r3, r4, r5, pc}
 	nop
 _0225058C: .word 0x00000815

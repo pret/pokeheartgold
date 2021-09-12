@@ -34,7 +34,7 @@ ov14_021E5900: ; 0x021E5900
 	str r0, [r4, #8]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0]
@@ -988,7 +988,7 @@ ov14_021E6094: ; 0x021E6094
 	beq _021E60BE
 	add r1, r6, #0
 	add r2, r7, #0
-	bl sub_0206ED70
+	bl SetBoxMonData
 	cmp r4, #0x1e
 	bhs _021E60BE
 	ldrb r1, [r5, #0x1f]
@@ -1019,7 +1019,7 @@ _021E60D4:
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	pop {r3, r4, r5, pc}
 _021E60EC:
 	mov r0, #0
@@ -1069,20 +1069,20 @@ ov14_021E611C: ; 0x021E611C
 	add r1, r7, #0
 	bl GetPartyMonByIndex
 	ldr r1, [r4]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	mov r1, #0
 	add r0, sp, #0
 	strb r1, [r0]
 	ldr r0, [r4]
 	mov r1, #0xbb
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [r5, #8]
 	ldr r2, [r6]
 	add r1, r7, #0
 	bl sub_02074740
 	ldr r0, [r4]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r3, r0, #0
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
@@ -1110,7 +1110,7 @@ ov14_021E6184: ; 0x021E6184
 	bl CopyBoxPokemonToPokemon
 	ldr r0, [r5, #8]
 	ldr r1, [r4]
-	bl sub_02074524
+	bl AddMonToParty
 	ldrb r1, [r5, #0x1f]
 	ldr r2, [r4, #4]
 	add r0, r5, #0
@@ -1140,9 +1140,9 @@ ov14_021E61BC: ; 0x021E61BC
 	add r6, r0, #0
 	mov r1, #0xbb
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r6, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r3, r0, #0
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
@@ -1177,7 +1177,7 @@ ov14_021E6210: ; 0x021E6210
 	sub r4, #0x1e
 	bl GetPartyMonByIndex
 	ldr r1, [r6]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r1, sp, #4
 	ldr r0, [r5, #8]
 	add r1, #1
@@ -1224,7 +1224,7 @@ ov14_021E627C: ; 0x021E627C
 	add r1, r6, #0
 	bl GetPartyMonByIndex
 	ldr r1, [r4]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [r5, #8]
 	add r1, sp, #0
 	add r2, r6, #0
@@ -1235,7 +1235,7 @@ ov14_021E627C: ; 0x021E627C
 	bl ov14_021E6100
 	ldr r0, [r5, #8]
 	ldr r1, [r4]
-	bl sub_02074524
+	bl AddMonToParty
 	ldr r0, [r5, #8]
 	bl GetPartyCount
 	sub r2, r0, #1
@@ -1296,7 +1296,7 @@ ov14_021E6318: ; 0x021E6318
 	sub r1, #0x1e
 	bl GetPartyMonByIndex
 	ldr r1, [r4]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [r4]
 	mov r1, #5
 	mov r2, #0
@@ -1310,7 +1310,7 @@ ov14_021E6318: ; 0x021E6318
 	bl sub_02071D6C
 _021E6350:
 	ldr r0, [r4]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	add r1, r6, #0
@@ -3482,7 +3482,7 @@ ov14_021E7358: ; 0x021E7358
 	bl GetBoxMonData
 	strb r0, [r6, #0xe]
 	add r0, r7, #0
-	bl sub_0206FE04
+	bl GetBoxMonNature
 	strb r0, [r6, #0xf]
 	add r0, r7, #0
 	mov r1, #0xb
@@ -3516,7 +3516,7 @@ ov14_021E7358: ; 0x021E7358
 	orr r0, r1
 	strb r0, [r6, #0x12]
 	add r0, r7, #0
-	bl sub_0206FF90
+	bl GetBoxMonGender
 	add r2, r6, #0
 	ldrb r1, [r6, #0x13]
 	mov r3, #0x7f
@@ -3713,7 +3713,7 @@ ov14_021E7588: ; 0x021E7588
 	bl ov14_021E60C0
 	add r4, r0, #0
 	beq _021E75E6
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	add r7, r0, #0
 	add r0, r4, #0
 	bl ov14_021E7358
@@ -3740,13 +3740,13 @@ _021E75CA:
 	bl ov14_021E765C
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75DC:
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	b _021E75F0
 _021E75E6:
 	add r0, r5, #0
@@ -3766,7 +3766,7 @@ ov14_021E75F4: ; 0x021E75F4
 	ldrb r1, [r5, #0x1f]
 	bl ov14_021E60C0
 	add r4, r0, #0
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	add r7, r0, #0
 	add r0, r4, #0
 	bl ov14_021E7358
@@ -3798,7 +3798,7 @@ ov14_021E75F4: ; 0x021E75F4
 	bl ov14_021E7468
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E7658: .word 0x000088D0
@@ -6645,7 +6645,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _021E8B10 ; =0x021F7D14
 	mov r2, #9
 	bl sub_02078644
@@ -25018,7 +25018,7 @@ ov14_021F2020: ; 0x021F2020
 	lsr r1, r1, #0x10
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_02078398
+	bl Bag_AddItem
 	cmp r0, #1
 	bne _021F20A4
 	add r2, r5, #0
@@ -25106,13 +25106,13 @@ ov14_021F20F4: ; 0x021F20F4
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r2, [r4, #0x34]
 	ldr r1, _021F21A8 ; =0x000088C8
 	mov r3, #0xa
 	ldrh r1, [r2, r1]
 	mov r2, #1
-	bl sub_02078398
+	bl Bag_AddItem
 	cmp r0, #0
 	bne _021F212A
 	ldr r0, _021F21AC ; =0x000005F3
@@ -27020,7 +27020,7 @@ _021F2F4E:
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	bl GetPartyMonByIndex
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	ldr r2, [r5, #0x34]
 	add r1, r0, #0
 	add r3, r2, r4
@@ -30500,7 +30500,7 @@ _021F4A8A:
 	add r2, r3, r2
 	bl PCStorage_GetMonByIndexPair
 	str r0, [sp, #0x28]
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x28]
 	mov r1, #5
@@ -30532,7 +30532,7 @@ _021F4A8A:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	add r1, r4, #0
-	bl sub_0206FC08
+	bl GetMonBaseStatEx_HandleAlternateForme
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	b _021F4AFC
@@ -30587,7 +30587,7 @@ _021F4B24:
 _021F4B4A:
 	ldr r0, [sp, #0x28]
 	ldr r1, [sp, #0x24]
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	ldr r0, [sp, #0x18]
 	add r0, r0, #2
 	lsl r0, r0, #0x18

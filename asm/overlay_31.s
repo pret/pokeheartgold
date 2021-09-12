@@ -1922,7 +1922,7 @@ _0225E4D8:
 _0225E4E2:
 	add r0, r1, #0
 	add r1, r3, #0
-	bl sub_0200C408
+	bl BufferDecorationName
 _0225E4EA:
 	pop {r3, pc}
 	thumb_func_end ov31_0225E4BC
@@ -1952,7 +1952,7 @@ _0225E508:
 _0225E512:
 	add r0, r1, #0
 	add r1, r3, #0
-	bl sub_0200C408
+	bl BufferDecorationName
 _0225E51A:
 	pop {r3, pc}
 	thumb_func_end ov31_0225E4EC
@@ -1982,7 +1982,7 @@ _0225E538:
 _0225E542:
 	add r0, r1, #0
 	add r1, r3, #0
-	bl sub_0200C408
+	bl BufferDecorationName
 _0225E54A:
 	pop {r3, pc}
 	thumb_func_end ov31_0225E51C
@@ -2360,7 +2360,7 @@ _0225E82E:
 	ldrh r0, [r1, r0]
 	mov r1, #5
 	mov r2, #0xb
-	bl sub_02077D88
+	bl GetItemAttr
 	add r2, r0, #0
 	mov r0, #0x55
 	lsl r0, r0, #2
@@ -2398,7 +2398,7 @@ _0225E87E:
 	ldrh r0, [r1, r0]
 	mov r1, #5
 	mov r2, #0xb
-	bl sub_02077D88
+	bl GetItemAttr
 	add r2, r0, #0
 	mov r0, #0x55
 	lsl r0, r0, #2

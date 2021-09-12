@@ -2893,7 +2893,7 @@ _021E6FEA:
 	ldr r1, [sp, #0x10]
 	ldr r0, _021E7104 ; =0x00000578
 	ldr r0, [r1, r0]
-	bl sub_0207003C
+	bl MonIsShiny
 	str r0, [sp]
 	mov r0, #0
 	ldr r1, [sp, #0x1c]
