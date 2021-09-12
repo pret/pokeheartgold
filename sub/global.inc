@@ -103,11 +103,10 @@
 .public sub_03806064
 .public sub_03806854
 .public OS_Init
-.public sub_037F9AB8
-.public sub_037F9ACC
+.public OS_GetArenaHi
+.public OS_GetArenaLo
 .public sub_037F9E48
-.public sub_037F9AB8
-.public sub_037F9BB4
+.public OS_SetArenaLo
 .public OSi_UnlockAllMutex
 .public sub_037F9EF0
 .public sub_037F9E14
@@ -154,3 +153,4 @@
 .public OSi_ThreadIdCount
 .public OSi_ThreadInfo
 .public OSi_LauncherThread
+.public OSi_Initialized

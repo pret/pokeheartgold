@@ -224,10 +224,10 @@ _037F82CC:
 	strh r0, [r4, #0x7a]
 	bl PXI_Init
 	mov r0, #8
-	bl sub_037F9AB8
+	bl OS_GetArenaHi
 	mov r4, r0
 	mov r0, #8
-	bl sub_037F9ACC
+	bl OS_GetArenaLo
 	mov r1, r0
 	mov r2, r4
 	mov r0, #8
@@ -235,19 +235,19 @@ _037F82CC:
 	bl sub_037F9E48
 	mov r4, r0
 	mov r0, #8
-	bl sub_037F9AB8
+	bl OS_GetArenaHi
 	sub r2, r0, r4
 	mov r0, r4
 	mov r1, #0
 	bl sub_037FB07C
 	mov r1, r4
 	mov r0, #8
-	bl sub_037F9BB4
+	bl OS_SetArenaLo
 	mov r0, #8
-	bl sub_037F9AB8
+	bl OS_GetArenaHi
 	mov r4, r0
 	mov r0, #8
-	bl sub_037F9ACC
+	bl OS_GetArenaLo
 	mov r1, r0
 	mov r2, r4
 	mov r0, #8

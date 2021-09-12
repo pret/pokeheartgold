@@ -3,146 +3,8 @@
 
 	.text
 
-	arm_func_start OS_InitArena
-OS_InitArena: ; 0x037F9A40
-	stmdb sp!, {r3, lr}
-	ldr r1, _037F9A78 ; =0x03806D98
-	ldr r0, [r1]
-	cmp r0, #0
-	bne _037F9A70
-	mov r0, #1
-	str r0, [r1]
-	bl OS_InitArenaHiAndLo
-	mov r0, #7
-	bl OS_InitArenaHiAndLo
-	mov r0, #8
-	bl OS_InitArenaHiAndLo
-_037F9A70:
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037F9A78: .word 0x03806D98
-	arm_func_end OS_InitArena
-
-	arm_func_start OS_InitArenaHiAndLo
-OS_InitArenaHiAndLo: ; 0x037F9A7C
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl sub_037F9AE0
-	mov r1, r4, lsl #2
-	add r1, r1, #0x2700000
-	add r1, r1, #0xff000
-	str r0, [r1, #0xdc4]
-	mov r0, r4
-	bl sub_037F9B5C
-	mov r1, r4, lsl #2
-	add r1, r1, #0x2700000
-	add r1, r1, #0xff000
-	str r0, [r1, #0xda0]
-	ldmia sp!, {r4, lr}
-	bx lr
-	arm_func_end OS_InitArenaHiAndLo
-
-	arm_func_start sub_037F9AB8
-sub_037F9AB8: ; 0x037F9AB8
-	mov r0, r0, lsl #2
-	add r0, r0, #0x2700000
-	add r0, r0, #0xff000
-	ldr r0, [r0, #0xdc4]
-	bx lr
-	arm_func_end sub_037F9AB8
-
-	arm_func_start sub_037F9ACC
-sub_037F9ACC: ; 0x037F9ACC
-	mov r0, r0, lsl #2
-	add r0, r0, #0x2700000
-	add r0, r0, #0xff000
-	ldr r0, [r0, #0xda0]
-	bx lr
-	arm_func_end sub_037F9ACC
-
-	arm_func_start sub_037F9AE0
-sub_037F9AE0: ; 0x037F9AE0
-	cmp r0, #1
-	beq _037F9AFC
-	cmp r0, #7
-	beq _037F9B04
-	cmp r0, #8
-	beq _037F9B0C
-	b _037F9B40
-_037F9AFC:
-	ldr r0, _037F9B48 ; =0x027FF000
-	bx lr
-_037F9B04:
-	mov r0, #0x3800000
-	bx lr
-_037F9B0C:
-	ldr r2, _037F9B4C ; =0x00000400
-	ldr r0, _037F9B50 ; =0x0380FF80
-	ldr r1, _037F9B54 ; =0x0380ADC0
-	sub r2, r0, r2
-	mov r0, #0x3800000
-	cmp r1, #0x3800000
-	movhi r0, r1
-	ldr r1, _037F9B58 ; =0x00000400
-	cmp r1, #0
-	bxeq lr
-	sublt r0, r0, r1
-	subge r0, r2, r1
-	bx lr
-_037F9B40:
-	mov r0, #0
-	bx lr
-	.align 2, 0
-_037F9B48: .word 0x027FF000
-_037F9B4C: .word 0x00000400
-_037F9B50: .word 0x0380FF80
-_037F9B54: .word 0x0380ADC0
-_037F9B58: .word 0x00000400
-	arm_func_end sub_037F9AE0
-
-	arm_func_start sub_037F9B5C
-sub_037F9B5C: ; 0x037F9B5C
-	cmp r0, #1
-	beq _037F9B78
-	cmp r0, #7
-	beq _037F9B80
-	cmp r0, #8
-	beq _037F9B90
-	b _037F9BA4
-_037F9B78:
-	ldr r0, _037F9BAC ; =0x027F9EF0
-	bx lr
-_037F9B80:
-	ldr r0, _037F9BB0 ; =0x0380ADC0
-	cmp r0, #0x3800000
-	movhi r0, #0x3800000
-	bx lr
-_037F9B90:
-	ldr r1, _037F9BB0 ; =0x0380ADC0
-	mov r0, #0x3800000
-	cmp r1, #0x3800000
-	movhi r0, r1
-	bx lr
-_037F9BA4:
-	mov r0, #0
-	bx lr
-	.align 2, 0
-_037F9BAC: .word 0x027F9EF0
-_037F9BB0: .word 0x0380ADC0
-	arm_func_end sub_037F9B5C
-
-	arm_func_start sub_037F9BB4
-sub_037F9BB4: ; 0x037F9BB4
-	mov r0, r0, lsl #2
-	add r0, r0, #0x2700000
-	add r0, r0, #0xff000
-	str r1, [r0, #0xda0]
-	bx lr
-	arm_func_end sub_037F9BB4
-
-	arm_func_start sub_037F9BC8
-sub_037F9BC8: ; 0x037F9BC8
+	arm_func_start DLExtract
+DLExtract: ; 0x037F9BC8
 	ldr r3, [r1, #4]
 	cmp r3, #0
 	ldrne r2, [r1]
@@ -153,10 +15,10 @@ sub_037F9BC8: ; 0x037F9BC8
 	ldrne r1, [r1, #4]
 	strne r1, [r2, #4]
 	bx lr
-	arm_func_end sub_037F9BC8
+	arm_func_end DLExtract
 
-	arm_func_start sub_037F9BF0
-sub_037F9BF0: ; 0x037F9BF0
+	arm_func_start DLInsert
+DLInsert: ; 0x037F9BF0
 	stmdb sp!, {r3, lr}
 	mov lr, r0
 	mov ip, #0
@@ -205,7 +67,7 @@ _037F9C8C:
 _037F9C90:
 	ldmia sp!, {r3, lr}
 	bx lr
-	arm_func_end sub_037F9BF0
+	arm_func_end DLInsert
 
 	arm_func_start sub_037F9C98
 sub_037F9C98: ; 0x037F9C98
@@ -254,7 +116,7 @@ _037F9D24:
 	cmp r1, #0x40
 	bhs _037F9D44
 	mov r1, r5
-	bl sub_037F9BC8
+	bl DLExtract
 	str r0, [r4, #4]
 	b _037F9D78
 _037F9D44:
@@ -306,11 +168,11 @@ sub_037F9DA8: ; 0x037F9DA8
 	sub r5, r5, #0x20
 	ldr r0, [r7, #8]
 	mov r1, r5
-	bl sub_037F9BC8
+	bl DLExtract
 	str r0, [r7, #8]
 	ldr r0, [r7, #4]
 	mov r1, r5
-	bl sub_037F9BF0
+	bl DLInsert
 	str r0, [r7, #4]
 	mov r0, r4
 	bl OS_RestoreInterrupts
@@ -8721,23 +8583,5 @@ _03806A74:
 	.byte 0x05, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00
 
 	.bss
-;    .space 0x78
-;OSi_SystemCallbackInSwitchThread: ; 0x03806C1C
-;    .space 0x4
-;OSi_RescheduleCount: ; 0x03806C20
-;    .space 0x4
-;OSi_CurrentThreadPtr: ; 0x03806C24
-;    .space 0x4
-;OSi_IsThreadInitialized: ; 0x03806C28
-;    .space 0x4
-;    .space 0xC
-;OSi_StackForDestructor: ; 0x03806C38
-;    .space 0x4
-;OSi_ThreadIdCount: ; 0x03806C3C
-;    .space 0x4
-;OSi_ThreadInfo: ; 0x03806C40
-;    .space 0xB4
-;OSi_LauncherThread: ; 0x03806CF4
-;    .space 0x48
 _sub_wram1_bss_start:
-	.space 0x4028
+	.space 0x4024
