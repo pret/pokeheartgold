@@ -146,7 +146,7 @@ _037F81F4:
 	ldr r1, _037F845C ; =0x027FFC80
 	mvn r0, #0
 	mov r2, #0x74
-	bl MI_CpuClear32
+	bl MIi_CpuClear32
 	b _037F82CC
 _037F8210:
 	cmp r6, #0
@@ -202,7 +202,7 @@ _037F82BC:
 	ldr r1, _037F845C ; =0x027FFC80
 	mov r0, #0
 	mov r2, #0x74
-	bl MI_CpuClear32
+	bl MIi_CpuClear32
 _037F82CC:
 	add r2, sp, #8
 	mov r0, #0x36

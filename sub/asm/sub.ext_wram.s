@@ -12764,9 +12764,9 @@ _0600A9F0: .word 0x0380FFF4
 
 	arm_func_start sub_0600A9F4
 sub_0600A9F4: ; 0x0600A9F4
-	ldr pc, _0600A9F8 ; =MI_CpuClear32
+	ldr pc, _0600A9F8 ; =MIi_CpuClear32
 	.align 2, 0
-_0600A9F8: .word MI_CpuClear32
+_0600A9F8: .word MIi_CpuClear32
 	arm_func_end sub_0600A9F4
 
 	arm_func_start sub_0600A9FC

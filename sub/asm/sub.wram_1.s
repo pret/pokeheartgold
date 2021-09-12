@@ -1763,15 +1763,15 @@ _037FAFB4:
 	bx lr
 	arm_func_end sub_037FAFB0
 
-	arm_func_start MI_CpuClear32
-MI_CpuClear32: ; 0x037FAFCC
+	arm_func_start MIi_CpuClear32
+MIi_CpuClear32: ; 0x037FAFCC
 	add ip, r1, r2
 _037FAFD0:
 	cmp r1, ip
 	stmltia r1!, {r0}
 	blt _037FAFD0
 	bx lr
-	arm_func_end MI_CpuClear32
+	arm_func_end MIi_CpuClear32
 
 	arm_func_start sub_037FAFE0
 sub_037FAFE0: ; 0x037FAFE0
@@ -8737,8 +8737,23 @@ _03806A74:
 	.byte 0x05, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00
 
 	.bss
-    .space 0x78
-OSi_CurrentThreadPtr: ; 0x03806C1C
-    .space 0x24
-OSi_ThreadInfo: ; 0x03806C40
-	.space 0x4180
+;    .space 0x78
+;OSi_SystemCallbackInSwitchThread: ; 0x03806C1C
+;    .space 0x4
+;OSi_RescheduleCount: ; 0x03806C20
+;    .space 0x4
+;OSi_CurrentThreadPtr: ; 0x03806C24
+;    .space 0x4
+;OSi_IsThreadInitialized: ; 0x03806C28
+;    .space 0x4
+;    .space 0xC
+;OSi_StackForDestructor: ; 0x03806C38
+;    .space 0x4
+;OSi_ThreadIdCount: ; 0x03806C3C
+;    .space 0x4
+;OSi_ThreadInfo: ; 0x03806C40
+;    .space 0xB4
+;OSi_LauncherThread: ; 0x03806CF4
+;    .space 0x48
+_sub_wram1_bss_start:
+	.space 0x4028

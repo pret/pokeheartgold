@@ -35,7 +35,7 @@
 .public sub_037FAEAC
 .public sub_037FAF98
 .public sub_037FAFB0
-.public MI_CpuClear32
+.public MIi_CpuClear32
 .public sub_037FAFE0
 .public sub_037FAFF8
 .public sub_037FB07C
@@ -143,3 +143,14 @@
 .public OS_InitContext
 .public OSi_CurrentThreadPtr
 .public sub_037F8000
+.public OSi_LauncherThread
+.public MIi_CpuClear32
+.public _sub_wram1_bss_start
+.public OSi_IdleThread
+.public OSi_SystemCallbackInSwitchThread
+.public OSi_RescheduleCount
+.public OSi_IsThreadInitialized
+.public OSi_StackForDestructor
+.public OSi_ThreadIdCount
+.public OSi_ThreadInfo
+.public OSi_LauncherThread

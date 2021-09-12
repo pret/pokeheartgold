@@ -6296,7 +6296,7 @@ sub_03805B18: ; 0x03805B18
 	beq _03805B60
 	mov r0, #0
 	mov r2, #0x100
-	bl MI_CpuClear32
+	bl MIi_CpuClear32
 	strh r4, [r6]
 	mov r0, #4
 	strh r0, [r6, #2]
@@ -6542,7 +6542,7 @@ _03805E28:
 	mov r0, r6
 	mov r1, r7
 	mov r2, fp
-	bl MI_CpuClear32
+	bl MIi_CpuClear32
 	ldr r1, [sp]
 	mov r0, r7
 	ldrh r1, [r1]
