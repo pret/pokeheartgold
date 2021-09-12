@@ -1,6 +1,7 @@
 Static sub
 {
 	Address 0x02380000
+	StackSize 1024 1024
 }
 
 Autoload ext
