@@ -2,25 +2,9 @@
 	.include "global.inc"
 
 	.text
-	
-	arm_func_start sub_037F9A10
-sub_037F9A10: ; 0x037F9A10
-	stmdb sp!, {r3, lr}
-	bl sub_037F9A40
-	bl sub_037FB248
-	bl sub_037F89BC
-	bl sub_037F87BC
-	bl sub_037FA14C
-	bl sub_037FA370
-	bl OS_InitThread
-	bl sub_037FADA0
-	bl sub_03803228
-	ldmia sp!, {r3, lr}
-	bx lr
-	arm_func_end sub_037F9A10
 
-	arm_func_start sub_037F9A40
-sub_037F9A40: ; 0x037F9A40
+	arm_func_start OS_InitArena
+OS_InitArena: ; 0x037F9A40
 	stmdb sp!, {r3, lr}
 	ldr r1, _037F9A78 ; =0x03806D98
 	ldr r0, [r1]
@@ -28,20 +12,20 @@ sub_037F9A40: ; 0x037F9A40
 	bne _037F9A70
 	mov r0, #1
 	str r0, [r1]
-	bl sub_037F9A7C
+	bl OS_InitArenaHiAndLo
 	mov r0, #7
-	bl sub_037F9A7C
+	bl OS_InitArenaHiAndLo
 	mov r0, #8
-	bl sub_037F9A7C
+	bl OS_InitArenaHiAndLo
 _037F9A70:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
 _037F9A78: .word 0x03806D98
-	arm_func_end sub_037F9A40
+	arm_func_end OS_InitArena
 
-	arm_func_start sub_037F9A7C
-sub_037F9A7C: ; 0x037F9A7C
+	arm_func_start OS_InitArenaHiAndLo
+OS_InitArenaHiAndLo: ; 0x037F9A7C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_037F9AE0
@@ -57,7 +41,7 @@ sub_037F9A7C: ; 0x037F9A7C
 	str r0, [r1, #0xda0]
 	ldmia sp!, {r4, lr}
 	bx lr
-	arm_func_end sub_037F9A7C
+	arm_func_end OS_InitArenaHiAndLo
 
 	arm_func_start sub_037F9AB8
 sub_037F9AB8: ; 0x037F9AB8
@@ -579,8 +563,8 @@ sub_037FA130: ; 0x037FA130
 _037FA148: .word 0x03806DC0
 	arm_func_end sub_037FA130
 
-	arm_func_start sub_037FA14C
-sub_037FA14C: ; 0x037FA14C
+	arm_func_start OS_InitTick
+OS_InitTick: ; 0x037FA14C
 	stmdb sp!, {r3, lr}
 	ldr r1, _037FA1BC ; =0x03806DC4
 	ldrh r0, [r1]
@@ -614,7 +598,7 @@ _037FA1B4:
 _037FA1BC: .word 0x03806DC4
 _037FA1C0: .word 0x04000102
 _037FA1C4: .word sub_037FA1D8
-	arm_func_end sub_037FA14C
+	arm_func_end OS_InitTick
 
 	arm_func_start sub_037FA1C8
 sub_037FA1C8: ; 0x037FA1C8
@@ -745,8 +729,8 @@ _037FA368: .word 0x0000FFFE
 _037FA36C: .word 0x04000104
 	arm_func_end sub_037FA2E4
 
-	arm_func_start sub_037FA370
-sub_037FA370: ; 0x037FA370
+	arm_func_start OS_InitAlarm
+OS_InitAlarm: ; 0x037FA370
 	stmdb sp!, {r3, lr}
 	ldr r1, _037FA3B0 ; =0x03806DD4
 	ldrh r0, [r1]
@@ -766,7 +750,7 @@ _037FA3A8:
 	bx lr
 	.align 2, 0
 _037FA3B0: .word 0x03806DD4
-	arm_func_end sub_037FA370
+	arm_func_end OS_InitAlarm
 
 	arm_func_start sub_037FA3B4
 sub_037FA3B4: ; 0x037FA3B4
@@ -1573,25 +1557,25 @@ sub_037FAD88: ; 0x037FAD88
 _037FAD9C: .word sub_038008A8
 	arm_func_end sub_037FAD88
 
-	arm_func_start sub_037FADA0
-sub_037FADA0: ; 0x037FADA0
+	arm_func_start OS_InitReset
+OS_InitReset: ; 0x037FADA0
 	stmdb sp!, {r3, lr}
 	ldr r2, _037FADD0 ; =0x03806DF4
 	ldrh r0, [r2]
 	cmp r0, #0
 	bne _037FADC8
-	ldr r1, _037FADD4 ; =sub_037FADE8
+	ldr r1, _037FADD4 ; =OSi_CommonCallback
 	mov r3, #1
 	mov r0, #0xc
 	strh r3, [r2]
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 _037FADC8:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
 _037FADD0: .word 0x03806DF4
-_037FADD4: .word sub_037FADE8
-	arm_func_end sub_037FADA0
+_037FADD4: .word OSi_CommonCallback
+	arm_func_end OS_InitReset
 
 	arm_func_start sub_037FADD8
 sub_037FADD8: ; 0x037FADD8
@@ -1602,8 +1586,8 @@ sub_037FADD8: ; 0x037FADD8
 _037FADE4: .word 0x03806DF4
 	arm_func_end sub_037FADD8
 
-	arm_func_start sub_037FADE8
-sub_037FADE8: ; 0x037FADE8
+	arm_func_start OSi_CommonCallback
+OSi_CommonCallback: ; 0x037FADE8
 	stmdb sp!, {r3, lr}
 	and r0, r1, #0x7f00
 	mov r0, r0, lsl #8
@@ -1619,7 +1603,7 @@ _037FAE10:
 	bx lr
 	.align 2, 0
 _037FAE18: .word 0x03806DF4
-	arm_func_end sub_037FADE8
+	arm_func_end OSi_CommonCallback
 
 	arm_func_start sub_037FAE1C
 sub_037FAE1C: ; 0x037FAE1C
@@ -1971,13 +1955,13 @@ sub_037FB240: ; 0x037FB240
 	bx lr
 	arm_func_end sub_037FB240
 
-	arm_func_start sub_037FB248
-sub_037FB248: ; 0x037FB248
+	arm_func_start PXI_Init
+PXI_Init: ; 0x037FB248
 	ldr ip, _037FB250 ; =sub_037FB254
 	bx ip
 	.align 2, 0
 _037FB250: .word sub_037FB254
-	arm_func_end sub_037FB248
+	arm_func_end PXI_Init
 
 	arm_func_start sub_037FB254
 sub_037FB254: ; 0x037FB254
@@ -2043,8 +2027,8 @@ _037FB328: .word sub_037FB43C
 _037FB32C: .word 0x04000180
 	arm_func_end sub_037FB254
 
-	arm_func_start sub_037FB330
-sub_037FB330: ; 0x037FB330
+	arm_func_start PXI_SetFifoRecvCallback
+PXI_SetFifoRecvCallback: ; 0x037FB330
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
@@ -2066,7 +2050,7 @@ sub_037FB330: ; 0x037FB330
 	.align 2, 0
 _037FB378: .word 0x03806DFC
 _037FB37C: .word 0x027FFC00
-	arm_func_end sub_037FB330
+	arm_func_end PXI_SetFifoRecvCallback
 
 	arm_func_start sub_037FB380
 sub_037FB380: ; 0x037FB380
@@ -6694,7 +6678,7 @@ sub_037FEE70: ; 0x037FEE70
 	bl OS_InitMessageQueue
 	ldr r1, _037FEEAC ; =sub_037FF564
 	mov r0, #7
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r0, _037FEEB0 ; =0x03807408
 	mov r1, #0
 	str r1, [r0]
@@ -7271,7 +7255,7 @@ sub_037FF5BC: ; 0x037FF5BC
 	bl OS_WakeupThreadDirect
 	ldr r1, _037FF66C ; =sub_038002C4
 	mov r0, #0xb
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r0, _037FF670 ; =0x027FFC40
 	ldrh r0, [r0]
 	cmp r0, #2
@@ -8520,7 +8504,7 @@ sub_038005DC: ; 0x038005DC
 	bne _03800624
 	mov r1, #1
 	str r1, [r0, #8]
-	bl sub_037FB248
+	bl PXI_Init
 	mov r5, #0xe
 	mov r4, #0
 _03800604:
@@ -8531,7 +8515,7 @@ _03800604:
 	beq _03800604
 	ldr r1, _03800630 ; =sub_03800634
 	mov r0, #0xe
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 _03800624:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr

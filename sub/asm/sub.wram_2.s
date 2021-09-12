@@ -23,19 +23,19 @@ sub_03800920: ; 0x03800920
 	bl sub_03803860
 	bl sub_038022E8
 	bl sub_03801944
-	bl sub_037FB248
+	bl PXI_Init
 	ldr r1, _03800A28 ; =sub_03800D94
 	mov r0, #6
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _03800A28 ; =sub_03800D94
 	mov r0, #9
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _03800A28 ; =sub_03800D94
 	mov r0, #8
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _03800A28 ; =sub_03800D94
 	mov r0, #4
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r0, _03800A2C ; =0x038090E0
 	ldr r1, _03800A30 ; =0x03809100
 	mov r2, #0x10
@@ -3149,11 +3149,11 @@ _03803208:
 	bx lr
 	arm_func_end sub_038031E8
 
-	arm_func_start sub_03803228
-sub_03803228: ; 0x03803228
+	arm_func_start CTRDG_Init
+CTRDG_Init: ; 0x03803228
 	stmdb sp!, {r3, lr}
-	bl sub_037FA14C
-	bl sub_037FA370
+	bl OS_InitTick
+	bl OS_InitAlarm
 	ldr r0, _038032B0 ; =0x03809480
 	bl OS_CreateAlarm
 	ldr r0, _038032B4 ; =0x03809450
@@ -3169,20 +3169,20 @@ sub_03803228: ; 0x03803228
 	beq _038032A8
 	ldr r1, _038032B4 ; =0x03809450
 	strh r0, [r1]
-	bl sub_037FB248
+	bl PXI_Init
 	ldr r1, _038032B8 ; =sub_0380343C
 	mov r0, #0xd
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	bl sub_038032C8
 	ldr r1, _038032BC ; =sub_0380346C
 	mov r0, #0xd
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _038032C0 ; =sub_038034A0
 	mov r0, #0x10
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _038032C4 ; =sub_038037E4
 	mov r0, #0x11
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 _038032A8:
 	ldmia sp!, {r3, lr}
 	bx lr
@@ -3193,7 +3193,7 @@ _038032B8: .word sub_0380343C
 _038032BC: .word sub_0380346C
 _038032C0: .word sub_038034A0
 _038032C4: .word sub_038037E4
-	arm_func_end sub_03803228
+	arm_func_end CTRDG_Init
 
 	arm_func_start sub_038032C8
 sub_038032C8: ; 0x038032C8
@@ -4766,10 +4766,10 @@ _03804710:
 	ldr r0, _038047BC ; =0x038094D0
 	mov r1, #0
 	str r1, [r0, #0x1d4]
-	bl sub_037FB248
+	bl PXI_Init
 	ldr r1, _038047C4 ; =sub_038047DC
 	mov r0, #5
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r0, _038047BC ; =0x038094D0
 	ldr r1, _038047C8 ; =0x038094F0
 	mov r2, #4
@@ -6205,10 +6205,10 @@ sub_038059E8: ; 0x038059E8
 	bl sub_037FB07C
 	ldr r1, _03805A34 ; =sub_03805BC8
 	mov r0, #0xf
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _03805A38 ; =sub_03805B18
 	mov r0, #0xa
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
@@ -6427,7 +6427,7 @@ _03805CC8:
 	bl OS_RestoreInterrupts
 	ldr r1, _03805D64 ; =sub_03805B18
 	mov r0, #0xa
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	mov r2, #0x400
 	ldr r0, _03805D54 ; =0x03809894
 	ldr r1, _03805D68 ; =sub_03805DDC

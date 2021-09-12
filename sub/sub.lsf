@@ -19,6 +19,7 @@ Autoload wram
 	Object OS_context.o
 	Object OS_message.o
 	Object OS_mutex.o
+	Object OS_init.o
 	Object sub.wram_1.o
 	Object libsyscall.o
 	Object sub.wram_2.o

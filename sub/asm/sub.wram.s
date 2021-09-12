@@ -9,7 +9,7 @@ sub_037F8000: ; 0x037F8000
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x210
 	bl sub_027E0000
-	bl sub_037F9A10
+	bl OS_Init
 	bl OS_InitThread
 	add r2, sp, #4
 	mov r0, #0x20
@@ -222,7 +222,7 @@ _037F82CC:
 	mov r0, r0, lsr #0x10
 	bl sub_03806968
 	strh r0, [r4, #0x7a]
-	bl sub_037FB248
+	bl PXI_Init
 	mov r0, #8
 	bl sub_037F9AB8
 	mov r4, r0
@@ -626,8 +626,8 @@ _037F87B4: .word 0x03806BAC
 _037F87B8: .word 0x0380FFF8
 	arm_func_end sub_037F876C
 
-	arm_func_start sub_037F87BC
-sub_037F87BC: ; 0x037F87BC
+	arm_func_start OS_InitIrqTable
+OS_InitIrqTable: ; 0x037F87BC
 	ldr r0, _037F87D8 ; =0x03806BA4
 	mov r2, #0
 	str r2, [r0, #4]
@@ -638,7 +638,7 @@ sub_037F87BC: ; 0x037F87BC
 	.align 2, 0
 _037F87D8: .word 0x03806BA4
 _037F87DC: .word 0x027FFC3C
-	arm_func_end sub_037F87BC
+	arm_func_end OS_InitIrqTable
 
 	arm_func_start sub_037F87E0
 sub_037F87E0: ; 0x037F87E0
@@ -799,8 +799,8 @@ sub_037F8988: ; 0x037F8988
 _037F89B8: .word 0x04000214
 	arm_func_end sub_037F8988
 
-	arm_func_start sub_037F89BC
-sub_037F89BC: ; 0x037F89BC
+	arm_func_start OS_InitLock
+OS_InitLock: ; 0x037F89BC
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _037F8A24 ; =0x03806C18
 	ldr r1, [r0]
@@ -834,7 +834,7 @@ _037F8A1C:
 _037F8A24: .word 0x03806C18
 _037F8A28: .word 0x027FFFF0
 _037F8A2C: .word 0x027FFFB8
-	arm_func_end sub_037F89BC
+	arm_func_end OS_InitLock
 
 	arm_func_start sub_037F8A30
 sub_037F8A30: ; 0x037F8A30

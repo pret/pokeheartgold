@@ -169,16 +169,16 @@ _060001F8: .word sub_037FA770
 
 	arm_func_start sub_060001FC
 sub_060001FC: ; 0x060001FC
-	ldr pc, _06000200 ; =sub_037FB248
+	ldr pc, _06000200 ; =PXI_Init
 	.align 2, 0
-_06000200: .word sub_037FB248
+_06000200: .word PXI_Init
 	arm_func_end sub_060001FC
 
 	arm_func_start sub_06000204
 sub_06000204: ; 0x06000204
-	ldr pc, _06000208 ; =sub_037FB330
+	ldr pc, _06000208 ; =PXI_SetFifoRecvCallback
 	.align 2, 0
-_06000208: .word sub_037FB330
+_06000208: .word PXI_SetFifoRecvCallback
 	arm_func_end sub_06000204
 
 	arm_func_start sub_0600020C

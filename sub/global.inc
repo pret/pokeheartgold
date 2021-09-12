@@ -40,8 +40,8 @@
 .public sub_037FAFF8
 .public sub_037FB07C
 .public sub_037FB110
-.public sub_037FB248
-.public sub_037FB330
+.public PXI_Init
+.public PXI_SetFifoRecvCallback
 .public sub_037FB69C
 .public sub_03800A40
 .public sub_03800A9C
@@ -68,8 +68,8 @@
 .public OS_SleepThread
 .public OS_WakeupThread
 .public OS_ReadMessage
-.public sub_037FA14C
-.public sub_037FA370
+.public OS_InitTick
+.public OS_InitAlarm
 .public sub_037FA8A8
 .public sub_037FA94C
 .public sub_037FAA38
@@ -94,7 +94,7 @@
 .public sub_03801DE0
 .public sub_03801E04
 .public sub_0380219C
-.public sub_03803228
+.public CTRDG_Init
 .public sub_038034B0
 .public sub_038036E8
 .public sub_03804578
@@ -102,7 +102,7 @@
 .public sub_03805A3C
 .public sub_03806064
 .public sub_03806854
-.public sub_037F9A10
+.public OS_Init
 .public sub_037F9AB8
 .public sub_037F9ACC
 .public sub_037F9E48
@@ -129,8 +129,8 @@
 .public _03806A74
 .public _0380664C
 .public OSi_RemoveMutexLinkFromQueue
-.public sub_037F89BC
-.public sub_037F87BC
+.public OS_InitLock
+.public OS_InitIrqTable
 .public OS_InitThread
 .public sub_037F887C
 .public sub_037F8BF0
