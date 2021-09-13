@@ -3,16 +3,16 @@
 
 	.text
 
-	thumb_func_start sub_0202CE30
-sub_0202CE30: ; 0x0202CE30
+	thumb_func_start Sav2_Chatot_sizeof
+Sav2_Chatot_sizeof: ; 0x0202CE30
 	mov r0, #0xfb
 	lsl r0, r0, #2
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0202CE30
+	thumb_func_end Sav2_Chatot_sizeof
 
-	thumb_func_start sub_0202CE38
-sub_0202CE38: ; 0x0202CE38
+	thumb_func_start Sav2_Chatot_init
+Sav2_Chatot_init: ; 0x0202CE38
 	push {r4, lr}
 	add r4, r0, #0
 	mov r2, #0xfb
@@ -24,19 +24,19 @@ sub_0202CE38: ; 0x0202CE38
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202CE38
+	thumb_func_end Sav2_Chatot_init
 
-	thumb_func_start sub_0202CE50
-sub_0202CE50: ; 0x0202CE50
+	thumb_func_start Chatot_new
+Chatot_new: ; 0x0202CE50
 	push {r4, lr}
 	mov r1, #0xfb
 	lsl r1, r1, #2
 	bl AllocFromHeap
 	add r4, r0, #0
-	bl sub_0202CE38
+	bl Sav2_Chatot_init
 	add r0, r4, #0
 	pop {r4, pc}
-	thumb_func_end sub_0202CE50
+	thumb_func_end Chatot_new
 
 	thumb_func_start Sav2_Chatot_get
 Sav2_Chatot_get: ; 0x0202CE64
@@ -47,28 +47,28 @@ Sav2_Chatot_get: ; 0x0202CE64
 _0202CE6C: .word SavArray_get
 	thumb_func_end Sav2_Chatot_get
 
-	thumb_func_start sub_0202CE70
-sub_0202CE70: ; 0x0202CE70
+	thumb_func_start Chatot_exists
+Chatot_exists: ; 0x0202CE70
 	ldr r0, [r0]
 	bx lr
-	thumb_func_end sub_0202CE70
+	thumb_func_end Chatot_exists
 
-	thumb_func_start sub_0202CE74
-sub_0202CE74: ; 0x0202CE74
+	thumb_func_start Chatot_invalidate
+Chatot_invalidate: ; 0x0202CE74
 	mov r1, #0
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0202CE74
+	thumb_func_end Chatot_invalidate
 
-	thumb_func_start sub_0202CE7C
-sub_0202CE7C: ; 0x0202CE7C
+	thumb_func_start Chatot_GetData
+Chatot_GetData: ; 0x0202CE7C
 	add r0, r0, #4
 	bx lr
-	thumb_func_end sub_0202CE7C
+	thumb_func_end Chatot_GetData
 
-	thumb_func_start sub_0202CE80
-sub_0202CE80: ; 0x0202CE80
+	thumb_func_start Chatot_Decode
+Chatot_Decode: ; 0x0202CE80
 	push {r4, r5, r6, r7}
 	mov r5, #0
 	mov r2, #0xfa
@@ -98,10 +98,10 @@ _0202CE8C:
 	blt _0202CE8C
 	pop {r4, r5, r6, r7}
 	bx lr
-	thumb_func_end sub_0202CE80
+	thumb_func_end Chatot_Decode
 
-	thumb_func_start sub_0202CEB8
-sub_0202CEB8: ; 0x0202CEB8
+	thumb_func_start Chatot_Encode
+Chatot_Encode: ; 0x0202CEB8
 	push {r4, r5, r6, r7}
 	add r3, r0, #0
 	add r2, r1, #0
@@ -143,17 +143,17 @@ _0202CEC6:
 	pop {r4, r5, r6, r7}
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0202CEB8
+	thumb_func_end Chatot_Encode
 
-	thumb_func_start sub_0202CF08
-sub_0202CF08: ; 0x0202CF08
+	thumb_func_start Chatot_copy
+Chatot_copy: ; 0x0202CF08
 	add r2, r0, #0
 	add r0, r1, #0
 	add r1, r2, #0
 	mov r2, #0xfb
-	ldr r3, _0202CF18 ; =sub_020D48B4
+	ldr r3, _0202CF18 ; =MIi_CpuCopyFast
 	lsl r2, r2, #2
 	bx r3
 	nop
-_0202CF18: .word sub_020D48B4
-	thumb_func_end sub_0202CF08
+_0202CF18: .word MIi_CpuCopyFast
+	thumb_func_end Chatot_copy

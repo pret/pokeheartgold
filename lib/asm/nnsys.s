@@ -16459,7 +16459,7 @@ sub_020C2528: ; 0x020C2528
 	ldr r1, [r2], #4
 	add r1, r2, r1, lsl #2
 	mov r2, r4, lsl #2
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r0, _020C2604 ; =0x021DD404
 	ldr r1, [r0]
 	ldr r0, [r1]

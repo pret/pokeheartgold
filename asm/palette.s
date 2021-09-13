@@ -2217,7 +2217,7 @@ _02004146:
 	add r0, r0, r1
 	add r1, r2, r1
 	mov r2, #0x20
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 _02004156:
 	add r6, r6, #1
 	add r4, #0x10

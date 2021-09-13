@@ -47,23 +47,23 @@ sub_0202DB5C: ; 0x0202DB5C
 
 	thumb_func_start sub_0202DB64
 sub_0202DB64: ; 0x0202DB64
-	ldr r3, _0202DB6C ; =sub_020D48B4
+	ldr r3, _0202DB6C ; =MIi_CpuCopyFast
 	mov r2, #0xec
 	bx r3
 	nop
-_0202DB6C: .word sub_020D48B4
+_0202DB6C: .word MIi_CpuCopyFast
 	thumb_func_end sub_0202DB64
 
 	thumb_func_start sub_0202DB70
 sub_0202DB70: ; 0x0202DB70
-	ldr r3, _0202DB7C ; =sub_020D48B4
+	ldr r3, _0202DB7C ; =MIi_CpuCopyFast
 	add r2, r0, #0
 	add r0, r1, #0
 	add r1, r2, #0
 	mov r2, #0xec
 	bx r3
 	.balign 4, 0
-_0202DB7C: .word sub_020D48B4
+_0202DB7C: .word MIi_CpuCopyFast
 	thumb_func_end sub_0202DB70
 
 	thumb_func_start sub_0202DB80

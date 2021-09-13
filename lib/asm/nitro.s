@@ -12379,8 +12379,8 @@ _020D48A8:
 	bx lr
 	arm_func_end MIi_CpuClearFast
 
-	arm_func_start sub_020D48B4
-sub_020D48B4: ; 0x020D48B4
+	arm_func_start MIi_CpuCopyFast
+MIi_CpuCopyFast: ; 0x020D48B4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl}
 	add sl, r1, r2
 	mov ip, r2, lsr #5
@@ -12413,7 +12413,7 @@ _020D4900:
 	blt _020D48E4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl}
 	bx lr
-	arm_func_end sub_020D48B4
+	arm_func_end MIi_CpuCopyFast
 
 	arm_func_start sub_020D490C
 sub_020D490C: ; 0x020D490C
@@ -25130,7 +25130,7 @@ sub_020DECC4: ; 0x020DECC4
 	ldr r0, [r4, #4]
 	mov r1, r5
 	mov r2, #0x7d0
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020DECC4

@@ -166,6 +166,10 @@ Static main
 	Object scrcmd_12.o
 	Object scrcmd_13.o
 	Object scrcmd_14.o
+	Object scrcmd_15.o
+	Object scrcmd_16.o
+	Object scrcmd_17.o
+	Object scrcmd_18.o
 	Object pokemon.o
 	Object unk_02072914.o
 	### Vendor libraries ###

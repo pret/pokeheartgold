@@ -31590,7 +31590,7 @@ _02246F7E:
 	cmp r5, #4
 	blt _02246F7E
 	add r0, r6, #0
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -64874,7 +64874,7 @@ _02256DB8:
 	add r2, sp, #0xc
 	bl SetMonData
 	add r0, r4, #0
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 	add r0, r4, #0
 	mov r1, #0xa5
 	mov r2, #0

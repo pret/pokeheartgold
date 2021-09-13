@@ -968,7 +968,7 @@ _0221C64A:
 	beq _0221C678
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 _0221C678:
 	ldr r0, [r4, #8]
 	add r5, r5, #1
@@ -6829,7 +6829,7 @@ _0221F664:
 	bne _0221F6BC
 	ldr r0, [r5, #0x10]
 	bl Sav2_Chatot_get
-	bl sub_0202CE74
+	bl Chatot_invalidate
 _0221F6BC:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0

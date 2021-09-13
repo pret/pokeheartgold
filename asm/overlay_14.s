@@ -1307,7 +1307,7 @@ ov14_021E6318: ; 0x021E6318
 	bne _021E6350
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 _021E6350:
 	ldr r0, [r4]
 	bl Mon_GetBoxMon
@@ -1543,7 +1543,7 @@ _021E6510:
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
-	bl sub_02071CBC
+	bl BoxMon_UpdateGiratinaForme
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
@@ -1601,7 +1601,7 @@ _021E6564:
 	add r2, r4, #0
 	bl ov14_021E60C0
 	mov r1, #0
-	bl sub_02071D7C
+	bl BoxMon_UpdateShayminForme
 	ldr r3, [r5, #0x34]
 	ldrb r1, [r5, #0x1f]
 	add r6, r3, r4

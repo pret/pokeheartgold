@@ -7222,7 +7222,7 @@ _021E8E72:
 	ldr r2, [sp, #0x14]
 	add r0, r5, r0
 	add r1, r1, r4
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r0, [sp, #0x14]
 	add r4, r4, r0
 	ldr r0, [sp, #0x38]

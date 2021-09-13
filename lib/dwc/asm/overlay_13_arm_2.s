@@ -1138,7 +1138,7 @@ ov13_02227DE4: ; 0x02227DE4
 	mov r4, r0
 	ldr r1, [r1]
 	mov r2, #0xc0
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	mov r0, r4
 	bl ov13_0223FA50
 	mov r0, #1
@@ -22528,7 +22528,7 @@ ov13_02239228: ; 0x02239228
 	add r1, ip, #4
 	mov r2, #0x600
 	str ip, [r3]
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r1, _02239284 ; =ov13_02239324
 	mov r0, #1
 	mov r2, #0

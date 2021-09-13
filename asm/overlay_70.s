@@ -12946,7 +12946,7 @@ ov70_0223E0BC: ; 0x0223E0BC
 	ldr r0, [r0, #0x14]
 	add r1, #0xc
 	lsl r2, r2, #8
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	lsl r0, r7, #4
 	add r0, #0xc
 	lsl r0, r0, #5
@@ -15772,21 +15772,21 @@ ov70_0223F6E4: ; 0x0223F6E4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 	bl SizeOfStructPokemon
 	add r2, r0, #0
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, r5, #0
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	b _0223F730
 _0223F718:
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02071D7C
+	bl BoxMon_UpdateShayminForme
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -18345,7 +18345,7 @@ _02240A1A:
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
 	bl Sav2_Chatot_get
-	bl sub_0202CE74
+	bl Chatot_invalidate
 _02240A62:
 	cmp r6, #0
 	beq _02240A70

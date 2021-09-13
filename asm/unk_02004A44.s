@@ -1449,8 +1449,8 @@ sub_02005518: ; 0x02005518
 _0200551C: .word sub_02004924
 	thumb_func_end sub_02005518
 
-	thumb_func_start sub_02005520
-sub_02005520: ; 0x02005520
+	thumb_func_start GF_MIC_StartAutoSampling
+GF_MIC_StartAutoSampling: ; 0x02005520
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_020DA9CC
@@ -1472,10 +1472,10 @@ sub_02005520: ; 0x02005520
 	nop
 _02005548: .word _021D05E8
 _0200554C: .word _021D05F8
-	thumb_func_end sub_02005520
+	thumb_func_end GF_MIC_StartAutoSampling
 
-	thumb_func_start sub_02005550
-sub_02005550: ; 0x02005550
+	thumb_func_start GF_MIC_StopAutoSampling
+GF_MIC_StopAutoSampling: ; 0x02005550
 	push {r3, lr}
 	bl GetSoundDataPointer
 	ldr r0, _02005564 ; =_021D05E8
@@ -1485,7 +1485,7 @@ sub_02005550: ; 0x02005550
 	pop {r3, pc}
 	nop
 _02005564: .word _021D05E8
-	thumb_func_end sub_02005550
+	thumb_func_end GF_MIC_StopAutoSampling
 
 	thumb_func_start sub_02005568
 sub_02005568: ; 0x02005568

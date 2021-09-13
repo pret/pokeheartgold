@@ -89,7 +89,7 @@ _021E5980:
 	b _021E59C2
 _021E59A0:
 	add r0, r6, #0
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 	mov r0, #0x41
 	str r0, [r4, #8]
 	mov r0, #0
@@ -98,7 +98,7 @@ _021E59A0:
 _021E59B0:
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 	mov r0, #0x23
 	str r0, [r4, #8]
 	mov r0, #1

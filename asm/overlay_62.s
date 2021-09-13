@@ -1204,7 +1204,7 @@ ov62_021E625C: ; 0x021E625C
 	ldr r1, [r4, #0x30]
 	cmp r1, #0
 	bne _021E6270
-	bl sub_02005520
+	bl GF_MIC_StartAutoSampling
 	mov r0, #1
 	str r0, [r4, #0x28]
 	pop {r4, pc}
@@ -1219,7 +1219,7 @@ _021E6270:
 ov62_021E6278: ; 0x021E6278
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02005550
+	bl GF_MIC_StopAutoSampling
 	mov r0, #0
 	str r0, [r4, #0x28]
 	pop {r4, pc}

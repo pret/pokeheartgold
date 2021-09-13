@@ -27860,7 +27860,7 @@ _020AFBA0:
 	add r1, r7, #0x10
 	mov r2, #0xc0
 	strh r4, [r7, #2]
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	mov r0, r7
 	bl sub_020AFD80
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -30030,11 +30030,11 @@ _020B18E4:
 	add r4, ip, r4
 	blt _020B1930
 	add r1, r4, #0x10
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	b _020B1938
 _020B1930:
 	add r1, r4, #0xc
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 _020B1938:
 	ldr r0, _020B1980 ; =0x021D6040
 	mov r1, #0x40
@@ -30105,7 +30105,7 @@ _020B19C8:
 	ldr r0, [r6, #0x3c]
 	ldr r2, [sp, #4]
 	ldr r0, [r0, #0x474]
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r0, [r6, #0x3c]
 	bl sub_020B4128
 	mov r0, #0
@@ -30186,7 +30186,7 @@ _020B1B30:
 	ldr r0, [r5, #0x474]
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	mov r0, r6
 	mov r1, r5
 	bl sub_020B2B78
@@ -33410,12 +33410,12 @@ _020B4534: .word 0x021D701C
 
 	arm_func_start sub_020B4538
 sub_020B4538: ; 0x020B4538
-	ldr ip, _020B4548 ; =sub_020D48B4
+	ldr ip, _020B4548 ; =MIi_CpuCopyFast
 	mov r2, r1
 	ldr r1, _020B454C ; =0x021D704C
 	bx ip
 	.align 2, 0
-_020B4548: .word sub_020D48B4
+_020B4548: .word MIi_CpuCopyFast
 _020B454C: .word 0x021D704C
 	arm_func_end sub_020B4538
 

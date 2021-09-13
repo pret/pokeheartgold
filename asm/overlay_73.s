@@ -9389,7 +9389,7 @@ ov73_021EA268: ; 0x021EA268
 	bl ov73_021E7960
 	add r1, r4, #0
 	add r2, r5, #0
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov73_021EA268
@@ -9432,7 +9432,7 @@ ov73_021EA2B4: ; 0x021EA2B4
 	bl sub_0202B9B8
 	add r1, r4, #0
 	add r2, r5, #0
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -9555,7 +9555,7 @@ _021EA3A0:
 	ldr r1, [sp, #4]
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	add r0, r7, #0
 	bl FreeToHeap
 	ldr r0, [sp, #4]

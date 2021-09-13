@@ -341,7 +341,7 @@ sub_02049344: ; 0x02049344
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Sav2_Chatot_get
-	bl sub_02006CC8
+	bl Chatot_checkCry
 	cmp r0, #1
 	bne _02049374
 	mov r0, #1
@@ -370,7 +370,7 @@ sub_0204937C: ; 0x0204937C
 	bne _0204939C
 	bl GF_AssertFail
 _0204939C:
-	bl sub_02006DE4
+	bl Chatot_startRecording
 	cmp r0, #0
 	bne _020493AC
 	mov r0, #1
@@ -387,7 +387,7 @@ _020493AC:
 	thumb_func_start sub_020493B4
 sub_020493B4: ; 0x020493B4
 	push {r3, lr}
-	bl sub_02006E20
+	bl Chatot_stopRecording
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -400,7 +400,7 @@ sub_020493C0: ; 0x020493C0
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl Sav2_Chatot_get
-	bl sub_02006E28
+	bl Chatot_saveRecording
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end sub_020493C0

@@ -940,7 +940,7 @@ _0202C6B2:
 	add r0, r6, r4
 	add r1, r6, r1
 	mov r2, #0x10
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	mov r0, #0
 	add r1, r6, r4
 	mov r2, #0x38

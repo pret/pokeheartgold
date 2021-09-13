@@ -4268,7 +4268,7 @@ ov45_0222BCE4: ; 0x0222BCE4
 	add r0, #0x20
 	add r1, r6, #0
 	mov r2, #0x94
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	add r4, #0x10
 	add r1, r6, #0
 	add r0, r4, #0

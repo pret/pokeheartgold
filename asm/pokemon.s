@@ -8,10 +8,12 @@ _020FF4E4:
 _020FF4E6:
 	.byte 0x5F, 0x00, 0x14, 0x00, 0x50, 0x00
 _020FF4EC:
-	.byte 0x00, 0x00
-_020FF4EE:
-	.byte 0x3B, 0x01
-	.byte 0x38, 0x00, 0x3B, 0x00, 0x93, 0x01, 0xB5, 0x01
+	.short 0x0000 ; MOVE_NONE
+	.short 0x013B ; MOVE_OVERHEAT
+	.short 0x0038 ; MOVE_HYDRO_PUMP
+	.short 0x003B ; MOVE_BLIZZARD
+	.short 0x0193 ; MOVE_AIR_SLASH
+	.short 0x01B5 ; MOVE_LEAF_STORM
 _020FF4F8:
 	.byte 0x97, 0x00, 0xFB, 0x00, 0x81, 0x01, 0x82, 0x01
 	.byte 0xE9, 0x01, 0xEA, 0x01, 0xEB, 0x01, 0xEC, 0x01, 0xED, 0x01, 0x00, 0x00
@@ -7736,8 +7738,8 @@ _0207146E:
 	.balign 4, 0
 	thumb_func_end DeleteBoxMonFirstMoveAndAppend
 
-	thumb_func_start sub_020714B0
-sub_020714B0: ; 0x020714B0
+	thumb_func_start MonSetMoveInSlot_ResetPpUp
+MonSetMoveInSlot_ResetPpUp: ; 0x020714B0
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r4, r2, #0
@@ -7762,7 +7764,7 @@ sub_020714B0: ; 0x020714B0
 	bl SetMonData
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_020714B0
+	thumb_func_end MonSetMoveInSlot_ResetPpUp
 
 	thumb_func_start MonSetMoveInSlot
 MonSetMoveInSlot: ; 0x020714E8
@@ -8829,11 +8831,11 @@ _02071C9A:
 	.balign 4, 0
 	thumb_func_end sub_02071C28
 
-	thumb_func_start sub_02071CA0
-sub_02071CA0: ; 0x02071CA0
+	thumb_func_start Mon_UpdateGiratinaForme
+Mon_UpdateGiratinaForme: ; 0x02071CA0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02071CBC
+	bl BoxMon_UpdateGiratinaForme
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -8844,10 +8846,10 @@ sub_02071CA0: ; 0x02071CA0
 _02071CB8:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02071CA0
+	thumb_func_end Mon_UpdateGiratinaForme
 
-	thumb_func_start sub_02071CBC
-sub_02071CBC: ; 0x02071CBC
+	thumb_func_start BoxMon_UpdateGiratinaForme
+BoxMon_UpdateGiratinaForme: ; 0x02071CBC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r1, #5
@@ -8858,10 +8860,10 @@ sub_02071CBC: ; 0x02071CBC
 	mov r1, #6
 	mov r2, #0
 	bl GetBoxMonData
-	ldr r1, _02071D00 ; =0x000001E7
+	ldr r1, _02071D00 ; =0x000001E7 SPECIES_GIRATINA
 	cmp r4, r1
 	bne _02071CFA
-	cmp r0, #0x70
+	cmp r0, #0x70 ; ITEM_GRISEOUS_ORB
 	bne _02071CE2
 	mov r0, #1
 	b _02071CE4
@@ -8874,7 +8876,7 @@ _02071CE4:
 	add r2, sp, #0
 	bl SetBoxMonData
 	add r0, r5, #0
-	bl sub_020722DC
+	bl UpdateBoxMonAbility
 	ldr r0, [sp]
 	pop {r3, r4, r5, pc}
 _02071CFA:
@@ -8883,10 +8885,10 @@ _02071CFA:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02071D00: .word 0x000001E7
-	thumb_func_end sub_02071CBC
+	thumb_func_end BoxMon_UpdateGiratinaForme
 
-	thumb_func_start sub_02071D04
-sub_02071D04: ; 0x02071D04
+	thumb_func_start Mon_ForceSetGiratinaOriginForme
+Mon_ForceSetGiratinaOriginForme: ; 0x02071D04
 	push {r3, r4, lr}
 	sub sp, #4
 	mov r1, #1
@@ -8903,7 +8905,7 @@ sub_02071D04: ; 0x02071D04
 	add r2, sp, #0
 	bl SetBoxMonData
 	add r0, r4, #0
-	bl sub_020722DC
+	bl UpdateBoxMonAbility
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
 _02071D32:
@@ -8911,7 +8913,7 @@ _02071D32:
 	pop {r3, r4, pc}
 	nop
 _02071D38: .word 0x000001E7
-	thumb_func_end sub_02071D04
+	thumb_func_end Mon_ForceSetGiratinaOriginForme
 
 	thumb_func_start sub_02071D3C
 sub_02071D3C: ; 0x02071D3C
@@ -8929,10 +8931,10 @@ _02071D4E:
 	bl GetPartyMonByIndex
 	cmp r5, #0
 	beq _02071D60
-	bl sub_02071D04
+	bl Mon_ForceSetGiratinaOriginForme
 	b _02071D64
 _02071D60:
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 _02071D64:
 	add r4, r4, #1
 	cmp r4, r6
@@ -8941,18 +8943,18 @@ _02071D6A:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02071D3C
 
-	thumb_func_start sub_02071D6C
-sub_02071D6C: ; 0x02071D6C
+	thumb_func_start Mon_UpdateShayminForme
+Mon_UpdateShayminForme: ; 0x02071D6C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02071D7C
+	bl BoxMon_UpdateShayminForme
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
 	pop {r4, pc}
-	thumb_func_end sub_02071D6C
+	thumb_func_end Mon_UpdateShayminForme
 
-	thumb_func_start sub_02071D7C
-sub_02071D7C: ; 0x02071D7C
+	thumb_func_start BoxMon_UpdateShayminForme
+BoxMon_UpdateShayminForme: ; 0x02071D7C
 	push {r0, r1, r2, r3}
 	push {r4, lr}
 	mov r1, #5
@@ -8960,7 +8962,7 @@ sub_02071D7C: ; 0x02071D7C
 	add r4, r0, #0
 	bl GetBoxMonData
 	mov r1, #0x7b
-	lsl r1, r1, #2
+	lsl r1, r1, #2 ; SPECIES_SHAYMIN
 	cmp r0, r1
 	bne _02071DAC
 	ldr r0, [sp, #0xc]
@@ -8973,16 +8975,16 @@ _02071D9C:
 	add r2, sp, #0xc
 	bl SetBoxMonData
 	add r0, r4, #0
-	bl sub_020722DC
+	bl UpdateBoxMonAbility
 _02071DAC:
 	pop {r4}
 	pop {r3}
 	add sp, #0x10
 	bx r3
-	thumb_func_end sub_02071D7C
+	thumb_func_end BoxMon_UpdateShayminForme
 
-	thumb_func_start sub_02071DB4
-sub_02071DB4: ; 0x02071DB4
+	thumb_func_start Mon_CanUseGracidea
+Mon_CanUseGracidea: ; 0x02071DB4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -9014,19 +9016,20 @@ sub_02071DB4: ; 0x02071DB4
 	bl GF_RTC_CopyTime
 	mov r0, #0x7b
 	lsl r0, r0, #2
-	cmp r5, r0
+	cmp r5, r0 ; SPECIES_SHAYMIN
 	bne _02071E26
-	cmp r6, #0
+	cmp r6, #0 ; Land forme
 	bne _02071E26
 	ldr r0, [sp]
-	cmp r0, #0
+	cmp r0, #0 ; Not fainted
 	beq _02071E26
-	cmp r4, #1
+	cmp r4, #1 ; Is fateful encounter
 	bne _02071E26
 	mov r0, #0x20
 	tst r0, r7
-	bne _02071E26
+	bne _02071E26 ; Not frozen
 	ldr r0, [sp, #4]
+	; Time between 05-20
 	cmp r0, #4
 	blo _02071E26
 	cmp r0, #0x14
@@ -9038,10 +9041,10 @@ _02071E26:
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02071DB4
+	thumb_func_end Mon_CanUseGracidea
 
-	thumb_func_start sub_02071E2C
-sub_02071E2C: ; 0x02071E2C
+	thumb_func_start Party_ResetAllShayminToLandForme
+Party_ResetAllShayminToLandForme: ; 0x02071E2C
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	bl GetPartyCount
@@ -9070,7 +9073,7 @@ _02071E3C:
 	bne _02071E6E
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 _02071E6E:
 	add r5, r5, #1
 	cmp r5, r7
@@ -9078,10 +9081,10 @@ _02071E6E:
 _02071E74:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02071E2C
+	thumb_func_end Party_ResetAllShayminToLandForme
 
-	thumb_func_start sub_02071E78
-sub_02071E78: ; 0x02071E78
+	thumb_func_start Party_TryResetShaymin
+Party_TryResetShaymin: ; 0x02071E78
 	push {r4, lr}
 	ldr r3, [r2]
 	cmp r3, #0x14
@@ -9101,7 +9104,7 @@ _02071E8A:
 	add r1, r1, #1
 	cmp r2, r1
 	bge _02071EA2
-	bl sub_02071E2C
+	bl Party_ResetAllShayminToLandForme
 	mov r0, #1
 	pop {r4, pc}
 _02071EA2:
@@ -9115,16 +9118,16 @@ _02071EA6:
 	add r2, r4, r2
 	cmp r2, r1
 	bge _02071EBC
-	bl sub_02071E2C
+	bl Party_ResetAllShayminToLandForme
 	mov r0, #1
 	pop {r4, pc}
 _02071EBC:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end sub_02071E78
+	thumb_func_end Party_TryResetShaymin
 
-	thumb_func_start sub_02071EC0
-sub_02071EC0: ; 0x02071EC0
+	thumb_func_start Mon_UpdateRotomForme
+Mon_UpdateRotomForme: ; 0x02071EC0
 	push {r0, r1, r2, r3}
 	push {r3, r4, r5, r6, r7, lr}
 	str r2, [sp]
@@ -9132,7 +9135,7 @@ sub_02071EC0: ; 0x02071EC0
 	mov r2, #0
 	add r4, r0, #0
 	bl GetMonData
-	ldr r1, _02071FBC ; =0x000001DF
+	ldr r1, _02071FBC ; =0x000001DF SPECIES_ROTOM
 	cmp r0, r1
 	beq _02071EE0
 	mov r0, #0
@@ -9150,14 +9153,14 @@ _02071EE0:
 	lsl r1, r0, #1
 	ldr r0, _02071FC0 ; =_020FF4EC
 	add r7, r5, #0
-	ldrh r6, [r0, r1]
+	ldrh r6, [r0, r1] ; Move associated with the old forme
 _02071EF6:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x36
 	add r2, r7, #0
 	bl GetMonData
-	ldr r3, _02071FC4 ; =_020FF4EE
+	ldr r3, _02071FC4 ; =_020FF4EC + 2
 	add r2, r0, #0
 	mov r1, #1
 _02071F08:
@@ -9173,7 +9176,7 @@ _02071F08:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x18
-	bl sub_020714B0
+	bl MonSetMoveInSlot_ResetPpUp
 	mov r6, #0
 	b _02071F3C
 _02071F28:
@@ -9208,7 +9211,7 @@ _02071F4A:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x18
-	bl sub_020714B0
+	bl MonSetMoveInSlot_ResetPpUp
 	b _02071F70
 _02071F6A:
 	add r5, r5, #1
@@ -9223,7 +9226,7 @@ _02071F70:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x18
-	bl sub_020714B0
+	bl MonSetMoveInSlot_ResetPpUp
 _02071F84:
 	add r0, r4, #0
 	mov r1, #0x36
@@ -9234,14 +9237,14 @@ _02071F84:
 	add r0, r4, #0
 	mov r1, #0x54
 	mov r2, #0
-	bl sub_020714B0
+	bl MonSetMoveInSlot_ResetPpUp
 _02071F9C:
 	add r0, r4, #0
 	mov r1, #0x70
 	add r2, sp, #0x1c
 	bl SetMonData
 	add r0, r4, #0
-	bl sub_020722D4
+	bl UpdateMonAbility
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
 	mov r0, #1
@@ -9252,8 +9255,8 @@ _02071F9C:
 	.balign 4, 0
 _02071FBC: .word 0x000001DF
 _02071FC0: .word _020FF4EC
-_02071FC4: .word _020FF4EE
-	thumb_func_end sub_02071EC0
+_02071FC4: .word _020FF4EC + 2
+	thumb_func_end Mon_UpdateRotomForme
 
 	thumb_func_start LoadWotbl_HandleAlternateForme
 LoadWotbl_HandleAlternateForme: ; 0x02071FC8
@@ -9272,7 +9275,7 @@ sub_02071FDC: ; 0x02071FDC
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r6, r0, #0
-	ldr r0, _02072048 ; =0x000001B9
+	ldr r0, _02072048 ; =0x000001B9 SPECIES_CHATOT
 	add r4, r2, #0
 	add r5, r1, #0
 	cmp r4, r0
@@ -9666,16 +9669,16 @@ _020722CC:
 _020722D0: .word 0x000001EE
 	thumb_func_end sub_0207227C
 
-	thumb_func_start sub_020722D4
-sub_020722D4: ; 0x020722D4
-	ldr r3, _020722D8 ; =sub_020722DC
+	thumb_func_start UpdateMonAbility
+UpdateMonAbility: ; 0x020722D4
+	ldr r3, _020722D8 ; =UpdateBoxMonAbility
 	bx r3
 	.balign 4, 0
-_020722D8: .word sub_020722DC
-	thumb_func_end sub_020722D4
+_020722D8: .word UpdateBoxMonAbility
+	thumb_func_end UpdateMonAbility
 
-	thumb_func_start sub_020722DC
-sub_020722DC: ; 0x020722DC
+	thumb_func_start UpdateBoxMonAbility
+UpdateBoxMonAbility: ; 0x020722DC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -9733,7 +9736,7 @@ _02072350:
 	bl ReleaseBoxMonLock
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_020722DC
+	thumb_func_end UpdateBoxMonAbility
 
 	thumb_func_start sub_0207235C
 sub_0207235C: ; 0x0207235C

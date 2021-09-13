@@ -4639,7 +4639,7 @@ ov112_021E7CC8: ; 0x021E7CC8
 	ldr r1, _021E7D74 ; =0x00001034
 	mov r2, #0x28
 	add r1, r5, r1
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #0x24
@@ -4722,7 +4722,7 @@ ov112_021E7DC0: ; 0x021E7DC0
 	ldr r1, _021E7DF8 ; =0x0000F1D8
 	mov r2, #0x28
 	add r1, r4, r1
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	pop {r4, pc}
 	.balign 4, 0
 _021E7DF0: .word 0x0000F1D0
@@ -27501,7 +27501,7 @@ _021F3420:
 	bne _021F3482
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 	ldrh r1, [r6]
 	ldr r0, _021F35A0 ; =0xFFFF07FF
 	and r0, r1
@@ -27622,7 +27622,7 @@ _021F353E:
 	beq _021F357E
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 _021F357E:
 	ldr r0, [sp, #0x14]
 	add r6, #0x38

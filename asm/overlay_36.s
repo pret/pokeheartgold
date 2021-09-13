@@ -140,7 +140,7 @@ _021E59E8:
 	bl Sav2_SysInfo_InitFromSystem
 	add r0, r4, #0
 	bl SavArray_PlayerParty_get
-	bl sub_02071E2C
+	bl Party_ResetAllShayminToLandForme
 _021E5A0C:
 	add r0, r4, #0
 	bl Sav2_PlayerData_GetIGTAddr

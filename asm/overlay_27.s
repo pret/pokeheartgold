@@ -1853,7 +1853,7 @@ _0225AD52:
 	ldr r0, [r0, #0xc]
 	add r1, r5, r1
 	mov r2, #0x40
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x14

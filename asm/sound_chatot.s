@@ -34,8 +34,8 @@ _02006CC2:
 	.balign 4, 0
 	thumb_func_end sub_02006C8C
 
-	thumb_func_start sub_02006CC8
-sub_02006CC8: ; 0x02006CC8
+	thumb_func_start Chatot_checkCry
+Chatot_checkCry: ; 0x02006CC8
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	mov r0, #0x1f
@@ -45,7 +45,7 @@ sub_02006CC8: ; 0x02006CC8
 	bl sub_02004400
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0202CE70
+	bl Chatot_exists
 	cmp r0, #0
 	bne _02006CEA
 	mov r0, #0
@@ -66,7 +66,7 @@ _02006CFE:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_02006CC8
+	thumb_func_end Chatot_checkCry
 
 	thumb_func_start sub_02006D04
 sub_02006D04: ; 0x02006D04
@@ -81,7 +81,7 @@ sub_02006D04: ; 0x02006D04
 	bl sub_02004400
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl sub_02006CC8
+	bl Chatot_checkCry
 	cmp r0, #0
 	bne _02006D2C
 	add sp, #0x30
@@ -103,10 +103,10 @@ _02006D2C:
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r6, #0
-	bl sub_0202CE7C
+	bl Chatot_GetData
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl sub_0202CE80
+	bl Chatot_Decode
 	mov r0, #0xe
 	bl sub_020055AC
 	str r0, [sp, #8]
@@ -172,8 +172,8 @@ _02006DDC:
 	.balign 4, 0
 	thumb_func_end sub_02006DB8
 
-	thumb_func_start sub_02006DE4
-sub_02006DE4: ; 0x02006DE4
+	thumb_func_start Chatot_startRecording
+Chatot_startRecording: ; 0x02006DE4
 	push {lr}
 	sub sp, #0x1c
 	mov r0, #2
@@ -197,32 +197,32 @@ _02006E04:
 	str r0, [sp, #0x14]
 	str r0, [sp, #0x18]
 	add r0, sp, #0
-	bl sub_02005520
+	bl GF_MIC_StartAutoSampling
 	add sp, #0x1c
 	pop {pc}
 	nop
 _02006E1C: .word 0x00004174
-	thumb_func_end sub_02006DE4
+	thumb_func_end Chatot_startRecording
 
-	thumb_func_start sub_02006E20
-sub_02006E20: ; 0x02006E20
-	ldr r3, _02006E24 ; =sub_02005550
+	thumb_func_start Chatot_stopRecording
+Chatot_stopRecording: ; 0x02006E20
+	ldr r3, _02006E24 ; =GF_MIC_StopAutoSampling
 	bx r3
 	.balign 4, 0
-_02006E24: .word sub_02005550
-	thumb_func_end sub_02006E20
+_02006E24: .word GF_MIC_StopAutoSampling
+	thumb_func_end Chatot_stopRecording
 
-	thumb_func_start sub_02006E28
-sub_02006E28: ; 0x02006E28
+	thumb_func_start Chatot_saveRecording
+Chatot_saveRecording: ; 0x02006E28
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_020059D8
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0202CEB8
+	bl Chatot_Encode
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02006E28
+	thumb_func_end Chatot_saveRecording
 
 	thumb_func_start sub_02006E3C
 sub_02006E3C: ; 0x02006E3C
@@ -331,14 +331,14 @@ _02006EF8: .word 0x000001B9
 sub_02006EFC: ; 0x02006EFC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202CE70
+	bl Chatot_exists
 	cmp r0, #0
 	bne _02006F0C
 	mov r0, #0
 	pop {r4, pc}
 _02006F0C:
 	add r0, r4, #0
-	bl sub_0202CE7C
+	bl Chatot_GetData
 	mov r1, #0xf
 	ldrsb r0, [r0, r1]
 	sub r1, #0x2d

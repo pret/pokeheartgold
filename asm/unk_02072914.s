@@ -5767,7 +5767,7 @@ _02075234:
 	add r0, r4, #0
 	ldr r1, [r2, r1]
 	add r0, #0x20
-	bl sub_0202CF08
+	bl Chatot_copy
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -7976,7 +7976,7 @@ _020763FC:
 	add r2, #0x62
 	bl SetMonData
 	ldr r0, [r4, #0x28]
-	bl sub_020722D4
+	bl UpdateMonAbility
 	ldr r0, [r4, #0x28]
 	bl CalcMonLevelAndStats
 	ldr r0, [r4, #0x28]
@@ -9151,7 +9151,7 @@ _02076D62:
 	add r2, sp, #8
 	bl SetMonData
 	add r0, r5, #0
-	bl sub_020722D4
+	bl UpdateMonAbility
 	add r0, r5, #0
 	bl CalcMonLevelAndStats
 	ldr r0, [r4, #0x24]
@@ -20361,7 +20361,7 @@ sub_0207C288: ; 0x0207C288
 	ldr r0, [r2]
 	ldrb r1, [r5, r1]
 	bl GetPartyMonByIndex
-	bl sub_02071DB4
+	bl Mon_CanUseGracidea
 	cmp r0, #1
 	bne _0207C2D2
 	ldr r0, _0207C3C0 ; =0x00000654
@@ -20757,7 +20757,7 @@ sub_0207C5D4: ; 0x0207C5D4
 	add r0, r6, #0
 	bl sub_02071BC8
 	add r0, r6, #0
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 	str r0, [r4]
 	ldr r1, _0207C650 ; =0x00000C65
 	ldr r0, _0207C64C ; =0x00000654
@@ -20818,7 +20818,7 @@ sub_0207C658: ; 0x0207C658
 	add r0, r5, #0
 	bl sub_02071BC8
 	add r0, r5, #0
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 	ldr r1, _0207C6B4 ; =0x00000C65
 	mov r2, #0x30
 	ldrb r3, [r4, r1]
@@ -26772,7 +26772,7 @@ _0207F590:
 	add r0, r6, #0
 	bl sub_02071BC8
 	add r0, r6, #0
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 	ldr r1, _0207F684 ; =0x00000C65
 	ldrb r2, [r5, r1]
 	mov r1, #0x30
@@ -27218,7 +27218,7 @@ sub_0207F924: ; 0x0207F924
 	add r0, r5, #0
 	bl sub_02071BC8
 	add r0, r5, #0
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 	ldr r1, _0207F9BC ; =0x00000C65
 	mov r2, #0x30
 	ldrb r3, [r4, r1]
@@ -58992,7 +58992,7 @@ sub_0208F7A8: ; 0x0208F7A8
 	add r0, r6, #0
 	add r1, r3, r1
 	sub r2, r2, #4
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	mov r0, #4
 	str r0, [r4, #0x60]
 	mov r0, #0
@@ -59089,14 +59089,14 @@ sub_0208F828: ; 0x0208F828
 	mov r2, #0x19
 	add r0, r5, #0
 	lsl r2, r2, #4
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	b _0208F868
 _0208F85C:
 	add r2, r4, r2
 	add r1, r2, r1
 	add r0, r5, #0
 	sub r2, r3, #4
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 _0208F868:
 	mov r1, #0xb5
 	ldr r0, _0208F8B4 ; =0x000043D0
@@ -59105,7 +59105,7 @@ _0208F868:
 	ldr r1, [r4, r1]
 	add r0, r4, r0
 	lsl r2, r2, #6
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	mov r0, #0xb2
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -59473,7 +59473,7 @@ sub_0208FAF8: ; 0x0208FAF8
 	add r0, r1, r0
 	ldr r1, _0208FB44 ; =0x00007C10
 	add r1, r5, r1
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r0, _0208FB44 ; =0x00007C10
 	mov r2, #0
 	add r1, r2, #0
@@ -69994,7 +69994,7 @@ sub_02094C08: ; 0x02094C08
 	ldr r0, [r0, #0x14]
 	add r1, #0xc
 	lsl r2, r2, #8
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r1, [sp, #0x20]
 	lsl r0, r7, #4
 	add r0, r1, r0

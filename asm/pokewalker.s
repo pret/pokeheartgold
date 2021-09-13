@@ -144,14 +144,14 @@ _020326B4:
 
 	thumb_func_start sub_020326BC
 sub_020326BC: ; 0x020326BC
-	ldr r3, _020326C8 ; =sub_020D48B4
+	ldr r3, _020326C8 ; =MIi_CpuCopyFast
 	add r2, r0, #0
 	add r0, r1, #0
 	add r1, r2, #4
 	mov r2, #0x88
 	bx r3
 	.balign 4, 0
-_020326C8: .word sub_020D48B4
+_020326C8: .word MIi_CpuCopyFast
 	thumb_func_end sub_020326BC
 
 	thumb_func_start sub_020326CC
@@ -177,7 +177,7 @@ sub_020326DC: ; 0x020326DC
 	add r0, r5, #4
 	add r1, r4, #0
 	mov r2, #0x88
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _020326F8:

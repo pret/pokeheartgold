@@ -1131,7 +1131,7 @@ _021E6294:
 	ldr r1, _021E6310 ; =0x021DA4A4
 	add r0, sp, #8
 	mov r2, #0x40
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r1, _021E6314 ; =0x021DA51C
 	mov r0, #0x50
 	ldr r2, [r1, #0x7c]
@@ -1144,7 +1144,7 @@ _021E6294:
 	ldr r1, _021E6310 ; =0x021DA4A4
 	add r0, sp, #0x48
 	mov r2, #0x40
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r1, _021E6314 ; =0x021DA51C
 	mov r0, #0x50
 	ldr r2, [r1, #0x7c]
@@ -59113,18 +59113,18 @@ _022013C0:
 	b _02201412
 _022013F6:
 	add r0, r4, #0
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 	b _02201412
 _022013FE:
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_02071EC0
+	bl Mon_UpdateRotomForme
 	b _02201412
 _0220140A:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 _02201412:
 	add r5, r5, #1
 	cmp r5, r6
@@ -59296,7 +59296,7 @@ ov01_02201518: ; 0x02201518
 	ldr r2, [sp]
 	add r1, r7, #0
 	add r5, r0, #0
-	bl sub_02071EC0
+	bl Mon_UpdateRotomForme
 	ldr r0, [r4, #0xc]
 	bl Sav2_Pokedex_get
 	add r1, r5, #0

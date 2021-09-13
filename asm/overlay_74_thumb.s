@@ -22189,7 +22189,7 @@ _02231F62:
 	ldr r0, [r0, #0x14]
 	add r1, #0xc
 	lsl r2, r2, #8
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	lsl r0, r5, #4
 	add r0, #0x64
 	lsl r0, r0, #5
