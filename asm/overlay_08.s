@@ -3800,7 +3800,7 @@ ov08_0221DBCC: ; 0x0221DBCC
 	add r1, r4, #0
 	mov r2, #1
 	add r3, r7, #0
-	bl sub_02078434
+	bl Bag_TakeItem
 _0221DBF0:
 	add r0, r5, #0
 	bl ov12_0223AA84
@@ -14431,7 +14431,7 @@ ov08_02223390: ; 0x02223390
 	add r1, r5, #0
 	mov r2, #1
 	add r3, r4, #0
-	bl sub_02078434
+	bl Bag_TakeItem
 	add r0, r6, #0
 	bl ov12_0223AA84
 	add r1, r5, #0
@@ -15430,7 +15430,7 @@ _02223B88:
 	ldr r0, [r3, #8]
 	ldr r3, [r3, #0xc]
 	mov r2, #1
-	bl sub_020784B0
+	bl Bag_HasItem
 	cmp r0, #0
 	bne _02223BA2
 	ldr r1, [r4]

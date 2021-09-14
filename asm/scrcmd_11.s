@@ -1456,7 +1456,7 @@ sub_0204C7F4: ; 0x0204C7F4
 	ldr r1, _0204C838 ; =0x000001F5
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_020784B0
+	bl Bag_HasItem
 	cmp r0, #0
 	bne _0204C820
 	mov r0, #0x18

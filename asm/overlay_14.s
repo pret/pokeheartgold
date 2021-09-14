@@ -12905,7 +12905,7 @@ _021EBC66:
 	ldr r0, [r5, #0xc]
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_02078434
+	bl Bag_TakeItem
 _021EBC72:
 	add r0, r5, #0
 	add r0, #0x21

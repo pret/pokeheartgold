@@ -27396,14 +27396,14 @@
 .public sub_0204FE78
 .public sub_0204FF78
 .public sub_02050014
-.public sub_020503B8
-.public sub_020503C0
+.public SavArray_Flags_sizeof
+.public SavArray_Flags_init
 .public SavArray_Flags_get
-.public sub_020503DC
-.public sub_02050408
-.public sub_02050430
-.public sub_0205045C
-.public sub_020504A4
+.public CheckFlagInArray
+.public SetFlagInArray
+.public ClearFlagInArray
+.public GetFlagAddr
+.public GetVarAddr
 .public sub_020504F0
 .public sub_02050510
 .public sub_02050530
@@ -28199,9 +28199,9 @@
 .public sub_02078208
 .public Bag_HasSpaceForItem
 .public Bag_AddItem
-.public sub_02078434
+.public Bag_TakeItem
 .public sub_02078480
-.public sub_020784B0
+.public Bag_HasItem
 .public sub_020784C4
 .public sub_02078550
 .public sub_02078568
@@ -28341,7 +28341,7 @@
 .public sub_02091730
 .public sub_0209174C
 .public sub_02091764
-.public sub_0209176C
+.public GetEligibleLevelUpMoves
 .public sub_0209186C
 .public sub_02091880
 .public sub_020918C0
@@ -29344,3 +29344,4 @@
 .public sub_02066900
 .public sub_02066910
 .public sub_02066920
+.public sub_0205BBB8

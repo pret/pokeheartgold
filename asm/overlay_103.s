@@ -2674,7 +2674,7 @@ ov103_021EDD98: ; 0x021EDD98
 	ldrh r1, [r4, #0x22]
 	mov r2, #1
 	mov r3, #0x9c
-	bl sub_02078434
+	bl Bag_TakeItem
 _021EDDD8:
 	ldr r0, [r4, #0x14]
 	bl sub_02090F90

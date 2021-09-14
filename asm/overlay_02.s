@@ -19818,7 +19818,7 @@ _0224F124:
 	ldr r0, [r6, #0xc]
 	bl SavArray_Flags_get
 	add r1, r7, #0
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	bne _0224F13E
 	mov r0, #0

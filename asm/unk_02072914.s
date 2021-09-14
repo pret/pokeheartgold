@@ -9172,7 +9172,7 @@ _02076D62:
 	ldr r3, [r4, #0x5c]
 	mov r1, #4
 	mov r2, #1
-	bl sub_02078434
+	bl Bag_TakeItem
 	add sp, #0x20
 	pop {r4, r5, r6, pc}
 _02076E50:
@@ -12287,8 +12287,8 @@ sub_02078410: ; 0x02078410
 	.balign 4, 0
 	thumb_func_end sub_02078410
 
-	thumb_func_start sub_02078434
-sub_02078434: ; 0x02078434
+	thumb_func_start Bag_TakeItem
+Bag_TakeItem: ; 0x02078434
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r0, #0
@@ -12326,7 +12326,7 @@ _02078462:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02078434
+	thumb_func_end Bag_TakeItem
 
 	thumb_func_start sub_02078480
 sub_02078480: ; 0x02078480
@@ -12356,8 +12356,8 @@ _020784A4:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02078480
 
-	thumb_func_start sub_020784B0
-sub_020784B0: ; 0x020784B0
+	thumb_func_start Bag_HasItem
+Bag_HasItem: ; 0x020784B0
 	push {r3, lr}
 	bl sub_02078410
 	cmp r0, #0
@@ -12368,7 +12368,7 @@ _020784BE:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020784B0
+	thumb_func_end Bag_HasItem
 
 	thumb_func_start sub_020784C4
 sub_020784C4: ; 0x020784C4
@@ -20430,7 +20430,7 @@ _0207C326:
 	mov r3, #0xc
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl sub_02078434
+	bl Bag_TakeItem
 	add r0, r4, #0
 	mov r1, #0x1a
 	bl sub_02077DAC
@@ -20749,7 +20749,7 @@ sub_0207C5D4: ; 0x0207C5D4
 	ldr r1, [r5, r0]
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl sub_02078434
+	bl Bag_TakeItem
 	add r0, r6, #0
 	mov r1, #6
 	add r2, sp, #0
@@ -21004,7 +21004,7 @@ _0207C7D6:
 	ldr r0, [r0, #4]
 	mov r2, #1
 	mov r3, #0xc
-	bl sub_02078434
+	bl Bag_TakeItem
 	ldr r1, [sp]
 	add r0, r5, #0
 	add r2, r6, #0
@@ -31234,7 +31234,7 @@ _02081A22:
 	mov r3, #0xc
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl sub_02078434
+	bl Bag_TakeItem
 	ldr r0, _02081A5C ; =0x00000654
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -32584,7 +32584,7 @@ sub_0208254C: ; 0x0208254C
 	mov r3, #0xc
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl sub_02078434
+	bl Bag_TakeItem
 _020825B8:
 	add r0, r5, #0
 	bl sub_020828EC
@@ -32861,7 +32861,7 @@ _02082794:
 	mov r3, #0xc
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl sub_02078434
+	bl Bag_TakeItem
 	ldr r0, _02082860 ; =0x000005EC
 	bl PlaySE
 	b _02082828
@@ -63365,8 +63365,8 @@ sub_02091764: ; 0x02091764
 _02091768: .word FreeToHeap
 	thumb_func_end sub_02091764
 
-	thumb_func_start sub_0209176C
-sub_0209176C: ; 0x0209176C
+	thumb_func_start GetEligibleLevelUpMoves
+GetEligibleLevelUpMoves: ; 0x0209176C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r1, [sp]
@@ -63496,7 +63496,7 @@ _0209185C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02091868: .word 0x0000FFFF
-	thumb_func_end sub_0209176C
+	thumb_func_end GetEligibleLevelUpMoves
 
 	thumb_func_start sub_0209186C
 sub_0209186C: ; 0x0209186C
@@ -66557,7 +66557,7 @@ _02093088:
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
 	ldr r1, _020930C0 ; =0x00000985
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	beq _0209309C
 	mov r0, #0
@@ -66620,7 +66620,7 @@ _02093108:
 	add r1, r2, r1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	bne _0209312C
 	add r0, r5, #0
@@ -66657,7 +66657,7 @@ _02093148:
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
 	ldr r1, _02093168 ; =0x00000983
-	bl sub_02050408
+	bl SetFlagInArray
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -66682,12 +66682,12 @@ sub_0209316C: ; 0x0209316C
 _0209318C:
 	ldr r1, _020931BC ; =0x00000992
 	add r0, r4, #0
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	beq _020931A8
 	ldr r1, _020931C0 ; =0x0000099E
 	add r0, r4, #0
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	bne _020931A8
 	mov r0, #0

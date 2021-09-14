@@ -5035,7 +5035,7 @@ _0221E7C2:
 	ldr r1, _0221E84C ; =0x000001B5
 	mov r2, #1
 	mov r3, #0x1a
-	bl sub_020784B0
+	bl Bag_HasItem
 	cmp r0, #1
 	bne _0221E7FE
 	ldr r0, _0221E838 ; =0x00003678

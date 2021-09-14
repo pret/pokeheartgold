@@ -40,7 +40,7 @@ ov05_0221BA00: ; 0x0221BA00
 	ldr r1, _0221BA6C ; =0x000001D1
 	ldr r3, [r5, #0x24]
 	mov r2, #1
-	bl sub_020784B0
+	bl Bag_HasItem
 	ldr r1, _0221BA68 ; =0x00000BC8
 	str r0, [r4, r1]
 _0221BA58:

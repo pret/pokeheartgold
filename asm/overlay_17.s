@@ -1100,7 +1100,7 @@ _0220242A:
 	ldrh r1, [r1, #0x16]
 	ldr r3, [r4]
 	mov r2, #1
-	bl sub_02078434
+	bl Bag_TakeItem
 _02202438:
 	pop {r4, pc}
 	nop

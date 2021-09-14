@@ -364,7 +364,7 @@ sub_0203B114: ; 0x0203B114
 	bl GF_RTC_CopyDate
 	add r0, r4, #0
 	mov r1, #0xca
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	bne _0203B140
 	add r0, r4, #0

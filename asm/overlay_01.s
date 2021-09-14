@@ -4075,7 +4075,7 @@ ov01_021E7A08: ; 0x021E7A08
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
 	ldr r1, _021E7A5C ; =0x00000984
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	bne _021E7A56
 	add r0, r5, #0
@@ -36681,7 +36681,7 @@ _021F6DC8:
 	ldr r1, _021F6E40 ; =0x000001B5
 	mov r2, #1
 	mov r3, #4
-	bl sub_020784B0
+	bl Bag_HasItem
 	cmp r0, #1
 	bne _021F6E02
 	add r0, r6, #0

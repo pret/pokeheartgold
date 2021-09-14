@@ -170,6 +170,12 @@ Static main
 	Object scrcmd_16.o
 	Object scrcmd_17.o
 	Object scrcmd_18.o
+	Object scrcmd_19.o
+	Object scrcmd_20.o
+	Object unk_0204F500.o
+	Object event_data.o
+	Object unk_020504C0.o
+	Object unk_02050660.o
 	Object pokemon.o
 	Object unk_02072914.o
 	### Vendor libraries ###

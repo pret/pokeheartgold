@@ -3352,7 +3352,7 @@ _0203D688:
 	add r0, r4, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_020784B0
+	bl Bag_HasItem
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18

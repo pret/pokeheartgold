@@ -1753,7 +1753,7 @@ _0204038C:
 	cmp r4, r1
 	bhs _0204039A
 	add r1, r4, #0
-	bl sub_020504A4
+	bl GetVarAddr
 	pop {r3, r4, r5, pc}
 _0204039A:
 	ldr r1, _020403A8 ; =0x00007FD6
@@ -1822,7 +1822,7 @@ sub_020403FC: ; 0x020403FC
 	add r4, r1, #0
 	bl SavArray_Flags_get
 	add r1, r4, #0
-	bl sub_020503DC
+	bl CheckFlagInArray
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_020403FC
@@ -1834,7 +1834,7 @@ sub_02040410: ; 0x02040410
 	add r4, r1, #0
 	bl SavArray_Flags_get
 	add r1, r4, #0
-	bl sub_02050408
+	bl SetFlagInArray
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02040410
@@ -1846,7 +1846,7 @@ sub_02040424: ; 0x02040424
 	add r4, r1, #0
 	bl SavArray_Flags_get
 	add r1, r4, #0
-	bl sub_02050430
+	bl ClearFlagInArray
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02040424
@@ -1858,7 +1858,7 @@ sub_02040438: ; 0x02040438
 	bl SavArray_Flags_get
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0205045C
+	bl GetFlagAddr
 	mov r1, #0
 	strb r1, [r0]
 	strb r1, [r0, #1]
@@ -1871,7 +1871,7 @@ sub_02040438: ; 0x02040438
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xe
-	bl sub_020504A4
+	bl GetVarAddr
 	mov r1, #0
 	mov r2, #0x40
 	bl memset
@@ -1886,7 +1886,7 @@ sub_02040470: ; 0x02040470
 	bl SavArray_Flags_get
 	mov r1, #0xaa
 	lsl r1, r1, #4
-	bl sub_0205045C
+	bl GetFlagAddr
 	mov r2, #0x18
 	mov r1, #0
 _02040484:
@@ -1985,7 +1985,7 @@ sub_02040514: ; 0x02040514
 	add r1, r4, r1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020503DC
+	bl CheckFlagInArray
 	pop {r4, pc}
 	thumb_func_end sub_02040514
 
@@ -1999,7 +1999,7 @@ sub_0204052C: ; 0x0204052C
 	add r1, r4, r1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_02050408
+	bl SetFlagInArray
 	pop {r4, pc}
 	thumb_func_end sub_0204052C
 
@@ -2013,7 +2013,7 @@ sub_02040544: ; 0x02040544
 	add r1, r4, r1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_02050430
+	bl ClearFlagInArray
 	pop {r4, pc}
 	thumb_func_end sub_02040544
 

@@ -1580,19 +1580,19 @@ sub_0203EE54: ; 0x0203EE54
 	add r4, r0, #0
 	bl SavArray_Flags_get
 	mov r1, #0xef
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	beq _0203EE8A
 	add r0, r4, #0
 	bl SavArray_Flags_get
 	mov r1, #0xf0
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	beq _0203EE8A
 	add r0, r4, #0
 	bl SavArray_Flags_get
 	mov r1, #0xf1
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	beq _0203EE8A
 	mov r0, #1
