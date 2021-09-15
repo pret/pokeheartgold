@@ -8515,7 +8515,7 @@ ov40_0222FB28: ; 0x0222FB28
 	ldr r0, [r0, r1]
 	bl Sav2_GameStats_get
 	add r1, r4, #0
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov40_0222FB28
@@ -27492,7 +27492,7 @@ _02239558:
 	ldr r0, [r4, r0]
 	bl Sav2_GameStats_get
 	ldr r1, [r6, r5]
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	pop {r4, r5, r6, pc}
 	nop
 _0223956C: .word 0x02245CE8

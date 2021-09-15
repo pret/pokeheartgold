@@ -194,7 +194,7 @@ _0204F602:
 	bl Sav2_GameStats_get
 	mov r1, #0x45
 	add r2, r6, #0
-	bl sub_0202D144
+	bl GameStats_Add
 	cmp r6, #0
 	beq _0204F630
 	ldr r0, [sp, #8]

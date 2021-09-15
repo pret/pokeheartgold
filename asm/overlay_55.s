@@ -153,11 +153,11 @@ _021E5A04:
 	ldr r0, [r5, #0x10]
 	bl Sav2_GameStats_get
 	mov r1, #2
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	ldr r0, [r5, #0x10]
 	bl Sav2_GameStats_get
 	mov r1, #0x2e
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	mov r0, #1
 	str r0, [r5, #4]
 	b _021E5A3A

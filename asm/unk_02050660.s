@@ -221,7 +221,7 @@ _020507CE:
 	beq _02050800
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_02090C1C
+	bl HealParty
 	b _0205080A
 _02050800:
 	add r0, r6, #0
@@ -236,7 +236,7 @@ _0205080A:
 	beq _02050822
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_02090C1C
+	bl HealParty
 _02050822:
 	ldr r1, [r6, #0x10]
 	add r0, r5, #0
@@ -383,7 +383,7 @@ _0205091E:
 	ldr r0, [r7, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #0x14
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	add r0, r5, #0
 	add r1, r7, #0
 	bl sub_020506F4
@@ -450,7 +450,7 @@ _020509AE:
 	ldr r0, [r6, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #0x14
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	add r0, r5, #0
 	add r1, r6, #0
 	bl sub_020506F4
@@ -770,7 +770,7 @@ _02050C48:
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #8]
 	add r0, r6, #0
@@ -823,7 +823,7 @@ _02050CBE:
 	beq _02050CD6
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_02090C1C
+	bl HealParty
 _02050CD6:
 	ldr r1, [r4, #0x10]
 	add r0, r5, #0
@@ -901,7 +901,7 @@ _02050D68:
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #8]
 	add r0, r7, #0
@@ -1097,7 +1097,7 @@ _02050F08:
 	ldr r0, [r6, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r1, [r5, #4]
 	ldr r2, [r5, #8]
 	add r0, r7, #0
@@ -1260,7 +1260,7 @@ _02051062:
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	add r0, r4, #0
 	bl sub_020517E8
 	add r5, r0, #0
@@ -1320,7 +1320,7 @@ _020510E6:
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	add r0, r4, #0
 	bl sub_020517E8
 	add r5, r0, #0
@@ -1372,7 +1372,7 @@ _0205114E:
 	ldr r0, [r6, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r1, [r5, #4]
 	ldr r2, [r5, #8]
 	add r0, r7, #0
@@ -1499,7 +1499,7 @@ sub_02051228: ; 0x02051228
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	add r0, r4, #0
 	bl sub_020517E8
 	add r5, r0, #0
@@ -1683,7 +1683,7 @@ _020513AC:
 	ldr r0, [r0, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #9
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r0, [sp, #0x2c]
 	cmp r0, #0
 	beq _020513FE
@@ -2017,7 +2017,7 @@ _02051684:
 	ldr r0, [r4, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #9
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	pop {r3, r4, r5, pc}
 _02051696:
 	cmp r2, #4
@@ -2036,12 +2036,12 @@ _02051696:
 	beq _020516C4
 	bl Sav2_GameStats_get
 	mov r1, #0xa
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	pop {r3, r4, r5, pc}
 _020516C4:
 	bl Sav2_GameStats_get
 	mov r1, #0xb
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	pop {r3, r4, r5, pc}
 _020516D0:
 	mov r3, #1
@@ -2056,7 +2056,7 @@ _020516DC:
 	ldr r0, [r4, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #0xc
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	pop {r3, r4, r5, pc}
 _020516EE:
 	mov r3, #0x20
@@ -2083,12 +2083,12 @@ _020516FC:
 	beq _0205172A
 	bl Sav2_GameStats_get
 	mov r1, #0xa
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	pop {r3, r4, r5, pc}
 _0205172A:
 	bl Sav2_GameStats_get
 	mov r1, #0xb
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 _02051734:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -4263,7 +4263,7 @@ _0205288C:
 	bl sub_02067BD0
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_02090C1C
+	bl HealParty
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -4397,7 +4397,7 @@ _020529BE:
 	bl sub_02067BD0
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_02090C1C
+	bl HealParty
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -4622,7 +4622,7 @@ _02052B8E:
 _02052B96:
 	ldr r0, [r6, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_02090C1C
+	bl HealParty
 	ldr r0, [r6, #0xc]
 	bl sub_020273F0
 	add r7, r0, #0
@@ -4825,7 +4825,7 @@ _02052D3A:
 	ldr r0, [r4, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #0x4a
-	bl sub_0202D0FC
+	bl GameStats_Inc
 _02052D70:
 	ldr r0, [sp]
 	ldr r1, _02052D80 ; =sub_02052AA0
@@ -10551,7 +10551,7 @@ _0205585E:
 	str r0, [r4, #0x48]
 	add r0, r5, #0
 	mov r1, #0x11
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	pop {r3, r4, r5, pc}
 	nop
 _0205586C: .word 0x021D4178
@@ -29304,14 +29304,14 @@ sub_0205E048: ; 0x0205E048
 	bl Sav2_GameStats_get
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r0, [r5, #0x40]
 	bl sub_0205C700
 	cmp r0, #1
 	bne _0205E074
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0202D0FC
+	bl GameStats_Inc
 _0205E074:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -53902,7 +53902,7 @@ sub_02068FC8: ; 0x02068FC8
 	bl sub_0202A5F4
 	str r0, [sp, #0x3c]
 	add r0, r4, #0
-	bl sub_0202D208
+	bl GameStats_GetStat2
 	ldr r1, [sp, #0x38]
 	ldr r2, [sp, #0x30]
 	str r1, [sp]
@@ -53946,27 +53946,27 @@ sub_02068FC8: ; 0x02068FC8
 	str r0, [sp, #0x44]
 	add r0, r4, #0
 	mov r1, #0x21
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x48]
 	add r0, r4, #0
 	mov r1, #0x1a
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x4c]
 	add r0, r4, #0
 	mov r1, #0x15
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x50]
 	add r0, r4, #0
 	mov r1, #0x19
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x54]
 	add r0, r4, #0
 	mov r1, #0x5c
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x58]
 	add r0, r4, #0
 	mov r1, #0x14
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	ldr r1, [sp, #0x58]
 	add r1, r1, r0
 	ldr r0, [sp, #0x54]
@@ -53978,27 +53978,27 @@ sub_02068FC8: ; 0x02068FC8
 	str r0, [sp, #0x5c]
 	add r0, r4, #0
 	mov r1, #0x16
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x60]
 	add r0, r4, #0
 	mov r1, #0x1b
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x64]
 	add r0, r4, #0
 	mov r1, #0x17
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x68]
 	add r0, r4, #0
 	mov r1, #0x1c
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x6c]
 	add r0, r4, #0
 	mov r1, #0x14
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x70]
 	add r0, r4, #0
 	mov r1, #0x19
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	add r4, r0, #0
 	ldr r0, [sp, #0x44]
 	bl sub_0202C9E8
@@ -59983,7 +59983,7 @@ sub_0206BED8: ; 0x0206BED8
 	add r4, r2, #0
 	bl Sav2_GameStats_get
 	mov r1, #0x29
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	add r0, r4, #0
 	bl sub_0206BDF4
 	add r1, r0, #0

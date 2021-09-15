@@ -8146,7 +8146,7 @@ _02257EF0:
 	ldrsh r2, [r4, r3]
 	mov r1, #0x24
 	mul r2, r5
-	bl sub_0202D144
+	bl GameStats_Add
 	mov r0, #0xd
 	pop {r3, r4, r5, pc}
 	nop
@@ -8212,7 +8212,7 @@ _02257F5E:
 	sub r0, #0x3c
 	ldr r0, [r4, r0]
 	mov r1, #0x33
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	mov r0, #0xf
 	pop {r4, pc}
 _02257F9E:

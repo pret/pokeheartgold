@@ -8033,10 +8033,10 @@ _02076478:
 	bl Pokedex_SetMonCaughtFlag
 	ldr r0, [r4, #0x50]
 	mov r1, #0xd
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r0, [r4, #0x50]
 	mov r1, #0x15
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	ldr r0, [r4, #0x28]
 	mov r1, #0x4d
 	mov r2, #0
@@ -9162,10 +9162,10 @@ _02076D62:
 	bl Pokedex_SetMonCaughtFlag
 	ldr r0, [r4, #0x50]
 	mov r1, #0xd
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r0, [r4, #0x50]
 	mov r1, #0x15
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [r4, #0x4c]
@@ -61654,8 +61654,8 @@ _02090C08:
 	bx r3
 	thumb_func_end sub_02090B68
 
-	thumb_func_start sub_02090C1C
-sub_02090C1C: ; 0x02090C1C
+	thumb_func_start HealParty
+HealParty: ; 0x02090C1C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
@@ -61713,7 +61713,7 @@ _02090C88:
 _02090C90:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_02090C1C
+	thumb_func_end HealParty
 
 	thumb_func_start sub_02090C94
 sub_02090C94: ; 0x02090C94

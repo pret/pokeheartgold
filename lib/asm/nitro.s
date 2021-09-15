@@ -30783,8 +30783,8 @@ _020E3848:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020E3818
 
-	arm_func_start sub_020E3850
-sub_020E3850: ; 0x020E3850
+	arm_func_start MATHi_CRC16InitTable
+MATHi_CRC16InitTable: ; 0x020E3850
 	stmdb sp!, {r4, lr}
 	mov lr, #0
 	mov r4, lr
@@ -30806,7 +30806,7 @@ _020E3868:
 	add r4, r4, #0x100
 	blo _020E3860
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E3850
+	arm_func_end MATHi_CRC16InitTable
 
 	arm_func_start sub_020E389C
 sub_020E389C: ; 0x020E389C
@@ -30946,8 +30946,8 @@ sub_020E3A04: ; 0x020E3A04
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020E3A04
 
-	arm_func_start sub_020E3A2C
-sub_020E3A2C: ; 0x020E3A2C
+	arm_func_start MATH_CalcCRC16CCITT
+MATH_CalcCRC16CCITT: ; 0x020E3A2C
 	stmdb sp!, {r3, lr}
 	ldr ip, _020E3A54 ; =0x0000FFFF
 	mov lr, r1
@@ -30960,7 +30960,7 @@ sub_020E3A2C: ; 0x020E3A2C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020E3A54: .word 0x0000FFFF
-	arm_func_end sub_020E3A2C
+	arm_func_end MATH_CalcCRC16CCITT
 
 	arm_func_start sub_020E3A58
 sub_020E3A58: ; 0x020E3A58

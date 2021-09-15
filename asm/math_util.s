@@ -473,8 +473,8 @@ _0201FF20: .word 0x0000FFFF
 _0201FF24: .word 0x021094DC
 	thumb_func_end sub_0201FECC
 
-	thumb_func_start sub_0201FF28
-sub_0201FF28: ; 0x0201FF28
+	thumb_func_start Math_CalcArraySum
+Math_CalcArraySum: ; 0x0201FF28
 	push {r3, r4}
 	mov r3, #0
 	add r4, r3, #0
@@ -491,7 +491,7 @@ _0201FF3E:
 	add r0, r3, #0
 	pop {r3, r4}
 	bx lr
-	thumb_func_end sub_0201FF28
+	thumb_func_end Math_CalcArraySum
 
 	thumb_func_start _MonEncryptSegment
 _MonEncryptSegment: ; 0x0201FF44
@@ -546,22 +546,22 @@ _0201FF90: .word 0x41C64E6D
 _0201FF94: .word 0x00006073
 	thumb_func_end MonEncryptionLCRNG
 
-	thumb_func_start MATH_CalcCRC16CCITT
-MATH_CalcCRC16CCITT: ; 0x0201FF98
+	thumb_func_start GF_CalcCRC16
+GF_CalcCRC16: ; 0x0201FF98
 	add r3, r0, #0
 	add r2, r1, #0
 	ldr r0, _0201FFA8 ; =_021D15A4
 	add r1, r3, #0
-	ldr r3, _0201FFAC ; =sub_020E3A2C
+	ldr r3, _0201FFAC ; =MATH_CalcCRC16CCITT
 	ldr r0, [r0]
 	bx r3
 	nop
 _0201FFA8: .word _021D15A4
-_0201FFAC: .word sub_020E3A2C
-	thumb_func_end MATH_CalcCRC16CCITT
+_0201FFAC: .word MATH_CalcCRC16CCITT
+	thumb_func_end GF_CalcCRC16
 
-	thumb_func_start sub_0201FFB0
-sub_0201FFB0: ; 0x0201FFB0
+	thumb_func_start GF_CRC16Init
+GF_CRC16Init: ; 0x0201FFB0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0201FFD8 ; =_021D15A4
@@ -577,9 +577,9 @@ _0201FFC0:
 	ldr r1, _0201FFD8 ; =_021D15A4
 	str r0, [r1]
 	ldr r1, _0201FFDC ; =0x00001021
-	bl sub_020E3850
+	bl MATHi_CRC16InitTable
 	pop {r4, pc}
 	nop
 _0201FFD8: .word _021D15A4
 _0201FFDC: .word 0x00001021
-	thumb_func_end sub_0201FFB0
+	thumb_func_end GF_CRC16Init

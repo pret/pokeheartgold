@@ -27255,7 +27255,7 @@ ov112_021F3244: ; 0x021F3244
 	bl ov112_021F33D8
 	ldr r1, _021F3288 ; =0x000001F2
 	add r0, r4, #0
-	bl MATH_CalcCRC16CCITT
+	bl GF_CalcCRC16
 	ldr r1, _021F3288 ; =0x000001F2
 	strh r0, [r4, r1]
 	pop {r4, r5, r6, pc}
@@ -27286,7 +27286,7 @@ ov112_021F328C: ; 0x021F328C
 _021F32B6:
 	ldr r0, [sp, #4]
 	ldr r1, _021F3368 ; =0x000001F2
-	bl MATH_CalcCRC16CCITT
+	bl GF_CalcCRC16
 	ldr r2, _021F3368 ; =0x000001F2
 	ldr r1, [sp, #4]
 	ldrh r1, [r1, r2]

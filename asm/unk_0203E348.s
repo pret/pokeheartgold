@@ -1442,7 +1442,7 @@ sub_0203ED24: ; 0x0203ED24
 	ldr r0, [r4, #0x18]
 	bl Sav2_GameStats_get
 	mov r1, #0
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [r4, #0x10]
 	cmp r6, #1
 	bne _0203ED72
@@ -1487,7 +1487,7 @@ sub_0203ED80: ; 0x0203ED80
 	ldr r0, [r4, #0x18]
 	bl Sav2_GameStats_get
 	mov r1, #0
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [r4, #0x10]
 	mov r0, #3
 	strb r0, [r4]
@@ -2362,13 +2362,13 @@ _0203F472:
 	bl Sav2_GameStats_get
 	mov r1, #0x10
 	add r4, r0, #0
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	bl sub_02039998
 	cmp r0, #0
 	beq _0203F49A
 	add r0, r4, #0
 	mov r1, #0x72
-	bl sub_0202D0FC
+	bl GameStats_Inc
 _0203F49A:
 	mov r0, #0
 	add sp, #0x2c

@@ -39,7 +39,7 @@ GameStats_init: ; 0x0202CF24
 	strh r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0202CF60
+	bl GameStats_Release
 	pop {r4, pc}
 	.balign 4, 0
 _0202CF4C: .word 0x027FFC3C ; HW_VBLANK_COUNT_BUF
@@ -55,8 +55,8 @@ Sav2_GameStats_get: ; 0x0202CF54
 _0202CF5C: .word SavArray_get
 	thumb_func_end Sav2_GameStats_get
 
-	thumb_func_start sub_0202CF60
-sub_0202CF60: ; 0x0202CF60
+	thumb_func_start GameStats_Release
+GameStats_Release: ; 0x0202CF60
 	push {r4, lr}
 	add r4, r0, #0
 	cmp r1, #1
@@ -64,7 +64,7 @@ sub_0202CF60: ; 0x0202CF60
 	mov r1, #0x6d
 	add r0, #8
 	lsl r1, r1, #2
-	bl sub_0201FF28
+	bl Math_CalcArraySum
 	mov r3, #0x6f
 	lsl r3, r3, #2
 	strh r0, [r4, r3]
@@ -80,10 +80,10 @@ sub_0202CF60: ; 0x0202CF60
 	bl _MonEncryptSegment
 _0202CF8E:
 	pop {r4, pc}
-	thumb_func_end sub_0202CF60
+	thumb_func_end GameStats_Release
 
-	thumb_func_start sub_0202CF90
-sub_0202CF90: ; 0x0202CF90
+	thumb_func_start GameStats_Acquire
+GameStats_Acquire: ; 0x0202CF90
 	push {r4, lr}
 	add r4, r0, #0
 	cmp r1, #1
@@ -102,10 +102,10 @@ sub_0202CF90: ; 0x0202CF90
 	bl _MonDecryptSegment
 _0202CFB2:
 	pop {r4, pc}
-	thumb_func_end sub_0202CF90
+	thumb_func_end GameStats_Acquire
 
-	thumb_func_start sub_0202CFB4
-sub_0202CFB4: ; 0x0202CFB4
+	thumb_func_start GameStats_GetValue
+GameStats_GetValue: ; 0x0202CFB4
 	push {r3, lr}
 	cmp r1, #0x48
 	bge _0202CFC0
@@ -127,10 +127,10 @@ _0202CFD2:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202CFB4
+	thumb_func_end GameStats_GetValue
 
-	thumb_func_start sub_0202CFDC
-sub_0202CFDC: ; 0x0202CFDC
+	thumb_func_start GameStats_SetValue
+GameStats_SetValue: ; 0x0202CFDC
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -155,13 +155,13 @@ _0202D000:
 _0202D004:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CFB4
+	bl GameStats_GetValue
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202CFDC
+	thumb_func_end GameStats_SetValue
 
-	thumb_func_start sub_0202D010
-sub_0202D010: ; 0x0202D010
+	thumb_func_start GameStats_GetMaxValue
+GameStats_GetMaxValue: ; 0x0202D010
 	push {r3, lr}
 	cmp r0, #0x48
 	bge _0202D026
@@ -196,66 +196,66 @@ _0202D048: .word 0x3B9AC9FF
 _0202D04C: .word 0x000F423F
 _0202D050: .word 0x0000FFFF
 _0202D054: .word 0x0000270F
-	thumb_func_end sub_0202D010
+	thumb_func_end GameStats_GetMaxValue
 
-	thumb_func_start sub_0202D058
-sub_0202D058: ; 0x0202D058
+	thumb_func_start GameStats_GetStdInc
+GameStats_GetStdInc: ; 0x0202D058
 	lsl r1, r0, #1
 	ldr r0, _0202D060 ; =_020F67DC
 	ldrh r0, [r0, r1]
 	bx lr
 	.balign 4, 0
 _0202D060: .word _020F67DC
-	thumb_func_end sub_0202D058
+	thumb_func_end GameStats_GetStdInc
 
-	thumb_func_start sub_0202D064
-sub_0202D064: ; 0x0202D064
+	thumb_func_start GameStats_SetCapped
+GameStats_SetCapped: ; 0x0202D064
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
 	add r6, r2, #0
-	bl sub_0202D010
+	bl GameStats_GetMaxValue
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CF90
+	bl GameStats_Acquire
 	cmp r6, r7
 	bhs _0202D08C
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0202CFDC
+	bl GameStats_SetValue
 	b _0202D096
 _0202D08C:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl sub_0202CFDC
+	bl GameStats_SetValue
 _0202D096:
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CF60
+	bl GameStats_Release
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0202D064
+	thumb_func_end GameStats_SetCapped
 
-	thumb_func_start sub_0202D0A4
-sub_0202D0A4: ; 0x0202D0A4
+	thumb_func_start GameStats_UpdateBounded
+GameStats_UpdateBounded: ; 0x0202D0A4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
 	add r0, r5, #0
 	add r7, r2, #0
-	bl sub_0202D010
+	bl GameStats_GetMaxValue
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0202CF90
+	bl GameStats_Acquire
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0202CFB4
+	bl GameStats_GetValue
 	str r0, [sp]
 	cmp r7, r4
 	bls _0202D0CC
@@ -267,7 +267,7 @@ _0202D0CC:
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r7, #0
-	bl sub_0202CFDC
+	bl GameStats_SetValue
 	str r0, [sp]
 	b _0202D0F0
 _0202D0E0:
@@ -276,106 +276,106 @@ _0202D0E0:
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0202CFDC
+	bl GameStats_SetValue
 	str r0, [sp]
 _0202D0F0:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0202CF60
+	bl GameStats_Release
 	ldr r0, [sp]
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0202D0A4
+	thumb_func_end GameStats_UpdateBounded
 
-	thumb_func_start sub_0202D0FC
-sub_0202D0FC: ; 0x0202D0FC
+	thumb_func_start GameStats_Inc
+GameStats_Inc: ; 0x0202D0FC
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0202D010
+	bl GameStats_GetMaxValue
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CF90
+	bl GameStats_Acquire
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CFB4
+	bl GameStats_GetValue
 	add r2, r0, #1
 	cmp r2, r6
 	bhs _0202D12A
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CFDC
+	bl GameStats_SetValue
 	b _0202D134
 _0202D12A:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0202CFDC
+	bl GameStats_SetValue
 _0202D134:
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CF60
+	bl GameStats_Release
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202D0FC
+	thumb_func_end GameStats_Inc
 
-	thumb_func_start sub_0202D144
-sub_0202D144: ; 0x0202D144
+	thumb_func_start GameStats_Add
+GameStats_Add: ; 0x0202D144
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
 	add r7, r2, #0
-	bl sub_0202D010
+	bl GameStats_GetMaxValue
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CF90
+	bl GameStats_Acquire
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CFB4
+	bl GameStats_GetValue
 	add r2, r0, r7
 	cmp r2, r6
 	bhs _0202D174
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CFDC
+	bl GameStats_SetValue
 	b _0202D17E
 _0202D174:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0202CFDC
+	bl GameStats_SetValue
 _0202D17E:
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CF60
+	bl GameStats_Release
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0202D144
+	thumb_func_end GameStats_Add
 
-	thumb_func_start sub_0202D18C
-sub_0202D18C: ; 0x0202D18C
+	thumb_func_start GameStats_GetCapped
+GameStats_GetCapped: ; 0x0202D18C
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_0202D010
+	bl GameStats_GetMaxValue
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0202CF90
+	bl GameStats_Acquire
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0202CFB4
+	bl GameStats_GetValue
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0202CF60
+	bl GameStats_Release
 	cmp r6, r4
 	bhi _0202D1BA
 	add r4, r6, #0
@@ -383,10 +383,10 @@ _0202D1BA:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202D18C
+	thumb_func_end GameStats_GetCapped
 
-	thumb_func_start sub_0202D1C0
-sub_0202D1C0: ; 0x0202D1C0
+	thumb_func_start GameStats_AddSpecial
+GameStats_AddSpecial: ; 0x0202D1C0
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -396,38 +396,38 @@ sub_0202D1C0: ; 0x0202D1C0
 _0202D1CE:
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0202D058
+	bl GameStats_GetStdInc
 	ldr r2, _0202D204 ; =0x05F5E0FF
 	add r0, r4, r0
 	cmp r0, r2
 	bls _0202D1F0
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0202D064
+	bl GameStats_SetCapped
 	pop {r4, r5, r6, pc}
 _0202D1F0:
 	add r0, r6, #0
-	bl sub_0202D058
+	bl GameStats_GetStdInc
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0202D144
+	bl GameStats_Add
 	pop {r4, r5, r6, pc}
 	nop
 _0202D204: .word 0x05F5E0FF
-	thumb_func_end sub_0202D1C0
+	thumb_func_end GameStats_AddSpecial
 
-	thumb_func_start sub_0202D208
-sub_0202D208: ; 0x0202D208
-	ldr r3, _0202D210 ; =sub_0202D18C
+	thumb_func_start GameStats_GetStat2
+GameStats_GetStat2: ; 0x0202D208
+	ldr r3, _0202D210 ; =GameStats_GetCapped
 	mov r1, #2
 	bx r3
 	nop
-_0202D210: .word sub_0202D18C
-	thumb_func_end sub_0202D208
+_0202D210: .word GameStats_GetCapped
+	thumb_func_end GameStats_GetStat2
 
 	thumb_func_start GameStats_IncSpeciesCaught
 GameStats_IncSpeciesCaught: ; 0x0202D214
@@ -440,7 +440,7 @@ GameStats_IncSpeciesCaught: ; 0x0202D214
 	bne _0202D22C
 	add r0, r4, #0
 	mov r1, #0x15
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 _0202D22C:
 	pop {r4, pc}
 	.balign 4, 0

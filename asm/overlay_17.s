@@ -1089,7 +1089,7 @@ _022023F6:
 	bl ov16_02201610
 	ldr r0, [r4, #0x10]
 	mov r1, #5
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	add r0, r4, #0
 	mov r1, #2
 	add r0, #0x7b
@@ -2105,7 +2105,7 @@ ov17_02202B98: ; 0x02202B98
 	bl sub_020249D4
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov17_02202B98

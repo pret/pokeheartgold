@@ -2674,7 +2674,7 @@ ov45_0222B0F8: ; 0x0222B0F8
 	ldr r0, [r0]
 	bl Sav2_GameStats_get
 	mov r1, #0x2f
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	pop {r3, pc}
 	thumb_func_end ov45_0222B0F8
 
@@ -2684,7 +2684,7 @@ ov45_0222B108: ; 0x0222B108
 	ldr r0, [r0]
 	bl Sav2_GameStats_get
 	mov r1, #0x77
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	pop {r3, pc}
 	thumb_func_end ov45_0222B108
 

@@ -662,23 +662,23 @@ sub_020275BC: ; 0x020275BC
 
 	thumb_func_start sub_020275C4
 sub_020275C4: ; 0x020275C4
-	ldr r3, _020275CC ; =MATH_CalcCRC16CCITT
+	ldr r3, _020275CC ; =GF_CalcCRC16
 	add r0, r1, #0
 	add r1, r2, #0
 	bx r3
 	.balign 4, 0
-_020275CC: .word MATH_CalcCRC16CCITT
+_020275CC: .word GF_CalcCRC16
 	thumb_func_end sub_020275C4
 
 	thumb_func_start sub_020275D0
 sub_020275D0: ; 0x020275D0
-	ldr r3, _020275DC ; =MATH_CalcCRC16CCITT
+	ldr r3, _020275DC ; =GF_CalcCRC16
 	sub r2, #0x10
 	add r0, r1, #0
 	add r1, r2, #0
 	bx r3
 	nop
-_020275DC: .word MATH_CalcCRC16CCITT
+_020275DC: .word GF_CalcCRC16
 	thumb_func_end sub_020275D0
 
 	thumb_func_start sub_020275E0
@@ -1391,7 +1391,7 @@ _02027B14:
 	bl SavArray_get
 	ldr r1, _02027B64 ; =0x00023018
 	ldr r1, [r4, r1]
-	bl MATH_CalcCRC16CCITT
+	bl GF_CalcCRC16
 	ldr r1, _02027B68 ; =0x00023020
 	add r6, r6, #1
 	strh r0, [r4, r1]
@@ -1406,7 +1406,7 @@ _02027B14:
 	add r1, r4, #0
 	mul r1, r0
 	add r0, r7, r6
-	bl MATH_CalcCRC16CCITT
+	bl GF_CalcCRC16
 	ldr r1, _02027B70 ; =0x00023300
 	strh r0, [r5, r1]
 	add r0, r5, #0
@@ -2118,7 +2118,7 @@ CreateChunkFooter: ; 0x02028070
 	add r0, r1, #0
 	add r1, r3, #0
 	strh r2, [r4, #0xc]
-	bl MATH_CalcCRC16CCITT
+	bl GF_CalcCRC16
 	strh r0, [r4, #0xe]
 	pop {r3, r4, r5, pc}
 	nop
@@ -2152,7 +2152,7 @@ _020280C0:
 	add r3, #0xe
 	add r0, r1, #0
 	add r1, r3, #0
-	bl MATH_CalcCRC16CCITT
+	bl GF_CalcCRC16
 	ldrh r1, [r4, #0xe]
 	cmp r1, r0
 	bne _020280D4
@@ -3201,7 +3201,7 @@ sub_02028900: ; 0x02028900
 	sub r5, r0, #4
 	add r0, r4, #0
 	add r1, r5, #0
-	bl MATH_CalcCRC16CCITT
+	bl GF_CalcCRC16
 	lsr r1, r5, #0x1f
 	add r1, r5, r1
 	asr r1, r1, #1
@@ -3231,7 +3231,7 @@ sub_0202893C: ; 0x0202893C
 	sub r5, r0, #4
 	add r0, r4, #0
 	add r1, r5, #0
-	bl MATH_CalcCRC16CCITT
+	bl GF_CalcCRC16
 	lsr r1, r5, #0x1f
 	add r1, r5, r1
 	asr r1, r1, #1
@@ -3281,7 +3281,7 @@ _0202898A:
 	mov r1, #0x29
 	bl SavArray_get
 	add r1, r7, #0
-	bl MATH_CalcCRC16CCITT
+	bl GF_CalcCRC16
 	ldr r1, _02028AA8 ; =0x00023302
 	strh r0, [r6, r1]
 	add r0, r1, #2

@@ -6854,7 +6854,7 @@ _0221F6BC:
 	bl sub_02074708
 	ldr r0, [r5, #0x1c]
 	mov r1, #0x14
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r0, [sp, #0xc]
 	bl FreeToHeap
 	add r0, r4, #0

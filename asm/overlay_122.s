@@ -5252,7 +5252,7 @@ _021E80A4:
 	ldr r0, [r5, #0x10]
 	bl Sav2_GameStats_get
 	mov r1, #6
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E820C: .word 0x04000304

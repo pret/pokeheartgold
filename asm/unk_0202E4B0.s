@@ -202,13 +202,13 @@ _0202E5BA:
 _0202E5C8:
 	add r0, r4, #0
 	mov r1, #0x10
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #8]
 	cmp r0, #0
 	beq _0202E5E6
 	add r0, r4, #0
 	mov r1, #0x1e
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	ldr r1, [sp, #8]
 	bl _u32_div_f
 	str r0, [sp, #8]
@@ -219,11 +219,11 @@ _0202E5E6:
 _0202E5EC:
 	add r0, r4, #0
 	mov r1, #0x5d
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #0x5e
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	ldr r1, [sp, #0xc]
 	add r0, r1, r0
 	str r0, [r5]
@@ -231,11 +231,11 @@ _0202E5EC:
 _0202E606:
 	add r0, r4, #0
 	mov r1, #0x5b
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #0x5c
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	ldr r1, [sp, #0x10]
 	add r1, r1, r0
 	beq _0202E62C
@@ -262,7 +262,7 @@ _0202E630:
 _0202E646:
 	ldr r1, [r7]
 	add r0, r4, #0
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	str r0, [r5]
 _0202E650:
 	add r6, r6, #1

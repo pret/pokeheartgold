@@ -1743,13 +1743,13 @@ ov85_021E6594: ; 0x021E6594
 	ldr r0, [r0]
 	mov r1, #0x78
 	ldr r0, [r0, #0x28]
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	add r0, r4, #0
 	add r0, #0xcc
 	ldr r0, [r0]
 	mov r1, #0x22
 	ldr r0, [r0, #0x28]
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	add r0, r4, #0
 	mov r1, #0xb
 	bl ov85_021E7194
@@ -8381,7 +8381,7 @@ ov85_021E9834: ; 0x021E9834
 	ldr r0, [r5, #0xc]
 	mov r1, #0x13
 	ldr r0, [r0, #0x28]
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	mov r0, #0x3b
 	lsl r0, r0, #4
 	add r0, r5, r0

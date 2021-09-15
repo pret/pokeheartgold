@@ -336,7 +336,7 @@ _0201A2F4:
 	lsl r1, r1, #0xa
 	bl sub_020DC9DC
 	mov r0, #0
-	bl sub_0201FFB0
+	bl GF_CRC16Init
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0201A324: .word 0x04000304

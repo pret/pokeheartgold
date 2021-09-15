@@ -16671,7 +16671,7 @@ _0223FDE2:
 	ldr r0, [r4]
 	mov r1, #0x2d
 	ldr r0, [r0, #0x28]
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	mov r0, #0x1e
 	str r0, [r4, #0x2c]
 	b _0223FE36
@@ -17625,11 +17625,11 @@ ov70_02240500: ; 0x02240500
 	add r4, r1, #0
 	ldr r0, [r0, #0x28]
 	mov r1, #0x18
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	ldr r0, [r5]
 	mov r1, #0x19
 	ldr r0, [r0, #0x28]
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	add r0, r4, #0
 	mov r1, #0xc
 	mov r2, #0

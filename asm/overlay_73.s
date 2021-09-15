@@ -2341,7 +2341,7 @@ ov73_021E6C20: ; 0x021E6C20
 	ldr r0, [r5, #8]
 	mov r1, #0x13
 	ldr r0, [r0, #0xc]
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	mov r0, #0xdd
 	lsl r0, r0, #2
 	add r0, r5, r0

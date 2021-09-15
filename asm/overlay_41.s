@@ -2479,7 +2479,7 @@ ov41_02247150: ; 0x02247150
 	bne _02247182
 	ldr r0, [r5, #0x10]
 	mov r1, #8
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	mov r1, #0xfd
 	lsl r1, r1, #2
 	ldr r0, [r5, #4]

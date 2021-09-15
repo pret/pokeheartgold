@@ -6996,7 +6996,7 @@ ov80_0222D168: ; 0x0222D168
 	bl Sav2_GameStats_get
 	mov r1, #0x45
 	add r2, r5, #0
-	bl sub_0202D144
+	bl GameStats_Add
 	ldr r0, [r4, #8]
 	bl sub_0202D918
 	add r1, r5, #0
@@ -7022,7 +7022,7 @@ ov80_0222D1A0: ; 0x0222D1A0
 	bl Sav2_GameStats_get
 	mov r1, #0x46
 	add r2, r5, #0
-	bl sub_0202D144
+	bl GameStats_Add
 	ldr r0, [r4, #8]
 	bl sub_0202D918
 	add r1, r5, #0
@@ -7138,7 +7138,7 @@ ov80_0222D284: ; 0x0222D284
 	bl sub_02096808
 	ldr r0, [r0, #8]
 	bl SavArray_PlayerParty_get
-	bl sub_02090C1C
+	bl HealParty
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ov80_0222D284
@@ -8951,7 +8951,7 @@ ov80_0222E078: ; 0x0222E078
 	ldr r0, [r0, #8]
 	bl Sav2_GameStats_get
 	add r1, r4, #0
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -8973,7 +8973,7 @@ ov80_0222E09C: ; 0x0222E09C
 	bl Sav2_GameStats_get
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0202D144
+	bl GameStats_Add
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov80_0222E09C
@@ -8990,7 +8990,7 @@ ov80_0222E0C8: ; 0x0222E0C8
 	ldr r0, [r0, #8]
 	bl Sav2_GameStats_get
 	add r1, r4, #0
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -14293,7 +14293,7 @@ ov80_022309F8: ; 0x022309F8
 	ldr r0, [r4, r0]
 	bl Sav2_GameStats_get
 	mov r1, #0x41
-	bl sub_0202D0FC
+	bl GameStats_Inc
 _02230A4C:
 	pop {r4, pc}
 	nop
@@ -19321,7 +19321,7 @@ _0223326A:
 	bl Sav2_GameStats_get
 	mov r1, #0x42
 	add r2, r4, #0
-	bl sub_0202D144
+	bl GameStats_Add
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -23807,7 +23807,7 @@ _022354D8:
 	bl Sav2_GameStats_get
 	ldrh r2, [r4]
 	mov r1, #0x45
-	bl sub_0202D144
+	bl GameStats_Add
 	b _0223557E
 _022354EE:
 	ldr r1, [sp]
@@ -25173,7 +25173,7 @@ _02235F10:
 _02235F44:
 	ldr r0, [r7, #8]
 	bl SavArray_PlayerParty_get
-	bl sub_02090C1C
+	bl HealParty
 	add r0, r4, #0
 	bl sub_02096910
 	ldr r1, _02235F60 ; =0x000008D4
@@ -27336,10 +27336,10 @@ ov80_02236F24: ; 0x02236F24
 	str r0, [sp, #0xc]
 	ldr r0, _022370EC ; =0x000004D4
 	ldr r0, [r5, r0]
-	bl sub_02090C1C
+	bl HealParty
 	ldr r0, _022370F0 ; =0x000004D8
 	ldr r0, [r5, r0]
-	bl sub_02090C1C
+	bl HealParty
 	ldrb r0, [r5, #4]
 	bl ov80_022370F4
 	add r1, r0, #0
@@ -28219,7 +28219,7 @@ ov80_022375D0: ; 0x022375D0
 	ldr r0, [r5, r0]
 	bl SavArray_PlayerParty_get
 	str r0, [sp, #0x1c]
-	bl sub_02090C1C
+	bl HealParty
 	ldrb r0, [r5, #4]
 	bl ov80_02237850
 	add r1, r0, #0
@@ -28998,7 +28998,7 @@ ov80_02237B8C: ; 0x02237B8C
 	bl ov80_02237B58
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x2c]
-	bl sub_02090C1C
+	bl HealParty
 	ldrb r0, [r5, #0x10]
 	bl ov80_02237D5C
 	add r1, r0, #0
@@ -29977,9 +29977,9 @@ _0223832A:
 	bl FreeToHeap
 _02238330:
 	ldr r0, [r7, #0x70]
-	bl sub_02090C1C
+	bl HealParty
 	ldr r0, [r7, #0x74]
-	bl sub_02090C1C
+	bl HealParty
 	add r0, r4, #0
 	add sp, #0x50
 	pop {r3, r4, r5, r6, r7, pc}

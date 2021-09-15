@@ -77,7 +77,7 @@ _0223792E:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x15
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r0, [r5]
 	cmp r0, #0x8f
 	beq _0223796E
@@ -89,7 +89,7 @@ _02237962:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x1a
-	bl sub_0202D0FC
+	bl GameStats_Inc
 _0223796E:
 	mov r0, #2
 	str r0, [r4]
@@ -5224,14 +5224,14 @@ _0223A464:
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #0x16
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	b _0223A4CE
 _0223A47A:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #0x1b
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	b _0223A4CE
 _0223A488:
 	bl sub_02039998
@@ -5241,14 +5241,14 @@ _0223A488:
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #0x17
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	b _0223A4CE
 _0223A49E:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #0x1c
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	b _0223A4CE
 _0223A4AC:
 	bl sub_02039998
@@ -5258,14 +5258,14 @@ _0223A4AC:
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #0x18
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	b _0223A4CE
 _0223A4C2:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #0x1d
-	bl sub_0202D0FC
+	bl GameStats_Inc
 _0223A4CE:
 	ldr r1, [r7]
 	mov r0, #8
@@ -8411,7 +8411,7 @@ ov12_0223BB28: ; 0x0223BB28
 	mov r2, #0x87
 	lsl r2, r2, #2
 	ldr r0, [r0, r2]
-	bl sub_0202D0FC
+	bl GameStats_Inc
 _0223BB3E:
 	pop {r3, pc}
 	.balign 4, 0
@@ -8430,7 +8430,7 @@ ov12_0223BB44: ; 0x0223BB44
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #0x15
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 _0223BB5C:
 	pop {r3, pc}
 	nop
