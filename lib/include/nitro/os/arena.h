@@ -1,7 +1,7 @@
 #ifndef NITRO_OS_ARENA_H
 #define NITRO_OS_ARENA_H
 
-#include <nitro/os/arena_shared.h>
+#include <nitro/os/common/arena_shared.h>
 
 void OS_InitArena(void);
 void OS_InitArenaHiAndLo(OSArenaId id);

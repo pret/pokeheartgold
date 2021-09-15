@@ -2,7 +2,7 @@
 #define NITRO_OS_MUTEX_H
 
 #include <nitro/os/context.h>
-#include <nitro/os/mutex_shared.h>
+#include <nitro/os/common/mutex_shared.h>
 
 void OSi_DequeueItem(OSThread * thread, OSMutex * mutex);
 void OSi_EnqueueTail(OSThread * thread, OSMutex * mutex);

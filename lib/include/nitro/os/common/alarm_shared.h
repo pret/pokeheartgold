@@ -14,8 +14,8 @@
 #define NITRO_OS_ALARM_SHARED_H
 
 #include <nitro/types.h>
-#include <nitro/os/tick_shared.h>
-#include <nitro/os/thread_shared.h>
+#include <nitro/os/common/tick_shared.h>
+#include <nitro/os/common/thread_shared.h>
 
 typedef void (*OSAlarmHandler) (void *);
 

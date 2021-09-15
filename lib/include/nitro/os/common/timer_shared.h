@@ -1,7 +1,7 @@
 #ifndef NITRO_OS_TIMER_SHARED_H
 #define NITRO_OS_TIMER_SHARED_H
 
-#include "nitro/consts_shared.h"
+#include <nitro/consts_shared.h>
 
 typedef enum
 {

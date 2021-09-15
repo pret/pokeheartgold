@@ -13,7 +13,7 @@
 #ifndef NITRO_OS_INTERRUPT_SHARED_H
 #define NITRO_OS_INTERRUPT_SHARED_H
 
-#include "nitro/types.h"
+#include <nitro/types.h>
 
 typedef u32 OSIrqMask;
 

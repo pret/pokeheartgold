@@ -4,7 +4,7 @@
 #include <nitro/os/thread.h>
 #include <nitro/os/context.h>
 #include <nitro/types.h>
-#include <nitro/os/message_shared.h>
+#include <nitro/os/common/message_shared.h>
 
 void OS_InitMessageQueue(OSMessageQueue *mq, OSMessage *msgArray, s32 msgCount);
 BOOL OS_SendMessage(OSMessageQueue *mq, OSMessage msg, s32 flags);

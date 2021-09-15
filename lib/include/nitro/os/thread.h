@@ -2,7 +2,7 @@
 #define NITRO_OS_THREAD_H_
 
 #include <nitro/os/context.h>
-#include <nitro/os/thread_shared.h>
+#include <nitro/os/common/thread_shared.h>
 
 OSMutex *OSi_RemoveMutexLinkFromQueue(OSMutexQueue *queue);
 void OS_InitThread(void);

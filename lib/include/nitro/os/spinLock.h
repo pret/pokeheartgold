@@ -2,7 +2,7 @@
 #define NITRO_OS_SPINLOCK_H
 
 #include "consts.h"
-#include <nitro/os/spinLock_shared.h>
+#include <nitro/os/common/spinLock_shared.h>
 #include "syscall.h"
 
 void OS_InitLock(void);

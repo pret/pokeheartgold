@@ -13,6 +13,8 @@
 #ifndef NITRO_OS_ALLOC_SHARED_H
 #define NITRO_OS_ALLOC_SHARED_H
 
+#include <nitro/types.h>
+
 typedef s32 OSHeapHandle;
 
 typedef struct Cell Cell;
