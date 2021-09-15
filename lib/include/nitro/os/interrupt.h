@@ -1,8 +1,8 @@
 #ifndef NITRO_SUB_OS_INTERRUPT_H
 #define NITRO_SUB_OS_INTERRUPT_H
 
-#include "nitro/OS_interrupt_shared.h"
-#include "consts.h"
+#include <nitro/os/interrupt_shared.h>
+#include <nitro/hw/consts.h>
 
 extern OSIrqFunction OS_IRQTable[];
 extern OSIrqCallbackInfo OSi_IrqCallbackInfo[9];

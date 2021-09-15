@@ -1,14 +1,14 @@
-#ifndef NITRO_SUB_OS_MESSAGE_H
-#define NITRO_SUB_OS_MESSAGE_H
+#ifndef NITRO_OS_MESSAGE_H
+#define NITRO_OS_MESSAGE_H
 
-#include "OS_thread.h"
-#include "OS_context.h"
-#include "nitro/types.h"
-#include "nitro/OS_message_shared.h"
+#include <nitro/os/thread.h>
+#include <nitro/os/context.h>
+#include <nitro/types.h>
+#include <nitro/os/message_shared.h>
 
 void OS_InitMessageQueue(OSMessageQueue *mq, OSMessage *msgArray, s32 msgCount);
 BOOL OS_SendMessage(OSMessageQueue *mq, OSMessage msg, s32 flags);
 BOOL OS_ReceiveMessage(OSMessageQueue *mq, OSMessage *msg, s32 flags);
 BOOL OS_ReadMessage(OSMessageQueue *mq, OSMessage *msg, s32 flags);
 
-#endif //NITRO_SUB_OS_MESSAGE_H
+#endif //NITRO_OS_MESSAGE_H

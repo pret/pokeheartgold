@@ -1,8 +1,6 @@
-#include "OS_context.h"
-#include "consts.h"
-#include "function_target.h"
+#include <nitro/hw/consts.h>
 
-ARM_FUNC asm void OS_InitContext(register OSContext *context, register u32 newpc, register u32 newsp)
+asm void OS_InitContext(register OSContext *context, register u32 newpc, register u32 newsp)
 {
     add newpc, newpc, #4
     str newpc, [context, #0x40]
@@ -38,7 +36,7 @@ ARM_FUNC asm void OS_InitContext(register OSContext *context, register u32 newpc
     bx lr
 }
 
-ARM_FUNC asm BOOL OS_SaveContext(register OSContext *context)
+asm BOOL OS_SaveContext(register OSContext *context)
 {
     add r1, r0, #0
 
@@ -59,7 +57,7 @@ ARM_FUNC asm BOOL OS_SaveContext(register OSContext *context)
     bx lr
 }
 
-ARM_FUNC asm void OS_LoadContext(register OSContext* context)
+asm void OS_LoadContext(register OSContext* context)
 {
     mrs r1, cpsr
     bic r1, r1, #HW_PSR_CPU_MODE_MASK

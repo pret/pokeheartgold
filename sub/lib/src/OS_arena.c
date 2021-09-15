@@ -1,6 +1,5 @@
-#include "function_target.h"
-#include "consts.h"
-#include "OS_arena.h"
+#include <nitro/hw/mmap.h>
+#include <nitro/os/arena.h>
 
 static BOOL OSi_Initialized = FALSE;
 
@@ -9,7 +8,7 @@ extern void SDK_WRAM_ARENA_LO(void);
 extern void SDK_IRQ_STACKSIZE(void);
 extern void SDK_SYS_STACKSIZE(void);
 
-ARM_FUNC void OS_InitArena(void)
+void OS_InitArena(void)
 {
     if (OSi_Initialized)
     {
@@ -22,33 +21,33 @@ ARM_FUNC void OS_InitArena(void)
     OS_InitArenaHiAndLo(OS_ARENA_WRAM_SUBPRIV);
 }
 
-ARM_FUNC static inline void OS_InitArenaHi(OSArenaId id)
+static inline void OS_InitArenaHi(OSArenaId id)
 {
     OS_SetArenaHi(id, OS_GetInitArenaHi((OSArenaId)id));
 }
 
-ARM_FUNC static inline void OS_InitArenaLo(OSArenaId id)
+static inline void OS_InitArenaLo(OSArenaId id)
 {
     OS_SetArenaLo(id, OS_GetInitArenaLo(id));
 }
 
-ARM_FUNC void OS_InitArenaHiAndLo(OSArenaId id)
+void OS_InitArenaHiAndLo(OSArenaId id)
 {
     OS_InitArenaHi(id);
     OS_InitArenaLo(id);
 }
 
-ARM_FUNC void* OS_GetArenaHi(OSArenaId id)
+void* OS_GetArenaHi(OSArenaId id)
 {
     return OSi_GetArenaInfo().hi[id];
 }
 
-ARM_FUNC void* OS_GetArenaLo(OSArenaId id)
+void* OS_GetArenaLo(OSArenaId id)
 {
     return OSi_GetArenaInfo().lo[id];
 }
 
-ARM_FUNC void* OS_GetInitArenaHi(OSArenaId id)
+void* OS_GetInitArenaHi(OSArenaId id)
 {
     switch (id) {
         case OS_ARENA_MAIN_SUBPRIV:
@@ -85,7 +84,7 @@ ARM_FUNC void* OS_GetInitArenaHi(OSArenaId id)
     }
 }
 
-ARM_FUNC void* OS_GetInitArenaLo(OSArenaId id) {
+void* OS_GetInitArenaLo(OSArenaId id) {
     switch (id) {
         case OS_ARENA_MAIN_SUBPRIV:
             return (void *)((u32)0x027F9EF0); //todo SDK_SUBPRIV_ARENA_LO
@@ -112,10 +111,10 @@ ARM_FUNC void* OS_GetInitArenaLo(OSArenaId id) {
     }
 }
 
-ARM_FUNC inline void OS_SetArenaHi(OSArenaId id, void* newHi) {
+inline void OS_SetArenaHi(OSArenaId id, void* newHi) {
     OSi_GetArenaInfo().hi[id] = newHi;
 }
 
-ARM_FUNC void OS_SetArenaLo(OSArenaId id, void* newLo) {
+void OS_SetArenaLo(OSArenaId id, void* newLo) {
     OSi_GetArenaInfo().lo[id] = newLo;
 }

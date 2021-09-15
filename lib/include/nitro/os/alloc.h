@@ -1,8 +1,8 @@
-#ifndef NITRO_SUB_OS_ALLOC_H
-#define NITRO_SUB_OS_ALLOC_H
+#ifndef NITRO_OS_ALLOC_H
+#define NITRO_OS_ALLOC_H
 
-#include "nitro/OS_alloc_shared.h"
-#include "OS_arena.h"
+#include <nitro/os/alloc_shared.h>
+#include <nitro/os/arena.h>
 
 Cell *DLAddFront(Cell* list, Cell* cell);
 Cell *DLExtract(Cell* list, Cell* cell);
@@ -14,4 +14,4 @@ void *OS_InitAlloc(OSArenaId id, void *arenaStart, void *arenaEnd, s32 maxHeaps)
 OSHeapHandle OS_CreateHeap(OSArenaId id, void *start, void *end);
 s32 OS_CheckHeap(OSArenaId id, OSHeapHandle heap);
 
-#endif //NITRO_SUB_OS_ALLOC_H
+#endif //NITRO_OS_ALLOC_H

@@ -11,7 +11,9 @@ typedef struct OSContext
     u32 lr;
     u32 pc_plus4;
     u32 sp_svc;
+#ifdef ARM9
     CPContext cp_context;
+#endif
 } OSContext;
 
 void OS_InitContext(register OSContext *context, register u32 newpc, register u32 newsp);

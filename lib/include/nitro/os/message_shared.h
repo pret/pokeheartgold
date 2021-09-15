@@ -13,8 +13,8 @@
 #ifndef NITRO_OS_MESSAGE_SHARED_H
 #define NITRO_OS_MESSAGE_SHARED_H
 
-#include "nitro/types.h"
-#include "nitro/OS_thread_shared.h"
+#include <nitro/types.h>
+#include <nitro/os/thread_shared.h>
 
 typedef void *OSMessage;
 

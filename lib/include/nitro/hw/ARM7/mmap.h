@@ -1,7 +1,5 @@
-#ifndef NITRO_SUB_MMAP_H
-#define NITRO_SUB_MMAP_H
-
-#include "nitro/mmap_shared.h"
+#ifndef NITRO_HW_ARM7_MMAP_H
+#define NITRO_HW_ARM7_MMAP_H
 
 #define HW_WRAM_END                 0x03800000
 #define HW_PRV_WRAM                 0x03800000
@@ -27,4 +25,4 @@
 #define HW_VBLANK_COUNT_BUF         (HW_MAIN_MEM + 0x007ffc3c)
 #define HW_LOCK_ID_FLAG_SUB         (HW_MAIN_MEM + 0x007fffb8)
 
-#endif //NITRO_SUB_MMAP_H
+#endif //NITRO_HW_ARM7_MMAP_H

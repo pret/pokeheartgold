@@ -1,8 +1,8 @@
-#ifndef NITRO_SUB_OS_SPINLOCK_H
-#define NITRO_SUB_OS_SPINLOCK_H
+#ifndef NITRO_OS_SPINLOCK_H
+#define NITRO_OS_SPINLOCK_H
 
 #include "consts.h"
-#include "nitro/OS_spinLock_shared.h"
+#include <nitro/os/spinLock_shared.h>
 #include "syscall.h"
 
 void OS_InitLock(void);
@@ -25,4 +25,4 @@ static inline void OSi_WaitByLoop(void)
     FUN_037F8CB4(0x1000 / 4);
 }
 
-#endif //NITRO_SUB_OS_SPINLOCK_H
+#endif //NITRO_OS_SPINLOCK_H

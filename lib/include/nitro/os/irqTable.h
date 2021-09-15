@@ -1,8 +1,8 @@
-#ifndef NITRO_SUB_OS_IRQTABLE_H
-#define NITRO_SUB_OS_IRQTABLE_H
+#ifndef NITRO_OS_IRQTABLE_H
+#define NITRO_OS_IRQTABLE_H
 
-#include "consts.h"
-#include "OS_interrupt.h"
+#include <nitro/hw/mmap.h>
+#include <nitro/os/interrupt.h>
 
 void OS_IrqDummy(void);
 void OSi_IrqCallback(s32 index);
@@ -21,4 +21,4 @@ static inline void OS_SetIrqCheckFlag(OSIrqMask intr)
     *(vu32 *)HW_INTR_CHECK_BUF |= (u32)intr;
 }
 
-#endif //NITRO_SUB_OS_IRQTABLE_H
+#endif //NITRO_OS_IRQTABLE_H

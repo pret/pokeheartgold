@@ -13,8 +13,8 @@
 #ifndef NITRO_OS_MUTEX_SHARED_H
 #define NITRO_OS_MUTEX_SHARED_H
 
-#include "nitro/OS_thread_shared.h"
-#include "nitro/types.h"
+#include <nitro/os/thread_shared.h>
+#include <nitro/types.h>
 
 struct OSMutex {
     OSThreadQueue queue;

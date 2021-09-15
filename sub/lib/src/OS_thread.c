@@ -1,13 +1,12 @@
-#include "OS_thread.h"
-#include "function_target.h"
-#include "OS_system.h"
-#include "consts.h"
-#include "OS_terminate_proc.h"
-#include "OS_mutex.h"
-#include "OS_alarm.h"
-#include "OS_context.h"
-#include "nitro/OS_systemWork_shared.h"
-#include "MI_memory.h"
+#include <nitro/os/thread.h>
+#include <nitro/os/system.h>
+#include <nitro/hw/consts.h>
+#include <nitro/os/terminate_proc.h>
+#include <nitro/os/mutex.h>
+#include <nitro/os/alarm.h>
+#include <nitro/os/context.h>
+#include <nitro/os/systemWork.h>
+#include <nitro/mi/memory.h>
 
 extern void SDK_SYS_STACKSIZE(void);
 extern void SDK_IRQ_STACKSIZE(void);
@@ -38,7 +37,7 @@ static void OSi_ExitThread(void *arg);
 void OSi_ExitThread_Destroy(void);
 static void OSi_SleepAlarmCallback(void *arg);
 
-ARM_FUNC static inline s32 OSi_GetUnusedThreadId(void)
+static inline s32 OSi_GetUnusedThreadId(void)
 {
     osthread_feng_shui_1;
     osthread_feng_shui_2;
@@ -46,19 +45,19 @@ ARM_FUNC static inline s32 OSi_GetUnusedThreadId(void)
     return ++OSi_ThreadIdCount;
 }
 
-ARM_FUNC static inline void OS_RescheduleThread(void)
+static inline void OS_RescheduleThread(void)
 {
     OSIntrMode enabled = OS_DisableInterrupts();
     OSi_RescheduleThread();
     (void)OS_RestoreInterrupts(enabled);
 }
 
-ARM_FUNC inline void OS_SetThreadDestructor(OSThread *thread, OSThreadDestructor dtor)
+inline void OS_SetThreadDestructor(OSThread *thread, OSThreadDestructor dtor)
 {
     thread->destructor = dtor;
 }
 
-ARM_FUNC void OSi_InsertLinkToQueue(OSThreadQueue *queue, OSThread *thread)
+void OSi_InsertLinkToQueue(OSThreadQueue *queue, OSThread *thread)
 {
     OSThread *next = queue->head;
 
@@ -129,7 +128,7 @@ static OSThread *OSi_RemoveLinkFromQueue(OSThreadQueue *queue)
     return thread;
 }
 
-ARM_FUNC OSThread *OSi_RemoveSpecifiedLinkFromQueue(OSThreadQueue *queue, OSThread *thread)
+OSThread *OSi_RemoveSpecifiedLinkFromQueue(OSThreadQueue *queue, OSThread *thread)
 {
     OSThread *queueHead = queue->head;
 
@@ -168,7 +167,7 @@ ARM_FUNC OSThread *OSi_RemoveSpecifiedLinkFromQueue(OSThreadQueue *queue, OSThre
     return queueHead;
 }
 
-ARM_FUNC OSMutex *OSi_RemoveMutexLinkFromQueue(OSMutexQueue *queue)
+OSMutex *OSi_RemoveMutexLinkFromQueue(OSMutexQueue *queue)
 {
     OSMutex *mutexHead = queue->head;
 
@@ -191,7 +190,7 @@ ARM_FUNC OSMutex *OSi_RemoveMutexLinkFromQueue(OSMutexQueue *queue)
     return mutexHead;
 }
 
-ARM_FUNC static void OSi_InsertThreadToList(OSThread *thread)
+static void OSi_InsertThreadToList(OSThread *thread)
 {
     OSThread *t = OSi_ThreadInfo.list;
     OSThread *pre = NULL;
@@ -214,7 +213,7 @@ ARM_FUNC static void OSi_InsertThreadToList(OSThread *thread)
     }
 }
 
-ARM_FUNC void OSi_RemoveThreadFromList(OSThread *thread)
+void OSi_RemoveThreadFromList(OSThread *thread)
 {
     OSThread *t = OSi_ThreadInfo.list;
     OSThread *pre = NULL;
@@ -235,7 +234,7 @@ ARM_FUNC void OSi_RemoveThreadFromList(OSThread *thread)
     }
 }
 
-ARM_FUNC static void OSi_RescheduleThread(void)
+static void OSi_RescheduleThread(void)
 {
     if (OSi_RescheduleCount <= 0)
     {
@@ -273,7 +272,7 @@ ARM_FUNC static void OSi_RescheduleThread(void)
     }
 }
 
-ARM_FUNC void OS_InitThread(void)
+void OS_InitThread(void)
 {
     if (OSi_IsThreadInitialized)
         return;
@@ -314,7 +313,7 @@ ARM_FUNC void OS_InitThread(void)
     (void)OS_SetSwitchThreadCallback(NULL);
 }
 
-ARM_FUNC void OS_CreateThread(OSThread *thread, void (*func) (void *), void *arg, void *stack, u32 stackSize, u32 prio)
+void OS_CreateThread(OSThread *thread, void (*func) (void *), void *arg, void *stack, u32 stackSize, u32 prio)
 {
     OSIntrMode enable = OS_DisableInterrupts();
 
@@ -360,13 +359,13 @@ ARM_FUNC void OS_CreateThread(OSThread *thread, void (*func) (void *), void *arg
     (void)OS_RestoreInterrupts(enable);
 }
 
-ARM_FUNC void OS_ExitThread(void)
+void OS_ExitThread(void)
 {
     (void)OS_DisableInterrupts();
     OSi_ExitThread_ArgSpecified(OS_GetCurrentThread(), 0);
 }
 
-ARM_FUNC void OSi_ExitThread_ArgSpecified(OSThread *thread, void *arg)
+void OSi_ExitThread_ArgSpecified(OSThread *thread, void *arg)
 {
     if (OSi_StackForDestructor)
     {
@@ -382,7 +381,7 @@ ARM_FUNC void OSi_ExitThread_ArgSpecified(OSThread *thread, void *arg)
     }
 }
 
-ARM_FUNC static void OSi_ExitThread(void *arg)
+static void OSi_ExitThread(void *arg)
 {
     OSThread *currentThread = OSi_GetCurrentThread();
     OSThreadDestructor destructor = currentThread->destructor;
@@ -397,7 +396,7 @@ ARM_FUNC static void OSi_ExitThread(void *arg)
     OSi_ExitThread_Destroy();
 }
 
-ARM_FUNC void OSi_ExitThread_Destroy(void)
+void OSi_ExitThread_Destroy(void)
 {
     OSThread *currentThread = OSi_GetCurrentThread();
     (void)OS_DisableScheduler();
@@ -422,7 +421,7 @@ ARM_FUNC void OSi_ExitThread_Destroy(void)
     OS_Terminate();
 }
 
-ARM_FUNC void OS_JoinThread(OSThread *thread)
+void OS_JoinThread(OSThread *thread)
 {
     OSIntrMode enabled = OS_DisableInterrupts();
 
@@ -434,12 +433,12 @@ ARM_FUNC void OS_JoinThread(OSThread *thread)
     (void)OS_RestoreInterrupts(enabled);
 }
 
-ARM_FUNC BOOL OS_IsThreadTerminated(const OSThread *thread)
+BOOL OS_IsThreadTerminated(const OSThread *thread)
 {
     return (thread->state == OS_THREAD_STATE_TERMINATED) ? TRUE : FALSE;
 }
 
-ARM_FUNC void OS_SleepThread(OSThreadQueue *queue)
+void OS_SleepThread(OSThreadQueue *queue)
 {
     OSIntrMode enabled = OS_DisableInterrupts();
     OSThread *currentThread = OSi_GetCurrentThread();
@@ -456,7 +455,7 @@ ARM_FUNC void OS_SleepThread(OSThreadQueue *queue)
     (void)OS_RestoreInterrupts(enabled);
 }
 
-ARM_FUNC void OS_WakeupThread(OSThreadQueue *queue)
+void OS_WakeupThread(OSThreadQueue *queue)
 {
     OSIntrMode enabled = OS_DisableInterrupts();
 
@@ -478,7 +477,7 @@ ARM_FUNC void OS_WakeupThread(OSThreadQueue *queue)
     (void)OS_RestoreInterrupts(enabled);
 }
 
-ARM_FUNC void OS_WakeupThreadDirect(OSThread *thread)
+void OS_WakeupThreadDirect(OSThread *thread)
 {
     OSIntrMode enabled = OS_DisableInterrupts();
 
@@ -488,7 +487,7 @@ ARM_FUNC void OS_WakeupThreadDirect(OSThread *thread)
     (void)OS_RestoreInterrupts(enabled);
 }
 
-ARM_FUNC OSThread *OS_SelectThread(void)
+OSThread *OS_SelectThread(void)
 {
     OSThread *thread = OSi_ThreadInfo.list;
 
@@ -500,7 +499,7 @@ ARM_FUNC OSThread *OS_SelectThread(void)
     return thread;
 }
 
-ARM_FUNC BOOL OS_SetThreadPriority(OSThread *thread, u32 prio)
+BOOL OS_SetThreadPriority(OSThread *thread, u32 prio)
 {
     OSThread *t = OSi_ThreadInfo.list;
     OSThread *pre = NULL;
@@ -540,7 +539,7 @@ ARM_FUNC BOOL OS_SetThreadPriority(OSThread *thread, u32 prio)
     return TRUE;
 }
 
-ARM_FUNC void OS_Sleep(u32 msec)
+void OS_Sleep(u32 msec)
 {
     OSAlarm alarm;
 
@@ -559,7 +558,7 @@ ARM_FUNC void OS_Sleep(u32 msec)
     (void)OS_RestoreInterrupts(enabled);
 }
 
-ARM_FUNC static void OSi_SleepAlarmCallback(void *arg)
+static void OSi_SleepAlarmCallback(void *arg)
 {
     OSThread **pp_thread = (OSThread **)arg;
     OSThread *p_thread = *pp_thread;
@@ -570,7 +569,7 @@ ARM_FUNC static void OSi_SleepAlarmCallback(void *arg)
     OS_WakeupThreadDirect(p_thread);
 }
 
-ARM_FUNC OSSwitchThreadCallback OS_SetSwitchThreadCallback(OSSwitchThreadCallback callback)
+OSSwitchThreadCallback OS_SetSwitchThreadCallback(OSSwitchThreadCallback callback)
 {
     OSIntrMode enabled = OS_DisableInterrupts();
     OSSwitchThreadCallback prev = OSi_ThreadInfo.switchCallback;
@@ -580,7 +579,7 @@ ARM_FUNC OSSwitchThreadCallback OS_SetSwitchThreadCallback(OSSwitchThreadCallbac
     return prev;
 }
 
-ARM_FUNC u32 OS_DisableScheduler(void)
+u32 OS_DisableScheduler(void)
 {
     OSIntrMode enabled = OS_DisableInterrupts();
     u32 count;
@@ -594,7 +593,7 @@ ARM_FUNC u32 OS_DisableScheduler(void)
     return count;
 }
 
-ARM_FUNC u32 OS_EnableScheduler(void)
+u32 OS_EnableScheduler(void)
 {
     OSIntrMode enabled = OS_DisableInterrupts();
     u32 count = 0;

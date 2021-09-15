@@ -1,7 +1,7 @@
-#ifndef NITRO_SUB_MI_MEMORY_H
-#define NITRO_SUB_MI_MEMORY_H
+#ifndef NITRO_MI_MEMORY_H
+#define NITRO_MI_MEMORY_H
 
-#include "nitro/types.h"
+#include <nitro/types.h>
 
 void MIi_CpuClear16(register u16 value, register u16 * dst, register u32 size);
 void MIi_CpuCopy16(register u16 * src, register u16 * dst, register u32 size);
@@ -27,4 +27,4 @@ static inline void MI_CpuCopy32(void *src, void *dst, u32 size)
     MIi_CpuCopy32((u32 *)src, (u32 *)dst, size);
 }
 
-#endif //NITRO_SUB_MI_MEMORY_H
+#endif //NITRO_MI_MEMORY_H

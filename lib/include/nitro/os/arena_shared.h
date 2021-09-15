@@ -13,7 +13,8 @@
 #ifndef NITRO_OS_ARENA_SHARED_H
 #define NITRO_OS_ARENA_SHARED_H
 
-#include "nitro/types.h"
+#include <nitro/types.h>
+#include <nitro/hw/consts_shared.h>
 
 typedef enum {
     OS_ARENA_MAIN = 0,
