@@ -28037,7 +28037,7 @@
 .public sub_02072A20
 .public sub_02072A98
 .public sub_02072D64
-.public sub_020730B4
+.public CalcBoxMonPokeathlonPerformance
 .public sub_02073238
 .public sub_02073248
 .public sub_020732E4

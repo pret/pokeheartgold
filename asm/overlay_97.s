@@ -780,7 +780,7 @@ ov97_0221EBD8: ; 0x0221EBD8
 	sub sp, #0x14
 	add r4, r1, #0
 	add r1, sp, #0
-	bl sub_020730B4
+	bl CalcBoxMonPokeathlonPerformance
 	add r0, sp, #0
 	ldrh r1, [r0]
 	lsl r1, r1, #0x1a
