@@ -2703,8 +2703,8 @@ sub_02073D4C: ; 0x02073D4C
 	bx lr
 	thumb_func_end sub_02073D4C
 
-	thumb_func_start sub_02073D54
-sub_02073D54: ; 0x02073D54
+	thumb_func_start PCStorage_FindFirstBoxWithEmptySlot
+PCStorage_FindFirstBoxWithEmptySlot: ; 0x02073D54
 	push {r3, r4, r5, r6, r7, lr}
 	mov r1, #0x12
 	lsl r1, r1, #0xc
@@ -2744,7 +2744,7 @@ _02073D8A:
 	mov r0, #0x12
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02073D54
+	thumb_func_end PCStorage_FindFirstBoxWithEmptySlot
 
 	thumb_func_start sub_02073D9C
 sub_02073D9C: ; 0x02073D9C
@@ -34450,7 +34450,7 @@ sub_020834FC: ; 0x020834FC
 	bl sub_02073D4C
 	add r6, r0, #0
 	ldr r0, [r4, #0x48]
-	bl sub_02073D54
+	bl PCStorage_FindFirstBoxWithEmptySlot
 	str r0, [sp, #0x10]
 	mov r0, #0x5a
 	lsl r0, r0, #2

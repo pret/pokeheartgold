@@ -13619,7 +13619,7 @@ _02222D26:
 	cmp r0, #6
 	bne _02222D66
 	add r0, r4, #0
-	bl sub_02073D54
+	bl PCStorage_FindFirstBoxWithEmptySlot
 	cmp r0, #0x12
 	bne _02222D66
 	ldr r0, [r5, #0x10]

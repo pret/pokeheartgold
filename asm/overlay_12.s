@@ -28051,7 +28051,7 @@ ov12_022452EC: ; 0x022452EC
 	cmp r0, #6
 	bne _02245320
 	ldr r0, [r5, #0x64]
-	bl sub_02073D54
+	bl PCStorage_FindFirstBoxWithEmptySlot
 	cmp r0, #0x12
 	bne _02245320
 	add r0, r4, #0
@@ -31568,7 +31568,7 @@ _02246F5E:
 	bl sub_02073D4C
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x1c]
-	bl sub_02073D54
+	bl PCStorage_FindFirstBoxWithEmptySlot
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x14]

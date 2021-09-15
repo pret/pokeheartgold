@@ -176,6 +176,7 @@ Static main
 	Object event_data.o
 	Object unk_020504C0.o
 	Object unk_02050660.o
+	Object unk_020517A4.o
 	Object pokemon.o
 	Object unk_02072914.o
 	### Vendor libraries ###
