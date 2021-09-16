@@ -717,7 +717,7 @@ _02033F10:
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4, #4]
 	ldr r7, [sp]
 	cmp r0, #0
@@ -752,7 +752,7 @@ sub_02033F44: ; 0x02033F44
 	mov r1, #0
 	mov r2, #0x20
 	add r5, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	lsl r7, r4, #4
 	mov r0, #0xf
 	add r1, r7, #0
@@ -760,7 +760,7 @@ sub_02033F44: ; 0x02033F44
 	mov r1, #0
 	add r2, r7, #0
 	str r0, [r5, #0x18]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r4, [r5, #0x1c]
 	str r6, [r5, #0x14]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -775,7 +775,7 @@ sub_02033F70: ; 0x02033F70
 	ldr r0, [r4, #0x18]
 	mov r1, #0
 	lsl r2, r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [r4]
 	str r0, [r4, #4]

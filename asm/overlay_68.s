@@ -204,7 +204,7 @@ ov68_021E5A58: ; 0x021E5A58
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x42
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #4]
 	mov r0, #0x6e
 	mov r1, #0x42
@@ -341,7 +341,7 @@ ov68_021E5BC0: ; 0x021E5BC0
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5CC4 ; =0x021E7C60
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -356,7 +356,7 @@ ov68_021E5BC0: ; 0x021E5BC0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
 	bl sub_0201CAE0
@@ -374,7 +374,7 @@ ov68_021E5BC0: ; 0x021E5BC0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
 	bl sub_0201CAE0
@@ -392,7 +392,7 @@ ov68_021E5BC0: ; 0x021E5BC0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -410,7 +410,7 @@ ov68_021E5BC0: ; 0x021E5BC0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
 	bl sub_0201CAE0
@@ -428,7 +428,7 @@ ov68_021E5BC0: ; 0x021E5BC0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
 	bl sub_0201CAE0
@@ -436,12 +436,12 @@ ov68_021E5BC0: ; 0x021E5BC0
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x42
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x42
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add sp, #0x9c
 	pop {r4, r5, pc}
 	nop
@@ -462,19 +462,19 @@ ov68_021E5CD8: ; 0x021E5CD8
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #0x42
 	add r1, r4, #0
 	bl FreeToHeapExplicit
@@ -922,7 +922,7 @@ ov68_021E6078: ; 0x021E6078
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4, #4]
 	mov r3, #0x6d
 	str r0, [sp]
@@ -1223,7 +1223,7 @@ _021E62AA:
 	add r0, r1, r0
 	ldr r2, [r5, r2]
 	add r1, r7, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1494,7 +1494,7 @@ _021E64C4:
 	ldr r2, [r5, r2]
 	mov r1, #0
 	mov r3, #0x10
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r1, r4, #0
 	ldr r0, [sp, #0x18]
 	add r1, #0x3a
@@ -1549,7 +1549,7 @@ _021E64C4:
 	ldr r2, [r5, r2]
 	mov r1, #0
 	mov r3, #0x2d
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _021E659C:
 	ldr r0, [sp, #0x10]
 	add r4, r4, #1
@@ -1596,7 +1596,7 @@ _021E65AE:
 	ldr r2, [r5, r2]
 	add r0, #0xe8
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	add r0, #0xf8
 	ldr r0, [r0]
@@ -1756,7 +1756,7 @@ _021E6720:
 	add r0, #0xa8
 	ldr r2, [r2, r6]
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x10
 	str r0, [sp]
@@ -1771,7 +1771,7 @@ _021E6720:
 	ldr r2, [r5, r2]
 	add r0, #0xa8
 	mov r3, #0x10
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -1824,7 +1824,7 @@ _021E6720:
 	ldr r2, [r5, r2]
 	add r0, #0xa8
 	mov r3, #0x2d
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2393,7 +2393,7 @@ ov68_021E6C74: ; 0x021E6C74
 	add r4, r0, #0
 	add r0, #0x68
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r4, #0x68
 	add r0, r4, #0
 	bl sub_0201D8E4
@@ -3239,7 +3239,7 @@ ov68_021E7288: ; 0x021E7288
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x55
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -3312,7 +3312,7 @@ ov68_021E7388: ; 0x021E7388
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x1c
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	pop {r4, pc}
 	thumb_func_end ov68_021E7388
 

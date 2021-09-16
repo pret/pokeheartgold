@@ -49,7 +49,7 @@ _0203592A:
 	mov r2, #0x1b
 	add r1, r4, #0
 	lsl r2, r2, #6
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	bl sub_0203993C
 	bl sub_02034044
 	cmp r0, #0
@@ -255,14 +255,14 @@ sub_02035AE0: ; 0x02035AE0
 	ldr r0, _02035D60 ; =0x0000048C
 	ldr r2, [r3, r2]
 	ldr r0, [r3, r0]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02035D5C ; =_021D4140
 	mov r2, #0x60
 	ldr r1, [r0, #8]
 	ldr r0, _02035D64 ; =0x0000051C
 	add r0, r1, r0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02035D5C ; =_021D4140
 	ldr r1, [r0, #8]
 	ldr r0, _02035D68 ; =0x0000068C
@@ -302,7 +302,7 @@ _02035B62:
 	ldr r2, [r3, r2]
 	ldr r0, [r3, r0]
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02035D5C ; =_021D4140
 	mov r2, #0x60
 	ldr r1, [r0, #8]
@@ -310,7 +310,7 @@ _02035B62:
 	lsl r0, r0, #4
 	add r0, r1, r0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [sp]
 	cmp r7, #0
@@ -345,7 +345,7 @@ _02035BB8:
 	add r0, r1, r0
 	mov r1, #0
 	lsl r2, r2, #6
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02035D5C ; =_021D4140
 	mov r1, #0xc2
 	ldr r2, [r0, #8]
@@ -363,7 +363,7 @@ _02035BB8:
 	add r2, r1, #0
 	add r0, #0x80
 	add r2, #0x92
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02035D5C ; =_021D4140
 	ldr r1, [r0, #8]
 	mov r0, #5
@@ -372,7 +372,7 @@ _02035BB8:
 	mov r1, #0xee
 	add r2, r1, #0
 	add r2, #0x92
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02035D5C ; =_021D4140
 	mov r2, #2
 	ldr r0, [r0, #8]
@@ -380,7 +380,7 @@ _02035BB8:
 	add r0, r0, r2
 	mov r1, #0
 	sub r2, #0xf8
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02035D5C ; =_021D4140
 	mov r2, #2
 	ldr r1, [r0, #8]
@@ -394,13 +394,13 @@ _02035BB8:
 	mov r1, #0xee
 	ldr r0, [r0, #8]
 	mov r2, #0x26
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02035D5C ; =_021D4140
 	mov r1, #0xee
 	ldr r0, [r0, #8]
 	mov r2, #0x26
 	add r0, #0x40
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02035D5C ; =_021D4140
 	mov r2, #0xff
 	ldr r1, [r0, #8]
@@ -417,7 +417,7 @@ _02035BB8:
 	ldr r0, [r3, r0]
 	mov r1, #0
 	lsl r2, r2, #1
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02035D5C ; =_021D4140
 	mov r2, #0x69
 	ldr r3, [r0, #8]

@@ -649,7 +649,7 @@ sub_02049980: ; 0x02049980
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_0205442C
+	bl HasEnoughAlivePokemonForDoubleBattle
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}

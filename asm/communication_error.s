@@ -188,15 +188,15 @@ _0203AAA0:
 	ldr r0, _0203AC70 ; =_020F6B04
 	bl GX_SetBanks
 	add r0, r4, #0
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r6, r0, #0
 	ldr r0, _0203AC74 ; =_020F6AD8
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	mov r1, #0
 	ldr r2, _0203AC78 ; =_020F6AE8
 	add r0, r6, #0
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r6, #0
 	mov r1, #0
 	bl sub_0201CAE0
@@ -215,13 +215,13 @@ _0203AAA0:
 	mov r1, #0x20
 	add r2, r0, #0
 	add r3, r4, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r1, _0203AC80 ; =0x00006C21
 	mov r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	ldr r1, _0203AC80 ; =0x00006C21
 	mov r0, #4
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x29
@@ -295,7 +295,7 @@ _0203AAA0:
 	mov r0, #0
 	mov r1, #0x3f
 	mov r2, #3
-	bl sub_0200B4F0
+	bl SetBrightness
 	add r0, sp, #0x14
 	bl RemoveWindow
 	ldr r0, [sp, #0xc]

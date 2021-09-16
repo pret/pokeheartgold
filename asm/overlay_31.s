@@ -202,7 +202,7 @@ ov31_0225D684: ; 0x0225D684
 	add r0, #0x64
 	add r3, #8
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	b _0225D6F8
 _0225D6DE:
 	mov r1, #0
@@ -216,7 +216,7 @@ _0225D6DE:
 	add r0, #0x64
 	mov r3, #5
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _0225D6F8:
 	add r5, #0x64
 	add r0, r5, #0
@@ -247,13 +247,13 @@ ov31_0225D710: ; 0x0225D710
 	bl sub_02007234
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #8
 	bl DestroyHeap
 	pop {r4, r5, r6, pc}
@@ -497,7 +497,7 @@ _0225D910:
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	bl ov31_0225DD14
 	add r0, r4, #0
@@ -514,7 +514,7 @@ _0225D950:
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	bl ov31_0225DD14
 	add r0, r4, #0
@@ -702,22 +702,22 @@ ov31_0225DAC4: ; 0x0225DAC4
 	ldr r0, [r4, #4]
 	ldr r2, _0225DB2C ; =0x0225EED0
 	mov r1, #4
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #4]
 	ldr r2, _0225DB30 ; =0x0225EEEC
 	mov r1, #5
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #4]
 	ldr r2, _0225DB34 ; =0x0225EF08
 	mov r1, #6
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4, #4]
 	mov r1, #6
 	bl sub_0201CAE0
@@ -1099,7 +1099,7 @@ ov31_0225DE00: ; 0x0225DE00
 	add r0, r1, #0
 	add r1, r3, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, pc}
 	nop
@@ -1145,7 +1145,7 @@ _0225DE3A:
 	add r2, r4, #0
 	mov r3, #0x24
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -1195,7 +1195,7 @@ _0225DEBC:
 	add r0, #0x74
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #0x10
@@ -1267,7 +1267,7 @@ _0225DF2A:
 	add r2, r4, #0
 	sub r3, r3, r6
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -1357,7 +1357,7 @@ _0225DFEC:
 	add r0, #0x54
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
@@ -1614,7 +1614,7 @@ ov31_0225E20C: ; 0x0225E20C
 	add r2, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #5
@@ -1666,7 +1666,7 @@ ov31_0225E20C: ; 0x0225E20C
 	add r2, r4, #0
 	sub r3, r3, r6
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
@@ -1764,7 +1764,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	add r2, r6, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #4
 	str r0, [sp]
 	mov r2, #0xff
@@ -1777,7 +1777,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	add r2, r7, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r7, #0
@@ -1847,7 +1847,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	add r2, r6, #0
 	sub r3, r3, r4
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r7, #0
@@ -1884,7 +1884,7 @@ ov31_0225E474: ; 0x0225E474
 	add r2, r4, #0
 	mov r3, #4
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x45
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -2197,7 +2197,7 @@ ov31_0225E700: ; 0x0225E700
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4, #4]
 	mov r2, #0x1a
 	str r0, [sp]
@@ -3045,11 +3045,11 @@ ov31_0225EDA0: ; 0x0225EDA0
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0xe4
 	bl RemoveWindow

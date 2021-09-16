@@ -26165,7 +26165,7 @@ _020CA4DC:
 	mov r2, r6
 	add r0, r5, #0x3c
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r5
 	add r1, r4, #0x3c
 	bl sub_020D2878

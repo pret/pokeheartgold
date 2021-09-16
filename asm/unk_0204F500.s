@@ -939,7 +939,7 @@ sub_0204FBDC: ; 0x0204FBDC
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	strb r6, [r4, #4]
 	str r5, [r4, #0xc]
 	ldr r0, [r7, #0x10]
@@ -1170,7 +1170,7 @@ sub_0204FDA0: ; 0x0204FDA0
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
@@ -1616,7 +1616,7 @@ sub_0205011C: ; 0x0205011C
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	strb r6, [r4, #4]
 	str r5, [r4, #0xc]
 	ldr r0, [r7, #0x10]
@@ -1847,7 +1847,7 @@ sub_020502E0: ; 0x020502E0
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]

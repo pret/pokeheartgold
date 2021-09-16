@@ -1740,7 +1740,7 @@ sub_0203C920: ; 0x0203C920
 	mov r1, #0
 	mov r2, #0x1c
 	add r5, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4, #0xc]
 	bl Sav2_Pokedex_get
 	str r0, [r5]

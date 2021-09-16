@@ -13,7 +13,7 @@ sub_020030E8: ; 0x020030E8
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0

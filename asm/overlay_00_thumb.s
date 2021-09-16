@@ -23,7 +23,7 @@ _021E5918:
 	ldr r2, _021E5AC8 ; =0x00001108
 	add r6, r0, #0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r2, r6, #0
 	add r2, #0x1f
 	mov r0, #0x1f
@@ -545,7 +545,7 @@ _021E5D4E:
 	ldr r0, _021E5E0C ; =0x00000FC4
 	add r0, r1, r0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021E5DFC ; =_0221A680
 	ldr r2, _021E5E08 ; =_02216414
 	ldr r1, [r0]
@@ -1253,7 +1253,7 @@ ov00_021E62D4: ; 0x021E62D4
 	thumb_func_start ov00_021E62D8
 ov00_021E62D8: ; 0x021E62D8
 	ldr r0, _021E62E8 ; =_0221A680
-	ldr r3, _021E62EC ; =MIi_CpuFill8
+	ldr r3, _021E62EC ; =MI_CpuFill8
 	ldr r1, [r0]
 	ldr r0, _021E62F0 ; =0x000010AC
 	mov r2, #0x20
@@ -1262,7 +1262,7 @@ ov00_021E62D8: ; 0x021E62D8
 	bx r3
 	.balign 4, 0
 _021E62E8: .word _0221A680
-_021E62EC: .word MIi_CpuFill8
+_021E62EC: .word MI_CpuFill8
 _021E62F0: .word 0x000010AC
 	thumb_func_end ov00_021E62D8
 
@@ -3555,7 +3555,7 @@ _021E73FC:
 	ldr r0, [r4]
 	mov r1, #0
 	add r2, r6, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r7, r7, #1
 	add r4, r4, #4
 	cmp r7, r5
@@ -4064,7 +4064,7 @@ ov00_021E77CC: ; 0x021E77CC
 	str r0, [r5]
 	mov r1, #0
 	add r2, r4, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, [r5]
 	mov r0, #0x1f
 	add r1, #0x1f

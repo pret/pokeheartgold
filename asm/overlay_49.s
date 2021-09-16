@@ -4225,11 +4225,11 @@ ov49_0225A5EC: ; 0x0225A5EC
 	bl sub_02022D3C
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	ldr r0, _0225A7A8 ; =0x02269724
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	add r0, r6, #0
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r5]
 	mov r0, #0
 	ldr r7, _0225A7AC ; =0x0226981C
@@ -4242,14 +4242,14 @@ _0225A636:
 	lsr r1, r1, #0x18
 	add r2, r7, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #0x20
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r1, [r4]
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
@@ -4421,7 +4421,7 @@ _0225A7DC:
 	ldr r0, [r6]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -4861,7 +4861,7 @@ _0225AB64:
 	str r3, [sp, #0xc]
 	ldr r2, [r5, #0x18]
 	add r0, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r1, #1
 	str r0, [r5, #0x10]
 	add r0, r5, #0
@@ -4907,7 +4907,7 @@ _0225ABC4:
 	str r3, [sp, #0xc]
 	ldr r2, [r5, #0x18]
 	add r0, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r1, #1
 	add r0, r5, #0
 	add r2, r1, #0
@@ -5014,7 +5014,7 @@ _0225AC90:
 	bl ov49_0225AC38
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	bl sub_0201D8E4
 	pop {r4, pc}
@@ -5639,7 +5639,7 @@ ov49_0225B0E0: ; 0x0225B0E0
 ov49_0225B124: ; 0x0225B124
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #1
 	bne _0225B144
 	add r0, r4, #0
@@ -5670,7 +5670,7 @@ ov49_0225B148: ; 0x0225B148
 	add r2, r6, #0
 	add r3, r5, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl sub_0201D5C8
 	add sp, #0x10
@@ -5810,7 +5810,7 @@ ov49_0225B24C: ; 0x0225B24C
 	str r3, [sp, #8]
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x55
@@ -6142,7 +6142,7 @@ ov49_0225B450: ; 0x0225B450
 	bne _0225B4DC
 	mov r0, #4
 	strb r1, [r5]
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -8142,7 +8142,7 @@ ov49_0225C3DC: ; 0x0225C3DC
 	lsl r0, r4, #4
 	ldrb r3, [r3, #0x10]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -8182,7 +8182,7 @@ _0225C43C:
 	add r0, r2, r0
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8914,7 +8914,7 @@ ov49_0225C970: ; 0x0225C970
 	str r1, [sp, #0xc]
 	add r0, #0xc
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldrb r0, [r5, #2]
 	cmp r0, #0
 	str r4, [sp]

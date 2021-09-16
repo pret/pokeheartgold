@@ -940,7 +940,7 @@ ov60_021E6074: ; 0x021E6074
 	sub sp, #0xb8
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0xa8
 	ldr r5, _021E61AC ; =_021EAE3C
 	str r0, [r4, #4]
@@ -950,7 +950,7 @@ ov60_021E6074: ; 0x021E6074
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E61B0 ; =_021EAEA0
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -965,7 +965,7 @@ ov60_021E6074: ; 0x021E6074
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E61B4 ; =_021EAEBC
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -980,7 +980,7 @@ ov60_021E6074: ; 0x021E6074
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E61B8 ; =_021EAE4C
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -995,7 +995,7 @@ ov60_021E6074: ; 0x021E6074
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E61BC ; =_021EAE68
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -1010,7 +1010,7 @@ ov60_021E6074: ; 0x021E6074
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E61C0 ; =_021EAE84
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -1025,7 +1025,7 @@ ov60_021E6074: ; 0x021E6074
 	ldr r0, [r4, #4]
 	mov r1, #2
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E61C4 ; =_021EAED8
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -1040,7 +1040,7 @@ ov60_021E6074: ; 0x021E6074
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -1067,10 +1067,10 @@ ov60_021E6074: ; 0x021E6074
 	bl sub_02022CC8
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	add sp, #0xb8
 	pop {r3, r4, r5, pc}
 	nop
@@ -1113,22 +1113,22 @@ ov60_021E61C8: ; 0x021E61C8
 	bl sub_02022CC8
 	ldr r0, [r4, #4]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1404,11 +1404,11 @@ _021E642E:
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #1
-	bl sub_0200B4F0
+	bl SetBrightness
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #2
-	bl sub_0200B4F0
+	bl SetBrightness
 	mov r0, #0x1f
 	str r0, [sp]
 	ldr r0, _021E653C ; =0x04001050
@@ -1599,7 +1599,7 @@ _021E6622:
 	mov r1, #0x20
 	mov r2, #0
 	add r3, r5, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r6, #0
 	mov r1, #3
 	bl sub_0201CAE0
@@ -1689,15 +1689,15 @@ _021E667C:
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0
 	add r3, r5, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r2, _021E67D0 ; =0x000002CF
 	mov r0, #1
 	mov r1, #0x1b
@@ -2324,7 +2324,7 @@ ov60_021E6B68: ; 0x021E6B68
 	mov r0, #0
 	bl SetLCRNGSeed
 	ldr r0, [r4]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #0xc]
 	bl ov60_021E6E14
 	add r0, r4, #0
@@ -3832,7 +3832,7 @@ _021E7732:
 	lsl r1, r1, #0x10
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x10
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	ldrb r0, [r4, #0x13]
 	cmp r0, #0
 	beq _021E7748
@@ -4512,28 +4512,28 @@ ov60_021E7C5C: ; 0x021E7C5C
 	bl ov60_021E8028
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #0
 	strb r0, [r5, #1]
 _021E7CC2:
@@ -4554,7 +4554,7 @@ ov60_021E7CC4: ; 0x021E7CC4
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E7DEC ; =_021EB0C4
 	add r3, sp, #0xc4
 	ldmia r5!, {r0, r1}
@@ -4569,7 +4569,7 @@ ov60_021E7CC4: ; 0x021E7CC4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E7DF0 ; =_021EB0E0
 	add r3, sp, #0xa8
 	ldmia r5!, {r0, r1}
@@ -4584,7 +4584,7 @@ ov60_021E7CC4: ; 0x021E7CC4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E7DF4 ; =_021EB08C
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -4599,7 +4599,7 @@ ov60_021E7CC4: ; 0x021E7CC4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E7DF8 ; =_021EB070
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -4614,7 +4614,7 @@ ov60_021E7CC4: ; 0x021E7CC4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E7DFC ; =_021EB0A8
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -4629,7 +4629,7 @@ ov60_021E7CC4: ; 0x021E7CC4
 	mov r1, #0
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E7E00 ; =_021EB0FC
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -4644,7 +4644,7 @@ ov60_021E7CC4: ; 0x021E7CC4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E7E04 ; =_021EB054
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -4659,7 +4659,7 @@ ov60_021E7CC4: ; 0x021E7CC4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E7E08 ; =_021EB118
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -4674,7 +4674,7 @@ ov60_021E7CC4: ; 0x021E7CC4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0xf0
 	pop {r3, r4, r5, pc}
 	nop
@@ -4897,10 +4897,10 @@ ov60_021E7F74: ; 0x021E7F74
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #1
 	bl sub_0200FBE8
 	mov r0, #0
@@ -5718,16 +5718,16 @@ _021E861A:
 	bl ov60_021E7324
 	ldr r0, [sp, #8]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [sp, #8]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [sp, #8]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [sp, #8]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #0
 	strb r0, [r6, #1]
 _021E8666:
@@ -5750,7 +5750,7 @@ ov60_021E866C: ; 0x021E866C
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E8714 ; =_021EB15C
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -5765,7 +5765,7 @@ ov60_021E866C: ; 0x021E866C
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E8718 ; =_021EB194
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -5780,7 +5780,7 @@ ov60_021E866C: ; 0x021E866C
 	str r0, [r3]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E871C ; =_021EB1B0
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -5795,7 +5795,7 @@ ov60_021E866C: ; 0x021E866C
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E8720 ; =_021EB178
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -5810,7 +5810,7 @@ ov60_021E866C: ; 0x021E866C
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop
@@ -6543,10 +6543,10 @@ ov60_021E8D04: ; 0x021E8D04
 	bl GX_EngineAToggleLayers
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #1
 	mov r1, #0
 	bl sub_0200FBF4
@@ -7520,16 +7520,16 @@ _021E9536:
 	bl ov60_021E9878
 	ldr r0, [sp, #4]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [sp, #4]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [sp, #4]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [sp, #4]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #0
 	strb r0, [r7, #1]
 _021E957C:
@@ -7551,7 +7551,7 @@ ov60_021E9580: ; 0x021E9580
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E9628 ; =_021EB2DC
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -7566,7 +7566,7 @@ ov60_021E9580: ; 0x021E9580
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E962C ; =_021EB2F8
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -7581,7 +7581,7 @@ ov60_021E9580: ; 0x021E9580
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E9630 ; =_021EB314
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -7596,7 +7596,7 @@ ov60_021E9580: ; 0x021E9580
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E9634 ; =_021EB330
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -7611,7 +7611,7 @@ ov60_021E9580: ; 0x021E9580
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop
@@ -9056,22 +9056,22 @@ ov60_021EA21C: ; 0x021EA21C
 	bl ov60_021EA6AC
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #0
 	strb r0, [r5, #1]
 _021EA28A:
@@ -9101,7 +9101,7 @@ ov60_021EA2A0: ; 0x021EA2A0
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021EA388 ; =_021EB644
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -9116,7 +9116,7 @@ ov60_021EA2A0: ; 0x021EA2A0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021EA38C ; =_021EB660
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -9131,7 +9131,7 @@ ov60_021EA2A0: ; 0x021EA2A0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021EA390 ; =_021EB67C
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -9146,7 +9146,7 @@ ov60_021EA2A0: ; 0x021EA2A0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021EA394 ; =_021EB698
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -9161,7 +9161,7 @@ ov60_021EA2A0: ; 0x021EA2A0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021EA398 ; =_021EB6B4
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -9176,7 +9176,7 @@ ov60_021EA2A0: ; 0x021EA2A0
 	add r0, r4, #0
 	mov r1, #6
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021EA39C ; =_021EB6D0
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -9191,7 +9191,7 @@ ov60_021EA2A0: ; 0x021EA2A0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0xb8
 	pop {r3, r4, r5, pc}
 	nop
@@ -10267,16 +10267,16 @@ ov60_021EAC14: ; 0x021EAC14
 	bl ov60_021EAE14
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #0
 	strb r0, [r5, #1]
 _021EAC5A:
@@ -10297,7 +10297,7 @@ ov60_021EAC5C: ; 0x021EAC5C
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021EAD04 ; =_021EB7EC
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -10312,7 +10312,7 @@ ov60_021EAC5C: ; 0x021EAC5C
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021EAD08 ; =_021EB7D0
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -10327,7 +10327,7 @@ ov60_021EAC5C: ; 0x021EAC5C
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021EAD0C ; =_021EB808
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -10342,7 +10342,7 @@ ov60_021EAC5C: ; 0x021EAC5C
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021EAD10 ; =_021EB824
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -10357,7 +10357,7 @@ ov60_021EAC5C: ; 0x021EAC5C
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop

@@ -21,7 +21,7 @@ ov62_021E5900: ; 0x021E5900
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0x62
 	add r0, r1, #0
 	add r0, #0xd6
@@ -868,10 +868,10 @@ ov62_021E5FD4: ; 0x021E5FD4
 	add r6, r0, #0
 	add r0, r1, #0
 	str r1, [sp]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r6]
 	ldr r0, _021E601C ; =0x021E6658
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r4, _021E6020 ; =0x021E6728
 	mov r7, #0
 	add r5, r4, #0
@@ -880,7 +880,7 @@ _021E5FEE:
 	ldrb r3, [r4, #0x1d]
 	ldr r0, [r6]
 	add r2, r5, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldrb r1, [r4, #0x1c]
 	ldr r0, [r6]
 	bl sub_0201CAE0
@@ -888,7 +888,7 @@ _021E5FEE:
 	ldr r3, [sp]
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r7, r7, #1
 	add r4, #0x20
 	add r5, #0x20
@@ -909,7 +909,7 @@ ov62_021E6024: ; 0x021E6024
 _021E602C:
 	ldrb r1, [r5, #0x1c]
 	ldr r0, [r6]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r4, r4, #1
 	add r5, #0x20
 	cmp r4, #5
@@ -1060,7 +1060,7 @@ _021E6102:
 	ldrb r1, [r4, #8]
 	add r0, r5, #0
 	mov r3, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r5, #0
@@ -1119,7 +1119,7 @@ ov62_021E61AC: ; 0x021E61AC
 	add r4, r0, #0
 	mov r1, #0
 	lsl r2, r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r4, [r5, #0x1c]
 	mov r0, #0
 	str r0, [r5]

@@ -1533,7 +1533,7 @@ ov08_0221CA20: ; 0x0221CA20
 	ldr r1, _0221CA30 ; =0x00002060
 	add r0, r0, r1
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #2
 	pop {r3, pc}
 	.balign 4, 0
@@ -2067,7 +2067,7 @@ ov08_0221CDF8: ; 0x0221CDF8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _0221CEFC ; =0x02224EE4
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -2084,7 +2084,7 @@ ov08_0221CDF8: ; 0x0221CDF8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _0221CF00 ; =0x02224F00
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -2101,7 +2101,7 @@ ov08_0221CDF8: ; 0x0221CDF8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0x79
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2123,7 +2123,7 @@ ov08_0221CDF8: ; 0x0221CDF8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0x79
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2134,13 +2134,13 @@ ov08_0221CDF8: ; 0x0221CDF8
 	ldr r3, [r3, #0xc]
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r3, [r4]
 	mov r0, #4
 	ldr r3, [r3, #0xc]
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #0x79
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2170,16 +2170,16 @@ ov08_0221CF08: ; 0x0221CF08
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov08_0221CF08
@@ -4114,7 +4114,7 @@ ov08_0221DDCC: ; 0x0221DDCC
 	str r0, [sp, #0xc]
 	ldrb r3, [r3, #0x10]
 	add r0, r5, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	b _0221DE6A
 _0221DE4E:
 	ldrb r7, [r3, #0x14]
@@ -4129,7 +4129,7 @@ _0221DE4E:
 	str r0, [sp, #0xc]
 	ldrb r3, [r3, #0x10]
 	add r0, r5, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _0221DE6A:
 	ldr r0, [sp, #0x18]
 	bl String_dtor
@@ -4175,7 +4175,7 @@ _0221DE6A:
 	add r0, r5, r4
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	b _0221DEE6
 _0221DED2:
 	mov r0, #0xff
@@ -4186,7 +4186,7 @@ _0221DED2:
 	add r0, r5, r4
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _0221DEE6:
 	add r0, r6, #0
 	bl String_dtor
@@ -4222,7 +4222,7 @@ _0221DEEE:
 	add r0, r5, r4
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	b _0221DF4A
 _0221DF36:
 	mov r0, #0xff
@@ -4233,7 +4233,7 @@ _0221DF36:
 	add r0, r5, r4
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _0221DF4A:
 	add r0, r6, #0
 	bl String_dtor
@@ -4508,7 +4508,7 @@ ov08_0221E120: ; 0x0221E120
 	add r2, r6, #0
 	add r0, r0, r4
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r6, #0
@@ -4582,7 +4582,7 @@ _0221E202:
 	add r2, r6, #0
 	add r0, r0, r5
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, _0221E240 ; =0x00002070
@@ -4659,7 +4659,7 @@ _0221E2AA:
 	str r0, [sp, #0xc]
 	ldrh r1, [r1, #0x10]
 	add r0, r4, r6
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	add r0, r7, #0
@@ -4700,7 +4700,7 @@ ov08_0221E2E8: ; 0x0221E2E8
 	ldr r3, [sp, #0x10]
 	add r0, r0, r5
 	add r2, r7, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, _0221E33C ; =0x00002070
@@ -4747,7 +4747,7 @@ ov08_0221E340: ; 0x0221E340
 	add r2, r5, #0
 	add r0, r4, r0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	bl String_dtor
 	ldr r0, _0221E398 ; =0x00002050
@@ -4795,7 +4795,7 @@ ov08_0221E3A4: ; 0x0221E3A4
 	mov r1, #4
 	add r2, r7, #0
 	lsr r3, r3, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r5, r4
@@ -4840,7 +4840,7 @@ ov08_0221E408: ; 0x0221E408
 	add r3, r1, #0
 	add r0, r2, r0
 	add r2, r7, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, _0221E5D0 ; =0x00001FA8
@@ -4884,7 +4884,7 @@ ov08_0221E408: ; 0x0221E408
 	ldr r0, [r5, r0]
 	add r3, r1, #0
 	add r0, r0, r7
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -4907,7 +4907,7 @@ ov08_0221E408: ; 0x0221E408
 	add r3, r1, #0
 	add r0, r2, r0
 	ldr r2, [sp, #0x20]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x20]
 	bl String_dtor
 	ldr r0, _0221E5D0 ; =0x00001FA8
@@ -4979,7 +4979,7 @@ _0221E53C:
 	str r1, [sp, #0xc]
 	ldr r0, [r5, r0]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	ldr r0, [sp, #0x10]
@@ -5044,7 +5044,7 @@ ov08_0221E5DC: ; 0x0221E5DC
 	ldr r0, [r5, r0]
 	add r3, r1, #0
 	add r0, #0xe0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, _0221E6CC ; =0x00001FA8
@@ -5101,7 +5101,7 @@ ov08_0221E5DC: ; 0x0221E5DC
 	str r1, [sp, #0xc]
 	ldr r0, [r5, r0]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r6, #0
@@ -5154,7 +5154,7 @@ ov08_0221E6D8: ; 0x0221E6D8
 	ldr r0, [r5, r0]
 	add r3, r1, #0
 	add r0, #0xf0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, _0221E7C8 ; =0x00001FA8
@@ -5211,7 +5211,7 @@ ov08_0221E6D8: ; 0x0221E6D8
 	str r1, [sp, #0xc]
 	ldr r0, [r5, r0]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r6, #0
@@ -5265,7 +5265,7 @@ ov08_0221E7D4: ; 0x0221E7D4
 	add r3, r1, #0
 	add r0, r0, r2
 	add r2, r6, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, _0221E8C8 ; =0x00001FA8
@@ -5322,7 +5322,7 @@ ov08_0221E7D4: ; 0x0221E7D4
 	str r1, [sp, #0xc]
 	ldr r0, [r5, r0]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r6, #0
@@ -5378,7 +5378,7 @@ ov08_0221E8D4: ; 0x0221E8D4
 	add r3, r1, #0
 	add r0, r2, r0
 	add r2, r6, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, _0221E9C8 ; =0x00001FA8
@@ -5435,7 +5435,7 @@ ov08_0221E8D4: ; 0x0221E8D4
 	str r1, [sp, #0xc]
 	ldr r0, [r4, r0]
 	add r0, r0, r5
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r6, #0
@@ -5491,7 +5491,7 @@ ov08_0221E9D4: ; 0x0221E9D4
 	add r3, r1, #0
 	add r0, r2, r0
 	add r2, r6, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, _0221EAC8 ; =0x00001FA8
@@ -5548,7 +5548,7 @@ ov08_0221E9D4: ; 0x0221E9D4
 	str r1, [sp, #0xc]
 	ldr r0, [r4, r0]
 	add r0, r0, r5
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r6, #0
@@ -5606,7 +5606,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	ldr r0, [r5, r0]
 	add r3, r1, #0
 	add r0, #0xd0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, _0221EC60 ; =0x00001FA8
@@ -5642,7 +5642,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	str r1, [sp, #0xc]
 	ldr r0, [r5, r0]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	ldr r0, _0221EC60 ; =0x00001FA8
@@ -5686,7 +5686,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	ldr r0, [r5, r0]
 	sub r3, r6, r3
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -5728,7 +5728,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	ldr r0, [r5, r0]
 	add r3, r6, r3
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x20]
 	bl String_dtor
 	ldr r0, [sp, #0x24]
@@ -5790,7 +5790,7 @@ ov08_0221EC6C: ; 0x0221EC6C
 	ldr r0, [r5, r0]
 	add r3, r1, #0
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r7, #0
@@ -5830,7 +5830,7 @@ ov08_0221ECE8: ; 0x0221ECE8
 	add r0, r5, r4
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, r4
@@ -5880,7 +5880,7 @@ ov08_0221ED30: ; 0x0221ED30
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	b _0221EE00
@@ -5930,7 +5930,7 @@ _0221ED8A:
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add r0, r7, #0
@@ -5968,7 +5968,7 @@ ov08_0221EE18: ; 0x0221EE18
 	add r0, r5, r4
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, r4
@@ -6018,7 +6018,7 @@ ov08_0221EE60: ; 0x0221EE60
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	b _0221EF30
@@ -6068,7 +6068,7 @@ _0221EEBA:
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add r0, r7, #0
@@ -6113,7 +6113,7 @@ ov08_0221EF48: ; 0x0221EF48
 	add r0, r5, r4
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r7, #0
@@ -6163,7 +6163,7 @@ ov08_0221EFA8: ; 0x0221EFA8
 	str r0, [sp, #8]
 	add r0, r5, r4
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r5, r4
@@ -6220,7 +6220,7 @@ _0221F04C:
 	add r0, r5, r4
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, r4
@@ -6268,7 +6268,7 @@ ov08_0221F07C: ; 0x0221F07C
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	ldr r0, _0221F1A8 ; =0x00001FA8
@@ -6310,7 +6310,7 @@ ov08_0221F07C: ; 0x0221F07C
 	add r0, r4, r6
 	sub r3, r7, r3
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x20]
 	bl String_dtor
 	ldr r0, [sp, #0x24]
@@ -6350,7 +6350,7 @@ ov08_0221F07C: ; 0x0221F07C
 	add r0, r4, r6
 	add r3, r7, r3
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x28]
 	bl String_dtor
 	ldr r0, [sp, #0x2c]
@@ -6409,7 +6409,7 @@ _0221F1DA:
 	mov r1, #4
 	add r2, r6, #0
 	lsr r3, r3, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, r4
@@ -6457,7 +6457,7 @@ _0221F23C:
 	add r0, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r5, #0
@@ -6500,7 +6500,7 @@ ov08_0221F284: ; 0x0221F284
 	add r0, r4, r6
 	mov r3, #0x28
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	ldr r0, _0221F3C4 ; =0x00001FA8
@@ -6524,7 +6524,7 @@ ov08_0221F284: ; 0x0221F284
 	add r0, r4, r6
 	mov r3, #0x50
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	ldr r0, _0221F3C4 ; =0x00001FA8
@@ -6560,7 +6560,7 @@ ov08_0221F284: ; 0x0221F284
 	add r2, r7, #0
 	str r1, [sp, #0xc]
 	str r3, [sp, #0x1c]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x20]
 	bl String_dtor
 	ldr r0, _0221F3C4 ; =0x00001FA8
@@ -6600,7 +6600,7 @@ ov08_0221F284: ; 0x0221F284
 	add r2, r7, #0
 	sub r3, r3, r5
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x24]
 	bl String_dtor
 	add r0, r7, #0
@@ -6693,7 +6693,7 @@ ov08_0221F3D0: ; 0x0221F3D0
 	add r0, r4, r6
 	sub r3, r3, r5
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x14]
@@ -7038,7 +7038,7 @@ _0221F714:
 	ldr r0, [sp, #0x18]
 	mov r1, #4
 	add r3, r7, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	cmp r5, #0
@@ -7060,7 +7060,7 @@ _0221F714:
 	add r2, r5, #0
 	add r3, r4, r3
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	b _0221F794
 _0221F778:
 	mov r0, #8
@@ -7075,7 +7075,7 @@ _0221F778:
 	add r2, r5, #0
 	add r3, r4, r3
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _0221F794:
 	add r0, r5, #0
 	bl String_dtor
@@ -8168,7 +8168,7 @@ ov08_02220084: ; 0x02220084
 	ldr r0, [r5, r0]
 	add r3, r1, #0
 	add r0, #0x40
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	ldr r0, _022201B0 ; =0x00002070
@@ -13674,7 +13674,7 @@ ov08_02222D9C: ; 0x02222D9C
 	push {r3, lr}
 	add r0, #0x1c
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	pop {r3, pc}
 	.balign 4, 0
@@ -14013,7 +14013,7 @@ ov08_02223000: ; 0x02223000
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _022230C4 ; =0x02225B14
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -14028,7 +14028,7 @@ ov08_02223000: ; 0x02223000
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #4]
 	mov r1, #5
 	bl sub_0201CAE0
@@ -14046,7 +14046,7 @@ ov08_02223000: ; 0x02223000
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #4]
 	mov r1, #4
 	bl sub_0201CAE0
@@ -14055,13 +14055,13 @@ ov08_02223000: ; 0x02223000
 	ldr r3, [r3, #0xc]
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r3, [r4]
 	mov r0, #4
 	ldr r3, [r3, #0xc]
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4, #4]
 	mov r1, #5
 	bl ScheduleBgTilemapBufferTransfer
@@ -14086,13 +14086,13 @@ ov08_022230CC: ; 0x022230CC
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov08_022230CC
@@ -14607,7 +14607,7 @@ ov08_022234A4: ; 0x022234A4
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, r5, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r5, r4
@@ -14707,7 +14707,7 @@ _02223508:
 	mov r1, #4
 	add r0, #0x40
 	add r2, r4, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	ldr r0, [r5, #0x2c]
@@ -14784,7 +14784,7 @@ ov08_022235D4: ; 0x022235D4
 	str r0, [sp, #0xc]
 	ldr r2, [r5, #0x18]
 	add r0, r4, r6
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 _02223666:
@@ -14855,7 +14855,7 @@ ov08_02223678: ; 0x02223678
 	str r3, [sp, #0xc]
 	ldr r2, [r5, #0x18]
 	add r0, r4, r7
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 _022236FA:
@@ -15005,7 +15005,7 @@ ov08_022237C4: ; 0x022237C4
 	add r0, r4, r0
 	add r3, r6, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	ldr r0, [r5, #0x10]
@@ -15043,7 +15043,7 @@ ov08_022237C4: ; 0x022237C4
 	ldr r2, [r5, #0x18]
 	add r0, r4, r0
 	add r3, r6, r7
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	ldr r0, [r5, #0x10]
@@ -15086,7 +15086,7 @@ ov08_022237C4: ; 0x022237C4
 	ldr r2, [r5, #0x18]
 	add r0, r4, r0
 	sub r3, r6, r3
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	mov r0, #0x19
@@ -15250,7 +15250,7 @@ ov08_022239CC: ; 0x022239CC
 	str r1, [sp, #0xc]
 	ldr r2, [r5, #0x18]
 	add r0, r4, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -15298,7 +15298,7 @@ ov08_02223A3C: ; 0x02223A3C
 	add r0, r4, #0
 	mov r3, #4
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, #0

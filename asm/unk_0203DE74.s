@@ -253,7 +253,7 @@ sub_0203DFE0: ; 0x0203DFE0
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0xb
 	mov r1, #0x10
 	bl AllocFromHeap

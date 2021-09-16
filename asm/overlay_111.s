@@ -715,7 +715,7 @@ _021E5E46:
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x94
 	str r0, [r4]
 	str r5, [r4, #4]
@@ -818,7 +818,7 @@ ov111_021E5F50: ; 0x021E5F50
 	sub sp, #0xa0
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #4
 	ldr r4, _021E5FC8 ; =0x021E6B7C
 	str r0, [r5, #8]
@@ -828,7 +828,7 @@ ov111_021E5F50: ; 0x021E5F50
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r4, _021E5FCC ; =0x021E6CA4
 	add r3, sp, #0x14
 	mov r2, #0x11
@@ -847,7 +847,7 @@ _021E5F8A:
 	ldr r0, [r5, #8]
 	add r2, r6, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldrb r1, [r4]
 	ldr r0, [r5, #8]
 	bl sub_0201CAE0
@@ -886,7 +886,7 @@ ov111_021E5FD4: ; 0x021E5FD4
 _021E5FE2:
 	ldrb r1, [r5]
 	ldr r0, [r6, #8]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r4, r4, #1
 	add r5, r5, #1
 	cmp r4, #5
@@ -1391,7 +1391,7 @@ _021E63E4:
 	str r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #0x78
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, [sp, #0x48]
 	ldr r0, [sp, #0x28]
 	ldr r2, [sp, #0x28]
@@ -1782,7 +1782,7 @@ ov111_021E66DC: ; 0x021E66DC
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r6, [r4, #4]
 	str r5, [r4]
 	ldr r0, [sp]
@@ -1914,7 +1914,7 @@ ov111_021E67C4: ; 0x021E67C4
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #1
 	mov r1, #2
 	mov r2, #0
@@ -2216,7 +2216,7 @@ _021E6A0A:
 	add r0, r4, #0
 	add r0, #0x1c
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0x1c
 	bl ClearWindowTilemapAndCopyToVram
@@ -2341,7 +2341,7 @@ _021E6ADE:
 	ldr r2, [r6]
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r5, r0, #0
 	ldr r2, _021E6B28 ; =0x000003D2
 	add r0, r4, #0
@@ -2383,7 +2383,7 @@ ov111_021E6B30: ; 0x021E6B30
 	str r1, [sp, #0xc]
 	ldrb r3, [r3, #0x18]
 	add r0, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10

@@ -58,13 +58,13 @@ _0225F050:
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x10]
 	ldr r2, _0225F268 ; =_0225F270
 	ldr r0, [r0, #8]
 	mov r1, #1
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -72,13 +72,13 @@ _0225F050:
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x10]
 	ldr r2, _0225F26C ; =0x0225F28C
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
@@ -106,7 +106,7 @@ _0225F050:
 	bl sub_0201BB68
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #8]

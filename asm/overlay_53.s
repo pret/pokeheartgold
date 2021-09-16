@@ -347,7 +347,7 @@ _021E5BE8:
 	add r0, sp, #0x50
 	bl GX_SetBanks
 	ldr r0, [r4]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0x40
 	ldr r5, _021E5DCC ; =0x021E8548
 	str r0, [r4, #0x18]
@@ -357,7 +357,7 @@ _021E5BE8:
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5DD0 ; =0x021E85CC
 	add r3, sp, #0x24
 	ldmia r5!, {r0, r1}
@@ -376,7 +376,7 @@ _021E5BE8:
 	strb r0, [r2, #0x13]
 	ldr r0, [r4, #0x18]
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #0
 	bl sub_0201CAE0
@@ -388,7 +388,7 @@ _021E5BE8:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	bl sub_0201CAE0
@@ -400,7 +400,7 @@ _021E5BE8:
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #2
 	bl sub_0201CAE0
@@ -411,7 +411,7 @@ _021E5BE8:
 	strb r1, [r2, #0x13]
 	ldr r0, [r4, #0x18]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #3
 	bl sub_0201CAE0
@@ -458,7 +458,7 @@ _021E5BE8:
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	bl sub_0201CAE0
@@ -470,7 +470,7 @@ _021E5BE8:
 	ldr r0, [r4, #0x18]
 	add r2, sp, #8
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #5
 	bl sub_0201CAE0
@@ -483,7 +483,7 @@ _021E5BE8:
 	mov r1, #6
 	add r2, sp, #8
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #6
 	bl sub_0201CAE0
@@ -496,7 +496,7 @@ _021E5BE8:
 	mov r1, #7
 	add r2, sp, #8
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #7
 	bl sub_0201CAE0
@@ -512,7 +512,7 @@ _021E5BE8:
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201BC28
@@ -584,28 +584,28 @@ ov53_021E5DE0: ; 0x021E5DE0
 	bl sub_0201BC28
 	ldr r0, [r4, #0x18]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x18]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x18]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x18]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x18]
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1278,7 +1278,7 @@ _021E632E:
 	ldr r2, [r4, r2]
 	add r0, #0x1c
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	b _021E63E2
 _021E6384:
 	ldr r1, _021E649C ; =_021E84F8
@@ -1325,7 +1325,7 @@ _021E63A6:
 	ldr r2, [r4, r2]
 	add r0, #0x1c
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _021E63E2:
 	mov r0, #0x11
 	lsl r0, r0, #4
@@ -1529,7 +1529,7 @@ _021E650C:
 	lsr r3, r5, #0x1f
 	add r3, r5, r3
 	asr r3, r3, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r6, #0
@@ -1603,7 +1603,7 @@ ov53_021E65E0: ; 0x021E65E0
 	ldr r3, [r5]
 	mov r1, #0x20
 	add r2, r0, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1666,10 +1666,10 @@ _021E6632:
 	bl ov53_021E67C4
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	add sp, #0x14
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -1916,7 +1916,7 @@ ov53_021E6824: ; 0x021E6824
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4510,7 +4510,7 @@ ov53_021E7D70: ; 0x021E7D70
 	mov r1, #4
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
@@ -4940,7 +4940,7 @@ _021E8108:
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #0x24]
 	str r0, [r4]
 	str r5, [r4, #0xc]
@@ -5240,7 +5240,7 @@ ov53_021E8330: ; 0x021E8330
 	mov r1, #4
 	add r2, r5, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r7, #0

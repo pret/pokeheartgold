@@ -138,8 +138,8 @@ MapMatrix_New: ; 0x0203AF9C
 _0203AFB0: .word 0x00000FB2
 	thumb_func_end MapMatrix_New
 
-	thumb_func_start sub_0203AFB4
-sub_0203AFB4: ; 0x0203AFB4
+	thumb_func_start MapMatrix_Load
+MapMatrix_Load: ; 0x0203AFB4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -156,7 +156,7 @@ sub_0203AFB4: ; 0x0203AFB4
 	strb r0, [r4]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203AFB4
+	thumb_func_end MapMatrix_Load
 
 	thumb_func_start MapMatrix_Free
 MapMatrix_Free: ; 0x0203AFD8

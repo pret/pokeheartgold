@@ -30,7 +30,7 @@ sub_0202ACA8: ; 0x0202ACA8
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #2
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldrh r1, [r4]
 	mov r0, #0xf
 	bic r1, r0

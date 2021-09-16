@@ -15,7 +15,7 @@ sub_02031710: ; 0x02031710
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x40
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x33
@@ -167,7 +167,7 @@ sub_020317F4: ; 0x020317F4
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x64
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #GAME_VERSION
 	strb r0, [r4]
 	mov r0, #2

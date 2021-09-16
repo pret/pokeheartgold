@@ -2262,15 +2262,15 @@ _0204070E:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end sub_02040614
 
-	thumb_func_start sub_02040728
-sub_02040728: ; 0x02040728
+	thumb_func_start RunPokemonCenterScriptsInNewContext
+RunPokemonCenterScriptsInNewContext: ; 0x02040728
 	ldr r3, _02040730 ; =sub_02040734
 	mov r1, #0x96
 	lsl r1, r1, #6
 	bx r3
 	.balign 4, 0
 _02040730: .word sub_02040734
-	thumb_func_end sub_02040728
+	thumb_func_end RunPokemonCenterScriptsInNewContext
 
 	thumb_func_start sub_02040734
 sub_02040734: ; 0x02040734

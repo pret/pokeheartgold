@@ -596,10 +596,10 @@ ov106_021E5D48: ; 0x021E5D48
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -1476,7 +1476,7 @@ ov106_021E6418: ; 0x021E6418
 	sub sp, #0x64
 	add r4, r0, #0
 	mov r0, #0x99
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0x54
 	ldr r5, _021E64EC ; =0x021E6F24
 	str r0, [r4]
@@ -1486,7 +1486,7 @@ ov106_021E6418: ; 0x021E6418
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E64F0 ; =0x021E6F74
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -1501,7 +1501,7 @@ ov106_021E6418: ; 0x021E6418
 	str r0, [r3]
 	ldr r0, [r4]
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #0
 	bl sub_0201CAE0
@@ -1509,7 +1509,7 @@ ov106_021E6418: ; 0x021E6418
 	mov r1, #0x40
 	add r2, r0, #0
 	mov r3, #0x99
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E64F4 ; =0x021E6F90
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -1524,7 +1524,7 @@ ov106_021E6418: ; 0x021E6418
 	str r0, [r3]
 	ldr r0, [r4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #1
 	bl sub_0201CAE0
@@ -1532,7 +1532,7 @@ ov106_021E6418: ; 0x021E6418
 	mov r1, #0x40
 	mov r2, #0
 	mov r3, #0x99
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E64F8 ; =0x021E6FAC
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -1547,7 +1547,7 @@ ov106_021E6418: ; 0x021E6418
 	str r0, [r3]
 	ldr r0, [r4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #2
 	bl sub_0201CAE0
@@ -1555,13 +1555,13 @@ ov106_021E6418: ; 0x021E6418
 	mov r1, #0x40
 	mov r2, #0
 	mov r3, #0x99
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	add sp, #0x64
 	pop {r4, r5, pc}
 	nop
@@ -1577,13 +1577,13 @@ ov106_021E64FC: ; 0x021E64FC
 	add r4, r0, #0
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1984,7 +1984,7 @@ ov106_021E6814: ; 0x021E6814
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021E689C ; =0x00000418
 	mov r1, #0x99
 	ldr r4, [r5, r0]

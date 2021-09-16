@@ -1768,7 +1768,7 @@ _0225FE64:
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [sp, #0x1c]
 	mov r1, #3
 	ldr r0, [r0, #0x10]
@@ -2699,7 +2699,7 @@ _0226061E:
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [sp, #0x18]
 	mov r1, #3
 	ldr r0, [r0, #0x10]

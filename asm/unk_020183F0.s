@@ -49,7 +49,7 @@ sub_02018424: ; 0x02018424
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x18
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	mov r2, #0
 	mov r0, #0xa5
@@ -87,7 +87,7 @@ sub_02018474: ; 0x02018474
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x18
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -107,7 +107,7 @@ sub_02018498: ; 0x02018498
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x38
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r7, #0
 	add r1, r4, #4
 	mov r2, #0x18
@@ -358,7 +358,7 @@ sub_02018680: ; 0x02018680
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x38
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -470,7 +470,7 @@ sub_02018744: ; 0x02018744
 	mov r1, #0
 	mov r2, #0x10
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r6, #4]
 	add r1, r4, #0
 	str r0, [r4, #8]
@@ -649,7 +649,7 @@ sub_02018890: ; 0x02018890
 	mov r1, #0
 	add r2, r2, #1
 	lsl r2, r2, #2
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	add r0, #0x26
 	ldrb r0, [r0]
@@ -1196,7 +1196,7 @@ _02018CC8:
 	ldr r0, [r5, #0x1c]
 	ldr r2, [r2, r6]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r4
 	bl sub_0201D5C8
@@ -1273,7 +1273,7 @@ _02018D50:
 	ldr r3, [sp, #0x10]
 	add r0, r0, r6
 	mov r1, #4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r6
 	bl sub_0201D5C8

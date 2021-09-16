@@ -18,7 +18,7 @@ sub_0203190C: ; 0x0203190C
 	mov r1, #0
 	lsl r2, r2, #6
 	str r0, [sp]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	mov r7, #0xb3
 	ldr r1, _02031960 ; =0x0000FFFF

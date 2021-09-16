@@ -813,7 +813,7 @@ _0225F560:
 	add r2, r6, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	mov r0, #0
@@ -1087,7 +1087,7 @@ _0225F8F0: .word 0x04000040
 _0225F8F4: .word 0x000014A5
 _0225F8F8:
 	mov r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201BC28
@@ -1209,7 +1209,7 @@ _0225F9CC:
 	str r0, [r2]
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r1, #4
 	str r1, [sp]
 	mov r0, #1
@@ -1264,12 +1264,12 @@ _0225FA30:
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r5, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]

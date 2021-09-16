@@ -490,7 +490,7 @@ ov25_02259CC4: ; 0x02259CC4
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x34
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldrb r0, [r5, #7]
 	ldrb r1, [r5, #4]
 	mov r2, #1

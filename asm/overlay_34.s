@@ -23,7 +23,7 @@ ov34_0225D520: ; 0x0225D520
 	add r2, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -479,16 +479,16 @@ ov34_0225D900: ; 0x0225D900
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	thumb_func_end ov34_0225D900
 
@@ -512,7 +512,7 @@ ov34_0225D924: ; 0x0225D924
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -533,7 +533,7 @@ ov34_0225D924: ; 0x0225D924
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
 	bl sub_0201CAE0
@@ -554,7 +554,7 @@ ov34_0225D924: ; 0x0225D924
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
 	bl sub_0201CAE0
@@ -575,7 +575,7 @@ ov34_0225D924: ; 0x0225D924
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #8
 	mov r1, #0
 	bl sub_02022CC8
@@ -927,7 +927,7 @@ ov34_0225DC18: ; 0x0225DC18
 	str r3, [sp, #0xc]
 	ldr r2, [r6]
 	add r0, r7, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -939,7 +939,7 @@ ov34_0225DC18: ; 0x0225DC18
 	ldr r0, [sp, #0x1c]
 	ldr r2, [r6, #4]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, r4
 	bl sub_0201D5C8
 	ldr r0, [sp, #0x1c]
@@ -957,7 +957,7 @@ ov34_0225DC18: ; 0x0225DC18
 	str r0, [sp, #8]
 	add r0, r5, r4
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _0225DCF0:
 	add r0, r5, r4
 	bl sub_0201D5C8

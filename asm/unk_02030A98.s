@@ -10,12 +10,12 @@ _021D2AFC:
 
 	thumb_func_start sub_02030A98
 sub_02030A98: ; 0x02030A98
-	ldr r3, _02030AA0 ; =MIi_CpuFill8
+	ldr r3, _02030AA0 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #4
 	bx r3
 	.balign 4, 0
-_02030AA0: .word MIi_CpuFill8
+_02030AA0: .word MI_CpuFill8
 	thumb_func_end sub_02030A98
 
 	thumb_func_start sub_02030AA4
@@ -76,12 +76,12 @@ _02030AF4: .word 0x00001618
 
 	thumb_func_start sub_02030AF8
 sub_02030AF8: ; 0x02030AF8
-	ldr r3, _02030B00 ; =MIi_CpuFill8
+	ldr r3, _02030B00 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x54
 	bx r3
 	.balign 4, 0
-_02030B00: .word MIi_CpuFill8
+_02030B00: .word MI_CpuFill8
 	thumb_func_end sub_02030AF8
 
 	thumb_func_start sub_02030B04
@@ -297,12 +297,12 @@ _02030C3C:
 
 	thumb_func_start sub_02030C50
 sub_02030C50: ; 0x02030C50
-	ldr r3, _02030C58 ; =MIi_CpuFill8
+	ldr r3, _02030C58 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #4
 	bx r3
 	.balign 4, 0
-_02030C58: .word MIi_CpuFill8
+_02030C58: .word MI_CpuFill8
 	thumb_func_end sub_02030C50
 
 	thumb_func_start sub_02030C5C
@@ -367,12 +367,12 @@ _02030CB2:
 
 	thumb_func_start sub_02030CBC
 sub_02030CBC: ; 0x02030CBC
-	ldr r3, _02030CC4 ; =MIi_CpuFill8
+	ldr r3, _02030CC4 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x74
 	bx r3
 	.balign 4, 0
-_02030CC4: .word MIi_CpuFill8
+_02030CC4: .word MI_CpuFill8
 	thumb_func_end sub_02030CBC
 
 	thumb_func_start sub_02030CC8
@@ -570,12 +570,12 @@ _02030DF2:
 
 	thumb_func_start sub_02030DFC
 sub_02030DFC: ; 0x02030DFC
-	ldr r3, _02030E04 ; =MIi_CpuFill8
+	ldr r3, _02030E04 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #4
 	bx r3
 	.balign 4, 0
-_02030E04: .word MIi_CpuFill8
+_02030E04: .word MI_CpuFill8
 	thumb_func_end sub_02030DFC
 
 	thumb_func_start sub_02030E08
@@ -654,12 +654,12 @@ _02030E74:
 
 	thumb_func_start sub_02030E7C
 sub_02030E7C: ; 0x02030E7C
-	ldr r3, _02030E84 ; =MIi_CpuFill8
+	ldr r3, _02030E84 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x48
 	bx r3
 	.balign 4, 0
-_02030E84: .word MIi_CpuFill8
+_02030E84: .word MI_CpuFill8
 	thumb_func_end sub_02030E7C
 
 	thumb_func_start sub_02030E88
@@ -835,12 +835,12 @@ _02030F8C:
 
 	thumb_func_start sub_02030F94
 sub_02030F94: ; 0x02030F94
-	ldr r3, _02030F9C ; =MIi_CpuFill8
+	ldr r3, _02030F9C ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #4
 	bx r3
 	.balign 4, 0
-_02030F9C: .word MIi_CpuFill8
+_02030F9C: .word MI_CpuFill8
 	thumb_func_end sub_02030F94
 
 	thumb_func_start sub_02030FA0
@@ -917,7 +917,7 @@ sub_02031008: ; 0x02031008
 	ldr r2, _02031058 ; =0x00001628
 	mov r1, #0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0203105C ; =0x00000954
 	add r0, r4, r0
 	bl sub_0202D240
@@ -1119,7 +1119,7 @@ sub_02031188: ; 0x02031188
 	add r0, #0xe0
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0x64
 	add r4, #0xc8
 	mov r0, #0
@@ -1183,14 +1183,14 @@ _02031200:
 	add r0, r6, r0
 	mov r1, #0
 	mov r2, #0x40
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_020311AC
 
 	thumb_func_start sub_02031214
 sub_02031214: ; 0x02031214
-	ldr r3, _02031224 ; =MIi_CpuFill8
+	ldr r3, _02031224 ; =MI_CpuFill8
 	add r0, #0xe0
 	lsl r1, r1, #6
 	add r0, r0, r1
@@ -1198,7 +1198,7 @@ sub_02031214: ; 0x02031214
 	mov r2, #0x40
 	bx r3
 	nop
-_02031224: .word MIi_CpuFill8
+_02031224: .word MI_CpuFill8
 	thumb_func_end sub_02031214
 
 	thumb_func_start sub_02031228
@@ -1285,7 +1285,7 @@ sub_020312AC: ; 0x020312AC
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	mvn r0, r0
 	str r0, [r4]
@@ -1566,7 +1566,7 @@ sub_020314A4: ; 0x020314A4
 	mov r1, #0
 	mov r2, #0x80
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -1607,7 +1607,7 @@ sub_020314C4: ; 0x020314C4
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0x80
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0

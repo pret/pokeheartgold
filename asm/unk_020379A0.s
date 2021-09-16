@@ -23,7 +23,7 @@ sub_020379A0: ; 0x020379A0
 	str r0, [r1]
 	mov r1, #0
 	lsl r2, r2, #2
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _020379C0:
 	ldr r1, _020379F0 ; =_021D414C
 	mov r3, #0
@@ -342,7 +342,7 @@ _02037BD2:
 	add r1, r7, #0
 	add r0, r0, r5
 	mov r2, #2
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r4, r4, #1
 	add r5, r5, #2
 	cmp r4, #8

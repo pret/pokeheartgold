@@ -1138,9 +1138,9 @@ ov90_02258FF0: ; 0x02258FF0
 	str r0, [sp, #0x18]
 	add r0, r1, #0
 	str r3, [sp]
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r0, [sp, #0x18]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r5]
 	ldr r0, [sp]
 	str r6, [r5, #4]
@@ -1161,14 +1161,14 @@ _02259024:
 	lsr r1, r1, #0x18
 	add r2, r6, #4
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	ldr r3, [sp, #0x18]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r1, [r4]
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
@@ -1220,7 +1220,7 @@ _0225909E:
 	ldr r1, [r1, r4]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r5, #8]
 	add r6, r6, #1
 	add r4, #0x20
@@ -1551,7 +1551,7 @@ _022592F0:
 	str r1, [sp, #0xc]
 	ldr r2, [r5, #8]
 	add r0, r6, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1582,7 +1582,7 @@ ov90_02259314: ; 0x02259314
 	add r0, r6, #0
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1615,7 +1615,7 @@ ov90_02259350: ; 0x02259350
 	str r1, [sp, #0xc]
 	ldr r2, [r5, #8]
 	add r0, r4, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov90_02259350
@@ -1827,7 +1827,7 @@ _02259524:
 	lsl r4, r4, #4
 	add r0, r5, r4
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r5, r4
 	bl sub_0201D8E4
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3059,7 +3059,7 @@ _02259EBE:
 	str r0, [r4, #0x14]
 _02259ECC:
 	add r0, r4, #0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #1
 	bne _02259EDC
 	add r0, r4, #0
@@ -3715,7 +3715,7 @@ ov90_0225A350: ; 0x0225A350
 	ldr r2, [r5, #0x14]
 	add r0, r5, #0
 	sub r3, r3, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #2
 	bl sub_02002DB4
 	mov r0, #1

@@ -42,7 +42,7 @@ ov64_021E5900: ; 0x021E5900
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl OverlayManager_GetField18
 	str r0, [r4]
@@ -257,7 +257,7 @@ ov64_021E5B10: ; 0x021E5B10
 	sub sp, #0x90
 	add r5, r0, #0
 	mov r0, #0x3b
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0x80
 	ldr r4, _021E5C90 ; =0x021E6E88
 	str r0, [r5, #4]
@@ -267,7 +267,7 @@ ov64_021E5B10: ; 0x021E5B10
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r4, _021E5C94 ; =0x021E6F50
 	add r3, sp, #0x64
 	ldmia r4!, {r0, r1}
@@ -282,7 +282,7 @@ ov64_021E5B10: ; 0x021E5B10
 	str r0, [r3]
 	ldr r0, [r5, #4]
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #0
 	bl sub_0201CAE0
@@ -290,7 +290,7 @@ ov64_021E5B10: ; 0x021E5B10
 	mov r1, #0x20
 	add r2, r0, #0
 	mov r3, #0x3b
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r4, _021E5C98 ; =0x021E6EFC
 	add r3, sp, #0x48
 	ldmia r4!, {r0, r1}
@@ -305,7 +305,7 @@ ov64_021E5B10: ; 0x021E5B10
 	str r0, [r3]
 	ldr r0, [r5, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r4, _021E5C9C ; =0x021E6F18
 	add r3, sp, #0x2c
 	ldmia r4!, {r0, r1}
@@ -320,7 +320,7 @@ ov64_021E5B10: ; 0x021E5B10
 	str r0, [r3]
 	ldr r0, [r5, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #4
 	bl sub_0201CAE0
@@ -328,7 +328,7 @@ ov64_021E5B10: ; 0x021E5B10
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x3b
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r4, _021E5CA0 ; =0x021E6F34
 	add r3, sp, #0x10
 	ldmia r4!, {r0, r1}
@@ -343,7 +343,7 @@ ov64_021E5B10: ; 0x021E5B10
 	str r0, [r3]
 	ldr r0, [r5, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0x61
 	mov r1, #0x3b
 	bl NARC_ctor
@@ -438,16 +438,16 @@ ov64_021E5CA4: ; 0x021E5CA4
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1059,7 +1059,7 @@ _021E6186:
 	add r0, r6, r0
 	mov r1, #4
 	sub r3, r3, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x42
 	lsl r0, r0, #2
 	add r0, r6, r0
@@ -1750,7 +1750,7 @@ _021E6656:
 	ldr r2, [r5, r2]
 	add r0, r4, r6
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, r6
 	bl sub_0201D8A0
 	add r0, r4, r6
@@ -2010,7 +2010,7 @@ _021E6920:
 	add r0, r3, r0
 	ldr r2, [r5, r2]
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r2, #0x47
 	lsl r2, r2, #2
 	add r1, r2, #0
@@ -2035,7 +2035,7 @@ _021E6920:
 	ldr r2, [r5, r2]
 	add r0, r6, r7
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r2, #0x66
 	lsl r2, r2, #2
 	ldrh r0, [r5, r2]
@@ -2071,7 +2071,7 @@ _021E6920:
 	ldr r2, [r5, r2]
 	add r0, r6, r7
 	add r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	b _021E6A18
 _021E69DA:
 	cmp r0, #1
@@ -2101,7 +2101,7 @@ _021E69DA:
 	ldr r2, [r5, r2]
 	add r0, r6, r7
 	add r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _021E6A18:
 	mov r2, #0x46
 	lsl r2, r2, #2
@@ -2142,7 +2142,7 @@ _021E6A18:
 	ldr r2, [r5, r2]
 	add r0, r6, r7
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r2, #0x46
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -2165,7 +2165,7 @@ _021E6A18:
 	ldr r2, [r5, r2]
 	add r0, r6, r7
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	mov r0, #0
@@ -2189,7 +2189,7 @@ _021E6ACC:
 	str r1, [sp, #0xc]
 	ldr r2, [r5, r2]
 	add r0, r6, r7
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0
 	str r0, [sp, #0x14]
 	add r0, r5, #0
@@ -2237,7 +2237,7 @@ _021E6AEA:
 	ldr r2, [r5, r2]
 	mov r1, #0
 	sub r3, r3, r6
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _021E6B3E:
 	ldr r0, [sp, #0x38]
 	add r7, r7, #1

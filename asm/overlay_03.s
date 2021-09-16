@@ -47,7 +47,7 @@ _02253E72:
 	ldr r0, _02253ECC ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x40
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	bne _02253E90
 	ldr r0, _02253ECC ; =0x022598A0
@@ -96,7 +96,7 @@ ov03_02253ED0: ; 0x02253ED0
 	ldr r0, _02253F6C ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x20
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	bne _02253F14
 	ldr r0, _02253F6C ; =0x022598A0
@@ -185,7 +185,7 @@ _02253F84:
 	mov r2, #0xac
 	str r0, [r1]
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02254050 ; =0x022598A0
 	mov r2, #0
 	ldr r1, [r0]
@@ -218,15 +218,15 @@ _02253F84:
 	str r0, [r2, #0x7c]
 	ldr r0, [r1]
 	add r0, #0x20
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r0, _02254050 ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x30
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r0, _02254050 ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x40
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #4
 	bl ScrStrBufs_new
 	ldr r1, _02254050 ; =0x022598A0
@@ -589,7 +589,7 @@ ov03_022542C8: ; 0x022542C8
 	ldr r0, _02254398 ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x30
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	bne _02254302
 	ldr r0, _02254398 ; =0x022598A0
@@ -1124,7 +1124,7 @@ _02254730:
 	ldr r0, _022547D0 ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x40
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	bne _0225476A
 	ldr r0, _022547D0 ; =0x022598A0
@@ -1624,7 +1624,7 @@ ov03_02254B58: ; 0x02254B58
 	ldr r0, _02254BE0 ; =0x022598A0
 	ldr r0, [r0]
 	add r0, #0x30
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	bne _02254BA0
 	ldr r0, _02254BE0 ; =0x022598A0
@@ -3824,12 +3824,12 @@ ov03_02255CF8: ; 0x02255CF8
 	add r5, r0, #0
 	add r0, #0x54
 	add r4, r1, #0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	bne _02255D32
 	add r0, r5, #0
 	add r0, #0x54
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r0, [r5, #0x10]
 	add r1, r5, #0
 	ldr r0, [r0, #8]
@@ -3878,7 +3878,7 @@ ov03_02255D68: ; 0x02255D68
 	beq _02255D80
 	add r0, #0x54
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0x54
 	bl ClearWindowTilemapAndCopyToVram
@@ -3931,7 +3931,7 @@ ov03_02255DB8: ; 0x02255DB8
 	add r6, r6, #1
 _02255DD4:
 	add r0, r4, #0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	bne _02255E66
 	add r0, r6, #2
@@ -4976,7 +4976,7 @@ ov03_02256644: ; 0x02256644
 	mov r1, #0
 	mov r2, #0x84
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [r4, #0x7c]
 	str r5, [r4, #0x10]
@@ -6820,7 +6820,7 @@ _022574AA:
 	add r0, #0x18
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -7564,7 +7564,7 @@ ov03_02257A70: ; 0x02257A70
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	mov r1, #0
 	bl ov03_02258560
@@ -7963,7 +7963,7 @@ _02257D9E:
 _02257DAA:
 	add r0, #0x58
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	mov r1, #0
 	bl ov03_02258560
@@ -8219,7 +8219,7 @@ _02257F9E:
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	mov r1, #0
 	bl ov03_02258560
@@ -8281,7 +8281,7 @@ _02258020:
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	mov r1, #0
 	bl ov03_02258560
@@ -8343,7 +8343,7 @@ _022580A0:
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	mov r1, #0
 	bl ov03_02258560
@@ -9387,7 +9387,7 @@ ov03_02258878: ; 0x02258878
 	ldr r2, _02258890 ; =0x000005D8
 	mov r1, #0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -10245,7 +10245,7 @@ ov03_02258F48: ; 0x02258F48
 	ldr r2, [r5, #0x3c]
 	add r0, #0x10
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	str r4, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -10257,7 +10257,7 @@ ov03_02258F48: ; 0x02258F48
 	ldr r2, [r5, #0x38]
 	add r0, #0x10
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -10286,7 +10286,7 @@ ov03_02258F8C: ; 0x02258F8C
 	ldr r2, [r5, #0x34]
 	add r0, #0x10
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #0x24]
 	add r1, r6, #0
 	bl ov03_02259070
@@ -10362,7 +10362,7 @@ _02259036:
 	ldr r2, [r5, #0x34]
 	add r0, #0x10
 	sub r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

@@ -29,7 +29,7 @@ sub_02034354: ; 0x02034354
 	str r0, [r1]
 	mov r1, #0
 	lsl r2, r2, #2
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r6, #0
 	ldr r7, _020343E0 ; =0x021D4130
 	add r4, r6, #0
@@ -216,7 +216,7 @@ _02034470:
 	mov r2, #0x20
 	add r0, #0xc
 	add r0, r0, r5
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0203451C ; =0x021D4130
 	ldr r1, [r0]
 	ldr r0, [r1, #4]

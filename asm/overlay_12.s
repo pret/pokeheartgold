@@ -493,13 +493,13 @@ ov12_02237CC4: ; 0x02237CC4
 	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	bl ov12_0223BCC8
 	pop {r4, pc}
@@ -532,7 +532,7 @@ _02237D1A:
 	ldr r0, [r5, #4]
 	add r2, sp, #0x14
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #1
 	bl sub_0201CAE0
@@ -540,7 +540,7 @@ _02237D1A:
 	mov r1, #2
 	add r2, sp, #0x30
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #2
 	bl sub_0201CAE0
@@ -548,7 +548,7 @@ _02237D1A:
 	mov r1, #3
 	add r2, sp, #0x4c
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #3
 	bl sub_0201CAE0
@@ -816,7 +816,7 @@ ov12_02237F18: ; 0x02237F18
 	mov r3, #5
 	bl PaletteData_AllocBuffers
 	mov r0, #5
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #4]
 	mov r0, #5
 	mov r1, #3
@@ -1746,7 +1746,7 @@ _022387BE:
 	ldmia r6!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r1, _0223899C ; =0x000023FF
 	mov r0, #1
 	ldrb r2, [r5, r1]
@@ -1768,7 +1768,7 @@ _02238838:
 	add r0, r4, #0
 	add r2, sp, #0x48
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201CAE0
@@ -1776,7 +1776,7 @@ _02238838:
 	mov r1, #2
 	add r2, sp, #0x64
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
 	bl sub_0201CAE0
@@ -1784,7 +1784,7 @@ _02238838:
 	mov r1, #3
 	add r2, sp, #0x80
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
 	bl sub_0201CAE0
@@ -1992,13 +1992,13 @@ ov12_02238A30: ; 0x02238A30
 	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	bl ov12_022660A8
 	pop {r4, pc}
@@ -3969,7 +3969,7 @@ ov12_022399D4: ; 0x022399D4
 	add r3, r1, #0
 	bl sub_02003D5C
 	mov r0, #5
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r5, #4]
 	mov r0, #5
 	mov r1, #1
@@ -4026,7 +4026,7 @@ _02239A46:
 	ldmia r6!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r6, _02239C10 ; =0x0226C044
 	add r3, sp, #0x14
 	ldmia r6!, {r0, r1}
@@ -4041,7 +4041,7 @@ _02239A46:
 	str r0, [r3]
 	ldr r0, [r5, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #1
 	bl sub_0201CAE0
@@ -4753,7 +4753,7 @@ ov12_0223A088: ; 0x0223A088
 	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -34187,7 +34187,7 @@ _022483C6:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, sp, #0x68
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -34206,7 +34206,7 @@ _022483C6:
 	add r0, sp, #0x68
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, sp, #0x68
 	mov r1, #1
 	mov r2, #5
@@ -72770,7 +72770,7 @@ _0225A9F2:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #1
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r7, [r4, #0xc]
 	add r0, r4, #0
 	ldrb r1, [r5]
@@ -72839,7 +72839,7 @@ _0225AA7E:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #1
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r7, [r4, #0xc]
 	add r0, r4, #0
 	ldrb r1, [r5]
@@ -74113,7 +74113,7 @@ ov12_0225B454: ; 0x0225B454
 	mov r1, #0
 	mov r2, #0xc
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r2, #0
 	strb r2, [r4, #6]
 	str r6, [r4]
@@ -81525,7 +81525,7 @@ _0225F070:
 	mov r1, #0
 	mov r2, #1
 	add r5, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4]
 	add r1, r6, #0
 	bl ov12_0223AB0C
@@ -85772,13 +85772,13 @@ ov12_02261280: ; 0x02261280
 
 	thumb_func_start ov12_02261284
 ov12_02261284: ; 0x02261284
-	ldr r3, _02261290 ; =MIi_CpuFill8
+	ldr r3, _02261290 ; =MI_CpuFill8
 	add r0, #0x80
 	mov r1, #0
 	mov r2, #8
 	bx r3
 	nop
-_02261290: .word MIi_CpuFill8
+_02261290: .word MI_CpuFill8
 	thumb_func_end ov12_02261284
 
 	thumb_func_start ov12_02261294
@@ -92533,7 +92533,7 @@ ov12_022645C8: ; 0x022645C8
 	add r0, sp, #4
 	mov r1, #0
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0x43
 	add r0, sp, #4
 	strb r1, [r0]
@@ -94291,7 +94291,7 @@ ov12_02265354: ; 0x02265354
 	add r0, r4, #0
 	mov r1, #0xff
 	mov r2, #0x60
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
 	bl ov12_0223A928
@@ -94420,7 +94420,7 @@ ov12_02265474: ; 0x02265474
 	mov r1, #0xff
 	mov r2, #0x60
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #0xc]
 	bl ov12_0223A920
 	str r4, [sp]
@@ -94481,7 +94481,7 @@ ov12_02265500: ; 0x02265500
 	mov r1, #0xff
 	mov r2, #0x60
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #0xc]
 	bl ov12_0223A920
 	str r4, [sp]
@@ -95466,7 +95466,7 @@ ov12_02265C54: ; 0x02265C54
 	mov r1, #0
 	mov r2, #0xc
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r2, #0xfa
 	str r5, [r4]
 	ldr r0, _02265C84 ; =ov12_02265C88
@@ -95960,7 +95960,7 @@ ov12_02266024: ; 0x02266024
 	ldr r2, _02266044 ; =0x000006F8
 	mov r1, #0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0
 	ldr r0, _02266048 ; =0x0000068B
 	mvn r1, r1
@@ -95986,7 +95986,7 @@ _02266056:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r1, r4, #4
 	lsl r1, r1, #0x18
 	ldr r2, _022660A4 ; =0x000002FF
@@ -96033,7 +96033,7 @@ _022660B0:
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r4, r4, #1
 	cmp r4, #4
 	blo _022660B0
@@ -96191,7 +96191,7 @@ _022661FE:
 	add r0, r5, r0
 	mov r1, #0xff
 	mov r2, #0x18
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r4, r4, #1
 _0226620E:
 	cmp r4, #4
@@ -97425,7 +97425,7 @@ _02266C24:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02266C60 ; =0x000006D8
 	ldr r0, [r5, r0]
 	bl ov12_0226BB68
@@ -97795,7 +97795,7 @@ ov12_02266E6C: ; 0x02266E6C
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	ldr r0, _02266F54 ; =0xFFFF9C64
 	strb r6, [r4, #0x12]
@@ -100508,7 +100508,7 @@ _02268594:
 	cmp r4, #0
 	bne _022685D2
 	add r0, sp, #0x3c
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -101149,7 +101149,7 @@ ov12_02268A64: ; 0x02268A64
 	bl RemoveWindow
 _02268A90:
 	add r0, r4, #0
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r0, [r5]
 	bl ov12_0223A7D4
 	mov r1, #0
@@ -101680,7 +101680,7 @@ _02268E94:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x24
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r2, _02268EB4 ; =0x00000514
 	add r0, r5, #0
 	add r1, r4, #0
@@ -101705,7 +101705,7 @@ ov12_02268EB8: ; 0x02268EB8
 	add r0, r4, r0
 	mov r2, #0x24
 	str r1, [r4, #0xc]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _02268ED4:
 	pop {r4, pc}
 	nop
@@ -105896,7 +105896,7 @@ ov12_0226AEAC: ; 0x0226AEAC
 	mov r1, #0
 	lsl r2, r2, #6
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -106094,7 +106094,7 @@ _0226B00E:
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0x1c
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, [sp, #0x18]
 	ldr r2, _0226B084 ; =0x0226EB38
 	add r0, r7, #0
@@ -106441,7 +106441,7 @@ _0226B2C0:
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0x30
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x28]
 	ldr r2, _0226B390 ; =0x0226EB6C
@@ -107398,7 +107398,7 @@ _0226B9B6:
 	mov r1, #0
 	mov r2, #0x18
 	str r0, [sp]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r5, [sp]
 	mov r4, #0
 _0226B9EE:
@@ -107765,7 +107765,7 @@ _0226BC78:
 	mov r1, #0
 	mov r2, #0x20
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, [sp]
 	add r0, r7, #0
 	add r2, sp, #4
@@ -108065,7 +108065,7 @@ ov12_0226BEC4: ; 0x0226BEC4
 	mov r1, #0
 	mov r2, #8
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r2, #0xfa
 	ldr r0, _0226BEEC ; =ov12_0226BF04
 	add r1, r4, #0

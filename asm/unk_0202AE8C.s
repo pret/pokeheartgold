@@ -5,12 +5,12 @@
 
 	thumb_func_start sub_0202AE8C
 sub_0202AE8C: ; 0x0202AE8C
-	ldr r3, _0202AE94 ; =MIi_CpuFill8
+	ldr r3, _0202AE94 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x24
 	bx r3
 	.balign 4, 0
-_0202AE94: .word MIi_CpuFill8
+_0202AE94: .word MI_CpuFill8
 	thumb_func_end sub_0202AE8C
 
 	thumb_func_start sub_0202AE98

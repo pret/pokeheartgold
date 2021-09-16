@@ -3,16 +3,16 @@
 
 	.text
 
-	thumb_func_start sub_0202E0DC
-sub_0202E0DC: ; 0x0202E0DC
+	thumb_func_start Sav2_HOF_sizeof
+Sav2_HOF_sizeof: ; 0x0202E0DC
 	ldr r0, _0202E0E0 ; =0x00002AB0
 	bx lr
 	.balign 4, 0
 _0202E0E0: .word 0x00002AB0
-	thumb_func_end sub_0202E0DC
+	thumb_func_end Sav2_HOF_sizeof
 
-	thumb_func_start sub_0202E0E4
-sub_0202E0E4: ; 0x0202E0E4
+	thumb_func_start Sav2_HOF_init
+Sav2_HOF_init: ; 0x0202E0E4
 	ldr r3, _0202E0F0 ; =MIi_CpuClear32
 	add r1, r0, #0
 	mov r0, #0
@@ -21,10 +21,10 @@ sub_0202E0E4: ; 0x0202E0E4
 	nop
 _0202E0F0: .word MIi_CpuClear32
 _0202E0F4: .word 0x00002AB0
-	thumb_func_end sub_0202E0E4
+	thumb_func_end Sav2_HOF_init
 
-	thumb_func_start sub_0202E0F8
-sub_0202E0F8: ; 0x0202E0F8
+	thumb_func_start Sav2_HOF_RecordParty
+Sav2_HOF_RecordParty: ; 0x0202E0F8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r0, [sp]
@@ -217,7 +217,7 @@ _0202E288: .word 0x00002AA8
 _0202E28C: .word 0x00002AAC
 _0202E290: .word 0x0000270F
 _0202E294: .word 0x0000FFFF
-	thumb_func_end sub_0202E0F8
+	thumb_func_end Sav2_HOF_RecordParty
 
 	thumb_func_start sub_0202E298
 sub_0202E298: ; 0x0202E298

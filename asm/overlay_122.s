@@ -3856,7 +3856,7 @@ ov122_021E769C: ; 0x021E769C
 	str r0, [sp, #0xc]
 	ldrb r3, [r3, #0x10]
 	add r0, r7, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl sub_0201D5C8
 	add r0, r5, #0
@@ -4164,7 +4164,7 @@ ov122_021E7928: ; 0x021E7928
 	sub sp, #0xbc
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #4
 	ldr r4, _021E7998 ; =0x021E92C0
 	str r0, [r5, #0x18]
@@ -4174,7 +4174,7 @@ ov122_021E7928: ; 0x021E7928
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r4, _021E799C ; =0x021E9464
 	add r3, sp, #0x14
 	mov r2, #0x15
@@ -4191,7 +4191,7 @@ _021E795E:
 	ldr r0, [r5, #0x18]
 	add r2, r6, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldrb r1, [r4]
 	ldr r0, [r5, #0x18]
 	bl sub_0201CAE0
@@ -4227,7 +4227,7 @@ ov122_021E79A4: ; 0x021E79A4
 _021E79AC:
 	ldrb r1, [r5]
 	ldr r0, [r6, #0x18]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r4, r4, #1
 	add r5, r5, #1
 	cmp r4, #6
@@ -5134,7 +5134,7 @@ _021E80A4:
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0xa0
 	str r0, [r4]
 	ldr r0, [r5]
@@ -5443,7 +5443,7 @@ ov122_021E837C: ; 0x021E837C
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	strb r6, [r4, #0xc]
 	ldr r0, _021E83A4 ; =0x0000FFFF
@@ -5655,7 +5655,7 @@ ov122_021E84E0: ; 0x021E84E0
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -5714,7 +5714,7 @@ _021E853E:
 	add r2, #0x2d
 	str r0, [sp]
 	add r0, r7, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x55
 	lsl r0, r0, #2
 	mov r6, #0
@@ -6861,7 +6861,7 @@ _021E8D0E:
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	str r7, [r4, #4]
 	mov r0, #1

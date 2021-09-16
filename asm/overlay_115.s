@@ -360,7 +360,7 @@ _0225F2DE:
 	add r0, r4, r0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add r0, r4, #0
@@ -662,7 +662,7 @@ _0225F560:
 	mvn r0, r0
 	mov r1, #0x21
 	mov r2, #1
-	bl sub_0200B4F0
+	bl SetBrightness
 	ldr r3, [r4]
 	ldr r0, [r5, #0x10]
 	asr r3, r3, #0xc
@@ -799,7 +799,7 @@ _0225F650:
 	mov r0, #0
 	add r1, r0, #0
 	mov r2, #1
-	bl sub_0200B4F0
+	bl SetBrightness
 	ldr r0, [r5, #0x10]
 	mov r2, #0
 	ldr r0, [r0, #8]
@@ -1658,7 +1658,7 @@ _0225FC0E:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	bl String_dtor
 	mov r0, #3

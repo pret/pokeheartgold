@@ -164,12 +164,12 @@ ov28_0225D650: ; 0x0225D650
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #8
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -187,7 +187,7 @@ ov28_0225D650: ; 0x0225D650
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _0225D6DC ; =0x0225EAF8
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -202,7 +202,7 @@ ov28_0225D650: ; 0x0225D650
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0x54
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -216,13 +216,13 @@ ov28_0225D6E0: ; 0x0225D6E0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	thumb_func_end ov28_0225D6E0
 
@@ -378,7 +378,7 @@ _0225D7FC:
 	add r0, r4, #0
 	mov r1, #4
 	mov r3, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl sub_0201D8A0
 	ldr r0, [sp, #0x10]

@@ -1369,8 +1369,8 @@ _0203B5C6:
 	.balign 4, 0
 	thumb_func_end sub_0203B5AC
 
-	thumb_func_start sub_0203B5CC
-sub_0203B5CC: ; 0x0203B5CC
+	thumb_func_start MapHeader_MapIsUnionRoom
+MapHeader_MapIsUnionRoom: ; 0x0203B5CC
 	cmp r0, #2
 	bne _0203B5D4
 	mov r0, #1
@@ -1378,7 +1378,7 @@ sub_0203B5CC: ; 0x0203B5CC
 _0203B5D4:
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0203B5CC
+	thumb_func_end MapHeader_MapIsUnionRoom
 
 	thumb_func_start sub_0203B5D8
 sub_0203B5D8: ; 0x0203B5D8

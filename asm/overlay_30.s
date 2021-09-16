@@ -31,22 +31,22 @@ ov30_0225D520: ; 0x0225D520
 	ldr r2, _0225D638 ; =_0225DC2C
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r2, _0225D63C ; =0x0225DC48
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r2, _0225D640 ; =0x0225DC64
 	add r0, r5, #0
 	mov r1, #6
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #6
 	bl sub_0201CAE0
@@ -171,13 +171,13 @@ _0225D69E:
 	bl sub_02007234
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #8
 	bl DestroyHeap
 	ldr r0, _0225D6F8 ; =ov30_0225DC18
@@ -409,7 +409,7 @@ ov30_0225D880: ; 0x0225D880
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4, #4]
 	mov r1, #6
 	str r0, [sp]

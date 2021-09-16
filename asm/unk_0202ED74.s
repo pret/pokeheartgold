@@ -36,7 +36,7 @@ sub_0202ED98: ; 0x0202ED98
 	ldr r2, _0202EDD8 ; =0x00000658
 	mov r1, #0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #3
 	strb r0, [r4]
 	ldr r1, [r4, #4]
@@ -350,7 +350,7 @@ sub_0202EF70: ; 0x0202EF70
 	add r0, r5, r0
 	mov r1, #0xff
 	mov r2, #0x4b
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	cmp r4, #0x4b
 	blo _0202EF8A
 	mov r4, #0x4b
@@ -373,7 +373,7 @@ sub_0202EF9C: ; 0x0202EF9C
 	mov r1, #0xff
 	add r0, r4, r0
 	mov r2, #0x4b
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0202EFB4 ; =0x0000060C
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -420,7 +420,7 @@ sub_0202EFE8: ; 0x0202EFE8
 	mov r1, #0
 	lsl r2, r2, #2
 	add r6, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r4, #0
 	add r5, r6, #0
 _0202EFFA:
@@ -902,7 +902,7 @@ sub_0202F300: ; 0x0202F300
 	add r0, r5, r0
 	mov r1, #0
 	mov r2, #6
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	cmp r6, #0
 	bne _0202F322
 	ldr r0, _0202F33C ; =0x00000147

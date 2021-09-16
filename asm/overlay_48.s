@@ -1683,9 +1683,9 @@ ov48_022594F0: ; 0x022594F0
 	ldr r0, _0225963C ; =0x0225B190
 	add r7, r2, #0
 	str r1, [sp, #0x10]
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	add r0, r7, #0
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r5]
 	ldr r0, _02259640 ; =gMain + 0x60
 	mov r1, #1
@@ -1702,14 +1702,14 @@ _0225951A:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #0x20
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r2, #0
 	add r3, r7, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r1, [r4]
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
@@ -1822,7 +1822,7 @@ _0225951A:
 	bl sub_0200E644
 	ldr r1, _0225964C ; =0x000072CA
 	mov r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1844,7 +1844,7 @@ _02259658:
 	ldr r0, [r6]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -2804,7 +2804,7 @@ ov48_02259D00: ; 0x02259D00
 	str r1, [sp, #0xc]
 	add r0, #0x1c
 	mov r1, #2
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #2
 	bl sub_02002DB4
 	add r5, #0x1c
@@ -3150,7 +3150,7 @@ ov48_02259FEC: ; 0x02259FEC
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r4, #0x10
 	add r0, r4, #0
 	bl sub_0201D8E4
@@ -3386,7 +3386,7 @@ ov48_0225A1D0: ; 0x0225A1D0
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -4236,7 +4236,7 @@ _0225A7A4:
 	str r0, [sp, #8]
 	str r3, [sp, #0xc]
 	add r0, r5, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r1, [r6, #4]
 	add r0, r7, #0
 	bl ov48_0225B0E0
@@ -4251,7 +4251,7 @@ _0225A7A4:
 	str r3, [sp, #0xc]
 	add r0, r5, r4
 	mov r1, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #8]
 	add r0, r7, #0
@@ -4267,7 +4267,7 @@ _0225A7A4:
 	add r0, r5, r4
 	mov r1, #1
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

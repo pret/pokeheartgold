@@ -139,19 +139,19 @@ ov121_021E59BC: ; 0x021E59BC
 	bl RemoveWindow
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	bl ov121_021E611C
 	mov r0, #0x77
@@ -250,7 +250,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	add r5, r0, #0
 	bl memset
 	mov r0, #0x9e
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r5]
 	bl ov121_021E5D84
 	ldr r0, [r5]
@@ -577,7 +577,7 @@ ov121_021E5DA4: ; 0x021E5DA4
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5EC8 ; =0x021E7058
 	add r3, sp, #0x74
 	ldmia r5!, {r0, r1}
@@ -592,7 +592,7 @@ ov121_021E5DA4: ; 0x021E5DA4
 	str r0, [r3]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0201CAE0
@@ -610,7 +610,7 @@ ov121_021E5DA4: ; 0x021E5DA4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201CAE0
@@ -628,7 +628,7 @@ ov121_021E5DA4: ; 0x021E5DA4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
 	bl sub_0201CAE0
@@ -646,7 +646,7 @@ ov121_021E5DA4: ; 0x021E5DA4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
 	bl sub_0201CAE0
@@ -664,7 +664,7 @@ ov121_021E5DA4: ; 0x021E5DA4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -1875,7 +1875,7 @@ ov121_021E67E4: ; 0x021E67E4
 	add r4, r0, #0
 	add r0, #0x54
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r4, #0x54
 	add r0, r4, #0
 	bl ClearWindowTilemapAndCopyToVram
@@ -1904,7 +1904,7 @@ ov121_021E67FC: ; 0x021E67FC
 	mov r2, #0x3c
 	mov r1, #0
 	mul r2, r3
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0x97
 	lsl r1, r1, #2
 	ldrb r1, [r4, r1]
@@ -2310,7 +2310,7 @@ _021E6B0E:
 	str r0, [sp, #0xc]
 	ldr r2, [r4, #0x6c]
 	add r0, r4, #4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -2337,7 +2337,7 @@ _021E6B0E:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x28]
 	ldr r2, [r4, #0x6c]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #1
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2374,7 +2374,7 @@ _021E6B0E:
 	ldr r2, [r4, #0x6c]
 	mov r1, #0
 	sub r3, r3, r6
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x1c]
 	add r2, r4, r0
@@ -2465,7 +2465,7 @@ ov121_021E6C5C: ; 0x021E6C5C
 	add r0, #0x44
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add r5, #0x44
@@ -2500,7 +2500,7 @@ ov121_021E6CA4: ; 0x021E6CA4
 	add r0, #0x34
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add r5, #0x34
@@ -2569,7 +2569,7 @@ ov121_021E6CEC: ; 0x021E6CEC
 	add r0, #0x54
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add r5, #0x54
@@ -2611,7 +2611,7 @@ ov121_021E6D80: ; 0x021E6D80
 	add r0, #0x54
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add r5, #0x54
@@ -2665,7 +2665,7 @@ _021E6DF6:
 	add r0, #0x24
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0xff
@@ -2678,7 +2678,7 @@ _021E6DF6:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, #0
@@ -2721,7 +2721,7 @@ ov121_021E6E68: ; 0x021E6E68
 	add r0, #0x54
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add r5, #0x54
@@ -2775,7 +2775,7 @@ _021E6F0C:
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4]
 	mov r1, #0x19
 	str r0, [sp]

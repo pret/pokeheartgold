@@ -217,7 +217,7 @@ sub_0203B9F4: ; 0x0203B9F4
 	bne _0203BA48
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_02054388
+	bl GetFirstAliveMonInParty_CrashIfNone
 	str r0, [sp]
 	mov r1, #5
 	mov r2, #0

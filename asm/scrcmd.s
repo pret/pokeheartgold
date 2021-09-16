@@ -1266,7 +1266,7 @@ sub_02041168: ; 0x02041168
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	bl RemoveWindow
 	add r0, r5, #0
@@ -1543,7 +1543,7 @@ sub_02041328: ; 0x02041328
 	str r3, [sp, #0xc]
 	ldr r2, [r7]
 	mov r1, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #1
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1698,7 +1698,7 @@ sub_0204146C: ; 0x0204146C
 	str r3, [sp, #0xc]
 	ldr r2, [r7]
 	add r0, r6, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r1, [sp, #0x14]
 	strb r0, [r1]
 	ldr r0, [sp, #0x1c]
@@ -4991,7 +4991,7 @@ sub_02042E8C: ; 0x02042E8C
 	mov r2, #8
 	str r0, [r6]
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp]
 	strh r7, [r4, #4]
 	strh r0, [r4, #6]
@@ -5128,7 +5128,7 @@ sub_02042FC4: ; 0x02042FC4
 	add r1, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0x10]
-	bl sub_02052CB4
+	bl Special_EnterHallOfFame
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end sub_02042FC4
@@ -11881,7 +11881,7 @@ sub_02046438: ; 0x02046438
 	mov r1, #0
 	mov r2, #0x28
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r6, #0
 	add r0, #0xfb
 	lsl r0, r0, #0x18
@@ -14081,7 +14081,7 @@ sub_02047570: ; 0x02047570
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_020543BC
+	bl GetIdxOfFirstAliveMonInParty_CrashIfNone
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}

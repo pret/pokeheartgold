@@ -3624,7 +3624,7 @@ _0223A2F4:
 _0223A31C:
 	mov r2, r6, lsl #2
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, [r4, #4]
 	mov r0, r5
 	add r1, r1, r6
@@ -4397,7 +4397,7 @@ ov74_0223ADE4: ; 0x0223ADE4
 	ldr r2, [r4, #8]
 	mov r1, #0
 	mov r2, r2, lsl #2
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _0223AE08:
 	mov r0, #0
 	str r0, [r4, #4]
@@ -4517,7 +4517,7 @@ ov74_0223AF7C: ; 0x0223AF7C
 	mov r1, #0
 	mov r2, #0x110
 	mov r4, r0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [r4]
 	str r0, [r4, #0x108]
@@ -4567,12 +4567,12 @@ ov74_0223AFD8: ; 0x0223AFD8
 
 	arm_func_start ov74_0223B024
 ov74_0223B024: ; 0x0223B024
-	ldr ip, _0223B034 ; =MIi_CpuFill8
+	ldr ip, _0223B034 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x14
 	bx ip
 	.balign 4, 0
-_0223B034: .word MIi_CpuFill8
+_0223B034: .word MI_CpuFill8
 	arm_func_end ov74_0223B024
 
 	arm_func_start ov74_0223B038

@@ -803,8 +803,8 @@ _0200E9B2:
 	.balign 4, 0
 	thumb_func_end sub_0200E998
 
-	thumb_func_start sub_0200E9BC
-sub_0200E9BC: ; 0x0200E9BC
+	thumb_func_start ClearFrameAndWindow2
+ClearFrameAndWindow2: ; 0x0200E9BC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r5, r0, #0
@@ -851,7 +851,7 @@ _0200EA1E:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200E9BC
+	thumb_func_end ClearFrameAndWindow2
 
 	thumb_func_start sub_0200EA24
 sub_0200EA24: ; 0x0200EA24

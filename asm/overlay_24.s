@@ -14,7 +14,7 @@ ov24_022598C0: ; 0x022598C0
 	mov r1, #0
 	mov r2, #0xc0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #3
 	str r0, [r4]
 	ldr r0, [r5, #0xc]

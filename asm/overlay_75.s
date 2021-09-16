@@ -27,7 +27,7 @@ ov75_02246960: ; 0x02246960
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl OverlayManager_GetField18
 	ldr r0, [r0, #8]
@@ -738,7 +738,7 @@ ov75_02246EAC: ; 0x02246EAC
 	mov r1, #0
 	mov r2, #0xc
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	str r0, [r4]
 	mov r0, #1
@@ -823,12 +823,12 @@ ov75_02246F0C: ; 0x02246F0C
 	ldr r2, _02247100 ; =0x0000041C
 	mov r1, #0
 	add r5, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl OverlayManager_GetField18
 	str r0, [r5]
 	mov r0, #0x74
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r5, #4]
 	mov r0, #0x40
 	mov r1, #0x74
@@ -1192,7 +1192,7 @@ _02247270:
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _02247414 ; =0x02249A5C
 	add r3, sp, #0x70
 	mov r2, #0xe
@@ -1205,7 +1205,7 @@ _022472D0:
 	add r0, r4, #0
 	add r2, sp, #0x70
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0201CAE0
@@ -1223,7 +1223,7 @@ _022472D0:
 	mov r1, #1
 	add r2, sp, #0x8c
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201CAE0
@@ -1241,7 +1241,7 @@ _022472D0:
 	mov r1, #2
 	add r2, sp, #0xa8
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
 	bl sub_0201CAE0
@@ -1259,7 +1259,7 @@ _022472D0:
 	mov r1, #3
 	add r2, sp, #0xc4
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
 	bl sub_0201CAE0
@@ -1285,7 +1285,7 @@ _0224738E:
 	mov r1, #4
 	add r2, sp, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -1303,7 +1303,7 @@ _0224738E:
 	mov r1, #5
 	add r2, sp, #0x1c
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
 	bl sub_0201CAE0
@@ -1321,12 +1321,12 @@ _0224738E:
 	mov r1, #0x20
 	add r2, r0, #0
 	mov r3, #0x74
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x74
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add sp, #0xe0
 	pop {r3, r4, r5, pc}
 	nop
@@ -1341,22 +1341,22 @@ ov75_0224741C: ; 0x0224741C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	thumb_func_end ov75_0224741C
 
@@ -1477,16 +1477,16 @@ ov75_02247450: ; 0x02247450
 	bl sub_02007B68
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	ldr r0, [sp, #0x10]
 	mov r2, #0x33
 	add r0, #0xec
 	mov r1, #0
 	lsl r2, r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #0x2c]
 	mov r1, #5
 	add r2, sp, #0x3c
@@ -2038,7 +2038,7 @@ _02247972:
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x78
 	bl CopyWindowToVram
@@ -3067,7 +3067,7 @@ _02248168:
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x48
 	bl ClearWindowTilemapAndCopyToVram
@@ -5819,7 +5819,7 @@ ov75_02249684: ; 0x02249684
 	add r0, r5, #0
 	mov r1, #1
 	add r2, r6, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov75_02249684
@@ -5894,7 +5894,7 @@ _0224972E:
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov75_022496B8

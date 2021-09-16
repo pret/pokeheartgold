@@ -13,7 +13,7 @@ _020F645C:
 _020F6460:
 	.word 0x0000002A
 _020F6464:
-	.word 0x00000000, 0x00000023, sub_0202E0DC, sub_0202E0E4
+	.word 0x00000000, 0x00000023, Sav2_HOF_sizeof, Sav2_HOF_init
 	.word 0x00000001, 0x00000026, sub_020312A4, sub_020312AC
 	.word 0x00000002, 0x00000027, sub_0202FBCC, sub_0202FBD4
 	.word 0x00000003, 0x00000029, sub_0202FBCC, sub_0202FBD4
@@ -1780,7 +1780,7 @@ FlashClobberChunkFooter: ; 0x02027DF8
 	add r0, sp, #0
 	mov r1, #0xff
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	add r1, r5, #0
 	bl sub_020275E0
@@ -2076,7 +2076,7 @@ _02028030:
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, [r5, #0xc]
 	add r0, r4, #0
 	blx r1

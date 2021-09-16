@@ -159,7 +159,7 @@ _0200805A:
 	ldrb r1, [r1]
 	ldr r0, [r4, r0]
 	lsl r2, r2, #0xe
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	mov r7, #0xbf
 	ldr r6, _02008118 ; =0x00005050

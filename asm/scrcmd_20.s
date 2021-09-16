@@ -585,7 +585,7 @@ sub_0204F284: ; 0x0204F284
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xc
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	strb r6, [r4, #4]
 	str r5, [r4, #8]
 	ldr r0, [r7, #0x10]
@@ -816,7 +816,7 @@ sub_0204F448: ; 0x0204F448
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]

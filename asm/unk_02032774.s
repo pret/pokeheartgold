@@ -27,7 +27,7 @@ sub_02032788: ; 0x02032788
 	mov r1, #0
 	lsl r2, r2, #8
 	add r5, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r6, #6
 	mov r4, #0
 	lsl r6, r6, #6
@@ -47,7 +47,7 @@ sub_020327AC: ; 0x020327AC
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x38
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r4, #0x24
 	add r0, r4, #0
 	mov r1, #0xa
@@ -61,7 +61,7 @@ sub_020327C4: ; 0x020327C4
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x30
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r4, #8
 	add r0, r4, #0
 	mov r1, #8

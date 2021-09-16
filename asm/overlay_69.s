@@ -77,7 +77,7 @@ _021E5960:
 	lsr r0, r0, #0x18
 	bl sub_0201F590
 	ldr r0, [r5]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	ldr r1, _021E5A24 ; =0x0000C010
 	str r0, [r5, r1]
 	bl sub_02022D24
@@ -958,7 +958,7 @@ ov69_021E6118: ; 0x021E6118
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -1459,7 +1459,7 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r0, [r4, r0]
 	mov r1, #6
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, _021E676C ; =0x0000C010
 	mov r1, #6
 	ldr r0, [r4, r0]
@@ -1469,7 +1469,7 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r0, [r4, r0]
 	mov r1, #7
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1534,10 +1534,10 @@ ov69_021E64CC: ; 0x021E64CC
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r1, _021E6780 ; =0x00004753
 	mov r0, #6
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	ldr r1, _021E676C ; =0x0000C010
 	ldr r2, _021E6784 ; =0x021E766C
 	ldr r0, [r4, r1]
@@ -1567,7 +1567,7 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r0, [r4, r0]
 	ldr r2, _021E6770 ; =0x021E76B0
 	mov r1, #2
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, _021E676C ; =0x0000C010
 	mov r1, #2
 	ldr r0, [r4, r0]
@@ -1577,7 +1577,7 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r0, [r4, r0]
 	mov r1, #3
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1634,10 +1634,10 @@ ov69_021E64CC: ; 0x021E64CC
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	ldr r1, [r4]
 	mov r0, #0x10
 	bl String_ctor
@@ -1782,19 +1782,19 @@ ov69_021E67B8: ; 0x021E67B8
 	ldr r0, _021E680C ; =0x0000C010
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, _021E680C ; =0x0000C010
 	mov r1, #6
 	ldr r0, [r4, r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, _021E680C ; =0x0000C010
 	mov r1, #3
 	ldr r0, [r4, r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, _021E680C ; =0x0000C010
 	mov r1, #7
 	ldr r0, [r4, r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	nop
 _021E6800: .word 0x0000C034

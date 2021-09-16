@@ -265,7 +265,7 @@ _0221BD78:
 	sub r0, r2, #1
 	add r0, r3, r0, lsl #2
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0221C15C ; =0x0224CF4C
 	ldrh r1, [r4, #0x10]
 	ldr r0, [r0]
@@ -274,7 +274,7 @@ _0221BD78:
 	sub r1, r1, #1
 	mla r0, r1, r2, r0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldrh r0, [r4, #0x10]
 	bl ov13_02220624
 	ldrh r1, [r4, #0x10]
@@ -932,7 +932,7 @@ ov13_0221C734: ; 0x0221C734
 	mov r1, r5
 	mov r2, #0x10
 	mvn r4, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, _0221C8C0 ; =0x0224CF4C
 	mov r0, #1
 	ldr r1, [r1]
@@ -1814,7 +1814,7 @@ ov13_0221D344: ; 0x0221D344
 	sub r2, r2, lr
 	add r0, r0, lr
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldmia sp!, {r3, pc}
 _0221D3A0:
 	ldr r3, [r0, #4]
@@ -4719,7 +4719,7 @@ _0221FB14:
 	mov r2, #0x1e
 	add r0, r0, #0x354
 	add r0, r0, #0x1400
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, _0221FC40 ; =0x0224CF40
 	mov r2, #1
 	ldr r0, [r1, #8]
@@ -4906,14 +4906,14 @@ ov13_0221FD8C: ; 0x0221FD8C
 	add r0, r0, #0xa8
 	add r0, r0, #0x1400
 	add r0, r0, r4, lsl #2
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0221FF10 ; =0x0224CF40
 	mov r2, #0x16
 	ldr r0, [r0, #0xc]
 	mov r1, #0
 	add r0, r0, #0x1340
 	mla r0, r4, r2, r0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r5
 	bl ov13_02220624
 	ldr ip, _0221FF10 ; =0x0224CF40
@@ -5170,12 +5170,12 @@ _02220130: .word 0x0224CF40
 
 	arm_func_start ov13_02220134
 ov13_02220134: ; 0x02220134
-	ldr ip, _02220144 ; =MIi_CpuFill8
+	ldr ip, _02220144 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x70
 	bx ip
 	.balign 4, 0
-_02220144: .word MIi_CpuFill8
+_02220144: .word MI_CpuFill8
 	arm_func_end ov13_02220134
 
 	arm_func_start ov13_02220148
@@ -5391,12 +5391,12 @@ _022203F8: .word 0x0224CF80
 
 	arm_func_start ov13_022203FC
 ov13_022203FC: ; 0x022203FC
-	ldr ip, _0222040C ; =MIi_CpuFill8
+	ldr ip, _0222040C ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x20
 	bx ip
 	.balign 4, 0
-_0222040C: .word MIi_CpuFill8
+_0222040C: .word MI_CpuFill8
 	arm_func_end ov13_022203FC
 
 	arm_func_start ov13_02220410
@@ -5558,14 +5558,14 @@ _02220600: .word 0x0224CF84
 	arm_func_start ov13_02220604
 ov13_02220604: ; 0x02220604
 	ldr r3, _0222061C ; =0x0224CF84
-	ldr ip, _02220620 ; =MIi_CpuFill8
+	ldr ip, _02220620 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x21c
 	str r0, [r3, #4]
 	bx ip
 	.balign 4, 0
 _0222061C: .word 0x0224CF84
-_02220620: .word MIi_CpuFill8
+_02220620: .word MI_CpuFill8
 	arm_func_end ov13_02220604
 
 	arm_func_start ov13_02220624
@@ -5579,7 +5579,7 @@ ov13_02220624: ; 0x02220624
 	add r0, r1, r4, lsl #5
 	mov r1, #0
 	mov r2, #0x1e
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02220664 ; =0x0224CF84
 	mov r1, #0
 	ldr r0, [r0, #4]

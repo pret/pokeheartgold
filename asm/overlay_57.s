@@ -148,7 +148,7 @@ _022379D6:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x34
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r1, r4, #0
 	add r1, #0xe4
 	str r0, [r1]
@@ -310,37 +310,37 @@ ov57_02237B20: ; 0x02237B20
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -515,7 +515,7 @@ _02237CFC:
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _02237E2C ; =0x0223BCB8
 	add r3, sp, #0xa8
 	mov r2, #0xa
@@ -530,17 +530,17 @@ _02237D5C:
 	add r0, r4, #0
 	add r2, sp, #0xa8
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
 	add r2, sp, #0xc4
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
 	add r2, sp, #0xe0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201CAE0
@@ -571,22 +571,22 @@ _02237DBE:
 	mov r1, #4
 	add r2, sp, #0x38
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
 	add r2, sp, #0x54
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
 	add r2, sp, #0x70
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
 	add r2, sp, #0x8c
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -1788,7 +1788,7 @@ ov57_0223866C: ; 0x0223866C
 	mov r1, #4
 	add r2, r4, #0
 	lsr r3, r3, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r6, #0
@@ -1952,7 +1952,7 @@ ov57_022387E0: ; 0x022387E0
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x18]
 	add r0, sp, #0x1c
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1973,7 +1973,7 @@ ov57_022387E0: ; 0x022387E0
 	add r0, sp, #0x1c
 	mov r1, #2
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, sp, #0x1c
 	mov r1, #2
 	mov r2, #0x34
@@ -2598,7 +2598,7 @@ _02238D04:
 	add r0, sp, #0x28
 	mov r1, #0
 	mov r2, #0x18
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r2, _02238D78 ; =0x0223BD7C
 	add r0, sp, #0x18
 	ldrh r3, [r2]
@@ -3970,7 +3970,7 @@ ov57_022397B0: ; 0x022397B0
 	add r0, r5, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r0, [sp, #0x28]
 	lsl r2, r4, #0x18
 	lsl r0, r0, #0x18
@@ -4019,7 +4019,7 @@ ov57_02239814: ; 0x02239814
 	add r0, r5, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r0, [sp, #0x28]
 	lsl r2, r4, #0x18
 	lsl r0, r0, #0x18
@@ -4062,7 +4062,7 @@ ov57_02239868: ; 0x02239868
 	add r0, r5, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r0, [sp, #0x28]
 	lsl r2, r4, #0x18
 	lsl r0, r0, #0x18
@@ -4302,7 +4302,7 @@ _02239A22:
 	add r0, r5, #0
 	add r2, r4, #0
 	mov r3, #7
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	bl sub_0201D5C8
 	add r0, r4, #0
@@ -4368,7 +4368,7 @@ _02239AB8:
 	add r0, r5, r4
 	mov r3, #7
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, r4
 	bl sub_0201D5C8
 	ldr r0, [sp, #0x10]
@@ -6166,7 +6166,7 @@ _0223A988:
 	add r0, sp, #0x10
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -6258,7 +6258,7 @@ _0223AA46:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	add r0, r4, r0

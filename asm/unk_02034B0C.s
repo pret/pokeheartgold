@@ -29,7 +29,7 @@ sub_02034B0C: ; 0x02034B0C
 	ldr r2, _02034BD0 ; =0x00000D98
 	str r0, [r1, #8]
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	bl sub_020335B4
 	add r1, r0, #0
 	mov r0, #0xf
@@ -45,7 +45,7 @@ sub_02034B0C: ; 0x02034B0C
 	ldr r0, _02034BD4 ; =0x00000D64
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	bl sub_020290B4
 	add r1, r0, #0
 	mov r0, #0xf
@@ -61,7 +61,7 @@ sub_02034B0C: ; 0x02034B0C
 	ldr r0, _02034BD8 ; =0x00000D7C
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0xf
 	mov r1, #0x90
 	bl AllocFromHeap
@@ -459,7 +459,7 @@ _02034E38:
 	add r0, r2, r0
 	mov r2, #3
 	lsl r2, r2, #0xa
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	pop {r3, r4, r5, pc}
 	nop
 _02034E5C: .word _021D4134

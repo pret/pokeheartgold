@@ -444,7 +444,7 @@ ov04_02254190: ; 0x02254190
 	ldr r0, [r4, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4, #4]
 	mov r6, #0
 	ldr r5, [r0, #0x24]
@@ -1820,7 +1820,7 @@ ov04_02254CBC: ; 0x02254CBC
 	ldr r0, [r5, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	mov r1, #1
 	lsl r1, r1, #8
@@ -2189,7 +2189,7 @@ ov04_02254F8C: ; 0x02254F8C
 	mov r1, #0
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x24]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #4]
 	ldr r2, _02255078 ; =0x02257620
 	ldr r0, [r0, #4]
@@ -4339,7 +4339,7 @@ ov04_02255FC0: ; 0x02255FC0
 	ldr r0, [r5, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x24]
 	str r5, [r0]
@@ -4744,7 +4744,7 @@ ov04_02256304: ; 0x02256304
 	ldr r0, [r5, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x24]
 	str r5, [r0]
@@ -5167,7 +5167,7 @@ ov04_02256650: ; 0x02256650
 	ldr r0, [r4, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4, #4]
 	mov r1, #4
 	ldr r4, [r0, #0x24]
@@ -5843,7 +5843,7 @@ ov04_02256B64: ; 0x02256B64
 	ldr r0, [r4, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4, #4]
 	mov r1, #4
 	ldr r0, [r0, #0x24]
@@ -6240,7 +6240,7 @@ ov04_02256E60: ; 0x02256E60
 	mov r1, #0
 	ldr r0, [r0, #0x24]
 	lsl r2, r2, #2
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r4, [r0, #0x24]
 	add r0, r4, #0

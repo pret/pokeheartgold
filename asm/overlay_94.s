@@ -23,7 +23,7 @@ _021E5912:
 	ldr r0, [r4, r1]
 	mov r1, #0
 	mov r2, #0x1c
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021E5938 ; =0x00000C65
 	ldrb r1, [r4, r0]
 	add r0, #0x1b

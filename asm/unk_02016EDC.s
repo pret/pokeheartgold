@@ -73,7 +73,7 @@ sub_02016EDC: ; 0x02016EDC
 	mov r1, #0
 	add r2, r7, #0
 	str r0, [r4]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r3, #0
 	cmp r5, #0
 	ble _02016F28
@@ -141,7 +141,7 @@ _02016F78:
 	add r0, r0, r4
 	mov r1, #0
 	lsl r2, r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5]
 	mov r1, #1
 	add r0, r0, r4
@@ -519,7 +519,7 @@ _0201722A:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x54
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #1
 	str r0, [r4]
 	mov r0, #0xc

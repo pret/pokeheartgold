@@ -918,11 +918,11 @@ ov46_02258F78: ; 0x02258F78
 	bl GX_SetBanks
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	ldr r0, _02259200 ; =0x022595A4
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	add r0, r6, #0
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	ldr r1, [sp, #0x10]
 	ldr r4, _02259204 ; =0x022595DC
 	ldr r5, _02259208 ; =_02259598
@@ -936,14 +936,14 @@ _02258FAE:
 	lsr r1, r1, #0x18
 	add r2, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r5]
 	mov r1, #0x20
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [sp, #0x10]
 	ldr r1, [r5]
 	ldr r0, [r0, #0xc]
@@ -1060,7 +1060,7 @@ _02258FAE:
 	add r0, #0xd4
 	mov r1, #0
 	lsl r2, r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #0x2c]
 	mov r1, #5
 	add r2, sp, #0x38
@@ -1309,7 +1309,7 @@ _022592C0:
 	ldr r0, [r6, #0xc]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3
@@ -1495,7 +1495,7 @@ _0225943A:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r4, #8
 	add r0, r4, #0
 	bl sub_0201D8E4
@@ -1614,7 +1614,7 @@ ov46_022594E0: ; 0x022594E0
 	ldr r2, [r4, #0x18]
 	add r0, #8
 	mov r1, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop

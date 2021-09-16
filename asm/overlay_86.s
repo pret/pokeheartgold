@@ -47,7 +47,7 @@ ov86_021E5900: ; 0x021E5900
 	bl memset
 	str r4, [r5]
 	mov r0, #0x79
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r5, #0xc]
 	add r0, r4, #0
 	bl OverlayManager_GetField18
@@ -532,7 +532,7 @@ ov86_021E5D30: ; 0x021E5D30
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5DFC ; =0x021E7F04
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -547,12 +547,12 @@ ov86_021E5D30: ; 0x021E5D30
 	str r0, [r3]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
 	mov r3, #0x79
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0201CAE0
@@ -570,7 +570,7 @@ ov86_021E5D30: ; 0x021E5D30
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5E04 ; =0x021E7F3C
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -585,12 +585,12 @@ ov86_021E5D30: ; 0x021E5D30
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x79
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -608,7 +608,7 @@ ov86_021E5D30: ; 0x021E5D30
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop
@@ -664,16 +664,16 @@ ov86_021E5E54: ; 0x021E5E54
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -892,7 +892,7 @@ _021E6006:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov86_021E5FD8
@@ -3504,7 +3504,7 @@ ov86_021E757C: ; 0x021E757C
 	lsl r0, r0, #6
 	add r0, r4, r0
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	ldr r0, [r4, #0xc]
 	mov r1, #4
 	bl ScheduleBgTilemapBufferTransfer

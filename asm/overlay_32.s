@@ -150,12 +150,12 @@ ov32_0225D634: ; 0x0225D634
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #8
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -173,7 +173,7 @@ ov32_0225D634: ; 0x0225D634
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _0225D6C0 ; =0x0225E188
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -188,7 +188,7 @@ ov32_0225D634: ; 0x0225D634
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0x54
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -202,13 +202,13 @@ ov32_0225D6C4: ; 0x0225D6C4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	thumb_func_end ov32_0225D6C4
 
@@ -358,7 +358,7 @@ _0225D796:
 	str r1, [sp, #0xc]
 	add r0, #0x24
 	mov r1, #4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, #0
@@ -434,7 +434,7 @@ ov32_0225D84C: ; 0x0225D84C
 	add r0, #0x34
 	add r3, r4, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	mov r0, #4
@@ -473,7 +473,7 @@ ov32_0225D84C: ; 0x0225D84C
 	add r0, #0x34
 	add r3, r4, r7
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	mov r0, #0x51
@@ -516,7 +516,7 @@ ov32_0225D84C: ; 0x0225D84C
 	add r0, r5, #0
 	add r0, #0x34
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
@@ -619,7 +619,7 @@ _0225D9D4:
 	add r0, r5, r0
 	mov r1, #4
 	sub r3, r3, r6
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x20]
 	add r0, r5, r0
 	bl sub_0201D8A0

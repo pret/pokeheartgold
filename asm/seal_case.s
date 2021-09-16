@@ -19,7 +19,7 @@ sub_0202CBC8: ; 0x0202CBC8
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	pop {r4, pc}
 	thumb_func_end sub_0202CBC8
 

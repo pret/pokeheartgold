@@ -28,7 +28,7 @@ _021E591C:
 	mov r1, #0
 	mov r2, #0x94
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x84
 	str r0, [r4, #0xc]
 	add r0, r4, #0
@@ -467,7 +467,7 @@ ov99_021E5C88: ; 0x021E5C88
 	sub sp, #0xf4
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #4
 	ldr r4, _021E5D18 ; =0x021E9564
 	str r0, [r5, #4]
@@ -477,7 +477,7 @@ ov99_021E5C88: ; 0x021E5C88
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r4, _021E5D1C ; =0x021E9760
 	add r3, sp, #0x14
 	mov r2, #0x1c
@@ -494,7 +494,7 @@ _021E5CBE:
 	ldr r0, [r5, #4]
 	add r2, r6, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldrb r1, [r4]
 	ldr r0, [r5, #4]
 	bl sub_0201CAE0
@@ -502,7 +502,7 @@ _021E5CBE:
 	ldr r3, [r5, #0xc]
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r7, r7, #1
 	add r6, #0x1c
 	add r4, r4, #1
@@ -547,7 +547,7 @@ ov99_021E5D2C: ; 0x021E5D2C
 _021E5D3A:
 	ldrb r1, [r6, r4]
 	ldr r0, [r5, #4]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -1847,7 +1847,7 @@ _021E6798:
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x84
 	str r0, [r4, #0xc]
 	add r0, r4, #0
@@ -2048,7 +2048,7 @@ ov99_021E695C: ; 0x021E695C
 	sub sp, #0x80
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0
 	ldr r4, _021E69CC ; =0x021E9D9C
 	str r0, [r5, #4]
@@ -2058,7 +2058,7 @@ ov99_021E695C: ; 0x021E695C
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r4, _021E69D0 ; =0x021E9E60
 	add r3, sp, #0x10
 	mov r2, #0xe
@@ -2075,7 +2075,7 @@ _021E6992:
 	ldr r0, [r5, #4]
 	add r2, r6, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldrb r1, [r4]
 	ldr r0, [r5, #4]
 	bl sub_0201CAE0
@@ -2083,7 +2083,7 @@ _021E6992:
 	ldr r3, [r5, #0xc]
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r7, r7, #1
 	add r6, #0x1c
 	add r4, r4, #1
@@ -2186,7 +2186,7 @@ ov99_021E6A70: ; 0x021E6A70
 _021E6A7E:
 	ldrb r1, [r6, r4]
 	ldr r0, [r5, #4]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -2845,7 +2845,7 @@ ov99_021E6FD0: ; 0x021E6FD0
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r6, [r5]
 	str r0, [sp, #8]
@@ -4014,7 +4014,7 @@ _021E783C:
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x84
 	str r0, [r4, #0xc]
 	str r5, [r4, #0x10]
@@ -4641,7 +4641,7 @@ ov99_021E7D30: ; 0x021E7D30
 	sub sp, #0xd4
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0
 	ldr r4, _021E7D98 ; =0x021E9F80
 	str r0, [r5]
@@ -4651,7 +4651,7 @@ ov99_021E7D30: ; 0x021E7D30
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r4, _021E7D9C ; =0x021EA0BC
 	add r3, sp, #0x10
 	mov r2, #0x18
@@ -4670,7 +4670,7 @@ _021E7D6A:
 	ldr r0, [r5]
 	add r2, r6, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldrb r1, [r4]
 	ldr r0, [r5]
 	bl sub_0201CAE0
@@ -4678,7 +4678,7 @@ _021E7D6A:
 	ldr r3, [r5, #0xc]
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r7, r7, #1
 	add r6, #0x1c
 	add r4, r4, #1
@@ -4838,7 +4838,7 @@ ov99_021E7EBC: ; 0x021E7EBC
 _021E7ED0:
 	ldrb r1, [r6, r4]
 	ldr r0, [r5]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -5379,7 +5379,7 @@ _021E831E:
 	mov r1, #0
 	mov r2, #0xe4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x84
 	str r0, [r4, #0xc]
 	add r0, r4, #0
@@ -5673,7 +5673,7 @@ ov99_021E8590: ; 0x021E8590
 	sub sp, #0xb8
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0
 	ldr r4, _021E8600 ; =0x021EA374
 	str r0, [r5, #4]
@@ -5683,7 +5683,7 @@ ov99_021E8590: ; 0x021E8590
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r4, _021E8604 ; =0x021EA4F4
 	add r3, sp, #0x10
 	mov r2, #0x15
@@ -5700,7 +5700,7 @@ _021E85C6:
 	ldr r0, [r5, #4]
 	add r2, r6, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldrb r1, [r4]
 	ldr r0, [r5, #4]
 	bl sub_0201CAE0
@@ -5708,7 +5708,7 @@ _021E85C6:
 	ldr r3, [r5, #0xc]
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r7, r7, #1
 	add r6, #0x1c
 	add r4, r4, #1
@@ -5907,7 +5907,7 @@ ov99_021E875C: ; 0x021E875C
 _021E876A:
 	ldrb r1, [r6, r4]
 	ldr r0, [r5, #4]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -7535,7 +7535,7 @@ ov99_021E93DC: ; 0x021E93DC
 	add r4, r0, #0
 	mov r1, #0
 	lsl r2, r2, #6
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r6, [r4]
 	ldr r1, [r6]
 	add r0, r5, #0

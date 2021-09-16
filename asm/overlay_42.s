@@ -5142,13 +5142,13 @@ ov42_02229514: ; 0x02229514
 	lsr r1, r1, #0x18
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	add r2, sp, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 	nop

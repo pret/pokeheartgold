@@ -584,7 +584,7 @@ ov67_021E5DA0: ; 0x021E5DA0
 	sub sp, #0x80
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0x70
 	ldr r5, _021E5E70 ; =0x021E6D5C
 	str r0, [r4, #0x10]
@@ -594,7 +594,7 @@ ov67_021E5DA0: ; 0x021E5DA0
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5E74 ; =0x021E6DA8
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -609,12 +609,12 @@ ov67_021E5DA0: ; 0x021E5DA0
 	str r0, [r3]
 	ldr r0, [r4, #0x10]
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0
 	ldr r3, [r4]
 	mov r1, #0x20
 	add r2, r0, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	bl sub_0201CAE0
@@ -632,7 +632,7 @@ ov67_021E5DA0: ; 0x021E5DA0
 	str r0, [r3]
 	ldr r0, [r4, #0x10]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5E7C ; =0x021E6DC4
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -647,12 +647,12 @@ ov67_021E5DA0: ; 0x021E5DA0
 	str r0, [r3]
 	ldr r0, [r4, #0x10]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r3, [r4]
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0x10]
 	mov r1, #4
 	bl sub_0201CAE0
@@ -670,7 +670,7 @@ ov67_021E5DA0: ; 0x021E5DA0
 	str r0, [r3]
 	ldr r0, [r4, #0x10]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop
@@ -687,16 +687,16 @@ ov67_021E5E84: ; 0x021E5E84
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x10]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x10]
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1036,7 +1036,7 @@ _021E6146:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov67_021E6118

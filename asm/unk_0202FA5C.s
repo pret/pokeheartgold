@@ -172,7 +172,7 @@ sub_0202FB38: ; 0x0202FB38
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [sp]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r7, #0
 	add r5, r7, #0
 	add r4, r4, #4
@@ -212,7 +212,7 @@ sub_0202FB98: ; 0x0202FB98
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x84
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #8
@@ -710,7 +710,7 @@ _0202FF1A:
 	add r0, r7, #0
 	mov r1, #0
 	mov r2, #0x64
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #8]
 	add r1, sp, #0x28
 	add r2, sp, #0x24
@@ -1752,7 +1752,7 @@ sub_020306DC: ; 0x020306DC
 	add r0, r6, #0
 	mov r1, #0
 	lsl r2, r2, #2
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r7, #0
 	bl sub_0207463C
 	strh r0, [r6]
@@ -2060,7 +2060,7 @@ sub_02030920: ; 0x02030920
 	mov r1, #0
 	mov r2, #0x64
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -2076,12 +2076,12 @@ _0203093C: .word FreeToHeap
 
 	thumb_func_start sub_02030940
 sub_02030940: ; 0x02030940
-	ldr r3, _02030948 ; =MIi_CpuFill8
+	ldr r3, _02030948 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x58
 	bx r3
 	.balign 4, 0
-_02030948: .word MIi_CpuFill8
+_02030948: .word MI_CpuFill8
 	thumb_func_end sub_02030940
 
 	thumb_func_start sub_0203094C

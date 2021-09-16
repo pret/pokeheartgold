@@ -19,7 +19,7 @@ ov14_021E5900: ; 0x021E5900
 	mov r1, #0
 	mov r2, #0x38
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl OverlayManager_GetField18
 	str r0, [r4]
@@ -204,7 +204,7 @@ ov14_021E5A70: ; 0x021E5A70
 	sub sp, #0xd4
 	add r4, r0, #0
 	mov r0, #0xa
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	ldr r1, [r4, #0x34]
 	add r3, sp, #0xc4
 	ldr r5, _021E5BE0 ; =0x021F7BC8
@@ -215,7 +215,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5BE4 ; =0x021F7C20
 	add r3, sp, #0xa8
 	ldmia r5!, {r0, r1}
@@ -231,7 +231,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	add r3, r1, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	ldr r0, [r0, #0x14]
@@ -240,7 +240,7 @@ ov14_021E5A70: ; 0x021E5A70
 	mov r1, #0x20
 	add r2, r0, #0
 	mov r3, #0xa
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5BE8 ; =0x021F7C3C
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -256,7 +256,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r3, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x34]
 	mov r1, #1
 	ldr r0, [r0, #0x14]
@@ -265,7 +265,7 @@ ov14_021E5A70: ; 0x021E5A70
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0xa
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5BEC ; =0x021F7C74
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -281,7 +281,7 @@ ov14_021E5A70: ; 0x021E5A70
 	mov r1, #2
 	ldr r0, [r0, #0x14]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5BF0 ; =0x021F7C90
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -297,7 +297,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r3, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5BF4 ; =0x021F7C58
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -313,7 +313,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r3, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x34]
 	mov r1, #4
 	ldr r0, [r0, #0x14]
@@ -322,7 +322,7 @@ ov14_021E5A70: ; 0x021E5A70
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0xa
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5BF8 ; =0x021F7CAC
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -338,7 +338,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r3, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5BFC ; =0x021F7CC8
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -354,7 +354,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r3, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x34]
 	mov r1, #6
 	ldr r0, [r0, #0x14]
@@ -363,7 +363,7 @@ ov14_021E5A70: ; 0x021E5A70
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0xa
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add sp, #0xd4
 	pop {r4, r5, pc}
 	nop
@@ -384,31 +384,31 @@ ov14_021E5C00: ; 0x021E5C00
 	ldr r0, [r4, #0x34]
 	mov r1, #6
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #5
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #4
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #3
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #2
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #1
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x14]
 	bl FreeToHeap
@@ -11420,7 +11420,7 @@ ov14_021EAFAC: ; 0x021EAFAC
 	ldr r2, _021EB0D8 ; =0x000088E0
 	mov r1, #0
 	str r0, [r4, #0x34]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #2
 	mov r1, #0xa
 	bl NARC_ctor
@@ -30812,7 +30812,7 @@ ov14_021F4D10: ; 0x021F4D10
 	add r0, r1, #4
 	add r5, r4, r0
 	add r0, sp, #0x38
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	mov r3, #2
@@ -30880,7 +30880,7 @@ ov14_021F4D10: ; 0x021F4D10
 	ldr r0, _021F4E64 ; =0x00000424
 	add r5, r4, r0
 	add r0, sp, #0x38
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	mov r3, #2
@@ -31098,7 +31098,7 @@ _021F4F66:
 	add r0, r7, #0
 	add r1, r4, #0
 	add r3, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov14_021F4F24
@@ -32137,7 +32137,7 @@ ov14_021F57B8: ; 0x021F57B8
 	sub sp, #0x1c
 	add r4, r0, #0
 	add r0, sp, #0xc
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -32176,7 +32176,7 @@ ov14_021F57B8: ; 0x021F57B8
 	add r0, sp, #0xc
 	bl RemoveWindow
 	add r0, sp, #0xc
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -32250,7 +32250,7 @@ ov14_021F58B8: ; 0x021F58B8
 	sub sp, #0x1c
 	add r5, r0, #0
 	add r0, sp, #0xc
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -34013,7 +34013,7 @@ ov14_021F6654: ; 0x021F6654
 	add r5, #0x30
 	add r0, r5, r4
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r5, r4
 	bl GetWindowBgId
 	add r1, r0, #0
@@ -34025,26 +34025,26 @@ ov14_021F6654: ; 0x021F6654
 
 	thumb_func_start ov14_021F6678
 ov14_021F6678: ; 0x021F6678
-	ldr r3, _021F6684 ; =sub_0200E9BC
+	ldr r3, _021F6684 ; =ClearFrameAndWindow2
 	add r0, #0x30
 	lsl r1, r1, #4
 	add r0, r0, r1
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_021F6684: .word sub_0200E9BC
+_021F6684: .word ClearFrameAndWindow2
 	thumb_func_end ov14_021F6678
 
 	thumb_func_start ov14_021F6688
 ov14_021F6688: ; 0x021F6688
-	ldr r3, _021F6694 ; =sub_0200E9BC
+	ldr r3, _021F6694 ; =ClearFrameAndWindow2
 	add r0, #0x30
 	lsl r1, r1, #4
 	add r0, r0, r1
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_021F6694: .word sub_0200E9BC
+_021F6694: .word ClearFrameAndWindow2
 	thumb_func_end ov14_021F6688
 
 	thumb_func_start ov14_021F6698
@@ -34528,7 +34528,7 @@ _021F6996:
 	add r0, #0x30
 	ldr r2, [r2, #0x28]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl DestroyMsgData
 	add sp, #0x10

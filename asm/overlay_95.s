@@ -208,7 +208,7 @@ _021E5A48:
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5B1C ; =0x021E767C
 	add r3, sp, #0x38
 	mov r2, #0xa
@@ -223,17 +223,17 @@ _021E5AA8:
 	add r0, r4, #0
 	add r2, sp, #0x38
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
 	add r2, sp, #0x54
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
 	add r2, sp, #0x70
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201CAE0
@@ -418,7 +418,7 @@ ov95_021E5C44: ; 0x021E5C44
 	add r0, r5, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r0, [sp, #0x28]
 	lsl r2, r4, #0x18
 	lsl r0, r0, #0x18
@@ -2628,7 +2628,7 @@ ov95_021E6D70: ; 0x021E6D70
 	bl NARC_ctor
 	str r0, [r4, #0x40]
 	mov r0, #0x46
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #4]
 	mov r0, #0x40
 	mov r1, #0x46
@@ -2807,13 +2807,13 @@ ov95_021E6F0C: ; 0x021E6F0C
 	bl sub_02002B8C
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	bl sub_020205AC
@@ -2858,7 +2858,7 @@ _021E6FD0:
 	add r0, r4, #0
 	add r2, sp, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -2866,7 +2866,7 @@ _021E6FD0:
 	mov r1, #5
 	add r2, sp, #0x1c
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
 	bl sub_0201CAE0
@@ -2874,7 +2874,7 @@ _021E6FD0:
 	mov r1, #6
 	add r2, sp, #0x38
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
 	bl sub_0201CAE0
@@ -2909,7 +2909,7 @@ _021E7042:
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp]
 	str r0, [r4]
 	str r5, [r4, #0xc]
@@ -2944,13 +2944,13 @@ _021E7082:
 	bl ScrStrBufs_delete
 	ldr r0, [r4, #0xc]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -3290,7 +3290,7 @@ ov95_021E7328: ; 0x021E7328
 	mov r1, #4
 	add r2, r5, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r7, #0

@@ -17,7 +17,7 @@ sub_0202ADEC: ; 0x0202ADEC
 	mov r1, #0
 	lsl r2, r2, #8
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0
 	add r0, r1, #0
 _0202ADFE:

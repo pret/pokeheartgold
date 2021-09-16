@@ -42,7 +42,7 @@ _022469A6:
 	mov r0, #0
 	str r0, [r4, #4]
 	mov r0, #0x38
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #8]
 	mov r0, #0x19
 	lsl r0, r0, #4
@@ -2145,13 +2145,13 @@ ov71_02247924: ; 0x02247924
 	bl ov71_02247498
 	ldr r0, [r4, #0x54]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x54]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x54]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0x58
 	bl RemoveWindow
@@ -2249,22 +2249,22 @@ ov71_02247A10: ; 0x02247A10
 	and r0, r1
 	strh r0, [r2]
 	ldr r0, _02247C18 ; =0x0224BC74
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r0, [r4, #0x54]
 	ldr r2, _02247C1C ; =0x0224BC84
 	mov r1, #1
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x54]
 	ldr r2, _02247C20 ; =0x0224BCA0
 	mov r1, #2
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x54]
 	ldr r2, _02247C20 ; =0x0224BCA0
 	mov r1, #6
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -2665,7 +2665,7 @@ _02247DB4:
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #0
 	str r0, [r4, #8]
 	ldr r0, [r5]
@@ -3757,21 +3757,21 @@ ov71_02248604: ; 0x02248604
 	and r0, r1
 	strh r0, [r2]
 	ldr r0, _0224888C ; =0x0224BCEC
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
 	ldr r2, _02248890 ; =0x0224BD1C
 	mov r1, #2
 	mov r3, #1
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
 	ldr r2, _02248890 ; =0x0224BD1C
 	mov r1, #6
 	mov r3, #1
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	bl OS_DisableInterrupts
 	add r5, r0, #0
 	add r0, r4, #0
@@ -3780,14 +3780,14 @@ ov71_02248604: ; 0x02248604
 	ldr r2, _02248894 ; =0x0224BD38
 	mov r1, #3
 	mov r3, #2
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
 	ldr r2, _02248894 ; =0x0224BD38
 	mov r1, #7
 	mov r3, #2
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r5, #0
 	bl OS_RestoreInterrupts
 	mov r0, #0
@@ -4054,21 +4054,21 @@ _022488B2:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r4, #0xc0
 	ldr r0, [r4]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov71_0224889C
@@ -5824,17 +5824,17 @@ ov71_02249670: ; 0x02249670
 	and r0, r1
 	strh r0, [r2]
 	ldr r0, _022497C0 ; =0x0224BD84
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r0, [r4, #0x24]
 	ldr r2, _022497C4 ; =0x0224BDA4
 	mov r1, #3
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x24]
 	ldr r2, _022497C4 ; =0x0224BDA4
 	mov r1, #7
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	bl ov71_022473A0
 	cmp r0, #3
@@ -5980,10 +5980,10 @@ ov71_022497C8: ; 0x022497C8
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov71_022497C8
@@ -6845,32 +6845,32 @@ ov71_02249E6C: ; 0x02249E6C
 	orr r0, r1
 	strh r0, [r2]
 	ldr r0, _0224A06C ; =0x0224BDF0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224A070 ; =0x0224BE00
 	mov r1, #1
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224A070 ; =0x0224BE00
 	mov r1, #5
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224A074 ; =0x0224BE1C
 	mov r1, #2
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224A078 ; =0x0224BE38
 	mov r1, #3
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224A078 ; =0x0224BE38
 	mov r1, #7
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7071,22 +7071,22 @@ ov71_0224A080: ; 0x0224A080
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov71_0224A080
@@ -7332,17 +7332,17 @@ ov71_0224A278: ; 0x0224A278
 	orr r0, r1
 	strh r0, [r2]
 	ldr r0, _0224A3D0 ; =0x0224BE84
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r0, [r4, #0x24]
 	ldr r2, _0224A3D4 ; =0x0224BEA4
 	mov r1, #3
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x24]
 	ldr r2, _0224A3D4 ; =0x0224BEA4
 	mov r1, #7
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	bl ov71_022473A0
 	cmp r0, #3
@@ -7491,10 +7491,10 @@ ov71_0224A3D8: ; 0x0224A3D8
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov71_0224A3D8
@@ -8493,29 +8493,29 @@ ov71_0224AB7C: ; 0x0224AB7C
 	orr r0, r1
 	strh r0, [r2]
 	ldr r0, _0224AD9C ; =0x0224BEFC
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224ADA0 ; =0x0224BF1C
 	mov r1, #2
 	mov r3, #1
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224ADA0 ; =0x0224BF1C
 	mov r1, #6
 	mov r3, #1
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	bl OS_DisableInterrupts
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224ADA4 ; =0x0224BF38
 	mov r1, #3
 	mov r3, #2
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	ldr r2, _0224ADA4 ; =0x0224BF38
 	mov r1, #7
 	mov r3, #2
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r5, #0
 	bl OS_RestoreInterrupts
 	mov r0, #0
@@ -8736,16 +8736,16 @@ ov71_0224ADB0: ; 0x0224ADB0
 _0224ADC0:
 	ldr r0, [r4, #0xc]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov71_0224ADB0
@@ -9240,7 +9240,7 @@ ov71_0224B198: ; 0x0224B198
 _0224B1C8:
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	add r0, #0x5c
 	bl RemoveWindow
@@ -9341,17 +9341,17 @@ ov71_0224B280: ; 0x0224B280
 	orr r0, r1
 	strh r0, [r2]
 	ldr r0, _0224B438 ; =0x0224BF94
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r0, [r4, #0x58]
 	ldr r2, _0224B43C ; =0x0224BFA4
 	mov r1, #1
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x58]
 	ldr r2, _0224B440 ; =0x0224BFC0
 	mov r1, #2
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -9817,7 +9817,7 @@ _0224B68E:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #0
 	str r0, [r4, #8]
 	ldr r0, [r5]

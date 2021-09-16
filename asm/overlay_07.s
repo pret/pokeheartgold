@@ -1884,7 +1884,7 @@ _0221CADE:
 	lsr r0, r0, #0x18
 	lsl r1, r1, #0xe
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	bl ov07_0221C4A0
 	add r4, r0, #0
@@ -3035,7 +3035,7 @@ ov07_0221D374: ; 0x0221D374
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #8
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	ldr r0, [r5, #0x18]
 	mov r1, #0xff
@@ -3377,7 +3377,7 @@ ov07_0221D5B0: ; 0x0221D5B0
 	mov r2, #0x19
 	mov r1, #0
 	lsl r2, r2, #8
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #2
 	mov r1, #0
 	bl sub_0201BC28
@@ -3520,7 +3520,7 @@ ov07_0221D718: ; 0x0221D718
 	mov r2, #0x19
 	mov r1, #0
 	lsl r2, r2, #8
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	mov r1, #4
 	bl ov07_0221D55C
@@ -5998,7 +5998,7 @@ ov07_0221E9D4: ; 0x0221E9D4
 	mov r1, #0
 	mov r2, #0x28
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0x19
 	ldr r0, [r6]
 	lsl r1, r1, #4
@@ -6007,7 +6007,7 @@ ov07_0221E9D4: ; 0x0221E9D4
 	mov r1, #0
 	lsl r2, r2, #4
 	str r0, [r4, #0x24]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	add r0, #0x44
 	ldrh r1, [r0]
@@ -34733,7 +34733,7 @@ _0222CA06:
 	lsr r0, r0, #0x18
 	lsl r1, r1, #0xe
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4]
 	bl ov07_0221C4A0
 	add r5, r0, #0
@@ -35534,7 +35534,7 @@ _0222D0FA:
 	lsr r0, r0, #0x18
 	lsl r1, r1, #0xe
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4]
 	bl ov07_0221C4A0
 	add r5, r0, #0
@@ -41810,7 +41810,7 @@ _02230318:
 	lsr r0, r0, #0x18
 	lsl r1, r1, #0xe
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4]
 	bl ov07_0221C4A0
 	add r5, r0, #0
@@ -49502,7 +49502,7 @@ ov07_02233DB8: ; 0x02233DB8
 	mov r1, #0
 	mov r2, #0xe0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	cmp r4, #0
 	bne _02233DD6
 	bl GF_AssertFail

@@ -674,7 +674,7 @@ ov98_0221EABC: ; 0x0221EABC
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #8]
 	lsl r5, r0, #4
 	ldr r0, [sp]
@@ -683,7 +683,7 @@ ov98_0221EABC: ; 0x0221EABC
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #4]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #6
 	ldr r2, [sp]
 	mov r0, #0
@@ -910,7 +910,7 @@ _0221EC8A:
 	ldr r0, [r5, #4]
 	add r0, r0, r6
 	add r3, r4, r3
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r6
 	bl sub_0201D5C8
@@ -960,7 +960,7 @@ ov98_0221ECD0: ; 0x0221ECD0
 	ldr r2, [r5, #0x14]
 	add r0, r0, r4
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	bl sub_0201D5C8
@@ -1013,7 +1013,7 @@ ov98_0221ED48: ; 0x0221ED48
 	ldr r0, [r4, #4]
 	ldr r2, [r4, #0x14]
 	add r0, r0, r5
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r4, #4]
 	add r0, r0, r5
 	bl sub_0201D5C8
@@ -1078,7 +1078,7 @@ ov98_0221EDC4: ; 0x0221EDC4
 	ldr r2, [r5, #0x14]
 	add r0, r0, r4
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	bl sub_0201D5C8
@@ -1123,7 +1123,7 @@ _0221EE3E:
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #0x14]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	bl sub_0201D5C8
@@ -1171,7 +1171,7 @@ ov98_0221EE9C: ; 0x0221EE9C
 	ldr r0, [r4, #4]
 	add r3, r7, #0
 	add r0, r0, r5
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r4, #4]
 	add r0, r0, r5
 	bl sub_0201D5C8

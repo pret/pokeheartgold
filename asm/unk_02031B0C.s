@@ -46,7 +46,7 @@ sub_02031B20: ; 0x02031B20
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x80
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	add r0, #0xc
 	bl sub_02031B5C
@@ -81,12 +81,12 @@ _02031B58: .word sub_02031B20
 
 	thumb_func_start sub_02031B5C
 sub_02031B5C: ; 0x02031B5C
-	ldr r3, _02031B64 ; =MIi_CpuFill8
+	ldr r3, _02031B64 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #8
 	bx r3
 	.balign 4, 0
-_02031B64: .word MIi_CpuFill8
+_02031B64: .word MI_CpuFill8
 	thumb_func_end sub_02031B5C
 
 	thumb_func_start sub_02031B68
@@ -460,12 +460,12 @@ sub_02031DA0: ; 0x02031DA0
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #0xe
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, sp, #4
 	add r0, #2
 	mov r1, #0
 	mov r2, #0xa
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	add r1, sp, #4
 	str r0, [sp]
@@ -909,7 +909,7 @@ sub_020320E0: ; 0x020320E0
 	mov r1, #0
 	mov r2, #0x20
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl PlayerProfile_GetTrainerID
 	str r0, [r4]
@@ -1602,7 +1602,7 @@ sub_020325CC: ; 0x020325CC
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	add r0, #0x18
 	bl sub_02031B5C

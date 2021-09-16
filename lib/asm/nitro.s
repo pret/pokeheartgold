@@ -12465,8 +12465,8 @@ sub_020D4968: ; 0x020D4968
 	bx lr
 	arm_func_end sub_020D4968
 
-	arm_func_start MIi_CpuFill8
-MIi_CpuFill8: ; 0x020D4994
+	arm_func_start MI_CpuFill8
+MI_CpuFill8: ; 0x020D4994
 	cmp r2, #0
 	beq _020D49A0
 	b _020D49A4
@@ -12526,7 +12526,7 @@ _020D4A38:
 	orr r1, r1, r3
 	strh r1, [r0]
 	bx lr
-	arm_func_end MIi_CpuFill8
+	arm_func_end MI_CpuFill8
 
 	arm_func_start MIi_CpuCopy8
 MIi_CpuCopy8: ; 0x020D4A50
@@ -16240,7 +16240,7 @@ sub_020D792C: ; 0x020D792C
 	mov r1, #0
 	mov r2, #0x5c
 	mov r4, r0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [r4, #0x10]
 	str r0, [r4, #0xc]
@@ -16491,7 +16491,7 @@ sub_020D7C00: ; 0x020D7C00
 	ldr r2, [r7, #0x30]
 	mov r0, r5
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _020D7C8C:
 	add r0, sp, #4
 	bl FS_CloseFile
@@ -16518,7 +16518,7 @@ _020D7C94:
 	ldr r2, [r7, #0x38]
 	mov r0, r5
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _020D7CF0:
 	add r0, sp, #4
 	bl FS_CloseFile
@@ -17372,7 +17372,7 @@ FS_ClearOverlayImage: ; 0x020D8764
 	add r0, r4, r5
 	sub r2, r6, r5
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end FS_ClearOverlayImage
 
@@ -17617,7 +17617,7 @@ FSi_CompareDigest: ; 0x020D8AD8
 	add r0, sp, #0x44
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r2, _020D8B68 ; =_02110CA0
 	add r1, sp, #4
 	ldmia r2, {r0, r2}
@@ -17687,7 +17687,7 @@ _020D8BDC:
 	ldr r0, [r5, #4]
 	mov r2, r4
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	bl sub_020D3F48
 	ldmia sp!, {r3, r4, r5, pc}
 _020D8BFC:
@@ -17957,7 +17957,7 @@ sub_020D8F08: ; 0x020D8F08
 	bhs _020D8F6C
 	add r0, r4, #0x18
 	add r0, r0, r3
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r4
 	bl sub_020D8FC0
 	mov r3, #0
@@ -17969,7 +17969,7 @@ _020D8F6C:
 	add r0, r0, r3
 	sub r2, r2, #8
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _020D8F88:
 	str r7, [r4, #0x50]
 	mov r0, r4
@@ -17982,7 +17982,7 @@ _020D8F88:
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x58
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D8FBC: .word _02110CA8
@@ -22471,7 +22471,7 @@ sub_020DC9F0: ; 0x020DC9F0
 	mov r1, #0
 	add r0, r4, #0x18
 	mov r2, #0x48
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _020DCD58 ; =0x0000203F
 	str r5, [r4, #4]
 	str r0, [r4, #0x58]
@@ -24881,7 +24881,7 @@ _020DE988:
 	mov r1, #0
 	mov r2, #0x44
 	strh r7, [r3, #0x50]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr ip, _020DEAF4 ; =0x021E4220
 	mov r1, #0x82
 	strh r1, [ip, #0x50]
@@ -25061,7 +25061,7 @@ sub_020DEBEC: ; 0x020DEBEC
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x44
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r3, #0
 	ldr r1, _020DECC0 ; =0x0000FFFF
 	mov r7, #0x82
@@ -26106,7 +26106,7 @@ sub_020DF94C: ; 0x020DF94C
 _020DF9E4:
 	add r0, sp, #8
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _020DF9F0:
 	ldrh r2, [sp, #0x40]
 	add r0, sp, #0
@@ -30551,12 +30551,12 @@ _020E3564: .word 0x021E4F68
 
 	arm_func_start sub_020E3568
 sub_020E3568: ; 0x020E3568
-	ldr ip, _020E3578 ; =MIi_CpuFill8
+	ldr ip, _020E3578 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x24
 	bx ip
 	.align 2, 0
-_020E3578: .word MIi_CpuFill8
+_020E3578: .word MI_CpuFill8
 	arm_func_end sub_020E3568
 
 	arm_func_start sub_020E357C
@@ -30574,7 +30574,7 @@ _020E35A0:
 	mov r0, r6
 	mov r1, r5
 	mov r2, fp
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	bl OS_DisableInterrupts
 	ldr r1, [r8, #0xc0]
 	mov r7, r0

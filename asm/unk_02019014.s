@@ -24,7 +24,7 @@ sub_02019014: ; 0x02019014
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -432,7 +432,7 @@ sub_020192D0: ; 0x020192D0
 	mov r1, #0
 	mov r2, #0x80
 	add r5, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl OverlayManager_GetField18
 	str r0, [r5]
@@ -744,7 +744,7 @@ sub_0201956C: ; 0x0201956C
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #4]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

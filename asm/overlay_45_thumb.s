@@ -6048,7 +6048,7 @@ ov45_0222C978: ; 0x0222C978
 	mov r1, #0
 	mov r2, #0xb8
 	add r5, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl sub_02015D14
 	add r5, #0xb4

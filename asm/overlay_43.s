@@ -427,7 +427,7 @@ ov43_0222A24C: ; 0x0222A24C
 	add r0, r4, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0201D3C4
+	bl InitWindow
 	add r0, sp, #0x18
 	ldrb r1, [r0, #0x10]
 	add r2, r6, #0
@@ -839,7 +839,7 @@ ov43_0222A570: ; 0x0222A570
 	add r7, r1, #0
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0x10
 	ldr r4, _0222A664 ; =0x0222EDC8
 	str r0, [r5]
@@ -849,7 +849,7 @@ ov43_0222A570: ; 0x0222A570
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r6, _0222A668 ; =0x0222EFFC
 	mov r4, #0
 _0222A598:
@@ -858,13 +858,13 @@ _0222A598:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #0x20
 	mov r2, #0
 	add r3, r7, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	lsl r1, r4, #0x18
 	ldr r0, [r5]
 	lsr r1, r1, #0x18
@@ -959,7 +959,7 @@ _0222A672:
 	lsl r1, r4, #0x18
 	ldr r0, [r5]
 	lsr r1, r1, #0x18
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r4, r4, #1
 	cmp r4, #7
 	blt _0222A672
@@ -1260,7 +1260,7 @@ ov43_0222A8C0: ; 0x0222A8C0
 	bl sub_0200E644
 	add r0, r5, #0
 	add r0, #0x64
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x18
@@ -1433,7 +1433,7 @@ _0222AA22:
 	ldr r2, [r5, #0x74]
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r5, #0x84
 	str r0, [r5]
 	add r0, r4, #0
@@ -1883,7 +1883,7 @@ ov43_0222ADB8: ; 0x0222ADB8
 	add r0, sp, #4
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4]
 	mov r1, #0x19
 	str r0, [sp, #4]
@@ -1951,7 +1951,7 @@ ov43_0222AE2C: ; 0x0222AE2C
 	mov r0, #0
 	mov r1, #0x3d
 	mov r2, #1
-	bl sub_0200B4F0
+	bl SetBrightness
 _0222AE58:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
@@ -2257,7 +2257,7 @@ ov43_0222B0A0: ; 0x0222B0A0
 	add r5, r1, #0
 	str r2, [sp, #0x24]
 	str r3, [sp, #0x18]
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r3, #4
 	ldr r1, [sp, #0x14]
 	str r3, [sp]
@@ -2276,7 +2276,7 @@ ov43_0222B0A0: ; 0x0222B0A0
 	bl sub_0201D40C
 	ldr r0, [sp, #0x14]
 	add r0, #0x20
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b
@@ -2363,7 +2363,7 @@ _0222B160:
 	mov r1, #4
 	add r2, r4, #0
 	lsr r3, r3, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r7, r7, #1
 	add r5, #0x28
 	cmp r7, #4
@@ -2805,7 +2805,7 @@ ov43_0222B4BC: ; 0x0222B4BC
 	add r0, r5, #0
 	ldr r2, [r5, #0x3c]
 	add r0, #0x20
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	str r0, [r5, #0x34]
 	add r0, r5, #0
 	add r0, #0x20
@@ -2852,7 +2852,7 @@ ov43_0222B55C: ; 0x0222B55C
 	add r4, r0, #0
 	add r0, #0x20
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r4, #0x20
 	add r0, r4, #0
 	bl sub_0201D8E4
@@ -3424,7 +3424,7 @@ _0222B95A:
 	add r2, r4, #0
 	add r0, #0xb8
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #0
@@ -4399,7 +4399,7 @@ ov43_0222C148: ; 0x0222C148
 	add r0, sp, #0x28
 	mov r1, #0
 	mov r2, #0x18
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, _0222C220 ; =0x0222ED9C
 	add r0, sp, #0x28
 	ldrh r2, [r1, #4]
@@ -4543,7 +4543,7 @@ _0222C2A0:
 	mov r0, #0
 	mov r1, #0x3d
 	mov r2, #1
-	bl sub_0200B4F0
+	bl SetBrightness
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4938,7 +4938,7 @@ ov43_0222C550: ; 0x0222C550
 	add r0, r5, #0
 	ldr r2, [r2]
 	add r0, #0xc8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r1, r5, #0
 	add r1, #0xdc
 	str r0, [r1]
@@ -4987,7 +4987,7 @@ ov43_0222C600: ; 0x0222C600
 	add r4, r0, #0
 	add r0, #0xc8
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0xc8
 	bl sub_0201D8E4
@@ -5198,7 +5198,7 @@ ov43_0222C788: ; 0x0222C788
 	strh r0, [r5, #4]
 	add r0, r5, #0
 	add r0, #8
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #2
 	ldrsh r1, [r4, r0]
 	cmp r1, #0
@@ -5659,7 +5659,7 @@ _0222CAD0:
 	add r0, r5, #0
 	add r2, r6, #0
 	lsl r3, r3, #3
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x28
@@ -6092,7 +6092,7 @@ ov43_0222CE48: ; 0x0222CE48
 	str r1, [sp, #0x14]
 	add r4, r2, #0
 	add r7, r3, #0
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r1, #0xb
 	str r1, [sp]
 	mov r0, #0x18
@@ -6109,7 +6109,7 @@ ov43_0222CE48: ; 0x0222CE48
 	bl sub_0201D40C
 	add r0, r5, #0
 	add r0, #0x10
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #0xe
@@ -6128,7 +6128,7 @@ ov43_0222CE48: ; 0x0222CE48
 	bl sub_0201D40C
 	add r0, r5, #0
 	add r0, #0x20
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r3, #0x15
 	add r1, r5, #0
 	str r3, [sp]
@@ -6198,7 +6198,7 @@ ov43_0222CE48: ; 0x0222CE48
 	str r0, [sp, #8]
 	add r0, r5, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x1c]
 	add r0, r4, #0
@@ -6222,7 +6222,7 @@ ov43_0222CE48: ; 0x0222CE48
 	add r0, #0x10
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	b _0222CFB4
 _0222CF86:
 	mov r1, #0x36
@@ -6244,7 +6244,7 @@ _0222CF86:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _0222CFB4:
 	ldr r0, [r4, #0x54]
 	mov r1, #0x33
@@ -6261,7 +6261,7 @@ _0222CFB4:
 	add r0, #0x20
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [sp, #0x20]
@@ -8138,7 +8138,7 @@ ov43_0222DE14: ; 0x0222DE14
 _0222DE4E:
 	ldr r0, [r7, #0xc]
 	add r0, r0, r4
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r1, [sp, #0x14]
 	mov r0, #2
 	ldrsh r0, [r1, r0]
@@ -9330,7 +9330,7 @@ ov43_0222E78C: ; 0x0222E78C
 	ldr r0, [r0, #0x20]
 	ldr r2, [sp, #0x2c]
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x2c]
 	bl String_dtor
 	mov r2, #0xb
@@ -9908,7 +9908,7 @@ _0222ECA6:
 	lsl r0, r0, #4
 	add r0, r1, r0
 	mov r1, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9943,7 +9943,7 @@ ov43_0222ECD4: ; 0x0222ECD4
 	str r0, [sp, #0xc]
 	ldr r2, [r4, #0x7c]
 	add r0, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

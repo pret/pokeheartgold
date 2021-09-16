@@ -17,7 +17,7 @@ sub_0202A888: ; 0x0202A888
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0
 	add r0, r1, #0
 _0202A898:
@@ -83,7 +83,7 @@ sub_0202A8BC: ; 0x0202A8BC
 	add r0, r4, r0
 	mov r1, #0xff
 	mov r2, #8
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	add r0, r4, r0

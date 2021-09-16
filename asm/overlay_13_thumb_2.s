@@ -4218,12 +4218,12 @@ _02222974: .word MIi_CpuCopy8
 
 	thumb_func_start ov13_02222978
 ov13_02222978: ; 0x02222978
-	ldr r3, _02222980 ; =MIi_CpuFill8
+	ldr r3, _02222980 ; =MI_CpuFill8
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	bx r3
 	.balign 4, 0
-_02222980: .word MIi_CpuFill8
+_02222980: .word MI_CpuFill8
 	thumb_func_end ov13_02222978
 
 	thumb_func_start ov13_02222984
@@ -5064,7 +5064,7 @@ _02222F4A:
 	ldr r0, _022230DC ; =0x0224DE80
 	mov r1, #0
 	mov r2, #0x60
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r7, #0x28]
 	cmp r0, #5
 	bne _02222F68
@@ -5796,7 +5796,7 @@ _022234AC:
 	ldr r0, _02223558 ; =0x0224DF08
 	mov r1, #0xff
 	mov r2, #6
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, _0222355C ; =0x02108FC0
 	ldr r0, _02223554 ; =0x0224DEE0
 	str r1, [r0, #0x10]
@@ -5840,7 +5840,7 @@ _022234FA:
 	ldr r0, _02223560 ; =0x0224DF10
 	mov r1, #0xff
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, _02223564 ; =0x02108FC8
 	ldr r0, _02223554 ; =0x0224DEE0
 	str r1, [r0, #0x14]
@@ -6010,7 +6010,7 @@ _02223656:
 	ldr r0, [r1, #0x24]
 	mov r1, #0
 	mov r2, #0x50
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _02223660:
 	ldr r1, _022236B4 ; =0x0224DEE0
 	add r0, r7, #0
@@ -6682,7 +6682,7 @@ _02223B48:
 _02223B58:
 	mov r1, #0xff
 	mov r2, #6
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, _02223C04 ; =0x02108FC0
 	ldr r0, _02223BFC ; =0x0224DF30
 	str r1, [r0, #0x44]
@@ -6724,7 +6724,7 @@ _02223BA2:
 	ldr r0, _02223C08 ; =0x0224E420
 	mov r1, #0xff
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, _02223C0C ; =0x02108FC8
 	ldr r0, _02223BFC ; =0x0224DF30
 	str r1, [r0, #0x48]
@@ -6863,7 +6863,7 @@ _02223CC2:
 	ldr r0, [r1, #0x28]
 	mov r1, #0
 	mov r2, #0x60
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _02223CCC:
 	ldr r1, _02223D20 ; =0x0224DF30
 	add r0, r7, #0

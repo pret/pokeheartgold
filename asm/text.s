@@ -183,8 +183,8 @@ AddTextPrinterParameterized: ; 0x020200A8
 _020200F8: .word 0x0210F6D8
 	thumb_func_end AddTextPrinterParameterized
 
-	thumb_func_start sub_020200FC
-sub_020200FC: ; 0x020200FC
+	thumb_func_start AddTextPrinterParameterized2
+AddTextPrinterParameterized2: ; 0x020200FC
 	push {lr}
 	sub sp, #0x1c
 	str r2, [sp]
@@ -225,7 +225,7 @@ sub_020200FC: ; 0x020200FC
 	pop {pc}
 	nop
 _0202014C: .word 0x0210F6D8
-	thumb_func_end sub_020200FC
+	thumb_func_end AddTextPrinterParameterized2
 
 	thumb_func_start AddTextPrinterParameterized3
 AddTextPrinterParameterized3: ; 0x02020150

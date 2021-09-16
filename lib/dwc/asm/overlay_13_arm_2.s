@@ -11919,7 +11919,7 @@ ov13_02230854: ; 0x02230854
 	mov r1, #0
 	mov r2, #0x22
 	addle r5, r5, #6
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	cmp r4, #0x10
 	movle ip, r4
 	movgt ip, #0x10
@@ -11957,7 +11957,7 @@ _02230904:
 	add r0, sp, #0xc
 	mov r1, #0
 	mov r2, #0x22
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	sub r3, r4, #0x10
 	cmp r3, #0
 	mov r7, #0
@@ -13360,7 +13360,7 @@ ov13_02231B18: ; 0x02231B18
 	add r0, r4, #8
 	mov r1, #0
 	mov r2, #0xc
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02231C80 ; =0x0224F544
 	mov r1, #0
 	ldr r0, [r0]
@@ -13600,7 +13600,7 @@ _02231E98:
 	add r3, r3, #8
 	add r0, r0, r0, lsl #1
 	add r0, r3, r0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0223215C ; =0x0224F544
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x14]
@@ -15810,15 +15810,15 @@ _02233CA4:
 	add r0, r4, #0xc0
 	mov r1, #0
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0xc4
 	mov r1, #0
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0xf0
 	mov r1, #0
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	strb r0, [r4, #0xd0]
 _02233CFC:
@@ -15828,7 +15828,7 @@ _02233CFC:
 	add r0, r4, #0xc8
 	mov r1, #0
 	mov r2, #8
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _02233D18:
 	mov r0, #2
 	mov r1, #0
@@ -15996,7 +15996,7 @@ _02233F28:
 	addeq r0, r4, r4, lsr #31
 	moveq r4, r0, asr #1
 	add r0, sp, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, sp, #0
 	mov r2, r4
 	mov r1, #0x2a
@@ -16286,7 +16286,7 @@ ov13_02234314: ; 0x02234314
 	add r0, sp, #0xc
 	mov r1, #0
 	mov r2, #0x22
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r6
 	mov r1, #0x20
 	bl ov13_02242074
@@ -16333,7 +16333,7 @@ _02234384:
 	add r0, sp, #0xc
 	mov r1, #0
 	mov r2, #0x22
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	sub r4, r4, #0x10
 	cmp r4, #0
 	mov ip, #0
@@ -23668,7 +23668,7 @@ ov13_0223A05C: ; 0x0223A05C
 	mov r1, #0
 	add r0, r0, #0x480
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r6
 	mov r1, #0x20
 	bl ov13_02242074
@@ -24065,11 +24065,11 @@ _0223A518:
 	beq _0223A56C
 	add r0, r5, #0xc0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0xc4
 	mov r1, #0
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	b _0223A590
 _0223A56C:
@@ -24090,7 +24090,7 @@ _0223A590:
 	beq _0223A5B4
 	add r0, r5, #0xc8
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	b _0223A5C0
 _0223A5B4:
 	add r0, r4, #0xc8
@@ -24113,7 +24113,7 @@ ov13_0223A5D0: ; 0x0223A5D0
 	mov r1, #0
 	add r0, r4, #0x400
 	mov r2, #0xef
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r6
 	add r1, r4, #0x440
 	mov r2, #0x20
@@ -24174,7 +24174,7 @@ _0223A690:
 	mov r1, #0
 	mov r2, #4
 	strb r3, [r4, #0x4e7]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #1
 	strb r0, [r4, #0x4f5]
 	strb r0, [r4, #0x4f6]
@@ -24194,7 +24194,7 @@ ov13_0223A6E4: ; 0x0223A6E4
 	add r4, r0, #0x400
 	mov r0, r4
 	mov r2, #0xef
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r5
 	add r1, r4, #0xd1
 	mov r2, #5
@@ -24247,7 +24247,7 @@ ov13_0223A6E4: ; 0x0223A6E4
 	strb r1, [r4, #0xe7]
 	mov r1, #0
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #1
 	strb r0, [r4, #0xf5]
 	strb r0, [r4, #0xf6]
@@ -24276,7 +24276,7 @@ ov13_0223A804: ; 0x0223A804
 	add r4, r0, r5, lsl #8
 	mov r0, r4
 	mov r2, #0xef
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0xff
 	mov r0, r5
 	strb r1, [r4, #0xe7]
@@ -24352,7 +24352,7 @@ ov13_0223A8F0: ; 0x0223A8F0
 	mov r1, r6
 	mov r2, #0x10
 	mov r4, #1
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, sp, #4
 	mov r2, r4
 	str r2, [r0, r7, lsl #2]
@@ -24445,7 +24445,7 @@ ov13_0223AA58: ; 0x0223AA58
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r7, #0
 	mov r8, r7
 	mov r4, #0x20
@@ -30026,12 +30026,12 @@ ov13_0223F3BC: ; 0x0223F3BC
 	ldr r0, [r0]
 	mov r2, #0x100
 	add r0, r0, #0x100
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0223F3FC ; =0x0224F5C8
 	mov r1, #0
 	ldr r0, [r0]
 	mov r2, #0x100
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0223F3FC ; =0x0224F5C8
 	ldr r0, [r0]
 	str r0, [r0, #0xab0]
@@ -32338,7 +32338,7 @@ ov13_022411DC: ; 0x022411DC
 	mov r4, r0
 	mov r1, #0
 	mov r2, #0x40000
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r4
 	mov r1, #0x40000
 	mov r2, #0
@@ -32400,7 +32400,7 @@ ov13_0224128C: ; 0x0224128C
 	mov r2, r4
 	mov r1, #0
 	mov r4, r0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	arm_func_end ov13_0224128C

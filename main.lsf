@@ -177,6 +177,12 @@ Static main
 	Object unk_020504C0.o
 	Object unk_02050660.o
 	Object unk_020517A4.o
+	Object unk_020518D8.o
+	Object unk_020525BC.o
+	Object unk_0205298C.o
+	Object unk_02052F30.o
+	Object script_pokemon_util.o
+	Object unk_02054514.o
 	Object pokemon.o
 	Object unk_02072914.o
 	### Vendor libraries ###

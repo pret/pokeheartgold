@@ -686,7 +686,7 @@ sub_0203E76C: ; 0x0203E76C
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
@@ -744,7 +744,7 @@ sub_0203E7F4: ; 0x0203E7F4
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
@@ -1078,7 +1078,7 @@ sub_0203EA84: ; 0x0203EA84
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x2c
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02092D80
@@ -1101,7 +1101,7 @@ Radio_new: ; 0x0203EAB0
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x2c
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02092D8C
@@ -1146,7 +1146,7 @@ sub_0203EB08: ; 0x0203EB08
 	mov r1, #0
 	mov r2, #0x24
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	str r0, [r4]
@@ -1231,7 +1231,7 @@ sub_0203EBA4: ; 0x0203EBA4
 	mov r1, #0
 	mov r2, #0x10
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	str r0, [r4, #0xc]
@@ -1281,7 +1281,7 @@ sub_0203EC04: ; 0x0203EC04
 	mov r1, #0
 	mov r2, #0x10
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	str r0, [r4, #0xc]
@@ -1330,7 +1330,7 @@ sub_0203EC64: ; 0x0203EC64
 	mov r1, #0
 	mov r2, #8
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	str r0, [r4, #4]
@@ -1378,7 +1378,7 @@ sub_0203ECC0: ; 0x0203ECC0
 	mov r1, #0
 	mov r2, #0x10
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	str r0, [r4, #0xc]
@@ -1431,7 +1431,7 @@ sub_0203ED24: ; 0x0203ED24
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	str r0, [r4, #0x18]
@@ -1476,7 +1476,7 @@ sub_0203ED80: ; 0x0203ED80
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	str r0, [r4, #0x18]
@@ -1524,7 +1524,7 @@ sub_0203EDDC: ; 0x0203EDDC
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r6, [r4]
 	ldr r0, [sp]
 	str r7, [r4, #4]
@@ -2465,7 +2465,7 @@ sub_0203F53C: ; 0x0203F53C
 	mov r1, #0
 	mov r2, #8
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x43
 	lsl r0, r0, #2
 	str r6, [r4]
@@ -3100,7 +3100,7 @@ sub_0203FA38: ; 0x0203FA38
 	mov r1, #0
 	mov r2, #0x14
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	add r6, r0, #0
@@ -3334,7 +3334,7 @@ sub_0203FC14: ; 0x0203FC14
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	ldr r0, [r5, #0xc]
 	add r1, sp, #0

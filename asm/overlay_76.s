@@ -35,7 +35,7 @@ _021E591A:
 _021E5936:
 	ldr r2, _021E5A84 ; =0x000004C8
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A0FC
@@ -140,7 +140,7 @@ _021E59B6:
 	add r2, #0x10
 	ldr r2, [r4, r2]
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -588,7 +588,7 @@ ov76_021E5DC4: ; 0x021E5DC4
 	sub sp, #0xb8
 	add r4, r0, #0
 	mov r0, #0x49
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #4]
 	add r3, sp, #0xa8
 	ldr r0, _021E5EBC ; =0x04000050
@@ -603,7 +603,7 @@ ov76_021E5DC4: ; 0x021E5DC4
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5EC8 ; =0x021E6F18
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -618,7 +618,7 @@ ov76_021E5DC4: ; 0x021E5DC4
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5ECC ; =0x021E6F34
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -633,7 +633,7 @@ ov76_021E5DC4: ; 0x021E5DC4
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5ED0 ; =0x021E6F50
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -648,7 +648,7 @@ ov76_021E5DC4: ; 0x021E5DC4
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5ED4 ; =0x021E6F6C
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -663,7 +663,7 @@ ov76_021E5DC4: ; 0x021E5DC4
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5ED8 ; =0x021E6F88
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -678,7 +678,7 @@ ov76_021E5DC4: ; 0x021E5DC4
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5EDC ; =0x021E6FA4
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -693,7 +693,7 @@ ov76_021E5DC4: ; 0x021E5DC4
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	bl ov76_021E5F1C
 	add sp, #0xb8
@@ -716,22 +716,22 @@ ov76_021E5EE0: ; 0x021E5EE0
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	pop {r4, pc}
@@ -2264,7 +2264,7 @@ _021E6AC8:
 	ldr r2, [r5, #0x14]
 	add r0, r5, #4
 	add r3, r7, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]

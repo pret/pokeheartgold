@@ -96,15 +96,15 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	ldr r0, _0203AE88 ; =_020F6B84
 	bl GX_SetBanks
 	add r0, r4, #0
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [sp, #0x10]
 	ldr r0, _0203AE8C ; =_020F6B58
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	mov r1, #0
 	ldr r0, [sp, #0x10]
 	ldr r2, _0203AE90 ; =_020F6B68
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [sp, #0x10]
 	mov r1, #0
 	bl sub_0201CAE0
@@ -123,13 +123,13 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	mov r1, #0x20
 	add r2, r0, #0
 	add r3, r4, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r1, _0203AE98 ; =0x00006C21
 	mov r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	ldr r1, _0203AE98 ; =0x00006C21
 	mov r0, #4
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r2, #0x32
 	mov r0, #1
 	mov r1, #0x1b
@@ -183,7 +183,7 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	mov r0, #0
 	mov r1, #0x3f
 	mov r2, #3
-	bl sub_0200B4F0
+	bl SetBrightness
 	ldr r4, _0203AEA0 ; =0x04000130
 	ldr r6, _0203AEA4 ; =0x027FFFA8
 	mov r7, #1
@@ -235,7 +235,7 @@ _0203AE12:
 	bl sub_0201BC28
 	ldr r0, [sp, #0x10]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	add sp, #0x24

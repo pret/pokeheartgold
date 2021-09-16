@@ -141,7 +141,7 @@ _021E5A12:
 	mov r1, #0
 	mov r2, #0x28
 	str r0, [r4, #4]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	mov r1, #4
 	mov r2, #8
@@ -171,7 +171,7 @@ _021E5A50:
 	bl ov01_021E6178
 	bl sub_02022D3C
 	mov r0, #4
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #8]
 	bl ov01_021E6058
 	mov r0, #0
@@ -845,7 +845,7 @@ ov01_021E6058: ; 0x021E6058
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E612C ; =0x02206318
 	add r3, sp, #0x3c
 	ldmia r5!, {r0, r1}
@@ -860,12 +860,12 @@ ov01_021E6058: ; 0x021E6058
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201CAE0
@@ -883,12 +883,12 @@ ov01_021E6058: ; 0x021E6058
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #2
 	bl sub_0201CAE0
@@ -906,12 +906,12 @@ ov01_021E6058: ; 0x021E6058
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #3
 	bl sub_0201CAE0
@@ -951,13 +951,13 @@ ov01_021E6138: ; 0x021E6138
 	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021E6138
@@ -2253,7 +2253,7 @@ _021E6B12:
 	bne _021E6B66
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_0205442C
+	bl HasEnoughAlivePokemonForDoubleBattle
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
@@ -2321,7 +2321,7 @@ _021E6BB6:
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get
 	mov r1, #0x7f
-	bl sub_020542E8
+	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
 	beq _021E6BCA
 	mov r0, #2
@@ -3486,7 +3486,7 @@ _021E7510:
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	mov r1, #0x39
-	bl sub_020542E8
+	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
 	beq _021E7550
 	ldr r0, _021E7614 ; =0x00002714
@@ -4000,7 +4000,7 @@ _021E797A:
 	lsl r1, r1, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
-	bl sub_02054440
+	bl ApplyPoisonStep
 	cmp r0, #0
 	beq _021E799C
 	cmp r0, #1
@@ -9672,7 +9672,7 @@ _021EA468:
 	add r2, r4, #0
 	str r0, [r1]
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0
 	str r1, [sp, #0x18]
 	ldr r1, [sp, #8]
@@ -10768,7 +10768,7 @@ ov01_021EAC4C: ; 0x021EAC4C
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -21007,7 +21007,7 @@ ov01_021EF9A8: ; 0x021EF9A8
 	add r3, #0x30
 	ldrb r3, [r3]
 	add r0, #0x20
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, pc}
 	nop
@@ -24191,7 +24191,7 @@ _021F1154:
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r0, [r4, #8]
 	bl ov01_021E6050
 	ldr r2, _021F1200 ; =0x0400000E
@@ -24230,12 +24230,12 @@ _021F1154:
 	str r0, [r3]
 	ldr r0, [r4, #8]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4, #8]
 	mov r1, #2
 	bl sub_0201CAE0
@@ -24259,7 +24259,7 @@ ov01_021F1210: ; 0x021F1210
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #8]
 	bl ov01_021E6048
 	pop {r4, pc}
@@ -29067,7 +29067,7 @@ ov01_021F35C4: ; 0x021F35C4
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	str r7, [r4, #4]
 	ldr r0, [r5, #0x40]
@@ -30850,7 +30850,7 @@ _021F429C:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x10]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 _021F42E2:
@@ -31630,7 +31630,7 @@ _021F4894:
 	ldr r2, _021F4964 ; =0x00000A74
 	mov r1, #0
 	add r7, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	lsl r4, r6, #2
 	add r0, r5, r4
 	add r0, #0x90
@@ -31703,7 +31703,7 @@ _021F4894:
 	mov r2, #1
 	mov r1, #0xff
 	lsl r2, r2, #0xa
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _021F4944:
 	add r1, r5, r4
 	add r1, #0x90
@@ -31741,7 +31741,7 @@ _021F4982:
 	ldr r2, _021F49EC ; =0x00000A74
 	mov r1, #0
 	add r7, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	lsl r4, r6, #2
 	add r0, r5, r4
 	add r0, #0x90
@@ -34765,7 +34765,7 @@ ov01_021F6020: ; 0x021F6020
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #0x24]
 	cmp r0, #0
 	bne _021F6054
@@ -37216,7 +37216,7 @@ ov01_021F71C4: ; 0x021F71C4
 	add r4, r0, #0
 	add r0, #0x10
 	add r5, r1, #0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _021F71DC
 	add r0, r4, #0
@@ -37264,7 +37264,7 @@ ov01_021F722C: ; 0x021F722C
 	mov r1, #0
 	mov r2, #0x9c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #4
 	bl ScrStrBufs_new
 	str r0, [r4, #0x38]
@@ -37301,7 +37301,7 @@ ov01_021F7268: ; 0x021F7268
 	bl String_dtor
 	add r0, r4, #0
 	add r0, #0x10
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _021F7298
 	add r4, #0x10
@@ -37663,7 +37663,7 @@ _021F7524:
 	str r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_02054388
+	bl GetFirstAliveMonInParty_CrashIfNone
 	str r0, [sp, #0xc]
 	mov r1, #5
 	mov r2, #0
@@ -45183,12 +45183,12 @@ ov01_021FACF8: ; 0x021FACF8
 	ldr r0, [r5, r4]
 	mov r1, #0
 	add r2, r6, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, r4
 	ldr r0, [r0, #0x10]
 	mov r1, #0
 	add r2, r7, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021FACF8
@@ -48137,22 +48137,22 @@ _021FC1DA:
 
 	thumb_func_start ov01_021FC1E0
 ov01_021FC1E0: ; 0x021FC1E0
-	ldr r3, _021FC1E8 ; =sub_0201C2D8
+	ldr r3, _021FC1E8 ; =BG_SetMaskColor
 	mov r0, #2
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_021FC1E8: .word sub_0201C2D8
+_021FC1E8: .word BG_SetMaskColor
 	thumb_func_end ov01_021FC1E0
 
 	thumb_func_start ov01_021FC1EC
 ov01_021FC1EC: ; 0x021FC1EC
-	ldr r3, _021FC1F4 ; =sub_0201C2D8
+	ldr r3, _021FC1F4 ; =BG_SetMaskColor
 	mov r0, #2
 	ldr r1, _021FC1F8 ; =0x00007FFF
 	bx r3
 	.balign 4, 0
-_021FC1F4: .word sub_0201C2D8
+_021FC1F4: .word BG_SetMaskColor
 _021FC1F8: .word 0x00007FFF
 	thumb_func_end ov01_021FC1EC
 
@@ -49542,7 +49542,7 @@ ov01_021FCBCC: ; 0x021FCBCC
 	add r0, r4, #0
 	add r0, #0x38
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r4, #0x38
 	add r0, r4, #0
 	bl RemoveWindow
@@ -49598,7 +49598,7 @@ _021FCC40:
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_02054388
+	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #9
 	mov r2, #0
 	bl GetMonData
@@ -60754,7 +60754,7 @@ _022020F2:
 	mov r1, #0xaf
 	mov r2, #1
 	add r3, r4, #0
-	bl sub_0206C8B8
+	bl SetEggStats
 	mov r4, #0
 	add r6, r4, #0
 _0220211C:
@@ -61076,7 +61076,7 @@ _022023A2:
 	ldr r2, [sp, #4]
 	mov r1, #0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [sp, #8]
 	ldr r1, _0220242C ; =0x022093D0
@@ -61542,12 +61542,12 @@ ov01_0220271C: ; 0x0220271C
 	mov r1, #0
 	mov r2, #0x9a
 	str r0, [sp, #0x14]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, sp, #0x24
 	add r0, #2
 	mov r1, #0
 	mov r2, #3
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r5, [sp, #0x14]
 	mov r4, #0
 	mov r6, #0x63
@@ -62086,7 +62086,7 @@ ov01_02202B78: ; 0x02202B78
 	add r1, r4, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_020542D0
+	bl PartyMonSetMoveInSlot
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -65932,7 +65932,7 @@ ov01_02204840: ; 0x02204840
 	mov r1, #0
 	mov r2, #0x28
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [r4]
 	str r6, [r4, #8]
@@ -68118,7 +68118,7 @@ ov01_0220589C: ; 0x0220589C
 	mov r1, #0
 	mov r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r6, #0
 	mov r1, #2
 	bl sub_0205F2F4
@@ -69137,7 +69137,7 @@ _022060E2:
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x84
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	strb r5, [r4, #1]
 	strb r7, [r4, #3]
 	ldr r0, [r6, #0x10]
@@ -69373,7 +69373,7 @@ ov01_022062CC: ; 0x022062CC
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
-	bl sub_020543BC
+	bl GetIdxOfFirstAliveMonInParty_CrashIfNone
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov01_022062CC

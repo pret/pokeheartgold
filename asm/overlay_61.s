@@ -20,7 +20,7 @@ ov61_021E5900: ; 0x021E5900
 	ldr r2, _021E5A20 ; =0x00000598
 	add r4, r0, #0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	mov r1, #0x2e
 	add r0, #0x20
@@ -59,7 +59,7 @@ _021E5950:
 	add r0, r4, #0
 	bl ov61_021E6140
 	ldr r0, [r4, #4]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #8]
 	mov r1, #1
 	mov r0, #0
@@ -68,7 +68,7 @@ _021E5950:
 	str r1, [sp, #8]
 	str r1, [sp, #0xc]
 	add r0, sp, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #4]
 	bl ov61_021E6350
@@ -822,19 +822,19 @@ ov61_021E5F74: ; 0x021E5F74
 	bl ov61_021E6E30
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #8]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #8]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #8]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #8]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	ldr r0, [r4, #0xc]
@@ -1224,12 +1224,12 @@ ov61_021E6350: ; 0x021E6350
 	str r0, [r3]
 	add r0, r5, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #1
 	bl sub_0201CAE0
@@ -1247,12 +1247,12 @@ ov61_021E6350: ; 0x021E6350
 	str r0, [r3]
 	add r0, r5, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0201CAE0
@@ -1270,12 +1270,12 @@ ov61_021E6350: ; 0x021E6350
 	str r0, [r3]
 	add r0, r5, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -1293,12 +1293,12 @@ ov61_021E6350: ; 0x021E6350
 	str r0, [r3]
 	add r0, r5, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #5
 	mov r1, #0x20
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #5
 	bl sub_0201CAE0
@@ -1316,12 +1316,12 @@ ov61_021E6350: ; 0x021E6350
 	str r0, [r3]
 	add r0, r5, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #6
 	bl sub_0201CAE0
@@ -2532,7 +2532,7 @@ _021E6DA4:
 	str r3, [sp, #0xc]
 	ldr r2, [r4]
 	add r0, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r4, r0, #0
 	cmp r6, #0
 	beq _021E6DE8

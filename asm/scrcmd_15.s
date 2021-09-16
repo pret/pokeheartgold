@@ -256,7 +256,7 @@ sub_0204D248: ; 0x0204D248
 	add r0, r4, #0
 	mov r2, #1
 	add r3, r7, #0
-	bl sub_0206C8B8
+	bl SetEggStats
 	add r0, r6, #0
 	add r1, r4, #0
 	bl AddMonToParty
@@ -303,7 +303,7 @@ sub_0204D2D0: ; 0x0204D2D0
 	add r1, r4, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_020542D0
+	bl PartyMonSetMoveInSlot
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -499,7 +499,7 @@ sub_0204D48C: ; 0x0204D48C
 	bl SavArray_PlayerParty_get
 	add r1, r6, #0
 	bl GetPartyMonByIndex
-	bl sub_020544D8
+	bl SurvivePoisoning
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}

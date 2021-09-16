@@ -42,7 +42,7 @@ ov55_021E5924: ; 0x021E5924
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0x28
 	str r1, [r4]
 	ldr r0, [r5, #0x14]
@@ -274,7 +274,7 @@ ov55_021E5B08: ; 0x021E5B08
 	mov r1, #0
 	mov r2, #0x38
 	add r6, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	strh r0, [r6]
 	add r0, r4, #0

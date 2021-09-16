@@ -530,7 +530,7 @@ ov44_0222A1FC: ; 0x0222A1FC
 	bl NARC_ctor
 	str r0, [sp, #0x20]
 	mov r0, #0x35
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	mov r2, #0x57
 	ldr r1, [sp, #4]
 	lsl r2, r2, #2
@@ -575,7 +575,7 @@ ov44_0222A1FC: ; 0x0222A1FC
 	lsl r2, r2, #4
 	add r0, r0, r1
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #0x20]
 	mov r1, #5
 	add r2, sp, #0x2c
@@ -911,7 +911,7 @@ _0222A542:
 	mov r1, #0
 	lsl r2, r2, #6
 	add r5, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x20
 	mov r1, #0x35
 	bl sub_0202055C
@@ -1285,7 +1285,7 @@ ov44_0222A850: ; 0x0222A850
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _0222AA6C ; =0x022353E8
 	add r3, sp, #0xc4
 	ldmia r5!, {r0, r1}
@@ -1300,12 +1300,12 @@ ov44_0222A850: ; 0x0222A850
 	str r0, [r3]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0201CAE0
@@ -1323,12 +1323,12 @@ ov44_0222A850: ; 0x0222A850
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201CAE0
@@ -1346,12 +1346,12 @@ ov44_0222A850: ; 0x0222A850
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #2
 	bl sub_0201CAE0
@@ -1369,12 +1369,12 @@ ov44_0222A850: ; 0x0222A850
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #3
 	bl sub_0201CAE0
@@ -1392,7 +1392,7 @@ ov44_0222A850: ; 0x0222A850
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -1410,7 +1410,7 @@ ov44_0222A850: ; 0x0222A850
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
 	bl sub_0201CAE0
@@ -1428,7 +1428,7 @@ ov44_0222A850: ; 0x0222A850
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
 	bl sub_0201CAE0
@@ -1446,7 +1446,7 @@ ov44_0222A850: ; 0x0222A850
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
 	bl sub_0201CAE0
@@ -1454,42 +1454,42 @@ ov44_0222A850: ; 0x0222A850
 	mov r1, #0x20
 	add r2, r0, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #5
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #7
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x35
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #0
 	mov r1, #3
 	bl sub_0201BB68
@@ -2087,28 +2087,28 @@ ov44_0222AE74: ; 0x0222AE74
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -2354,7 +2354,7 @@ ov44_0222B0B0: ; 0x0222B0B0
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222B0DA
 	mov r0, #0x2f
@@ -2418,7 +2418,7 @@ _0222B0DA:
 	lsr r2, r2, #1
 	ldr r2, [r4, r2]
 	mov r1, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	add r0, r4, r0
@@ -2438,7 +2438,7 @@ ov44_0222B164: ; 0x0222B164
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222B184
 	mov r0, #0x2f
@@ -2449,7 +2449,7 @@ _0222B184:
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222B19C
 	mov r0, #0x2d
@@ -2460,7 +2460,7 @@ _0222B19C:
 	mov r0, #0x33
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222B1B4
 	mov r0, #0x33
@@ -2471,7 +2471,7 @@ _0222B1B4:
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222B1CC
 	mov r0, #0x2e
@@ -2482,7 +2482,7 @@ _0222B1CC:
 	mov r0, #0x31
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222B1E4
 	mov r0, #0x31
@@ -2513,7 +2513,7 @@ _0222B20C:
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222B224
 	mov r0, #3
@@ -2839,7 +2839,7 @@ ov44_0222B494: ; 0x0222B494
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -2872,7 +2872,7 @@ _0222B4EE:
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -2923,7 +2923,7 @@ ov44_0222B528: ; 0x0222B528
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -2998,7 +2998,7 @@ _0222B5EA:
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -3052,7 +3052,7 @@ ov44_0222B64C: ; 0x0222B64C
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -3114,7 +3114,7 @@ _0222B6EA:
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -3556,14 +3556,14 @@ _0222BA84:
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222BAA8
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -3627,14 +3627,14 @@ _0222BAFA:
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222BB1E
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -3862,7 +3862,7 @@ _0222BCDE:
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222BD02
 	mov r0, #0x2f
@@ -3878,7 +3878,7 @@ _0222BD02:
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222BD1A
 	mov r0, #0x2e
@@ -3954,22 +3954,22 @@ _0222BDAC:
 	add r0, #0xc
 	mov r1, #0
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	add r0, #0x2c
 	mov r1, #0
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	add r0, #0x4c
 	mov r1, #0
 	mov r2, #0x80
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	add r0, #0xcc
 	mov r1, #0
 	mov r2, #0x80
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl ov44_0222B0B0
 	mov r0, #0x16
@@ -4361,14 +4361,14 @@ _0222C0DE:
 	str r0, [r5, r1]
 	sub r1, #0x48
 	add r0, r5, r1
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222C118
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -4396,7 +4396,7 @@ ov44_0222C120: ; 0x0222C120
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	bne _0222C152
 	add r0, r4, #0
@@ -4432,7 +4432,7 @@ _0222C170:
 	add r0, r5, r0
 	mov r3, #0x20
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	ldr r1, [r5, #4]
@@ -4507,7 +4507,7 @@ _0222C214:
 	lsr r2, r2, #1
 	ldr r2, [r5, r2]
 	mov r3, #0x66
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r2, #1
 	str r2, [sp]
 	mov r0, #0x57
@@ -4572,7 +4572,7 @@ ov44_0222C29C: ; 0x0222C29C
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222C2BA
 	mov r0, #0x2e
@@ -4583,7 +4583,7 @@ _0222C2BA:
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222C2DE
 	mov r0, #0x2f
@@ -6802,7 +6802,7 @@ _0222D4CA:
 	mov r0, #0x32
 	lsl r0, r0, #4
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222D4EE
 	mov r0, #0x32
@@ -7388,7 +7388,7 @@ _0222D9A6:
 	mov r0, #0x32
 	lsl r0, r0, #4
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222D9CA
 	mov r0, #0x32
@@ -9427,7 +9427,7 @@ _0222EA16:
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	bne _0222EA28
 	mov r0, #1
@@ -10854,14 +10854,14 @@ _0222F52E:
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222F55C
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -10870,14 +10870,14 @@ _0222F55C:
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222F580
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r5, r0
@@ -11003,14 +11003,14 @@ ov44_0222F66C: ; 0x0222F66C
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222F69C
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -11019,14 +11019,14 @@ _0222F69C:
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r5, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222F6C0
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r5, r0
@@ -11180,14 +11180,14 @@ _0222F7F0:
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222F814
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r4, r0
@@ -11350,14 +11350,14 @@ ov44_0222F910: ; 0x0222F910
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _0222F94E
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	add r0, r4, r0
@@ -11954,7 +11954,7 @@ _0222FD7A:
 	str r0, [sp, #0x24]
 _0222FDEC:
 	ldr r0, [sp, #0x30]
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r0, [sp, #0x1c]
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1e
@@ -12011,7 +12011,7 @@ _0222FDEC:
 	str r0, [sp, #0x34]
 _0222FE64:
 	add r0, r4, #0
-	bl sub_0201D3C4
+	bl InitWindow
 	ldr r0, [sp, #0x34]
 	lsl r3, r5, #0x18
 	str r0, [sp]
@@ -12663,7 +12663,7 @@ _02230322:
 	add r0, r5, r0
 	mov r1, #1
 	mov r3, #0x20
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov44_02231958
@@ -12694,7 +12694,7 @@ _02230322:
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #0x68
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x35
 	bl PlayerProfile_new
 	add r6, r0, #0
@@ -12731,7 +12731,7 @@ _02230322:
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r1, #0x96
 	mov r0, #0x5a
 	add r2, r1, #0
@@ -12768,7 +12768,7 @@ _02230322:
 	add r2, #0x79
 	ldr r2, [r5, r2]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -12789,7 +12789,7 @@ _02230322:
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5]
 	add r1, r4, #0
 	mov r2, #1
@@ -12831,7 +12831,7 @@ _02230322:
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #0x78
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5]
 	add r1, r4, #0
 	mov r2, #2
@@ -12880,7 +12880,7 @@ _02230322:
 	add r2, #0x79
 	ldr r2, [r5, r2]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x5a
 	mov r1, #0x2f
 	lsl r0, r0, #2
@@ -12901,7 +12901,7 @@ _02230322:
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5]
 	add r1, r4, #0
 	mov r2, #3
@@ -12950,7 +12950,7 @@ _02230322:
 	add r2, #0x79
 	ldr r2, [r5, r2]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	bl ov44_02229EF8
 	cmp r0, #1
@@ -12975,7 +12975,7 @@ _02230322:
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5]
 	add r1, r4, #0
 	mov r2, #9
@@ -13032,7 +13032,7 @@ _022306A8:
 	add r2, #0x79
 	ldr r2, [r5, r2]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _022306B4:
 	mov r2, #0x5a
 	lsl r2, r2, #2
@@ -13054,7 +13054,7 @@ _022306B4:
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5]
 	add r1, r4, #0
 	mov r2, #6
@@ -13127,7 +13127,7 @@ _022306B4:
 	add r2, #0x79
 	ldr r2, [r5, r2]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _02230788:
 	mov r3, #2
 	str r3, [sp]
@@ -13199,7 +13199,7 @@ ov44_022307E0: ; 0x022307E0
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -13220,7 +13220,7 @@ ov44_022307E0: ; 0x022307E0
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x78
 	str r0, [sp]
 	mov r0, #0x18
@@ -13250,7 +13250,7 @@ ov44_022307E0: ; 0x022307E0
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x78
 	str r0, [sp]
 	mov r0, #0x30
@@ -13296,7 +13296,7 @@ ov44_022308B0: ; 0x022308B0
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -13317,7 +13317,7 @@ ov44_022308B0: ; 0x022308B0
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -13345,7 +13345,7 @@ ov44_022308B0: ; 0x022308B0
 	add r2, #0x79
 	ldr r2, [r5, r2]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -13366,7 +13366,7 @@ ov44_022308B0: ; 0x022308B0
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x68
 	str r0, [sp]
 	mov r0, #0x30
@@ -13405,7 +13405,7 @@ ov44_022308B0: ; 0x022308B0
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x68
 	str r0, [sp]
 	mov r0, #0x40
@@ -13444,7 +13444,7 @@ ov44_022308B0: ; 0x022308B0
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -13472,7 +13472,7 @@ ov44_022308B0: ; 0x022308B0
 	add r2, #0x79
 	ldr r2, [r5, r2]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -13493,7 +13493,7 @@ ov44_022308B0: ; 0x022308B0
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x68
 	str r0, [sp]
 	mov r0, #0x70
@@ -13532,7 +13532,7 @@ ov44_022308B0: ; 0x022308B0
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x68
 	str r0, [sp]
 	mov r0, #0x80
@@ -13587,7 +13587,7 @@ ov44_02230B2C: ; 0x02230B2C
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -13617,7 +13617,7 @@ ov44_02230B2C: ; 0x02230B2C
 	add r2, #0x79
 	ldr r2, [r5, r2]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -13638,7 +13638,7 @@ ov44_02230B2C: ; 0x02230B2C
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x68
 	str r0, [sp]
 	mov r0, #0x30
@@ -13677,7 +13677,7 @@ ov44_02230B2C: ; 0x02230B2C
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x68
 	str r0, [sp]
 	mov r0, #0x50
@@ -13738,7 +13738,7 @@ ov44_02230C68: ; 0x02230C68
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	mov r1, #0x7c
 	add r2, r4, #0
@@ -13765,7 +13765,7 @@ ov44_02230C68: ; 0x02230C68
 	add r2, r6, #0
 	add r0, r5, r0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	mov r1, #0x5e
@@ -13788,7 +13788,7 @@ ov44_02230C68: ; 0x02230C68
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x6c
 	str r0, [sp]
 	mov r0, #0x30
@@ -13818,7 +13818,7 @@ ov44_02230C68: ; 0x02230C68
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x6c
 	str r0, [sp]
 	mov r0, #0x50
@@ -13864,7 +13864,7 @@ ov44_02230D8C: ; 0x02230D8C
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -13885,7 +13885,7 @@ ov44_02230D8C: ; 0x02230D8C
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x70
 	str r0, [sp]
 	mov r0, #0x18
@@ -13915,7 +13915,7 @@ ov44_02230D8C: ; 0x02230D8C
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x70
 	str r0, [sp]
 	mov r0, #0x30
@@ -13966,7 +13966,7 @@ ov44_02230E5C: ; 0x02230E5C
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, _02230FE0 ; =0x00000B1C
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -14000,7 +14000,7 @@ ov44_02230E5C: ; 0x02230E5C
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0xa
@@ -14045,7 +14045,7 @@ ov44_02230E5C: ; 0x02230E5C
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0xb
@@ -14090,7 +14090,7 @@ ov44_02230E5C: ; 0x02230E5C
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #8
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0xc
@@ -14281,7 +14281,7 @@ ov44_022310C8: ; 0x022310C8
 	add r2, #0x79
 	ldr r2, [r5, r2]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -14554,7 +14554,7 @@ _022312EC:
 	ldr r2, [r5, r2]
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl sub_0201D5C8
 	add sp, #0x18
@@ -14849,7 +14849,7 @@ _0223153E:
 	mov r0, #2
 	bl sub_02002CEC
 	add r0, sp, #0x68
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -14886,7 +14886,7 @@ _0223153E:
 	str r1, [sp, #0xc]
 	add r0, sp, #0x68
 	mov r1, #2
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	ldr r1, [sp, #0x2c]
@@ -16684,7 +16684,7 @@ ov44_0223233C: ; 0x0223233C
 	bl sub_02007B8C
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -18269,17 +18269,17 @@ _02232EC6:
 	add r4, r0, #0
 	mov r1, #0
 	lsl r2, r2, #2
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	add r0, #0x1c
 	mov r1, #1
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	add r0, #0x20
 	mov r1, #1
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x10
 	mov r1, #0x67
 	bl sub_0202055C
@@ -18714,7 +18714,7 @@ ov44_0223325C: ; 0x0223325C
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0x64
 	ldr r6, _022333FC ; =0x02236474
 	str r0, [r5]
@@ -18724,7 +18724,7 @@ ov44_0223325C: ; 0x0223325C
 	ldmia r6!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r6, _02233400 ; =0x022364B0
 	add r3, sp, #0x48
 	ldmia r6!, {r0, r1}
@@ -18739,12 +18739,12 @@ ov44_0223325C: ; 0x0223325C
 	str r0, [r3]
 	ldr r0, [r5]
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
 	add r3, r4, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r5]
 	mov r1, #0
 	bl sub_0201CAE0
@@ -18762,12 +18762,12 @@ ov44_0223325C: ; 0x0223325C
 	str r0, [r3]
 	ldr r0, [r5]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r5]
 	mov r1, #1
 	bl sub_0201CAE0
@@ -18785,12 +18785,12 @@ ov44_0223325C: ; 0x0223325C
 	str r0, [r3]
 	ldr r0, [r5]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r5]
 	mov r1, #2
 	bl sub_0201CAE0
@@ -18911,13 +18911,13 @@ ov44_0223340C: ; 0x0223340C
 	bl FreeToHeap
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	bl FreeToHeap
 	pop {r4, pc}
@@ -19098,7 +19098,7 @@ ov44_022335AC: ; 0x022335AC
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #0x63
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -19257,7 +19257,7 @@ _022336DC:
 	add r0, r4, r2
 	ldr r2, [r4, #0xc]
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x67
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -19281,7 +19281,7 @@ _022336DC:
 	add r0, r4, r2
 	ldr r2, [r4, #0xc]
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -19467,7 +19467,7 @@ _02233890:
 	lsl r0, r0, #2
 	ldr r2, [r5, #0xc]
 	add r0, r5, r0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	strb r0, [r5, #0x14]
 	mov r0, #0x63
 	lsl r0, r0, #2
@@ -19617,7 +19617,7 @@ ov44_0223398C: ; 0x0223398C
 	add r2, r7, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x73
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -19767,7 +19767,7 @@ ov44_02233AB8: ; 0x02233AB8
 	ldr r2, [sp, #0x24]
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r1, [sp, #0x20]
 	str r7, [sp]
 	add r0, r5, #0
@@ -19793,7 +19793,7 @@ ov44_02233AB8: ; 0x02233AB8
 	ldr r2, [sp, #0x24]
 	mov r3, #0x48
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -23060,12 +23060,12 @@ ov44_02235268: ; 0x02235268
 	add r0, #0x1c
 	mov r1, #1
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	add r0, #0x20
 	mov r1, #1
 	mov r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	add r1, r5, #0
 	mov r3, #0

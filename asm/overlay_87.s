@@ -23,7 +23,7 @@ ov87_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl memset
 	mov r0, #0x7a
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #0x58]
 	add r0, r5, #0
 	str r5, [r4]
@@ -472,7 +472,7 @@ _021E5C80:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -1633,7 +1633,7 @@ _021E661E:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -2328,22 +2328,22 @@ ov87_021E6BB8: ; 0x021E6BB8
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -2413,7 +2413,7 @@ ov87_021E6C60: ; 0x021E6C60
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E6DA4 ; =0x021E8228
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -2428,12 +2428,12 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x7a
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0201CAE0
@@ -2451,7 +2451,7 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
 	bl sub_0201CAE0
@@ -2469,7 +2469,7 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
 	bl sub_0201CAE0
@@ -2487,7 +2487,7 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0201CAE0
@@ -2505,7 +2505,7 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0201CAE0
@@ -2523,12 +2523,12 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x7a
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #2
 	bl sub_0201CAE0
@@ -2794,7 +2794,7 @@ ov87_021E6F38: ; 0x021E6F38
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov87_021E6F38
@@ -2849,7 +2849,7 @@ ov87_021E6F98: ; 0x021E6F98
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov87_021E6F98

@@ -454,7 +454,7 @@ _02049FA8:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x46
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	b _02049FBE
 _02049FB6:
 	bl GF_AssertFail
@@ -1125,7 +1125,7 @@ sub_0204A4A0: ; 0x0204A4A0
 	mov r1, #0
 	mov r2, #0x10
 	str r3, [sp, #4]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #4]
@@ -1605,7 +1605,7 @@ sub_0204A824: ; 0x0204A824
 	ldr r2, _0204AA1C ; =0x000008DC
 	mov r1, #0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0xb
 	str r0, [r4, #4]
 	add r0, r6, #0
@@ -1846,7 +1846,7 @@ _0204AA3E:
 	ldr r2, _0204AA54 ; =0x000008DC
 	add r0, r4, #0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl FreeToHeap
 _0204AA4E:
@@ -3217,7 +3217,7 @@ sub_0204B470: ; 0x0204B470
 	mov r1, #0
 	mov r2, #0xa8
 	str r0, [sp, #4]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl SavArray_PlayerParty_get
 	ldr r5, [sp, #4]
@@ -3243,7 +3243,7 @@ _0204B498:
 	ldr r0, [sp, #4]
 	mov r1, #0
 	mov r2, #0xa8
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #4]
 	bl FreeToHeap
 	add sp, #8
@@ -3676,7 +3676,7 @@ sub_0204B7D0: ; 0x0204B7D0
 	add r0, r5, #0
 	mov r1, #0
 	lsl r2, r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	add r1, r6, #0
 	bl sub_0204BC7C
@@ -3718,7 +3718,7 @@ sub_0204B834: ; 0x0204B834
 	mov r1, #0
 	mov r2, #0x38
 	str r3, [sp]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, sp, #8
 	add r1, r6, #0
 	bl sub_0204BC8C

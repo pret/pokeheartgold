@@ -33,8 +33,8 @@ _020F6308:
 
 	.text
 
-	thumb_func_start sub_0201AC88
-sub_0201AC88: ; 0x0201AC88
+	thumb_func_start BgConfig_Alloc
+BgConfig_Alloc: ; 0x0201AC88
 	push {r3, r4, r5, lr}
 	mov r1, #0x5a
 	lsl r1, r1, #2
@@ -51,7 +51,7 @@ sub_0201AC88: ; 0x0201AC88
 	strh r0, [r4, #6]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201AC88
+	thumb_func_end BgConfig_Alloc
 
 	thumb_func_start BgConfig_GetHeapId
 BgConfig_GetHeapId: ; 0x0201ACAC
@@ -59,8 +59,8 @@ BgConfig_GetHeapId: ; 0x0201ACAC
 	bx lr
 	thumb_func_end BgConfig_GetHeapId
 
-	thumb_func_start sub_0201ACB0
-sub_0201ACB0: ; 0x0201ACB0
+	thumb_func_start SetBothScreensModesAndDisable
+SetBothScreensModesAndDisable: ; 0x0201ACB0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -84,7 +84,7 @@ sub_0201ACB0: ; 0x0201ACB0
 	pop {r4, pc}
 	nop
 _0201ACE4: .word 0xC7FFFFFF
-	thumb_func_end sub_0201ACB0
+	thumb_func_end SetBothScreensModesAndDisable
 
 	thumb_func_start sub_0201ACE8
 sub_0201ACE8: ; 0x0201ACE8
@@ -748,8 +748,8 @@ _0201B1C4:
 _0201B1E0: .word 0x0400100E
 	thumb_func_end sub_0201AD0C
 
-	thumb_func_start sub_0201B1E4
-sub_0201B1E4: ; 0x0201B1E4
+	thumb_func_start InitBgFromTemplate
+InitBgFromTemplate: ; 0x0201B1E4
 	push {r3, r4, lr}
 	sub sp, #4
 	mov r4, #1
@@ -757,7 +757,7 @@ sub_0201B1E4: ; 0x0201B1E4
 	bl sub_0201AD0C
 	add sp, #4
 	pop {r3, r4, pc}
-	thumb_func_end sub_0201B1E4
+	thumb_func_end InitBgFromTemplate
 
 	thumb_func_start sub_0201B1F4
 sub_0201B1F4: ; 0x0201B1F4
@@ -2052,8 +2052,8 @@ _0201BB4A:
 	bx lr
 	thumb_func_end sub_0201BAFC
 
-	thumb_func_start sub_0201BB4C
-sub_0201BB4C: ; 0x0201BB4C
+	thumb_func_start FreeBgTilemapBuffer
+FreeBgTilemapBuffer: ; 0x0201BB4C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mov r2, #0x2c
@@ -2068,7 +2068,7 @@ sub_0201BB4C: ; 0x0201BB4C
 	str r0, [r4, r5]
 _0201BB66:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201BB4C
+	thumb_func_end FreeBgTilemapBuffer
 
 	thumb_func_start sub_0201BB68
 sub_0201BB68: ; 0x0201BB68
@@ -2949,8 +2949,8 @@ _0201C1C0:
 	.balign 4, 0
 	thumb_func_end sub_0201C130
 
-	thumb_func_start sub_0201C1C4
-sub_0201C1C4: ; 0x0201C1C4
+	thumb_func_start BG_ClearCharDataRange
+BG_ClearCharDataRange: ; 0x0201C1C4
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -2971,7 +2971,7 @@ sub_0201C1C4: ; 0x0201C1C4
 	add r1, r4, #0
 	bl FreeToHeapExplicit
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0201C1C4
+	thumb_func_end BG_ClearCharDataRange
 
 	thumb_func_start sub_0201C1F4
 sub_0201C1F4: ; 0x0201C1F4
@@ -3091,8 +3091,8 @@ _0201C2CC:
 	.balign 4, 0
 	thumb_func_end sub_0201C290
 
-	thumb_func_start sub_0201C2D8
-sub_0201C2D8: ; 0x0201C2D8
+	thumb_func_start BG_SetMaskColor
+BG_SetMaskColor: ; 0x0201C2D8
 	push {r0, r1, r2, r3}
 	push {r3, lr}
 	add r1, sp, #0xc
@@ -3104,7 +3104,7 @@ sub_0201C2D8: ; 0x0201C2D8
 	add sp, #0x10
 	bx r3
 	.balign 4, 0
-	thumb_func_end sub_0201C2D8
+	thumb_func_end BG_SetMaskColor
 
 	thumb_func_start sub_0201C2F0
 sub_0201C2F0: ; 0x0201C2F0
@@ -5448,7 +5448,7 @@ AllocWindows: ; 0x0201D39C
 _0201D3AE:
 	lsl r0, r4, #4
 	add r0, r6, r0
-	bl sub_0201D3C4
+	bl InitWindow
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -5459,8 +5459,8 @@ _0201D3C0:
 	pop {r4, r5, r6, pc}
 	thumb_func_end AllocWindows
 
-	thumb_func_start sub_0201D3C4
-sub_0201D3C4: ; 0x0201D3C4
+	thumb_func_start InitWindow
+InitWindow: ; 0x0201D3C4
 	mov r3, #0
 	str r3, [r0]
 	mov r1, #0xff
@@ -5482,10 +5482,10 @@ sub_0201D3C4: ; 0x0201D3C4
 	bx lr
 	nop
 _0201D3EC: .word 0xFFFF8000
-	thumb_func_end sub_0201D3C4
+	thumb_func_end InitWindow
 
-	thumb_func_start sub_0201D3F0
-sub_0201D3F0: ; 0x0201D3F0
+	thumb_func_start WindowIsInUse
+WindowIsInUse: ; 0x0201D3F0
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0201D402
@@ -5502,7 +5502,7 @@ _0201D406:
 	mov r0, #1
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0201D3F0
+	thumb_func_end WindowIsInUse
 
 	thumb_func_start sub_0201D40C
 sub_0201D40C: ; 0x0201D40C

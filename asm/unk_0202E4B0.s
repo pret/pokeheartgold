@@ -90,7 +90,7 @@ sub_0202E4FC: ; 0x0202E4FC
 	mov r1, #0
 	lsl r2, r2, #4
 	add r6, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r7, #0
 _0202E50C:
 	mov r4, #0
@@ -295,7 +295,7 @@ sub_0202E66C: ; 0x0202E66C
 	mov r1, #0
 	lsl r2, r2, #2
 	str r0, [sp, #4]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	bl sub_0202C854
 	mov r1, #1
@@ -419,7 +419,7 @@ sub_0202E75C: ; 0x0202E75C
 	mov r1, #0
 	mov r2, #0xe0
 	add r4, r3, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, sp, #0x10
 	ldrb r0, [r0, #0x10]
 	cmp r0, #0
@@ -781,7 +781,7 @@ sub_0202E9FC: ; 0x0202E9FC
 	mov r1, #0
 	mov r2, #0x4c
 	add r7, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl sub_0202C854
 	mov r1, #1
@@ -840,7 +840,7 @@ sub_0202EA80: ; 0x0202EA80
 	mov r1, #0
 	mov r2, #0x4c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp]
 	mov r1, #0x90
 	mul r1, r0
@@ -910,7 +910,7 @@ _0202EB0E:
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #0x4c
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r6, #0
 	bl FreeToHeap
 	mov r0, #0x18
