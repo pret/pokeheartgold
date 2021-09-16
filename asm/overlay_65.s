@@ -2275,7 +2275,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #6
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	bl sub_020744AC
 	add r2, r0, #0
 	ldr r0, _0221D1C4 ; =0x00002228

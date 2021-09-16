@@ -2895,7 +2895,7 @@ ov70_02238F24: ; 0x02238F24
 	ldr r0, [r4]
 	sub r1, r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	ldr r1, _02238F60 ; =0x000011F8
 	ldrh r2, [r4, r1]
 	add r0, r2, r0
@@ -13221,7 +13221,7 @@ _0223E30E:
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x10]
 	ldr r2, [r5, r2]
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	b _0223E414
 _0223E326:
 	ldr r0, [r5]
@@ -18312,7 +18312,7 @@ ov70_022409C0: ; 0x022409C0
 	add r2, r2, #2
 	ldrh r2, [r5, r2]
 	ldr r0, [r0, #0xc]
-	bl sub_02073D10
+	bl PCStorage_DeleteBoxMonByIndexPair
 	add r0, r4, #0
 	bl FreeToHeap
 	b _02240A62
@@ -18466,14 +18466,14 @@ _02240B54:
 	add r1, sp, #0x20
 	ldr r0, [r0, #0xc]
 	add r2, sp, #4
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	add r0, r4, #0
 	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0, #0xc]
-	bl sub_02073BFC
+	bl PCStorage_PlaceMonInBoxFirstEmptySlot
 	mov r0, #0x4d
 	ldr r1, [sp, #0x20]
 	lsl r0, r0, #2
@@ -18588,14 +18588,14 @@ _02240C58:
 	add r1, sp, #0x20
 	ldr r0, [r0, #0xc]
 	add r2, sp, #4
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	add r0, r4, #0
 	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0, #0xc]
-	bl sub_02073BFC
+	bl PCStorage_PlaceMonInBoxFirstEmptySlot
 	mov r0, #0x4d
 	ldr r1, [sp, #0x20]
 	lsl r0, r0, #2
@@ -20180,19 +20180,19 @@ _022418D4:
 	add r2, r2, #4
 	ldr r0, [r0, #0xc]
 	ldr r2, [r5, r2]
-	bl sub_02073D10
+	bl PCStorage_DeleteBoxMonByIndexPair
 	ldr r0, [r5]
 	add r1, sp, #4
 	ldr r0, [r0, #0xc]
 	add r2, sp, #0
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	add r0, r4, #0
 	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_02073BFC
+	bl PCStorage_PlaceMonInBoxFirstEmptySlot
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

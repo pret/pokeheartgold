@@ -26,7 +26,7 @@ ov14_021E5900: ; 0x021E5900
 	ldr r0, [r0]
 	bl GetStoragePCPointer
 	str r0, [r4, #4]
-	bl sub_02073D4C
+	bl PCStorage_GetActiveBox
 	strb r0, [r4, #0x1f]
 	ldr r0, [r4]
 	ldr r0, [r0]
@@ -77,7 +77,7 @@ ov14_021E5988: ; 0x021E5988
 	add r1, r0, #0
 	ldr r0, [r1, #4]
 	ldrb r1, [r1, #0x1f]
-	bl sub_02073E84
+	bl PCStorage_SetActiveBox
 	add r0, r4, #0
 	bl OverlayManager_FreeData
 	mov r0, #9
@@ -993,7 +993,7 @@ ov14_021E6094: ; 0x021E6094
 	bhs _021E60BE
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
-	bl sub_020740D8
+	bl PCStorage_SetBoxModified
 _021E60BE:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov14_021E6094
@@ -1041,7 +1041,7 @@ ov14_021E6100: ; 0x021E6100
 	cmp r2, #0x1e
 	bhs _021E610E
 	ldr r0, [r0, #4]
-	bl sub_02073D10
+	bl PCStorage_DeleteBoxMonByIndexPair
 	pop {r3, pc}
 _021E610E:
 	sub r2, #0x1e
@@ -1087,7 +1087,7 @@ ov14_021E611C: ; 0x021E611C
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
 	ldr r2, [r4, #8]
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldrb r1, [r5, #0x1f]
 	add r0, r5, #0
 	bl ov14_021F4958
@@ -1147,7 +1147,7 @@ ov14_021E61BC: ; 0x021E61BC
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
 	ldr r2, [r4, #8]
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldrb r1, [r5, #0x1f]
 	ldr r2, [r4, #4]
 	add r0, r5, #0
@@ -1263,11 +1263,11 @@ ov14_021E62C8: ; 0x021E62C8
 	ldr r0, [r5, #4]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_02073BFC
+	bl PCStorage_PlaceMonInBoxFirstEmptySlot
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
 	ldr r2, [r4, #4]
-	bl sub_02073D10
+	bl PCStorage_DeleteBoxMonByIndexPair
 	ldrb r1, [r5, #0x1f]
 	add r0, r5, #0
 	bl ov14_021F4958
@@ -1314,7 +1314,7 @@ _021E6350:
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	add r1, r6, #0
-	bl sub_02073BFC
+	bl PCStorage_PlaceMonInBoxFirstEmptySlot
 	ldrb r1, [r5, #0x1f]
 	ldr r2, [r4, #4]
 	add r0, r5, #0
@@ -1376,7 +1376,7 @@ _021E63CA:
 	bhs _021E63F2
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
-	bl sub_02073CC0
+	bl PCStorage_SwapMonsInBoxByIndexPair
 	ldrb r1, [r5, #0x1f]
 	add r0, r5, #0
 	bl ov14_021F4958
@@ -2084,7 +2084,7 @@ ov14_021E690C: ; 0x021E690C
 	beq _021E6940
 	ldr r0, [r5, #4]
 	ldr r1, [sp]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	cmp r0, #0x1e
 	bne _021E6944
 _021E6940:
@@ -4179,7 +4179,7 @@ _021E792C: .word 0x00000448
 ov14_021E7930: ; 0x021E7930
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl sub_02073E98
+	bl PCStorage_GetBoxWallpaper
 	cmp r0, #0x10
 	blo _021E793E
 	sub r0, #0x10
@@ -6629,7 +6629,7 @@ _021E8AA8:
 	bne _021E8AC0
 	ldrb r1, [r4, #0x1f]
 	ldr r0, [r4, #4]
-	bl sub_020740D8
+	bl PCStorage_SetBoxModified
 _021E8AC0:
 	ldr r0, [r4, #0x18]
 	bl FreeToHeap
@@ -6714,7 +6714,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	ldrb r1, [r1]
 	ldr r0, [r4, #4]
 	ldr r2, [r2, #0x18]
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	ldr r0, _021E8B7C ; =0x02102610
 	ldr r1, [r4, #0x18]
 	mov r2, #9
@@ -6737,7 +6737,7 @@ ov14_021E8B80: ; 0x021E8B80
 	ldrb r1, [r1]
 	ldr r0, [r5, #4]
 	ldr r2, [r4, #0x18]
-	bl sub_02073F34
+	bl PCStorage_SetBoxName
 	ldr r0, [r4, #0x14]
 	strh r0, [r5, #0x1c]
 	ldr r0, [r5, #0x18]
@@ -7585,7 +7585,7 @@ _021E9248:
 	mov r0, #0
 	str r0, [sp, #4]
 	ldr r0, [r5, #4]
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	add r1, r5, #0
 	add r1, #0x21
 	ldrb r1, [r1]
@@ -16459,12 +16459,12 @@ ov14_021ED96C: ; 0x021ED96C
 	cmp r2, #0x10
 	bhs _021ED98E
 	ldrb r1, [r4, #0x1f]
-	bl sub_02073EC8
+	bl PCStorage_SetBoxWallpaper
 	b _021ED996
 _021ED98E:
 	ldrb r1, [r4, #0x1f]
 	add r2, #0x10
-	bl sub_02073EC8
+	bl PCStorage_SetBoxWallpaper
 _021ED996:
 	add r0, r4, #0
 	bl ov14_021F4530
@@ -17910,7 +17910,7 @@ ov14_021EE578: ; 0x021EE578
 	add r1, #0x25
 	ldrb r1, [r1]
 	ldr r0, [r4, #4]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	cmp r0, #0x1e
 	bne _021EE5A0
 	add r0, r4, #0
@@ -21789,7 +21789,7 @@ ov14_021F0594: ; 0x021F0594
 	bne _021F05E4
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
-	bl sub_02073FA8
+	bl PCStorage_CountMonsInBox
 	cmp r0, #0
 	bne _021F05E4
 	add r0, r5, #0
@@ -21952,7 +21952,7 @@ _021F0710:
 _021F072A:
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
-	bl sub_02073E40
+	bl PCStorage_CountEmptySpotsInBox
 	cmp r0, #0
 	bne _021F0742
 	add r0, r5, #0
@@ -23441,7 +23441,7 @@ ov14_021F131C: ; 0x021F131C
 	blo _021F1348
 	ldr r0, [r4, #4]
 	sub r1, #0x10
-	bl sub_020740B4
+	bl PCStorage_IsBonusWallpaperUnlocked
 	cmp r0, #0
 	bne _021F1348
 	ldr r0, _021F13A4 ; =0x000005F3
@@ -23590,7 +23590,7 @@ ov14_021F1448: ; 0x021F1448
 	ldr r0, [r5, #4]
 	add r5, #0x25
 	ldrb r1, [r5]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	cmp r0, #0x1e
 	bne _021F1482
 	ldr r0, _021F14F8 ; =0x000005F3
@@ -23699,7 +23699,7 @@ ov14_021F1540: ; 0x021F1540
 	add r1, #0x25
 	ldrb r1, [r1]
 	ldr r0, [r4, #4]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	cmp r0, #0x1e
 	bne _021F1566
 	ldr r0, _021F1578 ; =0x000005F3
@@ -23925,7 +23925,7 @@ _021F170C:
 	b _021F17D0
 _021F172C:
 	ldr r0, [r5, #4]
-	bl sub_02073E40
+	bl PCStorage_CountEmptySpotsInBox
 	cmp r0, #0
 	bne _021F173E
 	ldr r0, [r5, #0x34]
@@ -23957,7 +23957,7 @@ _021F1752:
 	b _021F17D0
 _021F1772:
 	ldr r0, [r5, #4]
-	bl sub_02073E40
+	bl PCStorage_CountEmptySpotsInBox
 	cmp r0, #0
 	bne _021F1784
 	ldr r0, [r5, #0x34]
@@ -26847,7 +26847,7 @@ _021F2DF4:
 	ldr r1, [sp, #4]
 	add r2, r4, #0
 	mov r3, #0xac
-	bl sub_02074014
+	bl PCStorage_GetMonDataByIndexPair
 	cmp r0, #0
 	bne _021F2E10
 	ldr r0, [r5, #0x34]
@@ -30004,7 +30004,7 @@ ov14_021F46B0: ; 0x021F46B0
 	add r1, r7, #0
 	ldr r0, [r0, #4]
 	sub r1, #0x10
-	bl sub_020740B4
+	bl PCStorage_IsBonusWallpaperUnlocked
 	cmp r0, #0
 	bne _021F46D0
 	mov r2, #0x28
@@ -32101,7 +32101,7 @@ ov14_021F5718: ; 0x021F5718
 	ldrb r1, [r6, #0x1f]
 	ldr r0, [r6, #4]
 	add r2, r7, #0
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	mov r0, #0
 	ldr r3, [sp, #0x30]
 	str r0, [sp]
@@ -32156,7 +32156,7 @@ ov14_021F57B8: ; 0x021F57B8
 	ldrb r1, [r1]
 	ldr r0, [r4, #4]
 	add r2, r5, #0
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	mov r3, #0
 	ldr r0, _021F58B4 ; =0x00010200
 	str r3, [sp]
@@ -32195,7 +32195,7 @@ ov14_021F57B8: ; 0x021F57B8
 	add r5, r0, #0
 	ldrb r1, [r1]
 	ldr r0, [r4, #4]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -32267,7 +32267,7 @@ ov14_021F58B8: ; 0x021F58B8
 	blo _021F590E
 	ldr r0, [r5, #4]
 	sub r1, #0x10
-	bl sub_020740B4
+	bl PCStorage_IsBonusWallpaperUnlocked
 	cmp r0, #0
 	bne _021F58FC
 	ldr r0, [r5, #0x34]

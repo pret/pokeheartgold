@@ -1234,7 +1234,7 @@ _0204DACA:
 	blt _0204DAA0
 _0204DAD2:
 	ldr r0, [sp, #4]
-	bl sub_02073FF8
+	bl PCStorage_CountMonsInAllBoxes
 	add r1, r4, r0
 	ldr r0, [sp]
 	strh r1, [r0]

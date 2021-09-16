@@ -1794,7 +1794,7 @@ sub_02030724: ; 0x02030724
 	add r4, r0, #0
 	ldrh r1, [r7]
 	ldr r0, [sp]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	ldrh r0, [r7, #2]
 	mov r6, #0
 	cmp r0, #0

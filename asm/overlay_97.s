@@ -483,10 +483,10 @@ ov97_0221E97C: ; 0x0221E97C
 	add r0, r1, #0
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _0221E988 ; =sub_02073F00
+	ldr r3, _0221E988 ; =PCStorage_GetBoxName
 	bx r3
 	.balign 4, 0
-_0221E988: .word sub_02073F00
+_0221E988: .word PCStorage_GetBoxName
 	thumb_func_end ov97_0221E97C
 
 	thumb_func_start ov97_0221E98C

@@ -49,7 +49,7 @@ ov39_02227088: ; 0x02227088
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #0x14
@@ -66,7 +66,7 @@ _022270CA:
 	add r1, r6, #0
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02074014
+	bl PCStorage_GetMonDataByIndexPair
 	ldr r1, [sp, #0xc]
 	add r2, r4, #0
 	strh r0, [r1, #0x28]
@@ -75,7 +75,7 @@ _022270CA:
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r3, #0
-	bl sub_02074014
+	bl PCStorage_GetMonDataByIndexPair
 	ldr r1, [sp, #8]
 	add r2, r4, #0
 	str r0, [r1, #0x64]
@@ -84,7 +84,7 @@ _022270CA:
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r3, #7
-	bl sub_02074014
+	bl PCStorage_GetMonDataByIndexPair
 	ldr r1, [sp, #8]
 	add r2, r4, #0
 	add r1, #0xdc
@@ -94,7 +94,7 @@ _022270CA:
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r3, #0xae
-	bl sub_02074014
+	bl PCStorage_GetMonDataByIndexPair
 	ldr r1, _02227180 ; =0x000001EE
 	cmp r0, r1
 	bne _02227130
@@ -114,7 +114,7 @@ _02227130:
 	add r1, r6, #0
 	add r2, r4, #0
 	mov r3, #0x70
-	bl sub_02074014
+	bl PCStorage_GetMonDataByIndexPair
 	mov r1, #0x56
 	add r2, r7, r4
 	lsl r1, r1, #2
@@ -130,7 +130,7 @@ _02227130:
 	blt _022270CA
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02073E98
+	bl PCStorage_GetBoxWallpaper
 	ldr r2, _02227184 ; =0x00000176
 	mov r1, #0
 	strb r0, [r7, r2]

@@ -658,7 +658,7 @@ _02051DDA:
 	beq _02051E0A
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	ldr r0, [sp, #0x18]
 	mov r1, #0
 	bl GetPartyMonByIndex
@@ -850,7 +850,7 @@ sub_02051F2C: ; 0x02051F2C
 	bl GetPartyCount
 	add r1, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	ldr r0, [sp, #0x14]
 	mov r7, #0
 	bl GetPartyCount
@@ -1058,7 +1058,7 @@ _02052158:
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	add r1, r6, #0
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r0, #0
 	str r0, [sp, #8]
 	cmp r6, #0

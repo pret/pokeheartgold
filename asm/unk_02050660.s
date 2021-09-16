@@ -1678,7 +1678,7 @@ _020513AC:
 	ldr r2, [sp, #0x30]
 	ldr r1, [r1, #0xc]
 	add r0, r5, #0
-	bl sub_020733C0
+	bl EnemyTrainerSet_Init
 	ldr r0, [sp, #0xc]
 	ldr r0, [r0, #0xc]
 	bl Sav2_GameStats_get
@@ -1823,7 +1823,7 @@ _020514DA:
 	str r1, [r4, #0x24]
 	ldr r1, [r6, #0xc]
 	mov r2, #0xb
-	bl sub_020733C0
+	bl EnemyTrainerSet_Init
 	mov r5, #0xe
 _020514F6:
 	ldr r2, [sp, #4]

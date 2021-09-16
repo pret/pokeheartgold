@@ -23785,7 +23785,7 @@ _02237668:
 	cmp r1, #0x20
 	bhs _02237684
 	sub r1, #0x18
-	bl sub_020740B4
+	bl PCStorage_IsBonusWallpaperUnlocked
 	cmp r0, #0
 	bne _02237684
 	ldr r0, _022376F8 ; =0x0000017A

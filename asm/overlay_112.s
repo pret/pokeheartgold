@@ -10129,7 +10129,7 @@ ov112_021EAC5C: ; 0x021EAC5C
 	add r3, r0, #0
 	bl sub_0200FA24
 	add r0, r4, #0
-	bl sub_02073DFC
+	bl PCStorage_CountEmptySpotsInAllBoxes
 	cmp r0, #5
 	bge _021EACA0
 	add r0, r5, #0
@@ -10143,7 +10143,7 @@ ov112_021EAC5C: ; 0x021EAC5C
 	pop {r4, r5, pc}
 _021EACA0:
 	add r0, r4, #0
-	bl sub_02073FF8
+	bl PCStorage_CountMonsInAllBoxes
 	cmp r0, #0
 	bne _021EACCC
 	ldr r0, _021EADC8 ; =0x0001E440
@@ -12800,12 +12800,12 @@ ov112_021EC134: ; 0x021EC134
 	add r2, sp, #4
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r4, #0
 	add r3, r5, r6
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldr r1, [sp, #8]
 	add r0, r6, #0
 	add r0, #0x88
@@ -17484,7 +17484,7 @@ ov112_021EE628: ; 0x021EE628
 	add r0, r7, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_02073D10
+	bl PCStorage_DeleteBoxMonByIndexPair
 	add r0, r5, #0
 	bl ov112_021EECF0
 	mov r0, #2
@@ -17753,12 +17753,12 @@ _021EE854:
 	ldr r0, [sp, #4]
 	add r1, sp, #0x10
 	add r2, sp, #0xc
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r3, r6, #0
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
@@ -18137,12 +18137,12 @@ _021EEB3A:
 	add r0, r7, #0
 	add r1, sp, #0x24
 	add r2, sp, #0x20
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x20]
 	ldr r3, [sp, #0x14]
 	add r0, r7, #0
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -18241,12 +18241,12 @@ _021EEBA4:
 	add r0, r7, #0
 	add r1, sp, #0x24
 	add r2, sp, #0x20
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x20]
 	add r0, r7, #0
 	add r3, r6, #0
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -19085,10 +19085,10 @@ ov112_021EF300: ; 0x021EF300
 	add r0, r1, #0
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _021EF30C ; =sub_02073F00
+	ldr r3, _021EF30C ; =PCStorage_GetBoxName
 	bx r3
 	.balign 4, 0
-_021EF30C: .word sub_02073F00
+_021EF30C: .word PCStorage_GetBoxName
 	thumb_func_end ov112_021EF300
 
 	thumb_func_start ov112_021EF310

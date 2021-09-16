@@ -492,7 +492,7 @@ ov24_02259C10: ; 0x02259C10
 	bl Mon_GetBoxMon
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_02073BB8
+	bl PCStorage_PlaceMonInFirstEmptySlotInAnyBox
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _02259C8A:

@@ -163,7 +163,7 @@ _0204C960:
 	bl Mon_GetBoxMon
 	add r1, r0, #0
 	ldr r0, [sp, #8]
-	bl sub_02073BB8
+	bl PCStorage_PlaceMonInFirstEmptySlotInAnyBox
 	cmp r0, #0
 	bne _0204C990
 	bl GF_AssertFail

@@ -9765,7 +9765,7 @@ _0223C454:
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r3, #5
-	bl sub_02073548
+	bl GetTrainerMessageByIdPair
 	add r0, r7, #0
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -16839,10 +16839,10 @@ ov12_0223FB34: ; 0x0223FB34
 	add r6, r0, #0
 	ldrh r0, [r4, r5]
 	add r1, sp, #4
-	bl sub_020735D8
+	bl TrainerData_ReadTrData
 	ldrh r0, [r4, r5]
 	add r1, r6, #0
-	bl sub_020735E8
+	bl TrainerData_ReadTrPoke
 	add r0, sp, #4
 	ldrb r1, [r0]
 	cmp r1, #3
@@ -26781,7 +26781,7 @@ ov12_022448EC: ; 0x022448EC
 	ldr r0, [r4, r0]
 	lsl r0, r0, #4
 	add r0, r2, r0
-	bl sub_02073354
+	bl GetAttrFromWazaTbl
 	mov r1, #0x4d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -28235,7 +28235,7 @@ ov12_02245450: ; 0x02245450
 	bl ov12_0223A9AC
 	add r1, r4, #0
 	mov r2, #5
-	bl sub_020734D0
+	bl TrainerMessageWithIdPairExists
 	cmp r0, #0
 	beq _02245494
 	mov r0, #0x13
@@ -31565,14 +31565,14 @@ _02246F5E:
 	ldr r0, [r4]
 	bl ov12_0223AB3C
 	str r0, [sp, #0x1c]
-	bl sub_02073D4C
+	bl PCStorage_GetActiveBox
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x1c]
 	bl PCStorage_FindFirstBoxWithEmptySlot
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x14]
-	bl sub_02073E84
+	bl PCStorage_SetActiveBox
 	mov r5, #0
 _02246F7E:
 	add r1, r5, #0
@@ -31604,7 +31604,7 @@ _02246FB4:
 	add r2, r0, #0
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x14]
-	bl sub_02073BFC
+	bl PCStorage_PlaceMonInBoxFirstEmptySlot
 	ldr r0, [r4, #0x28]
 	cmp r0, #0x16
 	bne _02247026
@@ -34477,7 +34477,7 @@ ov12_02248660: ; 0x02248660
 	bl ov12_0224E384
 	ldr r0, _022486A8 ; =0x000003DE
 	add r0, r4, r0
-	bl sub_02073300
+	bl LoadAllWazaTbl
 	mov r0, #5
 	bl sub_02078138
 	ldr r1, _022486AC ; =0x00002120
@@ -52170,7 +52170,7 @@ _02250DA8:
 	ldr r0, [sp, #8]
 	mov r1, #0xd
 	mov r2, #5
-	bl sub_020734D0
+	bl TrainerMessageWithIdPairExists
 	cmp r0, #0
 	beq _02250DE4
 	mov r1, #0x85
@@ -52208,7 +52208,7 @@ _02250DEC:
 	ldr r0, [sp, #8]
 	mov r1, #0xe
 	mov r2, #5
-	bl sub_020734D0
+	bl TrainerMessageWithIdPairExists
 	cmp r0, #0
 	beq _02250E2C
 	ldr r1, _02250F3C ; =0x00002E7D
@@ -52265,7 +52265,7 @@ _02250E76:
 	ldr r0, [sp, #8]
 	mov r1, #0xf
 	mov r2, #5
-	bl sub_020734D0
+	bl TrainerMessageWithIdPairExists
 	cmp r0, #0
 	beq _02250EA0
 	ldr r1, _02250F3C ; =0x00002E7D
@@ -52329,7 +52329,7 @@ _02250EEA:
 	ldr r0, [sp, #8]
 	mov r1, #0x10
 	mov r2, #5
-	bl sub_020734D0
+	bl TrainerMessageWithIdPairExists
 	cmp r0, #0
 	beq _02250F22
 	ldr r1, _02250F3C ; =0x00002E7D
@@ -80719,7 +80719,7 @@ _0225EA18:
 	mov r1, #6
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	ldr r0, [sp, #0x14]
 	mov r6, #0
 	bl GetPartyCount

@@ -1965,7 +1965,7 @@ _020404FC: .word 0x00001388
 sub_02040500: ; 0x02040500
 	push {r3, lr}
 	mov r1, #9
-	bl sub_02073470
+	bl TrainerData_GetAttr
 	cmp r0, #0
 	beq _02040510
 	mov r0, #1

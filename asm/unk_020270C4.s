@@ -132,7 +132,7 @@ sub_02027170: ; 0x02027170
 	push {r3, lr}
 	mov r1, #0x29
 	bl SavArray_get
-	bl sub_02074114
+	bl PCStorage_GetBoxModifiedFlags
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02027170
@@ -142,7 +142,7 @@ sub_02027180: ; 0x02027180
 	push {r3, lr}
 	mov r1, #0x29
 	bl SavArray_get
-	bl sub_02074108
+	bl PCStorage_ResetBoxModifiedFlags
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02027180
@@ -152,7 +152,7 @@ sub_02027190: ; 0x02027190
 	push {r3, lr}
 	mov r1, #0x29
 	bl SavArray_get
-	bl sub_020740F8
+	bl PCStorage_SetAllBoxesModified
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02027190

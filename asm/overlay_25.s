@@ -276,7 +276,7 @@ ov25_02259AAC: ; 0x02259AAC
 	add r7, r0, #0
 	ldr r0, [r6, #4]
 	mov r1, #6
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r4, #0
 	cmp r7, #0
 	ble _02259B60
@@ -549,7 +549,7 @@ ov25_02259D14: ; 0x02259D14
 	mov r1, #6
 	add r0, r0, r4
 	ldr r0, [r0, #4]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	add r5, #0x30
 	mov r7, #0
 	add r4, r5, #0

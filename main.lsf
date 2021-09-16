@@ -184,7 +184,10 @@ Static main
 	Object script_pokemon_util.o
 	Object unk_02054514.o
 	Object pokemon.o
-	Object unk_02072914.o
+	Object waza.o
+	Object trainer_data.o
+	Object pokemon_storage_system.o
+	Object unk_02074120.o
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o

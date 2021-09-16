@@ -26494,7 +26494,7 @@ ov80_0223690C: ; 0x0223690C
 	add r4, r0, #0
 	ldrb r1, [r5, #0xe]
 	ldr r0, [r7, #4]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	ldrb r0, [r5, #0xe]
 	mov r6, #0
 	cmp r0, #0
@@ -27362,7 +27362,7 @@ ov80_02236F24: ; 0x02236F24
 	str r1, [r4, r0]
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x10]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r7, r0, #0
@@ -27411,7 +27411,7 @@ _02236FB6:
 	bl ov80_02236DF8
 	add r1, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r7, #0
 	add r6, r4, #0
 _02236FFC:
@@ -27485,7 +27485,7 @@ _0223704E:
 	bl ov80_02236DF8
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r7, r0, #0
@@ -28242,7 +28242,7 @@ ov80_022375D0: ; 0x022375D0
 	str r1, [r4, r0]
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x18]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r0, #0xb
 	bl AllocMonZeroed
 	str r0, [sp, #0x20]
@@ -28292,7 +28292,7 @@ _02237668:
 	bl ov80_0222A480
 	ldr r0, [r4, #8]
 	ldr r1, [sp, #0x10]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	ldr r1, _0223781C ; =0x000006F5
 	ldrb r2, [r5, #4]
 	ldrb r0, [r5, r1]
@@ -28424,7 +28424,7 @@ _0223777E:
 	bl ov80_0222A480
 	ldr r0, [r4, #0x10]
 	ldr r1, [sp, #0x10]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r6, r0, #0
@@ -29021,7 +29021,7 @@ ov80_02237B8C: ; 0x02237B8C
 	str r1, [r4, r0]
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x10]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	bl sub_0203769C
 	cmp r0, #0
 	bne _02237BF0
@@ -29081,7 +29081,7 @@ _02237C2A:
 	bl ov80_02237B58
 	add r1, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r7, #0
 	add r6, r4, #0
 _02237C70:
@@ -29154,7 +29154,7 @@ _02237CC0:
 	bl ov80_02237B58
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r7, r0, #0
@@ -29810,7 +29810,7 @@ ov80_02238150: ; 0x02238150
 _022381B4:
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x10]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	bl sub_0203769C
 	cmp r0, #0
 	bne _022381C8
@@ -29871,7 +29871,7 @@ _02238202:
 	bl ov80_0223811C
 	add r1, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r6, #0
 	add r5, r4, #0
 _0223824A:
@@ -29945,7 +29945,7 @@ _0223829A:
 	bl ov80_0223811C
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r6, r0, #0

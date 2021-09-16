@@ -1652,7 +1652,7 @@ sub_02055098: ; 0x02055098
 _020550A6:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02073470
+	bl TrainerData_GetAttr
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	ldr r0, _020550DC ; =0x00000454
@@ -10739,7 +10739,7 @@ _020595F0:
 	bl sub_020744BC
 	mov r1, #3
 	str r0, [r4, #0x50]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	add r0, r4, #0
 	mov r1, #5
 	add r0, #0x44
@@ -10979,7 +10979,7 @@ sub_020597A8: ; 0x020597A8
 	add r6, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #3
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r4, #0
 _020597BC:
 	add r1, r4, #0
@@ -11019,7 +11019,7 @@ sub_020597D4: ; 0x020597D4
 	bl MIi_CpuCopy8
 	ldr r0, [r6, #0x50]
 	mov r1, #3
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r5, #0
 _0205980A:
 	add r1, r5, #0

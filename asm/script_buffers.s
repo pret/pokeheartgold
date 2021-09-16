@@ -1038,7 +1038,7 @@ sub_0200C490: ; 0x0200C490
 	add r4, r1, #0
 	ldr r2, [r5, #0xc]
 	add r1, r3, #0
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0

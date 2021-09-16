@@ -23711,7 +23711,7 @@ ov101_021F2E74: ; 0x021F2E74
 	add r4, r1, #0
 	add r1, sp, #0xc
 	add r5, r0, #0
-	bl sub_020735D8
+	bl TrainerData_ReadTrData
 	add r0, r4, #0
 	mov r1, #0x6c
 	bl AllocFromHeap
@@ -23721,7 +23721,7 @@ ov101_021F2E74: ; 0x021F2E74
 	bl MI_CpuFill8
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020735E8
+	bl TrainerData_ReadTrPoke
 	add r1, sp, #0
 	ldrb r0, [r1, #0xc]
 	cmp r0, #3
@@ -24734,11 +24734,11 @@ _021F3642:
 	ldr r0, [r4, #0x1c]
 	bl GetStoragePCPointer
 	add r6, r0, #0
-	bl sub_02073D4C
+	bl PCStorage_GetActiveBox
 	add r1, r0, #0
 	ldr r2, [r4, #0x54]
 	add r0, r6, #0
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	mov r0, #1
 	str r0, [sp]
 	mov r3, #2
@@ -24748,7 +24748,7 @@ _021F3642:
 	mov r1, #0xa
 	bl BufferString
 	add r0, r6, #0
-	bl sub_02073DFC
+	bl PCStorage_CountEmptySpotsInAllBoxes
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp]

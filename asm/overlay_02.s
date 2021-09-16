@@ -2444,7 +2444,7 @@ _02246EA0:
 	str r0, [r1, #0x20]
 	ldr r0, [sp, #0x20]
 	ldr r1, [r5, #0xc]
-	bl sub_020733C0
+	bl EnemyTrainerSet_Init
 	add r0, sp, #0x24
 	str r0, [sp]
 	ldr r1, [sp, #0x10]
@@ -2950,7 +2950,7 @@ _022472CE:
 	str r0, [r1, #0x20]
 	ldr r0, [sp, #0x1c]
 	ldr r1, [r5, #0xc]
-	bl sub_020733C0
+	bl EnemyTrainerSet_Init
 	add r0, sp, #0x20
 	str r0, [sp]
 	ldr r1, [sp, #0x10]

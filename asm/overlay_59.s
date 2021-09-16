@@ -7951,7 +7951,7 @@ ov59_0223BA64: ; 0x0223BA64
 	add r1, r5, #0
 	ldr r0, [r5]
 	add r1, #0x1e
-	bl sub_02073238
+	bl CalcMonPokeathlonPerformance
 	add r1, r5, #0
 	ldrb r2, [r5, #8]
 	add r0, r6, #0

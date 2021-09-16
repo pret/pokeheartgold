@@ -6418,7 +6418,7 @@ sub_02043990: ; 0x02043990
 	ldr r0, [sp]
 	ldr r2, [r6]
 	mov r3, #0xb
-	bl sub_02073548
+	bl GetTrainerMessageByIdPair
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_020402F0
@@ -10132,7 +10132,7 @@ _020456AA:
 _020456B4:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_020740B4
+	bl PCStorage_IsBonusWallpaperUnlocked
 	cmp r0, #0
 	beq _020456C4
 	mov r0, #0
@@ -10140,7 +10140,7 @@ _020456B4:
 _020456C4:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_02074094
+	bl PCStorage_UnlockBonusWallpaper
 	add r0, r5, #1
 _020456CE:
 	strh r0, [r4]
@@ -10342,7 +10342,7 @@ sub_0204583C: ; 0x0204583C
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl GetStoragePCPointer
-	bl sub_02073DFC
+	bl PCStorage_CountEmptySpotsInAllBoxes
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
