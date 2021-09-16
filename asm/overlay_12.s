@@ -2303,7 +2303,7 @@ _02238C7E:
 	add r6, r4, #0
 _02238CB2:
 	mov r0, #5
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	str r0, [r6, #0x68]
 	ldr r0, [sp, #4]
 	add r6, r6, #4
@@ -72399,7 +72399,7 @@ ov12_0225A700: ; 0x0225A700
 	ldr r1, [r4, #8]
 	str r0, [r1, #4]
 	mov r0, #5
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	ldr r1, [r4, #8]
 	mov r6, #0
 	ldr r1, [r1, #4]
@@ -82134,7 +82134,7 @@ _0225F57E:
 	bl AllocFromHeap
 	str r0, [r4, #4]
 	mov r0, #5
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	ldr r1, [r4, #4]
 	str r0, [r1]
 	ldr r0, [r4]

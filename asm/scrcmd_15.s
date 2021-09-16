@@ -110,7 +110,7 @@ sub_0204D154: ; 0x0204D154
 	bl SavArray_PlayerParty_get
 	lsl r1, r4, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0207456C
+	bl RemoveMonFromParty
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0204D154

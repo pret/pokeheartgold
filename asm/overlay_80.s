@@ -12707,11 +12707,11 @@ ov80_0222FD08: ; 0x0222FD08
 	ldr r1, _0222FED8 ; =0x0223DD40
 	str r0, [r5]
 	ldr r5, [r1]
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	ldr r1, _0222FEE0 ; =0x000004D4
 	str r0, [r5, r1]
 	mov r0, #0xb
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	ldr r1, _0222FEE4 ; =0x000004D8
 	str r0, [r5, r1]
 	add r1, #0x1c
@@ -14022,7 +14022,7 @@ ov80_022307F0: ; 0x022307F0
 	str r0, [sp]
 	ldr r0, _022308B0 ; =0x000004D4
 	ldr r0, [r5, r0]
-	bl sub_020744D0
+	bl SavArray_Party_init
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r6, r0, #0
@@ -14315,7 +14315,7 @@ ov80_02230A60: ; 0x02230A60
 	add r6, r0, #0
 	ldr r0, _02230ADC ; =0x000004D8
 	ldr r0, [r4, r0]
-	bl sub_020744D0
+	bl SavArray_Party_init
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r7, r0, #0
@@ -14578,7 +14578,7 @@ ov80_02230C10: ; 0x02230C10
 	add r0, r4, r0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
-	bl sub_020744D0
+	bl SavArray_Party_init
 	ldr r0, [r7, #8]
 	bl SavArray_PlayerParty_get
 	mov r1, #0x26
@@ -15170,7 +15170,7 @@ ov80_022310C4: ; 0x022310C4
 	ldr r1, _022313A4 ; =0x0223DD44
 	str r0, [r4]
 	ldr r4, [r1]
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	mov r1, #0x99
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -17680,10 +17680,10 @@ ov80_022324C4: ; 0x022324C4
 	mov r0, #0xb
 	str r0, [r4]
 	ldr r4, [r1]
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	str r0, [r4, #0x28]
 	mov r0, #0xb
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	str r0, [r4, #0x2c]
 	mov r0, #0xa2
 	ldr r1, [sp, #0x38]
@@ -21168,10 +21168,10 @@ ov80_022340E8: ; 0x022340E8
 	mov r0, #0xb
 	str r0, [r5]
 	ldr r5, [r1]
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	str r0, [r5, #0x70]
 	mov r0, #0xb
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	str r0, [r5, #0x74]
 	mov r0, #0x2a
 	ldr r1, [sp, #0x38]
@@ -27597,7 +27597,7 @@ ov80_02237130: ; 0x02237130
 	bl ov80_0222A52C
 	ldr r0, _022371A8 ; =0x000004D4
 	ldr r0, [r5, r0]
-	bl sub_020744D0
+	bl SavArray_Party_init
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r6, r0, #0
@@ -27646,7 +27646,7 @@ ov80_022371B0: ; 0x022371B0
 _022371C6:
 	ldr r0, [r5, r6]
 	sub r1, r4, #1
-	bl sub_0207456C
+	bl RemoveMonFromParty
 	sub r4, r4, #1
 	cmp r4, #2
 	bgt _022371C6
@@ -29328,7 +29328,7 @@ ov80_02237E30: ; 0x02237E30
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x2c]
-	bl sub_020744D0
+	bl SavArray_Party_init
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	bl ov80_02237B58
@@ -30078,7 +30078,7 @@ ov80_022383C0: ; 0x022383C0
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, [r5, #0x74]
-	bl sub_020744D0
+	bl SavArray_Party_init
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	bl ov80_0223811C

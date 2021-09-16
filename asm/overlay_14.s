@@ -1047,7 +1047,7 @@ _021E610E:
 	sub r2, #0x1e
 	ldr r0, [r0, #8]
 	add r1, r2, #0
-	bl sub_0207456C
+	bl RemoveMonFromParty
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov14_021E6100

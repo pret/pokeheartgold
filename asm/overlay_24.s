@@ -402,7 +402,7 @@ ov24_02259BB4: ; 0x02259BB4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	str r0, [r5, #8]
 	ldr r0, [r5, #4]
 	bl SavArray_PlayerParty_get
@@ -428,11 +428,11 @@ _02259BEC:
 	ldr r0, [r5, #0xc]
 	bge _02259BFC
 	add r1, r6, #0
-	bl sub_0207456C
+	bl RemoveMonFromParty
 	b _02259C02
 _02259BFC:
 	add r1, r7, #0
-	bl sub_0207456C
+	bl RemoveMonFromParty
 _02259C02:
 	ldrb r0, [r5, #0x15]
 	add r4, r4, #1

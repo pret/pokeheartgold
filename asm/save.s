@@ -22,7 +22,7 @@ _020F6464:
 _020F64C4:
 	.word 0x00000000, 0x00000000, Sav2_SysInfo_sizeof, Sav2_SysInfo_init
 	.word 0x00000001, 0x00000000, Sav2_PlayerData_sizeof, Sav2_PlayerData_init
-	.word 0x00000002, 0x00000000, sub_020744AC, sub_020744D0
+	.word 0x00000002, 0x00000000, SavArray_Party_sizeof, SavArray_Party_init
 	.word 0x00000003, 0x00000000, sub_02078180, sub_020781A0
 	.word 0x00000004, 0x00000000, SavArray_Flags_sizeof, SavArray_Flags_init
 	.word 0x00000005, 0x00000000, sub_0203B91C, sub_0203B938

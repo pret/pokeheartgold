@@ -1754,7 +1754,7 @@ sub_020306DC: ; 0x020306DC
 	lsl r2, r2, #2
 	bl MI_CpuFill8
 	add r0, r7, #0
-	bl sub_0207463C
+	bl GetPartyMaxCount
 	strh r0, [r6]
 	add r0, r7, #0
 	bl GetPartyCount

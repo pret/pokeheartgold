@@ -18335,7 +18335,7 @@ _02240A1A:
 	ldr r0, [r5]
 	ldrh r1, [r5, r1]
 	ldr r0, [r0, #8]
-	bl sub_0207456C
+	bl RemoveMonFromParty
 	ldr r0, [r5]
 	ldr r1, _02240A78 ; =0x000001B9
 	ldr r0, [r0, #8]
