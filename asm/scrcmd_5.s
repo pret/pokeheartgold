@@ -1,6 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D416C:
+	.space 0x4
+
 	.text
 
 	thumb_func_start sub_02048EB8
@@ -287,7 +292,7 @@ _020490AC:
 	cmp r7, #5
 	blo _020490AC
 _020490F8:
-	ldr r1, _02049108 ; =0x021D416C
+	ldr r1, _02049108 ; =_021D416C
 	ldr r0, [sp, #8]
 	strh r0, [r1, #2]
 	ldr r0, [sp, #4]
@@ -296,5 +301,5 @@ _020490F8:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02049108: .word 0x021D416C
+_02049108: .word _021D416C
 	thumb_func_end sub_020490A0

@@ -1,6 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D415C:
+	.space 0x10
+
 	.text
 
 	thumb_func_start sub_02040890
@@ -2836,7 +2841,7 @@ sub_02041D98: ; 0x02041D98
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	bl sub_0205C6DC
-	ldr r1, _02041E5C ; =0x021D415C
+	ldr r1, _02041E5C ; =_021D415C
 	add r6, r0, #0
 	ldrb r2, [r1]
 	mov r1, #1
@@ -2847,13 +2852,13 @@ sub_02041D98: ; 0x02041D98
 	bne _02041DD2
 	add r0, r6, #0
 	bl sub_0205F6FC
-	ldr r1, _02041E5C ; =0x021D415C
+	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xfe
 	ldrb r2, [r1]
 	and r0, r2
 	strb r0, [r1]
 _02041DD2:
-	ldr r0, _02041E5C ; =0x021D415C
+	ldr r0, _02041E5C ; =_021D415C
 	ldrb r1, [r0]
 	mov r0, #4
 	tst r0, r1
@@ -2864,13 +2869,13 @@ _02041DD2:
 	bne _02041DF6
 	ldr r0, [r5]
 	bl sub_0205F6FC
-	ldr r1, _02041E5C ; =0x021D415C
+	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xfb
 	ldrb r2, [r1]
 	and r0, r2
 	strb r0, [r1]
 _02041DF6:
-	ldr r0, _02041E5C ; =0x021D415C
+	ldr r0, _02041E5C ; =_021D415C
 	ldrb r1, [r0]
 	mov r0, #2
 	tst r0, r1
@@ -2884,13 +2889,13 @@ _02041DF6:
 	bne _02041E22
 	add r0, r4, #0
 	bl sub_0205F6FC
-	ldr r1, _02041E5C ; =0x021D415C
+	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xfd
 	ldrb r2, [r1]
 	and r0, r2
 	strb r0, [r1]
 _02041E22:
-	ldr r0, _02041E5C ; =0x021D415C
+	ldr r0, _02041E5C ; =_021D415C
 	ldrb r1, [r0]
 	mov r0, #8
 	tst r0, r1
@@ -2903,13 +2908,13 @@ _02041E22:
 	bne _02041E4C
 	add r0, r4, #0
 	bl sub_0205F6FC
-	ldr r1, _02041E5C ; =0x021D415C
+	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xf7
 	ldrb r2, [r1]
 	and r0, r2
 	strb r0, [r1]
 _02041E4C:
-	ldr r0, _02041E5C ; =0x021D415C
+	ldr r0, _02041E5C ; =_021D415C
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _02041E58
@@ -2919,7 +2924,7 @@ _02041E58:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02041E5C: .word 0x021D415C
+_02041E5C: .word _021D415C
 	thumb_func_end sub_02041D98
 
 	thumb_func_start sub_02041E60
@@ -2964,7 +2969,7 @@ sub_02041E84: ; 0x02041E84
 	bl sub_020660C0
 	add r6, r0, #0
 	ldr r0, [r4, #0x3c]
-	ldr r1, _02041F48 ; =0x021D415C
+	ldr r1, _02041F48 ; =_021D415C
 	mov r2, #0
 	strb r2, [r1]
 	bl sub_0205F574
@@ -2972,7 +2977,7 @@ sub_02041E84: ; 0x02041E84
 	bl sub_02062198
 	cmp r0, #0
 	bne _02041ED8
-	ldr r1, _02041F48 ; =0x021D415C
+	ldr r1, _02041F48 ; =_021D415C
 	mov r0, #1
 	ldrb r2, [r1]
 	orr r0, r2
@@ -2984,7 +2989,7 @@ _02041ED8:
 	bl sub_0205F648
 	cmp r0, #0
 	beq _02041EF2
-	ldr r1, _02041F48 ; =0x021D415C
+	ldr r1, _02041F48 ; =_021D415C
 	mov r0, #4
 	ldrb r2, [r1]
 	orr r0, r2
@@ -3002,7 +3007,7 @@ _02041EF2:
 	bl sub_0205F648
 	cmp r0, #0
 	bne _02041F1A
-	ldr r1, _02041F48 ; =0x021D415C
+	ldr r1, _02041F48 ; =_021D415C
 	mov r0, #2
 	ldrb r2, [r1]
 	orr r0, r2
@@ -3016,7 +3021,7 @@ _02041F1A:
 	bl sub_0205F648
 	cmp r0, #0
 	beq _02041F38
-	ldr r1, _02041F48 ; =0x021D415C
+	ldr r1, _02041F48 ; =_021D415C
 	mov r0, #8
 	ldrb r2, [r1]
 	orr r0, r2
@@ -3031,7 +3036,7 @@ _02041F38:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02041F48: .word 0x021D415C
+_02041F48: .word _021D415C
 _02041F4C: .word sub_02041D98
 	thumb_func_end sub_02041E84
 
@@ -12486,19 +12491,19 @@ sub_02046914: ; 0x02046914
 	add r5, r0, #0
 	cmp r6, #0
 	bne _0204694E
-	ldr r0, _0204696C ; =0x021D415C
+	ldr r0, _0204696C ; =_021D415C
 	str r4, [r0, #8]
 	str r7, [r0, #4]
 	str r5, [r0, #0xc]
 	b _02046966
 _0204694E:
-	ldr r0, _0204696C ; =0x021D415C
+	ldr r0, _0204696C ; =_021D415C
 	ldr r0, [r0, #8]
 	cmp r4, r0
 	beq _0204695A
 	bl GF_AssertFail
 _0204695A:
-	ldr r0, _0204696C ; =0x021D415C
+	ldr r0, _0204696C ; =_021D415C
 	ldr r0, [r0, #0xc]
 	cmp r5, r0
 	beq _02046966
@@ -12507,7 +12512,7 @@ _02046966:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0204696C: .word 0x021D415C
+_0204696C: .word _021D415C
 	thumb_func_end sub_02046914
 
 	thumb_func_start sub_02046970

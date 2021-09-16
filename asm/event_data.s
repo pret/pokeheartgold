@@ -1,6 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D4170:
+	.space 0x8
+
 	.text
 
 	thumb_func_start SavArray_Flags_sizeof
@@ -143,11 +148,11 @@ _02050488:
 	blt _0205049A
 	bl GF_AssertFail
 _0205049A:
-	ldr r0, _020504A0 ; =0x021D4170
+	ldr r0, _020504A0 ; =_021D4170
 	add r0, r0, r4
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_020504A0: .word 0x021D4170
+_020504A0: .word _021D4170
 	thumb_func_end GetFlagAddr
 
 	thumb_func_start GetVarAddr
