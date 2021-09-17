@@ -12,7 +12,7 @@ LIB            := $(BUILD_DIR)/libsyscall.a
 
 .PHONY: all install
 
-INSTALL_PREFIX ?= $(PROJECT_ROOT)/lib/ARM9-TS
+INSTALL_PREFIX ?= $(WORK_DIR)/lib/ARM9-TS
 INSTALL_LIBDIR := $(INSTALL_PREFIX)/lib
 
 all: $(LIB)

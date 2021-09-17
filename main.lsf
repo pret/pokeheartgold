@@ -207,6 +207,7 @@ Static main
 	Object unk_02068FC8.o
 	Object unk_02069528.o
 	Object unk_02069660.o
+	Object unk_0206979C.o
 	Object pokemon.o
 	Object waza.o
 	Object trainer_data.o
