@@ -11,6 +11,10 @@ PROJECT_ROOT := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 WORK_DIR   := $(shell realpath --relative-to $(CURDIR) $(PROJECT_ROOT))
 BACK_REL   := $(shell realpath --relative-to $(BUILD_DIR) $(CURDIR))
 
+# On some platforms, realpath can return an empty string.
+# However, WORKDIR must be non-empty
+WORK_DIR    ?= .
+
 TOOLSDIR     := $(WORK_DIR)/tools
 
 include $(WORK_DIR)/platform.mk
