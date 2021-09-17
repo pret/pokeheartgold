@@ -138,7 +138,7 @@ ifeq ($(PROC),arm946e)
 endif
 
 $(NEF): $(LCF) $(ALL_OBJS)
-	cd $(BUILD_DIR) && $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) $(ALL_OBJS:$(BUILD_DIR)/%=%)
+	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) $(ALL_OBJS:$(BUILD_DIR)/%=%)
 
 $(SBIN): build/%.sbin: build/%.nef
 ifeq ($(COMPARE),1)

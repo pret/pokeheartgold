@@ -45,7 +45,7 @@ MAKEROM_FLAGS  := $(DEFINES)
 $(NEF): libsyscall
 
 libsyscall:
-	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(WORK_DIR)/$(BUILD_DIR) GAME_CODE=$(GAME_CODE)
+	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
 
 SBIN_LZ        := $(SBIN)_LZ
 
