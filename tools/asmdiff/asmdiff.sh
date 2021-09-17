@@ -126,7 +126,10 @@ basefile=${baserom}${basestem}.sbin
     [[ $proc == armv5te ]] && {
       _start_ModuleParams=$(python $MYDIR/find_module_params.py ${basefile})
       compstatend=$(getword "$basefile" $((_start_ModuleParams+20)))
-      [[ $compstatend != "0" ]] && { $MYDIR/ntruncompbw $basefile $vma $compstatend || { rm -f $basefile; exit 1; }; }
+      [[ $compstatend != "0" ]] && {
+        $MYDIR/ntruncompbw $basefile $vma $compstatend || { rm -f $basefile; exit 1; }
+        dd if=/dev/zero of="$basefile" bs=1 seek="$((_start_ModuleParams+20))" count=4 conv=notrunc 2>/dev/null
+      }
     }
   }
   buildfile=${builddir}/${compname}.sbin
