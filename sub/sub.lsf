@@ -14,7 +14,9 @@ Autoload wram
 {
 	Address 0x037F8000
 	Object sub.wram.o
-	Object bss_padding.o
+	Object OS_interrupt.o
+	Object OS_irqTable.o
+	Object OS_spinLock.o
 	Object OS_thread.o
 	Object OS_context.o
 	Object OS_message.o
