@@ -23,23 +23,23 @@ sub_03800920: ; 0x03800920
 	bl sub_03803860
 	bl sub_038022E8
 	bl sub_03801944
-	bl sub_037FB248
+	bl PXI_Init
 	ldr r1, _03800A28 ; =sub_03800D94
 	mov r0, #6
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _03800A28 ; =sub_03800D94
 	mov r0, #9
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _03800A28 ; =sub_03800D94
 	mov r0, #8
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _03800A28 ; =sub_03800D94
 	mov r0, #4
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r0, _03800A2C ; =0x038090E0
 	ldr r1, _03800A30 ; =0x03809100
 	mov r2, #0x10
-	bl sub_037F96D0
+	bl OS_InitMessageQueue
 	mov sb, #0
 	mov r6, #0x18
 	ldr r8, _03800A34 ; =0x03809140
@@ -64,9 +64,9 @@ _038009C0:
 	ldr r1, _03800A3C ; =sub_03800D28
 	ldr r3, _03800A2C ; =0x038090E0
 	str r4, [sp, #4]
-	bl sub_037F9054
+	bl OS_CreateThread
 	ldr r0, _03800A38 ; =0x03808E3C
-	bl sub_037F93B4
+	bl OS_WakeupThreadDirect
 _03800A14:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
@@ -89,13 +89,13 @@ sub_03800A40: ; 0x03800A40
 	ldr r4, _03800A98 ; =0x03808E34
 	mov r6, r0
 _03800A50:
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	ldr r1, [r4]
 	cmp r1, #0
 	beq _03800A70
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	mov r0, r5
-	bl sub_037F92D8
+	bl OS_SleepThread
 	b _03800A50
 _03800A70:
 	ldr r1, _03800A98 ; =0x03808E34
@@ -104,7 +104,7 @@ _03800A70:
 	mov r2, #4
 	str r2, [r1, #4]
 	str r6, [r1, #0x498]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
@@ -124,16 +124,16 @@ sub_03800A9C: ; 0x03800A9C
 	ldreq r1, [r1, #0x498]
 	cmpeq r1, r0
 	bne _03800AEC
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	ldr r1, _03800AF4 ; =0x03808E34
 	mov r2, #5
 	str r2, [r1, #4]
 	mov r2, #0
 	str r2, [r1]
 	str r2, [r1, #0x498]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r0, _03800AF8 ; =0x038092C4
-	bl sub_037F932C
+	bl OS_WakeupThread
 _03800AEC:
 	ldmia sp!, {r3, lr}
 	bx lr
@@ -240,7 +240,7 @@ sub_03800BF4: ; 0x03800BF4
 	str r2, [r1, #4]
 	mov r2, #0
 	str r2, [r1]
-	bl sub_037F932C
+	bl OS_WakeupThread
 _03800C20:
 	ldmia sp!, {r3, lr}
 	bx lr
@@ -259,7 +259,7 @@ sub_03800C30: ; 0x03800C30
 	mov r4, r1
 	movhi r0, #0
 	bhi _03800CEC
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	ldr ip, _03800CF8 ; =0x03808E34
 	add r2, sp, #0x18
 	ldr r3, [ip, #0x48c]
@@ -293,13 +293,13 @@ _03800CB4:
 	add r2, r4, #1
 	and r2, r2, #0xf
 	str r2, [r1, #0x48c]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r1, _03800CFC ; =0x03809140
 	mov r0, #0x18
 	mla r1, r4, r0, r1
 	ldr r0, _03800D04 ; =0x038090E0
 	mov r2, #0
-	bl sub_037F96F8
+	bl OS_SendMessage
 _03800CEC:
 	ldmia sp!, {r4, r5, r6, lr}
 	add sp, sp, #0x10
@@ -317,7 +317,7 @@ sub_03800D08: ; 0x03800D08
 	ldr r0, _03800D24 ; =0x038090E0
 	add r1, sp, #0
 	mov r2, #0
-	bl sub_037F9820
+	bl OS_ReadMessage
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
@@ -335,7 +335,7 @@ _03800D3C:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_037F9784
+	bl OS_ReceiveMessage
 	ldr r0, [sp]
 	ldr r1, [r0]
 	cmp r1, #3
@@ -643,14 +643,14 @@ _03801118:
 	cmp r0, #2
 	bne _038013B4
 _03801130:
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r0, #0
 	bl sub_03800BC0
 	cmp r0, #0
 	bne _03801168
 	mov r0, r4
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r0, [sl, #4]
 	mov r1, #4
 	mov r0, r0, lsl #0x10
@@ -661,7 +661,7 @@ _03801168:
 	mov r0, #0
 	bl sub_03800BDC
 	mov r0, r4
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r1, _038013C0 ; =0x038092D4
 	add r0, sp, #8
 	ldr r1, [r1, #0x24]
@@ -1219,7 +1219,7 @@ _03801904:
 	strh r1, [r0]
 	b _03801924
 _03801920:
-	bl sub_037FAE94
+	bl OS_Terminate
 _03801924:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
@@ -1385,14 +1385,14 @@ _03801B38: .word 0x038093AC
 sub_03801B3C: ; 0x03801B3C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r5, r0
 	mov r0, #3
 	bl sub_03800BC0
 	cmp r0, #0
 	bne _03801B7C
 	mov r0, r5
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r0, [r4, #4]
 	mov r1, #4
 	mov r0, r0, lsl #0x10
@@ -1403,7 +1403,7 @@ _03801B7C:
 	mov r0, #3
 	bl sub_03800BDC
 	mov r0, r5
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r1, [r4, #4]
 	sub r0, r1, #0x61
 	cmp r0, #5
@@ -1737,7 +1737,7 @@ _03801F90:
 	bl sub_03801DE0
 	b _03801FA8
 _03801FA4:
-	bl sub_037FAE94
+	bl OS_Terminate
 _03801FA8:
 	ldr r0, _03801FB8 ; =0x03806B08
 	str r4, [r0]
@@ -1754,7 +1754,7 @@ sub_03801FBC: ; 0x03801FBC
 	mov r8, #0
 	ldrh sb, [r0]
 	strh r8, [r0]
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mvn r0, #0xfe000000
 	bl sub_037F894C
@@ -1823,7 +1823,7 @@ _038020B4:
 	bl sub_037F8914
 _038020CC:
 	mov r0, r4
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r2, _03802178 ; =0x04000208
 	mov r0, #1
 	ldrh r1, [r2]
@@ -1855,11 +1855,11 @@ _038020CC:
 	mov r0, #0x62
 	str r1, [r3, #0x20]
 	bl sub_03801CAC
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r0, r5
 	bl sub_037F88C8
 	mov r0, r4
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r1, _03802178 ; =0x04000208
 	ldrh r0, [r1]
 	strh sb, [r1]
@@ -2180,7 +2180,7 @@ _0380256C:
 	bl sub_03800AFC
 	b _038025E0
 _03802594:
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	ldr r3, _038025F4 ; =0x0400010E
 	ldr r1, _038025EC ; =0x038093E8
 	ldrh r2, [r3]
@@ -2191,7 +2191,7 @@ _03802594:
 	ldrh r1, [r1, #0x36]
 	orr r1, r1, #0xc0
 	strh r1, [r3]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	mov r1, #0
 	bl sub_03800AFC
@@ -2272,14 +2272,14 @@ sub_0380269C: ; 0x0380269C
 	beq _0380280C
 	b _038028A8
 _038026C4:
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r5, r0
 	mov r0, #2
 	bl sub_03800BC0
 	cmp r0, #0
 	bne _038026FC
 	mov r0, r5
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r0, [r4, #4]
 	mov r1, #4
 	mov r0, r0, lsl #0x10
@@ -2290,7 +2290,7 @@ _038026FC:
 	mov r0, #2
 	bl sub_03800BDC
 	mov r0, r5
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r0, [r4, #8]
 	and r0, r0, #1
 	cmp r0, #1
@@ -2327,7 +2327,7 @@ _03802774:
 	mov r1, #0
 	strh r1, [r0, #0x3a]
 	strh r1, [r0, #0x38]
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r5, r0
 	mov r0, #0x40
 	bl sub_037F8914
@@ -2343,7 +2343,7 @@ _03802774:
 	ldrh r1, [r1, #0x36]
 	orr r1, r1, #0xc0
 	strh r1, [r2, #2]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r0, [r4, #4]
 	mov r1, #0
 	mov r0, r0, lsl #0x10
@@ -2369,14 +2369,14 @@ _0380280C:
 	ldrh r0, [r1]
 	bic r0, r0, #0x80
 	strh r0, [r1]
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r0, #0x40
 	mov r1, #0
 	bl sub_03802CE8
 	bl sub_03802D70
 	mov r0, r4
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r0, _038028B4 ; =0x038093E8
 	mov r1, #0
 	ldr r0, [r0, #0x20]
@@ -2755,11 +2755,11 @@ sub_03802D10: ; 0x03802D10
 	mov r1, #0x40
 	str r1, [r0, #8]
 	str r2, [r0, #0xc]
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	ldr r2, _03802D68 ; =sub_03802DB4
 	ldr r1, _03802D64 ; =0x0380FFFC
 	str r2, [r1]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 _03802D5C:
 	ldmia sp!, {r3, lr}
 	bx lr
@@ -2777,12 +2777,12 @@ sub_03802D70: ; 0x03802D70
 	ldr r1, [r1]
 	cmp r1, r0
 	bne _03802DA0
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	ldr r1, _03802DB0 ; =0x03809438
 	ldr r2, _03802DA8 ; =0x0380FFFC
 	ldr r1, [r1, #0xc]
 	str r1, [r2]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 _03802DA0:
 	ldmia sp!, {r3, lr}
 	bx lr
@@ -2814,7 +2814,7 @@ sub_03802DB4: ; 0x03802DB4
 	sub sp, sp, #8
 	mov r0, #0x9f
 	msr cpsr_c, r0
-	ldr r1, _03802F24 ; =0x03806C40
+	ldr r1, _03802F24 ; =OSi_ThreadInfo
 	ldrh r0, [r1, #2]
 	add r0, r0, #1
 	strh r0, [r1, #2]
@@ -2843,7 +2843,7 @@ _03802E50:
 	ldr r2, [r0, #4]
 	ldr r3, _03802F30 ; =0x03806A88
 	ldr r0, [r3, r2, lsl #2]
-	ldr r2, _03802F24 ; =0x03806C40
+	ldr r2, _03802F24 ; =OSi_ThreadInfo
 	ldrh r3, [r2, #2]
 	cmp r3, #1
 	ldreq r2, [r1]
@@ -2871,7 +2871,7 @@ sub_03802EA0: ; 0x03802EA0
 	orr r3, r3, r1
 	bic r3, r3, r0
 	str r3, [ip, #0x210]
-	ldr r2, _03802F24 ; =0x03806C40
+	ldr r2, _03802F24 ; =OSi_ThreadInfo
 	ldr r3, _03802F28 ; =0x03809438
 	ldrh r0, [r2, #2]
 	subs r1, r0, #1
@@ -2893,7 +2893,7 @@ sub_03802EA0: ; 0x03802EA0
 	ldmia sp!, {pc}
 	.align 2, 0
 _03802F20: .word 0x01DF3FFF
-_03802F24: .word 0x03806C40
+_03802F24: .word OSi_ThreadInfo
 _03802F28: .word 0x03809438
 _03802F2C: .word 0x038067A4
 _03802F30: .word 0x03806A88
@@ -2979,7 +2979,7 @@ sub_03802FD0: ; 0x03802FD0
 	cmp r0, #0
 	bne _03803034
 	ldr r0, [sp, #0xc]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	b _038030DC
 _03803034:
@@ -3089,7 +3089,7 @@ sub_03803170: ; 0x03803170
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	str r0, [r4, #4]
 	ldr r0, _038031BC ; =0x027FFFE8
 	bl sub_037F8C18
@@ -3122,7 +3122,7 @@ sub_038031C0: ; 0x038031C0
 	bl sub_037F8B9C
 _038031D8:
 	ldr r0, [r4, #4]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, lr}
 	bx lr
 	arm_func_end sub_038031C0
@@ -3149,13 +3149,13 @@ _03803208:
 	bx lr
 	arm_func_end sub_038031E8
 
-	arm_func_start sub_03803228
-sub_03803228: ; 0x03803228
+	arm_func_start CTRDG_Init
+CTRDG_Init: ; 0x03803228
 	stmdb sp!, {r3, lr}
-	bl sub_037FA14C
-	bl sub_037FA370
+	bl OS_InitTick
+	bl OS_InitAlarm
 	ldr r0, _038032B0 ; =0x03809480
-	bl sub_037FA3C4
+	bl OS_CreateAlarm
 	ldr r0, _038032B4 ; =0x03809450
 	ldr r1, [r0, #0x14]
 	cmp r1, #0
@@ -3169,20 +3169,20 @@ sub_03803228: ; 0x03803228
 	beq _038032A8
 	ldr r1, _038032B4 ; =0x03809450
 	strh r0, [r1]
-	bl sub_037FB248
+	bl PXI_Init
 	ldr r1, _038032B8 ; =sub_0380343C
 	mov r0, #0xd
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	bl sub_038032C8
 	ldr r1, _038032BC ; =sub_0380346C
 	mov r0, #0xd
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _038032C0 ; =sub_038034A0
 	mov r0, #0x10
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _038032C4 ; =sub_038037E4
 	mov r0, #0x11
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 _038032A8:
 	ldmia sp!, {r3, lr}
 	bx lr
@@ -3193,7 +3193,7 @@ _038032B8: .word sub_0380343C
 _038032BC: .word sub_0380346C
 _038032C0: .word sub_038034A0
 _038032C4: .word sub_038037E4
-	arm_func_end sub_03803228
+	arm_func_end CTRDG_Init
 
 	arm_func_start sub_038032C8
 sub_038032C8: ; 0x038032C8
@@ -3310,7 +3310,7 @@ sub_0380343C: ; 0x0380343C
 	streq r1, [r0, #0x18]
 	streq r2, [r0, #0x28]
 	beq _03803460
-	bl sub_037FAE94
+	bl OS_Terminate
 _03803460:
 	ldmia sp!, {r3, lr}
 	bx lr
@@ -3328,10 +3328,10 @@ sub_0380346C: ; 0x0380346C
 	bl sub_038034B0
 	bl sub_037FB69C
 	bl sub_03805A3C
-	bl sub_037FAE94
+	bl OS_Terminate
 	b _03803498
 _03803494:
-	bl sub_037FAE94
+	bl OS_Terminate
 _03803498:
 	ldmia sp!, {r3, lr}
 	bx lr
@@ -3368,7 +3368,7 @@ _038034EC:
 	ldrne r0, [r5, #0x3c]
 	cmpne r0, #0
 	bne _03803590
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	ldr r4, _038036CC ; =0x03809450
 	mov sb, r0
 	ldr r0, [r4, #4]
@@ -3408,7 +3408,7 @@ _0380357C:
 	ldr r0, _038036DC ; =0x03809480
 	bl sub_037FA5E4
 	mov r0, sb
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	b _038036C4
 _03803590:
 	cmp r5, #0
@@ -3437,7 +3437,7 @@ _038035BC:
 	ldr r0, _038036DC ; =0x03809480
 	ldr r3, _038036E0 ; =sub_038034B0
 	mov r2, #0
-	bl sub_037FA500
+	bl OS_SetAlarm
 	mov r0, #0
 	str r0, [r5]
 	b _03803694
@@ -3457,7 +3457,7 @@ _03803604:
 	ldr r1, [r1, #0x24]
 	ldr r3, _038036E0 ; =sub_038034B0
 	mov r2, #0
-	bl sub_037FA500
+	bl OS_SetAlarm
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -3475,7 +3475,7 @@ _03803654:
 	ldr r1, [r1, #0xc]
 	ldr r3, _038036E0 ; =sub_038034B0
 	mov r2, #0
-	bl sub_037FA500
+	bl OS_SetAlarm
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -3492,7 +3492,7 @@ _038036AC:
 	ldr r3, _038036E0 ; =sub_038034B0
 	mov r2, #0
 	str r5, [sp]
-	bl sub_037FA500
+	bl OS_SetAlarm
 _038036C4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
@@ -3561,7 +3561,7 @@ _03803780:
 	b _038037B8
 _038037B0:
 	mov r0, r7
-	bl sub_037F94B0
+	bl OS_Sleep
 _038037B8:
 	mov r0, r6
 	mov r1, r5
@@ -3609,7 +3609,7 @@ _03803830:
 	bne _03803828
 	b _03803850
 _0380384C:
-	bl sub_037FAE94
+	bl OS_Terminate
 _03803850:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
@@ -3763,14 +3763,14 @@ _03803A2C: .word 0x038094AC
 sub_03803A30: ; 0x03803A30
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r5, r0
 	mov r0, #1
 	bl sub_03800BC0
 	cmp r0, #0
 	bne _03803A70
 	mov r0, r5
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r0, [r4, #4]
 	mov r1, #4
 	mov r0, r0, lsl #0x10
@@ -3781,7 +3781,7 @@ _03803A70:
 	mov r0, #1
 	bl sub_03800BDC
 	mov r0, r5
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r0, [r4, #4]
 	sub r0, r0, #0x20
 	cmp r0, #0xd
@@ -4766,23 +4766,23 @@ _03804710:
 	ldr r0, _038047BC ; =0x038094D0
 	mov r1, #0
 	str r1, [r0, #0x1d4]
-	bl sub_037FB248
+	bl PXI_Init
 	ldr r1, _038047C4 ; =sub_038047DC
 	mov r0, #5
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r0, _038047BC ; =0x038094D0
 	ldr r1, _038047C8 ; =0x038094F0
 	mov r2, #4
-	bl sub_037F96D0
+	bl OS_InitMessageQueue
 	mov r0, #0x100
 	stmia sp, {r0, r8}
 	ldr r0, _038047CC ; =0x03809500
 	ldr r1, _038047D0 ; =sub_03804958
 	ldr r3, _038047D4 ; =0x038096A4
 	mov r2, #0
-	bl sub_037F9054
+	bl OS_CreateThread
 	ldr r0, _038047CC ; =0x03809500
-	bl sub_037F93B4
+	bl OS_WakeupThreadDirect
 	mov r0, #0x8000
 	bl sub_037FB53C
 	mov r0, #0x40
@@ -4791,7 +4791,7 @@ _03804710:
 	mov r0, #0x100
 	mov r1, r0
 	bl sub_037FB51C
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r4, r0
 	ldr r1, _038047D8 ; =sub_03804DD8
 	mov r0, #0x80
@@ -4799,7 +4799,7 @@ _03804710:
 	mov r0, #0x80
 	bl sub_037F8914
 	mov r0, r4
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 _038047AC:
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, lr}
@@ -4886,7 +4886,7 @@ _038048C8:
 	mov r1, #0
 	mov r2, r1
 	strh r4, [r3, #0xd8]
-	bl sub_037F96F8
+	bl OS_SendMessage
 	cmp r0, #0
 	bne _03804908
 	mov r0, r4
@@ -4941,7 +4941,7 @@ _0380497C:
 	mov r0, sb
 	add r1, sp, #0
 	mov r2, #1
-	bl sub_037F9784
+	bl OS_ReceiveMessage
 	ldr r0, _03804DD4 ; =0x038095D0
 	ldrh r0, [r0, #0xd8]
 	cmp r0, #0x29
@@ -6205,10 +6205,10 @@ sub_038059E8: ; 0x038059E8
 	bl sub_037FB07C
 	ldr r1, _03805A34 ; =sub_03805BC8
 	mov r0, #0xf
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _03805A38 ; =sub_03805B18
 	mov r0, #0xa
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
@@ -6296,7 +6296,7 @@ sub_03805B18: ; 0x03805B18
 	beq _03805B60
 	mov r0, #0
 	mov r2, #0x100
-	bl sub_037FAFCC
+	bl MIi_CpuClear32
 	strh r4, [r6]
 	mov r0, #4
 	strh r0, [r6, #2]
@@ -6319,7 +6319,7 @@ sub_03805B68: ; 0x03805B68
 	cmp r0, #0
 	moveq r0, #0
 	bxeq lr
-	ldr r1, _03805BC4 ; =0x03806C40
+	ldr r1, _03805BC4 ; =OSi_ThreadInfo
 	ldr r1, [r1, #8]
 	b _03805BB4
 _03805B80:
@@ -6345,7 +6345,7 @@ _03805BB4:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_03805BC4: .word 0x03806C40
+_03805BC4: .word OSi_ThreadInfo
 	arm_func_end sub_03805B68
 
 	arm_func_start sub_03805BC8
@@ -6359,14 +6359,14 @@ sub_03805BC8: ; 0x03805BC8
 	beq _03805C80
 	b _03805D24
 _03805BE8:
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r5, r0
 	ldr r0, _03805D54 ; =0x03809894
 	bl sub_03805B68
 	cmp r0, #0
 	beq _03805C10
 	mov r0, r5
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	b _03805C70
 _03805C10:
@@ -6375,14 +6375,14 @@ _03805C10:
 	cmp r0, #1
 	beq _03805C30
 	mov r0, r5
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	b _03805C70
 _03805C30:
 	mov r2, #2
 	mov r0, r5
 	strb r2, [r1]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	mov r2, #0x400
 	ldr r0, _03805D54 ; =0x03809894
 	ldr r1, _03805D5C ; =sub_03805D6C
@@ -6391,9 +6391,9 @@ _03805C30:
 	mov r5, #0xa
 	mov r2, #0
 	str r5, [sp, #4]
-	bl sub_037F9054
+	bl OS_CreateThread
 	ldr r0, _03805D54 ; =0x03809894
-	bl sub_037F93B4
+	bl OS_WakeupThreadDirect
 	mov r0, #1
 _03805C70:
 	cmp r0, #0
@@ -6401,14 +6401,14 @@ _03805C70:
 	orr r6, r4, #5
 	b _03805D28
 _03805C80:
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	mov r5, r0
 	ldr r0, _03805D54 ; =0x03809894
 	bl sub_03805B68
 	cmp r0, #0
 	beq _03805CA8
 	mov r0, r5
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	b _03805D14
 _03805CA8:
@@ -6417,17 +6417,17 @@ _03805CA8:
 	cmp r0, #3
 	beq _03805CC8
 	mov r0, r5
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	b _03805D14
 _03805CC8:
 	mov r2, #4
 	mov r0, r5
 	strb r2, [r1]
-	bl sub_037FAD38
+	bl OS_RestoreInterrupts
 	ldr r1, _03805D64 ; =sub_03805B18
 	mov r0, #0xa
-	bl sub_037FB330
+	bl PXI_SetFifoRecvCallback
 	mov r2, #0x400
 	ldr r0, _03805D54 ; =0x03809894
 	ldr r1, _03805D68 ; =sub_03805DDC
@@ -6436,9 +6436,9 @@ _03805CC8:
 	mov r5, #2
 	mov r2, #0
 	str r5, [sp, #4]
-	bl sub_037F9054
+	bl OS_CreateThread
 	ldr r0, _03805D54 ; =0x03809894
-	bl sub_037F93B4
+	bl OS_WakeupThreadDirect
 	mov r0, #1
 _03805D14:
 	cmp r0, #0
@@ -6494,11 +6494,11 @@ _03805DA4:
 	bl sub_037FB3A4
 	cmp r0, #0
 	blt _03805DA4
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	ldr r0, _03805DD8 ; =0x03809884
 	mov r1, #3
 	strb r1, [r0]
-	bl sub_037F915C
+	bl OS_ExitThread
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
@@ -6531,7 +6531,7 @@ _03805E28:
 	mov r1, sb
 	mov r2, r8
 	add r0, sl, #0x88
-	bl sub_037F9784
+	bl OS_ReceiveMessage
 	cmp r0, #0
 	beq _03805E90
 	ldr r0, [r4, #0x54c]
@@ -6542,7 +6542,7 @@ _03805E28:
 	mov r0, r6
 	mov r1, r7
 	mov r2, fp
-	bl sub_037FAFCC
+	bl MIi_CpuClear32
 	ldr r1, [sp]
 	mov r0, r7
 	ldrh r1, [r1]
@@ -6562,28 +6562,28 @@ _03805E90:
 	add r0, sl, #0x88
 	mov r1, #0
 	mov r2, #1
-	bl sub_037F96F8
+	bl OS_SendMessage
 	bl sub_03805FF8
-	bl sub_037F9290
+	bl OS_JoinThread
 _03805EB8:
 	add r1, sp, #0
 	add r0, sl, #0x88
 	mov r2, #0
-	bl sub_037F9784
+	bl OS_ReceiveMessage
 	mov r5, r0
 	add r1, sp, #0
 	add r0, sl, #0x58
 	mov r2, #0
-	bl sub_037F9784
+	bl OS_ReceiveMessage
 	mov r4, r0
 	add r1, sp, #0
 	mov r0, sl
 	mov r2, #0
-	bl sub_037F9784
+	bl OS_ReceiveMessage
 	orr r1, r5, r4
 	orrs r0, r0, r1
 	beq _03805F00
-	bl sub_037FAE94
+	bl OS_Terminate
 _03805F00:
 	bl sub_03806000
 	add r5, sp, #0
@@ -6592,7 +6592,7 @@ _03805F0C:
 	mov r1, r5
 	mov r2, r4
 	add r0, sl, #0x28
-	bl sub_037F9784
+	bl OS_ReceiveMessage
 	cmp r0, #0
 	bne _03805F0C
 	bl sub_03806008
@@ -6602,9 +6602,9 @@ _03805F0C:
 	add r0, sl, #0x28
 	mov r1, #0
 	mov r2, #1
-	bl sub_037F96F8
+	bl OS_SendMessage
 	bl sub_03806008
-	bl sub_037F9290
+	bl OS_JoinThread
 _03805F4C:
 	mov r0, #1
 	bl sub_038022BC
@@ -6637,11 +6637,11 @@ _03805FA8:
 	bl sub_037FB3A4
 	cmp r0, #0
 	blt _03805FA8
-	bl sub_037FAD24
+	bl OS_DisableInterrupts
 	ldr r0, _03805FE4 ; =0x03809884
 	mov r1, #1
 	strb r1, [r0]
-	bl sub_037F915C
+	bl OS_ExitThread
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
@@ -6734,7 +6734,7 @@ _03806084:
 	orrs r6, r5, r6
 	bne _038060B8
 	mov r1, r2
-	bl sub_0380625C
+	bl _s32_div_f
 	ands r4, r4, #1
 	movne r0, r1
 	mov r1, r0, asr #0x1f
@@ -6877,8 +6877,8 @@ _03806238:
 	bx lr
 	arm_func_end sub_03806220
 
-	arm_func_start sub_0380625C
-sub_0380625C: ; 0x0380625C
+	arm_func_start _s32_div_f
+_s32_div_f: ; 0x0380625C
 	eor ip, r0, r1
 	and ip, ip, #0x80000000
 	cmp r0, #0
@@ -7011,7 +7011,7 @@ _03806454:
 	ands r3, ip, #1
 	rsbne r1, r1, #0
 	bx lr
-	arm_func_end sub_0380625C
+	arm_func_end _s32_div_f
 
 	arm_func_start sub_03806468
 sub_03806468: ; 0x03806468
@@ -7234,7 +7234,7 @@ _038068E8:
 	cmp r0, #0
 	blt _038068E0
 	ldr r0, _03806910 ; =0x06019DCC
-	bl sub_037F9930
+	bl OS_UnlockMutex
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
@@ -7245,7 +7245,7 @@ _03806910: .word 0x06019DCC
 sub_03806914: ; 0x03806914
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _0380695C ; =0x06019DCC
-	bl sub_037F98AC
+	bl OS_LockMutex
 	ldr r4, _03806960 ; =0x027FFF96
 	mov r5, #0x100
 	b _03806934

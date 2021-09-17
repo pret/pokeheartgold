@@ -40,7 +40,7 @@ static void ReadFromNarcMemberByPathAndId(void * dest, const char * path, s32 fi
     FS_CloseFile(&file);
 }
 
-static void * AllocAndReadFromNarcMemberByPathAndId(const char * path, s32 file_idx, u32 heap_id, u32 offset, u32 size, BOOL r4) {
+static void * AllocAndReadFromNarcMemberByPathAndId(const char * path, s32 file_idx, u32 heap_id, u32 offset, u32 size, BOOL allocMode) {
     FSFile file;
     register u32 chunk_starts[3];
     u32 btnf_size = 0;
@@ -74,7 +74,7 @@ static void * AllocAndReadFromNarcMemberByPathAndId(const char * path, s32 file_
     else
         chunk_size = size;
     GF_ASSERT(chunk_size != 0);
-    switch (r4) {
+    switch (allocMode) {
     case 0:
         dest = AllocFromHeap(heap_id, chunk_size);
         break;

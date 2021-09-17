@@ -9,6 +9,8 @@ PROC         := arm7tdmi
 PROC_S       := arm4t
 PROC_LD      := v4t
 LCF_TEMPLATE := ARM7-TS.lcf.template
+OPTFLAGS     := -O4,s
+DEFINES      := -DSDK_ARM7
 
 include ../common.mk
 

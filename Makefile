@@ -5,6 +5,7 @@ PROC_LD        := v5te
 LCF_TEMPLATE   := ARM9-TS.lcf.template
 LIBS           := -Llib -lsyscall -nostdlib
 ALL_BUILDDIRS  := $(BUILD_DIR)/lib
+OPTFLAGS       := -O4,p
 
 include config.mk
 include common.mk
@@ -17,8 +18,7 @@ BANNER_SPEC     := $(buildname)/banner.bsf
 ICON_PNG        := $(buildname)/icon.png
 HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
 
-MWCFLAGS  += -ipa file $(DEFINES) -interworking
-MWASFLAGS += $(DEFINES)
+MWASFLAGS += -DPM_ASM
 
 .PHONY: main sub libsyscall
 .PRECIOUS: $(ROM)

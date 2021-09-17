@@ -13,6 +13,8 @@
 #ifndef NITRO_OS_SPINLOCK_SHARED_H_
 #define NITRO_OS_SPINLOCK_SHARED_H_
 
+#include <nitro/types.h>
+
 typedef volatile struct OSLockWord {
     u32 lockFlag;
     u16 ownerID;
