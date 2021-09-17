@@ -9,11 +9,8 @@ PROJECT_ROOT := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 # Because mwldarm expects absolute paths to be WIN32 paths,
 # all paths referring up from BUILD_DIR must be relative.
 WORK_DIR   := $(shell realpath --relative-to $(CURDIR) $(PROJECT_ROOT))
+$(shell mkdir -p $(BUILD_DIR))
 BACK_REL   := $(shell realpath --relative-to $(BUILD_DIR) $(CURDIR))
-
-# On some platforms, realpath can return an empty string.
-# However, WORKDIR must be non-empty
-WORK_DIR    ?= .
 
 TOOLSDIR     := $(WORK_DIR)/tools
 
