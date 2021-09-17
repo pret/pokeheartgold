@@ -2,6 +2,8 @@
 
 MYDIR=$(dirname $0)
 
+mkdir -p ${MYDIR}/.bins
+
 DEFAULT_BASEROM=baserom.nds
 DEFAULT_ARM9BUILDDIR=build/heartgold.us
 DEFAULT_ARM7BUILDDIR=sub/build
@@ -78,7 +80,7 @@ proc=${proc:-armv5te}
 builddir=${builddir:-$DEFAULT_ARM9BUILDDIR}
 baserom=${baserom:-$DEFAULT_BASEROM}
 
-basefile=${baserom}${basestem}.sbin
+basefile=${MYDIR}/.bins/${baserom}${basestem}.sbin
 
 [[ "$mode" == overlay ]] && {
   case $proc in
