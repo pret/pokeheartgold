@@ -79,11 +79,11 @@ ov51_021E5AC0: ; 0x021E5AC0
 	ldr r0, [r1, r0]
 	bl Sav2_PlayerData_GetOptionsAddr
 	add r5, r0, #0
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	ldr r1, _021E5D58 ; =0x0000343E
 	strb r0, [r4, r1]
 	add r0, r5, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	ldr r1, _021E5D5C ; =0x0000343D
 	strb r0, [r4, r1]
 	bl sub_02037474
@@ -3496,7 +3496,7 @@ ov51_021E77A0: ; 0x021E77A0
 	add r0, #0xb4
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 _021E77B6:
 	add r0, r5, #0
 	add r0, #0xb4

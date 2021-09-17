@@ -1022,7 +1022,7 @@ _021E613C:
 	add r0, #0x2c
 	add r1, r4, #0
 	mov r3, #4
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	add r0, r4, #0
@@ -1081,7 +1081,7 @@ _021E613C:
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [r5, #8]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	add r3, r4, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -5168,7 +5168,7 @@ _021E82C8:
 	ldrb r2, [r4, #0x1a]
 	ldr r0, [r4, #0xc]
 	mov r3, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #0x18
@@ -5184,7 +5184,7 @@ _021E82C8:
 	ldrb r2, [r4, #0x1a]
 	ldr r0, [r4, #0xc]
 	mov r3, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x14
 	pop {r3, r4, pc}
 	thumb_func_end ov53_021E82BC

@@ -1814,7 +1814,7 @@ _021E850C:
 	ldrb r2, [r4]
 	ldrb r3, [r4, #1]
 	ldr r0, [r0, #0x74]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -13691,7 +13691,7 @@ _021EE1D4:
 	ldrb r2, [r4]
 	ldrb r3, [r4, #1]
 	ldr r0, [r0, #0x74]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -18254,7 +18254,7 @@ _021F0586:
 	ldrb r2, [r4]
 	ldrb r3, [r4, #1]
 	ldr r0, [r0, #0x74]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -18331,7 +18331,7 @@ _021F0628:
 	blt _021F0628
 	ldr r0, [r6, #0xc]
 	ldr r0, [r0, #0x30]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	add r6, #0x44
 	strb r0, [r6]
 	mov r0, #1
@@ -27829,7 +27829,7 @@ _021F4DD6:
 	ldrb r2, [r4]
 	ldrb r3, [r4, #1]
 	ldr r0, [r0, #0x74]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer

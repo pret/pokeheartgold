@@ -783,8 +783,8 @@ sub_0200E948: ; 0x0200E948
 	.balign 4, 0
 	thumb_func_end sub_0200E948
 
-	thumb_func_start sub_0200E998
-sub_0200E998: ; 0x0200E998
+	thumb_func_start DrawFrameAndWindow2
+DrawFrameAndWindow2: ; 0x0200E998
 	push {r4, r5, r6, lr}
 	add r6, r2, #0
 	add r4, r1, #0
@@ -801,7 +801,7 @@ _0200E9B2:
 	bl sub_020027F0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200E998
+	thumb_func_end DrawFrameAndWindow2
 
 	thumb_func_start ClearFrameAndWindow2
 ClearFrameAndWindow2: ; 0x0200E9BC
@@ -1596,8 +1596,8 @@ _0200EFC6:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200EF84
 
-	thumb_func_start sub_0200F004
-sub_0200F004: ; 0x0200F004
+	thumb_func_start DrawFrameAndWindow3
+DrawFrameAndWindow3: ; 0x0200F004
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	add r4, r0, #0
@@ -1671,7 +1671,7 @@ _0200F0A0:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200F004
+	thumb_func_end DrawFrameAndWindow3
 
 	thumb_func_start sub_0200F0AC
 sub_0200F0AC: ; 0x0200F0AC

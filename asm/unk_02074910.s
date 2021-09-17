@@ -2557,7 +2557,7 @@ sub_02075A7C: ; 0x02075A7C
 	ldr r1, [r4, #4]
 	mov r2, #1
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [r4, #4]
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -2565,7 +2565,7 @@ sub_02075A7C: ; 0x02075A7C
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #8
 	str r0, [sp]
 	mov r0, #0x1a
@@ -2581,7 +2581,7 @@ sub_02075A7C: ; 0x02075A7C
 	add r1, #0x8c
 	mov r2, #6
 	mov r3, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #0x1a
@@ -2597,7 +2597,7 @@ sub_02075A7C: ; 0x02075A7C
 	add r1, #0x9c
 	mov r2, #6
 	mov r3, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	bl sub_02007FD4
 	str r0, [r4, #0x18]
@@ -3925,7 +3925,7 @@ _02076754:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	ldr r0, [r4, #0x1c]
 	mov r1, #6
 	mov r2, #0
@@ -4873,7 +4873,7 @@ _02076F38:
 	mov r1, #6
 	bl sub_0201CAE0
 	ldr r0, [r5, #0x2c]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r6, r0, #0
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
@@ -5288,7 +5288,7 @@ sub_020772F8: ; 0x020772F8
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x2c]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -10868,7 +10868,7 @@ sub_02079A14: ; 0x02079A14
 	ldr r0, _02079BD0 ; =0x00000654
 	ldr r0, [r5, r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -16273,7 +16273,7 @@ _0207C59E:
 	mov r1, #1
 	mov r2, #0x2a
 	mov r3, #0xf
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x89
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -16799,7 +16799,7 @@ _0207C9E2:
 	mov r1, #1
 	mov r2, #0x2a
 	mov r3, #0xf
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x89
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -18890,7 +18890,7 @@ sub_0207DA64: ; 0x0207DA64
 	mov r1, #1
 	mov r2, #0x2a
 	mov r3, #0xf
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 _0207DA7E:
 	add r0, r4, #0
 	mov r1, #0xf
@@ -18964,7 +18964,7 @@ sub_0207DAEC: ; 0x0207DAEC
 	mov r1, #1
 	mov r2, #0x2a
 	mov r3, #0xf
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 _0207DB06:
 	add r0, r5, r6
 	mov r1, #0xf
@@ -18999,7 +18999,7 @@ sub_0207DB30: ; 0x0207DB30
 	ldr r0, _0207DB70 ; =0x00000654
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -19406,7 +19406,7 @@ sub_0207DDFC: ; 0x0207DDFC
 	add r1, #0x24
 	ldr r0, [r5]
 	add r1, r5, r1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xa1
 	lsl r0, r0, #2
 	mov r1, #1
@@ -22406,7 +22406,7 @@ _0207F65E:
 	mov r1, #1
 	mov r2, #0x2a
 	mov r3, #0xf
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x89
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -28874,7 +28874,7 @@ _02082BC8:
 	mov r1, #0
 	lsl r2, r2, #8
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r3, #0
 	mov r2, #6
 	ldr r0, _02082CE4 ; =0x00000448
@@ -30251,7 +30251,7 @@ sub_02083654: ; 0x02083654
 	mov r2, #0x12
 	bl sub_0200304C
 	ldr r0, [r5, #0x18]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -31244,7 +31244,7 @@ sub_02083F18: ; 0x02083F18
 	lsl r2, r2, #8
 	mov r3, #0xa
 	add r5, r0, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -31325,7 +31325,7 @@ sub_02083F9C: ; 0x02083F9C
 	add r1, r5, r1
 	mov r2, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r2, #1
 	mov r1, #0xf2
 	lsl r1, r1, #2
@@ -31342,7 +31342,7 @@ sub_02083F9C: ; 0x02083F9C
 	ldr r0, [r5, r0]
 	add r1, r5, r1
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [r5]
 	cmp r0, #4
 	bne _02084040
@@ -31416,7 +31416,7 @@ _0208406A:
 	ldr r0, [r5, r0]
 	add r1, r5, r1
 	mov r3, #7
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r1, [r5, #0xc]
 	mov r0, #0xc
 	add r2, r1, #0
@@ -31444,7 +31444,7 @@ _0208406A:
 	ldr r0, [r5, r0]
 	add r1, r5, r1
 	mov r3, #0xa
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xfa
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -31469,7 +31469,7 @@ _0208406A:
 	ldr r0, [r5, r0]
 	add r1, r5, r1
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _02084208 ; =0x00000438
 	mov r1, #1
 	add r0, r5, r0
@@ -31502,7 +31502,7 @@ _02084122:
 	ldr r0, [r5, r0]
 	add r1, r5, r1
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _0208420C ; =0x00000448
 	mov r1, #0xf
 	add r0, r5, r0
@@ -31562,7 +31562,7 @@ _020841A0:
 	add r1, r7, r6
 	mov r2, #2
 	mov r3, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r7, r6
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -31582,7 +31582,7 @@ _020841A0:
 	add r0, #0xdc
 	ldr r0, [r5, r0]
 	add r1, r5, r1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _02084218 ; =0x00000428
 	mov r1, #0
 	add r0, r5, r0
@@ -36285,7 +36285,7 @@ sub_02086490: ; 0x02086490
 	mov r0, #0xf6
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
@@ -37793,12 +37793,12 @@ sub_020871C4: ; 0x020871C4
 	str r0, [sp, #0x10]
 	add r0, r7, #0
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #1
 	add r0, r5, #0
 	add r2, r1, #0
 	mov r3, #0xb
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r5, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -42288,7 +42288,7 @@ _02089584:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0, #4]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -51359,7 +51359,7 @@ _0208DDE4:
 	add r0, r6, #0
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r6, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -57302,7 +57302,7 @@ sub_02090C94: ; 0x02090C94
 	strb r1, [r4, #3]
 	add r0, r6, #0
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	str r0, [r4, #8]
 	ldr r0, [sp]
 	cmp r5, #2
@@ -60209,7 +60209,7 @@ _020920FC:
 	add r0, #0x1c
 	add r1, r6, #0
 	mov r3, #2
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
@@ -60778,7 +60778,7 @@ _02092588:
 	add r0, #0x20
 	add r1, r6, #0
 	mov r3, #2
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
@@ -62649,7 +62649,7 @@ sub_02093440: ; 0x02093440
 	ldr r0, [r5]
 	add r1, r5, r1
 	mov r3, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x15
 	str r0, [sp]
 	mov r0, #6
@@ -62665,7 +62665,7 @@ sub_02093440: ; 0x02093440
 	add r1, r5, r1
 	mov r2, #1
 	mov r3, #0x19
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	bl sub_02094D1C
 	ldr r1, [r5]
@@ -66053,7 +66053,7 @@ sub_0209501C: ; 0x0209501C
 	ldr r0, [r4]
 	add r1, r4, r1
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r2, _020950B8 ; =0x0000012A
 	ldr r3, [r4, #4]
 	mov r0, #1
@@ -70441,7 +70441,7 @@ sub_0209707C: ; 0x0209707C
 	bl Sav2_GameStats_get
 	str r0, [r4, #0x1c]
 	ldr r0, [r4, #0x18]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	str r0, [r4, #0xc]
 	str r5, [r4, #0x20]
 	add r0, r4, #0

@@ -31,7 +31,7 @@ ov61_021E5900: ; 0x021E5900
 	bl OverlayManager_GetField18
 	add r5, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	mov r1, #0xe9
 	lsl r1, r1, #2
 	strb r0, [r4, r1]
@@ -2277,7 +2277,7 @@ ov61_021E6B6C: ; 0x021E6B6C
 	sub r1, r1, #4
 	ldr r0, [r4, #8]
 	ldr r1, [r4, r1]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x13
 	str r0, [sp]
 	mov r1, #0x1d
@@ -2293,7 +2293,7 @@ ov61_021E6B6C: ; 0x021E6B6C
 	ldr r0, [r4, #8]
 	ldr r1, [r4, r1]
 	add r3, r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2340,7 +2340,7 @@ ov61_021E6B6C: ; 0x021E6B6C
 	ldr r0, [r4, r0]
 	lsl r2, r2, #8
 	add r3, r1, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add sp, #0x14
 	pop {r3, r4, pc}
 	thumb_func_end ov61_021E6B6C
@@ -2541,7 +2541,7 @@ _021E6DA4:
 	add r0, r5, #0
 	lsl r2, r2, #8
 	add r3, r1, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	b _021E6DEE
 _021E6DE8:
 	add r0, r5, #0

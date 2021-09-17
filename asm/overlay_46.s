@@ -958,7 +958,7 @@ _02258FAE:
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	mov r1, #5
 	lsr r4, r0, #0x18
@@ -1361,7 +1361,7 @@ ov46_022592EC: ; 0x022592EC
 	ldr r0, [sp, #0x44]
 	str r6, [r5, #0x20]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	str r0, [r5, #0x28]
 	mov r0, #0
 	str r0, [r5, #0x2c]
@@ -1390,7 +1390,7 @@ ov46_022592EC: ; 0x022592EC
 	add r0, r7, #0
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov46_022592EC
@@ -1450,7 +1450,7 @@ _022593DE:
 	add r0, #8
 	add r2, r1, #0
 	mov r3, #0xb
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 _022593EC:
 	add r5, #8
 	add r0, r5, #0

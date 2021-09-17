@@ -1618,7 +1618,7 @@ ov27_0225AC00: ; 0x0225AC00
 	add r1, r5, #0
 	mov r2, #5
 	mov r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -1636,7 +1636,7 @@ ov27_0225AC00: ; 0x0225AC00
 	add r1, r6, #0
 	mov r2, #5
 	mov r3, #9
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r6, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -1664,7 +1664,7 @@ _0225ACB8:
 	lsl r3, r3, #0x18
 	mov r2, #5
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -3841,7 +3841,7 @@ _0225BE3A:
 	add r1, #0xc
 	mov r2, #5
 	mov r3, #0xb
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0xc
 	mov r1, #1
@@ -3927,7 +3927,7 @@ ov27_0225BED8: ; 0x0225BED8
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x10]
 	ldr r0, [r4, #4]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, sp, #0x14
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -4781,7 +4781,7 @@ ov27_0225C540: ; 0x0225C540
 	add r1, #0x28
 	mov r2, #5
 	mov r3, #0xc
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #8
@@ -4797,7 +4797,7 @@ ov27_0225C540: ; 0x0225C540
 	add r1, #0x38
 	mov r2, #5
 	mov r3, #0xc
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	ldr r1, [r5, #0x4c]
 	add r0, #0x28

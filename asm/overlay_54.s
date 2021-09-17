@@ -79,7 +79,7 @@ ov54_021E5900: ; 0x021E5900
 	orr r0, r1
 	strh r0, [r4, #0x18]
 	ldr r0, [r5, #4]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x1b
@@ -871,7 +871,7 @@ ov54_021E6004: ; 0x021E6004
 	ldr r0, [r4, #0x14]
 	add r1, #0x34
 	add r3, r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #0x1e
@@ -887,7 +887,7 @@ ov54_021E6004: ; 0x021E6004
 	ldr r0, [r4, #0x14]
 	add r1, #0x44
 	add r3, r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x15
 	str r0, [sp]
 	mov r0, #7
@@ -903,7 +903,7 @@ ov54_021E6004: ; 0x021E6004
 	add r1, #0x64
 	mov r2, #1
 	mov r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b
@@ -919,7 +919,7 @@ ov54_021E6004: ; 0x021E6004
 	add r1, #0x54
 	mov r2, #5
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x15
 	str r0, [sp]
 	mov r0, #7
@@ -935,7 +935,7 @@ ov54_021E6004: ; 0x021E6004
 	add r1, #0x74
 	mov r2, #1
 	mov r3, #0xf
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldrh r0, [r4, #0x18]
 	mov r1, #5
 	mov r2, #0x6d
@@ -1003,7 +1003,7 @@ ov54_021E6004: ; 0x021E6004
 	mov r1, #1
 	mov r2, #0x6d
 	mov r3, #0xf
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -1052,7 +1052,7 @@ ov54_021E61A8: ; 0x021E61A8
 	ldr r0, [r5, #0x24]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	add r7, r0, #0
 	mov r0, #0xca
 	lsl r0, r0, #2

@@ -5504,8 +5504,8 @@ _0201D406:
 	.balign 4, 0
 	thumb_func_end WindowIsInUse
 
-	thumb_func_start sub_0201D40C
-sub_0201D40C: ; 0x0201D40C
+	thumb_func_start AddWindowParameterized
+AddWindowParameterized: ; 0x0201D40C
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r2, #0
 	add r5, r0, #0
@@ -5574,7 +5574,7 @@ _0201D488:
 	nop
 _0201D48C: .word 0xFFFF8000
 _0201D490: .word 0xFFFF7FFF
-	thumb_func_end sub_0201D40C
+	thumb_func_end AddWindowParameterized
 
 	thumb_func_start sub_0201D494
 sub_0201D494: ; 0x0201D494
@@ -5646,7 +5646,7 @@ AddWindow: ; 0x0201D4F8
 	str r2, [sp, #0x10]
 	ldrb r2, [r3]
 	ldrb r3, [r3, #1]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x14
 	pop {pc}
 	.balign 4, 0

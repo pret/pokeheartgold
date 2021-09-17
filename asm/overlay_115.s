@@ -328,7 +328,7 @@ _0225F260:
 	add r1, r4, r1
 	ldr r0, [r0, #8]
 	mov r3, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -1636,7 +1636,7 @@ _0225FC0E:
 	add r1, r4, r1
 	ldr r0, [r0, #8]
 	mov r3, #0x15
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	add r0, r4, r0

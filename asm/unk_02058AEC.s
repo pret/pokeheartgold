@@ -1723,7 +1723,7 @@ sub_02059820: ; 0x02059820
 	ldr r0, [r0, #8]
 	mov r2, #3
 	mov r3, #0x15
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -1848,7 +1848,7 @@ sub_0205993C: ; 0x0205993C
 	ldr r0, [r0, #8]
 	mov r2, #3
 	mov r3, #0x14
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4

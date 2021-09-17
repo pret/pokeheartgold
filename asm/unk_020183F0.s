@@ -701,7 +701,7 @@ _020188DC:
 	ldr r0, [r5, #0x14]
 	add r1, r1, r6
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [r5, #0x1c]
 	mov r1, #3
 	add r0, r0, r6

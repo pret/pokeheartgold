@@ -198,12 +198,12 @@ ov110_021E5A74: ; 0x021E5A74
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetOptionsAddr
 	add r4, r0, #0
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	add r1, r5, #0
 	add r1, #0x25
 	strb r0, [r1]
 	add r0, r4, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r5, #0
 	add r1, #0x26
 	strb r0, [r1]
@@ -2156,7 +2156,7 @@ ov110_021E6988: ; 0x021E6988
 	add r0, #0x5c
 	add r2, r1, #0
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 _021E69A2:
 	add r0, r5, #0
 	add r0, #0x5c

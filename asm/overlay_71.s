@@ -1383,11 +1383,11 @@ _022473CC: .word 0x00000152
 	thumb_func_start ov71_022473D0
 ov71_022473D0: ; 0x022473D0
 	ldr r0, [r0]
-	ldr r3, _022473D8 ; =sub_0202ADCC
+	ldr r3, _022473D8 ; =Options_GetFrame
 	ldr r0, [r0, #0x14]
 	bx r3
 	.balign 4, 0
-_022473D8: .word sub_0202ADCC
+_022473D8: .word Options_GetFrame
 	thumb_func_end ov71_022473D0
 
 	thumb_func_start ov71_022473DC
@@ -2316,7 +2316,7 @@ ov71_02247A10: ; 0x02247A10
 	ldr r0, [r4, #0x54]
 	add r1, #0x58
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0xf
@@ -9403,7 +9403,7 @@ ov71_0224B280: ; 0x0224B280
 	ldr r0, [r4, #0x58]
 	add r1, #0x5c
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0xf

@@ -3435,7 +3435,7 @@ ov86_021E74F0: ; 0x021E74F0
 	mov r0, #0x22
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -3468,7 +3468,7 @@ ov86_021E752C: ; 0x021E752C
 	add r0, r4, r0
 	mov r1, #1
 	mov r3, #0xe
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #6
 	lsl r0, r0, #6
 	add r0, r4, r0
@@ -4686,7 +4686,7 @@ ov86_021E7E68: ; 0x021E7E68
 	str r2, [sp, #0x10]
 	mov r2, #0
 	mov r3, #0x19
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x14
 	pop {pc}
 	.balign 4, 0

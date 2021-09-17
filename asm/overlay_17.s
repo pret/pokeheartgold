@@ -200,12 +200,12 @@ ov17_02201D30: ; 0x02201D30
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetOptionsAddr
 	add r4, r0, #0
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	add r1, r5, #0
 	add r1, #0x78
 	strb r0, [r1]
 	add r0, r4, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r5, #0
 	add r1, #0x79
 	strb r0, [r1]
@@ -1800,7 +1800,7 @@ _0220295A:
 	add r0, r4, #0
 	add r2, r1, #0
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 _02202994:
 	ldr r2, [sp, #0x10]
 	add r0, r5, #0

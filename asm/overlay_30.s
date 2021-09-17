@@ -333,13 +333,13 @@ ov30_0225D784: ; 0x0225D784
 	add r1, #0x4c
 	mov r2, #5
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0x4c
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x44]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -482,13 +482,13 @@ ov30_0225D8F8: ; 0x0225D8F8
 	mov r1, #1
 	mov r2, #0xec
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	ldr r0, [r4, #0x38]
 	mov r1, #0x51
 	bl NewString_ReadMsgData
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -608,7 +608,7 @@ ov30_0225D9EC: ; 0x0225D9EC
 	bl NewString_ReadMsgData
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -692,13 +692,13 @@ ov30_0225DA98: ; 0x0225DA98
 	mov r1, #1
 	mov r2, #0xec
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	ldr r0, [r4, #0x38]
 	mov r1, #0x14
 	bl NewString_ReadMsgData
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -753,7 +753,7 @@ _0225DB16:
 _0225DB1C:
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -820,7 +820,7 @@ ov30_0225DB74: ; 0x0225DB74
 	bl ReadMsgData_ExpandPlaceholders
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]

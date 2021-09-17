@@ -1351,7 +1351,7 @@ _0225FACC:
 	ldr r0, [r0, #0x10]
 	mov r2, #3
 	ldr r0, [r0, #8]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0
 	add r0, sp, #0x28
 	strh r1, [r0]
@@ -2321,7 +2321,7 @@ _022602EA:
 	ldr r0, [r0, #0x10]
 	mov r2, #3
 	ldr r0, [r0, #8]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0
 	add r0, sp, #0x28
 	strh r1, [r0]

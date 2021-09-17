@@ -1480,7 +1480,7 @@ _02259304:
 	ldr r0, [sp, #0x18]
 	mov r3, #1
 	ldr r0, [r0]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -1740,7 +1740,7 @@ ov88_02259508: ; 0x02259508
 	ldr r0, [r4]
 	add r1, r5, #0
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1963,7 +1963,7 @@ _022596BC:
 	ldr r0, [sp, #0x18]
 	ldrb r3, [r5]
 	ldr r0, [r0]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [sp, #0x14]
 	mov r1, #0
 	bl FillWindowPixelBuffer

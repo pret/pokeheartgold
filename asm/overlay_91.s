@@ -2653,7 +2653,7 @@ _0225D908:
 	add r1, #0xc
 	mov r2, #1
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe0
 	str r0, [sp]
 	mov r0, #0x20
@@ -2733,7 +2733,7 @@ _0225D908:
 	ldr r0, [sp, #0x18]
 	add r1, sp, #0x30
 	ldr r0, [r0]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #1
 	lsl r0, r0, #8
 	str r0, [sp, #0x28]

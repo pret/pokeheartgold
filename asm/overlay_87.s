@@ -329,7 +329,7 @@ _021E5B68:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	mov r0, #0x53
 	lsl r0, r0, #2
@@ -5235,7 +5235,7 @@ ov87_021E8134: ; 0x021E8134
 	add r0, r4, #0
 	mov r1, #0
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop

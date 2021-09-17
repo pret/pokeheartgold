@@ -111,8 +111,8 @@ sub_0202AD28: ; 0x0202AD28
 	bx lr
 	thumb_func_end sub_0202AD28
 
-	thumb_func_start sub_0202AD3C
-sub_0202AD3C: ; 0x0202AD3C
+	thumb_func_start Options_GetTextFrameDelay
+Options_GetTextFrameDelay: ; 0x0202AD3C
 	push {r3, lr}
 	bl sub_0202AD20
 	cmp r0, #0
@@ -128,7 +128,7 @@ _0202AD52:
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202AD3C
+	thumb_func_end Options_GetTextFrameDelay
 
 	thumb_func_start sub_0202AD58
 sub_0202AD58: ; 0x0202AD58
@@ -220,13 +220,13 @@ sub_0202ADB4: ; 0x0202ADB4
 _0202ADC8: .word 0xFFFFFCFF
 	thumb_func_end sub_0202ADB4
 
-	thumb_func_start sub_0202ADCC
-sub_0202ADCC: ; 0x0202ADCC
+	thumb_func_start Options_GetFrame
+Options_GetFrame: ; 0x0202ADCC
 	ldrh r0, [r0]
 	lsl r0, r0, #0x11
 	lsr r0, r0, #0x1b
 	bx lr
-	thumb_func_end sub_0202ADCC
+	thumb_func_end Options_GetFrame
 
 	thumb_func_start sub_0202ADD4
 sub_0202ADD4: ; 0x0202ADD4

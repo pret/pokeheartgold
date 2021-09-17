@@ -1693,7 +1693,7 @@ sub_0204146C: ; 0x0204146C
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]

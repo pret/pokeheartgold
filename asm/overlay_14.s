@@ -650,7 +650,7 @@ ov14_021E5DE0: ; 0x021E5DE0
 	lsl r3, r3, #6
 	bl GfGfxLoader_GXLoadPal
 	ldr r0, [r5, #0x10]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -32087,7 +32087,7 @@ ov14_021F5718: ; 0x021F5718
 	ldr r0, [r6, #0x34]
 	mov r2, #3
 	ldr r0, [r0, #0x14]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r2, [sp, #0x30]
 	ldr r0, [sp, #0x14]
 	mul r2, r5

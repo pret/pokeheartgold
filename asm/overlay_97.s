@@ -1143,7 +1143,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	ldr r0, [r5, #4]
 	add r1, #8
 	mov r2, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #9
@@ -1159,7 +1159,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	add r1, #0x18
 	mov r2, #4
 	mov r3, #0x16
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0xf
 	str r1, [sp]
 	mov r0, #8
@@ -1174,7 +1174,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	add r1, #0x28
 	mov r2, #5
 	mov r3, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0xf
 	str r1, [sp]
 	mov r0, #3
@@ -1189,7 +1189,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	add r1, #0x38
 	mov r2, #5
 	mov r3, #9
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r2, #5
 	add r1, r5, #0
 	str r2, [sp]
@@ -1203,7 +1203,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	ldr r0, [r5, #4]
 	add r1, #0x48
 	mov r3, #0xd
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0xc
@@ -1219,7 +1219,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	add r1, #0x58
 	mov r2, #5
 	mov r3, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0x1b
 	add r2, r1, #0
 	ldr r3, [r5]

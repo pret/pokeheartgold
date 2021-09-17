@@ -1020,7 +1020,7 @@ _0225F73E:
 	ldr r1, [r4]
 	ldr r0, [r0, #8]
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0
 	add r0, sp, #0x14
 	strh r1, [r0]
@@ -1456,7 +1456,7 @@ _0225FA9E:
 	ldr r1, [r5]
 	ldr r0, [r0, #8]
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0
 	add r0, sp, #0x14
 	strh r1, [r0]
@@ -1629,7 +1629,7 @@ _0225FBEE:
 	ldr r1, [r5]
 	ldr r0, [r0, #8]
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0
 	add r0, sp, #0x14
 	strh r1, [r0]

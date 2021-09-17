@@ -121,7 +121,7 @@ ov03_02253ED0: ; 0x02253ED0
 	ldr r0, [r1, #0x68]
 	add r1, #0x20
 	ldr r0, [r0, #8]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _02253F14:
 	ldr r0, _02253F6C ; =0x022598A0
 	ldr r2, _02253F70 ; =0x000003D9
@@ -609,7 +609,7 @@ ov03_022542C8: ; 0x022542C8
 	add r1, #0x30
 	ldr r0, [r0, #8]
 	mov r3, #0x17
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _02254302:
 	ldr r0, _02254398 ; =0x022598A0
 	ldr r2, _0225439C ; =0x000003D9
@@ -1644,7 +1644,7 @@ ov03_02254B58: ; 0x02254B58
 	add r1, #0x30
 	ldr r0, [r0, #8]
 	mov r3, #0x16
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _02254BA0:
 	ldr r0, _02254BE0 ; =0x022598A0
 	ldr r2, _02254BE4 ; =0x000003D9
@@ -3953,7 +3953,7 @@ _02255DD4:
 	add r1, r4, #0
 	ldr r0, [r0, #8]
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	ldr r2, _02255EB4 ; =0x000003D9
 	add r0, #0x34
@@ -4172,7 +4172,7 @@ ov03_02255F98: ; 0x02255F98
 	ldr r0, [r0, #8]
 	mov r2, #3
 	mov r3, #0x16
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	ldr r2, _02256044 ; =0x000003D9
 	add r0, #0x44
@@ -4348,7 +4348,7 @@ ov03_022560EC: ; 0x022560EC
 	ldr r0, [r0, #0x10]
 	mov r3, #4
 	ldr r0, [r0, #8]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [sp, #0x24]
 	ldr r2, _022563B8 ; =0x000003D9
 	mov r1, #1
@@ -5106,7 +5106,7 @@ ov03_02256730: ; 0x02256730
 	mov r2, #3
 	mov r3, #4
 	str r1, [sp, #0x18]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -6516,7 +6516,7 @@ _0225720C:
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -10076,7 +10076,7 @@ ov03_02258DE8: ; 0x02258DE8
 	add r1, #0x10
 	mov r2, #3
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4

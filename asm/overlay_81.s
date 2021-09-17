@@ -1200,7 +1200,7 @@ _0223E740:
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0xc0
@@ -1518,7 +1518,7 @@ ov81_0223E8BC: ; 0x0223E8BC
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0xc0
@@ -3183,7 +3183,7 @@ _0223F798:
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xc0
@@ -3647,7 +3647,7 @@ ov81_0223FB88: ; 0x0223FB88
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xc0
@@ -4368,7 +4368,7 @@ _02240114:
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xc0
@@ -4377,7 +4377,7 @@ _02240114:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #1
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -10479,7 +10479,7 @@ ov81_02243028: ; 0x02243028
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop

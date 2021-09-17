@@ -43,11 +43,11 @@ ov56_021E5C20: ; 0x021E5C20
 	strh r1, [r0]
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #4]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	strb r0, [r4, #0x10]
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #4]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	strb r0, [r4, #0xb]
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
@@ -530,7 +530,7 @@ _021E5FF2:
 	mov r1, #1
 	mov r2, #0xa
 	mov r3, #6
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x9c
 	mov r1, #0xff
@@ -723,7 +723,7 @@ _021E6162:
 	mov r2, #0xa
 	mov r3, #6
 	strb r1, [r5, #0x13]
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x9c
 	mov r1, #0xff
@@ -1696,7 +1696,7 @@ ov56_021E696C: ; 0x021E696C
 	str r0, [sp, #0x10]
 	ldr r0, [r6, #0x18]
 	add r1, #0x4c
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #8
 	str r0, [sp]
 	mov r0, #0x1a
@@ -1711,7 +1711,7 @@ ov56_021E696C: ; 0x021E696C
 	ldr r0, [r6, #0x18]
 	add r1, #0x5c
 	mov r3, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xd
 	str r0, [sp]
 	mov r0, #0x1a
@@ -1726,7 +1726,7 @@ ov56_021E696C: ; 0x021E696C
 	ldr r0, [r6, #0x18]
 	add r1, #0x6c
 	mov r3, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x14
 	str r0, [sp]
 	mov r0, #8
@@ -1741,7 +1741,7 @@ ov56_021E696C: ; 0x021E696C
 	ldr r0, [r6, #0x18]
 	add r1, #0x7c
 	mov r3, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x14
 	str r0, [sp]
 	mov r0, #8
@@ -1756,7 +1756,7 @@ ov56_021E696C: ; 0x021E696C
 	ldr r0, [r6, #0x18]
 	add r1, #0x8c
 	mov r3, #0x15
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b
@@ -1772,7 +1772,7 @@ ov56_021E696C: ; 0x021E696C
 	add r1, #0x9c
 	mov r2, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r4, #0
 	add r5, r6, #0
 	add r5, #0x4c

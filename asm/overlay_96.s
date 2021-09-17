@@ -18984,7 +18984,7 @@ ov96_021EE75C: ; 0x021EE75C
 	bne _021EE774
 	ldr r0, [sp, #0x18]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 _021EE774:
 	mov r1, #0
 	str r4, [r5]
@@ -19356,7 +19356,7 @@ ov96_021EEA08: ; 0x021EEA08
 	add r2, sp, #0x18
 	ldrb r2, [r2, #0x1c]
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _021EEA36:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -19382,7 +19382,7 @@ _021EEA36:
 	add r0, r5, #0
 	mov r1, #0
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, #0
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}

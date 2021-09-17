@@ -208,10 +208,10 @@ ov113_021E5A7C: ; 0x021E5A7C
 	ldr r0, [r0, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
 	add r4, r0, #0
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	strb r0, [r5, #0x18]
 	add r0, r4, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	strb r0, [r5, #0x19]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]

@@ -1037,7 +1037,7 @@ _021E6102:
 	ldrb r2, [r4]
 	ldrb r3, [r4, #1]
 	ldr r0, [r0]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer

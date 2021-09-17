@@ -689,7 +689,7 @@ _02237D1A:
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #8]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [r5, #8]
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -697,7 +697,7 @@ _02237D1A:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r5, #0
 	bl ov12_0223A620
 	add sp, #0x68
@@ -885,7 +885,7 @@ _02237FD8:
 	ldr r1, [r4, #8]
 	mov r2, #1
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [r4, #8]
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -893,7 +893,7 @@ _02237FD8:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #5
 	bl sub_0200CF18
 	add r1, r4, #0
@@ -4048,7 +4048,7 @@ _02239A46:
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
@@ -4116,7 +4116,7 @@ _02239A46:
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #8]
 	mov r2, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [r5, #8]
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -4124,7 +4124,7 @@ _02239A46:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xc5
@@ -7807,11 +7807,11 @@ _0223B704: .word 0x0000240C
 ov12_0223B708: ; 0x0223B708
 	mov r1, #0x6d
 	lsl r1, r1, #2
-	ldr r3, _0223B714 ; =sub_0202ADCC
+	ldr r3, _0223B714 ; =Options_GetFrame
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_0223B714: .word sub_0202ADCC
+_0223B714: .word Options_GetFrame
 	thumb_func_end ov12_0223B708
 
 	thumb_func_start ov12_0223B718
@@ -7832,7 +7832,7 @@ _0223B730:
 	mov r1, #0x6d
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	pop {r3, pc}
 	.balign 4, 0
 _0223B73C: .word 0x0000240C
@@ -29483,7 +29483,7 @@ _02245D62:
 	add r1, r5, #0
 	mov r2, #2
 	mov r3, #0x11
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0xff
 	bl FillWindowPixelBuffer

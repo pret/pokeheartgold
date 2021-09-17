@@ -17296,7 +17296,7 @@ _021EDCD8:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -17744,7 +17744,7 @@ ov01_021EE01C: ; 0x021EE01C
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	b _021EE08A
 _021EE05A:
 	add r0, r4, #0
@@ -17769,7 +17769,7 @@ _021EE05A:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _021EE08A:
 	mov r0, #0
 	str r0, [sp]
@@ -17901,7 +17901,7 @@ _021EE158:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	b _021EE1C2
 _021EE192:
 	add r2, r5, #0
@@ -17926,7 +17926,7 @@ _021EE192:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _021EE1C2:
 	mov r0, #0
 	str r0, [sp]
@@ -18576,7 +18576,7 @@ _021EE698:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -19008,7 +19008,7 @@ _021EE9B2:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -19117,7 +19117,7 @@ ov01_021EEA90: ; 0x021EEA90
 	add r1, r4, #0
 	mov r2, #3
 	add r3, r7, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -19282,7 +19282,7 @@ ov01_021EEC00: ; 0x021EEC00
 	ldr r3, [sp, #0x14]
 	add r1, r4, #0
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -19444,7 +19444,7 @@ ov01_021EED60: ; 0x021EED60
 	add r1, r4, #0
 	mov r2, #3
 	add r3, r7, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -20516,7 +20516,7 @@ ov01_021EF60C: ; 0x021EF60C
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EF60C
@@ -20750,7 +20750,7 @@ ov01_021EF7BC: ; 0x021EF7BC
 	str r0, [sp, #0x10]
 	ldr r0, [r1, #0x1c]
 	add r1, #0x20
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x14
 	pop {pc}
 	.balign 4, 0
@@ -30661,7 +30661,7 @@ ov01_021F412C: ; 0x021F412C
 	ldrb r2, [r4, #8]
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r4, #4]
@@ -30892,7 +30892,7 @@ ov01_021F42F8: ; 0x021F42F8
 	ldrb r2, [r4, #8]
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -36600,7 +36600,7 @@ _021F6D24:
 	str r1, [r0]
 	ldr r0, [r4, #0x34]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -58388,7 +58388,7 @@ ov01_02200E00: ; 0x02200E00
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	b _02200E62
 _02200E38:
 	sub r0, r3, #2
@@ -58410,7 +58410,7 @@ _02200E38:
 	ldrb r3, [r4, r3]
 	ldr r0, [r0, #8]
 	add r1, #8
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _02200E62:
 	mov r0, #0
 	str r0, [sp]

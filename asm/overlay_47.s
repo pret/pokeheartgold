@@ -382,7 +382,7 @@ _02258ACA:
 	add r2, r7, #0
 	bl sub_0200304C
 	ldr r0, [sp, #0x10]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -1300,7 +1300,7 @@ ov47_02259228: ; 0x02259228
 	add r1, #8
 	mov r2, #1
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #8
 	mov r1, #0xf
@@ -1312,7 +1312,7 @@ ov47_02259228: ; 0x02259228
 	str r0, [r5, #0x18]
 	add r0, r4, #0
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	str r0, [r5, #4]
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -1389,7 +1389,7 @@ _022592D4:
 	add r0, r5, #0
 	add r2, r1, #0
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1437,7 +1437,7 @@ _02259338:
 	add r0, #8
 	add r2, r1, #0
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r5, #8
 	add r0, r5, #0
 	bl sub_0201D5C8

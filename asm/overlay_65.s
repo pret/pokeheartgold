@@ -285,7 +285,7 @@ ov65_0221C08C: ; 0x0221C08C
 	bl ov65_0221BFEC
 	ldr r0, [r5, #8]
 	ldr r0, [r0, #0x18]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -7132,7 +7132,7 @@ ov65_0221F8D0: ; 0x0221F8D0
 	add r5, r1, #0
 	str r0, [sp, #0x14]
 	str r2, [sp, #0x10]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -7150,7 +7150,7 @@ ov65_0221F8D0: ; 0x0221F8D0
 	ldr r0, [sp, #0x14]
 	add r1, #0x10
 	mov r3, #0x14
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x10
 	mov r1, #0
@@ -7170,13 +7170,13 @@ ov65_0221F8D0: ; 0x0221F8D0
 	add r1, #0x60
 	mov r2, #1
 	mov r3, #0x1a
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x60
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -7209,7 +7209,7 @@ ov65_0221F8D0: ; 0x0221F8D0
 	ldr r0, [sp, #0x14]
 	add r1, r5, r1
 	mov r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x15
 	lsl r0, r0, #4
 	add r0, r5, r0
@@ -7230,7 +7230,7 @@ ov65_0221F8D0: ; 0x0221F8D0
 	ldr r0, [sp, #0x14]
 	add r1, r5, r1
 	mov r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x16
 	lsl r0, r0, #4
 	add r0, r5, r0
@@ -7252,7 +7252,7 @@ ov65_0221F8D0: ; 0x0221F8D0
 	add r1, r5, r1
 	mov r2, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x17
 	lsl r0, r0, #4
 	add r0, r5, r0
@@ -7273,7 +7273,7 @@ ov65_0221F8D0: ; 0x0221F8D0
 	add r1, r5, r1
 	mov r2, #0
 	mov r3, #0x14
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x19
 	lsl r0, r0, #4
 	add r0, r5, r0
@@ -7306,7 +7306,7 @@ _0221FA3A:
 	add r1, r5, r1
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [sp, #0x18]
 	mov r1, #0
 	add r0, r5, r0
@@ -7344,7 +7344,7 @@ _0221FA84:
 	ldr r0, [sp, #0x14]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, r7
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -7467,7 +7467,7 @@ ov65_0221FB90: ; 0x0221FB90
 	add r0, r5, #0
 	mov r1, #1
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	b _0221FBC6
 _0221FBBA:
 	ldr r2, _0221FC00 ; =0x000003F7
@@ -7605,7 +7605,7 @@ ov65_0221FCA0: ; 0x0221FCA0
 	add r1, r4, #0
 	mov r2, #0
 	mov r3, #0x13
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r2, _0221FD14 ; =0x000003F7
 	add r0, r4, #0
 	mov r1, #0

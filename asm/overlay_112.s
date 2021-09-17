@@ -4436,7 +4436,7 @@ ov112_021E7B18: ; 0x021E7B18
 	bl sub_0200304C
 	ldr r0, _021E7C10 ; =0x0001E43C
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -4486,7 +4486,7 @@ ov112_021E7B18: ; 0x021E7B18
 	bl sub_02007B68
 	ldr r0, _021E7C10 ; =0x0001E43C
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -4752,7 +4752,7 @@ ov112_021E7DFC: ; 0x021E7DFC
 	ldr r0, [r5, #0x18]
 	add r1, sp, #0x14
 	mov r2, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, sp, #0x14
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -6221,7 +6221,7 @@ _021E8CDE:
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0x18]
 	mov r3, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -8648,7 +8648,7 @@ ov112_021EA08C: ; 0x021EA08C
 	add r0, r4, r6
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, r6
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -8660,7 +8660,7 @@ ov112_021EA08C: ; 0x021EA08C
 	bl StringExpandPlaceholders
 	ldr r0, _021EA104 ; =0x0001E43C
 	ldr r0, [r5, r0]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -8703,7 +8703,7 @@ ov112_021EA10C: ; 0x021EA10C
 	add r0, r4, r6
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, r6
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -21262,7 +21262,7 @@ ov112_021F03BC: ; 0x021F03BC
 	add r1, #8
 	mov r2, #5
 	mov r3, #0xe
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #6
 	str r0, [sp]
 	mov r2, #5
@@ -21277,7 +21277,7 @@ ov112_021F03BC: ; 0x021F03BC
 	ldr r0, [r4, #4]
 	add r1, #0x18
 	mov r3, #0x17
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xc
 	str r0, [sp]
 	mov r0, #8
@@ -21293,7 +21293,7 @@ ov112_021F03BC: ; 0x021F03BC
 	add r1, #0x28
 	mov r2, #5
 	mov r3, #0xe
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #8
@@ -21309,7 +21309,7 @@ ov112_021F03BC: ; 0x021F03BC
 	add r1, #0x38
 	mov r2, #5
 	mov r3, #0xe
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -21325,7 +21325,7 @@ ov112_021F03BC: ; 0x021F03BC
 	add r1, #0x48
 	mov r2, #5
 	mov r3, #0x16
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r3, #0xe
 	str r3, [sp]
 	mov r0, #0x10
@@ -21340,7 +21340,7 @@ ov112_021F03BC: ; 0x021F03BC
 	ldr r0, [r4, #4]
 	add r1, #0x58
 	mov r2, #5
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0x1b
 	add r2, r1, #0
 	ldr r3, [r4]

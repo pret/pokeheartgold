@@ -7394,7 +7394,7 @@ _0222D440:
 	ldr r1, [r4, #0x28]
 	ldr r0, [r0]
 	mov r2, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x10
@@ -7528,7 +7528,7 @@ _0222D55C:
 	ldr r1, [r4, #0x28]
 	ldr r0, [r0]
 	mov r2, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x10
@@ -9228,7 +9228,7 @@ ov80_0222E268: ; 0x0222E268
 	ldr r0, [r0, #8]
 	bl sub_02096808
 	ldr r0, [r0, #4]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #1
@@ -9273,7 +9273,7 @@ ov80_0222E2B8: ; 0x0222E2B8
 	ldr r0, [r0]
 	add r1, #0x64
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0x64
 	mov r1, #0xf
@@ -9283,7 +9283,7 @@ ov80_0222E2B8: ; 0x0222E2B8
 	add r0, #0x64
 	mov r1, #0
 	mov r3, #0xb
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #1
 	add r4, #0x5a
 	add sp, #0x14
@@ -9715,7 +9715,7 @@ _0222E60E:
 	ldrb r3, [r3]
 	ldr r0, [r4]
 	add r1, #8
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	ldr r2, _0222E688 ; =0x000003D9
 	add r0, #8
@@ -10189,7 +10189,7 @@ _0222E9A8:
 	ldrb r3, [r3]
 	ldr r0, [r4]
 	add r1, #8
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	b _0222EA22
 _0222E9D4:
 	add r2, r5, #0
@@ -10230,7 +10230,7 @@ _0222E9F0:
 	ldrb r3, [r3]
 	ldr r0, [r4]
 	add r1, #8
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _0222EA22:
 	add r0, r5, #0
 	ldr r2, _0222EA6C ; =0x000003D9
@@ -11568,7 +11568,7 @@ ov80_0222F458: ; 0x0222F458
 _0222F498:
 	ldr r0, [r0, #8]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	add r1, r0, #0
 	ldrh r0, [r4, #4]
 	str r0, [sp]
@@ -19421,7 +19421,7 @@ _022332FA:
 	ldr r0, [r4]
 	ldr r1, [r1]
 	add r3, r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r1, r5, #0
 	add r1, #0xa8
 	ldr r0, [r4]
@@ -19456,7 +19456,7 @@ _02233342:
 	ldr r0, [r4]
 	ldr r1, [r1]
 	add r3, r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r2, #1
 	add r1, r5, #0
 	str r2, [sp]
@@ -19472,7 +19472,7 @@ _02233342:
 	ldr r0, [r4]
 	ldr r1, [r1]
 	mov r3, #0x15
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r1, r5, #0
 	add r1, #0xa8
 	ldr r0, [r4]
@@ -31478,7 +31478,7 @@ ov80_02238F10: ; 0x02238F10
 	ldr r0, [r4, #8]
 	bl sub_02096808
 	ldr r0, [r0, #4]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]

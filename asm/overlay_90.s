@@ -1631,7 +1631,7 @@ ov90_0225938C: ; 0x0225938C
 	add r0, r2, #0
 	str r3, [sp, #0x18]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r4, r0, #0
 	mov r0, #1
 	bl sub_02002C60
@@ -1682,7 +1682,7 @@ _022593EC:
 	add r1, r4, #0
 	lsr r2, r2, #0x18
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -1795,7 +1795,7 @@ _022594B4:
 	mov r1, #1
 	add r0, r5, r7
 	add r2, r1, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r5, r7
 	bl sub_0201D5C8
 	add sp, #0x10
@@ -2751,7 +2751,7 @@ _02259C12:
 	ldr r0, [sp, #0x48]
 	add r1, r5, #0
 	ldr r0, [r0]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -3609,7 +3609,7 @@ ov90_0225A2B0: ; 0x0225A2B0
 	add r1, r5, #0
 	mov r2, #1
 	mov r3, #6
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer

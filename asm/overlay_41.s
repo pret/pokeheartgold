@@ -3843,7 +3843,7 @@ ov41_02247BB8: ; 0x02247BB8
 	ldr r0, [r5, r0]
 	add r7, r2, #0
 	add r4, r3, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r6, r0, #0
 	mov r0, #0
 	mov r1, #0xe0
@@ -3864,7 +3864,7 @@ ov41_02247BB8: ; 0x02247BB8
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0x40]
 	ldr r1, [r5, r1]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _02247C74 ; =0x000006BC
 	mov r1, #0xf
 	ldr r0, [r5, r0]
@@ -3884,7 +3884,7 @@ ov41_02247BB8: ; 0x02247BB8
 	ldr r0, [r5, r0]
 	mov r2, #0x3c
 	mov r3, #8
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xd7
@@ -10367,7 +10367,7 @@ _0224AA8C:
 	ldr r0, [r5, r0]
 	mov r1, #0
 	add r3, r2, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 _0224AB02:
 	ldr r0, [r4, #4]
 	str r0, [r5, #0x30]
@@ -10377,12 +10377,12 @@ _0224AB02:
 	ldr r1, [r4, #0xc]
 	bl ov41_0224ACDC
 	ldr r0, [r4, #0xc]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	mov r1, #0x4f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r4, #0xc]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -10632,7 +10632,7 @@ ov41_0224ACDC: ; 0x0224ACDC
 	sub sp, #8
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -10686,7 +10686,7 @@ ov41_0224AD0C: ; 0x0224AD0C
 	str r0, [sp, #0x10]
 	ldr r1, [r5]
 	add r0, r7, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [r5]
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -10697,7 +10697,7 @@ ov41_0224AD0C: ; 0x0224AD0C
 	ldr r0, [r5]
 	mov r1, #0
 	add r3, r2, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 _0224AD70:
 	ldr r0, [r5]
 	bl CopyWindowToVram
@@ -10751,7 +10751,7 @@ ov41_0224AD90: ; 0x0224AD90
 	add r0, r5, #0
 	mov r1, #0
 	add r3, r2, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10789,7 +10789,7 @@ ov41_0224ADD8: ; 0x0224ADD8
 	add r0, r5, #0
 	mov r1, #0
 	add r3, r2, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -12847,7 +12847,7 @@ ov41_0224BDCC: ; 0x0224BDCC
 	ldr r1, [r4, r1]
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	mov r1, #0xa0
 	mov r2, #0xe

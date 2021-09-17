@@ -2401,7 +2401,7 @@ ov72_02238BEC: ; 0x02238BEC
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x10]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2415,7 +2415,7 @@ ov72_02238BEC: ; 0x02238BEC
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x10]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2747,7 +2747,7 @@ ov72_02238EE4: ; 0x02238EE4
 	ldr r0, [r4, #4]
 	add r1, r4, r1
 	mov r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _02238FE0 ; =0x00000E58
 	mov r1, #0
 	add r0, r4, r0
@@ -2767,7 +2767,7 @@ ov72_02238EE4: ; 0x02238EE4
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #0x1a
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _02238FE4 ; =0x00000E38
 	mov r1, #0xf
 	add r0, r4, r0
@@ -2787,7 +2787,7 @@ ov72_02238EE4: ; 0x02238EE4
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #0x1a
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _02238FE8 ; =0x00000E28
 	mov r1, #0xf
 	add r0, r4, r0
@@ -2808,7 +2808,7 @@ ov72_02238EE4: ; 0x02238EE4
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _02238FEC ; =0x00000E48
 	mov r1, #0
 	add r0, r4, r0
@@ -2838,7 +2838,7 @@ ov72_02238EE4: ; 0x02238EE4
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _02238FF8 ; =0x00000E18
 	mov r1, #0xf
 	add r0, r4, r0
@@ -5324,7 +5324,7 @@ ov72_0223A280: ; 0x0223A280
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -5424,7 +5424,7 @@ ov72_0223A350: ; 0x0223A350
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -6682,7 +6682,7 @@ _0223ACB8:
 	add r1, r6, #0
 	mov r2, #4
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r7, r7, #1
 	add r4, #0x40
 	add r5, r5, #4
@@ -6705,7 +6705,7 @@ _0223ACB8:
 	ldr r0, [r0, #4]
 	add r1, r1, r3
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7340,7 +7340,7 @@ ov72_0223B1C8: ; 0x0223B1C8
 	ldrb r2, [r2]
 	ldr r0, [r5]
 	mov r3, #0xc
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #8
 	mov r1, #0
@@ -7369,7 +7369,7 @@ ov72_0223B1C8: ; 0x0223B1C8
 	ldrb r2, [r2]
 	ldr r0, [r5]
 	mov r3, #0xc
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x18
 	mov r1, #0

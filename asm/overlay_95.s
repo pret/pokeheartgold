@@ -445,12 +445,12 @@ ov95_021E5C44: ; 0x021E5C44
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x10]
 	add r0, r7, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0x14
 	mov r3, #0xc
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r5, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -2612,11 +2612,11 @@ ov95_021E6D70: ; 0x021E6D70
 	bl OverlayManager_GetField18
 	str r0, [r4]
 	ldr r0, [r0, #0x10]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	str r0, [r4, #0x10]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x10]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	str r0, [r4, #0x14]
 	bl ov95_021E5954
 	str r0, [r4, #0x38]
@@ -3217,7 +3217,7 @@ ov95_021E72B8: ; 0x021E72B8
 	add r1, #0x1c
 	mov r2, #6
 	mov r3, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #0x18
@@ -3233,7 +3233,7 @@ ov95_021E72B8: ; 0x021E72B8
 	add r1, r4, #0
 	mov r2, #6
 	mov r3, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0

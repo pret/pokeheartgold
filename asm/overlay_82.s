@@ -842,7 +842,7 @@ _0223E41C:
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x4c
@@ -938,7 +938,7 @@ _0223E4DE:
 _0223E4E4:
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x4c
@@ -947,7 +947,7 @@ _0223E4E4:
 	add r0, #0xa0
 	ldr r0, [r0]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #1
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -1130,7 +1130,7 @@ _0223E666:
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x4c
@@ -3466,7 +3466,7 @@ ov82_0223F84C: ; 0x0223F84C
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x4c
@@ -4141,7 +4141,7 @@ ov82_0223FD78: ; 0x0223FD78
 	add r0, r4, #0
 	mov r1, #0
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop

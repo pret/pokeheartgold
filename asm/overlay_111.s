@@ -1480,7 +1480,7 @@ _021E647E:
 	ldr r0, [r0, #4]
 	ldr r2, [sp, #0x24]
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r7, r7, #1
 	add r4, #0xa
 	add r5, #0x10
@@ -2303,12 +2303,12 @@ _021E6A92:
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	bl GetWindowBgId
 	add r7, r0, #0
 	ldr r0, [sp, #0x40]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2321,7 +2321,7 @@ _021E6A92:
 	bl sub_0200E644
 _021E6ADE:
 	ldr r0, [sp, #0x40]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0xf
@@ -2347,7 +2347,7 @@ _021E6ADE:
 	add r0, r4, #0
 	mov r1, #0
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r5, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}

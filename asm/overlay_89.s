@@ -484,7 +484,7 @@ _02258C56:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r2, r4, #0
 	add r2, #0xc4
 	ldr r0, [r4, #0x30]
@@ -493,7 +493,7 @@ _02258C56:
 	bl ReadMsgDataIntoString
 	ldr r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -620,7 +620,7 @@ _02258D7A:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r2, r4, #0
 	add r2, #0xc4
 	ldr r0, [r4, #0x30]
@@ -629,7 +629,7 @@ _02258D7A:
 	bl ReadMsgDataIntoString
 	ldr r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -1281,7 +1281,7 @@ _022592FE:
 	bl sub_020D4790
 	ldr r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r5, r0, #0
 	bl sub_0200E640
 	add r2, r0, #0
@@ -2440,7 +2440,7 @@ ov89_02259CD0: ; 0x02259CD0
 	ldr r0, [r6, #8]
 	add r1, #0xb4
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r6, #0
 	add r0, #0xb4
 	mov r1, #0xf
@@ -2472,7 +2472,7 @@ _02259D0A:
 	ldrb r3, [r7, r3]
 	ldr r0, [r6, #8]
 	add r1, r4, r1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	lsl r0, r5, #4
 	add r0, r4, r0
 	mov r1, #0

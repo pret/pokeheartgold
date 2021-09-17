@@ -144,7 +144,7 @@ ov83_0223DE60: ; 0x0223DE60
 _0223DE94:
 	ldr r0, _0223DFB4 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -709,7 +709,7 @@ _0223E32C:
 	bl ov83_0224037C
 	ldr r0, _0223E4FC ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -860,7 +860,7 @@ _0223E442:
 	bhs _0223E4C0
 	ldr r0, _0223E4FC ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -881,7 +881,7 @@ _0223E4C0:
 	bhs _0223E520
 	ldr r0, _0223E4FC ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -1045,7 +1045,7 @@ _0223E61C:
 	bhs _0223E67E
 	ldr r0, _0223E8E8 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -1383,7 +1383,7 @@ _0223E936:
 	bl ov83_022428A8
 	ldr r0, _0223EC84 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -1519,7 +1519,7 @@ _0223EA3A:
 	bhs _0223EA96
 	ldr r0, _0223EC84 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -1549,7 +1549,7 @@ _0223EA96:
 	bl ov83_0224042C
 	ldr r0, _0223EC84 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -1618,7 +1618,7 @@ _0223EB36:
 	bl BufferItemNameWithIndefArticle
 	ldr r0, _0223EC84 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -1676,7 +1676,7 @@ _0223EBA4:
 	bhs _0223EC04
 	ldr r0, _0223EC84 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -1820,7 +1820,7 @@ _0223ED12:
 	bl ov83_0224042C
 	ldr r0, _0223EE94 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -4391,7 +4391,7 @@ ov83_02240290: ; 0x02240290
 	strb r0, [r4, #0xa]
 	ldr r0, _022402F0 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xc0
@@ -4433,7 +4433,7 @@ ov83_02240300: ; 0x02240300
 	add r4, r0, #0
 	ldr r0, _0224032C ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -4470,7 +4470,7 @@ ov83_02240348: ; 0x02240348
 	add r4, r0, #0
 	ldr r0, _02240374 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -4503,7 +4503,7 @@ ov83_02240384: ; 0x02240384
 	add r4, r0, #0
 	ldr r0, _022403B0 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -6883,7 +6883,7 @@ ov83_022415F4: ; 0x022415F4
 	bl ov83_02240C60
 	ldr r0, _02241694 ; =0x00000508
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0xb0
@@ -7335,7 +7335,7 @@ _022419DE: ; jump table
 _022419F4:
 	ldr r0, _02241A5C ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -7349,7 +7349,7 @@ _022419F4:
 _02241A14:
 	ldr r0, _02241A5C ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xb0
@@ -7770,7 +7770,7 @@ _02241D8C:
 	bl ov83_02241770
 	ldr r0, _02241DD0 ; =0x00000508
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0xb0
@@ -10123,7 +10123,7 @@ _02243142:
 	mov r0, #0xae
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xc0
@@ -11269,7 +11269,7 @@ _02243AC8:
 	mov r0, #0xae
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xc0
@@ -13370,7 +13370,7 @@ ov83_02244BEC: ; 0x02244BEC
 	mov r0, #0xae
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xd0
@@ -13411,7 +13411,7 @@ ov83_02244C58: ; 0x02244C58
 	mov r0, #0xae
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xc0
@@ -13447,7 +13447,7 @@ ov83_02244C9C: ; 0x02244C9C
 	mov r0, #0xae
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xc0
@@ -14284,7 +14284,7 @@ ov83_02245288: ; 0x02245288
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0xc0
@@ -14351,7 +14351,7 @@ ov83_02245318: ; 0x02245318
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0xc0
@@ -14426,7 +14426,7 @@ ov83_022453C0: ; 0x022453C0
 	mov r0, #0xae
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r4, #0xc0
 	add r1, r0, #0
 	add r0, r4, #0
@@ -14870,7 +14870,7 @@ ov83_02245748: ; 0x02245748
 	mov r0, #0xae
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0xc0
@@ -14968,7 +14968,7 @@ ov83_02245838: ; 0x02245838
 	ldr r0, [r5, r0]
 	add r6, r1, #0
 	add r7, r2, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0xc0
@@ -15438,7 +15438,7 @@ _02245C36:
 	mov r0, #0xae
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0xc0
@@ -19046,7 +19046,7 @@ ov83_02247944: ; 0x02247944
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, #0
 	bl sub_0201D5C8
 	add sp, #8

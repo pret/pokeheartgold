@@ -272,7 +272,7 @@ _0221BBF0:
 	add r0, r4, r0
 	mov r2, #1
 	mov r3, #0xf
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r3, #0
 	str r3, [sp]
 	ldr r2, _0221BD20 ; =0x00000B98
@@ -2914,7 +2914,7 @@ _0221D168:
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2971,7 +2971,7 @@ _0221D168:
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b
@@ -2987,7 +2987,7 @@ _0221D168:
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -5962,7 +5962,7 @@ ov05_0221E9C4: ; 0x0221E9C4
 	add r0, r4, r0
 	mov r2, #1
 	mov r3, #0xf
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add sp, #8
 	pop {r4, pc}
 	nop

@@ -821,7 +821,7 @@ ov31_0225DBD4: ; 0x0225DBD4
 	ldr r0, [r4, #4]
 	add r1, #0x34
 	mov r2, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x1b
@@ -836,7 +836,7 @@ ov31_0225DBD4: ; 0x0225DBD4
 	ldr r0, [r4, #4]
 	add r1, #0x44
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #9
@@ -851,7 +851,7 @@ ov31_0225DBD4: ; 0x0225DBD4
 	ldr r0, [r4, #4]
 	add r1, #0x74
 	mov r3, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x15
 	str r0, [sp]
 	mov r0, #7
@@ -867,7 +867,7 @@ ov31_0225DBD4: ; 0x0225DBD4
 	add r1, #0x54
 	mov r2, #4
 	mov r3, #0xa
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0x54
 	mov r1, #0
@@ -887,7 +887,7 @@ ov31_0225DBD4: ; 0x0225DBD4
 	add r1, #0x64
 	mov r2, #4
 	mov r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0x64
 	mov r1, #0
@@ -937,7 +937,7 @@ _0225DCB6:
 	ldr r0, [r7, #4]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r6, r6, #1
 	add r4, #0xc
 	add r5, #0x10
@@ -2025,7 +2025,7 @@ ov31_0225E54C: ; 0x0225E54C
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2041,11 +2041,11 @@ ov31_0225E54C: ; 0x0225E54C
 	mov r1, #1
 	add r2, #0x71
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #0x51
@@ -2147,7 +2147,7 @@ _0225E684:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2163,11 +2163,11 @@ _0225E684:
 	mov r1, #1
 	add r2, #0x71
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #0x51
@@ -2448,11 +2448,11 @@ _0225E8DA:
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -2614,7 +2614,7 @@ ov31_0225EA08: ; 0x0225EA08
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2629,11 +2629,11 @@ ov31_0225EA08: ; 0x0225EA08
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -2682,7 +2682,7 @@ ov31_0225EA9C: ; 0x0225EA9C
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2697,11 +2697,11 @@ ov31_0225EA9C: ; 0x0225EA9C
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -2750,7 +2750,7 @@ ov31_0225EB30: ; 0x0225EB30
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2765,11 +2765,11 @@ ov31_0225EB30: ; 0x0225EB30
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -2818,7 +2818,7 @@ ov31_0225EBC4: ; 0x0225EBC4
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2833,11 +2833,11 @@ ov31_0225EBC4: ; 0x0225EBC4
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -2877,7 +2877,7 @@ ov31_0225EC58: ; 0x0225EC58
 	str r0, [sp, #0x10]
 	ldr r0, [r4, #4]
 	add r1, #0xe4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #2
@@ -2893,7 +2893,7 @@ ov31_0225EC58: ; 0x0225EC58
 	add r1, #0xf4
 	mov r2, #4
 	mov r3, #0x10
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #2
@@ -2909,7 +2909,7 @@ ov31_0225EC58: ; 0x0225EC58
 	add r1, r4, r1
 	mov r2, #4
 	mov r3, #0x14
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x15
 	str r0, [sp]
 	mov r0, #7
@@ -2925,7 +2925,7 @@ ov31_0225EC58: ; 0x0225EC58
 	add r1, r4, r1
 	mov r2, #4
 	mov r3, #0xe
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xd
 	str r0, [sp]
 	mov r0, #8
@@ -2941,7 +2941,7 @@ ov31_0225EC58: ; 0x0225EC58
 	add r1, r4, r1
 	mov r2, #4
 	mov r3, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #8
@@ -2957,7 +2957,7 @@ ov31_0225EC58: ; 0x0225EC58
 	add r1, r4, r1
 	mov r2, #4
 	mov r3, #0x17
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x11
@@ -2971,7 +2971,7 @@ ov31_0225EC58: ; 0x0225EC58
 	add r1, #0x11
 	ldr r0, [r4, #4]
 	add r1, r4, r1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0xe4
 	mov r1, #0

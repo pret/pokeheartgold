@@ -468,7 +468,7 @@ ov103_021ECD18: ; 0x021ECD18
 	sub sp, #8
 	ldr r4, [r0, #0xc]
 	ldr r0, [r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -3977,7 +3977,7 @@ ov103_021EE7DC: ; 0x021EE7DC
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
 	ldr r0, [r5]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -4041,7 +4041,7 @@ ov103_021EE860: ; 0x021EE860
 	ldr r2, _021EE884 ; =0x000003E2
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x72
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2

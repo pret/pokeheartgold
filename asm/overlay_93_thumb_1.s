@@ -1661,7 +1661,7 @@ ov93_0225D380: ; 0x0225D380
 	add r1, #0x30
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0xa
@@ -1678,7 +1678,7 @@ ov93_0225D380: ; 0x0225D380
 	add r1, #0x40
 	mov r2, #4
 	mov r3, #0x12
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #0xa
@@ -1695,7 +1695,7 @@ ov93_0225D380: ; 0x0225D380
 	add r1, #0x50
 	mov r2, #4
 	mov r3, #0x15
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #0xa
@@ -1712,7 +1712,7 @@ ov93_0225D380: ; 0x0225D380
 	add r1, #0x60
 	mov r2, #4
 	mov r3, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0x40
 	mov r1, #0xf
@@ -1739,7 +1739,7 @@ ov93_0225D380: ; 0x0225D380
 	str r0, [sp, #0x10]
 	ldr r0, [r4, #0x2c]
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r4, #0x70
 	add r0, r4, #0
 	mov r1, #0xf

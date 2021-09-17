@@ -3902,7 +3902,7 @@ ov122_021E76F4: ; 0x021E76F4
 	add r0, r4, #0
 	add r2, r1, #0
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -3980,7 +3980,7 @@ _021E77B8:
 	add r0, r4, #0
 	add r2, r1, #0
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 _021E77E4:
 	mov r3, #0
 	ldr r0, _021E7818 ; =0x0000022A
@@ -5151,11 +5151,11 @@ _021E80A4:
 	lsl r1, r1, #2
 	strb r0, [r4, r1]
 	ldr r0, [r4, #4]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	ldr r1, _021E8214 ; =0x00000229
 	strb r0, [r4, r1]
 	ldr r0, [r4, #4]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	ldr r1, _021E8218 ; =0x0000022A
 	strb r0, [r4, r1]
 	ldr r0, _021E821C ; =0x0000010A

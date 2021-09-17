@@ -1803,7 +1803,7 @@ _0225951A:
 	mov r2, #0x1f
 	bl sub_0200E3DC
 	ldr r0, [sp, #0x10]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	str r4, [sp]
@@ -2775,7 +2775,7 @@ ov48_02259D00: ; 0x02259D00
 	ldr r0, [r4]
 	add r1, #0x1c
 	mov r3, #0x19
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x1c
 	mov r1, #0xf
@@ -2996,7 +2996,7 @@ ov48_02259EAC: ; 0x02259EAC
 	bl memset
 	add r0, r7, #0
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	str r0, [r5, #8]
 	ldr r1, [sp, #0x28]
 	mov r0, #0x80
@@ -3015,7 +3015,7 @@ ov48_02259EAC: ; 0x02259EAC
 	ldr r0, [r4]
 	add r1, #0x10
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x10
 	mov r1, #0xf
@@ -3070,7 +3070,7 @@ ov48_02259F48: ; 0x02259F48
 	add r0, #0x10
 	add r2, r1, #0
 	mov r3, #2
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0x10
 	bl sub_0201D5C8
@@ -3206,7 +3206,7 @@ _0225A02C:
 	add r1, r1, r3
 	ldr r0, [r0]
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0x6a
 	ldr r0, [sp, #0x14]
 	lsl r1, r1, #2
@@ -3234,7 +3234,7 @@ _0225A02C:
 	add r0, r0, r1
 	mov r1, #0
 	add r3, r2, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x20]
@@ -3408,7 +3408,7 @@ ov48_0225A1EC: ; 0x0225A1EC
 	add r0, r4, r0
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	pop {r4, pc}
 	thumb_func_end ov48_0225A1EC
 
@@ -4135,7 +4135,7 @@ _0225A6F0:
 	ldr r0, [r0]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	add r6, #0xa2
@@ -4164,7 +4164,7 @@ _0225A6F0:
 	add r1, r1, r2
 	ldr r0, [r0]
 	mov r2, #5
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0x66
 	ldr r0, [sp, #0x14]
 	lsl r1, r1, #2

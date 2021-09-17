@@ -1399,7 +1399,7 @@ ov75_02247450: ; 0x02247450
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -1778,7 +1778,7 @@ ov75_02247790: ; 0x02247790
 	ldr r0, [r4, #4]
 	add r1, #0x68
 	mov r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0x68
 	mov r1, #0
@@ -1799,7 +1799,7 @@ ov75_02247790: ; 0x02247790
 	add r1, #0x58
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0
@@ -1828,7 +1828,7 @@ ov75_02247790: ; 0x02247790
 	add r1, #0x48
 	mov r2, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r4, #0x48
 	add r0, r4, #0
 	mov r1, #0
@@ -1991,7 +1991,7 @@ _02247912:
 	str r0, [sp, #0x10]
 	ldrb r3, [r3]
 	ldr r0, [r5, #4]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r7, #0
 	mov r1, #0x74
 	bl ListMenuItems_ctor
@@ -2977,7 +2977,7 @@ _022480D6:
 	add r1, #0xc4
 	mov r2, #2
 	mov r3, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1e
@@ -2994,7 +2994,7 @@ _022480D6:
 	add r1, #0xd4
 	mov r2, #2
 	mov r3, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0xc4
 	mov r1, #0xf
@@ -5581,7 +5581,7 @@ ov75_022494CC: ; 0x022494CC
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]

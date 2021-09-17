@@ -792,7 +792,7 @@ _0225F560:
 	add r1, r4, r1
 	ldr r0, [r0, #8]
 	mov r3, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x66
 	lsl r0, r0, #2
 	add r0, r4, r0

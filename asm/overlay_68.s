@@ -603,7 +603,7 @@ ov68_021E5D24: ; 0x021E5D24
 	bl sub_02003030
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -2357,7 +2357,7 @@ ov68_021E6C14: ; 0x021E6C14
 	mov r1, #0
 	mov r2, #0x3d
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov68_021E6A2C
@@ -2365,7 +2365,7 @@ ov68_021E6C14: ; 0x021E6C14
 	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4]
 	ldr r0, [r0, #8]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]

@@ -829,7 +829,7 @@ ov73_021E5F38: ; 0x021E5F38
 	bl sub_02003030
 	ldr r0, [r5, #8]
 	ldr r0, [r0, #8]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -1161,7 +1161,7 @@ ov73_021E629C: ; 0x021E629C
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xaa
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -1183,7 +1183,7 @@ ov73_021E629C: ; 0x021E629C
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #0x10
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xae
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -1205,7 +1205,7 @@ ov73_021E629C: ; 0x021E629C
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xb2
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -1226,7 +1226,7 @@ ov73_021E629C: ; 0x021E629C
 	add r1, r4, r1
 	mov r2, #4
 	mov r3, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xb6
 	lsl r0, r0, #2
 	ldr r1, [r4, #0x48]
@@ -1249,7 +1249,7 @@ ov73_021E629C: ; 0x021E629C
 	add r1, r4, r1
 	mov r2, #4
 	mov r3, #8
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xa6
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -3573,7 +3573,7 @@ ov73_021E756C: ; 0x021E756C
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	cmp r6, #0
 	bne _021E75DC
 	add r0, r5, #0
@@ -5883,7 +5883,7 @@ ov73_021E8730: ; 0x021E8730
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x10]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -6215,7 +6215,7 @@ ov73_021E8A08: ; 0x021E8A08
 	ldr r0, [r4, #4]
 	add r1, r4, r1
 	mov r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _021E8B04 ; =0x00000E18
 	mov r1, #0
 	add r0, r4, r0
@@ -6235,7 +6235,7 @@ ov73_021E8A08: ; 0x021E8A08
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #0x1a
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _021E8B08 ; =0x00000DF8
 	mov r1, #0xf
 	add r0, r4, r0
@@ -6255,7 +6255,7 @@ ov73_021E8A08: ; 0x021E8A08
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #0x1a
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _021E8B0C ; =0x00000DE8
 	mov r1, #0xf
 	add r0, r4, r0
@@ -6276,7 +6276,7 @@ ov73_021E8A08: ; 0x021E8A08
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _021E8B10 ; =0x00000E08
 	mov r1, #0
 	add r0, r4, r0
@@ -6306,7 +6306,7 @@ ov73_021E8A08: ; 0x021E8A08
 	add r1, r4, r1
 	mov r2, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _021E8B1C ; =0x00000DD8
 	mov r1, #0xf
 	add r0, r4, r0
@@ -8970,7 +8970,7 @@ ov73_021E9F34: ; 0x021E9F34
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -9065,7 +9065,7 @@ ov73_021E9FF8: ; 0x021E9FF8
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]

@@ -196,7 +196,7 @@ _0225D66E:
 	add r1, r5, #0
 	lsr r2, r2, #0x18
 	mov r3, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -223,7 +223,7 @@ _0225D66E:
 	add r1, #0x10
 	lsr r2, r2, #0x18
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x10
 	mov r1, #0
@@ -251,7 +251,7 @@ _0225D66E:
 	add r1, #0x20
 	lsr r2, r2, #0x18
 	mov r3, #0xc
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x20
 	mov r1, #0
@@ -290,7 +290,7 @@ _0225D66E:
 	add r0, r7, #0
 	mov r2, #4
 	mov r3, #8
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [sp, #0x14]
 	mov r1, #0
 	bl FillWindowPixelBuffer

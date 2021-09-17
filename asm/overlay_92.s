@@ -3326,7 +3326,7 @@ ov92_0225E070: ; 0x0225E070
 	add r1, r5, r1
 	mov r2, #7
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, _0225E0FC ; =0x00001FE0
 	mov r1, #0xff
 	add r0, r5, r0
@@ -3602,7 +3602,7 @@ _0225E246:
 	lsl r3, r3, #0x18
 	ldr r0, [r0, #0x10]
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r1, [sp, #0x20]
 	ldr r0, [sp, #0x30]
 	add r2, r1, #0

@@ -1504,7 +1504,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r3, r1, #0
 	bl sub_02007B68
 	ldr r0, [r4, #8]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -1559,7 +1559,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r4, r0
 	mov r1, #0
 	mov r3, #6
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	ldr r0, _021E678C ; =0x0000C074
 	mov r3, #0
 	str r3, [r4, r0]
@@ -1843,7 +1843,7 @@ _021E682C:
 	ldr r2, [r5, r2]
 	bl ReadMsgDataIntoString
 	ldr r0, [r5, #8]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	add r3, r4, #0
 	str r3, [sp]
 	str r0, [sp, #4]

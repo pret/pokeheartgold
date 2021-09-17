@@ -269,7 +269,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	str r0, [r1]
 	ldr r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	mov r1, #0x9a
 	lsl r1, r1, #2
 	strb r0, [r5, r1]
@@ -1773,7 +1773,7 @@ ov121_021E66EC: ; 0x021E66EC
 	ldr r0, [r4]
 	add r1, r4, #4
 	mov r3, #5
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r3, #7
 	add r1, r4, #0
 	str r3, [sp]
@@ -1788,7 +1788,7 @@ ov121_021E66EC: ; 0x021E66EC
 	ldr r0, [r4]
 	add r1, #0x14
 	mov r2, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x1c
@@ -1804,7 +1804,7 @@ ov121_021E66EC: ; 0x021E66EC
 	ldr r0, [r4]
 	add r1, #0x24
 	add r3, r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x15
 	str r0, [sp]
 	mov r0, #6
@@ -1819,7 +1819,7 @@ ov121_021E66EC: ; 0x021E66EC
 	str r0, [sp, #0x10]
 	ldr r0, [r4]
 	mov r3, #0x19
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x15
 	str r0, [sp]
 	mov r0, #0xc
@@ -1834,7 +1834,7 @@ ov121_021E66EC: ; 0x021E66EC
 	str r0, [sp, #0x10]
 	ldr r0, [r4]
 	mov r3, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x1c
@@ -1850,7 +1850,7 @@ ov121_021E66EC: ; 0x021E66EC
 	add r1, #0x54
 	mov r2, #0
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	ldrb r0, [r4, r0]
@@ -2536,7 +2536,7 @@ ov121_021E6CEC: ; 0x021E6CEC
 	mov r1, #1
 	add r0, #0x54
 	add r2, r1, #0
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x54
 	mov r1, #0xff
@@ -2591,7 +2591,7 @@ ov121_021E6D80: ; 0x021E6D80
 	add r0, #0x54
 	add r2, r1, #0
 	mov r3, #0xc
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x54
 	mov r1, #0xff
@@ -2701,7 +2701,7 @@ ov121_021E6E68: ; 0x021E6E68
 	add r0, #0x54
 	add r2, r1, #0
 	mov r3, #0xc
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x54
 	mov r1, #0xff

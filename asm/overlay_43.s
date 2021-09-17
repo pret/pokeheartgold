@@ -443,7 +443,7 @@ ov43_0222A24C: ; 0x0222A24C
 	add r1, r4, #0
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r1, sp, #0x3c
 	ldrb r1, [r1]
 	add r0, r4, #0
@@ -475,10 +475,10 @@ ov43_0222A290: ; 0x0222A290
 	ldr r0, [r5, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
 	add r4, r0, #0
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	strb r0, [r5, #0xc]
 	add r0, r4, #0
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	strb r0, [r5, #0xd]
 	add r0, r4, #0
 	bl sub_0202ADAC
@@ -1276,7 +1276,7 @@ ov43_0222A8C0: ; 0x0222A8C0
 	ldr r0, [r5]
 	add r1, #0x64
 	add r3, r2, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x80
 	add r1, r4, #0
 	bl String_ctor
@@ -2273,7 +2273,7 @@ ov43_0222B0A0: ; 0x0222B0A0
 	add r1, #8
 	ldr r0, [r0]
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [sp, #0x14]
 	add r0, #0x20
 	bl InitWindow
@@ -2293,7 +2293,7 @@ ov43_0222B0A0: ; 0x0222B0A0
 	add r1, #0x20
 	mov r2, #1
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [sp, #0x14]
 	mov r1, #0
 	add r0, #8
@@ -2309,7 +2309,7 @@ ov43_0222B0A0: ; 0x0222B0A0
 	str r0, [r1, #0x3c]
 	ldr r0, [r5, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	ldr r1, [sp, #0x14]
 	str r0, [r1, #0x38]
 	ldr r1, [sp, #0x18]
@@ -2812,7 +2812,7 @@ ov43_0222B4BC: ; 0x0222B4BC
 	mov r1, #1
 	mov r2, #0x46
 	mov r3, #0xc
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r5, #0x20
 	add r0, r5, #0
 	bl sub_0201D5C8
@@ -2901,7 +2901,7 @@ ov43_0222B5A8: ; 0x0222B5A8
 	add r6, r2, #0
 	add r7, r3, #0
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	add r1, r5, #0
 	add r1, #0xe0
 	str r0, [r1]
@@ -4947,7 +4947,7 @@ ov43_0222C550: ; 0x0222C550
 	mov r1, #1
 	mov r2, #0x46
 	mov r3, #0xc
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r5, #0xc8
 	add r0, r5, #0
 	bl sub_0201D5C8
@@ -5231,7 +5231,7 @@ _0222C7BC:
 	add r1, r5, #0
 	mov r2, #3
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov43_0222C788
@@ -6106,7 +6106,7 @@ ov43_0222CE48: ; 0x0222CE48
 	add r1, r5, #0
 	mov r2, #3
 	mov r3, #4
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x10
 	bl InitWindow
@@ -6125,7 +6125,7 @@ ov43_0222CE48: ; 0x0222CE48
 	add r1, #0x10
 	mov r2, #3
 	mov r3, #9
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x20
 	bl InitWindow
@@ -6143,7 +6143,7 @@ ov43_0222CE48: ; 0x0222CE48
 	ldr r0, [r4]
 	add r1, #0x20
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -8175,7 +8175,7 @@ _0222DE6E:
 	ldr r0, [r0]
 	add r1, r1, r4
 	lsr r3, r3, #0x18
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [r7, #0xc]
 	mov r1, #0
 	add r0, r0, r4
