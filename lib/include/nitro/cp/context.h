@@ -1,6 +1,8 @@
 #ifndef NITRO_CP_CONTEXT_H_
 #define NITRO_CP_CONTEXT_H_
 
+#include <nitro/types.h>
+
 typedef struct CPContext {
     u64 div_numer;
     u64 div_denom;

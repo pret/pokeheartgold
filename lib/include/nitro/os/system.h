@@ -2,7 +2,7 @@
 #define NITRO_OS_SYSTEM_H_
 
 #include <nitro/hw/io_reg.h>
-#include <nitro/os/system_shared.h>
+#include <nitro/os/common/system_shared.h>
 
 OSIntrMode OS_EnableInterrupts(void);
 OSIntrMode OS_DisableInterrupts(void);

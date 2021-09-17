@@ -14,8 +14,8 @@
 #define NITRO_OS_SYSTEMWORK_SHARED_H_
 
 #include <nitro/hw/mmap_shared.h>
-#include <nitro/os/thread_shared.h>
-#include <nitro/os/spinLock_shared.h>
+#include <nitro/os/common/thread_shared.h>
+#include <nitro/os/common/spinLock_shared.h>
 
 typedef struct {
     u8      bootCheckInfo[0x20];       // 000-01f:   32byte boot check info

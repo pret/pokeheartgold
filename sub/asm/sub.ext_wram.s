@@ -127,30 +127,30 @@ _060001C8: .word sub_060002B4
 
 	arm_func_start sub_060001CC
 sub_060001CC: ; 0x060001CC
-	ldr pc, _060001D0 ; =sub_037F96D0
+	ldr pc, _060001D0 ; =OS_InitMessageQueue
 	.align 2, 0
-_060001D0: .word sub_037F96D0
+_060001D0: .word OS_InitMessageQueue
 	arm_func_end sub_060001CC
 
 	arm_func_start sub_060001D4
 sub_060001D4: ; 0x060001D4
-	ldr pc, _060001D8 ; =sub_037F9894
+	ldr pc, _060001D8 ; =OS_InitMutex
 	.align 2, 0
-_060001D8: .word sub_037F9894
+_060001D8: .word OS_InitMutex
 	arm_func_end sub_060001D4
 
 	arm_func_start sub_060001DC
 sub_060001DC: ; 0x060001DC
-	ldr pc, _060001E0 ; =sub_037F9054
+	ldr pc, _060001E0 ; =OS_CreateThread
 	.align 2, 0
-_060001E0: .word sub_037F9054
+_060001E0: .word OS_CreateThread
 	arm_func_end sub_060001DC
 
 	arm_func_start sub_060001E4
 sub_060001E4: ; 0x060001E4
-	ldr pc, _060001E8 ; =sub_037F93B4
+	ldr pc, _060001E8 ; =OS_WakeupThreadDirect
 	.align 2, 0
-_060001E8: .word sub_037F93B4
+_060001E8: .word OS_WakeupThreadDirect
 	arm_func_end sub_060001E4
 
 	arm_func_start sub_060001EC
@@ -169,16 +169,16 @@ _060001F8: .word sub_037FA770
 
 	arm_func_start sub_060001FC
 sub_060001FC: ; 0x060001FC
-	ldr pc, _06000200 ; =sub_037FB248
+	ldr pc, _06000200 ; =PXI_Init
 	.align 2, 0
-_06000200: .word sub_037FB248
+_06000200: .word PXI_Init
 	arm_func_end sub_060001FC
 
 	arm_func_start sub_06000204
 sub_06000204: ; 0x06000204
-	ldr pc, _06000208 ; =sub_037FB330
+	ldr pc, _06000208 ; =PXI_SetFifoRecvCallback
 	.align 2, 0
-_06000208: .word sub_037FB330
+_06000208: .word PXI_SetFifoRecvCallback
 	arm_func_end sub_06000204
 
 	arm_func_start sub_0600020C
@@ -219,16 +219,16 @@ _06000280: .word 0x060188FC
 
 	arm_func_start sub_06000284
 sub_06000284: ; 0x06000284
-	ldr pc, _06000288 ; =sub_037F96F8
+	ldr pc, _06000288 ; =OS_SendMessage
 	.align 2, 0
-_06000288: .word sub_037F96F8
+_06000288: .word OS_SendMessage
 	arm_func_end sub_06000284
 
 	arm_func_start sub_0600028C
 sub_0600028C: ; 0x0600028C
-	ldr pc, _06000290 ; =sub_037F9784
+	ldr pc, _06000290 ; =OS_ReceiveMessage
 	.align 2, 0
-_06000290: .word sub_037F9784
+_06000290: .word OS_ReceiveMessage
 	arm_func_end sub_0600028C
 
 	arm_func_start sub_06000294
@@ -254,9 +254,9 @@ _060002A8: .word sub_037FB69C
 
 	arm_func_start sub_060002AC
 sub_060002AC: ; 0x060002AC
-	ldr pc, _060002B0 ; =sub_037FAE94
+	ldr pc, _060002B0 ; =OS_Terminate
 	.align 2, 0
-_060002B0: .word sub_037FAE94
+_060002B0: .word OS_Terminate
 	arm_func_end sub_060002AC
 
 	arm_func_start sub_060002B4
@@ -610,37 +610,37 @@ _0600071C: .word 0x0380AC9C
 
 	arm_func_start sub_06000720
 sub_06000720: ; 0x06000720
-	ldr pc, _06000724 ; =sub_037FAD24
+	ldr pc, _06000724 ; =OS_DisableInterrupts
 	.align 2, 0
-_06000724: .word sub_037FAD24
+_06000724: .word OS_DisableInterrupts
 	arm_func_end sub_06000720
 
 	arm_func_start sub_06000728
 sub_06000728: ; 0x06000728
-	ldr pc, _0600072C ; =sub_037F9594
+	ldr pc, _0600072C ; =OS_DisableScheduler
 	.align 2, 0
-_0600072C: .word sub_037F9594
+_0600072C: .word OS_DisableScheduler
 	arm_func_end sub_06000728
 
 	arm_func_start sub_06000730
 sub_06000730: ; 0x06000730
-	ldr pc, _06000734 ; =sub_037F9408
+	ldr pc, _06000734 ; =OS_SetThreadPriority
 	.align 2, 0
-_06000734: .word sub_037F9408
+_06000734: .word OS_SetThreadPriority
 	arm_func_end sub_06000730
 
 	arm_func_start sub_06000738
 sub_06000738: ; 0x06000738
-	ldr pc, _0600073C ; =sub_037F95CC
+	ldr pc, _0600073C ; =OS_EnableScheduler
 	.align 2, 0
-_0600073C: .word sub_037F95CC
+_0600073C: .word OS_EnableScheduler
 	arm_func_end sub_06000738
 
 	arm_func_start sub_06000740
 sub_06000740: ; 0x06000740
-	ldr pc, _06000744 ; =sub_037FAD38
+	ldr pc, _06000744 ; =OS_RestoreInterrupts
 	.align 2, 0
-_06000744: .word sub_037FAD38
+_06000744: .word OS_RestoreInterrupts
 	arm_func_end sub_06000740
 
 	arm_func_start sub_06000748
@@ -2022,9 +2022,9 @@ _06001AE8: .word 0x00007FFE
 
 	arm_func_start sub_06001AEC
 sub_06001AEC: ; 0x06001AEC
-	ldr pc, _06001AF0 ; =sub_037F915C
+	ldr pc, _06001AF0 ; =OS_ExitThread
 	.align 2, 0
-_06001AF0: .word sub_037F915C
+_06001AF0: .word OS_ExitThread
 	arm_func_end sub_06001AEC
 
 	arm_func_start sub_06001AF4
@@ -2057,9 +2057,9 @@ _06001B10: .word sub_037FA5E4
 
 	arm_func_start sub_06001B14
 sub_06001B14: ; 0x06001B14
-	ldr pc, _06001B18 ; =sub_037FA500
+	ldr pc, _06001B18 ; =OS_SetAlarm
 	.align 2, 0
-_06001B18: .word sub_037FA500
+_06001B18: .word OS_SetAlarm
 	arm_func_end sub_06001B14
 
 	arm_func_start sub_06001B1C
@@ -2303,9 +2303,9 @@ _06001DE0: .word 0x0380AD40
 
 	arm_func_start sub_06001DE4
 sub_06001DE4: ; 0x06001DE4
-	ldr pc, _06001DE8 ; =sub_037FA3C4
+	ldr pc, _06001DE8 ; =OS_CreateAlarm
 	.align 2, 0
-_06001DE8: .word sub_037FA3C4
+_06001DE8: .word OS_CreateAlarm
 	arm_func_end sub_06001DE4
 
 	arm_func_start sub_06001DEC
@@ -5265,9 +5265,9 @@ _060045C4: .word 0x00000303
 
 	arm_func_start sub_060045C8
 sub_060045C8: ; 0x060045C8
-	ldr pc, _060045CC ; =sub_0380625C
+	ldr pc, _060045CC ; =_s32_div_f
 	.align 2, 0
-_060045CC: .word sub_0380625C
+_060045CC: .word _s32_div_f
 	arm_func_end sub_060045C8
 
 	arm_func_start sub_060045D0
@@ -7631,16 +7631,16 @@ _06006594: .word 0x0000FFFF
 
 	arm_func_start sub_06006598
 sub_06006598: ; 0x06006598
-	ldr pc, _0600659C ; =sub_037F98AC
+	ldr pc, _0600659C ; =OS_LockMutex
 	.align 2, 0
-_0600659C: .word sub_037F98AC
+_0600659C: .word OS_LockMutex
 	arm_func_end sub_06006598
 
 	arm_func_start sub_060065A0
 sub_060065A0: ; 0x060065A0
-	ldr pc, _060065A4 ; =sub_037F9930
+	ldr pc, _060065A4 ; =OS_UnlockMutex
 	.align 2, 0
-_060065A4: .word sub_037F9930
+_060065A4: .word OS_UnlockMutex
 	arm_func_end sub_060065A0
 
 	arm_func_start sub_060065A8
@@ -8713,9 +8713,9 @@ _0600753C: .word 0x0000800C
 
 	arm_func_start sub_06007540
 sub_06007540: ; 0x06007540
-	ldr pc, _06007544 ; =sub_037F94B0
+	ldr pc, _06007544 ; =OS_Sleep
 	.align 2, 0
-_06007544: .word sub_037F94B0
+_06007544: .word OS_Sleep
 	arm_func_end sub_06007540
 
 	arm_func_start sub_06007548
@@ -10482,16 +10482,16 @@ _06008D9C: .word 0x0380FFF4
 
 	arm_func_start sub_06008DA0
 sub_06008DA0: ; 0x06008DA0
-	ldr pc, _06008DA4 ; =sub_037F92C4
+	ldr pc, _06008DA4 ; =OS_IsThreadTerminated
 	.align 2, 0
-_06008DA4: .word sub_037F92C4
+_06008DA4: .word OS_IsThreadTerminated
 	arm_func_end sub_06008DA0
 
 	arm_func_start sub_06008DA8
 sub_06008DA8: ; 0x06008DA8
-	ldr pc, _06008DAC ; =sub_037F9290
+	ldr pc, _06008DAC ; =OS_JoinThread
 	.align 2, 0
-_06008DAC: .word sub_037F9290
+_06008DAC: .word OS_JoinThread
 	arm_func_end sub_06008DA8
 
 	arm_func_start sub_06008DB0
@@ -12764,9 +12764,9 @@ _0600A9F0: .word 0x0380FFF4
 
 	arm_func_start sub_0600A9F4
 sub_0600A9F4: ; 0x0600A9F4
-	ldr pc, _0600A9F8 ; =sub_037FAFCC
+	ldr pc, _0600A9F8 ; =MIi_CpuClear32
 	.align 2, 0
-_0600A9F8: .word sub_037FAFCC
+_0600A9F8: .word MIi_CpuClear32
 	arm_func_end sub_0600A9F4
 
 	arm_func_start sub_0600A9FC
