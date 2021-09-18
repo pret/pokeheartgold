@@ -29492,3 +29492,5 @@
 .public sub_0205CB14
 .public sub_0205CB2C
 .public sub_0205F47C
+.public MI_Copy48B
+.public MTX_ScaleApply33

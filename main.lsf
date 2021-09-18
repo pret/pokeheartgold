@@ -219,6 +219,16 @@ Static main
 	Object middleware.o
 	Object sdk.o
 	Object nnsys.o
+	Object fx_sincos.o
+	Object fx_mtx22.o
+	Object fx_mtx33.o
+	Object fx_mtx43.o
+	Object fx_mtx44.o
+	Object fx_cp.o
+	Object fx_vec.o
+	Object fx_trig.o
+	Object fx_atan.o
+	Object fx.o
 	Object nitro.o
 	Object msl.o
 	Object bss_temp.o
