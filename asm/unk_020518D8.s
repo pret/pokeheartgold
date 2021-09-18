@@ -122,7 +122,7 @@ _0205193C:
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	add r0, r6, #0
-	bl sub_0202AC88
+	bl Options_new
 	mov r1, #0x13
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -328,7 +328,7 @@ sub_02051AAC: ; 0x02051AAC
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x14]
 	ldr r1, [r4, r1]
-	bl sub_0202AC9C
+	bl Options_copy
 	add r0, r5, #0
 	bl sub_020555E0
 	mov r1, #0x57
@@ -687,7 +687,7 @@ _02051E14:
 	lsl r1, r1, #4
 	ldr r0, [sp, #8]
 	ldr r1, [r5, r1]
-	bl sub_0202AC9C
+	bl Options_copy
 	ldr r1, [sp, #0xc]
 	add r0, r5, #0
 	mov r2, #0
@@ -910,7 +910,7 @@ _02052004:
 	lsl r1, r1, #4
 	ldr r0, [sp, #4]
 	ldr r1, [r5, r1]
-	bl sub_0202AC9C
+	bl Options_copy
 	ldr r1, [sp, #8]
 	add r0, r5, #0
 	mov r2, #0
@@ -1138,7 +1138,7 @@ _020521F6:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
 	ldr r1, [r5, r1]
-	bl sub_0202AC9C
+	bl Options_copy
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
 	mov r2, #0

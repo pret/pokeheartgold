@@ -26,10 +26,10 @@ _021E80D6:
 	bl sub_0200FBF4
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -74,7 +74,7 @@ _021E80D6:
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	bl ov52_021E83A4
 	ldr r0, [r4]
 	bl ov52_021E83C4
@@ -110,7 +110,7 @@ _021E80D6:
 	bl sub_02021148
 	ldr r0, _021E823C ; =ov52_021E837C
 	ldr r1, [r4]
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #2
 	mov r1, #0x27
 	bl sub_02002CEC
@@ -228,7 +228,7 @@ ov52_021E82AC: ; 0x021E82AC
 	bl ov52_021E9300
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x5e
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -287,7 +287,7 @@ _021E82FC:
 	strh r0, [r2]
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x27
 	bl DestroyHeap
 	mov r0, #1
@@ -368,7 +368,7 @@ ov52_021E83C4: ; 0x021E83C4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E84BC ; =0x021E9540
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -386,7 +386,7 @@ ov52_021E83C4: ; 0x021E83C4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E84C0 ; =0x021E955C
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -419,7 +419,7 @@ ov52_021E83C4: ; 0x021E83C4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E84C8 ; =0x021E9508
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}

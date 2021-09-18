@@ -32,7 +32,7 @@ ov62_021E5900: ; 0x021E5900
 	bl ov62_021E5CB8
 	ldr r0, _021E59B4 ; =ov62_021E5CC8
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #4
 	mov r1, #0x62
 	bl sub_02002CEC
@@ -435,10 +435,10 @@ ov62_021E5C34: ; 0x021E5C34
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -468,10 +468,10 @@ ov62_021E5C80: ; 0x021E5C80
 	bl sub_020205AC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -883,7 +883,7 @@ _021E5FEE:
 	bl InitBgFromTemplate
 	ldrb r1, [r4, #0x1c]
 	ldr r0, [r6]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldrb r0, [r4, #0x1c]
 	ldr r3, [sp]
 	mov r1, #0x20

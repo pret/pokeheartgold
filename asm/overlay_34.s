@@ -368,7 +368,7 @@ ov34_0225D7A8: ; 0x0225D7A8
 	bl ov34_0225D5F8
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	add r0, r4, #0
 	bl ov34_0225E56C
 	add r0, r4, #0
@@ -515,7 +515,7 @@ ov34_0225D924: ; 0x0225D924
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -536,7 +536,7 @@ ov34_0225D924: ; 0x0225D924
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #0
 	bl sub_02022CC8
@@ -557,7 +557,7 @@ ov34_0225D924: ; 0x0225D924
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8

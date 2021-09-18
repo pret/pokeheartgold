@@ -7657,8 +7657,8 @@ sub_020D0FEC: ; 0x020D0FEC
 _020D1000: .word 0x027E0060
 	arm_func_end sub_020D0FEC
 
-	arm_func_start sub_020D1004
-sub_020D1004: ; 0x020D1004
+	arm_func_start OS_SetIrqFunction
+OS_SetIrqFunction: ; 0x020D1004
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, #0
 	mov r2, #0xc
@@ -7699,7 +7699,7 @@ _020D1070:
 	.align 2, 0
 _020D1084: .word OSi_IntrTable
 _020D1088: .word 0x021E1618
-	arm_func_end sub_020D1004
+	arm_func_end OS_SetIrqFunction
 
 	arm_func_start sub_020D108C
 sub_020D108C: ; 0x020D108C
@@ -10699,7 +10699,7 @@ sub_020D33C0: ; 0x020D33C0
 	mov r2, #0xc1
 	mov r0, #8
 	strh r2, [r3]
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #8
 	bl OS_EnableIrqMask
 	ldr r0, _020D342C ; =0x021E19D4
@@ -12091,7 +12091,7 @@ _020D44E0:
 	orr r3, r0, #0x40000000
 	mov r0, #0x200000
 	str r3, [r2]
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #0x200000
 	bl OS_EnableIrqMask
 	bl sub_020D45A0
@@ -12167,7 +12167,7 @@ sub_020D464C: ; 0x020D464C
 	str r1, [r2]
 	ldr r1, [r0, #0x1c]
 	mov r0, #0x200000
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	ldr r0, _020D46A8 ; =0x021E1A20
 	mov r1, #0
 	str r1, [r0]
@@ -12251,8 +12251,8 @@ sub_020D4764: ; 0x020D4764
 _020D478C: .word 0x021E1A20
 	arm_func_end sub_020D4764
 
-	arm_func_start sub_020D4790
-sub_020D4790: ; 0x020D4790
+	arm_func_start MIi_CpuClear16
+MIi_CpuClear16: ; 0x020D4790
 	mov r3, #0
 _020D4794:
 	cmp r3, r2
@@ -12268,7 +12268,7 @@ _020D47AC:
 _020D47B0:
 	blt _020D4794
 	bx lr
-	arm_func_end sub_020D4790
+	arm_func_end MIi_CpuClear16
 
 	arm_func_start MIi_CpuCopy16
 MIi_CpuCopy16: ; 0x020D47B8
@@ -14779,7 +14779,7 @@ _020D658C:
 	bl OS_ResetRequestIrqMask
 	ldr r1, _020D664C ; =sub_020D674C
 	mov r0, #0x40000
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #0x40000
 	bl OS_EnableIrqMask
 	mov r5, #0
@@ -23300,7 +23300,7 @@ _020DD528:
 _020DD52C:
 	ldr r1, _020DD56C ; =sub_020DD314
 	mov r0, #0x80000
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #0x80000
 	bl OS_ResetRequestIrqMask
 	mov r0, #0x80000
@@ -24913,7 +24913,7 @@ _020DE988:
 _020DEA40:
 	ldr r1, _020DEB04 ; =0x021E4294
 	mov r0, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _020DEA4C:
 	cmp r7, #0
 	moveq r1, r8
@@ -27269,7 +27269,7 @@ _020E0A34:
 	b _020E0A6C
 _020E0A64:
 	mov r0, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _020E0A6C:
 	bl OS_DisableInterrupts
 	mov r4, r4, lsl #9
@@ -27313,7 +27313,7 @@ sub_020E0A9C: ; 0x020E0A9C
 	add r1, sl, r8, lsl #9
 	mov r0, #0
 	mov r2, #0x200
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, sl, #0x800
 	ldrh r3, [r0, #0xe]
 	orr r2, r7, #1

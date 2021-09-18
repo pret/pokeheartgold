@@ -64,7 +64,7 @@ sub_0201A0E0: ; 0x0201A0E0
 	bl OS_DisableIrqMask
 	ldr r1, _0201A0F8 ; =sub_0201A0C0
 	mov r0, #1
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #1
 	bl OS_EnableIrqMask
 	pop {r3, pc}
@@ -72,15 +72,15 @@ sub_0201A0E0: ; 0x0201A0E0
 _0201A0F8: .word sub_0201A0C0
 	thumb_func_end sub_0201A0E0
 
-	thumb_func_start sub_0201A0FC
-sub_0201A0FC: ; 0x0201A0FC
+	thumb_func_start Main_SetVBlankIntrCB
+Main_SetVBlankIntrCB: ; 0x0201A0FC
 	ldr r2, _0201A104 ; =gMain
 	str r0, [r2]
 	str r1, [r2, #4]
 	bx lr
 	.balign 4, 0
 _0201A104: .word gMain
-	thumb_func_end sub_0201A0FC
+	thumb_func_end Main_SetVBlankIntrCB
 
 	thumb_func_start sub_0201A108
 sub_0201A108: ; 0x0201A108
@@ -161,7 +161,7 @@ _0201A18A:
 	ldr r0, [r2, #8]
 	ldr r1, _0201A1B0 ; =sub_0201A158
 	mov r0, #2
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #2
 	bl OS_EnableIrqMask
 	mov r0, #1
@@ -291,7 +291,7 @@ InitSystemForTheGame: ; 0x0201A200
 	strh r0, [r2]
 	ldr r1, _0201A33C ; =sub_0201A08C
 	mov r0, #1
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #1
 	bl OS_EnableIrqMask
 	mov r0, #1
@@ -872,15 +872,15 @@ _0201A714: .word 0x0000F3FF
 _0201A718: .word 0x0000FCFF
 	thumb_func_end sub_0201A5E8
 
-	thumb_func_start sub_0201A71C
-sub_0201A71C: ; 0x0201A71C
+	thumb_func_start SetKeyRepeatTimers
+SetKeyRepeatTimers: ; 0x0201A71C
 	ldr r2, _0201A724 ; =gMain
 	str r0, [r2, #0x54]
 	str r1, [r2, #0x58]
 	bx lr
 	.balign 4, 0
 _0201A724: .word gMain
-	thumb_func_end sub_0201A71C
+	thumb_func_end SetKeyRepeatTimers
 
 	thumb_func_start sub_0201A728
 sub_0201A728: ; 0x0201A728

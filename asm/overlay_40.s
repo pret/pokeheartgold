@@ -10,10 +10,10 @@ ov40_0222B6E0: ; 0x0222B6E0
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -90,7 +90,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl sub_02002B8C
 	ldr r0, _0222B928 ; =ov40_0222BD04
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0222B826
@@ -380,7 +380,7 @@ _0222BA4A:
 	bl ov40_0223D600
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_020205AC
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -394,7 +394,7 @@ ov40_0222BA90: ; 0x0222BA90
 	push {r4, r5, lr}
 	sub sp, #0x3c
 	add r4, r0, #0
-	bl sub_02022C54
+	bl GX_DisableEngineALayers
 	ldr r5, _0222BC14 ; =_02244C44
 	add r3, sp, #0x2c
 	add r2, r3, #0
@@ -460,16 +460,16 @@ _0222BAB4:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r2, _0222BC2C ; =0x02244D38
 	add r0, r4, #0
 	mov r1, #4
@@ -492,16 +492,16 @@ _0222BAB4:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -568,12 +568,12 @@ _0222BC40: .word 0x04001050
 	thumb_func_start ov40_0222BC44
 ov40_0222BC44: ; 0x0222BC44
 	ldr r1, _0222BC4C ; =gMain + 0x60
-	ldr r3, _0222BC50 ; =sub_02022D3C
+	ldr r3, _0222BC50 ; =GX_SwapDisplay
 	strb r0, [r1, #9]
 	bx r3
 	.balign 4, 0
 _0222BC4C: .word gMain + 0x60
-_0222BC50: .word sub_02022D3C
+_0222BC50: .word GX_SwapDisplay
 	thumb_func_end ov40_0222BC44
 
 	thumb_func_start ov40_0222BC54
@@ -4923,7 +4923,7 @@ ov40_0222DE40: ; 0x0222DE40
 	bl RemoveWindow
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -5096,7 +5096,7 @@ ov40_0222DFB0: ; 0x0222DFB0
 	bl RemoveWindow
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -13602,16 +13602,16 @@ ov40_02232288: ; 0x02232288
 	str r4, [r5, r0]
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	add r1, r4, #4
 	mov r2, #0
@@ -14802,16 +14802,16 @@ _02232C76:
 	bl ov40_02230964
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -16807,16 +16807,16 @@ _02233CE8:
 	blt _02233CDC
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	add r1, r5, #0
 	add r0, #0xd4
@@ -17178,16 +17178,16 @@ _02233FFA:
 	bl ov40_02230964
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -17359,16 +17359,16 @@ ov40_0223414C: ; 0x0223414C
 	str r0, [r4, r1]
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	add r1, r4, #4
 	mov r2, #0
@@ -17606,7 +17606,7 @@ _022343B2:
 	bl GX_EngineAToggleLayers
 	ldr r0, _0223446C ; =ov40_02235900
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -17799,10 +17799,10 @@ _02234514:
 	bl sub_020314BC
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	bl ov40_02236130
 	ldr r0, [r4, #8]
@@ -17831,10 +17831,10 @@ _02234586:
 	bl ov40_02230964
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	ldr r0, [r4, #0x24]
 	mov r1, #2
@@ -17982,16 +17982,16 @@ _022346F0:
 	bl ov40_02230964
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #1
 	bl ov40_0222FB90
@@ -18051,7 +18051,7 @@ _02234776:
 	bl UnloadOverlayByID
 	ldr r0, _02234808 ; =ov40_0222BD04
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	b _022347F2
 _022347C2:
 	ldr r0, [r4, #0x58]
@@ -18138,10 +18138,10 @@ _02234826:
 	bl sub_020314BC
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	bl ov40_02236130
 	ldr r0, [r5, #8]
@@ -18170,10 +18170,10 @@ _02234898:
 	bl ov40_02230964
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -18204,16 +18204,16 @@ _022348F8:
 	bl ov40_02230964
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_0222FB90
@@ -18278,7 +18278,7 @@ _02234984:
 	bl UnloadOverlayByID
 	ldr r0, _02234A10 ; =ov40_0222BD04
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	b _02234A08
 _022349D8:
 	ldr r0, [r5, #0x58]
@@ -18791,10 +18791,10 @@ _02234DAE:
 	bl sub_020314BC
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -18821,10 +18821,10 @@ _02234E1A:
 	bl ov40_02230964
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -18855,16 +18855,16 @@ _02234E7A:
 	bl ov40_02230964
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_0222FB90
@@ -18929,7 +18929,7 @@ _02234F06:
 	bl UnloadOverlayByID
 	ldr r0, _02234F94 ; =ov40_0222BD04
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	b _02234F8A
 _02234F5A:
 	ldr r0, [r5, #0x58]
@@ -19219,7 +19219,7 @@ _02235146:
 	bl GX_EngineAToggleLayers
 	ldr r0, _02235278 ; =ov40_02235900
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -19419,10 +19419,10 @@ _02235362:
 	bne _02235380
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	bl ov40_02236130
 	b _0223539A
@@ -19475,16 +19475,16 @@ _022353A8:
 _022353EA:
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -19540,7 +19540,7 @@ _0223545C:
 	bl ov40_02236130
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	b _0223548A
 _02235470:
 	mov r1, #1
@@ -19590,10 +19590,10 @@ _022354A4:
 _022354D2:
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -19789,7 +19789,7 @@ _0223566C:
 	bl ov40_02236130
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	b _0223569A
 _02235680:
 	mov r1, #1
@@ -19839,10 +19839,10 @@ _022356B4:
 _022356E2:
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -21727,16 +21727,16 @@ ov40_022365A0: ; 0x022365A0
 	str r4, [r5, r0]
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -24058,16 +24058,16 @@ _02237894:
 	bl ov40_0222D88C
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -24700,7 +24700,7 @@ _02237DD4:
 	bl ov40_02236FE0
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #8
 	mov r1, #0x69
 	str r2, [sp]
@@ -24883,7 +24883,7 @@ _02237F06:
 	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	bl ov40_02230964
@@ -24976,7 +24976,7 @@ _02237FFE:
 	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	bl ov40_02230964
@@ -25474,7 +25474,7 @@ _0223844A:
 	bl GX_EngineAToggleLayers
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_02230964
@@ -25924,7 +25924,7 @@ _02238854:
 	bl ov40_022371A0
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	bl ov40_02237008
 	add r0, r5, #0
@@ -26170,7 +26170,7 @@ _02238A86:
 	str r1, [r4, r0]
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #8
 	mov r1, #0x69
 	str r2, [sp]
@@ -26339,7 +26339,7 @@ _02238BFE:
 _02238C16:
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -26548,16 +26548,16 @@ _02238DD4:
 	bl ov40_0222D88C
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -28038,16 +28038,16 @@ _022399EE:
 	str r1, [r4, r0]
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	add r1, r4, #4
 	mov r2, #0
@@ -28300,21 +28300,21 @@ _02239C2A:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	bl Sav2_PlayerData_GetIGTAddr
-	bl sub_0202CE24
+	bl GetIGTHours
 	ldr r1, _02239ED8 ; =0x00000728
 	strh r0, [r5, r1]
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	bl Sav2_PlayerData_GetIGTAddr
-	bl sub_0202CE28
+	bl GetIGTMinutes
 	ldr r1, _02239EDC ; =0x0000072A
 	strb r0, [r5, r1]
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	bl Sav2_PlayerData_GetIGTAddr
-	bl sub_0202CE2C
+	bl GetIGTSeconds
 	ldr r1, _02239EE0 ; =0x0000072B
 	strb r0, [r5, r1]
 	add r0, r1, #0
@@ -28498,16 +28498,16 @@ _02239DBA:
 	bl ov40_02230964
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #1
 	bl ov40_0222FB90
@@ -28935,16 +28935,16 @@ _0223A19E:
 	bl ov40_02230964
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_0222FB90
@@ -29511,10 +29511,10 @@ _0223A66E: ; jump table
 _0223A678:
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x10]
 	cmp r0, #0
 	bne _0223A69C
@@ -29782,10 +29782,10 @@ _0223A89E:
 	bl ov40_0223CE38
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -29884,7 +29884,7 @@ _0223A964:
 	beq _0223A99C
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _0223AC04 ; =0x00000116
 	add r0, r4, #0
 	mov r2, #0
@@ -30118,16 +30118,16 @@ _0223AB4A:
 	bl ov40_0222BF80
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	bl FreeToHeap
 	bl sub_0202FC48
@@ -30286,10 +30286,10 @@ _0223ACF0: ; jump table
 _0223ACF8:
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -30584,10 +30584,10 @@ _0223AF5C: ; jump table
 _0223AF64:
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -31382,16 +31382,16 @@ _0223B5EA:
 _0223B5F2:
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	add r1, r4, #4
 	mov r2, #0
@@ -31847,16 +31847,16 @@ _0223B98E:
 	bl ov40_0222BF80
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	bl FreeToHeap
 	b _0223BA58
@@ -32602,16 +32602,16 @@ _0223C030:
 	bl ov40_0222BF80
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	bl FreeToHeap
 	b _0223C0D4
@@ -33604,10 +33604,10 @@ _0223C8BC:
 	bl ov40_02230964
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -33642,10 +33642,10 @@ _0223C936:
 	bl ov40_0222DFB0
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -33968,10 +33968,10 @@ _0223CBDE:
 	bl ov40_02230964
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -37042,16 +37042,16 @@ _0223E3E2:
 	bl ov40_0222BF80
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	bl FreeToHeap
 	b _0223E486
@@ -39717,10 +39717,10 @@ _0223FA1C:
 	bl ov40_02230964
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -39757,10 +39757,10 @@ _0223FA9C:
 	bl ov40_0222DFB0
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -40163,10 +40163,10 @@ _0223FDBA: ; jump table
 _0223FDC4:
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r1, [r5, r0]
@@ -40693,16 +40693,16 @@ ov40_02240238: ; 0x02240238
 	str r4, [r5, r0]
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	add r1, r4, #4
 	mov r2, #0
@@ -41191,16 +41191,16 @@ _02240626:
 	bl ov40_0222BF80
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	bl FreeToHeap
 	b _022406C2
@@ -41965,16 +41965,16 @@ _02240C92:
 	bl FreeToHeap
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	bl sub_0202FC48
 	cmp r0, #1
 	bne _02240D42
@@ -42564,10 +42564,10 @@ _022411DA:
 	bl ov40_02230964
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -42602,10 +42602,10 @@ _0224125A:
 	bl ov40_0222DFB0
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -42714,16 +42714,16 @@ _02241316:
 	bl FreeToHeap
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	bl sub_0202FC48
 	cmp r0, #1
 	bne _022413DC
@@ -42920,10 +42920,10 @@ _022414B4:
 	bl ov40_0224085C
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -43488,16 +43488,16 @@ _0224198C:
 	bl FreeToHeap
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	b _02241A30
 _02241A00:
 	ldr r0, [r5, #0x58]
@@ -44744,10 +44744,10 @@ _022423DE:
 	bl ov40_02230964
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -44926,10 +44926,10 @@ _02242566:
 	bl ov40_02241BDC
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -45027,7 +45027,7 @@ _02242628:
 	beq _02242660
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _022428B4 ; =0x00000116
 	add r0, r4, #0
 	mov r2, #0
@@ -45256,16 +45256,16 @@ _022427FC:
 	bl FreeToHeap
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	bl sub_0202FC48
 	cmp r0, #1
 	bne _022428AE
@@ -45336,10 +45336,10 @@ _022428F4: ; jump table
 _022428FC:
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -45590,10 +45590,10 @@ _02242B14:
 	bl ov40_0222DEAC
 	ldr r0, [r4, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -48898,16 +48898,16 @@ ov40_022444C0: ; 0x022444C0
 	str r4, [r5, r0]
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	add r1, r4, #4
 	mov r2, #0
@@ -49319,16 +49319,16 @@ _02244860:
 	bl ov40_0222D88C
 	ldr r0, [r5, #0x24]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x24]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_0222FB90
@@ -49524,7 +49524,7 @@ _02244A02:
 	mov r0, #0
 	add r1, r5, #0
 	mov r2, #0x80
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r7, #0
 	mov r1, #0x75
 	add r2, r5, #0

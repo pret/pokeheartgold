@@ -68,7 +68,7 @@ _0225F050:
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
@@ -82,7 +82,7 @@ _0225F050:
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

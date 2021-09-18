@@ -5896,7 +5896,7 @@ sub_02043598: ; 0x02043598
 	mov r0, #0
 	strh r0, [r4]
 	add r0, r5, #0
-	bl MapHeader_MapIsPokemonCenterSecondFloor
+	bl MapHeader_MapIsPokemonCenter
 	cmp r0, #1
 	bne _020435D4
 	mov r0, #1
@@ -5904,7 +5904,7 @@ sub_02043598: ; 0x02043598
 	b _020435E2
 _020435D4:
 	add r0, r5, #0
-	bl sub_0203B5FC
+	bl MapHeader_MapIsPokemonLeagueLobby
 	cmp r0, #1
 	bne _020435E2
 	mov r0, #2

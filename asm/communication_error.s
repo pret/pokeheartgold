@@ -143,17 +143,17 @@ _0203AAA0:
 	bl OS_DisableIrqMask
 	ldr r1, _0203AC54 ; =sub_0203A9DC
 	mov r0, #1
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #1
 	bl OS_EnableIrqMask
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -166,11 +166,11 @@ _0203AAA0:
 	str r0, [r2]
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	ldr r0, _0203AC60 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	ldr r3, _0203AC64 ; =0x04000050
 	mov r1, #0
 	strh r1, [r3]
@@ -199,7 +199,7 @@ _0203AAA0:
 	bl InitBgFromTemplate
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r1, #0
 	str r1, [sp]
 	ldr r2, _0203AC7C ; =0x000001F7
@@ -259,7 +259,7 @@ _0203AAA0:
 	add r0, sp, #0x14
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #1
@@ -287,7 +287,7 @@ _0203AAA0:
 	bl AddTextPrinterParameterized
 	add r0, r7, #0
 	bl String_dtor
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r0, #0
 	bl sub_0200FBE8
 	mov r0, #1

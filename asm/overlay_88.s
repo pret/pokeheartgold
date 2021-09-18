@@ -84,7 +84,7 @@ ov88_02258800: ; 0x02258800
 	bl ov88_0225967C
 	ldr r0, _022588C0 ; =ov88_02258A64
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #1
 	add sp, #0xc
@@ -278,7 +278,7 @@ ov88_022589FC: ; 0x022589FC
 	bl ov88_02258D84
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	add r4, #8
 	add r0, r4, #0
@@ -414,7 +414,7 @@ ov88_02258B34: ; 0x02258B34
 	ldr r0, _02258C54 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #0
 	ldr r6, _02258C58 ; =0x022599C0
 	ldr r4, _02258C5C ; =0x02259944
@@ -438,7 +438,7 @@ _02258B5C:
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [sp, #0x10]
 	add r6, #0x1c
 	add r0, r0, #1
@@ -559,7 +559,7 @@ _02258C68:
 	ldr r0, _02258C94 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	pop {r4, r5, r6, pc}
 	nop
 _02258C90: .word 0x02259944

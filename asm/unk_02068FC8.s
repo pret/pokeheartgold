@@ -402,10 +402,10 @@ sub_02069308: ; 0x02069308
 	add r5, r2, #0
 	add r6, r3, #0
 	ldr r7, [sp, #0x20]
-	bl sub_0202CE24
+	bl GetIGTHours
 	strh r0, [r4, #0x2a]
 	ldr r0, [sp, #4]
-	bl sub_0202CE28
+	bl GetIGTMinutes
 	add r1, r4, #0
 	add r1, #0x2e
 	strb r0, [r1]

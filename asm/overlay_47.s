@@ -63,7 +63,7 @@ _02258862:
 	blx r5
 	ldr r0, _02258894 ; =ov47_02258A14
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #1
 	add sp, #4
@@ -219,7 +219,7 @@ ov47_022589A8: ; 0x022589A8
 	add r6, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r3, [r6, #8]
 	mov r1, #0x5e
@@ -345,7 +345,7 @@ ov47_02258AA0: ; 0x02258AA0
 	ldr r0, _02258B80 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #0
 	ldr r6, _02258B84 ; =0x02259F18
 	ldr r4, _02258B88 ; =0x02259E68
@@ -369,7 +369,7 @@ _02258ACA:
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [sp, #0x14]
 	add r6, #0x1c
 	add r0, r0, #1

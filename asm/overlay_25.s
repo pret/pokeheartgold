@@ -113,7 +113,7 @@ _022599A2:
 	ldr r0, _02259A2C ; =0x0000FFFF
 	add r1, #8
 	mov r2, #0x10
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r4, #0
 	bl String_c_str
 	add r1, r5, #0
@@ -153,7 +153,7 @@ _022599F8:
 	ldr r0, _02259A2C ; =0x0000FFFF
 	add r1, #0x24
 	mov r2, #0x14
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r4, #0
 	bl String_c_str
 	add r1, r5, #0

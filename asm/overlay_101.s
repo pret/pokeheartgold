@@ -1544,7 +1544,7 @@ _021E82EC:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	ldr r3, [r5]
@@ -1557,7 +1557,7 @@ _021E82EC:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	ldr r3, [r5]
@@ -3008,7 +3008,7 @@ _021E8EE2:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #1
 	lsl r1, r1, #0x18
@@ -3276,7 +3276,7 @@ _021E9136:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E9136
@@ -5095,7 +5095,7 @@ _021E9F4A:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
@@ -5388,7 +5388,7 @@ _021EA19C:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #1
 	lsl r1, r1, #0x18
@@ -7539,7 +7539,7 @@ _021EB1FA:
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
@@ -7561,7 +7561,7 @@ _021EB218:
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp, #0x1c]
 	ldr r0, _021EB2D4 ; =0x00000136
@@ -13115,10 +13115,10 @@ _021EDCF6: ; jump table
 _021EDD00:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -13163,7 +13163,7 @@ _021EDD7A:
 	bl ov101_021EE670
 	ldr r0, _021EDDA8 ; =0x021E65F5
 	ldr r1, [r4, #0x10]
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r1, _021EDDAC ; =ov101_021E9270
 	ldr r0, [r4, #0x10]
 	str r1, [r0, #0x58]
@@ -13207,7 +13207,7 @@ ov101_021EDDB0: ; 0x021EDDB0
 	bl sub_02021238
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -13355,7 +13355,7 @@ _021EDF12:
 	lsl r1, r4, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	lsl r0, r4, #0x18
 	ldr r3, [r5]
 	lsr r0, r0, #0x18
@@ -14258,7 +14258,7 @@ _021EE694:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #1
 	lsl r1, r1, #0x18
@@ -15413,7 +15413,7 @@ _021EEF90:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	ldr r3, [r5]
@@ -15426,7 +15426,7 @@ _021EEF90:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	ldr r3, [r5]
@@ -15941,7 +15941,7 @@ ov101_021EF384: ; 0x021EF384
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r6, #0
 	mov r1, #3
 	ldr r4, [r5, #0x48]
@@ -17817,7 +17817,7 @@ _021F0200:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	ldr r3, [r5]
@@ -17830,7 +17830,7 @@ _021F0200:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	ldr r3, [r5]
@@ -27521,7 +27521,7 @@ _021F4B70:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	ldr r3, [r5]
@@ -27534,7 +27534,7 @@ _021F4B70:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	ldr r3, [r5]
@@ -28442,7 +28442,7 @@ _021F5270:
 	lsl r1, r1, #0x18
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0xc]
 	add r1, r4, #5
 	lsl r1, r1, #0x18

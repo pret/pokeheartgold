@@ -50,7 +50,7 @@ _02229F18:
 	str r0, [r5, #8]
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r0, _02229F6C ; =ov45_02229FE0
 	add r1, r5, #0
@@ -96,7 +96,7 @@ ov45_02229F94: ; 0x02229F94
 	bl sub_0200E390
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r0, [r4, #8]
 	bl ov45_0222CD68

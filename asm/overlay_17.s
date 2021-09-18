@@ -8,10 +8,10 @@ ov17_02201BC0: ; 0x02201BC0
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1201,7 +1201,7 @@ ov17_022024CC: ; 0x022024CC
 	bl ov17_02203278
 	ldr r0, _022024FC ; =ov17_02202BF8
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r4, pc}
 	.balign 4, 0
 _022024FC: .word ov17_02202BF8
@@ -2203,7 +2203,7 @@ ov17_02202C4C: ; 0x02202C4C
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02202DC0 ; =0x02203DDC
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -2225,7 +2225,7 @@ ov17_02202C4C: ; 0x02202C4C
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02202DC4 ; =0x02203DF8
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -2247,7 +2247,7 @@ ov17_02202C4C: ; 0x02202C4C
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02202DC8 ; =0x02203E14
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -2269,7 +2269,7 @@ ov17_02202C4C: ; 0x02202C4C
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02202DCC ; =0x02203E4C
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -2291,7 +2291,7 @@ ov17_02202C4C: ; 0x02202C4C
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r3, [r4]
 	mov r0, #4
 	mov r1, #0x20

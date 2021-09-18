@@ -3911,10 +3911,10 @@ ov112_021E76CC: ; 0x021E76CC
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	ldr r2, [r0]
@@ -3953,7 +3953,7 @@ ov112_021E76CC: ; 0x021E76CC
 	bl ov112_021E795C
 	mov r0, #3
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	bl sub_020210BC
 	mov r0, #4
 	bl sub_02021148
@@ -4002,7 +4002,7 @@ ov112_021E7768: ; 0x021E7768
 	bl ov112_021E9C98
 	ldr r0, _021E77D8 ; =ov112_021E79A8
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r2, _021E77DC ; =0x04000304
 	ldr r0, _021E77E0 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -4041,7 +4041,7 @@ ov112_021E77E4: ; 0x021E77E4
 	bl sub_02002DB4
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, _021E782C ; =0x0001E52C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -4178,7 +4178,7 @@ ov112_021E7910: ; 0x021E7910
 	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x9a
 	bl DestroyHeap
 	mov r0, #0x10
@@ -4296,13 +4296,13 @@ ov112_021E79F0: ; 0x021E79F0
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r2, _021E7ABC ; =0x021F3758
 	add r0, r4, #0
 	mov r1, #4
@@ -4320,13 +4320,13 @@ ov112_021E79F0: ; 0x021E79F0
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
@@ -12500,16 +12500,16 @@ ov112_021EBF18: ; 0x021EBF18
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0x10
@@ -12547,7 +12547,7 @@ ov112_021EBF70: ; 0x021EBF70
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -13457,7 +13457,7 @@ ov112_021EC640: ; 0x021EC640
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0xe
@@ -14563,16 +14563,16 @@ ov112_021ECF38: ; 0x021ECF38
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
 	bl ov112_021EA688
@@ -14637,16 +14637,16 @@ ov112_021ECFD4: ; 0x021ECFD4
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
 	bl ov112_021EA688
@@ -14671,16 +14671,16 @@ ov112_021ED020: ; 0x021ED020
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r3, [r4, #0xc]
 	add r0, r4, #0
 	mov r1, #2
@@ -14696,7 +14696,7 @@ ov112_021ED054: ; 0x021ED054
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0xe
@@ -14867,16 +14867,16 @@ ov112_021ED1A0: ; 0x021ED1A0
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	bl ov112_021E9C10
@@ -16307,7 +16307,7 @@ ov112_021EDD5C: ; 0x021EDD5C
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #7
@@ -16326,7 +16326,7 @@ ov112_021EDD80: ; 0x021EDD80
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #5
@@ -16352,7 +16352,7 @@ ov112_021EDDB4: ; 0x021EDDB4
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #5
@@ -16378,7 +16378,7 @@ ov112_021EDDE8: ; 0x021EDDE8
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #5
@@ -18705,7 +18705,7 @@ _021EEF86:
 	add r1, r6, #0
 	ldr r0, _021EF038 ; =ov112_021EF310
 	add r1, r5, r1
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	str r0, [r5, r6]
 	add sp, #0x24
@@ -18834,7 +18834,7 @@ ov112_021EF100: ; 0x021EF100
 	mov r0, #0
 	str r0, [r4, r1]
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, _021EF150 ; =0x0001D768
 	ldr r0, [r4, r0]
 	bl sub_02093354
@@ -21584,7 +21584,7 @@ ov112_021F0668: ; 0x021F0668
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021F06C8 ; =0x021FF150
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -21602,7 +21602,7 @@ ov112_021F0668: ; 0x021F0668
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x38
 	pop {r3, r4, r5, pc}
 	nop
@@ -22465,10 +22465,10 @@ ov112_021F0DC0: ; 0x021F0DC0
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -23795,7 +23795,7 @@ _021F17D6:
 	bl InitBgFromTemplate
 	ldrb r1, [r4]
 	ldr r0, [r5, #0x14]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	ldrb r1, [r4]
@@ -26703,7 +26703,7 @@ _021F2DF4:
 	ldr r0, _021F2E68 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	ldr r1, [r4, #4]
 	mov r0, #0xfb
 	bl NARC_ctor
@@ -26720,7 +26720,7 @@ _021F2DF4:
 	bl sub_0200FBDC
 	ldr r0, _021F2E6C ; =ov112_021F2EB0
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r3, r4, r5, pc}
 	nop
 _021F2E68: .word gMain + 0x60
@@ -26743,7 +26743,7 @@ ov112_021F2E70: ; 0x021F2E70
 	ldr r0, _021F2EAC ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	bl ov112_021F0DC0
 	add r0, r4, #0
 	bl OverlayManager_FreeData

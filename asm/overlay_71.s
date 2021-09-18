@@ -167,10 +167,10 @@ _02246A44:
 	add r1, r1, #2
 	str r0, [r4, r1]
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -388,7 +388,7 @@ ov71_02246C6C: ; 0x02246C6C
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x60
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r7, #0
 	bl FreeToHeap
 _02246CA6:
@@ -5610,7 +5610,7 @@ ov71_022494D0: ; 0x022494D0
 	beq _022494FE
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov71_022497C8
 	add r0, r4, #0
@@ -7142,7 +7142,7 @@ ov71_0224A0F0: ; 0x0224A0F0
 	bl ov71_0224A5A8
 	ldr r0, _0224A128 ; =ov71_0224A8B0
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 _0224A124:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -7157,7 +7157,7 @@ ov71_0224A12C: ; 0x0224A12C
 	beq _0224A15A
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov71_0224A3D8
 	add r0, r4, #0

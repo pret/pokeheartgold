@@ -9,7 +9,7 @@ ov106_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -1504,7 +1504,7 @@ ov106_021E6418: ; 0x021E6418
 	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	mov r1, #0x40
 	add r2, r0, #0
@@ -1527,7 +1527,7 @@ ov106_021E6418: ; 0x021E6418
 	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0x40
 	mov r2, #0
@@ -1550,7 +1550,7 @@ ov106_021E6418: ; 0x021E6418
 	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #0x40
 	mov r2, #0
@@ -1960,7 +1960,7 @@ ov106_021E6814: ; 0x021E6814
 	add r5, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -2001,7 +2001,7 @@ ov106_021E6814: ; 0x021E6814
 	ldr r1, _021E689C ; =0x00000418
 	ldr r0, _021E68A4 ; =ov106_021E63E0
 	ldr r1, [r5, r1]
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #4
 	pop {r3, r4, r5, pc}
 	nop
@@ -2022,7 +2022,7 @@ ov106_021E68A8: ; 0x021E68A8
 	ldr r5, [r4, r0]
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r5, #0
 	bl ov106_021E664C
 	add r0, r5, #0

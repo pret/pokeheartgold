@@ -2368,10 +2368,10 @@ ov39_02228140: ; 0x02228140
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r1, #1
 	lsl r1, r1, #0x1a
 	ldr r0, [r1]
@@ -2420,7 +2420,7 @@ ov39_02228140: ; 0x02228140
 	bl sub_0202055C
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	ldr r0, [r5, #4]
 	bl ov39_02228440
 	bl sub_020210BC
@@ -2495,7 +2495,7 @@ ov39_02228140: ; 0x02228140
 	ldr r0, _02228300 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -2504,7 +2504,7 @@ ov39_02228140: ; 0x02228140
 	bl sub_02002B8C
 	ldr r0, _02228304 ; =ov39_02228418
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r1, [r5]
 	ldr r0, [r1, #4]
 	cmp r0, #0
@@ -2650,7 +2650,7 @@ _02228394:
 	bl ov39_022285A8
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	bl sub_020205AC
 	bl sub_02021238
@@ -2668,7 +2668,7 @@ _02228394:
 	ldr r0, _02228414 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2700,8 +2700,8 @@ ov39_02228440: ; 0x02228440
 	push {r3, r4, r5, lr}
 	sub sp, #0xa8
 	add r4, r0, #0
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	ldr r5, _02228598 ; =0x0222A8E4
 	add r3, sp, #0x80
 	mov r2, #5
@@ -2760,7 +2760,7 @@ _022284B4:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -2778,7 +2778,7 @@ _022284B4:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r4, #0
 	mov r1, #1
@@ -2804,7 +2804,7 @@ _0222851A:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r4, #0
 	mov r1, #4
@@ -2822,7 +2822,7 @@ _0222851A:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r4, #0
 	mov r1, #5
@@ -3405,7 +3405,7 @@ ov39_022289D0: ; 0x022289D0
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]

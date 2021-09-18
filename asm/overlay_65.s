@@ -10,10 +10,10 @@ ov65_0221BE20: ; 0x0221BE20
 	add r6, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -81,7 +81,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl ov65_0221D0EC
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	bl ov65_0221CE98
 	mov r0, #6
 	lsl r0, r0, #6
@@ -102,7 +102,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl ov65_0221D280
 	ldr r0, _0221BFAC ; =ov65_0221CE1C
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl ov65_0221D3B8
 	add r0, r4, #0
 	add r1, r5, #0
@@ -374,7 +374,7 @@ ov65_0221C08C: ; 0x0221C08C
 	bl sub_02024830
 	ldr r0, _0221C1C0 ; =ov65_0221CE1C
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl NARC_dtor
 	add sp, #8
@@ -1866,7 +1866,7 @@ ov65_0221CD74: ; 0x0221CD74
 	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #4
 	bl sub_02002DB4
 	mov r0, #0x1a
@@ -1987,7 +1987,7 @@ ov65_0221CEB8: ; 0x0221CEB8
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r4, _0221D0C8 ; =0x0221FDB8
 	add r3, sp, #0x8c
 	ldmia r4!, {r0, r1}
@@ -2005,7 +2005,7 @@ ov65_0221CEB8: ; 0x0221CEB8
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r4, _0221D0CC ; =0x0221FE0C
 	add r3, sp, #0x70
 	ldmia r4!, {r0, r1}
@@ -2023,7 +2023,7 @@ ov65_0221CEB8: ; 0x0221CEB8
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r4, _0221D0D0 ; =0x0221FE28
 	add r3, sp, #0x54
 	ldmia r4!, {r0, r1}
@@ -2056,7 +2056,7 @@ ov65_0221CEB8: ; 0x0221CEB8
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r4, _0221D0D8 ; =0x0221FD9C
 	add r3, sp, #0x1c
 	ldmia r4!, {r0, r1}
@@ -2539,7 +2539,7 @@ ov65_0221D280: ; 0x0221D280
 	bl sub_02003030
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov65_0221D280
@@ -7474,7 +7474,7 @@ _0221FBBA:
 	add r0, r5, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 _0221FBC6:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -7610,7 +7610,7 @@ ov65_0221FCA0: ; 0x0221FCA0
 	add r0, r4, #0
 	mov r1, #0
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r3, _0221FD18 ; =0x022200EC
 	add r2, sp, #0x14
 	add r7, r2, #0

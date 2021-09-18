@@ -130,7 +130,7 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r1, #4
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
@@ -155,7 +155,7 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r1, #5
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #5
 	mov r1, #0x20
 	mov r2, #0
@@ -180,7 +180,7 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r1, #6
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
@@ -221,7 +221,7 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
@@ -246,7 +246,7 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
@@ -271,7 +271,7 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r1, #2
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021ECBB8 ; =0x021EEBF8
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -1277,7 +1277,7 @@ ov103_021ED314: ; 0x021ED314
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -1340,7 +1340,7 @@ ov103_021ED314: ; 0x021ED314
 	bl ov103_021ECEEC
 	ldr r0, _021ED3E4 ; =ov103_021EC9B4
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r4, #0x28]
 	pop {r4, pc}
 	nop
@@ -1357,7 +1357,7 @@ ov103_021ED3E8: ; 0x021ED3E8
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov103_021ECF48
 	ldr r0, [r4, #0xc]
@@ -2419,11 +2419,11 @@ ov103_021EDBC8: ; 0x021EDBC8
 	ldr r0, [r4, #0xc]
 	mov r1, #4
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0xc]
 	mov r1, #5
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	pop {r4, pc}
 	thumb_func_end ov103_021EDBC8
 

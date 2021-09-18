@@ -51,7 +51,7 @@ _021E5950:
 	strb r1, [r4, r0]
 	ldr r0, _021E5A2C ; =ov61_021E60B8
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	bl ov61_021E60C8
 	ldr r0, [r4, #4]
@@ -84,7 +84,7 @@ _021E5950:
 	ldr r0, _021E5A30 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	bl sub_02020080
 	add r0, r4, #0
 	bl ov61_021E6B6C
@@ -776,7 +776,7 @@ ov61_021E5F74: ; 0x021E5F74
 	str r0, [r6]
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, _021E6060 ; =0x00000574
 	ldr r0, [r4, r0]
 	bl sub_02019030
@@ -1232,7 +1232,7 @@ ov61_021E6350: ; 0x021E6350
 	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r6, _021E6478 ; =0x021E7478
 	add r3, sp, #0x54
 	ldmia r6!, {r0, r1}
@@ -1255,7 +1255,7 @@ ov61_021E6350: ; 0x021E6350
 	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r6, _021E647C ; =0x021E7408
 	add r3, sp, #0x38
 	ldmia r6!, {r0, r1}
@@ -1278,7 +1278,7 @@ ov61_021E6350: ; 0x021E6350
 	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r6, _021E6480 ; =0x021E7424
 	add r3, sp, #0x1c
 	ldmia r6!, {r0, r1}
@@ -1301,7 +1301,7 @@ ov61_021E6350: ; 0x021E6350
 	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r6, _021E6484 ; =0x021E7440
 	add r3, sp, #0
 	ldmia r6!, {r0, r1}
@@ -1324,7 +1324,7 @@ ov61_021E6350: ; 0x021E6350
 	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x8c
 	pop {r3, r4, r5, r6, pc}
 	nop

@@ -9,7 +9,7 @@ ov64_021E5900: ; 0x021E5900
 	add r5, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -72,7 +72,7 @@ ov64_021E5900: ; 0x021E5900
 	bl ov64_021E652C
 	ldr r0, _021E59C4 ; =ov64_021E5A88
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -91,7 +91,7 @@ ov64_021E59C8: ; 0x021E59C8
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov64_021E6260
 	add r0, r4, #0
@@ -285,7 +285,7 @@ ov64_021E5B10: ; 0x021E5B10
 	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
@@ -323,7 +323,7 @@ ov64_021E5B10: ; 0x021E5B10
 	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0

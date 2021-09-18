@@ -837,10 +837,10 @@ _021E6242: ; jump table
 _021E624E:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -872,7 +872,7 @@ _021E6294:
 _021E62A2:
 	ldr r0, _021E63B0 ; =ov56_021E63C0
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -962,9 +962,9 @@ _021E6350:
 	bl sub_0200FBF4
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl Main_SetVBlankIntrCB
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1248,19 +1248,19 @@ _021E654A:
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	ldr r3, [r4]
 	mov r1, #0x20

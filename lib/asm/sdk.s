@@ -7979,7 +7979,7 @@ _0209F254:
 	add r1, r8, #0x300
 	mov r0, #0
 	mov r2, #0x100
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _0209F270:
 	mov r4, #0
 	mov r5, r4
@@ -8101,7 +8101,7 @@ sub_0209F400: ; 0x0209F400
 	mov r1, r7
 	mov r0, #0
 	mov r2, #0x400
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r2, #0
 	mov r1, #0xff
 _0209F424:
@@ -8139,7 +8139,7 @@ sub_0209F480: ; 0x0209F480
 	add r1, r5, r4, lsl #8
 	mov r0, #0
 	mov r2, #0x100
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r5, r4, lsl #8
 	mov r1, #0xff
 	strb r1, [r0, #0xe7]

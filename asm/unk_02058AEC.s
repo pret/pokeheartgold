@@ -1807,7 +1807,7 @@ _020598EC:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r1, r5, #0
 	ldr r0, [sp, #0x14]
 	add r1, #0x81
@@ -1915,7 +1915,7 @@ _020599BE:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

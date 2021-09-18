@@ -1273,11 +1273,11 @@ _0225FA30:
 	ldr r0, [r5, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
 	bl ov01_021EFCDC

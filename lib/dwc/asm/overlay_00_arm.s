@@ -7201,7 +7201,7 @@ _021EDDAC:
 	mov r0, #0
 	add r1, r1, #0x2e
 	mov r2, #0x34
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r0, r4
 	bl ov00_021ED704
 	cmp r0, #0x19
@@ -14026,7 +14026,7 @@ _021F3988:
 	add r1, r0, #0xa4
 	mov r0, #0
 	mov r2, #0x40
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	bl ov00_021F955C
 	add r1, r0, #0xf4
 	mov r0, #0
@@ -14046,7 +14046,7 @@ _021F3988:
 	add r1, r0, #0x290
 	mov r0, #0
 	mov r2, #0x40
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	bl ov00_021F955C
 	add r0, r0, #0x2d0
 	mov r1, #0

@@ -20,10 +20,10 @@ _021E5914:
 _021E5916:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -60,7 +60,7 @@ _021E5916:
 	str r0, [r4, #0x10]
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	bl ov37_021E5CF0
 	ldr r0, [r4]
 	bl ov37_021E5D10
@@ -96,7 +96,7 @@ _021E5916:
 	bl sub_02021148
 	ldr r0, _021E5A78 ; =ov37_021E5CC8
 	ldr r1, [r4]
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov37_021E5E30
 	bl ov37_021E6090
@@ -323,7 +323,7 @@ _021E5BBC: ; jump table
 _021E5BC4:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -416,7 +416,7 @@ _021E5C8E:
 	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x27
 	bl DestroyHeap
 	mov r0, #2
@@ -501,7 +501,7 @@ ov37_021E5D10: ; 0x021E5D10
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5E20 ; =0x021E79D0
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -519,7 +519,7 @@ ov37_021E5D10: ; 0x021E5D10
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5E24 ; =0x021E79EC
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -552,7 +552,7 @@ ov37_021E5D10: ; 0x021E5D10
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5E2C ; =0x021E79B4
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}

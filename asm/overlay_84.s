@@ -335,7 +335,7 @@ ov84_0223DFF0: ; 0x0223DFF0
 	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x6e
 	bl DestroyHeap
 	ldr r0, _0223E02C ; =SDK_OVERLAY_OVY_80_ID
@@ -1082,12 +1082,12 @@ ov84_0223E5C4: ; 0x0223E5C4
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1440,7 +1440,7 @@ _0223E87C:
 _0223E8C6:
 	ldr r0, _0223E8D8 ; =ov84_0223E98C
 	ldr r1, [sp, #0x18]
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1615,7 +1615,7 @@ ov84_0223E9E4: ; 0x0223E9E4
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0223EAA0 ; =0x0223F980
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -1633,7 +1633,7 @@ ov84_0223E9E4: ; 0x0223E9E4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0223EAA4 ; =0x0223F948
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -1651,7 +1651,7 @@ ov84_0223E9E4: ; 0x0223E9E4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _0223EAA8 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]

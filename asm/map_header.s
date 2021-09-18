@@ -3,7 +3,7 @@
 
 	.rodata
 
-sPokemonCenterSecondFloorMaps:
+sPokemonCenterMaps:
 	.short 0x01F5
 	.short 0x01DB
 	.short 0x01AC
@@ -1222,8 +1222,8 @@ sub_0203B4C4: ; 0x0203B4C4
 _0203B4D8: .word sMapHeaders
 	thumb_func_end sub_0203B4C4
 
-	thumb_func_start sub_0203B4DC
-sub_0203B4DC: ; 0x0203B4DC
+	thumb_func_start MapHeader_GetMapType
+MapHeader_GetMapType: ; 0x0203B4DC
 	push {r3, lr}
 	bl MapNumberBoundsCheck
 	mov r1, #0x18
@@ -1236,7 +1236,7 @@ sub_0203B4DC: ; 0x0203B4DC
 	pop {r3, pc}
 	nop
 _0203B4F4: .word sMapHeaders
-	thumb_func_end sub_0203B4DC
+	thumb_func_end MapHeader_GetMapType
 
 	thumb_func_start MapHeader_GetFollowMode
 MapHeader_GetFollowMode: ; 0x0203B4F8
@@ -1290,7 +1290,7 @@ MapHeader_IsOutdoors: ; 0x0203B540
 	pop {r4, pc}
 _0203B550:
 	add r0, r4, #0
-	bl sub_0203B4DC
+	bl MapHeader_GetMapType
 	cmp r0, #1
 	beq _0203B55E
 	mov r0, #1
@@ -1318,7 +1318,7 @@ _0203B572:
 	thumb_func_start sub_0203B578
 sub_0203B578: ; 0x0203B578
 	push {r3, lr}
-	bl sub_0203B4DC
+	bl MapHeader_GetMapType
 	cmp r0, #3
 	bne _0203B586
 	mov r0, #1
@@ -1333,11 +1333,11 @@ _0203B586:
 sub_0203B58C: ; 0x0203B58C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203B4DC
+	bl MapHeader_GetMapType
 	cmp r0, #4
 	beq _0203B5A2
 	add r0, r4, #0
-	bl sub_0203B4DC
+	bl MapHeader_GetMapType
 	cmp r0, #5
 	bne _0203B5A6
 _0203B5A2:
@@ -1353,11 +1353,11 @@ _0203B5A6:
 sub_0203B5AC: ; 0x0203B5AC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203B4DC
+	bl MapHeader_GetMapType
 	cmp r0, #1
 	beq _0203B5C2
 	add r0, r4, #0
-	bl sub_0203B4DC
+	bl MapHeader_GetMapType
 	cmp r0, #2
 	bne _0203B5C6
 _0203B5C2:
@@ -1386,9 +1386,9 @@ sub_0203B5D8: ; 0x0203B5D8
 	bx lr
 	thumb_func_end sub_0203B5D8
 
-	thumb_func_start MapHeader_MapIsPokemonCenterSecondFloor
-MapHeader_MapIsPokemonCenterSecondFloor: ; 0x0203B5DC
-	ldr r3, _0203B5F8 ; =sPokemonCenterSecondFloorMaps
+	thumb_func_start MapHeader_MapIsPokemonCenter
+MapHeader_MapIsPokemonCenter: ; 0x0203B5DC
+	ldr r3, _0203B5F8 ; =sPokemonCenterMaps
 	mov r2, #0
 _0203B5E0:
 	ldrh r1, [r3]
@@ -1404,11 +1404,11 @@ _0203B5EA:
 	mov r0, #0
 	bx lr
 	nop
-_0203B5F8: .word sPokemonCenterSecondFloorMaps
-	thumb_func_end MapHeader_MapIsPokemonCenterSecondFloor
+_0203B5F8: .word sPokemonCenterMaps
+	thumb_func_end MapHeader_MapIsPokemonCenter
 
-	thumb_func_start sub_0203B5FC
-sub_0203B5FC: ; 0x0203B5FC
+	thumb_func_start MapHeader_MapIsPokemonLeagueLobby
+MapHeader_MapIsPokemonLeagueLobby: ; 0x0203B5FC
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	cmp r0, r1
@@ -1418,7 +1418,7 @@ sub_0203B5FC: ; 0x0203B5FC
 _0203B608:
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0203B5FC
+	thumb_func_end MapHeader_MapIsPokemonLeagueLobby
 
 	thumb_func_start MapHeader_GetMapEvolutionMethod
 MapHeader_GetMapEvolutionMethod: ; 0x0203B60C

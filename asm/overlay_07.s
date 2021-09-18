@@ -1895,7 +1895,7 @@ _0221CADE:
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #1
 	bl sub_0201BC28
@@ -4490,7 +4490,7 @@ ov07_0221DE04: ; 0x0221DE04
 	lsl r1, r4, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r6, #2
 	bl ov07_0221BFC0
@@ -6300,7 +6300,7 @@ _0221EC10:
 	lsl r1, r4, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	bl ov07_0221BFC0
 	cmp r0, #1
@@ -6396,7 +6396,7 @@ _0221ECD8:
 	lsl r1, r4, #0x18
 	ldr r0, [r5]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov07_0221EC7C
@@ -6802,7 +6802,7 @@ ov07_0221EF54: ; 0x0221EF54
 	add r0, #0xc4
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #7
@@ -16534,7 +16534,7 @@ _02223604:
 	bl PaletteData_LoadNarc
 	ldr r0, [r4, #0x30]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r6, #2
 	bl ov07_0221BFC0
@@ -16940,7 +16940,7 @@ _0222392C:
 	bl PaletteData_LoadNarc
 	ldr r0, [r4, #0x30]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r6, #2
 	bl ov07_0221BFC0
@@ -34744,7 +34744,7 @@ _0222CA06:
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	add r1, r6, #0
 	bl ov07_0221C448
@@ -35545,7 +35545,7 @@ _0222D0FA:
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	add r1, r6, #0
 	bl ov07_0221C448
@@ -41821,7 +41821,7 @@ _02230318:
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [r4]
@@ -44062,7 +44062,7 @@ ov07_02231524: ; 0x02231524
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x2c]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -44163,7 +44163,7 @@ _0223163C:
 	bne _0223166E
 	ldr r0, [r4, #0x2c]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	bl sub_0200DCE8

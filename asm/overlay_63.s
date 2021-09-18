@@ -9,7 +9,7 @@ ov63_0221BE20: ; 0x0221BE20
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -1813,7 +1813,7 @@ ov63_0221CC78: ; 0x0221CC78
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
@@ -2635,7 +2635,7 @@ ov63_0221D344: ; 0x0221D344
 	bl ov63_0221D20C
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r1, #0
 	ldr r0, [r5, #0x10]
 	add r2, r1, #0
@@ -5311,7 +5311,7 @@ ov63_0221E940: ; 0x0221E940
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
@@ -5541,7 +5541,7 @@ _0221EAB6:
 	bl BufferIntegerAsString
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl sub_0202CE24
+	bl GetIGTHours
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -5555,7 +5555,7 @@ _0221EAB6:
 	bl BufferIntegerAsString
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl sub_0202CE28
+	bl GetIGTMinutes
 	add r2, r0, #0
 	mov r3, #2
 	str r3, [sp]

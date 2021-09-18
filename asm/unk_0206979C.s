@@ -1928,7 +1928,7 @@ _0206A536:
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0xc]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	bl sub_0201D54C

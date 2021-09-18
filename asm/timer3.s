@@ -24,7 +24,7 @@ Init_Timer3: ; 0x02025404
 	strh r0, [r1]
 	ldr r1, _02025434 ; =sub_02025438
 	mov r0, #0x40
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #0x40
 	bl OS_EnableIrqMask
 	pop {r3, pc}
@@ -61,7 +61,7 @@ _0202545C:
 	ldr r2, [r3, r1]
 	orr r2, r0
 	str r2, [r3, r1]
-	ldr r3, _02025480 ; =sub_020D1004
+	ldr r3, _02025480 ; =OS_SetIrqFunction
 	ldr r1, _02025484 ; =sub_02025438
 	bx r3
 	nop
@@ -69,7 +69,7 @@ _02025470: .word _021D2210
 _02025474: .word 0x0400010E
 _02025478: .word OSi_IntrTable
 _0202547C: .word 0x00003FF8
-_02025480: .word sub_020D1004
+_02025480: .word OS_SetIrqFunction
 _02025484: .word sub_02025438
 	thumb_func_end sub_02025438
 

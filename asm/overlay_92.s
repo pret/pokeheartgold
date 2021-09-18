@@ -127,7 +127,7 @@ ov92_0225C5C4: ; 0x0225C5C4
 	bl ov92_0225D3CC
 	ldr r0, _0225C934 ; =ov92_0225D894
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0x20
 	mov r1, #0x71
@@ -1563,7 +1563,7 @@ ov92_0225D1FC: ; 0x0225D1FC
 	add r5, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	bl sub_020205AC
 	bl sub_02021238
@@ -1939,7 +1939,7 @@ ov92_0225D49C: ; 0x0225D49C
 	ldr r0, _0225D588 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	ldr r2, _0225D58C ; =0x04000060
 	ldr r0, _0225D590 ; =0x0000CFF7
 	ldrh r1, [r2]
@@ -1957,7 +1957,7 @@ ov92_0225D594: ; 0x0225D594
 	push {r4, r5, lr}
 	sub sp, #0x11c
 	add r4, r0, #0
-	bl sub_02022C54
+	bl GX_DisableEngineALayers
 	ldr r5, _0225D7B0 ; =0x02263890
 	add r3, sp, #0x2c
 	add r2, r3, #0
@@ -2041,16 +2041,16 @@ _0225D604:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0225D7BC ; =0x022639A4
 	add r3, sp, #0x3c
 	mov r2, #0xe
@@ -2101,16 +2101,16 @@ _0225D67A:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
@@ -2164,7 +2164,7 @@ _0225D67A:
 	ldr r0, _0225D7C0 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #0xa
 	str r0, [sp]
 	ldr r0, _0225D7C4 ; =0x04000050
@@ -3358,7 +3358,7 @@ ov92_0225E070: ; 0x0225E070
 	add r0, r5, r0
 	mov r2, #0xb4
 	mov r3, #0xd
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, _0225E0FC ; =0x00001FE0
 	add r0, r5, r0
 	bl CopyWindowToVram

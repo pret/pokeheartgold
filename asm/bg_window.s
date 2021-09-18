@@ -79,8 +79,8 @@ SetBothScreensModesAndDisable: ; 0x0201ACB0
 	asr r0, r0, #3
 	and r0, r1
 	str r0, [r2]
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	pop {r4, pc}
 	nop
 _0201ACE4: .word 0xC7FFFFFF
@@ -96,12 +96,12 @@ sub_0201ACE8: ; 0x0201ACE8
 	ldr r1, [r2, #4]
 	ldr r2, [r2, #0xc]
 	bl sub_020CD9FC
-	bl sub_02022C54
+	bl GX_DisableEngineALayers
 	pop {r3, pc}
 _0201AD00:
 	ldr r0, [r2, #8]
 	bl sub_020CDA64
-	bl sub_02022CBC
+	bl GX_DisableEngineBLayers
 	pop {r3, pc}
 	thumb_func_end sub_0201ACE8
 
@@ -696,7 +696,7 @@ _0201B14C:
 	ldr r1, [r6, r5]
 	ldr r2, [r4, #8]
 	mov r0, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, [sp]
 	ldr r2, [r4, #8]
 	add r1, r0, r5
@@ -4205,8 +4205,8 @@ _0201CAD8:
 _0201CADC: .word 0x00000FFF
 	thumb_func_end sub_0201CA4C
 
-	thumb_func_start sub_0201CAE0
-sub_0201CAE0: ; 0x0201CAE0
+	thumb_func_start BgClearTilemapBufferAndCommit
+BgClearTilemapBufferAndCommit: ; 0x0201CAE0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -4218,13 +4218,13 @@ sub_0201CAE0: ; 0x0201CAE0
 	beq _0201CB02
 	ldr r2, [r2, #0xc]
 	mov r0, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r5, #0
 	add r1, r4, #0
 	bl BgCommitTilemapBufferToVram
 _0201CB02:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201CAE0
+	thumb_func_end BgClearTilemapBufferAndCommit
 
 	thumb_func_start sub_0201CB04
 sub_0201CB04: ; 0x0201CB04
@@ -4239,7 +4239,7 @@ sub_0201CB04: ; 0x0201CB04
 	beq _0201CB26
 	add r0, r2, #0
 	ldr r2, [r3, #0xc]
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r5, #0
 	add r1, r4, #0
 	bl BgCommitTilemapBufferToVram
@@ -4260,7 +4260,7 @@ sub_0201CB28: ; 0x0201CB28
 	beq _0201CB4A
 	add r0, r2, #0
 	ldr r2, [r3, #0xc]
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ScheduleBgTilemapBufferTransfer

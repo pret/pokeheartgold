@@ -6,8 +6,8 @@
 	thumb_func_start ov95_021E5900
 ov95_021E5900: ; 0x021E5900
 	push {r3, lr}
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -165,7 +165,7 @@ ov95_021E5A38: ; 0x021E5A38
 	push {r4, r5, lr}
 	sub sp, #0x8c
 	add r4, r0, #0
-	bl sub_02022C54
+	bl GX_DisableEngineALayers
 	ldr r5, _021E5B14 ; =0x021E75B4
 	add r3, sp, #0x10
 	mov r2, #5
@@ -236,13 +236,13 @@ _021E5AA8:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _021E5B20 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -252,7 +252,7 @@ _021E5AA8:
 	strh r2, [r1]
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -2593,7 +2593,7 @@ ov95_021E6D70: ; 0x021E6D70
 	add r5, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r2, #1
 	mov r0, #3
@@ -2692,7 +2692,7 @@ ov95_021E6D70: ; 0x021E6D70
 	bl sub_02005FA0
 	ldr r0, _021E6E84 ; =ov95_021E5B24
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -2831,7 +2831,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	bl DestroyHeap
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	bl sub_0203E354
 	mov r0, #1
@@ -2861,7 +2861,7 @@ _021E6FD0:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #5
 	add r2, sp, #0x1c
@@ -2869,7 +2869,7 @@ _021E6FD0:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #6
 	add r2, sp, #0x38
@@ -2877,7 +2877,7 @@ _021E6FD0:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x54
 	pop {r4, r5, pc}
 	.balign 4, 0

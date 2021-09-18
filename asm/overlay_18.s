@@ -6397,7 +6397,7 @@ ov18_021E8C30: ; 0x021E8C30
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -6418,7 +6418,7 @@ ov18_021E8C30: ; 0x021E8C30
 	strh r0, [r2]
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	add r0, r4, #0
 	bl ov18_021E62A8
 	add r0, r4, #0
@@ -6477,7 +6477,7 @@ ov18_021E8C30: ; 0x021E8C30
 	bl sub_02004EC4
 	ldr r0, _021E8D30 ; =ov18_021E5C40
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, _021E8D34 ; =0x0000085C
 	ldr r0, [r4, r0]
 	add sp, #0x20
@@ -6499,7 +6499,7 @@ ov18_021E8D38: ; 0x021E8D38
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov18_021EE388
 	add r0, r4, #0

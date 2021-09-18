@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start sub_0203AEAC
-sub_0203AEAC: ; 0x0203AEAC
+	thumb_func_start MapMatrix_MapMatrixData_Load
+MapMatrix_MapMatrixData_Load: ; 0x0203AEAC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -87,7 +87,7 @@ _0203AF40:
 	mul r2, r3
 	lsr r0, r0, #0x10
 	lsl r2, r2, #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _0203AF54:
 	ldr r0, [sp, #4]
 	cmp r0, #0
@@ -121,7 +121,7 @@ _0203AF74:
 	nop
 _0203AF94: .word 0x0000031F
 _0203AF98: .word 0x00000F9E
-	thumb_func_end sub_0203AEAC
+	thumb_func_end MapMatrix_MapMatrixData_Load
 
 	thumb_func_start MapMatrix_New
 MapMatrix_New: ; 0x0203AF9C
@@ -148,7 +148,7 @@ MapMatrix_Load: ; 0x0203AFB4
 	add r0, r4, #4
 	add r1, r6, #0
 	add r2, r5, #0
-	bl sub_0203AEAC
+	bl MapMatrix_MapMatrixData_Load
 	strb r6, [r4, #2]
 	ldrb r0, [r4, #4]
 	strb r0, [r4, #1]

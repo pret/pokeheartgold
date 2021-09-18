@@ -24,7 +24,7 @@ ov54_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl memset
 	ldr r0, [r5, #4]
-	bl sub_0202AD20
+	bl Options_GetTextSpeed
 	ldrh r1, [r4, #0x18]
 	mov r2, #0xf
 	lsl r0, r0, #0x10
@@ -35,7 +35,7 @@ ov54_021E5900: ; 0x021E5900
 	orr r0, r1
 	strh r0, [r4, #0x18]
 	ldr r0, [r5, #4]
-	bl sub_0202AD74
+	bl Options_GetBattleScene
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x1f
@@ -46,7 +46,7 @@ ov54_021E5900: ; 0x021E5900
 	orr r0, r1
 	strh r0, [r4, #0x18]
 	ldr r0, [r5, #4]
-	bl sub_0202AD90
+	bl Options_GetBattleStyle
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x1f
@@ -57,7 +57,7 @@ ov54_021E5900: ; 0x021E5900
 	orr r0, r1
 	strh r0, [r4, #0x18]
 	ldr r0, [r5, #4]
-	bl sub_0202AD58
+	bl Options_GetSoundMethod
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x1e
@@ -68,7 +68,7 @@ ov54_021E5900: ; 0x021E5900
 	orr r0, r1
 	strh r0, [r4, #0x18]
 	ldr r0, [r5, #4]
-	bl sub_0202ADAC
+	bl Options_GetButtonMode
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x1e
@@ -198,32 +198,32 @@ ov54_021E5A10: ; 0x021E5A10
 	ldr r0, [r4, #0x24]
 	lsl r1, r1, #0x1c
 	lsr r1, r1, #0x1c
-	bl sub_0202AD28
+	bl Options_SetTextSpeed
 	ldrh r1, [r4, #0x18]
 	ldr r0, [r4, #0x24]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x1f
-	bl sub_0202AD7C
+	bl Options_SetBattleScene
 	ldrh r1, [r4, #0x18]
 	ldr r0, [r4, #0x24]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x1f
-	bl sub_0202AD98
+	bl Options_SetBattleStyle
 	ldrh r1, [r4, #0x18]
 	ldr r0, [r4, #0x24]
 	lsl r1, r1, #0x1a
 	lsr r1, r1, #0x1e
-	bl sub_0202AD60
+	bl Options_SetSoundMethod
 	ldrh r1, [r4, #0x18]
 	ldr r0, [r4, #0x24]
 	lsl r1, r1, #0x16
 	lsr r1, r1, #0x1e
-	bl sub_0202ADB4
+	bl Options_SetButtonMode
 	ldrh r1, [r4, #0x18]
 	ldr r0, [r4, #0x24]
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x1b
-	bl sub_0202ADD4
+	bl Options_SetFrame
 	b _021E5B08
 _021E5AE2:
 	cmp r0, #2
@@ -236,12 +236,12 @@ _021E5AE2:
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsr r1, r1, #0x1e
-	bl sub_0202ACF4
+	bl Options_SetButtonModeOnMain
 	ldrh r1, [r4, #0x18]
 	ldr r0, [r4, #0x24]
 	lsl r1, r1, #0x1c
 	lsr r1, r1, #0x1c
-	bl sub_0202AD28
+	bl Options_SetTextSpeed
 _021E5B08:
 	mov r0, #0xc9
 	lsl r0, r0, #2
@@ -491,10 +491,10 @@ ov54_021E5CE4: ; 0x021E5CE4
 _021E5CF8:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -546,7 +546,7 @@ _021E5D62:
 	bl ov54_021E6B5C
 	ldr r0, _021E5DB8 ; =ov54_021E5C84
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	mov r1, #1
 	str r0, [r4, #8]
@@ -621,10 +621,10 @@ _021E5E00:
 _021E5E24:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -695,7 +695,7 @@ _021E5EA6:
 	ldr r0, [r5, #0x14]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r7, r7, #1
 	add r6, #0x1c
 	add r4, r4, #4
@@ -1457,7 +1457,7 @@ _021E64F2:
 	add r1, r1, r2
 	add r1, #0x86
 	ldrh r1, [r1]
-	bl sub_0202ACF4
+	bl Options_SetButtonModeOnMain
 	b _021E652E
 _021E6508:
 	mov r1, #0x54
@@ -1469,7 +1469,7 @@ _021E6508:
 	add r1, #0x86
 	ldrh r1, [r1]
 	ldr r0, [r0, #0x24]
-	bl sub_0202AD28
+	bl Options_SetTextSpeed
 	ldr r0, [sp, #0x10]
 	mov r2, #0xc9
 	lsl r2, r2, #2

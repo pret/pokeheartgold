@@ -9,12 +9,12 @@ ov69_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -80,7 +80,7 @@ _021E5960:
 	bl BgConfig_Alloc
 	ldr r1, _021E5A24 ; =0x0000C010
 	str r0, [r5, r1]
-	bl sub_02022D24
+	bl GX_BothDispOn
 	bl sub_02020080
 	ldr r2, [r5]
 	mov r0, #8
@@ -98,10 +98,10 @@ _021E5960:
 	ldr r0, _021E5A30 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -652,7 +652,7 @@ _021E5E52:
 	add r0, r4, r0
 	mov r1, #0
 	mov r3, #7
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, _021E6050 ; =0x0000C324
 	ldr r0, [r4, r0]
 	cmp r0, #0
@@ -686,7 +686,7 @@ _021E5EB4:
 	add r0, r4, r0
 	mov r1, #0
 	mov r3, #7
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	b _021E5EE2
 _021E5EDA:
 	add r0, r4, r0
@@ -909,7 +909,7 @@ ov69_021E6080: ; 0x021E6080
 	bl FreeToHeap
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r6, #0
 	bl OverlayManager_FreeData
 	add r0, r5, #0
@@ -1463,7 +1463,7 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r0, _021E676C ; =0x0000C010
 	mov r1, #6
 	ldr r0, [r4, r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, _021E676C ; =0x0000C010
 	ldr r2, _021E6774 ; =0x021E76CC
 	ldr r0, [r4, r0]
@@ -1571,7 +1571,7 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r0, _021E676C ; =0x0000C010
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, _021E676C ; =0x0000C010
 	ldr r2, _021E6774 ; =0x021E76CC
 	ldr r0, [r4, r0]
@@ -1977,7 +1977,7 @@ _021E692E:
 	ldr r0, [sp, #0x10]
 	mov r1, #1
 	mov r3, #7
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, [sp]
 	bl CopyWindowToVram
 	add sp, #0x24
@@ -2067,7 +2067,7 @@ _021E69DE:
 	ldr r0, [sp, #0x18]
 	mov r1, #1
 	mov r3, #7
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, [sp]
 	bl CopyWindowToVram
 	add sp, #0x2c
@@ -2142,7 +2142,7 @@ ov69_021E6A8C: ; 0x021E6A8C
 	add r0, r5, r0
 	mov r1, #0
 	mov r3, #7
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, _021E6B50 ; =0x0000C080
 	ldr r2, _021E6B54 ; =0x0000C324
 	ldr r0, [r5, r0]
@@ -2231,7 +2231,7 @@ ov69_021E6B5C: ; 0x021E6B5C
 	add r0, r5, r0
 	mov r1, #0
 	mov r3, #7
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, [r5]
 	add r1, r4, #0
 	str r0, [sp]

@@ -1773,7 +1773,7 @@ _0225FE64:
 	mov r1, #3
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x18]
 	bl ov01_021EFCDC
@@ -2704,7 +2704,7 @@ _0226061E:
 	mov r1, #3
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0x14]
 	bl ov01_021EFCDC

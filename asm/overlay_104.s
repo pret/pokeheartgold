@@ -318,10 +318,10 @@ ov104_021E5B88: ; 0x021E5B88
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -344,7 +344,7 @@ ov104_021E5B88: ; 0x021E5B88
 	strh r0, [r2]
 	ldr r0, _021E5BE8 ; =0x021E5F14
 	bl sub_020CF8E4
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	pop {r3, pc}
 	nop
 _021E5BD8: .word 0xFFFFE0FF

@@ -10,12 +10,12 @@ ov51_021E5AC0: ; 0x021E5AC0
 	add r5, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -38,7 +38,7 @@ ov51_021E5AC0: ; 0x021E5AC0
 	bl sub_0200FBDC
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	mov r2, #5
 	mov r0, #3
 	mov r1, #0x19
@@ -266,7 +266,7 @@ _021E5CC4:
 	bl ov51_021E76A4
 	ldr r0, _021E5D8C ; =ov51_021E6B88
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0203A964
 	mov r0, #1
 	mov r1, #0x2a
@@ -518,7 +518,7 @@ ov51_021E5EC8: ; 0x021E5EC8
 	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x19
 	bl DestroyHeap
 	mov r0, #1
@@ -909,7 +909,7 @@ ov51_021E6238: ; 0x021E6238
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6344 ; =0x021E7ED0
 	add r3, sp, #0x54
 	mov r2, #7
@@ -925,7 +925,7 @@ _021E628A:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #5
 	add r2, sp, #0x70
@@ -933,7 +933,7 @@ _021E628A:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6348 ; =0x021E7E70
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -951,7 +951,7 @@ _021E628A:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E634C ; =0x021E7E38
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -969,7 +969,7 @@ _021E628A:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6350 ; =0x021E7E54
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -987,7 +987,7 @@ _021E628A:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0xb8
 	pop {r3, r4, r5, pc}
 	nop
@@ -1428,7 +1428,7 @@ ov51_021E66C0: ; 0x021E66C0
 	bl ov51_021E74D4
 	ldr r0, [r4]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x10
 	pop {r4, pc}
 _021E66FC:
@@ -1451,7 +1451,7 @@ _021E66FC:
 	bl ov51_021E6CCC
 	ldr r0, [r4]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -2654,7 +2654,7 @@ _021E7076:
 	lsr r0, r0, #0x1f
 	beq _021E70DA
 	ldr r0, [r5, #0x18]
-	bl sub_0202CE24
+	bl GetIGTHours
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -2664,7 +2664,7 @@ _021E7076:
 	mov r3, #3
 	bl BufferIntegerAsString
 	ldr r0, [r5, #0x18]
-	bl sub_0202CE28
+	bl GetIGTMinutes
 	mov r3, #2
 	add r2, r0, #0
 	str r3, [sp]
@@ -3242,7 +3242,7 @@ ov51_021E757C: ; 0x021E757C
 	bl GF_AssertFail
 _021E758E:
 	ldr r0, [r5, #0x18]
-	bl sub_0202CE24
+	bl GetIGTHours
 	mov r0, #0x28
 	str r0, [sp]
 	mov r0, #0x10
@@ -3273,7 +3273,7 @@ _021E758E:
 	bl ScrStrBufs_new_custom
 	add r6, r0, #0
 	ldr r0, [r5, #0x18]
-	bl sub_0202CE24
+	bl GetIGTHours
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -3283,7 +3283,7 @@ _021E758E:
 	mov r3, #3
 	bl BufferIntegerAsString
 	ldr r0, [r5, #0x18]
-	bl sub_0202CE28
+	bl GetIGTMinutes
 	mov r3, #2
 	add r2, r0, #0
 	str r3, [sp]

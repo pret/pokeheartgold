@@ -520,7 +520,7 @@ _021E5CCA:
 	lsl r1, r1, #0x18
 	ldr r0, [r5, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	ldr r3, [r5]
@@ -542,7 +542,7 @@ _021E5CCA:
 	lsl r1, r1, #0x18
 	ldr r0, [r5, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	ldr r3, [r5]
@@ -676,10 +676,10 @@ _021E5DF2: ; jump table
 _021E5DFA:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -717,7 +717,7 @@ _021E5E56:
 _021E5E62:
 	ldr r0, _021E5E84 ; =ov100_021E65F4
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	str r0, [r4, #0x18]
 	mov r0, #1
@@ -741,7 +741,7 @@ ov100_021E5E88: ; 0x021E5E88
 	bl sub_02021238
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov100_021E63F4
 	add r0, r4, #0
@@ -957,7 +957,7 @@ _021E6040:
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x74]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	lsl r0, r4, #0x18
 	ldr r3, [r5]
 	lsr r0, r0, #0x18

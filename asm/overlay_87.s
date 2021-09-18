@@ -233,7 +233,7 @@ ov87_021E5AC0: ; 0x021E5AC0
 	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x7a
 	bl DestroyHeap
 	mov r0, #1
@@ -1954,12 +1954,12 @@ ov87_021E68A4: ; 0x021E68A4
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -2057,7 +2057,7 @@ ov87_021E68DC: ; 0x021E68DC
 	bl ov87_021E7A04
 	add r0, r5, #0
 	bl ov87_021E7A2C
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r7, #0
 	mov r6, #0x1a
 	add r4, r5, #0
@@ -2194,7 +2194,7 @@ _021E6A2E:
 	bl sub_02021148
 	ldr r0, _021E6ADC ; =ov87_021E6C04
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2436,7 +2436,7 @@ ov87_021E6C60: ; 0x021E6C60
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6DA8 ; =0x021E8260
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -2454,7 +2454,7 @@ ov87_021E6C60: ; 0x021E6C60
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6DAC ; =0x021E81D4
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -2472,7 +2472,7 @@ ov87_021E6C60: ; 0x021E6C60
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6DB0 ; =0x021E81F0
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -2490,7 +2490,7 @@ ov87_021E6C60: ; 0x021E6C60
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6DB4 ; =0x021E820C
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -2508,7 +2508,7 @@ ov87_021E6C60: ; 0x021E6C60
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6DB8 ; =0x021E8244
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -2531,7 +2531,7 @@ ov87_021E6C60: ; 0x021E6C60
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -5204,7 +5204,7 @@ ov87_021E810C: ; 0x021E810C
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0

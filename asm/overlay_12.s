@@ -340,7 +340,7 @@ ov12_02237B6C: ; 0x02237B6C
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -396,7 +396,7 @@ _02237BDE:
 	add r1, r0, #0
 	mov r0, #0
 	add r2, r4, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r0, #7
 	mov r1, #5
 	bl NARC_ctor
@@ -535,7 +535,7 @@ _02237D1A:
 	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #4]
 	mov r1, #2
 	add r2, sp, #0x30
@@ -543,7 +543,7 @@ _02237D1A:
 	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #4]
 	mov r1, #3
 	add r2, sp, #0x4c
@@ -551,7 +551,7 @@ _02237D1A:
 	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _02237EBC ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -661,7 +661,7 @@ _02237D1A:
 	ldrh r2, [r0]
 	bic r2, r1
 	strh r2, [r0]
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -670,7 +670,7 @@ _02237D1A:
 	bl sub_02022CC8
 	ldr r0, _02237ECC ; =ov12_02239730
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, _02237EB4 ; =0x000023FF
 	mov r3, #2
 	ldrb r1, [r5, r0]
@@ -762,14 +762,14 @@ ov12_02237F18: ; 0x02237F18
 	add r1, r0, #0
 	mov r0, #0
 	add r2, r5, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	bl sub_02026E9C
 	add r5, r0, #0
 	bl sub_02026E94
 	add r1, r0, #0
 	mov r0, #0
 	add r2, r5, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	bl ov12_02239644
 	str r0, [r4]
 	bl sub_0201A108
@@ -1699,7 +1699,7 @@ ov12_022387AC: ; 0x022387AC
 	sub sp, #0x9c
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02022C54
+	bl GX_DisableEngineALayers
 	ldr r6, _02238994 ; =0x0226C0A8
 	add r3, sp, #0x20
 	mov r2, #5
@@ -1771,7 +1771,7 @@ _02238838:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	add r2, sp, #0x64
@@ -1779,7 +1779,7 @@ _02238838:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
 	add r2, sp, #0x80
@@ -1787,7 +1787,7 @@ _02238838:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _022389A4 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -1899,7 +1899,7 @@ _02238838:
 	ldrh r2, [r0]
 	bic r2, r1
 	strh r2, [r0]
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1908,7 +1908,7 @@ _02238838:
 	bl sub_02022CC8
 	ldr r0, _022389B4 ; =ov12_02239730
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add sp, #0x9c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3977,7 +3977,7 @@ ov12_022399D4: ; 0x022399D4
 	str r0, [r5, #8]
 	add r0, r5, #0
 	bl sub_02074EC4
-	bl sub_02022C54
+	bl GX_DisableEngineALayers
 	ldr r6, _02239C08 ; =0x0226C080
 	add r3, sp, #0x40
 	mov r2, #5
@@ -4017,7 +4017,7 @@ _02239A46:
 	mov r0, #0
 	lsl r1, r1, #0x18
 	lsl r2, r2, #8
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r6, _02239C0C ; =0x0226BFF8
 	add r3, sp, #0x30
 	add r2, r3, #0
@@ -4044,7 +4044,7 @@ _02239A46:
 	bl InitBgFromTemplate
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -4093,7 +4093,7 @@ _02239A46:
 	add r2, r1, #0
 	add r3, r1, #0
 	bl sub_02003D5C
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -4154,7 +4154,7 @@ _02239A46:
 	bl DestroyMsgData
 	ldr r0, _02239C1C ; =ov12_022397E4
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -4736,7 +4736,7 @@ ov12_0223A088: ; 0x0223A088
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0200FBF4
@@ -7791,7 +7791,7 @@ _0223B6EC:
 	mov r1, #0x6d
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0202AD74
+	bl Options_GetBattleScene
 	cmp r0, #0
 	bne _0223B6FE
 	mov r0, #1
@@ -7842,11 +7842,11 @@ _0223B73C: .word 0x0000240C
 ov12_0223B740: ; 0x0223B740
 	mov r1, #0x6d
 	lsl r1, r1, #2
-	ldr r3, _0223B74C ; =sub_0202AD90
+	ldr r3, _0223B74C ; =Options_GetBattleStyle
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_0223B74C: .word sub_0202AD90
+_0223B74C: .word Options_GetBattleStyle
 	thumb_func_end ov12_0223B740
 
 	thumb_func_start ov12_0223B750
@@ -29491,7 +29491,7 @@ _02245D62:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #8
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r0, #0xa
 	add sp, #0xd8
 	str r0, [r4, #0x28]

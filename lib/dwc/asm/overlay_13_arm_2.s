@@ -5009,7 +5009,7 @@ ov13_0222B254: ; 0x0222B254
 	mov r0, #0
 	mov r2, #0x104
 	strb r0, [r3]
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r3, #0x50
 	mov r2, #0xc
 	ldr r0, _0222B358 ; =0x02245320
@@ -9599,7 +9599,7 @@ ov13_0222EABC: ; 0x0222EABC
 	mov r0, #0
 	add r1, sp, #0x10
 	mov r2, #0x16
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldrb r2, [r5, #1]
 	add r0, r5, #2
 	add r1, sp, #0x10
@@ -22061,7 +22061,7 @@ ov13_02238C4C: ; 0x02238C4C
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #0x16
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldrh r2, [sp, #0x30]
 	add r0, sp, #0x1a
 	add r1, sp, #0
@@ -23274,7 +23274,7 @@ ov13_02239B68: ; 0x02239B68
 	ldr r1, [r1]
 	mov r2, #0x348
 	add r1, r1, #0x1300
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, _02239C28 ; =0x0224F5A0
 	ldr r1, _02239C2C ; =ov13_02239D60
 	ldr r0, [r0]
@@ -24294,7 +24294,7 @@ ov13_0223A840: ; 0x0223A840
 	mov r0, #0
 	ldr r1, [r1]
 	mov r2, #0x400
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, _0223A8EC ; =0x0224F5A4
 	mov r3, #0
 	mov r2, #0xff
@@ -31783,14 +31783,14 @@ ov13_02240AA0: ; 0x02240AA0
 	mov r1, r0
 	mov r0, #0
 	mov r2, #0x6000
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	b _02240AF4
 _02240AE0:
 	bl sub_020CEED4
 	mov r1, r0
 	mov r0, #0
 	mov r2, #0x3000
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _02240AF4:
 	add r0, r4, #0x28
 	bl ov13_022412B0
@@ -33034,7 +33034,7 @@ ov13_02241AC0: ; 0x02241AC0
 	ldr r1, _02241B2C ; =ov13_02241B70
 	str r0, [r2]
 	mov r0, #1
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #1
 	bl OS_ResetRequestIrqMask
 	ldr r2, _02241B30 ; =0x04000208
@@ -33064,7 +33064,7 @@ ov13_02241B34: ; 0x02241B34
 	ldr r1, _02241B6C ; =0x0224F600
 	mov r0, #1
 	ldr r1, [r1]
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02241B68: .word 0x04000208

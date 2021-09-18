@@ -391,7 +391,7 @@ ov41_02246130: ; 0x02246130
 	ldr r0, _0224614C ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	pop {r3, pc}
 	nop
 _0224614C: .word gMain + 0x60
@@ -403,7 +403,7 @@ ov41_02246150: ; 0x02246150
 	ldr r0, _0224616C ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	bl ov41_022467D4
 	bl ov41_022467C8
 	bl GX_ResetBankForTex
@@ -971,7 +971,7 @@ ov41_02246544: ; 0x02246544
 	bl BG_ClearCharDataRange
 	ldr r0, [r5, #0x40]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	nop
@@ -1249,8 +1249,8 @@ ov41_02246778: ; 0x02246778
 	orr r0, r1
 	str r0, [r2]
 	bl sub_020B78D4
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r0, #0x1f
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1275,8 +1275,8 @@ ov41_022467C8: ; 0x022467C8
 	thumb_func_start ov41_022467D4
 ov41_022467D4: ; 0x022467D4
 	push {r3, lr}
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	bl sub_020B78D4
 	pop {r3, pc}
 	thumb_func_end ov41_022467D4
@@ -1469,7 +1469,7 @@ ov41_022468FC: ; 0x022468FC
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02246A10 ; =0x0224BFFC
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -1492,7 +1492,7 @@ ov41_022468FC: ; 0x022468FC
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0x40]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02246A14 ; =0x0224C034
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -1515,7 +1515,7 @@ ov41_022468FC: ; 0x022468FC
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0x40]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02246A18 ; =0x0224BFC4
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -1538,7 +1538,7 @@ ov41_022468FC: ; 0x022468FC
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0x40]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02246A1C ; =0x0224C050
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -1561,7 +1561,7 @@ ov41_022468FC: ; 0x022468FC
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0x40]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x8c
 	pop {r4, r5, pc}
 	nop
@@ -2080,7 +2080,7 @@ ov41_02246DE0: ; 0x02246DE0
 	bl memset
 	ldr r0, _02246EF0 ; =ov41_02247478
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	add r0, r5, #0
 	bl OverlayManager_GetField18
@@ -2544,7 +2544,7 @@ _022471AA:
 	bl ov41_02247274
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	bl sub_02021238
 	cmp r0, #1
@@ -3708,7 +3708,7 @@ ov41_02247AB4: ; 0x02247AB4
 	add r4, r0, #0
 	ldr r0, [r4, #0x40]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	ldr r0, [r4, #0x40]
 	mov r1, #3
@@ -3792,7 +3792,7 @@ ov41_02247B5C: ; 0x02247B5C
 	bl ov41_02247D3C
 	ldr r0, [r4, #0x40]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	pop {r4, pc}
 	.balign 4, 0
 _02247B78: .word 0x000006B8
@@ -8476,7 +8476,7 @@ ov41_02249CC4: ; 0x02249CC4
 	ldr r0, [r4]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x2c
@@ -12396,7 +12396,7 @@ ov41_0224BA10: ; 0x0224BA10
 	bl memset
 	ldr r0, _0224BAC4 ; =ov41_0224BBF0
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	add r0, r4, #0
 	bl OverlayManager_GetField18
@@ -12413,7 +12413,7 @@ ov41_0224BA10: ; 0x0224BA10
 	ldr r0, _0224BAC8 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	add r0, r5, #0
 	add r0, #0x14
 	mov r1, #0xe
@@ -12574,7 +12574,7 @@ ov41_0224BBA4: ; 0x0224BBA4
 	bl ov41_02246150
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	add r0, r5, #0
 	bl OverlayManager_FreeData

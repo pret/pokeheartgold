@@ -555,7 +555,7 @@ sub_0205337C: ; 0x0205337C
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl MapHeader_MapIsPokemonCenterSecondFloor
+	bl MapHeader_MapIsPokemonCenter
 	cmp r0, #0
 	beq _0205339E
 	ldr r1, [r4, #0x20]
@@ -570,7 +570,7 @@ sub_0205337C: ; 0x0205337C
 _0205339E:
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B5FC
+	bl MapHeader_MapIsPokemonLeagueLobby
 	cmp r0, #0
 	beq _020533BC
 	ldr r1, [r4, #0x20]
@@ -599,7 +599,7 @@ sub_020533C0: ; 0x020533C0
 	bl SavArray_Flags_get
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B5FC
+	bl MapHeader_MapIsPokemonLeagueLobby
 	cmp r0, #1
 	ldr r0, [r5, #0x20]
 	bne _020533FC

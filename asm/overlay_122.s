@@ -10,7 +10,7 @@ ov122_021E5900: ; 0x021E5900
 	add r5, r0, #0
 	ldr r0, [r5, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -63,7 +63,7 @@ ov122_021E5974: ; 0x021E5974
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -121,7 +121,7 @@ ov122_021E59EC: ; 0x021E59EC
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -154,7 +154,7 @@ ov122_021E5A2C: ; 0x021E5A2C
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -545,7 +545,7 @@ ov122_021E5D24: ; 0x021E5D24
 _021E5D38:
 	ldr r0, [r4, #0x18]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	bl ov122_021E84C8
 _021E5D46:
@@ -828,7 +828,7 @@ ov122_021E5F1C: ; 0x021E5F1C
 	add r5, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	bl ov122_021E7094
 	mov r0, #9
@@ -1372,7 +1372,7 @@ _021E6396:
 _021E639E:
 	ldr r0, [r4, #0x18]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1502,7 +1502,7 @@ _021E649C:
 	bl sub_02004EC4
 	ldr r0, [r4, #0x18]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x97
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -2114,7 +2114,7 @@ _021E6962:
 	bne _021E699A
 	ldr r0, [r4, #0x18]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x97
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -2133,7 +2133,7 @@ _021E69A2:
 _021E69A6:
 	ldr r0, [r4, #0x18]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x97
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -3049,7 +3049,7 @@ ov122_021E7094: ; 0x021E7094
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	bl ov122_021E6CD0
 	add r0, r4, #0
@@ -4194,7 +4194,7 @@ _021E795E:
 	bl InitBgFromTemplate
 	ldrb r1, [r4]
 	ldr r0, [r5, #0x18]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	ldrb r1, [r4]
@@ -5084,8 +5084,8 @@ _021E8064: .word 0x021E931C
 ov122_021E8068: ; 0x021E8068
 	push {r3, lr}
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -5113,7 +5113,7 @@ ov122_021E8094: ; 0x021E8094
 _021E80A4:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r2, _021E820C ; =0x04000304
 	ldr r0, _021E8210 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -5248,7 +5248,7 @@ _021E80A4:
 	bl sub_02002B8C
 	ldr r0, _021E8224 ; =ov122_021E8004
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r5, #0x10]
 	bl Sav2_GameStats_get
 	mov r1, #6
@@ -5272,7 +5272,7 @@ ov122_021E8228: ; 0x021E8228
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

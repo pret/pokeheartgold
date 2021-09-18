@@ -2788,7 +2788,7 @@ _02259C2E:
 	str r0, [r4, r1]
 	ldr r0, _02259C8C ; =ov49_0225A5C8
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #1
 	add sp, #8
@@ -3111,7 +3111,7 @@ ov49_02259EF8: ; 0x02259EF8
 	str r1, [r0, #0x18]
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0xf7
 	lsl r0, r0, #2
@@ -4222,7 +4222,7 @@ ov49_0225A5EC: ; 0x0225A5EC
 	ldr r0, _0225A7A4 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -4254,7 +4254,7 @@ _0225A636:
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [sp, #0x18]
 	add r7, #0x1c
 	add r0, r0, #1
@@ -5429,7 +5429,7 @@ _0225AF52:
 	mov r1, #1
 	mov r2, #0x55
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r2, sp, #0x18
 	ldr r3, [sp, #0x2c]
 	ldrh r2, [r2, #0x10]
@@ -5625,7 +5625,7 @@ ov49_0225B0E0: ; 0x0225B0E0
 	mov r1, #1
 	mov r2, #0x55
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -5815,7 +5815,7 @@ ov49_0225B24C: ; 0x0225B24C
 	mov r1, #1
 	mov r2, #0x55
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl sub_0201D5C8
 	add sp, #0x10
@@ -7589,13 +7589,13 @@ _0225BF98:
 	bl ov49_0225C328
 	ldr r0, [r4]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225BF80
@@ -9005,13 +9005,13 @@ ov49_0225CAA8: ; 0x0225CAA8
 	add r4, r1, #0
 	ldr r0, [r4]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	mov r1, #6
 	mov r2, #3

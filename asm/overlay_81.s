@@ -672,7 +672,7 @@ _0223E2CE:
 	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x64
 	bl DestroyHeap
 	ldr r0, _0223E314 ; =SDK_OVERLAY_OVY_80_ID
@@ -4510,7 +4510,7 @@ ov81_02240230: ; 0x02240230
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _022403A4 ; =0x022434C4
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -4528,7 +4528,7 @@ ov81_02240230: ; 0x02240230
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _022403A8 ; =0x022434FC
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -4546,7 +4546,7 @@ ov81_02240230: ; 0x02240230
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _022403AC ; =0x02243518
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -4569,7 +4569,7 @@ ov81_02240230: ; 0x02240230
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _022403B0 ; =0x022434E0
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -4592,7 +4592,7 @@ ov81_02240230: ; 0x02240230
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _022403B4 ; =0x02243534
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -4610,7 +4610,7 @@ ov81_02240230: ; 0x02240230
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _022403B8 ; =0x02243550
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -4628,7 +4628,7 @@ ov81_02240230: ; 0x02240230
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _022403BC ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -5844,12 +5844,12 @@ ov81_02240D2C: ; 0x02240D2C
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -5974,10 +5974,10 @@ _02240E4C:
 	bl ov81_02243100
 	add r0, r5, #0
 	bl ov81_0224271C
-	bl sub_02022D24
+	bl GX_BothDispOn
 	ldr r0, _02240E74 ; =ov81_022401C8
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02240E74: .word ov81_022401C8
@@ -6703,7 +6703,7 @@ ov81_02241398: ; 0x02241398
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0x4c]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r1, r4, #0
 	ldr r0, [r4, #0x4c]
 	add r1, #0x50

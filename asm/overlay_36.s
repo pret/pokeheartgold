@@ -120,7 +120,7 @@ ov36_021E59B4: ; 0x021E59B4
 	bl ov36_021E5BB4
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0202ACF4
+	bl Options_SetButtonModeOnMain
 	add r0, r5, #0
 	bl Sav2_SysInfo_MacAddressIsMine
 	cmp r0, #0

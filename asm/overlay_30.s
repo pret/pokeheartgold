@@ -49,10 +49,10 @@ ov30_0225D520: ; 0x0225D520
 	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r2, _0225D630 ; =0x04001000
 	ldr r0, _0225D644 ; =0xFFFF1FFF
 	ldr r1, [r2]
@@ -432,7 +432,7 @@ ov30_0225D880: ; 0x0225D880
 	bic r3, r0
 	strb r3, [r2, #0x12]
 	ldr r0, [r4, #4]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	bl sub_0201660C
 	add r1, sp, #0

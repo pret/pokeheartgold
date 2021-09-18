@@ -18,7 +18,7 @@ Sav2_PlayerData_init: ; 0x02028E70
 	mov r2, #0x2c
 	bl MIi_CpuClearFast
 	add r0, r4, #0
-	bl sub_0202ACA8
+	bl Options_init
 	add r0, r4, #4
 	bl PlayerProfile_init
 	add r0, r4, #0
@@ -26,7 +26,7 @@ Sav2_PlayerData_init: ; 0x02028E70
 	bl sub_0202C948
 	add r4, #0x26
 	add r0, r4, #0
-	bl sub_0202CDB0
+	bl InitIGT
 	pop {r4, pc}
 	thumb_func_end Sav2_PlayerData_init
 

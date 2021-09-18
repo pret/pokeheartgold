@@ -179,10 +179,10 @@ _0225D656:
 _0225D67E:
 	ldr r0, [r4]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	mov r1, #4
 	bl ScheduleBgTilemapBufferTransfer
@@ -197,10 +197,10 @@ _0225D67E:
 _0225D6A8:
 	ldr r0, [r4]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	mov r1, #4
 	bl ScheduleBgTilemapBufferTransfer
@@ -280,7 +280,7 @@ ov33_0225D720: ; 0x0225D720
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0225D7B0 ; =0x0225DA84
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -298,7 +298,7 @@ ov33_0225D720: ; 0x0225D720
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0225D7B4 ; =0x0225DAA0
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}

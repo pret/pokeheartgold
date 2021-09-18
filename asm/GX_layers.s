@@ -46,15 +46,15 @@ GX_SetBanks: ; 0x02022BE8
 	.balign 4, 0
 	thumb_func_end GX_SetBanks
 
-	thumb_func_start sub_02022C54
-sub_02022C54: ; 0x02022C54
+	thumb_func_start GX_DisableEngineALayers
+GX_DisableEngineALayers: ; 0x02022C54
 	ldr r0, _02022C5C ; =_021D21FC
 	mov r1, #0
 	str r1, [r0, #4]
 	bx lr
 	.balign 4, 0
 _02022C5C: .word _021D21FC
-	thumb_func_end sub_02022C54
+	thumb_func_end GX_DisableEngineALayers
 
 	thumb_func_start GX_EngineAToggleLayers
 GX_EngineAToggleLayers: ; 0x02022C60
@@ -109,15 +109,15 @@ _02022CB4: .word _021D21FC
 _02022CB8: .word 0xFFFFE0FF
 	thumb_func_end sub_02022C9C
 
-	thumb_func_start sub_02022CBC
-sub_02022CBC: ; 0x02022CBC
+	thumb_func_start GX_DisableEngineBLayers
+GX_DisableEngineBLayers: ; 0x02022CBC
 	ldr r0, _02022CC4 ; =_021D21FC
 	mov r1, #0
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
 _02022CC4: .word _021D21FC
-	thumb_func_end sub_02022CBC
+	thumb_func_end GX_DisableEngineBLayers
 
 	thumb_func_start sub_02022CC8
 sub_02022CC8: ; 0x02022CC8
@@ -172,8 +172,8 @@ _02022D1C: .word 0x04001000
 _02022D20: .word 0xFFFFE0FF
 	thumb_func_end sub_02022D04
 
-	thumb_func_start sub_02022D24
-sub_02022D24: ; 0x02022D24
+	thumb_func_start GX_BothDispOn
+GX_BothDispOn: ; 0x02022D24
 	push {r3, lr}
 	bl sub_020CD9B4
 	ldr r2, _02022D38 ; =0x04001000
@@ -185,10 +185,10 @@ sub_02022D24: ; 0x02022D24
 	pop {r3, pc}
 	.balign 4, 0
 _02022D38: .word 0x04001000
-	thumb_func_end sub_02022D24
+	thumb_func_end GX_BothDispOn
 
-	thumb_func_start sub_02022D3C
-sub_02022D3C: ; 0x02022D3C
+	thumb_func_start GX_SwapDisplay
+GX_SwapDisplay: ; 0x02022D3C
 	ldr r0, _02022D5C ; =gMain + 0x60
 	ldr r2, _02022D60 ; =0x04000304
 	ldrb r0, [r0, #9]
@@ -209,7 +209,7 @@ _02022D50:
 _02022D5C: .word gMain + 0x60
 _02022D60: .word 0x04000304
 _02022D64: .word 0xFFFF7FFF
-	thumb_func_end sub_02022D3C
+	thumb_func_end GX_SwapDisplay
 
 	thumb_func_start sub_02022D68
 sub_02022D68: ; 0x02022D68

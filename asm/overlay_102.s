@@ -3545,7 +3545,7 @@ ov102_021E909C: ; 0x021E909C
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	str r5, [r4, #0x18]
 	add r0, r5, #0
@@ -3614,7 +3614,7 @@ ov102_021E9144: ; 0x021E9144
 	beq _021E9196
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #4
 	bl sub_02002DB4
 	mov r4, #0
@@ -4074,8 +4074,8 @@ ov102_021E94A4: ; 0x021E94A4
 ov102_021E94CC: ; 0x021E94CC
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r1, #1
 	lsl r1, r1, #0x1a
 	ldr r0, [r1]
@@ -4444,7 +4444,7 @@ _021E97FA:
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x20]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r4, r4, #1
 	cmp r4, #6
 	blt _021E97FA

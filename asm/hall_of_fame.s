@@ -70,7 +70,7 @@ _0202E126:
 	ldr r1, [sp, #0x14]
 	mov r0, #0
 	lsl r2, r2, #2
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, [sp, #0x10]
 	mov r7, #0
 	cmp r0, #0

@@ -84,7 +84,7 @@ ov43_02229EE0: ; 0x02229EE0
 	bl ov43_0222D134
 	ldr r0, _02229FB0 ; =ov43_0222A148
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -234,7 +234,7 @@ ov43_0222A0AC: ; 0x0222A0AC
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r1, #0xa
 	lsl r1, r1, #6
@@ -358,7 +358,7 @@ ov43_0222A154: ; 0x0222A154
 	bl ov43_0222D584
 	ldr r0, _0222A1D8 ; =ov43_0222A148
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -372,7 +372,7 @@ ov43_0222A1DC: ; 0x0222A1DC
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r1, #0xa
 	lsl r1, r1, #6
@@ -481,7 +481,7 @@ ov43_0222A290: ; 0x0222A290
 	bl Options_GetFrame
 	strb r0, [r5, #0xd]
 	add r0, r4, #0
-	bl sub_0202ADAC
+	bl Options_GetButtonMode
 	cmp r0, #1
 	beq _0222A2DC
 	mov r0, #1
@@ -732,7 +732,7 @@ ov43_0222A48C: ; 0x0222A48C
 	mov r1, #1
 	add r4, r2, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #0x55
 	add r1, r4, #0
 	bl NARC_ctor
@@ -868,7 +868,7 @@ _0222A598:
 	lsl r1, r4, #0x18
 	ldr r0, [r5]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r4, r4, #1
 	add r6, #0x1c
 	cmp r4, #7

@@ -7466,7 +7466,7 @@ _0222D4CC:
 	ldr r0, [r4]
 	mov r1, #1
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x14
 	mov r0, #0
 	pop {r4, r5, pc}
@@ -7600,7 +7600,7 @@ _0222D5E8:
 	ldr r0, [r4]
 	mov r1, #1
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x14
 	mov r0, #0
 	pop {r4, r5, pc}
@@ -9721,7 +9721,7 @@ _0222E60E:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xc
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r5, #0
 	bl ov80_0222E754
 	ldr r2, [r5]
@@ -10237,7 +10237,7 @@ _0222EA22:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xc
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r5, #0
 	bl ov80_0222EB54
 	ldr r3, [r5]
@@ -19502,7 +19502,7 @@ ov80_022333D0: ; 0x022333D0
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xc
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -30467,10 +30467,10 @@ ov80_02238648: ; 0x02238648
 	add r4, #0x20
 	add r1, r0, #0
 	ldrb r5, [r4]
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r1, #1
 	lsl r1, r1, #0x1a
 	ldr r0, [r1]
@@ -30564,7 +30564,7 @@ _022386D4:
 	bl sub_0202055C
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov80_02238CD8
@@ -30605,7 +30605,7 @@ _022386D4:
 	add r1, r4, #0
 	add r1, #0x9c
 	str r0, [r1]
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -30634,7 +30634,7 @@ _022386D4:
 	bl sub_02002B8C
 	ldr r0, _02238854 ; =ov80_02238A7C
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, _02238858 ; =ov80_02238AAC
 	add r1, r4, #0
 	mov r2, #0xa
@@ -30758,7 +30758,7 @@ ov80_0223885C: ; 0x0223885C
 	str r0, [r2]
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0x65
 	bl DestroyHeap
@@ -30774,22 +30774,22 @@ ov80_0223885C: ; 0x0223885C
 	ldr r0, _022389AC ; =0x00007FFF
 	lsl r1, r1, #0x18
 	lsl r2, r2, #8
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r2, #2
 	ldr r0, _022389AC ; =0x00007FFF
 	ldr r1, _022389B0 ; =0x05000200
 	lsl r2, r2, #8
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r2, #2
 	ldr r0, _022389AC ; =0x00007FFF
 	ldr r1, _022389B4 ; =0x05000400
 	lsl r2, r2, #8
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r2, #2
 	ldr r0, _022389AC ; =0x00007FFF
 	ldr r1, _022389B8 ; =0x05000600
 	lsl r2, r2, #8
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, _022389BC ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -31208,7 +31208,7 @@ ov80_02238CD8: ; 0x02238CD8
 	mov r1, #0
 	bl ov80_0222ACA0
 	add r4, r0, #0
-	bl sub_02022C54
+	bl GX_DisableEngineALayers
 	ldr r6, _02238EF8 ; =0x0223D5D8
 	add r3, sp, #0x2c
 	mov r2, #5
@@ -31298,7 +31298,7 @@ _02238D96:
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #1
@@ -31316,7 +31316,7 @@ _02238D96:
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #2
@@ -31334,7 +31334,7 @@ _02238D96:
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #3
@@ -31353,7 +31353,7 @@ _02238E20:
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #1
@@ -31371,7 +31371,7 @@ _02238E20:
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #2
@@ -31389,7 +31389,7 @@ _02238E20:
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #3
@@ -31426,7 +31426,7 @@ _02238EA2:
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #4

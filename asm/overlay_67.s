@@ -42,7 +42,7 @@ ov67_021E5900: ; 0x021E5900
 	str r0, [r4]
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -208,10 +208,10 @@ _021E5A82: ; jump table
 _021E5A8C:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -264,7 +264,7 @@ _021E5AFA:
 _021E5B14:
 	ldr r0, _021E5B40 ; =ov67_021E5BE0
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	str r0, [r4, #4]
 	mov r0, #1
@@ -313,10 +313,10 @@ _021E5B64:
 _021E5B7E:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -617,7 +617,7 @@ ov67_021E5DA0: ; 0x021E5DA0
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5E78 ; =0x021E6DFC
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -655,7 +655,7 @@ ov67_021E5DA0: ; 0x021E5DA0
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #0x10]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5E80 ; =0x021E6DE0
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}

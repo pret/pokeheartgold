@@ -56,12 +56,12 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	bl sub_0200FBF4
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -74,11 +74,11 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	str r0, [r2]
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	ldr r0, _0203AE78 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	ldr r3, _0203AE7C ; =0x04000050
 	mov r0, #0
 	strh r0, [r3]
@@ -107,7 +107,7 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	bl InitBgFromTemplate
 	ldr r0, [sp, #0x10]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [sp, #0x10]
@@ -160,7 +160,7 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	add r0, sp, #0x14
 	mov r1, #0
 	mov r3, #2
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, [sp, #0xc]
 	mov r1, #0x10
 	add r2, r4, #0
@@ -175,7 +175,7 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
 	bl String_dtor
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r0, #0
 	bl sub_0200FBE8
 	mov r0, #1

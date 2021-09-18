@@ -242,7 +242,7 @@ _022379D6:
 	bl ov57_0223BB84
 	ldr r0, _02237AF4 ; =ov57_02237E38
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov57_022386F0
 	mov r0, #1
@@ -437,10 +437,10 @@ ov57_02237CA8: ; 0x02237CA8
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -462,7 +462,7 @@ ov57_02237CDC: ; 0x02237CDC
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	pop {r3, pc}
 	thumb_func_end ov57_02237CDC
@@ -472,7 +472,7 @@ ov57_02237CEC: ; 0x02237CEC
 	push {r4, r5, lr}
 	sub sp, #0xfc
 	add r4, r0, #0
-	bl sub_02022C54
+	bl GX_DisableEngineALayers
 	ldr r5, _02237E24 ; =0x0223BC90
 	add r3, sp, #0x10
 	mov r2, #5
@@ -543,13 +543,13 @@ _02237D5C:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _02237E30 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -589,16 +589,16 @@ _02237DBE:
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -3910,7 +3910,7 @@ ov57_02239728: ; 0x02239728
 	mov r1, #1
 	add r2, r1, #0
 	mov r3, #0xc
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	b _0223974E
 _02239744:
 	mov r1, #1
@@ -4449,7 +4449,7 @@ _02239B90: .word 0x0000FFFF
 	thumb_func_start ov57_02239B94
 ov57_02239B94: ; 0x02239B94
 	push {r3, lr}
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers

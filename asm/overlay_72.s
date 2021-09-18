@@ -745,10 +745,10 @@ _02237E34:
 _02237E36:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -821,7 +821,7 @@ _02237E36:
 	str r0, [r4, r1]
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	add r0, r4, #0
 	add r1, r6, #0
 	bl ov72_02238144
@@ -1035,7 +1035,7 @@ _02238086:
 	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x43
 	bl DestroyHeap
 	mov r0, #1
@@ -1897,7 +1897,7 @@ ov72_022387D8: ; 0x022387D8
 	bl ov72_02238408
 	ldr r0, _022387FC ; =ov72_022380FC
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r4, pc}
 	nop
 _022387FC: .word ov72_022380FC
@@ -2138,7 +2138,7 @@ ov72_022389C8: ; 0x022389C8
 	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02238ADC ; =0x0223B410
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -2177,7 +2177,7 @@ ov72_022389C8: ; 0x022389C8
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02238AE4 ; =0x0223B3D8
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -2216,7 +2216,7 @@ ov72_022389C8: ; 0x022389C8
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
@@ -5591,7 +5591,7 @@ ov72_0223A460: ; 0x0223A460
 	add r0, r5, r0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]

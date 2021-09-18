@@ -113,7 +113,7 @@ ov48_02258800: ; 0x02258800
 	bl ov48_02259130
 	ldr r0, _0225891C ; =ov48_02259090
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #1
 	add sp, #8
@@ -246,7 +246,7 @@ ov48_022589FC: ; 0x022589FC
 	bl OverlayManager_GetField18
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r0, _02258A74 ; =0x0000C40C
 	add r1, r4, #0
@@ -1690,7 +1690,7 @@ ov48_022594F0: ; 0x022594F0
 	ldr r0, _02259640 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #0
 	ldr r6, _02259644 ; =0x0225B2A4
 	ldr r4, _02259648 ; =0x0225B1B0
@@ -1714,7 +1714,7 @@ _0225951A:
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [sp, #0x14]
 	add r6, #0x1c
 	add r0, r0, #1
@@ -1854,7 +1854,7 @@ _02259658:
 	ldr r0, _02259684 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	pop {r4, r5, r6, pc}
 	nop
 _02259680: .word 0x0225B1B0
@@ -2812,7 +2812,7 @@ ov48_02259D00: ; 0x02259D00
 	add r0, r5, #0
 	mov r2, #0x1f
 	add r3, r1, #0
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2978,7 +2978,7 @@ ov48_02259E90: ; 0x02259E90
 	add r0, r4, #0
 	mov r2, #0x1f
 	add r3, r1, #0
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov48_02259E90

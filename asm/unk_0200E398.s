@@ -271,8 +271,8 @@ sub_0200E448: ; 0x0200E448
 	.balign 4, 0
 	thumb_func_end sub_0200E448
 
-	thumb_func_start sub_0200E580
-sub_0200E580: ; 0x0200E580
+	thumb_func_start DrawFrameAndWindow1
+DrawFrameAndWindow1: ; 0x0200E580
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r0, #0
@@ -309,7 +309,7 @@ sub_0200E580: ; 0x0200E580
 _0200E5D0:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200E580
+	thumb_func_end DrawFrameAndWindow1
 
 	thumb_func_start sub_0200E5D4
 sub_0200E5D4: ; 0x0200E5D4

@@ -4447,10 +4447,10 @@ ov27_0225C250: ; 0x0225C250
 	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r1, #0xe9
 	ldr r0, _0225C390 ; =ov27_0225C434
 	lsl r1, r1, #2
@@ -4819,10 +4819,10 @@ ov27_0225C5E4: ; 0x0225C5E4
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x34]
 	cmp r0, #0
 	beq _0225C606
@@ -4959,10 +4959,10 @@ ov27_0225C6F8: ; 0x0225C6F8
 	add r6, r0, #0
 	ldr r0, [r5, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r5, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r4, #0
 	cmp r6, #0
 	ble _0225C72A

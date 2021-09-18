@@ -10,10 +10,10 @@ ov15_021F9380: ; 0x021F9380
 	add r5, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	ldr r2, [r0]
@@ -70,7 +70,7 @@ ov15_021F9380: ; 0x021F9380
 	bl sub_0200FA24
 	mov r0, #3
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	add r0, r4, #0
 	bl ov15_021F9DB4
 	add r0, r4, #0
@@ -248,7 +248,7 @@ _021F95B6:
 	bl ov15_021FD93C
 	ldr r0, _021F9600 ; =ov15_021F995C
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r1, #0
 	mov r0, #0x33
 	add r2, r1, #0
@@ -626,7 +626,7 @@ ov15_021F982C: ; 0x021F982C
 	bl sub_02004B10
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #6
 	bl DestroyHeap
 	mov r0, #1
@@ -767,10 +767,10 @@ ov15_021F99A4: ; 0x021F99A4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
@@ -798,10 +798,10 @@ ov15_021F99A4: ; 0x021F99A4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
@@ -11815,7 +11815,7 @@ ov15_021FF1E0: ; 0x021FF1E0
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xe
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]

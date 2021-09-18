@@ -63,7 +63,7 @@ sub_020183B0: ; 0x020183B0
 	bhs _020183EA
 	ldr r0, [r1, #4]
 	sub r1, r4, r3
-	bl sub_0202CDBC
+	bl AddIGTSeconds
 	ldr r0, _020183EC ; =_021D10E8
 	str r4, [r0, #8]
 	str r5, [r0, #0xc]

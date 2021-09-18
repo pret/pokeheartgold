@@ -3187,7 +3187,7 @@ sub_02024BBC: ; 0x02024BBC
 	lsl r0, r0, #6
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xa
@@ -3214,7 +3214,7 @@ sub_02024BF4: ; 0x02024BF4
 	lsl r0, r0, #6
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r2, #1
 	add r0, r4, #0
 	mov r1, #0

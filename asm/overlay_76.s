@@ -38,10 +38,10 @@ _021E5936:
 	bl MI_CpuFill8
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -61,7 +61,7 @@ _021E5936:
 	ldr r0, _021E5A90 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	add r0, r4, #0
 	bl ov76_021E607C
 	add r0, r4, #0
@@ -154,7 +154,7 @@ _021E59B6:
 	bl sub_02004EC4
 	ldr r0, _021E5A9C ; =ov76_021E5D94
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -212,7 +212,7 @@ _021E5ABE: ; jump table
 _021E5AC6:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r7]
 	add r0, r0, #1
 	str r0, [r7]
@@ -442,7 +442,7 @@ _021E5C4A:
 	ldr r0, _021E5D8C ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r1, #1
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -1994,7 +1994,7 @@ _021E68F4:
 	mov r1, #1
 	strb r1, [r0, #9]
 _021E68F8:
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 _021E68FC:
 	pop {r3, pc}
 	nop

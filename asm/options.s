@@ -3,29 +3,29 @@
 
 	.text
 
-	thumb_func_start sub_0202AC88
-sub_0202AC88: ; 0x0202AC88
+	thumb_func_start Options_new
+Options_new: ; 0x0202AC88
 	push {r4, lr}
 	mov r1, #2
 	bl AllocFromHeap
 	add r4, r0, #0
-	bl sub_0202ACA8
+	bl Options_init
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202AC88
+	thumb_func_end Options_new
 
-	thumb_func_start sub_0202AC9C
-sub_0202AC9C: ; 0x0202AC9C
+	thumb_func_start Options_copy
+Options_copy: ; 0x0202AC9C
 	ldr r3, _0202ACA4 ; =MIi_CpuCopy8
 	mov r2, #2
 	bx r3
 	nop
 _0202ACA4: .word MIi_CpuCopy8
-	thumb_func_end sub_0202AC9C
+	thumb_func_end Options_copy
 
-	thumb_func_start sub_0202ACA8
-sub_0202ACA8: ; 0x0202ACA8
+	thumb_func_start Options_init
+Options_init: ; 0x0202ACA8
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
@@ -61,15 +61,15 @@ sub_0202ACA8: ; 0x0202ACA8
 	nop
 _0202ACEC: .word 0xFFFFFCFF
 _0202ACF0: .word 0xFFFF83FF
-	thumb_func_end sub_0202ACA8
+	thumb_func_end Options_init
 
-	thumb_func_start sub_0202ACF4
-sub_0202ACF4: ; 0x0202ACF4
+	thumb_func_start Options_SetButtonModeOnMain
+Options_SetButtonModeOnMain: ; 0x0202ACF4
 	push {r3, lr}
 	cmp r0, #0
 	beq _0202AD04
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202ADAC
+	bl Options_GetButtonMode
 	add r1, r0, #0
 _0202AD04:
 	cmp r1, #0
@@ -87,18 +87,18 @@ _0202AD14:
 	pop {r3, pc}
 	.balign 4, 0
 _0202AD1C: .word gMain
-	thumb_func_end sub_0202ACF4
+	thumb_func_end Options_SetButtonModeOnMain
 
-	thumb_func_start sub_0202AD20
-sub_0202AD20: ; 0x0202AD20
+	thumb_func_start Options_GetTextSpeed
+Options_GetTextSpeed: ; 0x0202AD20
 	ldrh r0, [r0]
 	lsl r0, r0, #0x1c
 	lsr r0, r0, #0x1c
 	bx lr
-	thumb_func_end sub_0202AD20
+	thumb_func_end Options_GetTextSpeed
 
-	thumb_func_start sub_0202AD28
-sub_0202AD28: ; 0x0202AD28
+	thumb_func_start Options_SetTextSpeed
+Options_SetTextSpeed: ; 0x0202AD28
 	ldrh r3, [r0]
 	mov r2, #0xf
 	lsl r1, r1, #0x10
@@ -109,12 +109,12 @@ sub_0202AD28: ; 0x0202AD28
 	orr r1, r3
 	strh r1, [r0]
 	bx lr
-	thumb_func_end sub_0202AD28
+	thumb_func_end Options_SetTextSpeed
 
 	thumb_func_start Options_GetTextFrameDelay
 Options_GetTextFrameDelay: ; 0x0202AD3C
 	push {r3, lr}
-	bl sub_0202AD20
+	bl Options_GetTextSpeed
 	cmp r0, #0
 	bne _0202AD4A
 	mov r0, #8
@@ -130,16 +130,16 @@ _0202AD52:
 	.balign 4, 0
 	thumb_func_end Options_GetTextFrameDelay
 
-	thumb_func_start sub_0202AD58
-sub_0202AD58: ; 0x0202AD58
+	thumb_func_start Options_GetSoundMethod
+Options_GetSoundMethod: ; 0x0202AD58
 	ldrh r0, [r0]
 	lsl r0, r0, #0x1a
 	lsr r0, r0, #0x1e
 	bx lr
-	thumb_func_end sub_0202AD58
+	thumb_func_end Options_GetSoundMethod
 
-	thumb_func_start sub_0202AD60
-sub_0202AD60: ; 0x0202AD60
+	thumb_func_start Options_SetSoundMethod
+Options_SetSoundMethod: ; 0x0202AD60
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	lsl r1, r1, #0x1e
@@ -150,18 +150,18 @@ sub_0202AD60: ; 0x0202AD60
 	orr r1, r3
 	strh r1, [r0]
 	bx lr
-	thumb_func_end sub_0202AD60
+	thumb_func_end Options_SetSoundMethod
 
-	thumb_func_start sub_0202AD74
-sub_0202AD74: ; 0x0202AD74
+	thumb_func_start Options_GetBattleScene
+Options_GetBattleScene: ; 0x0202AD74
 	ldrh r0, [r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x1f
 	bx lr
-	thumb_func_end sub_0202AD74
+	thumb_func_end Options_GetBattleScene
 
-	thumb_func_start sub_0202AD7C
-sub_0202AD7C: ; 0x0202AD7C
+	thumb_func_start Options_SetBattleScene
+Options_SetBattleScene: ; 0x0202AD7C
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	lsl r1, r1, #0x1f
@@ -172,18 +172,18 @@ sub_0202AD7C: ; 0x0202AD7C
 	orr r1, r3
 	strh r1, [r0]
 	bx lr
-	thumb_func_end sub_0202AD7C
+	thumb_func_end Options_SetBattleScene
 
-	thumb_func_start sub_0202AD90
-sub_0202AD90: ; 0x0202AD90
+	thumb_func_start Options_GetBattleStyle
+Options_GetBattleStyle: ; 0x0202AD90
 	ldrh r0, [r0]
 	lsl r0, r0, #0x19
 	lsr r0, r0, #0x1f
 	bx lr
-	thumb_func_end sub_0202AD90
+	thumb_func_end Options_GetBattleStyle
 
-	thumb_func_start sub_0202AD98
-sub_0202AD98: ; 0x0202AD98
+	thumb_func_start Options_SetBattleStyle
+Options_SetBattleStyle: ; 0x0202AD98
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	lsl r1, r1, #0x1f
@@ -194,18 +194,18 @@ sub_0202AD98: ; 0x0202AD98
 	orr r1, r3
 	strh r1, [r0]
 	bx lr
-	thumb_func_end sub_0202AD98
+	thumb_func_end Options_SetBattleStyle
 
-	thumb_func_start sub_0202ADAC
-sub_0202ADAC: ; 0x0202ADAC
+	thumb_func_start Options_GetButtonMode
+Options_GetButtonMode: ; 0x0202ADAC
 	ldrh r0, [r0]
 	lsl r0, r0, #0x16
 	lsr r0, r0, #0x1e
 	bx lr
-	thumb_func_end sub_0202ADAC
+	thumb_func_end Options_GetButtonMode
 
-	thumb_func_start sub_0202ADB4
-sub_0202ADB4: ; 0x0202ADB4
+	thumb_func_start Options_SetButtonMode
+Options_SetButtonMode: ; 0x0202ADB4
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	lsl r1, r1, #0x1e
@@ -218,7 +218,7 @@ sub_0202ADB4: ; 0x0202ADB4
 	bx lr
 	.balign 4, 0
 _0202ADC8: .word 0xFFFFFCFF
-	thumb_func_end sub_0202ADB4
+	thumb_func_end Options_SetButtonMode
 
 	thumb_func_start Options_GetFrame
 Options_GetFrame: ; 0x0202ADCC
@@ -228,8 +228,8 @@ Options_GetFrame: ; 0x0202ADCC
 	bx lr
 	thumb_func_end Options_GetFrame
 
-	thumb_func_start sub_0202ADD4
-sub_0202ADD4: ; 0x0202ADD4
+	thumb_func_start Options_SetFrame
+Options_SetFrame: ; 0x0202ADD4
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	lsl r1, r1, #0x1b
@@ -242,4 +242,4 @@ sub_0202ADD4: ; 0x0202ADD4
 	bx lr
 	.balign 4, 0
 _0202ADE8: .word 0xFFFF83FF
-	thumb_func_end sub_0202ADD4
+	thumb_func_end Options_SetFrame

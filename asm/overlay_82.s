@@ -279,7 +279,7 @@ ov82_0223DF74: ; 0x0223DF74
 	strh r0, [r2]
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x69
 	bl DestroyHeap
 	ldr r0, _0223DFB8 ; =SDK_OVERLAY_OVY_80_ID
@@ -1530,12 +1530,12 @@ ov82_0223E9B0: ; 0x0223E9B0
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1632,7 +1632,7 @@ _0223EA3C:
 	ldrh r1, [r2]
 	and r0, r1
 	strh r0, [r2]
-	bl sub_02022D24
+	bl GX_BothDispOn
 	add r0, r5, #0
 	bl ov82_0223F558
 	add r4, r0, #0
@@ -1687,7 +1687,7 @@ _0223EB12:
 	str r0, [r1]
 	ldr r0, _0223EB38 ; =ov82_0223EC0C
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1880,7 +1880,7 @@ ov82_0223EC68: ; 0x0223EC68
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0223ED80 ; =0x0223FE70
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -1903,7 +1903,7 @@ ov82_0223EC68: ; 0x0223EC68
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0223ED84 ; =0x0223FE8C
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -1921,7 +1921,7 @@ ov82_0223EC68: ; 0x0223EC68
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0223ED88 ; =0x0223FEA8
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -1939,7 +1939,7 @@ ov82_0223EC68: ; 0x0223EC68
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0223ED8C ; =0x0223FE38
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -1957,7 +1957,7 @@ ov82_0223EC68: ; 0x0223EC68
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _0223ED90 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]

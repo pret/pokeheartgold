@@ -1437,7 +1437,7 @@ _0203043E:
 	ldr r0, [r0, r1]
 	ldr r1, _02030498 ; =0x00001C60
 	add r1, r7, r1
-	bl sub_0202AC9C
+	bl Options_copy
 _02030488:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1708,7 +1708,7 @@ _02030614:
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r1, [r6, r1]
-	bl sub_0202AC9C
+	bl Options_copy
 	mov r5, #0x13
 	lsl r5, r5, #4
 	ldr r1, [r6, r5]

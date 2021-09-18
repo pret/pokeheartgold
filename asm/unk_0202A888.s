@@ -77,7 +77,7 @@ sub_0202A8BC: ; 0x0202A8BC
 	ldr r0, _0202A948 ; =0x0000FFFF
 	add r1, r4, r1
 	mov r2, #8
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r0, #0xa
 	lsl r0, r0, #6
 	add r0, r4, r0

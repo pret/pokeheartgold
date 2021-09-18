@@ -129,7 +129,7 @@ _02253F14:
 	mov r1, #1
 	add r0, #0x20
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r4, sp, #0x40
 	add r3, sp, #0x14
 	add r2, r3, #0
@@ -617,7 +617,7 @@ _02254302:
 	mov r1, #1
 	add r0, #0x30
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, _02254398 ; =0x022598A0
 	mov r1, #0xf
 	ldr r0, [r0]
@@ -1652,7 +1652,7 @@ _02254BA0:
 	mov r1, #1
 	add r0, #0x30
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, _02254BE0 ; =0x022598A0
 	mov r1, #0xf
 	ldr r0, [r0]
@@ -3959,7 +3959,7 @@ _02255DD4:
 	add r0, #0x34
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #0x68]
 	mov r2, #0x8a
@@ -4178,7 +4178,7 @@ ov03_02255F98: ; 0x02255F98
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r6, #0
 _02255FDE:
 	ldr r0, [r5, #0xc]
@@ -4353,7 +4353,7 @@ ov03_022560EC: ; 0x022560EC
 	ldr r2, _022563B8 ; =0x000003D9
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, [sp, #0x24]
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -5121,7 +5121,7 @@ ov03_02256730: ; 0x02256730
 	ldr r2, _02256A10 ; =0x000003D9
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, [sp, #0x18]
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -10091,7 +10091,7 @@ ov03_02258DE8: ; 0x02258DE8
 	add r0, #0x10
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #0xf

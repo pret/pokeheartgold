@@ -4578,7 +4578,7 @@ ov13_02222BC0: ; 0x02222BC0
 	mov r0, #0
 	add r1, #0xc
 	mov r2, #0x20
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, [r5]
 	add r1, r4, #0
 	strh r0, [r4, #0xa]

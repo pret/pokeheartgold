@@ -1047,7 +1047,7 @@ _022277F0:
 	bl sub_0200E3DC
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _02227ACC ; =0x00006B5A
 	ldr r0, _02227AD0 ; =0x05000042
 	strh r1, [r0]
@@ -1507,7 +1507,7 @@ _02227B88:
 	bl BG_ClearCharDataRange
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	lsl r0, r0, #0xe
 	str r0, [sp]
@@ -1530,7 +1530,7 @@ _02227B88:
 	bl BG_ClearCharDataRange
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #2
@@ -1551,7 +1551,7 @@ _02227B88:
 	bl BG_ClearCharDataRange
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	bl sub_02020080
 	mov r0, #0
 	mov r1, #0x20
@@ -1934,13 +1934,13 @@ _02227F28:
 	bl ov74_02227E10
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0, #0x10]
-	bl sub_0202CE24
+	bl GetIGTHours
 	add r1, r0, #0
 	ldr r0, [sp, #0x28]
 	bl ov74_02227E64
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0, #0x10]
-	bl sub_0202CE28
+	bl GetIGTMinutes
 	add r2, r0, #0
 	mov r3, #2
 	ldr r0, [sp, #0x28]
@@ -2009,7 +2009,7 @@ _02227FEA:
 	mov r1, #0
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r1, _0222803C ; =0x0223BCBC
 	ldr r0, [sp, #0x20]
 	ldr r2, [r1, r0]
@@ -2437,7 +2437,7 @@ _022282F6:
 	mov r1, #0
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r1, #0x11
 	ldr r0, [sp, #0x18]
 	lsl r1, r1, #4
@@ -2587,7 +2587,7 @@ _02228452:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl GetWindowX
 	str r0, [sp, #0x18]
@@ -2617,7 +2617,7 @@ _022284A8:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl GetWindowX
 	str r0, [sp, #0x20]
@@ -2644,7 +2644,7 @@ _022284EE:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl GetWindowX
 	str r0, [sp, #0x28]
@@ -2704,7 +2704,7 @@ _02228564:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl GetWindowX
 	str r0, [sp, #0x10]
@@ -2736,7 +2736,7 @@ _022285AA:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl GetWindowX
 	str r0, [sp, #0x18]
@@ -2766,7 +2766,7 @@ _022285F4:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl GetWindowX
 	str r0, [sp, #0x20]
@@ -2793,7 +2793,7 @@ _0222863A:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl GetWindowX
 	str r0, [sp, #0x28]
@@ -3105,7 +3105,7 @@ _02228882:
 	bl FreeToHeap
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _022288C0: .word 0x04000304
@@ -3358,7 +3358,7 @@ _02228AB8:
 	bl ov74_02227D48
 	ldr r0, _02228B88 ; =ov74_022288F8
 	ldr r1, [r4]
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov74_022282CC
 	add r1, r4, #0
@@ -6341,7 +6341,7 @@ _0222A282:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r1, _0222A2A0 ; =0x0223C260
 	add r0, r6, #0
 	mov r2, #2
@@ -6429,7 +6429,7 @@ _0222A332:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r2, #2
 	ldr r1, _0222A358 ; =0x0223C250
 	add r0, r6, #0
@@ -6483,7 +6483,7 @@ _0222A3A2:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r0, #0x50
 	str r0, [sp]
 	ldr r1, _0222A3C8 ; =0x0223C220
@@ -6538,7 +6538,7 @@ _0222A412:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r0, #0x4f
 	str r0, [sp]
 	ldr r1, _0222A438 ; =0x0223C230
@@ -6585,7 +6585,7 @@ _0222A470:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r0, #4
 	str r0, [sp]
 	ldr r1, _0222A490 ; =0x0223C240
@@ -6806,7 +6806,7 @@ _0222A626:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r0, #1
 	str r0, [sp]
 	ldr r1, _0222A64C ; =0x0223C2B0
@@ -6940,7 +6940,7 @@ ov74_0222A6F8: ; 0x0222A6F8
 	lsl r1, r4, #0x18
 	add r0, r7, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7288,7 +7288,7 @@ _0222A9EE:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	ldr r0, [sp, #0x20]
 	add r1, sp, #0x24
 	str r0, [sp]
@@ -7406,7 +7406,7 @@ ov74_0222AAAC: ; 0x0222AAAC
 	mov r1, #0
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -7613,7 +7613,7 @@ _0222AC8C:
 	bl RemoveWindow
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, _0222ACD4 ; =0x000005DC
 	bl PlaySE
 	add r0, r6, #0
@@ -7652,7 +7652,7 @@ _0222ACEC:
 	bl GX_EngineAToggleLayers
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x54
 	bl ScrStrBufs_new
 	mov r1, #2
@@ -7857,8 +7857,8 @@ ov74_0222AE6C: ; 0x0222AE6C
 	mov r0, #0x54
 	bl BgConfig_Alloc
 	str r0, [r4]
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	bl ov74_0222FCA4
 	ldr r0, [r4]
 	bl ov74_0222A744
@@ -10683,7 +10683,7 @@ _0222C57E:
 	bl ov74_02229F78
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -13300,7 +13300,7 @@ _0222DAC8:
 	mov r1, #0
 	mov r2, #0xa
 	mov r3, #0xe
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 _0222DAD4:
 	ldr r1, [r4, #0xc]
 	ldr r0, [r4, #0x10]
@@ -14558,7 +14558,7 @@ _0222E4C4:
 	add r0, r4, r0
 	mov r2, #0xa
 	mov r3, #0xe
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -16240,7 +16240,7 @@ _0222F2A4:
 	mov r1, #0
 	mov r2, #0xa
 	mov r3, #0xe
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 _0222F2B0:
 	ldr r1, [r4, #0xc]
 	ldr r0, [r4, #0x10]
@@ -17176,7 +17176,7 @@ _0222FA2A:
 	add r0, r4, r0
 	mov r2, #0xa
 	mov r3, #0xe
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -17488,7 +17488,7 @@ ov74_0222FCC4: ; 0x0222FCC4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0222FD8C ; =_0223B494
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -17506,7 +17506,7 @@ ov74_0222FCC4: ; 0x0222FCC4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0222FD90 ; =_0223B478
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -17524,7 +17524,7 @@ ov74_0222FCC4: ; 0x0222FCC4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0222FD94 ; =_0223B440
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -17542,7 +17542,7 @@ ov74_0222FCC4: ; 0x0222FCC4
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop
@@ -21678,7 +21678,7 @@ _02231BA0:
 	mov r1, #0
 	lsl r2, r2, #4
 	mov r3, #0xe
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 _02231BAC:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -23485,7 +23485,7 @@ ov74_02232974: ; 0x02232974
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02232A3C ; =_0223B524
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -23503,7 +23503,7 @@ ov74_02232974: ; 0x02232974
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02232A40 ; =_0223B540
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -23521,7 +23521,7 @@ ov74_02232974: ; 0x02232974
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02232A44 ; =_0223B55C
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -23539,7 +23539,7 @@ ov74_02232974: ; 0x02232974
 	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop
@@ -23570,7 +23570,7 @@ _02232A54:
 	ldr r0, _02232AC4 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	bl sub_02020080
 	mov r1, #0x1e
 	mov r0, #0
@@ -24034,7 +24034,7 @@ ov74_02232E3C: ; 0x02232E3C
 	add r6, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r7, #0x6a
 	mov r4, #0
 	add r5, r6, #0
@@ -24134,7 +24134,7 @@ _02232EEE:
 	ldr r0, _02232F58 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	ldr r0, [r6, #0x20]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -24701,7 +24701,7 @@ _022333BA:
 	bl ov74_022322D8
 	ldr r0, _0223362C ; =ov74_02233024
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x10
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -24928,7 +24928,7 @@ _02233588:
 	bl ov74_02231FF4
 	ldr r0, _0223362C ; =ov74_02233024
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -28967,7 +28967,7 @@ _02235362:
 	lsl r1, r4, #0x18
 	add r0, r7, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -29316,7 +29316,7 @@ _022355FC:
 	mov r1, #0
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	b _0223562E
 _02235612:
 	ldr r2, [r4, #0x38]
@@ -29646,7 +29646,7 @@ _0223587E:
 _02235886:
 	ldr r0, _02235898 ; =ov74_02235A74
 	mov r1, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -29883,7 +29883,7 @@ _02235A24:
 	bl sub_02022608
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02235A5C: .word 0x0223D654
@@ -30642,7 +30642,7 @@ ov74_02236034: ; 0x02236034
 	strh r0, [r1]
 	lsr r0, r1, #0xd
 	ldr r1, _0223606C ; =ov74_02236010
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #2
 	lsl r0, r0, #0xc
 	bl OS_EnableIrqMask
@@ -30676,7 +30676,7 @@ ov74_02236074: ; 0x02236074
 	strh r0, [r1]
 	lsr r0, r1, #0xd
 	ldr r1, _0223609C ; =ov74_02236070
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #2
 	lsl r0, r0, #0xc
 	bl OS_EnableIrqMask

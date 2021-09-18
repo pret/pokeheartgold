@@ -122,12 +122,12 @@ ov46_02258800: ; 0x02258800
 	bl ov46_022594E0
 	ldr r0, _02258924 ; =ov46_02258F70
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r0, _02258928 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #1
 	add sp, #0x1c
 	pop {r4, r5, pc}
@@ -514,7 +514,7 @@ ov46_02258C38: ; 0x02258C38
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	add r0, r4, #0
 	add r0, #0xd4
@@ -555,7 +555,7 @@ _02258C68:
 	ldr r0, _02258CB0 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -655,12 +655,12 @@ ov46_02258CB4: ; 0x02258CB4
 	bl sub_0203A880
 	ldr r0, _02258DA0 ; =ov46_02258F70
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r0, _02258DA4 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #1
 	add sp, #0x1c
 	pop {r4, r5, pc}
@@ -850,7 +850,7 @@ ov46_02258EFC: ; 0x02258EFC
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	add r0, r4, #0
 	add r0, #0xd4
@@ -888,7 +888,7 @@ _02258F2C:
 	ldr r0, _02258F6C ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -949,7 +949,7 @@ _02258FAE:
 	ldr r0, [r0, #0xc]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r7, r7, #1
 	add r4, #0x1c
 	add r5, r5, #4
@@ -1442,7 +1442,7 @@ _02259394:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #0xc
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	b _022593EC
 _022593DE:
 	add r0, r5, #0

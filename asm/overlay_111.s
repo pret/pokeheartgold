@@ -512,10 +512,10 @@ ov111_021E5CD4: ; 0x021E5CD4
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -770,7 +770,7 @@ _021E5E46:
 	bl sub_02002B8C
 	ldr r0, _021E5F00 ; =ov111_021E5DF0
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -850,7 +850,7 @@ _021E5F8A:
 	bl InitBgFromTemplate
 	ldrb r1, [r4]
 	ldr r0, [r5, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	ldrb r1, [r4]

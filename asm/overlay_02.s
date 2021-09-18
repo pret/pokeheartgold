@@ -1135,7 +1135,7 @@ ov02_02246444: ; 0x02246444
 	ldr r0, [r4, #4]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r3, [r4]
 	mov r0, #1
 	mov r1, #0x40
@@ -1782,7 +1782,7 @@ ov02_02246964: ; 0x02246964
 	ldr r0, [r4, #4]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	ldr r3, [r4]
 	lsl r1, r0, #0xc
@@ -9872,11 +9872,11 @@ ov02_0224A5D0: ; 0x0224A5D0
 
 	thumb_func_start ov02_0224A63C
 ov02_0224A63C: ; 0x0224A63C
-	ldr r3, _0224A644 ; =sub_0201CAE0
+	ldr r3, _0224A644 ; =BgClearTilemapBufferAndCommit
 	mov r1, #3
 	bx r3
 	nop
-_0224A644: .word sub_0201CAE0
+_0224A644: .word BgClearTilemapBufferAndCommit
 	thumb_func_end ov02_0224A63C
 
 	thumb_func_start ov02_0224A648

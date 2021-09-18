@@ -2106,7 +2106,7 @@ ov08_0221CDF8: ; 0x0221CDF8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0221CF04 ; =0x02224EC8
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -2128,7 +2128,7 @@ ov08_0221CDF8: ; 0x0221CDF8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r3, [r4]
 	mov r0, #5
 	ldr r3, [r3, #0xc]
@@ -14031,7 +14031,7 @@ ov08_02223000: ; 0x02223000
 	bl InitBgFromTemplate
 	ldr r0, [r4, #4]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _022230C8 ; =0x02225AF8
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -14049,7 +14049,7 @@ ov08_02223000: ; 0x02223000
 	bl InitBgFromTemplate
 	ldr r0, [r4, #4]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r3, [r4]
 	mov r0, #5
 	ldr r3, [r3, #0xc]

@@ -1148,7 +1148,7 @@ ov90_02258FF0: ; 0x02258FF0
 	ldr r0, _02259080 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	ldr r0, [sp]
 	mov r7, #0
 	cmp r0, #0
@@ -1173,7 +1173,7 @@ _02259024:
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, [r4]
 	mov r2, #0
 	lsl r1, r1, #0x18
@@ -3325,7 +3325,7 @@ _0225A0C6:
 	ldr r0, _0225A100 ; =0x0000FF01
 	add r1, r5, #0
 	lsl r2, r2, #6
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r4, r4, #1
 	add r5, r5, r7
 	cmp r4, #2
@@ -3948,10 +3948,10 @@ _0225A586:
 	bl ov90_0225A5BC
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers

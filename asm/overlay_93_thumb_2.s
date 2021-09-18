@@ -80,7 +80,7 @@ ov93_0225FC8C: ; 0x0225FC8C
 	push {r4, lr}
 	add r4, r1, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1

@@ -296,9 +296,9 @@ ov93_0225C768: ; 0x0225C768
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl Main_SetVBlankIntrCB
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	ldr r1, [r0]
@@ -401,7 +401,7 @@ ov93_0225C768: ; 0x0225C768
 	bl sub_0202055C
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	ldr r0, [r5, #0x2c]
 	bl ov93_0225D1D8
 	bl sub_020210BC
@@ -553,8 +553,8 @@ ov93_0225C768: ; 0x0225C768
 	ldr r0, _0225CA84 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
-	bl sub_02022D24
+	bl GX_SwapDisplay
+	bl GX_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -584,7 +584,7 @@ ov93_0225C768: ; 0x0225C768
 	bl sub_020032A4
 	ldr r0, _0225CA88 ; =ov93_0225CEA0
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r5]
 	add r0, #0x3c
 	ldrb r0, [r0]
@@ -946,7 +946,7 @@ ov93_0225CD10: ; 0x0225CD10
 	bl ov93_02260608
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov93_0225D6E0
 	add r0, r4, #0
@@ -1456,7 +1456,7 @@ ov93_0225D1D8: ; 0x0225D1D8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x8c
 	add r5, r0, #0
-	bl sub_02022C54
+	bl GX_DisableEngineALayers
 	ldr r4, _0225D36C ; =0x02262AC8
 	add r3, sp, #0x10
 	mov r2, #5
@@ -1517,7 +1517,7 @@ _0225D248:
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #1
@@ -1535,7 +1535,7 @@ _0225D248:
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #2
@@ -1553,7 +1553,7 @@ _0225D248:
 	bl InitBgFromTemplate
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	add r0, r5, #0
 	mov r1, #3
@@ -1608,7 +1608,7 @@ _0225D31A:
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r1, r4, #4
 	lsl r1, r1, #0x18
 	mov r2, #0
@@ -1760,7 +1760,7 @@ ov93_0225D468: ; 0x0225D468
 	mov r1, #1
 	lsl r2, r2, #4
 	mov r3, #6
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]

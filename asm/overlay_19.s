@@ -307,7 +307,7 @@ ov19_02259AD8: ; 0x02259AD8
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02259B88 ; =0x0225A08C
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -325,7 +325,7 @@ ov19_02259AD8: ; 0x02259AD8
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02259B8C ; =0x0225A0A8
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -343,7 +343,7 @@ ov19_02259AD8: ; 0x02259AD8
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r3, [r4]
 	mov r0, #5
 	mov r1, #0x20

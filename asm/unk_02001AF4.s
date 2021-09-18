@@ -645,7 +645,7 @@ CreateYesNoMenu: ; 0x02001F20
 	ldr r2, [sp, #0xc]
 	ldr r3, [sp, #0x10]
 	mov r1, #1
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]

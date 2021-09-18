@@ -1692,7 +1692,7 @@ _02003D82:
 	ldr r0, [sp]
 	sub r2, r2, r5
 	lsl r2, r2, #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _02003D9A:
 	cmp r7, #0
 	beq _02003DA2
@@ -1707,7 +1707,7 @@ _02003DA2:
 	ldr r0, [sp]
 	sub r2, r2, r5
 	lsl r2, r2, #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _02003DB6:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}

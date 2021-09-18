@@ -175,7 +175,7 @@ ov29_0225D648: ; 0x0225D648
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0225D6B0 ; =0x0225E200
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}

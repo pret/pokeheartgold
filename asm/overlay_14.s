@@ -235,7 +235,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
@@ -260,7 +260,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r1, #1
 	ldr r0, [r0, #0x14]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
@@ -317,7 +317,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r1, #4
 	ldr r0, [r0, #0x14]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
@@ -358,7 +358,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r1, #6
 	ldr r0, [r0, #0x14]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
@@ -11390,7 +11390,7 @@ ov14_021EAFAC: ; 0x021EAFAC
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -30578,7 +30578,7 @@ _021F4B24:
 	ldr r0, [sp, #0xc]
 	add r1, r1, r2
 	mov r2, #2
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

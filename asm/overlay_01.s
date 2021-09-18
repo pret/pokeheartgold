@@ -51,7 +51,7 @@ _021E5952:
 	bl FS_LoadOverlay
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r0, _021E5BA4 ; =0x04000050
 	mov r1, #0
@@ -169,7 +169,7 @@ _021E5A50:
 	bl sub_0201F590
 	bl ov01_021E61E0
 	bl ov01_021E6178
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #4
 	bl BgConfig_Alloc
 	str r0, [r4, #8]
@@ -573,7 +573,7 @@ _021E5E12:
 	bl ov01_021E6734
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	ldr r0, [r4, #4]
@@ -868,7 +868,7 @@ ov01_021E6058: ; 0x021E6058
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6130 ; =0x022062FC
 	add r3, sp, #0x20
 	ldmia r5!, {r0, r1}
@@ -891,7 +891,7 @@ ov01_021E6058: ; 0x021E6058
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6134 ; =0x02206334
 	add r3, sp, #4
 	ldmia r5!, {r0, r1}
@@ -914,7 +914,7 @@ ov01_021E6058: ; 0x021E6058
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	add r1, sp, #0
 	strh r0, [r1]
@@ -1475,7 +1475,7 @@ ov01_021E6580: ; 0x021E6580
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
-	bl sub_02022D24
+	bl GX_BothDispOn
 	bl ov01_021EA8E0
 	str r0, [r4, #0x48]
 	bl ov01_021E61A4
@@ -1531,7 +1531,7 @@ _021E65D8:
 	bl sub_020648EC
 	ldr r0, _021E6628 ; =ov01_021E5900
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r3, r4, r5, pc}
 	nop
 _021E6628: .word ov01_021E5900
@@ -17312,7 +17312,7 @@ _021EDCD8:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl ov01_021EDE18
 	add r1, r4, #0
@@ -17786,7 +17786,7 @@ _021EE08A:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl ov01_021EE324
 	add r2, r4, #0
@@ -17943,7 +17943,7 @@ _021EE1C2:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r5, #0
 	bl ov01_021EE324
 	add r0, r5, #0
@@ -18592,7 +18592,7 @@ _021EE698:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	lsl r0, r4, #0x13
 	lsr r0, r0, #0x10
 	str r0, [sp]
@@ -19024,7 +19024,7 @@ _021EE9B2:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -19131,7 +19131,7 @@ ov01_021EEA90: ; 0x021EEA90
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -19296,7 +19296,7 @@ ov01_021EEC00: ; 0x021EEC00
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
@@ -19458,7 +19458,7 @@ ov01_021EED60: ; 0x021EED60
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -24238,7 +24238,7 @@ _021F1154:
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #8]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -30484,7 +30484,7 @@ _021F3FEA:
 	mov r1, #3
 	bl BufferIntegerAsString
 	ldr r0, [r4, #0xc]
-	bl sub_0202CE24
+	bl GetIGTHours
 	add r2, r0, #0
 	cmp r2, #0x64
 	blt _021F400A
@@ -30508,7 +30508,7 @@ _021F4018:
 	mov r1, #4
 	bl BufferIntegerAsString
 	ldr r0, [r4, #0xc]
-	bl sub_0202CE28
+	bl GetIGTMinutes
 	mov r3, #2
 	add r2, r0, #0
 	str r3, [sp]
@@ -30683,7 +30683,7 @@ ov01_021F412C: ; 0x021F412C
 	ldr r2, _021F41A0 ; =0x000003D9
 	mov r1, #0
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -58427,7 +58427,7 @@ _02200E62:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl ov01_02200F54
 	mov r2, #0x87
@@ -65734,7 +65734,7 @@ ov01_022046E8: ; 0x022046E8
 	add r1, #0x1a
 	strb r2, [r5, #0x19]
 	lsl r2, r2, #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldrb r0, [r4, #9]
 	mov r2, #0
 	cmp r0, #0

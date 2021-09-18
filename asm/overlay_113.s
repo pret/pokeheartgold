@@ -134,10 +134,10 @@ ov113_021E59F8: ; 0x021E59F8
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -551,7 +551,7 @@ ov113_021E5CF8: ; 0x021E5CF8
 	bl ov113_021E6988
 	ldr r0, _021E5D24 ; =ov113_021E62B0
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r4, pc}
 	nop
 _021E5D24: .word ov113_021E62B0
@@ -1366,7 +1366,7 @@ ov113_021E6300: ; 0x021E6300
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x40]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E647C ; =0x021E6C74
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -1384,7 +1384,7 @@ ov113_021E6300: ; 0x021E6300
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x40]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6480 ; =0x021E6BE8
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -1402,7 +1402,7 @@ ov113_021E6300: ; 0x021E6300
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x40]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6484 ; =0x021E6C04
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -1420,7 +1420,7 @@ ov113_021E6300: ; 0x021E6300
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6488 ; =0x021E6C20
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -1438,7 +1438,7 @@ ov113_021E6300: ; 0x021E6300
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x40]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E648C ; =0x021E6C58
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -1456,7 +1456,7 @@ ov113_021E6300: ; 0x021E6300
 	bl InitBgFromTemplate
 	ldr r0, [r4, #0x40]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r3, [r4]
 	mov r0, #5
 	mov r1, #0x20

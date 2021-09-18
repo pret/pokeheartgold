@@ -10,12 +10,12 @@ ov86_021E5900: ; 0x021E5900
 	mov r0, #0
 	add r6, r1, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -125,7 +125,7 @@ ov86_021E5900: ; 0x021E5900
 	bl ov86_021E6E98
 	ldr r0, _021E5A3C ; =ov86_021E5CDC
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	str r0, [r6]
 	mov r0, #1
@@ -242,7 +242,7 @@ ov86_021E5AA4: ; 0x021E5AA4
 	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x79
 	bl DestroyHeap
 	mov r0, #1
@@ -555,7 +555,7 @@ ov86_021E5D30: ; 0x021E5D30
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5E00 ; =0x021E7F20
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -593,7 +593,7 @@ ov86_021E5D30: ; 0x021E5D30
 	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5E08 ; =0x021E7F58
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}

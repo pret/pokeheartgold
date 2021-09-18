@@ -720,7 +720,7 @@ ov31_0225DAC4: ; 0x0225DAC4
 	bl BG_ClearCharDataRange
 	ldr r0, [r4, #4]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	pop {r4, pc}
 	.balign 4, 0
 _0225DB24: .word 0x04001000
@@ -2233,7 +2233,7 @@ ov31_0225E700: ; 0x0225E700
 	strb r0, [r1, #0x13]
 	ldr r0, [r4, #4]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #8
 	bl sub_0201660C
 	mov r1, #0x17

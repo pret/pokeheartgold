@@ -2067,7 +2067,7 @@ _0225FF2E:
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
@@ -2081,7 +2081,7 @@ _0225FF2E:
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #0
 	bl sub_0201BB68

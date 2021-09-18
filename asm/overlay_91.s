@@ -165,7 +165,7 @@ _0225C67E:
 _0225C680:
 	ldr r0, _0225C944 ; =ov91_0225CB58
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r2, #0
 	str r2, [r4, #0x38]
@@ -532,7 +532,7 @@ _0225C97C:
 	mov r0, #0
 	str r0, [r4, #0x34]
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	bl sub_020205AC
 	ldr r0, [r5]
@@ -933,7 +933,7 @@ ov91_0225CC4C: ; 0x0225CC4C
 	mov r0, #0
 	add r4, r1, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r0, [r5]
 	cmp r0, #0
@@ -2887,7 +2887,7 @@ ov91_0225DB18: ; 0x0225DB18
 	mov r1, #0
 	mov r2, #1
 	mov r3, #4
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	mov r0, #2
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -6783,7 +6783,7 @@ ov91_0225F878: ; 0x0225F878
 	bl BG_ClearCharDataRange
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r6, _0225FA4C ; =0x02261CB8
 	add r3, sp, #0x78
 	ldmia r6!, {r0, r1}
@@ -6806,7 +6806,7 @@ ov91_0225F878: ; 0x0225F878
 	bl BG_ClearCharDataRange
 	ldr r0, [r5]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r6, _0225FA50 ; =0x02261CD4
 	add r3, sp, #0x5c
 	ldmia r6!, {r0, r1}
@@ -6829,7 +6829,7 @@ ov91_0225F878: ; 0x0225F878
 	bl BG_ClearCharDataRange
 	ldr r0, [r5]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r6, _0225FA54 ; =0x02261CF0
 	add r3, sp, #0x40
 	ldmia r6!, {r0, r1}
@@ -6852,7 +6852,7 @@ ov91_0225F878: ; 0x0225F878
 	bl BG_ClearCharDataRange
 	ldr r0, [r5]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r6, _0225FA58 ; =0x02261D0C
 	add r3, sp, #0x24
 	ldmia r6!, {r0, r1}
@@ -6875,7 +6875,7 @@ ov91_0225F878: ; 0x0225F878
 	bl BG_ClearCharDataRange
 	ldr r0, [r5]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r6, _0225FA5C ; =0x02261D28
 	add r3, sp, #8
 	ldmia r6!, {r0, r1}
@@ -6898,7 +6898,7 @@ ov91_0225F878: ; 0x0225F878
 	bl BG_ClearCharDataRange
 	ldr r0, [r5]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers

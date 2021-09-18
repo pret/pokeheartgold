@@ -3,18 +3,18 @@
 
 	.text
 
-	thumb_func_start sub_0202CDB0
-sub_0202CDB0: ; 0x0202CDB0
+	thumb_func_start InitIGT
+InitIGT: ; 0x0202CDB0
 	mov r1, #0
 	strh r1, [r0]
 	strb r1, [r0, #2]
 	strb r1, [r0, #3]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0202CDB0
+	thumb_func_end InitIGT
 
-	thumb_func_start sub_0202CDBC
-sub_0202CDBC: ; 0x0202CDBC
+	thumb_func_start AddIGTSeconds
+AddIGTSeconds: ; 0x0202CDBC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldrh r6, [r5]
@@ -65,22 +65,22 @@ _0202CE1C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0202CE20: .word 0x000003E7
-	thumb_func_end sub_0202CDBC
+	thumb_func_end AddIGTSeconds
 
-	thumb_func_start sub_0202CE24
-sub_0202CE24: ; 0x0202CE24
+	thumb_func_start GetIGTHours
+GetIGTHours: ; 0x0202CE24
 	ldrh r0, [r0]
 	bx lr
-	thumb_func_end sub_0202CE24
+	thumb_func_end GetIGTHours
 
-	thumb_func_start sub_0202CE28
-sub_0202CE28: ; 0x0202CE28
+	thumb_func_start GetIGTMinutes
+GetIGTMinutes: ; 0x0202CE28
 	ldrb r0, [r0, #2]
 	bx lr
-	thumb_func_end sub_0202CE28
+	thumb_func_end GetIGTMinutes
 
-	thumb_func_start sub_0202CE2C
-sub_0202CE2C: ; 0x0202CE2C
+	thumb_func_start GetIGTSeconds
+GetIGTSeconds: ; 0x0202CE2C
 	ldrb r0, [r0, #3]
 	bx lr
-	thumb_func_end sub_0202CE2C
+	thumb_func_end GetIGTSeconds
