@@ -1528,7 +1528,7 @@ _021E6582:
 	add r0, r5, #0
 	add r1, r1, r4
 	add r2, r6, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	add r0, r7, #0
 	mov r1, #2
 	bl sub_020B802C
@@ -1536,7 +1536,7 @@ _021E6582:
 	add r0, r5, #0
 	add r1, r1, r4
 	add r2, r6, #0
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov78_021E656C

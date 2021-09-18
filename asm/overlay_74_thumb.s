@@ -9822,12 +9822,12 @@ ov74_0222BED8: ; 0x0222BED8
 	add r3, r0, #0
 	mov r2, #8
 	ldrsb r2, [r3, r2]
-	ldr r3, _0222BEE8 ; =sub_020CF178
+	ldr r3, _0222BEE8 ; =G2x_SetBlendBrightness_
 	ldr r0, _0222BEEC ; =0x04000050
 	mov r1, #0x22
 	bx r3
 	nop
-_0222BEE8: .word sub_020CF178
+_0222BEE8: .word G2x_SetBlendBrightness_
 _0222BEEC: .word 0x04000050
 	thumb_func_end ov74_0222BED8
 
@@ -9836,12 +9836,12 @@ ov74_0222BEF0: ; 0x0222BEF0
 	add r3, r0, #0
 	mov r2, #8
 	ldrsb r2, [r3, r2]
-	ldr r3, _0222BF00 ; =sub_020CF178
+	ldr r3, _0222BF00 ; =G2x_SetBlendBrightness_
 	ldr r0, _0222BF04 ; =0x04001050
 	mov r1, #0x22
 	bx r3
 	nop
-_0222BF00: .word sub_020CF178
+_0222BF00: .word G2x_SetBlendBrightness_
 _0222BF04: .word 0x04001050
 	thumb_func_end ov74_0222BEF0
 
@@ -13665,7 +13665,7 @@ _0222DD6A:
 	ldr r0, [r0, #0x14]
 	lsl r1, r7, #5
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	mov r1, #0
 	ldr r0, [sp, #8]
 	add r2, r1, #0
@@ -16566,7 +16566,7 @@ _0222F504:
 	ldr r0, [r0, #0x14]
 	lsl r1, r6, #5
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	mov r1, #0
 	ldr r0, [sp, #8]
 	add r2, r1, #0
@@ -20771,7 +20771,7 @@ ov74_022314BC: ; 0x022314BC
 	cmp r0, #2
 	beq _022314D4
 	bl ov74_02231448
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 	pop {r3, pc}
 _022314D4:
@@ -21072,7 +21072,7 @@ ov74_02231704: ; 0x02231704
 	cmp r0, #2
 	beq _0223171C
 	bl ov74_02231448
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 	pop {r3, pc}
 _0223171C:
@@ -21090,7 +21090,7 @@ ov74_02231724: ; 0x02231724
 	cmp r0, #2
 	beq _0223173C
 	bl ov74_02231448
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 	pop {r3, pc}
 _0223173C:
@@ -21108,7 +21108,7 @@ ov74_02231744: ; 0x02231744
 	cmp r0, #2
 	beq _0223175C
 	bl ov74_02231448
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 	pop {r3, pc}
 _0223175C:
@@ -22134,7 +22134,7 @@ ov74_02231EC4: ; 0x02231EC4
 	ldr r0, [r0, #0x14]
 	lsl r1, r1, #5
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
@@ -22235,7 +22235,7 @@ _02231FC0:
 	ldr r1, [r5]
 	add r0, #0xc
 	add r2, r6, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #4]
 	bl sub_02024A14
@@ -30051,7 +30051,7 @@ ov74_02235B14: ; 0x02235B14
 	lsl r2, r2, #6
 	ldr r0, [sp, #0x40]
 	add r1, r1, r2
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	ldr r0, [sp, #0x20]
 	bl sub_02024B34
 	mov r1, #2
@@ -30877,7 +30877,7 @@ ov74_022361D4: ; 0x022361D4
 	ldr r0, [r1, r0]
 	cmp r0, #4
 	bne _022361E6
-	bl sub_020D3F48
+	bl OS_Terminate
 _022361E6:
 	mov r0, #2
 	bl ov74_02236168
@@ -30942,7 +30942,7 @@ ov74_02236258: ; 0x02236258
 	ldr r0, [r1, r0]
 	cmp r0, #2
 	beq _0223626C
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 _0223626C:
 	bl sub_020DEF24
@@ -31374,7 +31374,7 @@ ov74_022365AC: ; 0x022365AC
 	ldr r0, [r1, r0]
 	cmp r0, #1
 	beq _022365BE
-	bl sub_020D3F48
+	bl OS_Terminate
 _022365BE:
 	mov r0, #3
 	bl ov74_02236168

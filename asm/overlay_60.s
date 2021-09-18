@@ -1415,7 +1415,7 @@ _021E642E:
 	mov r1, #4
 	mov r2, #0x39
 	add r3, r4, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add r0, r5, #0
 	mov r1, #2
 	add r0, #0xbc
@@ -2263,7 +2263,7 @@ _021E6B44:
 	ldr r0, _021E6B64 ; =0x04001050
 	mov r1, #4
 	mov r2, #0x39
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _021E6B5A:
 	pop {r3, pc}
 	.balign 4, 0
@@ -2895,7 +2895,7 @@ _021E703E:
 	ldr r0, _021E706C ; =0x04000050
 	ldr r1, [r4, #8]
 	ldr r2, [r4, #0xc]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 _021E7058:
@@ -2905,7 +2905,7 @@ _021E7058:
 	ldr r0, _021E7070 ; =0x04001050
 	ldr r1, [r4, #8]
 	ldr r2, [r4, #0xc]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -4356,7 +4356,7 @@ _021E7B02:
 	mov r1, #1
 	mov r2, #0x20
 	mov r3, #0x1f
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add r0, r5, #0
 	bl ov60_021E7958
 	b _021E7C4C
@@ -8348,7 +8348,7 @@ ov60_021E9BFC: ; 0x021E9BFC
 	orr r1, r2
 	strh r1, [r0]
 	ldr r0, _021E9C74 ; =_021EB278
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	mov r0, #0
 	add r1, r0, #0
 	add r2, r0, #0
@@ -8592,7 +8592,7 @@ ov60_021E9D78: ; 0x021E9D78
 	mov r2, #0x3e
 	add r3, r1, #0
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #1
 	strb r0, [r4, #1]
 	add sp, #8

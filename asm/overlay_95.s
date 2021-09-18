@@ -33,14 +33,14 @@ ov95_021E5928: ; 0x021E5928
 	mov r1, #0
 	mov r2, #0xe
 	mov r3, #0xb
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _021E5950 ; =0x04001050
 	mov r1, #0
 	mov r2, #0xe
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _021E594C: .word 0x04000050

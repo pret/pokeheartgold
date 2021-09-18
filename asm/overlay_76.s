@@ -2445,7 +2445,7 @@ _021E6C42:
 	add r1, r4, r1
 	ldr r1, [r1, #0xc]
 	ldr r2, [r2, #0x10]
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	ldr r1, [sp, #0xc]
 	ldr r0, [r1, #0xc]
 	ldr r1, [r1, #8]

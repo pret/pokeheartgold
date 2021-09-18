@@ -96655,7 +96655,7 @@ _022665BC:
 	ldr r0, _0226663C ; =0x04001050
 	mov r1, #2
 	mov r3, #8
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add r0, r7, #0
 	bl ov12_02268DAC
 	ldr r0, [sp, #0x2c]
@@ -99024,7 +99024,7 @@ ov12_02267984: ; 0x02267984
 	mov r1, #2
 	mov r2, #0xf
 	mov r3, #0x1f
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, [r5]
 	bl ov12_0223A930
 	ldr r1, _02267A4C ; =0x000004EC
@@ -106310,7 +106310,7 @@ _0226B198:
 	sub r0, r0, r3
 	str r0, [sp]
 	ldr r0, _0226B28C ; =0x04000050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldrb r0, [r4, #0x1a]
 	add r0, r0, #1
 	strb r0, [r4, #0x1a]

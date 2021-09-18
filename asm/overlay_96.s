@@ -7199,7 +7199,7 @@ _021E8E2A:
 	ldr r2, [sp, #0x14]
 	add r0, r5, r0
 	add r1, r1, r4
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 _021E8E54:
 	ldr r0, [sp, #0x18]
 	cmp r0, #0
@@ -7213,7 +7213,7 @@ _021E8E54:
 	ldr r2, [sp, #0x14]
 	add r0, r5, r0
 	add r1, r1, r4
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 _021E8E72:
 	ldr r1, [sp, #0x20]
 	mov r0, #0x56
@@ -19754,13 +19754,13 @@ _021EED44:
 	ldr r2, [sp]
 	add r0, r7, #0
 	add r1, r6, r5
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r3, r4, r5, r6, r7, pc}
 _021EED50:
 	ldr r2, [sp]
 	add r0, r7, #0
 	add r1, r6, r5
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	pop {r3, r4, r5, r6, r7, pc}
 _021EED5C:
 	bl GF_AssertFail
@@ -23054,7 +23054,7 @@ _021F07F6:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xc
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _021F08DC ; =0x0000074B
 	mov r1, #0xc
 	strb r1, [r6, r0]
@@ -27561,7 +27561,7 @@ _021F2C1C:
 	mov r1, #0
 	mov r2, #1
 	sub r3, r3, r4
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 _021F2C50:
@@ -27611,7 +27611,7 @@ _021F2C86:
 	ldr r0, _021F2CC8 ; =0x04000050
 	mov r1, #0
 	mov r2, #1
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 _021F2CB8:
@@ -27803,7 +27803,7 @@ _021F2DF8:
 	str r2, [sp]
 	add r0, #0x38
 	mov r2, #1
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -30846,7 +30846,7 @@ _021F451C:
 	ldr r0, [r7, r4]
 	ldr r1, [r1, #0x20]
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	add r7, r5, #0
 	add r7, #0x34
 	ldr r0, [r7, r4]
@@ -31664,7 +31664,7 @@ _021F4B5C:
 	mov r2, #0x34
 	sub r3, r3, r5
 	str r5, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _021F4B82:
 	ldrh r0, [r4, #0x1a]
 	add r2, r4, #0
@@ -31795,7 +31795,7 @@ _021F4C6E:
 	mov r2, #0x24
 	sub r3, r3, r4
 	str r4, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x20
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -34301,7 +34301,7 @@ ov96_021F6138: ; 0x021F6138
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	ldr r0, _021F61B0 ; =0x04000540
 	mov r3, #2
 	str r3, [r0]
@@ -37746,7 +37746,7 @@ ov96_021F7C70: ; 0x021F7C70
 	ldr r0, _021F7D04 ; =0x04000050
 	mov r1, #0x3f
 	mov r2, #0
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
@@ -46937,7 +46937,7 @@ _021FC52A:
 	ldr r1, [sp, #8]
 	ldr r0, [r0, #0x14]
 	ldr r2, [sp, #0x1c]
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -54819,7 +54819,7 @@ _0220046C:
 	mov r2, #0x32
 	ldr r0, [r7, r4]
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	add r7, r5, r0
@@ -54870,7 +54870,7 @@ ov96_022004B4: ; 0x022004B4
 	mov r2, #2
 	ldr r0, [r0, #0x14]
 	lsl r2, r2, #8
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	mov r1, #0x47
 	add r2, r5, r6
 	lsl r1, r1, #2
@@ -62106,7 +62106,7 @@ _02203F12:
 	ldr r0, [r5, #0x24]
 	ldr r1, [r7, #0x3c]
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	ldr r0, [r5, #0x28]
 	mov r1, #0x20
 	bl DC_FlushRange
@@ -69714,7 +69714,7 @@ ov96_02207BE4: ; 0x02207BE4
 	add r0, r4, r6
 	lsl r1, r1, #0xa
 	lsl r2, r2, #0xa
-	bl sub_020D0224
+	bl GX_LoadBG0Char
 	ldr r0, _02207C30 ; =0x00000512
 	mov r1, #0
 	strb r1, [r5, r0]
@@ -70559,7 +70559,7 @@ _022082D4:
 	mov r2, #0x32
 	ldr r0, [r7, r4]
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	mov r0, #0x43
 	lsl r0, r0, #2
 	add r7, r5, r0
@@ -70611,7 +70611,7 @@ ov96_0220831C: ; 0x0220831C
 	mov r2, #2
 	ldr r0, [r0, #0x14]
 	lsl r2, r2, #8
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	add r1, r5, r6
 	add r1, #0xfc
 	ldrb r1, [r1]

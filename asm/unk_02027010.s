@@ -14,7 +14,7 @@ sub_02027010: ; 0x02027010
 	bl sub_020D7F88
 	cmp r0, #0
 	bne _02027020
-	bl sub_020D3F48
+	bl OS_Terminate
 	pop {r3, pc}
 _02027020:
 	ldr r0, _0202707C ; =0x027FF00C
@@ -57,7 +57,7 @@ _0202704A:
 	cmp r1, r0
 	beq _02027078
 _02027074:
-	bl sub_020D3F48
+	bl OS_Terminate
 _02027078:
 	pop {r3, pc}
 	nop

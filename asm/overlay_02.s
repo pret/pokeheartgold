@@ -1053,7 +1053,7 @@ ov02_02246398: ; 0x02246398
 	str r0, [sp]
 	ldr r0, _02246440 ; =0x04000050
 	mov r2, #5
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r1, [r5]
 	mov r0, #0xae
 	bl NARC_ctor
@@ -1146,7 +1146,7 @@ ov02_02246444: ; 0x02246444
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -1186,7 +1186,7 @@ _022464B2:
 	str r0, [sp]
 	ldr r0, _02246508 ; =0x04000050
 	mov r2, #5
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldrb r1, [r4, #0xa]
 	add r0, r1, #1
 	strb r0, [r4, #0xa]
@@ -10187,7 +10187,7 @@ ov02_0224A834: ; 0x0224A834
 	add r0, r4, #0
 	add r1, r5, #0
 	lsl r2, r2, #6
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov02_0224A834
 

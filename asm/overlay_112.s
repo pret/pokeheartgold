@@ -6912,7 +6912,7 @@ ov112_021E9290: ; 0x021E9290
 	add r0, r5, #0
 	lsl r1, r1, #6
 	lsl r2, r2, #6
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x9a
@@ -6929,7 +6929,7 @@ _021E9312:
 	add r2, r1, #0
 	add r0, r5, #0
 	add r2, #0x40
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	mov r3, #0x20
 	str r3, [sp]
 	mov r0, #0x9a
@@ -10054,7 +10054,7 @@ ov112_021EABE8: ; 0x021EABE8
 	add r6, r3, #0
 	lsl r1, r1, #5
 	lsl r2, r2, #0xa
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
@@ -14785,7 +14785,7 @@ ov112_021ED0D0: ; 0x021ED0D0
 	str r0, [sp]
 	ldr r0, _021ED130 ; =0x04000050
 	add r3, r1, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _021ED134 ; =ov112_021ED13C
 	add r1, r4, #0
 	mov r2, #2
@@ -14827,7 +14827,7 @@ _021ED154:
 	sub r0, r0, r3
 	str r0, [sp]
 	ldr r0, _021ED17C ; =0x04000050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _021ED178 ; =0x0001F2D6
 	ldrh r0, [r4, r0]
 	cmp r0, #0x1f
@@ -22378,7 +22378,7 @@ ov112_021F0D04: ; 0x021F0D04
 	mov r2, #0x32
 	ldr r1, [r4, r1]
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -24522,13 +24522,13 @@ _021F1DA0:
 	ldr r2, [sp]
 	add r0, r7, #0
 	add r1, r6, r5
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r3, r4, r5, r6, r7, pc}
 _021F1DAC:
 	ldr r2, [sp]
 	add r0, r7, #0
 	add r1, r6, r5
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	pop {r3, r4, r5, r6, r7, pc}
 _021F1DB8:
 	bl GF_AssertFail

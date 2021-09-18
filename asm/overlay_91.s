@@ -10324,7 +10324,7 @@ _02261406:
 	ldr r0, _022614D0 ; =0x04001050
 	mov r2, #8
 	mov r3, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _0226143E:
@@ -10367,7 +10367,7 @@ _0226145C:
 	mov r2, #8
 	ldr r0, _022614D0 ; =0x04001050
 	orr r2, r4
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _0226148E:
@@ -10400,7 +10400,7 @@ _022614A2:
 	ldr r0, _022614D0 ; =0x04001050
 	lsl r1, r2
 	mov r2, #8
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _022614CA:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}

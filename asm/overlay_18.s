@@ -1053,7 +1053,7 @@ ov18_021E6174: ; 0x021E6174
 	mov r1, #0
 	mov r2, #0xf
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _021E6188: .word 0x04000050
@@ -1067,7 +1067,7 @@ ov18_021E618C: ; 0x021E618C
 	ldr r0, _021E61A0 ; =0x04000050
 	mov r1, #4
 	mov r2, #8
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _021E61A0: .word 0x04000050
@@ -17039,7 +17039,7 @@ _021EE2F0:
 	sub r0, r0, r3
 	str r0, [sp]
 	ldr r0, _021EE310 ; =0x04001050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, r4, r5, pc}
 	nop
 _021EE30C: .word 0x000018CB
@@ -17075,7 +17075,7 @@ ov18_021EE314: ; 0x021EE314
 	sub r0, r0, r3
 	str r0, [sp]
 	ldr r0, _021EE358 ; =0x04001050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -22718,13 +22718,13 @@ ov18_021F111C: ; 0x021F111C
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r4, r5, r6, pc}
 _021F1154:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov18_021F111C
 
@@ -23971,7 +23971,7 @@ _021F1AC8:
 	ldr r1, [sp, #0x1c]
 	add r0, r7, #0
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	ldr r0, [r4, r6]
 	ldr r0, [r0]
 	bl sub_02024B34
@@ -39455,7 +39455,7 @@ ov18_021F9518: ; 0x021F9518
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x80
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x44

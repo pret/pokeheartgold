@@ -15,7 +15,7 @@ ov27_02259F80: ; 0x02259F80
 	mov r1, #8
 	bl CreateHeap
 	mov r0, #0
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	mov r0, #0x80
 	bl GX_SetBankForSubBG
 	mov r0, #1
@@ -1257,7 +1257,7 @@ _0225A99A:
 	mov r1, #0
 	mov r2, #0x23
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 _0225A9AE:
@@ -4402,7 +4402,7 @@ ov27_0225C250: ; 0x0225C250
 	str r3, [sp, #4]
 	bl CreateHeap
 	mov r0, #0
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	mov r0, #0x80
 	bl GX_SetBankForSubBG
 	mov r0, #1

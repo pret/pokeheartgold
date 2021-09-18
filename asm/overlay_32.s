@@ -135,7 +135,7 @@ ov32_0225D634: ; 0x0225D634
 	sub sp, #0x54
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	ldr r5, _0225D6B8 ; =0x0225E1A4
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}

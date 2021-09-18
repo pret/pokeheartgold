@@ -332,7 +332,7 @@ _020081C8:
 	ldrsh r0, [r0, r2]
 	mov r2, #2
 	ldrsh r1, [r1, r2]
-	bl sub_020CFBB8
+	bl G3_RotX
 	ldrh r0, [r4, #0x3a]
 	asr r0, r0, #4
 	lsl r2, r0, #2
@@ -341,7 +341,7 @@ _020081C8:
 	ldrsh r0, [r0, r2]
 	mov r2, #2
 	ldrsh r1, [r1, r2]
-	bl sub_020CFBF4
+	bl G3_RotY
 	ldrh r0, [r4, #0x3c]
 	asr r0, r0, #4
 	lsl r2, r0, #2
@@ -350,7 +350,7 @@ _020081C8:
 	ldrsh r0, [r0, r2]
 	mov r2, #2
 	ldrsh r1, [r1, r2]
-	bl sub_020CFC30
+	bl G3_RotZ
 	ldr r0, [r4, #0x28]
 	mov r3, #0x40
 	lsl r0, r0, #0xc

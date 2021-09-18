@@ -321,14 +321,14 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #1
 	mov r2, #0x3f
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #3
 	str r0, [sp]
 	ldr r0, _0225CA60 ; =0x04001050
 	mov r1, #8
 	mov r2, #0x1f
 	mov r3, #0xd
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r1, _0225CA64 ; =0x00003850
 	add r0, r4, #0
 	mov r2, #0x75
@@ -4989,7 +4989,7 @@ _0225ED2A:
 ov93_0225ED3C: ; 0x0225ED3C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_020D0AD4
+	bl GX_BeginLoadTexPltt
 	mov r2, #0x25
 	lsl r2, r2, #4
 	add r1, r2, #0
@@ -4998,8 +4998,8 @@ ov93_0225ED3C: ; 0x0225ED3C
 	add r2, r2, #4
 	ldr r1, [r4, r1]
 	ldr r2, [r4, r2]
-	bl sub_020D0B08
-	bl sub_020D0B74
+	bl GX_LoadTexPltt
+	bl GX_EndLoadTexPltt
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov93_0225ED3C

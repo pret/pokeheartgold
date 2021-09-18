@@ -152,7 +152,7 @@ ov29_0225D648: ; 0x0225D648
 	sub sp, #0x38
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	ldr r5, _0225D6AC ; =0x0225E1C8
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}

@@ -364,10 +364,10 @@ sub_02009FE8: ; 0x02009FE8
 	beq _0200A03C
 	b _0200A068
 _02009FFE:
-	bl sub_020CEBEC
+	bl GX_GetBankForOBJ
 	cmp r0, #0x40
 	beq _0200A00E
-	bl sub_020CEBEC
+	bl GX_GetBankForOBJ
 	cmp r0, #0x20
 	bne _0200A01E
 _0200A00E:
@@ -394,10 +394,10 @@ _0200A02E:
 	bl sub_020216F4
 	pop {r4, pc}
 _0200A03C:
-	bl sub_020CEBEC
+	bl GX_GetBankForOBJ
 	cmp r0, #0x30
 	beq _0200A04C
-	bl sub_020CEBEC
+	bl GX_GetBankForOBJ
 	cmp r0, #0x50
 	bne _0200A05A
 _0200A04C:

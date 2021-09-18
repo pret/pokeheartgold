@@ -2526,14 +2526,14 @@ _021E6CB0:
 	ldr r0, _021E6D1C ; =0x04000050
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #4
 	str r0, [sp]
 	ldr r0, _021E6D20 ; =0x04001050
 	mov r1, #1
 	mov r2, #0x1e
 	mov r3, #0x1c
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0xf4
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2555,13 +2555,13 @@ ov108_021E6D24: ; 0x021E6D24
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r1, #0
 	ldr r0, _021E6D78 ; =0x04001050
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r6, #0xd
 	mov r4, #0
 	lsl r6, r6, #6
@@ -6554,8 +6554,8 @@ ov108_021E8CD4: ; 0x021E8CD4
 	add r5, r0, #0
 	bl MI_CpuFill8
 	bl sub_020C2698
-	bl sub_020CF564
-	bl sub_020CF704
+	bl G3X_Init
+	bl G3X_InitMtxStack
 	ldr r0, _021E8DF4 ; =0x04000060
 	ldr r1, _021E8DF8 ; =0xFFFFCFFD
 	ldrh r2, [r0]
@@ -8387,7 +8387,7 @@ ov108_021E9A60: ; 0x021E9A60
 	mov r1, #1
 	mov r2, #0x1e
 	mov r3, #0x1c
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -8408,7 +8408,7 @@ ov108_021E9BD4: ; 0x021E9BD4
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _021E9C0C ; =0x00000528
 	ldr r0, [r4, r0]
 	bl FreeToHeap

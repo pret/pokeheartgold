@@ -8,8 +8,8 @@ _020F5950:
 	.word sub_020B82CC
 	.word sub_020B80A0
 	.word sub_020B82CC
-	.word sub_020CFE74
-	.word sub_020CFECC
+	.word GX_LoadOBJ
+	.word GXS_LoadOBJ
 
 _020F5968:
 	.word GX_LoadBGPltt

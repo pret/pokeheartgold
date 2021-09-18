@@ -733,7 +733,7 @@ _0225F560:
 	mov r1, #2
 	mov r2, #0x3d
 	mov r3, #0xc
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #0
 	bl sub_0201BB68
@@ -1006,7 +1006,7 @@ _0225F820:
 	mov r1, #2
 	mov r2, #0x3d
 	mov r3, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, [r4]
 	mov r1, #1
 	bl sub_02024830
@@ -1042,7 +1042,7 @@ _0225F87C:
 	ldr r0, _0225F8DC ; =0x04000050
 	mov r1, #2
 	mov r2, #0x3d
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _0225F892:
 	mov r0, #0x6a
 	lsl r0, r0, #2

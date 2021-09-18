@@ -80,7 +80,7 @@ _02253E94:
 	add r1, r4, #0
 	bl ov01_021FB4A0
 	ldr r0, _02253ED0 ; =0x02257334
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	add sp, #0x24
 	pop {r3, r4, r5, r6, pc}
 	nop

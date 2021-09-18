@@ -27,13 +27,13 @@ sub_0203A9DC: ; 0x0203A9DC
 	ldr r2, [r3, r1]
 	orr r0, r2
 	str r0, [r3, r1]
-	ldr r3, _0203A9F8 ; =sub_020D422C
+	ldr r3, _0203A9F8 ; =MI_WaitDma
 	mov r0, #3
 	bx r3
 	nop
 _0203A9F0: .word 0x027E0000
 _0203A9F4: .word 0x00003FF8
-_0203A9F8: .word sub_020D422C
+_0203A9F8: .word MI_WaitDma
 	thumb_func_end sub_0203A9DC
 
 	thumb_func_start sub_0203A9FC

@@ -703,7 +703,7 @@ sub_020139D0: ; 0x020139D0
 	add r1, r0, #0
 	add r0, r4, #0
 	add r2, r6, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	b _02013A46
 _02013A36:
 	mov r1, #2
@@ -711,7 +711,7 @@ _02013A36:
 	add r1, r0, #0
 	add r0, r4, #0
 	add r2, r6, #0
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 _02013A46:
 	add r0, r4, #0
 	bl FreeToHeap
@@ -1116,7 +1116,7 @@ _02013CF6:
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	mov r0, #1
 	str r6, [r5, #4]
 	lsl r0, r0, #0x1a
@@ -1127,7 +1127,7 @@ _02013D38:
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	ldr r0, _02013D7C ; =0x04001000
 	str r6, [r5, #8]
 	ldr r1, [r0]

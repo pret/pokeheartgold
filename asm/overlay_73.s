@@ -3854,7 +3854,7 @@ ov73_021E77A4: ; 0x021E77A4
 	ldr r1, _021E77E4 ; =0x021EA520
 	lsl r3, r5, #1
 	ldrh r1, [r1, r3]
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	lsl r0, r4, #5
 	add r1, r5, #7
 	add r0, r6, r0

@@ -2976,14 +2976,14 @@ ov70_02238FB4: ; 0x02238FB4
 	add r2, r1, #0
 	ldr r0, _02238FD8 ; =0x04000050
 	sub r2, #0x25
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	pop {r3, pc}
 _02238FC8:
 	mov r1, #0x1e
 	add r2, r1, #0
 	ldr r0, _02238FDC ; =0x04001050
 	sub r2, #0x25
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	pop {r3, pc}
 	nop
 _02238FD8: .word 0x04000050
@@ -3062,7 +3062,7 @@ _02239072:
 	cmp r0, #1
 	bne _022390A2
 	ldr r0, _022390D8 ; =0x0400106C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	cmp r0, #0
 	beq _022390A2
 	add r0, r4, #0
@@ -5984,7 +5984,7 @@ ov70_0223A7E4: ; 0x0223A7E4
 	add r0, r4, #0
 	lsl r1, r1, #8
 	lsl r2, r2, #6
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x3d
@@ -6168,13 +6168,13 @@ ov70_0223A8BC: ; 0x0223A8BC
 	cmp r0, #0x11
 	bne _0223AA54
 	ldr r0, _0223AA88 ; =0x0400006C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	mov r1, #0xf
 	mvn r1, r1
 	cmp r0, r1
 	bne _0223AA0A
 	ldr r0, _0223AA8C ; =0x0400106C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	mov r1, #0xf
 	mvn r1, r1
 	cmp r0, r1
@@ -6192,13 +6192,13 @@ ov70_0223A8BC: ; 0x0223A8BC
 	b _0223AA54
 _0223AA0A:
 	ldr r0, _0223AA88 ; =0x0400006C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	mov r1, #0xf
 	mvn r1, r1
 	cmp r0, r1
 	beq _0223AA3E
 	ldr r0, _0223AA8C ; =0x0400106C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	mov r1, #0xf
 	mvn r1, r1
 	cmp r0, r1
@@ -6372,7 +6372,7 @@ ov70_0223AB3C: ; 0x0223AB3C
 	mov r3, #0x3d
 	bl BG_ClearCharDataRange
 	ldr r0, _0223ABD4 ; =0x0400106C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	cmp r0, #0
 	bne _0223ABAE
 	add r0, r5, #0
@@ -8491,7 +8491,7 @@ ov70_0223BD04: ; 0x0223BD04
 	add r3, r2, #0
 	bl ov70_0223CAC4
 	ldr r0, _0223BD7C ; =0x0400006C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	mov r1, #0xf
 	mvn r1, r1
 	cmp r0, r1
@@ -10526,7 +10526,7 @@ ov70_0223CD28: ; 0x0223CD28
 	ldr r0, _0223CD40 ; =0x04000050
 	beq _0223CD38
 	mov r1, #0xa
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	pop {r3, pc}
 _0223CD38:
 	mov r1, #0
@@ -10558,7 +10558,7 @@ ov70_0223CD44: ; 0x0223CD44
 	add r0, r4, #0
 	bl ov70_02241358
 	ldr r0, _0223CDD4 ; =0x0400106C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	cmp r0, #0
 	bne _0223CD98
 	mov r0, #6
@@ -10625,7 +10625,7 @@ ov70_0223CDF8: ; 0x0223CDF8
 	add r4, r0, #0
 	bl sub_0203A914
 	ldr r0, _0223CE40 ; =0x0400106C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	cmp r0, #0
 	beq _0223CE10
 	add r0, r4, #0
@@ -12998,7 +12998,7 @@ _0223E134:
 	ldr r1, [r5]
 	add r0, #0xc
 	add r2, r6, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #4]
 	bl sub_02024A14
@@ -16163,7 +16163,7 @@ ov70_0223F9D4: ; 0x0223F9D4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0223FA04 ; =0x0400106C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	cmp r0, #0
 	beq _0223F9E8
 	add r0, r4, #0
@@ -19418,7 +19418,7 @@ ov70_022412C8: ; 0x022412C8
 	mov r2, #2
 	ldr r6, [r6, #0xc]
 	lsl r2, r2, #8
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	lsl r0, r4, #5
 	add r1, r5, #2
 	add r0, r6, r0

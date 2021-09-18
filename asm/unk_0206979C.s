@@ -1810,7 +1810,7 @@ _0206A440:
 	mov r1, #4
 	mov r2, #0x21
 	mov r3, #0x10
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #0x10
 	mov r1, #1
 	str r0, [sp]

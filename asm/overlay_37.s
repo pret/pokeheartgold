@@ -1922,7 +1922,7 @@ _021E68FA:
 	add r2, r1, #0
 	ldr r0, _021E6924 ; =0x04000050
 	sub r2, #0x14
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	add r0, r5, #0
 	bl ov37_021E68AC
 	add r0, r4, #0

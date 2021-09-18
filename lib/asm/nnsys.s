@@ -1,8 +1,13 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
-	.public _02110C7C
-	.public _02110C80
+	.public sIsDispOn
+	.public GXi_DmaId
+
+	.bss
+
+_021D84B0:
+	.space 0x910C
 
 	.text
 
@@ -1545,12 +1550,12 @@ sub_020B5F48: ; 0x020B5F48
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020D08EC
+	bl GX_BeginLoadTex
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D0948
-	bl sub_020D0A88
+	bl GX_LoadTex
+	bl GX_EndLoadTex
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020B5F48
 
@@ -1560,12 +1565,12 @@ sub_020B5F74: ; 0x020B5F74
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020D0AD4
+	bl GX_BeginLoadTexPltt
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D0B08
-	bl sub_020D0B74
+	bl GX_LoadTexPltt
+	bl GX_EndLoadTexPltt
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020B5F74
 
@@ -1574,11 +1579,11 @@ sub_020B5FA0: ; 0x020B5FA0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r2
-	bl sub_020D0BB8
+	bl GX_BeginLoadClearImage
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D0C48
-	bl sub_020D0D1C
+	bl GX_LoadClearImageColor
+	bl GX_EndLoadClearImage
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020B5FA0
 
@@ -1587,92 +1592,92 @@ sub_020B5FC4: ; 0x020B5FC4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r2
-	bl sub_020D0BB8
+	bl GX_BeginLoadClearImage
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D0CB0
-	bl sub_020D0D1C
+	bl GX_LoadClearImageDepth
+	bl GX_EndLoadClearImage
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020B5FC4
 
 	arm_func_start sub_020B5FE8
 sub_020B5FE8: ; 0x020B5FE8
-	ldr ip, _020B5FF0 ; =sub_020D0224
+	ldr ip, _020B5FF0 ; =GX_LoadBG0Char
 	bx ip
 	.align 2, 0
-_020B5FF0: .word sub_020D0224
+_020B5FF0: .word GX_LoadBG0Char
 	arm_func_end sub_020B5FE8
 
 	arm_func_start sub_020B5FF4
 sub_020B5FF4: ; 0x020B5FF4
-	ldr ip, _020B5FFC ; =sub_020D02E4
+	ldr ip, _020B5FFC ; =GX_LoadBG1Char
 	bx ip
 	.align 2, 0
-_020B5FFC: .word sub_020D02E4
+_020B5FFC: .word GX_LoadBG1Char
 	arm_func_end sub_020B5FF4
 
 	arm_func_start sub_020B6000
 sub_020B6000: ; 0x020B6000
-	ldr ip, _020B6008 ; =sub_020D03A4
+	ldr ip, _020B6008 ; =GX_LoadBG2Char
 	bx ip
 	.align 2, 0
-_020B6008: .word sub_020D03A4
+_020B6008: .word GX_LoadBG2Char
 	arm_func_end sub_020B6000
 
 	arm_func_start sub_020B600C
 sub_020B600C: ; 0x020B600C
-	ldr ip, _020B6014 ; =sub_020D0464
+	ldr ip, _020B6014 ; =GX_LoadBG3Char
 	bx ip
 	.align 2, 0
-_020B6014: .word sub_020D0464
+_020B6014: .word GX_LoadBG3Char
 	arm_func_end sub_020B600C
 
 	arm_func_start sub_020B6018
 sub_020B6018: ; 0x020B6018
-	ldr ip, _020B6020 ; =sub_020CFF24
+	ldr ip, _020B6020 ; =GX_LoadBG0Scr
 	bx ip
 	.align 2, 0
-_020B6020: .word sub_020CFF24
+_020B6020: .word GX_LoadBG0Scr
 	arm_func_end sub_020B6018
 
 	arm_func_start sub_020B6024
 sub_020B6024: ; 0x020B6024
-	ldr ip, _020B602C ; =sub_020CFFE4
+	ldr ip, _020B602C ; =GX_LoadBG1Scr
 	bx ip
 	.align 2, 0
-_020B602C: .word sub_020CFFE4
+_020B602C: .word GX_LoadBG1Scr
 	arm_func_end sub_020B6024
 
 	arm_func_start sub_020B6030
 sub_020B6030: ; 0x020B6030
-	ldr ip, _020B6038 ; =sub_020D00A4
+	ldr ip, _020B6038 ; =GX_LoadBG2Scr
 	bx ip
 	.align 2, 0
-_020B6038: .word sub_020D00A4
+_020B6038: .word GX_LoadBG2Scr
 	arm_func_end sub_020B6030
 
 	arm_func_start sub_020B603C
 sub_020B603C: ; 0x020B603C
-	ldr ip, _020B6044 ; =sub_020D0164
+	ldr ip, _020B6044 ; =GX_LoadBG3Scr
 	bx ip
 	.align 2, 0
-_020B6044: .word sub_020D0164
+_020B6044: .word GX_LoadBG3Scr
 	arm_func_end sub_020B603C
 
 	arm_func_start sub_020B6048
 sub_020B6048: ; 0x020B6048
-	ldr ip, _020B6050 ; =sub_020D00A4
+	ldr ip, _020B6050 ; =GX_LoadBG2Scr
 	bx ip
 	.align 2, 0
-_020B6050: .word sub_020D00A4
+_020B6050: .word GX_LoadBG2Scr
 	arm_func_end sub_020B6048
 
 	arm_func_start sub_020B6054
 sub_020B6054: ; 0x020B6054
-	ldr ip, _020B605C ; =sub_020D0164
+	ldr ip, _020B605C ; =GX_LoadBG3Scr
 	bx ip
 	.align 2, 0
-_020B605C: .word sub_020D0164
+_020B605C: .word GX_LoadBG3Scr
 	arm_func_end sub_020B6054
 
 	arm_func_start sub_020B6060
@@ -1723,98 +1728,98 @@ sub_020B60A4: ; 0x020B60A4
 
 	arm_func_start sub_020B60D0
 sub_020B60D0: ; 0x020B60D0
-	ldr ip, _020B60D8 ; =sub_020CFDC8
+	ldr ip, _020B60D8 ; =GX_LoadOAM
 	bx ip
 	.align 2, 0
-_020B60D8: .word sub_020CFDC8
+_020B60D8: .word GX_LoadOAM
 	arm_func_end sub_020B60D0
 
 	arm_func_start sub_020B60DC
 sub_020B60DC: ; 0x020B60DC
-	ldr ip, _020B60E4 ; =sub_020CFE74
+	ldr ip, _020B60E4 ; =GX_LoadOBJ
 	bx ip
 	.align 2, 0
-_020B60E4: .word sub_020CFE74
+_020B60E4: .word GX_LoadOBJ
 	arm_func_end sub_020B60DC
 
 	arm_func_start sub_020B60E8
 sub_020B60E8: ; 0x020B60E8
-	ldr ip, _020B60F0 ; =sub_020D0284
+	ldr ip, _020B60F0 ; =GXS_LoadBG0Char
 	bx ip
 	.align 2, 0
-_020B60F0: .word sub_020D0284
+_020B60F0: .word GXS_LoadBG0Char
 	arm_func_end sub_020B60E8
 
 	arm_func_start sub_020B60F4
 sub_020B60F4: ; 0x020B60F4
-	ldr ip, _020B60FC ; =sub_020D0344
+	ldr ip, _020B60FC ; =GXS_LoadBG1Char
 	bx ip
 	.align 2, 0
-_020B60FC: .word sub_020D0344
+_020B60FC: .word GXS_LoadBG1Char
 	arm_func_end sub_020B60F4
 
 	arm_func_start sub_020B6100
 sub_020B6100: ; 0x020B6100
-	ldr ip, _020B6108 ; =sub_020D0404
+	ldr ip, _020B6108 ; =GXS_LoadBG2Char
 	bx ip
 	.align 2, 0
-_020B6108: .word sub_020D0404
+_020B6108: .word GXS_LoadBG2Char
 	arm_func_end sub_020B6100
 
 	arm_func_start sub_020B610C
 sub_020B610C: ; 0x020B610C
-	ldr ip, _020B6114 ; =sub_020D04C4
+	ldr ip, _020B6114 ; =GXS_LoadBG3Char
 	bx ip
 	.align 2, 0
-_020B6114: .word sub_020D04C4
+_020B6114: .word GXS_LoadBG3Char
 	arm_func_end sub_020B610C
 
 	arm_func_start sub_020B6118
 sub_020B6118: ; 0x020B6118
-	ldr ip, _020B6120 ; =sub_020CFF84
+	ldr ip, _020B6120 ; =GXS_LoadBG0Scr
 	bx ip
 	.align 2, 0
-_020B6120: .word sub_020CFF84
+_020B6120: .word GXS_LoadBG0Scr
 	arm_func_end sub_020B6118
 
 	arm_func_start sub_020B6124
 sub_020B6124: ; 0x020B6124
-	ldr ip, _020B612C ; =sub_020D0044
+	ldr ip, _020B612C ; =GXS_LoadBG1Scr
 	bx ip
 	.align 2, 0
-_020B612C: .word sub_020D0044
+_020B612C: .word GXS_LoadBG1Scr
 	arm_func_end sub_020B6124
 
 	arm_func_start sub_020B6130
 sub_020B6130: ; 0x020B6130
-	ldr ip, _020B6138 ; =sub_020D0104
+	ldr ip, _020B6138 ; =GXS_LoadBG2Scr
 	bx ip
 	.align 2, 0
-_020B6138: .word sub_020D0104
+_020B6138: .word GXS_LoadBG2Scr
 	arm_func_end sub_020B6130
 
 	arm_func_start sub_020B613C
 sub_020B613C: ; 0x020B613C
-	ldr ip, _020B6144 ; =sub_020D01C4
+	ldr ip, _020B6144 ; =GXS_LoadBG3Scr
 	bx ip
 	.align 2, 0
-_020B6144: .word sub_020D01C4
+_020B6144: .word GXS_LoadBG3Scr
 	arm_func_end sub_020B613C
 
 	arm_func_start sub_020B6148
 sub_020B6148: ; 0x020B6148
-	ldr ip, _020B6150 ; =sub_020D0104
+	ldr ip, _020B6150 ; =GXS_LoadBG2Scr
 	bx ip
 	.align 2, 0
-_020B6150: .word sub_020D0104
+_020B6150: .word GXS_LoadBG2Scr
 	arm_func_end sub_020B6148
 
 	arm_func_start sub_020B6154
 sub_020B6154: ; 0x020B6154
-	ldr ip, _020B615C ; =sub_020D01C4
+	ldr ip, _020B615C ; =GXS_LoadBG3Scr
 	bx ip
 	.align 2, 0
-_020B615C: .word sub_020D01C4
+_020B615C: .word GXS_LoadBG3Scr
 	arm_func_end sub_020B6154
 
 	arm_func_start sub_020B6160
@@ -1865,18 +1870,18 @@ sub_020B61A4: ; 0x020B61A4
 
 	arm_func_start sub_020B61D0
 sub_020B61D0: ; 0x020B61D0
-	ldr ip, _020B61D8 ; =sub_020CFE1C
+	ldr ip, _020B61D8 ; =GXS_LoadOAM
 	bx ip
 	.align 2, 0
-_020B61D8: .word sub_020CFE1C
+_020B61D8: .word GXS_LoadOAM
 	arm_func_end sub_020B61D0
 
 	arm_func_start sub_020B61DC
 sub_020B61DC: ; 0x020B61DC
-	ldr ip, _020B61E4 ; =sub_020CFECC
+	ldr ip, _020B61E4 ; =GXS_LoadOBJ
 	bx ip
 	.align 2, 0
-_020B61E4: .word sub_020CFECC
+_020B61E4: .word GXS_LoadOBJ
 	arm_func_end sub_020B61DC
 
 	arm_func_start sub_020B61E8
@@ -3297,7 +3302,7 @@ sub_020B7350: ; 0x020B7350
 	mov r1, #0xc0000
 	mov r3, #0x100000
 	str r0, [sp, #0x10]
-	bl sub_020CFB08
+	bl G3i_OrthoW_
 	ldr r1, _020B7408 ; =0x0400044C
 	mov r5, #0
 	ldr r0, _020B740C ; =0x021092E0
@@ -3318,7 +3323,7 @@ sub_020B7350: ; 0x020B7350
 	mov r1, lr
 	mov r3, #1
 	str r5, [sp]
-	bl sub_020CFB6C
+	bl G3i_LookAt_
 	ldr r0, _020B7414 ; =0x04000440
 	mov r1, #1
 	str r1, [r0]
@@ -4032,13 +4037,13 @@ _020B7D24:
 	mov r1, r7
 	mov r2, r8
 	add r0, r5, r4
-	bl sub_020CFDC8
+	bl GX_LoadOAM
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020B7D38:
 	mov r1, r7
 	mov r2, r8
 	add r0, r5, r4
-	bl sub_020CFE1C
+	bl GXS_LoadOAM
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020B7D4C:
 	ldr r0, [r7]
@@ -4176,7 +4181,7 @@ _020B7F14:
 	add r6, r2, r0, lsl #3
 	mov r0, r6
 	bl sub_020D285C
-	ldr r0, _020B7FE0 ; =_02110C80
+	ldr r0, _020B7FE0 ; =GXi_DmaId
 	mvn r1, #0
 	ldr r0, [r0]
 	cmp r0, r1
@@ -4184,7 +4189,7 @@ _020B7F14:
 	beq _020B7F64
 	mov r3, r4
 	mov r2, #0xc0
-	bl sub_020D3F74
+	bl MI_DmaFill32
 	b _020B7FC8
 _020B7F64:
 	mov r2, r4
@@ -4222,7 +4227,7 @@ _020B7FC8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020B7FDC: .word 0x021D8518
-_020B7FE0: .word _02110C80
+_020B7FE0: .word GXi_DmaId
 	arm_func_end sub_020B7EBC
 
 	arm_func_start sub_020B7FE4
@@ -4355,24 +4360,24 @@ _020B8104:
 	beq _020B815C
 	b _020B816C
 _020B812C:
-	bl sub_020D08EC
+	bl GX_BeginLoadTex
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020D0948
-	bl sub_020D0A88
+	bl GX_LoadTex
+	bl GX_EndLoadTex
 	b _020B816C
 _020B8148:
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	b _020B816C
 _020B815C:
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 _020B816C:
 	ldr r0, [r7, #8]
 	cmp r0, #0
@@ -4528,24 +4533,24 @@ _020B8330:
 	beq _020B8388
 	b _020B8398
 _020B8358:
-	bl sub_020D08EC
+	bl GX_BeginLoadTex
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020D0948
-	bl sub_020D0A88
+	bl GX_LoadTex
+	bl GX_EndLoadTex
 	b _020B8398
 _020B8374:
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	b _020B8398
 _020B8388:
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 _020B8398:
 	ldr r0, [r7, #8]
 	cmp r0, #0
@@ -4861,12 +4866,12 @@ _020B8774:
 	bl GXS_LoadOBJPltt
 	b _020B87A0
 _020B8788:
-	bl sub_020D0AD4
+	bl GX_BeginLoadTexPltt
 	mov r0, r4
 	mov r1, r8
 	mov r2, r5
-	bl sub_020D0B08
-	bl sub_020D0B74
+	bl GX_LoadTexPltt
+	bl GX_EndLoadTexPltt
 _020B87A0:
 	ldr r1, [sb]
 	mov r0, r6
@@ -4952,12 +4957,12 @@ _020B88B4:
 	bl GXS_LoadOBJPltt
 	b _020B88E0
 _020B88C8:
-	bl sub_020D0AD4
+	bl GX_BeginLoadTexPltt
 	add r0, r5, r4
 	mov r2, r8
 	add r1, sb, r6
-	bl sub_020D0B08
-	bl sub_020D0B74
+	bl GX_LoadTexPltt
+	bl GX_EndLoadTexPltt
 _020B88E0:
 	add r0, r7, #1
 	mov r1, r0, lsl #0x10
@@ -8648,7 +8653,7 @@ sub_020BBB60: ; 0x020BBB60
 	mov r7, r0
 	ldr r0, [r1]
 	add r0, r0, #0x40
-	bl sub_020CF510
+	bl G3_LoadMtx43
 	ldr r0, _020BBD94 ; =0x021DA498
 	ldr r0, [r0]
 	ldr r1, [r0, #0x24]
@@ -11186,7 +11191,7 @@ _020BDDEC:
 _020BDDF0:
 	cmp r0, #0
 	bne _020BDDFC
-	bl sub_020D3F48
+	bl OS_Terminate
 _020BDDFC:
 	mov r4, #1
 _020BDE00:
@@ -11690,7 +11695,7 @@ NNS_G3dTexLoad: ; 0x020BE418
 	movs r8, r1
 	mov sb, r0
 	beq _020BE42C
-	bl sub_020D08EC
+	bl GX_BeginLoadTex
 _020BE42C:
 	ldrh r0, [sb, #0xc]
 	movs r2, r0, lsl #3
@@ -11700,7 +11705,7 @@ _020BE42C:
 	mov r1, r0, lsl #0x10
 	add r0, sb, r3
 	mov r1, r1, lsr #0xd
-	bl sub_020D0948
+	bl GX_LoadTex
 	ldrh r0, [sb, #0x10]
 	orr r0, r0, #1
 	strh r0, [sb, #0x10]
@@ -11716,7 +11721,7 @@ _020BE45C:
 	mov r2, r6
 	add r0, sb, r0
 	ldr r5, [sb, #0x28]
-	bl sub_020D0948
+	bl GX_LoadTex
 	ldr r0, _020BE4CC ; =0x0001FFFF
 	and r1, r7, #0x40000
 	and r0, r0, r4, lsr #13
@@ -11725,14 +11730,14 @@ _020BE45C:
 	add r0, sb, r5
 	add r1, r2, r1, lsr #2
 	mov r2, r6, lsr #1
-	bl sub_020D0948
+	bl GX_LoadTex
 	ldrh r0, [sb, #0x20]
 	orr r0, r0, #1
 	strh r0, [sb, #0x20]
 _020BE4BC:
 	cmp r8, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	bl sub_020D0A88
+	bl GX_EndLoadTex
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020BE4CC: .word 0x0001FFFF
@@ -11783,7 +11788,7 @@ NNS_G3dPlttLoad: ; 0x020BE538
 	movs r5, r1
 	mov r4, r0
 	beq _020BE54C
-	bl sub_020D0AD4
+	bl GX_BeginLoadTexPltt
 _020BE54C:
 	ldr r0, [r4, #0x2c]
 	ldrh r2, [r4, #0x30]
@@ -11792,13 +11797,13 @@ _020BE54C:
 	mov r1, r1, lsr #0xd
 	add r0, r4, r3
 	mov r2, r2, lsl #3
-	bl sub_020D0B08
+	bl GX_LoadTexPltt
 	ldrh r0, [r4, #0x32]
 	cmp r5, #0
 	orr r0, r0, #1
 	strh r0, [r4, #0x32]
 	ldmeqia sp!, {r3, r4, r5, pc}
-	bl sub_020D0B74
+	bl GX_EndLoadTexPltt
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end NNS_G3dPlttLoad
 
@@ -12726,7 +12731,7 @@ sub_020BF13C: ; 0x020BF13C
 	sub sp, sp, #0x48
 	str r1, [sp]
 	add r1, sp, #8
-	bl sub_020D4968
+	bl MI_Copy64B
 	ldr r0, [sp]
 	bl MTX_Identity44_
 	mov fp, #0
@@ -14700,7 +14705,7 @@ _020C0C2C:
 	add sl, sp, #0x88
 _020C0C5C:
 	mov r0, sl
-	bl sub_020CF884
+	bl G3X_GetClipMtx
 	cmp r0, #0
 	bne _020C0C5C
 	ldr r0, _020C0E34 ; =0x021DA49C
@@ -14912,7 +14917,7 @@ _020C0F38:
 	add r4, sp, #0x88
 _020C0F68:
 	mov r0, r4
-	bl sub_020CF884
+	bl G3X_GetClipMtx
 	cmp r0, #0
 	bne _020C0F68
 	ldr r0, _020C119C ; =0x021DA49C
@@ -15131,7 +15136,7 @@ _020C1234:
 	ldrb sb, [r6]
 	str sb, [r3]
 	str r2, [r3, #-0x10]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 _020C12A0:
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
@@ -15277,7 +15282,7 @@ _020C14C8:
 	bne _020C1504
 _020C14D4:
 	mov r0, r7
-	bl sub_020CF884
+	bl G3X_GetClipMtx
 	cmp r0, #0
 	bne _020C14D4
 	ldr r0, [sp, #0x14]
@@ -15287,7 +15292,7 @@ _020C14D4:
 	mov r2, #2
 	add r0, r0, #0x30
 	str r2, [r1]
-	bl sub_020CF548
+	bl G3_MultMtx33
 _020C1504:
 	ldrb r0, [r6, #2]
 	ldr r2, [r7]
@@ -15385,7 +15390,7 @@ _020C1504:
 	bne _020C168C
 _020C167C:
 	mov r0, r8
-	bl sub_020CF8B4
+	bl G3X_GetVectorMtx
 	cmp r0, #0
 	bne _020C167C
 _020C168C:
@@ -15520,12 +15525,12 @@ _020C16A4:
 	adds r1, r1, r2
 	add r0, sp, #0xe0
 	str r1, [sp, #0x100]
-	bl sub_020CF510
+	bl G3_LoadMtx43
 	ldr r1, _020C1900 ; =0x04000440
 	mov r2, #1
 	add r0, sp, #0xb0
 	str r2, [r1]
-	bl sub_020CF510
+	bl G3_LoadMtx43
 	ldr r1, _020C1900 ; =0x04000440
 	mov r2, #0
 	mov r0, #1
@@ -16081,7 +16086,7 @@ _020C2054:
 	add r4, sp, #0x10
 _020C2070:
 	mov r0, r4
-	bl sub_020CF884
+	bl G3X_GetClipMtx
 	cmp r0, #0
 	bne _020C2070
 	ldr r2, _020C214C ; =0x04000448
@@ -16384,7 +16389,7 @@ sub_020C2474: ; 0x020C2474
 	mov r5, r0
 	cmp r4, #0x100
 	blo _020C249C
-	ldr r1, _020C2518 ; =_02110C80
+	ldr r1, _020C2518 ; =GXi_DmaId
 	mvn r0, #0
 	ldr r1, [r1]
 	cmp r1, r0
@@ -16405,7 +16410,7 @@ _020C24B4:
 	cmp r0, #0
 	beq _020C24F4
 	ldr r1, _020C2520 ; =0x021DD408
-	ldr r0, _020C2518 ; =_02110C80
+	ldr r0, _020C2518 ; =GXi_DmaId
 	str r1, [sp]
 	ldr r0, [r0]
 	ldr r3, _020C2524 ; =sub_020C2468
@@ -16415,7 +16420,7 @@ _020C24B4:
 	ldmia sp!, {r3, r4, r5, pc}
 _020C24F4:
 	ldr r1, _020C2520 ; =0x021DD408
-	ldr r0, _020C2518 ; =_02110C80
+	ldr r0, _020C2518 ; =GXi_DmaId
 	str r1, [sp]
 	ldr r0, [r0]
 	ldr r3, _020C2524 ; =sub_020C2468
@@ -16424,7 +16429,7 @@ _020C24F4:
 	bl sub_020D44A8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020C2518: .word _02110C80
+_020C2518: .word GXi_DmaId
 _020C251C: .word 0x021DD404
 _020C2520: .word 0x021DD408
 _020C2524: .word sub_020C2468
@@ -16513,7 +16518,7 @@ sub_020C260C: ; 0x020C260C
 	add r4, sp, #0
 _020C2640:
 	mov r0, r4
-	bl sub_020CF884
+	bl G3X_GetClipMtx
 	cmp r0, #0
 	bne _020C2640
 	add r0, sp, #0
@@ -16524,7 +16529,7 @@ _020C265C:
 	beq _020C2674
 _020C2664:
 	mov r0, r5
-	bl sub_020CF8B4
+	bl G3X_GetVectorMtx
 	cmp r0, #0
 	bne _020C2664
 _020C2674:
@@ -16543,7 +16548,7 @@ _020C2694: .word 0x04000448
 	arm_func_start sub_020C2698
 sub_020C2698: ; 0x020C2698
 	stmdb sp!, {r3, lr}
-	bl sub_020CF564
+	bl G3X_Init
 	bl sub_020BEE44
 	ldr r1, _020C26BC ; =0x04000600
 	ldr r0, [r1]

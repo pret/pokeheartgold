@@ -215,10 +215,16 @@ Static main
 	Object unk_02074120.o
 	Object party.o
 	Object unk_02074910.o
+
+	### RAM not yet assigned ###
+	Object bss_temp.o
+
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o
 	Object nnsys.o
+
+	### NitroSDK ###
 	Object fx_sincos.o
 	Object fx_mtx22.o
 	Object fx_mtx33.o
@@ -229,9 +235,21 @@ Static main
 	Object fx_trig.o
 	Object fx_atan.o
 	Object fx.o
+	Object gx.o
+	Object gxstate.o
+	Object gx_vramcnt.o
+	Object gx_bgcnt.o
+	Object g2.o
+	Object g3b.o
+	Object g3imm.o
+	Object g3x.o
+	Object g3_util.o
+	Object gx_load2d.o
+	Object gx_load3d.o
+	Object g3.o
+	Object gxasm.o
 	Object nitro.o
 	Object msl.o
-	Object bss_temp.o
 }
 
 Autoload ITCM

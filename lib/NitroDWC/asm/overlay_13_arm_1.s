@@ -1224,7 +1224,7 @@ _0221CB70:
 	blt _0221CB44
 	cmp r7, #0
 	bne _0221CB8C
-	bl sub_020D3F48
+	bl OS_Terminate
 _0221CB8C:
 	mov r0, #2
 	str r0, [r5]
@@ -2071,7 +2071,7 @@ _0221D6F0:
 	str r0, [r6, #0xc]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0221D734:
-	bl sub_020D3F48
+	bl OS_Terminate
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0221D73C:
 	ldr ip, [r7, #0x38]
@@ -2110,7 +2110,7 @@ _0221D7B0:
 _0221D7B4:
 	cmp r2, #1
 	bne _0221D7C0
-	bl sub_020D3F48
+	bl OS_Terminate
 _0221D7C0:
 	ldr r0, [r7, #0x3c]
 	cmp r4, #0
@@ -3715,7 +3715,7 @@ _0221ED50:
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221ED70:
-	bl sub_020D3F48
+	bl OS_Terminate
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221ED7C:
@@ -3979,7 +3979,7 @@ _0221F0E0:
 	ldrh r0, [r1]
 	add r1, r4, #0x440
 	mov r3, #0xc0
-	bl sub_020D4064
+	bl MI_DmaCopy16
 	str r5, [r4, #0x5ec]
 	b _0221F1A0
 _0221F12C:
@@ -4011,7 +4011,7 @@ _0221F130:
 	ldrh r0, [r1]
 	add r1, r4, #0x440
 	mov r3, #0xc0
-	bl sub_020D4064
+	bl MI_DmaCopy16
 	str r5, [r4, #0x5ec]
 _0221F1A0:
 	ldr r2, [r4, #0x51c]
@@ -4325,7 +4325,7 @@ _0221F5F8:
 	cmp r0, #0x17
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221F610:
-	bl sub_020D3F48
+	bl OS_Terminate
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221F61C:
@@ -4873,7 +4873,7 @@ ov13_0221FD50: ; 0x0221FD50
 	ldr r0, [r0, #0x320]
 	cmp r0, #0
 	bne _0221FD78
-	bl sub_020D3F48
+	bl OS_Terminate
 _0221FD78:
 	bl ov13_0221FCBC
 	mov r0, r4
@@ -5192,7 +5192,7 @@ ov13_02220148: ; 0x02220148
 _0222016C:
 	cmp r6, r4
 	blo _02220178
-	bl sub_020D3F48
+	bl OS_Terminate
 _02220178:
 	ldr r0, [r6, #0xc]
 	cmp r0, #0

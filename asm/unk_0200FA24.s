@@ -445,11 +445,11 @@ sub_0200FCFC: ; 0x0200FCFC
 	cmp r0, #0
 	bne _0200FD0A
 	ldr r0, _0200FD14 ; =0x0400006C
-	bl sub_020CDA80
+	bl GXx_SetMasterBrightness_
 	pop {r3, pc}
 _0200FD0A:
 	ldr r0, _0200FD18 ; =0x0400106C
-	bl sub_020CDA80
+	bl GXx_SetMasterBrightness_
 	pop {r3, pc}
 	nop
 _0200FD14: .word 0x0400006C

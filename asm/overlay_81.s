@@ -9165,7 +9165,7 @@ ov81_02242694: ; 0x02242694
 	mov r1, #0
 	mov r2, #0xf
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldrb r0, [r5, #0x12]
 	mov r6, #0
 	cmp r0, #0
@@ -10154,13 +10154,13 @@ ov81_02242E14: ; 0x02242E14
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, r4, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r3, r4, r5, r6, r7, pc}
 _02242E42:
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, r4, #0
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov81_02242E14

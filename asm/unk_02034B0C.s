@@ -319,7 +319,7 @@ sub_02034D60: ; 0x02034D60
 	push {r3, lr}
 	cmp r1, #0
 	beq _02034D6A
-	bl sub_020D3F48
+	bl OS_Terminate
 _02034D6A:
 	ldr r0, _02034D74 ; =_021D4134
 	mov r1, #2
@@ -356,7 +356,7 @@ sub_02034D8C: ; 0x02034D8C
 	bl sub_0209E00C
 	cmp r0, #1
 	beq _02034DAC
-	bl sub_020D3F48
+	bl OS_Terminate
 _02034DAC:
 	pop {r3, pc}
 	nop

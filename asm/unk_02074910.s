@@ -5395,14 +5395,14 @@ sub_020773D4: ; 0x020773D4
 	mov r1, #0
 	mov r2, #0xe
 	mov r3, #0xb
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _020773FC ; =0x04001050
 	mov r1, #0
 	mov r2, #0xe
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _020773F8: .word 0x04000050
@@ -10665,7 +10665,7 @@ sub_0207991C: ; 0x0207991C
 	mov r0, #1
 	mov r1, #0
 	add r2, r0, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	mov r0, #0xc
 	bl sub_0207997C
 	ldr r1, _02079978 ; =0x00000C84
@@ -10681,7 +10681,7 @@ _0207994A:
 	mov r1, #0
 	mov r0, #1
 	add r2, r1, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	ldr r0, [r4]
 	bl sub_02079720
 	mov r0, #0
@@ -17016,13 +17016,13 @@ _0207CB78: .word SDK_OVERLAY_OVY_94_ID
 
 	thumb_func_start sub_0207CB7C
 sub_0207CB7C: ; 0x0207CB7C
-	ldr r3, _0207CB88 ; =sub_020CF178
+	ldr r3, _0207CB88 ; =G2x_SetBlendBrightness_
 	ldr r0, _0207CB8C ; =0x04000050
 	mov r1, #0x1e
 	mov r2, #8
 	bx r3
 	nop
-_0207CB88: .word sub_020CF178
+_0207CB88: .word G2x_SetBlendBrightness_
 _0207CB8C: .word 0x04000050
 	thumb_func_end sub_0207CB7C
 
@@ -21273,7 +21273,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	ldr r1, [sp, #0x14]
 	ldr r0, [r2, #0x14]
 	ldr r2, [r2, #0x10]
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	mov r0, #0x85
 	add r1, r5, r4
 	lsl r0, r0, #4
@@ -21290,7 +21290,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	add r1, r7, #0
 	ldr r0, [r2, #0x14]
 	ldr r2, [r2, #0x10]
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 _0207ED8E:
 	ldr r0, [sp, #4]
 	bl FreeToHeap
@@ -28756,7 +28756,7 @@ sub_02082AEC: ; 0x02082AEC
 	ldr r1, _02082B1C ; =0x000057E0
 	add r6, r3, #0
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	ldr r4, [r4, #0xc]
 	add r0, r5, #0
 	add r1, r6, #0
@@ -32203,7 +32203,7 @@ _02084694:
 	add r0, r5, #0
 	lsl r2, r2, #8
 	lsl r1, r1, #5
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -32243,7 +32243,7 @@ _020846D6:
 	add r0, r7, #0
 	lsl r1, r1, #5
 	mov r2, #0x80
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
@@ -32869,7 +32869,7 @@ _02084C04:
 	mov r1, #0
 	mov r2, #7
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -33677,14 +33677,14 @@ _0208520A:
 	mov r1, #0
 	mov r2, #6
 	mov r3, #0xf
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _02085244 ; =0x04001050
 	mov r1, #0
 	mov r2, #0xe
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _02085248 ; =sub_020855CC
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -40690,7 +40690,7 @@ sub_0208887C: ; 0x0208887C
 	mov r1, #1
 	mov r2, #0x1e
 	mov r3, #0x17
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _02088890: .word 0x04000050
@@ -47523,7 +47523,7 @@ _0208BE36:
 	ldr r0, [r0, #0x14]
 	add r1, r6, #0
 	lsl r2, r2, #8
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #8
@@ -51397,8 +51397,8 @@ sub_0208DE40: ; 0x0208DE40
 	push {r3, r4, lr}
 	sub sp, #4
 	bl sub_020C2698
-	bl sub_020CF564
-	bl sub_020CF704
+	bl G3X_Init
+	bl G3X_InitMtxStack
 	ldr r0, _0208DEC0 ; =0x04000060
 	ldr r1, _0208DEC4 ; =0xFFFFCFFD
 	ldrh r2, [r0]
@@ -64935,7 +64935,7 @@ _02094766:
 	ldr r1, [r5]
 	add r0, #0xc
 	add r2, r6, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	ldr r0, [r5, #8]
 	mov r1, #1
 	bl sub_02024830
@@ -66976,12 +66976,12 @@ _0209577C: .word 0x000046DC
 sub_02095780: ; 0x02095780
 	mov r1, #0x16
 	add r2, r1, #0
-	ldr r3, _0209578C ; =sub_020CF178
+	ldr r3, _0209578C ; =G2x_SetBlendBrightness_
 	ldr r0, _02095790 ; =0x04000050
 	sub r2, #0x1d
 	bx r3
 	.balign 4, 0
-_0209578C: .word sub_020CF178
+_0209578C: .word G2x_SetBlendBrightness_
 _02095790: .word 0x04000050
 	thumb_func_end sub_02095780
 
@@ -66995,7 +66995,7 @@ sub_02095794: ; 0x02095794
 	str r2, [sp]
 	mov r2, #4
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _020957AC: .word 0x04000050
@@ -68574,13 +68574,13 @@ sub_02096318: ; 0x02096318
 	ldr r2, [r3, r1]
 	orr r0, r2
 	str r0, [r3, r1]
-	ldr r3, _02096334 ; =sub_020D422C
+	ldr r3, _02096334 ; =MI_WaitDma
 	mov r0, #3
 	bx r3
 	nop
 _0209632C: .word OSi_IntrTable
 _02096330: .word 0x00003FF8
-_02096334: .word sub_020D422C
+_02096334: .word MI_WaitDma
 	thumb_func_end sub_02096318
 
 	thumb_func_start PrintErrorMessageAndReset

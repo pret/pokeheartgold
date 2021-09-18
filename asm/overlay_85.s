@@ -2190,7 +2190,7 @@ ov85_021E6874: ; 0x021E6874
 	mov r1, #4
 	mov r2, #0x28
 	mov r3, #0xb
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -2240,7 +2240,7 @@ ov85_021E6980: ; 0x021E6980
 	sub sp, #4
 	add r4, r0, #0
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	ldr r0, _021E6A10 ; =0x04000060
 	ldr r1, _021E6A14 ; =0xFFFFCFFD
 	ldrh r2, [r0]
@@ -2282,7 +2282,7 @@ _021E69CE:
 	mov r0, #0xda
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	ldr r0, _021E6A20 ; =0x00007FFF
 	mov r1, #0
 	add r2, r0, #0
@@ -9847,7 +9847,7 @@ ov85_021EA324: ; 0x021EA324
 	ldr r1, _021EA364 ; =0x021EA8E0
 	lsl r3, r5, #1
 	ldrh r1, [r1, r3]
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	lsl r0, r4, #5
 	add r1, r5, #7
 	add r0, r6, r0

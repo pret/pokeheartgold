@@ -1482,7 +1482,7 @@ ov101_021E8264: ; 0x021E8264
 	mov r0, #1
 	mov r1, #5
 	mov r2, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	ldr r4, _021E8350 ; =0x021F7D10
 	add r3, sp, #4
 	mov r2, #0x15
@@ -1596,7 +1596,7 @@ ov101_021E8354: ; 0x021E8354
 	add r2, r1, #0
 	add r3, r1, #0
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _021E836C: .word 0x04000050
@@ -2949,7 +2949,7 @@ ov101_021E8E58: ; 0x021E8E58
 	mov r2, #0
 	str r0, [sp, #0x1c]
 	mov r0, #1
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	mov r4, #0
 	mov r6, #3
 	mov r7, #2
@@ -2995,7 +2995,7 @@ _021E8E76:
 	mov r1, #4
 	mov r2, #8
 	mov r3, #0xa
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #0
 	mov r1, #1
 	bl sub_0201BC28
@@ -3212,7 +3212,7 @@ ov101_021E90A8: ; 0x021E90A8
 	add r5, r0, #0
 	mov r0, #1
 	add r2, r1, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	mov r4, #0
 	mov r6, #3
 	add r7, r4, #0
@@ -3268,7 +3268,7 @@ _021E90BE:
 	add r2, r1, #0
 	add r3, r1, #0
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r4, #0
 _021E9136:
 	ldr r0, [r5, #0x10]
@@ -13441,7 +13441,7 @@ ov101_021EDF54: ; 0x021EDF54
 	add r2, r1, #0
 	add r3, r1, #0
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -14248,7 +14248,7 @@ ov101_021EE670: ; 0x021EE670
 	str r0, [sp]
 	ldr r0, _021EE8D8 ; =0x04000050
 	mov r3, #0xa
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r4, #0
 	mov r6, #3
 	add r7, r4, #0
@@ -15353,7 +15353,7 @@ ov101_021EEF0C: ; 0x021EEF0C
 	add r5, r0, #0
 	mov r0, #1
 	add r2, r1, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	ldr r4, _021EEFD8 ; =0x021F8254
 	add r3, sp, #4
 	mov r2, #0x15
@@ -16300,7 +16300,7 @@ ov101_021EF5A4: ; 0x021EF5A4
 	mov r1, #0x1f
 	add r2, r1, #0
 	sub r2, #0x27
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	pop {r4, r5, r6, pc}
 _021EF680:
 	ldr r0, _021EF6B8 ; =0x04000048
@@ -16324,7 +16324,7 @@ _021EF680:
 	str r1, [r3]
 	mov r1, #0x1f
 	mov r2, #0
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	ldr r0, _021EF6CC ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -17757,7 +17757,7 @@ ov101_021F017C: ; 0x021F017C
 	add r5, r0, #0
 	mov r0, #1
 	add r2, r1, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	ldr r4, _021F025C ; =0x021F8440
 	add r3, sp, #4
 	mov r2, #0x15
@@ -27461,7 +27461,7 @@ ov101_021F4AEC: ; 0x021F4AEC
 	add r5, r0, #0
 	mov r0, #1
 	add r2, r1, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	ldr r4, _021F4BB8 ; =0x021F87F4
 	add r3, sp, #4
 	mov r2, #0x15

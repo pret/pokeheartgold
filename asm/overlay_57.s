@@ -8434,13 +8434,13 @@ ov57_0223BB5C: ; 0x0223BB5C
 	ldr r0, _0223BB7C ; =0x04000050
 	add r2, r1, #0
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r1, #0
 	mov r3, #0x1f
 	ldr r0, _0223BB80 ; =0x04001050
 	add r2, r1, #0
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _0223BB7C: .word 0x04000050

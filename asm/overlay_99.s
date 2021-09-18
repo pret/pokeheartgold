@@ -514,14 +514,14 @@ _021E5CBE:
 	mov r1, #8
 	mov r2, #4
 	mov r3, #0xf
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _021E5D28 ; =0x04001050
 	mov r1, #8
 	mov r2, #2
 	mov r3, #0xf
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r1, [r5, #0xc]
 	mov r0, #0xb1
 	bl NARC_ctor

@@ -94,7 +94,7 @@ _02259964:
 	pop {r4, pc}
 _02259972:
 	ldr r0, _022599A8 ; =0x0400006C
-	bl sub_020CDAA8
+	bl GXx_GetMasterBrightness_
 	cmp r0, #0
 	bne _022599A0
 	add r0, r4, #0
@@ -289,7 +289,7 @@ ov19_02259AD8: ; 0x02259AD8
 	sub sp, #0x54
 	add r4, r0, #0
 	mov r0, #3
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	ldr r5, _02259B84 ; =0x0225A070
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -386,7 +386,7 @@ ov19_02259B90: ; 0x02259B90
 	mov r1, #5
 	bl FreeBgTilemapBuffer
 	mov r0, #0
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	pop {r4, pc}
 	thumb_func_end ov19_02259B90
 

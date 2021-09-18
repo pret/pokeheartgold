@@ -16,7 +16,7 @@ sub_02026EB4: ; 0x02026EB4
 	add r4, r0, #0
 	str r6, [r4]
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	mov r1, #2
 	ldr r0, _02026F50 ; =0x04000540
 	cmp r7, #0

@@ -3263,7 +3263,7 @@ ov59_02239604: ; 0x02239604
 	mov r1, #0
 	mov r2, #8
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3282,7 +3282,7 @@ ov59_022396E4: ; 0x022396E4
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _02239700: .word 0x04000050
@@ -7407,7 +7407,7 @@ ov59_0223B590: ; 0x0223B590
 	mov r1, #1
 	mov r2, #0xe
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -7426,7 +7426,7 @@ ov59_0223B66C: ; 0x0223B66C
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _0223B688: .word 0x04000050
@@ -9132,8 +9132,8 @@ ov59_0223C3F0: ; 0x0223C3F0
 	push {r3, r4, lr}
 	sub sp, #4
 	bl sub_020C2698
-	bl sub_020CF564
-	bl sub_020CF704
+	bl G3X_Init
+	bl G3X_InitMtxStack
 	ldr r0, _0223C45C ; =0x04000060
 	ldr r1, _0223C460 ; =0xFFFFCFFD
 	ldrh r2, [r0]

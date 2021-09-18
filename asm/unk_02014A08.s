@@ -108,7 +108,7 @@ sub_02014AA0: ; 0x02014AA0
 	mov r0, #0
 	bl sub_020D4294
 	mov r0, #0
-	bl sub_020D422C
+	bl MI_WaitDma
 	pop {r3, pc}
 	thumb_func_end sub_02014AA0
 

@@ -2135,7 +2135,7 @@ ov80_0222AE30: ; 0x0222AE30
 	mov r1, #1
 	mov r2, #0x3c
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -2176,7 +2176,7 @@ ov80_0222AE84: ; 0x0222AE84
 	mov r1, #1
 	mov r2, #0x3c
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _0222AE98: .word 0x04000050
@@ -2228,7 +2228,7 @@ ov80_0222AEBC: ; 0x0222AEBC
 	mov r1, #1
 	mov r2, #0x3c
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _0222AEF0: .word 0x04000050
@@ -7746,7 +7746,7 @@ _0222D730:
 	add r0, r5, #0
 	add r1, sp, #0x2c
 	add r3, r2, #0
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	mov r0, #8
 	ldrsh r1, [r4, r0]
 	ldr r0, [sp, #0x18]
@@ -7813,7 +7813,7 @@ _0222D7AE:
 	add r0, #0x10
 	add r1, sp, #0x2c
 	add r3, r2, #0
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	mov r0, #2
 	ldrsh r0, [r4, r0]
 	add r6, r6, #1
@@ -7947,7 +7947,7 @@ _0222D8B4:
 	add r0, r5, #0
 	add r1, sp, #0x2c
 	add r3, r2, #0
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	mov r0, #8
 	ldrsh r1, [r4, r0]
 	ldr r0, [sp, #0x18]
@@ -8014,7 +8014,7 @@ _0222D932:
 	add r0, #0x10
 	add r1, sp, #0x2c
 	add r3, r2, #0
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	mov r0, #2
 	ldrsh r0, [r4, r0]
 	add r6, r6, #1
@@ -11160,7 +11160,7 @@ _0222F0DA:
 	ldr r0, [sp, #0x28]
 	ldr r1, [r7, #4]
 	lsl r2, r2, #6
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	ldr r0, [r6]
 	bl sub_02024B34
 	mov r1, #1
@@ -33361,7 +33361,7 @@ ov80_02239D74: ; 0x02239D74
 	mov r1, #4
 	mov r2, #0x1f
 	mov r3, #8
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add r0, r4, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -35377,11 +35377,11 @@ ov80_0223AD5C: ; 0x0223AD5C
 	cmp r0, #1
 	bne _0223AD6A
 	ldr r0, _0223AD74 ; =0x0400006C
-	bl sub_020CDA80
+	bl GXx_SetMasterBrightness_
 	pop {r3, pc}
 _0223AD6A:
 	ldr r0, _0223AD78 ; =0x0400106C
-	bl sub_020CDA80
+	bl GXx_SetMasterBrightness_
 	pop {r3, pc}
 	nop
 _0223AD74: .word 0x0400006C

@@ -14,7 +14,7 @@ ov30_0225D520: ; 0x0225D520
 	lsl r2, r0, #0xf
 	bl CreateHeap
 	mov r0, #0
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	mov r0, #0x80
 	bl GX_SetBankForSubBG
 	mov r0, #1

@@ -2887,7 +2887,7 @@ _0223F660:
 	mov r1, #0
 	mov r2, #0xe
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _0223F68C ; =ov83_0223F7A0
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -12267,7 +12267,7 @@ _02244354:
 	mov r1, #0
 	mov r2, #0xe
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _02244390 ; =ov83_02244488
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -18689,7 +18689,7 @@ _022476EA:
 	ldr r1, [sp, #0x18]
 	add r0, r4, #0
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	ldr r0, [r5, #4]
 	bl sub_02024B34
 	mov r1, #2

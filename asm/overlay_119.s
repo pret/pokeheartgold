@@ -942,7 +942,7 @@ _0225F7BE:
 	ldr r0, _0225FA18 ; =0x04000050
 	mov r1, #0
 	mov r2, #0xf
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r6, #0
 	add r5, r4, #0
 _0225F7E2:

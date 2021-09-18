@@ -4513,7 +4513,7 @@ ov49_0225A854: ; 0x0225A854
 	orr r1, r2
 	strh r1, [r0]
 	ldr r0, _0225A970 ; =0x02269754
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	mov r0, #0
 	add r1, r0, #0
 	add r2, r0, #0

@@ -1048,7 +1048,7 @@ ov41_022465D8: ; 0x022465D8
 	lsl r2, r2, #1
 	ldrsh r0, [r1, r0]
 	ldrsh r1, [r1, r2]
-	bl sub_020CFC30
+	bl G3_RotZ
 	ldr r2, [r7, #8]
 	ldr r1, [r7, #4]
 	ldr r3, [r7]
@@ -1169,7 +1169,7 @@ _022466EC: .word 0x0224C06C
 ov41_022466F0: ; 0x022466F0
 	push {r3, lr}
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers

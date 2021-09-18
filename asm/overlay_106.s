@@ -221,7 +221,7 @@ _021E5A86:
 	mov r1, #0x20
 	orr r1, r2
 	strh r1, [r3]
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	pop {r3, pc}
 	nop
 _021E5A9C: .word 0x04000060
@@ -702,7 +702,7 @@ _021E5E28:
 	str r6, [r4, #0x34]
 	mov r0, #0
 	str r0, [r4, #0x30]
-	bl sub_020CEC0C
+	bl GX_GetBankForLCDC
 	str r0, [r4]
 	add r0, r4, #4
 	bl ov106_021E5F84
@@ -724,9 +724,9 @@ ov106_021E5E5C: ; 0x021E5E5C
 	add r0, r1, #0
 	add r1, r2, #0
 	add r2, r3, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	ldr r0, [r4]
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	ldr r0, [r4, #4]
 	cmp r0, #0xa
 	bgt _021E5E88
@@ -774,7 +774,7 @@ _021E5EBA:
 	b _021E5ECE
 _021E5EC8:
 	mov r0, #0
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 _021E5ECE:
 	ldr r0, [r4, #0x34]
 	bl sub_02007234
@@ -845,28 +845,28 @@ _021E5F42:
 	b _021E5F68
 _021E5F48:
 	mov r0, #1
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	b _021E5F6E
 _021E5F50:
 	mov r0, #2
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	b _021E5F6E
 _021E5F58:
 	mov r0, #4
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	b _021E5F6E
 _021E5F60:
 	mov r0, #8
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	b _021E5F6E
 _021E5F68:
 	mov r0, #0
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 _021E5F6E:
 	ldr r0, [r4, #4]
 	ldr r1, [r4, #8]
 	ldr r2, [r4, #0xc]
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	mov r0, #1
 	str r0, [r4, #0x30]
 	add r0, r5, #0
@@ -1764,7 +1764,7 @@ ov106_021E6678: ; 0x021E6678
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov106_021E6678
@@ -2076,7 +2076,7 @@ ov106_021E68F4: ; 0x021E68F4
 	ldr r1, [r4, #0x1c]
 	ldr r2, [r4, #0x24]
 	add r3, r6, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _021E6984 ; =0x00000414
 	mov r1, #0
 	str r1, [r5, r0]
@@ -2112,7 +2112,7 @@ _021E6956:
 	ldr r1, [r4, #0x1c]
 	ldr r2, [r4, #0x24]
 	add r3, r6, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _021E6984 ; =0x00000414
 	ldr r1, [r5, r0]
 	add r1, r1, #1

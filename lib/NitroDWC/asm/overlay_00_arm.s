@@ -1076,7 +1076,7 @@ _021E8A08:
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _021E8A30
-	bl sub_020D3F48
+	bl OS_Terminate
 _021E8A30:
 	ldr r0, _021E8C44 ; =0x027FFE0C
 	add r1, r4, #0x15
@@ -1086,7 +1086,7 @@ _021E8A30:
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _021E8A54
-	bl sub_020D3F48
+	bl OS_Terminate
 _021E8A54:
 	ldr r0, _021E8C48 ; =0x027FFE10
 	add r1, r4, #0x1a
@@ -4402,7 +4402,7 @@ ov00_021EB8B0: ; 0x021EB8B0
 	bl sub_020D1E68
 	cmp r0, #0
 	bne _021EB908
-	bl sub_020D3F48
+	bl OS_Terminate
 _021EB908:
 	ldr r0, _021EBAF8 ; =_02216420
 	ldr r1, _021EBAF4 ; =_0221A748
@@ -5958,7 +5958,7 @@ ov00_021ECD04: ; 0x021ECD04
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021ECD1C
-	bl sub_020D3F48
+	bl OS_Terminate
 _021ECD1C:
 	ldr r1, _021ECDB4 ; =0x00001E20
 	mov r0, #4
@@ -6140,7 +6140,7 @@ _021ECF54:
 	bl ov00_021EC24C
 	b _021ECFBC
 _021ECF64:
-	bl sub_020D3F48
+	bl OS_Terminate
 	b _021ECFBC
 _021ECF6C:
 	ldr r1, _021ECFE4 ; =0xFFFF86D4
@@ -6159,7 +6159,7 @@ _021ECF8C:
 	bl ov00_021EC24C
 	b _021ECFBC
 _021ECFA0:
-	bl sub_020D3F48
+	bl OS_Terminate
 	b _021ECFBC
 _021ECFA8:
 	ldr r1, _021ECFF0 ; =0xFFFF86DF
@@ -6167,7 +6167,7 @@ _021ECFA8:
 	bl ov00_021EC24C
 	b _021ECFBC
 _021ECFB8:
-	bl sub_020D3F48
+	bl OS_Terminate
 _021ECFBC:
 	ldr r1, _021ECFDC ; =_0221A768
 	mov r0, r6

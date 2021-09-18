@@ -277,7 +277,7 @@ sub_0203A59C: ; 0x0203A59C
 	ldr r0, _0203A6E8 ; =0x00300010
 	add r4, r1, #0
 	and r4, r0
-	bl sub_020CEBEC
+	bl GX_GetBankForOBJ
 	b _0203A5CA
 _0203A5BC:
 	ldr r0, _0203A6EC ; =0x04001000
@@ -285,7 +285,7 @@ _0203A5BC:
 	ldr r0, _0203A6E8 ; =0x00300010
 	add r4, r1, #0
 	and r4, r0
-	bl sub_020CEC1C
+	bl GX_GetBankForSubOBJ
 _0203A5CA:
 	add r6, r0, #0
 	ldr r0, _0203A6E8 ; =0x00300010
@@ -398,7 +398,7 @@ _0203A672:
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	b _0203A6DC
 _0203A694:
 	mov r1, #1
@@ -408,7 +408,7 @@ _0203A694:
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0
 	lsl r2, r2, #0xa
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	b _0203A6DC
 _0203A6AA:
 	cmp r4, r0
@@ -421,7 +421,7 @@ _0203A6AA:
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0
 	lsl r2, r2, #8
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	b _0203A6DC
 _0203A6C6:
 	mov r1, #1
@@ -432,7 +432,7 @@ _0203A6C6:
 	ldr r0, [r5, #0x14]
 	lsl r1, r1, #0xa
 	lsl r2, r2, #0xa
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 _0203A6DC:
 	ldr r0, [sp, #4]
 	bl FreeToHeap
@@ -498,7 +498,7 @@ _0203A742:
 	ldr r0, _0203A854 ; =0x00300010
 	add r6, r1, #0
 	and r6, r0
-	bl sub_020CEBEC
+	bl GX_GetBankForOBJ
 	b _0203A768
 _0203A75A:
 	ldr r0, _0203A858 ; =0x04001000
@@ -506,7 +506,7 @@ _0203A75A:
 	ldr r0, _0203A854 ; =0x00300010
 	add r6, r1, #0
 	and r6, r0
-	bl sub_020CEC1C
+	bl GX_GetBankForSubOBJ
 _0203A768:
 	ldr r1, _0203A85C ; =0x00100010
 	cmp r6, r1

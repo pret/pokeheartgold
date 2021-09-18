@@ -1,6 +1,12 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D43B8:
+	.space 0x40F8
+
+
 	.public _02110924
 	.public _0211092C
 
@@ -326,7 +332,7 @@ sub_020983FC: ; 0x020983FC
 	sub sp, sp, #4
 	mov sl, r0
 	mov fp, r1
-	bl sub_020D0AD4
+	bl GX_BeginLoadTexPltt
 	ldrh r0, [sl, #0x32]
 	mov sb, #0
 	cmp r0, #0
@@ -356,7 +362,7 @@ _02098430:
 	ldr r2, [r7, #0x10]
 	add r0, r1, r0
 	mov r1, r6
-	bl sub_020D0B08
+	bl GX_LoadTexPltt
 _02098484:
 	str r6, [r8, #8]
 	ldrh r0, [sl, #0x32]
@@ -365,7 +371,7 @@ _02098484:
 	cmp sb, r0
 	blt _02098430
 _0209849C:
-	bl sub_020D0B74
+	bl GX_EndLoadTexPltt
 	mov r0, #1
 	add sp, sp, #4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -378,7 +384,7 @@ sub_020984B0: ; 0x020984B0
 	sub sp, sp, #0xc
 	mov sl, r0
 	mov fp, r1
-	bl sub_020D08EC
+	bl GX_BeginLoadTex
 	ldrh r0, [sl, #0x32]
 	mov sb, #0
 	cmp r0, #0
@@ -415,7 +421,7 @@ _0209851C:
 	ldr r2, [r7, #8]
 	add r0, r0, #0x20
 	mov r1, r5
-	bl sub_020D0948
+	bl GX_LoadTex
 	str r5, [r8, #4]
 _02098554:
 	ldrh r0, [sl, #0x32]
@@ -424,7 +430,7 @@ _02098554:
 	cmp sb, r0
 	blt _020984E8
 _02098568:
-	bl sub_020D0A88
+	bl GX_EndLoadTex
 	mov r0, #1
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -2017,9 +2023,9 @@ _02099BF0:
 	add r0, r1, r0
 	str r0, [sp, #0x2c]
 	ldr r0, [r5, #0x44]
-	bl sub_020CF510
+	bl G3_LoadMtx43
 	add r0, sp, #0
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	b _02099D10
 _02099C6C:
 	ldr r2, [r4, #8]
@@ -2060,9 +2066,9 @@ _02099C6C:
 	str r2, [r0]
 	str r3, [r0]
 	ldr r0, [r5, #0x44]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	add r0, sp, #0
-	bl sub_020CF52C
+	bl G3_MultMtx43
 _02099D10:
 	ldr r0, [r5, #0x40]
 	ldrh r4, [r4, #0x36]
@@ -2319,9 +2325,9 @@ _0209A06C:
 	add r0, r1, r0
 	str r0, [sp, #0x2c]
 	ldr r0, [r5, #0x44]
-	bl sub_020CF510
+	bl G3_LoadMtx43
 	add r0, sp, #0
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	b _0209A18C
 _0209A0E8:
 	ldr r2, [r4, #8]
@@ -2362,9 +2368,9 @@ _0209A0E8:
 	str r2, [r0]
 	str r3, [r0]
 	ldr r0, [r5, #0x44]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	add r0, sp, #0
-	bl sub_020CF52C
+	bl G3_MultMtx43
 _0209A18C:
 	ldr r0, [r5, #0x40]
 	ldrh r4, [r4, #0x36]
@@ -2544,9 +2550,9 @@ _0209A3C4:
 	add r0, r1, r0
 	str r0, [sp, #0x2c]
 	ldr r0, [r5, #0x44]
-	bl sub_020CF510
+	bl G3_LoadMtx43
 	add r0, sp, #0
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	b _0209A4E4
 _0209A440:
 	ldr r2, [r4, #8]
@@ -2587,9 +2593,9 @@ _0209A440:
 	str r2, [r0]
 	str r3, [r0]
 	ldr r0, [r5, #0x44]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	add r0, sp, #0
-	bl sub_020CF52C
+	bl G3_MultMtx43
 _0209A4E4:
 	ldr r0, [r5, #0x40]
 	ldrh r4, [r4, #0x36]
@@ -2767,9 +2773,9 @@ _0209A714:
 	add r0, r1, r0
 	str r0, [sp, #0x2c]
 	ldr r0, [r5, #0x44]
-	bl sub_020CF510
+	bl G3_LoadMtx43
 	add r0, sp, #0
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	b _0209A834
 _0209A790:
 	ldr r2, [r4, #8]
@@ -2810,9 +2816,9 @@ _0209A790:
 	str r2, [r0]
 	str r3, [r0]
 	ldr r0, [r5, #0x44]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	add r0, sp, #0
-	bl sub_020CF52C
+	bl G3_MultMtx43
 _0209A834:
 	ldr r0, [r5, #0x40]
 	ldrh r4, [r4, #0x36]
@@ -3101,7 +3107,7 @@ _0209AACC:
 	str r4, [sp, #0x74]
 	str r3, [sp, #0x80]
 	str r1, [r2]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	b _0209AF3C
 _0209AC90:
 	ldr r3, [r6, #8]
@@ -3275,7 +3281,7 @@ _0209AD54:
 	str r2, [r1]
 	str r3, [r1]
 	str r4, [r1]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 _0209AF3C:
 	ldr r0, [r7, #0x40]
 	ldrh r4, [r6, #0x36]
@@ -3554,7 +3560,7 @@ _0209B1AC:
 	str r4, [sp, #0x74]
 	str r3, [sp, #0x80]
 	str r1, [r2]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	b _0209B61C
 _0209B370:
 	ldr r3, [r6, #8]
@@ -3728,7 +3734,7 @@ _0209B434:
 	str r2, [r1]
 	str r3, [r1]
 	str r4, [r1]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 _0209B61C:
 	ldr r0, [r7, #0x40]
 	ldrh r4, [r6, #0x36]
@@ -3926,7 +3932,7 @@ _0209B7F0:
 	str sb, [sp, #0x28]
 	str r1, [sp, #0x38]
 	str sb, [r2]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	b _0209BA74
 _0209B910:
 	ldr r8, [r6, #8]
@@ -4017,7 +4023,7 @@ _0209B910:
 	str r2, [r1]
 	str r3, [r1]
 	str r4, [r1]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 _0209BA74:
 	ldr r0, [r7, #0x40]
 	ldrh r4, [r6, #0x36]
@@ -4212,7 +4218,7 @@ _0209BC34:
 	str r8, [sp, #0x24]
 	str r8, [sp, #0x28]
 	str r8, [r1]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 	b _0209BEC4
 _0209BD60:
 	ldr r3, [r8, #8]
@@ -4303,7 +4309,7 @@ _0209BD60:
 	str r2, [r1]
 	str r3, [r1]
 	str r6, [r1]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 _0209BEC4:
 	and r1, r5, #0x1f
 	and r0, r4, #0x1f
@@ -6747,7 +6753,7 @@ _0209E1D4:
 	ldr r1, _0209E234 ; =0x021D43BC
 	ldrh r0, [r1, #2]
 	ldrh r1, [r1]
-	bl sub_020D3DF0
+	bl OSi_UnlockVram
 	ldr r1, _0209E234 ; =0x021D43BC
 	mov r2, #0
 	strh r2, [r1, #2]
@@ -6859,7 +6865,7 @@ _0209E35C:
 	beq _0209E3D4
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2]
-	bl sub_020D3DF0
+	bl OSi_UnlockVram
 	ldr r0, _0209E3FC ; =0x021D43BC
 	mov r1, #0
 	strh r1, [r0, #2]
@@ -6874,7 +6880,7 @@ _0209E394:
 	beq _0209E3C8
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2]
-	bl sub_020D3DF0
+	bl OSi_UnlockVram
 	ldr r0, _0209E3FC ; =0x021D43BC
 	mov r1, #0
 	strh r1, [r0, #2]
@@ -7000,7 +7006,7 @@ _0209E540:
 	bl sub_0209ED38
 	cmp r0, #0
 	bne _0209E564
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0209E564:

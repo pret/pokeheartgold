@@ -25,7 +25,7 @@ sub_0201A08C: ; 0x0201A08C
 	orr r0, r2
 	str r0, [r3, r1]
 	mov r0, #3
-	bl sub_020D422C
+	bl MI_WaitDma
 	ldr r0, _0201A0BC ; =gMain
 	ldr r0, [r0, #0x1c]
 	bl sub_0201F880
@@ -48,13 +48,13 @@ sub_0201A0C0: ; 0x0201A0C0
 	ldr r2, [r3, r1]
 	orr r0, r2
 	str r0, [r3, r1]
-	ldr r3, _0201A0DC ; =sub_020D422C
+	ldr r3, _0201A0DC ; =MI_WaitDma
 	mov r0, #3
 	bx r3
 	nop
 _0201A0D4: .word OSi_IntrTable
 _0201A0D8: .word 0x00003FF8
-_0201A0DC: .word sub_020D422C
+_0201A0DC: .word MI_WaitDma
 	thumb_func_end sub_0201A0C0
 
 	thumb_func_start sub_0201A0E0
@@ -155,7 +155,7 @@ sub_0201A16C: ; 0x0201A16C
 	mov r0, #2
 	bl OS_DisableIrqMask
 	mov r0, #0
-	bl sub_020CD910
+	bl GX_HBlankIntr
 	b _0201A1A0
 _0201A18A:
 	ldr r0, [r2, #8]
@@ -165,7 +165,7 @@ _0201A18A:
 	mov r0, #2
 	bl OS_EnableIrqMask
 	mov r0, #1
-	bl sub_020CD910
+	bl GX_HBlankIntr
 _0201A1A0:
 	ldr r1, _0201A1AC ; =0x04000208
 	ldrh r0, [r1]
@@ -231,7 +231,7 @@ InitSystemForTheGame: ; 0x0201A200
 	ldr r0, _0201A32C ; =0x0000020E
 	orr r0, r1
 	strh r0, [r2]
-	bl sub_020CD7C4
+	bl GX_Init
 	bl sub_020D33C0
 	bl sub_0201A1B4
 	mov r0, #0xa0
@@ -278,7 +278,7 @@ InitSystemForTheGame: ; 0x0201A200
 	bl sub_0201F834
 	ldr r1, _0201A330 ; =gMain
 	str r0, [r1, #0x24]
-	bl sub_020CD978
+	bl GX_DispOff
 	ldr r2, _0201A334 ; =0x04001000
 	ldr r0, _0201A338 ; =0xFFFEFFFF
 	ldr r1, [r2]
@@ -301,7 +301,7 @@ InitSystemForTheGame: ; 0x0201A200
 	ldrh r0, [r1]
 	mov r0, #1
 	strh r0, [r1]
-	bl sub_020CD944
+	bl GX_VBlankIntr
 	mov r0, #1
 	bl sub_020D7F60
 	bl sub_02027010
@@ -354,14 +354,14 @@ _0201A344: .word gMain + 0x60
 InitGraphicMemory: ; 0x0201A348
 	push {r3, lr}
 	ldr r0, _0201A398 ; =0x000001FF
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	mov r1, #0x1a
 	mov r2, #0x29
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0xe
 	bl MIi_CpuClearFast
-	bl sub_020CEB60
+	bl GX_DisableBankForLCDC
 	mov r1, #7
 	mov r2, #1
 	mov r0, #0xc0

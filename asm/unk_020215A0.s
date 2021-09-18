@@ -1497,7 +1497,7 @@ _0202205C: .word _021D21F4
 	thumb_func_start sub_02022060
 sub_02022060: ; 0x02022060
 	push {r3, lr}
-	bl sub_020CEBEC
+	bl GX_GetBankForOBJ
 	cmp r0, #0x30
 	bgt _02022090
 	bge _020220D8
@@ -1598,7 +1598,7 @@ _02022108:
 	ldr r0, [r0]
 	str r1, [r0, #0x14]
 _02022110:
-	bl sub_020CEC1C
+	bl GX_GetBankForSubOBJ
 	cmp r0, #0
 	beq _02022126
 	cmp r0, #8

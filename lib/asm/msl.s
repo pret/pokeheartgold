@@ -1,7 +1,15 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
-	.public __global_destructor_chain
 	.public __sinit__
+
+	.bss
+
+	; msl
+_021E5390:
+	.space 0x558
+
+__global_destructor_chain: ; 0x021E58E8
+	.space 4
 
 	.text
 

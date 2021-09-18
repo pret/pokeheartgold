@@ -1841,7 +1841,7 @@ ov92_0225D3CC: ; 0x0225D3CC
 	orr r1, r2
 	strh r1, [r0]
 	ldr r0, _0225D498 ; =0x022638B0
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	add r4, #0x6c
 	add r0, r4, #0
 	mov r1, #0x71
@@ -2171,14 +2171,14 @@ _0225D67A:
 	mov r1, #0
 	mov r2, #0x1e
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #0xa
 	str r0, [sp]
 	ldr r0, _0225D7C8 ; =0x04001050
 	mov r1, #0
 	mov r2, #0x11
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x11c
 	pop {r4, r5, pc}
 	.balign 4, 0
