@@ -11,7 +11,7 @@ typedef struct OSContext
     u32 lr;
     u32 pc_plus4;
     u32 sp_svc;
-#ifdef ARM9
+#ifdef SDK_ARM9
     CPContext cp_context;
 #endif
 } OSContext;

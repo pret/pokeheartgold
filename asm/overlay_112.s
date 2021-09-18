@@ -694,7 +694,7 @@ _021E5DBA:
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r4, #0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #0x80
 	strb r0, [r5]
 	add r5, r5, #1
@@ -711,7 +711,7 @@ _021E5DD0:
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r4, #0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #0x80
 	strb r0, [r5]
 	add r5, r5, #1
@@ -759,7 +759,7 @@ ov112_021E5E28: ; 0x021E5E28
 	ldr r4, [r0, #0x20]
 	add r5, r4, #0
 	add r5, #0x10
-	bl sub_020D3CE0
+	bl OS_GetOwnerRtcOffset
 	str r0, [r4, #0x10]
 	str r1, [r5, #4]
 	add r5, #8
@@ -915,7 +915,7 @@ _021E5F26:
 	ldr r0, [r0, #0x20]
 	add r1, #1
 	add r2, r5, #0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r1, r5, #1
 	asr r3, r4, #8
 	lsl r1, r1, #0x18
@@ -1097,7 +1097,7 @@ _021E60A6:
 	ldr r1, [r1, #0x30]
 	add r0, #0x10
 	add r1, #8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, _021E6114 ; =0x021FFAA4
 	mov r2, #0x89
 	ldr r0, [r0, #0x30]
@@ -2427,7 +2427,7 @@ _021E6B12:
 	ldr r0, [r0, #0x20]
 	mov r2, #0x28
 	add r0, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r2, _021E6BD4 ; =0x021FFB24
 	ldr r0, _021E6BD8 ; =0x021FFB64
 	ldrb r2, [r2, #0x1c]
@@ -3124,7 +3124,7 @@ _021E7076:
 	ldr r1, _021E7380 ; =0x021FFAA4
 	mov r2, #0x68
 	ldr r1, [r1, #0x24]
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, _021E7380 ; =0x021FFAA4
 	mov r5, #0xff
 	ldr r4, [r0, #0x24]
@@ -3470,7 +3470,7 @@ _021E7342:
 	ldr r1, _021E7384 ; =0x021FFB24
 	add r2, r4, #0
 	ldr r1, [r1, #0x28]
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, _021E7384 ; =0x021FFB24
 	ldr r1, [r0, #0x20]
 	add r1, r1, r4
@@ -3911,10 +3911,10 @@ ov112_021E76CC: ; 0x021E76CC
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	ldr r2, [r0]
@@ -3936,24 +3936,24 @@ ov112_021E76CC: ; 0x021E76CC
 	mov r0, #3
 	mov r1, #0x9a
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E7764 ; =0x0001F378
 	add r0, r4, #0
 	mov r2, #0x9a
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E7764 ; =0x0001F378
 	mov r1, #0
 	add r5, r0, #0
 	bl memset
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r0, [r0, #8]
 	str r0, [r5, #0x20]
 	add r0, r5, #0
 	bl ov112_021E795C
 	mov r0, #3
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	bl sub_020210BC
 	mov r0, #4
 	bl sub_02021148
@@ -3974,7 +3974,7 @@ ov112_021E7768: ; 0x021E7768
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x9a
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #0x18]
 	mov r0, #4
 	mov r1, #0x9a
@@ -4002,7 +4002,7 @@ ov112_021E7768: ; 0x021E7768
 	bl ov112_021E9C98
 	ldr r0, _021E77D8 ; =ov112_021E79A8
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r2, _021E77DC ; =0x04000304
 	ldr r0, _021E77E0 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -4041,7 +4041,7 @@ ov112_021E77E4: ; 0x021E77E4
 	bl sub_02002DB4
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, _021E782C ; =0x0001E52C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -4055,7 +4055,7 @@ ov112_021E7830: ; 0x021E7830
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	cmp r1, #4
@@ -4166,7 +4166,7 @@ _021E790C: .word 0x0001E52C
 ov112_021E7910: ; 0x021E7910
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
@@ -4175,12 +4175,12 @@ ov112_021E7910: ; 0x021E7910
 	add r0, r4, #0
 	bl ov112_021E77E4
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x9a
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0x10
 	bl sub_0201A738
 	ldr r0, _021E7954 ; =SDK_OVERLAY_OVY_60_ID
@@ -4198,11 +4198,11 @@ ov112_021E795C: ; 0x021E795C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _021E7994 ; =0x0001E434
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, _021E7998 ; =0x0001E438
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
@@ -4210,11 +4210,11 @@ ov112_021E795C: ; 0x021E795C
 	ldr r1, _021E799C ; =0x0001E43C
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl sub_020325EC
+	bl Sav2_Pokewalker_get
 	ldr r1, _021E79A0 ; =0x0001E440
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	ldr r1, _021E79A4 ; =0x0001E444
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -4258,7 +4258,7 @@ _021E79DA:
 	sub r2, r2, #1
 	bne _021E79DA
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -4278,70 +4278,70 @@ ov112_021E79F0: ; 0x021E79F0
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r2, _021E7AB0 ; =0x021F3704
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r2, _021E7AB4 ; =0x021F3720
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r2, _021E7AB8 ; =0x021F373C
 	add r0, r4, #0
 	mov r1, #3
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r2, _021E7ABC ; =0x021F3758
 	add r0, r4, #0
 	mov r1, #4
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r2, _021E7AC0 ; =0x021F3774
 	add r0, r4, #0
 	mov r1, #5
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r2, _021E7AC4 ; =0x021F3790
 	add r0, r4, #0
 	mov r1, #6
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x9a
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #5
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x9a
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x9a
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -4360,28 +4360,28 @@ ov112_021E7AC8: ; 0x021E7AC8
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1b
 	mov r1, #0
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #0x9a
 	add r1, r4, #0
 	bl FreeToHeapExplicit
@@ -4436,7 +4436,7 @@ ov112_021E7B18: ; 0x021E7B18
 	bl sub_0200304C
 	ldr r0, _021E7C10 ; =0x0001E43C
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -4486,7 +4486,7 @@ ov112_021E7B18: ; 0x021E7B18
 	bl sub_02007B68
 	ldr r0, _021E7C10 ; =0x0001E43C
 	ldr r0, [r5, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -4595,9 +4595,9 @@ ov112_021E7CC8: ; 0x021E7CC8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x9a
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
 	ldr r1, _021E7D60 ; =0x00001024
 	mov r0, #1
@@ -4619,14 +4619,14 @@ ov112_021E7CC8: ; 0x021E7CC8
 	strb r0, [r5, r1]
 	ldr r0, _021E7D64 ; =0x0001E438
 	ldr r0, [r5, r0]
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	ldr r1, _021E7D68 ; =0x00001030
 	mov r2, #8
 	str r0, [r5, r1]
 	add r1, #0x3c
 	add r0, r4, #0
 	add r1, r5, r1
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	ldr r0, _021E7D6C ; =0x00001028
 	mov r1, #1
 	str r1, [r5, r0]
@@ -4639,7 +4639,7 @@ ov112_021E7CC8: ; 0x021E7CC8
 	ldr r1, _021E7D74 ; =0x00001034
 	mov r2, #0x28
 	add r1, r5, r1
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #0x24
@@ -4722,7 +4722,7 @@ ov112_021E7DC0: ; 0x021E7DC0
 	ldr r1, _021E7DF8 ; =0x0000F1D8
 	mov r2, #0x28
 	add r1, r4, r1
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	pop {r4, pc}
 	.balign 4, 0
 _021E7DF0: .word 0x0000F1D0
@@ -4752,402 +4752,402 @@ ov112_021E7DFC: ; 0x021E7DFC
 	ldr r0, [r5, #0x18]
 	add r1, sp, #0x14
 	mov r2, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, sp, #0x14
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	ldr r0, _021E81D4 ; =0x021F5758
 	add r1, r4, #0
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r1, r4, #0
 	ldr r0, _021E81D8 ; =0x021F5858
 	add r1, #0x20
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r1, r4, #0
 	ldr r0, _021E81DC ; =0x021F5778
 	add r1, #0x40
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r1, r4, #0
 	ldr r0, _021E81E0 ; =0x021F5918
 	add r1, #0x60
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r1, r4, #0
 	ldr r0, _021E81E4 ; =0x021F5838
 	add r1, #0x80
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r1, r4, #0
 	ldr r0, _021E81E8 ; =0x021F5978
 	add r1, #0xa0
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r1, r4, #0
 	ldr r0, _021E81EC ; =0x021F5798
 	add r1, #0xc0
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r1, r4, #0
 	ldr r0, _021E81F0 ; =0x021F5878
 	add r1, #0xe0
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r0, _021E81F4 ; =0x021F57B8
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r0, _021E81F8 ; =0x021F58B8
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #5
 	lsl r1, r1, #6
 	ldr r0, _021E81FC ; =0x021F5818
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x16
 	lsl r1, r1, #4
 	ldr r0, _021E8200 ; =0x021F5938
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #6
 	lsl r1, r1, #6
 	ldr r0, _021E8204 ; =0x021F57F8
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x1a
 	lsl r1, r1, #4
 	ldr r0, _021E8208 ; =0x021F5998
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x9e
 	lsl r1, r1, #2
 	ldr r0, _021E820C ; =0x021F56C8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xa2
 	lsl r1, r1, #2
 	ldr r0, _021E8210 ; =0x021F5718
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xa6
 	lsl r1, r1, #2
 	ldr r0, _021E8214 ; =0x021F55F8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xaa
 	lsl r1, r1, #2
 	ldr r0, _021E8218 ; =0x021F5698
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xae
 	lsl r1, r1, #2
 	ldr r0, _021E821C ; =0x021F5598
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xb2
 	lsl r1, r1, #2
 	ldr r0, _021E8220 ; =0x021F55E8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xb6
 	lsl r1, r1, #2
 	ldr r0, _021E8224 ; =0x021F55D8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xba
 	lsl r1, r1, #2
 	ldr r0, _021E8228 ; =0x021F5688
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xbe
 	lsl r1, r1, #2
 	ldr r0, _021E822C ; =0x021F55C8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xc2
 	lsl r1, r1, #2
 	ldr r0, _021E8230 ; =0x021F56B8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xc6
 	lsl r1, r1, #2
 	ldr r0, _021E8234 ; =0x021F5588
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xca
 	lsl r1, r1, #2
 	ldr r0, _021E8238 ; =0x021F55A8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xce
 	lsl r1, r1, #2
 	ldr r0, _021E823C ; =0x021F5898
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xd6
 	lsl r1, r1, #2
 	ldr r0, _021E8240 ; =0x021F58D8
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xde
 	lsl r1, r1, #2
 	ldr r0, _021E8244 ; =0x021F58F8
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xee
 	lsl r1, r1, #2
 	ldr r0, _021E8248 ; =0x021F5668
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xf2
 	lsl r1, r1, #2
 	ldr r0, _021E824C ; =0x021F5638
 	add r1, r4, r1
 	mov r2, #8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x1e
 	lsl r1, r1, #4
 	ldr r0, _021E8250 ; =0x021F56F8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x1f
 	lsl r1, r1, #4
 	ldr r0, _021E8254 ; =0x021F5628
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x82
 	lsl r1, r1, #2
 	ldr r0, _021E8258 ; =0x021F5648
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x86
 	lsl r1, r1, #2
 	ldr r0, _021E825C ; =0x021F5748
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x8a
 	lsl r1, r1, #2
 	ldr r0, _021E8260 ; =0x021F5678
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x8e
 	lsl r1, r1, #2
 	ldr r0, _021E8264 ; =0x021F56D8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x92
 	lsl r1, r1, #2
 	ldr r0, _021E8268 ; =0x021F55B8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x96
 	lsl r1, r1, #2
 	ldr r0, _021E826C ; =0x021F5608
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x9a
 	lsl r1, r1, #2
 	ldr r0, _021E8270 ; =0x021F56E8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x3d
 	lsl r1, r1, #4
 	ldr r0, _021E8274 ; =0x021F5618
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x3e
 	lsl r1, r1, #4
 	ldr r0, _021E8278 ; =0x021F56A8
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xe1
 	lsl r1, r1, #4
 	ldr r0, _021E827C ; =0x021F5B98
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xe5
 	lsl r1, r1, #4
 	ldr r0, _021E8280 ; =0x021F5CD8
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xe9
 	lsl r1, r1, #4
 	ldr r0, _021E8284 ; =0x021F5BD8
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xed
 	lsl r1, r1, #4
 	ldr r0, _021E8288 ; =0x021F5A18
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xf1
 	lsl r1, r1, #4
 	ldr r0, _021E828C ; =0x021F5C98
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xf5
 	lsl r1, r1, #4
 	ldr r0, _021E8290 ; =0x021F5AD8
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x69
 	lsl r1, r1, #4
 	mov r2, #5
 	ldr r0, _021E8294 ; =0x021F7418
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x7d
 	lsl r1, r1, #4
 	mov r2, #5
 	ldr r0, _021E8298 ; =0x021F7558
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x91
 	lsl r1, r1, #4
 	mov r2, #5
 	ldr r0, _021E829C ; =0x021F7698
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xa5
 	lsl r1, r1, #4
 	mov r2, #5
 	ldr r0, _021E82A0 ; =0x021F77D8
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xb9
 	lsl r1, r1, #4
 	mov r2, #5
 	ldr r0, _021E82A4 ; =0x021F7918
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xcd
 	lsl r1, r1, #4
 	mov r2, #5
 	ldr r0, _021E82A8 ; =0x021F7A58
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82AC ; =0x000018D0
 	ldr r0, _021E82B0 ; =0x021F5C58
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82B4 ; =0x00001910
 	ldr r0, _021E82B8 ; =0x021F59D8
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82BC ; =0x00001950
 	ldr r0, _021E82C0 ; =0x021F6178
 	add r1, r4, r1
 	mov r2, #0x80
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82C4 ; =0x000019D0
 	ldr r0, _021E82C8 ; =0x021F5E18
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82CC ; =0x00001A30
 	ldr r0, _021E82D0 ; =0x021F6DD8
 	add r1, r4, r1
 	mov r2, #0xc0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82D4 ; =0x00001AF0
 	ldr r0, _021E82D8 ; =0x021F5A58
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82DC ; =0x00001B30
 	ldr r0, _021E82E0 ; =0x021F5A98
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82E4 ; =0x00001B70
 	ldr r0, _021E82E8 ; =0x021F5B18
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82EC ; =0x00001BB0
 	ldr r0, _021E82F0 ; =0x021F5B58
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82F4 ; =0x00001BF0
 	ldr r0, _021E82F8 ; =0x021F62F8
 	add r1, r4, r1
 	mov r2, #0x80
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E82FC ; =0x00001C70
 	ldr r0, _021E8300 ; =0x021F6378
 	add r1, r4, r1
 	mov r2, #0x80
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8304 ; =0x00001CF0
 	ldr r0, _021E8308 ; =0x021F6718
 	add r1, r4, r1
 	mov r2, #0xc0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E830C ; =0x00001DB0
 	ldr r0, _021E8310 ; =0x021F5738
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x77
 	lsl r1, r1, #6
 	ldr r0, _021E8314 ; =0x021F5708
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8318 ; =0x00001DD0
 	mov r2, #3
 	ldr r0, _021E831C ; =0x021FE198
@@ -5239,44 +5239,44 @@ _021E831C: .word 0x021FE198
 _021E8320:
 	add r1, r4, r1
 	lsl r2, r2, #8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0xf9
 	lsl r1, r1, #4
 	ldr r0, _021E86D0 ; =0x021F5D18
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E86D4 ; =0x00001110
 	ldr r0, _021E86D8 ; =0x021F5C18
 	add r1, r4, r1
 	mov r2, #0x40
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E86DC ; =0x00001150
 	ldr r0, _021E86E0 ; =0x021F65D8
 	add r1, r4, r1
 	mov r2, #0xa0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E86E4 ; =0x000011F0
 	ldr r0, _021E86E8 ; =0x021F61F8
 	add r1, r4, r1
 	mov r2, #0x80
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E86EC ; =0x00001270
 	ldr r0, _021E86F0 ; =0x021F6278
 	add r1, r4, r1
 	mov r2, #0x80
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E86EC ; =0x00001270
 	ldr r0, _021E86F4 ; =0x021F6538
 	add r1, r4, r1
 	mov r2, #0xa0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E86F8 ; =0x00001310
 	mov r2, #1
 	ldr r0, _021E86FC ; =0x021F70D8
 	add r1, r4, r1
 	lsl r2, r2, #8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, sp, #0x14
 	add r1, r5, #0
 	bl ov112_021E90FC
@@ -5298,343 +5298,343 @@ _021E8320:
 	add r0, r6, #0
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8700 ; =0x00001690
 	ldr r0, _021E8704 ; =0x021F67D8
 	add r1, r4, r1
 	mov r2, #0xc0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8708 ; =0x00001750
 	ldr r0, _021E870C ; =0x021F6898
 	add r1, r4, r1
 	mov r2, #0xc0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8710 ; =0x00001810
 	ldr r0, _021E8714 ; =0x021F7018
 	add r1, r4, r1
 	mov r2, #0xc0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8718 ; =0x00001410
 	ldr r0, _021E871C ; =0x021F6498
 	add r1, r4, r1
 	mov r2, #0xa0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8720 ; =0x000014B0
 	ldr r0, _021E8724 ; =0x021F63F8
 	add r1, r4, r1
 	mov r2, #0xa0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8728 ; =0x00001670
 	ldr r0, _021E872C ; =0x021F57D8
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8730 ; =0x000015B0
 	ldr r0, _021E8734 ; =0x021F5DB8
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8738 ; =0x00001610
 	ldr r0, _021E873C ; =0x021F6058
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8740 ; =0x00001550
 	ldr r0, _021E8744 ; =0x021F5D58
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8748 ; =0x000020D0
 	mov r2, #1
 	ldr r0, _021E874C ; =0x021F71D8
 	add r1, r4, r1
 	lsl r2, r2, #8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8750 ; =0x000021D0
 	ldr r0, _021E8754 ; =0x021F5958
 	add r1, r4, r1
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8758 ; =0x000021F0
 	ldr r0, _021E875C ; =0x021F5658
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8760 ; =0x000022B0
 	mov r2, #6
 	ldr r0, _021E8764 ; =0x021FCF98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8768 ; =0x00002430
 	mov r2, #6
 	ldr r0, _021E876C ; =0x021F8198
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8770 ; =0x000025B0
 	mov r2, #6
 	ldr r0, _021E8774 ; =0x021F8318
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8778 ; =0x00002730
 	mov r2, #6
 	ldr r0, _021E877C ; =0x021F8498
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8780 ; =0x000028B0
 	mov r2, #6
 	ldr r0, _021E8784 ; =0x021FC998
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8788 ; =0x00002A30
 	mov r2, #6
 	ldr r0, _021E878C ; =0x021F8618
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8790 ; =0x00002BB0
 	mov r2, #6
 	ldr r0, _021E8794 ; =0x021F8798
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8798 ; =0x00002D30
 	mov r2, #6
 	ldr r0, _021E879C ; =0x021F8918
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87A0 ; =0x00002EB0
 	mov r2, #6
 	ldr r0, _021E87A4 ; =0x021FC398
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87A8 ; =0x00003030
 	mov r2, #6
 	ldr r0, _021E87AC ; =0x021F8A98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87B0 ; =0x000031B0
 	mov r2, #6
 	ldr r0, _021E87B4 ; =0x021F8C18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87B8 ; =0x00003330
 	mov r2, #6
 	ldr r0, _021E87BC ; =0x021F8D98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87C0 ; =0x000034B0
 	mov r2, #6
 	ldr r0, _021E87C4 ; =0x021F8F18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87C8 ; =0x00003630
 	mov r2, #6
 	ldr r0, _021E87CC ; =0x021F9098
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87D0 ; =0x000037B0
 	mov r2, #6
 	ldr r0, _021E87D4 ; =0x021F9218
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87D8 ; =0x00003930
 	mov r2, #6
 	ldr r0, _021E87DC ; =0x021F9398
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87E0 ; =0x00003AB0
 	mov r2, #6
 	ldr r0, _021E87E4 ; =0x021FB798
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87E8 ; =0x00003C30
 	mov r2, #6
 	ldr r0, _021E87EC ; =0x021F9518
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87F0 ; =0x00003DB0
 	mov r2, #6
 	ldr r0, _021E87F4 ; =0x021F9698
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E87F8 ; =0x00003F30
 	mov r2, #6
 	ldr r0, _021E87FC ; =0x021F9818
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8800 ; =0x000040B0
 	mov r2, #6
 	ldr r0, _021E8804 ; =0x021FB198
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8808 ; =0x00004230
 	mov r2, #6
 	ldr r0, _021E880C ; =0x021F9998
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8810 ; =0x000043B0
 	mov r2, #6
 	ldr r0, _021E8814 ; =0x021F9B18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8818 ; =0x00004530
 	mov r2, #6
 	ldr r0, _021E881C ; =0x021F9C98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8820 ; =0x000046B0
 	mov r2, #6
 	ldr r0, _021E8824 ; =0x021FAB98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8828 ; =0x00004830
 	mov r2, #6
 	ldr r0, _021E882C ; =0x021F9E18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8830 ; =0x000049B0
 	mov r2, #6
 	ldr r0, _021E8834 ; =0x021F9F98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8838 ; =0x00004B30
 	mov r2, #6
 	ldr r0, _021E883C ; =0x021FA118
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8840 ; =0x00004CB0
 	mov r2, #6
 	ldr r0, _021E8844 ; =0x021FA298
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8848 ; =0x00004E30
 	mov r2, #6
 	ldr r0, _021E884C ; =0x021FA418
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8850 ; =0x00004FB0
 	mov r2, #6
 	ldr r0, _021E8854 ; =0x021FA598
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8858 ; =0x00005130
 	mov r2, #6
 	ldr r0, _021E885C ; =0x021FA718
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8860 ; =0x000052B0
 	mov r2, #6
 	ldr r0, _021E8864 ; =0x021FA898
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8868 ; =0x00005430
 	mov r2, #6
 	ldr r0, _021E886C ; =0x021FAA18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8870 ; =0x000055B0
 	mov r2, #6
 	ldr r0, _021E8874 ; =0x021FAD18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8878 ; =0x00005730
 	mov r2, #6
 	ldr r0, _021E887C ; =0x021FAE98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8880 ; =0x000058B0
 	mov r2, #6
 	ldr r0, _021E8884 ; =0x021FB018
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8888 ; =0x00005A30
 	mov r2, #6
 	ldr r0, _021E888C ; =0x021FB318
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8890 ; =0x00005BB0
 	mov r2, #6
 	ldr r0, _021E8894 ; =0x021FB498
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8898 ; =0x00005D30
 	mov r2, #6
 	ldr r0, _021E889C ; =0x021FB618
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E88A0 ; =0x00005EB0
 	mov r2, #6
 	ldr r0, _021E88A4 ; =0x021FB918
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r2, _021E88A8 ; =0x00006030
 	ldr r0, _021E88AC ; =0x021FBA98
 	add r1, r4, r2
 	lsr r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E88B0 ; =0x000061B0
 	mov r2, #6
 	ldr r0, _021E88B4 ; =0x021FBC18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E88B8 ; =0x00006330
 	mov r2, #6
 	ldr r0, _021E88BC ; =0x021FBD98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E88C0 ; =0x000064B0
 	mov r2, #6
 	ldr r0, _021E88C4 ; =0x021FBF18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E88C8 ; =0x00006630
 	mov r2, #6
 	ldr r0, _021E88CC ; =0x021FC098
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E88D0 ; =0x000067B0
 	mov r2, #6
 	ldr r0, _021E88D4 ; =0x021FC218
@@ -5773,186 +5773,186 @@ _021E88D4: .word 0x021FC218
 _021E88D8:
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8A9C ; =0x00006930
 	mov r2, #6
 	ldr r0, _021E8AA0 ; =0x021FC518
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8AA4 ; =0x00006AB0
 	mov r2, #6
 	ldr r0, _021E8AA8 ; =0x021FC698
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8AAC ; =0x00006C30
 	mov r2, #6
 	ldr r0, _021E8AB0 ; =0x021FC818
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8AB4 ; =0x00006DB0
 	mov r2, #6
 	ldr r0, _021E8AB8 ; =0x021FCB18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8ABC ; =0x00006F30
 	mov r2, #6
 	ldr r0, _021E8AC0 ; =0x021FCC98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8AC4 ; =0x000070B0
 	mov r2, #6
 	ldr r0, _021E8AC8 ; =0x021FCE18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8ACC ; =0x00007230
 	mov r2, #6
 	ldr r0, _021E8AD0 ; =0x021FD118
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8AD4 ; =0x000073B0
 	mov r2, #6
 	ldr r0, _021E8AD8 ; =0x021FD298
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8ADC ; =0x00007530
 	mov r2, #6
 	ldr r0, _021E8AE0 ; =0x021FD418
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8AE4 ; =0x000076B0
 	mov r2, #6
 	ldr r0, _021E8AE8 ; =0x021FD598
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8AEC ; =0x00007830
 	mov r2, #6
 	ldr r0, _021E8AF0 ; =0x021FD718
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8AF4 ; =0x000079B0
 	mov r2, #6
 	ldr r0, _021E8AF8 ; =0x021FD898
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8AFC ; =0x00007B30
 	mov r2, #6
 	ldr r0, _021E8B00 ; =0x021FDA18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8B04 ; =0x00007CB0
 	mov r2, #6
 	ldr r0, _021E8B08 ; =0x021FDB98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8B0C ; =0x00007E30
 	mov r2, #6
 	ldr r0, _021E8B10 ; =0x021FDD18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8B14 ; =0x00007FB0
 	mov r2, #6
 	ldr r0, _021E8B18 ; =0x021FDE98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8B1C ; =0x00008130
 	mov r2, #6
 	ldr r0, _021E8B20 ; =0x021FE018
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8B24 ; =0x000082B0
 	mov r2, #6
 	ldr r0, _021E8B28 ; =0x021F7B98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8B2C ; =0x00008430
 	mov r2, #6
 	ldr r0, _021E8B30 ; =0x021F7D18
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8B34 ; =0x000085B0
 	mov r2, #6
 	ldr r0, _021E8B38 ; =0x021F7E98
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8B3C ; =0x00008730
 	mov r2, #6
 	ldr r0, _021E8B40 ; =0x021F8018
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8B44 ; =0x000088B0
 	mov r2, #6
 	ldr r0, _021E8B48 ; =0x021F72D8
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _021E8B4C ; =0x00002210
 	ldr r0, _021E8B50 ; =0x021F6678
 	add r1, r4, r1
 	mov r2, #0xa0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x3f
 	lsl r1, r1, #4
 	ldr r0, _021E8B54 ; =0x021F5E78
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x45
 	lsl r1, r1, #4
 	ldr r0, _021E8B58 ; =0x021F5ED8
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x4b
 	lsl r1, r1, #4
 	ldr r0, _021E8B5C ; =0x021F5F38
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x51
 	lsl r1, r1, #4
 	ldr r0, _021E8B60 ; =0x021F5F98
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x57
 	lsl r1, r1, #4
 	ldr r0, _021E8B64 ; =0x021F5FF8
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x5d
 	lsl r1, r1, #4
 	ldr r0, _021E8B68 ; =0x021F6118
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r1, #0x63
 	lsl r1, r1, #4
 	ldr r0, _021E8B6C ; =0x021F60B8
 	add r1, r4, r1
 	mov r2, #0x60
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, _021E8B70 ; =0x00008A30
 	add r0, r4, r0
 	bl ov112_021F0D48
@@ -6036,7 +6036,7 @@ ov112_021E8B74: ; 0x021E8B74
 	mov r7, #0
 	str r7, [sp, #8]
 _021E8B94:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -6059,7 +6059,7 @@ _021E8B94:
 	ldr r0, [sp, #0x14]
 	ldrb r1, [r4, #6]
 	ldrh r0, [r6, r0]
-	bl sub_0206FA6C
+	bl AllocAndLoadMonPersonal_HandleAlternateForme
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
 	mov r1, #0
@@ -6101,7 +6101,7 @@ _021E8BDA:
 	strb r1, [r5, #0xd]
 	ldr r0, [sp, #0xc]
 	mov r1, #0x1c
-	bl sub_0206FAA8
+	bl GetPersonalAttr
 	ldrb r1, [r5, #0xe]
 	mov r2, #1
 	lsl r0, r0, #0x18
@@ -6118,7 +6118,7 @@ _021E8BDA:
 	ldr r0, [sp, #4]
 	strb r1, [r0, r7]
 	ldr r0, [sp, #0xc]
-	bl sub_0206FBB0
+	bl FreeMonPersonal
 	ldr r0, [sp, #8]
 	add r7, r7, #1
 	add r0, r0, #2
@@ -6221,7 +6221,7 @@ _021E8CDE:
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0x18]
 	mov r3, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -6237,7 +6237,7 @@ _021E8CDE:
 	strh r0, [r7]
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	mov r4, #0
 	add r6, r7, #0
 _021E8D24:
@@ -6278,7 +6278,7 @@ _021E8D24:
 	ldr r0, _021E9028 ; =0x0001E430
 	strb r1, [r7, #0xd]
 	ldr r0, [r5, r0]
-	bl sub_02070044
+	bl BoxMonIsShiny
 	lsl r0, r0, #0x1f
 	ldrb r2, [r7, #0xe]
 	mov r1, #2
@@ -6303,13 +6303,13 @@ _021E8D24:
 	ldr r0, _021E9028 ; =0x0001E430
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	ldrh r0, [r7]
 	mov r1, #0x9a
-	bl sub_0206FA8C
+	bl AllocAndLoadMonPersonal
 	mov r1, #0x1c
 	add r4, r0, #0
-	bl sub_0206FAA8
+	bl GetPersonalAttr
 	ldrb r1, [r7, #0xe]
 	mov r2, #1
 	lsl r0, r0, #0x18
@@ -6320,10 +6320,10 @@ _021E8D24:
 	orr r0, r1
 	strb r0, [r7, #0xe]
 	add r0, r4, #0
-	bl sub_0206FBB0
+	bl FreeMonPersonal
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
-	bl sub_0206FF90
+	bl GetBoxMonGender
 	ldrb r2, [r7, #0xd]
 	mov r1, #0x60
 	lsl r0, r0, #0x1e
@@ -6353,7 +6353,7 @@ _021E8D24:
 	add r4, r0, #0
 	add r1, #0x28
 	mov r2, #0x15
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r4, #0
 	bl String_dtor
 	add r0, sp, #0x3c
@@ -6405,7 +6405,7 @@ _021E8E6C:
 	str r0, [sp, #0x30]
 	add r1, r1, r4
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, [sp, #0x30]
 	bl FreeToHeap
 	mov r0, #6
@@ -6438,7 +6438,7 @@ _021E8E6C:
 	add r4, r0, #0
 	add r1, r7, r1
 	lsl r2, r2, #8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -6468,7 +6468,7 @@ _021E8EF2:
 	ldr r0, [sp, #0x24]
 	add r1, r1, r4
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #5
 	lsl r0, r0, #6
 	add r4, r4, r0
@@ -6514,7 +6514,7 @@ _021E8F3A:
 	ldr r0, [r0, r1]
 	add r1, r7, #0
 	add r1, #0xbe
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -6531,7 +6531,7 @@ _021E8F3A:
 	ldr r0, [sp, #0x24]
 	add r1, r7, r2
 	sub r2, #0x3e
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
 	bl ov112_021E9464
@@ -6546,7 +6546,7 @@ _021E8F3A:
 	add r4, r0, #0
 	add r1, r7, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, _021E9024 ; =0x0001D77C
@@ -6610,7 +6610,7 @@ _021E9060:
 	add r0, r4, #0
 	add r1, r7, r1
 	lsl r2, r2, #8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -6630,7 +6630,7 @@ _021E9060:
 	ldr r0, [sp, #0x24]
 	add r1, r7, r1
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, _021E90F8 ; =0x000019BE
 	mov r6, #0
 	add r4, sp, #0x40
@@ -6653,7 +6653,7 @@ _021E90A4:
 	ldr r0, [sp, #0x24]
 	add r1, r7, r5
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #6
 	lsl r0, r0, #6
 	add r6, r6, #1
@@ -6685,9 +6685,9 @@ ov112_021E90FC: ; 0x021E90FC
 	sub sp, #0x10
 	add r5, r0, #0
 	ldr r0, [r1, #0x20]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x9a
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
 	mov r0, #5
 	mov r1, #0x9a
@@ -6703,7 +6703,7 @@ ov112_021E90FC: ; 0x021E90FC
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #2
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #5
 	bl sub_02002DB4
 	add r0, r4, #0
@@ -6755,7 +6755,7 @@ _021E9170:
 	add r0, r5, #0
 	add r2, r6, #0
 	mov r3, #2
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 	add r7, r7, #1
@@ -6792,7 +6792,7 @@ _021E91B4:
 	add r0, r0, r1
 	mov r1, #5
 	mov r3, #2
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add r5, r5, #1
@@ -6819,7 +6819,7 @@ _021E91B4:
 	add r0, #0xd0
 	mov r1, #5
 	mov r3, #2
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #0xc
@@ -6846,7 +6846,7 @@ _021E91B4:
 	add r0, #0xe0
 	mov r3, #2
 	str r0, [sp, #0x10]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #5
@@ -7043,7 +7043,7 @@ ov112_021E93BC: ; 0x021E93BC
 	asr r2, r2, #3
 	lsl r2, r2, #1
 	str r0, [sp, #0x10]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0
 	ldr r1, [sp, #0x3c]
 	str r0, [sp, #0x14]
@@ -7309,7 +7309,7 @@ ov112_021E95A0: ; 0x021E95A0
 	add r2, sp, #0
 	bl sub_02032674
 	ldr r0, [r6, #0x20]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	bl sub_0202A55C
 	cmp r0, #0
 	beq _021E95C4
@@ -7330,13 +7330,13 @@ _021E95CE:
 	ldr r0, _021E9604 ; =0x0001E440
 	add r1, r4, #0
 	ldr r0, [r6, r0]
-	bl sub_0203272C
+	bl Pokewalker_CourseIsUnlocked
 	cmp r0, #0
 	bne _021E95F6
 	ldr r0, _021E9604 ; =0x0001E440
 	add r1, r4, #0
 	ldr r0, [r6, r0]
-	bl sub_02032744
+	bl Pokewalker_UnlockCourse
 	ldr r0, _021E960C ; =0x0001EC78
 	add sp, #8
 	str r4, [r6, r0]
@@ -7361,7 +7361,7 @@ ov112_021E9610: ; 0x021E9610
 	add r6, r0, #0
 	ldr r0, [r6, #0x20]
 	str r1, [sp]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	bl sub_0202A55C
 	cmp r0, #0
 	beq _021E9628
@@ -7377,7 +7377,7 @@ _021E962A:
 _021E9632:
 	ldr r0, [r6, r7]
 	add r1, r4, #0
-	bl sub_0203272C
+	bl Pokewalker_CourseIsUnlocked
 	cmp r0, #0
 	bne _021E9656
 	mov r0, #0xc0
@@ -7555,7 +7555,7 @@ _021E9794:
 	strh r1, [r4, r0]
 	b _021E986C
 _021E97B6:
-	ldr r0, _021E987C ; =0x021D110C
+	ldr r0, _021E987C ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -7651,7 +7651,7 @@ _021E986C:
 _021E9870: .word 0x0001F2E2
 _021E9874: .word 0x0001EC50
 _021E9878: .word 0x000005DD
-_021E987C: .word 0x021D110C
+_021E987C: .word gMain
 _021E9880: .word 0x000005DC
 _021E9884: .word 0x0001E530
 	thumb_func_end ov112_021E9750
@@ -8533,7 +8533,7 @@ ov112_021E9FA4: ; 0x021E9FA4
 	add r1, r7, #0
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8561,7 +8561,7 @@ ov112_021E9FD8: ; 0x021E9FD8
 	add r1, r7, #0
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8590,7 +8590,7 @@ ov112_021EA010: ; 0x021EA010
 	add r1, r7, #0
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8648,7 +8648,7 @@ ov112_021EA08C: ; 0x021EA08C
 	add r0, r4, r6
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, r6
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -8660,7 +8660,7 @@ ov112_021EA08C: ; 0x021EA08C
 	bl StringExpandPlaceholders
 	ldr r0, _021EA104 ; =0x0001E43C
 	ldr r0, [r5, r0]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -8703,7 +8703,7 @@ ov112_021EA10C: ; 0x021EA10C
 	add r0, r4, r6
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, r6
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -8768,7 +8768,7 @@ ov112_021EA1AC: ; 0x021EA1AC
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -9475,12 +9475,12 @@ ov112_021EA76C: ; 0x021EA76C
 	mov r0, #1
 	add r4, r2, r1
 	strb r0, [r2, r1]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #6
 	bl _u32_div_f
 	add r0, r1, #2
 	strb r0, [r4, #3]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	bl _u32_div_f
@@ -9489,12 +9489,12 @@ ov112_021EA76C: ; 0x021EA76C
 	strh r0, [r4, #4]
 	mov r0, #0x74
 	strh r0, [r4, #6]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x28
 	bl _u32_div_f
 	add r1, #0x28
 	strb r1, [r4, #2]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x3c
 	bl _u32_div_f
 	add r1, #0x78
@@ -9520,7 +9520,7 @@ ov112_021EA7D0: ; 0x021EA7D0
 	mov r0, #1
 	add r4, r2, r1
 	strb r0, [r2, r1]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #5
 	bl _u32_div_f
 	mov r0, #0
@@ -9528,7 +9528,7 @@ ov112_021EA7D0: ; 0x021EA7D0
 	mvn r0, r0
 	mul r0, r1
 	strb r0, [r4, #3]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	bl _u32_div_f
@@ -9537,12 +9537,12 @@ ov112_021EA7D0: ; 0x021EA7D0
 	strh r0, [r4, #4]
 	sub r0, #0xed
 	strh r0, [r4, #6]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x28
 	bl _u32_div_f
 	add r1, #0x28
 	strb r1, [r4, #2]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x3c
 	bl _u32_div_f
 	add r1, #0x78
@@ -10074,7 +10074,7 @@ ov112_021EAC18: ; 0x021EAC18
 	mov r2, #0
 	bl sub_02004EC4
 	ldr r0, _021EAC30 ; =0x00000497
-	bl sub_02005D48
+	bl PlayBGM
 	mov r0, #2
 	pop {r3, pc}
 	nop
@@ -10116,7 +10116,7 @@ ov112_021EAC5C: ; 0x021EAC5C
 	sub sp, #0x14
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r4, r0, #0
 	mov r0, #6
 	str r0, [sp]
@@ -10129,7 +10129,7 @@ ov112_021EAC5C: ; 0x021EAC5C
 	add r3, r0, #0
 	bl sub_0200FA24
 	add r0, r4, #0
-	bl sub_02073DFC
+	bl PCStorage_CountEmptySpotsInAllBoxes
 	cmp r0, #5
 	bge _021EACA0
 	add r0, r5, #0
@@ -10143,7 +10143,7 @@ ov112_021EAC5C: ; 0x021EAC5C
 	pop {r4, r5, pc}
 _021EACA0:
 	add r0, r4, #0
-	bl sub_02073FF8
+	bl PCStorage_CountMonsInAllBoxes
 	cmp r0, #0
 	bne _021EACCC
 	ldr r0, _021EADC8 ; =0x0001E440
@@ -10385,9 +10385,9 @@ _021EAEAE:
 	cmp r6, #0
 	beq _021EAF04
 	mov r0, #0x9a
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r4, r0, #0
 	ldr r0, _021EAF28 ; =0x0001E440
 	add r1, r4, #0
@@ -10534,7 +10534,7 @@ _021EAFF8: .word 0x021FF0AC
 ov112_021EAFFC: ; 0x021EAFFC
 	push {r4, lr}
 	sub sp, #0x10
-	ldr r1, _021EB1C4 ; =0x021D110C
+	ldr r1, _021EB1C4 ; =gMain
 	add r4, r0, #0
 	ldr r2, [r1, #0x48]
 	mov r1, #0x40
@@ -10749,7 +10749,7 @@ _021EB1BE:
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
-_021EB1C4: .word 0x021D110C
+_021EB1C4: .word gMain
 _021EB1C8: .word 0x0001EC50
 _021EB1CC: .word 0x021FF0AC
 _021EB1D0: .word 0x0001E440
@@ -10871,7 +10871,7 @@ ov112_021EB28C: ; 0x021EB28C
 	mov r0, #0x19
 	pop {r4, pc}
 _021EB2B4:
-	ldr r0, _021EB37C ; =0x021D110C
+	ldr r0, _021EB37C ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -10964,7 +10964,7 @@ _021EB372:
 	pop {r4, pc}
 	nop
 _021EB378: .word 0x000005DD
-_021EB37C: .word 0x021D110C
+_021EB37C: .word gMain
 _021EB380: .word 0x0001EC50
 _021EB384: .word 0x000005DC
 	thumb_func_end ov112_021EB28C
@@ -11093,7 +11093,7 @@ ov112_021EB44C: ; 0x021EB44C
 	mov r0, #0x19
 	pop {r4, pc}
 _021EB478:
-	ldr r0, _021EB55C ; =0x021D110C
+	ldr r0, _021EB55C ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -11199,7 +11199,7 @@ _021EB54E:
 	nop
 _021EB554: .word 0x021FF090
 _021EB558: .word 0x000005DD
-_021EB55C: .word 0x021D110C
+_021EB55C: .word gMain
 _021EB560: .word 0x0001EC50
 _021EB564: .word 0x000005DC
 	thumb_func_end ov112_021EB44C
@@ -11357,7 +11357,7 @@ ov112_021EB664: ; 0x021EB664
 	mov r0, #0x19
 	pop {r4, pc}
 _021EB690:
-	ldr r0, _021EB774 ; =0x021D110C
+	ldr r0, _021EB774 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -11463,7 +11463,7 @@ _021EB766:
 	nop
 _021EB76C: .word 0x021FF09C
 _021EB770: .word 0x000005DD
-_021EB774: .word 0x021D110C
+_021EB774: .word gMain
 _021EB778: .word 0x0001EC50
 _021EB77C: .word 0x000005DC
 	thumb_func_end ov112_021EB664
@@ -11778,7 +11778,7 @@ _021EB9BC: .word 0x0001E440
 
 	thumb_func_start ov112_021EB9C0
 ov112_021EB9C0: ; 0x021EB9C0
-	ldr r0, _021EB9E0 ; =0x021D110C
+	ldr r0, _021EB9E0 ; =gMain
 	mov r1, #0x80
 	ldr r2, [r0, #0x44]
 	add r0, r2, #0
@@ -11796,12 +11796,12 @@ _021EB9DC:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_021EB9E0: .word 0x021D110C
+_021EB9E0: .word gMain
 	thumb_func_end ov112_021EB9C0
 
 	thumb_func_start ov112_021EB9E4
 ov112_021EB9E4: ; 0x021EB9E4
-	ldr r0, _021EBA04 ; =0x021D110C
+	ldr r0, _021EBA04 ; =gMain
 	ldr r2, [r0, #0x44]
 	mov r0, #0x40
 	tst r0, r2
@@ -11819,7 +11819,7 @@ _021EBA00:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_021EBA04: .word 0x021D110C
+_021EBA04: .word gMain
 	thumb_func_end ov112_021EB9E4
 
 	thumb_func_start ov112_021EBA08
@@ -11908,12 +11908,12 @@ _021EBA88: .word 0x0001E524
 
 	thumb_func_start ov112_021EBA8C
 ov112_021EBA8C: ; 0x021EBA8C
-	ldr r0, _021EBAA8 ; =0x021D110C
+	ldr r0, _021EBAA8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
 	bne _021EBA9E
-	ldr r0, _021EBAAC ; =0x021D114C
+	ldr r0, _021EBAAC ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021EBAA2
@@ -11924,8 +11924,8 @@ _021EBAA2:
 	mov r0, #2
 	bx lr
 	nop
-_021EBAA8: .word 0x021D110C
-_021EBAAC: .word 0x021D114C
+_021EBAA8: .word gMain
+_021EBAAC: .word gMain + 0x40
 	thumb_func_end ov112_021EBA8C
 
 	thumb_func_start ov112_021EBAB0
@@ -12230,7 +12230,7 @@ ov112_021EBCD8: ; 0x021EBCD8
 	mov r0, #0x21
 	pop {r4, pc}
 _021EBD00:
-	ldr r0, _021EBD90 ; =0x021D110C
+	ldr r0, _021EBD90 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -12299,7 +12299,7 @@ _021EBD86:
 	pop {r4, pc}
 	nop
 _021EBD8C: .word 0x000005DD
-_021EBD90: .word 0x021D110C
+_021EBD90: .word gMain
 _021EBD94: .word 0x0001EC50
 _021EBD98: .word 0x000005DC
 	thumb_func_end ov112_021EBCD8
@@ -12500,16 +12500,16 @@ ov112_021EBF18: ; 0x021EBF18
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0x10
@@ -12547,7 +12547,7 @@ ov112_021EBF70: ; 0x021EBF70
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -12622,12 +12622,12 @@ ov112_021EC000: ; 0x021EC000
 	ldr r2, _021EC02C ; =0x000006C8
 	mov r0, #0
 	add r1, r4, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021EC030 ; =0x00009D70
 	ldr r2, _021EC034 ; =0x00000D4C
 	mov r0, #0
 	add r1, r4, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #0x10
 	pop {r4, pc}
 	nop
@@ -12734,7 +12734,7 @@ _021EC0D0:
 	bl ov112_021E9888
 	cmp r0, #0
 	beq _021EC0FA
-	ldr r0, _021EC12C ; =0x021D110C
+	ldr r0, _021EC12C ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -12764,7 +12764,7 @@ _021EC11C:
 _021EC120: .word 0x0001E538
 _021EC124: .word 0x0001E440
 _021EC128: .word 0x0001D758
-_021EC12C: .word 0x021D110C
+_021EC12C: .word gMain
 _021EC130: .word 0x000005DC
 	thumb_func_end ov112_021EC044
 
@@ -12779,7 +12779,7 @@ ov112_021EC134: ; 0x021EC134
 	mov r0, #0
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x20]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r4, r0, #0
 	ldr r0, _021EC1A0 ; =0x0001E440
 	add r1, sp, #0
@@ -12800,12 +12800,12 @@ ov112_021EC134: ; 0x021EC134
 	add r2, sp, #4
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r4, #0
 	add r3, r5, r6
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldr r1, [sp, #8]
 	add r0, r6, #0
 	add r0, #0x88
@@ -13051,7 +13051,7 @@ ov112_021EC338: ; 0x021EC338
 	mov r0, #0x1a
 	pop {r4, pc}
 _021EC354:
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0xb4
 	bl _u32_div_f
 	ldr r0, _021EC370 ; =0x0001F2D0
@@ -13457,7 +13457,7 @@ ov112_021EC640: ; 0x021EC640
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0xe
@@ -13850,14 +13850,14 @@ ov112_021EC950: ; 0x021EC950
 	add r0, r6, r0
 	mov r1, #0xff
 	mov r2, #0x1e
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r5, #0
 	ldr r7, _021EC994 ; =0x0001E440
 	add r4, r5, #0
 _021EC970:
 	ldr r0, [r6, r7]
 	add r1, r4, #0
-	bl sub_0203272C
+	bl Pokewalker_CourseIsUnlocked
 	cmp r0, #0
 	beq _021EC984
 	ldr r0, _021EC998 ; =0x0001EC58
@@ -14103,7 +14103,7 @@ _021ECB78:
 	mov r0, #0xa
 	pop {r3, r4, r5, pc}
 _021ECB7C:
-	ldr r0, _021ECCC0 ; =0x021D110C
+	ldr r0, _021ECCC0 ; =gMain
 	mov r2, #0x40
 	ldr r0, [r0, #0x48]
 	tst r2, r0
@@ -14250,7 +14250,7 @@ _021ECCB0: .word 0x021FF0C4
 _021ECCB4: .word 0x000005DD
 _021ECCB8: .word 0x0001EC54
 _021ECCBC: .word 0x000005DC
-_021ECCC0: .word 0x021D110C
+_021ECCC0: .word gMain
 	thumb_func_end ov112_021ECAA8
 
 	thumb_func_start ov112_021ECCC4
@@ -14477,7 +14477,7 @@ ov112_021ECE28: ; 0x021ECE28
 	lsl r2, r2, #0x18
 	mov r1, #0
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0x15
@@ -14563,16 +14563,16 @@ ov112_021ECF38: ; 0x021ECF38
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
 	bl ov112_021EA688
@@ -14637,16 +14637,16 @@ ov112_021ECFD4: ; 0x021ECFD4
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #3
 	bl ov112_021EA688
@@ -14671,16 +14671,16 @@ ov112_021ED020: ; 0x021ED020
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r3, [r4, #0xc]
 	add r0, r4, #0
 	mov r1, #2
@@ -14696,7 +14696,7 @@ ov112_021ED054: ; 0x021ED054
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0xe
@@ -14867,16 +14867,16 @@ ov112_021ED1A0: ; 0x021ED1A0
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	bl ov112_021E9C10
@@ -14962,12 +14962,12 @@ ov112_021ED264: ; 0x021ED264
 	ldr r2, _021ED2D8 ; =0x000006C8
 	mov r0, #0
 	add r1, r4, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021ED2DC ; =0x00009D70
 	ldr r2, _021ED2E0 ; =0x00000D4C
 	mov r0, #0
 	add r1, r4, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0xe
@@ -15084,7 +15084,7 @@ ov112_021ED35C: ; 0x021ED35C
 	bl ov112_021ED330
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0xff
 	bl _u32_div_f
 	cmp r5, r1
@@ -15199,7 +15199,7 @@ _021ED452:
 	bl ov112_021E9888
 	cmp r0, #0
 	beq _021ED47C
-	ldr r0, _021ED4CC ; =0x021D110C
+	ldr r0, _021ED4CC ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -15242,7 +15242,7 @@ _021ED4BC: .word 0x0001F2D4
 _021ED4C0: .word 0x0001E538
 _021ED4C4: .word 0x0001E440
 _021ED4C8: .word 0x0001F2C0
-_021ED4CC: .word 0x021D110C
+_021ED4CC: .word gMain
 _021ED4D0: .word 0x000005DD
 	thumb_func_end ov112_021ED35C
 
@@ -15255,7 +15255,7 @@ ov112_021ED4D4: ; 0x021ED4D4
 	mov r0, #0
 	add r1, r4, r1
 	lsl r2, r2, #6
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021ED520 ; =0x00009D44
 	ldr r2, _021ED524 ; =0x0000AABC
 	ldr r3, _021ED528 ; =0x0000B184
@@ -15567,7 +15567,7 @@ _021ED74C:
 	bl ov112_021E9888
 	cmp r0, #0
 	beq _021ED776
-	ldr r0, _021ED7D4 ; =0x021D110C
+	ldr r0, _021ED7D4 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -15615,7 +15615,7 @@ _021ED7C4: .word 0x0001F2C0
 _021ED7C8: .word 0x000010F0
 _021ED7CC: .word 0x0001D758
 _021ED7D0: .word 0x0001EC7C
-_021ED7D4: .word 0x021D110C
+_021ED7D4: .word gMain
 _021ED7D8: .word 0x000005DD
 	thumb_func_end ov112_021ED66C
 
@@ -15754,7 +15754,7 @@ ov112_021ED8DC: ; 0x021ED8DC
 	ldr r2, _021ED90C ; =0x000006C8
 	mov r0, #0
 	add r1, r4, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _021ED910 ; =0x00009D70
 	ldr r1, _021ED914 ; =0x0000B184
 	add r0, r4, r0
@@ -15871,7 +15871,7 @@ _021ED9D2:
 	bl ov112_021E9888
 	cmp r0, #0
 	beq _021ED9FC
-	ldr r0, _021EDA44 ; =0x021D110C
+	ldr r0, _021EDA44 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -15914,7 +15914,7 @@ _021EDA3A:
 	pop {r4, r5, pc}
 	.balign 4, 0
 _021EDA40: .word 0x0001E538
-_021EDA44: .word 0x021D110C
+_021EDA44: .word gMain
 _021EDA48: .word 0x000005DD
 	thumb_func_end ov112_021ED918
 
@@ -16150,7 +16150,7 @@ _021EDC26:
 	bl ov112_021E9888
 	cmp r0, #0
 	beq _021EDC50
-	ldr r0, _021EDCA8 ; =0x021D110C
+	ldr r0, _021EDCA8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -16196,7 +16196,7 @@ _021EDC98: .word 0x0001E538
 _021EDC9C: .word 0x0001E440
 _021EDCA0: .word 0x0001D758
 _021EDCA4: .word 0x0001F2C0
-_021EDCA8: .word 0x021D110C
+_021EDCA8: .word gMain
 _021EDCAC: .word 0x000005DD
 	thumb_func_end ov112_021EDB24
 
@@ -16307,7 +16307,7 @@ ov112_021EDD5C: ; 0x021EDD5C
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #7
@@ -16326,7 +16326,7 @@ ov112_021EDD80: ; 0x021EDD80
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #5
@@ -16352,7 +16352,7 @@ ov112_021EDDB4: ; 0x021EDDB4
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #5
@@ -16378,7 +16378,7 @@ ov112_021EDDE8: ; 0x021EDDE8
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #5
@@ -16454,7 +16454,7 @@ ov112_021EDE68: ; 0x021EDE68
 	mov r0, #0
 	add r1, r4, r1
 	lsl r2, r2, #2
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021EDEF8 ; =0x0000AABC
 	mov r0, #0x20
 	ldrb r2, [r4, r1]
@@ -16621,7 +16621,7 @@ ov112_021EDFE8: ; 0x021EDFE8
 	add r5, r0, #0
 	mov r0, #0x9a
 	mov r6, #1
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
 	ldr r0, _021EE03C ; =0x0001E440
 	add r1, r4, #0
@@ -16634,12 +16634,12 @@ _021EE006:
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _021EE040 ; =0x00009D44
 	ldrh r2, [r5, r1]
 	cmp r2, r7
@@ -16687,7 +16687,7 @@ ov112_021EE044: ; 0x021EE044
 	mov r0, #0
 	add r1, r4, r1
 	mov r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021EE0EC ; =0x000010E7
 	mov r0, #4
 	ldrb r2, [r4, r1]
@@ -16704,7 +16704,7 @@ _021EE088:
 	mov r0, #0
 	add r1, r4, r1
 	lsl r2, r2, #2
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021EE0F0 ; =0x0000AABC
 	mov r0, #0x20
 	ldrb r2, [r4, r1]
@@ -17058,7 +17058,7 @@ ov112_021EE31C: ; 0x021EE31C
 	mov r0, #0x41
 	pop {r4, pc}
 _021EE344:
-	ldr r0, _021EE3D4 ; =0x021D110C
+	ldr r0, _021EE3D4 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -17127,7 +17127,7 @@ _021EE3CA:
 	pop {r4, pc}
 	nop
 _021EE3D0: .word 0x000005DD
-_021EE3D4: .word 0x021D110C
+_021EE3D4: .word gMain
 _021EE3D8: .word 0x0001EC50
 _021EE3DC: .word 0x000005DC
 	thumb_func_end ov112_021EE31C
@@ -17260,7 +17260,7 @@ ov112_021EE4D0: ; 0x021EE4D0
 	mov r0, #0x37
 	pop {r4, pc}
 _021EE4E6:
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0xb4
 	bl _u32_div_f
 	ldr r0, _021EE50C ; =0x0001F2D0
@@ -17430,7 +17430,7 @@ ov112_021EE604: ; 0x021EE604
 
 	thumb_func_start ov112_021EE608
 ov112_021EE608: ; 0x021EE608
-	ldr r1, _021EE620 ; =0x021D110C
+	ldr r1, _021EE620 ; =gMain
 	ldr r2, [r1, #0x48]
 	mov r1, #0x80
 	tst r1, r2
@@ -17443,7 +17443,7 @@ _021EE61A:
 	mov r0, #2
 	bx lr
 	nop
-_021EE620: .word 0x021D110C
+_021EE620: .word gMain
 	thumb_func_end ov112_021EE608
 
 	thumb_func_start ov112_021EE624
@@ -17457,7 +17457,7 @@ ov112_021EE628: ; 0x021EE628
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r7, r0, #0
 	ldr r0, _021EE67C ; =0x0001D770
 	mov r1, #2
@@ -17476,7 +17476,7 @@ ov112_021EE628: ; 0x021EE628
 	add r0, r7, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	add r1, r0, #0
 	ldr r0, _021EE680 ; =0x0001E440
 	ldr r0, [r5, r0]
@@ -17484,7 +17484,7 @@ ov112_021EE628: ; 0x021EE628
 	add r0, r7, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_02073D10
+	bl PCStorage_DeleteBoxMonByIndexPair
 	add r0, r5, #0
 	bl ov112_021EECF0
 	mov r0, #2
@@ -17676,12 +17676,12 @@ ov112_021EE7A8: ; 0x021EE7A8
 	sub sp, #0x14
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	str r0, [sp, #4]
 	mov r0, #0x9a
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r6, r0, #0
 	ldr r0, _021EE89C ; =0x0001E440
 	add r2, sp, #8
@@ -17726,7 +17726,7 @@ _021EE804:
 	b _021EE854
 _021EE81E:
 	ldr r7, _021EE8AC ; =0x00009D44
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x18
 	bl _u32_div_f
 	add r3, r1, #0
@@ -17738,7 +17738,7 @@ _021EE81E:
 	add r2, r5, r7
 	bl ov112_021EE9A4
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r1, _021EE8B0 ; =0x0001E438
@@ -17753,16 +17753,16 @@ _021EE854:
 	ldr r0, [sp, #4]
 	add r1, sp, #0x10
 	add r2, sp, #0xc
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r3, r6, #0
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	ldr r1, _021EE8B4 ; =0x0001E430
 	str r0, [r5, r1]
 	add r1, #0x14
@@ -17772,7 +17772,7 @@ _021EE854:
 	ldr r0, _021EE8B8 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 _021EE890:
 	add r0, r4, #0
 	bl FreeToHeap
@@ -17806,7 +17806,7 @@ ov112_021EE8BC: ; 0x021EE8BC
 	add r4, r6, #0
 _021EE8D8:
 	add r0, r7, #0
-	bl sub_0206FCA8
+	bl CalcBoxMonExpToNextLevel
 	cmp r4, r0
 	blt _021EE8E6
 	add r4, r0, #0
@@ -17821,19 +17821,19 @@ _021EE8E6:
 	str r0, [sp]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 	add r0, r5, #0
 	mov r1, #8
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 	cmp r6, #0
 	beq _021EE91C
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #8
-	bl sub_0206FE90
+	bl MonApplyFriendshipMod
 _021EE91C:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -17864,7 +17864,7 @@ ov112_021EE920: ; 0x021EE920
 	ldr r0, [r4, r0]
 	mov r2, #1
 	mov r3, #0x9a
-	bl sub_02078398
+	bl Bag_AddItem
 	ldr r0, _021EE960 ; =0x0001F376
 	mov r1, #1
 	strh r1, [r4, r0]
@@ -17898,7 +17898,7 @@ ov112_021EE970: ; 0x021EE970
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl sub_0206ED70
+	bl SetBoxMonData
 _021EE99C:
 	add sp, #4
 	pop {r3, r4, pc}
@@ -17916,10 +17916,10 @@ ov112_021EE9A4: ; 0x021EE9A4
 	mov r1, #0x9a
 	add r7, r2, #0
 	str r3, [sp, #4]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	add r1, r0, #0
 	ldr r0, [sp, #0x20]
 	ldr r3, [sp, #4]
@@ -17930,7 +17930,7 @@ ov112_021EE9A4: ; 0x021EE9A4
 	add r0, r5, #0
 	mov r1, #0x91
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #8
@@ -17979,33 +17979,33 @@ _021EEA06:
 	ldrb r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r3, #0x20
-	bl sub_0206DE38
+	bl CreateMon
 	add r0, r5, #0
 	mov r1, #6
 	add r2, r4, #2
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	mov r1, #0x36
 	add r2, r4, #4
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	mov r1, #0x37
 	add r2, r4, #6
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x38
 	add r2, #8
-	bl sub_0206EC40
+	bl SetMonData
 	add r4, #0xa
 	add r0, r5, #0
 	mov r1, #0x39
 	add r2, r4, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	mov r1, #0x70
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov112_021EE9E4
@@ -18025,7 +18025,7 @@ _021EEA86:
 	mov r2, #1
 	ldr r0, [r5, r0]
 	mov r3, #0x9a
-	bl sub_02078398
+	bl Bag_AddItem
 _021EEA98:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -18042,7 +18042,7 @@ _021EEAA6:
 	mov r2, #1
 	ldr r0, [r5, r0]
 	mov r3, #0x9a
-	bl sub_02078398
+	bl Bag_AddItem
 _021EEAB8:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -18059,7 +18059,7 @@ _021EEAB8:
 	ldr r0, [r5, r0]
 	mov r2, #1
 	mov r3, #0x9a
-	bl sub_02078398
+	bl Bag_AddItem
 _021EEADA:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -18077,15 +18077,15 @@ ov112_021EEAF0: ; 0x021EEAF0
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
 	add r6, r1, #0
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r7, r0, #0
 	mov r0, #0x9a
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r4, r0, #0
 	ldr r0, _021EECC4 ; =0x0001E438
 	mov r1, #0x9a
 	ldr r0, [r5, r0]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	str r0, [sp, #0xc]
 	ldr r0, _021EECC8 ; =0x0001E440
 	add r2, sp, #0x18
@@ -18111,7 +18111,7 @@ _021EEB3A:
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq _021EEBA4
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x18
 	bl _u32_div_f
 	add r3, r1, #0
@@ -18123,7 +18123,7 @@ _021EEB3A:
 	add r2, r6, #0
 	bl ov112_021EE9A4
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r1, _021EECC4 ; =0x0001E438
@@ -18132,17 +18132,17 @@ _021EEB3A:
 	mov r3, #0xe9
 	bl sub_0208F270
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r1, sp, #0x24
 	add r2, sp, #0x20
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x20]
 	ldr r3, [sp, #0x14]
 	add r0, r7, #0
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -18150,7 +18150,7 @@ _021EEB3A:
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 _021EEBA4:
 	ldr r0, [sp, #8]
 	add r6, #0x10
@@ -18178,11 +18178,11 @@ _021EEBA4:
 	add r1, r5, r2
 	bl CopyU16ArrayToString
 	add r0, r4, #0
-	bl sub_0206DCE4
+	bl ZeroMonData
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r6, r0, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x18
 	bl _u32_div_f
 	ldr r0, [sp, #0x10]
@@ -18206,13 +18206,13 @@ _021EEBA4:
 	strb r1, [r0, #1]
 	add r0, r6, #0
 	mov r1, #0x9d
-	bl sub_0206ED70
+	bl SetBoxMonData
 	ldr r2, [sp, #4]
 	add r0, r6, #0
 	mov r1, #0x91
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r4, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r3, _021EECE0 ; =0x0000AD1A
@@ -18225,28 +18225,28 @@ _021EEBA4:
 	add r0, r6, #0
 	mov r1, #0xa
 	add r2, r5, r2
-	bl sub_0206ED70
+	bl SetBoxMonData
 	mov r1, #1
 	add r0, sp, #0x18
 	strb r1, [r0]
 	add r0, r6, #0
 	mov r1, #0x6e
 	add r2, sp, #0x18
-	bl sub_0206ED70
+	bl SetBoxMonData
 	ldr r2, _021EECE8 ; =0x0000AD30
 	add r0, r6, #0
 	mov r1, #0x9b
 	add r2, r5, r2
-	bl sub_0206ED70
+	bl SetBoxMonData
 	add r0, r7, #0
 	add r1, sp, #0x24
 	add r2, sp, #0x20
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x20]
 	add r0, r7, #0
 	add r3, r6, #0
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -18254,7 +18254,7 @@ _021EEBA4:
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 	ldr r0, _021EECEC ; =0x0001E430
 	ldr r0, [r5, r0]
 	cmp r0, #0
@@ -18262,7 +18262,7 @@ _021EEBA4:
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x20]
 	add r0, r7, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	ldr r1, _021EECEC ; =0x0001E430
 	str r0, [r5, r1]
 _021EECAC:
@@ -18646,7 +18646,7 @@ _021EEF7C:
 	b _021EF022
 _021EEF86:
 	mov r0, #0x9a
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r5, #0x18]
 	bl ov112_021EF15C
 	mov r0, #0x9a
@@ -18670,10 +18670,10 @@ _021EEF86:
 	add r0, r6, #0
 	str r1, [r5, r0]
 	ldr r0, [r5, #0x20]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	mov r1, #0
 	str r1, [sp]
 	add r3, r0, #0
@@ -18705,7 +18705,7 @@ _021EEF86:
 	add r1, r6, #0
 	ldr r0, _021EF038 ; =ov112_021EF310
 	add r1, r5, r1
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	str r0, [r5, r6]
 	add sp, #0x24
@@ -18834,7 +18834,7 @@ ov112_021EF100: ; 0x021EF100
 	mov r0, #0
 	str r0, [r4, r1]
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, _021EF150 ; =0x0001D768
 	ldr r0, [r4, r0]
 	bl sub_02093354
@@ -18880,7 +18880,7 @@ _021EF166:
 	sub r2, r2, #1
 	bne _021EF166
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -18899,7 +18899,7 @@ ov112_021EF17C: ; 0x021EF17C
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -18954,7 +18954,7 @@ ov112_021EF1CC: ; 0x021EF1CC
 ov112_021EF1F0: ; 0x021EF1F0
 	push {r3, r4, r5, lr}
 	add r5, r3, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	mov r1, #0xac
 	mov r2, #0
 	add r4, r0, #0
@@ -18994,7 +18994,7 @@ ov112_021EF1F0: ; 0x021EF1F0
 	add r2, #0x18
 	bl GetBoxMonData
 	add r0, r4, #0
-	bl sub_02070044
+	bl BoxMonIsShiny
 	strh r0, [r5, #0x10]
 	add r0, r4, #0
 	mov r1, #0x6f
@@ -19031,7 +19031,7 @@ _021EF282:
 ov112_021EF298: ; 0x021EF298
 	push {r3, r4, r5, lr}
 	add r4, r3, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	mov r1, #0xac
 	mov r2, #0
 	add r5, r0, #0
@@ -19085,10 +19085,10 @@ ov112_021EF300: ; 0x021EF300
 	add r0, r1, #0
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _021EF30C ; =sub_02073F00
+	ldr r3, _021EF30C ; =PCStorage_GetBoxName
 	bx r3
 	.balign 4, 0
-_021EF30C: .word sub_02073F00
+_021EF30C: .word PCStorage_GetBoxName
 	thumb_func_end ov112_021EF300
 
 	thumb_func_start ov112_021EF310
@@ -19113,18 +19113,18 @@ ov112_021EF31C: ; 0x021EF31C
 	ldr r0, [r4, #0x20]
 	cmp r6, #0x12
 	bne _021EF38C
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	ldr r1, [r5, #0x10]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strh r0, [r5, #0x18]
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r5, #0
 	add r1, #0x30
 	strb r0, [r1]
@@ -19132,16 +19132,16 @@ ov112_021EF31C: ; 0x021EF31C
 	add r0, r6, #0
 	mov r1, #0x75
 	add r2, #0x1a
-	bl sub_0206E540
+	bl GetMonData
 	add r0, r6, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	add r1, r5, #0
 	add r1, #0x31
 	strb r0, [r1]
 	add r0, r6, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r5, #0x32
 	strb r0, [r5]
 	ldr r0, _021EF3F0 ; =0x0001E42C
@@ -19152,10 +19152,10 @@ ov112_021EF31C: ; 0x021EF31C
 	str r1, [r4, r0]
 	pop {r4, r5, r6, pc}
 _021EF38C:
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	ldr r2, [r5, #0x10]
 	add r1, r6, #0
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	mov r1, #0xac
 	mov r2, #0
 	add r6, r0, #0
@@ -19169,7 +19169,7 @@ _021EF38C:
 	str r1, [r4, r0]
 _021EF3B0:
 	ldr r0, [r4, #0x20]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	ldr r1, [r5, #0xc]
 	ldr r2, [r5, #0x10]
 	add r3, sp, #0
@@ -19226,45 +19226,45 @@ _021EF414:
 	cmp r5, #0x12
 	ldr r0, [r2, #0x20]
 	bne _021EF4D6
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0
 	add r7, r0, #0
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x34]
 	add r0, r7, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #4
 	strh r0, [r1, #0x34]
 	add r0, r7, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #0x34
 	strb r0, [r1, #7]
 	add r2, sp, #0x3c
 	add r0, r7, #0
 	mov r1, #0x75
 	add r2, #2
-	bl sub_0206E540
+	bl GetMonData
 	add r0, r7, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	add r1, sp, #0x34
 	strb r0, [r1, #6]
 	add r0, r7, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #0x34
 	strb r0, [r1, #8]
 	add r0, r7, #0
 	mov r1, #0xb
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r4, #0
 	mov r3, #1
 	add r5, r0, #0
@@ -19293,13 +19293,13 @@ _021EF4A2:
 	add r0, r7, #0
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #0x34
 	strh r0, [r1, #0x26]
 	add r0, r7, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #0x54
 	strb r0, [r1, #8]
 	ldr r0, [sp]
@@ -19309,7 +19309,7 @@ _021EF4A2:
 	add sp, #0x60
 	pop {r3, r4, r5, r6, r7, pc}
 _021EF4D6:
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r1, r5, #0
 	add r2, r4, #0
 	add r3, sp, #4
@@ -19504,7 +19504,7 @@ ov112_021EF640: ; 0x021EF640
 
 	thumb_func_start ov112_021EF644
 ov112_021EF644: ; 0x021EF644
-	ldr r1, _021EF65C ; =0x021D110C
+	ldr r1, _021EF65C ; =gMain
 	ldr r2, [r1, #0x48]
 	mov r1, #0x80
 	tst r1, r2
@@ -19517,7 +19517,7 @@ _021EF656:
 	mov r0, #2
 	bx lr
 	nop
-_021EF65C: .word 0x021D110C
+_021EF65C: .word gMain
 	thumb_func_end ov112_021EF644
 
 	thumb_func_start ov112_021EF660
@@ -19671,7 +19671,7 @@ ov112_021EF758: ; 0x021EF758
 	ldr r0, [r5, r0]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	ldr r0, _021EF8A8 ; =0x000010F0
 	ldr r1, [r5, r0]
 	ldr r0, _021EF8AC ; =0x0001D758
@@ -19843,7 +19843,7 @@ ov112_021EF8D4: ; 0x021EF8D4
 	ldr r0, [r5, r0]
 	mov r1, #1
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	mov r0, #0xc
 	mov r1, #0x9a
 	bl String_ctor
@@ -19963,7 +19963,7 @@ ov112_021EF9D4: ; 0x021EF9D4
 	ldr r0, [r4, r0]
 	mov r1, #4
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x30
@@ -20503,7 +20503,7 @@ _021EFDCC:
 	mov r0, #0
 	add r1, sp, #0x10
 	mov r2, #0x1c
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r6, _021EFEBC ; =0x00009DAC
 	mov r4, #0
 	add r5, r7, #0
@@ -20539,12 +20539,12 @@ _021EFE24:
 	ldr r2, _021EFECC ; =0x000006C8
 	mov r0, #0
 	add r1, r7, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r1, _021EFED0 ; =0x00009D70
 	ldr r2, _021EFED4 ; =0x00000D4C
 	mov r0, #0
 	add r1, r7, r1
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 _021EFE60:
 	mov r0, #0x13
 	mov r1, #0x9a
@@ -20739,7 +20739,7 @@ ov112_021EFF84: ; 0x021EFF84
 	ldr r0, [r5, r0]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	ldr r0, _021F00B8 ; =0x000010F0
 	ldr r1, [r5, r0]
 	ldr r0, _021F00BC ; =0x0001D758
@@ -20903,7 +20903,7 @@ ov112_021F0114: ; 0x021F0114
 	ldr r0, [r4, r0]
 	mov r1, #4
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x30
@@ -21033,7 +21033,7 @@ ov112_021F01CC: ; 0x021F01CC
 	ldr r0, [r5, r0]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl sub_0200CAD8
+	bl BufferPokewalkerMessage
 	ldr r0, _021F0300 ; =0x000010F0
 	ldr r1, [r5, r0]
 	ldr r0, _021F0304 ; =0x0001D758
@@ -21231,7 +21231,7 @@ ov112_021F039C: ; 0x021F039C
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	str r5, [r4, #0x74]
 	add r0, r4, #0
@@ -21262,7 +21262,7 @@ ov112_021F03BC: ; 0x021F03BC
 	add r1, #8
 	mov r2, #5
 	mov r3, #0xe
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #6
 	str r0, [sp]
 	mov r2, #5
@@ -21277,7 +21277,7 @@ ov112_021F03BC: ; 0x021F03BC
 	ldr r0, [r4, #4]
 	add r1, #0x18
 	mov r3, #0x17
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xc
 	str r0, [sp]
 	mov r0, #8
@@ -21293,7 +21293,7 @@ ov112_021F03BC: ; 0x021F03BC
 	add r1, #0x28
 	mov r2, #5
 	mov r3, #0xe
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #8
@@ -21309,7 +21309,7 @@ ov112_021F03BC: ; 0x021F03BC
 	add r1, #0x38
 	mov r2, #5
 	mov r3, #0xe
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -21325,7 +21325,7 @@ ov112_021F03BC: ; 0x021F03BC
 	add r1, #0x48
 	mov r2, #5
 	mov r3, #0x16
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r3, #0xe
 	str r3, [sp]
 	mov r0, #0x10
@@ -21340,7 +21340,7 @@ ov112_021F03BC: ; 0x021F03BC
 	ldr r0, [r4, #4]
 	add r1, #0x58
 	mov r2, #5
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0x1b
 	add r2, r1, #0
 	ldr r3, [r4]
@@ -21438,10 +21438,10 @@ ov112_021F051C: ; 0x021F051C
 	bl RemoveWindow
 	ldr r0, [r7, #4]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r7, #4]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r5, r7, #0
 	add r5, #0x74
 	add r0, r5, #0
@@ -21581,10 +21581,10 @@ ov112_021F0668: ; 0x021F0668
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021F06C8 ; =0x021FF150
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -21599,10 +21599,10 @@ ov112_021F0668: ; 0x021F0668
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add sp, #0x38
 	pop {r3, r4, r5, pc}
 	nop
@@ -21639,7 +21639,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, r5, #0
 	ldr r2, [r5, #0x70]
 	add r0, #0x38
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	add r0, #0x38
 	bl CopyWindowToVram
@@ -21678,7 +21678,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, #8
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	add r0, #8
 	bl CopyWindowToVram
@@ -21722,7 +21722,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, r5, #0
 	add r0, #0x18
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	add r0, #0x18
 	bl CopyWindowToVram
@@ -21750,7 +21750,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, #0x48
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	add r0, #0x48
 	bl CopyWindowToVram
@@ -21780,7 +21780,7 @@ _021F0820:
 	add r2, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	add r0, #0x48
 	bl CopyWindowToVram
@@ -21815,7 +21815,7 @@ _021F0876:
 	add r0, #0x28
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	add r0, #0x28
 	bl CopyWindowToVram
@@ -21846,7 +21846,7 @@ _021F0876:
 	add r0, #0x58
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r5, #0x58
 	add r0, r5, #0
 	bl CopyWindowToVram
@@ -22438,7 +22438,7 @@ _021F0D8A:
 	ldrb r2, [r5, #2]
 	ldr r0, [r4]
 	add r1, r1, r7
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldrb r0, [r5, #2]
 	add r5, r5, #4
 	add r4, r4, #4
@@ -22465,10 +22465,10 @@ ov112_021F0DC0: ; 0x021F0DC0
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -22498,7 +22498,7 @@ _021F0DFE:
 	sub r2, r2, #1
 	bne _021F0DFE
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -22566,7 +22566,7 @@ ov112_021F0E60: ; 0x021F0E60
 	bl sub_02025320
 	cmp r0, #0
 	bne _021F0E8E
-	ldr r0, _021F0EAC ; =0x021D110C
+	ldr r0, _021F0EAC ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -22585,7 +22585,7 @@ _021F0EA0:
 	pop {r3, r4, pc}
 	nop
 _021F0EA8: .word 0x021FF2DC
-_021F0EAC: .word 0x021D110C
+_021F0EAC: .word gMain
 _021F0EB0: .word 0x000005DC
 	thumb_func_end ov112_021F0E60
 
@@ -22610,7 +22610,7 @@ ov112_021F0EB4: ; 0x021F0EB4
 	bl sub_02025320
 	cmp r0, #0
 	bne _021F0EE6
-	ldr r0, _021F0EF8 ; =0x021D110C
+	ldr r0, _021F0EF8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -22624,7 +22624,7 @@ _021F0EEA:
 	nop
 _021F0EF0: .word 0x0000013D
 _021F0EF4: .word 0x021FF2DC
-_021F0EF8: .word 0x021D110C
+_021F0EF8: .word gMain
 	thumb_func_end ov112_021F0EB4
 
 	thumb_func_start ov112_021F0EFC
@@ -22651,7 +22651,7 @@ ov112_021F0EFC: ; 0x021F0EFC
 	bl sub_02025320
 	cmp r0, #0
 	bne _021F0F34
-	ldr r0, _021F0F44 ; =0x021D110C
+	ldr r0, _021F0F44 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0x10
 	tst r0, r1
@@ -22665,7 +22665,7 @@ _021F0F38:
 	.balign 4, 0
 _021F0F3C: .word 0x0000013D
 _021F0F40: .word 0x021FF2DC
-_021F0F44: .word 0x021D110C
+_021F0F44: .word gMain
 	thumb_func_end ov112_021F0EFC
 
 	thumb_func_start ov112_021F0F48
@@ -22750,10 +22750,10 @@ _021F0FB8:
 _021F0FC2:
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_020325EC
+	bl Sav2_Pokewalker_get
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	bl PlayerProfile_GetTrainerGender
 	str r0, [r5, #0xc]
@@ -23258,7 +23258,7 @@ _021F1370:
 	ldr r1, [sp, #0x28]
 	ldr r3, [sp, #0x10]
 	add r0, r4, r6
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
@@ -23307,10 +23307,10 @@ ov112_021F13CC: ; 0x021F13CC
 	bl ReadMsgData_ExpandPlaceholders
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r0, r4, r0
 	ldr r1, [r5, #4]
 	add r0, r0, #2
@@ -23324,7 +23324,7 @@ ov112_021F13CC: ; 0x021F13CC
 	bl StrAddChar
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_02026AC4
+	bl StringCat
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -23335,7 +23335,7 @@ ov112_021F13CC: ; 0x021F13CC
 	ldr r0, [sp, #0x10]
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -23352,7 +23352,7 @@ _021F145A:
 	ldr r0, [sp, #0x10]
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _021F1472:
 	add r0, r6, #0
 	bl String_dtor
@@ -23442,14 +23442,14 @@ _021F1514:
 	ldr r0, [r5, #0x64]
 	bl NewString_ReadMsgData
 	add r6, r0, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r0, r0, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r6, #0
 	add r1, sp, #0
 	mov r2, #0x13
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r5, #0
 	add r1, sp, #0
 	mov r2, #4
@@ -23472,14 +23472,14 @@ ov112_021F1548: ; 0x021F1548
 	add r1, r2, #0
 	bl NewString_ReadMsgData
 	add r4, r0, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r0, r0, #1
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	add r0, r4, #0
 	add r1, sp, #0
 	add r2, r7, #0
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r6, #0
@@ -23763,7 +23763,7 @@ ov112_021F179C: ; 0x021F179C
 	sub sp, #0xa0
 	add r5, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #4
 	ldr r4, _021F1808 ; =0x021FF2F4
 	str r0, [r5, #0x14]
@@ -23773,7 +23773,7 @@ ov112_021F179C: ; 0x021F179C
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r4, _021F180C ; =0x021FF434
 	add r3, sp, #0x14
 	mov r2, #0x11
@@ -23792,10 +23792,10 @@ _021F17D6:
 	ldr r0, [r5, #0x14]
 	add r2, r6, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldrb r1, [r4]
 	ldr r0, [r5, #0x14]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	ldrb r1, [r4]
@@ -23825,7 +23825,7 @@ ov112_021F1814: ; 0x021F1814
 _021F181C:
 	ldrb r1, [r5]
 	ldr r0, [r6, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r4, r4, #1
 	add r5, r5, #1
 	cmp r4, #5
@@ -23991,7 +23991,7 @@ _021F1958:
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02005D48
+	bl PlayBGM
 	pop {r4, pc}
 	.balign 4, 0
 _021F1968: .word 0x021FF9B8
@@ -24056,7 +24056,7 @@ ov112_021F196C: ; 0x021F196C
 	bl sub_02009FC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -25004,7 +25004,7 @@ _021F2142:
 	add r2, r7, #0
 	bl NARC_AllocAndReadWholeMember
 	str r0, [sp, #0x24]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x14]
 	str r0, [sp, #0x20]
 	add r0, r0, r1
@@ -26674,7 +26674,7 @@ _021F2DE0: .word 0xFFFFFBFF
 ov112_021F2DE4: ; 0x021F2DE4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	bne _021F2DF4
 	bl GF_AssertFail
@@ -26682,17 +26682,17 @@ _021F2DF4:
 	mov r0, #3
 	mov r1, #0x9b
 	lsl r2, r0, #0x11
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x15
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #0x9b
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x15
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x9b
 	str r0, [r4, #4]
 	add r0, r4, #0
@@ -26700,10 +26700,10 @@ _021F2DF4:
 	bl ov112_021F0F90
 	bl ov112_021F0DC0
 	bl ov112_021F0DF4
-	ldr r0, _021F2E68 ; =0x021D116C
+	ldr r0, _021F2E68 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	ldr r1, [r4, #4]
 	mov r0, #0xfb
 	bl NARC_ctor
@@ -26720,10 +26720,10 @@ _021F2DF4:
 	bl sub_0200FBDC
 	ldr r0, _021F2E6C ; =ov112_021F2EB0
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r3, r4, r5, pc}
 	nop
-_021F2E68: .word 0x021D116C
+_021F2E68: .word gMain + 0x60
 _021F2E6C: .word ov112_021F2EB0
 	thumb_func_end ov112_021F2DE4
 
@@ -26731,7 +26731,7 @@ _021F2E6C: .word ov112_021F2EB0
 ov112_021F2E70: ; 0x021F2E70
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	bl ov112_021F1324
 	add r0, r5, #0
@@ -26740,18 +26740,18 @@ ov112_021F2E70: ; 0x021F2E70
 	bl ov112_021F1A08
 	ldr r0, [r5, #0x10]
 	bl NARC_dtor
-	ldr r0, _021F2EAC ; =0x021D116C
+	ldr r0, _021F2EAC ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	bl ov112_021F0DC0
 	add r0, r4, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x9b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021F2EAC: .word 0x021D116C
+_021F2EAC: .word gMain + 0x60
 	thumb_func_end ov112_021F2E70
 
 	thumb_func_start ov112_021F2EB0
@@ -26794,7 +26794,7 @@ ov112_021F2EF4: ; 0x021F2EF4
 	sub sp, #0xc
 	add r4, r1, #0
 	add r6, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #4
@@ -26886,7 +26886,7 @@ ov112_021F2FAC: ; 0x021F2FAC
 	sub sp, #0xc
 	add r4, r1, #0
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #0
 	beq _021F2FC8
@@ -26940,7 +26940,7 @@ _021F3012:
 	thumb_func_start ov112_021F3018
 ov112_021F3018: ; 0x021F3018
 	push {r4, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov112_021F2CD4
 	cmp r0, #0
@@ -27018,12 +27018,12 @@ ov112_021F30BC: ; 0x021F30BC
 	add r5, r0, #0
 	mov r1, #0
 	mov r2, #0x88
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r1, r5, #0
 	ldr r0, [r4]
 	add r1, #0x20
 	mov r2, #0x16
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldrh r0, [r4, #8]
 	mov r1, #0x1f
 	strh r0, [r5, #0xa]
@@ -27235,15 +27235,15 @@ ov112_021F3244: ; 0x021F3244
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r0, r5, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	mov r2, #0x7d
 	add r6, r0, #0
 	mov r0, #0
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	bl sub_020327DC
 	add r0, r4, #0
@@ -27255,7 +27255,7 @@ ov112_021F3244: ; 0x021F3244
 	bl ov112_021F33D8
 	ldr r1, _021F3288 ; =0x000001F2
 	add r0, r4, #0
-	bl sub_0201FF98
+	bl GF_CalcCRC16
 	ldr r1, _021F3288 ; =0x000001F2
 	strh r0, [r4, r1]
 	pop {r4, r5, r6, pc}
@@ -27286,7 +27286,7 @@ ov112_021F328C: ; 0x021F328C
 _021F32B6:
 	ldr r0, [sp, #4]
 	ldr r1, _021F3368 ; =0x000001F2
-	bl sub_0201FF98
+	bl GF_CalcCRC16
 	ldr r2, _021F3368 ; =0x000001F2
 	ldr r1, [sp, #4]
 	ldrh r1, [r1, r2]
@@ -27363,7 +27363,7 @@ _021F3342:
 	mul r3, r2
 	ldr r0, [sp, #4]
 	add r1, r1, r3
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r2, [sp, #0x10]
 	ldr r0, [sp, #0xc]
 	add r1, sp, #0x18
@@ -27383,21 +27383,21 @@ ov112_021F336C: ; 0x021F336C
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	str r0, [r5]
 	add r0, r4, #0
 	bl PlayerProfile_GetTrainerGender
 	strb r0, [r5, #7]
 	add r0, r4, #0
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	strb r0, [r5, #5]
 	add r0, r4, #0
-	bl sub_0202907C
+	bl PlayerProfile_GetVersion
 	strb r0, [r5, #6]
 	add r0, r4, #0
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	strb r0, [r5, #4]
 	add r0, r4, #0
 	bl PlayerProfile_GetNamePtr
@@ -27432,7 +27432,7 @@ ov112_021F33D8: ; 0x021F33D8
 	add r6, r0, #0
 	add r0, r1, #0
 	str r1, [sp]
-	bl sub_02074640
+	bl GetPartyCount
 	str r0, [sp, #0x18]
 	mov r0, #0
 	str r0, [sp, #0x14]
@@ -27446,17 +27446,17 @@ _021F33F6:
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	ldr r1, [sp, #0x1c]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #3
 	mov r2, #0
 	add r5, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _021F341E
 	add r0, r5, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021F3420
 _021F341E:
@@ -27465,7 +27465,7 @@ _021F3420:
 	add r0, r5, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	ldrh r1, [r6]
 	ldr r2, _021F359C ; =0xFFFFF800
@@ -27478,7 +27478,7 @@ _021F3420:
 	add r0, r5, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x1b
@@ -27501,7 +27501,7 @@ _021F3420:
 	bne _021F3482
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 	ldrh r1, [r6]
 	ldr r0, _021F35A0 ; =0xFFFF07FF
 	and r0, r1
@@ -27512,48 +27512,48 @@ _021F3482:
 	add r0, r5, #0
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strh r0, [r6, #2]
 	add r0, r5, #0
 	mov r1, #7
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0
 	str r0, [r6, #0xc]
 	add r0, r5, #0
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [r6, #0x10]
 	add r0, r5, #0
 	mov r1, #0xc
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strb r0, [r6, #0x1f]
 	add r0, r5, #0
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r6, #0
 	add r1, #0x20
 	strb r0, [r1]
 	add r0, r5, #0
 	mov r1, #9
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r6, #0
 	add r1, #0x21
 	strb r0, [r1]
 	add r0, r5, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r6, #0
 	add r1, #0x22
 	strb r0, [r1]
 	add r0, r5, #0
 	mov r1, #0x75
 	add r2, sp, #0x20
-	bl sub_0206E540
+	bl GetMonData
 	add r0, r6, #0
 	add r0, #0x24
 	add r1, sp, #0x20
@@ -27568,14 +27568,14 @@ _021F3500:
 	add r0, r5, #0
 	add r1, #0x36
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, [sp, #8]
 	mov r2, #0
 	strh r0, [r1, #4]
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x3e
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	lsl r1, r7
 	ldr r0, [sp, #0x10]
@@ -27598,7 +27598,7 @@ _021F353E:
 	add r0, r5, #0
 	add r1, #0x46
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	lsl r1, r7
 	ldr r0, [sp, #4]
@@ -27608,7 +27608,7 @@ _021F353E:
 	str r0, [sp, #4]
 	add r0, r5, #0
 	add r1, #0xd
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r6, r4
 	add r4, r4, #1
 	add r7, r7, #5
@@ -27622,7 +27622,7 @@ _021F353E:
 	beq _021F357E
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 _021F357E:
 	ldr r0, [sp, #0x14]
 	add r6, #0x38
@@ -27709,14 +27709,14 @@ _021F35F6:
 ov112_021F3608: ; 0x021F3608
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r5, _021F362C ; =0x021FF4D4
 	add r7, r0, #0
 	mov r4, #0
 _021F3616:
 	ldrh r1, [r5]
 	add r0, r7, #0
-	bl sub_020503DC
+	bl CheckFlagInArray
 	strb r0, [r6, r4]
 	add r4, r4, #1
 	add r5, r5, #2
@@ -27731,7 +27731,7 @@ _021F362C: .word 0x021FF4D4
 ov112_021F3630: ; 0x021F3630
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r5, _021F3660 ; =0x021FF4D4
 	add r6, r0, #0
 	mov r4, #0
@@ -27741,12 +27741,12 @@ _021F363E:
 	beq _021F364E
 	ldrh r1, [r5]
 	add r0, r6, #0
-	bl sub_02050408
+	bl SetFlagInArray
 	b _021F3656
 _021F364E:
 	ldrh r1, [r5]
 	add r0, r6, #0
-	bl sub_02050430
+	bl ClearFlagInArray
 _021F3656:
 	add r4, r4, #1
 	add r5, r5, #2
@@ -28284,8 +28284,13 @@ _021F3664:
 	.byte 0x7E, 0x7E, 0x3E, 0x3E, 0x38, 0x38, 0x00, 0x00, 0x1C, 0x1C, 0x2E, 0x2E, 0x5B, 0x5B, 0x5F, 0x5F
 	.byte 0x4F, 0x4F, 0x2E, 0x2E, 0x1C, 0x1C, 0x00, 0x00, 0x84, 0x04, 0x4C, 0xEC, 0x7C, 0x7E, 0x3F, 0x3F
 	.byte 0x3F, 0x3F, 0x7C, 0x7E, 0x4C, 0xEC, 0x84, 0x04, 0x60, 0x60, 0x70, 0x70, 0x78, 0x78, 0x7C, 0x7C
-	.byte 0x7C, 0x7C, 0x78, 0x78, 0x70, 0x70, 0x60, 0x60, 0xCD, 0x76, 0x1E, 0x02, 0x31, 0x78, 0x1E, 0x02
-	.byte 0x11, 0x79, 0x1E, 0x02, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C
+	.byte 0x7C, 0x7C, 0x78, 0x78, 0x70, 0x70, 0x60, 0x60
+
+	.public ov112_021F5728
+ov112_021F5728:
+	.word ov112_021E76CC, ov112_021E7830, ov112_021E7910, 0xFFFFFFFF
+ov112_021F5738:
+	.byte 0x00, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C
 	.byte 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x00, 0x1C, 0x7E, 0x7F, 0x47, 0x7F, 0x43, 0x7F, 0x47, 0x7F
 	.byte 0x7F, 0x7F, 0x47, 0x7F, 0x7E, 0x7F, 0x00, 0x00, 0x00, 0x00, 0xE0, 0xE0, 0xF0, 0x10, 0x18, 0x08
 	.byte 0x18, 0x10, 0xF0, 0xE0, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x03, 0x0F, 0x04, 0x18, 0x08

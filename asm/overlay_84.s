@@ -16,25 +16,25 @@ ov84_0223DD60: ; 0x0223DD60
 	mov r0, #3
 	mov r1, #0x6e
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0xf3
 	add r0, r4, #0
 	lsl r1, r1, #2
 	mov r2, #0x6e
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0xf3
 	mov r1, #0
 	lsl r2, r2, #2
 	add r5, r0, #0
 	bl memset
 	mov r0, #0x6e
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r1, r5, #0
 	add r1, #0x90
 	str r0, [r1]
 	add r0, r4, #0
 	str r4, [r5]
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	add r0, r5, #0
 	ldr r1, [r4]
@@ -133,7 +133,7 @@ _0223DE42:
 	bl ov84_0223EDA0
 	ldr r1, [r5, #0x24]
 	strh r0, [r1]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1c
 	sub r1, r1, r2
@@ -167,7 +167,7 @@ _0223DEB4: .word 0x0223FA20
 ov84_0223DEB8: ; 0x0223DEB8
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldrb r1, [r4, #0xe]
 	cmp r1, #0xff
@@ -321,7 +321,7 @@ _0223DFE4:
 ov84_0223DFF0: ; 0x0223DFF0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	mov r0, #0x36
 	lsl r0, r0, #4
@@ -332,12 +332,12 @@ ov84_0223DFF0: ; 0x0223DFF0
 	add r0, r4, #0
 	bl ov84_0223E4B8
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x6e
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _0223E02C ; =SDK_OVERLAY_OVY_80_ID
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -714,7 +714,7 @@ _0223E2D0:
 	strb r0, [r4, #8]
 	b _0223E372
 _0223E2FC:
-	ldr r1, _0223E380 ; =0x021D110C
+	ldr r1, _0223E380 ; =gMain
 	ldr r1, [r1, #0x48]
 	bl ov84_0223EBE8
 	bl sub_0203769C
@@ -778,7 +778,7 @@ _0223E372:
 	nop
 _0223E378: .word 0x00000608
 _0223E37C: .word 0x00000623
-_0223E380: .word 0x021D110C
+_0223E380: .word gMain
 	thumb_func_end ov84_0223E1A8
 
 	thumb_func_start ov84_0223E384
@@ -1082,12 +1082,12 @@ ov84_0223E5C4: ; 0x0223E5C4
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1368,7 +1368,7 @@ _0223E768:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r0, #0
 	mov r0, #0xc6
 	lsl r0, r0, #2
@@ -1379,7 +1379,7 @@ _0223E768:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r0, #0
 	mov r0, #0xca
 	lsl r0, r0, #2
@@ -1440,7 +1440,7 @@ _0223E87C:
 _0223E8C6:
 	ldr r0, _0223E8D8 ; =ov84_0223E98C
 	ldr r1, [sp, #0x18]
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1514,19 +1514,19 @@ ov84_0223E958: ; 0x0223E958
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1572,7 +1572,7 @@ _0223E9CE:
 	sub r2, r2, #1
 	bne _0223E9CE
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -1592,7 +1592,7 @@ ov84_0223E9E4: ; 0x0223E9E4
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _0223EA9C ; =0x0223F964
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -1607,15 +1607,15 @@ ov84_0223E9E4: ; 0x0223E9E4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x6e
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0223EAA0 ; =0x0223F980
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -1630,10 +1630,10 @@ ov84_0223E9E4: ; 0x0223E9E4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0223EAA4 ; =0x0223F948
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -1648,10 +1648,10 @@ ov84_0223E9E4: ; 0x0223E9E4
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r1, _0223EAA8 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -1659,7 +1659,7 @@ ov84_0223E9E4: ; 0x0223E9E4
 	strh r2, [r1]
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x64
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -1860,7 +1860,7 @@ ov84_0223EBE8: ; 0x0223EBE8
 	ldrb r0, [r4, #0xc]
 	cmp r0, #1
 	bne _0223EC1E
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1c
 	sub r1, r1, r2
@@ -2012,7 +2012,7 @@ ov84_0223ED00: ; 0x0223ED00
 	add r0, #0xdc
 	ldr r0, [r0]
 	add r4, r1, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	mov r0, #0x37
 	lsl r0, r0, #4
 	strh r4, [r5, r0]
@@ -2099,10 +2099,10 @@ _0223ED8C:
 
 	thumb_func_start ov84_0223EDA0
 ov84_0223EDA0: ; 0x0223EDA0
-	ldr r3, _0223EDA4 ; =sub_0201FD44
+	ldr r3, _0223EDA4 ; =LCRandom
 	bx r3
 	.balign 4, 0
-_0223EDA4: .word sub_0201FD44
+_0223EDA4: .word LCRandom
 	thumb_func_end ov84_0223EDA0
 
 	thumb_func_start ov84_0223EDA8
@@ -2586,7 +2586,7 @@ _0223F0D8:
 	ldrb r0, [r0]
 	add r4, r1, r0
 _0223F0F4:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r7, #0
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -2660,7 +2660,7 @@ ov84_0223F178: ; 0x0223F178
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	mov r5, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -2712,10 +2712,10 @@ _0223F1DA:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _0223F204
 	lsl r0, r4, #2
@@ -2749,10 +2749,10 @@ _0223F21E:
 _0223F228:
 	ldr r0, [r5, r6]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _0223F24E
 	lsl r0, r4, #2
@@ -2903,7 +2903,7 @@ _0223F34E:
 	bl sub_02022CC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3287,31 +3287,31 @@ _0223F66A:
 	bne _0223F68A
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x10]
 	mov r1, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	str r0, [sp, #0x1c]
 	b _0223F6B4
 _0223F68A:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x10]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	str r0, [sp, #0x1c]
 	b _0223F6B4
 _0223F6A0:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x10]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	str r0, [sp, #0x1c]
 _0223F6B4:
 	ldr r0, [sp, #0x20]

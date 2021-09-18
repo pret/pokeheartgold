@@ -405,6 +405,7 @@ $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
 $(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
 $(eval $(call arc_strip_name,files/a/1/3/3.$(buildname),files/a/1/3/3))
+$(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
 $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
 
 $(DIFF_ARCS):
@@ -413,6 +414,10 @@ $(DIFF_ARCS):
 $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
 
 include files/msgdata/msg.mk
+
+%.naix: %.narc ;
+
+MWCFLAGS += -I./files
 
 #%.narc:
 #	$(KNARC) -d $* -p $@

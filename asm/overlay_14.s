@@ -11,30 +11,30 @@ ov14_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #9
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r5, #0
 	mov r1, #0x38
 	mov r2, #9
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x38
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4]
 	ldr r0, [r0]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	str r0, [r4, #4]
-	bl sub_02073D4C
+	bl PCStorage_GetActiveBox
 	strb r0, [r4, #0x1f]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [r4, #8]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0]
@@ -56,7 +56,7 @@ ov14_021E5900: ; 0x021E5900
 ov14_021E596C: ; 0x021E596C
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r1, r4, #0
 	bl ov14_021EAF8C
 	cmp r0, #0
@@ -73,15 +73,15 @@ _021E5982:
 ov14_021E5988: ; 0x021E5988
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r1, r0, #0
 	ldr r0, [r1, #4]
 	ldrb r1, [r1, #0x1f]
-	bl sub_02073E84
+	bl PCStorage_SetActiveBox
 	add r0, r4, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #9
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -190,11 +190,11 @@ _021E5A5C: .word ov14_021E5A44
 
 	thumb_func_start ov14_021E5A60
 ov14_021E5A60: ; 0x021E5A60
-	ldr r3, _021E5A68 ; =sub_02022BE8
+	ldr r3, _021E5A68 ; =GX_SetBanks
 	ldr r0, _021E5A6C ; =0x021F7CE4
 	bx r3
 	nop
-_021E5A68: .word sub_02022BE8
+_021E5A68: .word GX_SetBanks
 _021E5A6C: .word 0x021F7CE4
 	thumb_func_end ov14_021E5A60
 
@@ -204,7 +204,7 @@ ov14_021E5A70: ; 0x021E5A70
 	sub sp, #0xd4
 	add r4, r0, #0
 	mov r0, #0xa
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	ldr r1, [r4, #0x34]
 	add r3, sp, #0xc4
 	ldr r5, _021E5BE0 ; =0x021F7BC8
@@ -215,7 +215,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5BE4 ; =0x021F7C20
 	add r3, sp, #0xa8
 	ldmia r5!, {r0, r1}
@@ -231,16 +231,16 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	add r3, r1, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
 	mov r3, #0xa
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5BE8 ; =0x021F7C3C
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -256,16 +256,16 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r3, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x34]
 	mov r1, #1
 	ldr r0, [r0, #0x14]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0xa
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5BEC ; =0x021F7C74
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -281,7 +281,7 @@ ov14_021E5A70: ; 0x021E5A70
 	mov r1, #2
 	ldr r0, [r0, #0x14]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5BF0 ; =0x021F7C90
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -297,7 +297,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r3, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5BF4 ; =0x021F7C58
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -313,16 +313,16 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r3, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x34]
 	mov r1, #4
 	ldr r0, [r0, #0x14]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0xa
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5BF8 ; =0x021F7CAC
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -338,7 +338,7 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r3, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021E5BFC ; =0x021F7CC8
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -354,16 +354,16 @@ ov14_021E5A70: ; 0x021E5A70
 	ldr r0, [r4, #0x34]
 	mov r3, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x34]
 	mov r1, #6
 	ldr r0, [r0, #0x14]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0xa
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add sp, #0xd4
 	pop {r4, r5, pc}
 	nop
@@ -384,31 +384,31 @@ ov14_021E5C00: ; 0x021E5C00
 	ldr r0, [r4, #0x34]
 	mov r1, #6
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #5
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #4
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #3
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #2
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #1
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x14]
 	bl FreeToHeap
@@ -650,7 +650,7 @@ ov14_021E5DE0: ; 0x021E5DE0
 	lsl r3, r3, #6
 	bl GfGfxLoader_GXLoadPal
 	ldr r0, [r5, #0x10]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -988,12 +988,12 @@ ov14_021E6094: ; 0x021E6094
 	beq _021E60BE
 	add r1, r6, #0
 	add r2, r7, #0
-	bl sub_0206ED70
+	bl SetBoxMonData
 	cmp r4, #0x1e
 	bhs _021E60BE
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
-	bl sub_020740D8
+	bl PCStorage_SetBoxModified
 _021E60BE:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov14_021E6094
@@ -1013,13 +1013,13 @@ _021E60CE:
 	sub r4, #0x1e
 _021E60D4:
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, r4
 	bls _021E60EC
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_02074644
-	bl sub_02070DB0
+	bl GetPartyMonByIndex
+	bl Mon_GetBoxMon
 	pop {r3, r4, r5, pc}
 _021E60EC:
 	mov r0, #0
@@ -1031,7 +1031,7 @@ _021E60F0:
 	pop {r3, r4, r5, pc}
 _021E60F8:
 	ldr r0, [r5, #4]
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov14_021E60C0
 
@@ -1041,13 +1041,13 @@ ov14_021E6100: ; 0x021E6100
 	cmp r2, #0x1e
 	bhs _021E610E
 	ldr r0, [r0, #4]
-	bl sub_02073D10
+	bl PCStorage_DeleteBoxMonByIndexPair
 	pop {r3, pc}
 _021E610E:
 	sub r2, #0x1e
 	ldr r0, [r0, #8]
 	add r1, r2, #0
-	bl sub_0207456C
+	bl RemoveMonFromParty
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov14_021E6100
@@ -1062,32 +1062,32 @@ ov14_021E611C: ; 0x021E611C
 	ldr r2, [r6, #4]
 	bl ov14_021E60C0
 	ldr r1, [r6]
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 	ldr r7, [r4, #4]
 	ldr r0, [r5, #8]
 	sub r7, #0x1e
 	add r1, r7, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r1, [r4]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	mov r1, #0
 	add r0, sp, #0
 	strb r1, [r0]
 	ldr r0, [r4]
 	mov r1, #0xbb
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [r5, #8]
 	ldr r2, [r6]
 	add r1, r7, #0
 	bl sub_02074740
 	ldr r0, [r4]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r3, r0, #0
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
 	ldr r2, [r4, #8]
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldrb r1, [r5, #0x1f]
 	add r0, r5, #0
 	bl ov14_021F4958
@@ -1107,10 +1107,10 @@ ov14_021E6184: ; 0x021E6184
 	ldr r2, [r4, #4]
 	bl ov14_021E60C0
 	ldr r1, [r4]
-	bl sub_02071780
+	bl CopyBoxPokemonToPokemon
 	ldr r0, [r5, #8]
 	ldr r1, [r4]
-	bl sub_02074524
+	bl AddMonToParty
 	ldrb r1, [r5, #0x1f]
 	ldr r2, [r4, #4]
 	add r0, r5, #0
@@ -1133,21 +1133,21 @@ ov14_021E61BC: ; 0x021E61BC
 	ldr r1, [r4, #4]
 	ldr r0, [r5, #8]
 	sub r1, #0x1e
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r2, #0
 	add r1, sp, #0
 	strb r2, [r1]
 	add r6, r0, #0
 	mov r1, #0xbb
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r6, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r3, r0, #0
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
 	ldr r2, [r4, #8]
-	bl sub_02073C6C
+	bl PCStorage_PlaceMonInBoxByIndexPair
 	ldrb r1, [r5, #0x1f]
 	ldr r2, [r4, #4]
 	add r0, r5, #0
@@ -1175,9 +1175,9 @@ ov14_021E6210: ; 0x021E6210
 	ldr r0, [r5, #8]
 	add r1, r7, #0
 	sub r4, #0x1e
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r1, [r6]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r1, sp, #4
 	ldr r0, [r5, #8]
 	add r1, #1
@@ -1189,7 +1189,7 @@ ov14_021E6210: ; 0x021E6210
 	bl sub_02074670
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r2, r0, #0
 	ldr r0, [r5, #8]
 	add r1, r7, #0
@@ -1222,9 +1222,9 @@ ov14_021E627C: ; 0x021E627C
 	sub r6, #0x1e
 	ldr r0, [r5, #8]
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r1, [r4]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [r5, #8]
 	add r1, sp, #0
 	add r2, r6, #0
@@ -1235,9 +1235,9 @@ ov14_021E627C: ; 0x021E627C
 	bl ov14_021E6100
 	ldr r0, [r5, #8]
 	ldr r1, [r4]
-	bl sub_02074524
+	bl AddMonToParty
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	sub r2, r0, #1
 	ldr r0, [r5, #8]
 	add r1, sp, #0
@@ -1263,11 +1263,11 @@ ov14_021E62C8: ; 0x021E62C8
 	ldr r0, [r5, #4]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_02073BFC
+	bl PCStorage_PlaceMonInBoxFirstEmptySlot
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
 	ldr r2, [r4, #4]
-	bl sub_02073D10
+	bl PCStorage_DeleteBoxMonByIndexPair
 	ldrb r1, [r5, #0x1f]
 	add r0, r5, #0
 	bl ov14_021F4958
@@ -1294,27 +1294,27 @@ ov14_021E6318: ; 0x021E6318
 	add r6, r0, #0
 	ldr r0, [r5, #8]
 	sub r1, #0x1e
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r1, [r4]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [r4]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x7b
 	lsl r1, r1, #2
 	cmp r0, r1
 	bne _021E6350
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 _021E6350:
 	ldr r0, [r4]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	add r1, r6, #0
-	bl sub_02073BFC
+	bl PCStorage_PlaceMonInBoxFirstEmptySlot
 	ldrb r1, [r5, #0x1f]
 	ldr r2, [r4, #4]
 	add r0, r5, #0
@@ -1340,7 +1340,7 @@ ov14_021E637C: ; 0x021E637C
 	cmp r0, #0xff
 	beq _021E6462
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	add r1, r4, #0
 	add r1, #0xe8
 	ldr r3, [r1]
@@ -1376,7 +1376,7 @@ _021E63CA:
 	bhs _021E63F2
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
-	bl sub_02073CC0
+	bl PCStorage_SwapMonsInBoxByIndexPair
 	ldrb r1, [r5, #0x1f]
 	add r0, r5, #0
 	bl ov14_021F4958
@@ -1467,7 +1467,7 @@ ov14_021E6480: ; 0x021E6480
 	ldr r0, [r5, #8]
 	add r7, r1, #0
 	mov r4, #0
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, #0
 	bls _021E64CA
 _021E6492:
@@ -1475,17 +1475,17 @@ _021E6492:
 	beq _021E64BE
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _021E64BE
 	add r0, r6, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021E64BE
 	mov r0, #1
@@ -1493,7 +1493,7 @@ _021E6492:
 _021E64BE:
 	ldr r0, [r5, #8]
 	add r4, r4, #1
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r4, r0
 	blo _021E6492
 _021E64CA:
@@ -1543,7 +1543,7 @@ _021E6510:
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
-	bl sub_02071CBC
+	bl BoxMon_UpdateGiratinaForme
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
@@ -1601,7 +1601,7 @@ _021E6564:
 	add r2, r4, #0
 	bl ov14_021E60C0
 	mov r1, #0
-	bl sub_02071D7C
+	bl BoxMon_UpdateShayminForme
 	ldr r3, [r5, #0x34]
 	ldrb r1, [r5, #0x1f]
 	add r6, r3, r4
@@ -2084,7 +2084,7 @@ ov14_021E690C: ; 0x021E690C
 	beq _021E6940
 	ldr r0, [r5, #4]
 	ldr r1, [sp]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	cmp r0, #0x1e
 	bne _021E6944
 _021E6940:
@@ -2142,11 +2142,11 @@ _021E699C:
 	sub r6, #0x1e
 	ldr r0, [r5, #8]
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02078068
@@ -2158,7 +2158,7 @@ _021E69C4:
 	add r0, r4, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021E6A36
 	mov r0, #0
@@ -2171,11 +2171,11 @@ _021E69D6:
 	add r1, r4, #0
 	ldr r0, [r5, #8]
 	sub r1, #0x1e
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02078068
@@ -2187,7 +2187,7 @@ _021E6A02:
 	add r0, r7, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021E6A14
 	mov r0, #0
@@ -2240,11 +2240,11 @@ _021E6A66:
 	sub r4, #0x1e
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02078068
@@ -2256,7 +2256,7 @@ _021E6A8A:
 	add r0, r4, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _021E6A9C
 	mov r0, #1
@@ -2646,7 +2646,7 @@ _021E6D66:
 	add r1, #0xe8
 	str r0, [r1]
 	ldr r0, [r6, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	mov r1, #0x80
@@ -2935,7 +2935,7 @@ _021E6FA0:
 	add r1, #0xe8
 	str r0, [r1]
 	ldr r0, [r6, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	cmp r0, #0x1e
@@ -3054,7 +3054,7 @@ _021E708C:
 	add r4, #0xe8
 	str r7, [r4]
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -3482,7 +3482,7 @@ ov14_021E7358: ; 0x021E7358
 	bl GetBoxMonData
 	strb r0, [r6, #0xe]
 	add r0, r7, #0
-	bl sub_0206FE04
+	bl GetBoxMonNature
 	strb r0, [r6, #0xf]
 	add r0, r7, #0
 	mov r1, #0xb
@@ -3516,7 +3516,7 @@ ov14_021E7358: ; 0x021E7358
 	orr r0, r1
 	strb r0, [r6, #0x12]
 	add r0, r7, #0
-	bl sub_0206FF90
+	bl GetBoxMonGender
 	add r2, r6, #0
 	ldrb r1, [r6, #0x13]
 	mov r3, #0x7f
@@ -3713,7 +3713,7 @@ ov14_021E7588: ; 0x021E7588
 	bl ov14_021E60C0
 	add r4, r0, #0
 	beq _021E75E6
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	add r7, r0, #0
 	add r0, r4, #0
 	bl ov14_021E7358
@@ -3740,13 +3740,13 @@ _021E75CA:
 	bl ov14_021E765C
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75DC:
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	b _021E75F0
 _021E75E6:
 	add r0, r5, #0
@@ -3766,7 +3766,7 @@ ov14_021E75F4: ; 0x021E75F4
 	ldrb r1, [r5, #0x1f]
 	bl ov14_021E60C0
 	add r4, r0, #0
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	add r7, r0, #0
 	add r0, r4, #0
 	bl ov14_021E7358
@@ -3798,7 +3798,7 @@ ov14_021E75F4: ; 0x021E75F4
 	bl ov14_021E7468
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E7658: .word 0x000088D0
@@ -4179,7 +4179,7 @@ _021E792C: .word 0x00000448
 ov14_021E7930: ; 0x021E7930
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl sub_02073E98
+	bl PCStorage_GetBoxWallpaper
 	cmp r0, #0x10
 	blo _021E793E
 	sub r0, #0x10
@@ -6534,7 +6534,7 @@ _021E89EE:
 	mov r0, #1
 	strb r0, [r4, #0x11]
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	strb r0, [r4, #0x13]
 	add r0, r5, #0
 	add r0, #0x21
@@ -6546,7 +6546,7 @@ _021E8A06:
 	str r0, [r4, #4]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
@@ -6629,7 +6629,7 @@ _021E8AA8:
 	bne _021E8AC0
 	ldrb r1, [r4, #0x1f]
 	ldr r0, [r4, #4]
-	bl sub_020740D8
+	bl PCStorage_SetBoxModified
 _021E8AC0:
 	ldr r0, [r4, #0x18]
 	bl FreeToHeap
@@ -6645,7 +6645,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _021E8B10 ; =0x021F7D14
 	mov r2, #9
 	bl sub_02078644
@@ -6714,7 +6714,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	ldrb r1, [r1]
 	ldr r0, [r4, #4]
 	ldr r2, [r2, #0x18]
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	ldr r0, _021E8B7C ; =0x02102610
 	ldr r1, [r4, #0x18]
 	mov r2, #9
@@ -6737,7 +6737,7 @@ ov14_021E8B80: ; 0x021E8B80
 	ldrb r1, [r1]
 	ldr r0, [r5, #4]
 	ldr r2, [r4, #0x18]
-	bl sub_02073F34
+	bl PCStorage_SetBoxName
 	ldr r0, [r4, #0x14]
 	strh r0, [r5, #0x1c]
 	ldr r0, [r5, #0x18]
@@ -7425,7 +7425,7 @@ _021E90F8:
 	cmp r0, #0x1e
 	blo _021E9148
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	add r6, #0xe4
 	ldr r1, [r6]
 	sub r0, r0, #1
@@ -7534,7 +7534,7 @@ ov14_021E91E0: ; 0x021E91E0
 	b _021E922E
 _021E91F2:
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	add r2, r0, #0
 	add r1, r5, #0
 	add r1, #0x21
@@ -7585,7 +7585,7 @@ _021E9248:
 	mov r0, #0
 	str r0, [sp, #4]
 	ldr r0, [r5, #4]
-	bl sub_02073D9C
+	bl PCStorage_FindFirstEmptySlot
 	add r1, r5, #0
 	add r1, #0x21
 	ldrb r1, [r1]
@@ -11390,7 +11390,7 @@ ov14_021EAFAC: ; 0x021EAFAC
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -11413,14 +11413,14 @@ ov14_021EAFAC: ; 0x021EAFAC
 	mov r0, #3
 	mov r1, #0xa
 	lsl r2, r2, #0x12
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021EB0D8 ; =0x000088E0
 	mov r0, #0xa
 	bl AllocFromHeap
 	ldr r2, _021EB0D8 ; =0x000088E0
 	mov r1, #0
 	str r0, [r4, #0x34]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #2
 	mov r1, #0xa
 	bl NARC_ctor
@@ -11550,7 +11550,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	ldr r0, [r4, #0x34]
 	bl FreeToHeap
 	mov r0, #0xa
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, [r4, #0x30]
 	pop {r4, pc}
 	nop
@@ -11643,7 +11643,7 @@ ov14_021EB1E0: ; 0x021EB1E0
 	ldr r0, [r4, #0x30]
 	pop {r4, pc}
 _021EB1F6:
-	ldr r0, _021EB214 ; =0x021D110C
+	ldr r0, _021EB214 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -11657,7 +11657,7 @@ _021EB20A:
 	pop {r4, pc}
 	nop
 _021EB210: .word 0x000005DD
-_021EB214: .word 0x021D110C
+_021EB214: .word gMain
 	thumb_func_end ov14_021EB1E0
 
 	thumb_func_start ov14_021EB218
@@ -12172,7 +12172,7 @@ _021EB63A:
 	bl sub_02019F74
 	cmp r0, #0x1e
 	bne _021EB66C
-	ldr r0, _021EB700 ; =0x021D110C
+	ldr r0, _021EB700 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -12253,7 +12253,7 @@ _021EB6F0: .word ov14_021EA180
 _021EB6F4: .word 0x000005DD
 _021EB6F8: .word 0x000005DC
 _021EB6FC: .word 0x00000632
-_021EB700: .word 0x021D110C
+_021EB700: .word gMain
 _021EB704:
 	bl PlaySE
 	add r0, r4, #0
@@ -12905,7 +12905,7 @@ _021EBC66:
 	ldr r0, [r5, #0xc]
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_02078434
+	bl Bag_TakeItem
 _021EBC72:
 	add r0, r5, #0
 	add r0, #0x21
@@ -13349,11 +13349,11 @@ ov14_021EBF9C: ; 0x021EBF9C
 _021EBFF8:
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02078068
@@ -13380,7 +13380,7 @@ _021EC03C:
 	add r0, r4, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021EC090
 	ldr r0, _021EC0E4 ; =0x000005F3
@@ -15059,11 +15059,11 @@ _021ECE3A:
 	sub r6, #0x1e
 	ldr r0, [r5, #8]
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02078068
@@ -15084,7 +15084,7 @@ _021ECE82:
 	add r0, r7, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021ECEAA
 	ldr r0, _021ECF54 ; =0x000005F3
@@ -15239,11 +15239,11 @@ _021ECFC2:
 	sub r6, #0x1e
 	ldr r0, [r5, #8]
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02078068
@@ -15278,7 +15278,7 @@ _021ED022:
 	add r0, r7, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021ED06C
 	ldr r0, _021ED1A8 ; =0x000005F3
@@ -16459,12 +16459,12 @@ ov14_021ED96C: ; 0x021ED96C
 	cmp r2, #0x10
 	bhs _021ED98E
 	ldrb r1, [r4, #0x1f]
-	bl sub_02073EC8
+	bl PCStorage_SetBoxWallpaper
 	b _021ED996
 _021ED98E:
 	ldrb r1, [r4, #0x1f]
 	add r2, #0x10
-	bl sub_02073EC8
+	bl PCStorage_SetBoxWallpaper
 _021ED996:
 	add r0, r4, #0
 	bl ov14_021F4530
@@ -16727,7 +16727,7 @@ _021EDB96:
 	b _021EDDC4
 _021EDB98:
 	ldr r0, [r4, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, #6
 	beq _021EDBAA
 	ldr r0, _021EDDB4 ; =0x000005DD
@@ -16902,7 +16902,7 @@ _021EDD24:
 	bl sub_02019F74
 	cmp r0, #0x1e
 	bne _021EDE12
-	ldr r0, _021EDDC0 ; =0x021D110C
+	ldr r0, _021EDDC0 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -16962,7 +16962,7 @@ _021EDDB0: .word ov14_021EA130
 _021EDDB4: .word 0x000005DD
 _021EDDB8: .word 0x000005F3
 _021EDDBC: .word 0x000005DC
-_021EDDC0: .word 0x021D110C
+_021EDDC0: .word gMain
 _021EDDC4:
 	add r0, r4, #0
 	add r1, r5, #0
@@ -17541,11 +17541,11 @@ ov14_021EE26C: ; 0x021EE26C
 _021EE29A:
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02078068
@@ -17566,7 +17566,7 @@ _021EE2D2:
 	add r0, r4, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021EE2FA
 	ldr r0, _021EE320 ; =0x000005F3
@@ -17910,7 +17910,7 @@ ov14_021EE578: ; 0x021EE578
 	add r1, #0x25
 	ldrb r1, [r1]
 	ldr r0, [r4, #4]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	cmp r0, #0x1e
 	bne _021EE5A0
 	add r0, r4, #0
@@ -18576,7 +18576,7 @@ _021EEABE:
 	beq _021EEACC
 	b _021EEBD6
 _021EEACC:
-	ldr r0, _021EEBF8 ; =0x021D110C
+	ldr r0, _021EEBF8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -18703,7 +18703,7 @@ _021EEBE8: .word ov14_021EA674
 _021EEBEC: .word 0x000005DD
 _021EEBF0: .word 0x000005DC
 _021EEBF4: .word 0x00000632
-_021EEBF8: .word 0x021D110C
+_021EEBF8: .word gMain
 	thumb_func_end ov14_021EE87C
 
 	thumb_func_start ov14_021EEBFC
@@ -21627,7 +21627,7 @@ ov14_021F0418: ; 0x021F0418
 	mov r3, #0x27
 	bl ov14_021F685C
 	ldr r0, [r4, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, #6
 	beq _021F0482
 	add r0, r4, #0
@@ -21779,7 +21779,7 @@ ov14_021F0594: ; 0x021F0594
 	add r1, r4, #0
 	ldr r0, [r5, #8]
 	sub r1, #0x1e
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	sub r4, #0x1e
 	add r6, r0, #0
 	add r0, r5, #0
@@ -21789,7 +21789,7 @@ ov14_021F0594: ; 0x021F0594
 	bne _021F05E4
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
-	bl sub_02073FA8
+	bl PCStorage_CountMonsInBox
 	cmp r0, #0
 	bne _021F05E4
 	add r0, r5, #0
@@ -21801,7 +21801,7 @@ _021F05E4:
 	add r0, r6, #0
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02078068
@@ -21816,7 +21816,7 @@ _021F0606:
 	add r0, r6, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021F0620
 	add r0, r5, #0
@@ -21908,7 +21908,7 @@ _021F0692:
 	ldr r1, [sp]
 	ldr r0, [r5, #8]
 	sub r1, #0x1e
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r1, [sp]
 	add r4, r0, #0
 	sub r1, #0x1e
@@ -21926,7 +21926,7 @@ _021F06EE:
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02078068
@@ -21941,7 +21941,7 @@ _021F0710:
 	add r0, r4, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021F072A
 	add r0, r5, #0
@@ -21952,7 +21952,7 @@ _021F0710:
 _021F072A:
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
-	bl sub_02073E40
+	bl PCStorage_CountEmptySpotsInBox
 	cmp r0, #0
 	bne _021F0742
 	add r0, r5, #0
@@ -22149,7 +22149,7 @@ ov14_021F08BC: ; 0x021F08BC
 	mov r6, #0xa
 _021F08D0:
 	add r0, r6, #0
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	str r0, [r5]
 	add r4, r4, #1
 	add r5, #0x20
@@ -23441,7 +23441,7 @@ ov14_021F131C: ; 0x021F131C
 	blo _021F1348
 	ldr r0, [r4, #4]
 	sub r1, #0x10
-	bl sub_020740B4
+	bl PCStorage_IsBonusWallpaperUnlocked
 	cmp r0, #0
 	bne _021F1348
 	ldr r0, _021F13A4 ; =0x000005F3
@@ -23507,7 +23507,7 @@ ov14_021F13B0: ; 0x021F13B0
 	mov r2, #0
 	bl ov14_021F2A18
 	ldr r0, [r4, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, #6
 	beq _021F13EE
 	ldr r0, [r4, #0x34]
@@ -23590,7 +23590,7 @@ ov14_021F1448: ; 0x021F1448
 	ldr r0, [r5, #4]
 	add r5, #0x25
 	ldrb r1, [r5]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	cmp r0, #0x1e
 	bne _021F1482
 	ldr r0, _021F14F8 ; =0x000005F3
@@ -23699,7 +23699,7 @@ ov14_021F1540: ; 0x021F1540
 	add r1, #0x25
 	ldrb r1, [r1]
 	ldr r0, [r4, #4]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	cmp r0, #0x1e
 	bne _021F1566
 	ldr r0, _021F1578 ; =0x000005F3
@@ -23804,7 +23804,7 @@ _021F15D8:
 	cmp r4, #0x1e
 	blo _021F167C
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	add r1, r5, #0
 	add r1, #0x21
 	ldrb r1, [r1]
@@ -23876,11 +23876,11 @@ _021F168A:
 	sub r6, #0x1e
 	ldr r0, [r5, #8]
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02078068
@@ -23893,7 +23893,7 @@ _021F16E2:
 	add r0, r7, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021F16F8
 	ldr r0, [r5, #0x34]
@@ -23925,7 +23925,7 @@ _021F170C:
 	b _021F17D0
 _021F172C:
 	ldr r0, [r5, #4]
-	bl sub_02073E40
+	bl PCStorage_CountEmptySpotsInBox
 	cmp r0, #0
 	bne _021F173E
 	ldr r0, [r5, #0x34]
@@ -23957,7 +23957,7 @@ _021F1752:
 	b _021F17D0
 _021F1772:
 	ldr r0, [r5, #4]
-	bl sub_02073E40
+	bl PCStorage_CountEmptySpotsInBox
 	cmp r0, #0
 	bne _021F1784
 	ldr r0, [r5, #0x34]
@@ -25018,7 +25018,7 @@ ov14_021F2020: ; 0x021F2020
 	lsr r1, r1, #0x10
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_02078398
+	bl Bag_AddItem
 	cmp r0, #1
 	bne _021F20A4
 	add r2, r5, #0
@@ -25106,13 +25106,13 @@ ov14_021F20F4: ; 0x021F20F4
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r2, [r4, #0x34]
 	ldr r1, _021F21A8 ; =0x000088C8
 	mov r3, #0xa
 	ldrh r1, [r2, r1]
 	mov r2, #1
-	bl sub_02078398
+	bl Bag_AddItem
 	cmp r0, #0
 	bne _021F212A
 	ldr r0, _021F21AC ; =0x000005F3
@@ -26246,7 +26246,7 @@ ov14_021F297C: ; 0x021F297C
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -26847,7 +26847,7 @@ _021F2DF4:
 	ldr r1, [sp, #4]
 	add r2, r4, #0
 	mov r3, #0xac
-	bl sub_02074014
+	bl PCStorage_GetMonDataByIndexPair
 	cmp r0, #0
 	bne _021F2E10
 	ldr r0, [r5, #0x34]
@@ -27011,7 +27011,7 @@ ov14_021F2F3C: ; 0x021F2F3C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	add r6, r0, #0
 	ldr r4, _021F2F80 ; =0x00000000
 	beq _021F2F7C
@@ -27019,8 +27019,8 @@ ov14_021F2F3C: ; 0x021F2F3C
 _021F2F4E:
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_02074644
-	bl sub_02070DB0
+	bl GetPartyMonByIndex
+	bl Mon_GetBoxMon
 	ldr r2, [r5, #0x34]
 	add r1, r0, #0
 	add r3, r2, r4
@@ -27093,7 +27093,7 @@ ov14_021F2FDC: ; 0x021F2FDC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	ldr r6, _021F303C ; =0x021F80BC
 	str r0, [sp]
 	mov r4, #0
@@ -27145,7 +27145,7 @@ ov14_021F3044: ; 0x021F3044
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	ldr r6, _021F30A8 ; =0x021F80BC
 	str r0, [sp]
 	mov r4, #0
@@ -27200,7 +27200,7 @@ ov14_021F30B0: ; 0x021F30B0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	ldr r6, _021F3114 ; =0x021F80BC
 	str r0, [sp]
 	mov r4, #0
@@ -27255,7 +27255,7 @@ ov14_021F311C: ; 0x021F311C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	ldr r6, _021F3188 ; =0x021F80BC
 	str r0, [sp]
 	mov r4, #0
@@ -29960,7 +29960,7 @@ _021F4660:
 	ldr r0, [r0, #0x14]
 	add r1, r4, #0
 	lsl r2, r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #9
 	lsl r0, r0, #6
 	str r0, [sp]
@@ -30004,7 +30004,7 @@ ov14_021F46B0: ; 0x021F46B0
 	add r1, r7, #0
 	ldr r0, [r0, #4]
 	sub r1, #0x10
-	bl sub_020740B4
+	bl PCStorage_IsBonusWallpaperUnlocked
 	cmp r0, #0
 	bne _021F46D0
 	mov r2, #0x28
@@ -30355,7 +30355,7 @@ ov14_021F4958: ; 0x021F4958
 	ldr r0, [r0, #0x14]
 	add r1, r1, r4
 	lsl r2, r2, #0xa
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, r7, #0
 	bl FreeToHeap
 	add r0, r5, #0
@@ -30498,9 +30498,9 @@ _021F4A8A:
 	ldr r0, [r0, #4]
 	ldr r1, [sp, #4]
 	add r2, r3, r2
-	bl sub_02074058
+	bl PCStorage_GetMonByIndexPair
 	str r0, [sp, #0x28]
-	bl sub_0206DDD8
+	bl AcquireBoxMonLock
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x28]
 	mov r1, #5
@@ -30532,7 +30532,7 @@ _021F4A8A:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	add r1, r4, #0
-	bl sub_0206FC08
+	bl GetMonBaseStatEx_HandleAlternateForme
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	b _021F4AFC
@@ -30578,7 +30578,7 @@ _021F4B24:
 	ldr r0, [sp, #0xc]
 	add r1, r1, r2
 	mov r2, #2
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -30587,7 +30587,7 @@ _021F4B24:
 _021F4B4A:
 	ldr r0, [sp, #0x28]
 	ldr r1, [sp, #0x24]
-	bl sub_0206DE00
+	bl ReleaseBoxMonLock
 	ldr r0, [sp, #0x18]
 	add r0, r0, #2
 	lsl r0, r0, #0x18
@@ -30812,7 +30812,7 @@ ov14_021F4D10: ; 0x021F4D10
 	add r0, r1, #4
 	add r5, r4, r0
 	add r0, sp, #0x38
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	mov r3, #2
@@ -30880,7 +30880,7 @@ ov14_021F4D10: ; 0x021F4D10
 	ldr r0, _021F4E64 ; =0x00000424
 	add r5, r4, r0
 	add r0, sp, #0x38
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	mov r3, #2
@@ -31098,7 +31098,7 @@ _021F4F66:
 	add r0, r7, #0
 	add r1, r4, #0
 	add r3, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov14_021F4F24
@@ -32087,7 +32087,7 @@ ov14_021F5718: ; 0x021F5718
 	ldr r0, [r6, #0x34]
 	mov r2, #3
 	ldr r0, [r0, #0x14]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r2, [sp, #0x30]
 	ldr r0, [sp, #0x14]
 	mul r2, r5
@@ -32101,7 +32101,7 @@ ov14_021F5718: ; 0x021F5718
 	ldrb r1, [r6, #0x1f]
 	ldr r0, [r6, #4]
 	add r2, r7, #0
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	mov r0, #0
 	ldr r3, [sp, #0x30]
 	str r0, [sp]
@@ -32137,7 +32137,7 @@ ov14_021F57B8: ; 0x021F57B8
 	sub sp, #0x1c
 	add r4, r0, #0
 	add r0, sp, #0xc
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -32156,7 +32156,7 @@ ov14_021F57B8: ; 0x021F57B8
 	ldrb r1, [r1]
 	ldr r0, [r4, #4]
 	add r2, r5, #0
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	mov r3, #0
 	ldr r0, _021F58B4 ; =0x00010200
 	str r3, [sp]
@@ -32176,7 +32176,7 @@ ov14_021F57B8: ; 0x021F57B8
 	add r0, sp, #0xc
 	bl RemoveWindow
 	add r0, sp, #0xc
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -32195,7 +32195,7 @@ ov14_021F57B8: ; 0x021F57B8
 	add r5, r0, #0
 	ldrb r1, [r1]
 	ldr r0, [r4, #4]
-	bl sub_02073F64
+	bl PCStorage_CountMonsAndEggsInBox
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -32250,7 +32250,7 @@ ov14_021F58B8: ; 0x021F58B8
 	sub sp, #0x1c
 	add r5, r0, #0
 	add r0, sp, #0xc
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -32267,7 +32267,7 @@ ov14_021F58B8: ; 0x021F58B8
 	blo _021F590E
 	ldr r0, [r5, #4]
 	sub r1, #0x10
-	bl sub_020740B4
+	bl PCStorage_IsBonusWallpaperUnlocked
 	cmp r0, #0
 	bne _021F58FC
 	ldr r0, [r5, #0x34]
@@ -34013,7 +34013,7 @@ ov14_021F6654: ; 0x021F6654
 	add r5, #0x30
 	add r0, r5, r4
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r0, r5, r4
 	bl GetWindowBgId
 	add r1, r0, #0
@@ -34025,26 +34025,26 @@ ov14_021F6654: ; 0x021F6654
 
 	thumb_func_start ov14_021F6678
 ov14_021F6678: ; 0x021F6678
-	ldr r3, _021F6684 ; =sub_0200E9BC
+	ldr r3, _021F6684 ; =ClearFrameAndWindow2
 	add r0, #0x30
 	lsl r1, r1, #4
 	add r0, r0, r1
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_021F6684: .word sub_0200E9BC
+_021F6684: .word ClearFrameAndWindow2
 	thumb_func_end ov14_021F6678
 
 	thumb_func_start ov14_021F6688
 ov14_021F6688: ; 0x021F6688
-	ldr r3, _021F6694 ; =sub_0200E9BC
+	ldr r3, _021F6694 ; =ClearFrameAndWindow2
 	add r0, #0x30
 	lsl r1, r1, #4
 	add r0, r0, r1
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_021F6694: .word sub_0200E9BC
+_021F6694: .word ClearFrameAndWindow2
 	thumb_func_end ov14_021F6688
 
 	thumb_func_start ov14_021F6698
@@ -34528,7 +34528,7 @@ _021F6996:
 	add r0, #0x30
 	ldr r2, [r2, #0x28]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl DestroyMsgData
 	add sp, #0x10
@@ -36838,7 +36838,7 @@ ov14_021F7B7C: ; 0x021F7B7C
 	mov r0, #0
 	pop {r3, pc}
 _021F7B92:
-	ldr r0, _021F7BB4 ; =0x021D110C
+	ldr r0, _021F7BB4 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	lsl r0, r0, #0xa
@@ -36857,7 +36857,7 @@ _021F7BB0:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_021F7BB4: .word 0x021D110C
+_021F7BB4: .word gMain
 _021F7BB8: .word 0x021F86C8
 	thumb_func_end ov14_021F7B7C
 

@@ -1,3 +1,5 @@
+#pragma once
+
 	.macro arm_func_start name
 	.balign 4, 0
 	.global \name

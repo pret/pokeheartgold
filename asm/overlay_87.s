@@ -13,21 +13,21 @@ ov87_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x7a
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E59AC ; =0x000099FC
 	add r0, r5, #0
 	mov r2, #0x7a
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E59AC ; =0x000099FC
 	mov r1, #0
 	add r4, r0, #0
 	bl memset
 	mov r0, #0x7a
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #0x58]
 	add r0, r5, #0
 	str r5, [r4]
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	mov r1, #0x5a
 	add r2, r5, #0
@@ -90,7 +90,7 @@ _021E59B0: .word 0x0000039D
 ov87_021E59B4: ; 0x021E59B4
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	cmp r1, #7
@@ -218,7 +218,7 @@ _021E5AB2:
 ov87_021E5AC0: ; 0x021E5AC0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl sub_02021238
 	mov r0, #0xdd
@@ -230,12 +230,12 @@ ov87_021E5AC0: ; 0x021E5AC0
 	add r0, r4, #0
 	bl ov87_021E6780
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0x7a
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -329,7 +329,7 @@ _021E5B68:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	add r1, r0, #0
 	mov r0, #0x53
 	lsl r0, r0, #2
@@ -419,7 +419,7 @@ ov87_021E5C38: ; 0x021E5C38
 _021E5C4E:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1e
 	strb r0, [r5, #0xf]
 	mov r0, #1
@@ -431,7 +431,7 @@ _021E5C60:
 	bne _021E5C7C
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -451,7 +451,7 @@ _021E5C80:
 	beq _021E5CDE
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -472,7 +472,7 @@ _021E5C80:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -692,10 +692,10 @@ _021E5E20:
 	bl sub_0201BC8C
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl sub_02022CC8
@@ -1036,7 +1036,7 @@ _021E610A:
 _021E613E:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl sub_02022CC8
@@ -1336,7 +1336,7 @@ _021E63BA:
 	bne _021E63DE
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov87_021E7998
 	add r0, r4, #0
@@ -1485,7 +1485,7 @@ ov87_021E64F8: ; 0x021E64F8
 _021E650C:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -1633,7 +1633,7 @@ _021E661E:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -1954,12 +1954,12 @@ ov87_021E68A4: ; 0x021E68A4
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -2057,7 +2057,7 @@ ov87_021E68DC: ; 0x021E68DC
 	bl ov87_021E7A04
 	add r0, r5, #0
 	bl ov87_021E7A2C
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r7, #0
 	mov r6, #0x1a
 	add r4, r5, #0
@@ -2194,7 +2194,7 @@ _021E6A2E:
 	bl sub_02021148
 	ldr r0, _021E6ADC ; =ov87_021E6C04
 	add r1, r5, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2298,7 +2298,7 @@ ov87_021E6B38: ; 0x021E6B38
 	bl ov87_021E6EF4
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -2322,28 +2322,28 @@ ov87_021E6BB8: ; 0x021E6BB8
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -2393,7 +2393,7 @@ _021E6C4A:
 	sub r2, r2, #1
 	bne _021E6C4A
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -2413,7 +2413,7 @@ ov87_021E6C60: ; 0x021E6C60
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E6DA4 ; =0x021E8228
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -2428,15 +2428,15 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x7a
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6DA8 ; =0x021E8260
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -2451,10 +2451,10 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6DAC ; =0x021E81D4
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -2469,10 +2469,10 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6DB0 ; =0x021E81F0
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -2487,10 +2487,10 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6DB4 ; =0x021E820C
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -2505,10 +2505,10 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6DB8 ; =0x021E8244
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -2523,21 +2523,21 @@ ov87_021E6C60: ; 0x021E6C60
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x7a
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -2794,7 +2794,7 @@ ov87_021E6F38: ; 0x021E6F38
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov87_021E6F38
@@ -2849,7 +2849,7 @@ ov87_021E6F98: ; 0x021E6F98
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov87_021E6F98
@@ -3176,7 +3176,7 @@ ov87_021E7264: ; 0x021E7264
 	mov r6, #4
 	lsl r7, r7, #4
 _021E7270:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #9
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -3198,7 +3198,7 @@ _021E7270:
 ov87_021E7294: ; 0x021E7294
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r7, #0
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1e
@@ -3210,7 +3210,7 @@ ov87_021E7294: ; 0x021E7294
 	lsr r6, r0, #0x18
 	add r4, r7, #0
 _021E72B0:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #9
 	bl _s32_div_f
 	mov r0, #0x36
@@ -3315,7 +3315,7 @@ _021E7358:
 	add r2, r2, #2
 	cmp r1, #4
 	blt _021E7358
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1e
 	add r4, sp, #8
@@ -3339,7 +3339,7 @@ _021E7380:
 	strh r2, [r1, r0]
 	b _021E73C6
 _021E7390:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r7, #0
 	bl _u32_div_f
 	strh r1, [r4]
@@ -4465,7 +4465,7 @@ _021E7B96:
 	bl sub_02022CC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -5204,7 +5204,7 @@ ov87_021E810C: ; 0x021E810C
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -5235,7 +5235,7 @@ ov87_021E8134: ; 0x021E8134
 	add r0, r4, #0
 	mov r1, #0
 	mov r3, #0xa
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop

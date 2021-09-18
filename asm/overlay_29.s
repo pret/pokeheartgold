@@ -14,7 +14,7 @@ ov29_0225D520: ; 0x0225D520
 	mov r1, #8
 	lsl r2, r0, #0xf
 	add r5, r3, #0
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r0, _0225D5E0 ; =0x04001050
 	mov r1, #0
 	strh r1, [r0]
@@ -115,7 +115,7 @@ ov29_0225D5EC: ; 0x0225D5EC
 	add r0, r5, #0
 	bl sub_02007234
 	mov r0, #8
-	bl sub_0201A9C4
+	bl DestroyHeap
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov29_0225D5EC
 
@@ -129,10 +129,10 @@ ov29_0225D61C: ; 0x0225D61C
 ov29_0225D620: ; 0x0225D620
 	push {r3, lr}
 	mov r0, #0x80
-	bl sub_020CE650
+	bl GX_SetBankForSubBG
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_020CE6F8
+	bl GX_SetBankForSubOBJ
 	ldr r2, _0225D640 ; =0x04001000
 	ldr r0, _0225D644 ; =0xFFCFFFEF
 	ldr r1, [r2]
@@ -167,15 +167,15 @@ ov29_0225D648: ; 0x0225D648
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #8
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _0225D6B0 ; =0x0225E200
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -190,7 +190,7 @@ ov29_0225D648: ; 0x0225D648
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0x38
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -203,10 +203,10 @@ ov29_0225D6B4: ; 0x0225D6B4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	thumb_func_end ov29_0225D6B4
 
@@ -313,7 +313,7 @@ _0225D73A:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, r5, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r5, r4
@@ -1039,7 +1039,7 @@ _0225DCEA:
 	bl PlaySE
 	b _0225DE98
 _0225DD42:
-	ldr r0, _0225DEB0 ; =0x021D110C
+	ldr r0, _0225DEB0 ; =gMain
 	ldr r2, [r0, #0x48]
 	mov r0, #8
 	tst r0, r2
@@ -1208,7 +1208,7 @@ _0225DE98:
 	.balign 4, 0
 _0225DEA8: .word 0x0225E1AC
 _0225DEAC: .word 0x000005DD
-_0225DEB0: .word 0x021D110C
+_0225DEB0: .word gMain
 _0225DEB4: .word 0x000001FA
 	thumb_func_end ov29_0225DCD0
 

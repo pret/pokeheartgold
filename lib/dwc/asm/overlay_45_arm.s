@@ -355,7 +355,7 @@ ov45_02231514: ; 0x02231514
 	ldr r2, [sp, #0x10]
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 _02231580:
 	cmp r4, #0
 	beq _022315C8
@@ -2260,7 +2260,7 @@ _02232EEC:
 	ldrb r1, [r0, #0x39]
 	add r0, sp, #0x24
 	strb r1, [sp, #0x23]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldrh r8, [sp, #0x20]
 	ldrb r7, [sp, #0x22]
 	ldrb r6, [sp, #0x23]
@@ -2734,7 +2734,7 @@ ov45_022335A0: ; 0x022335A0
 	ldrb r1, [r0, #0x39]
 	add r0, sp, #0x24
 	strb r1, [sp, #0x23]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r0, [r4]
 	add r3, sp, #0x38
 	str r0, [sp, #0x30]
@@ -4258,7 +4258,7 @@ _02234B34:
 	ldrb r1, [r0, #0x39]
 	add r0, sp, #0x2c
 	strb r1, [sp, #0x2b]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r0, _02234D58 ; =0x02254F58
 	ldr r1, _02234D54 ; =0x022577C4
 	ldr r5, [r0, #0x10]
@@ -4474,7 +4474,7 @@ _02234E2C:
 	ldrb r1, [r0, #0x39]
 	add r0, sp, #0x2c
 	strb r1, [sp, #0x2b]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldrh r1, [sp, #0x28]
 	ldrb r0, [sp, #0x2a]
 	ldrb sb, [sp, #0x2b]
@@ -4700,7 +4700,7 @@ _02235184:
 	ldrb r1, [r0, #0x39]
 	add r0, sp, #0x2c
 	strb r1, [sp, #0x2b]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	ldr r0, _022353E0 ; =0x02254F58
 	ldr r1, _022353DC ; =0x022577C4
 	ldr r5, [r0, #8]
@@ -8948,7 +8948,7 @@ _02238BAC:
 	ldr r2, [r5, #0x30]
 	add r1, r4, #0x10
 	mov r2, r2, lsl #3
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 _02238C00:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
@@ -11448,7 +11448,7 @@ ov45_0223AEDC: ; 0x0223AEDC
 	ldmeqia sp!, {r3, pc}
 	add r0, r0, #0x5c
 	mov r2, #0x2d8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end ov45_0223AEDC
@@ -11460,7 +11460,7 @@ ov45_0223AF04: ; 0x0223AF04
 	mov r0, r1
 	add r1, r4, #0x5c
 	mov r2, #0x2d8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #1
 	str r0, [r4, #0x334]
 	ldmia sp!, {r4, pc}
@@ -14468,7 +14468,7 @@ _0223D9B4:
 	ldr r2, _0223DA38 ; =0x00000191
 	add r0, sp, #0x30
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r3, _0223DA38 ; =0x00000191
 	add r2, sp, #0x30
 	mov r0, r6
@@ -18170,7 +18170,7 @@ _02240C3C:
 	add r0, sp, #0x104
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r4, _02240F40 ; =ov45_0223ED00
 	ldr r3, _02240F44 ; =ov45_0223ED1C
 	ldr r1, _02240F48 ; =ov45_0223F1C8
@@ -18547,7 +18547,7 @@ _02241108:
 	add r0, sp, #0x58
 	mov r1, #0
 	mov r2, #0x30
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _02241298 ; =ov45_0223F8F4
 	ldr r2, _0224129C ; =ov45_0223F1E4
 	str r0, [sp, #0x70]

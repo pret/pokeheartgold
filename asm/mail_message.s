@@ -1,6 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F60E0:
+	.short 0x0126, 0x0128, 0x0124, 0x0125, 0x0127
+
 	.text
 
 	thumb_func_start MailMsg_init
@@ -107,7 +112,7 @@ _020158C4:
 	ldrh r2, [r2]
 	mov r1, #0x1b
 	lsl r3, r2, #1
-	ldr r2, _02015900 ; =0x020F60E0
+	ldr r2, _02015900 ; =_020F60E0
 	ldrh r2, [r2, r3]
 	ldr r3, [sp, #4]
 	bl NewMsgDataFromNarc
@@ -128,7 +133,7 @@ _020158C4:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020158FC: .word 0x0000FFFF
-_02015900: .word 0x020F60E0
+_02015900: .word _020F60E0
 	thumb_func_end MailMsg_GetExpandedString
 
 	thumb_func_start MailMsg_GetRawString
@@ -139,13 +144,13 @@ MailMsg_GetRawString: ; 0x02015904
 	ldrh r1, [r4]
 	mov r0, #0x1b
 	lsl r2, r1, #1
-	ldr r1, _0201591C ; =0x020F60E0
+	ldr r1, _0201591C ; =_020F60E0
 	ldrh r1, [r1, r2]
 	ldrh r2, [r4, #2]
 	bl ReadMsgData_NewNarc_NewString
 	pop {r4, pc}
 	.balign 4, 0
-_0201591C: .word 0x020F60E0
+_0201591C: .word _020F60E0
 	thumb_func_end MailMsg_GetRawString
 
 	thumb_func_start MailMsg_IsInit
@@ -207,7 +212,7 @@ _02015972:
 	blo _02015980
 	bl GF_AssertFail
 _02015980:
-	ldr r1, _020159D4 ; =0x020F60E0
+	ldr r1, _020159D4 ; =_020F60E0
 	lsl r2, r5, #1
 	ldrh r1, [r1, r2]
 	mov r0, #0x1b
@@ -249,7 +254,7 @@ _020159C8:
 	add r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_020159D4: .word 0x020F60E0
+_020159D4: .word _020F60E0
 _020159D8: .word 0x0000FFFF
 	thumb_func_end MailMsg_NumFields
 

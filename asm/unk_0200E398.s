@@ -1,6 +1,21 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F5C40:
+	.byte 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
+_020F5C50:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
+_020F5C60:
+	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_020F5C78:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xD5, 0x5C, 0x01, 0x00
+	.byte 0xD5, 0x5C, 0x01, 0x00, 0xD5, 0x5C, 0x01, 0x00, 0xD5, 0x5C, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+
 	.text
 
 	thumb_func_start sub_0200E398
@@ -256,8 +271,8 @@ sub_0200E448: ; 0x0200E448
 	.balign 4, 0
 	thumb_func_end sub_0200E448
 
-	thumb_func_start sub_0200E580
-sub_0200E580: ; 0x0200E580
+	thumb_func_start DrawFrameAndWindow1
+DrawFrameAndWindow1: ; 0x0200E580
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r0, #0
@@ -294,7 +309,7 @@ sub_0200E580: ; 0x0200E580
 _0200E5D0:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200E580
+	thumb_func_end DrawFrameAndWindow1
 
 	thumb_func_start sub_0200E5D4
 sub_0200E5D4: ; 0x0200E5D4
@@ -768,8 +783,8 @@ sub_0200E948: ; 0x0200E948
 	.balign 4, 0
 	thumb_func_end sub_0200E948
 
-	thumb_func_start sub_0200E998
-sub_0200E998: ; 0x0200E998
+	thumb_func_start DrawFrameAndWindow2
+DrawFrameAndWindow2: ; 0x0200E998
 	push {r4, r5, r6, lr}
 	add r6, r2, #0
 	add r4, r1, #0
@@ -786,10 +801,10 @@ _0200E9B2:
 	bl sub_020027F0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200E998
+	thumb_func_end DrawFrameAndWindow2
 
-	thumb_func_start sub_0200E9BC
-sub_0200E9BC: ; 0x0200E9BC
+	thumb_func_start ClearFrameAndWindow2
+ClearFrameAndWindow2: ; 0x0200E9BC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r5, r0, #0
@@ -836,7 +851,7 @@ _0200EA1E:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200E9BC
+	thumb_func_end ClearFrameAndWindow2
 
 	thumb_func_start sub_0200EA24
 sub_0200EA24: ; 0x0200EA24
@@ -1581,8 +1596,8 @@ _0200EFC6:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200EF84
 
-	thumb_func_start sub_0200F004
-sub_0200F004: ; 0x0200F004
+	thumb_func_start DrawFrameAndWindow3
+DrawFrameAndWindow3: ; 0x0200F004
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	add r4, r0, #0
@@ -1656,7 +1671,7 @@ _0200F0A0:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200F004
+	thumb_func_end DrawFrameAndWindow3
 
 	thumb_func_start sub_0200F0AC
 sub_0200F0AC: ; 0x0200F0AC
@@ -2319,7 +2334,7 @@ _0200F5FC: .word 0x0000016F
 sub_0200F600: ; 0x0200F600
 	push {r4, r5, r6, lr}
 	sub sp, #0x18
-	ldr r5, _0200F628 ; =0x020F5C60
+	ldr r5, _0200F628 ; =_020F5C60
 	add r4, sp, #0
 	add r6, r0, #0
 	add r3, r1, #0
@@ -2337,7 +2352,7 @@ sub_0200F600: ; 0x0200F600
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0200F628: .word 0x020F5C60
+_0200F628: .word _020F5C60
 	thumb_func_end sub_0200F600
 
 	thumb_func_start sub_0200F62C
@@ -2387,7 +2402,7 @@ _0200F680: .word 0x00015CD5
 sub_0200F684: ; 0x0200F684
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
-	ldr r5, _0200F6D0 ; =0x020F5C78
+	ldr r5, _0200F6D0 ; =_020F5C78
 	add r6, r2, #0
 	add r4, r0, #0
 	add r7, r1, #0
@@ -2421,7 +2436,7 @@ _0200F694:
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0200F6D0: .word 0x020F5C78
+_0200F6D0: .word _020F5C78
 	thumb_func_end sub_0200F684
 
 	thumb_func_start sub_0200F6D4
@@ -2492,7 +2507,7 @@ sub_0200F748: ; 0x0200F748
 	lsl r1, r1, #8
 	bl AllocFromHeap
 	add r2, sp, #0x18
-	ldr r3, _0200F820 ; =0x020F5C50
+	ldr r3, _0200F820 ; =_020F5C50
 	add r4, r0, #0
 	add r7, r2, #0
 	ldmia r3!, {r0, r1}
@@ -2506,7 +2521,7 @@ sub_0200F748: ; 0x0200F748
 	ldrh r2, [r5, r2]
 	add r3, r7, #0
 	bl sub_020143E0
-	ldr r3, _0200F824 ; =0x020F5C40
+	ldr r3, _0200F824 ; =_020F5C40
 	add r2, sp, #8
 	add r7, r2, #0
 	ldmia r3!, {r0, r1}
@@ -2573,8 +2588,8 @@ sub_0200F748: ; 0x0200F748
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0200F81C: .word 0x00000162
-_0200F820: .word 0x020F5C50
-_0200F824: .word 0x020F5C40
+_0200F820: .word _020F5C50
+_0200F824: .word _020F5C40
 _0200F828: .word 0x00015CD5
 	thumb_func_end sub_0200F748
 

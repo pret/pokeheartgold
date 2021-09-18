@@ -7,15 +7,19 @@
 #define LANGUAGE_ENGLISH 2
 
 #undef GAME_VERSION
-#ifdef HEARTGOLD
+#if defined(HEARTGOLD)
 #define GAME_VERSION VERSION_HEARTGOLD
-#else // SOULSILVER
+#elif defined(SOULSILVER)
 #define GAME_VERSION VERSION_SOULSILVER
+#else
+#error "Missing or unrecognized game version define"
 #endif
 
 #undef GAME_LANGUAGE
 #ifdef ENGLISH
 #define GAME_LANGUAGE LANGUAGE_ENGLISH
+#else
+#error "Missing or unrecognized game language define"
 #endif
 
 #endif //POKEHEARTGOLD_CONFIG_H

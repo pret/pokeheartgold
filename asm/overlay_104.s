@@ -12,19 +12,19 @@ ov104_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x95
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x17
 	add r0, r5, #0
 	lsl r1, r1, #4
 	mov r2, #0x95
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x17
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	mov r0, #0x59
 	ldrb r1, [r5]
@@ -113,7 +113,7 @@ ov104_021E59E4: ; 0x021E59E4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x3c
 	add r6, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	mov r0, #0x5a
 	lsl r0, r0, #2
@@ -262,7 +262,7 @@ ov104_021E5B14: ; 0x021E5B14
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp, #4]
@@ -303,10 +303,10 @@ _021E5B36:
 	ldr r0, [r7]
 	bl sub_02023120
 	ldr r0, [sp]
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	bl sub_0201F63C
 	mov r0, #0x95
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -318,10 +318,10 @@ ov104_021E5B88: ; 0x021E5B88
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -344,7 +344,7 @@ ov104_021E5B88: ; 0x021E5B88
 	strh r0, [r2]
 	ldr r0, _021E5BE8 ; =0x021E5F14
 	bl sub_020CF8E4
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	pop {r3, pc}
 	nop
 _021E5BD8: .word 0xFFFFE0FF
@@ -456,7 +456,7 @@ _021E5CB2:
 	sub r2, r2, #1
 	bne _021E5CB2
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -478,7 +478,7 @@ ov104_021E5CC8: ; 0x021E5CC8
 	add r0, r0, r1
 	mov r1, #0x95
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	mov r2, #0x59
 	ldr r0, [sp]
 	lsl r2, r2, #2
@@ -588,7 +588,7 @@ _021E5D76:
 	ldr r0, [sp]
 	add r0, r0, r4
 	ldr r0, [r0, #0x5c]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
 	cmp r0, #2

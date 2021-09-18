@@ -33,19 +33,19 @@ ov58_022378E4: ; 0x022378E4
 	mov r0, #3
 	mov r1, #0x85
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r5, #0
 	mov r1, #0x20
 	mov r2, #0x85
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x20
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x85
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov58_02237B40
@@ -58,7 +58,7 @@ ov58_022378E4: ; 0x022378E4
 ov58_02237924: ; 0x02237924
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	cmp r1, #7
 	bhi _02237996
@@ -126,15 +126,15 @@ _02237996:
 ov58_0223799C: ; 0x0223799C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	bl ov58_02237CCC
 	add r0, r4, #0
 	bl ov58_02237B94
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x85
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov58_0223799C
@@ -150,7 +150,7 @@ ov58_022379C0: ; 0x022379C0
 	add r0, #1
 	mov r1, #0
 	mov r2, #5
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r1, sp, #0x14
 	add r0, r4, #0
 	add r1, #2
@@ -310,7 +310,7 @@ _02237B10:
 	bl sub_020746BC
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #7
 	bl sub_02097F0C
 	add sp, #0x24
@@ -427,14 +427,14 @@ ov58_02237BD4: ; 0x02237BD4
 	mov r1, #0
 	mov r2, #0x44
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [r4, #4]
 	add r0, r4, #0
 	mov r1, #0
@@ -450,7 +450,7 @@ ov58_02237BD4: ; 0x02237BD4
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0202B50C
+	bl Sav2_Mailbox_get
 	str r0, [r4, #8]
 	mov r0, #0
 	str r0, [r4, #0x1c]
@@ -556,10 +556,10 @@ ov58_02237CCC: ; 0x02237CCC
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]

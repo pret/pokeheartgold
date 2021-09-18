@@ -3007,7 +3007,7 @@ sub_020CD7C4: ; 0x020CD7C4
 	bne _020CD838
 	mvn r4, #2
 _020CD814:
-	bl sub_020D15C4
+	bl OS_GetLockID
 	mov r6, r0
 	cmp r6, r4
 	bne _020CD828
@@ -3044,13 +3044,13 @@ _020CD890:
 	mov r0, r2
 	add r1, r3, #8
 	mov r2, #0x60
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r3, _020CD900 ; =0x0400006C
 	mov r0, #0
 	ldr r1, _020CD904 ; =0x04001000
 	mov r2, #0x70
 	strh r0, [r3]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _020CD8B8:
 	ldr r0, _020CD908 ; =0x04000020
 	mov r2, #0x100
@@ -3314,8 +3314,8 @@ _020CDBFC: .word 0x04000248
 _020CDC00: .word 0x04000249
 	arm_func_end sub_020CDB4C
 
-	arm_func_start sub_020CDC04
-sub_020CDC04: ; 0x020CDC04
+	arm_func_start GX_SetBankForBG
+GX_SetBankForBG: ; 0x020CDC04
 	stmdb sp!, {r3, lr}
 	ldr r1, _020CDE74 ; =0x021E15C0
 	mvn ip, r0
@@ -3508,10 +3508,10 @@ _020CDE84: .word 0x04000240
 _020CDE88: .word 0x04000246
 _020CDE8C: .word 0x04000245
 _020CDE90: .word 0x04000244
-	arm_func_end sub_020CDC04
+	arm_func_end GX_SetBankForBG
 
-	arm_func_start sub_020CDE94
-sub_020CDE94: ; 0x020CDE94
+	arm_func_start GX_SetBankForOBJ
+GX_SetBankForOBJ: ; 0x020CDE94
 	stmdb sp!, {r3, lr}
 	ldr r1, _020CDFCC ; =0x021E15C0
 	mvn ip, r0
@@ -3612,10 +3612,10 @@ _020CDFD4: .word 0x04000241
 _020CDFD8: .word 0x04000240
 _020CDFDC: .word 0x04000245
 _020CDFE0: .word 0x04000244
-	arm_func_end sub_020CDE94
+	arm_func_end GX_SetBankForOBJ
 
-	arm_func_start sub_020CDFE4
-sub_020CDFE4: ; 0x020CDFE4
+	arm_func_start GX_SetBankForBGExtPltt
+GX_SetBankForBGExtPltt: ; 0x020CDFE4
 	stmdb sp!, {r3, lr}
 	ldr r1, _020CE0D8 ; =0x021E15C0
 	mvn ip, r0
@@ -3690,10 +3690,10 @@ _020CE0C8:
 _020CE0D8: .word 0x021E15C0
 _020CE0DC: .word 0x04000246
 _020CE0E0: .word 0x04000245
-	arm_func_end sub_020CDFE4
+	arm_func_end GX_SetBankForBGExtPltt
 
-	arm_func_start sub_020CE0E4
-sub_020CE0E4: ; 0x020CE0E4
+	arm_func_start GX_SetBankForOBJExtPltt
+GX_SetBankForOBJExtPltt: ; 0x020CE0E4
 	stmdb sp!, {r3, lr}
 	ldr r1, _020CE184 ; =0x021E15C0
 	mvn ip, r0
@@ -3742,10 +3742,10 @@ _020CE174:
 _020CE184: .word 0x021E15C0
 _020CE188: .word 0x04000245
 _020CE18C: .word 0x04000246
-	arm_func_end sub_020CE0E4
+	arm_func_end GX_SetBankForOBJExtPltt
 
-	arm_func_start sub_020CE190
-sub_020CE190: ; 0x020CE190
+	arm_func_start GX_SetBankForTex
+GX_SetBankForTex: ; 0x020CE190
 	stmdb sp!, {r3, lr}
 	ldr r1, _020CE34C ; =0x021E15C0
 	mvn ip, r0
@@ -3883,10 +3883,10 @@ _020CE358: .word 0x04000242
 _020CE35C: .word 0x04000243
 _020CE360: .word 0x04000241
 _020CE364: .word 0x04000240
-	arm_func_end sub_020CE190
+	arm_func_end GX_SetBankForTex
 
-	arm_func_start sub_020CE368
-sub_020CE368: ; 0x020CE368
+	arm_func_start GX_SetBankForTexPltt
+GX_SetBankForTexPltt: ; 0x020CE368
 	stmdb sp!, {r3, lr}
 	ldr r1, _020CE440 ; =0x021E15C0
 	mvn ip, r0
@@ -3956,7 +3956,7 @@ _020CE440: .word 0x021E15C0
 _020CE444: .word 0x04000246
 _020CE448: .word 0x04000245
 _020CE44C: .word 0x04000244
-	arm_func_end sub_020CE368
+	arm_func_end GX_SetBankForTexPltt
 
 	arm_func_start sub_020CE450
 sub_020CE450: ; 0x020CE450
@@ -4114,8 +4114,8 @@ _020CE648: .word 0x021E15C0
 _020CE64C: .word sub_020CDB4C
 	arm_func_end sub_020CE630
 
-	arm_func_start sub_020CE650
-sub_020CE650: ; 0x020CE650
+	arm_func_start GX_SetBankForSubBG
+GX_SetBankForSubBG: ; 0x020CE650
 	stmdb sp!, {r3, lr}
 	ldr r1, _020CE6E8 ; =0x021E15C0
 	mvn ip, r0
@@ -4164,10 +4164,10 @@ _020CE6E8: .word 0x021E15C0
 _020CE6EC: .word 0x04000242
 _020CE6F0: .word 0x04000249
 _020CE6F4: .word 0x04000248
-	arm_func_end sub_020CE650
+	arm_func_end GX_SetBankForSubBG
 
-	arm_func_start sub_020CE6F8
-sub_020CE6F8: ; 0x020CE6F8
+	arm_func_start GX_SetBankForSubOBJ
+GX_SetBankForSubOBJ: ; 0x020CE6F8
 	stmdb sp!, {r3, lr}
 	ldr r1, _020CE75C ; =0x021E15C0
 	mvn ip, r0
@@ -4199,10 +4199,10 @@ _020CE74C:
 _020CE75C: .word 0x021E15C0
 _020CE760: .word 0x04000249
 _020CE764: .word 0x04000243
-	arm_func_end sub_020CE6F8
+	arm_func_end GX_SetBankForSubOBJ
 
-	arm_func_start sub_020CE768
-sub_020CE768: ; 0x020CE768
+	arm_func_start GX_SetBankForSubBGExtPltt
+GX_SetBankForSubBGExtPltt: ; 0x020CE768
 	stmdb sp!, {r3, lr}
 	ldr r1, _020CE7DC ; =0x021E15C0
 	mvn ip, r0
@@ -4238,10 +4238,10 @@ _020CE7CC:
 _020CE7DC: .word 0x021E15C0
 _020CE7E0: .word 0x04001000
 _020CE7E4: .word 0x04000248
-	arm_func_end sub_020CE768
+	arm_func_end GX_SetBankForSubBGExtPltt
 
-	arm_func_start sub_020CE7E8
-sub_020CE7E8: ; 0x020CE7E8
+	arm_func_start GX_SetBankForSubOBJExtPltt
+GX_SetBankForSubOBJExtPltt: ; 0x020CE7E8
 	stmdb sp!, {r3, lr}
 	ldr r1, _020CE85C ; =0x021E15C0
 	mvn ip, r0
@@ -4277,7 +4277,7 @@ _020CE84C:
 _020CE85C: .word 0x021E15C0
 _020CE860: .word 0x04001000
 _020CE864: .word 0x04000249
-	arm_func_end sub_020CE7E8
+	arm_func_end GX_SetBankForSubOBJExtPltt
 
 	arm_func_start sub_020CE868
 sub_020CE868: ; 0x020CE868
@@ -4297,28 +4297,28 @@ sub_020CE868: ; 0x020CE868
 _020CE898: .word 0x021E15C0
 	arm_func_end sub_020CE868
 
-	arm_func_start sub_020CE89C
-sub_020CE89C: ; 0x020CE89C
+	arm_func_start GX_ResetBankForBG
+GX_ResetBankForBG: ; 0x020CE89C
 	ldr ip, _020CE8A8 ; =sub_020CE868
 	ldr r0, _020CE8AC ; =0x021E15C2
 	bx ip
 	.align 2, 0
 _020CE8A8: .word sub_020CE868
 _020CE8AC: .word 0x021E15C2
-	arm_func_end sub_020CE89C
+	arm_func_end GX_ResetBankForBG
 
-	arm_func_start sub_020CE8B0
-sub_020CE8B0: ; 0x020CE8B0
+	arm_func_start GX_ResetBankForOBJ
+GX_ResetBankForOBJ: ; 0x020CE8B0
 	ldr ip, _020CE8BC ; =sub_020CE868
 	ldr r0, _020CE8C0 ; =0x021E15C4
 	bx ip
 	.align 2, 0
 _020CE8BC: .word sub_020CE868
 _020CE8C0: .word 0x021E15C4
-	arm_func_end sub_020CE8B0
+	arm_func_end GX_ResetBankForOBJ
 
-	arm_func_start sub_020CE8C4
-sub_020CE8C4: ; 0x020CE8C4
+	arm_func_start GX_ResetBankForBGExtPltt
+GX_ResetBankForBGExtPltt: ; 0x020CE8C4
 	mov r2, #0x4000000
 	ldr r1, [r2]
 	ldr ip, _020CE8E0 ; =sub_020CE868
@@ -4329,10 +4329,10 @@ sub_020CE8C4: ; 0x020CE8C4
 	.align 2, 0
 _020CE8E0: .word sub_020CE868
 _020CE8E4: .word 0x021E15CE
-	arm_func_end sub_020CE8C4
+	arm_func_end GX_ResetBankForBGExtPltt
 
-	arm_func_start sub_020CE8E8
-sub_020CE8E8: ; 0x020CE8E8
+	arm_func_start GX_ResetBankForOBJExtPltt
+GX_ResetBankForOBJExtPltt: ; 0x020CE8E8
 	mov r2, #0x4000000
 	ldr r1, [r2]
 	ldr ip, _020CE904 ; =sub_020CE868
@@ -4343,27 +4343,27 @@ sub_020CE8E8: ; 0x020CE8E8
 	.align 2, 0
 _020CE904: .word sub_020CE868
 _020CE908: .word 0x021E15D0
-	arm_func_end sub_020CE8E8
+	arm_func_end GX_ResetBankForOBJExtPltt
 
-	arm_func_start sub_020CE90C
-sub_020CE90C: ; 0x020CE90C
+	arm_func_start GX_ResetBankForTex
+GX_ResetBankForTex: ; 0x020CE90C
 	ldr ip, _020CE918 ; =sub_020CE868
 	ldr r0, _020CE91C ; =0x021E15C8
 	bx ip
 	.align 2, 0
 _020CE918: .word sub_020CE868
 _020CE91C: .word 0x021E15C8
-	arm_func_end sub_020CE90C
+	arm_func_end GX_ResetBankForTex
 
-	arm_func_start sub_020CE920
-sub_020CE920: ; 0x020CE920
+	arm_func_start GX_ResetBankForTexPltt
+GX_ResetBankForTexPltt: ; 0x020CE920
 	ldr ip, _020CE92C ; =sub_020CE868
 	ldr r0, _020CE930 ; =0x021E15CA
 	bx ip
 	.align 2, 0
 _020CE92C: .word sub_020CE868
 _020CE930: .word 0x021E15CA
-	arm_func_end sub_020CE920
+	arm_func_end GX_ResetBankForTexPltt
 
 	arm_func_start sub_020CE934
 sub_020CE934: ; 0x020CE934
@@ -4375,28 +4375,28 @@ _020CE940: .word sub_020CE868
 _020CE944: .word 0x021E15CC
 	arm_func_end sub_020CE934
 
-	arm_func_start sub_020CE948
-sub_020CE948: ; 0x020CE948
+	arm_func_start GX_ResetBankForSubBG
+GX_ResetBankForSubBG: ; 0x020CE948
 	ldr ip, _020CE954 ; =sub_020CE868
 	ldr r0, _020CE958 ; =0x021E15D2
 	bx ip
 	.align 2, 0
 _020CE954: .word sub_020CE868
 _020CE958: .word 0x021E15D2
-	arm_func_end sub_020CE948
+	arm_func_end GX_ResetBankForSubBG
 
-	arm_func_start sub_020CE95C
-sub_020CE95C: ; 0x020CE95C
+	arm_func_start GX_ResetBankForSubOBJ
+GX_ResetBankForSubOBJ: ; 0x020CE95C
 	ldr ip, _020CE968 ; =sub_020CE868
 	ldr r0, _020CE96C ; =0x021E15D4
 	bx ip
 	.align 2, 0
 _020CE968: .word sub_020CE868
 _020CE96C: .word 0x021E15D4
-	arm_func_end sub_020CE95C
+	arm_func_end GX_ResetBankForSubOBJ
 
-	arm_func_start sub_020CE970
-sub_020CE970: ; 0x020CE970
+	arm_func_start GX_ResetBankForSubBGExtPltt
+GX_ResetBankForSubBGExtPltt: ; 0x020CE970
 	ldr r2, _020CE98C ; =0x04001000
 	ldr ip, _020CE990 ; =sub_020CE868
 	ldr r1, [r2]
@@ -4408,10 +4408,10 @@ sub_020CE970: ; 0x020CE970
 _020CE98C: .word 0x04001000
 _020CE990: .word sub_020CE868
 _020CE994: .word 0x021E15D6
-	arm_func_end sub_020CE970
+	arm_func_end GX_ResetBankForSubBGExtPltt
 
-	arm_func_start sub_020CE998
-sub_020CE998: ; 0x020CE998
+	arm_func_start GX_ResetBankForSubOBJExtPltt
+GX_ResetBankForSubOBJExtPltt: ; 0x020CE998
 	ldr r2, _020CE9B4 ; =0x04001000
 	ldr ip, _020CE9B8 ; =sub_020CE868
 	ldr r1, [r2]
@@ -4423,7 +4423,7 @@ sub_020CE998: ; 0x020CE998
 _020CE9B4: .word 0x04001000
 _020CE9B8: .word sub_020CE868
 _020CE9BC: .word 0x021E15D8
-	arm_func_end sub_020CE998
+	arm_func_end GX_ResetBankForSubOBJExtPltt
 
 	arm_func_start sub_020CE9C0
 sub_020CE9C0: ; 0x020CE9C0
@@ -5674,8 +5674,8 @@ _020CF824: .word 0x04000600
 _020CF828: .word 0x04000440
 	arm_func_end sub_020CF79C
 
-	arm_func_start sub_020CF82C
-sub_020CF82C: ; 0x020CF82C
+	arm_func_start G3X_SetFog
+G3X_SetFog: ; 0x020CF82C
 	cmp r0, #0
 	beq _020CF860
 	ldr ip, _020CF878 ; =0x0400035C
@@ -5700,7 +5700,7 @@ _020CF860:
 _020CF878: .word 0x0400035C
 _020CF87C: .word 0x04000060
 _020CF880: .word 0x0000CF7F
-	arm_func_end sub_020CF82C
+	arm_func_end G3X_SetFog
 
 	arm_func_start sub_020CF884
 sub_020CF884: ; 0x020CF884
@@ -5757,8 +5757,8 @@ _020CF908: .word sub_020D490C
 _020CF90C: .word 0x04000360
 	arm_func_end sub_020CF8FC
 
-	arm_func_start sub_020CF910
-sub_020CF910: ; 0x020CF910
+	arm_func_start G3X_SetClearColor
+G3X_SetClearColor: ; 0x020CF910
 	ldr ip, [sp]
 	orr r0, r0, r1, lsl #16
 	orr r1, r0, r3, lsl #24
@@ -5770,7 +5770,7 @@ sub_020CF910: ; 0x020CF910
 	bx lr
 	.align 2, 0
 _020CF934: .word 0x04000350
-	arm_func_end sub_020CF910
+	arm_func_end G3X_SetClearColor
 
 	arm_func_start sub_020CF938
 sub_020CF938: ; 0x020CF938
@@ -5797,11 +5797,11 @@ sub_020CF938: ; 0x020CF938
 _020CF988:
 	mov r0, #0
 	mov r2, #0x10
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, _020CF9D0 ; =0x04000360
 	mov r0, #0
 	mov r2, #0x60
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _020CF9A4:
 	mov r2, #0
 	ldr r0, _020CF9D4 ; =0x040004D0
@@ -6739,7 +6739,7 @@ _020D0520: .word _02110C80
 	arm_func_start GX_BeginLoadBGExtPltt
 GX_BeginLoadBGExtPltt: ; 0x020D0524
 	stmdb sp!, {r3, lr}
-	bl sub_020CE8C4
+	bl GX_ResetBankForBGExtPltt
 	ldr r1, _020D05B4 ; =0x021E15DC
 	cmp r0, #0x20
 	str r0, [r1, #0x14]
@@ -6832,7 +6832,7 @@ GX_EndLoadBGExtPltt: ; 0x020D0634
 _020D0650:
 	ldr r0, _020D0678 ; =0x021E15DC
 	ldr r0, [r0, #0x14]
-	bl sub_020CDFE4
+	bl GX_SetBankForBGExtPltt
 	ldr r0, _020D0678 ; =0x021E15DC
 	mov r1, #0
 	str r1, [r0, #0x14]
@@ -6847,7 +6847,7 @@ _020D0678: .word 0x021E15DC
 	arm_func_start GX_BeginLoadOBJExtPltt
 GX_BeginLoadOBJExtPltt: ; 0x020D067C
 	stmdb sp!, {r3, lr}
-	bl sub_020CE8E8
+	bl GX_ResetBankForOBJExtPltt
 	ldr r1, _020D06B8 ; =0x021E15DC
 	cmp r0, #0
 	str r0, [r1, #8]
@@ -6913,7 +6913,7 @@ GX_EndLoadOBJExtPltt: ; 0x020D0730
 _020D074C:
 	ldr r0, _020D0770 ; =0x021E15DC
 	ldr r0, [r0, #8]
-	bl sub_020CE0E4
+	bl GX_SetBankForOBJExtPltt
 	ldr r0, _020D0770 ; =0x021E15DC
 	mov r1, #0
 	str r1, [r0, #8]
@@ -6927,7 +6927,7 @@ _020D0770: .word 0x021E15DC
 	arm_func_start GXS_BeginLoadBGExtPltt
 GXS_BeginLoadBGExtPltt: ; 0x020D0774
 	stmdb sp!, {r3, lr}
-	bl sub_020CE970
+	bl GX_ResetBankForSubBGExtPltt
 	ldr r1, _020D0788 ; =0x021E15DC
 	str r0, [r1]
 	ldmia sp!, {r3, pc}
@@ -6978,7 +6978,7 @@ GXS_EndLoadBGExtPltt: ; 0x020D07F0
 _020D080C:
 	ldr r0, _020D082C ; =0x021E15DC
 	ldr r0, [r0]
-	bl sub_020CE768
+	bl GX_SetBankForSubBGExtPltt
 	ldr r0, _020D082C ; =0x021E15DC
 	mov r1, #0
 	str r1, [r0]
@@ -6991,7 +6991,7 @@ _020D082C: .word 0x021E15DC
 	arm_func_start GXS_BeginLoadOBJExtPltt
 GXS_BeginLoadOBJExtPltt: ; 0x020D0830
 	stmdb sp!, {r3, lr}
-	bl sub_020CE998
+	bl GX_ResetBankForSubOBJExtPltt
 	ldr r1, _020D0844 ; =0x021E15DC
 	str r0, [r1, #0x18]
 	ldmia sp!, {r3, pc}
@@ -7042,7 +7042,7 @@ GXS_EndLoadOBJExtPltt: ; 0x020D08AC
 _020D08C8:
 	ldr r0, _020D08E8 ; =0x021E15DC
 	ldr r0, [r0, #0x18]
-	bl sub_020CE7E8
+	bl GX_SetBankForSubOBJExtPltt
 	ldr r0, _020D08E8 ; =0x021E15DC
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -7055,7 +7055,7 @@ _020D08E8: .word 0x021E15DC
 	arm_func_start sub_020D08EC
 sub_020D08EC: ; 0x020D08EC
 	stmdb sp!, {r3, lr}
-	bl sub_020CE90C
+	bl GX_ResetBankForTex
 	mov r1, #6
 	mul lr, r0, r1
 	ldr r2, _020D0938 ; =0x0210D5F0
@@ -7182,7 +7182,7 @@ sub_020D0A88: ; 0x020D0A88
 _020D0AA4:
 	ldr r0, _020D0AD0 ; =0x021E15F8
 	ldr r0, [r0, #0x14]
-	bl sub_020CE190
+	bl GX_SetBankForTex
 	ldr r0, _020D0AD0 ; =0x021E15F8
 	mov r1, #0
 	str r1, [r0, #0x1c]
@@ -7198,7 +7198,7 @@ _020D0AD0: .word 0x021E15F8
 	arm_func_start sub_020D0AD4
 sub_020D0AD4: ; 0x020D0AD4
 	stmdb sp!, {r3, lr}
-	bl sub_020CE920
+	bl GX_ResetBankForTexPltt
 	mov r3, r0, asr #4
 	ldr r1, _020D0B00 ; =0x021E15F8
 	ldr r2, _020D0B04 ; =0x0210D5E0
@@ -7258,7 +7258,7 @@ sub_020D0B74: ; 0x020D0B74
 _020D0B90:
 	ldr r0, _020D0BB4 ; =0x021E15F8
 	ldr r0, [r0, #0xc]
-	bl sub_020CE368
+	bl GX_SetBankForTexPltt
 	ldr r0, _020D0BB4 ; =0x021E15F8
 	mov r1, #0
 	str r1, [r0, #0xc]
@@ -7498,7 +7498,7 @@ OS_WaitIrq: ; 0x020D0E6C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	cmp r5, #0
 	beq _020D0E9C
 	ldr r1, _020D0ED8 ; =OSi_IntrTable
@@ -7508,7 +7508,7 @@ OS_WaitIrq: ; 0x020D0E6C
 	and r2, r3, r2
 	str r2, [r1, #0xff8]
 _020D0E9C:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r1, _020D0ED8 ; =OSi_IntrTable
 	add r0, r1, #0x3000
 	ldr r0, [r0, #0xff8]
@@ -7564,7 +7564,7 @@ _020D0F28:
 	cmp r1, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r4
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D0F58: .word 0x021E1618
@@ -7657,8 +7657,8 @@ sub_020D0FEC: ; 0x020D0FEC
 _020D1000: .word 0x027E0060
 	arm_func_end sub_020D0FEC
 
-	arm_func_start sub_020D1004
-sub_020D1004: ; 0x020D1004
+	arm_func_start OS_SetIrqFunction
+OS_SetIrqFunction: ; 0x020D1004
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, #0
 	mov r2, #0xc
@@ -7699,7 +7699,7 @@ _020D1070:
 	.align 2, 0
 _020D1084: .word OSi_IntrTable
 _020D1088: .word 0x021E1618
-	arm_func_end sub_020D1004
+	arm_func_end OS_SetIrqFunction
 
 	arm_func_start sub_020D108C
 sub_020D108C: ; 0x020D108C
@@ -7757,7 +7757,7 @@ sub_020D1118: ; 0x020D1118
 	ldr r3, _020D1158 ; =0x021E1620
 	str r1, [ip, r6]
 	str r2, [r3, r6]
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	and r1, r0, r5, lsl r4
 	ldr r0, _020D115C ; =0x021E161C
 	str r1, [r0, r6]
@@ -7780,7 +7780,7 @@ sub_020D1160: ; 0x020D1160
 	ldr r3, _020D11A0 ; =0x021E1650
 	str r1, [ip, r4]
 	str r2, [r3, r4]
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldr r0, _020D11A4 ; =0x021E164C
 	mov r1, #1
 	str r1, [r0, r4]
@@ -7791,8 +7791,8 @@ _020D11A0: .word 0x021E1650
 _020D11A4: .word 0x021E164C
 	arm_func_end sub_020D1160
 
-	arm_func_start sub_020D11A8
-sub_020D11A8: ; 0x020D11A8
+	arm_func_start OS_SetIrqMask
+OS_SetIrqMask: ; 0x020D11A8
 	ldr r3, _020D11D0 ; =0x04000208
 	mov r1, #0
 	ldrh r2, [r3]
@@ -7805,10 +7805,10 @@ sub_020D11A8: ; 0x020D11A8
 	bx lr
 	.align 2, 0
 _020D11D0: .word 0x04000208
-	arm_func_end sub_020D11A8
+	arm_func_end OS_SetIrqMask
 
-	arm_func_start sub_020D11D4
-sub_020D11D4: ; 0x020D11D4
+	arm_func_start OS_EnableIrqMask
+OS_EnableIrqMask: ; 0x020D11D4
 	ldr r3, _020D1200 ; =0x04000208
 	mov r1, #0
 	ldrh r2, [r3]
@@ -7822,10 +7822,10 @@ sub_020D11D4: ; 0x020D11D4
 	bx lr
 	.align 2, 0
 _020D1200: .word 0x04000208
-	arm_func_end sub_020D11D4
+	arm_func_end OS_EnableIrqMask
 
-	arm_func_start sub_020D1204
-sub_020D1204: ; 0x020D1204
+	arm_func_start OS_DisableIrqMask
+OS_DisableIrqMask: ; 0x020D1204
 	ldr ip, _020D1230 ; =0x04000208
 	mov r2, #0
 	ldrh r3, [ip]
@@ -7839,10 +7839,10 @@ sub_020D1204: ; 0x020D1204
 	bx lr
 	.align 2, 0
 _020D1230: .word 0x04000208
-	arm_func_end sub_020D1204
+	arm_func_end OS_DisableIrqMask
 
-	arm_func_start sub_020D1234
-sub_020D1234: ; 0x020D1234
+	arm_func_start OS_ResetRequestIrqMask
+OS_ResetRequestIrqMask: ; 0x020D1234
 	ldr r3, _020D125C ; =0x04000208
 	mov r1, #0
 	ldrh r2, [r3]
@@ -7855,7 +7855,7 @@ sub_020D1234: ; 0x020D1234
 	bx lr
 	.align 2, 0
 _020D125C: .word 0x04000208
-	arm_func_end sub_020D1234
+	arm_func_end OS_ResetRequestIrqMask
 
 	arm_func_start sub_020D1260
 sub_020D1260: ; 0x020D1260
@@ -7909,7 +7909,7 @@ _020D12EC:
 	mov r0, #0
 	mov r2, #0x28
 	str r3, [ip, #4]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr ip, _020D135C ; =0x04000204
 	ldr r1, _020D1354 ; =0x027FFFF0
 	ldrh r3, [ip]
@@ -7981,7 +7981,7 @@ sub_020D13BC: ; 0x020D13BC
 	bl sub_020D3A64
 	b _020D13F0
 _020D13EC:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 _020D13F0:
 	mov r4, r0
 	mov r0, #0
@@ -7998,7 +7998,7 @@ _020D1408:
 	bl sub_020D3A78
 	b _020D1428
 _020D1424:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 _020D1428:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -8024,7 +8024,7 @@ sub_020D1440: ; 0x020D1440
 	bl sub_020D3A64
 	b _020D1464
 _020D1460:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 _020D1464:
 	mov r5, r0
 	mov r0, sb
@@ -8044,7 +8044,7 @@ _020D148C:
 	bl sub_020D3A78
 	b _020D14A4
 _020D14A0:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 _020D14A4:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -8179,8 +8179,8 @@ sub_020D15BC: ; 0x020D15BC
 	bx lr
 	arm_func_end sub_020D15BC
 
-	arm_func_start sub_020D15C4
-sub_020D15C4: ; 0x020D15C4
+	arm_func_start OS_GetLockID
+OS_GetLockID: ; 0x020D15C4
 	ldr r3, _020D1614 ; =0x027FFFB0
 	ldr r1, [r3]
 	clz r2, r1
@@ -8205,10 +8205,10 @@ _020D15F8:
 	.align 2, 0
 _020D1614: .word 0x027FFFB0
 _020D1618: .word 0xFFFFFFFD
-	arm_func_end sub_020D15C4
+	arm_func_end OS_GetLockID
 
-	arm_func_start sub_020D161C
-sub_020D161C: ; 0x020D161C
+	arm_func_start OS_ReleaseLockID
+OS_ReleaseLockID: ; 0x020D161C
 	ldr r3, _020D1648 ; =0x027FFFB0
 	cmp r0, #0x60
 	addpl r3, r3, #4
@@ -8222,7 +8222,7 @@ sub_020D161C: ; 0x020D161C
 	bx lr
 	.align 2, 0
 _020D1648: .word 0x027FFFB0
-	arm_func_end sub_020D161C
+	arm_func_end OS_ReleaseLockID
 
 	arm_func_start sub_020D164C
 sub_020D164C: ; 0x020D164C
@@ -8451,7 +8451,7 @@ sub_020D18B0: ; 0x020D18B0
 	ldr r4, _020D1974 ; =0x021E16A0
 	cmp r0, #0
 	bne _020D18E0
-	bl sub_020D3A9C
+	bl OS_GetProcMode
 	cmp r0, #0x12
 	bne _020D18EC
 _020D18E0:
@@ -8605,7 +8605,7 @@ sub_020D1AD4: ; 0x020D1AD4
 	mov r5, r1
 	mov r7, r2
 	mov r6, r3
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	bl sub_020D16C0
 	ldr r2, [sp, #0x1c]
@@ -8641,7 +8641,7 @@ sub_020D1AD4: ; 0x020D1AD4
 	add r1, r5, #4
 	mov r0, #0
 	sub r2, r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0
 	str r1, [r8, #0x84]
 	str r1, [r8, #0x88]
@@ -8654,11 +8654,11 @@ sub_020D1AD4: ; 0x020D1AD4
 	add r1, r8, #0xa4
 	mov r2, #0xc
 	str r0, [r8, #0x7c]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r1, #0
 	mov r0, r4
 	str r1, [r8, #0xb0]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020D1BC4: .word 0xFDDB597D
@@ -8669,7 +8669,7 @@ _020D1BCC: .word sub_020D1BD0
 	arm_func_start sub_020D1BD0
 sub_020D1BD0: ; 0x020D1BD0
 	stmdb sp!, {r3, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r0, _020D1BEC ; =0x021E167C
 	mov r1, #0
 	ldr r0, [r0, #0x28]
@@ -8720,7 +8720,7 @@ sub_020D1C4C: ; 0x020D1C4C
 	mov r1, #0
 	str r1, [r3, #0xb4]
 	blx r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 _020D1C78:
 	bl sub_020D1C84
 	ldmia sp!, {r3, pc}
@@ -8761,7 +8761,7 @@ _020D1CDC: .word 0x021E167C
 sub_020D1CE0: ; 0x020D1CE0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D1D58 ; =0x021E167C
 	mov r4, r0
 	ldr r0, [r1, #0x28]
@@ -8788,7 +8788,7 @@ _020D1D2C:
 	bl sub_020D1ECC
 	bl sub_020D2230
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	bl sub_020D1F84
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -8814,7 +8814,7 @@ sub_020D1D80: ; 0x020D1D80
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D1E18 ; =0x021E167C
 	mov r4, r0
 	ldr r0, [r1, #0x28]
@@ -8847,7 +8847,7 @@ _020D1DB4:
 	bl sub_020D2230
 	bl sub_020D18B0
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D1E18: .word 0x021E167C
@@ -8868,7 +8868,7 @@ sub_020D1E20: ; 0x020D1E20
 sub_020D1E38: ; 0x020D1E38
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r5, #0x64]
 	mov r4, r0
 	cmp r1, #2
@@ -8877,7 +8877,7 @@ sub_020D1E38: ; 0x020D1E38
 	bl sub_020D1E7C
 _020D1E5C:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020D1E38
 
@@ -8894,7 +8894,7 @@ sub_020D1E68: ; 0x020D1E68
 sub_020D1E7C: ; 0x020D1E7C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D1EC8 ; =0x021E167C
 	mov r4, r0
 	ldr r0, [r1, #8]
@@ -8910,7 +8910,7 @@ _020D1EB0:
 	str r0, [r5, #0x64]
 	bl sub_020D18B0
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D1EC8: .word 0x021E167C
@@ -8920,7 +8920,7 @@ _020D1EC8: .word 0x021E167C
 sub_020D1ECC: ; 0x020D1ECC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r7]
 	mov r6, r0
 	cmp r1, #0
@@ -8945,7 +8945,7 @@ _020D1F18:
 	bl sub_020D18B0
 _020D1F28:
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020D1ECC
 
@@ -8953,13 +8953,13 @@ _020D1F28:
 sub_020D1F34: ; 0x020D1F34
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r1, #1
 	mov r4, r0
 	str r1, [r5, #0x64]
 	bl sub_020D18B0
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020D1F34
 
@@ -8983,11 +8983,11 @@ _020D1F80: .word 0x021E167C
 	arm_func_start sub_020D1F84
 sub_020D1F84: ; 0x020D1F84
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	bl sub_020D18B0
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020D1F84
 
@@ -8999,7 +8999,7 @@ sub_020D1FA0: ; 0x020D1FA0
 	mov r5, r4
 	mov r6, r4
 	ldr r8, [r0, #0x28]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D2054 ; =0x021E167C
 	mov r7, r0
 	ldr r1, [r1, #0x2c]
@@ -9025,7 +9025,7 @@ _020D2000:
 	bne _020D201C
 _020D2010:
 	mov r0, r7
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _020D201C:
 	cmp r4, #0
@@ -9041,7 +9041,7 @@ _020D2038:
 	str r8, [r5, #0x68]
 	bl sub_020D18B0
 	mov r0, r7
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020D2054: .word 0x021E167C
@@ -9055,7 +9055,7 @@ sub_020D2058: ; 0x020D2058
 	mov r6, r1
 	ldr r8, [r2, #0x2c]
 	mov r4, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r5, r0
 	b _020D2084
 _020D207C:
@@ -9070,7 +9070,7 @@ _020D2084:
 	cmpne r8, r0
 	bne _020D20B0
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _020D20B0:
@@ -9091,7 +9091,7 @@ _020D20D8:
 	bl sub_020D18B0
 _020D20E8:
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
@@ -9116,7 +9116,7 @@ sub_020D2108: ; 0x020D2108
 	ldr r0, [r0, #8]
 	ldr r0, [r0]
 	str r0, [sp, #4]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D219C ; =0x000082EA
 	mov r4, r0
 	umull r0, ip, r5, r1
@@ -9142,7 +9142,7 @@ _020D2174:
 	bne _020D2174
 _020D2188:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
@@ -9168,11 +9168,11 @@ _020D21C0: .word sub_020D1F34
 sub_020D21C4: ; 0x020D21C4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D21E8 ; =0x021E167C
 	ldr r4, [r1, #0x30]
 	str r5, [r1, #0x30]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -9191,7 +9191,7 @@ _020D21F4:
 	arm_func_start sub_020D21FC
 sub_020D21FC: ; 0x020D21FC
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r2, _020D222C ; =0x021E167C
 	mvn r1, #0
 	ldr r3, [r2, #4]
@@ -9199,7 +9199,7 @@ sub_020D21FC: ; 0x020D21FC
 	addlo r1, r3, #1
 	movlo r4, r3
 	strlo r1, [r2, #4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -9209,7 +9209,7 @@ _020D222C: .word 0x021E167C
 	arm_func_start sub_020D2230
 sub_020D2230: ; 0x020D2230
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D2260 ; =0x021E167C
 	mov r4, #0
 	ldr r3, [r1, #4]
@@ -9217,7 +9217,7 @@ sub_020D2230: ; 0x020D2230
 	subne r2, r3, #1
 	movne r4, r3
 	strne r2, [r1, #4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -9344,7 +9344,7 @@ sub_020D23B0: ; 0x020D23B0
 	mov r5, r0
 	mov r4, r1
 	mov r7, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r2, [r5, #0x1c]
 	ldr r1, [r5, #0x14]
 	mov r6, r0
@@ -9355,7 +9355,7 @@ _020D23DC:
 	cmp r7, #0
 	bne _020D23F4
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020D23F4:
@@ -9377,7 +9377,7 @@ _020D240C:
 	str r1, [r5, #0x1c]
 	bl sub_020D1ECC
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020D23B0
@@ -9388,7 +9388,7 @@ sub_020D2444: ; 0x020D2444
 	mov r6, r0
 	mov r5, r1
 	mov r7, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r6, #0x1c]
 	mov r4, r0
 	cmp r1, #0
@@ -9398,7 +9398,7 @@ _020D246C:
 	cmp r7, #0
 	bne _020D2484
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020D2484:
@@ -9426,7 +9426,7 @@ _020D24B0:
 	str r1, [r6, #0x1c]
 	bl sub_020D1ECC
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020D2444
@@ -9437,7 +9437,7 @@ sub_020D24E8: ; 0x020D24E8
 	mov r6, r0
 	mov r5, r1
 	mov r7, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r6, #0x14]
 	ldr r2, [r6, #0x1c]
 	mov r4, r0
@@ -9448,7 +9448,7 @@ _020D2514:
 	cmp r7, #0
 	bne _020D252C
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020D252C:
@@ -9472,7 +9472,7 @@ _020D2544:
 	str r1, [r6, #0x1c]
 	bl sub_020D1ECC
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020D24E8
@@ -9483,7 +9483,7 @@ sub_020D2584: ; 0x020D2584
 	mov r6, r0
 	mov r5, r1
 	mov r7, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r6, #0x1c]
 	mov r4, r0
 	cmp r1, #0
@@ -9493,7 +9493,7 @@ _020D25AC:
 	cmp r7, #0
 	bne _020D25C4
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020D25C4:
@@ -9511,7 +9511,7 @@ _020D25D8:
 	str r0, [r5]
 _020D25F0:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020D2584
@@ -9530,7 +9530,7 @@ sub_020D2600: ; 0x020D2600
 OS_LockMutex: ; 0x020D2618
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D2698 ; =0x021E16A0
 	mov r4, r0
 	ldr r7, [r1, #4]
@@ -9562,7 +9562,7 @@ _020D2678:
 	b _020D2634
 _020D268C:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D2698: .word 0x021E16A0
@@ -9572,7 +9572,7 @@ _020D2698: .word 0x021E16A0
 OS_UnlockMutex: ; 0x020D269C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D26F4 ; =0x021E16A0
 	mov r4, r0
 	ldr r0, [r1, #4]
@@ -9591,7 +9591,7 @@ OS_UnlockMutex: ; 0x020D269C
 	bl sub_020D1ECC
 _020D26E8:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D26F4: .word 0x021E16A0
@@ -9621,7 +9621,7 @@ _020D2710:
 OS_TryLockMutex: ; 0x020D2734
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r2, [r5, #8]
 	ldr r1, _020D27A4 ; =0x021E16A0
 	mov r4, r0
@@ -9646,7 +9646,7 @@ _020D2778:
 	str r0, [r5, #0xc]
 _020D2794:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r6
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -10090,8 +10090,8 @@ sub_020D2C8C: ; 0x020D2C8C
 	bx lr
 	arm_func_end sub_020D2C8C
 
-	arm_func_start sub_020D2CA0
-sub_020D2CA0: ; 0x020D2CA0
+	arm_func_start OS_AllocFromArenaLo
+OS_AllocFromArenaLo: ; 0x020D2CA0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -10119,10 +10119,10 @@ sub_020D2CA0: ; 0x020D2CA0
 	bl sub_020D2C8C
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020D2CA0
+	arm_func_end OS_AllocFromArenaLo
 
-	arm_func_start sub_020D2D0C
-sub_020D2D0C: ; 0x020D2D0C
+	arm_func_start OS_AllocFromArenaHi
+OS_AllocFromArenaHi: ; 0x020D2D0C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	mov r6, r1
@@ -10146,7 +10146,7 @@ sub_020D2D0C: ; 0x020D2D0C
 	bl sub_020D2C78
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020D2D0C
+	arm_func_end OS_AllocFromArenaHi
 
 	arm_func_start sub_020D2D68
 sub_020D2D68: ; 0x020D2D68
@@ -10229,13 +10229,13 @@ OS_AllocFromHeap: ; 0x020D2E54
 	mov r4, r0
 	mov r5, r1
 	mov r7, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D2F58 ; =0x021E1900
 	mov r6, r0
 	ldr r1, [r1, r4, lsl #2]
 	cmp r1, #0
 	bne _020D2E88
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020D2E88:
@@ -10261,7 +10261,7 @@ _020D2ECC:
 	cmp r5, #0
 	bne _020D2EE4
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020D2EE4:
@@ -10293,7 +10293,7 @@ _020D2F38:
 	bl sub_020D2D68
 	str r0, [r4, #8]
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add r0, r5, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -10306,7 +10306,7 @@ OS_FreeToHeap: ; 0x020D2F5C
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D2FC0 ; =0x021E1900
 	mov r4, r0
 	ldr r0, [r1, r7, lsl #2]
@@ -10325,7 +10325,7 @@ OS_FreeToHeap: ; 0x020D2F5C
 	bl sub_020D2DAC
 	str r0, [r7, #4]
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D2FC0: .word 0x021E1900
@@ -10336,12 +10336,12 @@ sub_020D2FC4: ; 0x020D2FC4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D2FF0 ; =0x021E1900
 	ldr r1, [r1, r4, lsl #2]
 	ldr r4, [r1]
 	str r5, [r1]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -10355,7 +10355,7 @@ sub_020D2FF4: ; 0x020D2FF4
 	mov r5, r1
 	mov r4, r2
 	mov r6, r3
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r2, _020D3098 ; =0x021E1900
 	mov r1, #0xc
 	str r5, [r2, r7, lsl #2]
@@ -10390,7 +10390,7 @@ _020D3068:
 	bic r1, r1, #0x1f
 	str r1, [r5, #8]
 	str r2, [r5, #0xc]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, [r5, #8]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -10413,7 +10413,7 @@ sub_020D30B0: ; 0x020D30B0
 	mov r4, r0
 	mov r6, r1
 	mov r5, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r2, _020D3144 ; =0x021E1900
 	add r1, r6, #0x1f
 	ldr r2, [r2, r4, lsl #2]
@@ -10437,7 +10437,7 @@ _020D30EC:
 	str r1, [r6, #8]
 	str r6, [r3, #4]
 	str r2, [r3, #8]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 _020D3128:
@@ -10446,7 +10446,7 @@ _020D3128:
 	add r3, r3, #0xc
 	blt _020D30EC
 _020D3138:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mvn r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -10699,9 +10699,9 @@ sub_020D33C0: ; 0x020D33C0
 	mov r2, #0xc1
 	mov r0, #8
 	strh r2, [r3]
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #8
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldr r0, _020D342C ; =0x021E19D4
 	mov r1, #0
 	str r1, [r0, #4]
@@ -10757,7 +10757,7 @@ _020D34AC: .word sub_020D3448
 sub_020D34B0: ; 0x020D34B0
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr lr, _020D3544 ; =0x04000100
 	ldr r2, _020D3548 ; =0x0000FFFF
 	ldrh ip, [lr]
@@ -10783,7 +10783,7 @@ sub_020D34B0: ; 0x020D34B0
 	str r2, [sp, #4]
 	str r1, [sp, #8]
 _020D351C:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r2, [sp, #4]
 	ldr r1, [sp, #8]
 	ldrh r0, [sp]
@@ -10813,7 +10813,7 @@ sub_020D3560: ; 0x020D3560
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r3, r5, lsr #0x10
 	mov ip, #1
 	rsb r1, ip, #0x10000
@@ -10833,7 +10833,7 @@ sub_020D3560: ; 0x020D3560
 	strh r1, [r3, #-2]
 	mov r1, #0xc1
 	strh r1, [r3]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D35C4: .word 0x04000214
@@ -10873,7 +10873,7 @@ _020D3630:
 	strh r3, [r2]
 	mov r0, #0x10
 	strh r1, [r2, #2]
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D364C: .word 0x04000106
@@ -10897,7 +10897,7 @@ sub_020D365C: ; 0x020D365C
 	str r2, [r1, #4]
 	mov r0, #0x10
 	str r2, [r1, #8]
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020D3698: .word 0x021E19E4
@@ -11018,7 +11018,7 @@ sub_020D37E8: ; 0x020D37E8
 _020D380C:
 	bl sub_020D3F48
 _020D3810:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r1, #0
 	str r1, [r6, #0x1c]
 	str r1, [r6, #0x20]
@@ -11033,7 +11033,7 @@ _020D3810:
 	mov r1, r3
 	bl sub_020D36BC
 	mov r0, r7
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020D37E8
 
@@ -11041,12 +11041,12 @@ _020D3810:
 sub_020D3854: ; 0x020D3854
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r5]
 	mov r4, r0
 	cmp r1, #0
 	bne _020D3878
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 _020D3878:
 	ldr r0, [r5, #0x18]
@@ -11073,7 +11073,7 @@ _020D38BC:
 	str r1, [r5, #0x1c]
 	mov r0, r4
 	str r1, [r5, #0x20]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D38D8: .word 0x021E19E4
@@ -11094,7 +11094,7 @@ sub_020D38EC: ; 0x020D38EC
 	mov r2, #0
 	mov r0, #0x10
 	strh r2, [r1]
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r0, _020D39D4 ; =OSi_IntrTable
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0xff8]
@@ -11168,7 +11168,7 @@ sub_020D39DC: ; 0x020D39DC
 	str r2, [r1, #0xc]
 	mov r0, #4
 	str r2, [r1, #0x10]
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r0, _020D3A20 ; =0x021E19F0
 	mov r1, #0
 	str r1, [r0, #8]
@@ -11187,24 +11187,24 @@ sub_020D3A24: ; 0x020D3A24
 	bx lr
 	arm_func_end sub_020D3A24
 
-	arm_func_start sub_020D3A38
-sub_020D3A38: ; 0x020D3A38
+	arm_func_start OS_DisableInterrupts
+OS_DisableInterrupts: ; 0x020D3A38
 	mrs r0, cpsr
 	orr r1, r0, #0x80
 	msr cpsr_c, r1
 	and r0, r0, #0x80
 	bx lr
-	arm_func_end sub_020D3A38
+	arm_func_end OS_DisableInterrupts
 
-	arm_func_start sub_020D3A4C
-sub_020D3A4C: ; 0x020D3A4C
+	arm_func_start OS_RestoreInterrupts
+OS_RestoreInterrupts: ; 0x020D3A4C
 	mrs r1, cpsr
 	bic r2, r1, #0x80
 	orr r2, r2, r0
 	msr cpsr_c, r2
 	and r0, r1, #0x80
 	bx lr
-	arm_func_end sub_020D3A4C
+	arm_func_end OS_RestoreInterrupts
 
 	arm_func_start sub_020D3A64
 sub_020D3A64: ; 0x020D3A64
@@ -11232,8 +11232,8 @@ sub_020D3A90: ; 0x020D3A90
 	bx lr
 	arm_func_end sub_020D3A90
 
-	arm_func_start sub_020D3A9C
-sub_020D3A9C: ; 0x020D3A9C
+	arm_func_start OS_GetProcMode
+OS_GetProcMode: ; 0x020D3A9C
 	mrs r0, cpsr
 	and r0, r0, #0x1f
 	bx lr
@@ -11241,7 +11241,7 @@ sub_020D3AA8:
 	subs r0, r0, #4
 	bhs sub_020D3AA8
 	bx lr
-	arm_func_end sub_020D3A9C
+	arm_func_end OS_GetProcMode
 
 	arm_func_start sub_020D3AB4
 sub_020D3AB4: ; 0x020D3AB4
@@ -11329,7 +11329,7 @@ OS_ResetSystem: ; 0x020D3B84
 	beq _020D3BAC
 	bl sub_020D3F48
 _020D3BAC:
-	bl sub_020D15C4
+	bl OS_GetLockID
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_020DC96C
@@ -11342,9 +11342,9 @@ _020D3BAC:
 	ldr r0, _020D3C24 ; =0x00000003
 	bl sub_020D4294
 	ldr r0, _020D3C28 ; =0x00040000
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	ldr r0, _020D3C2C ; =0xFFFBFFFF
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldr r1, _020D3C30 ; =0x027FFC20
 	ldr r0, _020D3C34 ; =0x00000010
 	str r4, [r1]
@@ -11369,20 +11369,20 @@ _020D3C38: .word 0x027E3F80
 _020D3C3C: .word 0x00000800
 	arm_func_end OS_ResetSystem
 
-	arm_func_start sub_020D3C40
-sub_020D3C40: ; 0x020D3C40
-	ldr ip, _020D3C54 ; =sub_020D4A50
+	arm_func_start OS_GetMacAddress
+OS_GetMacAddress: ; 0x020D3C40
+	ldr ip, _020D3C54 ; =MIi_CpuCopy8
 	mov r1, r0
 	ldr r0, _020D3C58 ; =0x027FFCF4
 	mov r2, #6
 	bx ip
 	.align 2, 0
-_020D3C54: .word sub_020D4A50
+_020D3C54: .word MIi_CpuCopy8
 _020D3C58: .word 0x027FFCF4
-	arm_func_end sub_020D3C40
+	arm_func_end OS_GetMacAddress
 
-	arm_func_start sub_020D3C5C
-sub_020D3C5C: ; 0x020D3C5C
+	arm_func_start OS_GetOwnerInfo
+OS_GetOwnerInfo: ; 0x020D3C5C
 	stmdb sp!, {r4, lr}
 	ldr ip, _020D3CDC ; =0x027FFC80
 	mov r4, r0
@@ -11417,17 +11417,17 @@ sub_020D3C5C: ; 0x020D3C5C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D3CDC: .word 0x027FFC80
-	arm_func_end sub_020D3C5C
+	arm_func_end OS_GetOwnerInfo
 
-	arm_func_start sub_020D3CE0
-sub_020D3CE0: ; 0x020D3CE0
+	arm_func_start OS_GetOwnerRtcOffset
+OS_GetOwnerRtcOffset: ; 0x020D3CE0
 	ldr r1, _020D3CF0 ; =0x027FFC80
 	ldr r0, [r1, #0x68]
 	ldr r1, [r1, #0x6c]
 	bx lr
 	.align 2, 0
 _020D3CF0: .word 0x027FFC80
-	arm_func_end sub_020D3CE0
+	arm_func_end OS_GetOwnerRtcOffset
 
 	arm_func_start sub_020D3CF4
 sub_020D3CF4: ; 0x020D3CF4
@@ -11459,7 +11459,7 @@ sub_020D3D30: ; 0x020D3D30
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r0
 	mov r8, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D3DE4 ; =0x021E1A08
 	mov r6, r0
 	ldr r0, [r1]
@@ -11478,7 +11478,7 @@ _020D3D58:
 	and r5, r5, r1
 	beq _020D3D58
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020D3D90:
@@ -11502,7 +11502,7 @@ _020D3DA4:
 	b _020D3DA4
 _020D3DD4:
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -11516,7 +11516,7 @@ sub_020D3DF0: ; 0x020D3DF0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r5, r0
 	mov sl, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r4, _020D3E6C ; =0x021E1A08
 	ldr r1, _020D3E70 ; =0x000001FF
 	ldr r2, [r4]
@@ -11544,7 +11544,7 @@ _020D3E24:
 	b _020D3E24
 _020D3E60:
 	mov r0, sb
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _020D3E6C: .word 0x021E1A08
@@ -11613,7 +11613,7 @@ _020D3F44: .word 0x04000600
 sub_020D3F48: ; 0x020D3F48
 	stmdb sp!, {r3, lr}
 _020D3F4C:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	bl sub_020D3F58
 	b _020D3F4C
 	arm_func_end sub_020D3F48
@@ -11651,7 +11651,7 @@ _020D3FA0:
 	ldr r0, [r5]
 	tst r0, #0x80000000
 	bne _020D3FA0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r2, r8, lsl #2
 	add r1, r2, #0xe0
 	mov r3, r4, lsr #2
@@ -11664,7 +11664,7 @@ _020D3FA0:
 	str r6, [ip, #0xe0]
 	bl sub_01FF851C
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 _020D3FE4:
 	ldr r0, [r5]
 	tst r0, #0x80000000
@@ -11761,7 +11761,7 @@ _020D4100:
 	mov r0, r7
 	mov r1, r8
 	bl sub_020D1118
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r3, r4, lsr #2
 	mov r2, r7, lsl #2
 	add r1, r2, #0xe0
@@ -11774,10 +11774,10 @@ _020D4100:
 	orr r3, r3, #0xc5000000
 	bl sub_01FF84F8
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _020D4158:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r2, r7, lsl #2
 	add r1, r2, #0xe0
 	mov r3, r4, lsr #2
@@ -11790,7 +11790,7 @@ _020D4158:
 	str r5, [ip, #0xe0]
 	bl sub_01FF84F8
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_020D40D0
 
@@ -11842,7 +11842,7 @@ _020D4210:
 sub_020D422C: ; 0x020D422C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r1, r4, r4, lsl #1
 	add r1, r1, #2
 	mov r1, r1, lsl #2
@@ -11865,7 +11865,7 @@ _020D424C:
 	str r3, [r2, #4]
 	str r1, [r2, #8]
 _020D4288:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D4290: .word 0x81400001
@@ -11875,7 +11875,7 @@ _020D4290: .word 0x81400001
 sub_020D4294: ; 0x020D4294
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r1, #6
 	mul r1, r4, r1
 	add r1, r1, #5
@@ -11902,7 +11902,7 @@ sub_020D4294: ; 0x020D4294
 	str r3, [r2, #4]
 	str r1, [r2, #8]
 _020D4304:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D430C: .word 0x81400001
@@ -12072,7 +12072,7 @@ _020D44E0:
 	bl sub_020D4394
 	mov r0, r4
 	bl sub_020D422C
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D4598 ; =0x04000600
 	mov r4, r0
 	ldr r0, [r1]
@@ -12091,12 +12091,12 @@ _020D44E0:
 	orr r3, r0, #0x40000000
 	mov r0, #0x200000
 	str r3, [r2]
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #0x200000
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	bl sub_020D45A0
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D4594: .word 0x021E1A20
@@ -12134,7 +12134,7 @@ sub_020D45A0: ; 0x020D45A0
 	orr r3, r3, r5, lsr #2
 	bl sub_01FF8448
 	mov r0, #0x200000
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 _020D4618:
 	ldr r3, _020D4648 ; =0x84400000
@@ -12144,7 +12144,7 @@ _020D4618:
 	orr r3, r3, r5, lsr #2
 	bl sub_01FF8448
 	mov r0, #0x200000
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D463C: .word 0x021E1A20
@@ -12157,7 +12157,7 @@ _020D4648: .word 0x84400000
 sub_020D464C: ; 0x020D464C
 	stmdb sp!, {r3, lr}
 	mov r0, #0x200000
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	ldr r2, _020D46A4 ; =0x04000600
 	ldr r0, _020D46A8 ; =0x021E1A20
 	ldr r1, [r2]
@@ -12167,7 +12167,7 @@ sub_020D464C: ; 0x020D464C
 	str r1, [r2]
 	ldr r1, [r0, #0x1c]
 	mov r0, #0x200000
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	ldr r0, _020D46A8 ; =0x021E1A20
 	mov r1, #0
 	str r1, [r0]
@@ -12251,8 +12251,8 @@ sub_020D4764: ; 0x020D4764
 _020D478C: .word 0x021E1A20
 	arm_func_end sub_020D4764
 
-	arm_func_start sub_020D4790
-sub_020D4790: ; 0x020D4790
+	arm_func_start MIi_CpuClear16
+MIi_CpuClear16: ; 0x020D4790
 	mov r3, #0
 _020D4794:
 	cmp r3, r2
@@ -12268,7 +12268,7 @@ _020D47AC:
 _020D47B0:
 	blt _020D4794
 	bx lr
-	arm_func_end sub_020D4790
+	arm_func_end MIi_CpuClear16
 
 	arm_func_start MIi_CpuCopy16
 MIi_CpuCopy16: ; 0x020D47B8
@@ -12294,8 +12294,8 @@ _020D47E4:
 	bx lr
 	arm_func_end MIi_CpuCopy16
 
-	arm_func_start sub_020D47EC
-sub_020D47EC: ; 0x020D47EC
+	arm_func_start MIi_CpuClear32
+MIi_CpuClear32: ; 0x020D47EC
 	add ip, r1, r2
 _020D47F0:
 	cmp r1, ip
@@ -12306,7 +12306,7 @@ _020D47FC:
 _020D4800:
 	blt _020D47F0
 	bx lr
-	arm_func_end sub_020D47EC
+	arm_func_end MIi_CpuClear32
 
 	arm_func_start MIi_CpuCopy32
 MIi_CpuCopy32: ; 0x020D4808
@@ -12346,8 +12346,8 @@ _020D4850:
 	bx lr
 	arm_func_end sub_020D4830
 
-	arm_func_start sub_020D4858
-sub_020D4858: ; 0x020D4858
+	arm_func_start MIi_CpuClearFast
+MIi_CpuClearFast: ; 0x020D4858
 	stmdb sp!, {r4, r5, r6, r7, r8, sb}
 	add sb, r1, r2
 	mov ip, r2, lsr #5
@@ -12377,10 +12377,10 @@ _020D48A8:
 	blt _020D4898
 	ldmia sp!, {r4, r5, r6, r7, r8, sb}
 	bx lr
-	arm_func_end sub_020D4858
+	arm_func_end MIi_CpuClearFast
 
-	arm_func_start sub_020D48B4
-sub_020D48B4: ; 0x020D48B4
+	arm_func_start MIi_CpuCopyFast
+MIi_CpuCopyFast: ; 0x020D48B4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl}
 	add sl, r1, r2
 	mov ip, r2, lsr #5
@@ -12413,7 +12413,7 @@ _020D4900:
 	blt _020D48E4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl}
 	bx lr
-	arm_func_end sub_020D48B4
+	arm_func_end MIi_CpuCopyFast
 
 	arm_func_start sub_020D490C
 sub_020D490C: ; 0x020D490C
@@ -12465,8 +12465,8 @@ sub_020D4968: ; 0x020D4968
 	bx lr
 	arm_func_end sub_020D4968
 
-	arm_func_start MIi_CpuFill8
-MIi_CpuFill8: ; 0x020D4994
+	arm_func_start MI_CpuFill8
+MI_CpuFill8: ; 0x020D4994
 	cmp r2, #0
 	beq _020D49A0
 	b _020D49A4
@@ -12526,10 +12526,10 @@ _020D4A38:
 	orr r1, r1, r3
 	strh r1, [r0]
 	bx lr
-	arm_func_end MIi_CpuFill8
+	arm_func_end MI_CpuFill8
 
-	arm_func_start sub_020D4A50
-sub_020D4A50: ; 0x020D4A50
+	arm_func_start MIi_CpuCopy8
+MIi_CpuCopy8: ; 0x020D4A50
 	cmp r2, #0
 	beq _020D4A5C
 	b _020D4A60
@@ -12653,7 +12653,7 @@ _020D4BB4:
 	orr r0, r2, r0
 	strh r0, [r1]
 	bx lr
-	arm_func_end sub_020D4A50
+	arm_func_end MIi_CpuCopy8
 
 	thumb_func_start sub_020D4BD0
 sub_020D4BD0: ; 0x020D4BD0
@@ -13530,7 +13530,7 @@ _020D5600: .word 0x021E35A0
 sub_020D5604: ; 0x020D5604
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	tst r5, #1
 	beq _020D5660
@@ -13542,10 +13542,10 @@ sub_020D5604: ; 0x020D5604
 	mov r6, #0x64
 _020D5634:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r6
 	bl sub_020D3AA8
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	bl sub_020D6040
 	ldr r1, [r5, #4]
@@ -13559,7 +13559,7 @@ _020D5660:
 	cmp r1, r0
 	bne _020D5684
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 _020D5684:
@@ -13596,7 +13596,7 @@ _020D56C8:
 	ldr r2, [r1, #4]
 	add r2, r2, #1
 	str r2, [r1, #4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -13650,7 +13650,7 @@ _020D5784:
 sub_020D579C: ; 0x020D579C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D57D0 ; =0x021E1A60
 	ldr r2, [r1, #0xc]
 	cmp r2, #0
@@ -13659,7 +13659,7 @@ sub_020D579C: ; 0x020D579C
 	str r4, [r1, #0xc]
 	mov r1, #0
 	str r1, [r4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D57D0: .word 0x021E1A60
@@ -13669,13 +13669,13 @@ _020D57D0: .word 0x021E1A60
 sub_020D57D4: ; 0x020D57D4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r4, _020D5984 ; =0x021E1A60
 	mov sb, r0
 	ldr r1, [r4, #8]
 	cmp r1, #0
 	bne _020D5800
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020D5800:
@@ -13684,7 +13684,7 @@ _020D5800:
 	blt _020D5858
 	tst sl, #1
 	bne _020D5820
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020D5820:
@@ -13700,7 +13700,7 @@ _020D5824:
 	cmp r0, #0
 	bne _020D5858
 	mov r0, sb
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020D5858:
@@ -13717,7 +13717,7 @@ _020D5858:
 	tst sl, #1
 	bne _020D5898
 	mov r0, sb
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020D5898:
@@ -13730,10 +13730,10 @@ _020D5898:
 	b _020D58F4
 _020D58B4:
 	mov r0, sb
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r8
 	bl sub_020D5604
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov sb, r0
 	mov r0, r7
 	mov r1, r6
@@ -13742,7 +13742,7 @@ _020D58B4:
 	cmp r0, #0
 	bne _020D58F4
 	mov r0, sb
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020D58F4:
@@ -13777,7 +13777,7 @@ _020D5918:
 	ldr r2, [r1, #0x20]
 	add r2, r2, #1
 	str r2, [r1, #0x20]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	tst sl, #2
 	beq _020D597C
 	bl sub_020D5B90
@@ -13826,13 +13826,13 @@ _020D59E0:
 	arm_func_start sub_020D59FC
 sub_020D59FC: ; 0x020D59FC
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D5A24 ; =0x021E1A60
 	ldr r2, [r1, #8]
 	cmp r2, #0
 	ldreq r4, [r1, #4]
 	ldrne r4, [r1, #0x20]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -13843,7 +13843,7 @@ _020D5A24: .word 0x021E1A60
 sub_020D5A28: ; 0x020D5A28
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D5A74 ; =0x021E1A60
 	ldr r1, [r1, #4]
 	cmp r4, r1
@@ -13859,7 +13859,7 @@ _020D5A58:
 	movlo r4, #1
 	movhs r4, #0
 _020D5A68:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -13869,7 +13869,7 @@ _020D5A74: .word 0x021E1A60
 	arm_func_start sub_020D5A78
 sub_020D5A78: ; 0x020D5A78
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D5AB0 ; =0x021E1A60
 	mov r4, #0
 	ldr r1, [r1]
@@ -13881,7 +13881,7 @@ _020D5A94:
 	cmp r1, #0
 	bne _020D5A94
 _020D5AA4:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -13891,7 +13891,7 @@ _020D5AB0: .word 0x021E1A60
 	arm_func_start sub_020D5AB4
 sub_020D5AB4: ; 0x020D5AB4
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D5AEC ; =0x021E1A60
 	mov r4, #0
 	ldr r1, [r1, #8]
@@ -13903,7 +13903,7 @@ _020D5AD0:
 	cmp r1, #0
 	bne _020D5AD0
 _020D5AE0:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -13925,12 +13925,12 @@ sub_020D5AF0: ; 0x020D5AF0
 sub_020D5B0C: ; 0x020D5B0C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r0, r5
 	bl sub_020D5CC0
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020D5B0C
 
@@ -13982,12 +13982,12 @@ _020D5B9C:
 	arm_func_start sub_020D5BB8
 sub_020D5BB8: ; 0x020D5BB8
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D5BFC ; =0x021E1A60
 	ldr r4, [r1]
 	cmp r4, #0
 	bne _020D5BDC
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 _020D5BDC:
@@ -13996,7 +13996,7 @@ _020D5BDC:
 	cmp r2, #0
 	moveq r2, #0
 	streq r2, [r1, #0x10]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -14010,12 +14010,12 @@ sub_020D5C00: ; 0x020D5C00
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, pc}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D5C3C ; =0x04FFF200
 	mov r2, #0x10
 	str r2, [r1]
 	ldr r4, [r1]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r4, #0
 	movne r0, #1
 	moveq r0, #0
@@ -14754,7 +14754,7 @@ _020D6550: .word sub_020D6554
 	arm_func_start sub_020D6554
 sub_020D6554: ; 0x020D6554
 	stmdb sp!, {r3, r4, r5, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D6638 ; =0x021E35A4
 	mov r4, r0
 	ldrh r0, [r1]
@@ -14776,12 +14776,12 @@ _020D658C:
 	ldr r1, _020D6648 ; =0x04000184
 	mov r0, #0x40000
 	strh r2, [r1]
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldr r1, _020D664C ; =sub_020D674C
 	mov r0, #0x40000
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #0x40000
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r5, #0
 	ldr r3, _020D6650 ; =0x04000180
 	mov r1, r5
@@ -14814,7 +14814,7 @@ _020D6624:
 	b _020D65D4
 _020D662C:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D6638: .word 0x021E35A4
@@ -14831,7 +14831,7 @@ sub_020D6654: ; 0x020D6654
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D6698 ; =0x021E35A8
 	ldr r3, _020D669C ; =0x027FFC00
 	str r5, [r1, r4, lsl #2]
@@ -14843,7 +14843,7 @@ sub_020D6654: ; 0x020D6654
 	ldreq r2, [r3, #0x388]
 	andeq r1, r2, r1
 	str r1, [r3, #0x388]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D6698: .word 0x021E35A8
@@ -14887,18 +14887,18 @@ sub_020D66C4: ; 0x020D66C4
 	strh r1, [r3]
 	ldmia sp!, {r3, pc}
 _020D6714:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r2, _020D6748 ; =0x04000184
 	ldrh r1, [r2]
 	tst r1, #2
 	beq _020D6734
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mvn r0, #1
 	ldmia sp!, {r3, pc}
 _020D6734:
 	ldr r1, [sp]
 	str r1, [r2, #4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -14926,17 +14926,17 @@ _020D6770:
 	strh r0, [sb]
 	b _020D67BC
 _020D6790:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldrh r1, [sb]
 	tst r1, #0x100
 	beq _020D67AC
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r1, r8
 	b _020D67BC
 _020D67AC:
 	ldr r6, [r7]
 	str r6, [sp]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r1, r5
 _020D67BC:
 	cmp r1, r8
@@ -14969,16 +14969,16 @@ _020D67FC:
 	strh r0, [sb]
 	b _020D6770
 _020D682C:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldrh r1, [sb]
 	tst r1, #2
 	beq _020D6844
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	b _020D6770
 _020D6844:
 	mov r1, r6
 	str r1, [sb, #4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	b _020D6770
 	arm_func_end sub_020D674C
 
@@ -14996,7 +14996,7 @@ sub_020D6864: ; 0x020D6864
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r5]
 	mov r6, r0
 	ldr r0, [r5, #4]
@@ -15014,7 +15014,7 @@ sub_020D6864: ; 0x020D6864
 	str r4, [r5, #0x14]
 	bl sub_020D1ECC
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020D6864
 
@@ -15084,7 +15084,7 @@ _020D6988:
 	moveq r0, #0
 	cmp r0, #0
 	beq _020D6A44
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r5, #0x1c]
 	mov r7, r0
 	tst r1, #0x200
@@ -15106,7 +15106,7 @@ _020D69D0:
 _020D69F0:
 	mov r0, r7
 	ldr r4, [r8, #0x14]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	b _020D6A44
 _020D6A00:
 	ldr r0, [r8, #0xc]
@@ -15186,7 +15186,7 @@ _020D6AE8:
 	str r1, [r4, #0x1c]
 	b _020D6B50
 _020D6AF8:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r4, #0x1c]
 	mov r5, r0
 	tst r1, #0x200
@@ -15207,7 +15207,7 @@ _020D6B20:
 	bne _020D6B20
 _020D6B40:
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, [r4, #0x24]
 	ldr r0, [r0, #0x14]
 _020D6B50:
@@ -15687,12 +15687,12 @@ _020D71C8:
 	ldr r0, [sp]
 	mov r1, r5
 	mov r2, r8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r1, r7, r8
 	ldr r0, _020D733C ; =_02110C98
 	add r1, r5, r1
 	mov r2, #2
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, sp, #4
 	mov r1, sb
 	bl sub_020D6B60
@@ -15727,7 +15727,7 @@ _020D7254:
 	add r0, sp, #0x60
 	mov r2, r6
 	sub r1, r1, r6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	sub r4, r4, r6
 	b _020D7288
 _020D7278:
@@ -15769,7 +15769,7 @@ _020D72D8:
 	add r0, sp, #0x60
 	mov r2, sb
 	sub r1, r1, sb
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	sub r4, r4, sb
 	b _020D7324
 _020D7310:
@@ -15880,7 +15880,7 @@ sub_020D7448: ; 0x020D7448
 	ldr r0, [r0, #0x28]
 	add r0, r0, r2
 	mov r2, r3
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020D7448
@@ -15892,7 +15892,7 @@ sub_020D7464: ; 0x020D7464
 	mov r0, r1
 	add r1, ip, r2
 	mov r2, r3
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020D7464
@@ -15902,7 +15902,7 @@ sub_020D7484: ; 0x020D7484
 	stmdb sp!, {r3, lr}
 	mov r0, r2
 	mov r2, r3
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020D7484
@@ -15912,7 +15912,7 @@ sub_020D749C: ; 0x020D749C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x48
 	mov r6, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r6, #0x1c]
 	mov r4, r0
 	tst r1, #0x20
@@ -15976,7 +15976,7 @@ _020D7530:
 	orrne r0, r0, #0x10
 	strne r0, [r6, #0x1c]
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r7, #0
 	beq _020D75C4
 	ldr r0, [r6, #0x58]
@@ -15987,7 +15987,7 @@ _020D7530:
 	mov r1, #9
 	blx r2
 _020D75C4:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r5, #0xc]
 	mov r4, r0
 	orr r0, r1, #0x40
@@ -16001,13 +16001,13 @@ _020D75C4:
 	add r0, r5, #0x18
 	bl sub_020D1ECC
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add sp, sp, #0x48
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020D760C:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add sp, sp, #0x48
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -16046,7 +16046,7 @@ _020D766C:
 	bl sub_020D1ECC
 _020D769C:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -16061,7 +16061,7 @@ sub_020D76B0: ; 0x020D76B0
 	mov r7, #0
 	mov r8, #1
 _020D76C8:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r6, #0xc]
 	mov r5, r0
 	orr r0, r1, #0x40
@@ -16075,14 +16075,14 @@ _020D76C8:
 	add r0, r6, #0x18
 	bl sub_020D1ECC
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _020D7708:
 	ldr r1, [r6, #0xc]
 	mov r0, r5
 	orr r1, r1, #8
 	str r1, [r6, #0xc]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r1, [r6, #0x10]
 	mov r0, r6
 	bl sub_020D68C0
@@ -16130,7 +16130,7 @@ sub_020D7788: ; 0x020D7788
 	mov r7, r2, lsl r1
 	orr r0, r0, #1
 	str r0, [r6, #0xc]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r4, #0x1c]
 	mov r5, r0
 	tst r1, #0x80
@@ -16139,7 +16139,7 @@ sub_020D7788: ; 0x020D7788
 	mov r1, #3
 	bl sub_020D6864
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020D77E4:
@@ -16182,7 +16182,7 @@ _020D782C:
 	mov r0, r5
 	orr r1, r1, #0x10
 	str r1, [r4, #0x1c]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, [r4, #0x58]
 	tst r0, #0x200
 	beq _020D7898
@@ -16191,7 +16191,7 @@ _020D782C:
 	mov r1, #9
 	blx r2
 _020D7898:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r6, #0xc]
 	orr r1, r1, #0x40
 	str r1, [r6, #0xc]
@@ -16201,13 +16201,13 @@ _020D7898:
 	moveq r1, #0
 	cmp r1, #0
 	bne _020D78D4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r6
 	bl sub_020D76B0
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020D78D4:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	b _020D7920
 _020D78DC:
 	ldr r0, [r6, #0xc]
@@ -16217,7 +16217,7 @@ _020D78DC:
 	cmp r0, #0
 	bne _020D7904
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020D7904:
@@ -16227,7 +16227,7 @@ _020D7904:
 	tst r0, #0x40
 	beq _020D7904
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 _020D7920:
 	mov r0, r6
 	bl sub_020D7744
@@ -16240,7 +16240,7 @@ sub_020D792C: ; 0x020D792C
 	mov r1, #0
 	mov r2, #0x5c
 	mov r4, r0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [r4, #0x10]
 	str r0, [r4, #0xc]
@@ -16254,7 +16254,7 @@ sub_020D7958: ; 0x020D7958
 	stmdb sp!, {r3, r4, r5, lr}
 	bl sub_020D73F0
 	mov r4, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D7994 ; =0x021E3628
 	ldr r5, [r1]
 	b _020D7978
@@ -16265,7 +16265,7 @@ _020D7978:
 	ldrne r1, [r5]
 	cmpne r1, r4
 	bne _020D7974
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -16279,7 +16279,7 @@ sub_020D7998: ; 0x020D7998
 	mov r5, r2
 	mov r7, r0
 	mov r8, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r0, r6
 	mov r1, r5
@@ -16320,7 +16320,7 @@ _020D7A18:
 	str r0, [r7, #0x1c]
 _020D7A38:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
@@ -16334,7 +16334,7 @@ sub_020D7A4C: ; 0x020D7A4C
 	ldr r0, [r4]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r2, [r4, #4]
 	mov r3, #0
 	cmp r2, #0
@@ -16360,7 +16360,7 @@ sub_020D7A4C: ; 0x020D7A4C
 	strh r3, [r1, #0xa]
 	strh r3, [r1, #8]
 _020D7AC4:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D7ACC: .word 0x021E3628
@@ -16403,7 +16403,7 @@ _020D7B3C: .word sub_020D7464
 sub_020D7B40: ; 0x020D7B40
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r6, #0x1c]
 	mov r4, r0
 	tst r1, #2
@@ -16450,7 +16450,7 @@ _020D7BC4:
 	str r0, [r6, #0x1c]
 _020D7BF0:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_020D7B40
@@ -16491,7 +16491,7 @@ sub_020D7C00: ; 0x020D7C00
 	ldr r2, [r7, #0x30]
 	mov r0, r5
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _020D7C8C:
 	add r0, sp, #4
 	bl FS_CloseFile
@@ -16518,7 +16518,7 @@ _020D7C94:
 	ldr r2, [r7, #0x38]
 	mov r0, r5
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _020D7CF0:
 	add r0, sp, #4
 	bl FS_CloseFile
@@ -16583,7 +16583,7 @@ _020D7DA8:
 sub_020D7DB0: ; 0x020D7DB0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r6, #0x1c]
 	mov r4, r0
 	tst r1, #8
@@ -16620,7 +16620,7 @@ _020D7E34:
 	str r0, [r6, #0x1c]
 _020D7E3C:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_020D7DB0
@@ -16630,7 +16630,7 @@ sub_020D7E4C: ; 0x020D7E4C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	mov r5, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r4, #0x1c]
 	mov r6, r0
 	tst r1, #8
@@ -16649,7 +16649,7 @@ sub_020D7E4C: ; 0x020D7E4C
 	mov r5, r0
 _020D7E9C:
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r5, #0
 	beq _020D7EB4
 	mov r0, r5
@@ -16697,7 +16697,7 @@ sub_020D7EDC: ; 0x020D7EDC
 	ldmia sp!, {r4, r5, r6, pc}
 _020D7F30:
 	ldr r5, [r4, #0x24]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	str r6, [r5, #0x14]
 	ldr r1, [r4, #0x1c]
 	mov r5, r0
@@ -16706,7 +16706,7 @@ _020D7F30:
 	str r1, [r4, #0x1c]
 	bl sub_020D1ECC
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020D7EDC
 
@@ -16996,7 +16996,7 @@ FS_WaitAsync: ; 0x020D82FC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
 	mov r5, #0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r6, #0xc]
 	mov r4, r0
 	tst r1, #1
@@ -17034,7 +17034,7 @@ _020D836C:
 	bne _020D836C
 _020D838C:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r5, #0
 	beq _020D83A8
 	mov r0, r6
@@ -17225,7 +17225,7 @@ sub_020D8590: ; 0x020D8590
 	sub sp, sp, #0x10
 	ldr r1, _020D86B0 ; =0x021E363C
 	str r0, [r1, #4]
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r1, _020D86B0 ; =0x021E363C
 	mov r2, #0
 	str r0, [r1]
@@ -17311,7 +17311,7 @@ _020D86D4: .word sub_020D84C4
 FS_SetDefaultDMA: ; 0x020D86D8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	ldr r1, _020D8720 ; =0x021E363C
 	ldr r0, _020D8724 ; =0x021E3654
@@ -17325,7 +17325,7 @@ FS_SetDefaultDMA: ; 0x020D86D8
 	bl sub_020D7E4C
 _020D8710:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -17372,7 +17372,7 @@ FS_ClearOverlayImage: ; 0x020D8764
 	add r0, r4, r5
 	sub r2, r6, r5
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end FS_ClearOverlayImage
 
@@ -17478,7 +17478,7 @@ FS_LoadOverlayInfo: ; 0x020D88C0
 	mov r1, r5
 	add r0, ip, r3
 	mov r2, #0x20
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, sp, #0x18
 	str r4, [r5, #0x20]
 	bl FS_InitFile
@@ -17617,11 +17617,11 @@ FSi_CompareDigest: ; 0x020D8AD8
 	add r0, sp, #0x44
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r2, _020D8B68 ; =_02110CA0
 	add r1, sp, #4
 	ldmia r2, {r0, r2}
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r3, _020D8B68 ; =_02110CA0
 	mov r1, r6
 	ldr ip, [r3, #4]
@@ -17687,7 +17687,7 @@ _020D8BDC:
 	ldr r0, [r5, #4]
 	mov r2, r4
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	bl sub_020D3F48
 	ldmia sp!, {r3, r4, r5, pc}
 _020D8BFC:
@@ -17734,7 +17734,7 @@ _020D8C68:
 	add r0, r1, r0
 	mov r5, r4
 	add r7, r6, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020D8D4C ; =0x021E58E8
 	mov ip, r4
 	ldr lr, [r1]
@@ -17776,7 +17776,7 @@ _020D8D08:
 	cmp sb, #0
 	bne _020D8CA4
 _020D8D14:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020D8D20:
@@ -17899,14 +17899,14 @@ sub_020D8E40: ; 0x020D8E40
 	add r1, r6, #0x18
 	mov r0, r5
 	add r1, r1, ip
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _020D8E94:
 	add r1, r6, #0x18
 	mov r0, r5
 	mov r2, r7
 	add r1, r1, ip
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, r6
 	bl sub_020D8FC0
 	sub r4, r4, r7
@@ -17919,7 +17919,7 @@ _020D8EC8:
 	mov r0, r7
 	mov r2, r5
 	add r1, r6, #0x18
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, r6
 	add r7, r7, #0x40
 	bl sub_020D8FC0
@@ -17931,7 +17931,7 @@ _020D8EF0:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r7
 	add r1, r6, #0x18
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_020D8E40
 
@@ -17957,7 +17957,7 @@ sub_020D8F08: ; 0x020D8F08
 	bhs _020D8F6C
 	add r0, r4, #0x18
 	add r0, r0, r3
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r4
 	bl sub_020D8FC0
 	mov r3, #0
@@ -17969,7 +17969,7 @@ _020D8F6C:
 	add r0, r0, r3
 	sub r2, r2, #8
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _020D8F88:
 	str r7, [r4, #0x50]
 	mov r0, r4
@@ -17978,11 +17978,11 @@ _020D8F88:
 	mov r0, r4
 	mov r1, r5
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x58
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D8FBC: .word _02110CA8
@@ -18287,7 +18287,7 @@ sub_020D93C4: ; 0x020D93C4
 	mov r0, sb
 	mov r2, r4
 	add r1, r6, r1
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, _020D9514 ; =_02110E70
 	mov r0, sl
 	ldr r3, [r1]
@@ -18303,7 +18303,7 @@ _020D945C:
 	mov r0, sb
 	mov r2, r8
 	add r1, r6, r1
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r0, [sl, #0x1c]
 	add r0, r0, r8
 	str r0, [sl, #0x1c]
@@ -18331,7 +18331,7 @@ _020D94C0:
 	mov r0, sb
 	mov r1, r6
 	mov r2, r5
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r3, [r4]
 	mov r0, sl
 	mov r1, r6
@@ -18348,7 +18348,7 @@ _020D94F4:
 	mov r0, sb
 	mov r1, r6
 	mov r2, r8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020D9514: .word _02110E70
@@ -18485,7 +18485,7 @@ _020D95D8:
 	add r1, sp, #0x10
 	mov r2, #4
 	str r0, [r3, #0x1c]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldmia sp!, {r4, r5, r6, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -19143,7 +19143,7 @@ sub_020D9FFC: ; 0x020D9FFC
 	strh r1, [r0, #0x34]
 	ldmia sp!, {r4, pc}
 _020DA018:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldrsh r2, [r4, #4]
 	cmp r2, #0
 	beq _020DA07C
@@ -19208,7 +19208,7 @@ _020DA0F0:
 	str r2, [r1, #0x2c]
 	str r2, [r1, #0x30]
 _020DA104:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, _020DA118 ; =0x021E36B0
 	mov r1, #1
 	strh r1, [r0, #0x34]
@@ -19222,7 +19222,7 @@ _020DA120: .word 0x040002A0
 	arm_func_start sub_020DA124
 sub_020DA124: ; 0x020DA124
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r0, #6
 	mov r1, #0x3000000
@@ -19234,7 +19234,7 @@ sub_020DA124: ; 0x020DA124
 	cmp r0, #0
 	bne _020DA18C
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, _020DA1B4 ; =0x021E36B0
 	ldrh r1, [r0, #0x38]
 	orr r1, r1, #1
@@ -19256,7 +19256,7 @@ _020DA18C:
 	ldrh r2, [r1, #0x38]
 	bic r2, r2, #1
 	strh r2, [r1, #0x38]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020DA1B4: .word 0x021E36B0
@@ -19309,7 +19309,7 @@ _020DA238:
 	cmp lr, r3
 	blo _020DA238
 _020DA250:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	and r1, r5, #0xff
 	orr r1, r1, #0x100
 	mov r5, r0
@@ -19332,7 +19332,7 @@ _020DA29C:
 	tst r0, #0xff
 	bne _020DA2DC
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, _020DA304 ; =0x021E36B0
 	ldrh r1, [r0, #0x38]
 	orr r1, r1, #2
@@ -19354,7 +19354,7 @@ _020DA2DC:
 	ldrh r2, [r1, #0x38]
 	bic r2, r2, #2
 	strh r2, [r1, #0x38]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020DA304: .word 0x021E36B0
@@ -19363,7 +19363,7 @@ _020DA304: .word 0x021E36B0
 	arm_func_start sub_020DA308
 sub_020DA308: ; 0x020DA308
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	ldr r1, _020DA398 ; =0x03000200
 	mov r0, #6
@@ -19375,7 +19375,7 @@ sub_020DA308: ; 0x020DA308
 	cmp r0, #0
 	bne _020DA370
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, _020DA39C ; =0x021E36B0
 	ldrh r1, [r0, #0x38]
 	orr r1, r1, #4
@@ -19397,7 +19397,7 @@ _020DA370:
 	ldrh r2, [r1, #0x38]
 	bic r2, r2, #4
 	strh r2, [r1, #0x38]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020DA398: .word 0x03000200
@@ -19535,7 +19535,7 @@ sub_020DA4F4: ; 0x020DA4F4
 	cmpne r8, r3
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldrh lr, [sp, #0x2c]
 	ldrh ip, [sp, #0x34]
 	ldr r3, _020DA6D8 ; =0x04000280
@@ -19576,7 +19576,7 @@ _020DA5B0:
 	cmp r2, r1
 	bge _020DA60C
 _020DA600:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020DA60C:
@@ -19595,7 +19595,7 @@ _020DA60C:
 	cmp r2, r1
 	bge _020DA650
 _020DA644:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020DA650:
@@ -19608,7 +19608,7 @@ _020DA65C:
 	bne _020DA65C
 	ldr r1, _020DA6DC ; =0x040002A0
 	ldr r7, [r1]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r7, #0x8000
 	bge _020DA68C
 	mov r1, #0x8000
@@ -19840,18 +19840,18 @@ _020DA94C:
 	andne r0, r0, #0xff
 	andeq r0, r1, #0xff
 	and r4, r0, #0xff
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020DA9C8 ; =0x021E36EC
 	ldr r2, [r1, #4]
 	cmp r2, #0
 	beq _020DA984
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020DA984:
 	mov r2, #1
 	str r2, [r1, #4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, _020DA9C8 ; =0x021E36EC
 	mov r3, r4
 	str r6, [r0, #8]
@@ -19895,18 +19895,18 @@ sub_020DAA04: ; 0x020DAA04
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020DAA5C ; =0x021E36EC
 	ldr r2, [r1, #4]
 	cmp r2, #0
 	beq _020DAA30
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 _020DAA30:
 	mov r2, #1
 	str r2, [r1, #4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, _020DAA5C ; =0x021E36EC
 	str r5, [r0, #8]
 	str r4, [r0, #0xc]
@@ -20147,18 +20147,18 @@ _020DAD20: .word 0x021E36F0
 	arm_func_start sub_020DAD24
 sub_020DAD24: ; 0x020DAD24
 	stmdb sp!, {r3, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020DAD5C ; =0x021E370C
 	ldr r2, [r1, #0x1c]
 	cmp r2, #0
 	beq _020DAD48
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 _020DAD48:
 	mov r2, #1
 	str r2, [r1, #0x1c]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -20749,19 +20749,19 @@ PM_GoSleepMode: ; 0x020DB43C
 	mov r0, r4
 	ldrh r8, [r1]
 	strh r0, [r1]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	str r0, [sp, #8]
 	ldr r0, _020DB668 ; =0x003FFFFF
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	str r0, [sp, #4]
 	bl sub_020D3438
 	cmp r0, #0
 	movne r0, #8
 	moveq r0, r4
 	orr r0, r0, #0x40000
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	ldr r0, [sp, #8]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r2, _020DB664 ; =0x04000208
 	mov r0, #1
 	ldrh r1, [r2]
@@ -20867,11 +20867,11 @@ _020DB608:
 _020DB618:
 	ldr r0, _020DB678 ; =0x00708100
 	bl sub_020D3AA8
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r0, [sp, #4]
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	ldr r0, [sp, #8]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r1, _020DB664 ; =0x04000208
 	cmp r4, #0
 	ldrh r0, [r1]
@@ -21225,18 +21225,18 @@ sub_020DBA2C: ; 0x020DBA2C
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020DBA98 ; =0x021E3778
 	ldr r2, [r1, #0xc]
 	cmp r2, #0
 	beq _020DBA5C
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 _020DBA5C:
 	mov r2, #1
 	str r2, [r1, #0xc]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, _020DBA98 ; =0x021E3778
 	mov r1, #0
 	str r1, [r0, #0x20]
@@ -21279,18 +21279,18 @@ sub_020DBAD4: ; 0x020DBAD4
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020DBB44 ; =0x021E3778
 	ldr r2, [r1, #0xc]
 	cmp r2, #0
 	beq _020DBB04
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 _020DBB04:
 	mov r2, #1
 	str r2, [r1, #0xc]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, _020DBB44 ; =0x021E3778
 	mov r1, #1
 	str r1, [r0, #0x20]
@@ -21335,18 +21335,18 @@ RTC_GetDateTimeAsync: ; 0x020DBB80
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020DBBF8 ; =0x021E3778
 	ldr r2, [r1, #0xc]
 	cmp r2, #0
 	beq _020DBBB4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020DBBB4:
 	mov r2, #1
 	str r2, [r1, #0xc]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, _020DBBF8 ; =0x021E3778
 	mov r1, #2
 	str r1, [r0, #0x20]
@@ -22176,7 +22176,7 @@ sub_020DC698: ; 0x020DC698
 	ldr r4, _020DC718 ; =0x021E3820
 	mov r8, r0
 	mov r7, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r4, #8]
 	mov r5, r0
 	cmp r1, r8
@@ -22206,7 +22206,7 @@ _020DC6F4:
 	str r2, [r4, #0xc]
 	mov r2, #0
 	str r2, [r1]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020DC718: .word 0x021E3820
@@ -22218,7 +22218,7 @@ sub_020DC71C: ; 0x020DC71C
 	ldr r4, _020DC7A4 ; =0x021E3820
 	mov r7, r0
 	mov r6, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r4, #8]
 	mov r5, r0
 	cmp r1, r7
@@ -22250,7 +22250,7 @@ _020DC78C:
 	mov r2, #0
 	mov r0, r5
 	str r2, [r1]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020DC7A4: .word 0x021E3820
@@ -22269,7 +22269,7 @@ sub_020DC7A8: ; 0x020DC7A8
 	str r0, [r4, #0xc]
 	str r0, [r4, #0x18]
 	str r1, [r4]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _020DC8A0 ; =0x021E37C0
 	mov r1, #0x60
 	bl DC_FlushRange
@@ -22286,7 +22286,7 @@ sub_020DC7A8: ; 0x020DC7A8
 	ldr r0, _020DC8A8 ; =0x027FFE00
 	mov r2, #0x160
 	sub r1, r0, #0x380
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 _020DC81C:
 	mov r2, #0
 	mov r0, #4
@@ -22362,7 +22362,7 @@ _020DC8EC: .word 0x021E37A8
 sub_020DC8F0: ; 0x020DC8F0
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, _020DC938 ; =0x021E3820
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r5, r0
 	b _020DC90C
 _020DC904:
@@ -22373,7 +22373,7 @@ _020DC90C:
 	tst r0, #4
 	bne _020DC904
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, [r4]
 	ldr r0, [r0]
 	cmp r0, #0
@@ -22396,15 +22396,15 @@ sub_020DC93C: ; 0x020DC93C
 _020DC954: .word 0x021E3820
 	arm_func_end sub_020DC93C
 
-	arm_func_start sub_020DC958
-sub_020DC958: ; 0x020DC958
+	arm_func_start CARD_GetResultCode
+CARD_GetResultCode: ; 0x020DC958
 	ldr r0, _020DC968 ; =0x021E3820
 	ldr r0, [r0]
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _020DC968: .word 0x021E3820
-	arm_func_end sub_020DC958
+	arm_func_end CARD_GetResultCode
 
 	arm_func_start sub_020DC96C
 sub_020DC96C: ; 0x020DC96C
@@ -22428,29 +22428,29 @@ sub_020DC988: ; 0x020DC988
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020DC988
 
-	arm_func_start sub_020DC9A4
-sub_020DC9A4: ; 0x020DC9A4
+	arm_func_start CARD_LockBackup
+CARD_LockBackup: ; 0x020DC9A4
 	ldr ip, _020DC9B0 ; =sub_020DC698
 	mov r1, #2
 	bx ip
 	.align 2, 0
 _020DC9B0: .word sub_020DC698
-	arm_func_end sub_020DC9A4
+	arm_func_end CARD_LockBackup
 
-	arm_func_start sub_020DC9B4
-sub_020DC9B4: ; 0x020DC9B4
+	arm_func_start CARD_UnlockBackup
+CARD_UnlockBackup: ; 0x020DC9B4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl CARD_TryWaitBackupAsync
 	cmp r0, #0
 	bne _020DC9CC
-	bl sub_020DD198
+	bl CARD_WaitBackupAsync
 _020DC9CC:
 	mov r0, r4
 	mov r1, #2
 	bl sub_020DC71C
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DC9B4
+	arm_func_end CARD_UnlockBackup
 
 	arm_func_start sub_020DC9DC
 sub_020DC9DC: ; 0x020DC9DC
@@ -22471,7 +22471,7 @@ sub_020DC9F0: ; 0x020DC9F0
 	mov r1, #0
 	add r0, r4, #0x18
 	mov r2, #0x48
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _020DCD58 ; =0x0000203F
 	str r5, [r4, #4]
 	str r0, [r4, #0x58]
@@ -22773,7 +22773,7 @@ _020DCE3C:
 	ldr r0, [sb, #0x1c]
 	mov r1, r6
 	mov r2, r8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, r6
 	mov r1, r8
 	bl DC_FlushRange
@@ -22813,7 +22813,7 @@ _020DCEC8:
 	ldr r1, [sb, #0x20]
 	mov r0, r6
 	mov r2, r8
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 _020DCEE0:
 	ldr r0, [sb, #0x1c]
 	add r0, r0, r8
@@ -22828,7 +22828,7 @@ _020DCEE0:
 _020DCF08:
 	ldr r6, [sb, #0x38]
 	ldr r5, [sb, #0x3c]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [sb, #0x114]
 	mov r4, r0
 	bic r0, r1, #0x4c
@@ -22842,7 +22842,7 @@ _020DCF08:
 	bl sub_020D1F34
 _020DCF40:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r6, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, r5
@@ -22853,8 +22853,8 @@ _020DCF5C: .word _version_NINTENDO_BACKUP
 _020DCF60: .word 0x021E3820
 	arm_func_end sub_020DCD74
 
-	arm_func_start sub_020DCF64
-sub_020DCF64: ; 0x020DCF64
+	arm_func_start CARDi_RequestStreamCommand
+CARDi_RequestStreamCommand: ; 0x020DCF64
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	ldr r4, _020DD03C ; =0x021E3820
@@ -22863,7 +22863,7 @@ sub_020DCF64: ; 0x020DCF64
 	mov r7, r2
 	mov r6, r3
 	bl OSi_ReferSymbol
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r4, #0x114]
 	mov r5, r0
 	tst r1, #4
@@ -22882,7 +22882,7 @@ _020DCFAC:
 	str r2, [r4, #0x114]
 	str r6, [r4, #0x38]
 	str r1, [r4, #0x3c]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r3, [sp, #0x28]
 	ldr r2, [sp, #0x2c]
 	ldr r1, [sp, #0x30]
@@ -22917,7 +22917,7 @@ _020DD03C: .word 0x021E3820
 _020DD040: .word _version_NINTENDO_BACKUP
 _020DD044: .word sub_020DCD74
 _020DD048: .word 0x021E16A0
-	arm_func_end sub_020DCF64
+	arm_func_end CARDi_RequestStreamCommand
 
 	arm_func_start sub_020DD04C
 sub_020DD04C: ; 0x020DD04C
@@ -22929,8 +22929,8 @@ sub_020DD04C: ; 0x020DD04C
 _020DD05C: .word 0x021E3820
 	arm_func_end sub_020DD04C
 
-	arm_func_start sub_020DD060
-sub_020DD060: ; 0x020DD060
+	arm_func_start CARD_IdentifyBackup
+CARD_IdentifyBackup: ; 0x020DD060
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	ldr r0, _020DD18C ; =_version_NINTENDO_BACKUP
@@ -22941,7 +22941,7 @@ sub_020DD060: ; 0x020DD060
 	bl sub_020D3F48
 _020DD080:
 	bl sub_020DC8C8
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r4, #0x114]
 	mov r5, r0
 	tst r1, #4
@@ -22960,7 +22960,7 @@ _020DD0AC:
 	str r2, [r4, #0x114]
 	str r1, [r4, #0x38]
 	str r1, [r4, #0x3c]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r6
 	bl sub_020DC9F0
 	ldr r0, _020DD194 ; =0x021E16A0
@@ -22985,7 +22985,7 @@ _020DD0AC:
 	bl sub_020DD950
 	ldr r7, [r4, #0x38]
 	ldr r6, [r4, #0x3c]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r5, r0
 	ldr r1, [r4, #0x114]
 	add r0, r4, #0x10c
@@ -22999,7 +22999,7 @@ _020DD0AC:
 	bl sub_020D1F34
 _020DD15C:
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r7, #0
 	beq _020DD174
 	mov r0, r6
@@ -23015,15 +23015,15 @@ _020DD174:
 _020DD18C: .word _version_NINTENDO_BACKUP
 _020DD190: .word 0x021E3820
 _020DD194: .word 0x021E16A0
-	arm_func_end sub_020DD060
+	arm_func_end CARD_IdentifyBackup
 
-	arm_func_start sub_020DD198
-sub_020DD198: ; 0x020DD198
+	arm_func_start CARD_WaitBackupAsync
+CARD_WaitBackupAsync: ; 0x020DD198
 	ldr ip, _020DD1A0 ; =sub_020DC8F0
 	bx ip
 	.align 2, 0
 _020DD1A0: .word sub_020DC8F0
-	arm_func_end sub_020DD198
+	arm_func_end CARD_WaitBackupAsync
 
 	arm_func_start CARD_TryWaitBackupAsync
 CARD_TryWaitBackupAsync: ; 0x020DD1A4
@@ -23036,12 +23036,12 @@ _020DD1AC: .word sub_020DC93C
 	arm_func_start sub_020DD1B0
 sub_020DD1B0: ; 0x020DD1B0
 	stmdb sp!, {r3, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020DD1D0 ; =0x021E3820
 	ldr r2, [r1, #0x114]
 	orr r2, r2, #0x40
 	str r2, [r1, #0x114]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DD1D0: .word 0x021E3820
@@ -23068,7 +23068,7 @@ sub_020DD1D4: ; 0x020DD1D4
 	ldr r1, [r4, #0x20]
 	mov r2, r5
 	add r0, r0, r3
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r2, [r4, #0x1c]
 	ldr r1, [r4, #0x20]
 	ldr r0, [r4, #0x24]
@@ -23165,9 +23165,9 @@ sub_020DD314: ; 0x020DD314
 	cmp r0, #0
 	bne _020DD3D8
 	mov r0, #0x80000
-	bl sub_020D1204
+	bl OS_DisableIrqMask
 	mov r0, #0x80000
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	ldr r4, _020DD3E0 ; =0x021E3820
 	bl sub_020DD660
 	bl sub_020DDBC0
@@ -23176,7 +23176,7 @@ sub_020DD314: ; 0x020DD314
 	str r1, [r0]
 	ldr r5, [r4, #0x38]
 	ldr r6, [r4, #0x3c]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r4, #0x114]
 	mov r7, r0
 	bic r0, r1, #0x4c
@@ -23190,7 +23190,7 @@ sub_020DD314: ; 0x020DD314
 	bl sub_020D1F34
 _020DD3BC:
 	mov r0, r7
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r5, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
@@ -23264,7 +23264,7 @@ _020DD48C:
 	cmp r6, #0
 	str r0, [fp, #4]
 	beq _020DD554
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r4, #0x118]
 	mov r7, r0
 	cmp r5, r1
@@ -23300,13 +23300,13 @@ _020DD528:
 _020DD52C:
 	ldr r1, _020DD56C ; =sub_020DD314
 	mov r0, #0x80000
-	bl sub_020D1004
+	bl OS_SetIrqFunction
 	mov r0, #0x80000
-	bl sub_020D1234
+	bl OS_ResetRequestIrqMask
 	mov r0, #0x80000
-	bl sub_020D11D4
+	bl OS_EnableIrqMask
 	mov r0, r7
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	bl sub_020DD2C0
 _020DD554:
 	mov r0, r6
@@ -23439,7 +23439,7 @@ _020DD6E0:
 	str r1, [r0]
 	ldr r5, [r4, #0x38]
 	ldr r6, [r4, #0x3c]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r4, #0x114]
 	mov r7, r0
 	bic r0, r1, #0x4c
@@ -23453,7 +23453,7 @@ _020DD6E0:
 	bl sub_020D1F34
 _020DD730:
 	mov r0, r7
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	cmp r5, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
@@ -23474,7 +23474,7 @@ sub_020DD754: ; 0x020DD754
 	ldr r4, _020DD838 ; =0x021E3E60
 	ldr r5, _020DD83C ; =0x021E3820
 	bl sub_020DC8C8
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r6, r0
 	b _020DD788
 _020DD780:
@@ -23492,7 +23492,7 @@ _020DD788:
 	str r3, [r5, #0x114]
 	str r2, [r5, #0x38]
 	str r1, [r5, #0x3c]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, _020DD840 ; =0x021E3E40
 	str sl, [r5, #0x28]
 	ldr r0, [r0]
@@ -23607,7 +23607,7 @@ sub_020DD900: ; 0x020DD900
 	ldr r5, _020DD94C ; =0x021E3820
 	mov r4, #0
 _020DD90C:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [r5, #0x114]
 	mov r6, r0
 	tst r1, #8
@@ -23620,7 +23620,7 @@ _020DD920:
 	beq _020DD920
 _020DD934:
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r1, [r5, #0x40]
 	mov r0, r5
 	blx r1
@@ -23695,7 +23695,7 @@ _020DDA1C:
 	cmp r0, #0
 	blt _020DDA1C
 _020DDA34:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, [sl, #0x114]
 	mov r8, r0
 	tst r1, #0x20
@@ -23708,7 +23708,7 @@ _020DDA48:
 	bne _020DDA48
 _020DDA5C:
 	mov r0, r8
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, [sl]
 	mov r1, #0x60
 	bl sub_020D285C
@@ -23840,14 +23840,14 @@ sub_020DDBC0: ; 0x020DDBC0
 	cmp r0, r1
 	addeq sp, sp, #4
 	ldmeqia sp!, {r3, r4, pc}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r0, #0xe
 	mov r1, #0x11
 	mov r2, #0
 	bl sub_020DDAD0
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -23943,7 +23943,7 @@ sub_020DDCF4: ; 0x020DDCF4
 	ldr r0, _020DDD40 ; =0x0000FFFD
 	cmp r1, r0
 	ldmneia sp!, {r3, pc}
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r1, _020DDD3C ; =_02110FBC
 	strh r0, [r1]
 	ldmia sp!, {r3, pc}
@@ -24065,7 +24065,7 @@ sub_020DDE94: ; 0x020DDE94
 	ldr r0, _020DDFCC ; =_02110FBC
 	strb r1, [r6]
 	ldrh r0, [r0]
-	bl sub_020DC9A4
+	bl CARD_LockBackup
 	ldr r0, _020DDFCC ; =_02110FBC
 	ldrh r0, [r0]
 	bl sub_020D1548
@@ -24134,7 +24134,7 @@ _020DDF98:
 	bl sub_020D1580
 	ldr r0, _020DDFCC ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020DC9B4
+	bl CARD_UnlockBackup
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
@@ -24161,7 +24161,7 @@ sub_020DDFE0: ; 0x020DDFE0
 	ldrh r0, [r2]
 	mov r5, r1
 	strb r3, [r7]
-	bl sub_020DC9A4
+	bl CARD_LockBackup
 	ldr r0, _020DE0B4 ; =_02110FBC
 	ldrh r0, [r0]
 	bl sub_020D1548
@@ -24202,7 +24202,7 @@ _020DE084:
 	bl sub_020D1580
 	ldr r0, _020DE0B4 ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020DC9B4
+	bl CARD_UnlockBackup
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020DE0AC: .word 0x021E4158
@@ -24226,7 +24226,7 @@ sub_020DE0C8: ; 0x020DE0C8
 	mov r1, #8
 	ldrh r0, [r0]
 	strb r1, [r3]
-	bl sub_020DC9A4
+	bl CARD_LockBackup
 	ldr r0, _020DE230 ; =_02110FBC
 	ldrh r0, [r0]
 	bl sub_020D1548
@@ -24305,7 +24305,7 @@ _020DE1FC:
 	bl sub_020D1580
 	ldr r0, _020DE230 ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020DC9B4
+	bl CARD_UnlockBackup
 	ldrb r0, [sp]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -24341,31 +24341,31 @@ sub_020DE274: ; 0x020DE274
 	mov r6, r0
 	mov r4, r1
 	mov r7, r2
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020DE444 ; =0x021E4220
 	mov r5, r0
 	ldrh r1, [r1]
 	cmp r1, #0
 	beq _020DE2A8
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #3
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _020DE2A8:
 	cmp r6, #0
 	bne _020DE2BC
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #6
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _020DE2BC:
 	cmp r4, #3
 	bls _020DE2D0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #6
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _020DE2D0:
 	tst r6, #0x1f
 	beq _020DE2E4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #6
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _020DE2E4:
@@ -24376,7 +24376,7 @@ _020DE2E4:
 	cmp r0, #0
 	bne _020DE30C
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _020DE30C:
@@ -24459,7 +24459,7 @@ _020DE414:
 	mov r2, #1
 	mov r0, r5
 	strh r2, [r1]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
@@ -24473,13 +24473,13 @@ _020DE454: .word sub_020DE75C
 	arm_func_start sub_020DE458
 sub_020DE458: ; 0x020DE458
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	bl sub_020DE664
 	cmp r0, #0
 	beq _020DE480
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #3
 	ldmia sp!, {r4, pc}
 _020DE480:
@@ -24497,7 +24497,7 @@ _020DE480:
 	str r2, [r1, #4]
 	mov r0, r4
 	strh r2, [r1]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -24604,7 +24604,7 @@ sub_020DE5E4: ; 0x020DE5E4
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, r5
 	mov r1, r4
 	bl sub_020D2878
@@ -24881,7 +24881,7 @@ _020DE988:
 	mov r1, #0
 	mov r2, #0x44
 	strh r7, [r3, #0x50]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr ip, _020DEAF4 ; =0x021E4220
 	mov r1, #0x82
 	strh r1, [ip, #0x50]
@@ -24902,7 +24902,7 @@ _020DE988:
 	ldr r1, _020DEB00 ; =0x021E4284
 	mov r2, #6
 	strh r3, [ip, #0x8c]
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	cmp fp, #0
 	mov r2, #0x18
 	beq _020DEA40
@@ -24913,7 +24913,7 @@ _020DE988:
 _020DEA40:
 	ldr r1, _020DEB04 ; =0x021E4294
 	mov r0, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _020DEA4C:
 	cmp r7, #0
 	moveq r1, r8
@@ -24997,14 +24997,14 @@ _020DEB44: .word 0x021E4220
 	arm_func_start sub_020DEB48
 sub_020DEB48: ; 0x020DEB48
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020DEB74 ; =0x021E4220
 	ldr r1, [r1, #4]
 	cmp r1, #0
 	addne r1, r1, #0x100
 	ldrneh r4, [r1, #0x50]
 	moveq r4, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -25014,13 +25014,13 @@ _020DEB74: .word 0x021E4220
 	arm_func_start sub_020DEB78
 sub_020DEB78: ; 0x020DEB78
 	stmdb sp!, {r4, lr}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020DEBA4 ; =0x021E4220
 	ldr r1, [r1, #4]
 	cmp r1, #0
 	ldrne r4, [r1, #0x14c]
 	moveq r4, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4, lsl #0x10
 	mov r0, r0, lsr #0x10
 	ldmia sp!, {r4, pc}
@@ -25032,20 +25032,20 @@ _020DEBA4: .word 0x021E4220
 sub_020DEBA8: ; 0x020DEBA8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r5, r0
 	bl sub_020DE664
 	movs r4, r0
 	beq _020DEBD4
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 _020DEBD4:
 	bl sub_020DE654
 	str r6, [r0, #0xc8]
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020DEBA8
@@ -25061,7 +25061,7 @@ sub_020DEBEC: ; 0x020DEBEC
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x44
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r3, #0
 	ldr r1, _020DECC0 ; =0x0000FFFF
 	mov r7, #0x82
@@ -25077,15 +25077,15 @@ sub_020DEBEC: ; 0x020DEBEC
 	strh r1, [sp, #0x1a]
 	str r4, [sp, #0x1c]
 	strh r3, [sp, #0x12]
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 _020DEC54:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r8, r0
 	bl sub_020DE664
 	movs r7, r0
 	beq _020DEC7C
 	mov r0, r8
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add sp, sp, #0x44
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
@@ -25104,7 +25104,7 @@ _020DEC7C:
 	blx r5
 _020DECAC:
 	mov r0, r8
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #0
 	add sp, sp, #0x44
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
@@ -25130,7 +25130,7 @@ sub_020DECC4: ; 0x020DECC4
 	ldr r0, [r4, #4]
 	mov r1, r5
 	mov r2, #0x7d0
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020DECC4
@@ -25344,7 +25344,7 @@ sub_020DEFD4: ; 0x020DEFD4
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	mov r2, #0
 	add r3, sp, #0
 	mov r1, r2
@@ -25386,7 +25386,7 @@ sub_020DF064: ; 0x020DF064
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
-	bl sub_020D3C40
+	bl OS_GetMacAddress
 	mov r1, #0
 	add r3, sp, #0
 	mov r2, r1
@@ -26023,7 +26023,7 @@ _020DF884:
 	strh r3, [sp, #8]
 	ldrh r3, [r4, #8]
 	strh r3, [sp, #0xa]
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldrh r2, [r4, #0x10]
 	add r1, sp, #0x16
 	add r0, r4, #0x14
@@ -26033,7 +26033,7 @@ _020DF884:
 	strh r3, [sp, #0x36]
 	ldrh r3, [r4, #0x12]
 	strh r3, [sp, #0x14]
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, sp, #0
 	mov r1, #0x3c
 	bl sub_020DE5E4
@@ -26101,12 +26101,12 @@ sub_020DF94C: ; 0x020DF94C
 	beq _020DF9E4
 	add r1, sp, #8
 	mov r0, r5
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	b _020DF9F0
 _020DF9E4:
 	add r0, sp, #8
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _020DF9F0:
 	ldrh r2, [sp, #0x40]
 	add r0, sp, #0
@@ -26257,7 +26257,7 @@ _020DFBF8:
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #0x40
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r4, r6, lsr #1
 	ldrh r3, [sp, #0x60]
 	mov r6, #0xe
@@ -26269,7 +26269,7 @@ _020DFBF8:
 	str r4, [sp, #8]
 	str r5, [sp, #0xc]
 	str r3, [sp, #0x10]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r0, [sp, #0x64]
 	add r1, sp, #0x30
 	mov r2, #0x10
@@ -26295,7 +26295,7 @@ sub_020DFC70: ; 0x020DFC70
 	mov r2, #0x10
 	mov r5, r3
 	ldr r4, [sp, #0x34]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, [sp, #0x48]
 	ldrh ip, [sp, #0x38]
 	ldr r0, [sp, #0x44]
@@ -26340,7 +26340,7 @@ sub_020DFD14: ; 0x020DFD14
 	mov r0, #0
 	mov r2, #0x10
 	mov r4, r3
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldrh ip, [sp, #0x34]
 	mov r0, #3
 	str r0, [sp, #8]
@@ -26556,7 +26556,7 @@ sub_020DFFBC: ; 0x020DFFBC
 	add r1, sp, #8
 	mov r0, r6
 	mov r2, #6
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	str r5, [sp]
 	str r4, [sp, #4]
 	ldr r2, [sp, #8]
@@ -26640,7 +26640,7 @@ _020E0170:
 	mov r1, sl
 	mov r0, #0
 	mov r2, #0x820
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, sl, #0x800
 	mov r2, #0
 	strh r2, [r0, #8]
@@ -27120,7 +27120,7 @@ _020E083C:
 _020E084C:
 	ldrh r5, [r0, #0x12]
 	mov r6, #1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r1, r4, #0x800
 	ldrh lr, [r1, #8]
 	mvn ip, r6, lsl r5
@@ -27139,7 +27139,7 @@ _020E084C:
 	and r1, r1, ip
 	strh r1, [r4, r2]
 _020E089C:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	mov r1, #0
 	bl sub_020E0A9C
@@ -27269,9 +27269,9 @@ _020E0A34:
 	b _020E0A6C
 _020E0A64:
 	mov r0, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _020E0A6C:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r4, lsl #9
 	ldrh r3, [r6, r4]
 	mvn r1, r7, lsr #16
@@ -27281,7 +27281,7 @@ _020E0A6C:
 	ldrh r1, [r2, r4]
 	orr r1, r1, r7, lsr #16
 	strh r1, [r2, r4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020E09D0
 
@@ -27291,7 +27291,7 @@ sub_020E0A9C: ; 0x020E0A9C
 	sub sp, sp, #0xc
 	mov sl, r0
 	mov sb, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r1, sl, #0x800
 	ldrh r1, [r1, #8]
 	mov r4, r0
@@ -27313,7 +27313,7 @@ sub_020E0A9C: ; 0x020E0A9C
 	add r1, sl, r8, lsl #9
 	mov r0, #0
 	mov r2, #0x200
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, sl, #0x800
 	ldrh r3, [r0, #0xe]
 	orr r2, r7, #1
@@ -27329,7 +27329,7 @@ sub_020E0A9C: ; 0x020E0A9C
 	biceq r0, r0, #1
 	streqh r0, [sl, r1]
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add r3, sl, #0x800
 	ldrh r1, [r3, #0xe]
 	mov r4, #1
@@ -27369,7 +27369,7 @@ _020E0BB8:
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 _020E0BDC:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
@@ -27676,7 +27676,7 @@ sub_020E0FB8: ; 0x020E0FB8
 	add r0, sp, #0
 	str r3, [sp]
 	bl SVC_CpuSet
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r1, _020E0FEC ; =0x021E4D40
 	strh r0, [r1, #6]
 	ldmia sp!, {r3, pc}
@@ -27933,7 +27933,7 @@ sub_020E12BC: ; 0x020E12BC
 	mov r6, r1
 	mov r4, #1
 _020E12D0:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	str r0, [r6, #4]
 	mov r0, r5
 	bl sub_020D15BC
@@ -27945,7 +27945,7 @@ _020E12D0:
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, [r6, #4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, r4
 	bl SVC_WaitByLoop
 	b _020E12D0
@@ -27968,7 +27968,7 @@ sub_020E1318: ; 0x020E1318
 	bl sub_020D14EC
 _020E1330:
 	ldr r0, [r4, #4]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020E1318
 
@@ -28241,7 +28241,7 @@ _020E1674: .word 0x021E4D40
 sub_020E1678: ; 0x020E1678
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020E16BC ; =0x021E4D40
 	mov r4, r0
 	str r5, [r1]
@@ -28255,7 +28255,7 @@ sub_020E1678: ; 0x020E1678
 	bl sub_020D317C
 _020E16B0:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020E16BC: .word 0x021E4D40
@@ -28342,7 +28342,7 @@ sub_020E1798: ; 0x020E1798
 	addeq sp, sp, #0x10
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, #0x40000
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	ldr r3, _020E1968 ; =0x04000208
 	mov r2, #1
 	ldrh r5, [r3]
@@ -28444,7 +28444,7 @@ _020E1938:
 	mov r0, r4
 	ldrh r1, [r2]
 	strh r5, [r2]
-	bl sub_020D11A8
+	bl OS_SetIrqMask
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -28535,7 +28535,7 @@ sub_020E1A3C: ; 0x020E1A3C
 	cmp r7, #1
 	mov r0, #1
 	bhi _020E1B8C
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r1, _020E1BA8 ; =0x021E4F2C
 	strh r0, [r1]
 	ldrh r0, [r1]
@@ -28619,7 +28619,7 @@ _020E1AFC:
 _020E1B8C:
 	cmp r7, #2
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_020D15C4
+	bl OS_GetLockID
 	ldr r1, _020E1BE0 ; =0x021E4F60
 	strh r0, [r1]
 	mov r0, #0
@@ -30501,7 +30501,7 @@ sub_020E34C0: ; 0x020E34C0
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r1, _020E353C ; =0x021E4F68
 	mov r4, r0
 	ldr r0, [r1]
@@ -30527,7 +30527,7 @@ sub_020E34C0: ; 0x020E34C0
 	bl sub_020D1F34
 _020E352C:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -30551,12 +30551,12 @@ _020E3564: .word 0x021E4F68
 
 	arm_func_start sub_020E3568
 sub_020E3568: ; 0x020E3568
-	ldr ip, _020E3578 ; =MIi_CpuFill8
+	ldr ip, _020E3578 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x24
 	bx ip
 	.align 2, 0
-_020E3578: .word MIi_CpuFill8
+_020E3578: .word MI_CpuFill8
 	arm_func_end sub_020E3568
 
 	arm_func_start sub_020E357C
@@ -30574,8 +30574,8 @@ _020E35A0:
 	mov r0, r6
 	mov r1, r5
 	mov r2, fp
-	bl MIi_CpuFill8
-	bl sub_020D3A38
+	bl MI_CpuFill8
+	bl OS_DisableInterrupts
 	ldr r1, [r8, #0xc0]
 	mov r7, r0
 	cmp r1, #0
@@ -30596,7 +30596,7 @@ _020E35D8:
 	ldr r1, [lr]
 	mov r0, r7
 	str r1, [ip]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r1, [sp]
 	cmp r1, #0
 	beq _020E3618
@@ -30604,7 +30604,7 @@ _020E35D8:
 	blx r1
 	str r0, [sp, #8]
 _020E3618:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	ldr r2, [sp, #4]
 	ldr r1, _020E3668 ; =0x021E4F68
 	mov r7, r0
@@ -30620,7 +30620,7 @@ _020E363C:
 	beq _020E365C
 	mov r0, r7
 	str sb, [r8, #0xc0]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	b _020E35A0
 _020E365C:
 	bl sub_020D1BD0
@@ -30649,7 +30649,7 @@ _020E3694:
 	beq _020E36A8
 	bl sub_020D3F48
 _020E36A8:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r1, #1
 	strb r1, [r7, #0x22]
 	str r5, [r7]
@@ -30672,7 +30672,7 @@ _020E36A8:
 	str r6, [r4, #0xc0]
 	bl sub_020D1F34
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020E370C: .word 0x021E4F68
@@ -30783,8 +30783,8 @@ _020E3848:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020E3818
 
-	arm_func_start sub_020E3850
-sub_020E3850: ; 0x020E3850
+	arm_func_start MATHi_CRC16InitTable
+MATHi_CRC16InitTable: ; 0x020E3850
 	stmdb sp!, {r4, lr}
 	mov lr, #0
 	mov r4, lr
@@ -30806,7 +30806,7 @@ _020E3868:
 	add r4, r4, #0x100
 	blo _020E3860
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E3850
+	arm_func_end MATHi_CRC16InitTable
 
 	arm_func_start sub_020E389C
 sub_020E389C: ; 0x020E389C
@@ -30946,8 +30946,8 @@ sub_020E3A04: ; 0x020E3A04
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020E3A04
 
-	arm_func_start sub_020E3A2C
-sub_020E3A2C: ; 0x020E3A2C
+	arm_func_start MATH_CalcCRC16CCITT
+MATH_CalcCRC16CCITT: ; 0x020E3A2C
 	stmdb sp!, {r3, lr}
 	ldr ip, _020E3A54 ; =0x0000FFFF
 	mov lr, r1
@@ -30960,7 +30960,7 @@ sub_020E3A2C: ; 0x020E3A2C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020E3A54: .word 0x0000FFFF
-	arm_func_end sub_020E3A2C
+	arm_func_end MATH_CalcCRC16CCITT
 
 	arm_func_start sub_020E3A58
 sub_020E3A58: ; 0x020E3A58
@@ -32576,12 +32576,12 @@ _01FF82EC:
 	ldr sb, [r0, #0x10]
 	ldr fp, [r0, #0x18]
 	ldr sl, [r0, #0x1c]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	bl sub_020D27FC
 	bl sub_020D27F0
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	bl sub_020D28C4
 	bl sub_020D28B8
 	add r6, r6, r5
@@ -32677,7 +32677,7 @@ sub_01FF8448: ; 0x01FF8448
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r1, #0xc
 	mul r2, r7, r1
 	add r1, r2, #0xb0
@@ -32686,7 +32686,7 @@ sub_01FF8448: ; 0x01FF8448
 	add r1, r1, #0x4000000
 	str r5, [r1, #4]
 	str r4, [r1, #8]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_01FF8448
 
@@ -32697,7 +32697,7 @@ sub_01FF8488: ; 0x01FF8488
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r1, #0xc
 	mul r2, r7, r1
 	add r1, r2, #0xb0
@@ -32717,7 +32717,7 @@ sub_01FF8488: ; 0x01FF8488
 	str r2, [r3, #4]
 	str r1, [r3, #8]
 _01FF84E8:
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _01FF84F0: .word 0x040000B0

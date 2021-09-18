@@ -1,6 +1,26 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F5950:
+	.word sub_020B80A0
+	.word sub_020B82CC
+	.word sub_020B80A0
+	.word sub_020B82CC
+	.word sub_020CFE74
+	.word sub_020CFECC
+
+_020F5968:
+	.word GX_LoadBGPltt
+	.word GX_LoadOBJPltt
+	.word GX_LoadBGExtPltt
+	.word GX_LoadOBJExtPltt
+	.word GXS_LoadBGPltt
+	.word GXS_LoadOBJPltt
+	.word GXS_LoadBGExtPltt
+	.word GXS_LoadOBJExtPltt
+
 	.text
 
 	thumb_func_start GfGfxLoader_LoadCharData
@@ -740,7 +760,7 @@ _02007E18: ; jump table
 _02007E28:
 	bl GX_BeginLoadBGExtPltt
 	ldr r0, [sp, #4]
-	ldr r3, _02007EAC ; =0x020F5968
+	ldr r3, _02007EAC ; =_020F5968
 	lsl r4, r4, #2
 	ldr r0, [r0, #0xc]
 	ldr r3, [r3, r4]
@@ -752,7 +772,7 @@ _02007E28:
 _02007E42:
 	bl GXS_BeginLoadBGExtPltt
 	ldr r0, [sp, #4]
-	ldr r3, _02007EAC ; =0x020F5968
+	ldr r3, _02007EAC ; =_020F5968
 	lsl r4, r4, #2
 	ldr r0, [r0, #0xc]
 	ldr r3, [r3, r4]
@@ -764,7 +784,7 @@ _02007E42:
 _02007E5C:
 	bl GX_BeginLoadOBJExtPltt
 	ldr r0, [sp, #4]
-	ldr r3, _02007EAC ; =0x020F5968
+	ldr r3, _02007EAC ; =_020F5968
 	lsl r4, r4, #2
 	ldr r0, [r0, #0xc]
 	ldr r3, [r3, r4]
@@ -776,7 +796,7 @@ _02007E5C:
 _02007E76:
 	bl GXS_BeginLoadOBJExtPltt
 	ldr r0, [sp, #4]
-	ldr r3, _02007EAC ; =0x020F5968
+	ldr r3, _02007EAC ; =_020F5968
 	lsl r4, r4, #2
 	ldr r0, [r0, #0xc]
 	ldr r3, [r3, r4]
@@ -787,7 +807,7 @@ _02007E76:
 	b _02007EA0
 _02007E90:
 	ldr r0, [sp, #4]
-	ldr r3, _02007EAC ; =0x020F5968
+	ldr r3, _02007EAC ; =_020F5968
 	lsl r4, r4, #2
 	ldr r0, [r0, #0xc]
 	ldr r3, [r3, r4]
@@ -801,7 +821,7 @@ _02007EA6:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02007EAC: .word 0x020F5968
+_02007EAC: .word _020F5968
 	thumb_func_end GfGfxLoader_GXLoadPalWithSrcOffsetInternal
 
 	thumb_func_start GfGfxLoader_PartiallyLoadPaletteInternal
@@ -866,7 +886,7 @@ GfGfxLoader_LoadImageMappingInternal: ; 0x02007F00
 	ldr r0, [sp, #4]
 	str r4, [r0, #0x10]
 _02007F24:
-	ldr r4, _02007F44 ; =0x020F5950
+	ldr r4, _02007F44 ; =_020F5950
 	lsl r6, r7, #2
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x20]
@@ -884,7 +904,7 @@ _02007F3E:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02007F44: .word 0x020F5950
+_02007F44: .word _020F5950
 	thumb_func_end GfGfxLoader_LoadImageMappingInternal
 
 	thumb_func_start GfGfxLoader_GetCharDataInternal

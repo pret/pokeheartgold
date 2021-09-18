@@ -64,3 +64,5 @@ ntruncompbw
 cmake-build-*
 *.sbin_LZ
 *.diff
+
+*.dSYM

@@ -9,10 +9,10 @@ GF_AssertFail: ; 0x0202551C
 	bl sub_02037D78
 	cmp r0, #0
 	beq _02025532
-	bl sub_020D3A9C
+	bl OS_GetProcMode
 	cmp r0, #0x12
 	beq _02025532
-	bl sub_02096338
+	bl PrintErrorMessageAndReset
 _02025532:
 	pop {r3, pc}
 	thumb_func_end GF_AssertFail

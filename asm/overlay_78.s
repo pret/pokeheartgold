@@ -11,17 +11,17 @@ ov78_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x52
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r5, #0
 	mov r1, #0x5c
 	mov r2, #0x52
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x5c
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	ldr r0, [r5]
 	bl sub_0205BD64
@@ -36,7 +36,7 @@ _021E593C:
 	bl GF_AssertFail
 _021E5946:
 	ldr r0, [r5]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r7, r0, #0
 	mov r0, #0x52
 	str r0, [r4]
@@ -45,11 +45,11 @@ _021E5946:
 	ldr r0, [r5, #4]
 	str r0, [r4, #4]
 	ldr r0, [r4, #8]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #0xc]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	str r0, [r4, #0x10]
 	mov r0, #0
 	add r1, r0, #0
@@ -59,12 +59,12 @@ _021E5946:
 	bl sub_0200FBF4
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201A120
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -77,14 +77,14 @@ _021E5946:
 	str r0, [r2]
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	add r0, r4, #0
 	bl ov78_021E5BAC
 	add r0, r4, #0
 	bl ov78_021E5D94
 	ldr r0, _021E59E8 ; =ov78_021E5B60
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r4, #4]
 	cmp r0, #2
 	bne _021E59D6
@@ -93,7 +93,7 @@ _021E5946:
 	add r0, r4, #0
 	bl ov78_021E636C
 _021E59D6:
-	bl sub_02022D24
+	bl GX_BothDispOn
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -107,7 +107,7 @@ ov78_021E59EC: ; 0x021E59EC
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
 	mov r6, #0
@@ -213,7 +213,7 @@ _021E5ABE:
 	str r0, [r5]
 	b _021E5B14
 _021E5AD0:
-	ldr r0, _021E5B1C ; =0x021D110C
+	ldr r0, _021E5B1C ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	and r0, r1
@@ -223,7 +223,7 @@ _021E5AD0:
 	and r0, r1
 	cmp r0, #2
 	beq _021E5AEC
-	ldr r0, _021E5B20 ; =0x021D114C
+	ldr r0, _021E5B20 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E5B14
@@ -252,15 +252,15 @@ _021E5B14:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
-_021E5B1C: .word 0x021D110C
-_021E5B20: .word 0x021D114C
+_021E5B1C: .word gMain
+_021E5B20: .word gMain + 0x40
 	thumb_func_end ov78_021E59EC
 
 	thumb_func_start ov78_021E5B24
 ov78_021E5B24: ; 0x021E5B24
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r1, [r4, #4]
 	ldr r5, [r4]
@@ -274,11 +274,11 @@ _021E5B3A:
 	bl ov78_021E5D18
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r6, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	add r0, r5, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -336,9 +336,9 @@ _021E5BB8:
 	sub r2, r2, #1
 	bne _021E5BB8
 	add r0, sp, #0x2c
-	bl sub_02022BE8
+	bl GX_SetBanks
 	ldr r0, [r4]
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0x1c
 	ldr r5, _021E5D10 ; =0x021E67E0
 	str r0, [r4, #0x14]
@@ -348,7 +348,7 @@ _021E5BB8:
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5D14 ; =0x021E681C
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -371,10 +371,10 @@ _021E5BB8:
 	strb r3, [r0, #0x10]
 	ldr r0, [r4, #0x14]
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x14]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #2
 	add r0, sp, #0
 	strb r2, [r0, #0x12]
@@ -386,10 +386,10 @@ _021E5BB8:
 	mov r1, #1
 	add r2, sp, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r1, #4
 	add r0, sp, #0
 	strb r1, [r0, #0x12]
@@ -402,10 +402,10 @@ _021E5BB8:
 	mov r1, #3
 	add r2, sp, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x14]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r1, #4
 	mov r3, #0
 	add r0, sp, #0
@@ -417,10 +417,10 @@ _021E5BB8:
 	strb r2, [r0, #0x10]
 	ldr r0, [r4, #0x14]
 	add r2, sp, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x14]
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r2, #2
 	add r0, sp, #0
 	strb r2, [r0, #0x12]
@@ -432,10 +432,10 @@ _021E5BB8:
 	mov r1, #5
 	add r2, sp, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x14]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r1, #4
 	add r0, sp, #0
 	strb r1, [r0, #0x12]
@@ -448,10 +448,10 @@ _021E5BB8:
 	mov r1, #7
 	add r2, sp, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x14]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201BC28
@@ -514,22 +514,22 @@ ov78_021E5D18: ; 0x021E5D18
 	bl sub_0201BC28
 	ldr r0, [r4, #0x14]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x14]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x14]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x14]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x14]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x14]
 	bl FreeToHeap
 	pop {r4, pc}
@@ -867,12 +867,12 @@ _021E5EEE:
 	ldr r3, [r5]
 	mov r1, #0x20
 	add r2, r0, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r3, [r5]
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r2, [r5]
 	mov r0, #0
 	mov r1, #0x40
@@ -925,7 +925,7 @@ _021E6096:
 	bl GF_AssertFail
 _021E60B2:
 	ldr r0, [r5, #0x10]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [sp, #0x1c]
 	ldr r0, [r5, #0x38]
 	ldr r2, [sp, #0x10]
@@ -960,7 +960,7 @@ _021E60DA:
 	str r1, [sp, #0xc]
 	add r0, #0x18
 	add r2, r6, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	str r7, [sp]
 	mov r1, #0
 	ldr r0, _021E61C0 ; =0x00010200
@@ -971,7 +971,7 @@ _021E60DA:
 	add r0, #0x28
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	ldr r0, [r5, #4]
@@ -1000,7 +1000,7 @@ _021E6138:
 	str r1, [sp, #0xc]
 	add r0, #0x18
 	add r2, r6, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	str r4, [sp]
 	mov r1, #0
 	ldr r0, _021E61C0 ; =0x00010200
@@ -1011,7 +1011,7 @@ _021E6138:
 	str r1, [sp, #0xc]
 	add r0, #0x28
 	add r2, r6, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	cmp r0, #2
 	beq _021E61B4
@@ -1030,7 +1030,7 @@ _021E6138:
 	add r2, r6, #0
 	mov r3, #0x8a
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x90
 	str r0, [sp]
 	mov r1, #0
@@ -1042,7 +1042,7 @@ _021E6138:
 	add r2, r6, #0
 	mov r3, #0x8a
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _021E61B4:
 	add r0, r6, #0
 	bl String_dtor
@@ -1220,7 +1220,7 @@ ov78_021E628C: ; 0x021E628C
 	ldr r0, [r5, #0x10]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	bl sub_0206A304
 	add r2, r0, #0
 	add r0, sp, #0
@@ -1458,7 +1458,7 @@ ov78_021E636C: ; 0x021E636C
 	bl ov78_021E66D4
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -1559,7 +1559,7 @@ ov78_021E65BC: ; 0x021E65BC
 	str r0, [sp, #0x10]
 	bl NARC_AllocAndReadWholeMember
 	str r0, [sp, #0x14]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r5, r0, #0
 	ldr r0, [r5, #0x14]
 	mov r1, #2
@@ -1688,18 +1688,18 @@ ov78_021E66D4: ; 0x021E66D4
 	mov r1, #5
 	mov r2, #0
 	add r5, r3, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x20]
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0206FF88
+	bl GetMonGender
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	str r0, [sp, #0x18]
 	cmp r5, #0
 	beq _021E6714
@@ -1736,7 +1736,7 @@ _021E6738:
 	ldr r2, [sp, #0xc]
 	bl NARC_AllocAndReadWholeMember
 	str r0, [sp, #0x10]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x14]
 	str r0, [sp, #0x24]
 	add r6, r0, r1

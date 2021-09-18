@@ -98,7 +98,7 @@ ov26_0225995C: ; 0x0225995C
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	cmp r4, #0
 	bne _0225996E
 	add r0, r4, #0

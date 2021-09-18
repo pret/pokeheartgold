@@ -12,17 +12,17 @@ ov105_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x97
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r5, #0
 	mov r1, #0xa8
 	mov r2, #0x97
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0xa8
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r5, r0, #0
 	add r0, r4, #0
 	ldrb r1, [r5]
@@ -109,7 +109,7 @@ ov105_021E59DC: ; 0x021E59DC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x3c
 	add r6, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	add r1, r5, #0
 	add r1, #0x9f
@@ -265,7 +265,7 @@ ov105_021E5B14: ; 0x021E5B14
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r0, [sp]
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r7, r0, #0
 	str r0, [sp, #4]
 	add r6, r0, #4
@@ -290,10 +290,10 @@ _021E5B28:
 	ldr r0, [r0]
 	bl sub_02023120
 	ldr r0, [sp]
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	bl sub_0201F63C
 	mov r0, #0x97
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -304,10 +304,10 @@ ov105_021E5B68: ; 0x021E5B68
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -330,7 +330,7 @@ ov105_021E5B68: ; 0x021E5B68
 	strh r0, [r2]
 	ldr r0, _021E5BC8 ; =0x021E5DE0
 	bl sub_020CF8E4
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	pop {r3, pc}
 	nop
 _021E5BB8: .word 0xFFFFE0FF
@@ -439,7 +439,7 @@ _021E5C8E:
 	sub r2, r2, #1
 	bne _021E5C8E
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -459,7 +459,7 @@ ov105_021E5CA4: ; 0x021E5CA4
 	add r0, #0x80
 	mov r1, #0x97
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r7, #0
 	add r0, #0x9c
 	ldrb r0, [r0]
@@ -514,7 +514,7 @@ _021E5D04:
 	add r2, #0x58
 	bl sub_0201F51C
 	ldr r0, [r7, #0x5c]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [sp, #8]
 	ldr r0, [r5, #0x54]
 	mov r1, #0

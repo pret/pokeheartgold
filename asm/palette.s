@@ -13,7 +13,7 @@ sub_020030E8: ; 0x020030E8
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -1692,7 +1692,7 @@ _02003D82:
 	ldr r0, [sp]
 	sub r2, r2, r5
 	lsl r2, r2, #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _02003D9A:
 	cmp r7, #0
 	beq _02003DA2
@@ -1707,7 +1707,7 @@ _02003DA2:
 	ldr r0, [sp]
 	sub r2, r2, r5
 	lsl r2, r2, #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 _02003DB6:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2217,7 +2217,7 @@ _02004146:
 	add r0, r0, r1
 	add r1, r2, r1
 	mov r2, #0x20
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 _02004156:
 	add r6, r6, #1
 	add r4, #0x10

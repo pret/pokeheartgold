@@ -9,17 +9,14 @@ PROC         := arm7tdmi
 PROC_S       := arm4t
 PROC_LD      := v4t
 LCF_TEMPLATE := ARM7-TS.lcf.template
+OPTFLAGS     := -O4,s
+DEFINES      := -DSDK_ARM7
 
 include ../common.mk
-
-MWCFLAGS          := -O4,s -inline on,noauto -nodead -enum int -lang c99 -Cpp_exceptions off -gccext,on -nopic -nopid -interworking -proc $(PROC) -gccinc -i ../lib/include -I./lib/include -ipa file -DARM7
-MWASFLAGS         := -proc $(PROC_S) -i ./include
-MWLDFLAGS         := -nodead -w off -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
-ARFLAGS           := rcS
 
 tidy:
 	$(RM) -r $(BUILD_DIR)
 
 clean: tidy
 
-all: $(SBIN)
+all: $(SBIN) $(ELF)

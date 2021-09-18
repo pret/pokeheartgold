@@ -252,17 +252,17 @@ ov18_021E5AA0: ; 0x021E5AA0
 	mov r0, #3
 	mov r1, #0x25
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r1, _021E5B4C ; =0x00001910
 	add r0, r5, #0
 	mov r2, #0x25
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	ldr r2, _021E5B4C ; =0x00001910
 	mov r1, #0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4]
 	ldr r0, _021E5B50 ; =0x0000085C
 	mov r1, #5
@@ -302,7 +302,7 @@ _021E5B12:
 	ldr r0, [r4]
 	ldr r1, _021E5B5C ; =0x000001E7
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #1
 	bne _021E5B32
 	ldr r0, [r4]
@@ -337,7 +337,7 @@ _021E5B60: .word 0x0000185C
 ov18_021E5B64: ; 0x021E5B64
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r1, r4, #0
 	bl ov18_021E8BF4
 	cmp r0, #0
@@ -354,7 +354,7 @@ _021E5B7A:
 ov18_021E5B80: ; 0x021E5B80
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r6, _021E5C08 ; =SDK_OVERLAY_OVY_123_ID
 	add r4, r0, #0
 	mov r0, #0
@@ -387,9 +387,9 @@ _021E5BA8:
 	bl AllocFromHeapAtEnd
 _021E5BD0:
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x25
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	mov r1, #0x7f
 	bl sub_02005B50
@@ -471,11 +471,11 @@ _021E5C70: .word 0x00003FF8
 
 	thumb_func_start ov18_021E5C74
 ov18_021E5C74: ; 0x021E5C74
-	ldr r3, _021E5C7C ; =sub_02022BE8
+	ldr r3, _021E5C7C ; =GX_SetBanks
 	ldr r0, _021E5C80 ; =_021F98B0
 	bx r3
 	nop
-_021E5C7C: .word sub_02022BE8
+_021E5C7C: .word GX_SetBanks
 _021E5C80: .word _021F98B0
 	thumb_func_end ov18_021E5C74
 
@@ -485,7 +485,7 @@ ov18_021E5C84: ; 0x021E5C84
 	sub sp, #0xf0
 	add r4, r0, #0
 	mov r0, #0x25
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0xe0
 	ldr r5, _021E5E4C ; =_021F9750
 	str r0, [r4, #4]
@@ -495,7 +495,7 @@ ov18_021E5C84: ; 0x021E5C84
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5E50 ; =_021F97EC
 	add r3, sp, #0xc4
 	ldmia r5!, {r0, r1}
@@ -510,7 +510,7 @@ ov18_021E5C84: ; 0x021E5C84
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #0
 	bl ov18_021E613C
@@ -518,7 +518,7 @@ ov18_021E5C84: ; 0x021E5C84
 	mov r1, #0x20
 	add r2, r0, #0
 	mov r3, #0x25
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5E54 ; =_021F97B4
 	add r3, sp, #0xa8
 	ldmia r5!, {r0, r1}
@@ -533,7 +533,7 @@ ov18_021E5C84: ; 0x021E5C84
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	bl ov18_021E613C
@@ -541,7 +541,7 @@ ov18_021E5C84: ; 0x021E5C84
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x25
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5E58 ; =_021F9894
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -556,7 +556,7 @@ ov18_021E5C84: ; 0x021E5C84
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
 	bl ov18_021E613C
@@ -564,7 +564,7 @@ ov18_021E5C84: ; 0x021E5C84
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x25
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5E5C ; =_021F9824
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -579,7 +579,7 @@ ov18_021E5C84: ; 0x021E5C84
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
 	bl ov18_021E613C
@@ -587,7 +587,7 @@ ov18_021E5C84: ; 0x021E5C84
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x25
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5E60 ; =_021F9840
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -602,7 +602,7 @@ ov18_021E5C84: ; 0x021E5C84
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
 	bl ov18_021E613C
@@ -610,7 +610,7 @@ ov18_021E5C84: ; 0x021E5C84
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x25
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5E64 ; =_021F985C
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -625,7 +625,7 @@ ov18_021E5C84: ; 0x021E5C84
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
 	bl ov18_021E613C
@@ -633,7 +633,7 @@ ov18_021E5C84: ; 0x021E5C84
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x25
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5E68 ; =_021F9798
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -648,7 +648,7 @@ ov18_021E5C84: ; 0x021E5C84
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
 	bl ov18_021E613C
@@ -656,7 +656,7 @@ ov18_021E5C84: ; 0x021E5C84
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x25
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E5E6C ; =_021F97D0
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -671,7 +671,7 @@ ov18_021E5C84: ; 0x021E5C84
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
 	bl ov18_021E613C
@@ -679,7 +679,7 @@ ov18_021E5C84: ; 0x021E5C84
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x25
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add sp, #0xf0
 	pop {r3, r4, r5, pc}
 	nop
@@ -702,7 +702,7 @@ ov18_021E5E70: ; 0x021E5E70
 	ldr r0, [r4, #4]
 	add r5, r1, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	cmp r5, #0
 	bne _021E5ED0
 	ldr r5, _021E5F48 ; =_021F9740
@@ -729,7 +729,7 @@ ov18_021E5E70: ; 0x021E5E70
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
 	bl ov18_021E613C
@@ -737,7 +737,7 @@ ov18_021E5E70: ; 0x021E5E70
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x25
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	b _021E5F1A
 _021E5ED0:
 	ldr r5, _021E5F50 ; =_021F9760
@@ -764,7 +764,7 @@ _021E5ED0:
 	str r0, [r3]
 	ldr r0, [r4, #4]
 	mov r3, #1
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
 	bl ov18_021E613C
@@ -772,7 +772,7 @@ _021E5ED0:
 	mov r1, #0x40
 	mov r2, #0
 	mov r3, #0x25
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 _021E5F1A:
 	mov r0, #1
 	add r1, r0, #0
@@ -804,28 +804,28 @@ ov18_021E5F58: ; 0x021E5F58
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1796,7 +1796,7 @@ ov18_021E673C: ; 0x021E673C
 	ldr r0, [r5]
 	ldrh r1, [r5, r1]
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021E675E
 	mov r5, #0
@@ -5495,12 +5495,12 @@ ov18_021E8528: ; 0x021E8528
 	sub r1, #8
 	ldr r1, [r5, r1]
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, _021E8644 ; =0x00001904
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r6, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, _021E8640 ; =0x000018FC
 	mov r2, #1
 	ldr r0, [r5, r1]
@@ -6397,7 +6397,7 @@ ov18_021E8C30: ; 0x021E8C30
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -6418,7 +6418,7 @@ ov18_021E8C30: ; 0x021E8C30
 	strh r0, [r2]
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	add r0, r4, #0
 	bl ov18_021E62A8
 	add r0, r4, #0
@@ -6477,7 +6477,7 @@ ov18_021E8C30: ; 0x021E8C30
 	bl sub_02004EC4
 	ldr r0, _021E8D30 ; =ov18_021E5C40
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, _021E8D34 ; =0x0000085C
 	ldr r0, [r4, r0]
 	add sp, #0x20
@@ -6499,7 +6499,7 @@ ov18_021E8D38: ; 0x021E8D38
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov18_021EE388
 	add r0, r4, #0
@@ -6645,7 +6645,7 @@ _021E8E6A:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021E8E88 ; =0x0000085C
 	add sp, #0xc
 	ldr r0, [r5, r0]
@@ -6925,7 +6925,7 @@ _021E9086:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #8
 	mov r0, #9
 	pop {r4, r5, r6, pc}
@@ -7018,7 +7018,7 @@ _021E9118:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #8
 	mov r0, #6
 	pop {r4, r5, r6, pc}
@@ -7153,7 +7153,7 @@ _021E9288:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0xb
 	pop {r4, r5, r6, pc}
 _021E92A2:
@@ -7441,7 +7441,7 @@ _021E94E0:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #8
 	mov r0, #0xd
 	pop {r4, pc}
@@ -7456,7 +7456,7 @@ _021E9500:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021E95FC ; =0x0000086F
 	mov r1, #1
 	strb r1, [r4, r0]
@@ -7478,7 +7478,7 @@ _021E9526:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #8
 	mov r0, #0xe
 	pop {r4, pc}
@@ -7497,7 +7497,7 @@ _021E9550:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021E95FC ; =0x0000086F
 	mov r1, #1
 	strb r1, [r4, r0]
@@ -7665,7 +7665,7 @@ _021E96CE:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #6
 	pop {r4, r5, r6, pc}
 _021E96EA:
@@ -7800,7 +7800,7 @@ _021E97C8:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0xb
 	pop {r3, r4, r5, pc}
 _021E980E:
@@ -7932,7 +7932,7 @@ _021E98EA:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0xb
 	pop {r3, r4, r5, pc}
 _021E9930:
@@ -8051,7 +8051,7 @@ ov18_021E99C8: ; 0x021E99C8
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021E9A48 ; =0x000008E8
 	bl PlaySE
 _021E9A38:
@@ -8092,7 +8092,7 @@ _021E9A62:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #8
 	mov r0, #0xc
 	pop {r4, r5, r6, pc}
@@ -8238,7 +8238,7 @@ _021E9B82:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #8
 	mov r0, #0xb
 	pop {r4, r5, r6, pc}
@@ -9050,7 +9050,7 @@ _021EA28C:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #0x20
 	mov r0, #0x39
 	pop {r3, r4, r5, pc}
@@ -9087,7 +9087,7 @@ _021EA2DE:
 	ldrh r0, [r5, #2]
 	add r0, r0, #1
 	strh r0, [r5, #2]
-	ldr r0, _021EA348 ; =0x021D110C
+	ldr r0, _021EA348 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -9123,7 +9123,7 @@ _021EA314:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #0x20
 	mov r0, #0x16
 	pop {r3, r4, r5, pc}
@@ -9133,7 +9133,7 @@ _021EA33C:
 	pop {r3, r4, r5, pc}
 	nop
 _021EA344: .word 0x000005F2
-_021EA348: .word 0x021D110C
+_021EA348: .word gMain
 _021EA34C: .word 0x00000868
 	thumb_func_end ov18_021E9F28
 
@@ -9470,7 +9470,7 @@ _021EA600:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021EA684 ; =0x0000085C
 	mov r1, #0x5d
 	str r1, [r5, r0]
@@ -9611,7 +9611,7 @@ _021EA6EE:
 	add r0, #0xc
 	add r0, r5, r0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #0xc
 	mov r0, #3
 	pop {r4, r5, pc}
@@ -9713,7 +9713,7 @@ _021EA7C6:
 	add r0, #0xc
 	add r0, r5, r0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #0xc
 	mov r0, #3
 	pop {r4, r5, pc}
@@ -10251,7 +10251,7 @@ _021EAC26:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0xa
@@ -10275,7 +10275,7 @@ _021EAC4E:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	mov r1, #0x16
 	mov r2, #0xa
@@ -10367,7 +10367,7 @@ _021EAD0E:
 	mov r0, #0x2b
 	pop {r3, r4, r5, pc}
 _021EAD3A:
-	ldr r0, _021EAD70 ; =0x021D110C
+	ldr r0, _021EAD70 ; =gMain
 	ldr r1, [r0, #0x44]
 	mov r0, #0x20
 	tst r0, r1
@@ -10389,7 +10389,7 @@ _021EAD60: .word 0x0000187C
 _021EAD64: .word 0x00001878
 _021EAD68: .word 0x000008E9
 _021EAD6C: .word 0x00001890
-_021EAD70: .word 0x021D110C
+_021EAD70: .word gMain
 	thumb_func_end ov18_021EABB4
 
 	thumb_func_start ov18_021EAD74
@@ -10873,7 +10873,7 @@ _021EB124:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0xa
@@ -10897,7 +10897,7 @@ _021EB14C:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	mov r1, #0x16
 	mov r2, #0xa
@@ -10991,7 +10991,7 @@ _021EB20E:
 	mov r0, #0x32
 	pop {r3, r4, r5, pc}
 _021EB23C:
-	ldr r0, _021EB26C ; =0x021D110C
+	ldr r0, _021EB26C ; =gMain
 	ldr r1, [r0, #0x44]
 	mov r0, #0x20
 	tst r0, r1
@@ -11012,7 +11012,7 @@ _021EB25C: .word 0x00000868
 _021EB260: .word 0x00001884
 _021EB264: .word 0x000008E9
 _021EB268: .word 0x00001890
-_021EB26C: .word 0x021D110C
+_021EB26C: .word gMain
 	thumb_func_end ov18_021EB0B0
 
 	thumb_func_start ov18_021EB270
@@ -11642,7 +11642,7 @@ _021EB74E:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #8
 	mov r0, #0x3a
 	pop {r4, pc}
@@ -11657,7 +11657,7 @@ _021EB76E:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021EB834 ; =0x0000086F
 	mov r1, #1
 	strb r1, [r4, r0]
@@ -11679,7 +11679,7 @@ _021EB794:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add sp, #8
 	mov r0, #0x3b
 	pop {r4, pc}
@@ -11698,7 +11698,7 @@ _021EB7BE:
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021EB834 ; =0x0000086F
 	mov r1, #1
 	strb r1, [r4, r0]
@@ -11883,7 +11883,7 @@ _021EB92E:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x39
 	pop {r3, r4, r5, pc}
 _021EB974:
@@ -12027,7 +12027,7 @@ _021EBA68:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x39
 	pop {r3, r4, r5, pc}
 _021EBAAE:
@@ -12177,7 +12177,7 @@ _021EBBCC:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _021EBBF4:
 	mov r0, #0x39
 	pop {r3, r4, r5, pc}
@@ -13070,7 +13070,7 @@ _021EC39C:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, _021EC3E4 ; =0x000018A0
 	add r0, r1, #0
 	ldrb r2, [r5, r1]
@@ -13649,7 +13649,7 @@ _021EC828:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021EC888 ; =0x0000185B
 	ldrb r0, [r5, r0]
 	cmp r0, #2
@@ -13769,7 +13769,7 @@ _021EC8F0:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x45
 	pop {r3, r4, r5, r6, r7, pc}
 _021EC950:
@@ -13869,7 +13869,7 @@ _021EC9C2:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x45
 	pop {r3, r4, r5, r6, r7, pc}
 _021ECA20:
@@ -13959,7 +13959,7 @@ ov18_021ECA90: ; 0x021ECA90
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _021ECADC:
 	mov r0, #0x45
 	pop {r4, pc}
@@ -14087,7 +14087,7 @@ _021ECBE2:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x45
 	pop {r3, r4, r5, pc}
 _021ECBF2:
@@ -14276,7 +14276,7 @@ _021ECD52:
 	add sp, #4
 	pop {r3, r4, pc}
 _021ECD6E:
-	ldr r0, _021ECDC4 ; =0x021D110C
+	ldr r0, _021ECDC4 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -14312,7 +14312,7 @@ _021ECDB4:
 	nop
 _021ECDBC: .word 0x000008E9
 _021ECDC0: .word 0x000008E8
-_021ECDC4: .word 0x021D110C
+_021ECDC4: .word gMain
 	thumb_func_end ov18_021ECCB0
 
 	thumb_func_start ov18_021ECDC8
@@ -14388,7 +14388,7 @@ _021ECE44:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021ECE9C ; =0x0000185B
 	ldrb r0, [r5, r0]
 	cmp r0, #1
@@ -14964,7 +14964,7 @@ _021ED290:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x50
 	pop {r3, r4, r5, r6, r7, pc}
 _021ED2F8:
@@ -15072,7 +15072,7 @@ _021ED374:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x50
 	pop {r3, r4, r5, r6, r7, pc}
 _021ED3DC:
@@ -15165,7 +15165,7 @@ ov18_021ED450: ; 0x021ED450
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _021ED4A2:
 	mov r0, #0x50
 	pop {r4, pc}
@@ -15945,7 +15945,7 @@ _021EDADC:
 	mov r1, #0
 	add r0, r5, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021EDB24 ; =0x0000185B
 	ldrb r0, [r5, r0]
 	cmp r0, #2
@@ -16736,7 +16736,7 @@ ov18_021EE0CC: ; 0x021EE0CC
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	pop {r4, pc}
 	nop
 _021EE0E8: .word 0x0000086C
@@ -21175,7 +21175,7 @@ _021F04E0:
 	pop {r3, r4, r5, pc}
 _021F04E4:
 	bl ov18_021E8AE0
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r2, r0, #0
 	mov r0, #0x66
 	lsl r0, r0, #4
@@ -21322,7 +21322,7 @@ _021F05FE:
 	ldr r0, [r5]
 	ldrh r1, [r5, r1]
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F0622
 	mov r4, #2
@@ -21407,7 +21407,7 @@ _021F0624:
 	ldr r0, [r5]
 	mov r1, #0x25
 	ldr r0, [r0, #4]
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r6, r0, #0
 	mov r3, #0
 	ldr r0, _021F0828 ; =0x00020100
@@ -22522,7 +22522,7 @@ ov18_021F0FC8: ; 0x021F0FC8
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -23910,7 +23910,7 @@ ov18_021F1A7C: ; 0x021F1A7C
 	mov r0, #0
 	add r1, sp, #0x30
 	mov r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _021F1BC4 ; =0x00000147
 	cmp r4, r0
 	bne _021F1AC6
@@ -23921,7 +23921,7 @@ ov18_021F1A7C: ; 0x021F1A7C
 	ldr r0, [r5]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0202A088
+	bl Pokedex_GetSeenSpindaPersonality
 	add r6, r0, #0
 	b _021F1AC8
 _021F1AC6:
@@ -24731,7 +24731,7 @@ _021F2174:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #6
-	bl sub_0206FBC4
+	bl GetMonBaseStat_HandleAlternateForme
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #4]
@@ -24750,7 +24750,7 @@ _021F2174:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #7
-	bl sub_0206FBC4
+	bl GetMonBaseStat_HandleAlternateForme
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	beq _021F21B6
@@ -33838,7 +33838,7 @@ ov18_021F69E8: ; 0x021F69E8
 	ldr r0, [r5]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0202A088
+	bl Pokedex_GetSeenSpindaPersonality
 	add r6, r0, #0
 	b _021F6A22
 _021F6A20:
@@ -33985,7 +33985,7 @@ _021F6B3A:
 	ldr r0, [r4, r1]
 	cmp r0, #1
 	bne _021F6B7C
-	ldr r0, _021F6BB8 ; =0x021D110C
+	ldr r0, _021F6BB8 ; =gMain
 	ldr r3, [r0, #0x48]
 	mov r0, #0x20
 	add r2, r3, #0
@@ -34015,7 +34015,7 @@ _021F6B78:
 	sub r0, #0x11
 	pop {r4, pc}
 _021F6B7C:
-	ldr r0, _021F6BB8 ; =0x021D110C
+	ldr r0, _021F6BB8 ; =gMain
 	mov r1, #1
 	ldr r3, [r0, #0x48]
 	add r0, r3, #0
@@ -34045,7 +34045,7 @@ _021F6BA8: .word 0x00000864
 _021F6BAC: .word _021FB72C
 _021F6BB0: .word _021FB6F0
 _021F6BB4: .word 0x00001860
-_021F6BB8: .word 0x021D110C
+_021F6BB8: .word gMain
 	thumb_func_end ov18_021F6B00
 
 	thumb_func_start ov18_021F6BBC
@@ -34131,7 +34131,7 @@ _021F6C56:
 _021F6C5C:
 	ldr r2, _021F6DBC ; =0x00000864
 	mov r6, #1
-	ldr r7, _021F6DD4 ; =0x021D110C
+	ldr r7, _021F6DD4 ; =gMain
 	str r6, [r5, r2]
 	ldr r3, [r7, #0x4c]
 	mov r0, #0x40
@@ -34321,7 +34321,7 @@ _021F6DC4: .word _021FB84C
 _021F6DC8: .word 0x0000185A
 _021F6DCC: .word 0x000008E9
 _021F6DD0: .word 0x000008F2
-_021F6DD4: .word 0x021D110C
+_021F6DD4: .word gMain
 _021F6DD8: .word 0x000008E8
 _021F6DDC: .word 0x00001859
 	thumb_func_end ov18_021F6BBC
@@ -34370,7 +34370,7 @@ ov18_021F6E2C: ; 0x021F6E2C
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	bl sub_02018410
-	ldr r0, _021F6E50 ; =0x021D110C
+	ldr r0, _021F6E50 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #8
 	tst r1, r0
@@ -34381,7 +34381,7 @@ ov18_021F6E2C: ; 0x021F6E2C
 _021F6E4C:
 	pop {r4, pc}
 	nop
-_021F6E50: .word 0x021D110C
+_021F6E50: .word gMain
 _021F6E54: .word 0x00001864
 	thumb_func_end ov18_021F6E2C
 
@@ -34480,7 +34480,7 @@ ov18_021F6F08: ; 0x021F6F08
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	bl sub_02018410
-	ldr r0, _021F6F30 ; =0x021D110C
+	ldr r0, _021F6F30 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #8
 	tst r0, r1
@@ -34493,7 +34493,7 @@ _021F6F24:
 	bl sub_02019D18
 	pop {r4, pc}
 	nop
-_021F6F30: .word 0x021D110C
+_021F6F30: .word gMain
 _021F6F34: .word 0x00001864
 	thumb_func_end ov18_021F6F08
 
@@ -34592,7 +34592,7 @@ ov18_021F6FE8: ; 0x021F6FE8
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	bl sub_02018410
-	ldr r0, _021F7010 ; =0x021D110C
+	ldr r0, _021F7010 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #8
 	tst r0, r1
@@ -34605,7 +34605,7 @@ _021F7004:
 	bl sub_02019D18
 	pop {r4, pc}
 	nop
-_021F7010: .word 0x021D110C
+_021F7010: .word gMain
 _021F7014: .word 0x00001864
 	thumb_func_end ov18_021F6FE8
 
@@ -34789,7 +34789,7 @@ ov18_021F716C: ; 0x021F716C
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	bl sub_02018410
-	ldr r0, _021F7194 ; =0x021D110C
+	ldr r0, _021F7194 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #8
 	tst r0, r1
@@ -34802,7 +34802,7 @@ _021F7188:
 	bl sub_02019D18
 	pop {r4, pc}
 	nop
-_021F7194: .word 0x021D110C
+_021F7194: .word gMain
 _021F7198: .word 0x00001864
 	thumb_func_end ov18_021F716C
 
@@ -35070,7 +35070,7 @@ ov18_021F739C: ; 0x021F739C
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	bl sub_02018410
-	ldr r1, _021F743C ; =0x021D110C
+	ldr r1, _021F743C ; =gMain
 	mov r0, #8
 	ldr r2, [r1, #0x48]
 	tst r0, r2
@@ -35095,7 +35095,7 @@ _021F73D2:
 _021F73DC:
 	cmp r4, #1
 	bne _021F73F8
-	ldr r0, _021F743C ; =0x021D110C
+	ldr r0, _021F743C ; =gMain
 	ldr r1, [r0, #0x4c]
 	mov r0, #0x20
 	tst r0, r1
@@ -35138,7 +35138,7 @@ _021F742C:
 	pop {r4, r5, r6, pc}
 	nop
 _021F7438: .word 0x00001864
-_021F743C: .word 0x021D110C
+_021F743C: .word gMain
 _021F7440: .word _021FB718
 	thumb_func_end ov18_021F739C
 
@@ -35262,7 +35262,7 @@ ov18_021F7520: ; 0x021F7520
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	bl sub_02018410
-	ldr r1, _021F75C0 ; =0x021D110C
+	ldr r1, _021F75C0 ; =gMain
 	mov r0, #8
 	ldr r2, [r1, #0x48]
 	tst r0, r2
@@ -35287,7 +35287,7 @@ _021F7556:
 _021F7560:
 	cmp r4, #1
 	bne _021F757C
-	ldr r0, _021F75C0 ; =0x021D110C
+	ldr r0, _021F75C0 ; =gMain
 	ldr r1, [r0, #0x4c]
 	mov r0, #0x20
 	tst r0, r1
@@ -35330,7 +35330,7 @@ _021F75B0:
 	pop {r4, r5, r6, pc}
 	nop
 _021F75BC: .word 0x00001864
-_021F75C0: .word 0x021D110C
+_021F75C0: .word gMain
 _021F75C4: .word _021FB718
 	thumb_func_end ov18_021F7520
 
@@ -35459,7 +35459,7 @@ ov18_021F76B0: ; 0x021F76B0
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	bl sub_02018410
-	ldr r0, _021F76D8 ; =0x021D110C
+	ldr r0, _021F76D8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #8
 	tst r0, r1
@@ -35472,7 +35472,7 @@ _021F76CC:
 	bl sub_02019D18
 	pop {r4, pc}
 	nop
-_021F76D8: .word 0x021D110C
+_021F76D8: .word gMain
 _021F76DC: .word 0x00001864
 	thumb_func_end ov18_021F76B0
 
@@ -35571,7 +35571,7 @@ ov18_021F7790: ; 0x021F7790
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	bl sub_02018410
-	ldr r0, _021F77B8 ; =0x021D110C
+	ldr r0, _021F77B8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #8
 	tst r0, r1
@@ -35584,7 +35584,7 @@ _021F77AC:
 	bl sub_02019D18
 	pop {r4, pc}
 	nop
-_021F77B8: .word 0x021D110C
+_021F77B8: .word gMain
 _021F77BC: .word 0x00001864
 	thumb_func_end ov18_021F7790
 
@@ -35886,7 +35886,7 @@ _021F7A14:
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 _021F7A1A:
-	ldr r1, _021F7B68 ; =0x021D110C
+	ldr r1, _021F7B68 ; =gMain
 	mov r0, #0x40
 	ldr r2, [r1, #0x4c]
 	tst r0, r2
@@ -36060,7 +36060,7 @@ _021F7B58: .word _021FB8A4
 _021F7B5C: .word _021FB84C
 _021F7B60: .word 0x0000185A
 _021F7B64: .word 0x000008E9
-_021F7B68: .word 0x021D110C
+_021F7B68: .word gMain
 _021F7B6C: .word 0x000008E8
 _021F7B70: .word 0x00001859
 	thumb_func_end ov18_021F7974
@@ -36117,7 +36117,7 @@ ov18_021F7B94: ; 0x021F7B94
 	ldr r0, [r5]
 	ldrh r1, [r5, r1]
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	bne _021F7BDE
 	mov r0, #0
@@ -36131,7 +36131,7 @@ _021F7BDE:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
 _021F7BE8:
-	ldr r0, _021F7C10 ; =0x021D110C
+	ldr r0, _021F7C10 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r1, r0
@@ -36150,7 +36150,7 @@ _021F7BFE:
 _021F7C04: .word _021FB704
 _021F7C08: .word _021FB698
 _021F7C0C: .word 0x000018A2
-_021F7C10: .word 0x021D110C
+_021F7C10: .word gMain
 	thumb_func_end ov18_021F7B94
 
 	thumb_func_start ov18_021F7C14
@@ -36184,7 +36184,7 @@ _021F7C40:
 _021F7C4C:
 	mov r0, #0
 	str r0, [r5]
-	ldr r2, _021F7CF0 ; =0x021D110C
+	ldr r2, _021F7CF0 ; =gMain
 	mov r0, #0x40
 	ldr r1, [r2, #0x4c]
 	tst r0, r1
@@ -36260,7 +36260,7 @@ _021F7CC6:
 	ldr r0, [r4]
 	ldrh r1, [r4, r1]
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F7CE0
 	mov r0, #1
@@ -36275,7 +36275,7 @@ _021F7CE6:
 	.balign 4, 0
 _021F7CE8: .word _021FB934
 _021F7CEC: .word _021FB904
-_021F7CF0: .word 0x021D110C
+_021F7CF0: .word gMain
 _021F7CF4: .word 0x000018C9
 _021F7CF8: .word 0x000018C8
 _021F7CFC: .word 0x000018A2
@@ -36291,7 +36291,7 @@ ov18_021F7D00: ; 0x021F7D00
 	cmp r0, r3
 	bne _021F7D28
 	mov r0, #0
-	ldr r1, _021F7D2C ; =0x021D110C
+	ldr r1, _021F7D2C ; =gMain
 	str r0, [r4]
 	ldr r2, [r1, #0x4c]
 	mov r1, #0x20
@@ -36306,7 +36306,7 @@ _021F7D26:
 _021F7D28:
 	pop {r4, pc}
 	nop
-_021F7D2C: .word 0x021D110C
+_021F7D2C: .word gMain
 	thumb_func_end ov18_021F7D00
 
 	thumb_func_start ov18_021F7D30
@@ -36338,7 +36338,7 @@ _021F7D5C:
 	ldr r0, [r0, r1]
 	pop {r3, r4, r5, pc}
 _021F7D68:
-	ldr r2, _021F7DC4 ; =0x021D110C
+	ldr r2, _021F7DC4 ; =gMain
 	mov r0, #0
 	str r0, [r5]
 	ldr r0, [r2, #0x4c]
@@ -36361,7 +36361,7 @@ _021F7D84:
 	ldr r0, [r4]
 	ldrh r1, [r4, r1]
 	ldr r0, [r0]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F7D9E
 	mov r0, #1
@@ -36389,7 +36389,7 @@ _021F7DBA:
 	.balign 4, 0
 _021F7DBC: .word _021FB804
 _021F7DC0: .word _021FB760
-_021F7DC4: .word 0x021D110C
+_021F7DC4: .word gMain
 _021F7DC8: .word 0x000018A2
 	thumb_func_end ov18_021F7D30
 
@@ -36418,7 +36418,7 @@ _021F7DEC:
 	pop {r3, r4, r5, pc}
 _021F7DF8:
 	mov r0, #0
-	ldr r2, _021F7E68 ; =0x021D110C
+	ldr r2, _021F7E68 ; =gMain
 	str r0, [r4]
 	ldr r3, [r2, #0x4c]
 	mov r1, #0x40
@@ -36479,7 +36479,7 @@ _021F7E5C:
 	nop
 _021F7E60: .word _021FB7E0
 _021F7E64: .word _021FB7C0
-_021F7E68: .word 0x021D110C
+_021F7E68: .word gMain
 _021F7E6C: .word 0x000018C7
 	thumb_func_end ov18_021F7DCC
 
@@ -36510,7 +36510,7 @@ _021F7E9A:
 	pop {r4, pc}
 _021F7EA2:
 	mov r0, #0
-	ldr r2, _021F7ED0 ; =0x021D110C
+	ldr r2, _021F7ED0 ; =gMain
 	str r0, [r4]
 	ldr r3, [r2, #0x4c]
 	mov r1, #0x20
@@ -36534,7 +36534,7 @@ _021F7EC8:
 	pop {r4, pc}
 	nop
 _021F7ECC: .word _021FB630
-_021F7ED0: .word 0x021D110C
+_021F7ED0: .word gMain
 	thumb_func_end ov18_021F7E70
 
 	thumb_func_start ov18_021F7ED4
@@ -36549,7 +36549,7 @@ ov18_021F7ED4: ; 0x021F7ED4
 	mov r0, #0
 	sub r2, #0xc0
 	str r3, [sp, #0x14]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, _021F8160 ; =0x000003DA
 	mov r0, #0x25
 	bl AllocFromHeapAtEnd
@@ -36881,7 +36881,7 @@ ov18_021F8198: ; 0x021F8198
 _021F81AE:
 	ldrh r1, [r4]
 	ldr r0, [sp, #4]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	beq _021F81CA
 	ldr r1, [r5]
@@ -36926,7 +36926,7 @@ _021F81F8:
 	strh r0, [r5]
 	ldrh r1, [r4]
 	ldr r0, [sp]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F8214
 	mov r0, #2
@@ -37435,7 +37435,7 @@ _021F85BA:
 	tst r0, r2
 	bne _021F85EA
 	ldr r0, [sp, #0x30]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	beq _021F85EA
 	ldr r1, [r4]
@@ -37470,7 +37470,7 @@ _021F8604:
 	tst r0, r7
 	beq _021F862C
 	ldr r0, [sp, #0x30]
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	cmp r0, #0
 	beq _021F862C
 	ldr r1, [r4]
@@ -37547,7 +37547,7 @@ _021F8680:
 	bgt _021F86BA
 	ldr r0, [sp, #0x2c]
 	add r1, r2, #0
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F86BA
 	ldr r1, [r5]
@@ -37626,7 +37626,7 @@ _021F8710:
 	bgt _021F874E
 	ldr r0, [sp, #0x2c]
 	add r1, r2, #0
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F874E
 	ldr r1, [r5]
@@ -37727,7 +37727,7 @@ _021F87E0:
 	cmp r1, r0
 	bne _021F880A
 	ldr r0, [sp, #0x34]
-	bl sub_02029FF8
+	bl Pokedex_CheckMonCaughtFlag
 	cmp r0, #0
 	beq _021F880A
 	ldr r0, [sp, #4]
@@ -37830,7 +37830,7 @@ ov18_021F8884: ; 0x021F8884
 	add r1, r5, r2
 	mov r0, #0
 	lsr r2, r2, #1
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	cmp r4, #1
 	ldr r0, _021F8904 ; =0x0000102C
 	bne _021F88D6
@@ -38115,39 +38115,39 @@ ov18_021F8AB8: ; 0x021F8AB8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0206DD40
+	bl AcquireMonLock
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x91
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x92
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0xb1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0xb2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x25
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_0206DD8C
+	bl ReleaseMonLock
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F8AB8
@@ -38162,7 +38162,7 @@ ov18_021F8B10: ; 0x021F8B10
 	bl sub_0201BB68
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r5, _021F8BE0 ; =_021FBD7C
 	add r3, sp, #0x48
 	ldmia r5!, {r0, r1}
@@ -38177,12 +38177,12 @@ ov18_021F8B10: ; 0x021F8B10
 	str r0, [r3]
 	ldr r0, [r4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r3, [r4, #0x14]
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021F8BE4 ; =_021FBD60
 	add r3, sp, #0x2c
 	ldmia r5!, {r0, r1}
@@ -38197,7 +38197,7 @@ ov18_021F8B10: ; 0x021F8B10
 	str r0, [r3]
 	ldr r0, [r4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021F8BE8 ; =_021FBD98
 	add r3, sp, #0x10
 	ldmia r5!, {r0, r1}
@@ -38212,7 +38212,7 @@ ov18_021F8B10: ; 0x021F8B10
 	str r0, [r3]
 	ldr r0, [r4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -38260,13 +38260,13 @@ ov18_021F8BEC: ; 0x021F8BEC
 	add r4, r0, #0
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F8BEC
@@ -39560,7 +39560,7 @@ _021F962A:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov18_021F95FC

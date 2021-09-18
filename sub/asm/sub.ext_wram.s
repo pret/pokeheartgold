@@ -10439,9 +10439,9 @@ _06008D34: .word sub_037FAFF8
 
 	arm_func_start sub_06008D38
 sub_06008D38: ; 0x06008D38
-	ldr pc, _06008D3C ; =sub_037F8C20
+	ldr pc, _06008D3C ; =OS_GetLockID
 	.align 2, 0
-_06008D3C: .word sub_037F8C20
+_06008D3C: .word OS_GetLockID
 	arm_func_end sub_06008D38
 
 	arm_func_start sub_06008D40
@@ -10596,16 +10596,16 @@ _06008EF0: .word 0x0000FFFF
 
 	arm_func_start sub_06008EF4
 sub_06008EF4: ; 0x06008EF4
-	ldr pc, _06008EF8 ; =sub_037F894C
+	ldr pc, _06008EF8 ; =OS_DisableIrqMask
 	.align 2, 0
-_06008EF8: .word sub_037F894C
+_06008EF8: .word OS_DisableIrqMask
 	arm_func_end sub_06008EF4
 
 	arm_func_start sub_06008EFC
 sub_06008EFC: ; 0x06008EFC
-	ldr pc, _06008F00 ; =sub_037F8914
+	ldr pc, _06008F00 ; =OS_EnableIrqMask
 	.align 2, 0
-_06008F00: .word sub_037F8914
+_06008F00: .word OS_EnableIrqMask
 	arm_func_end sub_06008EFC
 
 	arm_func_start sub_06008F04
@@ -16367,9 +16367,9 @@ _0600D9E8: .word sub_0600C4F0
 
 	arm_func_start sub_0600D9EC
 sub_0600D9EC: ; 0x0600D9EC
-	ldr pc, _0600D9F0 ; =sub_037F87E0
+	ldr pc, _0600D9F0 ; =OS_SetIrqFunction
 	.align 2, 0
-_0600D9F0: .word sub_037F87E0
+_0600D9F0: .word OS_SetIrqFunction
 	arm_func_end sub_0600D9EC
 
 	arm_func_start sub_0600D9F4

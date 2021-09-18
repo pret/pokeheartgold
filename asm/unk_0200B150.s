@@ -508,8 +508,8 @@ _0200B4E8: .word 0x04001050
 _0200B4EC: .word _021D0EB4
 	thumb_func_end sub_0200B484
 
-	thumb_func_start sub_0200B4F0
-sub_0200B4F0: ; 0x0200B4F0
+	thumb_func_start SetBrightness
+SetBrightness: ; 0x0200B4F0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r2, #0
@@ -535,7 +535,7 @@ _0200B516:
 	nop
 _0200B520: .word 0x04000050
 _0200B524: .word 0x04001050
-	thumb_func_end sub_0200B4F0
+	thumb_func_end SetBrightness
 
 	thumb_func_start sub_0200B528
 sub_0200B528: ; 0x0200B528
@@ -543,11 +543,11 @@ sub_0200B528: ; 0x0200B528
 	ldr r0, _0200B548 ; =_021D0ED4
 	mov r1, #0
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0200B54C ; =_021D0EB4
 	mov r1, #0
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0200B550 ; =_021D0EB4
 	mov r1, #0
 	str r1, [r0, #0x3c]
@@ -569,7 +569,7 @@ sub_0200B554: ; 0x0200B554
 	ldr r0, _0200B588 ; =_021D0ED4
 	mov r1, #0
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0200B58C ; =_021D0EB4
 	mov r1, #0
 	str r1, [r0, #0x3c]
@@ -580,7 +580,7 @@ _0200B56E:
 	ldr r0, _0200B590 ; =_021D0EB4
 	mov r1, #0
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _0200B58C ; =_021D0EB4
 	mov r1, #0
 	str r1, [r0, #0x1c]

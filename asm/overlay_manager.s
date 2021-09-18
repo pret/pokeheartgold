@@ -36,8 +36,8 @@ OverlayManager_delete: ; 0x02007278
 _0200727C: .word FreeToHeap
 	thumb_func_end OverlayManager_delete
 
-	thumb_func_start sub_02007280
-sub_02007280: ; 0x02007280
+	thumb_func_start OverlayManager_CreateAndGetData
+OverlayManager_CreateAndGetData: ; 0x02007280
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r2, #0
@@ -45,16 +45,16 @@ sub_02007280: ; 0x02007280
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02007280
+	thumb_func_end OverlayManager_CreateAndGetData
 
-	thumb_func_start sub_02007290
-sub_02007290: ; 0x02007290
+	thumb_func_start OverlayManager_GetData
+OverlayManager_GetData: ; 0x02007290
 	ldr r0, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_02007290
+	thumb_func_end OverlayManager_GetData
 
-	thumb_func_start sub_02007294
-sub_02007294: ; 0x02007294
+	thumb_func_start OverlayManager_FreeData
+OverlayManager_FreeData: ; 0x02007294
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x1c]
@@ -62,13 +62,13 @@ sub_02007294: ; 0x02007294
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
-	thumb_func_end sub_02007294
+	thumb_func_end OverlayManager_FreeData
 
-	thumb_func_start sub_020072A4
-sub_020072A4: ; 0x020072A4
+	thumb_func_start OverlayManager_GetField18
+OverlayManager_GetField18: ; 0x020072A4
 	ldr r0, [r0, #0x18]
 	bx lr
-	thumb_func_end sub_020072A4
+	thumb_func_end OverlayManager_GetField18
 
 	thumb_func_start OverlayManager_run
 OverlayManager_run: ; 0x020072A8

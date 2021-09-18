@@ -4,7 +4,7 @@
 #include <nitro/types.h>
 #include <nitro/hw/mmap_shared.h>
 
-#ifdef ARM7
+#ifdef SDK_ARM7
 #include <nitro/hw/ARM7/mmap.h>
 #else //ARM9
 #include <nitro/hw/ARM9/mmap.h>

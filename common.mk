@@ -5,19 +5,22 @@ COMPARE ?= 1
 default: all
 
 PROJECT_ROOT := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
-TOOLSDIR     := $(PROJECT_ROOT)/tools
-
-include $(PROJECT_ROOT)/platform.mk
-include $(PROJECT_ROOT)/binutils.mk
 
 # Because mwldarm expects absolute paths to be WIN32 paths,
 # all paths referring up from BUILD_DIR must be relative.
-BACK_REL   := $(shell echo $(BUILD_DIR) | $(SED) 's/[^/]+/../g')
+WORK_DIR   := $(shell realpath --relative-to $(CURDIR) $(PROJECT_ROOT))
+$(shell mkdir -p $(BUILD_DIR))
+BACK_REL   := $(shell realpath --relative-to $(BUILD_DIR) $(CURDIR))
+
+TOOLSDIR     := $(WORK_DIR)/tools
+
+include $(WORK_DIR)/platform.mk
+include $(WORK_DIR)/binutils.mk
 
 # NitroSDK tools
 MWCC          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwccarm.exe
 MWAS          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwasmarm.exe
-MWLD          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwldarm.exe
+MWLD          = $(BACK_REL)/$(TOOLSDIR)/mwccarm/$(MWCCVER)/mwldarm.exe
 MAKEROM      := $(TOOLSDIR)/bin/makerom.exe
 MAKELCF      := $(TOOLSDIR)/bin/makelcf.exe
 MAKEBNR      := $(TOOLSDIR)/bin/makebanner.exe
@@ -81,9 +84,9 @@ LCF               := $(NEF:%.nef=%.lcf)
 SBIN              := $(NEF:%.nef=%.sbin)
 XMAP              := $(NEF).xMAP
 
-MWCFLAGS          := -O4,p -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -I./lib/include -DARM9
-MWASFLAGS         := -proc $(PROC_S) -i ./include
-MWLDFLAGS         := -nodead -w off -proc $(PROC) -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
+MWCFLAGS          := $(DEFINES) $(OPTFLAGS) -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -I$(WORK_DIR)/lib/include -ipa file -interworking
+MWASFLAGS         := $(DEFINES) -proc $(PROC_S) -i ./include -DSDK_ASM
+MWLDFLAGS         := -nodead -w off -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
 export MWCIncludes := lib/include
@@ -107,7 +110,7 @@ DUMMY != mkdir -p $(ALL_BUILDDIRS)
 all: tools
 
 ifeq ($(NODEP),)
-$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I $(PROJECT_ROOT)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
+$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I ./files -I $(WORK_DIR)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
 else
 $(BUILD_DIR)/%.o: dep :=
 endif
@@ -130,9 +133,12 @@ clean-tools:
 
 $(LCF): $(LSF) $(LCF_TEMPLATE)
 	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
+ifeq ($(PROC),arm946e)
+	echo "KEEP_SECTION\n{\n\t.exceptix\n}" >> $@
+endif
 
 $(NEF): $(LCF) $(ALL_OBJS)
-	cd $(BUILD_DIR) && $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) $(ALL_OBJS:$(BUILD_DIR)/%=%)
+	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) $(ALL_OBJS:$(BUILD_DIR)/%=%)
 
 $(SBIN): build/%.sbin: build/%.nef
 ifeq ($(COMPARE),1)

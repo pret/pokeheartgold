@@ -3,7 +3,7 @@
 
 #include <nitro/os/common/alloc_shared.h>
 
-#ifdef ARM7
+#ifdef SDK_ARM7
 #include <nitro/os/ARM7/alloc.h>
 #endif
 

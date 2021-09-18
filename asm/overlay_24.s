@@ -14,7 +14,7 @@ ov24_022598C0: ; 0x022598C0
 	mov r1, #0
 	mov r2, #0xc0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #3
 	str r0, [r4]
 	ldr r0, [r5, #0xc]
@@ -22,10 +22,10 @@ ov24_022598C0: ; 0x022598C0
 	mov r0, #0x14
 	strh r0, [r4, #0x18]
 	ldr r0, [r4]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #4]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	bl sub_0202A55C
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -79,7 +79,7 @@ ov24_02259940: ; 0x02259940
 	ldr r0, [r4, #0x10]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strh r0, [r5, #6]
 	mov r1, #0
 _02259966:
@@ -177,7 +177,7 @@ _02259A0C:
 	lsl r0, r0, #0x1e
 	lsr r0, r0, #0x1f
 	beq _02259A22
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -231,7 +231,7 @@ ov24_02259A4C: ; 0x02259A4C
 	cmp r3, r1
 	bne _02259A80
 	ldr r0, [r0, #4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -322,7 +322,7 @@ _02259B10:
 	ldr r0, [r5, #0x10]
 	mov r1, #0x77
 	add r2, r7, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r0, #1
 	str r0, [sp]
 	mov r3, #2
@@ -354,7 +354,7 @@ ov24_02259B50: ; 0x02259B50
 	mov r1, #8
 	bl AllocFromHeapAtEnd
 	add r6, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -384,7 +384,7 @@ _02259B82:
 	add r0, r0, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	ldrb r0, [r5, r7]
@@ -402,15 +402,15 @@ ov24_02259BB4: ; 0x02259BB4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_020744BC
+	bl SavArray_Party_alloc
 	str r0, [r5, #8]
 	ldr r0, [r5, #4]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [r5, #0xc]
 	ldr r1, [r5, #8]
 	bl sub_020748B8
 	ldr r0, [r5, #0xc]
-	bl sub_02074640
+	bl GetPartyCount
 	strb r0, [r5, #0x15]
 	ldr r0, [r5, #4]
 	bl sub_0205BD64
@@ -428,11 +428,11 @@ _02259BEC:
 	ldr r0, [r5, #0xc]
 	bge _02259BFC
 	add r1, r6, #0
-	bl sub_0207456C
+	bl RemoveMonFromParty
 	b _02259C02
 _02259BFC:
 	add r1, r7, #0
-	bl sub_0207456C
+	bl RemoveMonFromParty
 _02259C02:
 	ldrb r0, [r5, #0x15]
 	add r4, r4, #1
@@ -450,13 +450,13 @@ ov24_02259C10: ; 0x02259C10
 	sub sp, #8
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r5, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [r4, #0xc]
 	add r1, sp, #0
 	mov r2, #0
@@ -486,19 +486,19 @@ ov24_02259C10: ; 0x02259C10
 	cmp r0, #6
 	blo _02259C8A
 	ldr r0, [r4, #4]
-	bl sub_020270D8
+	bl GetStoragePCPointer
 	add r5, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_02073BB8
+	bl PCStorage_PlaceMonInFirstEmptySlotInAnyBox
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _02259C8A:
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
-	bl sub_02074524
+	bl AddMonToParty
 _02259C92:
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -582,7 +582,7 @@ _02259D0A:
 	add r7, r5, #0
 	str r0, [sp, #4]
 _02259D26:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	ldr r2, [sp]
@@ -631,7 +631,7 @@ _02259D7E:
 	add r3, #8
 	cmp r2, #8
 	blt _02259D60
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r4, #0
 	bl _s32_div_f
 	ldrb r0, [r6, r1]
@@ -640,11 +640,11 @@ _02259D7E:
 	ldr r0, [sp, #8]
 	add r0, r0, r1
 	ldr r1, [sp, #4]
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, r7, #0
 	add r0, #0x7a
 	ldrh r4, [r0]
-	bl sub_0201FD44
+	bl LCRandom
 	lsl r1, r4, #1
 	bl _s32_div_f
 	sub r0, r1, r4
@@ -722,7 +722,7 @@ _02259E3A:
 	add r0, r4, r0
 	add r1, r5, #0
 	mov r2, #0x50
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, sp, #0
@@ -750,7 +750,7 @@ _02259E76:
 	add r0, r6, #0
 	mov r1, #5
 	add r2, r7, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	add r1, r7, #0
@@ -785,7 +785,7 @@ _02259EB8:
 	add r0, r6, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x64
 	mul r1, r0
 	add r0, r1, #0
@@ -801,7 +801,7 @@ _02259ED8:
 	add r0, r6, #0
 	add r1, #0x46
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r0, r4, r0
 	lsl r0, r0, #0x10
 	add r5, r5, #1
@@ -818,12 +818,12 @@ _02259ED8:
 	add r0, r6, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0xa4
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	mov r0, #0x64
 	mul r0, r4

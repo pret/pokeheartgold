@@ -214,13 +214,13 @@ _02014B26:
 	add r1, r5, #0
 	ldr r0, [r5, r0]
 	lsl r2, r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r0, _02014B98 ; =0x00000794
 	mov r2, #3
 	lsl r2, r2, #8
 	ldr r0, [r5, r0]
 	add r1, r5, r2
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02014B88: .word 0x00000604
@@ -308,7 +308,7 @@ sub_02014C08: ; 0x02014C08
 	mov r2, #3
 	ldr r0, [r4, r0]
 	lsl r2, r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _02014C36:
 	pop {r4, pc}
 	.balign 4, 0

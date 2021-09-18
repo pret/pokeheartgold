@@ -75,7 +75,7 @@ _02000D2C:
 	cmp r0, #0
 	bne _02000D40
 	mov r0, #0
-	bl sub_0209263C
+	bl ShowSaveDataReadError
 	b _02000D82
 _02000D40:
 	; static inline int OS_GetResetParameter();
@@ -113,7 +113,7 @@ _02000D5E:
 _02000D7E:
 	bl GF_AssertFail
 _02000D82:
-	ldr r0, _02000E64 ; =0x021D110C
+	ldr r0, _02000E64 ; =gMain
 	mov r1, #1
 	str r1, [r0, #0x70]
 	mov r1, #0
@@ -126,8 +126,8 @@ _02000D82:
 	str r1, [r0, #4]
 	bl sub_020D33C0
 	mov r7, #0xc3
-	ldr r6, _02000E68 ; =0x021D116C
-	ldr r4, _02000E64 ; =0x021D110C
+	ldr r6, _02000E68 ; =gMain + 0x60
+	ldr r4, _02000E64 ; =gMain
 	mov r5, #0
 	lsl r7, r7, #2
 _02000DAC:
@@ -199,8 +199,8 @@ _02000E54: .word SDK_OVERLAY_OVY_60_ID
 _02000E58: .word ov60_021EB030
 _02000E5C: .word SDK_OVERLAY_OVY_36_ID
 _02000E60: .word ov36_021E5C04
-_02000E64: .word 0x021D110C
-_02000E68: .word 0x021D116C
+_02000E64: .word gMain
+_02000E68: .word gMain + 0x60
 	thumb_func_end NitroMain
 
 	thumb_func_start Main_ResetOverlayManager
@@ -300,7 +300,7 @@ sub_02000F14: ; 0x02000F14
 	mov r0, #1
 	add r1, r0, #0
 	bl OS_WaitIrq
-	ldr r0, _02000F3C ; =0x021D110C
+	ldr r0, _02000F3C ; =gMain
 	ldr r1, [r0, #0x2c]
 	add r1, r1, #1
 	str r1, [r0, #0x2c]
@@ -314,7 +314,7 @@ sub_02000F14: ; 0x02000F14
 _02000F38:
 	pop {r3, pc}
 	nop
-_02000F3C: .word 0x021D110C
+_02000F3C: .word gMain
 	thumb_func_end sub_02000F14
 
 	thumb_func_start sub_02000F40
@@ -409,7 +409,7 @@ sub_02000FD8: ; 0x02000FD8
 	bl sub_02039998
 	add r7, r0, #0
 	add r1, r4, #0
-	ldr r0, _02001090 ; =0x021D116C
+	ldr r0, _02001090 ; =gMain + 0x60
 	cmp r6, #3
 	strb r1, [r0, #8]
 	bne _02000FFC
@@ -439,7 +439,7 @@ _02001020:
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_0203AA44
+	bl ShowCommunicationError
 	bl sub_02038D90
 	bl sub_02000F14
 	bl DoSoundUpdateFrame
@@ -456,7 +456,7 @@ _02001036:
 	beq _02001068
 	cmp r7, #0
 	bne _02001068
-	ldr r0, _02001094 ; =0x021D110C
+	ldr r0, _02001094 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -467,7 +467,7 @@ _02001036:
 	str r0, [sp]
 	b _02001086
 _02001068:
-	ldr r0, _02001094 ; =0x021D110C
+	ldr r0, _02001094 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -487,8 +487,8 @@ _02001086:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02001090: .word 0x021D116C
-_02001094: .word 0x021D110C
+_02001090: .word gMain + 0x60
+_02001094: .word gMain
 	thumb_func_end sub_02000FD8
 
 	thumb_func_start sub_02001098
@@ -531,7 +531,7 @@ InitializeMainRNG: ; 0x020010C8
 	add r0, sp, #0xc
 	add r1, sp, #0
 	bl GF_RTC_CopyDateTime
-	ldr r0, _02001108 ; =0x021D110C
+	ldr r0, _02001108 ; =gMain
 	ldr r3, [sp, #0x10]
 	ldr r4, [r0, #0x2c]
 	ldr r1, [sp, #4]
@@ -555,7 +555,7 @@ InitializeMainRNG: ; 0x020010C8
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	nop
-_02001108: .word 0x021D110C
+_02001108: .word gMain
 	thumb_func_end InitializeMainRNG
 
 	thumb_func_start HandleDSLidAction
@@ -570,7 +570,7 @@ HandleDSLidAction: ; 0x0200110C
 	and r0, r1
 	asr r0, r0, #0xf
 	beq _020011AE
-	ldr r0, _020011D4 ; =0x021D116C
+	ldr r0, _020011D4 ; =gMain + 0x60
 	ldrb r0, [r0, #0xb]
 	cmp r0, #0
 	bne _02001190
@@ -589,7 +589,7 @@ _0200113C:
 	ldr r4, _020011D0 ; =0x027FFFA8
 	mov r2, #0x10
 	add r5, r0, #0
-	ldr r7, _020011D4 ; =0x021D116C
+	ldr r7, _020011D4 ; =gMain + 0x60
 	orr r5, r2
 _0200114C:
 	ldrb r2, [r7, #0xa]
@@ -654,6 +654,6 @@ _020011CA:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020011D0: .word 0x027FFFA8
-_020011D4: .word 0x021D116C
+_020011D4: .word gMain + 0x60
 _020011D8: .word gBacklightTop
 	thumb_func_end HandleDSLidAction

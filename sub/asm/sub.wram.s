@@ -271,9 +271,9 @@ _037F83BC:
 	bl sub_037FB554
 	ldr r1, _037F8468 ; =sub_037F84C0
 	mov r0, #1
-	bl sub_037F87E0
+	bl OS_SetIrqFunction
 	mov r0, #1
-	bl sub_037F8914
+	bl OS_EnableIrqMask
 	ldr r3, _037F846C ; =0x04000004
 	mov r0, #1
 	ldrh r1, [r3]
@@ -318,18 +318,18 @@ _037F846C: .word 0x04000004
 
 	arm_func_start sub_037F8470
 sub_037F8470: ; 0x037F8470
-	ldr ip, _037F8478 ; =sub_038008F4
+	ldr ip, _037F8478 ; =SVC_GetCRC16
 	bx ip
 	.align 2, 0
-_037F8478: .word sub_038008F4
+_037F8478: .word SVC_GetCRC16
 	arm_func_end sub_037F8470
 
 	arm_func_start sub_037F847C
 sub_037F847C: ; 0x037F847C
-	ldr ip, _037F8484 ; =sub_038008C2
+	ldr ip, _037F8484 ; =SVC_Halt
 	bx ip
 	.align 2, 0
-_037F8484: .word sub_038008C2
+_037F8484: .word SVC_Halt
 	arm_func_end sub_037F847C
 
 	arm_func_start sub_037F8488
@@ -481,13 +481,15 @@ _037F8654: .word 0x03806BA4
 _037F8658: .word OSi_ThreadInfo
 	arm_func_end sub_037F85FC
 
-	arm_func_start sub_037F865C
-sub_037F865C: ; 0x037F865C
-	bx lr
-	arm_func_end sub_037F865C
+	; os/irqTable.c
 
-	arm_func_start sub_037F8660
-sub_037F8660: ; 0x037F8660
+	arm_func_start OS_IrqDummy
+OS_IrqDummy: ; 0x037F865C
+	bx lr
+	arm_func_end OS_IrqDummy
+
+	arm_func_start OSi_IrqCallback
+OSi_IrqCallback: ; 0x037F8660
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #0xc
 	mul r5, r0, r1
@@ -516,7 +518,7 @@ _037F86A8:
 	cmp r0, #0
 	bne _037F86D0
 	mov r0, r4
-	bl sub_037F894C
+	bl OS_DisableIrqMask
 _037F86D0:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
@@ -526,82 +528,82 @@ _037F86DC: .word _03806A74
 _037F86E0: .word 0x03806BB4
 _037F86E4: .word 0x0380FFF8
 _037F86E8: .word 0x03806BB0
-	arm_func_end sub_037F8660
+	arm_func_end OSi_IrqCallback
 
-	arm_func_start sub_037F86EC
-sub_037F86EC: ; 0x037F86EC
-	ldr ip, _037F86F8 ; =sub_037F8660
+	arm_func_start OSi_IrqDma0
+OSi_IrqDma0: ; 0x037F86EC
+	ldr ip, _037F86F8 ; =OSi_IrqCallback
 	mov r0, #0
 	bx ip
 	.align 2, 0
-_037F86F8: .word sub_037F8660
-	arm_func_end sub_037F86EC
+_037F86F8: .word OSi_IrqCallback
+	arm_func_end OSi_IrqDma0
 
-	arm_func_start sub_037F86FC
-sub_037F86FC: ; 0x037F86FC
-	ldr ip, _037F8708 ; =sub_037F8660
+	arm_func_start OSi_IrqDma1
+OSi_IrqDma1: ; 0x037F86FC
+	ldr ip, _037F8708 ; =OSi_IrqCallback
 	mov r0, #1
 	bx ip
 	.align 2, 0
-_037F8708: .word sub_037F8660
-	arm_func_end sub_037F86FC
+_037F8708: .word OSi_IrqCallback
+	arm_func_end OSi_IrqDma1
 
-	arm_func_start sub_037F870C
-sub_037F870C: ; 0x037F870C
-	ldr ip, _037F8718 ; =sub_037F8660
+	arm_func_start OSi_IrqDma2
+OSi_IrqDma2: ; 0x037F870C
+	ldr ip, _037F8718 ; =OSi_IrqCallback
 	mov r0, #2
 	bx ip
 	.align 2, 0
-_037F8718: .word sub_037F8660
-	arm_func_end sub_037F870C
+_037F8718: .word OSi_IrqCallback
+	arm_func_end OSi_IrqDma2
 
-	arm_func_start sub_037F871C
-sub_037F871C: ; 0x037F871C
-	ldr ip, _037F8728 ; =sub_037F8660
+	arm_func_start OSi_IrqDma3
+OSi_IrqDma3: ; 0x037F871C
+	ldr ip, _037F8728 ; =OSi_IrqCallback
 	mov r0, #3
 	bx ip
 	.align 2, 0
-_037F8728: .word sub_037F8660
-	arm_func_end sub_037F871C
+_037F8728: .word OSi_IrqCallback
+	arm_func_end OSi_IrqDma3
 
-	arm_func_start sub_037F872C
-sub_037F872C: ; 0x037F872C
-	ldr ip, _037F8738 ; =sub_037F8660
+	arm_func_start OSi_IrqTimer0
+OSi_IrqTimer0: ; 0x037F872C
+	ldr ip, _037F8738 ; =OSi_IrqCallback
 	mov r0, #4
 	bx ip
 	.align 2, 0
-_037F8738: .word sub_037F8660
-	arm_func_end sub_037F872C
+_037F8738: .word OSi_IrqCallback
+	arm_func_end OSi_IrqTimer0
 
-	arm_func_start sub_037F873C
-sub_037F873C: ; 0x037F873C
-	ldr ip, _037F8748 ; =sub_037F8660
+	arm_func_start OSi_IrqTimer1
+OSi_IrqTimer1: ; 0x037F873C
+	ldr ip, _037F8748 ; =OSi_IrqCallback
 	mov r0, #5
 	bx ip
 	.align 2, 0
-_037F8748: .word sub_037F8660
-	arm_func_end sub_037F873C
+_037F8748: .word OSi_IrqCallback
+	arm_func_end OSi_IrqTimer1
 
-	arm_func_start sub_037F874C
-sub_037F874C: ; 0x037F874C
-	ldr ip, _037F8758 ; =sub_037F8660
+	arm_func_start OSi_IrqTimer2
+OSi_IrqTimer2: ; 0x037F874C
+	ldr ip, _037F8758 ; =OSi_IrqCallback
 	mov r0, #6
 	bx ip
 	.align 2, 0
-_037F8758: .word sub_037F8660
-	arm_func_end sub_037F874C
+_037F8758: .word OSi_IrqCallback
+	arm_func_end OSi_IrqTimer2
 
-	arm_func_start sub_037F875C
-sub_037F875C: ; 0x037F875C
-	ldr ip, _037F8768 ; =sub_037F8660
+	arm_func_start OSi_IrqTimer3
+OSi_IrqTimer3: ; 0x037F875C
+	ldr ip, _037F8768 ; =OSi_IrqCallback
 	mov r0, #7
 	bx ip
 	.align 2, 0
-_037F8768: .word sub_037F8660
-	arm_func_end sub_037F875C
+_037F8768: .word OSi_IrqCallback
+	arm_func_end OSi_IrqTimer3
 
-	arm_func_start sub_037F876C
-sub_037F876C: ; 0x037F876C
+	arm_func_start OSi_IrqVBlank
+OSi_IrqVBlank: ; 0x037F876C
 	stmdb sp!, {r3, lr}
 	ldr r2, _037F87B0 ; =0x027FFC3C
 	ldr r0, _037F87B4 ; =0x03806BAC
@@ -624,7 +626,9 @@ _037F8798:
 _037F87B0: .word 0x027FFC3C
 _037F87B4: .word 0x03806BAC
 _037F87B8: .word 0x0380FFF8
-	arm_func_end sub_037F876C
+	arm_func_end OSi_IrqVBlank
+
+	; os/interrupt.c
 
 	arm_func_start OS_InitIrqTable
 OS_InitIrqTable: ; 0x037F87BC
@@ -640,8 +644,8 @@ _037F87D8: .word 0x03806BA4
 _037F87DC: .word 0x027FFC3C
 	arm_func_end OS_InitIrqTable
 
-	arm_func_start sub_037F87E0
-sub_037F87E0: ; 0x037F87E0
+	arm_func_start OS_SetIrqFunction
+OS_SetIrqFunction: ; 0x037F87E0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldr r4, _037F8870 ; =0x03806A88
 	mov sb, #0
@@ -687,10 +691,10 @@ _037F8858:
 _037F8870: .word 0x03806A88
 _037F8874: .word 0x03806C0C
 _037F8878: .word 0x03806BAC
-	arm_func_end sub_037F87E0
+	arm_func_end OS_SetIrqFunction
 
-	arm_func_start sub_037F887C
-sub_037F887C: ; 0x037F887C
+	arm_func_start OSi_EnterTimerCallback
+OSi_EnterTimerCallback: ; 0x037F887C
 	stmdb sp!, {r4, lr}
 	mov r3, #0xc
 	mul r4, r0, r3
@@ -701,7 +705,7 @@ sub_037F887C: ; 0x037F887C
 	mov r1, #1
 	mov r0, r1, lsl r0
 	str r2, [r3, r4]
-	bl sub_037F8914
+	bl OS_EnableIrqMask
 	ldr r0, _037F88C4 ; =0x03806BE0
 	mov r1, #1
 	str r1, [r0, r4]
@@ -711,13 +715,13 @@ sub_037F887C: ; 0x037F887C
 _037F88BC: .word 0x03806BDC
 _037F88C0: .word 0x03806BE4
 _037F88C4: .word 0x03806BE0
-	arm_func_end sub_037F887C
+	arm_func_end OSi_EnterTimerCallback
 
-	arm_func_start sub_037F88C8
-sub_037F88C8: ; 0x037F88C8
+	arm_func_start OS_SetIrqMask
+OS_SetIrqMask: ; 0x037F88C8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_037F88FC
+	bl OS_DisableIrq
 	ldr r1, _037F88F8 ; =0x04000210
 	ldr r3, [r1]
 	sub r2, r1, #8
@@ -729,10 +733,10 @@ sub_037F88C8: ; 0x037F88C8
 	bx lr
 	.align 2, 0
 _037F88F8: .word 0x04000210
-	arm_func_end sub_037F88C8
+	arm_func_end OS_SetIrqMask
 
-	arm_func_start sub_037F88FC
-sub_037F88FC: ; 0x037F88FC
+	arm_func_start OS_DisableIrq
+OS_DisableIrq: ; 0x037F88FC
 	ldr r2, _037F8910 ; =0x04000208
 	mov r1, #0
 	ldrh r0, [r2]
@@ -740,13 +744,13 @@ sub_037F88FC: ; 0x037F88FC
 	bx lr
 	.align 2, 0
 _037F8910: .word 0x04000208
-	arm_func_end sub_037F88FC
+	arm_func_end OS_DisableIrq
 
-	arm_func_start sub_037F8914
-sub_037F8914: ; 0x037F8914
+	arm_func_start OS_EnableIrqMask
+OS_EnableIrqMask: ; 0x037F8914
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_037F88FC
+	bl OS_DisableIrq
 	ldr ip, _037F8948 ; =0x04000210
 	ldr r3, [ip]
 	sub r2, ip, #8
@@ -759,13 +763,13 @@ sub_037F8914: ; 0x037F8914
 	bx lr
 	.align 2, 0
 _037F8948: .word 0x04000210
-	arm_func_end sub_037F8914
+	arm_func_end OS_EnableIrqMask
 
-	arm_func_start sub_037F894C
-sub_037F894C: ; 0x037F894C
+	arm_func_start OS_DisableIrqMask
+OS_DisableIrqMask: ; 0x037F894C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_037F88FC
+	bl OS_DisableIrq
 	ldr ip, _037F8984 ; =0x04000210
 	mvn r1, r4
 	ldr r3, [ip]
@@ -779,13 +783,13 @@ sub_037F894C: ; 0x037F894C
 	bx lr
 	.align 2, 0
 _037F8984: .word 0x04000210
-	arm_func_end sub_037F894C
+	arm_func_end OS_DisableIrqMask
 
-	arm_func_start sub_037F8988
-sub_037F8988: ; 0x037F8988
+	arm_func_start OS_ResetRequestIrqMask
+OS_ResetRequestIrqMask: ; 0x037F8988
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_037F88FC
+	bl OS_DisableIrq
 	ldr r1, _037F89B8 ; =0x04000214
 	ldr r3, [r1]
 	sub r2, r1, #0xc
@@ -797,7 +801,9 @@ sub_037F8988: ; 0x037F8988
 	bx lr
 	.align 2, 0
 _037F89B8: .word 0x04000214
-	arm_func_end sub_037F8988
+	arm_func_end OS_ResetRequestIrqMask
+
+	; os/spinLock.c
 
 	arm_func_start OS_InitLock
 OS_InitLock: ; 0x037F89BC
@@ -815,7 +821,7 @@ OS_InitLock: ; 0x037F89BC
 	b _037F89F4
 _037F89EC:
 	mov r0, r5
-	bl sub_037F8A30
+	bl VENEER_SVC_WaitByLoop
 _037F89F4:
 	ldrh r0, [r4, #4]
 	cmp r0, #0x7f
@@ -836,16 +842,16 @@ _037F8A28: .word 0x027FFFF0
 _037F8A2C: .word 0x027FFFB8
 	arm_func_end OS_InitLock
 
-	arm_func_start sub_037F8A30
-sub_037F8A30: ; 0x037F8A30
-	ldr ip, _037F8A38 ; =sub_038008A8
+	arm_func_start VENEER_SVC_WaitByLoop
+VENEER_SVC_WaitByLoop: ; 0x037F8A30
+	ldr ip, _037F8A38 ; =SVC_WaitByLoop
 	bx ip
 	.align 2, 0
-_037F8A38: .word sub_038008A8
-	arm_func_end sub_037F8A30
+_037F8A38: .word SVC_WaitByLoop
+	arm_func_end VENEER_SVC_WaitByLoop
 
-	arm_func_start sub_037F8A3C
-sub_037F8A3C: ; 0x037F8A3C
+	arm_func_start OSi_DoUnlockByWord
+OSi_DoUnlockByWord: ; 0x037F8A3C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	ldrh r1, [r7, #4]
@@ -856,7 +862,7 @@ sub_037F8A3C: ; 0x037F8A3C
 	bne _037F8AB0
 	cmp r5, #0
 	beq _037F8A6C
-	bl sub_037FAD50
+	bl OS_DisableInterrupts_IrqAndFiq
 	b _037F8A70
 _037F8A6C:
 	bl OS_DisableInterrupts
@@ -874,7 +880,7 @@ _037F8A8C:
 	cmp r5, #0
 	mov r0, r4
 	beq _037F8AA8
-	bl sub_037FAD64
+	bl OS_RestoreInterrupts_IrqAndFiq
 	b _037F8AAC
 _037F8AA8:
 	bl OS_RestoreInterrupts
@@ -883,17 +889,17 @@ _037F8AAC:
 _037F8AB0:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
-	arm_func_end sub_037F8A3C
+	arm_func_end OSi_DoUnlockByWord
 
-	arm_func_start sub_037F8AB8
-sub_037F8AB8: ; 0x037F8AB8
+	arm_func_start OSi_DoTryLockByWord
+OSi_DoTryLockByWord: ; 0x037F8AB8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	movs r6, r3
 	mov sb, r0
 	mov r8, r1
 	mov r7, r2
 	beq _037F8AD8
-	bl sub_037FAD50
+	bl OS_DisableInterrupts_IrqAndFiq
 	b _037F8ADC
 _037F8AD8:
 	bl OS_DisableInterrupts
@@ -901,7 +907,7 @@ _037F8ADC:
 	mov r5, r0
 	mov r0, sb
 	mov r1, r8
-	bl sub_037FB240
+	bl MI_SwapWord
 	movs r4, r0
 	bne _037F8B08
 	cmp r7, #0
@@ -914,7 +920,7 @@ _037F8B08:
 	cmp r6, #0
 	mov r0, r5
 	beq _037F8B1C
-	bl sub_037FAD64
+	bl OS_RestoreInterrupts_IrqAndFiq
 	b _037F8B20
 _037F8B1C:
 	bl OS_RestoreInterrupts
@@ -922,123 +928,123 @@ _037F8B20:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
-	arm_func_end sub_037F8AB8
+	arm_func_end OSi_DoTryLockByWord
 
-	arm_func_start sub_037F8B2C
-sub_037F8B2C: ; 0x037F8B2C
+	arm_func_start OSi_DoLockByWord
+OSi_DoLockByWord: ; 0x037F8B2C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r6, _037F8B74 ; =0x027FFFE8
-	ldr r5, _037F8B78 ; =sub_037F8BC8
+	ldr r5, _037F8B78 ; =OSi_AllocateCartridgeBus
 	mov r8, r0
 	mov r7, #0x400
 	mov r4, #1
 	b _037F8B50
 _037F8B48:
 	mov r0, r7
-	bl sub_037F8A30
+	bl VENEER_SVC_WaitByLoop
 _037F8B50:
 	mov r0, r8
 	mov r1, r6
 	mov r2, r5
 	mov r3, r4
-	bl sub_037F8AB8
+	bl OSi_DoTryLockByWord
 	cmp r0, #0
 	bgt _037F8B48
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
 _037F8B74: .word 0x027FFFE8
-_037F8B78: .word sub_037F8BC8
-	arm_func_end sub_037F8B2C
+_037F8B78: .word OSi_AllocateCartridgeBus
+	arm_func_end OSi_DoLockByWord
 
-	arm_func_start sub_037F8B7C
-sub_037F8B7C: ; 0x037F8B7C
-	ldr ip, _037F8B90 ; =sub_037F8A3C
+	arm_func_start OS_UnlockCartridge
+OS_UnlockCartridge: ; 0x037F8B7C
+	ldr ip, _037F8B90 ; =OSi_DoUnlockByWord
 	ldr r1, _037F8B94 ; =0x027FFFE8
-	ldr r2, _037F8B98 ; =sub_037F8BCC
+	ldr r2, _037F8B98 ; =OSi_FreeCartridgeBus
 	mov r3, #1
 	bx ip
 	.align 2, 0
-_037F8B90: .word sub_037F8A3C
+_037F8B90: .word OSi_DoUnlockByWord
 _037F8B94: .word 0x027FFFE8
-_037F8B98: .word sub_037F8BCC
-	arm_func_end sub_037F8B7C
+_037F8B98: .word OSi_FreeCartridgeBus
+	arm_func_end OS_UnlockCartridge
 
-	arm_func_start sub_037F8B9C
-sub_037F8B9C: ; 0x037F8B9C
-	ldr r1, _037F8BA4 ; =sub_037F8B7C
+	arm_func_start OS_UnLockCartridge
+OS_UnLockCartridge: ; 0x037F8B9C
+	ldr r1, _037F8BA4 ; =OS_UnlockCartridge
 	bx r1
 	.align 2, 0
-_037F8BA4: .word sub_037F8B7C
-	arm_func_end sub_037F8B9C
+_037F8BA4: .word OS_UnlockCartridge
+	arm_func_end OS_UnLockCartridge
 
-	arm_func_start sub_037F8BA8
-sub_037F8BA8: ; 0x037F8BA8
-	ldr ip, _037F8BBC ; =sub_037F8AB8
+	arm_func_start OS_TryLockCartridge
+OS_TryLockCartridge: ; 0x037F8BA8
+	ldr ip, _037F8BBC ; =OSi_DoTryLockByWord
 	ldr r1, _037F8BC0 ; =0x027FFFE8
-	ldr r2, _037F8BC4 ; =sub_037F8BC8
+	ldr r2, _037F8BC4 ; =OSi_AllocateCartridgeBus
 	mov r3, #1
 	bx ip
 	.align 2, 0
-_037F8BBC: .word sub_037F8AB8
+_037F8BBC: .word OSi_DoTryLockByWord
 _037F8BC0: .word 0x027FFFE8
-_037F8BC4: .word sub_037F8BC8
-	arm_func_end sub_037F8BA8
+_037F8BC4: .word OSi_AllocateCartridgeBus
+	arm_func_end OS_TryLockCartridge
 
-	arm_func_start sub_037F8BC8
-sub_037F8BC8: ; 0x037F8BC8
+	arm_func_start OSi_AllocateCartridgeBus
+OSi_AllocateCartridgeBus: ; 0x037F8BC8
 	bx lr
-	arm_func_end sub_037F8BC8
+	arm_func_end OSi_AllocateCartridgeBus
 
-	arm_func_start sub_037F8BCC
-sub_037F8BCC: ; 0x037F8BCC
+	arm_func_start OSi_FreeCartridgeBus
+OSi_FreeCartridgeBus: ; 0x037F8BCC
 	bx lr
-	arm_func_end sub_037F8BCC
+	arm_func_end OSi_FreeCartridgeBus
 
-	arm_func_start sub_037F8BD0
-sub_037F8BD0: ; 0x037F8BD0
-	ldr ip, _037F8BE4 ; =sub_037F8A3C
+	arm_func_start OS_UnlockCard
+OS_UnlockCard: ; 0x037F8BD0
+	ldr ip, _037F8BE4 ; =OSi_DoUnlockByWord
 	ldr r1, _037F8BE8 ; =0x027FFFE0
-	ldr r2, _037F8BEC ; =sub_037F8C14
+	ldr r2, _037F8BEC ; =OSi_FreeCardBus
 	mov r3, #0
 	bx ip
 	.align 2, 0
-_037F8BE4: .word sub_037F8A3C
+_037F8BE4: .word OSi_DoUnlockByWord
 _037F8BE8: .word 0x027FFFE0
-_037F8BEC: .word sub_037F8C14
-	arm_func_end sub_037F8BD0
+_037F8BEC: .word OSi_FreeCardBus
+	arm_func_end OS_UnlockCard
 
-	arm_func_start sub_037F8BF0
-sub_037F8BF0: ; 0x037F8BF0
-	ldr ip, _037F8C04 ; =sub_037F8AB8
+	arm_func_start OS_TryLockCard
+OS_TryLockCard: ; 0x037F8BF0
+	ldr ip, _037F8C04 ; =OSi_DoTryLockByWord
 	ldr r1, _037F8C08 ; =0x027FFFE0
-	ldr r2, _037F8C0C ; =sub_037F8C10
+	ldr r2, _037F8C0C ; =OSi_AllocateCardBus
 	mov r3, #0
 	bx ip
 	.align 2, 0
-_037F8C04: .word sub_037F8AB8
+_037F8C04: .word OSi_DoTryLockByWord
 _037F8C08: .word 0x027FFFE0
-_037F8C0C: .word sub_037F8C10
-	arm_func_end sub_037F8BF0
+_037F8C0C: .word OSi_AllocateCardBus
+	arm_func_end OS_TryLockCard
 
-	arm_func_start sub_037F8C10
-sub_037F8C10: ; 0x037F8C10
+	arm_func_start OSi_AllocateCardBus
+OSi_AllocateCardBus: ; 0x037F8C10
 	bx lr
-	arm_func_end sub_037F8C10
+	arm_func_end OSi_AllocateCardBus
 
-	arm_func_start sub_037F8C14
-sub_037F8C14: ; 0x037F8C14
+	arm_func_start OSi_FreeCardBus
+OSi_FreeCardBus: ; 0x037F8C14
 	bx lr
-	arm_func_end sub_037F8C14
+	arm_func_end OSi_FreeCardBus
 
-	arm_func_start sub_037F8C18
-sub_037F8C18: ; 0x037F8C18
+	arm_func_start OS_ReadOwnerOfLockWord
+OS_ReadOwnerOfLockWord: ; 0x037F8C18
 	ldrh r0, [r0, #4]
 	bx lr
-	arm_func_end sub_037F8C18
+	arm_func_end OS_ReadOwnerOfLockWord
 
-	arm_func_start sub_037F8C20
-sub_037F8C20: ; 0x037F8C20
+	arm_func_start OS_GetLockID
+OS_GetLockID: ; 0x037F8C20
 	ldr r3, _037F8CB0 ; =0x027FFFB8
 	ldr r1, [r3]
 	mov r2, #0
@@ -1083,10 +1089,10 @@ _037F8C94:
 	.align 2, 0
 _037F8CB0: .word 0x027FFFB8
 _037F8CB4: .word 0xFFFFFFFD
-	arm_func_end sub_037F8C20
+	arm_func_end OS_GetLockID
 
-	arm_func_start sub_037F8CB8
-sub_037F8CB8: ; 0x037F8CB8
+	arm_func_start OS_ReleaseLockID
+OS_ReleaseLockID: ; 0x037F8CB8
 	ldr r3, _037F8CE4 ; =0x027FFFB8
 	cmp r0, #0xa0
 	addpl r3, r3, #4
@@ -1100,5 +1106,5 @@ sub_037F8CB8: ; 0x037F8CB8
 	bx lr
 	.align 2, 0
 _037F8CE4: .word 0x027FFFB8
-	arm_func_end sub_037F8CB8
+	arm_func_end OS_ReleaseLockID
 

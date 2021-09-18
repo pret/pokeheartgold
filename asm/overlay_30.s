@@ -12,14 +12,14 @@ ov30_0225D520: ; 0x0225D520
 	str r2, [sp]
 	mov r1, #8
 	lsl r2, r0, #0xf
-	bl sub_0201A910
+	bl CreateHeap
 	mov r0, #0
 	bl sub_020CDA64
 	mov r0, #0x80
-	bl sub_020CE650
+	bl GX_SetBankForSubBG
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_020CE6F8
+	bl GX_SetBankForSubOBJ
 	ldr r2, _0225D630 ; =0x04001000
 	ldr r0, _0225D634 ; =0xFFCFFFEF
 	ldr r1, [r2]
@@ -31,28 +31,28 @@ ov30_0225D520: ; 0x0225D520
 	ldr r2, _0225D638 ; =_0225DC2C
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r2, _0225D63C ; =0x0225DC48
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r2, _0225D640 ; =0x0225DC64
 	add r0, r5, #0
 	mov r1, #6
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r2, _0225D630 ; =0x04001000
 	ldr r0, _0225D644 ; =0xFFFF1FFF
 	ldr r1, [r2]
@@ -171,15 +171,15 @@ _0225D69E:
 	bl sub_02007234
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #8
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _0225D6F8 ; =ov30_0225DC18
 	blx ov123_0225F610
 	cmp r0, #0
@@ -333,13 +333,13 @@ ov30_0225D784: ; 0x0225D784
 	add r1, #0x4c
 	mov r2, #5
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r4, #0
 	add r0, #0x4c
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x44]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -380,7 +380,7 @@ ov30_0225D83C: ; 0x0225D83C
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r4, #0x3c]
 	mov r1, #0
@@ -409,7 +409,7 @@ ov30_0225D880: ; 0x0225D880
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4, #4]
 	mov r1, #6
 	str r0, [sp]
@@ -432,7 +432,7 @@ ov30_0225D880: ; 0x0225D880
 	bic r3, r0
 	strb r3, [r2, #0x12]
 	ldr r0, [r4, #4]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	bl sub_0201660C
 	add r1, sp, #0
@@ -482,13 +482,13 @@ ov30_0225D8F8: ; 0x0225D8F8
 	mov r1, #1
 	mov r2, #0xec
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	ldr r0, [r4, #0x38]
 	mov r1, #0x51
 	bl NewString_ReadMsgData
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -608,7 +608,7 @@ ov30_0225D9EC: ; 0x0225D9EC
 	bl NewString_ReadMsgData
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -692,13 +692,13 @@ ov30_0225DA98: ; 0x0225DA98
 	mov r1, #1
 	mov r2, #0xec
 	mov r3, #5
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	ldr r0, [r4, #0x38]
 	mov r1, #0x14
 	bl NewString_ReadMsgData
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -753,7 +753,7 @@ _0225DB16:
 _0225DB1C:
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -820,7 +820,7 @@ ov30_0225DB74: ; 0x0225DB74
 	bl ReadMsgData_ExpandPlaceholders
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]

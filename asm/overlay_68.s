@@ -11,19 +11,19 @@ ov68_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x42
 	lsl r2, r2, #0xe
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x77
 	add r0, r5, #0
 	lsl r1, r1, #2
 	mov r2, #0x42
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r2, #0x77
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4]
 	add r0, r4, #0
 	bl ov68_021E5A58
@@ -44,7 +44,7 @@ ov68_021E5900: ; 0x021E5900
 	bl ov68_021E7424
 	ldr r0, _021E5964 ; =ov68_021E5B6C
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -55,7 +55,7 @@ _021E5964: .word ov68_021E5B6C
 ov68_021E5968: ; 0x021E5968
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #0xf
@@ -165,12 +165,12 @@ _021E5A22:
 ov68_021E5A3C: ; 0x021E5A3C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	bl ov68_021E5B14
 	add r0, r4, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x42
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ov68_021E5A3C
@@ -181,10 +181,10 @@ ov68_021E5A58: ; 0x021E5A58
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -204,7 +204,7 @@ ov68_021E5A58: ; 0x021E5A58
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x42
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #4]
 	mov r0, #0x6e
 	mov r1, #0x42
@@ -238,7 +238,7 @@ ov68_021E5A58: ; 0x021E5A58
 	bl sub_020880CC
 	ldr r0, _021E5B10 ; =ov68_021E5B6C
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r5, #0
 	bl NARC_dtor
 	pop {r3, r4, r5, pc}
@@ -280,7 +280,7 @@ ov68_021E5B14: ; 0x021E5B14
 	bl sub_020205AC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r4, pc}
 	thumb_func_end ov68_021E5B14
 
@@ -321,7 +321,7 @@ _021E5BAA:
 	sub r2, r2, #1
 	bne _021E5BAA
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -341,7 +341,7 @@ ov68_021E5BC0: ; 0x021E5BC0
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E5CC4 ; =0x021E7C60
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -356,10 +356,10 @@ ov68_021E5BC0: ; 0x021E5BC0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5CC8 ; =0x021E7C44
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -374,10 +374,10 @@ ov68_021E5BC0: ; 0x021E5BC0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5CCC ; =0x021E7C7C
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -392,10 +392,10 @@ ov68_021E5BC0: ; 0x021E5BC0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5CD0 ; =0x021E7C98
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -410,10 +410,10 @@ ov68_021E5BC0: ; 0x021E5BC0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E5CD4 ; =0x021E7CB4
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -428,20 +428,20 @@ ov68_021E5BC0: ; 0x021E5BC0
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x42
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x42
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add sp, #0x9c
 	pop {r4, r5, pc}
 	nop
@@ -462,19 +462,19 @@ ov68_021E5CD8: ; 0x021E5CD8
 	bl sub_02022CC8
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #0x42
 	add r1, r4, #0
 	bl FreeToHeapExplicit
@@ -603,7 +603,7 @@ ov68_021E5D24: ; 0x021E5D24
 	bl sub_02003030
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -922,7 +922,7 @@ ov68_021E6078: ; 0x021E6078
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r4, #4]
 	mov r3, #0x6d
 	str r0, [sp]
@@ -1034,7 +1034,7 @@ ov68_021E614C: ; 0x021E614C
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x36
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0
 	str r0, [sp]
 	ldr r1, [r4]
@@ -1042,18 +1042,18 @@ ov68_021E614C: ; 0x021E614C
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x3e
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	bl ov68_021E6BEC
 	mov r1, #0
-	bl sub_0207332C
+	bl WazaGetMaxPp
 	str r0, [sp]
 	ldr r1, [r4]
 	add r2, sp, #0
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x3a
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [r4]
 	mov r1, #0
 	strb r1, [r0, #0x1a]
@@ -1223,7 +1223,7 @@ _021E62AA:
 	add r0, r1, r0
 	ldr r2, [r5, r2]
 	add r1, r7, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1392,7 +1392,7 @@ ov68_021E6320: ; 0x021E6320
 	bl ReadMsgDataIntoString
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r5, #0
 	add r0, #0xfc
@@ -1426,7 +1426,7 @@ ov68_021E6320: ; 0x021E6320
 	str r0, [sp, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	mov r4, #0
@@ -1494,7 +1494,7 @@ _021E64C4:
 	ldr r2, [r5, r2]
 	mov r1, #0
 	mov r3, #0x10
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r1, r4, #0
 	ldr r0, [sp, #0x18]
 	add r1, #0x3a
@@ -1549,7 +1549,7 @@ _021E64C4:
 	ldr r2, [r5, r2]
 	mov r1, #0
 	mov r3, #0x2d
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _021E659C:
 	ldr r0, [sp, #0x10]
 	add r4, r4, #1
@@ -1596,7 +1596,7 @@ _021E65AE:
 	ldr r2, [r5, r2]
 	add r0, #0xe8
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	add r0, #0xf8
 	ldr r0, [r0]
@@ -1756,7 +1756,7 @@ _021E6720:
 	add r0, #0xa8
 	ldr r2, [r2, r6]
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x10
 	str r0, [sp]
@@ -1771,7 +1771,7 @@ _021E6720:
 	ldr r2, [r5, r2]
 	add r0, #0xa8
 	mov r3, #0x10
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -1780,7 +1780,7 @@ _021E6720:
 	ldr r0, [r0, #4]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0207332C
+	bl WazaGetMaxPp
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1824,7 +1824,7 @@ _021E6720:
 	ldr r2, [r5, r2]
 	add r0, #0xa8
 	mov r3, #0x2d
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1983,7 +1983,7 @@ ov68_021E68D4: ; 0x021E68D4
 	beq _021E69EE
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_02073314
+	bl GetWazaAttr
 	add r2, r0, #0
 	cmp r2, #1
 	bhi _021E692E
@@ -2014,7 +2014,7 @@ _021E693C:
 	bl ov68_021E6234
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_02073314
+	bl GetWazaAttr
 	add r2, r0, #0
 	bne _021E696E
 	mov r1, #0x21
@@ -2138,7 +2138,7 @@ _021E6A44: ; jump table
 _021E6A5A:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2158,7 +2158,7 @@ _021E6A72:
 _021E6A86:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2169,7 +2169,7 @@ _021E6A86:
 _021E6A9E:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2188,7 +2188,7 @@ _021E6A9E:
 _021E6ACA:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2207,7 +2207,7 @@ _021E6ACA:
 _021E6AF6:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2226,7 +2226,7 @@ _021E6AF6:
 _021E6B22:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2254,7 +2254,7 @@ _021E6B4E:
 _021E6B62:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2336,7 +2336,7 @@ ov68_021E6BFC: ; 0x021E6BFC
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x36
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	pop {r3, pc}
@@ -2357,7 +2357,7 @@ ov68_021E6C14: ; 0x021E6C14
 	mov r1, #0
 	mov r2, #0x3d
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov68_021E6A2C
@@ -2365,7 +2365,7 @@ ov68_021E6C14: ; 0x021E6C14
 	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4]
 	ldr r0, [r0, #8]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -2393,7 +2393,7 @@ ov68_021E6C74: ; 0x021E6C74
 	add r4, r0, #0
 	add r0, #0x68
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r4, #0x68
 	add r0, r4, #0
 	bl sub_0201D8E4
@@ -2457,7 +2457,7 @@ _021E6CE0:
 	ldr r0, [r0]
 	add r1, #0x36
 	add r2, r6, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _021E6CFC
 	add r0, r4, #1
@@ -2677,7 +2677,7 @@ ov68_021E6DDC: ; 0x021E6DDC
 	bl sub_0200D3F8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -2902,13 +2902,13 @@ ov68_021E7028: ; 0x021E7028
 	bne _021E7044
 	add r0, r1, #0
 	mov r1, #3
-	bl sub_02073314
+	bl GetWazaAttr
 	add r6, r0, #0
 	b _021E7050
 _021E7044:
 	add r0, r1, #0
 	mov r1, #0xb
-	bl sub_02073314
+	bl GetWazaAttr
 	add r6, r0, #0
 	add r6, #0x12
 _021E7050:
@@ -3023,7 +3023,7 @@ ov68_021E7124: ; 0x021E7124
 	add r5, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl sub_02073314
+	bl GetWazaAttr
 	add r4, r0, #0
 	bl sub_02077830
 	add r6, r0, #0
@@ -3166,16 +3166,16 @@ ov68_021E7224: ; 0x021E7224
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	add r0, r6, #0
 	mov r2, #0x1c
-	bl sub_0206FBC4
+	bl GetMonBaseStat_HandleAlternateForme
 	add r3, r0, #0
 	mov r2, #1
 	ldr r0, [r5, #0x18]
@@ -3222,13 +3222,13 @@ ov68_021E7288: ; 0x021E7288
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_020CF82C
+	bl G3X_SetFog
 	mov r0, #0
 	ldr r2, _021E733C ; =0x00007FFF
 	add r1, r0, #0
 	mov r3, #0x3f
 	str r0, [sp]
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r1, _021E7340 ; =0x04000540
 	mov r0, #2
 	str r0, [r1]
@@ -3239,7 +3239,7 @@ ov68_021E7288: ; 0x021E7288
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0x55
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -3254,7 +3254,7 @@ ov68_021E7288: ; 0x021E7288
 	bl ov68_021E7224
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, _021E7348 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -3288,7 +3288,7 @@ ov68_021E734C: ; 0x021E734C
 	mov r0, #2
 	str r0, [r2]
 	str r3, [r1]
-	bl sub_020BEF98
+	bl NNS_G3dGlbFlushP
 	bl sub_020B7350
 	ldr r0, [r4, #4]
 	bl sub_02008120
@@ -3312,7 +3312,7 @@ ov68_021E7388: ; 0x021E7388
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x1c
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	pop {r4, pc}
 	thumb_func_end ov68_021E7388
 

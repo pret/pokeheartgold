@@ -1757,7 +1757,7 @@ sub_03801FBC: ; 0x03801FBC
 	bl OS_DisableInterrupts
 	mov r4, r0
 	mvn r0, #0xfe000000
-	bl sub_037F894C
+	bl OS_DisableIrqMask
 	mov r5, r0
 	mov r0, r8
 	bl sub_03801D6C
@@ -1781,14 +1781,14 @@ sub_03801FBC: ; 0x03801FBC
 	mov r0, #0x1000
 	orr r2, r2, #0x4000
 	strh r2, [r1]
-	bl sub_037F8914
+	bl OS_EnableIrqMask
 _03802040:
 	ldr r0, _0380217C ; =0x038093AE
 	ldrh r0, [r0]
 	tst r0, #4
 	beq _03802058
 	mov r0, #0x400000
-	bl sub_037F8914
+	bl OS_EnableIrqMask
 _03802058:
 	ldr r0, _0380217C ; =0x038093AE
 	ldrh r0, [r0]
@@ -1806,21 +1806,21 @@ _03802058:
 	mov r1, r0
 	bl sub_037FB51C
 	mov r0, #0x80
-	bl sub_037F8914
+	bl OS_EnableIrqMask
 _0380209C:
 	ldr r0, _0380217C ; =0x038093AE
 	ldrh r0, [r0]
 	tst r0, #8
 	beq _038020B4
 	mov r0, #0x100000
-	bl sub_037F8914
+	bl OS_EnableIrqMask
 _038020B4:
 	ldr r0, _0380217C ; =0x038093AE
 	ldrh r0, [r0]
 	tst r0, #0x10
 	beq _038020CC
 	mov r0, #0x2000
-	bl sub_037F8914
+	bl OS_EnableIrqMask
 _038020CC:
 	mov r0, r4
 	bl OS_RestoreInterrupts
@@ -1857,7 +1857,7 @@ _038020CC:
 	bl sub_03801CAC
 	bl OS_DisableInterrupts
 	mov r0, r5
-	bl sub_037F88C8
+	bl OS_SetIrqMask
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	ldr r1, _03802178 ; =0x04000208
@@ -1876,10 +1876,10 @@ _0380218C: .word 0x038093B4
 
 	arm_func_start sub_03802190
 sub_03802190: ; 0x03802190
-	ldr ip, _03802198 ; =sub_038008C6
+	ldr ip, _03802198 ; =SVC_Sleep
 	bx ip
 	.align 2, 0
-_03802198: .word sub_038008C6
+_03802198: .word SVC_Sleep
 	arm_func_end sub_03802190
 
 	arm_func_start sub_0380219C
@@ -2330,7 +2330,7 @@ _03802774:
 	bl OS_DisableInterrupts
 	mov r5, r0
 	mov r0, #0x40
-	bl sub_037F8914
+	bl OS_EnableIrqMask
 	ldr r1, _038028B8 ; =sub_038028C4
 	mov r0, #0x40
 	bl sub_03802CE8
@@ -2909,7 +2909,7 @@ sub_03802F38: ; 0x03802F38
 	add r0, sp, #0
 	str r3, [sp]
 	bl sub_03802F74
-	bl sub_037F8C20
+	bl OS_GetLockID
 	ldr r1, _03802F70 ; =0x03809448
 	strh r0, [r1, #6]
 	ldmia sp!, {r3, lr}
@@ -2922,10 +2922,10 @@ _03802F70: .word 0x03809448
 
 	arm_func_start sub_03802F74
 sub_03802F74: ; 0x03802F74
-	ldr ip, _03802F7C ; =sub_038008E8
+	ldr ip, _03802F7C ; =SVC_CpuSet
 	bx ip
 	.align 2, 0
-_03802F7C: .word sub_038008E8
+_03802F7C: .word SVC_CpuSet
 	arm_func_end sub_03802F74
 
 	arm_func_start sub_03802F80
@@ -3092,12 +3092,12 @@ sub_03803170: ; 0x03803170
 	bl OS_DisableInterrupts
 	str r0, [r4, #4]
 	ldr r0, _038031BC ; =0x027FFFE8
-	bl sub_037F8C18
+	bl OS_ReadOwnerOfLockWord
 	ands r0, r0, #0x80
 	str r0, [r4]
 	bne _038031A8
 	mov r0, r5
-	bl sub_037F8BA8
+	bl OS_TryLockCartridge
 	cmp r0, #0
 	bne _038031B0
 _038031A8:
@@ -3119,7 +3119,7 @@ sub_038031C0: ; 0x038031C0
 	ldr r1, [r4]
 	cmp r1, #0
 	bne _038031D8
-	bl sub_037F8B9C
+	bl OS_UnLockCartridge
 _038031D8:
 	ldr r0, [r4, #4]
 	bl OS_RestoreInterrupts
@@ -3137,7 +3137,7 @@ sub_038031E8: ; 0x038031E8
 	b _03803208
 _03803200:
 	mov r0, r6
-	bl sub_037F8A30
+	bl VENEER_SVC_WaitByLoop
 _03803208:
 	mov r0, r5
 	mov r1, r7
@@ -3163,7 +3163,7 @@ CTRDG_Init: ; 0x03803228
 	mov r1, #1
 	str r1, [r0, #0x14]
 	bl sub_03802F38
-	bl sub_037F8C20
+	bl OS_GetLockID
 	mvn r1, #2
 	cmp r0, r1
 	beq _038032A8
@@ -3209,7 +3209,7 @@ sub_038032C8: ; 0x038032C8
 	tst r1, #1
 	beq _0380341C
 	mov r0, #0x40000
-	bl sub_037F88C8
+	bl OS_SetIrqMask
 	ldr r2, _0380342C ; =0x04000208
 	mov r1, #1
 	ldrh sb, [r2]
@@ -3220,7 +3220,7 @@ sub_038032C8: ; 0x038032C8
 	b _03803324
 _0380331C:
 	mov r0, r6
-	bl sub_037F8A30
+	bl VENEER_SVC_WaitByLoop
 _03803324:
 	ldr r0, [r5, #0x28]
 	cmp r0, #1
@@ -3235,11 +3235,11 @@ _03803324:
 	mov r0, r0, lsl #5
 	add r5, r0, #0x2000000
 	mov r6, #1
-	bl sub_037F8C20
+	bl OS_GetLockID
 	mov r0, r0, lsl #0x10
 	mov r7, r0, lsr #0x10
 	mov r0, r7
-	bl sub_037F8B2C
+	bl OSi_DoLockByWord
 	ldr ip, _03803434 ; =0x0000FFFF
 	mov sl, #0
 	eor r0, ip, #3
@@ -3271,9 +3271,9 @@ _038033CC:
 	blt _03803390
 _038033D4:
 	mov r0, r7
-	bl sub_037F8B9C
+	bl OS_UnLockCartridge
 	mov r0, r7
-	bl sub_037F8CB8
+	bl OS_ReleaseLockID
 	ldr r2, _03803438 ; =0x027FFC30
 	and r0, r6, #0xff
 	ldrb r1, [r2, #5]
@@ -3287,7 +3287,7 @@ _038033D4:
 	mov r0, r4
 	ldrh r1, [r2]
 	strh sb, [r2]
-	bl sub_037F88C8
+	bl OS_SetIrqMask
 _0380341C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
@@ -3382,11 +3382,11 @@ _038034EC:
 	b _03803574
 _0380352C:
 	mov r0, r7
-	bl sub_037F8C18
+	bl OS_ReadOwnerOfLockWord
 	ands r8, r0, #0x80
 	bne _0380354C
 	ldrh r0, [r4]
-	bl sub_037F8BA8
+	bl OS_TryLockCartridge
 	cmp r0, #0
 	bne _0380356C
 _0380354C:
@@ -3396,7 +3396,7 @@ _0380354C:
 	cmp r8, #0
 	bne _03803574
 	ldrh r0, [r4]
-	bl sub_037F8B7C
+	bl OS_UnlockCartridge
 	b _03803574
 _0380356C:
 	ldr r0, _038036D8 ; =0x000080E8
@@ -3414,12 +3414,12 @@ _03803590:
 	cmp r5, #0
 	beq _038036C4
 	ldr r0, _038036D0 ; =0x027FFFE8
-	bl sub_037F8C18
+	bl OS_ReadOwnerOfLockWord
 	ands r4, r0, #0x80
 	bne _038035BC
 	ldr r0, _038036CC ; =0x03809450
 	ldrh r0, [r0]
-	bl sub_037F8BA8
+	bl OS_TryLockCartridge
 	cmp r0, #0
 	bne _038036AC
 _038035BC:
@@ -3484,7 +3484,7 @@ _03803694:
 	bne _038036C4
 	ldr r0, _038036CC ; =0x03809450
 	ldrh r0, [r0]
-	bl sub_037F8B7C
+	bl OS_UnlockCartridge
 	b _038036C4
 _038036AC:
 	ldr r0, _038036DC ; =0x03809480
@@ -3599,7 +3599,7 @@ sub_038037E4: ; 0x038037E4
 	b _03803830
 _03803828:
 	mov r0, r7
-	bl sub_037F8A30
+	bl VENEER_SVC_WaitByLoop
 _03803830:
 	mov r0, r6
 	mov r1, r5
@@ -4795,9 +4795,9 @@ _03804710:
 	mov r4, r0
 	ldr r1, _038047D8 ; =sub_03804DD8
 	mov r0, #0x80
-	bl sub_037F87E0
+	bl OS_SetIrqFunction
 	mov r0, #0x80
-	bl sub_037F8914
+	bl OS_EnableIrqMask
 	mov r0, r4
 	bl OS_RestoreInterrupts
 _038047AC:
@@ -7225,7 +7225,7 @@ sub_038068C8: ; 0x038068C8
 	b _038068E8
 _038068E0:
 	mov r0, r6
-	bl sub_037F8A30
+	bl VENEER_SVC_WaitByLoop
 _038068E8:
 	mov r0, r5
 	mov r1, r7
@@ -7251,7 +7251,7 @@ sub_03806914: ; 0x03806914
 	b _03806934
 _0380692C:
 	mov r0, r5
-	bl sub_037F8A30
+	bl VENEER_SVC_WaitByLoop
 _03806934:
 	ldrh r1, [r4]
 	tst r1, #1
@@ -7355,13 +7355,32 @@ _03806A70: .word 0x00001FFF
 	.rodata
 
 _03806A88:
-	.byte 0x6C, 0x87, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03
-	.byte 0x5C, 0x86, 0x7F, 0x03, 0x2C, 0x87, 0x7F, 0x03, 0x3C, 0x87, 0x7F, 0x03, 0x4C, 0x87, 0x7F, 0x03
-	.byte 0x5C, 0x87, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03, 0xEC, 0x86, 0x7F, 0x03, 0xFC, 0x86, 0x7F, 0x03
-	.byte 0x0C, 0x87, 0x7F, 0x03, 0x1C, 0x87, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03
-	.byte 0x5C, 0x86, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03
-	.byte 0x5C, 0x86, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03
-	.byte 0x5C, 0x86, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03, 0x5C, 0x86, 0x7F, 0x03, 0xFF, 0xFF, 0xFF, 0xFF
+	.word OSi_IrqVBlank
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OSi_IrqTimer0
+    .word OSi_IrqTimer1
+    .word OSi_IrqTimer2
+    .word OSi_IrqTimer3
+	.word OS_IrqDummy
+	.word OSi_IrqDma0
+    .word OSi_IrqDma1
+    .word OSi_IrqDma2
+    .word OSi_IrqDma3
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.byte 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0x78, 0x56, 0x34, 0x12, 0x32, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0xFE, 0x7F, 0x02
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0xAA, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xCC

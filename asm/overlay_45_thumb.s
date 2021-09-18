@@ -18,11 +18,11 @@ ov45_02229EE0: ; 0x02229EE0
 	mov r0, #3
 	mov r1, #0x6f
 	lsl r2, r2, #0xc
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0x10
 	mov r2, #0x6f
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	add r5, r0, #0
 	add r2, r5, #0
 	mov r1, #0x10
@@ -33,7 +33,7 @@ _02229F18:
 	sub r1, r1, #1
 	bne _02229F18
 	add r0, r4, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #0x6f
@@ -50,7 +50,7 @@ _02229F18:
 	str r0, [r5, #8]
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r0, _02229F6C ; =ov45_02229FE0
 	add r1, r5, #0
@@ -69,7 +69,7 @@ _02229F6C: .word ov45_02229FE0
 	thumb_func_start ov45_02229F70
 ov45_02229F70: ; 0x02229F70
 	push {r3, r4, r5, lr}
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5, #8]
 	bl ov45_0222CD90
@@ -90,22 +90,22 @@ _02229F8E:
 ov45_02229F94: ; 0x02229F94
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl sub_0200E390
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r0, [r4, #8]
 	bl ov45_0222CD68
 	ldr r0, [r4, #4]
 	bl ov45_0222A0F0
 	add r0, r5, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x6f
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, _02229FDC ; =SDK_OVERLAY_OVY_42_ID
 	bl UnloadOverlayByID
 	bl UnloadOVY38
@@ -169,7 +169,7 @@ ov45_02229FF4: ; 0x02229FF4
 	add r5, r4, #0
 _0222A046:
 	add r0, r7, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r1, r5, #0
 	add r1, #0xe8
 	add r6, r6, #1
@@ -764,12 +764,12 @@ ov45_0222A43C: ; 0x0222A43C
 	add r2, r0, #0
 	lsl r1, r1, #4
 	add r1, r2, r1
-	ldr r3, _0222A44C ; =sub_020D47EC
+	ldr r3, _0222A44C ; =MIi_CpuClear32
 	mov r0, #0
 	mov r2, #4
 	bx r3
 	.balign 4, 0
-_0222A44C: .word sub_020D47EC
+_0222A44C: .word MIi_CpuClear32
 	thumb_func_end ov45_0222A43C
 
 	thumb_func_start ov45_0222A450
@@ -818,11 +818,11 @@ ov45_0222A498: ; 0x0222A498
 	mov r2, #0x3e
 	lsl r2, r2, #4
 	add r0, r0, r2
-	ldr r3, _0222A4A4 ; =sub_020D4A50
+	ldr r3, _0222A4A4 ; =MIi_CpuCopy8
 	mov r2, #4
 	bx r3
 	.balign 4, 0
-_0222A4A4: .word sub_020D4A50
+_0222A4A4: .word MIi_CpuCopy8
 	thumb_func_end ov45_0222A498
 
 	thumb_func_start ov45_0222A4A8
@@ -1341,7 +1341,7 @@ ov45_0222A844: ; 0x0222A844
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #8
-	bl sub_02028F24
+	bl CopyPlayerName
 	mov r0, #0x20
 	add r1, r7, #0
 	bl String_ctor
@@ -1352,7 +1352,7 @@ ov45_0222A844: ; 0x0222A844
 	str r0, [sp, #4]
 	ldr r1, [sp, #4]
 	add r0, r4, #0
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r6, #0
@@ -1382,7 +1382,7 @@ _0222A8A2:
 	add r7, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_02028F44
+	bl PlayerName_StringToFlat
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
@@ -1392,28 +1392,28 @@ _0222A8D0:
 	bl ov45_0222A9A0
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02028F80
+	bl PlayerProfile_SetTrainerID
 	add r0, r5, #0
 	bl ov45_0222A9CC
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02028F90
+	bl PlayerProfile_SetTrainerGender
 	add r0, r5, #0
 	bl ov45_0222AA5C
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl sub_02029040
+	bl PlayerProfile_SetAvatar
 	add r0, r5, #0
 	bl ov45_0222AA10
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl sub_0202908C
+	bl PlayerProfile_SetLanguage
 	add r0, r4, #0
-	bl sub_02029090
+	bl PlayerProfile_SetGameClearFlag
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1788,11 +1788,11 @@ ov45_0222AB38: ; 0x0222AB38
 	mov r2, #0xf3
 	lsl r2, r2, #2
 	add r0, r0, r2
-	ldr r3, _0222AB44 ; =sub_020D4A50
+	ldr r3, _0222AB44 ; =MIi_CpuCopy8
 	mov r2, #0x14
 	bx r3
 	.balign 4, 0
-_0222AB44: .word sub_020D4A50
+_0222AB44: .word MIi_CpuCopy8
 	thumb_func_end ov45_0222AB38
 
 	thumb_func_start ov45_0222AB48
@@ -2672,9 +2672,9 @@ _0222B0F4: .word ov45_0222BD94
 ov45_0222B0F8: ; 0x0222B0F8
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x2f
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	pop {r3, pc}
 	thumb_func_end ov45_0222B0F8
 
@@ -2682,9 +2682,9 @@ ov45_0222B0F8: ; 0x0222B0F8
 ov45_0222B108: ; 0x0222B108
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x77
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	pop {r3, pc}
 	thumb_func_end ov45_0222B108
 
@@ -2880,7 +2880,7 @@ ov45_0222B244: ; 0x0222B244
 	bl GF_AssertFail
 _0222B254:
 	ldr r0, [r4]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, _0222B26C ; =0x00000528
 	ldr r1, [r4, r1]
 	bl sub_02078DD8
@@ -3686,42 +3686,42 @@ ov45_0222B8A0: ; 0x0222B8A0
 	str r1, [sp]
 	add r0, r1, #0
 	add r4, r2, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #0x18]
 	ldr r0, [sp]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	bl sub_0202CA44
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
-	bl sub_02028D3C
+	bl Sav2_SysInfo_RTC_get
 	str r0, [sp, #8]
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
-	bl sub_02028F68
+	bl PlayerProfile_GetPlayerName_NewString
 	add r1, r5, #0
 	add r4, r0, #0
 	add r1, #0x28
 	mov r2, #8
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #8
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #0
 	mvn r0, r0
 	str r0, [r5, #0x20]
 	ldr r0, [sp, #0x18]
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	str r0, [r5, #0x24]
 	ldr r0, [sp, #0x14]
-	bl sub_02074640
+	bl GetPartyCount
 	str r0, [sp, #4]
 	mov r4, #0
 	add r6, r5, #0
@@ -3731,25 +3731,25 @@ _0222B910:
 	bge _0222B950
 	ldr r0, [sp, #0x14]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r6, #0
 	add r1, #0x40
 	strh r0, [r1]
 	add r0, r7, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r5, r4
 	add r1, #0x4c
 	strb r0, [r1]
 	add r0, r7, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r5, r4
 	add r1, #0x52
 	strb r0, [r1]
@@ -3770,12 +3770,12 @@ _0222B958:
 	add r1, #0x58
 	strb r0, [r1]
 	ldr r0, [sp, #0x18]
-	bl sub_02029088
+	bl PlayerProfile_GetLanguage
 	add r1, r5, #0
 	add r1, #0x59
 	strb r0, [r1]
 	ldr r0, [sp, #0x18]
-	bl sub_0202903C
+	bl PlayerProfile_GetAvatar
 	add r1, r5, #0
 	add r1, #0x5a
 	strh r0, [r1]
@@ -3802,7 +3802,7 @@ _0222B958:
 	add r1, #0x5f
 	strb r0, [r1]
 	ldr r0, [sp, #0x18]
-	bl sub_020290A0
+	bl PlayerProfile_GetGameClearFlag
 	add r1, r5, #0
 	add r1, #0x60
 	strb r0, [r1]
@@ -3910,7 +3910,7 @@ _0222BA5E:
 	add r1, #0x18
 	add r1, r5, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -3921,7 +3921,7 @@ _0222BA5E:
 	add r1, #0x28
 	add r1, r5, r1
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r1, [r5]
@@ -3992,26 +3992,26 @@ _0222BB10:
 	add r0, r4, #0
 	add r1, #0x20
 	add r2, r7, #0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	b _0222BB3A
 _0222BB2E:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x20
 	mov r2, #0x94
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 _0222BB3A:
 	add r4, #8
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x10
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r0, r5, #0
 	add r5, #0x28
 	add r1, r5, #0
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov45_0222BB00
@@ -4123,7 +4123,7 @@ _0222BC08:
 	cmp r0, #0
 	bne _0222BC1E
 	ldr r0, _0222BC38 ; =0x00000481
-	bl sub_02005D48
+	bl PlayBGM
 _0222BC1E:
 	ldrb r1, [r5]
 	mov r0, #0x10
@@ -4239,7 +4239,7 @@ ov45_0222BCC8: ; 0x0222BCC8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
@@ -4268,13 +4268,13 @@ ov45_0222BCE4: ; 0x0222BCE4
 	add r0, #0x20
 	add r1, r6, #0
 	mov r2, #0x94
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	add r4, #0x10
 	add r1, r6, #0
 	add r0, r4, #0
 	add r1, #8
 	mov r2, #0x10
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	ldr r1, [r5]
 	add r0, r6, #0
 	add r2, r7, #0
@@ -5202,7 +5202,7 @@ ov45_0222C388: ; 0x0222C388
 	mvn r0, r0
 	add r1, r4, #0
 	mov r2, #0x6c
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov45_0222C388
@@ -5979,7 +5979,7 @@ _0222C908:
 	add r5, r5, r0
 	cmp r1, #9
 	blt _0222C908
-	bl sub_0201FDB8
+	bl MTRandom
 	add r1, r5, #0
 	bl _u32_div_f
 	mov r3, #0
@@ -6048,7 +6048,7 @@ ov45_0222C978: ; 0x0222C978
 	mov r1, #0
 	mov r2, #0xb8
 	add r5, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl sub_02015D14
 	add r5, #0xb4
@@ -6793,7 +6793,7 @@ ov45_0222CE78: ; 0x0222CE78
 	mov r4, #0
 _0222CE80:
 	add r0, r6, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	str r0, [r5, #0x20]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -8047,7 +8047,7 @@ _0222D732:
 	thumb_func_start ov45_0222D740
 ov45_0222D740: ; 0x0222D740
 	push {r4, lr}
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _0222D76A
 	add r2, r0, #0
@@ -9506,25 +9506,25 @@ _0222E0F4:
 	cmp r0, #0
 	beq _0222E124
 	ldr r1, [r5, #0x10]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 _0222E124:
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0
 	beq _0222E130
 	ldr r1, [r5, #0x14]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 _0222E130:
 	ldr r0, [sp, #0x20]
 	cmp r0, #0
 	beq _0222E13C
 	ldr r1, [r5, #0x18]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 _0222E13C:
 	ldr r0, [sp, #0x24]
 	cmp r0, #0
 	beq _0222E148
 	ldr r1, [r5, #0x1c]
-	bl sub_02028F58
+	bl PlayerName_FlatToString
 _0222E148:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9535,7 +9535,7 @@ ov45_0222E14C: ; 0x0222E14C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	ldr r0, _0222E19C ; =0x020F5670
+	ldr r0, _0222E19C ; =gGameLanguage
 	add r6, r2, #0
 	ldrb r4, [r0]
 	mov r0, #1
@@ -9568,7 +9568,7 @@ ov45_0222E14C: ; 0x0222E14C
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222E19C: .word 0x020F5670
+_0222E19C: .word gGameLanguage
 	thumb_func_end ov45_0222E14C
 
 	thumb_func_start ov45_0222E1A0
@@ -9576,7 +9576,7 @@ ov45_0222E1A0: ; 0x0222E1A0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	ldr r0, _0222E1FC ; =0x020F5670
+	ldr r0, _0222E1FC ; =gGameLanguage
 	add r6, r2, #0
 	ldrb r4, [r0]
 	mov r0, #1
@@ -9613,7 +9613,7 @@ ov45_0222E1A0: ; 0x0222E1A0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0222E1FC: .word 0x020F5670
+_0222E1FC: .word gGameLanguage
 	thumb_func_end ov45_0222E1A0
 
 	thumb_func_start ov45_0222E200
@@ -9639,7 +9639,7 @@ ov45_0222E200: ; 0x0222E200
 	beq _0222E290
 	b _0222E2DE
 _0222E22A:
-	ldr r0, _0222E338 ; =0x020F5670
+	ldr r0, _0222E338 ; =gGameLanguage
 	mov r1, #1
 	ldrb r6, [r0]
 	str r1, [sp]
@@ -9667,7 +9667,7 @@ _0222E22A:
 	mov r1, #0x12
 	b _0222E2E4
 _0222E266:
-	ldr r0, _0222E338 ; =0x020F5670
+	ldr r0, _0222E338 ; =gGameLanguage
 	mov r1, #1
 	ldrb r6, [r0]
 	str r1, [sp]
@@ -9687,7 +9687,7 @@ _0222E266:
 	mov r1, #0x13
 	b _0222E2E4
 _0222E290:
-	ldr r0, _0222E338 ; =0x020F5670
+	ldr r0, _0222E338 ; =gGameLanguage
 	mov r1, #1
 	ldrb r6, [r0]
 	str r1, [sp]
@@ -9732,7 +9732,7 @@ _0222E2E4:
 	add r5, r0, #0
 	b _0222E320
 _0222E2EE:
-	ldr r0, _0222E338 ; =0x020F5670
+	ldr r0, _0222E338 ; =gGameLanguage
 	mov r1, #1
 	ldrb r0, [r0]
 	str r1, [sp]
@@ -9765,7 +9765,7 @@ _0222E320:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0222E338: .word 0x020F5670
+_0222E338: .word gGameLanguage
 	thumb_func_end ov45_0222E200
 
 	thumb_func_start ov45_0222E33C
@@ -9779,7 +9779,7 @@ ov45_0222E33C: ; 0x0222E33C
 	mov r1, #0
 	add r6, r3, #0
 	bl sub_0200C74C
-	ldr r0, _0222E398 ; =0x020F5670
+	ldr r0, _0222E398 ; =gGameLanguage
 	mov r1, #1
 	ldrb r0, [r0]
 	str r1, [sp]
@@ -9811,7 +9811,7 @@ ov45_0222E33C: ; 0x0222E33C
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0222E398: .word 0x020F5670
+_0222E398: .word gGameLanguage
 	thumb_func_end ov45_0222E33C
 
 	thumb_func_start ov45_0222E39C
@@ -9825,7 +9825,7 @@ ov45_0222E39C: ; 0x0222E39C
 	str r3, [sp, #8]
 	cmp r1, #0
 	bls _0222E3D4
-	ldr r0, _0222E410 ; =0x020F5670
+	ldr r0, _0222E410 ; =gGameLanguage
 	add r5, r6, #0
 	ldrb r0, [r0]
 	str r0, [sp, #0xc]
@@ -9873,7 +9873,7 @@ _0222E3EC:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222E410: .word 0x020F5670
+_0222E410: .word gGameLanguage
 	thumb_func_end ov45_0222E39C
 
 	thumb_func_start ov45_0222E414
@@ -9984,7 +9984,7 @@ _0222E4C4:
 	mov r4, #0
 	cmp r1, #0
 	bls _0222E4FC
-	ldr r0, _0222E534 ; =0x020F5670
+	ldr r0, _0222E534 ; =gGameLanguage
 	add r5, r6, #0
 	ldrb r0, [r0]
 	str r0, [sp, #0xc]
@@ -10031,7 +10031,7 @@ _0222E51C:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222E534: .word 0x020F5670
+_0222E534: .word gGameLanguage
 _0222E538: .word 0x02254BCA
 _0222E53C: .word 0x02254BD2
 	thumb_func_end ov45_0222E4A8
@@ -14509,7 +14509,7 @@ _022304E2:
 	add r0, r5, #0
 	bl ov45_0222D740
 	add r0, r5, #0
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _02230572
 	add r2, r0, #0
@@ -15152,7 +15152,7 @@ ov45_022309E8: ; 0x022309E8
 	bl ov49_02258830
 	ldr r0, [sp]
 	str r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	str r0, [r4, #4]
 	cmp r0, #0
 	beq _02230A22
@@ -15179,7 +15179,7 @@ _02230A22:
 _02230A24:
 	str r0, [r4, #8]
 	ldr r0, [r4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
@@ -15889,7 +15889,7 @@ _02230E8E:
 	add r0, r5, #0
 	str r2, [r1, #0x7c]
 	bl sub_02023E94
-	bl sub_020BF004
+	bl NNS_G3dGlbSetBaseScale
 	add r0, sp, #0x38
 	add r1, sp, #0x24
 	bl sub_0201FA34

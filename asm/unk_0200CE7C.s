@@ -73,7 +73,7 @@ _0200CEFA:
 	ldr r1, [sp]
 	add r0, r6, r5
 	mov r2, #0x20
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _0200CF04:
 	add r4, r4, #2
 	ldrh r1, [r4, #8]

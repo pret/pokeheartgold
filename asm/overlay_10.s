@@ -56,7 +56,7 @@ _0221BE5A:
 	mov r4, #0
 _0221BE7C:
 	add r0, r4, #0
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	tst r0, r7
 	beq _0221BE90
 	mov r0, #0xd6
@@ -2330,7 +2330,7 @@ _0221CFF2:
 _0221D000:
 	ldr r0, [sp, #0xc]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r1, [sp, #8]
 	add r6, r0, #0
 	cmp r4, r1
@@ -2340,19 +2340,19 @@ _0221D000:
 	beq _0221D04E
 	mov r1, #0xa3
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221D04E
 	add r0, r6, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221D04E
 	add r0, r6, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _0221D064 ; =0x000001EE
 	cmp r0, r1
 	beq _0221D04E
@@ -2483,11 +2483,11 @@ _0221D122:
 	add r7, r5, r3
 	ldrh r0, [r7, r6]
 	mov r1, #0x18
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	add r4, r0, #0
 	ldrh r0, [r7, r6]
 	mov r1, #0x19
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	add r6, r0, #0
 	cmp r4, #0
 	beq _0221D15E
@@ -2595,12 +2595,12 @@ _0221D1E2:
 	ldrh r0, [r6, r1]
 	str r1, [sp]
 	mov r1, #0x18
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	add r4, r0, #0
 	ldr r0, [sp]
 	mov r1, #0x19
 	ldrh r0, [r6, r0]
-	bl sub_0206FBE8
+	bl GetMonBaseStat
 	cmp r4, #0
 	beq _0221D228
 	cmp r0, #0
@@ -2882,7 +2882,7 @@ _0221D412:
 _0221D42A:
 	ldr r0, [sp, #0x14]
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r1, [sp, #8]
 	add r4, r0, #0
 	cmp r5, r1
@@ -2892,26 +2892,26 @@ _0221D42A:
 	beq _0221D486
 	mov r1, #0xa3
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221D486
 	add r0, r4, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221D486
 	add r0, r4, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _0221D49C ; =0x000001EE
 	cmp r0, r1
 	beq _0221D486
 	add r0, r4, #0
 	mov r1, #0xa0
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, [sp, #0x10]
 	tst r0, r1
 	beq _0221D486
@@ -2997,7 +2997,7 @@ _0221D506:
 _0221D51E:
 	ldr r0, [sp, #0x14]
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r1, [sp, #8]
 	add r4, r0, #0
 	cmp r5, r1
@@ -3007,26 +3007,26 @@ _0221D51E:
 	beq _0221D57A
 	mov r1, #0xa3
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221D57A
 	add r0, r4, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221D57A
 	add r0, r4, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _0221D590 ; =0x000001EE
 	cmp r0, r1
 	beq _0221D57A
 	add r0, r4, #0
 	mov r1, #0xa0
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, [sp, #0x10]
 	tst r0, r1
 	bne _0221D57A
@@ -4389,12 +4389,12 @@ _0221DFC8:
 	beq _0221E002
 	mov r1, #0xa3
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r1, #0xa4
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r7, r0
 	beq _0221E002
 	ldr r0, [sp]
@@ -4463,13 +4463,13 @@ _0221E072:
 	add r0, r5, #0
 	add r1, #0x3a
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r4, #0
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, #0x42
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r6, r0
 	beq _0221E09A
 	ldr r0, [sp, #4]
@@ -4869,19 +4869,19 @@ _0221E374:
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221E43C
 	add r0, r6, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221E43C
 	add r0, r6, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _0221E45C ; =0x000001EE
 	cmp r0, r1
 	beq _0221E43C
@@ -4893,7 +4893,7 @@ _0221E3BA:
 	add r0, r6, #0
 	add r1, #0x36
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strh r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #2
@@ -4906,7 +4906,7 @@ _0221E3D4:
 	add r0, r6, #0
 	add r1, #0x46
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strb r0, [r4]
 	add r5, r5, #1
 	add r4, r4, #1
@@ -4915,12 +4915,12 @@ _0221E3D4:
 	add r0, r6, #0
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #0x44
 	str r1, [sp]
 	lsl r1, r4, #0x10
@@ -5659,7 +5659,7 @@ _0221E9D0:
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	bl ov10_0221EF34
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _0221E9F0 ; =0x00003108
 	ldrb r1, [r5, r1]
 	tst r0, r1
@@ -5698,7 +5698,7 @@ _0221EA20:
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	bl ov10_0221EF34
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _0221EA40 ; =0x00003108
 	ldrb r1, [r5, r1]
 	tst r0, r1
@@ -7470,19 +7470,19 @@ _0221F6CC:
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221F7C0
 	add r0, r6, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221F7C0
 	add r0, r6, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _0221F7E4 ; =0x000001EE
 	cmp r0, r1
 	beq _0221F7C0
@@ -7498,7 +7498,7 @@ _0221F710:
 	add r0, r6, #0
 	add r1, #0x36
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x1c]
@@ -7516,7 +7516,7 @@ _0221F710:
 	add r0, r6, #0
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x30]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -7774,19 +7774,19 @@ _0221F938:
 	mov r1, #0xa3
 	mov r2, #0
 	str r0, [sp, #0x58]
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221F99E
 	ldr r0, [sp, #0x58]
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221F99E
 	ldr r0, [sp, #0x58]
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _0221FB68 ; =0x000001EE
 	cmp r0, r1
 	beq _0221F99E
@@ -7824,7 +7824,7 @@ _0221F9A4:
 	ldr r0, [sp, #0x58]
 	add r1, #0x36
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x28]
@@ -7856,7 +7856,7 @@ _0221F9D8:
 	ldr r0, [sp, #0x58]
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x78]
 	add r0, r5, #0
 	add r1, r6, #0
@@ -7921,7 +7921,7 @@ _0221FA66:
 	ldr r0, [sp, #0x58]
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x88]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -8012,19 +8012,19 @@ _0221FB26:
 	mov r1, #0xa3
 	mov r2, #0
 	str r0, [sp, #0x1c]
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221FBA8
 	ldr r0, [sp, #0x1c]
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221FBA8
 	ldr r0, [sp, #0x1c]
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _0221FB68 ; =0x000001EE
 	b _0221FB74
 	nop
@@ -8071,7 +8071,7 @@ _0221FBAE:
 	ldr r0, [sp, #0x1c]
 	add r1, #0x36
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x2c]
@@ -8103,7 +8103,7 @@ _0221FBE2:
 	ldr r0, [sp, #0x1c]
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x98]
 	add r0, r5, #0
 	add r1, r6, #0
@@ -8170,7 +8170,7 @@ _0221FC72:
 	ldr r0, [sp, #0x1c]
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0xa8]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -8271,7 +8271,7 @@ ov10_0221FD34: ; 0x0221FD34
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x24]
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _0221FE84 ; =0x00003108
 	ldrb r1, [r4, r1]
 	tst r0, r1
@@ -8350,7 +8350,7 @@ _0221FDEE:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x1c]
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _0221FE84 ; =0x00003108
 	ldrb r1, [r4, r1]
 	tst r0, r1
@@ -8543,19 +8543,19 @@ _0221FF64:
 	mov r1, #0xa3
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221FFEC
 	add r0, r4, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0221FFEC
 	add r0, r4, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _02220004 ; =0x000001EE
 	cmp r0, r1
 	beq _0221FFEC
@@ -8579,7 +8579,7 @@ _0221FF64:
 	add r0, r4, #0
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	ldr r0, [sp, #0x10]
@@ -8698,19 +8698,19 @@ _0222009C:
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _02220102
 	add r0, r6, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _02220102
 	add r0, r6, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _02220260 ; =0x000001EE
 	cmp r0, r1
 	beq _02220102
@@ -8759,12 +8759,12 @@ _02220104:
 	add r0, r6, #0
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x40]
 	add r0, r6, #0
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r5, #0
@@ -8775,12 +8775,12 @@ _02220104:
 	add r0, r6, #0
 	mov r1, #0xb1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #0xb2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, [sp, #0x40]
 	ldr r2, [sp, #0x38]
 	str r1, [sp]
@@ -8805,7 +8805,7 @@ _0222018A:
 	add r0, r6, #0
 	add r1, #0x36
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x20]
@@ -8823,7 +8823,7 @@ _0222018A:
 	add r0, r6, #0
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _02220268 ; =0x0000306C
 	str r0, [sp, #0x4c]
 	ldrh r1, [r4, r1]
@@ -9176,19 +9176,19 @@ _02220474:
 	mov r1, #0xa3
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _022204D2
 	add r0, r4, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _022204D2
 	add r0, r4, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _022205B0 ; =0x000001EE
 	cmp r0, r1
 	beq _022204D2
@@ -9404,7 +9404,7 @@ _02220646:
 	bl ov12_0223A880
 	mov r1, #0xa3
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _0222067C
 	ldr r0, _022206AC ; =0x0000219C
@@ -9503,29 +9503,29 @@ _02220704:
 	bl ov12_0223A7F4
 	add r7, r0, #0
 	mov r5, #0
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, #0
 	ble _02220762
 _02220718:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _02220756
 	add r0, r6, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _02220756
 	add r0, r6, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _022209C8 ; =0x000001EE
 	cmp r0, r1
 	beq _02220756
@@ -9537,7 +9537,7 @@ _02220718:
 _02220756:
 	add r0, r7, #0
 	add r5, r5, #1
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r5, r0
 	blt _02220718
 _02220762:
@@ -9639,7 +9639,7 @@ _02220816:
 	b _02220A62
 _02220818:
 	mov r0, #5
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0
@@ -9668,7 +9668,7 @@ _02220834:
 	beq _02220922
 _02220852:
 	mov r0, #4
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0
@@ -9693,7 +9693,7 @@ _0222086E:
 	tst r0, r1
 	beq _02220922
 	mov r0, #3
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0
@@ -9718,7 +9718,7 @@ _022208A2:
 	tst r0, r1
 	beq _02220922
 	mov r0, #2
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0
@@ -9743,7 +9743,7 @@ _022208D6:
 	tst r0, r1
 	beq _02220922
 	mov r0, #1
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0
@@ -9771,7 +9771,7 @@ _02220922:
 	b _02220A62
 _02220924:
 	mov r0, #0
-	bl sub_020726C0
+	bl MaskOfFlagNo
 	ldr r1, _022209C4 ; =0x000003D3
 	ldrb r1, [r5, r1]
 	orr r1, r0

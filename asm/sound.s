@@ -4,16 +4,22 @@
 	.bss
 
 _0211194C:
-	.space 4
+	.space 0x4
 
 _02111950:
-	.space 4
+	.space 0x4
 
 _02111954:
-	.space 4
+	.space 0x4
 
 _02111958:
-	.space 0xBEC90
+	.space 0xBEC88
+
+_021D05E0:
+	.space 0x4
+
+_021D05E4:
+	.space 0x4
 
 	.text
 
@@ -101,7 +107,7 @@ _02004232:
 	bl sub_02004300
 _02004236:
 	bl sub_020C79B4
-	ldr r0, _020042E8 ; =0x021D110C
+	ldr r0, _020042E8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	lsl r0, r0, #0xc
@@ -186,7 +192,7 @@ _020042DA:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020042E4: .word 0x000BEBF0
-_020042E8: .word 0x021D110C
+_020042E8: .word gMain
 _020042EC: .word 0x000BEB94
 _020042F0: .word 0x000BEC74
 _020042F4: .word 0x000BEC58
@@ -247,7 +253,7 @@ _02004352:
 	ldrh r0, [r4, r0]
 	cmp r0, #0
 	beq _020043A0
-	bl sub_02005D48
+	bl PlayBGM
 	pop {r4, pc}
 _02004374:
 	bl sub_02005F88
@@ -261,7 +267,7 @@ _02004374:
 	ldrh r0, [r4, r0]
 	cmp r0, #0
 	beq _02004394
-	bl sub_02005D48
+	bl PlayBGM
 _02004394:
 	ldr r1, _020043AC ; =0x000BEBF8
 	mov r0, #0x7f
@@ -1093,7 +1099,7 @@ sub_02004980: ; 0x02004980
 sub_0200498C: ; 0x0200498C
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _020049C0 ; =0x021D05E4
+	ldr r0, _020049C0 ; =_021D05E4
 	bl NNS_SndHandleInit
 	ldr r1, _020049C4 ; =0x0000A7FE
 	mov r0, #9
@@ -1109,15 +1115,15 @@ sub_0200498C: ; 0x0200498C
 	beq _020049B8
 	bl GF_AssertFail
 _020049B8:
-	ldr r0, _020049CC ; =0x021D05E0
+	ldr r0, _020049CC ; =_021D05E0
 	mov r1, #0
 	str r1, [r0]
 	pop {r4, pc}
 	.balign 4, 0
-_020049C0: .word 0x021D05E4
+_020049C0: .word _021D05E4
 _020049C4: .word 0x0000A7FE
 _020049C8: .word 0x00002EE0
-_020049CC: .word 0x021D05E0
+_020049CC: .word _021D05E0
 	thumb_func_end sub_0200498C
 
 	thumb_func_start sub_020049D0
@@ -1131,7 +1137,7 @@ sub_020049D0: ; 0x020049D0
 	add r2, r0, #0
 	str r4, [sp]
 	ldrh r2, [r2]
-	ldr r0, _02004A00 ; =0x021D05E4
+	ldr r0, _02004A00 ; =_021D05E4
 	mov r1, #9
 	mov r3, #0x41
 	bl sub_020CA8E4
@@ -1139,13 +1145,13 @@ sub_020049D0: ; 0x020049D0
 	beq _020049F6
 	mov r4, #0
 _020049F6:
-	ldr r1, _02004A04 ; =0x021D05E0
+	ldr r1, _02004A04 ; =_021D05E0
 	str r4, [r1]
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
-_02004A00: .word 0x021D05E4
-_02004A04: .word 0x021D05E0
+_02004A00: .word _021D05E4
+_02004A04: .word _021D05E0
 	thumb_func_end sub_020049D0
 
 	thumb_func_start sub_02004A08
@@ -1154,21 +1160,21 @@ sub_02004A08: ; 0x02004A08
 	add r1, r0, #0
 	mov r0, #9
 	bl NNS_SndPlayerStopSeqByPlayerNo
-	ldr r0, _02004A1C ; =0x021D05E0
+	ldr r0, _02004A1C ; =_021D05E0
 	mov r1, #0
 	str r1, [r0]
 	pop {r3, pc}
 	nop
-_02004A1C: .word 0x021D05E0
+_02004A1C: .word _021D05E0
 	thumb_func_end sub_02004A08
 
 	thumb_func_start sub_02004A20
 sub_02004A20: ; 0x02004A20
-	ldr r0, _02004A28 ; =0x021D05E0
+	ldr r0, _02004A28 ; =_021D05E0
 	ldr r0, [r0]
 	bx lr
 	nop
-_02004A28: .word 0x021D05E0
+_02004A28: .word _021D05E0
 	thumb_func_end sub_02004A20
 
 	thumb_func_start sub_02004A2C

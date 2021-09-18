@@ -26,7 +26,7 @@ _02260C42:
 	mul r0, r1
 	add r4, r4, r0
 	add r0, r6, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r0, [r0, #8]
 	str r0, [r5, #0xc]
 	mov r0, #0
@@ -47,7 +47,7 @@ _02260C66:
 	bl sub_0203B9C4
 	bl sub_0203B958
 	str r0, [r5, #0x20]
-	bl sub_0203AF9C
+	bl MapMatrix_New
 	str r0, [r5, #0x30]
 	ldr r0, _02260D0C ; =ov124_02260D58
 	blx ov123_0225F520
@@ -121,9 +121,9 @@ ov124_02260D1C: ; 0x02260D1C
 	add r4, r5, #0
 _02260D24:
 	ldr r0, [r6, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r1, r4, #0
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #1
 	bne _02260D36
 	add r5, r5, #1

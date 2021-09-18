@@ -128,7 +128,7 @@ sub_02001BE0: ; 0x02001BE0
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mov r1, #0
-	ldr r2, _02001C8C ; =0x021D110C
+	ldr r2, _02001C8C ; =gMain
 	strb r1, [r4, #0x1b]
 	ldr r2, [r2, #0x48]
 	mov r5, #1
@@ -215,7 +215,7 @@ _02001C84:
 	add r0, r1, #0
 	pop {r3, r4, r5, pc}
 	nop
-_02001C8C: .word 0x021D110C
+_02001C8C: .word gMain
 _02001C90: .word 0x000005DC
 	thumb_func_end sub_02001BE0
 
@@ -645,7 +645,7 @@ CreateYesNoMenu: ; 0x02001F20
 	ldr r2, [sp, #0xc]
 	ldr r3, [sp, #0x10]
 	mov r1, #1
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]

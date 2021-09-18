@@ -99,7 +99,7 @@ _02259988:
 	cmp r4, #0
 	beq _022599C4
 	add r0, r4, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r6, r0, #0
 	cmp r6, #7
 	bls _0225999C
@@ -113,7 +113,7 @@ _022599A2:
 	ldr r0, _02259A2C ; =0x0000FFFF
 	add r1, #8
 	mov r2, #0x10
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r4, #0
 	bl String_c_str
 	add r1, r5, #0
@@ -139,7 +139,7 @@ _022599DE:
 	cmp r4, #0
 	beq _02259A1A
 	add r0, r4, #0
-	bl sub_02026800
+	bl StringGetLength
 	add r6, r0, #0
 	cmp r6, #0xa
 	bls _022599F2
@@ -153,7 +153,7 @@ _022599F8:
 	ldr r0, _02259A2C ; =0x0000FFFF
 	add r1, #0x24
 	mov r2, #0x14
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r4, #0
 	bl String_c_str
 	add r1, r5, #0
@@ -179,12 +179,12 @@ ov25_02259A30: ; 0x02259A30
 	push {r3, r4, r5, lr}
 	sub sp, #0x18
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -224,7 +224,7 @@ _02259A7E:
 	bl ov01_021EF564
 	ldr r1, _02259AA8 ; =0x021EF349
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
@@ -245,7 +245,7 @@ ov25_02259AAC: ; 0x02259AAC
 	ldr r5, [r4, #0xc]
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r0, #0x94
@@ -269,42 +269,42 @@ ov25_02259AAC: ; 0x02259AAC
 	add r0, r0, #4
 	str r1, [r6, r0]
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_02074640
+	bl GetPartyCount
 	add r7, r0, #0
 	ldr r0, [r6, #4]
 	mov r1, #6
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	mov r4, #0
 	cmp r7, #0
 	ble _02259B60
 _02259B12:
 	ldr r0, [sp, #0xc]
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r5, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	add r0, r5, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0x32
 	bls _02259B50
 	add r0, r5, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r1, #0x32
-	bl sub_0206FD00
+	bl GetMonExpBySpeciesAndLevel
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	mov r1, #8
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 _02259B50:
 	add r0, r6, #0
 	add r1, r5, #0
@@ -345,7 +345,7 @@ ov25_02259B90: ; 0x02259B90
 	add r4, r1, #0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0206DCE4
+	bl ZeroMonData
 	add r0, r6, #0
 	add r0, #0x22
 	ldrb r0, [r0]
@@ -365,7 +365,7 @@ _02259BAA:
 	add r0, r4, #0
 	lsr r1, r1, #0x15
 	and r3, r5
-	bl sub_0206E21C
+	bl CreateMonWithFixedIVs
 	ldrh r0, [r6]
 	add r2, sp, #8
 	add r2, #1
@@ -375,11 +375,11 @@ _02259BAA:
 	strb r1, [r0, #1]
 	add r0, r4, #0
 	mov r1, #0x70
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
 	mov r1, #6
 	add r2, r6, #2
-	bl sub_0206EC40
+	bl SetMonData
 	mov r5, #0
 	str r6, [sp, #4]
 	add r7, r5, #0
@@ -393,7 +393,7 @@ _02259BEC:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x36
-	bl sub_0206EC40
+	bl SetMonData
 	ldrb r0, [r6, #0x1e]
 	add r2, sp, #8
 	add r2, #1
@@ -406,19 +406,19 @@ _02259BEC:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x3e
-	bl sub_0206EC40
+	bl SetMonData
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x42
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #8
 	strb r0, [r1]
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x3a
 	add r2, sp, #8
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #4]
 	add r5, r5, #1
 	add r0, r0, #2
@@ -431,7 +431,7 @@ _02259BEC:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 	mov r5, #0
 	add r7, sp, #8
 _02259C5A:
@@ -443,7 +443,7 @@ _02259C5A:
 	add r0, r4, #0
 	add r1, #0xd
 	add r2, #1
-	bl sub_0206EC40
+	bl SetMonData
 	add r5, r5, #1
 	cmp r5, #6
 	blt _02259C5A
@@ -451,12 +451,12 @@ _02259C5A:
 	add r0, r4, #0
 	mov r1, #0xa
 	add r2, #0x20
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r6, #0
 	add r0, r4, #0
 	mov r1, #9
 	add r2, #0x21
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, sp, #0x10
 	mov r1, #0xb
 	bl StringFillEOS
@@ -468,14 +468,14 @@ _02259C5A:
 	add r0, r4, #0
 	mov r1, #0x75
 	add r2, sp, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add r6, #0x1f
 	add r0, r4, #0
 	mov r1, #0xc
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r4, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -490,7 +490,7 @@ ov25_02259CC4: ; 0x02259CC4
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x34
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldrb r0, [r5, #7]
 	ldrb r1, [r5, #4]
 	mov r2, #1
@@ -543,13 +543,13 @@ ov25_02259D14: ; 0x02259D14
 	add r0, r0, r4
 	str r1, [r0, #0x18]
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	ldr r0, [sp]
 	mov r1, #6
 	add r0, r0, r4
 	ldr r0, [r0, #4]
-	bl sub_020744DC
+	bl InitPartyWithMaxSize
 	add r5, #0x30
 	mov r7, #0
 	add r4, r5, #0

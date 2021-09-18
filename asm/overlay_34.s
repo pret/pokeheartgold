@@ -23,7 +23,7 @@ ov34_0225D520: ; 0x0225D520
 	add r2, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -36,7 +36,7 @@ _0225D554: .word 0x000F0200
 ov34_0225D558: ; 0x0225D558
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0225D59C ; =0x021D110C
+	ldr r0, _0225D59C ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -63,7 +63,7 @@ _0225D576:
 	bl ov34_0225E630
 	pop {r4, pc}
 	.balign 4, 0
-_0225D59C: .word 0x021D110C
+_0225D59C: .word gMain
 	thumb_func_end ov34_0225D558
 
 	thumb_func_start ov34_0225D5A0
@@ -196,7 +196,7 @@ _0225D66E:
 	add r1, r5, #0
 	lsr r2, r2, #0x18
 	mov r3, #1
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -223,7 +223,7 @@ _0225D66E:
 	add r1, #0x10
 	lsr r2, r2, #0x18
 	mov r3, #2
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x10
 	mov r1, #0
@@ -251,7 +251,7 @@ _0225D66E:
 	add r1, #0x20
 	lsr r2, r2, #0x18
 	mov r3, #0xc
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add r0, r5, #0
 	add r0, #0x20
 	mov r1, #0
@@ -290,7 +290,7 @@ _0225D66E:
 	add r0, r7, #0
 	mov r2, #4
 	mov r3, #8
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [sp, #0x14]
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -349,7 +349,7 @@ ov34_0225D7A8: ; 0x0225D7A8
 	ldr r0, [r0]
 	str r0, [r4, #8]
 	ldr r0, [r5, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #0x10]
 	mov r0, #2
 	mov r1, #0xa9
@@ -368,7 +368,7 @@ ov34_0225D7A8: ; 0x0225D7A8
 	bl ov34_0225D5F8
 	mov r0, #4
 	mov r1, #8
-	bl sub_0201A71C
+	bl SetKeyRepeatTimers
 	add r0, r4, #0
 	bl ov34_0225E56C
 	add r0, r4, #0
@@ -479,16 +479,16 @@ ov34_0225D900: ; 0x0225D900
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #4
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	thumb_func_end ov34_0225D900
 
@@ -512,10 +512,10 @@ ov34_0225D924: ; 0x0225D924
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0
 	bl sub_02022CC8
@@ -533,10 +533,10 @@ ov34_0225D924: ; 0x0225D924
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #0
 	bl sub_02022CC8
@@ -554,10 +554,10 @@ ov34_0225D924: ; 0x0225D924
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
 	bl sub_02022CC8
@@ -575,7 +575,7 @@ ov34_0225D924: ; 0x0225D924
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #8
 	mov r1, #0
 	bl sub_02022CC8
@@ -927,7 +927,7 @@ ov34_0225DC18: ; 0x0225DC18
 	str r3, [sp, #0xc]
 	ldr r2, [r6]
 	add r0, r7, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -939,7 +939,7 @@ ov34_0225DC18: ; 0x0225DC18
 	ldr r0, [sp, #0x1c]
 	ldr r2, [r6, #4]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r7, r4
 	bl sub_0201D5C8
 	ldr r0, [sp, #0x1c]
@@ -957,7 +957,7 @@ ov34_0225DC18: ; 0x0225DC18
 	str r0, [sp, #8]
 	add r0, r5, r4
 	str r3, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 _0225DCF0:
 	add r0, r5, r4
 	bl sub_0201D5C8
@@ -1262,7 +1262,7 @@ _0225DF36:
 	str r1, [r4, r0]
 	b _0225E006
 _0225DF40:
-	ldr r0, _0225E014 ; =0x021D114C
+	ldr r0, _0225E014 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0225E006
@@ -1276,7 +1276,7 @@ _0225DF40:
 	str r0, [r4]
 	b _0225E006
 _0225DF5E:
-	ldr r0, _0225E014 ; =0x021D114C
+	ldr r0, _0225E014 ; =gMain + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0225E006
@@ -1338,7 +1338,7 @@ _0225DFD0:
 	blt _0225DF94
 _0225DFD8:
 	bl sub_02035784
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	mov r1, #0x27
 	lsl r1, r1, #4
 	ldr r2, [r4, r1]
@@ -1364,7 +1364,7 @@ _0225E006:
 	nop
 _0225E00C: .word 0x0225E730
 _0225E010: .word 0x000005E5
-_0225E014: .word 0x021D114C
+_0225E014: .word gMain + 0x40
 _0225E018: .word 0x000005FC
 _0225E01C: .word 0x000004BF
 	thumb_func_end ov34_0225DE94
@@ -1472,7 +1472,7 @@ _0225E0E0: .word 0x0225E6AC
 	thumb_func_start ov34_0225E0E4
 ov34_0225E0E4: ; 0x0225E0E4
 	push {r4, lr}
-	ldr r1, _0225E15C ; =0x021D110C
+	ldr r1, _0225E15C ; =gMain
 	add r4, r0, #0
 	ldr r3, [r1, #0x44]
 	mov r1, #2
@@ -1482,7 +1482,7 @@ ov34_0225E0E4: ; 0x0225E0E4
 	beq _0225E126
 	mov r1, #0
 	bl ov34_0225E5EC
-	ldr r0, _0225E15C ; =0x021D110C
+	ldr r0, _0225E15C ; =gMain
 	mov r1, #2
 	ldr r0, [r0, #0x4c]
 	lsl r1, r1, #8
@@ -1508,7 +1508,7 @@ _0225E126:
 	beq _0225E158
 	mov r1, #1
 	bl ov34_0225E5EC
-	ldr r0, _0225E15C ; =0x021D110C
+	ldr r0, _0225E15C ; =gMain
 	ldr r1, [r0, #0x4c]
 	mov r0, #1
 	lsl r0, r0, #8
@@ -1529,7 +1529,7 @@ _0225E126:
 _0225E158:
 	pop {r4, pc}
 	nop
-_0225E15C: .word 0x021D110C
+_0225E15C: .word gMain
 _0225E160: .word 0x000005E5
 	thumb_func_end ov34_0225E0E4
 
@@ -1721,7 +1721,7 @@ ov34_0225E2BC: ; 0x0225E2BC
 	add r7, r2, #0
 	str r3, [sp, #8]
 	str r4, [sp, #0xc]
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	cmp r5, r0
 	beq _0225E2E0
 	add r0, r6, #0
@@ -2046,7 +2046,7 @@ _0225E53A:
 	add r4, r0, #0
 	beq _0225E55C
 	ldr r0, [r5, #0x10]
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	add r3, r0, #0
 	ldr r1, [r5, #0x10]
 	add r0, r5, #0
@@ -2093,7 +2093,7 @@ ov34_0225E58C: ; 0x0225E58C
 	mov r1, #0
 	lsl r2, r2, #2
 	strb r1, [r0, r2]
-	ldr r1, _0225E5D0 ; =0x021D114C
+	ldr r1, _0225E5D0 ; =gMain + 0x40
 	ldrh r3, [r1, #0x24]
 	cmp r3, #0
 	beq _0225E5A2
@@ -2127,7 +2127,7 @@ _0225E5C6:
 _0225E5CE:
 	bx lr
 	.balign 4, 0
-_0225E5D0: .word 0x021D114C
+_0225E5D0: .word gMain + 0x40
 	thumb_func_end ov34_0225E58C
 
 	thumb_func_start ov34_0225E5D4

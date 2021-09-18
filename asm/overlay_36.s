@@ -10,7 +10,7 @@ ov36_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x4b
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
@@ -20,7 +20,7 @@ ov36_021E5900: ; 0x021E5900
 	thumb_func_start ov36_021E5918
 ov36_021E5918: ; 0x021E5918
 	push {r3, lr}
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r1, [r0, #8]
 	mov r0, #0x4b
 	bl ov36_021E5BC8
@@ -29,19 +29,21 @@ ov36_021E5918: ; 0x021E5918
 	.balign 4, 0
 	thumb_func_end ov36_021E5918
 
+	.public _02106068
+
 	thumb_func_start ov36_021E592C
 ov36_021E592C: ; 0x021E592C
 	push {r3, lr}
 	mov r0, #0x4b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
-	ldr r1, _021E5944 ; =0x02106068
+	ldr r1, _021E5944 ; =_02106068
 	mvn r0, r0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_021E5944: .word 0x02106068
+_021E5944: .word _02106068
 	thumb_func_end ov36_021E592C
 
 	thumb_func_start ov36_021E5948
@@ -51,7 +53,7 @@ ov36_021E5948: ; 0x021E5948
 	mov r0, #3
 	mov r1, #0x4b
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
@@ -61,32 +63,34 @@ ov36_021E5948: ; 0x021E5948
 	thumb_func_start ov36_021E5960
 ov36_021E5960: ; 0x021E5960
 	push {r4, lr}
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r4, [r0, #8]
 	mov r0, #0x4b
 	add r1, r4, #0
 	mov r2, #1
 	bl ov36_021E5A38
 	add r0, r4, #0
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	bl sub_0201838C
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ov36_021E5960
 
+	.public _020FA15C
+
 	thumb_func_start ov36_021E5980
 ov36_021E5980: ; 0x021E5980
 	push {r3, lr}
 	mov r0, #0x4b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
-	ldr r1, _021E5998 ; =0x020FA15C
+	ldr r1, _021E5998 ; =_020FA15C
 	mvn r0, r0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_021E5998: .word 0x020FA15C
+_021E5998: .word _020FA15C
 	thumb_func_end ov36_021E5980
 
 	thumb_func_start ov36_021E599C
@@ -96,7 +100,7 @@ ov36_021E599C: ; 0x021E599C
 	mov r0, #3
 	mov r1, #0x4b
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	bl InitializeMainRNG
 	mov r0, #1
 	pop {r3, pc}
@@ -106,59 +110,61 @@ ov36_021E599C: ; 0x021E599C
 	thumb_func_start ov36_021E59B4
 ov36_021E59B4: ; 0x021E59B4
 	push {r3, r4, r5, lr}
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r4, [r0, #8]
 	add r0, r4, #0
-	bl sub_02028D30
+	bl Sav2_SysInfo_get
 	add r5, r0, #0
 	mov r0, #0x4b
 	add r1, r4, #0
 	bl ov36_021E5BB4
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0202ACF4
+	bl Options_SetButtonModeOnMain
 	add r0, r5, #0
-	bl sub_02028D74
+	bl Sav2_SysInfo_MacAddressIsMine
 	cmp r0, #0
 	beq _021E59E8
 	add r0, r5, #0
-	bl sub_02028DA4
+	bl Sav2_SysInfo_RTCOffsetIsMine
 	cmp r0, #0
 	bne _021E5A0C
 _021E59E8:
 	add r0, r4, #0
-	bl sub_02028D3C
+	bl Sav2_SysInfo_RTC_get
 	bl sub_02028E4C
 	add r0, r4, #0
 	bl sub_0202A988
 	bl sub_0202A8A8
 	add r0, r5, #0
-	bl sub_02028D48
+	bl Sav2_SysInfo_InitFromSystem
 	add r0, r4, #0
-	bl sub_02074904
-	bl sub_02071E2C
+	bl SavArray_PlayerParty_get
+	bl Party_ResetAllShayminToLandForme
 _021E5A0C:
 	add r0, r4, #0
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	bl sub_0201838C
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov36_021E59B4
 
+	.public _020FA16C
+
 	thumb_func_start ov36_021E5A1C
 ov36_021E5A1C: ; 0x021E5A1C
 	push {r3, lr}
 	mov r0, #0x4b
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #0
-	ldr r1, _021E5A34 ; =0x020FA16C
+	ldr r1, _021E5A34 ; =_020FA16C
 	mvn r0, r0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_021E5A34: .word 0x020FA16C
+_021E5A34: .word _020FA16C
 	thumb_func_end ov36_021E5A1C
 
 	thumb_func_start ov36_021E5A38
@@ -168,18 +174,18 @@ ov36_021E5A38: ; 0x021E5A38
 	add r6, r1, #0
 	add r0, r6, #0
 	add r5, r2, #0
-	bl sub_02028D30
-	bl sub_02028D48
+	bl Sav2_SysInfo_get
+	bl Sav2_SysInfo_InitFromSystem
 	add r0, r6, #0
-	bl sub_02028D3C
-	bl sub_02028DE8
+	bl Sav2_SysInfo_RTC_get
+	bl Sav2_SysInfo_RTC_init
 	add r0, r6, #0
 	bl sub_0202A988
 	bl sub_0202A8A8
 	add r0, r6, #0
 	bl sub_0202C854
 	add r4, r0, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #1
@@ -187,15 +193,15 @@ ov36_021E5A38: ; 0x021E5A38
 	add r0, r6, #0
 	bl sub_020674BC
 	add r0, r6, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r7, r0, #0
-	bl sub_0201FDB8
+	bl MTRandom
 	add r4, r0, #0
 	cmp r5, #0
 	beq _021E5A94
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02028F80
+	bl PlayerProfile_SetTrainerID
 _021E5A94:
 	add r0, r6, #0
 	bl sub_0202F57C
@@ -211,17 +217,17 @@ _021E5A94:
 	lsl r1, r1, #0x18
 	add r0, r7, #0
 	lsr r1, r1, #0x18
-	bl sub_02029040
+	bl PlayerProfile_SetAvatar
 	add r0, r6, #0
 	bl sub_0202A96C
 	bl sub_0202AE0C
 	add r0, r6, #0
-	bl sub_020325EC
+	bl Sav2_Pokewalker_get
 	bl sub_02032728
 	add r5, r0, #0
 	mov r4, #0
 _021E5AD4:
-	bl sub_0201FDB8
+	bl MTRandom
 	add r4, r4, #1
 	stmia r5!, {r0}
 	cmp r4, #0xa
@@ -233,10 +239,10 @@ _021E5AD4:
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0x1c]
 	add r0, r6, #0
-	bl sub_0202B50C
+	bl Sav2_Mailbox_get
 	str r0, [sp, #0x14]
 	mov r0, #3
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -245,7 +251,7 @@ _021E5AD4:
 	mov r2, #1
 	str r0, [sp, #0x10]
 	str r3, [sp, #0xc]
-	bl sub_0206DE38
+	bl CreateMon
 	add r0, r7, #0
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
@@ -260,7 +266,7 @@ _021E5AD4:
 	ldr r3, [sp, #0x18]
 	mov r1, #9
 	mov r2, #1
-	bl sub_0202B2D4
+	bl CreateKenyaMail
 	b _021E5B4E
 _021E5B36:
 	ldr r0, [sp, #0x1c]
@@ -272,7 +278,7 @@ _021E5B36:
 	ldr r3, [sp, #0x18]
 	mov r1, #9
 	str r2, [sp]
-	bl sub_0202B2D4
+	bl CreateKenyaMail
 _021E5B4E:
 	ldr r4, _021E5BB0 ; =0x021E5C34
 	add r6, r0, #0
@@ -286,7 +292,7 @@ _021E5B56:
 	add r0, r6, #0
 	add r1, r7, #0
 	lsr r2, r2, #0x18
-	bl sub_0202B4F8
+	bl Mail_CopyToUnk20Array
 	add r5, r5, #1
 	add r4, #8
 	cmp r5, #2
@@ -296,12 +302,12 @@ _021E5B56:
 	add r0, r6, #0
 	add r1, sp, #0x20
 	mov r2, #2
-	bl sub_0202B4F8
+	bl Mail_CopyToUnk20Array
 	mov r1, #0
 	ldr r0, [sp, #0x14]
 	add r2, r1, #0
 	add r3, r6, #0
-	bl sub_0202B554
+	bl Mailbox_CopyMailToSlotI
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	ldr r0, [sp, #0x18]
@@ -335,19 +341,19 @@ ov36_021E5BC8: ; 0x021E5BC8
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
-	bl sub_020274A8
+	bl Sav2_InitDynamicRegion
 	add r0, r4, #0
 	bl sub_0203E398
 	add r0, r4, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, _021E5BFC ; =0x00000BB8
-	bl sub_02029028
+	bl PlayerProfile_SetMoney
 	add r0, r4, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r1, _021E5C00 ; =0x0000DB56
 	bl sub_02066B60
 	add r0, r4, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020665EC
 	pop {r4, pc}
 	.balign 4, 0
@@ -362,6 +368,7 @@ ov36_021E5C04:
 	.word ov36_021E599C, ov36_021E59B4, ov36_021E5A1C, 0xFFFFFFFF
 ov36_021E5C14:
 	.word ov36_021E5948, ov36_021E5960, ov36_021E5980, 0xFFFFFFFF
+	.public ov36_021E5C24
 ov36_021E5C24:
 	.word ov36_021E5900, ov36_021E5918, ov36_021E592C, 0xFFFFFFFF
 ov36_021E5C34:

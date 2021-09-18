@@ -27,7 +27,7 @@ _0221BA0C:
 	bl sub_02034D8C
 	bl sub_020D33C0
 	bl sub_020D365C
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	add r5, r0, #0
 	mov r0, #2
 	bl ov00_021EC454
@@ -42,7 +42,7 @@ _0221BA0C:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r1, _0221BA6C ; =0x04000208
 	ldrh r0, [r1]
 	mov r0, #1

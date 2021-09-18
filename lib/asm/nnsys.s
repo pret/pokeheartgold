@@ -271,7 +271,7 @@ _020B503C:
 	sub r2, r2, r1
 	beq _020B5060
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _020B5060:
 	ldr r2, [sp, #8]
 	ldr r1, _020B5104 ; =0x00005544
@@ -490,8 +490,8 @@ _020B5314:
 _020B5358: .word 0x00004652
 	arm_func_end sub_020B526C
 
-	arm_func_start sub_020B535C
-sub_020B535C: ; 0x020B535C
+	arm_func_start NNS_FndCreateExpHeapEx
+NNS_FndCreateExpHeapEx: ; 0x020B535C
 	stmdb sp!, {r3, lr}
 	add r1, r1, r0
 	add r0, r0, #3
@@ -508,18 +508,18 @@ _020B5384:
 _020B538C:
 	bl sub_020B4F14
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020B535C
+	arm_func_end NNS_FndCreateExpHeapEx
 
-	arm_func_start sub_020B5394
-sub_020B5394: ; 0x020B5394
+	arm_func_start NNS_FndDestroyExpHeap
+NNS_FndDestroyExpHeap: ; 0x020B5394
 	ldr ip, _020B539C ; =sub_020B4E4C
 	bx ip
 	.align 2, 0
 _020B539C: .word sub_020B4E4C
-	arm_func_end sub_020B5394
+	arm_func_end NNS_FndDestroyExpHeap
 
-	arm_func_start sub_020B53A0
-sub_020B53A0: ; 0x020B53A0
+	arm_func_start NNS_FndAllocFromExpHeapEx
+NNS_FndAllocFromExpHeapEx: ; 0x020B53A0
 	stmdb sp!, {r3, lr}
 	cmp r1, #0
 	moveq r1, #1
@@ -533,10 +533,10 @@ _020B53C4:
 	rsb r2, r2, #0
 	bl sub_020B51BC
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020B53A0
+	arm_func_end NNS_FndAllocFromExpHeapEx
 
-	arm_func_start sub_020B53D0
-sub_020B53D0: ; 0x020B53D0
+	arm_func_start NNS_FndResizeForMBlockExpHeap
+NNS_FndResizeForMBlockExpHeap: ; 0x020B53D0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x10
 	mov r4, r1
@@ -612,7 +612,7 @@ _020B54C8:
 	beq _020B5520
 	mov r1, r6
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	b _020B5520
 _020B54F0:
 	add r0, sb, r4
@@ -633,10 +633,10 @@ _020B5520:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020B552C: .word 0x00004652
-	arm_func_end sub_020B53D0
+	arm_func_end NNS_FndResizeForMBlockExpHeap
 
-	arm_func_start sub_020B5530
-sub_020B5530: ; 0x020B5530
+	arm_func_start NNS_FndFreeToExpHeap
+NNS_FndFreeToExpHeap: ; 0x020B5530
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	sub r4, r1, #0x10
@@ -652,10 +652,10 @@ sub_020B5530: ; 0x020B5530
 	bl sub_020B526C
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020B5530
+	arm_func_end NNS_FndFreeToExpHeap
 
-	arm_func_start sub_020B556C
-sub_020B556C: ; 0x020B556C
+	arm_func_start NNS_FndGetTotalFreeSizeForExpHeap
+NNS_FndGetTotalFreeSizeForExpHeap: ; 0x020B556C
 	ldr r2, [r0, #0x24]
 	mov r0, #0
 	cmp r2, #0
@@ -667,7 +667,7 @@ _020B557C:
 	cmp r2, #0
 	bne _020B557C
 	bx lr
-	arm_func_end sub_020B556C
+	arm_func_end NNS_FndGetTotalFreeSizeForExpHeap
 
 	arm_func_start sub_020B5594
 sub_020B5594: ; 0x020B5594
@@ -677,11 +677,11 @@ sub_020B5594: ; 0x020B5594
 	bx lr
 	arm_func_end sub_020B5594
 
-	arm_func_start sub_020B55A4
-sub_020B55A4: ; 0x020B55A4
+	arm_func_start NNS_FndGetSizeForMBlockExpHeap
+NNS_FndGetSizeForMBlockExpHeap: ; 0x020B55A4
 	ldr r0, [r0, #-0xc]
 	bx lr
-	arm_func_end sub_020B55A4
+	arm_func_end NNS_FndGetSizeForMBlockExpHeap
 
 	arm_func_start sub_020B55AC
 sub_020B55AC: ; 0x020B55AC
@@ -734,7 +734,7 @@ sub_020B5600: ; 0x020B5600
 	beq _020B5650
 	mov r1, r3
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _020B5650:
 	mov r0, r5
 	str r6, [r4]
@@ -761,7 +761,7 @@ sub_020B565C: ; 0x020B565C
 	beq _020B56A8
 	mov r1, r5
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _020B56A8:
 	mov r0, r5
 	str r5, [r4, #4]
@@ -949,7 +949,7 @@ sub_020B5888: ; 0x020B5888
 	beq _020B58C0
 	mov r1, r4
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _020B58C0:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
@@ -965,21 +965,21 @@ sub_020B58C8: ; 0x020B58C8
 
 	arm_func_start sub_020B58D8
 sub_020B58D8: ; 0x020B58D8
-	ldr ip, _020B58E8 ; =sub_020B53A0
+	ldr ip, _020B58E8 ; =NNS_FndAllocFromExpHeapEx
 	mov r2, r0
 	ldmib r2, {r0, r2}
 	bx ip
 	.align 2, 0
-_020B58E8: .word sub_020B53A0
+_020B58E8: .word NNS_FndAllocFromExpHeapEx
 	arm_func_end sub_020B58D8
 
 	arm_func_start sub_020B58EC
 sub_020B58EC: ; 0x020B58EC
-	ldr ip, _020B58F8 ; =sub_020B5530
+	ldr ip, _020B58F8 ; =NNS_FndFreeToExpHeap
 	ldr r0, [r0, #4]
 	bx ip
 	.align 2, 0
-_020B58F8: .word sub_020B5530
+_020B58F8: .word NNS_FndFreeToExpHeap
 	arm_func_end sub_020B58EC
 
 	arm_func_start sub_020B58FC
@@ -1060,8 +1060,8 @@ sub_020B5990: ; 0x020B5990
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020B5990
 
-	arm_func_start sub_020B59A4
-sub_020B59A4: ; 0x020B59A4
+	arm_func_start NNS_FndInitAllocatorForExpHeap
+NNS_FndInitAllocatorForExpHeap: ; 0x020B59A4
 	ldr ip, _020B59B8 ; =0x02109200
 	mov r3, #0
 	str ip, [r0]
@@ -1069,7 +1069,7 @@ sub_020B59A4: ; 0x020B59A4
 	bx lr
 	.align 2, 0
 _020B59B8: .word 0x02109200
-	arm_func_end sub_020B59A4
+	arm_func_end NNS_FndInitAllocatorForExpHeap
 
 	arm_func_start sub_020B59BC
 sub_020B59BC: ; 0x020B59BC
@@ -3719,39 +3719,39 @@ sub_020B78D4: ; 0x020B78D4
 	ldr r1, _020B796C ; =0x021D8618
 	mov r0, #0xc0
 	mov r2, #0x400
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r1, _020B7970 ; =0x021D8B58
 	mov r0, #0xc0
 	mov r2, #0x400
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r1, _020B7974 ; =0x021D9098
 	mov r0, #0xc0
 	mov r2, #0x400
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, _020B7978 ; =0x0000FFFF
 	ldr r1, _020B797C ; =0x021D8518
 	mov r2, #0x100
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, _020B7978 ; =0x0000FFFF
 	ldr r1, _020B7980 ; =0x021D8A58
 	mov r2, #0x100
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, _020B7978 ; =0x0000FFFF
 	ldr r1, _020B7984 ; =0x021D8F98
 	mov r2, #0x100
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, _020B7978 ; =0x0000FFFF
 	ldr r1, _020B7988 ; =0x021D8A18
 	mov r2, #0x40
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, _020B7978 ; =0x0000FFFF
 	ldr r1, _020B798C ; =0x021D8F58
 	mov r2, #0x40
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, _020B7978 ; =0x0000FFFF
 	ldr r1, _020B7990 ; =0x021D9498
 	mov r2, #0x40
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020B796C: .word 0x021D8618
@@ -3811,7 +3811,7 @@ _020B79F8:
 	strh ip, [r6, #8]
 	ldrh r0, [r6, #0x10]
 	mov r2, r3, lsl #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	b _020B7A44
 _020B7A3C:
 	mov r0, #0
@@ -3859,7 +3859,7 @@ _020B7AB4:
 	ldrh r0, [r6, #0x10]
 	add r1, r3, r5, lsl #1
 	mov r2, r2, lsl #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	b _020B7AEC
 _020B7AE4:
 	mov r0, #0
@@ -4189,7 +4189,7 @@ _020B7F14:
 _020B7F64:
 	mov r2, r4
 	mov r0, #0xc0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	b _020B7FC8
 _020B7F74:
 	ldr r2, [r5]
@@ -5057,7 +5057,7 @@ sub_020B89C8: ; 0x020B89C8
 	add r1, r4, #4
 	mov r0, #0
 	mov r2, #0x18
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r0, #0x1000
 	str r0, [r4, #4]
 	str r0, [r4, #8]
@@ -5777,7 +5777,7 @@ sub_020B9330: ; 0x020B9330
 	add r0, r0, r5, lsl #5
 	add r1, r0, #0x10
 	mvn r0, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _020B9454 ; =0x021D94D8
 	ldr r1, [r0, #4]
 	ldr ip, [r0, #0xc]
@@ -6625,7 +6625,7 @@ _020B9F68:
 	mov r0, r5
 	mov r2, r4
 	add r1, r7, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r6, r6, #1
 	cmp r6, #0x20
 	add r7, r7, #0x20
@@ -6636,7 +6636,7 @@ _020B9F68:
 	ldr r1, _020B9FC4 ; =0x021D9568
 	mov r2, #0x100
 	strh r0, [r3, #2]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _020B9FB4 ; =0x021D94D8
 	mov r1, #0
 	str r1, [r0, #4]
@@ -6664,7 +6664,7 @@ sub_020B9FD8: ; 0x020B9FD8
 	mov r1, r4
 	mov r0, #0
 	mov r2, #0x48
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r0, #1
 	str r0, [r4, #0x10]
 	mov r0, #3
@@ -6705,7 +6705,7 @@ _020BA06C:
 	mov r0, r7
 	mov r2, r6
 	add r1, r8, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldrh r0, [r5]
 	add r4, r4, #1
 	add r8, r8, #0x20
@@ -6718,7 +6718,7 @@ _020BA090:
 	ldr r1, _020BA0D4 ; =0x021D9568
 	mov r2, #0x100
 	strh r0, [r3, #2]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _020BA0D8 ; =0x04000444
 	mov r1, #0
 	str r1, [r0]
@@ -8861,7 +8861,7 @@ sub_020BBE6C: ; 0x020BBE6C
 	mov r1, r4
 	mov r0, #0
 	mov r2, #0x70
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	mov r1, #0
 	str r1, [r4]
 	mov r0, #2
@@ -9569,7 +9569,7 @@ sub_020BC704: ; 0x020BC704
 	ldr r2, [sp, #0x18]
 	mov r1, ip
 	mov r2, r2, lsl #3
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldmia sp!, {r3, r4, r5, pc}
 _020BC734:
 	ldr r4, [sp, #0x18]
@@ -10071,7 +10071,7 @@ sub_020BCE24: ; 0x020BCE24
 	mov r0, r1
 	mul r2, lr, r2
 	ldr r1, [r3]
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020BCE24
 
@@ -10103,7 +10103,7 @@ _020BCECC:
 	mov r0, r6
 	mov r1, sb
 	mov r2, r4
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, [r7, #8]
 	add r8, r8, #1
 	cmp r8, r0
@@ -11436,15 +11436,15 @@ sub_020BE0E4: ; 0x020BE0E4
 	bx lr
 	arm_func_end sub_020BE0E4
 
-	arm_func_start sub_020BE120
-sub_020BE120: ; 0x020BE120
+	arm_func_start NNS_G3dRenderObjInit
+NNS_G3dRenderObjInit: ; 0x020BE120
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	mov r1, r5
 	mov r0, #0
 	mov r2, #0x54
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r0, _020BE168 ; =_02110A20
 	ldr r1, _020BE16C ; =_02110A1C
 	ldr r2, [r0]
@@ -11460,7 +11460,7 @@ sub_020BE120: ; 0x020BE120
 _020BE168: .word _02110A20
 _020BE16C: .word _02110A1C
 _020BE170: .word _02110A18
-	arm_func_end sub_020BE120
+	arm_func_end NNS_G3dRenderObjInit
 
 	arm_func_start sub_020BE174
 sub_020BE174: ; 0x020BE174
@@ -11657,35 +11657,35 @@ _020BE3CC:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020BE388
 
-	arm_func_start sub_020BE3DC
-sub_020BE3DC: ; 0x020BE3DC
+	arm_func_start NNS_G3dTexGetRequiredSize
+NNS_G3dTexGetRequiredSize: ; 0x020BE3DC
 	cmp r0, #0
 	ldrneh r0, [r0, #0xc]
 	movne r0, r0, lsl #3
 	moveq r0, #0
 	bx lr
-	arm_func_end sub_020BE3DC
+	arm_func_end NNS_G3dTexGetRequiredSize
 
-	arm_func_start sub_020BE3F0
-sub_020BE3F0: ; 0x020BE3F0
+	arm_func_start NNS_G3dTex4x4GetRequiredSize
+NNS_G3dTex4x4GetRequiredSize: ; 0x020BE3F0
 	cmp r0, #0
 	ldrneh r0, [r0, #0x1c]
 	movne r0, r0, lsl #3
 	moveq r0, #0
 	bx lr
-	arm_func_end sub_020BE3F0
+	arm_func_end NNS_G3dTex4x4GetRequiredSize
 
-	arm_func_start sub_020BE404
-sub_020BE404: ; 0x020BE404
+	arm_func_start NNS_G3dTexSetTexKey
+NNS_G3dTexSetTexKey: ; 0x020BE404
 	cmp r1, #0
 	strne r1, [r0, #8]
 	cmp r2, #0
 	strne r2, [r0, #0x18]
 	bx lr
-	arm_func_end sub_020BE404
+	arm_func_end NNS_G3dTexSetTexKey
 
-	arm_func_start sub_020BE418
-sub_020BE418: ; 0x020BE418
+	arm_func_start NNS_G3dTexLoad
+NNS_G3dTexLoad: ; 0x020BE418
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	movs r8, r1
 	mov sb, r0
@@ -11736,7 +11736,7 @@ _020BE4BC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020BE4CC: .word 0x0001FFFF
-	arm_func_end sub_020BE418
+	arm_func_end NNS_G3dTexLoad
 
 	arm_func_start sub_020BE4D0
 sub_020BE4D0: ; 0x020BE4D0
@@ -11762,23 +11762,23 @@ _020BE4F4:
 	bx lr
 	arm_func_end sub_020BE4D0
 
-	arm_func_start sub_020BE51C
-sub_020BE51C: ; 0x020BE51C
+	arm_func_start NNS_G3dPlttGetRequiredSize
+NNS_G3dPlttGetRequiredSize: ; 0x020BE51C
 	cmp r0, #0
 	ldrneh r0, [r0, #0x30]
 	movne r0, r0, lsl #3
 	moveq r0, #0
 	bx lr
-	arm_func_end sub_020BE51C
+	arm_func_end NNS_G3dPlttGetRequiredSize
 
-	arm_func_start sub_020BE530
-sub_020BE530: ; 0x020BE530
+	arm_func_start NNS_G3dPlttSetPlttKey
+NNS_G3dPlttSetPlttKey: ; 0x020BE530
 	str r1, [r0, #0x2c]
 	bx lr
-	arm_func_end sub_020BE530
+	arm_func_end NNS_G3dPlttSetPlttKey
 
-	arm_func_start sub_020BE538
-sub_020BE538: ; 0x020BE538
+	arm_func_start NNS_G3dPlttLoad
+NNS_G3dPlttLoad: ; 0x020BE538
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r5, r1
 	mov r4, r0
@@ -11800,7 +11800,7 @@ _020BE54C:
 	ldmeqia sp!, {r3, r4, r5, pc}
 	bl sub_020D0B74
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020BE538
+	arm_func_end NNS_G3dPlttLoad
 
 	arm_func_start sub_020BE588
 sub_020BE588: ; 0x020BE588
@@ -12379,8 +12379,8 @@ _020BECDC:
 	bx lr
 	arm_func_end sub_020BEC7C
 
-	arm_func_start sub_020BED00
-sub_020BED00: ; 0x020BED00
+	arm_func_start NNS_G3dBindMdlSet
+NNS_G3dBindMdlSet: ; 0x020BED00
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	ldrb r0, [sl, #9]
@@ -12431,7 +12431,7 @@ _020BED78:
 _020BEDA8:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020BED00
+	arm_func_end NNS_G3dBindMdlSet
 
 	arm_func_start sub_020BEDB0
 sub_020BEDB0: ; 0x020BEDB0
@@ -12569,8 +12569,8 @@ _020BEF90: .word 0x800003E0
 _020BEF94: .word 0x021DA558
 	arm_func_end sub_020BEE44
 
-	arm_func_start sub_020BEF98
-sub_020BEF98: ; 0x020BEF98
+	arm_func_start NNS_G3dGlbFlushP
+NNS_G3dGlbFlushP: ; 0x020BEF98
 	stmdb sp!, {r3, lr}
 	ldr r0, _020BEFCC ; =0x021DA49C
 	ldr r1, _020BEFD0 ; =0x021DA49C
@@ -12587,10 +12587,10 @@ sub_020BEF98: ; 0x020BEF98
 	.align 2, 0
 _020BEFCC: .word 0x021DA49C
 _020BEFD0: .word 0x021DA49C
-	arm_func_end sub_020BEF98
+	arm_func_end NNS_G3dGlbFlushP
 
-	arm_func_start sub_020BEFD4
-sub_020BEFD4: ; 0x020BEFD4
+	arm_func_start NNS_G3dGlbSetBaseTrans
+NNS_G3dGlbSetBaseTrans: ; 0x020BEFD4
 	cmp r0, #0
 	bxeq lr
 	ldr r3, _020BEFFC ; =0x021DA57C
@@ -12604,10 +12604,10 @@ sub_020BEFD4: ; 0x020BEFD4
 	.align 2, 0
 _020BEFFC: .word 0x021DA57C
 _020BF000: .word 0x021DA49C
-	arm_func_end sub_020BEFD4
+	arm_func_end NNS_G3dGlbSetBaseTrans
 
-	arm_func_start sub_020BF004
-sub_020BF004: ; 0x020BF004
+	arm_func_start NNS_G3dGlbSetBaseScale
+NNS_G3dGlbSetBaseScale: ; 0x020BF004
 	cmp r0, #0
 	bxeq lr
 	ldr r3, _020BF02C ; =0x021DA588
@@ -12621,7 +12621,7 @@ sub_020BF004: ; 0x020BF004
 	.align 2, 0
 _020BF02C: .word 0x021DA588
 _020BF030: .word 0x021DA49C
-	arm_func_end sub_020BF004
+	arm_func_end NNS_G3dGlbSetBaseScale
 
 	arm_func_start sub_020BF034
 sub_020BF034: ; 0x020BF034
@@ -13177,7 +13177,7 @@ _020BF73C:
 	mov r1, sl
 	mov r0, #0
 	mov r2, #0x58
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mvn r0, #0
 	str r0, [sl]
 	add fp, sp, #0x40
@@ -13433,7 +13433,7 @@ sub_020BFAC4: ; 0x020BFAC4
 	mov r1, r5
 	mov r0, #0
 	mov r2, #0x188
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	mov r0, #1
 	str r0, [r5, #0xc4]
 	str r0, [r5, #8]
@@ -13569,8 +13569,8 @@ _020BFCB8:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020BFC60
 
-	arm_func_start sub_020BFCC8
-sub_020BFCC8: ; 0x020BFCC8
+	arm_func_start NNS_G3dDraw
+NNS_G3dDraw: ; 0x020BFCC8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x188
 	mov r4, r0
@@ -13581,15 +13581,15 @@ sub_020BFCC8: ; 0x020BFCC8
 	add r1, r4, #0x3c
 	mov r0, #0
 	mov r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r1, r4, #0x44
 	mov r0, #0
 	mov r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r1, r4, #0x4c
 	mov r0, #0
 	mov r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, [r4, #8]
 	cmp r1, #0
 	beq _020BFD28
@@ -13632,7 +13632,7 @@ _020BFD7C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020BFDA0: .word 0x021DA700
-	arm_func_end sub_020BFCC8
+	arm_func_end NNS_G3dDraw
 
 	arm_func_start sub_020BFDA4
 sub_020BFDA4: ; 0x020BFDA4
@@ -15089,7 +15089,7 @@ sub_020C11B4: ; 0x020C11B4
 	mov r4, r5
 	str r3, [sp, #0x14]
 	add r6, r6, #3
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	bl sub_020C23F4
 	mov r0, r5
 	ldr r1, _020C1900 ; =0x04000440
@@ -16459,7 +16459,7 @@ sub_020C2528: ; 0x020C2528
 	ldr r1, [r2], #4
 	add r1, r2, r1, lsl #2
 	mov r2, r4, lsl #2
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r0, _020C2604 ; =0x021DD404
 	ldr r1, [r0]
 	ldr r0, [r1]
@@ -16555,8 +16555,8 @@ sub_020C2698: ; 0x020C2698
 _020C26BC: .word 0x04000600
 	arm_func_end sub_020C2698
 
-	arm_func_start sub_020C26C0
-sub_020C26C0: ; 0x020C26C0
+	arm_func_start NNS_G3dResDefaultSetup
+NNS_G3dResDefaultSetup: ; 0x020C26C0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	ldr r2, [sl]
@@ -16595,16 +16595,16 @@ _020C2738:
 	mov r0, sl
 	mov r6, r5
 	mov r7, r5
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	movs r4, r0
 	beq _020C289C
-	bl sub_020BE3DC
+	bl NNS_G3dTexGetRequiredSize
 	mov sb, r0
 	mov r0, r4
-	bl sub_020BE3F0
+	bl NNS_G3dTex4x4GetRequiredSize
 	mov r8, r0
 	mov r0, r4
-	bl sub_020BE51C
+	bl NNS_G3dPlttGetRequiredSize
 	str r0, [sp]
 	cmp sb, #0
 	beq _020C27A0
@@ -16680,27 +16680,27 @@ _020C2868:
 	mov r0, r4
 	mov r1, fp
 	mov r2, r8
-	bl sub_020BE404
+	bl NNS_G3dTexSetTexKey
 	mov r0, r4
 	mov r1, sb
-	bl sub_020BE530
+	bl NNS_G3dPlttSetPlttKey
 	mov r0, r4
 	mov r1, #1
-	bl sub_020BE418
+	bl NNS_G3dTexLoad
 	mov r0, r4
 	mov r1, #1
-	bl sub_020BE538
+	bl NNS_G3dPlttLoad
 _020C289C:
 	ldr r1, [sl]
 	ldr r0, _020C28E4 ; =0x30444D42
 	cmp r1, r0
 	bne _020C28C4
 	mov r0, sl
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r4, #0
 	beq _020C28C4
 	mov r1, r4
-	bl sub_020BED00
+	bl NNS_G3dBindMdlSet
 _020C28C4:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -16718,7 +16718,7 @@ _020C28E8: .word _02110924
 _020C28EC: .word _0211092C
 _020C28F0: .word _02110930
 _020C28F4: .word _02110928
-	arm_func_end sub_020C26C0
+	arm_func_end NNS_G3dResDefaultSetup
 
 	arm_func_start sub_020C28F8
 sub_020C28F8: ; 0x020C28F8
@@ -18156,16 +18156,16 @@ _020C3B38:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020C39D8
 
-	arm_func_start sub_020C3B40
-sub_020C3B40: ; 0x020C3B40
+	arm_func_start NNS_G3dGetMdlSet
+NNS_G3dGetMdlSet: ; 0x020C3B40
 	ldrh r1, [r0, #0xc]
 	ldr r1, [r0, r1]
 	add r0, r0, r1
 	bx lr
-	arm_func_end sub_020C3B40
+	arm_func_end NNS_G3dGetMdlSet
 
-	arm_func_start sub_020C3B50
-sub_020C3B50: ; 0x020C3B50
+	arm_func_start NNS_G3dGetTex
+NNS_G3dGetTex: ; 0x020C3B50
 	ldrh r2, [r0, #0xc]
 	ldrh r1, [r0, #0xe]
 	add r3, r0, r2
@@ -18184,7 +18184,7 @@ _020C3B80:
 	bx lr
 	.align 2, 0
 _020C3B8C: .word 0x30585442
-	arm_func_end sub_020C3B50
+	arm_func_end NNS_G3dGetTex
 
 	arm_func_start sub_020C3B90
 sub_020C3B90: ; 0x020C3B90
@@ -18319,7 +18319,7 @@ sub_020C3CEC: ; 0x020C3CEC
 	mov r0, #0
 	strb r2, [r5, #0x19]
 	mov r2, r2, lsl #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldrh r0, [r4, #6]
 	add r3, r4, #0x14
 	mov r2, #0
@@ -20085,7 +20085,7 @@ sub_020C5560: ; 0x020C5560
 	moveq r7, #0
 	strb r2, [sl, #0x19]
 	mov r2, r2, lsl #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldrb r0, [sb, #9]
 	mov r6, #0
 	cmp r0, #0
@@ -20437,7 +20437,7 @@ sub_020C5A30: ; 0x020C5A30
 	moveq r7, #0
 	strb r2, [sl, #0x19]
 	mov r2, r2, lsl #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldrb r0, [sb, #9]
 	mov r6, #0
 	cmp r0, #0
@@ -20522,7 +20522,7 @@ sub_020C5B48: ; 0x020C5B48
 	str sb, [sl, #8]
 	ldrb r2, [sl, #0x19]
 	mov r2, r2, lsl #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldrb r0, [sb, #0xd]
 	mov r6, #0
 	cmp r0, #0
@@ -24251,7 +24251,7 @@ _020C8C80:
 	bic r0, r0, #1
 	orr r0, r0, #1
 	str r0, [sl, #0x24]
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r2, #1
 	mov r0, sl
@@ -24260,7 +24260,7 @@ _020C8C80:
 	bl sub_020C8EA8
 	mov r0, r4
 	str fp, [sl, #0x2c]
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	mov r0, #1
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -24486,13 +24486,13 @@ sub_020C8FA4: ; 0x020C8FA4
 	beq _020C8FF4
 	mov r5, #1
 _020C8FCC:
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r6, r0
 	mov r0, r4
 	mov r1, r5
 	bl sub_020C8EA8
 	mov r0, r6
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldr r0, [r4, #0x38]
 	cmp r0, #0
 	bne _020C8FCC
@@ -24716,11 +24716,11 @@ sub_020C927C: ; 0x020C927C
 	mov r0, #0
 	ldr r2, [r4, #0x14]
 	str r0, [r4, #0x1c]
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4, #0x14]
 	mov r0, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x14]
 	bl DC_FlushRange
@@ -26161,11 +26161,11 @@ _020CA4DC:
 	add r0, r5, #0x3c
 	mov r2, r6
 	add r1, r0, r1, lsl #2
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	mov r2, r6
 	add r0, r5, #0x3c
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, r5
 	add r1, r4, #0x3c
 	bl sub_020D2878
@@ -26190,7 +26190,7 @@ sub_020CA578: ; 0x020CA578
 	mov r7, r0
 	mov r6, r2
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r5, r0
 	mov r0, r4
 	bl sub_020C961C
@@ -26206,7 +26206,7 @@ _020CA5BC:
 	mov r0, r4
 	bl sub_020C961C
 	mov r0, r5
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020CA578
 
@@ -26826,7 +26826,7 @@ sub_020CADF0: ; 0x020CADF0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r0, r8
 	mov r1, #0
@@ -26852,7 +26852,7 @@ _020CAE48:
 	bne _020CAE18
 _020CAE54:
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_020CADF0
 
@@ -26860,13 +26860,13 @@ _020CAE54:
 sub_020CAE60: ; 0x020CAE60
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020D3A38
+	bl OS_DisableInterrupts
 	mov r4, r0
 	ldr r0, _020CAE88 ; =0x021E095C
 	mov r1, r5
 	bl sub_020B4BAC
 	mov r0, r4
-	bl sub_020D3A4C
+	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020CAE88: .word 0x021E095C

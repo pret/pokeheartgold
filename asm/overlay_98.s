@@ -89,7 +89,7 @@ ov98_0221E5E0: ; 0x0221E5E0
 	str r0, [r4, #0xc]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -674,7 +674,7 @@ ov98_0221EABC: ; 0x0221EABC
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #8]
 	lsl r5, r0, #4
 	ldr r0, [sp]
@@ -683,7 +683,7 @@ ov98_0221EABC: ; 0x0221EABC
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #4]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #6
 	ldr r2, [sp]
 	mov r0, #0
@@ -910,7 +910,7 @@ _0221EC8A:
 	ldr r0, [r5, #4]
 	add r0, r0, r6
 	add r3, r4, r3
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r6
 	bl sub_0201D5C8
@@ -960,7 +960,7 @@ ov98_0221ECD0: ; 0x0221ECD0
 	ldr r2, [r5, #0x14]
 	add r0, r0, r4
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	bl sub_0201D5C8
@@ -1013,7 +1013,7 @@ ov98_0221ED48: ; 0x0221ED48
 	ldr r0, [r4, #4]
 	ldr r2, [r4, #0x14]
 	add r0, r0, r5
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r4, #4]
 	add r0, r0, r5
 	bl sub_0201D5C8
@@ -1078,7 +1078,7 @@ ov98_0221EDC4: ; 0x0221EDC4
 	ldr r2, [r5, #0x14]
 	add r0, r0, r4
 	add r3, r1, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	bl sub_0201D5C8
@@ -1123,7 +1123,7 @@ _0221EE3E:
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #0x14]
 	add r0, r0, r4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	bl sub_0201D5C8
@@ -1171,7 +1171,7 @@ ov98_0221EE9C: ; 0x0221EE9C
 	ldr r0, [r4, #4]
 	add r3, r7, #0
 	add r0, r0, r5
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [r4, #4]
 	add r0, r0, r5
 	bl sub_0201D5C8
@@ -1251,7 +1251,7 @@ ov98_0221EF24: ; 0x0221EF24
 	bl sub_02025320
 	cmp r0, #0
 	bne _0221EF52
-	ldr r0, _0221EF60 ; =0x021D110C
+	ldr r0, _0221EF60 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -1264,7 +1264,7 @@ _0221EF54:
 	pop {r3, r4, pc}
 	nop
 _0221EF5C: .word 0x0221F1E0
-_0221EF60: .word 0x021D110C
+_0221EF60: .word gMain
 	thumb_func_end ov98_0221EF24
 
 	thumb_func_start ov98_0221EF64
@@ -1469,10 +1469,10 @@ ov98_0221F090: ; 0x0221F090
 	bl sub_0200FBF4
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1502,10 +1502,10 @@ ov98_0221F0EC: ; 0x0221F0EC
 	push {r3, lr}
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1586,7 +1586,7 @@ _0221F17E:
 	sub r2, r2, #1
 	bne _0221F17E
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

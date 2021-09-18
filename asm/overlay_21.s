@@ -10,18 +10,18 @@ ov21_022598C0: ; 0x022598C0
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	mov r4, #0
 	ldr r7, _02259908 ; =0x022599F0
 	str r0, [sp]
 	add r5, r4, #0
 _022598E0:
 	ldr r0, [r6, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	lsl r1, r4, #2
 	ldrh r1, [r7, r1]
 	mov r2, #4
@@ -46,19 +46,19 @@ _02259908: .word 0x022599F0
 ov21_0225990C: ; 0x0225990C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	mov r5, #0
 	ldr r2, _02259958 ; =0x022599F0
 	strh r5, [r4]
@@ -93,27 +93,27 @@ ov21_02259960: ; 0x02259960
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp]
 	mov r4, #0
 	ldr r0, [sp, #8]
@@ -124,7 +124,7 @@ ov21_02259960: ; 0x02259960
 _022599B0:
 	ldr r0, [r6, #0xc]
 	lsl r7, r4, #2
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _022599EC ; =0x022599F0
 	mov r2, #4
 	ldrh r1, [r1, r7]

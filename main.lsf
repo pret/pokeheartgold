@@ -8,6 +8,7 @@
 Static main
 {
 	Address 0x02000000
+	Object pm_version.o
 	Object main.o
 	Object list_menu.o
 	Object unk_02001AF4.o
@@ -52,12 +53,168 @@ Static main
 	Object unk_02016EDC.o
 	Object unk_02017FAC.o
 	Object unk_02018000.o
+	Object unk_02018380.o
+	Object unk_020183F0.o
+	Object unk_02019014.o
 	Object game_init.o
 	Object heap.o
 	Object bg_window.o
 	Object unk_0201F4C4.o
+	Object unk_0201F79C.o
+	Object math_util.o
+	Object text.o
+	Object unk_0202055C.o
+	Object unk_02020654.o
+	Object unk_020210A0.o
+	Object unk_020215A0.o
+	Object unk_02022588.o
+	Object GX_layers.o
+	Object unk_02022D74.o
+	Object unk_02023694.o
+	Object unk_02025154.o
+	Object timer3.o
 	Object error_handling.o
 	Object unk_02025534.o
+	Object unk_02025C44.o
+	Object unk_02025E88.o
+	Object pm_string.o
+	Object unk_02026C44.o
+	Object unk_02026DE0.o
+	Object unk_02026E30.o
+	Object unk_02026E84.o
+	Object unk_02026EB4.o
+	Object unk_02027010.o
+	Object unk_020270C4.o
+	Object save.o
+	Object sav_system_info.o
+	Object player_data.o
+	Object unk_020290B4.o
+	Object daycare.o
+	Object pokedex.o
+	Object unk_0202A888.o
+	Object options.o
+	Object unk_0202ADEC.o
+	Object unk_0202AE8C.o
+	Object unk_0202AEC0.o
+	Object mail.o
+	Object unk_0202B614.o
+	Object unk_0202C034.o
+	Object unk_0202C730.o
+	Object coins.o
+	Object unk_0202C9A0.o
+	Object unk_0202CA24.o
+	Object seal_case.o
+	Object unk_0202CC54.o
+	Object igt.o
+	Object sav_chatot.o
+	Object unk_0202CF1C.o
+	Object unk_0202D230.o
+	Object unk_0202D938.o
+	Object unk_0202D968.o
+	Object unk_0202DB34.o
+	Object unk_0202DBA8.o
+	Object hall_of_fame.o
+	Object unk_0202E41C.o
+	Object unk_0202E4B0.o
+	Object unk_0202EB30.o
+	Object unk_0202ECC0.o
+	Object unk_0202ED18.o
+	Object unk_0202ED74.o
+	Object unk_0202F574.o
+	Object unk_0202FA5C.o
+	Object unk_02030A98.o
+	Object unk_0203170C.o
+	Object unk_020318C8.o
+	Object unk_02031904.o
+	Object unk_02031AF0.o
+	Object unk_02031B0C.o
+	Object pokewalker.o
+	Object unk_02032774.o
+	Object unk_02032844.o
+	Object unk_02033AE0.o
+	Object unk_02034354.o
+	Object unk_02034B0C.o
+	Object unk_02035900.o
+	Object unk_020379A0.o
+	Object unk_02037C94.o
+	Object unk_0203A3B0.o
+	Object communication_error.o
+	Object wfc_user_info_warning.o
+	Object map_matrix.o
+	Object map_header.o
+	Object map_events.o
+	Object unk_0203B91C.o
+	Object unk_0203BA5C.o
+	Object unk_0203BBB4.o
+	Object unk_0203BC10.o
+	Object unk_0203DB6C.o
+	Object unk_0203DE74.o
+	Object unk_0203E348.o
+	Object script.o
+	Object fieldmap.o
+	Object scrcmd.o
+	Object scrcmd_2.o
+	Object scrcmd_3.o
+	Object scrcmd_4.o
+	Object scrcmd_5.o
+	Object scrcmd_6.o
+	Object scrcmd_7.o
+	Object scrcmd_8.o
+	Object scrcmd_9.o
+	Object scrcmd_10.o
+	Object scrcmd_11.o
+	Object scrcmd_12.o
+	Object scrcmd_13.o
+	Object scrcmd_14.o
+	Object scrcmd_15.o
+	Object scrcmd_16.o
+	Object scrcmd_17.o
+	Object scrcmd_18.o
+	Object scrcmd_19.o
+	Object scrcmd_20.o
+	Object unk_0204F500.o
+	Object event_data.o
+	Object unk_020504C0.o
+	Object unk_02050660.o
+	Object unk_020517A4.o
+	Object unk_020518D8.o
+	Object unk_020525BC.o
+	Object unk_0205298C.o
+	Object unk_02052F30.o
+	Object script_pokemon_util.o
+	Object unk_02054514.o
+	Object unk_02054648.o
+	Object unk_02054E00.o
+	Object unk_020551B8.o
+	Object unk_02055244.o
+	Object unk_02055418.o
+	Object unk_020557E0.o
+	Object unk_02055BF0.o
+	Object unk_02056680.o
+	Object unk_02056D7C.o
+	Object unk_02058034.o
+	Object unk_02058AEC.o
+	Object unk_0205A44C.o
+	Object unk_0205AC88.o
+	Object unk_0205B3DC.o
+	Object text_0205B4EC.o
+	Object unk_0205B6E8.o
+	Object unk_0205BB1C.o
+	Object unk_0205BFF0.o
+	Object unk_0205C268.o
+	Object unk_02068DE0.o
+	Object unk_02068F84.o
+	Object unk_02068FC8.o
+	Object unk_02069528.o
+	Object unk_02069660.o
+	Object unk_0206979C.o
+	Object pokemon.o
+	Object waza.o
+	Object trainer_data.o
+	Object pokemon_storage_system.o
+	Object unk_02074120.o
+	Object party.o
+	Object unk_02074910.o
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o

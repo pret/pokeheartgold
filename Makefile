@@ -5,6 +5,7 @@ PROC_LD        := v5te
 LCF_TEMPLATE   := ARM9-TS.lcf.template
 LIBS           := -Llib -lsyscall -nostdlib
 ALL_BUILDDIRS  := $(BUILD_DIR)/lib
+OPTFLAGS       := -O4,p
 
 include config.mk
 include common.mk
@@ -17,8 +18,7 @@ BANNER_SPEC     := $(buildname)/banner.bsf
 ICON_PNG        := $(buildname)/icon.png
 HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
 
-MWCFLAGS  += -ipa file $(DEFINES) -interworking
-MWASFLAGS += $(DEFINES)
+MWASFLAGS += -DPM_ASM
 
 .PHONY: main sub libsyscall
 .PRECIOUS: $(ROM)
@@ -36,7 +36,7 @@ clean: tidy clean-filesystem clean-tools
 	@$(MAKE) -C lib/syscall clean
 	@$(MAKE) -C sub clean
 
-main: filesystem $(SBIN)
+main: $(SBIN) $(ELF)
 sub: ; @$(MAKE) -C sub
 
 ROMSPEC        := rom.rsf
@@ -45,7 +45,7 @@ MAKEROM_FLAGS  := $(DEFINES)
 $(NEF): libsyscall
 
 libsyscall:
-	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(PROJECT_ROOT)/$(BUILD_DIR) GAME_CODE=$(GAME_CODE)
+	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
 
 SBIN_LZ        := $(SBIN)_LZ
 
@@ -66,10 +66,11 @@ endif
 $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 	$(WINE) $(MAKEBNR) $< $@
 
-heartgold:  ; $(MAKE) GAME_VERSION=HEARTGOLD
-soulsilver: ; $(MAKE) GAME_VERSION=SOULSILVER
-compare: compare-heartgold
-compare-heartgold: ; $(MAKE) GAME_VERSION=HEARTGOLD COMPARE=1
-compare-soulsilver: ; $(MAKE) GAME_VERSION=SOULSILVER COMPARE=1
+heartgold:          ; @$(MAKE) GAME_VERSION=HEARTGOLD
+soulsilver:         ; @$(MAKE) GAME_VERSION=SOULSILVER
+compare-heartgold:  ; @$(MAKE) GAME_VERSION=HEARTGOLD  COMPARE=1
+compare-soulsilver: ; @$(MAKE) GAME_VERSION=SOULSILVER COMPARE=1
+
+compare:             compare-heartgold
 
 .PHONY: heartgold soulsilver compare compare-heartgold compare-soulsilver

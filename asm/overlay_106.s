@@ -9,7 +9,7 @@ ov106_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -240,7 +240,7 @@ ov106_021E5AA8: ; 0x021E5AA8
 	mov r1, #0x99
 	mov r2, #4
 	str r3, [sp, #0x10]
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x10]
@@ -273,7 +273,7 @@ _021E5AC8:
 	add r2, #0x58
 	bl sub_0201F51C
 	ldr r0, [r4, #0x58]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x14]
 	ldr r0, [r0, #8]
@@ -576,11 +576,11 @@ _021E5D34:
 
 	thumb_func_start ov106_021E5D38
 ov106_021E5D38: ; 0x021E5D38
-	ldr r3, _021E5D40 ; =sub_02022BE8
+	ldr r3, _021E5D40 ; =GX_SetBanks
 	ldr r0, _021E5D44 ; =0x021E6DB0
 	bx r3
 	nop
-_021E5D40: .word sub_02022BE8
+_021E5D40: .word GX_SetBanks
 _021E5D44: .word 0x021E6DB0
 	thumb_func_end ov106_021E5D38
 
@@ -596,10 +596,10 @@ ov106_021E5D48: ; 0x021E5D48
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -627,13 +627,13 @@ ov106_021E5D70: ; 0x021E5D70
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_020CF82C
+	bl G3X_SetFog
 	mov r1, #0
 	ldr r2, _021E5DF8 ; =0x00007FFF
 	str r1, [sp]
 	mov r0, #0x1f
 	mov r3, #0x3f
-	bl sub_020CF910
+	bl G3X_SetClearColor
 	ldr r2, [r4]
 	ldrh r0, [r2, #0x24]
 	ldrh r1, [r2, #0x26]
@@ -659,7 +659,7 @@ ov106_021E5D70: ; 0x021E5D70
 	bl sub_0201BB68
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #8
 	pop {r4, pc}
 	nop
@@ -749,28 +749,28 @@ _021E5E8E:
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5ECE
 _021E5E9E:
 	mov r2, #2
 	ldr r1, _021E5ED8 ; =0x06820000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5ECE
 _021E5EAC:
 	mov r2, #2
 	ldr r1, _021E5EDC ; =0x06840000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5ECE
 _021E5EBA:
 	mov r2, #2
 	ldr r1, _021E5EE0 ; =0x06860000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5ECE
 _021E5EC8:
 	mov r0, #0
@@ -900,28 +900,28 @@ _021E5FA6:
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5FDE
 _021E5FB6:
 	mov r2, #2
 	ldr r1, _021E600C ; =0x06820000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5FDE
 _021E5FC4:
 	mov r2, #2
 	ldr r1, _021E6010 ; =0x06840000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021E5FDE
 _021E5FD2:
 	mov r2, #2
 	ldr r1, _021E6014 ; =0x06860000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 _021E5FDE:
 	ldr r5, [r4, #0x10]
 	ldr r1, [r4, #0x1c]
@@ -961,14 +961,14 @@ ov106_021E601C: ; 0x021E601C
 	add r4, r1, #0
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
-	bl sub_020CE89C
+	bl GX_EngineAToggleLayers
+	bl GX_ResetBankForBG
 	ldr r6, _021E6060 ; =0x021E6DD8
 	add r3, sp, #0
 	mov r2, #5
@@ -997,10 +997,10 @@ ov106_021E6064: ; 0x021E6064
 	add r3, r1, #0
 	bl ov106_021E5E5C
 	mov r0, #4
-	bl sub_020CDC04
+	bl GX_SetBankForBG
 	mov r0, #0xe
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, pc}
 	thumb_func_end ov106_021E6064
 
@@ -1462,11 +1462,11 @@ _021E6404: .word 0x00003FF8
 
 	thumb_func_start ov106_021E6408
 ov106_021E6408: ; 0x021E6408
-	ldr r3, _021E6410 ; =sub_02022BE8
+	ldr r3, _021E6410 ; =GX_SetBanks
 	ldr r0, _021E6414 ; =0x021E6FE8
 	bx r3
 	nop
-_021E6410: .word sub_02022BE8
+_021E6410: .word GX_SetBanks
 _021E6414: .word 0x021E6FE8
 	thumb_func_end ov106_021E6408
 
@@ -1476,7 +1476,7 @@ ov106_021E6418: ; 0x021E6418
 	sub sp, #0x64
 	add r4, r0, #0
 	mov r0, #0x99
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	add r3, sp, #0x54
 	ldr r5, _021E64EC ; =0x021E6F24
 	str r0, [r4]
@@ -1486,7 +1486,7 @@ ov106_021E6418: ; 0x021E6418
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E64F0 ; =0x021E6F74
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -1501,15 +1501,15 @@ ov106_021E6418: ; 0x021E6418
 	str r0, [r3]
 	ldr r0, [r4]
 	add r3, r1, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	mov r1, #0x40
 	add r2, r0, #0
 	mov r3, #0x99
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E64F4 ; =0x021E6F90
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -1524,15 +1524,15 @@ ov106_021E6418: ; 0x021E6418
 	str r0, [r3]
 	ldr r0, [r4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0x40
 	mov r2, #0
 	mov r3, #0x99
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021E64F8 ; =0x021E6FAC
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -1547,21 +1547,21 @@ ov106_021E6418: ; 0x021E6418
 	str r0, [r3]
 	ldr r0, [r4]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #0x40
 	mov r2, #0
 	mov r3, #0x99
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	add sp, #0x64
 	pop {r4, r5, pc}
 	nop
@@ -1577,13 +1577,13 @@ ov106_021E64FC: ; 0x021E64FC
 	add r4, r0, #0
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1698,7 +1698,7 @@ ov106_021E6520: ; 0x021E6520
 	bl ov106_021E66FC
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1836,9 +1836,9 @@ ov106_021E66FC: ; 0x021E66FC
 	ldr r0, [r0]
 	str r1, [sp, #0x18]
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r4, r0, #0
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, #0
 	bne _021E6720
 	mov r5, #0
@@ -1848,28 +1848,28 @@ ov106_021E66FC: ; 0x021E66FC
 _021E6720:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _021E6810 ; =0x000001ED
 	cmp r0, r1
 	bne _021E675E
 	add r0, r6, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r6, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	str r0, [sp, #0x14]
 	b _021E6764
 _021E675E:
@@ -1886,7 +1886,7 @@ _021E6764:
 	mov r2, #0x99
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [sp, #0xc]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x18]
 	ldr r0, [r0, #0x10]
@@ -1960,7 +1960,7 @@ ov106_021E6814: ; 0x021E6814
 	add r5, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -1984,7 +1984,7 @@ ov106_021E6814: ; 0x021E6814
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021E689C ; =0x00000418
 	mov r1, #0x99
 	ldr r4, [r5, r0]
@@ -2001,7 +2001,7 @@ ov106_021E6814: ; 0x021E6814
 	ldr r1, _021E689C ; =0x00000418
 	ldr r0, _021E68A4 ; =ov106_021E63E0
 	ldr r1, [r5, r1]
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	mov r0, #4
 	pop {r3, r4, r5, pc}
 	nop
@@ -2022,7 +2022,7 @@ ov106_021E68A8: ; 0x021E68A8
 	ldr r5, [r4, r0]
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r5, #0
 	bl ov106_021E664C
 	add r0, r5, #0
@@ -2605,12 +2605,12 @@ _021E6CD6:
 	cmp r1, r0
 	bne _021E6CE8
 	ldrh r0, [r4, #0x18]
-	bl sub_02005D48
+	bl PlayBGM
 	b _021E6CF0
 _021E6CE8:
 	lsl r0, r1, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02005D48
+	bl PlayBGM
 _021E6CF0:
 	mov r0, #1
 	pop {r3, r4, r5, pc}

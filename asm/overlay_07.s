@@ -1262,7 +1262,7 @@ ov07_0221C6B4: ; 0x0221C6B4
 	mov r1, #1
 	add r2, #0x8d
 	strb r1, [r2]
-	ldr r3, _0221C6E8 ; =0x021D110C
+	ldr r3, _0221C6E8 ; =gMain
 	lsl r2, r1, #9
 	ldr r4, [r3, #0x44]
 	tst r2, r4
@@ -1285,7 +1285,7 @@ _0221C6E4:
 	pop {r3, r4}
 	bx lr
 	.balign 4, 0
-_0221C6E8: .word 0x021D110C
+_0221C6E8: .word gMain
 	thumb_func_end ov07_0221C6B4
 
 	thumb_func_start ov07_0221C6EC
@@ -1884,7 +1884,7 @@ _0221CADE:
 	lsr r0, r0, #0x18
 	lsl r1, r1, #0xe
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r5, #0
 	bl ov07_0221C4A0
 	add r4, r0, #0
@@ -1895,7 +1895,7 @@ _0221CADE:
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #1
 	bl sub_0201BC28
@@ -3035,7 +3035,7 @@ ov07_0221D374: ; 0x0221D374
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #8
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	ldr r0, [r5, #0x18]
 	mov r1, #0xff
@@ -3377,7 +3377,7 @@ ov07_0221D5B0: ; 0x0221D5B0
 	mov r2, #0x19
 	mov r1, #0
 	lsl r2, r2, #8
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #2
 	mov r1, #0
 	bl sub_0201BC28
@@ -3520,7 +3520,7 @@ ov07_0221D718: ; 0x0221D718
 	mov r2, #0x19
 	mov r1, #0
 	lsl r2, r2, #8
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	mov r1, #4
 	bl ov07_0221D55C
@@ -4490,7 +4490,7 @@ ov07_0221DE04: ; 0x0221DE04
 	lsl r1, r4, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r6, #2
 	bl ov07_0221BFC0
@@ -5998,7 +5998,7 @@ ov07_0221E9D4: ; 0x0221E9D4
 	mov r1, #0
 	mov r2, #0x28
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0x19
 	ldr r0, [r6]
 	lsl r1, r1, #4
@@ -6007,7 +6007,7 @@ ov07_0221E9D4: ; 0x0221E9D4
 	mov r1, #0
 	lsl r2, r2, #4
 	str r0, [r4, #0x24]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
 	add r0, #0x44
 	ldrh r1, [r0]
@@ -6300,7 +6300,7 @@ _0221EC10:
 	lsl r1, r4, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	bl ov07_0221BFC0
 	cmp r0, #1
@@ -6396,7 +6396,7 @@ _0221ECD8:
 	lsl r1, r4, #0x18
 	ldr r0, [r5]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov07_0221EC7C
@@ -6802,7 +6802,7 @@ ov07_0221EF54: ; 0x0221EF54
 	add r0, #0xc4
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #7
@@ -15122,13 +15122,13 @@ _02222C20:
 	add r0, r6, #0
 	add r1, #0x20
 	lsl r2, r2, #8
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	mov r2, #0x32
 	lsl r2, r2, #4
 	add r1, r4, r2
 	add r0, r6, #0
 	sub r2, #0x20
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r2, _02222C58 ; =ov07_02222BC8
 	ldr r3, _02222C5C ; =ov07_02222BDC
 	add r0, r4, #0
@@ -16534,7 +16534,7 @@ _02223604:
 	bl PaletteData_LoadNarc
 	ldr r0, [r4, #0x30]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r6, #2
 	bl ov07_0221BFC0
@@ -16940,7 +16940,7 @@ _0222392C:
 	bl PaletteData_LoadNarc
 	ldr r0, [r4, #0x30]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r6, #2
 	bl ov07_0221BFC0
@@ -23351,7 +23351,7 @@ _02226CFC:
 	ldr r1, _02226EFC ; =0x0000A0C0
 	add r0, #0x44
 	strh r1, [r0]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	bl _s32_div_f
 	add r1, #0x23
@@ -23391,7 +23391,7 @@ _02226D56:
 	ldr r1, _02226F00 ; =0x000056C0
 	add r0, #0x44
 	strh r1, [r0]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	bl _s32_div_f
 	add r1, #0x23
@@ -23399,7 +23399,7 @@ _02226D56:
 	str r1, [r4, #0x3c]
 	pop {r3, r4, r5, r6, pc}
 _02226DA8:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -23434,7 +23434,7 @@ _02226DDA:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _02226DEC:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -23466,7 +23466,7 @@ _02226E16:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _02226E2E:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -23498,7 +23498,7 @@ _02226E58:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _02226E70:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1f
 	sub r1, r1, r2
@@ -30114,7 +30114,7 @@ _0222A41C:
 	strb r0, [r4, #0xc]
 	b _0222A49E
 _0222A42C:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	add r5, r1, #0
@@ -30369,7 +30369,7 @@ _0222A606:
 	add r1, r5, #0
 	add r1, #0x21
 	strb r0, [r1]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xa
 	bl _s32_div_f
 	add r1, #0xa
@@ -30377,7 +30377,7 @@ _0222A606:
 	add r1, r4, r1
 	add r0, #0x22
 	strb r1, [r0]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #6
 	bl _s32_div_f
 	add r0, r5, #0
@@ -30400,7 +30400,7 @@ _0222A606:
 	str r0, [sp, #0x18]
 	add r0, r1, r0
 	str r0, [sp, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r2, [sp, #8]
 	mov r1, #6
 	ldrsh r1, [r2, r1]
@@ -30412,7 +30412,7 @@ _0222A606:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp, #0x14]
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r2, [sp, #8]
 	mov r1, #4
 	ldrsh r1, [r2, r1]
@@ -31187,7 +31187,7 @@ ov07_0222ACAC: ; 0x0222ACAC
 	add r6, r4, #2
 	add r5, r4, #4
 _0222ACE0:
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x1e
 	sub r2, r2, r1
@@ -34491,11 +34491,11 @@ ov07_0222C850: ; 0x0222C850
 	lsr r0, r0, #0x10
 	orr r0, r2
 	mov r2, #3
-	ldr r3, _0222C86C ; =sub_020D47EC
+	ldr r3, _0222C86C ; =MIi_CpuClear32
 	lsl r2, r2, #8
 	bx r3
 	.balign 4, 0
-_0222C86C: .word sub_020D47EC
+_0222C86C: .word MIi_CpuClear32
 	thumb_func_end ov07_0222C850
 
 	thumb_func_start ov07_0222C870
@@ -34733,7 +34733,7 @@ _0222CA06:
 	lsr r0, r0, #0x18
 	lsl r1, r1, #0xe
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4]
 	bl ov07_0221C4A0
 	add r5, r0, #0
@@ -34744,7 +34744,7 @@ _0222CA06:
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	add r1, r6, #0
 	bl ov07_0221C448
@@ -35534,7 +35534,7 @@ _0222D0FA:
 	lsr r0, r0, #0x18
 	lsl r1, r1, #0xe
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4]
 	bl ov07_0221C4A0
 	add r5, r0, #0
@@ -35545,7 +35545,7 @@ _0222D0FA:
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4]
 	add r1, r6, #0
 	bl ov07_0221C448
@@ -41810,7 +41810,7 @@ _02230318:
 	lsr r0, r0, #0x18
 	lsl r1, r1, #0xe
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4]
 	bl ov07_0221C4A0
 	add r5, r0, #0
@@ -41821,7 +41821,7 @@ _02230318:
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [r4]
@@ -44062,7 +44062,7 @@ ov07_02231524: ; 0x02231524
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x2c]
 	lsr r1, r1, #0x18
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -44163,7 +44163,7 @@ _0223163C:
 	bne _0223166E
 	ldr r0, [r4, #0x2c]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	bl sub_0200DCE8
@@ -46367,7 +46367,7 @@ ov07_022326C0: ; 0x022326C0
 	str r0, [r2]
 	ldr r0, [r4, #0xc]
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r4, #0
 	add r1, #0x9c
 	str r0, [r1]
@@ -46396,7 +46396,7 @@ _022326EE:
 _0223270C:
 	ldr r0, [r4, #0xc]
 	mov r1, #0x9b
-	bl sub_0206E540
+	bl GetMonData
 	add r4, #0x98
 	str r0, [r4]
 	pop {r4, pc}
@@ -46409,7 +46409,7 @@ _0223271A:
 	add r4, #0xa0
 	mov r1, #0xab
 	add r2, r4, #0
-	bl sub_0206E540
+	bl GetMonData
 	pop {r4, pc}
 	thumb_func_end ov07_022326C0
 
@@ -48516,7 +48516,7 @@ _022335D6:
 	bl ov07_02232540
 	cmp r0, #1
 	bne _0223372C
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x14
 	bl _s32_div_f
 	add r1, #0xa
@@ -48865,7 +48865,7 @@ _02233896:
 	bl ov07_02232540
 	cmp r0, #1
 	bne _022339EC
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x14
 	bl _s32_div_f
 	add r1, #0xa
@@ -49502,7 +49502,7 @@ ov07_02233DB8: ; 0x02233DB8
 	mov r1, #0
 	mov r2, #0xe0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	cmp r4, #0
 	bne _02233DD6
 	bl GF_AssertFail
@@ -49549,7 +49549,7 @@ _02233DDC:
 	add r0, #0x21
 	strb r2, [r0]
 	bl ov07_0221C69C
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r0, r0, #0x1f
 	sub r0, r0, r1

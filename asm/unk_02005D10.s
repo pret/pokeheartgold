@@ -31,8 +31,8 @@ _02005D3A:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02005D10
 
-	thumb_func_start sub_02005D48
-sub_02005D48: ; 0x02005D48
+	thumb_func_start PlayBGM
+PlayBGM: ; 0x02005D48
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl sub_020054D4
@@ -73,7 +73,7 @@ _02005D94:
 	bl sub_02005DA0
 	add r0, r5, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_02005D48
+	thumb_func_end PlayBGM
 
 	thumb_func_start sub_02005DA0
 sub_02005DA0: ; 0x02005DA0

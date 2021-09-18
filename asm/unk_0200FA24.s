@@ -1,6 +1,53 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F5CAC:
+	.word sub_0201010C
+	.word sub_02010128
+	.word sub_02010148
+	.word sub_02010184
+	.word sub_020101BC
+	.word sub_020101F8
+	.word sub_02010230
+	.word sub_0201025C
+	.word sub_02010288
+	.word sub_020102C4
+	.word sub_020102FC
+	.word sub_02010338
+	.word sub_02010370
+	.word sub_0201039C
+	.word sub_020103C8
+	.word sub_020103FC
+	.word sub_0201042C
+	.word sub_02010458
+	.word sub_02010484
+	.word sub_020104B0
+	.word sub_020104DC
+	.word sub_02010508
+	.word sub_02010534
+	.word sub_02010560
+	.word sub_0201058C
+	.word sub_020105B8
+	.word sub_020105E4
+	.word sub_02010610
+	.word sub_0201063C
+	.word sub_02010690
+	.word sub_020106E0
+	.word sub_0201071C
+	.word sub_02010754
+	.word sub_0201079C
+	.word sub_020107E0
+	.word sub_02010828
+	.word sub_0201086C
+	.word sub_02010898
+	.word sub_020108C4
+	.word sub_020108F0
+	.word sub_0201091C
+	.word sub_02010958
+	.word sub_02010990
+
 	.bss
 
 _021D0EF4:
@@ -538,12 +585,12 @@ sub_0200FE00: ; 0x0200FE00
 	push {r3, lr}
 	ldr r1, [r0]
 	lsl r2, r1, #2
-	ldr r1, _0200FE10 ; =0x020F5CAC
+	ldr r1, _0200FE10 ; =_020F5CAC
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	nop
-_0200FE10: .word 0x020F5CAC
+_0200FE10: .word _020F5CAC
 	thumb_func_end sub_0200FE00
 
 	thumb_func_start sub_0200FE14

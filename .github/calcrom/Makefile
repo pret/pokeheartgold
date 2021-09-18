@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -g -O3 -std=c++11
+CXXFLAGS := -g -O2 -std=c++17
 ifeq ($(DEBUG),)
 CXXFLAGS += -DNDEBUG
 endif
@@ -12,9 +12,12 @@ endif
 
 TARGET := calcrom$(EXE)
 
-.PHONY: all
+.PHONY: all clean
 
 all: $(TARGET)
 
 $(TARGET): calcrom.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^
+
+clean:
+	$(RM) $(TARGET)

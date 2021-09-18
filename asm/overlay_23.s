@@ -35,12 +35,12 @@ _022598E0:
 	str r5, [r4, #0x10]
 	str r6, [r4, #0xc]
 	add r0, r5, #0
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	str r0, [r4, #8]
-	bl sub_02028EF0
+	bl PlayerProfile_init
 	add r6, #0xd
 	add r0, r5, #0
 	add r1, r6, #0
@@ -48,16 +48,16 @@ _022598E0:
 	add r5, r0, #0
 	add r1, sp, #4
 	mov r2, #0x80
-	bl sub_02026A68
+	bl CopyStringToU16Array
 	add r0, r5, #0
 	bl String_dtor
 	ldr r0, [r4, #8]
 	add r1, sp, #4
-	bl sub_02028F24
+	bl CopyPlayerName
 	ldr r1, [r4]
 	ldr r0, [r4, #8]
 	ldr r1, [r1, #0x40]
-	bl sub_02028F90
+	bl PlayerProfile_SetTrainerGender
 	add r0, r4, #0
 	add sp, #0x104
 	pop {r3, r4, r5, r6, pc}
@@ -89,7 +89,7 @@ ov23_02259964: ; 0x02259964
 	mov r0, #0xb
 	add r5, r1, #0
 	str r3, [sp, #0x10]
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -114,18 +114,18 @@ ov23_02259964: ; 0x02259964
 	add r1, r6, #0
 	bl sub_0202ECC0
 	ldr r0, [r7, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
 	add r7, r0, #0
-	bl sub_02074524
+	bl AddMonToParty
 	cmp r5, #7
 	bne _02259A14
 	add r0, r7, #0
-	bl sub_02074640
+	bl GetPartyCount
 	add r1, r0, #0
 	add r0, r7, #0
 	sub r1, r1, #1
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r5, #0xd
 	str r0, [sp, #0x14]
 	mov r0, #0xb
@@ -146,12 +146,12 @@ ov23_02259964: ; 0x02259964
 	add r0, r6, #0
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_0202B2D4
+	bl CreateKenyaMail
 	add r7, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #0xaa
 	add r2, r7, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r7, #0
@@ -170,7 +170,7 @@ ov23_02259A24: ; 0x02259A24
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -208,7 +208,7 @@ ov23_02259A24: ; 0x02259A24
 	add r0, r5, #0
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_0202B2D4
+	bl CreateKenyaMail
 	add r7, r0, #0
 	add r0, r6, #0
 	bl String_dtor
@@ -229,10 +229,10 @@ ov23_02259AA0: ; 0x02259AA0
 	ldr r0, [r0, #0xc]
 	add r4, r2, #0
 	add r5, r1, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
 	str r0, [sp, #4]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r5, #0
 	str r0, [sp]
 	bl sub_0206D894
@@ -245,7 +245,7 @@ _02259AC8:
 	ldr r0, [sp]
 	mov r1, #0xa2
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	beq _02259ADE
@@ -255,7 +255,7 @@ _02259AC8:
 _02259ADE:
 	ldr r0, [sp, #4]
 	mov r6, #0
-	bl sub_02074640
+	bl GetPartyCount
 	add r7, r0, #0
 	add r5, r6, #0
 	cmp r7, #0
@@ -263,23 +263,23 @@ _02259ADE:
 _02259AEE:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #3
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #1
 	beq _02259B22
 	add r0, r4, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _02259B22
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _02259B22
 	add r6, r6, #1
@@ -297,7 +297,7 @@ _02259B32:
 	ldr r0, [sp]
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	beq _02259B48
@@ -342,7 +342,7 @@ ov23_02259B68: ; 0x02259B68
 	ldr r0, [r5, #0xc]
 	add r6, r1, #0
 	add r4, r2, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	ldr r2, [r6, #4]
 	add r1, r4, #0
 	bl sub_02074740
@@ -361,13 +361,13 @@ ov23_02259B88: ; 0x02259B88
 	add r7, r2, #0
 	add r5, r1, #0
 	add r4, r3, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r7, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0xa1
 	mov r2, #0
 	add r7, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r2, r0, #0
 	ldr r0, [r6, #0x20]
 	ldr r0, [r0]
@@ -382,15 +382,15 @@ ov23_02259B88: ; 0x02259B88
 	bl ov23_02259C40
 	ldr r1, [sp, #0x20]
 	add r0, r7, #0
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [r5, #4]
 	ldr r1, [sp, #0x24]
-	bl sub_0207188C
+	bl CopyPokemonToPokemon
 	ldr r0, [sp, #0x20]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [r4]
 	ldr r0, [sp, #0x24]
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	str r0, [r4, #4]
 	ldr r0, [r5, #8]
 	str r0, [r4, #8]
@@ -457,7 +457,7 @@ ov23_02259C40: ; 0x02259C40
 	mov r3, #0x20
 	str r1, [sp, #0xc]
 	ldr r1, [r4]
-	bl sub_0206DE38
+	bl CreateMon
 	ldr r7, [sp, #0x38]
 	add r1, r6, #0
 	add r0, r7, #0
@@ -466,7 +466,7 @@ ov23_02259C40: ; 0x02259C40
 	ldr r2, [sp, #0x10]
 	add r0, r5, #0
 	mov r1, #0x77
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	mov r1, #1
@@ -475,66 +475,66 @@ ov23_02259C40: ; 0x02259C40
 	add r0, r5, #0
 	mov r1, #0x4d
 	add r2, sp, #0x14
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r5, #0
 	mov r1, #0x46
 	add r2, r4, #4
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x47
 	add r2, #8
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x48
 	add r2, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x49
 	add r2, #0x10
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x4a
 	add r2, #0x14
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x4b
 	add r2, #0x18
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x13
 	add r2, #0x24
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x14
 	add r2, #0x28
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x15
 	add r2, #0x2c
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x16
 	add r2, #0x30
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x17
 	add r2, #0x34
-	bl sub_0206EC40
+	bl SetMonData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #6
 	add r2, #0x3c
-	bl sub_0206EC40
+	bl SetMonData
 	add r6, #0xd
 	add r0, r7, #0
 	add r1, r6, #0
@@ -543,21 +543,21 @@ ov23_02259C40: ; 0x02259C40
 	add r0, r5, #0
 	mov r1, #0x91
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r0, r6, #0
 	bl String_dtor
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x9d
 	add r2, #0x40
-	bl sub_0206EC40
+	bl SetMonData
 	add r4, #0x48
 	add r0, r5, #0
 	mov r1, #0xc
 	add r2, r4, #0
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #0x30]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r3, r0, #0
 	ldr r0, [sp, #0x38]
 	ldr r2, [sp, #0x34]
@@ -566,9 +566,9 @@ ov23_02259C40: ; 0x02259C40
 	mov r1, #0
 	bl sub_0208F260
 	add r0, r5, #0
-	bl sub_0206E250
+	bl CalcMonLevelAndStats
 	add r0, r5, #0
-	bl sub_0207003C
+	bl MonIsShiny
 	cmp r0, #0
 	beq _02259D78
 	bl GF_AssertFail

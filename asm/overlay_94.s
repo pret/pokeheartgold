@@ -23,7 +23,7 @@ _021E5912:
 	ldr r0, [r4, r1]
 	mov r1, #0
 	mov r2, #0x1c
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, _021E5938 ; =0x00000C65
 	ldrb r1, [r4, r0]
 	add r0, #0x1b
@@ -46,7 +46,7 @@ ov94_021E593C: ; 0x021E593C
 	sub r1, #0x1b
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r1, [r4]
 	add r6, r0, #0
 	cmp r1, #0xa
@@ -74,7 +74,7 @@ _021E596A: ; jump table
 _021E5980:
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r2, _021E5ADC ; =0x000001DF
 	str r0, [r4, #0xc]
 	cmp r0, r2
@@ -89,7 +89,7 @@ _021E5980:
 	b _021E59C2
 _021E59A0:
 	add r0, r6, #0
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 	mov r0, #0x41
 	str r0, [r4, #8]
 	mov r0, #0
@@ -98,7 +98,7 @@ _021E59A0:
 _021E59B0:
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 	mov r0, #0x23
 	str r0, [r4, #8]
 	mov r0, #1
@@ -110,10 +110,10 @@ _021E59C6:
 	ldr r0, _021E5AD8 ; =0x00000654
 	ldr r0, [r5, r0]
 	ldr r0, [r0, #0x1c]
-	bl sub_0203E344
-	bl sub_0202A634
+	bl ScriptEnvironment_GetSav2Ptr
+	bl Sav2_Pokedex_get
 	add r1, r6, #0
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -132,7 +132,7 @@ _021E59E8:
 _021E59F6:
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov94_021E5BA0
 	ldr r0, [r4]
@@ -193,7 +193,7 @@ _021E5A6A:
 	bl NewString_ReadMsgData
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02070DB0
+	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _021E5AE4 ; =0x000007C4
 	mov r1, #0

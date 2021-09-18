@@ -1,6 +1,35 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F56C0:
+	.byte 0x00, 0x00
+_020F56C2:
+	.byte 0x00, 0x00
+_020F56C4:
+	.byte 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.byte 0x04, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
+_020F56D8:
+	.byte 0x0B
+_020F56D9:
+	.byte 0x10
+_020F56DA:
+	.byte 0x00
+_020F56DB:
+	.byte 0x00
+_020F56DC:
+	.byte 0x00
+_020F56DD:
+	.byte 0x01
+_020F56DE:
+	.byte 0x0F
+_020F56DF:
+	.byte 0x02
+	.byte 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02, 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02
+	.byte 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02, 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02
+	.byte 0x0A, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+
 	.bss
 
 _0211188C:
@@ -37,13 +66,13 @@ _02002CB6:
 	strb r0, [r3]
 	cmp r1, #6
 	blo _02002CB6
-	ldr r0, _02002CE8 ; =0x020F56D8
+	ldr r0, _02002CE8 ; =_020F56D8
 	bl sub_0201FFE0
 	pop {r4, pc}
 	nop
 _02002CE0: .word _02111890
 _02002CE4: .word _0211188C
-_02002CE8: .word 0x020F56D8
+_02002CE8: .word _020F56D8
 	thumb_func_end sub_02002CA8
 
 	thumb_func_start sub_02002CEC
@@ -59,13 +88,13 @@ sub_02002CEC: ; 0x02002CEC
 	cmp r2, #0
 	bne _02002D28
 	str r1, [sp]
-	ldr r1, _02002D38 ; =0x020F56C0
-	ldr r3, _02002D3C ; =0x020F56C2
+	ldr r1, _02002D38 ; =_020F56C0
+	ldr r3, _02002D3C ; =_020F56C2
 	ldrh r1, [r1, r4]
 	ldrh r3, [r3, r4]
 	mov r0, #0x10  ; graphic/font.narc
 	mov r2, #1
-	bl sub_02025E88
+	bl FontData_new
 	ldr r2, _02002D34 ; =_0211188C
 	ldr r1, [r2]
 	add r1, r1, r4
@@ -85,8 +114,8 @@ _02002D28:
 	pop {r3, r4, r5, pc}
 	nop
 _02002D34: .word _0211188C
-_02002D38: .word 0x020F56C0
-_02002D3C: .word 0x020F56C2
+_02002D38: .word _020F56C0
+_02002D3C: .word _020F56C2
 	thumb_func_end sub_02002CEC
 
 	thumb_func_start sub_02002D40
@@ -115,7 +144,7 @@ _02002D62:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_02025ED8
+	bl FontData_ModeSwitch
 	pop {r3, r4, r5, pc}
 	nop
 _02002D78: .word _0211188C
@@ -146,7 +175,7 @@ _02002D9C:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_02025ED8
+	bl FontData_ModeSwitch
 	pop {r4, pc}
 	.balign 4, 0
 _02002DB0: .word _0211188C
@@ -192,7 +221,7 @@ _02002DE2:
 	mov ip, r0
 	cmp r0, #0
 	beq _02002E50
-	ldr r2, _02002E78 ; =0x020F56C0
+	ldr r2, _02002E78 ; =_020F56C0
 	mov r1, #0
 	ldrh r0, [r2, r7]
 	add r3, r6, #0
@@ -243,7 +272,7 @@ _02002E50:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02002E70
-	bl sub_02025EC0
+	bl FontData_delete
 	ldr r0, _02002E74 ; =_0211188C
 	mov r2, #0
 	ldr r1, [r0]
@@ -255,7 +284,7 @@ _02002E70:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02002E74: .word _0211188C
-_02002E78: .word 0x020F56C0
+_02002E78: .word _020F56C0
 	thumb_func_end sub_02002DB4
 
 	thumb_func_start sub_02002E7C
@@ -267,7 +296,7 @@ sub_02002E7C: ; 0x02002E7C
 	add r0, r2, r0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0202604C
+	bl TryLoadGlyph
 	ldr r0, _02002E94 ; =_0211188C
 	ldr r0, [r0]
 	pop {r3, pc}
@@ -325,7 +354,7 @@ _02002EE2:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_020261CC
+	bl GetStringWidth
 	pop {r4, r5, r6, pc}
 	nop
 _02002EF8: .word _0211188C
@@ -353,7 +382,7 @@ _02002F16:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_02026218
+	bl GetStringWidthFirstLine
 	pop {r4, r5, r6, pc}
 	nop
 _02002F2C: .word _0211188C
@@ -383,7 +412,7 @@ _02002F4A:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_020261CC
+	bl GetStringWidth
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02002F64: .word _0211188C
@@ -417,7 +446,7 @@ _02002F82:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_02026270
+	bl StringAllCharsValid
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02002FA8: .word _0211188C
@@ -445,55 +474,55 @@ _02002FBE: ; jump table
 	.short _02003006 - _02002FBE - 2 ; case 7
 _02002FCE:
 	lsl r1, r0, #3
-	ldr r0, _02003010 ; =0x020F56D8
+	ldr r0, _02003010 ; =_020F56D8
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FD6:
 	lsl r1, r0, #3
-	ldr r0, _02003014 ; =0x020F56D9
+	ldr r0, _02003014 ; =_020F56D9
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FDE:
 	lsl r1, r0, #3
-	ldr r0, _02003018 ; =0x020F56DA
+	ldr r0, _02003018 ; =_020F56DA
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FE6:
 	lsl r1, r0, #3
-	ldr r0, _0200301C ; =0x020F56DB
+	ldr r0, _0200301C ; =_020F56DB
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FEE:
 	lsl r1, r0, #3
-	ldr r0, _02003020 ; =0x020F56DC
+	ldr r0, _02003020 ; =_020F56DC
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FF6:
 	lsl r1, r0, #3
-	ldr r0, _02003024 ; =0x020F56DD
+	ldr r0, _02003024 ; =_020F56DD
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FFE:
 	lsl r1, r0, #3
-	ldr r0, _02003028 ; =0x020F56DE
+	ldr r0, _02003028 ; =_020F56DE
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02003006:
 	lsl r1, r0, #3
-	ldr r0, _0200302C ; =0x020F56DF
+	ldr r0, _0200302C ; =_020F56DF
 	ldrb r2, [r0, r1]
 _0200300C:
 	add r0, r2, #0
 	bx lr
 	.balign 4, 0
-_02003010: .word 0x020F56D8
-_02003014: .word 0x020F56D9
-_02003018: .word 0x020F56DA
-_0200301C: .word 0x020F56DB
-_02003020: .word 0x020F56DC
-_02003024: .word 0x020F56DD
-_02003028: .word 0x020F56DE
-_0200302C: .word 0x020F56DF
+_02003010: .word _020F56D8
+_02003014: .word _020F56D9
+_02003018: .word _020F56DA
+_0200301C: .word _020F56DB
+_02003020: .word _020F56DC
+_02003024: .word _020F56DD
+_02003028: .word _020F56DE
+_0200302C: .word _020F56DF
 	thumb_func_end GetFontAttribute
 
 	thumb_func_start sub_02003030
@@ -554,7 +583,7 @@ _02003082:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_020262D4
+	bl GetStringWidthMultiline
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0200309C: .word _0211188C
@@ -576,8 +605,8 @@ _020030B2:
 	.balign 4, 0
 	thumb_func_end sub_020030A0
 
-	thumb_func_start sub_020030B8
-sub_020030B8: ; 0x020030B8
+	thumb_func_start FontI_GetGlyphWidth
+FontI_GetGlyphWidth: ; 0x020030B8
 	push {r3, r4, r5, lr}
 	lsl r4, r0, #2
 	ldr r0, _020030E4 ; =_0211188C
@@ -596,8 +625,8 @@ _020030D0:
 	add r0, r0, r4
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0202633C
+	bl GetGlyphWidth
 	pop {r3, r4, r5, pc}
 	nop
 _020030E4: .word _0211188C
-	thumb_func_end sub_020030B8
+	thumb_func_end FontI_GetGlyphWidth

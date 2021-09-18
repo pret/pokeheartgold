@@ -44,7 +44,7 @@ ov93_0225FBF0: ; 0x0225FBF0
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x30
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #0x10]
 	mov r1, #0xc
 	add r2, r0, #0
@@ -80,7 +80,7 @@ ov93_0225FC8C: ; 0x0225FC8C
 	push {r4, lr}
 	add r4, r1, #0
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1
@@ -164,7 +164,7 @@ _0225FD1E:
 	mov r4, #0
 	b _0225FD44
 _0225FD28:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #7
 	and r0, r1
 	add r4, r0, #1
@@ -444,7 +444,7 @@ _0225FF2E:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x18
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldrb r1, [r5]
 	add r0, r7, #0
 	bl ov93_0225E3C4
@@ -1029,7 +1029,7 @@ _02260396:
 	bl sub_0200DC4C
 	ldr r0, [r6]
 	bl sub_0200DC0C
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x13
 	sub r2, r2, r1
@@ -1040,7 +1040,7 @@ _02260396:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r5, #4]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x12
 	sub r2, r2, r1
@@ -1051,13 +1051,13 @@ _02260396:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r5, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	bl _s32_div_f
 	lsl r0, r1, #0xc
 	str r0, [r5, #0xc]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	lsl r1, r1, #0xe
 	bl _s32_div_f
@@ -1065,7 +1065,7 @@ _02260396:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r5, #0x10]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xf
 	bl _s32_div_f
 	add r1, #0x14
@@ -1124,7 +1124,7 @@ _0226046E:
 	mov r2, #0x60
 	lsl r3, r3, #0x10
 	bl sub_0200DDF4
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	add r0, r5, #0
@@ -1132,7 +1132,7 @@ _0226046E:
 	bl sub_0200DC4C
 	ldr r0, [r5]
 	bl sub_0200DC0C
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x13
 	sub r2, r2, r1
@@ -1143,7 +1143,7 @@ _0226046E:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r4, #4]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x12
 	sub r2, r2, r1
@@ -1154,13 +1154,13 @@ _0226046E:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r4, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	bl _s32_div_f
 	lsl r0, r1, #0xc
 	str r0, [r4, #0xc]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	lsl r1, r1, #0xe
 	bl _s32_div_f
@@ -1168,7 +1168,7 @@ _0226046E:
 	lsl r0, r0, #0x10
 	add r0, r1, r0
 	str r0, [r4, #0x10]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xf
 	bl _s32_div_f
 	add r1, #0x14
@@ -1225,7 +1225,7 @@ _02260544:
 	bl sub_0200DC4C
 	ldr r0, [r5]
 	bl sub_0200DC0C
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x13
 	sub r2, r2, r1
@@ -1236,7 +1236,7 @@ _02260544:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r4, #4]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x12
 	sub r2, r2, r1
@@ -1247,13 +1247,13 @@ _02260544:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r4, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	bl _s32_div_f
 	lsl r0, r1, #0xc
 	str r0, [r4, #0xc]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #5
 	lsl r1, r1, #0xe
 	bl _s32_div_f
@@ -1261,7 +1261,7 @@ _02260544:
 	lsl r0, r0, #0x10
 	add r0, r1, r0
 	str r0, [r4, #0x10]
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0xf
 	bl _s32_div_f
 	add r1, #0x14
@@ -1695,7 +1695,7 @@ _0226091A:
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #4
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r1, _02260970 ; =0x0000339C
 	ldr r2, _02260974 ; =0x00001428
 	add r0, r5, #0
@@ -1863,7 +1863,7 @@ ov93_02260A58: ; 0x02260A58
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0xc
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r6, #0
 	bl ov93_02260B70
 	strb r0, [r5, #4]
@@ -2497,7 +2497,7 @@ ov93_02260F14: ; 0x02260F14
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x10
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	bl sub_0203769C
 	strb r0, [r4]
 	strh r5, [r4, #2]
@@ -4518,7 +4518,7 @@ ov93_02261EB8: ; 0x02261EB8
 	add r6, r6, #1
 _02261EE6:
 	add r0, sp, #0x30
-	bl sub_0201D3C4
+	bl InitWindow
 	mov r0, #0
 	ldr r3, [sp, #0xb0]
 	str r0, [sp]
@@ -5331,7 +5331,7 @@ _022624BA:
 	ldr r0, [r5]
 	mov r1, #1
 	bl sub_0200DCE8
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x14
 	sub r2, r2, r1
@@ -5342,7 +5342,7 @@ _022624BA:
 	lsl r0, r0, #0xc
 	add r0, r1, r0
 	str r0, [r5, #8]
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x16
 	sub r2, r2, r1
@@ -5429,13 +5429,13 @@ ov93_02262598: ; 0x02262598
 	mov r1, #0xc
 	mov r2, #0x75
 	add r5, r0, #0
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0xc
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -5446,7 +5446,7 @@ ov93_02262598: ; 0x02262598
 ov93_022625BC: ; 0x022625BC
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	add r1, r0, #0
@@ -5602,9 +5602,9 @@ _022626E4:
 ov93_022626E8: ; 0x022626E8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r0, r4, #0
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -5759,7 +5759,7 @@ ov93_022627C0: ; 0x022627C0
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #1
 	pop {r4, pc}
 _022627E0:
@@ -5778,7 +5778,7 @@ ov93_022627E8: ; 0x022627E8
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #1
 	str r0, [sp]
 	add r2, sp, #4
@@ -5820,7 +5820,7 @@ ov93_02262830: ; 0x02262830
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #2
 	str r0, [sp]
 	add r0, sp, #0
@@ -5866,7 +5866,7 @@ ov93_02262884: ; 0x02262884
 	mov r1, #0
 	mov r2, #0x14
 	add r6, r3, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #3
 	str r0, [sp]
 	add r0, sp, #0
@@ -5922,7 +5922,7 @@ ov93_022628F4: ; 0x022628F4
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #4
 	str r0, [sp]
 	mov r1, #2
@@ -5959,7 +5959,7 @@ ov93_02262934: ; 0x02262934
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #5
 	str r0, [sp]
 	mov r1, #3
@@ -6001,7 +6001,7 @@ ov93_0226297C: ; 0x0226297C
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #6
 	str r0, [sp]
 	add r0, sp, #0
@@ -6035,7 +6035,7 @@ ov93_022629B8: ; 0x022629B8
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #7
 	str r0, [sp]
 	mov r1, #6

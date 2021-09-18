@@ -15,7 +15,7 @@ ov19_022598C0: ; 0x022598C0
 	mov r1, #0
 	lsl r2, r2, #2
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0xb
 	str r0, [r4]
 	str r5, [r4, #0x14]
@@ -240,7 +240,7 @@ _02259A90: .word 0x000005DC
 
 	thumb_func_start ov19_02259A94
 ov19_02259A94: ; 0x02259A94
-	ldr r0, _02259AB8 ; =0x021D110C
+	ldr r0, _02259AB8 ; =gMain
 	ldr r2, [r0, #0x48]
 	mov r0, #3
 	add r1, r2, #0
@@ -262,7 +262,7 @@ _02259AAE:
 _02259AB6:
 	bx lr
 	.balign 4, 0
-_02259AB8: .word 0x021D110C
+_02259AB8: .word gMain
 	thumb_func_end ov19_02259A94
 
 	thumb_func_start ov19_02259ABC
@@ -304,10 +304,10 @@ ov19_02259AD8: ; 0x02259AD8
 	str r0, [r3]
 	ldr r0, [r4, #0x18]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02259B88 ; =0x0225A08C
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -322,10 +322,10 @@ ov19_02259AD8: ; 0x02259AD8
 	str r0, [r3]
 	ldr r0, [r4, #0x18]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #6
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _02259B8C ; =0x0225A0A8
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -340,20 +340,20 @@ ov19_02259AD8: ; 0x02259AD8
 	str r0, [r3]
 	ldr r0, [r4, #0x18]
 	mov r3, #2
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x18]
 	mov r1, #7
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r3, [r4]
 	mov r0, #5
 	mov r1, #0x20
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r3, [r4]
 	mov r0, #7
 	mov r1, #0x40
 	mov r2, #0
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	mov r2, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #7
@@ -378,13 +378,13 @@ ov19_02259B90: ; 0x02259B90
 	bl sub_0201BC8C
 	ldr r0, [r4, #0x18]
 	mov r1, #7
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x18]
 	mov r1, #6
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x18]
 	mov r1, #5
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	mov r0, #0
 	bl sub_020CDA64
 	pop {r4, pc}
@@ -746,7 +746,7 @@ ov19_02259E64: ; 0x02259E64
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -888,7 +888,7 @@ ov19_02259F64: ; 0x02259F64
 	ldr r2, [r4, #0x30]
 	add r0, #0x3c
 	mov r1, #4
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x3c
 	bl sub_0201D5C8
@@ -928,7 +928,7 @@ _02259FD4:
 	add r0, r4, #0
 	ldr r2, [r4, #0x2c]
 	add r0, #0x4c
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x4c
 	bl sub_0201D5C8

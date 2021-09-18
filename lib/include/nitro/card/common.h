@@ -219,7 +219,7 @@ BOOL CARDi_TryWaitAsync(void);
 CARDResult CARD_GetResultCode(void);
 void CARD_LockRom(u16 lock_id);
 void CARD_UnlockRom(u16 lock_id);
-void CARD_LockBackup(u16 lock_id);
+void OS_GetLockID(u16 lock_id);
 void CARD_UnlockBackup(u16 lock_id);
 
 #define CARD_RETRY_COUNT_MAX 10

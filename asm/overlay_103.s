@@ -11,24 +11,24 @@ ov103_021EC940: ; 0x021EC940
 	mov r0, #3
 	mov r1, #0x9c
 	lsl r2, r2, #0x10
-	bl sub_0201A910
+	bl CreateHeap
 	add r0, r5, #0
 	mov r1, #0x2c
 	mov r2, #0x9c
-	bl sub_02007280
+	bl OverlayManager_CreateAndGetData
 	mov r1, #0
 	mov r2, #0x2c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, #0
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	str r0, [r4, #8]
 	ldr r0, [r0]
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4]
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
-	bl sub_0202B50C
+	bl Sav2_Mailbox_get
 	str r0, [r4, #4]
 	mov r0, #8
 	str r0, [r4, #0x28]
@@ -41,7 +41,7 @@ ov103_021EC940: ; 0x021EC940
 ov103_021EC988: ; 0x021EC988
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02007290
+	bl OverlayManager_GetData
 	add r1, r4, #0
 	bl ov103_021ED2D4
 	cmp r0, #0
@@ -57,9 +57,9 @@ _021EC99E:
 	thumb_func_start ov103_021EC9A4
 ov103_021EC9A4: ; 0x021EC9A4
 	push {r3, lr}
-	bl sub_02007294
+	bl OverlayManager_FreeData
 	mov r0, #0x9c
-	bl sub_0201A9C4
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ov103_021EC9A4
@@ -85,11 +85,11 @@ _021EC9D4: .word 0x00003FF8
 
 	thumb_func_start ov103_021EC9D8
 ov103_021EC9D8: ; 0x021EC9D8
-	ldr r3, _021EC9E0 ; =sub_02022BE8
+	ldr r3, _021EC9E0 ; =GX_SetBanks
 	ldr r0, _021EC9E4 ; =0x021EEC30
 	bx r3
 	nop
-_021EC9E0: .word sub_02022BE8
+_021EC9E0: .word GX_SetBanks
 _021EC9E4: .word 0x021EEC30
 	thumb_func_end ov103_021EC9D8
 
@@ -99,7 +99,7 @@ ov103_021EC9E8: ; 0x021EC9E8
 	sub sp, #0xf0
 	add r4, r0, #0
 	mov r0, #0x9d
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	ldr r1, [r4, #0xc]
 	add r3, sp, #0xe0
 	ldr r5, _021ECB98 ; =0x021EEB40
@@ -110,7 +110,7 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021ECB9C ; =0x021EEBC0
 	add r3, sp, #0xc4
 	ldmia r5!, {r0, r1}
@@ -126,16 +126,16 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r3, #0
 	ldr r0, [r0]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	mov r1, #4
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x9d
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021ECBA0 ; =0x021EEBA4
 	add r3, sp, #0xa8
 	ldmia r5!, {r0, r1}
@@ -151,16 +151,16 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r3, #0
 	ldr r0, [r0]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	mov r1, #5
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #5
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x9d
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021ECBA4 ; =0x021EEB88
 	add r3, sp, #0x8c
 	ldmia r5!, {r0, r1}
@@ -176,16 +176,16 @@ ov103_021EC9E8: ; 0x021EC9E8
 	mov r1, #6
 	ldr r0, [r0]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	mov r1, #6
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #6
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x9d
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021ECBA8 ; =0x021EEC14
 	add r3, sp, #0x70
 	ldmia r5!, {r0, r1}
@@ -201,7 +201,7 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r3, #0
 	ldr r0, [r0]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r5, _021ECBAC ; =0x021EEBDC
 	add r3, sp, #0x54
 	ldmia r5!, {r0, r1}
@@ -217,16 +217,16 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	add r3, r1, #0
 	ldr r0, [r0]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
 	mov r3, #0x9d
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021ECBB0 ; =0x021EEB50
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -242,16 +242,16 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r3, #0
 	ldr r0, [r0]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #0x9d
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r5, _021ECBB4 ; =0x021EEB6C
 	add r3, sp, #0x1c
 	ldmia r5!, {r0, r1}
@@ -267,11 +267,11 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r3, #0
 	ldr r0, [r0]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0xc]
 	mov r1, #2
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021ECBB8 ; =0x021EEBF8
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -287,7 +287,7 @@ ov103_021EC9E8: ; 0x021EC9E8
 	ldr r0, [r4, #0xc]
 	mov r3, #0
 	ldr r0, [r0]
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	add sp, #0xf0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -309,35 +309,35 @@ ov103_021ECBBC: ; 0x021ECBBC
 	ldr r0, [r4, #0xc]
 	mov r1, #3
 	ldr r0, [r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #2
 	ldr r0, [r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	ldr r0, [r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #7
 	ldr r0, [r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #6
 	ldr r0, [r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #5
 	ldr r0, [r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	mov r1, #4
 	ldr r0, [r0]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0]
 	bl FreeToHeap
@@ -468,7 +468,7 @@ ov103_021ECD18: ; 0x021ECD18
 	sub sp, #8
 	ldr r4, [r0, #0xc]
 	ldr r0, [r0]
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -557,7 +557,7 @@ _021ECDCE:
 	add r1, r0, #0
 	add r0, r6, #0
 	add r2, r7, #0
-	bl sub_020D4A50
+	bl MIi_CpuCopy8
 	add r4, r4, #1
 	cmp r4, #0xa
 	bls _021ECDCE
@@ -881,7 +881,7 @@ _021ED01E:
 	ldr r0, [r5, #4]
 	mov r1, #0
 	mov r3, #0x9d
-	bl sub_0202B574
+	bl Mailbox_AllocAndFetchMailI
 	ldr r1, [r5, #0xc]
 	add r2, r1, r6
 	mov r1, #0x9f
@@ -892,7 +892,7 @@ _021ED01E:
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0202B0B8
+	bl Mail_TypeIsValid
 	cmp r0, #1
 	bne _021ED070
 	mov r0, #0x2e
@@ -1175,7 +1175,7 @@ ov103_021ED23C: ; 0x021ED23C
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0202B3F0
+	bl Mail_GetType
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1224,8 +1224,8 @@ ov103_021ED2B8: ; 0x021ED2B8
 	push {r3, lr}
 	ldr r0, [r0, #8]
 	ldr r0, [r0]
-	bl sub_02074904
-	bl sub_02074640
+	bl SavArray_PlayerParty_get
+	bl GetPartyCount
 	cmp r0, #0
 	ble _021ED2CE
 	mov r0, #4
@@ -1277,7 +1277,7 @@ ov103_021ED314: ; 0x021ED314
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	mov r0, #0
 	bl sub_02022C9C
@@ -1299,7 +1299,7 @@ ov103_021ED314: ; 0x021ED314
 	mov r0, #3
 	mov r1, #0x9d
 	lsl r2, r0, #0x11
-	bl sub_0201A910
+	bl CreateHeap
 	mov r1, #0x2f
 	mov r0, #0x9d
 	lsl r1, r1, #4
@@ -1308,7 +1308,7 @@ ov103_021ED314: ; 0x021ED314
 	mov r1, #0
 	lsl r2, r2, #4
 	str r0, [r4, #0xc]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	bl ov103_021ED00C
 	bl ov103_021EC9D8
@@ -1340,7 +1340,7 @@ ov103_021ED314: ; 0x021ED314
 	bl ov103_021ECEEC
 	ldr r0, _021ED3E4 ; =ov103_021EC9B4
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r4, #0x28]
 	pop {r4, pc}
 	nop
@@ -1357,7 +1357,7 @@ ov103_021ED3E8: ; 0x021ED3E8
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	bl ov103_021ECF48
 	ldr r0, [r4, #0xc]
@@ -1390,7 +1390,7 @@ ov103_021ED3E8: ; 0x021ED3E8
 	mov r0, #0
 	str r0, [r4, #0xc]
 	mov r0, #0x9d
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, [r4, #0x28]
 	pop {r4, pc}
 	nop
@@ -1443,7 +1443,7 @@ _021ED49E:
 	ldr r0, [r4, #0x28]
 	pop {r4, pc}
 _021ED4B0:
-	ldr r0, _021ED4D0 ; =0x021D110C
+	ldr r0, _021ED4D0 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -1458,7 +1458,7 @@ _021ED4C4:
 	.balign 4, 0
 _021ED4C8: .word 0x00000235
 _021ED4CC: .word 0x000005DC
-_021ED4D0: .word 0x021D110C
+_021ED4D0: .word gMain
 	thumb_func_end ov103_021ED47C
 
 	thumb_func_start ov103_021ED4D4
@@ -1725,7 +1725,7 @@ _021ED6B2:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	bl sub_02019F74
-	ldr r1, _021ED74C ; =0x021D110C
+	ldr r1, _021ED74C ; =gMain
 	mov r2, #0x10
 	ldr r1, [r1, #0x4c]
 	tst r2, r1
@@ -1793,7 +1793,7 @@ _021ED73A:
 _021ED740: .word 0x000005DC
 _021ED744: .word 0x000002E2
 _021ED748: .word 0x000005DD
-_021ED74C: .word 0x021D110C
+_021ED74C: .word gMain
 	thumb_func_end ov103_021ED5B4
 
 	thumb_func_start ov103_021ED750
@@ -1944,7 +1944,7 @@ _021ED864:
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0202B3F0
+	bl Mail_GetType
 	bl sub_0207808C
 	add r2, r0, #0
 	add r0, r4, #0
@@ -2419,11 +2419,11 @@ ov103_021EDBC8: ; 0x021EDBC8
 	ldr r0, [r4, #0xc]
 	mov r1, #4
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0xc]
 	mov r1, #5
 	ldr r0, [r0]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	pop {r4, pc}
 	thumb_func_end ov103_021EDBC8
 
@@ -2433,7 +2433,7 @@ ov103_021EDC00: ; 0x021EDC00
 	add r5, r0, #0
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	add r4, r0, #0
 	ldrb r0, [r5, #0x1f]
 	ldr r1, [r5, #0xc]
@@ -2442,14 +2442,14 @@ ov103_021EDC00: ; 0x021EDC00
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0202B3F0
+	bl Mail_GetType
 	bl sub_0207808C
 	strh r0, [r5, #0x22]
 	ldrh r1, [r5, #0x22]
 	add r0, r4, #0
 	mov r2, #1
 	mov r3, #0x9d
-	bl sub_02078398
+	bl Bag_AddItem
 	cmp r0, #1
 	bne _021EDC46
 	add r0, r5, #0
@@ -2474,14 +2474,14 @@ _021EDC46:
 
 	thumb_func_start ov103_021EDC58
 ov103_021EDC58: ; 0x021EDC58
-	ldr r3, _021EDC64 ; =sub_0202B544
+	ldr r3, _021EDC64 ; =Mailbox_DeleteSlotI
 	add r2, r0, #0
 	ldr r0, [r2, #4]
 	mov r1, #0
 	ldrb r2, [r2, #0x1f]
 	bx r3
 	.balign 4, 0
-_021EDC64: .word sub_0202B544
+_021EDC64: .word Mailbox_DeleteSlotI
 	thumb_func_end ov103_021EDC58
 
 	thumb_func_start ov103_021EDC68
@@ -2497,14 +2497,14 @@ ov103_021EDC68: ; 0x021EDC68
 	mov r1, #0
 	mov r2, #0x44
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	str r0, [r4, #4]
 	ldr r0, [r5]
 	mov r1, #0
@@ -2558,9 +2558,9 @@ ov103_021EDCE0: ; 0x021EDCE0
 	bhi _021EDD08
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r2, r0, #0
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
@@ -2658,23 +2658,23 @@ ov103_021EDD98: ; 0x021EDD98
 	bne _021EDDD8
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
 	add r1, #0x21
 	ldrb r1, [r1]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x19
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r0, #0
 	ldr r0, [r4, #0x14]
 	bl sub_02090F70
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldrh r1, [r4, #0x22]
 	mov r2, #1
 	mov r3, #0x9c
-	bl sub_02078434
+	bl Bag_TakeItem
 _021EDDD8:
 	ldr r0, [r4, #0x14]
 	bl sub_02090F90
@@ -2787,7 +2787,7 @@ ov103_021EDEA8: ; 0x021EDEA8
 	add r5, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
@@ -3509,7 +3509,7 @@ _021EE412:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov103_021EE3E4
@@ -3559,7 +3559,7 @@ ov103_021EE468: ; 0x021EE468
 	add r6, #0x48
 	lsl r7, r2, #4
 	str r0, [sp, #0x20]
-	bl sub_0202B3E8
+	bl Mail_GetAuthorNamePtr
 	add r1, r0, #0
 	mov r0, #0x23
 	ldr r2, [r5, #0xc]
@@ -3609,7 +3609,7 @@ _021EE49A:
 	cmp r0, #8
 	blo _021EE49A
 	ldr r0, [sp, #0x20]
-	bl sub_0202B3EC
+	bl Mail_GetAuthorGender
 	cmp r0, #0
 	bne _021EE514
 	mov r0, #4
@@ -3940,12 +3940,12 @@ ov103_021EE784: ; 0x021EE784
 	bl String_ctor
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0202B3E8
+	bl Mail_GetAuthorNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl CopyU16ArrayToString
 	add r0, r5, #0
-	bl sub_0202B3EC
+	bl Mail_GetAuthorGender
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -3977,7 +3977,7 @@ ov103_021EE7DC: ; 0x021EE7DC
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
 	ldr r0, [r5]
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -3990,7 +3990,7 @@ ov103_021EE7DC: ; 0x021EE7DC
 	add r2, #0x68
 	ldr r2, [r4, r2]
 	mov r1, #1
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r1, r6, #0
 	ldr r2, [r5, #0xc]
 	add r1, #0x6c
@@ -4041,7 +4041,7 @@ ov103_021EE860: ; 0x021EE860
 	ldr r2, _021EE884 ; =0x000003E2
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E998
+	bl DrawFrameAndWindow2
 	mov r0, #0x72
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
@@ -4061,7 +4061,7 @@ ov103_021EE888: ; 0x021EE888
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #1
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0]
@@ -4184,7 +4184,7 @@ _021EE93A:
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0202B3E8
+	bl Mail_GetAuthorNamePtr
 	add r1, r0, #0
 	mov r0, #0x23
 	ldr r2, [r5, #0xc]
@@ -4230,7 +4230,7 @@ ov103_021EE9C8: ; 0x021EE9C8
 	ldr r0, [r1, r0]
 	lsl r1, r2, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0202B4E8
+	bl Mail_GetUnk20Array
 	add r6, r0, #0
 	bl MailMsg_IsInit
 	cmp r0, #0
@@ -4409,7 +4409,7 @@ ov103_021EEB04: ; 0x021EEB04
 	mov r0, #1
 	pop {r3, pc}
 _021EEB18:
-	ldr r0, _021EEB30 ; =0x021D110C
+	ldr r0, _021EEB30 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -4421,7 +4421,7 @@ _021EEB26:
 	pop {r3, pc}
 	nop
 _021EEB2C: .word 0x021EEFB4
-_021EEB30: .word 0x021D110C
+_021EEB30: .word gMain
 	thumb_func_end ov103_021EEB04
 
 	.rodata

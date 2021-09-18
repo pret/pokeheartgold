@@ -280,7 +280,7 @@ _0225F208:
 	beq _0225F230
 	add r4, r5, #0
 _0225F212:
-	bl sub_0201FD44
+	bl LCRandom
 	add r1, r6, #0
 	bl _u32_div_f
 	lsl r2, r1, #1
@@ -1020,7 +1020,7 @@ _0225F73E:
 	ldr r1, [r4]
 	ldr r0, [r0, #8]
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0
 	add r0, sp, #0x14
 	strh r1, [r0]
@@ -1052,7 +1052,7 @@ _0225F73E:
 	bl ov120_0225F9D4
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r5, #0x10]
 	ldr r1, _0225F8A4 ; =ov120_0225F8B0
 	ldr r0, [r0, #4]
@@ -1456,7 +1456,7 @@ _0225FA9E:
 	ldr r1, [r5]
 	ldr r0, [r0, #8]
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0
 	add r0, sp, #0x14
 	strh r1, [r0]
@@ -1629,7 +1629,7 @@ _0225FBEE:
 	ldr r1, [r5]
 	ldr r0, [r0, #8]
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r1, #0
 	add r0, sp, #0x14
 	strh r1, [r0]
@@ -2041,10 +2041,10 @@ _0225FF2E:
 	mov r0, #2
 	mov r1, #1
 	ldr r5, [r4, #0xc]
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -2057,31 +2057,31 @@ _0225FF2E:
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x10]
 	ldr r2, _0226018C ; =0x022601BC
 	ldr r0, [r0, #8]
 	mov r1, #1
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x10]
 	ldr r2, _02260190 ; =0x022601D8
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #0
 	bl sub_0201BB68
@@ -2108,7 +2108,7 @@ _0225FFDA:
 _0225FFDC:
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201C2D8
+	bl BG_SetMaskColor
 	mov r0, #0x12
 	str r0, [sp]
 	add r0, r5, #0
@@ -2211,7 +2211,7 @@ _0226008C:
 	add r0, #0x4d
 	strb r1, [r0]
 	mov r0, #8
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	str r0, [r4]
 _022600C4:
@@ -2229,7 +2229,7 @@ _022600D4:
 	add r0, #0x4c
 	strb r1, [r0]
 	mov r0, #2
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #6
 	str r0, [r4]
 	b _0226011A

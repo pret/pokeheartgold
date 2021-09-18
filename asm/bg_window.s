@@ -1,10 +1,40 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F62C4:
+	.byte 0x10, 0x20, 0x20, 0x20, 0x20, 0x20
+	.balign 4, 0
+_020F62CC:
+	.word sub_0201D650
+	.word sub_0201D6D0
+	.word sub_0201D650
+_020F62D8:
+	.word sub_0201D928
+	.word sub_0201D964
+	.word sub_0201D928
+_020F62E4:
+	.word sub_0201D900
+	.word sub_0201D93C
+	.word sub_0201D900
+_020F62F0:
+	.word sub_0201D820
+	.word sub_0201D874
+	.word sub_0201D820
+_020F62FC:
+	.word sub_0201D7F4
+	.word sub_0201D838
+	.word sub_0201D7F4
+_020F6308:
+	.word sub_0201D72C
+	.word sub_0201D79C
+	.word sub_0201D72C
+
 	.text
 
-	thumb_func_start sub_0201AC88
-sub_0201AC88: ; 0x0201AC88
+	thumb_func_start BgConfig_Alloc
+BgConfig_Alloc: ; 0x0201AC88
 	push {r3, r4, r5, lr}
 	mov r1, #0x5a
 	lsl r1, r1, #2
@@ -21,7 +51,7 @@ sub_0201AC88: ; 0x0201AC88
 	strh r0, [r4, #6]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201AC88
+	thumb_func_end BgConfig_Alloc
 
 	thumb_func_start BgConfig_GetHeapId
 BgConfig_GetHeapId: ; 0x0201ACAC
@@ -29,8 +59,8 @@ BgConfig_GetHeapId: ; 0x0201ACAC
 	bx lr
 	thumb_func_end BgConfig_GetHeapId
 
-	thumb_func_start sub_0201ACB0
-sub_0201ACB0: ; 0x0201ACB0
+	thumb_func_start SetBothScreensModesAndDisable
+SetBothScreensModesAndDisable: ; 0x0201ACB0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -49,12 +79,12 @@ sub_0201ACB0: ; 0x0201ACB0
 	asr r0, r0, #3
 	and r0, r1
 	str r0, [r2]
-	bl sub_02022C54
-	bl sub_02022CBC
+	bl GX_DisableEngineALayers
+	bl GX_DisableEngineBLayers
 	pop {r4, pc}
 	nop
 _0201ACE4: .word 0xC7FFFFFF
-	thumb_func_end sub_0201ACB0
+	thumb_func_end SetBothScreensModesAndDisable
 
 	thumb_func_start sub_0201ACE8
 sub_0201ACE8: ; 0x0201ACE8
@@ -66,12 +96,12 @@ sub_0201ACE8: ; 0x0201ACE8
 	ldr r1, [r2, #4]
 	ldr r2, [r2, #0xc]
 	bl sub_020CD9FC
-	bl sub_02022C54
+	bl GX_DisableEngineALayers
 	pop {r3, pc}
 _0201AD00:
 	ldr r0, [r2, #8]
 	bl sub_020CDA64
-	bl sub_02022CBC
+	bl GX_DisableEngineBLayers
 	pop {r3, pc}
 	thumb_func_end sub_0201ACE8
 
@@ -111,7 +141,7 @@ _0201AD38: ; jump table
 _0201AD48:
 	mov r0, #1
 	add r1, r6, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldrb r3, [r4, #0x14]
 	ldrb r1, [r4, #0x12]
 	ldrb r0, [r4, #0x11]
@@ -156,7 +186,7 @@ _0201AD96:
 _0201ADA0:
 	mov r0, #2
 	add r1, r6, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldrb r3, [r4, #0x14]
 	ldrb r1, [r4, #0x12]
 	ldrb r0, [r4, #0x11]
@@ -201,7 +231,7 @@ _0201ADEE:
 _0201ADF8:
 	mov r0, #4
 	add r1, r6, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0201AE0E
@@ -287,7 +317,7 @@ _0201AE90:
 _0201AE9A:
 	mov r0, #8
 	add r1, r6, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0201AEB0
@@ -666,7 +696,7 @@ _0201B14C:
 	ldr r1, [r6, r5]
 	ldr r2, [r4, #8]
 	mov r0, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldr r0, [sp]
 	ldr r2, [r4, #8]
 	add r1, r0, r5
@@ -718,8 +748,8 @@ _0201B1C4:
 _0201B1E0: .word 0x0400100E
 	thumb_func_end sub_0201AD0C
 
-	thumb_func_start sub_0201B1E4
-sub_0201B1E4: ; 0x0201B1E4
+	thumb_func_start InitBgFromTemplate
+InitBgFromTemplate: ; 0x0201B1E4
 	push {r3, r4, lr}
 	sub sp, #4
 	mov r4, #1
@@ -727,7 +757,7 @@ sub_0201B1E4: ; 0x0201B1E4
 	bl sub_0201AD0C
 	add sp, #4
 	pop {r3, r4, pc}
-	thumb_func_end sub_0201B1E4
+	thumb_func_end InitBgFromTemplate
 
 	thumb_func_start sub_0201B1F4
 sub_0201B1F4: ; 0x0201B1F4
@@ -2022,8 +2052,8 @@ _0201BB4A:
 	bx lr
 	thumb_func_end sub_0201BAFC
 
-	thumb_func_start sub_0201BB4C
-sub_0201BB4C: ; 0x0201BB4C
+	thumb_func_start FreeBgTilemapBuffer
+FreeBgTilemapBuffer: ; 0x0201BB4C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mov r2, #0x2c
@@ -2038,7 +2068,7 @@ sub_0201BB4C: ; 0x0201BB4C
 	str r0, [r4, r5]
 _0201BB66:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201BB4C
+	thumb_func_end FreeBgTilemapBuffer
 
 	thumb_func_start sub_0201BB68
 sub_0201BB68: ; 0x0201BB68
@@ -2165,19 +2195,19 @@ _0201BC3A: ; jump table
 	.short _0201BC82 - _0201BC3A - 2 ; case 7
 _0201BC4A:
 	mov r0, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, pc}
 _0201BC52:
 	mov r0, #2
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, pc}
 _0201BC5A:
 	mov r0, #4
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, pc}
 _0201BC62:
 	mov r0, #8
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	pop {r3, pc}
 _0201BC6A:
 	mov r0, #1
@@ -2919,8 +2949,8 @@ _0201C1C0:
 	.balign 4, 0
 	thumb_func_end sub_0201C130
 
-	thumb_func_start sub_0201C1C4
-sub_0201C1C4: ; 0x0201C1C4
+	thumb_func_start BG_ClearCharDataRange
+BG_ClearCharDataRange: ; 0x0201C1C4
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -2941,7 +2971,7 @@ sub_0201C1C4: ; 0x0201C1C4
 	add r1, r4, #0
 	bl FreeToHeapExplicit
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0201C1C4
+	thumb_func_end BG_ClearCharDataRange
 
 	thumb_func_start sub_0201C1F4
 sub_0201C1F4: ; 0x0201C1F4
@@ -2984,7 +3014,7 @@ _0201C238:
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r5, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	lsl r0, r7, #0x18
 	ldrb r2, [r4, r6]
 	ldr r3, [sp, #0x20]
@@ -3061,8 +3091,8 @@ _0201C2CC:
 	.balign 4, 0
 	thumb_func_end sub_0201C290
 
-	thumb_func_start sub_0201C2D8
-sub_0201C2D8: ; 0x0201C2D8
+	thumb_func_start BG_SetMaskColor
+BG_SetMaskColor: ; 0x0201C2D8
 	push {r0, r1, r2, r3}
 	push {r3, lr}
 	add r1, sp, #0xc
@@ -3074,7 +3104,7 @@ sub_0201C2D8: ; 0x0201C2D8
 	add sp, #0x10
 	bx r3
 	.balign 4, 0
-	thumb_func_end sub_0201C2D8
+	thumb_func_end BG_SetMaskColor
 
 	thumb_func_start sub_0201C2F0
 sub_0201C2F0: ; 0x0201C2F0
@@ -4175,8 +4205,8 @@ _0201CAD8:
 _0201CADC: .word 0x00000FFF
 	thumb_func_end sub_0201CA4C
 
-	thumb_func_start sub_0201CAE0
-sub_0201CAE0: ; 0x0201CAE0
+	thumb_func_start BgClearTilemapBufferAndCommit
+BgClearTilemapBufferAndCommit: ; 0x0201CAE0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -4188,13 +4218,13 @@ sub_0201CAE0: ; 0x0201CAE0
 	beq _0201CB02
 	ldr r2, [r2, #0xc]
 	mov r0, #0
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r5, #0
 	add r1, r4, #0
 	bl BgCommitTilemapBufferToVram
 _0201CB02:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201CAE0
+	thumb_func_end BgClearTilemapBufferAndCommit
 
 	thumb_func_start sub_0201CB04
 sub_0201CB04: ; 0x0201CB04
@@ -4209,7 +4239,7 @@ sub_0201CB04: ; 0x0201CB04
 	beq _0201CB26
 	add r0, r2, #0
 	ldr r2, [r3, #0xc]
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r5, #0
 	add r1, r4, #0
 	bl BgCommitTilemapBufferToVram
@@ -4230,7 +4260,7 @@ sub_0201CB28: ; 0x0201CB28
 	beq _0201CB4A
 	add r0, r2, #0
 	ldr r2, [r3, #0xc]
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -5418,7 +5448,7 @@ AllocWindows: ; 0x0201D39C
 _0201D3AE:
 	lsl r0, r4, #4
 	add r0, r6, r0
-	bl sub_0201D3C4
+	bl InitWindow
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -5429,8 +5459,8 @@ _0201D3C0:
 	pop {r4, r5, r6, pc}
 	thumb_func_end AllocWindows
 
-	thumb_func_start sub_0201D3C4
-sub_0201D3C4: ; 0x0201D3C4
+	thumb_func_start InitWindow
+InitWindow: ; 0x0201D3C4
 	mov r3, #0
 	str r3, [r0]
 	mov r1, #0xff
@@ -5452,10 +5482,10 @@ sub_0201D3C4: ; 0x0201D3C4
 	bx lr
 	nop
 _0201D3EC: .word 0xFFFF8000
-	thumb_func_end sub_0201D3C4
+	thumb_func_end InitWindow
 
-	thumb_func_start sub_0201D3F0
-sub_0201D3F0: ; 0x0201D3F0
+	thumb_func_start WindowIsInUse
+WindowIsInUse: ; 0x0201D3F0
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0201D402
@@ -5472,10 +5502,10 @@ _0201D406:
 	mov r0, #1
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0201D3F0
+	thumb_func_end WindowIsInUse
 
-	thumb_func_start sub_0201D40C
-sub_0201D40C: ; 0x0201D40C
+	thumb_func_start AddWindowParameterized
+AddWindowParameterized: ; 0x0201D40C
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r2, #0
 	add r5, r0, #0
@@ -5544,7 +5574,7 @@ _0201D488:
 	nop
 _0201D48C: .word 0xFFFF8000
 _0201D490: .word 0xFFFF7FFF
-	thumb_func_end sub_0201D40C
+	thumb_func_end AddWindowParameterized
 
 	thumb_func_start sub_0201D494
 sub_0201D494: ; 0x0201D494
@@ -5616,7 +5646,7 @@ AddWindow: ; 0x0201D4F8
 	str r2, [sp, #0x10]
 	ldrb r2, [r3]
 	ldrb r3, [r3, #1]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x14
 	pop {pc}
 	.balign 4, 0
@@ -5709,12 +5739,12 @@ _0201D5AA:
 	ldrb r1, [r1, #0x1c]
 	add r0, r4, #0
 	lsl r2, r1, #2
-	ldr r1, _0201D5C4 ; =0x020F62FC
+	ldr r1, _0201D5C4 ; =_020F62FC
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r4, pc}
 	nop
-_0201D5C4: .word 0x020F62FC
+_0201D5C4: .word _020F62FC
 	thumb_func_end CopyWindowToVram
 
 	thumb_func_start sub_0201D5C8
@@ -5752,12 +5782,12 @@ _0201D5FA:
 	ldrb r1, [r1, #0x1c]
 	add r0, r4, #0
 	lsl r2, r1, #2
-	ldr r1, _0201D614 ; =0x020F62F0
+	ldr r1, _0201D614 ; =_020F62F0
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r4, pc}
 	nop
-_0201D614: .word 0x020F62F0
+_0201D614: .word _020F62F0
 	thumb_func_end sub_0201D5C8
 
 	thumb_func_start sub_0201D618
@@ -5770,12 +5800,12 @@ sub_0201D618: ; 0x0201D618
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D630 ; =0x020F62CC
+	ldr r1, _0201D630 ; =_020F62CC
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D630: .word 0x020F62CC
+_0201D630: .word _020F62CC
 	thumb_func_end sub_0201D618
 
 	thumb_func_start sub_0201D634
@@ -5788,12 +5818,12 @@ sub_0201D634: ; 0x0201D634
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D64C ; =0x020F6308
+	ldr r1, _0201D64C ; =_020F6308
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D64C: .word 0x020F6308
+_0201D64C: .word _020F6308
 	thumb_func_end sub_0201D634
 
 	thumb_func_start sub_0201D650
@@ -5880,7 +5910,7 @@ sub_0201D6D0: ; 0x0201D6D0
 	cmp r3, #0
 	beq _0201D724
 	ldrb r2, [r1, #0x1d]
-	ldr r1, _0201D728 ; =0x020F62C4
+	ldr r1, _0201D728 ; =_020F62C4
 	ldrb r6, [r1, r2]
 	ldrb r1, [r0, #6]
 	add r2, r1, #0
@@ -5918,7 +5948,7 @@ _0201D724:
 	pop {r4, r5, r6, r7}
 	bx lr
 	.balign 4, 0
-_0201D728: .word 0x020F62C4
+_0201D728: .word _020F62C4
 	thumb_func_end sub_0201D6D0
 
 	thumb_func_start sub_0201D72C
@@ -5997,7 +6027,7 @@ sub_0201D79C: ; 0x0201D79C
 	cmp r3, #0
 	beq _0201D7EA
 	ldrb r2, [r1, #0x1d]
-	ldr r1, _0201D7F0 ; =0x020F62C4
+	ldr r1, _0201D7F0 ; =_020F62C4
 	mov r4, #0
 	ldrb r6, [r1, r2]
 	ldrb r1, [r0, #6]
@@ -6032,7 +6062,7 @@ _0201D7EA:
 	pop {r4, r5, r6, r7}
 	bx lr
 	nop
-_0201D7F0: .word 0x020F62C4
+_0201D7F0: .word _020F62C4
 	thumb_func_end sub_0201D79C
 
 	thumb_func_start sub_0201D7F4
@@ -6158,12 +6188,12 @@ ClearWindowTilemapAndCopyToVram: ; 0x0201D8C8
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D8E0 ; =0x020F62E4
+	ldr r1, _0201D8E0 ; =_020F62E4
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D8E0: .word 0x020F62E4
+_0201D8E0: .word _020F62E4
 	thumb_func_end ClearWindowTilemapAndCopyToVram
 
 	thumb_func_start sub_0201D8E4
@@ -6176,12 +6206,12 @@ sub_0201D8E4: ; 0x0201D8E4
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D8FC ; =0x020F62D8
+	ldr r1, _0201D8FC ; =_020F62D8
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D8FC: .word 0x020F62D8
+_0201D8FC: .word _020F62D8
 	thumb_func_end sub_0201D8E4
 
 	thumb_func_start sub_0201D900
@@ -6280,7 +6310,7 @@ _0201D994:
 	ldrb r4, [r4, #7]
 	mul r2, r4
 	mul r2, r3
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	pop {r3, r4, r5, pc}
 	thumb_func_end FillWindowPixelBuffer
 
@@ -6303,7 +6333,7 @@ sub_0201D9B0: ; 0x0201D9B0
 	orr r0, r4
 	lsl r2, r2, #5
 	mul r2, r3
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	pop {r4, pc}
 	thumb_func_end sub_0201D9B0
 

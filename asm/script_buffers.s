@@ -1,6 +1,17 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+_020F5C1C:
+	.byte 0x17, 0x01, 0x19, 0x01
+	.byte 0x18, 0x01, 0x00, 0x00
+_020F5C24:
+	.byte 0x40, 0x01
+_020F5C26:
+	.byte 0x08, 0x00, 0x60, 0x01, 0x10, 0x00, 0xA0, 0x01, 0x10, 0x00
+	.byte 0xE0, 0x01, 0x10, 0x00, 0x20, 0x02, 0x10, 0x00, 0x60, 0x02, 0x10, 0x00, 0xA0, 0x02, 0x10, 0x00
+
 	.text
 
 	thumb_func_start ScrStrBufs_new
@@ -229,7 +240,7 @@ BufferFriendsName: ; 0x0200BE94
 	add r5, r0, #0
 	add r0, r2, #0
 	add r6, r1, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	ldr r2, _0200BEE4 ; =0x000001BD
 	ldr r3, [r5, #4]
@@ -948,8 +959,8 @@ BufferTrainerNameFromDataStruct: ; 0x0200C3E8
 	.balign 4, 0
 	thumb_func_end BufferTrainerNameFromDataStruct
 
-	thumb_func_start sub_0200C408
-sub_0200C408: ; 0x0200C408
+	thumb_func_start BufferDecorationName
+BufferDecorationName: ; 0x0200C408
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -975,7 +986,7 @@ _0200C43A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200C43C: .word 0x000002E1
-	thumb_func_end sub_0200C408
+	thumb_func_end BufferDecorationName
 
 	thumb_func_start sub_0200C440
 sub_0200C440: ; 0x0200C440
@@ -1027,7 +1038,7 @@ sub_0200C490: ; 0x0200C490
 	add r4, r1, #0
 	ldr r2, [r5, #0xc]
 	add r1, r3, #0
-	bl sub_02073F00
+	bl PCStorage_GetBoxName
 	ldr r2, [r5, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1180,7 +1191,7 @@ BufferLocationName: ; 0x0200C5AC
 	add r0, r4, #0
 	bl sub_02017FCC
 	add r4, r0, #0
-	ldr r2, _0200C64C ; =0x020F5C1C
+	ldr r2, _0200C64C ; =_020F5C1C
 	lsl r3, r6, #1
 	ldrh r2, [r2, r3]
 	ldr r3, [r5, #4]
@@ -1243,7 +1254,7 @@ _0200C620:
 _0200C648:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0200C64C: .word 0x020F5C1C
+_0200C64C: .word _020F5C1C
 _0200C650: .word 0x00000119
 	thumb_func_end BufferLocationName
 
@@ -1833,8 +1844,8 @@ _0200CAB8:
 	.balign 4, 0
 	thumb_func_end BufferSafariZoneAreaName
 
-	thumb_func_start sub_0200CAD8
-sub_0200CAD8: ; 0x0200CAD8
+	thumb_func_start BufferPokewalkerMessage
+BufferPokewalkerMessage: ; 0x0200CAD8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -1866,7 +1877,7 @@ _0200CAFC:
 	add r0, r6, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200CAD8
+	thumb_func_end BufferPokewalkerMessage
 
 	thumb_func_start BufferMonthNameAbbr
 BufferMonthNameAbbr: ; 0x0200CB1C
@@ -2236,7 +2247,7 @@ sub_0200CDAC: ; 0x0200CDAC
 	push {r3, r4, r5, lr}
 	sub sp, #0x18
 	add r4, r0, #0
-	ldr r0, _0200CDE8 ; =0x020F5C26
+	ldr r0, _0200CDE8 ; =_020F5C26
 	lsl r5, r1, #2
 	ldrh r1, [r0, r5]
 	lsl r3, r3, #0x10
@@ -2254,7 +2265,7 @@ sub_0200CDAC: ; 0x0200CDAC
 	ldr r1, [r4, #4]
 	add r0, r2, #0
 	ldr r2, [r1, #0x14]
-	ldr r1, _0200CDEC ; =0x020F5C24
+	ldr r1, _0200CDEC ; =_020F5C24
 	ldrh r1, [r1, r5]
 	add r1, r2, r1
 	mov r2, #0
@@ -2263,8 +2274,8 @@ sub_0200CDAC: ; 0x0200CDAC
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0200CDE8: .word 0x020F5C26
-_0200CDEC: .word 0x020F5C24
+_0200CDE8: .word _020F5C26
+_0200CDEC: .word _020F5C24
 	thumb_func_end sub_0200CDAC
 
 	thumb_func_start sub_0200CDF0

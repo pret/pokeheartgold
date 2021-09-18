@@ -27,7 +27,7 @@ ov01_021E5924: ; 0x021E5924
 	mov r1, #0
 	ldr r5, _021E5B9C ; =0x00DCE6A1
 	str r1, [sp, #4]
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	ldr r1, [r6]
 	add r4, r0, #0
 	cmp r1, #3
@@ -51,7 +51,7 @@ _021E5952:
 	bl FS_LoadOverlay
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	bl sub_0201A108
 	ldr r0, _021E5BA4 ; =0x04000050
 	mov r1, #0
@@ -126,7 +126,7 @@ _021E59F0:
 	mul r7, r1
 	mov r0, #3
 	mov r1, #4
-	bl sub_0201A910
+	bl CreateHeap
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _021E5A12
@@ -141,7 +141,7 @@ _021E5A12:
 	mov r1, #0
 	mov r2, #0x28
 	str r0, [r4, #4]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	mov r1, #4
 	mov r2, #8
@@ -153,7 +153,7 @@ _021E5A12:
 	bl _u32_div_f
 	cmp r1, #0
 	beq _021E5A50
-	ldr r0, _021E5BD0 ; =0x0203E349
+	ldr r0, _021E5BD0 ; =sub_0203E348
 	mov r1, #0
 	mov r2, #0x7b
 	bl sub_0200E320
@@ -169,9 +169,9 @@ _021E5A50:
 	bl sub_0201F590
 	bl ov01_021E61E0
 	bl ov01_021E6178
-	bl sub_02022D3C
+	bl GX_SwapDisplay
 	mov r0, #4
-	bl sub_0201AC88
+	bl BgConfig_Alloc
 	str r0, [r4, #8]
 	bl ov01_021E6058
 	mov r0, #0
@@ -185,7 +185,7 @@ _021E5A50:
 	bl _u32_div_f
 	cmp r1, #0
 	beq _021E5AA8
-	ldr r0, _021E5BD0 ; =0x0203E349
+	ldr r0, _021E5BD0 ; =sub_0203E348
 	ldr r2, _021E5BD8 ; =0x00000315
 	mov r1, #0
 	bl sub_0200E320
@@ -282,11 +282,11 @@ _021E5B70:
 	cmp r0, #0
 	bne _021E5B8E
 	mov r2, #0xfa
-	ldr r0, _021E5BDC ; =0x02096595
+	ldr r0, _021E5BDC ; =sub_02096594
 	mov r1, #0
 	lsl r2, r2, #2
 	bl sub_0200E320
-	ldr r0, _021E5BDC ; =0x02096595
+	ldr r0, _021E5BDC ; =sub_02096594
 	ldr r2, _021E5BE0 ; =0x00000578
 	mov r1, #0
 	bl sub_0200E320
@@ -311,17 +311,17 @@ _021E5BC0: .word SDK_OVERLAY_OVY_3_ID
 _021E5BC4: .word ov01_021E66B8
 _021E5BC8: .word 0x000003A1
 _021E5BCC: .word 0x00000D69
-_021E5BD0: .word 0x0203E349
+_021E5BD0: .word sub_0203E348
 _021E5BD4: .word 0x00001079
 _021E5BD8: .word 0x00000315
-_021E5BDC: .word 0x02096595
+_021E5BDC: .word sub_02096594
 _021E5BE0: .word 0x00000578
 	thumb_func_end ov01_021E5924
 
 	thumb_func_start ov01_021E5BE4
 ov01_021E5BE4: ; 0x021E5BE4
 	push {r4, lr}
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	bl ov01_021E5ED4
 	cmp r0, #0
@@ -356,7 +356,7 @@ ov01_021E5C24: ; 0x021E5C24
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	ldr r5, _021E5E7C ; =0x002AAACF
-	bl sub_020072A4
+	bl OverlayManager_GetField18
 	add r4, r0, #0
 	ldr r0, [r4, #0x2c]
 	bl ov01_021F50F0
@@ -468,7 +468,7 @@ _021E5CFA:
 	bl _u32_div_f
 	cmp r1, #0
 	beq _021E5D34
-	ldr r0, _021E5E9C ; =0x0203E349
+	ldr r0, _021E5E9C ; =sub_0203E348
 	ldr r2, _021E5EA0 ; =0x00001EA5
 	mov r1, #0
 	bl sub_0200E320
@@ -492,7 +492,7 @@ _021E5D34:
 	bl _u32_div_f
 	cmp r1, #0
 	beq _021E5D72
-	ldr r0, _021E5E9C ; =0x0203E349
+	ldr r0, _021E5E9C ; =sub_0203E348
 	ldr r2, _021E5EA8 ; =0x000004DD
 	mov r1, #0
 	bl sub_0200E320
@@ -573,7 +573,7 @@ _021E5E12:
 	bl ov01_021E6734
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	ldr r0, [r4, #4]
@@ -581,7 +581,7 @@ _021E5E12:
 	mov r0, #0
 	str r0, [r4, #4]
 	mov r0, #4
-	bl sub_0201A9C4
+	bl DestroyHeap
 	ldr r0, [r4, #0x74]
 	ldr r0, [r0]
 	lsl r0, r0, #8
@@ -609,7 +609,7 @@ _021E5E8C: .word ov01_021E66DC
 _021E5E90: .word 0x0000018D
 _021E5E94: .word ov01_021E66E0
 _021E5E98: .word 0x000008AD
-_021E5E9C: .word 0x0203E349
+_021E5E9C: .word sub_0203E348
 _021E5EA0: .word 0x00001EA5
 _021E5EA4: .word 0x000004EB
 _021E5EA8: .word 0x000004DD
@@ -621,7 +621,7 @@ _021E5EB4: .word SDK_OVERLAY_OVY_3_ID
 	thumb_func_start ov01_021E5EB8
 ov01_021E5EB8: ; 0x021E5EB8
 	push {r3, lr}
-	bl sub_0203E344
+	bl ScriptEnvironment_GetSav2Ptr
 	bl sub_0202A998
 	bl sub_0202AEBC
 	cmp r0, #0
@@ -730,10 +730,10 @@ _021E5F3E:
 	ldr r0, [r0, #0xc]
 	bl ov01_021EB2B8
 	add r0, r6, #0
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	cmp r6, r0
 	beq _021E5FB8
 	add r0, r5, #0
@@ -809,7 +809,7 @@ _021E6032:
 	sub r2, r2, #1
 	bne _021E6032
 	add r0, sp, #0
-	bl sub_02022BE8
+	bl GX_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -845,7 +845,7 @@ ov01_021E6058: ; 0x021E6058
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r5, _021E612C ; =0x02206318
 	add r3, sp, #0x3c
 	ldmia r5!, {r0, r1}
@@ -860,15 +860,15 @@ ov01_021E6058: ; 0x021E6058
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6130 ; =0x022062FC
 	add r3, sp, #0x20
 	ldmia r5!, {r0, r1}
@@ -883,15 +883,15 @@ ov01_021E6058: ; 0x021E6058
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	ldr r5, _021E6134 ; =0x02206334
 	add r3, sp, #4
 	ldmia r5!, {r0, r1}
@@ -906,15 +906,15 @@ ov01_021E6058: ; 0x021E6058
 	str r0, [r3]
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	add r1, sp, #0
 	strh r0, [r1]
@@ -939,25 +939,25 @@ ov01_021E6138: ; 0x021E6138
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021E6138
@@ -1131,26 +1131,26 @@ _021E6294:
 	ldr r1, _021E6310 ; =0x021DA4A4
 	add r0, sp, #8
 	mov r2, #0x40
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r1, _021E6314 ; =0x021DA51C
 	mov r0, #0x50
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
 	str r2, [r1, #0x7c]
-	bl sub_020BEF98
+	bl NNS_G3dGlbFlushP
 	ldr r0, [r4, #0x44]
 	bl ov01_021F13EC
 	bl sub_020237B0
 	ldr r1, _021E6310 ; =0x021DA4A4
 	add r0, sp, #0x48
 	mov r2, #0x40
-	bl sub_020D48B4
+	bl MIi_CpuCopyFast
 	ldr r1, _021E6314 ; =0x021DA51C
 	mov r0, #0x50
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
 	str r2, [r1, #0x7c]
-	bl sub_020BEF98
+	bl NNS_G3dGlbFlushP
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
 	bl ov01_021E6768
@@ -1268,7 +1268,7 @@ ov01_021E63B8: ; 0x021E63B8
 	add r5, r0, #0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021E6454 ; =0x0210F6DC
 	ldr r0, [r0]
 	lsl r1, r0, #1
@@ -1276,7 +1276,7 @@ ov01_021E63B8: ; 0x021E63B8
 	str r1, [r0]
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B27C
+	bl MapHeader_GetAreaDataBank
 	bl ov01_021FB888
 	str r0, [r5, #0x34]
 	bl ov01_021FB934
@@ -1290,7 +1290,7 @@ ov01_021E63B8: ; 0x021E63B8
 	str r0, [r1]
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B290
+	bl MapHeader_GetMoveModelBank
 	add r4, r0, #0
 	ldr r0, [r5, #0x38]
 	cmp r0, #0
@@ -1474,8 +1474,8 @@ ov01_021E6580: ; 0x021E6580
 	add r4, r0, #0
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
-	bl sub_02022D24
+	bl GX_EngineAToggleLayers
+	bl GX_BothDispOn
 	bl ov01_021EA8E0
 	str r0, [r4, #0x48]
 	bl ov01_021E61A4
@@ -1497,7 +1497,7 @@ ov01_021E6580: ; 0x021E6580
 	cmp r5, #3
 	bne _021E65D8
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020669A4
 	cmp r0, #0
 	beq _021E65D8
@@ -1531,7 +1531,7 @@ _021E65D8:
 	bl sub_020648EC
 	ldr r0, _021E6628 ; =ov01_021E5900
 	add r1, r4, #0
-	bl sub_0201A0FC
+	bl Main_SetVBlankIntrCB
 	pop {r3, r4, r5, pc}
 	nop
 _021E6628: .word ov01_021E5900
@@ -1691,7 +1691,7 @@ ov01_021E66E4: ; 0x021E66E4
 	ldr r1, [r4, #0xc]
 	mov r0, #0
 	add r2, r7, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r6, #0
 	bl sub_0201F82C
 	add r1, r0, #0
@@ -1885,7 +1885,7 @@ _021E6864:
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x14
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 _021E687A:
 	pop {r4, pc}
 	thumb_func_end ov01_021E683C
@@ -2252,11 +2252,11 @@ _021E6B12:
 	lsr r0, r0, #0x1f
 	bne _021E6B66
 	ldr r0, [r4, #0xc]
-	bl sub_02074904
-	bl sub_0205442C
+	bl SavArray_PlayerParty_get
+	bl HasEnoughAlivePokemonForDoubleBattle
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066644
 	cmp r0, #1
 	bne _021E6B36
@@ -2287,7 +2287,7 @@ _021E6B66:
 	lsr r0, r0, #0x1f
 	beq _021E6B86
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066674
 	add r0, r4, #0
 	bl ov01_021E7628
@@ -2310,7 +2310,7 @@ _021E6B94:
 	bl sub_0205DD94
 	add r7, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	mov r1, #2
 	bl sub_020668C0
 	cmp r0, #0
@@ -2319,9 +2319,9 @@ _021E6B94:
 	orr r6, r0
 _021E6BB6:
 	ldr r0, [r4, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	mov r1, #0x7f
-	bl sub_020542E8
+	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
 	beq _021E6BCA
 	mov r0, #2
@@ -2990,7 +2990,7 @@ _021E7132:
 	add r2, sp, #0
 	bl ov01_021E7AB8
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_020668A0
 	cmp r0, #1
 	bne _021E7172
@@ -3015,7 +3015,7 @@ _021E716C:
 _021E7172:
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B324
+	bl MapHeader_HasWildEncounters
 	cmp r0, #0
 	beq _021E718E
 	add r0, r4, #0
@@ -3470,7 +3470,7 @@ _021E7510:
 	cmp r0, #2
 	beq _021E7570
 	ldr r0, [r5, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, r7, #0
@@ -3480,13 +3480,13 @@ _021E7510:
 	beq _021E7550
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_02028F98
+	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	beq _021E7550
 	ldr r0, [r5, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	mov r1, #0x39
-	bl sub_020542E8
+	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
 	beq _021E7550
 	ldr r0, _021E7614 ; =0x00002714
@@ -3535,7 +3535,7 @@ _021E758C:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75AC:
 	ldr r0, [r5, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066860
 	cmp r0, #0
 	beq _021E75D6
@@ -3875,23 +3875,23 @@ ov01_021E788C: ; 0x021E788C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020293D4
+	bl Sav2_DayCare_get
 	add r1, r5, #0
 	add r2, r4, #0
 	bl sub_0206CD1C
 	cmp r0, #1
 	bne _021E78CE
 	ldr r0, [r4, #0xc]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	add r5, r0, #0
 	mov r1, #0xc
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	add r0, r5, #0
 	mov r1, #0xf
-	bl sub_0202D1C0
+	bl GameStats_AddSpecial
 	ldr r1, _021E78D4 ; =0x000007E5
 	add r0, r4, #0
 	mov r2, #0
@@ -3920,7 +3920,7 @@ ov01_021E78E4: ; 0x021E78E4
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	mov r5, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r4, r0, #0
 	bl sub_02066DB8
 	add r0, r0, #1
@@ -3942,15 +3942,15 @@ ov01_021E790C: ; 0x021E790C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r6, #0
-	bl sub_02074640
+	bl GetPartyCount
 	add r7, r0, #0
 	mov r4, #0
 	cmp r7, #0
@@ -3958,10 +3958,10 @@ ov01_021E790C: ; 0x021E790C
 _021E7932:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	add r2, r5, #0
-	bl sub_0206FE90
+	bl MonApplyFriendshipMod
 	add r4, r4, #1
 	cmp r4, r7
 	blt _021E7932
@@ -3975,7 +3975,7 @@ ov01_021E794C: ; 0x021E794C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl sub_0203B9C4
@@ -3995,12 +3995,12 @@ ov01_021E794C: ; 0x021E794C
 _021E797A:
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
-	bl sub_02054440
+	bl ApplyPoisonStep
 	cmp r0, #0
 	beq _021E799C
 	cmp r0, #1
@@ -4039,7 +4039,7 @@ ov01_021E79CC: ; 0x021E79CC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066860
 	cmp r0, #0
 	bne _021E79E2
@@ -4073,9 +4073,9 @@ ov01_021E7A08: ; 0x021E7A08
 	bl sub_0202ED88
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	ldr r1, _021E7A5C ; =0x00000984
-	bl sub_020503DC
+	bl CheckFlagInArray
 	cmp r0, #0
 	bne _021E7A56
 	add r0, r5, #0
@@ -4084,9 +4084,9 @@ ov01_021E7A08: ; 0x021E7A08
 	cmp r0, #0
 	bne _021E7A56
 	ldr r0, [r4, #0xc]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #1
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	mov r1, #1
 	lsl r1, r1, #0xa
 	cmp r0, r1
@@ -4112,7 +4112,7 @@ ov01_021E7A60: ; 0x021E7A60
 	bl sub_0206DB28
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066870
 	cmp r0, #0
 	bne _021E7A7C
@@ -4140,9 +4140,9 @@ ov01_021E7A98: ; 0x021E7A98
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0
-	bl sub_0202D18C
+	bl GameStats_GetCapped
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl sub_02031B14
@@ -4411,11 +4411,11 @@ ov01_021E7C70: ; 0x021E7C70
 	beq _021E7CBA
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B564
+	bl MapHeader_MapIsOnMainMatrix
 	cmp r0, #1
 	bne _021E7CFC
 	ldr r0, [sp, #8]
-	bl sub_0203B564
+	bl MapHeader_MapIsOnMainMatrix
 	cmp r0, #0
 	bne _021E7CFC
 	ldr r0, [r4, #0x40]
@@ -4441,11 +4441,11 @@ _021E7CBA:
 	beq _021E7CFC
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B564
+	bl MapHeader_MapIsOnMainMatrix
 	cmp r0, #1
 	bne _021E7CFC
 	ldr r0, [sp, #8]
-	bl sub_0203B564
+	bl MapHeader_MapIsOnMainMatrix
 	cmp r0, #0
 	bne _021E7CFC
 	ldr r0, [r4, #0x40]
@@ -4518,7 +4518,7 @@ ov01_021E7D58: ; 0x021E7D58
 	ldr r0, [r5, #0xc]
 	add r7, r2, #0
 	add r4, r1, #0
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	add r6, r0, #0
 	lsl r0, r7, #3
 	add r0, r4, r0
@@ -6750,7 +6750,7 @@ ov01_021E8DB4: ; 0x021E8DB4
 	mov r0, #0
 	add r1, r4, #0
 	lsl r2, r2, #6
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -9672,7 +9672,7 @@ _021EA468:
 	add r2, r4, #0
 	str r0, [r1]
 	mov r1, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r1, #0
 	str r1, [sp, #0x18]
 	ldr r1, [sp, #8]
@@ -10153,7 +10153,7 @@ ov01_021EA824: ; 0x021EA824
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x38
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -10226,7 +10226,7 @@ _021EA88C:
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #8]
 	ldr r3, [r4, #0xc]
-	bl sub_020CF82C
+	bl G3X_SetFog
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EA864
@@ -10282,7 +10282,7 @@ ov01_021EA8E0: ; 0x021EA8E0
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x48
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -10768,7 +10768,7 @@ ov01_021EAC4C: ; 0x021EAC4C
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -11425,7 +11425,7 @@ _021EB0C8:
 	bl NARC_AllocAndReadWholeMember
 	str r0, [r7, r6]
 	ldr r0, [r7, r6]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r1, r5, r6
 	str r0, [r1, #0x10]
 	add r0, r4, #0
@@ -11601,7 +11601,7 @@ _021EB208:
 	str r0, [r4, #0x10]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021EB1F4
@@ -12221,7 +12221,7 @@ _021EB69A:
 	strh r0, [r1]
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r4]
 	add r0, #8
 	bl ov01_021EB5A4
@@ -12796,7 +12796,7 @@ _021EBAFE:
 	beq _021EBB28
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r2, _021EBB3C ; =0x0400000C
 	mov r1, #3
 	ldrh r3, [r2]
@@ -12884,7 +12884,7 @@ ov01_021EBB90: ; 0x021EBB90
 	beq _021EBBCE
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021EBC90 ; =0x0400000C
 	mov r2, #3
 	ldrh r3, [r0]
@@ -13011,7 +13011,7 @@ ov01_021EBCA4: ; 0x021EBCA4
 	beq _021EBCD8
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021EBD0C ; =0x0400000C
 	mov r2, #3
 	ldrh r3, [r0]
@@ -13619,7 +13619,7 @@ ov01_021EC114: ; 0x021EC114
 	beq _021EC1B4
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r1, #0xc
 	mov r0, #0x42
 	lsl r0, r0, #2
@@ -15093,7 +15093,7 @@ _021ECBC6:
 	add r6, r0, #0
 	beq _021ECC62
 	ldr r4, [r6, #8]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0
 	str r1, [r4]
 	mov r1, #3
@@ -15205,7 +15205,7 @@ _021ECC96:
 	ldr r0, [r5, #4]
 	cmp r1, r0
 	ble _021ECCD8
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0xa
 	bl _u32_div_f
 	cmp r1, #7
@@ -15608,7 +15608,7 @@ _021ECFBE:
 	str r0, [r5, #0x14]
 	mov r0, #0
 	str r0, [r5]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x2a
 	bl _u32_div_f
 	add r0, r1, #4
@@ -15640,7 +15640,7 @@ _021ECFBE:
 	stmia r2!, {r0, r1}
 	ldr r0, [r3]
 	str r0, [r2]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x69
 	lsl r1, r1, #2
 	bl _u32_div_f
@@ -16042,12 +16042,12 @@ _021ED33E:
 	ldr r5, [r4, #8]
 	mov r0, #0
 	str r0, [r5]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #5
 	bl _u32_div_f
 	add r0, r1, #7
 	str r0, [r5, #4]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0xfa
 	lsl r1, r1, #2
 	bl _u32_div_f
@@ -16067,30 +16067,30 @@ _021ED374:
 	str r0, [r5, #8]
 	mov r0, #1
 	str r0, [r5, #0xc]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #6
 	bl _u32_div_f
 	add r0, r1, #3
 	str r0, [r5, #0x10]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #5
 	bl _u32_div_f
 	add r0, r1, #4
 	str r0, [r5, #0x14]
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #0x14
 	bl _u32_div_f
 	str r1, [sp, #8]
 	add r0, sp, #0x10
 	add r1, r4, #0
 	bl ov01_021EC304
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #6
 	lsl r1, r1, #6
 	bl _u32_div_f
 	sub r1, #0x40
 	str r1, [sp, #0x10]
-	bl sub_0201FDB8
+	bl MTRandom
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	ldr r0, [sp, #0x10]
@@ -16118,13 +16118,13 @@ _021ED374:
 	mov r1, #0xce
 	sub r7, r1, r0
 	bpl _021ED406
-	bl sub_0201FDB8
+	bl MTRandom
 	neg r1, r7
 	bl _u32_div_f
 	sub r1, r6, r1
 	b _021ED412
 _021ED406:
-	bl sub_0201FDB8
+	bl MTRandom
 	add r1, r7, #0
 	bl _u32_div_f
 	add r1, r6, r1
@@ -16139,7 +16139,7 @@ _021ED412:
 	str r0, [r5, #4]
 	b _021ED42E
 _021ED424:
-	bl sub_0201FDB8
+	bl MTRandom
 	mov r1, #3
 	and r0, r1
 	str r0, [sp, #8]
@@ -16386,7 +16386,7 @@ _021ED5B2:
 	bl ov01_021EB818
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021ED70C ; =0x00000F62
 	mov r1, #1
 	add sp, #0x10
@@ -16437,7 +16437,7 @@ _021ED656:
 	bl ov01_021EB818
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021ED70C ; =0x00000F62
 	mov r1, #3
 	add sp, #0x10
@@ -17296,7 +17296,7 @@ _021EDCD8:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -17312,7 +17312,7 @@ _021EDCD8:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl ov01_021EDE18
 	add r1, r4, #0
@@ -17744,7 +17744,7 @@ ov01_021EE01C: ; 0x021EE01C
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	b _021EE08A
 _021EE05A:
 	add r0, r4, #0
@@ -17769,7 +17769,7 @@ _021EE05A:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _021EE08A:
 	mov r0, #0
 	str r0, [sp]
@@ -17786,7 +17786,7 @@ _021EE08A:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl ov01_021EE324
 	add r2, r4, #0
@@ -17901,7 +17901,7 @@ _021EE158:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	b _021EE1C2
 _021EE192:
 	add r2, r5, #0
@@ -17926,7 +17926,7 @@ _021EE192:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _021EE1C2:
 	mov r0, #0
 	str r0, [sp]
@@ -17943,7 +17943,7 @@ _021EE1C2:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r5, #0
 	bl ov01_021EE324
 	add r0, r5, #0
@@ -18343,7 +18343,7 @@ _021EE4B8:
 	ldr r0, _021EE55C ; =0x000005DC
 	bl PlaySE
 _021EE4EE:
-	ldr r0, _021EE560 ; =0x021D110C
+	ldr r0, _021EE560 ; =gMain
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	tst r1, r0
@@ -18400,7 +18400,7 @@ _021EE55A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021EE55C: .word 0x000005DC
-_021EE560: .word 0x021D110C
+_021EE560: .word gMain
 _021EE564: .word 0x0000FFFE
 	thumb_func_end ov01_021EE49C
 
@@ -18576,7 +18576,7 @@ _021EE698:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -18592,7 +18592,7 @@ _021EE698:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	lsl r0, r4, #0x13
 	lsr r0, r0, #0x10
 	str r0, [sp]
@@ -19008,7 +19008,7 @@ _021EE9B2:
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -19024,7 +19024,7 @@ _021EE9B2:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -19117,7 +19117,7 @@ ov01_021EEA90: ; 0x021EEA90
 	add r1, r4, #0
 	mov r2, #3
 	add r3, r7, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -19131,7 +19131,7 @@ ov01_021EEA90: ; 0x021EEA90
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -19212,8 +19212,8 @@ ov01_021EEB4C: ; 0x021EEB4C
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl sub_02028E9C
-	bl sub_02029024
+	bl Sav2_PlayerData_GetProfileAddr
+	bl PlayerProfile_GetMoney
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -19282,7 +19282,7 @@ ov01_021EEC00: ; 0x021EEC00
 	ldr r3, [sp, #0x14]
 	add r1, r4, #0
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -19296,7 +19296,7 @@ ov01_021EEC00: ; 0x021EEC00
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
@@ -19355,7 +19355,7 @@ _021EECBA:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02028EB4
+	bl Sav2_PlayerData_GetCoinsAddr
 	bl sub_0202C950
 	add r2, r0, #0
 	b _021EED04
@@ -19444,7 +19444,7 @@ ov01_021EED60: ; 0x021EED60
 	add r1, r4, #0
 	mov r2, #3
 	add r3, r7, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -19458,7 +19458,7 @@ ov01_021EED60: ; 0x021EED60
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -19599,8 +19599,8 @@ ov01_021EEE44: ; 0x021EEE44
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	ldr r0, [r7, #0xc]
-	bl sub_02028E9C
-	bl sub_02029024
+	bl Sav2_PlayerData_GetProfileAddr
+	bl PlayerProfile_GetMoney
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -19805,19 +19805,19 @@ ov01_021EF050: ; 0x021EF050
 ov01_021EF064: ; 0x021EF064
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	cmp r5, #4
 	blo _021EF092
 	mov r1, #0
@@ -19838,20 +19838,20 @@ _021EF0A0: .word 0x022067C8
 ov01_021EF0A4: ; 0x021EF0A4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	mov r0, #1
 	mov r1, #0x1b
@@ -19874,20 +19874,20 @@ ov01_021EF0F0: ; 0x021EF0F0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	mov r0, #1
 	mov r1, #0x1b
@@ -19906,7 +19906,7 @@ ov01_021EF0F0: ; 0x021EF0F0
 	bl DestroyMsgData
 	ldr r1, _021EF150 ; =ov01_021EF348
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -19919,16 +19919,16 @@ ov01_021EF154: ; 0x021EF154
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp]
@@ -19950,16 +19950,16 @@ ov01_021EF194: ; 0x021EF194
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp]
@@ -19972,7 +19972,7 @@ ov01_021EF194: ; 0x021EF194
 	bl ov01_021EF564
 	ldr r1, _021EF1DC ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -20037,7 +20037,7 @@ _021EF23A:
 _021EF24C:
 	ldr r1, _021EF264 ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -20059,15 +20059,15 @@ ov01_021EF268: ; 0x021EF268
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	ldr r1, [r5, #8]
 	add r2, r0, #0
 	add r0, r1, #1
@@ -20095,7 +20095,7 @@ ov01_021EF268: ; 0x021EF268
 	bl ScrStrBufs_delete
 	ldr r1, _021EF2DC ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -20108,7 +20108,7 @@ ov01_021EF2E0: ; 0x021EF2E0
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, r5, #0
@@ -20125,7 +20125,7 @@ ov01_021EF2E0: ; 0x021EF2E0
 	bl ov01_021EF4DC
 	ldr r1, _021EF318 ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -20149,7 +20149,7 @@ ov01_021EF31C: ; 0x021EF31C
 	bl ov01_021EF4DC
 	ldr r1, _021EF344 ; =ov01_021EF348
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -20174,12 +20174,12 @@ ov01_021EF35C: ; 0x021EF35C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -20191,7 +20191,7 @@ ov01_021EF35C: ; 0x021EF35C
 	bl ov01_021EF4DC
 	ldr r1, _021EF394 ; =ov01_021EF348
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -20204,12 +20204,12 @@ ov01_021EF398: ; 0x021EF398
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, r5, #0
@@ -20226,7 +20226,7 @@ ov01_021EF398: ; 0x021EF398
 	bl ov01_021EF4DC
 	ldr r1, _021EF3DC ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -20239,12 +20239,12 @@ ov01_021EF3E0: ; 0x021EF3E0
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r2, r0, #0
 	mov r3, #0
 	str r3, [sp]
@@ -20255,7 +20255,7 @@ ov01_021EF3E0: ; 0x021EF3E0
 	bl ov01_021EF4DC
 	ldr r1, _021EF418 ; =ov01_021EF348
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -20270,8 +20270,8 @@ ov01_021EF41C: ; 0x021EF41C
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203E344
-	bl sub_02028E9C
+	bl ScriptEnvironment_GetSav2Ptr
+	bl Sav2_PlayerData_GetProfileAddr
 	ldr r0, [r5, #8]
 	add r1, r0, #1
 	str r1, [r5, #8]
@@ -20282,8 +20282,8 @@ ov01_021EF41C: ; 0x021EF41C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldrb r4, [r1]
-	bl sub_0203E344
-	bl sub_02028E9C
+	bl ScriptEnvironment_GetSav2Ptr
+	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	beq _021EF464
@@ -20306,7 +20306,7 @@ _021EF464:
 _021EF474:
 	ldr r1, _021EF484 ; =ov01_021EF348
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -20335,7 +20335,7 @@ ov01_021EF488: ; 0x021EF488
 	bl ov01_021EF4DC
 	ldr r1, _021EF4C0 ; =ov01_021EF348
 	add r0, r4, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -20516,7 +20516,7 @@ ov01_021EF60C: ; 0x021EF60C
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202AD3C
+	bl Options_GetTextFrameDelay
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EF60C
@@ -20750,7 +20750,7 @@ ov01_021EF7BC: ; 0x021EF7BC
 	str r0, [sp, #0x10]
 	ldr r0, [r1, #0x1c]
 	add r1, #0x20
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	add sp, #0x14
 	pop {pc}
 	.balign 4, 0
@@ -21007,7 +21007,7 @@ ov01_021EF9A8: ; 0x021EF9A8
 	add r3, #0x30
 	ldrb r3, [r3]
 	add r0, #0x20
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r3, pc}
 	nop
@@ -21182,7 +21182,7 @@ ov01_021EFAF8: ; 0x021EFAF8
 	bne _021EFB36
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
@@ -23751,19 +23751,19 @@ _021F0DFC:
 	ldr r0, [r0]
 	str r4, [r0, #4]
 	mov r0, #2
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
-	bl sub_020CE89C
+	bl GX_EngineAToggleLayers
+	bl GX_ResetBankForBG
 	mov r2, #2
 	ldr r1, _021F0E60 ; =0x06840000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, _021F0E64 ; =0xC0320C04
 	ldr r2, _021F0E68 ; =0x04000064
 	ldr r1, _021F0E5C ; =0x02209B64
@@ -24132,9 +24132,9 @@ ov01_021F10C8: ; 0x021F10C8
 	add r0, sp, #0
 	bl MTX_Identity33_
 	add r0, sp, #0x30
-	bl sub_020BEFD4
+	bl NNS_G3dGlbSetBaseTrans
 	add r0, sp, #0x24
-	bl sub_020BF004
+	bl NNS_G3dGlbSetBaseScale
 	ldr r1, _021F1140 ; =0x021DA558
 	add r0, sp, #0
 	bl MI_Copy36B
@@ -24179,10 +24179,10 @@ _021F1154:
 	sub r2, r2, #1
 	bne _021F1154
 	add r0, sp, #0x44
-	bl sub_02022BE8
+	bl GX_SetBanks
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r5, _021F11FC ; =0x022067FC
 	add r3, sp, #0x34
 	add r2, r3, #0
@@ -24191,7 +24191,7 @@ _021F1154:
 	ldmia r5!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_0201ACB0
+	bl SetBothScreensModesAndDisable
 	ldr r0, [r4, #8]
 	bl ov01_021E6050
 	ldr r2, _021F1200 ; =0x0400000E
@@ -24206,7 +24206,7 @@ _021F1154:
 	bl sub_0201BB68
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, sp, #0x24
 	bl MTX_Identity22_
 	mov r2, #0
@@ -24230,18 +24230,18 @@ _021F1154:
 	str r0, [r3]
 	ldr r0, [r4, #8]
 	mov r3, #0
-	bl sub_0201B1E4
+	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0
 	mov r3, #4
-	bl sub_0201C1C4
+	bl BG_ClearCharDataRange
 	ldr r0, [r4, #8]
 	mov r1, #2
-	bl sub_0201CAE0
+	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add sp, #0x6c
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -24259,7 +24259,7 @@ ov01_021F1210: ; 0x021F1210
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	mov r1, #2
-	bl sub_0201BB4C
+	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #8]
 	bl ov01_021E6048
 	pop {r4, pc}
@@ -25501,7 +25501,7 @@ ov01_021F1A48: ; 0x021F1A48
 	ldr r0, [r4]
 	add r6, r1, #0
 	add r5, r2, #0
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	cmp r0, #0
 	beq _021F1A78
 	bl sub_0201F53C
@@ -25511,13 +25511,13 @@ ov01_021F1A48: ; 0x021F1A48
 	ldr r1, [r0, #8]
 	bl DC_FlushRange
 	ldr r0, [r4]
-	bl sub_020C26C0
+	bl NNS_G3dResDefaultSetup
 	cmp r0, #0
 	bne _021F1A78
 	bl GF_AssertFail
 _021F1A78:
 	ldr r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _021F1AA2
 	add r2, r0, #0
@@ -25548,7 +25548,7 @@ _021F1AA4:
 _021F1AAE:
 	ldr r1, [r5]
 	add r0, r6, #0
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021F1A48
 
@@ -26412,7 +26412,7 @@ _021F2134: ; jump table
 _021F2148:
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066A3C
 	cmp r0, #0
 	bne _021F2172
@@ -26480,12 +26480,12 @@ _021F21D2:
 	ldr r0, [r4, #0x14]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r5, r0, #0
 	ldr r0, [r4, #0x14]
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	lsl r0, r5, #0x10
 	lsl r1, r1, #0x18
@@ -26785,14 +26785,14 @@ _021F2412:
 _021F2476:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066A3C
 	cmp r0, #0
 	bne _021F249A
 	ldr r0, [r4, #8]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
-	bl sub_02054FA8
+	bl GetMapMusic
 	add r1, r0, #0
 	ldr r0, [r4, #8]
 	mov r2, #4
@@ -27133,12 +27133,12 @@ ov01_021F2700: ; 0x021F2700
 	ldr r0, [r5, #0x24]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r4, r0, #0
 	ldr r0, [r5, #0x24]
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	lsl r0, r4, #0x10
 	lsl r1, r1, #0x18
@@ -28458,9 +28458,9 @@ ov01_021F3100: ; 0x021F3100
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F3100
@@ -29067,7 +29067,7 @@ ov01_021F35C4: ; 0x021F35C4
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x14
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	str r5, [r4]
 	str r7, [r4, #4]
 	ldr r0, [r5, #0x40]
@@ -29125,7 +29125,7 @@ ov01_021F3638: ; 0x021F3638
 	ldr r2, _021F365C ; =0x00000704
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov01_021F3610
@@ -29870,7 +29870,7 @@ ov01_021F3B84: ; 0x021F3B84
 	add r0, r1, #0
 	add r4, r2, #0
 	add r5, r3, #0
-	bl sub_020BEFD4
+	bl NNS_G3dGlbSetBaseTrans
 	ldr r1, _021F3C04 ; =0x021DA558
 	add r0, r4, #0
 	bl MI_Copy36B
@@ -29880,8 +29880,8 @@ ov01_021F3B84: ; 0x021F3B84
 	bic r2, r0
 	add r0, r5, #0
 	str r2, [r1, #0x7c]
-	bl sub_020BF004
-	bl sub_020BEF98
+	bl NNS_G3dGlbSetBaseScale
+	bl NNS_G3dGlbFlushP
 	add r2, sp, #0
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x18]
@@ -30411,10 +30411,10 @@ ov01_021F3F50: ; 0x021F3F50
 	bl sub_0203B958
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	add r7, r0, #0
 	ldr r0, [r6]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	str r0, [r5, #4]
 	add r0, r7, #0
 	bl sub_0202A5F4
@@ -30428,10 +30428,10 @@ _021F3F84:
 _021F3F86:
 	str r0, [r5]
 	add r0, r4, #0
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r5, #8]
 	add r0, r4, #0
-	bl sub_02028EC0
+	bl Sav2_PlayerData_GetIGTAddr
 	str r0, [r5, #0xc]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -30451,7 +30451,7 @@ ov01_021F3F9C: ; 0x021F3F9C
 	mov r1, #1
 	bl BufferPlayersName
 	ldr r0, [r4, #8]
-	bl sub_02028FF0
+	bl PlayerProfile_CountBadges
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -30484,7 +30484,7 @@ _021F3FEA:
 	mov r1, #3
 	bl BufferIntegerAsString
 	ldr r0, [r4, #0xc]
-	bl sub_0202CE24
+	bl GetIGTHours
 	add r2, r0, #0
 	cmp r2, #0x64
 	blt _021F400A
@@ -30508,7 +30508,7 @@ _021F4018:
 	mov r1, #4
 	bl BufferIntegerAsString
 	ldr r0, [r4, #0xc]
-	bl sub_0202CE28
+	bl GetIGTMinutes
 	mov r3, #2
 	add r2, r0, #0
 	str r3, [sp]
@@ -30661,7 +30661,7 @@ ov01_021F412C: ; 0x021F412C
 	ldrb r2, [r4, #8]
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r4, #4]
@@ -30683,7 +30683,7 @@ ov01_021F412C: ; 0x021F412C
 	ldr r2, _021F41A0 ; =0x000003D9
 	mov r1, #0
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -30850,7 +30850,7 @@ _021F429C:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x10]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r6, #0
 	bl String_dtor
 _021F42E2:
@@ -30892,7 +30892,7 @@ ov01_021F42F8: ; 0x021F42F8
 	ldrb r2, [r4, #8]
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -31122,28 +31122,28 @@ _021F44EA:
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F452A
 _021F44FA:
 	mov r2, #2
 	ldr r1, _021F4538 ; =0x06820000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F452A
 _021F4508:
 	mov r2, #2
 	ldr r1, _021F453C ; =0x06840000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F452A
 _021F4516:
 	mov r2, #2
 	ldr r1, _021F4540 ; =0x06860000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F452A
 _021F4524:
 	mov r0, #0
@@ -31276,28 +31276,28 @@ _021F4606:
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F463E
 _021F4616:
 	mov r2, #2
 	ldr r1, _021F466C ; =0x06820000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F463E
 _021F4624:
 	mov r2, #2
 	ldr r1, _021F4670 ; =0x06840000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	b _021F463E
 _021F4632:
 	mov r2, #2
 	ldr r1, _021F4674 ; =0x06860000
 	mov r0, #0
 	lsl r2, r2, #0x10
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 _021F463E:
 	ldr r5, [r4, #0x10]
 	ldr r1, [r4, #0x1c]
@@ -31337,14 +31337,14 @@ ov01_021F467C: ; 0x021F467C
 	add r4, r1, #0
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
-	bl sub_020CE89C
+	bl GX_EngineAToggleLayers
+	bl GX_ResetBankForBG
 	mov r0, #4
 	add r1, r0, #0
 	bl AllocFromHeap
@@ -31352,7 +31352,7 @@ ov01_021F467C: ; 0x021F467C
 	mov r0, #0
 	add r1, r7, #0
 	mov r2, #4
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	ldr r6, _021F46D8 ; =0x02206B94
 	add r3, sp, #0
 	mov r2, #5
@@ -31385,10 +31385,10 @@ ov01_021F46DC: ; 0x021F46DC
 	add r3, r1, #0
 	bl ov01_021F44B4
 	mov r0, #4
-	bl sub_020CDC04
+	bl GX_SetBankForBG
 	mov r0, #0xe
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, [r4]
 	mov r0, #4
 	bl FreeToHeapExplicit
@@ -31630,7 +31630,7 @@ _021F4894:
 	ldr r2, _021F4964 ; =0x00000A74
 	mov r1, #0
 	add r7, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	lsl r4, r6, #2
 	add r0, r5, r4
 	add r0, #0x90
@@ -31681,7 +31681,7 @@ _021F4894:
 	mov r2, #2
 	ldr r1, [r1]
 	lsl r2, r2, #0xa
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r0, [sp]
 	cmp r0, #0
 	beq _021F4944
@@ -31703,7 +31703,7 @@ _021F4894:
 	mov r2, #1
 	mov r1, #0xff
 	lsl r2, r2, #0xa
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 _021F4944:
 	add r1, r5, r4
 	add r1, #0x90
@@ -31713,7 +31713,7 @@ _021F4944:
 	add r1, r2, r1
 	mov r2, #0x81
 	lsl r2, r2, #2
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r6, #1
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
@@ -31741,7 +31741,7 @@ _021F4982:
 	ldr r2, _021F49EC ; =0x00000A74
 	mov r1, #0
 	add r7, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	lsl r4, r6, #2
 	add r0, r5, r4
 	add r0, #0x90
@@ -32007,7 +32007,7 @@ _021F4B70:
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -33020,7 +33020,7 @@ _021F5352:
 	bne _021F53A8
 	sub r0, #0x10
 	ldr r0, [r2, r0]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _021F5392
 	add r2, r0, #0
@@ -33309,14 +33309,14 @@ ov01_021F5568: ; 0x021F5568
 	str r0, [r1, r2]
 	ldr r1, [r4, r5]
 	sub r2, #0x60
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	ldr r2, [r4, r5]
 	ldr r1, _021F55EC ; =0x0000086C
 	mov r0, #0
 	add r1, r2, r1
 	mov r2, #0x81
 	lsl r2, r2, #2
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r6, r5
 	mov r1, #1
 	add r0, #0x80
@@ -34765,7 +34765,7 @@ ov01_021F6020: ; 0x021F6020
 	mov r1, #0
 	lsl r2, r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r0, [sp, #0x24]
 	cmp r0, #0
 	bne _021F6054
@@ -35694,7 +35694,7 @@ _021F66CE:
 _021F66D4:
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	add r5, r0, #0
 	ldrb r0, [r5, #9]
 	cmp r0, #1
@@ -35730,7 +35730,7 @@ _021F670E:
 _021F6716:
 	ldr r0, [r4, #0xc]
 	add r1, r5, #0
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #8]
 	cmp r0, #0
@@ -35828,14 +35828,14 @@ ov01_021F67B4: ; 0x021F67B4
 	bl GF_AssertFail
 _021F67DE:
 	ldr r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	ldrb r0, [r0, #9]
 	cmp r0, #1
 	beq _021F67EE
 	bl GF_AssertFail
 _021F67EE:
 	ldr r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _021F6818
 	add r2, r0, #0
@@ -35865,7 +35865,7 @@ _021F681A:
 _021F6822:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -36600,7 +36600,7 @@ _021F6D24:
 	str r1, [r0]
 	ldr r0, [r4, #0x34]
 	bl Sav2_PlayerData_GetOptionsAddr
-	bl sub_0202ADCC
+	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -36677,11 +36677,11 @@ _021F6DB4:
 	pop {r3, r4, r5, r6, pc}
 _021F6DC8:
 	ldr r0, [r6, #0x34]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r1, _021F6E40 ; =0x000001B5
 	mov r2, #1
 	mov r3, #4
-	bl sub_020784B0
+	bl Bag_HasItem
 	cmp r0, #1
 	bne _021F6E02
 	add r0, r6, #0
@@ -37003,7 +37003,7 @@ _021F7016:
 	bl sub_0202C6F4
 	add r6, r0, #0
 	mov r0, #4
-	bl sub_02028ED0
+	bl PlayerProfile_new
 	add r1, r5, #0
 	add r1, #0x8c
 	add r4, r0, #0
@@ -37012,7 +37012,7 @@ _021F7016:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02028F24
+	bl CopyPlayerName
 	ldr r0, [r5, #0x38]
 	mov r1, #0
 	add r2, r4, #0
@@ -37216,7 +37216,7 @@ ov01_021F71C4: ; 0x021F71C4
 	add r4, r0, #0
 	add r0, #0x10
 	add r5, r1, #0
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _021F71DC
 	add r0, r4, #0
@@ -37264,7 +37264,7 @@ ov01_021F722C: ; 0x021F722C
 	mov r1, #0
 	mov r2, #0x9c
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #4
 	bl ScrStrBufs_new
 	str r0, [r4, #0x38]
@@ -37301,7 +37301,7 @@ ov01_021F7268: ; 0x021F7268
 	bl String_dtor
 	add r0, r4, #0
 	add r0, #0x10
-	bl sub_0201D3F0
+	bl WindowIsInUse
 	cmp r0, #0
 	beq _021F7298
 	add r4, #0x10
@@ -37662,20 +37662,20 @@ _021F7524:
 	bl sub_0205F1E4
 	str r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
-	bl sub_02054388
+	bl SavArray_PlayerParty_get
+	bl GetFirstAliveMonInParty_CrashIfNone
 	str r0, [sp, #0xc]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r6, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_0206FF88
+	bl GetMonGender
 	str r0, [sp, #8]
 	lsl r1, r6, #0x10
 	ldr r2, [sp, #8]
@@ -37684,7 +37684,7 @@ _021F7524:
 	bl sub_02069D70
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
-	bl sub_0207003C
+	bl MonIsShiny
 	str r0, [sp, #4]
 	lsl r2, r6, #0x18
 	ldrb r1, [r4, #0x17]
@@ -37775,7 +37775,7 @@ _021F7636:
 	mov r1, #0
 	ldr r0, [sp, #0xc]
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r3, r0, #0
 	mov r1, #0x42
 	lsl r2, r7, #0x10
@@ -44848,7 +44848,7 @@ _021FAA44:
 	mov r2, #0
 	bl ov01_021FA238
 	str r0, [r5, #0x10]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r4, r0, #0
 	ldr r0, [sp, #0x18]
 	bl ov01_021FA2AC
@@ -45183,12 +45183,12 @@ ov01_021FACF8: ; 0x021FACF8
 	ldr r0, [r5, r4]
 	mov r1, #0
 	add r2, r6, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r5, r4
 	ldr r0, [r0, #0x10]
 	mov r1, #0
 	add r2, r7, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021FACF8
@@ -45653,7 +45653,7 @@ ov01_021FB04C: ; 0x021FB04C
 	mov r0, #0
 	mov r2, #0x18
 	add r4, r1, #0
-	bl sub_020D47EC
+	bl MIi_CpuClear32
 	add r0, r5, #0
 	mov r1, #4
 	add r2, sp, #0
@@ -46830,12 +46830,12 @@ ov01_021FB82C: ; 0x021FB82C
 	thumb_func_start ov01_021FB878
 ov01_021FB878: ; 0x021FB878
 	ldr r2, [r1, #0x14]
-	ldr r3, _021FB884 ; =sub_0201AC38
+	ldr r3, _021FB884 ; =ReallocFromHeap
 	add r1, r1, r2
 	sub r1, r1, r0
 	bx r3
 	nop
-_021FB884: .word sub_0201AC38
+_021FB884: .word ReallocFromHeap
 	thumb_func_end ov01_021FB878
 
 	thumb_func_start ov01_021FB888
@@ -47129,7 +47129,7 @@ _021FBA70:
 	str r0, [r5, r1]
 	sub r0, r1, #4
 	ldr r0, [r5, r0]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, _021FBCA8 ; =0x000008A4
 	str r0, [r5, r1]
 	ldrh r0, [r6, #0xc]
@@ -47137,7 +47137,7 @@ _021FBA70:
 	beq _021FBAB2
 	sub r0, r1, #4
 	ldr r0, [r5, r0]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, _021FBCAC ; =0x000008A8
 	str r0, [r5, r1]
 	b _021FBAB8
@@ -47252,7 +47252,7 @@ _021FBB7C:
 	bge _021FBBDA
 	ldr r0, [sp, #0x14]
 	ldr r0, [r0, #4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _021FBBC0
 	add r1, r0, #0
@@ -47310,7 +47310,7 @@ _021FBBEC:
 	mov r1, #0
 	bl ov01_022040A4
 	ldr r0, [r5, #4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r4, r0, #0
 	beq _021FBC2C
 	bl sub_0201F668
@@ -47403,7 +47403,7 @@ ov01_021FBCD8: ; 0x021FBCD8
 	add r2, r5, #0
 	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	str r0, [r4, #4]
 	cmp r0, #0
 	beq _021FBD16
@@ -47430,7 +47430,7 @@ _021FBD16:
 _021FBD18:
 	str r0, [r4, #8]
 	ldr r0, [r4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0xc]
 	cmp r0, #0
 	beq _021FBD32
@@ -47451,7 +47451,7 @@ ov01_021FBD38: ; 0x021FBD38
 	add r4, r0, #0
 	add r0, r1, #0
 	str r1, [r4]
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	str r0, [r4, #4]
 	cmp r0, #0
 	beq _021FBD6A
@@ -47478,7 +47478,7 @@ _021FBD6A:
 _021FBD6C:
 	str r0, [r4, #8]
 	ldr r0, [r4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0xc]
 	cmp r0, #0
 	beq _021FBD86
@@ -47747,7 +47747,7 @@ ov01_021FBF2C: ; 0x021FBF2C
 	bl memset
 	ldr r1, [r5, #8]
 	add r0, r4, #0
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	mov r0, #1
 	str r0, [r4, #0x6c]
 	lsl r0, r0, #0xc
@@ -47940,7 +47940,7 @@ ov01_021FC05C: ; 0x021FC05C
 	bl sub_0201BB68
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021FC0A4 ; =0x00000647
 	bl PlaySE
 	add sp, #4
@@ -48137,22 +48137,22 @@ _021FC1DA:
 
 	thumb_func_start ov01_021FC1E0
 ov01_021FC1E0: ; 0x021FC1E0
-	ldr r3, _021FC1E8 ; =sub_0201C2D8
+	ldr r3, _021FC1E8 ; =BG_SetMaskColor
 	mov r0, #2
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_021FC1E8: .word sub_0201C2D8
+_021FC1E8: .word BG_SetMaskColor
 	thumb_func_end ov01_021FC1E0
 
 	thumb_func_start ov01_021FC1EC
 ov01_021FC1EC: ; 0x021FC1EC
-	ldr r3, _021FC1F4 ; =sub_0201C2D8
+	ldr r3, _021FC1F4 ; =BG_SetMaskColor
 	mov r0, #2
 	ldr r1, _021FC1F8 ; =0x00007FFF
 	bx r3
 	.balign 4, 0
-_021FC1F4: .word sub_0201C2D8
+_021FC1F4: .word BG_SetMaskColor
 _021FC1F8: .word 0x00007FFF
 	thumb_func_end ov01_021FC1EC
 
@@ -48166,7 +48166,7 @@ ov01_021FC1FC: ; 0x021FC1FC
 	strh r1, [r0]
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, _021FC258 ; =0x0400000C
 	mov r0, #3
 	ldrh r2, [r1]
@@ -48191,7 +48191,7 @@ ov01_021FC1FC: ; 0x021FC1FC
 	bl sub_0201CB04
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov01_021FC1E0
 	add sp, #8
@@ -48212,7 +48212,7 @@ ov01_021FC260: ; 0x021FC260
 	strh r1, [r0]
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r1, _021FC2BC ; =0x0400000E
 	mov r0, #3
 	ldrh r2, [r1]
@@ -48236,7 +48236,7 @@ ov01_021FC260: ; 0x021FC260
 	bl sub_0201CB04
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	add r0, r4, #0
 	bl ov01_021FC1E0
 	add sp, #8
@@ -48363,7 +48363,7 @@ _021FC376:
 	bl sub_0201BB68
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _021FC4B2
 _021FC392:
 	ldr r0, [r4]
@@ -48385,7 +48385,7 @@ _021FC3A8:
 	strh r0, [r4, #0xa]
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B324
+	bl MapHeader_HasWildEncounters
 	cmp r0, #0
 	beq _021FC3F4
 	mov r0, #0xa
@@ -48433,7 +48433,7 @@ _021FC40E:
 	beq _021FC4B2
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, _021FC4B8 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -48497,7 +48497,7 @@ _021FC498:
 	bl sub_0201CB04
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _021FC4AE:
@@ -48524,7 +48524,7 @@ ov01_021FC4C4: ; 0x021FC4C4
 	str r0, [sp]
 	add r7, r1, #0
 	str r3, [sp, #4]
-	bl sub_0201A910
+	bl CreateHeap
 	cmp r0, #1
 	beq _021FC4E6
 	bl GF_AssertFail
@@ -48583,7 +48583,7 @@ _021FC542:
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0201A9C4
+	bl DestroyHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021FC520
@@ -48845,9 +48845,9 @@ _021FC6E2:
 	bl sub_02092DEC
 	bl sub_02092FA8
 	ldr r0, [r4, #0xc]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0xb
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	ldr r2, [r5, #0x10]
 	add r0, r4, #0
 	add r1, r6, #0
@@ -49029,7 +49029,7 @@ _021FC848: .word 0x0000064F
 ov01_021FC84C: ; 0x021FC84C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201FD44
+	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r0, r0, #0x1e
 	sub r0, r0, r1
@@ -49241,9 +49241,9 @@ ov01_021FC9AC: ; 0x021FC9AC
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
-	bl sub_0202CF54
+	bl Sav2_GameStats_get
 	mov r1, #0x65
-	bl sub_0202D0FC
+	bl GameStats_Inc
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -49407,7 +49407,7 @@ _021FCAD8:
 
 	thumb_func_start ov01_021FCAE8
 ov01_021FCAE8: ; 0x021FCAE8
-	ldr r0, _021FCAF8 ; =0x021D110C
+	ldr r0, _021FCAF8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r1, r0
@@ -49416,12 +49416,12 @@ ov01_021FCAE8: ; 0x021FCAE8
 _021FCAF4:
 	bx lr
 	nop
-_021FCAF8: .word 0x021D110C
+_021FCAF8: .word gMain
 	thumb_func_end ov01_021FCAE8
 
 	thumb_func_start ov01_021FCAFC
 ov01_021FCAFC: ; 0x021FCAFC
-	ldr r0, _021FCB10 ; =0x021D110C
+	ldr r0, _021FCB10 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -49432,7 +49432,7 @@ _021FCB0A:
 	mov r0, #0
 	bx lr
 	nop
-_021FCB10: .word 0x021D110C
+_021FCB10: .word gMain
 	thumb_func_end ov01_021FCAFC
 
 	thumb_func_start ov01_021FCB14
@@ -49542,7 +49542,7 @@ ov01_021FCBCC: ; 0x021FCBCC
 	add r0, r4, #0
 	add r0, #0x38
 	mov r1, #0
-	bl sub_0200E9BC
+	bl ClearFrameAndWindow2
 	add r4, #0x38
 	add r0, r4, #0
 	bl RemoveWindow
@@ -49597,11 +49597,11 @@ _021FCC40:
 	beq _021FCC6E
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
-	bl sub_02054388
+	bl SavArray_PlayerParty_get
+	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #9
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bl ov01_021FCC74
@@ -49640,7 +49640,7 @@ _021FCC8E:
 _021FCC96:
 	mov r4, #0x32
 _021FCC98:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	cmp r1, r4
@@ -50178,7 +50178,7 @@ ov01_021FD064: ; 0x021FD064
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #0x86
@@ -57987,29 +57987,29 @@ ov01_02200AF0: ; 0x02200AF0
 	bl sub_020402F0
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x1c]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp, #0x30]
 	ldr r0, [sp, #0x1c]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp, #0x34]
 	ldr r0, [sp, #0x1c]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	str r0, [sp, #0x38]
 	ldr r0, [sp, #0x1c]
 	mov r1, #0x1b
@@ -58021,7 +58021,7 @@ ov01_02200AF0: ; 0x02200AF0
 	str r0, [sp, #0x20]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [sp, #0x1c]
 	mov r1, #1
@@ -58031,11 +58031,11 @@ ov01_02200AF0: ; 0x02200AF0
 	add r5, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_02040374
+	bl GetVarPointer
 	add r7, r0, #0
 	ldr r1, [sp, #0x38]
 	add r0, r6, #0
-	bl sub_02040374
+	bl GetVarPointer
 	mov r2, #1
 	str r2, [sp]
 	ldr r1, [sp, #0x2c]
@@ -58130,7 +58130,7 @@ _02200C14:
 	bl ov01_02200E00
 	ldr r0, [sp, #0x1c]
 	ldr r1, _02200C68 ; =ov01_02200C6C
-	bl sub_0203FD58
+	bl SetupNativeScript
 	ldr r0, [sp, #0x20]
 	bl DestroyMsgData
 	mov r0, #1
@@ -58151,7 +58151,7 @@ ov01_02200C6C: ; 0x02200C6C
 	lsl r1, r1, #0x10
 	ldr r0, [r0]
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	ldrh r1, [r0]
 	ldr r0, _02200C90 ; =0x0000EEEE
 	cmp r1, r0
@@ -58388,7 +58388,7 @@ ov01_02200E00: ; 0x02200E00
 	ldr r0, [r0, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	b _02200E62
 _02200E38:
 	sub r0, r3, #2
@@ -58410,7 +58410,7 @@ _02200E38:
 	ldrb r3, [r4, r3]
 	ldr r0, [r0, #8]
 	add r1, #8
-	bl sub_0201D40C
+	bl AddWindowParameterized
 _02200E62:
 	mov r0, #0
 	str r0, [sp]
@@ -58427,7 +58427,7 @@ _02200E62:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E580
+	bl DrawFrameAndWindow1
 	add r0, r4, #0
 	bl ov01_02200F54
 	mov r2, #0x87
@@ -58859,70 +58859,70 @@ ov01_022011D4: ; 0x022011D4
 	add r1, #0x80
 	ldr r1, [r1]
 	str r1, [sp, #4]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp]
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r4, r0, #0
 	mov r1, #0x46
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x47
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #0x48
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #0x49
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0x4a
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x18]
 	add r0, r4, #0
 	mov r1, #0x4b
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	mov r4, #0
 	str r0, [sp, #0x1c]
 	strh r4, [r5]
@@ -59004,17 +59004,17 @@ ov01_02201304: ; 0x02201304
 	add r1, #0x80
 	ldr r1, [r1]
 	str r1, [sp, #4]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp]
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r7, r0, #0
-	bl sub_02074640
+	bl GetPartyCount
 	add r6, r0, #0
 	mov r4, #0
 	ldr r0, [sp]
@@ -59025,10 +59025,10 @@ ov01_02201304: ; 0x02201304
 _02201342:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [r5]
 	cmp r0, #0x70
 	bne _0220135E
@@ -59046,13 +59046,13 @@ _02201366:
 	ble _022013BA
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_0207879C
+	bl Sav2_Bag_get
 	ldr r2, [sp, #8]
 	mov r1, #0x70
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
 	mov r3, #4
-	bl sub_02078398
+	bl Bag_AddItem
 	cmp r0, #0
 	bne _02201392
 	ldr r0, [sp]
@@ -59073,10 +59073,10 @@ _0220139C:
 	bne _022013B2
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #6
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 _022013B2:
 	add r5, r5, #1
 	add r4, r4, #4
@@ -59089,17 +59089,17 @@ _022013BA:
 _022013C0:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0x70
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	ble _02201412
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r1, _02201420 ; =0x000001DF
 	cmp r0, r1
 	beq _022013FE
@@ -59113,18 +59113,18 @@ _022013C0:
 	b _02201412
 _022013F6:
 	add r0, r4, #0
-	bl sub_02071CA0
+	bl Mon_UpdateGiratinaForme
 	b _02201412
 _022013FE:
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_02071EC0
+	bl Mon_UpdateRotomForme
 	b _02201412
 _0220140A:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02071D6C
+	bl Mon_UpdateShayminForme
 _02201412:
 	add r5, r5, #1
 	cmp r5, r6
@@ -59145,28 +59145,28 @@ ov01_02201424: ; 0x02201424
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r1, sp, #0
 	strh r0, [r1]
 	ldr r0, [r4, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0x70
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -59180,27 +59180,27 @@ ov01_02201470: ; 0x02201470
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	mov r0, #0xff
 	strh r0, [r6]
 	ldr r0, [r4, #0xc]
 	mov r7, #0
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #4]
-	bl sub_02074640
+	bl GetPartyCount
 	add r5, r7, #0
 	str r0, [sp, #8]
 	cmp r0, #0
@@ -59208,21 +59208,21 @@ ov01_02201470: ; 0x02201470
 _022014BA:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r4, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	ldr r2, [sp, #0xc]
 	ldr r1, _02201514 ; =0x000001DF
 	cmp r2, r1
@@ -59260,47 +59260,47 @@ ov01_02201518: ; 0x02201518
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r4, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	ldr r2, [sp]
 	add r1, r7, #0
 	add r5, r0, #0
-	bl sub_02071EC0
+	bl Mon_UpdateRotomForme
 	ldr r0, [r4, #0xc]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	add r1, r5, #0
-	bl sub_0202A434
+	bl Pokedex_SetMonCaughtFlag
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -59314,34 +59314,34 @@ ov01_02201594: ; 0x02201594
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r6, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r6, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r7, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r6, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _02201682
 	ldr r0, _02201698 ; =0x0000010A
@@ -59452,32 +59452,32 @@ ov01_022016A0: ; 0x022016A0
 	add r6, r0, #0
 	mov r1, #0x46
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0x10]
 	add r0, r6, #0
 	mov r1, #0x47
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #0xc]
 	add r0, r6, #0
 	mov r1, #0x48
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #8]
 	add r0, r6, #0
 	mov r1, #0x49
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp, #4]
 	add r0, r6, #0
 	mov r1, #0x4a
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp]
 	add r0, r6, #0
 	mov r1, #0x4b
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r7, r0, #0
 	cmp r5, #0
 	beq _0220173C
@@ -59565,9 +59565,9 @@ ov01_0220178C: ; 0x0220178C
 	add r0, #0x80
 	ldr r4, [r0]
 	ldr r0, [r4, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	mov r1, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl sub_0202A954
@@ -59575,17 +59575,17 @@ ov01_0220178C: ; 0x0220178C
 	add r0, r5, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r3, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
@@ -59604,27 +59604,27 @@ ov01_022017DC: ; 0x022017DC
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl sub_0202A954
@@ -59651,27 +59651,27 @@ ov01_02201844: ; 0x02201844
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -59812,11 +59812,11 @@ ov01_0220197C: ; 0x0220197C
 ov01_02201990: ; 0x02201990
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020403AC
+	bl VarGet
 	add r1, r0, #0
 	mov r0, #1
 	bl sub_02005B50
@@ -59829,27 +59829,27 @@ ov01_02201990: ; 0x02201990
 ov01_022019B0: ; 0x022019B0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	add r1, r6, #0
-	bl sub_0202A044
+	bl Pokedex_CheckMonSeenFlag
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -59859,12 +59859,12 @@ ov01_022019B0: ; 0x022019B0
 ov01_022019F0: ; 0x022019F0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r1, r0, #0
 	add r4, #0x80
 	ldr r0, [r4]
@@ -59880,12 +59880,12 @@ ov01_022019F0: ; 0x022019F0
 ov01_02201A18: ; 0x02201A18
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r1, r0, #0
 	add r4, #0x80
 	ldr r0, [r4]
@@ -59912,36 +59912,36 @@ ov01_02201A40: ; 0x02201A40
 ov01_02201A50: ; 0x02201A50
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	str r0, [sp]
 	ldr r0, [r5]
@@ -59959,20 +59959,20 @@ ov01_02201A50: ; 0x02201A50
 ov01_02201AB8: ; 0x02201AB8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -60031,21 +60031,21 @@ _02201B3C: .word 0x0000FFFF
 ov01_02201B40: ; 0x02201B40
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r6, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	add r0, r6, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r6, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, #0x80
 	add r4, r0, #0
 	ldr r0, [r6]
@@ -60136,12 +60136,12 @@ ov01_02201C08: ; 0x02201C08
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r6, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -60190,12 +60190,12 @@ ov01_02201C60: ; 0x02201C60
 ov01_02201C70: ; 0x02201C70
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -60226,12 +60226,12 @@ ov01_02201C9C: ; 0x02201C9C
 ov01_02201CB4: ; 0x02201CB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -60248,12 +60248,12 @@ ov01_02201CB4: ; 0x02201CB4
 ov01_02201CE0: ; 0x02201CE0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	add r7, r0, #0
 	ldr r0, [r4]
@@ -60290,13 +60290,13 @@ ov01_02201D1C: ; 0x02201D1C
 	mov r1, #2
 	bl sub_0203ED24
 	str r0, [r4]
-	ldr r1, _02201D48 ; =0x02042975
+	ldr r1, _02201D48 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02201D48: .word 0x02042975
+_02201D48: .word sub_02042974
 	thumb_func_end ov01_02201D1C
 
 	thumb_func_start ov01_02201D4C
@@ -60309,20 +60309,20 @@ ov01_02201D4C: ; 0x02201D4C
 	bl sub_020402F0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r2, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60330,13 +60330,13 @@ ov01_02201D4C: ; 0x02201D4C
 	add r1, r6, #0
 	bl sub_0203ED80
 	str r0, [r4]
-	ldr r1, _02201DA0 ; =0x02042975
+	ldr r1, _02201DA0 ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
-_02201DA0: .word 0x02042975
+_02201DA0: .word sub_02042974
 	thumb_func_end ov01_02201D4C
 
 	thumb_func_start ov01_02201DA4
@@ -60356,35 +60356,35 @@ ov01_02201DA4: ; 0x02201DA4
 	bl sub_020402F0
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #8]
 	add r0, sp, #0x20
 	bl GF_RTC_CopyDate
@@ -60414,7 +60414,7 @@ _02201E46:
 	mov r2, #0x20
 	bl sub_020322AC
 	str r0, [sp, #0x14]
-	ldr r0, _02201F08 ; =0x020F566C
+	ldr r0, _02201F08 ; =gGameVersion
 	ldr r2, [sp, #0x14]
 	ldrb r5, [r0]
 	mov r0, #1
@@ -60498,7 +60498,7 @@ _02201EBC:
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02201F08: .word 0x020F566C
+_02201F08: .word gGameVersion
 _02201F0C: .word 0x00001388
 	thumb_func_end ov01_02201DA4
 
@@ -60506,12 +60506,12 @@ _02201F0C: .word 0x00001388
 ov01_02201F10: ; 0x02201F10
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r1, r0, #0
 	ldr r0, [r4, #0x74]
 	bl ov03_02258CFC
@@ -60664,17 +60664,17 @@ _02202058: .word 0x0000019F
 ov01_0220205C: ; 0x0220205C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	str r0, [sp]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_0202A634
+	bl Sav2_Pokedex_get
 	mov r1, #1
 	add r7, r0, #0
 	bl sub_0202A14C
@@ -60728,12 +60728,12 @@ ov01_022020CC: ; 0x022020CC
 	add r0, #0x80
 	ldr r7, [r0]
 	ldr r0, [r7, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	ldr r0, [r7, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #8]
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, #6
 	blt _022020F2
 	add sp, #0x10
@@ -60741,9 +60741,9 @@ ov01_022020CC: ; 0x022020CC
 	pop {r3, r4, r5, r6, r7, pc}
 _022020F2:
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
-	bl sub_0206DCE4
+	bl ZeroMonData
 	mov r0, #1
 	mov r1, #0xd
 	bl sub_02017FE4
@@ -60754,7 +60754,7 @@ _022020F2:
 	mov r1, #0xaf
 	mov r2, #1
 	add r3, r4, #0
-	bl sub_0206C8B8
+	bl SetEggStats
 	mov r4, #0
 	add r6, r4, #0
 _0220211C:
@@ -60762,7 +60762,7 @@ _0220211C:
 	add r0, r5, #0
 	add r1, #0x36
 	add r2, r6, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _02202132
 	add r4, r4, #1
@@ -60781,22 +60781,22 @@ _02202138:
 	add r0, r5, #0
 	add r1, #0x36
 	add r2, #2
-	bl sub_0206EC40
+	bl SetMonData
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x42
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, sp, #0xc
 	strb r0, [r1]
 	add r4, #0x3a
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, sp, #0xc
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #8]
 	add r1, r5, #0
-	bl sub_02074524
+	bl AddMonToParty
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [r7, #0xc]
@@ -60805,12 +60805,12 @@ _02202138:
 	add r4, r0, #0
 	add r0, r5, #0
 	add r2, r1, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r2, r0, #0
 	lsl r2, r2, #0x18
 	add r0, r4, #0
@@ -60828,28 +60828,28 @@ _022021A8: .word 0x00000146
 ov01_022021AC: ; 0x022021AC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r5, #0x80
 	ldr r1, [r5]
 	ldr r1, [r1, #0xc]
@@ -60868,13 +60868,13 @@ ov01_022021F8: ; 0x022021F8
 	ldr r0, [r0]
 	str r0, [sp, #0x18]
 	ldr r0, [r0, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x18]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #0x1c]
-	bl sub_02074640
+	bl GetPartyCount
 	cmp r0, #6
 	blt _02202224
 	add sp, #0x24
@@ -60882,11 +60882,11 @@ ov01_022021F8: ; 0x022021F8
 	pop {r4, r5, r6, r7, pc}
 _02202224:
 	mov r0, #0xb
-	bl sub_0206DD2C
+	bl AllocMonZeroed
 	add r5, r0, #0
-	bl sub_0206DCE4
+	bl ZeroMonData
 	ldr r0, [sp, #0x14]
-	bl sub_02028F84
+	bl PlayerProfile_GetTrainerID
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -60904,7 +60904,7 @@ _02202224:
 	mov r2, #0x1e
 	mov r3, #0x20
 	str r4, [sp, #0xc]
-	bl sub_0206DE38
+	bl CreateMon
 	add r2, sp, #0x20
 	mov r1, #1
 	add r0, sp, #0x20
@@ -60912,7 +60912,7 @@ _02202224:
 	add r0, r5, #0
 	mov r1, #0x70
 	add r2, #1
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r6, _02202304 ; =0x022093BA
 	mov r4, #0
 	add r7, sp, #0x20
@@ -60921,18 +60921,18 @@ _02202276:
 	add r0, r5, #0
 	add r1, #0x36
 	add r2, r6, #0
-	bl sub_0206EC40
+	bl SetMonData
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x42
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r4, #0
 	strb r0, [r7]
 	add r0, r5, #0
 	add r1, #0x3a
 	add r2, sp, #0x20
-	bl sub_0206EC40
+	bl SetMonData
 	add r4, r4, #1
 	add r6, r6, #2
 	cmp r4, #4
@@ -60945,14 +60945,14 @@ _02202276:
 	add r0, r5, #0
 	mov r1, #6
 	add r2, #2
-	bl sub_0206EC40
+	bl SetMonData
 	ldr r0, [sp, #0x10]
 	add r0, #0x80
 	str r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B36C
+	bl MapHeader_GetMapSec
 	add r1, r0, #0
 	mov r0, #0
 	bl sub_02017FE4
@@ -60967,7 +60967,7 @@ _02202276:
 	bl sub_020720FC
 	ldr r0, [sp, #0x1c]
 	add r1, r5, #0
-	bl sub_02074524
+	bl AddMonToParty
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x18]
@@ -60988,11 +60988,11 @@ ov01_02202308: ; 0x02202308
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl sub_0202FA64
@@ -61013,19 +61013,19 @@ _02202336:
 ov01_0220233C: ; 0x0220233C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	bl ov02_022522B4
 	cmp r5, r0
@@ -61065,7 +61065,7 @@ _02202394:
 	mov r0, #3
 	pop {r4, r5, r6, r7, pc}
 _022023A2:
-	bl sub_0201FD2C
+	bl GetLCRNGSeed
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	bl sub_0202C7DC
@@ -61076,7 +61076,7 @@ _022023A2:
 	ldr r2, [sp, #4]
 	mov r1, #0
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [sp, #8]
 	ldr r1, _0220242C ; =0x022093D0
@@ -61095,7 +61095,7 @@ _022023CE:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x10]
 _022023E4:
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, [sp, #4]
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -61162,13 +61162,13 @@ ov01_02202430: ; 0x02202430
 	ldr r0, [r0]
 	bl sub_0203FA38
 	str r0, [r7]
-	ldr r1, _0220247C ; =0x02042975
+	ldr r1, _0220247C ; =sub_02042974
 	add r0, r5, #0
-	bl sub_0203FD58
+	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0220247C: .word 0x02042975
+_0220247C: .word sub_02042974
 	thumb_func_end ov01_02202430
 
 	thumb_func_start ov01_02202480
@@ -61179,12 +61179,12 @@ ov01_02202480: ; 0x02202480
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	add r6, r0, #0
 	ldr r0, [r5]
@@ -61203,20 +61203,20 @@ ov01_02202480: ; 0x02202480
 ov01_022024B8: ; 0x022024B8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -61247,25 +61247,25 @@ ov01_022024FC: ; 0x022024FC
 ov01_02202510: ; 0x02202510
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020503D0
+	bl SavArray_Flags_get
 	bl sub_02066ECC
 	mov r1, #0x1e
 	bl _s32_div_f
@@ -61298,7 +61298,7 @@ _0220257A:
 	add r0, r6, #0
 	add r1, #0xb5
 	add r2, r7, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r4, r4, #1
 	add r5, r5, r0
 	cmp r4, #5
@@ -61308,7 +61308,7 @@ _0220257A:
 	add r0, r6, #0
 	mov r1, #0xba
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	beq _022025A2
 	mov r5, #6
@@ -61322,27 +61322,27 @@ _022025A2:
 ov01_022025A8: ; 0x022025A8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	bl ov01_02202570
 	strh r0, [r4]
 	mov r0, #0
@@ -61354,27 +61354,27 @@ ov01_022025EC: ; 0x022025EC
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r5, #0x80
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	bl ov01_02202570
 	cmp r0, #5
 	bne _02202640
@@ -61384,7 +61384,7 @@ ov01_022025EC: ; 0x022025EC
 	add r0, r6, #0
 	mov r1, #0xba
 	add r2, sp, #0
-	bl sub_0206EC40
+	bl SetMonData
 _02202640:
 	mov r0, #0
 	add sp, #4
@@ -61396,17 +61396,17 @@ _02202640:
 ov01_02202648: ; 0x02202648
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202CBE8
+	bl Sav2_SealCase_get
 	bl sub_0202CD74
 	strh r0, [r4]
 	mov r0, #0
@@ -61418,25 +61418,25 @@ ov01_02202648: ; 0x02202648
 ov01_02202674: ; 0x02202674
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202CBE8
+	bl Sav2_SealCase_get
 	add r1, r6, #0
 	bl sub_0202CD94
 	strh r0, [r4]
@@ -61448,25 +61448,25 @@ ov01_02202674: ; 0x02202674
 ov01_022026B4: ; 0x022026B4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202CBE8
+	bl Sav2_SealCase_get
 	lsl r2, r4, #0x10
 	add r1, r6, #0
 	asr r2, r2, #0x10
@@ -61508,33 +61508,33 @@ ov01_0220271C: ; 0x0220271C
 	mov r1, #0
 	add r4, r0, #0
 	str r1, [sp, #0x18]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	str r0, [sp, #4]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_0202CBE8
+	bl Sav2_SealCase_get
 	str r0, [sp, #0x10]
 	mov r0, #0x20
 	mov r1, #0x9a
@@ -61542,12 +61542,12 @@ ov01_0220271C: ; 0x0220271C
 	mov r1, #0
 	mov r2, #0x9a
 	str r0, [sp, #0x14]
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, sp, #0x24
 	add r0, #2
 	mov r1, #0
 	mov r2, #3
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	ldr r5, [sp, #0x14]
 	mov r4, #0
 	mov r6, #0x63
@@ -61581,7 +61581,7 @@ _022027B6:
 	add r5, #2
 	str r6, [sp, #0x1c]
 _022027C6:
-	bl sub_0201FD44
+	bl LCRandom
 	ldr r1, [sp, #0x18]
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -61643,19 +61643,19 @@ ov01_02202834: ; 0x02202834
 	sub sp, #0x10
 	add r4, r0, #0
 	mov r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, #0x80
 	str r0, [sp]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	str r0, [sp, #4]
-	bl sub_02074640
+	bl GetPartyCount
 	str r0, [sp, #8]
 	add r0, r5, #0
 	str r0, [sp, #0xc]
@@ -61665,35 +61665,35 @@ ov01_02202834: ; 0x02202834
 _0220286A:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0xc]
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r4, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	add r0, r4, #0
 	mov r1, #0x7a
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _022028E0
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _022028E0
 	add r0, r4, #0
 	mov r1, #0x98
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _022028E0
 	ldr r0, _02202904 ; =0x0000017E
@@ -61747,11 +61747,11 @@ _02202904: .word 0x0000017E
 ov01_02202908: ; 0x02202908
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020403AC
+	bl VarGet
 	cmp r0, #0
 	beq _02202926
 	mov r0, #8
@@ -61773,12 +61773,12 @@ ov01_02202930: ; 0x02202930
 	add r1, r2, #1
 	str r1, [r5, #8]
 	ldrb r4, [r2]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r5, [r5]
@@ -61840,27 +61840,27 @@ ov01_022029B0: ; 0x022029B0
 	bl sub_0206DB28
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov24_02259940
@@ -61880,7 +61880,7 @@ _02202A16:
 	ldr r0, [r5, #0x10]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 _02202A20:
 	strh r0, [r4]
 	mov r0, #0
@@ -61907,11 +61907,11 @@ ov01_02202A28: ; 0x02202A28
 	str r0, [r4, #8]
 	add r0, r4, #0
 	ldrb r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	add r4, r0, #0
 	ldr r1, [r6]
 	add r0, r7, #0
@@ -61972,19 +61972,19 @@ ov01_02202ABC: ; 0x02202ABC
 	bl sub_0206DB28
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02040374
+	bl GetVarPointer
 	lsl r1, r5, #0x18
 	add r4, r0, #0
 	add r0, r6, #0
@@ -61999,35 +61999,35 @@ ov01_02202ABC: ; 0x02202ABC
 ov01_02202B00: ; 0x02202B00
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r7, #0
 	mov r2, #0
 	bl ov01_02202D40
@@ -62056,37 +62056,37 @@ _02202B74:
 ov01_02202B78: ; 0x02202B78
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, #0x80
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r4, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_020542D0
+	bl PartyMonSetMoveInSlot
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -62096,19 +62096,19 @@ ov01_02202B78: ; 0x02202B78
 ov01_02202BD0: ; 0x02202BD0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl sub_02040374
+	bl GetVarPointer
 	ldr r2, _02202C20 ; =0x022093E0
 	add r5, r0, #0
 	mov r1, #0
@@ -62140,27 +62140,27 @@ _02202C24: .word 0x022093E2
 ov01_02202C28: ; 0x02202C28
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #3
 	mov r2, #0
 	bl ov01_02202D40
@@ -62308,7 +62308,7 @@ _02202D4E:
 	add r0, r6, #0
 	add r1, #0x36
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	strh r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #2
@@ -62317,12 +62317,12 @@ _02202D4E:
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	lsl r0, r4, #0x10
 	lsl r1, r1, #0x18
@@ -62456,31 +62456,31 @@ ov01_02202E68: ; 0x02202E68
 	bl sub_020402F0
 	add r4, r0, #0
 	ldr r0, [sp, #0x14]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #0x14]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	ldr r0, [sp, #0x14]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #0x14]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	ldr r0, [sp, #0x14]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	ldr r0, [sp, #0x14]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	ldr r0, [sp, #0x14]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	ldr r1, [sp, #0x14]
 	str r0, [sp, #0x20]
 	str r0, [r1, #0x64]
@@ -62488,9 +62488,9 @@ ov01_02202E68: ; 0x02202E68
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r5, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r1, r7, #0
 	add r2, sp, #0x38
 	bl ov01_02202D40
@@ -62521,7 +62521,7 @@ _02202F0C:
 _02202F10:
 	ldr r0, [sp, #0x28]
 	ldr r1, [sp, #0x20]
-	bl sub_02040374
+	bl GetVarPointer
 	add r6, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #1
@@ -62644,7 +62644,7 @@ _02203002:
 	ldr r1, [r1, #0x64]
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	add r3, r0, #0
 	ldr r0, [sp, #0x28]
 	mov r1, #3
@@ -62652,13 +62652,13 @@ _02203002:
 	bl ov01_021F6ABC
 	ldr r0, [sp, #0x14]
 	ldr r1, _02203058 ; =ov01_0220305C
-	bl sub_0203FD58
+	bl SetupNativeScript
 	ldr r1, [sp, #0x14]
 	ldr r0, [sp, #0x28]
 	ldr r1, [r1, #0x64]
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	mov r0, #1
 	add sp, #0x6c
 	pop {r4, r5, r6, r7, pc}
@@ -62683,7 +62683,7 @@ ov01_0220305C: ; 0x0220305C
 	lsl r1, r1, #0x10
 	add r0, r6, #0
 	lsr r1, r1, #0x10
-	bl sub_02040374
+	bl GetVarPointer
 	ldrh r1, [r0]
 	ldr r0, _02203090 ; =0x0000EEEE
 	cmp r1, r0
@@ -62703,37 +62703,37 @@ _02203090: .word 0x0000EEEE
 ov01_02203094: ; 0x02203094
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02040374
+	bl GetVarPointer
 	add r7, r0, #0
 	mov r0, #0
 	add r4, #0x80
 	strh r0, [r7]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	add r6, r0, #0
 	mov r0, #0xb
 	mov r1, #0x2c
@@ -62742,16 +62742,16 @@ ov01_02203094: ; 0x02203094
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	str r0, [sp]
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	add r1, r0, #0
 	ldr r0, [sp]
 	add r2, r4, #0
-	bl sub_02071900
+	bl Species_LoadLearnsetTable
 	mov r2, #0
 	cmp r0, #0
 	ble _0220312E
@@ -62782,20 +62782,20 @@ ov01_02203138: ; 0x02203138
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x28
@@ -62859,7 +62859,7 @@ ov01_022031C0: ; 0x022031C0
 	mov r1, #4
 	mov r2, #0x20
 	str r5, [r4]
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	bl ov01_022031F8
 	add r0, r4, #0
@@ -64150,7 +64150,7 @@ ov01_02203BB4: ; 0x02203BB4
 	add r1, #0x40
 	bl sub_02026E18
 	ldr r0, [r4, #0x58]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	str r0, [r4, #0x50]
 	add r0, r4, #0
 	mov r1, #0
@@ -64703,7 +64703,7 @@ _0220403E:
 	ldr r1, [r4, #8]
 	mov r0, #0
 	add r2, r6, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r7, #0
 	lsl r1, r5, #2
 	bl AllocFromHeap
@@ -64880,7 +64880,7 @@ ov01_02204168: ; 0x02204168
 	add r5, r0, #0
 	ldr r0, [r1]
 	add r4, r2, #0
-	bl sub_020C3B40
+	bl NNS_G3dGetMdlSet
 	cmp r0, #0
 	beq _02204198
 	add r2, r0, #0
@@ -64914,7 +64914,7 @@ _0220419A:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	ldr r1, [r0, #0x54]
-	bl sub_020BE120
+	bl NNS_G3dRenderObjInit
 	ldr r1, [r5, #0x10]
 	ldr r2, [r5, #0xc]
 	lsl r0, r1, #2
@@ -64955,7 +64955,7 @@ ov01_022041D8: ; 0x022041D8
 	str r1, [r4, #0x1c]
 	add r1, r5, #0
 	mov r2, #4
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	lsl r6, r7, #5
 	add r0, r5, #0
 	add r1, r6, #0
@@ -64964,7 +64964,7 @@ ov01_022041D8: ; 0x022041D8
 	ldr r1, [r4, #0x10]
 	mov r0, #0
 	add r2, r6, #0
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	add r0, r5, #0
 	lsl r1, r7, #2
 	bl AllocFromHeap
@@ -65734,7 +65734,7 @@ ov01_022046E8: ; 0x022046E8
 	add r1, #0x1a
 	strb r2, [r5, #0x19]
 	lsl r2, r2, #1
-	bl sub_020D4790
+	bl MIi_CpuClear16
 	ldrb r0, [r4, #9]
 	mov r2, #0
 	cmp r0, #0
@@ -65783,7 +65783,7 @@ ov01_02204744: ; 0x02204744
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x78
-	bl sub_020D4858
+	bl MIi_CpuClearFast
 	bl GF_RTC_GetTimeOfDay
 	str r0, [r4]
 	add r0, r4, #0
@@ -65932,7 +65932,7 @@ ov01_02204840: ; 0x02204840
 	mov r1, #0
 	mov r2, #0x28
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [r4]
 	str r6, [r4, #8]
@@ -66534,19 +66534,19 @@ _02204D1A:
 	pop {r3, r4, r5, r6, pc}
 _02204D2A:
 	ldr r0, [r6, #0xc]
-	bl sub_02074904
+	bl SavArray_PlayerParty_get
 	mov r1, #0
-	bl sub_02074644
+	bl GetPartyMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
 	add r6, r0, #0
-	bl sub_0206E540
+	bl GetMonData
 	cmp r0, #0
 	bne _02204D50
 	add r0, r6, #0
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_0206E540
+	bl GetMonData
 	b _02204D52
 _02204D50:
 	mov r0, #0x7b
@@ -66577,7 +66577,7 @@ _02204D74:
 	ble _02204D7A
 	mov r4, #0x64
 _02204D7A:
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	cmp r1, r4
@@ -66720,7 +66720,7 @@ _02204E88: .word 0x02209624
 	thumb_func_start ov01_02204E8C
 ov01_02204E8C: ; 0x02204E8C
 	push {r3, lr}
-	bl sub_0201FD44
+	bl LCRandom
 	mov r1, #0x64
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -66812,8 +66812,8 @@ _02204F2A:
 	add r2, sp, #8
 	bl ov01_022050F8
 	ldr r0, [r5, #0xc]
-	bl sub_02028E9C
-	bl sub_02028F84
+	bl Sav2_PlayerData_GetProfileAddr
+	bl PlayerProfile_GetTrainerID
 	add r2, r0, #0
 	ldr r0, [sp, #8]
 	str r0, [sp]
@@ -67100,20 +67100,20 @@ ov01_02205164: ; 0x02205164
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r5, [r1]
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x28
@@ -67197,7 +67197,7 @@ ov01_02205218: ; 0x02205218
 	add r0, r4, #4
 	mov r1, #4
 	mov r2, #0x20
-	bl sub_0201AC14
+	bl GF_ExpHeap_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0x14
 	mov r1, #0x67
@@ -67447,12 +67447,12 @@ _022053E8:
 ov01_022053EC: ; 0x022053EC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0203FE2C
+	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020403AC
+	bl VarGet
 	ldr r6, _02205420 ; =SDK_OVERLAY_OVY_25_ID
 	add r4, r0, #0
 	add r0, r6, #0
@@ -68118,7 +68118,7 @@ ov01_0220589C: ; 0x0220589C
 	mov r1, #0
 	mov r2, #4
 	add r4, r0, #0
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	add r0, r6, #0
 	mov r1, #2
 	bl sub_0205F2F4
@@ -68133,7 +68133,7 @@ ov01_0220589C: ; 0x0220589C
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
 	str r0, [r4]
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	add r6, r0, #0
 	mov r1, #0
 	bl sub_02020888
@@ -68796,7 +68796,7 @@ _02205E12:
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
 	add r5, r0, #0
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x38]
 	mov r2, #0x40
 	add r0, r0, r1
@@ -69137,7 +69137,7 @@ _022060E2:
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x84
-	bl MIi_CpuFill8
+	bl MI_CpuFill8
 	strb r5, [r4, #1]
 	strb r7, [r4, #3]
 	ldr r0, [r6, #0x10]
@@ -69190,7 +69190,7 @@ _02206142:
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
 	add r6, r0, #0
-	bl sub_020C3B50
+	bl NNS_G3dGetTex
 	ldr r1, [r0, #0x38]
 	mov r2, #0x40
 	add r0, r0, r1
@@ -69372,8 +69372,8 @@ _022062C8:
 ov01_022062CC: ; 0x022062CC
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_02074904
-	bl sub_020543BC
+	bl SavArray_PlayerParty_get
+	bl GetIdxOfFirstAliveMonInParty_CrashIfNone
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov01_022062CC
@@ -69391,8 +69391,11 @@ _022062DC:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x02, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x03, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x25, 0x59, 0x1E, 0x02, 0xE5, 0x5B, 0x1E, 0x02
-	.byte 0x25, 0x5C, 0x1E, 0x02, 0xFF, 0xFF, 0xFF, 0xFF, 0x60, 0x40, 0x20, 0x00, 0x40, 0x60, 0x7F, 0x2E
+	.byte 0x03, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
+	.public ov01_02206378
+ov01_02206378:
+	.word ov01_021E5924, ov01_021E5BE4, ov01_021E5C24, 0xFFFFFFFF
+	.byte 0x60, 0x40, 0x20, 0x00, 0x40, 0x60, 0x7F, 0x2E
 	.byte 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x40, 0x60, 0x7F, 0x2E, 0x40, 0x60, 0x40, 0x60, 0x6C, 0x2E, 0x60
 	.byte 0x6C, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x48, 0x6C
 	.byte 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x40, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x54, 0x08, 0x01, 0x00

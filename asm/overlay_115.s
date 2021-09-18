@@ -312,7 +312,7 @@ _0225F260:
 	bl sub_02007B8C
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0xa
 	str r0, [sp]
 	mov r0, #0x10
@@ -328,7 +328,7 @@ _0225F260:
 	add r1, r4, r1
 	ldr r0, [r0, #8]
 	mov r3, #0
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -360,7 +360,7 @@ _0225F2DE:
 	add r0, r4, r0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add r0, r4, #0
@@ -511,10 +511,10 @@ _0225F3E2:
 	bl sub_0201BB68
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -547,7 +547,7 @@ _0225F470:
 	bge _0225F55E
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0x7b
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -662,7 +662,7 @@ _0225F560:
 	mvn r0, r0
 	mov r1, #0x21
 	mov r2, #1
-	bl sub_0200B4F0
+	bl SetBrightness
 	ldr r3, [r4]
 	ldr r0, [r5, #0x10]
 	asr r3, r3, #0xc
@@ -674,7 +674,7 @@ _0225F560:
 	bl sub_0201F238
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -799,7 +799,7 @@ _0225F650:
 	mov r0, #0
 	add r1, r0, #0
 	mov r2, #1
-	bl sub_0200B4F0
+	bl SetBrightness
 	ldr r0, [r5, #0x10]
 	mov r2, #0
 	ldr r0, [r0, #8]
@@ -1191,7 +1191,7 @@ _0225F964: .word _02260374
 ov115_0225F968: ; 0x0225F968
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_02028E9C
+	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	pop {r3, pc}
 	.balign 4, 0
@@ -1449,7 +1449,7 @@ _0225FB06:
 	bl ov115_02260254
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #6
 	lsl r0, r0, #0x10
 	str r0, [sp]
@@ -1620,7 +1620,7 @@ _0225FC0E:
 	bl sub_02007B8C
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #0xd
 	str r0, [sp]
 	mov r0, #0xb
@@ -1636,7 +1636,7 @@ _0225FC0E:
 	add r1, r4, r1
 	ldr r0, [r0, #8]
 	mov r3, #0x15
-	bl sub_0201D40C
+	bl AddWindowParameterized
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -1658,7 +1658,7 @@ _0225FC0E:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl sub_020200FC
+	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	bl String_dtor
 	mov r0, #3
@@ -1687,10 +1687,10 @@ _0225FD78:
 	bl ov01_021F0FB8
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	b _0225FDA6
 _0225FD9C:
 	mov r0, #0x29
@@ -2072,7 +2072,7 @@ _022600B4:
 	add r0, r0, #1
 	str r0, [r6]
 	mov r0, #4
-	bl sub_02022C60
+	bl GX_EngineAToggleLayers
 	mov r2, #3
 	mov r0, #0x10
 	lsl r2, r2, #0x12
