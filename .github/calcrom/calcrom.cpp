@@ -27,6 +27,8 @@
  *      Support hgss
  *  - 0.2.1 (31 Aug 2021):
  *      Make calcrom more generic and configurable via command line
+ *  - 0.2.2 (18 Sep 2021):
+ *      Handle errors when paths are missing
  */
 
 #include <iostream>
@@ -38,8 +40,10 @@
 #include <string>
 #include <cassert>
 #include <algorithm>
+#include <filesystem>
 
 using namespace std;
+using namespace std::filesystem;
 
 // Wraps glob results from <glob.h>
 struct Glob : public vector<char const *> {
@@ -108,7 +112,7 @@ private:
         handle.read((char*)strtab.data(), sec->sh_size);
     }
 public:
-    Elf32File(string const& filename, bool read_syms = false) : handle(filename, ios::binary) {
+    Elf32File(path const& filename, bool read_syms = false) : handle(filename, ios::binary) {
         assert(handle.good());
         ReadElfHeaderAndVerify();
         ReadSectionHeaders();
@@ -125,7 +129,7 @@ public:
 
 string default_version("");
 
-void analyze(string& basedir, string& subdir, string& version = default_version) {
+void analyze(path& basedir, path& subdir, string& version = default_version) {
     // Accumulate sizes
     //        src   asm
     // data  _____|_____
@@ -136,19 +140,25 @@ void analyze(string& basedir, string& subdir, string& version = default_version)
         sizes[1][1] = 0x800; // libsyscall.a
     }
 
-    string srcbase = basedir + (subdir.empty() ? "" : "/" + subdir);
-    string builddir = srcbase + "/build/" + version;
-    string pattern = srcbase + "/{src,asm,lib/{src,asm},lib/{!syscall}/{src,asm}}/*.{c,s,cpp}";
+    path srcbase = basedir / subdir;
+    string builddir = srcbase / "build" / version;
+    if (!exists(srcbase)) {
+        throw runtime_error("No such directory: " + srcbase.string());
+    }
+    string pattern = srcbase.string() + "/{src,asm,lib/{src,asm},lib/{!syscall}/{src,asm}}/*.{c,s,cpp}";
     for (char const * & fname : Glob(pattern, GLOB_TILDE | GLOB_BRACE | GLOB_NOSORT))
     {
-        string fname_s(fname);
-        string ext = fname_s.substr(fname_s.rfind('.'), string::npos);
+        path fname_s(fname);
+        string ext = fname_s.extension();
         bool is_asm = ext == ".s";
-        fname_s = fname_s.replace(0, srcbase.size(), builddir);
-        fname_s = fname_s.replace(fname_s.rfind('.'), string::npos, ".o");
+        fname_s = builddir / relative(fname_s, srcbase);
+        fname_s = fname_s.replace_extension(".o");
 #ifndef NDEBUG
         cerr << fname << " --> " << fname_s << endl;
 #endif
+        if (!exists(fname_s)) {
+            throw runtime_error("No such file: " + fname_s.string());
+        }
 
         Elf32File elf(fname_s);
 
@@ -165,7 +175,7 @@ void analyze(string& basedir, string& subdir, string& version = default_version)
         }
     }
 
-    cout << "Analysis of " << (version.empty() ? subdir : version) << " binary:" << endl;
+    cout << "Analysis of " << (version.empty() ? subdir.string() : version) << " binary:" << endl;
     // Report code
     unsigned total_text = sizes[1][0] + sizes[1][1];
     double total_text_d = total_text;
@@ -192,9 +202,9 @@ public:
 };
 
 struct Options {
-    string arm9subdir = "";
-    string arm7subdir = "sub";
-    string projectdir = ".";
+    path arm9subdir = "";
+    path arm7subdir = "sub";
+    path projectdir = ".";
     vector<string> romnames;
     Options(int argc, char ** argv) {
         for (int i = 1; i < argc; i++) {
