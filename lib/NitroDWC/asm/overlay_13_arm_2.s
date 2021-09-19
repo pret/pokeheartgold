@@ -23868,7 +23868,7 @@ ov13_0223A2B0: ; 0x0223A2B0
 	str r2, [sp, #4]
 	ldrb r2, [r3, #0x4c0]
 	ldrb r3, [r3, #0x4c1]
-	bl sub_020D164C
+	bl OS_SPrintf
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -23889,7 +23889,7 @@ ov13_0223A2F0: ; 0x0223A2F0
 	str r2, [sp, #4]
 	ldrb r2, [r3, #0x4f0]
 	ldrb r3, [r3, #0x4f1]
-	bl sub_020D164C
+	bl OS_SPrintf
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -23911,7 +23911,7 @@ ov13_0223A330: ; 0x0223A330
 	str r2, [sp, #4]
 	ldrb r2, [ip, #0x4c4]
 	ldrb r3, [r3, #0x401]
-	bl sub_020D164C
+	bl OS_SPrintf
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -23933,7 +23933,7 @@ ov13_0223A374: ; 0x0223A374
 	str r2, [sp, #4]
 	ldrb r2, [ip, #0x4c8]
 	ldrb r3, [r3, #0x401]
-	bl sub_020D164C
+	bl OS_SPrintf
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -23955,7 +23955,7 @@ ov13_0223A3B8: ; 0x0223A3B8
 	str r2, [sp, #4]
 	ldrb r2, [ip, #0x4cc]
 	ldrb r3, [r3, #0x401]
-	bl sub_020D164C
+	bl OS_SPrintf
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -30318,7 +30318,7 @@ _0223F770:
 	ldr r2, _0223F7FC ; =0x0224593C
 	str r0, [r3, #0x84]
 	add r0, sp, #0x20
-	bl sub_020D164C
+	bl OS_SPrintf
 	add r0, sp, #0x20
 	bl sub_020D8448
 	add sp, sp, #0xe8

@@ -253,6 +253,7 @@ Static main
 	Object os_irqTable.o
 	Object os_interrupt.o
 	Object os_spinLock.o
+	Object os_printf.o
 	Object nitro.o
 	Object msl.o
 }

@@ -1963,7 +1963,7 @@ ov45_02232B24: ; 0x02232B24
 	ldr r2, [sp, #0x20]
 	mov r1, r4
 	add r3, r3, #4
-	bl sub_020D16B4
+	bl OS_VSNPrintf
 	add r0, sp, #0
 	bl ov45_02232B9C
 	mov r1, r0
@@ -3154,7 +3154,7 @@ ov45_02233BC8: ; 0x02233BC8
 	add r3, r4, #4
 	str r0, [sp, #4]
 	str r0, [sp, #0xc]
-	bl sub_020D16B4
+	bl OS_VSNPrintf
 	ldr r3, [sp, #8]
 	add r5, r0, #1
 	cmp r5, r3
@@ -3181,7 +3181,7 @@ _02233C4C:
 	ldr r2, [sp, #0x24]
 	mov r1, r5
 	add r3, r4, #4
-	bl sub_020D16B4
+	bl OS_VSNPrintf
 	ldr r1, [sp, #4]
 	add r0, sp, #4
 	add r1, r1, r5

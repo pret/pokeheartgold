@@ -5336,7 +5336,7 @@ ov38_02220810: ; 0x02220810
 	mov r3, #2
 	mov r1, #0x21
 	str r3, [sp]
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _0222082C: .word 0x02225E08

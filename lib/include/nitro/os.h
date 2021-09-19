@@ -9,5 +9,6 @@
 #include <nitro/os/interrupt.h>
 #include <nitro/os/systemCall.h>
 #include <nitro/os/spinLock.h>
+#include <nitro/os/printf.h>
 
 #endif //NITRO_OS_H_

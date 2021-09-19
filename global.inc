@@ -29205,9 +29205,9 @@
 .public G3_EndMakeDL
 .public OS_SetIrqFunction
 .public OS_GetIrqFunction
-.public sub_020D164C
-.public sub_020D168C
-.public sub_020D16B4
+.public OS_SPrintf
+.public OS_SNPrintf
+.public OS_VSNPrintf
 .public sub_020D1AC4
 .public sub_020D1AD4
 .public sub_020D1BD0

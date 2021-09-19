@@ -7,5 +7,6 @@
 #include <nitro/os.h>
 #include <nitro/fs.h>
 #include <nitro/mi.h>
+#include <nitro/std.h>
 
 #endif //NITRO_H_

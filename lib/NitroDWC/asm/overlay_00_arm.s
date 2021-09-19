@@ -1057,7 +1057,7 @@ ov00_021E89AC: ; 0x021E89AC
 	ldr r2, _021E8C3C ; =_02216550
 	mov r0, r4
 	str r5, [sp]
-	bl sub_020D168C
+	bl OS_SNPrintf
 	b _021E8A08
 _021E89F0:
 	ldr r3, [r6, #8]
@@ -1065,13 +1065,13 @@ _021E89F0:
 	ldr r2, _021E8C3C ; =_02216550
 	mov r0, r4
 	str r5, [sp]
-	bl sub_020D168C
+	bl OS_SNPrintf
 _021E8A08:
 	ldrh r3, [r6, #0x10]
 	ldr r2, _021E8C40 ; =_02216558
 	add r0, r4, #0xe
 	mov r1, #7
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldr r0, _021E8C44 ; =0x027FFE0C
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -1104,7 +1104,7 @@ _021E8A84:
 	ldrb r2, [r7], #1
 	mov r0, r8
 	mov r1, r5
-	bl sub_020D164C
+	bl OS_SPrintf
 	add r6, r6, #1
 	cmp r6, #6
 	add r8, r8, #2
@@ -1119,7 +1119,7 @@ _021E8A84:
 	strhsb r0, [sp, #0x38]
 	ldrb r3, [sp, #0x38]
 	add r0, r4, #0x2c
-	bl sub_020D168C
+	bl OS_SNPrintf
 	add r0, sp, #0x3c
 	add r1, r4, #0x7e
 	mov r2, #0x14
@@ -1130,7 +1130,7 @@ _021E8A84:
 	str r1, [sp]
 	ldrb r3, [sp, #0x3a]
 	mov r1, #5
-	bl sub_020D168C
+	bl OS_SNPrintf
 	add r0, sp, #0x28
 	add r1, sp, #0x1c
 	bl sub_020DBBFC
@@ -1152,7 +1152,7 @@ _021E8A84:
 	ldr r3, [sp, #0x24]
 	str r3, [sp, #0x10]
 	ldr r3, [sp, #0x28]
-	bl sub_020D168C
+	bl OS_SNPrintf
 	bl OS_DisableInterrupts
 	mov r6, r0
 	bl sub_020AFF20
@@ -1174,7 +1174,7 @@ _021E8B94:
 	ldrb r2, [r7, sb]
 	mov r0, r8
 	mov r1, r5
-	bl sub_020D164C
+	bl OS_SPrintf
 	add sb, sb, #1
 	cmp sb, #6
 	add r8, r8, #2
@@ -1191,7 +1191,7 @@ _021E8BD0:
 	ldr r2, _021E8C58 ; =_02216590
 	add r0, r4, #0x6f
 	mov r1, #0xe
-	bl sub_020D168C
+	bl OS_SNPrintf
 	add r0, sp, #0x14
 	bl sub_020AFF64
 	mov r5, r0
@@ -1239,7 +1239,7 @@ ov00_021E8C5C: ; 0x021E8C5C
 	add r0, sp, #4
 	mov r1, #0x21
 	str r3, [sp]
-	bl sub_020D168C
+	bl OS_SNPrintf
 	add r0, sp, #4
 	bl strlen
 	mov r3, r0
@@ -1403,7 +1403,7 @@ _021E8EFC:
 	add r0, sp, #4
 	mov r1, #0x21
 	str r3, [sp]
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldr r1, _021E8F98 ; =_02216634
 	add r2, sp, #4
 	mov r0, r6
@@ -1543,7 +1543,7 @@ ov00_021E90BC: ; 0x021E90BC
 	ldr r2, _021E914C ; =_022166CC
 	add r0, sp, #0
 	mov r1, #7
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldr r1, _021E9150 ; =_022166D0
 	add r2, sp, #0
 	mov r0, r4
@@ -2090,7 +2090,7 @@ ov00_021E9808: ; 0x021E9808
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #0xc]
 	ldr r3, [r3, #0x128]
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldr r1, [r5, #4]
 	add r0, r1, r0
 	str r0, [r5, #4]
@@ -2151,7 +2151,7 @@ _021E9940:
 	mov r3, r7
 	mov r0, sb
 	add r1, r4, #1
-	bl sub_020D168C
+	bl OS_SNPrintf
 	strb r8, [sb, r0]
 	ldr r1, [r5, #4]
 	mov r0, #0
@@ -2212,7 +2212,7 @@ ov00_021E99A4: ; 0x021E99A4
 _021E9A54:
 	mov r2, r7
 	mov r3, sb
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldr r2, [r6, #4]
 	mov r1, fp
 	add r2, r2, r0
@@ -2263,7 +2263,7 @@ ov00_021E9AB0: ; 0x021E9AB0
 _021E9B08:
 	ldr r2, _021E9B34 ; =_022167B4
 	mov r3, r6
-	bl sub_020D168C
+	bl OS_SNPrintf
 	cmp r0, r4
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -6241,7 +6241,7 @@ _021ED09C:
 	add r0, sp, #0x1a0
 	add r3, r5, #0x50
 	mov r1, #0x100
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldr r0, _021ED1D8 ; =_0221A768
 	ldr r4, [r0]
 	add r0, r4, #0x91
@@ -6541,7 +6541,7 @@ ov00_021ED470: ; 0x021ED470
 	ldr r2, _021ED4A4 ; =_022179E0
 	mov r0, r4
 	mov r1, #0x1000
-	bl sub_020D168C
+	bl OS_SNPrintf
 	mov r0, r4
 	bl strlen
 	add sp, sp, #0xc
@@ -11023,7 +11023,7 @@ _021F0FD4:
 	and r3, r1, #0xff
 	ldr r2, _021F10A4 ; =_02217A4C
 	mov r1, #5
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldr r8, [sb, #4]
 	bl ov00_021EF3A4
 	ldr r1, [r4, #8]
@@ -13013,7 +13013,7 @@ _021F2C6C:
 	ldr r2, _021F2E34 ; =_02217A64
 	add r0, sp, #0x10
 	mov r1, #0xc
-	bl sub_020D168C
+	bl OS_SNPrintf
 	bl ov00_021F955C
 	mov r4, r0
 	bl ov00_021F955C
@@ -13783,7 +13783,7 @@ ov00_021F36BC: ; 0x021F36BC
 	add r0, sp, #0x20
 	add r3, r1, #1
 	mov r1, #0xc
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldr r0, _021F3780 ; =_02217AA4
 	add r1, sp, #0x20
 	add r2, sp, #0
@@ -13795,7 +13795,7 @@ ov00_021F36BC: ; 0x021F36BC
 	mov r1, #0xc
 	add r3, r2, #1
 	ldr r2, _021F377C ; =_02217A64
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldr r0, _021F3784 ; =_02217AA8
 	add r1, sp, #0x20
 	add r2, sp, #0
@@ -13805,7 +13805,7 @@ ov00_021F36BC: ; 0x021F36BC
 	add r0, sp, #0x20
 	mov r1, #0xc
 	mov r3, #3
-	bl sub_020D168C
+	bl OS_SNPrintf
 	ldr r0, _021F3788 ; =_02217A70
 	add r1, sp, #0x20
 	add r2, sp, #0
@@ -14280,7 +14280,7 @@ _021F3DB8:
 	add r0, r0, r1
 	ldr r2, _021F3EE4 ; =_02217AE4
 	rsb r1, r1, #0x100
-	bl sub_020D168C
+	bl OS_SNPrintf
 	b _021F3E44
 _021F3E1C:
 	bl ov00_021F955C
@@ -14291,7 +14291,7 @@ _021F3E24:
 	add r0, sp, #0xad
 	mov r1, #0x100
 	str r4, [sp]
-	bl sub_020D168C
+	bl OS_SNPrintf
 	bl ov00_021F955C
 	str r4, [r0, #0x204]
 _021F3E44:
@@ -14365,7 +14365,7 @@ ov00_021F3EF4: ; 0x021F3EF4
 	ldr r3, _021F3F58 ; =_02217ACC
 	mov r1, #0x100
 	str ip, [sp, #0x20]
-	bl sub_020D168C
+	bl OS_SNPrintf
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.balign 4, 0
@@ -14676,7 +14676,7 @@ _021F4380:
 	ldr r2, _021F44C0 ; =_02217A64
 	add r0, sp, #0x20
 	mov r1, #0x200
-	bl sub_020D168C
+	bl OS_SNPrintf
 	mov r6, r0
 	cmp r8, #1
 	mov r7, #1
@@ -14688,7 +14688,7 @@ _021F43B8:
 	ldr r2, _021F44C4 ; =_02217B50
 	mov r0, r5
 	mov r1, #0x10
-	bl sub_020D168C
+	bl OS_SNPrintf
 	mov r4, r0
 	add r0, r6, r4
 	add r0, r0, #1
@@ -14852,7 +14852,7 @@ ov00_021F45E0: ; 0x021F45E0
 	add r0, sp, #8
 	mov r1, #0x200
 	str r4, [sp, #4]
-	bl sub_020D168C
+	bl OS_SNPrintf
 	mov r4, r0
 	add r2, sp, #8
 	add r1, sp, #9
@@ -20350,7 +20350,7 @@ _021F9200:
 	ldr r2, _021F94D4 ; =_02217A64
 	add r0, sp, #0x10
 	mov r1, #0xc
-	bl sub_020D168C
+	bl OS_SNPrintf
 	bl ov00_021F955C
 	mov r4, r0
 	bl ov00_021F955C

@@ -8942,7 +8942,7 @@ sub_0209FE28: ; 0x0209FE28
 	mov r0, r5
 	mov r1, #0x15
 	add r3, sp, #0x29
-	bl sub_020D168C
+	bl OS_SNPrintf
 	add sp, sp, #0x40
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -13289,7 +13289,7 @@ sub_020A35FC: ; 0x020A35FC
 	ldrb r3, [sp, #0xc]
 	str r3, [sp, #8]
 	ldrb r3, [sp, #0xf]
-	bl sub_020D168C
+	bl OS_SNPrintf
 	mov r0, r4
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, pc}

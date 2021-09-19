@@ -43,53 +43,6 @@ _021E167C:
 
 	.public OS_InitIrqTable
 
-	arm_func_start sub_020D164C
-sub_020D164C: ; 0x020D164C
-	stmdb sp!, {r0, r1, r2, r3}
-	stmdb sp!, {r3, lr}
-	add r2, sp, #0xc
-	bic r2, r2, #3
-	ldr r1, [sp, #0xc]
-	add r2, r2, #4
-	bl sub_020D1674
-	ldmia sp!, {r3, lr}
-	add sp, sp, #0x10
-	bx lr
-	arm_func_end sub_020D164C
-
-	arm_func_start sub_020D1674
-sub_020D1674: ; 0x020D1674
-	ldr ip, _020D1688 ; =sub_020D16B4
-	mov r3, r2
-	mov r2, r1
-	mvn r1, #0x80000000
-	bx ip
-	.align 2, 0
-_020D1688: .word sub_020D16B4
-	arm_func_end sub_020D1674
-
-	arm_func_start sub_020D168C
-sub_020D168C: ; 0x020D168C
-	stmdb sp!, {r0, r1, r2, r3}
-	stmdb sp!, {r3, lr}
-	add r3, sp, #0x10
-	bic r3, r3, #3
-	ldr r2, [sp, #0x10]
-	add r3, r3, #4
-	bl sub_020D16B4
-	ldmia sp!, {r3, lr}
-	add sp, sp, #0x10
-	bx lr
-	arm_func_end sub_020D168C
-
-	arm_func_start sub_020D16B4
-sub_020D16B4: ; 0x020D16B4
-	ldr ip, _020D16BC ; =sub_020E3F44
-	bx ip
-	.align 2, 0
-_020D16BC: .word sub_020E3F44
-	arm_func_end sub_020D16B4
-
 	arm_func_start sub_020D16C0
 sub_020D16C0: ; 0x020D16C0
 	ldr r1, _020D16D4 ; =0x021E167C
@@ -23192,8 +23145,8 @@ _020E3F28:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020E3EEC
 
-	arm_func_start sub_020E3F44
-sub_020E3F44: ; 0x020E3F44
+	arm_func_start STD_TVSNPrintf
+STD_TVSNPrintf: ; 0x020E3F44
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
 	mov sb, r2
@@ -23817,7 +23770,7 @@ _020E47A8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020E47BC: .word 0xCCCCCCCD
-	arm_func_end sub_020E3F44
+	arm_func_end STD_TVSNPrintf
 
 	.rodata
 
