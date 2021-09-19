@@ -6,5 +6,6 @@
 #include <nitro/cp.h>
 #include <nitro/os.h>
 #include <nitro/fs.h>
+#include <nitro/mi.h>
 
 #endif //NITRO_H_

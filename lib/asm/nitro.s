@@ -15,8 +15,8 @@
 	.public G2S_GetBG3ScrPtr
 	.public G3_LoadMtx44
 
-_021E1678:
-	.space 0x3D18
+_021E167C:
+	.space 0x3D14
 
 	.text
 
@@ -26,357 +26,22 @@ _021E1678:
 	.public OSi_EnterDmaCallback
 	.public OSi_EnterTimerCallback
 	.public OS_SetIrqStackChecker
+	.public OS_InitLock
+	.public OSi_DoLockByWord
+	.public OS_LockByWord
+	.public OSi_DoUnlockByWord
+	.public OS_UnlockByWord
+	.public OSi_DoTryLockByWord
+	.public OS_LockCartridge
+	.public OS_UnlockCartridge
+	.public OS_UnLockCartridge
+	.public OS_TryLockCartridge
+	.public OS_LockCard
+	.public OS_UnlockCard
+	.public OS_UnLockCard
+	.public OS_ReadOwnerOfLockWord
 
 	.public OS_InitIrqTable
-
-	arm_func_start sub_020D1294
-sub_020D1294: ; 0x020D1294
-	stmdb sp!, {r3, r4, r5, lr}
-	ldr r3, _020D1350 ; =0x021E1678
-	ldr r0, [r3]
-	cmp r0, #0
-	ldmneia sp!, {r3, r4, r5, pc}
-	ldr r1, _020D1354 ; =0x027FFFF0
-	mov r4, #1
-	mov r2, #0
-	mov r0, #0x7e
-	str r4, [r3]
-	str r2, [r1]
-	bl sub_020D13AC
-	ldr r5, _020D1354 ; =0x027FFFF0
-	ldrh r0, [r5, #6]
-	cmp r0, #0
-	beq _020D12EC
-	mov r4, #0x400
-_020D12D8:
-	mov r0, r4
-	bl SVC_WaitByLoop
-	ldrh r0, [r5, #6]
-	cmp r0, #0
-	bne _020D12D8
-_020D12EC:
-	ldr ip, _020D1358 ; =0x027FFFB0
-	mvn r0, #0
-	str r0, [ip]
-	mov r3, r0, lsl #0x10
-	add r1, ip, #0x10
-	mov r0, #0
-	mov r2, #0x28
-	str r3, [ip, #4]
-	bl MIi_CpuClear32
-	ldr ip, _020D135C ; =0x04000204
-	ldr r1, _020D1354 ; =0x027FFFF0
-	ldrh r3, [ip]
-	mov r0, #0x7e
-	mov r2, #0
-	orr r3, r3, #0x800
-	strh r3, [ip]
-	ldrh r3, [ip]
-	orr r3, r3, #0x80
-	strh r3, [ip]
-	bl sub_020D1430
-	ldr r1, _020D1354 ; =0x027FFFF0
-	mov r0, #0x7f
-	mov r2, #0
-	bl sub_020D13AC
-	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
-_020D1350: .word 0x021E1678
-_020D1354: .word 0x027FFFF0
-_020D1358: .word 0x027FFFB0
-_020D135C: .word 0x04000204
-	arm_func_end sub_020D1294
-
-	arm_func_start sub_020D1360
-sub_020D1360: ; 0x020D1360
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	mov r8, r0
-	mov r7, r1
-	mov r6, r2
-	mov r5, r3
-	bl sub_020D1440
-	cmp r0, #0
-	ldmleia sp!, {r4, r5, r6, r7, r8, pc}
-	mov r4, #0x400
-_020D1384:
-	mov r0, r4
-	bl SVC_WaitByLoop
-	mov r0, r8
-	mov r1, r7
-	mov r2, r6
-	mov r3, r5
-	bl sub_020D1440
-	cmp r0, #0
-	bgt _020D1384
-	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020D1360
-
-	arm_func_start sub_020D13AC
-sub_020D13AC: ; 0x020D13AC
-	ldr ip, _020D13B8 ; =sub_020D1360
-	mov r3, #0
-	bx ip
-	.align 2, 0
-_020D13B8: .word sub_020D1360
-	arm_func_end sub_020D13AC
-
-	arm_func_start sub_020D13BC
-sub_020D13BC: ; 0x020D13BC
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r1
-	ldrh r1, [r7, #4]
-	mov r6, r2
-	mov r5, r3
-	cmp r0, r1
-	mvnne r0, #1
-	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	cmp r5, #0
-	beq _020D13EC
-	bl sub_020D3A64
-	b _020D13F0
-_020D13EC:
-	bl OS_DisableInterrupts
-_020D13F0:
-	mov r4, r0
-	mov r0, #0
-	strh r0, [r7, #4]
-	cmp r6, #0
-	beq _020D1408
-	blx r6
-_020D1408:
-	mov r0, #0
-	str r0, [r7]
-	cmp r5, #0
-	mov r0, r4
-	beq _020D1424
-	bl sub_020D3A78
-	b _020D1428
-_020D1424:
-	bl OS_RestoreInterrupts
-_020D1428:
-	mov r0, #0
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020D13BC
-
-	arm_func_start sub_020D1430
-sub_020D1430: ; 0x020D1430
-	ldr ip, _020D143C ; =sub_020D13BC
-	mov r3, #0
-	bx ip
-	.align 2, 0
-_020D143C: .word sub_020D13BC
-	arm_func_end sub_020D1430
-
-	arm_func_start sub_020D1440
-sub_020D1440: ; 0x020D1440
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	movs r6, r3
-	mov sb, r0
-	mov r8, r1
-	mov r7, r2
-	beq _020D1460
-	bl sub_020D3A64
-	b _020D1464
-_020D1460:
-	bl OS_DisableInterrupts
-_020D1464:
-	mov r5, r0
-	mov r0, sb
-	mov r1, r8
-	bl sub_020D4BE0
-	movs r4, r0
-	bne _020D148C
-	cmp r7, #0
-	beq _020D1488
-	blx r7
-_020D1488:
-	strh sb, [r8, #4]
-_020D148C:
-	cmp r6, #0
-	mov r0, r5
-	beq _020D14A0
-	bl sub_020D3A78
-	b _020D14A4
-_020D14A0:
-	bl OS_RestoreInterrupts
-_020D14A4:
-	mov r0, r4
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020D1440
-
-	arm_func_start sub_020D14AC
-sub_020D14AC: ; 0x020D14AC
-	ldr ip, _020D14C0 ; =sub_020D1360
-	ldr r1, _020D14C4 ; =0x027FFFE8
-	ldr r2, _020D14C8 ; =sub_020D1518
-	mov r3, #1
-	bx ip
-	.align 2, 0
-_020D14C0: .word sub_020D1360
-_020D14C4: .word 0x027FFFE8
-_020D14C8: .word sub_020D1518
-	arm_func_end sub_020D14AC
-
-	arm_func_start sub_020D14CC
-sub_020D14CC: ; 0x020D14CC
-	ldr ip, _020D14E0 ; =sub_020D13BC
-	ldr r1, _020D14E4 ; =0x027FFFE8
-	ldr r2, _020D14E8 ; =sub_020D1530
-	mov r3, #1
-	bx ip
-	.align 2, 0
-_020D14E0: .word sub_020D13BC
-_020D14E4: .word 0x027FFFE8
-_020D14E8: .word sub_020D1530
-	arm_func_end sub_020D14CC
-
-	arm_func_start sub_020D14EC
-sub_020D14EC: ; 0x020D14EC
-	ldr r1, _020D14F4 ; =sub_020D14CC
-	bx r1
-	.align 2, 0
-_020D14F4: .word sub_020D14CC
-	arm_func_end sub_020D14EC
-
-	arm_func_start sub_020D14F8
-sub_020D14F8: ; 0x020D14F8
-	ldr ip, _020D150C ; =sub_020D1440
-	ldr r1, _020D1510 ; =0x027FFFE8
-	ldr r2, _020D1514 ; =sub_020D1518
-	mov r3, #1
-	bx ip
-	.align 2, 0
-_020D150C: .word sub_020D1440
-_020D1510: .word 0x027FFFE8
-_020D1514: .word sub_020D1518
-	arm_func_end sub_020D14F8
-
-	arm_func_start sub_020D1518
-sub_020D1518: ; 0x020D1518
-	ldr r1, _020D152C ; =0x04000204
-	ldrh r0, [r1]
-	bic r0, r0, #0x80
-	strh r0, [r1]
-	bx lr
-	.align 2, 0
-_020D152C: .word 0x04000204
-	arm_func_end sub_020D1518
-
-	arm_func_start sub_020D1530
-sub_020D1530: ; 0x020D1530
-	ldr r1, _020D1544 ; =0x04000204
-	ldrh r0, [r1]
-	orr r0, r0, #0x80
-	strh r0, [r1]
-	bx lr
-	.align 2, 0
-_020D1544: .word 0x04000204
-	arm_func_end sub_020D1530
-
-	arm_func_start sub_020D1548
-sub_020D1548: ; 0x020D1548
-	ldr ip, _020D1558 ; =sub_020D13AC
-	ldr r1, _020D155C ; =0x027FFFE0
-	ldr r2, _020D1560 ; =sub_020D158C
-	bx ip
-	.align 2, 0
-_020D1558: .word sub_020D13AC
-_020D155C: .word 0x027FFFE0
-_020D1560: .word sub_020D158C
-	arm_func_end sub_020D1548
-
-	arm_func_start sub_020D1564
-sub_020D1564: ; 0x020D1564
-	ldr ip, _020D1574 ; =sub_020D1430
-	ldr r1, _020D1578 ; =0x027FFFE0
-	ldr r2, _020D157C ; =sub_020D15A4
-	bx ip
-	.align 2, 0
-_020D1574: .word sub_020D1430
-_020D1578: .word 0x027FFFE0
-_020D157C: .word sub_020D15A4
-	arm_func_end sub_020D1564
-
-	arm_func_start sub_020D1580
-sub_020D1580: ; 0x020D1580
-	ldr r1, _020D1588 ; =sub_020D1564
-	bx r1
-	.align 2, 0
-_020D1588: .word sub_020D1564
-	arm_func_end sub_020D1580
-
-	arm_func_start sub_020D158C
-sub_020D158C: ; 0x020D158C
-	ldr r1, _020D15A0 ; =0x04000204
-	ldrh r0, [r1]
-	bic r0, r0, #0x800
-	strh r0, [r1]
-	bx lr
-	.align 2, 0
-_020D15A0: .word 0x04000204
-	arm_func_end sub_020D158C
-
-	arm_func_start sub_020D15A4
-sub_020D15A4: ; 0x020D15A4
-	ldr r1, _020D15B8 ; =0x04000204
-	ldrh r0, [r1]
-	orr r0, r0, #0x800
-	strh r0, [r1]
-	bx lr
-	.align 2, 0
-_020D15B8: .word 0x04000204
-	arm_func_end sub_020D15A4
-
-	arm_func_start sub_020D15BC
-sub_020D15BC: ; 0x020D15BC
-	ldrh r0, [r0, #4]
-	bx lr
-	arm_func_end sub_020D15BC
-
-	arm_func_start OS_GetLockID
-OS_GetLockID: ; 0x020D15C4
-	ldr r3, _020D1614 ; =0x027FFFB0
-	ldr r1, [r3]
-	clz r2, r1
-	cmp r2, #0x20
-	movne r0, #0x40
-	bne _020D15F8
-	add r3, r3, #4
-	ldr r1, [r3]
-	clz r2, r1
-	cmp r2, #0x20
-	ldr r0, _020D1618 ; =0xFFFFFFFD
-	bxeq lr
-	mov r0, #0x60
-_020D15F8:
-	add r0, r0, r2
-	mov r1, #0x80000000
-	mov r1, r1, lsr r2
-	ldr r2, [r3]
-	bic r2, r2, r1
-	str r2, [r3]
-	bx lr
-	.align 2, 0
-_020D1614: .word 0x027FFFB0
-_020D1618: .word 0xFFFFFFFD
-	arm_func_end OS_GetLockID
-
-	arm_func_start OS_ReleaseLockID
-OS_ReleaseLockID: ; 0x020D161C
-	ldr r3, _020D1648 ; =0x027FFFB0
-	cmp r0, #0x60
-	addpl r3, r3, #4
-	subpl r0, r0, #0x60
-	submi r0, r0, #0x40
-	mov r1, #0x80000000
-	mov r1, r1, lsr r0
-	ldr r2, [r3]
-	orr r2, r2, r1
-	str r2, [r3]
-	bx lr
-	.align 2, 0
-_020D1648: .word 0x027FFFB0
-	arm_func_end OS_ReleaseLockID
 
 	arm_func_start sub_020D164C
 sub_020D164C: ; 0x020D164C
@@ -1958,7 +1623,7 @@ sub_020D290C: ; 0x020D290C
 	stmdb sp!, {r3, lr}
 	bl sub_020D2954
 	bl sub_020D6548
-	bl sub_020D1294
+	bl OS_InitLock
 	bl sub_020D2A58
 	bl OS_InitIrqTable
 	bl OS_SetIrqStackChecker
@@ -3360,24 +3025,24 @@ OS_RestoreInterrupts: ; 0x020D3A4C
 	bx lr
 	arm_func_end OS_RestoreInterrupts
 
-	arm_func_start sub_020D3A64
-sub_020D3A64: ; 0x020D3A64
+	arm_func_start OS_DisableInterrupts_IrqAndFiq
+OS_DisableInterrupts_IrqAndFiq: ; 0x020D3A64
 	mrs r0, cpsr
 	orr r1, r0, #0xc0
 	msr cpsr_c, r1
 	and r0, r0, #0xc0
 	bx lr
-	arm_func_end sub_020D3A64
+	arm_func_end OS_DisableInterrupts_IrqAndFiq
 
-	arm_func_start sub_020D3A78
-sub_020D3A78: ; 0x020D3A78
+	arm_func_start OS_RestoreInterrupts_IrqAndFiq
+OS_RestoreInterrupts_IrqAndFiq: ; 0x020D3A78
 	mrs r1, cpsr
 	bic r2, r1, #0xc0
 	orr r2, r2, r0
 	msr cpsr_c, r2
 	and r0, r1, #0xc0
 	bx lr
-	arm_func_end sub_020D3A78
+	arm_func_end OS_RestoreInterrupts_IrqAndFiq
 
 	arm_func_start sub_020D3A90
 sub_020D3A90: ; 0x020D3A90
@@ -4822,11 +4487,11 @@ sub_020D4BD0: ; 0x020D4BD0
 
 	.balign 4, 0
 
-	arm_func_start sub_020D4BE0
-sub_020D4BE0: ; 0x020D4BE0
+	arm_func_start MI_SwapWord
+MI_SwapWord: ; 0x020D4BE0
 	swp r0, r0, [r1]
 	bx lr
-	arm_func_end sub_020D4BE0
+	arm_func_end MI_SwapWord
 
 	arm_func_start MI_UncompressLZ8
 MI_UncompressLZ8: ; 0x020D4BE8
@@ -14567,7 +14232,7 @@ sub_020DC96C: ; 0x020DC96C
 	mov r1, #1
 	bl sub_020DC698
 	mov r0, r4
-	bl sub_020D1548
+	bl OS_LockCard
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020DC96C
 
@@ -14575,7 +14240,7 @@ sub_020DC96C: ; 0x020DC96C
 sub_020DC988: ; 0x020DC988
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020D1564
+	bl OS_UnlockCard
 	mov r0, r4
 	mov r1, #1
 	bl sub_020DC71C
@@ -16222,7 +15887,7 @@ sub_020DDE94: ; 0x020DDE94
 	bl CARD_LockBackup
 	ldr r0, _020DDFCC ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020D1548
+	bl OS_LockCard
 	ldr r2, _020DDFD0 ; =0x040001A0
 _020DDED8:
 	ldrh r0, [r2]
@@ -16285,7 +15950,7 @@ _020DDF98:
 	bne _020DDF98
 	ldr r0, _020DDFCC ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020D1580
+	bl OS_UnLockCard
 	ldr r0, _020DDFCC ; =_02110FBC
 	ldrh r0, [r0]
 	bl CARD_UnlockBackup
@@ -16318,7 +15983,7 @@ sub_020DDFE0: ; 0x020DDFE0
 	bl CARD_LockBackup
 	ldr r0, _020DE0B4 ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020D1548
+	bl OS_LockCard
 	ldr r2, _020DE0B8 ; =0x040001A0
 _020DE024:
 	ldrh r0, [r2]
@@ -16353,7 +16018,7 @@ _020DE084:
 	bne _020DE084
 	ldr r0, _020DE0B4 ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020D1580
+	bl OS_UnLockCard
 	ldr r0, _020DE0B4 ; =_02110FBC
 	ldrh r0, [r0]
 	bl CARD_UnlockBackup
@@ -16383,7 +16048,7 @@ sub_020DE0C8: ; 0x020DE0C8
 	bl CARD_LockBackup
 	ldr r0, _020DE230 ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020D1548
+	bl OS_LockCard
 	bl sub_020D34B0
 	mov fp, #0
 	mov r4, r0
@@ -16456,7 +16121,7 @@ _020DE1FC:
 	bne _020DE1FC
 	ldr r0, _020DE230 ; =_02110FBC
 	ldrh r0, [r0]
-	bl sub_020D1580
+	bl OS_UnLockCard
 	ldr r0, _020DE230 ; =_02110FBC
 	ldrh r0, [r0]
 	bl CARD_UnlockBackup
@@ -20090,12 +19755,12 @@ _020E12D0:
 	bl OS_DisableInterrupts
 	str r0, [r6, #4]
 	mov r0, r5
-	bl sub_020D15BC
+	bl OS_ReadOwnerOfLockWord
 	ands r0, r0, #0x40
 	str r0, [r6]
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
-	bl sub_020D14F8
+	bl OS_TryLockCartridge
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, [r6, #4]
@@ -20119,7 +19784,7 @@ sub_020E1318: ; 0x020E1318
 	ldr r1, [r4]
 	cmp r1, #0
 	bne _020E1330
-	bl sub_020D14EC
+	bl OS_UnLockCartridge
 _020E1330:
 	ldr r0, [r4, #4]
 	bl OS_RestoreInterrupts
@@ -20221,7 +19886,7 @@ sub_020E1434: ; 0x020E1434
 	bl sub_020E16C0
 	ldr r0, _020E156C ; =0x021E4D40
 	ldrh r0, [r0, #6]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r0, [sp, #0x18]
 	tst r0, #1
 	bne _020E1488
@@ -20292,7 +19957,7 @@ _020E1538:
 _020E154C:
 	ldr r0, _020E156C ; =0x021E4D40
 	ldrh r0, [r0, #6]
-	bl sub_020D14EC
+	bl OS_UnLockCartridge
 	bl sub_020E1134
 	cmp r0, #0
 	movne r0, #1
@@ -20327,7 +19992,7 @@ sub_020E1588: ; 0x020E1588
 	bl sub_020E16C0
 	ldr r0, _020E1664 ; =0x021E4D40
 	ldrh r0, [r0, #6]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	cmp r4, #0x21
 	bhi _020E15F4
 	bhs _020E1620
@@ -20372,7 +20037,7 @@ _020E1640:
 _020E1644:
 	ldr r0, _020E1664 ; =0x021E4D40
 	ldrh r0, [r0, #6]
-	bl sub_020D14EC
+	bl OS_UnLockCartridge
 	bl sub_020E1134
 	cmp r0, #0
 	movne r0, #1
@@ -20693,7 +20358,7 @@ sub_020E1A3C: ; 0x020E1A3C
 	ldr r1, _020E1BA8 ; =0x021E4F2C
 	strh r0, [r1]
 	ldrh r0, [r1]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r4, _020E1BAC ; =0x04000204
 	ldr r1, _020E1BB0 ; =0x0210E1DC
 	ldrh r3, [r4]
@@ -20717,7 +20382,7 @@ sub_020E1A3C: ; 0x020E1A3C
 	strh r1, [r2]
 	ldrh r0, [r0]
 	ldreq r5, _020E1BBC ; =0x0210E1E0
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	ldr r3, [r5]
 	mov r0, #1
 	ldrh r1, [r3, #0x38]
@@ -21061,7 +20726,7 @@ sub_020E1F14: ; 0x020E1F14
 	ldr r6, [sp, #0x14]
 	ldr r7, [sp, #0x1c]
 	ldr r8, [sp, #0x18]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r3, _020E2000 ; =0x04000204
 	ldr r0, _020E2004 ; =_02110FC4
 	ldrh r2, [r3]
@@ -21102,7 +20767,7 @@ _020E1FD0:
 	orr r1, r1, r4
 	strh r1, [r2]
 	ldrh r0, [r0]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, #0
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
@@ -21148,7 +20813,7 @@ sub_020E203C: ; 0x020E203C
 	ldrh r5, [sp, #0x20]
 	ldr r6, [sp, #0xc]
 	ldr r7, [sp, #0x18]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r3, _020E2110 ; =0x04000204
 	ldr r0, _020E2114 ; =_02110FC4
 	ldrh r2, [r3]
@@ -21182,7 +20847,7 @@ _020E20BC:
 	orr r0, r0, r4
 	strh r0, [r3]
 	ldrh r0, [r1]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r5
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, pc}
@@ -21291,7 +20956,7 @@ sub_020E2230: ; 0x020E2230
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020E22FC ; =0x021E4F2C
 	ldrh r0, [r0]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r0, _020E2300 ; =0x04000204
 	ldr r1, _020E2304 ; =_02110FC4
 	ldrh r3, [r0]
@@ -21336,7 +21001,7 @@ sub_020E2230: ; 0x020E2230
 	orr r0, r0, r5
 	strh r0, [r3]
 	ldrh r0, [r1]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -21366,7 +21031,7 @@ sub_020E2318: ; 0x020E2318
 	ldrh r0, [r0]
 	mov r1, r1, lsl #7
 	add r5, r1, #0xa000000
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr ip, _020E2428 ; =0x04000204
 	ldr r1, _020E242C ; =_02110FC4
 	ldrh r0, [ip]
@@ -21416,7 +21081,7 @@ _020E23F8:
 	orr r1, r1, r4
 	strh r1, [r2]
 	ldrh r0, [r0]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r5
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, pc}
@@ -21495,7 +21160,7 @@ sub_020E24E8: ; 0x020E24E8
 	ldrh r0, [r0]
 	str r1, [r4]
 	ldr r5, [sp, #0xc]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r1, _020E25EC ; =0x04000204
 	ldr r2, _020E25F0 ; =_02110FC4
 	ldrh r0, [r1]
@@ -21543,7 +21208,7 @@ _020E2584:
 	orr r0, r0, r4
 	strh r0, [r3]
 	ldrh r0, [r1]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r5
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, pc}
@@ -21743,7 +21408,7 @@ sub_020E2844: ; 0x020E2844
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020E2910 ; =0x021E4F2C
 	ldrh r0, [r0]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r0, _020E2914 ; =0x04000204
 	ldr r1, _020E2918 ; =_02110FC4
 	ldrh r3, [r0]
@@ -21788,7 +21453,7 @@ sub_020E2844: ; 0x020E2844
 	orr r0, r0, r5
 	strh r0, [r3]
 	ldrh r0, [r1]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -21820,7 +21485,7 @@ sub_020E292C: ; 0x020E292C
 	ldmhsia sp!, {r3, r4, r5, r6, pc}
 	ldr r0, _020E2A44 ; =0x021E4F2C
 	ldrh r0, [r0]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r0, _020E2A48 ; =0x04000204
 	ldr r1, _020E2A4C ; =_02110FC4
 	ldrh r3, [r0]
@@ -21868,7 +21533,7 @@ sub_020E292C: ; 0x020E292C
 	orr r0, r0, r5
 	strh r0, [r3]
 	ldrh r0, [r1]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r4
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -21972,7 +21637,7 @@ _020E2B70:
 _020E2B8C:
 	ldr r0, _020E2C70 ; =0x021E4F2C
 	ldrh r0, [r0]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r1, _020E2C74 ; =0x04000204
 	ldr r2, _020E2C68 ; =_02110FC4
 	ldrh r0, [r1]
@@ -22022,7 +21687,7 @@ _020E2C24:
 	orr r1, r1, r8
 	strh r1, [r2]
 	ldrh r0, [r0]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r4
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
@@ -22064,7 +21729,7 @@ sub_020E2CB8: ; 0x020E2CB8
 	mov r5, r0
 	ldrh r0, [r2]
 	mov r4, r1
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr ip, _020E2D38 ; =0x04000204
 	ldr r0, _020E2D3C ; =_02110FC4
 	ldrh r3, [ip]
@@ -22087,7 +21752,7 @@ sub_020E2CB8: ; 0x020E2CB8
 	orr r1, r1, r6
 	strh r1, [r2]
 	ldrh r0, [r0]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -22177,7 +21842,7 @@ sub_020E2E24: ; 0x020E2E24
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020E2EF0 ; =0x021E4F2C
 	ldrh r0, [r0]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r0, _020E2EF4 ; =0x04000204
 	ldr r1, _020E2EF8 ; =_02110FC4
 	ldrh r3, [r0]
@@ -22222,7 +21887,7 @@ sub_020E2E24: ; 0x020E2E24
 	orr r0, r0, r5
 	strh r0, [r3]
 	ldrh r0, [r1]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -22257,7 +21922,7 @@ sub_020E2F0C: ; 0x020E2F0C
 	ldmhsia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r0, _020E307C ; =0x021E4F2C
 	ldrh r0, [r0]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r5, _020E3080 ; =0x04000204
 	ldr r0, _020E3074 ; =_02110FC4
 	ldrh r3, [r5]
@@ -22325,7 +21990,7 @@ _020E3044:
 	orr r0, r3, r0
 	strh r0, [r2]
 	ldrh r0, [r1]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, sb
 	add sp, sp, #0x28
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -22394,7 +22059,7 @@ sub_020E30E8: ; 0x020E30E8
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	ldr r0, _020E324C ; =0x021E4F2C
 	ldrh r0, [r0]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r5, _020E3250 ; =0x04000204
 	ldr r0, _020E3244 ; =_02110FC4
 	ldrh r3, [r5]
@@ -22453,7 +22118,7 @@ _020E3204:
 	orr r1, r1, r5
 	strh r1, [r2]
 	ldrh r0, [r0]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r6
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
@@ -22570,7 +22235,7 @@ sub_020E3340: ; 0x020E3340
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	ldr r0, _020E3464 ; =0x021E4F2C
 	ldrh r0, [r0]
-	bl sub_020D14AC
+	bl OS_LockCartridge
 	ldr r5, _020E3468 ; =0x04000204
 	ldr r0, _020E345C ; =_02110FC4
 	ldrh r3, [r5]
@@ -22613,7 +22278,7 @@ _020E3430:
 	orr r1, r1, r5
 	strh r1, [r2]
 	ldrh r0, [r0]
-	bl sub_020D14CC
+	bl OS_UnlockCartridge
 	mov r0, r6
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
