@@ -269,20 +269,17 @@ void CFile::CheckIncbin()
 
 std::string CFile::ReadPath()
 {
-    if (m_buffer[m_pos] != '"')
+    if (m_buffer[m_pos] != '"' && m_buffer[m_pos] != '<')
     {
-        if (m_buffer[m_pos] == '<')
-        {
-            return std::string();
-        }
         FATAL_INPUT_ERROR("expected '\"' or '<'");
     }
 
+    char close = m_buffer[m_pos] == '"' ? '"' : '>';
     m_pos++;
 
     int startPos = m_pos;
 
-    while (m_buffer[m_pos] != '"')
+    while (m_buffer[m_pos] != close)
     {
         if (m_buffer[m_pos] == 0)
         {

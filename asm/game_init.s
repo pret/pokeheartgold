@@ -18,7 +18,7 @@ gMain: ; 0x021D110C
 	thumb_func_start sub_0201A08C
 sub_0201A08C: ; 0x0201A08C
 	push {r3, lr}
-	ldr r3, _0201A0B4 ; =OSi_IntrTable
+	ldr r3, _0201A0B4 ; =OS_IRQTable
 	ldr r1, _0201A0B8 ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -35,14 +35,14 @@ sub_0201A08C: ; 0x0201A08C
 	str r1, [r0, #0x30]
 	pop {r3, pc}
 	nop
-_0201A0B4: .word OSi_IntrTable
+_0201A0B4: .word OS_IRQTable
 _0201A0B8: .word 0x00003FF8
 _0201A0BC: .word gMain
 	thumb_func_end sub_0201A08C
 
 	thumb_func_start sub_0201A0C0
 sub_0201A0C0: ; 0x0201A0C0
-	ldr r3, _0201A0D4 ; =OSi_IntrTable
+	ldr r3, _0201A0D4 ; =OS_IRQTable
 	ldr r1, _0201A0D8 ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -52,7 +52,7 @@ sub_0201A0C0: ; 0x0201A0C0
 	mov r0, #3
 	bx r3
 	nop
-_0201A0D4: .word OSi_IntrTable
+_0201A0D4: .word OS_IRQTable
 _0201A0D8: .word 0x00003FF8
 _0201A0DC: .word MI_WaitDma
 	thumb_func_end sub_0201A0C0

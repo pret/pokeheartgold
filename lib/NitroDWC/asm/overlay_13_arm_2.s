@@ -33029,7 +33029,7 @@ ov13_02241AC0: ; 0x02241AC0
 	mov r0, #1
 	bl OS_EnableIrqMask
 	mov r0, #1
-	bl sub_020D108C
+	bl OS_GetIrqFunction
 	ldr r2, _02241B24 ; =0x0224F600
 	ldr r1, _02241B2C ; =ov13_02241B70
 	str r0, [r2]

@@ -12,6 +12,10 @@ include common.mk
 include graphics_files_rules.mk
 include filesystem.mk
 
+$(ASM_OBJS): MWASFLAGS += -include $(WORK_DIR)/include/config.h
+
+$(ASM_SRCS): $(WORK_DIR)/include/config.h
+
 ROM             := $(BUILD_DIR)/poke$(buildname).nds
 BANNER          := $(ROM:%.nds=%.bnr)
 BANNER_SPEC     := $(buildname)/banner.bsf

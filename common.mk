@@ -76,6 +76,8 @@ ALL_GAME_OBJS             = $(C_OBJS) $(ASM_OBJS)
 ALL_LIB_OBJS              = $(LIB_C_OBJS) $(LIB_ASM_OBJS)
 ALL_OBJS                  = $(ALL_GAME_OBJS) $(ALL_LIB_OBJS)
 
+$(ALL_LIB_OBJS): DEFINES = $(GLB_DEFINES)
+
 ALL_BUILDDIRS             := $(sort $(ALL_BUILDDIRS) $(foreach obj,$(ALL_OBJS),$(dir $(obj))))
 
 NEF               := $(BUILD_DIR)/$(NEFNAME).nef
@@ -84,8 +86,8 @@ LCF               := $(NEF:%.nef=%.lcf)
 SBIN              := $(NEF:%.nef=%.sbin)
 XMAP              := $(NEF).xMAP
 
-MWCFLAGS          := $(DEFINES) $(OPTFLAGS) -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -I$(WORK_DIR)/lib/include -ipa file -interworking
-MWASFLAGS         := $(DEFINES) -proc $(PROC_S) -i ./include -DSDK_ASM
+MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -I$(WORK_DIR)/lib/include -ipa file -interworking
+MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -i ./include -DSDK_ASM
 MWLDFLAGS         := -nodead -w off -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
@@ -110,7 +112,7 @@ DUMMY != mkdir -p $(ALL_BUILDDIRS)
 all: tools
 
 ifeq ($(NODEP),)
-$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I ./files -I $(WORK_DIR)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
+$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
 else
 $(BUILD_DIR)/%.o: dep :=
 endif

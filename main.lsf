@@ -8,6 +8,7 @@
 Static main
 {
 	Address 0x02000000
+	StackSize 2048 2048
 	Object pm_version.o
 	Object main.o
 	Object list_menu.o
@@ -248,6 +249,9 @@ Static main
 	Object gx_load3d.o
 	Object g3.o
 	Object gxasm.o
+	Object os_irqHandler.o
+	Object os_irqTable.o
+	Object os_interrupt.o
 	Object nitro.o
 	Object msl.o
 }

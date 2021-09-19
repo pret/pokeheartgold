@@ -5274,7 +5274,7 @@ _0222026C:
 	mov r1, r6
 	bl sub_020D2058
 	mov r0, r4
-	bl sub_020D1E7C
+	bl OS_SleepThread
 	ldr r0, [r7, #0xc0]
 	cmp r0, #0
 	beq _0222026C

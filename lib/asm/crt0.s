@@ -5,6 +5,7 @@
 	.public SDK_AUTOLOAD_START
 	.public SDK_STATIC_BSS_START
 	.public SDK_STATIC_BSS_END
+	.public SDK_IRQ_STACKSIZE
 	.text
 
 	arm_func_start _start
@@ -18,12 +19,12 @@ _02000808:
 	bl init_cp15
 	mov r0, #0x13
 	msr cpsr_c, r0
-	ldr r0, _02000930 ; =OSi_IntrTable
+	ldr r0, _02000930 ; =OS_IRQTable
 	add r0, r0, #0x3fc0
 	mov sp, r0
 	mov r0, #0x12
 	msr cpsr_c, r0
-	ldr r0, _02000930 ; =OSi_IntrTable
+	ldr r0, _02000930 ; =OS_IRQTable
 	add r0, r0, #0x3fc0
 	sub r0, r0, #0x40
 	sub sp, r0, #4
@@ -33,13 +34,13 @@ _02000808:
 _02000850:
 	sub sp, sp, #4
 _02000854:
-	ldr r1, _02000934 ; =0x00000800
+	ldr r1, _02000934 ; =SDK_IRQ_STACKSIZE
 	sub r1, r0, r1
 	mov r0, #0x1f
 	msr cpsr_fsxc, r0
 	sub sp, r1, #4
 	mov r0, #0
-	ldr r1, _02000930 ; =OSi_IntrTable
+	ldr r1, _02000930 ; =OS_IRQTable
 	mov r2, #0x4000
 	bl INITi_CpuClear32
 	mov r0, #0
@@ -77,7 +78,7 @@ _020008D4:
 	blt _020008D4
 	ldr r1, _02000944 ; =0x027FFF9C
 	str r0, [r1]
-	ldr r1, _02000930 ; =OSi_IntrTable
+	ldr r1, _02000930 ; =OS_IRQTable
 	add r1, r1, #0x3fc0
 	add r1, r1, #0x3c
 	ldr r0, _02000948 ; =sub_01FF8000
@@ -95,8 +96,8 @@ _02000928:
 _0200092C:
 	bx r1
 	.align 2, 0
-_02000930: .word OSi_IntrTable
-_02000934: .word 0x00000800
+_02000930: .word OS_IRQTable
+_02000934: .word SDK_IRQ_STACKSIZE
 _02000938: .word 0x05000000
 _0200093C: .word 0x07000000
 _02000940: .word _start_ModuleParams
@@ -250,7 +251,7 @@ init_cp15: ; 0x02000AB0
 	mcr p15, 0, r0, c6, c2, 0
 	ldr r0, _02000B78 ; =0x08000035
 	mcr p15, 0, r0, c6, c3, 0
-	ldr r0, _02000B7C ; =OSi_IntrTable
+	ldr r0, _02000B7C ; =OS_IRQTable
 	orr r0, r0, #0x1a
 	orr r0, r0, #1
 	mcr p15, 0, r0, c6, c4, 0
@@ -262,7 +263,7 @@ init_cp15: ; 0x02000AB0
 	mcr p15, 0, r0, c6, c7, 0
 	mov r0, #0x20
 	mcr p15, 0, r0, c9, c1, 1
-	ldr r0, _02000B7C ; =OSi_IntrTable
+	ldr r0, _02000B7C ; =OS_IRQTable
 	orr r0, r0, #0xa
 	mcr p15, 0, r0, c9, c1, 0
 	mov r0, #0x42
@@ -286,7 +287,7 @@ _02000B6C: .word 0x04000033
 _02000B70: .word 0x0200002D
 _02000B74: .word 0x027E0021
 _02000B78: .word 0x08000035
-_02000B7C: .word OSi_IntrTable
+_02000B7C: .word OS_IRQTable
 _02000B80: .word 0x0100002F
 _02000B84: .word 0xFFFF001D
 _02000B88: .word 0x027FF017

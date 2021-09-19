@@ -5257,7 +5257,7 @@ _020772CE:
 	bl sub_0200398C
 	ldr r0, [r4]
 	bl sub_0201EEB4
-	ldr r3, _020772F0 ; =OSi_IntrTable
+	ldr r3, _020772F0 ; =OS_IRQTable
 	ldr r1, _020772F4 ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -5266,7 +5266,7 @@ _020772CE:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _020772EC: .word 0x04000040
-_020772F0: .word OSi_IntrTable
+_020772F0: .word OS_IRQTable
 _020772F4: .word 0x00003FF8
 	thumb_func_end sub_02077270
 
@@ -10388,7 +10388,7 @@ sub_020796B8: ; 0x020796B8
 	bl sub_0201EEB4
 	bl sub_0202061C
 	bl sub_0200D034
-	ldr r3, _020796F8 ; =OSi_IntrTable
+	ldr r3, _020796F8 ; =OS_IRQTable
 	ldr r1, _020796FC ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -10397,7 +10397,7 @@ sub_020796B8: ; 0x020796B8
 	pop {r4, pc}
 	.balign 4, 0
 _020796F4: .word 0x00000C78
-_020796F8: .word OSi_IntrTable
+_020796F8: .word OS_IRQTable
 _020796FC: .word 0x00003FF8
 	thumb_func_end sub_020796B8
 
@@ -29533,7 +29533,7 @@ sub_02083140: ; 0x02083140
 	push {r3, lr}
 	bl sub_0202061C
 	bl sub_0200B224
-	ldr r3, _02083158 ; =OSi_IntrTable
+	ldr r3, _02083158 ; =OS_IRQTable
 	ldr r1, _0208315C ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -29541,7 +29541,7 @@ sub_02083140: ; 0x02083140
 	str r0, [r3, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_02083158: .word OSi_IntrTable
+_02083158: .word OS_IRQTable
 _0208315C: .word 0x00003FF8
 	thumb_func_end sub_02083140
 
@@ -34120,7 +34120,7 @@ sub_020855CC: ; 0x020855CC
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl sub_0201EEB4
-	ldr r3, _020855FC ; =OSi_IntrTable
+	ldr r3, _020855FC ; =OS_IRQTable
 	ldr r1, _02085600 ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -34128,7 +34128,7 @@ sub_020855CC: ; 0x020855CC
 	str r0, [r3, r1]
 	pop {r4, pc}
 	nop
-_020855FC: .word OSi_IntrTable
+_020855FC: .word OS_IRQTable
 _02085600: .word 0x00003FF8
 	thumb_func_end sub_020855CC
 
@@ -40381,7 +40381,7 @@ sub_020885DC: ; 0x020885DC
 	bl sub_02009418
 	bl sub_0202061C
 	bl sub_0200D034
-	ldr r3, _02088608 ; =OSi_IntrTable
+	ldr r3, _02088608 ; =OS_IRQTable
 	ldr r1, _0208860C ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -40389,7 +40389,7 @@ sub_020885DC: ; 0x020885DC
 	str r0, [r3, r1]
 	pop {r4, pc}
 	nop
-_02088608: .word OSi_IntrTable
+_02088608: .word OS_IRQTable
 _0208860C: .word 0x00003FF8
 	thumb_func_end sub_020885DC
 
@@ -62723,7 +62723,7 @@ _020935B2:
 	bl sub_0200B224
 	ldr r0, [r4]
 	bl sub_0201EEB4
-	ldr r3, _020935D8 ; =OSi_IntrTable
+	ldr r3, _020935D8 ; =OS_IRQTable
 	ldr r1, _020935DC ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -62733,7 +62733,7 @@ _020935B2:
 	nop
 _020935D0: .word 0x00004644
 _020935D4: .word 0x000008D4
-_020935D8: .word OSi_IntrTable
+_020935D8: .word OS_IRQTable
 _020935DC: .word 0x00003FF8
 	thumb_func_end sub_02093594
 
@@ -68568,7 +68568,7 @@ _02096314:
 
 	thumb_func_start sub_02096318
 sub_02096318: ; 0x02096318
-	ldr r3, _0209632C ; =OSi_IntrTable
+	ldr r3, _0209632C ; =OS_IRQTable
 	ldr r1, _02096330 ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -68578,7 +68578,7 @@ sub_02096318: ; 0x02096318
 	mov r0, #3
 	bx r3
 	nop
-_0209632C: .word OSi_IntrTable
+_0209632C: .word OS_IRQTable
 _02096330: .word 0x00003FF8
 _02096334: .word MI_WaitDma
 	thumb_func_end sub_02096318

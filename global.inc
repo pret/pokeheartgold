@@ -601,7 +601,7 @@
 .public OS_TryLockMutex
 .public OS_UnlockMutex
 .public OS_WaitIrq
-.public OSi_IntrTable
+.public OS_IRQTable
 .public OSi_ReferSymbol
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_FreeData
@@ -29204,7 +29204,7 @@
 .public G3_BeginMakeDL
 .public G3_EndMakeDL
 .public OS_SetIrqFunction
-.public sub_020D108C
+.public OS_GetIrqFunction
 .public sub_020D164C
 .public sub_020D168C
 .public sub_020D16B4
@@ -29215,7 +29215,7 @@
 .public sub_020D1D5C
 .public sub_020D1E38
 .public sub_020D1E68
-.public sub_020D1E7C
+.public OS_SleepThread
 .public sub_020D1ECC
 .public sub_020D1F34
 .public sub_020D1F84

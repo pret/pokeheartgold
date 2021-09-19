@@ -11243,7 +11243,7 @@ _020A1C10:
 	mvneq r8, #5
 	beq _020A1C68
 	add r0, r6, #0x10c
-	bl sub_020D1E7C
+	bl OS_SleepThread
 	mov r0, sl
 	bl sub_020A2E54
 	cmp r0, #0
@@ -11573,7 +11573,7 @@ _020A2098:
 	moveq r5, #0
 	beq _020A20B0
 	add r0, r4, #0x104
-	bl sub_020D1E7C
+	bl OS_SleepThread
 	b _020A206C
 _020A20B0:
 	mov r0, fp
@@ -14216,7 +14216,7 @@ _020A423C:
 	ldr r1, [r8, #4]
 	mov r0, r5
 	str r1, [sb, #0x54]
-	bl sub_020D1E7C
+	bl OS_SleepThread
 	str r4, [sb, #0x54]
 	ldr r1, [sb, #0x30]
 	ldr r0, [sb, #0x28]
@@ -17090,7 +17090,7 @@ sub_020A699C: ; 0x020A699C
 	mov r1, #1
 	mov r0, #0
 	str r1, [r5, #4]
-	bl sub_020D1E7C
+	bl OS_SleepThread
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
@@ -17160,7 +17160,7 @@ _020A6A54:
 	beq _020A6AA8
 	mov r0, #0
 	str r5, [sl, #4]
-	bl sub_020D1E7C
+	bl OS_SleepThread
 _020A6AA8:
 	mov r0, sb
 	bl OS_RestoreInterrupts
@@ -17334,7 +17334,7 @@ sub_020A6C88: ; 0x020A6C88
 _020A6CB0:
 	mov r0, r4
 	str r5, [r8, #4]
-	bl sub_020D1E7C
+	bl OS_SleepThread
 	ldr r6, [r8, #0x44]
 	cmp r6, #0
 	beq _020A6CB0
@@ -17364,7 +17364,7 @@ sub_020A6CDC: ; 0x020A6CDC
 _020A6D10:
 	mov r0, r6
 	str r7, [r4, #4]
-	bl sub_020D1E7C
+	bl OS_SleepThread
 _020A6D1C:
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
@@ -28281,7 +28281,7 @@ _020B00F8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020B0110:
 	ldr r0, _020B0164 ; =0x021D5FF4
-	bl sub_020D1E7C
+	bl OS_SleepThread
 	ldr r0, _020B0168 ; =0x021D5FF0
 	ldr r0, [r0, #0x24]
 	cmp r0, #0

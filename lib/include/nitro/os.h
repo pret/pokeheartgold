@@ -6,5 +6,6 @@
 #include <nitro/os/systemWork.h>
 #include <nitro/os/tcm.h>
 #include <nitro/os/thread.h>
+#include <nitro/os/interrupt.h>
 
 #endif //NITRO_OS_H_
