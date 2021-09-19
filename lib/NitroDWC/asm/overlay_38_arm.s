@@ -6762,9 +6762,9 @@ ov38_02221AC4: ; 0x02221AC4
 	str ip, [sp]
 	mov ip, #0x10
 	str ip, [sp, #4]
-	bl sub_020D1AD4
+	bl OS_CreateThread
 	ldr r0, _02221B00 ; =0x02226234
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -7218,7 +7218,7 @@ ov38_02222060: ; 0x02222060
 	sub sp, sp, #8
 	mov r5, r0
 	mov r4, r1
-	bl sub_020D1AC4
+	bl OS_IsThreadAvailable
 	cmp r0, #0
 	addeq sp, sp, #8
 	moveq r0, #0
@@ -7234,9 +7234,9 @@ ov38_02222060: ; 0x02222060
 	add r3, r4, #0x2000
 	mov r2, #0
 	str r5, [sp, #4]
-	bl sub_020D1AD4
+	bl OS_CreateThread
 	ldr r0, _022220D0 ; =0x02226B30
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	mov r0, #1
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
@@ -7255,7 +7255,7 @@ ov38_022220D8: ; 0x022220D8
 	str r1, [r0]
 	bl ov38_0222211C
 	ldr r0, _022220FC ; =0x02226B30
-	bl sub_020D1E38
+	bl OS_JoinThread
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _022220F8: .word 0x02226224
@@ -8535,7 +8535,7 @@ ov38_0222316C: ; 0x0222316C
 	mov r5, #0x1f4
 _0222318C:
 	mov r0, r5
-	bl sub_020D2108
+	bl OS_Sleep
 	mov r0, r6
 	bl sub_020A30C8
 	cmp r0, r4

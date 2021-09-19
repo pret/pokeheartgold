@@ -12,6 +12,7 @@ include common.mk
 include graphics_files_rules.mk
 include filesystem.mk
 
+$(BUILD_DIR)/lib/NitroSDK/%.o: MWCCVER := 2.0/sp1p2
 $(ASM_OBJS): MWASFLAGS += -include $(WORK_DIR)/include/config.h
 
 $(ASM_SRCS): $(WORK_DIR)/include/config.h

@@ -553,9 +553,9 @@ ov39_02229980: ; 0x02229980
 	ldr r3, _022299D0 ; =0x0222B6D0
 	mov r2, #0
 	str ip, [sp, #4]
-	bl sub_020D1AD4
+	bl OS_CreateThread
 	ldr r0, _022299C8 ; =0x0222ADF8
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	mov r0, #1
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
@@ -1010,10 +1010,10 @@ _02229FBC: .word 0x0222AB84
 
 	arm_func_start ov39_02229FC0
 ov39_02229FC0: ; 0x02229FC0
-	ldr ip, _02229FC8 ; =sub_020D2108
+	ldr ip, _02229FC8 ; =OS_Sleep
 	bx ip
 	.balign 4, 0
-_02229FC8: .word sub_020D2108
+_02229FC8: .word OS_Sleep
 	arm_func_end ov39_02229FC0
 
 	arm_func_start ov39_02229FCC

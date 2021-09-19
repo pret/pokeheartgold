@@ -6,9 +6,11 @@
 #include <nitro/os/systemWork.h>
 #include <nitro/os/tcm.h>
 #include <nitro/os/thread.h>
+#include <nitro/os/mutex.h>
 #include <nitro/os/interrupt.h>
 #include <nitro/os/systemCall.h>
 #include <nitro/os/spinLock.h>
 #include <nitro/os/printf.h>
+#include <nitro/os/init.h>
 
 #endif //NITRO_OS_H_

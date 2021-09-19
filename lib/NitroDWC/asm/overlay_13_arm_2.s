@@ -6049,7 +6049,7 @@ ov13_0222BF60: ; 0x0222BF60
 	bl OS_Terminate
 _0222BFAC:
 	mov r0, #0xa
-	bl sub_020D2108
+	bl OS_Sleep
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -17741,7 +17741,7 @@ _02235650: .word ov13_02235654
 ov13_02235654: ; 0x02235654
 	stmdb sp!, {r3, lr}
 	mov r0, #0xa
-	bl sub_020D2108
+	bl OS_Sleep
 	bl ov13_02235838
 	bl ov13_02235674
 	bl ov13_022356AC
@@ -18088,7 +18088,7 @@ _02235A68: .word ov13_02235A6C
 ov13_02235A6C: ; 0x02235A6C
 	stmdb sp!, {r3, lr}
 	mov r0, #0xa
-	bl sub_020D2108
+	bl OS_Sleep
 	bl ov13_02235C34
 	bl ov13_02235A8C
 	bl ov13_02235AC4
@@ -18653,7 +18653,7 @@ _0223613C: .word ov13_02236140
 ov13_02236140: ; 0x02236140
 	stmdb sp!, {r3, lr}
 	mov r0, #0xa
-	bl sub_020D2108
+	bl OS_Sleep
 	bl ov13_02236324
 	bl ov13_02236160
 	bl ov13_02236198
@@ -33041,7 +33041,7 @@ ov13_02241AC0: ; 0x02241AC0
 	mov r0, #1
 	ldrh r1, [r2]
 	strh r0, [r2]
-	bl sub_020D3A24
+	bl OS_EnableInterrupts
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02241B20: .word 0x04000210

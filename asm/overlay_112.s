@@ -649,7 +649,7 @@ ov112_021E5D68: ; 0x021E5D68
 	mov r0, #3
 	tst r0, r4
 	beq _021E5D76
-	bl sub_020D3F58
+	bl OS_Halt
 _021E5D76:
 	ldr r1, _021E5D84 ; =0x021FFAA4
 	ldr r0, _021E5D88 ; =0x0000CD80
@@ -950,7 +950,7 @@ _021E5F84:
 	ldrb r6, [r1, r0]
 	cmp r6, #0x80
 	bls _021E5F94
-	bl sub_020D3F58
+	bl OS_Halt
 _021E5F94:
 	cmp r6, #0x80
 	bne _021E5FB6
@@ -2311,7 +2311,7 @@ _021E6A2C:
 	bl ov112_021E5A68
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6A3E:
-	bl sub_020D3F58
+	bl OS_Halt
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6A44:
 	mov r0, #0
@@ -3523,7 +3523,7 @@ _021E73B4:
 	add r0, r5, #0
 	bl OS_UnlockMutex
 	add r0, r6, #0
-	bl sub_020D2108
+	bl OS_Sleep
 	b _021E73A0
 	nop
 _021E73C4: .word 0x021FFB08
@@ -3573,9 +3573,9 @@ _021E7414:
 	mov r2, #0
 	add r3, r5, r4
 	str r6, [sp, #4]
-	bl sub_020D1AD4
+	bl OS_CreateThread
 	ldr r0, _021E745C ; =0x021FFBD8
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
@@ -3597,7 +3597,7 @@ ov112_021E7464: ; 0x021E7464
 	bl OS_LockMutex
 	ldr r0, _021E7480 ; =0x021FFBD8
 	mov r1, #0
-	bl sub_020D1D5C
+	bl OS_KillThread
 	ldr r0, _021E747C ; =0x021FFB08
 	bl OS_UnlockMutex
 	pop {r3, pc}

@@ -4146,7 +4146,7 @@ _022228FE:
 	mov r4, #0x64
 _02222908:
 	add r0, r4, #0
-	bl sub_020D2108
+	bl OS_Sleep
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _02222908
@@ -4889,14 +4889,14 @@ _02222DEC:
 	b _02222F04
 _02222E00:
 	add r0, sp, #0x18
-	bl sub_020D36AC
+	bl OS_CreateAlarm
 	mov r0, #0x13
 	str r0, [sp]
 	ldr r1, _02222F1C ; =0x003FEC42
 	ldr r3, _02222F20 ; =ov13_02222C08
 	add r0, sp, #0x18
 	add r2, r6, #0
-	bl sub_020D37E8
+	bl OS_SetAlarm
 _02222E16:
 	ldr r0, _02222F24 ; =0x0224DDA0
 	add r1, sp, #0x14
@@ -5010,7 +5010,7 @@ _02222ED8:
 	blt _02222ED8
 _02222EEA:
 	add r0, sp, #0x18
-	bl sub_020D3854
+	bl OS_CancelAlarm
 	ldr r5, _02222F24 ; =0x0224DDA0
 	add r4, sp, #0x14
 	mov r6, #0
@@ -5115,14 +5115,14 @@ _02222FB4:
 	mov r0, #0
 	str r0, [sp, #8]
 	add r0, sp, #0x14
-	bl sub_020D36AC
+	bl OS_CreateAlarm
 	mov r0, #0x12
 	str r0, [sp]
 	ldr r1, _022230E4 ; =0x003FEC42
 	ldr r3, _022230E8 ; =ov13_02222C08
 	add r0, sp, #0x14
 	mov r2, #0
-	bl sub_020D37E8
+	bl OS_SetAlarm
 	b _022230A4
 _02222FD0:
 	ldr r0, _022230EC ; =0x0224DDA0
@@ -5169,7 +5169,7 @@ _0222301C:
 	cmp r6, #0
 	bne _022230A4
 	add r0, sp, #0x14
-	bl sub_020D3854
+	bl OS_CancelAlarm
 	ldr r0, _022230F0 ; =0x0224DDC0
 	mov r1, #1
 	bl ov13_02223434
@@ -5240,7 +5240,7 @@ _022230A4:
 	cmp r4, #0
 	bne _02222FD0
 	add r0, sp, #0x14
-	bl sub_020D3854
+	bl OS_CancelAlarm
 	ldr r5, _022230EC ; =0x0224DDA0
 	add r4, sp, #0x10
 	mov r6, #0
@@ -5278,10 +5278,10 @@ _022230F4: .word 0x0224DDC0
 
 	thumb_func_start ov13_022230F8
 ov13_022230F8: ; 0x022230F8
-	ldr r3, _022230FC ; =sub_020D2108
+	ldr r3, _022230FC ; =OS_Sleep
 	bx r3
 	.balign 4, 0
-_022230FC: .word sub_020D2108
+_022230FC: .word OS_Sleep
 	thumb_func_end ov13_022230F8
 
 	thumb_func_start ov13_02223100
@@ -7196,7 +7196,7 @@ _02223F3C:
 	add r7, r4, #0
 _02223F40:
 	mov r0, #0xa
-	bl sub_020D2108
+	bl OS_Sleep
 	bl ov13_02223E6C
 	cmp r0, #0
 	beq _02223F6C
@@ -7241,7 +7241,7 @@ ov13_02223F84: ; 0x02223F84
 	mov r7, #0xa
 _02223F96:
 	add r0, r7, #0
-	bl sub_020D2108
+	bl OS_Sleep
 	bl ov13_02223E6C
 	cmp r0, #0
 	beq _02223FBE
@@ -7309,14 +7309,14 @@ _02223FFA:
 	pop {r3, r4, r5, r6, r7, pc}
 _0222400E:
 	add r0, sp, #4
-	bl sub_020D36AC
+	bl OS_CreateAlarm
 	mov r0, #0x12
 	str r0, [sp]
 	ldr r1, _022240F0 ; =0x003FEC42
 	ldr r3, _022240F4 ; =ov13_02223ED4
 	add r0, sp, #4
 	mov r2, #0
-	bl sub_020D37E8
+	bl OS_SetAlarm
 	mov r7, #0
 _02224026:
 	bl ov13_02226CBC
@@ -7337,7 +7337,7 @@ _02224038:
 	b _022240B8
 _02224046:
 	mov r0, #0xa
-	bl sub_020D2108
+	bl OS_Sleep
 	bl ov13_02223E6C
 	cmp r0, #0
 	beq _022240B4
@@ -7399,7 +7399,7 @@ _022240B4:
 	bne _02224026
 _022240B8:
 	add r0, sp, #4
-	bl sub_020D3854
+	bl OS_CancelAlarm
 _022240BE:
 	bl ov13_02223E6C
 	cmp r0, #0
@@ -7448,7 +7448,7 @@ ov13_02224100: ; 0x02224100
 	mov r7, #0xa
 _0222411A:
 	add r0, r7, #0
-	bl sub_020D2108
+	bl OS_Sleep
 	bl ov13_02223E6C
 	cmp r0, #0
 	beq _02224142
@@ -7777,21 +7777,21 @@ _02224370:
 	b _0222458E
 _02224392:
 	add r0, sp, #0x24
-	bl sub_020D36AC
+	bl OS_CreateAlarm
 	mov r0, #0x13
 	str r0, [sp]
 	ldr r1, _022245B4 ; =0x000FFB10
 	ldr r3, _022245B8 ; =ov13_02223ED4
 	add r0, sp, #0x24
 	mov r2, #0
-	bl sub_020D37E8
+	bl OS_SetAlarm
 	ldr r7, _022245A8 ; =0x0224DF30
 	mov r5, #1
 	mov r4, #0
 	add r6, sp, #0x24
 _022243B0:
 	mov r0, #0xa
-	bl sub_020D2108
+	bl OS_Sleep
 	bl ov13_02226CBC
 	ldr r1, _022245AC ; =0x02245A58
 	ldr r1, [r1, #0xc]
@@ -7844,14 +7844,14 @@ _0222440C:
 	ble _02224438
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_020D3854
+	bl OS_CancelAlarm
 	mov r0, #0x13
 	str r0, [sp]
 	ldr r1, _022245B4 ; =0x000FFB10
 	ldr r3, _022245B8 ; =ov13_02223ED4
 	add r0, r6, #0
 	mov r2, #0
-	bl sub_020D37E8
+	bl OS_SetAlarm
 	b _02224438
 _02224432:
 	mov r5, #0
@@ -7867,7 +7867,7 @@ _02224440:
 	bne _022243B0
 _02224444:
 	add r0, sp, #0x24
-	bl sub_020D3854
+	bl OS_CancelAlarm
 _0222444A:
 	bl ov13_02223E6C
 	cmp r0, #0
@@ -9380,7 +9380,7 @@ ov13_02224F3C: ; 0x02224F3C
 _02224F54:
 	mov r0, #0x7d
 	lsl r0, r0, #2
-	bl sub_020D2108
+	bl OS_Sleep
 	ldr r0, _02225284 ; =0x0224DF30
 	ldr r0, [r0, #0x1c]
 	cmp r0, #0xa
@@ -13296,7 +13296,7 @@ _02226DBA:
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _02226DD4:
-	bl sub_020D1AC4
+	bl OS_IsThreadAvailable
 	cmp r0, #1
 	beq _02226DE8
 	add r0, r6, #0
@@ -13318,7 +13318,7 @@ _02226DE8:
 	bic r3, r4
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_020D1AD4
+	bl OS_CreateThread
 	ldr r0, _02226E44 ; =0x0224DF30
 	mov r1, #1
 	str r1, [r0, #0x38]
@@ -13343,7 +13343,7 @@ _02226E26:
 	stmia r5!, {r0, r1}
 	bl ov13_02226F3C
 	ldr r0, _02226E4C ; =0x0224DFDC
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	ldr r1, _02226E44 ; =0x0224DF30
 	mov r0, #1
 	str r0, [r1, #0x64]
@@ -13372,7 +13372,7 @@ ov13_02226E5C: ; 0x02226E5C
 	b _02226E76
 _02226E70:
 	add r0, r5, #0
-	bl sub_020D2108
+	bl OS_Sleep
 _02226E76:
 	ldr r0, [r4, #0x38]
 	cmp r0, #1
@@ -13382,19 +13382,19 @@ _02226E76:
 _02226E80:
 	mov r0, #0x7d
 	lsl r0, r0, #2
-	bl sub_020D2108
+	bl OS_Sleep
 	ldr r0, _02226EEC ; =0x0224DFDC
-	bl sub_020D1E68
+	bl OS_IsThreadTerminated
 	cmp r0, #0
 	bne _02226EAA
 	ldr r4, _02226EEC ; =0x0224DFDC
 _02226E94:
 	add r0, r4, #0
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	add r0, r4, #0
-	bl sub_020D1E38
+	bl OS_JoinThread
 	add r0, r4, #0
-	bl sub_020D1E68
+	bl OS_IsThreadTerminated
 	cmp r0, #0
 	beq _02226E94
 _02226EAA:

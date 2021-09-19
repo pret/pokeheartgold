@@ -4,6 +4,12 @@
 #include <nitro/hw/io_reg.h>
 #include <nitro/os/common/system_shared.h>
 
+#ifdef SDK_ARM9
+#include <nitro/os/ARM9/system.h>
+#else
+#include <nitro/os/ARM7/system.h>
+#endif //SDK_ARM9
+
 OSIntrMode OS_EnableInterrupts(void);
 OSIntrMode OS_DisableInterrupts(void);
 OSIntrMode OS_RestoreInterrupts(OSIntrMode state);

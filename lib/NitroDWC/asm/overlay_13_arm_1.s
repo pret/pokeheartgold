@@ -5272,7 +5272,7 @@ _02220250:
 _0222026C:
 	mov r0, r7
 	mov r1, r6
-	bl sub_020D2058
+	bl OS_SetThreadPriority
 	mov r0, r4
 	bl OS_SleepThread
 	ldr r0, [r7, #0xc0]
@@ -5286,7 +5286,7 @@ _0222028C:
 	str r1, [r7, #0xc0]
 	ldr r1, [r4, #4]
 	mov r1, r1, lsr #1
-	bl sub_020D2058
+	bl OS_SetThreadPriority
 	mov r0, r5
 	bl OS_RestoreInterrupts
 	ldr r1, [r4, #8]
@@ -5299,7 +5299,7 @@ _022202C8:
 	mov r5, r0
 	mov r0, r7
 	ldr r6, [r4, #0xc]
-	bl sub_020D2100
+	bl OS_GetThreadPriority
 	ldr r1, [r7, #0xc0]
 	cmp r1, #0
 	moveq r1, #0
@@ -5316,7 +5316,7 @@ _0222030C:
 	cmp r1, r0
 	beq _0222031C
 	mov r0, r7
-	bl sub_020D2058
+	bl OS_SetThreadPriority
 _0222031C:
 	mov r0, #0
 	str r0, [r4]
@@ -5335,7 +5335,7 @@ _02220340:
 	bl OS_RestoreInterrupts
 	b _02220250
 _02220358:
-	bl sub_020D1BD0
+	bl OS_ExitThread
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov13_02220248
 
@@ -5364,9 +5364,9 @@ ov13_02220360: ; 0x02220360
 	mov r2, r5
 	add r3, r3, ip
 	stmia sp, {ip, lr}
-	bl sub_020D1AD4
+	bl OS_CreateThread
 	mov r0, r5
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 _022203C8:
 	mov r0, r4
 	bl OS_RestoreInterrupts
@@ -5428,7 +5428,7 @@ ov13_02220428: ; 0x02220428
 	cmp r6, #0x1f
 	bls _022204AC
 	mov r0, r4
-	bl sub_020D2100
+	bl OS_GetThreadPriority
 	cmp r6, #0x20
 	bne _02220488
 	cmp r0, #0
@@ -5467,7 +5467,7 @@ _022204AC:
 	streq r1, [r0]
 	mov r0, r4
 	str sb, [r4, #0xc0]
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	b _0222057C
 _02220504:
 	cmp sb, r0

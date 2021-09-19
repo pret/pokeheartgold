@@ -112,7 +112,7 @@ ov00_021E7C94: ; 0x021E7C94
 	beq _021E7CF0
 	add r0, r1, #0x318
 	add r0, r0, #0x1000
-	bl sub_020D1E68
+	bl OS_IsThreadTerminated
 	cmp r0, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, pc}
@@ -128,12 +128,12 @@ _021E7CF0:
 	add r0, r0, #0x1000
 	add r3, lr, #0x1000
 	str ip, [sp, #4]
-	bl sub_020D1AD4
+	bl OS_CreateThread
 	ldr r0, _021E7D3C ; =_0221A694
 	ldr r0, [r0, #8]
 	add r0, r0, #0x318
 	add r0, r0, #0x1000
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -177,7 +177,7 @@ _021E7DA8:
 	ldmeqia sp!, {r3, pc}
 	add r0, r1, #0x318
 	add r0, r0, #0x1000
-	bl sub_020D1E38
+	bl OS_JoinThread
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021E7DD0: .word _0221A694
@@ -222,7 +222,7 @@ ov00_021E7E2C: ; 0x021E7E2C
 	ldmeqia sp!, {r3, pc}
 	add r0, r1, #0x318
 	add r0, r0, #0x1000
-	bl sub_020D1E38
+	bl OS_JoinThread
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021E7E58: .word _0221A694
@@ -352,7 +352,7 @@ _021E7FA8:
 	ldmneia sp!, {r4, pc}
 	ldr r0, _021E8044 ; =0x021E16A0
 	ldr r0, [r0, #4]
-	bl sub_020D2100
+	bl OS_GetThreadPriority
 	ldr r1, _021E8038 ; =_0221A694
 	ldr r2, [r1, #8]
 	sub r1, r0, #1
@@ -385,7 +385,7 @@ _021E8050:
 	beq _021E807C
 	add r0, r1, #0x338
 	add r0, r0, #0x1800
-	bl sub_020D1E38
+	bl OS_JoinThread
 _021E807C:
 	ldr r2, _021E82EC ; =_0221A694
 	ldr r0, [r2, #8]
@@ -510,7 +510,7 @@ _021E8224:
 	add r0, r0, #0x1000
 	bl OS_UnlockMutex
 	mov r0, r7
-	bl sub_020D2108
+	bl OS_Sleep
 	bl sub_020D34B0
 	subs r2, r0, sb
 	sbc r0, r1, sl
@@ -1593,7 +1593,7 @@ ov00_021E9154: ; 0x021E9154
 	beq _021E91D0
 	add r0, r5, #0x338
 	add r0, r0, #0x1800
-	bl sub_020D1E68
+	bl OS_IsThreadTerminated
 	cmp r0, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -1606,10 +1606,10 @@ _021E91D0:
 	add r0, r0, #0x1800
 	add r3, r5, #0x1000
 	str r4, [sp, #4]
-	bl sub_020D1AD4
+	bl OS_CreateThread
 	add r0, r5, #0x338
 	add r0, r0, #0x1800
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1640,7 +1640,7 @@ ov00_021E9210: ; 0x021E9210
 	ldmeqia sp!, {r4, pc}
 	add r0, r4, #0x338
 	add r0, r0, #0x1800
-	bl sub_020D1E38
+	bl OS_JoinThread
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_021E9210
 
@@ -1675,7 +1675,7 @@ _021E92A0:
 _021E92D0:
 	bl OS_UnlockMutex
 	mov r0, #0xa
-	bl sub_020D2108
+	bl OS_Sleep
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_021E926C
@@ -3016,7 +3016,7 @@ _021EA53C:
 	beq _021EA564
 	add r0, r1, #0x11c
 	add r0, r0, #0x1000
-	bl sub_020D1E38
+	bl OS_JoinThread
 _021EA564:
 	ldr r0, _021EA57C ; =_0221A6B8
 	mvn r1, #6
@@ -3072,7 +3072,7 @@ ov00_021EA5D8: ; 0x021EA5D8
 	beq _021EA610
 	add r0, r1, #0x11c
 	add r0, r0, #0x1000
-	bl sub_020D1E68
+	bl OS_IsThreadTerminated
 	cmp r0, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, pc}
@@ -3087,12 +3087,12 @@ _021EA610:
 	add r0, r0, #0x1000
 	add r3, r2, #0x1000
 	str ip, [sp, #4]
-	bl sub_020D1AD4
+	bl OS_CreateThread
 	ldr r0, _021EA658 ; =_0221A6B8
 	ldr r0, [r0]
 	add r0, r0, #0x11c
 	add r0, r0, #0x1000
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -3167,7 +3167,7 @@ _021EA728:
 _021EA750:
 	ldr r0, _021EB4F4 ; =0x021E16A0
 	ldr r0, [r0, #4]
-	bl sub_020D2100
+	bl OS_GetThreadPriority
 	sub r1, r0, #1
 	ldr r0, [r5, #0x14]
 	bl ov00_021E9154
@@ -3178,7 +3178,7 @@ _021EA750:
 	beq _021EA788
 	add r0, r1, #0x338
 	add r0, r0, #0x1800
-	bl sub_020D1E38
+	bl OS_JoinThread
 _021EA788:
 	ldr r0, [r5, #0x14]
 	add r1, r0, #0x1000
@@ -3356,7 +3356,7 @@ _021EA9B4:
 _021EAA0C:
 	ldr r0, _021EB4F4 ; =0x021E16A0
 	ldr r0, [r0, #4]
-	bl sub_020D2100
+	bl OS_GetThreadPriority
 	ldr r2, _021EB4E4 ; =_0221A6B8
 	sub r1, r0, #1
 	ldr r0, [r2, #0x14]
@@ -3369,7 +3369,7 @@ _021EAA0C:
 	beq _021EAA4C
 	add r0, r1, #0x338
 	add r0, r0, #0x1800
-	bl sub_020D1E38
+	bl OS_JoinThread
 _021EAA4C:
 	ldr r2, _021EB4E4 ; =_0221A6B8
 	ldr r0, [r2, #0x14]
@@ -3640,7 +3640,7 @@ _021EADD0:
 _021EAE20:
 	ldr r0, _021EB4F4 ; =0x021E16A0
 	ldr r0, [r0, #4]
-	bl sub_020D2100
+	bl OS_GetThreadPriority
 	sub r1, r0, #1
 	ldr r0, [r5, #0x14]
 	bl ov00_021E9154
@@ -3651,7 +3651,7 @@ _021EAE20:
 	beq _021EAE58
 	add r0, r1, #0x338
 	add r0, r0, #0x1800
-	bl sub_020D1E38
+	bl OS_JoinThread
 _021EAE58:
 	ldr r0, [r5, #0x14]
 	add r1, r0, #0x1000
@@ -3995,7 +3995,7 @@ _021EB318:
 _021EB340:
 	ldr r0, _021EB4F4 ; =0x021E16A0
 	ldr r0, [r0, #4]
-	bl sub_020D2100
+	bl OS_GetThreadPriority
 	sub r1, r0, #1
 	ldr r0, [r5, #0x14]
 	bl ov00_021E9154
@@ -4006,7 +4006,7 @@ _021EB340:
 	beq _021EB378
 	add r0, r1, #0x338
 	add r0, r0, #0x1800
-	bl sub_020D1E38
+	bl OS_JoinThread
 _021EB378:
 	ldr r0, [r5, #0x14]
 	add r1, r0, #0x1000
@@ -4082,7 +4082,7 @@ _021EB460:
 	ldr r0, [r5, #0x14]
 	bl ov00_021E9754
 	ldr r0, [sp, #8]
-	bl sub_020D2108
+	bl OS_Sleep
 	b _021EA6C0
 _021EB490:
 	cmp sb, #0
@@ -4399,7 +4399,7 @@ ov00_021EB8B0: ; 0x021EB8B0
 	cmp r0, #0
 	beq _021EB908
 	add r0, r1, #0x1b40
-	bl sub_020D1E68
+	bl OS_IsThreadTerminated
 	cmp r0, #0
 	bne _021EB908
 	bl OS_Terminate
@@ -4511,7 +4511,7 @@ _021EBA54:
 _021EBA94:
 	ldr r0, _021EBB14 ; =0x021E16A0
 	ldr r0, [r0, #4]
-	bl sub_020D2100
+	bl OS_GetThreadPriority
 	ldr r1, _021EBAF4 ; =_0221A748
 	ldr r2, [r1]
 	sub r1, r0, #1
@@ -4559,7 +4559,7 @@ ov00_021EBB18: ; 0x021EBB18
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
 	add r0, r1, #0x1b40
-	bl sub_020D1E68
+	bl OS_IsThreadTerminated
 	cmp r0, #1
 	bne _021EBBDC
 	ldr r0, _021EBBE4 ; =_0221A748
@@ -5638,7 +5638,7 @@ ov00_021EC8D8: ; 0x021EC8D8
 	mov r4, #0xa
 _021EC910:
 	mov r0, r4
-	bl sub_020D2108
+	bl OS_Sleep
 	bl ov00_021FAAC8
 	cmp r0, #0
 	beq _021EC910
@@ -6192,7 +6192,7 @@ ov00_021ECFF4: ; 0x021ECFF4
 	ldr r0, _021ED034 ; =_0221A768
 	ldr r0, [r0]
 	add r0, r0, #0x9c0
-	bl sub_020D1E38
+	bl OS_JoinThread
 	ldr r0, _021ED034 ; =_0221A768
 	ldr r0, [r0]
 	ldr r4, [r0, #4]
@@ -6317,7 +6317,7 @@ _021ED1AC:
 	bl ov00_021ECEFC
 _021ED1C4:
 	mov r0, r4
-	bl sub_020D2108
+	bl OS_Sleep
 	b _021ED050
 	arm_func_end ov00_021ED038
 
@@ -6396,11 +6396,11 @@ _021ED2B4:
 	add r3, r3, #0x9c0
 	mov r2, #0
 	str ip, [sp, #4]
-	bl sub_020D1AD4
+	bl OS_CreateThread
 	ldr r0, _021ED2FC ; =_0221A768
 	ldr r0, [r0]
 	add r0, r0, #0x9c0
-	bl sub_020D1F34
+	bl OS_WakeupThreadDirect
 	mov r0, #1
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
@@ -27892,10 +27892,10 @@ _021FF3BC: .word 0x000082EA
 
 	arm_func_start ov00_021FF3C0
 ov00_021FF3C0: ; 0x021FF3C0
-	ldr ip, _021FF3C8 ; =sub_020D2108
+	ldr ip, _021FF3C8 ; =OS_Sleep
 	bx ip
 	.balign 4, 0
-_021FF3C8: .word sub_020D2108
+_021FF3C8: .word OS_Sleep
 	arm_func_end ov00_021FF3C0
 
 	arm_func_start ov00_021FF3CC
