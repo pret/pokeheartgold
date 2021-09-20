@@ -123,12 +123,12 @@ OSThread *OSi_RemoveSpecifiedLinkFromQueue(OSThreadQueue *queue, OSThread *threa
             if (queue->head == t) {
                 queue->head = next;
             } else {
-                t->link.prev = next;
+                prev->link.next = next;
             }
             if (queue->tail == t) {
                 queue->tail = prev;
             } else {
-                t->link.next = prev;
+                next->link.prev = prev;
             }
             break;
         }
@@ -213,25 +213,41 @@ void OSi_RescheduleThread(void) {
 
 void OS_InitThread(void) {
     void *stackLo;
+#ifndef SDK_THREAD_INFINITY
+    int i;
+#endif
     if (OSi_IsThreadInitialized) {
         return;
     }
     OSi_IsThreadInitialized = TRUE;
-    OSi_CurrentThreadPtr = &OSi_ThreadInfo.current;
+#ifndef SDK_THREAD_INFINITY
+    for (i = 0; i < OS_THREAD_MAX_NUM; i++) {
+        OSi_ThreadInfo.entry[i] = NULL;
+    }
+#endif
+    OSi_CurrentThreadPtr = &(OSi_ThreadInfo.current);
     OSi_LauncherThread.priority = OS_THREAD_LAUNCHER_PRIORITY;
     OSi_LauncherThread.id = 0;
     OSi_LauncherThread.state = OS_THREAD_STATE_READY;
     OSi_LauncherThread.next = NULL;
     OSi_LauncherThread.profiler = NULL;
+#ifndef SDK_THREAD_INFINITY
+    OSi_ThreadInfo.entry[0] = &OSi_LauncherThread;
+#endif
     OSi_ThreadInfo.list = &OSi_LauncherThread;
     OS_SetCurrentThread(&OSi_LauncherThread);
-    stackLo = (void *)((u32)OSi_LAUNCHER_STACK_HI_MAX - OSi_SYS_STACKSIZE);
+    stackLo = (OSi_SYS_STACKSIZE <= 0) ?
+              (void *)((u32)OSi_LAUNCHER_STACK_LO_DEFAULT - OSi_SYS_STACKSIZE) :
+              (void *)((u32)OSi_LAUNCHER_STACK_HI_MAX - OSi_SYS_STACKSIZE);
     OSi_LauncherThread.stackBottom = (u32)OSi_LAUNCHER_STACK_BOTTOM;
     OSi_LauncherThread.stackTop = (u32)stackLo;
     OSi_LauncherThread.stackWarningOffset = 0;
     *(u32 *)(OSi_LauncherThread.stackBottom - sizeof(u32)) = OSi_STACK_CHECKNUM_BOTTOM;
     *(u32 *)OSi_LauncherThread.stackTop = OSi_STACK_CHECKNUM_TOP;
     OS_InitThreadQueue(&OSi_LauncherThread.joinQueue);
+#ifndef SDK_THREAD_INFINITY
+    OSi_ThreadInfo.max_entry = OS_THREAD_MAX_NUM;
+#endif
     OSi_ThreadInfo.isNeedRescheduling = FALSE;
     OSi_ThreadInfo.irqDepth = 0;
 #ifdef SDK_ARM9
@@ -246,8 +262,8 @@ void OS_InitThread(void) {
                     (void *)NULL,
                     OSi_IdleThreadStack + OSi_IDLE_THREAD_STACK_SIZE / sizeof(u32),
                     OSi_IDLE_THREAD_STACK_SIZE,
-                    OS_THREAD_PRIORITY_MAX /*pseudo. change at next line. */ );
-    OSi_IdleThread.priority = OS_THREAD_PRIORITY_MAX + 1;       // lower priority than the lowest (=OS_THREAD_PRIORITY_MAX)
+                    OS_THREAD_PRIORITY_MAX);
+    OSi_IdleThread.priority = OS_THREAD_PRIORITY_MAX + 1;
     OSi_IdleThread.state = OS_THREAD_STATE_READY;
 #endif
 }
@@ -569,10 +585,16 @@ u32 OS_EnableScheduler(void) {
     return count;
 }
 
+static u32 OSi_SystemStackBuffer;
+
 void OS_SetThreadDestructor(OSThread *thread, void (*dtor)(void *)) {
     thread->destructor = dtor;
-}
 
-static u32 OSi_SystemStackBuffer;
+    // Gotta put this somewhere to force the symbols to compile
+    // FIXME: when we can safely pass -nodead, port the dead-stripped routines
+    (void)&OSi_SystemStackBuffer;
+    (void)&killThreadStatus;
+    (void)&exitThreadStatus;
+}
 
 #endif

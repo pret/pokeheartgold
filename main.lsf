@@ -8,7 +8,7 @@
 Static main
 {
 	Address 0x02000000
-	StackSize 2048 2048
+	StackSize 0 2048
 	Object pm_version.o
 	Object main.o
 	Object list_menu.o
@@ -255,6 +255,7 @@ Static main
 	Object os_spinLock.o
 	Object os_printf.o
 	Object os_thread_s.o
+	Object os_thread.o
 	Object nitro.o
 	Object msl.o
 }

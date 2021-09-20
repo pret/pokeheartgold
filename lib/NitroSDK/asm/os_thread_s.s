@@ -1,3 +1,4 @@
+#if 1
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -8,42 +9,55 @@
 
 	.bss
 
+	.public OSi_SystemCallbackInSwitchThread
 OSi_SystemCallbackInSwitchThread: ; 0x021E167C
 	.space 0x4
 
+	.public OSi_RescheduleCount
 OSi_RescheduleCount: ; 0x021E1680
 	.space 0x4
 
+	.public OSi_CurrentThreadPtr
 OSi_CurrentThreadPtr: ; 0x021E1684
 	.space 0x4
 
+	.public OSi_IsThreadInitialized
 OSi_IsThreadInitialized: ; 0x021E1688
 	.space 0x4
 
+	.public OSi_SystemStackBuffer
 OSi_SystemStackBuffer: ; 0x021E168C
 	.space 0x4
 
+	.public killThreadStatus
 killThreadStatus: ; 0x021E1690
 	.space 0x4
 
+	.public exitThreadStatus
 exitThreadStatus: ; 0x021E1694
 	.space 0x4
 
+	.public OSi_StackForDestructor
 OSi_StackForDestructor: ; 0x021E1698
 	.space 0x4
 
+	.public OSi_ThreadIdCount
 OSi_ThreadIdCount: ; 0x021E169C
 	.space 0x4
 
+	.public OSi_ThreadInfo
 OSi_ThreadInfo: ; 0x021E16A0
 	.space 0x10
 
+	.public OSi_IdleThread
 OSi_IdleThread: ; 0x021E16B0
 	.space 0xC0
 
+	.public OSi_LauncherThread
 OSi_LauncherThread: ; 0x021E1770
 	.space 0xC0
 
+	.public OSi_IdleThreadStack
 OSi_IdleThreadStack: ; 0x021E1830
 	.space 0xC8
 
@@ -305,12 +319,12 @@ OS_InitThread: ; 0x020D1978
 	cmp r2, #0
 	ldrle r0, _020D1A9C ; =0x027E0080
 	ble _020D19EC
-	ldr r1, _020D1AA0 ; =OS_IRQTable
+	ldr r1, _020D1AA0 ; =0x027E0000
 	ldr r0, _020D1AA4 ; =0x00000800
 	add r1, r1, #0x3f80
 	sub r0, r1, r0
 _020D19EC:
-	ldr r1, _020D1AA0 ; =OS_IRQTable
+	ldr r1, _020D1AA0 ; =0x027E0000
 	sub ip, r0, r2
 	ldr r0, _020D1AA4 ; =0x00000800
 	add r1, r1, #0x3f80
@@ -356,7 +370,7 @@ _020D1A90: .word 0x021E16A4
 _020D1A94: .word 0x021E1770
 _020D1A98: .word 0x00000000
 _020D1A9C: .word 0x027E0080
-_020D1AA0: .word OS_IRQTable
+_020D1AA0: .word 0x027E0000
 _020D1AA4: .word 0x00000800
 _020D1AA8: .word 0xFDDB597D
 _020D1AAC: .word 0x7BF9DD5B
@@ -1007,3 +1021,4 @@ OS_SetThreadDestructor: ; 0x020D2264
 	str r1, [r0, #0xb4]
 	bx lr
 	arm_func_end OS_SetThreadDestructor
+#endif
