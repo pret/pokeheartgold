@@ -211,7 +211,6 @@ void OSi_RescheduleThread(void) {
     }
 }
 
-#ifdef NONMATCHING
 void OS_InitThread(void) {
     void *stackLo;
 #ifndef SDK_THREAD_INFINITY
@@ -227,8 +226,6 @@ void OS_InitThread(void) {
     }
 #endif
     OSi_CurrentThreadPtr = &(OSi_ThreadInfo.current);
-    // For some reason, pointer OSi_LauncherThread is not loaded directly,
-    // but rather as an -ipa file optimization
     OSi_LauncherThread.priority = OS_THREAD_LAUNCHER_PRIORITY;
     OSi_LauncherThread.id = 0;
     OSi_LauncherThread.state = OS_THREAD_STATE_READY;
@@ -270,80 +267,6 @@ void OS_InitThread(void) {
     OSi_IdleThread.state = OS_THREAD_STATE_READY;
 #endif
 }
-#else
-asm void OS_InitThread(void) {
-    stmdb sp!, {r3, lr}
-    sub sp, sp, #8
-    ldr r0, =OSi_IsThreadInitialized - 0xC // -ipa file
-    ldr r1, [r0, #0xC]
-    cmp r1, #0
-    addne sp, sp, #8
-    ldmneia sp!, {r3, pc}
-    mov r3, #1
-    ldr r2, =OSi_ThreadInfo + 0x4 // .current
-    str r3, [r0, #0xC]
-    str r2, [r0, #0x8] // OSi_CurrentThreadPtr
-    ldr r1, =OSi_LauncherThread
-    mov r2, #OS_THREAD_LAUNCHER_PRIORITY
-    str r2, [r1, #0x70] // .priority
-    mov r2, #0
-    str r2, [r1, #0x6C] // .id
-    str r3, [r1, #0x64] // .state
-    str r2, [r1, #0x68] // .next
-    str r2, [r1, #0x74] // .profiler
-    ldr r2, =SDK_SYS_STACKSIZE
-    str r1, [r0, #0x2C] // OSi_ThreadInfo.list
-    str r1, [r0, #0x28] // OSi_ThreadInfo.current
-    cmp r2, #0
-    ldrle r0, =SDK_AUTOLOAD_DTCM_START + 0x80
-    ble @ok
-    ldr r1, =SDK_AUTOLOAD_DTCM_START
-    ldr r0, =SDK_IRQ_STACKSIZE
-    add r1, r1, #0x3F80
-    sub r0, r1, r0
-@ok:
-    ldr r1, =SDK_AUTOLOAD_DTCM_START
-    sub ip, r0, r2
-    ldr r0, =SDK_IRQ_STACKSIZE
-    add r1, r1, #0x3F80
-    sub r3, r1, r0
-    ldr r2, =OSi_LauncherThread
-    mov r0, #0
-    str r3, [r2, #0x94]
-    str ip, [r2, #0x90]
-    ldr r1, =OSi_STACK_CHECKNUM_BOTTOM
-    str r0, [r2, #0x98]
-    str r1, [r3, #-4]
-    ldr r3, [r2, #0x90]
-    ldr ip, =OSi_STACK_CHECKNUM_TOP
-    ldr r1, =OSi_IsThreadInitialized - 0xC
-    str ip, [r3]
-    str r0, [r2, #0xA0]
-    str r0, [r2, #0x9C]
-    strh r0, [r1, #0x24]
-    ldr r3, =OSi_ThreadInfo
-    ldr r2, =HW_MAIN_MEM_SYSTEM + 0x3A0
-    strh r0, [r1, #0x26]
-    str r3, [r2]
-    bl OS_SetSwitchThreadCallback
-    mov r2, #OSi_IDLE_THREAD_STACK_SIZE
-    str r2, [sp]
-    mov ip, #OS_THREAD_PRIORITY_MAX
-    ldr r0, =OSi_IdleThread
-    ldr r1, =OSi_IdleThreadProc
-    ldr r3, =OSi_IdleThreadStack + OSi_IDLE_THREAD_STACK_SIZE
-    mov r2, #0
-    str ip, [sp, #0x4]
-    bl OS_CreateThread
-    ldr r0, =OSi_IdleThread
-    mov r1, #OS_THREAD_PRIORITY_MAX + 1
-    str r1, [r0, #0x70]
-    mov r1, #1
-    str r1, [r0, #0x64]
-    add sp, sp, #0x8
-    ldmia sp!, {r3, pc}
-}
-#endif
 
 asm BOOL OS_IsThreadAvailable(void) {
     ldr r0, =OSi_IsThreadInitialized
