@@ -256,6 +256,8 @@ Static main
 	Object os_printf.o
 	Object os_thread.o
 	Object os_context.o
+	Object os_emulator.o
+	Object os_message.o
 	Object nitro.o
 	Object msl.o
 }

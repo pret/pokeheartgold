@@ -29225,10 +29225,10 @@
 .public OS_Sleep
 .public OS_DisableScheduler
 .public OS_EnableScheduler
-.public sub_020D2388
-.public sub_020D23B0
-.public sub_020D2444
-.public sub_020D2584
+.public OS_InitMessageQueue
+.public OS_SendMessage
+.public OS_ReceiveMessage
+.public OS_ReadMessage
 .public sub_020D2600
 .public sub_020D2828
 .public sub_020D285C

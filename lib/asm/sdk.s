@@ -9898,7 +9898,7 @@ sub_020A0A78: ; 0x020A0A78
 	ldr r0, _020A0B04 ; =0x021D4464
 	mov r1, r6
 	mov r2, r4
-	bl sub_020D2388
+	bl OS_InitMessageQueue
 	cmp r4, #0
 	add r5, r6, r5
 	ble _020A0AF0
@@ -9949,7 +9949,7 @@ sub_020A0B54: ; 0x020A0B54
 	mov r2, r0
 	ldr r0, _020A0B78 ; =0x021D4464
 	add r1, sp, #0
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	cmp r0, #0
 	ldrne r0, [sp]
 	moveq r0, #0
@@ -9985,7 +9985,7 @@ sub_020A0BBC: ; 0x020A0BBC
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _020A0BD8 ; =0x021D4464
 	mov r2, #0
-	bl sub_020D23B0
+	bl OS_SendMessage
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A0BD8: .word 0x021D4464
@@ -10015,7 +10015,7 @@ _020A0C10:
 	mov r2, #0
 _020A0C14:
 	mov r1, r5
-	bl sub_020D23B0
+	bl OS_SendMessage
 	movs r4, r0
 	bne _020A0C2C
 	mov r0, r5
@@ -10049,7 +10049,7 @@ sub_020A0C54: ; 0x020A0C54
 	add r0, sp, #8
 	add r1, sp, #0
 	mov r2, #1
-	bl sub_020D2388
+	bl OS_InitMessageQueue
 	add r2, sp, #8
 	mov r0, r5
 	mov r1, r4
@@ -10058,7 +10058,7 @@ sub_020A0C54: ; 0x020A0C54
 	add r0, sp, #8
 	add r1, sp, #4
 	mov r2, #1
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	b _020A0CB8
 _020A0CA8:
 	mov r2, #0
@@ -10112,7 +10112,7 @@ _020A0D18:
 	mov r0, sb
 	mov r1, r6
 	mov r2, r5
-	bl sub_020D2584
+	bl OS_ReadMessage
 	ldr r0, [sp]
 	cmp r0, #0
 	addeq sp, sp, #4
@@ -10126,7 +10126,7 @@ _020A0D18:
 	mov r0, sb
 	mov r1, r4
 	mov r2, r4
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	ldr r0, [sp]
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -10137,7 +10137,7 @@ _020A0D18:
 	beq _020A0D8C
 	mov r1, r8
 	mov r2, sl
-	bl sub_020D23B0
+	bl OS_SendMessage
 _020A0D8C:
 	ldr r0, [sp]
 	bl sub_020A0BBC
@@ -10394,7 +10394,7 @@ sub_020A1090: ; 0x020A1090
 	ldrb r2, [r5, #3]
 	mov r0, r6
 	mov r1, r7
-	bl sub_020D2388
+	bl OS_InitMessageQueue
 	add r0, r6, #0xe0
 	bl sub_020D2600
 	ldrh r2, [r5]
@@ -12158,7 +12158,7 @@ sub_020A283C: ; 0x020A283C
 	add r1, sp, #0
 	mov r0, sb
 	mov r2, #0
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	cmp r0, #0
 	beq _020A28C8
 	mov r6, #0
@@ -12174,7 +12174,7 @@ _020A2884:
 	beq _020A28A8
 	mov r1, r7
 	mov r2, r6
-	bl sub_020D23B0
+	bl OS_SendMessage
 _020A28A8:
 	ldr r0, [sp]
 	bl sub_020A0BBC
@@ -12182,7 +12182,7 @@ _020A28B0:
 	mov r0, sb
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	cmp r0, #0
 	bne _020A2884
 _020A28C8:

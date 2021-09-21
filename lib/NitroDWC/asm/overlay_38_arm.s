@@ -7226,7 +7226,7 @@ ov38_02222060: ; 0x02222060
 	ldr r0, _022220C8 ; =0x02226B10
 	ldr r1, _022220CC ; =0x02226AF4
 	mov r2, #1
-	bl sub_020D2388
+	bl OS_InitMessageQueue
 	mov r0, #0x2000
 	str r0, [sp]
 	ldr r0, _022220D0 ; =0x02226B30
@@ -7268,7 +7268,7 @@ ov38_02222100: ; 0x02222100
 	ldr r0, _02222118 ; =0x02226B10
 	add r1, sp, #0
 	mov r2, #1
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02222118: .word 0x02226B10

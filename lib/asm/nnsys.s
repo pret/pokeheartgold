@@ -24643,7 +24643,7 @@ _020C919C:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r5
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	cmp r0, #0
 	bne _020C919C
 _020C91B4:

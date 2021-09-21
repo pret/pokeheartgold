@@ -4604,25 +4604,25 @@ _02222BF0: .word ov13_02222B34
 
 	thumb_func_start ov13_02222BF4
 ov13_02222BF4: ; 0x02222BF4
-	ldr r3, _02222C00 ; =sub_020D23B0
+	ldr r3, _02222C00 ; =OS_SendMessage
 	add r1, r0, #0
 	ldr r0, _02222C04 ; =0x0224DDA0
 	mov r2, #0
 	bx r3
 	nop
-_02222C00: .word sub_020D23B0
+_02222C00: .word OS_SendMessage
 _02222C04: .word 0x0224DDA0
 	thumb_func_end ov13_02222BF4
 
 	thumb_func_start ov13_02222C08
 ov13_02222C08: ; 0x02222C08
-	ldr r3, _02222C14 ; =sub_020D23B0
+	ldr r3, _02222C14 ; =OS_SendMessage
 	add r1, r0, #0
 	ldr r0, _02222C18 ; =0x0224DDA0
 	mov r2, #0
 	bx r3
 	nop
-_02222C14: .word sub_020D23B0
+_02222C14: .word OS_SendMessage
 _02222C18: .word 0x0224DDA0
 	thumb_func_end ov13_02222C08
 
@@ -4635,7 +4635,7 @@ ov13_02222C1C: ; 0x02222C1C
 	ldr r1, _02222CD0 ; =0x0224DD90
 	mov r2, #4
 	mov r4, #1
-	bl sub_020D2388
+	bl OS_InitMessageQueue
 	cmp r5, #0
 	beq _02222C36
 	cmp r6, #0
@@ -4677,7 +4677,7 @@ _02222C76:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r7, #0
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	ldr r0, [sp]
 	cmp r0, #0xf
 	bhi _02222CB6
@@ -4752,7 +4752,7 @@ _02222D02:
 	add r0, r7, #0
 	add r1, sp, #0
 	mov r2, #1
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	ldr r0, [sp]
 	cmp r0, #0x14
 	bhi _02222D54
@@ -4824,7 +4824,7 @@ _02222D8C:
 	add r0, r4, #0
 	add r1, r6, #0
 	add r2, r7, #0
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	ldr r0, [sp]
 	cmp r0, #0xe
 	bne _02222DA2
@@ -4901,7 +4901,7 @@ _02222E16:
 	ldr r0, _02222F24 ; =0x0224DDA0
 	add r1, sp, #0x14
 	mov r2, #1
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	ldr r0, [sp, #0x14]
 	cmp r0, #0x13
 	bhi _02222EEA
@@ -5018,7 +5018,7 @@ _02222EF6:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	cmp r0, #1
 	beq _02222EF6
 _02222F04:
@@ -5128,7 +5128,7 @@ _02222FD0:
 	ldr r0, _022230EC ; =0x0224DDA0
 	add r1, sp, #0x10
 	mov r2, #1
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	ldr r0, [sp, #0x10]
 	cmp r0, #0x13
 	bhi _022230A2
@@ -5248,7 +5248,7 @@ _022230B4:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	cmp r0, #1
 	beq _022230B4
 _022230C2:

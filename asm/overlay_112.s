@@ -3566,7 +3566,7 @@ _021E7414:
 	ldr r0, _021E7454 ; =0x021FFB20
 	ldr r1, _021E7458 ; =0x021FFAC0
 	mov r2, #1
-	bl sub_020D2388
+	bl OS_InitMessageQueue
 	str r4, [sp]
 	ldr r0, _021E745C ; =0x021FFBD8
 	ldr r1, _021E7460 ; =ov112_021E7398

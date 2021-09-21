@@ -52,217 +52,11 @@ _021E18F8:
 	.public OSi_RemoveThreadFromList
 	.public OSi_RescheduleThread
 	.public OSi_ExitThread_Destroy
+	.public OS_IsRunOnEmulator
+	.public OS_GetConsoleType
+	.public OS_JamMessage
 
 	.public OS_InitIrqTable
-
-	arm_func_start sub_020D2368
-sub_020D2368: ; 0x020D2368
-	mov r0, #0
-	bx lr
-	arm_func_end sub_020D2368
-
-	arm_func_start sub_020D2370
-sub_020D2370: ; 0x020D2370
-	ldr r0, _020D2380 ; =0x82000001
-	ldr r1, _020D2384 ; =_02110C94
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-_020D2380: .word 0x82000001
-_020D2384: .word _02110C94
-	arm_func_end sub_020D2370
-
-	arm_func_start sub_020D2388
-sub_020D2388: ; 0x020D2388
-	mov r3, #0
-	str r3, [r0, #4]
-	str r3, [r0]
-	str r3, [r0, #0xc]
-	str r3, [r0, #8]
-	str r1, [r0, #0x10]
-	str r2, [r0, #0x14]
-	str r3, [r0, #0x18]
-	str r3, [r0, #0x1c]
-	bx lr
-	arm_func_end sub_020D2388
-
-	arm_func_start sub_020D23B0
-sub_020D23B0: ; 0x020D23B0
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r5, r0
-	mov r4, r1
-	mov r7, r2
-	bl OS_DisableInterrupts
-	ldr r2, [r5, #0x1c]
-	ldr r1, [r5, #0x14]
-	mov r6, r0
-	cmp r1, r2
-	bgt _020D240C
-	and r7, r7, #1
-_020D23DC:
-	cmp r7, #0
-	bne _020D23F4
-	mov r0, r6
-	bl OS_RestoreInterrupts
-	mov r0, #0
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-_020D23F4:
-	mov r0, r5
-	bl OS_SleepThread
-	ldr r2, [r5, #0x1c]
-	ldr r1, [r5, #0x14]
-	cmp r1, r2
-	ble _020D23DC
-_020D240C:
-	ldr r0, [r5, #0x18]
-	add r0, r0, r2
-	bl _s32_div_f
-	ldr r2, [r5, #0x10]
-	add r0, r5, #8
-	str r4, [r2, r1, lsl #2]
-	ldr r1, [r5, #0x1c]
-	add r1, r1, #1
-	str r1, [r5, #0x1c]
-	bl OS_WakeupThread
-	mov r0, r6
-	bl OS_RestoreInterrupts
-	mov r0, #1
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020D23B0
-
-	arm_func_start sub_020D2444
-sub_020D2444: ; 0x020D2444
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r6, r0
-	mov r5, r1
-	mov r7, r2
-	bl OS_DisableInterrupts
-	ldr r1, [r6, #0x1c]
-	mov r4, r0
-	cmp r1, #0
-	bne _020D2498
-	and r7, r7, #1
-_020D246C:
-	cmp r7, #0
-	bne _020D2484
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	mov r0, #0
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-_020D2484:
-	add r0, r6, #8
-	bl OS_SleepThread
-	ldr r0, [r6, #0x1c]
-	cmp r0, #0
-	beq _020D246C
-_020D2498:
-	cmp r5, #0
-	beq _020D24B0
-	ldr r1, [r6, #0x10]
-	ldr r0, [r6, #0x18]
-	ldr r0, [r1, r0, lsl #2]
-	str r0, [r5]
-_020D24B0:
-	ldr r0, [r6, #0x18]
-	ldr r1, [r6, #0x14]
-	add r0, r0, #1
-	bl _s32_div_f
-	str r1, [r6, #0x18]
-	ldr r1, [r6, #0x1c]
-	mov r0, r6
-	sub r1, r1, #1
-	str r1, [r6, #0x1c]
-	bl OS_WakeupThread
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	mov r0, #1
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020D2444
-
-	arm_func_start sub_020D24E8
-sub_020D24E8: ; 0x020D24E8
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r6, r0
-	mov r5, r1
-	mov r7, r2
-	bl OS_DisableInterrupts
-	ldr r1, [r6, #0x14]
-	ldr r2, [r6, #0x1c]
-	mov r4, r0
-	cmp r1, r2
-	bgt _020D2544
-	and r7, r7, #1
-_020D2514:
-	cmp r7, #0
-	bne _020D252C
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	mov r0, #0
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-_020D252C:
-	mov r0, r6
-	bl OS_SleepThread
-	ldr r1, [r6, #0x14]
-	ldr r0, [r6, #0x1c]
-	cmp r1, r0
-	ble _020D2514
-_020D2544:
-	ldr r0, [r6, #0x18]
-	add r0, r0, r1
-	sub r0, r0, #1
-	bl _s32_div_f
-	str r1, [r6, #0x18]
-	ldr r0, [r6, #0x10]
-	str r5, [r0, r1, lsl #2]
-	ldr r1, [r6, #0x1c]
-	add r0, r6, #8
-	add r1, r1, #1
-	str r1, [r6, #0x1c]
-	bl OS_WakeupThread
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	mov r0, #1
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020D24E8
-
-	arm_func_start sub_020D2584
-sub_020D2584: ; 0x020D2584
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r6, r0
-	mov r5, r1
-	mov r7, r2
-	bl OS_DisableInterrupts
-	ldr r1, [r6, #0x1c]
-	mov r4, r0
-	cmp r1, #0
-	bne _020D25D8
-	and r7, r7, #1
-_020D25AC:
-	cmp r7, #0
-	bne _020D25C4
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	mov r0, #0
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-_020D25C4:
-	add r0, r6, #8
-	bl OS_SleepThread
-	ldr r0, [r6, #0x1c]
-	cmp r0, #0
-	beq _020D25AC
-_020D25D8:
-	cmp r5, #0
-	beq _020D25F0
-	ldr r1, [r6, #0x10]
-	ldr r0, [r6, #0x18]
-	ldr r0, [r1, r0, lsl #2]
-	str r0, [r5]
-_020D25F0:
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	mov r0, #1
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020D2584
 
 	arm_func_start sub_020D2600
 sub_020D2600: ; 0x020D2600
@@ -656,7 +450,7 @@ sub_020D2A58: ; 0x020D2A58
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _020D2AA4
-	bl sub_020D2370
+	bl OS_GetConsoleType
 	and r0, r0, #3
 	cmp r0, #1
 	ldmneia sp!, {r3, pc}
@@ -712,7 +506,7 @@ _020D2B20:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _020D2B40
-	bl sub_020D2370
+	bl OS_GetConsoleType
 	and r0, r0, #3
 	cmp r0, #1
 	bne _020D2B48
@@ -785,7 +579,7 @@ _020D2C04:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _020D2C24
-	bl sub_020D2370
+	bl OS_GetConsoleType
 	and r0, r0, #3
 	cmp r0, #1
 	bne _020D2C2C
@@ -4754,7 +4548,7 @@ _020D5BFC: .word 0x021E1A60
 	arm_func_start sub_020D5C00
 sub_020D5C00: ; 0x020D5C00
 	stmdb sp!, {r4, lr}
-	bl sub_020D2368
+	bl OS_IsRunOnEmulator
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, pc}
@@ -15178,7 +14972,7 @@ _020DE3B8:
 	ldr r0, _020DE448 ; =0x021E4228
 	ldr r1, _020DE44C ; =0x021E4248
 	mov r2, #0xa
-	bl sub_020D2388
+	bl OS_InitMessageQueue
 	mov r6, #0
 	mov r4, #0x8000
 	ldr sl, _020DE450 ; =0x021E42C0
@@ -15195,7 +14989,7 @@ _020DE3EC:
 	mov r0, r8
 	mov r2, r7
 	add r1, sl, r6, lsl #8
-	bl sub_020D23B0
+	bl OS_SendMessage
 	add r6, r6, #1
 _020DE414:
 	cmp r6, #0xa
@@ -15269,7 +15063,7 @@ sub_020DE4E0: ; 0x020DE4E0
 	ldr r0, _020DE534 ; =0x021E4228
 	add r1, sp, #0
 	mov r2, #0
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
@@ -15283,7 +15077,7 @@ sub_020DE4E0: ; 0x020DE4E0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _020DE534 ; =0x021E4228
 	mov r2, #1
-	bl sub_020D24E8
+	bl OS_JamMessage
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -15329,7 +15123,7 @@ _020DE598:
 	ldr r0, _020DE5E0 ; =0x021E4228
 	mov r1, r4
 	mov r2, #1
-	bl sub_020D23B0
+	bl OS_SendMessage
 	cmp r5, #0
 	movlt r0, #8
 	movge r0, #2
@@ -15364,7 +15158,7 @@ sub_020DE5E4: ; 0x020DE5E4
 	ldr r0, _020DE650 ; =0x021E4228
 	mov r1, r5
 	mov r2, #1
-	bl sub_020D23B0
+	bl OS_SendMessage
 	cmp r4, #0
 	movlt r0, #8
 	movge r0, #2
@@ -22974,8 +22768,6 @@ _0210D650:
 
 	.data
 
-_02110C94:
-	.byte 0xFF, 0xFF, 0xFF, 0xFF
 _02110C98:
 	.byte 0x3A, 0x2F, 0x00, 0x00
 _02110C9C:
