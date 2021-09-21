@@ -2383,7 +2383,7 @@ ov13_0221DB30: ; 0x0221DB30
 	mov r0, r4
 	bic r1, r2, #0x1f
 	bl DC_FlushRange
-	bl sub_020D28B8
+	bl DC_WaitWriteBufferEmpty
 	mov r0, r4
 	mov r1, r6
 	mov r2, r5

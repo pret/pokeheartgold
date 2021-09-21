@@ -2051,7 +2051,7 @@ _0203378A:
 	add r0, r1, r0
 	mov r1, #0xc0
 	bl DC_FlushRange
-	bl sub_020D28B8
+	bl DC_WaitWriteBufferEmpty
 	bl sub_02032E9C
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}

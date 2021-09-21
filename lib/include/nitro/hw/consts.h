@@ -40,6 +40,8 @@
 #define HW_C9_TCMR_16KB            0x0a
 #define HW_C9_TCMR_32MB            0x20
 
+#define HW_ICACHE_SIZE             0x2000
+#define HW_DCACHE_SIZE             0x1000
 #define HW_CACHE_LINE_SIZE         32
 
 #define OSi_CONSOLE_NOT_DETECT     0xffffffff

@@ -24,4 +24,11 @@
 #define HW_PSR_Z_FLAG              0x40000000
 #define HW_PSR_N_FLAG              0x80000000
 
+#define HW_C7_ICACHE_INDEX_MASK    0x00000fe0
+#define HW_C7_DCACHE_INDEX_MASK    0x000003e0
+#define HW_C7_CACHE_SET_NO_MASK    0xc0000000
+
+#define HW_C7_CACHE_INDEX_SHIFT    5
+#define HW_C7_CACHE_SET_NO_SHIFT   30
+
 #endif //NITRO_OS_COMMON_ARMARCH_H_

@@ -55,115 +55,15 @@ _021E18F8:
 	.public OS_IsRunOnEmulator
 	.public OS_GetConsoleType
 	.public OS_JamMessage
+	.public DC_InvalidateAll
+	.public DC_StoreAll
+	.public DC_FlushAll
+	.public DC_InvalidateRange
+	.public DC_StoreRange
+	.public DC_FlushRange
+	.public IC_InvalidateAll
 
 	.public OS_InitIrqTable
-
-	arm_func_start DC_InvalidateAll
-DC_InvalidateAll: ; 0x020D27F0
-	mov r0, #0
-	mcr p15, 0, r0, c7, c6, 0
-	bx lr
-	arm_func_end DC_InvalidateAll
-
-	arm_func_start DC_StoreAll
-DC_StoreAll: ; 0x020D27FC
-	mov r1, #0
-_020D2800:
-	mov r0, #0
-_020D2804:
-	orr r2, r1, r0
-	mcr p15, 0, r2, c7, c10, 2
-	add r0, r0, #0x20
-	cmp r0, #0x400
-	blt _020D2804
-	add r1, r1, #0x40000000
-	cmp r1, #0
-	bne _020D2800
-	bx lr
-	arm_func_end DC_StoreAll
-
-	arm_func_start DC_FlushAll
-DC_FlushAll: ; 0x020D2828
-	mov ip, #0
-	mov r1, #0
-_020D2830:
-	mov r0, #0
-_020D2834:
-	orr r2, r1, r0
-	mcr p15, 0, ip, c7, c10, 4
-	mcr p15, 0, r2, c7, c14, 2
-	add r0, r0, #0x20
-	cmp r0, #0x400
-	blt _020D2834
-	add r1, r1, #0x40000000
-	cmp r1, #0
-	bne _020D2830
-	bx lr
-	arm_func_end DC_FlushAll
-
-	arm_func_start DC_InvalidateRange
-DC_InvalidateRange: ; 0x020D285C
-	add r1, r1, r0
-	bic r0, r0, #0x1f
-_020D2864:
-	mcr p15, 0, r0, c7, c6, 1
-	add r0, r0, #0x20
-	cmp r0, r1
-	blt _020D2864
-	bx lr
-	arm_func_end DC_InvalidateRange
-
-	arm_func_start DC_StoreRange
-DC_StoreRange: ; 0x020D2878
-	add r1, r1, r0
-	bic r0, r0, #0x1f
-_020D2880:
-	mcr p15, 0, r0, c7, c10, 1
-	add r0, r0, #0x20
-	cmp r0, r1
-	blt _020D2880
-	bx lr
-	arm_func_end DC_StoreRange
-
-	arm_func_start DC_FlushRange
-DC_FlushRange: ; 0x020D2894
-	mov ip, #0
-	add r1, r1, r0
-	bic r0, r0, #0x1f
-_020D28A0:
-	mcr p15, 0, ip, c7, c10, 4
-	mcr p15, 0, r0, c7, c14, 1
-	add r0, r0, #0x20
-	cmp r0, r1
-	blt _020D28A0
-	bx lr
-	arm_func_end DC_FlushRange
-
-	arm_func_start sub_020D28B8
-sub_020D28B8: ; 0x020D28B8
-	mov r0, #0
-	mcr p15, 0, r0, c7, c10, 4
-	bx lr
-	arm_func_end sub_020D28B8
-
-	arm_func_start sub_020D28C4
-sub_020D28C4: ; 0x020D28C4
-	mov r0, #0
-	mcr p15, 0, r0, c7, c5, 0
-	bx lr
-	arm_func_end sub_020D28C4
-
-	arm_func_start IC_InvalidateRange
-IC_InvalidateRange: ; 0x020D28D0
-	add r1, r1, r0
-	bic r0, r0, #0x1f
-_020D28D8:
-	mcr p15, 0, r0, c7, c5, 1
-	add r0, r0, #0x20
-	cmp r0, r1
-	blt _020D28D8
-	bx lr
-	arm_func_end IC_InvalidateRange
 
 	arm_func_start sub_020D28EC
 sub_020D28EC: ; 0x020D28EC
@@ -13156,7 +13056,7 @@ _020DCE3C:
 	mov r0, r6
 	mov r1, r8
 	bl DC_FlushRange
-	bl sub_020D28B8
+	bl DC_WaitWriteBufferEmpty
 	ldr r0, [sb]
 	str r6, [r0, #0xc]
 	ldr r1, [sb, #0x20]
@@ -13653,7 +13553,7 @@ _020DD48C:
 	bl IC_InvalidateRange
 	b _020DD4E0
 _020DD4DC:
-	bl sub_020D28C4
+	bl IC_InvalidateAll
 _020DD4E0:
 	ldr r0, [r4, #0x11c]
 	cmp r5, r0
@@ -13672,7 +13572,7 @@ _020DD514:
 	mov r0, sb
 	mov r1, r5
 	bl DC_InvalidateRange
-	bl sub_020D28B8
+	bl DC_WaitWriteBufferEmpty
 	b _020DD52C
 _020DD528:
 	bl DC_FlushAll
@@ -14045,7 +13945,7 @@ _020DD9C4:
 	ldr r0, [sl]
 	mov r1, #0x60
 	bl DC_FlushRange
-	bl sub_020D28B8
+	bl DC_WaitWriteBufferEmpty
 	mov r7, #0xb
 	mov r6, #1
 	mov r5, r7
@@ -22926,8 +22826,8 @@ _01FF82EC:
 	bl DC_InvalidateAll
 	mov r0, r4
 	bl OS_RestoreInterrupts
-	bl sub_020D28C4
-	bl sub_020D28B8
+	bl IC_InvalidateAll
+	bl DC_WaitWriteBufferEmpty
 	add r6, r6, r5
 	cmp r6, #0x8000
 	bhs _01FF8344

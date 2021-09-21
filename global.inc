@@ -29233,7 +29233,7 @@
 .public DC_FlushAll
 .public DC_InvalidateRange
 .public DC_StoreRange
-.public sub_020D28B8
+.public DC_WaitWriteBufferEmpty
 .public sub_020D290C
 .public sub_020D2AEC
 .public sub_020D2BD0
