@@ -12,6 +12,7 @@ typedef struct CPContext {
 } CPContext;
 
 void CP_SaveContext(register CPContext *context);
+void CP_LoadContext(register CPContext *context);
 void CPi_RestoreContext(const CPContext* context);
 
 #endif //NITRO_CP_CONTEXT_H_

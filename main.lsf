@@ -255,6 +255,7 @@ Static main
 	Object os_spinLock.o
 	Object os_printf.o
 	Object os_thread.o
+	Object os_context.o
 	Object nitro.o
 	Object msl.o
 }

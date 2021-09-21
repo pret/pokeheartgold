@@ -1,8 +1,10 @@
 #ifndef NITRO_OS_SYSTEM_H_
 #define NITRO_OS_SYSTEM_H_
 
+#include <nitro/types.h>
 #include <nitro/hw/io_reg.h>
 #include <nitro/os/common/system_shared.h>
+#include <nitro/os/common/armArch.h>
 
 #ifdef SDK_ARM9
 #include <nitro/os/ARM9/system.h>
