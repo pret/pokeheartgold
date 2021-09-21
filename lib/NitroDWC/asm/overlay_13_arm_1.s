@@ -3971,7 +3971,7 @@ _0221F0E0:
 	mov r0, #0x180
 	mla r0, r5, r0, r1
 	mov r1, #0xc0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, _0221F634 ; =0x0224CF40
 	add r2, r4, #0x600
 	mov r0, #0x180
@@ -4003,7 +4003,7 @@ _0221F130:
 	mov r0, #0x180
 	mla r0, r5, r0, r1
 	mov r1, #0xc0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, _0221F634 ; =0x0224CF40
 	add r2, r4, #0x600
 	mov r0, #0x180

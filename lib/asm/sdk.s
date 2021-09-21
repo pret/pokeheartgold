@@ -7533,7 +7533,7 @@ _0209EC54:
 _0209EC5C:
 	mov r0, sl
 	mov r1, #1
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	cmp r7, #4
 	ldrb r0, [sl]
 	bne _0209EC8C
@@ -7602,7 +7602,7 @@ sub_0209ED38: ; 0x0209ED38
 	mov r6, r0
 	mov r0, r4
 	mov r5, r1
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	mov r8, #4
 	mov r7, #1
 _0209ED58:
@@ -7632,7 +7632,7 @@ _0209ED88:
 _0209EDB0:
 	mov r0, r4
 	mov r1, r5
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -7658,7 +7658,7 @@ _0209EDE0:
 	bl sub_020D6654
 	mov r0, r6
 	mov r1, r7
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r4, #0x40000
 	mov r5, #2
 _0209EE14:
@@ -10396,7 +10396,7 @@ sub_020A1090: ; 0x020A1090
 	mov r1, r7
 	bl OS_InitMessageQueue
 	add r0, r6, #0xe0
-	bl sub_020D2600
+	bl OS_InitMutex
 	ldrh r2, [r5]
 	add r0, r6, #0x20
 	ldr r1, _020A1100 ; =sub_020A0CFC
@@ -25611,7 +25611,7 @@ _020ADD78:
 	add r0, r0, #0x2000
 	ldrh r1, [r1, #0x8c]
 	ldr r0, [r0, #0x288]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r2, _020ADE44 ; =0x021D5FEC
 	ldr r0, _020ADE48 ; =sub_020AEDDC
 	ldr r1, [r2]
@@ -26022,7 +26022,7 @@ _020AE304:
 	bl sub_020DEB24
 	mov r5, r0
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldrh r0, [r5]
 	cmp r0, #0
 	beq _020AE334
@@ -26904,7 +26904,7 @@ _020AEE70:
 	add r0, r0, #0x2000
 	ldrh r1, [r1, #0x8c]
 	ldr r0, [r0, #0x288]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldrh r0, [r5, #0xe]
 	mov r4, #0
 	cmp r0, #0
@@ -26976,7 +26976,7 @@ _020AEF68:
 	add r0, r0, #0x2000
 	ldrh r1, [r1, #0x8c]
 	ldr r0, [r0, #0x288]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r2, _020AF098 ; =0x021D5FEC
 	ldr r0, _020AF0AC ; =sub_020AEDDC
 	ldr r1, [r2]
@@ -27374,7 +27374,7 @@ _020AF4E8:
 	bl sub_020B036C
 	ldr r0, [r4, #8]
 	mov r1, #0x620
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r4, #8]
 	bl sub_020AFE7C
 	ldmia sp!, {r4, pc}
@@ -28073,7 +28073,7 @@ sub_020AFE3C: ; 0x020AFE3C
 	str r2, [r1, #8]
 	ldr r0, _020AFE78 ; =0x021D5FFC
 	str r2, [r1, #4]
-	bl sub_020D2600
+	bl OS_InitMutex
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020AFE74: .word 0x021D5FF0

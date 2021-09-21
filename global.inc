@@ -29229,10 +29229,10 @@
 .public OS_SendMessage
 .public OS_ReceiveMessage
 .public OS_ReadMessage
-.public sub_020D2600
-.public sub_020D2828
-.public sub_020D285C
-.public sub_020D2878
+.public OS_InitMutex
+.public DC_FlushAll
+.public DC_InvalidateRange
+.public DC_StoreRange
 .public sub_020D28B8
 .public sub_020D290C
 .public sub_020D2AEC

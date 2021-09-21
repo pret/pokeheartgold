@@ -58,178 +58,15 @@ _021E18F8:
 
 	.public OS_InitIrqTable
 
-	arm_func_start sub_020D2600
-sub_020D2600: ; 0x020D2600
-	mov r1, #0
-	str r1, [r0, #4]
-	str r1, [r0]
-	str r1, [r0, #8]
-	str r1, [r0, #0xc]
-	bx lr
-	arm_func_end sub_020D2600
-
-	arm_func_start OS_LockMutex
-OS_LockMutex: ; 0x020D2618
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r5, r0
-	bl OS_DisableInterrupts
-	ldr r1, _020D2698 ; =0x021E16A0
-	mov r4, r0
-	ldr r7, [r1, #4]
-	mov r6, #0
-_020D2634:
-	ldr r0, [r5, #8]
-	cmp r0, #0
-	bne _020D2660
-	str r7, [r5, #8]
-	ldr r1, [r5, #0xc]
-	mov r0, r7
-	add r2, r1, #1
-	mov r1, r5
-	str r2, [r5, #0xc]
-	bl sub_020D27A8
-	b _020D268C
-_020D2660:
-	cmp r0, r7
-	bne _020D2678
-	ldr r0, [r5, #0xc]
-	add r0, r0, #1
-	str r0, [r5, #0xc]
-	b _020D268C
-_020D2678:
-	mov r0, r5
-	str r5, [r7, #0x84]
-	bl OS_SleepThread
-	str r6, [r7, #0x84]
-	b _020D2634
-_020D268C:
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
-_020D2698: .word 0x021E16A0
-	arm_func_end OS_LockMutex
-
-	arm_func_start OS_UnlockMutex
-OS_UnlockMutex: ; 0x020D269C
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	bl OS_DisableInterrupts
-	ldr r1, _020D26F4 ; =0x021E16A0
-	mov r4, r0
-	ldr r0, [r1, #4]
-	ldr r1, [r5, #8]
-	cmp r1, r0
-	bne _020D26E8
-	ldr r1, [r5, #0xc]
-	subs r1, r1, #1
-	str r1, [r5, #0xc]
-	bne _020D26E8
-	mov r1, r5
-	bl sub_020D27CC
-	mov r1, #0
-	mov r0, r5
-	str r1, [r5, #8]
-	bl OS_WakeupThread
-_020D26E8:
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
-_020D26F4: .word 0x021E16A0
-	arm_func_end OS_UnlockMutex
-
-	arm_func_start OSi_UnlockAllMutex
-OSi_UnlockAllMutex: ; 0x020D26F8
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	ldr r0, [r5, #0x88]
-	cmp r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-	mov r4, #0
-_020D2710:
-	add r0, r5, #0x88
-	bl OSi_RemoveMutexLinkFromQueue
-	str r4, [r0, #0xc]
-	str r4, [r0, #8]
-	bl OS_WakeupThread
-	ldr r0, [r5, #0x88]
-	cmp r0, #0
-	bne _020D2710
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end OSi_UnlockAllMutex
-
-	arm_func_start OS_TryLockMutex
-OS_TryLockMutex: ; 0x020D2734
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r5, r0
-	bl OS_DisableInterrupts
-	ldr r2, [r5, #8]
-	ldr r1, _020D27A4 ; =0x021E16A0
-	mov r4, r0
-	cmp r2, #0
-	ldr r0, [r1, #4]
-	bne _020D2778
-	str r0, [r5, #8]
-	ldr r2, [r5, #0xc]
-	mov r1, r5
-	add r2, r2, #1
-	str r2, [r5, #0xc]
-	bl sub_020D27A8
-	mov r6, #1
-	b _020D2794
-_020D2778:
-	cmp r2, r0
-	movne r6, #0
-	bne _020D2794
-	ldr r0, [r5, #0xc]
-	mov r6, #1
-	add r0, r0, #1
-	str r0, [r5, #0xc]
-_020D2794:
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	mov r0, r6
-	ldmia sp!, {r4, r5, r6, pc}
-	.align 2, 0
-_020D27A4: .word 0x021E16A0
-	arm_func_end OS_TryLockMutex
-
-	arm_func_start sub_020D27A8
-sub_020D27A8: ; 0x020D27A8
-	ldr r2, [r0, #0x8c]
-	cmp r2, #0
-	streq r1, [r0, #0x88]
-	strne r1, [r2, #0x10]
-	str r2, [r1, #0x14]
-	mov r2, #0
-	str r2, [r1, #0x10]
-	str r1, [r0, #0x8c]
-	bx lr
-	arm_func_end sub_020D27A8
-
-	arm_func_start sub_020D27CC
-sub_020D27CC: ; 0x020D27CC
-	ldr r2, [r1, #0x10]
-	ldr r1, [r1, #0x14]
-	cmp r2, #0
-	streq r1, [r0, #0x8c]
-	strne r1, [r2, #0x14]
-	cmp r1, #0
-	streq r2, [r0, #0x88]
-	strne r2, [r1, #0x10]
-	bx lr
-	arm_func_end sub_020D27CC
-
-	arm_func_start sub_020D27F0
-sub_020D27F0: ; 0x020D27F0
+	arm_func_start DC_InvalidateAll
+DC_InvalidateAll: ; 0x020D27F0
 	mov r0, #0
 	mcr p15, 0, r0, c7, c6, 0
 	bx lr
-	arm_func_end sub_020D27F0
+	arm_func_end DC_InvalidateAll
 
-	arm_func_start sub_020D27FC
-sub_020D27FC: ; 0x020D27FC
+	arm_func_start DC_StoreAll
+DC_StoreAll: ; 0x020D27FC
 	mov r1, #0
 _020D2800:
 	mov r0, #0
@@ -243,10 +80,10 @@ _020D2804:
 	cmp r1, #0
 	bne _020D2800
 	bx lr
-	arm_func_end sub_020D27FC
+	arm_func_end DC_StoreAll
 
-	arm_func_start sub_020D2828
-sub_020D2828: ; 0x020D2828
+	arm_func_start DC_FlushAll
+DC_FlushAll: ; 0x020D2828
 	mov ip, #0
 	mov r1, #0
 _020D2830:
@@ -262,10 +99,10 @@ _020D2834:
 	cmp r1, #0
 	bne _020D2830
 	bx lr
-	arm_func_end sub_020D2828
+	arm_func_end DC_FlushAll
 
-	arm_func_start sub_020D285C
-sub_020D285C: ; 0x020D285C
+	arm_func_start DC_InvalidateRange
+DC_InvalidateRange: ; 0x020D285C
 	add r1, r1, r0
 	bic r0, r0, #0x1f
 _020D2864:
@@ -274,10 +111,10 @@ _020D2864:
 	cmp r0, r1
 	blt _020D2864
 	bx lr
-	arm_func_end sub_020D285C
+	arm_func_end DC_InvalidateRange
 
-	arm_func_start sub_020D2878
-sub_020D2878: ; 0x020D2878
+	arm_func_start DC_StoreRange
+DC_StoreRange: ; 0x020D2878
 	add r1, r1, r0
 	bic r0, r0, #0x1f
 _020D2880:
@@ -286,7 +123,7 @@ _020D2880:
 	cmp r0, r1
 	blt _020D2880
 	bx lr
-	arm_func_end sub_020D2878
+	arm_func_end DC_StoreRange
 
 	arm_func_start DC_FlushRange
 DC_FlushRange: ; 0x020D2894
@@ -3979,7 +3816,7 @@ sub_020D54D0: ; 0x020D54D0
 	ldr r0, _020D5504 ; =0x021E1A44
 	mov r2, #1
 	str r2, [r1]
-	bl sub_020D2600
+	bl OS_InitMutex
 	bl sub_020D5530
 	bl sub_020D5C40
 	ldmia sp!, {r3, pc}
@@ -4643,7 +4480,7 @@ sub_020D5D04: ; 0x020D5D04
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #4
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, _020D5D2C ; =0x021E35A0
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
@@ -4659,7 +4496,7 @@ sub_020D5D30: ; 0x020D5D30
 	mov r1, #2
 	ldr r0, [r0]
 	add r0, r0, #8
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, _020D5D58 ; =0x021E35A0
 	ldr r0, [r0]
 	ldrh r0, [r0, #8]
@@ -4680,7 +4517,7 @@ sub_020D5D5C: ; 0x020D5D5C
 	add r0, r0, #0x20
 	add r0, r0, r4
 	add r0, r0, r5, lsl #1
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, _020D5DA0 ; =0x021E35A0
 	ldr r0, [r0]
 	add r0, r0, r4
@@ -4892,7 +4729,7 @@ sub_020D6040: ; 0x020D6040
 	ldr r0, _020D6064 ; =0x021E35A0
 	mov r1, #4
 	ldr r0, [r0]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, _020D6064 ; =0x021E35A0
 	ldr r0, [r0]
 	ldr r0, [r0]
@@ -4999,7 +4836,7 @@ _020D6188:
 	mov r1, #0x3c
 	str r0, [r2, #0x18]
 	ldr r0, [r3, #0x18]
-	bl sub_020D2878
+	bl DC_StoreRange
 	b _020D61E4
 _020D61B4:
 	cmp r0, #0
@@ -5015,7 +4852,7 @@ _020D61D0:
 	ldr r2, [r1, #0x1c]
 	mov r1, #8
 	str r2, [r0, #4]
-	bl sub_020D2878
+	bl DC_StoreRange
 _020D61E4:
 	add r0, r6, #0x18
 	ldr r1, [r4, #0x18]
@@ -5027,10 +4864,10 @@ _020D61E4:
 	bl sub_020D551C
 	mov r0, r6
 	mov r1, #0x3c
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r0, r4
 	mov r1, #0x3c
-	bl sub_020D2878
+	bl DC_StoreRange
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020D6154
 
@@ -5054,7 +4891,7 @@ _020D623C:
 	ldr r2, [r1, #0x1c]
 	mov r1, r4
 	str r2, [r0, #0x18]
-	bl sub_020D2878
+	bl DC_StoreRange
 	b _020D62A0
 _020D626C:
 	cmp r3, #0
@@ -5071,7 +4908,7 @@ _020D6288:
 	mov r0, r3
 	mov r1, r8
 	str r2, [r3, #4]
-	bl sub_020D2878
+	bl DC_StoreRange
 _020D62A0:
 	add r6, r6, #1
 	cmp r6, #4
@@ -5096,7 +4933,7 @@ _020D62D8:
 	mov r1, r4
 	str r5, [r0]
 	str r5, [r0, #4]
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r0, r6
 	cmp r6, #0
 	bne _020D62D8
@@ -5259,7 +5096,7 @@ sub_020D64D8: ; 0x020D64D8
 	add r0, r0, r5, lsl #2
 	mov r1, #4
 	str r4, [r2, #0x3c]
-	bl sub_020D2878
+	bl DC_StoreRange
 	bl sub_020D551C
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020D64D8
@@ -7910,7 +7747,7 @@ FS_ClearOverlayImage: ; 0x020D8764
 	bl IC_InvalidateRange
 	mov r0, r4
 	mov r1, r6
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	add r0, r4, r5
 	sub r2, r6, r5
 	mov r1, #0
@@ -10791,7 +10628,7 @@ _020DAE48:
 	cmp r3, #5
 	blt _020DAE48
 	ldr r0, _020DAE84 ; =0x021E3738
-	bl sub_020D2600
+	bl OS_InitMutex
 	ldr r1, _020DAE88 ; =0x027FFC3C
 	ldr r0, _020DAE78 ; =0x021E370C
 	ldr r1, [r1]
@@ -13304,7 +13141,7 @@ _020DCE08: ; jump table
 _020DCE18:
 	mov r0, r6
 	mov r1, r8
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, [sb, #0x1c]
 	ldr r0, [sb]
 	str r1, [r0, #0xc]
@@ -13826,19 +13663,19 @@ _020DD4E0:
 	sub sb, sb, sl
 	mov r0, sb
 	mov r1, #0x20
-	bl sub_020D2878
+	bl DC_StoreRange
 	add r0, sb, r5
 	mov r1, #0x20
-	bl sub_020D2878
+	bl DC_StoreRange
 	add r5, r5, #0x20
 _020DD514:
 	mov r0, sb
 	mov r1, r5
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	bl sub_020D28B8
 	b _020DD52C
 _020DD528:
-	bl sub_020D2828
+	bl DC_FlushAll
 _020DD52C:
 	ldr r1, _020DD56C ; =sub_020DD314
 	mov r0, #0x80000
@@ -14253,7 +14090,7 @@ _020DDA5C:
 	bl OS_RestoreInterrupts
 	ldr r0, [sl]
 	mov r1, #0x60
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [sl]
 	ldr r1, [r0]
 	cmp r1, #4
@@ -14924,7 +14761,7 @@ _020DE2E4:
 _020DE30C:
 	mov r0, r6
 	mov r1, r7
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	mov r0, r4
 	mov r1, r6
 	mov r3, r7
@@ -14985,7 +14822,7 @@ _020DE3EC:
 	mov r1, sb
 	add r0, sl, r6, lsl #8
 	strh r4, [sl, r2]
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r0, r8
 	mov r2, r7
 	add r1, sl, r6, lsl #8
@@ -15069,7 +14906,7 @@ sub_020DE4E0: ; 0x020DE4E0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [sp]
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, [sp]
 	ldrh r0, [r1]
 	tst r0, #0x8000
@@ -15114,7 +14951,7 @@ _020DE57C:
 _020DE598:
 	mov r0, r4
 	mov r1, #0x100
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r1, r4
 	mov r0, #0xa
 	mov r2, #0
@@ -15149,7 +14986,7 @@ sub_020DE5E4: ; 0x020DE5E4
 	bl MIi_CpuCopy8
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r1, r5
 	mov r0, #0xa
 	mov r2, #0
@@ -15198,7 +15035,7 @@ sub_020DE680: ; 0x020DE680
 	mov r1, #2
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #4]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, _020DE6C4 ; =0x021E4220
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #4]
@@ -15224,7 +15061,7 @@ sub_020DE6C8: ; 0x020DE6C8
 	mov r1, #2
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #4]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, _020DE758 ; =0x021E4220
 	ldr r3, [sp, #8]
 	ldr r0, [r0, #4]
@@ -15266,20 +15103,20 @@ sub_020DE75C: ; 0x020DE75C
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r0, [r4, #0x10]
 	mov r1, #0x100
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldrh r0, [r4, #0x16]
 	cmp r0, #0
 	bne _020DE7A0
 	ldr r0, [r4, #4]
 	mov r1, #0x800
-	bl sub_020D285C
+	bl DC_InvalidateRange
 _020DE7A0:
 	ldr r0, [r4, #0x10]
 	cmp sl, r0
 	beq _020DE7B8
 	mov r0, sl
 	mov r1, #0x100
-	bl sub_020D285C
+	bl DC_InvalidateRange
 _020DE7B8:
 	ldrh r0, [sl]
 	cmp r0, #0x2c
@@ -15312,7 +15149,7 @@ _020DE7F4:
 	ldr r1, [r4, #4]
 	ldr r0, [sl, #8]
 	ldrh r1, [r1, #0x72]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldrh r1, [sl, #6]
 	mov r0, sl
 	add r1, r4, r1, lsl #2
@@ -15346,7 +15183,7 @@ _020DE870:
 	ldr r1, [r4, #4]
 	ldr r0, [sl, #8]
 	ldrh r1, [r1, #0x72]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 _020DE8B0:
 	ldrh r1, [sl]
 	cmp r1, #2
@@ -15488,7 +15325,7 @@ _020DEAA0:
 _020DEAB4:
 	ldr r0, [r4, #0x10]
 	mov r1, #0x100
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	bl sub_020DEB08
 	ldr r0, [r4, #0x10]
 	cmp sl, r0
@@ -15499,7 +15336,7 @@ _020DEAB4:
 	mov r1, #0x100
 	orr r2, r2, #0x8000
 	strh r2, [sl]
-	bl sub_020D2878
+	bl DC_StoreRange
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -15668,7 +15505,7 @@ sub_020DECC4: ; 0x020DECC4
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r0, [r4, #4]
 	mov r1, #0x7d0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	mov r1, r5
 	mov r2, #0x7d0
@@ -15692,7 +15529,7 @@ sub_020DED10: ; 0x020DED10
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r0, r0, #0xc
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, [r4, #4]
 	ldr r0, [r1, #0xc]
 	cmp r0, #1
@@ -15700,7 +15537,7 @@ sub_020DED10: ; 0x020DED10
 	ldmeqia sp!, {r4, pc}
 	add r0, r1, #0x3c
 	mov r1, #4
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	ldrh r0, [r0, #0x3c]
 	add r0, r0, #0x1f
@@ -15723,7 +15560,7 @@ sub_020DED7C: ; 0x020DED7C
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r0, r0, #0xc
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, [r4, #4]
 	ldr r0, [r1, #0xc]
 	cmp r0, #1
@@ -15731,7 +15568,7 @@ sub_020DED7C: ; 0x020DED7C
 	ldmeqia sp!, {r3, r4, r5, pc}
 	add r0, r1, #0x188
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, [r4, #4]
 	add r0, r1, #0x100
 	ldrh r0, [r0, #0x88]
@@ -15740,7 +15577,7 @@ sub_020DED7C: ; 0x020DED7C
 	add r0, r1, #0x3e
 	mov r1, #2
 	movne r5, #0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	cmp r5, #1
 	ldrh r5, [r0, #0x3e]
@@ -15750,7 +15587,7 @@ sub_020DED7C: ; 0x020DED7C
 	ldmneia sp!, {r3, r4, r5, pc}
 	add r0, r0, #0xf8
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	add r1, r5, #0xc
 	ldrh r0, [r0, #0xf8]
@@ -15787,7 +15624,7 @@ _020DEE88:
 	mov r1, #2
 	add r0, r0, #0x82
 	add r0, r0, #0x100
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r6, #4]
 	mov r1, #1
 	add r0, r0, #0x100
@@ -15849,7 +15686,7 @@ sub_020DEF44: ; 0x020DEF44
 	ldmneia sp!, {r4, pc}
 	ldr r0, [r4, #4]
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, [r4, #4]
 	ldrh r0, [r1]
 	cmp r0, #9
@@ -15862,7 +15699,7 @@ _020DEF8C:
 	add r0, r1, #0x82
 	add r0, r0, #0x100
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, [r4, #4]
 	add r0, r1, #0x100
 	ldrh r0, [r0, #0x82]
@@ -15872,7 +15709,7 @@ _020DEF8C:
 _020DEFB4:
 	add r0, r1, #0xbc
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	ldrh r0, [r0, #0xbc]
 	ldmia sp!, {r4, pc}
@@ -16331,12 +16168,12 @@ _020DF584:
 	bl sub_020DE4C8
 	mov r0, r4
 	mov r1, #0x40
-	bl sub_020D2878
+	bl DC_StoreRange
 	ldrh r1, [r4, #4]
 	cmp r1, #0
 	beq _020DF5B8
 	ldr r0, [r4]
-	bl sub_020D2878
+	bl DC_StoreRange
 _020DF5B8:
 	mov r2, r4
 	mov r0, #7
@@ -16626,7 +16463,7 @@ sub_020DF94C: ; 0x020DF94C
 	ldrh r1, [r6]
 	mov r0, r6
 	mov r1, r1, lsl #1
-	bl sub_020D2878
+	bl DC_StoreRange
 	bl sub_020DE654
 	add r1, r0, #0x100
 	mov r2, #0
@@ -16699,7 +16536,7 @@ _020DFA90:
 	add r0, r1, #0x82
 	add r0, r0, #0x100
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r6, #4]
 	mov r1, #1
 	add r0, r0, #0x100
@@ -16747,10 +16584,10 @@ sub_020DFB00: ; 0x020DFB00
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	add r0, r4, #0x188
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	add r0, r4, #0xc6
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	add r0, r4, #0x100
 	ldrh r0, [r0, #0x88]
 	cmp r0, #0
@@ -16761,7 +16598,7 @@ sub_020DFB00: ; 0x020DFB00
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	add r0, r4, #0xc
 	mov r1, #4
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r4, #0xc]
 	cmp r0, #1
 	addeq sp, sp, #0x40
@@ -16778,7 +16615,7 @@ sub_020DFB00: ; 0x020DFB00
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	add r0, r4, #0x9c
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldrh r0, [r4, #0x9c]
 	cmp r0, #0
 	bne _020DFBF8
@@ -16921,7 +16758,7 @@ sub_020DFD7C: ; 0x020DFD7C
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	add r0, r5, #0x188
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	add r0, r5, #0x100
 	ldrh r0, [r0, #0x88]
 	cmp r0, #0
@@ -16929,12 +16766,12 @@ sub_020DFD7C: ; 0x020DFD7C
 	add r0, r5, #0x82
 	add r0, r0, #0x100
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	add r2, r5, #0x100
 	add r0, r5, #0x86
 	mov r1, #2
 	ldrh r4, [r2, #0x82]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 _020DFDFC:
 	cmp r7, #0
 	addeq sp, sp, #0x14
@@ -16946,7 +16783,7 @@ _020DFDFC:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	add r0, r5, #0x7c
 	mov r1, #2
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r5, #0x7c]
 	cmp r7, r0
 	addeq sp, sp, #0x14
@@ -16962,7 +16799,7 @@ _020DFDFC:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
 	mov r1, r6
-	bl sub_020D2878
+	bl DC_StoreRange
 	ldrh r2, [sp, #0x30]
 	ldrh r1, [sp, #0x34]
 	ldrh r0, [sp, #0x38]
@@ -16997,7 +16834,7 @@ sub_020DFEAC: ; 0x020DFEAC
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r0, r0, #0xc
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	cmp r0, #0
@@ -17030,7 +16867,7 @@ sub_020DFF1C: ; 0x020DFF1C
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r0, r0, #0x10
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x10]
 	cmp r0, #1
@@ -17044,7 +16881,7 @@ sub_020DFF1C: ; 0x020DFF1C
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
 	mov r1, r5
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r1, r7
 	mov r0, #0x11
 	bl sub_020DE4C8
@@ -17077,7 +16914,7 @@ sub_020DFFBC: ; 0x020DFFBC
 	ldr r0, [r8, #4]
 	mov r1, #4
 	add r0, r0, #0x10
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r8, #4]
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
@@ -17091,7 +16928,7 @@ sub_020DFFBC: ; 0x020DFFBC
 	ldmhiia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r1, r7
 	mov r0, #0x12
 	bl sub_020DE4C8
@@ -17128,7 +16965,7 @@ sub_020E0088: ; 0x020E0088
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r0, r0, #0x10
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
@@ -17998,7 +17835,7 @@ sub_020E0C9C: ; 0x020E0C9C
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r4
 	mov r1, #0x50
-	bl sub_020D2878
+	bl DC_StoreRange
 _020E0CE4:
 	mov r1, r6
 	mov r0, #0x14
@@ -18033,7 +17870,7 @@ sub_020E0D10: ; 0x020E0D10
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r4
 	mov r1, #0x50
-	bl sub_020D2878
+	bl DC_StoreRange
 _020E0D5C:
 	mov r1, r7
 	mov r0, #0x27
@@ -18078,7 +17915,7 @@ sub_020E0D8C: ; 0x020E0D8C
 	bl MIi_CpuCopy16
 	ldr r0, _020E0E40 ; =0x021E4CC0
 	mov r1, r5
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r1, r7
 	mov r0, #0x18
 	bl sub_020DE4C8
@@ -18907,7 +18744,7 @@ sub_020E1798: ; 0x020E1798
 	mov r1, #0x40
 	bic r2, r2, #0x8000
 	strh r2, [r3]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r2, _020E1974 ; =0x021E4D80
 	ldr r1, _020E1978 ; =0x08000080
 	mov r0, #1
@@ -18965,7 +18802,7 @@ _020E18F8:
 	ldr r1, _020E1988 ; =0x021E4D84
 	mov r2, #0x9c
 	bl MIi_CpuCopy32
-	bl sub_020D2828
+	bl DC_FlushAll
 	ldr r0, _020E1974 ; =0x021E4D80
 	add r0, r0, #0xfe000000
 	mov r0, r0, lsr #5
@@ -23085,8 +22922,8 @@ _01FF82EC:
 	ldr sl, [r0, #0x1c]
 	bl OS_DisableInterrupts
 	mov r4, r0
-	bl sub_020D27FC
-	bl sub_020D27F0
+	bl DC_StoreAll
+	bl DC_InvalidateAll
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	bl sub_020D28C4

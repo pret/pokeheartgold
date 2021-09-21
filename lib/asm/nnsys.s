@@ -4180,7 +4180,7 @@ _020B7F14:
 	mov r1, r4
 	add r6, r2, r0, lsl #3
 	mov r0, r6
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, _020B7FE0 ; =GXi_DmaId
 	mvn r1, #0
 	ldr r0, [r0]
@@ -22732,7 +22732,7 @@ _020C79CC:
 	ldr r1, _020C7A90 ; =0x000011E0
 	ldrsb r2, [r0]
 	mla r0, r2, r1, r3
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	mov r0, #0
 	bl sub_020D57D4
 	mov r0, #1
@@ -25973,7 +25973,7 @@ sub_020CA220: ; 0x020CA220
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	mov r0, r4
 	mov r1, r5
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r0, r4
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
@@ -26173,7 +26173,7 @@ _020CA4DC:
 	bl MI_CpuFill8
 	mov r0, r5
 	add r1, r4, #0x3c
-	bl sub_020D2878
+	bl DC_StoreRange
 	cmp r7, #0
 	beq _020CA564
 	mov r0, sb
@@ -26340,7 +26340,7 @@ sub_020CA6C0: ; 0x020CA6C0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r5
 	mov r1, sb
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r0, r8
 	mov r1, r7
 	mov r2, r5

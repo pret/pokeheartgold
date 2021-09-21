@@ -6419,7 +6419,7 @@ _02221714: .word 0x02225EC0
 ov38_02221718: ; 0x02221718
 	stmdb sp!, {r3, lr}
 	ldr r0, _0222172C ; =0x022261F8
-	bl sub_020D2600
+	bl OS_InitMutex
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -6455,7 +6455,7 @@ _02221758: .word 0x022261F8
 ov38_0222175C: ; 0x0222175C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0222177C ; =0x022261E0
-	bl sub_020D2600
+	bl OS_InitMutex
 	ldr r0, _02221780 ; =0x022261DC
 	mov r1, #0
 	str r1, [r0]
@@ -7180,7 +7180,7 @@ _02222018: .word 0x02226230
 ov38_0222201C: ; 0x0222201C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02222030 ; =0x02226AF8
-	bl sub_020D2600
+	bl OS_InitMutex
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.balign 4, 0

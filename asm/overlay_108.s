@@ -6861,7 +6861,7 @@ _021E8F68:
 	ldr r1, [r5, #8]
 	add r0, #0x10
 	bl NNS_G3dRenderObjInit
-	bl sub_020D2828
+	bl DC_FlushAll
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #0xb4

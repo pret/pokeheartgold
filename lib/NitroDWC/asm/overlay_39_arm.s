@@ -497,7 +497,7 @@ _02229920: .word 0x0222AEB8
 ov39_02229924: ; 0x02229924
 	stmdb sp!, {r3, lr}
 	ldr r0, _02229938 ; =0x0222AEB8
-	bl sub_020D2600
+	bl OS_InitMutex
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.balign 4, 0

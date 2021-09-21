@@ -258,6 +258,7 @@ Static main
 	Object os_context.o
 	Object os_emulator.o
 	Object os_message.o
+	Object os_mutex.o
 	Object nitro.o
 	Object msl.o
 }

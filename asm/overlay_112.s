@@ -3562,7 +3562,7 @@ ov112_021E73C8: ; 0x021E73C8
 	bl sub_020DDC70
 _021E7414:
 	ldr r0, _021E7450 ; =0x021FFB08
-	bl sub_020D2600
+	bl OS_InitMutex
 	ldr r0, _021E7454 ; =0x021FFB20
 	ldr r1, _021E7458 ; =0x021FFAC0
 	mov r2, #1

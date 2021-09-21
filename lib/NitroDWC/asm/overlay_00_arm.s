@@ -99,7 +99,7 @@ ov00_021E7C94: ; 0x021E7C94
 	ldr r0, [r0, #8]
 	add r0, r0, #0x3d8
 	add r0, r0, #0x1000
-	bl sub_020D2600
+	bl OS_InitMutex
 	ldr r1, _021E7D3C ; =_0221A694
 	mov r2, #0
 	ldr r0, [r1, #8]
@@ -1158,7 +1158,7 @@ _021E8A84:
 	bl sub_020AFF20
 	mov r7, r0
 	mov r1, #6
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	cmp r7, #0
 	bne _021E8B88
 	mov r0, r6
@@ -1196,7 +1196,7 @@ _021E8BD0:
 	bl sub_020AFF64
 	mov r5, r0
 	mov r1, #0x20
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	cmp r5, #0
 	bne _021E8C10
 	mov r0, r6
@@ -1575,10 +1575,10 @@ ov00_021E9154: ; 0x021E9154
 	add r0, r0, #0x1800
 	mov r4, r1
 	str r3, [r2, #0xc10]
-	bl sub_020D2600
+	bl OS_InitMutex
 	add r0, r5, #0x218
 	add r0, r0, #0x1800
-	bl sub_020D2600
+	bl OS_InitMutex
 	add r0, r5, #0x1000
 	ldr r0, [r0, #0x18]
 	cmp r0, #1
@@ -2912,7 +2912,7 @@ ov00_021EA340: ; 0x021EA340
 	ldr r0, [r1]
 	add r0, r0, #0x1dc
 	add r0, r0, #0x1000
-	bl sub_020D2600
+	bl OS_InitMutex
 	bl ov00_021EA5D8
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -5743,7 +5743,7 @@ _021ECA40:
 	bl sub_020AFF20
 	mov r5, r0
 	mov r1, #6
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	cmp r5, #0
 	bne _021ECA74
 	mov r0, r6
@@ -5765,7 +5765,7 @@ _021ECA74:
 	bl sub_020AFF64
 	mov r5, r0
 	mov r1, #0x20
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	cmp r5, #0
 	bne _021ECAC8
 	mov r0, r6
@@ -22626,7 +22626,7 @@ _021FAF40:
 	movs r4, r0
 	beq _021FAF78
 	mov r1, #0x20
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, _021FAFC4 ; =_0221B0AC
 	mov r0, r4
 	ldr r1, [r1, #0xc]
@@ -25681,7 +25681,7 @@ ov00_021FD6E4: ; 0x021FD6E4
 	ldr r0, [r1]
 	mov r1, #0x400
 	add r0, r0, #0xf00
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldrh r0, [r6, #2]
 	cmp r0, #0
 	ldreqh r0, [r6, #8]

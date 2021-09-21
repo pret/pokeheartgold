@@ -101,7 +101,7 @@ _020328DC:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #4
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	mov r0, #0x66
 	mov r1, #0
 	lsl r0, r0, #2
@@ -703,7 +703,7 @@ _02032D84:
 	sub r0, #0xf0
 	add r0, r2, r0
 	mov r1, #0xc0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, _02032E14 ; =_021D4124
 	ldr r1, [r0, #4]
 	ldr r0, _02032E1C ; =0x00001320

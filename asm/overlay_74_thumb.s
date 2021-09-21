@@ -18358,7 +18358,7 @@ _0223036E:
 _02230372:
 	add r0, r4, #0
 	mov r1, #0xc0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	bl ov74_02231154
 	bl ov74_02231454
 	ldrh r0, [r6, #0x36]
@@ -18493,7 +18493,7 @@ ov74_02230478: ; 0x02230478
 _0223049A:
 	add r0, r4, #0
 	mov r1, #0xc0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	bl ov74_02231154
 	bl ov74_02231454
 	ldrh r0, [r4, #0x3c]
@@ -31111,7 +31111,7 @@ _022363A6:
 	lsl r0, r0, #8
 	add r0, r1, r0
 	mov r1, #0xc0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldrh r0, [r4, #0x36]
 	cmp r0, #8
 	blo _022363CE

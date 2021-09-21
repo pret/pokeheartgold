@@ -23460,7 +23460,7 @@ ov13_02239DC4: ; 0x02239DC4
 	add r0, r2, #0xf00
 	add r2, r2, #0x1300
 	str r2, [sp]
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldrh r0, [fp, #0xe]
 	mov sl, #0
 	cmp r0, #0
@@ -25708,7 +25708,7 @@ _0223BAE4:
 	ldr r6, [r0, #0x10]
 	mov r1, #0xc0
 	mov r0, r6
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r1, _0223BC18 ; =0x02245828
 	add r0, r6, #0xc
 	mov r2, #8
@@ -25810,7 +25810,7 @@ ov13_0223BC24: ; 0x0223BC24
 _0223BC58:
 	add r0, r2, #0xf00
 	mov r1, #0x400
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldrh fp, [sl, #0xe]
 	mov r6, #0
 	cmp fp, #0
