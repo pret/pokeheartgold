@@ -1,10 +1,11 @@
 // Character mapping for Pokémon HeartGold and SoulSilver
-// Version 2021.08.17
-// Format is HEXCODE=<character> or HEXCODE={<command>}
+// Version 2021.09.22
+// Most of these are just unused characters from the Japanese version
 // Comments are preceded by double forward slashes as in C99 and C++.
 // Leading spaces and tabs are ignored; trailing spaces and tabs are not.
 
 0000=\x0000
+// Unused foreign characters
 0001=　
 0002=ぁ
 0003=あ
@@ -166,6 +167,7 @@
 009F=ワ
 00A0=ヲ
 00A1=ン
+// Widespace English characters for other language releases. Still used by the US releases, however
 00A2=０
 00A3=１
 00A4=２
@@ -253,6 +255,7 @@
 00F7=；
 00F8=．
 00F9=，
+// Icons, likely used on the naming screen
 00FA=♤
 00FB=♧
 00FC=♡
@@ -292,6 +295,7 @@
 011E=→
 011F=‣
 0120=＆
+// Common English characters. Not sure where these are used, but they're here anyway.
 0121=0
 0122=1
 0123=2
@@ -354,6 +358,7 @@
 015C=x
 015D=y
 015E=z
+// Accented letters, used for online play with players using these characters in a name.
 015F=À
 0160=Á
 0161=Â
@@ -457,6 +462,7 @@
 01C3=~
 01C4=:
 01C5=;
+// More icons
 01C6=♠
 01C7=♣
 01C8=♥
@@ -489,6 +495,7 @@
 01E8=°
 01E9=_
 01EA=＿
+// More foreign characters, presumably Korean
 0400=가
 0401=각
 0402=간
@@ -2858,6 +2865,7 @@
 0D41=ᄐ
 0D42=ᄑ
 0D43=ᄒ
+// Other characters
 0D44=ᅡ
 0D45=ᅢ
 0D46=ᅣ
