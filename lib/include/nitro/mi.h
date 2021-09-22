@@ -6,4 +6,6 @@
 #include <nitro/mi/swap.h>
 #include <nitro/mi/dma.h>
 
+void MI_Init(void);
+
 #endif //NITRO_MI_H_

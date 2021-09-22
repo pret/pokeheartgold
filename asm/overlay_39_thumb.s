@@ -1849,7 +1849,7 @@ ov39_02227DEC: ; 0x02227DEC
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D2C8C
+	bl OS_SetArenaLo
 	add r2, r5, r6
 	add r4, #0x1f
 	mov r0, #0x1f

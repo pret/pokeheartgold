@@ -3,9 +3,11 @@
 
 #include <nitro/hw/io_reg_shared.h>
 
+#define REG_VCOUNT_OFFSET          0x6
+
 #define reg_GX_DISPCNT             (*(REGType32v *)0x4000000)
 #define reg_GX_DISPSTAT            (*(REGType16v *)0x4000004)
-#define reg_GX_VCOUNT              (*(REGType16v *)0x4000006)
+#define reg_GX_VCOUNT              (*(REGType16v *)(HW_REG_BASE + REG_VCOUNT_OFFSET))
 
 #define reg_G2_BG0CNT              (*(REGType16v *)0x4000008)
 #define reg_G2_BG1CNT              (*(REGType16v *)0x400000a)

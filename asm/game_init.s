@@ -222,7 +222,7 @@ _0201A1FC: .word _020F62A4
 	thumb_func_start InitSystemForTheGame
 InitSystemForTheGame: ; 0x0201A200
 	push {r3, r4, r5, lr}
-	bl sub_020D290C
+	bl OS_Init
 	bl FX_Init
 	ldr r2, _0201A324 ; =0x04000304
 	ldr r0, _0201A328 ; =0xFFFFFDF1

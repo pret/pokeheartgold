@@ -3463,7 +3463,7 @@ _021E7338: .word 0x000010E6
 ov00_021E733C: ; 0x021E733C
 	push {r3, r4, r5, lr}
 	bl MIC_Init
-	bl sub_020DADE8
+	bl PM_Init
 	mov r0, #1
 	bl PM_SetAmp
 	mov r0, #3

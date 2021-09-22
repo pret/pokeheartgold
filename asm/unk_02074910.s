@@ -68596,15 +68596,15 @@ _02096346:
 	mov r1, #1
 	str r1, [r0]
 	mov r0, #0
-	bl sub_020D2AEC
+	bl OS_GetInitArenaHi
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_020D2C78
+	bl OS_SetArenaHi
 	mov r0, #0
-	bl sub_020D2BD0
+	bl OS_GetInitArenaLo
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_020D2C8C
+	bl OS_SetArenaLo
 	mov r1, #1
 	ldr r0, _0209654C ; =0x02108528
 	add r2, r1, #0

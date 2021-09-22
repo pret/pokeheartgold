@@ -25,6 +25,7 @@
 #define HW_ARENA_INFO_BUF       (HW_MAIN_MEM + 0x007ffda0)
 #define HW_CTRDG_LOCK_BUF       (HW_MAIN_MEM + 0x007fffe8)
 #define HW_INIT_LOCK_BUF        (HW_MAIN_MEM + 0x007ffff0)
+#define HW_MAIN_MEM_MAIN        (HW_MAIN_MEM)
 #define HW_MAIN_MEM_MAIN_END    (HW_MAIN_MEM + HW_MAIN_MEM_MAIN_SIZE)
 
 #define HW_SVC_STACK_SIZE       0x00000040

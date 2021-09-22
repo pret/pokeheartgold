@@ -8,6 +8,10 @@
 #ifndef NITRO_HW_IO_REG_SHARED_H_
 #define NITRO_HW_IO_REG_SHARED_H_
 
+#define HW_REG_BASE                0x04000000
+
+#define REG_IME_OFFSET             0x208
+
 #define reg_OS_TM0CNT_L            (*(REGType16v *)0x4000100)
 #define reg_OS_TM0CNT_H            (*(REGType16v *)0x4000102)
 #define reg_OS_TM1CNT_L            (*(REGType16v *)0x4000104)
@@ -17,7 +21,7 @@
 #define reg_OS_TM3CNT_L            (*(REGType16v *)0x400010c)
 #define reg_OS_TM3CNT_H            (*(REGType16v *)0x400010e)
 
-#define reg_OS_IME                 (*(REGType16v *)0x4000208)
+#define reg_OS_IME                 (*(REGType16v *)(HW_REG_BASE + REG_IME_OFFSET))
 #define reg_OS_IE                  (*(REGType32v *)0x4000210)
 #define reg_OS_IF                  (*(REGType32v *)0x4000214)
 

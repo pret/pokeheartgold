@@ -68,5 +68,6 @@ OSIrqMask OS_SetIrqMask(OSIrqMask mask);
 OSIrqMask OS_EnableIrqMask(OSIrqMask mask);
 OSIrqMask OS_DisableIrqMask(OSIrqMask mask);
 OSIrqMask OS_ResetRequestIrqMask(OSIrqMask mask);
+void OS_SetIrqStackChecker(void);
 
 #endif //NITRO_SUB_OS_INTERRUPT_H

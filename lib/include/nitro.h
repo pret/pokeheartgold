@@ -8,5 +8,9 @@
 #include <nitro/fs.h>
 #include <nitro/mi.h>
 #include <nitro/std.h>
+#include <nitro/pm.h>
+#include <nitro/pxi.h>
+#include <nitro/card.h>
+#include <nitro/ctrdg.h>
 
 #endif //NITRO_H_

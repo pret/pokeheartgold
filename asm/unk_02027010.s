@@ -21,7 +21,7 @@ _02027020:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0202704A
-	bl sub_020DD84C
+	bl CARD_Init
 	mov r2, #0x16
 	ldr r0, _02027080 ; =0x027FFE00
 	ldr r1, _02027084 ; =0x027FF000

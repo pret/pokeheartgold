@@ -6618,7 +6618,7 @@ sub_0209E00C: ; 0x0209E00C
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
-	bl sub_020D6548
+	bl PXI_Init
 	mov r0, #0xf
 	mov r1, #1
 	bl sub_020D66A0
@@ -6780,7 +6780,7 @@ sub_0209E248: ; 0x0209E248
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
-	bl sub_020D6548
+	bl PXI_Init
 	mov r0, #0xf
 	mov r1, #1
 	bl sub_020D66A0

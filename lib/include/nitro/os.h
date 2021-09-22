@@ -12,5 +12,10 @@
 #include <nitro/os/spinLock.h>
 #include <nitro/os/printf.h>
 #include <nitro/os/init.h>
+#include <nitro/os/exception.h>
+#include <nitro/os/valarm.h>
+#include <nitro/os/vramExclusive.h>
+#include <nitro/os/emulator.h>
+#include <nitro/os/protectionRegion.h>
 
 #endif //NITRO_OS_H_

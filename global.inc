@@ -29234,11 +29234,11 @@
 .public DC_InvalidateRange
 .public DC_StoreRange
 .public DC_WaitWriteBufferEmpty
-.public sub_020D290C
-.public sub_020D2AEC
-.public sub_020D2BD0
-.public sub_020D2C78
-.public sub_020D2C8C
+.public OS_Init
+.public OS_GetInitArenaHi
+.public OS_GetInitArenaLo
+.public OS_SetArenaHi
+.public OS_SetArenaLo
 .public sub_020D2FC4
 .public sub_020D2FF4
 .public sub_020D309C
@@ -29321,7 +29321,7 @@
 .public sub_020D64D0
 .public sub_020D64D8
 .public sub_020D650C
-.public sub_020D6548
+.public PXI_Init
 .public sub_020D6654
 .public sub_020D66A0
 .public sub_020D66C4
@@ -29360,7 +29360,7 @@
 .public sub_020DA9CC
 .public sub_020DAA60
 .public sub_020DAA98
-.public sub_020DADE8
+.public PM_Init
 .public sub_020DB774
 .public sub_020DB7F8
 .public sub_020DB868
@@ -29379,7 +29379,7 @@
 .public sub_020DC9DC
 .public sub_020DD1B0
 .public sub_020DD754
-.public sub_020DD84C
+.public CARD_Init
 .public sub_020DDC70
 .public sub_020DDC80
 .public sub_020DDCF4
@@ -29443,7 +29443,7 @@
 .public sub_020E140C
 .public sub_020E1570
 .public sub_020E1678
-.public sub_020E16E4
+.public CTRDG_Init
 .public sub_020E1A14
 .public sub_020E1A3C
 .public sub_020E219C

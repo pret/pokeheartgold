@@ -17,5 +17,6 @@
 #include <nitro/os/message.h>
 
 void OS_Init(void);
+void OS_InitArenaEx(void);
 
 #endif //NITRO_SUB_OS_INIT_H

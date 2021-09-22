@@ -17,8 +17,8 @@
 	.public OSi_GetUnusedThreadId
 	.public OSi_InsertLinkToQueue
 
-_021E18F8:
-	.space 0x3A98
+_021E1900:
+	.space 0x3A90
 
 	.text
 
@@ -64,368 +64,9 @@ _021E18F8:
 	.public IC_InvalidateAll
 
 	.public OS_InitIrqTable
-
-	arm_func_start sub_020D28EC
-sub_020D28EC: ; 0x020D28EC
-	mov ip, #0x4000000
-	ldr r1, [ip, #0x208]
-	str ip, [ip, #0x208]
-_020D28F8:
-	ldrh r0, [ip, #6]
-	cmp r0, #0
-	bne _020D28F8
-	str r1, [ip, #0x208]
-	bx lr
-	arm_func_end sub_020D28EC
-
-	arm_func_start sub_020D290C
-sub_020D290C: ; 0x020D290C
-	stmdb sp!, {r3, lr}
-	bl sub_020D2954
-	bl sub_020D6548
-	bl OS_InitLock
-	bl sub_020D2A58
-	bl OS_InitIrqTable
-	bl OS_SetIrqStackChecker
-	bl sub_020D31A0
-	bl sub_020D502C
-	bl sub_020D39DC
-	bl sub_020D3CFC
-	bl OS_InitThread
-	bl sub_020D3AD0
-	bl sub_020E16E4
-	bl sub_020DD84C
-	bl sub_020DADE8
-	bl sub_020D28EC
-	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D290C
-
-	arm_func_start sub_020D2954
-sub_020D2954: ; 0x020D2954
-	stmdb sp!, {r3, lr}
-	ldr r1, _020D2A54 ; =0x021E18F8
-	ldr r0, [r1]
-	cmp r0, #0
-	ldmneia sp!, {r3, pc}
-	mov r2, #1
-	mov r0, #0
-	str r2, [r1]
-	bl sub_020D2AEC
-	mov r1, r0
-	mov r0, #0
-	bl sub_020D2C78
-	mov r0, #0
-	bl sub_020D2BD0
-	mov r1, r0
-	mov r0, #0
-	bl sub_020D2C8C
-	mov r0, #2
-	mov r1, #0
-	bl sub_020D2C8C
-	mov r0, #2
-	mov r1, #0
-	bl sub_020D2C78
-	mov r0, #3
-	bl sub_020D2AEC
-	mov r1, r0
-	mov r0, #3
-	bl sub_020D2C78
-	mov r0, #3
-	bl sub_020D2BD0
-	mov r1, r0
-	mov r0, #3
-	bl sub_020D2C8C
-	mov r0, #4
-	bl sub_020D2AEC
-	mov r1, r0
-	mov r0, #4
-	bl sub_020D2C78
-	mov r0, #4
-	bl sub_020D2BD0
-	mov r1, r0
-	mov r0, #4
-	bl sub_020D2C8C
-	mov r0, #5
-	bl sub_020D2AEC
-	mov r1, r0
-	mov r0, #5
-	bl sub_020D2C78
-	mov r0, #5
-	bl sub_020D2BD0
-	mov r1, r0
-	mov r0, #5
-	bl sub_020D2C8C
-	mov r0, #6
-	bl sub_020D2AEC
-	mov r1, r0
-	mov r0, #6
-	bl sub_020D2C78
-	mov r0, #6
-	bl sub_020D2BD0
-	mov r1, r0
-	mov r0, #6
-	bl sub_020D2C8C
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_020D2A54: .word 0x021E18F8
-	arm_func_end sub_020D2954
-
-	arm_func_start sub_020D2A58
-sub_020D2A58: ; 0x020D2A58
-	stmdb sp!, {r3, lr}
-	mov r0, #2
-	bl sub_020D2AEC
-	mov r1, r0
-	mov r0, #2
-	bl sub_020D2C78
-	mov r0, #2
-	bl sub_020D2BD0
-	mov r1, r0
-	mov r0, #2
-	bl sub_020D2C8C
-	ldr r0, _020D2AB8 ; =0x021E18F8
-	ldr r0, [r0, #4]
-	cmp r0, #0
-	beq _020D2AA4
-	bl OS_GetConsoleType
-	and r0, r0, #3
-	cmp r0, #1
-	ldmneia sp!, {r3, pc}
-_020D2AA4:
-	ldr r0, _020D2ABC ; =0x0200002B
-	bl sub_020D3190
-	ldr r0, _020D2AC0 ; =0x023E0021
-	bl sub_020D3198
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_020D2AB8: .word 0x021E18F8
-_020D2ABC: .word 0x0200002B
-_020D2AC0: .word 0x023E0021
-	arm_func_end sub_020D2A58
-
-	arm_func_start sub_020D2AC4
-sub_020D2AC4: ; 0x020D2AC4
-	mov r0, r0, lsl #2
-	add r0, r0, #0x2700000
-	add r0, r0, #0xff000
-	ldr r0, [r0, #0xdc4]
-	bx lr
-	arm_func_end sub_020D2AC4
-
-	arm_func_start sub_020D2AD8
-sub_020D2AD8: ; 0x020D2AD8
-	mov r0, r0, lsl #2
-	add r0, r0, #0x2700000
-	add r0, r0, #0xff000
-	ldr r0, [r0, #0xda0]
-	bx lr
-	arm_func_end sub_020D2AD8
-
-	arm_func_start sub_020D2AEC
-sub_020D2AEC: ; 0x020D2AEC
-	stmdb sp!, {r3, lr}
-	cmp r0, #6
-	addls pc, pc, r0, lsl #2
-	b _020D2BA8
-_020D2AFC: ; jump table
-	b _020D2B18 ; case 0
-	b _020D2BA8 ; case 1
-	b _020D2B20 ; case 2
-	b _020D2B50 ; case 3
-	b _020D2B58 ; case 4
-	b _020D2B98 ; case 5
-	b _020D2BA0 ; case 6
-_020D2B18:
-	ldr r0, _020D2BB0 ; =0x023E0000
-	ldmia sp!, {r3, pc}
-_020D2B20:
-	ldr r0, _020D2BB4 ; =0x021E18F8
-	ldr r0, [r0, #4]
-	cmp r0, #0
-	beq _020D2B40
-	bl OS_GetConsoleType
-	and r0, r0, #3
-	cmp r0, #1
-	bne _020D2B48
-_020D2B40:
-	mov r0, #0
-	ldmia sp!, {r3, pc}
-_020D2B48:
-	mov r0, #0x2700000
-	ldmia sp!, {r3, pc}
-_020D2B50:
-	mov r0, #0x2000000
-	ldmia sp!, {r3, pc}
-_020D2B58:
-	ldr r0, _020D2BB8 ; =OS_IRQTable
-	ldr r1, _020D2BBC ; =0x00000000
-	ldr r2, _020D2BC0 ; =0x00000800
-	add r3, r0, #0x3f80
-	cmp r1, #0
-	sub r2, r3, r2
-	bne _020D2B84
-	ldr r1, _020D2BC4 ; =0x027E0080
-	cmp r0, r1
-	movlo r0, r1
-	ldmia sp!, {r3, pc}
-_020D2B84:
-	cmp r1, #0
-	ldrlt r0, _020D2BC4 ; =0x027E0080
-	sublt r0, r0, r1
-	subge r0, r2, r1
-	ldmia sp!, {r3, pc}
-_020D2B98:
-	ldr r0, _020D2BC8 ; =0x027FF680
-	ldmia sp!, {r3, pc}
-_020D2BA0:
-	ldr r0, _020D2BCC ; =0x037F8000
-	ldmia sp!, {r3, pc}
-_020D2BA8:
-	mov r0, #0
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_020D2BB0: .word 0x023E0000
-_020D2BB4: .word 0x021E18F8
-_020D2BB8: .word OS_IRQTable
-_020D2BBC: .word 0x00000000
-_020D2BC0: .word 0x00000800
-_020D2BC4: .word 0x027E0080
-_020D2BC8: .word 0x027FF680
-_020D2BCC: .word 0x037F8000
-	arm_func_end sub_020D2AEC
-
-	arm_func_start sub_020D2BD0
-sub_020D2BD0: ; 0x020D2BD0
-	stmdb sp!, {r3, lr}
-	cmp r0, #6
-	addls pc, pc, r0, lsl #2
-	b _020D2C54
-_020D2BE0: ; jump table
-	b _020D2BFC ; case 0
-	b _020D2C54 ; case 1
-	b _020D2C04 ; case 2
-	b _020D2C34 ; case 3
-	b _020D2C3C ; case 4
-	b _020D2C44 ; case 5
-	b _020D2C4C ; case 6
-_020D2BFC:
-	ldr r0, _020D2C5C ; =0x0226EC40
-	ldmia sp!, {r3, pc}
-_020D2C04:
-	ldr r0, _020D2C60 ; =0x021E18F8
-	ldr r0, [r0, #4]
-	cmp r0, #0
-	beq _020D2C24
-	bl OS_GetConsoleType
-	and r0, r0, #3
-	cmp r0, #1
-	bne _020D2C2C
-_020D2C24:
-	mov r0, #0
-	ldmia sp!, {r3, pc}
-_020D2C2C:
-	ldr r0, _020D2C64 ; =0x023E0000
-	ldmia sp!, {r3, pc}
-_020D2C34:
-	ldr r0, _020D2C68 ; =0x01FF8620
-	ldmia sp!, {r3, pc}
-_020D2C3C:
-	ldr r0, _020D2C6C ; =0x027E0080
-	ldmia sp!, {r3, pc}
-_020D2C44:
-	ldr r0, _020D2C70 ; =0x027FF000
-	ldmia sp!, {r3, pc}
-_020D2C4C:
-	ldr r0, _020D2C74 ; =0x037F8000
-	ldmia sp!, {r3, pc}
-_020D2C54:
-	mov r0, #0
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_020D2C5C: .word 0x0226EC40
-_020D2C60: .word 0x021E18F8
-_020D2C64: .word 0x023E0000
-_020D2C68: .word 0x01FF8620
-_020D2C6C: .word 0x027E0080
-_020D2C70: .word 0x027FF000
-_020D2C74: .word 0x037F8000
-	arm_func_end sub_020D2BD0
-
-	arm_func_start sub_020D2C78
-sub_020D2C78: ; 0x020D2C78
-	mov r0, r0, lsl #2
-	add r0, r0, #0x2700000
-	add r0, r0, #0xff000
-	str r1, [r0, #0xdc4]
-	bx lr
-	arm_func_end sub_020D2C78
-
-	arm_func_start sub_020D2C8C
-sub_020D2C8C: ; 0x020D2C8C
-	mov r0, r0, lsl #2
-	add r0, r0, #0x2700000
-	add r0, r0, #0xff000
-	str r1, [r0, #0xda0]
-	bx lr
-	arm_func_end sub_020D2C8C
-
-	arm_func_start OS_AllocFromArenaLo
-OS_AllocFromArenaLo: ; 0x020D2CA0
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r0
-	mov r6, r1
-	mov r5, r2
-	bl sub_020D2AD8
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	add r0, r0, r5
-	sub r1, r5, #1
-	mvn r2, r1
-	sub r0, r0, #1
-	and r4, r2, r0
-	add r0, r4, r6
-	add r0, r0, r5
-	sub r1, r0, #1
-	mov r0, r7
-	and r5, r2, r1
-	bl sub_020D2AC4
-	cmp r5, r0
-	movhi r0, #0
-	ldmhiia sp!, {r3, r4, r5, r6, r7, pc}
-	mov r0, r7
-	mov r1, r5
-	bl sub_020D2C8C
-	mov r0, r4
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end OS_AllocFromArenaLo
-
-	arm_func_start OS_AllocFromArenaHi
-OS_AllocFromArenaHi: ; 0x020D2D0C
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r4, r0
-	mov r6, r1
-	mov r5, r2
-	bl sub_020D2AC4
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r4, r5, r6, pc}
-	sub r1, r5, #1
-	mvn r2, r1
-	and r0, r0, r2
-	sub r1, r0, r6
-	mov r0, r4
-	and r5, r1, r2
-	bl sub_020D2AD8
-	cmp r5, r0
-	movlo r0, #0
-	ldmloia sp!, {r4, r5, r6, pc}
-	mov r0, r4
-	mov r1, r5
-	bl sub_020D2C78
-	mov r0, r5
-	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end OS_AllocFromArenaHi
+	.public OSi_WaitVCount0
+	.public OS_GetArenaHi
+	.public OS_GetArenaLo
 
 	arm_func_start sub_020D2D68
 sub_020D2D68: ; 0x020D2D68
@@ -767,20 +408,20 @@ sub_020D317C: ; 0x020D317C
 	bx lr
 	arm_func_end sub_020D317C
 
-	arm_func_start sub_020D3190
-sub_020D3190: ; 0x020D3190
+	arm_func_start OS_SetProtectionRegion1
+OS_SetProtectionRegion1: ; 0x020D3190
 	mcr p15, 0, r0, c6, c1, 0
 	bx lr
-	arm_func_end sub_020D3190
+	arm_func_end OS_SetProtectionRegion1
 
-	arm_func_start sub_020D3198
-sub_020D3198: ; 0x020D3198
+	arm_func_start OS_SetProtectionRegion2
+OS_SetProtectionRegion2: ; 0x020D3198
 	mcr p15, 0, r0, c6, c2, 0
 	bx lr
-	arm_func_end sub_020D3198
+	arm_func_end OS_SetProtectionRegion2
 
-	arm_func_start sub_020D31A0
-sub_020D31A0: ; 0x020D31A0
+	arm_func_start OS_InitException
+OS_InitException: ; 0x020D31A0
 	ldr r0, _020D3200 ; =0x027FFD9C
 	ldr r1, [r0]
 	cmp r1, #0x2600000
@@ -813,7 +454,7 @@ _020D3200: .word 0x027FFD9C
 _020D3204: .word 0x021E1924
 _020D3208: .word sub_020D3210
 _020D320C: .word 0x027E3000
-	arm_func_end sub_020D31A0
+	arm_func_end OS_InitException
 
 	arm_func_start sub_020D3210
 sub_020D3210: ; 0x020D3210
@@ -1434,8 +1075,8 @@ _020D39D4: .word OS_IRQTable
 _020D39D8: .word 0x021E19E4
 	arm_func_end sub_020D38EC
 
-	arm_func_start sub_020D39DC
-sub_020D39DC: ; 0x020D39DC
+	arm_func_start OS_InitVAlarm
+OS_InitVAlarm: ; 0x020D39DC
 	stmdb sp!, {r3, lr}
 	ldr r1, _020D3A20 ; =0x021E19F0
 	ldrh r0, [r1]
@@ -1455,7 +1096,7 @@ sub_020D39DC: ; 0x020D39DC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020D3A20: .word 0x021E19F0
-	arm_func_end sub_020D39DC
+	arm_func_end OS_InitVAlarm
 
 	arm_func_start OS_EnableInterrupts
 OS_EnableInterrupts: ; 0x020D3A24
@@ -1533,8 +1174,8 @@ sub_020D3AB4: ; 0x020D3AB4
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020D3AB4
 
-	arm_func_start sub_020D3AD0
-sub_020D3AD0: ; 0x020D3AD0
+	arm_func_start OS_InitReset
+OS_InitReset: ; 0x020D3AD0
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020D3B1C ; =0x021E1A04
 	ldrh r1, [r0, #2]
@@ -1542,7 +1183,7 @@ sub_020D3AD0: ; 0x020D3AD0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r1, #1
 	strh r1, [r0, #2]
-	bl sub_020D6548
+	bl PXI_Init
 	mov r5, #0xc
 	mov r4, #1
 _020D3AF8:
@@ -1558,7 +1199,7 @@ _020D3AF8:
 	.align 2, 0
 _020D3B1C: .word 0x021E1A04
 _020D3B20: .word sub_020D3B24
-	arm_func_end sub_020D3AD0
+	arm_func_end OS_InitReset
 
 	arm_func_start sub_020D3B24
 sub_020D3B24: ; 0x020D3B24
@@ -1714,8 +1355,8 @@ sub_020D3CF4: ; 0x020D3CF4
 	bx lr
 	arm_func_end sub_020D3CF4
 
-	arm_func_start sub_020D3CFC
-sub_020D3CFC: ; 0x020D3CFC
+	arm_func_start OSi_InitVramExclusive
+OSi_InitVramExclusive: ; 0x020D3CFC
 	ldr r0, _020D3D28 ; =0x021E1A08
 	mov r3, #0
 	str r3, [r0]
@@ -1731,7 +1372,7 @@ _020D3D10:
 	.align 2, 0
 _020D3D28: .word 0x021E1A08
 _020D3D2C: .word 0x021E1A0C
-	arm_func_end sub_020D3CFC
+	arm_func_end OSi_InitVramExclusive
 
 	arm_func_start sub_020D3D30
 sub_020D3D30: ; 0x020D3D30
@@ -3278,15 +2919,15 @@ _020D5018:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	arm_func_end sub_020D4F38
 
-	arm_func_start sub_020D502C
-sub_020D502C: ; 0x020D502C
+	arm_func_start MI_Init
+MI_Init: ; 0x020D502C
 	stmdb sp!, {r3, lr}
 	mov r0, #3
 	bl sub_020D3F64
 	mov r0, #0
 	bl sub_020D4294
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D502C
+	arm_func_end MI_Init
 
 	arm_func_start sub_020D5044
 sub_020D5044: ; 0x020D5044
@@ -5022,13 +4663,13 @@ _020D653C:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020D650C
 
-	arm_func_start sub_020D6548
-sub_020D6548: ; 0x020D6548
+	arm_func_start PXI_Init
+PXI_Init: ; 0x020D6548
 	ldr ip, _020D6550 ; =sub_020D6554
 	bx ip
 	.align 2, 0
 _020D6550: .word sub_020D6554
-	arm_func_end sub_020D6548
+	arm_func_end PXI_Init
 
 	arm_func_start sub_020D6554
 sub_020D6554: ; 0x020D6554
@@ -7512,7 +7153,7 @@ sub_020D8590: ; 0x020D8590
 	str r2, [r1, #0xc]
 	str r2, [r1, #0x10]
 	str r2, [r1, #0x14]
-	bl sub_020DD84C
+	bl CARD_Init
 	ldr r0, _020D86B4 ; =0x021E3654
 	bl sub_020D792C
 	ldr r0, _020D86B4 ; =0x021E3654
@@ -9341,7 +8982,7 @@ sub_020D9EF0: ; 0x020D9EF0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r1, #1
 	strh r1, [r0]
-	bl sub_020D6548
+	bl PXI_Init
 	ldr r0, _020D9F60 ; =0x021E36B0
 	mov r1, #0
 	strh r1, [r0, #0x10]
@@ -10037,7 +9678,7 @@ MIC_Init: ; 0x020DA830
 	mov r1, #0
 	str r1, [r0, #4]
 	str r1, [r0, #8]
-	bl sub_020D6548
+	bl PXI_Init
 	mov r5, #9
 	mov r4, #1
 _020DA864:
@@ -10494,8 +10135,8 @@ sub_020DADA8: ; 0x020DADA8
 _020DADE4: .word 0x021E370C
 	arm_func_end sub_020DADA8
 
-	arm_func_start sub_020DADE8
-sub_020DADE8: ; 0x020DADE8
+	arm_func_start PM_Init
+PM_Init: ; 0x020DADE8
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020DAE78 ; =0x021E370C
 	ldrh r1, [r0]
@@ -10506,7 +10147,7 @@ sub_020DADE8: ; 0x020DADE8
 	mov r1, #0
 	str r1, [r0, #0x1c]
 	str r1, [r0, #0x20]
-	bl sub_020D6548
+	bl PXI_Init
 	mov r5, #8
 	mov r4, #1
 _020DAE1C:
@@ -10540,7 +10181,7 @@ _020DAE7C: .word sub_020DAE8C
 _020DAE80: .word 0x021E3750
 _020DAE84: .word 0x021E3738
 _020DAE88: .word 0x027FFC3C
-	arm_func_end sub_020DADE8
+	arm_func_end PM_Init
 
 	arm_func_start sub_020DAE8C
 sub_020DAE8C: ; 0x020DAE8C
@@ -11480,7 +11121,7 @@ RTC_Init: ; 0x020DB9C0
 	str r1, [r0, #0x28]
 	str r1, [r0, #0x14]
 	str r1, [r0, #0x18]
-	bl sub_020D6548
+	bl PXI_Init
 	mov r5, #5
 	mov r4, #1
 _020DBA00:
@@ -13815,8 +13456,8 @@ _020DD844: .word sub_020DD6BC
 _020DD848: .word 0x021E16A0
 	arm_func_end sub_020DD754
 
-	arm_func_start sub_020DD84C
-sub_020DD84C: ; 0x020DD84C
+	arm_func_start CARD_Init
+CARD_Init: ; 0x020DD84C
 	stmdb sp!, {r3, lr}
 	ldr ip, _020DD8A8 ; =0x021E3820
 	ldr r0, [ip, #0x114]
@@ -13844,7 +13485,7 @@ sub_020DD84C: ; 0x020DD84C
 _020DD8A8: .word 0x021E3820
 _020DD8AC: .word 0x021E3E40
 _020DD8B0: .word 0x021E3E60
-	arm_func_end sub_020DD84C
+	arm_func_end CARD_Init
 
 	arm_func_start sub_020DD8B4
 sub_020DD8B4: ; 0x020DD8B4
@@ -14010,7 +13651,7 @@ _020DDA94:
 	arm_func_start sub_020DDAA4
 sub_020DDAA4: ; 0x020DDAA4
 	stmdb sp!, {r3, lr}
-	bl sub_020D6548
+	bl PXI_Init
 	ldr r1, _020DDAC8 ; =sub_020DDAD0
 	mov r0, #0xe
 	bl sub_020D6654
@@ -14648,7 +14289,7 @@ _020DE2D0:
 	mov r0, #6
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _020DE2E4:
-	bl sub_020D6548
+	bl PXI_Init
 	mov r0, #0xa
 	mov r1, #1
 	bl sub_020D66A0
@@ -18553,8 +18194,8 @@ sub_020E16C0: ; 0x020E16C0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020E16C0
 
-	arm_func_start sub_020E16E4
-sub_020E16E4: ; 0x020E16E4
+	arm_func_start CTRDG_Init
+CTRDG_Init: ; 0x020E16E4
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020E1784 ; =0x021E4D60
 	ldr r1, [r0, #8]
@@ -18566,7 +18207,7 @@ sub_020E16E4: ; 0x020E16E4
 	ldr r0, _020E1784 ; =0x021E4D60
 	mov r1, #0
 	str r1, [r0, #0xc]
-	bl sub_020D6548
+	bl PXI_Init
 	mov r5, #0xd
 	mov r4, #1
 _020E171C:
@@ -18602,7 +18243,7 @@ _020E1788: .word sub_020E198C
 _020E178C: .word sub_020E19B8
 _020E1790: .word 0x021E4E40
 _020E1794: .word sub_020E1A28
-	arm_func_end sub_020E16E4
+	arm_func_end CTRDG_Init
 
 	arm_func_start sub_020E1798
 sub_020E1798: ; 0x020E1798

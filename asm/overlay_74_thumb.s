@@ -28761,7 +28761,7 @@ _022351F8: .word _0223B690
 	thumb_func_start ov74_022351FC
 ov74_022351FC: ; 0x022351FC
 	push {r3, lr}
-	bl sub_020E16E4
+	bl CTRDG_Init
 	bl sub_020E0FF0
 	cmp r0, #0
 	bne _0223520E
