@@ -24,7 +24,7 @@ $(LIB): $(ALL_OBJS)
 
 install: all
 	$(shell mkdir -p $(INSTALL_LIBDIR))
-	install -t $(INSTALL_LIBDIR) $(LIB)
+	cp $(LIB) $(INSTALL_LIBDIR)/
 
 tidy:
 	$(RM) -r $(BUILD_DIR)
