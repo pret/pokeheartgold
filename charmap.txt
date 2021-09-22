@@ -1,11 +1,12 @@
 // Character mapping for Pokémon HeartGold and SoulSilver
-// Version 2021.09.22
+// Version 2021.08.17
+// Format is HEXCODE=<character> or HEXCODE={<command>}
 // Most of these are just unused characters from the Japanese version
 // Comments are preceded by double forward slashes as in C99 and C++.
 // Leading spaces and tabs are ignored; trailing spaces and tabs are not.
 
 0000=\x0000
-// Unused foreign characters
+// Japanese text, probably used for Nintendo WFC and the Wi-Fi Plaza
 0001=　
 0002=ぁ
 0003=あ
