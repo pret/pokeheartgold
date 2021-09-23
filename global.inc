@@ -29239,10 +29239,10 @@
 .public OS_GetInitArenaLo
 .public OS_SetArenaHi
 .public OS_SetArenaLo
-.public sub_020D2FC4
-.public sub_020D2FF4
-.public sub_020D309C
-.public sub_020D30B0
+.public OS_SetCurrentHeap
+.public OS_InitAlloc
+.public OS_ClearAlloc
+.public OS_CreateHeap
 .public sub_020D33C0
 .public sub_020D3438
 .public sub_020D34B0

@@ -17,8 +17,8 @@
 	.public OSi_GetUnusedThreadId
 	.public OSi_InsertLinkToQueue
 
-_021E1900:
-	.space 0x3A90
+_021E1924:
+	.space 0x3A6C
 
 	.text
 
@@ -67,346 +67,44 @@ _021E1900:
 	.public OSi_WaitVCount0
 	.public OS_GetArenaHi
 	.public OS_GetArenaLo
+	.public DLAddFront
+	.public DLExtract
+	.public DLInsert
 
-	arm_func_start sub_020D2D68
-sub_020D2D68: ; 0x020D2D68
-	str r0, [r1, #4]
-	mov r2, #0
-	str r2, [r1]
-	cmp r0, #0
-	strne r1, [r0]
-	mov r0, r1
-	bx lr
-	arm_func_end sub_020D2D68
-
-	arm_func_start sub_020D2D84
-sub_020D2D84: ; 0x020D2D84
-	ldr r3, [r1, #4]
-	cmp r3, #0
-	ldrne r2, [r1]
-	strne r2, [r3]
-	ldr r2, [r1]
-	cmp r2, #0
-	ldreq r0, [r1, #4]
-	ldrne r1, [r1, #4]
-	strne r1, [r2, #4]
-	bx lr
-	arm_func_end sub_020D2D84
-
-	arm_func_start sub_020D2DAC
-sub_020D2DAC: ; 0x020D2DAC
-	stmdb sp!, {r3, lr}
-	mov lr, r0
-	cmp r0, #0
-	mov ip, #0
-	beq _020D2DD8
-_020D2DC0:
-	cmp r1, lr
-	bls _020D2DD8
-	mov ip, lr
-	ldr lr, [lr, #4]
-	cmp lr, #0
-	bne _020D2DC0
-_020D2DD8:
-	stmia r1, {ip, lr}
-	cmp lr, #0
-	beq _020D2E14
-	str r1, [lr]
-	ldr r3, [r1, #8]
-	add r2, r1, r3
-	cmp r2, lr
-	bne _020D2E14
-	ldr r2, [lr, #8]
-	add r2, r3, r2
-	str r2, [r1, #8]
-	ldr lr, [lr, #4]
-	str lr, [r1, #4]
-	cmp lr, #0
-	strne r1, [lr]
-_020D2E14:
-	cmp ip, #0
-	beq _020D2E4C
-	str r1, [ip, #4]
-	ldr r2, [ip, #8]
-	add r3, ip, r2
-	cmp r3, r1
-	ldmneia sp!, {r3, pc}
-	ldr r1, [r1, #8]
-	cmp lr, #0
-	add r1, r2, r1
-	str r1, [ip, #8]
-	str lr, [ip, #4]
-	strne ip, [lr]
-	ldmia sp!, {r3, pc}
-_020D2E4C:
-	mov r0, r1
-	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D2DAC
-
-	arm_func_start OS_AllocFromHeap
-OS_AllocFromHeap: ; 0x020D2E54
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r4, r0
-	mov r5, r1
-	mov r7, r2
-	bl OS_DisableInterrupts
-	ldr r1, _020D2F58 ; =0x021E1900
-	mov r6, r0
-	ldr r1, [r1, r4, lsl #2]
-	cmp r1, #0
-	bne _020D2E88
-	bl OS_RestoreInterrupts
-	mov r0, #0
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-_020D2E88:
-	cmp r5, #0
-	ldrlt r5, [r1]
-	ldr r1, [r1, #0x10]
-	mov r0, #0xc
-	mla r4, r5, r0, r1
-	ldr r0, [r4, #4]
-	add r1, r7, #0x3f
-	mov r5, r0
-	cmp r0, #0
-	bic r7, r1, #0x1f
-	beq _020D2ECC
-_020D2EB4:
-	ldr r1, [r5, #8]
-	cmp r7, r1
-	ble _020D2ECC
-	ldr r5, [r5, #4]
-	cmp r5, #0
-	bne _020D2EB4
-_020D2ECC:
-	cmp r5, #0
-	bne _020D2EE4
-	mov r0, r6
-	bl OS_RestoreInterrupts
-	mov r0, #0
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-_020D2EE4:
-	ldr r1, [r5, #8]
-	sub r1, r1, r7
-	cmp r1, #0x40
-	bhs _020D2F04
-	mov r1, r5
-	bl sub_020D2D84
-	str r0, [r4, #4]
-	b _020D2F38
-_020D2F04:
-	str r7, [r5, #8]
-	add r2, r5, r7
-	str r1, [r2, #8]
-	ldr r0, [r5]
-	str r0, [r5, r7]
-	ldr r0, [r5, #4]
-	str r0, [r2, #4]
-	cmp r0, #0
-	strne r2, [r0]
-	ldr r0, [r2]
-	cmp r0, #0
-	strne r2, [r0, #4]
-	streq r2, [r4, #4]
-_020D2F38:
-	ldr r0, [r4, #8]
-	mov r1, r5
-	bl sub_020D2D68
-	str r0, [r4, #8]
-	mov r0, r6
-	bl OS_RestoreInterrupts
-	add r0, r5, #0x20
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
-_020D2F58: .word 0x021E1900
-	arm_func_end OS_AllocFromHeap
-
-	arm_func_start OS_FreeToHeap
-OS_FreeToHeap: ; 0x020D2F5C
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r0
-	mov r6, r1
-	mov r5, r2
-	bl OS_DisableInterrupts
-	ldr r1, _020D2FC0 ; =0x021E1900
-	mov r4, r0
-	ldr r0, [r1, r7, lsl #2]
-	cmp r6, #0
-	ldrlt r6, [r0]
-	ldr r1, [r0, #0x10]
-	mov r0, #0xc
-	mla r7, r6, r0, r1
-	sub r5, r5, #0x20
-	ldr r0, [r7, #8]
-	mov r1, r5
-	bl sub_020D2D84
-	str r0, [r7, #8]
-	ldr r0, [r7, #4]
-	mov r1, r5
-	bl sub_020D2DAC
-	str r0, [r7, #4]
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
-_020D2FC0: .word 0x021E1900
-	arm_func_end OS_FreeToHeap
-
-	arm_func_start sub_020D2FC4
-sub_020D2FC4: ; 0x020D2FC4
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r4, r0
-	mov r5, r1
-	bl OS_DisableInterrupts
-	ldr r1, _020D2FF0 ; =0x021E1900
-	ldr r1, [r1, r4, lsl #2]
-	ldr r4, [r1]
-	str r5, [r1]
-	bl OS_RestoreInterrupts
-	mov r0, r4
-	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
-_020D2FF0: .word 0x021E1900
-	arm_func_end sub_020D2FC4
-
-	arm_func_start sub_020D2FF4
-sub_020D2FF4: ; 0x020D2FF4
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r0
-	mov r5, r1
-	mov r4, r2
-	mov r6, r3
-	bl OS_DisableInterrupts
-	ldr r2, _020D3098 ; =0x021E1900
-	mov r1, #0xc
-	str r5, [r2, r7, lsl #2]
-	add r2, r5, #0x14
-	str r2, [r5, #0x10]
-	mul r1, r6, r1
-	str r6, [r5, #4]
-	cmp r6, #0
-	mov lr, #0
-	ble _020D3068
-	mov r6, lr
-	mvn ip, #0
-	mov r3, lr
-_020D3040:
-	ldr r2, [r5, #0x10]
-	add lr, lr, #1
-	str ip, [r2, r6]
-	add r2, r2, r6
-	str r3, [r2, #8]
-	str r3, [r2, #4]
-	ldr r2, [r5, #4]
-	add r6, r6, #0xc
-	cmp lr, r2
-	blt _020D3040
-_020D3068:
-	mvn r2, #0
-	str r2, [r5]
-	ldr r3, [r5, #0x10]
-	bic r2, r4, #0x1f
-	add r1, r3, r1
-	add r1, r1, #0x1f
-	bic r1, r1, #0x1f
-	str r1, [r5, #8]
-	str r2, [r5, #0xc]
-	bl OS_RestoreInterrupts
-	ldr r0, [r5, #8]
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
-_020D3098: .word 0x021E1900
-	arm_func_end sub_020D2FF4
-
-	arm_func_start sub_020D309C
-sub_020D309C: ; 0x020D309C
-	ldr r1, _020D30AC ; =0x021E1900
-	mov r2, #0
-	str r2, [r1, r0, lsl #2]
-	bx lr
-	.align 2, 0
-_020D30AC: .word 0x021E1900
-	arm_func_end sub_020D309C
-
-	arm_func_start sub_020D30B0
-sub_020D30B0: ; 0x020D30B0
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r4, r0
-	mov r6, r1
-	mov r5, r2
-	bl OS_DisableInterrupts
-	ldr r2, _020D3144 ; =0x021E1900
-	add r1, r6, #0x1f
-	ldr r2, [r2, r4, lsl #2]
-	bic r6, r1, #0x1f
-	ldr ip, [r2, #4]
-	bic r5, r5, #0x1f
-	cmp ip, #0
-	mov r4, #0
-	ble _020D3138
-	ldr r3, [r2, #0x10]
-_020D30EC:
-	ldr r1, [r3]
-	cmp r1, #0
-	bge _020D3128
-	sub r1, r5, r6
-	str r1, [r3]
-	mov r2, #0
-	str r2, [r6]
-	str r2, [r6, #4]
-	ldr r1, [r3]
-	str r1, [r6, #8]
-	str r6, [r3, #4]
-	str r2, [r3, #8]
-	bl OS_RestoreInterrupts
-	mov r0, r4
-	ldmia sp!, {r4, r5, r6, pc}
-_020D3128:
-	add r4, r4, #1
-	cmp r4, ip
-	add r3, r3, #0xc
-	blt _020D30EC
-_020D3138:
-	bl OS_RestoreInterrupts
-	mvn r0, #0
-	ldmia sp!, {r4, r5, r6, pc}
-	.align 2, 0
-_020D3144: .word 0x021E1900
-	arm_func_end sub_020D30B0
-
-	arm_func_start sub_020D3148
-sub_020D3148: ; 0x020D3148
+	arm_func_start OS_GetDTCMParam
+OS_GetDTCMParam: ; 0x020D3148
 	mrc p15, 0, r0, c9, c1, 0
 	ldr r1, _020D3158 ; =0xFFFFF000
 	and r0, r0, r1
 	bx lr
 	.align 2, 0
 _020D3158: .word 0xFFFFF000
-	arm_func_end sub_020D3148
+	arm_func_end OS_GetDTCMParam
 
-	arm_func_start sub_020D315C
-sub_020D315C: ; 0x020D315C
+	arm_func_start OS_EnableProtectionUnit
+OS_EnableProtectionUnit: ; 0x020D315C
 	mrc p15, 0, r0, c1, c0, 0
 	orr r0, r0, #1
 	mcr p15, 0, r0, c1, c0, 0
 	bx lr
-	arm_func_end sub_020D315C
+	arm_func_end OS_EnableProtectionUnit
 
-	arm_func_start sub_020D316C
-sub_020D316C: ; 0x020D316C
+	arm_func_start OS_DisableProtectionUnit
+OS_DisableProtectionUnit: ; 0x020D316C
 	mrc p15, 0, r0, c1, c0, 0
 	bic r0, r0, #1
 	mcr p15, 0, r0, c1, c0, 0
 	bx lr
-	arm_func_end sub_020D316C
+	arm_func_end OS_DisableProtectionUnit
 
-	arm_func_start sub_020D317C
-sub_020D317C: ; 0x020D317C
+	arm_func_start OS_SetDPermissionsForProtectionRegion
+OS_SetDPermissionsForProtectionRegion: ; 0x020D317C
 	mrc p15, 0, r2, c5, c0, 2
 	bic r2, r2, r0
 	orr r2, r2, r1
 	mcr p15, 0, r2, c5, c0, 2
 	bx lr
-	arm_func_end sub_020D317C
+	arm_func_end OS_SetDPermissionsForProtectionRegion
 
 	arm_func_start OS_SetProtectionRegion1
 OS_SetProtectionRegion1: ; 0x020D3190
@@ -559,7 +257,7 @@ sub_020D3328: ; 0x020D3328
 	mov r1, sp
 	mov sp, r0
 	stmdb sp!, {r1, r2}
-	bl sub_020D315C
+	bl OS_EnableProtectionUnit
 	ldr r0, _020D3394 ; =0x021E1950
 	ldr r1, _020D3398 ; =0x021E1928
 	ldr r1, [r1]
@@ -571,7 +269,7 @@ sub_020D3328: ; 0x020D3328
 
 	arm_func_start sub_020D3378
 sub_020D3378: ; 0x020D3378
-	bl sub_020D316C
+	bl OS_DisableProtectionUnit
 	ldmia sp!, {r1, r2}
 	mov sp, r1
 	msr cpsr_fsxc, r2
@@ -13142,7 +12840,7 @@ sub_020DD3E4: ; 0x020DD3E4
 _020DD41C:
 	cmp r1, #0
 	beq _020DD470
-	bl sub_020D3148
+	bl OS_GetDTCMParam
 	ldr r1, _020DD560 ; =sub_01FF8000
 	add r3, sb, r5
 	cmp r3, r1
@@ -18172,7 +17870,7 @@ sub_020E1678: ; 0x020E1678
 	movne r1, #0x1000
 	moveq r1, #0x5000
 	mov r0, #0xf000
-	bl sub_020D317C
+	bl OS_SetDPermissionsForProtectionRegion
 _020E16B0:
 	mov r0, r4
 	bl OS_RestoreInterrupts

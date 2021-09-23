@@ -1845,7 +1845,7 @@ ov39_02227DEC: ; 0x02227DEC
 	add r1, r5, #0
 	add r2, r5, r6
 	mov r3, #1
-	bl sub_020D2FF4
+	bl OS_InitAlloc
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -1858,12 +1858,12 @@ ov39_02227DEC: ; 0x02227DEC
 	bic r2, r0
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D30B0
+	bl OS_CreateHeap
 	add r1, r0, #0
 	ldr r0, _02227E38 ; =0x0222AB80
 	str r1, [r0]
 	mov r0, #0
-	bl sub_020D2FC4
+	bl OS_SetCurrentHeap
 	add r0, r5, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -1872,11 +1872,11 @@ _02227E38: .word 0x0222AB80
 
 	thumb_func_start ov39_02227E3C
 ov39_02227E3C: ; 0x02227E3C
-	ldr r3, _02227E44 ; =sub_020D309C
+	ldr r3, _02227E44 ; =OS_ClearAlloc
 	mov r0, #0
 	bx r3
 	nop
-_02227E44: .word sub_020D309C
+_02227E44: .word OS_ClearAlloc
 	thumb_func_end ov39_02227E3C
 
 	thumb_func_start ov39_02227E48

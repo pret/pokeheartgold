@@ -262,6 +262,7 @@ Static main
 	Object os_cache.o
 	Object os_init.o
 	Object os_arena.o
+	Object os_alloc.o
 	Object nitro.o
 	Object msl.o
 }
