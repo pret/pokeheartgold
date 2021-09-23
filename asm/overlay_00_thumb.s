@@ -3866,7 +3866,7 @@ _021E7658: .word 0x00001A54
 	thumb_func_start ov00_021E765C
 ov00_021E765C: ; 0x021E765C
 	push {r4, r5, r6, lr}
-	bl sub_020D34B0
+	bl OS_GetTick
 	add r4, r0, #0
 	ldr r0, _021E778C ; =_0221A684
 	add r5, r1, #0

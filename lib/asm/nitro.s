@@ -69,193 +69,18 @@
 	.public OS_EnableProtectionUnit
 	.public OS_DisableProtectionUnit
 	.public OS_SetDPermissionsForProtectionRegion
+	.public OSi_SetTimerReserved
 
-_021E19D0:
-	.space 0x39C0
+_021E19E4:
+	.space 0x39AC
 
 	.text
-
-	arm_func_start sub_020D33A4
-sub_020D33A4: ; 0x020D33A4
-	ldr r1, _020D33BC ; =0x021E19D0
-	mov r2, #1
-	ldrh r3, [r1]
-	orr r0, r3, r2, lsl r0
-	strh r0, [r1]
-	bx lr
-	.align 2, 0
-_020D33BC: .word 0x021E19D0
-	arm_func_end sub_020D33A4
-
-	arm_func_start sub_020D33C0
-sub_020D33C0: ; 0x020D33C0
-	stmdb sp!, {r3, lr}
-	ldr r1, _020D342C ; =0x021E19D4
-	ldrh r0, [r1]
-	cmp r0, #0
-	ldmneia sp!, {r3, pc}
-	mov r2, #1
-	mov r0, #0
-	strh r2, [r1]
-	bl sub_020D33A4
-	ldr r0, _020D342C ; =0x021E19D4
-	mov r2, #0
-	str r2, [r0, #8]
-	ldr r3, _020D3430 ; =0x04000102
-	str r2, [r0, #0xc]
-	strh r2, [r3]
-	ldr r1, _020D3434 ; =sub_020D3448
-	strh r2, [r3, #-2]
-	mov r2, #0xc1
-	mov r0, #8
-	strh r2, [r3]
-	bl OS_SetIrqFunction
-	mov r0, #8
-	bl OS_EnableIrqMask
-	ldr r0, _020D342C ; =0x021E19D4
-	mov r1, #0
-	str r1, [r0, #4]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_020D342C: .word 0x021E19D4
-_020D3430: .word 0x04000102
-_020D3434: .word sub_020D3448
-	arm_func_end sub_020D33C0
-
-	arm_func_start sub_020D3438
-sub_020D3438: ; 0x020D3438
-	ldr r0, _020D3444 ; =0x021E19D4
-	ldrh r0, [r0]
-	bx lr
-	.align 2, 0
-_020D3444: .word 0x021E19D4
-	arm_func_end sub_020D3438
-
-	arm_func_start sub_020D3448
-sub_020D3448: ; 0x020D3448
-	ldr r0, _020D34A0 ; =0x021E19D4
-	mov r3, #0
-	ldr r2, [r0, #8]
-	ldr r1, [r0, #0xc]
-	adds r2, r2, #1
-	str r2, [r0, #8]
-	adc r1, r1, #0
-	str r1, [r0, #0xc]
-	ldr r1, [r0, #4]
-	cmp r1, #0
-	beq _020D348C
-	ldr r2, _020D34A4 ; =0x04000102
-	mov r1, #0xc1
-	strh r3, [r2]
-	strh r3, [r2, #-2]
-	strh r1, [r2]
-	str r3, [r0, #4]
-_020D348C:
-	ldr ip, _020D34A8 ; =OSi_EnterTimerCallback
-	mov r0, #0
-	ldr r1, _020D34AC ; =sub_020D3448
-	mov r2, r0
-	bx ip
-	.align 2, 0
-_020D34A0: .word 0x021E19D4
-_020D34A4: .word 0x04000102
-_020D34A8: .word OSi_EnterTimerCallback
-_020D34AC: .word sub_020D3448
-	arm_func_end sub_020D3448
-
-	arm_func_start sub_020D34B0
-sub_020D34B0: ; 0x020D34B0
-	stmdb sp!, {lr}
-	sub sp, sp, #0xc
-	bl OS_DisableInterrupts
-	ldr lr, _020D3544 ; =0x04000100
-	ldr r2, _020D3548 ; =0x0000FFFF
-	ldrh ip, [lr]
-	ldr r3, _020D354C ; =0x021E19D4
-	sub r1, r2, #0x10000
-	strh ip, [sp]
-	ldr ip, [r3, #8]
-	ldr r3, [r3, #0xc]
-	and ip, ip, r1
-	and r1, r3, r2
-	str ip, [sp, #4]
-	str r1, [sp, #8]
-	ldr r1, [lr, #0x114]
-	tst r1, #8
-	beq _020D351C
-	ldrh r1, [sp]
-	tst r1, #0x8000
-	bne _020D351C
-	ldr r2, [sp, #4]
-	ldr r1, [sp, #8]
-	adds r2, r2, #1
-	adc r1, r1, #0
-	str r2, [sp, #4]
-	str r1, [sp, #8]
-_020D351C:
-	bl OS_RestoreInterrupts
-	ldr r2, [sp, #4]
-	ldr r1, [sp, #8]
-	ldrh r0, [sp]
-	mov r1, r1, lsl #0x10
-	orr r1, r1, r2, lsr #16
-	orr r1, r1, r0, asr #31
-	orr r0, r0, r2, lsl #16
-	add sp, sp, #0xc
-	ldmia sp!, {pc}
-	.align 2, 0
-_020D3544: .word 0x04000100
-_020D3548: .word 0x0000FFFF
-_020D354C: .word 0x021E19D4
-	arm_func_end sub_020D34B0
-
-	arm_func_start sub_020D3550
-sub_020D3550: ; 0x020D3550
-	ldr r0, _020D355C ; =0x04000100
-	ldrh r0, [r0]
-	bx lr
-	.align 2, 0
-_020D355C: .word 0x04000100
-	arm_func_end sub_020D3550
-
-	arm_func_start sub_020D3560
-sub_020D3560: ; 0x020D3560
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r5, r0
-	mov r4, r1
-	bl OS_DisableInterrupts
-	mov r3, r5, lsr #0x10
-	mov ip, #1
-	rsb r1, ip, #0x10000
-	ldr lr, _020D35C4 ; =0x04000214
-	mov r6, #8
-	ldr r2, _020D35C8 ; =0x021E19D4
-	str r6, [lr]
-	str ip, [r2, #4]
-	orr r3, r3, r4, lsl #16
-	str r3, [r2, #8]
-	mov r4, r4, lsr #0x10
-	ldr r3, _020D35CC ; =0x04000102
-	str r4, [r2, #0xc]
-	mov r2, #0
-	strh r2, [r3]
-	and r1, r5, r1
-	strh r1, [r3, #-2]
-	mov r1, #0xc1
-	strh r1, [r3]
-	bl OS_RestoreInterrupts
-	ldmia sp!, {r4, r5, r6, pc}
-	.align 2, 0
-_020D35C4: .word 0x04000214
-_020D35C8: .word 0x021E19D4
-_020D35CC: .word 0x04000102
-	arm_func_end sub_020D3560
 
 	arm_func_start sub_020D35D0
 sub_020D35D0: ; 0x020D35D0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, _020D364C ; =0x04000106
 	mov r2, #0
 	strh r2, [r3]
@@ -301,7 +126,7 @@ sub_020D365C: ; 0x020D365C
 	ldmneia sp!, {r3, pc}
 	mov r0, #1
 	strh r0, [r1]
-	bl sub_020D33A4
+	bl OSi_SetTimerReserved
 	ldr r1, _020D3698 ; =0x021E19E4
 	mov r2, #0
 	str r2, [r1, #4]
@@ -341,7 +166,7 @@ sub_020D36BC: ; 0x020D36BC
 	mov r6, r2
 	cmpeq r3, #0
 	beq _020D3730
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r6, [r8, #0x28]
 	ldr r7, [r8, #0x24]
 	cmp r6, r1
@@ -436,7 +261,7 @@ _020D3810:
 	ldr r1, [sp, #0x18]
 	mov r7, r0
 	str r1, [r6, #4]
-	bl sub_020D34B0
+	bl OS_GetTick
 	adds r3, r5, r0
 	adc r2, r4, r1
 	mov r0, r6
@@ -510,7 +335,7 @@ sub_020D38EC: ; 0x020D38EC
 	ldr r1, [r0, #0xff8]
 	orr r1, r1, #0x10
 	str r1, [r0, #0xff8]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _020D39D8 ; =0x021E19E4
 	ldr r4, [r2, #4]
 	cmp r4, #0
@@ -969,7 +794,7 @@ sub_020D3E78: ; 0x020D3E78
 	mov r5, r0
 	ldrh r6, [r1]
 	ldr r4, _020D3F3C ; =0x027FFC00
-	bl sub_020D3550
+	bl OS_GetTickLo
 	orr r0, r0, r6, lsl #16
 	str r0, [r5]
 	ldr r1, _020D3F40 ; =0x021E19DC
@@ -10164,7 +9989,7 @@ PM_GoSleepMode: ; 0x020DB43C
 	ldr r0, _020DB668 ; =0x003FFFFF
 	bl OS_DisableIrqMask
 	str r0, [sp, #4]
-	bl sub_020D3438
+	bl OS_IsTickAvailable
 	cmp r0, #0
 	movne r0, #8
 	moveq r0, r4
@@ -13310,7 +13135,7 @@ _020DDC8C: .word 0x021E4088
 	arm_func_start sub_020DDC90
 sub_020DDC90: ; 0x020DDC90
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, #0
 	ldr r5, _020DDCEC ; =0x000082EA
 	ldr sl, _020DDCF0 ; =0x021E4088
@@ -13319,7 +13144,7 @@ sub_020DDC90: ; 0x020DDC90
 	mov sb, r4
 	mov r8, #0xfa00
 _020DDCB4:
-	bl sub_020D34B0
+	bl OS_GetTick
 	subs r3, r0, r6
 	sbc r2, r1, r7
 	umull r0, r1, r3, r8
@@ -13367,7 +13192,7 @@ _020DDD40: .word 0x0000FFFD
 sub_020DDD44: ; 0x020DDD44
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov fp, #0
 	ldr sl, _020DDDE4 ; =0x000082EA
 	ldr sb, _020DDDE8 ; =0x021E4088
@@ -13376,7 +13201,7 @@ sub_020DDD44: ; 0x020DDD44
 	mov r8, fp
 	mov r7, #0xfa00
 _020DDD6C:
-	bl sub_020D34B0
+	bl OS_GetTick
 	subs lr, r0, r4
 	sbc ip, r1, r5
 	mov r2, sl
@@ -13417,7 +13242,7 @@ _020DDDEC: .word 0x040001A2
 sub_020DDDF0: ; 0x020DDDF0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov fp, #0
 	ldr sl, _020DDE88 ; =0x000082EA
 	ldr sb, _020DDE8C ; =0x021E4088
@@ -13426,7 +13251,7 @@ sub_020DDDF0: ; 0x020DDDF0
 	mov r8, fp
 	mov r7, #0xfa00
 _020DDE18:
-	bl sub_020D34B0
+	bl OS_GetTick
 	subs lr, r0, r4
 	sbc ip, r1, r5
 	mov r2, sl
@@ -13640,7 +13465,7 @@ sub_020DE0C8: ; 0x020DE0C8
 	ldr r0, _020DE230 ; =_02110FBC
 	ldrh r0, [r0]
 	bl OS_LockCard
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov fp, #0
 	mov r4, r0
 	mov r5, r1
@@ -13650,7 +13475,7 @@ sub_020DE0C8: ; 0x020DE0C8
 	mov sl, fp
 	mov sb, #0x3c
 _020DE124:
-	bl sub_020D34B0
+	bl OS_GetTick
 	subs r0, r0, r4
 	umull lr, ip, r0, r6
 	mla ip, r0, fp, ip
@@ -13675,7 +13500,7 @@ _020DE164:
 	strh r1, [r2]
 	bl sub_020DDD44
 	strb r0, [sp]
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	mov r6, #0x40
@@ -13683,7 +13508,7 @@ _020DE164:
 	mov sb, #0
 	mov r8, #0x32
 _020DE1A0:
-	bl sub_020D34B0
+	bl OS_GetTick
 	subs r0, r0, r4
 	mov r3, #0
 	sbc ip, r1, r5
@@ -18159,7 +17984,7 @@ sub_020E1D24: ; 0x020E1D24
 	mov r0, r3
 	str r1, [r2, #0x20]
 	str r0, [r2, #0x24]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _020E1D68 ; =0x021E4F2C
 	str r0, [r2, #0x28]
 	str r1, [r2, #0x2c]
@@ -18172,7 +17997,7 @@ _020E1D68: .word 0x021E4F2C
 	arm_func_start sub_020E1D6C
 sub_020E1D6C: ; 0x020E1D6C
 	stmdb sp!, {r3, lr}
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, _020E1DC0 ; =0x021E4F2C
 	ldr r2, _020E1DC4 ; =0x000082EA
 	ldr ip, [r3, #0x28]

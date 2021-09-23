@@ -5075,7 +5075,7 @@ _02229908:
 	bne _02229938
 	mov r0, #0xf
 	str r0, [r4, r5]
-	bl sub_020D3550
+	bl OS_GetTickLo
 	mov r1, #0x36
 	bl _s32_div_f
 	mov r0, #0x16
@@ -20428,7 +20428,7 @@ ov74_02231264: ; 0x02231264
 	push {r4, lr}
 	ldr r0, _02231278 ; =0x04000006
 	ldrh r4, [r0]
-	bl sub_020D34B0
+	bl OS_GetTick
 	add r1, r0, r4
 	mov r0, #1
 	bic r1, r0
@@ -21237,7 +21237,7 @@ _0223180A:
 	str r0, [r4]
 	b _02231924
 _0223182A:
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r2, #0x78
 	mov r3, #0
 	bl _ull_mod
@@ -24569,10 +24569,10 @@ ov74_02233230: ; 0x02233230
 	ldr r1, _022332E8 ; =0x0000047E
 	mov r0, #9
 	bl sub_02004EC4
-	bl sub_020D3438
+	bl OS_IsTickAvailable
 	cmp r0, #0
 	bne _022332C6
-	bl sub_020D33C0
+	bl OS_InitTick
 _022332C6:
 	bl ov74_02236074
 	ldr r0, _022332EC ; =0x0000E89C

@@ -267,6 +267,8 @@ Static main
 	Object os_protectionUnit.o
 	Object os_protectionRegion.o
 	Object os_exception.o
+	Object os_timer.o
+	Object os_tick.o
 	Object nitro.o
 	Object msl.o
 }

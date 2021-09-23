@@ -373,7 +373,7 @@ sub_0204BFF0: ; 0x0204BFF0
 	mov r2, #0
 	bl GetMonData
 	add r6, r0, #0
-	bl sub_020D34B0
+	bl OS_GetTick
 	bl PRandom
 	add r1, r0, #0
 	ldr r0, [sp, #0x18]

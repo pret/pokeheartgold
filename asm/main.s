@@ -124,7 +124,7 @@ _02000D82:
 	ldr r0, _02000E4C ; =_0211864-4
 	mov r1, #0
 	str r1, [r0, #4]
-	bl sub_020D33C0
+	bl OS_InitTick
 	mov r7, #0xc3
 	ldr r6, _02000E68 ; =gMain + 0x60
 	ldr r4, _02000E64 ; =gMain
@@ -150,9 +150,9 @@ _02000DD0:
 	cmp r0, #0
 	beq _02000E08
 	bl sub_02000F60
-	bl sub_020D34B0
+	bl OS_GetTick
 	bl Main_RunOverlayManager
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r0, [r4, #0x18]
 	bl sub_0201F880
 	ldr r0, [r4, #0x24]

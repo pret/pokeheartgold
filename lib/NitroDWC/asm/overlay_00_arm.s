@@ -465,10 +465,10 @@ _021E817C:
 	add r8, r8, #1
 	str r0, [sp]
 _021E8188:
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov sb, r0
 	mov sl, r1
-	bl sub_020D34B0
+	bl OS_GetTick
 	subs r2, r0, sb
 	sbc r0, r1, sl
 	mov r1, r0, lsl #6
@@ -511,7 +511,7 @@ _021E8224:
 	bl OS_UnlockMutex
 	mov r0, r7
 	bl OS_Sleep
-	bl sub_020D34B0
+	bl OS_GetTick
 	subs r2, r0, sb
 	sbc r0, r1, sl
 	mov r1, r0, lsl #6
@@ -1874,7 +1874,7 @@ _021E9580:
 	ldr r0, [r7, #0xc]
 	add r0, r1, r0
 	str r0, [r7, #8]
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [sp, #8]
 	add r0, sl, #0x234
 	str r1, [sp, #4]
@@ -1896,7 +1896,7 @@ _021E95D4:
 	cmp r0, #0
 	blt _021E9704
 	ble _021E9688
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [sp, #8]
 	add r0, sp, #0x10
 	str r1, [sp, #4]
@@ -1945,7 +1945,7 @@ _021E9688:
 	ldrge r0, [r4, #0xa34]
 	cmpge r0, r1
 	bge _021E9704
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, [sp, #8]
 	mov r3, #0
 	subs r2, r0, r2
@@ -6665,7 +6665,7 @@ ov00_021ED5E4: ; 0x021ED5E4
 	bne _021ED6A8
 	add r0, sp, #0
 	bl OS_GetMacAddress
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r2, r1, lsl #0x18
 	ldr ip, [sp]
 	ldr r3, [sp, #4]
@@ -8861,7 +8861,7 @@ _021EF31C:
 	ldr r0, [r0, #0x30]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, _021EF394 ; =_0221A90C
 	ldr r2, _021EF398 ; =0x000082EA
 	ldr ip, [r3, #4]
@@ -9131,7 +9131,7 @@ ov00_021EF658: ; 0x021EF658
 	bl strcpy
 	ldr r0, _021EF6F0 ; =_0221A90C
 	ldr r6, [r0, #4]
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r6, #0x34]
 	str r1, [r6, #0x38]
 	mov r3, #1
@@ -9211,7 +9211,7 @@ _021EF7A8:
 	bl sub_0209FF34
 	b _021EF7F0
 _021EF7BC:
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021EF8A8 ; =0x6C078965
 	ldr r3, _021EF8AC ; =0x5D588B65
 	umull ip, r4, r0, r2
@@ -9261,7 +9261,7 @@ _021EF808:
 	mov r4, r0
 	ldr r0, [r1, #4]
 	str r4, [r0, #0x24]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021EF8A4 ; =_0221A90C
 	ldr r2, [r2, #4]
 	str r0, [r2, #0x28]
@@ -9341,7 +9341,7 @@ _021EF990:
 	cmp r0, #0
 	addeq sp, sp, #0x3d0
 	ldmeqia sp!, {r3, pc}
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, _021EFAB0 ; =_0221A90C
 	ldr r2, _021EFAB8 ; =0x000082EA
 	ldr ip, [r3, #4]
@@ -10156,7 +10156,7 @@ ov00_021F0468: ; 0x021F0468
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
 	str r0, [r1, #8]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021F049C ; =_0221A918
 	ldr r2, [r2, #8]
 	str r0, [r2, #0xc]
@@ -10276,7 +10276,7 @@ ov00_021F05EC: ; 0x021F05EC
 	ldr r0, _021F0670 ; =_0221A918
 	mov r4, #0
 	ldr r5, [r0, #8]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, [r5, #0xc]
 	ldr r2, [r5, #0x10]
 	subs r3, r0, r3
@@ -10298,7 +10298,7 @@ ov00_021F05EC: ; 0x021F05EC
 	ldr r0, [r0, #4]
 	bl ov00_021FFD9C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021F0670 ; =_0221A918
 	ldr r2, [r2, #8]
 	str r0, [r2, #0xc]
@@ -11444,12 +11444,12 @@ _021F1570:
 	str r3, [r0, #8]
 	ldr r0, [r1]
 	str r3, [r0, #0xc]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021F161C ; =_0221A928
 	ldr r2, [r2]
 	str r0, [r2, #0x10]
 	str r1, [r2, #0x14]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021F161C ; =_0221A928
 	ldr r2, [r2]
 	str r0, [r2, #0x18]
@@ -12083,7 +12083,7 @@ _021F1EC0:
 	ldr r0, [r0, #0x1c8]
 	cmp r0, #0
 	beq _021F1FAC
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r6, r0
 	mov r7, r1
 	bl ov00_021F955C
@@ -12151,7 +12151,7 @@ _021F1FAC:
 	mul r0, r1, r0
 	add r0, r0, #0x3b8
 	add r5, r0, #0x800
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r6, r1
 	bl ov00_021F955C
@@ -12200,7 +12200,7 @@ _021F2078:
 	moveq r5, #0x3e8
 	ldrne r5, _021F285C ; =0x00000BB8
 _021F208C:
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r6, r1
 	bl ov00_021F955C
@@ -12235,7 +12235,7 @@ _021F20FC:
 	cmp r1, #0
 	cmpeq r0, #0
 	beq _021F2188
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -12269,7 +12269,7 @@ _021F2188:
 	ldrb r0, [r0, #0x3cc]
 	cmp r0, #6
 	bne _021F258C
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -12337,7 +12337,7 @@ _021F2280:
 	ldrb r0, [r0, #0x15]
 	cmp r0, #0
 	bne _021F22E8
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -12360,7 +12360,7 @@ _021F22E8:
 	ldrb r0, [r0, #0x15]
 	cmp r0, #0
 	beq _021F258C
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -12397,7 +12397,7 @@ _021F2374:
 	ldrb r0, [r0, #0x3cc]
 	cmp r0, #8
 	bne _021F258C
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -12471,7 +12471,7 @@ _021F2494:
 	bl ov00_021EE568
 	cmp r0, #5
 	bne _021F258C
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -12524,7 +12524,7 @@ _021F2514:
 	strb r1, [r0, #0x1ad]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021F2870 ; =0xFF403B3A
 	mvn r3, #0
 	adds r0, r0, r2
@@ -12547,7 +12547,7 @@ _021F25AC:
 	cmp r1, #0
 	cmpeq r0, #0
 	beq _021F2624
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -12609,7 +12609,7 @@ _021F2678:
 	cmp r1, #0
 	cmpeq r0, #0
 	beq _021F26E4
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -12653,7 +12653,7 @@ _021F2748:
 	ldr r0, [r0, #0x1a0]
 	cmp r0, #0x12
 	bne _021F27B0
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -13474,7 +13474,7 @@ _021F32C8:
 	bl ov00_021F956C
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1f0]
 	str r1, [r4, #0x1f4]
 	b _021F3300
@@ -14326,7 +14326,7 @@ _021F3EA8:
 	bne _021F3ED0
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021F3EF0 ; =0x00EFB5F7
 	adds r0, r0, r2
 	str r0, [r4, #0x174]
@@ -14738,7 +14738,7 @@ _021F4444:
 	str r8, [r0, #0x458]
 	bl ov00_021F955C
 	mov r5, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r5, #0x45c]
 	cmp sb, #0
 	str r1, [r5, #0x460]
@@ -15297,7 +15297,7 @@ _021F4C64:
 	bne _021F5610
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1cc]
 	str r1, [r4, #0x1d0]
 	bl ov00_021F955C
@@ -15319,7 +15319,7 @@ _021F4CC8:
 	str r1, [r0, #0x1bc]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1c0]
 	str r1, [r4, #0x1c4]
 	bl ov00_021F955C
@@ -15349,7 +15349,7 @@ _021F4D0C:
 	str r1, [r0, #0xe8]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xec]
 	str r1, [r4, #0xf0]
 	b _021F5610
@@ -15782,7 +15782,7 @@ _021F538C:
 	ldrneb r0, [r4]
 	cmpne r0, #0
 	beq _021F53E8
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, [r4, #0x10]
 	ldr r2, [r4, #0x14]
 	subs r3, r0, r3
@@ -16358,7 +16358,7 @@ _021F5B90:
 	str r1, [r0, #0x1bc]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1c0]
 	str r1, [r4, #0x1c4]
 	bl ov00_021F955C
@@ -16423,7 +16423,7 @@ _021F5C84:
 	str r1, [r0, #0x1c8]
 	bl ov00_021F955C
 	mov r6, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r6, #0x1cc]
 	str r1, [r6, #0x1d0]
 	bl ov00_021F955C
@@ -16514,7 +16514,7 @@ _021F5DB4:
 	str r1, [r0, #0x1c8]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1cc]
 	str r1, [r4, #0x1d0]
 	bl ov00_021F955C
@@ -16660,7 +16660,7 @@ ov00_021F5FD4: ; 0x021F5FD4
 	strb r1, [r0, #0x1a7]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1cc]
 	str r1, [r4, #0x1d0]
 	bl ov00_021F955C
@@ -16818,7 +16818,7 @@ _021F620C:
 	str r1, [r0, #0xe8]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xec]
 	str r1, [r4, #0xf0]
 	b _021F6314
@@ -17180,7 +17180,7 @@ _021F66FC:
 	str r1, [r0, #0xe8]
 	bl ov00_021F955C
 	mov r6, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r6, #0xec]
 	str r1, [r6, #0xf0]
 	b _021F67EC
@@ -18056,7 +18056,7 @@ _021F7354:
 	bl ov00_021F9630
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1e0]
 	str r1, [r4, #0x1e4]
 	add sp, sp, #4
@@ -18079,7 +18079,7 @@ ov00_021F7384: ; 0x021F7384
 	cmp r0, #0x11
 	bne _021F73FC
 _021F73B8:
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -18180,7 +18180,7 @@ _021F74F4:
 	strb r1, [r0, #0x1ab]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1e0]
 	str r1, [r4, #0x1e4]
 	b _021F75E4
@@ -18267,7 +18267,7 @@ _021F7620:
 	ldmneia sp!, {r3, r4, r5, r6, pc}
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1e8]
 	str r1, [r4, #0x1ec]
 	mov r0, #1
@@ -18314,7 +18314,7 @@ _021F76EC:
 	ldr r0, [r0, #0x1a0]
 	cmp r0, #0xe
 	bne _021F7858
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -18443,7 +18443,7 @@ ov00_021F7898: ; 0x021F7898
 	cmp r0, #0xf
 	bne _021F7910
 _021F78CC:
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_021F955C
@@ -18514,7 +18514,7 @@ _021F796C:
 	strb r1, [r0, #0x1ac]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1e8]
 	str r1, [r4, #0x1ec]
 	b _021F7A88
@@ -18826,7 +18826,7 @@ ov00_021F7DB4: ; 0x021F7DB4
 	strb r1, [r0, #0x1ad]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x1f8]
 	str r1, [r4, #0x1fc]
 	ldmia sp!, {r4, pc}
@@ -18848,14 +18848,14 @@ ov00_021F7DDC: ; 0x021F7DDC
 	str r2, [r0, #0xc]
 	ldr r0, [r1]
 	strb r2, [r0, #2]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021F7E48 ; =_0221A928
 	cmp r4, #0
 	ldr r2, [r2]
 	str r0, [r2, #0x18]
 	str r1, [r2, #0x1c]
 	ldmneia sp!, {r4, pc}
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021F7E48 ; =_0221A928
 	ldr r2, [r2]
 	str r0, [r2, #0x10]
@@ -18916,7 +18916,7 @@ ov00_021F7E4C: ; 0x021F7E4C
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _021F7F0C:
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r5, #0x18]
 	str r1, [r5, #0x1c]
 	mov r0, #0
@@ -18932,7 +18932,7 @@ _021F7F0C:
 	str r1, [r0, #0xe8]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xec]
 	add sp, sp, #8
 	str r1, [r4, #0xf0]
@@ -18948,7 +18948,7 @@ _021F7F60:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _021F7F80:
 	ldrb r4, [r5, #2]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, [r5, #0x18]
 	ldr r2, [r5, #0x1c]
 	subs r3, r0, r3
@@ -19050,7 +19050,7 @@ _021F80CC:
 	bne _021F8140
 	ldr r0, _021F826C ; =_0221A928
 	ldr r4, [r0]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, [r4, #0x10]
 	ldr r2, [r4, #0x14]
 	subs r3, r0, r3
@@ -19072,7 +19072,7 @@ _021F8140:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	ldr r0, _021F826C ; =_0221A928
 	ldr r4, [r0]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, [r4, #0x18]
 	ldr r2, [r4, #0x1c]
 	subs r3, r0, r3
@@ -19138,7 +19138,7 @@ _021F81E8:
 _021F8248:
 	ldr r0, _021F826C ; =_0221A928
 	ldr r4, [r0]
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x18]
 	str r1, [r4, #0x1c]
 	mov r0, #1
@@ -19458,7 +19458,7 @@ ov00_021F85B8: ; 0x021F85B8
 _021F8610:
 	bl ov00_021F955C
 	mov r7, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021F89C4 ; =0x00EFB5F7
 	adds r0, r0, r2
 	str r0, [r7, #0x174]
@@ -19569,7 +19569,7 @@ _021F8794:
 	str r1, [r0, #0xe8]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xec]
 	str r1, [r4, #0xf0]
 	b _021F89AC
@@ -19599,7 +19599,7 @@ _021F8804:
 	str r1, [r0, #0xe8]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xec]
 	str r1, [r4, #0xf0]
 	b _021F89AC
@@ -19704,7 +19704,7 @@ _021F898C:
 	str r1, [r0, #0xe8]
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xec]
 	str r1, [r4, #0xf0]
 _021F89AC:
@@ -20416,7 +20416,7 @@ _021F92D0:
 _021F9314:
 	bl ov00_021F955C
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x18c]
 	mov r0, #7
 	str r1, [r4, #0x190]
@@ -20475,7 +20475,7 @@ _021F93CC:
 _021F93F0:
 	bl ov00_021F955C
 	mov r5, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r5, #0x184]
 	str r1, [r5, #0x188]
 	cmp r6, #1
@@ -20941,7 +20941,7 @@ ov00_021F9988: ; 0x021F9988
 	mul r4, r0, r2
 	add r0, r3, r4
 	str r1, [r0, #0x2c]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021F99D0 ; =_0221B0A0
 	ldr r2, [r2]
 	add r2, r2, r4
@@ -21046,7 +21046,7 @@ _021F9AC0:
 	ldrne r0, [r6, #0x2c]
 	cmpne r0, #0
 	beq _021F9B54
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov sl, r1
 	ldr r2, [r6, #0x24]
 	mov r5, r0
@@ -21325,7 +21325,7 @@ _021F9E78:
 	ldrne r0, [r4, #0x2c]
 	cmpne r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x24]
 	str r1, [r4, #0x28]
 	ldmia sp!, {r4, r5, r6, pc}
@@ -21449,7 +21449,7 @@ _021FA020:
 	ldrne r0, [r4, #0x2c]
 	cmpne r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0x24]
 	str r1, [r4, #0x28]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -23357,7 +23357,7 @@ _021FB904:
 	bne _021FB928
 	mov r0, #0
 	strb r0, [r7, #0xd15]
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r7, #0xcb0]
 	str r1, [r7, #0xcb4]
 	mov r0, #0xa
@@ -24347,7 +24347,7 @@ ov00_021FC568: ; 0x021FC568
 	beq _021FC60C
 	ldmia sp!, {r3, r4, r5, pc}
 _021FC598:
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
@@ -24358,7 +24358,7 @@ _021FC598:
 	bl ov00_021FCBB4
 	ldmia sp!, {r3, r4, r5, pc}
 _021FC5C0:
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	ldrb r2, [r4, #0xd0f]
@@ -24378,7 +24378,7 @@ _021FC5C0:
 	bl ov00_021FCBB4
 	ldmia sp!, {r3, r4, r5, pc}
 _021FC60C:
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	ldrb r3, [r4, #0xd0f]
@@ -24400,12 +24400,12 @@ _021FC644: .word 0x02108FC8
 ov00_021FC648: ; 0x021FC648
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	mov r0, #0
 	strb r0, [r4, #0xd11]
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
@@ -24425,7 +24425,7 @@ _021FC694: .word 0x02108FC8
 ov00_021FC698: ; 0x021FC698
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, [r4, #0xcb0]
 	ldr r2, [r4, #0xcb4]
 	subs r3, r0, r3
@@ -24451,7 +24451,7 @@ ov00_021FC698: ; 0x021FC698
 	bl ov00_021FC9CC
 	ldmia sp!, {r4, pc}
 _021FC704:
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
@@ -24495,7 +24495,7 @@ ov00_021FC73C: ; 0x021FC73C
 ov00_021FC784: ; 0x021FC784
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, [r4, #0xcb0]
 	ldr r2, [r4, #0xcb4]
 	subs r3, r0, r3
@@ -24550,7 +24550,7 @@ _021FC838:
 	bl ov00_021FC9CC
 	ldmia sp!, {r4, pc}
 _021FC858:
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	ldrb r2, [r4, #0xd0f]
@@ -24579,7 +24579,7 @@ _021FC8A8: .word 0x000082EA
 ov00_021FC8AC: ; 0x021FC8AC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, [r4, #0xcb0]
 	ldr r2, [r4, #0xcb4]
 	subs r3, r0, r3
@@ -24636,7 +24636,7 @@ _021FC964:
 	bl ov00_021FC9CC
 	ldmia sp!, {r4, pc}
 _021FC98C:
-	bl sub_020D34B0
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	ldrb r3, [r4, #0xd0f]
@@ -24984,7 +24984,7 @@ ov00_021FCDC0: ; 0x021FCDC0
 	movne r0, #0xd
 	ldmia sp!, {r4, pc}
 _021FCDF8:
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, [r4, #0xcb0]
 	ldr r2, [r4, #0xcb4]
 	subs r3, r0, r3
@@ -26187,7 +26187,7 @@ _021FDDC8:
 	cmp r0, #0
 	cmpeq r1, #0
 	bne _021FE048
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021FE050 ; =_0221B0C4
 	ldr r2, [r2]
 	stmib r2, {r0, r1}
@@ -26198,7 +26198,7 @@ _021FDE10:
 	str r1, [r0, #8]
 	b _021FE048
 _021FDE20:
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r3, _021FE050 ; =_0221B0C4
 	ldr r2, _021FE05C ; =0x000082EA
 	ldr r4, [r3]
@@ -27865,7 +27865,7 @@ ov00_021FF31C: ; 0x021FF31C
 	arm_func_start ov00_021FF368
 ov00_021FF368: ; 0x021FF368
 	stmdb sp!, {r3, lr}
-	bl sub_020D3438
+	bl OS_IsTickAvailable
 	cmp r0, #1
 	beq _021FF38C
 	ldr r0, _021FF3AC ; =_02217E74
@@ -27874,7 +27874,7 @@ ov00_021FF368: ; 0x021FF368
 	ldr r3, _021FF3B8 ; =0x00000109
 	bl __msl_assertion_failed
 _021FF38C:
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r1, r1, lsl #6
 	orr r1, r1, r0, lsr #26
 	ldr r2, _021FF3BC ; =0x000082EA
@@ -28473,7 +28473,7 @@ _021FFA6C: .word _0221B1AC
 ov00_021FFA70: ; 0x021FFA70
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020D3438
+	bl OS_IsTickAvailable
 	cmp r0, #1
 	beq _021FFA98
 	ldr r0, _021FFAC0 ; =_02217E74
@@ -28482,7 +28482,7 @@ ov00_021FFA70: ; 0x021FFA70
 	ldr r3, _021FFACC ; =0x00000667
 	bl __msl_assertion_failed
 _021FFA98:
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r1, r1, lsl #6
 	orr r1, r1, r0, lsr #26
 	ldr r2, _021FFAD0 ; =0x01FF6210

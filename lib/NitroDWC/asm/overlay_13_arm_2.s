@@ -5247,7 +5247,7 @@ ov13_0222B558: ; 0x0222B558
 	ldr r0, [r1]
 	bic r0, r0, #0x10000
 	str r0, [r1]
-	bl sub_020D3438
+	bl OS_IsTickAvailable
 	cmp r0, #0
 	bne _0222B590
 	bl OS_Terminate
@@ -25461,7 +25461,7 @@ ov13_0223B788: ; 0x0223B788
 	add r1, r0, #0x1000
 	str r0, [r2]
 	str r4, [r1, #0x370]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r4, _0223B8F4 ; =0x0224F5B4
 	mov r2, #3
 	ldr r3, [r4]
@@ -25873,7 +25873,7 @@ _0223BD2C: .word 0x02245828
 ov13_0223BD30: ; 0x0223BD30
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	str r0, [sp]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _0223BE60 ; =0x0224F5B4
 	ldr r3, _0223BE64 ; =0x0017F898
 	ldr sl, [r2]
@@ -29179,13 +29179,13 @@ ov13_0223E80C: ; 0x0223E80C
 	strb r3, [r2, #0xa92]
 	ldr r0, [r0]
 	strb r1, [r0, #0xacc]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r0, _0223E8F8 ; =0x0224F5C8
 	ldr r0, [r0]
 	add r0, r0, #0x24c
 	add r0, r0, #0x400
 	bl sub_0209E628
-	bl sub_020D34B0
+	bl OS_GetTick
 	bl ov13_0223A7F4
 	ldr r1, _0223E8F8 ; =0x0224F5C8
 	ldr r1, [r1]

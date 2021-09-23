@@ -29243,11 +29243,11 @@
 .public OS_InitAlloc
 .public OS_ClearAlloc
 .public OS_CreateHeap
-.public sub_020D33C0
-.public sub_020D3438
-.public sub_020D34B0
-.public sub_020D3550
-.public sub_020D3560
+.public OS_InitTick
+.public OS_IsTickAvailable
+.public OS_GetTick
+.public OS_GetTickLo
+.public OS_SetTick
 .public sub_020D365C
 .public sub_020D369C
 .public OS_CreateAlarm

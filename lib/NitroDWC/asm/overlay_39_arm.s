@@ -513,10 +513,10 @@ ov39_0222993C: ; 0x0222993C
 	arm_func_start ov39_02229944
 ov39_02229944: ; 0x02229944
 	stmdb sp!, {r3, lr}
-	bl sub_020D3438
+	bl OS_IsTickAvailable
 	cmp r0, #0
 	bne _02229958
-	bl sub_020D33C0
+	bl OS_InitTick
 _02229958:
 	ldr r0, _0222996C ; =0x0222AB84
 	mov r1, #0x10
@@ -747,7 +747,7 @@ ov39_02229BE4: ; 0x02229BE4
 	strh r1, [sp, #2]
 	ldr r0, [r0, #0x264]
 	str r0, [sp, #4]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _02229D28 ; =0x0007FD88
 	mov r3, #0
 	bl _ll_udiv
@@ -769,7 +769,7 @@ _02229C54:
 	ldr r0, [sb, #0x244]
 	cmp r0, #0
 	beq _02229CD8
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r2, r5
 	mov r3, r4
 	bl _ll_udiv
@@ -824,7 +824,7 @@ _02229D28: .word 0x0007FD88
 ov39_02229D2C: ; 0x02229D2C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sb, #0
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _02229E38 ; =0x0007FD88
 	mov r3, sb
 	bl _ll_udiv
@@ -863,7 +863,7 @@ _02229DB8:
 	ldr r0, [r5, #0x248]
 	cmp r0, #0
 	beq _02229DF8
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r2, r7
 	mov r3, r6
 	bl _ll_udiv
@@ -906,7 +906,7 @@ ov39_02229E40: ; 0x02229E40
 	mov sl, #0
 	sub r0, sl, #1
 	str r0, [sp]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _02229FB8 ; =0x0007FD88
 	mov r3, sl
 	bl _ll_udiv
@@ -971,7 +971,7 @@ _02229F38:
 	ldr r0, [r6, #0x24c]
 	cmp r0, #0
 	beq _02229F78
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r2, fp
 	mov r3, #0
 	bl _ll_udiv

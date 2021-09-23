@@ -13135,7 +13135,7 @@ ov13_02226C94: ; 0x02226C94
 	thumb_func_start ov13_02226CBC
 ov13_02226CBC: ; 0x02226CBC
 	push {r3, lr}
-	bl sub_020D34B0
+	bl OS_GetTick
 	lsr r2, r0, #0x1a
 	lsl r1, r1, #6
 	orr r1, r2

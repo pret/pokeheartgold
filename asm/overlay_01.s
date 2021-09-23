@@ -21212,10 +21212,10 @@ ov01_021EFB38: ; 0x021EFB38
 	ldr r1, [r0, #8]
 	add r1, r1, #1
 	str r1, [r0, #8]
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_020D3560
+	bl OS_SetTick
 	pop {r3, pc}
 	.balign 4, 0
 _021EFB5C: .word 0x02209B64

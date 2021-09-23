@@ -25,7 +25,7 @@ _0221BA0C:
 	cmp r5, #0x20
 	blt _0221BA0C
 	bl sub_02034D8C
-	bl sub_020D33C0
+	bl OS_InitTick
 	bl sub_020D365C
 	bl OS_DisableInterrupts
 	add r5, r0, #0

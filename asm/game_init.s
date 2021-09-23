@@ -232,7 +232,7 @@ InitSystemForTheGame: ; 0x0201A200
 	orr r0, r1
 	strh r0, [r2]
 	bl GX_Init
-	bl sub_020D33C0
+	bl OS_InitTick
 	bl sub_0201A1B4
 	mov r0, #0xa0
 	bl sub_0201F82C

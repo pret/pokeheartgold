@@ -4,7 +4,7 @@
 #include <nitro/os/common/tick_shared.h>
 
 void OS_InitTick(void);
-u16 OS_IsTickAvailable(void);
+BOOL OS_IsTickAvailable(void);
 void OSi_CountUpTick(void);
 OSTick OS_GetTick(void);
 

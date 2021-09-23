@@ -84,7 +84,7 @@ ov112_021E5964: ; 0x021E5964
 	mov r1, #0xff
 	strb r1, [r0]
 	strb r1, [r0, #1]
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r1, _021E59A4 ; =0x021FF9E0
 	str r0, [r1, #0x20]
 	str r0, [r1, #4]
@@ -292,7 +292,7 @@ ov112_021E5AD0: ; 0x021E5AD0
 	mov r0, #0
 	pop {r3, pc}
 _021E5AE4:
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021E5B20 ; =0x021FF9E0
 	ldr r3, [r2, #0x30]
 	ldr r2, [r2, #0x34]
@@ -418,7 +418,7 @@ _021E5BC0:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021E5BCE:
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021E5D2C ; =0x021FF9E0
 	str r0, [r2, #0x30]
 	str r1, [r2, #0x34]
@@ -1009,7 +1009,7 @@ _021E6000: .word 0x021FFAF8
 	thumb_func_start ov112_021E6004
 ov112_021E6004: ; 0x021E6004
 	push {r3, lr}
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021E6114 ; =0x021FFAA4
 	ldr r3, [r2, #0x3c]
 	ldr r2, [r2, #0x40]
@@ -1180,7 +1180,7 @@ _021E6160: .word 0x021FFB24
 	thumb_func_start ov112_021E6164
 ov112_021E6164: ; 0x021E6164
 	push {r3, r4, r5, r6, r7, lr}
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021E64C8 ; =0x021FFAA4
 	ldr r3, [r2, #0x3c]
 	ldr r2, [r2, #0x40]
@@ -2350,7 +2350,7 @@ _021E6A84:
 	bl ov112_021E5A5C
 	pop {r3, pc}
 _021E6A94:
-	bl sub_020D34B0
+	bl OS_GetTick
 	ldr r2, _021E6BD0 ; =0x021FFAA4
 	str r0, [r2, #0x3c]
 	ldr r0, _021E6BD4 ; =0x021FFB24
