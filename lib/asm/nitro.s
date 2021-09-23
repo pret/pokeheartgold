@@ -70,53 +70,10 @@ _021E1924:
 	.public DLAddFront
 	.public DLExtract
 	.public DLInsert
-
-	arm_func_start OS_GetDTCMParam
-OS_GetDTCMParam: ; 0x020D3148
-	mrc p15, 0, r0, c9, c1, 0
-	ldr r1, _020D3158 ; =0xFFFFF000
-	and r0, r0, r1
-	bx lr
-	.align 2, 0
-_020D3158: .word 0xFFFFF000
-	arm_func_end OS_GetDTCMParam
-
-	arm_func_start OS_EnableProtectionUnit
-OS_EnableProtectionUnit: ; 0x020D315C
-	mrc p15, 0, r0, c1, c0, 0
-	orr r0, r0, #1
-	mcr p15, 0, r0, c1, c0, 0
-	bx lr
-	arm_func_end OS_EnableProtectionUnit
-
-	arm_func_start OS_DisableProtectionUnit
-OS_DisableProtectionUnit: ; 0x020D316C
-	mrc p15, 0, r0, c1, c0, 0
-	bic r0, r0, #1
-	mcr p15, 0, r0, c1, c0, 0
-	bx lr
-	arm_func_end OS_DisableProtectionUnit
-
-	arm_func_start OS_SetDPermissionsForProtectionRegion
-OS_SetDPermissionsForProtectionRegion: ; 0x020D317C
-	mrc p15, 0, r2, c5, c0, 2
-	bic r2, r2, r0
-	orr r2, r2, r1
-	mcr p15, 0, r2, c5, c0, 2
-	bx lr
-	arm_func_end OS_SetDPermissionsForProtectionRegion
-
-	arm_func_start OS_SetProtectionRegion1
-OS_SetProtectionRegion1: ; 0x020D3190
-	mcr p15, 0, r0, c6, c1, 0
-	bx lr
-	arm_func_end OS_SetProtectionRegion1
-
-	arm_func_start OS_SetProtectionRegion2
-OS_SetProtectionRegion2: ; 0x020D3198
-	mcr p15, 0, r0, c6, c2, 0
-	bx lr
-	arm_func_end OS_SetProtectionRegion2
+	.public OS_GetDTCMParam
+	.public OS_EnableProtectionUnit
+	.public OS_DisableProtectionUnit
+	.public OS_SetDPermissionsForProtectionRegion
 
 	arm_func_start OS_InitException
 OS_InitException: ; 0x020D31A0

@@ -37,6 +37,7 @@ FIXROM       := $(TOOLSDIR)/fixrom/fixrom$(EXE)
 KNARC        := $(TOOLSDIR)/knarc/knarc$(EXE)
 O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
 MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
+ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
 
 NATIVE_TOOLS := \
 	$(SCANINC) \
@@ -45,7 +46,8 @@ NATIVE_TOOLS := \
 	$(FIXROM) \
 	$(KNARC) \
 	$(O2NARC) \
-	$(MSGENC)
+	$(MSGENC) \
+	$(ASPATCH)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 
@@ -109,6 +111,10 @@ DUMMY != mkdir -p $(ALL_BUILDDIRS)
 .PHONY: all tidy clean tools clean-tools $(TOOLDIRS)
 .PRECIOUS: $(SBIN)
 
+.PHONY: $(MWAS)
+$(MWAS):
+	$(ASPATCH) $@
+
 all: tools
 
 ifeq ($(NODEP),)
@@ -125,7 +131,7 @@ $(BUILD_DIR)/%.o: %.s $$(dep)
 
 $(NATIVE_TOOLS): tools
 
-tools: $(TOOLDIRS)
+tools: $(TOOLDIRS) $(MWAS)
 
 $(TOOLDIRS):
 	@$(MAKE) -C $@

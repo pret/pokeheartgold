@@ -263,6 +263,9 @@ Static main
 	Object os_init.o
 	Object os_arena.o
 	Object os_alloc.o
+	Object os_tcm.o
+	Object os_protectionUnit.o
+	Object os_protectionRegion.o
 	Object nitro.o
 	Object msl.o
 }
