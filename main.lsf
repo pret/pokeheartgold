@@ -266,6 +266,7 @@ Static main
 	Object os_tcm.o
 	Object os_protectionUnit.o
 	Object os_protectionRegion.o
+	Object os_exception.o
 	Object nitro.o
 	Object msl.o
 }

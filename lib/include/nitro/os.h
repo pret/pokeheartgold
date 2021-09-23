@@ -17,5 +17,6 @@
 #include <nitro/os/vramExclusive.h>
 #include <nitro/os/emulator.h>
 #include <nitro/os/protectionRegion.h>
+#include <nitro/os/protectionUnit.h>
 
 #endif //NITRO_OS_H_
