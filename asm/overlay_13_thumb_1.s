@@ -26,7 +26,7 @@ _0221BA0C:
 	blt _0221BA0C
 	bl sub_02034D8C
 	bl OS_InitTick
-	bl sub_020D365C
+	bl OS_InitAlarm
 	bl OS_DisableInterrupts
 	add r5, r0, #0
 	mov r0, #2

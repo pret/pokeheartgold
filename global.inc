@@ -29248,8 +29248,8 @@
 .public OS_GetTick
 .public OS_GetTickLo
 .public OS_SetTick
-.public sub_020D365C
-.public sub_020D369C
+.public OS_InitAlarm
+.public OS_IsAlarmAvailable
 .public OS_CreateAlarm
 .public OS_SetAlarm
 .public OS_CancelAlarm

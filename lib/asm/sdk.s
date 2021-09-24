@@ -25268,10 +25268,10 @@ _020AD8BC:
 	bne _020AD930
 	bl OS_InitTick
 _020AD930:
-	bl sub_020D369C
+	bl OS_IsAlarmAvailable
 	cmp r0, #0
 	bne _020AD940
-	bl sub_020D365C
+	bl OS_InitAlarm
 _020AD940:
 	ldr r0, _020AD964 ; =0x021D5FEC
 	ldr r0, [r0]

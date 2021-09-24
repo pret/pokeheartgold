@@ -5252,7 +5252,7 @@ ov13_0222B558: ; 0x0222B558
 	bne _0222B590
 	bl OS_Terminate
 _0222B590:
-	bl sub_020D369C
+	bl OS_IsAlarmAvailable
 	cmp r0, #0
 	bne _0222B5A0
 	bl OS_Terminate

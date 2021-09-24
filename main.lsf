@@ -269,6 +269,7 @@ Static main
 	Object os_exception.o
 	Object os_timer.o
 	Object os_tick.o
+	Object os_alarm.o
 	Object nitro.o
 	Object msl.o
 }

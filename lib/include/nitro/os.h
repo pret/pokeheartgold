@@ -18,5 +18,7 @@
 #include <nitro/os/emulator.h>
 #include <nitro/os/protectionRegion.h>
 #include <nitro/os/protectionUnit.h>
+#include <nitro/os/tick.h>
+#include <nitro/os/alarm.h>
 
 #endif //NITRO_OS_H_
