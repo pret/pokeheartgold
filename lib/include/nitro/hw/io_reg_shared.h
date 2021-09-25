@@ -54,6 +54,10 @@
 #define REG_IF_ADDR                (HW_REG_BASE + REG_IF_OFFSET)
 #define reg_OS_IF                  (*(REGType32v *)REG_IF_ADDR)
 
+#define REG_SUBINTF_OFFSET         0x180
+#define REG_SUBINTF_ADDR           (HW_REG_BASE + REG_SUBINTF_OFFSET)
+#define reg_OS_SUBINTF             (*(REGType16v *)REG_SUBINTF_ADDR)
+
 #define REG_OS_TM0CNT_H_PS_SHIFT                           0
 
 #endif //NITRO_HW_IO_REG_SHARED_H_

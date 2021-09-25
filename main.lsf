@@ -281,6 +281,7 @@ Autoload ITCM
 {
 	Address 0x01FF8000
 	Object os_irqHandler.o (.itcm)
+	Object os_reset.o (.itcm)
 	Object nitro.o (.itcm)
 }
 
