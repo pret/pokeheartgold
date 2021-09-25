@@ -12,5 +12,6 @@
 #include <nitro/pxi.h>
 #include <nitro/card.h>
 #include <nitro/ctrdg.h>
+#include <nitro/mb.h>
 
 #endif //NITRO_H_

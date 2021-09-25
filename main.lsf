@@ -272,6 +272,7 @@ Static main
 	Object os_alarm.o
 	Object os_valarm.o
 	Object os_system.o
+	Object os_reset.o
 	Object nitro.o
 	Object msl.o
 }

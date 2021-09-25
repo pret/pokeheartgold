@@ -75,126 +75,12 @@
 	.public OSi_SetTimer
 	.public OSi_InsertAlarm
 	.public OS_GetCpsrIrq
+	.public OSi_SendToPxi
 
-_021E1A04:
-	.space 0x398C
+_021E1A08:
+	.space 0x3988
 
 	.text
-
-	arm_func_start OS_InitReset
-OS_InitReset: ; 0x020D3AD0
-	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _020D3B1C ; =0x021E1A04
-	ldrh r1, [r0, #2]
-	cmp r1, #0
-	ldmneia sp!, {r3, r4, r5, pc}
-	mov r1, #1
-	strh r1, [r0, #2]
-	bl PXI_Init
-	mov r5, #0xc
-	mov r4, #1
-_020D3AF8:
-	mov r0, r5
-	mov r1, r4
-	bl PXI_IsCallbackReady
-	cmp r0, #0
-	beq _020D3AF8
-	ldr r1, _020D3B20 ; =OSi_CommonCallback
-	mov r0, #0xc
-	bl PXI_SetFifoRecvCallback
-	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
-_020D3B1C: .word 0x021E1A04
-_020D3B20: .word OSi_CommonCallback
-	arm_func_end OS_InitReset
-
-	arm_func_start OSi_CommonCallback
-OSi_CommonCallback: ; 0x020D3B24
-	stmdb sp!, {r3, lr}
-	and r0, r1, #0x7f00
-	mov r0, r0, lsl #8
-	mov r0, r0, lsr #0x10
-	cmp r0, #0x10
-	bne _020D3B4C
-	ldr r0, _020D3B54 ; =0x021E1A04
-	mov r1, #1
-	strh r1, [r0]
-	ldmia sp!, {r3, pc}
-_020D3B4C:
-	bl OS_Terminate
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_020D3B54: .word 0x021E1A04
-	arm_func_end OSi_CommonCallback
-
-	arm_func_start OSi_SendToPxi
-OSi_SendToPxi: ; 0x020D3B58
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r6, r0, lsl #8
-	mov r5, #0xc
-	mov r4, #0
-_020D3B68:
-	mov r0, r5
-	mov r1, r6
-	mov r2, r4
-	bl PXI_SendWordByFifo
-	cmp r0, #0
-	bne _020D3B68
-	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end OSi_SendToPxi
-
-	arm_func_start OS_ResetSystem
-OS_ResetSystem: ; 0x020D3B84
-	stmdb sp!, {r4, lr}
-	ldr r1, _020D3C14 ; =0x027FFC40
-	mov r4, r0
-	ldrh r0, [r1]
-	cmp r0, #2
-	moveq r0, #1
-	movne r0, #0
-	cmp r0, #0
-	beq _020D3BAC
-	bl OS_Terminate
-_020D3BAC:
-	bl OS_GetLockID
-	mov r0, r0, lsl #0x10
-	mov r0, r0, lsr #0x10
-	bl CARD_LockRom
-	ldr r0, _020D3C18 ; =0x00000000
-	bl MI_StopDma
-	ldr r0, _020D3C1C ; =0x00000001
-	bl MI_StopDma
-	ldr r0, _020D3C20 ; =0x00000002
-	bl MI_StopDma
-	ldr r0, _020D3C24 ; =0x00000003
-	bl MI_StopDma
-	ldr r0, _020D3C28 ; =0x00040000
-	bl OS_SetIrqMask
-	ldr r0, _020D3C2C ; =0xFFFBFFFF
-	bl OS_ResetRequestIrqMask
-	ldr r1, _020D3C30 ; =0x027FFC20
-	ldr r0, _020D3C34 ; =0x00000010
-	str r4, [r1]
-	bl OSi_SendToPxi
-	ldr r0, _020D3C38 ; =0x027E3F80
-	ldr r1, _020D3C3C ; =0x00000800
-	sub r0, r0, r1
-	mov sp, r0
-	bl OSi_DoResetSystem ; noreturn
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_020D3C14: .word 0x027FFC40
-_020D3C18: .word 0x00000000
-_020D3C1C: .word 0x00000001
-_020D3C20: .word 0x00000002
-_020D3C24: .word 0x00000003
-_020D3C28: .word 0x00040000
-_020D3C2C: .word 0xFFFBFFFF
-_020D3C30: .word 0x027FFC20
-_020D3C34: .word 0x00000010
-_020D3C38: .word 0x027E3F80
-_020D3C3C: .word 0x00000800
-	arm_func_end OS_ResetSystem
 
 	arm_func_start OS_GetMacAddress
 OS_GetMacAddress: ; 0x020D3C40
