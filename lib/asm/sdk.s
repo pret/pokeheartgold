@@ -6621,7 +6621,7 @@ sub_0209E00C: ; 0x0209E00C
 	bl PXI_Init
 	mov r0, #0xf
 	mov r1, #1
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	moveq r0, #2
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
@@ -6727,12 +6727,12 @@ _0209E18C:
 _0209E198:
 	mov r0, #0xf
 	mov r1, #0
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	bne _0209E1B8
 	ldr r1, _0209E240 ; =sub_0209E328
 	mov r0, #0xf
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 _0209E1B8:
 	cmp r6, #0
 	ldrne r0, _0209E234 ; =0x021D43BC
@@ -6747,7 +6747,7 @@ _0209E1D4:
 	mov r1, #0x10000
 	mov r2, #0
 	str r5, [r3, #4]
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	bge _0209E224
 	ldr r1, _0209E234 ; =0x021D43BC
@@ -6783,7 +6783,7 @@ sub_0209E248: ; 0x0209E248
 	bl PXI_Init
 	mov r0, #0xf
 	mov r1, #1
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	moveq r0, #2
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -6799,12 +6799,12 @@ sub_0209E248: ; 0x0209E248
 _0209E294:
 	mov r0, #0xf
 	mov r1, #0
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	bne _0209E2B4
 	ldr r1, _0209E320 ; =sub_0209E328
 	mov r0, #0xf
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 _0209E2B4:
 	cmp r6, #0
 	ldrne r0, _0209E31C ; =0x021D43BC
@@ -6819,7 +6819,7 @@ _0209E2D0:
 	mov r1, #0x20000
 	mov r2, #0
 	str r5, [r3, #4]
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	bge _0209E30C
 	ldr r1, _0209E31C ; =0x021D43BC
@@ -6887,7 +6887,7 @@ _0209E394:
 _0209E3C8:
 	mov r0, #0xf
 	mov r1, #0
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 _0209E3D4:
 	cmp r4, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -7366,42 +7366,42 @@ _0209E9EC:
 	ldr r1, [sp]
 	mov r0, #4
 	mov r2, r5
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209E9B0
 	mov r0, #4
 	mov r1, r4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209E9B0
 	ldr r1, [sp, #4]
 	mov r0, #4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209E9B0
 	ldr r1, [sp, #8]
 	mov r0, #4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209E9B0
 	ldr r1, [sp, #0xc]
 	mov r0, #4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209E9B0
 	ldr r1, [sp, #0x10]
 	mov r0, #4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -7410,7 +7410,7 @@ _0209EA98:
 	ldr r1, [sp, #0x14]
 	mov r0, #4
 	mov r2, r5
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -7419,35 +7419,35 @@ _0209EAB8:
 	ldr r1, [sp, #0x18]
 	mov r0, #4
 	mov r2, r5
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209EB44
 	mov r0, #4
 	mov r1, r4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209EB44
 	ldr r1, [sp, #0x1c]
 	mov r0, #4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209EB44
 	ldr r1, [sp, #0x20]
 	mov r0, #4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209EB44
 	ldr r1, [sp, #0x24]
 	mov r0, #4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -7460,21 +7460,21 @@ _0209EB54:
 	ldr r1, [sp, #0x28]
 	mov r0, #4
 	mov r2, r5
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209E9B0
 	ldr r1, [sp, #0x2c]
 	mov r0, #4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _0209E9B0
 	ldr r1, [sp, #0x30]
 	mov r0, #4
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -7484,7 +7484,7 @@ _0209EBAC:
 	mov r0, #4
 	add r1, r1, #0xc00
 	mov r2, r5
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -7493,7 +7493,7 @@ _0209EBD0:
 	ldr r1, _0209ED2C ; =0x03002100
 	mov r0, #4
 	mov r2, r5
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -7608,12 +7608,12 @@ sub_0209ED38: ; 0x0209ED38
 _0209ED58:
 	mov r0, r8
 	mov r1, r7
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _0209ED58
 	ldr r1, _0209EDC4 ; =sub_0209EEFC
 	mov r0, #4
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	mov r0, r5, lsl #0x10
 	mov r8, r0, lsr #0x10
 	mov r7, #0x40000
@@ -7650,12 +7650,12 @@ sub_0209EDC8: ; 0x0209EDC8
 _0209EDE0:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _0209EDE0
 	ldr r1, _0209EE40 ; =sub_0209EEFC
 	mov r0, #4
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	mov r0, r6
 	mov r1, r7
 	bl DC_StoreRange
@@ -7712,12 +7712,12 @@ sub_0209EE90: ; 0x0209EE90
 _0209EE9C:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _0209EE9C
 	ldr r1, _0209EEF8 ; =sub_0209EEFC
 	mov r0, #4
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	mov r4, #0x40000
 	mov r6, #7
 	mov r5, #0
@@ -28344,7 +28344,7 @@ sub_020B01C0: ; 0x020B01C0
 	ldr r2, [r0, #8]
 	cmp r2, #0
 	bne _020B01E8
-	ldr r1, _020B020C ; =sub_01FF8000
+	ldr r1, _020B020C ; =OS_IrqHandler
 	str r1, [r0, #8]
 	ldr r1, [r0, #0xc]
 	add r1, r1, #1
@@ -28352,7 +28352,7 @@ sub_020B01C0: ; 0x020B01C0
 	mov r0, #1
 	bx lr
 _020B01E8:
-	ldr r1, _020B020C ; =sub_01FF8000
+	ldr r1, _020B020C ; =OS_IrqHandler
 	cmp r2, r1
 	movne r0, #0
 	bxne lr
@@ -28362,14 +28362,14 @@ _020B01E8:
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_020B020C: .word sub_01FF8000
+_020B020C: .word OS_IrqHandler
 	arm_func_end sub_020B01C0
 
 	arm_func_start sub_020B0210
 sub_020B0210: ; 0x020B0210
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #8]
-	ldr r1, _020B0244 ; =sub_01FF8000
+	ldr r1, _020B0244 ; =OS_IrqHandler
 	cmp r2, r1
 	ldmneia sp!, {r3, pc}
 	ldr r1, [r0, #0xc]
@@ -28381,7 +28381,7 @@ sub_020B0210: ; 0x020B0210
 	bl OS_WakeupThread
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B0244: .word sub_01FF8000
+_020B0244: .word OS_IrqHandler
 	arm_func_end sub_020B0210
 
 	arm_func_start sub_020B0248

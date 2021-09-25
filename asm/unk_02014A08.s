@@ -106,7 +106,7 @@ _02014A9E:
 sub_02014AA0: ; 0x02014AA0
 	push {r3, lr}
 	mov r0, #0
-	bl sub_020D4294
+	bl MI_StopDma
 	mov r0, #0
 	bl MI_WaitDma
 	pop {r3, pc}

@@ -4890,7 +4890,7 @@ ov40_0222DD9C: ; 0x0222DD9C
 	bl sub_0201D5C8
 	add r0, r6, #0
 	bl String_dtor
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #4
 	mov r1, #1
 	bl sub_02022CC8

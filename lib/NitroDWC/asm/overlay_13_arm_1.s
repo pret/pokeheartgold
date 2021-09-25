@@ -3510,7 +3510,7 @@ _0221EA74:
 	cmp r2, #1
 	bne _0221EA84
 	ldr r0, _0221EDA8 ; =0x000032C8
-	bl sub_020D3AA8
+	bl OS_SpinWait
 _0221EA84:
 	ldr r0, _0221ED9C ; =0x0224CF40
 	mov r2, #0
@@ -4761,7 +4761,7 @@ _0221FB14:
 	bl OS_RestoreInterrupts
 	mov r0, #0xf
 	mov r1, #1
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	ldr r1, _0221FC40 ; =0x0224CF40
 	ldr r1, [r1, #0xc]
 	add r1, r1, #0x7000

@@ -20664,7 +20664,7 @@ _021EF440:
 	str r0, [sp, #0x14]
 	str r0, [sp, #0x18]
 	str r1, [sp, #0x1c]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #4]
@@ -21388,7 +21388,7 @@ _021EFA4C:
 	str r0, [sp, #0x10]
 	str r0, [sp, #0x14]
 	str r1, [sp, #0x18]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #0x60
 	str r0, [sp]
 	ldr r0, [r5, #4]
@@ -21457,7 +21457,7 @@ ov96_021EFACC: ; 0x021EFACC
 	str r1, [sp, #8]
 	str r1, [sp, #0xc]
 	str r0, [sp, #0x10]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #0x60
 	str r0, [sp]
 	ldr r0, [r4, #4]
@@ -21577,7 +21577,7 @@ _021EFBD4:
 	str r0, [sp, #0x14]
 	str r0, [sp, #0x18]
 	str r1, [sp, #0x1c]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #4]
@@ -31367,7 +31367,7 @@ ov96_021F48FC: ; 0x021F48FC
 	str r0, [sp, #0x10]
 	str r0, [sp, #0x14]
 	str r1, [sp, #0x18]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #0x60
 	str r0, [sp]
 	add r0, r4, #0
@@ -31491,7 +31491,7 @@ ov96_021F4990: ; 0x021F4990
 	str r1, [sp, #0x10]
 	str r1, [sp, #0x14]
 	str r0, [sp, #0x18]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #0x60
 	str r0, [sp]
 	add r0, r4, #0
@@ -31740,7 +31740,7 @@ _021F4BFA:
 	str r1, [sp, #0x14]
 	str r1, [sp, #0x18]
 	str r0, [sp, #0x1c]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #0x60
 	str r0, [sp]
 	ldr r0, [r5, #8]
@@ -37575,7 +37575,7 @@ _021F7AA0:
 	str r0, [sp, #0x10]
 	str r0, [sp, #0x14]
 	str r1, [sp, #0x18]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	add r0, sp, #0xc
 	str r0, [sp]
 	mov r0, #0x80

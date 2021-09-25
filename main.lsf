@@ -271,6 +271,7 @@ Static main
 	Object os_tick.o
 	Object os_alarm.o
 	Object os_valarm.o
+	Object os_system.o
 	Object nitro.o
 	Object msl.o
 }
@@ -278,14 +279,15 @@ Static main
 Autoload ITCM
 {
 	Address 0x01FF8000
+	Object os_irqHandler.o (.itcm)
 	Object nitro.o (.itcm)
 }
 
 Autoload DTCM
 {
 	Address 0x027E0000
-	Object nitro_dtcm.o (.dtcm)
-	Object nitro_dtcm.o (.bss)
+	Object os_irqHandler.o (.dtcm)
+	Object os_irqHandler.o (.dtcm.bss)
 }
 Overlay OVY_0
 {

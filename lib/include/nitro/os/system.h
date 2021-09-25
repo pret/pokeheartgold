@@ -17,7 +17,7 @@ OSIntrMode OS_DisableInterrupts(void);
 OSIntrMode OS_RestoreInterrupts(OSIntrMode state);
 OSIntrMode OS_DisableInterrupts_IrqAndFiq(void);
 OSIntrMode OS_RestoreInterrupts_IrqAndFiq(OSIntrMode state);
-OSIntrMode OS_GetCpsrIrq(void);
+OSIntrMode_Irq OS_GetCpsrIrq(void);
 OSProcMode OS_GetProcMode(void);
 void OS_SpinWait(u32 cycles);
 void OS_WaitVBlankIntr(void);

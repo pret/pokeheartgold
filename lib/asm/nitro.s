@@ -16,6 +16,8 @@
 	.public G3_LoadMtx44
 	.public OSi_GetUnusedThreadId
 	.public OSi_InsertLinkToQueue
+	.public OSi_ThreadInfo
+	.public OSi_IrqThreadQueue
 
 	.public OSi_IrqCallback
 	.public OSi_IrqCallbackInfoIndex
@@ -72,87 +74,12 @@
 	.public OSi_SetTimerReserved
 	.public OSi_SetTimer
 	.public OSi_InsertAlarm
+	.public OS_GetCpsrIrq
 
 _021E1A04:
 	.space 0x398C
 
 	.text
-
-	arm_func_start OS_EnableInterrupts
-OS_EnableInterrupts: ; 0x020D3A24
-	mrs r0, cpsr
-	bic r1, r0, #0x80
-	msr cpsr_c, r1
-	and r0, r0, #0x80
-	bx lr
-	arm_func_end OS_EnableInterrupts
-
-	arm_func_start OS_DisableInterrupts
-OS_DisableInterrupts: ; 0x020D3A38
-	mrs r0, cpsr
-	orr r1, r0, #0x80
-	msr cpsr_c, r1
-	and r0, r0, #0x80
-	bx lr
-	arm_func_end OS_DisableInterrupts
-
-	arm_func_start OS_RestoreInterrupts
-OS_RestoreInterrupts: ; 0x020D3A4C
-	mrs r1, cpsr
-	bic r2, r1, #0x80
-	orr r2, r2, r0
-	msr cpsr_c, r2
-	and r0, r1, #0x80
-	bx lr
-	arm_func_end OS_RestoreInterrupts
-
-	arm_func_start OS_DisableInterrupts_IrqAndFiq
-OS_DisableInterrupts_IrqAndFiq: ; 0x020D3A64
-	mrs r0, cpsr
-	orr r1, r0, #0xc0
-	msr cpsr_c, r1
-	and r0, r0, #0xc0
-	bx lr
-	arm_func_end OS_DisableInterrupts_IrqAndFiq
-
-	arm_func_start OS_RestoreInterrupts_IrqAndFiq
-OS_RestoreInterrupts_IrqAndFiq: ; 0x020D3A78
-	mrs r1, cpsr
-	bic r2, r1, #0xc0
-	orr r2, r2, r0
-	msr cpsr_c, r2
-	and r0, r1, #0xc0
-	bx lr
-	arm_func_end OS_RestoreInterrupts_IrqAndFiq
-
-	arm_func_start sub_020D3A90
-sub_020D3A90: ; 0x020D3A90
-	mrs r0, cpsr
-	and r0, r0, #0x80
-	bx lr
-	arm_func_end sub_020D3A90
-
-	arm_func_start OS_GetProcMode
-OS_GetProcMode: ; 0x020D3A9C
-	mrs r0, cpsr
-	and r0, r0, #0x1f
-	bx lr
-sub_020D3AA8:
-	subs r0, r0, #4
-	bhs sub_020D3AA8
-	bx lr
-	arm_func_end OS_GetProcMode
-
-	arm_func_start sub_020D3AB4
-sub_020D3AB4: ; 0x020D3AB4
-	stmdb sp!, {r3, lr}
-	mov r0, #1
-	bl SVC_WaitByLoop
-	mov r0, #1
-	mov r1, r0
-	bl OS_WaitIrq
-	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D3AB4
 
 	arm_func_start OS_InitReset
 OS_InitReset: ; 0x020D3AD0
@@ -169,20 +96,20 @@ OS_InitReset: ; 0x020D3AD0
 _020D3AF8:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020D3AF8
-	ldr r1, _020D3B20 ; =sub_020D3B24
+	ldr r1, _020D3B20 ; =OSi_CommonCallback
 	mov r0, #0xc
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D3B1C: .word 0x021E1A04
-_020D3B20: .word sub_020D3B24
+_020D3B20: .word OSi_CommonCallback
 	arm_func_end OS_InitReset
 
-	arm_func_start sub_020D3B24
-sub_020D3B24: ; 0x020D3B24
+	arm_func_start OSi_CommonCallback
+OSi_CommonCallback: ; 0x020D3B24
 	stmdb sp!, {r3, lr}
 	and r0, r1, #0x7f00
 	mov r0, r0, lsl #8
@@ -198,10 +125,10 @@ _020D3B4C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020D3B54: .word 0x021E1A04
-	arm_func_end sub_020D3B24
+	arm_func_end OSi_CommonCallback
 
-	arm_func_start sub_020D3B58
-sub_020D3B58: ; 0x020D3B58
+	arm_func_start OSi_SendToPxi
+OSi_SendToPxi: ; 0x020D3B58
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0, lsl #8
 	mov r5, #0xc
@@ -210,11 +137,11 @@ _020D3B68:
 	mov r0, r5
 	mov r1, r6
 	mov r2, r4
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	bne _020D3B68
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020D3B58
+	arm_func_end OSi_SendToPxi
 
 	arm_func_start OS_ResetSystem
 OS_ResetSystem: ; 0x020D3B84
@@ -232,15 +159,15 @@ _020D3BAC:
 	bl OS_GetLockID
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_020DC96C
+	bl CARD_LockRom
 	ldr r0, _020D3C18 ; =0x00000000
-	bl sub_020D4294
+	bl MI_StopDma
 	ldr r0, _020D3C1C ; =0x00000001
-	bl sub_020D4294
+	bl MI_StopDma
 	ldr r0, _020D3C20 ; =0x00000002
-	bl sub_020D4294
+	bl MI_StopDma
 	ldr r0, _020D3C24 ; =0x00000003
-	bl sub_020D4294
+	bl MI_StopDma
 	ldr r0, _020D3C28 ; =0x00040000
 	bl OS_SetIrqMask
 	ldr r0, _020D3C2C ; =0xFFFBFFFF
@@ -248,12 +175,12 @@ _020D3BAC:
 	ldr r1, _020D3C30 ; =0x027FFC20
 	ldr r0, _020D3C34 ; =0x00000010
 	str r4, [r1]
-	bl sub_020D3B58
+	bl OSi_SendToPxi
 	ldr r0, _020D3C38 ; =0x027E3F80
 	ldr r1, _020D3C3C ; =0x00000800
 	sub r0, r0, r1
 	mov sp, r0
-	bl sub_01FF81B4
+	bl OSi_DoResetSystem ; noreturn
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D3C14: .word 0x027FFC40
@@ -771,8 +698,8 @@ _020D4288:
 _020D4290: .word 0x81400001
 	arm_func_end MI_WaitDma
 
-	arm_func_start sub_020D4294
-sub_020D4294: ; 0x020D4294
+	arm_func_start MI_StopDma
+MI_StopDma: ; 0x020D4294
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
@@ -806,7 +733,7 @@ _020D4304:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D430C: .word 0x81400001
-	arm_func_end sub_020D4294
+	arm_func_end MI_StopDma
 
 	arm_func_start sub_020D4310
 sub_020D4310: ; 0x020D4310
@@ -1905,7 +1832,7 @@ MI_Init: ; 0x020D502C
 	mov r0, #3
 	bl sub_020D3F64
 	mov r0, #0
-	bl sub_020D4294
+	bl MI_StopDma
 	ldmia sp!, {r3, pc}
 	arm_func_end MI_Init
 
@@ -2444,7 +2371,7 @@ _020D5634:
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, r6
-	bl sub_020D3AA8
+	bl OS_SpinWait
 	bl OS_DisableInterrupts
 	mov r4, r0
 	bl sub_020D6040
@@ -2611,7 +2538,7 @@ _020D5858:
 	mov r0, #7
 	ldr r1, [r1, #8]
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	bge _020D5918
 	tst sl, #1
@@ -2652,7 +2579,7 @@ _020D58F4:
 	ldr r1, [r4, #8]
 	mov r0, r5
 	mov r2, fp
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	blt _020D58B4
 _020D5918:
@@ -2839,13 +2766,13 @@ sub_020D5B30: ; 0x020D5B30
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _020D5B8C ; =sub_020D5B0C
 	mov r0, #7
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	bl sub_020D5C00
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, #7
 	mov r1, #1
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r6, #0x64
@@ -2853,10 +2780,10 @@ sub_020D5B30: ; 0x020D5B30
 	mov r4, #1
 _020D5B6C:
 	mov r0, r6
-	bl sub_020D3AA8
+	bl OS_SpinWait
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020D5B6C
 	ldmia sp!, {r4, r5, r6, pc}
@@ -2873,7 +2800,7 @@ _020D5B9C:
 	mov r0, r5
 	mov r1, r4
 	mov r2, r4
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	blt _020D5B9C
 	ldmia sp!, {r3, r4, r5, pc}
@@ -3726,8 +3653,8 @@ _020D664C: .word sub_020D674C
 _020D6650: .word 0x04000180
 	arm_func_end sub_020D6554
 
-	arm_func_start sub_020D6654
-sub_020D6654: ; 0x020D6654
+	arm_func_start PXI_SetFifoRecvCallback
+PXI_SetFifoRecvCallback: ; 0x020D6654
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
@@ -3748,10 +3675,10 @@ sub_020D6654: ; 0x020D6654
 	.align 2, 0
 _020D6698: .word 0x021E35A8
 _020D669C: .word 0x027FFC00
-	arm_func_end sub_020D6654
+	arm_func_end PXI_SetFifoRecvCallback
 
-	arm_func_start sub_020D66A0
-sub_020D66A0: ; 0x020D66A0
+	arm_func_start PXI_IsCallbackReady
+PXI_IsCallbackReady: ; 0x020D66A0
 	ldr r2, _020D66C0 ; =0x027FFC00
 	mov r3, #1
 	add r1, r2, r1, lsl #2
@@ -3762,10 +3689,10 @@ sub_020D66A0: ; 0x020D66A0
 	bx lr
 	.align 2, 0
 _020D66C0: .word 0x027FFC00
-	arm_func_end sub_020D66A0
+	arm_func_end PXI_IsCallbackReady
 
-	arm_func_start sub_020D66C4
-sub_020D66C4: ; 0x020D66C4
+	arm_func_start PXI_SendWordByFifo
+PXI_SendWordByFifo: ; 0x020D66C4
 	stmdb sp!, {r3, lr}
 	ldr ip, [sp]
 	ldr r3, _020D6748 ; =0x04000184
@@ -3803,7 +3730,7 @@ _020D6734:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020D6748: .word 0x04000184
-	arm_func_end sub_020D66C4
+	arm_func_end PXI_SendWordByFifo
 
 	arm_func_start sub_020D674C
 sub_020D674C: ; 0x020D674C
@@ -6086,7 +6013,7 @@ _020D8534:
 	ldr r0, [r0]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_020DC96C
+	bl CARD_LockRom
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 _020D8550:
@@ -7977,12 +7904,12 @@ sub_020D9EF0: ; 0x020D9EF0
 _020D9F3C:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020D9F3C
 	ldr r1, _020D9F64 ; =sub_020D9C70
 	mov r0, #6
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D9F60: .word 0x021E36B0
@@ -8127,7 +8054,7 @@ sub_020DA124: ; 0x020DA124
 	mov r0, #6
 	mov r1, #0x3000000
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movge r0, #1
 	movlt r0, #0
@@ -8216,7 +8143,7 @@ _020DA250:
 	orr r1, r1, #0x2000000
 	mov r0, #6
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r0, #0
 	blt _020DA29C
@@ -8224,7 +8151,7 @@ _020DA250:
 	orr r1, r1, #0x1000000
 	mov r0, #6
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r0, #0
 	movge r0, #1
@@ -8268,7 +8195,7 @@ sub_020DA308: ; 0x020DA308
 	ldr r1, _020DA398 ; =0x03000200
 	mov r0, #6
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movge r0, #1
 	movlt r0, #0
@@ -8664,7 +8591,7 @@ MIC_Init: ; 0x020DA830
 _020DA864:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020DA864
 	ldr r2, _020DA898 ; =0x027FFF90
@@ -8672,7 +8599,7 @@ _020DA864:
 	ldr r1, _020DA89C ; =sub_020DAAA8
 	mov r0, #9
 	str r3, [r2]
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020DA894: .word 0x021E36EC
@@ -8948,7 +8875,7 @@ sub_020DABD0: ; 0x020DABD0
 	orr r1, r1, #0x2000000
 	mov r0, #9
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r0, #0
 	ldmltia sp!, {r4, r5, r6, pc}
@@ -8956,7 +8883,7 @@ sub_020DABD0: ; 0x020DABD0
 	orr r1, r0, #0x10000
 	mov r0, #9
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r0, #0
 	ldmltia sp!, {r4, r5, r6, pc}
@@ -8965,7 +8892,7 @@ sub_020DABD0: ; 0x020DABD0
 	orr r1, r0, #0x20000
 	mov r0, #9
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r0, #0
 	ldmltia sp!, {r4, r5, r6, pc}
@@ -8973,7 +8900,7 @@ sub_020DABD0: ; 0x020DABD0
 	orr r1, r0, #0x30000
 	mov r0, #9
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r0, #0
 	ldmltia sp!, {r4, r5, r6, pc}
@@ -8982,7 +8909,7 @@ sub_020DABD0: ; 0x020DABD0
 	orr r1, r0, #0x40000
 	mov r0, #9
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r0, #0
 	ldmltia sp!, {r4, r5, r6, pc}
@@ -8990,7 +8917,7 @@ sub_020DABD0: ; 0x020DABD0
 	orr r1, r0, #0x50000
 	mov r0, #9
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r0, #0
 	ldmltia sp!, {r4, r5, r6, pc}
@@ -8999,7 +8926,7 @@ sub_020DABD0: ; 0x020DABD0
 	orr r1, r1, r0, lsr #16
 	mov r0, #9
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movge r0, #1
 	movlt r0, #0
@@ -9014,7 +8941,7 @@ sub_020DACD4: ; 0x020DACD4
 	ldr r1, _020DACF8 ; =0x03004200
 	mov r0, #9
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movge r0, #1
 	movlt r0, #0
@@ -9074,7 +9001,7 @@ sub_020DAD60: ; 0x020DAD60
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 _020DAD78:
-	bl sub_020D3A90
+	bl OS_GetCpsrIrq
 	cmp r0, #0x80
 	bne _020DAD88
 	bl sub_020D674C
@@ -9133,12 +9060,12 @@ PM_Init: ; 0x020DADE8
 _020DAE1C:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020DAE1C
 	ldr r1, _020DAE7C ; =sub_020DAE8C
 	mov r0, #8
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	mov r3, #0
 	ldr r0, _020DAE80 ; =0x021E3750
 	mov r2, r3
@@ -9493,7 +9420,7 @@ sub_020DB284: ; 0x020DB284
 	mov r7, r0
 	ldr r0, _020DB32C ; =0x00996A00
 	mov r6, r1
-	bl sub_020D3AA8
+	bl OS_SpinWait
 	bl sub_020DB794
 	cmp r0, #1
 	beq _020DB314
@@ -9522,7 +9449,7 @@ _020DB2E4:
 	mov r4, #1
 _020DB2FC:
 	mov r0, r5
-	bl sub_020D3AA8
+	bl OS_SpinWait
 	mov r0, r4
 	bl sub_020DB774
 	cmp r0, #0
@@ -9628,7 +9555,7 @@ _020DB420:
 	mov r0, r5
 	mov r1, r6
 	mov r2, r4
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	bne _020DB420
 	ldmia sp!, {r4, r5, r6, pc}
@@ -9766,7 +9693,7 @@ _020DB608:
 	str r6, [r0]
 _020DB618:
 	ldr r0, _020DB678 ; =0x00708100
-	bl sub_020D3AA8
+	bl OS_SpinWait
 	bl OS_DisableInterrupts
 	ldr r0, [sp, #4]
 	bl OS_SetIrqMask
@@ -10107,12 +10034,12 @@ RTC_Init: ; 0x020DB9C0
 _020DBA00:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020DBA00
 	ldr r1, _020DBA28 ; =sub_020DBC34
 	mov r0, #5
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020DBA24: .word 0x021E3778
@@ -10752,7 +10679,7 @@ sub_020DC25C: ; 0x020DC25C
 	and r1, r0, #0x7f00
 	mov r0, #5
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movge r0, #1
 	movlt r0, #0
@@ -11207,7 +11134,7 @@ _020DC81C:
 	bl OS_WakeupThreadDirect
 	ldr r1, _020DC8B4 ; =sub_020DD8CC
 	mov r0, #0xb
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	ldr r0, _020DC8A4 ; =0x027FFC40
 	ldrh r0, [r0]
 	cmp r0, #2
@@ -11306,8 +11233,8 @@ CARD_GetResultCode: ; 0x020DC958
 _020DC968: .word 0x021E3820
 	arm_func_end CARD_GetResultCode
 
-	arm_func_start sub_020DC96C
-sub_020DC96C: ; 0x020DC96C
+	arm_func_start CARD_LockRom
+CARD_LockRom: ; 0x020DC96C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r1, #1
@@ -11315,7 +11242,7 @@ sub_020DC96C: ; 0x020DC96C
 	mov r0, r4
 	bl OS_LockCard
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DC96C
+	arm_func_end CARD_LockRom
 
 	arm_func_start sub_020DC988
 sub_020DC988: ; 0x020DC988
@@ -11800,7 +11727,7 @@ _020DCFAC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020DD00C:
-	ldr r0, _020DD048 ; =0x021E16A0
+	ldr r0, _020DD048 ; =OSi_ThreadInfo
 	ldr r1, _020DD03C ; =0x021E3820
 	ldr r2, [r0, #4]
 	mov r0, r4
@@ -11816,7 +11743,7 @@ _020DD00C:
 _020DD03C: .word 0x021E3820
 _020DD040: .word _version_NINTENDO_BACKUP
 _020DD044: .word sub_020DCD74
-_020DD048: .word 0x021E16A0
+_020DD048: .word OSi_ThreadInfo
 	arm_func_end CARDi_RequestStreamCommand
 
 	arm_func_start sub_020DD04C
@@ -11863,7 +11790,7 @@ _020DD0AC:
 	bl OS_RestoreInterrupts
 	mov r0, r6
 	bl sub_020DC9F0
-	ldr r0, _020DD194 ; =0x021E16A0
+	ldr r0, _020DD194 ; =OSi_ThreadInfo
 	ldr r1, _020DD190 ; =0x021E3820
 	ldr r2, [r0, #4]
 	mov r0, r4
@@ -11914,7 +11841,7 @@ _020DD174:
 	.align 2, 0
 _020DD18C: .word _version_NINTENDO_BACKUP
 _020DD190: .word 0x021E3820
-_020DD194: .word 0x021E16A0
+_020DD194: .word OSi_ThreadInfo
 	arm_func_end CARD_IdentifyBackup
 
 	arm_func_start CARD_WaitBackupAsync
@@ -12049,7 +11976,7 @@ sub_020DD314: ; 0x020DD314
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r0, _020DD3E0 ; =0x021E3820
 	ldr r0, [r0, #0x28]
-	bl sub_020D4294
+	bl MI_StopDma
 	ldr r3, _020DD3E0 ; =0x021E3820
 	ldr r0, [r3, #0x24]
 	ldr r2, [r3, #0x1c]
@@ -12123,7 +12050,7 @@ _020DD41C:
 	cmp r1, #0
 	beq _020DD470
 	bl OS_GetDTCMParam
-	ldr r1, _020DD560 ; =sub_01FF8000
+	ldr r1, _020DD560 ; =OS_IrqHandler
 	add r3, sb, r5
 	cmp r3, r1
 	mov r1, #1
@@ -12213,7 +12140,7 @@ _020DD554:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020DD55C: .word 0x021E3820
-_020DD560: .word sub_01FF8000
+_020DD560: .word OS_IrqHandler
 _020DD564: .word 0x000001FF
 _020DD568: .word _02110FB8
 _020DD56C: .word sub_020DD314
@@ -12403,7 +12330,7 @@ _020DD788:
 	cmp sl, #3
 	bhi _020DD7E4
 	mov r0, sl
-	bl sub_020D4294
+	bl MI_StopDma
 _020DD7E4:
 	mov r0, r4
 	bl sub_020DD3E4
@@ -12422,7 +12349,7 @@ _020DD808:
 	bl sub_020DC65C
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _020DD820:
-	ldr r1, _020DD848 ; =0x021E16A0
+	ldr r1, _020DD848 ; =OSi_ThreadInfo
 	mov r0, r5
 	ldr r1, [r1, #4]
 	str r1, [r5, #0x104]
@@ -12433,7 +12360,7 @@ _020DD838: .word 0x021E3E60
 _020DD83C: .word 0x021E3820
 _020DD840: .word 0x021E3E40
 _020DD844: .word sub_020DD6BC
-_020DD848: .word 0x021E16A0
+_020DD848: .word OSi_ThreadInfo
 	arm_func_end sub_020DD754
 
 	arm_func_start CARD_Init
@@ -12543,7 +12470,7 @@ sub_020DD950: ; 0x020DD950
 	orr r2, r1, #2
 	mov r1, #1
 	str r2, [sl, #0x114]
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	bne _020DD9B4
 	mov r6, #0x64
@@ -12551,10 +12478,10 @@ sub_020DD950: ; 0x020DD950
 	mov r4, #1
 _020DD998:
 	mov r0, r6
-	bl sub_020D3AA8
+	bl OS_SpinWait
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020DD998
 _020DD9B4:
@@ -12581,7 +12508,7 @@ _020DD9F8:
 	mov r0, r7
 	mov r1, sb
 	mov r2, r6
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	blt _020DD9F8
 	cmp sb, #0
@@ -12591,7 +12518,7 @@ _020DDA1C:
 	mov r0, r5
 	mov r1, r8
 	mov r2, r4
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	blt _020DDA1C
 _020DDA34:
@@ -12634,7 +12561,7 @@ sub_020DDAA4: ; 0x020DDAA4
 	bl PXI_Init
 	ldr r1, _020DDAC8 ; =sub_020DDAD0
 	mov r0, #0xe
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	ldr r0, _020DDACC ; =0x021E4080
 	mov r1, #0
 	str r1, [r0, #4]
@@ -12686,13 +12613,13 @@ sub_020DDB34: ; 0x020DDB34
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r0, #0
 	mov r5, #1
-	bl sub_020D4294
+	bl MI_StopDma
 	mov r0, r5
-	bl sub_020D4294
+	bl MI_StopDma
 	mov r0, #2
-	bl sub_020D4294
+	bl MI_StopDma
 	mov r0, #3
-	bl sub_020D4294
+	bl MI_StopDma
 	ldr r0, _020DDBB8 ; =0x027FFFA8
 	ldrh r0, [r0]
 	and r0, r0, #0x8000
@@ -12704,7 +12631,7 @@ sub_020DDB34: ; 0x020DDB34
 	ldr r4, _020DDBBC ; =0x000A3A47
 _020DDB80:
 	mov r0, r4
-	bl sub_020D3AA8
+	bl OS_SpinWait
 	bl PM_ForceToPowerOff
 	cmp r0, #4
 	beq _020DDB80
@@ -12762,7 +12689,7 @@ sub_020DDC20: ; 0x020DDC20
 	mov r1, r7
 	mov r0, #0xe
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r5, #0xe
@@ -12773,7 +12700,7 @@ _020DDC4C:
 	mov r0, r5
 	mov r1, r7
 	mov r2, r4
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	bne _020DDC4C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -13272,7 +13199,7 @@ _020DE2E4:
 	bl PXI_Init
 	mov r0, #0xa
 	mov r1, #1
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	bne _020DE30C
 	mov r0, r5
@@ -13354,7 +13281,7 @@ _020DE414:
 	blt _020DE3EC
 	ldr r1, _020DE454 ; =sub_020DE75C
 	mov r0, #0xa
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _020DE444 ; =0x021E4220
 	mov r2, #1
 	mov r0, r5
@@ -13391,7 +13318,7 @@ _020DE480:
 	bl sub_020DEB08
 	mov r0, #0xa
 	mov r1, #0
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _020DE4C4 ; =0x021E4220
 	mov r2, #0
 	str r2, [r1, #4]
@@ -13476,7 +13403,7 @@ _020DE598:
 	mov r1, r4
 	mov r0, #0xa
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	mov r5, r0
 	ldr r0, _020DE5E0 ; =0x021E4228
 	mov r1, r4
@@ -13511,7 +13438,7 @@ sub_020DE5E4: ; 0x020DE5E4
 	mov r1, r5
 	mov r0, #0xa
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	mov r4, r0
 	ldr r0, _020DE650 ; =0x021E4228
 	mov r1, r5
@@ -16879,7 +16806,7 @@ sub_020E133C: ; 0x020E133C
 	mov r1, r7
 	mov r0, #0xd
 	mov r2, #0
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r6, #1
@@ -16891,7 +16818,7 @@ _020E1368:
 	mov r0, r5
 	mov r1, r7
 	mov r2, r4
-	bl sub_020D66C4
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	bne _020E1368
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -16972,7 +16899,7 @@ sub_020E1434: ; 0x020E1434
 	tst r0, #1
 	bne _020E1488
 	mov r0, r7
-	bl sub_020D4294
+	bl MI_StopDma
 	mov r0, r5
 	mov r1, r4
 	bl DC_FlushRange
@@ -17193,19 +17120,19 @@ CTRDG_Init: ; 0x020E16E4
 _020E171C:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D66A0
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020E171C
 	ldr r1, _020E1788 ; =sub_020E198C
 	mov r0, #0xd
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	bl sub_020E1798
 	mov r0, #0xd
 	mov r1, #0
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _020E178C ; =sub_020E19B8
 	mov r0, #0xd
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _020E1784 ; =0x021E4D60
 	mov r2, #0
 	ldr r0, _020E1790 ; =0x021E4E40
@@ -17213,7 +17140,7 @@ _020E171C:
 	bl sub_020E34C0
 	ldr r1, _020E1794 ; =sub_020E1A28
 	mov r0, #0x11
-	bl sub_020D6654
+	bl PXI_SetFifoRecvCallback
 	mov r0, #0
 	bl sub_020E1678
 	ldmia sp!, {r3, r4, r5, pc}
@@ -21205,8 +21132,8 @@ _02110FC8:
 
 	.section .itcm,4,1,4
 
-	arm_func_start sub_01FF8000
-sub_01FF8000: ; 0x01FF8000
+	arm_func_start OS_IrqHandler
+OS_IrqHandler: ; 0x01FF8000
 	stmdb sp!, {lr}
 	mov ip, #0x4000000
 	add ip, ip, #0x210
@@ -21224,18 +21151,18 @@ _01FF8028:
 	mov r1, r3, lsr r0
 	str r1, [ip, #4]
 	rsbs r0, r0, #0x1f
-	ldr r1, _01FF8050 ; =0x027E0000
+	ldr r1, _01FF8050 ; =OS_IRQTable
 	ldr r0, [r1, r0, lsl #2]
-	ldr lr, _01FF8054 ; =sub_01FF8058
+	ldr lr, _01FF8054 ; =OS_IrqHandler_ThreadSwitch
 	bx r0
 	.align 2, 0
-_01FF8050: .word 0x027E0000
-_01FF8054: .word sub_01FF8058
-	arm_func_end sub_01FF8000
+_01FF8050: .word OS_IRQTable
+_01FF8054: .word OS_IrqHandler_ThreadSwitch
+	arm_func_end OS_IrqHandler
 
-	arm_func_start sub_01FF8058
-sub_01FF8058: ; 0x01FF8058
-	ldr ip, _01FF81A4 ; =0x027E0060
+	arm_func_start OS_IrqHandler_ThreadSwitch
+OS_IrqHandler_ThreadSwitch: ; 0x01FF8058
+	ldr ip, _01FF81A4 ; =OSi_IrqThreadQueue
 	mov r3, #0
 	ldr ip, [ip]
 	mov r2, #1
@@ -21250,14 +21177,14 @@ _01FF8070:
 	mov ip, r0
 	cmp ip, #0
 	bne _01FF8070
-	ldr ip, _01FF81A4 ; =0x027E0060
+	ldr ip, _01FF81A4 ; =OSi_IrqThreadQueue
 	str r3, [ip]
 	str r3, [ip, #4]
-	ldr ip, _01FF81A8 ; =0x021E16A0
+	ldr ip, _01FF81A8 ; =OSi_ThreadInfo
 	mov r1, #1
 	strh r1, [ip]
 _01FF80A8:
-	ldr ip, _01FF81A8 ; =0x021E16A0
+	ldr ip, _01FF81A8 ; =OSi_ThreadInfo
 	ldrh r1, [ip]
 	cmp r1, #0
 	ldreq pc, [sp], #4
@@ -21289,10 +21216,7 @@ _01FF80F8:
 	stmdb sp!, {r0, r1, ip}
 	mov lr, pc
 	bx r3
-	arm_func_end sub_01FF8058
-
-	arm_func_start sub_01FF811C
-sub_01FF811C: ; 0x01FF811C
+_01FF811C:
 	ldmia sp!, {r0, r1, ip}
 _01FF8120:
 	str r1, [ip, #4]
@@ -21301,7 +21225,7 @@ _01FF8120:
 	stmdb sp!, {r0, r1}
 	add r0, r0, #0
 	add r0, r0, #0x48
-	ldr r1, _01FF81AC ; =0x020D9BF4
+	ldr r1, _01FF81AC ; =CP_SaveContext
 	blx r1
 	ldmia sp!, {r0, r1}
 	ldmib sp!, {r2, r3}
@@ -21315,7 +21239,7 @@ _01FF8120:
 	stmdb sp!, {r1}
 	add r0, r1, #0
 	add r0, r0, #0x48
-	ldr r1, _01FF81B0 ; =0x020D9C34
+	ldr r1, _01FF81B0 ; =CP_LoadContext
 	blx r1
 	ldmia sp!, {r1}
 	ldr sp, [r1, #0x44]
@@ -21329,14 +21253,14 @@ _01FF8120:
 	stmda sp!, {r0, r1, r2, r3, ip, lr}
 	ldmia sp!, {pc}
 	.align 2, 0
-_01FF81A4: .word 0x027E0060
-_01FF81A8: .word 0x021E16A0
-_01FF81AC: .word 0x020D9BF4
-_01FF81B0: .word 0x020D9C34
-	arm_func_end sub_01FF811C
+_01FF81A4: .word OSi_IrqThreadQueue
+_01FF81A8: .word OSi_ThreadInfo
+_01FF81AC: .word CP_SaveContext
+_01FF81B0: .word CP_LoadContext
+	arm_func_end OS_IrqHandler_ThreadSwitch
 
-	arm_func_start sub_01FF81B4
-sub_01FF81B4: ; 0x01FF81B4
+	arm_func_start OSi_DoResetSystem
+OSi_DoResetSystem: ; 0x01FF81B4
 	stmdb sp!, {r3, lr}
 	ldr r0, _01FF81E0 ; =0x021E1A04
 _01FF81BC:
@@ -21346,16 +21270,16 @@ _01FF81BC:
 	ldr r0, _01FF81E4 ; =0x04000208
 	mov r1, #0
 	strh r1, [r0]
-	bl sub_01FF82C8
-	bl sub_01FF81E8
+	bl OSi_ReloadRomData
+	bl OSi_DoBoot
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _01FF81E0: .word 0x021E1A04
 _01FF81E4: .word 0x04000208
-	arm_func_end sub_01FF81B4
+	arm_func_end OSi_DoResetSystem
 
-	arm_func_start sub_01FF81E8
-sub_01FF81E8: ; 0x01FF81E8
+	arm_func_start OSi_DoBoot
+OSi_DoBoot: ; 0x01FF81E8
 	mov ip, #0x4000000
 	str ip, [ip, #0x208]
 	ldr r1, _01FF8294 ; =0x027E0000
@@ -21410,7 +21334,7 @@ _01FF82A4: .word 0x027FFF80
 _01FF82A8: .word 0x027FFF98
 _01FF82AC: .word 0x027FFF9C
 _01FF82B0: .word 0x027FFE00
-	arm_func_end sub_01FF81E8
+	arm_func_end OSi_DoBoot
 
 	arm_func_start sub_01FF82B4
 sub_01FF82B4: ; 0x01FF82B4
@@ -21422,8 +21346,8 @@ _01FF82B8:
 	bx lr
 	arm_func_end sub_01FF82B4
 
-	arm_func_start sub_01FF82C8
-sub_01FF82C8: ; 0x01FF82C8
+	arm_func_start OSi_ReloadRomData
+OSi_ReloadRomData: ; 0x01FF82C8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r1, _01FF8368 ; =0x027FFC2C
 	ldr r5, [r1]
@@ -21469,7 +21393,7 @@ _01FF8344:
 	.align 2, 0
 _01FF8368: .word 0x027FFC2C
 _01FF836C: .word 0x027FFE20
-	arm_func_end sub_01FF82C8
+	arm_func_end OSi_ReloadRomData
 
 	arm_func_start sub_01FF8370
 sub_01FF8370: ; 0x01FF8370

@@ -5174,7 +5174,7 @@ _0222B47C:
 	bl ov13_02242478
 	bl ov13_02241A44
 	bl ov13_022422E0
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	ldrb r0, [r4, #1]
 	cmp r0, #0
 	beq _0222B47C
@@ -7364,7 +7364,7 @@ ov13_0222CFA0: ; 0x0222CFA0
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0x1000000
-	bl sub_020D3AA8
+	bl OS_SpinWait
 	bl PM_ForceToPowerOff
 	ldmia sp!, {r3, pc}
 	arm_func_end ov13_0222CFA0
@@ -8657,7 +8657,7 @@ ov13_0222DFC0: ; 0x0222DFC0
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0x1000000
-	bl sub_020D3AA8
+	bl OS_SpinWait
 	bl PM_ForceToPowerOff
 	ldmia sp!, {r3, pc}
 	arm_func_end ov13_0222DFC0
@@ -30388,7 +30388,7 @@ _0223F8C0:
 	ldr r0, _0223F900 ; =0x0224F5CC
 	ldr r0, [r0]
 	ldrh r0, [r0, #0xe4]
-	bl sub_020DC96C
+	bl CARD_LockRom
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 _0223F8D8:

@@ -24490,7 +24490,7 @@
 .public strtok
 .public strtol
 .public strtoul
-.public sub_01FF8000
+.public OS_IrqHandler
 .public sub_01FF8580
 .public sub_02001B9C
 .public sub_02001BC4
@@ -29254,8 +29254,8 @@
 .public OS_SetAlarm
 .public OS_CancelAlarm
 .public OS_EnableInterrupts
-.public sub_020D3AA8
-.public sub_020D3AB4
+.public OS_SpinWait
+.public OS_WaitVBlankIntr
 .public sub_020D3D30
 .public OSi_UnlockVram
 .public sub_020D3E78
@@ -29264,7 +29264,7 @@
 .public MI_DmaFill32
 .public MI_DmaCopy16
 .public MI_WaitDma
-.public sub_020D4294
+.public MI_StopDma
 .public sub_020D43E8
 .public sub_020D4448
 .public sub_020D44A8
@@ -29322,9 +29322,9 @@
 .public sub_020D64D8
 .public sub_020D650C
 .public PXI_Init
-.public sub_020D6654
-.public sub_020D66A0
-.public sub_020D66C4
+.public PXI_SetFifoRecvCallback
+.public PXI_IsCallbackReady
+.public PXI_SendWordByFifo
 .public sub_020D792C
 .public sub_020D7958
 .public sub_020D7998
@@ -29374,7 +29374,7 @@
 .public sub_020DC284
 .public sub_020DC394
 .public sub_020DC514
-.public sub_020DC96C
+.public CARD_LockRom
 .public sub_020DC988
 .public sub_020DC9DC
 .public sub_020DD1B0

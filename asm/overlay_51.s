@@ -1830,7 +1830,7 @@ ov51_021E69EC: ; 0x021E69EC
 	ldr r0, [r4, r0]
 	bl FX_Inv
 	str r0, [sp, #0x14]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2084,7 +2084,7 @@ ov51_021E6C00: ; 0x021E6C00
 	str r1, [sp, #0xc]
 	str r1, [sp, #0x10]
 	str r0, [sp, #0x14]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2101,7 +2101,7 @@ ov51_021E6C00: ; 0x021E6C00
 	mov r2, #0x80
 	mov r3, #0x60
 	bl G2x_SetBGyAffine_
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _021E6C68 ; =0x04000030
