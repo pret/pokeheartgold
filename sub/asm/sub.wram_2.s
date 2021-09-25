@@ -2887,7 +2887,7 @@ sub_03802EA0: ; 0x03802EA0
 	ldmia sp!, {r0}
 	msr spsr_fc, r0
 	tst r1, r1
-	ldreq r0, _03802F34 ; =sub_037F8538
+	ldreq r0, _03802F34 ; =OS_IrqHandler_ThreadSwitch
 	addeq lr, pc, #0x0 ; =0x03802F1C
 	bxeq r0
 	ldmia sp!, {pc}
@@ -2898,7 +2898,7 @@ _03802F28: .word 0x03809438
 _03802F2C: .word 0x038067A4
 _03802F30: .word 0x03806A88
 	arm_func_end sub_03802EA0
-_03802F34: .word sub_037F8538
+_03802F34: .word OS_IrqHandler_ThreadSwitch
 
 	arm_func_start sub_03802F38
 sub_03802F38: ; 0x03802F38

@@ -7683,8 +7683,8 @@ CP_SaveContext: ; 0x020D9BF4
 _020D9C30: .word 0x04000290
 	arm_func_end CP_SaveContext
 
-	arm_func_start CP_LoadContext
-CP_LoadContext: ; 0x020D9C34
+	arm_func_start CPi_RestoreContext
+CPi_RestoreContext: ; 0x020D9C34
 	stmdb sp!, {r4}
 	ldr r1, _020D9C6C ; =0x04000290
 	ldmia r0, {r2, r3, r4, ip}
@@ -7701,7 +7701,7 @@ CP_LoadContext: ; 0x020D9C34
 	bx lr
 	.align 2, 0
 _020D9C6C: .word 0x04000290
-	arm_func_end CP_LoadContext
+	arm_func_end CPi_RestoreContext
 
 	arm_func_start sub_020D9C70
 sub_020D9C70: ; 0x020D9C70
@@ -21131,133 +21131,6 @@ _02110FC8:
 	.byte 0x00, 0x00, 0x00, 0x00
 
 	.section .itcm,4,1,4
-
-	arm_func_start OS_IrqHandler
-OS_IrqHandler: ; 0x01FF8000
-	stmdb sp!, {lr}
-	mov ip, #0x4000000
-	add ip, ip, #0x210
-	ldr r1, [ip, #-8]
-	cmp r1, #0
-	ldmeqia sp!, {pc}
-	ldmia ip, {r1, r2}
-	ands r1, r1, r2
-	ldmeqia sp!, {pc}
-	mov r3, #-0x80000000
-_01FF8028:
-	clz r0, r1
-	bics r1, r1, r3, lsr r0
-	bne _01FF8028
-	mov r1, r3, lsr r0
-	str r1, [ip, #4]
-	rsbs r0, r0, #0x1f
-	ldr r1, _01FF8050 ; =OS_IRQTable
-	ldr r0, [r1, r0, lsl #2]
-	ldr lr, _01FF8054 ; =OS_IrqHandler_ThreadSwitch
-	bx r0
-	.align 2, 0
-_01FF8050: .word OS_IRQTable
-_01FF8054: .word OS_IrqHandler_ThreadSwitch
-	arm_func_end OS_IrqHandler
-
-	arm_func_start OS_IrqHandler_ThreadSwitch
-OS_IrqHandler_ThreadSwitch: ; 0x01FF8058
-	ldr ip, _01FF81A4 ; =OSi_IrqThreadQueue
-	mov r3, #0
-	ldr ip, [ip]
-	mov r2, #1
-	cmp ip, #0
-	beq _01FF80A8
-_01FF8070:
-	str r2, [ip, #0x64]
-	str r3, [ip, #0x78]
-	str r3, [ip, #0x7c]
-	ldr r0, [ip, #0x80]
-	str r3, [ip, #0x80]
-	mov ip, r0
-	cmp ip, #0
-	bne _01FF8070
-	ldr ip, _01FF81A4 ; =OSi_IrqThreadQueue
-	str r3, [ip]
-	str r3, [ip, #4]
-	ldr ip, _01FF81A8 ; =OSi_ThreadInfo
-	mov r1, #1
-	strh r1, [ip]
-_01FF80A8:
-	ldr ip, _01FF81A8 ; =OSi_ThreadInfo
-	ldrh r1, [ip]
-	cmp r1, #0
-	ldreq pc, [sp], #4
-	mov r1, #0
-	strh r1, [ip]
-	mov r3, #0xd2
-	msr cpsr_c, r3
-	add r2, ip, #8
-	ldr r1, [r2]
-_01FF80D0:
-	cmp r1, #0
-	ldrneh r0, [r1, #0x64]
-	cmpne r0, #1
-	ldrne r1, [r1, #0x68]
-	bne _01FF80D0
-	cmp r1, #0
-	bne _01FF80F8
-_01FF80EC:
-	mov r3, #0x92
-	msr cpsr_c, r3
-	ldr pc, [sp], #4
-_01FF80F8:
-	ldr r0, [ip, #4]
-	cmp r1, r0
-	beq _01FF80EC
-	ldr r3, [ip, #0xc]
-	cmp r3, #0
-	beq _01FF8120
-	stmdb sp!, {r0, r1, ip}
-	mov lr, pc
-	bx r3
-_01FF811C:
-	ldmia sp!, {r0, r1, ip}
-_01FF8120:
-	str r1, [ip, #4]
-	mrs r2, spsr
-	str r2, [r0, #0]!
-	stmdb sp!, {r0, r1}
-	add r0, r0, #0
-	add r0, r0, #0x48
-	ldr r1, _01FF81AC ; =CP_SaveContext
-	blx r1
-	ldmia sp!, {r0, r1}
-	ldmib sp!, {r2, r3}
-	stmib r0!, {r2, r3}
-	ldmib sp!, {r2, r3, ip, lr}
-	stmib r0!, {r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, sp, lr} ^
-	stmib r0!, {lr}
-	mov r3, #0xd3
-	msr cpsr_c, r3
-	stmib r0!, {sp}
-	stmdb sp!, {r1}
-	add r0, r1, #0
-	add r0, r0, #0x48
-	ldr r1, _01FF81B0 ; =CP_LoadContext
-	blx r1
-	ldmia sp!, {r1}
-	ldr sp, [r1, #0x44]
-	mov r3, #0xd2
-	msr cpsr_c, r3
-	ldr r2, [r1, #0]!
-	msr spsr_fc, r2
-	ldr lr, [r1, #0x40]
-	ldmib r1, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, sp, lr} ^
-	mov r0, r0
-	stmda sp!, {r0, r1, r2, r3, ip, lr}
-	ldmia sp!, {pc}
-	.align 2, 0
-_01FF81A4: .word OSi_IrqThreadQueue
-_01FF81A8: .word OSi_ThreadInfo
-_01FF81AC: .word CP_SaveContext
-_01FF81B0: .word CP_LoadContext
-	arm_func_end OS_IrqHandler_ThreadSwitch
 
 	arm_func_start OSi_DoResetSystem
 OSi_DoResetSystem: ; 0x01FF81B4

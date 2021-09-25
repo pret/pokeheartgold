@@ -63,7 +63,7 @@ asm void OS_LoadContext(register OSContext *context) {
 #ifdef SDK_ARM9
     stmdb sp!, {r0, lr}
     add r0, r0, #OS_CONTEXT_CP_CONTEXT
-    ldr r1, =CP_LoadContext
+    ldr r1, =CPi_RestoreContext
     blx r1
     ldmia sp!, {r0, lr}
 #endif

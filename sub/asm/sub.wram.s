@@ -366,8 +366,8 @@ _037F84D8:
 _037F84E0: .word 0x038093B0
 	arm_func_end sub_037F84C0
 
-	arm_func_start sub_037F84E4
-sub_037F84E4: ; 0x037F84E4
+	arm_func_start OS_IrqHandler
+OS_IrqHandler: ; 0x037F84E4
 	stmdb sp!, {lr}
 	mov ip, #0x4000000
 	add ip, ip, #0x210
@@ -386,15 +386,15 @@ _037F8510:
 	str r2, [ip, #4]
 	ldr r1, _037F8530 ; =0x03806A88
 	ldr r0, [r1, r0, lsl #2]
-	ldr lr, _037F8534 ; =sub_037F8538
+	ldr lr, _037F8534 ; =OS_IrqHandler_ThreadSwitch
 	bx r0
 	.align 2, 0
 _037F8530: .word 0x03806A88
-_037F8534: .word sub_037F8538
-	arm_func_end sub_037F84E4
+_037F8534: .word OS_IrqHandler_ThreadSwitch
+	arm_func_end OS_IrqHandler
 
-	arm_func_start sub_037F8538
-sub_037F8538: ; 0x037F8538
+	arm_func_start OS_IrqHandler_ThreadSwitch
+OS_IrqHandler_ThreadSwitch: ; 0x037F8538
 	ldr ip, _037F8654 ; =0x03806BA4
 	mov r3, #0
 	ldr ip, [ip]
@@ -449,10 +449,7 @@ _037F85D8:
 	stmdb sp!, {r0, r1, ip}
 	mov lr, pc
 	bx r3
-	arm_func_end sub_037F8538
-
-	arm_func_start sub_037F85FC
-sub_037F85FC: ; 0x037F85FC
+_037F85FC:
 	ldmia sp!, {r0, r1, ip}
 _037F8600:
 	str r1, [ip, #4]
@@ -479,7 +476,7 @@ _037F8600:
 	.align 2, 0
 _037F8654: .word 0x03806BA4
 _037F8658: .word OSi_ThreadInfo
-	arm_func_end sub_037F85FC
+	arm_func_end OS_IrqHandler_ThreadSwitch
 
 	; os/irqTable.c
 

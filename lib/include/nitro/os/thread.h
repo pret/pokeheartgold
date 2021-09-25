@@ -4,9 +4,7 @@
 #include <nitro/os/context.h>
 #include <nitro/os/common/thread_shared.h>
 
-#ifdef SDK_ARM9
 #define SDK_THREAD_INFINITY
-#endif
 
 OSMutex *OSi_RemoveMutexLinkFromQueue(OSMutexQueue *queue);
 void OS_InitThread(void);

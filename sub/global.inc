@@ -56,7 +56,7 @@
 .public sub_038068C8
 .public sub_03806914
 .public sub_03806968
-.public sub_037F8538
+.public OS_IrqHandler_ThreadSwitch
 .public OS_SetIrqMask
 .public VENEER_SVC_WaitByLoop
 .public OSi_DoLockByWord
