@@ -7,7 +7,7 @@ void OSi_ArrangeTimer(void);
 #define OSi_ALARM_TIMERCONTROL       ((1 << REG_OS_TM1CNT_H_E_SHIFT) | (1 << REG_OS_TM1CNT_H_I_SHIFT) | OS_TIMER_PRESCALER_64)
 #define OSi_ALARM_IE_TIMER           OS_IE_TIMER1
 
-u16 OSi_UseAlarm = 0;
+u16 OSi_UseAlarm = FALSE;
 struct OSiAlarmQueue OSi_AlarmQueue;
 
 void OSi_SetTimer(OSAlarm *alarm) {
@@ -34,7 +34,7 @@ void OS_InitAlarm(void) {
     if (OSi_UseAlarm) {
         return;
     }
-    OSi_UseAlarm = 1;
+    OSi_UseAlarm = TRUE;
     OSi_SetTimerReserved(OSi_ALARM_TIMER);
     OSi_AlarmQueue.head = NULL;
     OSi_AlarmQueue.tail = NULL;

@@ -270,6 +270,7 @@ Static main
 	Object os_timer.o
 	Object os_tick.o
 	Object os_alarm.o
+	Object os_valarm.o
 	Object nitro.o
 	Object msl.o
 }
