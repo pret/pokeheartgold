@@ -397,7 +397,7 @@
 .public MIi_CpuClearFast
 .public MIi_CpuCopy16
 .public MIi_CpuCopy32
-.public MIi_CpuCopy8
+.public MI_CpuCopy8
 .public MIi_CpuCopyFast
 .public MIi_UncompressBackward
 .public MTRandom
@@ -29256,7 +29256,7 @@
 .public OS_EnableInterrupts
 .public OS_SpinWait
 .public OS_WaitVBlankIntr
-.public sub_020D3D30
+.public OSi_TryLockVram
 .public OSi_UnlockVram
 .public sub_020D3E78
 .public OS_Terminate

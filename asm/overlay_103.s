@@ -557,7 +557,7 @@ _021ECDCE:
 	add r1, r0, #0
 	add r0, r6, #0
 	add r2, r7, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r4, r4, #1
 	cmp r4, #0xa
 	bls _021ECDCE

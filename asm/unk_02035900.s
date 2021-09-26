@@ -3264,7 +3264,7 @@ _0203725A:
 	ldr r0, [sp, #8]
 	add r1, r2, r1
 	ldr r2, [sp, #0xc]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _0203727A:
 	ldr r1, [r4]
 	ldr r0, [sp, #0xc]

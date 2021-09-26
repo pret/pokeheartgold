@@ -2445,7 +2445,7 @@ _021E6C96:
 _021E6C98:
 	add r1, sp, #0x28
 	mov r2, #0x18
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [sp, #0x6c]
 	cmp r0, #0
 	beq _021E6CAA
@@ -6719,7 +6719,7 @@ _021E8DCC:
 	lsr r4, r0, #0x18
 	ldr r0, _021E8EB8 ; =0x021EA394
 	add r1, sp, #0x40
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r0, #1
 	str r0, [sp, #0x3c]
 	ldr r1, [sp, #0xc]
@@ -7407,7 +7407,7 @@ ov99_021E92EC: ; 0x021E92EC
 	add r1, r2, #0
 	mov r2, #0x6e
 	lsl r2, r2, #2
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _021E93D8 ; =0x021EA350
 	mov r0, #0
 	str r0, [sp, #0xc]
@@ -7474,7 +7474,7 @@ _021E9364:
 	add r0, sp, #0x24
 	add r0, #2
 	add r1, r4, #2
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [sp, #0x1c]
 	mov r1, #0
 	bl ov98_0221EFA4

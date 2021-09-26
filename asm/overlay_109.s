@@ -664,17 +664,17 @@ ov109_021E5DB8: ; 0x021E5DB8
 	add r0, r4, r6
 	add r1, sp, #0
 	mov r2, #8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r5, #0xcc
 	lsl r7, r7, #3
 	add r0, r5, r7
 	add r1, r4, r6
 	mov r2, #8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, sp, #0
 	add r1, r5, r7
 	mov r2, #8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov109_021E5DB8
@@ -707,7 +707,7 @@ _021E5E12:
 	add r0, r6, r0
 	add r1, r6, r1
 	mov r2, #8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

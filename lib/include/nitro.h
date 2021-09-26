@@ -13,5 +13,6 @@
 #include <nitro/card.h>
 #include <nitro/ctrdg.h>
 #include <nitro/mb.h>
+#include <nitro/spi.h>
 
 #endif //NITRO_H_

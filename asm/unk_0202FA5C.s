@@ -130,7 +130,7 @@ _0202FAFC:
 	mul r1, r3
 	add r1, r4, r1
 	add r2, r3, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -152,7 +152,7 @@ _0202FB24:
 	mul r0, r3
 	add r0, r4, r0
 	add r2, r3, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end sub_0202FB14
@@ -194,7 +194,7 @@ _0202FB60:
 	add r1, r1, r2
 	add r0, r4, r6
 	mov r2, #0x84
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _0202FB88:
 	add r0, r5, #1
 	lsl r0, r0, #0x18
@@ -1928,19 +1928,19 @@ _0203082A:
 	ldr r1, [r1]
 	mov r2, #0x64
 	add r1, #0x84
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _0203087C ; =_021D2AF8
 	ldr r2, _02030880 ; =0x00001C68
 	ldr r1, [r1]
 	add r0, r7, #0
 	add r1, #0xe8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _0203087C ; =_021D2AF8
 	add r0, r5, #0
 	ldr r1, [r1]
 	mov r2, #0x80
 	add r1, r1, #4
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _0203087C ; =_021D2AF8
 	ldr r1, _02030884 ; =0x00001D4C
 	ldr r0, [r0]

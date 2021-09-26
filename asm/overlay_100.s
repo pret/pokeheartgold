@@ -3076,7 +3076,7 @@ ov100_021E7014: ; 0x021E7014
 	ldr r0, [sp]
 	ldr r1, [r4, #4]
 	mul r2, r3
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldrb r0, [r4, #2]
 	cmp r5, r0
 	blo _021E7074

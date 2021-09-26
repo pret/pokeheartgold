@@ -17,11 +17,11 @@ Options_new: ; 0x0202AC88
 
 	thumb_func_start Options_copy
 Options_copy: ; 0x0202AC9C
-	ldr r3, _0202ACA4 ; =MIi_CpuCopy8
+	ldr r3, _0202ACA4 ; =MI_CpuCopy8
 	mov r2, #2
 	bx r3
 	nop
-_0202ACA4: .word MIi_CpuCopy8
+_0202ACA4: .word MI_CpuCopy8
 	thumb_func_end Options_copy
 
 	thumb_func_start Options_init

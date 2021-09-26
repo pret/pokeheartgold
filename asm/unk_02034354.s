@@ -183,7 +183,7 @@ _02034470:
 	ldr r1, [r1]
 	add r1, #0x58
 	add r1, r1, r5
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r6, #0
 	bl sub_0202CA8C
 	ldr r1, _0203451C ; =0x021D4130
@@ -284,7 +284,7 @@ sub_0203453C: ; 0x0203453C
 	add r3, r1, #0
 	mul r3, r2
 	add r1, r5, r3
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r4, #0x62
 	ldr r1, _020345C8 ; =0x021D4130
 	ldrb r3, [r4]
@@ -348,7 +348,7 @@ sub_020345D0: ; 0x020345D0
 	add r1, #0xc
 	add r1, r1, r4
 	add r2, r3, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _02034630 ; =0x021D4130
 	add r1, r5, #0
 	ldr r0, [r0]
@@ -433,7 +433,7 @@ _02034666:
 	ldr r0, [r1, r0]
 	add r6, #0x2c
 	add r1, r6, r5
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _020346CC ; =0x021D4130
 	mov r0, #4
 	ldr r1, [r1]

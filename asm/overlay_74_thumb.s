@@ -18804,7 +18804,7 @@ ov74_02230714: ; 0x02230714
 	ldrh r2, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r1, [r4, #0xc]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl ov74_022311AC
 	ldr r1, [r5]
 	lsl r1, r1, #0x18
@@ -18865,7 +18865,7 @@ ov74_0223078C: ; 0x0223078C
 	ldrh r2, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r1, [r4, #0xc]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl ov74_022311AC
 	ldr r1, [r5]
 	lsl r1, r1, #0x18
@@ -18945,7 +18945,7 @@ _0223083C:
 	ldrh r2, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r1, [r4, #0xc]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl ov74_022311AC
 	ldr r1, [r5]
 	lsl r1, r1, #0x18
@@ -18990,7 +18990,7 @@ _022308AA:
 	add r0, r1, r0
 	ldr r1, [r4, #4]
 	lsr r2, r2, #8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _022308BC:
 	ldr r1, [r5, #8]
 	ldr r0, _022308DC ; =0xFFFF00FF
@@ -20600,7 +20600,7 @@ ov74_022312C0: ; 0x022312C0
 	lsr r1, r1, #0x18
 	add r1, r5, r1
 	add r2, r6, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _022313BE:
 	add r0, r5, #0
 	bl ov74_0223145C

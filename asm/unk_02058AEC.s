@@ -217,7 +217,7 @@ _02058C92:
 	add r0, #0x30
 	add r1, #0x3d
 	mov r2, #6
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [r4, #4]
 	add r0, #0x26
 	ldrb r0, [r0]
@@ -1502,7 +1502,7 @@ _020596CE:
 	bl GetPartyMonByIndex
 	add r1, r4, #0
 	add r2, r6, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r5, r5, #1
 	add r4, r4, r6
 	cmp r5, #3
@@ -1671,7 +1671,7 @@ sub_020597D4: ; 0x020597D4
 	mul r2, r4
 	add r1, r3, r2
 	add r2, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [r6, #0x50]
 	mov r1, #3
 	bl InitPartyWithMaxSize
@@ -2292,7 +2292,7 @@ _02059CCC:
 	add r1, r4, #0
 	ldr r2, _02059D40 ; =0x0000066C
 	add r1, #0x2c
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x2c

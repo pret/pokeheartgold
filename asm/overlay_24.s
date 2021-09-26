@@ -640,7 +640,7 @@ _02259D7E:
 	ldr r0, [sp, #8]
 	add r0, r0, r1
 	ldr r1, [sp, #4]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r7, #0
 	add r0, #0x7a
 	ldrh r4, [r0]
@@ -722,7 +722,7 @@ _02259E3A:
 	add r0, r4, r0
 	add r1, r5, #0
 	mov r2, #0x50
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, sp, #0

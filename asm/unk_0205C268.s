@@ -24439,7 +24439,7 @@ _02066FC4:
 	add r0, #0x30
 	add r1, #0xe
 	mov r2, #6
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r4, #0
 	add r0, #0x26
 	ldrb r0, [r0]

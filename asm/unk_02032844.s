@@ -858,7 +858,7 @@ _02032EB4:
 	ldr r0, _02032F00 ; =0x0210F8FC
 	add r1, #1
 	mov r2, #3
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl sub_0203993C
 	add r1, sp, #4
 	strb r0, [r1]
@@ -2044,7 +2044,7 @@ _0203378A:
 	ldr r1, _020337CC ; =0x00001220
 	add r1, r2, r1
 	mov r2, #0xc0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _020337C4 ; =_021D4124
 	ldr r1, [r0, #4]
 	ldr r0, _020337CC ; =0x00001220

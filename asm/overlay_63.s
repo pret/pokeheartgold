@@ -1458,7 +1458,7 @@ ov63_0221C99C: ; 0x0221C99C
 	add r1, r2, r1
 	add r0, r0, r6
 	mov r2, #0x20
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0221C9DC: .word 0x0000328C

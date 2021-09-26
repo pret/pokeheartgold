@@ -4951,13 +4951,13 @@ _0225ECD0:
 	ldr r1, [r5, r1]
 	add r0, r6, r7
 	add r2, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r1, #0x25
 	lsl r1, r1, #4
 	ldr r1, [r5, r1]
 	add r0, r6, r7
 	add r2, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]

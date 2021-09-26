@@ -26,12 +26,12 @@ _02027020:
 	ldr r0, _02027080 ; =0x027FFE00
 	ldr r1, _02027084 ; =0x027FF000
 	lsl r2, r2, #4
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r2, #0x16
 	ldr r0, _02027080 ; =0x027FFE00
 	ldr r1, _02027088 ; =0x027FFA80
 	lsl r2, r2, #4
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _0202708C ; =0x4A414441
 	ldr r0, _0202707C ; =0x027FF00C
 	str r1, [r0]

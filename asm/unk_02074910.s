@@ -7465,11 +7465,11 @@ _020781B0: .word 0x0000079C
 
 	thumb_func_start sub_020781B4
 sub_020781B4: ; 0x020781B4
-	ldr r3, _020781BC ; =MIi_CpuCopy8
+	ldr r3, _020781BC ; =MI_CpuCopy8
 	ldr r2, _020781C0 ; =0x0000079C
 	bx r3
 	nop
-_020781BC: .word MIi_CpuCopy8
+_020781BC: .word MI_CpuCopy8
 _020781C0: .word 0x0000079C
 	thumb_func_end sub_020781B4
 
@@ -68144,7 +68144,7 @@ _02095FAE:
 	mul r0, r2
 	add r0, r7, r0
 	add r1, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r6, #0
 	bl sub_02095F68
 	ldrb r0, [r4]
@@ -69402,7 +69402,7 @@ sub_02096998: ; 0x02096998
 	add r1, r4, r1
 	add r0, #0x3e
 	mov r2, #0x1c
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _020969C0 ; =0x0000083E
 	mov r0, #0x3f
 	add r1, r4, r1
@@ -69439,7 +69439,7 @@ sub_020969C4: ; 0x020969C4
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0x1c
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _020969F0:
 	pop {r4, r5, r6, pc}
 	nop

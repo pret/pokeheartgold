@@ -1963,7 +1963,7 @@ _02202AC8:
 	ldr r0, _02202B54 ; =0x02203EA8
 	add r1, sp, #0
 	mov r2, #0x28
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r6, #1
 	mov r1, #0x1b
 	add r2, r0, #0

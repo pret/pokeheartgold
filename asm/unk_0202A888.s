@@ -472,7 +472,7 @@ _0202AB80:
 	add r0, r1, r0
 	add r1, r1, r2
 	sub r2, r6, #1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r1, #0xa
 	ldr r0, [sp, #4]
 	add r2, r4, r5

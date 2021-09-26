@@ -942,7 +942,7 @@ sub_02031008: ; 0x02031008
 	ldr r1, _02031078 ; =_021D2AFC
 	ldr r2, _02031058 ; =0x00001628
 	add r0, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, pc}
 	.balign 4, 0
 _02031058: .word 0x00001628
@@ -972,7 +972,7 @@ sub_02031084: ; 0x02031084
 	add r1, r0, #0
 	ldr r0, _02031098 ; =_021D2AFC
 	ldr r2, _0203109C ; =0x00001628
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, pc}
 	.balign 4, 0
 _02031098: .word _021D2AFC
@@ -986,7 +986,7 @@ sub_020310A0: ; 0x020310A0
 	bl SavArray_get
 	ldr r1, _020310B4 ; =_021D2AFC
 	ldr r2, _020310B8 ; =0x00001628
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, pc}
 	nop
 _020310B4: .word _021D2AFC
@@ -1157,7 +1157,7 @@ _020311CA:
 	mov r2, #0x40
 	add r0, r0, r1
 	add r1, r7, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r4, #0x64
 _020311DC:
 	add r0, r6, #0

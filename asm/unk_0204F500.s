@@ -1144,7 +1144,7 @@ _0204FD7C:
 	add r0, #0x30
 	add r1, r5, #6
 	mov r2, #3
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r4, #0
 	add r0, #0x26
 	ldrb r0, [r0]
@@ -1821,7 +1821,7 @@ _020502BC:
 	add r0, #0x30
 	add r1, r5, #6
 	mov r2, #3
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r4, #0
 	add r0, #0x26
 	ldrb r0, [r0]

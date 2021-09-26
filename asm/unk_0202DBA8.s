@@ -131,7 +131,7 @@ _0202DC52:
 	ldr r0, [sp, #4]
 	add r1, r1, r4
 	add r2, r2, #4
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _0202DCA8 ; =0x00000102
 	ldr r0, [sp]
 	mov r2, #3
@@ -214,7 +214,7 @@ _0202DCF0:
 	mul r1, r2
 	ldr r0, [sp, #4]
 	add r1, r3, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _0202DD44 ; =0x00000152
 	ldr r0, [sp, #4]
 	ldrb r0, [r0, r1]
@@ -263,7 +263,7 @@ _0202DD5E:
 	add r0, r4, #0
 	add r1, r5, r1
 	lsl r2, r2, #2
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r0, #0x1b
 	bl sub_0202893C
 	mov r0, #0

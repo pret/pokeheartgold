@@ -3355,7 +3355,7 @@ sub_0206B014: ; 0x0206B014
 	strh r0, [r5, #0x3e]
 	ldr r0, _0206B26C ; =0x021100C4
 	mov r2, #0x24
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r5, #0
 	ldr r1, [sp, #0x58]
 	add r0, #0x40

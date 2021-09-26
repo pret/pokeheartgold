@@ -89,11 +89,11 @@ Mail_new: ; 0x0202B0C8
 
 	thumb_func_start Mail_copy
 Mail_copy: ; 0x0202B0DC
-	ldr r3, _0202B0E4 ; =MIi_CpuCopy8
+	ldr r3, _0202B0E4 ; =MI_CpuCopy8
 	mov r2, #0x38
 	bx r3
 	nop
-_0202B0E4: .word MIi_CpuCopy8
+_0202B0E4: .word MI_CpuCopy8
 	thumb_func_end Mail_copy
 
 	thumb_func_start Mail_compare

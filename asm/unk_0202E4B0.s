@@ -431,7 +431,7 @@ sub_0202E75C: ; 0x0202E75C
 	add r0, r5, r0
 	add r1, #0x50
 	str r0, [sp, #8]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r1, sp, #0x10
 	ldrb r3, [r1, #0x18]
 	mov r0, #0
@@ -492,7 +492,7 @@ _0202E7EC:
 	add r1, r6, #0
 	add r1, #0x50
 	str r0, [sp, #8]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, sp, #0x10
 	ldrb r2, [r0, #0x18]
 	mov r3, #0

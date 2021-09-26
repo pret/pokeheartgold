@@ -6887,7 +6887,7 @@ ov96_021E8BB4: ; 0x021E8BB4
 _021E8BE2:
 	add r1, r6, #0
 	mov r2, #0x20
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r5, #0
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -22661,7 +22661,7 @@ _021F04C6:
 	add r0, #0x48
 	add r1, #0x68
 	mov r2, #0x20
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [sp, #0x50]
 	mov r1, #0x10
 	add r0, r5, r0
@@ -101787,7 +101787,7 @@ _022175A0:
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x20
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r5, #0
 	mov r1, #0x10
 	bl sub_02003F04

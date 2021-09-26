@@ -49,7 +49,7 @@ _0202C060:
 	ldr r1, _0202C088 ; =0x021D2230
 	add r0, r7, #0
 	lsl r2, r2, #6
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0202C084: .word 0x0000FFFF
@@ -492,7 +492,7 @@ _0202C36E:
 	mov r2, #0x38
 	add r0, r0, r1
 	add r1, r6, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r0, #0xc
 	add r1, r7, #0
 	mul r1, r0
@@ -500,7 +500,7 @@ _0202C36E:
 	mov r2, #0xc
 	add r0, r0, r1
 	add r1, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r5, r5, #1
 	add r6, #0x38
 	add r4, #0xc
@@ -569,7 +569,7 @@ sub_0202C3E8: ; 0x0202C3E8
 	mul r3, r2
 	add r0, r0, r4
 	add r1, r1, r3
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r7, [sp]
 	mov r2, #0xc
 	add r0, r6, #0
@@ -580,7 +580,7 @@ sub_0202C3E8: ; 0x0202C3E8
 	str r0, [sp, #8]
 	add r0, r7, r0
 	add r1, r7, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, [sp, #4]
 	mov r0, #0
 	add r1, r1, r4
@@ -980,7 +980,7 @@ sub_0202C6FC: ; 0x0202C6FC
 	mov r2, #0x23
 	ldr r1, _0202C710 ; =0x021D2230
 	lsl r2, r2, #6
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, pc}
 	.balign 4, 0
 _0202C710: .word 0x021D2230
@@ -995,7 +995,7 @@ sub_0202C714: ; 0x0202C714
 	mov r2, #0x23
 	ldr r0, _0202C72C ; =0x021D2230
 	lsl r2, r2, #6
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, pc}
 	nop
 _0202C72C: .word 0x021D2230

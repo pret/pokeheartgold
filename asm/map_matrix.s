@@ -60,7 +60,7 @@ _0203AF10:
 	add r0, r5, #0
 	add r1, r4, r1
 	add r2, r7, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [sp, #8]
 	add r5, r5, r7
 	cmp r0, #0
@@ -71,7 +71,7 @@ _0203AF10:
 	add r1, r4, #2
 	mul r2, r3
 	lsl r2, r2, #1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldrb r1, [r4, #1]
 	ldrb r0, [r4]
 	mul r0, r1
@@ -99,7 +99,7 @@ _0203AF54:
 	add r0, r5, #0
 	add r1, r4, r1
 	mul r2, r3
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldrb r1, [r4, #1]
 	ldrb r0, [r4]
 	mul r0, r1
@@ -113,7 +113,7 @@ _0203AF74:
 	add r0, r5, #0
 	add r1, r4, r1
 	lsl r2, r2, #1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r6, #0
 	bl FreeToHeap
 	add sp, #0xc
@@ -296,7 +296,7 @@ sub_0203B094: ; 0x0203B094
 	ldr r2, _0203B0C4 ; =0x0000063E
 	add r0, r0, r1
 	add r1, r5, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
