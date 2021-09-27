@@ -274,6 +274,7 @@ Static main
 	Object os_system.o
 	Object os_reset.o
 	Object os_ownerInfo.o
+	Object os_vramExclusive.o
 	Object nitro.o
 	Object msl.o
 }
