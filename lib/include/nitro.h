@@ -11,6 +11,7 @@
 #include <nitro/pm.h>
 #include <nitro/pxi.h>
 #include <nitro/card.h>
+#include <nitro/gx.h>
 #include <nitro/ctrdg.h>
 #include <nitro/mb.h>
 #include <nitro/spi.h>

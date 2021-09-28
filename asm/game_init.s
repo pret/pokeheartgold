@@ -182,7 +182,7 @@ sub_0201A1B4: ; 0x0201A1B4
 	push {r3, lr}
 	sub sp, #0x30
 	add r0, sp, #0x10
-	bl sub_020D3E78
+	bl OS_GetLowEntropyData
 	add r0, sp, #0
 	add r1, sp, #0x10
 	mov r2, #0x20

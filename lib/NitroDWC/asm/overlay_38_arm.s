@@ -8467,7 +8467,7 @@ ov38_022230B0: ; 0x022230B0
 ov38_022230BC: ; 0x022230BC
 	stmdb sp!, {r3, lr}
 	ldr r0, _022230D8 ; =0x02226BF0
-	bl sub_020D3E78
+	bl OS_GetLowEntropyData
 	ldr r0, _022230D8 ; =0x02226BF0
 	mov r1, #0x20
 	bl sub_020AA9B0

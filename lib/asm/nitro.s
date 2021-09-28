@@ -82,79 +82,6 @@ _021E1A20:
 
 	.text
 
-	arm_func_start sub_020D3E78
-sub_020D3E78: ; 0x020D3E78
-	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _020D3F38 ; =0x04000006
-	mov r5, r0
-	ldrh r6, [r1]
-	ldr r4, _020D3F3C ; =0x027FFC00
-	bl OS_GetTickLo
-	orr r0, r0, r6, lsl #16
-	str r0, [r5]
-	ldr r1, _020D3F40 ; =0x021E19DC
-	ldrh ip, [r4, #0xf8]
-	ldr r3, [r1]
-	ldr r2, [r1, #4]
-	mov r0, r4
-	eor r2, r3, ip, lsl #16
-	str r2, [r5, #4]
-	ldr r2, [r1]
-	ldr r3, [r0, #0x3c]
-	ldr r2, [r1, #4]
-	ldr r1, [r4, #0xf4]
-	ldr ip, _020D3F44 ; =0x04000600
-	eor r1, r2, r1
-	eor r2, r3, r1
-	str r2, [r5, #8]
-	ldr r1, [ip]
-	eor r1, r2, r1
-	str r1, [r5, #8]
-	ldr r2, [r0, #0x1e8]
-	add r1, r0, #0x300
-	str r2, [r5, #0xc]
-	ldr r3, [r0, #0x1ec]
-	sub r2, ip, #0x4d0
-	str r3, [r5, #0x10]
-	ldr r3, [r0, #0x390]
-	ldrh r4, [r1, #0x94]
-	add r0, r0, #0x3a8
-	eor r3, r3, r4, lsl #16
-	str r3, [r5, #0x14]
-	ldrh r4, [r1, #0xaa]
-	ldrh r3, [r1, #0xac]
-	orr r3, r3, r4, lsl #16
-	str r3, [r5, #0x18]
-	ldrh r2, [r2]
-	ldrh r0, [r0]
-	ldrh r1, [r1, #0x98]
-	orr r0, r2, r0
-	orr r0, r0, r1, lsl #16
-	str r0, [r5, #0x1c]
-	ldmia sp!, {r4, r5, r6, pc}
-	.align 2, 0
-_020D3F38: .word 0x04000006
-_020D3F3C: .word 0x027FFC00
-_020D3F40: .word 0x021E19DC
-_020D3F44: .word 0x04000600
-	arm_func_end sub_020D3E78
-
-	arm_func_start OS_Terminate
-OS_Terminate: ; 0x020D3F48
-	stmdb sp!, {r3, lr}
-_020D3F4C:
-	bl OS_DisableInterrupts
-	bl OS_Halt
-	b _020D3F4C
-	arm_func_end OS_Terminate
-
-	arm_func_start OS_Halt
-OS_Halt: ; 0x020D3F58
-	mov r0, #0
-	mcr p15, 0, r0, c7, c0, 4
-	bx lr
-	arm_func_end OS_Halt
-
 	arm_func_start sub_020D3F64
 sub_020D3F64: ; 0x020D3F64
 	ldr r1, _020D3F70 ; =0x04000247
@@ -192,7 +119,7 @@ _020D3FA0:
 	add r1, r1, #0x4000000
 	orr r3, r3, #0x85000000
 	str r6, [ip, #0xe0]
-	bl sub_01FF851C
+	bl MIi_DmaSetParams_wait_noInt
 	mov r0, r4
 	bl OS_RestoreInterrupts
 _020D3FE4:
@@ -211,7 +138,7 @@ MI_DmaCopy32: ; 0x020D3FF4
 	mov r3, #0
 	mov r8, r0
 	mov r7, r1
-	bl sub_020D4394
+	bl MIi_CheckDma0SourceAddress
 	cmp r5, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	add r0, r8, r8, lsl #1
@@ -228,7 +155,7 @@ _020D4030:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, #0x84000000
-	bl sub_01FF8488
+	bl MIi_DmaSetParams_wait
 _020D4054:
 	ldr r0, [r4]
 	tst r0, #0x80000000
@@ -246,7 +173,7 @@ MI_DmaCopy16: ; 0x020D4064
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r2, r5
 	mov r3, #0
-	bl sub_020D4394
+	bl MIi_CheckDma0SourceAddress
 	add r0, r8, r8, lsl #1
 	add r0, r0, #2
 	mov r0, r0, lsl #2
@@ -261,7 +188,7 @@ _020D409C:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, #0x80000000
-	bl sub_01FF8488
+	bl MIi_DmaSetParams_wait
 _020D40C0:
 	ldr r0, [r4]
 	tst r0, #0x80000000
@@ -302,7 +229,7 @@ _020D4100:
 	mov r2, r6
 	add r1, r1, #0x4000000
 	orr r3, r3, #0xc5000000
-	bl sub_01FF84F8
+	bl MIi_DmaSetParams_noInt
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
@@ -318,7 +245,7 @@ _020D4158:
 	add r1, r1, #0x4000000
 	orr r3, r3, #0x85000000
 	str r5, [ip, #0xe0]
-	bl sub_01FF84F8
+	bl MIi_DmaSetParams_noInt
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
@@ -334,7 +261,7 @@ MI_DmaCopy32Async: ; 0x020D4194
 	mov r8, r0
 	mov r7, r1
 	ldr r4, [sp, #0x18]
-	bl sub_020D4394
+	bl MIi_CheckDma0SourceAddress
 	cmp r5, #0
 	bne _020D41D4
 	cmp r4, #0
@@ -356,7 +283,7 @@ _020D41D4:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, #0xc4000000
-	bl sub_01FF8448
+	bl MIi_DmaSetParams
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _020D4210:
 	mov r3, r5, lsr #2
@@ -364,7 +291,7 @@ _020D4210:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, #0x84000000
-	bl sub_01FF8448
+	bl MIi_DmaSetParams
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end MI_DmaCopy32Async
 
@@ -478,8 +405,8 @@ _020D437C:
 _020D4390: .word 0x040000B8
 	arm_func_end sub_020D4310
 
-	arm_func_start sub_020D4394
-sub_020D4394: ; 0x020D4394
+	arm_func_start MIi_CheckDma0SourceAddress
+MIi_CheckDma0SourceAddress: ; 0x020D4394
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
@@ -504,7 +431,7 @@ _020D43BC:
 _020D43E0:
 	bl OS_Terminate
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D4394
+	arm_func_end MIi_CheckDma0SourceAddress
 
 	arm_func_start sub_020D43E8
 sub_020D43E8: ; 0x020D43E8
@@ -519,7 +446,7 @@ sub_020D43E8: ; 0x020D43E8
 	mov r1, r6
 	mov r2, r4
 	mov r3, #0
-	bl sub_020D4394
+	bl MIi_CheckDma0SourceAddress
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
@@ -529,7 +456,7 @@ sub_020D43E8: ; 0x020D43E8
 	mov r1, r6
 	mov r2, r5
 	orr r3, r3, r4, lsr #2
-	bl sub_01FF8448
+	bl MIi_DmaSetParams
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D4444: .word 0x96600000
@@ -548,7 +475,7 @@ sub_020D4448: ; 0x020D4448
 	mov r1, r6
 	mov r2, r4
 	mov r3, #0
-	bl sub_020D4394
+	bl MIi_CheckDma0SourceAddress
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
@@ -558,7 +485,7 @@ sub_020D4448: ; 0x020D4448
 	mov r1, r6
 	mov r2, r5
 	orr r3, r3, r4, lsr #1
-	bl sub_01FF8448
+	bl MIi_DmaSetParams
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D44A4: .word 0x92600000
@@ -599,7 +526,7 @@ _020D44E0:
 	mov r0, r4
 	mov r3, #0
 	str lr, [ip, #0x14]
-	bl sub_020D4394
+	bl MIi_CheckDma0SourceAddress
 	mov r0, r4
 	bl MI_WaitDma
 	bl OS_DisableInterrupts
@@ -662,7 +589,7 @@ sub_020D45A0: ; 0x020D45A0
 	ldr r2, _020D4644 ; =0x04000400
 	mov r1, r4
 	orr r3, r3, r5, lsr #2
-	bl sub_01FF8448
+	bl MIi_DmaSetParams
 	mov r0, #0x200000
 	bl OS_ResetRequestIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
@@ -672,7 +599,7 @@ _020D4618:
 	ldr r2, _020D4644 ; =0x04000400
 	mov r1, r4
 	orr r3, r3, r5, lsr #2
-	bl sub_01FF8448
+	bl MIi_DmaSetParams
 	mov r0, #0x200000
 	bl OS_ResetRequestIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
@@ -744,7 +671,7 @@ _020D46D8:
 	mov r1, r5
 	mov r2, r4
 	mov r3, #0
-	bl sub_020D4394
+	bl MIi_CheckDma0SourceAddress
 	mov r0, r6
 	bl MI_WaitDma
 	mov r0, r6
@@ -757,7 +684,7 @@ _020D46D8:
 	mov r3, #0x3c00000
 	rsb r3, r3, #0
 	orr r3, r3, r4, lsr #2
-	bl sub_01FF8448
+	bl MIi_DmaSetParams
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D4758: .word 0x021E1A20
@@ -1300,7 +1227,7 @@ sub_020D4CE8: ; 0x020D4CE8
 	mov r1, r5
 	mov r2, r7
 	mov r3, #0x1000000
-	bl sub_020D4394
+	bl MIi_CheckDma0SourceAddress
 	cmp r7, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, r6, r6, lsl #1
@@ -1316,7 +1243,7 @@ _020D4D34:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_01FF8448
+	bl MIi_DmaSetParams
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D4D58: .word 0xAF000001
@@ -20835,8 +20762,8 @@ _02110FC8:
 
 	.section .itcm,4,1,4
 
-	arm_func_start sub_01FF8448
-sub_01FF8448: ; 0x01FF8448
+	arm_func_start MIi_DmaSetParams
+MIi_DmaSetParams: ; 0x01FF8448
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -20853,10 +20780,10 @@ sub_01FF8448: ; 0x01FF8448
 	str r4, [r1, #8]
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_01FF8448
+	arm_func_end MIi_DmaSetParams
 
-	arm_func_start sub_01FF8488
-sub_01FF8488: ; 0x01FF8488
+	arm_func_start MIi_DmaSetParams_wait
+MIi_DmaSetParams_wait: ; 0x01FF8488
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -20887,10 +20814,10 @@ _01FF84E8:
 	.align 2, 0
 _01FF84F0: .word 0x040000B0
 _01FF84F4: .word 0x81400001
-	arm_func_end sub_01FF8488
+	arm_func_end MIi_DmaSetParams_wait
 
-	arm_func_start sub_01FF84F8
-sub_01FF84F8: ; 0x01FF84F8
+	arm_func_start MIi_DmaSetParams_noInt
+MIi_DmaSetParams_noInt: ; 0x01FF84F8
 	mov ip, #0xc
 	mul ip, r0, ip
 	add r0, ip, #0xb0
@@ -20900,10 +20827,10 @@ sub_01FF84F8: ; 0x01FF84F8
 	str r2, [r0, #4]
 	str r3, [r0, #8]
 	bx lr
-	arm_func_end sub_01FF84F8
+	arm_func_end MIi_DmaSetParams_noInt
 
-	arm_func_start sub_01FF851C
-sub_01FF851C: ; 0x01FF851C
+	arm_func_start MIi_DmaSetParams_wait_noInt
+MIi_DmaSetParams_wait_noInt: ; 0x01FF851C
 	stmdb sp!, {r3, lr}
 	mov ip, #0xc
 	mul lr, r0, ip
@@ -20931,17 +20858,17 @@ _01FF8568:
 	.align 2, 0
 _01FF8578: .word 0x040000B0
 _01FF857C: .word 0x81400001
-	arm_func_end sub_01FF851C
+	arm_func_end MIi_DmaSetParams_wait_noInt
 
-	arm_func_start sub_01FF8580
-sub_01FF8580: ; 0x01FF8580
+	arm_func_start MI_SendGXCommand
+MI_SendGXCommand: ; 0x01FF8580
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	movs r8, r2
 	mov sl, r0
 	mov sb, r1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r3, #0
-	bl sub_020D4394
+	bl MIi_CheckDma0SourceAddress
 	add r0, sl, sl, lsl #1
 	add r0, r0, #2
 	mov r0, r0, lsl #2
@@ -20964,7 +20891,7 @@ _01FF85D0:
 	mov r1, sb
 	mov r2, fp
 	orr r3, r4, r7, lsr #2
-	bl sub_01FF8448
+	bl MIi_DmaSetParams
 	subs r8, r8, r7
 	add sb, sb, r7
 	bne _01FF85D0
@@ -20976,4 +20903,4 @@ _01FF85FC:
 	.align 2, 0
 _01FF860C: .word 0x04000400
 _01FF8610: .word 0x84400000
-	arm_func_end sub_01FF8580
+	arm_func_end MI_SendGXCommand

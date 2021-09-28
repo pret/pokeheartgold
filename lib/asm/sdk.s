@@ -8991,7 +8991,7 @@ sub_0209FF34: ; 0x0209FF34
 	sub sp, sp, #0x34
 	mov r6, r0
 	add r0, sp, #0
-	bl sub_020D3E78
+	bl OS_GetLowEntropyData
 	mov r3, #1
 	add r2, sp, #0
 _0209FF50:

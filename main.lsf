@@ -275,6 +275,8 @@ Static main
 	Object os_reset.o
 	Object os_ownerInfo.o
 	Object os_vramExclusive.o
+	Object os_entropy.o
+	Object os_terminate_proc.o
 	Object nitro.o
 	Object msl.o
 }

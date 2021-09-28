@@ -755,11 +755,11 @@ _038012A4:
 	b _03801324
 _038012D0:
 	mul r0, sb, r8
-	bl sub_03806468
+	bl _u32_div_f
 	ldr r2, [sl, #0xc]
 	mov r1, r8
 	add r0, r2, r0
-	bl sub_03806468
+	bl _u32_div_f
 	mov r0, r1, lsl #0x10
 	mov r0, r0, lsr #0x10
 	cmp r0, #0xc8
@@ -1919,7 +1919,7 @@ _03802204:
 	ldr r0, [r1]
 	add r6, r5, r4
 	ldrh r1, [r6, #0xa]
-	bl sub_03806468
+	bl _u32_div_f
 	mov r1, #0
 	mov r3, r1, lsr r0
 	ldr ip, [r6, #4]
@@ -4731,24 +4731,24 @@ _03804634:
 	mov r0, r7
 	mov r1, #0x190
 	addls r6, r6, #0xc
-	bl sub_03806468
+	bl _u32_div_f
 	mov r4, r0
 	mov r0, r7
 	mov r1, #0x64
-	bl sub_03806468
+	bl _u32_div_f
 	mov r1, #0xd
 	mul r1, r6, r1
 	mov r6, r0
 	add r0, r1, #8
 	mov r1, #5
-	bl sub_03806468
+	bl _u32_div_f
 	add r1, r7, r7, lsr #2
 	sub r1, r1, r6
 	add r1, r4, r1
 	add r0, r1, r0
 	add r0, r5, r0
 	mov r1, #7
-	bl sub_03806468
+	bl _u32_div_f
 	ldr r0, _038047C0 ; =0x027FFDE8
 	ldr r2, [r0]
 	mov r3, r2, lsl #5
@@ -6869,7 +6869,7 @@ _03806238:
 	orrs r5, r1, r3
 	bne _038060D8
 	mov r1, r2
-	bl sub_03806470
+	bl _u32_div_not_0_f
 	cmp r4, #0
 	movne r0, r1
 	mov r1, #0
@@ -7013,14 +7013,14 @@ _03806454:
 	bx lr
 	arm_func_end _s32_div_f
 
-	arm_func_start sub_03806468
-sub_03806468: ; 0x03806468
+	arm_func_start _u32_div_f
+_u32_div_f: ; 0x03806468
 	cmp r1, #0
 	bxeq lr
-	arm_func_end sub_03806468
+	arm_func_end _u32_div_f
 
-	arm_func_start sub_03806470
-sub_03806470: ; 0x03806470
+	arm_func_start _u32_div_not_0_f
+_u32_div_not_0_f: ; 0x03806470
 	cmp r0, r1
 	movlo r1, r0
 	movlo r0, #0
@@ -7140,7 +7140,7 @@ sub_03806470: ; 0x03806470
 	adcs r0, r0, r0
 	mov r1, r3
 	bx lr
-	arm_func_end sub_03806470
+	arm_func_end _u32_div_not_0_f
 
 	.public _0380664C
 _0380664C:
@@ -7179,8 +7179,8 @@ _0380664C:
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00
 	.byte 0x17, 0x00, 0x00, 0x00
 
-	arm_func_start sub_03806854
-sub_03806854: ; 0x03806854
+	arm_func_start OSi_DoBoot
+OSi_DoBoot: ; 0x03806854
 	mov ip, #0x4000000
 	str ip, [ip, #0x208]
 	ldr r1, _038068BC ; =0x0380FFFC
@@ -7213,7 +7213,7 @@ _03806890:
 _038068BC: .word 0x0380FFFC
 _038068C0: .word 0x04000180
 _038068C4: .word 0x027FFE00
-	arm_func_end sub_03806854
+	arm_func_end OSi_DoBoot
 
 	arm_func_start sub_038068C8
 sub_038068C8: ; 0x038068C8

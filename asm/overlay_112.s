@@ -764,7 +764,7 @@ ov112_021E5E28: ; 0x021E5E28
 	str r1, [r5, #4]
 	add r5, #8
 	add r0, r5, #0
-	bl sub_020D3E78
+	bl OS_GetLowEntropyData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E5E44: .word 0x021FFAA4

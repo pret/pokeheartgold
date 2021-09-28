@@ -52,7 +52,7 @@
 .public sub_03806010
 .public sub_03806214
 .public _s32_div_f
-.public sub_03806468
+.public _u32_div_f
 .public sub_038068C8
 .public sub_03806914
 .public sub_03806968
@@ -101,7 +101,7 @@
 .public sub_038059E8
 .public sub_03805A3C
 .public sub_03806064
-.public sub_03806854
+.public OSi_DoBoot
 .public OS_Init
 .public OS_GetArenaHi
 .public OS_GetArenaLo

@@ -6749,7 +6749,7 @@ ov63_0221F580: ; 0x0221F580
 	ldr r2, [r3, r2]
 	mov r0, #3
 	add r1, #0x14
-	bl sub_01FF8580
+	bl MI_SendGXCommand
 	ldr r0, _0221F5B0 ; =0x04000448
 	mov r1, #1
 	str r1, [r0]
@@ -7377,7 +7377,7 @@ ov63_0221FAA0: ; 0x0221FAA0
 	ldr r2, [r4, r2]
 	mov r0, #3
 	add r1, r4, r1
-	bl sub_01FF8580
+	bl MI_SendGXCommand
 	ldr r0, _0221FAE0 ; =0x04000448
 	mov r1, #1
 	str r1, [r0]

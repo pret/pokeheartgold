@@ -1654,7 +1654,7 @@ ov00_021E926C: ; 0x021E926C
 	bne _021E92A0
 	add r0, r4, #0x1d4
 	add r0, r0, #0x1800
-	bl sub_020D3E78
+	bl OS_GetLowEntropyData
 	add r0, r4, #0x1d4
 	add r0, r0, #0x1800
 	mov r1, #0x20

@@ -4770,9 +4770,9 @@ _06003EC8: .word 0x0000020D
 
 	arm_func_start sub_06003ECC
 sub_06003ECC: ; 0x06003ECC
-	ldr pc, _06003ED0 ; =sub_03806468
+	ldr pc, _06003ED0 ; =_u32_div_f
 	.align 2, 0
-_06003ED0: .word sub_03806468
+_06003ED0: .word _u32_div_f
 	arm_func_end sub_06003ECC
 
 	arm_func_start sub_06003ED4

@@ -24491,7 +24491,7 @@
 .public strtol
 .public strtoul
 .public OS_IrqHandler
-.public sub_01FF8580
+.public MI_SendGXCommand
 .public sub_02001B9C
 .public sub_02001BC4
 .public sub_02001BE0
@@ -29258,7 +29258,7 @@
 .public OS_WaitVBlankIntr
 .public OSi_TryLockVram
 .public OSi_UnlockVram
-.public sub_020D3E78
+.public OS_GetLowEntropyData
 .public OS_Terminate
 .public OS_Halt
 .public MI_DmaFill32

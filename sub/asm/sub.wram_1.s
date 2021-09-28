@@ -1496,7 +1496,7 @@ _037FAE60:
 	ldr r0, _037FAE90 ; =0x04000208
 	mov r1, #0
 	strh r1, [r0]
-	bl sub_03806854
+	bl OSi_DoBoot
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
