@@ -46,7 +46,7 @@
 .public sub_03800A40
 .public sub_03800A9C
 .public sub_038022BC
-.public sub_03803DFC
+.public NVRAM_ReadStatusRegister
 .public NVRAM_ReadDataBytes
 .public sub_03804538
 .public sub_03806010

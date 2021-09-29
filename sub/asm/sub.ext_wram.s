@@ -28789,9 +28789,9 @@ _06017FD4:
 
 	arm_func_start sub_06017FEC
 sub_06017FEC: ; 0x06017FEC
-	ldr pc, _06017FF0 ; =sub_03803DFC
+	ldr pc, _06017FF0 ; =NVRAM_ReadStatusRegister
 	.align 2, 0
-_06017FF0: .word sub_03803DFC
+_06017FF0: .word NVRAM_ReadStatusRegister
 	arm_func_end sub_06017FEC
 
 	arm_func_start sub_06017FF4

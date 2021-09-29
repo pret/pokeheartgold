@@ -39,6 +39,8 @@ O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
 MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
 ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
 
+NTRMERGE     := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
+
 NATIVE_TOOLS := \
 	$(SCANINC) \
 	$(JSONPROC) \
@@ -155,7 +157,7 @@ ifeq ($(COMPARE),1)
 	$(SHA1SUM) -c $*.sha1
 endif
 
-$(ELF): $(NEF)
-	@$(OBJCOPY) $(foreach ov,$(NEFNAME) $(OVERLAYS),--update-section $(ov)=$(BUILD_DIR)/$(ov).sbin -j $(ov)) $< $@ 2>/dev/null
+$(ELF): %.elf: %.nef
+	$(NTRMERGE) $*
 
 print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true

@@ -3803,14 +3803,14 @@ _03803A94: ; jump table
 	b _03803CAC ; case 12
 	b _03803CB8 ; case 13
 _03803ACC:
-	bl sub_03803D58
+	bl NVRAM_WriteEnable
 	b _03803CE0
 _03803AD4:
-	bl sub_03803DBC
+	bl NVRAM_WriteDisable
 	b _03803CE0
 _03803ADC:
 	ldr r0, [r4, #0x10]
-	bl sub_03803DFC
+	bl NVRAM_ReadStatusRegister
 	b _03803CE0
 _03803AE8:
 	bl sub_03803D04
@@ -3974,7 +3974,7 @@ _03803CFC:
 sub_03803D04: ; 0x03803D04
 	stmdb sp!, {r3, lr}
 	add r0, sp, #0
-	bl sub_03803DFC
+	bl NVRAM_ReadStatusRegister
 	ldrh r0, [sp]
 	tst r0, #1
 	moveq r0, #1
@@ -3987,7 +3987,7 @@ sub_03803D04: ; 0x03803D04
 sub_03803D28: ; 0x03803D28
 	stmdb sp!, {r3, lr}
 	add r0, sp, #0
-	bl sub_03803DFC
+	bl NVRAM_ReadStatusRegister
 	ldrh r0, [sp]
 	tst r0, #1
 	movne r0, #0
@@ -4000,8 +4000,8 @@ _03803D50:
 	bx lr
 	arm_func_end sub_03803D28
 
-	arm_func_start sub_03803D58
-sub_03803D58: ; 0x03803D58
+	arm_func_start NVRAM_WriteEnable
+NVRAM_WriteEnable: ; 0x03803D58
 	ldr r2, _03803D90 ; =0x040001C0
 _03803D5C:
 	ldrh r0, [r2]
@@ -4021,10 +4021,10 @@ _03803D80:
 	.align 2, 0
 _03803D90: .word 0x040001C0
 _03803D94: .word 0x040001C2
-	arm_func_end sub_03803D58
+	arm_func_end NVRAM_WriteEnable
 
-	arm_func_start sub_03803D98
-sub_03803D98: ; 0x03803D98
+	arm_func_start SPI_SendWait
+SPI_SendWait: ; 0x03803D98
 	ldr r1, _03803DB8 ; =0x040001C2
 	and r0, r0, #0xff
 	strh r0, [r1]
@@ -4036,10 +4036,10 @@ _03803DA8:
 	bx lr
 	.align 2, 0
 _03803DB8: .word 0x040001C2
-	arm_func_end sub_03803D98
+	arm_func_end SPI_SendWait
 
-	arm_func_start sub_03803DBC
-sub_03803DBC: ; 0x03803DBC
+	arm_func_start NVRAM_WriteDisable
+NVRAM_WriteDisable: ; 0x03803DBC
 	ldr r2, _03803DF4 ; =0x040001C0
 _03803DC0:
 	ldrh r0, [r2]
@@ -4059,10 +4059,10 @@ _03803DE4:
 	.align 2, 0
 _03803DF4: .word 0x040001C0
 _03803DF8: .word 0x040001C2
-	arm_func_end sub_03803DBC
+	arm_func_end NVRAM_WriteDisable
 
-	arm_func_start sub_03803DFC
-sub_03803DFC: ; 0x03803DFC
+	arm_func_start NVRAM_ReadStatusRegister
+NVRAM_ReadStatusRegister: ; 0x03803DFC
 	ldr r3, _03803E64 ; =0x040001C0
 _03803E00:
 	ldrh r1, [r3]
@@ -4095,7 +4095,7 @@ _03803E48:
 	.align 2, 0
 _03803E64: .word 0x040001C0
 _03803E68: .word 0x040001C2
-	arm_func_end sub_03803DFC
+	arm_func_end NVRAM_ReadStatusRegister
 
 	arm_func_start NVRAM_ReadDataBytes
 NVRAM_ReadDataBytes: ; 0x03803E6C
@@ -4161,7 +4161,7 @@ _03803F38:
 	ldr r0, _03803F68 ; =0x040001C0
 	mov r1, #0x8100
 	strh r1, [r0]
-	bl sub_03803F70
+	bl SPI_DummyWait
 	ldr r0, _03803F6C ; =0x040001C2
 	ldrh r0, [r0]
 	strb r0, [r5, r4]
@@ -4174,8 +4174,8 @@ _03803F68: .word 0x040001C0
 _03803F6C: .word 0x040001C2
 	arm_func_end NVRAM_ReadDataBytes
 
-	arm_func_start sub_03803F70
-sub_03803F70: ; 0x03803F70
+	arm_func_start SPI_DummyWait
+SPI_DummyWait: ; 0x03803F70
 	ldr r0, _03803F90 ; =0x040001C2
 	mov r1, #0
 	strh r1, [r0]
@@ -4187,7 +4187,7 @@ _03803F80:
 	bx lr
 	.align 2, 0
 _03803F90: .word 0x040001C2
-	arm_func_end sub_03803F70
+	arm_func_end SPI_DummyWait
 
 	arm_func_start sub_03803F94
 sub_03803F94: ; 0x03803F94
@@ -4261,7 +4261,7 @@ _0380407C:
 	ldr r0, _038040AC ; =0x040001C0
 	mov r1, #0x8100
 	strh r1, [r0]
-	bl sub_03803F70
+	bl SPI_DummyWait
 	ldr r0, _038040B0 ; =0x040001C2
 	ldrh r0, [r0]
 	strb r0, [r5, r4]
@@ -4342,7 +4342,7 @@ _03804190:
 	mov r0, #0x8100
 	strh r0, [r1]
 	ldrb r0, [r2, r4]
-	bl sub_03803D98
+	bl SPI_SendWait
 _038041AC:
 	add sp, sp, #8
 	ldmia sp!, {r4, lr}
@@ -4420,7 +4420,7 @@ _0380429C:
 	mov r0, #0x8100
 	strh r0, [r1]
 	ldrb r0, [r2, r4]
-	bl sub_03803D98
+	bl SPI_SendWait
 _038042B8:
 	add sp, sp, #8
 	ldmia sp!, {r4, lr}
@@ -4456,14 +4456,14 @@ _03804318:
 	ldrh r1, [r2]
 	tst r1, #0x80
 	bne _03804318
-	bl sub_03803D98
+	bl SPI_SendWait
 	mov r0, r4
-	bl sub_03803D98
+	bl SPI_SendWait
 	ldr r1, _0380434C ; =0x040001C0
 	mov r2, #0x8100
 	mov r0, r5
 	strh r2, [r1]
-	bl sub_03803D98
+	bl SPI_SendWait
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
@@ -4497,14 +4497,14 @@ _038043A0:
 	ldrh r1, [r2]
 	tst r1, #0x80
 	bne _038043A0
-	bl sub_03803D98
+	bl SPI_SendWait
 	mov r0, r4
-	bl sub_03803D98
+	bl SPI_SendWait
 	ldr r1, _038043D4 ; =0x040001C0
 	mov r2, #0x8100
 	mov r0, r5
 	strh r2, [r1]
-	bl sub_03803D98
+	bl SPI_SendWait
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
