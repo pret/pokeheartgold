@@ -277,6 +277,8 @@ Static main
 	Object os_vramExclusive.o
 	Object os_entropy.o
 	Object os_terminate_proc.o
+	Object mi_wram.o
+	Object mi_dma.o
 	Object nitro.o
 	Object msl.o
 }
@@ -286,6 +288,7 @@ Autoload ITCM
 	Address 0x01FF8000
 	Object os_irqHandler.o (.itcm)
 	Object os_reset.o (.itcm)
+	Object mi_dma.o (.itcm)
 	Object nitro.o (.itcm)
 }
 
