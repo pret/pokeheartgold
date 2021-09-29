@@ -1,18 +1,20 @@
-Static sub
+Static ichneumon_sub
 {
 	Address 0x02380000
 	StackSize 1024 1024
 }
 
-Autoload ext
+Autoload MAIN
 {
 	Address 0x027E0000
 	Object sub.ext.o
 }
 
-Autoload wram
+Autoload WRAM
 {
 	Address 0x037F8000
+	Object sp_main.o
+	Object sp_main_help.o
 	Object sub.wram.o
 	Object OS_interrupt.o
 	Object OS_irqTable.o
@@ -28,7 +30,7 @@ Autoload wram
 	Object sub.wram_2.o
 }
 
-Autoload ext_wram
+Autoload EXT_WRAM
 {
 	Address 0x06000000
 	Object sub.ext_wram.o

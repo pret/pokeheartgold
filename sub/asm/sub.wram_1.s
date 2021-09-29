@@ -182,8 +182,8 @@ sub_037F9DA8: ; 0x037F9DA8
 _037F9E10: .word 0x03806D9C
 	arm_func_end sub_037F9DA8
 
-	arm_func_start sub_037F9E14
-sub_037F9E14: ; 0x037F9E14
+	arm_func_start OS_SetCurrentHeap
+OS_SetCurrentHeap: ; 0x037F9E14
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
@@ -198,10 +198,10 @@ sub_037F9E14: ; 0x037F9E14
 	bx lr
 	.align 2, 0
 _037F9E44: .word 0x03806D9C
-	arm_func_end sub_037F9E14
+	arm_func_end OS_SetCurrentHeap
 
-	arm_func_start sub_037F9E48
-sub_037F9E48: ; 0x037F9E48
+	arm_func_start OS_InitAlloc
+OS_InitAlloc: ; 0x037F9E48
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r5, r1
@@ -247,10 +247,10 @@ _037F9EAC:
 	bx lr
 	.align 2, 0
 _037F9EEC: .word 0x03806D9C
-	arm_func_end sub_037F9E48
+	arm_func_end OS_InitAlloc
 
-	arm_func_start sub_037F9EF0
-sub_037F9EF0: ; 0x037F9EF0
+	arm_func_start OS_CreateHeap
+OS_CreateHeap: ; 0x037F9EF0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	mov r6, r1
@@ -296,10 +296,10 @@ _037F9F84:
 	bx lr
 	.align 2, 0
 _037F9F8C: .word 0x03806D9C
-	arm_func_end sub_037F9EF0
+	arm_func_end OS_CreateHeap
 
-	arm_func_start sub_037F9F90
-sub_037F9F90: ; 0x037F9F90
+	arm_func_start OS_CheckHeap
+OS_CheckHeap: ; 0x037F9F90
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r4, #0
 	mov r8, r0
@@ -411,7 +411,7 @@ _037FA11C:
 	bx lr
 	.align 2, 0
 _037FA12C: .word 0x03806D9C
-	arm_func_end sub_037F9F90
+	arm_func_end OS_CheckHeap
 
 	arm_func_start sub_037FA130
 sub_037FA130: ; 0x037FA130
@@ -1354,14 +1354,14 @@ sub_037FACCC: ; 0x037FACCC
 _037FAD0C: .word 0x03806DE0
 	arm_func_end sub_037FACCC
 
-	arm_func_start sub_037FAD10
-sub_037FAD10: ; 0x037FAD10
+	arm_func_start OS_EnableInterrupts
+OS_EnableInterrupts: ; 0x037FAD10
 	mrs r0, cpsr
 	bic r1, r0, #0x80
 	msr cpsr_c, r1
 	and r0, r0, #0x80
 	bx lr
-	arm_func_end sub_037FAD10
+	arm_func_end OS_EnableInterrupts
 
 	arm_func_start OS_DisableInterrupts
 OS_DisableInterrupts: ; 0x037FAD24
@@ -1439,14 +1439,14 @@ _037FADD0: .word 0x03806DF4
 _037FADD4: .word OSi_CommonCallback
 	arm_func_end OS_InitReset
 
-	arm_func_start sub_037FADD8
-sub_037FADD8: ; 0x037FADD8
+	arm_func_start OS_IsResetOccurred
+OS_IsResetOccurred: ; 0x037FADD8
 	ldr r0, _037FADE4 ; =0x03806DF4
 	ldrh r0, [r0, #2]
 	bx lr
 	.align 2, 0
 _037FADE4: .word 0x03806DF4
-	arm_func_end sub_037FADD8
+	arm_func_end OS_IsResetOccurred
 
 	arm_func_start OSi_CommonCallback
 OSi_CommonCallback: ; 0x037FADE8
@@ -1467,8 +1467,8 @@ _037FAE10:
 _037FAE18: .word 0x03806DF4
 	arm_func_end OSi_CommonCallback
 
-	arm_func_start sub_037FAE1C
-sub_037FAE1C: ; 0x037FAE1C
+	arm_func_start OS_ResetSystem
+OS_ResetSystem: ; 0x037FAE1C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r0, #0
 	bl sub_037FAF18
@@ -1501,16 +1501,16 @@ _037FAE60:
 	bx lr
 	.align 2, 0
 _037FAE90: .word 0x04000208
-	arm_func_end sub_037FAE1C
+	arm_func_end OS_ResetSystem
 
 	arm_func_start OS_Terminate
 OS_Terminate: ; 0x037FAE94
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl sub_038034B0
+	bl CTRDG_VibPulseEdgeUpdate
 _037FAEA0:
 	bl OS_DisableInterrupts
-	bl sub_037F847C
+	bl SVC_Halt
 	b _037FAEA0
 	arm_func_end OS_Terminate
 
@@ -1619,8 +1619,8 @@ _037FAFD0:
 	bx lr
 	arm_func_end MIi_CpuClear32
 
-	arm_func_start sub_037FAFE0
-sub_037FAFE0: ; 0x037FAFE0
+	arm_func_start MIi_CpuCopy32
+MIi_CpuCopy32: ; 0x037FAFE0
 	add ip, r1, r2
 _037FAFE4:
 	cmp r1, ip
@@ -1628,7 +1628,7 @@ _037FAFE4:
 	stmltia r1!, {r2}
 	blt _037FAFE4
 	bx lr
-	arm_func_end sub_037FAFE0
+	arm_func_end MIi_CpuCopy32
 
 	arm_func_start sub_037FAFF8
 sub_037FAFF8: ; 0x037FAFF8
@@ -1675,8 +1675,8 @@ _037FB064:
 	bx lr
 	arm_func_end sub_037FB044
 
-	arm_func_start sub_037FB07C
-sub_037FB07C: ; 0x037FB07C
+	arm_func_start MI_CpuFill8
+MI_CpuFill8: ; 0x037FB07C
 	cmp r2, #0
 	bxeq lr
 	tst r0, #1
@@ -1719,10 +1719,10 @@ _037FB0F0:
 	orr r1, r1, r3
 	strh r1, [r0]
 	bx lr
-	arm_func_end sub_037FB07C
+	arm_func_end MI_CpuFill8
 
-	arm_func_start sub_037FB110
-sub_037FB110: ; 0x037FB110
+	arm_func_start MI_CpuCopy8
+MI_CpuCopy8: ; 0x037FB110
 	cmp r2, #0
 	bxeq lr
 	tst r1, #1
@@ -1809,7 +1809,7 @@ _037FB21C:
 	orr r0, r2, r0
 	strh r0, [r1]
 	bx lr
-	arm_func_end sub_037FB110
+	arm_func_end MI_CpuCopy8
 
 	arm_func_start MI_SwapWord
 MI_SwapWord: ; 0x037FB240
@@ -2071,8 +2071,8 @@ sub_037FB53C: ; 0x037FB53C
 _037FB550: .word sub_037FB51C
 	arm_func_end sub_037FB53C
 
-	arm_func_start sub_037FB554
-sub_037FB554: ; 0x037FB554
+	arm_func_start PAD_InitXYButton
+PAD_InitXYButton: ; 0x037FB554
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	bl sub_037FA1C8
@@ -2116,7 +2116,7 @@ _037FB5E0: .word 0x03806E7C
 _037FB5E4: .word 0x03806E80
 _037FB5E8: .word sub_037FB5F0
 _037FB5EC: .word 0x0000082E
-	arm_func_end sub_037FB554
+	arm_func_end PAD_InitXYButton
 
 	arm_func_start sub_037FB5F0
 sub_037FB5F0: ; 0x037FB5F0
@@ -2824,8 +2824,8 @@ _037FBE84: .word 0x0019660D
 _037FBE88: .word 0x3C6EF35F
 	arm_func_end sub_037FBE58
 
-	arm_func_start sub_037FBE8C
-sub_037FBE8C: ; 0x037FBE8C
+	arm_func_start SND_Init
+SND_Init: ; 0x037FBE8C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _037FBEE8 ; =0x03806ED0
@@ -2855,7 +2855,7 @@ _037FBEE8: .word 0x03806ED0
 _037FBEEC: .word 0x03806F40
 _037FBEF0: .word sub_037FBF9C
 _037FBEF4: .word 0x038073E4
-	arm_func_end sub_037FBE8C
+	arm_func_end SND_Init
 
 	arm_func_start sub_037FBEF8
 sub_037FBEF8: ; 0x037FBEF8
@@ -7007,7 +7007,7 @@ _037FF4B8:
 	ldr r0, _037FF55C ; =0x0380740C
 	mov r1, r5
 	mov r2, #0x1180
-	bl sub_037FAFE0
+	bl MIi_CpuCopy32
 	ldr r0, _037FF55C ; =0x0380740C
 	add r1, r5, #0x1000
 	str r0, [r1, #0x1c0]
@@ -7079,13 +7079,13 @@ _037FF59C:
 _037FF5AC: .word 0x0380858C
 	arm_func_end sub_037FF564
 
-	arm_func_start sub_037FF5B0
-sub_037FF5B0: ; 0x037FF5B0
+	arm_func_start FS_Init
+FS_Init: ; 0x037FF5B0
 	ldr ip, _037FF5B8 ; =sub_03800254
 	bx ip
 	.align 2, 0
 _037FF5B8: .word sub_03800254
-	arm_func_end sub_037FF5B0
+	arm_func_end FS_Init
 
 	arm_func_start sub_037FF5BC
 sub_037FF5BC: ; 0x037FF5BC
@@ -7139,8 +7139,8 @@ _037FF670: .word 0x027FFC40
 _037FF674: .word 0x038085CC
 	arm_func_end sub_037FF5BC
 
-	arm_func_start sub_037FF678
-sub_037FF678: ; 0x037FF678
+	arm_func_start CARD_SetThreadPriority
+CARD_SetThreadPriority: ; 0x037FF678
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r5, _037FF6B4 ; =0x038085E0
 	mov r7, r0
@@ -7158,7 +7158,7 @@ sub_037FF678: ; 0x037FF678
 	bx lr
 	.align 2, 0
 _037FF6B4: .word 0x038085E0
-	arm_func_end sub_037FF678
+	arm_func_end CARD_SetThreadPriority
 
 	arm_func_start sub_037FF6B8
 sub_037FF6B8: ; 0x037FF6B8
@@ -8401,7 +8401,7 @@ sub_03800634: ; 0x03800634
 	mov r0, #3
 	bl sub_037FAF18
 	mov r0, #0
-	bl sub_038034B0
+	bl CTRDG_VibPulseEdgeUpdate
 	bl OS_DisableInterrupts
 	mov r4, r0
 	bl sub_037FB69C
@@ -8505,8 +8505,8 @@ _038007A4: .word 0x04000214
 _038007A8: .word 0x03808E20
 	arm_func_end sub_03800780
 
-	arm_func_start sub_038007AC
-sub_038007AC: ; 0x038007AC
+	arm_func_start CARD_CheckPullOut_Polling
+CARD_CheckPullOut_Polling: ; 0x038007AC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r0, _03800898 ; =0x03808E20
 	ldr r0, [r0, #4]
@@ -8574,7 +8574,7 @@ _03800890:
 _03800898: .word 0x03808E20
 _0380089C: .word 0x027FFC40
 _038008A0: .word 0x03806B00
-	arm_func_end sub_038007AC
+	arm_func_end CARD_CheckPullOut_Polling
 
 	.rodata
 

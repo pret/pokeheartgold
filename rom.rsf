@@ -8,9 +8,9 @@ Arm9
 
 Arm7
 {
-	Static sub/build/sub.sbin
-	OverlayDefs sub/build/sub_defs.sbin
-	Nef sub/build/sub.nef
+	Static sub/build/ichneumon_sub.sbin
+	OverlayDefs sub/build/ichneumon_sub_defs.sbin
+	Nef sub/build/ichneumon_sub.nef
 }
 
 Property

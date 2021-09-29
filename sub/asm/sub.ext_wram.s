@@ -378,9 +378,9 @@ _06000438:
 
 	arm_func_start sub_06000440
 sub_06000440: ; 0x06000440
-	ldr pc, _06000444 ; =sub_037FB110
+	ldr pc, _06000444 ; =MI_CpuCopy8
 	.align 2, 0
-_06000444: .word sub_037FB110
+_06000444: .word MI_CpuCopy8
 	arm_func_end sub_06000440
 
 	arm_func_start sub_06000448
@@ -2029,9 +2029,9 @@ _06001AF0: .word OS_ExitThread
 
 	arm_func_start sub_06001AF4
 sub_06001AF4: ; 0x06001AF4
-	ldr pc, _06001AF8 ; =sub_037FB07C
+	ldr pc, _06001AF8 ; =MI_CpuFill8
 	.align 2, 0
-_06001AF8: .word sub_037FB07C
+_06001AF8: .word MI_CpuFill8
 	arm_func_end sub_06001AF4
 
 	arm_func_start sub_06001AFC
@@ -9807,9 +9807,9 @@ _060084A0: .word 0x00000215
 
 	arm_func_start sub_060084A4
 sub_060084A4: ; 0x060084A4
-	ldr pc, _060084A8 ; =sub_03806968
+	ldr pc, _060084A8 ; =WMSP_GetAllowedChannel
 	.align 2, 0
-_060084A8: .word sub_03806968
+_060084A8: .word WMSP_GetAllowedChannel
 	arm_func_end sub_060084A4
 
 	arm_func_start sub_060084AC
@@ -21784,9 +21784,9 @@ _06011EC4: .word 0x0380FFF4
 
 	arm_func_start sub_06011EC8
 sub_06011EC8: ; 0x06011EC8
-	ldr pc, _06011ECC ; =sub_037FAFE0
+	ldr pc, _06011ECC ; =MIi_CpuCopy32
 	.align 2, 0
-_06011ECC: .word sub_037FAFE0
+_06011ECC: .word MIi_CpuCopy32
 	arm_func_end sub_06011EC8
 
 	arm_func_start sub_06011ED0
@@ -28867,9 +28867,9 @@ _060180B0: .word sub_03800A40
 
 	arm_func_start sub_060180B4
 sub_060180B4: ; 0x060180B4
-	ldr pc, _060180B8 ; =sub_03803E6C
+	ldr pc, _060180B8 ; =NVRAM_ReadDataBytes
 	.align 2, 0
-_060180B8: .word sub_03803E6C
+_060180B8: .word NVRAM_ReadDataBytes
 	arm_func_end sub_060180B4
 
 	arm_func_start sub_060180BC

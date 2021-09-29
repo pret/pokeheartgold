@@ -1,5 +1,6 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
+	.public SDK_AUTOLOAD_DTCM_START
 	.public SDK_AUTOLOAD_LIST
 	.public SDK_AUTOLOAD_LIST_END
 	.public SDK_AUTOLOAD_START
@@ -19,12 +20,12 @@ _02000808:
 	bl init_cp15
 	mov r0, #0x13
 	msr cpsr_c, r0
-	ldr r0, _02000930 ; =OS_IRQTable
+	ldr r0, _02000930 ; =SDK_AUTOLOAD_DTCM_START
 	add r0, r0, #0x3fc0
 	mov sp, r0
 	mov r0, #0x12
 	msr cpsr_c, r0
-	ldr r0, _02000930 ; =OS_IRQTable
+	ldr r0, _02000930 ; =SDK_AUTOLOAD_DTCM_START
 	add r0, r0, #0x3fc0
 	sub r0, r0, #0x40
 	sub sp, r0, #4
@@ -40,7 +41,7 @@ _02000854:
 	msr cpsr_fsxc, r0
 	sub sp, r1, #4
 	mov r0, #0
-	ldr r1, _02000930 ; =OS_IRQTable
+	ldr r1, _02000930 ; =SDK_AUTOLOAD_DTCM_START
 	mov r2, #0x4000
 	bl INITi_CpuClear32
 	mov r0, #0
@@ -78,7 +79,7 @@ _020008D4:
 	blt _020008D4
 	ldr r1, _02000944 ; =0x027FFF9C
 	str r0, [r1]
-	ldr r1, _02000930 ; =OS_IRQTable
+	ldr r1, _02000930 ; =SDK_AUTOLOAD_DTCM_START
 	add r1, r1, #0x3fc0
 	add r1, r1, #0x3c
 	ldr r0, _02000948 ; =OS_IrqHandler
@@ -96,7 +97,7 @@ _02000928:
 _0200092C:
 	bx r1
 	.align 2, 0
-_02000930: .word OS_IRQTable
+_02000930: .word SDK_AUTOLOAD_DTCM_START
 _02000934: .word SDK_IRQ_STACKSIZE
 _02000938: .word 0x05000000
 _0200093C: .word 0x07000000

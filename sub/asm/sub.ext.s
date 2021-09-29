@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start sub_027E0000
-sub_027E0000: ; 0x027E0000
+	arm_func_start WVR_ShelterExtWram
+WVR_ShelterExtWram: ; 0x027E0000
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r6, _027E00A4 ; =0x023801B0
 	ldr r2, _027E00A8 ; =0x023A76B4

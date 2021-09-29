@@ -3,7 +3,7 @@ BUILD_DIR    := build
 # all paths referring up from BUILD_DIR must be relative.
 BACK_REL     := ..
 TOOLSDIR     := ../tools
-NEFNAME      := sub
+NEFNAME      := ichneumon_sub
 MWCCVER      := 2.0/sp2p3
 PROC         := arm7tdmi
 PROC_S       := arm4t

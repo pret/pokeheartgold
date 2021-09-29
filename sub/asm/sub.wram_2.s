@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start sub_03800920
-sub_03800920: ; 0x03800920
+	arm_func_start SPI_Init
+SPI_Init: ; 0x03800920
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #8
 	ldr r1, _03800A20 ; =0x03808E30
@@ -49,7 +49,7 @@ _038009C0:
 	mla r0, sb, r5, r8
 	mov r1, r7
 	mov r2, r6
-	bl sub_037FB07C
+	bl MI_CpuFill8
 	add sb, sb, #1
 	cmp sb, #0x10
 	blt _038009C0
@@ -80,7 +80,7 @@ _03800A30: .word 0x03809100
 _03800A34: .word 0x03809140
 _03800A38: .word 0x03808E3C
 _03800A3C: .word sub_03800D28
-	arm_func_end sub_03800920
+	arm_func_end SPI_Init
 
 	arm_func_start sub_03800A40
 sub_03800A40: ; 0x03800A40
@@ -1882,8 +1882,8 @@ sub_03802190: ; 0x03802190
 _03802198: .word SVC_Sleep
 	arm_func_end sub_03802190
 
-	arm_func_start sub_0380219C
-sub_0380219C: ; 0x0380219C
+	arm_func_start PM_SelfBlinkProc
+PM_SelfBlinkProc: ; 0x0380219C
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _038022B0 ; =0x038093E0
 	ldr r3, [r1, #4]
@@ -1960,7 +1960,7 @@ _038022A8:
 _038022B0: .word 0x038093E0
 _038022B4: .word 0x03806B08
 _038022B8: .word 0x03806B0C
-	arm_func_end sub_0380219C
+	arm_func_end PM_SelfBlinkProc
 
 	arm_func_start sub_038022BC
 sub_038022BC: ; 0x038022BC
@@ -3325,7 +3325,7 @@ sub_0380346C: ; 0x0380346C
 	cmp r0, #2
 	bne _03803494
 	mov r0, #0
-	bl sub_038034B0
+	bl CTRDG_VibPulseEdgeUpdate
 	bl sub_037FB69C
 	bl sub_03805A3C
 	bl OS_Terminate
@@ -3339,15 +3339,15 @@ _03803498:
 
 	arm_func_start sub_038034A0
 sub_038034A0: ; 0x038034A0
-	ldr ip, _038034AC ; =sub_038034B0
+	ldr ip, _038034AC ; =CTRDG_VibPulseEdgeUpdate
 	mov r0, r1
 	bx ip
 	.align 2, 0
-_038034AC: .word sub_038034B0
+_038034AC: .word CTRDG_VibPulseEdgeUpdate
 	arm_func_end sub_038034A0
 
-	arm_func_start sub_038034B0
-sub_038034B0: ; 0x038034B0
+	arm_func_start CTRDG_VibPulseEdgeUpdate
+CTRDG_VibPulseEdgeUpdate: ; 0x038034B0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	movs r5, r0
 	beq _038034EC
@@ -3435,7 +3435,7 @@ _038035BC:
 	str r5, [sp]
 	ldr r1, [r5, #8]
 	ldr r0, _038036DC ; =0x03809480
-	ldr r3, _038036E0 ; =sub_038034B0
+	ldr r3, _038036E0 ; =CTRDG_VibPulseEdgeUpdate
 	mov r2, #0
 	bl OS_SetAlarm
 	mov r0, #0
@@ -3455,7 +3455,7 @@ _03803604:
 	mov r1, r1, lsr #1
 	add r1, r5, r1, lsl #2
 	ldr r1, [r1, #0x24]
-	ldr r3, _038036E0 ; =sub_038034B0
+	ldr r3, _038036E0 ; =CTRDG_VibPulseEdgeUpdate
 	mov r2, #0
 	bl OS_SetAlarm
 	ldr r0, [r5]
@@ -3473,7 +3473,7 @@ _03803654:
 	mov r1, r1, lsr #1
 	add r1, r5, r1, lsl #2
 	ldr r1, [r1, #0xc]
-	ldr r3, _038036E0 ; =sub_038034B0
+	ldr r3, _038036E0 ; =CTRDG_VibPulseEdgeUpdate
 	mov r2, #0
 	bl OS_SetAlarm
 	ldr r0, [r5]
@@ -3489,7 +3489,7 @@ _03803694:
 _038036AC:
 	ldr r0, _038036DC ; =0x03809480
 	ldr r1, _038036E4 ; =0x0000020B
-	ldr r3, _038036E0 ; =sub_038034B0
+	ldr r3, _038036E0 ; =CTRDG_VibPulseEdgeUpdate
 	mov r2, #0
 	str r5, [sp]
 	bl OS_SetAlarm
@@ -3502,12 +3502,12 @@ _038036D0: .word 0x027FFFE8
 _038036D4: .word 0x08001000
 _038036D8: .word 0x000080E8
 _038036DC: .word 0x03809480
-_038036E0: .word sub_038034B0
+_038036E0: .word CTRDG_VibPulseEdgeUpdate
 _038036E4: .word 0x0000020B
-	arm_func_end sub_038034B0
+	arm_func_end CTRDG_VibPulseEdgeUpdate
 
-	arm_func_start sub_038036E8
-sub_038036E8: ; 0x038036E8
+	arm_func_start CTRDG_CheckPullOut_Polling
+CTRDG_CheckPullOut_Polling: ; 0x038036E8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r1, _038037D8 ; =0x03806B9C
 	mvn r0, #0
@@ -3576,7 +3576,7 @@ _038037D0:
 _038037D8: .word 0x03806B9C
 _038037DC: .word 0x027FFC3C
 _038037E0: .word 0x03809450
-	arm_func_end sub_038036E8
+	arm_func_end CTRDG_CheckPullOut_Polling
 
 	arm_func_start sub_038037E4
 sub_038037E4: ; 0x038037E4
@@ -3828,7 +3828,7 @@ _03803B14:
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4, #0x10]
-	bl sub_03803E6C
+	bl NVRAM_ReadDataBytes
 	b _03803CE0
 _03803B28:
 	bl sub_03803D04
@@ -4097,8 +4097,8 @@ _03803E64: .word 0x040001C0
 _03803E68: .word 0x040001C2
 	arm_func_end sub_03803DFC
 
-	arm_func_start sub_03803E6C
-sub_03803E6C: ; 0x03803E6C
+	arm_func_start NVRAM_ReadDataBytes
+NVRAM_ReadDataBytes: ; 0x03803E6C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r5, r2
@@ -4172,7 +4172,7 @@ _03803F5C:
 	.align 2, 0
 _03803F68: .word 0x040001C0
 _03803F6C: .word 0x040001C2
-	arm_func_end sub_03803E6C
+	arm_func_end NVRAM_ReadDataBytes
 
 	arm_func_start sub_03803F70
 sub_03803F70: ; 0x03803F70
@@ -4652,8 +4652,8 @@ _03804570: .word 0x040001C0
 _03804574: .word 0x040001C2
 	arm_func_end sub_03804538
 
-	arm_func_start sub_03804578
-sub_03804578: ; 0x03804578
+	arm_func_start RTC_Init
+RTC_Init: ; 0x03804578
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	ldr r2, _038047B8 ; =0x038094CC
@@ -4814,7 +4814,7 @@ _038047CC: .word 0x03809500
 _038047D0: .word sub_03804958
 _038047D4: .word 0x038096A4
 _038047D8: .word sub_03804DD8
-	arm_func_end sub_03804578
+	arm_func_end RTC_Init
 
 	arm_func_start sub_038047DC
 sub_038047DC: ; 0x038047DC
@@ -6192,8 +6192,8 @@ _038059D8:
 	bx lr
 	arm_func_end sub_03805930
 
-	arm_func_start sub_038059E8
-sub_038059E8: ; 0x038059E8
+	arm_func_start WVR_Init
+WVR_Init: ; 0x038059E8
 	stmdb sp!, {r3, lr}
 	ldr r3, _03805A2C ; =0x03809884
 	mov ip, #1
@@ -6202,7 +6202,7 @@ sub_038059E8: ; 0x038059E8
 	mov r1, #0
 	mov r2, #0xa4
 	strb ip, [r3]
-	bl sub_037FB07C
+	bl MI_CpuFill8
 	ldr r1, _03805A34 ; =sub_03805BC8
 	mov r0, #0xf
 	bl PXI_SetFifoRecvCallback
@@ -6216,7 +6216,7 @@ _03805A2C: .word 0x03809884
 _03805A30: .word 0x03809894
 _03805A34: .word sub_03805BC8
 _03805A38: .word sub_03805B18
-	arm_func_end sub_038059E8
+	arm_func_end WVR_Init
 
 	arm_func_start sub_03805A3C
 sub_03805A3C: ; 0x03805A3C
@@ -7269,8 +7269,8 @@ _03806960: .word 0x027FFF96
 _03806964: .word 0x060198A4
 	arm_func_end sub_03806914
 
-	arm_func_start sub_03806968
-sub_03806968: ; 0x03806968
+	arm_func_start WMSP_GetAllowedChannel
+WMSP_GetAllowedChannel: ; 0x03806968
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _03806A70 ; =0x00001FFF
 	and r0, r0, r1
@@ -7350,7 +7350,7 @@ _03806A68:
 	bx lr
 	.align 2, 0
 _03806A70: .word 0x00001FFF
-	arm_func_end sub_03806968
+	arm_func_end WMSP_GetAllowedChannel
 
 	.rodata
 
