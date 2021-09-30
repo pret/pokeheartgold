@@ -1602,8 +1602,8 @@ PMi_SetControl: ; 0x03801DE0
 	bx lr
 	arm_func_end PMi_SetControl
 
-	arm_func_start sub_03801E04
-sub_03801E04: ; 0x03801E04
+	arm_func_start PMi_ResetControl
+PMi_ResetControl: ; 0x03801E04
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #0
@@ -1615,7 +1615,7 @@ sub_03801E04: ; 0x03801E04
 	bl sub_03801CF0
 	ldmia sp!, {r4, lr}
 	bx lr
-	arm_func_end sub_03801E04
+	arm_func_end PMi_ResetControl
 
 	arm_func_start sub_03801E30
 sub_03801E30: ; 0x03801E30
@@ -1664,7 +1664,7 @@ _03801EBC:
 	b _03801F4C
 _03801EC8:
 	mov r0, #4
-	bl sub_03801E04
+	bl PMi_ResetControl
 	b _03801F4C
 _03801ED4:
 	mov r0, #8
@@ -1672,7 +1672,7 @@ _03801ED4:
 	b _03801F4C
 _03801EE0:
 	mov r0, #8
-	bl sub_03801E04
+	bl PMi_ResetControl
 	b _03801F4C
 _03801EEC:
 	mov r0, #0xc
@@ -1680,7 +1680,7 @@ _03801EEC:
 	b _03801F4C
 _03801EF8:
 	mov r0, #0xc
-	bl sub_03801E04
+	bl PMi_ResetControl
 	b _03801F4C
 _03801F04:
 	mov r0, #1
@@ -1688,11 +1688,11 @@ _03801F04:
 	b _03801F4C
 _03801F10:
 	mov r0, #1
-	bl sub_03801E04
+	bl PMi_ResetControl
 	b _03801F4C
 _03801F1C:
 	mov r0, #2
-	bl sub_03801E04
+	bl PMi_ResetControl
 	b _03801F4C
 _03801F28:
 	mov r0, #2
@@ -1700,7 +1700,7 @@ _03801F28:
 	b _03801F4C
 _03801F34:
 	mov r0, #0x40
-	bl sub_03801E04
+	bl PMi_ResetControl
 	b _03801F4C
 _03801F40:
 	bl SND_BeginSleep
@@ -1724,7 +1724,7 @@ sub_03801F54: ; 0x03801F54
 	b _03801FA4
 _03801F78:
 	mov r0, #0x10
-	bl sub_03801E04
+	bl PMi_ResetControl
 	b _03801FA8
 _03801F84:
 	mov r0, #0x30
@@ -1732,7 +1732,7 @@ _03801F84:
 	b _03801FA8
 _03801F90:
 	mov r0, #0x20
-	bl sub_03801E04
+	bl PMi_ResetControl
 	mov r0, #0x10
 	bl PMi_SetControl
 	b _03801FA8
@@ -1770,7 +1770,7 @@ sub_03801FBC: ; 0x03801FBC
 	bl sub_03801F54
 	bl SND_BeginSleep
 	mov r0, #1
-	bl sub_03801E04
+	bl PMi_ResetControl
 	ldr r0, _0380217C ; =0x038093AE
 	ldrh r0, [r0]
 	tst r0, #1

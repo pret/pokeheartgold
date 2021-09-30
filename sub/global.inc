@@ -92,7 +92,7 @@
 .public SVC_GetVolumeTable
 .public SPI_Init
 .public PMi_SetControl
-.public sub_03801E04
+.public PMi_ResetControl
 .public PM_SelfBlinkProc
 .public CTRDG_Init
 .public CTRDG_VibPulseEdgeUpdate
