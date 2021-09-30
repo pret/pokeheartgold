@@ -1,6 +1,12 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public sub_06005CEC
+	.public sub_06001DEC
+	.public sub_060007A8
+	.public sub_06008D54
+	.public sub_060007B4
+
 	.text
 
 	arm_func_start SPI_Init
