@@ -54833,7 +54833,7 @@ _0208F99C:
 	cmp r1, r0
 	bne _0208F9CA
 	bl sub_02033250
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	mov r1, #0xc6
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -55204,7 +55204,7 @@ _0208FC2A:
 	cmp r1, r0
 	bne _0208FC52
 	bl sub_02033250
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	ldr r1, _0208FCD4 ; =0x00004A1C
 	ldr r2, [r4, r1]
 	cmp r2, r0
@@ -70059,7 +70059,7 @@ _02096E2C:
 	cmp r1, r0
 	bne _02096E4E
 	bl sub_02033250
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	ldr r1, [r4, #0x2c]
 	cmp r1, r0
 	beq _02096E56

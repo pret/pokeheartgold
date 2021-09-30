@@ -155,16 +155,16 @@ _060001E8: .word OS_WakeupThreadDirect
 
 	arm_func_start sub_060001EC
 sub_060001EC: ; 0x060001EC
-	ldr pc, _060001F0 ; =sub_037FA7BC
+	ldr pc, _060001F0 ; =OS_IsVAlarmAvailable
 	.align 2, 0
-_060001F0: .word sub_037FA7BC
+_060001F0: .word OS_IsVAlarmAvailable
 	arm_func_end sub_060001EC
 
 	arm_func_start sub_060001F4
 sub_060001F4: ; 0x060001F4
-	ldr pc, _060001F8 ; =sub_037FA770
+	ldr pc, _060001F8 ; =OS_InitVAlarm
 	.align 2, 0
-_060001F8: .word sub_037FA770
+_060001F8: .word OS_InitVAlarm
 	arm_func_end sub_060001F4
 
 	arm_func_start sub_060001FC
@@ -247,9 +247,9 @@ _060002A0: .word sub_038068C8
 
 	arm_func_start sub_060002A4
 sub_060002A4: ; 0x060002A4
-	ldr pc, _060002A8 ; =sub_037FB69C
+	ldr pc, _060002A8 ; =SND_BeginSleep
 	.align 2, 0
-_060002A8: .word sub_037FB69C
+_060002A8: .word SND_BeginSleep
 	arm_func_end sub_060002A4
 
 	arm_func_start sub_060002AC
@@ -2036,9 +2036,9 @@ _06001AF8: .word MI_CpuFill8
 
 	arm_func_start sub_06001AFC
 sub_06001AFC: ; 0x06001AFC
-	ldr pc, _06001B00 ; =sub_037FA240
+	ldr pc, _06001B00 ; =OS_GetTick
 	.align 2, 0
-_06001B00: .word sub_037FA240
+_06001B00: .word OS_GetTick
 	arm_func_end sub_06001AFC
 
 	arm_func_start sub_06001B04
@@ -2050,9 +2050,9 @@ _06001B08: .word sub_037FAFB0
 
 	arm_func_start sub_06001B0C
 sub_06001B0C: ; 0x06001B0C
-	ldr pc, _06001B10 ; =sub_037FA5E4
+	ldr pc, _06001B10 ; =OS_CancelAlarm
 	.align 2, 0
-_06001B10: .word sub_037FA5E4
+_06001B10: .word OS_CancelAlarm
 	arm_func_end sub_06001B0C
 
 	arm_func_start sub_06001B14
@@ -2083,9 +2083,9 @@ _06001B50: .word 0x060198A4
 
 	arm_func_start sub_06001B54
 sub_06001B54: ; 0x06001B54
-	ldr pc, _06001B58 ; =sub_037F9DA8
+	ldr pc, _06001B58 ; =OS_FreeToHeap
 	.align 2, 0
-_06001B58: .word sub_037F9DA8
+_06001B58: .word OS_FreeToHeap
 	arm_func_end sub_06001B54
 
 	arm_func_start sub_06001B5C
@@ -2231,9 +2231,9 @@ _06001D18: .word 0x060188CC
 
 	arm_func_start sub_06001D1C
 sub_06001D1C: ; 0x06001D1C
-	ldr pc, _06001D20 ; =sub_037F9C98
+	ldr pc, _06001D20 ; =OS_AllocFromHeap
 	.align 2, 0
-_06001D20: .word sub_037F9C98
+_06001D20: .word OS_AllocFromHeap
 	arm_func_end sub_06001D1C
 
 	arm_func_start sub_06001D24
@@ -6966,11 +6966,11 @@ _06005CE8: .word 0x0380AD98
 
 	arm_func_start sub_06005CEC
 sub_06005CEC: ; 0x06005CEC
-	ldr ip, _06005CF8 ; =sub_037FAA5C
+	ldr ip, _06005CF8 ; =OS_CancelVAlarm
 	ldr r0, _06005CFC ; =0x0380AD98
 	bx ip
 	.align 2, 0
-_06005CF8: .word sub_037FAA5C
+_06005CF8: .word OS_CancelVAlarm
 _06005CFC: .word 0x0380AD98
 	arm_func_end sub_06005CEC
 
@@ -7029,16 +7029,16 @@ _06005DAC: .word sub_06005DC0
 
 	arm_func_start sub_06005DB0
 sub_06005DB0: ; 0x06005DB0
-	ldr pc, _06005DB4 ; =sub_037FAA5C
+	ldr pc, _06005DB4 ; =OS_CancelVAlarm
 	.align 2, 0
-_06005DB4: .word sub_037FAA5C
+_06005DB4: .word OS_CancelVAlarm
 	arm_func_end sub_06005DB0
 
 	arm_func_start sub_06005DB8
 sub_06005DB8: ; 0x06005DB8
-	ldr pc, _06005DBC ; =sub_037FA8BC
+	ldr pc, _06005DBC ; =OS_SetVAlarm
 	.align 2, 0
-_06005DBC: .word sub_037FA8BC
+_06005DBC: .word OS_SetVAlarm
 	arm_func_end sub_06005DB8
 
 	arm_func_start sub_06005DC0
@@ -8638,9 +8638,9 @@ _06007444: .word 0x048080F8
 
 	arm_func_start sub_06007448
 sub_06007448: ; 0x06007448
-	ldr pc, _0600744C ; =sub_03806010
+	ldr pc, _0600744C ; =MATH_CountPopulation
 	.align 2, 0
-_0600744C: .word sub_03806010
+_0600744C: .word MATH_CountPopulation
 	arm_func_end sub_06007448
 
 	arm_func_start sub_06007450
@@ -13326,9 +13326,9 @@ _0600B1C8: .word 0x04808048
 
 	arm_func_start sub_0600B1CC
 sub_0600B1CC: ; 0x0600B1CC
-	ldr pc, _0600B1D0 ; =sub_03806214
+	ldr pc, _0600B1D0 ; =_ll_udiv
 	.align 2, 0
-_0600B1D0: .word sub_03806214
+_0600B1D0: .word _ll_udiv
 	arm_func_end sub_0600B1CC
 
 	arm_func_start sub_0600B1D4
@@ -13680,9 +13680,9 @@ _0600B648: .word 0x0380FFF4
 
 	arm_func_start sub_0600B64C
 sub_0600B64C: ; 0x0600B64C
-	ldr pc, _0600B650 ; =sub_037FA3B4
+	ldr pc, _0600B650 ; =OS_IsAlarmAvailable
 	.align 2, 0
-_0600B650: .word sub_037FA3B4
+_0600B650: .word OS_IsAlarmAvailable
 	arm_func_end sub_0600B64C
 
 	arm_func_start sub_0600B654
@@ -13745,22 +13745,22 @@ _0600B700: .word 0x000082EA
 
 	arm_func_start sub_0600B704
 sub_0600B704: ; 0x0600B704
-	ldr pc, _0600B708 ; =sub_037FA570
+	ldr pc, _0600B708 ; =OS_SetPeriodicAlarm
 	.align 2, 0
-_0600B708: .word sub_037FA570
+_0600B708: .word OS_SetPeriodicAlarm
 	arm_func_end sub_0600B704
 
 	arm_func_start sub_0600B70C
 sub_0600B70C: ; 0x0600B70C
 	ldr r0, _0600B724 ; =0x0380FFF4
-	ldr ip, _0600B728 ; =sub_037FA5E4
+	ldr ip, _0600B728 ; =OS_CancelAlarm
 	ldr r0, [r0]
 	add r0, r0, #0x208
 	add r0, r0, #0x400
 	bx ip
 	.align 2, 0
 _0600B724: .word 0x0380FFF4
-_0600B728: .word sub_037FA5E4
+_0600B728: .word OS_CancelAlarm
 	arm_func_end sub_0600B70C
 
 	arm_func_start sub_0600B72C
@@ -13876,14 +13876,14 @@ _0600B89C: .word 0x000082EA
 	arm_func_start sub_0600B8A0
 sub_0600B8A0: ; 0x0600B8A0
 	ldr r0, _0600B8B8 ; =0x0380FFF4
-	ldr ip, _0600B8BC ; =sub_037FA5E4
+	ldr ip, _0600B8BC ; =OS_CancelAlarm
 	ldr r0, [r0]
 	add r0, r0, #0x234
 	add r0, r0, #0x400
 	bx ip
 	.align 2, 0
 _0600B8B8: .word 0x0380FFF4
-_0600B8BC: .word sub_037FA5E4
+_0600B8BC: .word OS_CancelAlarm
 	arm_func_end sub_0600B8A0
 
 	arm_func_start sub_0600B8C0

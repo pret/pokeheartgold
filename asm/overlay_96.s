@@ -16627,7 +16627,7 @@ _021ED60A:
 	ldr r0, [r4, #4]
 	lsl r0, r0, #5
 	lsr r0, r0, #0x14
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021ED5E0
@@ -16838,7 +16838,7 @@ _021ED77E:
 	ldr r0, [r4, #4]
 	lsl r0, r0, #5
 	lsr r0, r0, #0x14
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021ED754
@@ -16867,7 +16867,7 @@ _021ED7B6:
 	ldr r0, [r4, #8]
 	lsl r0, r0, #4
 	lsr r0, r0, #0x14
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021ED78C
@@ -16896,7 +16896,7 @@ _021ED7EE:
 	ldr r0, [r4, #4]
 	lsl r0, r0, #0x11
 	lsr r0, r0, #0x14
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021ED7C4

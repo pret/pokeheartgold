@@ -30530,7 +30530,7 @@ _020B1FBC:
 	mvn r0, r2, lsl r0
 	and r0, r3, r0
 	str r0, [r1, #0xf0c]
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	sub r0, r0, #1
 	ldr r1, _020B200C ; =0x021D6040
 	cmp r0, #7

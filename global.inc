@@ -29448,7 +29448,7 @@
 .public sub_020E1A3C
 .public sub_020E219C
 .public sub_020E2200
-.public sub_020E3714
+.public MATH_CountPopulation
 .public sub_020E3758
 .public sub_020E3798
 .public sub_020E37D8

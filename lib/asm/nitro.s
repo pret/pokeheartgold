@@ -13736,7 +13736,7 @@ _020E0170:
 	strh r2, [r1, #0x18]
 	mov r0, r0, lsr #0x10
 	strh r0, [r1, #0xe]
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	add r3, sl, #0x800
 	mul r1, r5, r0
 	strh r0, [r3, #0x12]
@@ -14488,7 +14488,7 @@ sub_020E0C44: ; 0x020E0C44
 	mov r5, r0
 	and r0, r1, r3
 	mov r4, r2
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	add r1, r5, #0x800
 	ldrh r1, [r1, #0x10]
 	mla r0, r1, r0, r4
@@ -17756,8 +17756,8 @@ _020E370C: .word 0x021E4F68
 _020E3710: .word 0x021E4F6C
 	arm_func_end sub_020E366C
 
-	arm_func_start sub_020E3714
-sub_020E3714: ; 0x020E3714
+	arm_func_start MATH_CountPopulation
+MATH_CountPopulation: ; 0x020E3714
 	ldr r1, _020E374C ; =0x55555555
 	ldr r2, _020E3750 ; =0x33333333
 	and r1, r1, r0, lsr #1
@@ -17776,7 +17776,7 @@ sub_020E3714: ; 0x020E3714
 _020E374C: .word 0x55555555
 _020E3750: .word 0x33333333
 _020E3754: .word 0x0F0F0F0F
-	arm_func_end sub_020E3714
+	arm_func_end MATH_CountPopulation
 
 	arm_func_start sub_020E3758
 sub_020E3758: ; 0x020E3758

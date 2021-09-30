@@ -2819,7 +2819,7 @@ _021E6FAC:
 	mov r4, #0
 _021E6FB0:
 	ldrb r0, [r6, r4]
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	add r0, r5, r0
 	lsl r0, r0, #0x10
 	add r4, r4, #1
@@ -3130,7 +3130,7 @@ _021E7194: .word ov98_0221F024
 ov99_021E7198: ; 0x021E7198
 	push {r3, lr}
 	bl ov99_021E7180
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	cmp r0, #5
 	bne _021E71AA
 	mov r0, #1
