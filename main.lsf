@@ -284,6 +284,9 @@ Static main
 	Object mi_memory.o
 	Object mi_swap.o
 	Object mi_uncompress.o
+	Object mi_dma_card.o
+	Object mi_compress.o
+	Object mi_init.o
 	Object nitro.o
 	Object msl.o
 }

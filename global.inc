@@ -29273,7 +29273,7 @@
 .public MIi_CpuSend32
 .public MI_Copy64B
 .public MI_Zero36B
-.public sub_020D4D5C
+.public MI_CompressLZImpl
 .public sub_020D5044
 .public sub_020D5064
 .public sub_020D508C

@@ -704,7 +704,7 @@ _021E5DD0:
 	add r1, r4, #0
 	add r2, r7, #0
 	mov r3, #0
-	bl sub_020D4D5C
+	bl MI_CompressLZImpl
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bne _021E5DF4
