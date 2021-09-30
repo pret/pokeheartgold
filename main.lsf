@@ -282,6 +282,8 @@ Static main
 	Object mi_dma_hblank.o
 	Object mi_dma_gxcommand.o
 	Object mi_memory.o
+	Object mi_swap.o
+	Object mi_uncompress.o
 	Object nitro.o
 	Object msl.o
 }
