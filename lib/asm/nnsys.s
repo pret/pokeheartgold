@@ -14486,7 +14486,7 @@ _020C0924:
 	str r1, [sp]
 	ldrsh r1, [r6, #2]
 	str r1, [sp, #4]
-	bl sub_020D4BD0
+	bl MI_Zero36B
 	ldrh r0, [r7]
 	ldr r2, _020C0B38 ; =0x02109494
 	ldr r1, _020C0B3C ; =0x02109495
@@ -14755,17 +14755,17 @@ _020C0CC0:
 	ldr r0, _020C0E40 ; =_02110B10
 	mov r2, #8
 	str r3, [r1]
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	bl sub_020BF418
 	ldr r1, _020C0E30 ; =0x04000400
 	mov r2, #0x30
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldr r2, _020C0E44 ; =0x00001B19
 	ldr r1, _020C0E30 ; =0x04000400
 	ldr r0, _020C0E48 ; =_02110B18
 	str r2, [r1]
 	mov r2, #0x3c
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	b _020C0DA4
 _020C0D50:
 	tst r0, #2
@@ -14774,22 +14774,22 @@ _020C0D50:
 	ldr r0, _020C0E40 ; =_02110B10
 	mov r2, #8
 	str r3, [r1]
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	bl sub_020BF0F8
 	ldr r1, _020C0E30 ; =0x04000400
 	mov r2, #0x30
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldr r2, _020C0E44 ; =0x00001B19
 	ldr r1, _020C0E30 ; =0x04000400
 	ldr r0, _020C0E48 ; =_02110B18
 	str r2, [r1]
 	mov r2, #0x3c
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	b _020C0DA4
 _020C0D98:
 	ldr r0, _020C0E4C ; =_02110B0C
 	mov r2, #0x48
-	bl sub_020D4830
+	bl MIi_CpuSend32
 _020C0DA4:
 	cmp r7, #3
 	movne r0, #0
@@ -14991,17 +14991,17 @@ _020C1060:
 	ldr r0, _020C11A8 ; =_02110B58
 	mov r2, #8
 	str r3, [r1]
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	bl sub_020BF418
 	ldr r1, _020C1198 ; =0x04000400
 	mov r2, #0x30
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldr r2, _020C11AC ; =0x00001B19
 	ldr r1, _020C1198 ; =0x04000400
 	ldr r0, _020C1190 ; =_02110B60
 	str r2, [r1]
 	mov r2, #0x3c
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	b _020C1108
 _020C10B4:
 	tst r0, #2
@@ -15010,22 +15010,22 @@ _020C10B4:
 	ldr r0, _020C11A8 ; =_02110B58
 	mov r2, #8
 	str r3, [r1]
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	bl sub_020BF0F8
 	ldr r1, _020C1198 ; =0x04000400
 	mov r2, #0x30
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldr r2, _020C11AC ; =0x00001B19
 	ldr r1, _020C1198 ; =0x04000400
 	ldr r0, _020C1190 ; =_02110B60
 	str r2, [r1]
 	mov r2, #0x3c
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	b _020C1108
 _020C10FC:
 	ldr r0, _020C11B0 ; =_02110B54
 	mov r2, #0x48
-	bl sub_020D4830
+	bl MIi_CpuSend32
 _020C1108:
 	cmp r8, #3
 	movne r0, #0
@@ -16352,7 +16352,7 @@ _020C240C:
 	ldr r1, _020C244C ; =0x04000400
 	add r0, r0, #4
 	mov r2, r2, lsl #2
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldr r0, _020C2448 ; =0x021DD404
 	mov r1, #0
 	ldr r0, [r0]
@@ -16416,7 +16416,7 @@ _020C24B4:
 	ldr r3, _020C2524 ; =sub_020C2468
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D46AC
+	bl MI_SendGXCommandAsyncFast
 	ldmia sp!, {r3, r4, r5, pc}
 _020C24F4:
 	ldr r1, _020C2520 ; =0x021DD408
@@ -16426,7 +16426,7 @@ _020C24F4:
 	ldr r3, _020C2524 ; =sub_020C2468
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D44A8
+	bl MI_SendGXCommandAsync
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020C2518: .word GXi_DmaId
@@ -16494,7 +16494,7 @@ _020C25EC:
 	mov r0, r5
 	mov r2, r4, lsl #2
 	str r6, [r1]
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020C2604: .word 0x021DD404
@@ -18505,7 +18505,7 @@ _020C3F30:
 	mov r4, r2, asr #4
 	ldrsh r7, [r1]
 	ldrsh r6, [r1, #2]
-	bl sub_020D4BD0
+	bl MI_Zero36B
 	ldrh r0, [r5]
 	ldr r1, _020C403C ; =0x021094B8
 	mov r3, #0x1000

@@ -124,14 +124,14 @@ sub_02014AB0: ; 0x02014AB0
 	add r1, r6, #0
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_020D43E8
+	bl MI_HBlankDmaCopy32
 	pop {r4, r5, r6, pc}
 _02014ACA:
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_020D4448
+	bl MI_HBlankDmaCopy16
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02014AB0
 

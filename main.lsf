@@ -279,6 +279,9 @@ Static main
 	Object os_terminate_proc.o
 	Object mi_wram.o
 	Object mi_dma.o
+	Object mi_dma_hblank.o
+	Object mi_dma_gxcommand.o
+	Object mi_memory.o
 	Object nitro.o
 	Object msl.o
 }
@@ -289,6 +292,7 @@ Autoload ITCM
 	Object os_irqHandler.o (.itcm)
 	Object os_reset.o (.itcm)
 	Object mi_dma.o (.itcm)
+	Object mi_dma_gxcommand.o (.itcm)
 	Object nitro.o (.itcm)
 }
 
