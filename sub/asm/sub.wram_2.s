@@ -6481,7 +6481,7 @@ sub_03805D6C: ; 0x03805D6C
 	beq _03805D8C
 	ldr r2, [r1, #0xc]
 	mov r1, #0x6000000
-	bl sub_037FB044
+	bl MIi_CpuCopyFast
 _03805D8C:
 	ldr r0, _03805DD8 ; =0x03809884
 	ldr r0, [r0, #8]
@@ -6627,7 +6627,7 @@ _03805F4C:
 	ldr r2, [r0, #0xc]
 	mov r0, #0
 	mov r1, #0x6000000
-	bl sub_037FAFF8
+	bl MIi_CpuClearFast
 _03805F9C:
 	mov r6, #0xf
 	mov r5, #0x20000

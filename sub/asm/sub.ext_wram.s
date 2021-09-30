@@ -479,9 +479,9 @@ _06000594: .word 0x0000FFFF
 
 	arm_func_start sub_06000598
 sub_06000598: ; 0x06000598
-	ldr pc, _0600059C ; =sub_037FAF98
+	ldr pc, _0600059C ; =MIi_CpuClear16
 	.align 2, 0
-_0600059C: .word sub_037FAF98
+_0600059C: .word MIi_CpuClear16
 	arm_func_end sub_06000598
 
 	arm_func_start sub_060005A0
@@ -2043,9 +2043,9 @@ _06001B00: .word OS_GetTick
 
 	arm_func_start sub_06001B04
 sub_06001B04: ; 0x06001B04
-	ldr pc, _06001B08 ; =sub_037FAFB0
+	ldr pc, _06001B08 ; =MIi_CpuCopy16
 	.align 2, 0
-_06001B08: .word sub_037FAFB0
+_06001B08: .word MIi_CpuCopy16
 	arm_func_end sub_06001B04
 
 	arm_func_start sub_06001B0C
@@ -10432,9 +10432,9 @@ _06008D2C: .word sub_06008E3C
 
 	arm_func_start sub_06008D30
 sub_06008D30: ; 0x06008D30
-	ldr pc, _06008D34 ; =sub_037FAFF8
+	ldr pc, _06008D34 ; =MIi_CpuClearFast
 	.align 2, 0
-_06008D34: .word sub_037FAFF8
+_06008D34: .word MIi_CpuClearFast
 	arm_func_end sub_06008D30
 
 	arm_func_start sub_06008D38
@@ -13925,7 +13925,7 @@ _0600B938: .word 0x0380FFF4
 
 	arm_func_start sub_0600B93C
 sub_0600B93C: ; 0x0600B93C
-	ldr ip, _0600B958 ; =sub_037FAFB0
+	ldr ip, _0600B958 ; =MIi_CpuCopy16
 	mov r3, r0
 	add r2, r2, #1
 	mov r0, r1
@@ -13933,7 +13933,7 @@ sub_0600B93C: ; 0x0600B93C
 	bic r2, r2, #1
 	bx ip
 	.align 2, 0
-_0600B958: .word sub_037FAFB0
+_0600B958: .word MIi_CpuCopy16
 	arm_func_end sub_0600B93C
 
 	arm_func_start sub_0600B95C
@@ -20368,7 +20368,7 @@ _06010E38: .word 0x0380FFF4
 	arm_func_start sub_06010E3C
 sub_06010E3C: ; 0x06010E3C
 	ldr r1, _06010E5C ; =0x0380FFF4
-	ldr ip, _06010E60 ; =sub_037FAF98
+	ldr ip, _06010E60 ; =MIi_CpuClear16
 	ldr r1, [r1]
 	mov r0, #0
 	add r1, r1, #4
@@ -20377,7 +20377,7 @@ sub_06010E3C: ; 0x06010E3C
 	bx ip
 	.align 2, 0
 _06010E5C: .word 0x0380FFF4
-_06010E60: .word sub_037FAF98
+_06010E60: .word MIi_CpuClear16
 	arm_func_end sub_06010E3C
 
 	arm_func_start sub_06010E64
@@ -28459,9 +28459,9 @@ _06017BC0: .word 0x000005E4
 
 	arm_func_start sub_06017BC4
 sub_06017BC4: ; 0x06017BC4
-	ldr pc, _06017BC8 ; =sub_037FAEAC
+	ldr pc, _06017BC8 ; =MI_WaitDma
 	.align 2, 0
-_06017BC8: .word sub_037FAEAC
+_06017BC8: .word MI_WaitDma
 	arm_func_end sub_06017BC4
 
 	arm_func_start sub_06017BCC
@@ -28678,7 +28678,7 @@ _06017E98: .word 0x0380FFF4
 	arm_func_start sub_06017E9C
 sub_06017E9C: ; 0x06017E9C
 	ldr r1, _06017EB8 ; =0x0380FFF4
-	ldr ip, _06017EBC ; =sub_037FAF98
+	ldr ip, _06017EBC ; =MIi_CpuClear16
 	ldr r1, [r1]
 	mov r0, #0
 	mov r2, #0xc8
@@ -28686,7 +28686,7 @@ sub_06017E9C: ; 0x06017E9C
 	bx ip
 	.align 2, 0
 _06017EB8: .word 0x0380FFF4
-_06017EBC: .word sub_037FAF98
+_06017EBC: .word MIi_CpuClear16
 	arm_func_end sub_06017E9C
 
 	arm_func_start sub_06017EC0

@@ -32,12 +32,12 @@
 .public OS_CancelVAlarm
 .public OS_DisableInterrupts
 .public OS_RestoreInterrupts
-.public sub_037FAEAC
-.public sub_037FAF98
-.public sub_037FAFB0
+.public MI_WaitDma
+.public MIi_CpuClear16
+.public MIi_CpuCopy16
 .public MIi_CpuClear32
 .public MIi_CpuCopy32
-.public sub_037FAFF8
+.public MIi_CpuClearFast
 .public MI_CpuFill8
 .public MI_CpuCopy8
 .public PXI_Init
@@ -75,7 +75,7 @@
 .public OS_SetVAlarmTag
 .public OS_CancelVAlarms
 .public OS_SpinWait
-.public sub_037FB044
+.public MIi_CpuCopyFast
 .public PXI_SendWordByFifo
 .public EXIi_SetBitRcnt0L
 .public EXIi_SelectRcnt

@@ -1516,8 +1516,8 @@ _037FAEA0:
 	b _037FAEA0
 	arm_func_end OS_Terminate
 
-	arm_func_start sub_037FAEAC
-sub_037FAEAC: ; 0x037FAEAC
+	arm_func_start MI_WaitDma
+MI_WaitDma: ; 0x037FAEAC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
@@ -1548,7 +1548,7 @@ _037FAF08:
 	bx lr
 	.align 2, 0
 _037FAF14: .word 0x81400001
-	arm_func_end sub_037FAEAC
+	arm_func_end MI_WaitDma
 
 	arm_func_start MI_StopDma
 MI_StopDma: ; 0x037FAF18
@@ -1588,8 +1588,8 @@ _037FAF88:
 _037FAF94: .word 0x81400001
 	arm_func_end MI_StopDma
 
-	arm_func_start sub_037FAF98
-sub_037FAF98: ; 0x037FAF98
+	arm_func_start MIi_CpuClear16
+MIi_CpuClear16: ; 0x037FAF98
 	mov r3, #0
 _037FAF9C:
 	cmp r3, r2
@@ -1597,10 +1597,10 @@ _037FAF9C:
 	addlt r3, r3, #2
 	blt _037FAF9C
 	bx lr
-	arm_func_end sub_037FAF98
+	arm_func_end MIi_CpuClear16
 
-	arm_func_start sub_037FAFB0
-sub_037FAFB0: ; 0x037FAFB0
+	arm_func_start MIi_CpuCopy16
+MIi_CpuCopy16: ; 0x037FAFB0
 	mov ip, #0
 _037FAFB4:
 	cmp ip, r2
@@ -1609,7 +1609,7 @@ _037FAFB4:
 	addlt ip, ip, #2
 	blt _037FAFB4
 	bx lr
-	arm_func_end sub_037FAFB0
+	arm_func_end MIi_CpuCopy16
 
 	arm_func_start MIi_CpuClear32
 MIi_CpuClear32: ; 0x037FAFCC
@@ -1632,8 +1632,8 @@ _037FAFE4:
 	bx lr
 	arm_func_end MIi_CpuCopy32
 
-	arm_func_start sub_037FAFF8
-sub_037FAFF8: ; 0x037FAFF8
+	arm_func_start MIi_CpuClearFast
+MIi_CpuClearFast: ; 0x037FAFF8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb}
 	add sb, r1, r2
 	mov ip, r2, lsr #5
@@ -1655,10 +1655,10 @@ _037FB030:
 	blt _037FB030
 	ldmia sp!, {r4, r5, r6, r7, r8, sb}
 	bx lr
-	arm_func_end sub_037FAFF8
+	arm_func_end MIi_CpuClearFast
 
-	arm_func_start sub_037FB044
-sub_037FB044: ; 0x037FB044
+	arm_func_start MIi_CpuCopyFast
+MIi_CpuCopyFast: ; 0x037FB044
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl}
 	add sl, r1, r2
 	mov ip, r2, lsr #5
@@ -1675,7 +1675,7 @@ _037FB064:
 	blt _037FB064
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl}
 	bx lr
-	arm_func_end sub_037FB044
+	arm_func_end MIi_CpuCopyFast
 
 	arm_func_start MI_CpuFill8
 MI_CpuFill8: ; 0x037FB07C
