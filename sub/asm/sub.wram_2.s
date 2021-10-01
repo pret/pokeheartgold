@@ -2861,10 +2861,6 @@ _03802E90:
 	stmdb sp!, {r1}
 	add lr, pc, #0x0 ; =sub_03802EA0
 	bx r0
-	arm_func_end sub_03802DB4
-
-	arm_func_start sub_03802EA0
-sub_03802EA0: ; 0x03802EA0
 	mov r0, #0x9f
 	msr cpsr_c, r0
 	mov ip, #0x4000000
@@ -2903,8 +2899,8 @@ _03802F24: .word OSi_ThreadInfo
 _03802F28: .word 0x03809438
 _03802F2C: .word 0x038067A4
 _03802F30: .word 0x03806A88
-	arm_func_end sub_03802EA0
 _03802F34: .word OS_IrqHandler_ThreadSwitch
+	arm_func_end sub_03802DB4
 
 	arm_func_start sub_03802F38
 sub_03802F38: ; 0x03802F38

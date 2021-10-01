@@ -7371,10 +7371,6 @@ _037FF964:
 	mov r0, r4
 	mov lr, pc
 	bx r7
-	arm_func_end sub_037FF7F8
-
-	arm_func_start sub_037FF97C
-sub_037FF97C: ; 0x037FF97C
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _037FF994
@@ -7399,7 +7395,7 @@ _037FF9C0: .word 0x038085E0
 _037FF9C4: .word 0x000082EA
 _037FF9C8: .word 0x0000A042
 _037FF9CC: .word 0x040001A2
-	arm_func_end sub_037FF97C
+	arm_func_end sub_037FF7F8
 
 	arm_func_start sub_037FF9D0
 sub_037FF9D0: ; 0x037FF9D0
@@ -8347,14 +8343,10 @@ _038005C4:
 	mov r0, r4
 	mov lr, pc
 	bx r1
-	arm_func_end sub_038003A8
-
-	arm_func_start sub_038005D4
-sub_038005D4: ; 0x038005D4
 	b _038003B0
 	.align 2, 0
 _038005D8: .word 0x038085E0
-	arm_func_end sub_038005D4
+	arm_func_end sub_038003A8
 
 	arm_func_start sub_038005DC
 sub_038005DC: ; 0x038005DC

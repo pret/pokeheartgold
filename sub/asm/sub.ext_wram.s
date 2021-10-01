@@ -2357,10 +2357,6 @@ _06001E58:
 	ldr r1, [r5, sl, lsl #2]
 	mov lr, pc
 	bx r1
-	arm_func_end sub_06001E10
-
-	arm_func_start sub_06001E8C
-sub_06001E8C: ; 0x06001E8C
 	str r4, [sb, #4]
 _06001E90:
 	ldr r0, [sp]
@@ -2374,7 +2370,7 @@ _06001EA0:
 _06001EA8: .word 0x060198A4
 _06001EAC: .word 0x060188A4
 _06001EB0: .word _060181B0
-	arm_func_end sub_06001E8C
+	arm_func_end sub_06001E10
 
 	arm_func_start sub_06001EB4
 sub_06001EB4: ; 0x06001EB4
@@ -10582,17 +10578,13 @@ _06008EBC:
 	ldr r0, [r0, #0xc0]
 	mov lr, pc
 	bx r0
-	arm_func_end sub_06008E3C
-
-	arm_func_start sub_06008EE0
-sub_06008EE0: ; 0x06008EE0
 	strh sb, [r8, #0x14]
 	b _06008E64
 	.align 2, 0
 _06008EE8: .word 0x0380FFF4
 _06008EEC: .word 0x01000010
 _06008EF0: .word 0x0000FFFF
-	arm_func_end sub_06008EE0
+	arm_func_end sub_06008E3C
 
 	arm_func_start sub_06008EF4
 sub_06008EF4: ; 0x06008EF4
@@ -10764,10 +10756,6 @@ _060090F4:
 	add r0, r3, #0xc
 	mov lr, pc
 	bx r1
-	arm_func_end sub_060090A8
-
-	arm_func_start sub_06009104
-sub_06009104: ; 0x06009104
 	mov r4, r0
 _06009108:
 	cmp r4, #0
@@ -10787,7 +10775,7 @@ _06009134:
 	.align 2, 0
 _0600913C: .word 0x0380FFF4
 _06009140: .word 0x0000BF1D
-	arm_func_end sub_06009104
+	arm_func_end sub_060090A8
 
 	arm_func_start sub_06009144
 sub_06009144: ; 0x06009144
@@ -12049,10 +12037,6 @@ _0600A148:
 	mov r1, #3
 	mov lr, pc
 	bx sb
-	arm_func_end sub_0600A0A4
-
-	arm_func_start sub_0600A170
-sub_0600A170: ; 0x0600A170
 	ldr r0, [sp, #4]
 	bl sub_0600B2D0
 	add r2, sp, #4
@@ -12060,10 +12044,6 @@ sub_0600A170: ; 0x0600A170
 	mov r1, #3
 	mov lr, pc
 	bx sb
-	arm_func_end sub_0600A170
-
-	arm_func_start sub_0600A18C
-sub_0600A18C: ; 0x0600A18C
 	ldr r0, [sp, #4]
 	bl sub_0600B2D0
 	mov r1, #0
@@ -12080,10 +12060,6 @@ sub_0600A18C: ; 0x0600A18C
 	mov r1, #1
 	mov lr, pc
 	bx sb
-	arm_func_end sub_0600A18C
-
-	arm_func_start sub_0600A1CC
-sub_0600A1CC: ; 0x0600A1CC
 	ldr r1, _0600A320 ; =0x0380FFF4
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
@@ -12100,10 +12076,6 @@ _0600A1F0:
 	mov r1, #1
 	mov lr, pc
 	bx sb
-	arm_func_end sub_0600A1CC
-
-	arm_func_start sub_0600A208
-sub_0600A208: ; 0x0600A208
 	ldr r1, [sp, #4]
 	mov r0, #0x1e
 	bl sub_0600B2A0
@@ -12123,19 +12095,11 @@ _0600A230:
 	str r4, [sp]
 	mov lr, pc
 	bx sb
-	arm_func_end sub_0600A208
-
-	arm_func_start sub_0600A24C
-sub_0600A24C: ; 0x0600A24C
 	add r0, r7, sl
 	mov r1, #1
 	add r2, sp, #4
 	mov lr, pc
 	bx sb
-	arm_func_end sub_0600A24C
-
-	arm_func_start sub_0600A260
-sub_0600A260: ; 0x0600A260
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	bl sub_0600B2A0
@@ -12159,10 +12123,6 @@ _0600A29C:
 	add r2, sp, #4
 	mov lr, pc
 	bx sb
-	arm_func_end sub_0600A260
-
-	arm_func_start sub_0600A2B4
-sub_0600A2B4: ; 0x0600A2B4
 	ldr r1, [sp, #4]
 	add r0, r7, sl
 	mov r1, r1, lsl #8
@@ -12171,10 +12131,6 @@ sub_0600A2B4: ; 0x0600A2B4
 	add r2, sp, #4
 	mov lr, pc
 	bx sb
-	arm_func_end sub_0600A2B4
-
-	arm_func_start sub_0600A2D4
-sub_0600A2D4: ; 0x0600A2D4
 	ldr r0, [sp, #4]
 	orr r0, r0, #0x50000
 	str r0, [sp, #4]
@@ -12202,7 +12158,7 @@ _0600A320: .word 0x0380FFF4
 _0600A324: .word sub_0601805C
 _0600A328: .word sub_06017FFC
 _0600A32C: .word 0x04808040
-	arm_func_end sub_0600A2D4
+	arm_func_end sub_0600A0A4
 
 	arm_func_start sub_0600A330
 sub_0600A330: ; 0x0600A330
@@ -16488,10 +16444,6 @@ _0600DA88:
 	ldr r2, [sb, #0x10]
 	mov lr, pc
 	bx r2
-	arm_func_end sub_0600DA60
-
-	arm_func_start sub_0600DB8C
-sub_0600DB8C: ; 0x0600DB8C
 	b _0600DC1C
 _0600DB90:
 	ldr r1, [sb, #0xc]
@@ -16523,10 +16475,6 @@ _0600DBD8:
 	ldr r2, [sb, #0x10]
 	mov lr, pc
 	bx r2
-	arm_func_end sub_0600DB8C
-
-	arm_func_start sub_0600DBF8
-sub_0600DBF8: ; 0x0600DBF8
 	b _0600DC1C
 _0600DBFC:
 	ldrh r0, [sb, #4]
@@ -16545,7 +16493,7 @@ _0600DC1C:
 	.align 2, 0
 _0600DC2C: .word 0x0380FFF4
 _0600DC30: .word 0x04808032
-	arm_func_end sub_0600DBF8
+	arm_func_end sub_0600DA60
 
 	arm_func_start sub_0600DC34
 sub_0600DC34: ; 0x0600DC34
@@ -18307,10 +18255,6 @@ _0600F2B0:
 	add r1, r4, #0x10
 	mov lr, pc
 	bx r2
-	arm_func_end sub_0600F0B0
-
-	arm_func_start sub_0600F2E4
-sub_0600F2E4: ; 0x0600F2E4
 	strh r0, [r4, #0x14]
 	ldrh r0, [r4, #0x14]
 	cmp r0, #0x80
@@ -18354,7 +18298,7 @@ _0600F370: .word 0x06018644
 _0600F374: .word 0x06018724
 _0600F378: .word 0x06018614
 _0600F37C: .word 0x060186CC
-	arm_func_end sub_0600F2E4
+	arm_func_end sub_0600F0B0
 
 	arm_func_start sub_0600F380
 sub_0600F380: ; 0x0600F380
@@ -22829,10 +22773,6 @@ _06012D0C:
 	ldr r2, [r6, #0x10]
 	mov lr, pc
 	bx r2
-	arm_func_end sub_06012C88
-
-	arm_func_start sub_06012D6C
-sub_06012D6C: ; 0x06012D6C
 	b _06012CF4
 _06012D70:
 	cmp sl, #0
@@ -22920,7 +22860,7 @@ _06012E90:
 _06012E9C: .word 0x0380FFF4
 _06012EA0: .word 0x00003FFF
 _06012EA4: .word 0x048080A0
-	arm_func_end sub_06012D6C
+	arm_func_end sub_06012C88
 
 	arm_func_start sub_06012EA8
 sub_06012EA8: ; 0x06012EA8
