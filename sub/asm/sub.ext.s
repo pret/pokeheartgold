@@ -18,8 +18,8 @@
 	.set o_wvrThread,                 0x10
 	.set o_wvrWlStaElement,           0xB4
 	.set o_wvrThreadStack,           0x274
-    .set o_wvrWlStack,               0x674
-    .set o_wvrWlWork,                0xC74
+	.set o_wvrWlStack,               0x674
+	.set o_wvrWlWork,                0xC74
 
 	.text
 

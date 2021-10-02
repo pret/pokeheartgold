@@ -3,7 +3,7 @@
 
 	.text
 	.public GetRomValidLanguage
-    .public VBlankIntr
+	.public VBlankIntr
 
 	arm_func_start NitroSpMain
 NitroSpMain: ; 0x037F8000
