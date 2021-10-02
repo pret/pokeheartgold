@@ -1,12 +1,12 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
-	.public sub_06005CEC
-	.public sub_06001DEC
-	.public sub_060007A8
-	.public sub_06008D54
-	.public sub_060007B4
-	.public sub_06000000
+	.public WMSP_CancelVAlarm
+	.public WMSP_CancelAllAlarms
+	.public WMSP_GetRequestThread
+	.public WL_Terminate
+	.public WMSP_GetIndicateThread
+	.public WM_sp_init
 
 	.text
 
@@ -6288,9 +6288,9 @@ _03805B0C: .word 0x03809938
 
 	arm_func_start sub_03805B10
 sub_03805B10: ; 0x03805B10
-	ldr pc, _03805B14 ; =sub_06000000
+	ldr pc, _03805B14 ; =WM_sp_init
 	.align 2, 0
-_03805B14: .word sub_06000000
+_03805B14: .word WM_sp_init
 	arm_func_end sub_03805B10
 
 	arm_func_start WvrPxiWmSubstituteCallback
@@ -6659,37 +6659,37 @@ _03805FE4: .word 0x03809884
 
 	arm_func_start sub_03805FE8
 sub_03805FE8: ; 0x03805FE8
-	ldr pc, _03805FEC ; =sub_06005CEC
+	ldr pc, _03805FEC ; =WMSP_CancelVAlarm
 	.align 2, 0
-_03805FEC: .word sub_06005CEC
+_03805FEC: .word WMSP_CancelVAlarm
 	arm_func_end sub_03805FE8
 
 	arm_func_start sub_03805FF0
 sub_03805FF0: ; 0x03805FF0
-	ldr pc, _03805FF4 ; =sub_06001DEC
+	ldr pc, _03805FF4 ; =WMSP_CancelAllAlarms
 	.align 2, 0
-_03805FF4: .word sub_06001DEC
+_03805FF4: .word WMSP_CancelAllAlarms
 	arm_func_end sub_03805FF0
 
 	arm_func_start sub_03805FF8
 sub_03805FF8: ; 0x03805FF8
-	ldr pc, _03805FFC ; =sub_060007A8
+	ldr pc, _03805FFC ; =WMSP_GetRequestThread
 	.align 2, 0
-_03805FFC: .word sub_060007A8
+_03805FFC: .word WMSP_GetRequestThread
 	arm_func_end sub_03805FF8
 
 	arm_func_start sub_03806000
 sub_03806000: ; 0x03806000
-	ldr pc, _03806004 ; =sub_06008D54
+	ldr pc, _03806004 ; =WL_Terminate
 	.align 2, 0
-_03806004: .word sub_06008D54
+_03806004: .word WL_Terminate
 	arm_func_end sub_03806000
 
 	arm_func_start sub_03806008
 sub_03806008: ; 0x03806008
-	ldr pc, _0380600C ; =sub_060007B4
+	ldr pc, _0380600C ; =WMSP_GetIndicateThread
 	.align 2, 0
-_0380600C: .word sub_060007B4
+_0380600C: .word WMSP_GetIndicateThread
 	arm_func_end sub_03806008
 
 	; math
