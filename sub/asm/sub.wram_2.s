@@ -7361,3 +7361,8 @@ isFirstCheck$3769: ; 0x03806B9C
 
 nextCount$3767: ; 0x03806BA0
 	.word 0xFFFFFFFF
+
+	.bss
+
+; 0x03808E30
+	.space 0x1F90

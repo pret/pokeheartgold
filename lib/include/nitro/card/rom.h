@@ -79,6 +79,7 @@ static inline void CARDi_ReadEnd(void)
     CARDi_EndTask(p, TRUE);
 }
 
+#ifdef SDK_ARM9
 static inline BOOL CARDi_IsInTcm(u32 buf, u32 len)
 {
     const u32 i = (u32)HW_ITCM;
@@ -86,6 +87,7 @@ static inline BOOL CARDi_IsInTcm(u32 buf, u32 len)
     return ((i < buf + len) && (i + HW_ITCM_SIZE > buf)) ||
            ((d < buf + len) && (d + HW_DTCM_SIZE > buf));
 }
+#endif
 
 extern u32 cardi_rom_header_addr;
 

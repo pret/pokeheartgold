@@ -25,6 +25,7 @@ Autoload WRAM
 	Object OS_mutex.o
 	Object OS_init.o
 	Object OS_arena.o
+	Object OS_alloc.o
 	Object sub.wram_1.o
 	Object libsyscall.o
 	Object sub.wram_2.o
