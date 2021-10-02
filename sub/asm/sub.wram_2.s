@@ -7,6 +7,7 @@
 	.public WL_Terminate
 	.public WMSP_GetIndicateThread
 	.public WM_sp_init
+	.public OS_IRQTable
 
 	.text
 
@@ -43,13 +44,13 @@ SPI_Init: ; 0x03800920
 	ldr r1, _03800A28 ; =SpiPxiCallback
 	mov r0, #4
 	bl PXI_SetFifoRecvCallback
-	ldr r0, _03800A2C ; =0x038090E0
-	ldr r1, _03800A30 ; =0x03809100
+	ldr r0, _03800A2C ; =spiWork + 0x2AC
+	ldr r1, _03800A30 ; =spiWork + 0x2CC
 	mov r2, #0x10
 	bl OS_InitMessageQueue
 	mov sb, #0
 	mov r6, #0x18
-	ldr r8, _03800A34 ; =0x03809140
+	ldr r8, _03800A34 ; =spiWork + 0x30C
 	mov r7, sb
 	mov r5, r6
 _038009C0:
@@ -67,12 +68,12 @@ _038009C0:
 	str r2, [r0, #0x490]
 	mov r0, #0x200
 	str r0, [sp]
-	ldr r0, _03800A38 ; =0x03808E3C
+	ldr r0, _03800A38 ; =spiWork + 0x8
 	ldr r1, _03800A3C ; =SpiCommonThread
-	ldr r3, _03800A2C ; =0x038090E0
+	ldr r3, _03800A2C ; =spiWork + 0x2AC
 	str r4, [sp, #4]
 	bl OS_CreateThread
-	ldr r0, _03800A38 ; =0x03808E3C
+	ldr r0, _03800A38 ; =spiWork + 0x8
 	bl OS_WakeupThreadDirect
 _03800A14:
 	add sp, sp, #8
@@ -82,17 +83,17 @@ _03800A14:
 _03800A20: .word spiInitialized
 _03800A24: .word spiWork
 _03800A28: .word SpiPxiCallback
-_03800A2C: .word 0x038090E0
-_03800A30: .word 0x03809100
-_03800A34: .word 0x03809140
-_03800A38: .word 0x03808E3C
+_03800A2C: .word spiWork + 0x2AC
+_03800A30: .word spiWork + 0x2CC
+_03800A34: .word spiWork + 0x30C
+_03800A38: .word spiWork + 0x8
 _03800A3C: .word SpiCommonThread
 	arm_func_end SPI_Init
 
 	arm_func_start SPI_Lock
 SPI_Lock: ; 0x03800A40
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r5, _03800A94 ; =0x038092C4
+	ldr r5, _03800A94 ; =spiWork + 0x490
 	ldr r4, _03800A98 ; =spiWork
 	mov r6, r0
 _03800A50:
@@ -115,7 +116,7 @@ _03800A70:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_03800A94: .word 0x038092C4
+_03800A94: .word spiWork + 0x490
 _03800A98: .word spiWork
 	arm_func_end SPI_Lock
 
@@ -139,14 +140,14 @@ SPI_Unlock: ; 0x03800A9C
 	str r2, [r1]
 	str r2, [r1, #0x498]
 	bl OS_RestoreInterrupts
-	ldr r0, _03800AF8 ; =0x038092C4
+	ldr r0, _03800AF8 ; =spiWork + 0x490
 	bl OS_WakeupThread
 _03800AEC:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
 _03800AF4: .word spiWork
-_03800AF8: .word 0x038092C4
+_03800AF8: .word spiWork + 0x490
 	arm_func_end SPI_Unlock
 
 	arm_func_start SPIi_ReturnResult
@@ -242,7 +243,7 @@ SPIi_ReleaseException: ; 0x03800BF4
 	ldr r2, [r1, #4]
 	cmp r2, r0
 	bne _03800C20
-	ldr r0, _03800C2C ; =0x038092C4
+	ldr r0, _03800C2C ; =spiWork + 0x490
 	mov r2, #5
 	str r2, [r1, #4]
 	mov r2, #0
@@ -253,7 +254,7 @@ _03800C20:
 	bx lr
 	.align 2, 0
 _03800C28: .word spiWork
-_03800C2C: .word 0x038092C4
+_03800C2C: .word spiWork + 0x490
 	arm_func_end SPIi_ReleaseException
 
 	arm_func_start SPIi_SetEntry
@@ -272,8 +273,8 @@ SPIi_SetEntry: ; 0x03800C30
 	ldr r3, [ip, #0x48c]
 	mov r1, #0x18
 	mul r6, r3, r1
-	ldr lr, _03800CFC ; =0x03809140
-	ldr r3, _03800D00 ; =0x03809144
+	ldr lr, _03800CFC ; =spiWork + 0x30C
+	ldr r3, _03800D00 ; =spiWork + 0x310
 	str r5, [lr, r6]
 	ldr r5, [ip, #0x48c]
 	bic r2, r2, #3
@@ -301,10 +302,10 @@ _03800CB4:
 	and r2, r2, #0xf
 	str r2, [r1, #0x48c]
 	bl OS_RestoreInterrupts
-	ldr r1, _03800CFC ; =0x03809140
+	ldr r1, _03800CFC ; =spiWork + 0x30C
 	mov r0, #0x18
 	mla r1, r4, r0, r1
-	ldr r0, _03800D04 ; =0x038090E0
+	ldr r0, _03800D04 ; =spiWork + 0x2AC
 	mov r2, #0
 	bl OS_SendMessage
 _03800CEC:
@@ -313,29 +314,29 @@ _03800CEC:
 	bx lr
 	.align 2, 0
 _03800CF8: .word spiWork
-_03800CFC: .word 0x03809140
-_03800D00: .word 0x03809144
-_03800D04: .word 0x038090E0
+_03800CFC: .word spiWork + 0x30C
+_03800D00: .word spiWork + 0x310
+_03800D04: .word spiWork + 0x2AC
 	arm_func_end SPIi_SetEntry
 
 	arm_func_start SPIi_CheckEntry
 SPIi_CheckEntry: ; 0x03800D08
 	stmdb sp!, {r3, lr}
-	ldr r0, _03800D24 ; =0x038090E0
+	ldr r0, _03800D24 ; =spiWork + 0x2AC
 	add r1, sp, #0
 	mov r2, #0
 	bl OS_ReadMessage
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_03800D24: .word 0x038090E0
+_03800D24: .word spiWork + 0x2AC
 	arm_func_end SPIi_CheckEntry
 
 	arm_func_start SpiCommonThread
 SpiCommonThread: ; 0x03800D28
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
-	ldr r6, _03800D90 ; =0x038090E0
+	ldr r6, _03800D90 ; =spiWork + 0x2AC
 	add r5, sp, #0
 	mov r4, #1
 _03800D3C:
@@ -366,7 +367,7 @@ _03800D88:
 	bl NVRAM_ExecuteProcess
 	b _03800D3C
 	.align 2, 0
-_03800D90: .word 0x038090E0
+_03800D90: .word spiWork + 0x2AC
 	arm_func_end SpiCommonThread
 
 	arm_func_start SpiPxiCallback
@@ -426,7 +427,7 @@ _03800E1C:
 	bne _03800E40
 	bl OS_InitVAlarm
 _03800E40:
-	ldr r7, _03800EC8 ; =0x03809300
+	ldr r7, _03800EC8 ; =tpw + 0x2C
 	ldr r5, _03800ECC ; =0x54505641
 	mov r8, #0
 	mov r4, #0x28
@@ -464,7 +465,7 @@ _03800E9C:
 	bx lr
 	.align 2, 0
 _03800EC4: .word tpw
-_03800EC8: .word 0x03809300
+_03800EC8: .word tpw + 0x2C
 _03800ECC: .word 0x54505641
 _03800ED0: .word 0x040001C0
 _03800ED4: .word 0x00008A01
@@ -754,7 +755,7 @@ _038012A4:
 	cmp r0, #1
 	bne _03801354
 	ldr r8, _038013CC ; =0x00000107
-	ldr r5, _038013D0 ; =0x03809300
+	ldr r5, _038013D0 ; =tpw + 0x2C
 	mov sb, #0
 	mov r7, #0xd7
 	mov fp, #0xa
@@ -832,7 +833,7 @@ _038013C0: .word tpw
 _038013C4: .word valid_cnt$3731
 _038013C8: .word 0x027FFFAA
 _038013CC: .word 0x00000107
-_038013D0: .word 0x03809300
+_038013D0: .word tpw + 0x2C
 _038013D4: .word TpVAlarmHandler
 _038013D8: .word 0x54505641
 	arm_func_end TP_ExecuteProcess
@@ -2566,7 +2567,7 @@ _03802A8C:
 	mov r4, r0, lsl #0x18
 	strh r2, [r1]
 	bl SPI_DummyWaitReceive
-	ldr r2, _03802B7C ; =0x03809424
+	ldr r2, _03802B7C ; =micw + 0x3C
 	ldr r1, _03802B80 ; =0x00007F80
 	orr r0, r0, r4, lsr #16
 	and r1, r0, r1
@@ -2593,17 +2594,17 @@ _03802A8C:
 	bge _03802B2C
 	mvn r0, #0xb
 	cmp r4, r0
-	ldrgt r0, _03802B7C ; =0x03809424
+	ldrgt r0, _03802B7C ; =micw + 0x3C
 	ldrgtsb r2, [r0]
 	subgt r2, r2, #1
 	strgtb r2, [r0]
 _03802B2C:
-	ldr r0, _03802B7C ; =0x03809424
+	ldr r0, _03802B7C ; =micw + 0x3C
 	mov r2, #0
 	str r2, [r0, #0xc]
 	str r2, [r0, #0x10]
 _03802B3C:
-	ldr r0, _03802B7C ; =0x03809424
+	ldr r0, _03802B7C ; =micw + 0x3C
 	ldrsb r0, [r0]
 	rsb r0, r0, r1, lsr #16
 	cmp r0, #0xff
@@ -2621,7 +2622,7 @@ _03802B6C: .word 0x040001C0
 _03802B70: .word 0x00008A01
 _03802B74: .word 0x040001C2
 _03802B78: .word 0x00008201
-_03802B7C: .word 0x03809424
+_03802B7C: .word micw + 0x3C
 _03802B80: .word 0x00007F80
 	arm_func_end MIC_ExecSampling8
 
@@ -2667,7 +2668,7 @@ _03802BE0:
 	mov r4, r0, lsl #0x18
 	strh r2, [r1]
 	bl SPI_DummyWaitReceive
-	ldr r3, _03802CDC ; =0x03809424
+	ldr r3, _03802CDC ; =micw + 0x3C
 	ldr r1, _03802CE0 ; =0x00007FF8
 	orr r0, r0, r4, lsr #16
 	and r2, r0, r1
@@ -2696,17 +2697,17 @@ _03802BE0:
 	mov r0, #0xc00
 	rsb r0, r0, #0
 	cmp r4, r0
-	ldrgt r0, _03802CDC ; =0x03809424
+	ldrgt r0, _03802CDC ; =micw + 0x3C
 	ldrgtsh r1, [r0, #2]
 	subgt r1, r1, #0x10
 	strgth r1, [r0, #2]
 _03802C88:
-	ldr r0, _03802CDC ; =0x03809424
+	ldr r0, _03802CDC ; =micw + 0x3C
 	mov r1, #0
 	str r1, [r0, #8]
 	str r1, [r0, #4]
 _03802C98:
-	ldr r1, _03802CDC ; =0x03809424
+	ldr r1, _03802CDC ; =micw + 0x3C
 	ldr r0, _03802CE4 ; =0x0000FFF0
 	ldrsh r1, [r1, #2]
 	rsb r1, r1, r2, lsr #16
@@ -2725,14 +2726,14 @@ _03802CCC: .word 0x040001C0
 _03802CD0: .word 0x00008A01
 _03802CD4: .word 0x040001C2
 _03802CD8: .word 0x00008201
-_03802CDC: .word 0x03809424
+_03802CDC: .word micw + 0x3C
 _03802CE0: .word 0x00007FF8
 _03802CE4: .word 0x0000FFF0
 	arm_func_end MIC_ExecSampling12
 
 	arm_func_start MIC_SetIrqFunction
 MIC_SetIrqFunction: ; 0x03802CE8
-	ldr r2, _03802D0C ; =0x03806A88
+	ldr r2, _03802D0C ; =OS_IRQTable
 	mov r3, #0
 _03802CF0:
 	tst r0, #1
@@ -2743,7 +2744,7 @@ _03802CF0:
 	blt _03802CF0
 	bx lr
 	.align 2, 0
-_03802D0C: .word 0x03806A88
+_03802D0C: .word OS_IRQTable
 	arm_func_end MIC_SetIrqFunction
 
 	arm_func_start MIC_EnableMultipleInterrupt
@@ -2836,7 +2837,7 @@ MIC_IrqHandler: ; 0x03802DB4
 	tst r0, r2
 	strne r0, [ip, #0x214]
 	ldrne r0, [r1, #4]
-	ldrne r3, _03802F30 ; =0x03806A88
+	ldrne r3, _03802F30 ; =OS_IRQTable
 	ldrne r0, [r3, r0, lsl #2]
 	bne _03802E90
 	mov r3, #1
@@ -2848,7 +2849,7 @@ _03802E50:
 	str r0, [ip, #0x214]
 	add r0, r1, r3, lsl #3
 	ldr r2, [r0, #4]
-	ldr r3, _03802F30 ; =0x03806A88
+	ldr r3, _03802F30 ; =OS_IRQTable
 	ldr r0, [r3, r2, lsl #2]
 	ldr r2, _03802F24 ; =OSi_ThreadInfo
 	ldrh r3, [r2, #2]
@@ -2891,15 +2892,16 @@ _03802E90:
 	msr spsr_fc, r0
 	tst r1, r1
 	ldreq r0, _03802F34 ; =OS_IrqHandler_ThreadSwitch
-	addeq lr, pc, #0x0 ; =0x03802F1C
+	addeq lr, pc, #0x0 ; =_03802F1C
 	bxeq r0
+_03802F1C:
 	ldmia sp!, {pc}
 	.align 2, 0
 _03802F20: .word 0x01DF3FFF
 _03802F24: .word OSi_ThreadInfo
 _03802F28: .word micIntrInfo
 _03802F2C: .word micIntrPrio
-_03802F30: .word 0x03806A88
+_03802F30: .word OS_IRQTable
 _03802F34: .word OS_IrqHandler_ThreadSwitch
 	arm_func_end MIC_IrqHandler
 
@@ -4664,7 +4666,7 @@ RTC_Init: ; 0x03804578
 	ldrh r0, [r2]
 	cmp r0, #0
 	bne _038047AC
-	ldr r1, _038047BC ; =0x038094D0
+	ldr r1, _038047BC ; =rtcWork
 	mov r3, #1
 	add r0, sp, #8
 	strh r3, [r2]
@@ -4766,25 +4768,25 @@ _03804634:
 _03804710:
 	mov r0, #1
 	bl RTC_SetHourFormat
-	ldr r0, _038047BC ; =0x038094D0
+	ldr r0, _038047BC ; =rtcWork
 	mov r1, #0
 	str r1, [r0, #0x1d4]
 	bl PXI_Init
 	ldr r1, _038047C4 ; =RtcPxiCallback
 	mov r0, #5
 	bl PXI_SetFifoRecvCallback
-	ldr r0, _038047BC ; =0x038094D0
-	ldr r1, _038047C8 ; =0x038094F0
+	ldr r0, _038047BC ; =rtcWork
+	ldr r1, _038047C8 ; =rtcWork + 0x20
 	mov r2, #4
 	bl OS_InitMessageQueue
 	mov r0, #0x100
 	stmia sp, {r0, r8}
-	ldr r0, _038047CC ; =0x03809500
+	ldr r0, _038047CC ; =rtcWork + 0x30
 	ldr r1, _038047D0 ; =RtcThread
-	ldr r3, _038047D4 ; =0x038096A4
+	ldr r3, _038047D4 ; =rtcWork + 0x1D4
 	mov r2, #0
 	bl OS_CreateThread
-	ldr r0, _038047CC ; =0x03809500
+	ldr r0, _038047CC ; =rtcWork + 0x30
 	bl OS_WakeupThreadDirect
 	mov r0, #0x8000
 	bl EXIi_SelectRcnt
@@ -4809,13 +4811,13 @@ _038047AC:
 	bx lr
 	.align 2, 0
 _038047B8: .word rtcInitialized
-_038047BC: .word 0x038094D0
+_038047BC: .word rtcWork
 _038047C0: .word 0x027FFDE8
 _038047C4: .word RtcPxiCallback
-_038047C8: .word 0x038094F0
-_038047CC: .word 0x03809500
+_038047C8: .word rtcWork + 0x20
+_038047CC: .word rtcWork + 0x30
 _038047D0: .word RtcThread
-_038047D4: .word 0x038096A4
+_038047D4: .word rtcWork + 0x1D4
 _038047D8: .word RtcAlarmIntr
 	arm_func_end RTC_Init
 
@@ -4874,7 +4876,7 @@ _03804800: ; jump table
 	b _038048A8 ; case 40
 	b _038048A8 ; case 41
 _038048A8:
-	ldr r0, _03804910 ; =0x038094D0
+	ldr r0, _03804910 ; =rtcWork
 	ldr r1, [r0, #0x1d4]
 	cmp r1, #0
 	beq _038048C8
@@ -4883,7 +4885,7 @@ _038048A8:
 	bl RtcReturnResult
 	b _03804908
 _038048C8:
-	ldr r3, _03804914 ; =0x038095D0
+	ldr r3, _03804914 ; =rtcWork + 0x100
 	mov r1, #1
 	str r1, [r0, #0x1d4]
 	mov r1, #0
@@ -4904,8 +4906,8 @@ _03804908:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_03804910: .word 0x038094D0
-_03804914: .word 0x038095D0
+_03804910: .word rtcWork
+_03804914: .word rtcWork + 0x100
 	arm_func_end RtcPxiCallback
 
 	arm_func_start RtcReturnResult
@@ -4934,7 +4936,7 @@ RtcThread: ; 0x03804958
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r8, _03804DCC ; =0x027FFDE8
 	mov r7, #0
-	ldr sb, _03804DD0 ; =0x038094D0
+	ldr sb, _03804DD0 ; =rtcWork
 	mov r6, r7
 	mov r5, r7
 	mov r4, r7
@@ -4945,7 +4947,7 @@ _0380497C:
 	add r1, sp, #0
 	mov r2, #1
 	bl OS_ReceiveMessage
-	ldr r0, _03804DD4 ; =0x038095D0
+	ldr r0, _03804DD4 ; =rtcWork + 0x100
 	ldrh r0, [r0, #0xd8]
 	cmp r0, #0x29
 	addls pc, pc, r0, lsl #2
@@ -5249,8 +5251,8 @@ _03804DB8:
 	b _0380497C
 	.align 2, 0
 _03804DCC: .word 0x027FFDE8
-_03804DD0: .word 0x038094D0
-_03804DD4: .word 0x038095D0
+_03804DD0: .word rtcWork
+_03804DD4: .word rtcWork + 0x100
 	arm_func_end RtcThread
 
 	arm_func_start RtcAlarmIntr
@@ -7448,7 +7450,7 @@ rtcInitialized: ; 0x038094CC
 	.space 0x2
 
 	.balign 4, 0
-rtcWork: ; 0x38094D0
+rtcWork: ; 0x038094D0
 	.space 0x3B4
 
 	.public WVR_BSS_START
