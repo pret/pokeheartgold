@@ -233,16 +233,16 @@ _06000290: .word OS_ReceiveMessage
 
 	arm_func_start sub_06000294
 sub_06000294: ; 0x06000294
-	ldr pc, _06000298 ; =sub_03806914
+	ldr pc, _06000298 ; =WMSP_GetBuffer4Callback2Wm9
 	.align 2, 0
-_06000298: .word sub_03806914
+_06000298: .word WMSP_GetBuffer4Callback2Wm9
 	arm_func_end sub_06000294
 
 	arm_func_start sub_0600029C
 sub_0600029C: ; 0x0600029C
-	ldr pc, _060002A0 ; =sub_038068C8
+	ldr pc, _060002A0 ; =WMSP_ReturnResult2Wm9
 	.align 2, 0
-_060002A0: .word sub_038068C8
+_060002A0: .word WMSP_ReturnResult2Wm9
 	arm_func_end sub_0600029C
 
 	arm_func_start sub_060002A4
@@ -3750,9 +3750,9 @@ _0600309C: .word 0x060198A4
 
 	arm_func_start sub_060030A0
 sub_060030A0: ; 0x060030A0
-	ldr pc, _060030A4 ; =sub_038022BC
+	ldr pc, _060030A4 ; =PM_SetLEDPattern
 	.align 2, 0
-_060030A4: .word sub_038022BC
+_060030A4: .word PM_SetLEDPattern
 	arm_func_end sub_060030A0
 
 	arm_func_start sub_060030A8
@@ -28736,9 +28736,9 @@ _06017FF0: .word NVRAM_ReadStatusRegister
 
 	arm_func_start sub_06017FF4
 sub_06017FF4: ; 0x06017FF4
-	ldr pc, _06017FF8 ; =sub_03804538
+	ldr pc, _06017FF8 ; =NVRAM_SoftwareReset
 	.align 2, 0
-_06017FF8: .word sub_03804538
+_06017FF8: .word NVRAM_SoftwareReset
 	arm_func_end sub_06017FF4
 
 	arm_func_start sub_06017FFC
@@ -28800,9 +28800,9 @@ _060180A8: .word 0x0380FFF4
 
 	arm_func_start sub_060180AC
 sub_060180AC: ; 0x060180AC
-	ldr pc, _060180B0 ; =sub_03800A40
+	ldr pc, _060180B0 ; =SPI_Lock
 	.align 2, 0
-_060180B0: .word sub_03800A40
+_060180B0: .word SPI_Lock
 	arm_func_end sub_060180AC
 
 	arm_func_start sub_060180B4
@@ -28814,9 +28814,9 @@ _060180B8: .word NVRAM_ReadDataBytes
 
 	arm_func_start sub_060180BC
 sub_060180BC: ; 0x060180BC
-	ldr pc, _060180C0 ; =sub_03800A9C
+	ldr pc, _060180C0 ; =SPI_Unlock
 	.align 2, 0
-_060180C0: .word sub_03800A9C
+_060180C0: .word SPI_Unlock
 	arm_func_end sub_060180BC
 
 	arm_func_start sub_060180C4
