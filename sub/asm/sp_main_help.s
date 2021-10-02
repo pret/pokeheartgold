@@ -1,6 +1,8 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public PMi_Initialized
+
 	.text
 
 	; Merge into sp_main.c when decompiling
@@ -27,7 +29,7 @@ _037F84BC: .word 0x027FFE1D
 	arm_func_start VBlankIntr
 VBlankIntr: ; 0x037F84C0
 	stmdb sp!, {r3, lr}
-	ldr r0, _037F84E0 ; =0x038093B0
+	ldr r0, _037F84E0 ; =PMi_Initialized
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _037F84D8
@@ -36,5 +38,5 @@ _037F84D8:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_037F84E0: .word 0x038093B0
+_037F84E0: .word PMi_Initialized
 	arm_func_end VBlankIntr

@@ -20,3 +20,6 @@ tidy:
 clean: tidy
 
 all: $(SBIN) $(ELF)
+
+compare: COMPARE := 1
+compare: all

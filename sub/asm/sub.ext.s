@@ -9,7 +9,7 @@
 	.public SDK_AUTOLOAD_WRAM_BSS_SIZE
 
 	; Temporary until ARM7 bss is defined
-	.set WVR_BSS_START, 0x03809884
+	.public WVR_BSS_START
 	.set o_wvrStatus,                  0x0
 	.set o_wvrVramImageBuf,            0x4
 	.set o_wvrHeapHandle,              0x8

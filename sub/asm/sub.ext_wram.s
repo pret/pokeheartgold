@@ -1,6 +1,12 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public wmspIndicateThread
+	.public wmspMPAckAlarm
+	.public wmspMPIntervalAlarm
+	.public wmspRequestThread
+	.public wmspVAlarm
+
 	.text
 
 	arm_func_start WM_sp_init
@@ -57,24 +63,24 @@ WM_sp_init: ; 0x06000000
 	mov r0, #0x400
 	str r0, [sp]
 	ldr r1, [r4, #4]
-	ldr r0, _060001B4 ; =0x0380AC9C
+	ldr r0, _060001B4 ; =wmspIndicateThread
 	str r1, [sp, #4]
 	ldr r1, _060001B8 ; =WMSP_IndicateThread
 	ldr r3, _060001B0 ; =0x06019DCC
 	mov r2, #0
 	bl __VENEER_OS_CreateThread
-	ldr r0, _060001B4 ; =0x0380AC9C
+	ldr r0, _060001B4 ; =wmspIndicateThread
 	bl __VENEER_OS_WakeupThreadDirect
 	mov r0, #0x1000
 	str r0, [sp]
 	ldr r1, [r4, #0xc]
-	ldr r0, _060001BC ; =0x0380ABF8
+	ldr r0, _060001BC ; =wmspRequestThread
 	str r1, [sp, #4]
 	ldr r1, _060001C0 ; =WMSP_RequestThread
 	ldr r3, _060001C4 ; =0x060199CC
 	mov r2, #0
 	bl __VENEER_OS_CreateThread
-	ldr r0, _060001BC ; =0x0380ABF8
+	ldr r0, _060001BC ; =wmspRequestThread
 	bl __VENEER_OS_WakeupThreadDirect
 	mov r3, #0
 	ldr r1, _06000190 ; =0x060188A4
@@ -117,9 +123,9 @@ _060001A4: .word 0x0601891C
 _060001A8: .word 0x0601892C
 _060001AC: .word 0x0601894C
 _060001B0: .word 0x06019DCC
-_060001B4: .word 0x0380AC9C
+_060001B4: .word wmspIndicateThread
 _060001B8: .word WMSP_IndicateThread
-_060001BC: .word 0x0380ABF8
+_060001BC: .word wmspRequestThread
 _060001C0: .word WMSP_RequestThread
 _060001C4: .word 0x060199CC
 _060001C8: .word WmspPxiCallback
@@ -586,7 +592,7 @@ WMSP_SetThreadPriorityLow: ; 0x060006C0
 	mov r4, r0
 	bl __VENEER_OS_DisableScheduler
 	ldr r1, _06000714 ; =0x060198A4
-	ldr r0, _06000718 ; =0x0380ABF8
+	ldr r0, _06000718 ; =wmspRequestThread
 	ldr r1, [r1, #0x58c]
 	bl __VENEER_OS_SetThreadPriority
 	bl WL_GetThreadStruct
@@ -594,7 +600,7 @@ WMSP_SetThreadPriorityLow: ; 0x060006C0
 	ldr r1, [r1, #0x588]
 	bl __VENEER_OS_SetThreadPriority
 	ldr r1, _06000714 ; =0x060198A4
-	ldr r0, _0600071C ; =0x0380AC9C
+	ldr r0, _0600071C ; =wmspIndicateThread
 	ldr r1, [r1, #0x584]
 	bl __VENEER_OS_SetThreadPriority
 	bl __VENEER_OS_EnableScheduler
@@ -604,8 +610,8 @@ WMSP_SetThreadPriorityLow: ; 0x060006C0
 	bx lr
 	.align 2, 0
 _06000714: .word 0x060198A4
-_06000718: .word 0x0380ABF8
-_0600071C: .word 0x0380AC9C
+_06000718: .word wmspRequestThread
+_0600071C: .word wmspIndicateThread
 	arm_func_end WMSP_SetThreadPriorityLow
 
 	arm_func_start __VENEER_OS_DisableInterrupts
@@ -650,7 +656,7 @@ WMSP_SetThreadPriorityHigh: ; 0x06000748
 	mov r4, r0
 	bl __VENEER_OS_DisableScheduler
 	ldr r1, _0600079C ; =0x060198A4
-	ldr r0, _060007A0 ; =0x0380AC9C
+	ldr r0, _060007A0 ; =wmspIndicateThread
 	ldr r1, [r1, #0x578]
 	bl __VENEER_OS_SetThreadPriority
 	bl WL_GetThreadStruct
@@ -658,7 +664,7 @@ WMSP_SetThreadPriorityHigh: ; 0x06000748
 	ldr r1, [r1, #0x57c]
 	bl __VENEER_OS_SetThreadPriority
 	ldr r1, _0600079C ; =0x060198A4
-	ldr r0, _060007A4 ; =0x0380ABF8
+	ldr r0, _060007A4 ; =wmspRequestThread
 	ldr r1, [r1, #0x580]
 	bl __VENEER_OS_SetThreadPriority
 	bl __VENEER_OS_EnableScheduler
@@ -668,24 +674,24 @@ WMSP_SetThreadPriorityHigh: ; 0x06000748
 	bx lr
 	.align 2, 0
 _0600079C: .word 0x060198A4
-_060007A0: .word 0x0380AC9C
-_060007A4: .word 0x0380ABF8
+_060007A0: .word wmspIndicateThread
+_060007A4: .word wmspRequestThread
 	arm_func_end WMSP_SetThreadPriorityHigh
 
 	arm_func_start WMSP_GetRequestThread
 WMSP_GetRequestThread: ; 0x060007A8
-	ldr r0, _060007B0 ; =0x0380ABF8
+	ldr r0, _060007B0 ; =wmspRequestThread
 	bx lr
 	.align 2, 0
-_060007B0: .word 0x0380ABF8
+_060007B0: .word wmspRequestThread
 	arm_func_end WMSP_GetRequestThread
 
 	arm_func_start WMSP_GetIndicateThread
 WMSP_GetIndicateThread: ; 0x060007B4
-	ldr r0, _060007BC ; =0x0380AC9C
+	ldr r0, _060007BC ; =wmspIndicateThread
 	bx lr
 	.align 2, 0
-_060007BC: .word 0x0380AC9C
+_060007BC: .word wmspIndicateThread
 	arm_func_end WMSP_GetIndicateThread
 
 	arm_func_start WMSP_GetInternalRequestBuf
@@ -1368,7 +1374,7 @@ _060010DC:
 	cmp r1, #1
 	mov r5, #0
 	bne _0600116C
-	ldr r0, _060017F0 ; =0x0380AD40
+	ldr r0, _060017F0 ; =wmspMPAckAlarm
 	mov r5, #1
 	bl __VENEER_OS_CancelAlarm
 _0600116C:
@@ -1397,7 +1403,7 @@ _0600116C:
 	orr r1, r1, r0, lsl #26
 	mov r3, r0, lsr #6
 	mov r1, r1, lsr #0xa
-	ldr r0, _060017F0 ; =0x0380AD40
+	ldr r0, _060017F0 ; =wmspMPAckAlarm
 	mov r2, r3, lsr #0xa
 	orr r1, r1, r3, lsl #22
 	ldr r3, _060017F8 ; =WmspMaMultiPollAckAlarmCallback
@@ -1755,12 +1761,12 @@ _0600165C:
 	ldrne r4, _06001800 ; =0x0000FFFF
 	cmp r0, #0
 	beq _06001748
-	ldr r0, _06001804 ; =0x0380AD6C
+	ldr r0, _06001804 ; =wmspMPIntervalAlarm
 	bl __VENEER_OS_CancelAlarm
 	str r4, [sp]
 	ldr r1, [r8, #0x48]
 	ldr r2, [r8, #0x4c]
-	ldr r0, _06001804 ; =0x0380AD6C
+	ldr r0, _06001804 ; =wmspMPIntervalAlarm
 	ldr r3, _06001808 ; =WmspMPParentIntervalAlarmCallback
 	bl __VENEER_OS_SetAlarm
 	b _06001AB0
@@ -1811,16 +1817,16 @@ _060017E0: .word 0x0601892C
 _060017E4: .word 0x027FFF98
 _060017E8: .word 0x00008002
 _060017EC: .word 0x000005E4
-_060017F0: .word 0x0380AD40
+_060017F0: .word wmspMPAckAlarm
 _060017F4: .word 0x000082EA
 _060017F8: .word WmspMaMultiPollAckAlarmCallback
 _060017FC: .word 0x00008001
 _06001800: .word 0x0000FFFF
-_06001804: .word 0x0380AD6C
+_06001804: .word wmspMPIntervalAlarm
 _06001808: .word WmspMPParentIntervalAlarmCallback
 _0600180C: .word 0x048080F8
 _06001810:
-	ldr r0, _060017F0 ; =0x0380AD40
+	ldr r0, _060017F0 ; =wmspMPAckAlarm
 	mov r1, #0
 	strh r1, [r8, #0x84]
 	ldrh r6, [r8, #0x90]
@@ -1913,13 +1919,13 @@ _06001944:
 	ldrh r0, [r8, #0x46]
 	cmp r0, #0
 	beq _06001998
-	ldr r0, _06001804 ; =0x0380AD6C
+	ldr r0, _06001804 ; =wmspMPIntervalAlarm
 	bl __VENEER_OS_CancelAlarm
 	mov r0, #0
 	str r0, [sp]
 	ldr r1, [r8, #0x50]
 	ldr r2, [r8, #0x54]
-	ldr r0, _06001804 ; =0x0380AD6C
+	ldr r0, _06001804 ; =wmspMPIntervalAlarm
 	ldr r3, _06001AE0 ; =WmspMPChildIntervalAlarmCallback
 	bl __VENEER_OS_SetAlarm
 	b _06001AB0
@@ -1942,7 +1948,7 @@ _060019B8:
 	bne _06001A2C
 	bl __VENEER_OS_DisableInterrupts
 	mov r4, r0
-	ldr r0, _060017F0 ; =0x0380AD40
+	ldr r0, _060017F0 ; =wmspMPAckAlarm
 	bl __VENEER_OS_CancelAlarm
 	mov r1, #0
 	mov r0, r4
@@ -2290,15 +2296,15 @@ _06001DBC: .word 0x060188A4
 	arm_func_start WMSP_InitAlarm
 WMSP_InitAlarm: ; 0x06001DC0
 	stmdb sp!, {r3, lr}
-	ldr r0, _06001DDC ; =0x0380AD6C
+	ldr r0, _06001DDC ; =wmspMPIntervalAlarm
 	bl __VENEER_OS_CreateAlarm
-	ldr r0, _06001DE0 ; =0x0380AD40
+	ldr r0, _06001DE0 ; =wmspMPAckAlarm
 	bl __VENEER_OS_CreateAlarm
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06001DDC: .word 0x0380AD6C
-_06001DE0: .word 0x0380AD40
+_06001DDC: .word wmspMPIntervalAlarm
+_06001DE0: .word wmspMPAckAlarm
 	arm_func_end WMSP_InitAlarm
 
 	arm_func_start __VENEER_OS_CreateAlarm
@@ -2311,15 +2317,15 @@ _06001DE8: .word OS_CreateAlarm
 	arm_func_start WMSP_CancelAllAlarms
 WMSP_CancelAllAlarms: ; 0x06001DEC
 	stmdb sp!, {r3, lr}
-	ldr r0, _06001E08 ; =0x0380AD6C
+	ldr r0, _06001E08 ; =wmspMPIntervalAlarm
 	bl __VENEER_OS_CancelAlarm
-	ldr r0, _06001E0C ; =0x0380AD40
+	ldr r0, _06001E0C ; =wmspMPAckAlarm
 	bl __VENEER_OS_CancelAlarm
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06001E08: .word 0x0380AD6C
-_06001E0C: .word 0x0380AD40
+_06001E08: .word wmspMPIntervalAlarm
+_06001E0C: .word wmspMPAckAlarm
 	arm_func_end WMSP_CancelAllAlarms
 
 	arm_func_start WMSP_RequestThread
@@ -6953,21 +6959,21 @@ _06005CCC:
 	arm_func_start WMSP_InitVAlarm
 WMSP_InitVAlarm: ; 0x06005CD8
 	ldr ip, _06005CE4 ; =0x037FA8A8
-	ldr r0, _06005CE8 ; =0x0380AD98
+	ldr r0, _06005CE8 ; =wmspVAlarm
 	bx ip
 	.align 2, 0
 _06005CE4: .word 0x037FA8A8
-_06005CE8: .word 0x0380AD98
+_06005CE8: .word wmspVAlarm
 	arm_func_end WMSP_InitVAlarm
 
 	arm_func_start WMSP_CancelVAlarm
 WMSP_CancelVAlarm: ; 0x06005CEC
 	ldr ip, _06005CF8 ; =OS_CancelVAlarm
-	ldr r0, _06005CFC ; =0x0380AD98
+	ldr r0, _06005CFC ; =wmspVAlarm
 	bx ip
 	.align 2, 0
 _06005CF8: .word OS_CancelVAlarm
-_06005CFC: .word 0x0380AD98
+_06005CFC: .word wmspVAlarm
 	arm_func_end WMSP_CancelVAlarm
 
 	arm_func_start WMSP_SetVAlarm
@@ -6975,7 +6981,7 @@ WMSP_SetVAlarm: ; 0x06005D00
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r1, _06005DA0 ; =0x060198A4
-	ldr r0, _06005DA4 ; =0x0380AD98
+	ldr r0, _06005DA4 ; =wmspVAlarm
 	ldr r4, [r1, #0x550]
 	ldrh r1, [r4, #0xe6]
 	cmp r1, #1
@@ -6985,7 +6991,7 @@ WMSP_SetVAlarm: ; 0x06005D00
 	beq _06005D30
 	bl __VENEER_OS_CancelVAlarm
 _06005D30:
-	ldr r0, _06005DA4 ; =0x0380AD98
+	ldr r0, _06005DA4 ; =wmspVAlarm
 	mov r1, #0xcb
 	mov ip, #3
 	ldr r3, _06005DA8 ; =WmspParentAdjustVSync
@@ -7003,7 +7009,7 @@ _06005D50:
 	beq _06005D70
 	bl __VENEER_OS_CancelVAlarm
 _06005D70:
-	ldr r0, _06005DA4 ; =0x0380AD98
+	ldr r0, _06005DA4 ; =wmspVAlarm
 	mov r2, #1
 	mov r1, #0xc8
 	ldr r3, _06005DAC ; =WmspChildAdjustVSync1
@@ -7018,7 +7024,7 @@ _06005D94:
 	bx lr
 	.align 2, 0
 _06005DA0: .word 0x060198A4
-_06005DA4: .word 0x0380AD98
+_06005DA4: .word wmspVAlarm
 _06005DA8: .word WmspParentAdjustVSync
 _06005DAC: .word WmspChildAdjustVSync1
 	arm_func_end WMSP_SetVAlarm
@@ -7102,7 +7108,7 @@ _06005EA0:
 	ldr r1, [r0, #0xd8]
 	cmp r1, #0x7f
 	bls _06005ECC
-	ldr r0, _06005F18 ; =0x0380AD98
+	ldr r0, _06005F18 ; =wmspVAlarm
 	mov r1, #0xd0
 	mov ip, #2
 	ldr r3, _06005F1C ; =WmspChildAdjustVSync2
@@ -7116,7 +7122,7 @@ _06005ECC:
 	mov r1, #4
 	str r1, [sp]
 	ldrsh r1, [r0, #0x42]
-	ldr r0, _06005F18 ; =0x0380AD98
+	ldr r0, _06005F18 ; =wmspVAlarm
 	ldr r3, _06005F20 ; =WmspChildVAlarmMP
 	rsb r2, r2, #0x108
 	bl __VENEER_OS_SetVAlarm
@@ -7132,7 +7138,7 @@ _06005F08: .word 0x04000006
 _06005F0C: .word 0x00000107
 _06005F10: .word 0x003FFFC0
 _06005F14: .word 0x0000400E
-_06005F18: .word 0x0380AD98
+_06005F18: .word wmspVAlarm
 _06005F1C: .word WmspChildAdjustVSync2
 _06005F20: .word WmspChildVAlarmMP
 	arm_func_end WmspChildAdjustVSync1
@@ -7181,7 +7187,7 @@ _06005F9C:
 	mov r1, #4
 	str r1, [sp]
 	ldrsh r1, [r0, #0x42]
-	ldr r0, _06005FDC ; =0x0380AD98
+	ldr r0, _06005FDC ; =wmspVAlarm
 	ldr r3, _06005FE0 ; =WmspChildVAlarmMP
 	bl __VENEER_OS_SetVAlarm
 	ldmia sp!, {r3, lr}
@@ -7190,7 +7196,7 @@ _06005F9C:
 _06005FD0: .word 0x04000006
 _06005FD4: .word 0x060198A4
 _06005FD8: .word 0x00000107
-_06005FDC: .word 0x0380AD98
+_06005FDC: .word wmspVAlarm
 _06005FE0: .word WmspChildVAlarmMP
 	arm_func_end WmspChildAdjustVSync2
 
@@ -7203,7 +7209,7 @@ WmspChildVAlarmMP: ; 0x06005FE4
 	ldr r0, [r4, #0xc]
 	cmp r0, #1
 	bne _060060DC
-	ldr r0, _060060EC ; =0x0380AD98
+	ldr r0, _060060EC ; =wmspVAlarm
 	mov r2, #1
 	mov r1, #0xc8
 	ldr r3, _060060F0 ; =WmspChildAdjustVSync1
@@ -7266,7 +7272,7 @@ _060060DC:
 	bx lr
 	.align 2, 0
 _060060E8: .word 0x060198A4
-_060060EC: .word 0x0380AD98
+_060060EC: .word wmspVAlarm
 _060060F0: .word WmspChildAdjustVSync1
 _060060F4: .word 0x00008001
 _060060F8: .word 0x0601892C
@@ -7310,7 +7316,7 @@ _06006140:
 	mov r2, #5
 	str r2, [sp]
 	ldrsh r1, [r0, #0x40]
-	ldr r0, _060061AC ; =0x0380AD98
+	ldr r0, _060061AC ; =wmspVAlarm
 	ldr r3, _060061B0 ; =WmspParentVAlarmMP
 	rsb r2, r2, #0x10c
 	bl __VENEER_OS_SetVAlarm
@@ -7321,7 +7327,7 @@ _0600619C: .word 0x060198A4
 _060061A0: .word 0x04000006
 _060061A4: .word 0x048080F8
 _060061A8: .word 0x0380FFF0
-_060061AC: .word 0x0380AD98
+_060061AC: .word wmspVAlarm
 _060061B0: .word WmspParentVAlarmMP
 	arm_func_end WmspParentAdjustVSync
 
@@ -7333,7 +7339,7 @@ WmspParentVAlarmMP: ; 0x060061B4
 	ldr r0, [r0, #0xc]
 	cmp r0, #1
 	bne _060061EC
-	ldr r0, _060061F8 ; =0x0380AD98
+	ldr r0, _060061F8 ; =wmspVAlarm
 	mov r1, #0xcb
 	mov ip, #3
 	ldr r3, _060061FC ; =WmspParentAdjustVSync
@@ -7346,7 +7352,7 @@ _060061EC:
 	bx lr
 	.align 2, 0
 _060061F4: .word 0x060198A4
-_060061F8: .word 0x0380AD98
+_060061F8: .word wmspVAlarm
 _060061FC: .word WmspParentAdjustVSync
 	arm_func_end WmspParentVAlarmMP
 
