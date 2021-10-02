@@ -22,19 +22,19 @@ WM_sp_init: ; 0x06000000
 	str ip, [r3, #0x54c]
 	mov r2, #2
 	str ip, [r3, #0x550]
-	bl sub_060001CC
+	bl __VENEER_OS_InitMessageQueue
 	ldr r0, _06000198 ; =0x060188CC
 	ldr r1, _0600019C ; =0x060188EC
 	mov r2, #4
-	bl sub_060001CC
+	bl __VENEER_OS_InitMessageQueue
 	ldr r0, _060001A0 ; =0x060188FC
 	ldr r1, _060001A4 ; =0x0601891C
 	mov r2, #4
-	bl sub_060001CC
+	bl __VENEER_OS_InitMessageQueue
 	ldr r0, _060001A8 ; =0x0601892C
 	ldr r1, _060001AC ; =0x0601894C
 	mov r2, #0x20
-	bl sub_060001CC
+	bl __VENEER_OS_InitMessageQueue
 	ldr r1, _06000190 ; =0x060188A4
 	ldr r0, _06000198 ; =0x060188CC
 	str r1, [r5, #0x10]
@@ -53,7 +53,7 @@ WM_sp_init: ; 0x06000000
 	str r2, [r1, #0x588]
 	ldr r2, [r4, #0xc]
 	str r2, [r1, #0x58c]
-	bl sub_060001D4
+	bl __VENEER_OS_InitMutex
 	mov r0, #0x400
 	str r0, [sp]
 	ldr r1, [r4, #4]
@@ -62,9 +62,9 @@ WM_sp_init: ; 0x06000000
 	ldr r1, _060001B8 ; =WMSP_IndicateThread
 	ldr r3, _060001B0 ; =0x06019DCC
 	mov r2, #0
-	bl sub_060001DC
+	bl __VENEER_OS_CreateThread
 	ldr r0, _060001B4 ; =0x0380AC9C
-	bl sub_060001E4
+	bl __VENEER_OS_WakeupThreadDirect
 	mov r0, #0x1000
 	str r0, [sp]
 	ldr r1, [r4, #0xc]
@@ -73,9 +73,9 @@ WM_sp_init: ; 0x06000000
 	ldr r1, _060001C0 ; =WMSP_RequestThread
 	ldr r3, _060001C4 ; =0x060199CC
 	mov r2, #0
-	bl sub_060001DC
+	bl __VENEER_OS_CreateThread
 	ldr r0, _060001BC ; =0x0380ABF8
-	bl sub_060001E4
+	bl __VENEER_OS_WakeupThreadDirect
 	mov r3, #0
 	ldr r1, _06000190 ; =0x060188A4
 	mov r2, r3
@@ -88,15 +88,15 @@ _06000128:
 	blt _06000128
 	ldr r0, _0600018C ; =0x060198A4
 	str r2, [r0, #0x574]
-	bl sub_060001EC
+	bl __VENEER_OS_IsVAlarmAvailable
 	cmp r0, #0
 	bne _06000158
-	bl sub_060001F4
+	bl __VENEER_OS_InitVAlarm
 _06000158:
-	bl sub_060001FC
+	bl __VENEER_PXI_Init
 	ldr r1, _060001C8 ; =WmspPxiCallback
 	mov r0, #0xa
-	bl sub_06000204
+	bl __VENEER_PXI_SetFifoRecvCallback
 	mov r0, #2
 	str r0, [r5, #0x18]
 	ldr r1, [r4, #0x14]
@@ -125,61 +125,61 @@ _060001C4: .word 0x060199CC
 _060001C8: .word WmspPxiCallback
 	arm_func_end WM_sp_init
 
-	arm_func_start sub_060001CC
-sub_060001CC: ; 0x060001CC
+	arm_func_start __VENEER_OS_InitMessageQueue
+__VENEER_OS_InitMessageQueue: ; 0x060001CC
 	ldr pc, _060001D0 ; =OS_InitMessageQueue
 	.align 2, 0
 _060001D0: .word OS_InitMessageQueue
-	arm_func_end sub_060001CC
+	arm_func_end __VENEER_OS_InitMessageQueue
 
-	arm_func_start sub_060001D4
-sub_060001D4: ; 0x060001D4
+	arm_func_start __VENEER_OS_InitMutex
+__VENEER_OS_InitMutex: ; 0x060001D4
 	ldr pc, _060001D8 ; =OS_InitMutex
 	.align 2, 0
 _060001D8: .word OS_InitMutex
-	arm_func_end sub_060001D4
+	arm_func_end __VENEER_OS_InitMutex
 
-	arm_func_start sub_060001DC
-sub_060001DC: ; 0x060001DC
+	arm_func_start __VENEER_OS_CreateThread
+__VENEER_OS_CreateThread: ; 0x060001DC
 	ldr pc, _060001E0 ; =OS_CreateThread
 	.align 2, 0
 _060001E0: .word OS_CreateThread
-	arm_func_end sub_060001DC
+	arm_func_end __VENEER_OS_CreateThread
 
-	arm_func_start sub_060001E4
-sub_060001E4: ; 0x060001E4
+	arm_func_start __VENEER_OS_WakeupThreadDirect
+__VENEER_OS_WakeupThreadDirect: ; 0x060001E4
 	ldr pc, _060001E8 ; =OS_WakeupThreadDirect
 	.align 2, 0
 _060001E8: .word OS_WakeupThreadDirect
-	arm_func_end sub_060001E4
+	arm_func_end __VENEER_OS_WakeupThreadDirect
 
-	arm_func_start sub_060001EC
-sub_060001EC: ; 0x060001EC
+	arm_func_start __VENEER_OS_IsVAlarmAvailable
+__VENEER_OS_IsVAlarmAvailable: ; 0x060001EC
 	ldr pc, _060001F0 ; =OS_IsVAlarmAvailable
 	.align 2, 0
 _060001F0: .word OS_IsVAlarmAvailable
-	arm_func_end sub_060001EC
+	arm_func_end __VENEER_OS_IsVAlarmAvailable
 
-	arm_func_start sub_060001F4
-sub_060001F4: ; 0x060001F4
+	arm_func_start __VENEER_OS_InitVAlarm
+__VENEER_OS_InitVAlarm: ; 0x060001F4
 	ldr pc, _060001F8 ; =OS_InitVAlarm
 	.align 2, 0
 _060001F8: .word OS_InitVAlarm
-	arm_func_end sub_060001F4
+	arm_func_end __VENEER_OS_InitVAlarm
 
-	arm_func_start sub_060001FC
-sub_060001FC: ; 0x060001FC
+	arm_func_start __VENEER_PXI_Init
+__VENEER_PXI_Init: ; 0x060001FC
 	ldr pc, _06000200 ; =PXI_Init
 	.align 2, 0
 _06000200: .word PXI_Init
-	arm_func_end sub_060001FC
+	arm_func_end __VENEER_PXI_Init
 
-	arm_func_start sub_06000204
-sub_06000204: ; 0x06000204
+	arm_func_start __VENEER_PXI_SetFifoRecvCallback
+__VENEER_PXI_SetFifoRecvCallback: ; 0x06000204
 	ldr pc, _06000208 ; =PXI_SetFifoRecvCallback
 	.align 2, 0
 _06000208: .word PXI_SetFifoRecvCallback
-	arm_func_end sub_06000204
+	arm_func_end __VENEER_PXI_SetFifoRecvCallback
 
 	arm_func_start WMSP_WlRequest
 WMSP_WlRequest: ; 0x0600020C
@@ -187,27 +187,27 @@ WMSP_WlRequest: ; 0x0600020C
 	mov r1, r0
 	ldr r0, _0600027C ; =0x060188A4
 	mov r2, #1
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 	ldr r0, _06000280 ; =0x060188FC
 	add r1, sp, #0
 	mov r2, #1
-	bl sub_0600028C
+	bl __VENEER_OS_ReceiveMessage
 	ldr r1, [sp]
 	ldrh r0, [r1, #0xe]
 	add r0, r1, r0, lsl #1
 	ldrh r0, [r0, #0x14]
 	cmp r0, #0xe
 	bne _06000270
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #0x13
 	strh r1, [r0, #2]
 	mov r1, #0x18
 	strh r1, [r0, #4]
-	bl sub_0600029C
-	bl sub_060002A4
-	bl sub_060002AC
+	bl __VENEER_WMSP_ReturnResult2Wm9
+	bl __VENEER_SND_BeginSleep
+	bl __VENEER_OS_Terminate
 _06000270:
 	ldr r0, [sp]
 	ldmia sp!, {r3, lr}
@@ -217,47 +217,47 @@ _0600027C: .word 0x060188A4
 _06000280: .word 0x060188FC
 	arm_func_end WMSP_WlRequest
 
-	arm_func_start sub_06000284
-sub_06000284: ; 0x06000284
+	arm_func_start __VENEER_OS_SendMessage
+__VENEER_OS_SendMessage: ; 0x06000284
 	ldr pc, _06000288 ; =OS_SendMessage
 	.align 2, 0
 _06000288: .word OS_SendMessage
-	arm_func_end sub_06000284
+	arm_func_end __VENEER_OS_SendMessage
 
-	arm_func_start sub_0600028C
-sub_0600028C: ; 0x0600028C
+	arm_func_start __VENEER_OS_ReceiveMessage
+__VENEER_OS_ReceiveMessage: ; 0x0600028C
 	ldr pc, _06000290 ; =OS_ReceiveMessage
 	.align 2, 0
 _06000290: .word OS_ReceiveMessage
-	arm_func_end sub_0600028C
+	arm_func_end __VENEER_OS_ReceiveMessage
 
-	arm_func_start sub_06000294
-sub_06000294: ; 0x06000294
+	arm_func_start __VENEER_WMSP_GetBuffer4Callback2Wm9
+__VENEER_WMSP_GetBuffer4Callback2Wm9: ; 0x06000294
 	ldr pc, _06000298 ; =WMSP_GetBuffer4Callback2Wm9
 	.align 2, 0
 _06000298: .word WMSP_GetBuffer4Callback2Wm9
-	arm_func_end sub_06000294
+	arm_func_end __VENEER_WMSP_GetBuffer4Callback2Wm9
 
-	arm_func_start sub_0600029C
-sub_0600029C: ; 0x0600029C
+	arm_func_start __VENEER_WMSP_ReturnResult2Wm9
+__VENEER_WMSP_ReturnResult2Wm9: ; 0x0600029C
 	ldr pc, _060002A0 ; =WMSP_ReturnResult2Wm9
 	.align 2, 0
 _060002A0: .word WMSP_ReturnResult2Wm9
-	arm_func_end sub_0600029C
+	arm_func_end __VENEER_WMSP_ReturnResult2Wm9
 
-	arm_func_start sub_060002A4
-sub_060002A4: ; 0x060002A4
+	arm_func_start __VENEER_SND_BeginSleep
+__VENEER_SND_BeginSleep: ; 0x060002A4
 	ldr pc, _060002A8 ; =SND_BeginSleep
 	.align 2, 0
 _060002A8: .word SND_BeginSleep
-	arm_func_end sub_060002A4
+	arm_func_end __VENEER_SND_BeginSleep
 
-	arm_func_start sub_060002AC
-sub_060002AC: ; 0x060002AC
+	arm_func_start __VENEER_OS_Terminate
+__VENEER_OS_Terminate: ; 0x060002AC
 	ldr pc, _060002B0 ; =OS_Terminate
 	.align 2, 0
 _060002B0: .word OS_Terminate
-	arm_func_end sub_060002AC
+	arm_func_end __VENEER_OS_Terminate
 
 	arm_func_start WmspPxiCallback
 WmspPxiCallback: ; 0x060002B4
@@ -267,14 +267,14 @@ WmspPxiCallback: ; 0x060002B4
 	bne _0600030C
 	ldr r0, _06000314 ; =0x0601892C
 	mov r2, #0
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 	cmp r0, #0
 	bne _0600030C
 	ldr r0, _06000318 ; =0x060198A4
 	ldr r0, [r0, #0x54c]
 	cmp r0, #0
 	beq _0600030C
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	ldrh r2, [r4]
 	mov r1, #8
 	strh r2, [r0]
@@ -282,7 +282,7 @@ WmspPxiCallback: ; 0x060002B4
 	mov r1, #0
 	strh r1, [r0, #4]
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _0600030C:
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -370,18 +370,18 @@ _06000414:
 	add r3, r3, #1
 	add r1, r2, #0x10
 	bic r2, r3, #1
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 _06000438:
 	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end WMSP_CopyParentParam
 
-	arm_func_start sub_06000440
-sub_06000440: ; 0x06000440
+	arm_func_start __VENEER_MI_CpuCopy8
+__VENEER_MI_CpuCopy8: ; 0x06000440
 	ldr pc, _06000444 ; =MI_CpuCopy8
 	.align 2, 0
 _06000444: .word MI_CpuCopy8
-	arm_func_end sub_06000440
+	arm_func_end __VENEER_MI_CpuCopy8
 
 	arm_func_start WMSP_SetAllParams
 WMSP_SetAllParams: ; 0x06000448
@@ -393,7 +393,7 @@ WMSP_SetAllParams: ; 0x06000448
 	add r0, r4, #0xe0
 	add r1, r5, #0x10
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov r0, #7
 	strh r0, [r5, #0x16]
 	add r0, r4, #0x100
@@ -411,7 +411,7 @@ WMSP_SetAllParams: ; 0x06000448
 	add r1, r5, #0x24
 	mov r2, #0x50
 	strh r0, [r5, #0x22]
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	mov r0, #0
 	b _060004E0
 _060004BC:
@@ -422,7 +422,7 @@ _060004BC:
 	add r1, r5, #0x24
 	strh r2, [r5, #0x22]
 	mov r2, #0x50
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov r0, #1
 _060004E0:
 	strh r0, [r5, #0x9e]
@@ -441,15 +441,15 @@ _060004E0:
 	mov r0, #0
 	bne _06000528
 	mov r2, #0x20
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	b _06000540
 _06000528:
 	mov r2, #8
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldr r0, _06000594 ; =0x0000FFFF
 	add r1, r5, #0x84
 	mov r2, #0x18
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 _06000540:
 	add r0, r4, #0x100
 	ldrh r1, [r0, #0xee]
@@ -460,14 +460,14 @@ _06000540:
 	cmp r4, #0
 	moveq r0, #1
 	beq _06000588
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	strh r6, [r0]
 	mov r1, #1
 	strh r1, [r0, #2]
 	mov r1, #0x200
 	strh r1, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	mov r0, #0
 _06000588:
 	ldmia sp!, {r4, r5, r6, lr}
@@ -477,12 +477,12 @@ _06000590: .word 0x060198A4
 _06000594: .word 0x0000FFFF
 	arm_func_end WMSP_SetAllParams
 
-	arm_func_start sub_06000598
-sub_06000598: ; 0x06000598
+	arm_func_start __VENEER_MIi_CpuClear16
+__VENEER_MIi_CpuClear16: ; 0x06000598
 	ldr pc, _0600059C ; =MIi_CpuClear16
 	.align 2, 0
 _0600059C: .word MIi_CpuClear16
-	arm_func_end sub_06000598
+	arm_func_end __VENEER_MIi_CpuClear16
 
 	arm_func_start WMSP_AddRssiToList
 WMSP_AddRssiToList: ; 0x060005A0
@@ -582,24 +582,24 @@ _060006BC: .word 0x060198A4
 	arm_func_start WMSP_SetThreadPriorityLow
 WMSP_SetThreadPriorityLow: ; 0x060006C0
 	stmdb sp!, {r4, lr}
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	mov r4, r0
-	bl sub_06000728
+	bl __VENEER_OS_DisableScheduler
 	ldr r1, _06000714 ; =0x060198A4
 	ldr r0, _06000718 ; =0x0380ABF8
 	ldr r1, [r1, #0x58c]
-	bl sub_06000730
+	bl __VENEER_OS_SetThreadPriority
 	bl WL_GetThreadStruct
 	ldr r1, _06000714 ; =0x060198A4
 	ldr r1, [r1, #0x588]
-	bl sub_06000730
+	bl __VENEER_OS_SetThreadPriority
 	ldr r1, _06000714 ; =0x060198A4
 	ldr r0, _0600071C ; =0x0380AC9C
 	ldr r1, [r1, #0x584]
-	bl sub_06000730
-	bl sub_06000738
+	bl __VENEER_OS_SetThreadPriority
+	bl __VENEER_OS_EnableScheduler
 	mov r0, r4
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
@@ -608,62 +608,62 @@ _06000718: .word 0x0380ABF8
 _0600071C: .word 0x0380AC9C
 	arm_func_end WMSP_SetThreadPriorityLow
 
-	arm_func_start sub_06000720
-sub_06000720: ; 0x06000720
+	arm_func_start __VENEER_OS_DisableInterrupts
+__VENEER_OS_DisableInterrupts: ; 0x06000720
 	ldr pc, _06000724 ; =OS_DisableInterrupts
 	.align 2, 0
 _06000724: .word OS_DisableInterrupts
-	arm_func_end sub_06000720
+	arm_func_end __VENEER_OS_DisableInterrupts
 
-	arm_func_start sub_06000728
-sub_06000728: ; 0x06000728
+	arm_func_start __VENEER_OS_DisableScheduler
+__VENEER_OS_DisableScheduler: ; 0x06000728
 	ldr pc, _0600072C ; =OS_DisableScheduler
 	.align 2, 0
 _0600072C: .word OS_DisableScheduler
-	arm_func_end sub_06000728
+	arm_func_end __VENEER_OS_DisableScheduler
 
-	arm_func_start sub_06000730
-sub_06000730: ; 0x06000730
+	arm_func_start __VENEER_OS_SetThreadPriority
+__VENEER_OS_SetThreadPriority: ; 0x06000730
 	ldr pc, _06000734 ; =OS_SetThreadPriority
 	.align 2, 0
 _06000734: .word OS_SetThreadPriority
-	arm_func_end sub_06000730
+	arm_func_end __VENEER_OS_SetThreadPriority
 
-	arm_func_start sub_06000738
-sub_06000738: ; 0x06000738
+	arm_func_start __VENEER_OS_EnableScheduler
+__VENEER_OS_EnableScheduler: ; 0x06000738
 	ldr pc, _0600073C ; =OS_EnableScheduler
 	.align 2, 0
 _0600073C: .word OS_EnableScheduler
-	arm_func_end sub_06000738
+	arm_func_end __VENEER_OS_EnableScheduler
 
-	arm_func_start sub_06000740
-sub_06000740: ; 0x06000740
+	arm_func_start __VENEER_OS_RestoreInterrupts
+__VENEER_OS_RestoreInterrupts: ; 0x06000740
 	ldr pc, _06000744 ; =OS_RestoreInterrupts
 	.align 2, 0
 _06000744: .word OS_RestoreInterrupts
-	arm_func_end sub_06000740
+	arm_func_end __VENEER_OS_RestoreInterrupts
 
 	arm_func_start WMSP_SetThreadPriorityHigh
 WMSP_SetThreadPriorityHigh: ; 0x06000748
 	stmdb sp!, {r4, lr}
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	mov r4, r0
-	bl sub_06000728
+	bl __VENEER_OS_DisableScheduler
 	ldr r1, _0600079C ; =0x060198A4
 	ldr r0, _060007A0 ; =0x0380AC9C
 	ldr r1, [r1, #0x578]
-	bl sub_06000730
+	bl __VENEER_OS_SetThreadPriority
 	bl WL_GetThreadStruct
 	ldr r1, _0600079C ; =0x060198A4
 	ldr r1, [r1, #0x57c]
-	bl sub_06000730
+	bl __VENEER_OS_SetThreadPriority
 	ldr r1, _0600079C ; =0x060198A4
 	ldr r0, _060007A4 ; =0x0380ABF8
 	ldr r1, [r1, #0x580]
-	bl sub_06000730
-	bl sub_06000738
+	bl __VENEER_OS_SetThreadPriority
+	bl __VENEER_OS_EnableScheduler
 	mov r0, r4
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
@@ -692,7 +692,7 @@ _060007BC: .word 0x0380AC9C
 WMSP_GetInternalRequestBuf: ; 0x060007C0
 	stmdb sp!, {r4, lr}
 	mov r4, #0
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldr r1, _06000828 ; =0x060198A4
 	ldr r2, [r1, #0x54c]
 	cmp r2, #0
@@ -716,7 +716,7 @@ _06000810:
 	cmp r3, #0x20
 	blt _060007E4
 _06000818:
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -833,11 +833,11 @@ _06000960:
 	add r1, sp, #0x24
 	add r0, r0, #0x28
 	mov r2, #1
-	bl sub_0600028C
+	bl __VENEER_OS_ReceiveMessage
 	ldr sb, [sp, #0x24]
 	cmp sb, #0
 	bne _06000988
-	bl sub_06001AEC
+	bl __VENEER_OS_ExitThread
 	b _06001AD4
 _06000988:
 	ldrh r1, [sb, #0xc]
@@ -895,14 +895,14 @@ _06000A40:
 	beq _060019B8
 	b _06001AB0
 _06000A50:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
 	mov r1, #0x13
 	strh r1, [r0, #4]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06000A74:
 	cmp r3, #7
@@ -911,14 +911,14 @@ _06000A74:
 	add r1, sp, #0x1c
 	add r0, sb, #0x10
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov r6, #0
 	mov r5, r6
 	add r4, r8, #0x100
 	mov sl, #1
 	b _06000B74
 _06000AA4:
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldrh r2, [r4, #0x82]
 	add r1, r5, #1
 	mov r7, r0
@@ -963,13 +963,13 @@ _06000AA4:
 	add r0, r0, r2
 	mov r2, #6
 	str r1, [r3, #0x73c]
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	mov r0, r7
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	b _06000B7C
 _06000B68:
 	mov r0, r7
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	add r5, r5, #1
 _06000B74:
 	cmp r5, #0xf
@@ -977,7 +977,7 @@ _06000B74:
 _06000B7C:
 	cmp r6, #0
 	beq _06001AB0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r0, #8
 	strh r0, [r4]
@@ -991,13 +991,13 @@ _06000B7C:
 	strh r6, [r4, #0x10]
 	add r1, r4, #0xa
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r1, [r8, #0x30]
 	mov r0, r4
 	strh r1, [r4, #0x2c]
 	ldrh r1, [r8, #0x32]
 	strh r1, [r4, #0x2e]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldr r0, [r8, #0xc]
 	cmp r0, #1
 	bne _06001AB0
@@ -1009,13 +1009,13 @@ _06000B7C:
 	b _06001AB0
 _06000BFC:
 	mov r5, #0
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	add r1, r8, #0x100
 	ldrh r1, [r1, #0x82]
 	mov r4, r0
 	cmp r1, #0
 	bne _06000C20
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	b _06001AB0
 _06000C20:
 	ldr r0, [r8, #0xc]
@@ -1038,15 +1038,15 @@ _06000C40:
 	strh r1, [r0, #0x96]
 	add r0, r8, #0x19c
 	mov r2, #0x50
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	bl WMSP_ResetSizeVars
 	mov r0, #0
 	strh r0, [r8, #0xc2]
 	mov r1, #3
 	mov r0, r4
 	strh r1, [r8]
-	bl sub_06000740
-	bl sub_06000294
+	bl __VENEER_OS_RestoreInterrupts
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r0, #0xc
 	strh r0, [r4]
@@ -1063,13 +1063,13 @@ _06000C40:
 	add r0, r0, #0x100
 	add r1, r4, #0x10
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r1, [r8, #0x30]
 	mov r0, r4
 	strh r1, [r4, #0x16]
 	ldrh r1, [r8, #0x32]
 	strh r1, [r4, #0x18]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	cmp r5, #0
 	beq _06001AB0
 	mov r0, #1
@@ -1093,15 +1093,15 @@ _06000D00:
 	add r1, r4, #4
 	mov r2, #6
 	str r3, [r4]
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldr r0, _060017E0 ; =0x0601892C
 	mov r1, r4
 	mov r2, #0
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 _06000D58:
 	cmp r0, #0
 	bne _06001AB0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #8
@@ -1110,10 +1110,10 @@ _06000D58:
 	strh r1, [r0, #4]
 	mov r1, #0x22
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06000D8C:
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	add r1, r8, #0x100
 	mov r4, #1
 	ldrh r3, [r1, #0x82]
@@ -1124,7 +1124,7 @@ _06000D8C:
 	mov r4, r0
 	and r0, r1, r2
 	strh r0, [r8, #0x86]
-	bl sub_06001AFC
+	bl __VENEER_OS_GetTick
 	orr r2, r0, #1
 	add r0, r8, r5, lsl #3
 	add r3, r8, #0x128
@@ -1135,15 +1135,15 @@ _06000D8C:
 	mov r2, #6
 	mla r1, r0, r2, r3
 	add r0, sb, #0x10
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov r0, r4
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	mov r0, #1
 	add r1, r8, #0x1f8
 	add r1, r1, r5, lsl #4
 	mov r2, #0x10
-	bl sub_06000598
-	bl sub_06000294
+	bl __VENEER_MIi_CpuClear16
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r0, #8
 	strh r0, [r4]
@@ -1154,64 +1154,64 @@ _06000D8C:
 	add r0, sb, #0x10
 	add r1, r4, #0xa
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	strh r5, [r4, #0x10]
 	add r0, sb, #0x22
 	add r1, r4, #0x14
 	mov r2, #0x18
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [r8, #0x30]
 	mov r0, r4
 	strh r1, [r4, #0x2c]
 	ldrh r1, [r8, #0x32]
 	strh r1, [r4, #0x2e]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06000E64:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
 	mov r1, #0x12
 	strh r1, [r0, #4]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06000E88:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
 	mov r1, #0x11
 	strh r1, [r0, #4]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06000EAC:
 	ldrh r0, [r8, #0xc2]
 	cmp r0, #0
 	beq _06001AB0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xc
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
 	mov r1, #8
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06000EDC:
 	ldrh r0, [r8, #0xc2]
 	cmp r0, #0
 	beq _06001AB0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #8
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
 	mov r1, #2
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06000F0C:
 	ldrb r0, [sb, #0x1f]
@@ -1241,11 +1241,11 @@ _06000F0C:
 	ldr r0, _060017E0 ; =0x0601892C
 	mov r2, #0
 	str r3, [r1, #8]
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 _06000F7C:
 	cmp r0, #0
 	bne _06001AB0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #8
@@ -1254,7 +1254,7 @@ _06000F7C:
 	strh r1, [r0, #4]
 	mov r1, #0x25
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06000FB0:
 	ldr r0, _060017D8 ; =0x060198A4
@@ -1262,7 +1262,7 @@ _06000FB0:
 	ldrh r0, [r0, #0xc2]
 	cmp r0, #0
 	beq _06001AB0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r0, #0x80
 	strh r0, [r4]
@@ -1282,10 +1282,10 @@ _06000FB0:
 	add r0, sb, #0x3c
 	add r1, r4, #0xc
 	bic r2, r2, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 _06001018:
 	mov r0, r4
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06001024:
 	ldr r0, [r8, #0x10]
@@ -1315,16 +1315,16 @@ _06001024:
 	add r2, r1, #0x2d
 	mov r1, r4
 	bic r2, r2, #1
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r0, sb, #0x28
 	add r1, r4, #0x18
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r0, sb, #0x2e
 	add r1, r4, #0x1e
 	mov r2, #6
-	bl sub_06000440
-	bl sub_06000294
+	bl __VENEER_MI_CpuCopy8
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x11
 	strh r1, [r0]
 	mov r1, #0
@@ -1332,7 +1332,7 @@ _06001024:
 	mov r1, #0xf
 	strh r1, [r0, #4]
 	str r4, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _060010DC:
 	ldrb r0, [sb, #0x1f]
@@ -1361,8 +1361,8 @@ _060010DC:
 	movlo r2, r0
 	mov r1, r4
 	add r0, sb, #0x10
-	bl sub_06000440
-	bl sub_06000720
+	bl __VENEER_MI_CpuCopy8
+	bl __VENEER_OS_DisableInterrupts
 	ldrh r1, [r8, #0x84]
 	mov fp, r0
 	cmp r1, #1
@@ -1370,7 +1370,7 @@ _060010DC:
 	bne _0600116C
 	ldr r0, _060017F0 ; =0x0380AD40
 	mov r5, #1
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 _0600116C:
 	mov r7, #1
 	strh r7, [r8, #0x84]
@@ -1401,7 +1401,7 @@ _0600116C:
 	mov r2, r3, lsr #0xa
 	orr r1, r1, r3, lsl #22
 	ldr r3, _060017F8 ; =WmspMaMultiPollAckAlarmCallback
-	bl sub_06001B14
+	bl __VENEER_OS_SetAlarm
 	and r0, r6, #0x2800
 	cmp r0, #0x2800
 	moveq r1, #1
@@ -1440,7 +1440,7 @@ _0600116C:
 	bl WMSP_SetChildSize
 _06001274:
 	mov r0, fp
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	cmp r5, #0
 	beq _060012C0
 	cmp sl, #1
@@ -1449,7 +1449,7 @@ _06001274:
 	mov r1, #0
 	bl WMSP_FlushSendQueue
 _06001298:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xe
 	strh r1, [r0]
 	mov r1, #9
@@ -1458,7 +1458,7 @@ _06001298:
 	strh r1, [r0, #4]
 	mov r1, #0
 	str r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _060012C0:
 	cmp r7, #0
 	bne _060012EC
@@ -1475,11 +1475,11 @@ _060012EC:
 	add r0, sb, #0x28
 	add r1, r4, #0x18
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r0, sb, #0x2e
 	add r1, r4, #0x1e
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r0, [r4, #6]
 	cmp r0, #2
 	blo _0600137C
@@ -1490,7 +1490,7 @@ _060012EC:
 	movne r0, #1
 	moveq r0, #0
 	strh r0, [r8, #0x5e]
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xe
 	strh r1, [r0]
 	mov r1, #0
@@ -1498,7 +1498,7 @@ _060012EC:
 	mov r1, #0xc
 	strh r1, [r0, #4]
 	str r4, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldrh r3, [r4, #6]
 	cmp r3, #0
 	beq _060013A8
@@ -1512,21 +1512,21 @@ _0600137C:
 	mov r0, #0
 	strh r0, [r4, #6]
 	strh r0, [r8, #0x5e]
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xe
 	strh r1, [r0]
 	strh r1, [r0, #2]
 	mov r1, #0xc
 	strh r1, [r0, #4]
 	str r4, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _060013A8:
 	ldr r0, [r8, #0x7bc]
 	ldr r1, [r8, #0x7b8]
 	cmp r0, #0
 	cmpeq r1, #0
 	beq _06001AB0
-	bl sub_06001AFC
+	bl __VENEER_OS_GetTick
 	orr r0, r0, #1
 	str r0, [r8, #0x738]
 	orr r0, r1, #0
@@ -1566,7 +1566,7 @@ _06001414:
 	movlo r2, r0
 	mov r1, r6
 	add r0, sb, #0x10
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldr r0, _060017D8 ; =0x060198A4
 	ldrh r1, [r6]
 	ldr r7, [r0, #0x550]
@@ -1593,7 +1593,7 @@ _060014A0:
 	blt _06001484
 	strh r4, [r7, #0xbe]
 _060014B0:
-	bl sub_06001AFC
+	bl __VENEER_OS_GetTick
 	orr r0, r0, #1
 	str r0, [sp, #8]
 	ldrh fp, [r6]
@@ -1682,11 +1682,11 @@ _06001568:
 	ldr r0, _060017FC ; =0x00008001
 	str r0, [r1, #8]
 	ldr r0, _060017E0 ; =0x0601892C
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 _06001610:
 	cmp r0, #0
 	bne _06001640
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #8
@@ -1695,7 +1695,7 @@ _06001610:
 	strh r1, [r0, #4]
 	mov r1, #0x25
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06001640:
 	ldr r0, [sp, #0x14]
 	add r0, r0, #1
@@ -1717,7 +1717,7 @@ _0600165C:
 	cmp r0, #0
 	movne r0, #1
 	strne r0, [sp, #0x10]
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xe
 	strh r1, [r0]
 	mov r1, #0
@@ -1725,11 +1725,11 @@ _0600165C:
 	mov r1, #0xb
 	strh r1, [r0, #4]
 	str r6, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldrh r0, [r8, #0x70]
 	eor r0, r0, #1
 	strh r0, [r8, #0x70]
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldr r1, [sp, #0x10]
 	cmp r1, #0
 	ldreqsh r1, [r8, #0x62]
@@ -1745,7 +1745,7 @@ _0600165C:
 	cmpgt r1, #0
 	movgt r4, #1
 	movle r4, #0
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	cmp r4, #0
 	beq _06001AB0
 	ldr r0, [sp, #0x10]
@@ -1756,13 +1756,13 @@ _0600165C:
 	cmp r0, #0
 	beq _06001748
 	ldr r0, _06001804 ; =0x0380AD6C
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	str r4, [sp]
 	ldr r1, [r8, #0x48]
 	ldr r2, [r8, #0x4c]
 	ldr r0, _06001804 ; =0x0380AD6C
 	ldr r3, _06001808 ; =WmspMPParentIntervalAlarmCallback
-	bl sub_06001B14
+	bl __VENEER_OS_SetAlarm
 	b _06001AB0
 _06001748:
 	mov r0, r4
@@ -1796,12 +1796,12 @@ _06001754:
 _060017B4:
 	mov r4, r5
 _060017B8:
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldrh r1, [r8, #0x84]
 	mov r7, r0
 	cmp r1, #0
 	bne _06001810
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	b _06001AB0
 	.align 2, 0
 _060017D4: .word 0x060188A4
@@ -1824,9 +1824,9 @@ _06001810:
 	mov r1, #0
 	strh r1, [r8, #0x84]
 	ldrh r6, [r8, #0x90]
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	mov r0, r7
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	ldrh r3, [r8, #0x8c]
 	mov r2, #1
 	cmp r3, #0
@@ -1859,7 +1859,7 @@ _0600185C:
 _06001898:
 	cmp r6, #0
 	beq _06001AB0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r7, r0
 	mov r0, #0xe
 	strh r0, [r7]
@@ -1890,11 +1890,11 @@ _060018E4:
 	add r1, r7, #0x10
 	strh r2, [r7, #0xe]
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r0, sb, #0x2e
 	add r1, r7, #0x16
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r0, [sb, #0x3a]
 	strh r0, [r7, #0x1c]
 	ldrh r0, [sb, #0x3c]
@@ -1903,7 +1903,7 @@ _060018E4:
 	strh r0, [r7, #0x20]
 _06001944:
 	mov r0, r7
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	cmp r6, #0
 	beq _06001AB0
 	cmp r5, #1
@@ -1914,14 +1914,14 @@ _06001944:
 	cmp r0, #0
 	beq _06001998
 	ldr r0, _06001804 ; =0x0380AD6C
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	mov r0, #0
 	str r0, [sp]
 	ldr r1, [r8, #0x50]
 	ldr r2, [r8, #0x54]
 	ldr r0, _06001804 ; =0x0380AD6C
 	ldr r3, _06001AE0 ; =WmspMPChildIntervalAlarmCallback
-	bl sub_06001B14
+	bl __VENEER_OS_SetAlarm
 	b _06001AB0
 _06001998:
 	bl WmspKickMPChild
@@ -1940,19 +1940,19 @@ _060019B8:
 	ldreqh r0, [sb, #0x10]
 	cmpeq r0, #0x20
 	bne _06001A2C
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	mov r4, r0
 	ldr r0, _060017F0 ; =0x0380AD40
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	mov r1, #0
 	mov r0, r4
 	strh r1, [r8, #0x84]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	mov r1, #0
 	strh r1, [r8, #0x8a]
 	mov r0, #1
 	bl WMSP_FlushSendQueue
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #0
@@ -1961,7 +1961,7 @@ _060019B8:
 	strh r1, [r0, #4]
 	mov r1, #1
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06001A2C:
 	bl WMSP_GetInternalRequestBuf
@@ -1985,11 +1985,11 @@ _06001A2C:
 _06001A74:
 	ldr r0, _060017E0 ; =0x0601892C
 	mov r2, #0
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 _06001A80:
 	cmp r0, #0
 	bne _06001AB0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #8
@@ -1998,7 +1998,7 @@ _06001A80:
 	strh r1, [r0, #4]
 	mov r1, #0x25
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06001AB0:
 	mov r0, sb
 	bl WmspFreeBufOfWL
@@ -2008,7 +2008,7 @@ _06001ABC:
 	mov r1, sb
 	add r0, r0, #0x58
 	mov r2, #1
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 	b _06000960
 _06001AD4:
 	add sp, sp, #0x28
@@ -2020,73 +2020,73 @@ _06001AE4: .word 0x00008003
 _06001AE8: .word 0x00007FFE
 	arm_func_end WMSP_IndicateThread
 
-	arm_func_start sub_06001AEC
-sub_06001AEC: ; 0x06001AEC
+	arm_func_start __VENEER_OS_ExitThread
+__VENEER_OS_ExitThread: ; 0x06001AEC
 	ldr pc, _06001AF0 ; =OS_ExitThread
 	.align 2, 0
 _06001AF0: .word OS_ExitThread
-	arm_func_end sub_06001AEC
+	arm_func_end __VENEER_OS_ExitThread
 
-	arm_func_start sub_06001AF4
-sub_06001AF4: ; 0x06001AF4
+	arm_func_start __VENEER_MI_CpuFill8
+__VENEER_MI_CpuFill8: ; 0x06001AF4
 	ldr pc, _06001AF8 ; =MI_CpuFill8
 	.align 2, 0
 _06001AF8: .word MI_CpuFill8
-	arm_func_end sub_06001AF4
+	arm_func_end __VENEER_MI_CpuFill8
 
-	arm_func_start sub_06001AFC
-sub_06001AFC: ; 0x06001AFC
+	arm_func_start __VENEER_OS_GetTick
+__VENEER_OS_GetTick: ; 0x06001AFC
 	ldr pc, _06001B00 ; =OS_GetTick
 	.align 2, 0
 _06001B00: .word OS_GetTick
-	arm_func_end sub_06001AFC
+	arm_func_end __VENEER_OS_GetTick
 
-	arm_func_start sub_06001B04
-sub_06001B04: ; 0x06001B04
+	arm_func_start __VENEER_MIi_CpuCopy16
+__VENEER_MIi_CpuCopy16: ; 0x06001B04
 	ldr pc, _06001B08 ; =MIi_CpuCopy16
 	.align 2, 0
 _06001B08: .word MIi_CpuCopy16
-	arm_func_end sub_06001B04
+	arm_func_end __VENEER_MIi_CpuCopy16
 
-	arm_func_start sub_06001B0C
-sub_06001B0C: ; 0x06001B0C
+	arm_func_start __VENEER_OS_CancelAlarm
+__VENEER_OS_CancelAlarm: ; 0x06001B0C
 	ldr pc, _06001B10 ; =OS_CancelAlarm
 	.align 2, 0
 _06001B10: .word OS_CancelAlarm
-	arm_func_end sub_06001B0C
+	arm_func_end __VENEER_OS_CancelAlarm
 
-	arm_func_start sub_06001B14
-sub_06001B14: ; 0x06001B14
+	arm_func_start __VENEER_OS_SetAlarm
+__VENEER_OS_SetAlarm: ; 0x06001B14
 	ldr pc, _06001B18 ; =OS_SetAlarm
 	.align 2, 0
 _06001B18: .word OS_SetAlarm
-	arm_func_end sub_06001B14
+	arm_func_end __VENEER_OS_SetAlarm
 
 	arm_func_start WmspFreeBufOfWL
 WmspFreeBufOfWL: ; 0x06001B1C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldr r1, _06001B50 ; =0x060198A4
 	mov r4, r0
 	ldr r0, [r1, #0x544]
 	ldr r1, [r1, #0x548]
 	mov r2, r5
-	bl sub_06001B54
+	bl __VENEER_OS_FreeToHeap
 	mov r0, r4
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
 _06001B50: .word 0x060198A4
 	arm_func_end WmspFreeBufOfWL
 
-	arm_func_start sub_06001B54
-sub_06001B54: ; 0x06001B54
+	arm_func_start __VENEER_OS_FreeToHeap
+__VENEER_OS_FreeToHeap: ; 0x06001B54
 	ldr pc, _06001B58 ; =OS_FreeToHeap
 	.align 2, 0
 _06001B58: .word OS_FreeToHeap
-	arm_func_end sub_06001B54
+	arm_func_end __VENEER_OS_FreeToHeap
 
 	arm_func_start WMSP_GetRssi8_06001B5C
 WMSP_GetRssi8_06001B5C: ; 0x06001B5C
@@ -2112,13 +2112,13 @@ WMSP_RequestResumeMP: ; 0x06001B70
 	ldr r0, _06001BEC ; =0x0601892C
 	mov r2, #0
 	str r3, [r1, #4]
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 _06001BA8:
 	cmp r0, #0
 	movne r0, #1
 	strneh r0, [r4, #0x66]
 	bne _06001BE0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #8
@@ -2127,7 +2127,7 @@ _06001BA8:
 	strh r1, [r0, #4]
 	mov r1, #0x2d
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06001BE0:
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -2160,7 +2160,7 @@ WmspKickMPParent: ; 0x06001C04
 	add r0, r4, #0x88
 	mov r2, #0
 	str r5, [r1, #4]
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 _06001C38:
 	cmp r0, #0
 	bne _06001C78
@@ -2168,7 +2168,7 @@ _06001C38:
 	ldr r0, [r0, #0x54c]
 	cmp r0, #0
 	beq _06001C78
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #8
@@ -2177,7 +2177,7 @@ _06001C38:
 	strh r1, [r0, #4]
 	mov r1, #0x2b
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06001C78:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
@@ -2193,7 +2193,7 @@ WmspMaMultiPollAckAlarmCallback: ; 0x06001C84
 	ldr r0, [r1, #0x544]
 	ldr r1, [r1, #0x548]
 	ldr r5, _06001D10 ; =0x060188A4
-	bl sub_06001D1C
+	bl __VENEER_OS_AllocFromHeap
 	mov r4, r0
 	ldr r1, _06001D14 ; =0x00000185
 	ldr r0, _06001D18 ; =0x060188CC
@@ -2201,7 +2201,7 @@ WmspMaMultiPollAckAlarmCallback: ; 0x06001C84
 	mov r2, #0
 	mov r1, r4
 	strh r2, [r4, #0xe]
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 	cmp r0, #0
 	bne _06001D04
 	mov r0, r4
@@ -2210,7 +2210,7 @@ WmspMaMultiPollAckAlarmCallback: ; 0x06001C84
 	ldr r0, [r0, #0x54c]
 	cmp r0, #0
 	beq _06001D04
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r2, #0x80
 	strh r2, [r0]
 	mov r1, #8
@@ -2218,7 +2218,7 @@ WmspMaMultiPollAckAlarmCallback: ; 0x06001C84
 	mov r1, #0x16
 	strh r1, [r0, #4]
 	strh r2, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06001D04:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
@@ -2229,12 +2229,12 @@ _06001D14: .word 0x00000185
 _06001D18: .word 0x060188CC
 	arm_func_end WmspMaMultiPollAckAlarmCallback
 
-	arm_func_start sub_06001D1C
-sub_06001D1C: ; 0x06001D1C
+	arm_func_start __VENEER_OS_AllocFromHeap
+__VENEER_OS_AllocFromHeap: ; 0x06001D1C
 	ldr pc, _06001D20 ; =OS_AllocFromHeap
 	.align 2, 0
 _06001D20: .word OS_AllocFromHeap
-	arm_func_end sub_06001D1C
+	arm_func_end __VENEER_OS_AllocFromHeap
 
 	arm_func_start WmspMPChildIntervalAlarmCallback
 WmspMPChildIntervalAlarmCallback: ; 0x06001D24
@@ -2260,7 +2260,7 @@ WmspKickMPChild: ; 0x06001D30
 	mov r3, #0x2c
 	add r0, r4, #0x88
 	str r3, [r1]
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 	mov r2, r0
 _06001D70:
 	cmp r2, #0
@@ -2269,7 +2269,7 @@ _06001D70:
 	ldr r0, [r0, #0x54c]
 	cmp r0, #0
 	beq _06001DB0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #8
@@ -2278,7 +2278,7 @@ _06001D70:
 	strh r1, [r0, #4]
 	mov r1, #0x2c
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06001DB0:
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -2291,9 +2291,9 @@ _06001DBC: .word 0x060188A4
 WMSP_InitAlarm: ; 0x06001DC0
 	stmdb sp!, {r3, lr}
 	ldr r0, _06001DDC ; =0x0380AD6C
-	bl sub_06001DE4
+	bl __VENEER_OS_CreateAlarm
 	ldr r0, _06001DE0 ; =0x0380AD40
-	bl sub_06001DE4
+	bl __VENEER_OS_CreateAlarm
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
@@ -2301,20 +2301,20 @@ _06001DDC: .word 0x0380AD6C
 _06001DE0: .word 0x0380AD40
 	arm_func_end WMSP_InitAlarm
 
-	arm_func_start sub_06001DE4
-sub_06001DE4: ; 0x06001DE4
+	arm_func_start __VENEER_OS_CreateAlarm
+__VENEER_OS_CreateAlarm: ; 0x06001DE4
 	ldr pc, _06001DE8 ; =OS_CreateAlarm
 	.align 2, 0
 _06001DE8: .word OS_CreateAlarm
-	arm_func_end sub_06001DE4
+	arm_func_end __VENEER_OS_CreateAlarm
 
 	arm_func_start WMSP_CancelAllAlarms
 WMSP_CancelAllAlarms: ; 0x06001DEC
 	stmdb sp!, {r3, lr}
 	ldr r0, _06001E08 ; =0x0380AD6C
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	ldr r0, _06001E0C ; =0x0380AD40
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
@@ -2337,11 +2337,11 @@ _06001E34:
 	mov r1, r7
 	mov r2, fp
 	add r0, r8, #0x88
-	bl sub_0600028C
+	bl __VENEER_OS_ReceiveMessage
 	ldr r0, [sp]
 	cmp r0, #0
 	bne _06001E58
-	bl sub_06001AEC
+	bl __VENEER_OS_ExitThread
 	b _06001EA0
 _06001E58:
 	ldrh sl, [r0]
@@ -2450,18 +2450,18 @@ WMSP_WL_MlmeScan: ; 0x06001F6C
 	mov r2, #6
 	mov r6, r3
 	strh r5, [r4, #0xe]
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0x18
 	mov r2, #0x20
 	strh r6, [r4, #0x16]
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r2, [sp, #0x1c]
 	ldr r0, [sp, #0x20]
 	add r1, r4, #0x3a
 	strh r2, [r4, #0x38]
 	mov r2, #0x10
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [sp, #0x24]
 	mov r0, r7, lsr #1
 	strh r1, [r4, #0x4a]
@@ -2500,7 +2500,7 @@ WMSP_WL_MlmeJoin: ; 0x06002024
 	strh r3, [r4, #0x12]
 	add r1, r4, #0x14
 	mov r2, #0x44
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [r4, #0xe]
 	ldrh r0, [r4, #0xc]
 	add r5, r4, r1, lsl #1
@@ -2534,7 +2534,7 @@ WMSP_WL_MlmeAuthenticate: ; 0x0600209C
 	add r1, r4, #0x10
 	mov r2, #6
 	mov r5, r3
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	strh r6, [r4, #0x16]
 	strh r5, [r4, #0x18]
 	ldrh r1, [r4, #0xe]
@@ -2569,7 +2569,7 @@ WMSP_WL_MlmeDeAuthenticate: ; 0x0600211C
 	strh r3, [r4, #0xe]
 	add r1, r4, #0x10
 	mov r2, #6
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	strh r5, [r4, #0x16]
 	ldrh r1, [r4, #0xe]
 	ldrh r0, [r4, #0xc]
@@ -2603,7 +2603,7 @@ WMSP_WL_MlmeAssociate: ; 0x06002194
 	strh r1, [r4, #0xe]
 	add r1, r4, #0x10
 	mov r5, r3
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	strh r6, [r4, #0x16]
 	strh r5, [r4, #0x18]
 	ldrh r1, [r4, #0xe]
@@ -2643,7 +2643,7 @@ WMSP_WL_MlmeStart: ; 0x06002210
 	add r1, r4, #0x12
 	mov r2, #0x20
 	mov r5, r3
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [sp, #0x10]
 	strh r5, [r4, #0x32]
 	ldrh r0, [sp, #0x14]
@@ -2657,7 +2657,7 @@ WMSP_WL_MlmeStart: ; 0x06002210
 	ldr r0, [sp, #0x24]
 	strh r2, [r4, #0x3c]
 	add r1, r4, #0x3e
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [r4, #0xe]
 	ldrh r0, [r4, #0xc]
 	add r5, r4, r1, lsl #1
@@ -2693,7 +2693,7 @@ WMSP_WL_MlmeMeasureChannel: ; 0x060022D0
 	strh r3, [r4, #0x16]
 	add r1, r4, #0x18
 	mov r2, #0x10
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [r4, #0xe]
 	ldrh r0, [r4, #0xc]
 	add r5, r4, r1, lsl #1
@@ -2726,7 +2726,7 @@ WMSP_WL_MaData: ; 0x06002350
 	strh r1, [r4, #0xe]
 	add r1, r4, #0x10
 	mov r2, #0x30
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	mov r0, #0
 	strh r0, [r5, #2]
 	strh r0, [r5, #4]
@@ -2953,7 +2953,7 @@ WMSP_WL_ParamSetSsidMask: ; 0x06002660
 	strh r1, [r4, #0xe]
 	add r1, r4, #0x10
 	mov r2, #0x20
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [r4, #0xe]
 	ldrh r0, [r4, #0xc]
 	add r5, r4, r1, lsl #1
@@ -3162,7 +3162,7 @@ WMSP_WL_ParamSetGameInfo: ; 0x06002908
 	strh r1, [r4, #0x10]
 	mov r2, r1
 	add r1, r4, #0x12
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [r4, #0xe]
 	ldrh r0, [r4, #0xc]
 	add r5, r4, r1, lsl #1
@@ -3370,7 +3370,7 @@ WMSP_Initialize: ; 0x06002B40
 	bl WMSPi_CommonWlIdle
 	cmp r0, #0
 	bne _06002BB0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0
 	strh r1, [r0]
 	mov r1, #1
@@ -3379,17 +3379,17 @@ WMSP_Initialize: ; 0x06002B40
 	strh r1, [r0, #4]
 	ldrh r1, [sp]
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06002BD0
 _06002BB0:
 	ldr r0, [r4]
 	mov r1, #2
 	strh r1, [r0]
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0
 	strh r1, [r0]
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06002BD0:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, lr}
@@ -3405,7 +3405,7 @@ WMSP_Reset: ; 0x06002BE0
 	ldr r0, _06002FAC ; =0x060198A4
 	mov r4, #0
 	ldr r8, [r0, #0x550]
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldr r1, [r8, #0xc]
 	mov r5, r0
 	cmp r1, #1
@@ -3449,7 +3449,7 @@ _06002C74:
 	str r1, [r8, #0x1c]
 	mov r0, r5
 	strh r1, [r8, #0xc2]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	cmp r4, #0
 	beq _06002CAC
 	ldr r0, _06002FB0 ; =0x0000FFFF
@@ -3484,7 +3484,7 @@ _06002D08:
 	add r0, r8, #0x128
 	mov r1, #0
 	mov r2, #0x5a
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	add r0, sp, #0x10
 	bl WMSP_WL_DevGetStationState
 	ldrh r1, [r0, #4]
@@ -3541,7 +3541,7 @@ _06002DB8:
 	add r1, sp, #0xa
 	add r0, r0, #0x100
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov r6, #0
 	add r5, sp, #0xa
 	mov r4, #3
@@ -3574,7 +3574,7 @@ _06002E3C:
 	add r0, sp, #4
 	mov r1, #0xff
 	mov r2, #6
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	add r1, sp, #4
 	add r0, sp, #0x10
 	mov r2, #3
@@ -3662,12 +3662,12 @@ _06002F78:
 	bl WmspError_06002FC0
 	b _06002FA0
 _06002F88:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #1
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06002FA0:
 	add sp, sp, #0x210
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -3685,13 +3685,13 @@ WmspError_06002FC0: ; 0x06002FC0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #1
 	strh r1, [r0]
 	strh r1, [r0, #2]
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end WmspError_06002FC0
@@ -3705,12 +3705,12 @@ WMSP_End: ; 0x06002FF0
 	ldrh r0, [r4]
 	cmp r0, #2
 	beq _06003028
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #2
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06003090
 _06003028:
 	add r0, sp, #0
@@ -3718,7 +3718,7 @@ _06003028:
 	ldrh r5, [r0, #4]
 	cmp r5, #0
 	beq _06003064
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r2, #2
 	mov r1, #1
 	strh r2, [r0]
@@ -3726,20 +3726,20 @@ _06003028:
 	add r1, r1, #0x300
 	strh r1, [r0, #4]
 	strh r5, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06003090
 _06003064:
 	mov r0, #1
 	strh r0, [r4]
-	bl sub_060030A0
+	bl __VENEER_PM_SetLEDPattern
 	mov r0, #0
 	strh r0, [r4]
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #2
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06003090:
 	add sp, sp, #0x200
 	ldmia sp!, {r3, r4, r5, lr}
@@ -3748,12 +3748,12 @@ _06003090:
 _0600309C: .word 0x060198A4
 	arm_func_end WMSP_End
 
-	arm_func_start sub_060030A0
-sub_060030A0: ; 0x060030A0
+	arm_func_start __VENEER_PM_SetLEDPattern
+__VENEER_PM_SetLEDPattern: ; 0x060030A0
 	ldr pc, _060030A4 ; =PM_SetLEDPattern
 	.align 2, 0
 _060030A4: .word PM_SetLEDPattern
-	arm_func_end sub_060030A0
+	arm_func_end __VENEER_PM_SetLEDPattern
 
 	arm_func_start WMSP_SetParentParam
 WMSP_SetParentParam: ; 0x060030A8
@@ -3764,19 +3764,19 @@ WMSP_SetParentParam: ; 0x060030A8
 	ldr r4, [r1, #0x550]
 	mov r2, #0x40
 	add r1, r4, #0xe8
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r0, r4, #0x100
 	ldrh r1, [r0, #0x1a]
 	ldrh r0, [r0, #0xf4]
 	mov r2, #1
 	tst r0, r2, lsl r1
 	bne _060030FC
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #7
 	strh r1, [r0]
 	mov r1, #6
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06003154
 _060030FC:
 	ldrh r1, [r4, #0xf8]
@@ -3785,7 +3785,7 @@ _060030FC:
 	ldrh r4, [r0, #4]
 	cmp r4, #0
 	beq _0600313C
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #7
 	strh r1, [r0]
 	mov r2, #1
@@ -3793,15 +3793,15 @@ _060030FC:
 	strh r2, [r0, #2]
 	strh r1, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06003154
 _0600313C:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #7
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06003154:
 	add sp, sp, #0x200
 	ldmia sp!, {r4, lr}
@@ -3825,14 +3825,14 @@ WMSP_StartParent: ; 0x06003168
 	tst r1, #1
 	beq _060031B8
 _06003194:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #8
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
 	mov r1, #0
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060033E0
 _060031B8:
 	add r1, r4, #0x100
@@ -3843,25 +3843,25 @@ _060031B8:
 	ldr r6, [r0, #4]
 	tst ip, r2, asr #1
 	bne _060031FC
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #8
 	strh r1, [r0]
 	mov r1, #6
 	strh r1, [r0, #2]
 	mov r1, #0
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060033E0
 _060031FC:
 	strh r3, [r4, #0xe6]
 	mov r0, #0
 	strh r0, [r1, #0x88]
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	add r1, r4, #0x100
 	mov r2, #0
 	strh r2, [r1, #0x82]
 	strh r2, [r4, #0x86]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	mov r1, r5
 	add r2, r4, #0x100
 	mov r3, #1
@@ -3901,14 +3901,14 @@ _060032A0:
 	mov r0, #0
 	mov r2, #0x80
 	add r6, r4, #0xe8
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	add r0, sp, #0x38
 	mov r1, r6
 	bl WMSP_CopyParentParam
 	add r1, sp, #0x18
 	mov r0, #0
 	mov r2, #0x20
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldr r1, [r6, #8]
 	mov r0, r5
 	strh r1, [sp, #0x18]
@@ -3962,7 +3962,7 @@ _0600335C:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl WMSP_SetChildMaxSize
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #7
 	strh r1, [r4]
 	mov r1, #8
@@ -3974,7 +3974,7 @@ _0600335C:
 	strh r1, [r0, #0x2c]
 	ldrh r1, [r4, #0x32]
 	strh r1, [r0, #0x2e]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	mov r0, #1
 	strh r0, [r4, #0xc2]
 _060033E0:
@@ -3991,7 +3991,7 @@ WmspError_060033F4: ; 0x060033F4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #8
 	strh r1, [r0]
 	mov r1, #1
@@ -4000,7 +4000,7 @@ WmspError_060033F4: ; 0x060033F4
 	strh r1, [r0, #8]
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end WmspError_060033F4
@@ -4014,12 +4014,12 @@ WMSP_EndParent: ; 0x06003430
 	ldrh r0, [sl]
 	cmp r0, #7
 	beq _06003468
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #9
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060035E0
 _06003468:
 	mov r0, #0
@@ -4036,7 +4036,7 @@ _06003474:
 	mov r2, #6
 	mla r0, r1, r2, r0
 	add r1, sp, #0
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov sb, #0
 	add r6, sp, #8
 	add r5, sp, #0
@@ -4058,7 +4058,7 @@ _060034E0:
 	cmp sb, #2
 	blt _060034B4
 _060034E8:
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	add r1, sl, #0x100
 	ldrh r2, [r1, #0x82]
 	tst r2, r7, lsl r8
@@ -4073,7 +4073,7 @@ _060034E8:
 	mov r2, #0
 	str r2, [r1, #0x738]
 	str r2, [r1, #0x73c]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	mov r0, r8, lsl #0x10
 	mov r1, r0, lsr #0x10
 	add r2, sp, #0
@@ -4081,7 +4081,7 @@ _060034E8:
 	bl WMSP_IndicateDisconnectionFromMyself
 	b _06003544
 _06003540:
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 _06003544:
 	add r8, r8, #1
 	cmp r8, #0x10
@@ -4116,14 +4116,14 @@ _060035A0:
 	strh r1, [r0, #0x96]
 	add r0, sl, #0x19c
 	mov r2, #0x50
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	bl WMSP_ResetSizeVars
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #9
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _060035E0:
 	add sp, sp, #0x208
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
@@ -4138,14 +4138,14 @@ WmspError_060035F4: ; 0x060035F4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #9
 	strh r1, [r0]
 	mov r1, #1
 	strh r1, [r0, #2]
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end WmspError_060035F4
@@ -4162,14 +4162,14 @@ WMSP_StartScan: ; 0x06003628
 	cmpne r1, #3
 	cmpne r1, #5
 	beq _06003674
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xa
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
 	mov r1, #4
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _0600396C
 _06003674:
 	ldr r1, [r0, #4]
@@ -4181,7 +4181,7 @@ _06003674:
 	ldrh r6, [r0, #8]
 	add r0, r0, #0xa
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r1, [sp, #0x10]
 	ldr r0, _0600397C ; =0x0000FFFF
 	cmp r1, r0
@@ -4192,14 +4192,14 @@ _06003674:
 _060036B8:
 	cmp r5, #0
 	bne _060036E4
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xa
 	strh r1, [r0]
 	mov r1, #6
 	strh r1, [r0, #2]
 	mov r1, #4
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _0600396C
 _060036E4:
 	add r0, r7, #0x100
@@ -4207,14 +4207,14 @@ _060036E4:
 	mov r1, #1
 	tst r0, r1, lsl r5
 	bne _0600371C
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xa
 	strh r1, [r0]
 	mov r1, #6
 	strh r1, [r0, #2]
 	mov r1, #4
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _0600396C
 _0600371C:
 	mov r0, #2
@@ -4268,12 +4268,12 @@ _060037C4:
 	strh r3, [r7]
 	add r1, sp, #0x26
 	mov r2, #0x20
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	add r0, sp, #0x17
 	mov r1, #0
 	mov r2, #0xf
 	strb r5, [sp, #0x16]
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	add r1, sp, #0x26
 	str r1, [sp]
 	mov r1, #1
@@ -4295,7 +4295,7 @@ _060037C4:
 	bl WmspError_06003ED4
 	b _0600396C
 _06003840:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	ldrh r1, [r4, #8]
 	mov r6, r0
 	cmp r1, #0
@@ -4314,12 +4314,12 @@ _06003878:
 	mov r0, #0
 	add r1, r1, #0x40
 	mov r2, #0x80
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldrh r2, [r4, #0xa]
 	ldr r1, [r7, #0x184]
 	add r0, r4, #0xa
 	mov r2, r2, lsl #1
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov r0, #0xa
 	strh r0, [r6]
 	mov r0, #0
@@ -4341,11 +4341,11 @@ _06003878:
 	strh r1, [r6, #0x14]
 	add r1, r6, #0xa
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r0, r4, #0x16
 	add r1, r6, #0x16
 	mov r2, #0x20
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r0, [r4, #0x46]
 	strh r0, [r6, #0x36]
 	cmp r0, #0x80
@@ -4363,16 +4363,16 @@ _0600393C:
 	add r1, r6, #0x38
 	mov r0, #0
 	mov r2, #0x80
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldrh r1, [r6, #0x36]
 	add r0, r4, #0x4a
 	add r2, r1, #1
 	add r1, r6, #0x38
 	bic r2, r2, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 _06003964:
 	mov r0, r6
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _0600396C:
 	add sp, sp, #0x248
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
@@ -4418,14 +4418,14 @@ WMSP_StartScanEx: ; 0x060039B8
 	cmpne r0, #3
 	cmpne r0, #5
 	beq _06003A08
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x26
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
 	mov r1, #4
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06003EA8
 _06003A08:
 	ldr r0, [sb, #4]
@@ -4438,7 +4438,7 @@ _06003A08:
 	add r0, sb, #0xc
 	str r3, [sp, #0x10]
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r5, [sb, #0x12]
 	ldrh fp, [sb, #0x36]
 	cmp r5, #2
@@ -4461,7 +4461,7 @@ _06003A6C:
 	add r0, sb, #0x16
 	mov r2, #0x20
 	ldrh r4, [sb, #0x14]
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r1, [sp, #0x18]
 	ldr r0, _06003EBC ; =0x0000FFFF
 	ldrh r7, [sb, #8]
@@ -4489,14 +4489,14 @@ _06003AA0:
 	cmp r0, #0x40
 	bhs _06003B08
 _06003AE4:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x26
 	strh r1, [r0]
 	mov r1, #6
 	strh r1, [r0, #2]
 	mov r1, #4
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06003EA8
 _06003B08:
 	mov r0, #2
@@ -4590,13 +4590,13 @@ _06003C40:
 	add r0, sp, #0x2e
 	mov r1, #0xff
 	mov r2, #0x20
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	cmp fp, #0x20
 	bhi _06003C70
 	add r0, sp, #0x2e
 	mov r2, fp
 	mov r1, #0
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 _06003C70:
 	add r1, sp, #0x2e
 	add r0, sp, #0x70
@@ -4615,7 +4615,7 @@ _06003C98:
 	mov r1, r6
 	mov r2, #0x10
 	strh r3, [r8]
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	mov r3, #1
 	add r1, sp, #0x1e
 	mov r2, r3
@@ -4632,7 +4632,7 @@ _06003CC0:
 	blo _06003CC0
 	sub r0, r7, #0x40
 	mov r1, #0x42
-	bl sub_06003ECC
+	bl __VENEER__u32_div_f
 	add r2, sp, #0x4e
 	stmia sp, {r2, r5}
 	add r1, sp, #0x1e
@@ -4654,7 +4654,7 @@ _06003CC0:
 	bl WmspError_06003ED4
 	b _06003EA8
 _06003D44:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	ldrh r1, [r5, #8]
 	mov r6, r0
 	cmp r1, #0
@@ -4675,7 +4675,7 @@ _06003D80:
 	mov r1, sb
 	mov r0, #0
 	add r8, r5, #0xa
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	mov r7, #0
 	b _06003E6C
 _06003DA0:
@@ -4685,7 +4685,7 @@ _06003DA0:
 	mov fp, r1, lsr #0x10
 	mov r1, sb
 	mov r2, fp
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	cmp r4, #0
 	beq _06003E28
 	ldrh r2, [sb, #0xa]
@@ -4715,7 +4715,7 @@ _06003E0C:
 	add r1, sb, #0xc
 	mov r2, #0x20
 	strh r4, [sb, #0xa]
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 _06003E28:
 	add r0, r6, r7, lsl #2
 	str sb, [r0, #0x10]
@@ -4750,7 +4750,7 @@ _06003E6C:
 	strh r0, [r6, #0xa]
 _06003EA0:
 	mov r0, r6
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06003EA8:
 	add sp, sp, #0xc8
 	add sp, sp, #0x400
@@ -4764,12 +4764,12 @@ _06003EC4: .word 0x0000020E
 _06003EC8: .word 0x0000020D
 	arm_func_end WMSP_StartScanEx
 
-	arm_func_start sub_06003ECC
-sub_06003ECC: ; 0x06003ECC
+	arm_func_start __VENEER__u32_div_f
+__VENEER__u32_div_f: ; 0x06003ECC
 	ldr pc, _06003ED0 ; =_u32_div_f
 	.align 2, 0
 _06003ED0: .word _u32_div_f
-	arm_func_end sub_06003ECC
+	arm_func_end __VENEER__u32_div_f
 
 	arm_func_start WmspError_06003ED4
 WmspError_06003ED4: ; 0x06003ED4
@@ -4777,7 +4777,7 @@ WmspError_06003ED4: ; 0x06003ED4
 	mov r4, r2
 	mov r6, r0
 	mov r5, r1
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	cmp r4, #0
 	movne r1, #0x26
 	moveq r1, #0xa
@@ -4788,7 +4788,7 @@ WmspError_06003ED4: ; 0x06003ED4
 	strh r1, [r0, #8]
 	strh r6, [r0, #4]
 	strh r5, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	arm_func_end WmspError_06003ED4
@@ -4803,12 +4803,12 @@ WMSP_EndScan: ; 0x06003F1C
 	ldrh r0, [r5]
 	cmp r0, #5
 	beq _06003F58
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xb
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06003FD8
 _06003F58:
 	mov r0, r4
@@ -4840,12 +4840,12 @@ _06003FB4:
 	mov r1, #1
 	strh r1, [r0, #0xee]
 _06003FC0:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xb
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06003FD8:
 	add sp, sp, #0x200
 	ldmia sp!, {r3, r4, r5, lr}
@@ -4861,14 +4861,14 @@ WmspError_06003FF0: ; 0x06003FF0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xb
 	strh r1, [r0]
 	mov r1, #1
 	strh r1, [r0, #2]
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end WmspError_06003FF0
@@ -4889,34 +4889,34 @@ WMSP_StartConnectEx: ; 0x06004024
 	tst r0, #1
 	beq _0600407C
 _06004058:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xc
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
 	mov r1, #6
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060045A8
 _0600407C:
 	ldr r0, [r6, #4]
 	add r1, r5, #0x10
 	mov r2, #0xc0
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r0, [r5, #0x4c]
 	cmp r0, #0x10
 	blo _060040C8
 	ldrb r0, [r5, #0x5b]
 	tst r0, #1
 	bne _060040C8
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xc
 	strh r1, [r0]
 	mov r1, #0xb
 	strh r1, [r0, #2]
 	mov r1, #6
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060045A8
 _060040C8:
 	ldrh r1, [r5, #0x46]
@@ -4930,23 +4930,23 @@ _060040C8:
 	tst r0, r1, asr #1
 	bne _06004110
 _060040F0:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xc
 	strh r1, [r0]
 	mov r1, #6
 	strh r1, [r0, #2]
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060045A8
 _06004110:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xc
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
 	mov r1, #6
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	add r0, r7, #0x100
 	ldrh r1, [r0, #0xec]
 	cmp r1, #1
@@ -4999,7 +4999,7 @@ _060041D4:
 	moveq r0, #1
 	beq _060041FC
 	ldr r0, _060045BC ; =0x00002710
-	bl sub_060045C8
+	bl __VENEER__s32_div_f
 	add r0, r0, #1
 _060041FC:
 	mov r0, r0, lsl #0x10
@@ -5050,7 +5050,7 @@ _060042A0:
 	add r1, sp, #0xc
 	add r0, r5, #0x10
 	mov r2, #0x40
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r0, [r7, #0xe6]
 	cmp r0, #2
 	bne _060042FC
@@ -5068,7 +5068,7 @@ _060042A0:
 	mov r2, #0x18
 	strh ip, [sp, #0x1c]
 	strh r3, [sp, #0x1e]
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 _060042FC:
 	add r2, sp, #0xc
 	mov r0, r4
@@ -5088,12 +5088,12 @@ _06004330:
 	add r0, r0, #8
 	add r1, r1, #0x100
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r0, r7, #0x8a
 	add r1, sp, #6
 	add r0, r0, #0x100
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r2, [r6, #0x26]
 	add r1, sp, #6
 	mov r0, r4
@@ -5104,13 +5104,13 @@ _06004330:
 	ldreqh r2, [r0, #6]
 	cmpeq r2, #0x13
 	bne _060043A0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xc
 	strh r1, [r0]
 	strh r1, [r0, #2]
 	mov r1, #6
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060045A8
 _060043A0:
 	cmp r1, #0
@@ -5126,28 +5126,28 @@ _060043C0:
 	add r1, sp, #0
 	add r0, r0, #0x100
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r1, sp, #0
 	mov r0, r4
 	mov r2, #1
 	mov r3, #0x7d0
 	bl WMSP_WL_MlmeAssociate
 	mov r4, r0
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldrh r2, [r4, #4]
 	mov r6, r0
 	cmp r2, #0xc
 	ldreqh r1, [r4, #6]
 	cmpeq r1, #0x13
 	bne _0600442C
-	bl sub_06000740
-	bl sub_06000294
+	bl __VENEER_OS_RestoreInterrupts
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xc
 	strh r1, [r0]
 	strh r1, [r0, #2]
 	mov r1, #6
 	strh r1, [r0, #8]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060045A8
 _0600442C:
 	cmp r2, #0
@@ -5155,7 +5155,7 @@ _0600442C:
 	cmpeq r0, #0
 	beq _06004458
 	mov r0, r6
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	ldrh r1, [r4, #4]
 	ldrh r2, [r4, #6]
 	mov r0, #6
@@ -5170,7 +5170,7 @@ _06004458:
 	strh r0, [r7, #0xba]
 	mov r0, #1
 	mov r2, #0x10
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldrh r0, [r5, #0x12]
 	and r0, r0, #0xff
 	tst r0, #2
@@ -5182,7 +5182,7 @@ _06004458:
 	strh r0, [r7, #0xbc]
 	mov r0, r4
 	bl WMSP_FillRssiIntoList
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	add r1, r7, #0x100
 	mov r2, #1
 	strh r2, [r1, #0x82]
@@ -5193,7 +5193,7 @@ _06004458:
 	mov r4, r0
 	cmpeq r2, #0
 	beq _060044E8
-	bl sub_06001AFC
+	bl __VENEER_OS_GetTick
 	orr r0, r0, #1
 	str r0, [r7, #0x738]
 	orr r0, r1, #0
@@ -5220,10 +5220,10 @@ _060044E8:
 	mov r0, r0, lsr #0x10
 	bl WMSP_SetChildMaxSize
 	mov r0, r4
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	mov r0, #1
 	strh r0, [r7, #0xc2]
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r0, #0xc
 	strh r0, [r4]
@@ -5238,15 +5238,15 @@ _060044E8:
 	add r0, r1, #0x100
 	add r1, r4, #0x10
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r1, [r7, #0x30]
 	mov r0, r4
 	strh r1, [r4, #0x16]
 	ldrh r1, [r7, #0x32]
 	strh r1, [r4, #0x18]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	mov r0, r6
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 _060045A8:
 	add sp, sp, #0x250
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
@@ -5259,12 +5259,12 @@ _060045C0: .word 0x0000020B
 _060045C4: .word 0x00000303
 	arm_func_end WMSP_StartConnectEx
 
-	arm_func_start sub_060045C8
-sub_060045C8: ; 0x060045C8
+	arm_func_start __VENEER__s32_div_f
+__VENEER__s32_div_f: ; 0x060045C8
 	ldr pc, _060045CC ; =_s32_div_f
 	.align 2, 0
 _060045CC: .word _s32_div_f
-	arm_func_end sub_060045C8
+	arm_func_end __VENEER__s32_div_f
 
 	arm_func_start WmspError_060045D0
 WmspError_060045D0: ; 0x060045D0
@@ -5272,7 +5272,7 @@ WmspError_060045D0: ; 0x060045D0
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xc
 	strh r1, [r0]
 	mov r1, #1
@@ -5280,7 +5280,7 @@ WmspError_060045D0: ; 0x060045D0
 	strh r6, [r0, #4]
 	strh r5, [r0, #6]
 	strh r4, [r0, #0xe]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	arm_func_end WmspError_060045D0
@@ -5297,7 +5297,7 @@ WMSP_Disconnect: ; 0x0600460C
 	bl WMSP_DisconnectCore
 	cmp r0, #1
 	bne _06004658
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xd
 	strh r1, [r0]
 	mov r1, #0
@@ -5305,7 +5305,7 @@ WMSP_Disconnect: ; 0x0600460C
 	strh r4, [r0, #8]
 	ldrh r1, [sp]
 	strh r1, [r0, #0xa]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06004658:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, lr}
@@ -5342,16 +5342,16 @@ _060046C4:
 	cmp r1, #0xa
 	cmpne r1, #8
 	bne _06004780
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	add r1, r7, #0x100
 	ldrh r1, [r1, #0x82]
 	mov r4, r0
 	cmp r1, #0
 	bne _06004728
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	cmp sl, #0
 	bne _06004720
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xd
 	strh r1, [r0]
 	mov r1, #3
@@ -5361,7 +5361,7 @@ _060046C4:
 	strh r1, [r0, #6]
 	strh r8, [r0, #8]
 	strh r1, [r0, #0xa]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06004720:
 	mov r0, #0
 	b _06004BDC
@@ -5387,12 +5387,12 @@ _06004758:
 	str r1, [r7, #0x10]
 	mov r0, r4
 	str r1, [r7, #0x1c]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	b _060047BC
 _06004780:
 	cmp sl, #0
 	bne _060047B4
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xd
 	strh r1, [r0]
 	mov r1, #3
@@ -5402,7 +5402,7 @@ _06004780:
 	strh r1, [r0, #6]
 	strh r8, [r0, #8]
 	strh r1, [r0, #0xa]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _060047B4:
 	mov r0, #0
 	b _06004BDC
@@ -5415,7 +5415,7 @@ _060047BC:
 	add r1, sp, #0x1a
 	add r0, r0, #0x100
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov sb, #0
 	add r6, sp, #0x1a
 	mov r4, #3
@@ -5525,11 +5525,11 @@ _06004930:
 	add r0, r7, #0x19c
 	mov r2, #0x50
 	strh r1, [r3, #0x96]
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	bl WMSP_ResetSizeVars
 	cmp sl, #1
 	bne _060049C0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r0, #0xc
 	strh r0, [r4]
@@ -5545,13 +5545,13 @@ _06004930:
 	add r0, sp, #0x1a
 	strh r1, [r4, #0xa]
 	add r1, r4, #0x10
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r1, [r7, #0x30]
 	mov r0, r4
 	strh r1, [r4, #0x16]
 	ldrh r1, [r7, #0x32]
 	strh r1, [r4, #0x18]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060049D0
 _060049C0:
 	mov r0, #0
@@ -5588,7 +5588,7 @@ _060049EC:
 	ldr r0, [sp, #0x10]
 	add r0, r1, r0
 	add r1, sp, #0x14
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov r4, #0
 	b _06004AB0
 _06004A48:
@@ -5626,7 +5626,7 @@ _06004AB0:
 	cmp r4, #2
 	blt _06004A48
 _06004AB8:
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	mov r4, r0
 	add r1, r7, #0x100
 	ldrh r3, [r1, #0x82]
@@ -5652,12 +5652,12 @@ _06004AB8:
 	str r1, [r2, #0x738]
 	str r1, [r2, #0x73c]
 	mov r2, #6
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	mov r0, r4
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	cmp sl, #1
 	bne _06004B90
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r0, #8
 	strh r0, [r4]
@@ -5672,13 +5672,13 @@ _06004AB8:
 	mov r2, #6
 	strh r0, [r4, #0x10]
 	add r0, sp, #0x14
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r1, [r7, #0x30]
 	mov r0, r4
 	strh r1, [r4, #0x2c]
 	ldrh r1, [r7, #0x32]
 	strh r1, [r4, #0x2e]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06004BA4
 _06004B90:
 	mov r0, r6, lsl #0x10
@@ -5694,7 +5694,7 @@ _06004BA4:
 	bl WMSP_CleanSendQueue
 	b _06004BC0
 _06004BBC:
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 _06004BC0:
 	add r6, r6, #1
 _06004BC4:
@@ -5722,7 +5722,7 @@ WMSP_IndicateDisconnectionFromMyself: ; 0x06004BF0
 	ldr r5, [r3, #0x550]
 	mov r7, r1
 	mov r6, r2
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r0, #0
 	strh r0, [r4, #2]
@@ -5738,7 +5738,7 @@ WMSP_IndicateDisconnectionFromMyself: ; 0x06004BF0
 	strh r0, [r4, #0x12]
 	strh r7, [r4, #0x10]
 	mov r0, r6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r0, [r5, #0x30]
 	strh r0, [r4, #0x2c]
 	ldrh r0, [r5, #0x32]
@@ -5755,14 +5755,14 @@ _06004C60:
 	mov r0, r6
 	strh r1, [r4, #0xa]
 	add r1, r4, #0x10
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldrh r0, [r5, #0x30]
 	strh r0, [r4, #0x16]
 	ldrh r0, [r5, #0x32]
 	strh r0, [r4, #0x18]
 _06004C9C:
 	mov r0, r4
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
@@ -5777,7 +5777,7 @@ WmspError_06004CB4: ; 0x06004CB4
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xd
 	strh r1, [r0]
 	mov r1, #1
@@ -5786,7 +5786,7 @@ WmspError_06004CB4: ; 0x06004CB4
 	strh r6, [r0, #6]
 	strh r5, [r0, #8]
 	strh r4, [r0, #0xa]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	arm_func_end WmspError_06004CB4
@@ -5798,7 +5798,7 @@ WmspIndError: ; 0x06004CF8
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x25
 	strh r1, [r0]
 	mov r1, #1
@@ -5807,7 +5807,7 @@ WmspIndError: ; 0x06004CF8
 	strh r6, [r0, #6]
 	strh r5, [r0, #8]
 	strh r4, [r0, #0xa]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	arm_func_end WmspIndError
@@ -5864,13 +5864,13 @@ _06004DC0:
 _06004DF0:
 	cmp r7, #0
 	beq _06004E18
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xe
 	strh r1, [r0]
 	strh r7, [r0, #2]
 	mov r1, #0xa
 	strh r1, [r0, #4]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060050B8
 _06004E18:
 	ldr r0, [r8, #0xc]
@@ -5884,7 +5884,7 @@ _06004E18:
 	bl WMSP_CleanSendQueue
 _06004E3C:
 	bl WMSP_InitSendQueue
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	str r0, [sp]
 	add r0, sl, #0x14
 	mov r1, #0
@@ -5896,7 +5896,7 @@ _06004E3C:
 	cmp r0, #9
 	cmpne r0, #0xa
 	beq _06004F30
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	tst r7, #4
 	ldrneh r2, [sl, #0x38]
 	add r1, sb, #0x700
@@ -5943,7 +5943,7 @@ _06004E3C:
 	add r1, sb, #0x700
 	ldreqh r2, [sb, #0x9a]
 	strh r2, [r1, #0xcc]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 _06004F30:
 	ldrh r0, [r8]
 	add r0, r0, #0xf9
@@ -5981,7 +5981,7 @@ _06004F30:
 	rsb r0, r1, #0x10000
 	strh r0, [r8, #0xbe]
 	strh r1, [r8, #0xc0]
-	bl sub_06001AFC
+	bl __VENEER_OS_GetTick
 	orr r1, r1, #0
 	orr r2, r0, #1
 	mov r3, #0
@@ -6005,18 +6005,18 @@ _06004FD0:
 	moveq r0, #9
 	streqh r0, [r8]
 _06005018:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xe
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
 	mov r1, #0xa
 	strh r1, [r0, #4]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	mov r1, #1
 	ldr r0, [sp]
 	str r1, [r8, #0xc]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	add r0, sp, #4
 	mov r1, #1
 	bl WMSP_WL_ParamSetNullKeyResponseMode
@@ -6024,7 +6024,7 @@ _06005018:
 	ldrh r0, [r4, #4]
 	cmp r0, #0
 	beq _060050B8
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r2, #0xe
 	strh r2, [r0]
 	mov r1, #1
@@ -6033,19 +6033,19 @@ _06005018:
 	strh r1, [r0, #4]
 	ldrh r1, [r4, #4]
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060050B8
 _06005090:
 	ldr r0, [sp]
-	bl sub_06000740
-	bl sub_06000294
+	bl __VENEER_OS_RestoreInterrupts
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0xe
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
 	mov r1, #0xa
 	strh r1, [r0, #4]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _060050B8:
 	add sp, sp, #0x204
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -6098,7 +6098,7 @@ WMSP_SetMPData: ; 0x060050D0
 _06005164:
 	cmp r8, #2
 	beq _060051F8
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x81
 	strh r1, [r0]
 	strh r8, [r0, #2]
@@ -6132,7 +6132,7 @@ _06005164:
 	cmp r1, #0
 	movne r3, r2
 	strh r3, [r0, #0x26]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _060051F8:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -6153,15 +6153,15 @@ WMSP_EndMP: ; 0x0600520C
 	cmp r0, #9
 	cmpne r0, #0xa
 	beq _0600524C
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x10
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06005310
 _0600524C:
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldr r1, [r6, #0xc]
 	mov r5, r0
 	mov r0, #0
@@ -6180,7 +6180,7 @@ _0600524C:
 	streqh r0, [r6]
 _06005290:
 	mov r0, r5
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	add r0, sp, #0
 	mov r1, #0
 	bl WMSP_WL_ParamSetNullKeyResponseMode
@@ -6208,12 +6208,12 @@ _060052E0:
 	ldr r0, _06005324 ; =0x0000FFFF
 	bl WMSP_CleanSendQueue
 _060052F8:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x10
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06005310:
 	add sp, sp, #0x200
 	ldmia sp!, {r4, r5, r6, lr}
@@ -6229,14 +6229,14 @@ WmspError_06005328: ; 0x06005328
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x10
 	strh r1, [r0]
 	mov r1, #1
 	strh r1, [r0, #2]
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end WmspError_06005328
@@ -6250,7 +6250,7 @@ WMSP_StartDCF: ; 0x0600535C
 	mov r5, r2, lsl #0x10
 	ldr r6, [r0, #4]
 	mov r7, r5, lsr #0x10
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	str r6, [r4, #0xb0]
 	strh r7, [r4, #0xb8]
 	add r1, r6, r5, lsr #16
@@ -6263,18 +6263,18 @@ WMSP_StartDCF: ; 0x0600535C
 	mov r1, #0xb
 	strh r1, [r4]
 	mov r5, r0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x11
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
 	mov r1, #0xe
 	strh r1, [r0, #4]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	mov r1, #1
 	mov r0, r5
 	str r1, [r4, #0x10]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
@@ -6291,7 +6291,7 @@ WMSP_SetDCFData: ; 0x060053E8
 	add r0, r5, #4
 	add r1, r4, #0xa2
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldr r0, [r5, #0xc]
 	add r1, sp, #0
 	str r0, [r4, #0xa8]
@@ -6301,7 +6301,7 @@ WMSP_SetDCFData: ; 0x060053E8
 	str r0, [r4, #0x18]
 	mov r0, #0
 	mov r2, #0x30
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	mov r0, #0
 	strh r0, [sp]
 	ldr r1, [r5, #0x10]
@@ -6315,18 +6315,18 @@ WMSP_SetDCFData: ; 0x060053E8
 	add r0, r5, #4
 	mov r2, #6
 	strb r3, [sp, #0xe]
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r1, sp, #0x1e
 	add r0, r4, #0xe0
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	ldr r2, [r5, #0xc]
 	add r0, sp, #0x30
 	add r1, sp, #0
 	str r2, [sp, #0x2c]
 	bl WMSP_WL_MaData
 	mov r4, r0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x12
 	strh r1, [r0]
 	ldrh r1, [r4, #4]
@@ -6340,7 +6340,7 @@ WMSP_SetDCFData: ; 0x060053E8
 	strneh r1, [r0, #4]
 	ldrneh r1, [r4, #4]
 	strneh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	add sp, sp, #0x230
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
@@ -6354,31 +6354,31 @@ WMSP_EndDCF: ; 0x060054E0
 	sub sp, sp, #0x200
 	ldr r0, _06005598 ; =0x060198A4
 	ldr r4, [r0, #0x550]
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldrh r1, [r4]
 	cmp r1, #0xb
 	beq _06005520
-	bl sub_06000740
-	bl sub_06000294
+	bl __VENEER_OS_RestoreInterrupts
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x13
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _0600558C
 _06005520:
 	mov r1, #0
 	str r1, [r4, #0x10]
 	mov r1, #8
 	strh r1, [r4]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	add r0, sp, #0
 	mov r1, #7
 	bl WMSP_WL_MaClearData
 	ldrh r4, [r0, #4]
 	cmp r4, #0
 	beq _06005574
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x13
 	strh r1, [r0]
 	mov r1, #1
@@ -6386,15 +6386,15 @@ _06005520:
 	mov r1, #0x104
 	strh r1, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _0600558C
 _06005574:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x13
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _0600558C:
 	add sp, sp, #0x200
 	ldmia sp!, {r4, lr}
@@ -6438,19 +6438,19 @@ _060055F4:
 	bne _06005614
 	ldr r0, [r0, #8]
 	add r1, r3, #0x19c
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	b _06005620
 _06005614:
 	add r0, r3, #0x19c
 	mov r1, #0
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 _06005620:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x14
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
@@ -6494,12 +6494,12 @@ _060056A4:
 	bne _060056C4
 	ldr r0, [r5, #8]
 	add r1, r4, #0x19c
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	b _060056D0
 _060056C4:
 	add r0, r4, #0x19c
 	mov r1, #0
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 _060056D0:
 	ldr r1, [r5, #0xc]
 	add r0, sp, #0
@@ -6509,7 +6509,7 @@ _060056D0:
 	ldrh r4, [r0, #4]
 	cmp r4, #0
 	beq _06005714
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r2, #0x14
 	mov r1, #1
 	strh r2, [r0]
@@ -6517,14 +6517,14 @@ _060056D0:
 	rsb r1, r1, #0x208
 	strh r1, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06005714:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x27
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	add sp, sp, #0x200
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
@@ -6575,7 +6575,7 @@ WMSP_SetGameInfo: ; 0x0600573C
 	mov r1, r1, lsr #0x10
 	bl WMSP_WL_ParamSetGameInfo
 	mov r4, r0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x18
 	strh r1, [r0]
 	ldrh r1, [r4, #4]
@@ -6589,7 +6589,7 @@ WMSP_SetGameInfo: ; 0x0600573C
 	strneh r1, [r0, #4]
 	ldrneh r1, [r4, #4]
 	strneh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	add sp, sp, #0x280
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -6610,7 +6610,7 @@ WMSP_SetBeaconTxRxInd: ; 0x06005830
 	ldrh r4, [r0, #4]
 	cmp r4, #0
 	beq _06005880
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r2, #0x19
 	mov r1, #1
 	strh r2, [r0]
@@ -6618,15 +6618,15 @@ WMSP_SetBeaconTxRxInd: ; 0x06005830
 	add r1, r1, #0x214
 	strh r1, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06005898
 _06005880:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x19
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06005898:
 	add sp, sp, #0x200
 	ldmia sp!, {r4, lr}
@@ -6636,12 +6636,12 @@ _06005898:
 	arm_func_start WMSP_StartTestMode
 WMSP_StartTestMode: ; 0x060058A4
 	stmdb sp!, {r3, lr}
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x1a
 	strh r1, [r0]
 	mov r1, #4
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end WMSP_StartTestMode
@@ -6649,12 +6649,12 @@ WMSP_StartTestMode: ; 0x060058A4
 	arm_func_start WMSP_StopTestMode
 WMSP_StopTestMode: ; 0x060058C8
 	stmdb sp!, {r3, lr}
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x1b
 	strh r1, [r0]
 	mov r1, #4
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end WMSP_StopTestMode
@@ -6680,7 +6680,7 @@ WMSP_SetLifeTime: ; 0x060058EC
 	ldrh r6, [r0, #4]
 	cmp r6, #0
 	beq _06005960
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r2, #0x1d
 	mov r1, #1
 	strh r2, [r0]
@@ -6688,7 +6688,7 @@ WMSP_SetLifeTime: ; 0x060058EC
 	add r1, r1, #0x210
 	strh r1, [r0, #4]
 	strh r6, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060059F8
 _06005960:
 	ldr r0, _06005A08 ; =0x0000FFFF
@@ -6716,7 +6716,7 @@ _060059AC:
 	str r0, [r4, #0x7b8]
 	str r0, [r4, #0x7bc]
 _060059B8:
-	bl sub_06001AFC
+	bl __VENEER_OS_GetTick
 	orr r1, r1, #0
 	orr r2, r0, #1
 	mov r3, #0
@@ -6727,12 +6727,12 @@ _060059C8:
 	str r1, [r0, #0x73c]
 	cmp r3, #0x10
 	blt _060059C8
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x1d
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _060059F8:
 	add sp, sp, #0x200
 	ldmia sp!, {r4, r5, r6, lr}
@@ -6754,12 +6754,12 @@ WMSP_MeasureChannel: ; 0x06005A10
 	ldrh r0, [r6]
 	cmp r0, #2
 	beq _06005A50
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x1e
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06005BA0
 _06005A50:
 	mov r0, r4
@@ -6813,7 +6813,7 @@ _06005AF0:
 	add r0, sp, #4
 	mov r1, #0
 	mov r2, #0x10
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	strb r5, [sp, #4]
 	add r0, sp, #4
 	str r0, [sp]
@@ -6844,14 +6844,14 @@ _06005B48:
 _06005B78:
 	mov r0, #2
 	strh r0, [r6]
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x1e
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
 	strh r4, [r0, #8]
 	strh r5, [r0, #0xa]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06005BA0:
 	add sp, sp, #0x214
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, lr}
@@ -6867,14 +6867,14 @@ WmspError_06005BB8: ; 0x06005BB8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x1e
 	strh r1, [r0]
 	mov r1, #1
 	strh r1, [r0, #2]
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	arm_func_end WmspError_06005BB8
@@ -6888,7 +6888,7 @@ WMSP_InitWirelessCounter: ; 0x06005BEC
 	ldrh r4, [r0, #4]
 	cmp r4, #0
 	beq _06005C30
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r2, #0x1f
 	mov r1, #1
 	strh r2, [r0]
@@ -6896,15 +6896,15 @@ WMSP_InitWirelessCounter: ; 0x06005BEC
 	add r1, r1, #0x304
 	strh r1, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06005C48
 _06005C30:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x1f
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06005C48:
 	add sp, sp, #0x200
 	ldmia sp!, {r4, lr}
@@ -6921,7 +6921,7 @@ WMSP_GetWirelessCounter: ; 0x06005C54
 	ldrh r4, [r5, #4]
 	cmp r4, #0
 	beq _06005C9C
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r2, #0x20
 	mov r1, #1
 	strh r2, [r0]
@@ -6929,10 +6929,10 @@ WMSP_GetWirelessCounter: ; 0x06005C54
 	rsb r1, r1, #0x308
 	strh r1, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06005CCC
 _06005C9C:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r0, #0x20
 	strh r0, [r4]
@@ -6941,9 +6941,9 @@ _06005C9C:
 	add r1, r4, #8
 	mov r2, #0xb4
 	strh r3, [r4, #2]
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	mov r0, r4
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06005CCC:
 	add sp, sp, #0x200
 	ldmia sp!, {r3, r4, r5, lr}
@@ -6983,7 +6983,7 @@ WMSP_SetVAlarm: ; 0x06005D00
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _06005D30
-	bl sub_06005DB0
+	bl __VENEER_OS_CancelVAlarm
 _06005D30:
 	ldr r0, _06005DA4 ; =0x0380AD98
 	mov r1, #0xcb
@@ -6991,7 +6991,7 @@ _06005D30:
 	ldr r3, _06005DA8 ; =WmspParentAdjustVSync
 	add r2, r1, #0x3c
 	str ip, [sp]
-	bl sub_06005DB8
+	bl __VENEER_OS_SetVAlarm
 	b _06005D94
 _06005D50:
 	cmp r1, #2
@@ -7001,7 +7001,7 @@ _06005D50:
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _06005D70
-	bl sub_06005DB0
+	bl __VENEER_OS_CancelVAlarm
 _06005D70:
 	ldr r0, _06005DA4 ; =0x0380AD98
 	mov r2, #1
@@ -7009,7 +7009,7 @@ _06005D70:
 	ldr r3, _06005DAC ; =WmspChildAdjustVSync1
 	str r2, [sp]
 	add r2, r1, #0x3f
-	bl sub_06005DB8
+	bl __VENEER_OS_SetVAlarm
 	mov r0, #0
 	str r0, [r4, #0xd8]
 _06005D94:
@@ -7023,19 +7023,19 @@ _06005DA8: .word WmspParentAdjustVSync
 _06005DAC: .word WmspChildAdjustVSync1
 	arm_func_end WMSP_SetVAlarm
 
-	arm_func_start sub_06005DB0
-sub_06005DB0: ; 0x06005DB0
+	arm_func_start __VENEER_OS_CancelVAlarm
+__VENEER_OS_CancelVAlarm: ; 0x06005DB0
 	ldr pc, _06005DB4 ; =OS_CancelVAlarm
 	.align 2, 0
 _06005DB4: .word OS_CancelVAlarm
-	arm_func_end sub_06005DB0
+	arm_func_end __VENEER_OS_CancelVAlarm
 
-	arm_func_start sub_06005DB8
-sub_06005DB8: ; 0x06005DB8
+	arm_func_start __VENEER_OS_SetVAlarm
+__VENEER_OS_SetVAlarm: ; 0x06005DB8
 	ldr pc, _06005DBC ; =OS_SetVAlarm
 	.align 2, 0
 _06005DBC: .word OS_SetVAlarm
-	arm_func_end sub_06005DB8
+	arm_func_end __VENEER_OS_SetVAlarm
 
 	arm_func_start WmspChildAdjustVSync1
 WmspChildAdjustVSync1: ; 0x06005DC0
@@ -7108,7 +7108,7 @@ _06005EA0:
 	ldr r3, _06005F1C ; =WmspChildAdjustVSync2
 	add r2, r1, #0x37
 	str ip, [sp]
-	bl sub_06005DB8
+	bl __VENEER_OS_SetVAlarm
 	b _06005EF0
 _06005ECC:
 	mov r2, #1
@@ -7119,7 +7119,7 @@ _06005ECC:
 	ldr r0, _06005F18 ; =0x0380AD98
 	ldr r3, _06005F20 ; =WmspChildVAlarmMP
 	rsb r2, r2, #0x108
-	bl sub_06005DB8
+	bl __VENEER_OS_SetVAlarm
 _06005EF0:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, lr}
@@ -7183,7 +7183,7 @@ _06005F9C:
 	ldrsh r1, [r0, #0x42]
 	ldr r0, _06005FDC ; =0x0380AD98
 	ldr r3, _06005FE0 ; =WmspChildVAlarmMP
-	bl sub_06005DB8
+	bl __VENEER_OS_SetVAlarm
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
@@ -7209,13 +7209,13 @@ WmspChildVAlarmMP: ; 0x06005FE4
 	ldr r3, _060060F0 ; =WmspChildAdjustVSync1
 	str r2, [sp]
 	add r2, r1, #0x3f
-	bl sub_06005DB8
+	bl __VENEER_OS_SetVAlarm
 	ldr r0, [r4, #0x7bc]
 	ldr r1, [r4, #0x7b8]
 	cmp r0, #0
 	cmpeq r1, #0
 	beq _060060D8
-	bl sub_06001AFC
+	bl __VENEER_OS_GetTick
 	ldr r3, [r4, #0x73c]
 	ldr ip, [r4, #0x738]
 	cmp r3, #0
@@ -7243,11 +7243,11 @@ WmspChildVAlarmMP: ; 0x06005FE4
 	mov r2, #0
 	ldr r0, _060060F8 ; =0x0601892C
 	stmib r1, {r2, r3}
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 _060060A4:
 	cmp r0, #0
 	bne _060060DC
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #8
@@ -7256,7 +7256,7 @@ _060060A4:
 	strh r1, [r0, #4]
 	mov r1, #0x25
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060060DC
 _060060D8:
 	bl WmspFromVAlarmToWmspThread
@@ -7313,7 +7313,7 @@ _06006140:
 	ldr r0, _060061AC ; =0x0380AD98
 	ldr r3, _060061B0 ; =WmspParentVAlarmMP
 	rsb r2, r2, #0x10c
-	bl sub_06005DB8
+	bl __VENEER_OS_SetVAlarm
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
@@ -7339,7 +7339,7 @@ WmspParentVAlarmMP: ; 0x060061B4
 	ldr r3, _060061FC ; =WmspParentAdjustVSync
 	add r2, r1, #0x3c
 	str ip, [sp]
-	bl sub_06005DB8
+	bl __VENEER_OS_SetVAlarm
 	bl WmspFromVAlarmToWmspThread
 _060061EC:
 	ldmia sp!, {r3, lr}
@@ -7356,16 +7356,16 @@ WmspFromVAlarmToWmspThread: ; 0x06006200
 	ldr r0, _060062A8 ; =0x060198A4
 	ldr r4, _060062AC ; =0x060188A4
 	ldr r5, [r0, #0x550]
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldrh r1, [r5, #0xce]
 	cmp r1, #1
 	bne _06006228
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	b _060062A0
 _06006228:
 	mov r1, #1
 	strh r1, [r5, #0xce]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	bl WMSP_GetInternalRequestBuf
 	movs r1, r0
 	moveq r0, #0
@@ -7374,7 +7374,7 @@ _06006228:
 	add r0, r4, #0x88
 	mov r2, #0
 	str r3, [r1]
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 _06006258:
 	cmp r0, #0
 	bne _060062A0
@@ -7384,7 +7384,7 @@ _06006258:
 	ldr r0, [r0, #0x54c]
 	cmp r0, #0
 	beq _060062A0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x80
 	strh r1, [r0]
 	mov r1, #8
@@ -7393,7 +7393,7 @@ _06006258:
 	strh r1, [r0, #4]
 	mov r1, #0x1c
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _060062A0:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
@@ -7435,14 +7435,14 @@ _0600631C:
 	ldrh r0, [r4]
 	cmp r0, #9
 	bne _0600640C
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	add r1, r4, #0x100
 	ldrh r1, [r1, #0x82]
 	cmp r1, #0
 	bne _0600634C
 	mov r1, #0
 	strh r1, [r4, #0x62]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	b _06006440
 _0600634C:
 	ldrsh r2, [r4, #0x62]
@@ -7477,7 +7477,7 @@ _0600634C:
 _060063C0:
 	mov r5, #0
 _060063C4:
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	cmp r5, #0
 	beq _060063D8
 	ldr r0, _0600644C ; =0x0000FFFF
@@ -7500,13 +7500,13 @@ _0600640C:
 	cmp r0, #0xa
 	bne _06006440
 	mov r5, #0
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldr r1, [r4, #0x734]
 	cmp r1, #1
 	movne r1, r5
 	movne r5, #1
 	strneh r1, [r4, #0x60]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	cmp r5, #1
 	bne _06006440
 	bl WMSP_SendMaKeyData
@@ -7579,11 +7579,11 @@ WMSP_InitSendQueue: ; 0x060064E0
 	ldr r4, [r0, #0x550]
 	add r0, r4, #0x31c
 	add r0, r0, #0x400
-	bl sub_06006598
+	bl __VENEER_OS_LockMutex
 	add r1, r4, #0x2f8
 	mov r0, #0
 	mov r2, #0x400
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	mov r3, #0
 _0600650C:
 	add r0, r3, #1
@@ -7617,7 +7617,7 @@ _0600654C:
 	blo _0600654C
 	add r0, r4, #0x31c
 	add r0, r0, #0x400
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
@@ -7625,19 +7625,19 @@ _06006590: .word 0x060198A4
 _06006594: .word 0x0000FFFF
 	arm_func_end WMSP_InitSendQueue
 
-	arm_func_start sub_06006598
-sub_06006598: ; 0x06006598
+	arm_func_start __VENEER_OS_LockMutex
+__VENEER_OS_LockMutex: ; 0x06006598
 	ldr pc, _0600659C ; =OS_LockMutex
 	.align 2, 0
 _0600659C: .word OS_LockMutex
-	arm_func_end sub_06006598
+	arm_func_end __VENEER_OS_LockMutex
 
-	arm_func_start sub_060065A0
-sub_060065A0: ; 0x060065A0
+	arm_func_start __VENEER_OS_UnlockMutex
+__VENEER_OS_UnlockMutex: ; 0x060065A0
 	ldr pc, _060065A4 ; =OS_UnlockMutex
 	.align 2, 0
 _060065A4: .word OS_UnlockMutex
-	arm_func_end sub_060065A0
+	arm_func_end __VENEER_OS_UnlockMutex
 
 	arm_func_start WMSP_SendMaKeyData
 WMSP_SendMaKeyData: ; 0x060065A8
@@ -7700,13 +7700,13 @@ _06006670:
 	mov r1, #1
 	add r0, r0, #0x400
 	str r1, [sp, #0x10]
-	bl sub_06006598
+	bl __VENEER_OS_LockMutex
 	ldr r0, [r8, #0x734]
 	cmp r0, #1
 	bne _060066B0
 	add r0, r8, #0x31c
 	add r0, r0, #0x400
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	mov r0, #1
 	str r0, [sp, #0x14]
 	b _06006A38
@@ -7829,7 +7829,7 @@ _0600678C:
 	ldrh r2, [r4, #0xe]
 	mov r1, r7
 	subeq sb, sb, #2
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [r4, #0xe]
 	ldr r0, [sp, #4]
 	add r6, r6, r1
@@ -7945,7 +7945,7 @@ _06006A14:
 _06006A24:
 	add r0, r8, #0x31c
 	add r0, r0, #0x400
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	mov r0, #0
 	str r0, [sp, #0x14]
 _06006A38:
@@ -7986,12 +7986,12 @@ WMSP_SendMaMP: ; 0x06006AA0
 	ldr r1, _06007438 ; =0x060198A4
 	str r0, [sp, #0x18]
 	ldr r7, [r1, #0x550]
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	add r1, r7, #0x100
 	ldrh r1, [r1, #0x82]
 	ldrh r4, [r7, #0x86]
 	str r1, [sp, #0x74]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	mov r1, #0
 	strh r1, [sp, #0xc4]
 	ldrh r0, [r7, #0x88]
@@ -8065,13 +8065,13 @@ _06006BC4:
 	str r0, [sp, #0x44]
 	add r0, r8, #0x31c
 	add r0, r0, #0x400
-	bl sub_06006598
+	bl __VENEER_OS_LockMutex
 	ldr r0, [r8, #0x734]
 	cmp r0, #1
 	bne _06006C08
 	add r0, r8, #0x31c
 	add r0, r0, #0x400
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	mov r0, #1
 	b _06006FC8
 _06006C08:
@@ -8202,7 +8202,7 @@ _06006D08:
 	ldrh r2, [r4, #0xe]
 	mov r1, r6
 	subeq sb, sb, #2
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [r4, #0xe]
 	ldr r0, [sp, #0x20]
 	add fp, fp, r1
@@ -8324,7 +8324,7 @@ _06006FB4:
 	add r0, r8, #0x31c
 	add r0, r0, #0x400
 	mov sl, fp
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	mov r0, #0
 _06006FC8:
 	cmp r0, #1
@@ -8341,7 +8341,7 @@ _06006FC8:
 	ldr r0, [sp, #0x74]
 	and r5, r5, r0
 	mov r0, r5
-	bl sub_06007448
+	bl __VENEER_MATH_CountPopulation
 	ldr r1, [sp, #0x24]
 	add r1, r1, #0xc
 	mul r0, r1, r0
@@ -8363,24 +8363,24 @@ _06006FC8:
 _0600704C:
 	add r0, sb, #0x31c
 	add r0, r0, #0x400
-	bl sub_06006598
+	bl __VENEER_OS_LockMutex
 	ldr r0, [sb, #0x734]
 	cmp r0, #0
 	bne _06007074
 	add r0, sb, #0x31c
 	add r0, r0, #0x400
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	b _06007338
 _06007074:
 	cmp r4, #0
 	moveq r0, #1
 	streq r0, [sp, #0x3c]
 	beq _06007098
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	add r1, sb, #0x100
 	ldrh r1, [r1, #0x82]
 	str r1, [sp, #0x3c]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 _06007098:
 	mov r0, r5, lsl #0x10
 	mvn r0, r0, lsr #16
@@ -8465,7 +8465,7 @@ _06007108:
 	str r0, [sp, #0x38]
 	b _060072C0
 _060071D8:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x81
 	strh r1, [r0]
 	ldrh r1, [r4, #6]
@@ -8506,7 +8506,7 @@ _060071D8:
 	cmp r3, #0
 	movne r2, r1
 	strh r2, [r0, #0x26]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldrh r1, [r4]
 	ldr r0, [sp, #0xb8]
 	cmp r1, r0
@@ -8555,7 +8555,7 @@ _06007318:
 	mov r1, #0
 	add r0, r0, #0x400
 	str r1, [sb, #0x734]
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 _06007338:
 	mov r0, #0
 	strh r0, [r7, #0x62]
@@ -8587,14 +8587,14 @@ _06007388:
 	strh r0, [sp, #0xc4]
 	mov sl, r6
 	ldr r4, _06007440 ; =0x000080D6
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldrsh r1, [r7, #0x62]
 	add r1, r1, #1
 	strh r1, [r7, #0x62]
 	ldrsh r1, [r7, #0x64]
 	add r1, r1, #1
 	strh r1, [r7, #0x64]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 _060073C8:
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -8632,12 +8632,12 @@ _06007440: .word 0x000080D6
 _06007444: .word 0x048080F8
 	arm_func_end WMSP_SendMaMP
 
-	arm_func_start sub_06007448
-sub_06007448: ; 0x06007448
+	arm_func_start __VENEER_MATH_CountPopulation
+__VENEER_MATH_CountPopulation: ; 0x06007448
 	ldr pc, _0600744C ; =MATH_CountPopulation
 	.align 2, 0
 _0600744C: .word MATH_CountPopulation
-	arm_func_end sub_06007448
+	arm_func_end __VENEER_MATH_CountPopulation
 
 	arm_func_start WMSP_ResumeMaMP
 WMSP_ResumeMaMP: ; 0x06007450
@@ -8646,8 +8646,8 @@ WMSP_ResumeMaMP: ; 0x06007450
 	ldr r1, _06007534 ; =0x060198A4
 	mov r4, r0
 	ldr r7, [r1, #0x550]
-	bl sub_06000720
-	bl sub_06000740
+	bl __VENEER_OS_DisableInterrupts
+	bl __VENEER_OS_RestoreInterrupts
 	add r0, r7, #0x100
 	ldrh r0, [r0, #0x82]
 	ldr r1, _06007538 ; =0x048080F8
@@ -8656,7 +8656,7 @@ WMSP_ResumeMaMP: ; 0x06007450
 	mov r0, r4
 	ldrh r5, [r1]
 	ldrh r6, [r7, #0x6a]
-	bl sub_06007448
+	bl __VENEER_MATH_CountPopulation
 	add r1, r8, #0xc
 	mul r0, r1, r0
 	add r0, r0, #0x29
@@ -8665,7 +8665,7 @@ WMSP_ResumeMaMP: ; 0x06007450
 	cmp r1, r0
 	bge _060074BC
 	mov r0, #2
-	bl sub_06007540
+	bl __VENEER_OS_Sleep
 	bl WMSP_RequestResumeMP
 	b _06007528
 _060074BC:
@@ -8707,12 +8707,12 @@ _06007538: .word 0x048080F8
 _0600753C: .word 0x0000800C
 	arm_func_end WMSP_ResumeMaMP
 
-	arm_func_start sub_06007540
-sub_06007540: ; 0x06007540
+	arm_func_start __VENEER_OS_Sleep
+__VENEER_OS_Sleep: ; 0x06007540
 	ldr pc, _06007544 ; =OS_Sleep
 	.align 2, 0
 _06007544: .word OS_Sleep
-	arm_func_end sub_06007540
+	arm_func_end __VENEER_OS_Sleep
 
 	arm_func_start WMSP_PutSendQueue
 WMSP_PutSendQueue: ; 0x06007548
@@ -8740,7 +8740,7 @@ WMSP_PutSendQueue: ; 0x06007548
 	bgt _0600766C
 	add r0, r4, #0x31c
 	add r0, r0, #0x400
-	bl sub_06006598
+	bl __VENEER_OS_LockMutex
 	add r2, r4, #0x600
 	ldrh r1, [r2, #0xf8]
 	ldr r3, _06007678 ; =0x0000FFFF
@@ -8748,7 +8748,7 @@ WMSP_PutSendQueue: ; 0x06007548
 	bne _060075D4
 	add r0, r4, #0x31c
 	add r0, r0, #0x400
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	mov r0, #0xa
 	b _0600766C
 _060075D4:
@@ -8788,7 +8788,7 @@ _060075D4:
 	add r0, r4, #0x31c
 	add r0, r0, #0x400
 	strh r1, [sb, #2]
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	mov r0, #2
 _0600766C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
@@ -8819,13 +8819,13 @@ WMSP_FlushSendQueue: ; 0x0600767C
 _060076BC:
 	add r0, r8, #0x31c
 	add r0, r0, #0x400
-	bl sub_06006598
+	bl __VENEER_OS_LockMutex
 	ldr r0, [r8, #0x734]
 	cmp r0, #0
 	bne _060076E8
 	add r0, r8, #0x31c
 	add r0, r0, #0x400
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	mov r0, #0
 	b _06007998
 _060076E8:
@@ -8833,11 +8833,11 @@ _060076E8:
 	moveq r0, #1
 	streq r0, [sp, #0x10]
 	beq _0600770C
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	add r1, r8, #0x100
 	ldrh r1, [r1, #0x82]
 	str r1, [sp, #0x10]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 _0600770C:
 	mvn r0, r5
 	str r0, [sp, #4]
@@ -8920,7 +8920,7 @@ _060077A4:
 	mov sb, r0, lsr #0x10
 	b _06007928
 _06007840:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x81
 	strh r1, [r0]
 	ldrh r1, [r7, #6]
@@ -8961,7 +8961,7 @@ _06007840:
 	cmp r3, #0
 	movne r2, r1
 	strh r2, [r0, #0x26]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldrh r1, [r7]
 	ldr r0, [sp, #0x30]
 	cmp r1, r0
@@ -9007,7 +9007,7 @@ _06007974:
 	mov r1, #0
 	add r0, r0, #0x400
 	str r1, [r8, #0x734]
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	ldr r0, [sp, #0xc]
 _06007998:
 	add sp, sp, #0x3c
@@ -9031,7 +9031,7 @@ WMSP_CleanSendQueue: ; 0x060079AC
 	add r0, r0, #0x400
 	add r5, sb, #0x2f8
 	and fp, r2, r1
-	bl sub_06006598
+	bl __VENEER_OS_LockMutex
 	add r0, sb, #0x30c
 	add r0, r0, #0x400
 	str r0, [sp, #8]
@@ -9062,7 +9062,7 @@ _06007A20:
 	ldrh r0, [r8, #6]
 	cmp r0, #0
 	bne _06007B28
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x81
 	strh r1, [r0]
 	mov r1, #0
@@ -9100,7 +9100,7 @@ _06007A20:
 	cmp r3, #0
 	movne r2, r1
 	strh r2, [r0, #0x26]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldrh r1, [r8]
 	ldr r0, _06007B9C ; =0x0000FFFF
 	cmp r1, r0
@@ -9144,7 +9144,7 @@ _06007B54:
 	blt _060079F0
 	add r0, sb, #0x31c
 	add r0, r0, #0x400
-	bl sub_060065A0
+	bl __VENEER_OS_UnlockMutex
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
@@ -9250,7 +9250,7 @@ _06007CEC:
 _06007D08:
 	cmp r6, #0
 	ble _06007D84
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x82
 	strh r1, [r0]
 	mov r1, #0
@@ -9278,7 +9278,7 @@ _06007D08:
 	cmp r1, #0
 	movne r3, r2
 	strh r3, [r0, #0x42]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06007D84:
 	cmp sb, #0
 	bgt _06007C08
@@ -9305,7 +9305,7 @@ WmspGetTmptt: ; 0x06007DA4
 	moveq r0, r0, lsl #2
 	addeq r6, r0, #0x66
 	mov r0, r2
-	bl sub_06007448
+	bl __VENEER_MATH_CountPopulation
 	mul r2, r6, r0
 	ldr r1, _06007E44 ; =0x04000006
 	add r0, r5, #0x22
@@ -9360,7 +9360,7 @@ WMSP_SetEntry: ; 0x06007E4C
 	mov r1, r1, lsr #0x10
 	bl WMSP_WL_ParamSetGameInfo
 	mov r4, r0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x21
 	strh r1, [r0]
 	ldrh r1, [r4, #4]
@@ -9375,7 +9375,7 @@ WMSP_SetEntry: ; 0x06007E4C
 	ldrh r1, [r4, #4]
 	strh r1, [r0, #6]
 _06007EC8:
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	add sp, sp, #0x280
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -9390,7 +9390,7 @@ WMSP_AutoDeAuth: ; 0x06007EDC
 	add r1, sp, #0
 	add r0, r0, #4
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov r8, #0
 	add r7, sp, #8
 	add r6, sp, #0
@@ -9413,7 +9413,7 @@ _06007F38:
 	cmp r8, #2
 	blt _06007F08
 _06007F40:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x22
 	strh r1, [r0]
 	ldrh r1, [r4, #4]
@@ -9428,7 +9428,7 @@ _06007F40:
 	ldrh r1, [r4, #4]
 	strh r1, [r0, #6]
 _06007F78:
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	add sp, sp, #0x208
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
@@ -9447,12 +9447,12 @@ WMSP_Enable: ; 0x06007F88
 	str r1, [r3, #8]
 	ldr r0, [r0, #0x10]
 	bl WMSPi_CommonInit
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #3
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
@@ -9467,7 +9467,7 @@ WMSPi_CommonInit: ; 0x06007FD8
 	ldr r7, [r1, #0x550]
 	ldr r4, [r1, #0x54c]
 	mov r5, #0
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldr r1, [r7, #0xc]
 	mov r6, r0
 	cmp r1, #1
@@ -9516,7 +9516,7 @@ _06008018:
 	strh lr, [r3, #0xcc]
 	str r1, [r7, #0x198]
 	strh r1, [ip, #0x96]
-	bl sub_06001AF4
+	bl __VENEER_MI_CpuFill8
 	bl WMSP_ResetSizeVars
 	mov r0, #0x104
 	strh r0, [r7, #0x40]
@@ -9537,7 +9537,7 @@ _06008018:
 	strh r1, [r0, #0xee]
 	mov r0, r6
 	str r8, [r7, #0xc8]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	cmp r5, #0
 	beq _06008118
 	ldr r0, _06008180 ; =0x0000FFFF
@@ -9554,16 +9554,16 @@ _06008120:
 	add r1, r7, #0x1f8
 	mov r0, #1
 	mov r2, #0x100
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	bl WMSP_InitAlarm
 	add r0, r7, #0x31c
 	add r0, r0, #0x400
-	bl sub_060001D4
+	bl __VENEER_OS_InitMutex
 	bl WMSP_InitVAlarm
 	tst r8, #2
 	bne _06008168
 	mov r0, #0xf
-	bl sub_060030A0
+	bl __VENEER_PM_SetLEDPattern
 _06008168:
 	mov r0, #1
 	strh r0, [r7]
@@ -9583,24 +9583,24 @@ WMSP_Disable: ; 0x06008184
 	ldrh r0, [r4]
 	cmp r0, #1
 	beq _060081B8
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #4
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _060081E0
 _060081B8:
 	mov r0, #1
-	bl sub_060030A0
+	bl __VENEER_PM_SetLEDPattern
 	mov r0, #0
 	strh r0, [r4]
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #4
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _060081E0:
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -9617,12 +9617,12 @@ WMSP_PowerOn: ; 0x060081EC
 	ldrh r0, [r4]
 	cmp r0, #1
 	beq _06008224
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #5
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06008284
 _06008224:
 	add r0, sp, #2
@@ -9630,7 +9630,7 @@ _06008224:
 	bl WMSPi_CommonWlIdle
 	cmp r0, #0
 	bne _06008264
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #5
 	strh r1, [r0]
 	mov r1, #1
@@ -9639,17 +9639,17 @@ _06008224:
 	strh r1, [r0, #4]
 	ldrh r1, [sp]
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06008284
 _06008264:
 	mov r0, #2
 	strh r0, [r4]
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #5
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06008284:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, lr}
@@ -9714,7 +9714,7 @@ _0600834C:
 	mov r1, r2, lsl #0xf
 	strh r2, [r0, #0xf4]
 	mov r0, r1, lsr #0x10
-	bl sub_060084A4
+	bl __VENEER_WMSP_GetAllowedChannel
 	add r1, r5, #0x100
 	strh r0, [r1, #0xf6]
 	ldr r1, _06008490 ; =0x0000FFFF
@@ -9747,7 +9747,7 @@ _060083D4:
 	add r0, r4, #6
 	add r1, r5, #0x20
 	mov r2, #8
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [r4, #0xe]
 	add r0, sp, #0
 	strh r1, [r5, #0x28]
@@ -9771,7 +9771,7 @@ _06008430:
 	add r0, r0, #6
 	add r1, r5, #0xe0
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r0, sp, #0
 	mov r1, #1
 	bl WMSP_WL_ParamSetBeaconSendRecvInd
@@ -9801,12 +9801,12 @@ _0600849C: .word 0x00000281
 _060084A0: .word 0x00000215
 	arm_func_end WMSPi_CommonWlIdle
 
-	arm_func_start sub_060084A4
-sub_060084A4: ; 0x060084A4
+	arm_func_start __VENEER_WMSP_GetAllowedChannel
+__VENEER_WMSP_GetAllowedChannel: ; 0x060084A4
 	ldr pc, _060084A8 ; =WMSP_GetAllowedChannel
 	.align 2, 0
 _060084A8: .word WMSP_GetAllowedChannel
-	arm_func_end sub_060084A4
+	arm_func_end __VENEER_WMSP_GetAllowedChannel
 
 	arm_func_start WMSP_PowerOff
 WMSP_PowerOff: ; 0x060084AC
@@ -9817,12 +9817,12 @@ WMSP_PowerOff: ; 0x060084AC
 	ldrh r0, [r5]
 	cmp r0, #2
 	beq _060084E4
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #6
 	strh r1, [r0]
 	mov r1, #3
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06008548
 _060084E4:
 	add r0, sp, #0
@@ -9831,7 +9831,7 @@ _060084E4:
 	ldrh r0, [r4, #4]
 	cmp r0, #0
 	beq _06008528
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r2, #6
 	mov r1, #1
 	strh r2, [r0]
@@ -9840,17 +9840,17 @@ _060084E4:
 	strh r1, [r0, #4]
 	ldrh r1, [r4, #4]
 	strh r1, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06008548
 _06008528:
 	mov r0, #1
 	strh r0, [r5]
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #6
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06008548:
 	add sp, sp, #0x200
 	ldmia sp!, {r3, r4, r5, lr}
@@ -9868,7 +9868,7 @@ WMSP_SetMPParameter: ; 0x06008558
 	add r0, r6, #4
 	bl WMSP_SetMPParameterCore
 	mov r5, r0
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r0, #0x23
 	strh r0, [r4]
@@ -9878,9 +9878,9 @@ WMSP_SetMPParameter: ; 0x06008558
 	add r1, r4, #8
 	mov r2, #0x1c
 	str r3, [r4, #4]
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	mov r0, r4
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, r5, r6, lr}
 	bx lr
@@ -9906,7 +9906,7 @@ WMSP_SetMPParameterCore: ; 0x060085B4
 	bicne r6, r6, #0x2c00
 	movne r5, #3
 _060085F8:
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	mov r4, r0
 	cmp r8, #0
 	beq _06008680
@@ -10089,7 +10089,7 @@ _06008848:
 	ldrneb r0, [sb, #0x1b]
 	strneh r0, [r7, #0x9c]
 	mov r0, r4
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
@@ -10113,7 +10113,7 @@ WMSP_SetBeaconPeriod: ; 0x060088C0
 	ldrh r4, [r0, #4]
 	cmp r4, #0
 	beq _06008910
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x24
 	strh r1, [r0]
 	mov r2, #1
@@ -10121,15 +10121,15 @@ WMSP_SetBeaconPeriod: ; 0x060088C0
 	strh r2, [r0, #2]
 	strh r1, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06008928
 _06008910:
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x24
 	strh r1, [r0]
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06008928:
 	add sp, sp, #0x200
 	ldmia sp!, {r4, lr}
@@ -10156,7 +10156,7 @@ WMSP_SetPowerSaveMode: ; 0x0600894C
 	mov r7, r0
 	ldr r6, [r1, #0x550]
 	add r5, sp, #0x30
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r4, r0
 	mov r1, #0x28
 	strh r1, [r4]
@@ -10165,7 +10165,7 @@ WMSP_SetPowerSaveMode: ; 0x0600894C
 	beq _06008990
 	mov r1, #3
 	strh r1, [r4, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06008ABC
 _06008990:
 	ldr r0, [r7, #4]
@@ -10187,7 +10187,7 @@ _06008990:
 	ldrh r1, [r0, #4]
 	mov r0, r4
 	strh r1, [r4, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06008ABC
 _060089E4:
 	ldr r0, _06008AC8 ; =0x060198A4
@@ -10196,7 +10196,7 @@ _060089E4:
 	add r0, r5, #0x8a
 	add r0, r0, #0x100
 	add r1, r5, #0xa2
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r1, sp, #0x30
 	str r1, [r5, #0xa8]
 	mov r0, #0
@@ -10205,7 +10205,7 @@ _060089E4:
 	str r2, [r5, #0x18]
 	add r1, sp, #0
 	mov r2, #0x30
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	mov r0, #0
 	strh r0, [sp]
 	strh r0, [sp, #6]
@@ -10219,11 +10219,11 @@ _060089E4:
 	add r0, r0, #0x100
 	mov r2, #6
 	strb r3, [sp, #0xe]
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r1, sp, #0x1e
 	add r0, r5, #0xe0
 	mov r2, #6
-	bl sub_06000440
+	bl __VENEER_MI_CpuCopy8
 	add r0, sp, #0x30
 	str r0, [sp, #0x2c]
 	add r1, sp, #0
@@ -10238,13 +10238,13 @@ _060089E4:
 	ldrh r1, [r0, #4]
 	mov r0, r4
 	strh r1, [r4, #6]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06008ABC
 _06008AAC:
 	mov r1, #0
 	mov r0, r4
 	strh r1, [r4, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 _06008ABC:
 	add sp, sp, #0x230
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
@@ -10256,12 +10256,12 @@ _06008AC8: .word 0x060198A4
 	arm_func_start WMSP_StartTestRxMode
 WMSP_StartTestRxMode: ; 0x06008ACC
 	stmdb sp!, {r3, lr}
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x29
 	strh r1, [r0]
 	mov r1, #4
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end WMSP_StartTestRxMode
@@ -10269,12 +10269,12 @@ WMSP_StartTestRxMode: ; 0x06008ACC
 	arm_func_start WMSP_StopTestRxMode
 WMSP_StopTestRxMode: ; 0x06008AF0
 	stmdb sp!, {r3, lr}
-	bl sub_06000294
+	bl __VENEER_WMSP_GetBuffer4Callback2Wm9
 	mov r1, #0x2a
 	strh r1, [r0]
 	mov r1, #4
 	strh r1, [r0, #2]
-	bl sub_0600029C
+	bl __VENEER_WMSP_ReturnResult2Wm9
 	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end WMSP_StopTestRxMode
@@ -10313,8 +10313,8 @@ WL_InitDriver: ; 0x06008B60
 	ldr r2, _06008D24 ; =0x00000694
 	mov r0, #0
 	str r1, [r3]
-	bl sub_06008D30
-	bl sub_06008D38
+	bl __VENEER_MIi_CpuClearFast
+	bl __VENEER_OS_GetLockID
 	ldr r2, _06008D20 ; =0x0380FFF4
 	ldr r1, [r2]
 	str r0, [r1, #0x314]
@@ -10364,7 +10364,7 @@ WL_InitDriver: ; 0x06008B60
 	ldr r2, [r4, #0x14]
 	str r2, [r0, #0x304]
 	ldr r0, [r4, #0x30]
-	bl sub_06003ECC
+	bl __VENEER__u32_div_f
 	mov r1, r0
 	ldr r0, [r4, #0x2c]
 	bl InitializeParam
@@ -10406,11 +10406,11 @@ _06008CC4:
 	ldr r3, [r4, #4]
 	add r0, r0, #0x18
 	mov r2, #0
-	bl sub_060001DC
+	bl __VENEER_OS_CreateThread
 	ldr r0, _06008D20 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x18
-	bl sub_060001E4
+	bl __VENEER_OS_WakeupThreadDirect
 	bl InitializeIntr
 	ldr r0, _06008D20 ; =0x0380FFF4
 	ldr r0, [r0]
@@ -10426,19 +10426,19 @@ _06008D28: .word 0x04000304
 _06008D2C: .word MainTaskRoutine
 	arm_func_end WL_InitDriver
 
-	arm_func_start sub_06008D30
-sub_06008D30: ; 0x06008D30
+	arm_func_start __VENEER_MIi_CpuClearFast
+__VENEER_MIi_CpuClearFast: ; 0x06008D30
 	ldr pc, _06008D34 ; =MIi_CpuClearFast
 	.align 2, 0
 _06008D34: .word MIi_CpuClearFast
-	arm_func_end sub_06008D30
+	arm_func_end __VENEER_MIi_CpuClearFast
 
-	arm_func_start sub_06008D38
-sub_06008D38: ; 0x06008D38
+	arm_func_start __VENEER_OS_GetLockID
+__VENEER_OS_GetLockID: ; 0x06008D38
 	ldr pc, _06008D3C ; =OS_GetLockID
 	.align 2, 0
 _06008D3C: .word OS_GetLockID
-	arm_func_end sub_06008D38
+	arm_func_end __VENEER_OS_GetLockID
 
 	arm_func_start WL_GetThreadStruct
 WL_GetThreadStruct: ; 0x06008D40
@@ -10456,17 +10456,17 @@ WL_Terminate: ; 0x06008D54
 	ldr r0, _06008D9C ; =0x0380FFF4
 	ldr r4, [r0]
 	add r0, r4, #0x18
-	bl sub_06008DA0
+	bl __VENEER_OS_IsThreadTerminated
 	cmp r0, #1
 	beq _06008D94
 	mov r0, #2
 	mov r1, #0x16
 	bl AddTask
 	add r0, r4, #0x18
-	bl sub_06008DA8
+	bl __VENEER_OS_JoinThread
 _06008D84:
 	add r0, r4, #0x18
-	bl sub_06008DA0
+	bl __VENEER_OS_IsThreadTerminated
 	cmp r0, #0
 	beq _06008D84
 _06008D94:
@@ -10476,19 +10476,19 @@ _06008D94:
 _06008D9C: .word 0x0380FFF4
 	arm_func_end WL_Terminate
 
-	arm_func_start sub_06008DA0
-sub_06008DA0: ; 0x06008DA0
+	arm_func_start __VENEER_OS_IsThreadTerminated
+__VENEER_OS_IsThreadTerminated: ; 0x06008DA0
 	ldr pc, _06008DA4 ; =OS_IsThreadTerminated
 	.align 2, 0
 _06008DA4: .word OS_IsThreadTerminated
-	arm_func_end sub_06008DA0
+	arm_func_end __VENEER_OS_IsThreadTerminated
 
-	arm_func_start sub_06008DA8
-sub_06008DA8: ; 0x06008DA8
+	arm_func_start __VENEER_OS_JoinThread
+__VENEER_OS_JoinThread: ; 0x06008DA8
 	ldr pc, _06008DAC ; =OS_JoinThread
 	.align 2, 0
 _06008DAC: .word OS_JoinThread
-	arm_func_end sub_06008DA8
+	arm_func_end __VENEER_OS_JoinThread
 
 	arm_func_start InitializeTask
 InitializeTask: ; 0x06008DB0
@@ -10549,14 +10549,14 @@ _06008E64:
 	mov r1, r6
 	ldr r0, [r0, #0x308]
 	mov r2, r5
-	bl sub_0600028C
+	bl __VENEER_OS_ReceiveMessage
 	cmp r0, #0
 	beq _06008E88
 	mov r0, r6
 	bl ExecuteMessage
 _06008E88:
 	mov r0, r4
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldrh r1, [r8, #0x10]
 	strh r1, [r8, #0x12]
 	mov r1, r1, lsl #1
@@ -10566,10 +10566,10 @@ _06008E88:
 	ldrh r1, [r8, #0x10]
 	add r1, r1, #1
 	strh r1, [r8, #0x10]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	b _06008E64
 _06008EBC:
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldrh r0, [r8, #0x12]
 	bl DeleteTask
 	strh r0, [r8, #0x14]
@@ -10586,19 +10586,19 @@ _06008EEC: .word 0x01000010
 _06008EF0: .word 0x0000FFFF
 	arm_func_end MainTaskRoutine
 
-	arm_func_start sub_06008EF4
-sub_06008EF4: ; 0x06008EF4
+	arm_func_start __VENEER_OS_DisableIrqMask
+__VENEER_OS_DisableIrqMask: ; 0x06008EF4
 	ldr pc, _06008EF8 ; =OS_DisableIrqMask
 	.align 2, 0
 _06008EF8: .word OS_DisableIrqMask
-	arm_func_end sub_06008EF4
+	arm_func_end __VENEER_OS_DisableIrqMask
 
-	arm_func_start sub_06008EFC
-sub_06008EFC: ; 0x06008EFC
+	arm_func_start __VENEER_OS_EnableIrqMask
+__VENEER_OS_EnableIrqMask: ; 0x06008EFC
 	ldr pc, _06008F00 ; =OS_EnableIrqMask
 	.align 2, 0
 _06008F00: .word OS_EnableIrqMask
-	arm_func_end sub_06008EFC
+	arm_func_end __VENEER_OS_EnableIrqMask
 
 	arm_func_start AddTask
 AddTask: ; 0x06008F04
@@ -10609,7 +10609,7 @@ AddTask: ; 0x06008F04
 	ldr r0, _06008FB8 ; =0x01000010
 	mov r6, r1
 	add r5, r4, #0xbc
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	add r2, r5, r6, lsl #3
 	ldrh r1, [r2, #2]
 	mov ip, r6, lsl #3
@@ -10633,7 +10633,7 @@ AddTask: ; 0x06008F04
 	cmp r7, r1
 	strlth r7, [r4, #0x10]
 _06008F7C:
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	cmp r7, #3
 	beq _06008FAC
 	ldrh r0, [r4, #0x12]
@@ -10644,7 +10644,7 @@ _06008F7C:
 	ldr r0, [r0]
 	mov r2, r1
 	ldr r0, [r0, #0x308]
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 _06008FAC:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
@@ -10660,7 +10660,7 @@ DeleteTask: ; 0x06008FBC
 	mov r5, r0
 	ldr r0, _0600902C ; =0x01000010
 	ldr r4, [r1]
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	mov lr, r5, lsl #1
 	ldrh r5, [r4, lr]
 	ldr r2, _06009030 ; =0x0000FFFF
@@ -10679,7 +10679,7 @@ DeleteTask: ; 0x06008FBC
 	strneh r1, [r4, lr]
 	strneh r2, [ip, r3]
 _06009018:
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
@@ -10697,7 +10697,7 @@ LowestIdleTask: ; 0x06009034
 	ldr r0, [r0]
 	mov r2, #1
 	ldr r0, [r0, #0x308]
-	bl sub_0600028C
+	bl __VENEER_OS_ReceiveMessage
 	add r0, sp, #0
 	bl ExecuteMessage
 	mov r0, #3
@@ -10748,7 +10748,7 @@ _060090DC:
 	ldr r0, [r1, #0x180]
 	ldr r1, [r1, #0x184]
 	add r2, r3, #0xc
-	bl sub_06001D1C
+	bl __VENEER_OS_AllocFromHeap
 	mov r4, r0
 	b _06009108
 _060090F4:
@@ -10801,7 +10801,7 @@ _0600918C:
 	ldr r0, [r5, #0x180]
 	ldr r1, [r5, #0x184]
 	mov r2, r4
-	bl sub_06001B54
+	bl __VENEER_OS_FreeToHeap
 	b _060091B0
 _060091A0:
 	ldr r1, [r5, #0x184]
@@ -10830,7 +10830,7 @@ MoveHeapBuf: ; 0x060091C4
 	movne r0, #1
 	bne _06009224
 	mov r0, #0x1000000
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	mov r5, r0
 	mov r0, r4
 	mov r1, r6
@@ -10843,7 +10843,7 @@ MoveHeapBuf: ; 0x060091C4
 	mov r4, r0
 _06009218:
 	mov r0, r5
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	mov r0, r4
 _06009224:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
@@ -10858,7 +10858,7 @@ NewHeapBuf: ; 0x06009230
 	mov r5, r0
 	mov r0, #0x1000000
 	mov r4, r1
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldrh r1, [r5, #8]
 	cmp r1, #0
 	mvneq r1, #0
@@ -10877,7 +10877,7 @@ NewHeapBuf: ; 0x06009230
 	ldrh r1, [r5, #8]
 	add r1, r1, #1
 	strh r1, [r5, #8]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
@@ -10900,7 +10900,7 @@ AddHeapBuf: ; 0x060092A0
 	movne r0, #2
 	bne _06009320
 	mov r0, #0x1000000
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldrh r1, [r5, #8]
 	cmp r1, #0
 	mvneq r1, #0
@@ -10917,7 +10917,7 @@ AddHeapBuf: ; 0x060092A0
 	ldrh r1, [r5, #8]
 	add r1, r1, #1
 	strh r1, [r5, #8]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	mov r0, #0
 _06009320:
 	ldmia sp!, {r3, r4, r5, lr}
@@ -10942,7 +10942,7 @@ DeleteHeapBuf: ; 0x0600932C
 	movne r0, #2
 	bne _060093E0
 	mov r0, #0x1000000
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldrh r1, [r5, #8]
 	sub r1, r1, #1
 	strh r1, [r5, #8]
@@ -10972,7 +10972,7 @@ DeleteHeapBuf: ; 0x0600932C
 _060093D0:
 	mov r1, #0
 	strh r1, [r4, #8]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	mov r0, #0
 _060093E0:
 	ldmia sp!, {r3, r4, r5, lr}
@@ -11118,13 +11118,13 @@ InitializeParam: ; 0x06009580
 	mov r0, #0
 	mov r2, #0x28
 	ldr r4, [r3, #0x3e0]
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldr r1, _060095FC ; =0x0380FFF4
 	mov r0, #0
 	ldr r1, [r1]
 	mov r2, #0xc0
 	add r1, r1, #0x344
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldr r3, _060095FC ; =0x0380FFF4
 	mov r0, r6, lsl #0x10
 	ldr r2, [r3]
@@ -11335,19 +11335,19 @@ WSetWepKey: ; 0x0600984C
 	ldr r1, _0600989C ; =0x04805F80
 	mov r2, #0x14
 	mov r4, r0
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldr r1, _060098A0 ; =0x04805FA0
 	add r0, r4, #0x14
 	mov r2, #0x14
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldr r1, _060098A4 ; =0x04805FC0
 	add r0, r4, #0x28
 	mov r2, #0x14
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldr r1, _060098A8 ; =0x04805FE0
 	add r0, r4, #0x3c
 	mov r2, #0x14
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	mov r0, #0
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -12386,7 +12386,7 @@ WSetFrameLifeTime: ; 0x0600A5D4
 	ldrh r0, [r4, #0x6e]
 	mov r1, #0x64
 	mul r0, r6, r0
-	bl sub_06003ECC
+	bl __VENEER__u32_div_f
 	cmp r0, #0x10000
 	movhi r0, #5
 	bhi _0600A628
@@ -12456,7 +12456,7 @@ WInitGameInfo: ; 0x0600A6B4
 	mov r0, r1
 	ldr r1, [r4, #0x9c]
 	add r2, r5, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	strh r5, [r4, #0xa0]
 	mov r0, #0
 _0600A6EC:
@@ -12506,7 +12506,7 @@ _0600A778:
 	ldr r1, [r5, #0x9c]
 	mov r0, r8
 	add r2, r4, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 _0600A788:
 	strh r4, [r5, #0xa0]
 	mov r0, #1
@@ -12611,7 +12611,7 @@ WSetStaState: ; 0x0600A884
 	bne _0600A8B8
 	add r0, r1, #0x234
 	add r0, r0, #0x400
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 _0600A8B8:
 	cmp r5, #0
 	beq _0600A8D4
@@ -12711,19 +12711,19 @@ WInitCounter: ; 0x0600A9C4
 	mov r2, #0xb4
 	add r1, r1, #0x13c
 	add r1, r1, #0x400
-	bl sub_0600A9F4
+	bl __VENEER_MIi_CpuClear32
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
 _0600A9F0: .word 0x0380FFF4
 	arm_func_end WInitCounter
 
-	arm_func_start sub_0600A9F4
-sub_0600A9F4: ; 0x0600A9F4
+	arm_func_start __VENEER_MIi_CpuClear32
+__VENEER_MIi_CpuClear32: ; 0x0600A9F4
 	ldr pc, _0600A9F8 ; =MIi_CpuClear32
 	.align 2, 0
 _0600A9F8: .word MIi_CpuClear32
-	arm_func_end sub_0600A9F4
+	arm_func_end __VENEER_MIi_CpuClear32
 
 	arm_func_start WUpdateCounter
 WUpdateCounter: ; 0x0600A9FC
@@ -13148,7 +13148,7 @@ _0600AF6C:
 	ldr r1, [sp, #4]
 	mov r5, r2, lsl #0xa
 	mov r2, r5
-	bl sub_0600B1CC
+	bl __VENEER__ll_udiv
 	adds r3, r0, #1
 	umull r2, r0, r3, r5
 	mla r0, r3, r4, r0
@@ -13280,12 +13280,12 @@ _0600B1C4: .word 0x048080E0
 _0600B1C8: .word 0x04808048
 	arm_func_end WStart
 
-	arm_func_start sub_0600B1CC
-sub_0600B1CC: ; 0x0600B1CC
+	arm_func_start __VENEER__ll_udiv
+__VENEER__ll_udiv: ; 0x0600B1CC
 	ldr pc, _0600B1D0 ; =_ll_udiv
 	.align 2, 0
 _0600B1D0: .word _ll_udiv
-	arm_func_end sub_0600B1CC
+	arm_func_end __VENEER__ll_udiv
 
 	arm_func_start WStop
 WStop: ; 0x0600B1D4
@@ -13295,12 +13295,12 @@ WStop: ; 0x0600B1D4
 	add r0, r1, #0x208
 	add r0, r0, #0x400
 	add r4, r1, #0x344
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	ldr r0, _0600B264 ; =0x0380FFF4
 	ldr r0, [r0]
 	add r0, r0, #0x234
 	add r0, r0, #0x400
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	mov r0, #0x20
 	bl WSetStaState
 	mov r1, #0
@@ -13422,7 +13422,7 @@ WConfigDevice: ; 0x0600B360
 	add r1, r1, #0x1f8
 	add r4, r1, #0x400
 	mov r1, r4
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	mov r2, r4
 	mov r0, #0x40
 	mov r1, #1
@@ -13612,7 +13612,7 @@ InitializeAlarm: ; 0x0600B5F8
 	stmdb sp!, {r4, lr}
 	ldr r0, _0600B648 ; =0x0380FFF4
 	ldr r4, [r0]
-	bl sub_0600B64C
+	bl __VENEER_OS_IsAlarmAvailable
 	cmp r0, #0
 	addeq r0, r4, #0x300
 	ldreqh r1, [r0, #0x3e]
@@ -13621,12 +13621,12 @@ InitializeAlarm: ; 0x0600B5F8
 	beq _0600B640
 	add r0, r4, #0x208
 	add r0, r0, #0x400
-	bl sub_06001DE4
+	bl __VENEER_OS_CreateAlarm
 	add r0, r4, #0x234
 	add r0, r0, #0x400
-	bl sub_06001DE4
+	bl __VENEER_OS_CreateAlarm
 	add r0, r4, #0x660
-	bl sub_06001DE4
+	bl __VENEER_OS_CreateAlarm
 _0600B640:
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -13634,12 +13634,12 @@ _0600B640:
 _0600B648: .word 0x0380FFF4
 	arm_func_end InitializeAlarm
 
-	arm_func_start sub_0600B64C
-sub_0600B64C: ; 0x0600B64C
+	arm_func_start __VENEER_OS_IsAlarmAvailable
+__VENEER_OS_IsAlarmAvailable: ; 0x0600B64C
 	ldr pc, _0600B650 ; =OS_IsAlarmAvailable
 	.align 2, 0
 _0600B650: .word OS_IsAlarmAvailable
-	arm_func_end sub_0600B64C
+	arm_func_end __VENEER_OS_IsAlarmAvailable
 
 	arm_func_start TimeoutDummy
 TimeoutDummy: ; 0x0600B654
@@ -13668,7 +13668,7 @@ SetupPeriodicTimeOut: ; 0x0600B674
 	mov r4, r1
 	add r0, r0, #0x208
 	add r0, r0, #0x400
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	ldr r0, _0600B700 ; =0x000082EA
 	mov r1, #0
 	umull r3, r2, r5, r0
@@ -13677,7 +13677,7 @@ SetupPeriodicTimeOut: ; 0x0600B674
 	mla r2, r5, r0, r2
 	mov r6, r3, lsr #6
 	orr r6, r6, r2, lsl #26
-	bl sub_06001AFC
+	bl __VENEER_OS_GetTick
 	adds r0, r6, r0
 	adc r2, r1, #0
 	mov r1, r0
@@ -13690,7 +13690,7 @@ SetupPeriodicTimeOut: ; 0x0600B674
 	mov r3, r6
 	add r0, r0, #0x208
 	add r0, r0, #0x400
-	bl sub_0600B704
+	bl __VENEER_OS_SetPeriodicAlarm
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, lr}
 	bx lr
@@ -13699,12 +13699,12 @@ _0600B6FC: .word 0x0380FFF4
 _0600B700: .word 0x000082EA
 	arm_func_end SetupPeriodicTimeOut
 
-	arm_func_start sub_0600B704
-sub_0600B704: ; 0x0600B704
+	arm_func_start __VENEER_OS_SetPeriodicAlarm
+__VENEER_OS_SetPeriodicAlarm: ; 0x0600B704
 	ldr pc, _0600B708 ; =OS_SetPeriodicAlarm
 	.align 2, 0
 _0600B708: .word OS_SetPeriodicAlarm
-	arm_func_end sub_0600B704
+	arm_func_end __VENEER_OS_SetPeriodicAlarm
 
 	arm_func_start ClearPeriodicTimeOut
 ClearPeriodicTimeOut: ; 0x0600B70C
@@ -13767,7 +13767,7 @@ SetupTimeOut: ; 0x0600B7AC
 	mov r4, r1
 	add r0, r0, #0x234
 	add r0, r0, #0x400
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	mov r3, #0
 	ldr r0, _0600B818 ; =0x000082EA
 	mov r1, r3
@@ -13783,7 +13783,7 @@ SetupTimeOut: ; 0x0600B7AC
 	add r0, r0, #0x234
 	add r0, r0, #0x400
 	orr r1, r1, ip, lsl #26
-	bl sub_06001B14
+	bl __VENEER_OS_SetAlarm
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
@@ -13800,7 +13800,7 @@ SetupUsTimeOut: ; 0x0600B81C
 	mov r4, r1
 	add r0, r0, #0x234
 	add r0, r0, #0x400
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	ldr r0, _0600B89C ; =0x000082EA
 	mov r3, #0
 	umull ip, r2, r5, r0
@@ -13811,7 +13811,7 @@ SetupUsTimeOut: ; 0x0600B81C
 	mov r1, r2, lsr #6
 	orr r0, r0, r2, lsl #26
 	mov r2, #0x3e8
-	bl sub_0600B1CC
+	bl __VENEER__ll_udiv
 	mov r2, r1
 	mov r1, r0
 	mov r0, #0
@@ -13821,7 +13821,7 @@ SetupUsTimeOut: ; 0x0600B81C
 	ldr r0, [r0]
 	add r0, r0, #0x234
 	add r0, r0, #0x400
-	bl sub_06001B14
+	bl __VENEER_OS_SetAlarm
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
@@ -13859,7 +13859,7 @@ DMA_Read: ; 0x0600B8C0
 	mov r0, r5
 	mov r1, r6
 	mov r2, r4
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	cmp r7, #0
 	beq _0600B92C
 	ldr r0, _0600B938 ; =0x0380FFF4
@@ -13870,7 +13870,7 @@ DMA_Read: ; 0x0600B8C0
 	ldrh r0, [r0, #0xde]
 	add r1, r6, r4
 	sub r0, r3, r0
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 _0600B92C:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
@@ -13901,14 +13901,14 @@ DMA_WriteHeaderData: ; 0x0600B95C
 	mov r4, r3
 	mov r1, r6
 	mov r2, #0x24
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	cmp r4, #0
 	beq _0600B998
 	add r2, r4, #1
 	mov r0, r5
 	add r1, r6, #0x24
 	bic r2, r2, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 _0600B998:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
@@ -13923,14 +13923,14 @@ DMA_WepWriteHeaderData: ; 0x0600B9A0
 	mov r4, r3
 	mov r1, r6
 	mov r2, #0x24
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	cmp r4, #0
 	beq _0600B9DC
 	add r2, r4, #1
 	mov r0, r5
 	add r1, r6, #0x28
 	bic r2, r2, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 _0600B9DC:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
@@ -14210,14 +14210,14 @@ SetFatalErr: ; 0x0600BD2C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #0x1000000
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldr r1, _0600BD6C ; =0x0380FFF4
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	ldrh r2, [r1, #0xf4]
 	orr r2, r2, r4
 	strh r2, [r1, #0xf4]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	mov r0, #2
 	mov r1, #0x15
 	bl AddTask
@@ -14246,12 +14246,12 @@ SendFatalErrMsgTask: ; 0x0600BD70
 	strh r1, [r5, #0xc]
 	strh r0, [r5, #0xe]
 	mov r0, #0x1000000
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldrh r2, [r4, #0xb0]
 	mov r1, #0
 	strh r2, [r5, #0x10]
 	strh r1, [r4, #0xb0]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldr r0, _0600BDE8 ; =0x0380FFF4
 	mov r1, r5
 	ldr r0, [r0]
@@ -14331,7 +14331,7 @@ ReleaseWlTask: ; 0x0600BE90
 	ldr r1, [r1, #0x3e0]
 	sub r1, r1, #0xc
 	bl ReleaseHeapBuf
-	bl sub_06001AEC
+	bl __VENEER_OS_ExitThread
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
@@ -15703,7 +15703,7 @@ _0600D148:
 	tst r1, #0x8000
 	beq _0600D1F4
 	add r0, r0, #0x660
-	bl sub_06001B0C
+	bl __VENEER_OS_CancelAlarm
 	ldr r0, [sp, #0xc]
 	mov r3, #0
 	ldrh r1, [r0]
@@ -15718,7 +15718,7 @@ _0600D148:
 	mla r8, ip, r1, r8
 	mov r1, r8, lsr #6
 	orr r0, r0, r8, lsl #26
-	bl sub_0600B1CC
+	bl __VENEER__ll_udiv
 	mov r2, #0
 	str r2, [sp]
 	mov r2, r1
@@ -15727,7 +15727,7 @@ _0600D148:
 	ldr r3, _0600D348 ; =WClearKSID
 	ldr r0, [r0]
 	add r0, r0, #0x660
-	bl sub_06001B14
+	bl __VENEER_OS_SetAlarm
 	b _0600D21C
 _0600D1F4:
 	ldr r1, _0600D340 ; =0x0000FFFF
@@ -16206,7 +16206,7 @@ _0600D884: .word 0x0380FFF4
 MacBugTxMp: ; 0x0600D888
 	stmdb sp!, {r4, lr}
 	mov r0, #0x1000000
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldr r2, _0600D8E8 ; =0x04808210
 	mov r1, #0x1000
 	ldrh r3, [r2]
@@ -16228,7 +16228,7 @@ _0600D8C8:
 	strh r0, [r1]
 	bl WlIntrMpEnd
 	mov r0, r4
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
@@ -16312,30 +16312,30 @@ InitializeIntr: ; 0x0600D9C8
 	stmdb sp!, {r3, lr}
 	ldr r1, _0600D9E8 ; =WlIntr
 	mov r0, #0x1000000
-	bl sub_0600D9EC
+	bl __VENEER_OS_SetIrqFunction
 	mov r0, #0x1000000
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
 _0600D9E8: .word WlIntr
 	arm_func_end InitializeIntr
 
-	arm_func_start sub_0600D9EC
-sub_0600D9EC: ; 0x0600D9EC
+	arm_func_start __VENEER_OS_SetIrqFunction
+__VENEER_OS_SetIrqFunction: ; 0x0600D9EC
 	ldr pc, _0600D9F0 ; =OS_SetIrqFunction
 	.align 2, 0
 _0600D9F0: .word OS_SetIrqFunction
-	arm_func_end sub_0600D9EC
+	arm_func_end __VENEER_OS_SetIrqFunction
 
 	arm_func_start ReleaseIntr
 ReleaseIntr: ; 0x0600D9F4
 	stmdb sp!, {r3, lr}
 	mov r0, #0x1000000
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	mov r0, #0x1000000
 	mov r1, #0
-	bl sub_0600D9EC
+	bl __VENEER_OS_SetIrqFunction
 	ldmia sp!, {r3, lr}
 	bx lr
 	arm_func_end ReleaseIntr
@@ -17049,7 +17049,7 @@ CAM_AddBcFrame: ; 0x0600E394
 	mov r0, #0x1000000
 	add r4, r2, #0x1ac
 	mov r6, r1
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldrh r1, [r4, #8]
 	mov r5, r0
 	cmp r1, #0
@@ -17062,7 +17062,7 @@ _0600E3CC:
 	mov r2, r6
 	bl MoveHeapBuf
 	mov r0, r5
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
@@ -17079,7 +17079,7 @@ CAM_IncFrameCount: ; 0x0600E3F0
 	ldr r2, [r0, #0x31c]
 	mov r0, #0x1000000
 	mla r6, r5, r1, r2
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldr r1, _0600E47C ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
@@ -17096,7 +17096,7 @@ _0600E440:
 	mov r0, r4
 	add r1, r1, #1
 	strh r1, [r6, #0x16]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldr r0, _0600E47C ; =0x0380FFF4
 	mov r1, #1
 	ldr r0, [r0]
@@ -17121,7 +17121,7 @@ CAM_DecFrameCount: ; 0x0600E480
 	ldr r2, [r0, #0x31c]
 	mov r0, #0x1000000
 	mla r6, r5, r1, r2
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldr r1, _0600E4EC ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
@@ -17138,7 +17138,7 @@ _0600E4D0:
 	mov r0, r4
 	sub r1, r1, #1
 	strh r1, [r6, #0x16]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
@@ -17151,7 +17151,7 @@ CAM_SetStaState: ; 0x0600E4F0
 	mov r6, r0
 	mov r0, #0x1000000
 	mov r5, r1
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldr r3, _0600E5D4 ; =0x0380FFF4
 	mov r4, r0
 	cmp r5, #0x40
@@ -17203,7 +17203,7 @@ _0600E5AC:
 	ldr r2, [r2, #0x31c]
 	mov r0, r4
 	strh r5, [r2, r1]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
@@ -17362,7 +17362,7 @@ CAM_AllocateAID: ; 0x0600E75C
 	mov r0, #0x1000000
 	add r1, r1, #0x12c
 	add r4, r1, #0x400
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	mov r6, r0
 	mov r5, #1
 	mov r1, #2
@@ -17388,7 +17388,7 @@ _0600E7BC:
 	ldr r2, [r2, #0x31c]
 	mla r1, r7, r1, r2
 	strh r5, [r1, #2]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	mov r0, r5
 	b _0600E800
 _0600E7E4:
@@ -17398,7 +17398,7 @@ _0600E7EC:
 	cmp r5, #0x10
 	blo _0600E78C
 	mov r0, r6
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	mov r0, #0
 _0600E800:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
@@ -17584,7 +17584,7 @@ CAM_SetTIMElementBitmap: ; 0x0600E9B8
 	ldr r1, _0600EA70 ; =0x0480425C
 	mov r0, #0x1000000
 	add r6, r2, r1
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	mov r4, r0
 	cmp r5, #0
 	bne _0600EA28
@@ -17611,7 +17611,7 @@ _0600EA28:
 	bl WL_WriteByte
 _0600EA5C:
 	mov r0, r4
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 _0600EA64:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
@@ -17634,7 +17634,7 @@ CAM_ClrTIMElementBitmap: ; 0x0600EA74
 	add r1, r1, #0x300
 	ldrh r1, [r1, #0xd8]
 	add r6, r1, r2
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	mov r4, r0
 	cmp r5, #0
 	bne _0600EAD0
@@ -17662,7 +17662,7 @@ _0600EAD0:
 	bl WL_WriteByte
 _0600EB08:
 	mov r0, r4
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 _0600EB10:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
@@ -17831,14 +17831,14 @@ InitializeCAM: ; 0x0600ED20
 	ldr r4, [r3, #0x31c]
 	mul r2, r5, r2
 	mov r1, r4
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldr r1, _0600EDB0 ; =0x0380FFF4
 	mov r0, #0
 	ldr r1, [r1]
 	mov r2, #0x10
 	add r1, r1, #0x12c
 	add r1, r1, #0x400
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldr r2, _0600EDB4 ; =0x0000FFFF
 	mov r3, #1
 	strh r2, [r4, #0x1a]
@@ -17884,7 +17884,7 @@ _0600EDF0:
 	mla r1, r6, r8, r4
 	mov r0, sl
 	mov r2, sb
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	add r6, r6, #1
 _0600EE04:
 	cmp r6, r7
@@ -17926,7 +17926,7 @@ CAM_InitElement: ; 0x0600EE44
 	streqh r1, [r0, #0x2c]
 	mov r1, r5
 	mov r0, #0
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldr r0, _0600EF20 ; =0x0380FFF4
 	mov r4, #1
 	ldr r1, [r0]
@@ -18003,7 +18003,7 @@ WaitLoop_Waitus: ; 0x0600EF54
 	orr r0, r0, ip, lsl #26
 	mov r2, #0x3e8
 	str r4, [sp, #4]
-	bl sub_0600B1CC
+	bl __VENEER__ll_udiv
 	add r3, sp, #4
 	str r3, [sp]
 	ldr r2, _0600EFD8 ; =0x0380FFF4
@@ -18013,7 +18013,7 @@ WaitLoop_Waitus: ; 0x0600EF54
 	mov r2, r1
 	mov r1, r0
 	add r0, ip, #0x400
-	bl sub_06001B14
+	bl __VENEER_OS_SetAlarm
 _0600EFBC:
 	ldr r0, [sp, #4]
 	cmp r0, #0
@@ -18327,7 +18327,7 @@ SendMessageToWmDirect: ; 0x0600F388
 _0600F3C8:
 	ldr r0, [r3, #0x304]
 	mov r2, #0
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 	cmp r0, #0
 	beq _0600F3EC
 	mov r0, r5
@@ -18361,7 +18361,7 @@ _0600F42C:
 	ldr r0, [r0, #0x304]
 	mov r1, r7
 	mov r2, r5
-	bl sub_06000284
+	bl __VENEER_OS_SendMessage
 	cmp r0, #0
 	beq _0600F464
 	ldr r0, [r6]
@@ -19780,7 +19780,7 @@ _06010744:
 	mov r2, #0
 	cmpne r0, #0
 	beq _06010784
-	bl sub_06003ECC
+	bl __VENEER__u32_div_f
 	add r2, r0, #1
 	cmp r2, #0x64
 	movhi r2, #0x64
@@ -20294,7 +20294,7 @@ _06010DFC:
 _06010E0C:
 	add r1, r5, #0x3c
 	add r2, r2, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 _06010E18:
 	ldr r0, _06010E38 ; =0x0380FFF4
 	mov r1, r5
@@ -21006,7 +21006,7 @@ PARAMGET_AllReqCmd: ; 0x0601156C
 	strh r3, [r4, #0x20]
 	ldr r0, [r0]
 	add r0, r0, #0x384
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldr r2, _060116A0 ; =0x0380FFF4
 	mov r0, #0
 	ldr r1, [r2]
@@ -21513,7 +21513,7 @@ _06011C20:
 _06011C30:
 	add r1, r4, #8
 	add r2, r2, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 _06011C3C:
 	ldrh r1, [r4, #6]
 	mov r0, #0
@@ -21659,7 +21659,7 @@ DEV_GetVerInfoReqCmd: ; 0x06011DC8
 	add r1, r4, #6
 	mov r2, #8
 	strh r3, [r4, #2]
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldr r1, _06011E60 ; =0x04808000
 	ldr r0, _06011E64 ; =0x0380FFF4
 	ldrh r1, [r1]
@@ -21717,7 +21717,7 @@ DEV_GetWlInfoReqCmd: ; 0x06011E6C
 	mov r2, #0xb4
 	add r0, r0, #0x13c
 	add r0, r0, #0x400
-	bl sub_06011EC8
+	bl __VENEER_MIi_CpuCopy32
 	mov r0, #0
 _06011EBC:
 	ldmia sp!, {r4, lr}
@@ -21726,12 +21726,12 @@ _06011EBC:
 _06011EC4: .word 0x0380FFF4
 	arm_func_end DEV_GetWlInfoReqCmd
 
-	arm_func_start sub_06011EC8
-sub_06011EC8: ; 0x06011EC8
+	arm_func_start __VENEER_MIi_CpuCopy32
+__VENEER_MIi_CpuCopy32: ; 0x06011EC8
 	ldr pc, _06011ECC ; =MIi_CpuCopy32
 	.align 2, 0
 _06011ECC: .word MIi_CpuCopy32
-	arm_func_end sub_06011EC8
+	arm_func_end __VENEER_MIi_CpuCopy32
 
 	arm_func_start DEV_GetStateReqCmd
 DEV_GetStateReqCmd: ; 0x06011ED0
@@ -21875,7 +21875,7 @@ _060120C8:
 	ldr r1, _0601223C ; =0x04804000
 	mov r0, #0
 	mov r2, #0xc
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldr r1, _0601223C ; =0x04804000
 	mov r0, #0x14
 	strh r0, [r1, #8]
@@ -22284,7 +22284,7 @@ _06012644:
 	strh r0, [r2, #2]
 _06012674:
 	mov r0, #0x1000000
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	mov r2, #2
 	ldr r1, _060126EC ; =0x00003FFF
 	strh r2, [fp, r8]
@@ -22305,7 +22305,7 @@ _06012674:
 	bl WSetKSID
 _060126C4:
 	mov r0, r4
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	mov r0, #0
 _060126D0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -22566,9 +22566,9 @@ _06012A3C:
 	add r0, r3, r0
 	mov r1, #0xa
 	add r0, r0, #0x32
-	bl sub_06003ECC
+	bl __VENEER__u32_div_f
 	mov r4, r0
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldr r1, _06012B98 ; =0x00003FFF
 	ldr r2, _06012B9C ; =0x04808118
 	and r1, r5, r1
@@ -22577,10 +22577,10 @@ _06012A3C:
 	strh r4, [r2]
 	orr r1, r1, r7
 	strh r1, [r2, #-0x88]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	b _06012B6C
 _06012AD4:
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldr r1, _06012BA0 ; =0x048080F8
 	mov r8, r0
 	ldrh r0, [r1]
@@ -22588,7 +22588,7 @@ _06012AD4:
 	add r0, sb, r0
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_06003ECC
+	bl __VENEER__u32_div_f
 	ldrh r3, [sl, #0x18]
 	add r1, r0, #3
 	cmp r1, r3
@@ -22604,11 +22604,11 @@ _06012AD4:
 	orr r1, r0, r7
 	mov r0, r8
 	strh r1, [r2, #-0x88]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	b _06012B6C
 _06012B3C:
 	mov r0, r8
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	ldr r1, [r6, #0x90]
 	add r0, r4, #0x188
 	bl ReleaseHeapBuf
@@ -22730,12 +22730,12 @@ TxqPri: ; 0x06012C88
 	add r4, r2, #0x344
 	beq _06012E90
 	mov r0, #0x1000000
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldrh r1, [r6]
 	str r0, [sp]
 	cmp r1, #0
 	beq _06012CE8
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	b _06012E90
 _06012CE8:
 	ldr r7, [fp]
@@ -22746,7 +22746,7 @@ _06012CF4:
 	cmp r7, r0
 	bne _06012D0C
 	ldr r0, [sp]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	b _06012E90
 _06012D0C:
 	mov r0, r7
@@ -22851,7 +22851,7 @@ _06012E30:
 	strneh r0, [r3]
 _06012E88:
 	ldr r0, [sp]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 _06012E90:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -23592,7 +23592,7 @@ ClearTxKeyData: ; 0x06013894
 	ldr r1, [r1]
 	add r1, r1, #0x2c
 	add r4, r1, #0x400
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldr r1, _06013900 ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r1]
@@ -23611,7 +23611,7 @@ _060138D8:
 	strh r1, [r4, #0x50]
 	mov r0, r5
 	strh r1, [r4, #0x64]
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
@@ -23627,7 +23627,7 @@ ClearTxMp: ; 0x06013908
 	ldr r1, [r1]
 	add r1, r1, #0x2c
 	add r4, r1, #0x400
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldr r1, _06013958 ; =0x048080B4
 	mov r2, #2
 	strh r2, [r1]
@@ -23638,7 +23638,7 @@ ClearTxMp: ; 0x06013908
 	bl WlIntrMpEndTask
 _06013944:
 	mov r0, r4
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
@@ -23654,7 +23654,7 @@ ClearTxData: ; 0x0601395C
 	ldr r1, [r1]
 	add r1, r1, #0x2c
 	add r4, r1, #0x400
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldr r1, _060139FC ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r1]
@@ -23689,7 +23689,7 @@ _060139E0:
 	mov r1, #1
 	bl MessageDeleteTx
 	mov r0, r5
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
@@ -23740,7 +23740,7 @@ ResetTxqPri: ; 0x06013A68
 	add r5, r0, #0x400
 	mov r0, #0x1000000
 	add r6, r5, r4
-	bl sub_06008EF4
+	bl __VENEER_OS_DisableIrqMask
 	ldr r1, _06013AEC ; =0x0601889C
 	mov r2, r7, lsl #1
 	ldrh r2, [r1, r2]
@@ -23760,7 +23760,7 @@ ResetTxqPri: ; 0x06013A68
 	ldrh r2, [r2, #0x22]
 	strh r2, [r1, #0x2a]
 _06013ADC:
-	bl sub_06008EFC
+	bl __VENEER_OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
@@ -25127,7 +25127,7 @@ InitManHeader: ; 0x06014D3C
 	mov r1, r5
 	mov r0, #0
 	mov r2, #0x2c
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	bl WCalcManRate
 	strh r0, [r5, #0x10]
 	ldr r0, _06014D84 ; =0x0380FFF4
@@ -25276,7 +25276,7 @@ InitTxCtrl: ; 0x06014F08
 	mov r1, r4
 	add r5, r7, #0x344
 	add r6, r7, #0x31c
-	bl sub_0600A9F4
+	bl __VENEER_MIi_CpuClear32
 	add r0, r7, #0x400
 	mov r1, #0
 	strh r1, [r0, #0x2c]
@@ -25890,7 +25890,7 @@ _060157C4:
 	add r0, r7, #0x2c
 	add r1, r6, #8
 	add r2, r2, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 _06015814:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
@@ -25990,7 +25990,7 @@ RxBeaconFrame: ; 0x060158F4
 	add r1, sp, #0x18
 	mov r0, #0
 	mov r2, #0x2c
-	bl sub_0600A9F4
+	bl __VENEER_MIi_CpuClear32
 	add r2, sl, #0x38
 	sub r1, sb, #0xc
 	mov r0, #2
@@ -26187,14 +26187,14 @@ _06015BC8:
 	beq _06015C6C
 	add r0, r0, #9
 	add r2, r2, #2
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	mov r0, #1
 	strh r0, [r4, #0xa2]
 	b _06015C80
 _06015C6C:
 	add r0, r0, #0xa
 	add r2, r2, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	mov r0, #0
 	strh r0, [r4, #0xa2]
 _06015C80:
@@ -26213,7 +26213,7 @@ _06015C80:
 	ldr r1, [sp, #0x14]
 	mov r2, r8
 	mov r3, r5
-	bl sub_0600B1CC
+	bl __VENEER__ll_udiv
 	adds fp, r0, #1
 	umull r3, r0, fp, r8
 	adc sb, r1, #0
@@ -26244,7 +26244,7 @@ _06015C80:
 	sbc r0, r0, r5
 	str r1, [sp, #0x10]
 	str r0, [sp, #0x14]
-	bl sub_06000720
+	bl __VENEER_OS_DisableInterrupts
 	ldr r1, _06015F38 ; =0x048080F8
 	ldrh ip, [r1]
 	ldrh fp, [r1, #2]
@@ -26262,7 +26262,7 @@ _06015C80:
 	strh r3, [sp, #2]
 	strh r2, [sp, #4]
 	strh r1, [sp, #6]
-	bl sub_06000740
+	bl __VENEER_OS_RestoreInterrupts
 	ldrh r1, [sp, #8]
 	ldrh r0, [sp]
 	cmp r1, r0
@@ -26513,7 +26513,7 @@ _060160F0:
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #0x2c
-	bl sub_0600A9F4
+	bl __VENEER_MIi_CpuClear32
 	add r2, r7, #0x30
 	sub r1, r5, #4
 	str r2, [sp]
@@ -26602,7 +26602,7 @@ _06016228:
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #0x2c
-	bl sub_0600A9F4
+	bl __VENEER_MIi_CpuClear32
 	add r0, r4, #0x2c
 	str r0, [sp]
 	ldrh r1, [r4, #6]
@@ -26689,7 +26689,7 @@ _06016350:
 	mov r1, r6
 	mov r0, #0
 	mov r2, #0x40
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	ldrh r8, [r7, #6]
 	cmp r8, #0xc
 	bls _06016660
@@ -26698,7 +26698,7 @@ _06016350:
 	add r1, sp, #4
 	mov r0, #0
 	mov r2, #0x2c
-	bl sub_0600A9F4
+	bl __VENEER_MIi_CpuClear32
 	add r3, r7, #0x38
 	sub r2, r8, #0xc
 	mov r0, #0x38
@@ -27228,7 +27228,7 @@ _06016ADC:
 	ldrh r2, [sl, #6]
 	add r1, r4, #0x2c
 	add r2, r2, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [sl, #0x2c]
 	mov r0, #3
 	strh r1, [r4, #0x2c]
@@ -27751,7 +27751,7 @@ _0601726C:
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #0x2c
-	bl sub_0600A9F4
+	bl __VENEER_MIi_CpuClear32
 	add r3, r6, #0x46
 	sub r2, r4, #0xa
 	mov r1, #0x800
@@ -28153,7 +28153,7 @@ _06017780:
 	mov r2, r6
 	add r0, r0, r3
 	add r1, r1, r3
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldrh r1, [r4, #0x20]
 	mov r0, r7, lsl #0x10
 	add r1, r1, r6
@@ -28193,7 +28193,7 @@ _06017884:
 	add r0, sp, #8
 	add r1, r6, #4
 	mov r2, #0x10
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	mov r0, #5
 	strh r0, [r8, r7]
 	mov r0, r6
@@ -28202,11 +28202,11 @@ _06017884:
 	add r0, r5, #0x18
 	add r1, r4, #0x18
 	add r2, r2, #0xc
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	ldr r0, _06017BB4 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30c]
-	bl sub_06017BC4
+	bl __VENEER_MI_WaitDma
 	ldrh r1, [r4, #0x18]
 	ldrh r0, [r6, #0x10]
 	and r1, r1, #0xf0
@@ -28228,7 +28228,7 @@ _06017884:
 	sub r0, r0, #0x18
 	strh r0, [r4, #0x20]
 	ldrh r0, [r4, #0x20]
-	bl sub_06003ECC
+	bl __VENEER__u32_div_f
 	mov r1, r6
 	strh r0, [r1, #2]
 	b _06017B7C
@@ -28315,7 +28315,7 @@ _06017A80:
 	add r1, r2, r1
 	add r0, r3, r0
 	add r2, r6, #1
-	bl sub_06001B04
+	bl __VENEER_MIi_CpuCopy16
 	strh sl, [r7, #0x10]
 	ldrh r1, [r5, #0x18]
 	add r0, r8, sb
@@ -28397,12 +28397,12 @@ _06017BBC: .word 0x00000622
 _06017BC0: .word 0x000005E4
 	arm_func_end DefragTask
 
-	arm_func_start sub_06017BC4
-sub_06017BC4: ; 0x06017BC4
+	arm_func_start __VENEER_MI_WaitDma
+__VENEER_MI_WaitDma: ; 0x06017BC4
 	ldr pc, _06017BC8 ; =MI_WaitDma
 	.align 2, 0
 _06017BC8: .word MI_WaitDma
-	arm_func_end sub_06017BC4
+	arm_func_end __VENEER_MI_WaitDma
 
 	arm_func_start DefragTimerTask
 DefragTimerTask: ; 0x06017BCC
@@ -28449,7 +28449,7 @@ InitRxCtrl: ; 0x06017C38
 	add r5, r1, #0x400
 	mov r1, r5
 	add r4, r3, #0x344
-	bl sub_0600A9F4
+	bl __VENEER_MIi_CpuClear32
 	ldr r1, _06017D34 ; =0x04808030
 	mov r2, #0x8000
 	ldr r0, _06017D30 ; =0x0380FFF4
@@ -28576,7 +28576,7 @@ _06017DF8:
 	add r6, r5, r4
 	mov r1, r6
 	mov r0, #0
-	bl sub_06000598
+	bl __VENEER_MIi_CpuClear16
 	mov r0, #0x400
 	strh r0, [r6, #0x30]
 	ldrh r1, [sl, #0x12]
@@ -28712,11 +28712,11 @@ FLASH_Wait: ; 0x06017FAC
 	add r4, sp, #0
 _06017FB8:
 	mov r0, r4
-	bl sub_06017FEC
+	bl __VENEER_NVRAM_ReadStatusRegister
 	ldr r0, [sp]
 	tst r0, #0x20
 	beq _06017FD4
-	bl sub_06017FF4
+	bl __VENEER_NVRAM_SoftwareReset
 	b _06017FB8
 _06017FD4:
 	ldr r0, [sp]
@@ -28727,19 +28727,19 @@ _06017FD4:
 	bx lr
 	arm_func_end FLASH_Wait
 
-	arm_func_start sub_06017FEC
-sub_06017FEC: ; 0x06017FEC
+	arm_func_start __VENEER_NVRAM_ReadStatusRegister
+__VENEER_NVRAM_ReadStatusRegister: ; 0x06017FEC
 	ldr pc, _06017FF0 ; =NVRAM_ReadStatusRegister
 	.align 2, 0
 _06017FF0: .word NVRAM_ReadStatusRegister
-	arm_func_end sub_06017FEC
+	arm_func_end __VENEER_NVRAM_ReadStatusRegister
 
-	arm_func_start sub_06017FF4
-sub_06017FF4: ; 0x06017FF4
+	arm_func_start __VENEER_NVRAM_SoftwareReset
+__VENEER_NVRAM_SoftwareReset: ; 0x06017FF4
 	ldr pc, _06017FF8 ; =NVRAM_SoftwareReset
 	.align 2, 0
 _06017FF8: .word NVRAM_SoftwareReset
-	arm_func_end sub_06017FF4
+	arm_func_end __VENEER_NVRAM_SoftwareReset
 
 	arm_func_start FLASH_Read
 FLASH_Read: ; 0x06017FFC
@@ -28782,42 +28782,42 @@ FLASH_DirectRead: ; 0x0601805C
 	mov r5, r1
 	ldr r0, [r0, #0x314]
 	mov r4, r2
-	bl sub_060180AC
+	bl __VENEER_SPI_Lock
 	bl FLASH_Wait
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_060180B4
+	bl __VENEER_NVRAM_ReadDataBytes
 	ldr r0, _060180A8 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x314]
-	bl sub_060180BC
+	bl __VENEER_SPI_Unlock
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
 _060180A8: .word 0x0380FFF4
 	arm_func_end FLASH_DirectRead
 
-	arm_func_start sub_060180AC
-sub_060180AC: ; 0x060180AC
+	arm_func_start __VENEER_SPI_Lock
+__VENEER_SPI_Lock: ; 0x060180AC
 	ldr pc, _060180B0 ; =SPI_Lock
 	.align 2, 0
 _060180B0: .word SPI_Lock
-	arm_func_end sub_060180AC
+	arm_func_end __VENEER_SPI_Lock
 
-	arm_func_start sub_060180B4
-sub_060180B4: ; 0x060180B4
+	arm_func_start __VENEER_NVRAM_ReadDataBytes
+__VENEER_NVRAM_ReadDataBytes: ; 0x060180B4
 	ldr pc, _060180B8 ; =NVRAM_ReadDataBytes
 	.align 2, 0
 _060180B8: .word NVRAM_ReadDataBytes
-	arm_func_end sub_060180B4
+	arm_func_end __VENEER_NVRAM_ReadDataBytes
 
-	arm_func_start sub_060180BC
-sub_060180BC: ; 0x060180BC
+	arm_func_start __VENEER_SPI_Unlock
+__VENEER_SPI_Unlock: ; 0x060180BC
 	ldr pc, _060180C0 ; =SPI_Unlock
 	.align 2, 0
 _060180C0: .word SPI_Unlock
-	arm_func_end sub_060180BC
+	arm_func_end __VENEER_SPI_Unlock
 
 	arm_func_start FLASH_MakeImage
 FLASH_MakeImage: ; 0x060180C4
@@ -28825,18 +28825,18 @@ FLASH_MakeImage: ; 0x060180C4
 	ldr r0, _060181A8 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x314]
-	bl sub_060180AC
+	bl __VENEER_SPI_Lock
 	bl FLASH_Wait
 	mov r3, #0
 	add r2, sp, #0
 	mov r0, #0x2c
 	mov r1, #2
 	str r3, [sp]
-	bl sub_060180B4
+	bl __VENEER_NVRAM_ReadDataBytes
 	ldr r0, _060181A8 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x314]
-	bl sub_060180BC
+	bl __VENEER_SPI_Unlock
 	ldr r1, [sp]
 	cmp r1, #0xa4
 	blo _0601811C
@@ -28865,18 +28865,18 @@ _06018124:
 	str r0, [r1, #0x318]
 	ldr r0, [r2]
 	ldr r0, [r0, #0x314]
-	bl sub_060180AC
+	bl __VENEER_SPI_Lock
 	bl FLASH_Wait
 	ldr r0, _060181A8 ; =0x0380FFF4
 	ldr r1, [sp]
 	ldr r2, [r0]
 	mov r0, #0x2a
 	ldr r2, [r2, #0x318]
-	bl sub_060180B4
+	bl __VENEER_NVRAM_ReadDataBytes
 	ldr r0, _060181A8 ; =0x0380FFF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x314]
-	bl sub_060180BC
+	bl __VENEER_SPI_Unlock
 	mov r0, #1
 _060181A0:
 	ldmia sp!, {r3, lr}

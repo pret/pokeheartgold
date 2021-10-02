@@ -1835,7 +1835,7 @@ _038020CC:
 	mov r0, #1
 	ldrh r1, [r2]
 	strh r0, [r2]
-	bl sub_03802190
+	bl __VENEER_SVC_Sleep
 	mov r1, r6
 	mov r0, #0
 	bl PMi_SetRegister
@@ -1881,13 +1881,13 @@ _03802188: .word 0x04000134
 _0380218C: .word 0x038093B4
 	arm_func_end PMi_DoSleep
 
-	arm_func_start sub_03802190
-sub_03802190: ; 0x03802190
+	arm_func_start __VENEER_SVC_Sleep
+__VENEER_SVC_Sleep: ; 0x03802190
 	ldr ip, _03802198 ; =SVC_Sleep
 	bx ip
 	.align 2, 0
 _03802198: .word SVC_Sleep
-	arm_func_end sub_03802190
+	arm_func_end __VENEER_SVC_Sleep
 
 	arm_func_start PM_SelfBlinkProc
 PM_SelfBlinkProc: ; 0x0380219C
@@ -6276,7 +6276,7 @@ WvrBegin: ; 0x03805A6C
 	str r3, [sp, #4]
 	str r7, [sp, #0x14]
 	str r2, [sp, #0xc]
-	bl sub_03805B10
+	bl __VENEER_WM_sp_init
 	add sp, sp, #0x50
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
@@ -6286,12 +6286,12 @@ _03805B08: .word 0x0380A4F8
 _03805B0C: .word 0x03809938
 	arm_func_end WvrBegin
 
-	arm_func_start sub_03805B10
-sub_03805B10: ; 0x03805B10
+	arm_func_start __VENEER_WM_sp_init
+__VENEER_WM_sp_init: ; 0x03805B10
 	ldr pc, _03805B14 ; =WM_sp_init
 	.align 2, 0
 _03805B14: .word WM_sp_init
-	arm_func_end sub_03805B10
+	arm_func_end __VENEER_WM_sp_init
 
 	arm_func_start WvrPxiWmSubstituteCallback
 WvrPxiWmSubstituteCallback: ; 0x03805B18
@@ -6523,8 +6523,8 @@ WvrTerminateThread: ; 0x03805DDC
 	ldrneh r0, [r0]
 	cmpne r0, #0
 	beq _03805E10
-	bl sub_03805FE8
-	bl sub_03805FF0
+	bl __VENEER_WMSP_CancelVAlarm
+	bl __VENEER_WMSP_CancelAllAlarms
 _03805E10:
 	mov r6, #0
 	add sb, sp, #0
@@ -6560,7 +6560,7 @@ _03805E28:
 	strh r0, [r1]
 	b _03805E28
 _03805E90:
-	bl sub_03805FF8
+	bl __VENEER_WMSP_GetRequestThread
 	bl WvrCheckThreadRunning
 	cmp r0, #0
 	beq _03805EB8
@@ -6568,7 +6568,7 @@ _03805E90:
 	mov r1, #0
 	mov r2, #1
 	bl OS_SendMessage
-	bl sub_03805FF8
+	bl __VENEER_WMSP_GetRequestThread
 	bl OS_JoinThread
 _03805EB8:
 	add r1, sp, #0
@@ -6590,7 +6590,7 @@ _03805EB8:
 	beq _03805F00
 	bl OS_Terminate
 _03805F00:
-	bl sub_03806000
+	bl __VENEER_WL_Terminate
 	add r5, sp, #0
 	mov r4, #0
 _03805F0C:
@@ -6600,7 +6600,7 @@ _03805F0C:
 	bl OS_ReceiveMessage
 	cmp r0, #0
 	bne _03805F0C
-	bl sub_03806008
+	bl __VENEER_WMSP_GetIndicateThread
 	bl WvrCheckThreadRunning
 	cmp r0, #0
 	beq _03805F4C
@@ -6608,7 +6608,7 @@ _03805F0C:
 	mov r1, #0
 	mov r2, #1
 	bl OS_SendMessage
-	bl sub_03806008
+	bl __VENEER_WMSP_GetIndicateThread
 	bl OS_JoinThread
 _03805F4C:
 	mov r0, #1
@@ -6657,40 +6657,40 @@ _03805FE4: .word 0x03809884
 
 	; veneers into wvram
 
-	arm_func_start sub_03805FE8
-sub_03805FE8: ; 0x03805FE8
+	arm_func_start __VENEER_WMSP_CancelVAlarm
+__VENEER_WMSP_CancelVAlarm: ; 0x03805FE8
 	ldr pc, _03805FEC ; =WMSP_CancelVAlarm
 	.align 2, 0
 _03805FEC: .word WMSP_CancelVAlarm
-	arm_func_end sub_03805FE8
+	arm_func_end __VENEER_WMSP_CancelVAlarm
 
-	arm_func_start sub_03805FF0
-sub_03805FF0: ; 0x03805FF0
+	arm_func_start __VENEER_WMSP_CancelAllAlarms
+__VENEER_WMSP_CancelAllAlarms: ; 0x03805FF0
 	ldr pc, _03805FF4 ; =WMSP_CancelAllAlarms
 	.align 2, 0
 _03805FF4: .word WMSP_CancelAllAlarms
-	arm_func_end sub_03805FF0
+	arm_func_end __VENEER_WMSP_CancelAllAlarms
 
-	arm_func_start sub_03805FF8
-sub_03805FF8: ; 0x03805FF8
+	arm_func_start __VENEER_WMSP_GetRequestThread
+__VENEER_WMSP_GetRequestThread: ; 0x03805FF8
 	ldr pc, _03805FFC ; =WMSP_GetRequestThread
 	.align 2, 0
 _03805FFC: .word WMSP_GetRequestThread
-	arm_func_end sub_03805FF8
+	arm_func_end __VENEER_WMSP_GetRequestThread
 
-	arm_func_start sub_03806000
-sub_03806000: ; 0x03806000
+	arm_func_start __VENEER_WL_Terminate
+__VENEER_WL_Terminate: ; 0x03806000
 	ldr pc, _03806004 ; =WL_Terminate
 	.align 2, 0
 _03806004: .word WL_Terminate
-	arm_func_end sub_03806000
+	arm_func_end __VENEER_WL_Terminate
 
-	arm_func_start sub_03806008
-sub_03806008: ; 0x03806008
+	arm_func_start __VENEER_WMSP_GetIndicateThread
+__VENEER_WMSP_GetIndicateThread: ; 0x03806008
 	ldr pc, _0380600C ; =WMSP_GetIndicateThread
 	.align 2, 0
 _0380600C: .word WMSP_GetIndicateThread
-	arm_func_end sub_03806008
+	arm_func_end __VENEER_WMSP_GetIndicateThread
 
 	; math
 
