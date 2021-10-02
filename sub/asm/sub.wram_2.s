@@ -8,6 +8,7 @@
 	.public WMSP_GetIndicateThread
 	.public WM_sp_init
 	.public OS_IRQTable
+	.public wmspW
 
 	.text
 
@@ -6515,8 +6516,8 @@ _03805DD8: .word wvrStatus
 	arm_func_start WvrTerminateThread
 WvrTerminateThread: ; 0x03805DDC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r0, _03805FDC ; =0x060198A4
-	ldr sl, _03805FE0 ; =0x060188A4
+	ldr r0, _03805FDC ; =wmspW + 0x1000
+	ldr sl, _03805FE0 ; =wmspW
 	ldr r0, [r0, #0x54c]
 	cmp r0, #0
 	addne r0, sl, #0x1000
@@ -6652,8 +6653,8 @@ _03805FA8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_03805FDC: .word 0x060198A4
-_03805FE0: .word 0x060188A4
+_03805FDC: .word wmspW + 0x1000
+_03805FE0: .word wmspW
 _03805FE4: .word wvrStatus
 	arm_func_end WvrTerminateThread
 
@@ -7222,18 +7223,18 @@ _038068E8:
 	bl PXI_SendWordByFifo
 	cmp r0, #0
 	blt _038068E0
-	ldr r0, _03806910 ; =0x06019DCC
+	ldr r0, _03806910 ; =wmspW + 0x1528
 	bl OS_UnlockMutex
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_03806910: .word 0x06019DCC
+_03806910: .word wmspW + 0x1528
 	arm_func_end WMSP_ReturnResult2Wm9
 
 	arm_func_start WMSP_GetBuffer4Callback2Wm9
 WMSP_GetBuffer4Callback2Wm9: ; 0x03806914
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _0380695C ; =0x06019DCC
+	ldr r0, _0380695C ; =wmspW + 0x1528
 	bl OS_LockMutex
 	ldr r4, _03806960 ; =0x027FFF96
 	mov r5, #0x100
@@ -7245,7 +7246,7 @@ _03806934:
 	ldrh r1, [r4]
 	tst r1, #1
 	bne _0380692C
-	ldr r0, _03806964 ; =0x060198A4
+	ldr r0, _03806964 ; =wmspW + 0x1000
 	orr r1, r1, #1
 	strh r1, [r4]
 	ldr r0, [r0, #0x54c]
@@ -7253,9 +7254,9 @@ _03806934:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0380695C: .word 0x06019DCC
+_0380695C: .word wmspW + 0x1528
 _03806960: .word 0x027FFF96
-_03806964: .word 0x060198A4
+_03806964: .word wmspW + 0x1000
 	arm_func_end WMSP_GetBuffer4Callback2Wm9
 
 	arm_func_start WMSP_GetAllowedChannel

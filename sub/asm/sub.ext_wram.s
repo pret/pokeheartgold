@@ -15,39 +15,39 @@ WM_sp_init: ; 0x06000000
 	sub sp, sp, #8
 	mov r4, r1
 	ldr r1, [r4]
-	ldr r3, _0600018C ; =0x060198A4
+	ldr r3, _0600018C ; =wmspW + 0x1000
 	mov r5, r0
 	str r1, [r3, #0x540]
 	ldr r1, [r5, #0x24]
-	ldr r0, _06000190 ; =0x060188A4
+	ldr r0, _06000190 ; =wmspW
 	str r1, [r3, #0x544]
 	ldr r2, [r5, #0x28]
-	ldr r1, _06000194 ; =0x060188C4
+	ldr r1, _06000194 ; =wmspW + 0x20
 	str r2, [r3, #0x548]
 	mov ip, #0
 	str ip, [r3, #0x54c]
 	mov r2, #2
 	str ip, [r3, #0x550]
 	bl __VENEER_OS_InitMessageQueue
-	ldr r0, _06000198 ; =0x060188CC
-	ldr r1, _0600019C ; =0x060188EC
+	ldr r0, _06000198 ; =wmspW + 0x28
+	ldr r1, _0600019C ; =wmspW + 0x48
 	mov r2, #4
 	bl __VENEER_OS_InitMessageQueue
-	ldr r0, _060001A0 ; =0x060188FC
-	ldr r1, _060001A4 ; =0x0601891C
+	ldr r0, _060001A0 ; =wmspW + 0x58
+	ldr r1, _060001A4 ; =wmspW + 0x78
 	mov r2, #4
 	bl __VENEER_OS_InitMessageQueue
-	ldr r0, _060001A8 ; =0x0601892C
-	ldr r1, _060001AC ; =0x0601894C
+	ldr r0, _060001A8 ; =wmspW + 0x88
+	ldr r1, _060001AC ; =wmspW + 0xA8
 	mov r2, #0x20
 	bl __VENEER_OS_InitMessageQueue
-	ldr r1, _06000190 ; =0x060188A4
-	ldr r0, _06000198 ; =0x060188CC
+	ldr r1, _06000190 ; =wmspW
+	ldr r0, _06000198 ; =wmspW + 0x28
 	str r1, [r5, #0x10]
 	str r0, [r5, #0x14]
 	ldr r2, [r4, #8]
-	ldr r1, _0600018C ; =0x060198A4
-	ldr r0, _060001B0 ; =0x06019DCC
+	ldr r1, _0600018C ; =wmspW + 0x1000
+	ldr r0, _060001B0 ; =wmspW + 0x1528
 	str r2, [r1, #0x578]
 	ldr r2, [r4, #0x18]
 	str r2, [r1, #0x57c]
@@ -66,7 +66,7 @@ WM_sp_init: ; 0x06000000
 	ldr r0, _060001B4 ; =wmspIndicateThread
 	str r1, [sp, #4]
 	ldr r1, _060001B8 ; =WMSP_IndicateThread
-	ldr r3, _060001B0 ; =0x06019DCC
+	ldr r3, _060001B0 ; =wmspW + 0x1528
 	mov r2, #0
 	bl __VENEER_OS_CreateThread
 	ldr r0, _060001B4 ; =wmspIndicateThread
@@ -77,13 +77,13 @@ WM_sp_init: ; 0x06000000
 	ldr r0, _060001BC ; =wmspRequestThread
 	str r1, [sp, #4]
 	ldr r1, _060001C0 ; =WMSP_RequestThread
-	ldr r3, _060001C4 ; =0x060199CC
+	ldr r3, _060001C4 ; =wmspW + 0x1128
 	mov r2, #0
 	bl __VENEER_OS_CreateThread
 	ldr r0, _060001BC ; =wmspRequestThread
 	bl __VENEER_OS_WakeupThreadDirect
 	mov r3, #0
-	ldr r1, _06000190 ; =0x060188A4
+	ldr r1, _06000190 ; =wmspW
 	mov r2, r3
 _06000128:
 	add r0, r1, r3
@@ -92,7 +92,7 @@ _06000128:
 	strb r2, [r0, #0x554]
 	cmp r3, #0x20
 	blt _06000128
-	ldr r0, _0600018C ; =0x060198A4
+	ldr r0, _0600018C ; =wmspW + 0x1000
 	str r2, [r0, #0x574]
 	bl __VENEER_OS_IsVAlarmAvailable
 	cmp r0, #0
@@ -113,21 +113,21 @@ _06000158:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600018C: .word 0x060198A4
-_06000190: .word 0x060188A4
-_06000194: .word 0x060188C4
-_06000198: .word 0x060188CC
-_0600019C: .word 0x060188EC
-_060001A0: .word 0x060188FC
-_060001A4: .word 0x0601891C
-_060001A8: .word 0x0601892C
-_060001AC: .word 0x0601894C
-_060001B0: .word 0x06019DCC
+_0600018C: .word wmspW + 0x1000
+_06000190: .word wmspW
+_06000194: .word wmspW + 0x20
+_06000198: .word wmspW + 0x28
+_0600019C: .word wmspW + 0x48
+_060001A0: .word wmspW + 0x58
+_060001A4: .word wmspW + 0x78
+_060001A8: .word wmspW + 0x88
+_060001AC: .word wmspW + 0xA8
+_060001B0: .word wmspW + 0x1528
 _060001B4: .word wmspIndicateThread
 _060001B8: .word WMSP_IndicateThread
 _060001BC: .word wmspRequestThread
 _060001C0: .word WMSP_RequestThread
-_060001C4: .word 0x060199CC
+_060001C4: .word wmspW + 0x1128
 _060001C8: .word WmspPxiCallback
 	arm_func_end WM_sp_init
 
@@ -191,10 +191,10 @@ _06000208: .word PXI_SetFifoRecvCallback
 WMSP_WlRequest: ; 0x0600020C
 	stmdb sp!, {r3, lr}
 	mov r1, r0
-	ldr r0, _0600027C ; =0x060188A4
+	ldr r0, _0600027C ; =wmspW
 	mov r2, #1
 	bl __VENEER_OS_SendMessage
-	ldr r0, _06000280 ; =0x060188FC
+	ldr r0, _06000280 ; =wmspW + 0x58
 	add r1, sp, #0
 	mov r2, #1
 	bl __VENEER_OS_ReceiveMessage
@@ -219,8 +219,8 @@ _06000270:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600027C: .word 0x060188A4
-_06000280: .word 0x060188FC
+_0600027C: .word wmspW
+_06000280: .word wmspW + 0x58
 	arm_func_end WMSP_WlRequest
 
 	arm_func_start __VENEER_OS_SendMessage
@@ -271,12 +271,12 @@ WmspPxiCallback: ; 0x060002B4
 	mov r4, r1
 	cmp r2, #0
 	bne _0600030C
-	ldr r0, _06000314 ; =0x0601892C
+	ldr r0, _06000314 ; =wmspW + 0x88
 	mov r2, #0
 	bl __VENEER_OS_SendMessage
 	cmp r0, #0
 	bne _0600030C
-	ldr r0, _06000318 ; =0x060198A4
+	ldr r0, _06000318 ; =wmspW + 0x1000
 	ldr r0, [r0, #0x54c]
 	cmp r0, #0
 	beq _0600030C
@@ -293,13 +293,13 @@ _0600030C:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06000314: .word 0x0601892C
-_06000318: .word 0x060198A4
+_06000314: .word wmspW + 0x88
+_06000318: .word wmspW + 0x1000
 	arm_func_end WmspPxiCallback
 
 	arm_func_start WMSP_CheckMacAddress
 WMSP_CheckMacAddress: ; 0x0600031C
-	ldr r1, _06000378 ; =0x060198A4
+	ldr r1, _06000378 ; =wmspW + 0x1000
 	ldrb r2, [r0]
 	ldr r3, [r1, #0x550]
 	ldrb r1, [r3, #0xe0]
@@ -323,7 +323,7 @@ WMSP_CheckMacAddress: ; 0x0600031C
 	movne r0, #0
 	bx lr
 	.align 2, 0
-_06000378: .word 0x060198A4
+_06000378: .word wmspW + 0x1000
 	arm_func_end WMSP_CheckMacAddress
 
 	arm_func_start WMSP_CopyParentParam
@@ -392,7 +392,7 @@ _06000444: .word MI_CpuCopy8
 	arm_func_start WMSP_SetAllParams
 WMSP_SetAllParams: ; 0x06000448
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r2, _06000590 ; =0x060198A4
+	ldr r2, _06000590 ; =wmspW + 0x1000
 	mov r5, r1
 	ldr r4, [r2, #0x550]
 	mov r6, r0
@@ -479,7 +479,7 @@ _06000588:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06000590: .word 0x060198A4
+_06000590: .word wmspW + 0x1000
 _06000594: .word 0x0000FFFF
 	arm_func_end WMSP_SetAllParams
 
@@ -492,8 +492,8 @@ _0600059C: .word MIi_CpuClear16
 
 	arm_func_start WMSP_AddRssiToList
 WMSP_AddRssiToList: ; 0x060005A0
-	ldr r1, _060005D8 ; =0x060198A4
-	ldr r3, _060005DC ; =0x06019DF8
+	ldr r1, _060005D8 ; =wmspW + 0x1000
+	ldr r3, _060005DC ; =wmspW + 0x1554
 	ldr ip, [r1, #0x574]
 	ldr r2, _060005E0 ; =0x027FFF98
 	strb r0, [r3, ip]
@@ -507,14 +507,14 @@ WMSP_AddRssiToList: ; 0x060005A0
 	strh r0, [r2]
 	bx lr
 	.align 2, 0
-_060005D8: .word 0x060198A4
-_060005DC: .word 0x06019DF8
+_060005D8: .word wmspW + 0x1000
+_060005DC: .word wmspW + 0x1554
 _060005E0: .word 0x027FFF98
 	arm_func_end WMSP_AddRssiToList
 
 	arm_func_start WMSP_FillRssiIntoList
 WMSP_FillRssiIntoList: ; 0x060005E4
-	ldr r2, _06000614 ; =0x060188A4
+	ldr r2, _06000614 ; =wmspW
 	mov r3, #0
 _060005EC:
 	add r1, r2, r3
@@ -523,18 +523,18 @@ _060005EC:
 	strb r0, [r1, #0x554]
 	cmp r3, #0x20
 	blt _060005EC
-	ldr r0, _06000618 ; =0x060198A4
+	ldr r0, _06000618 ; =wmspW + 0x1000
 	mov r1, #0
 	str r1, [r0, #0x574]
 	bx lr
 	.align 2, 0
-_06000614: .word 0x060188A4
-_06000618: .word 0x060198A4
+_06000614: .word wmspW
+_06000618: .word wmspW + 0x1000
 	arm_func_end WMSP_FillRssiIntoList
 
 	arm_func_start WMSP_GetAverageLinkLevel
 WMSP_GetAverageLinkLevel: ; 0x0600061C
-	ldr r1, _06000650 ; =0x060188A4
+	ldr r1, _06000650 ; =wmspW
 	mov r3, #0
 	mov r2, r3
 _06000628:
@@ -549,13 +549,13 @@ _06000628:
 	mov r0, r3, lsr #5
 	bx ip
 	.align 2, 0
-_06000650: .word 0x060188A4
+_06000650: .word wmspW
 _06000654: .word WMSP_GetLinkLevel
 	arm_func_end WMSP_GetAverageLinkLevel
 
 	arm_func_start WMSP_GetLinkLevel
 WMSP_GetLinkLevel: ; 0x06000658
-	ldr r1, _060006BC ; =0x060198A4
+	ldr r1, _060006BC ; =wmspW + 0x1000
 	ldr r1, [r1, #0x54c]
 	ldrb r1, [r1, #0x53]
 	cmp r1, #8
@@ -582,7 +582,7 @@ _06000694:
 	movhs r0, #3
 	bx lr
 	.align 2, 0
-_060006BC: .word 0x060198A4
+_060006BC: .word wmspW + 0x1000
 	arm_func_end WMSP_GetLinkLevel
 
 	arm_func_start WMSP_SetThreadPriorityLow
@@ -591,15 +591,15 @@ WMSP_SetThreadPriorityLow: ; 0x060006C0
 	bl __VENEER_OS_DisableInterrupts
 	mov r4, r0
 	bl __VENEER_OS_DisableScheduler
-	ldr r1, _06000714 ; =0x060198A4
+	ldr r1, _06000714 ; =wmspW + 0x1000
 	ldr r0, _06000718 ; =wmspRequestThread
 	ldr r1, [r1, #0x58c]
 	bl __VENEER_OS_SetThreadPriority
 	bl WL_GetThreadStruct
-	ldr r1, _06000714 ; =0x060198A4
+	ldr r1, _06000714 ; =wmspW + 0x1000
 	ldr r1, [r1, #0x588]
 	bl __VENEER_OS_SetThreadPriority
-	ldr r1, _06000714 ; =0x060198A4
+	ldr r1, _06000714 ; =wmspW + 0x1000
 	ldr r0, _0600071C ; =wmspIndicateThread
 	ldr r1, [r1, #0x584]
 	bl __VENEER_OS_SetThreadPriority
@@ -609,7 +609,7 @@ WMSP_SetThreadPriorityLow: ; 0x060006C0
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06000714: .word 0x060198A4
+_06000714: .word wmspW + 0x1000
 _06000718: .word wmspRequestThread
 _0600071C: .word wmspIndicateThread
 	arm_func_end WMSP_SetThreadPriorityLow
@@ -655,15 +655,15 @@ WMSP_SetThreadPriorityHigh: ; 0x06000748
 	bl __VENEER_OS_DisableInterrupts
 	mov r4, r0
 	bl __VENEER_OS_DisableScheduler
-	ldr r1, _0600079C ; =0x060198A4
+	ldr r1, _0600079C ; =wmspW + 0x1000
 	ldr r0, _060007A0 ; =wmspIndicateThread
 	ldr r1, [r1, #0x578]
 	bl __VENEER_OS_SetThreadPriority
 	bl WL_GetThreadStruct
-	ldr r1, _0600079C ; =0x060198A4
+	ldr r1, _0600079C ; =wmspW + 0x1000
 	ldr r1, [r1, #0x57c]
 	bl __VENEER_OS_SetThreadPriority
-	ldr r1, _0600079C ; =0x060198A4
+	ldr r1, _0600079C ; =wmspW + 0x1000
 	ldr r0, _060007A4 ; =wmspRequestThread
 	ldr r1, [r1, #0x580]
 	bl __VENEER_OS_SetThreadPriority
@@ -673,7 +673,7 @@ WMSP_SetThreadPriorityHigh: ; 0x06000748
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600079C: .word 0x060198A4
+_0600079C: .word wmspW + 0x1000
 _060007A0: .word wmspIndicateThread
 _060007A4: .word wmspRequestThread
 	arm_func_end WMSP_SetThreadPriorityHigh
@@ -699,7 +699,7 @@ WMSP_GetInternalRequestBuf: ; 0x060007C0
 	stmdb sp!, {r4, lr}
 	mov r4, #0
 	bl __VENEER_OS_DisableInterrupts
-	ldr r1, _06000828 ; =0x060198A4
+	ldr r1, _06000828 ; =wmspW + 0x1000
 	ldr r2, [r1, #0x54c]
 	cmp r2, #0
 	beq _06000818
@@ -727,12 +727,12 @@ _06000818:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06000828: .word 0x060198A4
+_06000828: .word wmspW + 0x1000
 	arm_func_end WMSP_GetInternalRequestBuf
 
 	arm_func_start WMSP_ResetSizeVars
 WMSP_ResetSizeVars: ; 0x0600082C
-	ldr r0, _0600085C ; =0x060198A4
+	ldr r0, _0600085C ; =wmspW + 0x1000
 	mov r1, #0
 	ldr r0, [r0, #0x550]
 	strh r1, [r0, #0x38]
@@ -745,12 +745,12 @@ WMSP_ResetSizeVars: ; 0x0600082C
 	strh r1, [r0, #0x36]
 	bx lr
 	.align 2, 0
-_0600085C: .word 0x060198A4
+_0600085C: .word wmspW + 0x1000
 	arm_func_end WMSP_ResetSizeVars
 
 	arm_func_start WMSP_SetParentMaxSize
 WMSP_SetParentMaxSize: ; 0x06000860
-	ldr r1, _060008AC ; =0x060198A4
+	ldr r1, _060008AC ; =wmspW + 0x1000
 	cmp r0, #0x200
 	ldr r2, [r1, #0x550]
 	movhi r0, #0x200
@@ -770,12 +770,12 @@ WMSP_SetParentMaxSize: ; 0x06000860
 	strneh r0, [r2, #0x3a]
 	bx lr
 	.align 2, 0
-_060008AC: .word 0x060198A4
+_060008AC: .word wmspW + 0x1000
 	arm_func_end WMSP_SetParentMaxSize
 
 	arm_func_start WMSP_SetChildMaxSize
 WMSP_SetChildMaxSize: ; 0x060008B0
-	ldr r1, _060008FC ; =0x060198A4
+	ldr r1, _060008FC ; =wmspW + 0x1000
 	cmp r0, #0x200
 	ldr r2, [r1, #0x550]
 	movhi r0, #0x200
@@ -795,12 +795,12 @@ WMSP_SetChildMaxSize: ; 0x060008B0
 	strneh r0, [r2, #0x38]
 	bx lr
 	.align 2, 0
-_060008FC: .word 0x060198A4
+_060008FC: .word wmspW + 0x1000
 	arm_func_end WMSP_SetChildMaxSize
 
 	arm_func_start WMSP_SetParentSize
 WMSP_SetParentSize: ; 0x06000900
-	ldr r1, _06000928 ; =0x060198A4
+	ldr r1, _06000928 ; =wmspW + 0x1000
 	ldr r2, [r1, #0x550]
 	strh r0, [r2, #0x30]
 	add r1, r2, #0x100
@@ -811,12 +811,12 @@ WMSP_SetParentSize: ; 0x06000900
 	strneh r0, [r2, #0x3a]
 	bx lr
 	.align 2, 0
-_06000928: .word 0x060198A4
+_06000928: .word wmspW + 0x1000
 	arm_func_end WMSP_SetParentSize
 
 	arm_func_start WMSP_SetChildSize
 WMSP_SetChildSize: ; 0x0600092C
-	ldr r1, _06000954 ; =0x060198A4
+	ldr r1, _06000954 ; =wmspW + 0x1000
 	ldr r2, [r1, #0x550]
 	strh r0, [r2, #0x32]
 	add r1, r2, #0x100
@@ -827,7 +827,7 @@ WMSP_SetChildSize: ; 0x0600092C
 	strneh r0, [r2, #0x38]
 	bx lr
 	.align 2, 0
-_06000954: .word 0x060198A4
+_06000954: .word wmspW + 0x1000
 	arm_func_end WMSP_SetChildSize
 
 	arm_func_start WMSP_IndicateThread
@@ -835,7 +835,7 @@ WMSP_IndicateThread: ; 0x06000958
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x28
 _06000960:
-	ldr r0, _060017D4 ; =0x060188A4
+	ldr r0, _060017D4 ; =wmspW
 	add r1, sp, #0x24
 	add r0, r0, #0x28
 	mov r2, #1
@@ -855,7 +855,7 @@ _06000988:
 	bne _06001ABC
 	tst r1, #0x80
 	beq _06001ABC
-	ldr r0, _060017D8 ; =0x060198A4
+	ldr r0, _060017D8 ; =wmspW + 0x1000
 	ldr r1, [r0, #0x54c]
 	cmp r1, #0
 	ldrne r8, [r0, #0x550]
@@ -1100,7 +1100,7 @@ _06000D00:
 	mov r2, #6
 	str r3, [r4]
 	bl __VENEER_MI_CpuCopy8
-	ldr r0, _060017E0 ; =0x0601892C
+	ldr r0, _060017E0 ; =wmspW + 0x88
 	mov r1, r4
 	mov r2, #0
 	bl __VENEER_OS_SendMessage
@@ -1244,7 +1244,7 @@ _06000F0C:
 	mov r0, #1
 	ldr r3, _060017E8 ; =0x00008002
 	str r0, [r1, #4]
-	ldr r0, _060017E0 ; =0x0601892C
+	ldr r0, _060017E0 ; =wmspW + 0x88
 	mov r2, #0
 	str r3, [r1, #8]
 	bl __VENEER_OS_SendMessage
@@ -1263,7 +1263,7 @@ _06000F7C:
 	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06001AB0
 _06000FB0:
-	ldr r0, _060017D8 ; =0x060198A4
+	ldr r0, _060017D8 ; =wmspW + 0x1000
 	ldr r0, [r0, #0x550]
 	ldrh r0, [r0, #0xc2]
 	cmp r0, #0
@@ -1573,7 +1573,7 @@ _06001414:
 	mov r1, r6
 	add r0, sb, #0x10
 	bl __VENEER_MI_CpuCopy8
-	ldr r0, _060017D8 ; =0x060198A4
+	ldr r0, _060017D8 ; =wmspW + 0x1000
 	ldrh r1, [r6]
 	ldr r7, [r0, #0x550]
 	cmp r1, #0
@@ -1687,7 +1687,7 @@ _06001568:
 	str r0, [r1, #4]
 	ldr r0, _060017FC ; =0x00008001
 	str r0, [r1, #8]
-	ldr r0, _060017E0 ; =0x0601892C
+	ldr r0, _060017E0 ; =wmspW + 0x88
 	bl __VENEER_OS_SendMessage
 _06001610:
 	cmp r0, #0
@@ -1810,10 +1810,10 @@ _060017B8:
 	bl __VENEER_OS_RestoreInterrupts
 	b _06001AB0
 	.align 2, 0
-_060017D4: .word 0x060188A4
-_060017D8: .word 0x060198A4
+_060017D4: .word wmspW
+_060017D8: .word wmspW + 0x1000
 _060017DC: .word 0x00000182
-_060017E0: .word 0x0601892C
+_060017E0: .word wmspW + 0x88
 _060017E4: .word 0x027FFF98
 _060017E8: .word 0x00008002
 _060017EC: .word 0x000005E4
@@ -1989,7 +1989,7 @@ _06001A2C:
 	moveq r0, #1
 	streq r0, [r1, #4]
 _06001A74:
-	ldr r0, _060017E0 ; =0x0601892C
+	ldr r0, _060017E0 ; =wmspW + 0x88
 	mov r2, #0
 	bl __VENEER_OS_SendMessage
 _06001A80:
@@ -2010,7 +2010,7 @@ _06001AB0:
 	bl WmspFreeBufOfWL
 	b _06000960
 _06001ABC:
-	ldr r0, _060017D4 ; =0x060188A4
+	ldr r0, _060017D4 ; =wmspW
 	mov r1, sb
 	add r0, r0, #0x58
 	mov r2, #1
@@ -2073,7 +2073,7 @@ WmspFreeBufOfWL: ; 0x06001B1C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl __VENEER_OS_DisableInterrupts
-	ldr r1, _06001B50 ; =0x060198A4
+	ldr r1, _06001B50 ; =wmspW + 0x1000
 	mov r4, r0
 	ldr r0, [r1, #0x544]
 	ldr r1, [r1, #0x548]
@@ -2084,7 +2084,7 @@ WmspFreeBufOfWL: ; 0x06001B1C
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06001B50: .word 0x060198A4
+_06001B50: .word wmspW + 0x1000
 	arm_func_end WmspFreeBufOfWL
 
 	arm_func_start __VENEER_OS_FreeToHeap
@@ -2106,7 +2106,7 @@ WMSP_GetRssi8_06001B5C: ; 0x06001B5C
 	arm_func_start WMSP_RequestResumeMP
 WMSP_RequestResumeMP: ; 0x06001B70
 	stmdb sp!, {r4, lr}
-	ldr r0, _06001BE8 ; =0x060198A4
+	ldr r0, _06001BE8 ; =wmspW + 0x1000
 	ldr r4, [r0, #0x550]
 	bl WMSP_GetInternalRequestBuf
 	movs r1, r0
@@ -2115,7 +2115,7 @@ WMSP_RequestResumeMP: ; 0x06001B70
 	mov r0, #0x2d
 	str r0, [r1]
 	ldrh r3, [r4, #0x68]
-	ldr r0, _06001BEC ; =0x0601892C
+	ldr r0, _06001BEC ; =wmspW + 0x88
 	mov r2, #0
 	str r3, [r1, #4]
 	bl __VENEER_OS_SendMessage
@@ -2138,8 +2138,8 @@ _06001BE0:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06001BE8: .word 0x060198A4
-_06001BEC: .word 0x0601892C
+_06001BE8: .word wmspW + 0x1000
+_06001BEC: .word wmspW + 0x88
 	arm_func_end WMSP_RequestResumeMP
 
 	arm_func_start WmspMPParentIntervalAlarmCallback
@@ -2158,7 +2158,7 @@ WmspKickMPParent: ; 0x06001C04
 	mov r5, r0
 	bl WMSP_GetInternalRequestBuf
 	movs r1, r0
-	ldr r4, _06001C80 ; =0x060188A4
+	ldr r4, _06001C80 ; =wmspW
 	moveq r0, #0
 	beq _06001C38
 	mov r0, #0x2b
@@ -2188,21 +2188,21 @@ _06001C78:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06001C80: .word 0x060188A4
+_06001C80: .word wmspW
 	arm_func_end WmspKickMPParent
 
 	arm_func_start WmspMaMultiPollAckAlarmCallback
 WmspMaMultiPollAckAlarmCallback: ; 0x06001C84
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _06001D0C ; =0x060198A4
+	ldr r1, _06001D0C ; =wmspW + 0x1000
 	mov r2, #0x40
 	ldr r0, [r1, #0x544]
 	ldr r1, [r1, #0x548]
-	ldr r5, _06001D10 ; =0x060188A4
+	ldr r5, _06001D10 ; =wmspW
 	bl __VENEER_OS_AllocFromHeap
 	mov r4, r0
 	ldr r1, _06001D14 ; =0x00000185
-	ldr r0, _06001D18 ; =0x060188CC
+	ldr r0, _06001D18 ; =wmspW + 0x28
 	strh r1, [r4, #0xc]
 	mov r2, #0
 	mov r1, r4
@@ -2229,10 +2229,10 @@ _06001D04:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06001D0C: .word 0x060198A4
-_06001D10: .word 0x060188A4
+_06001D0C: .word wmspW + 0x1000
+_06001D10: .word wmspW
 _06001D14: .word 0x00000185
-_06001D18: .word 0x060188CC
+_06001D18: .word wmspW + 0x28
 	arm_func_end WmspMaMultiPollAckAlarmCallback
 
 	arm_func_start __VENEER_OS_AllocFromHeap
@@ -2254,13 +2254,13 @@ _06001D2C: .word WmspKickMPChild
 WmspKickMPChild: ; 0x06001D30
 	stmdb sp!, {r4, lr}
 	bl WMSP_GetInternalRequestBuf
-	ldr r2, _06001DB8 ; =0x060198A4
+	ldr r2, _06001DB8 ; =wmspW + 0x1000
 	movs r1, r0
 	ldr r0, [r2, #0x550]
 	mov r2, #0
 	strh r2, [r0, #0x5e]
 	strh r2, [r0, #0x60]
-	ldr r4, _06001DBC ; =0x060188A4
+	ldr r4, _06001DBC ; =wmspW
 	strh r2, [r0, #0x88]
 	beq _06001D70
 	mov r3, #0x2c
@@ -2289,8 +2289,8 @@ _06001DB0:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06001DB8: .word 0x060198A4
-_06001DBC: .word 0x060188A4
+_06001DB8: .word wmspW + 0x1000
+_06001DBC: .word wmspW
 	arm_func_end WmspKickMPChild
 
 	arm_func_start WMSP_InitAlarm
@@ -2331,9 +2331,9 @@ _06001E0C: .word wmspMPAckAlarm
 	arm_func_start WMSP_RequestThread
 WMSP_RequestThread: ; 0x06001E10
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r0, _06001EA8 ; =0x060198A4
+	ldr r0, _06001EA8 ; =wmspW + 0x1000
 	mov r6, #1
-	ldr r8, _06001EAC ; =0x060188A4
+	ldr r8, _06001EAC ; =wmspW
 	ldr sb, [r0, #0x550]
 	ldr r5, _06001EB0 ; =WmspRequestFuncTable
 	add r7, sp, #0
@@ -2373,8 +2373,8 @@ _06001EA0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06001EA8: .word 0x060198A4
-_06001EAC: .word 0x060188A4
+_06001EA8: .word wmspW + 0x1000
+_06001EAC: .word wmspW
 _06001EB0: .word WmspRequestFuncTable
 	arm_func_end WMSP_RequestThread
 
@@ -3362,7 +3362,7 @@ WMSP_Initialize: ; 0x06002B40
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r4, [r0, #4]
-	ldr r1, _06002BDC ; =0x060198A4
+	ldr r1, _06002BDC ; =wmspW + 0x1000
 	str r4, [r1, #0x54c]
 	ldr r2, [r0, #8]
 	str r2, [r1, #0x550]
@@ -3401,14 +3401,14 @@ _06002BD0:
 	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_06002BDC: .word 0x060198A4
+_06002BDC: .word wmspW + 0x1000
 	arm_func_end WMSP_Initialize
 
 	arm_func_start WMSP_Reset
 WMSP_Reset: ; 0x06002BE0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x210
-	ldr r0, _06002FAC ; =0x060198A4
+	ldr r0, _06002FAC ; =wmspW + 0x1000
 	mov r4, #0
 	ldr r8, [r0, #0x550]
 	bl __VENEER_OS_DisableInterrupts
@@ -3679,7 +3679,7 @@ _06002FA0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06002FAC: .word 0x060198A4
+_06002FAC: .word wmspW + 0x1000
 _06002FB0: .word 0x0000FFFF
 _06002FB4: .word 0x00000302
 _06002FB8: .word 0x0000020E
@@ -3706,7 +3706,7 @@ WmspError_06002FC0: ; 0x06002FC0
 WMSP_End: ; 0x06002FF0
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x200
-	ldr r0, _0600309C ; =0x060198A4
+	ldr r0, _0600309C ; =wmspW + 0x1000
 	ldr r4, [r0, #0x550]
 	ldrh r0, [r4]
 	cmp r0, #2
@@ -3751,7 +3751,7 @@ _06003090:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_0600309C: .word 0x060198A4
+_0600309C: .word wmspW + 0x1000
 	arm_func_end WMSP_End
 
 	arm_func_start __VENEER_PM_SetLEDPattern
@@ -3765,7 +3765,7 @@ _060030A4: .word PM_SetLEDPattern
 WMSP_SetParentParam: ; 0x060030A8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x200
-	ldr r1, _06003160 ; =0x060198A4
+	ldr r1, _06003160 ; =wmspW + 0x1000
 	ldr r0, [r0, #4]
 	ldr r4, [r1, #0x550]
 	mov r2, #0x40
@@ -3813,7 +3813,7 @@ _06003154:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06003160: .word 0x060198A4
+_06003160: .word wmspW + 0x1000
 _06003164: .word 0x00000212
 	arm_func_end WMSP_SetParentParam
 
@@ -3821,7 +3821,7 @@ _06003164: .word 0x00000212
 WMSP_StartParent: ; 0x06003168
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x2b8
-	ldr r1, _060033EC ; =0x060198A4
+	ldr r1, _060033EC ; =wmspW + 0x1000
 	add r5, sp, #0xb8
 	ldr r4, [r1, #0x550]
 	ldrh r1, [r4]
@@ -3988,7 +3988,7 @@ _060033E0:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_060033EC: .word 0x060198A4
+_060033EC: .word wmspW + 0x1000
 _060033F0: .word 0x00000303
 	arm_func_end WMSP_StartParent
 
@@ -4015,7 +4015,7 @@ WmspError_060033F4: ; 0x060033F4
 WMSP_EndParent: ; 0x06003430
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x208
-	ldr r0, _060035EC ; =0x060198A4
+	ldr r0, _060035EC ; =wmspW + 0x1000
 	ldr sl, [r0, #0x550]
 	ldrh r0, [sl]
 	cmp r0, #7
@@ -4135,7 +4135,7 @@ _060035E0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_060035EC: .word 0x060198A4
+_060035EC: .word wmspW + 0x1000
 _060035F0: .word 0x00000302
 	arm_func_end WMSP_EndParent
 
@@ -4160,7 +4160,7 @@ WmspError_060035F4: ; 0x060035F4
 WMSP_StartScan: ; 0x06003628
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x248
-	ldr r1, _06003978 ; =0x060198A4
+	ldr r1, _06003978 ; =wmspW + 0x1000
 	add r4, sp, #0x48
 	ldr r7, [r1, #0x550]
 	ldrh r1, [r7]
@@ -4384,7 +4384,7 @@ _0600396C:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06003978: .word 0x060198A4
+_06003978: .word wmspW + 0x1000
 _0600397C: .word 0x0000FFFF
 _06003980: .word 0x00000303
 _06003984: .word 0x0000011E
@@ -4416,7 +4416,7 @@ WMSP_StartScanEx: ; 0x060039B8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc8
 	sub sp, sp, #0x400
-	ldr r1, _06003EB8 ; =0x060198A4
+	ldr r1, _06003EB8 ; =wmspW + 0x1000
 	mov sb, r0
 	ldr r8, [r1, #0x550]
 	ldrh r0, [r8]
@@ -4763,7 +4763,7 @@ _06003EA8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06003EB8: .word 0x060198A4
+_06003EB8: .word wmspW + 0x1000
 _06003EBC: .word 0x0000FFFF
 _06003EC0: .word 0x00000303
 _06003EC4: .word 0x0000020E
@@ -4803,7 +4803,7 @@ WmspError_06003ED4: ; 0x06003ED4
 WMSP_EndScan: ; 0x06003F1C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x200
-	ldr r0, _06003FE4 ; =0x060198A4
+	ldr r0, _06003FE4 ; =wmspW + 0x1000
 	add r4, sp, #0
 	ldr r5, [r0, #0x550]
 	ldrh r0, [r5]
@@ -4857,7 +4857,7 @@ _06003FD8:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06003FE4: .word 0x060198A4
+_06003FE4: .word wmspW + 0x1000
 _06003FE8: .word 0x00000302
 _06003FEC: .word 0x0000020E
 	arm_func_end WMSP_EndScan
@@ -4883,7 +4883,7 @@ WmspError_06003FF0: ; 0x06003FF0
 WMSP_StartConnectEx: ; 0x06004024
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x250
-	ldr r1, _060045B4 ; =0x060198A4
+	ldr r1, _060045B4 ; =wmspW + 0x1000
 	add r4, sp, #0x50
 	ldr r7, [r1, #0x550]
 	ldr r5, [r1, #0x54c]
@@ -5258,7 +5258,7 @@ _060045A8:
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_060045B4: .word 0x060198A4
+_060045B4: .word wmspW + 0x1000
 _060045B8: .word 0x00000216
 _060045BC: .word 0x00002710
 _060045C0: .word 0x0000020B
@@ -5322,7 +5322,7 @@ _06004658:
 WMSP_DisconnectCore: ; 0x06004664
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x220
-	ldr r3, _06004BE8 ; =0x060198A4
+	ldr r3, _06004BE8 ; =wmspW + 0x1000
 	ldr r4, [r0, #4]
 	movs sl, r1
 	ldrne r0, [r0, #8]
@@ -5716,14 +5716,14 @@ _06004BDC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06004BE8: .word 0x060198A4
+_06004BE8: .word wmspW + 0x1000
 _06004BEC: .word 0x00000302
 	arm_func_end WMSP_DisconnectCore
 
 	arm_func_start WMSP_IndicateDisconnectionFromMyself
 WMSP_IndicateDisconnectionFromMyself: ; 0x06004BF0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r3, _06004CAC ; =0x060198A4
+	ldr r3, _06004CAC ; =wmspW + 0x1000
 	mov r8, r0
 	ldr r5, [r3, #0x550]
 	mov r7, r1
@@ -5772,7 +5772,7 @@ _06004C9C:
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_06004CAC: .word 0x060198A4
+_06004CAC: .word wmspW + 0x1000
 _06004CB0: .word 0x0000F001
 	arm_func_end WMSP_IndicateDisconnectionFromMyself
 
@@ -5822,7 +5822,7 @@ WmspIndError: ; 0x06004CF8
 WMSP_StartMP: ; 0x06004D3C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x204
-	ldr r1, _060050C4 ; =0x060198A4
+	ldr r1, _060050C4 ; =wmspW + 0x1000
 	mov sl, r0
 	ldr r8, [r1, #0x550]
 	ldr fp, [sl, #4]
@@ -5830,7 +5830,7 @@ WMSP_StartMP: ; 0x06004D3C
 	ldr r4, [sl, #8]
 	ldr r5, [sl, #0xc]
 	ldr r6, [sl, #0x10]
-	ldr r0, _060050C8 ; =0x060188A4
+	ldr r0, _060050C8 ; =wmspW
 	cmp r1, #0
 	mov r7, #0
 	bne _06004DC0
@@ -5895,7 +5895,7 @@ _06004E3C:
 	add r0, sl, #0x14
 	mov r1, #0
 	bl WMSP_SetMPParameterCore
-	ldr r0, _060050C4 ; =0x060198A4
+	ldr r0, _060050C4 ; =wmspW + 0x1000
 	ldr r7, [sl, #0x30]
 	ldr sb, [r0, #0x550]
 	ldrh r0, [sb]
@@ -6057,8 +6057,8 @@ _060050B8:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_060050C4: .word 0x060198A4
-_060050C8: .word 0x060188A4
+_060050C4: .word wmspW + 0x1000
+_060050C8: .word wmspW
 _060050CC: .word 0x0000FFFF
 	arm_func_end WMSP_StartMP
 
@@ -6066,7 +6066,7 @@ _060050CC: .word 0x0000FFFF
 WMSP_SetMPData: ; 0x060050D0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
-	ldr r1, _06005204 ; =0x060198A4
+	ldr r1, _06005204 ; =wmspW + 0x1000
 	ldr r2, [r0, #0x10]
 	ldr sl, [r1, #0x550]
 	ldr r5, [r0, #8]
@@ -6144,7 +6144,7 @@ _060051F8:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06005204: .word 0x060198A4
+_06005204: .word wmspW + 0x1000
 _06005208: .word 0x0000FFFF
 	arm_func_end WMSP_SetMPData
 
@@ -6152,7 +6152,7 @@ _06005208: .word 0x0000FFFF
 WMSP_EndMP: ; 0x0600520C
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x200
-	ldr r0, _0600531C ; =0x060198A4
+	ldr r0, _0600531C ; =wmspW + 0x1000
 	mov r4, #0
 	ldr r6, [r0, #0x550]
 	ldrh r0, [r6]
@@ -6225,7 +6225,7 @@ _06005310:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600531C: .word 0x060198A4
+_0600531C: .word wmspW + 0x1000
 _06005320: .word 0x00000216
 _06005324: .word 0x0000FFFF
 	arm_func_end WMSP_EndMP
@@ -6250,7 +6250,7 @@ WmspError_06005328: ; 0x06005328
 	arm_func_start WMSP_StartDCF
 WMSP_StartDCF: ; 0x0600535C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _060053E4 ; =0x060198A4
+	ldr r1, _060053E4 ; =wmspW + 0x1000
 	ldr r2, [r0, #8]
 	ldr r4, [r1, #0x550]
 	mov r5, r2, lsl #0x10
@@ -6284,14 +6284,14 @@ WMSP_StartDCF: ; 0x0600535C
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_060053E4: .word 0x060198A4
+_060053E4: .word wmspW + 0x1000
 	arm_func_end WMSP_StartDCF
 
 	arm_func_start WMSP_SetDCFData
 WMSP_SetDCFData: ; 0x060053E8
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x230
-	ldr r1, _060054DC ; =0x060198A4
+	ldr r1, _060054DC ; =wmspW + 0x1000
 	mov r5, r0
 	ldr r4, [r1, #0x550]
 	add r0, r5, #4
@@ -6351,14 +6351,14 @@ WMSP_SetDCFData: ; 0x060053E8
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060054DC: .word 0x060198A4
+_060054DC: .word wmspW + 0x1000
 	arm_func_end WMSP_SetDCFData
 
 	arm_func_start WMSP_EndDCF
 WMSP_EndDCF: ; 0x060054E0
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x200
-	ldr r0, _06005598 ; =0x060198A4
+	ldr r0, _06005598 ; =wmspW + 0x1000
 	ldr r4, [r0, #0x550]
 	bl __VENEER_OS_DisableInterrupts
 	ldrh r1, [r4]
@@ -6406,13 +6406,13 @@ _0600558C:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06005598: .word 0x060198A4
+_06005598: .word wmspW + 0x1000
 	arm_func_end WMSP_EndDCF
 
 	arm_func_start WMSP_SetWEPKey
 WMSP_SetWEPKey: ; 0x0600559C
 	stmdb sp!, {r3, lr}
-	ldr r1, _06005640 ; =0x060198A4
+	ldr r1, _06005640 ; =wmspW + 0x1000
 	ldr r2, [r0, #4]
 	ldr r3, [r1, #0x550]
 	add r1, r3, #0x100
@@ -6460,14 +6460,14 @@ _06005620:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06005640: .word 0x060198A4
+_06005640: .word wmspW + 0x1000
 	arm_func_end WMSP_SetWEPKey
 
 	arm_func_start WMSP_SetWEPKeyEx
 WMSP_SetWEPKeyEx: ; 0x06005644
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x200
-	ldr r1, _06005738 ; =0x060198A4
+	ldr r1, _06005738 ; =wmspW + 0x1000
 	mov r5, r0
 	ldr r4, [r1, #0x550]
 	ldr r1, [r5, #4]
@@ -6535,14 +6535,14 @@ _06005714:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06005738: .word 0x060198A4
+_06005738: .word wmspW + 0x1000
 	arm_func_end WMSP_SetWEPKeyEx
 
 	arm_func_start WMSP_SetGameInfo
 WMSP_SetGameInfo: ; 0x0600573C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x280
-	ldr r1, _06005828 ; =0x060198A4
+	ldr r1, _06005828 ; =wmspW + 0x1000
 	ldr r2, [r0, #4]
 	ldr r4, [r1, #0x550]
 	str r2, [r4, #0xe8]
@@ -6600,7 +6600,7 @@ WMSP_SetGameInfo: ; 0x0600573C
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06005828: .word 0x060198A4
+_06005828: .word wmspW + 0x1000
 _0600582C: .word 0x00000245
 	arm_func_end WMSP_SetGameInfo
 
@@ -6675,7 +6675,7 @@ WMSP_SetLifeTime: ; 0x060058EC
 	mov r4, r0, lsl #0x10
 	mov r2, r2, lsl #0x10
 	mov r3, r3, lsl #0x10
-	ldr ip, _06005A04 ; =0x060198A4
+	ldr ip, _06005A04 ; =wmspW + 0x1000
 	mov r5, r4, lsr #0x10
 	add r0, sp, #0
 	mov r1, r1, lsr #0x10
@@ -6744,7 +6744,7 @@ _060059F8:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_06005A04: .word 0x060198A4
+_06005A04: .word wmspW + 0x1000
 _06005A08: .word 0x0000FFFF
 _06005A0C: .word 0x000082EA
 	arm_func_end WMSP_SetLifeTime
@@ -6753,7 +6753,7 @@ _06005A0C: .word 0x000082EA
 WMSP_MeasureChannel: ; 0x06005A10
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x214
-	ldr r1, _06005BAC ; =0x060198A4
+	ldr r1, _06005BAC ; =wmspW + 0x1000
 	mov r7, r0
 	ldr r6, [r1, #0x550]
 	add r4, sp, #0x14
@@ -6863,7 +6863,7 @@ _06005BA0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_06005BAC: .word 0x060198A4
+_06005BAC: .word wmspW + 0x1000
 _06005BB0: .word 0x00000303
 _06005BB4: .word 0x00000302
 	arm_func_end WMSP_MeasureChannel
@@ -6958,11 +6958,11 @@ _06005CCC:
 
 	arm_func_start WMSP_InitVAlarm
 WMSP_InitVAlarm: ; 0x06005CD8
-	ldr ip, _06005CE4 ; =0x037FA8A8
+	ldr ip, _06005CE4 ; =OS_CreateVAlarm
 	ldr r0, _06005CE8 ; =wmspVAlarm
 	bx ip
 	.align 2, 0
-_06005CE4: .word 0x037FA8A8
+_06005CE4: .word OS_CreateVAlarm
 _06005CE8: .word wmspVAlarm
 	arm_func_end WMSP_InitVAlarm
 
@@ -6980,7 +6980,7 @@ _06005CFC: .word wmspVAlarm
 WMSP_SetVAlarm: ; 0x06005D00
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r1, _06005DA0 ; =0x060198A4
+	ldr r1, _06005DA0 ; =wmspW + 0x1000
 	ldr r0, _06005DA4 ; =wmspVAlarm
 	ldr r4, [r1, #0x550]
 	ldrh r1, [r4, #0xe6]
@@ -7023,7 +7023,7 @@ _06005D94:
 	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_06005DA0: .word 0x060198A4
+_06005DA0: .word wmspW + 0x1000
 _06005DA4: .word wmspVAlarm
 _06005DA8: .word WmspParentAdjustVSync
 _06005DAC: .word WmspChildAdjustVSync1
@@ -7047,7 +7047,7 @@ _06005DBC: .word OS_SetVAlarm
 WmspChildAdjustVSync1: ; 0x06005DC0
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r1, _06005EFC ; =0x060198A4
+	ldr r1, _06005EFC ; =wmspW + 0x1000
 	ldr r2, _06005F00 ; =0x0380FFF0
 	ldr r0, [r1, #0x550]
 	ldrh r3, [r2]
@@ -7131,7 +7131,7 @@ _06005EF0:
 	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_06005EFC: .word 0x060198A4
+_06005EFC: .word wmspW + 0x1000
 _06005F00: .word 0x0380FFF0
 _06005F04: .word 0x048080F8
 _06005F08: .word 0x04000006
@@ -7147,7 +7147,7 @@ _06005F20: .word WmspChildVAlarmMP
 WmspChildAdjustVSync2: ; 0x06005F24
 	stmdb sp!, {r3, lr}
 	ldr r1, _06005FD0 ; =0x04000006
-	ldr r0, _06005FD4 ; =0x060198A4
+	ldr r0, _06005FD4 ; =wmspW + 0x1000
 	ldrh ip, [r1]
 	ldr r0, [r0, #0x550]
 	cmp ip, #0xd0
@@ -7194,7 +7194,7 @@ _06005F9C:
 	bx lr
 	.align 2, 0
 _06005FD0: .word 0x04000006
-_06005FD4: .word 0x060198A4
+_06005FD4: .word wmspW + 0x1000
 _06005FD8: .word 0x00000107
 _06005FDC: .word wmspVAlarm
 _06005FE0: .word WmspChildVAlarmMP
@@ -7204,7 +7204,7 @@ _06005FE0: .word WmspChildVAlarmMP
 WmspChildVAlarmMP: ; 0x06005FE4
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r0, _060060E8 ; =0x060198A4
+	ldr r0, _060060E8 ; =wmspW + 0x1000
 	ldr r4, [r0, #0x550]
 	ldr r0, [r4, #0xc]
 	cmp r0, #1
@@ -7247,7 +7247,7 @@ WmspChildVAlarmMP: ; 0x06005FE4
 	str r0, [r1]
 	ldr r3, _060060F4 ; =0x00008001
 	mov r2, #0
-	ldr r0, _060060F8 ; =0x0601892C
+	ldr r0, _060060F8 ; =wmspW + 0x88
 	stmib r1, {r2, r3}
 	bl __VENEER_OS_SendMessage
 _060060A4:
@@ -7271,17 +7271,17 @@ _060060DC:
 	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_060060E8: .word 0x060198A4
+_060060E8: .word wmspW + 0x1000
 _060060EC: .word wmspVAlarm
 _060060F0: .word WmspChildAdjustVSync1
 _060060F4: .word 0x00008001
-_060060F8: .word 0x0601892C
+_060060F8: .word wmspW + 0x88
 	arm_func_end WmspChildVAlarmMP
 
 	arm_func_start WmspParentAdjustVSync
 WmspParentAdjustVSync: ; 0x060060FC
 	stmdb sp!, {r3, lr}
-	ldr r0, _0600619C ; =0x060198A4
+	ldr r0, _0600619C ; =wmspW + 0x1000
 	ldr r0, [r0, #0x550]
 	ldrh r1, [r0, #0xdc]
 	cmp r1, #0x3c
@@ -7323,7 +7323,7 @@ _06006140:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_0600619C: .word 0x060198A4
+_0600619C: .word wmspW + 0x1000
 _060061A0: .word 0x04000006
 _060061A4: .word 0x048080F8
 _060061A8: .word 0x0380FFF0
@@ -7334,7 +7334,7 @@ _060061B0: .word WmspParentVAlarmMP
 	arm_func_start WmspParentVAlarmMP
 WmspParentVAlarmMP: ; 0x060061B4
 	stmdb sp!, {r3, lr}
-	ldr r0, _060061F4 ; =0x060198A4
+	ldr r0, _060061F4 ; =wmspW + 0x1000
 	ldr r0, [r0, #0x550]
 	ldr r0, [r0, #0xc]
 	cmp r0, #1
@@ -7351,7 +7351,7 @@ _060061EC:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060061F4: .word 0x060198A4
+_060061F4: .word wmspW + 0x1000
 _060061F8: .word wmspVAlarm
 _060061FC: .word WmspParentAdjustVSync
 	arm_func_end WmspParentVAlarmMP
@@ -7359,8 +7359,8 @@ _060061FC: .word WmspParentAdjustVSync
 	arm_func_start WmspFromVAlarmToWmspThread
 WmspFromVAlarmToWmspThread: ; 0x06006200
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _060062A8 ; =0x060198A4
-	ldr r4, _060062AC ; =0x060188A4
+	ldr r0, _060062A8 ; =wmspW + 0x1000
+	ldr r4, _060062AC ; =wmspW
 	ldr r5, [r0, #0x550]
 	bl __VENEER_OS_DisableInterrupts
 	ldrh r1, [r5, #0xce]
@@ -7404,14 +7404,14 @@ _060062A0:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_060062A8: .word 0x060198A4
-_060062AC: .word 0x060188A4
+_060062A8: .word wmspW + 0x1000
+_060062AC: .word wmspW
 	arm_func_end WmspFromVAlarmToWmspThread
 
 	arm_func_start WMSP_VAlarmSetMPData
 WMSP_VAlarmSetMPData: ; 0x060062B0
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _06006448 ; =0x060198A4
+	ldr r0, _06006448 ; =wmspW + 0x1000
 	mov r1, #0
 	ldr r4, [r0, #0x550]
 	mov r2, #1
@@ -7520,14 +7520,14 @@ _06006440:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06006448: .word 0x060198A4
+_06006448: .word wmspW + 0x1000
 _0600644C: .word 0x0000FFFF
 	arm_func_end WMSP_VAlarmSetMPData
 
 	arm_func_start WMSP_KickNextMP_Parent
 WMSP_KickNextMP_Parent: ; 0x06006450
 	stmdb sp!, {r3, lr}
-	ldr r1, _06006480 ; =0x060198A4
+	ldr r1, _06006480 ; =wmspW + 0x1000
 	ldr r1, [r1, #0x550]
 	ldrh r1, [r1]
 	cmp r1, #9
@@ -7540,13 +7540,13 @@ _06006478:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06006480: .word 0x060198A4
+_06006480: .word wmspW + 0x1000
 	arm_func_end WMSP_KickNextMP_Parent
 
 	arm_func_start WMSP_KickNextMP_Child
 WMSP_KickNextMP_Child: ; 0x06006484
 	stmdb sp!, {r3, lr}
-	ldr r0, _060064A8 ; =0x060198A4
+	ldr r0, _060064A8 ; =wmspW + 0x1000
 	ldr r0, [r0, #0x550]
 	ldrh r0, [r0]
 	cmp r0, #0xa
@@ -7556,13 +7556,13 @@ _060064A0:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060064A8: .word 0x060198A4
+_060064A8: .word wmspW + 0x1000
 	arm_func_end WMSP_KickNextMP_Child
 
 	arm_func_start WMSP_KickNextMP_Resume
 WMSP_KickNextMP_Resume: ; 0x060064AC
 	stmdb sp!, {r3, lr}
-	ldr r1, _060064DC ; =0x060198A4
+	ldr r1, _060064DC ; =wmspW + 0x1000
 	ldr r1, [r1, #0x550]
 	ldrh r1, [r1]
 	cmp r1, #9
@@ -7575,13 +7575,13 @@ _060064D4:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_060064DC: .word 0x060198A4
+_060064DC: .word wmspW + 0x1000
 	arm_func_end WMSP_KickNextMP_Resume
 
 	arm_func_start WMSP_InitSendQueue
 WMSP_InitSendQueue: ; 0x060064E0
 	stmdb sp!, {r4, lr}
-	ldr r0, _06006590 ; =0x060198A4
+	ldr r0, _06006590 ; =wmspW + 0x1000
 	ldr r4, [r0, #0x550]
 	add r0, r4, #0x31c
 	add r0, r0, #0x400
@@ -7627,7 +7627,7 @@ _0600654C:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06006590: .word 0x060198A4
+_06006590: .word wmspW + 0x1000
 _06006594: .word 0x0000FFFF
 	arm_func_end WMSP_InitSendQueue
 
@@ -7649,7 +7649,7 @@ _060065A4: .word OS_UnlockMutex
 WMSP_SendMaKeyData: ; 0x060065A8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x260
-	ldr r1, _06006A98 ; =0x060198A4
+	ldr r1, _06006A98 ; =wmspW + 0x1000
 	ldr fp, [r1, #0x550]
 	add r0, fp, #0x100
 	ldrh r0, [r0, #0x82]
@@ -7981,7 +7981,7 @@ _06006A8C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06006A98: .word 0x060198A4
+_06006A98: .word wmspW + 0x1000
 _06006A9C: .word 0x0000FFFF
 	arm_func_end WMSP_SendMaKeyData
 
@@ -7989,7 +7989,7 @@ _06006A9C: .word 0x0000FFFF
 WMSP_SendMaMP: ; 0x06006AA0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c8
-	ldr r1, _06007438 ; =0x060198A4
+	ldr r1, _06007438 ; =wmspW + 0x1000
 	str r0, [sp, #0x18]
 	ldr r7, [r1, #0x550]
 	bl __VENEER_OS_DisableInterrupts
@@ -8008,7 +8008,7 @@ WMSP_SendMaMP: ; 0x06006AA0
 	ldrh r0, [r7, #0x9e]
 	cmp r0, #0
 	bne _06007388
-	ldr r1, _06007438 ; =0x060198A4
+	ldr r1, _06007438 ; =wmspW + 0x1000
 	ldrh r0, [r7, #0x3a]
 	ldr r8, [r1, #0x550]
 	str r0, [sp, #0x24]
@@ -8356,7 +8356,7 @@ _06006FC8:
 	bic r0, r0, #0x1f
 	cmp r1, r0
 	bge _06007348
-	ldr r0, _06007438 ; =0x060198A4
+	ldr r0, _06007438 ; =wmspW + 0x1000
 	ldr sb, [r0, #0x550]
 	ldrh r0, [sb]
 	add r8, sb, #0x2f8
@@ -8632,7 +8632,7 @@ _0600742C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06007438: .word 0x060198A4
+_06007438: .word wmspW + 0x1000
 _0600743C: .word 0x0000FFFF
 _06007440: .word 0x000080D6
 _06007444: .word 0x048080F8
@@ -8649,7 +8649,7 @@ _0600744C: .word MATH_CountPopulation
 WMSP_ResumeMaMP: ; 0x06007450
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x218
-	ldr r1, _06007534 ; =0x060198A4
+	ldr r1, _06007534 ; =wmspW + 0x1000
 	mov r4, r0
 	ldr r7, [r1, #0x550]
 	bl __VENEER_OS_DisableInterrupts
@@ -8708,7 +8708,7 @@ _06007528:
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_06007534: .word 0x060198A4
+_06007534: .word wmspW + 0x1000
 _06007538: .word 0x048080F8
 _0600753C: .word 0x0000800C
 	arm_func_end WMSP_ResumeMaMP
@@ -8723,7 +8723,7 @@ _06007544: .word OS_Sleep
 	arm_func_start WMSP_PutSendQueue
 WMSP_PutSendQueue: ; 0x06007548
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r4, _06007674 ; =0x060198A4
+	ldr r4, _06007674 ; =wmspW + 0x1000
 	ldrh r8, [sp, #0x24]
 	ldr r4, [r4, #0x550]
 	mov r7, r0
@@ -8800,7 +8800,7 @@ _0600766C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_06007674: .word 0x060198A4
+_06007674: .word wmspW + 0x1000
 _06007678: .word 0x0000FFFF
 	arm_func_end WMSP_PutSendQueue
 
@@ -8808,7 +8808,7 @@ _06007678: .word 0x0000FFFF
 WMSP_FlushSendQueue: ; 0x0600767C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x3c
-	ldr r2, _060079A4 ; =0x060198A4
+	ldr r2, _060079A4 ; =wmspW + 0x1000
 	str r0, [sp]
 	ldr r8, [r2, #0x550]
 	mov r5, r1
@@ -9020,7 +9020,7 @@ _06007998:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_060079A4: .word 0x060198A4
+_060079A4: .word wmspW + 0x1000
 _060079A8: .word 0x0000FFFF
 	arm_func_end WMSP_FlushSendQueue
 
@@ -9028,7 +9028,7 @@ _060079A8: .word 0x0000FFFF
 WMSP_CleanSendQueue: ; 0x060079AC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
-	ldr r1, _06007B98 ; =0x060198A4
+	ldr r1, _06007B98 ; =wmspW + 0x1000
 	mvn r2, r0
 	ldr sb, [r1, #0x550]
 	add r0, sb, #0x100
@@ -9155,7 +9155,7 @@ _06007B54:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_06007B98: .word 0x060198A4
+_06007B98: .word wmspW + 0x1000
 _06007B9C: .word 0x0000FFFF
 	arm_func_end WMSP_CleanSendQueue
 
@@ -9164,7 +9164,7 @@ WMSP_ParsePortPacket: ; 0x06007BA0
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
-	ldr r4, _06007D9C ; =0x060198A4
+	ldr r4, _06007D9C ; =wmspW + 0x1000
 	ldr r1, [sp, #0x40]
 	ldr r5, [r4, #0x550]
 	movs sb, r3
@@ -9294,7 +9294,7 @@ _06007D8C:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_06007D9C: .word 0x060198A4
+_06007D9C: .word wmspW + 0x1000
 _06007DA0: .word 0x0000FFFF
 	arm_func_end WMSP_ParsePortPacket
 
@@ -9351,7 +9351,7 @@ _06007E48: .word 0x66666667
 WMSP_SetEntry: ; 0x06007E4C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x280
-	ldr r1, _06007ED8 ; =0x060198A4
+	ldr r1, _06007ED8 ; =wmspW + 0x1000
 	ldr r2, [r0, #4]
 	ldr r4, [r1, #0x550]
 	add r0, sp, #0
@@ -9386,7 +9386,7 @@ _06007EC8:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06007ED8: .word 0x060198A4
+_06007ED8: .word wmspW + 0x1000
 	arm_func_end WMSP_SetEntry
 
 	arm_func_start WMSP_AutoDeAuth
@@ -9444,7 +9444,7 @@ _06007F78:
 WMSP_Enable: ; 0x06007F88
 	stmdb sp!, {r3, lr}
 	ldr r3, [r0, #4]
-	ldr r1, _06007FD4 ; =0x060198A4
+	ldr r1, _06007FD4 ; =wmspW + 0x1000
 	str r3, [r1, #0x54c]
 	ldr r2, [r0, #8]
 	str r2, [r1, #0x550]
@@ -9462,13 +9462,13 @@ WMSP_Enable: ; 0x06007F88
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_06007FD4: .word 0x060198A4
+_06007FD4: .word wmspW + 0x1000
 	arm_func_end WMSP_Enable
 
 	arm_func_start WMSPi_CommonInit
 WMSPi_CommonInit: ; 0x06007FD8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r1, _06008178 ; =0x060198A4
+	ldr r1, _06008178 ; =wmspW + 0x1000
 	mov r8, r0
 	ldr r7, [r1, #0x550]
 	ldr r4, [r1, #0x54c]
@@ -9576,7 +9576,7 @@ _06008168:
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_06008178: .word 0x060198A4
+_06008178: .word wmspW + 0x1000
 _0600817C: .word 0x0000020B
 _06008180: .word 0x0000FFFF
 	arm_func_end WMSPi_CommonInit
@@ -9584,7 +9584,7 @@ _06008180: .word 0x0000FFFF
 	arm_func_start WMSP_Disable
 WMSP_Disable: ; 0x06008184
 	stmdb sp!, {r4, lr}
-	ldr r0, _060081E8 ; =0x060198A4
+	ldr r0, _060081E8 ; =wmspW + 0x1000
 	ldr r4, [r0, #0x550]
 	ldrh r0, [r4]
 	cmp r0, #1
@@ -9611,14 +9611,14 @@ _060081E0:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_060081E8: .word 0x060198A4
+_060081E8: .word wmspW + 0x1000
 	arm_func_end WMSP_Disable
 
 	arm_func_start WMSP_PowerOn
 WMSP_PowerOn: ; 0x060081EC
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r0, _06008290 ; =0x060198A4
+	ldr r0, _06008290 ; =wmspW + 0x1000
 	ldr r4, [r0, #0x550]
 	ldrh r0, [r4]
 	cmp r0, #1
@@ -9661,14 +9661,14 @@ _06008284:
 	ldmia sp!, {r3, r4, lr}
 	bx lr
 	.align 2, 0
-_06008290: .word 0x060198A4
+_06008290: .word wmspW + 0x1000
 	arm_func_end WMSP_PowerOn
 
 	arm_func_start WMSPi_CommonWlIdle
 WMSPi_CommonWlIdle: ; 0x06008294
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x200
-	ldr r2, _0600847C ; =0x060198A4
+	ldr r2, _0600847C ; =wmspW + 0x1000
 	mov r7, r0
 	add r0, sp, #0
 	mov r6, r1
@@ -9795,7 +9795,7 @@ _06008470:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_0600847C: .word 0x060198A4
+_0600847C: .word wmspW + 0x1000
 _06008480: .word 0x00000302
 _06008484: .word 0x04808124
 _06008488: .word 0x00000202
@@ -9818,7 +9818,7 @@ _060084A8: .word WMSP_GetAllowedChannel
 WMSP_PowerOff: ; 0x060084AC
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x200
-	ldr r0, _06008554 ; =0x060198A4
+	ldr r0, _06008554 ; =wmspW + 0x1000
 	ldr r5, [r0, #0x550]
 	ldrh r0, [r5]
 	cmp r0, #2
@@ -9862,7 +9862,7 @@ _06008548:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_06008554: .word 0x060198A4
+_06008554: .word wmspW + 0x1000
 	arm_func_end WMSP_PowerOff
 
 	arm_func_start WMSP_SetMPParameter
@@ -9895,7 +9895,7 @@ WMSP_SetMPParameter: ; 0x06008558
 	arm_func_start WMSP_SetMPParameterCore
 WMSP_SetMPParameterCore: ; 0x060085B4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r2, _060088AC ; =0x060198A4
+	ldr r2, _060088AC ; =wmspW + 0x1000
 	mov sb, r0
 	ldr r7, [r2, #0x550]
 	ldr r6, [sb]
@@ -10100,7 +10100,7 @@ _06008848:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_060088AC: .word 0x060198A4
+_060088AC: .word wmspW + 0x1000
 _060088B0: .word 0x00003FFF
 _060088B4: .word 0x00002710
 _060088B8: .word 0x000082EA
@@ -10158,7 +10158,7 @@ _06008948: .word WMSP_DisconnectCore
 WMSP_SetPowerSaveMode: ; 0x0600894C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x230
-	ldr r1, _06008AC8 ; =0x060198A4
+	ldr r1, _06008AC8 ; =wmspW + 0x1000
 	mov r7, r0
 	ldr r6, [r1, #0x550]
 	add r5, sp, #0x30
@@ -10196,7 +10196,7 @@ _06008990:
 	bl __VENEER_WMSP_ReturnResult2Wm9
 	b _06008ABC
 _060089E4:
-	ldr r0, _06008AC8 ; =0x060198A4
+	ldr r0, _06008AC8 ; =wmspW + 0x1000
 	mov r2, #6
 	ldr r5, [r0, #0x550]
 	add r0, r5, #0x8a
@@ -10256,7 +10256,7 @@ _06008ABC:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_06008AC8: .word 0x060198A4
+_06008AC8: .word wmspW + 0x1000
 	arm_func_end WMSP_SetPowerSaveMode
 
 	arm_func_start WMSP_StartTestRxMode
@@ -11929,7 +11929,7 @@ WSetDefaultParameters: ; 0x06009F54
 	bl WSetWepMode
 	mov r0, #0
 	bl WSetWepKeyId
-	ldr r0, _0600A08C ; =0x0601832C
+	ldr r0, _0600A08C ; =def_WepKey
 	bl WSetWepKey
 	mov r0, #0x1f4
 	bl WSetBeaconPeriod
@@ -11942,13 +11942,13 @@ WSetDefaultParameters: ; 0x06009F54
 	ldr r0, _0600A090 ; =0x0000FFFF
 	mov r1, #0
 	bl WSetActiveZoneTime
-	ldr r0, _0600A094 ; =0x060182CC
+	ldr r0, _0600A094 ; =def_SsidMask
 	bl WSetSsidMask
 	mov r0, #1
 	bl WSetPreambleType
 	mov r0, #0
 	bl WSetAuthAlgo
-	ldr r0, _0600A098 ; =0x060182C8
+	ldr r0, _0600A098 ; =c_RateSet$4351
 	bl WSetRateSet
 	mov r0, #0
 	mov r1, #0x1f
@@ -11980,10 +11980,10 @@ WSetDefaultParameters: ; 0x06009F54
 	bx lr
 	.align 2, 0
 _0600A088: .word 0x00007FFE
-_0600A08C: .word 0x0601832C
+_0600A08C: .word def_WepKey
 _0600A090: .word 0x0000FFFF
-_0600A094: .word 0x060182CC
-_0600A098: .word 0x060182C8
+_0600A094: .word def_SsidMask
+_0600A098: .word c_RateSet$4351
 _0600A09C: .word 0x04808044
 _0600A0A0: .word 0x0380FFF4
 	arm_func_end WSetDefaultParameters
@@ -12964,7 +12964,7 @@ WElement2RateSet: ; 0x0600AD14
 	strh r1, [sb, #2]
 	bl WL_ReadByte
 	add r6, r4, #2
-	ldr r5, _0600ADC4 ; =0x060183E0
+	ldr r5, _0600ADC4 ; =RateElement2Bit
 	mov r8, r0
 	mov r7, #0
 	mov r4, #1
@@ -13004,7 +13004,7 @@ _0600ADB4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
 	.align 2, 0
-_0600ADC4: .word 0x060183E0
+_0600ADC4: .word RateElement2Bit
 	arm_func_end WElement2RateSet
 
 	arm_func_start WCalcManRate
@@ -13453,7 +13453,7 @@ _0600B3CC: .word 0x0380FFF4
 
 	arm_func_start InitMac
 InitMac: ; 0x0600B3D0
-	ldr r2, _0600B404 ; =0x0601837C
+	ldr r2, _0600B404 ; =macInitRegs
 	mov r3, #0
 _0600B3D8:
 	mov r0, r3, lsl #2
@@ -13468,7 +13468,7 @@ _0600B3D8:
 	blo _0600B3D8
 	bx lr
 	.align 2, 0
-_0600B404: .word 0x0601837C
+_0600B404: .word macInitRegs
 	arm_func_end InitMac
 
 	arm_func_start InitBaseBand
@@ -13508,7 +13508,7 @@ InitRF: ; 0x0600B470
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #8
 	ldr r0, _0600B5EC ; =0x0380FFF4
-	ldr r5, _0600B5F0 ; =0x0601830C
+	ldr r5, _0600B5F0 ; =macTxRxRegAdrs
 	ldr r0, [r0]
 	mov r8, #0
 	add r0, r0, #0x1f8
@@ -13609,7 +13609,7 @@ _0600B5E0:
 	bx lr
 	.align 2, 0
 _0600B5EC: .word 0x0380FFF4
-_0600B5F0: .word 0x0601830C
+_0600B5F0: .word macTxRxRegAdrs
 _0600B5F4: .word 0x04808184
 	arm_func_end InitRF
 
@@ -14017,7 +14017,7 @@ _0600BAA4: .word 0x0380FFF4
 	arm_func_start calc_NextCRC
 calc_NextCRC: ; 0x0600BAA8
 	stmdb sp!, {r4, lr}
-	ldr r2, _0600BB20 ; =0x060182EC
+	ldr r2, _0600BB20 ; =crc16_table
 	mov r4, r1, lsl #0x1c
 	ldr r3, _0600BB24 ; =0x00000FFF
 	mov r4, r4, lsr #0x1b
@@ -14047,7 +14047,7 @@ calc_NextCRC: ; 0x0600BAA8
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0600BB20: .word 0x060182EC
+_0600BB20: .word crc16_table
 _0600BB24: .word 0x00000FFF
 	arm_func_end calc_NextCRC
 
@@ -14348,8 +14348,8 @@ _0600BEDC: .word 0x0380FFF4
 DiagMacRegister: ; 0x0600BEE0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov ip, #0
-	ldr r0, _0600C074 ; =0x06018580
-	ldr r6, _0600C078 ; =0x06018510
+	ldr r0, _0600C074 ; =test_reg
+	ldr r6, _0600C078 ; =test_pattern
 	mov r3, ip
 	mov r1, ip
 	b _0600BF54
@@ -14383,7 +14383,7 @@ _0600BF54:
 	cmp r3, #3
 	blo _0600BEFC
 	ldr r4, _0600C07C ; =0x00001234
-	ldr r3, _0600C074 ; =0x06018580
+	ldr r3, _0600C074 ; =test_reg
 	mov r5, #0
 _0600BF68:
 	mov r0, r5, lsl #2
@@ -14402,7 +14402,7 @@ _0600BF68:
 	mov r4, r1, lsr #0x10
 	blo _0600BF68
 	ldr r5, _0600C07C ; =0x00001234
-	ldr r3, _0600C074 ; =0x06018580
+	ldr r3, _0600C074 ; =test_reg
 	mov r4, #0
 	b _0600BFFC
 _0600BFB4:
@@ -14429,7 +14429,7 @@ _0600BFFC:
 	cmp r4, #0x1b
 	blo _0600BFB4
 	mov r3, #0
-	ldr r2, _0600C074 ; =0x06018580
+	ldr r2, _0600C074 ; =test_reg
 	mov r1, r3
 	b _0600C044
 _0600C014:
@@ -14462,8 +14462,8 @@ _0600C06C:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_0600C074: .word 0x06018580
-_0600C078: .word 0x06018510
+_0600C074: .word test_reg
+_0600C078: .word test_pattern
 _0600C07C: .word 0x00001234
 _0600C080: .word 0x0380FFF4
 	arm_func_end DiagMacRegister
@@ -14597,9 +14597,9 @@ DiagBaseBand: ; 0x0600C210
 	ldrh r0, [r0, #0xf8]
 	mov r5, #0xff
 	cmp r0, #5
-	ldreq sl, _0600C4E8 ; =0x06018516
+	ldreq sl, _0600C4E8 ; =BBPDiagSkipAdrsES1
 	mvn r4, #0
-	ldrne sl, _0600C4EC ; =0x06018548
+	ldrne sl, _0600C4EC ; =BBPDiagSkipAdrsRelease
 	b _0600C260
 _0600C244:
 	mov r0, r6
@@ -14796,8 +14796,8 @@ _0600C4DC:
 	bx lr
 	.align 2, 0
 _0600C4E4: .word 0x0380FFF4
-_0600C4E8: .word 0x06018516
-_0600C4EC: .word 0x06018548
+_0600C4E8: .word BBPDiagSkipAdrsES1
+_0600C4EC: .word BBPDiagSkipAdrsRelease
 	arm_func_end DiagBaseBand
 
 	arm_func_start WlIntr
@@ -17857,7 +17857,7 @@ _0600ED7C:
 _0600ED88:
 	cmp r3, r5
 	blo _0600ED7C
-	ldr r1, _0600EDB8 ; =0x060184D0
+	ldr r1, _0600EDB8 ; =BC_ADRS
 	mov r0, #0
 	bl CAM_InitElement
 	mov r0, #0
@@ -17868,7 +17868,7 @@ _0600ED88:
 	.align 2, 0
 _0600EDB0: .word 0x0380FFF4
 _0600EDB4: .word 0x0000FFFF
-_0600EDB8: .word 0x060184D0
+_0600EDB8: .word BC_ADRS
 	arm_func_end InitializeCAM
 
 	arm_func_start InitCAM
@@ -18158,7 +18158,7 @@ _0600F15C:
 	b _0600F278
 _0600F168:
 	ldrh r6, [r5, #4]
-	ldr r1, _0600F364 ; =0x06018674
+	ldr r1, _0600F364 ; =WlibCmdTbl_MLME
 	tst r6, #1
 	and r2, r7, #0xff
 	mov r6, #1
@@ -18171,7 +18171,7 @@ _0600F168:
 	b _0600F280
 _0600F198:
 	ldrh r6, [ip, #0x4c]
-	ldr r1, _0600F368 ; =0x060185EC
+	ldr r1, _0600F368 ; =WlibCmdTbl_MA
 	cmp r6, #0x40
 	and r2, r7, #0xff
 	mov r6, #2
@@ -18185,7 +18185,7 @@ _0600F1B8:
 	ldrh r1, [ip, #0x4c]
 	mov r6, #4
 	cmp r1, #0x10
-	ldr r1, _0600F36C ; =0x060187DC
+	ldr r1, _0600F36C ; =WlibCmdTbl_PARAMSET
 	movlo r3, #1
 	mov lr, #0x17
 	b _0600F280
@@ -18197,7 +18197,7 @@ _0600F1E0:
 	cmp r1, #0x40
 	sub r1, r2, #0x40
 	mov r2, r1, lsl #0x10
-	ldr r1, _0600F370 ; =0x06018644
+	ldr r1, _0600F370 ; =WlibCmdTbl_PARAMSET2
 	movne r3, #1
 	mov r2, r2, lsr #0x10
 	mov lr, #6
@@ -18209,7 +18209,7 @@ _0600F210:
 	cmp r1, #0x10
 	sub r1, r2, #0x80
 	mov r2, r1, lsl #0x10
-	ldr r1, _0600F374 ; =0x06018724
+	ldr r1, _0600F374 ; =WlibCmdTbl_PARAMGET
 	movlo r3, #1
 	mov r2, r2, lsr #0x10
 	mov r6, #0x10
@@ -18219,14 +18219,14 @@ _0600F240:
 	cmp r1, #0x10
 	sub r1, r2, #0xc0
 	mov r2, r1, lsl #0x10
-	ldr r1, _0600F378 ; =0x06018614
+	ldr r1, _0600F378 ; =WlibCmdTbl_PARAMGET2
 	movlo r3, #1
 	mov r2, r2, lsr #0x10
 	mov r6, #0x20
 	mov lr, #6
 	b _0600F280
 _0600F264:
-	ldr r1, _0600F37C ; =0x060186CC
+	ldr r1, _0600F37C ; =WlibCmdTbl_DEV
 	and r2, r7, #0xff
 	mov r6, #0x40
 	mov lr, #0xb
@@ -18297,13 +18297,13 @@ _0600F358:
 	bx lr
 	.align 2, 0
 _0600F360: .word 0x0380FFF4
-_0600F364: .word 0x06018674
-_0600F368: .word 0x060185EC
-_0600F36C: .word 0x060187DC
-_0600F370: .word 0x06018644
-_0600F374: .word 0x06018724
-_0600F378: .word 0x06018614
-_0600F37C: .word 0x060186CC
+_0600F364: .word WlibCmdTbl_MLME
+_0600F368: .word WlibCmdTbl_MA
+_0600F36C: .word WlibCmdTbl_PARAMSET
+_0600F370: .word WlibCmdTbl_PARAMSET2
+_0600F374: .word WlibCmdTbl_PARAMGET
+_0600F378: .word WlibCmdTbl_PARAMGET2
+_0600F37C: .word WlibCmdTbl_DEV
 	arm_func_end RequestCmdTask
 
 	arm_func_start CMD_ReservedReqCmd
@@ -19092,7 +19092,7 @@ MLME_StartReqCmd: ; 0x0600FD1C
 	ldrh r0, [r5, #0x12]
 	cmp r0, #0
 	bne _0600FE54
-	ldr r0, _0600FEB8 ; =0x060184D0
+	ldr r0, _0600FEB8 ; =BC_ADRS
 	bl WSetBssid
 	b _0600FE5C
 _0600FE54:
@@ -19124,7 +19124,7 @@ _0600FEA8:
 	.align 2, 0
 _0600FEB0: .word 0x0380FFF4
 _0600FEB4: .word 0x0000FFF0
-_0600FEB8: .word 0x060184D0
+_0600FEB8: .word BC_ADRS
 	arm_func_end MLME_StartReqCmd
 
 	arm_func_start MLME_MeasChanReqCmd
@@ -21659,7 +21659,7 @@ _06011DC4: .word 0x0380FFF4
 	arm_func_start DEV_GetVerInfoReqCmd
 DEV_GetVerInfoReqCmd: ; 0x06011DC8
 	stmdb sp!, {r4, lr}
-	ldr r0, _06011E5C ; =0x06018894
+	ldr r0, _06011E5C ; =wlVersion$4017
 	mov r4, r1
 	mov r3, #9
 	add r1, r4, #6
@@ -21697,7 +21697,7 @@ _06011E28:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_06011E5C: .word 0x06018894
+_06011E5C: .word wlVersion$4017
 _06011E60: .word 0x04808000
 _06011E64: .word 0x0380FFF4
 _06011E68: .word 0x0000933D
@@ -22253,7 +22253,7 @@ MA_KeyDataReqCmd: ; 0x0601254C
 	strh r1, [r7, #4]
 	strh r0, [r7, #8]
 	ldrh r0, [sl, #0x10]
-	ldr r3, _060126E0 ; =0x060184D8
+	ldr r3, _060126E0 ; =MPKEY_ADRS
 	add r0, r0, #0x1e
 	strh r0, [r7, #0xa]
 	mov r0, #0x118
@@ -22319,7 +22319,7 @@ _060126D0:
 	.align 2, 0
 _060126D8: .word 0x0380FFF4
 _060126DC: .word 0x04808094
-_060126E0: .word 0x060184D8
+_060126E0: .word MPKEY_ADRS
 _060126E4: .word 0x0000B6B8
 _060126E8: .word 0x00001D46
 _060126EC: .word 0x00003FFF
@@ -22457,7 +22457,7 @@ _06012860:
 	strh r1, [r6, #0x9e]
 	strh r2, [r5]
 	ldrh r7, [sl, #0x16]
-	ldr r1, _06012B84 ; =0x060184E8
+	ldr r1, _06012B84 ; =MP_ADRS
 	strh r7, [r5, #2]
 	strh r2, [r5, #4]
 	strh ip, [r5, #8]
@@ -22634,7 +22634,7 @@ _06012B70:
 	.align 2, 0
 _06012B7C: .word 0x0380FFF4
 _06012B80: .word 0x00007FFF
-_06012B84: .word 0x060184E8
+_06012B84: .word MP_ADRS
 _06012B88: .word 0x0000FFFF
 _06012B8C: .word 0x0000B6B8
 _06012B90: .word 0x00001D46
@@ -23747,7 +23747,7 @@ ResetTxqPri: ; 0x06013A68
 	mov r0, #0x1000000
 	add r6, r5, r4
 	bl __VENEER_OS_DisableIrqMask
-	ldr r1, _06013AEC ; =0x0601889C
+	ldr r1, _06013AEC ; =Pri2QBit
 	mov r2, r7, lsl #1
 	ldrh r2, [r1, r2]
 	ldr r1, _06013AF0 ; =0x048080B4
@@ -23771,7 +23771,7 @@ _06013ADC:
 	bx lr
 	.align 2, 0
 _06013AE8: .word 0x0380FFF4
-_06013AEC: .word 0x0601889C
+_06013AEC: .word Pri2QBit
 _06013AF0: .word 0x048080B4
 	arm_func_end ResetTxqPri
 
@@ -24156,7 +24156,7 @@ MakeBeaconFrame: ; 0x06013F98
 	mov r0, #0
 	add r2, r5, #8
 	strh r0, [r8, #0xe]
-	ldr r1, _060142F8 ; =0x060184D0
+	ldr r1, _060142F8 ; =BC_ADRS
 	add r0, r8, #0x10
 	mov r3, r2
 	bl WSetMacAdrs3
@@ -24367,7 +24367,7 @@ _060142D8:
 	bx lr
 	.align 2, 0
 _060142F4: .word 0x0380FFF4
-_060142F8: .word 0x060184D0
+_060142F8: .word BC_ADRS
 _060142FC: .word 0x04808084
 _06014300: .word 0x0380FFF0
 _06014304: .word 0x0000B6B8
@@ -25230,7 +25230,7 @@ SetSupRateSet: ; 0x06014E64
 	add r6, r2, #0x344
 	mov r7, #0
 	bl WL_WriteByte
-	ldr r4, _06014F04 ; =0x060184F0
+	ldr r4, _06014F04 ; =RateBit2Element
 	add r7, r7, #2
 	mov r8, #0
 	mov r5, #1
@@ -25267,7 +25267,7 @@ _06014ED8:
 	bx lr
 	.align 2, 0
 _06014F00: .word 0x0380FFF4
-_06014F04: .word 0x060184F0
+_06014F04: .word RateBit2Element
 	arm_func_end SetSupRateSet
 
 	arm_func_start InitTxCtrl
@@ -26901,7 +26901,7 @@ _06016600:
 	bl AddTask
 	b _06016660
 _06016654:
-	ldr r1, _06016670 ; =0x060184E0
+	ldr r1, _06016670 ; =NULL_ADRS
 	add r0, r6, #4
 	bl WSetMacAdrs1
 _06016660:
@@ -26910,7 +26910,7 @@ _06016660:
 	bx lr
 	.align 2, 0
 _0601666C: .word 0x0380FFF4
-_06016670: .word 0x060184E0
+_06016670: .word NULL_ADRS
 	arm_func_end RxProbeResFrame
 
 	arm_func_start RxAuthFrame
@@ -29028,15 +29028,17 @@ MPKEY_ADRS: ; 0x060184D8
 	.byte 0x03, 0x09, 0xBF, 0x00, 0x00, 0x10
 
 	.balign 4, 0
-MP_ADRS: ; 0x060184E0
+NULL_ADRS: ; 0x060184E0
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 	.balign 4, 0
-RateBit2Element: ; 0x060184E8
+MP_ADRS: ; 0x060184E8
 	.byte 0x03, 0x09, 0xBF, 0x00, 0x00, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+RateBit2Element: ; 0x060184F0
 	.byte 0x02, 0x00, 0x04, 0x00, 0x0B, 0x00, 0x0C, 0x00, 0x12, 0x00, 0x16, 0x00, 0x18, 0x00, 0x24, 0x00
-	.byte 0x30, 0x00, 0x48, 0x00, 0x60, 0x00, 0x6C, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x30, 0x00, 0x48, 0x00, 0x60, 0x00, 0x6C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 test_pattern: ; 0x06018510
 	.byte 0xFF, 0xFF, 0x5A, 0x5A, 0xA5, 0xA5
@@ -29175,4 +29177,6 @@ Pri2QBit: ; 0x0601889C
 
 	.bss
 
+	.public wmspW
+wmspW: ; 0x060188A4
 	.space 0x1590
