@@ -19,9 +19,9 @@ void   *OSi_SystemCallbackInSwitchThread = NULL;
 u32     OSi_RescheduleCount = 0;
 static int OSi_ThreadIdCount = 0;
 void   *OSi_StackForDestructor = NULL;
-void *osthread_feng_shui_1 = NULL;
-void *osthread_feng_shui_2 = NULL;
-void *osthread_feng_shui_3 = NULL;
+static u32 exitThreadStatus = 0;
+static u32 killThreadStatus = 0;
+static u32 OSi_SystemStackBuffer = 0;
 BOOL    OSi_IsThreadInitialized = FALSE;
 
 
@@ -39,9 +39,9 @@ static void OSi_SleepAlarmCallback(void *arg);
 
 static inline s32 OSi_GetUnusedThreadId(void)
 {
-    osthread_feng_shui_1;
-    osthread_feng_shui_2;
-    osthread_feng_shui_3;
+    OSi_SystemStackBuffer;
+    killThreadStatus;
+    exitThreadStatus;
     return ++OSi_ThreadIdCount;
 }
 

@@ -125,8 +125,7 @@
 .public MI_SwapWord
 .public OS_RestoreInterrupts_IrqAndFiq
 .public OS_GetProcMode
-.public _03806A74
-.public _0380664C
+.public OSi_IrqCallbackInfoIndex
 .public OSi_RemoveMutexLinkFromQueue
 .public OS_InitLock
 .public OS_InitIrqTable

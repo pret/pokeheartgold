@@ -2272,7 +2272,7 @@ _037FB794: .word 0x04000501
 	arm_func_start SND_SetupChannelPcm
 SND_SetupChannelPcm: ; 0x037FB798
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r4, _037FB850 ; =0x03806AEC
+	ldr r4, _037FB850 ; =sMasterPan
 	mov r8, r1
 	ldr lr, [r4]
 	ldr r1, _037FB854 ; =0x03806EAC
@@ -2319,7 +2319,7 @@ _037FB804:
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 	.align 2, 0
-_037FB850: .word 0x03806AEC
+_037FB850: .word sMasterPan
 _037FB854: .word 0x03806EAC
 _037FB858: .word 0x03806EB0
 _037FB85C: .word 0x03806EC0
@@ -2329,7 +2329,7 @@ _037FB860: .word 0x0000FFF5
 	arm_func_start SND_SetupChannelPsg
 SND_SetupChannelPsg: ; 0x037FB864
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r4, _037FB8FC ; =0x03806AEC
+	ldr r4, _037FB8FC ; =sMasterPan
 	mov r7, r1
 	ldr ip, [r4]
 	ldr r1, _037FB900 ; =0x03806EAC
@@ -2368,7 +2368,7 @@ _037FB8C8:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_037FB8FC: .word 0x03806AEC
+_037FB8FC: .word sMasterPan
 _037FB900: .word 0x03806EAC
 _037FB904: .word 0x03806EC0
 _037FB908: .word 0x03806EB0
@@ -2378,7 +2378,7 @@ _037FB90C: .word 0x0000FFF5
 	arm_func_start SND_SetupChannelNoise
 SND_SetupChannelNoise: ; 0x037FB910
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r4, _037FB9A0 ; =0x03806AEC
+	ldr r4, _037FB9A0 ; =sMasterPan
 	mov r7, r2
 	ldr ip, [r4]
 	ldr r2, _037FB9A4 ; =0x03806EAC
@@ -2415,7 +2415,7 @@ _037FB974:
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
-_037FB9A0: .word 0x03806AEC
+_037FB9A0: .word sMasterPan
 _037FB9A4: .word 0x03806EAC
 _037FB9A8: .word 0x03806EC0
 _037FB9AC: .word 0x03806EB0
@@ -2485,7 +2485,7 @@ SND_SetChannelTimer: ; 0x037FBA54
 	arm_func_start SND_SetChannelPan
 SND_SetChannelPan: ; 0x037FBA6C
 	stmdb sp!, {r4, lr}
-	ldr r2, _037FBAD0 ; =0x03806AEC
+	ldr r2, _037FBAD0 ; =sMasterPan
 	ldr r3, _037FBAD4 ; =0x03806EB0
 	ldr r2, [r2]
 	strb r1, [r3, r0]
@@ -2511,7 +2511,7 @@ _037FBAC8:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_037FBAD0: .word 0x03806AEC
+_037FBAD0: .word sMasterPan
 _037FBAD4: .word 0x03806EB0
 _037FBAD8: .word 0x03806EAC
 _037FBADC: .word 0x0000FFF5
@@ -2531,7 +2531,7 @@ SND_IsChannelActive: ; 0x037FBAE4
 
 	arm_func_start SND_SetMasterPan
 SND_SetMasterPan: ; 0x037FBB00
-	ldr r1, _037FBB5C ; =0x03806AEC
+	ldr r1, _037FBB5C ; =sMasterPan
 	cmp r0, #0
 	str r0, [r1]
 	blt _037FBB34
@@ -2558,7 +2558,7 @@ _037FBB3C:
 	blt _037FBB3C
 	bx lr
 	.align 2, 0
-_037FBB5C: .word 0x03806AEC
+_037FBB5C: .word sMasterPan
 _037FBB60: .word 0x03806EB0
 	arm_func_end SND_SetMasterPan
 
@@ -2775,17 +2775,17 @@ _037FBDE8: .word SVC_GetVolumeTable
 	arm_func_start SND_SinIdx
 SND_SinIdx: ; 0x037FBDEC
 	cmp r0, #0x20
-	ldrlt r1, _037FBE54 ; =_0380664C
+	ldrlt r1, _037FBE54 ; =SinTable
 	ldrltsb r0, [r1, r0]
 	bxlt lr
 	cmp r0, #0x40
-	ldrlt r1, _037FBE54 ; =_0380664C
+	ldrlt r1, _037FBE54 ; =SinTable
 	rsblt r0, r0, #0x40
 	ldrltsb r0, [r1, r0]
 	bxlt lr
 	cmp r0, #0x60
 	bge _037FBE34
-	ldr r1, _037FBE54 ; =_0380664C
+	ldr r1, _037FBE54 ; =SinTable
 	sub r0, r0, #0x40
 	ldrsb r0, [r1, r0]
 	rsb r0, r0, #0
@@ -2793,7 +2793,7 @@ SND_SinIdx: ; 0x037FBDEC
 	mov r0, r0, asr #0x18
 	bx lr
 _037FBE34:
-	ldr r1, _037FBE54 ; =_0380664C
+	ldr r1, _037FBE54 ; =SinTable
 	sub r0, r0, #0x60
 	rsb r0, r0, #0x20
 	ldrsb r0, [r1, r0]
@@ -2802,12 +2802,12 @@ _037FBE34:
 	mov r0, r0, asr #0x18
 	bx lr
 	.align 2, 0
-_037FBE54: .word _0380664C
+_037FBE54: .word SinTable
 	arm_func_end SND_SinIdx
 
 	arm_func_start SND_CalcRandom
 SND_CalcRandom: ; 0x037FBE58
-	ldr r2, _037FBE80 ; =0x03806AF0
+	ldr r2, _037FBE80 ; =u$3681
 	ldr r0, _037FBE84 ; =0x0019660D
 	ldr r3, [r2]
 	ldr r1, _037FBE88 ; =0x3C6EF35F
@@ -2818,7 +2818,7 @@ SND_CalcRandom: ; 0x037FBE58
 	mov r0, r0, lsr #0x10
 	bx lr
 	.align 2, 0
-_037FBE80: .word 0x03806AF0
+_037FBE80: .word u$3681
 _037FBE84: .word 0x0019660D
 _037FBE88: .word 0x3C6EF35F
 	arm_func_end SND_CalcRandom
@@ -3257,7 +3257,7 @@ _037FC410:
 	ldrb r0, [r5, #9]
 	ldrb r1, [r5, #8]
 	mov r2, r0, lsl #1
-	ldr r0, _037FC6EC ; =0x03806670
+	ldr r0, _037FC6EC ; =SNDi_DecibelTable
 	ldrsh r2, [r0, r2]
 	ldrb r0, [r5, #5]
 	add r7, r7, r2
@@ -3453,7 +3453,7 @@ _037FC6D4:
 	bx lr
 	.align 2, 0
 _037FC6E8: .word 0x0380740C
-_037FC6EC: .word 0x03806670
+_037FC6EC: .word SNDi_DecibelTable
 _037FC6F0: .word 0xFFFFFD2D
 _037FC6F4: .word 0x0000FFFC
 	arm_func_end SND_ExChannelMain
@@ -3551,7 +3551,7 @@ _037FC7EC:
 	b _037FC85C
 _037FC814:
 	ldrb r2, [r0, #0x1d]
-	ldr r1, _037FC868 ; =0x03806670
+	ldr r1, _037FC868 ; =SNDi_DecibelTable
 	mov r2, r2, lsl #1
 	ldrsh r3, [r1, r2]
 	ldr r2, [r0, #0x10]
@@ -3574,20 +3574,20 @@ _037FC85C:
 	mov r0, r0, asr #7
 	bx lr
 	.align 2, 0
-_037FC868: .word 0x03806670
+_037FC868: .word SNDi_DecibelTable
 	arm_func_end SND_UpdateExChannelEnvelope
 
 	arm_func_start SND_SetExChannelAttack
 SND_SetExChannelAttack: ; 0x037FC86C
 	cmp r1, #0x6d
-	ldrge r2, _037FC888 ; =0x03806784
+	ldrge r2, _037FC888 ; =attack_table$3790
 	rsblt r1, r1, #0xff
 	rsbge r1, r1, #0x7f
 	ldrgeb r1, [r2, r1]
 	strb r1, [r0, #0x1c]
 	bx lr
 	.align 2, 0
-_037FC888: .word 0x03806784
+_037FC888: .word attack_table$3790
 	arm_func_end SND_SetExChannelAttack
 
 	arm_func_start SND_SetExChannelDecay
@@ -3647,8 +3647,8 @@ SND_AllocExChannel: ; 0x037FC8E8
 	mov r4, #0
 	mvneq r1, r1
 	andeq r0, r0, r1
-	ldr r3, _037FCAA4 ; =0x03806770
-	ldr r8, _037FCAA8 ; =0x03806774
+	ldr r3, _037FCAA4 ; =shift$4005
+	ldr r8, _037FCAA8 ; =channel_order$3829
 	mov sb, r4
 	mvn r1, #0
 	mov fp, #1
@@ -3754,8 +3754,8 @@ _037FCA98:
 	bx lr
 	.align 2, 0
 _037FCAA0: .word 0x038073E4
-_037FCAA4: .word 0x03806770
-_037FCAA8: .word 0x03806774
+_037FCAA4: .word shift$4005
+_037FCAA8: .word channel_order$3829
 _037FCAAC: .word 0x0380740C
 _037FCAB0: .word 0x0000FFFF
 	arm_func_end SND_AllocExChannel
@@ -5098,7 +5098,7 @@ UpdateTrackChannel: ; 0x037FDB30
 	ldrb r4, [sl, #1]
 	ldrsb r7, [sl, #6]
 	mov sb, r6, lsl #1
-	ldr r0, _037FDC84 ; =0x03806670
+	ldr r0, _037FDC84 ; =SNDi_DecibelTable
 	mul r6, r7, r5
 	mov r3, fp, lsl #1
 	ldrsh sb, [r0, sb]
@@ -5177,7 +5177,7 @@ _037FDC74:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	.align 2, 0
-_037FDC84: .word 0x03806670
+_037FDC84: .word SNDi_DecibelTable
 	arm_func_end UpdateTrackChannel
 
 	arm_func_start PlayerSeqMain
@@ -7223,7 +7223,7 @@ CARDi_CommandReadStatus: ; 0x037FF768
 	stmdb sp!, {r3, lr}
 	ldr ip, _037FF7AC ; =0x03808BE0
 	mov lr, #2
-	ldr r0, _037FF7B0 ; =0x0380679C
+	ldr r0, _037FF7B0 ; =arg$3983
 	ldr r3, _037FF7B4 ; =CARDi_CommWriteCore
 	mov r1, #0
 	mov r2, #1
@@ -7239,7 +7239,7 @@ CARDi_CommandReadStatus: ; 0x037FF768
 	bx lr
 	.align 2, 0
 _037FF7AC: .word 0x03808BE0
-_037FF7B0: .word 0x0380679C
+_037FF7B0: .word arg$3983
 _037FF7B4: .word CARDi_CommWriteCore
 _037FF7B8: .word CARDi_CommReadCore
 	arm_func_end CARDi_CommandReadStatus
@@ -7276,7 +7276,7 @@ CARDi_CommArray: ; 0x037FF7F8
 	strh r6, [r5]
 	b _037FF98C
 _037FF81C:
-	ldr r0, _037FF9BC ; =0x03806AF4
+	ldr r0, _037FF9BC ; =_03806AF4
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _037FF92C
@@ -7288,7 +7288,7 @@ _037FF81C:
 	cmp r0, #0xff
 	bne _037FF92C
 	bl OS_GetTick
-	ldr fp, _037FF9BC ; =0x03806AF4
+	ldr fp, _037FF9BC ; =_03806AF4
 	mov r5, r0
 	mov r6, r1
 	mov sb, #0xfa00
@@ -7323,7 +7323,7 @@ _037FF8BC:
 	tst r0, #0x80
 	bne _037FF8BC
 	ldr r1, _037FF9CC ; =0x040001A2
-	ldr r0, _037FF9BC ; =0x03806AF4
+	ldr r0, _037FF9BC ; =_03806AF4
 	ldrh r2, [r1]
 	mov r1, #0
 	strh r2, [sp]
@@ -7343,7 +7343,7 @@ _037FF8F0:
 	mla r1, fp, r5, r1
 	ldr r2, _037FF9C4 ; =0x000082EA
 	bl _ll_udiv
-	ldr r2, _037FF9BC ; =0x03806AF4
+	ldr r2, _037FF9BC ; =_03806AF4
 	ldrb r2, [r2]
 	cmp r1, r2, asr #31
 	cmpeq r0, r2
@@ -7359,7 +7359,7 @@ _037FF92C:
 	ldr r1, _037FF9B8 ; =0x040001A0
 	mov r2, #0xa000
 	strh r2, [r1]
-	ldr r0, _037FF9BC ; =0x03806AF4
+	ldr r0, _037FF9BC ; =_03806AF4
 	mov r1, #1
 	str r1, [r0, #4]
 _037FF960:
@@ -7390,7 +7390,7 @@ _037FF994:
 _037FF9B0: .word 0x03808BE4
 _037FF9B4: .word 0x0000A040
 _037FF9B8: .word 0x040001A0
-_037FF9BC: .word 0x03806AF4
+_037FF9BC: .word _03806AF4
 _037FF9C0: .word 0x038085E0
 _037FF9C4: .word 0x000082EA
 _037FF9C8: .word 0x0000A042
@@ -7482,7 +7482,7 @@ CARDi_WriteEnable: ; 0x037FFAC4
 	stmdb sp!, {r3, lr}
 	ldr ip, _037FFAEC ; =0x03808BE0
 	mov r2, #1
-	ldr r0, _037FFAF0 ; =0x038067A0
+	ldr r0, _037FFAF0 ; =buf$3759
 	ldr r3, _037FFAF4 ; =CARDi_CommWriteCore
 	mov r1, #0
 	str r2, [ip, #4]
@@ -7491,7 +7491,7 @@ CARDi_WriteEnable: ; 0x037FFAC4
 	bx lr
 	.align 2, 0
 _037FFAEC: .word 0x03808BE0
-_037FFAF0: .word 0x038067A0
+_037FFAF0: .word buf$3759
 _037FFAF4: .word CARDi_CommWriteCore
 	arm_func_end CARDi_WriteEnable
 
@@ -7861,7 +7861,7 @@ CARDi_EraseChipCore: ; 0x037FFF94
 	bl CARDi_WriteEnable
 	ldr r1, _037FFFE4 ; =0x03808BE0
 	mov r2, #1
-	ldr r0, _037FFFE8 ; =0x03806798
+	ldr r0, _037FFFE8 ; =arg$3806
 	ldr r3, _037FFFEC ; =CARDi_CommWriteCore
 	str r2, [r1, #4]
 	mov r1, #0
@@ -7875,7 +7875,7 @@ _037FFFD8:
 	.align 2, 0
 _037FFFE0: .word 0x038085E0
 _037FFFE4: .word 0x03808BE0
-_037FFFE8: .word 0x03806798
+_037FFFE8: .word arg$3806
 _037FFFEC: .word CARDi_CommWriteCore
 	arm_func_end CARDi_EraseChipCore
 
@@ -7992,7 +7992,7 @@ _03800158: .word 0x038085E0
 
 	arm_func_start CARDi_GetRomFlag
 CARDi_GetRomFlag: ; 0x0380015C
-	ldr r1, _03800178 ; =0x03806AFC
+	ldr r1, _03800178 ; =cardi_rom_header_addr
 	ldr r1, [r1]
 	ldr r1, [r1, #0x60]
 	bic r1, r1, #0x7000000
@@ -8000,7 +8000,7 @@ CARDi_GetRomFlag: ; 0x0380015C
 	orr r0, r0, #0xa0000000
 	bx lr
 	.align 2, 0
-_03800178: .word 0x03806AFC
+_03800178: .word cardi_rom_header_addr
 	arm_func_end CARDi_GetRomFlag
 
 	arm_func_start CARDi_ReadCard
@@ -8507,7 +8507,7 @@ CARD_CheckPullOut_Polling: ; 0x038007AC
 	ldrh r0, [r2]
 	cmp r0, #2
 	beq _03800890
-	ldr r1, _038008A0 ; =0x03806B00
+	ldr r1, _038008A0 ; =nextCount$3668
 	mvn r0, #0
 	ldr r3, [r1]
 	cmp r3, r0
@@ -8531,13 +8531,13 @@ CARD_CheckPullOut_Polling: ; 0x038007AC
 	ldr r0, [r0, #0xc]
 	cmp r0, #0
 	bne _03800840
-	ldr r0, _038008A0 ; =0x03806B00
+	ldr r0, _038008A0 ; =nextCount$3668
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	bne _03800890
 _03800840:
 	ldr r0, _03800898 ; =0x03808E20
-	ldr r1, _038008A0 ; =0x03806B00
+	ldr r1, _038008A0 ; =nextCount$3668
 	ldr r0, [r0, #4]
 	mov r2, #0
 	str r2, [r1, #4]
@@ -8564,15 +8564,137 @@ _03800890:
 	.align 2, 0
 _03800898: .word 0x03808E20
 _0380089C: .word 0x027FFC40
-_038008A0: .word 0x03806B00
+_038008A0: .word nextCount$3668
 	arm_func_end CARD_CheckPullOut_Polling
 
 	.rodata
 
-_03806A74:
-	.byte 0x08, 0x00, 0x09, 0x00, 0x0A, 0x00, 0x0B, 0x00, 0x03, 0x00, 0x04, 0x00
-	.byte 0x05, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00
+SinTable: ; 0x0380664C
+	.byte 0x00, 0x06, 0x0C, 0x13
+	.byte 0x19, 0x1F, 0x25, 0x2B, 0x31, 0x36, 0x3C, 0x41, 0x47, 0x4C, 0x51, 0x55, 0x5A, 0x5E, 0x62, 0x66
+	.byte 0x6A, 0x6D, 0x70, 0x73, 0x75, 0x78, 0x7A, 0x7B, 0x7D, 0x7E, 0x7E, 0x7F, 0x7F
+
+	.balign 4, 0
+
+SNDi_DecibelTable: ; 0x03806670
+	.byte 0x00, 0x80, 0x2E, 0xFD, 0x2F, 0xFD, 0x75, 0xFD, 0xA7, 0xFD, 0xCE, 0xFD, 0xEE, 0xFD, 0x09, 0xFE
+	.byte 0x20, 0xFE, 0x34, 0xFE, 0x46, 0xFE, 0x57, 0xFE, 0x66, 0xFE, 0x74, 0xFE, 0x81, 0xFE, 0x8D, 0xFE
+	.byte 0x98, 0xFE, 0xA3, 0xFE, 0xAD, 0xFE, 0xB6, 0xFE, 0xBF, 0xFE, 0xC7, 0xFE, 0xCF, 0xFE, 0xD7, 0xFE
+	.byte 0xDF, 0xFE, 0xE6, 0xFE, 0xEC, 0xFE, 0xF3, 0xFE, 0xF9, 0xFE, 0xFF, 0xFE, 0x05, 0xFF, 0x0B, 0xFF
+	.byte 0x11, 0xFF, 0x16, 0xFF, 0x1B, 0xFF, 0x20, 0xFF, 0x25, 0xFF, 0x2A, 0xFF, 0x2E, 0xFF, 0x33, 0xFF
+	.byte 0x37, 0xFF, 0x3C, 0xFF, 0x40, 0xFF, 0x44, 0xFF, 0x48, 0xFF, 0x4C, 0xFF, 0x50, 0xFF, 0x53, 0xFF
+	.byte 0x57, 0xFF, 0x5B, 0xFF, 0x5E, 0xFF, 0x62, 0xFF, 0x65, 0xFF, 0x68, 0xFF, 0x6B, 0xFF, 0x6F, 0xFF
+	.byte 0x72, 0xFF, 0x75, 0xFF, 0x78, 0xFF, 0x7B, 0xFF, 0x7E, 0xFF, 0x81, 0xFF, 0x83, 0xFF, 0x86, 0xFF
+	.byte 0x89, 0xFF, 0x8C, 0xFF, 0x8E, 0xFF, 0x91, 0xFF, 0x93, 0xFF, 0x96, 0xFF, 0x99, 0xFF, 0x9B, 0xFF
+	.byte 0x9D, 0xFF, 0xA0, 0xFF, 0xA2, 0xFF, 0xA5, 0xFF, 0xA7, 0xFF, 0xA9, 0xFF, 0xAB, 0xFF, 0xAE, 0xFF
+	.byte 0xB0, 0xFF, 0xB2, 0xFF, 0xB4, 0xFF, 0xB6, 0xFF, 0xB8, 0xFF, 0xBA, 0xFF, 0xBC, 0xFF, 0xBE, 0xFF
+	.byte 0xC0, 0xFF, 0xC2, 0xFF, 0xC4, 0xFF, 0xC6, 0xFF, 0xC8, 0xFF, 0xCA, 0xFF, 0xCC, 0xFF, 0xCE, 0xFF
+	.byte 0xCF, 0xFF, 0xD1, 0xFF, 0xD3, 0xFF, 0xD5, 0xFF, 0xD6, 0xFF, 0xD8, 0xFF, 0xDA, 0xFF, 0xDC, 0xFF
+	.byte 0xDD, 0xFF, 0xDF, 0xFF, 0xE1, 0xFF, 0xE2, 0xFF, 0xE4, 0xFF, 0xE5, 0xFF, 0xE7, 0xFF, 0xE9, 0xFF
+	.byte 0xEA, 0xFF, 0xEC, 0xFF, 0xED, 0xFF, 0xEF, 0xFF, 0xF0, 0xFF, 0xF2, 0xFF, 0xF3, 0xFF, 0xF5, 0xFF
+	.byte 0xF6, 0xFF, 0xF8, 0xFF, 0xF9, 0xFF, 0xFA, 0xFF, 0xFC, 0xFF, 0xFD, 0xFF, 0xFF, 0xFF, 0x00, 0x00
+
+shift$4005: ; 0x03806770
+	.byte 0x00, 0x01, 0x02, 0x04
+
+channel_order$3829: ; 0x03806774
+	.byte 0x04, 0x05, 0x06, 0x07, 0x02, 0x00, 0x03, 0x01, 0x08, 0x09, 0x0A, 0x0B
+	.byte 0x0E, 0x0C, 0x0F, 0x0D
+
+attack_table$3790: ; 0x03806784
+	.byte 0x00, 0x01, 0x05, 0x0E, 0x1A, 0x26, 0x33, 0x3F, 0x49, 0x54, 0x5C, 0x64
+	.byte 0x6D, 0x74, 0x7B, 0x7F, 0x84, 0x89, 0x8F
+
+	.balign 4, 0
+arg$3806: ; 0x03806798
+	.byte 0xC7
+
+	.balign 4, 0
+arg$3983: ; 0x0380679C
+	.byte 0x05
+
+	.balign 4, 0
+buf$3759: ; 0x038067A0
+	.byte 0x06
+
+	.data
+
+sMasterPan: ; 0x03806AEC
+	.word 0xFFFFFFFF
+
+u$3681: ; 0x03806AF0
+	.word 0x12345678
+
+_03806AF4:
+	.byte 50
+
+	.balign 4, 0
+_03806AF8:
+	.word 1
+
+cardi_rom_header_addr: ; 0x03806AFC
+	.word 0x027FFE00
+
+nextCount$3668: ; 0x03806B00
+	.word 0xFFFFFFFF
+
+isFirstCheck$3676: ; 0x03806B04
+	.word 1
 
 	.bss
-_sub_wram1_bss_start:
-	.space 0x4024
+OSiHeapInfo: ; 0x03806D9C
+	.space 0x24
+
+OSi_TimerReserved: ; 0x03806DC0
+	.space 2
+
+	.balign 4, 0
+OSi_UseTick: ; 0x03806DC4
+	.space 2
+
+	.balign 4, 0
+OSi_NeedResetTimer: ; 0x03806DC8
+	.space 4
+
+OSi_TickCounter: ; 0x03806DCC
+	.space 8
+
+OSi_UseAlarm: ; 0x03806DD4
+	.space 2
+
+	.balign 4, 0
+OSi_AlarmQueue: ; 0x03806DD8
+	.space 8
+
+OSi_UseVAlarm: ; 0x03806DE0
+	.space 2
+
+	.balign 4, 0
+OSi_PreviousVCount: ; 0x03806DE4
+	.space 4
+
+OSi_VFrameCount: ; 0x03806DE8
+	.space 4
+
+OSi_VAlarmQueue: ; 0x03806DEC
+	.space 8
+
+OSi_IsInitReset: ; 0x03806DF4
+	.space 2
+
+OSi_IsResetOccurred: ; 0x03806DF6
+	.space 2
+
+FifoCtrlInit: ; 0x03806DF8
+	.space 2
+
+	.balign 4, 0
+FifoRecvCallbackTable: ; 0x03806DFC
+	.space 0x80
+
+PADi_XYButtonAvailable: ; 0x03806E7C
+	.space 4
+
+PADi_XYButtonAlarm: ; 0x03806E80
+	.space 0x2C
+	.space 0x3F14

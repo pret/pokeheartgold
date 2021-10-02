@@ -2,7 +2,6 @@
 	.include "global.inc"
 
 	.text
-	.public _0380664C
 
 	arm_func_start OS_IrqHandler
 OS_IrqHandler: ; 0x037F84E4
@@ -22,12 +21,12 @@ _037F8510:
 	addeq r0, r0, #1
 	beq _037F8510
 	str r2, [ip, #4]
-	ldr r1, _037F8530 ; =0x03806A88
+	ldr r1, _037F8530 ; =OS_IRQTable
 	ldr r0, [r1, r0, lsl #2]
 	ldr lr, _037F8534 ; =OS_IrqHandler_ThreadSwitch
 	bx r0
 	.align 2, 0
-_037F8530: .word 0x03806A88
+_037F8530: .word OS_IRQTable
 _037F8534: .word OS_IrqHandler_ThreadSwitch
 	arm_func_end OS_IrqHandler
 
@@ -129,7 +128,7 @@ OSi_IrqCallback: ; 0x037F8660
 	mov r1, #0xc
 	mul r5, r0, r1
 	ldr r2, _037F86D8 ; =0x03806BAC
-	ldr r3, _037F86DC ; =_03806A74
+	ldr r3, _037F86DC ; =OSi_IrqCallbackInfoIndex
 	mov r4, r0, lsl #1
 	ldr r1, [r2, r5]
 	mov r0, #0
@@ -159,7 +158,7 @@ _037F86D0:
 	bx lr
 	.align 2, 0
 _037F86D8: .word 0x03806BAC
-_037F86DC: .word _03806A74
+_037F86DC: .word OSi_IrqCallbackInfoIndex
 _037F86E0: .word 0x03806BB4
 _037F86E4: .word 0x0380FFF8
 _037F86E8: .word 0x03806BB0
@@ -282,7 +281,7 @@ _037F87DC: .word 0x027FFC3C
 	arm_func_start OS_SetIrqFunction
 OS_SetIrqFunction: ; 0x037F87E0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r4, _037F8870 ; =0x03806A88
+	ldr r4, _037F8870 ; =OS_IRQTable
 	mov sb, #0
 	mov r2, #0xc
 	ldr r5, _037F8874 ; =0x03806C0C
@@ -323,7 +322,7 @@ _037F8858:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_037F8870: .word 0x03806A88
+_037F8870: .word OS_IRQTable
 _037F8874: .word 0x03806C0C
 _037F8878: .word 0x03806BAC
 	arm_func_end OS_SetIrqFunction
@@ -743,3 +742,35 @@ OS_ReleaseLockID: ; 0x037F8CB8
 _037F8CE4: .word 0x027FFFB8
 	arm_func_end OS_ReleaseLockID
 
+	.data
+
+OSi_IrqCallbackInfoIndex: ; 0x03806A74
+	.byte 0x08, 0x00, 0x09, 0x00, 0x0A, 0x00, 0x0B, 0x00, 0x03, 0x00, 0x04, 0x00
+	.byte 0x05, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00
+
+OS_IRQTable: ; 0x03806A88
+	.word OSi_IrqVBlank
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OSi_IrqTimer0
+    .word OSi_IrqTimer1
+    .word OSi_IrqTimer2
+    .word OSi_IrqTimer3
+	.word OS_IrqDummy
+	.word OSi_IrqDma0
+    .word OSi_IrqDma1
+    .word OSi_IrqDma2
+    .word OSi_IrqDma3
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy

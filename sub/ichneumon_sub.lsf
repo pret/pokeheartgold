@@ -28,6 +28,7 @@ Autoload WRAM
 	Object sub.wram_1.o
 	Object libsyscall.o
 	Object sub.wram_2.o
+	Object sub.wram_2.o (.wram)
 }
 
 Autoload EXT_WRAM
