@@ -6,6 +6,7 @@
 	.public sub_060007A8
 	.public sub_06008D54
 	.public sub_060007B4
+	.public sub_06000000
 
 	.text
 
@@ -2910,7 +2911,7 @@ sub_03802F38: ; 0x03802F38
 	ldr r2, _03802F6C ; =0x05000001
 	add r0, sp, #0
 	str r3, [sp]
-	bl sub_03802F74
+	bl __VENEER_SVC_CpuSet
 	bl OS_GetLockID
 	ldr r1, _03802F70 ; =0x03809448
 	strh r0, [r1, #6]
@@ -2922,13 +2923,13 @@ _03802F6C: .word 0x05000001
 _03802F70: .word 0x03809448
 	arm_func_end sub_03802F38
 
-	arm_func_start sub_03802F74
-sub_03802F74: ; 0x03802F74
+	arm_func_start __VENEER_SVC_CpuSet
+__VENEER_SVC_CpuSet: ; 0x03802F74
 	ldr ip, _03802F7C ; =SVC_CpuSet
 	bx ip
 	.align 2, 0
 _03802F7C: .word SVC_CpuSet
-	arm_func_end sub_03802F74
+	arm_func_end __VENEER_SVC_CpuSet
 
 	arm_func_start sub_03802F80
 sub_03802F80: ; 0x03802F80
@@ -6287,9 +6288,9 @@ _03805B0C: .word 0x03809938
 
 	arm_func_start sub_03805B10
 sub_03805B10: ; 0x03805B10
-	ldr pc, _03805B14 ; =0x06000000
+	ldr pc, _03805B14 ; =sub_06000000
 	.align 2, 0
-_03805B14: .word 0x06000000
+_03805B14: .word sub_06000000
 	arm_func_end sub_03805B10
 
 	arm_func_start sub_03805B18
