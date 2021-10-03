@@ -22621,7 +22621,7 @@ NNS_SndInit: ; 0x020C78D0
 	ldmneia sp!, {r3, pc}
 	mov r1, #1
 	str r1, [r0, #0xc]
-	bl sub_020D54D0
+	bl SND_Init
 	ldr r0, _020C7948 ; =sub_020C7B34
 	ldr r1, _020C7944 ; =0x021DD420
 	mov r2, #0
@@ -22657,23 +22657,23 @@ NNS_SndMain: ; 0x020C7958
 	mov r4, #0
 _020C7960:
 	mov r0, r4
-	bl sub_020D5604
+	bl SND_RecvCommandReply
 	cmp r0, #0
 	bne _020C7960
 	bl sub_020C8498
 	bl sub_020C90A4
 	bl sub_020CAB94
 	mov r0, #0
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	ldmia sp!, {r4, pc}
 	arm_func_end NNS_SndMain
 
 	arm_func_start sub_020C7988
 sub_020C7988: ; 0x020C7988
-	ldr ip, _020C7990 ; =sub_020D5394
+	ldr ip, _020C7990 ; =SND_SetMasterVolume
 	bx ip
 	.align 2, 0
-_020C7990: .word sub_020D5394
+_020C7990: .word SND_SetMasterVolume
 	arm_func_end sub_020C7988
 
 	arm_func_start NNS_SndSetMonoFlag
@@ -22682,10 +22682,10 @@ NNS_SndSetMonoFlag: ; 0x020C7994
 	cmp r0, #0
 	beq _020C79AC
 	mov r0, #0x40
-	bl sub_020D53DC
+	bl SND_SetMasterPan
 	ldmia sp!, {r3, pc}
 _020C79AC:
-	bl sub_020D53FC
+	bl SND_ResetMasterPan
 	ldmia sp!, {r3, pc}
 	arm_func_end NNS_SndSetMonoFlag
 
@@ -22699,12 +22699,12 @@ sub_020C79B4: ; 0x020C79B4
 	mov r4, #0
 _020C79CC:
 	mov r0, r4
-	bl sub_020D5604
+	bl SND_RecvCommandReply
 	cmp r0, #0
 	bne _020C79CC
 	ldr r0, _020C7A88 ; =0x021DD420
 	ldr r0, [r0, #8]
-	bl sub_020D5A28
+	bl SND_IsFinishedCommandTag
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -22718,8 +22718,8 @@ _020C79CC:
 	ldrsb r1, [r0]
 	ldr r0, _020C7A90 ; =0x000011E0
 	mla r0, r1, r0, r2
-	bl sub_020D541C
-	bl sub_020D59FC
+	bl SND_ReadDriverInfo
+	bl SND_GetCurrentCommandTag
 	ldr r1, _020C7A88 ; =0x021DD420
 	ldr r3, _020C7A8C ; =0x021DD460
 	str r0, [r1, #8]
@@ -22734,13 +22734,13 @@ _020C79CC:
 	mla r0, r2, r1, r3
 	bl DC_InvalidateRange
 	mov r0, #0
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _020C7A68:
 	ldr r0, _020C7A8C ; =0x021DD460
-	bl sub_020D541C
-	bl sub_020D59FC
+	bl SND_ReadDriverInfo
+	bl SND_GetCurrentCommandTag
 	ldr r1, _020C7A88 ; =0x021DD420
 	str r0, [r1, #8]
 	mov r0, #0
@@ -22768,7 +22768,7 @@ sub_020C7A94: ; 0x020C7A94
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r1, ip
-	bl sub_020D5DA4
+	bl SND_ReadChannelInfo
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020C7AD4: .word 0x021DD420
@@ -22794,7 +22794,7 @@ sub_020C7AE0: ; 0x020C7AE0
 	ldmeqia sp!, {r4, pc}
 	mov r1, r4
 	mov r2, lr
-	bl sub_020D5F34
+	bl SND_ReadTrackInfo
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020C7B28: .word 0x021DD420
@@ -22810,13 +22810,13 @@ sub_020C7B34: ; 0x020C7B34
 	mov r1, r0
 	mov r2, r0
 	mov r3, r0
-	bl sub_020D519C
-	bl sub_020D59FC
+	bl SND_StopTimer
+	bl SND_GetCurrentCommandTag
 	mov r4, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r4
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020C7B34
 
@@ -22840,7 +22840,7 @@ sub_020C7B78: ; 0x020C7B78
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r1, #0
-	bl sub_020D5240
+	bl SND_LockChannel
 	ldr r1, _020C7BBC ; =0x021DF820
 	mov r0, #1
 	ldr r2, [r1, #8]
@@ -22857,7 +22857,7 @@ sub_020C7BC0: ; 0x020C7BC0
 	movs r4, r0
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
-	bl sub_020D5260
+	bl SND_UnlockChannel
 	ldr r0, _020C7BEC ; =0x021DF820
 	mvn r1, r4
 	ldr r2, [r0, #8]
@@ -23020,19 +23020,19 @@ _020C7D80:
 	moveq r3, #2
 	mov r1, r8
 	mov r2, r7
-	bl sub_020D52E8
+	bl SND_SetupChannelPcm
 	mov r1, #0
 	ldr r0, [sb]
 	mov r2, #1
 	mov r0, r2, lsl r0
 	mov r2, r1
 	mov r3, r1
-	bl sub_020D5174
+	bl SND_StartTimer
 	mov r0, #1
 	str r0, [sb, #8]
 	mov r0, #0
 	str r0, [sb, #0xc]
-	bl sub_020D59FC
+	bl SND_GetCurrentCommandTag
 	str r0, [sb, #0x10]
 	ldr r1, [sp, #0x40]
 	mov r0, #1
@@ -23057,7 +23057,7 @@ sub_020C7E0C: ; 0x020C7E0C
 	mov r0, r2, lsl r0
 	mov r2, r1
 	mov r3, r1
-	bl sub_020D519C
+	bl SND_StopTimer
 	mov r0, #0
 	str r0, [r4, #8]
 	ldmia sp!, {r4, pc}
@@ -23073,7 +23073,7 @@ sub_020C7E48: ; 0x020C7E48
 	mov r2, #1
 	mov r0, r2, lsl r0
 	mov r2, #0
-	bl sub_020D52A0
+	bl SND_SetChannelVolume
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C7E48
 
@@ -23109,7 +23109,7 @@ _020C7ED4:
 	mov r1, #1
 	mov r0, r1, lsl r0
 	mov r1, r3
-	bl sub_020D5280
+	bl SND_SetChannelTimer
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020C7EEC: .word 0xD87F8000
@@ -23125,7 +23125,7 @@ sub_020C7EF4: ; 0x020C7EF4
 	ldr r0, [r0]
 	mov r2, #1
 	mov r0, r2, lsl r0
-	bl sub_020D52C8
+	bl SND_SetChannelPan
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C7EF4
 
@@ -23141,13 +23141,13 @@ sub_020C7F18: ; 0x020C7F18
 	cmp r0, #0
 	bne _020C7F54
 	ldr r0, [r4, #0x10]
-	bl sub_020D5A28
+	bl SND_IsFinishedCommandTag
 	cmp r0, #0
 	mov r0, #1
 	ldmeqia sp!, {r4, pc}
 	str r0, [r4, #0xc]
 _020C7F54:
-	bl sub_020D5D30
+	bl SND_GetChannelStatus
 	ldr r1, [r4]
 	mov r2, #1
 	tst r0, r2, lsl r1
@@ -23433,7 +23433,7 @@ sub_020C825C: ; 0x020C825C
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl sub_020D50FC
+	bl SND_SetPlayerChannelPriority
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C825C
 
@@ -23445,7 +23445,7 @@ sub_020C827C: ; 0x020C827C
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl sub_020D5114
+	bl SND_SetTrackPitch
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C827C
 
@@ -23457,7 +23457,7 @@ sub_020C829C: ; 0x020C829C
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl sub_020D5130
+	bl SND_SetTrackPan
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C829C
 
@@ -23469,7 +23469,7 @@ sub_020C82BC: ; 0x020C82BC
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl sub_020D514C
+	bl SND_SetTrackAllocatableChannel
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C82BC
 
@@ -23481,7 +23481,7 @@ sub_020C82DC: ; 0x020C82DC
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl sub_020D50CC
+	bl SND_SetPlayerTempoRatio
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C82DC
 
@@ -23545,7 +23545,7 @@ sub_020C8374: ; 0x020C8374
 	ldmia sp!, {r4, pc}
 _020C83AC:
 	ldrb r0, [r2, #0x3c]
-	bl sub_020D5D5C
+	bl SND_GetPlayerLocalVariable
 	strh r0, [r4]
 	mov r0, #1
 	ldmia sp!, {r4, pc}
@@ -23619,7 +23619,7 @@ _020C8494: .word 0x021DFDC4
 	arm_func_start sub_020C8498
 sub_020C8498: ; 0x020C8498
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	bl sub_020D5D04
+	bl SND_GetPlayerStatus
 	mov fp, r0
 	ldr r0, _020C85F0 ; =0x021DF978
 	mov r1, #0
@@ -23638,7 +23638,7 @@ _020C84C4:
 	cmp r1, #0
 	bne _020C84F4
 	ldr r0, [r6, #0x30]
-	bl sub_020D5A28
+	bl SND_IsFinishedCommandTag
 	cmp r0, #0
 	movne r0, #1
 	strneb r0, [r6, #0x2d]
@@ -23686,7 +23686,7 @@ _020C8584:
 	beq _020C85A0
 	ldrb r0, [r6, #0x3c]
 	mov r1, r8
-	bl sub_020D50E4
+	bl SND_SetPlayerVolume
 	strh r8, [r6, #0x3e]
 _020C85A0:
 	ldrb r0, [r6, #0x2c]
@@ -23703,7 +23703,7 @@ _020C85C4:
 	cmp r0, #0
 	beq _020C85E0
 	ldrb r0, [r6, #0x3c]
-	bl sub_020D508C
+	bl SND_StartPreparedSeq
 	mov r0, #0
 	strb r0, [r6, #0x2f]
 _020C85E0:
@@ -23776,17 +23776,17 @@ sub_020C86A0: ; 0x020C86A0
 	mov r5, r0
 	ldrb r0, [r5, #0x3c]
 	ldr r4, [r5, #4]
-	bl sub_020D5064
+	bl SND_PrepareSeq
 	ldr r2, [r4, #0x1c]
 	cmp r2, #0
 	beq _020C86CC
 	ldrb r0, [r5, #0x3c]
 	ldr r1, _020C86EC ; =0x0000FFFF
-	bl sub_020D514C
+	bl SND_SetTrackAllocatableChannel
 _020C86CC:
 	mov r0, r5
 	bl sub_020C87B8
-	bl sub_020D59FC
+	bl SND_GetCurrentCommandTag
 	str r0, [r5, #0x30]
 	mov r0, #1
 	strb r0, [r5, #0x2f]
@@ -23829,7 +23829,7 @@ sub_020C873C: ; 0x020C873C
 	cmpne r4, r0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldrb r0, [r5, #0x3c]
-	bl sub_020D50AC
+	bl SND_PauseSeq
 	strb r4, [r5, #0x2e]
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020C873C
@@ -23945,10 +23945,10 @@ sub_020C88A4: ; 0x020C88A4
 	bne _020C88C4
 	ldrb r0, [r4, #0x3c]
 	ldr r1, _020C88D8 ; =0xFFFFFD2D
-	bl sub_020D50E4
+	bl SND_SetPlayerVolume
 _020C88C4:
 	ldrb r0, [r4, #0x3c]
-	bl sub_020D5044
+	bl SND_StopSeq
 	mov r0, r4
 	bl sub_020C8944
 	ldmia sp!, {r4, pc}
@@ -24228,7 +24228,7 @@ _020C8C1C:
 	mov r2, #0x40
 	str r2, [sp, #0x14]
 	ldr r2, [r5, r0, lsl #3]
-	bl sub_020D52E8
+	bl SND_SetupChannelPcm
 	ldr r0, [sl, #0x48]
 	add r6, r6, #1
 	cmp r6, r0
@@ -24239,7 +24239,7 @@ _020C8C80:
 	ldr r0, [sl, #0x40]
 	ldr r3, _020C8D10 ; =sub_020C8E98
 	mov r2, r1
-	bl sub_020D5200
+	bl SND_SetupAlarm
 	ldr r0, _020C8D14 ; =0x021E0248
 	mov r1, sl
 	bl sub_020B4BAC
@@ -24285,7 +24285,7 @@ sub_020C8D18: ; 0x020C8D18
 	mov r2, r2, lsl r0
 	ldr r0, [r4, #0x44]
 	mov r3, r1
-	bl sub_020D5174
+	bl SND_StartTimer
 	ldr r0, [r4, #0x24]
 	mov r0, r0, lsl #0x1e
 	movs r0, r0, asr #0x1f
@@ -24329,12 +24329,12 @@ _020C8DAC:
 	add r0, r4, r5, lsl #3
 	ldr r0, [r0, #4]
 	add r0, r1, r0
-	bl sub_020D60E4
+	bl SND_CalcChannelVolume
 	mov r2, r0
 	mov r0, r8, lsl r5
 	and r1, r2, #0xff
 	mov r2, r2, asr #8
-	bl sub_020D52A0
+	bl SND_SetChannelVolume
 	ldr r0, [r7, #0x48]
 	add r6, r6, #1
 	cmp r6, r0
@@ -24358,7 +24358,7 @@ sub_020C8DF4: ; 0x020C8DF4
 	mov r2, r2, lsl r0
 	ldr r0, [r4, #0x44]
 	mov r3, r1
-	bl sub_020D519C
+	bl SND_StopTimer
 	add r0, r4, #8
 	bl sub_020DB990
 	add r0, r4, #0x14
@@ -24366,12 +24366,12 @@ sub_020C8DF4: ; 0x020C8DF4
 	ldr r0, [r4, #0x24]
 	bic r0, r0, #2
 	str r0, [r4, #0x24]
-	bl sub_020D59FC
+	bl SND_GetCurrentCommandTag
 	mov r5, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r5
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 _020C8E5C:
 	mov r0, r4
 	bl sub_020C8E68
@@ -24468,13 +24468,13 @@ sub_020C8F58: ; 0x020C8F58
 	mov r2, r3, lsl r2
 	ldr r0, [r0, #0x44]
 	mov r3, r1
-	bl sub_020D519C
-	bl sub_020D59FC
+	bl SND_StopTimer
+	bl SND_GetCurrentCommandTag
 	mov r4, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r4
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020C8F58
 
@@ -24508,7 +24508,7 @@ _020C8FF4:
 	mov r2, r2, lsl r0
 	ldr r0, [r4, #0x44]
 	mov r3, r1
-	bl sub_020D5174
+	bl SND_StartTimer
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020C8FA4
 
@@ -24601,7 +24601,7 @@ _020C90F4:
 	ldr r0, [r4, #0x24]
 	mov r1, r5
 	mov r2, #0
-	bl sub_020D52A0
+	bl SND_SetChannelVolume
 	str r5, [r4, #0x50]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -24628,15 +24628,15 @@ sub_020C912C: ; 0x020C912C
 	ldr r0, [r4, #0x24]
 	ldr r1, [r4, #0x28]
 	moveq r2, #0
-	bl sub_020D519C
+	bl SND_StopTimer
 	cmp r7, #0
 	beq _020C91B4
-	bl sub_020D59FC
+	bl SND_GetCurrentCommandTag
 	mov r5, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r5
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 	ldr r6, _020C9218 ; =0x021E031C
 	mov r5, #0
 _020C919C:
@@ -24669,7 +24669,7 @@ _020C91E4:
 	mov r1, r0
 	mov r2, r0
 	mov r3, r0
-	bl sub_020D53B4
+	bl SND_SetOutputSelector
 _020C9204:
 	mov r0, #0
 	str r0, [r4]
@@ -24696,13 +24696,13 @@ sub_020C921C: ; 0x020C921C
 	ldr r1, [r3, #0x28]
 	movlt r2, #0
 	mov r3, #0
-	bl sub_020D519C
-	bl sub_020D59FC
+	bl SND_StopTimer
+	bl SND_GetCurrentCommandTag
 	mov r4, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r4
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020C9274: .word 0x021E0314
@@ -24740,7 +24740,7 @@ sub_020C927C: ; 0x020C927C
 	ldr r0, [r4, #0x24]
 	ldr r1, [r4, #0x28]
 	movlt r2, #0
-	bl sub_020D5174
+	bl SND_StartTimer
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020C92F8: .word 0x021E0314
@@ -25579,12 +25579,12 @@ sub_020C9D50: ; 0x020C9D50
 	arm_func_start sub_020C9D8C
 sub_020C9D8C: ; 0x020C9D8C
 	stmdb sp!, {r4, lr}
-	bl sub_020D59FC
+	bl SND_GetCurrentCommandTag
 	mov r4, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r4
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020C9D8C
 
@@ -25877,7 +25877,7 @@ _020CA150:
 	beq _020CA16C
 	mov r0, r6
 	mov r1, r7
-	bl sub_020D6154
+	bl SND_AssignWaveArc
 _020CA16C:
 	add r7, r7, #1
 	cmp r7, #4
@@ -26225,7 +26225,7 @@ sub_020CA5D0: ; 0x020CA5D0
 	bl sub_020CA578
 	mov r0, r5
 	add r1, r5, r4
-	bl sub_020D5334
+	bl SND_InvalidateSeqData
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020CA5D0
 
@@ -26239,9 +26239,9 @@ sub_020CA5F8: ; 0x020CA5F8
 	bl sub_020CA578
 	mov r0, r5
 	add r1, r5, r4
-	bl sub_020D5354
+	bl SND_InvalidateBankData
 	mov r0, r5
-	bl sub_020D6220
+	bl SND_DestroyBank
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020CA5F8
 
@@ -26255,9 +26255,9 @@ sub_020CA628: ; 0x020CA628
 	bl sub_020CA578
 	mov r0, r5
 	add r1, r5, r4
-	bl sub_020D5374
+	bl SND_InvalidateWaveData
 	mov r0, r5
-	bl sub_020D62B8
+	bl SND_DestroyWaveArc
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020CA628
 
@@ -26269,7 +26269,7 @@ sub_020CA658: ; 0x020CA658
 	mov r2, r3
 	bl sub_020CA578
 	mov r0, r4
-	bl sub_020D62B8
+	bl SND_DestroyWaveArc
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020CA658
 
@@ -26282,17 +26282,17 @@ sub_020CA678: ; 0x020CA678
 	mov r6, r1
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D650C
+	bl SND_GetWaveDataAddress
 	cmp r7, r0
 	bne _020CA6B0
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0
-	bl sub_020D64D8
+	bl SND_SetWaveDataAddress
 _020CA6B0:
 	mov r0, r7
 	add r1, r7, r6
-	bl sub_020D5374
+	bl SND_InvalidateWaveData
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020CA678
 
@@ -26303,12 +26303,12 @@ sub_020CA6C0: ; 0x020CA6C0
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl sub_020D650C
+	bl SND_GetWaveDataAddress
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r8
-	bl sub_020D64D0
+	bl SND_GetWaveDataCount
 	ldr r1, [r8, #0x38]
 	sub r0, r0, #1
 	add r1, r1, r7
@@ -26344,7 +26344,7 @@ sub_020CA6C0: ; 0x020CA6C0
 	mov r0, r8
 	mov r1, r7
 	mov r2, r5
-	bl sub_020D64D8
+	bl SND_SetWaveDataAddress
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -26361,7 +26361,7 @@ sub_020CA788: ; 0x020CA788
 	mov r6, r2
 	mov r5, r3
 	ldr r4, [sp, #0x40]
-	bl sub_020D6300
+	bl SND_GetFirstInstDataPos
 	ldr r1, [sp]
 	ldr r0, [sp, #4]
 	str r1, [sp, #8]
@@ -26373,7 +26373,7 @@ sub_020CA788: ; 0x020CA788
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	add r1, sp, #0x10
 	mov r0, r7
-	bl sub_020D6320
+	bl SND_GetNextInstData
 	cmp r0, #0
 	beq _020CA83C
 	add sl, sp, #0x10
@@ -26397,7 +26397,7 @@ _020CA824:
 	mov r0, r7
 	mov r1, sl
 	mov r2, sb
-	bl sub_020D6320
+	bl SND_GetNextInstData
 	cmp r0, #0
 	bne _020CA7EC
 _020CA83C:
