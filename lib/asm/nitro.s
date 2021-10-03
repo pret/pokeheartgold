@@ -1822,14 +1822,14 @@ _020D653C:
 
 	arm_func_start PXI_Init
 PXI_Init: ; 0x020D6548
-	ldr ip, _020D6550 ; =sub_020D6554
+	ldr ip, _020D6550 ; =PXI_InitFifo
 	bx ip
 	.align 2, 0
-_020D6550: .word sub_020D6554
+_020D6550: .word PXI_InitFifo
 	arm_func_end PXI_Init
 
-	arm_func_start sub_020D6554
-sub_020D6554: ; 0x020D6554
+	arm_func_start PXI_InitFifo
+PXI_InitFifo: ; 0x020D6554
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020D6638 ; =0x021E35A4
@@ -1854,7 +1854,7 @@ _020D658C:
 	mov r0, #0x40000
 	strh r2, [r1]
 	bl OS_ResetRequestIrqMask
-	ldr r1, _020D664C ; =sub_020D674C
+	ldr r1, _020D664C ; =PXIi_HandlerRecvFifoNotEmpty
 	mov r0, #0x40000
 	bl OS_SetIrqFunction
 	mov r0, #0x40000
@@ -1899,9 +1899,9 @@ _020D663C: .word 0x027FFC00
 _020D6640: .word 0x021E35A8
 _020D6644: .word 0x0000C408
 _020D6648: .word 0x04000184
-_020D664C: .word sub_020D674C
+_020D664C: .word PXIi_HandlerRecvFifoNotEmpty
 _020D6650: .word 0x04000180
-	arm_func_end sub_020D6554
+	arm_func_end PXI_InitFifo
 
 	arm_func_start PXI_SetFifoRecvCallback
 PXI_SetFifoRecvCallback: ; 0x020D6654
@@ -1982,8 +1982,8 @@ _020D6734:
 _020D6748: .word 0x04000184
 	arm_func_end PXI_SendWordByFifo
 
-	arm_func_start sub_020D674C
-sub_020D674C: ; 0x020D674C
+	arm_func_start PXIi_HandlerRecvFifoNotEmpty
+PXIi_HandlerRecvFifoNotEmpty: ; 0x020D674C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #4
 	mvn r8, #3
@@ -2057,19 +2057,16 @@ _020D6844:
 	str r1, [sb, #4]
 	bl OS_RestoreInterrupts
 	b _020D6770
-	arm_func_end sub_020D674C
-
-	arm_func_start sub_020D6854
-sub_020D6854: ; 0x020D6854
+_020D6854:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _020D685C: .word 0x04000184
 _020D6860: .word 0x021E35A8
-	arm_func_end sub_020D6854
+	arm_func_end PXIi_HandlerRecvFifoNotEmpty
 
-	arm_func_start sub_020D6864
-sub_020D6864: ; 0x020D6864
+	arm_func_start FSi_ReleaseCommand
+FSi_ReleaseCommand: ; 0x020D6864
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r4, r1
@@ -2093,10 +2090,10 @@ sub_020D6864: ; 0x020D6864
 	mov r0, r6
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020D6864
+	arm_func_end FSi_ReleaseCommand
 
-	arm_func_start sub_020D68C0
-sub_020D68C0: ; 0x020D68C0
+	arm_func_start FSi_TranslateCommand
+FSi_TranslateCommand: ; 0x020D68C0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	ldr r0, [r8, #0xc]
@@ -2197,7 +2194,7 @@ _020D6A00:
 	bic r2, r1, #0x100
 	mov r1, r4
 	str r2, [r5, #0x1c]
-	bl sub_020D6864
+	bl FSi_ReleaseCommand
 	b _020D6A44
 _020D6A34:
 	ldr r0, [r5, #0x1c]
@@ -2209,10 +2206,10 @@ _020D6A44:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020D6A4C: .word 0x0210E124
-	arm_func_end sub_020D68C0
+	arm_func_end FSi_TranslateCommand
 
-	arm_func_start sub_020D6A50
-sub_020D6A50: ; 0x020D6A50
+	arm_func_start FSi_StrNICmp
+FSi_StrNICmp: ; 0x020D6A50
 	stmdb sp!, {r3, lr}
 	cmp r2, #0
 	mov lr, #0
@@ -2235,10 +2232,10 @@ _020D6A60:
 _020D6A98:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D6A50
+	arm_func_end FSi_StrNICmp
 
-	arm_func_start sub_020D6AA0
-sub_020D6AA0: ; 0x020D6AA0
+	arm_func_start FSi_ReadTable
+FSi_ReadTable: ; 0x020D6AA0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r0
 	ldr r4, [r7]
@@ -2292,16 +2289,16 @@ _020D6B50:
 	add r1, r1, r6
 	str r1, [r7, #4]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020D6AA0
+	arm_func_end FSi_ReadTable
 
-	arm_func_start sub_020D6B60
-sub_020D6B60: ; 0x020D6B60
+	arm_func_start FSi_SeekDirDirect
+FSi_SeekDirDirect: ; 0x020D6B60
 	ldr r3, [r0, #0xc]
 	mov r2, #0
 	orr r3, r3, #4
 	str r3, [r0, #0xc]
 	ldr r3, [r0, #8]
-	ldr ip, _020D6B90 ; =sub_020D68C0
+	ldr ip, _020D6B90 ; =FSi_TranslateCommand
 	str r3, [r0, #0x30]
 	str r2, [r0, #0x38]
 	strh r2, [r0, #0x36]
@@ -2309,11 +2306,11 @@ sub_020D6B60: ; 0x020D6B60
 	mov r1, #2
 	bx ip
 	.align 2, 0
-_020D6B90: .word sub_020D68C0
-	arm_func_end sub_020D6B60
+_020D6B90: .word FSi_TranslateCommand
+	arm_func_end FSi_SeekDirDirect
 
-	arm_func_start sub_020D6B94
-sub_020D6B94: ; 0x020D6B94
+	arm_func_start FSi_ReadFileCommand
+FSi_ReadFileCommand: ; 0x020D6B94
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #0x2c]
 	ldr r3, [r0, #0x38]
@@ -2325,10 +2322,10 @@ sub_020D6B94: ; 0x020D6B94
 	mov r0, lr
 	blx ip
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D6B94
+	arm_func_end FSi_ReadFileCommand
 
-	arm_func_start sub_020D6BC0
-sub_020D6BC0: ; 0x020D6BC0
+	arm_func_start FSi_WriteFileCommand
+FSi_WriteFileCommand: ; 0x020D6BC0
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #0x2c]
 	ldr r3, [r0, #0x38]
@@ -2340,10 +2337,10 @@ sub_020D6BC0: ; 0x020D6BC0
 	mov r0, lr
 	blx ip
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D6BC0
+	arm_func_end FSi_WriteFileCommand
 
-	arm_func_start sub_020D6BEC
-sub_020D6BEC: ; 0x020D6BEC
+	arm_func_start FSi_SeekDirCommand
+FSi_SeekDirCommand: ; 0x020D6BEC
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	mov r6, r0
@@ -2357,7 +2354,7 @@ sub_020D6BEC: ; 0x020D6BEC
 	add r1, sp, #8
 	mov r2, #8
 	str r3, [sp, #4]
-	bl sub_020D6AA0
+	bl FSi_ReadTable
 	movs r3, r0
 	bne _020D6C74
 	add ip, r6, #0x20
@@ -2385,10 +2382,10 @@ _020D6C74:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020D6C80: .word 0x00000FFF
-	arm_func_end sub_020D6BEC
+	arm_func_end FSi_SeekDirCommand
 
-	arm_func_start sub_020D6C84
-sub_020D6C84: ; 0x020D6C84
+	arm_func_start FSi_ReadDirCommand
+FSi_ReadDirCommand: ; 0x020D6C84
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	mov r5, r0
@@ -2400,7 +2397,7 @@ sub_020D6C84: ; 0x020D6C84
 	add r1, sp, #0
 	mov r2, #1
 	str r3, [sp, #8]
-	bl sub_020D6AA0
+	bl FSi_ReadTable
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, pc}
@@ -2420,7 +2417,7 @@ sub_020D6C84: ; 0x020D6C84
 	bne _020D6D24
 	add r0, sp, #4
 	add r1, r4, #0x14
-	bl sub_020D6AA0
+	bl FSi_ReadTable
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, pc}
@@ -2440,7 +2437,7 @@ _020D6D30:
 	add r0, sp, #4
 	add r1, sp, #2
 	mov r2, #2
-	bl sub_020D6AA0
+	bl FSi_ReadTable
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, pc}
@@ -2469,17 +2466,17 @@ _020D6D9C:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _020D6DAC: .word 0x00000FFF
-	arm_func_end sub_020D6C84
+	arm_func_end FSi_ReadDirCommand
 
-	arm_func_start sub_020D6DB0
-sub_020D6DB0: ; 0x020D6DB0
+	arm_func_start FSi_FindPathCommand
+FSi_FindPathCommand: ; 0x020D6DB0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x94
 	mov sb, r0
 	ldr r5, [sb, #0x3c]
 	mov r1, #2
 	ldr r6, [sb, #0x40]
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	ldrb r3, [r5]
 	cmp r3, #0
 	beq _020D6F68
@@ -2525,7 +2522,7 @@ _020D6DEC:
 	beq _020D6E78
 	ldr r1, [sb, #0x2c]
 	mov r0, sb
-	bl sub_020D6B60
+	bl FSi_SeekDirDirect
 _020D6E78:
 	add r5, r5, #2
 	b _020D6F4C
@@ -2543,7 +2540,7 @@ _020D6E80:
 _020D6EA8:
 	mov r0, sb
 	mov r1, r4
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	addne sp, sp, #0x94
 	movne r0, #1
@@ -2556,7 +2553,7 @@ _020D6EA8:
 	mov r0, r5
 	mov r1, sl
 	mov r2, r8
-	bl sub_020D6A50
+	bl FSi_StrNICmp
 	cmp r0, #0
 	bne _020D6EA8
 	cmp r7, #0
@@ -2568,7 +2565,7 @@ _020D6EA8:
 	mov r0, sb
 	mov r1, #2
 	add r5, r5, r8
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	b _020D6F4C
 _020D6F1C:
 	cmp r6, #0
@@ -2603,10 +2600,10 @@ _020D6F68:
 	mov r0, #0
 	add sp, sp, #0x94
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end sub_020D6DB0
+	arm_func_end FSi_FindPathCommand
 
-	arm_func_start sub_020D6F94
-sub_020D6F94: ; 0x020D6F94
+	arm_func_start FSi_GetPathCommand
+FSi_GetPathCommand: ; 0x020D6F94
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xe0
 	mov sl, r0
@@ -2638,7 +2635,7 @@ sub_020D6F94: ; 0x020D6F94
 _020D7004:
 	mov r0, r5
 	mov r1, r7
-	bl sub_020D6B60
+	bl FSi_SeekDirDirect
 	mov r2, #1
 	cmp r7, #0
 	mov r0, r5
@@ -2646,7 +2643,7 @@ _020D7004:
 	ldreq r8, [sp, #0x30]
 	str fp, [sp, #0x34]
 	str r2, [sp, #0x38]
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	bne _020D7064
 _020D7038:
@@ -2658,7 +2655,7 @@ _020D7038:
 	beq _020D7064
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	beq _020D7038
 _020D7064:
@@ -2698,20 +2695,20 @@ _020D70C4:
 	beq _020D716C
 	add r0, sp, #4
 	mov r1, sb
-	bl sub_020D6B60
+	bl FSi_SeekDirDirect
 	add r5, sp, #4
 	mov r4, #3
 	add fp, sp, #0x4c
 _020D70F8:
 	ldr r1, [sp, #0x30]
 	mov r0, r5
-	bl sub_020D6B60
+	bl FSi_SeekDirDirect
 	mov r1, #1
 	str r1, [sp, #0x38]
 	mov r0, r5
 	mov r1, #3
 	str fp, [sp, #0x34]
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	bne _020D7160
 _020D7124:
@@ -2728,7 +2725,7 @@ _020D7124:
 _020D714C:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	beq _020D7124
 _020D7160:
@@ -2772,7 +2769,7 @@ _020D71C8:
 	bl MI_CpuCopy8
 	add r0, sp, #4
 	mov r1, sb
-	bl sub_020D6B60
+	bl FSi_SeekDirDirect
 	cmp r6, #0x10000
 	beq _020D7278
 	add r3, sp, #0x4c
@@ -2781,7 +2778,7 @@ _020D71C8:
 	mov r1, #3
 	str r3, [sp, #0x34]
 	str r2, [sp, #0x38]
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	bne _020D7254
 	add r8, sp, #4
@@ -2794,7 +2791,7 @@ _020D722C:
 	beq _020D7254
 	mov r0, r8
 	mov r1, r7
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	beq _020D722C
 _020D7254:
@@ -2823,7 +2820,7 @@ _020D7288:
 _020D72A4:
 	ldr r1, [sp, #0x30]
 	mov r0, sl
-	bl sub_020D6B60
+	bl FSi_SeekDirDirect
 	add r1, r5, r4
 	str r8, [sp, #0x34]
 	str r7, [sp, #0x38]
@@ -2831,7 +2828,7 @@ _020D72A4:
 	mov r0, sl
 	mov r1, #3
 	sub r4, r4, #1
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	bne _020D7324
 _020D72D8:
@@ -2852,7 +2849,7 @@ _020D72D8:
 _020D7310:
 	mov r0, sl
 	mov r1, r6
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	beq _020D72D8
 _020D7324:
@@ -2865,10 +2862,10 @@ _020D7330:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020D733C: .word _02110C98
-	arm_func_end sub_020D6F94
+	arm_func_end FSi_GetPathCommand
 
-	arm_func_start sub_020D7340
-sub_020D7340: ; 0x020D7340
+	arm_func_start FSi_OpenFileFastCommand
+FSi_OpenFileFastCommand: ; 0x020D7340
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	mov r5, r0
@@ -2887,7 +2884,7 @@ sub_020D7340: ; 0x020D7340
 	add r1, sp, #8
 	mov r2, #8
 	str r3, [sp, #4]
-	bl sub_020D6AA0
+	bl FSi_ReadTable
 	cmp r0, #0
 	addne sp, sp, #0x10
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -2898,13 +2895,13 @@ sub_020D7340: ; 0x020D7340
 	mov r1, #7
 	str r2, [r5, #0x34]
 	str r4, [r5, #0x38]
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020D7340
+	arm_func_end FSi_OpenFileFastCommand
 
-	arm_func_start sub_020D73C0
-sub_020D73C0: ; 0x020D73C0
+	arm_func_start FSi_OpenFileDirectCommand
+FSi_OpenFileDirectCommand: ; 0x020D73C0
 	ldr r1, [r0, #0x30]
 	str r1, [r0, #0x24]
 	ldr r1, [r0, #0x30]
@@ -2915,16 +2912,16 @@ sub_020D73C0: ; 0x020D73C0
 	str r1, [r0, #0x20]
 	mov r0, #0
 	bx lr
-	arm_func_end sub_020D73C0
+	arm_func_end FSi_OpenFileDirectCommand
 
-	arm_func_start sub_020D73E8
-sub_020D73E8: ; 0x020D73E8
+	arm_func_start FSi_CloseFileCommand
+FSi_CloseFileCommand: ; 0x020D73E8
 	mov r0, #0
 	bx lr
-	arm_func_end sub_020D73E8
+	arm_func_end FSi_CloseFileCommand
 
-	arm_func_start sub_020D73F0
-sub_020D73F0: ; 0x020D73F0
+	arm_func_start FSi_GetPackedName
+FSi_GetPackedName: ; 0x020D73F0
 	stmdb sp!, {r3, lr}
 	cmp r1, #3
 	mov r3, #0
@@ -2949,10 +2946,10 @@ _020D7410:
 _020D7440:
 	mov r0, r3
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D73F0
+	arm_func_end FSi_GetPackedName
 
-	arm_func_start sub_020D7448
-sub_020D7448: ; 0x020D7448
+	arm_func_start FSi_ReadMemCallback
+FSi_ReadMemCallback: ; 0x020D7448
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0, #0x28]
 	add r0, r0, r2
@@ -2960,10 +2957,10 @@ sub_020D7448: ; 0x020D7448
 	bl MI_CpuCopy8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D7448
+	arm_func_end FSi_ReadMemCallback
 
-	arm_func_start sub_020D7464
-sub_020D7464: ; 0x020D7464
+	arm_func_start FSi_WriteMemCallback
+FSi_WriteMemCallback: ; 0x020D7464
 	stmdb sp!, {r3, lr}
 	ldr ip, [r0, #0x28]
 	mov r0, r1
@@ -2972,20 +2969,20 @@ sub_020D7464: ; 0x020D7464
 	bl MI_CpuCopy8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D7464
+	arm_func_end FSi_WriteMemCallback
 
-	arm_func_start sub_020D7484
-sub_020D7484: ; 0x020D7484
+	arm_func_start FSi_ReadMemoryCore
+FSi_ReadMemoryCore: ; 0x020D7484
 	stmdb sp!, {r3, lr}
 	mov r0, r2
 	mov r2, r3
 	bl MI_CpuCopy8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020D7484
+	arm_func_end FSi_ReadMemoryCore
 
-	arm_func_start sub_020D749C
-sub_020D749C: ; 0x020D749C
+	arm_func_start FSi_NextCommand
+FSi_NextCommand: ; 0x020D749C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x48
 	mov r6, r0
@@ -3018,7 +3015,7 @@ _020D74EC:
 	cmp r1, r0
 	mov r1, r7
 	streq r5, [r6, #0x24]
-	bl sub_020D6864
+	bl FSi_ReleaseCommand
 	cmp r5, #0
 	ldreq r5, [r6, #0x24]
 _020D7524:
@@ -3127,10 +3124,10 @@ _020D769C:
 	mov r0, #0
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020D749C
+	arm_func_end FSi_NextCommand
 
-	arm_func_start sub_020D76B0
-sub_020D76B0: ; 0x020D76B0
+	arm_func_start FSi_ExecuteAsyncCommand
+FSi_ExecuteAsyncCommand: ; 0x020D76B0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	movs r6, r0
 	ldr r4, [r6, #8]
@@ -3162,40 +3159,40 @@ _020D7708:
 	bl OS_RestoreInterrupts
 	ldr r1, [r6, #0x10]
 	mov r0, r6
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	cmp r0, #6
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r4
-	bl sub_020D749C
+	bl FSi_NextCommand
 	movs r6, r0
 	bne _020D76C8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020D76B0
+	arm_func_end FSi_ExecuteAsyncCommand
 
-	arm_func_start sub_020D7744
-sub_020D7744: ; 0x020D7744
+	arm_func_start FSi_ExecuteSyncCommand
+FSi_ExecuteSyncCommand: ; 0x020D7744
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r1, [r4, #0x10]
-	bl sub_020D68C0
+	bl FSi_TranslateCommand
 	mov r1, r0
 	mov r0, r4
-	bl sub_020D6864
+	bl FSi_ReleaseCommand
 	ldr r0, [r4, #8]
-	bl sub_020D749C
+	bl FSi_NextCommand
 	cmp r0, #0
 	beq _020D7774
-	bl sub_020D76B0
+	bl FSi_ExecuteAsyncCommand
 _020D7774:
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020D7744
+	arm_func_end FSi_ExecuteSyncCommand
 
-	arm_func_start sub_020D7788
-sub_020D7788: ; 0x020D7788
+	arm_func_start FSi_SendCommand
+FSi_SendCommand: ; 0x020D7788
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	ldr r4, [r6, #8]
@@ -3214,7 +3211,7 @@ sub_020D7788: ; 0x020D7788
 	beq _020D77E4
 	mov r0, r6
 	mov r1, #3
-	bl sub_020D6864
+	bl FSi_ReleaseCommand
 	mov r0, r5
 	bl OS_RestoreInterrupts
 	mov r0, #0
@@ -3280,7 +3277,7 @@ _020D7898:
 	bne _020D78D4
 	bl OS_RestoreInterrupts
 	mov r0, r6
-	bl sub_020D76B0
+	bl FSi_ExecuteAsyncCommand
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020D78D4:
@@ -3307,12 +3304,12 @@ _020D7904:
 	bl OS_RestoreInterrupts
 _020D7920:
 	mov r0, r6
-	bl sub_020D7744
+	bl FSi_ExecuteSyncCommand
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020D7788
+	arm_func_end FSi_SendCommand
 
-	arm_func_start sub_020D792C
-sub_020D792C: ; 0x020D792C
+	arm_func_start FS_InitArchive
+FS_InitArchive: ; 0x020D792C
 	stmdb sp!, {r4, lr}
 	mov r1, #0
 	mov r2, #0x5c
@@ -3324,12 +3321,12 @@ sub_020D792C: ; 0x020D792C
 	str r0, [r4, #0x18]
 	str r0, [r4, #0x14]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020D792C
+	arm_func_end FS_InitArchive
 
-	arm_func_start sub_020D7958
-sub_020D7958: ; 0x020D7958
+	arm_func_start FS_FindArchive
+FS_FindArchive: ; 0x020D7958
 	stmdb sp!, {r3, r4, r5, lr}
-	bl sub_020D73F0
+	bl FSi_GetPackedName
 	mov r4, r0
 	bl OS_DisableInterrupts
 	ldr r1, _020D7994 ; =0x021E3628
@@ -3347,10 +3344,10 @@ _020D7978:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D7994: .word 0x021E3628
-	arm_func_end sub_020D7958
+	arm_func_end FS_FindArchive
 
-	arm_func_start sub_020D7998
-sub_020D7998: ; 0x020D7998
+	arm_func_start FS_RegisterArchiveName
+FS_RegisterArchiveName: ; 0x020D7998
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r1
 	mov r5, r2
@@ -3360,7 +3357,7 @@ sub_020D7998: ; 0x020D7998
 	mov r4, r0
 	mov r0, r6
 	mov r1, r5
-	bl sub_020D7958
+	bl FS_FindArchive
 	cmp r0, #0
 	bne _020D7A38
 	ldr r0, _020D7A48 ; =0x021E3628
@@ -3389,7 +3386,7 @@ _020D7A10:
 _020D7A18:
 	mov r0, r6
 	mov r1, r5
-	bl sub_020D73F0
+	bl FSi_GetPackedName
 	str r0, [r7]
 	ldr r0, [r7, #0x1c]
 	mov r8, #1
@@ -3402,10 +3399,10 @@ _020D7A38:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020D7A48: .word 0x021E3628
-	arm_func_end sub_020D7998
+	arm_func_end FS_RegisterArchiveName
 
-	arm_func_start sub_020D7A4C
-sub_020D7A4C: ; 0x020D7A4C
+	arm_func_start FS_ReleaseArchiveName
+FS_ReleaseArchiveName: ; 0x020D7A4C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4]
@@ -3441,10 +3438,10 @@ _020D7AC4:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020D7ACC: .word 0x021E3628
-	arm_func_end sub_020D7A4C
+	arm_func_end FS_ReleaseArchiveName
 
-	arm_func_start sub_020D7AD0
-sub_020D7AD0: ; 0x020D7AD0
+	arm_func_start FS_LoadArchive
+FS_LoadArchive: ; 0x020D7AD0
 	str r1, [r0, #0x28]
 	str r3, [r0, #0x30]
 	str r2, [r0, #0x3c]
@@ -3456,11 +3453,11 @@ sub_020D7AD0: ; 0x020D7AD0
 	str r1, [r0, #0x40]
 	str r1, [r0, #0x34]
 	cmp ip, #0
-	ldreq ip, _020D7B38 ; =sub_020D7448
+	ldreq ip, _020D7B38 ; =FSi_ReadMemCallback
 	ldr r1, [sp, #0xc]
 	str ip, [r0, #0x48]
 	cmp r1, #0
-	ldreq r1, _020D7B3C ; =sub_020D7464
+	ldreq r1, _020D7B3C ; =FSi_WriteMemCallback
 	str r1, [r0, #0x4c]
 	ldr r2, [r0, #0x48]
 	mov r1, #0
@@ -3472,12 +3469,12 @@ sub_020D7AD0: ; 0x020D7AD0
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_020D7B38: .word sub_020D7448
-_020D7B3C: .word sub_020D7464
-	arm_func_end sub_020D7AD0
+_020D7B38: .word FSi_ReadMemCallback
+_020D7B3C: .word FSi_WriteMemCallback
+	arm_func_end FS_LoadArchive
 
-	arm_func_start sub_020D7B40
-sub_020D7B40: ; 0x020D7B40
+	arm_func_start FS_UnloadArchive
+FS_UnloadArchive: ; 0x020D7B40
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
 	bl OS_DisableInterrupts
@@ -3490,7 +3487,7 @@ sub_020D7B40: ; 0x020D7B40
 	beq _020D7BF0
 	mov r0, r6
 	ldr r1, [r6, #0x1c]
-	bl sub_020D7DB0
+	bl FS_SuspendArchive
 	ldr r1, [r6, #0x1c]
 	mov r5, r0
 	orr r0, r1, #0x80
@@ -3502,7 +3499,7 @@ sub_020D7B40: ; 0x020D7B40
 _020D7B94:
 	ldr r8, [r0, #4]
 	mov r1, r7
-	bl sub_020D6864
+	bl FSi_ReleaseCommand
 	mov r0, r8
 	cmp r8, #0
 	bne _020D7B94
@@ -3512,7 +3509,7 @@ _020D7BAC:
 	cmp r5, #0
 	beq _020D7BC4
 	mov r0, r6
-	bl sub_020D7E4C
+	bl FS_ResumeArchive
 _020D7BC4:
 	mov r0, #0
 	str r0, [r6, #0x28]
@@ -3530,10 +3527,10 @@ _020D7BF0:
 	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020D7B40
+	arm_func_end FS_UnloadArchive
 
-	arm_func_start sub_020D7C00
-sub_020D7C00: ; 0x020D7C00
+	arm_func_start FS_LoadArchiveTables
+FS_LoadArchiveTables: ; 0x020D7C00
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x4c
 	mov r7, r0
@@ -3556,7 +3553,7 @@ sub_020D7C00: ; 0x020D7C00
 	add r0, sp, #4
 	mov r1, r7
 	add r3, r2, r3
-	bl sub_020D81C0
+	bl FS_OpenFileDirect
 	cmp r0, #0
 	beq _020D7C94
 	ldr r2, [r7, #0x30]
@@ -3583,7 +3580,7 @@ _020D7C94:
 	mov r1, r7
 	add r3, r2, r3
 	add r5, r5, ip
-	bl sub_020D81C0
+	bl FS_OpenFileDirect
 	cmp r0, #0
 	beq _020D7CF8
 	ldr r2, [r7, #0x38]
@@ -3601,7 +3598,7 @@ _020D7CF0:
 	bl FS_CloseFile
 _020D7CF8:
 	str r5, [r7, #0x34]
-	ldr r0, _020D7D20 ; =sub_020D7484
+	ldr r0, _020D7D20 ; =FSi_ReadMemoryCore
 	str r6, [r7, #0x44]
 	str r0, [r7, #0x50]
 	ldr r0, [r7, #0x1c]
@@ -3612,11 +3609,11 @@ _020D7D14:
 	add sp, sp, #0x4c
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_020D7D20: .word sub_020D7484
-	arm_func_end sub_020D7C00
+_020D7D20: .word FSi_ReadMemoryCore
+	arm_func_end FS_LoadArchiveTables
 
-	arm_func_start sub_020D7D24
-sub_020D7D24: ; 0x020D7D24
+	arm_func_start FS_UnloadArchiveTables
+FS_UnloadArchiveTables: ; 0x020D7D24
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5, #0x1c]
@@ -3627,7 +3624,7 @@ sub_020D7D24: ; 0x020D7D24
 	cmp r0, #0
 	beq _020D7DA8
 	mov r0, r5
-	bl sub_020D7DB0
+	bl FS_SuspendArchive
 	ldr r1, [r5, #0x1c]
 	tst r1, #4
 	movne r1, #1
@@ -3650,14 +3647,14 @@ _020D7D98:
 	cmp r0, #0
 	beq _020D7DA8
 	mov r0, r5
-	bl sub_020D7E4C
+	bl FS_ResumeArchive
 _020D7DA8:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020D7D24
+	arm_func_end FS_UnloadArchiveTables
 
-	arm_func_start sub_020D7DB0
-sub_020D7DB0: ; 0x020D7DB0
+	arm_func_start FS_SuspendArchive
+FS_SuspendArchive: ; 0x020D7DB0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
 	bl OS_DisableInterrupts
@@ -3700,10 +3697,10 @@ _020D7E3C:
 	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020D7DB0
+	arm_func_end FS_SuspendArchive
 
-	arm_func_start sub_020D7E4C
-sub_020D7E4C: ; 0x020D7E4C
+	arm_func_start FS_ResumeArchive
+FS_ResumeArchive: ; 0x020D7E4C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	mov r5, #0
@@ -3722,7 +3719,7 @@ sub_020D7E4C: ; 0x020D7E4C
 	mov r0, r4
 	bic r1, r1, #8
 	str r1, [r4, #0x1c]
-	bl sub_020D749C
+	bl FSi_NextCommand
 	mov r5, r0
 _020D7E9C:
 	mov r0, r6
@@ -3730,14 +3727,14 @@ _020D7E9C:
 	cmp r5, #0
 	beq _020D7EB4
 	mov r0, r5
-	bl sub_020D76B0
+	bl FSi_ExecuteAsyncCommand
 _020D7EB4:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020D7E4C
+	arm_func_end FS_ResumeArchive
 
-	arm_func_start sub_020D7EBC
-sub_020D7EBC: ; 0x020D7EBC
+	arm_func_start FS_SetArchiveProc
+FS_SetArchiveProc: ; 0x020D7EBC
 	cmp r2, #0
 	moveq r1, #0
 	beq _020D7ED0
@@ -3747,10 +3744,10 @@ _020D7ED0:
 	str r1, [r0, #0x54]
 	str r2, [r0, #0x58]
 	bx lr
-	arm_func_end sub_020D7EBC
+	arm_func_end FS_SetArchiveProc
 
-	arm_func_start sub_020D7EDC
-sub_020D7EDC: ; 0x020D7EDC
+	arm_func_start FS_NotifyArchiveAsyncEnd
+FS_NotifyArchiveAsyncEnd: ; 0x020D7EDC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	ldr r0, [r4, #0x1c]
@@ -3765,12 +3762,12 @@ sub_020D7EDC: ; 0x020D7EDC
 	bic r2, r1, #0x100
 	mov r1, r6
 	str r2, [r4, #0x1c]
-	bl sub_020D6864
+	bl FSi_ReleaseCommand
 	mov r0, r4
-	bl sub_020D749C
+	bl FSi_NextCommand
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
-	bl sub_020D76B0
+	bl FSi_ExecuteAsyncCommand
 	ldmia sp!, {r4, r5, r6, pc}
 _020D7F30:
 	ldr r5, [r4, #0x24]
@@ -3785,10 +3782,10 @@ _020D7F30:
 	mov r0, r5
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020D7EDC
+	arm_func_end FS_NotifyArchiveAsyncEnd
 
-	arm_func_start sub_020D7F60
-sub_020D7F60: ; 0x020D7F60
+	arm_func_start FS_Init
+FS_Init: ; 0x020D7F60
 	stmdb sp!, {r3, lr}
 	ldr r1, _020D7F84 ; =0x021E3638
 	ldr r2, [r1]
@@ -3796,20 +3793,20 @@ sub_020D7F60: ; 0x020D7F60
 	ldmneia sp!, {r3, pc}
 	mov r2, #1
 	str r2, [r1]
-	bl sub_020D8590
+	bl FSi_InitRom
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020D7F84: .word 0x021E3638
-	arm_func_end sub_020D7F60
+	arm_func_end FS_Init
 
-	arm_func_start sub_020D7F88
-sub_020D7F88: ; 0x020D7F88
+	arm_func_start FS_IsAvailable
+FS_IsAvailable: ; 0x020D7F88
 	ldr r0, _020D7F94 ; =0x021E3638
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _020D7F94: .word 0x021E3638
-	arm_func_end sub_020D7F88
+	arm_func_end FS_IsAvailable
 
 	arm_func_start FS_InitFile
 FS_InitFile: ; 0x020D7F98
@@ -3825,8 +3822,8 @@ FS_InitFile: ; 0x020D7F98
 	bx lr
 	arm_func_end FS_InitFile
 
-	arm_func_start sub_020D7FC0
-sub_020D7FC0: ; 0x020D7FC0
+	arm_func_start FSi_FindPath
+FSi_FindPath: ; 0x020D7FC0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	mov r7, r1
@@ -3862,7 +3859,7 @@ _020D8020:
 	bne _020D80A4
 	mov r0, r7
 	mov r1, r4
-	bl sub_020D7958
+	bl FS_FindArchive
 	cmp r0, #0
 	addeq sp, sp, #0xc
 	moveq r0, #0
@@ -3909,15 +3906,15 @@ _020D80B0:
 _020D80EC:
 	mov r0, r8
 	mov r1, #4
-	bl sub_020D7788
+	bl FSi_SendCommand
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020D8100: .word 0x021E362C
-	arm_func_end sub_020D7FC0
+	arm_func_end FSi_FindPath
 
-	arm_func_start sub_020D8104
-sub_020D8104: ; 0x020D8104
+	arm_func_start FSi_ReadFileCore
+FSi_ReadFileCore: ; 0x020D8104
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	ldr r4, [r7, #0x2c]
@@ -3938,7 +3935,7 @@ sub_020D8104: ; 0x020D8104
 	orreq r0, r0, #4
 	streq r0, [r7, #0xc]
 	mov r0, r7
-	bl sub_020D7788
+	bl FSi_SendCommand
 	cmp r5, #0
 	bne _020D8178
 	mov r0, r7
@@ -3950,10 +3947,10 @@ sub_020D8104: ; 0x020D8104
 _020D8178:
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020D8104
+	arm_func_end FSi_ReadFileCore
 
-	arm_func_start sub_020D8180
-sub_020D8180: ; 0x020D8180
+	arm_func_start FS_ConvertPathToFileID
+FS_ConvertPathToFileID: ; 0x020D8180
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x48
 	mov r5, r0
@@ -3964,16 +3961,16 @@ sub_020D8180: ; 0x020D8180
 	mov r1, r4
 	mov r2, r5
 	mov r3, #0
-	bl sub_020D7FC0
+	bl FSi_FindPath
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020D8180
+	arm_func_end FS_ConvertPathToFileID
 
-	arm_func_start sub_020D81C0
-sub_020D81C0: ; 0x020D81C0
+	arm_func_start FS_OpenFileDirect
+FS_OpenFileDirect: ; 0x020D81C0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	str r1, [r4, #8]
@@ -3982,7 +3979,7 @@ sub_020D81C0: ; 0x020D81C0
 	str ip, [r4, #0x38]
 	str r2, [r4, #0x30]
 	str r3, [r4, #0x34]
-	bl sub_020D7788
+	bl FSi_SendCommand
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -3992,10 +3989,10 @@ sub_020D81C0: ; 0x020D81C0
 	bic r1, r1, #0x20
 	str r1, [r4, #0xc]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020D81C0
+	arm_func_end FS_OpenFileDirect
 
-	arm_func_start sub_020D8208
-sub_020D8208: ; 0x020D8208
+	arm_func_start FS_OpenFileFast
+FS_OpenFileFast: ; 0x020D8208
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, lr}
 	ldr r1, [sp, #0xc]
@@ -4010,7 +4007,7 @@ sub_020D8208: ; 0x020D8208
 	ldr r2, [sp, #0x10]
 	mov r1, #6
 	str r2, [r4, #0x34]
-	bl sub_020D7788
+	bl FSi_SendCommand
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, lr}
@@ -4024,7 +4021,7 @@ sub_020D8208: ; 0x020D8208
 	ldmia sp!, {r4, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end sub_020D8208
+	arm_func_end FS_OpenFileFast
 
 	arm_func_start FS_OpenFile
 FS_OpenFile: ; 0x020D8278
@@ -4032,13 +4029,13 @@ FS_OpenFile: ; 0x020D8278
 	sub sp, sp, #8
 	mov r4, r0
 	add r0, sp, #0
-	bl sub_020D8180
+	bl FS_ConvertPathToFileID
 	cmp r0, #0
 	beq _020D82B4
 	add r1, sp, #0
 	mov r0, r4
 	ldmia r1, {r1, r2}
-	bl sub_020D8208
+	bl FS_OpenFileFast
 	cmp r0, #0
 	addne sp, sp, #8
 	movne r0, #1
@@ -4054,7 +4051,7 @@ FS_CloseFile: ; 0x020D82C0
 	stmdb sp!, {r4, lr}
 	mov r1, #8
 	mov r4, r0
-	bl sub_020D7788
+	bl FSi_SendCommand
 	cmp r0, #0
 	mov r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -4115,7 +4112,7 @@ _020D838C:
 	cmp r5, #0
 	beq _020D83A8
 	mov r0, r6
-	bl sub_020D7744
+	bl FSi_ExecuteSyncCommand
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _020D83A8:
 	ldr r0, [r6, #0x14]
@@ -4125,22 +4122,22 @@ _020D83A8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end FS_WaitAsync
 
-	arm_func_start sub_020D83BC
-sub_020D83BC: ; 0x020D83BC
-	ldr ip, _020D83C8 ; =sub_020D8104
+	arm_func_start FS_ReadFileAsync
+FS_ReadFileAsync: ; 0x020D83BC
+	ldr ip, _020D83C8 ; =FSi_ReadFileCore
 	mov r3, #1
 	bx ip
 	.align 2, 0
-_020D83C8: .word sub_020D8104
-	arm_func_end sub_020D83BC
+_020D83C8: .word FSi_ReadFileCore
+	arm_func_end FS_ReadFileAsync
 
 	arm_func_start FS_ReadFile
 FS_ReadFile: ; 0x020D83CC
-	ldr ip, _020D83D8 ; =sub_020D8104
+	ldr ip, _020D83D8 ; =FSi_ReadFileCore
 	mov r3, #0
 	bx ip
 	.align 2, 0
-_020D83D8: .word sub_020D8104
+_020D83D8: .word FSi_ReadFileCore
 	arm_func_end FS_ReadFile
 
 	arm_func_start FS_SeekFile
@@ -4179,8 +4176,8 @@ _020D8424:
 	bx lr
 	arm_func_end FS_SeekFile
 
-	arm_func_start sub_020D8448
-sub_020D8448: ; 0x020D8448
+	arm_func_start FS_ChangeDir
+FS_ChangeDir: ; 0x020D8448
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x54
 	mov r4, r0
@@ -4190,7 +4187,7 @@ sub_020D8448: ; 0x020D8448
 	add r3, sp, #0
 	mov r1, r4
 	mov r2, #0
-	bl sub_020D7FC0
+	bl FSi_FindPath
 	cmp r0, #0
 	addeq sp, sp, #0x54
 	moveq r0, #0
@@ -4204,10 +4201,10 @@ sub_020D8448: ; 0x020D8448
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _020D849C: .word 0x021E362C
-	arm_func_end sub_020D8448
+	arm_func_end FS_ChangeDir
 
-	arm_func_start sub_020D84A0
-sub_020D84A0: ; 0x020D84A0
+	arm_func_start FSi_OnRomReadDone
+FSi_OnRomReadDone: ; 0x020D84A0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl CARD_IsPulledOut
@@ -4215,15 +4212,15 @@ sub_020D84A0: ; 0x020D84A0
 	movne r1, #5
 	moveq r1, #0
 	mov r0, r4
-	bl sub_020D7EDC
+	bl FS_NotifyArchiveAsyncEnd
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020D84A0
+	arm_func_end FSi_OnRomReadDone
 
-	arm_func_start sub_020D84C4
-sub_020D84C4: ; 0x020D84C4
+	arm_func_start FSi_ReadRomCallback
+FSi_ReadRomCallback: ; 0x020D84C4
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
-	ldr ip, _020D8504 ; =sub_020D84A0
+	ldr ip, _020D8504 ; =FSi_OnRomReadDone
 	mov lr, r1
 	str ip, [sp]
 	str r0, [sp, #4]
@@ -4233,23 +4230,23 @@ sub_020D84C4: ; 0x020D84C4
 	mov r1, r2
 	ldr r0, [r0, #4]
 	mov r2, lr
-	bl sub_020DD754
+	bl CARDi_ReadRom
 	mov r0, #6
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
 	.align 2, 0
-_020D8504: .word sub_020D84A0
+_020D8504: .word FSi_OnRomReadDone
 _020D8508: .word 0x021E363C
-	arm_func_end sub_020D84C4
+	arm_func_end FSi_ReadRomCallback
 
-	arm_func_start sub_020D850C
-sub_020D850C: ; 0x020D850C
+	arm_func_start FSi_WriteDummyCallback
+FSi_WriteDummyCallback: ; 0x020D850C
 	mov r0, #1
 	bx lr
-	arm_func_end sub_020D850C
+	arm_func_end FSi_WriteDummyCallback
 
-	arm_func_start sub_020D8514
-sub_020D8514: ; 0x020D8514
+	arm_func_start FSi_RomArchiveProc
+FSi_RomArchiveProc: ; 0x020D8514
 	stmdb sp!, {r3, lr}
 	cmp r1, #1
 	beq _020D856C
@@ -4271,7 +4268,7 @@ _020D8550:
 	ldr r0, [r0]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_020DC988
+	bl CARD_UnlockRom
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 _020D856C:
@@ -4282,22 +4279,22 @@ _020D8574:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020D857C: .word 0x021E363C
-	arm_func_end sub_020D8514
+	arm_func_end FSi_RomArchiveProc
 
-	arm_func_start sub_020D8580
-sub_020D8580: ; 0x020D8580
+	arm_func_start FSi_ReadDummyCallback
+FSi_ReadDummyCallback: ; 0x020D8580
 	mov r0, #1
 	bx lr
-	arm_func_end sub_020D8580
+	arm_func_end FSi_ReadDummyCallback
 
-	arm_func_start sub_020D8588
-sub_020D8588: ; 0x020D8588
+	arm_func_start FSi_EmptyArchiveProc
+FSi_EmptyArchiveProc: ; 0x020D8588
 	mov r0, #4
 	bx lr
-	arm_func_end sub_020D8588
+	arm_func_end FSi_EmptyArchiveProc
 
-	arm_func_start sub_020D8590
-sub_020D8590: ; 0x020D8590
+	arm_func_start FSi_InitRom
+FSi_InitRom: ; 0x020D8590
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	ldr r1, _020D86B0 ; =0x021E363C
@@ -4312,11 +4309,11 @@ sub_020D8590: ; 0x020D8590
 	str r2, [r1, #0x14]
 	bl CARD_Init
 	ldr r0, _020D86B4 ; =0x021E3654
-	bl sub_020D792C
+	bl FS_InitArchive
 	ldr r0, _020D86B4 ; =0x021E3654
 	ldr r1, _020D86B8 ; =_02110C9C
 	mov r2, #3
-	bl sub_020D7998
+	bl FS_RegisterArchiveName
 	ldr r4, _020D86BC ; =0x027FFC40
 	ldrh r0, [r4]
 	cmp r0, #2
@@ -4328,27 +4325,27 @@ sub_020D8590: ; 0x020D8590
 	str ip, [r3, #0xc]
 	str r2, [r3, #0x10]
 	ldr r0, _020D86B4 ; =0x021E3654
-	ldr r1, _020D86C0 ; =sub_020D8588
+	ldr r1, _020D86C0 ; =FSi_EmptyArchiveProc
 	str ip, [r3, #0x14]
-	bl sub_020D7EBC
+	bl FS_SetArchiveProc
 	mov r1, #0
 	str r1, [sp]
-	ldr r0, _020D86C4 ; =sub_020D8580
+	ldr r0, _020D86C4 ; =FSi_ReadDummyCallback
 	str r1, [sp, #4]
 	str r0, [sp, #8]
-	ldr ip, _020D86C8 ; =sub_020D850C
+	ldr ip, _020D86C8 ; =FSi_WriteDummyCallback
 	ldr r0, _020D86B4 ; =0x021E3654
 	mov r2, r1
 	mov r3, r1
 	str ip, [sp, #0xc]
-	bl sub_020D7AD0
+	bl FS_LoadArchive
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 _020D8648:
 	ldr r0, _020D86B4 ; =0x021E3654
-	ldr r1, _020D86CC ; =sub_020D8514
+	ldr r1, _020D86CC ; =FSi_RomArchiveProc
 	ldr r2, _020D86D0 ; =0x00000602
-	bl sub_020D7EBC
+	bl FS_SetArchiveProc
 	ldr r1, [r4, #0x200]
 	mvn r0, #0
 	cmp r1, r0
@@ -4360,15 +4357,15 @@ _020D8648:
 	ldmeqia sp!, {r4, pc}
 	str r1, [sp]
 	ldr r0, [r4, #0x204]
-	ldr r1, _020D86D4 ; =sub_020D84C4
+	ldr r1, _020D86D4 ; =FSi_ReadRomCallback
 	str r0, [sp, #4]
-	ldr r0, _020D86C8 ; =sub_020D850C
+	ldr r0, _020D86C8 ; =FSi_WriteDummyCallback
 	str r1, [sp, #8]
 	str r0, [sp, #0xc]
 	ldr r3, [r4, #0x20c]
 	ldr r0, _020D86B4 ; =0x021E3654
 	mov r1, #0
-	bl sub_020D7AD0
+	bl FS_LoadArchive
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -4376,13 +4373,13 @@ _020D86B0: .word 0x021E363C
 _020D86B4: .word 0x021E3654
 _020D86B8: .word _02110C9C
 _020D86BC: .word 0x027FFC40
-_020D86C0: .word sub_020D8588
-_020D86C4: .word sub_020D8580
-_020D86C8: .word sub_020D850C
-_020D86CC: .word sub_020D8514
+_020D86C0: .word FSi_EmptyArchiveProc
+_020D86C4: .word FSi_ReadDummyCallback
+_020D86C8: .word FSi_WriteDummyCallback
+_020D86CC: .word FSi_RomArchiveProc
 _020D86D0: .word 0x00000602
-_020D86D4: .word sub_020D84C4
-	arm_func_end sub_020D8590
+_020D86D4: .word FSi_ReadRomCallback
+	arm_func_end FSi_InitRom
 
 	arm_func_start FS_SetDefaultDMA
 FS_SetDefaultDMA: ; 0x020D86D8
@@ -4393,13 +4390,13 @@ FS_SetDefaultDMA: ; 0x020D86D8
 	ldr r1, _020D8720 ; =0x021E363C
 	ldr r0, _020D8724 ; =0x021E3654
 	ldr r5, [r1, #4]
-	bl sub_020D7DB0
+	bl FS_SuspendArchive
 	ldr r1, _020D8720 ; =0x021E363C
 	cmp r0, #0
 	str r6, [r1, #4]
 	beq _020D8710
 	ldr r0, _020D8724 ; =0x021E3654
-	bl sub_020D7E4C
+	bl FS_ResumeArchive
 _020D8710:
 	mov r0, r4
 	bl OS_RestoreInterrupts
@@ -4410,18 +4407,18 @@ _020D8720: .word 0x021E363C
 _020D8724: .word 0x021E3654
 	arm_func_end FS_SetDefaultDMA
 
-	arm_func_start sub_020D8728
-sub_020D8728: ; 0x020D8728
-	ldr ip, _020D8740 ; =sub_020D7C00
+	arm_func_start FS_TryLoadTable
+FS_TryLoadTable: ; 0x020D8728
+	ldr ip, _020D8740 ; =FS_LoadArchiveTables
 	mov r3, r0
 	mov r2, r1
 	ldr r0, _020D8744 ; =0x021E3654
 	mov r1, r3
 	bx ip
 	.align 2, 0
-_020D8740: .word sub_020D7C00
+_020D8740: .word FS_LoadArchiveTables
 _020D8744: .word 0x021E3654
-	arm_func_end sub_020D8728
+	arm_func_end FS_TryLoadTable
 
 	arm_func_start FSi_GetOverlayBinarySize
 FSi_GetOverlayBinarySize: ; 0x020D8748
@@ -4492,7 +4489,7 @@ FSi_LoadOverlayInfoCore: ; 0x020D87C8
 	add r2, r6, r5
 	add r3, r6, r7
 	str ip, [sp]
-	bl sub_020D81C0
+	bl FS_OpenFileDirect
 	cmp r0, #0
 	addeq sp, sp, #0x54
 	moveq r0, #0
@@ -4517,7 +4514,7 @@ _020D8860:
 	add r1, sp, #4
 	add r0, sp, #0xc
 	ldmia r1, {r1, r2}
-	bl sub_020D8208
+	bl FS_OpenFileFast
 	cmp r0, #0
 	addeq sp, sp, #0x54
 	moveq r0, #0
@@ -4565,7 +4562,7 @@ FS_LoadOverlayInfo: ; 0x020D88C0
 	add r1, sp, #0x10
 	add r0, sp, #0x18
 	ldmia r1, {r1, r2}
-	bl sub_020D8208
+	bl FS_OpenFileFast
 	cmp r0, #0
 	addeq sp, sp, #0x60
 	moveq r0, #0
@@ -4618,7 +4615,7 @@ FS_LoadOverlayImageAsync: ; 0x020D89BC
 	add r1, sp, #0
 	mov r0, r5
 	ldmia r1, {r1, r2}
-	bl sub_020D8208
+	bl FS_OpenFileFast
 	cmp r0, #0
 	addeq sp, sp, #8
 	moveq r0, #0
@@ -4631,7 +4628,7 @@ FS_LoadOverlayImageAsync: ; 0x020D89BC
 	ldr r1, [r6, #4]
 	mov r0, r5
 	mov r2, r4
-	bl sub_020D83BC
+	bl FS_ReadFileAsync
 	cmp r4, r0
 	addeq sp, sp, #8
 	moveq r0, #1
@@ -4656,7 +4653,7 @@ FS_LoadOverlayImage: ; 0x020D8A48
 	add r1, sp, #0
 	add r0, sp, #8
 	ldmia r1, {r1, r2}
-	bl sub_020D8208
+	bl FS_OpenFileFast
 	cmp r0, #0
 	addeq sp, sp, #0x50
 	moveq r0, #0
@@ -4706,7 +4703,7 @@ FSi_CompareDigest: ; 0x020D8AD8
 	add r0, sp, #0x44
 	add r3, sp, #4
 	str ip, [sp]
-	bl sub_020D9714
+	bl DGT_Hash2CalcHmac
 	add r3, sp, #0x44
 	mov r2, #0
 _020D8B34:
@@ -5570,8 +5567,8 @@ _020D95D8:
 _020D9710: .word _02110E70
 	arm_func_end sub_020D9518
 
-	arm_func_start sub_020D9714
-sub_020D9714: ; 0x020D9714
+	arm_func_start DGT_Hash2CalcHmac
+DGT_Hash2CalcHmac: ; 0x020D9714
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xa0
 	ldr lr, _020D9798 ; =0x0210E188
@@ -5610,7 +5607,7 @@ _020D9798: .word 0x0210E188
 _020D979C: .word sub_020D9374
 _020D97A0: .word sub_020D93C4
 _020D97A4: .word sub_020D9518
-	arm_func_end sub_020D9714
+	arm_func_end DGT_Hash2CalcHmac
 
 	arm_func_start sub_020D97A8
 sub_020D97A8: ; 0x020D97A8
@@ -7254,7 +7251,7 @@ _020DAD78:
 	bl OS_GetCpsrIrq
 	cmp r0, #0x80
 	bne _020DAD88
-	bl sub_020D674C
+	bl PXIi_HandlerRecvFifoNotEmpty
 _020DAD88:
 	ldr r0, [r4]
 	cmp r0, #0
@@ -9494,8 +9491,8 @@ CARD_LockRom: ; 0x020DC96C
 	ldmia sp!, {r4, pc}
 	arm_func_end CARD_LockRom
 
-	arm_func_start sub_020DC988
-sub_020DC988: ; 0x020DC988
+	arm_func_start CARD_UnlockRom
+CARD_UnlockRom: ; 0x020DC988
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_UnlockCard
@@ -9503,7 +9500,7 @@ sub_020DC988: ; 0x020DC988
 	mov r1, #1
 	bl sub_020DC71C
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DC988
+	arm_func_end CARD_UnlockRom
 
 	arm_func_start CARD_LockBackup
 CARD_LockBackup: ; 0x020DC9A4
@@ -10541,8 +10538,8 @@ _020DD74C: .word 0x021E3E60
 _020DD750: .word 0x021E3820
 	arm_func_end sub_020DD6BC
 
-	arm_func_start sub_020DD754
-sub_020DD754: ; 0x020DD754
+	arm_func_start CARDi_ReadRom
+CARDi_ReadRom: ; 0x020DD754
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov sl, r0
 	mov sb, r1
@@ -10611,7 +10608,7 @@ _020DD83C: .word 0x021E3820
 _020DD840: .word 0x021E3E40
 _020DD844: .word sub_020DD6BC
 _020DD848: .word OSi_ThreadInfo
-	arm_func_end sub_020DD754
+	arm_func_end CARDi_ReadRom
 
 	arm_func_start CARD_Init
 CARD_Init: ; 0x020DD84C

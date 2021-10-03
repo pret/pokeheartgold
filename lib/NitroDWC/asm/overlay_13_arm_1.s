@@ -1045,7 +1045,7 @@ ov13_0221C8CC: ; 0x0221C8CC
 	ldr r4, [r0, #0x10]
 	ldr r1, [r5, #0x14]
 	add r0, r5, #0x10
-	bl sub_020D7958
+	bl FS_FindArchive
 	movs r6, r0
 	add r0, sp, #4
 	ldreq r6, [r5, #0x18]
@@ -1057,7 +1057,7 @@ ov13_0221C8CC: ; 0x0221C8CC
 	add r0, sp, #4
 	mov r1, r6
 	add r3, r2, r3
-	bl sub_020D81C0
+	bl FS_OpenFileDirect
 	cmp r0, #0
 	beq _0221C948
 	ldr r1, [r4, #8]
@@ -1528,14 +1528,14 @@ _0221CF44:
 	bl FS_InitFile
 	ldr r0, _0221D334 ; =0x02245988
 	mov r1, #3
-	bl sub_020D7958
+	bl FS_FindArchive
 	mov r1, r0
 	mvn r0, #0
 	str r0, [sp]
 	add r0, sp, #0x24
 	mov r2, #0
 	add r3, r7, #0x88
-	bl sub_020D81C0
+	bl FS_OpenFileDirect
 	ldr r2, [sp, #0x50]
 	ldr r1, [sp, #0x48]
 	ldr r0, _0221D330 ; =0x027FFE00

@@ -5261,7 +5261,7 @@ _0222B5A0:
 	bl GX_VBlankIntr
 	bl FX_Init
 	mvn r0, #0
-	bl sub_020D7F60
+	bl FS_Init
 	bl sub_020D9EF0
 	bl RTC_Init
 	bl GX_DispOff
@@ -30254,13 +30254,13 @@ _0223F6A0:
 	ldr r0, _0223F7F4 ; =0x0224F5CC
 	ldr r0, [r0]
 	add r0, r0, #0x88
-	bl sub_020D792C
+	bl FS_InitArchive
 	ldr r0, _0223F7F4 ; =0x0224F5CC
 	ldr r1, _0223F7FC ; =0x0224593C
 	ldr r0, [r0]
 	mov r2, #3
 	add r0, r0, #0x88
-	bl sub_020D7998
+	bl FS_RegisterArchiveName
 	cmp r0, #0
 	bne _0223F710
 	bl OS_Terminate
@@ -30270,7 +30270,7 @@ _0223F710:
 	ldr r0, [r0]
 	ldr r2, _0223F804 ; =0x00000602
 	add r0, r0, #0x88
-	bl sub_020D7EBC
+	bl FS_SetArchiveProc
 	ldr r0, [sp, #0x18]
 	ldr r1, _0223F808 ; =ov13_0223F904
 	str r0, [sp]
@@ -30285,7 +30285,7 @@ _0223F710:
 	ldr r3, [sp, #0x14]
 	mov r1, r4
 	add r0, r0, #0x88
-	bl sub_020D7AD0
+	bl FS_LoadArchive
 	cmp r0, #0
 	bne _0223F770
 	bl OS_Terminate
@@ -30295,7 +30295,7 @@ _0223F770:
 	ldr r0, [r0]
 	mov r2, r1
 	add r0, r0, #0x88
-	bl sub_020D7C00
+	bl FS_LoadArchiveTables
 	mov r1, #4
 	mov r4, r0
 	bl ov13_0224128C
@@ -30305,7 +30305,7 @@ _0223F770:
 	str r0, [r3]
 	ldr r0, [r1]
 	ldr r1, [r0], #0x88
-	bl sub_020D7C00
+	bl FS_LoadArchiveTables
 	ldr r1, _0223F7F4 ; =0x0224F5CC
 	mov r0, #0x20
 	ldr r1, [r1]
@@ -30320,7 +30320,7 @@ _0223F770:
 	add r0, sp, #0x20
 	bl OS_SPrintf
 	add r0, sp, #0x20
-	bl sub_020D8448
+	bl FS_ChangeDir
 	add sp, sp, #0xe8
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
@@ -30338,19 +30338,19 @@ _0223F810: .word 0x0224741C
 ov13_0223F814: ; 0x0223F814
 	stmdb sp!, {r3, lr}
 	ldr r0, _0223F894 ; =0x02247424
-	bl sub_020D8448
+	bl FS_ChangeDir
 	ldr r0, _0223F898 ; =0x0224F5CC
 	ldr r0, [r0]
 	add r0, r0, #0x88
-	bl sub_020D7D24
+	bl FS_UnloadArchiveTables
 	ldr r0, _0223F898 ; =0x0224F5CC
 	ldr r0, [r0]
 	add r0, r0, #0x88
-	bl sub_020D7B40
+	bl FS_UnloadArchive
 	ldr r0, _0223F898 ; =0x0224F5CC
 	ldr r0, [r0]
 	add r0, r0, #0x88
-	bl sub_020D7A4C
+	bl FS_ReleaseArchiveName
 	ldr r0, _0223F898 ; =0x0224F5CC
 	ldr r0, [r0]
 	ldrh r0, [r0, #0xe4]
@@ -30395,7 +30395,7 @@ _0223F8D8:
 	ldr r0, _0223F900 ; =0x0224F5CC
 	ldr r0, [r0]
 	ldrh r0, [r0, #0xe4]
-	bl sub_020DC988
+	bl CARD_UnlockRom
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 _0223F8F0:
@@ -30421,7 +30421,7 @@ ov13_0223F904: ; 0x0223F904
 	add r1, r2, r0
 	mov r2, lr
 	sub r0, ip, #2
-	bl sub_020DD754
+	bl CARDi_ReadRom
 	mov r0, #6
 	add sp, sp, #0xc
 	ldmia sp!, {pc}

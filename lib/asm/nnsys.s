@@ -24759,7 +24759,7 @@ NNS_SndArcInit: ; 0x020C9300
 	mov r5, r2
 	mov r4, r3
 	str ip, [r6, #0x90]
-	bl sub_020D8180
+	bl FS_ConvertPathToFileID
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	add r0, r6, #0x34
@@ -24767,7 +24767,7 @@ NNS_SndArcInit: ; 0x020C9300
 	add r1, r6, #0x7c
 	add r0, r6, #0x34
 	ldmia r1, {r1, r2}
-	bl sub_020D8208
+	bl FS_OpenFileFast
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r3, #1

@@ -11,7 +11,7 @@ _020F6458:
 	thumb_func_start sub_02027010
 sub_02027010: ; 0x02027010
 	push {r3, lr}
-	bl sub_020D7F88
+	bl FS_IsAvailable
 	cmp r0, #0
 	bne _02027020
 	bl OS_Terminate
@@ -38,7 +38,7 @@ _02027020:
 _0202704A:
 	ldr r0, _02027090 ; =_020F6458
 	mov r1, #3
-	bl sub_020D7958
+	bl FS_FindArchive
 	ldr r1, _02027084 ; =0x027FF000
 	ldr r2, [r1, #0x48]
 	str r2, [r0, #0x2c]

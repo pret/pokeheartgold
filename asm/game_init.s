@@ -303,11 +303,11 @@ InitSystemForTheGame: ; 0x0201A200
 	strh r0, [r1]
 	bl GX_VBlankIntr
 	mov r0, #1
-	bl sub_020D7F60
+	bl FS_Init
 	bl sub_02027010
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_020D8728
+	bl FS_TryLoadTable
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -319,7 +319,7 @@ InitSystemForTheGame: ; 0x0201A200
 _0201A2F4:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020D8728
+	bl FS_TryLoadTable
 	ldr r0, _0201A330 ; =gMain
 	mov r1, #0
 	str r1, [r0]
