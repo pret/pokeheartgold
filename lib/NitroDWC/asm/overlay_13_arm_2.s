@@ -5262,7 +5262,7 @@ _0222B5A0:
 	bl FX_Init
 	mvn r0, #0
 	bl FS_Init
-	bl sub_020D9EF0
+	bl TP_Init
 	bl RTC_Init
 	bl GX_DispOff
 	ldr r1, _0222B618 ; =0x04001000
@@ -32457,23 +32457,23 @@ ov13_02241330: ; 0x02241330
 	ldr r1, _022413A8 ; =0x0224F5E8
 	str r0, [r1, #4]
 	add r0, sp, #0
-	bl sub_020D9F68
+	bl TP_GetUserInfo
 	cmp r0, #0
 	bne _02241360
 	bl OS_Terminate
 _02241360:
 	add r0, sp, #0
-	bl sub_020D9FFC
+	bl TP_SetCalibrateParam
 	ldr r1, _022413A8 ; =0x0224F5E8
 	mov r0, #0
 	ldr r2, [r1, #4]
 	mov r1, #4
 	mov r3, #5
-	bl sub_020DA208
+	bl TP_RequestAutoSamplingStartAsync
 	mov r0, #2
-	bl sub_020DA804
+	bl TP_WaitBusy
 	mov r0, #2
-	bl sub_020DA81C
+	bl TP_CheckBusy
 	cmp r0, #0
 	beq _0224139C
 	bl OS_Terminate
@@ -32491,11 +32491,11 @@ ov13_022413AC: ; 0x022413AC
 	mov r5, #4
 	mov r4, r5
 _022413B8:
-	bl sub_020DA308
+	bl TP_RequestAutoSamplingStopAsync
 	mov r0, r5
-	bl sub_020DA804
+	bl TP_WaitBusy
 	mov r0, r4
-	bl sub_020DA81C
+	bl TP_CheckBusy
 	cmp r0, #0
 	bne _022413B8
 	ldr r0, _022413E0 ; =0x0224F5EC
@@ -32598,7 +32598,7 @@ ov13_022414F8: ; 0x022414F8
 	movs r0, r0, lsr #0x1f
 	movne r6, #1
 	moveq r6, #0
-	bl sub_020DA4E4
+	bl TP_GetLatestIndexInAuto
 	ldr r7, _02241690 ; =0x0224F5E8
 	mov r4, r5
 	ldr r3, [r7, #4]
@@ -32617,7 +32617,7 @@ _02241544:
 	bne _02241588
 	add r0, sp, #0
 	mov r5, #1
-	bl sub_020DA6E0
+	bl TP_GetCalibratedPoint
 	ldr r1, _02241690 ; =0x0224F5E8
 	ldrh r0, [sp]
 	ldr r2, [r1, #4]

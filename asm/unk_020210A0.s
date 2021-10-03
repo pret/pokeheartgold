@@ -215,11 +215,11 @@ _02021204:
 	mov r4, #4
 	add r6, r4, #0
 _02021208:
-	bl sub_020DA308
+	bl TP_RequestAutoSamplingStopAsync
 	add r0, r4, #0
-	bl sub_020DA804
+	bl TP_WaitBusy
 	add r0, r6, #0
-	bl sub_020DA81C
+	bl TP_CheckBusy
 	cmp r0, #0
 	beq _0202121E
 	add r5, r5, #1
@@ -304,7 +304,7 @@ _020212A6:
 	ldrh r0, [r2, #0x18]
 	cmp r0, #0
 	beq _020212DE
-	bl sub_020DA4E4
+	bl TP_GetLatestIndexInAuto
 	add r6, r0, #0
 	ldr r0, _020212E8 ; =_021D2198 + 0xC
 	mov r1, #9
@@ -349,7 +349,7 @@ sub_020212EC: ; 0x020212EC
 _020212FE:
 	add r0, sp, #4
 	add r1, r5, #0
-	bl sub_020DA6E0
+	bl TP_GetCalibratedPoint
 	ldrh r0, [r6]
 	add r7, r7, #1
 	add r5, #8
@@ -435,11 +435,11 @@ _02021390:
 	add r1, r4, #0
 	add r2, r7, #0
 	mov r3, #9
-	bl sub_020DA208
+	bl TP_RequestAutoSamplingStartAsync
 	mov r0, #2
-	bl sub_020DA804
+	bl TP_WaitBusy
 	mov r0, #2
-	bl sub_020DA81C
+	bl TP_CheckBusy
 	cmp r0, #0
 	beq _020213AE
 	add r5, r5, #1

@@ -3572,14 +3572,14 @@ _021E7410:
 	add r0, r0, r1
 	ldr r1, _021E7494 ; =ov00_021E73E4
 	mov r2, #0
-	bl sub_020DA8A0
+	bl MIC_StartAutoSamplingAsync
 	ldr r1, _021E748C ; =_0221A684
 	mov r0, #0
 	ldr r2, [r1, #4]
 	ldr r1, _021E7490 ; =0x00001A59
 	strb r0, [r2, r1]
 _021E7432:
-	bl sub_020DAA98
+	bl MIC_GetLastSamplingAddress
 	sub r0, r0, r7
 	cmp r0, r6
 	bhs _021E743E
@@ -4357,7 +4357,7 @@ ov00_021E7A30: ; 0x021E7A30
 	beq _021E7A8C
 	ldr r0, _021E7A94 ; =0x0000198C
 	ldr r4, [r1, r0]
-	bl sub_020DAA60
+	bl MIC_StopAutoSampling
 	ldr r0, _021E7A90 ; =_0221A684
 	ldr r1, [r0, #4]
 	ldr r0, _021E7A98 ; =0x000019F8

@@ -4931,8 +4931,8 @@ _020D8DF4:
 	ldmia sp!, {pc}
 	arm_func_end FS_UnloadOverlay
 
-	arm_func_start sub_020D8E00
-sub_020D8E00: ; 0x020D8E00
+	arm_func_start DGT_Hash1Reset
+DGT_Hash1Reset: ; 0x020D8E00
 	ldr r2, _020D8E30 ; =0x67452301
 	ldr r1, _020D8E34 ; =0xEFCDAB89
 	str r2, [r0]
@@ -4950,10 +4950,10 @@ _020D8E30: .word 0x67452301
 _020D8E34: .word 0xEFCDAB89
 _020D8E38: .word 0x98BADCFE
 _020D8E3C: .word 0x10325476
-	arm_func_end sub_020D8E00
+	arm_func_end DGT_Hash1Reset
 
-	arm_func_start sub_020D8E40
-sub_020D8E40: ; 0x020D8E40
+	arm_func_start DGT_Hash1SetSource
+DGT_Hash1SetSource: ; 0x020D8E40
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
 	ldr r3, [r6, #0x10]
@@ -4982,7 +4982,7 @@ _020D8E94:
 	add r1, r1, ip
 	bl MI_CpuCopy8
 	mov r0, r6
-	bl sub_020D8FC0
+	bl ProcessBlock
 	sub r4, r4, r7
 	mov r8, r4, lsr #6
 	cmp r8, #0
@@ -4996,7 +4996,7 @@ _020D8EC8:
 	bl MI_CpuCopy8
 	mov r0, r6
 	add r7, r7, #0x40
-	bl sub_020D8FC0
+	bl ProcessBlock
 	sub r8, r8, #1
 	cmp r8, #0
 	bgt _020D8EC8
@@ -5007,10 +5007,10 @@ _020D8EF0:
 	add r1, r6, #0x18
 	bl MI_CpuCopy8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020D8E40
+	arm_func_end DGT_Hash1SetSource
 
-	arm_func_start sub_020D8F08
-sub_020D8F08: ; 0x020D8F08
+	arm_func_start DGT_Hash1GetDigest_R
+DGT_Hash1GetDigest_R: ; 0x020D8F08
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r1
 	ldr r1, [r4, #0x14]
@@ -5022,7 +5022,7 @@ sub_020D8F08: ; 0x020D8F08
 	mov r2, #1
 	orr r6, r6, r3, lsr #29
 	mov r7, r3, lsl #3
-	bl sub_020D8E40
+	bl DGT_Hash1SetSource
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	and r3, r0, #0x3f
@@ -5033,7 +5033,7 @@ sub_020D8F08: ; 0x020D8F08
 	add r0, r0, r3
 	bl MI_CpuFill8
 	mov r0, r4
-	bl sub_020D8FC0
+	bl ProcessBlock
 	mov r3, #0
 	mov r2, #0x40
 _020D8F6C:
@@ -5048,7 +5048,7 @@ _020D8F88:
 	str r7, [r4, #0x50]
 	mov r0, r4
 	str r6, [r4, #0x54]
-	bl sub_020D8FC0
+	bl ProcessBlock
 	mov r0, r4
 	mov r1, r5
 	mov r2, #0x10
@@ -5060,10 +5060,10 @@ _020D8F88:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020D8FBC: .word _02110CA8
-	arm_func_end sub_020D8F08
+	arm_func_end DGT_Hash1GetDigest_R
 
-	arm_func_start sub_020D8FC0
-sub_020D8FC0: ; 0x020D8FC0
+	arm_func_start ProcessBlock
+ProcessBlock: ; 0x020D8FC0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldmia r0, {r2, r3, ip, lr}
 	add r4, r0, #0x18
@@ -5306,10 +5306,10 @@ _020D9264:
 	.align 2, 0
 _020D936C: .word _02110D6C
 _020D9370: .word _02110CAC
-	arm_func_end sub_020D8FC0
+	arm_func_end ProcessBlock
 
-	arm_func_start sub_020D9374
-sub_020D9374: ; 0x020D9374
+	arm_func_start DGT_Hash2Reset
+DGT_Hash2Reset: ; 0x020D9374
 	ldr r1, _020D93B0 ; =0x67452301
 	ldr r2, _020D93B4 ; =0xEFCDAB89
 	str r1, [r0]
@@ -5331,10 +5331,10 @@ _020D93B4: .word 0xEFCDAB89
 _020D93B8: .word 0x98BADCFE
 _020D93BC: .word 0x10325476
 _020D93C0: .word 0xC3D2E1F0
-	arm_func_end sub_020D9374
+	arm_func_end DGT_Hash2Reset
 
-	arm_func_start sub_020D93C4
-sub_020D93C4: ; 0x020D93C4
+	arm_func_start DGT_Hash2SetSource
+DGT_Hash2SetSource: ; 0x020D93C4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	movs r8, r2
@@ -5426,10 +5426,10 @@ _020D94F4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020D9514: .word _02110E70
-	arm_func_end sub_020D93C4
+	arm_func_end DGT_Hash2SetSource
 
-	arm_func_start sub_020D9518
-sub_020D9518: ; 0x020D9518
+	arm_func_start DGT_Hash2GetDigest
+DGT_Hash2GetDigest: ; 0x020D9518
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, [sp, #0x10]
@@ -5565,7 +5565,7 @@ _020D95D8:
 	bx lr
 	.align 2, 0
 _020D9710: .word _02110E70
-	arm_func_end sub_020D9518
+	arm_func_end DGT_Hash2GetDigest
 
 	arm_func_start DGT_Hash2CalcHmac
 DGT_Hash2CalcHmac: ; 0x020D9714
@@ -5585,11 +5585,11 @@ DGT_Hash2CalcHmac: ; 0x020D9714
 	add lr, sp, #0x38
 	add ip, sp, #0x24
 	str lr, [sp, #0x10]
-	ldr lr, _020D979C ; =sub_020D9374
+	ldr lr, _020D979C ; =DGT_Hash2Reset
 	str ip, [sp, #0x14]
-	ldr ip, _020D97A0 ; =sub_020D93C4
+	ldr ip, _020D97A0 ; =DGT_Hash2SetSource
 	str lr, [sp, #0x18]
-	ldr lr, _020D97A4 ; =sub_020D9518
+	ldr lr, _020D97A4 ; =DGT_Hash2GetDigest
 	str ip, [sp, #0x1c]
 	ldr ip, [sp, #0xb8]
 	str lr, [sp, #0x20]
@@ -5599,18 +5599,18 @@ DGT_Hash2CalcHmac: ; 0x020D9714
 	mov r1, r7
 	mov r2, r6
 	str r4, [sp, #4]
-	bl sub_020D97A8
+	bl HmacCalc
 	add sp, sp, #0xa0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020D9798: .word 0x0210E188
-_020D979C: .word sub_020D9374
-_020D97A0: .word sub_020D93C4
-_020D97A4: .word sub_020D9518
+_020D979C: .word DGT_Hash2Reset
+_020D97A0: .word DGT_Hash2SetSource
+_020D97A4: .word DGT_Hash2GetDigest
 	arm_func_end DGT_Hash2CalcHmac
 
-	arm_func_start sub_020D97A8
-sub_020D97A8: ; 0x020D97A8
+	arm_func_start HmacCalc
+HmacCalc: ; 0x020D97A8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0xc0
 	ldr r5, [sp, #0xe0]
@@ -5731,16 +5731,16 @@ _020D9914:
 	add sp, sp, #0xc0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-	arm_func_end sub_020D97A8
+	arm_func_end HmacCalc
+
 _020D9960: .word 0x00FF00FF
 _020D9964: .word 0x5A827999
 _020D9968: .word 0x6ED9EBA1
 _020D996C: .word 0x8F1BBCDC
 _020D9970: .word 0xCA62C1D6
-	arm_func_end sub_020D97A8
 
-	arm_func_start sub_020D9974
-sub_020D9974: ; 0x020D9974
+	arm_func_start DGTi_hash2_arm4_small
+DGTi_hash2_arm4_small: ; 0x020D9974
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	ldmia r0, {r3, sb, sl, fp, ip}
 	sub sp, sp, #0x84
@@ -5907,7 +5907,7 @@ _020D9B54:
 	bgt _020D9984
 	add sp, sp, #0x84
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, ip, pc}
-	arm_func_end sub_020D9974
+	arm_func_end DGTi_hash2_arm4_small
 
 	arm_func_start CP_SaveContext
 CP_SaveContext: ; 0x020D9BF4
@@ -5950,8 +5950,8 @@ CPi_RestoreContext: ; 0x020D9C34
 _020D9C6C: .word 0x04000290
 	arm_func_end CPi_RestoreContext
 
-	arm_func_start sub_020D9C70
-sub_020D9C70: ; 0x020D9C70
+	arm_func_start TPi_TpCallback
+TPi_TpCallback: ; 0x020D9C70
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r0, r1, lsl #0x10
@@ -6125,10 +6125,10 @@ _020D9EDC:
 	.align 2, 0
 _020D9EE8: .word 0x021E36B0
 _020D9EEC: .word 0x027FFFAA
-	arm_func_end sub_020D9C70
+	arm_func_end TPi_TpCallback
 
-	arm_func_start sub_020D9EF0
-sub_020D9EF0: ; 0x020D9EF0
+	arm_func_start TP_Init
+TP_Init: ; 0x020D9EF0
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020D9F60 ; =0x021E36B0
 	ldrh r1, [r0]
@@ -6154,17 +6154,17 @@ _020D9F3C:
 	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020D9F3C
-	ldr r1, _020D9F64 ; =sub_020D9C70
+	ldr r1, _020D9F64 ; =TPi_TpCallback
 	mov r0, #6
 	bl PXI_SetFifoRecvCallback
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020D9F60: .word 0x021E36B0
-_020D9F64: .word sub_020D9C70
-	arm_func_end sub_020D9EF0
+_020D9F64: .word TPi_TpCallback
+	arm_func_end TP_Init
 
-	arm_func_start sub_020D9F68
-sub_020D9F68: ; 0x020D9F68
+	arm_func_start TP_GetUserInfo
+TP_GetUserInfo: ; 0x020D9F68
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x14
 	ldr ip, _020D9FF8 ; =0x027FFC80
@@ -6187,7 +6187,7 @@ sub_020D9F68: ; 0x020D9F68
 	str r6, [sp, #0xc]
 	mov r0, r4
 	str ip, [sp, #0x10]
-	bl sub_020DA4F4
+	bl TP_CalcCalibrateParam
 	cmp r0, #0
 	beq _020D9FEC
 _020D9FCC:
@@ -6205,10 +6205,10 @@ _020D9FEC:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _020D9FF8: .word 0x027FFC80
-	arm_func_end sub_020D9F68
+	arm_func_end TP_GetUserInfo
 
-	arm_func_start sub_020D9FFC
-sub_020D9FFC: ; 0x020D9FFC
+	arm_func_start TP_SetCalibrateParam
+TP_SetCalibrateParam: ; 0x020D9FFC
 	stmdb sp!, {r4, lr}
 	movs r4, r0
 	bne _020DA018
@@ -6291,10 +6291,10 @@ _020DA104:
 _020DA118: .word 0x021E36B0
 _020DA11C: .word 0x04000280
 _020DA120: .word 0x040002A0
-	arm_func_end sub_020D9FFC
+	arm_func_end TP_SetCalibrateParam
 
-	arm_func_start sub_020DA124
-sub_020DA124: ; 0x020DA124
+	arm_func_start TP_RequestSamplingAsync
+TP_RequestSamplingAsync: ; 0x020DA124
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	mov r4, r0
@@ -6334,14 +6334,14 @@ _020DA18C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020DA1B4: .word 0x021E36B0
-	arm_func_end sub_020DA124
+	arm_func_end TP_RequestSamplingAsync
 
-	arm_func_start sub_020DA1B8
-sub_020DA1B8: ; 0x020DA1B8
+	arm_func_start TP_WaitRawResult
+TP_WaitRawResult: ; 0x020DA1B8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl sub_020DA804
+	bl TP_WaitBusy
 	ldr r1, _020DA204 ; =0x021E36B0
 	ldrh r0, [r1, #0x38]
 	tst r0, #1
@@ -6359,10 +6359,10 @@ sub_020DA1B8: ; 0x020DA1B8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020DA204: .word 0x021E36B0
-	arm_func_end sub_020DA1B8
+	arm_func_end TP_WaitRawResult
 
-	arm_func_start sub_020DA208
-sub_020DA208: ; 0x020DA208
+	arm_func_start TP_RequestAutoSamplingStartAsync
+TP_RequestAutoSamplingStartAsync: ; 0x020DA208
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr ip, _020DA304 ; =0x021E36B0
 	mov lr, #0
@@ -6432,10 +6432,10 @@ _020DA2DC:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020DA304: .word 0x021E36B0
-	arm_func_end sub_020DA208
+	arm_func_end TP_RequestAutoSamplingStartAsync
 
-	arm_func_start sub_020DA308
-sub_020DA308: ; 0x020DA308
+	arm_func_start TP_RequestAutoSamplingStopAsync
+TP_RequestAutoSamplingStopAsync: ; 0x020DA308
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	mov r4, r0
@@ -6476,10 +6476,10 @@ _020DA370:
 	.align 2, 0
 _020DA398: .word 0x03000200
 _020DA39C: .word 0x021E36B0
-	arm_func_end sub_020DA308
+	arm_func_end TP_RequestAutoSamplingStopAsync
 
-	arm_func_start sub_020DA3A0
-sub_020DA3A0: ; 0x020DA3A0
+	arm_func_start TP_GetLatestRawPointInAuto
+TP_GetLatestRawPointInAuto: ; 0x020DA3A0
 	stmdb sp!, {r4, lr}
 	ldr ip, _020DA4E0 ; =0x021E36B0
 	mov r1, #3
@@ -6568,19 +6568,19 @@ _020DA4BC:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020DA4E0: .word 0x021E36B0
-	arm_func_end sub_020DA3A0
+	arm_func_end TP_GetLatestRawPointInAuto
 
-	arm_func_start sub_020DA4E4
-sub_020DA4E4: ; 0x020DA4E4
+	arm_func_start TP_GetLatestIndexInAuto
+TP_GetLatestIndexInAuto: ; 0x020DA4E4
 	ldr r0, _020DA4F0 ; =0x021E36B0
 	ldrh r0, [r0, #0x10]
 	bx lr
 	.align 2, 0
 _020DA4F0: .word 0x021E36B0
-	arm_func_end sub_020DA4E4
+	arm_func_end TP_GetLatestIndexInAuto
 
-	arm_func_start sub_020DA4F4
-sub_020DA4F4: ; 0x020DA4F4
+	arm_func_start TP_CalcCalibrateParam
+TP_CalcCalibrateParam: ; 0x020DA4F4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sb, r1
 	mov r8, r2
@@ -6715,10 +6715,10 @@ _020DA6CC:
 	.align 2, 0
 _020DA6D8: .word 0x04000280
 _020DA6DC: .word 0x040002A0
-	arm_func_end sub_020DA4F4
+	arm_func_end TP_CalcCalibrateParam
 
-	arm_func_start sub_020DA6E0
-sub_020DA6E0: ; 0x020DA6E0
+	arm_func_start TP_GetCalibratedPoint
+TP_GetCalibratedPoint: ; 0x020DA6E0
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _020DA7FC ; =0x021E36B0
 	ldrh r2, [r2, #0x34]
@@ -6796,10 +6796,10 @@ _020DA7A0:
 	.align 2, 0
 _020DA7FC: .word 0x021E36B0
 _020DA800: .word 0x021E36CC
-	arm_func_end sub_020DA6E0
+	arm_func_end TP_GetCalibratedPoint
 
-	arm_func_start sub_020DA804
-sub_020DA804: ; 0x020DA804
+	arm_func_start TP_WaitBusy
+TP_WaitBusy: ; 0x020DA804
 	ldr r1, _020DA818 ; =0x021E36B0
 _020DA808:
 	ldrh r2, [r1, #0x3a]
@@ -6808,17 +6808,17 @@ _020DA808:
 	bx lr
 	.align 2, 0
 _020DA818: .word 0x021E36B0
-	arm_func_end sub_020DA804
+	arm_func_end TP_WaitBusy
 
-	arm_func_start sub_020DA81C
-sub_020DA81C: ; 0x020DA81C
+	arm_func_start TP_CheckBusy
+TP_CheckBusy: ; 0x020DA81C
 	ldr r1, _020DA82C ; =0x021E36B0
 	ldrh r1, [r1, #0x38]
 	and r0, r1, r0
 	bx lr
 	.align 2, 0
 _020DA82C: .word 0x021E36B0
-	arm_func_end sub_020DA81C
+	arm_func_end TP_CheckBusy
 
 	arm_func_start MIC_Init
 MIC_Init: ; 0x020DA830
@@ -6843,7 +6843,7 @@ _020DA864:
 	beq _020DA864
 	ldr r2, _020DA898 ; =0x027FFF90
 	mov r3, #0
-	ldr r1, _020DA89C ; =sub_020DAAA8
+	ldr r1, _020DA89C ; =MicCommonCallback
 	mov r0, #9
 	str r3, [r2]
 	bl PXI_SetFifoRecvCallback
@@ -6851,11 +6851,11 @@ _020DA864:
 	.align 2, 0
 _020DA894: .word 0x021E36EC
 _020DA898: .word 0x027FFF90
-_020DA89C: .word sub_020DAAA8
+_020DA89C: .word MicCommonCallback
 	arm_func_end MIC_Init
 
-	arm_func_start sub_020DA8A0
-sub_020DA8A0: ; 0x020DA8A0
+	arm_func_start MIC_StartAutoSamplingAsync
+MIC_StartAutoSamplingAsync: ; 0x020DA8A0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	ldr r0, [r7, #4]
@@ -6935,37 +6935,37 @@ _020DA984:
 	ldr r1, [r7, #0x18]
 	str r1, [r0, #0x18]
 	ldmib r7, {r0, r1, r2}
-	bl sub_020DABD0
+	bl MicStartAutoSampling
 	cmp r0, #0
 	movne r0, #0
 	moveq r0, #3
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020DA9C8: .word 0x021E36EC
-	arm_func_end sub_020DA8A0
+	arm_func_end MIC_StartAutoSamplingAsync
 
-	arm_func_start sub_020DA9CC
-sub_020DA9CC: ; 0x020DA9CC
+	arm_func_start MIC_StartAutoSampling
+MIC_StartAutoSampling: ; 0x020DA9CC
 	stmdb sp!, {r3, lr}
-	ldr r1, _020DA9FC ; =sub_020DACFC
+	ldr r1, _020DA9FC ; =MicGetResultCallback
 	mov r2, #0
-	bl sub_020DA8A0
+	bl MIC_StartAutoSamplingAsync
 	ldr r1, _020DAA00 ; =0x021E36EC
 	cmp r0, #0
 	str r0, [r1, #0x10]
 	bne _020DA9F0
-	bl sub_020DAD0C
+	bl MicWaitBusy
 _020DA9F0:
 	ldr r0, _020DAA00 ; =0x021E36EC
 	ldr r0, [r0, #0x10]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020DA9FC: .word sub_020DACFC
+_020DA9FC: .word MicGetResultCallback
 _020DAA00: .word 0x021E36EC
-	arm_func_end sub_020DA9CC
+	arm_func_end MIC_StartAutoSampling
 
-	arm_func_start sub_020DAA04
-sub_020DAA04: ; 0x020DAA04
+	arm_func_start MIC_StopAutoSamplingAsync
+MIC_StopAutoSamplingAsync: ; 0x020DAA04
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -6984,46 +6984,46 @@ _020DAA30:
 	ldr r0, _020DAA5C ; =0x021E36EC
 	str r5, [r0, #8]
 	str r4, [r0, #0xc]
-	bl sub_020DACD4
+	bl MicStopAutoSampling
 	cmp r0, #0
 	movne r0, #0
 	moveq r0, #3
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020DAA5C: .word 0x021E36EC
-	arm_func_end sub_020DAA04
+	arm_func_end MIC_StopAutoSamplingAsync
 
-	arm_func_start sub_020DAA60
-sub_020DAA60: ; 0x020DAA60
+	arm_func_start MIC_StopAutoSampling
+MIC_StopAutoSampling: ; 0x020DAA60
 	stmdb sp!, {r3, lr}
-	ldr r0, _020DAA90 ; =sub_020DACFC
+	ldr r0, _020DAA90 ; =MicGetResultCallback
 	mov r1, #0
-	bl sub_020DAA04
+	bl MIC_StopAutoSamplingAsync
 	ldr r1, _020DAA94 ; =0x021E36EC
 	cmp r0, #0
 	str r0, [r1, #0x10]
 	bne _020DAA84
-	bl sub_020DAD0C
+	bl MicWaitBusy
 _020DAA84:
 	ldr r0, _020DAA94 ; =0x021E36EC
 	ldr r0, [r0, #0x10]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020DAA90: .word sub_020DACFC
+_020DAA90: .word MicGetResultCallback
 _020DAA94: .word 0x021E36EC
-	arm_func_end sub_020DAA60
+	arm_func_end MIC_StopAutoSampling
 
-	arm_func_start sub_020DAA98
-sub_020DAA98: ; 0x020DAA98
+	arm_func_start MIC_GetLastSamplingAddress
+MIC_GetLastSamplingAddress: ; 0x020DAA98
 	ldr r0, _020DAAA4 ; =0x027FFF90
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _020DAAA4: .word 0x027FFF90
-	arm_func_end sub_020DAA98
+	arm_func_end MIC_GetLastSamplingAddress
 
-	arm_func_start sub_020DAAA8
-sub_020DAAA8: ; 0x020DAAA8
+	arm_func_start MicCommonCallback
+MicCommonCallback: ; 0x020DAAA8
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	cmp r2, #0
@@ -7110,10 +7110,10 @@ _020DAB90:
 	.align 2, 0
 _020DABC8: .word 0x021E36EC
 _020DABCC: .word 0x027FFF94
-	arm_func_end sub_020DAAA8
+	arm_func_end MicCommonCallback
 
-	arm_func_start sub_020DABD0
-sub_020DABD0: ; 0x020DABD0
+	arm_func_start MicStartAutoSampling
+MicStartAutoSampling: ; 0x020DABD0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	orr r1, r3, #0x4100
@@ -7180,10 +7180,10 @@ sub_020DABD0: ; 0x020DABD0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020DACD0: .word 0x01060000
-	arm_func_end sub_020DABD0
+	arm_func_end MicStartAutoSampling
 
-	arm_func_start sub_020DACD4
-sub_020DACD4: ; 0x020DACD4
+	arm_func_start MicStopAutoSampling
+MicStopAutoSampling: ; 0x020DACD4
 	stmdb sp!, {r3, lr}
 	ldr r1, _020DACF8 ; =0x03004200
 	mov r0, #9
@@ -7195,19 +7195,19 @@ sub_020DACD4: ; 0x020DACD4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DACF8: .word 0x03004200
-	arm_func_end sub_020DACD4
+	arm_func_end MicStopAutoSampling
 
-	arm_func_start sub_020DACFC
-sub_020DACFC: ; 0x020DACFC
+	arm_func_start MicGetResultCallback
+MicGetResultCallback: ; 0x020DACFC
 	ldr r1, _020DAD08 ; =0x021E36EC
 	str r0, [r1, #0x10]
 	bx lr
 	.align 2, 0
 _020DAD08: .word 0x021E36EC
-	arm_func_end sub_020DACFC
+	arm_func_end MicGetResultCallback
 
-	arm_func_start sub_020DAD0C
-sub_020DAD0C: ; 0x020DAD0C
+	arm_func_start MicWaitBusy
+MicWaitBusy: ; 0x020DAD0C
 	ldr ip, _020DAD20 ; =0x021E36F0
 _020DAD10:
 	ldr r0, [ip]
@@ -7216,7 +7216,7 @@ _020DAD10:
 	bx lr
 	.align 2, 0
 _020DAD20: .word 0x021E36F0
-	arm_func_end sub_020DAD0C
+	arm_func_end MicWaitBusy
 
 	arm_func_start sub_020DAD24
 sub_020DAD24: ; 0x020DAD24
@@ -17783,14 +17783,14 @@ sub_020E3758: ; 0x020E3758
 	add r0, sp, #0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020D8E00
+	bl DGT_Hash1Reset
 	add r0, sp, #0
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D8E40
+	bl DGT_Hash1SetSource
 	add r1, sp, #0
 	mov r0, r6
-	bl sub_020D8F08
+	bl DGT_Hash1GetDigest_R
 	add sp, sp, #0x58
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020E3758
@@ -17803,14 +17803,14 @@ sub_020E3798: ; 0x020E3798
 	add r0, sp, #0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020D9374
+	bl DGT_Hash2Reset
 	add r0, sp, #0
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D93C4
+	bl DGT_Hash2SetSource
 	add r0, sp, #0
 	mov r1, r6
-	bl sub_020D9518
+	bl DGT_Hash2GetDigest
 	add sp, sp, #0x68
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020E3798

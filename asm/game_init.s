@@ -513,14 +513,14 @@ InitKeypadAndTouchpad: ; 0x0201A458
 	strh r2, [r0, #0x26]
 	ldr r0, _0201A4AC ; =gMain + 0x60
 	strb r2, [r0, #8]
-	bl sub_020D9EF0
+	bl TP_Init
 	bl sub_020210A0
 	add r0, sp, #0
-	bl sub_020D9F68
+	bl TP_GetUserInfo
 	cmp r0, #1
 	bne _0201A49E
 	add r0, sp, #0
-	bl sub_020D9FFC
+	bl TP_SetCalibrateParam
 _0201A49E:
 	add sp, #8
 	pop {r3, pc}
@@ -635,19 +635,19 @@ _0201A548:
 	bne _0201A574
 	add r4, sp, #8
 _0201A564:
-	bl sub_020DA124
+	bl TP_RequestSamplingAsync
 	add r0, r4, #0
-	bl sub_020DA1B8
+	bl TP_WaitRawResult
 	cmp r0, #0
 	bne _0201A564
 	b _0201A57A
 _0201A574:
 	add r0, sp, #8
-	bl sub_020DA3A0
+	bl TP_GetLatestRawPointInAuto
 _0201A57A:
 	add r0, sp, #0
 	add r1, sp, #8
-	bl sub_020DA6E0
+	bl TP_GetCalibratedPoint
 	add r1, sp, #0
 	ldrh r3, [r1, #6]
 	cmp r3, #0

@@ -28513,26 +28513,26 @@ _020B03C8: .word 0x021D6020
 
 	arm_func_start sub_020B03CC
 sub_020B03CC: ; 0x020B03CC
-	ldr ip, _020B03D4 ; =sub_020D8E00
+	ldr ip, _020B03D4 ; =DGT_Hash1Reset
 	bx ip
 	.align 2, 0
-_020B03D4: .word sub_020D8E00
+_020B03D4: .word DGT_Hash1Reset
 	arm_func_end sub_020B03CC
 
 	arm_func_start sub_020B03D8
 sub_020B03D8: ; 0x020B03D8
-	ldr ip, _020B03E0 ; =sub_020D8E40
+	ldr ip, _020B03E0 ; =DGT_Hash1SetSource
 	bx ip
 	.align 2, 0
-_020B03E0: .word sub_020D8E40
+_020B03E0: .word DGT_Hash1SetSource
 	arm_func_end sub_020B03D8
 
 	arm_func_start sub_020B03E4
 sub_020B03E4: ; 0x020B03E4
-	ldr ip, _020B03EC ; =sub_020D8F08
+	ldr ip, _020B03EC ; =DGT_Hash1GetDigest_R
 	bx ip
 	.align 2, 0
-_020B03EC: .word sub_020D8F08
+_020B03EC: .word DGT_Hash1GetDigest_R
 	arm_func_end sub_020B03E4
 
 	arm_func_start sub_020B03F0

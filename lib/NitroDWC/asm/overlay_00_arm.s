@@ -25389,14 +25389,14 @@ ov00_021FD300: ; 0x021FD300
 	mov r5, r0
 	add r0, sp, #0x14
 	mov r4, r1
-	bl sub_020D8E00
+	bl DGT_Hash1Reset
 	add r0, sp, #0x14
 	mov r1, r5
 	mov r2, #0x18
-	bl sub_020D8E40
+	bl DGT_Hash1SetSource
 	add r0, sp, #0
 	add r1, sp, #0x14
-	bl sub_020D8F08
+	bl DGT_Hash1GetDigest_R
 	add r0, sp, #3
 	mov r1, r4
 	mov r2, #0xd
