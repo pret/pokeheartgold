@@ -3248,7 +3248,7 @@ ov74_022289D4: ; 0x022289D4
 	ldr r0, [r4, #0x18]
 	add r0, r0, #1
 	str r0, [r4, #0x18]
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	add r0, r4, #0
 	bl ov74_0222779C
 	cmp r0, #1
@@ -10377,7 +10377,7 @@ ov74_0222C2EC: ; 0x0222C2EC
 	add r5, r1, #0
 	bl OverlayManager_GetData
 	add r4, r0, #0
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	ldr r0, _0222C640 ; =0x000005C8
 	ldr r0, [r4, r0]
 	cmp r0, #0x1d
@@ -24597,7 +24597,7 @@ ov74_022332F4: ; 0x022332F4
 	add r5, r1, #0
 	bl OverlayManager_GetData
 	add r4, r0, #0
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	bl CTRDG_IsPulledOut
 	cmp r0, #1
 	beq _02233312
@@ -28833,7 +28833,7 @@ _02235274:
 	add r4, r0, #0
 	mov r0, #0
 	bl sub_020E1678
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	bne _02235298
 	mov r0, #0

@@ -22631,9 +22631,9 @@ NNS_SndInit: ; 0x020C78D0
 	str r0, [r1, #0x1c]
 	ldr r0, _020C7950 ; =0x021DD430
 	str r2, [r1, #0x20]
-	bl sub_020DB960
+	bl PM_PrependPreSleepCallback
 	ldr r0, _020C7954 ; =0x021DD43C
-	bl sub_020DB978
+	bl PM_AppendPostSleepCallback
 	bl sub_020C7C74
 	bl sub_020C908C
 	bl sub_020C83E4
@@ -24291,9 +24291,9 @@ sub_020C8D18: ; 0x020C8D18
 	movs r0, r0, asr #0x1f
 	ldmneia sp!, {r4, pc}
 	add r0, r4, #8
-	bl sub_020DB960
+	bl PM_PrependPreSleepCallback
 	add r0, r4, #0x14
-	bl sub_020DB978
+	bl PM_AppendPostSleepCallback
 	ldr r0, [r4, #0x24]
 	orr r0, r0, #2
 	str r0, [r4, #0x24]
@@ -24360,9 +24360,9 @@ sub_020C8DF4: ; 0x020C8DF4
 	mov r3, r1
 	bl SND_StopTimer
 	add r0, r4, #8
-	bl sub_020DB990
+	bl PM_DeletePreSleepCallback
 	add r0, r4, #0x14
-	bl sub_020DB9A8
+	bl PM_DeletePostSleepCallback
 	ldr r0, [r4, #0x24]
 	bic r0, r0, #2
 	str r0, [r4, #0x24]

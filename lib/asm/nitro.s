@@ -7218,8 +7218,8 @@ _020DAD10:
 _020DAD20: .word 0x021E36F0
 	arm_func_end MicWaitBusy
 
-	arm_func_start sub_020DAD24
-sub_020DAD24: ; 0x020DAD24
+	arm_func_start PMi_Lock
+PMi_Lock: ; 0x020DAD24
 	stmdb sp!, {r3, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020DAD5C ; =0x021E370C
@@ -7237,10 +7237,10 @@ _020DAD48:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DAD5C: .word 0x021E370C
-	arm_func_end sub_020DAD24
+	arm_func_end PMi_Lock
 
-	arm_func_start sub_020DAD60
-sub_020DAD60: ; 0x020DAD60
+	arm_func_start PMi_WaitBusy
+PMi_WaitBusy: ; 0x020DAD60
 	stmdb sp!, {r4, lr}
 	ldr r0, _020DAD98 ; =0x021E370C
 	ldr r4, _020DAD9C ; =0x021E3728
@@ -7260,16 +7260,16 @@ _020DAD88:
 	.align 2, 0
 _020DAD98: .word 0x021E370C
 _020DAD9C: .word 0x021E3728
-	arm_func_end sub_020DAD60
+	arm_func_end PMi_WaitBusy
 
-	arm_func_start sub_020DADA0
-sub_020DADA0: ; 0x020DADA0
+	arm_func_start PMi_DummyCallback
+PMi_DummyCallback: ; 0x020DADA0
 	str r0, [r1]
 	bx lr
-	arm_func_end sub_020DADA0
+	arm_func_end PMi_DummyCallback
 
-	arm_func_start sub_020DADA8
-sub_020DADA8: ; 0x020DADA8
+	arm_func_start PMi_CallCallbackAndUnlock
+PMi_CallCallbackAndUnlock: ; 0x020DADA8
 	stmdb sp!, {r3, lr}
 	ldr r2, _020DADE4 ; =0x021E370C
 	ldr r1, [r2, #0x1c]
@@ -7287,7 +7287,7 @@ sub_020DADA8: ; 0x020DADA8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DADE4: .word 0x021E370C
-	arm_func_end sub_020DADA8
+	arm_func_end PMi_CallCallbackAndUnlock
 
 	arm_func_start PM_Init
 PM_Init: ; 0x020DADE8
@@ -7310,7 +7310,7 @@ _020DAE1C:
 	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020DAE1C
-	ldr r1, _020DAE7C ; =sub_020DAE8C
+	ldr r1, _020DAE7C ; =PMi_CommonCallback
 	mov r0, #8
 	bl PXI_SetFifoRecvCallback
 	mov r3, #0
@@ -7331,19 +7331,19 @@ _020DAE48:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020DAE78: .word 0x021E370C
-_020DAE7C: .word sub_020DAE8C
+_020DAE7C: .word PMi_CommonCallback
 _020DAE80: .word 0x021E3750
 _020DAE84: .word 0x021E3738
 _020DAE88: .word 0x027FFC3C
 	arm_func_end PM_Init
 
-	arm_func_start sub_020DAE8C
-sub_020DAE8C: ; 0x020DAE8C
+	arm_func_start PMi_CommonCallback
+PMi_CommonCallback: ; 0x020DAE8C
 	stmdb sp!, {r3, lr}
 	cmp r2, #0
 	beq _020DAEA4
 	mov r0, #2
-	bl sub_020DADA8
+	bl PMi_CallCallbackAndUnlock
 	ldmia sp!, {r3, pc}
 _020DAEA4:
 	and r0, r1, #0x7f00
@@ -7389,20 +7389,20 @@ _020DAF24:
 	strne r0, [r1]
 	mov r0, #0
 _020DAF40:
-	bl sub_020DADA8
+	bl PMi_CallCallbackAndUnlock
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DAF48: .word 0x021E3754
 _020DAF4C: .word 0x021E3750
 _020DAF50: .word 0x021E370C
-	arm_func_end sub_020DAE8C
+	arm_func_end PMi_CommonCallback
 
-	arm_func_start sub_020DAF54
-sub_020DAF54: ; 0x020DAF54
+	arm_func_start PMi_SendSleepStart
+PMi_SendSleepStart: ; 0x020DAF54
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_020DAD24
+	bl PMi_Lock
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -7410,7 +7410,7 @@ sub_020DAF54: ; 0x020DAF54
 	mov r2, #0
 	ldr r0, _020DAFE0 ; =0x03006000
 	str r2, [r1, #4]
-	bl sub_020DB410
+	bl PMi_SendPxiData
 	ldr r0, _020DAFDC ; =0x021E370C
 _020DAF88:
 	ldr r1, [r0, #4]
@@ -7423,30 +7423,30 @@ _020DAF88:
 	mov r1, #2
 	mov r3, #1
 	str r0, [ip, #8]
-	bl sub_020DB67C
+	bl PMi_SetLCDPower
 	and r0, r5, #0xff
 	orr r0, r0, #0x6100
 	orr r0, r0, #0x2000000
-	bl sub_020DB410
+	bl PMi_SendPxiData
 	ldr r1, _020DAFE4 ; =0x01010000
 	mov r0, r4, lsl #0x10
 	orr r0, r1, r0, lsr #16
-	bl sub_020DB410
+	bl PMi_SendPxiData
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020DAFDC: .word 0x021E370C
 _020DAFE0: .word 0x03006000
 _020DAFE4: .word 0x01010000
-	arm_func_end sub_020DAF54
+	arm_func_end PMi_SendSleepStart
 
-	arm_func_start sub_020DAFE8
-sub_020DAFE8: ; 0x020DAFE8
+	arm_func_start PM_SendUtilityCommandAsync
+PM_SendUtilityCommandAsync: ; 0x020DAFE8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020DAD24
+	bl PMi_Lock
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -7457,26 +7457,26 @@ sub_020DAFE8: ; 0x020DAFE8
 	str r5, [r1, #0x20]
 	orr r0, r0, #0x2000000
 	str r4, [r1, #0x24]
-	bl sub_020DB410
+	bl PMi_SendPxiData
 	ldr r1, _020DB044 ; =0x01010000
 	mov r0, r6, lsl #0x10
 	orr r0, r1, r0, lsr #16
-	bl sub_020DB410
+	bl PMi_SendPxiData
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020DB040: .word 0x021E370C
 _020DB044: .word 0x01010000
-	arm_func_end sub_020DAFE8
+	arm_func_end PM_SendUtilityCommandAsync
 
-	arm_func_start sub_020DB048
-sub_020DB048: ; 0x020DB048
+	arm_func_start PMi_ReadRegisterAsync
+PMi_ReadRegisterAsync: ; 0x020DB048
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	mov r4, r1
 	mov r7, r2
 	mov r6, r3
-	bl sub_020DAD24
+	bl PMi_Lock
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -7492,38 +7492,38 @@ sub_020DB048: ; 0x020DB048
 	strh ip, [r2, r3]
 	orr r0, r0, #0x3000000
 	str r4, [r1, r5, lsl #3]
-	bl sub_020DB410
+	bl PMi_SendPxiData
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020DB0A8: .word 0x021E370C
 _020DB0AC: .word 0x021E3750
 _020DB0B0: .word 0x021E3754
-	arm_func_end sub_020DB048
+	arm_func_end PMi_ReadRegisterAsync
 
-	arm_func_start sub_020DB0B4
-sub_020DB0B4: ; 0x020DB0B4
+	arm_func_start PMi_ReadRegister
+PMi_ReadRegister: ; 0x020DB0B4
 	stmdb sp!, {r3, lr}
-	ldr r2, _020DB0D8 ; =sub_020DADA0
+	ldr r2, _020DB0D8 ; =PMi_DummyCallback
 	add r3, sp, #0
-	bl sub_020DB048
+	bl PMi_ReadRegisterAsync
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_020DAD60
+	bl PMi_WaitBusy
 	ldr r0, [sp]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020DB0D8: .word sub_020DADA0
-	arm_func_end sub_020DB0B4
+_020DB0D8: .word PMi_DummyCallback
+	arm_func_end PMi_ReadRegister
 
-	arm_func_start sub_020DB0DC
-sub_020DB0DC: ; 0x020DB0DC
+	arm_func_start PMi_WriteRegisterAsync
+PMi_WriteRegisterAsync: ; 0x020DB0DC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020DAD24
+	bl PMi_Lock
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -7533,35 +7533,35 @@ sub_020DB0DC: ; 0x020DB0DC
 	str r5, [r1, #0x20]
 	orr r0, r0, #0x2000000
 	str r4, [r1, #0x24]
-	bl sub_020DB410
+	bl PMi_SendPxiData
 	ldr r1, _020DB138 ; =0x01010000
 	mov r0, r6, lsl #0x10
 	orr r0, r1, r0, lsr #16
-	bl sub_020DB410
+	bl PMi_SendPxiData
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020DB134: .word 0x021E370C
 _020DB138: .word 0x01010000
-	arm_func_end sub_020DB0DC
+	arm_func_end PMi_WriteRegisterAsync
 
-	arm_func_start sub_020DB13C
-sub_020DB13C: ; 0x020DB13C
+	arm_func_start PMi_WriteRegister
+PMi_WriteRegister: ; 0x020DB13C
 	stmdb sp!, {r3, lr}
-	ldr r2, _020DB160 ; =sub_020DADA0
+	ldr r2, _020DB160 ; =PMi_DummyCallback
 	add r3, sp, #0
-	bl sub_020DB0DC
+	bl PMi_WriteRegisterAsync
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_020DAD60
+	bl PMi_WaitBusy
 	ldr r0, [sp]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020DB160: .word sub_020DADA0
-	arm_func_end sub_020DB13C
+_020DB160: .word PMi_DummyCallback
+	arm_func_end PMi_WriteRegister
 
-	arm_func_start sub_020DB164
-sub_020DB164: ; 0x020DB164
+	arm_func_start PMi_SetLEDAsync
+PMi_SetLEDAsync: ; 0x020DB164
 	stmdb sp!, {r3, lr}
 	cmp r0, #1
 	beq _020DB184
@@ -7585,29 +7585,29 @@ _020DB1A0:
 	cmp r0, #0
 	ldreq r0, _020DB1B4 ; =0x0000FFFF
 	ldmeqia sp!, {r3, pc}
-	bl sub_020DAFE8
+	bl PM_SendUtilityCommandAsync
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DB1B4: .word 0x0000FFFF
-	arm_func_end sub_020DB164
+	arm_func_end PMi_SetLEDAsync
 
-	arm_func_start sub_020DB1B8
-sub_020DB1B8: ; 0x020DB1B8
+	arm_func_start PMi_SetLED
+PMi_SetLED: ; 0x020DB1B8
 	stmdb sp!, {r3, lr}
-	ldr r1, _020DB1DC ; =sub_020DADA0
+	ldr r1, _020DB1DC ; =PMi_DummyCallback
 	add r2, sp, #0
-	bl sub_020DB164
+	bl PMi_SetLEDAsync
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_020DAD60
+	bl PMi_WaitBusy
 	ldr r0, [sp]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020DB1DC: .word sub_020DADA0
-	arm_func_end sub_020DB1B8
+_020DB1DC: .word PMi_DummyCallback
+	arm_func_end PMi_SetLED
 
-	arm_func_start sub_020DB1E0
-sub_020DB1E0: ; 0x020DB1E0
+	arm_func_start PM_SetBackLightAsync
+PM_SetBackLightAsync: ; 0x020DB1E0
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	mov ip, #0
@@ -7639,36 +7639,36 @@ _020DB238:
 	mov r1, r2
 	mov r0, ip
 	mov r2, r3
-	bl sub_020DAFE8
+	bl PM_SendUtilityCommandAsync
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DB258: .word 0x0000FFFF
-	arm_func_end sub_020DB1E0
+	arm_func_end PM_SetBackLightAsync
 
 	arm_func_start PM_SetBackLight
 PM_SetBackLight: ; 0x020DB25C
 	stmdb sp!, {r3, lr}
-	ldr r2, _020DB280 ; =sub_020DADA0
+	ldr r2, _020DB280 ; =PMi_DummyCallback
 	add r3, sp, #0
-	bl sub_020DB1E0
+	bl PM_SetBackLightAsync
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_020DAD60
+	bl PMi_WaitBusy
 	ldr r0, [sp]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020DB280: .word sub_020DADA0
+_020DB280: .word PMi_DummyCallback
 	arm_func_end PM_SetBackLight
 
-	arm_func_start sub_020DB284
-sub_020DB284: ; 0x020DB284
+	arm_func_start PM_ForceToPowerOffAsync
+PM_ForceToPowerOffAsync: ; 0x020DB284
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r7, r0
 	ldr r0, _020DB32C ; =0x00996A00
 	mov r6, r1
 	bl OS_SpinWait
-	bl sub_020DB794
+	bl PM_GetLCDPower
 	cmp r0, #1
 	beq _020DB314
 	add r0, sp, #4
@@ -7689,7 +7689,7 @@ _020DB2CC:
 	bl PM_SetBackLight
 _020DB2E4:
 	mov r0, #1
-	bl sub_020DB774
+	bl PM_SetLCDPower
 	cmp r0, #0
 	bne _020DB314
 	ldr r5, _020DB32C ; =0x00996A00
@@ -7698,70 +7698,70 @@ _020DB2FC:
 	mov r0, r5
 	bl OS_SpinWait
 	mov r0, r4
-	bl sub_020DB774
+	bl PM_SetLCDPower
 	cmp r0, #0
 	beq _020DB2FC
 _020DB314:
 	mov r1, r7
 	mov r2, r6
 	mov r0, #0xe
-	bl sub_020DAFE8
+	bl PM_SendUtilityCommandAsync
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020DB32C: .word 0x00996A00
-	arm_func_end sub_020DB284
+	arm_func_end PM_ForceToPowerOffAsync
 
 	arm_func_start PM_ForceToPowerOff
 PM_ForceToPowerOff: ; 0x020DB330
 	stmdb sp!, {r3, lr}
-	ldr r0, _020DB354 ; =sub_020DADA0
+	ldr r0, _020DB354 ; =PMi_DummyCallback
 	add r1, sp, #0
-	bl sub_020DB284
+	bl PM_ForceToPowerOffAsync
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_020DAD60
+	bl PMi_WaitBusy
 	ldr r0, [sp]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020DB354: .word sub_020DADA0
+_020DB354: .word PMi_DummyCallback
 	arm_func_end PM_ForceToPowerOff
 
 	arm_func_start PM_SetAmp
 PM_SetAmp: ; 0x020DB358
 	ldr r1, _020DB368 ; =0x021E370C
-	ldr ip, _020DB36C ; =sub_020DB370
+	ldr ip, _020DB36C ; =PMi_SetAmp
 	str r0, [r1, #0x14]
 	bx ip
 	.align 2, 0
 _020DB368: .word 0x021E370C
-_020DB36C: .word sub_020DB370
+_020DB36C: .word PMi_SetAmp
 	arm_func_end PM_SetAmp
 
-	arm_func_start sub_020DB370
-sub_020DB370: ; 0x020DB370
+	arm_func_start PMi_SetAmp
+PMi_SetAmp: ; 0x020DB370
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020DB794
+	bl PM_GetLCDPower
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4, lsl #0x10
 	mov r1, r0, lsr #0x10
 	mov r0, #2
-	bl sub_020DB13C
+	bl PMi_WriteRegister
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DB370
+	arm_func_end PMi_SetAmp
 
 	arm_func_start PM_SetAmpGain
 PM_SetAmpGain: ; 0x020DB39C
-	ldr ip, _020DB3B0 ; =sub_020DB13C
+	ldr ip, _020DB3B0 ; =PMi_WriteRegister
 	mov r0, r0, lsl #0x10
 	mov r1, r0, lsr #0x10
 	mov r0, #3
 	bx ip
 	.align 2, 0
-_020DB3B0: .word sub_020DB13C
+_020DB3B0: .word PMi_WriteRegister
 	arm_func_end PM_SetAmpGain
 
 	arm_func_start PM_GetBackLight
@@ -7771,7 +7771,7 @@ PM_GetBackLight: ; 0x020DB3B4
 	mov r5, r0
 	add r1, sp, #0
 	mov r0, #0
-	bl sub_020DB0B4
+	bl PMi_ReadRegister
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	cmp r5, #0
@@ -7792,8 +7792,8 @@ _020DB3F0:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end PM_GetBackLight
 
-	arm_func_start sub_020DB410
-sub_020DB410: ; 0x020DB410
+	arm_func_start PMi_SendPxiData
+PMi_SendPxiData: ; 0x020DB410
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, #8
@@ -7806,7 +7806,7 @@ _020DB420:
 	cmp r0, #0
 	bne _020DB420
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020DB410
+	arm_func_end PMi_SendPxiData
 
 	arm_func_start PM_GoSleepMode
 PM_GoSleepMode: ; 0x020DB43C
@@ -7818,7 +7818,7 @@ PM_GoSleepMode: ; 0x020DB43C
 	mov sb, r1
 	mov fp, r2
 	mov r4, #0
-	bl sub_020DB938
+	bl PMi_ExecuteList
 	ldr r1, _020DB664 ; =0x04000208
 	mov r0, r4
 	ldrh r8, [r1]
@@ -7849,7 +7849,7 @@ PM_GoSleepMode: ; 0x020DB43C
 _020DB4CC:
 	tst sl, #0x10
 	beq _020DB4E0
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	biceq sl, sl, #0x10
 _020DB4E0:
@@ -7857,7 +7857,7 @@ _020DB4E0:
 	add r0, r1, #0x1000
 	ldr r5, [r1]
 	ldr r6, [r0]
-	bl sub_020DB794
+	bl PM_GetLCDPower
 	str r0, [sp]
 	add r0, sp, #0x14
 	add r1, sp, #0x10
@@ -7909,7 +7909,7 @@ _020DB574:
 _020DB5A8:
 	mov r0, r7
 	mov r1, sb
-	bl sub_020DAF54
+	bl PMi_SendSleepStart
 	cmp r0, #0
 	bne _020DB5A8
 	bl OS_Halt
@@ -7929,10 +7929,10 @@ _020DB5D8:
 	mov r1, r0
 	mov r2, r0
 	mov r3, r0
-	bl sub_020DB67C
+	bl PMi_SetLCDPower
 	b _020DB608
 _020DB604:
-	bl sub_020DB1B8
+	bl PMi_SetLED
 _020DB608:
 	mov r0, #0x4000000
 	str r5, [r0]
@@ -7955,7 +7955,7 @@ _020DB618:
 _020DB64C:
 	ldr r0, _020DB660 ; =0x021E370C
 	ldr r0, [r0, #0x18]
-	bl sub_020DB938
+	bl PMi_ExecuteList
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -7968,8 +7968,8 @@ _020DB674: .word 0x04000214
 _020DB678: .word 0x00708100
 	arm_func_end PM_GoSleepMode
 
-	arm_func_start sub_020DB67C
-sub_020DB67C: ; 0x020DB67C
+	arm_func_start PMi_SetLCDPower
+PMi_SetLCDPower: ; 0x020DB67C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r4, r3
@@ -7993,13 +7993,13 @@ _020DB6C0:
 	cmp r4, #0
 	beq _020DB6DC
 	mov r0, r5
-	bl sub_020DB1B8
+	bl PMi_SetLED
 	b _020DB6EC
 _020DB6DC:
 	mov r1, #0
 	mov r0, r5
 	mov r2, r1
-	bl sub_020DB164
+	bl PMi_SetLEDAsync
 _020DB6EC:
 	ldr r2, _020DB770 ; =0x04000304
 	ldr r0, _020DB76C ; =0x021E370C
@@ -8007,11 +8007,11 @@ _020DB6EC:
 	orr r1, r1, #1
 	strh r1, [r2]
 	ldr r0, [r0, #0x14]
-	bl sub_020DB370
+	bl PMi_SetAmp
 	b _020DB760
 _020DB70C:
 	mov r0, #0
-	bl sub_020DB370
+	bl PMi_SetAmp
 	ldr r3, _020DB770 ; =0x04000304
 	ldr r1, _020DB768 ; =0x027FFC3C
 	ldrh r2, [r3]
@@ -8025,13 +8025,13 @@ _020DB70C:
 	cmp r4, #0
 	beq _020DB750
 	mov r0, r5
-	bl sub_020DB1B8
+	bl PMi_SetLED
 	b _020DB760
 _020DB750:
 	mov r1, #0
 	mov r0, r5
 	mov r2, r1
-	bl sub_020DB164
+	bl PMi_SetLEDAsync
 _020DB760:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
@@ -8039,11 +8039,11 @@ _020DB760:
 _020DB768: .word 0x027FFC3C
 _020DB76C: .word 0x021E370C
 _020DB770: .word 0x04000304
-	arm_func_end sub_020DB67C
+	arm_func_end PMi_SetLCDPower
 
-	arm_func_start sub_020DB774
-sub_020DB774: ; 0x020DB774
-	ldr ip, _020DB790 ; =sub_020DB67C
+	arm_func_start PM_SetLCDPower
+PM_SetLCDPower: ; 0x020DB774
+	ldr ip, _020DB790 ; =PMi_SetLCDPower
 	mov r1, #0
 	cmp r0, #1
 	movne r0, #0
@@ -8051,11 +8051,11 @@ sub_020DB774: ; 0x020DB774
 	mov r3, #1
 	bx ip
 	.align 2, 0
-_020DB790: .word sub_020DB67C
-	arm_func_end sub_020DB774
+_020DB790: .word PMi_SetLCDPower
+	arm_func_end PM_SetLCDPower
 
-	arm_func_start sub_020DB794
-sub_020DB794: ; 0x020DB794
+	arm_func_start PM_GetLCDPower
+PM_GetLCDPower: ; 0x020DB794
 	ldr r0, _020DB7AC ; =0x04000304
 	ldrh r0, [r0]
 	tst r0, #1
@@ -8064,15 +8064,15 @@ sub_020DB794: ; 0x020DB794
 	bx lr
 	.align 2, 0
 _020DB7AC: .word 0x04000304
-	arm_func_end sub_020DB794
+	arm_func_end PM_GetLCDPower
 
-	arm_func_start sub_020DB7B0
-sub_020DB7B0: ; 0x020DB7B0
+	arm_func_start PMi_SendLEDPatternCommandAsync
+PMi_SendLEDPatternCommandAsync: ; 0x020DB7B0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020DAD24
+	bl PMi_Lock
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -8082,35 +8082,35 @@ sub_020DB7B0: ; 0x020DB7B0
 	str r5, [r1, #0x20]
 	orr r0, r0, #0x3000000
 	str r4, [r1, #0x24]
-	bl sub_020DB410
+	bl PMi_SendPxiData
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020DB7F4: .word 0x021E370C
-	arm_func_end sub_020DB7B0
+	arm_func_end PMi_SendLEDPatternCommandAsync
 
-	arm_func_start sub_020DB7F8
-sub_020DB7F8: ; 0x020DB7F8
+	arm_func_start PMi_SendLEDPatternCommand
+PMi_SendLEDPatternCommand: ; 0x020DB7F8
 	stmdb sp!, {r3, lr}
-	ldr r1, _020DB81C ; =sub_020DADA0
+	ldr r1, _020DB81C ; =PMi_DummyCallback
 	add r2, sp, #0
-	bl sub_020DB7B0
+	bl PMi_SendLEDPatternCommandAsync
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_020DAD60
+	bl PMi_WaitBusy
 	ldr r0, [sp]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020DB81C: .word sub_020DADA0
-	arm_func_end sub_020DB7F8
+_020DB81C: .word PMi_DummyCallback
+	arm_func_end PMi_SendLEDPatternCommand
 
-	arm_func_start sub_020DB820
-sub_020DB820: ; 0x020DB820
+	arm_func_start PM_GetLEDPatternAsync
+PM_GetLEDPatternAsync: ; 0x020DB820
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020DAD24
+	bl PMi_Lock
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -8119,40 +8119,40 @@ sub_020DB820: ; 0x020DB820
 	str r5, [r1, #0x20]
 	str r4, [r1, #0x24]
 	str r6, [r1, #0x28]
-	bl sub_020DB410
+	bl PMi_SendPxiData
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020DB860: .word 0x021E370C
 _020DB864: .word 0x03006700
-	arm_func_end sub_020DB820
+	arm_func_end PM_GetLEDPatternAsync
 
-	arm_func_start sub_020DB868
-sub_020DB868: ; 0x020DB868
+	arm_func_start PM_GetLEDPattern
+PM_GetLEDPattern: ; 0x020DB868
 	stmdb sp!, {r3, lr}
-	ldr r1, _020DB88C ; =sub_020DADA0
+	ldr r1, _020DB88C ; =PMi_DummyCallback
 	add r2, sp, #0
-	bl sub_020DB820
+	bl PM_GetLEDPatternAsync
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_020DAD60
+	bl PMi_WaitBusy
 	ldr r0, [sp]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020DB88C: .word sub_020DADA0
-	arm_func_end sub_020DB868
+_020DB88C: .word PMi_DummyCallback
+	arm_func_end PM_GetLEDPattern
 
-	arm_func_start sub_020DB890
-sub_020DB890: ; 0x020DB890
+	arm_func_start PMi_PrependList
+PMi_PrependList: ; 0x020DB890
 	cmp r0, #0
 	ldrne r2, [r0]
 	strne r2, [r1, #8]
 	strne r1, [r0]
 	bx lr
-	arm_func_end sub_020DB890
+	arm_func_end PMi_PrependList
 
-	arm_func_start sub_020DB8A4
-sub_020DB8A4: ; 0x020DB8A4
+	arm_func_start PMi_AppendList
+PMi_AppendList: ; 0x020DB8A4
 	cmp r0, #0
 	bxeq lr
 	ldr r2, [r0]
@@ -8175,10 +8175,10 @@ _020DB8E4:
 	str r0, [r1, #8]
 	str r1, [r2, #8]
 	bx lr
-	arm_func_end sub_020DB8A4
+	arm_func_end PMi_AppendList
 
-	arm_func_start sub_020DB8F0
-sub_020DB8F0: ; 0x020DB8F0
+	arm_func_start PMi_DeleteList
+PMi_DeleteList: ; 0x020DB8F0
 	cmp r0, #0
 	ldrne r2, [r0]
 	movne r3, r2
@@ -8199,10 +8199,10 @@ _020DB924:
 	cmp r2, #0
 	bne _020DB904
 	bx lr
-	arm_func_end sub_020DB8F0
+	arm_func_end PMi_DeleteList
 
-	arm_func_start sub_020DB938
-sub_020DB938: ; 0x020DB938
+	arm_func_start PMi_ExecuteList
+PMi_ExecuteList: ; 0x020DB938
 	stmdb sp!, {r4, lr}
 	movs r4, r0
 	ldmeqia sp!, {r4, pc}
@@ -8214,51 +8214,51 @@ _020DB944:
 	cmp r4, #0
 	bne _020DB944
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DB938
+	arm_func_end PMi_ExecuteList
 
-	arm_func_start sub_020DB960
-sub_020DB960: ; 0x020DB960
-	ldr ip, _020DB970 ; =sub_020DB890
+	arm_func_start PM_PrependPreSleepCallback
+PM_PrependPreSleepCallback: ; 0x020DB960
+	ldr ip, _020DB970 ; =PMi_PrependList
 	mov r1, r0
 	ldr r0, _020DB974 ; =0x021E3718
 	bx ip
 	.align 2, 0
-_020DB970: .word sub_020DB890
+_020DB970: .word PMi_PrependList
 _020DB974: .word 0x021E3718
-	arm_func_end sub_020DB960
+	arm_func_end PM_PrependPreSleepCallback
 
-	arm_func_start sub_020DB978
-sub_020DB978: ; 0x020DB978
-	ldr ip, _020DB988 ; =sub_020DB8A4
+	arm_func_start PM_AppendPostSleepCallback
+PM_AppendPostSleepCallback: ; 0x020DB978
+	ldr ip, _020DB988 ; =PMi_AppendList
 	mov r1, r0
 	ldr r0, _020DB98C ; =0x021E3724
 	bx ip
 	.align 2, 0
-_020DB988: .word sub_020DB8A4
+_020DB988: .word PMi_AppendList
 _020DB98C: .word 0x021E3724
-	arm_func_end sub_020DB978
+	arm_func_end PM_AppendPostSleepCallback
 
-	arm_func_start sub_020DB990
-sub_020DB990: ; 0x020DB990
-	ldr ip, _020DB9A0 ; =sub_020DB8F0
+	arm_func_start PM_DeletePreSleepCallback
+PM_DeletePreSleepCallback: ; 0x020DB990
+	ldr ip, _020DB9A0 ; =PMi_DeleteList
 	mov r1, r0
 	ldr r0, _020DB9A4 ; =0x021E3718
 	bx ip
 	.align 2, 0
-_020DB9A0: .word sub_020DB8F0
+_020DB9A0: .word PMi_DeleteList
 _020DB9A4: .word 0x021E3718
-	arm_func_end sub_020DB990
+	arm_func_end PM_DeletePreSleepCallback
 
-	arm_func_start sub_020DB9A8
-sub_020DB9A8: ; 0x020DB9A8
-	ldr ip, _020DB9B8 ; =sub_020DB8F0
+	arm_func_start PM_DeletePostSleepCallback
+PM_DeletePostSleepCallback: ; 0x020DB9A8
+	ldr ip, _020DB9B8 ; =PMi_DeleteList
 	mov r1, r0
 	ldr r0, _020DB9BC ; =0x021E3724
 	bx ip
 	.align 2, 0
-_020DB9B8: .word sub_020DB8F0
+_020DB9B8: .word PMi_DeleteList
 _020DB9BC: .word 0x021E3724
-	arm_func_end sub_020DB9A8
+	arm_func_end PM_DeletePostSleepCallback
 
 	arm_func_start RTC_Init
 RTC_Init: ; 0x020DB9C0
@@ -14763,7 +14763,7 @@ _020E0FEC: .word 0x021E4D40
 	arm_func_start sub_020E0FF0
 sub_020E0FF0: ; 0x020E0FF0
 	stmdb sp!, {r3, lr}
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	beq _020E1010
 	bl sub_020E1040
@@ -14778,7 +14778,7 @@ _020E1010:
 	arm_func_start sub_020E1018
 sub_020E1018: ; 0x020E1018
 	stmdb sp!, {r3, lr}
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	beq _020E1038
 	bl sub_020E1040
@@ -14805,7 +14805,7 @@ _020E1054: .word 0x027FFC30
 sub_020E1058: ; 0x020E1058
 	stmdb sp!, {r4, lr}
 	mov r4, #0
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	beq _020E1074
 	bl sub_020E107C
@@ -14833,7 +14833,7 @@ _020E109C: .word 0x027FFC30
 sub_020E10A0: ; 0x020E10A0
 	stmdb sp!, {r4, lr}
 	mov r4, #0
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	beq _020E10BC
 	bl sub_020E10C4
@@ -14870,7 +14870,7 @@ CTRDG_IsPulledOut: ; 0x020E10E8
 	mov r0, r0, lsl #0x1e
 	movs r0, r0, lsr #0x1f
 	bne _020E1118
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 _020E1118:
 	ldr r0, _020E112C ; =0x027FFC30
 	ldrb r0, [r0, #5]
@@ -14882,8 +14882,8 @@ _020E112C: .word 0x027FFC30
 _020E1130: .word 0x0000FFFF
 	arm_func_end CTRDG_IsPulledOut
 
-	arm_func_start sub_020E1134
-sub_020E1134: ; 0x020E1134
+	arm_func_start CTRDG_IsExisting
+CTRDG_IsExisting: ; 0x020E1134
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	ldr r2, _020E1234 ; =0x027FFC30
@@ -14956,7 +14956,7 @@ _020E1210:
 _020E1234: .word 0x027FFC30
 _020E1238: .word 0x021E4D40
 _020E123C: .word 0x0801FFFE
-	arm_func_end sub_020E1134
+	arm_func_end CTRDG_IsExisting
 
 	arm_func_start sub_020E1240
 sub_020E1240: ; 0x020E1240
@@ -15134,7 +15134,7 @@ sub_020E1434: ; 0x020E1434
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -15213,7 +15213,7 @@ _020E154C:
 	ldr r0, _020E156C ; =0x021E4D40
 	ldrh r0, [r0, #6]
 	bl OS_UnLockCartridge
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -15240,7 +15240,7 @@ sub_020E1588: ; 0x020E1588
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -15293,7 +15293,7 @@ _020E1644:
 	ldr r0, _020E1664 ; =0x021E4D40
 	ldrh r0, [r0, #6]
 	bl OS_UnLockCartridge
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -15484,7 +15484,7 @@ _020E18C0:
 	strh r0, [r6, #6]
 	ldr r0, [r3, #0xac]
 	str r0, [r6, #8]
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	movne r2, #1
 	ldr r1, _020E197C ; =0x027FFF9B
@@ -15899,7 +15899,7 @@ _020E1DEC:
 	mov r0, r0, lsl #0x10
 	mov r6, r0, lsr #0x10
 _020E1E40:
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	moveq r6, #0x1000
 	mov r0, r6
@@ -15953,7 +15953,7 @@ _020E1EC4:
 	strb r2, [r1]
 	mov r5, r0, lsr #0x10
 _020E1EF8:
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	moveq r5, #0x1000
 	mov r0, r5

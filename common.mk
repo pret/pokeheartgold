@@ -117,7 +117,7 @@ DUMMY != mkdir -p $(ALL_BUILDDIRS)
 
 .PHONY: $(MWAS)
 $(MWAS):
-	$(ASPATCH) $@
+	$(ASPATCH) -q $@
 
 all: tools
 

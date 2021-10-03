@@ -32993,7 +32993,7 @@ ov13_02241A44: ; 0x02241A44
 	movs r0, r0, asr #0xf
 	ldmneia sp!, {r3, pc}
 	mov r0, #1
-	bl sub_020DB774
+	bl PM_SetLCDPower
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _02241AB8 ; =0x0224F5E8
@@ -33006,7 +33006,7 @@ _02241A8C:
 	movs r0, r0, asr #0xf
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl sub_020DB774
+	bl PM_SetLCDPower
 	cmp r0, #0
 	ldrne r0, _02241AB8 ; =0x0224F5E8
 	movne r1, #1
@@ -33606,7 +33606,7 @@ ov13_02242154: ; 0x02242154
 	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r0, #1
-	bl sub_020DB774
+	bl PM_SetLCDPower
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
@@ -33658,24 +33658,24 @@ _022422DC: .word 0x05000400
 ov13_022422E0: ; 0x022422E0
 	stmdb sp!, {r3, lr}
 	add r0, sp, #0
-	bl sub_020DB868
+	bl PM_GetLEDPattern
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, [sp]
 	cmp r0, #0xf
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0xf
-	bl sub_020DB7F8
+	bl PMi_SendLEDPatternCommand
 	ldmia sp!, {r3, pc}
 	arm_func_end ov13_022422E0
 
 	arm_func_start ov13_0224230C
 ov13_0224230C: ; 0x0224230C
-	ldr ip, _02242318 ; =sub_020DB7F8
+	ldr ip, _02242318 ; =PMi_SendLEDPatternCommand
 	mov r0, #1
 	bx ip
 	.balign 4, 0
-_02242318: .word sub_020DB7F8
+_02242318: .word PMi_SendLEDPatternCommand
 	arm_func_end ov13_0224230C
 
 	arm_func_start ov13_0224231C
