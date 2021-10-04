@@ -775,11 +775,11 @@ ov112_021E5E48: ; 0x021E5E48
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r0, sp, #0x10
-	bl sub_020DBB48
+	bl RTC_GetTime
 	cmp r0, #0
 	bne _021E5EB0
 	add r0, sp, #0
-	bl sub_020DBA9C
+	bl RTC_GetDate
 	cmp r0, #0
 	bne _021E5EB0
 	add r0, sp, #0
@@ -15832,7 +15832,7 @@ _021ED980:
 	bl sub_0200DCE8
 	add r0, sp, #0xc
 	add r1, sp, #0
-	bl sub_020DBBFC
+	bl RTC_GetDateTime
 	add r0, sp, #0xc
 	add r1, sp, #0
 	bl RTC_ConvertDateTimeToSecond
@@ -23575,7 +23575,7 @@ ov112_021F15E4: ; 0x021F15E4
 	add r0, r1, r0
 	ldr r2, [r2]
 	add r1, r1, r4
-	bl sub_020DC514
+	bl RTC_ConvertSecondToDateTime
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	nop

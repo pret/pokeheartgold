@@ -4639,7 +4639,7 @@ ov74_0222947C: ; 0x0222947C
 	add r0, sp, #0x10
 	bl GF_RTC_CopyDate
 	add r0, sp, #0x10
-	bl sub_020DC284
+	bl RTC_ConvertDateToDay
 	mov r1, #0xd5
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6242,7 +6242,7 @@ _0222A1BC:
 	add r0, sp, #8
 	bl GF_RTC_CopyDate
 	add r0, sp, #8
-	bl sub_020DC284
+	bl RTC_ConvertDateToDay
 	mov r1, #0xd5
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -12618,7 +12618,7 @@ ov74_0222D55C: ; 0x0222D55C
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
 	add r0, sp, #8
-	bl sub_020DC394
+	bl RTC_ConvertDayToDate
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #1
@@ -15751,7 +15751,7 @@ ov74_0222EEB0: ; 0x0222EEB0
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
 	add r0, sp, #8
-	bl sub_020DC394
+	bl RTC_ConvertDayToDate
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #1

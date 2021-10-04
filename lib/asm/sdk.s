@@ -8266,13 +8266,13 @@ sub_0209F630: ; 0x0209F630
 	bl sub_0209E430
 	bl RTC_Init
 	add r0, sp, #0x14
-	bl sub_020DBA9C
+	bl RTC_GetDate
 	cmp r0, #0
 	addne sp, sp, #0x24
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	add r0, sp, #8
-	bl sub_020DBB48
+	bl RTC_GetTime
 	cmp r0, #0
 	addne sp, sp, #0x24
 	movne r0, #0
@@ -8450,13 +8450,13 @@ sub_0209F8A0: ; 0x0209F8A0
 	bl sub_0209E430
 	bl RTC_Init
 	add r0, sp, #0x14
-	bl sub_020DBA9C
+	bl RTC_GetDate
 	cmp r0, #0
 	addne sp, sp, #0x24
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	add r0, sp, #8
-	bl sub_020DBB48
+	bl RTC_GetTime
 	cmp r0, #0
 	addne sp, sp, #0x24
 	movne r0, #0
@@ -19375,9 +19375,9 @@ sub_020A8820: ; 0x020A8820
 	stmdb sp!, {lr}
 	sub sp, sp, #0x1c
 	add r0, sp, #0xc
-	bl sub_020DBA9C
+	bl RTC_GetDate
 	add r0, sp, #0
-	bl sub_020DBB48
+	bl RTC_GetTime
 	add r0, sp, #0xc
 	add r1, sp, #0
 	bl RTC_ConvertDateTimeToSecond
@@ -20194,7 +20194,7 @@ sub_020A92A4: ; 0x020A92A4
 	add r0, sp, #8
 	str r1, [sl, #0x45c]
 	add r8, r4, r2, lsl #8
-	bl sub_020DBA9C
+	bl RTC_GetDate
 	mov r6, #0
 	ldr r1, [sp, #8]
 	ldr r0, [sp, #0xc]

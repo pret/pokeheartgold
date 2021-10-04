@@ -1133,7 +1133,7 @@ _021E8A84:
 	bl OS_SNPrintf
 	add r0, sp, #0x28
 	add r1, sp, #0x1c
-	bl sub_020DBBFC
+	bl RTC_GetDateTime
 	cmp r0, #0
 	addne sp, sp, #0x8c
 	movne r0, #0
@@ -4192,7 +4192,7 @@ ov00_021EB5B0: ; 0x021EB5B0
 	bne _021EB7B0
 	add r0, sp, #0x2c
 	add r1, sp, #0x20
-	bl sub_020DBBFC
+	bl RTC_GetDateTime
 	cmp r0, #0
 	bne _021EB7B0
 	add r0, sp, #0x2c
@@ -5849,7 +5849,7 @@ ov00_021ECB94: ; 0x021ECB94
 	cmp r2, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	bl sub_020DBBFC
+	bl RTC_GetDateTime
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -5890,7 +5890,7 @@ _021ECC3C:
 _021ECC44:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020DC514
+	bl RTC_ConvertSecondToDateTime
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0

@@ -1707,7 +1707,7 @@ _02027D7C:
 	bl CARD_TryWaitBackupAsync
 	cmp r0, #0
 	bne _02027D88
-	bl sub_020DD1B0
+	bl CARD_CancelBackupAsync
 _02027D88:
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0

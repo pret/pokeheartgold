@@ -334,7 +334,7 @@ _0201A2F4:
 	mov r1, #9
 	lsl r0, r0, #8
 	lsl r1, r1, #0xa
-	bl sub_020DC9DC
+	bl CARD_SetCacheFlushThreshold
 	mov r0, #0
 	bl GF_CRC16Init
 	pop {r3, r4, r5, pc}

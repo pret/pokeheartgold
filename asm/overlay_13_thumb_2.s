@@ -4433,7 +4433,7 @@ ov13_02222AB0: ; 0x02222AB0
 	mov r2, #0xc
 	bl ov13_02222978
 	add r0, sp, #0
-	bl sub_020DBB48
+	bl RTC_GetTime
 	cmp r0, #0
 	bne _02222AE2
 	ldr r0, [sp]

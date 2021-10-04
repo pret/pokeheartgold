@@ -7735,7 +7735,7 @@ ov45_0222D500: ; 0x0222D500
 	add r4, r0, #0
 	add r0, sp, #0xc
 	add r1, sp, #0
-	bl sub_020DC514
+	bl RTC_ConvertSecondToDateTime
 	ldr r0, [sp]
 	strb r0, [r4]
 	ldr r0, [sp, #4]

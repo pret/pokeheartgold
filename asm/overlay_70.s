@@ -8833,10 +8833,10 @@ _0223BFC0:
 	add r1, sp, #0
 	bl ov00_021ECB94
 	add r0, sp, #0xc
-	bl sub_020DC284
+	bl RTC_ConvertDateToDay
 	add r4, r0, #0
 	add r0, sp, #0x1c
-	bl sub_020DC284
+	bl RTC_ConvertDateToDay
 	sub r0, r4, r0
 	bmi _0223C002
 	cmp r0, #3
