@@ -193,12 +193,12 @@ _02237A0A:
 	add r0, #1
 	add r6, r0, r5
 	ldr r0, [sp, #8]
-	bl _utof
+	bl _ffltu
 	add r1, r0, #0
 	mov r0, #0xff
 	lsl r0, r0, #0x16
 	bl _fmul
-	bl _ftou
+	bl _ffixu
 	add r1, sp, #0x10
 	add r1, #1
 	strb r0, [r1, r5]
@@ -215,12 +215,12 @@ _02237A4C:
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x18
 	add r0, r5, #0
-	bl _utof
+	bl _ffltu
 	add r1, r0, #0
 	mov r0, #0xff
 	lsl r0, r0, #0x16
 	bl _fmul
-	bl _ftou
+	bl _ffixu
 	add r1, sp, #0x10
 	add r1, #1
 	strb r0, [r1, r7]
@@ -230,34 +230,34 @@ _02237A4C:
 	lsr r0, r0, #0x18
 	cmp r4, #0xff
 	bne _02237A90
-	bl _utof
+	bl _ffltu
 	add r1, r0, #0
 	ldr r0, _02237B38 ; =0x3DCCCCCD
 	bl _fmul
-	bl _ftou
+	bl _ffixu
 	lsl r0, r0, #0x18
 	lsr r2, r0, #0x18
 	b _02237AE2
 _02237A90:
 	cmp r4, #0xc8
 	blo _02237AAA
-	bl _utof
+	bl _ffltu
 	add r1, r0, #0
 	ldr r0, _02237B3C ; =0x3E4CCCCD
 	bl _fmul
-	bl _ftou
+	bl _ffixu
 	lsl r0, r0, #0x18
 	lsr r2, r0, #0x18
 	b _02237AE2
 _02237AAA:
-	bl _utof
+	bl _ffltu
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x19
 	bl _s32_div_f
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl _utof
+	bl _ffltu
 	add r1, r0, #0
 	ldr r0, _02237B38 ; =0x3DCCCCCD
 	bl _fmul
@@ -268,7 +268,7 @@ _02237AAA:
 	add r1, r0, #0
 	add r0, r5, #0
 	bl _fmul
-	bl _ftou
+	bl _ffixu
 	lsl r0, r0, #0x18
 	lsr r2, r0, #0x18
 _02237AE2:

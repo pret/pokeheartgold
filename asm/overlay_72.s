@@ -1716,7 +1716,7 @@ ov72_02238688: ; 0x02238688
 	cmp r1, #0
 	ble _022386A6
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -1724,17 +1724,17 @@ ov72_02238688: ; 0x02238688
 	b _022386B4
 _022386A6:
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _022386B4:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp]
 	cmp r5, #0
 	ble _022386D0
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -1742,12 +1742,12 @@ _022386B4:
 	b _022386DE
 _022386D0:
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _022386DE:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #4]
 	mov r0, #0
 	str r0, [sp, #8]

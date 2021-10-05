@@ -8555,7 +8555,7 @@ _0222B3C6:
 	cmp r0, #0
 	ble _0222B42C
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -8563,12 +8563,12 @@ _0222B3C6:
 	b _0222B43A
 _0222B42C:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222B43A:
-	bl _ftoi
+	bl _ffix
 	add r1, r5, #0
 	add r1, #0xa4
 	str r0, [r1]
@@ -8666,7 +8666,7 @@ _0222B4EC:
 	ldr r0, _0222B5EC ; =0x66666666
 	ldr r1, _0222B5F0 ; =0x3FE66666
 	bl _dmul
-	bl _dtoi
+	bl _dfix
 	add r1, r5, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -8714,7 +8714,7 @@ _0222B4EC:
 	bl _s32_div_f
 	add r1, #0x10
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -8726,12 +8726,12 @@ _0222B586:
 	bl _s32_div_f
 	add r1, #0x10
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222B5A0:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #4]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -9002,7 +9002,7 @@ _0222B76C:
 	cmp r0, #0
 	ble _0222B7DE
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -9010,12 +9010,12 @@ _0222B76C:
 	b _0222B7EC
 _0222B7DE:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222B7EC:
-	bl _ftoi
+	bl _ffix
 	ldr r1, _0222B930 ; =0x00001864
 	cmp r4, #0x3c
 	str r0, [r5, r1]
@@ -9185,12 +9185,12 @@ ov74_0222B950: ; 0x0222B950
 	add r6, r3, #0
 	str r1, [sp]
 	str r1, [sp, #4]
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fsub
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl _itof
+	bl _fflt
 	add r1, r6, #0
 	bl _fsub
 	str r0, [sp, #0xc]
@@ -9226,9 +9226,9 @@ _0222B9B8:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222B9C6:
-	bl _ftoi
+	bl _ffix
 	bl FX_Sqrt
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BA44 ; =0x45800000
 	bl _fdiv
 	ldr r1, [sp, #0x30]
@@ -9238,7 +9238,7 @@ _0222B9C6:
 	add r1, sp, #0x18
 	mov r0, #0x1c
 	ldrsh r0, [r1, r0]
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fgr
 	bhi _0222B9FE
@@ -9308,25 +9308,25 @@ _0222BA66:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [sp, #0x18]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BD90 ; =0x45800000
 	bl _fdiv
 	add r6, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BD90 ; =0x45800000
 	bl _fdiv
 	add r7, r0, #0
 	ldr r0, [r5, #0x1c]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BD90 ; =0x45800000
 	bl _fdiv
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BD90 ; =0x45800000
 	bl _fdiv
-	bl _ftoi
+	bl _ffix
 	add r1, sp, #0x14
 	str r1, [sp]
 	add r1, sp, #0x10
@@ -9366,7 +9366,7 @@ _0222BB00:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222BB0E:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #0x18]
 	add r0, r1, r0
 	str r0, [sp, #0x18]
@@ -9389,7 +9389,7 @@ _0222BB36:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222BB44:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #0x1c]
 	add r0, r1, r0
 	str r0, [sp, #0x1c]
@@ -9413,7 +9413,7 @@ _0222BB68:
 	cmp r0, #0
 	ble _0222BB84
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -9421,7 +9421,7 @@ _0222BB68:
 	b _0222BB92
 _0222BB84:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
@@ -9433,7 +9433,7 @@ _0222BB92:
 	cmp r0, #0
 	ble _0222BBB0
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -9441,15 +9441,15 @@ _0222BB92:
 	b _0222BBBE
 _0222BBB0:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222BBBE:
-	bl _ftoi
+	bl _ffix
 	add r6, r0, #0
 	add r0, r4, #0
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	add r0, r6, #0
 	bl FX_Atan2Idx
@@ -9718,17 +9718,17 @@ _0222BDE6:
 	add r0, r1, r0
 	str r0, [r5, #0x1c]
 	ldr r0, [sp, #0x18]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BED4 ; =0x45800000
 	bl _fdiv
 	add r4, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BED4 ; =0x45800000
 	bl _fdiv
 	add r6, r0, #0
 	ldr r0, [r5, #0x1c]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BED4 ; =0x45800000
 	bl _fdiv
 	add r1, sp, #0x14
@@ -9768,7 +9768,7 @@ _0222BE60:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222BE6E:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #0x18]
 	add r0, r1, r0
 	str r0, [sp, #0x18]
@@ -9791,7 +9791,7 @@ _0222BE96:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222BEA4:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #0x1c]
 	add r0, r1, r0
 	str r0, [sp, #0x1c]

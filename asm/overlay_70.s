@@ -2677,7 +2677,7 @@ ov70_02238D8C: ; 0x02238D8C
 	cmp r1, #0
 	ble _02238DAA
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2685,17 +2685,17 @@ ov70_02238D8C: ; 0x02238D8C
 	b _02238DB8
 _02238DAA:
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _02238DB8:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp]
 	cmp r5, #0
 	ble _02238DD4
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2703,12 +2703,12 @@ _02238DB8:
 	b _02238DE2
 _02238DD4:
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _02238DE2:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #4]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -19165,7 +19165,7 @@ ov70_022410F0: ; 0x022410F0
 	cmp r1, #0
 	ble _0224110E
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -19173,18 +19173,18 @@ ov70_022410F0: ; 0x022410F0
 	b _0224111C
 _0224110E:
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0224111C:
-	bl _ftoi
+	bl _ffix
 	sub r5, #8
 	str r0, [sp]
 	cmp r5, #0
 	ble _0224113A
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -19192,12 +19192,12 @@ _0224111C:
 	b _02241148
 _0224113A:
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _02241148:
-	bl _ftoi
+	bl _ffix
 	mov r1, #1
 	lsl r1, r1, #0x14
 	add r0, r0, r1

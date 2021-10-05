@@ -30289,7 +30289,7 @@ ov18_021F4E28: ; 0x021F4E28
 	lsl r0, r0, #0x14
 	lsl r1, r1, #0xc
 	bl FX_Div
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4EA8 ; =0x45800000
 	bl _fdiv
 	add r5, r0, #0
@@ -30347,14 +30347,14 @@ ov18_021F4EB0: ; 0x021F4EB0
 	ldrsh r7, [r0, r1]
 	add r4, r2, #0
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	mov r1, #0
 	bl _fgr
 	bls _021F4EF4
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -30367,7 +30367,7 @@ ov18_021F4EB0: ; 0x021F4EB0
 	b _021F4F10
 _021F4EF4:
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -30377,21 +30377,21 @@ _021F4EF4:
 	lsl r1, r1, #0x18
 	bl _fsub
 _021F4F10:
-	bl _ftoi
+	bl _ffix
 	add r7, r0, #0
 	add r0, r6, #1
 	lsl r1, r0, #1
 	ldr r0, _021F4F90 ; =0x021094DC
 	ldrsh r6, [r0, r1]
 	add r0, r6, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	mov r1, #0
 	bl _fgr
 	bls _021F4F52
 	add r0, r6, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -30404,7 +30404,7 @@ _021F4F10:
 	b _021F4F6E
 _021F4F52:
 	add r0, r6, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -30414,7 +30414,7 @@ _021F4F52:
 	lsl r1, r1, #0x18
 	bl _fsub
 _021F4F6E:
-	bl _ftoi
+	bl _ffix
 	mov r2, #0
 	ldrsh r1, [r5, r2]
 	mov r3, #0x38

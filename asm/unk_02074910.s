@@ -37906,12 +37906,12 @@ sub_020872DC: ; 0x020872DC
 	add r6, r3, #0
 	str r1, [sp]
 	str r1, [sp, #4]
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fsub
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl _itof
+	bl _fflt
 	add r1, r6, #0
 	bl _fsub
 	str r0, [sp, #0xc]
@@ -37947,9 +37947,9 @@ _02087344:
 	lsl r1, r1, #0x18
 	bl _fsub
 _02087352:
-	bl _ftoi
+	bl _ffix
 	bl FX_Sqrt
-	bl _itof
+	bl _fflt
 	ldr r1, _020873D0 ; =0x45800000
 	bl _fdiv
 	ldr r1, [sp, #0x30]
@@ -37959,7 +37959,7 @@ _02087352:
 	add r1, sp, #0x18
 	mov r0, #0x1c
 	ldrsh r0, [r1, r0]
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fgr
 	bhi _0208738A
@@ -38043,18 +38043,18 @@ _02087410:
 	add r2, sp, #0x48
 	bl sub_0200DF70
 	ldr r0, [sp, #0x4c]
-	bl _itof
+	bl _fflt
 	ldr r1, _02087638 ; =0x45800000
 	bl _fdiv
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x48]
-	bl _itof
+	bl _fflt
 	ldr r1, _02087638 ; =0x45800000
 	bl _fdiv
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x1c]
 	sub r0, r4, r0
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r7, #0
 	bl _fmul
@@ -38120,10 +38120,10 @@ _020874CA:
 	add r1, r7, #0
 	bl _fsub
 _020874D6:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x14]
-	bl _ftoi
+	bl _ffix
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	ldr r1, [sp, #0x28]
@@ -38161,7 +38161,7 @@ _020874FA:
 	cmp r0, #0
 	ble _0208753C
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r7, #0
 	bl _fadd
@@ -38169,7 +38169,7 @@ _020874FA:
 	b _0208754A
 _0208753C:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r7, #0
 	bl _fsub
 	str r0, [sp, #0x10]
@@ -38183,21 +38183,21 @@ _0208754A:
 	cmp r0, #0
 	ble _0208756A
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r7, #0
 	bl _fadd
 	b _02087576
 _0208756A:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r7, #0
 	bl _fsub
 _02087576:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x10]
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	ldr r0, [sp, #0x2c]
 	bl FX_Atan2Idx
@@ -51619,7 +51619,7 @@ sub_0208DFF8: ; 0x0208DFF8
 	add r6, r2, #0
 	sub r7, r1, r0
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51628,7 +51628,7 @@ sub_0208DFF8: ; 0x0208DFF8
 	bl _fgr
 	bls _0208E04C
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51640,11 +51640,11 @@ sub_0208DFF8: ; 0x0208DFF8
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
 	bl _fadd
-	bl _ftoi
+	bl _ffix
 	b _0208E072
 _0208E04C:
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51655,7 +51655,7 @@ _0208E04C:
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
-	bl _ftoi
+	bl _ffix
 _0208E072:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
@@ -51665,7 +51665,7 @@ _0208E072:
 	ldrsh r0, [r5, r0]
 	sub r7, r1, r0
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51674,7 +51674,7 @@ _0208E072:
 	bl _fgr
 	bls _0208E0C4
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51686,11 +51686,11 @@ _0208E072:
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
 	bl _fadd
-	bl _ftoi
+	bl _ffix
 	b _0208E0EA
 _0208E0C4:
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51701,7 +51701,7 @@ _0208E0C4:
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
-	bl _ftoi
+	bl _ffix
 _0208E0EA:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
@@ -51711,7 +51711,7 @@ _0208E0EA:
 	ldrsh r0, [r5, r0]
 	sub r4, r1, r0
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51720,7 +51720,7 @@ _0208E0EA:
 	bl _fgr
 	bls _0208E13C
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51732,11 +51732,11 @@ _0208E0EA:
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
 	bl _fadd
-	bl _ftoi
+	bl _ffix
 	b _0208E162
 _0208E13C:
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51747,7 +51747,7 @@ _0208E13C:
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
-	bl _ftoi
+	bl _ffix
 _0208E162:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10

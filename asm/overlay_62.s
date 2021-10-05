@@ -1521,7 +1521,7 @@ ov62_021E6480: ; 0x021E6480
 	cmp r5, #0
 	ble _021E64B6
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -1529,17 +1529,17 @@ ov62_021E6480: ; 0x021E6480
 	b _021E64C4
 _021E64B6:
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E64C4:
-	bl _ftoi
+	bl _ffix
 	str r0, [r4, #8]
 	cmp r6, #0
 	ble _021E64E0
 	lsl r0, r6, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -1547,12 +1547,12 @@ _021E64C4:
 	b _021E64EE
 _021E64E0:
 	lsl r0, r6, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E64EE:
-	bl _ftoi
+	bl _ffix
 	str r0, [r4, #0xc]
 	mov r0, #0
 	str r0, [r4, #0x10]

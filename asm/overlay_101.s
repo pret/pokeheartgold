@@ -2382,7 +2382,7 @@ _021E89AE:
 	cmp r7, #0
 	ble _021E89E2
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2390,12 +2390,12 @@ _021E89AE:
 	b _021E89F0
 _021E89E2:
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E89F0:
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	mov r0, #0x4e
 	lsl r0, r0, #2
@@ -4040,7 +4040,7 @@ _021E96AA:
 	cmp r0, #0
 	ble _021E971E
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -4048,12 +4048,12 @@ _021E96AA:
 	b _021E972C
 _021E971E:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E972C:
-	bl _ftoi
+	bl _ffix
 	add r1, r4, #0
 	add r1, #0xe8
 	str r0, [r1]
@@ -4063,7 +4063,7 @@ _021E972C:
 	cmp r0, #0
 	ble _021E9752
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -4071,12 +4071,12 @@ _021E972C:
 	b _021E9760
 _021E9752:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E9760:
-	bl _ftoi
+	bl _ffix
 	add r1, r4, #0
 	add r1, #0xec
 	str r0, [r1]
@@ -4085,7 +4085,7 @@ _021E9760:
 	cmp r0, #0
 	beq _021E9784
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -4093,7 +4093,7 @@ _021E9760:
 	b _021E9792
 _021E9784:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
@@ -4104,7 +4104,7 @@ _021E9792:
 	cmp r0, #0
 	ble _021E97AE
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -4112,15 +4112,15 @@ _021E9792:
 	b _021E97BC
 _021E97AE:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E97BC:
-	bl _ftoi
+	bl _ffix
 	add r6, r0, #0
 	add r0, r5, #0
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	add r0, r6, #0
 	bl FX_Div
@@ -4132,7 +4132,7 @@ _021E97BC:
 	cmp r0, #0
 	beq _021E97F0
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -4140,7 +4140,7 @@ _021E97BC:
 	b _021E97FE
 _021E97F0:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
@@ -4151,7 +4151,7 @@ _021E97FE:
 	cmp r0, #0
 	ble _021E981A
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -4159,15 +4159,15 @@ _021E97FE:
 	b _021E9828
 _021E981A:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E9828:
-	bl _ftoi
+	bl _ffix
 	add r6, r0, #0
 	add r0, r5, #0
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	add r0, r6, #0
 	bl FX_Div
@@ -4310,7 +4310,7 @@ _021E992E:
 	beq _021E9946
 	lsl r0, r7, #0xc
 	str r0, [sp, #0xc]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -4319,19 +4319,19 @@ _021E992E:
 _021E9946:
 	lsl r0, r7, #0xc
 	str r0, [sp, #0xc]
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E9956:
-	bl _ftoi
+	bl _ffix
 	add r1, r4, #0
 	add r1, #0xd0
 	str r0, [r1]
 	cmp r7, #0
 	beq _021E9976
 	ldr r0, [sp, #0xc]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -4339,12 +4339,12 @@ _021E9956:
 	b _021E9984
 _021E9976:
 	ldr r0, [sp, #0xc]
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E9984:
-	bl _ftoi
+	bl _ffix
 	add r1, r4, #0
 	add r1, #0xd4
 	str r0, [r1]
@@ -4511,7 +4511,7 @@ _021E9ABC:
 	cmp r7, #0
 	beq _021E9AE6
 	ldr r0, [sp, #0xc]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -4519,12 +4519,12 @@ _021E9ABC:
 	b _021E9AF4
 _021E9AE6:
 	ldr r0, [sp, #0xc]
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E9AF4:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x20]
 	str r0, [sp, #0x1c]
 	mov r0, #1
@@ -10155,7 +10155,7 @@ _021EC626:
 	cmp r0, #0
 	beq _021EC640
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r4, #0
 	bl _fadd
@@ -10163,7 +10163,7 @@ _021EC626:
 	b _021EC64E
 _021EC640:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fsub
 	str r0, [sp, #0x18]
@@ -10181,21 +10181,21 @@ _021EC64E:
 	cmp r0, #0
 	ble _021EC676
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r4, #0
 	bl _fadd
 	b _021EC682
 _021EC676:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fsub
 _021EC682:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x18]
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	ldr r0, [sp, #0x24]
 	bl FX_Div
@@ -10205,7 +10205,7 @@ _021EC682:
 	cmp r0, #0
 	beq _021EC6B2
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r4, #0
 	bl _fadd
@@ -10213,7 +10213,7 @@ _021EC682:
 	b _021EC6C0
 _021EC6B2:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fsub
 	str r0, [sp, #0x14]
@@ -10226,21 +10226,21 @@ _021EC6C0:
 	cmp r0, #0
 	ble _021EC6DE
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r4, #0
 	bl _fadd
 	b _021EC6EA
 _021EC6DE:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fsub
 _021EC6EA:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x14]
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	ldr r0, [sp, #0x28]
 	bl FX_Div
@@ -10253,35 +10253,35 @@ _021EC6EA:
 	cmp r0, #0
 	ble _021EC71E
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r4, #0
 	bl _fadd
 	b _021EC72A
 _021EC71E:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fsub
 _021EC72A:
-	bl _ftoi
+	bl _ffix
 	str r0, [r5, #0x10]
 	ldr r0, [sp, #0x20]
 	cmp r0, #0
 	ble _021EC746
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r4, #0
 	bl _fadd
 	b _021EC752
 _021EC746:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fsub
 _021EC752:
-	bl _ftoi
+	bl _ffix
 	str r0, [r5, #0x14]
 	add r0, r7, #1
 	lsl r0, r0, #0x10
@@ -14071,7 +14071,7 @@ _021EE4E6:
 	cmp r7, #0
 	ble _021EE51A
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -14079,12 +14079,12 @@ _021EE4E6:
 	b _021EE528
 _021EE51A:
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021EE528:
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	mov r0, #0x4e
 	lsl r0, r0, #2

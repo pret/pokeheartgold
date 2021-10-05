@@ -1088,14 +1088,14 @@ _0221C6B0:
 	ldr r1, [sp, #8]
 	bl sub_0200DDB8
 	add r0, r6, #0
-	bl _utof
+	bl _ffltu
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #8]
 	bl _fsub
 	add r6, r0, #0
 	ldr r0, [sp, #4]
-	bl _utof
+	bl _ffltu
 	add r1, r0, #0
 	add r0, r6, #0
 	bl _fdiv

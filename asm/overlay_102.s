@@ -7572,7 +7572,7 @@ _021EB032:
 	cmp r0, #0
 	ble _021EB058
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -7580,12 +7580,12 @@ _021EB032:
 	b _021EB066
 _021EB058:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021EB066:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #8]
 	add r0, r1, r0
 	str r0, [sp, #8]

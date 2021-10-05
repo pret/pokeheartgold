@@ -755,7 +755,7 @@ _02260188:
 	bge _022601A2
 	add r0, r1, #0
 _022601A2:
-	bl _itof
+	bl _fflt
 	ldr r1, _02260274 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -782,7 +782,7 @@ _022601B8:
 	bge _022601DC
 	add r0, r1, #0
 _022601DC:
-	bl _itof
+	bl _fflt
 	ldr r1, _02260274 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -3549,7 +3549,7 @@ _022616A0:
 	mov r1, #1
 	lsl r1, r1, #0xc
 	sub r0, r1, r0
-	bl _itof
+	bl _fflt
 	ldr r1, _02261740 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -3698,7 +3698,7 @@ _0226177C:
 	mov r1, #1
 	lsl r1, r1, #0xc
 	sub r0, r1, r0
-	bl _itof
+	bl _fflt
 	ldr r1, _022618C0 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0

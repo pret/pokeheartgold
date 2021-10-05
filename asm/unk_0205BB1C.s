@@ -555,7 +555,7 @@ sub_0205BED8: ; 0x0205BED8
 	cmp r0, #0
 	beq _0205BF12
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -563,19 +563,19 @@ sub_0205BED8: ; 0x0205BED8
 	b _0205BF20
 _0205BF12:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0205BF20:
-	bl _ftoi
+	bl _ffix
 	str r0, [r4, #4]
 	add r0, sp, #8
 	ldrh r0, [r0, #0x14]
 	cmp r0, #0
 	beq _0205BF40
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -583,12 +583,12 @@ _0205BF20:
 	b _0205BF4E
 _0205BF40:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0205BF4E:
-	bl _ftoi
+	bl _ffix
 	str r0, [r4, #8]
 	strh r6, [r4, #0xc]
 	strh r7, [r4, #0x10]

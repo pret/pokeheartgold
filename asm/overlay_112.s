@@ -1022,7 +1022,7 @@ ov112_021E6004: ; 0x021E6004
 	ldr r2, _021E6118 ; =0x000082EA
 	mov r3, #0
 	bl _ll_udiv
-	bl _ulltof
+	bl _f_ulltof
 	ldr r1, _021E611C ; =0x447A0000
 	bl _fdiv
 	ldr r0, _021E6120 ; =0x021FFB24
@@ -1193,7 +1193,7 @@ ov112_021E6164: ; 0x021E6164
 	ldr r2, _021E64CC ; =0x000082EA
 	mov r3, #0
 	bl _ll_udiv
-	bl _ulltof
+	bl _f_ulltof
 	ldr r1, _021E64D0 ; =0x447A0000
 	bl _fdiv
 	ldr r1, _021E64D4 ; =0x021FFB24
