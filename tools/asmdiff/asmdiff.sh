@@ -126,7 +126,7 @@ basefile=${MYDIR}/.bins/${baserom}${basestem}.sbin
   [[ -f $basefile ]] || {
     dd if="$baserom" of="$basefile" bs=1 skip="$fileoff" count="$size" 2>/dev/null
     [[ $proc == armv5te ]] && {
-      _start_ModuleParams=$(python $MYDIR/find_module_params.py ${basefile})
+      _start_ModuleParams=$(getword "$baserom" $((fileoff+size+4)))
       compstatend=$(getword "$basefile" $((_start_ModuleParams+20)))
       [[ $compstatend != "0" ]] && {
         $MYDIR/ntruncompbw $basefile $vma $compstatend || { rm -f $basefile; exit 1; }

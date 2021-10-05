@@ -269,218 +269,218 @@ _0225F020:
 	.text
 	arm_func_start ov123_0225F430
 ov123_0225F430:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA000756
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA00076D
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
-	.word 0x02260C01
-	.word 0x02261FAC
-	.word 0x022689B2
-	.word 0x02260320
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F4A4
+	.word 0x12D95506 ; adr r3, _0225F498
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F49C
+	.word 0x15C9651A ; ldr r0, _0225F4A0
+	.word 0xEA000756 ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F4A4
+	.word 0x15C94576 ; ldr r2, _0225F49C
+	.word 0x15C96576 ; ldr r0, _0225F4A0
+	.word 0xEA00076D ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F4A0
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F498
+	.word 0x15D99556 ; str pc, _0225F498
+	.word 0x11799A48 ; bx lr
+_0225F498: .word 0x02260C01
+_0225F49C: .word 0x02261FAC
+_0225F4A0: .word 0x022689B2
+_0225F4A4: .word 0x02260320
 	arm_func_end ov123_0225F430
 
 	.text
 	arm_func_start ov123_0225F4A8
 ov123_0225F4A8:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA000738
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA00074F
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
-	.word 0x02260C01
-	.word 0x02261FAC
-	.word 0x022689B2
-	.word 0x022603D8
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F51C
+	.word 0x12D95506 ; adr r3, _0225F510
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F514
+	.word 0x15C9651A ; ldr r0, _0225F518
+	.word 0xEA000738 ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F51C
+	.word 0x15C94576 ; ldr r2, _0225F514
+	.word 0x15C96576 ; ldr r0, _0225F518
+	.word 0xEA00074F ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F518
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F510
+	.word 0x15D99556 ; str pc, _0225F510
+	.word 0x11799A48 ; bx lr
+_0225F510:	.word 0x02260C01
+_0225F514:	.word 0x02261FAC
+_0225F518:	.word 0x022689B2
+_0225F51C:	.word 0x022603D8
 	arm_func_end ov123_0225F4A8
 
 	.text
 	arm_func_start ov123_0225F520
 ov123_0225F520:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA00071A
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA000731
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
-	.word 0x02260C01
-	.word 0x02261FAC
-	.word 0x022689B2
-	.word 0x02260490
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F594
+	.word 0x12D95506 ; adr r3, _0225F588
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F58C
+	.word 0x15C9651A ; ldr r0, _0225F590
+	.word 0xEA00071A ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F594
+	.word 0x15C94576 ; ldr r2, _0225F58C
+	.word 0x15C96576 ; ldr r0, _0225F590
+	.word 0xEA000731 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F590
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F588
+	.word 0x15D99556 ; str pc, _0225F588
+	.word 0x11799A48 ; bx lr
+_0225F588:	.word 0x02260C01
+_0225F58C:	.word 0x02261FAC
+_0225F590:	.word 0x022689B2
+_0225F594:	.word 0x02260490
 	arm_func_end ov123_0225F520
 
 	.text
 	arm_func_start ov123_0225F598
 ov123_0225F598:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA0006FC
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA000713
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
-	.word 0x02260C01
-	.word 0x02261FAC
-	.word 0x022689B2
-	.word 0x02260548
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F60C
+	.word 0x12D95506 ; adr r3, _0225F600
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F604
+	.word 0x15C9651A ; ldr r0, _0225F608
+	.word 0xEA0006FC ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F60C
+	.word 0x15C94576 ; ldr r2, _0225F604
+	.word 0x15C96576 ; ldr r0, _0225F608
+	.word 0xEA000713 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F608
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F600
+	.word 0x15D99556 ; str pc, _0225F600
+	.word 0x11799A48 ; bx lr
+_0225F600:	.word 0x02260C01
+_0225F604:	.word 0x02261FAC
+_0225F608:	.word 0x022689B2
+_0225F60C:	.word 0x02260548
 	arm_func_end ov123_0225F598
 
 	.text
 	arm_func_start ov123_0225F610
 ov123_0225F610:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA0006DE
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA0006F5
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
-	.word 0x02260C01
-	.word 0x02261F94
-	.word 0x022689B2
-	.word 0x02260600
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F684
+	.word 0x12D95506 ; adr r3, _0225F678
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F67C
+	.word 0x15C9651A ; ldr r0, _0225F680
+	.word 0xEA0006DE ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F684
+	.word 0x15C94576 ; ldr r2, _0225F67C
+	.word 0x15C96576 ; ldr r0, _0225F680
+	.word 0xEA0006F5 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F680
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F678
+	.word 0x15D99556 ; str pc, _0225F678
+	.word 0x11799A48 ; bx lr
+_0225F678:	.word 0x02260C01
+_0225F67C:	.word 0x02261F94
+_0225F680:	.word 0x022689B2
+_0225F684:	.word 0x02260600
 	arm_func_end ov123_0225F610
 
 	.text
 	arm_func_start ov123_0225F688
 ov123_0225F688:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA0006C0
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA0006D7
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
-	.word 0x02260C01
-	.word 0x02261F94
-	.word 0x022689B2
-	.word 0x02260698
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA0006C0 ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA0006D7 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
+_0225F6F0:	.word 0x02260C01
+_0225F6F4:	.word 0x02261F94
+_0225F6F8:	.word 0x022689B2
+_0225F6FC:	.word 0x02260698
 	arm_func_end ov123_0225F688
 
 	.text
 	arm_func_start ov123_0225F700
 ov123_0225F700: ; 0x0225F700
 	stmdb sp!, {lr}
-	add r0, pc, #0x4 ; =_0225F710
+	adr r0, _0225F710
 	bl ov123_0225FD98
 	ldmia sp!, {pc}
 _0225F710:
@@ -745,32 +745,32 @@ _0225F748:
 	.text
 	arm_func_start ov123_0225FB24
 ov123_0225FB24:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA000599
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA0005B0
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA000599 ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA0005B0 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
 	.word 0x02260C01
 	.word 0x02261FD4
 	.word 0x0226B685
@@ -780,32 +780,32 @@ ov123_0225FB24:
 	.text
 	arm_func_start ov123_0225FB9C
 ov123_0225FB9C:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA00057B
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA000592
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA00057B ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA000592 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
 	.word 0x02260C01
 	.word 0x02262010
 	.word 0x0226B685
@@ -815,32 +815,32 @@ ov123_0225FB9C:
 	.text
 	arm_func_start ov123_0225FC14
 ov123_0225FC14:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA00055D
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA000574
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA00055D ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA000574 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
 	.word 0x02260C01
 	.word 0x02261FD4
 	.word 0x0226B685
@@ -850,32 +850,32 @@ ov123_0225FC14:
 	.text
 	arm_func_start ov123_0225FC8C
 ov123_0225FC8C:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA00053F
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA000556
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA00053F ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA000556 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
 	.word 0x02260C01
 	.word 0x02262010
 	.word 0x0226B685
@@ -886,7 +886,7 @@ ov123_0225FC8C:
 	arm_func_start ov123_0225FD04
 ov123_0225FD04: ; 0x0225FD04
 	stmdb sp!, {lr}
-	add r0, pc, #0x4 ; =_0225FD14
+	adr r0, _0225FD14
 	bl ov123_0225FD98
 	ldmia sp!, {pc}
 _0225FD14:
@@ -1013,42 +1013,43 @@ _0225FEA4: .word 0xFFFFFB3E
 	arm_func_end ov123_0225FD98
 
 	.text
+	; Yet another layer of obfuscation
 	arm_func_start ov123_0225FEA8
 ov123_0225FEA8:
-	.word 0x197B25AE
-	.word 0x121BB546
-	.word 0x15C95522
-	.word 0x11F63557
-	.word 0x12D57945
-	.word 0x10160557
-	.word 0x11F62554
-	.word 0x10122557
-	.word 0x11F64970
-	.word 0x11F66170
-	.word 0x11D66950
-	.word 0x1072A556
-	.word 0x10701552
-	.word 0x11F67D70
-	.word 0x11D45150
-	.word 0x11D74D50
-	.word 0x10720555
-	.word 0x10728554
-	.word 0x12137945
-	.word 0x12DB6556
-	.word 0x11F64557
-	.word 0x11F65552
-	.word 0x15DB1556
-	.word 0x15DB0552
-	.word 0x15DB855E
-	.word 0x15DBA55A
-	.word 0xEA0007C1
-	.word 0x11F67552
-	.word 0x12136945
-	.word 0xEA000448
-	.word 0x12136945
-	.word 0x12DBB546
-	.word 0x18EBE5AE
-	.word 0x02260C00
+	.word 0x197B25AE ; stmdb sp!, {r3-r7, lr}
+	.word 0x121BB546 ; sub sp, sp, #0x10
+	.word 0x15C95522 ; ldr r3, _0225FF2C
+	.word 0x11F63557 ; mov r5, r1
+	.word 0x12D57945 ; add r1, r3, #0x1300
+	.word 0x10160557 ; sub r6, r0, r1
+	.word 0x11F62554 ; mov r4, r2
+	.word 0x10122557 ; sub r4, r4, r1
+	.word 0x11F64970 ; lsr r2, r6, #0x18
+	.word 0x11F66170 ; lsr r0, r6, #0x8
+	.word 0x11D66950 ; orr r0, r0, r6, lsl #0x18
+	.word 0x1072A556 ; eor ip, r4, r0
+	.word 0x10701552 ; eor r7, r6, r4
+	.word 0x11F67D70 ; lsr r1, r6, #0x10
+	.word 0x11D45150 ; orr r3, r2, r6, lsl #0x8
+	.word 0x11D74D50 ; orr r2, r1, r6, lsl #0x10
+	.word 0x10720555 ; eor r6, r4, r3
+	.word 0x10728554 ; eor lr, r4, r2
+	.word 0x12137945 ; sub r1, r5, #0x1300
+	.word 0x12DB6556 ; add r0, sp, #0
+	.word 0x11F64557 ; mov r2, r1
+	.word 0x11F65552 ; mov r3, r4
+	.word 0x15DB1556 ; str r7, [sp]
+	.word 0x15DB0552 ; str r6, [sp, #4]
+	.word 0x15DB855E ; str lr, [sp, #8]
+	.word 0x15DBA55A ; str ip, [sp, #12]
+	.word 0xEA0007C1 ; bl ov123_02260B14
+	.word 0x11F67552 ; mov r1, r4
+	.word 0x12136945 ; sub r0, r5, #0x1300
+	.word 0xEA000448 ; bl ov123_0225FD3C
+	.word 0x12136945 ; sub r0, r5, #0x1300
+	.word 0x12DBB546 ; add sp, sp, #0x10
+	.word 0x18EBE5AE ; ldmfd sp!, {r3-r7, pc}
+_0225FF2C: .word _02260C00
 	arm_func_end ov123_0225FEA8
 
 	.text
@@ -1096,7 +1097,7 @@ ov123_0225FF30:
 	arm_func_start ov123_0225FFC0
 ov123_0225FFC0: ; 0x0225FFC0
 	stmdb sp!, {lr}
-	add r0, pc, #0x4 ; =_0225FFD0
+	adr r0, _0225FFD0
 	bl ov123_0225FD98
 	ldmia sp!, {pc}
 _0225FFD0:
@@ -1197,32 +1198,32 @@ _0225FFE8:
 	.text
 	arm_func_start ov123_02260148
 ov123_02260148:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA000410
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA000427
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA000410 ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA000427 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
 	.word 0x02260C01
 	.word 0x02261FAC
 	.word 0x02262882
@@ -1232,32 +1233,32 @@ ov123_02260148:
 	.text
 	arm_func_start ov123_022601C0
 ov123_022601C0:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA0003F2
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA000409
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA0003F2 ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA000409 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
 	.word 0x02260C01
 	.word 0x02261FAC
 	.word 0x02262882
@@ -1320,6 +1321,8 @@ ov123_022601C0:
 	.word 0xE1A129BB
 	.word 0xE5C0623D
 	.word 0xE5C00856
+
+ov123_03360320:
 	.word 0xE5C03FFF
 	.word 0xE5C01A70
 	.word 0xE5C01952
@@ -1386,32 +1389,32 @@ ov123_022601C0:
 	.text
 	arm_func_start ov123_02260414
 ov123_02260414:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA00035D
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA000374
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA00035D ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA000374 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
 	.word 0x02260C01
 	.word 0x0226207C
 	.word 0x02262882
@@ -1421,32 +1424,32 @@ ov123_02260414:
 	.text
 	arm_func_start ov123_0226048C
 ov123_0226048C:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA00033F
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA000356
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA00033F ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA000356 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
 	.word 0x02260C01
 	.word 0x02261F54
 	.word 0x02262882
@@ -1554,32 +1557,32 @@ ov123_0226048C:
 	.text
 	arm_func_start ov123_0226068C
 ov123_0226068C:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA0002BF
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA0002D6
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA0002BF ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA0002D6 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
 	.word 0x02260C01
 	.word 0x02261FC4
 	.word 0x02262882
@@ -1589,32 +1592,32 @@ ov123_0226068C:
 	.text
 	arm_func_start ov123_02260704
 ov123_02260704:
-	.word 0x197B65A6
-	.word 0x197B6559
-	.word 0x18EB65A6
-	.word 0x15C97536
-	.word 0x12D95506
-	.word 0x15D58556
-	.word 0x15C9451A
-	.word 0x15C9651A
-	.word 0xEA0002A1
-	.word 0x11F6A556
-	.word 0x197B65A6
-	.word 0x18EB6559
-	.word 0x18EB65A6
-	.word 0x11799A6A
-	.word 0x197B6546
-	.word 0x11F62556
-	.word 0x15C9757A
-	.word 0x15C94576
-	.word 0x15C96576
-	.word 0xEA0002B8
-	.word 0x15D9654E
-	.word 0x11F66552
-	.word 0x18EB6546
-	.word 0x15C98552
-	.word 0x15D99556
-	.word 0x11799A48
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x197B6559 ; stmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x15C97536 ; ldr r1, _0225F6FC
+	.word 0x12D95506 ; adr r3, _0225F6F0
+	.word 0x15D58556 ; str lr, [r3]
+	.word 0x15C9451A ; ldr r2, _0225F6F4
+	.word 0x15C9651A ; ldr r0, _0225F6F8
+	.word 0xEA0002A1 ; bl ov123_0225FEA8
+	.word 0x11F6A556 ; mov ip, r0
+	.word 0x197B65A6 ; stmfd sp!, {r4-r7}
+	.word 0x18EB6559 ; ldmfd sp!, {r0-r3}
+	.word 0x18EB65A6 ; ldmfd sp!, {r4-r7}
+	.word 0x11799A6A ; blx ip
+	.word 0x197B6546 ; stmfd sp!, {r4}
+	.word 0x11F62556 ; mov r4, r0
+	.word 0x15C9757A ; ldr r1, _0225F6FC
+	.word 0x15C94576 ; ldr r2, _0225F6F4
+	.word 0x15C96576 ; ldr r0, _0225F6F8
+	.word 0xEA0002B8 ; bl ov123_0225FF30
+	.word 0x15D9654E ; str r0, _0225F6F8
+	.word 0x11F66552 ; mov r0, r4
+	.word 0x18EB6546 ; ldmfd sp!, {r4}
+	.word 0x15C98552 ; ldr lr, _0225F6F0
+	.word 0x15D99556 ; str pc, _0225F6F0
+	.word 0x11799A48 ; bx lr
 	.word 0x02260C01
 	.word 0x02261FC4
 	.word 0x02262882
@@ -1625,7 +1628,7 @@ ov123_02260704:
 	arm_func_start ov123_0226077C
 ov123_0226077C: ; 0x0226077C
 	stmdb sp!, {lr}
-	add r0, pc, #0x4 ; =_0226078C
+	adr r0, _0226078C
 	bl ov123_0225FD98
 	ldmia sp!, {pc}
 _0226078C:
@@ -1641,78 +1644,81 @@ _0226078C:
 	.text
 	arm_func_start ov123_022607C4
 ov123_022607C4:
-	.word 0x197B24A6
-	.word 0x13F60556
-	.word 0x15D60556
-	.word 0x11F61550
-	.word 0x11F62550
-	.word 0x15D60552
-	.word 0x10D65552
-	.word 0x1595255E
-	.word 0x12D22557
-	.word 0x13026957
-	.word 0xBB0012FA
-	.word 0x13F6E5A9
-	.word 0x13F65556
-	.word 0x1787A550
-	.word 0x10D6355E
-	.word 0x1583255E
-	.word 0x10D1A55A
-	.word 0x12D00557
-	.word 0x10D2A55A
-	.word 0x125A15A9
-	.word 0x10D68551
-	.word 0x1588A55E
-	.word 0x11006554
-	.word 0xD1F60555
-	.word 0x1598255E
-	.word 0x1593A55E
-	.word 0x120EE557
-	.word 0x5B0012F0
-	.word 0x18EBE4A6
+	.word 0x197B24A6 ; stmfd sp!, {r4-r8, lr}
+	.word 0x13F60556 ; mov r6, #0
+	.word 0x15D60556 ; str r6, [r0]
+	.word 0x11F61550 ; mov r7, r6
+	.word 0x11F62550 ; mov r4, r6
+	.word 0x15D60552 ; str r6, [r0, #4]
+_022607DC:
+	.word 0x10D65552 ; add r3, r0, r4
+	.word 0x1595255E ; strb r4, [r3, #8]
+	.word 0x12D22557 ; add r4, r4, #1
+	.word 0x13026957 ; cmp r4, #0x100
+	.word 0xBB0012FA ; blt _022607DC
+	.word 0x13F6E5A9 ; mov r8, #0xFF
+	.word 0x13F65556 ; mov r3, #0
+_022607F8:
+	.word 0x1787A550 ; ldrb ip, [r1, r6]
+	.word 0x10D6355E ; add r5, r0, r8
+	.word 0x1583255E ; ldrb r4, [r5, #8]
+	.word 0x10D1A55A ; add ip, r7, ip
+	.word 0x12D00557 ; add r6, r6, 1
+	.word 0x10D2A55A ; add ip, r4, ip
+	.word 0x125A15A9 ; and r7, ip, #0xFF
+	.word 0x10D68551 ; add lr, r0, r7
+	.word 0x1588A55E ; ldrb ip, [lr, #8]
+	.word 0x11006554 ; cmp r6, r2
+	.word 0xD1F60555 ; movcs r6, r3
+	.word 0x1598255E ; strb r4, [lr, #8]
+	.word 0x1593A55E ; strb ip, [r5, #8]
+	.word 0x120EE557 ; subs r8, r8, #1
+	.word 0x5B0012F0 ; bpl _022607F8
+	.word 0x18EBE4A6 ; ldmfd sp!, {r4-r8, pc}
 	arm_func_end ov123_022607C4
 
 	.text
 	arm_func_start ov123_02260838
 ov123_02260838:
-	.word 0x197B2546
-	.word 0x15C67556
-	.word 0x12D6855E
-	.word 0x12D77557
-	.word 0x125725A9
-	.word 0x1788A552
-	.word 0x15C67552
-	.word 0x10DA7557
-	.word 0x125755A9
-	.word 0x17884555
-	.word 0x15D62556
-	.word 0x15D65552
-	.word 0x10DA7554
-	.word 0x1798A555
-	.word 0x125775A9
-	.word 0x17984552
-	.word 0x10D66557
-	.word 0x1586655E
-	.word 0x18EBE546
+	.word 0x197B2546 ; stmfd sp!, {r4, lr}
+	.word 0x15C67556 ; ldr r1, [r0]
+	.word 0x12D6855E ; add lr, r0, #8
+	.word 0x12D77557 ; add r1, r1, #1
+	.word 0x125725A9 ; and r4, r1, #0xFF
+	.word 0x1788A552 ; ldrb ip, [lr, r4]
+	.word 0x15C67552 ; ldr r1, [r0, #4]
+	.word 0x10DA7557 ; add r1, ip, r1
+	.word 0x125755A9 ; and r3, r1, #0xFF
+	.word 0x17884555 ; ldrb r2, [lr, r3]
+	.word 0x15D62556 ; str r4, [r0]
+	.word 0x15D65552 ; str r3, [r0, #4]
+	.word 0x10DA7554 ; add r1, ip, r2
+	.word 0x1798A555 ; strb ip, [lr, r3]
+	.word 0x125775A9 ; and r1, r1, #0xFF
+	.word 0x17984552 ; strb r2, [lr, r4]
+	.word 0x10D66557 ; add r0, r0, r1
+	.word 0x1586655E ; ldrb r0, [r0, #8]
+	.word 0x18EBE546 ; ldmfd sp!, {r4, pc}
 	arm_func_end ov123_02260838
 
 	.text
 	arm_func_start ov123_02260884
 ov123_02260884:
-	.word 0x13F64556
-	.word 0x125475A9
-	.word 0x12777557
-	.word 0x17967554
-	.word 0x12D44557
-	.word 0x13046957
-	.word 0xBB0012F9
-	.word 0x13F66556
+	.word 0x13F64556 ; mov r2, #0
+_02260888:
+	.word 0x125475A9 ; and r1, r2, #0xFF
+	.word 0x12777557 ; eor r1, r1, #1
+	.word 0x17967554 ; strb r1, [r0, r2]
+	.word 0x12D44557 ; add r2, r2, #1
+	.word 0x13046957 ; cmp r2, #0x100
+	.word 0xBB0012F9 ; blt _02260888
+	.word 0x13F66556 ; mov r0, #0
+	.word 0x11799A48 ; bx lr
 	arm_func_end ov123_02260884
 
 	.text
 	arm_func_start ov123_022608A8
 ov123_022608A8:
-	.word 0x11799A48
 	.word 0x197B2AAE
 	.word 0x121BB957
 	.word 0x11F61555
@@ -1911,7 +1917,7 @@ ov123_02260B14:
 	arm_func_start ov123_02260B6C
 ov123_02260B6C: ; 0x02260B6C
 	stmdb sp!, {lr}
-	add r0, pc, #0x4 ; =_02260B7C
+	adr r0, _02260B7C
 	bl ov123_0225FD98
 	ldmia sp!, {pc}
 _02260B7C:
