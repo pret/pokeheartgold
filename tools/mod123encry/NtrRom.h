@@ -83,6 +83,14 @@ struct FNT {
     char *paths;
 };
 
+class NtrOverlay {
+protected:
+    FSOverlayInfo info;
+    std::vector<u8> data;
+public:
+    NtrOverlay(FSOverlayInfo &_info, std::vector<u8> &_data) : info(_info), data(_data) {}
+};
+
 class NtrRom {
     std::ifstream handle;
     u8 * raw;
@@ -109,14 +117,12 @@ public:
     NtrRom(const char * filename, std::ios::openmode mode = std::ios::in);
     ~NtrRom();
     const RomHeader * getHeader() { return (const RomHeader *)(raw + 0); }
-    std::vector<u8> getOverlay(u32 proc, u32 ovy_id) {
+    NtrOverlay getOverlay(u32 proc, u32 ovy_id) {
         std::vector<FSOverlayInfo> &ovyi = (proc == 0) ? arm9_ovt : arm7_ovt;
-        u8 *& data = ((proc == 0) ? arm9_ovy : arm7_ovy)[ovy_id];
-        return std::vector<u8>(data, data + ovyi[ovy_id].size);
-    }
-    FSOverlayInfo &getOverlayInfo(u32 proc, u32 ovy_id) {
-        std::vector<FSOverlayInfo> &ovyi = (proc == 0) ? arm9_ovt : arm7_ovt;
-        return ovyi[ovy_id];
+        u8 *& data_raw = ((proc == 0) ? arm9_ovy : arm7_ovy)[ovy_id];
+        FSOverlayInfo &info = ovyi[ovy_id];
+        std::vector<u8> data(data_raw, data_raw + info.size);
+        return {info, data};
     }
 };
 

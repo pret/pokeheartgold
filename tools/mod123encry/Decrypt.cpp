@@ -1,6 +1,20 @@
+#include <cstring>
 #include "Decrypt.h"
 
-static u32 FindDecryLvl2(std::vector<u8>& data, u32 offset) {
+static int GetInsnType(u32 value) {
+    u8 highByte = (value >> 24) & 0xFF;
+    if ((highByte & 0xE) == 0xA) {
+        if ((highByte & 0xF0) == 0xF0)
+            return 1;
+        else if (highByte & 1)
+            return 2;
+        else
+            return 3;
+    }
+    return 0;
+}
+
+u32 Decryptor::FindDecryLvl2(u32 offset) {
     offset = (offset + 3) & ~3; // round up
     static const u8 pattern1[] = {
         0xf0, 0x00, 0x2d, 0xe9, 0x0f, 0x00, 0x2d, 0xe9, 0xf0, 0x00, 0xbd, 0xe8, 0x60, 0x10, 0x9f, 0xe5,
@@ -26,36 +40,62 @@ static u32 FindDecryLvl2(std::vector<u8>& data, u32 offset) {
     return data.size();
 }
 
-static u32 DoDecryptLvl2(std::vector<u8>& data, u32 tableOffset, FSOverlayInfo &ovyi) {
+void DecryptPart2::DoDecrypt(u32 *start, u32 *end) {
+    // assert (!(size & 3));
+    u8 buffer[256];
+    for (int i = 0; i < 256; i++) {
+        buffer[i] = i ^ 1;
+    }
+    for (; start < end; start++) {
+        u32 &word = (u32 &)*start;
+        switch (GetInsnType(word)) {
+        case 1:
+        case 2:
+            word = (((word & ~0xFF000000) - 0x1300) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
+            break;
+        case 3:
+            word = (((word & ~0xFF000000) - 0x4C2) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
+            break;
+        default:
+            break;
+        }
+    }
+}
+
+u32 Decryptor::DoDecryptLvl2(u32 tableOffset) {
+    u32 *pool = (u32 *)&data[tableOffset + 104];
+    // ov123_0225FEA8(pool[2], pool[3], pool[1]);
+    u32 param = pool[2] - (info.start + info.size + 0x1300);
+    u32 start = pool[3] - 0x1300;
+    u32 end = pool[1] - (info.start + info.size + 0x1300);
+    u32 keys[4] = {
+        end ^ param,
+        end ^ ((param << 8) | (param >> 24)),
+        end ^ ((param << 16) | (param >> 16)),
+        end ^ ((param << 24) | (param >> 8)),
+    };
+    DecryptPart2 buffer((const u8 *)keys);
+    buffer.DoDecrypt((u32 *)&data[start - info.start], (u32 *)&data[end - info.start]);
+
+    // ov123_02260B14(keys, start, start, end);
+    // ov123_022607C4(buffer, keys, 16);
+    // return ov123_022609B0(buffer, start, start, end) == -1 ? 0 : -1;
     return tableOffset + 120;
 }
 
-static void DecryptLvl2(std::vector<u8>& ovydat, FSOverlayInfo& ovyi) {
+void Decryptor::DecryptLvl2() {
     u32 i = 0;
-    while ((i = FindDecryLvl2(ovydat, i)) != ovydat.size()) {
-        i = DoDecryptLvl2(ovydat, i, ovyi);
+    while ((i = FindDecryLvl2(i)) != data.size()) {
+        i = DoDecryptLvl2(i);
     }
 }
 
-static int GetInsnType(u32 value) {
-    u8 highByte = (value >> 24) & 0xFF;
-    if ((highByte & 0xE) == 0xA) {
-        if ((highByte & 0xF0) == 0xF0)
-            return 1;
-        else if (highByte & 1)
-            return 2;
-        else
-            return 3;
-    }
-    return 0;
-}
-
-static u32 DoDecryptLvl1(std::vector<u8>& data, u32 tableOffset, FSOverlayInfo &ovyi) {
+u32 Decryptor::DoDecryptLvl1(u32 tableOffset) {
     FATEntry *table;
     FATEntry *table_start = (FATEntry *)(&data[tableOffset]);
     for (table = table_start; table->start != 0 && table->end != 0; table++) {
-        u32 start_offs = table->start - ovyi.start - 0x1300;
-        u32 size = (table->end - (ovyi.start + ovyi.size) - 0x1300) & ~3;
+        u32 start_offs = table->start - info.start - 0x1300;
+        u32 size = (table->end - (info.start + info.size) - 0x1300) & ~3;
         for (int i = start_offs; i < start_offs + size; i += 4) {
             u32 & word = (u32 &)data[i];
             switch (GetInsnType(word)) {
@@ -76,19 +116,27 @@ static u32 DoDecryptLvl1(std::vector<u8>& data, u32 tableOffset, FSOverlayInfo &
     return (u8 *)table - (u8 *)table_start + tableOffset + sizeof(*table);
 }
 
-static void DecryptLvl1(std::vector<u8> &ovydat, FSOverlayInfo &ovyi) {
-    for (int i = ovyi.sinit_start; i != ovyi.sinit_end; i += 4) {
-        if (*(u32 *)&ovydat[i - ovyi.start] != 0) {
-            (void)DoDecryptLvl1(ovydat, *(u32 *)&ovydat[i - ovyi.start] - ovyi.start + 16, ovyi);
+void Decryptor::DecryptLvl1() {
+    for (int i = info.sinit_start; i != info.sinit_end; i += 4) {
+        if (*(u32 *)&data[i - info.start] != 0) {
+            (void)DoDecryptLvl1(*(u32 *)&data[i - info.start] - info.start + 16);
         }
     }
 }
 
+void Decryptor::Decrypt() {
+    DecryptLvl1();
+    DecryptLvl2();
+}
+
+void Decryptor::Write(std::ofstream &outfile) {
+    outfile.write((char *)data.data(), data.size());
+}
+
 int DecryptOptions::main() {
-    std::vector<u8> ovydat = baserom->getOverlay(0, ovy_id);
-    FSOverlayInfo &ovyi = baserom->getOverlayInfo(0, ovy_id);
-    DecryptLvl1(ovydat, ovyi);
-    DecryptLvl2(ovydat, ovyi);
-    outfile.write((char *)ovydat.data(), ovydat.size());
+    NtrOverlay foo = baserom->getOverlay(0, ovy_id);
+    Decryptor overlay = *(Decryptor *)&foo;
+    overlay.Decrypt();
+    overlay.Write(outfile);
     return 0;
 }
