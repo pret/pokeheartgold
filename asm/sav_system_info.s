@@ -167,7 +167,7 @@ Sav2_SysInfo_RTC_init: ; 0x02028DE8
 	add r1, #0x14
 	bl GF_RTC_CopyDateTime
 	add r0, r4, #4
-	bl sub_020DC284
+	bl RTC_ConvertDateToDay
 	add r1, r4, #0
 	str r0, [r4, #0x20]
 	add r0, r4, #4
@@ -230,7 +230,7 @@ sub_02028E4C: ; 0x02028E4C
 	add r1, #0x14
 	bl GF_RTC_CopyDateTime
 	add r0, r4, #4
-	bl sub_020DC284
+	bl RTC_ConvertDateToDay
 	str r0, [r4, #0x20]
 	pop {r4, pc}
 	.balign 4, 0

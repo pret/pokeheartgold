@@ -8,6 +8,7 @@
 Static main
 {
 	Address 0x02000000
+	StackSize 0 2048
 	Object pm_version.o
 	Object main.o
 	Object list_menu.o
@@ -215,26 +216,96 @@ Static main
 	Object unk_02074120.o
 	Object party.o
 	Object unk_02074910.o
+
+	### RAM not yet assigned ###
+	Object bss_temp.o
+
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o
 	Object nnsys.o
+
+	### NitroSDK ###
+	Object fx_sincos.o
+	Object fx_mtx22.o
+	Object fx_mtx33.o
+	Object fx_mtx43.o
+	Object fx_mtx44.o
+	Object fx_cp.o
+	Object fx_vec.o
+	Object fx_trig.o
+	Object fx_atan.o
+	Object fx.o
+	Object gx.o
+	Object gxstate.o
+	Object gx_vramcnt.o
+	Object gx_bgcnt.o
+	Object g2.o
+	Object g3b.o
+	Object g3imm.o
+	Object g3x.o
+	Object g3_util.o
+	Object gx_load2d.o
+	Object gx_load3d.o
+	Object g3.o
+	Object gxasm.o
+	Object os_irqHandler.o
+	Object os_irqTable.o
+	Object os_interrupt.o
+	Object os_spinLock.o
+	Object os_printf.o
+	Object os_thread.o
+	Object os_context.o
+	Object os_emulator.o
+	Object os_message.o
+	Object os_mutex.o
+	Object os_cache.o
+	Object os_init.o
+	Object os_arena.o
+	Object os_alloc.o
+	Object os_tcm.o
+	Object os_protectionUnit.o
+	Object os_protectionRegion.o
+	Object os_exception.o
+	Object os_timer.o
+	Object os_tick.o
+	Object os_alarm.o
+	Object os_valarm.o
+	Object os_system.o
+	Object os_reset.o
+	Object os_ownerInfo.o
+	Object os_vramExclusive.o
+	Object os_entropy.o
+	Object os_terminate_proc.o
+	Object mi_wram.o
+	Object mi_dma.o
+	Object mi_dma_hblank.o
+	Object mi_dma_gxcommand.o
+	Object mi_memory.o
+	Object mi_swap.o
+	Object mi_uncompress.o
+	Object mi_dma_card.o
+	Object mi_compress.o
+	Object mi_init.o
 	Object nitro.o
 	Object msl.o
-	Object bss_temp.o
 }
 
 Autoload ITCM
 {
 	Address 0x01FF8000
+	Object os_irqHandler.o (.itcm)
+	Object os_reset.o (.itcm)
+	Object mi_dma.o (.itcm)
+	Object mi_dma_gxcommand.o (.itcm)
 	Object nitro.o (.itcm)
 }
 
 Autoload DTCM
 {
 	Address 0x027E0000
-	Object nitro_dtcm.o (.dtcm)
-	Object nitro_dtcm.o (.bss)
+	Object os_irqHandler.o (.dtcm)
+	Object os_irqHandler.o (.dtcm.bss)
 }
 Overlay OVY_0
 {

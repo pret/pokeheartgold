@@ -430,14 +430,14 @@ _02246CD6:
 	mov r1, #4
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _02246D38 ; =0x04001050
 	mov r1, #4
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _02246D3C ; =ov71_02246D9C
 	add r1, r4, #0
 	mov r2, #0x14
@@ -2210,7 +2210,7 @@ ov71_022479C8: ; 0x022479C8
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_020CF670
+	bl G3X_Reset
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
@@ -2805,7 +2805,7 @@ ov71_02247ED0: ; 0x02247ED0
 	sub sp, #4
 	add r5, r0, #0
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	ldr r0, _02247F78 ; =0x04000060
 	ldr r2, _02247F7C ; =0xFFFFCFFD
 	ldrh r1, [r0]
@@ -3063,7 +3063,7 @@ ov71_022480C0: ; 0x022480C0
 	ldr r0, _0224810C ; =0x04000050
 	mov r1, #1
 	add r2, r6, #0
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 _02248106:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3118,14 +3118,14 @@ ov71_02248140: ; 0x02248140
 	ldr r0, _02248178 ; =0x04000050
 	mov r1, #1
 	asr r2, r2, #0xc
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	pop {r4, pc}
 _02248162:
 	ldr r2, [r4, #8]
 	ldr r0, _02248178 ; =0x04000050
 	mov r1, #1
 	asr r2, r2, #0xc
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	ldr r0, [r4]
 	bl ov71_02248120
 	pop {r4, pc}
@@ -3465,7 +3465,7 @@ ov71_022483E4: ; 0x022483E4
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02248404
-	bl sub_020CF670
+	bl G3X_Reset
 	add r4, #0xd4
 	ldr r0, [r4]
 	bl ov71_022474CC
@@ -4079,7 +4079,7 @@ ov71_022488E4: ; 0x022488E4
 	sub sp, #0x10
 	add r4, r0, #0
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	ldr r0, _022489C4 ; =0x04000060
 	ldr r1, _022489C8 ; =0xFFFFCFFD
 	ldrh r2, [r0]
@@ -4108,7 +4108,7 @@ ov71_022488E4: ; 0x022488E4
 	orr r1, r2
 	strh r1, [r0]
 	ldr r0, _022489D0 ; =0x0224BD0C
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	mov r1, #0
 	ldr r0, _022489D4 ; =0x000043FF
 	ldr r2, _022489D8 ; =0x00007FFF
@@ -5665,7 +5665,7 @@ ov71_02249538: ; 0x02249538
 	ldr r0, [r4, #0x28]
 	cmp r0, #0
 	beq _02249554
-	bl sub_020CF670
+	bl G3X_Reset
 	ldr r0, [r4, #0x28]
 	bl ov71_022474CC
 	mov r0, #0
@@ -5994,7 +5994,7 @@ ov71_022497E0: ; 0x022497E0
 	sub sp, #0x24
 	add r4, r0, #0
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	ldr r0, _022498B4 ; =0x04000060
 	ldr r1, _022498B8 ; =0xFFFFCFFD
 	ldrh r2, [r0]
@@ -6023,7 +6023,7 @@ ov71_022497E0: ; 0x022497E0
 	orr r1, r2
 	strh r1, [r0]
 	ldr r0, _022498C0 ; =0x0224BD94
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	mov r1, #0
 	ldr r0, _022498C4 ; =0x000043FF
 	ldr r2, _022498C8 ; =0x00007FFF
@@ -7505,7 +7505,7 @@ ov71_0224A3F0: ; 0x0224A3F0
 	sub sp, #0x24
 	add r4, r0, #0
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	ldr r0, _0224A4D0 ; =0x04000060
 	ldr r1, _0224A4D4 ; =0xFFFFCFFD
 	ldrh r2, [r0]
@@ -7534,7 +7534,7 @@ ov71_0224A3F0: ; 0x0224A3F0
 	orr r1, r2
 	strh r1, [r0]
 	ldr r0, _0224A4DC ; =0x0224BE94
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	mov r1, #0
 	ldr r0, _0224A4E0 ; =0x000043FF
 	ldr r2, _0224A4E4 ; =0x00007FFF
@@ -8109,7 +8109,7 @@ ov71_0224A8B0: ; 0x0224A8B0
 	ldr r0, [r4, #0x28]
 	cmp r0, #0
 	beq _0224A8CE
-	bl sub_020CF670
+	bl G3X_Reset
 	ldr r0, [r4, #0x28]
 	bl ov71_022474CC
 	mov r0, #0
@@ -8263,7 +8263,7 @@ ov71_0224A9C4: ; 0x0224A9C4
 	ldr r0, [r4, #0x24]
 	add r1, #0x28
 	bl ov71_022476EC
-	bl sub_020CF670
+	bl G3X_Reset
 	ldr r0, [r4, #0x20]
 	bl ov71_022474CC
 	mov r0, #0
@@ -8756,7 +8756,7 @@ ov71_0224ADE4: ; 0x0224ADE4
 	sub sp, #0x10
 	add r4, r0, #0
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	ldr r0, _0224AEC8 ; =0x04000060
 	ldr r1, _0224AECC ; =0xFFFFCFFD
 	ldrh r2, [r0]
@@ -8785,7 +8785,7 @@ ov71_0224ADE4: ; 0x0224ADE4
 	orr r1, r2
 	strh r1, [r0]
 	ldr r0, _0224AED4 ; =0x0224BF0C
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	mov r1, #0
 	ldr r0, _0224AED8 ; =0x000043FF
 	ldr r2, _0224AEDC ; =0x00007FFF
@@ -9299,7 +9299,7 @@ ov71_0224B234: ; 0x0224B234
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_020CF670
+	bl G3X_Reset
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
@@ -9505,7 +9505,7 @@ ov71_0224B280: ; 0x0224B280
 	mov r1, #1
 	mov r2, #4
 	mov r3, #0x10
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #0x10
 	str r0, [sp]
 	mov r1, #1
@@ -9896,7 +9896,7 @@ ov71_0224B720: ; 0x0224B720
 	sub sp, #4
 	add r5, r0, #0
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	ldr r0, _0224B7C8 ; =0x04000060
 	ldr r2, _0224B7CC ; =0xFFFFCFFD
 	ldrh r1, [r0]
@@ -10154,7 +10154,7 @@ ov71_0224B910: ; 0x0224B910
 	ldr r0, _0224B95C ; =0x04000050
 	mov r1, #1
 	add r2, r6, #0
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 _0224B956:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10209,14 +10209,14 @@ ov71_0224B990: ; 0x0224B990
 	ldr r0, _0224B9C8 ; =0x04000050
 	mov r1, #1
 	asr r2, r2, #0xc
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	pop {r4, pc}
 _0224B9B2:
 	ldr r2, [r4, #8]
 	ldr r0, _0224B9C8 ; =0x04000050
 	mov r1, #1
 	asr r2, r2, #0xc
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	ldr r0, [r4]
 	bl ov71_0224B970
 	pop {r4, pc}

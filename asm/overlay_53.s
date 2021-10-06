@@ -769,7 +769,7 @@ _021E5F5C:
 	ldr r0, _021E60C4 ; =0x04000050
 	ldr r3, [r3, r5]
 	mov r2, #0xe
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	b _021E5FA0
 _021E5F8C:
 	add r0, r5, #0
@@ -780,7 +780,7 @@ _021E5F8C:
 	ldr r0, _021E60C8 ; =0x04001050
 	ldr r3, [r3, r5]
 	mov r2, #0xe
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _021E5FA0:
 	cmp r4, #0x65
 	bne _021E5FAE
@@ -840,7 +840,7 @@ _021E5FDC:
 	ldr r0, _021E60C4 ; =0x04000050
 	ldr r3, [r3, r4]
 	mov r2, #0xe
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	b _021E60BE
 _021E6018:
 	add r0, r5, #0
@@ -851,7 +851,7 @@ _021E6018:
 	ldr r0, _021E60C8 ; =0x04001050
 	ldr r3, [r3, r4]
 	mov r2, #0xe
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	b _021E60BE
 _021E602E:
 	mov r0, #3
@@ -884,7 +884,7 @@ _021E6034:
 	ldr r0, _021E60C4 ; =0x04000050
 	ldr r3, [r3, r4]
 	mov r2, #0xe
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	b _021E60BE
 _021E606E:
 	add r0, r5, #0
@@ -895,7 +895,7 @@ _021E606E:
 	ldr r0, _021E60C8 ; =0x04001050
 	ldr r3, [r3, r4]
 	mov r2, #0xe
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	b _021E60BE
 _021E6084:
 	mov r0, #3
@@ -3732,7 +3732,7 @@ _021E771C:
 	str r1, [r4, r2]
 	ldr r0, _021E7944 ; =0x04000050
 	ldr r2, [r4, r2]
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	mov r0, #0x36
 	str r0, [r4, #0xc]
 	b _021E7CF8
@@ -3750,7 +3750,7 @@ _021E775E:
 	str r0, [r4, r2]
 	ldr r0, _021E7944 ; =0x04000050
 	ldr r2, [r4, r2]
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	mov r0, #5
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]

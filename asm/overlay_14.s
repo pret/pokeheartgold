@@ -719,7 +719,7 @@ ov14_021E5EAC: ; 0x021E5EAC
 	mov r1, #0
 	mov r2, #0x2a
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 _021E5EC4:
 	ldr r0, _021E5ECC ; =0x04000050
@@ -26621,7 +26621,7 @@ ov14_021F2C1C: ; 0x021F2C1C
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov14_021F2C1C
@@ -26647,7 +26647,7 @@ ov14_021F2C50: ; 0x021F2C50
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov14_021F2C50
@@ -27978,7 +27978,7 @@ _021F365A:
 	add r0, r5, #0
 	add r1, r7, #0
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	ldr r0, [r4, r6]
 	ldr r0, [r0]
 	bl sub_02024B34
@@ -29960,7 +29960,7 @@ _021F4660:
 	ldr r0, [r0, #0x14]
 	add r1, r4, #0
 	lsl r2, r2, #6
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r0, #9
 	lsl r0, r0, #6
 	str r0, [sp]
@@ -30355,7 +30355,7 @@ ov14_021F4958: ; 0x021F4958
 	ldr r0, [r0, #0x14]
 	add r1, r1, r4
 	lsl r2, r2, #0xa
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r7, #0
 	bl FreeToHeap
 	add r0, r5, #0

@@ -1385,7 +1385,7 @@ _021E6406:
 	strb r0, [r4, #7]
 	add r0, r5, #0
 	add r0, #0x18
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, [r7]
 	mov r0, #8
 	bl String_ctor

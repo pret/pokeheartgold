@@ -5259,7 +5259,7 @@ _0225AF0E:
 	cmp r0, #0
 	ble _0225AF76
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -5267,12 +5267,12 @@ _0225AF0E:
 	b _0225AF84
 _0225AF76:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0225AF84:
-	bl _ftoi
+	bl _ffix
 	asr r1, r0, #0x1f
 	asr r3, r6, #0x1f
 	add r2, r6, #0

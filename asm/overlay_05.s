@@ -3004,7 +3004,7 @@ ov05_0221D228: ; 0x0221D228
 	mov r1, #2
 	mov r2, #0x1c
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _0221D23C: .word 0x04000050

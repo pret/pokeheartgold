@@ -3191,8 +3191,8 @@ ov68_021E7288: ; 0x021E7288
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl sub_020C2698
-	bl sub_020CF564
-	bl sub_020CF704
+	bl G3X_Init
+	bl G3X_InitMtxStack
 	ldr r1, _021E7330 ; =0x04000060
 	ldr r2, _021E7334 ; =0xFFFFCFFD
 	ldrh r0, [r1]
@@ -4368,7 +4368,7 @@ ov68_021E7BC8: ; 0x021E7BC8
 	mov r1, #0x1e
 	add r2, r1, #0
 	sub r2, #0x26
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	pop {r3, pc}
 _021E7BDC:
 	mov r1, #0

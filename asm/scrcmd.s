@@ -3592,7 +3592,7 @@ sub_02042394: ; 0x02042394
 	cmp r7, #0
 	beq _020423EA
 	lsl r0, r7, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -3600,17 +3600,17 @@ sub_02042394: ; 0x02042394
 	b _020423F8
 _020423EA:
 	lsl r0, r7, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _020423F8:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp]
 	cmp r6, #0
 	beq _02042414
 	lsl r0, r6, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -3618,17 +3618,17 @@ _020423F8:
 	b _02042422
 _02042414:
 	lsl r0, r6, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _02042422:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #4]
 	cmp r4, #0
 	beq _0204243E
 	lsl r0, r4, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -3636,12 +3636,12 @@ _02042422:
 	b _0204244C
 _0204243E:
 	lsl r0, r4, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0204244C:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r0, #0x80

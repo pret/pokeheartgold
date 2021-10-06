@@ -87,7 +87,7 @@ void* OS_GetInitArenaHi(OSArenaId id)
 void* OS_GetInitArenaLo(OSArenaId id) {
     switch (id) {
         case OS_ARENA_MAIN_SUBPRIV:
-            return (void *)((u32)0x027F9EF0); //todo SDK_SUBPRIV_ARENA_LO
+            return (void *)SDK_SUBPRIV_ARENA_LO;
         case OS_ARENA_WRAM_SUB:
         {
             u32 wramSubLo = ((u32)SDK_WRAM_ARENA_LO);

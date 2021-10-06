@@ -3077,7 +3077,7 @@ ov90_02259EE0: ; 0x02259EE0
 	cmp r1, #0
 	ble _02259EFC
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -3085,12 +3085,12 @@ ov90_02259EE0: ; 0x02259EE0
 	b _02259F0A
 _02259EFC:
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _02259F0A:
-	bl _ftoi
+	bl _ffix
 	add r2, r0, #0
 	mov r0, #8
 	str r0, [sp]
@@ -6985,7 +6985,7 @@ _0225BC74:
 	cmp r0, #0
 	ble _0225BC9C
 	add r0, r5, #0
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -6993,12 +6993,12 @@ _0225BC74:
 	b _0225BCAA
 _0225BC9C:
 	add r0, r5, #0
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0225BCAA:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #0xc]
 	sub r0, r1, r0
 	str r0, [sp, #0xc]
@@ -7008,7 +7008,7 @@ _0225BCB6:
 	cmp r0, #0
 	ble _0225BCCE
 	add r0, r5, #0
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -7016,12 +7016,12 @@ _0225BCB6:
 	b _0225BCDC
 _0225BCCE:
 	add r0, r5, #0
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0225BCDC:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #0xc]
 	add r0, r1, r0
 	str r0, [sp, #0xc]

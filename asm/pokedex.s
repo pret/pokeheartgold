@@ -33,12 +33,12 @@ sub_020293E8: ; 0x020293E8
 
 	thumb_func_start sub_020293FC
 sub_020293FC: ; 0x020293FC
-	ldr r3, _02029404 ; =MIi_CpuCopy8
+	ldr r3, _02029404 ; =MI_CpuCopy8
 	mov r2, #0xd
 	lsl r2, r2, #6
 	bx r3
 	.balign 4, 0
-_02029404: .word MIi_CpuCopy8
+_02029404: .word MI_CpuCopy8
 	thumb_func_end sub_020293FC
 
 ; Was inlined in Diamond, not anymore

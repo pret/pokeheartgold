@@ -1810,7 +1810,7 @@ _0206A440:
 	mov r1, #4
 	mov r2, #0x21
 	mov r3, #0x10
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #0x10
 	mov r1, #1
 	str r0, [sp]
@@ -3355,7 +3355,7 @@ sub_0206B014: ; 0x0206B014
 	strh r0, [r5, #0x3e]
 	ldr r0, _0206B26C ; =0x021100C4
 	mov r2, #0x24
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r5, #0
 	ldr r1, [sp, #0x58]
 	add r0, #0x40

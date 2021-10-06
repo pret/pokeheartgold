@@ -2801,7 +2801,7 @@ ov97_0221FC54: ; 0x0221FC54
 	mov r2, #0x32
 	ldr r1, [r4, r1]
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	mov r0, #0x97
 	lsl r0, r0, #2
 	add r0, r4, r0

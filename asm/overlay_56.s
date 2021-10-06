@@ -883,7 +883,7 @@ _021E62A2:
 	mov r2, #8
 	mov r3, #0x1c
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -1671,7 +1671,7 @@ ov56_021E692C: ; 0x021E692C
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0

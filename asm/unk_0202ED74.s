@@ -333,7 +333,7 @@ sub_0202EF44: ; 0x0202EF44
 	add r1, r6, #0
 	add r0, r5, r0
 	add r2, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -359,7 +359,7 @@ _0202EF8A:
 	add r0, r6, #0
 	add r1, r5, r1
 	add r2, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0202EF98: .word 0x0000060C
@@ -919,7 +919,7 @@ _0202F328:
 	add r0, r6, #0
 	add r1, r5, r1
 	add r2, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _0202F33C ; =0x00000147
 	strb r4, [r5, r0]
 	pop {r4, r5, r6, pc}
@@ -943,7 +943,7 @@ sub_0202F340: ; 0x0202F340
 	sub r2, r2, #1
 	ldrb r2, [r5, r2]
 	add r1, r6, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _0202F36C ; =0x00000147
 	ldrb r0, [r5, r0]
 	strb r0, [r4]

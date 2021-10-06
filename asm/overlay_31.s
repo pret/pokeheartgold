@@ -685,7 +685,7 @@ ov31_0225DAC4: ; 0x0225DAC4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	mov r0, #0x80
 	bl GX_SetBankForSubBG
 	mov r0, #1

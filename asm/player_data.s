@@ -86,11 +86,11 @@ PlayerProfile_new: ; 0x02028ED0
 
 	thumb_func_start PlayerProfile_Copy
 PlayerProfile_Copy: ; 0x02028EE4
-	ldr r3, _02028EEC ; =MIi_CpuCopy8
+	ldr r3, _02028EEC ; =MI_CpuCopy8
 	mov r2, #0x20
 	bx r3
 	nop
-_02028EEC: .word MIi_CpuCopy8
+_02028EEC: .word MI_CpuCopy8
 	thumb_func_end PlayerProfile_Copy
 
 	thumb_func_start PlayerProfile_init

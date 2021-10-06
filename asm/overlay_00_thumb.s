@@ -879,7 +879,7 @@ _021E5FD0:
 	add r0, r5, #0
 	add r1, r1, #4
 	add r2, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r2, _021E601C ; =_0221A680
 	ldr r1, _021E6024 ; =0x00001078
 	ldr r3, [r2]
@@ -952,7 +952,7 @@ _021E6062:
 	add r0, r5, #0
 	add r1, r1, #4
 	add r2, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _021E60D8 ; =_0221A680
 	mov r2, #1
 	ldr r1, [r0]
@@ -1042,7 +1042,7 @@ _021E6112:
 	add r0, r5, #0
 	add r1, r1, #4
 	add r2, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _021E6198 ; =_0221A680
 	mov r2, #1
 	ldr r1, [r0]
@@ -1532,7 +1532,7 @@ _021E64E2:
 	add r0, r4, #4
 	add r1, r5, #0
 	add r2, r6, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl ov00_021EE490
 	cmp r0, #0
 	bne _021E651E
@@ -3463,7 +3463,7 @@ _021E7338: .word 0x000010E6
 ov00_021E733C: ; 0x021E733C
 	push {r3, r4, r5, lr}
 	bl MIC_Init
-	bl sub_020DADE8
+	bl PM_Init
 	mov r0, #1
 	bl PM_SetAmp
 	mov r0, #3
@@ -3572,14 +3572,14 @@ _021E7410:
 	add r0, r0, r1
 	ldr r1, _021E7494 ; =ov00_021E73E4
 	mov r2, #0
-	bl sub_020DA8A0
+	bl MIC_StartAutoSamplingAsync
 	ldr r1, _021E748C ; =_0221A684
 	mov r0, #0
 	ldr r2, [r1, #4]
 	ldr r1, _021E7490 ; =0x00001A59
 	strb r0, [r2, r1]
 _021E7432:
-	bl sub_020DAA98
+	bl MIC_GetLastSamplingAddress
 	sub r0, r0, r7
 	cmp r0, r6
 	bhs _021E743E
@@ -3866,7 +3866,7 @@ _021E7658: .word 0x00001A54
 	thumb_func_start ov00_021E765C
 ov00_021E765C: ; 0x021E765C
 	push {r4, r5, r6, lr}
-	bl sub_020D34B0
+	bl OS_GetTick
 	add r4, r0, #0
 	ldr r0, _021E778C ; =_0221A684
 	add r5, r1, #0
@@ -4357,7 +4357,7 @@ ov00_021E7A30: ; 0x021E7A30
 	beq _021E7A8C
 	ldr r0, _021E7A94 ; =0x0000198C
 	ldr r4, [r1, r0]
-	bl sub_020DAA60
+	bl MIC_StopAutoSampling
 	ldr r0, _021E7A90 ; =_0221A684
 	ldr r1, [r0, #4]
 	ldr r0, _021E7A98 ; =0x000019F8

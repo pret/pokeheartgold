@@ -3,9 +3,11 @@
 
 #include <nitro/hw/io_reg_shared.h>
 
+#define REG_VCOUNT_OFFSET          0x6
+
 #define reg_GX_DISPCNT             (*(REGType32v *)0x4000000)
 #define reg_GX_DISPSTAT            (*(REGType16v *)0x4000004)
-#define reg_GX_VCOUNT              (*(REGType16v *)0x4000006)
+#define reg_GX_VCOUNT              (*(REGType16v *)(HW_REG_BASE + REG_VCOUNT_OFFSET))
 
 #define reg_G2_BG0CNT              (*(REGType16v *)0x4000008)
 #define reg_G2_BG1CNT              (*(REGType16v *)0x400000a)
@@ -346,13 +348,27 @@
 #define reg_MI_MCD1                (*(REGType32v *)0x4100010)
 #define reg_CARD_DATA              (*(REGType32v *)0x4100010) //?
 
+#define REG_OS_IE_VB_SHIFT                                 0
+#define REG_OS_IE_HB_SHIFT                                 1
 #define REG_OS_IE_VE_SHIFT                                 2
 #define REG_OS_IE_T0_SHIFT                                 3
 #define REG_OS_IE_T1_SHIFT                                 4
 #define REG_OS_IE_T2_SHIFT                                 5
 #define REG_OS_IE_T3_SHIFT                                 6
+#define REG_OS_IE_D0_SHIFT                                 8
+#define REG_OS_IE_D1_SHIFT                                 9
+#define REG_OS_IE_D2_SHIFT                                 10
+#define REG_OS_IE_D3_SHIFT                                 11
+#define REG_OS_IE_K_SHIFT                                  12
+#define REG_OS_IE_I_D_SHIFT                                13
+#define REG_OS_IE_A7_SHIFT                                 16
+#define REG_OS_IE_IFE_SHIFT                                17
 #define REG_OS_IE_IFN_SHIFT                                18
 #define REG_OS_IE_MC_SHIFT                                 19
+#define REG_OS_IE_MI_SHIFT                                 20
+#define REG_OS_IE_PM_SHIFT                                 22
+#define REG_OS_IE_SPI_SHIFT                                23
+#define REG_OS_IE_WL_SHIFT                                 24
 
 #define REG_PAD_KEYINPUT_L_SHIFT                           9
 #define REG_PAD_KEYINPUT_L_SIZE                            1

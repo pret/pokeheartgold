@@ -204,7 +204,7 @@ ov64_021E5AAC: ; 0x021E5AAC
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov64_021E5AAC
@@ -220,7 +220,7 @@ ov64_021E5AC8: ; 0x021E5AC8
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov64_021E5AC8

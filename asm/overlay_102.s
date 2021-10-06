@@ -4175,7 +4175,7 @@ ov102_021E94CC: ; 0x021E94CC
 	mov r0, #0x10
 	mov r1, #1
 	bl sub_02022CC8
-	bl sub_020CD9B4
+	bl GX_DispOn
 	add r0, r5, #0
 	bl NARC_dtor
 	add r0, r4, #0
@@ -4404,7 +4404,7 @@ ov102_021E978C: ; 0x021E978C
 	mov r0, #1
 	mov r1, #0
 	add r2, r0, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	ldr r0, _021E981C ; =0x021EC760
 	bl GX_SetBanks
 	ldr r0, _021E9820 ; =0x021EC6A8
@@ -7572,7 +7572,7 @@ _021EB032:
 	cmp r0, #0
 	ble _021EB058
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -7580,12 +7580,12 @@ _021EB032:
 	b _021EB066
 _021EB058:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021EB066:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #8]
 	add r0, r1, r0
 	str r0, [sp, #8]
@@ -8503,7 +8503,7 @@ ov102_021EB6E0: ; 0x021EB6E0
 	add r2, r1, #0
 	ldr r0, _021EB778 ; =0x04000050
 	sub r2, #0xc
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	add r0, r4, #0
 	mov r1, #1
 	bl BgCommitTilemapBufferToVram
@@ -9063,7 +9063,7 @@ ov102_021EBB88: ; 0x021EBB88
 	mov r1, #2
 	mov r2, #0x3f
 	mov r3, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #1
 	add r1, r0, #0
 	bl sub_0201BC28
@@ -9415,7 +9415,7 @@ ov102_021EBE3C: ; 0x021EBE3C
 	mov r1, #4
 	mov r2, #0x3f
 	mov r3, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #1
 	bl sub_0201BC28
@@ -10199,7 +10199,7 @@ _021EC3FA:
 	str r0, [sp]
 	ldr r0, _021EC40C ; =0x04000050
 	ldmia r2!, {r1, r2}
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _021EC40C: .word 0x04000050
@@ -10213,7 +10213,7 @@ ov102_021EC410: ; 0x021EC410
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	ldr r1, [sp, #0x18]
 	str r4, [r5]
 	str r1, [r5, #0x14]
@@ -10280,12 +10280,12 @@ _021EC490:
 	ldr r0, [r1, #0xc]
 	asr r2, r0, #0xc
 _021EC494:
-	ldr r3, _021EC49C ; =sub_020CF178
+	ldr r3, _021EC49C ; =G2x_SetBlendBrightness_
 	ldr r0, _021EC4A0 ; =0x04000050
 	ldr r1, [r1]
 	bx r3
 	.balign 4, 0
-_021EC49C: .word sub_020CF178
+_021EC49C: .word G2x_SetBlendBrightness_
 _021EC4A0: .word 0x04000050
 	thumb_func_end ov102_021EC478
 

@@ -13,6 +13,7 @@
 
 #define HW_MAIN_MEM_SUB             (HW_MAIN_MEM_MAIN_END + 0x400000)
 #define HW_MAIN_MEM_SUB_END         (HW_MAIN_MEM_SUB + HW_MAIN_MEM_SUB_SIZE)
+#define HW_ROM_HEADER_BUF       (HW_MAIN_MEM + 0x007ffe00)      // ROM registration area data buffer
 
 #define HW_PRV_WRAM_IRQ_STACK_END   (HW_PRV_WRAM_SVC_STACK)
 #define HW_PRV_WRAM_SVC_STACK       (HW_PRV_WRAM_SVC_STACK_END - HW_SVC_STACK_SIZE)

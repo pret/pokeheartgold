@@ -1707,7 +1707,7 @@ _02027D7C:
 	bl CARD_TryWaitBackupAsync
 	cmp r0, #0
 	bne _02027D88
-	bl sub_020DD1B0
+	bl CARD_CancelBackupAsync
 _02027D88:
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
@@ -2688,7 +2688,7 @@ _020284DC:
 	add r0, r5, #0
 	add r1, sp, #0x2c
 	mov r2, #4
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [r4, #4]
 	ldr r2, [sp, #0x18]
 	add r0, #0x40
@@ -2706,7 +2706,7 @@ _020284DC:
 	add r0, r5, #0
 	add r1, sp, #0x28
 	mov r2, #4
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [sp, #8]
 	mov r1, #1
 	str r1, [r0]

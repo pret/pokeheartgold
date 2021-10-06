@@ -66,9 +66,9 @@ SetBothScreensModesAndDisable: ; 0x0201ACB0
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0xc]
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	ldr r0, [r4, #8]
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -95,12 +95,12 @@ sub_0201ACE8: ; 0x0201ACE8
 	ldr r0, [r2]
 	ldr r1, [r2, #4]
 	ldr r2, [r2, #0xc]
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	bl GX_DisableEngineALayers
 	pop {r3, pc}
 _0201AD00:
 	ldr r0, [r2, #8]
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	bl GX_DisableEngineBLayers
 	pop {r3, pc}
 	thumb_func_end sub_0201ACE8
@@ -2537,7 +2537,7 @@ _0201BEA8:
 	ldr r0, [r4, #0x18]
 	str r0, [sp, #4]
 	ldr r0, _0201BF08 ; =0x04000020
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _0201BEC0:
@@ -2549,7 +2549,7 @@ _0201BEC0:
 	ldr r0, [r4, #0x18]
 	str r0, [sp, #4]
 	ldr r0, _0201BF0C ; =0x04000030
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _0201BED8:
@@ -2561,7 +2561,7 @@ _0201BED8:
 	ldr r0, [r4, #0x18]
 	str r0, [sp, #4]
 	ldr r0, _0201BF10 ; =0x04001020
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _0201BEF0:
@@ -2573,7 +2573,7 @@ _0201BEF0:
 	ldr r0, [r4, #0x18]
 	str r0, [sp, #4]
 	ldr r0, _0201BF14 ; =0x04001030
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 _0201BF04:
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -2748,49 +2748,49 @@ _0201C046:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020CFF24
+	bl GX_LoadBG0Scr
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C052:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020CFFE4
+	bl GX_LoadBG1Scr
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C05E:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D00A4
+	bl GX_LoadBG2Scr
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C06A:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D0164
+	bl GX_LoadBG3Scr
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C076:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020CFF84
+	bl GXS_LoadBG0Scr
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C082:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D0044
+	bl GXS_LoadBG1Scr
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C08E:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D0104
+	bl GXS_LoadBG2Scr
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C09A:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D01C4
+	bl GXS_LoadBG3Scr
 _0201C0A4:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2901,49 +2901,49 @@ _0201C162:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D0224
+	bl GX_LoadBG0Char
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C16E:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D02E4
+	bl GX_LoadBG1Char
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C17A:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D03A4
+	bl GX_LoadBG2Char
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C186:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D0464
+	bl GX_LoadBG3Char
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C192:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D0284
+	bl GXS_LoadBG0Char
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C19E:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D0344
+	bl GXS_LoadBG1Char
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C1AA:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D0404
+	bl GXS_LoadBG2Char
 	pop {r3, r4, r5, r6, r7, pc}
 _0201C1B6:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_020D04C4
+	bl GXS_LoadBG3Char
 _0201C1C0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4289,28 +4289,28 @@ _0201CB5E: ; jump table
 	.short _0201CB92 - _0201CB5E - 2 ; case 6
 	.short _0201CB98 - _0201CB5E - 2 ; case 7
 _0201CB6E:
-	bl sub_020CEED4
+	bl G2_GetBG0CharPtr
 	pop {r3, pc}
 _0201CB74:
-	bl sub_020CEF28
+	bl G2_GetBG1CharPtr
 	pop {r3, pc}
 _0201CB7A:
-	bl sub_020CEF7C
+	bl G2_GetBG2CharPtr
 	pop {r3, pc}
 _0201CB80:
-	bl sub_020CF00C
+	bl G2_GetBG3CharPtr
 	pop {r3, pc}
 _0201CB86:
-	bl sub_020CEF08
+	bl G2S_GetBG0CharPtr
 	pop {r3, pc}
 _0201CB8C:
-	bl sub_020CEF5C
+	bl G2S_GetBG1CharPtr
 	pop {r3, pc}
 _0201CB92:
-	bl sub_020CEFCC
+	bl G2S_GetBG2CharPtr
 	pop {r3, pc}
 _0201CB98:
-	bl sub_020CF064
+	bl G2S_GetBG3CharPtr
 	pop {r3, pc}
 _0201CB9E:
 	mov r0, #0
@@ -9473,7 +9473,7 @@ _0201F03E:
 	ldr r2, [r2]
 	ldr r3, [r3]
 	add r1, sp, #0x38
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 _0201F072:
 	ldrh r1, [r4, #4]
 	mov r0, #8
@@ -9529,7 +9529,7 @@ _0201F0A2:
 	ldr r2, [r2]
 	ldr r3, [r3]
 	add r1, sp, #0x28
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 _0201F0E2:
 	ldrh r1, [r4, #4]
 	mov r0, #0x10
@@ -9619,7 +9619,7 @@ _0201F158:
 	ldr r2, [r4, r2]
 	ldr r3, [r4, r3]
 	add r1, sp, #0x18
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 _0201F192:
 	ldrh r0, [r4, #4]
 	mov r3, #0x80
@@ -9674,7 +9674,7 @@ _0201F1C6:
 	ldr r2, [r4, r2]
 	ldr r3, [r4, r3]
 	add r1, sp, #8
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 _0201F200:
 	add sp, #0x48
 	pop {r4, pc}

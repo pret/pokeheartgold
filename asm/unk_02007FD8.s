@@ -332,7 +332,7 @@ _020081C8:
 	ldrsh r0, [r0, r2]
 	mov r2, #2
 	ldrsh r1, [r1, r2]
-	bl sub_020CFBB8
+	bl G3_RotX
 	ldrh r0, [r4, #0x3a]
 	asr r0, r0, #4
 	lsl r2, r0, #2
@@ -341,7 +341,7 @@ _020081C8:
 	ldrsh r0, [r0, r2]
 	mov r2, #2
 	ldrsh r1, [r1, r2]
-	bl sub_020CFBF4
+	bl G3_RotY
 	ldrh r0, [r4, #0x3c]
 	asr r0, r0, #4
 	lsl r2, r0, #2
@@ -350,7 +350,7 @@ _020081C8:
 	ldrsh r0, [r0, r2]
 	mov r2, #2
 	ldrsh r1, [r1, r2]
-	bl sub_020CFC30
+	bl G3_RotZ
 	ldr r0, [r4, #0x28]
 	mov r3, #0x40
 	lsl r0, r0, #0xc
@@ -814,14 +814,14 @@ _02008586:
 	thumb_func_start sub_020085C8
 sub_020085C8: ; 0x020085C8
 	add r2, r0, #0
-	ldr r3, _020085D8 ; =MIi_CpuCopy8
+	ldr r3, _020085D8 ; =MI_CpuCopy8
 	add r2, #0x84
 	add r0, r1, #0
 	add r1, r2, #0
 	mov r2, #0x28
 	bx r3
 	nop
-_020085D8: .word MIi_CpuCopy8
+_020085D8: .word MI_CpuCopy8
 	thumb_func_end sub_020085C8
 
 	thumb_func_start sub_020085DC
@@ -1029,7 +1029,7 @@ _02008654:
 	add r1, r4, r6
 	add r1, #0x84
 	mov r2, #0x28
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _02008764:
 	add r0, r4, r6
 	add sp, #0xc

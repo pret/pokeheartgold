@@ -85,7 +85,7 @@ _02006FC2:
 	pop {pc}
 _02006FD8:
 	mov r0, #1
-	ldr r1, _02006FF4 ; =OSi_IntrTable
+	ldr r1, _02006FF4 ; =OS_IRQTable
 	lsl r0, r0, #0xe
 	add r0, r1, r0
 	cmp r2, r0
@@ -100,7 +100,7 @@ _02006FEE:
 	add sp, #0x2c
 	pop {pc}
 	.balign 4, 0
-_02006FF4: .word OSi_IntrTable
+_02006FF4: .word OS_IRQTable
 	thumb_func_end GetOverlayLoadDestination
 
 	thumb_func_start HandleLoadOverlay

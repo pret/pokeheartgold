@@ -2526,14 +2526,14 @@ _021E6CB0:
 	ldr r0, _021E6D1C ; =0x04000050
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #4
 	str r0, [sp]
 	ldr r0, _021E6D20 ; =0x04001050
 	mov r1, #1
 	mov r2, #0x1e
 	mov r3, #0x1c
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0xf4
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2555,13 +2555,13 @@ ov108_021E6D24: ; 0x021E6D24
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r1, #0
 	ldr r0, _021E6D78 ; =0x04001050
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r6, #0xd
 	mov r4, #0
 	lsl r6, r6, #6
@@ -5639,7 +5639,7 @@ _021E85CC:
 	str r0, [sp, #0x34]
 	beq _021E85E6
 	lsl r0, r6, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -5647,17 +5647,17 @@ _021E85CC:
 	b _021E85F4
 _021E85E6:
 	lsl r0, r6, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E85F4:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x38]
 	cmp r7, #0
 	beq _021E8610
 	lsl r0, r7, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -5665,12 +5665,12 @@ _021E85F4:
 	b _021E861E
 _021E8610:
 	lsl r0, r7, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E861E:
-	bl _ftoi
+	bl _ffix
 	mov r1, #0
 	str r1, [sp, #0x40]
 	ldr r1, [sp, #0x84]
@@ -6554,8 +6554,8 @@ ov108_021E8CD4: ; 0x021E8CD4
 	add r5, r0, #0
 	bl MI_CpuFill8
 	bl sub_020C2698
-	bl sub_020CF564
-	bl sub_020CF704
+	bl G3X_Init
+	bl G3X_InitMtxStack
 	ldr r0, _021E8DF4 ; =0x04000060
 	ldr r1, _021E8DF8 ; =0xFFFFCFFD
 	ldrh r2, [r0]
@@ -6861,7 +6861,7 @@ _021E8F68:
 	ldr r1, [r5, #8]
 	add r0, #0x10
 	bl NNS_G3dRenderObjInit
-	bl sub_020D2828
+	bl DC_FlushAll
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #0xb4
@@ -6929,7 +6929,7 @@ _021E8FEC:
 	cmp r0, #0
 	ble _021E900E
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -6937,12 +6937,12 @@ _021E8FEC:
 	b _021E901C
 _021E900E:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E901C:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #4]
 	add r1, #0xdc
 	str r0, [r1]
@@ -6951,7 +6951,7 @@ _021E901C:
 	cmp r0, #0
 	ble _021E9040
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -6959,12 +6959,12 @@ _021E901C:
 	b _021E904E
 _021E9040:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E904E:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #4]
 	add r1, #0xe0
 	str r0, [r1]
@@ -6973,7 +6973,7 @@ _021E904E:
 	cmp r0, #0
 	ble _021E9072
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -6981,12 +6981,12 @@ _021E904E:
 	b _021E9080
 _021E9072:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E9080:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #4]
 	add r1, #0xe4
 	str r0, [r1]
@@ -6994,7 +6994,7 @@ _021E9080:
 	cmp r0, #0
 	beq _021E90A2
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -7002,12 +7002,12 @@ _021E9080:
 	b _021E90B0
 _021E90A2:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E90B0:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #4]
 	ldr r1, [r1]
 	bl sub_020235D4
@@ -8387,7 +8387,7 @@ ov108_021E9A60: ; 0x021E9A60
 	mov r1, #1
 	mov r2, #0x1e
 	mov r3, #0x1c
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -8408,7 +8408,7 @@ ov108_021E9BD4: ; 0x021E9BD4
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _021E9C0C ; =0x00000528
 	ldr r0, [r4, r0]
 	bl FreeToHeap

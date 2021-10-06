@@ -2811,12 +2811,12 @@ _021E6F54: .word 0x00000233
 ov121_021E6F58: ; 0x021E6F58
 	mov r1, #0x1e
 	add r2, r1, #0
-	ldr r3, _021E6F64 ; =sub_020CF178
+	ldr r3, _021E6F64 ; =G2x_SetBlendBrightness_
 	ldr r0, _021E6F68 ; =0x04000050
 	sub r2, #0x25
 	bx r3
 	.balign 4, 0
-_021E6F64: .word sub_020CF178
+_021E6F64: .word G2x_SetBlendBrightness_
 _021E6F68: .word 0x04000050
 	thumb_func_end ov121_021E6F58
 

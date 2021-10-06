@@ -343,7 +343,7 @@ ov104_021E5B88: ; 0x021E5B88
 	orr r0, r1
 	strh r0, [r2]
 	ldr r0, _021E5BE8 ; =0x021E5F14
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	bl GX_SwapDisplay
 	pop {r3, pc}
 	nop

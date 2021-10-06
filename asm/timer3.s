@@ -55,7 +55,7 @@ sub_02025438: ; 0x02025438
 	strh r1, [r2]
 	str r3, [r0]
 _0202545C:
-	ldr r3, _02025478 ; =OSi_IntrTable
+	ldr r3, _02025478 ; =OS_IRQTable
 	ldr r1, _0202547C ; =0x00003FF8
 	mov r0, #0x40
 	ldr r2, [r3, r1]
@@ -67,7 +67,7 @@ _0202545C:
 	nop
 _02025470: .word _021D2210
 _02025474: .word 0x0400010E
-_02025478: .word OSi_IntrTable
+_02025478: .word OS_IRQTable
 _0202547C: .word 0x00003FF8
 _02025480: .word OS_SetIrqFunction
 _02025484: .word sub_02025438

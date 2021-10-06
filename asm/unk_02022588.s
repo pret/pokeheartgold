@@ -642,7 +642,7 @@ _020229DC: .word _021D21F8
 	thumb_func_start sub_020229E0
 sub_020229E0: ; 0x020229E0
 	push {r3, lr}
-	bl sub_020CEBFC
+	bl GX_GetBankForOBJExtPltt
 	cmp r0, #0x20
 	beq _020229EE
 	cmp r0, #0x40
@@ -660,7 +660,7 @@ _020229FA:
 	ldr r0, [r0]
 	str r1, [r0, #0x1c]
 _02022A02:
-	bl sub_020CEC2C
+	bl GX_GetBankForSubOBJExtPltt
 	mov r1, #1
 	lsl r1, r1, #8
 	cmp r0, r1

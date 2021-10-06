@@ -214,7 +214,7 @@ _021E5A4E:
 	mov r2, #6
 	add r1, #0x68
 	lsl r2, r2, #8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

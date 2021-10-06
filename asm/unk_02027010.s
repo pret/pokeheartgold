@@ -11,34 +11,34 @@ _020F6458:
 	thumb_func_start sub_02027010
 sub_02027010: ; 0x02027010
 	push {r3, lr}
-	bl sub_020D7F88
+	bl FS_IsAvailable
 	cmp r0, #0
 	bne _02027020
-	bl sub_020D3F48
+	bl OS_Terminate
 	pop {r3, pc}
 _02027020:
 	ldr r0, _0202707C ; =0x027FF00C
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0202704A
-	bl sub_020DD84C
+	bl CARD_Init
 	mov r2, #0x16
 	ldr r0, _02027080 ; =0x027FFE00
 	ldr r1, _02027084 ; =0x027FF000
 	lsl r2, r2, #4
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r2, #0x16
 	ldr r0, _02027080 ; =0x027FFE00
 	ldr r1, _02027088 ; =0x027FFA80
 	lsl r2, r2, #4
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _0202708C ; =0x4A414441
 	ldr r0, _0202707C ; =0x027FF00C
 	str r1, [r0]
 _0202704A:
 	ldr r0, _02027090 ; =_020F6458
 	mov r1, #3
-	bl sub_020D7958
+	bl FS_FindArchive
 	ldr r1, _02027084 ; =0x027FF000
 	ldr r2, [r1, #0x48]
 	str r2, [r0, #0x2c]
@@ -57,7 +57,7 @@ _0202704A:
 	cmp r1, r0
 	beq _02027078
 _02027074:
-	bl sub_020D3F48
+	bl OS_Terminate
 _02027078:
 	pop {r3, pc}
 	nop

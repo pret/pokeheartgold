@@ -522,7 +522,7 @@ _020693DC:
 	add r4, #0x68
 	ldr r0, [sp, #0x14]
 	add r1, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, r4, r5, pc}
 	nop
 _02069400: .word 0x000F423F
@@ -648,7 +648,7 @@ _020694E4:
 	ldr r0, [r5, #4]
 	ldr r2, _02069524 ; =0x0000066C
 	add r1, #8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #8

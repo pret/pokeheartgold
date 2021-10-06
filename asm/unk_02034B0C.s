@@ -194,7 +194,7 @@ _02034C6C:
 	ldr r1, [r1, #8]
 	mov r2, #0xc0
 	add r1, #0x54
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _02034C8C ; =_021D4134
 	ldr r1, _02034C90 ; =0x00000D95
 	ldr r3, [r0, #8]
@@ -260,7 +260,7 @@ _02034CB4:
 	mul r1, r2
 	add r0, r7, #0
 	add r1, r3, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, r4, r5, r6, r7, pc}
 _02034CFC:
 	add r6, r6, #1
@@ -299,7 +299,7 @@ _02034D1E:
 	add r1, r3, #0
 	mul r1, r2
 	add r1, r4, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _02034D50 ; =_021D4134
 	mov r2, #1
 	ldr r1, [r0, #8]
@@ -319,7 +319,7 @@ sub_02034D60: ; 0x02034D60
 	push {r3, lr}
 	cmp r1, #0
 	beq _02034D6A
-	bl sub_020D3F48
+	bl OS_Terminate
 _02034D6A:
 	ldr r0, _02034D74 ; =_021D4134
 	mov r1, #2
@@ -356,7 +356,7 @@ sub_02034D8C: ; 0x02034D8C
 	bl sub_0209E00C
 	cmp r0, #1
 	beq _02034DAC
-	bl sub_020D3F48
+	bl OS_Terminate
 _02034DAC:
 	pop {r3, pc}
 	nop
@@ -1088,7 +1088,7 @@ _0203530A:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, #0x10
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl sub_020290B4
 	add r2, r0, #0
 	ldr r0, _020353A8 ; =_021D4134
@@ -1097,7 +1097,7 @@ _0203530A:
 	ldr r0, [r1, r0]
 	add r1, r5, #0
 	add r1, #0x30
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r4, #0
 	bl PlayerProfile_GetTrainerID
 	str r0, [r5]
@@ -1112,7 +1112,7 @@ _0203530A:
 	add r0, r1, r0
 	add r1, r5, #0
 	add r1, #8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl sub_02033AB8
 	add r5, #0x54
 	strb r0, [r5]
@@ -1133,7 +1133,7 @@ _02035360:
 	ldr r0, [r0, #8]
 	add r1, r4, #0
 	mov r2, #0x54
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _02035388:
 	ldr r0, _020353A8 ; =_021D4134
 	ldr r1, [r0, #8]
@@ -1743,7 +1743,7 @@ _020357DA:
 	add r1, r4, #0
 	mul r1, r2
 	add r1, r3, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _020357F0:
 	pop {r3, r4, r5, pc}
 	nop
@@ -1791,7 +1791,7 @@ _02035834: .word 0x00000D95
 	thumb_func_start sub_02035838
 sub_02035838: ; 0x02035838
 	ldr r1, _02035848 ; =_021D4134
-	ldr r3, _0203584C ; =MIi_CpuCopy8
+	ldr r3, _0203584C ; =MI_CpuCopy8
 	ldr r2, [r1, #8]
 	ldr r1, _02035850 ; =0x00000D68
 	add r1, r2, r1
@@ -1799,7 +1799,7 @@ sub_02035838: ; 0x02035838
 	bx r3
 	nop
 _02035848: .word _021D4134
-_0203584C: .word MIi_CpuCopy8
+_0203584C: .word MI_CpuCopy8
 _02035850: .word 0x00000D68
 	thumb_func_end sub_02035838
 
@@ -1814,7 +1814,7 @@ sub_02035854: ; 0x02035854
 	ldr r1, _02035874 ; =0x00000D7C
 	add r0, r4, #0
 	ldr r1, [r3, r1]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, pc}
 	nop
 _02035870: .word _021D4134
@@ -1866,7 +1866,7 @@ sub_020358B8: ; 0x020358B8
 	ldr r1, _020358CC ; =_021D4134
 	mov r2, #0x54
 	ldr r1, [r1, #8]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl sub_0203588C
 	pop {r3, pc}
 	nop

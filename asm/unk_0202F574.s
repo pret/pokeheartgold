@@ -166,7 +166,7 @@ _0202F66C:
 	mul r3, r2
 	add r0, r0, r3
 	add r1, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0202F658
@@ -186,7 +186,7 @@ _0202F68E:
 	add r3, r1, #0
 	mul r3, r2
 	add r1, r4, r3
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, pc}
 	thumb_func_end sub_0202F680
 

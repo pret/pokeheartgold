@@ -817,7 +817,7 @@ ov15_021F99A4: ; 0x021F99A4
 	mov r2, #8
 	add r3, r1, #0
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x14
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -8798,7 +8798,7 @@ ov15_021FD93C: ; 0x021FD93C
 	orr r0, r1
 	strh r0, [r2]
 	ldr r0, _021FDAA8 ; =0x02201304
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201BB68

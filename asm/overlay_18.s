@@ -1053,7 +1053,7 @@ ov18_021E6174: ; 0x021E6174
 	mov r1, #0
 	mov r2, #0xf
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _021E6188: .word 0x04000050
@@ -1067,7 +1067,7 @@ ov18_021E618C: ; 0x021E618C
 	ldr r0, _021E61A0 ; =0x04000050
 	mov r1, #4
 	mov r2, #8
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _021E61A0: .word 0x04000050
@@ -17039,7 +17039,7 @@ _021EE2F0:
 	sub r0, r0, r3
 	str r0, [sp]
 	ldr r0, _021EE310 ; =0x04001050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, r4, r5, pc}
 	nop
 _021EE30C: .word 0x000018CB
@@ -17075,7 +17075,7 @@ ov18_021EE314: ; 0x021EE314
 	sub r0, r0, r3
 	str r0, [sp]
 	ldr r0, _021EE358 ; =0x04001050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -22718,13 +22718,13 @@ ov18_021F111C: ; 0x021F111C
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r4, r5, r6, pc}
 _021F1154:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov18_021F111C
 
@@ -23971,7 +23971,7 @@ _021F1AC8:
 	ldr r1, [sp, #0x1c]
 	add r0, r7, #0
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	ldr r0, [r4, r6]
 	ldr r0, [r0]
 	bl sub_02024B34
@@ -30289,7 +30289,7 @@ ov18_021F4E28: ; 0x021F4E28
 	lsl r0, r0, #0x14
 	lsl r1, r1, #0xc
 	bl FX_Div
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4EA8 ; =0x45800000
 	bl _fdiv
 	add r5, r0, #0
@@ -30347,14 +30347,14 @@ ov18_021F4EB0: ; 0x021F4EB0
 	ldrsh r7, [r0, r1]
 	add r4, r2, #0
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	mov r1, #0
 	bl _fgr
 	bls _021F4EF4
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -30367,7 +30367,7 @@ ov18_021F4EB0: ; 0x021F4EB0
 	b _021F4F10
 _021F4EF4:
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -30377,21 +30377,21 @@ _021F4EF4:
 	lsl r1, r1, #0x18
 	bl _fsub
 _021F4F10:
-	bl _ftoi
+	bl _ffix
 	add r7, r0, #0
 	add r0, r6, #1
 	lsl r1, r0, #1
 	ldr r0, _021F4F90 ; =0x021094DC
 	ldrsh r6, [r0, r1]
 	add r0, r6, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	mov r1, #0
 	bl _fgr
 	bls _021F4F52
 	add r0, r6, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -30404,7 +30404,7 @@ _021F4F10:
 	b _021F4F6E
 _021F4F52:
 	add r0, r6, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _021F4F94 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -30414,7 +30414,7 @@ _021F4F52:
 	lsl r1, r1, #0x18
 	bl _fsub
 _021F4F6E:
-	bl _ftoi
+	bl _ffix
 	mov r2, #0
 	ldrsh r1, [r5, r2]
 	mov r3, #0x38
@@ -39455,7 +39455,7 @@ ov18_021F9518: ; 0x021F9518
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x80
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x44

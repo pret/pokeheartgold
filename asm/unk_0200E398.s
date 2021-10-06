@@ -2556,7 +2556,7 @@ sub_0200F748: ; 0x0200F748
 	add r0, r4, #0
 	add r1, r7, #0
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r2, _0200F81C ; =0x00000162

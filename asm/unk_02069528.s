@@ -27,7 +27,7 @@ sub_02069528: ; 0x02069528
 	add r1, r7, #0
 	add r1, #0xa8
 	mov r2, #0x10
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r4, #0
 	bl PlayerProfile_GetTrainerID
 	add r1, r7, #0
@@ -94,7 +94,7 @@ _020695E4:
 	ldr r1, [sp, #8]
 	mov r2, #8
 	add r1, r1, r5
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r4, r4, #1
 	add r5, #8
 	cmp r4, #3
@@ -105,7 +105,7 @@ _020695E4:
 	add r1, r7, #0
 	add r1, #0xc0
 	mov r2, #8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [sp]
 	cmp r0, #0
 	bne _0206963E

@@ -377,7 +377,7 @@ _0200B3E2:
 	ldrsh r2, [r5, r2]
 	ldr r0, _0200B414 ; =0x04000050
 	ldr r1, [r5]
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	b _0200B40A
 _0200B3F8:
 	mov r0, #2
@@ -387,7 +387,7 @@ _0200B3F8:
 	ldrsh r2, [r5, r2]
 	ldr r0, _0200B418 ; =0x04001050
 	ldr r1, [r5]
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 _0200B40A:
 	cmp r4, #1
 	bne _0200B412
@@ -472,7 +472,7 @@ sub_0200B484: ; 0x0200B484
 	beq _0200B4B6
 	ldr r0, _0200B4E0 ; =0x04000050
 	add r1, r4, #0
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	str r4, [sp]
 	mov r0, #1
 	str r0, [sp, #4]
@@ -489,7 +489,7 @@ _0200B4B6:
 	ldr r0, _0200B4E8 ; =0x04001050
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	str r4, [sp]
 	mov r0, #2
 	str r0, [sp, #4]
@@ -519,7 +519,7 @@ SetBrightness: ; 0x0200B4F0
 	beq _0200B506
 	ldr r0, _0200B520 ; =0x04000050
 	add r2, r5, #0
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 _0200B506:
 	mov r0, #2
 	tst r0, r4
@@ -527,7 +527,7 @@ _0200B506:
 	ldr r0, _0200B524 ; =0x04001050
 	add r1, r6, #0
 	add r2, r5, #0
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 _0200B516:
 	add r0, r4, #0
 	bl sub_0200B554

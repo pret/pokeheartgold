@@ -580,13 +580,13 @@ _0221EA2C:
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r7, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r3, r4, r5, r6, r7, pc}
 _0221EA38:
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r7, #0
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	pop {r3, r4, r5, r6, r7, pc}
 _0221EA44:
 	bl GF_AssertFail
@@ -1409,7 +1409,7 @@ _0221F030:
 	mov r4, #0
 _0221F034:
 	ldrb r0, [r6, r4]
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	cmp r0, #5
 	bne _0221F044
 	add r0, r5, #1

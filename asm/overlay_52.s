@@ -1170,7 +1170,7 @@ _021E8A8A:
 	add r0, r6, #0
 	add r1, r7, #0
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	mov r0, #1
 	lsl r0, r0, #8
 	add r7, r7, r0

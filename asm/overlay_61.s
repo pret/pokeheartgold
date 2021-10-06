@@ -1006,7 +1006,7 @@ _021E6190:
 	blt _021E6190
 	ldr r0, _021E61EC ; =0x00000588
 	add r0, r4, r0
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	mov r1, #0
 	ldr r0, _021E61F0 ; =0x000043FF
 	ldr r2, _021E61F4 ; =0x00007FFF
@@ -2483,7 +2483,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	mov r1, #4
 	mov r2, #0x22
 	mov r3, #5
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -3001,7 +3001,7 @@ ov61_021E7108: ; 0x021E7108
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	lsl r2, r2, #6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	add r0, r6, #0
 	mov r1, #0x20
 	bl DC_FlushRange

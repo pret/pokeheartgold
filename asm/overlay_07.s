@@ -1249,7 +1249,7 @@ ov07_0221C69C: ; 0x0221C69C
 	mov r1, #0
 	mov r2, #0x3f
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _0221C6B0: .word 0x04000050
@@ -4739,7 +4739,7 @@ _0221E030:
 	str r0, [sp]
 	ldrb r3, [r5, #0xa]
 	ldr r0, _0221E0AC ; =0x04000050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add r0, r5, #0
 	bl ov07_0221DEC0
 	ldrb r0, [r5, #5]
@@ -4851,7 +4851,7 @@ _0221E0E6:
 	str r0, [sp]
 	ldrb r3, [r4, #9]
 	ldr r0, _0221E278 ; =0x04000050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add r0, r4, #0
 	bl ov07_0221DEC0
 	ldrb r0, [r4, #5]
@@ -7377,7 +7377,7 @@ ov07_0221F3F4: ; 0x0221F3F4
 	mov r1, #1
 	mov r2, #2
 	lsr r3, r3, #0x10
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _0221F420: .word 0x04001050
@@ -14288,13 +14288,13 @@ ov07_02222644: ; 0x02222644
 	ldrsh r0, [r5, r0]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _02222670 ; =0x43800000
 	bl _fdiv
 	str r0, [r4]
 	mov r0, #2
 	ldrsh r0, [r5, r0]
-	bl _itof
+	bl _fflt
 	ldr r1, _02222670 ; =0x43800000
 	bl _fdiv
 	str r0, [r6]
@@ -16222,7 +16222,7 @@ _022233F8:
 	str r0, [sp]
 	ldrh r3, [r4, #0x16]
 	ldr r0, _02223544 ; =0x04000050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #1
 	bl sub_0201BC28
@@ -16617,7 +16617,7 @@ _02223710:
 	str r0, [sp]
 	ldrh r3, [r4, #0x16]
 	ldr r0, _02223858 ; =0x04000050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #1
 	bl sub_0201BC28
@@ -26725,7 +26725,7 @@ _022288C4:
 	bl ov07_02222644
 	mov r0, #8
 	ldrsb r0, [r4, r0]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	ldr r0, [sp, #0x28]
 	bl _fmul
@@ -26788,7 +26788,7 @@ _02228936:
 	bl sub_0200DDB8
 	mov r0, #8
 	ldrsb r0, [r4, r0]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r2, #0xfe
 	ldr r0, [r5, #0x1c]
@@ -26857,7 +26857,7 @@ _022289D2:
 	bl ov07_02222644
 	mov r0, #8
 	ldrsb r0, [r4, r0]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	ldr r0, [sp, #0x20]
 	bl _fmul
@@ -26993,7 +26993,7 @@ _02228AFC:
 	mov r7, #8
 _02228B04:
 	ldrsb r0, [r4, r7]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r2, #0xfe
 	ldr r0, [r5, #0x1c]
@@ -32162,7 +32162,7 @@ _0222B4F6:
 _0222B530:
 	mov r0, #0x36
 	ldrsb r0, [r5, r0]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	ldr r0, [r5, #0x2c]
 	bl _fmul
@@ -32350,7 +32350,7 @@ _0222B6AC:
 	bl sub_0200DF98
 	mov r0, #0x36
 	ldrsb r0, [r4, r0]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	ldr r0, [r4, #0x2c]
 	bl _fmul
@@ -34262,7 +34262,7 @@ ov07_0222C610: ; 0x0222C610
 	bl ov07_02222644
 	mov r0, #0x64
 	ldrsh r0, [r4, r0]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	ldr r0, _0222C6A4 ; =0x3DCCCCCD
 	bl _fmul
@@ -35749,7 +35749,7 @@ _0222D2D2:
 	add r2, sp, #4
 	bl ov07_02222644
 	ldr r0, [r4, #0x54]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	ldr r0, [sp, #8]
 	bl _fmul
@@ -35815,7 +35815,7 @@ _0222D360:
 	add r2, sp, #4
 	bl ov07_02222644
 	ldr r0, [r4, #0x54]
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	ldr r0, [sp, #8]
 	bl _fmul
@@ -37122,7 +37122,7 @@ _0222DDD8:
 	mov r1, #0
 	mov r2, #0x3f
 	mov r3, #0x1f
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, [r4]
 	ldr r1, _0222DE2C ; =ov07_0222DCD8
 	add r2, r4, #0
@@ -37816,7 +37816,7 @@ _0222E31C:
 	mov r1, #0
 	mov r2, #0x3f
 	mov r3, #0x1f
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, [r6]
 	ldr r1, _0222E3A0 ; =ov07_0222E108
 	add r2, r6, #0
@@ -41326,7 +41326,7 @@ ov07_0222FF04: ; 0x0222FF04
 	lsr r1, r2, #0xc
 	orr r1, r0
 	neg r0, r1
-	bl _itof
+	bl _fflt
 	ldr r1, _0222FFCC ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -44119,7 +44119,7 @@ _022315F0:
 	str r0, [sp]
 	ldrh r3, [r4, #0x14]
 	ldr r0, _02231718 ; =0x04000050
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldrb r0, [r4, #0x18]
 	add r0, r0, #1
 	strb r0, [r4, #0x18]
@@ -45233,7 +45233,7 @@ _02231E22:
 	mov r1, #0
 	add r3, r5, #0
 	str r4, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, r4, r5, pc}
 	nop
 _02231E40: .word 0x04000050
@@ -45261,7 +45261,7 @@ _02231E5E:
 	mov r1, #0
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, r4, r5, pc}
 	nop
 _02231E70: .word 0x04000050
@@ -45302,7 +45302,7 @@ _02231E90:
 	add r2, r7, #0
 	add r3, r5, #0
 	str r4, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02231EBC: .word 0x04000050

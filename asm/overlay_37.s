@@ -1492,7 +1492,7 @@ ov37_021E657C: ; 0x021E657C
 	cmp r1, #0
 	ble _021E659A
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -1500,18 +1500,18 @@ ov37_021E657C: ; 0x021E657C
 	b _021E65A8
 _021E659A:
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E65A8:
-	bl _ftoi
+	bl _ffix
 	sub r5, #8
 	str r0, [sp]
 	cmp r5, #0
 	ble _021E65C6
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -1519,12 +1519,12 @@ _021E65A8:
 	b _021E65D4
 _021E65C6:
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E65D4:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #4]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -1922,7 +1922,7 @@ _021E68FA:
 	add r2, r1, #0
 	ldr r0, _021E6924 ; =0x04000050
 	sub r2, #0x14
-	bl sub_020CF178
+	bl G2x_SetBlendBrightness_
 	add r0, r5, #0
 	bl ov37_021E68AC
 	add r0, r4, #0

@@ -18,14 +18,14 @@ gMain: ; 0x021D110C
 	thumb_func_start sub_0201A08C
 sub_0201A08C: ; 0x0201A08C
 	push {r3, lr}
-	ldr r3, _0201A0B4 ; =OSi_IntrTable
+	ldr r3, _0201A0B4 ; =OS_IRQTable
 	ldr r1, _0201A0B8 ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
 	orr r0, r2
 	str r0, [r3, r1]
 	mov r0, #3
-	bl sub_020D422C
+	bl MI_WaitDma
 	ldr r0, _0201A0BC ; =gMain
 	ldr r0, [r0, #0x1c]
 	bl sub_0201F880
@@ -35,26 +35,26 @@ sub_0201A08C: ; 0x0201A08C
 	str r1, [r0, #0x30]
 	pop {r3, pc}
 	nop
-_0201A0B4: .word OSi_IntrTable
+_0201A0B4: .word OS_IRQTable
 _0201A0B8: .word 0x00003FF8
 _0201A0BC: .word gMain
 	thumb_func_end sub_0201A08C
 
 	thumb_func_start sub_0201A0C0
 sub_0201A0C0: ; 0x0201A0C0
-	ldr r3, _0201A0D4 ; =OSi_IntrTable
+	ldr r3, _0201A0D4 ; =OS_IRQTable
 	ldr r1, _0201A0D8 ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
 	orr r0, r2
 	str r0, [r3, r1]
-	ldr r3, _0201A0DC ; =sub_020D422C
+	ldr r3, _0201A0DC ; =MI_WaitDma
 	mov r0, #3
 	bx r3
 	nop
-_0201A0D4: .word OSi_IntrTable
+_0201A0D4: .word OS_IRQTable
 _0201A0D8: .word 0x00003FF8
-_0201A0DC: .word sub_020D422C
+_0201A0DC: .word MI_WaitDma
 	thumb_func_end sub_0201A0C0
 
 	thumb_func_start sub_0201A0E0
@@ -155,7 +155,7 @@ sub_0201A16C: ; 0x0201A16C
 	mov r0, #2
 	bl OS_DisableIrqMask
 	mov r0, #0
-	bl sub_020CD910
+	bl GX_HBlankIntr
 	b _0201A1A0
 _0201A18A:
 	ldr r0, [r2, #8]
@@ -165,7 +165,7 @@ _0201A18A:
 	mov r0, #2
 	bl OS_EnableIrqMask
 	mov r0, #1
-	bl sub_020CD910
+	bl GX_HBlankIntr
 _0201A1A0:
 	ldr r1, _0201A1AC ; =0x04000208
 	ldrh r0, [r1]
@@ -182,7 +182,7 @@ sub_0201A1B4: ; 0x0201A1B4
 	push {r3, lr}
 	sub sp, #0x30
 	add r0, sp, #0x10
-	bl sub_020D3E78
+	bl OS_GetLowEntropyData
 	add r0, sp, #0
 	add r1, sp, #0x10
 	mov r2, #0x20
@@ -222,7 +222,7 @@ _0201A1FC: .word _020F62A4
 	thumb_func_start InitSystemForTheGame
 InitSystemForTheGame: ; 0x0201A200
 	push {r3, r4, r5, lr}
-	bl sub_020D290C
+	bl OS_Init
 	bl FX_Init
 	ldr r2, _0201A324 ; =0x04000304
 	ldr r0, _0201A328 ; =0xFFFFFDF1
@@ -231,8 +231,8 @@ InitSystemForTheGame: ; 0x0201A200
 	ldr r0, _0201A32C ; =0x0000020E
 	orr r0, r1
 	strh r0, [r2]
-	bl sub_020CD7C4
-	bl sub_020D33C0
+	bl GX_Init
+	bl OS_InitTick
 	bl sub_0201A1B4
 	mov r0, #0xa0
 	bl sub_0201F82C
@@ -278,7 +278,7 @@ InitSystemForTheGame: ; 0x0201A200
 	bl sub_0201F834
 	ldr r1, _0201A330 ; =gMain
 	str r0, [r1, #0x24]
-	bl sub_020CD978
+	bl GX_DispOff
 	ldr r2, _0201A334 ; =0x04001000
 	ldr r0, _0201A338 ; =0xFFFEFFFF
 	ldr r1, [r2]
@@ -301,13 +301,13 @@ InitSystemForTheGame: ; 0x0201A200
 	ldrh r0, [r1]
 	mov r0, #1
 	strh r0, [r1]
-	bl sub_020CD944
+	bl GX_VBlankIntr
 	mov r0, #1
-	bl sub_020D7F60
+	bl FS_Init
 	bl sub_02027010
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_020D8728
+	bl FS_TryLoadTable
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -319,7 +319,7 @@ InitSystemForTheGame: ; 0x0201A200
 _0201A2F4:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020D8728
+	bl FS_TryLoadTable
 	ldr r0, _0201A330 ; =gMain
 	mov r1, #0
 	str r1, [r0]
@@ -334,7 +334,7 @@ _0201A2F4:
 	mov r1, #9
 	lsl r0, r0, #8
 	lsl r1, r1, #0xa
-	bl sub_020DC9DC
+	bl CARD_SetCacheFlushThreshold
 	mov r0, #0
 	bl GF_CRC16Init
 	pop {r3, r4, r5, pc}
@@ -354,14 +354,14 @@ _0201A344: .word gMain + 0x60
 InitGraphicMemory: ; 0x0201A348
 	push {r3, lr}
 	ldr r0, _0201A398 ; =0x000001FF
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	mov r1, #0x1a
 	mov r2, #0x29
 	mov r0, #0
 	lsl r1, r1, #0x16
 	lsl r2, r2, #0xe
 	bl MIi_CpuClearFast
-	bl sub_020CEB60
+	bl GX_DisableBankForLCDC
 	mov r1, #7
 	mov r2, #1
 	mov r0, #0xc0
@@ -513,14 +513,14 @@ InitKeypadAndTouchpad: ; 0x0201A458
 	strh r2, [r0, #0x26]
 	ldr r0, _0201A4AC ; =gMain + 0x60
 	strb r2, [r0, #8]
-	bl sub_020D9EF0
+	bl TP_Init
 	bl sub_020210A0
 	add r0, sp, #0
-	bl sub_020D9F68
+	bl TP_GetUserInfo
 	cmp r0, #1
 	bne _0201A49E
 	add r0, sp, #0
-	bl sub_020D9FFC
+	bl TP_SetCalibrateParam
 _0201A49E:
 	add sp, #8
 	pop {r3, pc}
@@ -635,19 +635,19 @@ _0201A548:
 	bne _0201A574
 	add r4, sp, #8
 _0201A564:
-	bl sub_020DA124
+	bl TP_RequestSamplingAsync
 	add r0, r4, #0
-	bl sub_020DA1B8
+	bl TP_WaitRawResult
 	cmp r0, #0
 	bne _0201A564
 	b _0201A57A
 _0201A574:
 	add r0, sp, #8
-	bl sub_020DA3A0
+	bl TP_GetLatestRawPointInAuto
 _0201A57A:
 	add r0, sp, #0
 	add r1, sp, #8
-	bl sub_020DA6E0
+	bl TP_GetCalibratedPoint
 	add r1, sp, #0
 	ldrh r3, [r1, #6]
 	cmp r3, #0

@@ -1025,7 +1025,7 @@ _0205211E:
 	add r0, r4, #0
 	add r1, sp, #0x28
 	mov r2, #6
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r6, #0
 	add r1, r6, #0
 	add r2, sp, #0x28

@@ -540,14 +540,14 @@ _0222BAB4:
 	mov r1, #4
 	mov r2, #0x12
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _0222BC40 ; =0x04001050
 	mov r1, #4
 	mov r2, #0x12
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x3c
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -4231,14 +4231,14 @@ ov40_0222D910: ; 0x0222D910
 	ldr r0, _0222D978 ; =0x04000050
 	ldr r3, [r5]
 	add r2, r7, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, [r4]
 	ldr r1, [sp, #0x18]
 	str r0, [sp]
 	ldr r0, _0222D97C ; =0x04001050
 	ldr r2, [sp, #0x1c]
 	ldr r3, [r5]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _0222D948:
 	ldr r0, [sp, #0x20]
 	cmp r0, #1
@@ -4249,7 +4249,7 @@ _0222D948:
 	ldr r0, _0222D978 ; =0x04000050
 	ldr r3, [r5]
 	add r2, r7, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _0222D95E:
 	ldr r0, [sp, #0x20]
 	cmp r0, #2
@@ -4260,7 +4260,7 @@ _0222D95E:
 	ldr r0, _0222D97C ; =0x04001050
 	ldr r2, [sp, #0x1c]
 	ldr r3, [r5]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _0222D974:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -4284,14 +4284,14 @@ ov40_0222D980: ; 0x0222D980
 	ldr r0, _0222D9E0 ; =0x04000050
 	ldr r3, [r5]
 	add r2, r7, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, [r4]
 	ldr r1, [sp, #0x18]
 	str r0, [sp]
 	ldr r0, _0222D9E4 ; =0x04001050
 	ldr r2, [sp, #0x1c]
 	ldr r3, [r5]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _0222D9B0:
 	ldr r0, [sp, #0x20]
 	cmp r0, #1
@@ -4302,7 +4302,7 @@ _0222D9B0:
 	ldr r0, _0222D9E0 ; =0x04000050
 	ldr r3, [r5]
 	add r2, r7, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _0222D9C6:
 	ldr r0, [sp, #0x20]
 	cmp r0, #2
@@ -4313,7 +4313,7 @@ _0222D9C6:
 	ldr r0, _0222D9E4 ; =0x04001050
 	ldr r2, [sp, #0x1c]
 	ldr r3, [r5]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _0222D9DC:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -4890,7 +4890,7 @@ ov40_0222DD9C: ; 0x0222DD9C
 	bl sub_0201D5C8
 	add r0, r6, #0
 	bl String_dtor
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #4
 	mov r1, #1
 	bl sub_02022CC8
@@ -4936,14 +4936,14 @@ ov40_0222DE40: ; 0x0222DE40
 	mov r1, #4
 	mov r2, #0x12
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _0222DEA8 ; =0x04001050
 	mov r1, #4
 	mov r2, #0x12
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 _0222DE9C:
 	add sp, #4
 	pop {r3, r4, pc}
@@ -8709,7 +8709,7 @@ _0222FC8C:
 	add r1, r6, #0
 	ldr r0, [r5, r0]
 	mov r2, #0xe4
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _0222FCC4 ; =0x00002608
 	ldr r1, [sp]
 	ldr r0, [r5, r0]
@@ -17250,14 +17250,14 @@ _0223409E:
 	mov r1, #4
 	mov r2, #0x12
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _02234148 ; =0x04001050
 	mov r1, #4
 	mov r2, #0x12
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -26669,7 +26669,7 @@ _02238ED4:
 	ldr r2, _02238EFC ; =0x00002A30
 	add r0, r4, r0
 	add r1, r4, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, pc}
 	nop
 _02238EFC: .word 0x00002A30
@@ -29129,7 +29129,7 @@ _0223A33E:
 	ldr r0, [r4, r1]
 	sub r1, #0xc
 	add r1, r4, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, pc}
 	nop
 _0223A35C: .word 0x0000071C
@@ -29166,13 +29166,13 @@ _0223A382:
 	ldr r0, [r4, r0]
 	ldr r2, _0223A3B4 ; =0x00000558
 	add r1, #0xe0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _0223A3B8 ; =0x00000718
 	mov r2, #0xd8
 	ldr r0, [r4, r1]
 	sub r1, #0xe0
 	add r1, r4, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, pc}
 	.balign 4, 0
 _0223A3B0: .word 0x00000714
@@ -29665,7 +29665,7 @@ _0223A794:
 	add r1, r4, r2
 	ldr r0, [r5, r0]
 	ldr r2, _0223A830 ; =0x00001D4C
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _0223A7CC:
 	mov r0, #0x6f
 	lsl r0, r0, #4
@@ -34453,7 +34453,7 @@ ov40_0223CFA8: ; 0x0223CFA8
 	ldr r0, [r2, r0]
 	mov r2, #0x64
 	add r0, #0x80
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, r4, r5, pc}
 	nop
 _0223D000: .word 0x000004D4
@@ -40317,7 +40317,7 @@ _0223FEE0:
 	ldr r0, [r5, r0]
 	ldr r2, _0223FF88 ; =0x00001D4C
 	add r1, r4, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _0223FF18:
 	mov r0, #0x6f
 	lsl r0, r0, #4
@@ -41371,7 +41371,7 @@ _022407BA:
 	ldr r0, [r5, r0]
 	ldr r2, _02240858 ; =0x00001D4C
 	add r1, r4, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _022407EE:
 	ldr r0, _0224083C ; =0x000006F4
 	mov r1, #0
@@ -41455,7 +41455,7 @@ ov40_0224085C: ; 0x0224085C
 	ldr r0, [r4, r0]
 	mov r2, #0x64
 	add r0, #0x80
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, pc}
 	nop
 _022408A8: .word 0x000004BC
@@ -41503,7 +41503,7 @@ ov40_022408AC: ; 0x022408AC
 	ldr r0, [r2, r0]
 	mov r2, #0x64
 	add r0, #0x80
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02240908: .word 0x000004D4

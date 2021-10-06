@@ -235,7 +235,7 @@ ov63_0221C00C: ; 0x0221C00C
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov63_0221C00C
@@ -1088,14 +1088,14 @@ _0221C6B0:
 	ldr r1, [sp, #8]
 	bl sub_0200DDB8
 	add r0, r6, #0
-	bl _utof
+	bl _ffltu
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #8]
 	bl _fsub
 	add r6, r0, #0
 	ldr r0, [sp, #4]
-	bl _utof
+	bl _ffltu
 	add r1, r0, #0
 	add r0, r6, #0
 	bl _fdiv
@@ -1458,7 +1458,7 @@ ov63_0221C99C: ; 0x0221C99C
 	add r1, r2, r1
 	add r0, r0, r6
 	mov r2, #0x20
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0221C9DC: .word 0x0000328C
@@ -4794,7 +4794,7 @@ ov63_0221E55C: ; 0x0221E55C
 	mov r2, #0x1c
 	add r3, r1, #0
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 _0221E578:
@@ -4810,7 +4810,7 @@ _0221E578:
 	ldr r0, _0221E59C ; =0x04000050
 	mov r1, #4
 	mov r2, #0x1c
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -6138,7 +6138,7 @@ ov63_0221F088: ; 0x0221F088
 	sub sp, #4
 	add r4, r0, #0
 	bl sub_020C2698
-	bl sub_020CF704
+	bl G3X_InitMtxStack
 	ldr r0, _0221F118 ; =0x04000060
 	ldr r2, _0221F11C ; =0xFFFFCFFD
 	ldrh r1, [r0]
@@ -6193,7 +6193,7 @@ ov63_0221F088: ; 0x0221F088
 	mov r2, #0x1c
 	add r3, r1, #0
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add r0, r4, #0
 	bl ov63_0221F130
 	add sp, #4
@@ -6300,7 +6300,7 @@ ov63_0221F1D0: ; 0x0221F1D0
 	lsl r0, r0, #0x1a
 	tst r0, r1
 	bne _0221F22A
-	bl sub_020CF670
+	bl G3X_Reset
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
@@ -6390,17 +6390,17 @@ ov63_0221F294: ; 0x0221F294
 	add r0, r4, #0
 	add r1, #0x14
 	lsl r2, r2, #0xa
-	bl sub_020D0D60
+	bl G3_BeginMakeDL
 	ldr r1, _0221F2DC ; =0x00007FFF
 	ldr r2, _0221F2E0 ; =0x00004210
 	add r0, r4, #0
 	mov r3, #0
-	bl sub_020CF394
+	bl G3B_MaterialColorDiffAmb
 	mov r2, #0
 	ldr r1, _0221F2E0 ; =0x00004210
 	add r0, r4, #0
 	add r3, r2, #0
-	bl sub_020CF3D8
+	bl G3B_MaterialColorSpecEmi
 	pop {r4, pc}
 _0221F2C8:
 	ldr r1, _0221F2E4 ; =0x022203E0
@@ -6425,7 +6425,7 @@ ov63_0221F2E8: ; 0x0221F2E8
 	cmp r1, #0
 	beq _0221F30A
 	add r0, r4, #0
-	bl sub_020D0D80
+	bl G3_EndMakeDL
 	ldr r1, _0221F31C ; =0x00000814
 	str r0, [r4, r1]
 	add r0, r4, #0
@@ -6668,17 +6668,17 @@ _0221F448:
 	add r2, r3, #0
 	ldr r0, [r5]
 	mov r3, #2
-	bl sub_020CF348
+	bl G3B_PolygonAttr
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_020CF4A8
+	bl G3B_Begin
 	mov r1, #0x81
 	lsl r1, r1, #4
 	ldr r1, [r5, r1]
 	ldr r0, [r5]
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020CF278
+	bl G3B_Color
 	ldr r3, _0221F570 ; =0x0000081A
 	ldr r0, [r5]
 	add r2, r3, #2
@@ -6686,7 +6686,7 @@ _0221F448:
 	add r3, r3, #4
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r3]
-	bl sub_020CF2F4
+	bl G3B_Vtx
 	mov r3, #0x82
 	lsl r3, r3, #4
 	add r2, r3, #2
@@ -6695,7 +6695,7 @@ _0221F448:
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r3]
 	ldr r0, [r5]
-	bl sub_020CF2F4
+	bl G3B_Vtx
 	ldr r3, _0221F574 ; =0x0000082C
 	ldr r0, [r5]
 	add r2, r3, #2
@@ -6703,7 +6703,7 @@ _0221F448:
 	add r3, r3, #4
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r3]
-	bl sub_020CF2F4
+	bl G3B_Vtx
 	ldr r3, _0221F578 ; =0x00000826
 	ldr r0, [r5]
 	add r2, r3, #2
@@ -6711,9 +6711,9 @@ _0221F448:
 	add r3, r3, #4
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r3]
-	bl sub_020CF2F4
+	bl G3B_Vtx
 	ldr r0, [r5]
-	bl sub_020CF4D4
+	bl G3B_End
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _0221F552:
@@ -6749,7 +6749,7 @@ ov63_0221F580: ; 0x0221F580
 	ldr r2, [r3, r2]
 	mov r0, #3
 	add r1, #0x14
-	bl sub_01FF8580
+	bl MI_SendGXCommand
 	ldr r0, _0221F5B0 ; =0x04000448
 	mov r1, #1
 	str r1, [r0]
@@ -7061,7 +7061,7 @@ _0221F7FA:
 	add r1, #0x14
 	add r1, r7, r1
 	lsl r2, r2, #0xa
-	bl sub_020D0D60
+	bl G3_BeginMakeDL
 	mov r0, #0x3f
 	str r0, [sp]
 	mov r0, #0x1f
@@ -7072,13 +7072,13 @@ _0221F7FA:
 	add r0, r7, r0
 	add r3, r1, #0
 	str r2, [sp, #8]
-	bl sub_020CF348
+	bl G3B_PolygonAttr
 	ldr r0, _0221FA74 ; =0x00001508
 	mov r2, #0
 	ldr r1, _0221FA78 ; =0x00005294
 	add r0, r7, r0
 	add r3, r2, #0
-	bl sub_020CF394
+	bl G3B_MaterialColorDiffAmb
 	mov r0, #0
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
@@ -7142,14 +7142,14 @@ _0221F86C:
 	ldr r2, _0221FA84 ; =0x00002D6B
 	add r0, r7, r0
 	mov r1, #0
-	bl sub_020CF478
+	bl G3B_LightColor
 	ldr r2, [r4, #8]
 	ldr r0, _0221FA74 ; =0x00001508
 	lsl r2, r2, #0x10
 	add r0, r7, r0
 	mov r1, #1
 	lsr r2, r2, #0x10
-	bl sub_020CF478
+	bl G3B_LightColor
 	mov r1, #0
 	add r0, sp, #0x20
 	strh r1, [r0]
@@ -7173,7 +7173,7 @@ _0221F86C:
 	mov r3, #2
 	ldrsh r3, [r6, r3]
 	add r0, r7, r0
-	bl sub_020CF41C
+	bl G3B_LightVector
 	mov r1, #0
 	add r0, r6, #0
 	strh r1, [r0]
@@ -7196,7 +7196,7 @@ _0221F86C:
 	ldrsh r3, [r6, r3]
 	add r0, r7, r0
 	mov r1, #1
-	bl sub_020CF41C
+	bl G3B_LightVector
 	ldrh r0, [r4, #0x28]
 	ldr r3, _0221FA90 ; =0x021094DC
 	asr r0, r0, #4
@@ -7249,24 +7249,24 @@ _0221F86C:
 	add r0, r7, r0
 	lsr r2, r2, #0x10
 	mov r3, #0
-	bl sub_020CF3D8
+	bl G3B_MaterialColorSpecEmi
 	ldr r0, _0221FA74 ; =0x00001508
 	add r0, r7, r0
-	bl sub_020CF208
+	bl G3B_PushMtx
 	ldr r0, _0221FA74 ; =0x00001508
 	add r1, r5, #0
 	add r0, r7, r0
-	bl sub_020CF254
+	bl G3B_LoadMtx44
 	ldr r0, _0221FA74 ; =0x00001508
 	mov r1, #1
 	add r0, r7, r0
-	bl sub_020CF4A8
+	bl G3B_Begin
 	ldr r0, _0221FA74 ; =0x00001508
 	mov r1, #0
 	ldr r3, _0221FA8C ; =0xFFFFF001
 	add r0, r7, r0
 	add r2, r1, #0
-	bl sub_020CF2A4
+	bl G3B_Normal
 	mov r1, #0x9b
 	ldr r0, _0221FA74 ; =0x00001508
 	mvn r1, r1
@@ -7274,34 +7274,34 @@ _0221F86C:
 	add r0, r7, r0
 	sub r2, #0x31
 	mov r3, #0
-	bl sub_020CF2F4
+	bl G3B_Vtx
 	ldr r0, _0221FA74 ; =0x00001508
 	mov r2, #0xcc
 	add r0, r7, r0
 	mov r1, #0x9c
 	mvn r2, r2
 	mov r3, #0
-	bl sub_020CF2F4
+	bl G3B_Vtx
 	ldr r0, _0221FA74 ; =0x00001508
 	mov r1, #0x9c
 	add r0, r7, r0
 	mov r2, #0xcd
 	mov r3, #0
-	bl sub_020CF2F4
+	bl G3B_Vtx
 	ldr r0, _0221FA74 ; =0x00001508
 	mov r1, #0x9b
 	add r0, r7, r0
 	mvn r1, r1
 	mov r2, #0xcd
 	mov r3, #0
-	bl sub_020CF2F4
+	bl G3B_Vtx
 	ldr r0, _0221FA74 ; =0x00001508
 	add r0, r7, r0
-	bl sub_020CF4D4
+	bl G3B_End
 	ldr r0, _0221FA74 ; =0x00001508
 	mov r1, #1
 	add r0, r7, r0
-	bl sub_020CF228
+	bl G3B_PopMtx
 	ldr r0, [sp, #0x18]
 	add r4, #0x70
 	add r0, #0x70
@@ -7325,7 +7325,7 @@ _0221F86C:
 _0221FA46:
 	ldr r0, _0221FA74 ; =0x00001508
 	add r0, r7, r0
-	bl sub_020D0D80
+	bl G3_EndMakeDL
 	ldr r1, _0221FA98 ; =0x00008D1C
 	str r0, [r7, r1]
 	ldr r0, _0221FA9C ; =0x0000151C
@@ -7377,7 +7377,7 @@ ov63_0221FAA0: ; 0x0221FAA0
 	ldr r2, [r4, r2]
 	mov r0, #3
 	add r1, r4, r1
-	bl sub_01FF8580
+	bl MI_SendGXCommand
 	ldr r0, _0221FAE0 ; =0x04000448
 	mov r1, #1
 	str r1, [r0]

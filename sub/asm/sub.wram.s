@@ -2,372 +2,9 @@
 	.include "global.inc"
 
 	.text
-	.public _0380664C
 
-	arm_func_start sub_037F8000
-sub_037F8000: ; 0x037F8000
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	sub sp, sp, #0x210
-	bl sub_027E0000
-	bl OS_Init
-	bl OS_InitThread
-	add r2, sp, #4
-	mov r0, #0x20
-	mov r1, #2
-	bl sub_03803E6C
-	ldr r0, [sp, #4]
-	add r2, sp, #0x10
-	mov r0, r0, lsl #3
-	str r0, [sp, #4]
-	mov r1, #0x100
-	bl sub_03803E6C
-	ldr r0, [sp, #4]
-	mov r1, #0x100
-	add r0, r0, #0x100
-	add r2, sp, #0x110
-	bl sub_03803E6C
-	mov r0, #0x1d
-	mov r1, #1
-	add r2, sp, #0
-	mov r6, #0
-	bl sub_03803E6C
-	ldrb r0, [sp]
-	cmp r0, #0xff
-	moveq r0, r6
-	beq _037F8080
-	tst r0, #0x50
-	movne r0, #1
-	moveq r0, r6
-_037F8080:
-	cmp r0, #0
-	beq _037F8154
-	bl sub_037F8488
-	mov r8, r0
-	mov fp, #1
-	and r7, r8, #0x40
-	mov sl, #0
-	add r5, sp, #0x10
-	mov r4, fp
-	b _037F8148
-_037F80A8:
-	ldr r0, _037F8458 ; =0x0000FFFF
-	add sb, r5, sl, lsl #8
-	mov r1, sb
-	mov r2, #0x70
-	bl sub_037F8470
-	mov r2, sb
-	ldrh r1, [r2, #0x72]
-	cmp r0, r1
-	bne _037F813C
-	ldrh r0, [r2, #0x70]
-	cmp r0, #0x80
-	bhs _037F813C
-	ldr r0, _037F8458 ; =0x0000FFFF
-	mov r2, #0x8a
-	add r1, sb, #0x74
-	bl sub_037F8470
-	mov r2, sb
-	ldrh r1, [r2, #0xfe]
-	cmp r0, r1
-	bne _037F813C
-	ldrh r1, [r2, #0x76]
-	ldrb r0, [r2, #0x75]
-	tst r1, r4, lsl r0
-	beq _037F813C
-	tst r8, r1
-	ldrneh r1, [sb, #0x64]
-	andne r0, r0, #7
-	bicne r1, r1, #7
-	orrne r0, r1, r0
-	strneh r0, [sb, #0x64]
-	add r0, r5, sl, lsl #8
-	ldrh r0, [r0, #0x76]
-	mvn r0, r0
-	tst r7, r0
-	movne r6, #3
-	bne _037F81F4
-	orr r6, r6, fp, lsl sl
-_037F813C:
-	add r0, sl, #1
-	mov r0, r0, lsl #0x10
-	mov sl, r0, lsr #0x10
-_037F8148:
-	cmp sl, #2
-	blo _037F80A8
-	b _037F81B8
-_037F8154:
-	bl sub_037F8488
-	tst r0, #0x40
-	movne r6, #3
-	bne _037F81F4
-	ldr r8, _037F8458 ; =0x0000FFFF
-	mov sb, #0
-	add r7, sp, #0x10
-	mov r4, #1
-	mov r5, #0x70
-_037F8178:
-	mov r0, r8
-	mov r2, r5
-	add r1, r7, sb, lsl #8
-	bl sub_037F8470
-	add r2, r7, sb, lsl #8
-	ldrh r1, [r2, #0x72]
-	cmp r0, r1
-	bne _037F81A4
-	ldrh r0, [r2, #0x70]
-	cmp r0, #0x80
-	orrlo r6, r6, r4, lsl sb
-_037F81A4:
-	add r0, sb, #1
-	mov r0, r0, lsl #0x10
-	mov sb, r0, lsr #0x10
-	cmp sb, #2
-	blo _037F8178
-_037F81B8:
-	cmp r6, #1
-	cmpne r6, #2
-	beq _037F81F4
-	cmp r6, #3
-	bne _037F81F0
-	ldrh r1, [sp, #0x80]
-	add r0, sp, #0x100
-	add r1, r1, #1
-	ldrh r0, [r0, #0x80]
-	and r1, r1, #0x7f
-	cmp r1, r0
-	moveq r6, #2
-	movne r6, #1
-	b _037F81F4
-_037F81F0:
-	mov r6, #0
-_037F81F4:
-	cmp r6, #3
-	blt _037F8210
-	ldr r1, _037F845C ; =0x027FFC80
-	mvn r0, #0
-	mov r2, #0x74
-	bl MIi_CpuClear32
-	b _037F82CC
-_037F8210:
-	cmp r6, #0
-	beq _037F82BC
-	ldr r0, _037F8460 ; =0xFFFFFF2A
-	mov r1, r6, lsl #8
-	add r0, sp, r0
-	ldrb r0, [r0, r6, lsl #8]
-	cmp r0, #0xa
-	bhs _037F825C
-	add r0, sp, #0x10
-	mov r3, #0xa
-	mov r2, #0
-	add r1, r0, r1
-	b _037F8250
-_037F8244:
-	add r0, r1, r3, lsl #1
-	strh r2, [r0, #-0xfc]
-	sub r3, r3, #1
-_037F8250:
-	ldrb r0, [r1, #-0xe6]
-	cmp r3, r0
-	bgt _037F8244
-_037F825C:
-	ldr r0, _037F8464 ; =0xFFFFFF60
-	mov r1, r6, lsl #8
-	add r0, sp, r0
-	ldrb r0, [r0, r6, lsl #8]
-	cmp r0, #0x1a
-	bhs _037F82A0
-	add r0, sp, #0x10
-	mov r3, #0x1a
-	mov r2, #0
-	add r1, r0, r1
-	b _037F8294
-_037F8288:
-	add r0, r1, r3, lsl #1
-	strh r2, [r0, #-0xe6]
-	sub r3, r3, #1
-_037F8294:
-	ldrb r0, [r1, #-0xb0]
-	cmp r3, r0
-	bgt _037F8288
-_037F82A0:
-	ldr r1, _037F845C ; =0x027FFC80
-	add r2, sp, #0x10
-	sub r0, r6, #1
-	add r0, r2, r0, lsl #8
-	mov r2, #0x74
-	bl sub_037FAFE0
-	b _037F82CC
-_037F82BC:
-	ldr r1, _037F845C ; =0x027FFC80
-	mov r0, #0
-	mov r2, #0x74
-	bl MIi_CpuClear32
-_037F82CC:
-	add r2, sp, #8
-	mov r0, #0x36
-	mov r1, #6
-	bl sub_03803E6C
-	ldr r4, _037F845C ; =0x027FFC80
-	add r0, sp, #8
-	add r1, r4, #0x74
-	mov r2, #6
-	bl sub_037FB110
-	add r2, sp, #2
-	mov r0, #0x3c
-	mov r1, #2
-	bl sub_03803E6C
-	ldrh r0, [sp, #2]
-	mov r0, r0, lsl #0xf
-	mov r0, r0, lsr #0x10
-	bl sub_03806968
-	strh r0, [r4, #0x7a]
-	bl PXI_Init
-	mov r0, #8
-	bl OS_GetArenaHi
-	mov r4, r0
-	mov r0, #8
-	bl OS_GetArenaLo
-	mov r1, r0
-	mov r2, r4
-	mov r0, #8
-	mov r3, #1
-	bl sub_037F9E48
-	mov r4, r0
-	mov r0, #8
-	bl OS_GetArenaHi
-	sub r2, r0, r4
-	mov r0, r4
-	mov r1, #0
-	bl sub_037FB07C
-	mov r1, r4
-	mov r0, #8
-	bl OS_SetArenaLo
-	mov r0, #8
-	bl OS_GetArenaHi
-	mov r4, r0
-	mov r0, #8
-	bl OS_GetArenaLo
-	mov r1, r0
-	mov r2, r4
-	mov r0, #8
-	bl sub_037F9EF0
-	movs r4, r0
-	bpl _037F8398
-	bl OS_Terminate
-_037F8398:
-	mov r1, r4
-	mov r0, #8
-	bl sub_037F9E14
-	mov r1, r4
-	mov r0, #8
-	bl sub_037F9F90
-	cmp r0, #0x2100
-	bhs _037F83BC
-	bl OS_Terminate
-_037F83BC:
-	mov r0, #6
-	bl sub_037FBE8C
-	bl sub_037FB554
-	ldr r1, _037F8468 ; =sub_037F84C0
-	mov r0, #1
-	bl OS_SetIrqFunction
-	mov r0, #1
-	bl OS_EnableIrqMask
-	ldr r3, _037F846C ; =0x04000004
-	mov r0, #1
-	ldrh r1, [r3]
-	ldrh r1, [r3]
-	add r2, r3, #0x204
-	orr r1, r1, #8
-	strh r1, [r3]
-	ldrh r1, [r2]
-	strh r0, [r2]
-	bl sub_037FAD10
-	mvn r0, #0
-	bl sub_037FF5B0
-	mov r0, #0xf
-	bl sub_037FF678
-	mov r0, #0xc
-	bl sub_03804578
-	mov r0, r4
-	bl sub_038059E8
-	mov r0, #2
-	bl sub_03800920
-	mov r4, #0
-_037F8430:
-	bl sub_037F847C
-	bl sub_037FADD8
-	cmp r0, #0
-	beq _037F844C
-	mov r0, r4
-	bl sub_038034B0
-	bl sub_037FAE1C
-_037F844C:
-	bl sub_038036E8
-	bl sub_038007AC
-	b _037F8430
-	.align 2, 0
-_037F8458: .word 0x0000FFFF
-_037F845C: .word 0x027FFC80
-_037F8460: .word 0xFFFFFF2A
-_037F8464: .word 0xFFFFFF60
-_037F8468: .word sub_037F84C0
-_037F846C: .word 0x04000004
-	arm_func_end sub_037F8000
-
-	arm_func_start sub_037F8470
-sub_037F8470: ; 0x037F8470
-	ldr ip, _037F8478 ; =SVC_GetCRC16
-	bx ip
-	.align 2, 0
-_037F8478: .word SVC_GetCRC16
-	arm_func_end sub_037F8470
-
-	arm_func_start sub_037F847C
-sub_037F847C: ; 0x037F847C
-	ldr ip, _037F8484 ; =SVC_Halt
-	bx ip
-	.align 2, 0
-_037F8484: .word SVC_Halt
-	arm_func_end sub_037F847C
-
-	arm_func_start sub_037F8488
-sub_037F8488: ; 0x037F8488
-	ldr r1, _037F84BC ; =0x027FFE1D
-	mov r0, #0
-	ldrb r1, [r1]
-	cmp r1, #0x80
-	orreq r0, r0, #0x40
-	moveq r0, r0, lsl #0x10
-	moveq r0, r0, lsr #0x10
-	bxeq lr
-	cmp r1, #0x40
-	orreq r0, r0, #0x80
-	moveq r0, r0, lsl #0x10
-	moveq r0, r0, lsr #0x10
-	bx lr
-	.align 2, 0
-_037F84BC: .word 0x027FFE1D
-	arm_func_end sub_037F8488
-
-	arm_func_start sub_037F84C0
-sub_037F84C0: ; 0x037F84C0
-	stmdb sp!, {r3, lr}
-	ldr r0, _037F84E0 ; =0x038093B0
-	ldr r0, [r0]
-	cmp r0, #0
-	beq _037F84D8
-	bl sub_0380219C
-_037F84D8:
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037F84E0: .word 0x038093B0
-	arm_func_end sub_037F84C0
-
-	arm_func_start sub_037F84E4
-sub_037F84E4: ; 0x037F84E4
+	arm_func_start OS_IrqHandler
+OS_IrqHandler: ; 0x037F84E4
 	stmdb sp!, {lr}
 	mov ip, #0x4000000
 	add ip, ip, #0x210
@@ -384,17 +21,17 @@ _037F8510:
 	addeq r0, r0, #1
 	beq _037F8510
 	str r2, [ip, #4]
-	ldr r1, _037F8530 ; =0x03806A88
+	ldr r1, _037F8530 ; =OS_IRQTable
 	ldr r0, [r1, r0, lsl #2]
-	ldr lr, _037F8534 ; =sub_037F8538
+	ldr lr, _037F8534 ; =OS_IrqHandler_ThreadSwitch
 	bx r0
 	.align 2, 0
-_037F8530: .word 0x03806A88
-_037F8534: .word sub_037F8538
-	arm_func_end sub_037F84E4
+_037F8530: .word OS_IRQTable
+_037F8534: .word OS_IrqHandler_ThreadSwitch
+	arm_func_end OS_IrqHandler
 
-	arm_func_start sub_037F8538
-sub_037F8538: ; 0x037F8538
+	arm_func_start OS_IrqHandler_ThreadSwitch
+OS_IrqHandler_ThreadSwitch: ; 0x037F8538
 	ldr ip, _037F8654 ; =0x03806BA4
 	mov r3, #0
 	ldr ip, [ip]
@@ -449,10 +86,7 @@ _037F85D8:
 	stmdb sp!, {r0, r1, ip}
 	mov lr, pc
 	bx r3
-	arm_func_end sub_037F8538
-
-	arm_func_start sub_037F85FC
-sub_037F85FC: ; 0x037F85FC
+_037F85FC:
 	ldmia sp!, {r0, r1, ip}
 _037F8600:
 	str r1, [ip, #4]
@@ -479,7 +113,7 @@ _037F8600:
 	.align 2, 0
 _037F8654: .word 0x03806BA4
 _037F8658: .word OSi_ThreadInfo
-	arm_func_end sub_037F85FC
+	arm_func_end OS_IrqHandler_ThreadSwitch
 
 	; os/irqTable.c
 
@@ -494,7 +128,7 @@ OSi_IrqCallback: ; 0x037F8660
 	mov r1, #0xc
 	mul r5, r0, r1
 	ldr r2, _037F86D8 ; =0x03806BAC
-	ldr r3, _037F86DC ; =_03806A74
+	ldr r3, _037F86DC ; =OSi_IrqCallbackInfoIndex
 	mov r4, r0, lsl #1
 	ldr r1, [r2, r5]
 	mov r0, #0
@@ -524,7 +158,7 @@ _037F86D0:
 	bx lr
 	.align 2, 0
 _037F86D8: .word 0x03806BAC
-_037F86DC: .word _03806A74
+_037F86DC: .word OSi_IrqCallbackInfoIndex
 _037F86E0: .word 0x03806BB4
 _037F86E4: .word 0x0380FFF8
 _037F86E8: .word 0x03806BB0
@@ -647,7 +281,7 @@ _037F87DC: .word 0x027FFC3C
 	arm_func_start OS_SetIrqFunction
 OS_SetIrqFunction: ; 0x037F87E0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r4, _037F8870 ; =0x03806A88
+	ldr r4, _037F8870 ; =OS_IRQTable
 	mov sb, #0
 	mov r2, #0xc
 	ldr r5, _037F8874 ; =0x03806C0C
@@ -688,7 +322,7 @@ _037F8858:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
 	.align 2, 0
-_037F8870: .word 0x03806A88
+_037F8870: .word OS_IRQTable
 _037F8874: .word 0x03806C0C
 _037F8878: .word 0x03806BAC
 	arm_func_end OS_SetIrqFunction
@@ -1108,3 +742,36 @@ OS_ReleaseLockID: ; 0x037F8CB8
 _037F8CE4: .word 0x027FFFB8
 	arm_func_end OS_ReleaseLockID
 
+	.data
+
+OSi_IrqCallbackInfoIndex: ; 0x03806A74
+	.byte 0x08, 0x00, 0x09, 0x00, 0x0A, 0x00, 0x0B, 0x00, 0x03, 0x00, 0x04, 0x00
+	.byte 0x05, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00
+
+	.public OS_IRQTable
+OS_IRQTable: ; 0x03806A88
+	.word OSi_IrqVBlank
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OSi_IrqTimer0
+	.word OSi_IrqTimer1
+	.word OSi_IrqTimer2
+	.word OSi_IrqTimer3
+	.word OS_IrqDummy
+	.word OSi_IrqDma0
+	.word OSi_IrqDma1
+	.word OSi_IrqDma2
+	.word OSi_IrqDma3
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy

@@ -37,6 +37,9 @@ FIXROM       := $(TOOLSDIR)/fixrom/fixrom$(EXE)
 KNARC        := $(TOOLSDIR)/knarc/knarc$(EXE)
 O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
 MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
+ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
+
+NTRMERGE     := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
 
 NATIVE_TOOLS := \
 	$(SCANINC) \
@@ -45,15 +48,18 @@ NATIVE_TOOLS := \
 	$(FIXROM) \
 	$(KNARC) \
 	$(O2NARC) \
-	$(MSGENC)
+	$(MSGENC) \
+	$(ASPATCH)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 
 # Directories
-LIB_SUBDIRS               := cw dwc nitro nnsys
+NITROSDK_SRC_SUBDIRS      := os
+
+LIB_SUBDIRS               := cw NitroSDK NitroSystem NitroDWC NitroWiFi libCPS libVCT
 SRC_SUBDIR                := src
 ASM_SUBDIR                := asm
-LIB_SRC_SUBDIR            := lib/src $(LIB_SUBDIRS:%=lib/%/src)
+LIB_SRC_SUBDIR            := lib/src $(LIB_SUBDIRS:%=lib/%/src) $(NITROSDK_SRC_SUBDIRS:%=lib/NitroSDK/src/%)
 LIB_ASM_SUBDIR            := lib/asm $(LIB_SUBDIRS:%=lib/%/asm)
 ALL_SUBDIRS               := $(SRC_SUBDIR) $(ASM_SUBDIR) $(LIB_SRC_SUBDIR) $(LIB_ASM_SUBDIR)
 
@@ -76,6 +82,8 @@ ALL_GAME_OBJS             = $(C_OBJS) $(ASM_OBJS)
 ALL_LIB_OBJS              = $(LIB_C_OBJS) $(LIB_ASM_OBJS)
 ALL_OBJS                  = $(ALL_GAME_OBJS) $(ALL_LIB_OBJS)
 
+$(ALL_LIB_OBJS): DEFINES = $(GLB_DEFINES)
+
 ALL_BUILDDIRS             := $(sort $(ALL_BUILDDIRS) $(foreach obj,$(ALL_OBJS),$(dir $(obj))))
 
 NEF               := $(BUILD_DIR)/$(NEFNAME).nef
@@ -84,8 +92,8 @@ LCF               := $(NEF:%.nef=%.lcf)
 SBIN              := $(NEF:%.nef=%.sbin)
 XMAP              := $(NEF).xMAP
 
-MWCFLAGS          := $(DEFINES) $(OPTFLAGS) -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -I$(WORK_DIR)/lib/include -ipa file -interworking
-MWASFLAGS         := $(DEFINES) -proc $(PROC_S) -i ./include -DSDK_ASM
+MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -I$(WORK_DIR)/lib/include -ipa file -interworking
+MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -i ./include -DSDK_ASM
 MWLDFLAGS         := -nodead -w off -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
@@ -107,10 +115,14 @@ DUMMY != mkdir -p $(ALL_BUILDDIRS)
 .PHONY: all tidy clean tools clean-tools $(TOOLDIRS)
 .PRECIOUS: $(SBIN)
 
+.PHONY: $(MWAS)
+$(MWAS):
+	$(ASPATCH) -q $@
+
 all: tools
 
 ifeq ($(NODEP),)
-$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I ./files -I $(WORK_DIR)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
+$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
 else
 $(BUILD_DIR)/%.o: dep :=
 endif
@@ -123,7 +135,7 @@ $(BUILD_DIR)/%.o: %.s $$(dep)
 
 $(NATIVE_TOOLS): tools
 
-tools: $(TOOLDIRS)
+tools: $(TOOLDIRS) $(MWAS)
 
 $(TOOLDIRS):
 	@$(MAKE) -C $@
@@ -135,6 +147,8 @@ $(LCF): $(LSF) $(LCF_TEMPLATE)
 	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
 ifeq ($(PROC),arm946e)
 	echo "KEEP_SECTION\n{\n\t.exceptix\n}" >> $@
+else
+	sed -i -r '/\} > check\.WORKRAM/a SDK_SUBPRIV_ARENA_LO = SDK_SUBPRIV_ARENA_LO + SDK_AUTOLOAD.EXT_WRAM.SIZE + SDK_AUTOLOAD.EXT_WRAM.BSS_SIZE;' $@
 endif
 
 $(NEF): $(LCF) $(ALL_OBJS)
@@ -145,7 +159,7 @@ ifeq ($(COMPARE),1)
 	$(SHA1SUM) -c $*.sha1
 endif
 
-$(ELF): $(NEF)
-	@$(OBJCOPY) $(foreach ov,$(NEFNAME) $(OVERLAYS),--update-section $(ov)=$(BUILD_DIR)/$(ov).sbin -j $(ov)) $< $@ 2>/dev/null
+$(ELF): %.elf: %.nef
+	$(NTRMERGE) $*
 
 print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true

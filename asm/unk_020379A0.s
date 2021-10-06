@@ -387,7 +387,7 @@ sub_02037C0C: ; 0x02037C0C
 	add r0, r1, #0
 	add r1, r3, r4
 	mov r2, #0x46
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _02037C40 ; =_021D414C
 	mov r0, #0x14
 	ldr r1, [r1]
@@ -443,7 +443,7 @@ sub_02037C68: ; 0x02037C68
 	mul r2, r1
 	add r1, r3, r2
 	mov r2, #0x46
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, r4, r5, pc}
 	nop
 _02037C90: .word _021D414C

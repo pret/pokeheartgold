@@ -11140,7 +11140,7 @@ _02072926:
 	add r0, r0, #3
 	add r1, r4, #0
 	mov r2, #0x28
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add sp, #0x60
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02072914

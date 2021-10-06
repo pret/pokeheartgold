@@ -33,7 +33,7 @@ _0201FBC6:
 	ldr r0, _0201FC28 ; =0x021094DC
 	ldrsh r4, [r0, r1]
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0201FC2C ; =0x45800000
 	bl _fdiv
 	mov r1, #0
@@ -41,7 +41,7 @@ _0201FBC6:
 	bls _0201FC06
 	; r4 / 4096. * 4096. + 0.5
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0201FC2C ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -55,7 +55,7 @@ _0201FBC6:
 _0201FC06:
 	; r4 / 4096. * 4096. - 0.5
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0201FC2C ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -65,7 +65,7 @@ _0201FC06:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0201FC22:
-	bl _ftoi
+	bl _ffix
 	pop {r4, pc}
 	.balign 4, 0
 _0201FC28: .word 0x021094DC
@@ -90,14 +90,14 @@ _0201FC3E:
 	ldr r0, _0201FCA4 ; =0x021094DC
 	ldrsh r4, [r0, r1]
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0201FCA8 ; =0x45800000
 	bl _fdiv
 	mov r1, #0
 	bl _fgr
 	bls _0201FC82
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0201FCA8 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -110,7 +110,7 @@ _0201FC3E:
 	b _0201FC9E
 _0201FC82:
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0201FCA8 ; =0x45800000
 	bl _fdiv
 	add r1, r0, #0
@@ -120,7 +120,7 @@ _0201FC82:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0201FC9E:
-	bl _ftoi
+	bl _ffix
 	pop {r4, pc}
 	.balign 4, 0
 _0201FCA4: .word 0x021094DC

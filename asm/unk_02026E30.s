@@ -25,10 +25,10 @@ _02026E44: .word _021D221C
 
 	thumb_func_start sub_02026E48
 sub_02026E48: ; 0x02026E48
-	ldr r3, _02026E4C ; =sub_020CF670
+	ldr r3, _02026E4C ; =G3X_Reset
 	bx r3
 	.balign 4, 0
-_02026E4C: .word sub_020CF670
+_02026E4C: .word G3X_Reset
 	thumb_func_end sub_02026E48
 
 	thumb_func_start sub_02026E50

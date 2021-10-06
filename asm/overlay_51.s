@@ -1830,7 +1830,7 @@ ov51_021E69EC: ; 0x021E69EC
 	ldr r0, [r4, r0]
 	bl FX_Inv
 	str r0, [sp, #0x14]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1838,7 +1838,7 @@ ov51_021E69EC: ; 0x021E69EC
 	add r1, sp, #8
 	mov r2, #0x80
 	mov r3, #0x60
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1846,7 +1846,7 @@ ov51_021E69EC: ; 0x021E69EC
 	add r1, sp, #8
 	mov r2, #0x80
 	mov r3, #0x60
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	ldr r1, _021E6A50 ; =0x0000343A
 	mov r0, #4
 	ldrb r2, [r4, r1]
@@ -2084,7 +2084,7 @@ ov51_021E6C00: ; 0x021E6C00
 	str r1, [sp, #0xc]
 	str r1, [sp, #0x10]
 	str r0, [sp, #0x14]
-	bl sub_020D3AB4
+	bl OS_WaitVBlankIntr
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2092,7 +2092,7 @@ ov51_021E6C00: ; 0x021E6C00
 	add r1, sp, #8
 	mov r2, #0x80
 	mov r3, #0x60
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2100,15 +2100,15 @@ ov51_021E6C00: ; 0x021E6C00
 	add r1, sp, #8
 	mov r2, #0x80
 	mov r3, #0x60
-	bl sub_020CF0AC
-	bl sub_020D3AB4
+	bl G2x_SetBGyAffine_
+	bl OS_WaitVBlankIntr
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _021E6C68 ; =0x04000030
 	add r1, sp, #8
 	mov r2, #0x80
 	str r3, [sp, #4]
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	add sp, #0x18
 	pop {r4, pc}
 	.balign 4, 0

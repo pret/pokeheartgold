@@ -3578,13 +3578,13 @@ ov82_0223F90C: ; 0x0223F90C
 
 	thumb_func_start ov82_0223F948
 ov82_0223F948: ; 0x0223F948
-	ldr r3, _0223F954 ; =sub_020CF178
+	ldr r3, _0223F954 ; =G2x_SetBlendBrightness_
 	add r2, r0, #0
 	ldr r0, _0223F958 ; =0x04000050
 	mov r1, #0x1e
 	bx r3
 	nop
-_0223F954: .word sub_020CF178
+_0223F954: .word G2x_SetBlendBrightness_
 _0223F958: .word 0x04000050
 	thumb_func_end ov82_0223F948
 

@@ -31,4 +31,9 @@ typedef enum {
     OS_INTRMODE_ENABLE = 0
 } OSIntrMode;
 
+typedef enum {
+    OS_INTRMODE_IRQ_DISABLE = HW_PSR_DISABLE_IRQ,
+    OS_INTRMODE_IRQ_ENABLE = 0
+} OSIntrMode_Irq;
+
 #endif //NITRO_OS_SYSTEM_SHARED_H_

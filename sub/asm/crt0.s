@@ -1,14 +1,24 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public OS_IrqHandler
+	.public NitroSpMain
+	.public SDK_STATIC_BSS_START
+	.public SDK_AUTOLOAD_LIST
+	.public SDK_AUTOLOAD_LIST_END
+	.public SDK_AUTOLOAD_START
+	.public SDK_STATIC_BSS_START
+	.public SDK_STATIC_BSS_END
+	.public SDK_IRQ_STACKSIZE
+
 	.text
 
 	arm_func_start _start
 _start: ; 0x02380000
 	mov ip, #0x4000000
 	str ip, [ip, #0x208]
-	ldr r1, _023800CC ; =0x023801B0
-	mov r0, #0x3800000
+	ldr r1, _023800CC ; =SDK_STATIC_BSS_END
+	mov r0, #0x3800000 ; HW_PRV_WRAM
 	cmp r0, r1
 	movpl r1, r0
 	ldr r2, _023800D0 ; =0x0380FF00
@@ -19,26 +29,26 @@ _02380020:
 	blt _02380020
 	mov r0, #0x13
 	msr cpsr_c, r0
-	ldr sp, _023800D4 ; =0x0380FFC0
+	ldr sp, _023800D4 ; =0x0380FFC0 HW_PRV_WRAM_SVC_STACK_END
 	mov r0, #0x12
 	msr cpsr_c, r0
-	ldr r0, _023800D8 ; =0x0380FF80
+	ldr r0, _023800D8 ; =0x0380FF80 HW_PRV_WRAM_IRQ_STACK_END
 	mov sp, r0
-	ldr r1, _023800DC ; =0x00000400
+	ldr r1, _023800DC ; =SDK_IRQ_STACKSIZE
 	sub r1, r0, r1
 	mov r0, #0x1f
 	msr cpsr_fsxc, r0
 	sub sp, r1, #4
 	ldr r0, _023800E0 ; =0x023FE940
-	ldr r1, _023800E4 ; =0x027FFA80
-	add r2, r1, #0x160
+	ldr r1, _023800E4 ; =0x027FFA80 HW_CARD_ROM_HEADER
+	add r2, r1, #0x160 ; HW_CARD_ROM_HEADER_SIZE
 _02380068:
 	ldr r3, [r0], #4
 	str r3, [r1], #4
 	cmp r1, r2
 	bmi _02380068
 	ldr r0, _023800E8 ; =0x023FE904
-	add r2, r1, #0x20
+	add r2, r1, #0x20 ; HW_DOWNLOAD_PARAMETER_SIZE
 _02380080:
 	ldr r3, [r0], #4
 	str r3, [r1], #4
@@ -55,24 +65,24 @@ _023800A4:
 	blo _023800A4
 	bl detect_main_memory_size
 	ldr r1, _023800F0 ; =0x0380FFFC
-	ldr r0, _023800F4 ; =0x037F84E4
+	ldr r0, _023800F4 ; =OS_IrqHandler
 	str r0, [r1]
-	ldr r1, _023800F8 ; =0x037F8000
+	ldr r1, _023800F8 ; =NitroSpMain
 	ldr lr, _023800FC ; =0xFFFF0000
 	bx r1
 	.align 2, 0
-_023800CC: .word 0x023801B0
+_023800CC: .word SDK_STATIC_BSS_END
 _023800D0: .word 0x0380FF00
-_023800D4: .word 0x0380FFC0
-_023800D8: .word 0x0380FF80
-_023800DC: .word 0x00000400
+_023800D4: .word 0x0380FFC0 ; HW_PRV_WRAM_SVC_STACK_END
+_023800D8: .word 0x0380FF80 ; HW_PRV_WRAM_IRQ_STACK_END
+_023800DC: .word SDK_IRQ_STACKSIZE
 _023800E0: .word 0x023FE940
-_023800E4: .word 0x027FFA80
+_023800E4: .word 0x027FFA80 ; HW_CARD_ROM_HEADER
 _023800E8: .word 0x023FE904
 _023800EC: .word _start_ModuleParams
 _023800F0: .word 0x0380FFFC
-_023800F4: .word 0x037F84E4
-_023800F8: .word 0x037F8000
+_023800F4: .word OS_IrqHandler
+_023800F8: .word NitroSpMain
 _023800FC: .word 0xFFFF0000
 	arm_func_end _start
 
@@ -134,10 +144,10 @@ _0238018C:
 _02380194: .word 0x027FFFFA
 	arm_func_end detect_main_memory_size
 
-_start_ModuleParams:
-	.word 0x023A76B4
-	.word 0x023A76D8
-	.word 0x023801B0
-	.word 0x023801B0
-	.word 0x023801B0
+_start_ModuleParams: ; 0x02380198
+	.word SDK_AUTOLOAD_LIST
+	.word SDK_AUTOLOAD_LIST_END
+	.word SDK_AUTOLOAD_START
+	.word SDK_STATIC_BSS_START
+	.word SDK_STATIC_BSS_END
 ; SDK_STATIC_TEXT_END = 0x023801B0

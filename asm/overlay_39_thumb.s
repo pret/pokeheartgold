@@ -179,17 +179,17 @@ ov39_022271A4: ; 0x022271A4
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x80
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov39_022271A4
 
 	thumb_func_start ov39_022271C0
 ov39_022271C0: ; 0x022271C0
-	ldr r3, _022271C8 ; =MIi_CpuCopy8
+	ldr r3, _022271C8 ; =MI_CpuCopy8
 	mov r2, #0x80
 	bx r3
 	nop
-_022271C8: .word MIi_CpuCopy8
+_022271C8: .word MI_CpuCopy8
 	thumb_func_end ov39_022271C0
 
 	thumb_func_start ov39_022271CC
@@ -614,7 +614,7 @@ _022274E8:
 	lsl r1, r1, #2
 	add r1, r5, r1
 	mov r2, #4
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r2, #0x19
 	lsl r2, r2, #4
 	ldr r0, [r5]
@@ -674,7 +674,7 @@ _02227556:
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x80
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _02227588 ; =0x00000411
 	mov r1, #0x3c
 	strb r1, [r5, r0]
@@ -1845,11 +1845,11 @@ ov39_02227DEC: ; 0x02227DEC
 	add r1, r5, #0
 	add r2, r5, r6
 	mov r3, #1
-	bl sub_020D2FF4
+	bl OS_InitAlloc
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D2C8C
+	bl OS_SetArenaLo
 	add r2, r5, r6
 	add r4, #0x1f
 	mov r0, #0x1f
@@ -1858,12 +1858,12 @@ ov39_02227DEC: ; 0x02227DEC
 	bic r2, r0
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_020D30B0
+	bl OS_CreateHeap
 	add r1, r0, #0
 	ldr r0, _02227E38 ; =0x0222AB80
 	str r1, [r0]
 	mov r0, #0
-	bl sub_020D2FC4
+	bl OS_SetCurrentHeap
 	add r0, r5, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -1872,11 +1872,11 @@ _02227E38: .word 0x0222AB80
 
 	thumb_func_start ov39_02227E3C
 ov39_02227E3C: ; 0x02227E3C
-	ldr r3, _02227E44 ; =sub_020D309C
+	ldr r3, _02227E44 ; =OS_ClearAlloc
 	mov r0, #0
 	bx r3
 	nop
-_02227E44: .word sub_020D309C
+_02227E44: .word OS_ClearAlloc
 	thumb_func_end ov39_02227E3C
 
 	thumb_func_start ov39_02227E48

@@ -111,7 +111,7 @@ basefile=${MYDIR}/.bins/${baserom}${basestem}.sbin
   case $proc in
   armv4t)
     romtab=48
-    compname=sub
+    compname=ichneumon_sub
     ;;
   armv5te)
     romtab=32

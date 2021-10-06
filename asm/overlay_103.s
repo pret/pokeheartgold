@@ -557,7 +557,7 @@ _021ECDCE:
 	add r1, r0, #0
 	add r0, r6, #0
 	add r2, r7, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r4, r4, #1
 	cmp r4, #0xa
 	bls _021ECDCE
@@ -2367,7 +2367,7 @@ ov103_021EDB60: ; 0x021EDB60
 	ldr r0, _021EDBAC ; =0x04000050
 	mov r2, #8
 	add r3, r1, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 _021EDB90:
@@ -3310,7 +3310,7 @@ _021EE260:
 	ldr r0, [r0, #0x14]
 	ldr r1, [sp, #8]
 	lsl r2, r2, #8
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	ldr r0, [sp, #0xc]
 	bl FreeToHeap
 	ldr r0, [r5, #0xc]

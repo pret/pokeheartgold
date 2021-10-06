@@ -1,7 +1,15 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
-	.public __global_destructor_chain
 	.public __sinit__
+
+	.bss
+
+	; msl
+_021E5390:
+	.space 0x558
+
+__global_destructor_chain: ; 0x021E58E8
+	.space 4
 
 	.text
 
@@ -14086,13 +14094,15 @@ _020F0688: .word _ZNSt12length_errorD1Ev
 
 	; FP_fastI_v5t_LE.a
 
-	arm_func_start _dadd
+	.public _dadd
+	.public _d_add
 _dadd: ; 0x020F068C
+_d_add:
 	stmdb sp!, {r4, lr}
 	eors ip, r1, r3
 	eormi r3, r3, #0x80000000
-	bmi _020F117C
-_020F069C:
+	bmi __dsub_start
+__dadd_start:
 	subs ip, r0, r2
 	sbcs lr, r1, r3
 	bhs _020F06B8
@@ -14308,10 +14318,13 @@ _020F0980:
 	bx lr
 	.align 2, 0
 _020F09A0: .word 0x7FF00000
-	arm_func_end _dadd
 
-	arm_func_start _d2f
+	.public _d2f
+	.public _d_dtof
+    .public _f_qtof
 _d2f: ; 0x020F09A4
+_d_dtof:
+_f_qtof:
 	and r2, r1, #0x80000000
 	mov ip, r1, lsr #0x14
 	bics ip, ip, #0x800
@@ -14346,13 +14359,14 @@ _020F0A14:
 	bx lr
 _020F0A1C:
 	orrs r3, r0, r1, lsl #12
-	bne _020F0A94
+	bne __f_underflow
+__f_result_zero:
 	mov r0, r2
 	bx lr
 _020F0A2C:
 	cmn ip, #0x17
 	beq _020F0A80
-	bmi _020F0A94
+	bmi __f_underflow
 	mov r1, r1, lsl #0xb
 	orr r1, r1, #0x80000000
 	mov r3, r1, lsr #8
@@ -14373,21 +14387,23 @@ _020F0A2C:
 	bx lr
 _020F0A80:
 	orr r0, r0, r1, lsl #12
+__f_very_tiny_result:
 	movs r1, r0
 	mov r0, r2
 	addne r0, r0, #1
 	bx lr
-_020F0A94:
+__f_underflow:
 	mov r0, r2
 	bx lr
 _020F0A9C:
 	mov r0, #0xff000000
 	orr r0, r2, r0, lsr #1
 	bx lr
-	arm_func_end _d2f
 
-	arm_func_start _dtoi
-_dtoi: ; 0x020F0AA8
+	.public _dfix
+	.public _d_dtoi
+_dfix: ; 0x020F0AA8
+_d_dtoi:
 	bic r3, r1, #0x80000000
 	ldr r2, _020F0AF0 ; =0x0000041E
 	subs r2, r2, r3, lsr #20
@@ -14410,10 +14426,11 @@ _020F0AE4:
 	bx lr
 	.align 2, 0
 _020F0AF0: .word 0x0000041E
-	arm_func_end _dtoi
 
-	arm_func_start _dtou
-_dtou: ; 0x020F0AF4
+	.public _dfixu
+	.public _d_dtou
+_dfixu: ; 0x020F0AF4
+_d_dtou:
 	tst r1, #0x80000000
 	bne _020F0B2C
 	ldr r2, _020F0B48 ; =0x0000041E
@@ -14440,10 +14457,11 @@ _020F0B40:
 	bx lr
 	.align 2, 0
 _020F0B48: .word 0x0000041E
-	arm_func_end _dtou
 
-	arm_func_start _ll_ufrom_d
+	.public _ll_ufrom_d
+	.public _d_dtoull
 _ll_ufrom_d: ; 0x020F0B4C
+_d_dtoull:
 	tst r1, #0x80000000
 	bne _020F0BB0
 	ldr r2, _020F0BD4 ; =0x0000043E
@@ -14484,13 +14502,15 @@ _020F0BC8:
 	bx lr
 	.align 2, 0
 _020F0BD4: .word 0x0000043E
-	arm_func_end _ll_ufrom_d
 
-	arm_func_start _dflt
+	.public _dflt
+	.public _d_itod
 _dflt: ; 0x020F0BD8
+_d_itod:
 	ands r2, r0, #0x80000000
 	rsbmi r0, r0, #0
 	cmp r0, #0
+__d_itod_common:
 	mov r1, #0
 	bxeq lr
 	mov r3, #0x400
@@ -14504,11 +14524,13 @@ _dflt: ; 0x020F0BD8
 	orr r1, r2, r1, lsr #12
 	orr r1, r1, r3, lsl #20
 	bx lr
-	arm_func_end _dflt
 
-	arm_func_start _dfltu
+	.public _dfltu
+	.public _d_utod
 _dfltu: ; 0x020F0C18
+_d_utod:
 	cmp r0, #0
+__d_utod_common:
 	mov r1, #0
 	bxeq lr
 	mov r3, #0x400
@@ -14524,10 +14546,11 @@ _020F0C3C:
 	mov r1, r1, lsr #0xc
 	orr r1, r1, r3, lsl #20
 	bx lr
-	arm_func_end _dfltu
 
-	arm_func_start _dmul
+	.public _dmul
+	.public _d_mul
 _dmul: ; 0x020F0C54
+_d_mul:
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	eor lr, r1, r3
 	and lr, lr, #0x80000000
@@ -14766,9 +14789,8 @@ _020F0FA4:
 	bx lr
 	.align 2, 0
 _020F0FB4: .word 0x7FF00000
-	arm_func_end _dmul
 
-	arm_func_start _dsqrt
+	.public _dsqrt
 _dsqrt: ; 0x020F0FB8
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _020F1148 ; =0x7FF00000
@@ -14885,9 +14907,8 @@ _020F112C:
 _020F1148: .word 0x7FF00000
 _020F114C: .word 0x7FF80000
 _020F1150: .word 0x021E58C0
-	arm_func_end _dsqrt
 
-	arm_func_start _drsb
+	.public _drsb
 _drsb: ; 0x020F1154
 	eor r1, r1, r3
 	eor r3, r1, r3
@@ -14895,15 +14916,15 @@ _drsb: ; 0x020F1154
 	eor r0, r0, r2
 	eor r2, r0, r2
 	eor r0, r0, r2
-	arm_func_end _drsb
-
-	arm_func_start _dsub
+	.public _dsub
+	.public _d_sub
 _dsub: ; 0x020F116C
+_d_sub: ; 0x020F116C
 	stmdb sp!, {r4, lr}
 	eors ip, r1, r3
 	eormi r3, r3, #0x80000000
-	bmi _020F069C
-_020F117C:
+	bmi __dadd_start
+__dsub_start:
 	subs ip, r0, r2
 	sbcs lr, r1, r3
 	bhs _020F119C
@@ -15163,14 +15184,15 @@ _020F150C:
 	bx lr
 	.align 2, 0
 _020F151C: .word 0x7FF00000
-	arm_func_end _dsub
 
 	arm_func_start _fadd
+	arm_func_start _f_add
 _fadd: ; 0x020F1520
+_f_add: ; 0x020F1520
 	eors r2, r0, r1
 	eormi r1, r1, #0x80000000
-	bmi _020F24D4
-_020F152C:
+	bmi __fsub_start
+__fadd_start:
 	subs ip, r0, r1
 	sublo r0, r0, ip
 	addlo r1, r1, ip
@@ -15322,10 +15344,11 @@ _020F1734:
 _020F173C: ; 0x020F173C
 	mvn r0, #0x80000000
 	bx lr
-	arm_func_end _fadd
 
-	arm_func_start _dgeq
+	.public _dgeq
+	.public _d_fge
 _dgeq: ; 0x020F1744
+_d_fge:
 	mov ip, #0x200000
 	cmn ip, r1, lsl #1
 	bhs _020F17B8
@@ -15369,10 +15392,11 @@ _020F17CC:
 	cmp r2, #0
 	bhi _020F1774
 	b _020F1758
-	arm_func_end _dgeq
 
-	arm_func_start _dgr
+	.public _dgr
+	.public _d_fgt
 _dgr: ; 0x020F17DC
+_d_fgt:
 	mov ip, #0x200000
 	cmn ip, r1, lsl #1
 	bhs _020F1850
@@ -15416,10 +15440,11 @@ _020F1864:
 	cmp r2, #0
 	bhi _020F180C
 	b _020F17F0
-	arm_func_end _dgr
 
-	arm_func_start _dleq
+	.public _dleq
+	.public _d_fle
 _dleq: ; 0x020F1874
+_d_fle:
 	mov ip, #0x200000
 	cmn ip, r1, lsl #1
 	bhs _020F18F4
@@ -15467,10 +15492,11 @@ _020F1908:
 	cmp r2, #0
 	bhi _020F18A4
 	b _020F1888
-	arm_func_end _dleq
 
-	arm_func_start _dls
+	.public _dls
+	.public _d_flt
 _dls: ; 0x020F1918
+_d_flt:
 	mov ip, #0x200000
 	cmn ip, r1, lsl #1
 	bhs _020F1990
@@ -15516,10 +15542,11 @@ _020F19A4:
 	cmp r2, #0
 	bhi _020F1948
 	b _020F192C
-	arm_func_end _dls
 
-	arm_func_start _deq
+	.public _deq
+	.public _d_feq
 _deq: ; 0x020F19B4
+_d_feq:
 	mov ip, #0x200000
 	cmn ip, r1, lsl #1
 	bhs _020F1A1C
@@ -15560,10 +15587,11 @@ _020F1A30:
 	cmp r2, #0
 	bhi _020F19E4
 	b _020F19C8
-	arm_func_end _deq
 
-	arm_func_start _dneq
+	.public _dneq
+	.public _d_fne
 _dneq: ; 0x020F1A40
+_d_fne:
 	mov ip, #0x200000
 	cmn ip, r1, lsl #1
 	bhs _020F1AA8
@@ -15604,10 +15632,11 @@ _020F1ABC:
 	cmp r2, #0
 	bhi _020F1A70
 	b _020F1A54
-	arm_func_end _dneq
 
-	arm_func_start _fgr
+	.public _fgr
+	.public _f_fgt
 _fgr: ; 0x020F1ACC
+_f_fgt:
 	mov r3, #0xff000000
 	cmp r3, r0, lsl #1
 	cmphs r3, r1, lsl #1
@@ -15632,10 +15661,11 @@ _020F1B14:
 	bic ip, ip, #0x20000000
 	msr cpsr_f, ip
 	bx lr
-	arm_func_end _fgr
 
-	arm_func_start _fleq
+	.public _fleq
+	.public _f_fle
 _fleq: ; 0x020F1B28
+_f_fle:
 	mov r3, #0xff000000
 	cmp r3, r0, lsl #1
 	cmphs r3, r1, lsl #1
@@ -15663,10 +15693,11 @@ _020F1B78:
 	orr ip, ip, #0x20000000
 	msr cpsr_f, ip
 	bx lr
-	arm_func_end _fleq
 
-	arm_func_start _fls
+	.public _fls
+	.public _f_flt
 _fls: ; 0x020F1B90
+_f_flt:
 	mov r3, #0xff000000
 	cmp r3, r0, lsl #1
 	cmphs r3, r1, lsl #1
@@ -15691,10 +15722,11 @@ _020F1BD8:
 	orr ip, ip, #0x20000000
 	msr cpsr_f, ip
 	bx lr
-	arm_func_end _fls
 
-	arm_func_start _feq
+	.public _feq
+	.public _f_feq
 _feq: ; 0x020F1BEC
+_f_feq:
 	mov r3, #0xff000000
 	cmp r3, r0, lsl #1
 	blo _020F1C40
@@ -15723,10 +15755,11 @@ _020F1C40:
 	bic ip, ip, #0x40000000
 	msr cpsr_f, ip
 	bx lr
-	arm_func_end _feq
 
-	arm_func_start _fneq
+	.public _fneq
+	.public _f_fne
 _fneq: ; 0x020F1C54
+_f_fne:
 	mov r3, #0xff000000
 	cmp r3, r0, lsl #1
 	blo _020F1CA8
@@ -15755,17 +15788,16 @@ _020F1CA8:
 	bic ip, ip, #0x40000000
 	msr cpsr_f, ip
 	bx lr
-	arm_func_end _fneq
 
-	arm_func_start _frdiv
+	.public _frdiv
 _frdiv: ; 0x020F1CBC
 	eor r0, r0, r1
 	eor r1, r0, r1
 	eor r0, r0, r1
-	arm_func_end _frdiv
-
-	arm_func_start _fdiv
+	.public _fdiv
+	.public _f_div
 _fdiv: ; 0x020F1CC8
+_f_div:
 	stmdb sp!, {lr}
 	mov ip, #0xff
 	ands r3, ip, r0, lsr #23
@@ -15783,7 +15815,7 @@ _020F1CF8:
 	movlo r2, r2, lsl #1
 	sublo r3, r3, #1
 	teq r0, r1
-	sub r0, pc, #0x94
+	adr r0, UNK_020F1D7C - 0x100
 	ldrb r1, [r0, lr, lsr #15]
 	rsb lr, lr, #0
 	mov r0, lr, asr #1
@@ -15812,7 +15844,6 @@ _020F1CF8:
 	add r0, r0, r1, lsr #31
 	ldmia sp!, {lr}
 	bx lr
-	arm_func_end _fdiv
 UNK_020F1D7C: ; 0x020F1D7C
 	.byte 0xFF, 0xFF, 0xFE, 0xFD
 	.byte 0xFC, 0xFB, 0xFA, 0xF9, 0xF8, 0xF7, 0xF6, 0xF5, 0xF4, 0xF3, 0xF2, 0xF1, 0xF0, 0xF0, 0xEF, 0xEE
@@ -15979,10 +16010,11 @@ _020F2074:
 	mov r0, lr
 	ldmia sp!, {lr}
 	bx lr
-	arm_func_end _fdiv
 
-	arm_func_start _f2d
+	.public _f2d
+	.public _f_ftod
 _f2d: ; 0x020F2080
+_f_ftod:
 	and r2, r0, #0x80000000
 	mov ip, r0, lsr #0x17
 	mov r3, r0, lsl #9
@@ -16022,10 +16054,11 @@ _020F20F4:
 	bx lr
 	.align 2, 0
 _020F2100: .word 0x7FF00000
-	arm_func_end _f2d
 
-	arm_func_start _ftoi
-_ftoi: ; 0x020F2104
+	.public _f_ftoi
+	.public _ffix
+_f_ftoi: ; 0x020F2104
+_ffix:
 	bic r1, r0, #0x80000000
 	mov r2, #0x9e
 	subs r2, r2, r1, lsr #23
@@ -16040,10 +16073,11 @@ _020F212C:
 	mvn r0, r0, asr #31
 	add r0, r0, #0x80000000
 	bx lr
-	arm_func_end _ftoi
 
-	arm_func_start _ftou
-_ftou: ; 0x020F2138
+	.public _ffixu
+	.public _f_ftou
+_ffixu: ; 0x020F2138
+_f_ftou:
 	tst r0, #0x80000000
 	bne _020F215C
 	mov r1, #0x9e
@@ -16062,14 +16096,15 @@ _020F215C:
 _020F2170:
 	mvn r0, #0
 	bx lr
-	arm_func_end _ftou
 
-	arm_func_start _itof
-_itof: ; 0x020F2178
+	.public _fflt
+	.public _f_itof
+_fflt: ; 0x020F2178
+_f_itof:
 	ands r2, r0, #0x80000000
 	rsbmi r0, r0, #0
 	cmp r0, #0
-_020F2184:
+__f_itof_common:
 	bxeq lr
 	clz r3, r0
 	movs r0, r0, lsl r3
@@ -16085,12 +16120,13 @@ _020F2184:
 	andeqs r3, r0, #1
 	addne r0, r0, #1
 	bx lr
-	arm_func_end _itof
 
-	arm_func_start _utof
-_utof: ; 0x020F21C0
+	.public _ffltu
+	.public _f_utof
+_ffltu: ; 0x020F21C0
+_f_utof:
 	cmp r0, #0
-_020F21C4:
+__f_utof_common:
 	bxeq lr
 	mov r3, #0x9e
 	bmi _020F21DC
@@ -16109,10 +16145,11 @@ _020F21DC:
 	andeqs r1, r0, #1
 	addne r0, r0, #1
 	bx lr
-	arm_func_end _utof
 
-	arm_func_start _lltof
-_lltof: ; 0x020F2208
+	.public _f_lltof
+	.public _ll_sto_f
+_f_lltof: ; 0x020F2208
+_ll_sto_f:
 	ands r2, r1, #0x80000000
 	beq _020F2218
 	rsbs r0, r0, #0
@@ -16121,7 +16158,7 @@ _020F2218:
 	cmp r1, #0
 	bne _020F2228
 	movs r0, r0
-	b _020F2184
+	b __f_itof_common
 _020F2228:
 	clz r3, r1
 	movs r1, r1, lsl r3
@@ -16142,14 +16179,15 @@ _020F2228:
 	andeqs r3, r0, #1
 	addne r0, r0, #1
 	bx lr
-	arm_func_end _lltof
 
-	arm_func_start _ulltof
-_ulltof: ; 0x020F2274
+	.public _f_ulltof
+	.public _ll_uto_f
+_f_ulltof: ; 0x020F2274
+_ll_uto_f:
 	cmp r1, #0
 	bne _020F2284
 	movs r0, r0
-	b _020F21C4
+	b __f_utof_common
 _020F2284:
 	mov r3, #0x20
 	bmi _020F22A4
@@ -16174,10 +16212,11 @@ _020F22A4:
 	andeqs r1, r0, #1
 	addne r0, r0, #1
 	bx lr
-	arm_func_end _ulltof
 
-	arm_func_start _fmul
+	.public _fmul
+	.public _f_mul
 _fmul: ; 0x020F22DC
+_f_mul:
 	eor r2, r0, r1
 	and r2, r2, #0x80000000
 	mov ip, #0xff
@@ -16214,27 +16253,27 @@ _020F2358:
 	cmp r3, #0
 	beq _020F23AC
 	movs r0, r0, lsl #1
-	bne _020F2480
+	bne __f_result_x_NaN
 	mov ip, r1, lsr #0x17
 	mov r1, r1, lsl #9
 	ands ip, ip, #0xff
 	beq _020F238C
 	cmp ip, #0xff
-	blt _020F2474
+	blt __f_result_INF
 	cmp r1, #0
-	beq _020F2474
-	b _020F2480
+	beq __f_result_INF
+	b __f_result_x_NaN
 _020F238C:
 	cmp r1, #0
-	beq _020F2488
-	b _020F2474
+	beq __f_result_invalid
+	b __f_result_INF
 _020F2398:
 	cmp ip, #0
 	beq _020F2408
 _020F23A0:
 	movs r1, r1, lsl #1
-	bne _020F2480
-	b _020F2474
+	bne __f_result_x_NaN
+	b __f_result_INF
 _020F23AC:
 	movs r0, r0, lsl #1
 	beq _020F23E4
@@ -16258,8 +16297,8 @@ _020F23E4:
 	cmp ip, #0xff
 	blt _020F24B4
 	cmp r1, #0
-	beq _020F2488
-	b _020F2480
+	beq __f_result_invalid
+	b __f_result_x_NaN
 _020F2408:
 	movs r1, r1, lsl #1
 	beq _020F24B4
@@ -16290,14 +16329,14 @@ _020F2424:
 _020F246C:
 	mov r0, r0, lsl #1
 	b _020F249C
-_020F2474:
+__f_result_INF:
 	mov r0, #0xff000000
 	orr r0, r2, r0, lsr #1
 	bx lr
-_020F2480:
+__f_result_x_NaN:
 	mvn r0, #0x80000000
 	bx lr
-_020F2488:
+__f_result_invalid:
 	mvn r0, #0x80000000
 	bx lr
 _020F2490:
@@ -16315,21 +16354,20 @@ _020F24AC:
 _020F24B4:
 	mov r0, r2
 	bx lr
-	arm_func_end _fmul
 
-	arm_func_start _frsb
+	.public _frsb
 _frsb: ; 0x020F24BC
 	eor r0, r0, r1
 	eor r1, r0, r1
 	eor r0, r0, r1
-	arm_func_end _frsb
-
-	arm_func_start _fsub
+	.public _fsub
+	.public _f_sub
 _fsub: ; 0x020F24C8
+_f_sub: ; 0x020F24C8
 	eors r2, r0, r1
 	eormi r1, r1, #0x80000000
-	bmi _020F152C
-_020F24D4:
+	bmi __fadd_start
+__fsub_start:
 	subs ip, r0, r1
 	eorlo ip, ip, #0x80000000
 	sublo r0, r0, ip
@@ -16505,18 +16543,18 @@ _020F2730:
 _020F2738:
 	mvn r0, #0x80000000
 	bx lr
-	arm_func_end _fsub
 
-	arm_func_start _ll_mod
+	.public _ll_mod
 _ll_mod: ; 0x020F2740
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
 	mov r4, r1
 	orr r4, r4, #1
 	b _020F2760
-	arm_func_end _ll_mod
 
-	arm_func_start _ll_sdiv
+	.public _ll_sdiv
+	.public _ll_div
 _ll_sdiv: ; 0x020F2750
+_ll_div: ; 0x020F2750
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
 	eor r4, r1, r3
 	mov r4, r4, asr #1
@@ -16644,16 +16682,16 @@ _020F28EC:
 	blt _020F28D8
 	ldmia sp!, {r4, r5, r6, r7, fp, ip, lr}
 	bx lr
-	arm_func_end _ll_sdiv
 
-	arm_func_start _ll_udiv
+	.public _ll_udiv
+	.public _ull_div
 _ll_udiv: ; 0x020F2900
+_ull_div:
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
 	mov r4, #0
 	b _020F2914
-	arm_func_end _ll_udiv
 
-	arm_func_start _ull_mod
+	.public _ull_mod
 _ull_mod: ; 0x020F290C
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
 	mov r4, #1
@@ -16672,10 +16710,11 @@ _020F2924:
 	mov r1, #0
 	ldmia sp!, {r4, r5, r6, r7, fp, ip, lr}
 	bx lr
-	arm_func_end _ull_mod
 
-	arm_func_start _ll_mul
+	.public _ll_mul
+	.public _ull_mul
 _ll_mul: ; 0x020F2948
+_ull_mul: ; 0x020F2948
 	stmdb sp!, {r4, r5, lr}
 	umull r5, r4, r0, r2
 	mla r4, r0, r3, r4
@@ -16684,10 +16723,13 @@ _ll_mul: ; 0x020F2948
 	mov r0, r5
 	ldmia sp!, {r4, r5, lr}
 	bx lr
-	arm_func_end _ll_mul
 
-	arm_func_start _ll_shl
+	.public _ll_shl
+	.public _ll_sll
+	.public _ull_sll
 _ll_shl: ; 0x020F2968
+_ll_sll:
+_ull_sll:
 	ands r2, r2, #0x3f
 	bxeq lr
 	subs r3, r2, #0x20
@@ -16701,9 +16743,8 @@ _020F298C:
 	mov r1, r0, lsl r3
 	mov r0, #0
 	bx lr
-	arm_func_end _ll_shl
 
-	arm_func_start _s32_div_f
+	.public _s32_div_f
 _s32_div_f: ; 0x020F2998
 	eor ip, r0, r1
 	and ip, ip, #0x80000000
@@ -16837,15 +16878,12 @@ _020F2B90:
 	ands r3, ip, #1
 	rsbne r1, r1, #0
 	bx lr
-	arm_func_end _s32_div_f
 
-	arm_func_start _u32_div_f
+	.public _u32_div_f
 _u32_div_f: ; 0x020F2BA4
 	cmp r1, #0
 	bxeq lr
-	arm_func_end _u32_div_f
-
-	arm_func_start _u32_div_not_0_f
+	.public _u32_div_not_0_f
 _u32_div_not_0_f: ; 0x020F2BAC
 	cmp r0, r1
 	movlo r1, r0
@@ -16966,9 +17004,8 @@ _u32_div_not_0_f: ; 0x020F2BAC
 	adcs r0, r0, r0
 	mov r1, r3
 	bx lr
-	arm_func_end _u32_div_not_0_f
 
-	arm_func_start _drdiv
+	.public _drdiv
 _drdiv: ; 0x020F2D88
 	eor r1, r1, r3
 	eor r3, r1, r3
@@ -16976,10 +17013,10 @@ _drdiv: ; 0x020F2D88
 	eor r0, r0, r2
 	eor r2, r0, r2
 	eor r0, r0, r2
-	arm_func_end _drdiv
-
-	arm_func_start _ddiv
+	.public _ddiv
+	.public _d_div
 _ddiv: ; 0x020F2DA0
+_d_div:
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr lr, _020F32E0 ; =0x00000FFE
 	eor r4, r1, r3
@@ -17004,7 +17041,7 @@ _020F2DD8:
 	adc r1, r1, r1
 	sub ip, ip, #2
 _020F2DF4:
-	sub r4, pc, #0x24
+	adr r4, UNK_020F2ED8 - 0x100
 	ldrb lr, [r4, r3, lsr #12]
 	rsbs r2, r2, #0
 	rsc r3, r3, #0
@@ -17062,7 +17099,6 @@ _020F2EC8:
 	adc r1, r1, #0
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
-	arm_func_end _ddiv
 UNK_020F2ED8: ; 0x020F2ED8
 	.byte 0xFF, 0xFF, 0xFE, 0xFD, 0xFC, 0xFB, 0xFA, 0xF9
 	.byte 0xF8, 0xF7, 0xF6, 0xF5, 0xF4, 0xF3, 0xF2, 0xF1, 0xF0, 0xF0, 0xEF, 0xEE, 0xED, 0xEC, 0xEB, 0xEA
@@ -17299,12 +17335,10 @@ _020F32D0:
 	bx lr
 	.align 2, 0
 _020F32E0: .word 0x00000FFE
-	arm_func_end _ddiv
 
-	arm_func_start _fp_init
+	.public _fp_init
 _fp_init: ; 0x020F32E4
 	bx lr
-	arm_func_end _fp_init
 
 	; NITRO_Runtime_Ai_LE.a
 

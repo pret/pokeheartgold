@@ -793,18 +793,18 @@ _0225DB94:
 	cmp r0, #0
 	ble _0225DBB0
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r7, #0
 	bl _fadd
 	b _0225DBBC
 _0225DBB0:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r7, #0
 	bl _fsub
 _0225DBBC:
-	bl _ftoi
+	bl _ffix
 	mov r1, #3
 	lsl r1, r1, #0x12
 	add r0, r0, r1
@@ -1070,7 +1070,7 @@ ov34_0225DDB8: ; 0x0225DDB8
 	cmp r1, #0
 	ble _0225DDDA
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -1078,12 +1078,12 @@ ov34_0225DDB8: ; 0x0225DDB8
 	b _0225DDE8
 _0225DDDA:
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0225DDE8:
-	bl _ftoi
+	bl _ffix
 	mov r1, #3
 	lsl r1, r1, #0x12
 	add r0, r0, r1

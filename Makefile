@@ -1,4 +1,4 @@
-MWCCVER        := 2.0/sp2p2
+MWCCVER        := 2.0/sp2p3
 PROC           := arm946e
 PROC_S         := arm5te
 PROC_LD        := v5te
@@ -11,6 +11,10 @@ include config.mk
 include common.mk
 include graphics_files_rules.mk
 include filesystem.mk
+
+$(ASM_OBJS): MWASFLAGS += -include $(WORK_DIR)/include/config.h
+
+$(ASM_SRCS): $(WORK_DIR)/include/config.h
 
 ROM             := $(BUILD_DIR)/poke$(buildname).nds
 BANNER          := $(ROM:%.nds=%.bnr)

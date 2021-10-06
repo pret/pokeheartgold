@@ -16,9 +16,4 @@ void OSi_IrqTimer2(void);
 void OSi_IrqTimer3(void);
 void OSi_IrqVBlank(void);
 
-static inline void OS_SetIrqCheckFlag(OSIrqMask intr)
-{
-    *(vu32 *)HW_INTR_CHECK_BUF |= (u32)intr;
-}
-
 #endif //NITRO_OS_IRQTABLE_H

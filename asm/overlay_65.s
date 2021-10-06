@@ -182,7 +182,7 @@ ov65_0221BFBC: ; 0x0221BFBC
 	add r6, r3, #0
 	lsl r1, r1, #5
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
@@ -1899,7 +1899,7 @@ ov65_0221CE1C: ; 0x0221CE1C
 	add r0, r5, r0
 	mul r1, r2
 	add r0, r0, r1
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	lsl r1, r4, #4
 	mov r0, #0x20
 	add r2, r5, r1
@@ -7086,7 +7086,7 @@ ov65_0221F890: ; 0x0221F890
 	lsl r0, r0, #0x1a
 	ldr r2, [r0]
 	ldr r1, _0221F8AC ; =0xFFFF1FFF
-	ldr r3, _0221F8B0 ; =sub_020CF178
+	ldr r3, _0221F8B0 ; =G2x_SetBlendBrightness_
 	and r2, r1
 	lsr r1, r0, #0xd
 	orr r1, r2
@@ -7097,7 +7097,7 @@ ov65_0221F890: ; 0x0221F890
 	bx r3
 	nop
 _0221F8AC: .word 0xFFFF1FFF
-_0221F8B0: .word sub_020CF178
+_0221F8B0: .word G2x_SetBlendBrightness_
 	thumb_func_end ov65_0221F890
 
 	thumb_func_start ov65_0221F8B4

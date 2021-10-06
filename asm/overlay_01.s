@@ -5643,7 +5643,7 @@ _021E85B4:
 	cmp r0, #0
 	ble _021E8622
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -5651,19 +5651,19 @@ _021E85B4:
 	b _021E8630
 _021E8622:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E8630:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x4c]
 	mov r0, #2
 	ldrsh r0, [r4, r0]
 	cmp r0, #0
 	ble _021E8650
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -5671,19 +5671,19 @@ _021E8630:
 	b _021E865E
 _021E8650:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E865E:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x50]
 	mov r0, #4
 	ldrsh r0, [r4, r0]
 	cmp r0, #0
 	ble _021E867E
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -5691,12 +5691,12 @@ _021E865E:
 	b _021E868C
 _021E867E:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021E868C:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x54]
 	ldr r0, [r4, #0x10]
 	cmp r0, #2
@@ -10267,7 +10267,7 @@ ov01_021EA8C4: ; 0x021EA8C4
 	bl MIi_CpuCopy32
 	add r4, #0x18
 	add r0, r4, #0
-	bl sub_020CF8FC
+	bl G3X_SetFogTable
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EA8C4
@@ -12400,7 +12400,7 @@ ov01_021EB818: ; 0x021EB818
 	ldr r0, _021EB82C ; =0x04000050
 	mov r1, #4
 	mov r2, #0x21
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _021EB82C: .word 0x04000050
@@ -21212,10 +21212,10 @@ ov01_021EFB38: ; 0x021EFB38
 	ldr r1, [r0, #8]
 	add r1, r1, #1
 	str r1, [r0, #8]
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_020D3560
+	bl OS_SetTick
 	pop {r3, pc}
 	.balign 4, 0
 _021EFB5C: .word 0x02209B64
@@ -21786,11 +21786,11 @@ ov01_021EFF90: ; 0x021EFF90
 	cmp r0, #1
 	bne _021EFF9E
 	ldr r0, _021EFFA8 ; =0x0400006C
-	bl sub_020CDA80
+	bl GXx_SetMasterBrightness_
 	pop {r3, pc}
 _021EFF9E:
 	ldr r0, _021EFFAC ; =0x0400106C
-	bl sub_020CDA80
+	bl GXx_SetMasterBrightness_
 	pop {r3, pc}
 	nop
 _021EFFA8: .word 0x0400006C
@@ -23699,7 +23699,7 @@ ov01_021F0DB0: ; 0x021F0DB0
 	add r4, r0, #0
 	ldr r0, _021F0DC4 ; =0x0400006C
 	ldr r1, [r1]
-	bl sub_020CDA80
+	bl GXx_SetMasterBrightness_
 	add r0, r4, #0
 	bl sub_0200E390
 	pop {r4, pc}
@@ -24215,7 +24215,7 @@ _021F1154:
 	add r1, sp, #0x24
 	add r3, r2, #0
 	str r2, [sp, #4]
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	ldr r5, _021F120C ; =0x02206844
 	add r3, sp, #8
 	ldmia r5!, {r0, r1}
@@ -28871,7 +28871,7 @@ _021F33F8:
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x10]
 	bl _dmul
-	bl _dtoi
+	bl _dfix
 	str r0, [sp, #0x1c]
 	add r0, r6, #0
 	add r1, sp, #0x18
@@ -28958,7 +28958,7 @@ _021F34B0:
 	ldr r0, [sp, #0xc]
 	add r1, r7, #0
 	bl _dmul
-	bl _dtoi
+	bl _dfix
 	str r0, [sp, #0x18]
 	add r0, r4, #0
 	add r1, sp, #0x14
@@ -29003,7 +29003,7 @@ _021F351E:
 	ldr r0, [sp, #0x10]
 	add r1, r7, #0
 	bl _dmul
-	bl _dtoi
+	bl _dfix
 	str r0, [sp, #0x18]
 	add r0, r4, #0
 	add r1, sp, #0x14
@@ -29487,7 +29487,7 @@ _021F38AC:
 	cmp r0, #0
 	ble _021F3904
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -29495,18 +29495,18 @@ _021F38AC:
 	b _021F3912
 _021F3904:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021F3912:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #8]
 	cmp r5, #0
 	str r0, [r1, #0x14]
 	ble _021F3930
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -29514,12 +29514,12 @@ _021F3912:
 	b _021F393E
 _021F3930:
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021F393E:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #8]
 	str r0, [r1, #0x18]
 	mov r0, #1
@@ -29528,7 +29528,7 @@ _021F393E:
 	cmp r0, #0
 	ble _021F3962
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -29536,12 +29536,12 @@ _021F393E:
 	b _021F3970
 _021F3962:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _021F3970:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #8]
 	add r3, sp, #0x24
 	add r2, r1, #0
@@ -31073,7 +31073,7 @@ _021F4480:
 	str r6, [r4, #0x34]
 	mov r0, #0
 	str r0, [r4, #0x30]
-	bl sub_020CEC0C
+	bl GX_GetBankForLCDC
 	str r0, [r4]
 	add r0, r4, #4
 	bl ov01_021F45E4
@@ -31095,10 +31095,10 @@ ov01_021F44B4: ; 0x021F44B4
 	add r0, r1, #0
 	add r1, r2, #0
 	add r2, r3, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
 	cmp r0, #0xa
@@ -31147,7 +31147,7 @@ _021F4516:
 	b _021F452A
 _021F4524:
 	mov r0, #0
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 _021F452A:
 	ldr r0, [r4]
 	ldr r0, [r0, #0x34]
@@ -31221,28 +31221,28 @@ _021F45A2:
 	b _021F45C8
 _021F45A8:
 	mov r0, #1
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	b _021F45CE
 _021F45B0:
 	mov r0, #2
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	b _021F45CE
 _021F45B8:
 	mov r0, #4
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	b _021F45CE
 _021F45C0:
 	mov r0, #8
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 	b _021F45CE
 _021F45C8:
 	mov r0, #0
-	bl sub_020CE630
+	bl GX_SetBankForLCDC
 _021F45CE:
 	ldr r0, [r4, #4]
 	ldr r1, [r4, #8]
 	ldr r2, [r4, #0xc]
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	mov r0, #1
 	str r0, [r4, #0x30]
 	add r0, r5, #0
@@ -46646,7 +46646,7 @@ _021FB740:
 	add r0, r4, #0
 	bl ov01_021FB82C
 	mov r0, #0
-	bl sub_020CFA64
+	bl G3X_SetHOffset
 _021FB74C:
 	pop {r4, pc}
 	.balign 4, 0
@@ -46675,7 +46675,7 @@ _021FB76C:
 	beq _021FB77E
 	lsl r1, r3, #1
 	ldrh r0, [r0, r1]
-	bl sub_020CFA64
+	bl G3X_SetHOffset
 _021FB77E:
 	pop {r4, pc}
 	.balign 4, 0
@@ -46726,13 +46726,13 @@ _021FB7C2:
 	thumb_func_start ov01_021FB7CC
 ov01_021FB7CC: ; 0x021FB7CC
 	mov r2, #0xc6
-	ldr r3, _021FB7D8 ; =sub_020CFA64
+	ldr r3, _021FB7D8 ; =G3X_SetHOffset
 	mov r0, #0
 	lsl r2, r2, #2
 	str r0, [r1, r2]
 	bx r3
 	.balign 4, 0
-_021FB7D8: .word sub_020CFA64
+_021FB7D8: .word G3X_SetHOffset
 	thumb_func_end ov01_021FB7CC
 
 	thumb_func_start ov01_021FB7DC
@@ -47339,11 +47339,11 @@ _021FBC2C:
 	cmp r0, #0
 	bne _021FBC50
 	ldr r0, _021FBCC8 ; =0x02208BA0
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	b _021FBC56
 _021FBC50:
 	ldr r0, _021FBCCC ; =0x02208BB0
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 _021FBC56:
 	bl ov01_021EA724
 	ldr r1, _021FBCB8 ; =0x000008AC
@@ -47934,7 +47934,7 @@ ov01_021FC05C: ; 0x021FC05C
 	ldr r0, _021FC0A0 ; =0x04000050
 	mov r1, #4
 	mov r2, #0x29
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #0
 	bl sub_0201BB68
@@ -47970,7 +47970,7 @@ ov01_021FC0A8: ; 0x021FC0A8
 	mov r1, #4
 	mov r2, #0x21
 	mov r3, #0xa
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -64632,19 +64632,19 @@ _02203FA6:
 	ldr r0, _02204000 ; =0x45800000
 	ldr r1, [r1, #0x64]
 	bl _fmul
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x24]
 	ldr r1, [r4, #8]
 	ldr r0, _02204000 ; =0x45800000
 	ldr r1, [r1, #0x64]
 	bl _fmul
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x28]
 	ldr r1, [r4, #8]
 	ldr r0, _02204000 ; =0x45800000
 	ldr r1, [r1, #0x64]
 	bl _fmul
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x2c]
 	add r0, r5, #0
 	add r1, sp, #0x30

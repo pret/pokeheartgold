@@ -3879,28 +3879,28 @@ _02039968: .word 0x021D4150
 	thumb_func_start sub_0203996C
 sub_0203996C: ; 0x0203996C
 	ldr r1, _02039978 ; =0x021D4150
-	ldr r3, _0203997C ; =MIi_CpuCopy8
+	ldr r3, _0203997C ; =MI_CpuCopy8
 	ldr r1, [r1]
 	mov r2, #6
 	add r1, r1, #4
 	bx r3
 	.balign 4, 0
 _02039978: .word 0x021D4150
-_0203997C: .word MIi_CpuCopy8
+_0203997C: .word MI_CpuCopy8
 	thumb_func_end sub_0203996C
 
 	thumb_func_start sub_02039980
 sub_02039980: ; 0x02039980
 	add r1, r0, #0
 	ldr r0, _02039990 ; =0x021D4150
-	ldr r3, _02039994 ; =MIi_CpuCopy8
+	ldr r3, _02039994 ; =MI_CpuCopy8
 	ldr r0, [r0]
 	mov r2, #6
 	add r0, r0, #4
 	bx r3
 	nop
 _02039990: .word 0x021D4150
-_02039994: .word MIi_CpuCopy8
+_02039994: .word MI_CpuCopy8
 	thumb_func_end sub_02039980
 
 	thumb_func_start sub_02039998
@@ -5066,7 +5066,7 @@ _0203A22C:
 	add r0, r7, #0
 	add r1, r1, r3
 	mov r2, #0xc
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r5, #0
 	bl sub_02034A20
 	b _0203A26C
@@ -5111,7 +5111,7 @@ sub_0203A280: ; 0x0203A280
 	bl sub_0203484C
 	ldr r1, [sp, #8]
 	mov r2, #0xc
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _0203A2B6:
 	ldr r0, [sp, #0x28]
 	cmp r0, #0

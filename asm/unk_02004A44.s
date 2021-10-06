@@ -1453,7 +1453,7 @@ _0200551C: .word sub_02004924
 GF_MIC_StartAutoSampling: ; 0x02005520
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_020DA9CC
+	bl MIC_StartAutoSampling
 	add r3, r0, #0
 	ldr r0, _02005548 ; =_021D05E8
 	mov r1, #1
@@ -1481,7 +1481,7 @@ GF_MIC_StopAutoSampling: ; 0x02005550
 	ldr r0, _02005564 ; =_021D05E8
 	mov r1, #0
 	strb r1, [r0]
-	bl sub_020DAA60
+	bl MIC_StopAutoSampling
 	pop {r3, pc}
 	nop
 _02005564: .word _021D05E8
@@ -1494,7 +1494,7 @@ sub_02005568: ; 0x02005568
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0200557E
-	bl sub_020DAA60
+	bl MIC_StopAutoSampling
 	cmp r0, #0
 	beq _0200557E
 	bl GF_AssertFail
@@ -1512,7 +1512,7 @@ sub_02005584: ; 0x02005584
 	cmp r0, #0
 	beq _0200559C
 	ldr r0, _020055A8 ; =_021D05F8
-	bl sub_020DA9CC
+	bl MIC_StartAutoSampling
 	cmp r0, #0
 	beq _0200559C
 	bl GF_AssertFail

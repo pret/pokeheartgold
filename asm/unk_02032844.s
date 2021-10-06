@@ -101,7 +101,7 @@ _020328DC:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #4
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	mov r0, #0x66
 	mov r1, #0
 	lsl r0, r0, #2
@@ -703,7 +703,7 @@ _02032D84:
 	sub r0, #0xf0
 	add r0, r2, r0
 	mov r1, #0xc0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldr r0, _02032E14 ; =_021D4124
 	ldr r1, [r0, #4]
 	ldr r0, _02032E1C ; =0x00001320
@@ -858,7 +858,7 @@ _02032EB4:
 	ldr r0, _02032F00 ; =0x0210F8FC
 	add r1, #1
 	mov r2, #3
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl sub_0203993C
 	add r1, sp, #4
 	strb r0, [r1]
@@ -2044,14 +2044,14 @@ _0203378A:
 	ldr r1, _020337CC ; =0x00001220
 	add r1, r2, r1
 	mov r2, #0xc0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, _020337C4 ; =_021D4124
 	ldr r1, [r0, #4]
 	ldr r0, _020337CC ; =0x00001220
 	add r0, r1, r0
 	mov r1, #0xc0
 	bl DC_FlushRange
-	bl sub_020D28B8
+	bl DC_WaitWriteBufferEmpty
 	bl sub_02032E9C
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}

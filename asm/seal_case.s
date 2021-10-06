@@ -25,11 +25,11 @@ sub_0202CBC8: ; 0x0202CBC8
 
 	thumb_func_start sub_0202CBDC
 sub_0202CBDC: ; 0x0202CBDC
-	ldr r3, _0202CBE4 ; =MIi_CpuCopy8
+	ldr r3, _0202CBE4 ; =MI_CpuCopy8
 	mov r2, #0x18
 	bx r3
 	nop
-_0202CBE4: .word MIi_CpuCopy8
+_0202CBE4: .word MI_CpuCopy8
 	thumb_func_end sub_0202CBDC
 
 	thumb_func_start Sav2_SealCase_get

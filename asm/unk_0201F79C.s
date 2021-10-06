@@ -505,7 +505,7 @@ sub_0201FAC8: ; 0x0201FAC8
 	add r4, sp, #8
 _0201FB06:
 	add r0, r4, #0
-	bl sub_020CFA38
+	bl G3X_GetBoxTestResult
 	cmp r0, #0
 	bne _0201FB06
 	ldr r0, [sp, #8]

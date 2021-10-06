@@ -539,7 +539,7 @@ _02033DCC:
 	ldr r0, [r5]
 	ldr r1, [r4]
 	add r2, r3, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _02033DD6:
 	ldrh r0, [r5, #0xc]
 	ldr r1, [r4]

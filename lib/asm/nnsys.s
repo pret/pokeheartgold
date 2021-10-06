@@ -1,8 +1,13 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
-	.public _02110C7C
-	.public _02110C80
+	.public sIsDispOn
+	.public GXi_DmaId
+
+	.bss
+
+_021D84B0:
+	.space 0x910C
 
 	.text
 
@@ -1545,12 +1550,12 @@ sub_020B5F48: ; 0x020B5F48
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020D08EC
+	bl GX_BeginLoadTex
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D0948
-	bl sub_020D0A88
+	bl GX_LoadTex
+	bl GX_EndLoadTex
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020B5F48
 
@@ -1560,12 +1565,12 @@ sub_020B5F74: ; 0x020B5F74
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020D0AD4
+	bl GX_BeginLoadTexPltt
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D0B08
-	bl sub_020D0B74
+	bl GX_LoadTexPltt
+	bl GX_EndLoadTexPltt
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020B5F74
 
@@ -1574,11 +1579,11 @@ sub_020B5FA0: ; 0x020B5FA0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r2
-	bl sub_020D0BB8
+	bl GX_BeginLoadClearImage
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D0C48
-	bl sub_020D0D1C
+	bl GX_LoadClearImageColor
+	bl GX_EndLoadClearImage
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020B5FA0
 
@@ -1587,92 +1592,92 @@ sub_020B5FC4: ; 0x020B5FC4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r2
-	bl sub_020D0BB8
+	bl GX_BeginLoadClearImage
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D0CB0
-	bl sub_020D0D1C
+	bl GX_LoadClearImageDepth
+	bl GX_EndLoadClearImage
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020B5FC4
 
 	arm_func_start sub_020B5FE8
 sub_020B5FE8: ; 0x020B5FE8
-	ldr ip, _020B5FF0 ; =sub_020D0224
+	ldr ip, _020B5FF0 ; =GX_LoadBG0Char
 	bx ip
 	.align 2, 0
-_020B5FF0: .word sub_020D0224
+_020B5FF0: .word GX_LoadBG0Char
 	arm_func_end sub_020B5FE8
 
 	arm_func_start sub_020B5FF4
 sub_020B5FF4: ; 0x020B5FF4
-	ldr ip, _020B5FFC ; =sub_020D02E4
+	ldr ip, _020B5FFC ; =GX_LoadBG1Char
 	bx ip
 	.align 2, 0
-_020B5FFC: .word sub_020D02E4
+_020B5FFC: .word GX_LoadBG1Char
 	arm_func_end sub_020B5FF4
 
 	arm_func_start sub_020B6000
 sub_020B6000: ; 0x020B6000
-	ldr ip, _020B6008 ; =sub_020D03A4
+	ldr ip, _020B6008 ; =GX_LoadBG2Char
 	bx ip
 	.align 2, 0
-_020B6008: .word sub_020D03A4
+_020B6008: .word GX_LoadBG2Char
 	arm_func_end sub_020B6000
 
 	arm_func_start sub_020B600C
 sub_020B600C: ; 0x020B600C
-	ldr ip, _020B6014 ; =sub_020D0464
+	ldr ip, _020B6014 ; =GX_LoadBG3Char
 	bx ip
 	.align 2, 0
-_020B6014: .word sub_020D0464
+_020B6014: .word GX_LoadBG3Char
 	arm_func_end sub_020B600C
 
 	arm_func_start sub_020B6018
 sub_020B6018: ; 0x020B6018
-	ldr ip, _020B6020 ; =sub_020CFF24
+	ldr ip, _020B6020 ; =GX_LoadBG0Scr
 	bx ip
 	.align 2, 0
-_020B6020: .word sub_020CFF24
+_020B6020: .word GX_LoadBG0Scr
 	arm_func_end sub_020B6018
 
 	arm_func_start sub_020B6024
 sub_020B6024: ; 0x020B6024
-	ldr ip, _020B602C ; =sub_020CFFE4
+	ldr ip, _020B602C ; =GX_LoadBG1Scr
 	bx ip
 	.align 2, 0
-_020B602C: .word sub_020CFFE4
+_020B602C: .word GX_LoadBG1Scr
 	arm_func_end sub_020B6024
 
 	arm_func_start sub_020B6030
 sub_020B6030: ; 0x020B6030
-	ldr ip, _020B6038 ; =sub_020D00A4
+	ldr ip, _020B6038 ; =GX_LoadBG2Scr
 	bx ip
 	.align 2, 0
-_020B6038: .word sub_020D00A4
+_020B6038: .word GX_LoadBG2Scr
 	arm_func_end sub_020B6030
 
 	arm_func_start sub_020B603C
 sub_020B603C: ; 0x020B603C
-	ldr ip, _020B6044 ; =sub_020D0164
+	ldr ip, _020B6044 ; =GX_LoadBG3Scr
 	bx ip
 	.align 2, 0
-_020B6044: .word sub_020D0164
+_020B6044: .word GX_LoadBG3Scr
 	arm_func_end sub_020B603C
 
 	arm_func_start sub_020B6048
 sub_020B6048: ; 0x020B6048
-	ldr ip, _020B6050 ; =sub_020D00A4
+	ldr ip, _020B6050 ; =GX_LoadBG2Scr
 	bx ip
 	.align 2, 0
-_020B6050: .word sub_020D00A4
+_020B6050: .word GX_LoadBG2Scr
 	arm_func_end sub_020B6048
 
 	arm_func_start sub_020B6054
 sub_020B6054: ; 0x020B6054
-	ldr ip, _020B605C ; =sub_020D0164
+	ldr ip, _020B605C ; =GX_LoadBG3Scr
 	bx ip
 	.align 2, 0
-_020B605C: .word sub_020D0164
+_020B605C: .word GX_LoadBG3Scr
 	arm_func_end sub_020B6054
 
 	arm_func_start sub_020B6060
@@ -1723,98 +1728,98 @@ sub_020B60A4: ; 0x020B60A4
 
 	arm_func_start sub_020B60D0
 sub_020B60D0: ; 0x020B60D0
-	ldr ip, _020B60D8 ; =sub_020CFDC8
+	ldr ip, _020B60D8 ; =GX_LoadOAM
 	bx ip
 	.align 2, 0
-_020B60D8: .word sub_020CFDC8
+_020B60D8: .word GX_LoadOAM
 	arm_func_end sub_020B60D0
 
 	arm_func_start sub_020B60DC
 sub_020B60DC: ; 0x020B60DC
-	ldr ip, _020B60E4 ; =sub_020CFE74
+	ldr ip, _020B60E4 ; =GX_LoadOBJ
 	bx ip
 	.align 2, 0
-_020B60E4: .word sub_020CFE74
+_020B60E4: .word GX_LoadOBJ
 	arm_func_end sub_020B60DC
 
 	arm_func_start sub_020B60E8
 sub_020B60E8: ; 0x020B60E8
-	ldr ip, _020B60F0 ; =sub_020D0284
+	ldr ip, _020B60F0 ; =GXS_LoadBG0Char
 	bx ip
 	.align 2, 0
-_020B60F0: .word sub_020D0284
+_020B60F0: .word GXS_LoadBG0Char
 	arm_func_end sub_020B60E8
 
 	arm_func_start sub_020B60F4
 sub_020B60F4: ; 0x020B60F4
-	ldr ip, _020B60FC ; =sub_020D0344
+	ldr ip, _020B60FC ; =GXS_LoadBG1Char
 	bx ip
 	.align 2, 0
-_020B60FC: .word sub_020D0344
+_020B60FC: .word GXS_LoadBG1Char
 	arm_func_end sub_020B60F4
 
 	arm_func_start sub_020B6100
 sub_020B6100: ; 0x020B6100
-	ldr ip, _020B6108 ; =sub_020D0404
+	ldr ip, _020B6108 ; =GXS_LoadBG2Char
 	bx ip
 	.align 2, 0
-_020B6108: .word sub_020D0404
+_020B6108: .word GXS_LoadBG2Char
 	arm_func_end sub_020B6100
 
 	arm_func_start sub_020B610C
 sub_020B610C: ; 0x020B610C
-	ldr ip, _020B6114 ; =sub_020D04C4
+	ldr ip, _020B6114 ; =GXS_LoadBG3Char
 	bx ip
 	.align 2, 0
-_020B6114: .word sub_020D04C4
+_020B6114: .word GXS_LoadBG3Char
 	arm_func_end sub_020B610C
 
 	arm_func_start sub_020B6118
 sub_020B6118: ; 0x020B6118
-	ldr ip, _020B6120 ; =sub_020CFF84
+	ldr ip, _020B6120 ; =GXS_LoadBG0Scr
 	bx ip
 	.align 2, 0
-_020B6120: .word sub_020CFF84
+_020B6120: .word GXS_LoadBG0Scr
 	arm_func_end sub_020B6118
 
 	arm_func_start sub_020B6124
 sub_020B6124: ; 0x020B6124
-	ldr ip, _020B612C ; =sub_020D0044
+	ldr ip, _020B612C ; =GXS_LoadBG1Scr
 	bx ip
 	.align 2, 0
-_020B612C: .word sub_020D0044
+_020B612C: .word GXS_LoadBG1Scr
 	arm_func_end sub_020B6124
 
 	arm_func_start sub_020B6130
 sub_020B6130: ; 0x020B6130
-	ldr ip, _020B6138 ; =sub_020D0104
+	ldr ip, _020B6138 ; =GXS_LoadBG2Scr
 	bx ip
 	.align 2, 0
-_020B6138: .word sub_020D0104
+_020B6138: .word GXS_LoadBG2Scr
 	arm_func_end sub_020B6130
 
 	arm_func_start sub_020B613C
 sub_020B613C: ; 0x020B613C
-	ldr ip, _020B6144 ; =sub_020D01C4
+	ldr ip, _020B6144 ; =GXS_LoadBG3Scr
 	bx ip
 	.align 2, 0
-_020B6144: .word sub_020D01C4
+_020B6144: .word GXS_LoadBG3Scr
 	arm_func_end sub_020B613C
 
 	arm_func_start sub_020B6148
 sub_020B6148: ; 0x020B6148
-	ldr ip, _020B6150 ; =sub_020D0104
+	ldr ip, _020B6150 ; =GXS_LoadBG2Scr
 	bx ip
 	.align 2, 0
-_020B6150: .word sub_020D0104
+_020B6150: .word GXS_LoadBG2Scr
 	arm_func_end sub_020B6148
 
 	arm_func_start sub_020B6154
 sub_020B6154: ; 0x020B6154
-	ldr ip, _020B615C ; =sub_020D01C4
+	ldr ip, _020B615C ; =GXS_LoadBG3Scr
 	bx ip
 	.align 2, 0
-_020B615C: .word sub_020D01C4
+_020B615C: .word GXS_LoadBG3Scr
 	arm_func_end sub_020B6154
 
 	arm_func_start sub_020B6160
@@ -1865,18 +1870,18 @@ sub_020B61A4: ; 0x020B61A4
 
 	arm_func_start sub_020B61D0
 sub_020B61D0: ; 0x020B61D0
-	ldr ip, _020B61D8 ; =sub_020CFE1C
+	ldr ip, _020B61D8 ; =GXS_LoadOAM
 	bx ip
 	.align 2, 0
-_020B61D8: .word sub_020CFE1C
+_020B61D8: .word GXS_LoadOAM
 	arm_func_end sub_020B61D0
 
 	arm_func_start sub_020B61DC
 sub_020B61DC: ; 0x020B61DC
-	ldr ip, _020B61E4 ; =sub_020CFECC
+	ldr ip, _020B61E4 ; =GXS_LoadOBJ
 	bx ip
 	.align 2, 0
-_020B61E4: .word sub_020CFECC
+_020B61E4: .word GXS_LoadOBJ
 	arm_func_end sub_020B61DC
 
 	arm_func_start sub_020B61E8
@@ -3297,7 +3302,7 @@ sub_020B7350: ; 0x020B7350
 	mov r1, #0xc0000
 	mov r3, #0x100000
 	str r0, [sp, #0x10]
-	bl sub_020CFB08
+	bl G3i_OrthoW_
 	ldr r1, _020B7408 ; =0x0400044C
 	mov r5, #0
 	ldr r0, _020B740C ; =0x021092E0
@@ -3318,7 +3323,7 @@ sub_020B7350: ; 0x020B7350
 	mov r1, lr
 	mov r3, #1
 	str r5, [sp]
-	bl sub_020CFB6C
+	bl G3i_LookAt_
 	ldr r0, _020B7414 ; =0x04000440
 	mov r1, #1
 	str r1, [r0]
@@ -4032,13 +4037,13 @@ _020B7D24:
 	mov r1, r7
 	mov r2, r8
 	add r0, r5, r4
-	bl sub_020CFDC8
+	bl GX_LoadOAM
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020B7D38:
 	mov r1, r7
 	mov r2, r8
 	add r0, r5, r4
-	bl sub_020CFE1C
+	bl GXS_LoadOAM
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020B7D4C:
 	ldr r0, [r7]
@@ -4175,8 +4180,8 @@ _020B7F14:
 	mov r1, r4
 	add r6, r2, r0, lsl #3
 	mov r0, r6
-	bl sub_020D285C
-	ldr r0, _020B7FE0 ; =_02110C80
+	bl DC_InvalidateRange
+	ldr r0, _020B7FE0 ; =GXi_DmaId
 	mvn r1, #0
 	ldr r0, [r0]
 	cmp r0, r1
@@ -4184,7 +4189,7 @@ _020B7F14:
 	beq _020B7F64
 	mov r3, r4
 	mov r2, #0xc0
-	bl sub_020D3F74
+	bl MI_DmaFill32
 	b _020B7FC8
 _020B7F64:
 	mov r2, r4
@@ -4222,7 +4227,7 @@ _020B7FC8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020B7FDC: .word 0x021D8518
-_020B7FE0: .word _02110C80
+_020B7FE0: .word GXi_DmaId
 	arm_func_end sub_020B7EBC
 
 	arm_func_start sub_020B7FE4
@@ -4355,24 +4360,24 @@ _020B8104:
 	beq _020B815C
 	b _020B816C
 _020B812C:
-	bl sub_020D08EC
+	bl GX_BeginLoadTex
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020D0948
-	bl sub_020D0A88
+	bl GX_LoadTex
+	bl GX_EndLoadTex
 	b _020B816C
 _020B8148:
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	b _020B816C
 _020B815C:
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 _020B816C:
 	ldr r0, [r7, #8]
 	cmp r0, #0
@@ -4528,24 +4533,24 @@ _020B8330:
 	beq _020B8388
 	b _020B8398
 _020B8358:
-	bl sub_020D08EC
+	bl GX_BeginLoadTex
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020D0948
-	bl sub_020D0A88
+	bl GX_LoadTex
+	bl GX_EndLoadTex
 	b _020B8398
 _020B8374:
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	b _020B8398
 _020B8388:
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x10]
 	mov r1, r6
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 _020B8398:
 	ldr r0, [r7, #8]
 	cmp r0, #0
@@ -4861,12 +4866,12 @@ _020B8774:
 	bl GXS_LoadOBJPltt
 	b _020B87A0
 _020B8788:
-	bl sub_020D0AD4
+	bl GX_BeginLoadTexPltt
 	mov r0, r4
 	mov r1, r8
 	mov r2, r5
-	bl sub_020D0B08
-	bl sub_020D0B74
+	bl GX_LoadTexPltt
+	bl GX_EndLoadTexPltt
 _020B87A0:
 	ldr r1, [sb]
 	mov r0, r6
@@ -4952,12 +4957,12 @@ _020B88B4:
 	bl GXS_LoadOBJPltt
 	b _020B88E0
 _020B88C8:
-	bl sub_020D0AD4
+	bl GX_BeginLoadTexPltt
 	add r0, r5, r4
 	mov r2, r8
 	add r1, sb, r6
-	bl sub_020D0B08
-	bl sub_020D0B74
+	bl GX_LoadTexPltt
+	bl GX_EndLoadTexPltt
 _020B88E0:
 	add r0, r7, #1
 	mov r1, r0, lsl #0x10
@@ -8648,7 +8653,7 @@ sub_020BBB60: ; 0x020BBB60
 	mov r7, r0
 	ldr r0, [r1]
 	add r0, r0, #0x40
-	bl sub_020CF510
+	bl G3_LoadMtx43
 	ldr r0, _020BBD94 ; =0x021DA498
 	ldr r0, [r0]
 	ldr r1, [r0, #0x24]
@@ -11186,7 +11191,7 @@ _020BDDEC:
 _020BDDF0:
 	cmp r0, #0
 	bne _020BDDFC
-	bl sub_020D3F48
+	bl OS_Terminate
 _020BDDFC:
 	mov r4, #1
 _020BDE00:
@@ -11690,7 +11695,7 @@ NNS_G3dTexLoad: ; 0x020BE418
 	movs r8, r1
 	mov sb, r0
 	beq _020BE42C
-	bl sub_020D08EC
+	bl GX_BeginLoadTex
 _020BE42C:
 	ldrh r0, [sb, #0xc]
 	movs r2, r0, lsl #3
@@ -11700,7 +11705,7 @@ _020BE42C:
 	mov r1, r0, lsl #0x10
 	add r0, sb, r3
 	mov r1, r1, lsr #0xd
-	bl sub_020D0948
+	bl GX_LoadTex
 	ldrh r0, [sb, #0x10]
 	orr r0, r0, #1
 	strh r0, [sb, #0x10]
@@ -11716,7 +11721,7 @@ _020BE45C:
 	mov r2, r6
 	add r0, sb, r0
 	ldr r5, [sb, #0x28]
-	bl sub_020D0948
+	bl GX_LoadTex
 	ldr r0, _020BE4CC ; =0x0001FFFF
 	and r1, r7, #0x40000
 	and r0, r0, r4, lsr #13
@@ -11725,14 +11730,14 @@ _020BE45C:
 	add r0, sb, r5
 	add r1, r2, r1, lsr #2
 	mov r2, r6, lsr #1
-	bl sub_020D0948
+	bl GX_LoadTex
 	ldrh r0, [sb, #0x20]
 	orr r0, r0, #1
 	strh r0, [sb, #0x20]
 _020BE4BC:
 	cmp r8, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	bl sub_020D0A88
+	bl GX_EndLoadTex
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020BE4CC: .word 0x0001FFFF
@@ -11783,7 +11788,7 @@ NNS_G3dPlttLoad: ; 0x020BE538
 	movs r5, r1
 	mov r4, r0
 	beq _020BE54C
-	bl sub_020D0AD4
+	bl GX_BeginLoadTexPltt
 _020BE54C:
 	ldr r0, [r4, #0x2c]
 	ldrh r2, [r4, #0x30]
@@ -11792,13 +11797,13 @@ _020BE54C:
 	mov r1, r1, lsr #0xd
 	add r0, r4, r3
 	mov r2, r2, lsl #3
-	bl sub_020D0B08
+	bl GX_LoadTexPltt
 	ldrh r0, [r4, #0x32]
 	cmp r5, #0
 	orr r0, r0, #1
 	strh r0, [r4, #0x32]
 	ldmeqia sp!, {r3, r4, r5, pc}
-	bl sub_020D0B74
+	bl GX_EndLoadTexPltt
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end NNS_G3dPlttLoad
 
@@ -12726,7 +12731,7 @@ sub_020BF13C: ; 0x020BF13C
 	sub sp, sp, #0x48
 	str r1, [sp]
 	add r1, sp, #8
-	bl sub_020D4968
+	bl MI_Copy64B
 	ldr r0, [sp]
 	bl MTX_Identity44_
 	mov fp, #0
@@ -14481,7 +14486,7 @@ _020C0924:
 	str r1, [sp]
 	ldrsh r1, [r6, #2]
 	str r1, [sp, #4]
-	bl sub_020D4BD0
+	bl MI_Zero36B
 	ldrh r0, [r7]
 	ldr r2, _020C0B38 ; =0x02109494
 	ldr r1, _020C0B3C ; =0x02109495
@@ -14700,7 +14705,7 @@ _020C0C2C:
 	add sl, sp, #0x88
 _020C0C5C:
 	mov r0, sl
-	bl sub_020CF884
+	bl G3X_GetClipMtx
 	cmp r0, #0
 	bne _020C0C5C
 	ldr r0, _020C0E34 ; =0x021DA49C
@@ -14750,17 +14755,17 @@ _020C0CC0:
 	ldr r0, _020C0E40 ; =_02110B10
 	mov r2, #8
 	str r3, [r1]
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	bl sub_020BF418
 	ldr r1, _020C0E30 ; =0x04000400
 	mov r2, #0x30
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldr r2, _020C0E44 ; =0x00001B19
 	ldr r1, _020C0E30 ; =0x04000400
 	ldr r0, _020C0E48 ; =_02110B18
 	str r2, [r1]
 	mov r2, #0x3c
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	b _020C0DA4
 _020C0D50:
 	tst r0, #2
@@ -14769,22 +14774,22 @@ _020C0D50:
 	ldr r0, _020C0E40 ; =_02110B10
 	mov r2, #8
 	str r3, [r1]
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	bl sub_020BF0F8
 	ldr r1, _020C0E30 ; =0x04000400
 	mov r2, #0x30
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldr r2, _020C0E44 ; =0x00001B19
 	ldr r1, _020C0E30 ; =0x04000400
 	ldr r0, _020C0E48 ; =_02110B18
 	str r2, [r1]
 	mov r2, #0x3c
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	b _020C0DA4
 _020C0D98:
 	ldr r0, _020C0E4C ; =_02110B0C
 	mov r2, #0x48
-	bl sub_020D4830
+	bl MIi_CpuSend32
 _020C0DA4:
 	cmp r7, #3
 	movne r0, #0
@@ -14912,7 +14917,7 @@ _020C0F38:
 	add r4, sp, #0x88
 _020C0F68:
 	mov r0, r4
-	bl sub_020CF884
+	bl G3X_GetClipMtx
 	cmp r0, #0
 	bne _020C0F68
 	ldr r0, _020C119C ; =0x021DA49C
@@ -14986,17 +14991,17 @@ _020C1060:
 	ldr r0, _020C11A8 ; =_02110B58
 	mov r2, #8
 	str r3, [r1]
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	bl sub_020BF418
 	ldr r1, _020C1198 ; =0x04000400
 	mov r2, #0x30
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldr r2, _020C11AC ; =0x00001B19
 	ldr r1, _020C1198 ; =0x04000400
 	ldr r0, _020C1190 ; =_02110B60
 	str r2, [r1]
 	mov r2, #0x3c
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	b _020C1108
 _020C10B4:
 	tst r0, #2
@@ -15005,22 +15010,22 @@ _020C10B4:
 	ldr r0, _020C11A8 ; =_02110B58
 	mov r2, #8
 	str r3, [r1]
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	bl sub_020BF0F8
 	ldr r1, _020C1198 ; =0x04000400
 	mov r2, #0x30
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldr r2, _020C11AC ; =0x00001B19
 	ldr r1, _020C1198 ; =0x04000400
 	ldr r0, _020C1190 ; =_02110B60
 	str r2, [r1]
 	mov r2, #0x3c
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	b _020C1108
 _020C10FC:
 	ldr r0, _020C11B0 ; =_02110B54
 	mov r2, #0x48
-	bl sub_020D4830
+	bl MIi_CpuSend32
 _020C1108:
 	cmp r8, #3
 	movne r0, #0
@@ -15131,7 +15136,7 @@ _020C1234:
 	ldrb sb, [r6]
 	str sb, [r3]
 	str r2, [r3, #-0x10]
-	bl sub_020CF52C
+	bl G3_MultMtx43
 _020C12A0:
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
@@ -15277,7 +15282,7 @@ _020C14C8:
 	bne _020C1504
 _020C14D4:
 	mov r0, r7
-	bl sub_020CF884
+	bl G3X_GetClipMtx
 	cmp r0, #0
 	bne _020C14D4
 	ldr r0, [sp, #0x14]
@@ -15287,7 +15292,7 @@ _020C14D4:
 	mov r2, #2
 	add r0, r0, #0x30
 	str r2, [r1]
-	bl sub_020CF548
+	bl G3_MultMtx33
 _020C1504:
 	ldrb r0, [r6, #2]
 	ldr r2, [r7]
@@ -15385,7 +15390,7 @@ _020C1504:
 	bne _020C168C
 _020C167C:
 	mov r0, r8
-	bl sub_020CF8B4
+	bl G3X_GetVectorMtx
 	cmp r0, #0
 	bne _020C167C
 _020C168C:
@@ -15520,12 +15525,12 @@ _020C16A4:
 	adds r1, r1, r2
 	add r0, sp, #0xe0
 	str r1, [sp, #0x100]
-	bl sub_020CF510
+	bl G3_LoadMtx43
 	ldr r1, _020C1900 ; =0x04000440
 	mov r2, #1
 	add r0, sp, #0xb0
 	str r2, [r1]
-	bl sub_020CF510
+	bl G3_LoadMtx43
 	ldr r1, _020C1900 ; =0x04000440
 	mov r2, #0
 	mov r0, #1
@@ -16081,7 +16086,7 @@ _020C2054:
 	add r4, sp, #0x10
 _020C2070:
 	mov r0, r4
-	bl sub_020CF884
+	bl G3X_GetClipMtx
 	cmp r0, #0
 	bne _020C2070
 	ldr r2, _020C214C ; =0x04000448
@@ -16347,7 +16352,7 @@ _020C240C:
 	ldr r1, _020C244C ; =0x04000400
 	add r0, r0, #4
 	mov r2, r2, lsl #2
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldr r0, _020C2448 ; =0x021DD404
 	mov r1, #0
 	ldr r0, [r0]
@@ -16384,7 +16389,7 @@ sub_020C2474: ; 0x020C2474
 	mov r5, r0
 	cmp r4, #0x100
 	blo _020C249C
-	ldr r1, _020C2518 ; =_02110C80
+	ldr r1, _020C2518 ; =GXi_DmaId
 	mvn r0, #0
 	ldr r1, [r1]
 	cmp r1, r0
@@ -16405,26 +16410,26 @@ _020C24B4:
 	cmp r0, #0
 	beq _020C24F4
 	ldr r1, _020C2520 ; =0x021DD408
-	ldr r0, _020C2518 ; =_02110C80
+	ldr r0, _020C2518 ; =GXi_DmaId
 	str r1, [sp]
 	ldr r0, [r0]
 	ldr r3, _020C2524 ; =sub_020C2468
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D46AC
+	bl MI_SendGXCommandAsyncFast
 	ldmia sp!, {r3, r4, r5, pc}
 _020C24F4:
 	ldr r1, _020C2520 ; =0x021DD408
-	ldr r0, _020C2518 ; =_02110C80
+	ldr r0, _020C2518 ; =GXi_DmaId
 	str r1, [sp]
 	ldr r0, [r0]
 	ldr r3, _020C2524 ; =sub_020C2468
 	mov r1, r5
 	mov r2, r4
-	bl sub_020D44A8
+	bl MI_SendGXCommandAsync
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020C2518: .word _02110C80
+_020C2518: .word GXi_DmaId
 _020C251C: .word 0x021DD404
 _020C2520: .word 0x021DD408
 _020C2524: .word sub_020C2468
@@ -16489,7 +16494,7 @@ _020C25EC:
 	mov r0, r5
 	mov r2, r4, lsl #2
 	str r6, [r1]
-	bl sub_020D4830
+	bl MIi_CpuSend32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020C2604: .word 0x021DD404
@@ -16513,7 +16518,7 @@ sub_020C260C: ; 0x020C260C
 	add r4, sp, #0
 _020C2640:
 	mov r0, r4
-	bl sub_020CF884
+	bl G3X_GetClipMtx
 	cmp r0, #0
 	bne _020C2640
 	add r0, sp, #0
@@ -16524,7 +16529,7 @@ _020C265C:
 	beq _020C2674
 _020C2664:
 	mov r0, r5
-	bl sub_020CF8B4
+	bl G3X_GetVectorMtx
 	cmp r0, #0
 	bne _020C2664
 _020C2674:
@@ -16543,7 +16548,7 @@ _020C2694: .word 0x04000448
 	arm_func_start sub_020C2698
 sub_020C2698: ; 0x020C2698
 	stmdb sp!, {r3, lr}
-	bl sub_020CF564
+	bl G3X_Init
 	bl sub_020BEE44
 	ldr r1, _020C26BC ; =0x04000600
 	ldr r0, [r1]
@@ -18500,7 +18505,7 @@ _020C3F30:
 	mov r4, r2, asr #4
 	ldrsh r7, [r1]
 	ldrsh r6, [r1, #2]
-	bl sub_020D4BD0
+	bl MI_Zero36B
 	ldrh r0, [r5]
 	ldr r1, _020C403C ; =0x021094B8
 	mov r3, #0x1000
@@ -22616,7 +22621,7 @@ NNS_SndInit: ; 0x020C78D0
 	ldmneia sp!, {r3, pc}
 	mov r1, #1
 	str r1, [r0, #0xc]
-	bl sub_020D54D0
+	bl SND_Init
 	ldr r0, _020C7948 ; =sub_020C7B34
 	ldr r1, _020C7944 ; =0x021DD420
 	mov r2, #0
@@ -22626,9 +22631,9 @@ NNS_SndInit: ; 0x020C78D0
 	str r0, [r1, #0x1c]
 	ldr r0, _020C7950 ; =0x021DD430
 	str r2, [r1, #0x20]
-	bl sub_020DB960
+	bl PM_PrependPreSleepCallback
 	ldr r0, _020C7954 ; =0x021DD43C
-	bl sub_020DB978
+	bl PM_AppendPostSleepCallback
 	bl sub_020C7C74
 	bl sub_020C908C
 	bl sub_020C83E4
@@ -22652,23 +22657,23 @@ NNS_SndMain: ; 0x020C7958
 	mov r4, #0
 _020C7960:
 	mov r0, r4
-	bl sub_020D5604
+	bl SND_RecvCommandReply
 	cmp r0, #0
 	bne _020C7960
 	bl sub_020C8498
 	bl sub_020C90A4
 	bl sub_020CAB94
 	mov r0, #0
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	ldmia sp!, {r4, pc}
 	arm_func_end NNS_SndMain
 
 	arm_func_start sub_020C7988
 sub_020C7988: ; 0x020C7988
-	ldr ip, _020C7990 ; =sub_020D5394
+	ldr ip, _020C7990 ; =SND_SetMasterVolume
 	bx ip
 	.align 2, 0
-_020C7990: .word sub_020D5394
+_020C7990: .word SND_SetMasterVolume
 	arm_func_end sub_020C7988
 
 	arm_func_start NNS_SndSetMonoFlag
@@ -22677,10 +22682,10 @@ NNS_SndSetMonoFlag: ; 0x020C7994
 	cmp r0, #0
 	beq _020C79AC
 	mov r0, #0x40
-	bl sub_020D53DC
+	bl SND_SetMasterPan
 	ldmia sp!, {r3, pc}
 _020C79AC:
-	bl sub_020D53FC
+	bl SND_ResetMasterPan
 	ldmia sp!, {r3, pc}
 	arm_func_end NNS_SndSetMonoFlag
 
@@ -22694,12 +22699,12 @@ sub_020C79B4: ; 0x020C79B4
 	mov r4, #0
 _020C79CC:
 	mov r0, r4
-	bl sub_020D5604
+	bl SND_RecvCommandReply
 	cmp r0, #0
 	bne _020C79CC
 	ldr r0, _020C7A88 ; =0x021DD420
 	ldr r0, [r0, #8]
-	bl sub_020D5A28
+	bl SND_IsFinishedCommandTag
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -22713,8 +22718,8 @@ _020C79CC:
 	ldrsb r1, [r0]
 	ldr r0, _020C7A90 ; =0x000011E0
 	mla r0, r1, r0, r2
-	bl sub_020D541C
-	bl sub_020D59FC
+	bl SND_ReadDriverInfo
+	bl SND_GetCurrentCommandTag
 	ldr r1, _020C7A88 ; =0x021DD420
 	ldr r3, _020C7A8C ; =0x021DD460
 	str r0, [r1, #8]
@@ -22727,15 +22732,15 @@ _020C79CC:
 	ldr r1, _020C7A90 ; =0x000011E0
 	ldrsb r2, [r0]
 	mla r0, r2, r1, r3
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	mov r0, #0
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _020C7A68:
 	ldr r0, _020C7A8C ; =0x021DD460
-	bl sub_020D541C
-	bl sub_020D59FC
+	bl SND_ReadDriverInfo
+	bl SND_GetCurrentCommandTag
 	ldr r1, _020C7A88 ; =0x021DD420
 	str r0, [r1, #8]
 	mov r0, #0
@@ -22763,7 +22768,7 @@ sub_020C7A94: ; 0x020C7A94
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r1, ip
-	bl sub_020D5DA4
+	bl SND_ReadChannelInfo
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020C7AD4: .word 0x021DD420
@@ -22789,7 +22794,7 @@ sub_020C7AE0: ; 0x020C7AE0
 	ldmeqia sp!, {r4, pc}
 	mov r1, r4
 	mov r2, lr
-	bl sub_020D5F34
+	bl SND_ReadTrackInfo
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020C7B28: .word 0x021DD420
@@ -22805,13 +22810,13 @@ sub_020C7B34: ; 0x020C7B34
 	mov r1, r0
 	mov r2, r0
 	mov r3, r0
-	bl sub_020D519C
-	bl sub_020D59FC
+	bl SND_StopTimer
+	bl SND_GetCurrentCommandTag
 	mov r4, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r4
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020C7B34
 
@@ -22835,7 +22840,7 @@ sub_020C7B78: ; 0x020C7B78
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r1, #0
-	bl sub_020D5240
+	bl SND_LockChannel
 	ldr r1, _020C7BBC ; =0x021DF820
 	mov r0, #1
 	ldr r2, [r1, #8]
@@ -22852,7 +22857,7 @@ sub_020C7BC0: ; 0x020C7BC0
 	movs r4, r0
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
-	bl sub_020D5260
+	bl SND_UnlockChannel
 	ldr r0, _020C7BEC ; =0x021DF820
 	mvn r1, r4
 	ldr r2, [r0, #8]
@@ -23015,19 +23020,19 @@ _020C7D80:
 	moveq r3, #2
 	mov r1, r8
 	mov r2, r7
-	bl sub_020D52E8
+	bl SND_SetupChannelPcm
 	mov r1, #0
 	ldr r0, [sb]
 	mov r2, #1
 	mov r0, r2, lsl r0
 	mov r2, r1
 	mov r3, r1
-	bl sub_020D5174
+	bl SND_StartTimer
 	mov r0, #1
 	str r0, [sb, #8]
 	mov r0, #0
 	str r0, [sb, #0xc]
-	bl sub_020D59FC
+	bl SND_GetCurrentCommandTag
 	str r0, [sb, #0x10]
 	ldr r1, [sp, #0x40]
 	mov r0, #1
@@ -23052,7 +23057,7 @@ sub_020C7E0C: ; 0x020C7E0C
 	mov r0, r2, lsl r0
 	mov r2, r1
 	mov r3, r1
-	bl sub_020D519C
+	bl SND_StopTimer
 	mov r0, #0
 	str r0, [r4, #8]
 	ldmia sp!, {r4, pc}
@@ -23068,7 +23073,7 @@ sub_020C7E48: ; 0x020C7E48
 	mov r2, #1
 	mov r0, r2, lsl r0
 	mov r2, #0
-	bl sub_020D52A0
+	bl SND_SetChannelVolume
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C7E48
 
@@ -23104,7 +23109,7 @@ _020C7ED4:
 	mov r1, #1
 	mov r0, r1, lsl r0
 	mov r1, r3
-	bl sub_020D5280
+	bl SND_SetChannelTimer
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020C7EEC: .word 0xD87F8000
@@ -23120,7 +23125,7 @@ sub_020C7EF4: ; 0x020C7EF4
 	ldr r0, [r0]
 	mov r2, #1
 	mov r0, r2, lsl r0
-	bl sub_020D52C8
+	bl SND_SetChannelPan
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C7EF4
 
@@ -23136,13 +23141,13 @@ sub_020C7F18: ; 0x020C7F18
 	cmp r0, #0
 	bne _020C7F54
 	ldr r0, [r4, #0x10]
-	bl sub_020D5A28
+	bl SND_IsFinishedCommandTag
 	cmp r0, #0
 	mov r0, #1
 	ldmeqia sp!, {r4, pc}
 	str r0, [r4, #0xc]
 _020C7F54:
-	bl sub_020D5D30
+	bl SND_GetChannelStatus
 	ldr r1, [r4]
 	mov r2, #1
 	tst r0, r2, lsl r1
@@ -23428,7 +23433,7 @@ sub_020C825C: ; 0x020C825C
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl sub_020D50FC
+	bl SND_SetPlayerChannelPriority
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C825C
 
@@ -23440,7 +23445,7 @@ sub_020C827C: ; 0x020C827C
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl sub_020D5114
+	bl SND_SetTrackPitch
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C827C
 
@@ -23452,7 +23457,7 @@ sub_020C829C: ; 0x020C829C
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl sub_020D5130
+	bl SND_SetTrackPan
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C829C
 
@@ -23464,7 +23469,7 @@ sub_020C82BC: ; 0x020C82BC
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl sub_020D514C
+	bl SND_SetTrackAllocatableChannel
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C82BC
 
@@ -23476,7 +23481,7 @@ sub_020C82DC: ; 0x020C82DC
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl sub_020D50CC
+	bl SND_SetPlayerTempoRatio
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020C82DC
 
@@ -23540,7 +23545,7 @@ sub_020C8374: ; 0x020C8374
 	ldmia sp!, {r4, pc}
 _020C83AC:
 	ldrb r0, [r2, #0x3c]
-	bl sub_020D5D5C
+	bl SND_GetPlayerLocalVariable
 	strh r0, [r4]
 	mov r0, #1
 	ldmia sp!, {r4, pc}
@@ -23614,7 +23619,7 @@ _020C8494: .word 0x021DFDC4
 	arm_func_start sub_020C8498
 sub_020C8498: ; 0x020C8498
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	bl sub_020D5D04
+	bl SND_GetPlayerStatus
 	mov fp, r0
 	ldr r0, _020C85F0 ; =0x021DF978
 	mov r1, #0
@@ -23633,7 +23638,7 @@ _020C84C4:
 	cmp r1, #0
 	bne _020C84F4
 	ldr r0, [r6, #0x30]
-	bl sub_020D5A28
+	bl SND_IsFinishedCommandTag
 	cmp r0, #0
 	movne r0, #1
 	strneb r0, [r6, #0x2d]
@@ -23681,7 +23686,7 @@ _020C8584:
 	beq _020C85A0
 	ldrb r0, [r6, #0x3c]
 	mov r1, r8
-	bl sub_020D50E4
+	bl SND_SetPlayerVolume
 	strh r8, [r6, #0x3e]
 _020C85A0:
 	ldrb r0, [r6, #0x2c]
@@ -23698,7 +23703,7 @@ _020C85C4:
 	cmp r0, #0
 	beq _020C85E0
 	ldrb r0, [r6, #0x3c]
-	bl sub_020D508C
+	bl SND_StartPreparedSeq
 	mov r0, #0
 	strb r0, [r6, #0x2f]
 _020C85E0:
@@ -23771,17 +23776,17 @@ sub_020C86A0: ; 0x020C86A0
 	mov r5, r0
 	ldrb r0, [r5, #0x3c]
 	ldr r4, [r5, #4]
-	bl sub_020D5064
+	bl SND_PrepareSeq
 	ldr r2, [r4, #0x1c]
 	cmp r2, #0
 	beq _020C86CC
 	ldrb r0, [r5, #0x3c]
 	ldr r1, _020C86EC ; =0x0000FFFF
-	bl sub_020D514C
+	bl SND_SetTrackAllocatableChannel
 _020C86CC:
 	mov r0, r5
 	bl sub_020C87B8
-	bl sub_020D59FC
+	bl SND_GetCurrentCommandTag
 	str r0, [r5, #0x30]
 	mov r0, #1
 	strb r0, [r5, #0x2f]
@@ -23824,7 +23829,7 @@ sub_020C873C: ; 0x020C873C
 	cmpne r4, r0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldrb r0, [r5, #0x3c]
-	bl sub_020D50AC
+	bl SND_PauseSeq
 	strb r4, [r5, #0x2e]
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020C873C
@@ -23940,10 +23945,10 @@ sub_020C88A4: ; 0x020C88A4
 	bne _020C88C4
 	ldrb r0, [r4, #0x3c]
 	ldr r1, _020C88D8 ; =0xFFFFFD2D
-	bl sub_020D50E4
+	bl SND_SetPlayerVolume
 _020C88C4:
 	ldrb r0, [r4, #0x3c]
-	bl sub_020D5044
+	bl SND_StopSeq
 	mov r0, r4
 	bl sub_020C8944
 	ldmia sp!, {r4, pc}
@@ -24223,7 +24228,7 @@ _020C8C1C:
 	mov r2, #0x40
 	str r2, [sp, #0x14]
 	ldr r2, [r5, r0, lsl #3]
-	bl sub_020D52E8
+	bl SND_SetupChannelPcm
 	ldr r0, [sl, #0x48]
 	add r6, r6, #1
 	cmp r6, r0
@@ -24234,7 +24239,7 @@ _020C8C80:
 	ldr r0, [sl, #0x40]
 	ldr r3, _020C8D10 ; =sub_020C8E98
 	mov r2, r1
-	bl sub_020D5200
+	bl SND_SetupAlarm
 	ldr r0, _020C8D14 ; =0x021E0248
 	mov r1, sl
 	bl sub_020B4BAC
@@ -24280,15 +24285,15 @@ sub_020C8D18: ; 0x020C8D18
 	mov r2, r2, lsl r0
 	ldr r0, [r4, #0x44]
 	mov r3, r1
-	bl sub_020D5174
+	bl SND_StartTimer
 	ldr r0, [r4, #0x24]
 	mov r0, r0, lsl #0x1e
 	movs r0, r0, asr #0x1f
 	ldmneia sp!, {r4, pc}
 	add r0, r4, #8
-	bl sub_020DB960
+	bl PM_PrependPreSleepCallback
 	add r0, r4, #0x14
-	bl sub_020DB978
+	bl PM_AppendPostSleepCallback
 	ldr r0, [r4, #0x24]
 	orr r0, r0, #2
 	str r0, [r4, #0x24]
@@ -24324,12 +24329,12 @@ _020C8DAC:
 	add r0, r4, r5, lsl #3
 	ldr r0, [r0, #4]
 	add r0, r1, r0
-	bl sub_020D60E4
+	bl SND_CalcChannelVolume
 	mov r2, r0
 	mov r0, r8, lsl r5
 	and r1, r2, #0xff
 	mov r2, r2, asr #8
-	bl sub_020D52A0
+	bl SND_SetChannelVolume
 	ldr r0, [r7, #0x48]
 	add r6, r6, #1
 	cmp r6, r0
@@ -24353,20 +24358,20 @@ sub_020C8DF4: ; 0x020C8DF4
 	mov r2, r2, lsl r0
 	ldr r0, [r4, #0x44]
 	mov r3, r1
-	bl sub_020D519C
+	bl SND_StopTimer
 	add r0, r4, #8
-	bl sub_020DB990
+	bl PM_DeletePreSleepCallback
 	add r0, r4, #0x14
-	bl sub_020DB9A8
+	bl PM_DeletePostSleepCallback
 	ldr r0, [r4, #0x24]
 	bic r0, r0, #2
 	str r0, [r4, #0x24]
-	bl sub_020D59FC
+	bl SND_GetCurrentCommandTag
 	mov r5, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r5
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 _020C8E5C:
 	mov r0, r4
 	bl sub_020C8E68
@@ -24463,13 +24468,13 @@ sub_020C8F58: ; 0x020C8F58
 	mov r2, r3, lsl r2
 	ldr r0, [r0, #0x44]
 	mov r3, r1
-	bl sub_020D519C
-	bl sub_020D59FC
+	bl SND_StopTimer
+	bl SND_GetCurrentCommandTag
 	mov r4, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r4
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020C8F58
 
@@ -24503,7 +24508,7 @@ _020C8FF4:
 	mov r2, r2, lsl r0
 	ldr r0, [r4, #0x44]
 	mov r3, r1
-	bl sub_020D5174
+	bl SND_StartTimer
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020C8FA4
 
@@ -24596,7 +24601,7 @@ _020C90F4:
 	ldr r0, [r4, #0x24]
 	mov r1, r5
 	mov r2, #0
-	bl sub_020D52A0
+	bl SND_SetChannelVolume
 	str r5, [r4, #0x50]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -24623,22 +24628,22 @@ sub_020C912C: ; 0x020C912C
 	ldr r0, [r4, #0x24]
 	ldr r1, [r4, #0x28]
 	moveq r2, #0
-	bl sub_020D519C
+	bl SND_StopTimer
 	cmp r7, #0
 	beq _020C91B4
-	bl sub_020D59FC
+	bl SND_GetCurrentCommandTag
 	mov r5, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r5
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 	ldr r6, _020C9218 ; =0x021E031C
 	mov r5, #0
 _020C919C:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r5
-	bl sub_020D2444
+	bl OS_ReceiveMessage
 	cmp r0, #0
 	bne _020C919C
 _020C91B4:
@@ -24664,7 +24669,7 @@ _020C91E4:
 	mov r1, r0
 	mov r2, r0
 	mov r3, r0
-	bl sub_020D53B4
+	bl SND_SetOutputSelector
 _020C9204:
 	mov r0, #0
 	str r0, [r4]
@@ -24691,13 +24696,13 @@ sub_020C921C: ; 0x020C921C
 	ldr r1, [r3, #0x28]
 	movlt r2, #0
 	mov r3, #0
-	bl sub_020D519C
-	bl sub_020D59FC
+	bl SND_StopTimer
+	bl SND_GetCurrentCommandTag
 	mov r4, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r4
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020C9274: .word 0x021E0314
@@ -24735,7 +24740,7 @@ sub_020C927C: ; 0x020C927C
 	ldr r0, [r4, #0x24]
 	ldr r1, [r4, #0x28]
 	movlt r2, #0
-	bl sub_020D5174
+	bl SND_StartTimer
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020C92F8: .word 0x021E0314
@@ -24754,7 +24759,7 @@ NNS_SndArcInit: ; 0x020C9300
 	mov r5, r2
 	mov r4, r3
 	str ip, [r6, #0x90]
-	bl sub_020D8180
+	bl FS_ConvertPathToFileID
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	add r0, r6, #0x34
@@ -24762,7 +24767,7 @@ NNS_SndArcInit: ; 0x020C9300
 	add r1, r6, #0x7c
 	add r0, r6, #0x34
 	ldmia r1, {r1, r2}
-	bl sub_020D8208
+	bl FS_OpenFileFast
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r3, #1
@@ -25574,12 +25579,12 @@ sub_020C9D50: ; 0x020C9D50
 	arm_func_start sub_020C9D8C
 sub_020C9D8C: ; 0x020C9D8C
 	stmdb sp!, {r4, lr}
-	bl sub_020D59FC
+	bl SND_GetCurrentCommandTag
 	mov r4, r0
 	mov r0, #1
-	bl sub_020D57D4
+	bl SND_FlushCommand
 	mov r0, r4
-	bl sub_020D5990
+	bl SND_WaitForCommandProc
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020C9D8C
 
@@ -25872,7 +25877,7 @@ _020CA150:
 	beq _020CA16C
 	mov r0, r6
 	mov r1, r7
-	bl sub_020D6154
+	bl SND_AssignWaveArc
 _020CA16C:
 	add r7, r7, #1
 	cmp r7, #4
@@ -25968,7 +25973,7 @@ sub_020CA220: ; 0x020CA220
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	mov r0, r4
 	mov r1, r5
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r0, r4
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
@@ -26161,14 +26166,14 @@ _020CA4DC:
 	add r0, r5, #0x3c
 	mov r2, r6
 	add r1, r0, r1, lsl #2
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	mov r2, r6
 	add r0, r5, #0x3c
 	mov r1, #0
 	bl MI_CpuFill8
 	mov r0, r5
 	add r1, r4, #0x3c
-	bl sub_020D2878
+	bl DC_StoreRange
 	cmp r7, #0
 	beq _020CA564
 	mov r0, sb
@@ -26220,7 +26225,7 @@ sub_020CA5D0: ; 0x020CA5D0
 	bl sub_020CA578
 	mov r0, r5
 	add r1, r5, r4
-	bl sub_020D5334
+	bl SND_InvalidateSeqData
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020CA5D0
 
@@ -26234,9 +26239,9 @@ sub_020CA5F8: ; 0x020CA5F8
 	bl sub_020CA578
 	mov r0, r5
 	add r1, r5, r4
-	bl sub_020D5354
+	bl SND_InvalidateBankData
 	mov r0, r5
-	bl sub_020D6220
+	bl SND_DestroyBank
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020CA5F8
 
@@ -26250,9 +26255,9 @@ sub_020CA628: ; 0x020CA628
 	bl sub_020CA578
 	mov r0, r5
 	add r1, r5, r4
-	bl sub_020D5374
+	bl SND_InvalidateWaveData
 	mov r0, r5
-	bl sub_020D62B8
+	bl SND_DestroyWaveArc
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020CA628
 
@@ -26264,7 +26269,7 @@ sub_020CA658: ; 0x020CA658
 	mov r2, r3
 	bl sub_020CA578
 	mov r0, r4
-	bl sub_020D62B8
+	bl SND_DestroyWaveArc
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020CA658
 
@@ -26277,17 +26282,17 @@ sub_020CA678: ; 0x020CA678
 	mov r6, r1
 	mov r0, r5
 	mov r1, r4
-	bl sub_020D650C
+	bl SND_GetWaveDataAddress
 	cmp r7, r0
 	bne _020CA6B0
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0
-	bl sub_020D64D8
+	bl SND_SetWaveDataAddress
 _020CA6B0:
 	mov r0, r7
 	add r1, r7, r6
-	bl sub_020D5374
+	bl SND_InvalidateWaveData
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020CA678
 
@@ -26298,12 +26303,12 @@ sub_020CA6C0: ; 0x020CA6C0
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl sub_020D650C
+	bl SND_GetWaveDataAddress
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r8
-	bl sub_020D64D0
+	bl SND_GetWaveDataCount
 	ldr r1, [r8, #0x38]
 	sub r0, r0, #1
 	add r1, r1, r7
@@ -26335,11 +26340,11 @@ sub_020CA6C0: ; 0x020CA6C0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r5
 	mov r1, sb
-	bl sub_020D2878
+	bl DC_StoreRange
 	mov r0, r8
 	mov r1, r7
 	mov r2, r5
-	bl sub_020D64D8
+	bl SND_SetWaveDataAddress
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -26356,7 +26361,7 @@ sub_020CA788: ; 0x020CA788
 	mov r6, r2
 	mov r5, r3
 	ldr r4, [sp, #0x40]
-	bl sub_020D6300
+	bl SND_GetFirstInstDataPos
 	ldr r1, [sp]
 	ldr r0, [sp, #4]
 	str r1, [sp, #8]
@@ -26368,7 +26373,7 @@ sub_020CA788: ; 0x020CA788
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	add r1, sp, #0x10
 	mov r0, r7
-	bl sub_020D6320
+	bl SND_GetNextInstData
 	cmp r0, #0
 	beq _020CA83C
 	add sl, sp, #0x10
@@ -26392,7 +26397,7 @@ _020CA824:
 	mov r0, r7
 	mov r1, sl
 	mov r2, sb
-	bl sub_020D6320
+	bl SND_GetNextInstData
 	cmp r0, #0
 	bne _020CA7EC
 _020CA83C:

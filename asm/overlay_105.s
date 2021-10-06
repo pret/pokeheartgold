@@ -329,7 +329,7 @@ ov105_021E5B68: ; 0x021E5B68
 	orr r0, r1
 	strh r0, [r2]
 	ldr r0, _021E5BC8 ; =0x021E5DE0
-	bl sub_020CF8E4
+	bl G3X_SetEdgeColorTable
 	bl GX_SwapDisplay
 	pop {r3, pc}
 	nop

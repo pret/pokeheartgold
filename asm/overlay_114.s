@@ -128,7 +128,7 @@ _0225F104:
 	ldr r0, _0225F274 ; =0x04000050
 	mov r1, #0
 	mov r2, #0xf
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

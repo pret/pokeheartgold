@@ -8,4 +8,11 @@
 #include <nitro/os/ARM7/alarm.h>
 #endif
 
+struct OSiAlarmQueue
+{
+    OSAlarm *head;
+    OSAlarm *tail;
+};
+struct OSiAlarmQueue *OSi_GetAlarmQueue(void);
+
 #endif //NITRO_OS_ALARM_H

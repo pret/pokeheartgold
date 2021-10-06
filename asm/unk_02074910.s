@@ -5257,7 +5257,7 @@ _020772CE:
 	bl sub_0200398C
 	ldr r0, [r4]
 	bl sub_0201EEB4
-	ldr r3, _020772F0 ; =OSi_IntrTable
+	ldr r3, _020772F0 ; =OS_IRQTable
 	ldr r1, _020772F4 ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -5266,7 +5266,7 @@ _020772CE:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _020772EC: .word 0x04000040
-_020772F0: .word OSi_IntrTable
+_020772F0: .word OS_IRQTable
 _020772F4: .word 0x00003FF8
 	thumb_func_end sub_02077270
 
@@ -5395,14 +5395,14 @@ sub_020773D4: ; 0x020773D4
 	mov r1, #0
 	mov r2, #0xe
 	mov r3, #0xb
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _020773FC ; =0x04001050
 	mov r1, #0
 	mov r2, #0xe
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _020773F8: .word 0x04000050
@@ -7465,11 +7465,11 @@ _020781B0: .word 0x0000079C
 
 	thumb_func_start sub_020781B4
 sub_020781B4: ; 0x020781B4
-	ldr r3, _020781BC ; =MIi_CpuCopy8
+	ldr r3, _020781BC ; =MI_CpuCopy8
 	ldr r2, _020781C0 ; =0x0000079C
 	bx r3
 	nop
-_020781BC: .word MIi_CpuCopy8
+_020781BC: .word MI_CpuCopy8
 _020781C0: .word 0x0000079C
 	thumb_func_end sub_020781B4
 
@@ -10388,7 +10388,7 @@ sub_020796B8: ; 0x020796B8
 	bl sub_0201EEB4
 	bl sub_0202061C
 	bl sub_0200D034
-	ldr r3, _020796F8 ; =OSi_IntrTable
+	ldr r3, _020796F8 ; =OS_IRQTable
 	ldr r1, _020796FC ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -10397,7 +10397,7 @@ sub_020796B8: ; 0x020796B8
 	pop {r4, pc}
 	.balign 4, 0
 _020796F4: .word 0x00000C78
-_020796F8: .word OSi_IntrTable
+_020796F8: .word OS_IRQTable
 _020796FC: .word 0x00003FF8
 	thumb_func_end sub_020796B8
 
@@ -10665,7 +10665,7 @@ sub_0207991C: ; 0x0207991C
 	mov r0, #1
 	mov r1, #0
 	add r2, r0, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	mov r0, #0xc
 	bl sub_0207997C
 	ldr r1, _02079978 ; =0x00000C84
@@ -10681,7 +10681,7 @@ _0207994A:
 	mov r1, #0
 	mov r0, #1
 	add r2, r1, #0
-	bl sub_020CD9FC
+	bl GX_SetGraphicsMode
 	ldr r0, [r4]
 	bl sub_02079720
 	mov r0, #0
@@ -17016,13 +17016,13 @@ _0207CB78: .word SDK_OVERLAY_OVY_94_ID
 
 	thumb_func_start sub_0207CB7C
 sub_0207CB7C: ; 0x0207CB7C
-	ldr r3, _0207CB88 ; =sub_020CF178
+	ldr r3, _0207CB88 ; =G2x_SetBlendBrightness_
 	ldr r0, _0207CB8C ; =0x04000050
 	mov r1, #0x1e
 	mov r2, #8
 	bx r3
 	nop
-_0207CB88: .word sub_020CF178
+_0207CB88: .word G2x_SetBlendBrightness_
 _0207CB8C: .word 0x04000050
 	thumb_func_end sub_0207CB7C
 
@@ -21273,7 +21273,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	ldr r1, [sp, #0x14]
 	ldr r0, [r2, #0x14]
 	ldr r2, [r2, #0x10]
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	mov r0, #0x85
 	add r1, r5, r4
 	lsl r0, r0, #4
@@ -21290,7 +21290,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	add r1, r7, #0
 	ldr r0, [r2, #0x14]
 	ldr r2, [r2, #0x10]
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 _0207ED8E:
 	ldr r0, [sp, #4]
 	bl FreeToHeap
@@ -28756,7 +28756,7 @@ sub_02082AEC: ; 0x02082AEC
 	ldr r1, _02082B1C ; =0x000057E0
 	add r6, r3, #0
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	ldr r4, [r4, #0xc]
 	add r0, r5, #0
 	add r1, r6, #0
@@ -29533,7 +29533,7 @@ sub_02083140: ; 0x02083140
 	push {r3, lr}
 	bl sub_0202061C
 	bl sub_0200B224
-	ldr r3, _02083158 ; =OSi_IntrTable
+	ldr r3, _02083158 ; =OS_IRQTable
 	ldr r1, _0208315C ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -29541,7 +29541,7 @@ sub_02083140: ; 0x02083140
 	str r0, [r3, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_02083158: .word OSi_IntrTable
+_02083158: .word OS_IRQTable
 _0208315C: .word 0x00003FF8
 	thumb_func_end sub_02083140
 
@@ -32203,7 +32203,7 @@ _02084694:
 	add r0, r5, #0
 	lsl r2, r2, #8
 	lsl r1, r1, #5
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -32243,7 +32243,7 @@ _020846D6:
 	add r0, r7, #0
 	lsl r1, r1, #5
 	mov r2, #0x80
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
@@ -32869,7 +32869,7 @@ _02084C04:
 	mov r1, #0
 	mov r2, #7
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -33677,14 +33677,14 @@ _0208520A:
 	mov r1, #0
 	mov r2, #6
 	mov r3, #0xf
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _02085244 ; =0x04001050
 	mov r1, #0
 	mov r2, #0xe
 	mov r3, #7
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, _02085248 ; =sub_020855CC
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -34120,7 +34120,7 @@ sub_020855CC: ; 0x020855CC
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl sub_0201EEB4
-	ldr r3, _020855FC ; =OSi_IntrTable
+	ldr r3, _020855FC ; =OS_IRQTable
 	ldr r1, _02085600 ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -34128,7 +34128,7 @@ sub_020855CC: ; 0x020855CC
 	str r0, [r3, r1]
 	pop {r4, pc}
 	nop
-_020855FC: .word OSi_IntrTable
+_020855FC: .word OS_IRQTable
 _02085600: .word 0x00003FF8
 	thumb_func_end sub_020855CC
 
@@ -37906,12 +37906,12 @@ sub_020872DC: ; 0x020872DC
 	add r6, r3, #0
 	str r1, [sp]
 	str r1, [sp, #4]
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fsub
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl _itof
+	bl _fflt
 	add r1, r6, #0
 	bl _fsub
 	str r0, [sp, #0xc]
@@ -37947,9 +37947,9 @@ _02087344:
 	lsl r1, r1, #0x18
 	bl _fsub
 _02087352:
-	bl _ftoi
+	bl _ffix
 	bl FX_Sqrt
-	bl _itof
+	bl _fflt
 	ldr r1, _020873D0 ; =0x45800000
 	bl _fdiv
 	ldr r1, [sp, #0x30]
@@ -37959,7 +37959,7 @@ _02087352:
 	add r1, sp, #0x18
 	mov r0, #0x1c
 	ldrsh r0, [r1, r0]
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fgr
 	bhi _0208738A
@@ -38043,18 +38043,18 @@ _02087410:
 	add r2, sp, #0x48
 	bl sub_0200DF70
 	ldr r0, [sp, #0x4c]
-	bl _itof
+	bl _fflt
 	ldr r1, _02087638 ; =0x45800000
 	bl _fdiv
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x48]
-	bl _itof
+	bl _fflt
 	ldr r1, _02087638 ; =0x45800000
 	bl _fdiv
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x1c]
 	sub r0, r4, r0
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r7, #0
 	bl _fmul
@@ -38120,10 +38120,10 @@ _020874CA:
 	add r1, r7, #0
 	bl _fsub
 _020874D6:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x14]
-	bl _ftoi
+	bl _ffix
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	ldr r1, [sp, #0x28]
@@ -38161,7 +38161,7 @@ _020874FA:
 	cmp r0, #0
 	ble _0208753C
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r7, #0
 	bl _fadd
@@ -38169,7 +38169,7 @@ _020874FA:
 	b _0208754A
 _0208753C:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r7, #0
 	bl _fsub
 	str r0, [sp, #0x10]
@@ -38183,21 +38183,21 @@ _0208754A:
 	cmp r0, #0
 	ble _0208756A
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r7, #0
 	bl _fadd
 	b _02087576
 _0208756A:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r7, #0
 	bl _fsub
 _02087576:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x10]
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	ldr r0, [sp, #0x2c]
 	bl FX_Atan2Idx
@@ -40381,7 +40381,7 @@ sub_020885DC: ; 0x020885DC
 	bl sub_02009418
 	bl sub_0202061C
 	bl sub_0200D034
-	ldr r3, _02088608 ; =OSi_IntrTable
+	ldr r3, _02088608 ; =OS_IRQTable
 	ldr r1, _0208860C ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -40389,7 +40389,7 @@ sub_020885DC: ; 0x020885DC
 	str r0, [r3, r1]
 	pop {r4, pc}
 	nop
-_02088608: .word OSi_IntrTable
+_02088608: .word OS_IRQTable
 _0208860C: .word 0x00003FF8
 	thumb_func_end sub_020885DC
 
@@ -40690,7 +40690,7 @@ sub_0208887C: ; 0x0208887C
 	mov r1, #1
 	mov r2, #0x1e
 	mov r3, #0x17
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _02088890: .word 0x04000050
@@ -47523,7 +47523,7 @@ _0208BE36:
 	ldr r0, [r0, #0x14]
 	add r1, r6, #0
 	lsl r2, r2, #8
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #8
@@ -51397,8 +51397,8 @@ sub_0208DE40: ; 0x0208DE40
 	push {r3, r4, lr}
 	sub sp, #4
 	bl sub_020C2698
-	bl sub_020CF564
-	bl sub_020CF704
+	bl G3X_Init
+	bl G3X_InitMtxStack
 	ldr r0, _0208DEC0 ; =0x04000060
 	ldr r1, _0208DEC4 ; =0xFFFFCFFD
 	ldrh r2, [r0]
@@ -51619,7 +51619,7 @@ sub_0208DFF8: ; 0x0208DFF8
 	add r6, r2, #0
 	sub r7, r1, r0
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51628,7 +51628,7 @@ sub_0208DFF8: ; 0x0208DFF8
 	bl _fgr
 	bls _0208E04C
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51640,11 +51640,11 @@ sub_0208DFF8: ; 0x0208DFF8
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
 	bl _fadd
-	bl _ftoi
+	bl _ffix
 	b _0208E072
 _0208E04C:
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51655,7 +51655,7 @@ _0208E04C:
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
-	bl _ftoi
+	bl _ffix
 _0208E072:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
@@ -51665,7 +51665,7 @@ _0208E072:
 	ldrsh r0, [r5, r0]
 	sub r7, r1, r0
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51674,7 +51674,7 @@ _0208E072:
 	bl _fgr
 	bls _0208E0C4
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51686,11 +51686,11 @@ _0208E072:
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
 	bl _fadd
-	bl _ftoi
+	bl _ffix
 	b _0208E0EA
 _0208E0C4:
 	add r0, r7, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51701,7 +51701,7 @@ _0208E0C4:
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
-	bl _ftoi
+	bl _ffix
 _0208E0EA:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
@@ -51711,7 +51711,7 @@ _0208E0EA:
 	ldrsh r0, [r5, r0]
 	sub r4, r1, r0
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51720,7 +51720,7 @@ _0208E0EA:
 	bl _fgr
 	bls _0208E13C
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51732,11 +51732,11 @@ _0208E0EA:
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
 	bl _fadd
-	bl _ftoi
+	bl _ffix
 	b _0208E162
 _0208E13C:
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _0208E16C ; =0x45800000
 	bl _fdiv
 	ldr r1, _0208E170 ; =0x40800000
@@ -51747,7 +51747,7 @@ _0208E13C:
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
-	bl _ftoi
+	bl _ffix
 _0208E162:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
@@ -54833,7 +54833,7 @@ _0208F99C:
 	cmp r1, r0
 	bne _0208F9CA
 	bl sub_02033250
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	mov r1, #0xc6
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -55204,7 +55204,7 @@ _0208FC2A:
 	cmp r1, r0
 	bne _0208FC52
 	bl sub_02033250
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	ldr r1, _0208FCD4 ; =0x00004A1C
 	ldr r2, [r4, r1]
 	cmp r2, r0
@@ -62723,7 +62723,7 @@ _020935B2:
 	bl sub_0200B224
 	ldr r0, [r4]
 	bl sub_0201EEB4
-	ldr r3, _020935D8 ; =OSi_IntrTable
+	ldr r3, _020935D8 ; =OS_IRQTable
 	ldr r1, _020935DC ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
@@ -62733,7 +62733,7 @@ _020935B2:
 	nop
 _020935D0: .word 0x00004644
 _020935D4: .word 0x000008D4
-_020935D8: .word OSi_IntrTable
+_020935D8: .word OS_IRQTable
 _020935DC: .word 0x00003FF8
 	thumb_func_end sub_02093594
 
@@ -64935,7 +64935,7 @@ _02094766:
 	ldr r1, [r5]
 	add r0, #0xc
 	add r2, r6, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	ldr r0, [r5, #8]
 	mov r1, #1
 	bl sub_02024830
@@ -66976,12 +66976,12 @@ _0209577C: .word 0x000046DC
 sub_02095780: ; 0x02095780
 	mov r1, #0x16
 	add r2, r1, #0
-	ldr r3, _0209578C ; =sub_020CF178
+	ldr r3, _0209578C ; =G2x_SetBlendBrightness_
 	ldr r0, _02095790 ; =0x04000050
 	sub r2, #0x1d
 	bx r3
 	.balign 4, 0
-_0209578C: .word sub_020CF178
+_0209578C: .word G2x_SetBlendBrightness_
 _02095790: .word 0x04000050
 	thumb_func_end sub_02095780
 
@@ -66995,7 +66995,7 @@ sub_02095794: ; 0x02095794
 	str r2, [sp]
 	mov r2, #4
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _020957AC: .word 0x04000050
@@ -68144,7 +68144,7 @@ _02095FAE:
 	mul r0, r2
 	add r0, r7, r0
 	add r1, r4, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r6, #0
 	bl sub_02095F68
 	ldrb r0, [r4]
@@ -68568,19 +68568,19 @@ _02096314:
 
 	thumb_func_start sub_02096318
 sub_02096318: ; 0x02096318
-	ldr r3, _0209632C ; =OSi_IntrTable
+	ldr r3, _0209632C ; =OS_IRQTable
 	ldr r1, _02096330 ; =0x00003FF8
 	mov r0, #1
 	ldr r2, [r3, r1]
 	orr r0, r2
 	str r0, [r3, r1]
-	ldr r3, _02096334 ; =sub_020D422C
+	ldr r3, _02096334 ; =MI_WaitDma
 	mov r0, #3
 	bx r3
 	nop
-_0209632C: .word OSi_IntrTable
+_0209632C: .word OS_IRQTable
 _02096330: .word 0x00003FF8
-_02096334: .word sub_020D422C
+_02096334: .word MI_WaitDma
 	thumb_func_end sub_02096318
 
 	thumb_func_start PrintErrorMessageAndReset
@@ -68596,15 +68596,15 @@ _02096346:
 	mov r1, #1
 	str r1, [r0]
 	mov r0, #0
-	bl sub_020D2AEC
+	bl OS_GetInitArenaHi
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_020D2C78
+	bl OS_SetArenaHi
 	mov r0, #0
-	bl sub_020D2BD0
+	bl OS_GetInitArenaLo
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_020D2C8C
+	bl OS_SetArenaLo
 	mov r1, #1
 	ldr r0, _0209654C ; =0x02108528
 	add r2, r1, #0
@@ -69402,7 +69402,7 @@ sub_02096998: ; 0x02096998
 	add r1, r4, r1
 	add r0, #0x3e
 	mov r2, #0x1c
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _020969C0 ; =0x0000083E
 	mov r0, #0x3f
 	add r1, r4, r1
@@ -69439,7 +69439,7 @@ sub_020969C4: ; 0x020969C4
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0x1c
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _020969F0:
 	pop {r4, r5, r6, pc}
 	nop
@@ -70059,7 +70059,7 @@ _02096E2C:
 	cmp r1, r0
 	bne _02096E4E
 	bl sub_02033250
-	bl sub_020E3714
+	bl MATH_CountPopulation
 	ldr r1, [r4, #0x2c]
 	cmp r1, r0
 	beq _02096E56

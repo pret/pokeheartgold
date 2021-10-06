@@ -3248,7 +3248,7 @@ ov74_022289D4: ; 0x022289D4
 	ldr r0, [r4, #0x18]
 	add r0, r0, #1
 	str r0, [r4, #0x18]
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	add r0, r4, #0
 	bl ov74_0222779C
 	cmp r0, #1
@@ -4639,7 +4639,7 @@ ov74_0222947C: ; 0x0222947C
 	add r0, sp, #0x10
 	bl GF_RTC_CopyDate
 	add r0, sp, #0x10
-	bl sub_020DC284
+	bl RTC_ConvertDateToDay
 	mov r1, #0xd5
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -5075,7 +5075,7 @@ _02229908:
 	bne _02229938
 	mov r0, #0xf
 	str r0, [r4, r5]
-	bl sub_020D3550
+	bl OS_GetTickLo
 	mov r1, #0x36
 	bl _s32_div_f
 	mov r0, #0x16
@@ -6242,7 +6242,7 @@ _0222A1BC:
 	add r0, sp, #8
 	bl GF_RTC_CopyDate
 	add r0, sp, #8
-	bl sub_020DC284
+	bl RTC_ConvertDateToDay
 	mov r1, #0xd5
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -8555,7 +8555,7 @@ _0222B3C6:
 	cmp r0, #0
 	ble _0222B42C
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -8563,12 +8563,12 @@ _0222B3C6:
 	b _0222B43A
 _0222B42C:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222B43A:
-	bl _ftoi
+	bl _ffix
 	add r1, r5, #0
 	add r1, #0xa4
 	str r0, [r1]
@@ -8666,7 +8666,7 @@ _0222B4EC:
 	ldr r0, _0222B5EC ; =0x66666666
 	ldr r1, _0222B5F0 ; =0x3FE66666
 	bl _dmul
-	bl _dtoi
+	bl _dfix
 	add r1, r5, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -8714,7 +8714,7 @@ _0222B4EC:
 	bl _s32_div_f
 	add r1, #0x10
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -8726,12 +8726,12 @@ _0222B586:
 	bl _s32_div_f
 	add r1, #0x10
 	lsl r0, r1, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222B5A0:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #4]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -9002,7 +9002,7 @@ _0222B76C:
 	cmp r0, #0
 	ble _0222B7DE
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -9010,12 +9010,12 @@ _0222B76C:
 	b _0222B7EC
 _0222B7DE:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222B7EC:
-	bl _ftoi
+	bl _ffix
 	ldr r1, _0222B930 ; =0x00001864
 	cmp r4, #0x3c
 	str r0, [r5, r1]
@@ -9185,12 +9185,12 @@ ov74_0222B950: ; 0x0222B950
 	add r6, r3, #0
 	str r1, [sp]
 	str r1, [sp, #4]
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fsub
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl _itof
+	bl _fflt
 	add r1, r6, #0
 	bl _fsub
 	str r0, [sp, #0xc]
@@ -9226,9 +9226,9 @@ _0222B9B8:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222B9C6:
-	bl _ftoi
+	bl _ffix
 	bl FX_Sqrt
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BA44 ; =0x45800000
 	bl _fdiv
 	ldr r1, [sp, #0x30]
@@ -9238,7 +9238,7 @@ _0222B9C6:
 	add r1, sp, #0x18
 	mov r0, #0x1c
 	ldrsh r0, [r1, r0]
-	bl _itof
+	bl _fflt
 	add r1, r4, #0
 	bl _fgr
 	bhi _0222B9FE
@@ -9308,25 +9308,25 @@ _0222BA66:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [sp, #0x18]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BD90 ; =0x45800000
 	bl _fdiv
 	add r6, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BD90 ; =0x45800000
 	bl _fdiv
 	add r7, r0, #0
 	ldr r0, [r5, #0x1c]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BD90 ; =0x45800000
 	bl _fdiv
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BD90 ; =0x45800000
 	bl _fdiv
-	bl _ftoi
+	bl _ffix
 	add r1, sp, #0x14
 	str r1, [sp]
 	add r1, sp, #0x10
@@ -9366,7 +9366,7 @@ _0222BB00:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222BB0E:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #0x18]
 	add r0, r1, r0
 	str r0, [sp, #0x18]
@@ -9389,7 +9389,7 @@ _0222BB36:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222BB44:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #0x1c]
 	add r0, r1, r0
 	str r0, [sp, #0x1c]
@@ -9413,7 +9413,7 @@ _0222BB68:
 	cmp r0, #0
 	ble _0222BB84
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -9421,7 +9421,7 @@ _0222BB68:
 	b _0222BB92
 _0222BB84:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
@@ -9433,7 +9433,7 @@ _0222BB92:
 	cmp r0, #0
 	ble _0222BBB0
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -9441,15 +9441,15 @@ _0222BB92:
 	b _0222BBBE
 _0222BBB0:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222BBBE:
-	bl _ftoi
+	bl _ffix
 	add r6, r0, #0
 	add r0, r4, #0
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	add r0, r6, #0
 	bl FX_Atan2Idx
@@ -9718,17 +9718,17 @@ _0222BDE6:
 	add r0, r1, r0
 	str r0, [r5, #0x1c]
 	ldr r0, [sp, #0x18]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BED4 ; =0x45800000
 	bl _fdiv
 	add r4, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BED4 ; =0x45800000
 	bl _fdiv
 	add r6, r0, #0
 	ldr r0, [r5, #0x1c]
-	bl _itof
+	bl _fflt
 	ldr r1, _0222BED4 ; =0x45800000
 	bl _fdiv
 	add r1, sp, #0x14
@@ -9768,7 +9768,7 @@ _0222BE60:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222BE6E:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #0x18]
 	add r0, r1, r0
 	str r0, [sp, #0x18]
@@ -9791,7 +9791,7 @@ _0222BE96:
 	lsl r1, r1, #0x18
 	bl _fsub
 _0222BEA4:
-	bl _ftoi
+	bl _ffix
 	ldr r1, [sp, #0x1c]
 	add r0, r1, r0
 	str r0, [sp, #0x1c]
@@ -9822,12 +9822,12 @@ ov74_0222BED8: ; 0x0222BED8
 	add r3, r0, #0
 	mov r2, #8
 	ldrsb r2, [r3, r2]
-	ldr r3, _0222BEE8 ; =sub_020CF178
+	ldr r3, _0222BEE8 ; =G2x_SetBlendBrightness_
 	ldr r0, _0222BEEC ; =0x04000050
 	mov r1, #0x22
 	bx r3
 	nop
-_0222BEE8: .word sub_020CF178
+_0222BEE8: .word G2x_SetBlendBrightness_
 _0222BEEC: .word 0x04000050
 	thumb_func_end ov74_0222BED8
 
@@ -9836,12 +9836,12 @@ ov74_0222BEF0: ; 0x0222BEF0
 	add r3, r0, #0
 	mov r2, #8
 	ldrsb r2, [r3, r2]
-	ldr r3, _0222BF00 ; =sub_020CF178
+	ldr r3, _0222BF00 ; =G2x_SetBlendBrightness_
 	ldr r0, _0222BF04 ; =0x04001050
 	mov r1, #0x22
 	bx r3
 	nop
-_0222BF00: .word sub_020CF178
+_0222BF00: .word G2x_SetBlendBrightness_
 _0222BF04: .word 0x04001050
 	thumb_func_end ov74_0222BEF0
 
@@ -10377,7 +10377,7 @@ ov74_0222C2EC: ; 0x0222C2EC
 	add r5, r1, #0
 	bl OverlayManager_GetData
 	add r4, r0, #0
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	ldr r0, _0222C640 ; =0x000005C8
 	ldr r0, [r4, r0]
 	cmp r0, #0x1d
@@ -12618,7 +12618,7 @@ ov74_0222D55C: ; 0x0222D55C
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
 	add r0, sp, #8
-	bl sub_020DC394
+	bl RTC_ConvertDayToDate
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #1
@@ -13665,7 +13665,7 @@ _0222DD6A:
 	ldr r0, [r0, #0x14]
 	lsl r1, r7, #5
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	mov r1, #0
 	ldr r0, [sp, #8]
 	add r2, r1, #0
@@ -15751,7 +15751,7 @@ ov74_0222EEB0: ; 0x0222EEB0
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
 	add r0, sp, #8
-	bl sub_020DC394
+	bl RTC_ConvertDayToDate
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #1
@@ -16566,7 +16566,7 @@ _0222F504:
 	ldr r0, [r0, #0x14]
 	lsl r1, r6, #5
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	mov r1, #0
 	ldr r0, [sp, #8]
 	add r2, r1, #0
@@ -18358,7 +18358,7 @@ _0223036E:
 _02230372:
 	add r0, r4, #0
 	mov r1, #0xc0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	bl ov74_02231154
 	bl ov74_02231454
 	ldrh r0, [r6, #0x36]
@@ -18493,7 +18493,7 @@ ov74_02230478: ; 0x02230478
 _0223049A:
 	add r0, r4, #0
 	mov r1, #0xc0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	bl ov74_02231154
 	bl ov74_02231454
 	ldrh r0, [r4, #0x3c]
@@ -18804,7 +18804,7 @@ ov74_02230714: ; 0x02230714
 	ldrh r2, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r1, [r4, #0xc]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl ov74_022311AC
 	ldr r1, [r5]
 	lsl r1, r1, #0x18
@@ -18865,7 +18865,7 @@ ov74_0223078C: ; 0x0223078C
 	ldrh r2, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r1, [r4, #0xc]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl ov74_022311AC
 	ldr r1, [r5]
 	lsl r1, r1, #0x18
@@ -18945,7 +18945,7 @@ _0223083C:
 	ldrh r2, [r6, #0x10]
 	ldr r0, [r6, #0xc]
 	ldr r1, [r4, #0xc]
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	bl ov74_022311AC
 	ldr r1, [r5]
 	lsl r1, r1, #0x18
@@ -18990,7 +18990,7 @@ _022308AA:
 	add r0, r1, r0
 	ldr r1, [r4, #4]
 	lsr r2, r2, #8
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _022308BC:
 	ldr r1, [r5, #8]
 	ldr r0, _022308DC ; =0xFFFF00FF
@@ -20428,7 +20428,7 @@ ov74_02231264: ; 0x02231264
 	push {r4, lr}
 	ldr r0, _02231278 ; =0x04000006
 	ldrh r4, [r0]
-	bl sub_020D34B0
+	bl OS_GetTick
 	add r1, r0, r4
 	mov r0, #1
 	bic r1, r0
@@ -20600,7 +20600,7 @@ ov74_022312C0: ; 0x022312C0
 	lsr r1, r1, #0x18
 	add r1, r5, r1
 	add r2, r6, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _022313BE:
 	add r0, r5, #0
 	bl ov74_0223145C
@@ -20771,7 +20771,7 @@ ov74_022314BC: ; 0x022314BC
 	cmp r0, #2
 	beq _022314D4
 	bl ov74_02231448
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 	pop {r3, pc}
 _022314D4:
@@ -21072,7 +21072,7 @@ ov74_02231704: ; 0x02231704
 	cmp r0, #2
 	beq _0223171C
 	bl ov74_02231448
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 	pop {r3, pc}
 _0223171C:
@@ -21090,7 +21090,7 @@ ov74_02231724: ; 0x02231724
 	cmp r0, #2
 	beq _0223173C
 	bl ov74_02231448
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 	pop {r3, pc}
 _0223173C:
@@ -21108,7 +21108,7 @@ ov74_02231744: ; 0x02231744
 	cmp r0, #2
 	beq _0223175C
 	bl ov74_02231448
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 	pop {r3, pc}
 _0223175C:
@@ -21237,7 +21237,7 @@ _0223180A:
 	str r0, [r4]
 	b _02231924
 _0223182A:
-	bl sub_020D34B0
+	bl OS_GetTick
 	mov r2, #0x78
 	mov r3, #0
 	bl _ull_mod
@@ -22134,7 +22134,7 @@ ov74_02231EC4: ; 0x02231EC4
 	ldr r0, [r0, #0x14]
 	lsl r1, r1, #5
 	lsl r2, r2, #8
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
@@ -22235,7 +22235,7 @@ _02231FC0:
 	ldr r1, [r5]
 	add r0, #0xc
 	add r2, r6, #0
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #4]
 	bl sub_02024A14
@@ -24569,10 +24569,10 @@ ov74_02233230: ; 0x02233230
 	ldr r1, _022332E8 ; =0x0000047E
 	mov r0, #9
 	bl sub_02004EC4
-	bl sub_020D3438
+	bl OS_IsTickAvailable
 	cmp r0, #0
 	bne _022332C6
-	bl sub_020D33C0
+	bl OS_InitTick
 _022332C6:
 	bl ov74_02236074
 	ldr r0, _022332EC ; =0x0000E89C
@@ -24597,7 +24597,7 @@ ov74_022332F4: ; 0x022332F4
 	add r5, r1, #0
 	bl OverlayManager_GetData
 	add r4, r0, #0
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	bl CTRDG_IsPulledOut
 	cmp r0, #1
 	beq _02233312
@@ -28761,7 +28761,7 @@ _022351F8: .word _0223B690
 	thumb_func_start ov74_022351FC
 ov74_022351FC: ; 0x022351FC
 	push {r3, lr}
-	bl sub_020E16E4
+	bl CTRDG_Init
 	bl sub_020E0FF0
 	cmp r0, #0
 	bne _0223520E
@@ -28833,7 +28833,7 @@ _02235274:
 	add r4, r0, #0
 	mov r0, #0
 	bl sub_020E1678
-	bl sub_020E1134
+	bl CTRDG_IsExisting
 	cmp r0, #0
 	bne _02235298
 	mov r0, #0
@@ -30051,7 +30051,7 @@ ov74_02235B14: ; 0x02235B14
 	lsl r2, r2, #6
 	ldr r0, [sp, #0x40]
 	add r1, r1, r2
-	bl sub_020CFECC
+	bl GXS_LoadOBJ
 	ldr r0, [sp, #0x20]
 	bl sub_02024B34
 	mov r1, #2
@@ -30877,7 +30877,7 @@ ov74_022361D4: ; 0x022361D4
 	ldr r0, [r1, r0]
 	cmp r0, #4
 	bne _022361E6
-	bl sub_020D3F48
+	bl OS_Terminate
 _022361E6:
 	mov r0, #2
 	bl ov74_02236168
@@ -30942,7 +30942,7 @@ ov74_02236258: ; 0x02236258
 	ldr r0, [r1, r0]
 	cmp r0, #2
 	beq _0223626C
-	bl sub_020D3F48
+	bl OS_Terminate
 	mov r0, #0
 _0223626C:
 	bl sub_020DEF24
@@ -31111,7 +31111,7 @@ _022363A6:
 	lsl r0, r0, #8
 	add r0, r1, r0
 	mov r1, #0xc0
-	bl sub_020D285C
+	bl DC_InvalidateRange
 	ldrh r0, [r4, #0x36]
 	cmp r0, #8
 	blo _022363CE
@@ -31374,7 +31374,7 @@ ov74_022365AC: ; 0x022365AC
 	ldr r0, [r1, r0]
 	cmp r0, #1
 	beq _022365BE
-	bl sub_020D3F48
+	bl OS_Terminate
 _022365BE:
 	mov r0, #3
 	bl ov74_02236168

@@ -762,7 +762,7 @@ _02016266:
 	lsl r2, r2, #1
 	ldrsh r0, [r1, r0]
 	ldrsh r1, [r1, r2]
-	bl sub_020CFC30
+	bl G3_RotZ
 	ldr r2, [r5, #0x10]
 	ldr r0, [r5, #0xc]
 	ldr r1, _02016304 ; =0x0400046C

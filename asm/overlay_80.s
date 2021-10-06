@@ -2135,7 +2135,7 @@ ov80_0222AE30: ; 0x0222AE30
 	mov r1, #1
 	mov r2, #0x3c
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -2176,7 +2176,7 @@ ov80_0222AE84: ; 0x0222AE84
 	mov r1, #1
 	mov r2, #0x3c
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _0222AE98: .word 0x04000050
@@ -2228,7 +2228,7 @@ ov80_0222AEBC: ; 0x0222AEBC
 	mov r1, #1
 	mov r2, #0x3c
 	str r3, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	nop
 _0222AEF0: .word 0x04000050
@@ -2476,7 +2476,7 @@ ov80_0222B070: ; 0x0222B070
 	ldr r1, _0222B0B4 ; =0x00000784
 	add r2, r4, #0
 	add r1, r5, r1
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _0222B0B4 ; =0x00000784
 	mov r2, #2
 	mov r0, #0x26
@@ -2514,7 +2514,7 @@ ov80_0222B0B8: ; 0x0222B0B8
 	add r2, r0, #0
 	ldr r1, [r4, r1]
 	add r0, r6, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 _0222B0E2:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -3736,7 +3736,7 @@ _0222B990:
 	ldr r1, [sp, #4]
 	add r2, r6, #0
 	add r1, r1, r5
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [sp]
 	add r4, r4, #1
 	add r5, r5, r6
@@ -3797,7 +3797,7 @@ _0222BA0E:
 	add r1, r6, #0
 	add r0, r0, r4
 	add r2, r5, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [sp, #4]
 	add r1, r6, #0
 	ldr r0, [r0, #0x28]
@@ -4217,7 +4217,7 @@ _0222BD06:
 	ldr r1, [sp, #4]
 	add r2, r6, #0
 	add r1, r1, r5
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [sp]
 	add r4, r4, #1
 	add r5, r5, r6
@@ -4279,7 +4279,7 @@ _0222BD86:
 	add r1, r6, #0
 	add r0, r0, r4
 	add r2, r5, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r0, [sp, #4]
 	add r1, r6, #0
 	ldr r0, [r0, #0x70]
@@ -7746,7 +7746,7 @@ _0222D730:
 	add r0, r5, #0
 	add r1, sp, #0x2c
 	add r3, r2, #0
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	mov r0, #8
 	ldrsh r1, [r4, r0]
 	ldr r0, [sp, #0x18]
@@ -7813,7 +7813,7 @@ _0222D7AE:
 	add r0, #0x10
 	add r1, sp, #0x2c
 	add r3, r2, #0
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	mov r0, #2
 	ldrsh r0, [r4, r0]
 	add r6, r6, #1
@@ -7947,7 +7947,7 @@ _0222D8B4:
 	add r0, r5, #0
 	add r1, sp, #0x2c
 	add r3, r2, #0
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	mov r0, #8
 	ldrsh r1, [r4, r0]
 	ldr r0, [sp, #0x18]
@@ -8014,7 +8014,7 @@ _0222D932:
 	add r0, #0x10
 	add r1, sp, #0x2c
 	add r3, r2, #0
-	bl sub_020CF0AC
+	bl G2x_SetBGyAffine_
 	mov r0, #2
 	ldrsh r0, [r4, r0]
 	add r6, r6, #1
@@ -11160,7 +11160,7 @@ _0222F0DA:
 	ldr r0, [sp, #0x28]
 	ldr r1, [r7, #4]
 	lsl r2, r2, #6
-	bl sub_020CFE74
+	bl GX_LoadOBJ
 	ldr r0, [r6]
 	bl sub_02024B34
 	mov r1, #1
@@ -16353,7 +16353,7 @@ _02231A48:
 	cmp r0, #0
 	ble _02231A60
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -16361,19 +16361,19 @@ _02231A48:
 	b _02231A6E
 _02231A60:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _02231A6E:
 	ldr r5, [r6, #0xc]
-	bl _ftoi
+	bl _ffix
 	lsl r1, r5, #1
 	add r1, r5, r1
 	sub r0, r0, r1
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl _itof
+	bl _fflt
 	ldr r1, _02231BE4 ; =0x45800000
 	bl _fdiv
 	bl _f2d
@@ -16385,7 +16385,7 @@ _02231A6E:
 	bl _d2f
 	add r5, r0, #0
 	ldr r0, [sp, #4]
-	bl _itof
+	bl _fflt
 	add r1, r5, #0
 	bl _fdiv
 	bl _f2d
@@ -16394,7 +16394,7 @@ _02231A6E:
 	bl _dls
 	bhs _02231AC2
 	add r0, r4, #0
-	bl _itof
+	bl _fflt
 	str r0, [sp]
 	b _02231B00
 _02231AC2:
@@ -16403,7 +16403,7 @@ _02231AC2:
 	cmp r0, #0
 	ble _02231ADC
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -16411,13 +16411,13 @@ _02231AC2:
 	b _02231AEA
 _02231ADC:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _02231AEA:
-	bl _ftoi
-	bl _itof
+	bl _ffix
+	bl _fflt
 	ldr r1, _02231BE4 ; =0x45800000
 	bl _fdiv
 	add r1, r5, #0
@@ -16486,7 +16486,7 @@ _02231B7C:
 	bl _d2f
 	add r4, r0, #0
 	ldr r0, [sp, #8]
-	bl _itof
+	bl _fflt
 	ldr r1, _02231BE4 ; =0x45800000
 	bl _fdiv
 	ldr r1, [sp]
@@ -16495,11 +16495,11 @@ _02231B7C:
 	add r0, r4, #0
 	bl _fadd
 	add r5, r0, #0
-	bl _ftoi
+	bl _ffix
 	add r4, r0, #0
 	add r0, r5, #0
-	bl _ftoi
-	bl _itof
+	bl _ffix
+	bl _fflt
 	add r1, r0, #0
 	add r0, r5, #0
 	bl _fneq
@@ -22937,7 +22937,7 @@ _02234EDA:
 	ldr r0, _02234F20 ; =0x33333333
 	ldr r1, _02234F24 ; =0x3FF33333
 	bl _dmul
-	bl _dtou
+	bl _dfixu
 	str r0, [sp, #4]
 	sub r0, r0, r4
 	str r0, [sp, #4]
@@ -25679,7 +25679,7 @@ _022362F0:
 	add r0, #0x30
 	add r1, #0xa1
 	mov r2, #2
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r0, r4, #0
 	add r0, #0xa8
 	ldr r0, [r0]
@@ -26201,7 +26201,7 @@ ov80_022366D4: ; 0x022366D4
 	add r0, r1, r0
 	add r1, r5, #0
 	ldr r7, _02236730 ; =0x0223C0AC
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	ldr r1, _02236728 ; =0x0223C050
 	ldr r0, [sp]
 	mov r4, #0
@@ -26216,7 +26216,7 @@ _0223670C:
 	mul r0, r1
 	add r0, r7, r0
 	add r1, r5, #0
-	bl MIi_CpuCopy8
+	bl MI_CpuCopy8
 	add r4, r4, #1
 	add r5, #0x38
 	cmp r4, #4
@@ -28797,7 +28797,7 @@ ov80_02237A40: ; 0x02237A40
 	cmp r0, #0
 	beq _02237A58
 	lsl r0, r0, #0xc
-	bl _utof
+	bl _ffltu
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -28805,12 +28805,12 @@ ov80_02237A40: ; 0x02237A40
 	b _02237A66
 _02237A58:
 	lsl r0, r0, #0xc
-	bl _utof
+	bl _ffltu
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _02237A66:
-	bl _ftoi
+	bl _ffix
 	bl FX_Sqrt
 	pop {r3, pc}
 	thumb_func_end ov80_02237A40
@@ -31062,7 +31062,7 @@ ov80_02238B7C: ; 0x02238B7C
 	cmp r4, #0
 	ble _02238BC6
 	lsl r0, r4, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -31071,7 +31071,7 @@ ov80_02238B7C: ; 0x02238B7C
 	b _02238BD6
 _02238BC6:
 	lsl r0, r4, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
@@ -31080,7 +31080,7 @@ _02238BD6:
 	cmp r6, #0
 	ble _02238BEE
 	lsl r0, r6, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -31089,7 +31089,7 @@ _02238BD6:
 	b _02238BFE
 _02238BEE:
 	lsl r0, r6, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
@@ -31099,10 +31099,10 @@ _02238BFE:
 	bl sub_0200CF6C
 	str r0, [sp, #8]
 	ldr r0, [sp]
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #4]
-	bl _ftoi
+	bl _ffix
 	add r2, r0, #0
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0xc]
@@ -33361,7 +33361,7 @@ ov80_02239D74: ; 0x02239D74
 	mov r1, #4
 	mov r2, #0x1f
 	mov r3, #8
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add r0, r4, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -34091,7 +34091,7 @@ _0223A1BA:
 	cmp r0, #0
 	ble _0223A3AA
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -34100,7 +34100,7 @@ _0223A1BA:
 	b _0223A3BA
 _0223A3AA:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
@@ -34111,7 +34111,7 @@ _0223A3BA:
 	cmp r0, #0
 	ble _0223A3D4
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -34119,15 +34119,15 @@ _0223A3BA:
 	b _0223A3E2
 _0223A3D4:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0223A3E2:
-	bl _ftoi
+	bl _ffix
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl _ftoi
+	bl _ffix
 	add r5, #0x14
 	add r1, r5, #0
 	mov r2, #0x12
@@ -35377,11 +35377,11 @@ ov80_0223AD5C: ; 0x0223AD5C
 	cmp r0, #1
 	bne _0223AD6A
 	ldr r0, _0223AD74 ; =0x0400006C
-	bl sub_020CDA80
+	bl GXx_SetMasterBrightness_
 	pop {r3, pc}
 _0223AD6A:
 	ldr r0, _0223AD78 ; =0x0400106C
-	bl sub_020CDA80
+	bl GXx_SetMasterBrightness_
 	pop {r3, pc}
 	nop
 _0223AD74: .word 0x0400006C

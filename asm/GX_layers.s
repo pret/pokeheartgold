@@ -175,7 +175,7 @@ _02022D20: .word 0xFFFFE0FF
 	thumb_func_start GX_BothDispOn
 GX_BothDispOn: ; 0x02022D24
 	push {r3, lr}
-	bl sub_020CD9B4
+	bl GX_DispOn
 	ldr r2, _02022D38 ; =0x04001000
 	mov r0, #1
 	ldr r1, [r2]

@@ -15,7 +15,7 @@ ov27_02259F80: ; 0x02259F80
 	mov r1, #8
 	bl CreateHeap
 	mov r0, #0
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	mov r0, #0x80
 	bl GX_SetBankForSubBG
 	mov r0, #1
@@ -1257,7 +1257,7 @@ _0225A99A:
 	mov r1, #0
 	mov r2, #0x23
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #4
 	pop {r3, r4, pc}
 _0225A9AE:
@@ -2130,7 +2130,7 @@ _0225B0A0:
 	cmp r0, #0
 	beq _0225B0BA
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2138,18 +2138,18 @@ _0225B0A0:
 	b _0225B0C8
 _0225B0BA:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0225B0C8:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x44]
 	ldrh r0, [r6, #2]
 	cmp r0, #0
 	beq _0225B0E6
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2157,12 +2157,12 @@ _0225B0C8:
 	b _0225B0F4
 _0225B0E6:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0225B0F4:
-	bl _ftoi
+	bl _ffix
 	mov r1, #1
 	lsl r1, r1, #0x14
 	add r0, r0, r1
@@ -2212,35 +2212,35 @@ _0225B154:
 	cmp r0, #0
 	beq _0225B16E
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r7, #0
 	bl _fadd
 	b _0225B17A
 _0225B16E:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r7, #0
 	bl _fsub
 _0225B17A:
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x44]
 	ldrh r0, [r6, #2]
 	cmp r0, #0
 	beq _0225B196
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	add r0, r7, #0
 	bl _fadd
 	b _0225B1A2
 _0225B196:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r7, #0
 	bl _fsub
 _0225B1A2:
-	bl _ftoi
+	bl _ffix
 	mov r1, #1
 	lsl r1, r1, #0x14
 	add r0, r0, r1
@@ -2291,18 +2291,18 @@ _0225B200:
 	str r0, [sp, #0x40]
 	mov r0, #0x19
 	lsl r0, r0, #0xe
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
 	bl _fadd
-	bl _ftoi
+	bl _ffix
 	str r0, [sp, #0x44]
 	ldr r0, [sp, #0x34]
 	cmp r0, #0
 	ble _0225B238
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2310,12 +2310,12 @@ _0225B200:
 	b _0225B246
 _0225B238:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0225B246:
-	bl _ftoi
+	bl _ffix
 	mov r1, #1
 	lsl r1, r1, #0x14
 	add r0, r0, r1
@@ -4402,7 +4402,7 @@ ov27_0225C250: ; 0x0225C250
 	str r3, [sp, #4]
 	bl CreateHeap
 	mov r0, #0
-	bl sub_020CDA64
+	bl GXS_SetGraphicsMode
 	mov r0, #0x80
 	bl GX_SetBankForSubBG
 	mov r0, #1

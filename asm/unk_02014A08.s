@@ -106,9 +106,9 @@ _02014A9E:
 sub_02014AA0: ; 0x02014AA0
 	push {r3, lr}
 	mov r0, #0
-	bl sub_020D4294
+	bl MI_StopDma
 	mov r0, #0
-	bl sub_020D422C
+	bl MI_WaitDma
 	pop {r3, pc}
 	thumb_func_end sub_02014AA0
 
@@ -124,14 +124,14 @@ sub_02014AB0: ; 0x02014AB0
 	add r1, r6, #0
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_020D43E8
+	bl MI_HBlankDmaCopy32
 	pop {r4, r5, r6, pc}
 _02014ACA:
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_020D4448
+	bl MI_HBlankDmaCopy16
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02014AB0
 

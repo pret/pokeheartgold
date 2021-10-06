@@ -3196,7 +3196,7 @@ sub_02024BBC: ; 0x02024BBC
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020CFDC8
+	bl GX_LoadOAM
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -3219,7 +3219,7 @@ sub_02024BF4: ; 0x02024BF4
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020CFE1C
+	bl GXS_LoadOAM
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

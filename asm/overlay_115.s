@@ -1515,7 +1515,7 @@ _0225FBEE:
 	mov r1, #1
 	mov r2, #0x1e
 	mov r3, #0
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]

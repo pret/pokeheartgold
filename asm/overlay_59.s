@@ -2768,7 +2768,7 @@ _02239280:
 	cmp r0, #0
 	ble _0223929C
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2776,12 +2776,12 @@ _02239280:
 	b _022392AA
 _0223929C:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _022392AA:
-	bl _ftoi
+	bl _ffix
 	str r0, [r4, #0x14]
 	add r1, sp, #8
 	mov r0, #0
@@ -2789,7 +2789,7 @@ _022392AA:
 	cmp r0, #0
 	ble _022392CC
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2797,12 +2797,12 @@ _022392AA:
 	b _022392DA
 _022392CC:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _022392DA:
-	bl _ftoi
+	bl _ffix
 	str r0, [r4, #0x18]
 	mov r0, #0
 	strb r0, [r4, #6]
@@ -2810,7 +2810,7 @@ _022392DA:
 	cmp r0, #0
 	beq _022392FE
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2819,7 +2819,7 @@ _022392DA:
 	b _0223930E
 _022392FE:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
@@ -2828,7 +2828,7 @@ _0223930E:
 	cmp r5, #0
 	ble _02239324
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2836,15 +2836,15 @@ _0223930E:
 	b _02239332
 _02239324:
 	lsl r0, r5, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _02239332:
-	bl _ftoi
+	bl _ffix
 	add r5, r0, #0
 	ldr r0, [sp, #4]
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	add r0, r5, #0
 	bl FX_Div
@@ -2853,7 +2853,7 @@ _02239332:
 	cmp r0, #0
 	beq _02239362
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2862,7 +2862,7 @@ _02239332:
 	b _02239372
 _02239362:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
@@ -2871,7 +2871,7 @@ _02239372:
 	cmp r6, #0
 	ble _02239388
 	lsl r0, r6, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -2879,15 +2879,15 @@ _02239372:
 	b _02239396
 _02239388:
 	lsl r0, r6, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _02239396:
-	bl _ftoi
+	bl _ffix
 	add r5, r0, #0
 	ldr r0, [sp]
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	add r0, r5, #0
 	bl FX_Div
@@ -3263,7 +3263,7 @@ ov59_02239604: ; 0x02239604
 	mov r1, #0
 	mov r2, #8
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3282,7 +3282,7 @@ ov59_022396E4: ; 0x022396E4
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _02239700: .word 0x04000050
@@ -7407,7 +7407,7 @@ ov59_0223B590: ; 0x0223B590
 	mov r1, #1
 	mov r2, #0xe
 	mov r3, #6
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -7426,7 +7426,7 @@ ov59_0223B66C: ; 0x0223B66C
 	add r2, r1, #0
 	mov r3, #0x1f
 	str r1, [sp]
-	bl sub_020CF15C
+	bl G2x_SetBlendAlpha_
 	pop {r3, pc}
 	.balign 4, 0
 _0223B688: .word 0x04000050
@@ -8482,7 +8482,7 @@ ov59_0223BE70: ; 0x0223BE70
 	cmp r0, #0
 	beq _0223BED6
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -8490,12 +8490,12 @@ ov59_0223BE70: ; 0x0223BE70
 	b _0223BEE4
 _0223BED6:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0223BEE4:
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -8523,7 +8523,7 @@ _0223BEFE:
 	cmp r0, #0
 	beq _0223BF2E
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	add r1, r0, #0
 	mov r0, #0x3f
 	lsl r0, r0, #0x18
@@ -8531,12 +8531,12 @@ _0223BEFE:
 	b _0223BF3C
 _0223BF2E:
 	lsl r0, r0, #0xc
-	bl _itof
+	bl _fflt
 	mov r1, #0x3f
 	lsl r1, r1, #0x18
 	bl _fsub
 _0223BF3C:
-	bl _ftoi
+	bl _ffix
 	add r1, r0, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -9132,8 +9132,8 @@ ov59_0223C3F0: ; 0x0223C3F0
 	push {r3, r4, lr}
 	sub sp, #4
 	bl sub_020C2698
-	bl sub_020CF564
-	bl sub_020CF704
+	bl G3X_Init
+	bl G3X_InitMtxStack
 	ldr r0, _0223C45C ; =0x04000060
 	ldr r1, _0223C460 ; =0xFFFFCFFD
 	ldrh r2, [r0]
