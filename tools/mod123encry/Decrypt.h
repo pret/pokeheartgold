@@ -30,6 +30,7 @@ struct DecryptPart2 {
             unk8[i] = ip;
         }
     }
+    u8 GetEncodedByte();
     void DoDecrypt(u32 *start, u32 *end);
 };
 

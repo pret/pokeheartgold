@@ -40,6 +40,16 @@ u32 Decryptor::FindDecryLvl2(u32 offset) {
     return data.size();
 }
 
+u8 DecryptPart2::GetEncodedByte() {
+    unk0 = (++unk0) & 0xFF;
+    u8 ip = unk8[unk0];
+    unk4 = (unk4 + ip) & 0xFF;
+    u8 r2 = unk8[unk4];
+    unk8[unk4] = ip;
+    unk8[unk0] = r2;
+    return unk8[(ip + r2) & 0xFF];
+}
+
 void DecryptPart2::DoDecrypt(u32 *start, u32 *end) {
     // assert (!(size & 3));
     u8 buffer[256];
@@ -47,7 +57,7 @@ void DecryptPart2::DoDecrypt(u32 *start, u32 *end) {
         buffer[i] = i ^ 1;
     }
     for (; start < end; start++) {
-        u32 &word = (u32 &)*start;
+        u32 &word = *start;
         switch (GetInsnType(word)) {
         case 1:
         case 2:
@@ -57,6 +67,10 @@ void DecryptPart2::DoDecrypt(u32 *start, u32 *end) {
             word = (((word & ~0xFF000000) - 0x4C2) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
             break;
         default:
+            u8 *bytes = (u8 *)&word;
+            bytes[0] ^= GetEncodedByte();
+            bytes[1] ^= GetEncodedByte();
+            bytes[2] = buffer[bytes[2]];
             break;
         }
     }
@@ -67,15 +81,15 @@ u32 Decryptor::DoDecryptLvl2(u32 tableOffset) {
     // ov123_0225FEA8(pool[2], pool[3], pool[1]);
     u32 param = pool[2] - (info.start + info.size + 0x1300);
     u32 start = pool[3] - 0x1300;
-    u32 end = pool[1] - (info.start + info.size + 0x1300);
+    u32 size = pool[1] - (info.start + info.size + 0x1300);
     u32 keys[4] = {
-        end ^ param,
-        end ^ ((param << 8) | (param >> 24)),
-        end ^ ((param << 16) | (param >> 16)),
-        end ^ ((param << 24) | (param >> 8)),
+        size ^ param,
+        size ^ ((param << 8) | (param >> 24)),
+        size ^ ((param << 16) | (param >> 16)),
+        size ^ ((param << 24) | (param >> 8)),
     };
     DecryptPart2 buffer((const u8 *)keys);
-    buffer.DoDecrypt((u32 *)&data[start - info.start], (u32 *)&data[end - info.start]);
+    buffer.DoDecrypt((u32 *)&data[start - info.start], (u32 *)&data[start + size - info.start]);
 
     // ov123_02260B14(keys, start, start, end);
     // ov123_022607C4(buffer, keys, 16);

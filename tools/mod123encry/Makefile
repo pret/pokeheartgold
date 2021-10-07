@@ -1,4 +1,4 @@
-DEBUG    ?= 0
+DEBUG    ?= 1
 
 CC       ?= gcc
 CXX      ?= g++
