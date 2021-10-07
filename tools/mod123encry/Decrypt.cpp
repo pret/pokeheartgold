@@ -78,7 +78,6 @@ void DecryptPart2::DoDecrypt(u32 *start, u32 *end) {
 
 u32 Decryptor::DoDecryptLvl2(u32 tableOffset) {
     u32 *pool = (u32 *)&data[tableOffset + 104];
-    // ov123_0225FEA8(pool[2], pool[3], pool[1]);
     u32 param = pool[2] - (info.start + info.size + 0x1300);
     u32 start = pool[3] - 0x1300;
     u32 size = pool[1] - (info.start + info.size + 0x1300);
@@ -90,10 +89,6 @@ u32 Decryptor::DoDecryptLvl2(u32 tableOffset) {
     };
     DecryptPart2 buffer((const u8 *)keys);
     buffer.DoDecrypt((u32 *)&data[start - info.start], (u32 *)&data[start + size - info.start]);
-
-    // ov123_02260B14(keys, start, start, end);
-    // ov123_022607C4(buffer, keys, 16);
-    // return ov123_022609B0(buffer, start, start, end) == -1 ? 0 : -1;
     return tableOffset + 120;
 }
 
