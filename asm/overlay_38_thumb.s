@@ -318,7 +318,7 @@ _0221BC1C:
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, #1
-	bl sub_020E3798
+	bl MATH_CalcSHA1
 	ldr r0, _0221BE58 ; =0x02225040
 	ldr r1, _0221BE64 ; =0x0222508C
 	ldr r0, [r0, #0x24]

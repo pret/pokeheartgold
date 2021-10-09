@@ -28723,12 +28723,12 @@ _02235182:
 	bl sub_020E1678
 	ldr r0, _022351F0 ; =ov74_02235138
 	ldr r1, _022351F4 ; =FreeToHeap
-	bl ov74_0223B214
+	bl CRYPTO_SetAllocator
 	ldr r1, _022351E8 ; =0x000004A8
 	ldr r3, _022351F8 ; =_0223B690
 	add r0, r7, #0
 	add r2, sp, #0
-	bl ov74_022370E4
+	bl CRYPTO_VerifySignature
 	cmp r0, #0
 	beq _022351CC
 	add sp, #0x1fc
@@ -30511,7 +30511,7 @@ _02235F12:
 	add r1, r5, #0
 	lsl r2, r2, #2
 	add r3, r7, #0
-	bl ov74_0223706C
+	bl CRYPTO_RC4Encrypt
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0xc
@@ -30586,7 +30586,7 @@ _02235FB2:
 	add r1, r5, #0
 	lsl r2, r2, #2
 	add r3, r7, #0
-	bl ov74_0223706C
+	bl CRYPTO_RC4Encrypt
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0xc
@@ -31828,7 +31828,7 @@ _022368FA:
 	ldr r2, [r3, r2]
 	add r0, r3, r0
 	add r3, r1, #0
-	bl ov74_0223706C
+	bl CRYPTO_RC4Encrypt
 	ldr r1, _02236968 ; =0x0223E2FC
 	ldr r2, _02236974 ; =0x0000104C
 	ldr r1, [r1]

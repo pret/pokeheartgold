@@ -1131,7 +1131,7 @@ Overlay OVY_74
 {
     After OVY_38
     Object overlay_74_thumb.o
-    Object overlay_74_arm.o
+    Object nitrocrypto.o
     ### Size 0x16020 ###
     ### BSS Size 0x1980 ###
     ### SINIT Start 0x223bbb0 ###

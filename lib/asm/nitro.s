@@ -17795,8 +17795,8 @@ sub_020E3758: ; 0x020E3758
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020E3758
 
-	arm_func_start sub_020E3798
-sub_020E3798: ; 0x020E3798
+	arm_func_start MATH_CalcSHA1
+MATH_CalcSHA1: ; 0x020E3798
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x68
 	mov r6, r0
@@ -17813,7 +17813,7 @@ sub_020E3798: ; 0x020E3798
 	bl DGT_Hash2GetDigest
 	add sp, sp, #0x68
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020E3798
+	arm_func_end MATH_CalcSHA1
 
 	arm_func_start sub_020E37D8
 sub_020E37D8: ; 0x020E37D8

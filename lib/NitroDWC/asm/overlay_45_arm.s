@@ -40545,7 +40545,7 @@ _02253FAC:
 	add r0, sp, #0x11
 	mov r1, r7
 	add r2, r2, #0x28
-	bl sub_020E3798
+	bl MATH_CalcSHA1
 	mov r1, r7
 	mov r0, #7
 	mov r2, #0
@@ -40654,7 +40654,7 @@ _02254128:
 	add r1, sp, #0x11
 	mov r0, r4
 	mov r2, #0x34
-	bl sub_020E3798
+	bl MATH_CalcSHA1
 	mov r0, #0
 	ldr r2, _022542DC ; =0x0225762C
 	mov r1, r0
