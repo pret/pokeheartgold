@@ -47,10 +47,10 @@ void CryptoRC4Context::Encrypt(u32 *start, u32 *end) {
         switch (GetInsnType(word)) {
         case 1:
         case 2:
-            word = (((word & ~0xFF000000) + 0x1300) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
+            word = (((word & ~0xFF000000) + 0x4C2) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
             break;
         case 3:
-            word = (((word & ~0xFF000000) + 0x4C2) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
+            word = (((word & ~0xFF000000) + 0x1300) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
             break;
         default:
             u8 *bytes = (u8 *)&word;
