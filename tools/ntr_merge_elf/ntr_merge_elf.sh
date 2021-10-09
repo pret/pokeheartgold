@@ -33,6 +33,19 @@ NM=arm-none-eabi-nm
 OBJCOPY=arm-none-eabi-objcopy
 STEM="$1"
 
+[[ -z "$STEM" ]] && { echo "usage: $0 [-h] STEM"; exit 1; }
+[[ $STEM == "-h" ]] && {
+  echo "usage: $0 [-h] STEM"
+  echo ""
+  echo "STEM      Prefix to the output static sbin (from running"
+  echo "          mwldarm in a nitro build). For example, if you"
+  echo "          output build/diamond.us/main.sbin, STEM would"
+  echo "          be \"build/diamond.us/main\"."
+  echo ""
+  echo "-h        Print this message and exit"
+  exit 0
+}
+
 assertFile $STEM.sbin
 assertFile $STEM.nef
 assertFile ${STEM}_defs.sbin
@@ -62,9 +75,10 @@ autoload_start=$(($(getword ${STEM}.sbin $((ptr+8)))-static_load))
 
 # Truncate the static module and dump
 static_size=$autoload_start
-dd if=${STEM}.sbin of=$(basename $STEM).sbin bs=1 count=${static_size} 2>/dev/null
-flags="$flags --update-section $(basename $STEM)=$(basename $STEM).sbin"
-to_clean=$(basename $STEM)
+static_sbin=$(mktemp --suffix=sbin)
+dd if=${STEM}.sbin of=$static_sbin bs=1 count=${static_size} 2>/dev/null
+flags="$flags --update-section $(basename $STEM)=$static_sbin"
+to_clean=$static_sbin
 
 # Dump autoloads
 # The output of `NM -n $STEM.nef` is assumed to be sorted in the order in
@@ -72,11 +86,12 @@ to_clean=$(basename $STEM)
 # Autoload table is struct { u32 load; u32 size; u32 bsssize; } table[];
 while read -r name; do
   aload_text_size=$(getword ${STEM}.sbin $((autoload_table_start+4)))
-  dd if=${STEM}.sbin of=$name.sbin bs=1 skip=$autoload_start count=$aload_text_size 2>/dev/null
+  aload_sbin=$(mktemp --suffix=sbin)
+  dd if=${STEM}.sbin of=$aload_sbin bs=1 skip=$autoload_start count=$aload_text_size 2>/dev/null
   ((autoload_start+=aload_text_size))
   ((autoload_table_start+=12))
-  flags="$flags --update-section $name=$name.sbin"
-  to_clean="$to_clean $name.sbin"
+  flags="$flags --update-section $name=$aload_sbin"
+  to_clean="$to_clean $aload_sbin"
 done < <($NM -n $STEM.nef | grep -E "SDK_AUTOLOAD_\w+_START" | grep -vE "_(TEXT|BSS|DATA|ARENA|SINIT|ETABLE)_" | cut -d' ' -f3 | cut -d'_' -f3- | sed 's/_START//g')
 
 # Compile the elf
