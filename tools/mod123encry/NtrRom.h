@@ -112,7 +112,6 @@ class NtrRom {
         dest.assign((T *)(raw + address), (T *)(raw + address + size));
     }
 
-    void GetMaybeCompressedRomSegment();
 public:
     NtrRom(const char * filename, std::ios::openmode mode = std::ios::in);
     ~NtrRom();
