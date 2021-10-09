@@ -4,7 +4,9 @@
 #include "Decrypt.h"
 
 int main(int argc, char ** argv) {
-    // Usage: mod123encry MODE INFILE OUTFILE BASEROM OVY_ID
+    // Usage:
+    // mod123encry decry BASEROM OUTFILE OVY_ID
+    // mod123encry encry BUILDNAME OUTFILE OVY_ID
     try {
         Options options(argc, argv);
         return options.main();
@@ -12,5 +14,4 @@ int main(int argc, char ** argv) {
         std::cerr << "An exception has occurred: " << e.what() << std::endl;
         return 1;
     }
-    return 0;
 }

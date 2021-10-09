@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 #include "ntrtypes.h"
+#include "Overlay.h"
 
 struct CARDRomRegion {
     u32 offset;
@@ -54,18 +55,6 @@ struct NtrBanner {
     char16_t titles[6][128];
 };
 
-struct FSOverlayInfo {
-    u32 ovy_id;
-    u32 start;
-    u32 size;
-    u32 bssize;
-    u32 sinit_start;
-    u32 sinit_end;
-    u32 file_id;
-    u32 compsize : 24;
-    u32 flag : 8;
-};
-
 struct FATEntry {
     u32 start;
     u32 end;
@@ -81,14 +70,6 @@ struct FNT {
     u8 *raw;
     std::vector<FNTHeader> directories;
     char *paths;
-};
-
-class NtrOverlay {
-protected:
-    FSOverlayInfo info;
-    std::vector<u8> data;
-public:
-    NtrOverlay(FSOverlayInfo &_info, std::vector<u8> &_data) : info(_info), data(_data) {}
 };
 
 class NtrRom {
@@ -116,6 +97,15 @@ public:
     NtrRom(const char * filename, std::ios::openmode mode = std::ios::in);
     ~NtrRom();
     const RomHeader * getHeader() { return (const RomHeader *)(raw + 0); }
+    FSOverlayInfo &getOverlayInfo(u32 proc, u32 ovy_id) {
+        std::vector<FSOverlayInfo> &ovyi = (proc == 0) ? arm9_ovt : arm7_ovt;
+        return ovyi[ovy_id];
+    }
+    std::vector<u8> getOverlayData(u32 proc, u32 ovy_id) {
+        u8 *& data_raw = ((proc == 0) ? arm9_ovy : arm7_ovy)[ovy_id];
+        FSOverlayInfo &info = getOverlayInfo(proc, ovy_id);
+        return std::vector<u8>(data_raw, data_raw + info.size);
+    }
     NtrOverlay getOverlay(u32 proc, u32 ovy_id) {
         std::vector<FSOverlayInfo> &ovyi = (proc == 0) ? arm9_ovt : arm7_ovt;
         u8 *& data_raw = ((proc == 0) ? arm9_ovy : arm7_ovy)[ovy_id];

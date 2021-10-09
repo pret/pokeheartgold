@@ -5,26 +5,12 @@
 #include <cstring>
 #include "NtrRom.h"
 #include "Decrypt.h"
+#include "Encrypt.h"
 
 enum ExecMode {
     EXEC_DECRY = 0,
     EXEC_ENCRY = 1,
 };
-
-struct ExecMode_s {
-    ExecMode _;
-    ExecMode_s(const char * value) {
-        if (strcmp(value, "decry") == 0) {
-            _ = EXEC_DECRY;
-        } else if (strcmp(value, "encry") == 0) {
-            _ = EXEC_ENCRY;
-        } else {
-            throw std::invalid_argument(std::string("invalid ExecMode value ") + value);
-        }
-    }
-};
-
-struct EncryptOptions {};
 
 struct Options {
     ExecMode mode;

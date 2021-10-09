@@ -1,18 +1,6 @@
 #include <cstring>
 #include "Decrypt.h"
-
-static int GetInsnType(u32 value) {
-    u8 highByte = (value >> 24) & 0xFF;
-    if ((highByte & 0xE) == 0xA) {
-        if ((highByte & 0xF0) == 0xF0)
-            return 1;
-        else if (highByte & 1)
-            return 2;
-        else
-            return 3;
-    }
-    return 0;
-}
+#include "CryptoRc4.h"
 
 u32 Decryptor::FindDecryLvl2(u32 offset) {
     offset = (offset + 3) & ~3; // round up
@@ -40,55 +28,22 @@ u32 Decryptor::FindDecryLvl2(u32 offset) {
     return data.size();
 }
 
-u8 DecryptPart2::GetEncodedByte() {
-    unk0 = (++unk0) & 0xFF;
-    u8 ip = unk8[unk0];
-    unk4 = (unk4 + ip) & 0xFF;
-    u8 r2 = unk8[unk4];
-    unk8[unk4] = ip;
-    unk8[unk0] = r2;
-    return unk8[(ip + r2) & 0xFF];
-}
-
-void DecryptPart2::DoDecrypt(u32 *start, u32 *end) {
-    // assert (!(size & 3));
-    u8 buffer[256];
-    for (int i = 0; i < 256; i++) {
-        buffer[i] = i ^ 1;
-    }
-    for (; start < end; start++) {
-        u32 &word = *start;
-        switch (GetInsnType(word)) {
-        case 1:
-        case 2:
-            word = (((word & ~0xFF000000) - 0x1300) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
-            break;
-        case 3:
-            word = (((word & ~0xFF000000) - 0x4C2) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
-            break;
-        default:
-            u8 *bytes = (u8 *)&word;
-            bytes[0] ^= GetEncodedByte();
-            bytes[1] ^= GetEncodedByte();
-            bytes[2] = buffer[bytes[2]];
-            break;
-        }
-    }
-}
-
 u32 Decryptor::DoDecryptLvl2(u32 tableOffset) {
     u32 *pool = (u32 *)&data[tableOffset + 104];
-    u32 param = pool[2] - (info.start + info.size + 0x1300);
-    u32 start = pool[3] - 0x1300;
-    u32 size = pool[1] - (info.start + info.size + 0x1300);
+    pool[1] -= info.start + info.size + 0x1300;
+    pool[2] -= info.start + info.size + 0x1300;
+    pool[3] -= 0x1300;
+    u32 param = pool[2];
+    u32 start = pool[3];
+    u32 size = pool[1];
     u32 keys[4] = {
         size ^ param,
         size ^ ((param << 8) | (param >> 24)),
         size ^ ((param << 16) | (param >> 16)),
         size ^ ((param << 24) | (param >> 8)),
     };
-    DecryptPart2 buffer((const u8 *)keys);
-    buffer.DoDecrypt((u32 *)&data[start - info.start], (u32 *)&data[start + size - info.start]);
+    CryptoRC4Context buffer((const u8 *)keys);
+    buffer.Decrypt((u32 *) &data[start - info.start], (u32 *) &data[start + size - info.start]);
     return tableOffset + 120;
 }
 
@@ -103,8 +58,10 @@ u32 Decryptor::DoDecryptLvl1(u32 tableOffset) {
     FATEntry *table;
     FATEntry *table_start = (FATEntry *)(&data[tableOffset]);
     for (table = table_start; table->start != 0 && table->end != 0; table++) {
-        u32 start_offs = table->start - info.start - 0x1300;
-        u32 size = (table->end - (info.start + info.size) - 0x1300) & ~3;
+        table->start -= 0x1300;
+        table->end -= info.start + info.size + 0x1300;
+        u32 start_offs = table->start - info.start;
+        u32 size = table->end & ~3;
         for (int i = start_offs; i < start_offs + size; i += 4) {
             u32 & word = (u32 &)data[i];
             switch (GetInsnType(word)) {
@@ -142,10 +99,24 @@ void Decryptor::Write(std::ofstream &outfile) {
     outfile.write((char *)data.data(), data.size());
 }
 
+DecryptOptions::DecryptOptions(char ** argv) {
+    baserom = new NtrRom(argv[2], std::ios::binary);
+    outfile = std::ofstream(argv[3], std::ios::binary);
+    if (!outfile.good()) {
+        throw std::runtime_error(std::string("unable to open file '") + argv[3] + "' for reading");
+    }
+
+    // Translate module number
+    ovy_id = std::strtoul(argv[4], nullptr, 10);
+}
+
+DecryptOptions::~DecryptOptions() {
+    outfile.close();
+}
+
 int DecryptOptions::main() {
-    NtrOverlay foo = baserom->getOverlay(0, ovy_id);
-    Decryptor overlay = *(Decryptor *)&foo;
-    overlay.Decrypt();
-    overlay.Write(outfile);
+    Decryptor decryptor(baserom, ovy_id);
+    decryptor.Decrypt();
+    decryptor.Write(outfile);
     return 0;
 }

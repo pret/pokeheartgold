@@ -20,20 +20,18 @@ Options::Options(int argc, char ** argv) {
         // All positional args must be present
         if (argc < 5) {
             throw std::invalid_argument("missing required argument: " +
-                                        ((std::string[]) {"", "mode", "infile", "outfile", "baserom", "ovy_id"})[argc]);
+                                        ((std::string[]) {"", "mode", "baserom", "outfile", "ovy_id"})[argc]);
         }
 
-        decrypt = new DecryptOptions;
-        decrypt->baserom = new NtrRom(argv[2], std::ios::binary);
-        decrypt->outfile = std::ofstream(argv[3], std::ios::binary);
-        if (!decrypt->outfile.good()) {
-            throw std::runtime_error(std::string("unable to open file '") + argv[3] + "' for reading");
-        }
-
-        // Translate module number
-        decrypt->ovy_id = std::strtoul(argv[4], nullptr, 10);
+        decrypt = new DecryptOptions(argv);
         break;
     case EXEC_ENCRY:
+        if (argc < 5) {
+            throw std::invalid_argument("missing required argument: " +
+                                        ((std::string[]) {"", "mode", "buildname", "outfile", "ovy_id"})[argc]);
+        }
+
+        encrypt = new EncryptOptions(argv);
         break;
     }
 }
@@ -41,7 +39,6 @@ Options::Options(int argc, char ** argv) {
 Options::~Options() {
     switch (mode) {
     case EXEC_DECRY:
-        decrypt->outfile.close();
         delete decrypt;
         break;
     case EXEC_ENCRY:
@@ -55,8 +52,7 @@ int Options::main() {
     case EXEC_DECRY:
         return decrypt->main();
     case EXEC_ENCRY:
-        std::cerr << "encryption not implemented" << std::endl;
-        return 1;
+        return encrypt->main();
     }
     return -1;
 }

@@ -14,7 +14,7 @@ DEPDIR   := .deps
 DEPFLAGS  = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
 PROGRAM  := mod123encry
-CXXSRCS  := mod123encry.cpp NtrRom.cpp Decrypt.cpp Options.cpp
+CXXSRCS  := mod123encry.cpp NtrRom.cpp Decrypt.cpp Encrypt.cpp Options.cpp CryptoRc4.cpp Overlay.cpp
 CXXOBJS  := $(CXXSRCS:%.cpp=%.o)
 CSRCS    := ntruncompbw.c
 COBJS    := $(CSRCS:%.c=%.o)
