@@ -72,13 +72,13 @@ _021E5960: .word 0x021FF9E0
 	thumb_func_start ov112_021E5964
 ov112_021E5964: ; 0x021E5964
 	push {r3, lr}
-	bl sub_020DDCF4
+	bl CARD_SpiWaitInit
 	mov r0, #0x32
-	bl sub_020DDC80
+	bl CARD_SetSpiWriteWaitCycles
 	mov r0, #0x32
-	bl sub_020DDC70
+	bl CARD_SetSpiReadWaitCycles
 	ldr r0, _021E599C ; =0x021FFA18
-	bl sub_020DDE94
+	bl CARD_SpiWaitReadRange
 	bl ov112_021E594C
 	ldr r0, _021E59A0 ; =0x021FF500
 	mov r1, #0xff
@@ -153,7 +153,7 @@ _021E59FE:
 	blt _021E59F6
 	ldr r0, _021E5A0C ; =0x021FFA18
 	add r1, r5, #0
-	bl sub_020DDFE0
+	bl CARD_SpiWaitWriteRange
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E5A0C: .word 0x021FFA18
@@ -393,7 +393,7 @@ _021E5B94: .word 0x021FF9E0
 ov112_021E5B98: ; 0x021E5B98
 	push {r3, r4, r5, lr}
 	ldr r0, _021E5D28 ; =0x021FFA18
-	bl sub_020DDE94
+	bl CARD_SpiWaitReadRange
 	add r4, r0, #0
 	bl ov112_021E5A84
 	cmp r0, #0
@@ -3552,14 +3552,14 @@ ov112_021E73C8: ; 0x021E73C8
 	bl ov112_021E5D44
 	ldr r0, _021E744C ; =ov112_021E6BDC
 	bl ov112_021E5D50
-	bl sub_020DE0C8
-	bl sub_020DE0C8
+	bl CARD_SpiWaitGetStatus
+	bl CARD_SpiWaitGetStatus
 	cmp r0, #0xaa
 	bne _021E7414
 	mov r0, #0
-	bl sub_020DDC80
+	bl CARD_SetSpiWriteWaitCycles
 	mov r0, #0
-	bl sub_020DDC70
+	bl CARD_SetSpiReadWaitCycles
 _021E7414:
 	ldr r0, _021E7450 ; =0x021FFB08
 	bl OS_InitMutex

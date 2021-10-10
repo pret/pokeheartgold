@@ -25363,7 +25363,7 @@ _020ADA48:
 	ldr r1, [r1, #0x26c]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, lsr #0x10
-	bl sub_020DE248
+	bl WM_Init
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
 	b _020ADAB4

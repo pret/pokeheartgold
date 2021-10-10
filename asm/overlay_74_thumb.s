@@ -19288,7 +19288,7 @@ _02230AA2:
 	ldr r0, [r4, #0x34]
 	mov r1, #2
 	add r7, #0xe0
-	bl sub_020DE248
+	bl WM_Init
 	bl ov74_02230A14
 	str r0, [r4, #0x10]
 	mov r2, #0

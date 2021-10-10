@@ -1540,8 +1540,8 @@ _021E6628: .word ov01_021E5900
 	thumb_func_start ov01_021E662C
 ov01_021E662C: ; 0x021E662C
 	push {r3, lr}
-	bl sub_020DE0C8
-	bl sub_020DE0C8
+	bl CARD_SpiWaitGetStatus
+	bl CARD_SpiWaitGetStatus
 	cmp r0, #0xaa
 	bne _021E663E
 	mov r0, #1

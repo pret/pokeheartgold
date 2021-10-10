@@ -10953,26 +10953,28 @@ _020DDC4C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end CARDi_SendtoPxi
 
-	arm_func_start sub_020DDC70
-sub_020DDC70: ; 0x020DDC70
+	; Functions presumably in libcard but not present in plat
+
+	arm_func_start CARD_SetSpiReadWaitCycles
+CARD_SetSpiReadWaitCycles: ; 0x020DDC70
 	ldr r1, _020DDC7C ; =0x021E4088
 	strb r0, [r1, #2]
 	bx lr
 	.align 2, 0
 _020DDC7C: .word 0x021E4088
-	arm_func_end sub_020DDC70
+	arm_func_end CARD_SetSpiReadWaitCycles
 
-	arm_func_start sub_020DDC80
-sub_020DDC80: ; 0x020DDC80
+	arm_func_start CARD_SetSpiWriteWaitCycles
+CARD_SetSpiWriteWaitCycles: ; 0x020DDC80
 	ldr r1, _020DDC8C ; =0x021E4088
 	strb r0, [r1, #1]
 	bx lr
 	.align 2, 0
 _020DDC8C: .word 0x021E4088
-	arm_func_end sub_020DDC80
+	arm_func_end CARD_SetSpiWriteWaitCycles
 
-	arm_func_start sub_020DDC90
-sub_020DDC90: ; 0x020DDC90
+	arm_func_start CARDi_SpiDummyWait
+CARDi_SpiDummyWait: ; 0x020DDC90
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bl OS_GetTick
 	mov r4, #0
@@ -11000,10 +11002,10 @@ _020DDCB4:
 	.align 2, 0
 _020DDCEC: .word 0x000082EA
 _020DDCF0: .word 0x021E4088
-	arm_func_end sub_020DDC90
+	arm_func_end CARDi_SpiDummyWait
 
-	arm_func_start sub_020DDCF4
-sub_020DDCF4: ; 0x020DDCF4
+	arm_func_start CARD_SpiWaitInit
+CARD_SpiWaitInit: ; 0x020DDCF4
 	stmdb sp!, {r3, lr}
 	ldr r1, _020DDD38 ; =0x021E4088
 	mov r0, #0x32
@@ -11025,10 +11027,10 @@ sub_020DDCF4: ; 0x020DDCF4
 _020DDD38: .word 0x021E4088
 _020DDD3C: .word _02110FBC
 _020DDD40: .word 0x0000FFFD
-	arm_func_end sub_020DDCF4
+	arm_func_end CARD_SpiWaitInit
 
-	arm_func_start sub_020DDD44
-sub_020DDD44: ; 0x020DDD44
+	arm_func_start CARDi_SpiWaitWriteByte
+CARDi_SpiWaitWriteByte: ; 0x020DDD44
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, r0
 	bl OS_GetTick
@@ -11075,10 +11077,10 @@ _020DDDC0:
 _020DDDE4: .word 0x000082EA
 _020DDDE8: .word 0x021E4088
 _020DDDEC: .word 0x040001A2
-	arm_func_end sub_020DDD44
+	arm_func_end CARDi_SpiWaitWriteByte
 
-	arm_func_start sub_020DDDF0
-sub_020DDDF0: ; 0x020DDDF0
+	arm_func_start CARDi_SpiWaitReadByte
+CARDi_SpiWaitReadByte: ; 0x020DDDF0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, r0
 	bl OS_GetTick
@@ -11123,10 +11125,10 @@ _020DDE5C:
 _020DDE88: .word 0x000082EA
 _020DDE8C: .word 0x021E4088
 _020DDE90: .word 0x040001A2
-	arm_func_end sub_020DDDF0
+	arm_func_end CARDi_SpiWaitReadByte
 
-	arm_func_start sub_020DDE94
-sub_020DDE94: ; 0x020DDE94
+	arm_func_start CARD_SpiWaitReadRange
+CARD_SpiWaitReadRange: ; 0x020DDE94
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldr r2, _020DDFC4 ; =0x021E409C
 	ldr r1, _020DDFC8 ; =0x021E4088
@@ -11151,11 +11153,11 @@ _020DDED8:
 	ldr r1, _020DDFD4 ; =0x0000A042
 	ldr r0, _020DDFD8 ; =0x021E408C
 	strh r1, [r2]
-	bl sub_020DDD44
-	bl sub_020DDC90
+	bl CARDi_SpiWaitWriteByte
+	bl CARDi_SpiDummyWait
 	ldr r0, _020DDFD8 ; =0x021E408C
-	bl sub_020DDDF0
-	bl sub_020DDC90
+	bl CARDi_SpiWaitReadByte
+	bl CARDi_SpiDummyWait
 	ldrb r4, [r6]
 	ldr r0, _020DDFC8 ; =0x021E4088
 	mov r5, #0
@@ -11175,7 +11177,7 @@ _020DDF40:
 	mov r0, r7
 	cmp r5, sl
 	streqh sb, [r8]
-	bl sub_020DDDF0
+	bl CARDi_SpiWaitReadByte
 	add r5, r5, #1
 _020DDF54:
 	cmp r5, r4
@@ -11186,7 +11188,7 @@ _020DDF60:
 	ldr r1, _020DDFD0 ; =0x040001A0
 	ldr r0, _020DDFD8 ; =0x021E408C
 	strh r2, [r1]
-	bl sub_020DDDF0
+	bl CARDi_SpiWaitReadByte
 _020DDF74:
 	mov r5, #0
 	b _020DDF8C
@@ -11219,10 +11221,10 @@ _020DDFD0: .word 0x040001A0
 _020DDFD4: .word 0x0000A042
 _020DDFD8: .word 0x021E408C
 _020DDFDC: .word 0x0000A002
-	arm_func_end sub_020DDE94
+	arm_func_end CARD_SpiWaitReadRange
 
-	arm_func_start sub_020DDFE0
-sub_020DDFE0: ; 0x020DDFE0
+	arm_func_start CARD_SpiWaitWriteRange
+CARD_SpiWaitWriteRange: ; 0x020DDFE0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r7, _020DE0AC ; =0x021E4158
 	ldr r3, _020DE0B0 ; =0x021E4088
@@ -11247,8 +11249,8 @@ _020DE024:
 	ldr r1, _020DE0BC ; =0x0000A042
 	ldr r0, _020DE0C0 ; =0x021E408C
 	strh r1, [r2]
-	bl sub_020DDD44
-	bl sub_020DDC90
+	bl CARDi_SpiWaitWriteByte
+	bl CARDi_SpiDummyWait
 	ldr r0, _020DE0B0 ; =0x021E4088
 	mov r4, #0
 	str r6, [r0, #8]
@@ -11261,7 +11263,7 @@ _020DE064:
 	mov r0, r6
 	cmp r4, sb
 	streqh r8, [r7]
-	bl sub_020DDD44
+	bl CARDi_SpiWaitWriteByte
 	add r4, r4, #1
 _020DE078:
 	cmp r4, r5
@@ -11286,10 +11288,10 @@ _020DE0B8: .word 0x040001A0
 _020DE0BC: .word 0x0000A042
 _020DE0C0: .word 0x021E408C
 _020DE0C4: .word 0x0000A002
-	arm_func_end sub_020DDFE0
+	arm_func_end CARD_SpiWaitWriteRange
 
-	arm_func_start sub_020DE0C8
-sub_020DE0C8: ; 0x020DE0C8
+	arm_func_start CARD_SpiWaitGetStatus
+CARD_SpiWaitGetStatus: ; 0x020DE0C8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r3, _020DE228 ; =0x021E409C
 	ldr r1, _020DE22C ; =0x021E4088
@@ -11337,7 +11339,7 @@ _020DE164:
 	ldr r1, _020DE23C ; =0x0000A042
 	ldr r0, _020DE240 ; =0x021E408C
 	strh r1, [r2]
-	bl sub_020DDD44
+	bl CARDi_SpiWaitWriteByte
 	strb r0, [sp]
 	bl OS_GetTick
 	mov r4, r0
@@ -11368,7 +11370,7 @@ _020DE1A0:
 	ldr r1, _020DE238 ; =0x040001A0
 	ldr r0, _020DE240 ; =0x021E408C
 	strh r2, [r1]
-	bl sub_020DDDF0
+	bl CARDi_SpiWaitReadByte
 	ldr r1, _020DE238 ; =0x040001A0
 _020DE1FC:
 	ldrh r0, [r1]
@@ -11391,13 +11393,13 @@ _020DE238: .word 0x040001A0
 _020DE23C: .word 0x0000A042
 _020DE240: .word 0x021E408C
 _020DE244: .word 0x0000A002
-	arm_func_end sub_020DE0C8
+	arm_func_end CARD_SpiWaitGetStatus
 
-	arm_func_start sub_020DE248
-sub_020DE248: ; 0x020DE248
+	arm_func_start WM_Init
+WM_Init: ; 0x020DE248
 	stmdb sp!, {r3, lr}
 	mov r2, #0xf00
-	bl sub_020DE274
+	bl WM_InitCore
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r1, _020DE270 ; =0x021E4220
@@ -11407,10 +11409,10 @@ sub_020DE248: ; 0x020DE248
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DE270: .word 0x021E4220
-	arm_func_end sub_020DE248
+	arm_func_end WM_Init
 
-	arm_func_start sub_020DE274
-sub_020DE274: ; 0x020DE274
+	arm_func_start WM_InitCore
+WM_InitCore: ; 0x020DE274
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r6, r0
 	mov r4, r1
@@ -11542,7 +11544,7 @@ _020DE448: .word 0x021E4228
 _020DE44C: .word 0x021E4248
 _020DE450: .word 0x021E42C0
 _020DE454: .word sub_020DE75C
-	arm_func_end sub_020DE274
+	arm_func_end WM_InitCore
 
 	arm_func_start sub_020DE458
 sub_020DE458: ; 0x020DE458
@@ -12757,7 +12759,7 @@ sub_020DF420: ; 0x020DF420
 	mov r5, r1
 	mov r1, r2
 	mov r4, r3
-	bl sub_020DE248
+	bl WM_Init
 	cmp r0, #0
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, pc}
