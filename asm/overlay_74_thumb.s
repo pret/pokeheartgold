@@ -11826,7 +11826,7 @@ _0222CF06:
 	cmp r0, #0x2b
 	bne _0222CF2E
 _0222CF22:
-	bl sub_020DEF44
+	bl WM_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	bl sub_0203A930
@@ -17793,7 +17793,7 @@ ov74_0222FF28: ; 0x0222FF28
 	mov r1, #1
 	add r0, #0x60
 	strb r1, [r0]
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	add r1, r4, #0
 	add r1, #0x62
 	strh r0, [r1]
@@ -17826,9 +17826,9 @@ ov74_0222FF68: ; 0x0222FF68
 	push {r4, lr}
 	bl ov74_02231054
 	add r4, r0, #0
-	bl sub_020DEFD4
+	bl WM_GetDispersionBeaconPeriod
 	strh r0, [r4, #0x18]
-	bl sub_020DF250
+	bl WM_GetNextTgid
 	strh r0, [r4, #0xc]
 	pop {r4, pc}
 	.balign 4, 0
@@ -17844,7 +17844,7 @@ ov74_0222FF80: ; 0x0222FF80
 	bl ov74_02231054
 	ldrh r0, [r0, #0x32]
 	strh r0, [r4, #4]
-	bl sub_020DF064
+	bl WM_GetDispersionScanPeriod
 	strh r0, [r4, #6]
 	mov r0, #0xff
 	strb r0, [r4, #8]
@@ -17861,7 +17861,7 @@ ov74_0222FFAC: ; 0x0222FFAC
 	push {r3, r4, r5, r6, r7, lr}
 	bl ov74_022310C4
 	add r7, r0, #0
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	add r3, r0, #0
 	beq _0222FFF8
 	ldrh r2, [r7, #4]
@@ -17971,7 +17971,7 @@ ov74_02230070: ; 0x02230070
 	bl ov74_0223107C
 	cmp r0, #0xc
 	bne _02230092
-	bl sub_020DE458
+	bl WM_Finish
 	mov r0, #0xc
 	bl ov74_02231070
 	mov r0, #1
@@ -19176,7 +19176,7 @@ _02230A06:
 ov74_02230A14: ; 0x02230A14
 	push {r3, lr}
 	ldr r0, _02230A30 ; =ov74_0222FFFC
-	bl sub_020DEBA8
+	bl WM_SetIndCallback
 	cmp r0, #0
 	beq _02230A2A
 	mov r0, #4
@@ -19383,7 +19383,7 @@ _02230B84:
 	add r7, r7, r0
 	bl ov74_02231184
 	str r7, [r0, #0xc]
-	bl sub_020DF250
+	bl WM_GetNextTgid
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02230BA8: .word 0x00400131
@@ -19779,7 +19779,7 @@ ov74_02230E7C: ; 0x02230E7C
 	mov r0, #0
 	pop {r3, pc}
 _02230E8C:
-	bl sub_020DEF44
+	bl WM_GetLinkLevel
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov74_02230E7C
@@ -20012,7 +20012,7 @@ ov74_02231008: ; 0x02231008
 	beq _0223102E
 	pop {r4, pc}
 _02231022:
-	bl sub_020DE458
+	bl WM_Finish
 	mov r0, #1
 	bl ov74_0223113C
 	pop {r4, pc}
@@ -20731,7 +20731,7 @@ ov74_02231460: ; 0x02231460
 	mov r1, #0
 	add r2, r6, #0
 	lsr r3, r3, #0x10
-	bl sub_020DFD7C
+	bl WM_SetMPDataToPortEx
 	cmp r0, #2
 	beq _02231496
 	bl ov74_02231448
@@ -20750,7 +20750,7 @@ _0223149C: .word ov74_02230018
 ov74_022314A0: ; 0x022314A0
 	push {r3, lr}
 	ldr r0, _022314B8 ; =ov74_02230030
-	bl sub_020DF2C4
+	bl WM_Enable
 	cmp r0, #2
 	beq _022314B4
 	bl ov74_02231448
@@ -20767,7 +20767,7 @@ _022314B8: .word ov74_02230030
 ov74_022314BC: ; 0x022314BC
 	push {r3, lr}
 	ldr r0, _022314D8 ; =ov74_02230070
-	bl sub_020DF338
+	bl WM_Disable
 	cmp r0, #2
 	beq _022314D4
 	bl ov74_02231448
@@ -20792,7 +20792,7 @@ ov74_022314DC: ; 0x022314DC
 	mov r1, #3
 	mov r2, #0x11
 	lsr r3, r3, #0x10
-	bl sub_020E0EF4
+	bl WM_MeasureChannel
 	cmp r0, #2
 	beq _022314FE
 	bl ov74_02231448
@@ -20821,7 +20821,7 @@ ov74_02231508: ; 0x02231508
 	strh r0, [r5, #4]
 	ldr r0, _02231540 ; =ov74_02230110
 	add r1, r5, #0
-	bl sub_020DF4F8
+	bl WM_SetParentParameter
 	cmp r0, #2
 	beq _0223153C
 	bl ov74_02231448
@@ -20838,7 +20838,7 @@ _02231540: .word ov74_02230110
 ov74_02231544: ; 0x02231544
 	push {r3, lr}
 	ldr r0, _0223155C ; =ov74_02230138
-	bl sub_020DF680
+	bl WM_StartParent
 	cmp r0, #2
 	beq _02231558
 	bl ov74_02231448
@@ -20857,7 +20857,7 @@ ov74_02231560: ; 0x02231560
 	bl ov74_022310C4
 	add r1, r0, #0
 	ldr r0, _02231580 ; =ov74_02230404
-	bl sub_020DF6D0
+	bl WM_StartScan
 	cmp r0, #2
 	beq _0223157A
 	bl ov74_02231448
@@ -20930,7 +20930,7 @@ ov74_02231584: ; 0x02231584
 	bl ov74_022310C4
 	add r1, r0, #0
 	ldr r0, _02231618 ; =ov74_02230520
-	bl sub_020DF6D0
+	bl WM_StartScan
 	cmp r0, #2
 	beq _0223160E
 	bl ov74_02231448
@@ -20948,7 +20948,7 @@ _02231618: .word ov74_02230520
 ov74_0223161C: ; 0x0223161C
 	push {r3, lr}
 	ldr r0, _02231634 ; =ov74_02230590
-	bl sub_020DF90C
+	bl WM_EndScan
 	cmp r0, #2
 	beq _02231630
 	bl ov74_02231448
@@ -20974,7 +20974,7 @@ ov74_02231638: ; 0x02231638
 	ldr r0, _0223166C ; =ov74_022305E4
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_020DF94C
+	bl WM_StartConnectEx
 	cmp r0, #2
 	beq _02231664
 	bl ov74_02231448
@@ -20996,7 +20996,7 @@ ov74_02231670: ; 0x02231670
 	ldr r1, _022316E0 ; =ov74_022308E0
 	mov r0, #4
 	mov r2, #0
-	bl sub_020DEBEC
+	bl WM_SetPortCallback
 	cmp r0, #0
 	beq _0223168C
 	bl ov74_02231448
@@ -21031,7 +21031,7 @@ _0223169C:
 	add r1, r6, #0
 	lsr r2, r2, #0x10
 	add r3, r7, #0
-	bl sub_020DFD14
+	bl WM_StartMP
 	cmp r0, #2
 	beq _022316DA
 	bl ov74_02231448
@@ -21051,7 +21051,7 @@ _022316E4: .word ov74_022306C8
 ov74_022316E8: ; 0x022316E8
 	push {r3, lr}
 	ldr r0, _02231700 ; =ov74_02230964
-	bl sub_020DF378
+	bl WM_PowerOn
 	cmp r0, #2
 	beq _022316FC
 	bl ov74_02231448
@@ -21068,7 +21068,7 @@ _02231700: .word ov74_02230964
 ov74_02231704: ; 0x02231704
 	push {r3, lr}
 	ldr r0, _02231720 ; =ov74_02230988
-	bl sub_020DF3B8
+	bl WM_PowerOff
 	cmp r0, #2
 	beq _0223171C
 	bl ov74_02231448
@@ -21086,7 +21086,7 @@ _02231720: .word ov74_02230988
 ov74_02231724: ; 0x02231724
 	push {r3, lr}
 	ldr r0, _02231740 ; =ov74_022309AC
-	bl sub_020DF480
+	bl WM_Reset
 	cmp r0, #2
 	beq _0223173C
 	bl ov74_02231448
@@ -21104,7 +21104,7 @@ _02231740: .word ov74_022309AC
 ov74_02231744: ; 0x02231744
 	push {r3, lr}
 	ldr r0, _02231760 ; =ov74_022309F0
-	bl sub_020DF4B8
+	bl WM_End
 	cmp r0, #2
 	beq _0223175C
 	bl ov74_02231448
@@ -30945,7 +30945,7 @@ ov74_02236258: ; 0x02236258
 	bl OS_Terminate
 	mov r0, #0
 _0223626C:
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	add r4, r0, #0
 	mov r0, #2
 	lsl r0, r0, #0xe
@@ -31038,7 +31038,7 @@ _0223630E:
 	mov r1, #0x3f
 	lsl r1, r1, #6
 	add r1, r2, r1
-	bl sub_020DF6D0
+	bl WM_StartScan
 	cmp r0, #2
 	beq _0223632A
 	bl ov74_022361B8
@@ -31213,7 +31213,7 @@ _02236488: .word 0x00001158
 ov74_0223648C: ; 0x0223648C
 	push {r3, lr}
 	ldr r0, _022364A4 ; =ov74_022364A8
-	bl sub_020DF90C
+	bl WM_EndScan
 	cmp r0, #2
 	beq _022364A0
 	bl ov74_022361B8
@@ -31321,7 +31321,7 @@ ov74_0223653C: ; 0x0223653C
 	ldr r1, _0223656C ; =ov74_02236570
 	ldr r0, [r0]
 	mov r2, #2
-	bl sub_020DF3F8
+	bl WM_Initialize
 	cmp r0, #2
 	beq _02236562
 	bl ov74_022361B8
@@ -31349,7 +31349,7 @@ ov74_02236570: ; 0x02236570
 	pop {r3, pc}
 _02236584:
 	ldr r0, _022365A8 ; =ov74_02236514
-	bl sub_020DEBA8
+	bl WM_SetIndCallback
 	cmp r0, #0
 	beq _0223659A
 	bl ov74_022361B8
@@ -31379,7 +31379,7 @@ _022365BE:
 	mov r0, #3
 	bl ov74_02236168
 	ldr r0, _022365F4 ; =ov74_022364C0
-	bl sub_020DF4B8
+	bl WM_End
 	cmp r0, #2
 	beq _022365E8
 	mov r0, #9
@@ -31430,7 +31430,7 @@ ov74_02236620: ; 0x02236620
 	mov r0, #3
 	bl ov74_02236168
 	ldr r0, _02236640 ; =ov74_02236644
-	bl sub_020DF480
+	bl WM_Reset
 	cmp r0, #2
 	beq _0223663A
 	bl ov74_022361B8

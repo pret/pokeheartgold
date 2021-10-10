@@ -93,7 +93,7 @@ sub_02034B0C: ; 0x02034B0C
 	bl MailMsg_init
 	add r0, r7, #0
 	bl sub_02034DF0
-	bl sub_020DF250
+	bl WM_GetNextTgid
 	ldr r1, _02034BCC ; =_021D4134
 	strh r0, [r1]
 _02034BCA:
@@ -1369,7 +1369,7 @@ _02035548:
 	lsl r0, r0, #0x1c
 	lsr r0, r0, #0x1f
 	beq _02035562
-	bl sub_020DF250
+	bl WM_GetNextTgid
 	ldr r1, _020355AC ; =_021D4134
 	strh r0, [r1]
 _02035562:
@@ -1630,7 +1630,7 @@ _02035720: .word 0x0000FFFF
 sub_02035724: ; 0x02035724
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020DEFD4
+	bl WM_GetDispersionBeaconPeriod
 	add r4, r0, #0
 	cmp r5, #0x29
 	blo _02035736

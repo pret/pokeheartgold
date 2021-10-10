@@ -25395,10 +25395,10 @@ _020ADAB4:
 	mov r0, #7
 	ldmia sp!, {r4, r5, r6, pc}
 _020ADACC:
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	cmp r0, #0
 	bne _020ADB0C
-	bl sub_020DE458
+	bl WM_Finish
 	cmp r0, #0
 	beq _020ADAFC
 	mov r0, #0xb
@@ -25414,7 +25414,7 @@ _020ADAFC:
 	ldmia sp!, {r4, r5, r6, pc}
 _020ADB0C:
 	ldr r0, _020ADBBC ; =sub_020AEAA8
-	bl sub_020DEBA8
+	bl WM_SetIndCallback
 	cmp r0, #0
 	beq _020ADB34
 	mov r0, #0xb
@@ -25425,7 +25425,7 @@ _020ADB0C:
 	ldmia sp!, {r4, r5, r6, pc}
 _020ADB34:
 	ldr r0, _020ADBC0 ; =sub_020AEB20
-	bl sub_020DF2C4
+	bl WM_Enable
 	cmp r0, #2
 	beq _020ADB58
 	cmp r0, #3
@@ -25501,7 +25501,7 @@ _020ADC24:
 	ldmia sp!, {r4, pc}
 _020ADC30:
 	ldr r0, _020ADCB0 ; =sub_020AEB20
-	bl sub_020DF3B8
+	bl WM_PowerOff
 	cmp r0, #2
 	beq _020ADC54
 	cmp r0, #3
@@ -25622,7 +25622,7 @@ _020ADD78:
 	ldr r1, [r2]
 	add r1, r1, #0x288
 	add r1, r1, #0x2000
-	bl sub_020DF7BC
+	bl WM_StartScanEx
 	cmp r0, #2
 	beq _020ADDEC
 	cmp r0, #3
@@ -25823,7 +25823,7 @@ _020AE05C:
 	mov r3, r1
 	mov r2, #0x50
 	str r1, [sp]
-	bl sub_020E0E94
+	bl WM_SetLifeTime
 	cmp r0, #2
 	beq _020AE090
 	cmp r0, #3
@@ -25909,7 +25909,7 @@ _020AE160:
 	b _020AE1F8
 _020AE18C:
 	ldr r0, _020AE20C ; =sub_020AF574
-	bl sub_020E0088
+	bl WM_EndDCF
 	cmp r0, #2
 	beq _020AE1B0
 	cmp r0, #3
@@ -26019,7 +26019,7 @@ _020AE2D8:
 	strh r1, [r0, #0x80]
 	b _020AE404
 _020AE304:
-	bl sub_020DEB24
+	bl WMi_GetStatusAddress
 	mov r5, r0
 	mov r1, #2
 	bl DC_InvalidateRange
@@ -26032,7 +26032,7 @@ _020AE304:
 	beq _020AE378
 	b _020AE384
 _020AE334:
-	bl sub_020DE458
+	bl WM_Finish
 	cmp r0, #0
 	bne _020AE3A0
 	mov r0, #1
@@ -26048,11 +26048,11 @@ _020AE334:
 	ldmia sp!, {r3, r4, r5, pc}
 _020AE36C:
 	ldr r0, _020AE418 ; =sub_020AEB20
-	bl sub_020DF338
+	bl WM_Disable
 	b _020AE3A0
 _020AE378:
 	ldr r0, _020AE418 ; =sub_020AEB20
-	bl sub_020DF3B8
+	bl WM_PowerOff
 	b _020AE3A0
 _020AE384:
 	ldr r1, _020AE414 ; =0x021D5FEC
@@ -26061,7 +26061,7 @@ _020AE384:
 	mov r2, #1
 	add r1, r1, #0x2000
 	strb r2, [r1, #0x26b]
-	bl sub_020DF480
+	bl WM_Reset
 _020AE3A0:
 	cmp r0, #2
 	beq _020AE3BC
@@ -26285,7 +26285,7 @@ sub_020AE61C: ; 0x020AE61C
 	ldrh r0, [r0, #0x68]
 	cmp r0, #0
 	bne _020AE690
-	bl sub_020DF064
+	bl WM_GetDispersionScanPeriod
 _020AE690:
 	ldr r2, _020AE7A8 ; =0x021D5FEC
 	ldr r1, [r2]
@@ -26597,7 +26597,7 @@ sub_020AEA4C: ; 0x020AEA4C
 	mov r2, #1
 	ldr r0, _020AEAA4 ; =sub_020AF690
 	strb r2, [r1, #0x26b]
-	bl sub_020DF480
+	bl WM_Reset
 	cmp r0, #2
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0xb
@@ -26693,11 +26693,11 @@ _020AEB94:
 	b _020AECC0
 _020AEBA0:
 	ldr r0, _020AEDB8 ; =sub_020AEB20
-	bl sub_020DF378
+	bl WM_PowerOn
 	mov r2, r0
 	b _020AECC0
 _020AEBB0:
-	bl sub_020DE458
+	bl WM_Finish
 	cmp r0, #0
 	beq _020AEBC4
 	cmp r0, #4
@@ -26731,13 +26731,13 @@ _020AEC04:
 	ldmia sp!, {r3, pc}
 _020AEC24:
 	ldr r0, _020AEDB8 ; =sub_020AEB20
-	bl sub_020DF338
+	bl WM_Disable
 	mov r2, r0
 	b _020AECC0
 _020AEC34:
 	ldr r0, _020AEDB8 ; =sub_020AEB20
 	mov r1, #0
-	bl sub_020E0E44
+	bl WM_SetBeaconIndication
 	mov r2, r0
 	b _020AECC0
 _020AEC48:
@@ -26748,7 +26748,7 @@ _020AEC48:
 	ldrb r1, [r2, #0x250]
 	ldrb r2, [r2, #0x251]
 	add r3, r3, #0x2200
-	bl sub_020E0D10
+	bl WM_SetWEPKeyEx
 	mov r2, r0
 	b _020AECC0
 _020AEC70:
@@ -26770,7 +26770,7 @@ _020AEC70:
 	moveq r3, #0
 	mov r2, #0
 	str ip, [sp]
-	bl sub_020DF94C
+	bl WM_StartConnectEx
 	mov r2, r0
 _020AECC0:
 	cmp r2, #2
@@ -26987,12 +26987,12 @@ _020AEF68:
 	ldr r1, [r2]
 	add r1, r1, #0x288
 	add r1, r1, #0x2000
-	bl sub_020DF7BC
+	bl WM_StartScanEx
 	mov r4, r0
 	b _020AF004
 _020AEFE8:
 	ldr r0, _020AF0B0 ; =sub_020AF0C0
-	bl sub_020DF90C
+	bl WM_EndScan
 	mov r4, r0
 	b _020AF004
 _020AEFF8:
@@ -27194,7 +27194,7 @@ _020AF268:
 	ldr r0, _020AF388 ; =sub_020AF464
 	add r1, r1, #0x1500
 	mov r2, #0x620
-	bl sub_020DFF1C
+	bl WM_StartDCF
 	cmp r0, #2
 	ldmeqia sp!, {r4, pc}
 	cmp r0, #3
@@ -27434,7 +27434,7 @@ _020AF59C:
 _020AF5C4:
 	ldr r0, _020AF684 ; =sub_020AF39C
 	mov r1, #0
-	bl sub_020DFA18
+	bl WM_Disconnect
 	cmp r0, #2
 	ldmeqia sp!, {r3, pc}
 	cmp r0, #3
@@ -27576,7 +27576,7 @@ _020AF75C:
 	add r1, lr, #0x2140
 	mov r2, #0
 	str ip, [sp]
-	bl sub_020DF94C
+	bl WM_StartConnectEx
 	cmp r0, #2
 	addeq sp, sp, #4
 	ldmeqia sp!, {r3, r4, pc}
@@ -27645,7 +27645,7 @@ _020AF8A0:
 	ldmia sp!, {r3, r4, pc}
 _020AF8CC:
 	ldr r0, _020AF9B0 ; =sub_020AEB20
-	bl sub_020DF3B8
+	bl WM_PowerOff
 	cmp r0, #2
 	addeq sp, sp, #4
 	ldmeqia sp!, {r3, r4, pc}
@@ -28120,7 +28120,7 @@ sub_020AFEB0: ; 0x020AFEB0
 	add r1, r1, #0x2000
 	add r2, r4, #0xf00
 	mov r3, #0
-	bl sub_020DFFBC
+	bl WM_SetDCFData
 	cmp r0, #2
 	ldmeqia sp!, {r4, pc}
 	ldr r0, _020AFF18 ; =0x021D5FFC
@@ -28258,7 +28258,7 @@ _020B00A8:
 	mov r1, r4
 	add r2, r7, #0xf00
 	mov r3, r3, lsr #0x10
-	bl sub_020DFFBC
+	bl WM_SetDCFData
 	cmp r0, #8
 	addls pc, pc, r0, lsl #2
 	b _020B00F8

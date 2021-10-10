@@ -715,7 +715,7 @@ _020381A4:
 	bl sub_02035650
 	cmp r0, #0
 	beq _020381B8
-	bl sub_020DEF44
+	bl WM_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	bl sub_0203A930

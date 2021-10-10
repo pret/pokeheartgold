@@ -25906,7 +25906,7 @@ ov00_021FD9CC: ; 0x021FD9CC
 	mov r1, r5
 	ldr r0, [r0]
 	mov r2, r4
-	bl sub_020DF3F8
+	bl WM_Initialize
 	cmp r0, #2
 	moveq r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -25928,7 +25928,7 @@ ov00_021FDA5C: ; 0x021FDA5C
 	add r1, r1, #0x1000
 	str ip, [r1, #0xa90]
 	str r3, [r2]
-	bl sub_020DF4B8
+	bl WM_End
 	cmp r0, #2
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
@@ -25951,12 +25951,12 @@ ov00_021FDA9C: ; 0x021FDA9C
 	ldr r0, [r1]
 	add r0, r0, #0x1300
 	strh r2, [r0, #4]
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	ldr r1, _021FDB5C ; =_0221B0C0
 	ldr r1, [r1]
 	add r1, r1, #0x1300
 	strh r0, [r1, #6]
-	bl sub_020DF064
+	bl WM_GetDispersionScanPeriod
 	ldr r3, _021FDB5C ; =_0221B0C0
 	mov ip, #1
 	ldr r2, [r3]
@@ -25982,7 +25982,7 @@ ov00_021FDA9C: ; 0x021FDA9C
 	str r3, [r1, #0xa90]
 	ldr r1, [r2]
 	add r1, r1, #0x1300
-	bl sub_020DF7BC
+	bl WM_StartScanEx
 	cmp r0, #2
 	moveq r0, #0
 	ldmia sp!, {r4, pc}
@@ -26002,7 +26002,7 @@ ov00_021FDB64: ; 0x021FDB64
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	str r2, [r1, #0xa90]
-	bl sub_020DF90C
+	bl WM_EndScan
 	cmp r0, #2
 	moveq r0, #0
 	ldmia sp!, {r3, pc}

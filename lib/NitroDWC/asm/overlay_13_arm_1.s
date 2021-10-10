@@ -880,7 +880,7 @@ _0221C660:
 _0221C6A4:
 	mov r0, r4
 	mov r1, r6
-	bl sub_020DEE40
+	bl WM_ReadMPData
 	cmp r0, #0
 	ldrneh r1, [r0]
 	cmpne r1, r5
@@ -2698,7 +2698,7 @@ ov13_0221DEFC: ; 0x0221DEFC
 	mov r0, #0
 	mov r2, #0x70
 	str ip, [sp, #4]
-	bl sub_020E0D8C
+	bl WM_SetGameInfo
 	add sp, sp, #8
 	mov r0, #0
 	ldmia sp!, {r4, pc}
@@ -2840,7 +2840,7 @@ _0221E118:
 	mov r0, #0
 	mov r2, #0x70
 	str r4, [sp, #4]
-	bl sub_020E0D8C
+	bl WM_SetGameInfo
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3013,7 +3013,7 @@ _0221E338:
 	mov r0, #0
 	mov r2, #0x70
 	str r4, [sp, #4]
-	bl sub_020E0D8C
+	bl WM_SetGameInfo
 	ldr r0, _0221E3DC ; =0x022474A0
 	ldr r1, [r0, #0x10]
 	cmp r1, #1
@@ -3040,7 +3040,7 @@ _0221E3EC: .word 0x022474E0
 ov13_0221E3F0: ; 0x0221E3F0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -3104,7 +3104,7 @@ _0221E4BC: .word 0x0224CF40
 ov13_0221E4C0: ; 0x0221E4C0
 	stmdb sp!, {r3, lr}
 	ldr r0, _0221E508 ; =ov13_0221E554
-	bl sub_020DEBA8
+	bl WM_SetIndCallback
 	mov r1, r0
 	mov r0, #0x80
 	bl ov13_022200FC
@@ -3115,7 +3115,7 @@ ov13_0221E4C0: ; 0x0221E4C0
 	ldrh r1, [r3, #6]
 	ldrh r2, [r3, #2]
 	ldrh r3, [r3]
-	bl sub_020E0E94
+	bl WM_SetLifeTime
 	mov r1, r0
 	mov r0, #0x1d
 	bl ov13_022200FC
@@ -3217,7 +3217,7 @@ _0221E63C:
 	ldr r1, _0221ED9C ; =0x0224CF40
 	ldr r0, _0221EDA0 ; =ov13_0221E554
 	ldr r1, [r1, #8]
-	bl sub_020DF4F8
+	bl WM_SetParentParameter
 	mov r1, r0
 	mov r0, #7
 	bl ov13_022200FC
@@ -3232,7 +3232,7 @@ _0221E660:
 	blx r2
 	ldr r0, _0221EDA0 ; =ov13_0221E554
 	mov r1, #1
-	bl sub_020E0E44
+	bl WM_SetBeaconIndication
 	mov r1, r0
 	mov r0, #0x19
 	bl ov13_022200FC
@@ -3258,7 +3258,7 @@ _0221E6D4:
 	ldr r1, _0221EDA4 ; =0x0224598C
 	ldr r0, _0221EDA0 ; =ov13_0221E554
 	ldr r1, [r1, #0xc]
-	bl sub_020DF624
+	bl WMi_StartParentEx
 	mov r1, r0
 	mov r0, #8
 	bl ov13_022200FC
@@ -3382,7 +3382,7 @@ _0221E7D8:
 	ldr r1, [ip, #0x504]
 	ldr r0, _0221EDA0 ; =ov13_0221E554
 	add r3, ip, #0x40
-	bl sub_020DFC70
+	bl WM_StartMPEx
 	mov r1, r0
 	mov r0, #0xe
 	bl ov13_022200FC
@@ -3591,7 +3591,7 @@ _0221EB9C:
 	ldr r0, _0221EDA0 ; =ov13_0221E554
 	add r1, r1, #0x500
 	strh r2, [r1, #0x28]
-	bl sub_020DF4B8
+	bl WM_End
 	mov r1, r0
 	mov r0, #2
 	bl ov13_022200FC
@@ -3601,9 +3601,9 @@ _0221EBC8:
 	mov r1, #0
 	mov r2, r1
 	mov r0, #1
-	bl sub_020DEBEC
+	bl WM_SetPortCallback
 	mov r0, #0
-	bl sub_020DEBA8
+	bl WM_SetIndCallback
 	ldrh r0, [r4, #2]
 	cmp r0, #0
 	beq _0221EC1C
@@ -3622,7 +3622,7 @@ _0221EBC8:
 _0221EC1C:
 	ldr r0, _0221EDA0 ; =ov13_0221E554
 	mov r1, #0
-	bl sub_020E0E44
+	bl WM_SetBeaconIndication
 	mov r1, r0
 	mov r0, #0x19
 	bl ov13_022200FC
@@ -3832,7 +3832,7 @@ _0221EED8:
 	ldrh r1, [r3, #6]
 	ldrh r2, [r3, #2]
 	ldrh r3, [r3]
-	bl sub_020E0E94
+	bl WM_SetLifeTime
 	mov r1, r0
 	mov r0, #0x1d
 	bl ov13_022200FC
@@ -3873,7 +3873,7 @@ _0221EF38:
 	ldr r0, _0221F63C ; =ov13_0221EE1C
 	ldr r1, _0221F640 ; =0x0224CF60
 	str r2, [r4, #0x5e8]
-	bl sub_020DF6D0
+	bl WM_StartScan
 	mov r1, r0
 	mov r0, #0xa
 	bl ov13_022200FC
@@ -4033,7 +4033,7 @@ _0221F1A0:
 _0221F1E0:
 	ldr r0, _0221F63C ; =ov13_0221EE1C
 	ldr r1, _0221F640 ; =0x0224CF60
-	bl sub_020DF6D0
+	bl WM_StartScan
 	mov r1, r0
 	mov r0, #0xa
 	bl ov13_022200FC
@@ -4059,7 +4059,7 @@ _0221F200:
 _0221F240:
 	ldr r0, _0221F63C ; =ov13_0221EE1C
 	ldr r1, _0221F640 ; =0x0224CF60
-	bl sub_020DF6D0
+	bl WM_StartScan
 	mov r1, r0
 	mov r0, #0xa
 	bl ov13_022200FC
@@ -4088,7 +4088,7 @@ _0221F29C:
 	ldr r0, _0221F63C ; =ov13_0221EE1C
 	mov r3, #1
 	str r2, [sp]
-	bl sub_020DF94C
+	bl WM_StartConnectEx
 	mov r1, r0
 	mov r0, #0xc
 	bl ov13_022200FC
@@ -4145,7 +4145,7 @@ _0221F350:
 	mov r0, #1
 	mov r2, #0
 	strh r0, [r3, #0x2a]
-	bl sub_020DEBEC
+	bl WM_SetPortCallback
 	cmp r0, #0
 	addne sp, sp, #0x1c
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -4171,7 +4171,7 @@ _0221F350:
 	ldr r1, [r4, #0x504]
 	ldr r0, _0221F63C ; =ov13_0221EE1C
 	add r3, r4, #0x40
-	bl sub_020DFC70
+	bl WM_StartMPEx
 	mov r1, r0
 	mov r0, #0xe
 	bl ov13_022200FC
@@ -4283,7 +4283,7 @@ _0221F564:
 	ldr r0, _0221F63C ; =ov13_0221EE1C
 	add r1, r1, #0x500
 	strh r2, [r1, #0x28]
-	bl sub_020DF4B8
+	bl WM_End
 	mov r1, r0
 	mov r0, #2
 	bl ov13_022200FC
@@ -4396,7 +4396,7 @@ ov13_0221F6B0: ; 0x0221F6B0
 	cmp r7, #0x10000
 	bic r5, r0, #0x1f
 	bne _0221F704
-	bl sub_020DF250
+	bl WM_GetNextTgid
 	mov r7, r0
 _0221F704:
 	bl OS_DisableInterrupts
@@ -4618,7 +4618,7 @@ _0221F9F8:
 	ldrh r2, [r4]
 	ldmib r4, {r0, r1}
 	ldr r1, [r1, #0x508]
-	bl sub_020DF3F8
+	bl WM_Initialize
 	cmp r0, #4
 	beq _0221F9F8
 	cmp r0, #2
@@ -4627,7 +4627,7 @@ _0221F9F8:
 	ldr r0, _0221FA6C ; =0x0224CF40
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0x508]
-	bl sub_020DEBA8
+	bl WM_SetIndCallback
 	ldr r0, _0221FA6C ; =0x0224CF40
 	mov r2, #1
 	ldr r1, [r0, #8]
@@ -4637,7 +4637,7 @@ _0221F9F8:
 _0221FA44:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x508]
-	bl sub_020DEBA8
+	bl WM_SetIndCallback
 	mov r0, r4
 	ldr r0, [r0, #8]
 	mov r1, #1
@@ -4796,7 +4796,7 @@ ov13_0221FC78: ; 0x0221FC78
 	ldr r0, _0221FCAC ; =0x0224CF40
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0x508]
-	bl sub_020DF480
+	bl WM_Reset
 	mov r4, r0
 	mov r1, r4
 	mov r0, #1
@@ -4889,7 +4889,7 @@ ov13_0221FD8C: ; 0x0221FD8C
 	mov r5, r0
 	ldr r0, _0221FF0C ; =ov13_0221E554
 	mov r1, r5
-	bl sub_020DFA18
+	bl WM_Disconnect
 	cmp r5, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	cmp r5, #0x10
@@ -5011,7 +5011,7 @@ ov13_0221FF28: ; 0x0221FF28
 	mov r4, #3
 	mov r1, #0
 	str r4, [sp, #8]
-	bl sub_020DFD7C
+	bl WM_SetMPDataToPortEx
 	mov r4, r0
 	mov r1, r4
 	mov r0, #0xf
