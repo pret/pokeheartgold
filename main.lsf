@@ -223,6 +223,7 @@ Static main
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o
+	Object libVCT.o
 	Object nnsys.o
 
 	### NitroSDK ###
