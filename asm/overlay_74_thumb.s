@@ -21284,7 +21284,7 @@ _0223187E:
 	add r1, r0, #0
 	add r2, sp, #0
 	mov r3, #0x10
-	bl sub_020E219C
+	bl CTRDG_ReadAgbFlash
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -25346,7 +25346,7 @@ _02233920: .word ov60_021EAFE0
 ov74_02233924: ; 0x02233924
 	push {r3, lr}
 	mov r0, #1
-	bl sub_020E1A3C
+	bl CTRDG_IdentifyAgbBackup
 	cmp r0, #0
 	bne _02233934
 	mov r0, #1
@@ -25395,7 +25395,7 @@ _0223397A:
 	ldr r0, _022339A8 ; =0x08000100
 	ldr r1, _022339AC ; =0x0223D354
 	mov r2, #0xfc
-	bl sub_020E140C
+	bl CTRDG_CpuCopy32
 _02233984:
 	bl ov74_02233924
 	cmp r0, #0
@@ -25455,14 +25455,14 @@ ov74_022339D4: ; 0x022339D4
 	ldr r0, _02233A80 ; =0x0223CAFC
 	mov r1, #0
 	str r1, [r0]
-	bl sub_020E0FF0
+	bl CTRDG_IsAgbCartridge
 	cmp r0, #0
 	bne _022339F0
 	add sp, #0xc0
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _022339F0:
-	bl sub_020E1058
+	bl CTRDG_GetAgbGameCode
 	mov r2, #0
 	cmp r4, #0
 	ble _02233A14
@@ -25491,13 +25491,13 @@ _02233A14:
 	pop {r3, r4, r5, pc}
 _02233A22:
 	mov r0, #1
-	bl sub_020E1678
+	bl CTRDG_Enable
 	add r4, sp, #0
 	mov r0, #2
 	lsl r0, r0, #0x1a
 	add r1, r4, #0
 	mov r2, #0xc0
-	bl sub_020E140C
+	bl CTRDG_CpuCopy32
 	ldr r3, _02233A84 ; =0x0223CB04
 	mov r2, #0
 _02233A3A:
@@ -25583,7 +25583,7 @@ ov74_02233AB8: ; 0x02233AB8
 	lsr r0, r0, #0x10
 	mov r1, #0
 	lsl r3, r3, #0xc
-	bl sub_020E219C
+	bl CTRDG_ReadAgbFlash
 	pop {r3, pc}
 	thumb_func_end ov74_02233AB8
 
@@ -26034,7 +26034,7 @@ ov74_02233DBC: ; 0x02233DBC
 	lsr r0, r0, #0x18
 	add r1, r5, #0
 	mov r2, #4
-	bl sub_020E2200
+	bl CTRDG_WriteAndVerifyAgbFlashAsync
 	pop {r4, r5, r6, pc}
 	nop
 _02233E38: .word 0x0223D33C
@@ -28682,7 +28682,7 @@ ov74_0223514C: ; 0x0223514C
 	sub sp, #0x1fc
 	sub sp, #0x1fc
 	sub sp, #0x130
-	bl sub_020E1058
+	bl CTRDG_GetAgbGameCode
 	lsr r1, r0, #0x18
 	lsl r1, r1, #0x18
 	lsr r2, r1, #0x18
@@ -28709,18 +28709,18 @@ _02235182:
 	cmp r6, r0
 	bne _022351CC
 	mov r0, #1
-	bl sub_020E1678
+	bl CTRDG_Enable
 	mov r0, #0x81
 	ldr r2, _022351E8 ; =0x000004A8
 	lsl r0, r0, #0x14
 	add r1, r7, #0
-	bl sub_020E138C
+	bl CTRDG_CpuCopy8
 	ldr r0, _022351EC ; =0x08020000
 	add r1, sp, #0
 	mov r2, #0x80
-	bl sub_020E138C
+	bl CTRDG_CpuCopy8
 	mov r0, #0
-	bl sub_020E1678
+	bl CTRDG_Enable
 	ldr r0, _022351F0 ; =ov74_02235138
 	ldr r1, _022351F4 ; =FreeToHeap
 	bl CRYPTO_SetAllocator
@@ -28762,13 +28762,13 @@ _022351F8: .word _0223B690
 ov74_022351FC: ; 0x022351FC
 	push {r3, lr}
 	bl CTRDG_Init
-	bl sub_020E0FF0
+	bl CTRDG_IsAgbCartridge
 	cmp r0, #0
 	bne _0223520E
 	mov r0, #0
 	pop {r3, pc}
 _0223520E:
-	bl sub_020E10A0
+	bl CTRDG_GetAgbMakerCode
 	ldr r1, _0223522C ; =0x00003130
 	cmp r0, r1
 	beq _0223521C
@@ -28797,13 +28797,13 @@ ov74_02235230: ; 0x02235230
 	pop {r3, pc}
 _0223523E:
 	mov r0, #1
-	bl sub_020E1678
+	bl CTRDG_Enable
 	mov r0, #0x81
 	lsl r0, r0, #0x14
 	add r1, sp, #0
-	bl sub_020E1570
+	bl CTRDG_Read32
 	mov r0, #0
-	bl sub_020E1678
+	bl CTRDG_Enable
 	ldr r0, [sp]
 	pop {r3, pc}
 	thumb_func_end ov74_02235230
@@ -28825,14 +28825,14 @@ _0223526A:
 	add r4, r0, #0
 _02235274:
 	mov r0, #1
-	bl sub_020E1678
+	bl CTRDG_Enable
 	ldr r0, _0223529C ; =0x08100100
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_020E13E4
+	bl CTRDG_CpuCopy16
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_020E1678
+	bl CTRDG_Enable
 	bl CTRDG_IsExisting
 	cmp r0, #0
 	bne _02235298
@@ -30621,10 +30621,10 @@ ov74_02236010: ; 0x02236010
 	and r0, r1
 	asr r0, r0, #0xf
 	bne _0223602C
-	bl sub_020E0FF0
+	bl CTRDG_IsAgbCartridge
 	cmp r0, #0
 	bne _0223602C
-	bl sub_020E1A14
+	bl CTRDG_TerminateForPulledOut
 _0223602C:
 	pop {r3, pc}
 	nop
