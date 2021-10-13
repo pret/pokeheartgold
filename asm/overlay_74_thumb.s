@@ -30471,11 +30471,11 @@ ov74_02235ED0: ; 0x02235ED0
 	bl AllocFromHeap
 	ldr r1, _02235F50 ; =0x0000A001
 	add r4, r0, #0
-	bl sub_020E389C
+	bl MATHi_CRC16InitTableRev
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x50
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	add r6, r0, #0
 	add r0, r4, #0
 	bl FreeToHeap
@@ -30534,11 +30534,11 @@ ov74_02235F58: ; 0x02235F58
 	bl AllocFromHeap
 	ldr r1, _02235FF0 ; =0x0000A001
 	add r4, r0, #0
-	bl sub_020E389C
+	bl MATHi_CRC16InitTableRev
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x50
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	add r6, r0, #0
 	add r0, r4, #0
 	bl FreeToHeap

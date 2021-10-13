@@ -1346,11 +1346,11 @@ sub_0202BF10: ; 0x0202BF10
 	bne _0202BF6E
 	ldr r1, _0202BF7C ; =0xEDB88320
 	add r0, sp, #4
-	bl sub_020E3960
+	bl MATHi_CRC32InitTableRev
 	add r0, sp, #4
 	add r1, r4, #0
 	mov r2, #0x74
-	bl sub_020E3A58
+	bl MATH_CalcCRC32
 	add r6, r0, #0
 	mov r5, #0
 _0202BF40:
@@ -1360,11 +1360,11 @@ _0202BF40:
 	add r4, r0, #0
 	ldr r1, _0202BF7C ; =0xEDB88320
 	add r0, sp, #4
-	bl sub_020E3960
+	bl MATHi_CRC32InitTableRev
 	add r0, sp, #4
 	add r1, r4, #0
 	mov r2, #0x74
-	bl sub_020E3A58
+	bl MATH_CalcCRC32
 	cmp r0, r6
 	bne _0202BF66
 	mov r0, #0

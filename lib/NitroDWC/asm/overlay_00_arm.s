@@ -25773,14 +25773,14 @@ _021FD794:
 	add r0, r0, #0x1a00
 	add r1, r1, #0x1800
 	add r2, r4, r7
-	bl sub_020E3920
+	bl MATHi_CRC16UpdateRev
 	ldr r0, _021FD9B4 ; =_0221B0C0
 	add r1, r4, r7
 	ldr r0, [r0]
 	mov r2, #0x6e
 	add r0, r0, #0x96
 	add r0, r0, #0x1a00
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	ldr r1, _021FD9B4 ; =_0221B0C0
 	mov r2, #0x70
 	ldr r4, [r1]
@@ -25901,7 +25901,7 @@ ov00_021FD9CC: ; 0x021FD9CC
 	ldr r0, [r2]
 	add r0, r0, #0x96
 	add r0, r0, #0x1a00
-	bl sub_020E389C
+	bl MATHi_CRC16InitTableRev
 	ldr r0, _021FDA54 ; =_0221B0C0
 	mov r1, r5
 	ldr r0, [r0]

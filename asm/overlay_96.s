@@ -15511,7 +15511,7 @@ _021ECC8C:
 	ldr r3, _021ECD1C ; =ov96_021ECC58
 	add r0, r7, #0
 	add r2, r1, #0
-	bl sub_020E3A84
+	bl MATH_QSort
 	ldr r3, _021ECD20 ; =0xFF00FFFF
 	mov r2, #0
 	add r1, r7, #0
@@ -18407,7 +18407,7 @@ _021EE2BA:
 	ldr r3, _021EE31C ; =ov96_021ECC58
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_020E3A84
+	bl MATH_QSort
 	ldr r1, [r4]
 	ldr r0, _021EE320 ; =0xFFFF0000
 	add r2, r1, #0
@@ -28100,7 +28100,7 @@ _021F2FF6:
 	add r0, sp, #0x14
 	mov r1, #0xc
 	mov r2, #4
-	bl sub_020E3A84
+	bl MATH_QSort
 	mov r4, #0
 _021F305A:
 	lsl r1, r4, #2
@@ -61404,7 +61404,7 @@ _0220397A:
 	str r0, [sp]
 	add r0, sp, #4
 	mov r2, #8
-	bl sub_020E3A84
+	bl MATH_QSort
 	mov r4, #0
 	add r7, sp, #4
 _022039C0:
@@ -82809,7 +82809,7 @@ _0220E1CA:
 	add r0, sp, #0x40
 	mov r1, #0xc
 	mov r2, #8
-	bl sub_020E3A84
+	bl MATH_QSort
 	mov r5, #0
 	add r4, sp, #0x40
 _0220E1DE:
@@ -95599,7 +95599,7 @@ _022145AC:
 	str r0, [sp]
 	add r0, sp, #8
 	mov r2, #4
-	bl sub_020E3A84
+	bl MATH_QSort
 	mov r5, #0
 	add r7, sp, #8
 _022145CE:
@@ -101710,7 +101710,7 @@ _022174D0:
 	add r0, sp, #0x88
 	mov r1, #4
 	mov r2, #8
-	bl sub_020E3A84
+	bl MATH_QSort
 	mov r5, #0
 	add r4, sp, #0x88
 _0221752C:
@@ -101996,7 +101996,7 @@ _02217752:
 	add r0, sp, #0xc
 	mov r1, #4
 	mov r2, #2
-	bl sub_020E3A84
+	bl MATH_QSort
 	ldr r5, [sp, #8]
 	mov r6, #0
 	add r4, r7, #0

@@ -6551,18 +6551,18 @@ _02221838:
 
 	arm_func_start ov38_02221870
 ov38_02221870: ; 0x02221870
-	ldr ip, _02221878 ; =sub_020E3DD4
+	ldr ip, _02221878 ; =STD_GetStringLength
 	bx ip
 	.balign 4, 0
-_02221878: .word sub_020E3DD4
+_02221878: .word STD_GetStringLength
 	arm_func_end ov38_02221870
 
 	arm_func_start ov38_0222187C
 ov38_0222187C: ; 0x0222187C
-	ldr ip, _02221884 ; =sub_020E3E28
+	ldr ip, _02221884 ; =STD_CompareNString
 	bx ip
 	.balign 4, 0
-_02221884: .word sub_020E3E28
+_02221884: .word STD_CompareNString
 	arm_func_end ov38_0222187C
 
 	arm_func_start ov38_02221888
@@ -8641,10 +8641,10 @@ ov38_022232BC: ; 0x022232BC
 
 	arm_func_start ov38_022232D8
 ov38_022232D8: ; 0x022232D8
-	ldr ip, _022232E0 ; =sub_020E3DFC
+	ldr ip, _022232E0 ; =STD_CompareString
 	bx ip
 	.balign 4, 0
-_022232E0: .word sub_020E3DFC
+_022232E0: .word STD_CompareString
 	arm_func_end ov38_022232D8
 
 	arm_func_start ov38_022232E4
@@ -8684,10 +8684,10 @@ _02223344:
 
 	arm_func_start ov38_0222334C
 ov38_0222334C: ; 0x0222334C
-	ldr ip, _02223354 ; =sub_020E3DD4
+	ldr ip, _02223354 ; =STD_GetStringLength
 	bx ip
 	.balign 4, 0
-_02223354: .word sub_020E3DD4
+_02223354: .word STD_GetStringLength
 	arm_func_end ov38_0222334C
 
 	arm_func_start ov38_02223358

@@ -6992,7 +6992,7 @@ sub_0209E508: ; 0x0209E508
 	bl sub_0209EF2C
 	ldr r1, _0209E5DC ; =0x0000A001
 	add r0, sl, #0x200
-	bl sub_020E389C
+	bl MATHi_CRC16InitTableRev
 	mov r5, #0x100
 	ldr r6, _0209E5E0 ; =0x021D43D4
 	mov r8, #0
@@ -7017,7 +7017,7 @@ _0209E564:
 	mov r1, sl
 	mov r2, #0xfe
 	add r0, sl, #0x200
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	strh r0, [sl, #0xfe]
 _0209E588:
 	mov r0, sb
@@ -7141,7 +7141,7 @@ _0209E700:
 	mov r1, r7
 	mov r2, r4
 	add r0, r8, #0x500
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	add r1, r8, r5, lsl #8
 	strh r0, [r1, #0xfe]
 _0209E718:
@@ -7833,7 +7833,7 @@ sub_0209EFF8: ; 0x0209EFF8
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	ldr r1, _0209F2F0 ; =0x0000A001
 	add r0, r8, #0x500
-	bl sub_020E389C
+	bl MATHi_CRC16InitTableRev
 	mov r0, r8
 	bl sub_0209E628
 	cmp r0, #0
@@ -7854,7 +7854,7 @@ _0209F074:
 	mov r1, r6
 	mov r2, r4
 	add r0, r8, #0x500
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	add r1, r8, r5, lsl #8
 	ldrh r1, [r1, #0xfe]
 	cmp r0, r1
@@ -7872,7 +7872,7 @@ _0209F0A4:
 	add r0, r8, #0x500
 	add r1, r8, #0x300
 	mov r2, #0xfe
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	add r1, r8, #0x300
 	ldrh r1, [r1, #0xfe]
 	cmp r0, r1
@@ -8805,11 +8805,11 @@ sub_0209FCC8: ; 0x0209FCC8
 	add r0, sp, #8
 	mov r1, #7
 	str r4, [sp]
-	bl sub_020E37D8
+	bl MATHi_CRC8InitTable
 	add r0, sp, #8
 	add r1, sp, #0
 	mov r2, #8
-	bl sub_020E39DC
+	bl MATH_CalcCRC8
 	and r0, r0, #0x7f
 	orr r1, r0, #0
 	orr r0, r4, #0
@@ -8846,11 +8846,11 @@ sub_0209FD28: ; 0x0209FD28
 	add r0, sp, #8
 	mov r1, #7
 	str r2, [sp, #4]
-	bl sub_020E37D8
+	bl MATHi_CRC8InitTable
 	add r0, sp, #8
 	add r1, sp, #0
 	mov r2, #8
-	bl sub_020E39DC
+	bl MATH_CalcCRC8
 	and r1, r0, #0x7f
 	mov r0, r1, asr #0x1f
 	cmp r0, #0
@@ -8970,11 +8970,11 @@ sub_0209FEB8: ; 0x0209FEB8
 	bl sub_0209FC78
 	ldr r1, _0209FF30 ; =0xEDB88320
 	add r0, sp, #0
-	bl sub_020E3960
+	bl MATHi_CRC32InitTableRev
 	add r0, sp, #0
 	mov r1, r5
 	mov r2, #0x3c
-	bl sub_020E3A58
+	bl MATH_CalcCRC32
 	str r0, [r5, #0x3c]
 	ldr r0, [r5, #0x20]
 	orr r0, r0, #1
@@ -9126,11 +9126,11 @@ sub_020A00BC: ; 0x020A00BC
 	ldr r1, _020A00FC ; =0xEDB88320
 	mov r4, r0
 	add r0, sp, #0
-	bl sub_020E3960
+	bl MATHi_CRC32InitTableRev
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0x3c
-	bl sub_020E3A58
+	bl MATH_CalcCRC32
 	ldr r1, [r4, #0x3c]
 	cmp r0, r1
 	moveq r0, #1
@@ -9200,11 +9200,11 @@ sub_020A0198: ; 0x020A0198
 	ldr r1, _020A01EC ; =0xEDB88320
 	add r0, sp, #0
 	str ip, [r4, #0x1c]
-	bl sub_020E3960
+	bl MATHi_CRC32InitTableRev
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0x3c
-	bl sub_020E3A58
+	bl MATH_CalcCRC32
 	str r0, [r4, #0x3c]
 	ldr r0, [r4, #0x20]
 	orr r0, r0, #1
@@ -9251,11 +9251,11 @@ sub_020A0220: ; 0x020A0220
 	bic r2, r1, #1
 	ldr r1, _020A0260 ; =0xEDB88320
 	str r2, [r4, #0x20]
-	bl sub_020E3960
+	bl MATHi_CRC32InitTableRev
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0x3c
-	bl sub_020E3A58
+	bl MATH_CalcCRC32
 	str r0, [r4, #0x3c]
 	add sp, sp, #0x400
 	ldmia sp!, {r4, pc}
@@ -12882,7 +12882,7 @@ sub_020A30D4: ; 0x020A30D4
 	ldr r0, _020A317C ; =0x021D451C
 	ldr r2, _020A3180 ; =0x00000101
 	mov r1, r5
-	bl sub_020E3D74
+	bl STD_CopyLString
 	mov r3, r4, lsr #0x18
 	mov r2, r4, lsr #8
 	mov ip, r4, lsl #8

@@ -22984,7 +22984,7 @@ _021F116A:
 	ldrb r1, [r5, r1]
 	add r0, sp, #8
 	mov r2, #8
-	bl sub_020E3A84
+	bl MATH_QSort
 	ldr r0, _021F1280 ; =0x0000013E
 	ldrb r4, [r5, r0]
 	cmp r4, #2

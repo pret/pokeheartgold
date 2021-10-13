@@ -23591,7 +23591,7 @@ ov13_02239F98: ; 0x02239F98
 	str r0, [r1]
 	ldr r1, _02239FD8 ; =0x0000A001
 	add r0, r2, #0x400
-	bl sub_020E389C
+	bl MATHi_CRC16InitTableRev
 	ldr r0, _02239FD4 ; =0x0224F5A4
 	ldr r0, [r0]
 	bl sub_0209E628
@@ -24411,7 +24411,7 @@ _0223A9E0:
 	add r0, r1, #0xf8
 	add r0, r0, #0x400
 	add r1, r1, r7
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	ldr r1, [r8]
 	add r1, r1, r6, lsl #8
 	strh r0, [r1, #0xfe]

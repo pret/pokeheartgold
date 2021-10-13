@@ -186,7 +186,7 @@ sub_0201A1B4: ; 0x0201A1B4
 	add r0, sp, #0
 	add r1, sp, #0x10
 	mov r2, #0x20
-	bl sub_020E3758
+	bl MATH_CalcMD5
 	mov r3, #0
 	add r1, r3, #0
 	add r2, sp, #0

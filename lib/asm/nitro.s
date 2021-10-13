@@ -17812,8 +17812,8 @@ _020E3750: .word 0x33333333
 _020E3754: .word 0x0F0F0F0F
 	arm_func_end MATH_CountPopulation
 
-	arm_func_start sub_020E3758
-sub_020E3758: ; 0x020E3758
+	arm_func_start MATH_CalcMD5
+MATH_CalcMD5: ; 0x020E3758
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x58
 	mov r6, r0
@@ -17830,7 +17830,7 @@ sub_020E3758: ; 0x020E3758
 	bl DGT_Hash1GetDigest_R
 	add sp, sp, #0x58
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020E3758
+	arm_func_end MATH_CalcMD5
 
 	arm_func_start MATH_CalcSHA1
 MATH_CalcSHA1: ; 0x020E3798
@@ -17852,8 +17852,8 @@ MATH_CalcSHA1: ; 0x020E3798
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end MATH_CalcSHA1
 
-	arm_func_start sub_020E37D8
-sub_020E37D8: ; 0x020E37D8
+	arm_func_start MATHi_CRC8InitTable
+MATHi_CRC8InitTable: ; 0x020E37D8
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	mov r2, ip
@@ -17872,10 +17872,10 @@ _020E37EC:
 	cmp ip, #0x100
 	blo _020E37E4
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E37D8
+	arm_func_end MATHi_CRC8InitTable
 
-	arm_func_start sub_020E3818
-sub_020E3818: ; 0x020E3818
+	arm_func_start MATHi_CRC8Update
+MATHi_CRC8Update: ; 0x020E3818
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldrb lr, [r1]
@@ -17892,7 +17892,7 @@ _020E382C:
 _020E3848:
 	strb lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E3818
+	arm_func_end MATHi_CRC8Update
 
 	arm_func_start MATHi_CRC16InitTable
 MATHi_CRC16InitTable: ; 0x020E3850
@@ -17919,8 +17919,8 @@ _020E3868:
 	ldmia sp!, {r4, pc}
 	arm_func_end MATHi_CRC16InitTable
 
-	arm_func_start sub_020E389C
-sub_020E389C: ; 0x020E389C
+	arm_func_start MATHi_CRC16InitTableRev
+MATHi_CRC16InitTableRev: ; 0x020E389C
 	stmdb sp!, {r3, lr}
 	mov lr, #0
 	mov r3, lr
@@ -17940,10 +17940,10 @@ _020E38B0:
 	cmp lr, #0x100
 	blo _020E38A8
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E389C
+	arm_func_end MATHi_CRC16InitTableRev
 
-	arm_func_start sub_020E38E0
-sub_020E38E0: ; 0x020E38E0
+	arm_func_start MATHi_CRC16Update
+MATHi_CRC16Update: ; 0x020E38E0
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldrh lr, [r1]
@@ -17962,10 +17962,10 @@ _020E38F4:
 _020E3918:
 	strh lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E38E0
+	arm_func_end MATHi_CRC16Update
 
-	arm_func_start sub_020E3920
-sub_020E3920: ; 0x020E3920
+	arm_func_start MATHi_CRC16UpdateRev
+MATHi_CRC16UpdateRev: ; 0x020E3920
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldrh lr, [r1]
@@ -17984,10 +17984,10 @@ _020E3934:
 _020E3958:
 	strh lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E3920
+	arm_func_end MATHi_CRC16UpdateRev
 
-	arm_func_start sub_020E3960
-sub_020E3960: ; 0x020E3960
+	arm_func_start MATHi_CRC32InitTableRev
+MATHi_CRC32InitTableRev: ; 0x020E3960
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	mov r2, ip
@@ -18006,10 +18006,10 @@ _020E3974:
 	cmp ip, #0x100
 	blo _020E396C
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E3960
+	arm_func_end MATHi_CRC32InitTableRev
 
-	arm_func_start sub_020E39A0
-sub_020E39A0: ; 0x020E39A0
+	arm_func_start MATHi_CRC32UpdateRev
+MATHi_CRC32UpdateRev: ; 0x020E39A0
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldr lr, [r1]
@@ -18027,10 +18027,10 @@ _020E39B4:
 _020E39D4:
 	str lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E39A0
+	arm_func_end MATHi_CRC32UpdateRev
 
-	arm_func_start sub_020E39DC
-sub_020E39DC: ; 0x020E39DC
+	arm_func_start MATH_CalcCRC8
+MATH_CalcCRC8: ; 0x020E39DC
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, #0
@@ -18038,13 +18038,13 @@ sub_020E39DC: ; 0x020E39DC
 	add r1, sp, #0
 	mov r2, lr
 	strb ip, [sp]
-	bl sub_020E3818
+	bl MATHi_CRC8Update
 	ldrb r0, [sp]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E39DC
+	arm_func_end MATH_CalcCRC8
 
-	arm_func_start sub_020E3A04
-sub_020E3A04: ; 0x020E3A04
+	arm_func_start MATH_CalcCRC16
+MATH_CalcCRC16: ; 0x020E3A04
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, #0
@@ -18052,10 +18052,10 @@ sub_020E3A04: ; 0x020E3A04
 	add r1, sp, #0
 	mov r2, lr
 	strh ip, [sp]
-	bl sub_020E3920
+	bl MATHi_CRC16UpdateRev
 	ldrh r0, [sp]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E3A04
+	arm_func_end MATH_CalcCRC16
 
 	arm_func_start MATH_CalcCRC16CCITT
 MATH_CalcCRC16CCITT: ; 0x020E3A2C
@@ -18066,15 +18066,15 @@ MATH_CalcCRC16CCITT: ; 0x020E3A2C
 	add r1, sp, #0
 	mov r2, lr
 	strh ip, [sp]
-	bl sub_020E38E0
+	bl MATHi_CRC16Update
 	ldrh r0, [sp]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020E3A54: .word 0x0000FFFF
 	arm_func_end MATH_CalcCRC16CCITT
 
-	arm_func_start sub_020E3A58
-sub_020E3A58: ; 0x020E3A58
+	arm_func_start MATH_CalcCRC32
+MATH_CalcCRC32: ; 0x020E3A58
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mvn ip, #0
@@ -18082,14 +18082,14 @@ sub_020E3A58: ; 0x020E3A58
 	add r1, sp, #0
 	mov r2, lr
 	str ip, [sp]
-	bl sub_020E39A0
+	bl MATHi_CRC32UpdateRev
 	ldr r0, [sp]
 	mvn r0, r0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E3A58
+	arm_func_end MATH_CalcCRC32
 
-	arm_func_start sub_020E3A84
-sub_020E3A84: ; 0x020E3A84
+	arm_func_start MATH_QSort
+MATH_QSort: ; 0x020E3A84
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	cmp r1, #1
 	ble _020E3D6C
@@ -18323,10 +18323,10 @@ _020E3D68:
 _020E3D6C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
-	arm_func_end sub_020E3A84
+	arm_func_end MATH_QSort
 
-	arm_func_start sub_020E3D74
-sub_020E3D74: ; 0x020E3D74
+	arm_func_start STD_CopyLString
+STD_CopyLString: ; 0x020E3D74
 	stmdb sp!, {r4, lr}
 	sub ip, r2, #1
 	mov r4, r1
@@ -18352,12 +18352,12 @@ _020E3DB0:
 	strneb r2, [r0, lr]
 _020E3DC8:
 	mov r0, r1
-	bl sub_020E3DD4
+	bl STD_GetStringLength
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E3D74
+	arm_func_end STD_CopyLString
 
-	arm_func_start sub_020E3DD4
-sub_020E3DD4: ; 0x020E3DD4
+	arm_func_start STD_GetStringLength
+STD_GetStringLength: ; 0x020E3DD4
 	ldrsb r1, [r0]
 	mov r2, #0
 	cmp r1, #0
@@ -18370,10 +18370,10 @@ _020E3DE4:
 _020E3DF4:
 	mov r0, r2
 	bx lr
-	arm_func_end sub_020E3DD4
+	arm_func_end STD_GetStringLength
 
-	arm_func_start sub_020E3DFC
-sub_020E3DFC: ; 0x020E3DFC
+	arm_func_start STD_CompareString
+STD_CompareString: ; 0x020E3DFC
 	b _020E3E08
 _020E3E00:
 	add r0, r0, #1
@@ -18388,10 +18388,10 @@ _020E3E08:
 _020E3E20:
 	sub r0, r2, r3
 	bx lr
-	arm_func_end sub_020E3DFC
+	arm_func_end STD_CompareString
 
-	arm_func_start sub_020E3E28
-sub_020E3E28: ; 0x020E3E28
+	arm_func_start STD_CompareNString
+STD_CompareNString: ; 0x020E3E28
 	stmdb sp!, {r3, lr}
 	cmp r2, #0
 	beq _020E3E60
@@ -18410,10 +18410,10 @@ _020E3E40:
 _020E3E60:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E3E28
+	arm_func_end STD_CompareNString
 
-	arm_func_start sub_020E3E68
-sub_020E3E68: ; 0x020E3E68
+	arm_func_start string_put_char
+string_put_char: ; 0x020E3E68
 	ldr r2, [r0]
 	cmp r2, #0
 	beq _020E3E88
@@ -18427,10 +18427,10 @@ _020E3E88:
 	add r1, r1, #1
 	str r1, [r0, #4]
 	bx lr
-	arm_func_end sub_020E3E68
+	arm_func_end string_put_char
 
-	arm_func_start sub_020E3E98
-sub_020E3E98: ; 0x020E3E98
+	arm_func_start string_fill_char
+string_fill_char: ; 0x020E3E98
 	stmdb sp!, {r3, lr}
 	cmp r2, #0
 	ldmleia sp!, {r3, pc}
@@ -18454,10 +18454,10 @@ _020E3ED0:
 	add r1, r1, r2
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E3E98
+	arm_func_end string_fill_char
 
-	arm_func_start sub_020E3EEC
-sub_020E3EEC: ; 0x020E3EEC
+	arm_func_start string_put_string
+string_put_string: ; 0x020E3EEC
 	stmdb sp!, {r4, lr}
 	cmp r2, #0
 	ldmleia sp!, {r4, pc}
@@ -18482,7 +18482,7 @@ _020E3F28:
 	add r1, r1, r2
 	str r1, [r0, #4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E3EEC
+	arm_func_end string_put_string
 
 	arm_func_start STD_TVSNPrintf
 STD_TVSNPrintf: ; 0x020E3F44
@@ -18505,20 +18505,20 @@ _020E3F70:
 	cmp r0, #0x3c
 	bhs _020E3FAC
 	add r0, sp, #0xc
-	bl sub_020E3E68
+	bl string_put_char
 	ldrsb r1, [sb, #1]!
 	cmp r1, #0
 	beq _020E4764
 	add r0, sp, #0xc
 	add sb, sb, #1
-	bl sub_020E3E68
+	bl string_put_char
 	b _020E4764
 _020E3FAC:
 	cmp r1, #0x25
 	beq _020E3FC4
 	add r0, sp, #0xc
 	add sb, sb, #1
-	bl sub_020E3E68
+	bl string_put_char
 	b _020E4764
 _020E3FC4:
 	mov r5, #0
@@ -18694,11 +18694,11 @@ _020E41E4:
 	mov r1, r4, lsl #0x18
 	add r0, sp, #0xc
 	mov r1, r1, asr #0x18
-	bl sub_020E3E68
+	bl string_put_char
 	add r0, sp, #0xc
 	sub r2, sl, #1
 	mov r1, #0x20
-	bl sub_020E3E98
+	bl string_fill_char
 	b _020E4250
 _020E4220:
 	tst r5, #0x10
@@ -18708,11 +18708,11 @@ _020E4220:
 	add r0, sp, #0xc
 	mov r1, r1, asr #0x18
 	sub r2, sl, #1
-	bl sub_020E3E98
+	bl string_fill_char
 	mov r1, r4, lsl #0x18
 	add r0, sp, #0xc
 	mov r1, r1, asr #0x18
-	bl sub_020E3E68
+	bl string_put_char
 _020E4250:
 	add sb, sb, #1
 	b _020E4764
@@ -18746,11 +18746,11 @@ _020E42A4:
 	add r0, sp, #0xc
 	mov r1, r7
 	mov r2, r4
-	bl sub_020E3EEC
+	bl string_put_string
 	add r0, sp, #0xc
 	mov r2, sl
 	mov r1, #0x20
-	bl sub_020E3E98
+	bl string_fill_char
 	b _020E4304
 _020E42D4:
 	tst r5, #0x10
@@ -18760,11 +18760,11 @@ _020E42D4:
 	add r0, sp, #0xc
 	mov r2, sl
 	mov r1, r1, asr #0x18
-	bl sub_020E3E98
+	bl string_fill_char
 	add r0, sp, #0xc
 	mov r1, r7
 	mov r2, r4
-	bl sub_020E3EEC
+	bl string_put_string
 _020E4304:
 	add sb, sb, #1
 	b _020E4764
@@ -18799,13 +18799,13 @@ _020E4364:
 	bne _020E4380
 	add r0, sp, #0xc
 	add sb, sb, #1
-	bl sub_020E3E68
+	bl string_put_char
 	b _020E4764
 _020E4380:
 	mov r1, r2
 	add r0, sp, #0xc
 	sub r2, sb, r2
-	bl sub_020E3EEC
+	bl string_put_string
 	b _020E4764
 _020E4394:
 	orr r5, r5, #0x1000
@@ -19040,7 +19040,7 @@ _020E46B0:
 	add r0, sp, #0xc
 	mov r2, sl
 	mov r1, #0x20
-	bl sub_020E3E98
+	bl string_fill_char
 _020E46DC:
 	cmp r4, #0
 	ble _020E4708
@@ -19051,14 +19051,14 @@ _020E46F0:
 	ldrsb r1, [r5, #-1]!
 	mov r0, r7
 	sub r4, r4, #1
-	bl sub_020E3E68
+	bl string_put_char
 	cmp r4, #0
 	bgt _020E46F0
 _020E4708:
 	add r0, sp, #0xc
 	mov r2, r6
 	mov r1, #0x30
-	bl sub_020E3E98
+	bl string_fill_char
 	cmp r8, #0
 	ble _020E4744
 	add r0, sp, #0x18
@@ -19068,7 +19068,7 @@ _020E472C:
 	ldrsb r1, [r5, #-1]!
 	mov r0, r4
 	sub r8, r8, #1
-	bl sub_020E3E68
+	bl string_put_char
 	cmp r8, #0
 	bgt _020E472C
 _020E4744:
@@ -19078,7 +19078,7 @@ _020E4744:
 	add r0, sp, #0xc
 	mov r2, sl
 	mov r1, #0x20
-	bl sub_020E3E98
+	bl string_fill_char
 _020E4760:
 	add sb, sb, #1
 _020E4764:
