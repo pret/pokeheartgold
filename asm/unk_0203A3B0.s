@@ -27,6 +27,32 @@ _020F6ABC:
 	.byte 0xFC, 0x01, 0x14, 0x00
 	.byte 0xFF, 0xFF, 0x00, 0x00
 
+	.data
+
+	.balign 4, 0
+_0210F91C:
+	.word _020F6AB4
+	.word _020F6AAC
+	.word _020F6AA4
+	.word _020F6A9C
+	.word _020F6ABC
+
+	.balign 4, 0
+_0210F930:
+	.asciz "data/pl_wm.NCLR"
+
+	.balign 4, 0
+_0210F940:
+	.asciz "data/pl_wifi.NCGR"
+
+	.balign 4, 0
+_0210F954:
+	.asciz "data/pl_wm.NCGR"
+
+	.balign 4, 0
+_0210F964:
+	.asciz "data/wm256k.NCGR"
+
 	.text
 
 	thumb_func_start sub_0203A3B0

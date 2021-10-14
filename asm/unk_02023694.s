@@ -10,6 +10,11 @@ _020F631C:
 	.word sub_02025020
 	.word sub_02025014
 
+	.data
+
+_0210F6E0:
+	.asciz "data/clact_default.NANR"
+
 	.bss
 
 _021D2208:
@@ -2114,7 +2119,7 @@ _020244B8:
 	add r1, #8
 	str r0, [r4, r1]
 	ldr r0, [r5, #8]
-	ldr r1, _02024500 ; =0x0210F6E0
+	ldr r1, _02024500 ; =_0210F6E0
 	bl sub_0201A3A4
 	mov r1, #0x46
 	lsl r1, r1, #2
@@ -2130,7 +2135,7 @@ _020244B8:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
-_02024500: .word 0x0210F6E0
+_02024500: .word _0210F6E0
 	thumb_func_end sub_0202445C
 
 	thumb_func_start sub_02024504

@@ -114,6 +114,21 @@ _020FA484:
 _020FA494:
 	.word ov121_021E5900, ov121_021E590C, ov121_021E59BC, SDK_OVERLAY_OVY_121_ID
 
+	.data
+
+_0210F978:
+	.word 0x00000000
+_0210F97C:
+	.word ov87_021E5900, ov87_021E59B4, ov87_021E5AC0, SDK_OVERLAY_OVY_87_ID
+_0210F98C:
+	.word ov65_0221BE20, ov65_0221C250, ov65_0221CD74, SDK_OVERLAY_OVY_65_ID
+_0210F99C:
+	.word ov41_0224BA10, ov41_0224BACC, ov41_0224BBA4, SDK_OVERLAY_OVY_41_ID
+_0210F9AC:
+	.word ov41_02246DE0, ov41_02246F08, ov41_02247150, SDK_OVERLAY_OVY_41_ID
+_0210F9BC:
+	.word ov86_021E5900, ov86_021E5A40, ov86_021E5AA4, SDK_OVERLAY_OVY_86_ID
+
 	.text
 
 	thumb_func_start sub_0203E368
@@ -277,18 +292,18 @@ sub_0203E460: ; 0x0203E460
 	b _0203E48A
 _0203E47A:
 	ldr r1, _0203E4C0 ; =_020FA1A4
-	ldr r0, _0203E4C4 ; =0x0210F978
+	ldr r0, _0203E4C4 ; =_0210F978
 	str r1, [r0]
 	b _0203E48E
 _0203E482:
 	ldr r1, _0203E4C8 ; =_020FA1AC
-	ldr r0, _0203E4C4 ; =0x0210F978
+	ldr r0, _0203E4C4 ; =_0210F978
 	str r1, [r0]
 	b _0203E48E
 _0203E48A:
 	bl GF_AssertFail
 _0203E48E:
-	ldr r1, _0203E4C4 ; =0x0210F978
+	ldr r1, _0203E4C4 ; =_0210F978
 	add r0, r6, #0
 	ldr r1, [r1]
 	mov r2, #0x20
@@ -312,7 +327,7 @@ _0203E48E:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _0203E4C0: .word _020FA1A4
-_0203E4C4: .word 0x0210F978
+_0203E4C4: .word _0210F978
 _0203E4C8: .word _020FA1AC
 	thumb_func_end sub_0203E460
 
@@ -2045,24 +2060,24 @@ sub_0203F1E8: ; 0x0203F1E8
 	lsl r1, r1, #2
 	add r1, r0, r1
 	str r1, [r2, #0x20]
-	ldr r1, _0203F200 ; =0x0210F9AC
+	ldr r1, _0203F200 ; =_0210F9AC
 	bl ScrUnk80_AddOvyMan
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_0203F200: .word 0x0210F9AC
+_0203F200: .word _0210F9AC
 	thumb_func_end sub_0203F1E8
 
 	thumb_func_start sub_0203F204
 sub_0203F204: ; 0x0203F204
 	push {r3, lr}
 	add r2, r1, #0
-	ldr r1, _0203F214 ; =0x0210F99C
+	ldr r1, _0203F214 ; =_0210F99C
 	bl ScrUnk80_AddOvyMan
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_0203F214: .word 0x0210F99C
+_0203F214: .word _0210F99C
 	thumb_func_end sub_0203F204
 
 	thumb_func_start sub_0203F218
@@ -2196,7 +2211,7 @@ _0203F316:
 	add r0, r0, #1
 	str r0, [r4]
 _0203F324:
-	ldr r1, _0203F4A0 ; =0x0210F98C
+	ldr r1, _0203F4A0 ; =_0210F98C
 	add r0, r6, #0
 	add r2, r4, #4
 	bl sub_02050624
@@ -2374,7 +2389,7 @@ _0203F49A:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0203F4A0: .word 0x0210F98C
+_0203F4A0: .word _0210F98C
 _0203F4A4: .word _020FA2D4
 	thumb_func_end sub_0203F2C8
 
@@ -3164,7 +3179,7 @@ sub_0203FAB4: ; 0x0203FAB4
 	strb r6, [r4, #4]
 	strb r7, [r4, #5]
 	ldr r0, [sp]
-	ldr r1, _0203FAE4 ; =0x0210F9BC
+	ldr r1, _0203FAE4 ; =_0210F9BC
 	strh r0, [r4, #6]
 	ldr r0, [r5, #0xc]
 	add r2, r4, #0
@@ -3174,7 +3189,7 @@ sub_0203FAB4: ; 0x0203FAB4
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0203FAE4: .word 0x0210F9BC
+_0203FAE4: .word _0210F9BC
 	thumb_func_end sub_0203FAB4
 
 	thumb_func_start sub_0203FAE8
@@ -3249,7 +3264,7 @@ _0203FB74:
 	sub r1, r1, #1
 	bne _0203FB74
 	ldr r0, [r5, #0xc]
-	ldr r1, _0203FB90 ; =0x0210F97C
+	ldr r1, _0203FB90 ; =_0210F97C
 	str r0, [r4]
 	add r0, r5, #0
 	add r2, r4, #0
@@ -3257,7 +3272,7 @@ _0203FB74:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
-_0203FB90: .word 0x0210F97C
+_0203FB90: .word _0210F97C
 	thumb_func_end sub_0203FB60
 
 	thumb_func_start sub_0203FB94

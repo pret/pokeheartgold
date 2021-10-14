@@ -1,6 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.data
+
+_0210F8FC:
+	.byte 0x44, 0x50, 0x00, 0x00 0x04, 0x04, 0x00, 0x00
+
 	.bss
 
 _021D4124:
@@ -202,7 +207,7 @@ _02032986:
 	cmp r1, r0
 	bne _020329C4
 	add r1, r5, #0
-	ldr r0, _02032A38 ; =0x0210F8FC
+	ldr r0, _02032A38 ; =_0210F8FC
 	add r1, #0x15
 	mov r2, #3
 	bl memcmp
@@ -262,7 +267,7 @@ _02032A28: .word _021D4124
 _02032A2C: .word 0x00001345
 _02032A30: .word 0x00001343
 _02032A34: .word 0x00001334
-_02032A38: .word 0x0210F8FC
+_02032A38: .word _0210F8FC
 _02032A3C: .word 0x0000132E
 	thumb_func_end sub_02032934
 
@@ -855,7 +860,7 @@ _02032EB4:
 	mov r0, #3
 	bl sub_02032844
 	add r1, sp, #4
-	ldr r0, _02032F00 ; =0x0210F8FC
+	ldr r0, _02032F00 ; =_0210F8FC
 	add r1, #1
 	mov r2, #3
 	bl MI_CpuCopy8
@@ -885,7 +890,7 @@ _02032EF2:
 	.balign 4, 0
 _02032EF8: .word _021D4124
 _02032EFC: .word 0x00001310
-_02032F00: .word 0x0210F8FC
+_02032F00: .word _0210F8FC
 _02032F04: .word sub_02032F0C
 _02032F08: .word 0x00001220
 	thumb_func_end sub_02032E9C
