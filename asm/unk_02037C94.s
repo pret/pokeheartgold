@@ -2038,7 +2038,7 @@ _02038B98: .word _0210F914
 sub_02038B9C: ; 0x02038B9C
 	push {r3, r4, r5, lr}
 	mov r4, #1
-	ldr r5, _02038C0C ; =_0210F905
+	ldr r5, _02038C0C ; =_0210F904 + 1
 	add r3, r4, #0
 _02038BA4:
 	ldrb r1, [r5]
@@ -2067,7 +2067,7 @@ _02038BB8:
 	pop {r3, r4, r5, pc}
 _02038BD2:
 	mov r4, #1
-	ldr r3, _02038C14 ; =_0210F915
+	ldr r3, _02038C14 ; =_0210F914 + 1
 	add r5, r4, #0
 _02038BD8:
 	ldrb r1, [r3]
@@ -2098,9 +2098,9 @@ _02038BEC:
 _02038C08:
 	pop {r3, r4, r5, pc}
 	nop
-_02038C0C: .word _0210F905
+_02038C0C: .word _0210F904 + 1
 _02038C10: .word _021D4150
-_02038C14: .word _0210F915
+_02038C14: .word _0210F914 + 1
 	thumb_func_end sub_02038B9C
 
 	thumb_func_start sub_02038C18

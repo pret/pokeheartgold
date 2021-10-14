@@ -1,6 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public _0210F9CC
+    .public _0210F9D4
+    .public _0210F9E8
+    .public _0210FA04
+
 	.text
 
 	thumb_func_start sub_02048218
@@ -28,10 +33,10 @@ sub_02048218: ; 0x02048218
 	str r0, [sp, #4]
 	add r0, r2, #7
 	lsl r1, r0, #2
-	ldr r0, _02048290 ; =0x0210FA04
+	ldr r0, _02048290 ; =_0210FA04
 	lsl r3, r2, #2
 	ldr r0, [r0, r1]
-	ldr r2, _02048294 ; =0x0210F9CC
+	ldr r2, _02048294 ; =_0210F9CC
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x74]
 	add r4, #0x80
@@ -42,12 +47,12 @@ sub_02048218: ; 0x02048218
 	b _02048288
 _02048268:
 	ldr r0, [sp, #0x18]
-	ldr r3, _02048294 ; =0x0210F9CC
+	ldr r3, _02048294 ; =_0210F9CC
 	lsl r2, r0, #2
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
-	ldr r0, _02048290 ; =0x0210FA04
+	ldr r0, _02048290 ; =_0210FA04
 	ldr r0, [r0, r2]
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x74]
@@ -61,8 +66,8 @@ _02048288:
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	nop
-_02048290: .word 0x0210FA04
-_02048294: .word 0x0210F9CC
+_02048290: .word _0210FA04
+_02048294: .word _0210F9CC
 	thumb_func_end sub_02048218
 
 	thumb_func_start sub_02048298
@@ -93,8 +98,8 @@ _020482BE:
 	str r1, [sp]
 	str r1, [sp, #4]
 	lsl r1, r0, #2
-	ldr r0, _020482EC ; =0x0210F9D4
-	ldr r2, _020482F0 ; =0x0210F9CC
+	ldr r0, _020482EC ; =_0210F9D4
+	ldr r2, _020482F0 ; =_0210F9CC
 	ldr r0, [r0, r1]
 	mov r3, #4
 	str r0, [sp, #8]
@@ -107,8 +112,8 @@ _020482BE:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
-_020482EC: .word 0x0210F9D4
-_020482F0: .word 0x0210F9CC
+_020482EC: .word _0210F9D4
+_020482F0: .word _0210F9CC
 	thumb_func_end sub_02048298
 
 	thumb_func_start sub_020482F4
@@ -148,12 +153,12 @@ sub_020482F4: ; 0x020482F4
 	ldr r0, [sp, #0x10]
 	add r0, r0, #7
 	lsl r1, r0, #2
-	ldr r0, _02048394 ; =0x0210FA04
+	ldr r0, _02048394 ; =_0210FA04
 	b _02048352
 _0204834C:
 	ldr r0, [sp, #0x10]
 	lsl r1, r0, #2
-	ldr r0, _02048394 ; =0x0210FA04
+	ldr r0, _02048394 ; =_0210FA04
 _02048352:
 	ldr r3, [r0, r1]
 	ldr r0, _02048398 ; =0x0000FFFF
@@ -194,7 +199,7 @@ _0204838C:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02048394: .word 0x0210FA04
+_02048394: .word _0210FA04
 _02048398: .word 0x0000FFFF
 	thumb_func_end sub_020482F4
 
