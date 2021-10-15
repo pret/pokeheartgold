@@ -687,6 +687,11 @@ _020FF7B4: ; aprijuice related?
 	.short 0x0216
 	.short 0x0218
 
+	.data
+
+_021100E8:
+	.asciz "poketool/personal/pms.narc"
+
 	.text
 
 	thumb_func_start ZeroMonData
