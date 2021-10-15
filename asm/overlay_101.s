@@ -351,7 +351,7 @@ _021E799A:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5]
-	bl sub_02095EF8
+	bl AllocAndReadPhoneBook
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -538,7 +538,7 @@ ov101_021E7B54: ; 0x021E7B54
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02095F68
+	bl FreePhoneBook
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	str r1, [r0, #0x5c]
@@ -12698,7 +12698,7 @@ ov101_021ED980: ; 0x021ED980
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4]
-	bl sub_02095EF8
+	bl AllocAndReadPhoneBook
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -12834,7 +12834,7 @@ ov101_021EDAF8: ; 0x021EDAF8
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02095F68
+	bl FreePhoneBook
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	str r1, [r0, #0x5c]
@@ -21432,7 +21432,7 @@ ov101_021F1D74: ; 0x021F1D74
 	ldr r0, [r5]
 	str r0, [r4]
 	ldr r0, [r5]
-	bl sub_02095EF8
+	bl AllocAndReadPhoneBook
 	add r1, r4, #0
 	add r1, #0x80
 	str r0, [r1]
@@ -21577,7 +21577,7 @@ _021F1E88:
 	add r0, r6, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02095F68
+	bl FreePhoneBook
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #0xdc

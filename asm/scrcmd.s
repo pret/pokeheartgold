@@ -4229,7 +4229,7 @@ sub_020428D8: ; 0x020428D8
 	bl GetVarPointer
 	add r6, r0, #0
 	mov r0, #0x20
-	bl sub_02095EF8
+	bl AllocAndReadPhoneBook
 	add r7, r0, #0
 	ldr r0, _02042944 ; =SDK_OVERLAY_OVY_26_ID
 	mov r1, #2
@@ -4252,7 +4252,7 @@ sub_020428D8: ; 0x020428D8
 	ldr r0, _02042944 ; =SDK_OVERLAY_OVY_26_ID
 	bl UnloadOverlayByID
 	add r0, r7, #0
-	bl sub_02095F68
+	bl FreePhoneBook
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -13530,7 +13530,7 @@ sub_02047120: ; 0x02047120
 	add r1, r0, #0
 	add r0, r6, #0
 	mov r2, #0x20
-	bl sub_02095F94
+	bl LoadPhoneBookEntryI
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}

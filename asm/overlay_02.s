@@ -25796,7 +25796,7 @@ _02251F4E:
 	pop {r3, r4, r5, r6, r7, pc}
 _02251F52:
 	mov r0, #4
-	bl sub_02095EF8
+	bl AllocAndReadPhoneBook
 	add r6, r0, #0
 	ldr r2, [r4]
 	add r0, r5, #0
@@ -25805,7 +25805,7 @@ _02251F52:
 	add r7, r0, #0
 	beq _02251F9C
 	add r0, r6, #0
-	bl sub_02095F68
+	bl FreePhoneBook
 	cmp r7, #2
 	bne _02251F90
 	ldr r2, [r5, #0x3c]
@@ -25836,7 +25836,7 @@ _02251F9C:
 	cmp r1, r0
 	bls _02251FB8
 	add r0, r6, #0
-	bl sub_02095F68
+	bl FreePhoneBook
 	mov r0, #0
 	str r0, [r5, #8]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -25847,7 +25847,7 @@ _02251FB8:
 	bl ov02_02251FDC
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02095F68
+	bl FreePhoneBook
 	cmp r4, #0
 	bne _02251FD2
 	mov r0, #0

@@ -1,4 +1,3 @@
-
 #pragma once
 .public ASN1Skip
 .public AcquireBoxMonLock
@@ -29245,9 +29244,9 @@
 .public sub_020935E0
 .public sub_02093A40
 .public sub_02095DF4
-.public sub_02095EF8
-.public sub_02095F68
-.public sub_02095F94
+.public AllocAndReadPhoneBook
+.public FreePhoneBook
+.public LoadPhoneBookEntryI
 .public sub_02095FEC
 .public sub_02095FF8
 .public sub_0209600C
@@ -29636,3 +29635,5 @@
 .public swprintf
 .public vsprintf
 .public wcslen
+.public sub_020342B8
+.public sub_020342C0
