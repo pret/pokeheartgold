@@ -47258,7 +47258,7 @@ _0224E93C:
 	ldrb r0, [r0, r5]
 	lsl r0, r0, #0x1b
 	lsr r0, r0, #0x1b
-	bl sub_02091510
+	bl SetDexBanksByGiratinaForme
 	mov r0, #5
 	bl sub_02091308
 	mov r1, #0

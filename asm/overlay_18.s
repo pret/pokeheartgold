@@ -310,11 +310,11 @@ _021E5B12:
 	ldr r0, [r0]
 	mov r2, #0
 	bl sub_0202A640
-	bl sub_02091510
+	bl SetDexBanksByGiratinaForme
 	b _021E5B38
 _021E5B32:
 	mov r0, #0
-	bl sub_02091510
+	bl SetDexBanksByGiratinaForme
 _021E5B38:
 	mov r0, #1
 	mov r1, #0x2a
@@ -5310,7 +5310,7 @@ ov18_021E8410: ; 0x021E8410
 	add r6, r0, #0
 	ldr r0, _021E84E0 ; =0x000018CC
 	add r5, r6, r0
-	bl sub_02091540
+	bl GetDexZknDataNarcID
 	mov r1, #0x25
 	bl NARC_ctor
 	add r4, r0, #0
@@ -17983,7 +17983,7 @@ ov18_021EEA84: ; 0x021EEA84
 	add r7, r1, #0
 	add r5, r2, #0
 	add r6, r3, #0
-	bl sub_02091558
+	bl GetDexHeightMsgBank
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #0x1b
@@ -18069,7 +18069,7 @@ ov18_021EEB34: ; 0x021EEB34
 	add r7, r1, #0
 	add r5, r2, #0
 	add r6, r3, #0
-	bl sub_0209154C
+	bl GetDexWeightMsgBank
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #0x1b
@@ -36845,11 +36845,15 @@ ov18_021F8168: ; 0x021F8168
 	sub sp, #0xc
 	add r5, r0, #0
 	add r4, r1, #0
+	; u32 size;
+	; void * ret;
+	; GF_ASSERT(a < 82);
 	cmp r5, #0x52
 	blo _021F8178
 	bl GF_AssertFail
 _021F8178:
-	bl sub_02091540
+	; ret = GfGfxLoader_LoadFromNarc_GetSizeOut(GetDexZknDataNarcID(), a0 + 11, FALSE, 37, FALSE, &size);
+	bl GetDexZknDataNarcID
 	mov r2, #0
 	str r2, [sp]
 	add r1, sp, #8
@@ -36858,9 +36862,11 @@ _021F8178:
 	add r1, r5, #0
 	mov r3, #0x25
 	bl GfGfxLoader_LoadFromNarc_GetSizeOut
+	; *a1 = size / 2;
 	ldr r1, [sp, #8]
 	lsr r1, r1, #1
 	str r1, [r4]
+	; return ret;
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov18_021F8168
@@ -38563,7 +38569,7 @@ _021F8CDA:
 	bl ScrStrBufs_delete
 	add r0, r4, #0
 	bl DestroyMsgData
-	bl sub_02091558
+	bl GetDexHeightMsgBank
 	add r2, r0, #0
 	ldr r3, [r5, #0x14]
 	mov r0, #0
@@ -38586,7 +38592,7 @@ _021F8CDA:
 	bl ov18_021F9648
 	add r0, r4, #0
 	bl DestroyMsgData
-	bl sub_0209154C
+	bl GetDexWeightMsgBank
 	add r2, r0, #0
 	ldr r3, [r5, #0x14]
 	mov r0, #0

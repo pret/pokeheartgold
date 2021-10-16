@@ -403,9 +403,11 @@ endef
 
 $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
+$(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data.narc,files/a/0/7/4))
 $(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
-$(eval $(call arc_strip_name,files/a/1/3/3.$(buildname),files/a/1/3/3))
+$(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_enc_$(shortname).narc,files/a/1/3/3))
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
+$(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
 
 $(DIFF_ARCS):

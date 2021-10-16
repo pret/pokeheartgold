@@ -29035,7 +29035,7 @@
 .public sub_0207790C
 .public sub_02077914
 .public sub_02077980
-.public sub_02077AA4
+.public GetItemUseErrorMessage
 .public sub_02077B5C
 .public sub_02077C18
 .public sub_02077CB0
@@ -29189,10 +29189,10 @@
 .public sub_020913C4
 .public sub_02091410
 .public sub_02091430
-.public sub_02091510
-.public sub_02091540
-.public sub_0209154C
-.public sub_02091558
+.public SetDexBanksByGiratinaForme
+.public GetDexZknDataNarcID
+.public GetDexWeightMsgBank
+.public GetDexHeightMsgBank
 .public sub_02091574
 .public sub_02091664
 .public sub_02091668

@@ -4507,7 +4507,7 @@ ov15_021FB680: ; 0x021FB680
 	add r2, #0x66
 	ldrh r2, [r2]
 	ldr r1, [r4, r1]
-	bl sub_02077AA4
+	bl GetItemUseErrorMessage
 	add r0, r4, #0
 	mov r1, #0
 	bl ov15_021FEF48

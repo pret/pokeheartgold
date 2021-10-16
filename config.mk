@@ -4,11 +4,13 @@ GAME_LANGUAGE      ?= ENGLISH
 
 ifeq ($(GAME_VERSION),HEARTGOLD)
 buildname     := heartgold
+shortname     := gold
 TITLE_NAME    := POKEMON HG
 GAME_CODE     := IPK
 else
 ifeq ($(GAME_VERSION),SOULSILVER)
-buildname := soulsilver
+buildname     := soulsilver
+shortname     := silver
 TITLE_NAME    := POKEMON SS
 GAME_CODE     := IPG
 else

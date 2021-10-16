@@ -6381,8 +6381,9 @@ _02077A82:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end sub_02077980
 
-	thumb_func_start sub_02077AA4
-sub_02077AA4: ; 0x02077AA4
+	thumb_func_start GetItemUseErrorMessage
+GetItemUseErrorMessage: ; 0x02077AA4
+	; pragma unused r2
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	str r0, [sp]
@@ -6395,6 +6396,7 @@ sub_02077AA4: ; 0x02077AA4
 	beq _02077AF6
 	b _02077B14
 _02077ABA:
+	; You can't dismount your Bike here.
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xa
@@ -6408,6 +6410,7 @@ _02077ABA:
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 _02077AD8:
+	; Can't be used when you have someone with you!
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xa
@@ -6421,6 +6424,7 @@ _02077AD8:
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 _02077AF6:
+	; You can't be doing that now!
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xa
@@ -6434,6 +6438,7 @@ _02077AF6:
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 _02077B14:
+	; Oak's words echoed... {PLAYER}! There's a time and place for everything! But not now.
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x28
@@ -6462,7 +6467,7 @@ _02077B14:
 	add r0, r7, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02077AA4
+	thumb_func_end GetItemUseErrorMessage
 
 	thumb_func_start sub_02077B5C
 sub_02077B5C: ; 0x02077B5C
@@ -58276,7 +58281,7 @@ _0209134E:
 	beq _02091358
 	bl GF_AssertFail
 _02091358:
-	bl sub_02091540
+	bl GetDexZknDataNarcID
 	add r1, r4, #0
 	bl NARC_ctor
 	add r6, r0, #0
@@ -58511,12 +58516,12 @@ sub_020914E8: ; 0x020914E8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020914E8
 
-	thumb_func_start sub_02091510
-sub_02091510: ; 0x02091510
+	thumb_func_start SetDexBanksByGiratinaForme
+SetDexBanksByGiratinaForme: ; 0x02091510
 	cmp r0, #0
 	bne _02091524
 	ldr r0, _02091538 ; =0x021105BC
-	mov r1, #0xd8
+	mov r1, #0xd8 ; a/2/1/4
 	str r1, [r0, #4]
 	ldr r1, _0209153C ; =0x0000032D
 	str r1, [r0]
@@ -58525,7 +58530,7 @@ sub_02091510: ; 0x02091510
 	bx lr
 _02091524:
 	ldr r0, _02091538 ; =0x021105BC
-	mov r1, #0x4a
+	mov r1, #0x4a ; a/0/7/4
 	str r1, [r0, #4]
 	mov r1, #0xcb
 	lsl r1, r1, #2
@@ -58536,34 +58541,34 @@ _02091524:
 	nop
 _02091538: .word 0x021105BC
 _0209153C: .word 0x0000032D
-	thumb_func_end sub_02091510
+	thumb_func_end SetDexBanksByGiratinaForme
 
-	thumb_func_start sub_02091540
-sub_02091540: ; 0x02091540
+	thumb_func_start GetDexZknDataNarcID
+GetDexZknDataNarcID: ; 0x02091540
 	ldr r0, _02091548 ; =0x021105BC
 	ldr r0, [r0, #4]
 	bx lr
 	nop
 _02091548: .word 0x021105BC
-	thumb_func_end sub_02091540
+	thumb_func_end GetDexZknDataNarcID
 
-	thumb_func_start sub_0209154C
-sub_0209154C: ; 0x0209154C
+	thumb_func_start GetDexWeightMsgBank
+GetDexWeightMsgBank: ; 0x0209154C
 	ldr r0, _02091554 ; =0x021105BC
 	ldr r0, [r0]
 	bx lr
 	nop
 _02091554: .word 0x021105BC
-	thumb_func_end sub_0209154C
+	thumb_func_end GetDexWeightMsgBank
 
-	thumb_func_start sub_02091558
-sub_02091558: ; 0x02091558
+	thumb_func_start GetDexHeightMsgBank
+GetDexHeightMsgBank: ; 0x02091558
 	ldr r0, _02091560 ; =0x021105BC
 	ldr r0, [r0, #8]
 	bx lr
 	nop
 _02091560: .word 0x021105BC
-	thumb_func_end sub_02091558
+	thumb_func_end GetDexHeightMsgBank
 
 	thumb_func_start sub_02091564
 sub_02091564: ; 0x02091564
@@ -75170,7 +75175,8 @@ _021105B0:
 	.byte 0xB7, 0x77
 	.byte 0xDF, 0x7F
 _021105BC:
-	.byte 0x2C, 0x03, 0x00, 0x00
-	.byte 0x4A, 0x00, 0x00, 0x00, 0x2E, 0x03, 0x00, 0x00
+	.word 0x032C
+	.word 0x004A
+	.word 0x032E
 _021105C8:
 	.asciz "tel/pmtel_book.dat"
