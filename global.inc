@@ -29637,3 +29637,5 @@
 .public wcslen
 .public sub_020342B8
 .public sub_020342C0
+.public sub_0209FA40
+.public sub_0209FA94

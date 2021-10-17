@@ -223,6 +223,9 @@ Static main
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o
+	Object dwcbm.o
+	Object dwcaccount.o
+	Object wifi.o
 	Object libVCT.o
 	Object nnsys.o
 
