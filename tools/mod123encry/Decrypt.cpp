@@ -99,7 +99,11 @@ void Decryptor::Write(std::ofstream &outfile) {
     outfile.write((char *)data.data(), data.size());
 }
 
-DecryptOptions::DecryptOptions(char ** argv) {
+DecryptOptions::DecryptOptions(int argc, char ** argv) : Options(argc, argv) {
+    if (argc < 5) {
+        throw std::invalid_argument("missing required argument: " +
+                                    ((std::string[]) {"", "mode", "baserom", "outfile", "ovy_id"})[argc]);
+    }
     baserom = new NtrRom(argv[2], std::ios::binary);
     outfile = std::ofstream(argv[3], std::ios::binary);
     if (!outfile.good()) {

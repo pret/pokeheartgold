@@ -2,6 +2,7 @@
 #define GUARD_DECRYPT_H
 
 #include "NtrRom.h"
+#include "Options.h"
 
 struct DecryptPart2 {
     u32 i;
@@ -50,12 +51,12 @@ public:
     void Write(std::ofstream &outfile);
 };
 
-struct DecryptOptions {
+struct DecryptOptions: public Options {
     NtrRom *baserom;
     std::ofstream outfile;
     std::uint32_t ovy_id;
 
-    DecryptOptions(char ** argv);
+    DecryptOptions(int argc, char ** argv);
     ~DecryptOptions();
     int main();
 };

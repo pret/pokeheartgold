@@ -100,7 +100,12 @@ void Encryptor::Encrypt() {
     EncryptLvl1();
 }
 
-EncryptOptions::EncryptOptions(char ** argv) {
+EncryptOptions::EncryptOptions(int argc, char ** argv) : Options(argc, argv) {
+    if (argc < 5) {
+        throw std::invalid_argument("missing required argument: " +
+                                    ((std::string[]) {"", "mode", "buildname", "outfile", "ovy_id"})[argc]);
+    }
+
     buildname = argv[2];
     outfile = std::ofstream(argv[3], std::ios::binary);
     if (!outfile.good()) {

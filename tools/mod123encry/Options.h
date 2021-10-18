@@ -4,8 +4,6 @@
 #include <string>
 #include <cstring>
 #include "NtrRom.h"
-#include "Decrypt.h"
-#include "Encrypt.h"
 
 enum ExecMode {
     EXEC_DECRY = 0,
@@ -13,17 +11,20 @@ enum ExecMode {
 };
 
 struct Options {
-    ExecMode mode;
-    union {
-        DecryptOptions * decrypt;
-        EncryptOptions * encrypt;
-    };
-
-    Options(int argc, char ** argv);
-    ~Options();
-    int main();
-private:
-    bool TranslateExecMode(const char * value);
+    Options(int argc, char ** argv) {};
+    virtual ~Options() = default;
+    virtual int main() = 0;
+    static ExecMode TranslateExecMode(const char * value) {
+        ExecMode mode;
+        if (strcmp(value, "decry") == 0) {
+            mode = EXEC_DECRY;
+        } else if (strcmp(value, "encry") == 0) {
+            mode = EXEC_ENCRY;
+        } else {
+            throw std::invalid_argument(std::string("invalid ExecMode value: expected 'encry' or 'decry'; got ") + value);
+        }
+        return mode;
+    }
 };
 
 #endif //GUARD_OPTIONS_H

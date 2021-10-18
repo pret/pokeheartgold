@@ -19,12 +19,12 @@ public:
     void Encrypt();
 };
 
-struct EncryptOptions {
+struct EncryptOptions : public Options {
     std::string buildname;
     std::ofstream outfile;
     u32 ovy_id;
 
-    EncryptOptions(char ** argv);
+    EncryptOptions(int argc, char ** argv);
     ~EncryptOptions();
     int main(void);
 };
