@@ -10,7 +10,6 @@ Encryptor::Encryptor(std::string &buildname, u32 ovy_id) {
     }
     table.seekg(ovy_id * sizeof(FSOverlayInfo));
     table.read((char *)&info, sizeof(info));
-    table.close();
 
     std::ifstream defs(buildname + "_defs.sbin", std::ios::binary);
     if (!defs.good()) {
@@ -22,7 +21,6 @@ Encryptor::Encryptor(std::string &buildname, u32 ovy_id) {
         std::getline(defs, filename, '\0');
     }
     std::getline(defs, filename, '\0');
-    defs.close();
 
     std::filesystem::path ovyfname = table_path.replace_filename(filename);
     std::ifstream ovyfile(ovyfname, std::ios::binary | std::ios::ate);
@@ -33,7 +31,6 @@ Encryptor::Encryptor(std::string &buildname, u32 ovy_id) {
     data.resize(size);
     ovyfile.seekg(0);
     ovyfile.read((char *)data.data(), size);
-    ovyfile.close();
 }
 
 u32 Encryptor::DoEncryptLvl2(u32 tableOffset) {
@@ -115,7 +112,7 @@ EncryptOptions::EncryptOptions(char ** argv) {
 }
 
 EncryptOptions::~EncryptOptions() {
-    outfile.close();
+
 }
 
 int EncryptOptions::main() {

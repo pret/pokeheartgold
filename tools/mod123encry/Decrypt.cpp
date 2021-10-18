@@ -111,7 +111,7 @@ DecryptOptions::DecryptOptions(char ** argv) {
 }
 
 DecryptOptions::~DecryptOptions() {
-    outfile.close();
+    delete baserom;
 }
 
 int DecryptOptions::main() {

@@ -13,6 +13,9 @@ bool Options::TranslateExecMode(const char * value) {
 
 Options::Options(int argc, char ** argv) {
     // MODE must be either "encry" or "decry"
+    if (argc < 2) {
+        throw std::invalid_argument("missing required argument: mode");
+    }
     TranslateExecMode(argv[1]);
 
     switch (mode) {
