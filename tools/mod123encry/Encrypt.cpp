@@ -116,10 +116,6 @@ EncryptOptions::EncryptOptions(int argc, char ** argv) : Options(argc, argv) {
     ovy_id = std::strtoul(argv[4], nullptr, 10);
 }
 
-EncryptOptions::~EncryptOptions() {
-
-}
-
 int EncryptOptions::main() {
     Encryptor encryptor(buildname, ovy_id);
     encryptor.Encrypt();

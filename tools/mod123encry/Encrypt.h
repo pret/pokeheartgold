@@ -25,7 +25,7 @@ struct EncryptOptions : public Options {
     u32 ovy_id;
 
     EncryptOptions(int argc, char ** argv);
-    ~EncryptOptions();
+    ~EncryptOptions() = default;
     int main(void);
 };
 
