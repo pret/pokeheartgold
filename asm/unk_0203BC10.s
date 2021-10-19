@@ -359,7 +359,7 @@ _0203BE9E:
 _0203BEB2:
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B5D8
+	bl MapHeader_MapIsAmitySquare
 	cmp r0, #1
 	bne _0203BEC2
 	mov r0, #6

@@ -25,12 +25,50 @@ struct MapHeader
     u32 follow_mode:2;
     u32 battle_bg:5;
     u32 bike_allowed:1;
-    u32 unk_14_1A:1;
+    u32 unk_14_1A:1;            // unused running flag?
     u32 escape_rope_allowed:1;
     u32 fly_allowed:1;
     u32 unk_14_1D:1;
     u32 unk_14_1E:1;
     u32 unk_14_1F:1;
 };
+
+u8 MapHeader_GetAreaDataBank(u32 map_no);
+u16 MapHeader_GetMoveModelBank(u32 map_no);
+u16 MapHeader_GetMatrixId(u32 map_no);
+u16 MapHeader_GetMsgBank(u32 map_no);
+u16 MapHeader_GetScriptsBank(u32 map_no);
+u16 MapHeader_GetLevelScriptsBank(u32 map_no);
+u16 MapHeader_GetDayMusicId(u32 map_no);
+u16 MapHeader_GetNightMusicId(u32 map_no);
+BOOL MapHeader_HasWildEncounters(u32 map_no);
+u8 MapHeader_GetWildEncounterBank(u32 map_no);
+u16 MapHeader_GetEventsBank(u32 map_no);
+u16 MapHeader_GetMapSec(u32 map_no);
+u8 MapHeader_GetAreaIcon(u32 map_no);
+u8 MapHeader_GetField12_C(u32 map_no);
+BOOL MapHeader_IsKanto(u32 map_no);
+u32 MapHeader_GetWeatherType(u32 map_no);
+u32 MapHeader_GetCameraType(u32 map_no);
+u32 MapHeader_GetBattleBg(u32 map_no);
+BOOL MapHeader_IsEscapeRopeAllowed(u32 map_no);
+BOOL MapHeader_IsFlyAllowed(u32 map_no);
+BOOL MapHeader_IsBikeAllowed(u32 map_no);
+BOOL MapHeader_GetField14_1D(u32 map_no);
+BOOL MapHeader_GetField14_1E(u32 map_no);
+BOOL MapHeader_GetField14_1F(u32 map_no);
+u32 MapHeader_GetMapType(u32 map_no);
+u8 MapHeader_GetFollowMode(u32 map_no);
+void MapHeader_GetWorldMapCoords(u32 map_no, u16* x, u16* y);
+BOOL MapHeader_IsOutdoors(u32 map_no);
+BOOL MapHeader_MapIsOnMainMatrix(u32 map_no);
+BOOL MapHeader_IsCave(u32 map_no);
+BOOL sub_0203B58C(u32 map_no);
+BOOL sub_0203B5AC(u32 map_no);
+BOOL MapHeader_MapIsUnionRoom(u32 map_no);
+BOOL MapHeader_MapIsAmitySquare(u32 map_no);
+BOOL MapHeader_MapIsPokemonCenter(u32 map_no);
+BOOL MapHeader_MapIsPokemonLeagueLobby(u32 map_no);
+u16 MapHeader_GetMapEvolutionMethod(u32 map_no);
 
 #endif //POKEHEARTGOLD_MAP_HEADER_H

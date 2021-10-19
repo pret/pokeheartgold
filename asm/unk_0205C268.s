@@ -20502,7 +20502,7 @@ _0206538A:
 	pop {r4, pc}
 _02065398:
 	ldr r0, [r4]
-	bl sub_0203B578
+	bl MapHeader_IsCave
 	cmp r0, #1
 	bne _020653B0
 	ldr r0, [r4]
@@ -25942,7 +25942,7 @@ sub_02067AE4: ; 0x02067AE4
 	bl sub_020676D4
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B578
+	bl MapHeader_IsCave
 	cmp r0, #0
 	bne _02067B56
 	ldr r0, [r5, #0xc]
@@ -27418,7 +27418,7 @@ sub_02068664: ; 0x02068664
 	pop {r4, pc}
 _02068676:
 	ldr r0, [r4]
-	bl sub_0203B578
+	bl MapHeader_IsCave
 	cmp r0, #1
 	bne _0206868A
 	ldr r0, [r4]
