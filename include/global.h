@@ -7,4 +7,6 @@
 #include "config.h" // MUST COME BEFORE ANY OTHER GAMEFREAK HEADERS
 #include "assert.h"
 
+#define NELEMS(a) (sizeof(a) / sizeof(*(a)))
+
 #endif //POKEHEARTGOLD_GLOBAL_H
