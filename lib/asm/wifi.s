@@ -10,8 +10,8 @@ _021D4420:
 
 	; NitroWiFi: libsoc.a
 
-	arm_func_start sub_020A0804
-sub_020A0804: ; 0x020A0804
+	arm_func_start SOCL_Startup
+SOCL_Startup: ; 0x020A0804
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _020A0838 ; =_version_NINTENDO_WiFi
@@ -22,25 +22,25 @@ sub_020A0804: ; 0x020A0804
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
 	str r4, [r0]
-	bl sub_020A0880
-	bl sub_020A0840
+	bl SOCLi_StartupCPS
+	bl SOCLi_StartupSOCL
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020A0838: .word _version_NINTENDO_WiFi
 _020A083C: .word _02110628
-	arm_func_end sub_020A0804
+	arm_func_end SOCL_Startup
 
-	arm_func_start sub_020A0840
-sub_020A0840: ; 0x020A0840
+	arm_func_start SOCLi_StartupSOCL
+SOCLi_StartupSOCL: ; 0x020A0840
 	stmdb sp!, {r4, lr}
 	ldr r0, _020A0874 ; =_02110628
 	ldr r0, [r0]
 	ldr r0, [r0, #0x20]
-	bl sub_020A0A78
+	bl SOCLi_StartupCommandPacketQueue
 	movs r4, r0
 	bmi _020A086C
 	ldr r0, _020A0878 ; =_02110660
-	bl sub_020A0DAC
+	bl SOCL_CreateSocket
 	ldr r1, _020A087C ; =0x021D4420
 	str r0, [r1, #0xc]
 _020A086C:
@@ -50,10 +50,10 @@ _020A086C:
 _020A0874: .word _02110628
 _020A0878: .word _02110660
 _020A087C: .word 0x021D4420
-	arm_func_end sub_020A0840
+	arm_func_end SOCLi_StartupSOCL
 
-	arm_func_start sub_020A0880
-sub_020A0880: ; 0x020A0880
+	arm_func_start SOCLi_StartupCPS
+SOCLi_StartupCPS: ; 0x020A0880
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020A09B4 ; =_02110628
 	ldr r4, _020A09B8 ; =0x021D4430
@@ -64,7 +64,7 @@ sub_020A0880: ; 0x020A0880
 	bl MI_CpuFill8
 	ldr r1, [r5, #0x18]
 	ldr r0, _020A09BC ; =0x021D4420
-	ldr r2, _020A09C0 ; =sub_020A0A60
+	ldr r2, _020A09C0 ; =SOCL_LinkIsOn
 	str r1, [r0, #0x14]
 	ldr r3, [r5, #0x1c]
 	mov r1, #0
@@ -108,7 +108,7 @@ _020A0900:
 	mov r2, #1
 	cmp r0, #0
 	beq _020A0974
-	ldr r1, _020A09CC ; =sub_020A0A48
+	ldr r1, _020A09CC ; =SOCLi_DhcpTimeout
 	ldr r0, _020A09BC ; =0x021D4420
 	str r3, [r4]
 	str r1, [r4, #0xc]
@@ -118,7 +118,7 @@ _020A0900:
 	b _020A0988
 _020A0974:
 	ldr r0, _020A09BC ; =0x021D4420
-	ldr r1, _020A09D0 ; =sub_020A09DC
+	ldr r1, _020A09D0 ; =SOCLi_SetMyIP
 	str r3, [r0, #8]
 	str r2, [r4]
 	str r1, [r4, #0xc]
@@ -126,29 +126,29 @@ _020A0988:
 	ldr r0, [r5, #0x2c]
 	cmp r0, #0
 	moveq r0, #0xb
-	bl sub_020A3C90
-	ldr r0, _020A09D4 ; =sub_020A41B4
-	bl sub_020AFFC4
-	ldr r0, _020A09D8 ; =sub_020A28DC
-	bl sub_020A3C38
+	bl CPS_SetThreadPriority
+	ldr r0, _020A09D4 ; =CPSi_RecvCallbackFunc
+	bl WCM_SetRecvDCFCallback
+	ldr r0, _020A09D8 ; =SOCLi_TrashSocket
+	bl CPS_SetScavengerCallback
 	mov r0, r4
-	bl sub_020A39AC
+	bl CPS_Startup
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020A09B4: .word _02110628
 _020A09B8: .word 0x021D4430
 _020A09BC: .word 0x021D4420
-_020A09C0: .word sub_020A0A60
+_020A09C0: .word SOCL_LinkIsOn
 _020A09C4: .word _02110648
 _020A09C8: .word 0x021D4670
-_020A09CC: .word sub_020A0A48
-_020A09D0: .word sub_020A09DC
-_020A09D4: .word sub_020A41B4
-_020A09D8: .word sub_020A28DC
-	arm_func_end sub_020A0880
+_020A09CC: .word SOCLi_DhcpTimeout
+_020A09D0: .word SOCLi_SetMyIP
+_020A09D4: .word CPSi_RecvCallbackFunc
+_020A09D8: .word SOCLi_TrashSocket
+	arm_func_end SOCLi_StartupCPS
 
-	arm_func_start sub_020A09DC
-sub_020A09DC: ; 0x020A09DC
+	arm_func_start SOCLi_SetMyIP
+SOCLi_SetMyIP: ; 0x020A09DC
 	ldr r0, _020A0A30 ; =_02110628
 	ldr r1, _020A0A34 ; =0x021D4670
 	ldr ip, [r0]
@@ -177,10 +177,10 @@ _020A0A38: .word 0x021D463C
 _020A0A3C: .word 0x021D464C
 _020A0A40: .word 0x021D4680
 _020A0A44: .word 0x021D4420
-	arm_func_end sub_020A09DC
+	arm_func_end SOCLi_SetMyIP
 
-	arm_func_start sub_020A0A48
-sub_020A0A48: ; 0x020A0A48
+	arm_func_start SOCLi_DhcpTimeout
+SOCLi_DhcpTimeout: ; 0x020A0A48
 	ldr r0, _020A0A5C ; =0x021D4420
 	ldr r1, [r0, #8]
 	orr r1, r1, #2
@@ -188,20 +188,20 @@ sub_020A0A48: ; 0x020A0A48
 	bx lr
 	.align 2, 0
 _020A0A5C: .word 0x021D4420
-	arm_func_end sub_020A0A48
+	arm_func_end SOCLi_DhcpTimeout
 
-	arm_func_start sub_020A0A60
-sub_020A0A60: ; 0x020A0A60
+	arm_func_start SOCL_LinkIsOn
+SOCL_LinkIsOn: ; 0x020A0A60
 	stmdb sp!, {r3, lr}
-	bl sub_020AFF20
+	bl WCM_GetApMacAddress
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020A0A60
+	arm_func_end SOCL_LinkIsOn
 
-	arm_func_start sub_020A0A78
-sub_020A0A78: ; 0x020A0A78
+	arm_func_start SOCLi_StartupCommandPacketQueue
+SOCLi_StartupCommandPacketQueue: ; 0x020A0A78
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	mov r0, #0x2c
@@ -228,7 +228,7 @@ sub_020A0A78: ; 0x020A0A78
 	ble _020A0AF0
 _020A0AD8:
 	mov r0, r5
-	bl sub_020A0BBC
+	bl SOCLi_FreeCommandPacket
 	sub r4, r4, #1
 	cmp r4, #0
 	add r5, r5, #0x2c
@@ -242,10 +242,10 @@ _020A0AF0:
 _020A0B00: .word _02110628
 _020A0B04: .word 0x021D4464
 _020A0B08: .word 0x021D4460
-	arm_func_end sub_020A0A78
+	arm_func_end SOCLi_StartupCommandPacketQueue
 
-	arm_func_start sub_020A0B0C
-sub_020A0B0C: ; 0x020A0B0C
+	arm_func_start SOCLi_CleanupCommandPacketQueue
+SOCLi_CleanupCommandPacketQueue: ; 0x020A0B0C
 	stmdb sp!, {r3, lr}
 	ldr r0, _020A0B4C ; =0x021D4460
 	ldr r2, [r0, #0x20]
@@ -265,10 +265,10 @@ sub_020A0B0C: ; 0x020A0B0C
 	.align 2, 0
 _020A0B4C: .word 0x021D4460
 _020A0B50: .word _02110628
-	arm_func_end sub_020A0B0C
+	arm_func_end SOCLi_CleanupCommandPacketQueue
 
-	arm_func_start sub_020A0B54
-sub_020A0B54: ; 0x020A0B54
+	arm_func_start SOCLi_AllocCommandPacket
+SOCLi_AllocCommandPacket: ; 0x020A0B54
 	stmdb sp!, {r3, lr}
 	mov r2, r0
 	ldr r0, _020A0B78 ; =0x021D4464
@@ -280,16 +280,16 @@ sub_020A0B54: ; 0x020A0B54
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A0B78: .word 0x021D4464
-	arm_func_end sub_020A0B54
+	arm_func_end SOCLi_AllocCommandPacket
 
-	arm_func_start sub_020A0B7C
-sub_020A0B7C: ; 0x020A0B7C
+	arm_func_start SOCLi_CreateCommandPacket
+SOCLi_CreateCommandPacket: ; 0x020A0B7C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r2
 	mov r6, r0
 	mov r0, r4
 	mov r5, r1
-	bl sub_020A0B54
+	bl SOCLi_AllocCommandPacket
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	str r6, [r0]
@@ -300,10 +300,10 @@ sub_020A0B7C: ; 0x020A0B7C
 	strb r1, [r0, #0xc]
 	strb r4, [r0, #0xd]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020A0B7C
+	arm_func_end SOCLi_CreateCommandPacket
 
-	arm_func_start sub_020A0BBC
-sub_020A0BBC: ; 0x020A0BBC
+	arm_func_start SOCLi_FreeCommandPacket
+SOCLi_FreeCommandPacket: ; 0x020A0BBC
 	stmdb sp!, {r3, lr}
 	movs r1, r0
 	ldmeqia sp!, {r3, pc}
@@ -313,19 +313,19 @@ sub_020A0BBC: ; 0x020A0BBC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A0BD8: .word 0x021D4464
-	arm_func_end sub_020A0BBC
+	arm_func_end SOCLi_FreeCommandPacket
 
-	arm_func_start sub_020A0BDC
-sub_020A0BDC: ; 0x020A0BDC
+	arm_func_start SOCLi_GetCtrlPipe
+SOCLi_GetCtrlPipe: ; 0x020A0BDC
 	ldr r1, [r0, #0x64]
 	cmp r1, #0
 	ldreq r1, [r0, #0x68]
 	mov r0, r1
 	bx lr
-	arm_func_end sub_020A0BDC
+	arm_func_end SOCLi_GetCtrlPipe
 
-	arm_func_start sub_020A0BF0
-sub_020A0BF0: ; 0x020A0BF0
+	arm_func_start SOCLi_SendCommandPacket
+SOCLi_SendCommandPacket: ; 0x020A0BF0
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r5, r1
 	beq _020A0C08
@@ -343,26 +343,26 @@ _020A0C14:
 	movs r4, r0
 	bne _020A0C2C
 	mov r0, r5
-	bl sub_020A0BBC
+	bl SOCLi_FreeCommandPacket
 _020A0C2C:
 	cmp r4, #0
 	movne r0, #0
 	mvneq r0, #0x29
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A0BF0
+	arm_func_end SOCLi_SendCommandPacket
 
-	arm_func_start sub_020A0C3C
-sub_020A0C3C: ; 0x020A0C3C
+	arm_func_start SOCLi_SendCommandPacketToCtrlPipe
+SOCLi_SendCommandPacketToCtrlPipe: ; 0x020A0C3C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl sub_020A0BDC
+	bl SOCLi_GetCtrlPipe
 	mov r1, r4
-	bl sub_020A0BF0
+	bl SOCLi_SendCommandPacket
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020A0C3C
+	arm_func_end SOCLi_SendCommandPacketToCtrlPipe
 
-	arm_func_start sub_020A0C54
-sub_020A0C54: ; 0x020A0C54
+	arm_func_start SOCLi_ExecCommandPacket
+SOCLi_ExecCommandPacket: ; 0x020A0C54
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x28
 	mov r4, r1
@@ -378,7 +378,7 @@ sub_020A0C54: ; 0x020A0C54
 	mov r0, r5
 	mov r1, r4
 	str r2, [r4, #8]
-	bl sub_020A0BF0
+	bl SOCLi_SendCommandPacket
 	add r0, sp, #8
 	add r1, sp, #4
 	mov r2, #1
@@ -387,44 +387,44 @@ sub_020A0C54: ; 0x020A0C54
 _020A0CA8:
 	mov r2, #0
 	str r2, [r4, #8]
-	bl sub_020A0BF0
+	bl SOCLi_SendCommandPacket
 	str r0, [sp, #4]
 _020A0CB8:
 	ldr r0, [sp, #4]
 	add sp, sp, #0x28
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A0C54
+	arm_func_end SOCLi_ExecCommandPacket
 
-	arm_func_start sub_020A0CC4
-sub_020A0CC4: ; 0x020A0CC4
-	ldr ip, _020A0CD0 ; =sub_020A0C54
+	arm_func_start SOCLi_ExecCommandPacketInRecvPipe
+SOCLi_ExecCommandPacketInRecvPipe: ; 0x020A0CC4
+	ldr ip, _020A0CD0 ; =SOCLi_ExecCommandPacket
 	ldr r0, [r0, #0x64]
 	bx ip
 	.align 2, 0
-_020A0CD0: .word sub_020A0C54
-	arm_func_end sub_020A0CC4
+_020A0CD0: .word SOCLi_ExecCommandPacket
+	arm_func_end SOCLi_ExecCommandPacketInRecvPipe
 
-	arm_func_start sub_020A0CD4
-sub_020A0CD4: ; 0x020A0CD4
-	ldr ip, _020A0CE0 ; =sub_020A0C54
+	arm_func_start SOCLi_ExecCommandPacketInSendPipe
+SOCLi_ExecCommandPacketInSendPipe: ; 0x020A0CD4
+	ldr ip, _020A0CE0 ; =SOCLi_ExecCommandPacket
 	ldr r0, [r0, #0x68]
 	bx ip
 	.align 2, 0
-_020A0CE0: .word sub_020A0C54
-	arm_func_end sub_020A0CD4
+_020A0CE0: .word SOCLi_ExecCommandPacket
+	arm_func_end SOCLi_ExecCommandPacketInSendPipe
 
-	arm_func_start sub_020A0CE4
-sub_020A0CE4: ; 0x020A0CE4
+	arm_func_start SOCLi_ExecCommandPacketInCtrlPipe
+SOCLi_ExecCommandPacketInCtrlPipe: ; 0x020A0CE4
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl sub_020A0BDC
+	bl SOCLi_GetCtrlPipe
 	mov r1, r4
-	bl sub_020A0C54
+	bl SOCLi_ExecCommandPacket
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020A0CE4
+	arm_func_end SOCLi_ExecCommandPacketInCtrlPipe
 
-	arm_func_start sub_020A0CFC
-sub_020A0CFC: ; 0x020A0CFC
+	arm_func_start SOCLi_CommandPacketHandler
+SOCLi_CommandPacketHandler: ; 0x020A0CFC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #4
 	mov r4, #0
@@ -464,45 +464,42 @@ _020A0D18:
 	bl OS_SendMessage
 _020A0D8C:
 	ldr r0, [sp]
-	bl sub_020A0BBC
+	bl SOCLi_FreeCommandPacket
 	bl OS_EnableScheduler
 	mov r0, r7
 	bl OS_RestoreInterrupts
 	b _020A0D18
-	arm_func_end sub_020A0CFC
-
-	arm_func_start sub_020A0DA4
-sub_020A0DA4: ; 0x020A0DA4
+_020A0DA4: ; 0x020A0DA4
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end sub_020A0DA4
+	arm_func_end SOCLi_CommandPacketHandler
 
-	arm_func_start sub_020A0DAC
-sub_020A0DAC: ; 0x020A0DAC
+	arm_func_start SOCL_CreateSocket
+SOCL_CreateSocket: ; 0x020A0DAC
 	stmdb sp!, {r4, lr}
-	bl sub_020A0E5C
+	bl SOCLi_StartupSocket
 	movs r4, r0
 	mvneq r0, #0x30
 	ldmeqia sp!, {r4, pc}
-	ldr r0, _020A0DE4 ; =sub_020A0DE8
+	ldr r0, _020A0DE4 ; =SOCLi_CreateSocketCallBack
 	mov r1, r4
 	mov r2, #1
-	bl sub_020A0B7C
+	bl SOCLi_CreateCommandPacket
 	mov r1, r0
 	mov r0, r4
-	bl sub_020A0CE4
+	bl SOCLi_ExecCommandPacketInCtrlPipe
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A0DE4: .word sub_020A0DE8
-	arm_func_end sub_020A0DAC
+_020A0DE4: .word SOCLi_CreateSocketCallBack
+	arm_func_end SOCL_CreateSocket
 
-	arm_func_start sub_020A0DE8
-sub_020A0DE8: ; 0x020A0DE8
+	arm_func_start SOCLi_CreateSocketCallBack
+SOCLi_CreateSocketCallBack: ; 0x020A0DE8
 	stmdb sp!, {r4, lr}
 	ldr r4, [r0, #4]
 	mov r0, r4
-	bl sub_020A6878
+	bl CPS_SocRegister
 	ldrsb r0, [r4, #0x73]
 	ldr r1, [r4, #0x68]
 	cmp r0, #4
@@ -516,31 +513,31 @@ _020A0E0C: ; jump table
 	b _020A0E20 ; case 4
 _020A0E20:
 	add r0, r1, #0x20
-	bl sub_020A6984
-	bl sub_020A6930
+	bl CPS_SocDup
+	bl CPS_SocUse
 	b _020A0E48
 _020A0E30:
-	bl sub_020A6930
-	bl sub_020A68A4
-	ldr r0, _020A0E58 ; =sub_020A1D10
-	bl sub_020A69DC
+	bl CPS_SocUse
+	bl CPS_SocDatagramMode
+	ldr r0, _020A0E58 ; =SOCLi_UdpRecvCallback
+	bl CPS_SetUdpCallback
 	b _020A0E48
 _020A0E44:
-	bl sub_020A68A4
+	bl CPS_SocDatagramMode
 _020A0E48:
 	mov r0, #1
 	strh r0, [r4, #0x70]
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A0E58: .word sub_020A1D10
-	arm_func_end sub_020A0DE8
+_020A0E58: .word SOCLi_UdpRecvCallback
+	arm_func_end SOCLi_CreateSocketCallBack
 
-	arm_func_start sub_020A0E5C
-sub_020A0E5C: ; 0x020A0E5C
+	arm_func_start SOCLi_StartupSocket
+SOCLi_StartupSocket: ; 0x020A0E5C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
-	bl sub_020A0EC4
+	bl SOCLi_GetSizeSocket
 	mov r4, r0
 	bl OS_DisableInterrupts
 	ldr r1, _020A0EC0 ; =_02110628
@@ -556,9 +553,9 @@ sub_020A0E5C: ; 0x020A0E5C
 	bl MI_CpuFill8
 	mov r0, r5
 	mov r1, r7
-	bl sub_020A0F6C
+	bl SOCLi_InitSocket
 	mov r0, r5
-	bl sub_020A2D9C
+	bl SOCLi_SocketRegister
 _020A0EB0:
 	mov r0, r6
 	bl OS_RestoreInterrupts
@@ -566,10 +563,10 @@ _020A0EB0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A0EC0: .word _02110628
-	arm_func_end sub_020A0E5C
+	arm_func_end SOCLi_StartupSocket
 
-	arm_func_start sub_020A0EC4
-sub_020A0EC4: ; 0x020A0EC4
+	arm_func_start SOCLi_GetSizeSocket
+SOCLi_GetSizeSocket: ; 0x020A0EC4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldrh r0, [r5, #2]
@@ -577,51 +574,51 @@ sub_020A0EC4: ; 0x020A0EC4
 	cmp r0, #0
 	beq _020A0F00
 	add r4, r4, #0x114
-	bl sub_020A2D90
+	bl SOCLi_RoundUp4
 	add r4, r4, r0
 	ldrh r0, [r5, #8]
-	bl sub_020A2D90
+	bl SOCLi_RoundUp4
 	add r4, r4, r0
 	add r0, r5, #0x10
-	bl sub_020A0F44
+	bl SOCLi_GetSizeCommandPipe
 	add r4, r4, r0
 _020A0F00:
 	ldrh r0, [r5, #6]
 	cmp r0, #0
 	beq _020A0F3C
 	add r4, r4, #0x110
-	bl sub_020A2D90
+	bl SOCLi_RoundUp4
 	add r4, r4, r0
 	ldrh r0, [r5, #0xa]
-	bl sub_020A2D90
+	bl SOCLi_RoundUp4
 	add r4, r4, r0
 	ldrh r0, [r5, #0xc]
-	bl sub_020A2D90
+	bl SOCLi_RoundUp4
 	add r4, r4, r0
 	add r0, r5, #0x14
-	bl sub_020A0F44
+	bl SOCLi_GetSizeCommandPipe
 	add r4, r4, r0
 _020A0F3C:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A0EC4
+	arm_func_end SOCLi_GetSizeSocket
 
-	arm_func_start sub_020A0F44
-sub_020A0F44: ; 0x020A0F44
+	arm_func_start SOCLi_GetSizeCommandPipe
+SOCLi_GetSizeCommandPipe: ; 0x020A0F44
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldrb r0, [r5, #3]
 	mov r0, r0, lsl #2
-	bl sub_020A2D90
+	bl SOCLi_RoundUp4
 	mov r4, r0
 	ldrh r0, [r5]
-	bl sub_020A2D90
+	bl SOCLi_RoundUp4
 	add r0, r4, r0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A0F44
+	arm_func_end SOCLi_GetSizeCommandPipe
 
-	arm_func_start sub_020A0F6C
-sub_020A0F6C: ; 0x020A0F6C
+	arm_func_start SOCLi_InitSocket
+SOCLi_InitSocket: ; 0x020A0F6C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r1
 	ldrsb r1, [r5]
@@ -640,13 +637,13 @@ sub_020A0F6C: ; 0x020A0F6C
 	strh r2, [r4, #0xfc]
 	add r2, r5, #0x10
 	mov r7, r4
-	bl sub_020A1090
+	bl SOCLi_InitCommandPipe
 	ldrh r2, [r5, #2]
 	add r1, r6, #0x3c
-	bl sub_020A1068
+	bl SOCLi_InitSocketBuffer
 	ldrh r2, [r5, #8]
 	add r1, r6, #0x50
-	bl sub_020A1068
+	bl SOCLi_InitSocketBuffer
 	ldrh r3, [r5, #0xe]
 	add r1, r7, #0x100
 	mov r2, #0
@@ -664,16 +661,16 @@ _020A0FEC:
 	add r0, r4, #0x110
 	add r2, r5, #0x14
 	mov r7, r4
-	bl sub_020A1090
+	bl SOCLi_InitCommandPipe
 	ldrh r2, [r5, #6]
 	add r1, r6, #0x48
-	bl sub_020A1068
+	bl SOCLi_InitSocketBuffer
 	ldrh r2, [r5, #0xa]
 	add r1, r6, #0x58
-	bl sub_020A1068
+	bl SOCLi_InitSocketBuffer
 	ldrh r2, [r5, #0xc]
 	add r1, r4, #0xf8
-	bl sub_020A1068
+	bl SOCLi_InitSocketBuffer
 	mov r1, #0
 	str r1, [r7, #0x108]
 	mov r4, r0
@@ -689,10 +686,10 @@ _020A105C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A1064: .word 0x021D442C
-	arm_func_end sub_020A0F6C
+	arm_func_end SOCLi_InitSocket
 
-	arm_func_start sub_020A1068
-sub_020A1068: ; 0x020A1068
+	arm_func_start SOCLi_InitSocketBuffer
+SOCLi_InitSocketBuffer: ; 0x020A1068
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	cmp r2, #0
@@ -700,20 +697,20 @@ sub_020A1068: ; 0x020A1068
 	str r0, [r1, #4]
 	mov r0, r2
 	str r2, [r1]
-	bl sub_020A2D90
+	bl SOCLi_RoundUp4
 	add r0, r4, r0
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020A1068
+	arm_func_end SOCLi_InitSocketBuffer
 
-	arm_func_start sub_020A1090
-sub_020A1090: ; 0x020A1090
+	arm_func_start SOCLi_InitCommandPipe
+SOCLi_InitCommandPipe: ; 0x020A1090
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r5, r2
 	mov r7, r0
 	mov r0, r5
 	mov r6, r1
-	bl sub_020A0F44
+	bl SOCLi_GetSizeCommandPipe
 	mov r4, r0
 	ldrb r2, [r5, #3]
 	mov r0, r6
@@ -723,7 +720,7 @@ sub_020A1090: ; 0x020A1090
 	bl OS_InitMutex
 	ldrh r2, [r5]
 	add r0, r6, #0x20
-	ldr r1, _020A1100 ; =sub_020A0CFC
+	ldr r1, _020A1100 ; =SOCLi_CommandPacketHandler
 	str r2, [sp]
 	ldrb ip, [r5, #2]
 	mov r2, r6
@@ -736,14 +733,14 @@ sub_020A1090: ; 0x020A1090
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A1100: .word sub_020A0CFC
-	arm_func_end sub_020A1090
+_020A1100: .word SOCLi_CommandPacketHandler
+	arm_func_end SOCLi_InitCommandPipe
 
-	arm_func_start sub_020A1104
-sub_020A1104: ; 0x020A1104
+	arm_func_start SOCL_Listen
+SOCL_Listen: ; 0x020A1104
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	mvnne r0, #0x1b
 	ldmneia sp!, {r4, pc}
@@ -774,15 +771,15 @@ _020A1134:
 	moveq r0, #0
 	mvnne r0, #5
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020A1104
+	arm_func_end SOCL_Listen
 
-	arm_func_start sub_020A1184
-sub_020A1184: ; 0x020A1184
+	arm_func_start SOCL_Accept
+SOCL_Accept: ; 0x020A1184
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	mvnne r0, #0x1b
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -813,31 +810,31 @@ _020A11BC:
 	mvnne r0, #5
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, _020A1244 ; =_02110648
-	bl sub_020A0DAC
+	bl SOCL_CreateSocket
 	movs r7, r0
 	ldmmiia sp!, {r3, r4, r5, r6, r7, pc}
 	ldrh r1, [r6, #0x74]
-	bl sub_020A1390
+	bl SOCL_Bind
 	cmp r0, #0
 	ldmltia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
 	mov r1, r5
 	mov r2, r4
-	bl sub_020A1248
+	bl SOCL_ListenAccept
 	cmp r0, #0
 	movge r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A1244: .word _02110648
-	arm_func_end sub_020A1184
+	arm_func_end SOCL_Accept
 
-	arm_func_start sub_020A1248
-sub_020A1248: ; 0x020A1248
+	arm_func_start SOCL_ListenAccept
+SOCL_ListenAccept: ; 0x020A1248
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	mvnne r0, #0x1b
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -871,9 +868,9 @@ _020A1280:
 	cmp r0, #0
 	mvneq r0, #0x1b
 	ldmeqia sp!, {r4, r5, r6, pc}
-	ldr r0, _020A1314 ; =sub_020A1318
+	ldr r0, _020A1314 ; =SOCLi_ListenAcceptCallBack
 	mov r1, r6
-	bl sub_020A0B7C
+	bl SOCLi_CreateCommandPacket
 	mov r1, r0
 	ldrh r2, [r6, #0x74]
 	mov r0, r6
@@ -883,14 +880,14 @@ _020A1280:
 	ldrsh r2, [r6, #0x70]
 	orr r2, r2, #2
 	strh r2, [r6, #0x70]
-	bl sub_020A0CC4
+	bl SOCLi_ExecCommandPacketInRecvPipe
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020A1314: .word sub_020A1318
-	arm_func_end sub_020A1248
+_020A1314: .word SOCLi_ListenAcceptCallBack
+	arm_func_end SOCL_ListenAccept
 
-	arm_func_start sub_020A1318
-sub_020A1318: ; 0x020A1318
+	arm_func_start SOCLi_ListenAcceptCallBack
+SOCLi_ListenAcceptCallBack: ; 0x020A1318
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r6, r0
@@ -901,13 +898,13 @@ sub_020A1318: ; 0x020A1318
 	mov r1, #0
 	ldrh r0, [r6, #0x10]
 	mov r2, r1
-	bl sub_020A68D0
-	bl sub_020A69F8
+	bl CPS_SocBind
+	bl CPS_TcpListen
 	mov r2, #0
 	add r0, sp, #0
 	add r1, sp, #4
 	str r2, [r5, #0xf8]
-	bl sub_020A6B24
+	bl CPS_SocWho
 	ldrh r2, [sp]
 	ldr r1, [r6, #0x14]
 	strh r2, [r1]
@@ -921,14 +918,14 @@ sub_020A1318: ; 0x020A1318
 	mov r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020A1318
+	arm_func_end SOCLi_ListenAcceptCallBack
 
-	arm_func_start sub_020A1390
-sub_020A1390: ; 0x020A1390
+	arm_func_start SOCL_Bind
+SOCL_Bind: ; 0x020A1390
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	mvnne r0, #0x1b
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -952,17 +949,17 @@ _020A13C4:
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl sub_020A14E8
+	bl SOCLi_ExecBindCommand
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A1390
+	arm_func_end SOCL_Bind
 
-	arm_func_start sub_020A1400
-sub_020A1400: ; 0x020A1400
+	arm_func_start SOCL_Connect
+SOCL_Connect: ; 0x020A1400
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	bne _020A1428
 	ldrsh r0, [r6, #0x70]
@@ -1011,7 +1008,7 @@ _020A14B4:
 	strh r5, [r6, #0x76]
 	mov r0, r6
 	str r4, [r6, #0x78]
-	bl sub_020A14E8
+	bl SOCLi_ExecBindCommand
 	ldrsb r1, [r6, #0x72]
 	cmp r1, #1
 	mvnne r0, #0x19
@@ -1023,16 +1020,16 @@ _020A14D4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020A14E4: .word _0211062C
-	arm_func_end sub_020A1400
+	arm_func_end SOCL_Connect
 
-	arm_func_start sub_020A14E8
-sub_020A14E8: ; 0x020A14E8
+	arm_func_start SOCLi_ExecBindCommand
+SOCLi_ExecBindCommand: ; 0x020A14E8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrsb r2, [r4, #0x72]
-	ldr r0, _020A153C ; =sub_020A1540
+	ldr r0, _020A153C ; =SOCLi_BindCallBack
 	mov r1, r4
-	bl sub_020A0B7C
+	bl SOCLi_CreateCommandPacket
 	movs r1, r0
 	mvneq r0, #0x20
 	ldmeqia sp!, {r4, pc}
@@ -1046,14 +1043,14 @@ sub_020A14E8: ; 0x020A14E8
 	ldrsh r2, [r4, #0x70]
 	orr r2, r2, #2
 	strh r2, [r4, #0x70]
-	bl sub_020A0CC4
+	bl SOCLi_ExecCommandPacketInRecvPipe
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A153C: .word sub_020A1540
-	arm_func_end sub_020A14E8
+_020A153C: .word SOCLi_BindCallBack
+	arm_func_end SOCLi_ExecBindCommand
 
-	arm_func_start sub_020A1540
-sub_020A1540: ; 0x020A1540
+	arm_func_start SOCLi_BindCallBack
+SOCLi_BindCallBack: ; 0x020A1540
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	ldr r4, [r7, #4]
@@ -1064,14 +1061,14 @@ sub_020A1540: ; 0x020A1540
 	ldrh r0, [r7, #0x10]
 	ldrh r1, [r7, #0x12]
 	ldr r2, [r7, #0x14]
-	bl sub_020A68D0
+	bl CPS_SocBind
 	mov r0, r6
 	str r0, [r5, #0xf8]
 	ldrsb r0, [r7, #0xc]
 	cmp r0, #0
 	cmpne r0, #4
 	bne _020A158C
-	bl sub_020A6AE4
+	bl CPS_TcpConnect
 	mov r6, r0
 _020A158C:
 	add r0, r5, #0xe0
@@ -1089,17 +1086,17 @@ _020A15B0:
 	orr r1, r1, #4
 	strh r1, [r4, #0x70]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020A1540
+	arm_func_end SOCLi_BindCallBack
 
-	arm_func_start sub_020A15C4
-sub_020A15C4: ; 0x020A15C4
+	arm_func_start SOCL_ReadFrom
+SOCL_ReadFrom: ; 0x020A15C4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0xc
 	mov sb, r0
 	mov r8, r1
 	mov r7, r2
 	mov r6, r3
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	addne sp, sp, #0xc
 	mvnne r0, #0x1b
@@ -1176,17 +1173,17 @@ _020A16D0:
 	mov r2, r7
 	mov r3, r6
 	stmib sp, {r5, ip}
-	bl sub_020A170C
+	bl SOCLi_ReadAndConsumeBuffer
 	mov r5, r0
 	add r0, r4, #0xe0
 	bl OS_UnlockMutex
 	mov r0, r5
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020A15C4
+	arm_func_end SOCL_ReadFrom
 
-	arm_func_start sub_020A170C
-sub_020A170C: ; 0x020A170C
+	arm_func_start SOCLi_ReadAndConsumeBuffer
+SOCLi_ReadAndConsumeBuffer: ; 0x020A170C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r4, [sp, #0x28]
@@ -1208,7 +1205,7 @@ sub_020A170C: ; 0x020A170C
 	str r0, [sp]
 	mov r0, r7
 	str ip, [sp, #4]
-	bl sub_020A1BCC
+	bl SOCLi_ReadUdpBuffer
 	mov r8, r0
 	b _020A1794
 _020A176C:
@@ -1217,21 +1214,21 @@ _020A176C:
 	str r0, [sp]
 	mov r0, r7
 	str ip, [sp, #4]
-	bl sub_020A17A8
+	bl SOCLi_ReadBuffer
 	movs r8, r0
 	bmi _020A1794
 	mov r0, r7
-	bl sub_020A1B34
+	bl SOCLi_ConsumeBuffer
 _020A1794:
 	cmp r6, #0
 	strneb r5, [r4, #0xfe]
 	mov r0, r8
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020A170C
+	arm_func_end SOCLi_ReadAndConsumeBuffer
 
-	arm_func_start sub_020A17A8
-sub_020A17A8: ; 0x020A17A8
+	arm_func_start SOCLi_ReadBuffer
+SOCLi_ReadBuffer: ; 0x020A17A8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	ldrsb ip, [r7, #0x73]
@@ -1242,12 +1239,12 @@ sub_020A17A8: ; 0x020A17A8
 	bne _020A17D8
 	ldr r4, [sp, #0x18]
 	str r4, [sp]
-	bl sub_020A1998
+	bl SOCLi_ExecReadCommand
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020A17D8:
 	ldr ip, [sp, #0x18]
 	str ip, [sp]
-	bl sub_020A181C
+	bl SOCLi_CopyCPSBuffer
 	mvn r1, #5
 	cmp r0, r1
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1260,12 +1257,12 @@ _020A17D8:
 	mov r2, r5
 	mov r3, r4
 	str ip, [sp]
-	bl sub_020A1998
+	bl SOCLi_ExecReadCommand
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020A17A8
+	arm_func_end SOCLi_ReadBuffer
 
-	arm_func_start sub_020A181C
-sub_020A181C: ; 0x020A181C
+	arm_func_start SOCLi_CopyCPSBuffer
+SOCLi_CopyCPSBuffer: ; 0x020A181C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x10
 	mov sb, r0
@@ -1280,7 +1277,7 @@ sub_020A181C: ; 0x020A181C
 	mov r0, sb
 	add r2, sp, #6
 	add r3, sp, #4
-	bl sub_020A1924
+	bl SOCLi_ReadCPSBuffer
 	cmp r0, #0
 	beq _020A18BC
 	ldr r5, [sp, #0xc]
@@ -1336,10 +1333,10 @@ _020A1910:
 	mov r0, r5
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020A181C
+	arm_func_end SOCLi_CopyCPSBuffer
 
-	arm_func_start sub_020A1924
-sub_020A1924: ; 0x020A1924
+	arm_func_start SOCLi_ReadCPSBuffer
+SOCLi_ReadCPSBuffer: ; 0x020A1924
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, [r0, #0x64]
 	ldr r4, [r0, #0xc4]
@@ -1371,19 +1368,19 @@ _020A198C:
 	ldr r0, [r4, #0x40]
 	add r0, r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A1924
+	arm_func_end SOCLi_ReadCPSBuffer
 
-	arm_func_start sub_020A1998
-sub_020A1998: ; 0x020A1998
+	arm_func_start SOCLi_ExecReadCommand
+SOCLi_ExecReadCommand: ; 0x020A1998
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
-	ldr r0, _020A19E0 ; =sub_020A19E4
+	ldr r0, _020A19E0 ; =SOCLi_ReadCallBack
 	mov r1, r7
 	mov r2, #1
 	mov r4, r3
-	bl sub_020A0B7C
+	bl SOCLi_CreateCommandPacket
 	mov r1, r0
 	str r6, [r1, #0x10]
 	str r5, [r1, #0x14]
@@ -1391,14 +1388,14 @@ sub_020A1998: ; 0x020A1998
 	str r4, [r1, #0x18]
 	mov r0, r7
 	str r2, [r1, #0x1c]
-	bl sub_020A0CC4
+	bl SOCLi_ExecCommandPacketInRecvPipe
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A19E0: .word sub_020A19E4
-	arm_func_end sub_020A1998
+_020A19E0: .word SOCLi_ReadCallBack
+	arm_func_end SOCLi_ExecReadCommand
 
-	arm_func_start sub_020A19E4
-sub_020A19E4: ; 0x020A19E4
+	arm_func_start SOCLi_ReadCallBack
+SOCLi_ReadCallBack: ; 0x020A19E4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	ldr r7, [r0, #4]
@@ -1417,7 +1414,7 @@ sub_020A19E4: ; 0x020A19E4
 	add r6, sp, #0x10
 _020A1A24:
 	mov r0, r6
-	bl sub_020A6D58
+	bl CPS_SocRead
 	cmp r0, #0
 	beq _020A1A78
 	ldr r1, [sp, #0x10]
@@ -1457,7 +1454,7 @@ _020A1A78:
 	mov r2, sl
 	bl MI_CpuCopy8
 	mov r0, sl
-	bl sub_020A6E4C
+	bl CPS_SocConsume
 	add sp, sp, #0x14
 	mov r0, sl
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -1471,7 +1468,7 @@ _020A1AD4:
 	mov r0, r7
 	mov r2, sl
 	str r4, [sp]
-	bl sub_020A181C
+	bl SOCLi_CopyCPSBuffer
 	mov r4, r0
 _020A1B00:
 	cmp r4, #0
@@ -1483,15 +1480,15 @@ _020A1B00:
 	cmp r1, r0
 	blt _020A1B28
 	mov r0, r7
-	bl sub_020A1B90
+	bl SOCLi_ConsumeCPSBuffer
 _020A1B28:
 	mov r0, r4
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020A19E4
+	arm_func_end SOCLi_ReadCallBack
 
-	arm_func_start sub_020A1B34
-sub_020A1B34: ; 0x020A1B34
+	arm_func_start SOCLi_ConsumeBuffer
+SOCLi_ConsumeBuffer: ; 0x020A1B34
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r1, [r4, #0x64]
@@ -1500,31 +1497,31 @@ sub_020A1B34: ; 0x020A1B34
 	cmp r1, r0
 	movlt r0, #0
 	ldmltia sp!, {r4, pc}
-	ldr r0, _020A1B7C ; =sub_020A1B80
+	ldr r0, _020A1B7C ; =SOCLi_ConsumeCallBack
 	mov r1, r4
 	mov r2, #0
-	bl sub_020A0B7C
+	bl SOCLi_CreateCommandPacket
 	movs r1, r0
 	mvneq r0, #0x20
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
-	bl sub_020A0CC4
+	bl SOCLi_ExecCommandPacketInRecvPipe
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A1B7C: .word sub_020A1B80
-	arm_func_end sub_020A1B34
+_020A1B7C: .word SOCLi_ConsumeCallBack
+	arm_func_end SOCLi_ConsumeBuffer
 
-	arm_func_start sub_020A1B80
-sub_020A1B80: ; 0x020A1B80
-	ldr ip, _020A1B8C ; =sub_020A1B90
+	arm_func_start SOCLi_ConsumeCallBack
+SOCLi_ConsumeCallBack: ; 0x020A1B80
+	ldr ip, _020A1B8C ; =SOCLi_ConsumeCPSBuffer
 	ldr r0, [r0, #4]
 	bx ip
 	.align 2, 0
-_020A1B8C: .word sub_020A1B90
-	arm_func_end sub_020A1B80
+_020A1B8C: .word SOCLi_ConsumeCPSBuffer
+	arm_func_end SOCLi_ConsumeCallBack
 
-	arm_func_start sub_020A1B90
-sub_020A1B90: ; 0x020A1B90
+	arm_func_start SOCLi_ConsumeCPSBuffer
+SOCLi_ConsumeCPSBuffer: ; 0x020A1B90
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r4, [r0, #0x64]
 	bl OS_DisableInterrupts
@@ -1535,16 +1532,16 @@ sub_020A1B90: ; 0x020A1B90
 	mov r1, #0
 	mov r0, r6
 	str r1, [r4, #0xf8]
-	bl sub_020A6E4C
+	bl CPS_SocConsume
 _020A1BBC:
 	mov r0, r5
 	bl OS_RestoreInterrupts
 	mov r0, r6
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020A1B90
+	arm_func_end SOCLi_ConsumeCPSBuffer
 
-	arm_func_start sub_020A1BCC
-sub_020A1BCC: ; 0x020A1BCC
+	arm_func_start SOCLi_ReadUdpBuffer
+SOCLi_ReadUdpBuffer: ; 0x020A1BCC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	mov sl, r0
@@ -1569,7 +1566,7 @@ _020A1C10:
 	add r0, r6, #0x10c
 	bl OS_SleepThread
 	mov r0, sl
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	bne _020A1C54
 	mov r1, r5
@@ -1633,10 +1630,10 @@ _020A1CF8:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020A1D0C: .word _02110628
-	arm_func_end sub_020A1BCC
+	arm_func_end SOCLi_ReadUdpBuffer
 
-	arm_func_start sub_020A1D10
-sub_020A1D10: ; 0x020A1D10
+	arm_func_start SOCLi_UdpRecvCallback
+SOCLi_UdpRecvCallback: ; 0x020A1D10
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r2
 	ldr r4, [r7, #0x64]
@@ -1710,17 +1707,17 @@ _020A1DE4:
 	.align 2, 0
 _020A1E1C: .word _02110628
 _020A1E20: .word 0x021D4484
-	arm_func_end sub_020A1D10
+	arm_func_end SOCLi_UdpRecvCallback
 
-	arm_func_start sub_020A1E24
-sub_020A1E24: ; 0x020A1E24
+	arm_func_start SOCL_WriteTo
+SOCL_WriteTo: ; 0x020A1E24
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	mov r8, r0
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	addne sp, sp, #8
 	mvnne r0, #0x1b
@@ -1782,17 +1779,17 @@ _020A1F00:
 	mov r2, r6
 	mov r3, r5
 	str ip, [sp, #4]
-	bl sub_020A1F38
+	bl SOCLi_WriteBuffer
 	mov r5, r0
 	add r0, r4, #0xe0
 	bl OS_UnlockMutex
 	mov r0, r5
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020A1E24
+	arm_func_end SOCL_WriteTo
 
-	arm_func_start sub_020A1F38
-sub_020A1F38: ; 0x020A1F38
+	arm_func_start SOCLi_WriteBuffer
+SOCLi_WriteBuffer: ; 0x020A1F38
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	mov sl, r0
@@ -1830,7 +1827,7 @@ _020A1FAC:
 	mov r1, r8
 	add r3, sp, #0x14
 	str r6, [sp]
-	bl sub_020A203C
+	bl SOCLi_AllocWriteBuffer
 	mov r4, r0
 	cmp r4, #0
 	ble _020A200C
@@ -1841,7 +1838,7 @@ _020A1FAC:
 	ldr r3, [sp, #0x14]
 	mov r0, sl
 	mov r2, r4
-	bl sub_020A20E4
+	bl SOCLi_ExecWriteCommand
 	cmp r0, #0
 	addle sp, sp, #0x18
 	mvnle r0, #5
@@ -1864,10 +1861,10 @@ _020A2030:
 	mov r0, r5
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020A1F38
+	arm_func_end SOCLi_WriteBuffer
 
-	arm_func_start sub_020A203C
-sub_020A203C: ; 0x020A203C
+	arm_func_start SOCLi_AllocWriteBuffer
+SOCLi_AllocWriteBuffer: ; 0x020A203C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	mov sb, r1
@@ -1882,7 +1879,7 @@ sub_020A203C: ; 0x020A203C
 	and r6, r1, #1
 _020A206C:
 	mov r0, sl
-	bl sub_020A20C0
+	bl SOCLi_GetWriteBufferFreeSize
 	mov r5, r0
 	cmp r5, r8
 	blt _020A2098
@@ -1904,10 +1901,10 @@ _020A20B0:
 	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020A203C
+	arm_func_end SOCLi_AllocWriteBuffer
 
-	arm_func_start sub_020A20C0
-sub_020A20C0: ; 0x020A20C0
+	arm_func_start SOCLi_GetWriteBufferFreeSize
+SOCLi_GetWriteBufferFreeSize: ; 0x020A20C0
 	ldr r2, [r0, #0x68]
 	add r0, r2, #0x100
 	ldrh r1, [r0]
@@ -1917,10 +1914,10 @@ sub_020A20C0: ; 0x020A20C0
 	subs r0, r0, #1
 	addmi r0, r0, r2
 	bx lr
-	arm_func_end sub_020A20C0
+	arm_func_end SOCLi_GetWriteBufferFreeSize
 
-	arm_func_start sub_020A20E4
-sub_020A20E4: ; 0x020A20E4
+	arm_func_start SOCLi_ExecWriteCommand
+SOCLi_ExecWriteCommand: ; 0x020A20E4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	ldr r4, [sb, #0x68]
@@ -1928,9 +1925,9 @@ sub_020A20E4: ; 0x020A20E4
 	mov r8, r2
 	ldr r1, [r4, #0x10c]
 	ldr r2, [sp, #0x28]
-	ldr r0, _020A2254 ; =sub_020A2258
+	ldr r0, _020A2254 ; =SOCLi_WriteCallBack
 	mov r7, r3
-	bl sub_020A0B7C
+	bl SOCLi_CreateCommandPacket
 	movs r5, r0
 	mvneq r0, #0x20
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -1983,7 +1980,7 @@ _020A2198:
 	ldrh r0, [sb, #0x74]
 	cmp r0, #0
 	bne _020A21E4
-	bl sub_020A678C
+	bl CPS_SocGetEport
 	strh r0, [sb, #0x74]
 	ldrh r0, [sb, #0x74]
 	strh r0, [sb, #0xa]
@@ -2013,7 +2010,7 @@ _020A2228:
 _020A2230:
 	ldr r0, [r4, #0x10c]
 	mov r1, r5
-	bl sub_020A0CD4
+	bl SOCLi_ExecCommandPacketInSendPipe
 	cmp r0, #0
 	addne r0, r4, #0x100
 	movne r8, #0
@@ -2021,11 +2018,11 @@ _020A2230:
 	mov r0, r8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020A2254: .word sub_020A2258
-	arm_func_end sub_020A20E4
+_020A2254: .word SOCLi_WriteCallBack
+	arm_func_end SOCLi_ExecWriteCommand
 
-	arm_func_start sub_020A2258
-sub_020A2258: ; 0x020A2258
+	arm_func_start SOCLi_WriteCallBack
+SOCLi_WriteCallBack: ; 0x020A2258
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov sb, r0
 	ldr r5, [sb, #4]
@@ -2047,7 +2044,7 @@ _020A2294:
 	beq _020A22AC
 	ldrh r0, [sb, #0x24]
 	ldrh r1, [sb, #0x26]
-	bl sub_020A68D0
+	bl CPS_SocBind
 _020A22AC:
 	ldrsb r1, [r5, #0x73]
 	mov r0, #1
@@ -2065,18 +2062,18 @@ _020A22AC:
 	bne _020A22F4
 	ldr r0, [r5, #0x48]
 	sub r0, r0, r8
-	bl sub_020A2388
+	bl SOCLi_GetOptimumSendBufLen
 	mov sl, r0
 _020A22F4:
 	mov r1, sl
 	mov r2, sb
 	add r0, r4, r8
-	bl sub_020A242C
+	bl SOCLi_MemCpy
 	mov r1, r0
 	cmp r1, #0
 	ble _020A236C
 	add r0, r4, r8
-	bl sub_020A7260
+	bl CPS_SocWrite
 	cmp r0, #0
 	bgt _020A2360
 	ldrsb r0, [r5, #0x73]
@@ -2092,7 +2089,7 @@ _020A22F4:
 	ldrsh r0, [r5, #0x70]
 	orr r0, r0, #0x80
 	strh r0, [r5, #0x70]
-	bl sub_020A6C00
+	bl CPS_TcpClose
 _020A2358:
 	mvn r7, #0x4b
 	b _020A236C
@@ -2109,10 +2106,10 @@ _020A236C:
 	bl OS_WakeupThread
 	mov r0, r7
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end sub_020A2258
+	arm_func_end SOCLi_WriteCallBack
 
-	arm_func_start sub_020A2388
-sub_020A2388: ; 0x020A2388
+	arm_func_start SOCLi_GetOptimumSendBufLen
+SOCLi_GetOptimumSendBufLen: ; 0x020A2388
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _020A2424 ; =0x021E16A0
 	mov r4, r0
@@ -2159,10 +2156,10 @@ _020A241C:
 	.align 2, 0
 _020A2424: .word 0x021E16A0
 _020A2428: .word 0x021D4430
-	arm_func_end sub_020A2388
+	arm_func_end SOCLi_GetOptimumSendBufLen
 
-	arm_func_start sub_020A242C
-sub_020A242C: ; 0x020A242C
+	arm_func_start SOCLi_MemCpy
+SOCLi_MemCpy: ; 0x020A242C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r2
 	ldr r4, [r6, #0x14]
@@ -2204,13 +2201,13 @@ _020A248C:
 _020A24BC:
 	add r0, r4, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020A242C
+	arm_func_end SOCLi_MemCpy
 
-	arm_func_start sub_020A24C4
-sub_020A24C4: ; 0x020A24C4
+	arm_func_start SOCL_Shutdown
+SOCL_Shutdown: ; 0x020A24C4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	mvnne r0, #0x1b
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -2243,23 +2240,23 @@ _020A2520:
 	cmpne r1, #0
 	beq _020A2564
 	ldrsb r2, [r4, #0x72]
-	ldr r0, _020A256C ; =sub_020A2570
-	bl sub_020A0B7C
+	ldr r0, _020A256C ; =SOCLi_ShutdownCallBack
+	bl SOCLi_CreateCommandPacket
 	movs r1, r0
 	mvneq r0, #0x20
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r0, [r5, #0x10c]
-	bl sub_020A0CD4
+	bl SOCLi_ExecCommandPacketInSendPipe
 	ldmia sp!, {r3, r4, r5, pc}
 _020A2564:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020A256C: .word sub_020A2570
-	arm_func_end sub_020A24C4
+_020A256C: .word SOCLi_ShutdownCallBack
+	arm_func_end SOCL_Shutdown
 
-	arm_func_start sub_020A2570
-sub_020A2570: ; 0x020A2570
+	arm_func_start SOCLi_ShutdownCallBack
+SOCLi_ShutdownCallBack: ; 0x020A2570
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0, #4]
 	mov r1, #1
@@ -2269,43 +2266,43 @@ sub_020A2570: ; 0x020A2570
 	movne r1, #0
 	cmp r1, #0
 	beq _020A2598
-	bl sub_020A6BC4
+	bl CPS_TcpShutdown
 _020A2598:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020A2570
+	arm_func_end SOCLi_ShutdownCallBack
 
-	arm_func_start sub_020A25A0
-sub_020A25A0: ; 0x020A25A0
+	arm_func_start SOCL_IsClosed
+SOCL_IsClosed: ; 0x020A25A0
 	stmdb sp!, {r4, lr}
 	movs r4, r0
 	bmi _020A25CC
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	beq _020A25CC
 	mov r0, r4
-	bl sub_020A2E88
+	bl SOCL_SocketIsInTrash
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, pc}
 _020A25CC:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020A25A0
+	arm_func_end SOCL_IsClosed
 
-	arm_func_start sub_020A25D4
-sub_020A25D4: ; 0x020A25D4
+	arm_func_start SOCL_Close
+SOCL_Close: ; 0x020A25D4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	cmp r4, #0
 	mvnle r0, #0x1b
 	ldmleia sp!, {r4, pc}
-	bl sub_020A2E88
+	bl SOCL_SocketIsInTrash
 	cmp r0, #0
 	mvnne r0, #0x19
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
@@ -2335,25 +2332,25 @@ _020A2624:
 	beq _020A2674
 	ldr r0, [r4, #0x68]
 	mov r1, #0
-	bl sub_020A0BF0
+	bl SOCLi_SendCommandPacket
 _020A2674:
-	ldr r0, _020A26A0 ; =sub_020A26A4
+	ldr r0, _020A26A0 ; =SOCLi_CloseCallBack
 	mov r1, r4
 	mov r2, #1
-	bl sub_020A0B7C
+	bl SOCLi_CreateCommandPacket
 	mov r1, r0
 	mov r2, #0
 	mov r0, r4
 	str r2, [r1, #8]
-	bl sub_020A0C3C
+	bl SOCLi_SendCommandPacketToCtrlPipe
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A26A0: .word sub_020A26A4
-	arm_func_end sub_020A25D4
+_020A26A0: .word SOCLi_CloseCallBack
+	arm_func_end SOCL_Close
 
-	arm_func_start sub_020A26A4
-sub_020A26A4: ; 0x020A26A4
+	arm_func_start SOCLi_CloseCallBack
+SOCLi_CloseCallBack: ; 0x020A26A4
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, [r0, #4]
 	mov r1, #1
@@ -2366,11 +2363,11 @@ sub_020A26A4: ; 0x020A26A4
 	ldr r0, [r4, #0x68]
 	add r0, r0, #0x20
 	bl OS_JoinThread
-	bl sub_020A6BC4
-	bl sub_020A6C00
-	bl sub_020A6964
+	bl CPS_TcpShutdown
+	bl CPS_TcpClose
+	bl CPS_SocRelease
 _020A26E0:
-	bl sub_020A688C
+	bl CPS_SocUnRegister
 	ldrsh r0, [r4, #0x70]
 	mov r1, #0
 	bic r0, r0, #6
@@ -2379,13 +2376,13 @@ _020A26E0:
 	cmp r0, #2
 	ldreq r0, [r4, #0x68]
 	ldrne r0, [r4, #0x64]
-	bl sub_020A0BF0
+	bl SOCLi_SendCommandPacket
 	bl OS_DisableInterrupts
 	mov r5, r0
 	mov r0, r4
-	bl sub_020A2DDC
+	bl SOCLi_SocketUnregister
 	mov r0, r4
-	bl sub_020A2DC4
+	bl SOCLi_SocketRegisterTrash
 	mov r0, r5
 	bl OS_RestoreInterrupts
 	ldrsh r1, [r4, #0x70]
@@ -2393,10 +2390,10 @@ _020A26E0:
 	orr r1, r1, #0x20
 	strh r1, [r4, #0x70]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A26A4
+	arm_func_end SOCLi_CloseCallBack
 
-	arm_func_start sub_020A273C
-sub_020A273C: ; 0x020A273C
+	arm_func_start SOCLi_CleanupSocket
+SOCLi_CleanupSocket: ; 0x020A273C
 	stmdb sp!, {r4, r5, r6, lr}
 	movs r4, r0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -2410,9 +2407,9 @@ sub_020A273C: ; 0x020A273C
 	cmp r1, #0
 	beq _020A2780
 	ldr r0, [r4, #0x68]
-	bl sub_020A283C
+	bl SOCLi_FreeCommandPipe
 	ldr r0, [r4, #0x64]
-	bl sub_020A283C
+	bl SOCLi_FreeCommandPipe
 	b _020A2800
 _020A2780:
 	cmp r2, #1
@@ -2443,20 +2440,20 @@ _020A27B8:
 	add r0, r0, #0x10c
 	bl OS_WakeupThread
 	ldr r0, [r4, #0x64]
-	bl sub_020A283C
+	bl SOCLi_FreeCommandPipe
 	b _020A2800
 _020A27F0:
 	cmp r2, #2
 	bne _020A2800
 	ldr r0, [r4, #0x68]
-	bl sub_020A283C
+	bl SOCLi_FreeCommandPipe
 _020A2800:
 	bl OS_DisableInterrupts
 	mov r5, r0
 	mov r0, r4
-	bl sub_020A2DDC
+	bl SOCLi_SocketUnregister
 	mov r0, r4
-	bl sub_020A2E3C
+	bl SOCLi_SocketUnregisterTrash
 	ldr r1, _020A2838 ; =_02110628
 	mov r0, r4
 	ldr r1, [r1]
@@ -2467,10 +2464,10 @@ _020A2800:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020A2838: .word _02110628
-	arm_func_end sub_020A273C
+	arm_func_end SOCLi_CleanupSocket
 
-	arm_func_start sub_020A283C
-sub_020A283C: ; 0x020A283C
+	arm_func_start SOCLi_FreeCommandPipe
+SOCLi_FreeCommandPipe: ; 0x020A283C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	movs sb, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -2501,7 +2498,7 @@ _020A2884:
 	bl OS_SendMessage
 _020A28A8:
 	ldr r0, [sp]
-	bl sub_020A0BBC
+	bl SOCLi_FreeCommandPacket
 _020A28B0:
 	mov r0, sb
 	mov r1, r5
@@ -2515,10 +2512,10 @@ _020A28C8:
 	mov r0, r8
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020A283C
+	arm_func_end SOCLi_FreeCommandPipe
 
-	arm_func_start sub_020A28DC
-sub_020A28DC: ; 0x020A28DC
+	arm_func_start SOCLi_TrashSocket
+SOCLi_TrashSocket: ; 0x020A28DC
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_DisableInterrupts
 	ldr r4, _020A2914 ; =0x021D4490
@@ -2527,7 +2524,7 @@ sub_020A28DC: ; 0x020A28DC
 	cmp r0, #0
 	beq _020A2908
 _020A28F8:
-	bl sub_020A273C
+	bl SOCLi_CleanupSocket
 	ldr r0, [r4]
 	cmp r0, #0
 	bne _020A28F8
@@ -2537,10 +2534,10 @@ _020A2908:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020A2914: .word 0x021D4490
-	arm_func_end sub_020A28DC
+	arm_func_end SOCLi_TrashSocket
 
-	arm_func_start sub_020A2918
-sub_020A2918: ; 0x020A2918
+	arm_func_start SOCL_Cleanup
+SOCL_Cleanup: ; 0x020A2918
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _020A29AC ; =0x021D4424
 	ldr r0, [r1]
@@ -2548,7 +2545,7 @@ sub_020A2918: ; 0x020A2918
 	ldreq r0, _020A29B0 ; =0x021D4670
 	ldreq r0, [r0]
 	streq r0, [r1]
-	bl sub_020A2A64
+	bl SOCL_CalmDown
 	mvn r4, #0x19
 	cmp r0, r4
 	bne _020A295C
@@ -2556,16 +2553,16 @@ sub_020A2918: ; 0x020A2918
 _020A2948:
 	mov r0, r5
 	bl OS_Sleep
-	bl sub_020A2A64
+	bl SOCL_CalmDown
 	cmp r0, r4
 	beq _020A2948
 _020A295C:
-	bl sub_020A0B0C
+	bl SOCLi_CleanupCommandPacketQueue
 	movs r4, r0
 	bmi _020A29A4
-	bl sub_020A3C48
+	bl CPS_Cleanup
 	mov r0, #0
-	bl sub_020A3C38
+	bl CPS_SetScavengerCallback
 	ldr r0, _020A29B4 ; =_02110628
 	ldr r1, [r0]
 	ldr r0, [r1, #0x28]
@@ -2587,10 +2584,10 @@ _020A29AC: .word 0x021D4424
 _020A29B0: .word 0x021D4670
 _020A29B4: .word _02110628
 _020A29B8: .word 0x021D4430
-	arm_func_end sub_020A2918
+	arm_func_end SOCL_Cleanup
 
-	arm_func_start sub_020A29BC
-sub_020A29BC: ; 0x020A29BC
+	arm_func_start SOCL_CloseAll
+SOCL_CloseAll: ; 0x020A29BC
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r4, _020A2A58 ; =0x021D442C
 	ldr r5, _020A2A5C ; =0x021D448C
@@ -2615,7 +2612,7 @@ _020A29FC:
 	cmp r6, #0
 	beq _020A2A14
 	mov r0, r6
-	bl sub_020A25D4
+	bl SOCL_Close
 	b _020A29C8
 _020A2A14:
 	ldr r0, _020A2A5C ; =0x021D448C
@@ -2641,49 +2638,49 @@ _020A2A50:
 _020A2A58: .word 0x021D442C
 _020A2A5C: .word 0x021D448C
 _020A2A60: .word 0x021D4490
-	arm_func_end sub_020A29BC
+	arm_func_end SOCL_CloseAll
 
-	arm_func_start sub_020A2A64
-sub_020A2A64: ; 0x020A2A64
+	arm_func_start SOCL_CalmDown
+SOCL_CalmDown: ; 0x020A2A64
 	stmdb sp!, {r4, lr}
 	ldr r0, _020A2ADC ; =0x021D442C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _020A2AB8
-	bl sub_020A29BC
+	bl SOCL_CloseAll
 	movs r4, r0
 	bne _020A2AB0
 	ldr r0, _020A2ADC ; =0x021D442C
 	ldr r0, [r0]
-	bl sub_020A25D4
+	bl SOCL_Close
 	ldr r0, _020A2ADC ; =0x021D442C
 	ldr r0, [r0]
-	bl sub_020A25A0
+	bl SOCL_IsClosed
 	cmp r0, #0
 	ldrne r0, _020A2ADC ; =0x021D442C
 	movne r1, #0
 	strne r1, [r0]
 	mvn r4, #0x19
 _020A2AB0:
-	bl sub_020A28DC
+	bl SOCLi_TrashSocket
 	b _020A2AD4
 _020A2AB8:
-	bl sub_020A3BE8
+	bl CPS_CalmDown
 	cmp r0, #0
 	mvneq r4, #0x19
 	beq _020A2AD4
 	mov r0, #0
-	bl sub_020AFFC4
+	bl WCM_SetRecvDCFCallback
 	mov r4, #0
 _020A2AD4:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020A2ADC: .word 0x021D442C
-	arm_func_end sub_020A2A64
+	arm_func_end SOCL_CalmDown
 
-	arm_func_start sub_020A2AE0
-sub_020A2AE0: ; 0x020A2AE0
+	arm_func_start SOCL_Resolve
+SOCL_Resolve: ; 0x020A2AE0
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x64
 	movs r5, r0
@@ -2712,11 +2709,11 @@ sub_020A2AE0: ; 0x020A2AE0
 	str r3, [sp, #0x3c]
 	str r2, [sp, #0x4c]
 	str r1, [sp, #0x48]
-	bl sub_020A6878
+	bl CPS_SocRegister
 	mov r0, r5
-	bl sub_020A8460
+	bl CPS_Resolve
 	mov r5, r0
-	bl sub_020A688C
+	bl CPS_SocUnRegister
 	ldr r1, _020A2B84 ; =_02110628
 	mov r0, r4
 	ldr r1, [r1]
@@ -2729,10 +2726,10 @@ sub_020A2AE0: ; 0x020A2AE0
 _020A2B84: .word _02110628
 _020A2B88: .word 0x00000B68
 _020A2B8C: .word 0x00000466
-	arm_func_end sub_020A2AE0
+	arm_func_end SOCL_Resolve
 
-	arm_func_start sub_020A2B90
-sub_020A2B90: ; 0x020A2B90
+	arm_func_start SOCL_InetAtoH
+SOCL_InetAtoH: ; 0x020A2B90
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
@@ -2743,7 +2740,7 @@ sub_020A2B90: ; 0x020A2B90
 	str r2, [r1]
 	mov r0, r4
 	str r2, [r1, #4]
-	bl sub_020A8460
+	bl CPS_Resolve
 	ldr r1, _020A2BD8 ; =0x021D4680
 	mov r4, r0
 	mov r0, r5
@@ -2753,14 +2750,14 @@ sub_020A2B90: ; 0x020A2B90
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A2BD8: .word 0x021D4680
-	arm_func_end sub_020A2B90
+	arm_func_end SOCL_InetAtoH
 
-	arm_func_start sub_020A2BDC
-sub_020A2BDC: ; 0x020A2BDC
+	arm_func_start SOCL_GetResolver
+SOCL_GetResolver: ; 0x020A2BDC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_020A2C10
+	bl SOCL_GetHostID
 	cmp r0, #0
 	mvneq r0, #0x26
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -2771,10 +2768,10 @@ sub_020A2BDC: ; 0x020A2BDC
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020A2C0C: .word 0x021D4680
-	arm_func_end sub_020A2BDC
+	arm_func_end SOCL_GetResolver
 
-	arm_func_start sub_020A2C10
-sub_020A2C10: ; 0x020A2C10
+	arm_func_start SOCL_GetHostID
+SOCL_GetHostID: ; 0x020A2C10
 	stmdb sp!, {r3, lr}
 	ldr r0, _020A2C6C ; =0x021D4670
 	ldr r2, [r0]
@@ -2804,14 +2801,14 @@ _020A2C60:
 _020A2C6C: .word 0x021D4670
 _020A2C70: .word 0x021D4428
 _020A2C74: .word 0x021D4424
-	arm_func_end sub_020A2C10
+	arm_func_end SOCL_GetHostID
 
 	arm_func_start sub_020A2C78
 sub_020A2C78: ; 0x020A2C78
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, #0
 	mov r5, r0
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	orrne r4, r4, #0x80
 	bne _020A2D40
@@ -2832,7 +2829,7 @@ _020A2CB8:
 	cmp r0, #0
 	mov r0, r5
 	orrgt r4, r4, #1
-	bl sub_020A20C0
+	bl SOCLi_GetWriteBufferFreeSize
 	cmp r0, #0
 	mov r0, r6
 	orrgt r4, r4, #8
@@ -2890,15 +2887,15 @@ _020A2D88:
 	bx lr
 	arm_func_end sub_020A2D48
 
-	arm_func_start sub_020A2D90
-sub_020A2D90: ; 0x020A2D90
+	arm_func_start SOCLi_RoundUp4
+SOCLi_RoundUp4: ; 0x020A2D90
 	add r0, r0, #3
 	bic r0, r0, #3
 	bx lr
-	arm_func_end sub_020A2D90
+	arm_func_end SOCLi_RoundUp4
 
-	arm_func_start sub_020A2D9C
-sub_020A2D9C: ; 0x020A2D9C
+	arm_func_start SOCLi_SocketRegister
+SOCLi_SocketRegister: ; 0x020A2D9C
 	ldr ip, _020A2DAC ; =sub_020A2DB4
 	mov r1, r0
 	ldr r0, _020A2DB0 ; =0x021D448C
@@ -2906,7 +2903,7 @@ sub_020A2D9C: ; 0x020A2D9C
 	.align 2, 0
 _020A2DAC: .word sub_020A2DB4
 _020A2DB0: .word 0x021D448C
-	arm_func_end sub_020A2D9C
+	arm_func_end SOCLi_SocketRegister
 
 	arm_func_start sub_020A2DB4
 sub_020A2DB4: ; 0x020A2DB4
@@ -2916,8 +2913,8 @@ sub_020A2DB4: ; 0x020A2DB4
 	bx lr
 	arm_func_end sub_020A2DB4
 
-	arm_func_start sub_020A2DC4
-sub_020A2DC4: ; 0x020A2DC4
+	arm_func_start SOCLi_SocketRegisterTrash
+SOCLi_SocketRegisterTrash: ; 0x020A2DC4
 	ldr ip, _020A2DD4 ; =sub_020A2DB4
 	mov r1, r0
 	ldr r0, _020A2DD8 ; =0x021D4490
@@ -2925,10 +2922,10 @@ sub_020A2DC4: ; 0x020A2DC4
 	.align 2, 0
 _020A2DD4: .word sub_020A2DB4
 _020A2DD8: .word 0x021D4490
-	arm_func_end sub_020A2DC4
+	arm_func_end SOCLi_SocketRegisterTrash
 
-	arm_func_start sub_020A2DDC
-sub_020A2DDC: ; 0x020A2DDC
+	arm_func_start SOCLi_SocketUnregister
+SOCLi_SocketUnregister: ; 0x020A2DDC
 	ldr ip, _020A2DEC ; =sub_020A2DF4
 	mov r1, r0
 	ldr r0, _020A2DF0 ; =0x021D448C
@@ -2936,7 +2933,7 @@ sub_020A2DDC: ; 0x020A2DDC
 	.align 2, 0
 _020A2DEC: .word sub_020A2DF4
 _020A2DF0: .word 0x021D448C
-	arm_func_end sub_020A2DDC
+	arm_func_end SOCLi_SocketUnregister
 
 	arm_func_start sub_020A2DF4
 sub_020A2DF4: ; 0x020A2DF4
@@ -2966,8 +2963,8 @@ _020A2E34:
 	bx lr
 	arm_func_end sub_020A2E10
 
-	arm_func_start sub_020A2E3C
-sub_020A2E3C: ; 0x020A2E3C
+	arm_func_start SOCLi_SocketUnregisterTrash
+SOCLi_SocketUnregisterTrash: ; 0x020A2E3C
 	ldr ip, _020A2E4C ; =sub_020A2DF4
 	mov r1, r0
 	ldr r0, _020A2E50 ; =0x021D4490
@@ -2975,10 +2972,10 @@ sub_020A2E3C: ; 0x020A2E3C
 	.align 2, 0
 _020A2E4C: .word sub_020A2DF4
 _020A2E50: .word 0x021D4490
-	arm_func_end sub_020A2E3C
+	arm_func_end SOCLi_SocketUnregisterTrash
 
-	arm_func_start sub_020A2E54
-sub_020A2E54: ; 0x020A2E54
+	arm_func_start SOCL_SocketIsInvalid
+SOCL_SocketIsInvalid: ; 0x020A2E54
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	cmp r1, #0
@@ -2995,10 +2992,10 @@ _020A2E7C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A2E84: .word 0x021D448C
-	arm_func_end sub_020A2E54
+	arm_func_end SOCL_SocketIsInvalid
 
-	arm_func_start sub_020A2E88
-sub_020A2E88: ; 0x020A2E88
+	arm_func_start SOCL_SocketIsInTrash
+SOCL_SocketIsInTrash: ; 0x020A2E88
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	ldr r0, _020A2EA8 ; =0x021D4490
@@ -3009,7 +3006,7 @@ sub_020A2E88: ; 0x020A2E88
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A2EA8: .word 0x021D4490
-	arm_func_end sub_020A2E88
+	arm_func_end SOCL_SocketIsInTrash
 
 	arm_func_start sub_020A2EAC
 sub_020A2EAC: ; 0x020A2EAC
@@ -3017,11 +3014,11 @@ sub_020A2EAC: ; 0x020A2EAC
 	cmp r1, #1
 	bne _020A2EC4
 	ldr r0, _020A2ED0 ; =_02110648
-	bl sub_020A0DAC
+	bl SOCL_CreateSocket
 	ldmia sp!, {r3, pc}
 _020A2EC4:
 	ldr r0, _020A2ED4 ; =_02110630
-	bl sub_020A0DAC
+	bl SOCL_CreateSocket
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A2ED0: .word _02110648
@@ -3031,7 +3028,7 @@ _020A2ED4: .word _02110630
 	arm_func_start sub_020A2ED8
 sub_020A2ED8: ; 0x020A2ED8
 	ldrh r1, [r1, #2]
-	ldr ip, _020A2F00 ; =sub_020A1390
+	ldr ip, _020A2F00 ; =SOCL_Bind
 	mov r2, r1, asr #8
 	mov r1, r1, lsl #8
 	and r2, r2, #0xff
@@ -3041,7 +3038,7 @@ sub_020A2ED8: ; 0x020A2ED8
 	mov r1, r1, lsr #0x10
 	bx ip
 	.align 2, 0
-_020A2F00: .word sub_020A1390
+_020A2F00: .word SOCL_Bind
 	arm_func_end sub_020A2ED8
 
 	arm_func_start sub_020A2F04
@@ -3067,7 +3064,7 @@ sub_020A2F04: ; 0x020A2F04
 	orr r2, ip, r2
 	mov r1, r1, lsr #0x10
 	orr r2, r3, r2
-	bl sub_020A1400
+	bl SOCL_Connect
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020A2F04
 
@@ -3079,7 +3076,7 @@ sub_020A2F60: ; 0x020A2F60
 	str ip, [sp]
 	str r3, [sp, #4]
 	mov r3, ip
-	bl sub_020A15C4
+	bl SOCL_ReadFrom
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020A2F60
@@ -3092,7 +3089,7 @@ sub_020A2F84: ; 0x020A2F84
 	str ip, [sp]
 	str r3, [sp, #4]
 	add r3, sp, #8
-	bl sub_020A15C4
+	bl SOCL_ReadFrom
 	cmp r0, #0
 	addlt sp, sp, #0x10
 	ldmltia sp!, {r3, pc}
@@ -3132,7 +3129,7 @@ sub_020A3014: ; 0x020A3014
 	str ip, [sp]
 	str r3, [sp, #4]
 	mov r3, ip
-	bl sub_020A1E24
+	bl SOCL_WriteTo
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020A3014
@@ -3170,32 +3167,32 @@ _020A30A4:
 	str r4, [sp]
 	str r3, [sp, #4]
 	mov r3, r5
-	bl sub_020A1E24
+	bl SOCL_WriteTo
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020A3038
 
 	arm_func_start sub_020A30BC
 sub_020A30BC: ; 0x020A30BC
-	ldr ip, _020A30C4 ; =sub_020A24C4
+	ldr ip, _020A30C4 ; =SOCL_Shutdown
 	bx ip
 	.align 2, 0
-_020A30C4: .word sub_020A24C4
+_020A30C4: .word SOCL_Shutdown
 	arm_func_end sub_020A30BC
 
 	arm_func_start sub_020A30C8
 sub_020A30C8: ; 0x020A30C8
-	ldr ip, _020A30D0 ; =sub_020A25D4
+	ldr ip, _020A30D0 ; =SOCL_Close
 	bx ip
 	.align 2, 0
-_020A30D0: .word sub_020A25D4
+_020A30D0: .word SOCL_Close
 	arm_func_end sub_020A30C8
 
 	arm_func_start sub_020A30D4
 sub_020A30D4: ; 0x020A30D4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020A2AE0
+	bl SOCL_Resolve
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -3251,7 +3248,7 @@ sub_020A3194: ; 0x020A3194
 	mov r4, r1
 	mvneq r0, #0x26
 	ldmeqia sp!, {r4, r5, r6, pc}
-	bl sub_020A2C10
+	bl SOCL_GetHostID
 	cmp r5, #0
 	ldrneh r1, [r5, #0x74]
 	mov r2, r0, lsr #0x18
@@ -3288,7 +3285,7 @@ sub_020A3194: ; 0x020A3194
 	arm_func_start sub_020A3228
 sub_020A3228: ; 0x020A3228
 	stmdb sp!, {r3, lr}
-	bl sub_020A2C10
+	bl SOCL_GetHostID
 	mov r2, r0, lsr #0x18
 	mov r1, r0, lsr #8
 	mov r3, r0, lsl #8
@@ -3330,16 +3327,16 @@ sub_020A3260: ; 0x020A3260
 	orr r1, r3, r1
 	orr r0, lr, r0
 	orr r1, r2, r1
-	bl sub_020A2BDC
+	bl SOCL_GetResolver
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020A3260
 
 	arm_func_start sub_020A32CC
 sub_020A32CC: ; 0x020A32CC
-	ldr ip, _020A32D4 ; =sub_020A1104
+	ldr ip, _020A32D4 ; =SOCL_Listen
 	bx ip
 	.align 2, 0
-_020A32D4: .word sub_020A1104
+_020A32D4: .word SOCL_Listen
 	arm_func_end sub_020A32CC
 
 	arm_func_start sub_020A32D8
@@ -3349,7 +3346,7 @@ sub_020A32D8: ; 0x020A32D8
 	mov r4, r1
 	add r1, sp, #0
 	add r2, sp, #4
-	bl sub_020A1184
+	bl SOCL_Accept
 	cmp r0, #0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
@@ -3525,7 +3522,7 @@ sub_020A33FC: ; 0x020A33FC
 	ldr r2, [r0, #0x30]
 	ldr r0, _020A356C ; =0x021D44D4
 	str r2, [r1, #0x74]
-	bl sub_020A0804
+	bl SOCL_Startup
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020A3560: .word sub_020A33A4
@@ -3536,10 +3533,10 @@ _020A356C: .word 0x021D44D4
 
 	arm_func_start sub_020A3570
 sub_020A3570: ; 0x020A3570
-	ldr ip, _020A3578 ; =sub_020A2918
+	ldr ip, _020A3578 ; =SOCL_Cleanup
 	bx ip
 	.align 2, 0
-_020A3578: .word sub_020A2918
+_020A3578: .word SOCL_Cleanup
 	arm_func_end sub_020A3570
 
 	arm_func_start sub_020A357C
@@ -3563,7 +3560,7 @@ _020A35A8: .word 0x021D450C
 sub_020A35AC: ; 0x020A35AC
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl sub_020A2B90
+	bl SOCL_InetAtoH
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -3693,7 +3690,7 @@ sub_020A3754: ; 0x020A3754
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_020A2E54
+	bl SOCL_SocketIsInvalid
 	cmp r0, #0
 	mvnne r0, #0x1b
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -3733,13 +3730,13 @@ sub_020A37D4: ; 0x020A37D4
 	ldr r0, _020A380C ; =sub_020A3810
 	mov r1, r5
 	mov r2, #1
-	bl sub_020A0B7C
+	bl SOCLi_CreateCommandPacket
 	movs r1, r0
 	mvneq r0, #0x20
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	str r4, [r1, #0x10]
-	bl sub_020A0CC4
+	bl SOCLi_ExecCommandPacketInRecvPipe
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020A380C: .word sub_020A3810
@@ -3880,8 +3877,8 @@ sub_020A39A4: ; 0x020A39A4
 	bx lr
 	arm_func_end sub_020A39A4
 
-	arm_func_start sub_020A39AC
-sub_020A39AC: ; 0x020A39AC
+	arm_func_start CPS_Startup
+CPS_Startup: ; 0x020A39AC
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r4, r0
@@ -4030,10 +4027,10 @@ _020A3BD8: .word 0x021D5E60
 _020A3BDC: .word 0x021D47C8
 _020A3BE0: .word sub_020A7448
 _020A3BE4: .word 0x021D5660
-	arm_func_end sub_020A39AC
+	arm_func_end CPS_Startup
 
-	arm_func_start sub_020A3BE8
-sub_020A3BE8: ; 0x020A3BE8
+	arm_func_start CPS_CalmDown
+CPS_CalmDown: ; 0x020A3BE8
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_DisableInterrupts
 	mov r4, r0
@@ -4056,21 +4053,21 @@ _020A3C20:
 	.align 2, 0
 _020A3C30: .word 0x021D47C8
 _020A3C34: .word 0x021D4620
-	arm_func_end sub_020A3BE8
+	arm_func_end CPS_CalmDown
 
-	arm_func_start sub_020A3C38
-sub_020A3C38: ; 0x020A3C38
+	arm_func_start CPS_SetScavengerCallback
+CPS_SetScavengerCallback: ; 0x020A3C38
 	ldr r1, _020A3C44 ; =0x021D4620
 	str r0, [r1, #0x3c]
 	bx lr
 	.align 2, 0
 _020A3C44: .word 0x021D4620
-	arm_func_end sub_020A3C38
+	arm_func_end CPS_SetScavengerCallback
 
-	arm_func_start sub_020A3C48
-sub_020A3C48: ; 0x020A3C48
+	arm_func_start CPS_Cleanup
+CPS_Cleanup: ; 0x020A3C48
 	stmdb sp!, {r3, lr}
-	bl sub_020A3BE8
+	bl CPS_CalmDown
 	ldr r0, _020A3C84 ; =0x021D47C8
 	bl OS_JoinThread
 	ldr r0, _020A3C88 ; =0x021D4888
@@ -4088,10 +4085,10 @@ sub_020A3C48: ; 0x020A3C48
 _020A3C84: .word 0x021D47C8
 _020A3C88: .word 0x021D4888
 _020A3C8C: .word 0x021D4620
-	arm_func_end sub_020A3C48
+	arm_func_end CPS_Cleanup
 
-	arm_func_start sub_020A3C90
-sub_020A3C90: ; 0x020A3C90
+	arm_func_start CPS_SetThreadPriority
+CPS_SetThreadPriority: ; 0x020A3C90
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r2, _020A3CBC ; =_02110684
@@ -4107,7 +4104,7 @@ sub_020A3C90: ; 0x020A3C90
 _020A3CBC: .word _02110684
 _020A3CC0: .word 0x021D4888
 _020A3CC4: .word 0x021D47C8
-	arm_func_end sub_020A3C90
+	arm_func_end CPS_SetThreadPriority
 
 	arm_func_start sub_020A3CC8
 sub_020A3CC8: ; 0x020A3CC8
@@ -4497,8 +4494,8 @@ _020A41AC: .word 0x000005E4
 _020A41B0: .word _02110690
 	arm_func_end sub_020A3FC0
 
-	arm_func_start sub_020A41B4
-sub_020A41B4: ; 0x020A41B4
+	arm_func_start CPSi_RecvCallbackFunc
+CPSi_RecvCallbackFunc: ; 0x020A41B4
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	mov ip, #0
@@ -4522,7 +4519,7 @@ sub_020A41B4: ; 0x020A41B4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A4208: .word 0x021D4620
-	arm_func_end sub_020A41B4
+	arm_func_end CPSi_RecvCallbackFunc
 
 	arm_func_start sub_020A420C
 sub_020A420C: ; 0x020A420C
@@ -7219,8 +7216,8 @@ _020A6780:
 _020A6788: .word 0x00000806
 	arm_func_end sub_020A671C
 
-	arm_func_start sub_020A678C
-sub_020A678C: ; 0x020A678C
+	arm_func_start CPS_SocGetEport
+CPS_SocGetEport: ; 0x020A678C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r0, _020A6828 ; =0x021E16A0
 	ldr r2, _020A682C ; =0x021D4620
@@ -7270,7 +7267,7 @@ _020A6814:
 _020A6828: .word 0x021E16A0
 _020A682C: .word 0x021D4620
 _020A6830: .word 0x00001388
-	arm_func_end sub_020A678C
+	arm_func_end CPS_SocGetEport
 
 	arm_func_start sub_020A6834
 sub_020A6834: ; 0x020A6834
@@ -7294,18 +7291,18 @@ sub_020A6834: ; 0x020A6834
 _020A6874: .word 0x021D4620
 	arm_func_end sub_020A6834
 
-	arm_func_start sub_020A6878
-sub_020A6878: ; 0x020A6878
+	arm_func_start CPS_SocRegister
+CPS_SocRegister: ; 0x020A6878
 	ldr r1, _020A6888 ; =0x021E16A0
 	ldr r1, [r1, #4]
 	str r0, [r1, #0xa4]
 	bx lr
 	.align 2, 0
 _020A6888: .word 0x021E16A0
-	arm_func_end sub_020A6878
+	arm_func_end CPS_SocRegister
 
-	arm_func_start sub_020A688C
-sub_020A688C: ; 0x020A688C
+	arm_func_start CPS_SocUnRegister
+CPS_SocUnRegister: ; 0x020A688C
 	ldr r0, _020A68A0 ; =0x021E16A0
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -7313,10 +7310,10 @@ sub_020A688C: ; 0x020A688C
 	bx lr
 	.align 2, 0
 _020A68A0: .word 0x021E16A0
-	arm_func_end sub_020A688C
+	arm_func_end CPS_SocUnRegister
 
-	arm_func_start sub_020A68A4
-sub_020A68A4: ; 0x020A68A4
+	arm_func_start CPS_SocDatagramMode
+CPS_SocDatagramMode: ; 0x020A68A4
 	ldr r0, _020A68CC ; =0x021E16A0
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xa4]
@@ -7329,10 +7326,10 @@ sub_020A68A4: ; 0x020A68A4
 	bx lr
 	.align 2, 0
 _020A68CC: .word 0x021E16A0
-	arm_func_end sub_020A68A4
+	arm_func_end CPS_SocDatagramMode
 
-	arm_func_start sub_020A68D0
-sub_020A68D0: ; 0x020A68D0
+	arm_func_start CPS_SocBind
+CPS_SocBind: ; 0x020A68D0
 	stmdb sp!, {r4, lr}
 	ldr r3, _020A6924 ; =0x021E16A0
 	ldr r3, [r3, #4]
@@ -7351,17 +7348,17 @@ sub_020A68D0: ; 0x020A68D0
 	str r2, [r4, #0x1c]
 	strneh r0, [r4, #0xa]
 	ldmneia sp!, {r4, pc}
-	bl sub_020A678C
+	bl CPS_SocGetEport
 	strh r0, [r4, #0xa]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020A6924: .word 0x021E16A0
 _020A6928: .word 0x7F000001
 _020A692C: .word 0x021D4620
-	arm_func_end sub_020A68D0
+	arm_func_end CPS_SocBind
 
-	arm_func_start sub_020A6930
-sub_020A6930: ; 0x020A6930
+	arm_func_start CPS_SocUse
+CPS_SocUse: ; 0x020A6930
 	ldr r0, _020A6960 ; =0x021E16A0
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xa4]
@@ -7376,10 +7373,10 @@ sub_020A6930: ; 0x020A6930
 	bx lr
 	.align 2, 0
 _020A6960: .word 0x021E16A0
-	arm_func_end sub_020A6930
+	arm_func_end CPS_SocUse
 
-	arm_func_start sub_020A6964
-sub_020A6964: ; 0x020A6964
+	arm_func_start CPS_SocRelease
+CPS_SocRelease: ; 0x020A6964
 	ldr r0, _020A6980 ; =0x021E16A0
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xa4]
@@ -7389,10 +7386,10 @@ sub_020A6964: ; 0x020A6964
 	bx lr
 	.align 2, 0
 _020A6980: .word 0x021E16A0
-	arm_func_end sub_020A6964
+	arm_func_end CPS_SocRelease
 
-	arm_func_start sub_020A6984
-sub_020A6984: ; 0x020A6984
+	arm_func_start CPS_SocDup
+CPS_SocDup: ; 0x020A6984
 	ldr r1, _020A6998 ; =0x021E16A0
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0xa4]
@@ -7400,7 +7397,7 @@ sub_020A6984: ; 0x020A6984
 	bx lr
 	.align 2, 0
 _020A6998: .word 0x021E16A0
-	arm_func_end sub_020A6984
+	arm_func_end CPS_SocDup
 
 	arm_func_start sub_020A699C
 sub_020A699C: ; 0x020A699C
@@ -7422,8 +7419,8 @@ sub_020A699C: ; 0x020A699C
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020A699C
 
-	arm_func_start sub_020A69DC
-sub_020A69DC: ; 0x020A69DC
+	arm_func_start CPS_SetUdpCallback
+CPS_SetUdpCallback: ; 0x020A69DC
 	ldr r1, _020A69F4 ; =0x021E16A0
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0xa4]
@@ -7432,10 +7429,10 @@ sub_020A69DC: ; 0x020A69DC
 	bx lr
 	.align 2, 0
 _020A69F4: .word 0x021E16A0
-	arm_func_end sub_020A69DC
+	arm_func_end CPS_SetUdpCallback
 
-	arm_func_start sub_020A69F8
-sub_020A69F8: ; 0x020A69F8
+	arm_func_start CPS_TcpListen
+CPS_TcpListen: ; 0x020A69F8
 	stmdb sp!, {r3, lr}
 	ldr r0, _020A6A2C ; =0x021E16A0
 	ldr r0, [r0, #4]
@@ -7452,7 +7449,7 @@ _020A6A24:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A6A2C: .word 0x021E16A0
-	arm_func_end sub_020A69F8
+	arm_func_end CPS_TcpListen
 
 	arm_func_start sub_020A6A30
 sub_020A6A30: ; 0x020A6A30
@@ -7507,8 +7504,8 @@ _020A6AD8:
 _020A6AE0: .word 0x021D4620
 	arm_func_end sub_020A6A30
 
-	arm_func_start sub_020A6AE4
-sub_020A6AE4: ; 0x020A6AE4
+	arm_func_start CPS_TcpConnect
+CPS_TcpConnect: ; 0x020A6AE4
 	stmdb sp!, {r3, lr}
 	ldr r0, _020A6B20 ; =0x021E16A0
 	ldr r0, [r0, #4]
@@ -7528,10 +7525,10 @@ _020A6B18:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A6B20: .word 0x021E16A0
-	arm_func_end sub_020A6AE4
+	arm_func_end CPS_TcpConnect
 
-	arm_func_start sub_020A6B24
-sub_020A6B24: ; 0x020A6B24
+	arm_func_start CPS_SocWho
+CPS_SocWho: ; 0x020A6B24
 	ldr r2, _020A6B70 ; =0x021E16A0
 	ldr r2, [r2, #4]
 	ldr r3, [r2, #0xa4]
@@ -7554,7 +7551,7 @@ _020A6B68:
 	bx lr
 	.align 2, 0
 _020A6B70: .word 0x021E16A0
-	arm_func_end sub_020A6B24
+	arm_func_end CPS_SocWho
 
 	arm_func_start sub_020A6B74
 sub_020A6B74: ; 0x020A6B74
@@ -7581,8 +7578,8 @@ _020A6BAC:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020A6B74
 
-	arm_func_start sub_020A6BC4
-sub_020A6BC4: ; 0x020A6BC4
+	arm_func_start CPS_TcpShutdown
+CPS_TcpShutdown: ; 0x020A6BC4
 	stmdb sp!, {r4, lr}
 	ldr r0, _020A6BFC ; =0x021E16A0
 	ldr r0, [r0, #4]
@@ -7600,10 +7597,10 @@ _020A6BF0:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020A6BFC: .word 0x021E16A0
-	arm_func_end sub_020A6BC4
+	arm_func_end CPS_TcpShutdown
 
-	arm_func_start sub_020A6C00
-sub_020A6C00: ; 0x020A6C00
+	arm_func_start CPS_TcpClose
+CPS_TcpClose: ; 0x020A6C00
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, _020A6C80 ; =0x021E16A0
 	ldr r0, [r0, #4]
@@ -7643,7 +7640,7 @@ _020A6C74:
 	.align 2, 0
 _020A6C80: .word 0x021E16A0
 _020A6C84: .word 0x021D4620
-	arm_func_end sub_020A6C00
+	arm_func_end CPS_TcpClose
 
 	arm_func_start sub_020A6C88
 sub_020A6C88: ; 0x020A6C88
@@ -7711,8 +7708,8 @@ _020A6D40:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_020A6CDC
 
-	arm_func_start sub_020A6D58
-sub_020A6D58: ; 0x020A6D58
+	arm_func_start CPS_SocRead
+CPS_SocRead: ; 0x020A6D58
 	stmdb sp!, {r3, lr}
 	ldr r1, _020A6DB8 ; =0x021E16A0
 	ldr r1, [r1, #4]
@@ -7742,7 +7739,7 @@ _020A6DA8:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A6DB8: .word 0x021E16A0
-	arm_func_end sub_020A6D58
+	arm_func_end CPS_SocRead
 
 	arm_func_start sub_020A6DBC
 sub_020A6DBC: ; 0x020A6DBC
@@ -7787,8 +7784,8 @@ _020A6E3C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020A6DBC
 
-	arm_func_start sub_020A6E4C
-sub_020A6E4C: ; 0x020A6E4C
+	arm_func_start CPS_SocConsume
+CPS_SocConsume: ; 0x020A6E4C
 	stmdb sp!, {r3, lr}
 	ldr r1, _020A6E80 ; =0x021E16A0
 	ldr r1, [r1, #4]
@@ -7805,7 +7802,7 @@ _020A6E78:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A6E80: .word 0x021E16A0
-	arm_func_end sub_020A6E4C
+	arm_func_end CPS_SocConsume
 
 	arm_func_start sub_020A6E84
 sub_020A6E84: ; 0x020A6E84
@@ -8096,8 +8093,8 @@ _020A7258: .word 0x021E16A0
 _020A725C: .word 0x021D4620
 	arm_func_end sub_020A718C
 
-	arm_func_start sub_020A7260
-sub_020A7260: ; 0x020A7260
+	arm_func_start CPS_SocWrite
+CPS_SocWrite: ; 0x020A7260
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _020A72F4 ; =0x021E16A0
 	mov r2, r0
@@ -8140,7 +8137,7 @@ _020A72EC:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020A72F4: .word 0x021E16A0
-	arm_func_end sub_020A7260
+	arm_func_end CPS_SocWrite
 
 	arm_func_start sub_020A72F8
 sub_020A72F8: ; 0x020A72F8
@@ -8266,7 +8263,7 @@ sub_020A7448: ; 0x020A7448
 	str r3, [r1, #0x128]
 	ldr r0, _020A779C ; =0x021D4700
 	str r2, [r1, #0x12c]
-	bl sub_020A6878
+	bl CPS_SocRegister
 	mov sl, #1
 	ldr r0, _020A7798 ; =0x021D4620
 	mov fp, sl
@@ -8482,7 +8479,7 @@ _020A7778:
 	beq _020A7790
 	bl sub_020A7FE8
 _020A7790:
-	bl sub_020A688C
+	bl CPS_SocUnRegister
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020A7798: .word 0x021D4620
@@ -8663,7 +8660,7 @@ _020A79FC:
 	mov r1, r0
 	mov r0, r4
 	sub r1, r1, r4
-	bl sub_020A7260
+	bl CPS_SocWrite
 	ldr r0, [sp]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
@@ -8736,7 +8733,7 @@ _020A7B08:
 	mov r1, r0
 	mov r0, r4
 	sub r1, r1, r4
-	bl sub_020A7260
+	bl CPS_SocWrite
 	ldr r0, [sp]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -8764,7 +8761,7 @@ _020A7B6C:
 	b _020A7E4C
 _020A7B80:
 	add r0, sp, #4
-	bl sub_020A6D58
+	bl CPS_SocRead
 	ldr r1, [sp, #4]
 	mov r6, r0
 	cmp r1, #0xf0
@@ -8955,7 +8952,7 @@ _020A7E30:
 	bne _020A7C64
 _020A7E44:
 	ldr r0, [sp, #4]
-	bl sub_020A6E4C
+	bl CPS_SocConsume
 _020A7E4C:
 	ldr r0, _020A7E90 ; =0x021D4620
 	ldr r0, [r0, #0x48]
@@ -8982,12 +8979,12 @@ _020A7E90: .word 0x021D4620
 	arm_func_start sub_020A7E94
 sub_020A7E94: ; 0x020A7E94
 	stmdb sp!, {r3, r4, r5, lr}
-	bl sub_020A6930
-	bl sub_020A68A4
+	bl CPS_SocUse
+	bl CPS_SocDatagramMode
 	mov r1, #0x43
 	sub r2, r1, #0x44
 	mov r0, #0x44
-	bl sub_020A68D0
+	bl CPS_SocBind
 	mov r5, #0
 _020A7EB4:
 	bl sub_020A7978
@@ -9000,7 +8997,7 @@ _020A7EB4:
 	cmp r5, #4
 	blt _020A7EB4
 _020A7ED8:
-	bl sub_020A6964
+	bl CPS_SocRelease
 	cmp r4, #1
 	moveq r0, #1
 	movne r0, #0
@@ -9012,20 +9009,20 @@ sub_020A7EEC: ; 0x020A7EEC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r1
 	mov r5, r0
-	bl sub_020A6930
-	bl sub_020A68A4
+	bl CPS_SocUse
+	bl CPS_SocDatagramMode
 	cmp r4, #1
 	mov r0, #0x44
 	bne _020A7F20
 	ldr r1, _020A7FE4 ; =0x021D4620
 	ldr r2, [r1, #0x20]
 	mov r1, #0x43
-	bl sub_020A68D0
+	bl CPS_SocBind
 	b _020A7F2C
 _020A7F20:
 	mov r1, #0x43
 	sub r2, r1, #0x44
-	bl sub_020A68D0
+	bl CPS_SocBind
 _020A7F2C:
 	mov r7, #0
 _020A7F30:
@@ -9039,7 +9036,7 @@ _020A7F30:
 	cmp r7, #4
 	blt _020A7F30
 _020A7F54:
-	bl sub_020A6964
+	bl CPS_SocRelease
 	cmp r6, #2
 	bne _020A7F88
 	ldr r1, _020A7FE4 ; =0x021D4620
@@ -9086,13 +9083,13 @@ _020A7FE4: .word 0x021D4620
 	arm_func_start sub_020A7FE8
 sub_020A7FE8: ; 0x020A7FE8
 	stmdb sp!, {r4, lr}
-	bl sub_020A6930
-	bl sub_020A68A4
+	bl CPS_SocUse
+	bl CPS_SocDatagramMode
 	ldr r1, _020A804C ; =0x021D4620
 	mov r0, #0x44
 	ldr r2, [r1, #0x20]
 	mov r1, #0x43
-	bl sub_020A68D0
+	bl CPS_SocBind
 	ldr r4, _020A8050 ; =0x021D4B76
 	mov r1, #7
 	mov r0, r4
@@ -9107,8 +9104,8 @@ sub_020A7FE8: ; 0x020A7FE8
 	bl sub_020A7944
 	sub r1, r0, r4
 	mov r0, r4
-	bl sub_020A7260
-	bl sub_020A6964
+	bl CPS_SocWrite
+	bl CPS_SocRelease
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020A804C: .word 0x021D4620
@@ -9201,7 +9198,7 @@ _020A814C:
 	add r1, r2, #5
 	sub r1, r1, r0
 	strb r3, [r2, #4]
-	bl sub_020A7260
+	bl CPS_SocWrite
 	mov r4, #0
 	bl OS_GetTick
 	mov r5, r0, lsr #0x10
@@ -9215,7 +9212,7 @@ _020A8198:
 	b _020A82E4
 _020A81AC:
 	add r0, sp, #0
-	bl sub_020A6D58
+	bl CPS_SocRead
 	ldr r1, [sp]
 	cmp r1, #0xc
 	bls _020A82DC
@@ -9297,7 +9294,7 @@ _020A82CC:
 	blo _020A8234
 _020A82DC:
 	ldr r0, [sp]
-	bl sub_020A6E4C
+	bl CPS_SocConsume
 _020A82E4:
 	ldr r0, _020A8328 ; =0x021D4620
 	ldr r0, [r0, #0x48]
@@ -9395,12 +9392,12 @@ sub_020A83FC: ; 0x020A83FC
 	addeq sp, sp, #4
 	mvneq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, pc}
-	bl sub_020A6930
-	bl sub_020A68A4
+	bl CPS_SocUse
+	bl CPS_SocDatagramMode
 	mov r2, r5
 	mov r0, #0
 	mov r1, #0x35
-	bl sub_020A68D0
+	bl CPS_SocBind
 	mov r0, r6
 	mov r2, r4
 	mov r3, #0
@@ -9408,14 +9405,14 @@ sub_020A83FC: ; 0x020A83FC
 	mov r1, #1
 	bl sub_020A8084
 	mov r4, r0
-	bl sub_020A6964
+	bl CPS_SocRelease
 	mov r0, r4
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	arm_func_end sub_020A83FC
 
-	arm_func_start sub_020A8460
-sub_020A8460: ; 0x020A8460
+	arm_func_start CPS_Resolve
+CPS_Resolve: ; 0x020A8460
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	ldr r2, _020A8590 ; =0x021D4620
@@ -9499,7 +9496,7 @@ _020A8570:
 	.align 2, 0
 _020A8590: .word 0x021D4620
 _020A8594: .word 0x021D4680
-	arm_func_end sub_020A8460
+	arm_func_end CPS_Resolve
 
 	; NitroWiFi: libssl.a
 
@@ -18461,8 +18458,8 @@ _020AFF18: .word 0x021D5FFC
 _020AFF1C: .word sub_020B01AC
 	arm_func_end sub_020AFEB0
 
-	arm_func_start sub_020AFF20
-sub_020AFF20: ; 0x020AFF20
+	arm_func_start WCM_GetApMacAddress
+WCM_GetApMacAddress: ; 0x020AFF20
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
 	bl sub_020AE4EC
@@ -18481,7 +18478,7 @@ _020AFF58:
 	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020AFF20
+	arm_func_end WCM_GetApMacAddress
 
 	arm_func_start sub_020AFF64
 sub_020AFF64: ; 0x020AFF64
@@ -18512,8 +18509,8 @@ _020AFFB0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020AFF64
 
-	arm_func_start sub_020AFFC4
-sub_020AFFC4: ; 0x020AFFC4
+	arm_func_start WCM_SetRecvDCFCallback
+WCM_SetRecvDCFCallback: ; 0x020AFFC4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
@@ -18523,7 +18520,7 @@ sub_020AFFC4: ; 0x020AFFC4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020AFFE0: .word 0x021D5FF0
-	arm_func_end sub_020AFFC4
+	arm_func_end WCM_SetRecvDCFCallback
 
 	arm_func_start sub_020AFFE4
 sub_020AFFE4: ; 0x020AFFE4

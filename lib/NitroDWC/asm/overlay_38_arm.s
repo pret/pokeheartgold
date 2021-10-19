@@ -8234,7 +8234,7 @@ ov38_02222D6C: ; 0x02222D6C
 	ldrne r0, [sp]
 	bne _02222DF4
 	add r0, r6, r7
-	bl sub_020A2AE0
+	bl SOCL_Resolve
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}

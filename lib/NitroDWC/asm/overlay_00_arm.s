@@ -1155,7 +1155,7 @@ _021E8A84:
 	bl OS_SNPrintf
 	bl OS_DisableInterrupts
 	mov r6, r0
-	bl sub_020AFF20
+	bl WCM_GetApMacAddress
 	mov r7, r0
 	mov r1, #6
 	bl DC_InvalidateRange
@@ -1700,7 +1700,7 @@ ov00_021E92E4: ; 0x021E92E4
 	ldr r2, [r1, #0x9d0]
 	add r0, r0, #0x1000
 	str r2, [r1, #0x184]
-	bl sub_020A6878
+	bl CPS_SocRegister
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _021E9334: .word 0x00000B68
@@ -1709,12 +1709,12 @@ _021E9338: .word 0x000005EA
 
 	arm_func_start ov00_021E933C
 ov00_021E933C: ; 0x021E933C
-	ldr ip, _021E934C ; =sub_020A8460
+	ldr ip, _021E934C ; =CPS_Resolve
 	add r0, r0, #0x1000
 	ldr r0, [r0, #0x124]
 	bx ip
 	.balign 4, 0
-_021E934C: .word sub_020A8460
+_021E934C: .word CPS_Resolve
 	arm_func_end ov00_021E933C
 
 	arm_func_start ov00_021E9350
@@ -1807,7 +1807,7 @@ ov00_021E9438: ; 0x021E9438
 	addeq sp, sp, #0x14
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	str r6, [r0, #0x12c]
-	bl sub_020A6930
+	bl CPS_SocUse
 	add r0, sl, #0x1000
 	ldr r0, [r0, #0x130]
 	cmp r0, #1
@@ -1832,15 +1832,15 @@ _021E94EC:
 	ldrh r1, [r0, #0x34]
 	mov r2, r6
 	mov r0, #0
-	bl sub_020A68D0
-	bl sub_020A6AE4
+	bl CPS_SocBind
+	bl CPS_TcpConnect
 	cmp r0, #0
 	add r0, sl, #0x1000
 	beq _021E9528
 	mov r1, #3
 	str r1, [r0, #0x20]
-	bl sub_020A6964
-	bl sub_020A688C
+	bl CPS_SocRelease
+	bl CPS_SocUnRegister
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _021E9528:
@@ -1849,7 +1849,7 @@ _021E9528:
 	bl strlen
 	mov r1, r0
 	mov r0, r4
-	bl sub_020A7260
+	bl CPS_SocWrite
 	str r0, [sp, #0x10]
 	cmp r0, #0
 	bgt _021E955C
@@ -1900,7 +1900,7 @@ _021E95D4:
 	str r0, [sp, #8]
 	add r0, sp, #0x10
 	str r1, [sp, #4]
-	bl sub_020A6D58
+	bl CPS_SocRead
 	cmp r0, #0
 	beq _021E9704
 	ldmib r7, {r1, r2}
@@ -1934,11 +1934,11 @@ _021E966C:
 	ldr r0, [sp, #0x10]
 	cmp r0, sb
 	bls _021E9680
-	bl sub_020A6E4C
+	bl CPS_SocConsume
 	b _021E9704
 _021E9680:
 	mov r0, sb
-	bl sub_020A6E4C
+	bl CPS_SocConsume
 _021E9688:
 	ldr r1, [r4, #0xa30]
 	cmp r1, #0
@@ -1973,20 +1973,20 @@ _021E96E4:
 	str r1, [r0, #0x20]
 	b _021E9728
 _021E9704:
-	bl sub_020A6BC4
-	bl sub_020A6C00
-	bl sub_020A6964
-	bl sub_020A688C
+	bl CPS_TcpShutdown
+	bl CPS_TcpClose
+	bl CPS_SocRelease
+	bl CPS_SocUnRegister
 	add r0, sl, #0x1000
 	mov r1, #8
 	str r1, [r0, #0x20]
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _021E9728:
-	bl sub_020A6BC4
-	bl sub_020A6C00
-	bl sub_020A6964
-	bl sub_020A688C
+	bl CPS_TcpShutdown
+	bl CPS_TcpClose
+	bl CPS_SocRelease
+	bl CPS_SocUnRegister
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.balign 4, 0
@@ -5740,7 +5740,7 @@ _021ECA2C:
 _021ECA40:
 	bl OS_DisableInterrupts
 	mov r6, r0
-	bl sub_020AFF20
+	bl WCM_GetApMacAddress
 	mov r5, r0
 	mov r1, #6
 	bl DC_InvalidateRange
@@ -23674,7 +23674,7 @@ _021FBD00:
 	arm_func_start ov00_021FBD08
 ov00_021FBD08: ; 0x021FBD08
 	stmdb sp!, {r3, lr}
-	bl sub_020A2A64
+	bl SOCL_CalmDown
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
@@ -25069,7 +25069,7 @@ ov00_021FCEE8: ; 0x021FCEE8
 	arm_func_start ov00_021FCEFC
 ov00_021FCEFC: ; 0x021FCEFC
 	stmdb sp!, {r3, lr}
-	bl sub_020A2A64
+	bl SOCL_CalmDown
 	cmp r0, #0
 	movne r0, #0xb
 	ldmneia sp!, {r3, pc}
@@ -28173,7 +28173,7 @@ ov00_021FF6E4: ; 0x021FF6E4
 	strh r2, [r0, #0x12]
 	str r1, [r0, #0x14]
 	str r2, [r0, #0x18]
-	bl sub_020A2C10
+	bl SOCL_GetHostID
 	ldr r1, _021FF768 ; =_0221B1C4
 	bl sub_020A3680
 	ldr r1, _021FF75C ; =_0221B1AC

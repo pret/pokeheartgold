@@ -8092,7 +8092,7 @@ ov13_022245DC: ; 0x022245DC
 	ldr r1, _02224614 ; =0x000001E6
 	add r4, r2, #0
 	strh r1, [r0, #6]
-	bl sub_020A2C10
+	bl SOCL_GetHostID
 	add r1, sp, #4
 	bl sub_020A3680
 	add r0, r5, #0
