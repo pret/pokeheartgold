@@ -1826,7 +1826,7 @@ ov00_021E9438: ; 0x021E9438
 	str r5, [r4, #0xc]
 	bl sub_020A88E8
 	mov r0, #1
-	bl sub_020AB948
+	bl CPS_SetSsl
 _021E94EC:
 	add r0, sl, #0x1100
 	ldrh r1, [r0, #0x34]
@@ -14426,7 +14426,7 @@ ov00_021F3F5C: ; 0x021F3F5C
 	mov r5, r6
 	b _021F40A0
 _021F4018:
-	bl sub_020A3228
+	bl SOC_GetHostID
 	mov r0, r0, lsl #0x10
 	mov r2, r0, lsr #0x10
 	mov r0, r2, lsl #0x10
@@ -14476,7 +14476,7 @@ _021F40A0:
 	str r8, [r0, #0x19c]
 	b _021F4158
 _021F40CC:
-	bl sub_020A3228
+	bl SOC_GetHostID
 	str r0, [sp, #8]
 	bl ov00_021F955C
 	ldr r0, [r0, #4]
@@ -23678,7 +23678,7 @@ ov00_021FBD08: ; 0x021FBD08
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_020A3570
+	bl SOC_Cleanup
 	cmp r0, #0
 	mvnne r1, #0x26
 	cmpne r0, r1
@@ -24955,7 +24955,7 @@ ov00_021FCD5C: ; 0x021FCD5C
 	mov r2, #4
 	mov r0, r4
 	str r2, [r1]
-	bl sub_020A33FC
+	bl SOC_Startup
 	cmp r0, #0
 	moveq r0, #0xc
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -24971,7 +24971,7 @@ _021FCDBC: .word 0x021D4420
 ov00_021FCDC0: ; 0x021FCDC0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020A3228
+	bl SOC_GetHostID
 	cmp r0, #0
 	beq _021FCDF8
 	mov r0, r4
@@ -25073,7 +25073,7 @@ ov00_021FCEFC: ; 0x021FCEFC
 	cmp r0, #0
 	movne r0, #0xb
 	ldmneia sp!, {r3, pc}
-	bl sub_020A3570
+	bl SOC_Cleanup
 	cmp r0, #0
 	mvnne r1, #0x26
 	cmpne r0, r1
@@ -25221,7 +25221,7 @@ ov00_021FD094: ; 0x021FD094
 	str r0, [sp]
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_020A3260
+	bl SOC_SetResolver
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_021FD094
@@ -26478,7 +26478,7 @@ ov00_021FE164: ; 0x021FE164
 	cmp r0, r1
 	bne _021FE1D0
 	mov r0, r5
-	bl sub_020A30D4
+	bl SOC_GetHostByName
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -27958,13 +27958,13 @@ ov00_021FF44C: ; 0x021FF44C
 	mov r1, #3
 	mov r2, #0
 	mov r5, r0
-	bl sub_020A3354
+	bl SOC_Fcntl
 	cmp r4, #0
 	bicne r2, r0, #4
 	orreq r2, r0, #4
 	mov r0, r5
 	mov r1, #4
-	bl sub_020A3354
+	bl SOC_Fcntl
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -28081,7 +28081,7 @@ ov00_021FF59C: ; 0x021FF59C
 	add r0, sp, #0
 	mov r1, #1
 	strh r2, [sp, #6]
-	bl sub_020A36A0
+	bl SOC_Poll
 	cmp r0, #0
 	addlt sp, sp, #8
 	mvnlt r0, #0
@@ -28175,7 +28175,7 @@ ov00_021FF6E4: ; 0x021FF6E4
 	str r2, [r0, #0x18]
 	bl SOCL_GetHostID
 	ldr r1, _021FF768 ; =_0221B1C4
-	bl sub_020A3680
+	bl SOC_U32to4U8
 	ldr r1, _021FF75C ; =_0221B1AC
 	ldr r0, [r1, #0x18]
 	cmp r0, #0
@@ -28248,7 +28248,7 @@ _021FF800: .word _0221B1AC
 	arm_func_start ov00_021FF804
 ov00_021FF804: ; 0x021FF804
 	stmdb sp!, {r3, lr}
-	bl sub_020A2EAC
+	bl SOC_Socket
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
@@ -28257,7 +28257,7 @@ ov00_021FF804: ; 0x021FF804
 	arm_func_start ov00_021FF818
 ov00_021FF818: ; 0x021FF818
 	stmdb sp!, {r3, lr}
-	bl sub_020A30C8
+	bl SOC_Close
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
@@ -28266,7 +28266,7 @@ ov00_021FF818: ; 0x021FF818
 	arm_func_start ov00_021FF82C
 ov00_021FF82C: ; 0x021FF82C
 	stmdb sp!, {r3, lr}
-	bl sub_020A30BC
+	bl SOC_Shutdown
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
@@ -28294,7 +28294,7 @@ _021FF864:
 	bne _021FF864
 	add r1, sp, #0
 	strb r2, [sp]
-	bl sub_020A2ED8
+	bl SOC_Bind
 	mvn r1, #0
 	bl ov00_021FF7EC
 	add sp, sp, #8
@@ -28318,7 +28318,7 @@ _021FF8B0:
 	bne _021FF8B0
 	add r1, sp, #0
 	strb r2, [sp]
-	bl sub_020A2F04
+	bl SOC_Connect
 	mvn r1, #0
 	bl ov00_021FF7EC
 	add sp, sp, #8
@@ -28328,7 +28328,7 @@ _021FF8B0:
 	arm_func_start ov00_021FF8EC
 ov00_021FF8EC: ; 0x021FF8EC
 	stmdb sp!, {r3, lr}
-	bl sub_020A32CC
+	bl SOC_Listen
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
@@ -28341,7 +28341,7 @@ ov00_021FF900: ; 0x021FF900
 	ldr r2, [r4]
 	mov r5, r1
 	strb r2, [r5]
-	bl sub_020A32D8
+	bl SOC_Accept
 	ldrb r2, [r5]
 	mvn r1, #0
 	str r2, [r4]
@@ -28352,7 +28352,7 @@ ov00_021FF900: ; 0x021FF900
 	arm_func_start ov00_021FF92C
 ov00_021FF92C: ; 0x021FF92C
 	stmdb sp!, {r3, lr}
-	bl sub_020A2F60
+	bl SOC_Recv
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
@@ -28366,7 +28366,7 @@ ov00_021FF940: ; 0x021FF940
 	ldr ip, [r4]
 	strb ip, [r5]
 	str r5, [sp]
-	bl sub_020A2F84
+	bl SOC_RecvFrom
 	ldrb r2, [r5]
 	mvn r1, #0
 	str r2, [r4]
@@ -28377,7 +28377,7 @@ ov00_021FF940: ; 0x021FF940
 	arm_func_start ov00_021FF970
 ov00_021FF970: ; 0x021FF970
 	stmdb sp!, {r3, lr}
-	bl sub_020A3014
+	bl SOC_Send
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
@@ -28403,7 +28403,7 @@ _021FF998:
 	add ip, sp, #4
 	strb lr, [sp, #4]
 	str ip, [sp]
-	bl sub_020A3038
+	bl SOC_SendTo
 	mvn r1, #0
 	bl ov00_021FF7EC
 	add sp, sp, #0xc
@@ -28441,7 +28441,7 @@ ov00_021FFA18: ; 0x021FFA18
 	ldr r2, [r4]
 	mov r5, r1
 	strb r2, [r5]
-	bl sub_020A3194
+	bl SOC_GetSockName
 	ldrb r2, [r5]
 	mvn r1, #0
 	str r2, [r4]
@@ -28453,7 +28453,7 @@ ov00_021FFA18: ; 0x021FFA18
 ov00_021FFA44: ; 0x021FFA44
 	stmdb sp!, {r3, lr}
 	add r1, sp, #0
-	bl sub_020A35AC
+	bl SOC_InetAtoN
 	cmp r0, #0
 	mvneq r0, #0
 	ldrne r0, [sp]
@@ -32408,7 +32408,7 @@ _0220306C:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _022030A8:
 	ldr r0, _022031C8 ; =_022186AC
-	bl sub_020A30D4
+	bl SOC_GetHostByName
 	cmp r0, #0
 	bne _022030E4
 	ldr r2, _022031CC ; =_0221880C
@@ -38124,7 +38124,7 @@ _02208084:
 	ldmia sp!, {r4, r5, r6, pc}
 _022080C0:
 	ldr r0, _022081D4 ; =_022192E8
-	bl sub_020A30D4
+	bl SOC_GetHostByName
 	cmp r0, #0
 	bne _022080FC
 	ldr r2, _022081D8 ; =_02219394
@@ -46896,7 +46896,7 @@ _0220F750:
 	str r0, [sp]
 	cmp r5, #0
 	beq _0220F780
-	bl sub_020A357C
+	bl SOC_InetNtoA
 	mov r2, r0
 	ldr r1, _0220F7C8 ; =_02219CE4
 	mov r0, r4
@@ -46904,7 +46904,7 @@ _0220F750:
 	bl sprintf
 	b _0220F7B8
 _0220F780:
-	bl sub_020A357C
+	bl SOC_InetNtoA
 	mov r2, r0
 	ldr r1, _0220F7CC ; =_02219CEC
 	mov r0, r4
@@ -47019,7 +47019,7 @@ _0220F8E4:
 	cmp r4, r0
 	bne _0220F928
 	mov r0, r8
-	bl sub_020A30D4
+	bl SOC_GetHostByName
 	cmp r0, #0
 	addeq sp, sp, #0x104
 	moveq r0, #0
@@ -47541,7 +47541,7 @@ ov00_0220FFE4: ; 0x0220FFE4
 	cmp r0, r1
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
-	bl sub_020A30D4
+	bl SOC_GetHostByName
 	cmp r0, #0
 	moveq r0, #0
 	ldrne r0, [r0, #0xc]
@@ -48681,7 +48681,7 @@ _02210F18:
 	cmp r0, #0
 	beq _02210F60
 	mov r0, r7
-	bl sub_020A30D4
+	bl SOC_GetHostByName
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -49777,7 +49777,7 @@ _02211E4C:
 	mov r1, r7
 	bl ov00_02210DFC
 	ldr r0, [r5, r8, lsl #2]
-	bl sub_020A357C
+	bl SOC_InetNtoA
 	mov r1, r0
 	mov r0, r6
 	bl ov00_02210DFC
@@ -52673,7 +52673,7 @@ _02214288:
 	cmp r0, r1
 	bne _022142F4
 	add r0, sp, #8
-	bl sub_020A30D4
+	bl SOC_GetHostByName
 	cmp r0, #0
 	addeq sp, sp, #0x88
 	moveq r0, #2

@@ -38334,7 +38334,7 @@ _02252180:
 	cmp r0, r1
 	bne _022521D0
 	mov r0, r5
-	bl sub_020A30D4
+	bl SOC_GetHostByName
 	cmp r0, #0
 	addeq sp, sp, #8
 	moveq r0, #0

@@ -3269,7 +3269,7 @@ _0221EC08:
 	cmp r0, r1
 	bne _0221EC54
 	mov r0, r5
-	bl sub_020A30D4
+	bl SOC_GetHostByName
 	cmp r0, #0
 	bne _0221EC44
 	mov r0, #1
@@ -8229,7 +8229,7 @@ ov38_02222D6C: ; 0x02222D6C
 	moveq r7, #7
 	add r1, sp, #0
 	add r0, r6, r7
-	bl sub_020A35AC
+	bl SOC_InetAtoN
 	cmp r0, #0
 	ldrne r0, [sp]
 	bne _02222DF4
@@ -8483,7 +8483,7 @@ ov38_022230DC: ; 0x022230DC
 	mov r0, #2
 	mov r1, #1
 	mov r2, #0
-	bl sub_020A2EAC
+	bl SOC_Socket
 	movs r4, r0
 	bmi _02223150
 	ldr r0, [r5, #8]
@@ -8501,11 +8501,11 @@ ov38_022230DC: ; 0x022230DC
 	ldr r1, [r5, #0x20]
 	str r2, [r1, #0x810]
 	ldr r1, [r5, #0x20]
-	bl sub_020A3754
+	bl SOCL_EnableSsl
 	cmp r0, #0
 	bge _02223150
 	mov r0, r4
-	bl sub_020A30C8
+	bl SOC_Close
 	mvn r4, #0
 _02223150:
 	mov r0, r4
@@ -8516,11 +8516,11 @@ _02223158: .word ov38_022230B0
 
 	arm_func_start ov38_0222315C
 ov38_0222315C: ; 0x0222315C
-	ldr ip, _02223168 ; =sub_020A30C8
+	ldr ip, _02223168 ; =SOC_Close
 	mov r0, r1
 	bx ip
 	.balign 4, 0
-_02223168: .word sub_020A30C8
+_02223168: .word SOC_Close
 	arm_func_end ov38_0222315C
 
 	arm_func_start ov38_0222316C
@@ -8528,7 +8528,7 @@ ov38_0222316C: ; 0x0222316C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r1
 	mov r0, r6
-	bl sub_020A30C8
+	bl SOC_Close
 	mvn r4, #0x19
 	cmp r0, r4
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -8537,7 +8537,7 @@ _0222318C:
 	mov r0, r5
 	bl OS_Sleep
 	mov r0, r6
-	bl sub_020A30C8
+	bl SOC_Close
 	cmp r0, r4
 	beq _0222318C
 	ldmia sp!, {r4, r5, r6, pc}
@@ -8563,7 +8563,7 @@ ov38_022231A8: ; 0x022231A8
 	strb lr, [sp, #1]
 	strh r3, [sp, #2]
 	str r2, [sp, #4]
-	bl sub_020A2F04
+	bl SOC_Connect
 	cmp r0, #0
 	bge _02223214
 	ldr r0, [r4, #4]
@@ -8588,7 +8588,7 @@ ov38_02223224: ; 0x02223224
 	mov r1, r2
 	mov r2, r3
 	ldr r3, [sp, #8]
-	bl sub_020A2F60
+	bl SOC_Recv
 	cmp r0, #0
 	ldmgeia sp!, {r4, pc}
 	ldr r1, [r4, #4]
@@ -8612,7 +8612,7 @@ ov38_02223270: ; 0x02223270
 	mov r1, r2
 	mov r2, r3
 	ldr r3, [sp, #8]
-	bl sub_020A3014
+	bl SOC_Send
 	cmp r0, #0
 	ldmgeia sp!, {r4, pc}
 	ldr r1, [r4, #4]
@@ -8635,7 +8635,7 @@ ov38_022232BC: ; 0x022232BC
 	ldmltia sp!, {r3, pc}
 	mov r0, r1
 	mov r1, #2
-	bl sub_020A30BC
+	bl SOC_Shutdown
 	ldmia sp!, {r3, pc}
 	arm_func_end ov38_022232BC
 
@@ -9033,7 +9033,7 @@ _022237A8:
 	mov r1, #1
 	mov r3, #0
 	str r6, [sp, #0x28]
-	bl sub_020A36A0
+	bl SOC_Poll
 	cmp r0, #0
 	movle r0, #0
 	strle r0, [sp, #8]
