@@ -21678,7 +21678,7 @@ _021F1F8C:
 	cmp r7, #0
 	ldrh r0, [r5, #0x30]
 	beq _021F1FA2
-	bl sub_0203B4A8
+	bl MapHeader_GetField14_1E
 	cmp r0, #0
 	bne _021F1FB2
 	mov r0, #0xff
@@ -21686,7 +21686,7 @@ _021F1F8C:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021F1FA2:
-	bl sub_0203B48C
+	bl MapHeader_GetField14_1D
 	cmp r0, #0
 	bne _021F1FB2
 	mov r0, #0xff
@@ -23067,7 +23067,7 @@ _021F29DA:
 ov101_021F29E8: ; 0x021F29E8
 	push {r3, lr}
 	ldrh r0, [r0, #0x30]
-	bl sub_0203B3A8
+	bl MapHeader_GetField12_C
 	add r0, r0, #7
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -26843,7 +26843,7 @@ ov101_021F4634: ; 0x021F4634
 	ldr r0, [r0, #0x20]
 	ldrh r5, [r0, #0x10]
 	add r0, r5, #0
-	bl sub_0203B4C4
+	bl MapHeader_GetField14_1F
 	cmp r0, #0
 	bne _021F464C
 	mov r0, #3

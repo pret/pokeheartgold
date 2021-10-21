@@ -25777,7 +25777,7 @@ ov02_02251F20: ; 0x02251F20
 	bl sub_0203B958
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0203B4A8
+	bl MapHeader_GetField14_1E
 	cmp r0, #0
 	bne _02251F3E
 	mov r0, #0

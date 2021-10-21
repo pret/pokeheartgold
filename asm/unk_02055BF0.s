@@ -165,11 +165,11 @@ sub_02055CD8: ; 0x02055CD8
 	ldr r0, [r7, #0x20]
 	ldr r0, [r0]
 	str r0, [sp, #8]
-	bl sub_0203B578
+	bl MapHeader_IsCave
 	cmp r0, #0
 	beq _02055D46
 	add r0, r5, #0
-	bl sub_0203B578
+	bl MapHeader_IsCave
 	cmp r0, #0
 	beq _02055D24
 	mov r4, #6
@@ -197,7 +197,7 @@ _02055D46:
 	cmp r0, #0
 	beq _02055D72
 	add r0, r5, #0
-	bl sub_0203B578
+	bl MapHeader_IsCave
 	cmp r0, #0
 	beq _02055D5E
 	mov r4, #4
@@ -229,7 +229,7 @@ _02055D72:
 	b _02055DA8
 _02055D94:
 	add r0, r5, #0
-	bl sub_0203B578
+	bl MapHeader_IsCave
 	cmp r0, #0
 	bne _02055DA8
 	bl GF_AssertFail
@@ -427,7 +427,7 @@ _02055F24:
 	mov r2, #1
 	bl sub_02055110
 	ldr r0, [r4, #0x20]
-	bl sub_0203B578
+	bl MapHeader_IsCave
 	cmp r0, #0
 	bne _02055F78
 	ldr r0, [r4, #4]

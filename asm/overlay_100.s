@@ -1260,7 +1260,7 @@ _021E6196:
 	bl sub_0200DC78
 	ldr r0, [r5, #0x20]
 	ldrh r0, [r0, #0x10]
-	bl sub_0203B48C
+	bl MapHeader_GetField14_1D
 	cmp r0, #0
 	bne _021E62F4
 	add r0, r5, #0
