@@ -1562,7 +1562,7 @@ sub_0204DD34: ; 0x0204DD34
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	bne _0204DD94
 	mov r0, #0
@@ -1651,7 +1651,7 @@ _0204DE3A:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	beq _0204DE86
 	ldr r0, [sp, #8]
@@ -1743,7 +1743,7 @@ sub_0204DEE4: ; 0x0204DEE4
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	bne _0204DF24
 	mov r0, #0

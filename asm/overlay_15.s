@@ -1219,7 +1219,7 @@ ov15_021F9D9C: ; 0x021F9D9C
 	add r5, r0, #0
 	add r4, r1, #0
 	add r0, r2, #0
-	bl sub_02078000
+	bl TMHMGetMove
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
@@ -3673,7 +3673,7 @@ ov15_021FAFFC: ; 0x021FAFFC
 	beq _021FB050
 	str r0, [sp]
 	ldr r0, [r5]
-	bl sub_02077B5C
+	bl MoveItemSlotInList
 	add r0, r4, #0
 	bl ov15_021F9F08
 	ldr r1, _021FB05C ; =0x0000066C
@@ -3831,7 +3831,7 @@ ov15_021FB14C: ; 0x021FB14C
 	add r0, #0x66
 	ldrh r0, [r0]
 	mov r2, #6
-	bl sub_02077CE8
+	bl LoadItemDataOrGfx
 	add r7, r0, #0
 	mov r0, #0x8d
 	lsl r0, r0, #2
@@ -3891,7 +3891,7 @@ _021FB1B8:
 _021FB1E8:
 	add r0, r7, #0
 	mov r1, #6
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _021FB280
 	mov r2, #0x8d
@@ -3970,7 +3970,7 @@ _021FB27A:
 _021FB280:
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	bne _021FB2AE
 	mov r0, #0x8d
@@ -3993,7 +3993,7 @@ _021FB2A4:
 _021FB2AE:
 	add r0, r7, #0
 	mov r1, #4
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _021FB310
 	mov r0, #0x8e
@@ -4703,7 +4703,7 @@ _021FB850:
 	ldr r0, [r4, r0]
 	add r0, #0x66
 	ldrh r0, [r0]
-	bl sub_02078000
+	bl TMHMGetMove
 	add r5, r0, #0
 	mov r0, #0xbd
 	lsl r0, r0, #2
@@ -4712,7 +4712,7 @@ _021FB850:
 	add r2, r5, #0
 	bl BufferMoveName
 	add r0, r5, #0
-	bl sub_02078024
+	bl MoveIsHM
 	cmp r0, #1
 	ldr r2, _021FB9C4 ; =0x000005E4
 	bne _021FB88A
@@ -10321,7 +10321,7 @@ ov15_021FE5C4: ; 0x021FE5C4
 	add r1, r6, #0
 	mov r2, #6
 	add r4, r0, #0
-	bl sub_02077D64
+	bl GetItemDescIntoString
 	b _021FE5F4
 _021FE5E6:
 	mov r0, #0x2f
@@ -10359,7 +10359,7 @@ ov15_021FE620: ; 0x021FE620
 	add r4, r5, #0
 	add r0, r1, #0
 	add r4, #0x14
-	bl sub_02078000
+	bl TMHMGetMove
 	str r0, [sp, #0x10]
 	mov r0, #0x2f
 	lsl r0, r0, #4
@@ -12723,7 +12723,7 @@ ov15_021FF8F0: ; 0x021FF8F0
 	add r4, r1, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -12739,7 +12739,7 @@ ov15_021FF8F0: ; 0x021FF8F0
 	bl sub_0200E248
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -12809,7 +12809,7 @@ ov15_021FF97C: ; 0x021FF97C
 	cmp r4, #0
 	beq _021FFA34
 	add r0, r6, #0
-	bl sub_02078000
+	bl TMHMGetMove
 	mov r1, #3
 	add r4, r0, #0
 	bl GetWazaAttr
@@ -13011,7 +13011,7 @@ ov15_021FFAD0: ; 0x021FFAD0
 _021FFB54:
 	mov r0, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	ldr r0, _021FFDBC ; =0x0000C0FC
 	str r6, [sp]
@@ -13111,7 +13111,7 @@ _021FFB54:
 _021FFC2A:
 	mov r0, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	str r6, [sp]
 	add r3, r0, #0
 	mov r1, #0x93

@@ -4962,7 +4962,7 @@ _0221E19C:
 	bl sub_0200DCE8
 	b _0221E20C
 _0221E1E6:
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _0221E1FE
 	mov r0, #0x67

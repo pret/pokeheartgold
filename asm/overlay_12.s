@@ -55498,7 +55498,7 @@ ov12_02252700: ; 0x02252700
 	bne _0225274E
 	ldr r0, [sp, #4]
 	ldrh r0, [r4, r0]
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	bne _0225274E
 	mov r7, #1
@@ -55519,7 +55519,7 @@ ov12_0225275C: ; 0x0225275C
 	add r1, r0, r2
 	ldr r0, _02252778 ; =0x00002DB8
 	ldrh r0, [r1, r0]
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	bne _02252774
 	mov r0, #1
@@ -67001,13 +67001,13 @@ ov12_02257E74: ; 0x02257E74
 	add r0, r1, #0
 	mov r1, #0
 	add r4, r2, #0
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r1, r0, #0
 	ldr r0, _02257E94 ; =0x00002120
 	ldr r0, [r5, r0]
 	bl sub_02078160
 	add r1, r4, #0
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02257E94: .word 0x00002120

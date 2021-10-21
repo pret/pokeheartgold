@@ -1953,12 +1953,12 @@ _0225AF22:
 	mov r6, #0x12
 	bl sub_020781C4
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	str r0, [sp, #0x20]
 	add r0, r7, #0
 	bl sub_020781C4
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r2, r0, #0
 	b _0225AFAC
 _0225AF4A:
@@ -1970,12 +1970,12 @@ _0225AF4A:
 	mov r6, #0x12
 	bl sub_020781D0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	str r0, [sp, #0x20]
 	add r0, r7, #0
 	bl sub_020781D0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r2, r0, #0
 	b _0225AFAC
 _0225AF72:
@@ -1999,12 +1999,12 @@ _0225AF82:
 	lsr r0, r0, #0x10
 	mov r1, #2
 	mov r6, #0x12
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	str r0, [sp, #0x20]
 	lsl r0, r5, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r2, r0, #0
 _0225AFAC:
 	ldr r0, [sp, #0x38]

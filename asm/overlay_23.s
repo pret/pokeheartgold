@@ -135,7 +135,7 @@ ov23_02259964: ; 0x02259964
 	ldr r0, [r4, #0x3c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078078
+	bl ItemToMailId
 	add r1, r0, #0
 	ldr r0, [r4, #0x20]
 	add r3, r5, #0
@@ -197,7 +197,7 @@ ov23_02259A24: ; 0x02259A24
 	ldr r0, [r4, #0x3c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078078
+	bl ItemToMailId
 	add r1, r0, #0
 	ldr r0, [r4, #0x20]
 	add r3, r6, #0

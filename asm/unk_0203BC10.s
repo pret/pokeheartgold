@@ -2152,7 +2152,7 @@ _0203CC3E:
 	b _0203CEFE
 _0203CCD4:
 	ldrh r0, [r6, #0x28]
-	bl sub_02078078
+	bl ItemToMailId
 	add r3, r0, #0
 	mov r0, #0xb
 	add r2, r6, #0
@@ -2630,7 +2630,7 @@ _0203D0AC:
 	ldr r0, [r4, r0]
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _0203D12C
 	ldr r0, [sp, #0xc]
@@ -2640,7 +2640,7 @@ _0203D0AC:
 	cmp r0, #0
 	bne _0203D12C
 	add r0, r5, #0
-	bl sub_02078078
+	bl ItemToMailId
 	add r3, r0, #0
 	mov r0, #0xb
 	str r0, [sp]

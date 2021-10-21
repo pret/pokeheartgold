@@ -19861,7 +19861,7 @@ sub_02064E18: ; 0x02064E18
 	add r0, #0x26
 	strb r1, [r0]
 	ldrh r0, [r6, #4]
-	bl sub_02078000
+	bl TMHMGetMove
 	strh r0, [r4, #0x2a]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -19894,7 +19894,7 @@ sub_02064EB8: ; 0x02064EB8
 	bl sub_02050650
 	add r4, r0, #0
 	ldrh r0, [r5, #4]
-	bl sub_02078078
+	bl ItemToMailId
 	add r2, r0, #0
 	add r0, r6, #0
 	mov r1, #3

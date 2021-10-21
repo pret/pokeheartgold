@@ -17676,7 +17676,7 @@ _02246E4C:
 _02246EFC:
 	mov r0, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r2, r0, #0
 	str r4, [sp]
 	mov r0, #1
@@ -17693,7 +17693,7 @@ _02246EFC:
 	str r0, [r6, r1]
 	mov r0, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r2, r0, #0
 	str r4, [sp]
 	mov r0, #1
@@ -17747,7 +17747,7 @@ _02246EFC:
 	str r0, [r5, r1]
 	mov r0, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r2, r0, #0
 	mov r0, #3
 	str r0, [sp]
@@ -18100,7 +18100,7 @@ ov83_02247264: ; 0x02247264
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -18130,7 +18130,7 @@ ov83_022472A0: ; 0x022472A0
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]

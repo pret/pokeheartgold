@@ -1428,7 +1428,7 @@ _0221CA50:
 	beq _0221CA60
 	lsl r0, r6, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	add r0, r0, #1
 	strh r0, [r4, #2]
 _0221CA60:
@@ -3129,7 +3129,7 @@ _0221D842:
 	add r1, r6, #0
 	mov r2, #0x1a
 	add r5, r0, #0
-	bl sub_02077D40
+	bl GetItemNameIntoString
 	mov r0, #3
 	str r0, [sp]
 	mov r3, #0

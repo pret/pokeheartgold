@@ -5739,7 +5739,7 @@ ov70_0223A578: ; 0x0223A578
 	ldr r0, [sp, #0x18]
 	lsr r1, r1, #0x10
 	mov r2, #0x3d
-	bl sub_02077D40
+	bl GetItemNameIntoString
 	add r0, r5, #0
 	mov r1, #0x3b
 	bl NewString_ReadMsgData
@@ -13094,7 +13094,7 @@ _0223E1DA:
 	ldr r0, [sp, #0x18]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	beq _0223E230
 	add r0, r7, #0
@@ -13799,7 +13799,7 @@ ov70_0223E76C: ; 0x0223E76C
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	beq _0223E786
 	mov r0, #1

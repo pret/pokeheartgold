@@ -236,7 +236,7 @@ sub_02048580: ; 0x02048580
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl VarGet
-	bl sub_02078000
+	bl TMHMGetMove
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r4, #0
@@ -869,7 +869,7 @@ sub_02048A7C: ; 0x02048A7C
 	lsl r0, r5, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #0x20
-	bl sub_02078108
+	bl GetNutName
 	add r5, r0, #0
 	cmp r4, #2
 	bhs _02048AD2

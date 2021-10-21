@@ -6064,7 +6064,7 @@ _0206C604:
 	add r0, r5, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078000
+	bl TMHMGetMove
 	ldr r1, [r4, r6]
 	cmp r1, r0
 	bne _0206C646

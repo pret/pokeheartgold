@@ -6774,7 +6774,7 @@ _0225744C:
 	add r1, r5, #0
 	mov r2, #0xb
 	add r6, r0, #0
-	bl sub_02077D64
+	bl GetItemDescIntoString
 	b _022574AA
 _02257460:
 	cmp r1, #1
@@ -9019,7 +9019,7 @@ _022585CA:
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -9041,7 +9041,7 @@ _022585CA:
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -9080,7 +9080,7 @@ ov03_02258648: ; 0x02258648
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -9102,7 +9102,7 @@ ov03_02258648: ; 0x02258648
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]

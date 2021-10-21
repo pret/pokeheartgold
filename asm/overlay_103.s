@@ -1945,7 +1945,7 @@ _021ED864:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	bl Mail_GetType
-	bl sub_0207808C
+	bl MailToItemId
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0xe
@@ -2443,7 +2443,7 @@ ov103_021EDC00: ; 0x021EDC00
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	bl Mail_GetType
-	bl sub_0207808C
+	bl MailToItemId
 	strh r0, [r5, #0x22]
 	ldrh r1, [r5, #0x22]
 	add r0, r4, #0
@@ -2618,7 +2618,7 @@ ov103_021EDD54: ; 0x021EDD54
 	sub sp, #4
 	add r4, r0, #0
 	ldrh r0, [r4, #0x22]
-	bl sub_02078078
+	bl ItemToMailId
 	add r3, r0, #0
 	mov r0, #0x9c
 	add r2, r4, #0

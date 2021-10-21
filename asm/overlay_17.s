@@ -2779,7 +2779,7 @@ ov17_022030A8: ; 0x022030A8
 	bl sub_0200E2B4
 	mov r0, #0x95
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -2799,7 +2799,7 @@ ov17_022030A8: ; 0x022030A8
 	bl sub_0200D504
 	mov r0, #0x95
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -3161,7 +3161,7 @@ ov17_02203460: ; 0x02203460
 	bl ov16_022018B4
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	mov r2, #0x13
@@ -3179,7 +3179,7 @@ ov17_02203460: ; 0x02203460
 	bl sub_0200E2B8
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	mov r2, #0x13
@@ -3547,7 +3547,7 @@ _02203756:
 _0220376C:
 	ldrb r0, [r6]
 	ldr r1, [r4]
-	bl sub_02078108
+	bl GetNutName
 	mov r1, #0
 	add r6, r0, #0
 	str r1, [sp]

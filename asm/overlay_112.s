@@ -20558,7 +20558,7 @@ _021EFE6E:
 	beq _021EFE96
 	add r0, r6, #0
 	mov r2, #0x9a
-	bl sub_02077D40
+	bl GetItemNameIntoString
 	mov r0, #0xc1
 	lsl r0, r0, #0xa
 	str r0, [sp]

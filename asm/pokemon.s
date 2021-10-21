@@ -5465,7 +5465,7 @@ sub_02070028: ; 0x02070028
 	bl GetBoxMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	pop {r3, pc}
 	thumb_func_end sub_02070028
 
