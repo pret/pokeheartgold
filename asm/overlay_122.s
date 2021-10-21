@@ -29,7 +29,7 @@ ov122_021E5900: ; 0x021E5900
 	bl ov122_021E8770
 	add r6, r0, #0
 	ldr r0, [r5, #8]
-	bl sub_0202C950
+	bl CheckCoins
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r5, #0
@@ -348,7 +348,7 @@ ov122_021E5BA8: ; 0x021E5BA8
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0202C950
+	bl CheckCoins
 	ldr r1, _021E5BDC ; =0x0000C350
 	cmp r0, r1
 	blo _021E5BCE
@@ -1631,7 +1631,7 @@ ov122_021E6594: ; 0x021E6594
 	bl ov122_021E8770
 	add r6, r0, #0
 	ldr r0, [r5, #8]
-	bl sub_0202C950
+	bl CheckCoins
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r5, #0
@@ -2236,7 +2236,7 @@ ov122_021E6A64: ; 0x021E6A64
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl sub_0202C950
+	bl CheckCoins
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	mov r0, #0x91
@@ -2263,7 +2263,7 @@ _021E6A94:
 	bl ov122_021E8610
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_0202C954
+	bl GiveCoins
 	ldr r0, _021E6B2C ; =0x0000C350
 	add r7, r6, r4
 	cmp r7, r0
@@ -2292,7 +2292,7 @@ _021E6ADA:
 	beq _021E6B18
 	ldr r0, [r5, #8]
 	mov r1, #1
-	bl sub_0202C954
+	bl GiveCoins
 	sub r2, r4, #1
 	lsl r2, r2, #0x10
 	add r0, r5, #0
@@ -5191,7 +5191,7 @@ _021E80A4:
 	add r0, r4, #0
 	bl ov122_021E6B38
 	ldr r0, [r4, #8]
-	bl sub_0202C950
+	bl CheckCoins
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	add r0, r4, #0

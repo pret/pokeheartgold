@@ -23,7 +23,7 @@ Sav2_PlayerData_init: ; 0x02028E70
 	bl PlayerProfile_init
 	add r0, r4, #0
 	add r0, #0x24
-	bl sub_0202C948
+	bl InitCoins
 	add r4, #0x26
 	add r0, r4, #0
 	bl InitIGT
