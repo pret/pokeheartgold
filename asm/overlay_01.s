@@ -21172,7 +21172,7 @@ ov01_021EFAF8: ; 0x021EFAF8
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B388
+	bl MapHeader_GetAreaIcon
 	cmp r0, #0
 	beq _021EFB36
 	ldr r0, [r5, #0x20]
@@ -21186,7 +21186,7 @@ ov01_021EFAF8: ; 0x021EFAF8
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0203B388
+	bl MapHeader_GetAreaIcon
 	add r2, r0, #0
 	beq _021EFB2C
 	sub r2, r2, #1
