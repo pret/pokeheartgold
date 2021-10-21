@@ -1858,7 +1858,7 @@ _021E9528:
 	str r1, [r0, #0x20]
 	b _021E9728
 _021E955C:
-	bl sub_020A7368
+	bl CPS_SocFlush
 	mov r0, sl
 	bl ov00_021E926C
 	cmp r0, #0
@@ -1891,7 +1891,7 @@ _021E95B4:
 	str r1, [r0, #0x20]
 	b _021E9728
 _021E95D4:
-	bl sub_020A72F8
+	bl CPS_SocGetLength
 	str r0, [sp, #0x10]
 	cmp r0, #0
 	blt _021E9704

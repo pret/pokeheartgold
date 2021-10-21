@@ -3775,8 +3775,8 @@ _020A3864:
 
 	; NitroWiFi: libcps.a
 
-	arm_func_start sub_020A3874
-sub_020A3874: ; 0x020A3874
+	arm_func_start reset_network_vars
+reset_network_vars: ; 0x020A3874
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r1, _020A3968 ; =0x021D4620
 	ldr r2, _020A3968 ; =0x021D4620
@@ -3841,17 +3841,17 @@ _020A3950:
 	cmp r6, #8
 	add r7, r7, #0x38
 	blt _020A3934
-	bl sub_020ABA58
+	bl CPSi_SslCleanup
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A3968: .word 0x021D4620
 _020A396C: .word 0x021D46A0
 _020A3970: .word 0x021E16A0
 _020A3974: .word 0x021D4948
-	arm_func_end sub_020A3874
+	arm_func_end reset_network_vars
 
-	arm_func_start sub_020A3978
-sub_020A3978: ; 0x020A3978
+	arm_func_start OS_YieldThread__
+OS_YieldThread__: ; 0x020A3978
 	stmdb sp!, {r3, lr}
 	ldr r0, _020A399C ; =0x021D4620
 	ldr r0, [r0, #0x24]
@@ -3864,18 +3864,18 @@ _020A3994:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A399C: .word 0x021D4620
-	arm_func_end sub_020A3978
+	arm_func_end OS_YieldThread__
 
-	arm_func_start sub_020A39A0
-sub_020A39A0: ; 0x020A39A0
+	arm_func_start empty_func
+empty_func: ; 0x020A39A0
 	bx lr
-	arm_func_end sub_020A39A0
+	arm_func_end empty_func
 
-	arm_func_start sub_020A39A4
-sub_020A39A4: ; 0x020A39A4
+	arm_func_start default_link_is_on
+default_link_is_on: ; 0x020A39A4
 	mov r0, #1
 	bx lr
-	arm_func_end sub_020A39A4
+	arm_func_end default_link_is_on
 
 	arm_func_start CPS_Startup
 CPS_Startup: ; 0x020A39AC
@@ -3925,7 +3925,7 @@ _020A3A34:
 	ldr r1, [r4, #8]
 	b _020A3A64
 _020A3A58:
-	ldr r1, _020A3BB8 ; =sub_020A39A0
+	ldr r1, _020A3BB8 ; =empty_func
 	ldr r0, _020A3BA8 ; =0x021D4620
 	str r1, [r0, #0x14]
 _020A3A64:
@@ -3945,12 +3945,12 @@ _020A3A64:
 	str r1, [r0, #0x24]
 	ldr r1, [r4, #0xc]
 	cmp r1, #0
-	ldreq r1, _020A3BB8 ; =sub_020A39A0
+	ldreq r1, _020A3BB8 ; =empty_func
 	str r1, [r0, #0x18]
 	ldr r1, [r4, #0x10]
 	cmp r1, #0
 	ldrne r0, _020A3BA8 ; =0x021D4620
-	ldreq r1, _020A3BC0 ; =sub_020A39A4
+	ldreq r1, _020A3BC0 ; =default_link_is_on
 	ldreq r0, _020A3BA8 ; =0x021D4620
 	str r1, [r0, #0x48]
 	ldr r1, [r4, #0x1c]
@@ -3987,7 +3987,7 @@ _020A3A64:
 	mov r1, #0x800
 	str r1, [sp]
 	ldr r0, _020A3BCC ; =_02110684
-	ldr r1, _020A3BD0 ; =sub_020A671C
+	ldr r1, _020A3BD0 ; =tcpip
 	ldr r4, [r0]
 	ldr r0, _020A3BD4 ; =0x021D4888
 	ldr r3, _020A3BD8 ; =0x021D5E60
@@ -3999,7 +3999,7 @@ _020A3A64:
 	ldr r1, [r0]
 	ldr r0, _020A3BDC ; =0x021D47C8
 	str r1, [sp, #4]
-	ldr r1, _020A3BE0 ; =sub_020A7448
+	ldr r1, _020A3BE0 ; =scavenger
 	ldr r3, _020A3BE4 ; =0x021D5660
 	mov r2, #0
 	bl OS_CreateThread
@@ -4015,17 +4015,17 @@ _020A3BA8: .word 0x021D4620
 _020A3BAC: .word 0x6C078965
 _020A3BB0: .word 0x5D588B65
 _020A3BB4: .word 0x00269EC3
-_020A3BB8: .word sub_020A39A0
+_020A3BB8: .word empty_func
 _020A3BBC: .word 0x000005B4
-_020A3BC0: .word sub_020A39A4
+_020A3BC0: .word default_link_is_on
 _020A3BC4: .word 0x00000F88
 _020A3BC8: .word 0x021D4B08
 _020A3BCC: .word _02110684
-_020A3BD0: .word sub_020A671C
+_020A3BD0: .word tcpip
 _020A3BD4: .word 0x021D4888
 _020A3BD8: .word 0x021D5E60
 _020A3BDC: .word 0x021D47C8
-_020A3BE0: .word sub_020A7448
+_020A3BE0: .word scavenger
 _020A3BE4: .word 0x021D5660
 	arm_func_end CPS_Startup
 
@@ -4075,7 +4075,7 @@ CPS_Cleanup: ; 0x020A3C48
 	ldr r1, _020A3C8C ; =0x021D4620
 	mov r0, #0
 	str r0, [r1, #0x54]
-	bl sub_020A3874
+	bl reset_network_vars
 	ldr r0, _020A3C8C ; =0x021D4620
 	mov r1, #0
 	str r1, [r0, #0x58]
@@ -4106,8 +4106,8 @@ _020A3CC0: .word 0x021D4888
 _020A3CC4: .word 0x021D47C8
 	arm_func_end CPS_SetThreadPriority
 
-	arm_func_start sub_020A3CC8
-sub_020A3CC8: ; 0x020A3CC8
+	arm_func_start calc_checksum_do
+calc_checksum_do: ; 0x020A3CC8
 	tst r0, #1
 	beq _020A3D00
 	cmp r1, #1
@@ -4159,10 +4159,10 @@ _020A3D50:
 	bx lr
 	.align 2, 0
 _020A3D78: .word 0x00FF00FF
-	arm_func_end sub_020A3CC8
+	arm_func_end calc_checksum_do
 
-	arm_func_start sub_020A3D7C
-sub_020A3D7C: ; 0x020A3D7C
+	arm_func_start invert_checksum
+invert_checksum: ; 0x020A3D7C
 	ldr r1, _020A3D94 ; =0x0000FFFF
 	eor r0, r0, r1
 	mov r0, r0, lsl #0x10
@@ -4171,30 +4171,30 @@ sub_020A3D7C: ; 0x020A3D7C
 	bx lr
 	.align 2, 0
 _020A3D94: .word 0x0000FFFF
-	arm_func_end sub_020A3D7C
+	arm_func_end invert_checksum
 
-	arm_func_start sub_020A3D98
-sub_020A3D98: ; 0x020A3D98
+	arm_func_start calc_checksum
+calc_checksum: ; 0x020A3D98
 	stmdb sp!, {r3, lr}
 	mov r2, #0
-	bl sub_020A3CC8
+	bl calc_checksum_do
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_020A3D7C
+	bl invert_checksum
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020A3D98
+	arm_func_end calc_checksum
 
-	arm_func_start sub_020A3DB4
-sub_020A3DB4: ; 0x020A3DB4
+	arm_func_start check_tcpudpsum
+check_tcpudpsum: ; 0x020A3DB4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r2
 	mov r2, r3
 	mov r5, r1
-	bl sub_020A3CC8
+	bl calc_checksum_do
 	mov r2, r0
 	add r0, r4, #0xc
 	mov r1, #8
-	bl sub_020A3CC8
+	bl calc_checksum_do
 	add r1, r0, r5
 	tst r1, #0x10000
 	addne r0, r1, #1
@@ -4207,10 +4207,10 @@ sub_020A3DB4: ; 0x020A3DB4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020A3E00: .word 0x0000FFFF
-	arm_func_end sub_020A3DB4
+	arm_func_end check_tcpudpsum
 
-	arm_func_start sub_020A3E04
-sub_020A3E04: ; 0x020A3E04
+	arm_func_start ip_islocal
+ip_islocal: ; 0x020A3E04
 	mov ip, #1
 	sub r1, ip, #2
 	cmp r0, r1
@@ -4229,13 +4229,13 @@ _020A3E38:
 	bx lr
 	.align 2, 0
 _020A3E40: .word 0x021D4620
-	arm_func_end sub_020A3E04
+	arm_func_end ip_islocal
 
-	arm_func_start sub_020A3E44
-sub_020A3E44: ; 0x020A3E44
+	arm_func_start get_targetip
+get_targetip: ; 0x020A3E44
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020A3E04
+	bl ip_islocal
 	cmp r0, #0
 	ldreq r0, _020A3E64 ; =0x021D4620
 	ldreq r4, [r0, #0x2c]
@@ -4243,14 +4243,14 @@ sub_020A3E44: ; 0x020A3E44
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020A3E64: .word 0x021D4620
-	arm_func_end sub_020A3E44
+	arm_func_end get_targetip
 
-	arm_func_start sub_020A3E68
-sub_020A3E68: ; 0x020A3E68
+	arm_func_start is_broadcast
+is_broadcast: ; 0x020A3E68
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, #0
-	bl sub_020A3E04
+	bl ip_islocal
 	cmp r0, #0
 	beq _020A3E98
 	ldr r0, _020A3EA0 ; =0x021D4620
@@ -4264,19 +4264,19 @@ _020A3E98:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020A3EA0: .word 0x021D4620
-	arm_func_end sub_020A3E68
+	arm_func_end is_broadcast
 
-	arm_func_start sub_020A3EA4
-sub_020A3EA4: ; 0x020A3EA4
+	arm_func_start is_multicast
+is_multicast: ; 0x020A3EA4
 	and r0, r0, #0xf0000000
 	cmp r0, #0xe0000000
 	moveq r0, #1
 	movne r0, #0
 	bx lr
-	arm_func_end sub_020A3EA4
+	arm_func_end is_multicast
 
-	arm_func_start sub_020A3EB8
-sub_020A3EB8: ; 0x020A3EB8
+	arm_func_start ip_isme
+ip_isme: ; 0x020A3EB8
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _020A3F30 ; =0x021D4620
 	mov r4, #1
@@ -4297,14 +4297,14 @@ _020A3EF8:
 	cmp r2, #0
 	bne _020A3F10
 	mov r0, r6
-	bl sub_020A3E68
+	bl is_broadcast
 	cmp r0, #0
 	moveq r5, #0
 _020A3F10:
 	cmp r5, #0
 	bne _020A3F28
 	mov r0, r6
-	bl sub_020A3EA4
+	bl is_multicast
 	cmp r0, #0
 	moveq r4, #0
 _020A3F28:
@@ -4313,10 +4313,10 @@ _020A3F28:
 	.align 2, 0
 _020A3F30: .word 0x021D4620
 _020A3F34: .word 0x7F000001
-	arm_func_end sub_020A3EB8
+	arm_func_end ip_isme
 
-	arm_func_start sub_020A3F38
-sub_020A3F38: ; 0x020A3F38
+	arm_func_start maccmp
+maccmp: ; 0x020A3F38
 	mov ip, #0
 _020A3F3C:
 	ldrh r3, [r0], #2
@@ -4329,10 +4329,10 @@ _020A3F3C:
 	blt _020A3F3C
 	mov r0, #0
 	bx lr
-	arm_func_end sub_020A3F38
+	arm_func_end maccmp
 
-	arm_func_start sub_020A3F64
-sub_020A3F64: ; 0x020A3F64
+	arm_func_start send_packet
+send_packet: ; 0x020A3F64
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -4347,7 +4347,7 @@ sub_020A3F64: ; 0x020A3F64
 	add r1, r7, #6
 	sub r2, r6, #6
 	str r4, [sp]
-	bl sub_020AFFE4
+	bl WCM_SendDCFDataEx
 	cmp r0, #0
 	movlt r1, #1
 	ldr r0, _020A3FBC ; =0x021D4620
@@ -4357,10 +4357,10 @@ sub_020A3F64: ; 0x020A3F64
 	.align 2, 0
 _020A3FB8: .word _02110690
 _020A3FBC: .word 0x021D4620
-	arm_func_end sub_020A3F64
+	arm_func_end send_packet
 
-	arm_func_start sub_020A3FC0
-sub_020A3FC0: ; 0x020A3FC0
+	arm_func_start put_in_buffer
+put_in_buffer: ; 0x020A3FC0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r4, _020A41A8 ; =0x021D4620
 	mov r7, r0
@@ -4492,7 +4492,7 @@ _020A419C:
 _020A41A8: .word 0x021D4620
 _020A41AC: .word 0x000005E4
 _020A41B0: .word _02110690
-	arm_func_end sub_020A3FC0
+	arm_func_end put_in_buffer
 
 	arm_func_start CPSi_RecvCallbackFunc
 CPSi_RecvCallbackFunc: ; 0x020A41B4
@@ -4501,7 +4501,7 @@ CPSi_RecvCallbackFunc: ; 0x020A41B4
 	mov ip, #0
 	str ip, [sp]
 	str ip, [sp, #4]
-	bl sub_020A3FC0
+	bl put_in_buffer
 	ldr r0, _020A4208 ; =0x021D4620
 	ldr r1, [r0, #0x54]
 	cmp r1, #0
@@ -4521,8 +4521,8 @@ CPSi_RecvCallbackFunc: ; 0x020A41B4
 _020A4208: .word 0x021D4620
 	arm_func_end CPSi_RecvCallbackFunc
 
-	arm_func_start sub_020A420C
-sub_020A420C: ; 0x020A420C
+	arm_func_start receive_packet
+receive_packet: ; 0x020A420C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r0
 	bl OS_DisableInterrupts
@@ -4575,10 +4575,10 @@ _020A4278:
 	.align 2, 0
 _020A42C4: .word 0x021D4620
 _020A42C8: .word 0x021E16A0
-	arm_func_end sub_020A420C
+	arm_func_end receive_packet
 
-	arm_func_start sub_020A42CC
-sub_020A42CC: ; 0x020A42CC
+	arm_func_start throw_packet
+throw_packet: ; 0x020A42CC
 	stmdb sp!, {r3, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020A430C ; =0x021D4620
@@ -4597,10 +4597,10 @@ sub_020A42CC: ; 0x020A42CC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A430C: .word 0x021D4620
-	arm_func_end sub_020A42CC
+	arm_func_end throw_packet
 
-	arm_func_start sub_020A4310
-sub_020A4310: ; 0x020A4310
+	arm_func_start inq_arpcache
+inq_arpcache: ; 0x020A4310
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
@@ -4614,11 +4614,11 @@ sub_020A4310: ; 0x020A4310
 	ldreq r7, _020A43D0 ; =0x021D4B08
 	beq _020A43B8
 	mov r0, r5
-	bl sub_020A3E68
+	bl is_broadcast
 	cmp r0, #0
 	bne _020A4360
 	mov r0, r5
-	bl sub_020A3EA4
+	bl is_multicast
 	cmp r0, #0
 	beq _020A4368
 _020A4360:
@@ -4659,10 +4659,10 @@ _020A43D0: .word 0x021D4B08
 _020A43D4: .word _02110688
 _020A43D8: .word 0x021D46A0
 _020A43DC: .word 0x021D46AA
-	arm_func_end sub_020A4310
+	arm_func_end inq_arpcache
 
-	arm_func_start sub_020A43E0
-sub_020A43E0: ; 0x020A43E0
+	arm_func_start send_arprequest
+send_arprequest: ; 0x020A43E0
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x2c
 	mov r4, r0
@@ -4719,7 +4719,7 @@ sub_020A43E0: ; 0x020A43E0
 	add r0, sp, #0
 	mov r1, #0x2a
 	mov r3, r2
-	bl sub_020A3F64
+	bl send_packet
 	add sp, sp, #0x2c
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -4727,10 +4727,10 @@ _020A44CC: .word 0x021D4B08
 _020A44D0: .word 0x00000608
 _020A44D4: .word 0x00000406
 _020A44D8: .word 0x021D4620
-	arm_func_end sub_020A43E0
+	arm_func_end send_arprequest
 
-	arm_func_start sub_020A44DC
-sub_020A44DC: ; 0x020A44DC
+	arm_func_start arprequest
+arprequest: ; 0x020A44DC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, #0
 	ldr r4, _020A4548 ; =0x021D4620
@@ -4739,7 +4739,7 @@ sub_020A44DC: ; 0x020A44DC
 	mov r6, r7
 _020A44F4:
 	mov r0, sb
-	bl sub_020A43E0
+	bl send_arprequest
 	mov r8, r6
 _020A4500:
 	ldr r0, [r4, #0x50]
@@ -4749,7 +4749,7 @@ _020A4500:
 	mov r0, r5
 	bl OS_Sleep
 	mov r0, sb
-	bl sub_020A4310
+	bl inq_arpcache
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	add r8, r8, #1
@@ -4762,10 +4762,10 @@ _020A4500:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020A4548: .word 0x021D4620
-	arm_func_end sub_020A44DC
+	arm_func_end arprequest
 
-	arm_func_start sub_020A454C
-sub_020A454C: ; 0x020A454C
+	arm_func_start reg_arpcache
+reg_arpcache: ; 0x020A454C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r3, _020A4678 ; =0x7F000001
 	mov r6, r1
@@ -4777,11 +4777,11 @@ sub_020A454C: ; 0x020A454C
 	cmpne r6, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
-	bl sub_020A3E04
+	bl ip_islocal
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
-	bl sub_020A3EA4
+	bl is_multicast
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	bl OS_GetTick
@@ -4850,10 +4850,10 @@ _020A4678: .word 0x7F000001
 _020A467C: .word 0x021D4620
 _020A4680: .word 0x021D46A0
 _020A4684: .word 0x021D46AA
-	arm_func_end sub_020A454C
+	arm_func_end reg_arpcache
 
-	arm_func_start sub_020A4688
-sub_020A4688: ; 0x020A4688
+	arm_func_start send_ether
+send_ether: ; 0x020A4688
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldrh r5, [sp, #0x1c]
 	ldr r4, [sp, #0x18]
@@ -4865,18 +4865,18 @@ sub_020A4688: ; 0x020A4688
 	mov r6, r2
 	mov r5, r3
 	strh ip, [r8, #-2]
-	bl sub_020A3EA4
+	bl is_multicast
 	cmp r0, #0
 	bne _020A46FC
 	mov r0, r4
-	bl sub_020A3E44
+	bl get_targetip
 	movs r4, r0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
-	bl sub_020A4310
+	bl inq_arpcache
 	cmp r0, #0
 	bne _020A46E4
 	mov r0, r4
-	bl sub_020A44DC
+	bl arprequest
 _020A46E4:
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
@@ -4906,14 +4906,14 @@ _020A472C:
 	mov r3, r5
 	sub r0, r8, #0xe
 	add r1, r7, #0xe
-	bl sub_020A3F64
+	bl send_packet
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020A4754: .word 0x021D4B08
-	arm_func_end sub_020A4688
+	arm_func_end send_ether
 
-	arm_func_start sub_020A4758
-sub_020A4758: ; 0x020A4758
+	arm_func_start send_ip_frag
+send_ip_frag: ; 0x020A4758
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	mov r7, r1
@@ -4938,7 +4938,7 @@ sub_020A4758: ; 0x020A4758
 	mov r6, r2
 	strh r3, [r8, #-0xa]
 	ldr r4, [sp, #0x20]
-	bl sub_020A3D98
+	bl calc_checksum
 	mov r2, r0, lsl #8
 	ldr r1, _020A4870 ; =0x7F000001
 	orr r0, r2, r0, asr #8
@@ -4955,7 +4955,7 @@ sub_020A4758: ; 0x020A4758
 	sub r0, r8, #0x14
 	add r1, r7, #0x14
 	str ip, [sp, #4]
-	bl sub_020A4688
+	bl send_ether
 _020A4800:
 	ldr r0, _020A4870 ; =0x7F000001
 	cmp r4, r0
@@ -4964,7 +4964,7 @@ _020A4800:
 	cmpne r4, r0
 	beq _020A482C
 	mov r0, r4
-	bl sub_020A3EA4
+	bl is_multicast
 	cmp r0, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
@@ -4981,7 +4981,7 @@ _020A482C:
 	str r5, [sp, #4]
 	sub r2, r8, #0x1c
 	add r3, r7, #0x1c
-	bl sub_020A3FC0
+	bl put_in_buffer
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	add sp, sp, #8
@@ -4991,10 +4991,10 @@ _020A4870: .word 0x7F000001
 _020A4874: .word 0x021D4620
 _020A4878: .word _02110690
 _020A487C: .word 0x021D4B08
-	arm_func_end sub_020A4758
+	arm_func_end send_ip_frag
 
-	arm_func_start sub_020A4880
-sub_020A4880: ; 0x020A4880
+	arm_func_start send_ip
+send_ip: ; 0x020A4880
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov sl, r0
@@ -5055,7 +5055,7 @@ _020A4950:
 	str r6, [sp]
 	orr ip, r4, #0x2000
 	str ip, [sp, #4]
-	bl sub_020A4758
+	bl send_ip_frag
 	add r1, r4, #0xb9
 	add r0, r5, #0x1c8
 	sub sb, sb, fp
@@ -5076,7 +5076,7 @@ _020A4990:
 	str r6, [sp]
 	orr r5, r4, #0x2000
 	str r5, [sp, #4]
-	bl sub_020A4758
+	bl send_ip_frag
 	b _020A49DC
 _020A49C4:
 	str r6, [sp]
@@ -5084,7 +5084,7 @@ _020A49C4:
 	mov r2, r5
 	mov r3, sb
 	str r4, [sp, #4]
-	bl sub_020A4758
+	bl send_ip_frag
 _020A49DC:
 	add r0, r4, sb, lsr #3
 	mov r0, r0, lsl #0x10
@@ -5104,7 +5104,7 @@ _020A49FC:
 	str r6, [sp]
 	orr sb, r4, #0x2000
 	str sb, [sp, #4]
-	bl sub_020A4758
+	bl send_ip_frag
 	add r0, r4, #0xb9
 	sub r7, r7, r5
 	mov r0, r0, lsl #0x10
@@ -5123,16 +5123,16 @@ _020A4A40:
 	mov r2, r8
 	mov r3, r7
 	str r4, [sp, #4]
-	bl sub_020A4758
+	bl send_ip_frag
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020A4A70: .word 0x021D4620
 _020A4A74: .word 0x000005C8
-	arm_func_end sub_020A4880
+	arm_func_end send_ip
 
-	arm_func_start sub_020A4A78
-sub_020A4A78: ; 0x020A4A78
+	arm_func_start send_ping
+send_ping: ; 0x020A4A78
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r5, r2
@@ -5153,14 +5153,14 @@ sub_020A4A78: ; 0x020A4A78
 	add r0, r4, #0x22
 	strh ip, [r3, #4]
 	strh lr, [r4, #0x28]
-	bl sub_020A3CC8
+	bl calc_checksum_do
 	mov r2, r0
 	mov r0, r7
 	mov r1, r6
-	bl sub_020A3CC8
+	bl calc_checksum_do
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_020A3D7C
+	bl invert_checksum
 	mov r2, r7
 	mov r3, r6
 	mov r1, r0, lsl #8
@@ -5172,16 +5172,16 @@ sub_020A4A78: ; 0x020A4A78
 	mov r1, #1
 	str r1, [sp, #4]
 	mov r1, #8
-	bl sub_020A4880
+	bl send_ip
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A4B20: .word 0x021D4620
 _020A4B24: .word 0x021E16A0
-	arm_func_end sub_020A4A78
+	arm_func_end send_ping
 
-	arm_func_start sub_020A4B28
-sub_020A4B28: ; 0x020A4B28
+	arm_func_start send_udp
+send_udp: ; 0x020A4B28
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r7, _020A4C60 ; =0x021D4620
@@ -5238,14 +5238,14 @@ sub_020A4B28: ; 0x020A4B28
 	orr ip, ip, lr, asr #8
 	strh ip, [r3, #0x22]
 	strh r2, [r4, #6]
-	bl sub_020A3CC8
+	bl calc_checksum_do
 	mov r2, r0
 	mov r0, r7
 	mov r1, r6
-	bl sub_020A3CC8
+	bl calc_checksum_do
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_020A3D7C
+	bl invert_checksum
 	mov r2, r7
 	mov r3, r6
 	mov r1, r0, lsl #8
@@ -5257,15 +5257,15 @@ sub_020A4B28: ; 0x020A4B28
 	mov r1, #0x11
 	str r1, [sp, #4]
 	mov r1, #8
-	bl sub_020A4880
+	bl send_ip
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A4C60: .word 0x021D4620
-	arm_func_end sub_020A4B28
+	arm_func_end send_udp
 
-	arm_func_start sub_020A4C64
-sub_020A4C64: ; 0x020A4C64
+	arm_func_start send_tcp
+send_tcp: ; 0x020A4C64
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #8
 	mov r7, r2
@@ -5391,14 +5391,14 @@ _020A4E48:
 	sub r0, r4, #0xc
 	add r1, r5, #0xc
 	mov r2, #0
-	bl sub_020A3CC8
+	bl calc_checksum_do
 	mov r2, r0
 	mov r0, sb
 	mov r1, r8
-	bl sub_020A3CC8
+	bl calc_checksum_do
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_020A3D7C
+	bl invert_checksum
 	mov r3, r0, lsl #8
 	orr r0, r3, r0, asr #8
 	strh r0, [r4, #0x10]
@@ -5410,7 +5410,7 @@ _020A4E48:
 	mov r1, r5
 	mov r2, sb
 	mov r3, r8
-	bl sub_020A4880
+	bl send_ip
 	ldr r0, [r7, #0x28]
 	tst r6, #3
 	add r0, r0, r8
@@ -5425,10 +5425,10 @@ _020A4EC8: .word 0x021E16A0
 _020A4ECC: .word 0x021D4888
 _020A4ED0: .word 0x021D4B32
 _020A4ED4: .word 0x021D4620
-	arm_func_end sub_020A4C64
+	arm_func_end send_tcp
 
-	arm_func_start sub_020A4ED8
-sub_020A4ED8: ; 0x020A4ED8
+	arm_func_start reply_arp
+reply_arp: ; 0x020A4ED8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r3, #0x200
@@ -5467,22 +5467,22 @@ sub_020A4ED8: ; 0x020A4ED8
 	mov r1, #0x2a
 	mov r2, #0
 	mov r3, r2
-	bl sub_020A3F64
+	bl send_packet
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020A4F78: .word 0x021D4B08
 _020A4F7C: .word 0x021D4620
-	arm_func_end sub_020A4ED8
+	arm_func_end reply_arp
 
-	arm_func_start sub_020A4F80
-sub_020A4F80: ; 0x020A4F80
+	arm_func_start dispatch_arp
+dispatch_arp: ; 0x020A4F80
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	cmp r1, #0x1c
 	ldmloia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r1, _020A50B8 ; =0x021D4B08
 	add r0, r6, #8
-	bl sub_020A3F38
+	bl maccmp
 	cmp r0, #0
 	ldrne r0, _020A50BC ; =0x021D4620
 	ldrne r0, [r0, #0x50]
@@ -5538,14 +5538,14 @@ sub_020A4F80: ; 0x020A4F80
 	bne _020A507C
 	mov r2, r7
 	add r0, r6, #8
-	bl sub_020A454C
+	bl reg_arpcache
 _020A507C:
 	cmp r4, #1
 	bne _020A5098
 	cmp r7, #0
 	beq _020A5098
 	mov r0, r6
-	bl sub_020A4ED8
+	bl reply_arp
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020A5098:
 	cmp r4, #2
@@ -5560,10 +5560,10 @@ _020A5098:
 _020A50B8: .word 0x021D4B08
 _020A50BC: .word 0x021D4620
 _020A50C0: .word 0x00000406
-	arm_func_end sub_020A4F80
+	arm_func_end dispatch_arp
 
-	arm_func_start sub_020A50C4
-sub_020A50C4: ; 0x020A50C4
+	arm_func_start reply_icmp
+reply_icmp: ; 0x020A50C4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r6, r0
@@ -5580,15 +5580,15 @@ sub_020A50C4: ; 0x020A50C4
 	mov r0, r1, lsr #0x10
 	orr r0, r0, r3, lsl #16
 	mov r4, r2
-	bl sub_020A3E44
+	bl get_targetip
 	movs r7, r0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_020A4310
+	bl inq_arpcache
 	cmp r0, #0
 	bne _020A5130
 	mov r0, r7
-	bl sub_020A43E0
+	bl send_arprequest
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020A5130:
@@ -5597,7 +5597,7 @@ _020A5130:
 	mov r0, r5
 	mov r1, r4
 	strh r2, [r5, #2]
-	bl sub_020A3D98
+	bl calc_checksum
 	mov r1, r0, lsl #8
 	orr r0, r1, r0, asr #8
 	strh r0, [r5, #2]
@@ -5619,13 +5619,13 @@ _020A5130:
 	str r6, [sp]
 	mov r4, #1
 	str r4, [sp, #4]
-	bl sub_020A4880
+	bl send_ip
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020A50C4
+	arm_func_end reply_icmp
 
-	arm_func_start sub_020A51A8
-sub_020A51A8: ; 0x020A51A8
+	arm_func_start process_icmp_reply
+process_icmp_reply: ; 0x020A51A8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
@@ -5694,10 +5694,10 @@ _020A5298:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020A52A4: .word 0x021E16A0
-	arm_func_end sub_020A51A8
+	arm_func_end process_icmp_reply
 
-	arm_func_start sub_020A52A8
-sub_020A52A8: ; 0x020A52A8
+	arm_func_start valid_IP
+valid_IP: ; 0x020A52A8
 	cmp r0, #0
 	mvnne r2, #0
 	cmpne r0, r2
@@ -5706,17 +5706,17 @@ sub_020A52A8: ; 0x020A52A8
 	movne r0, #1
 	moveq r0, #0
 	bx lr
-	arm_func_end sub_020A52A8
+	arm_func_end valid_IP
 
-	arm_func_start sub_020A52C8
-sub_020A52C8: ; 0x020A52C8
+	arm_func_start dispatch_icmp
+dispatch_icmp: ; 0x020A52C8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r5, r1
 	mov r4, r2
 	mov r6, r0
 	mov r0, r5
 	mov r1, r4
-	bl sub_020A3D98
+	bl calc_checksum
 	ldr r1, _020A5394 ; =0x0000FFFF
 	cmp r0, r1
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
@@ -5742,7 +5742,7 @@ sub_020A52C8: ; 0x020A52C8
 	mov r1, r3, lsr #0x10
 	orr r0, r0, ip, lsl #16
 	orr r1, r1, r2, lsl #16
-	bl sub_020A52A8
+	bl valid_IP
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	ldrb r0, [r5]
@@ -5755,20 +5755,20 @@ _020A536C:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020A51A8
+	bl process_icmp_reply
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _020A5380:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020A50C4
+	bl reply_icmp
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020A5394: .word 0x0000FFFF
-	arm_func_end sub_020A52C8
+	arm_func_end dispatch_icmp
 
-	arm_func_start sub_020A5398
-sub_020A5398: ; 0x020A5398
+	arm_func_start check_listener
+check_listener: ; 0x020A5398
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _020A5468 ; =0x021E16A0
 	ldr ip, [r2, #8]
@@ -5828,10 +5828,10 @@ _020A5460:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020A5468: .word 0x021E16A0
-	arm_func_end sub_020A5398
+	arm_func_end check_listener
 
-	arm_func_start sub_020A546C
-sub_020A546C: ; 0x020A546C
+	arm_func_start check_socket
+check_socket: ; 0x020A546C
 	stmdb sp!, {r4, r5, r6, lr}
 	ldrb r4, [r2, #8]
 	mov r3, #0
@@ -5880,10 +5880,10 @@ _020A54D8:
 _020A5518:
 	mov r0, r3
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020A546C
+	arm_func_end check_socket
 
-	arm_func_start sub_020A5520
-sub_020A5520: ; 0x020A5520
+	arm_func_start find_socket
+find_socket: ; 0x020A5520
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _020A5580 ; =0x021E16A0
 	mov r7, r0
@@ -5900,7 +5900,7 @@ _020A553C:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r4
-	bl sub_020A546C
+	bl check_socket
 	cmp r0, #0
 	movne r0, r4
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -5913,10 +5913,10 @@ _020A5578:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A5580: .word 0x021E16A0
-	arm_func_end sub_020A5520
+	arm_func_end find_socket
 
-	arm_func_start sub_020A5584
-sub_020A5584: ; 0x020A5584
+	arm_func_start parse_mss
+parse_mss: ; 0x020A5584
 	mov r2, #0x218
 	strh r2, [r1, #0x2e]
 	ldrb r2, [r0, #0xc]
@@ -5953,28 +5953,28 @@ _020A55F8:
 	sub ip, ip, #1
 	bne _020A55B0
 	bx lr
-	arm_func_end sub_020A5584
+	arm_func_end parse_mss
 
-	arm_func_start sub_020A5608
-sub_020A5608: ; 0x020A5608
+	arm_func_start no_need_inq
+no_need_inq: ; 0x020A5608
 	stmdb sp!, {r3, lr}
-	bl sub_020A3E44
+	bl get_targetip
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl sub_020A4310
+	bl inq_arpcache
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020A5608
+	arm_func_end no_need_inq
 
-	arm_func_start sub_020A5624
-sub_020A5624: ; 0x020A5624
+	arm_func_start tcp_send_handshake
+tcp_send_handshake: ; 0x020A5624
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
 	ldr r0, [r6, #0x1c]
 	mov r5, r1
 	mov r4, r2
-	bl sub_020A5608
+	bl no_need_inq
 	cmp r0, #0
 	bne _020A565C
 	ldr r0, _020A5690 ; =0x021E16A0
@@ -5988,42 +5988,42 @@ _020A565C:
 	mov r2, r6
 	mov r3, r5
 	str r4, [sp]
-	bl sub_020A4C64
+	bl send_tcp
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _020A567C:
 	ldr r0, [r6, #0x1c]
-	bl sub_020A3E44
-	bl sub_020A43E0
+	bl get_targetip
+	bl send_arprequest
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _020A5690: .word 0x021E16A0
 _020A5694: .word 0x021D4888
-	arm_func_end sub_020A5624
+	arm_func_end tcp_send_handshake
 
-	arm_func_start sub_020A5698
-sub_020A5698: ; 0x020A5698
-	ldr ip, _020A56A8 ; =sub_020A5624
+	arm_func_start tcp_send_ack
+tcp_send_ack: ; 0x020A5698
+	ldr ip, _020A56A8 ; =tcp_send_handshake
 	mov r2, r1
 	mov r1, #0x10
 	bx ip
 	.align 2, 0
-_020A56A8: .word sub_020A5624
-	arm_func_end sub_020A5698
+_020A56A8: .word tcp_send_handshake
+	arm_func_end tcp_send_ack
 
-	arm_func_start sub_020A56AC
-sub_020A56AC: ; 0x020A56AC
-	ldr ip, _020A56BC ; =sub_020A5624
+	arm_func_start tcp_send_finack
+tcp_send_finack: ; 0x020A56AC
+	ldr ip, _020A56BC ; =tcp_send_handshake
 	mov r2, r1
 	mov r1, #0x11
 	bx ip
 	.align 2, 0
-_020A56BC: .word sub_020A5624
-	arm_func_end sub_020A56AC
+_020A56BC: .word tcp_send_handshake
+	arm_func_end tcp_send_finack
 
-	arm_func_start sub_020A56C0
-sub_020A56C0: ; 0x020A56C0
+	arm_func_start tcp_send_rst
+tcp_send_rst: ; 0x020A56C0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r4, _020A57F0 ; =0x021D4764
 	mov r8, r0
@@ -6074,7 +6074,7 @@ sub_020A56C0: ; 0x020A56C0
 	mov r2, r5
 	mov r1, #4
 	str r3, [r4, #0x28]
-	bl sub_020A5624
+	bl tcp_send_handshake
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _020A5790:
 	mov r0, #0
@@ -6099,16 +6099,16 @@ _020A5790:
 	strne r0, [r4, #0x24]
 	mov r0, r4
 	mov r1, #0x14
-	bl sub_020A5624
+	bl tcp_send_handshake
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020A57F0: .word 0x021D4764
 _020A57F4: .word 0x021D4720
 _020A57F8: .word 0x021D4620
-	arm_func_end sub_020A56C0
+	arm_func_end tcp_send_rst
 
-	arm_func_start sub_020A57FC
-sub_020A57FC: ; 0x020A57FC
+	arm_func_start dt_syn_LISTEN
+dt_syn_LISTEN: ; 0x020A57FC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r2
 	mov r2, #3
@@ -6162,21 +6162,21 @@ sub_020A57FC: ; 0x020A57FC
 	orr r2, r2, r5, lsl #16
 	add r2, r2, #1
 	str r2, [r4, #0x24]
-	bl sub_020A5584
+	bl parse_mss
 	mov r0, r4
 	mov r1, #0x12
 	mov r2, #0
-	bl sub_020A5624
+	bl tcp_send_handshake
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020A57FC
+	arm_func_end dt_syn_LISTEN
 
-	arm_func_start sub_020A58E8
-sub_020A58E8: ; 0x020A58E8
+	arm_func_start find_specific_socket
+find_specific_socket: ; 0x020A58E8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020A5520
+	bl find_socket
 	movs r2, r0
 	beq _020A5968
 	ldrb r0, [r2, #8]
@@ -6184,7 +6184,7 @@ sub_020A58E8: ; 0x020A58E8
 	bne _020A5920
 	mov r0, r6
 	mov r1, r5
-	bl sub_020A57FC
+	bl dt_syn_LISTEN
 	b _020A5960
 _020A5920:
 	add r0, r0, #0xfd
@@ -6196,24 +6196,24 @@ _020A5920:
 	sub r3, r1, #1
 	mov r1, r5
 	str r3, [r2, #0x28]
-	bl sub_020A57FC
+	bl dt_syn_LISTEN
 	b _020A5960
 _020A594C:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
 	mov r3, #0
-	bl sub_020A56C0
+	bl tcp_send_rst
 _020A5960:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 _020A5968:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020A58E8
+	arm_func_end find_specific_socket
 
-	arm_func_start sub_020A5970
-sub_020A5970: ; 0x020A5970
+	arm_func_start dt_syn
+dt_syn: ; 0x020A5970
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r4, r0
 	ldrh r0, [r4, #0x12]
@@ -6240,44 +6240,44 @@ sub_020A5970: ; 0x020A5970
 	mov r6, r1
 	orr r1, r3, ip, lsl #16
 	mov r5, r2
-	bl sub_020A52A8
+	bl valid_IP
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r4
 	mov r1, r6
 	mov r2, r5
-	bl sub_020A58E8
+	bl find_specific_socket
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r4
 	mov r1, r6
-	bl sub_020A5398
+	bl check_listener
 	movs r2, r0
 	beq _020A5A20
 	mov r0, r4
 	mov r1, r6
-	bl sub_020A57FC
+	bl dt_syn_LISTEN
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _020A5A20:
 	bl OS_YieldThread
 	mov r0, r4
 	mov r1, r6
-	bl sub_020A5398
+	bl check_listener
 	movs r2, r0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r4
 	mov r1, r6
-	bl sub_020A57FC
+	bl dt_syn_LISTEN
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020A5970
+	arm_func_end dt_syn
 
-	arm_func_start sub_020A5A48
-sub_020A5A48: ; 0x020A5A48
+	arm_func_start dt_synack
+dt_synack: ; 0x020A5A48
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r5, r1
 	mov r6, r2
-	bl sub_020A5520
+	bl find_socket
 	movs r4, r0
 	beq _020A5A70
 	ldrb r0, [r4, #8]
@@ -6288,7 +6288,7 @@ _020A5A70:
 	mov r1, r5
 	mov r2, r6
 	mov r3, #0
-	bl sub_020A56C0
+	bl tcp_send_rst
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020A5A88:
 	bl OS_YieldThread
@@ -6323,10 +6323,10 @@ _020A5A88:
 	mov r2, r3, lsl #8
 	orr r2, r2, r3, asr #8
 	strh r2, [r4, #0x2c]
-	bl sub_020A5584
+	bl parse_mss
 	mov r0, r4
 	mov r1, #0
-	bl sub_020A5698
+	bl tcp_send_ack
 	mov r0, #4
 	strb r0, [r4, #8]
 	ldr r0, [r4, #4]
@@ -6337,22 +6337,22 @@ _020A5A88:
 	ldr r0, [r4]
 	bl OS_WakeupThreadDirect
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020A5A48
+	arm_func_end dt_synack
 
-	arm_func_start sub_020A5B40
-sub_020A5B40: ; 0x020A5B40
+	arm_func_start dt_ack
+dt_ack: ; 0x020A5B40
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, r0
 	mov sb, r1
 	mov r8, r2
-	bl sub_020A5520
+	bl find_socket
 	movs r5, r0
 	bne _020A5B74
 	mov r0, r4
 	mov r1, sb
 	mov r2, r8
 	mov r3, #0
-	bl sub_020A56C0
+	bl tcp_send_rst
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020A5B74:
 	ldrh r6, [sb, #0xa]
@@ -6390,7 +6390,7 @@ _020A5B74:
 	beq _020A5C08
 	mov r0, r5
 	mov r1, #0
-	bl sub_020A5698
+	bl tcp_send_ack
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020A5C08:
 	ldrh r1, [sb, #0xe]
@@ -6417,7 +6417,7 @@ _020A5C50:
 	mov r1, sb
 	mov r2, r8
 	mov r3, #0
-	bl sub_020A56C0
+	bl tcp_send_rst
 	b _020A5E50
 _020A5C68:
 	mov r0, #4
@@ -6484,7 +6484,7 @@ _020A5D30:
 	add r2, r1, #1
 	mov r1, #0
 	str r2, [r5, #0x24]
-	bl sub_020A56AC
+	bl tcp_send_finack
 	cmp r8, #0
 	ldreq r0, [r5, #4]
 	cmpeq r0, #2
@@ -6499,7 +6499,7 @@ _020A5D84:
 	beq _020A5E50
 	mov r0, r5
 	mov r1, #0
-	bl sub_020A5698
+	bl tcp_send_ack
 	b _020A5E50
 _020A5D9C:
 	tst r6, #1
@@ -6510,7 +6510,7 @@ _020A5D9C:
 	mov r0, r5
 	mov r1, #0
 	str r2, [r5, #0x24]
-	bl sub_020A5698
+	bl tcp_send_ack
 	mov r1, #0
 	strb r1, [r5, #8]
 	ldr r0, [r5, #4]
@@ -6528,7 +6528,7 @@ _020A5DE4:
 	add r2, r1, r8
 	mov r1, #0
 	str r2, [r5, #0x24]
-	bl sub_020A5698
+	bl tcp_send_ack
 _020A5E04:
 	mov r0, #8
 	strb r0, [r5, #8]
@@ -6550,19 +6550,19 @@ _020A5E34:
 	addne r0, r0, #1
 	strne r0, [r5, #0x24]
 	mov r0, r5
-	bl sub_020A5698
+	bl tcp_send_ack
 _020A5E50:
 	bl OS_YieldThread
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020A5B40
+	arm_func_end dt_ack
 
-	arm_func_start sub_020A5E58
-sub_020A5E58: ; 0x020A5E58
+	arm_func_start dt_fin
+dt_fin: ; 0x020A5E58
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
-	bl sub_020A5520
+	bl find_socket
 	movs r4, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldrb r1, [r4, #8]
@@ -6578,7 +6578,7 @@ _020A5E94:
 	mov r1, #0
 	add r2, r2, #1
 	str r2, [r4, #0x24]
-	bl sub_020A5698
+	bl tcp_send_ack
 	mov r0, #9
 	strb r0, [r4, #8]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -6587,7 +6587,7 @@ _020A5EB4:
 	mov r1, #0
 	add r2, r2, #1
 	str r2, [r4, #0x24]
-	bl sub_020A5698
+	bl tcp_send_ack
 	mov r1, #0
 	strb r1, [r4, #8]
 	ldr r0, [r4, #4]
@@ -6602,7 +6602,7 @@ _020A5EEC:
 	mov r1, #0
 	add r2, r2, #1
 	str r2, [r4, #0x24]
-	bl sub_020A56AC
+	bl tcp_send_finack
 	mov r0, #6
 	strb r0, [r4, #8]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -6611,14 +6611,14 @@ _020A5F0C:
 	mov r1, r6
 	mov r2, r5
 	mov r3, #0
-	bl sub_020A56C0
+	bl tcp_send_rst
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020A5E58
+	arm_func_end dt_fin
 
-	arm_func_start sub_020A5F24
-sub_020A5F24: ; 0x020A5F24
+	arm_func_start dt_rst
+dt_rst: ; 0x020A5F24
 	stmdb sp!, {r4, lr}
-	bl sub_020A5520
+	bl find_socket
 	movs r4, r0
 	ldmeqia sp!, {r4, pc}
 	bl OS_YieldThread
@@ -6632,10 +6632,10 @@ sub_020A5F24: ; 0x020A5F24
 	ldr r0, [r4]
 	bl OS_WakeupThreadDirect
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020A5F24
+	arm_func_end dt_rst
 
-	arm_func_start sub_020A5F60
-sub_020A5F60: ; 0x020A5F60
+	arm_func_start dispatch_tcp
+dispatch_tcp: ; 0x020A5F60
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -6644,7 +6644,7 @@ sub_020A5F60: ; 0x020A5F60
 	mov r1, r4
 	mov r2, r6
 	mov r3, #6
-	bl sub_020A3DB4
+	bl check_tcpudpsum
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	ldrb r0, [r5, #0xc]
@@ -6681,7 +6681,7 @@ _020A5FF8:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020A5970
+	bl dt_syn
 	ldmia sp!, {r4, r5, r6, pc}
 _020A6014:
 	tst r2, #0x28
@@ -6689,36 +6689,36 @@ _020A6014:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020A5A48
+	bl dt_synack
 	ldmia sp!, {r4, r5, r6, pc}
 _020A6030:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020A5B40
+	bl dt_ack
 	ldmia sp!, {r4, r5, r6, pc}
 _020A6044:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020A5E58
+	bl dt_fin
 	ldmia sp!, {r4, r5, r6, pc}
 _020A6058:
 	tst r2, #4
 	mov r0, r6
 	mov r1, r5
 	beq _020A6070
-	bl sub_020A5F24
+	bl dt_rst
 	ldmia sp!, {r4, r5, r6, pc}
 _020A6070:
 	mov r2, r4
 	mov r3, #0
-	bl sub_020A56C0
+	bl tcp_send_rst
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020A5F60
+	arm_func_end dispatch_tcp
 
-	arm_func_start sub_020A6080
-sub_020A6080: ; 0x020A6080
+	arm_func_start dispatch_udp
+dispatch_udp: ; 0x020A6080
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r1
 	ldrh r1, [r7, #6]
@@ -6730,7 +6730,7 @@ sub_020A6080: ; 0x020A6080
 	mov r1, r6
 	mov r2, r8
 	mov r3, #0x11
-	bl sub_020A3DB4
+	bl check_tcpudpsum
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020A60B8:
@@ -6859,10 +6859,10 @@ _020A627C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020A6288: .word 0x021E16A0
-	arm_func_end sub_020A6080
+	arm_func_end dispatch_udp
 
-	arm_func_start sub_020A628C
-sub_020A628C: ; 0x020A628C
+	arm_func_start check_frag
+check_frag: ; 0x020A628C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	mov r6, #0
@@ -7055,10 +7055,10 @@ _020A6548: .word 0x00003FFF
 _020A654C: .word 0x021D4948
 _020A6550: .word 0x00001FFF
 _020A6554: .word 0x021D4620
-	arm_func_end sub_020A628C
+	arm_func_end check_frag
 
-	arm_func_start sub_020A6558
-sub_020A6558: ; 0x020A6558
+	arm_func_start dispatch_ip
+dispatch_ip: ; 0x020A6558
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	ldrh r7, [r4, #0xe]
@@ -7086,7 +7086,7 @@ sub_020A6558: ; 0x020A6558
 	mov r5, r1
 	cmp r0, r2
 	beq _020A667C
-	bl sub_020A3EB8
+	bl ip_isme
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldrh r1, [r4, #2]
@@ -7099,7 +7099,7 @@ sub_020A6558: ; 0x020A6558
 	mov r0, r4
 	mov r1, r1, lsl #0x1c
 	mov r1, r1, lsr #0x1a
-	bl sub_020A3D98
+	bl calc_checksum
 	ldr r1, _020A6714 ; =0x0000FFFF
 	cmp r0, r1
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -7131,11 +7131,11 @@ sub_020A6558: ; 0x020A6558
 	mov r1, r2, lsr #0x10
 	orr r1, r1, r3, lsl #16
 	mov r2, #1
-	bl sub_020A454C
+	bl reg_arpcache
 _020A667C:
 	add r1, sp, #0
 	mov r0, r4
-	bl sub_020A628C
+	bl check_frag
 	movs r4, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldrh r2, [r4, #2]
@@ -7150,7 +7150,7 @@ _020A667C:
 	add r1, r4, r3, lsr #26
 	sub r2, r2, r3, lsr #26
 	bne _020A66C8
-	bl sub_020A6080
+	bl dispatch_udp
 	b _020A66F4
 _020A66C8:
 	ldr r3, _020A6718 ; =0x021D4620
@@ -7159,12 +7159,12 @@ _020A66C8:
 	beq _020A66F4
 	cmp ip, #1
 	bne _020A66E8
-	bl sub_020A52C8
+	bl dispatch_icmp
 	b _020A66F4
 _020A66E8:
 	cmp ip, #6
 	bne _020A66F4
-	bl sub_020A5F60
+	bl dispatch_tcp
 _020A66F4:
 	ldr r0, [sp]
 	cmp r0, #0
@@ -7177,16 +7177,16 @@ _020A66F4:
 	.align 2, 0
 _020A6714: .word 0x0000FFFF
 _020A6718: .word 0x021D4620
-	arm_func_end sub_020A6558
+	arm_func_end dispatch_ip
 
-	arm_func_start sub_020A671C
-sub_020A671C: ; 0x020A671C
+	arm_func_start tcpip
+tcpip: ; 0x020A671C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r5, _020A6788 ; =0x00000806
 	add r4, sp, #0
 _020A6728:
 	mov r0, r4
-	bl sub_020A420C
+	bl receive_packet
 	ldr r3, [sp]
 	cmp r3, #0x22
 	bls _020A6780
@@ -7203,18 +7203,18 @@ _020A6728:
 _020A6764:
 	add r0, r0, #0xe
 	sub r1, r3, #0xe
-	bl sub_020A6558
+	bl dispatch_ip
 	b _020A6780
 _020A6774:
 	add r0, r0, #0xe
 	sub r1, r3, #0xe
-	bl sub_020A4F80
+	bl dispatch_arp
 _020A6780:
-	bl sub_020A42CC
+	bl throw_packet
 	b _020A6728
 	.align 2, 0
 _020A6788: .word 0x00000806
-	arm_func_end sub_020A671C
+	arm_func_end tcpip
 
 	arm_func_start CPS_SocGetEport
 CPS_SocGetEport: ; 0x020A678C
@@ -7269,8 +7269,8 @@ _020A682C: .word 0x021D4620
 _020A6830: .word 0x00001388
 	arm_func_end CPS_SocGetEport
 
-	arm_func_start sub_020A6834
-sub_020A6834: ; 0x020A6834
+	arm_func_start get_seqno
+get_seqno: ; 0x020A6834
 	stmdb sp!, {r3, lr}
 	ldr r1, _020A6874 ; =0x021D4620
 	ldr r3, [r1, #0x70]
@@ -7289,7 +7289,7 @@ sub_020A6834: ; 0x020A6834
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A6874: .word 0x021D4620
-	arm_func_end sub_020A6834
+	arm_func_end get_seqno
 
 	arm_func_start CPS_SocRegister
 CPS_SocRegister: ; 0x020A6878
@@ -7399,11 +7399,11 @@ CPS_SocDup: ; 0x020A6984
 _020A6998: .word 0x021E16A0
 	arm_func_end CPS_SocDup
 
-	arm_func_start sub_020A699C
-sub_020A699C: ; 0x020A699C
+	arm_func_start CPSi_TcpListenRaw
+CPSi_TcpListenRaw: ; 0x020A699C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020A6834
+	bl get_seqno
 	str r0, [r5, #0x28]
 	str r0, [r5, #0x30]
 	mov r0, #1
@@ -7417,7 +7417,7 @@ sub_020A699C: ; 0x020A699C
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A699C
+	arm_func_end CPSi_TcpListenRaw
 
 	arm_func_start CPS_SetUdpCallback
 CPS_SetUdpCallback: ; 0x020A69DC
@@ -7442,20 +7442,20 @@ CPS_TcpListen: ; 0x020A69F8
 	ldrb r1, [r0, #9]
 	cmp r1, #0
 	beq _020A6A24
-	bl sub_020AB2E4
+	bl CPSi_SslListen
 	ldmia sp!, {r3, pc}
 _020A6A24:
-	bl sub_020A699C
+	bl CPSi_TcpListenRaw
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A6A2C: .word 0x021E16A0
 	arm_func_end CPS_TcpListen
 
-	arm_func_start sub_020A6A30
-sub_020A6A30: ; 0x020A6A30
+	arm_func_start CPSi_TcpConnectRaw
+CPSi_TcpConnectRaw: ; 0x020A6A30
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
-	bl sub_020A6834
+	bl get_seqno
 	mov r6, #2
 	ldr r4, _020A6AE0 ; =0x021D4620
 	mov r8, r0
@@ -7472,7 +7472,7 @@ _020A6A54:
 	mov r0, sl
 	mov r1, fp
 	mov r2, #0x18
-	bl sub_020A5624
+	bl tcp_send_handshake
 	bl OS_DisableInterrupts
 	mov sb, r0
 	ldrb r0, [sl, #8]
@@ -7502,7 +7502,7 @@ _020A6AD8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020A6AE0: .word 0x021D4620
-	arm_func_end sub_020A6A30
+	arm_func_end CPSi_TcpConnectRaw
 
 	arm_func_start CPS_TcpConnect
 CPS_TcpConnect: ; 0x020A6AE4
@@ -7515,10 +7515,10 @@ CPS_TcpConnect: ; 0x020A6AE4
 	ldrb r1, [r0, #9]
 	cmp r1, #0
 	beq _020A6B10
-	bl sub_020AB420
+	bl CPSi_SslConnect
 	ldmia sp!, {r3, pc}
 _020A6B10:
-	bl sub_020A6A30
+	bl CPSi_TcpConnectRaw
 	ldmia sp!, {r3, pc}
 _020A6B18:
 	mov r0, #1
@@ -7553,8 +7553,8 @@ _020A6B68:
 _020A6B70: .word 0x021E16A0
 	arm_func_end CPS_SocWho
 
-	arm_func_start sub_020A6B74
-sub_020A6B74: ; 0x020A6B74
+	arm_func_start CPSi_TcpShutdownRaw
+CPSi_TcpShutdownRaw: ; 0x020A6B74
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_YieldThread
@@ -7565,7 +7565,7 @@ sub_020A6B74: ; 0x020A6B74
 	bhi _020A6BAC
 	mov r0, r4
 	mov r1, #0x19
-	bl sub_020A56AC
+	bl tcp_send_finack
 	mov r0, #7
 	strb r0, [r4, #8]
 	ldmia sp!, {r4, pc}
@@ -7574,9 +7574,9 @@ _020A6BAC:
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
 	mov r1, #0x1a
-	bl sub_020A5698
+	bl tcp_send_ack
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020A6B74
+	arm_func_end CPSi_TcpShutdownRaw
 
 	arm_func_start CPS_TcpShutdown
 CPS_TcpShutdown: ; 0x020A6BC4
@@ -7590,10 +7590,10 @@ CPS_TcpShutdown: ; 0x020A6BC4
 	cmp r0, #0
 	beq _020A6BF0
 	mov r0, r4
-	bl sub_020AB890
+	bl CPSi_SslShutdown
 _020A6BF0:
 	mov r0, r4
-	bl sub_020A6B74
+	bl CPSi_TcpShutdownRaw
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020A6BFC: .word 0x021E16A0
@@ -7611,7 +7611,7 @@ CPS_TcpClose: ; 0x020A6C00
 	cmp r0, #0
 	beq _020A6C2C
 	mov r0, r4
-	bl sub_020AB910
+	bl CPSi_SslClose
 _020A6C2C:
 	bl OS_GetTick
 	mov r6, r0, lsr #0x10
@@ -7619,7 +7619,7 @@ _020A6C2C:
 	ldr r5, _020A6C84 ; =0x021D4620
 	b _020A6C44
 _020A6C40:
-	bl sub_020A3978
+	bl OS_YieldThread__
 _020A6C44:
 	ldr r0, [r5, #0x48]
 	blx r0
@@ -7642,8 +7642,8 @@ _020A6C80: .word 0x021E16A0
 _020A6C84: .word 0x021D4620
 	arm_func_end CPS_TcpClose
 
-	arm_func_start sub_020A6C88
-sub_020A6C88: ; 0x020A6C88
+	arm_func_start udp_read_raw
+udp_read_raw: ; 0x020A6C88
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r1
 	mov sb, r0
@@ -7667,10 +7667,10 @@ _020A6CC8:
 	str r6, [sb]
 	ldr r0, [r8, #0x40]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020A6C88
+	arm_func_end udp_read_raw
 
-	arm_func_start sub_020A6CDC
-sub_020A6CDC: ; 0x020A6CDC
+	arm_func_start CPSi_TcpReadRaw
+CPSi_TcpReadRaw: ; 0x020A6CDC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r4, r1
 	ldr r1, [r4, #0x44]
@@ -7706,7 +7706,7 @@ _020A6D40:
 	ldrne r0, [r4, #0x40]
 	moveq r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020A6CDC
+	arm_func_end CPSi_TcpReadRaw
 
 	arm_func_start CPS_SocRead
 CPS_SocRead: ; 0x020A6D58
@@ -7721,16 +7721,16 @@ CPS_SocRead: ; 0x020A6D58
 	and r2, r2, #0xff
 	cmp r2, #1
 	bhi _020A6D8C
-	bl sub_020A6C88
+	bl udp_read_raw
 	ldmia sp!, {r3, pc}
 _020A6D8C:
 	ldrb r2, [r1, #9]
 	cmp r2, #0
 	beq _020A6DA0
-	bl sub_020AB474
+	bl CPSi_SslRead
 	ldmia sp!, {r3, pc}
 _020A6DA0:
-	bl sub_020A6CDC
+	bl CPSi_TcpReadRaw
 	ldmia sp!, {r3, pc}
 _020A6DA8:
 	mov r1, #0
@@ -7741,8 +7741,8 @@ _020A6DA8:
 _020A6DB8: .word 0x021E16A0
 	arm_func_end CPS_SocRead
 
-	arm_func_start sub_020A6DBC
-sub_020A6DBC: ; 0x020A6DBC
+	arm_func_start CPSi_SocConsumeRaw
+CPSi_SocConsumeRaw: ; 0x020A6DBC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r1
 	mov r7, r0
@@ -7780,9 +7780,9 @@ _020A6E10:
 _020A6E3C:
 	mov r0, r4
 	mov r1, #0x1b
-	bl sub_020A5698
+	bl tcp_send_ack
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020A6DBC
+	arm_func_end CPSi_SocConsumeRaw
 
 	arm_func_start CPS_SocConsume
 CPS_SocConsume: ; 0x020A6E4C
@@ -7795,17 +7795,17 @@ CPS_SocConsume: ; 0x020A6E4C
 	ldrb r2, [r1, #9]
 	cmp r2, #0
 	beq _020A6E78
-	bl sub_020AB54C
+	bl CPSi_SslConsume
 	ldmia sp!, {r3, pc}
 _020A6E78:
-	bl sub_020A6DBC
+	bl CPSi_SocConsumeRaw
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A6E80: .word 0x021E16A0
 	arm_func_end CPS_SocConsume
 
-	arm_func_start sub_020A6E84
-sub_020A6E84: ; 0x020A6E84
+	arm_func_start tcp_write_do
+tcp_write_do: ; 0x020A6E84
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r8, r2
 	ldr r6, [r8, #0x34]
@@ -7844,7 +7844,7 @@ _020A6EB0:
 	mov r2, r8
 	mov r3, #0x18
 	sub r5, r5, r4
-	bl sub_020A4C64
+	bl send_tcp
 	bl OS_YieldThread
 	add sl, sl, r4
 	sub sb, sb, r4
@@ -7859,16 +7859,16 @@ _020A6F3C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020A6F44: .word 0x021D4620
-	arm_func_end sub_020A6E84
+	arm_func_end tcp_write_do
 
-	arm_func_start sub_020A6F48
-sub_020A6F48: ; 0x020A6F48
+	arm_func_start tcp_write_do2
+tcp_write_do2: ; 0x020A6F48
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r2
 	mov r4, r3
 	ldr r2, [sp, #0x10]
 	ldr r3, [sp, #0x14]
-	bl sub_020A6E84
+	bl tcp_write_do
 	cmp r0, #0
 	cmpne r4, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -7876,12 +7876,12 @@ sub_020A6F48: ; 0x020A6F48
 	mov r0, r5
 	mov r1, r4
 	mov r3, #0
-	bl sub_020A6E84
+	bl tcp_write_do
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A6F48
+	arm_func_end tcp_write_do2
 
-	arm_func_start sub_020A6F84
-sub_020A6F84: ; 0x020A6F84
+	arm_func_start CPSi_TcpWrite2Raw
+CPSi_TcpWrite2Raw: ; 0x020A6F84
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	mov r4, #0
@@ -7907,13 +7907,13 @@ _020A6FC8:
 	mov r1, sl
 	mov r2, sb
 	str r6, [sp, #4]
-	bl sub_020A6F48
+	bl tcp_write_do2
 	bl OS_GetTick
 	mov r5, r0, lsr #0x10
 	ldr r4, _020A7188 ; =0x021D4620
 	orr r5, r5, r1, lsl #16
 _020A6FF8:
-	bl sub_020A3978
+	bl OS_YieldThread__
 	ldr r0, [r4, #0x48]
 	blx r0
 	cmp r0, #0
@@ -7968,7 +7968,7 @@ _020A708C:
 	ldr r4, _020A7188 ; =0x021D4620
 	b _020A70D8
 _020A70C8:
-	bl sub_020A3978
+	bl OS_YieldThread__
 	ldrh r0, [r8, #0x2c]
 	cmp r0, #0
 	bne _020A7100
@@ -8024,10 +8024,10 @@ _020A717C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020A7188: .word 0x021D4620
-	arm_func_end sub_020A6F84
+	arm_func_end CPSi_TcpWrite2Raw
 
-	arm_func_start sub_020A718C
-sub_020A718C: ; 0x020A718C
+	arm_func_start CPSi_SocWrite2
+CPSi_SocWrite2: ; 0x020A718C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr ip, _020A7258 ; =0x021E16A0
 	mov r7, r1
@@ -8043,14 +8043,14 @@ sub_020A718C: ; 0x020A718C
 	cmp r7, #0
 	beq _020A71CC
 	mov r2, r4
-	bl sub_020A4B28
+	bl send_udp
 _020A71CC:
 	cmp r5, #0
 	beq _020A71E4
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020A4B28
+	bl send_udp
 _020A71E4:
 	add r0, r7, r5
 	b _020A7240
@@ -8060,14 +8060,14 @@ _020A71EC:
 	cmp r7, #0
 	beq _020A7204
 	mov r2, r4
-	bl sub_020A4A78
+	bl send_ping
 _020A7204:
 	cmp r5, #0
 	beq _020A721C
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_020A4A78
+	bl send_ping
 _020A721C:
 	add r0, r7, r5
 	b _020A7240
@@ -8076,10 +8076,10 @@ _020A7224:
 	cmp ip, #0
 	str r4, [sp]
 	beq _020A723C
-	bl sub_020AB75C
+	bl CPSi_SslWrite2
 	b _020A7240
 _020A723C:
-	bl sub_020A6F84
+	bl CPSi_TcpWrite2Raw
 _020A7240:
 	ldr r1, _020A725C ; =0x021D4620
 	ldrb r1, [r1]
@@ -8091,7 +8091,7 @@ _020A7250:
 	.align 2, 0
 _020A7258: .word 0x021E16A0
 _020A725C: .word 0x021D4620
-	arm_func_end sub_020A718C
+	arm_func_end CPSi_SocWrite2
 
 	arm_func_start CPS_SocWrite
 CPS_SocWrite: ; 0x020A7260
@@ -8108,7 +8108,7 @@ CPS_SocWrite: ; 0x020A7260
 	beq _020A72DC
 	ldr r0, [r5, #0x5c]
 	mov r1, r4
-	bl sub_020A718C
+	bl CPSi_SocWrite2
 	ldr r1, [r5, #0x60]
 	mov r4, r0
 	cmp r4, r1
@@ -8130,7 +8130,7 @@ _020A72CC:
 _020A72DC:
 	mov r2, #0
 	mov r3, r2
-	bl sub_020A718C
+	bl CPSi_SocWrite2
 	ldmia sp!, {r3, r4, r5, pc}
 _020A72EC:
 	mov r0, #0
@@ -8139,8 +8139,8 @@ _020A72EC:
 _020A72F4: .word 0x021E16A0
 	arm_func_end CPS_SocWrite
 
-	arm_func_start sub_020A72F8
-sub_020A72F8: ; 0x020A72F8
+	arm_func_start CPS_SocGetLength
+CPS_SocGetLength: ; 0x020A72F8
 	stmdb sp!, {r3, lr}
 	ldr r0, _020A7364 ; =0x021E16A0
 	ldr r0, [r0, #4]
@@ -8150,7 +8150,7 @@ sub_020A72F8: ; 0x020A72F8
 	ldrb r1, [r0, #9]
 	cmp r1, #0
 	beq _020A7324
-	bl sub_020AB6E0
+	bl CPSi_SslGetLength
 	ldmia sp!, {r3, pc}
 _020A7324:
 	ldr r1, [r0, #0x44]
@@ -8174,10 +8174,10 @@ _020A735C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020A7364: .word 0x021E16A0
-	arm_func_end sub_020A72F8
+	arm_func_end CPS_SocGetLength
 
-	arm_func_start sub_020A7368
-sub_020A7368: ; 0x020A7368
+	arm_func_start CPS_SocFlush
+CPS_SocFlush: ; 0x020A7368
 	stmdb sp!, {r4, lr}
 	ldr r0, _020A73A4 ; =0x021E16A0
 	ldr r0, [r0, #4]
@@ -8189,16 +8189,16 @@ sub_020A7368: ; 0x020A7368
 	mov r2, #0
 	ldr r0, [r4, #0x5c]
 	mov r3, r2
-	bl sub_020A718C
+	bl CPSi_SocWrite2
 	mov r0, #0
 	str r0, [r4, #0x60]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020A73A4: .word 0x021E16A0
-	arm_func_end sub_020A7368
+	arm_func_end CPS_SocFlush
 
-	arm_func_start sub_020A73A8
-sub_020A73A8: ; 0x020A73A8
+	arm_func_start set_fixed_ip
+set_fixed_ip: ; 0x020A73A8
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, _020A7444 ; =0x021D4620
 	ldr r0, [r0, #0x18]
@@ -8207,12 +8207,12 @@ sub_020A73A8: ; 0x020A73A8
 	ldr r0, [r0, #0x50]
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
-	bl sub_020A43E0
+	bl send_arprequest
 	mov r0, #0x64
 	bl OS_Sleep
 	ldr r0, _020A7444 ; =0x021D4620
 	ldr r0, [r0, #0x50]
-	bl sub_020A43E0
+	bl send_arprequest
 	bl OS_GetTick
 	mov r6, r0, lsr #0x10
 	orr r6, r6, r1, lsl #16
@@ -8224,7 +8224,7 @@ _020A73F8:
 	cmp r0, #0
 	beq _020A7410
 	mov r0, #4
-	bl sub_020A3874
+	bl reset_network_vars
 	ldmia sp!, {r4, r5, r6, pc}
 _020A7410:
 	mov r0, r5
@@ -8243,10 +8243,10 @@ _020A7418:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020A7444: .word 0x021D4620
-	arm_func_end sub_020A73A8
+	arm_func_end set_fixed_ip
 
-	arm_func_start sub_020A7448
-sub_020A7448: ; 0x020A7448
+	arm_func_start scavenger
+scavenger: ; 0x020A7448
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r3, _020A7798 ; =0x021D4620
 	mov r1, #0
@@ -8295,7 +8295,7 @@ _020A74A4:
 	beq _020A7510
 	cmp r4, #0
 	bne _020A75E4
-	bl sub_020A73A8
+	bl set_fixed_ip
 	mov r4, #1
 	b _020A75E4
 _020A7510:
@@ -8312,16 +8312,16 @@ _020A752C:
 	movne r1, #2
 	strne r1, [r0, #0xc]
 	movne fp, #0
-	bl sub_020A7E94
+	bl dhcp_discover_server
 	cmp r0, #0
 	beq _020A755C
 	add r0, sp, #0
 	mov r1, #0
-	bl sub_020A7EEC
+	bl dhcp_request_server
 	cmp r0, #0
 	bne _020A7568
 _020A755C:
-	bl sub_020A73A8
+	bl set_fixed_ip
 	mov r4, #3
 	b _020A75E4
 _020A7568:
@@ -8330,7 +8330,7 @@ _020A7568:
 _020A7570:
 	add r0, sp, #0
 	mov r1, #1
-	bl sub_020A7EEC
+	bl dhcp_request_server
 	cmp r0, #0
 	bne _020A75E4
 	ldr r0, [sp]
@@ -8340,7 +8340,7 @@ _020A7570:
 _020A7594:
 	add r0, sp, #0
 	mov r1, #2
-	bl sub_020A7EEC
+	bl dhcp_request_server
 	cmp r0, #0
 	movne r4, #1
 	bne _020A75E4
@@ -8348,14 +8348,14 @@ _020A7594:
 	cmp r0, #0x3c
 	bhs _020A75E4
 	mov r0, #3
-	bl sub_020A3874
+	bl reset_network_vars
 	mov sl, #1
 	str sl, [sp]
 	mov r4, #0
 	b _020A75E4
 _020A75D0:
 	mov r0, #1
-	bl sub_020A3874
+	bl reset_network_vars
 	mov sl, #1
 	str sl, [sp]
 	mov r4, #0
@@ -8384,7 +8384,7 @@ _020A7614:
 	beq _020A7644
 	subs sl, sl, #1
 	bne _020A7644
-	bl sub_020A43E0
+	bl send_arprequest
 	mov sl, #0x69
 _020A7644:
 	ldr r0, _020A77B0 ; =0x021E16A0
@@ -8464,7 +8464,7 @@ _020A7748:
 	add r8, r8, #0x38
 	blt _020A771C
 	mov r0, r5
-	bl sub_020AB978
+	bl CPSi_SslPeriodical
 	ldr r0, _020A7798 ; =0x021D4620
 	ldr r0, [r0, #0x3c]
 	cmp r0, #0
@@ -8477,7 +8477,7 @@ _020A7778:
 	bne _020A7790
 	cmp r4, #3
 	beq _020A7790
-	bl sub_020A7FE8
+	bl dhcp_release_server
 _020A7790:
 	bl CPS_SocUnRegister
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -8490,10 +8490,10 @@ _020A77A8: .word 0x021D46A0
 _020A77AC: .word 0x000003BD
 _020A77B0: .word 0x021E16A0
 _020A77B4: .word 0x021D4948
-	arm_func_end sub_020A7448
+	arm_func_end scavenger
 
-	arm_func_start sub_020A77B8
-sub_020A77B8: ; 0x020A77B8
+	arm_func_start dhcp_setcommon
+dhcp_setcommon: ; 0x020A77B8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r1
 	mov r4, r2
@@ -8594,10 +8594,10 @@ _020A7934: .word 0x00008263
 _020A7938: .word 0x00006353
 _020A793C: .word 0x00000135
 _020A7940: .word _0211069C
-	arm_func_end sub_020A77B8
+	arm_func_end dhcp_setcommon
 
-	arm_func_start sub_020A7944
-sub_020A7944: ; 0x020A7944
+	arm_func_start pad_mem
+pad_mem: ; 0x020A7944
 	stmdb sp!, {r3, r4, r5, lr}
 	mov ip, r0
 	mov r5, r2
@@ -8612,17 +8612,17 @@ sub_020A7944: ; 0x020A7944
 _020A7970:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A7944
+	arm_func_end pad_mem
 
-	arm_func_start sub_020A7978
-sub_020A7978: ; 0x020A7978
+	arm_func_start dhcp_send_discover
+dhcp_send_discover: ; 0x020A7978
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r4, _020A7A34 ; =0x021D4B76
 	add r2, sp, #0
 	mov r0, r4
 	mov r1, #1
-	bl sub_020A77B8
+	bl dhcp_setcommon
 	ldr r1, _020A7A38 ; =0x021D4620
 	mov ip, r0
 	ldr r0, [r1, #0x34]
@@ -8656,7 +8656,7 @@ _020A79FC:
 	mov r0, #0
 	mov r1, #0x12c
 	strb lr, [ip]
-	bl sub_020A7944
+	bl pad_mem
 	mov r1, r0
 	mov r0, r4
 	sub r1, r1, r4
@@ -8667,17 +8667,17 @@ _020A79FC:
 	.align 2, 0
 _020A7A34: .word 0x021D4B76
 _020A7A38: .word 0x021D4620
-	arm_func_end sub_020A7978
+	arm_func_end dhcp_send_discover
 
-	arm_func_start sub_020A7A3C
-sub_020A7A3C: ; 0x020A7A3C
+	arm_func_start dhcp_send_request
+dhcp_send_request: ; 0x020A7A3C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, _020A7B3C ; =0x021D4B76
 	mov r5, r0
 	add r2, sp, #0
 	mov r0, r4
 	mov r1, #3
-	bl sub_020A77B8
+	bl dhcp_setcommon
 	mov ip, r0
 	cmp r5, #0
 	bne _020A7B08
@@ -8729,7 +8729,7 @@ _020A7B08:
 	mov r0, #0
 	mov r1, #0x12c
 	strb lr, [ip]
-	bl sub_020A7944
+	bl pad_mem
 	mov r1, r0
 	mov r0, r4
 	sub r1, r1, r4
@@ -8739,10 +8739,10 @@ _020A7B08:
 	.align 2, 0
 _020A7B3C: .word 0x021D4B76
 _020A7B40: .word 0x021D4620
-	arm_func_end sub_020A7A3C
+	arm_func_end dhcp_send_request
 
-	arm_func_start sub_020A7B44
-sub_020A7B44: ; 0x020A7B44
+	arm_func_start dhcp_analyze_response
+dhcp_analyze_response: ; 0x020A7B44
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	add r1, r1, #1
@@ -8754,10 +8754,10 @@ sub_020A7B44: ; 0x020A7B44
 	mov r5, #0
 	b _020A7E4C
 _020A7B6C:
-	bl sub_020A72F8
+	bl CPS_SocGetLength
 	cmp r0, #0
 	bne _020A7B80
-	bl sub_020A3978
+	bl OS_YieldThread__
 	b _020A7E4C
 _020A7B80:
 	add r0, sp, #4
@@ -8785,7 +8785,7 @@ _020A7B80:
 	bne _020A7E44
 	ldr r1, _020A7E8C ; =0x021D4B08
 	add r0, r6, #0x1c
-	bl sub_020A3F38
+	bl maccmp
 	cmp r0, #0
 	bne _020A7E44
 	ldrb r3, [r6, #0x10]
@@ -8974,10 +8974,10 @@ _020A7E80:
 	.align 2, 0
 _020A7E8C: .word 0x021D4B08
 _020A7E90: .word 0x021D4620
-	arm_func_end sub_020A7B44
+	arm_func_end dhcp_analyze_response
 
-	arm_func_start sub_020A7E94
-sub_020A7E94: ; 0x020A7E94
+	arm_func_start dhcp_discover_server
+dhcp_discover_server: ; 0x020A7E94
 	stmdb sp!, {r3, r4, r5, lr}
 	bl CPS_SocUse
 	bl CPS_SocDatagramMode
@@ -8987,9 +8987,9 @@ sub_020A7E94: ; 0x020A7E94
 	bl CPS_SocBind
 	mov r5, #0
 _020A7EB4:
-	bl sub_020A7978
+	bl dhcp_send_discover
 	mov r1, r5
-	bl sub_020A7B44
+	bl dhcp_analyze_response
 	mov r4, r0
 	cmp r4, #1
 	beq _020A7ED8
@@ -9002,10 +9002,10 @@ _020A7ED8:
 	moveq r0, #1
 	movne r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020A7E94
+	arm_func_end dhcp_discover_server
 
-	arm_func_start sub_020A7EEC
-sub_020A7EEC: ; 0x020A7EEC
+	arm_func_start dhcp_request_server
+dhcp_request_server: ; 0x020A7EEC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r1
 	mov r5, r0
@@ -9027,9 +9027,9 @@ _020A7F2C:
 	mov r7, #0
 _020A7F30:
 	mov r0, r4
-	bl sub_020A7A3C
+	bl dhcp_send_request
 	mov r1, r7
-	bl sub_020A7B44
+	bl dhcp_analyze_response
 	movs r6, r0
 	bne _020A7F54
 	add r7, r7, #1
@@ -9078,10 +9078,10 @@ _020A7FDC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A7FE4: .word 0x021D4620
-	arm_func_end sub_020A7EEC
+	arm_func_end dhcp_request_server
 
-	arm_func_start sub_020A7FE8
-sub_020A7FE8: ; 0x020A7FE8
+	arm_func_start dhcp_release_server
+dhcp_release_server: ; 0x020A7FE8
 	stmdb sp!, {r4, lr}
 	bl CPS_SocUse
 	bl CPS_SocDatagramMode
@@ -9094,14 +9094,14 @@ sub_020A7FE8: ; 0x020A7FE8
 	mov r1, #7
 	mov r0, r4
 	mov r2, #0
-	bl sub_020A77B8
+	bl dhcp_setcommon
 	mov r1, #0xff
 	add r2, r0, #1
 	strb r1, [r0]
 	mov r0, #0
 	mov r1, #0x12c
 	sub r3, r2, r4
-	bl sub_020A7944
+	bl pad_mem
 	sub r1, r0, r4
 	mov r0, r4
 	bl CPS_SocWrite
@@ -9110,10 +9110,10 @@ sub_020A7FE8: ; 0x020A7FE8
 	.align 2, 0
 _020A804C: .word 0x021D4620
 _020A8050: .word 0x021D4B76
-	arm_func_end sub_020A7FE8
+	arm_func_end dhcp_release_server
 
-	arm_func_start sub_020A8054
-sub_020A8054: ; 0x020A8054
+	arm_func_start dns_skipname
+dns_skipname: ; 0x020A8054
 	ldrb r2, [r0], #1
 	cmp r2, #0
 	bxeq lr
@@ -9127,10 +9127,10 @@ _020A8060:
 	cmp r2, #0
 	bne _020A8060
 	bx lr
-	arm_func_end sub_020A8054
+	arm_func_end dns_skipname
 
-	arm_func_start sub_020A8084
-sub_020A8084: ; 0x020A8084
+	arm_func_start resolve_common
+resolve_common: ; 0x020A8084
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x40
 	mov sb, r2
@@ -9205,10 +9205,10 @@ _020A814C:
 	orr r5, r5, r1, lsl #16
 	b _020A82E4
 _020A8198:
-	bl sub_020A72F8
+	bl CPS_SocGetLength
 	cmp r0, #0
 	bne _020A81AC
-	bl sub_020A3978
+	bl OS_YieldThread__
 	b _020A82E4
 _020A81AC:
 	add r0, sp, #0
@@ -9239,7 +9239,7 @@ _020A81AC:
 	sub r7, r1, #1
 	beq _020A822C
 _020A8218:
-	bl sub_020A8054
+	bl dns_skipname
 	cmp r7, #0
 	add r0, r0, #4
 	sub r7, r7, #1
@@ -9248,7 +9248,7 @@ _020A822C:
 	cmp r0, r6
 	bhs _020A82DC
 _020A8234:
-	bl sub_020A8054
+	bl dns_skipname
 	ldrb r7, [r0, #8]
 	ldrb r1, [r0, #9]
 	ldrb r3, [r0]
@@ -9316,10 +9316,10 @@ _020A8318:
 	.align 2, 0
 _020A8324: .word 0x00001001
 _020A8328: .word 0x021D4620
-	arm_func_end sub_020A8084
+	arm_func_end resolve_common
 
-	arm_func_start sub_020A832C
-sub_020A832C: ; 0x020A832C
+	arm_func_start strtol10
+strtol10: ; 0x020A832C
 	str r0, [r1]
 	mov ip, #0
 	mov r2, #0xa
@@ -9334,10 +9334,10 @@ _020A8338:
 	bls _020A8338
 	mov r0, ip
 	bx lr
-	arm_func_end sub_020A832C
+	arm_func_end strtol10
 
-	arm_func_start sub_020A8360
-sub_020A8360: ; 0x020A8360
+	arm_func_start rawip
+rawip: ; 0x020A8360
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r5, #0
@@ -9348,7 +9348,7 @@ sub_020A8360: ; 0x020A8360
 _020A837C:
 	mov r0, r8
 	mov r1, r4
-	bl sub_020A832C
+	bl strtol10
 	ldr r2, [sp]
 	cmp r8, r2
 	addeq sp, sp, #4
@@ -9380,10 +9380,10 @@ _020A83DC:
 	mov r0, #1
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020A8360
+	arm_func_end rawip
 
-	arm_func_start sub_020A83FC
-sub_020A83FC: ; 0x020A83FC
+	arm_func_start resolve_sub
+resolve_sub: ; 0x020A83FC
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	movs r5, r1
@@ -9403,13 +9403,13 @@ sub_020A83FC: ; 0x020A83FC
 	mov r3, #0
 	str r3, [sp]
 	mov r1, #1
-	bl sub_020A8084
+	bl resolve_common
 	mov r4, r0
 	bl CPS_SocRelease
 	mov r0, r4
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end sub_020A83FC
+	arm_func_end resolve_sub
 
 	arm_func_start CPS_Resolve
 CPS_Resolve: ; 0x020A8460
@@ -9445,7 +9445,7 @@ CPS_Resolve: ; 0x020A8460
 	strh r7, [sp, #2]
 	str r4, [r2, #0x6c]
 	strh r3, [sp, #4]
-	bl sub_020A8360
+	bl rawip
 	cmp r0, #0
 	ldrne r0, [sp, #8]
 	addne sp, sp, #0xc
@@ -9469,7 +9469,7 @@ _020A851C:
 	ldrh r2, [r6, r0]
 	ldr r1, [r7, r8, lsl #2]
 	mov r0, sl
-	bl sub_020A83FC
+	bl resolve_sub
 	cmp r0, #0
 	str r0, [sp, #8]
 	cmpne r0, r4
@@ -11731,7 +11731,7 @@ sub_020AA3C8: ; 0x020AA3C8
 _020AA3DC:
 	mov r0, r4
 	mov r1, r5
-	bl sub_020A6CDC
+	bl CPSi_TcpReadRaw
 	ldr r1, [sp]
 	cmp r1, #0
 	mvneq r0, #0
@@ -11743,7 +11743,7 @@ _020AA3DC:
 	bl MI_CpuCopy8
 	ldr r0, [sp]
 	mov r1, r5
-	bl sub_020A6DBC
+	bl CPSi_SocConsumeRaw
 	ldr r0, [sp]
 	sub r6, r6, r0
 	cmp r6, #0
@@ -11966,7 +11966,7 @@ sub_020AA6E0: ; 0x020AA6E0
 _020AA6F4:
 	mov r0, r6
 	mov r1, r5
-	bl sub_020A6CDC
+	bl CPSi_TcpReadRaw
 	ldr r1, [sp]
 	cmp r1, #0
 	moveq r0, #9
@@ -11988,7 +11988,7 @@ _020AA6F4:
 	mov r1, r5
 	mov r0, #2
 	str r2, [sp]
-	bl sub_020A6DBC
+	bl CPSi_SocConsumeRaw
 	ldr r1, _020AA874 ; =0x021D4634
 	ldr r0, [sp]
 	ldr r1, [r1]
@@ -12338,7 +12338,7 @@ _020AAC08:
 	mov r3, r2
 	add r1, r6, #5
 	str sb, [sp]
-	bl sub_020A6F84
+	bl CPSi_TcpWrite2Raw
 	ldr r1, _020AAC7C ; =0x021D4660
 	mov r0, r5
 	ldr r1, [r1]
@@ -12430,7 +12430,7 @@ sub_020AAC80: ; 0x020AAC80
 	mov r0, r4
 	mov r3, r2
 	str r6, [sp]
-	bl sub_020A6F84
+	bl CPSi_TcpWrite2Raw
 	ldr r1, _020AADD4 ; =0x021D4660
 	mov r0, r4
 	ldr r1, [r1]
@@ -12534,7 +12534,7 @@ _020AAEA8:
 	mov r3, r2
 	add r1, r6, #5
 	str r7, [sp]
-	bl sub_020A6F84
+	bl CPSi_TcpWrite2Raw
 	mov r0, r4
 	mov r2, r6
 	add r1, r5, #5
@@ -12564,7 +12564,7 @@ sub_020AAF6C: ; 0x020AAF6C
 	mov r3, r2
 	mov r1, #7
 	str sl, [sp]
-	bl sub_020A6F84
+	bl CPSi_TcpWrite2Raw
 _020AAFA0:
 	mov r0, #3
 	strb r0, [r4]
@@ -12712,7 +12712,7 @@ _020AB1C0:
 	mov r3, r2
 	add r1, sb, #9
 	str sl, [sp]
-	bl sub_020A6F84
+	bl CPSi_TcpWrite2Raw
 	mov r0, r4
 	add r1, r6, #5
 	add r2, sb, #4
@@ -12793,8 +12793,8 @@ _020AB2DC:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020AB25C
 
-	arm_func_start sub_020AB2E4
-sub_020AB2E4: ; 0x020AB2E4
+	arm_func_start CPSi_SslListen
+CPSi_SslListen: ; 0x020AB2E4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	ldr r6, [r7, #0xc]
@@ -12802,7 +12802,7 @@ sub_020AB2E4: ; 0x020AB2E4
 	mov r4, #1
 _020AB2F8:
 	mov r0, r7
-	bl sub_020A699C
+	bl CPSi_TcpListenRaw
 	strb r5, [r6, #0x455]
 	str r5, [r6, #0x1d4]
 	add r0, r6, #0x2ec
@@ -12817,13 +12817,13 @@ _020AB2F8:
 	streqb r0, [r6, #0x455]
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
-	bl sub_020A6B74
+	bl CPSi_TcpShutdownRaw
 	ldrh r0, [r7, #0x1a]
 	strh r0, [r7, #0x18]
 	ldr r0, [r7, #0x20]
 	str r0, [r7, #0x1c]
 	b _020AB2F8
-	arm_func_end sub_020AB2E4
+	arm_func_end CPSi_SslListen
 
 	arm_func_start sub_020AB350
 sub_020AB350: ; 0x020AB350
@@ -12890,15 +12890,15 @@ _020AB410:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020AB354
 
-	arm_func_start sub_020AB420
-sub_020AB420: ; 0x020AB420
+	arm_func_start CPSi_SslConnect
+CPSi_SslConnect: ; 0x020AB420
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldrb r1, [r5, #8]
 	ldr r4, [r5, #0xc]
 	cmp r1, #4
 	beq _020AB448
-	bl sub_020A6A30
+	bl CPSi_TcpConnectRaw
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -12914,10 +12914,10 @@ _020AB448:
 	mov r0, r5
 	bl sub_020AB354
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020AB420
+	arm_func_end CPSi_SslConnect
 
-	arm_func_start sub_020AB474
-sub_020AB474: ; 0x020AB474
+	arm_func_start CPSi_SslRead
+CPSi_SslRead: ; 0x020AB474
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	ldr r4, [r5, #0xc]
@@ -12977,10 +12977,10 @@ _020AB528:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020AB548: .word 0x021D4660
-	arm_func_end sub_020AB474
+	arm_func_end CPSi_SslRead
 
-	arm_func_start sub_020AB54C
-sub_020AB54C: ; 0x020AB54C
+	arm_func_start CPSi_SslConsume
+CPSi_SslConsume: ; 0x020AB54C
 	stmdb sp!, {r4, lr}
 	ldr r4, [r1, #0xc]
 	ldr r2, [r4, #0x828]
@@ -13004,7 +13004,7 @@ _020AB58C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020AB598: .word 0x021D4660
-	arm_func_end sub_020AB54C
+	arm_func_end CPSi_SslConsume
 
 	arm_func_start sub_020AB59C
 sub_020AB59C: ; 0x020AB59C
@@ -13021,7 +13021,7 @@ sub_020AB59C: ; 0x020AB59C
 	ldmloia sp!, {r3, r4, r5, r6, pc}
 	add r0, sp, #0
 	mov r1, r5
-	bl sub_020A6CDC
+	bl CPSi_TcpReadRaw
 	ldrb r2, [r0, #3]
 	ldrb r0, [r0, #4]
 	ldr r1, _020AB6D8 ; =0x00004805
@@ -13055,7 +13055,7 @@ _020AB63C:
 _020AB648:
 	add r0, sp, #0
 	mov r1, r5
-	bl sub_020A6CDC
+	bl CPSi_TcpReadRaw
 	ldr r3, [r4, #0x828]
 	ldr r2, [r4, #0x82c]
 	ldr r1, [sp]
@@ -13071,7 +13071,7 @@ _020AB648:
 	bl MI_CpuCopy8
 	ldr r0, [sp]
 	mov r1, r5
-	bl sub_020A6DBC
+	bl CPSi_SocConsumeRaw
 	cmp r6, #0
 	beq _020AB6C0
 	ldr r1, [r4, #0x824]
@@ -13095,8 +13095,8 @@ _020AB6D8: .word 0x00004805
 _020AB6DC: .word 0x021D4634
 	arm_func_end sub_020AB59C
 
-	arm_func_start sub_020AB6E0
-sub_020AB6E0: ; 0x020AB6E0
+	arm_func_start CPSi_SslGetLength
+CPSi_SslGetLength: ; 0x020AB6E0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xc]
@@ -13132,10 +13132,10 @@ _020AB74C:
 _020AB754:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020AB6E0
+	arm_func_end CPSi_SslGetLength
 
-	arm_func_start sub_020AB75C
-sub_020AB75C: ; 0x020AB75C
+	arm_func_start CPSi_SslWrite2
+CPSi_SslWrite2: ; 0x020AB75C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	ldr r4, [sp, #0x30]
@@ -13195,7 +13195,7 @@ _020AB790:
 	mov r0, r4
 	mov r1, r7
 	mov r3, r2
-	bl sub_020A6F84
+	bl CPSi_TcpWrite2Raw
 	cmp r0, r7
 	ldr r1, _020AB88C ; =0x021D4660
 	mov r0, r4
@@ -13216,10 +13216,10 @@ _020AB878:
 _020AB884: .word 0x00000B4F
 _020AB888: .word 0x021D4634
 _020AB88C: .word 0x021D4660
-	arm_func_end sub_020AB75C
+	arm_func_end CPSi_SslWrite2
 
-	arm_func_start sub_020AB890
-sub_020AB890: ; 0x020AB890
+	arm_func_start CPSi_SslShutdown
+CPSi_SslShutdown: ; 0x020AB890
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x20
 	mov r5, r0
@@ -13247,16 +13247,16 @@ sub_020AB890: ; 0x020AB890
 	add r0, sp, #4
 	mov r3, r2
 	str r5, [sp]
-	bl sub_020A6F84
+	bl CPSi_TcpWrite2Raw
 _020AB900:
 	mov r0, #0
 	strb r0, [r4, #0x455]
 	add sp, sp, #0x20
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020AB890
+	arm_func_end CPSi_SslShutdown
 
-	arm_func_start sub_020AB910
-sub_020AB910: ; 0x020AB910
+	arm_func_start CPSi_SslClose
+CPSi_SslClose: ; 0x020AB910
 	stmdb sp!, {r4, lr}
 	ldr r4, [r0, #0xc]
 	mov r0, #0
@@ -13273,7 +13273,7 @@ _020AB938:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020AB944: .word 0x021D4660
-	arm_func_end sub_020AB910
+	arm_func_end CPSi_SslClose
 
 	arm_func_start CPS_SetSsl
 CPS_SetSsl: ; 0x020AB948
@@ -13292,8 +13292,8 @@ _020AB970: .word _version_UBIQUITOUS_SSL
 _020AB974: .word 0x021E16A0
 	arm_func_end CPS_SetSsl
 
-	arm_func_start sub_020AB978
-sub_020AB978: ; 0x020AB978
+	arm_func_start CPSi_SslPeriodical
+CPSi_SslPeriodical: ; 0x020AB978
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
@@ -13355,10 +13355,10 @@ _020ABA3C:
 _020ABA4C: .word 0x021D5E68
 _020ABA50: .word 0x000003BD
 _020ABA54: .word 0x021E16A0
-	arm_func_end sub_020AB978
+	arm_func_end CPSi_SslPeriodical
 
-	arm_func_start sub_020ABA58
-sub_020ABA58: ; 0x020ABA58
+	arm_func_start CPSi_SslCleanup
+CPSi_SslCleanup: ; 0x020ABA58
 	ldr ip, _020ABA6C ; =MI_CpuFill8
 	ldr r0, _020ABA70 ; =0x021D5E68
 	mov r1, #0
@@ -13367,7 +13367,7 @@ sub_020ABA58: ; 0x020ABA58
 	.align 2, 0
 _020ABA6C: .word MI_CpuFill8
 _020ABA70: .word 0x021D5E68
-	arm_func_end sub_020ABA58
+	arm_func_end CPSi_SslCleanup
 
 	arm_func_start sub_020ABA74
 sub_020ABA74: ; 0x020ABA74
@@ -18522,8 +18522,8 @@ WCM_SetRecvDCFCallback: ; 0x020AFFC4
 _020AFFE0: .word 0x021D5FF0
 	arm_func_end WCM_SetRecvDCFCallback
 
-	arm_func_start sub_020AFFE4
-sub_020AFFE4: ; 0x020AFFE4
+	arm_func_start WCM_SendDCFDataEx
+WCM_SendDCFDataEx: ; 0x020AFFE4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, r0
 	mov sb, r1
@@ -18632,7 +18632,7 @@ _020B015C: .word 0x021D5FFC
 _020B0160: .word sub_020B016C
 _020B0164: .word 0x021D5FF4
 _020B0168: .word 0x021D5FF0
-	arm_func_end sub_020AFFE4
+	arm_func_end WCM_SendDCFDataEx
 
 	arm_func_start sub_020B016C
 sub_020B016C: ; 0x020B016C
