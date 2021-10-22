@@ -7466,7 +7466,7 @@ _022579AE:
 	add r1, #0x38
 	ldrh r1, [r2, r1]
 	mov r2, #0xb
-	bl sub_02078550
+	bl Bag_GetQuantity
 	pop {r4, pc}
 _022579C0:
 	cmp r4, #2
@@ -9237,7 +9237,7 @@ ov03_02258764: ; 0x02258764
 	bl Sav2_Bag_get
 	ldr r1, _022587C8 ; =0x022597F0
 	mov r2, #0xb
-	bl sub_02078644
+	bl CreateBagView
 	str r0, [r4, #4]
 	mov r0, #0x43
 	lsl r0, r0, #2

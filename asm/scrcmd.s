@@ -8102,7 +8102,7 @@ sub_020446AC: ; 0x020446AC
 	ldr r0, [r0, #0xc]
 	bl Sav2_Bag_get
 	add r1, r6, #0
-	bl sub_020784C4
+	bl Bag_PocketNotEmpty
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}

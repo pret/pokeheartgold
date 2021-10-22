@@ -1074,7 +1074,7 @@ ov17_022023B0: ; 0x022023B0
 _022023F6:
 	cmp r2, #2
 	bne _0220242A
-	bl sub_020780E4
+	bl ItemIdIsBerry
 	cmp r0, #0
 	beq _02202438
 	ldr r0, [r4, #4]

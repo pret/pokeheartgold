@@ -25,7 +25,7 @@ _022598E0:
 	lsl r1, r4, #2
 	ldrh r1, [r7, r1]
 	mov r2, #4
-	bl sub_02078550
+	bl Bag_GetQuantity
 	add r0, r5, r0
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
@@ -128,7 +128,7 @@ _022599B0:
 	ldr r1, _022599EC ; =0x022599F0
 	mov r2, #4
 	ldrh r1, [r1, r7]
-	bl sub_02078550
+	bl Bag_GetQuantity
 	add r0, r5, r0
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10

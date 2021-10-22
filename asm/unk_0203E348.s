@@ -239,7 +239,7 @@ sub_0203E3FC: ; 0x0203E3FC
 	bl Sav2_Bag_get
 	ldr r1, _0203E45C ; =_020FA1B8
 	mov r2, #0xb
-	bl sub_02078644
+	bl CreateBagView
 	mov r1, #0x43
 	lsl r1, r1, #2
 	add r1, r5, r1
@@ -307,7 +307,7 @@ _0203E48E:
 	add r0, r6, #0
 	ldr r1, [r1]
 	mov r2, #0x20
-	bl sub_02078644
+	bl CreateBagView
 	mov r1, #0x43
 	lsl r1, r1, #2
 	add r1, r5, r1

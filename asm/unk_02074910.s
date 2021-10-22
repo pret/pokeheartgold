@@ -4570,7 +4570,7 @@ _02076CC4:
 	ldr r0, [r4, #0x4c]
 	ldr r2, [r4, #0x5c]
 	mov r1, #4
-	bl sub_02078550
+	bl Bag_GetQuantity
 	cmp r0, #0
 	beq _02076CE4
 	ldr r0, [r4, #0x24]
@@ -6061,8 +6061,10 @@ sub_02077870: ; 0x02077870
 _02077874: .word sub_0200D9DC
 	thumb_func_end sub_02077870
 
-	thumb_func_start sub_02077878
-sub_02077878: ; 0x02077878
+; bag_view.c
+
+	thumb_func_start BagView_New
+BagView_New: ; 0x02077878
 	push {r4, lr}
 	mov r1, #0x7c
 	bl AllocFromHeap
@@ -6073,13 +6075,13 @@ sub_02077878: ; 0x02077878
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02077878
+	thumb_func_end BagView_New
 
-	thumb_func_start sub_02077890
-sub_02077890: ; 0x02077890
+	thumb_func_start BagView_sizeof
+BagView_sizeof: ; 0x02077890
 	mov r0, #0x7c
 	bx lr
-	thumb_func_end sub_02077890
+	thumb_func_end BagView_sizeof
 
 	thumb_func_start sub_02077894
 sub_02077894: ; 0x02077894
@@ -6108,15 +6110,15 @@ sub_0207789C: ; 0x0207789C
 	.balign 4, 0
 	thumb_func_end sub_0207789C
 
-	thumb_func_start sub_020778BC
-sub_020778BC: ; 0x020778BC
+	thumb_func_start BagView_SetItem
+BagView_SetItem: ; 0x020778BC
 	mov r3, #0xc
 	mul r3, r2
 	add r0, r0, r3
 	str r1, [r0, #4]
 	strb r2, [r0, #0xc]
 	bx lr
-	thumb_func_end sub_020778BC
+	thumb_func_end BagView_SetItem
 
 	thumb_func_start sub_020778C8
 sub_020778C8: ; 0x020778C8
@@ -6250,8 +6252,8 @@ sub_02077970: ; 0x02077970
 	pop {r3, pc}
 	thumb_func_end sub_02077970
 
-	thumb_func_start sub_02077980
-sub_02077980: ; 0x02077980
+	thumb_func_start TryFormatRegisteredKeyItemUseMessage
+TryFormatRegisteredKeyItemUseMessage: ; 0x02077980
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r7, r0, #0
@@ -6381,7 +6383,7 @@ _02077A82:
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_02077980
+	thumb_func_end TryFormatRegisteredKeyItemUseMessage
 
 	thumb_func_start GetItemUseErrorMessage
 GetItemUseErrorMessage: ; 0x02077AA4
@@ -6470,6 +6472,8 @@ _02077B14:
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end GetItemUseErrorMessage
+
+; itemtool.c
 
 	thumb_func_start MoveItemSlotInList
 MoveItemSlotInList: ; 0x02077B5C
@@ -7286,8 +7290,8 @@ _02078094:
 	bx lr
 	thumb_func_end MailToItemId
 
-	thumb_func_start sub_0207809C
-sub_0207809C: ; 0x0207809C
+	thumb_func_start ItemToBallId
+ItemToBallId: ; 0x0207809C
 	cmp r0, #1
 	blo _020780A4
 	cmp r0, #0x10
@@ -7307,10 +7311,10 @@ _020780B8:
 	mov r0, #4
 _020780BA:
 	bx lr
-	thumb_func_end sub_0207809C
+	thumb_func_end ItemToBallId
 
-	thumb_func_start sub_020780BC
-sub_020780BC: ; 0x020780BC
+	thumb_func_start BallToItemId
+BallToItemId: ; 0x020780BC
 	cmp r0, #1
 	blt _020780CA
 	cmp r0, #0x10
@@ -7333,10 +7337,10 @@ _020780DC:
 	bx lr
 	.balign 4, 0
 _020780E0: .word 0x000001DB
-	thumb_func_end sub_020780BC
+	thumb_func_end BallToItemId
 
-	thumb_func_start sub_020780E4
-sub_020780E4: ; 0x020780E4
+	thumb_func_start ItemIdIsBerry
+ItemIdIsBerry: ; 0x020780E4
 	cmp r0, #0x95
 	blo _020780EC
 	cmp r0, #0xd4
@@ -7347,10 +7351,10 @@ _020780EC:
 _020780F0:
 	mov r0, #1
 	bx lr
-	thumb_func_end sub_020780E4
+	thumb_func_end ItemIdIsBerry
 
-	thumb_func_start sub_020780F4
-sub_020780F4: ; 0x020780F4
+	thumb_func_start BerryToItemId
+BerryToItemId: ; 0x020780F4
 	cmp r0, #0x40
 	blo _020780FC
 	ldr r0, _02078104 ; =0x0000FFFF
@@ -7362,7 +7366,7 @@ _020780FC:
 	bx lr
 	.balign 4, 0
 _02078104: .word 0x0000FFFF
-	thumb_func_end sub_020780F4
+	thumb_func_end BerryToItemId
 
 	thumb_func_start GetNutName
 GetNutName: ; 0x02078108
@@ -7390,8 +7394,8 @@ _02078118:
 	.balign 4, 0
 	thumb_func_end GetNutName
 
-	thumb_func_start sub_02078138
-sub_02078138: ; 0x02078138
+	thumb_func_start LoadAllItemData
+LoadAllItemData: ; 0x02078138
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -7410,18 +7414,18 @@ sub_02078138: ; 0x02078138
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02078138
+	thumb_func_end LoadAllItemData
 
-	thumb_func_start sub_02078160
-sub_02078160: ; 0x02078160
+	thumb_func_start GetItemDataPtrFromArray
+GetItemDataPtrFromArray: ; 0x02078160
 	mov r2, #0x24
 	mul r2, r1
 	add r0, r0, r2
 	bx lr
-	thumb_func_end sub_02078160
+	thumb_func_end GetItemDataPtrFromArray
 
-	thumb_func_start sub_02078168
-sub_02078168: ; 0x02078168
+	thumb_func_start ItemIdIsNotApricornBall
+ItemIdIsNotApricornBall: ; 0x02078168
 	ldr r1, _0207817C ; =0x0000FE14
 	add r0, r0, r1
 	lsl r0, r0, #0x10
@@ -7435,7 +7439,9 @@ _02078178:
 	bx lr
 	.balign 4, 0
 _0207817C: .word 0x0000FE14
-	thumb_func_end sub_02078168
+	thumb_func_end ItemIdIsNotApricornBall
+
+	; bag.c
 
 	thumb_func_start Sav2_Bag_sizeof
 Sav2_Bag_sizeof: ; 0x02078180
@@ -7445,8 +7451,8 @@ Sav2_Bag_sizeof: ; 0x02078180
 _02078184: .word 0x0000079C
 	thumb_func_end Sav2_Bag_sizeof
 
-	thumb_func_start sub_02078188
-sub_02078188: ; 0x02078188
+	thumb_func_start Sav2_Bag_new
+Sav2_Bag_new: ; 0x02078188
 	push {r4, lr}
 	ldr r1, _0207819C ; =0x0000079C
 	bl AllocFromHeap
@@ -7456,7 +7462,7 @@ sub_02078188: ; 0x02078188
 	pop {r4, pc}
 	nop
 _0207819C: .word 0x0000079C
-	thumb_func_end sub_02078188
+	thumb_func_end Sav2_Bag_new
 
 	thumb_func_start Sav2_Bag_init
 Sav2_Bag_init: ; 0x020781A0
@@ -7470,36 +7476,36 @@ _020781AC: .word MIi_CpuClear16
 _020781B0: .word 0x0000079C
 	thumb_func_end Sav2_Bag_init
 
-	thumb_func_start sub_020781B4
-sub_020781B4: ; 0x020781B4
+	thumb_func_start Sav2_Bag_copy
+Sav2_Bag_copy: ; 0x020781B4
 	ldr r3, _020781BC ; =MI_CpuCopy8
 	ldr r2, _020781C0 ; =0x0000079C
 	bx r3
 	nop
 _020781BC: .word MI_CpuCopy8
 _020781C0: .word 0x0000079C
-	thumb_func_end sub_020781B4
+	thumb_func_end Sav2_Bag_copy
 
-	thumb_func_start sub_020781C4
-sub_020781C4: ; 0x020781C4
+	thumb_func_start Bag_GetRegisteredItemSlot1
+Bag_GetRegisteredItemSlot1: ; 0x020781C4
 	ldr r1, _020781CC ; =0x00000798
 	ldrh r0, [r0, r1]
 	bx lr
 	nop
 _020781CC: .word 0x00000798
-	thumb_func_end sub_020781C4
+	thumb_func_end Bag_GetRegisteredItemSlot1
 
-	thumb_func_start sub_020781D0
-sub_020781D0: ; 0x020781D0
+	thumb_func_start Bag_GetRegisteredItemSlot2
+Bag_GetRegisteredItemSlot2: ; 0x020781D0
 	ldr r1, _020781D8 ; =0x0000079A
 	ldrh r0, [r0, r1]
 	bx lr
 	nop
 _020781D8: .word 0x0000079A
-	thumb_func_end sub_020781D0
+	thumb_func_end Bag_GetRegisteredItemSlot2
 
-	thumb_func_start sub_020781DC
-sub_020781DC: ; 0x020781DC
+	thumb_func_start Bag_TryRegisterItem
+Bag_TryRegisterItem: ; 0x020781DC
 	push {r3, r4}
 	ldr r3, _02078204 ; =0x00000798
 	mov r4, #0
@@ -7523,10 +7529,10 @@ _020781FC:
 	bx lr
 	nop
 _02078204: .word 0x00000798
-	thumb_func_end sub_020781DC
+	thumb_func_end Bag_TryRegisterItem
 
-	thumb_func_start sub_02078208
-sub_02078208: ; 0x02078208
+	thumb_func_start Bag_UnregisterItem
+Bag_UnregisterItem: ; 0x02078208
 	push {r3, r4}
 	ldr r3, _0207823C ; =0x0000079A
 	ldrh r4, [r0, r3]
@@ -7558,10 +7564,10 @@ _02078238:
 	bx lr
 	.balign 4, 0
 _0207823C: .word 0x0000079A
-	thumb_func_end sub_02078208
+	thumb_func_end Bag_UnregisterItem
 
-	thumb_func_start sub_02078240
-sub_02078240: ; 0x02078240
+	thumb_func_start Bag_GetItemPocket
+Bag_GetItemPocket: ; 0x02078240
 	push {r4, r5, r6, lr}
 	add r5, r2, #0
 	add r4, r0, #0
@@ -7649,10 +7655,10 @@ _020782CE:
 	str r1, [r6]
 _020782DA:
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_02078240
+	thumb_func_end Bag_GetItemPocket
 
-	thumb_func_start sub_020782DC
-sub_020782DC: ; 0x020782DC
+	thumb_func_start Pocket_GetItemSlotForAdd
+Pocket_GetItemSlotForAdd: ; 0x020782DC
 	push {r4, r5, r6, r7}
 	add r5, r1, #0
 	mov r1, #0
@@ -7709,10 +7715,10 @@ _02078338:
 _0207833C:
 	pop {r4, r5, r6, r7}
 	bx lr
-	thumb_func_end sub_020782DC
+	thumb_func_end Pocket_GetItemSlotForAdd
 
-	thumb_func_start sub_02078340
-sub_02078340: ; 0x02078340
+	thumb_func_start Bag_GetItemSlotForAdd
+Bag_GetItemSlotForAdd: ; 0x02078340
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r2, #0
@@ -7720,7 +7726,7 @@ sub_02078340: ; 0x02078340
 	add r2, sp, #8
 	add r3, sp, #4
 	add r5, r1, #0
-	bl sub_02078240
+	bl Bag_GetItemPocket
 	cmp r0, #3
 	bne _0207836A
 	mov r0, #0x63
@@ -7729,7 +7735,7 @@ sub_02078340: ; 0x02078340
 	ldr r1, [sp, #4]
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_020782DC
+	bl Pocket_GetItemSlotForAdd
 	add sp, #0xc
 	pop {r4, r5, pc}
 _0207836A:
@@ -7739,17 +7745,17 @@ _0207836A:
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
 	add r3, r4, #0
-	bl sub_020782DC
+	bl Pocket_GetItemSlotForAdd
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
 _02078380: .word 0x000003E7
-	thumb_func_end sub_02078340
+	thumb_func_end Bag_GetItemSlotForAdd
 
 	thumb_func_start Bag_HasSpaceForItem
 Bag_HasSpaceForItem: ; 0x02078384
 	push {r3, lr}
-	bl sub_02078340
+	bl Bag_GetItemSlotForAdd
 	cmp r0, #0
 	beq _02078392
 	mov r0, #1
@@ -7768,7 +7774,7 @@ Bag_AddItem: ; 0x02078398
 	add r5, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_02078340
+	bl Bag_GetItemSlotForAdd
 	str r0, [sp, #8]
 	cmp r0, #0
 	bne _020783B4
@@ -7786,21 +7792,21 @@ _020783B4:
 	add r0, r7, #0
 	add r1, r5, #0
 	str r6, [sp]
-	bl sub_02078240
+	bl Bag_GetItemPocket
 	sub r0, r0, #3
 	cmp r0, #1
 	bhi _020783DA
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
-	bl sub_020785EC
+	bl SortPocket
 _020783DA:
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end Bag_AddItem
 
-	thumb_func_start sub_020783E0
-sub_020783E0: ; 0x020783E0
+	thumb_func_start Pocket_GetItemSlotForRemove
+Pocket_GetItemSlotForRemove: ; 0x020783E0
 	push {r3, r4, r5, r6}
 	mov r5, #0
 	cmp r1, #0
@@ -7829,10 +7835,10 @@ _0207840A:
 	pop {r3, r4, r5, r6}
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020783E0
+	thumb_func_end Pocket_GetItemSlotForRemove
 
-	thumb_func_start sub_02078410
-sub_02078410: ; 0x02078410
+	thumb_func_start Bag_GetItemSlotForRemove
+Bag_GetItemSlotForRemove: ; 0x02078410
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r2, #0
@@ -7840,16 +7846,16 @@ sub_02078410: ; 0x02078410
 	add r2, sp, #8
 	add r3, sp, #4
 	add r5, r1, #0
-	bl sub_02078240
+	bl Bag_GetItemPocket
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_020783E0
+	bl Pocket_GetItemSlotForRemove
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02078410
+	thumb_func_end Bag_GetItemSlotForRemove
 
 	thumb_func_start Bag_TakeItem
 Bag_TakeItem: ; 0x02078434
@@ -7859,7 +7865,7 @@ Bag_TakeItem: ; 0x02078434
 	add r7, r1, #0
 	add r5, r2, #0
 	add r4, r3, #0
-	bl sub_02078410
+	bl Bag_GetItemSlotForRemove
 	str r0, [sp, #8]
 	cmp r0, #0
 	bne _02078450
@@ -7882,23 +7888,23 @@ _02078462:
 	add r1, r7, #0
 	add r2, sp, #8
 	add r3, sp, #4
-	bl sub_02078240
+	bl Bag_GetItemPocket
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
-	bl sub_020785A0
+	bl PocketCompaction
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end Bag_TakeItem
 
-	thumb_func_start sub_02078480
-sub_02078480: ; 0x02078480
+	thumb_func_start Pocket_TakeItem
+Pocket_TakeItem: ; 0x02078480
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
 	add r4, r3, #0
-	bl sub_020783E0
+	bl Pocket_GetItemSlotForRemove
 	cmp r0, #0
 	bne _02078494
 	mov r0, #0
@@ -7915,15 +7921,15 @@ _02078494:
 _020784A4:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_020785A0
+	bl PocketCompaction
 	mov r0, #1
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_02078480
+	thumb_func_end Pocket_TakeItem
 
 	thumb_func_start Bag_HasItem
 Bag_HasItem: ; 0x020784B0
 	push {r3, lr}
-	bl sub_02078410
+	bl Bag_GetItemSlotForRemove
 	cmp r0, #0
 	beq _020784BE
 	mov r0, #1
@@ -7934,8 +7940,8 @@ _020784BE:
 	.balign 4, 0
 	thumb_func_end Bag_HasItem
 
-	thumb_func_start sub_020784C4
-sub_020784C4: ; 0x020784C4
+	thumb_func_start Bag_PocketNotEmpty
+Bag_PocketNotEmpty: ; 0x020784C4
 	cmp r1, #7
 	bhi _0207852E
 	add r1, r1, r1
@@ -8020,14 +8026,14 @@ _0207854A:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020784C4
+	thumb_func_end Bag_PocketNotEmpty
 
-	thumb_func_start sub_02078550
-sub_02078550: ; 0x02078550
+	thumb_func_start Bag_GetQuantity
+Bag_GetQuantity: ; 0x02078550
 	push {r3, lr}
 	add r3, r2, #0
 	mov r2, #1
-	bl sub_02078410
+	bl Bag_GetItemSlotForRemove
 	cmp r0, #0
 	bne _02078562
 	mov r0, #0
@@ -8036,13 +8042,13 @@ _02078562:
 	ldrh r0, [r0, #2]
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02078550
+	thumb_func_end Bag_GetQuantity
 
-	thumb_func_start sub_02078568
-sub_02078568: ; 0x02078568
+	thumb_func_start Pocket_GetQuantity
+Pocket_GetQuantity: ; 0x02078568
 	push {r3, lr}
 	mov r3, #1
-	bl sub_020783E0
+	bl Pocket_GetItemSlotForRemove
 	cmp r0, #0
 	bne _02078578
 	mov r0, #0
@@ -8050,10 +8056,10 @@ sub_02078568: ; 0x02078568
 _02078578:
 	ldrh r0, [r0, #2]
 	pop {r3, pc}
-	thumb_func_end sub_02078568
+	thumb_func_end Pocket_GetQuantity
 
-	thumb_func_start sub_0207857C
-sub_0207857C: ; 0x0207857C
+	thumb_func_start SwapItemSlots
+SwapItemSlots: ; 0x0207857C
 	push {r3}
 	sub sp, #4
 	ldrh r3, [r0]
@@ -8072,10 +8078,10 @@ sub_0207857C: ; 0x0207857C
 	add sp, #4
 	pop {r3}
 	bx lr
-	thumb_func_end sub_0207857C
+	thumb_func_end SwapItemSlots
 
-	thumb_func_start sub_020785A0
-sub_020785A0: ; 0x020785A0
+	thumb_func_start PocketCompaction
+PocketCompaction: ; 0x020785A0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
@@ -8100,7 +8106,7 @@ _020785C2:
 	bne _020785D0
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0207857C
+	bl SwapItemSlots
 _020785D0:
 	add r6, r6, #1
 	add r5, r5, #4
@@ -8118,10 +8124,10 @@ _020785E6:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_020785A0
+	thumb_func_end PocketCompaction
 
-	thumb_func_start sub_020785EC
-sub_020785EC: ; 0x020785EC
+	thumb_func_start SortPocket
+SortPocket: ; 0x020785EC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
@@ -8154,7 +8160,7 @@ _0207860E:
 _02078622:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0207857C
+	bl SwapItemSlots
 _0207862A:
 	add r6, r6, #1
 	add r5, r5, #4
@@ -8171,16 +8177,16 @@ _02078632:
 _02078640:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_020785EC
+	thumb_func_end SortPocket
 
-	thumb_func_start sub_02078644
-sub_02078644: ; 0x02078644
+	thumb_func_start CreateBagView
+CreateBagView: ; 0x02078644
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	lsl r0, r2, #0x18
 	add r7, r1, #0
 	lsr r0, r0, #0x18
-	bl sub_02077878
+	bl BagView_New
 	add r6, r0, #0
 	ldrb r0, [r7]
 	mov r4, #0
@@ -8213,7 +8219,7 @@ _0207867E:
 	add r1, r5, r1
 	mov r2, #7
 	lsr r3, r3, #0x18
-	bl sub_020778BC
+	bl BagView_SetItem
 	b _02078718
 _02078692:
 	lsl r3, r4, #0x18
@@ -8221,7 +8227,7 @@ _02078692:
 	add r1, r5, #0
 	mov r2, #0
 	lsr r3, r3, #0x18
-	bl sub_020778BC
+	bl BagView_SetItem
 	b _02078718
 _020786A2:
 	mov r1, #0x17
@@ -8231,7 +8237,7 @@ _020786A2:
 	add r1, r5, r1
 	mov r2, #4
 	lsr r3, r3, #0x18
-	bl sub_020778BC
+	bl BagView_SetItem
 	b _02078718
 _020786B6:
 	mov r1, #0x52
@@ -8241,7 +8247,7 @@ _020786B6:
 	add r1, r5, r1
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_020778BC
+	bl BagView_SetItem
 	b _02078718
 _020786CA:
 	mov r1, #0x1b
@@ -8251,7 +8257,7 @@ _020786CA:
 	add r1, r5, r1
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_020778BC
+	bl BagView_SetItem
 	b _02078718
 _020786DE:
 	mov r1, #0x72
@@ -8261,7 +8267,7 @@ _020786DE:
 	add r1, r5, r1
 	mov r2, #6
 	lsr r3, r3, #0x18
-	bl sub_020778BC
+	bl BagView_SetItem
 	b _02078718
 _020786F2:
 	mov r1, #0x4f
@@ -8271,7 +8277,7 @@ _020786F2:
 	add r1, r5, r1
 	mov r2, #5
 	lsr r3, r3, #0x18
-	bl sub_020778BC
+	bl BagView_SetItem
 	b _02078718
 _02078706:
 	mov r1, #0xd7
@@ -8281,7 +8287,7 @@ _02078706:
 	add r1, r5, r1
 	mov r2, #3
 	lsr r3, r3, #0x18
-	bl sub_020778BC
+	bl BagView_SetItem
 _02078718:
 	add r4, r4, #1
 	ldrb r0, [r7, r4]
@@ -8290,10 +8296,10 @@ _02078718:
 _02078720:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02078644
+	thumb_func_end CreateBagView
 
-	thumb_func_start sub_02078724
-sub_02078724: ; 0x02078724
+	thumb_func_start Bag_GetPocketSlotN
+Bag_GetPocketSlotN: ; 0x02078724
 	cmp r1, #7
 	bhi _0207878C
 	add r1, r1, r1
@@ -8365,7 +8371,7 @@ _02078794:
 	add r0, r0, r1
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02078724
+	thumb_func_end Bag_GetPocketSlotN
 
 	thumb_func_start Sav2_Bag_get
 Sav2_Bag_get: ; 0x0207879C
@@ -8494,6 +8500,8 @@ sub_02078830: ; 0x02078830
 	strh r1, [r0, #0x22]
 	bx lr
 	thumb_func_end sub_02078830
+
+; unk
 
 	thumb_func_start sub_02078834
 sub_02078834: ; 0x02078834

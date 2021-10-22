@@ -6648,7 +6648,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	bl Sav2_Bag_get
 	ldr r1, _021E8B10 ; =0x021F7D14
 	mov r2, #9
-	bl sub_02078644
+	bl CreateBagView
 	str r0, [r4, #0x18]
 	ldr r1, [r4]
 	mov r2, #1

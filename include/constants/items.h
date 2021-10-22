@@ -348,6 +348,7 @@
 
 #define ITEM_ADAMANT_ORB         135
 #define ITEM_LUSTROUS_ORB        136
+
 #define ITEM_GRASS_MAIL          137
 #define ITEM_FLAME_MAIL          138
 #define ITEM_BUBBLE_MAIL         139
@@ -360,6 +361,10 @@
 #define ITEM_AIR_MAIL            146
 #define ITEM_MOSAIC_MAIL         147
 #define ITEM_BRICK_MAIL          148
+
+#define FIRST_MAIL_IDX ITEM_GRASS_MAIL
+#define LAST_MAIL_IDX ITEM_BRICK_MAIL
+#define NUM_MAILS (LAST_MAIL_IDX - FIRST_MAIL_IDX + 1)
 
 #define ITEM_CHERI_BERRY         149
 #define ITEM_CHESTO_BERRY        150
@@ -545,6 +550,7 @@
 #define ITEM_REAPER_CLOTH        325
 #define ITEM_RAZOR_CLAW          326
 #define ITEM_RAZOR_FANG          327
+
 #define ITEM_TM01                328
 #define ITEM_TM02                329
 #define ITEM_TM03                330
@@ -645,6 +651,7 @@
 #define ITEM_HM06                425
 #define ITEM_HM07                426
 #define ITEM_HM08                427
+
 #define ITEM_EXPLORER_KIT        428
 #define ITEM_LOOT_SACK           429
 #define ITEM_RULE_BOOK           430
@@ -682,6 +689,81 @@
 #define ITEM_COUPON_3            462
 #define ITEM_STORAGE_KEY         463
 #define ITEM_SECRETPOTION        464
+// New to Platinum
+#define ITEM_VS__RECORDER        465
+#define ITEM_GRACIDEA            466
+#define ITEM_SECRET_KEY          467
+// New to HGSS
+#define ITEM_APRICORN_BOX        468
+#define ITEM_UNOWN_REPORT        469
+#define ITEM_BERRY_POTS          470
+#define ITEM_DOWSING_MCHN        471
+#define ITEM_BLUE_CARD           472
+#define ITEM_SLOWPOKETAIL        473
+#define ITEM_CLEAR_BELL          474
+#define ITEM_CARD_KEY            475
+#define ITEM_BASEMENT_KEY        476
+#define ITEM_SQUIRTBOTTLE        477
+#define ITEM_RED_SCALE           478
+#define ITEM_LOST_ITEM           479
+#define ITEM_PASS                480
+#define ITEM_MACHINE_PART        481
+#define ITEM_SILVER_WING         482
+#define ITEM_RAINBOW_WING        483
+#define ITEM_MYSTERY_EGG         484
+#define ITEM_RED_APRICORN        485
+#define ITEM_YLW_APRICORN        486
+#define ITEM_BLU_APRICORN        487
+#define ITEM_GRN_APRICORN        488
+#define ITEM_PNK_APRICORN        489
+#define ITEM_WHT_APRICORN        490
+#define ITEM_BLK_APRICORN        491
+#define ITEM_FAST_BALL           492
+#define ITEM_LEVEL_BALL          493
+#define ITEM_LURE_BALL           494
+#define ITEM_HEAVY_BALL          495
+#define ITEM_LOVE_BALL           496
+#define ITEM_FRIEND_BALL         497
+#define ITEM_MOON_BALL           498
+#define ITEM_SPORT_BALL          499
+#define ITEM_PARK_BALL           500
+#define ITEM_PHOTO_ALBUM         501
+#define ITEM_GB_SOUNDS           502
+#define ITEM_TIDAL_BELL          503
+#define ITEM_RAGECANDYBAR        504
+#define ITEM_DATA_CARD_01        505
+#define ITEM_DATA_CARD_02        506
+#define ITEM_DATA_CARD_03        507
+#define ITEM_DATA_CARD_04        508
+#define ITEM_DATA_CARD_05        509
+#define ITEM_DATA_CARD_06        510
+#define ITEM_DATA_CARD_07        511
+#define ITEM_DATA_CARD_08        512
+#define ITEM_DATA_CARD_09        513
+#define ITEM_DATA_CARD_10        514
+#define ITEM_DATA_CARD_11        515
+#define ITEM_DATA_CARD_12        516
+#define ITEM_DATA_CARD_13        517
+#define ITEM_DATA_CARD_14        518
+#define ITEM_DATA_CARD_15        519
+#define ITEM_DATA_CARD_16        520
+#define ITEM_DATA_CARD_17        521
+#define ITEM_DATA_CARD_18        522
+#define ITEM_DATA_CARD_19        523
+#define ITEM_DATA_CARD_20        524
+#define ITEM_DATA_CARD_21        525
+#define ITEM_DATA_CARD_22        526
+#define ITEM_DATA_CARD_23        527
+#define ITEM_DATA_CARD_24        528
+#define ITEM_DATA_CARD_25        529
+#define ITEM_DATA_CARD_26        530
+#define ITEM_DATA_CARD_27        531
+#define ITEM_JADE_ORB            532
+#define ITEM_LOCK_CAPSULE        533
+#define ITEM_RED_ORB             534
+#define ITEM_BLUE_ORB            535
+#define ITEM_ENIGMA_STONE        536
+#define ITEMS_COUNT              537
 
 #define TM_FOCUS_PUNCH  ITEM_TM01
 #define TM_DRAGON_CLAW  ITEM_TM02

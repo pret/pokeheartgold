@@ -188,7 +188,7 @@ sub_0204EB38: ; 0x0204EB38
 	bl Sav2_Bag_get
 	add r1, r6, #0
 	mov r2, #0xb
-	bl sub_02078550
+	bl Bag_GetQuantity
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}

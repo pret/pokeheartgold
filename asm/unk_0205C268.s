@@ -20251,7 +20251,7 @@ sub_02065150: ; 0x02065150
 	ldr r0, [r0, #0xc]
 	ldr r1, [r4, #0x10]
 	mov r3, #0xb
-	bl sub_02077980
+	bl TryFormatRegisteredKeyItemUseMessage
 	ldr r0, [r5]
 	ldr r1, _02065188 ; =sub_0206518C
 	add r2, r4, #0
@@ -20966,11 +20966,11 @@ _020656E2:
 	ldr r0, [r5, #0xc]
 	bne _020656F2
 	bl Sav2_Bag_get
-	bl sub_020781C4
+	bl Bag_GetRegisteredItemSlot1
 	b _020656FA
 _020656F2:
 	bl Sav2_Bag_get
-	bl sub_020781D0
+	bl Bag_GetRegisteredItemSlot2
 _020656FA:
 	add r6, r0, #0
 	ldr r0, _020657A0 ; =0x000001D7

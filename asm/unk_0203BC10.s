@@ -2237,7 +2237,7 @@ _0203CD68:
 	ldr r1, _0203CEEC ; =_020FA0B8
 	add r0, r7, #0
 	mov r2, #0xb
-	bl sub_02078644
+	bl CreateBagView
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -2514,9 +2514,9 @@ sub_0203CFC0: ; 0x0203CFC0
 	bl sub_02050650
 	add r4, r0, #0
 	mov r0, #0xb
-	bl sub_02077878
+	bl BagView_New
 	add r7, r0, #0
-	bl sub_02077890
+	bl BagView_sizeof
 	mov r1, #0xe
 	lsl r1, r1, #6
 	add r2, r0, #0
@@ -3347,7 +3347,7 @@ sub_0203D664: ; 0x0203D664
 	mov r7, #0xb
 _0203D688:
 	add r0, r5, #0
-	bl sub_020780F4
+	bl BerryToItemId
 	add r1, r0, #0
 	add r0, r4, #0
 	add r2, r6, #0

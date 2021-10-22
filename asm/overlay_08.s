@@ -15508,7 +15508,7 @@ _02223C0A:
 	lsl r2, r2, #0x10
 	ldr r1, [sp, #8]
 	lsr r2, r2, #0x10
-	bl sub_02078724
+	bl Bag_GetPocketSlotN
 	add r5, r0, #0
 	beq _02223C7C
 	ldrh r0, [r5]
