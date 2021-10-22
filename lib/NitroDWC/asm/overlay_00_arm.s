@@ -1658,7 +1658,7 @@ ov00_021E926C: ; 0x021E926C
 	add r0, r4, #0x1d4
 	add r0, r0, #0x1800
 	mov r1, #0x20
-	bl sub_020AA9B0
+	bl CPS_SslAddRandomSeed
 _021E92A0:
 	add r0, r4, #0x3f8
 	add r0, r0, #0x1800
@@ -1824,7 +1824,7 @@ ov00_021E9438: ; 0x021E9438
 	str r1, [r5, #0x800]
 	mov r1, #0xc
 	str r5, [r4, #0xc]
-	bl sub_020A88E8
+	bl CPS_SetRootCa
 	mov r0, #1
 	bl CPS_SetSsl
 _021E94EC:
@@ -5273,7 +5273,7 @@ ov00_021EC3F0: ; 0x021EC3F0
 	str r0, [r4, #0x10]
 	mov r0, r5
 	str r4, [r1, #4]
-	bl sub_020A8868
+	bl CPS_SetSslHandshakePriority
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _021EC450: .word _0221A75C
@@ -5576,7 +5576,7 @@ _021EC824:
 	cmp r1, #0
 	bne _021EC89C
 	ldrh r7, [r5, #8]
-	bl sub_020A8858
+	bl CPS_GetSslHandshakePriority
 	ldr r1, _021EC8D0 ; =_0221A75C
 	mov r6, r0
 	str r4, [r1]

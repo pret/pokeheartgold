@@ -29450,10 +29450,10 @@
 .public CPS_SocGetLength
 .public CPS_SocFlush
 .public CPS_Resolve
-.public sub_020A8858
-.public sub_020A8868
-.public sub_020A88E8
-.public sub_020AA9B0
+.public CPS_GetSslHandshakePriority
+.public CPS_SetSslHandshakePriority
+.public CPS_SetRootCa
+.public CPS_SslAddRandomSeed
 .public sub_020AD850
 .public sub_020AD968
 .public sub_020AD9C0

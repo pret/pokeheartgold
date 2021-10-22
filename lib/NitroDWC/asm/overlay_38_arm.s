@@ -8470,7 +8470,7 @@ ov38_022230BC: ; 0x022230BC
 	bl OS_GetLowEntropyData
 	ldr r0, _022230D8 ; =0x02226BF0
 	mov r1, #0x20
-	bl sub_020AA9B0
+	bl CPS_SslAddRandomSeed
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _022230D8: .word 0x02226BF0
