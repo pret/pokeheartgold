@@ -6201,7 +6201,7 @@ sub_0207791C: ; 0x0207791C
 sub_02077924: ; 0x02077924
 	push {r3, lr}
 	bl Sav2_PlayerData_GetCoinsAddr
-	bl sub_0202C950
+	bl CheckCoins
 	pop {r3, pc}
 	thumb_func_end sub_02077924
 

@@ -19356,7 +19356,7 @@ _021EECBA:
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
-	bl sub_0202C950
+	bl CheckCoins
 	add r2, r0, #0
 	b _021EED04
 _021EECD2:

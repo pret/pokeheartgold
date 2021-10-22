@@ -100,7 +100,7 @@ ov22_02259960: ; 0x02259960
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
-	bl sub_0202C950
+	bl CheckCoins
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -123,7 +123,7 @@ ov22_0225998C: ; 0x0225998C
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
 	add r1, r5, #0
-	bl sub_0202C954
+	bl GiveCoins
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -145,7 +145,7 @@ ov22_022599B8: ; 0x022599B8
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
 	add r1, r5, #0
-	bl sub_0202C98C
+	bl TakeCoins
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -167,7 +167,7 @@ ov22_022599E4: ; 0x022599E4
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
 	ldrh r1, [r5]
-	bl sub_0202C98C
+	bl TakeCoins
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -192,7 +192,7 @@ ov22_02259A10: ; 0x02259A10
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
-	bl sub_0202C950
+	bl CheckCoins
 	cmp r0, r6
 	bhs _02259A46
 	mov r0, #0
@@ -229,7 +229,7 @@ ov22_02259A50: ; 0x02259A50
 	add r5, r0, #0
 	ldr r0, [r6, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
-	bl sub_0202C950
+	bl CheckCoins
 	ldrh r1, [r5]
 	cmp r0, r1
 	bhs _02259A92
@@ -268,7 +268,7 @@ ov22_02259A9C: ; 0x02259A9C
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetCoinsAddr
 	add r1, r5, #0
-	bl sub_0202C974
+	bl CanGiveCoins
 	strh r0, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}

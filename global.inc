@@ -26277,11 +26277,11 @@
 .public sub_0202C88C
 .public sub_0202C8C4
 .public sub_0202C8E4
-.public sub_0202C948
-.public sub_0202C950
-.public sub_0202C954
-.public sub_0202C974
-.public sub_0202C98C
+.public InitCoins
+.public CheckCoins
+.public GiveCoins
+.public CanGiveCoins
+.public TakeCoins
 .public sub_0202C9A0
 .public sub_0202C9A8
 .public sub_0202C9D8
