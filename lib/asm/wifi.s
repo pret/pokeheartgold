@@ -13764,8 +13764,8 @@ CPSi_md5_result: ; 0x020ABFC0
 _020AC024: .word _02110758
 	arm_func_end CPSi_md5_result
 
-	arm_func_start sub_020AC028
-sub_020AC028: ; 0x020AC028
+	arm_func_start R
+R: ; 0x020AC028
 	add r2, r0, #0xd
 	add ip, r0, #2
 	and r3, r2, #0xf
@@ -13783,10 +13783,10 @@ sub_020AC028: ; 0x020AC028
 	str r2, [r1, r0, lsl #2]
 	mov r0, r2
 	bx lr
-	arm_func_end sub_020AC028
+	arm_func_end R
 
-	arm_func_start sub_020AC06C
-sub_020AC06C: ; 0x020AC06C
+	arm_func_start char_from_long__sha1
+char_from_long__sha1: ; 0x020AC06C
 	stmdb sp!, {r3, lr}
 	movs r2, r2, lsr #2
 	mov lr, #0
@@ -13805,10 +13805,10 @@ _020AC07C:
 	add r0, r0, #4
 	blo _020AC07C
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020AC06C
+	arm_func_end char_from_long__sha1
 
-	arm_func_start sub_020AC0B0
-sub_020AC0B0: ; 0x020AC0B0
+	arm_func_start long_from_char__sha1
+long_from_char__sha1: ; 0x020AC0B0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
 	cmp r2, #0
@@ -13828,10 +13828,10 @@ _020AC0C0:
 	str r3, [r0], #4
 	blo _020AC0C0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020AC0B0
+	arm_func_end long_from_char__sha1
 
-	arm_func_start sub_020AC0F8
-sub_020AC0F8: ; 0x020AC0F8
+	arm_func_start CPSi_sha1_block
+CPSi_sha1_block: ; 0x020AC0F8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x50
 	str r0, [sp]
@@ -13839,7 +13839,7 @@ sub_020AC0F8: ; 0x020AC0F8
 	add r0, sp, #0x10
 	ldmia r3, {r4, r5, r7, r8, sb}
 	mov r2, #0x40
-	bl sub_020AC0B0
+	bl long_from_char__sha1
 	mov r0, #0
 	ldr r3, _020AC770 ; =0x5A827999
 	mov r2, r0
@@ -13924,7 +13924,7 @@ _020AC128:
 	orr r6, r2, r5, lsl #30
 	mov r0, #0
 	add sb, sb, r3
-	bl sub_020AC028
+	bl R
 	eor r1, r6, r7
 	mov r3, sb, lsr #0x1b
 	and r1, r4, r1
@@ -13939,7 +13939,7 @@ _020AC128:
 	orr r5, r2, r4, lsl #30
 	mov r0, #1
 	add r8, r8, r3
-	bl sub_020AC028
+	bl R
 	eor r1, r5, r6
 	mov r2, r8, lsr #0x1b
 	and r1, sb, r1
@@ -13954,7 +13954,7 @@ _020AC128:
 	add r7, r7, r0
 	add r1, sp, #0x10
 	mov r0, #2
-	bl sub_020AC028
+	bl R
 	mov r1, r7, lsr #0x1b
 	orr r2, r1, r7, lsl #5
 	eor r1, sb, r5
@@ -13969,7 +13969,7 @@ _020AC128:
 	add r6, r6, r0
 	mov r0, #3
 	add r1, sp, #0x10
-	bl sub_020AC028
+	bl R
 	mov r1, r6, lsr #0x1b
 	orr r2, r1, r6, lsl #5
 	eor r1, r8, sb
@@ -13990,7 +13990,7 @@ _020AC128:
 _020AC360:
 	mov r0, sl
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r2, r5, lsr #0x1b
 	eor r1, r6, r7
 	orr r2, r2, r5, lsl #5
@@ -14003,7 +14003,7 @@ _020AC360:
 	orr r6, r0, r6, lsl #30
 	add r0, sl, #1
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, sb, lsr #0x1b
 	orr r2, r1, sb, lsl #5
 	eor r1, r5, r6
@@ -14018,7 +14018,7 @@ _020AC360:
 	and sl, r0, #0xf
 	mov r0, sl
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, r8, lsr #0x1b
 	orr r2, r1, r8, lsl #5
 	eor r1, sb, r5
@@ -14031,7 +14031,7 @@ _020AC360:
 	orr sb, r0, sb, lsl #30
 	add r0, sl, #1
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, r7, lsr #0x1b
 	orr r2, r1, r7, lsl #5
 	eor r1, r8, sb
@@ -14044,7 +14044,7 @@ _020AC360:
 	orr r8, r0, r8, lsl #30
 	add r0, sl, #2
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, r6, lsr #0x1b
 	orr r2, r1, r6, lsl #5
 	eor r1, r7, r8
@@ -14068,7 +14068,7 @@ _020AC360:
 _020AC494:
 	mov r0, sl
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	orr r2, r7, r8
 	mov r1, r5, lsr #0x1b
 	orr r1, r1, r5, lsl #5
@@ -14083,7 +14083,7 @@ _020AC494:
 	orr r6, r0, r6, lsl #30
 	add r0, sl, #1
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, sb, lsr #0x1b
 	orr r1, r1, sb, lsl #5
 	orr r2, r6, r7
@@ -14098,7 +14098,7 @@ _020AC494:
 	orr r5, r0, r5, lsl #30
 	add r0, sl, #2
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, r8, lsr #0x1b
 	orr r1, r1, r8, lsl #5
 	orr r2, r5, r6
@@ -14115,7 +14115,7 @@ _020AC494:
 	and sl, r0, #0xf
 	mov r0, sl
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, r7, lsr #0x1b
 	orr r1, r1, r7, lsl #5
 	orr r2, sb, r5
@@ -14130,7 +14130,7 @@ _020AC494:
 	orr r8, r0, r8, lsl #30
 	add r0, sl, #1
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, r6, lsr #0x1b
 	orr r1, r1, r6, lsl #5
 	orr r2, r8, sb
@@ -14156,7 +14156,7 @@ _020AC494:
 _020AC5F0:
 	mov r0, sl
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r2, r5, lsr #0x1b
 	eor r1, r6, r7
 	orr r2, r2, r5, lsl #5
@@ -14169,7 +14169,7 @@ _020AC5F0:
 	orr r6, r0, r6, lsl #30
 	add r0, sl, #1
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, sb, lsr #0x1b
 	orr r2, r1, sb, lsl #5
 	eor r1, r5, r6
@@ -14182,7 +14182,7 @@ _020AC5F0:
 	orr r5, r0, r5, lsl #30
 	add r0, sl, #2
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, r8, lsr #0x1b
 	orr r2, r1, r8, lsl #5
 	eor r1, sb, r5
@@ -14195,7 +14195,7 @@ _020AC5F0:
 	orr sb, r0, sb, lsl #30
 	add r0, sl, #3
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, r7, lsr #0x1b
 	orr r2, r1, r7, lsl #5
 	eor r1, r8, sb
@@ -14210,7 +14210,7 @@ _020AC5F0:
 	and sl, r0, #0xf
 	mov r0, sl
 	mov r1, fp
-	bl sub_020AC028
+	bl R
 	mov r1, r6, lsr #0x1b
 	orr r2, r1, r6, lsl #5
 	eor r1, r7, r8
@@ -14255,7 +14255,7 @@ _020AC770: .word 0x5A827999
 _020AC774: .word 0x6ED9EBA1
 _020AC778: .word 0x8F1BBCDC
 _020AC77C: .word 0xCA62C1D6
-	arm_func_end sub_020AC0F8
+	arm_func_end CPSi_sha1_block
 
 	arm_func_start CPSi_sha1_init
 CPSi_sha1_init: ; 0x020AC780
@@ -14312,14 +14312,14 @@ CPSi_sha1_calc: ; 0x020AC7D4
 	mov r0, r8
 	add r1, r8, #0x1c
 	mov r4, #0
-	bl sub_020AC0F8
+	bl CPSi_sha1_block
 	add r0, r5, #0x3f
 	cmp r0, r6
 	bhs _020AC874
 _020AC850:
 	mov r0, r8
 	add r1, r7, r5
-	bl sub_020AC0F8
+	bl CPSi_sha1_block
 	add r5, r5, #0x40
 	add r0, r5, #0x3f
 	cmp r0, r6
@@ -14344,7 +14344,7 @@ CPSi_sha1_result: ; 0x020AC88C
 	mov r0, r4
 	add r1, r5, #0x14
 	mov r2, #8
-	bl sub_020AC06C
+	bl char_from_long__sha1
 	ldr r0, [r5, #0x18]
 	ldr r1, _020AC8F0 ; =_02110898
 	mov r0, r0, lsr #3
@@ -14361,7 +14361,7 @@ CPSi_sha1_result: ; 0x020AC88C
 	mov r0, r4
 	mov r1, r5
 	mov r2, #0x14
-	bl sub_020AC06C
+	bl char_from_long__sha1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020AC8F0: .word _02110898
@@ -14378,7 +14378,7 @@ CPSi_sha1_result_prng: ; 0x020AC8F4
 	mov r0, r4
 	mov r1, r5
 	mov r2, #0x14
-	bl sub_020AC06C
+	bl char_from_long__sha1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020AC920: .word _02110899
@@ -14452,8 +14452,8 @@ _020AC9F8:
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end CPSi_rc4_crypt
 
-	arm_func_start sub_020ACA04
-sub_020ACA04: ; 0x020ACA04
+	arm_func_start count_digits
+count_digits: ; 0x020ACA04
 	b _020ACA0C
 _020ACA08:
 	sub r1, r1, #1
@@ -14467,7 +14467,7 @@ _020ACA0C:
 _020ACA24:
 	mov r0, r1
 	bx lr
-	arm_func_end sub_020ACA04
+	arm_func_end count_digits
 
 	arm_func_start CPSi_big_sign
 CPSi_big_sign: ; 0x020ACA2C
@@ -14478,7 +14478,7 @@ CPSi_big_sign: ; 0x020ACA2C
 	tst r2, #0x8000
 	mvnne r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_020ACA04
+	bl count_digits
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -14494,11 +14494,11 @@ CPSi_big_add: ; 0x020ACA5C
 	mov r6, r2
 	mov r0, r7
 	mov r1, r5
-	bl sub_020ACA04
+	bl count_digits
 	mov r4, r0
 	mov r0, r6
 	mov r1, r5
-	bl sub_020ACA04
+	bl count_digits
 	cmp r4, r0
 	movlt r4, r0
 	cmp r4, r5
@@ -14530,8 +14530,8 @@ _020ACAD4:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end CPSi_big_add
 
-	arm_func_start sub_020ACAF8
-sub_020ACAF8: ; 0x020ACAF8
+	arm_func_start CPSi_big_add_small
+CPSi_big_add_small: ; 0x020ACAF8
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	mov r4, #0
@@ -14560,7 +14560,7 @@ _020ACB40:
 	strh r2, [r0, ip]
 	blt _020ACB40
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020ACAF8
+	arm_func_end CPSi_big_add_small
 
 	arm_func_start CPSi_big_negate
 CPSi_big_negate: ; 0x020ACB5C
@@ -14580,7 +14580,7 @@ _020ACB70:
 _020ACB8C:
 	mov r1, r0
 	mov r2, #1
-	bl sub_020ACAF8
+	bl CPSi_big_add_small
 	ldmia sp!, {r3, pc}
 	arm_func_end CPSi_big_negate
 
@@ -14593,11 +14593,11 @@ CPSi_big_sub: ; 0x020ACB9C
 	mov r6, r2
 	mov r0, r7
 	mov r1, r5
-	bl sub_020ACA04
+	bl count_digits
 	mov r4, r0
 	mov r0, r6
 	mov r1, r5
-	bl sub_020ACA04
+	bl count_digits
 	cmp r4, r0
 	movlt r4, r0
 	mov ip, #0
@@ -14633,8 +14633,8 @@ _020ACC20:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end CPSi_big_sub
 
-	arm_func_start sub_020ACC44
-sub_020ACC44: ; 0x020ACC44
+	arm_func_start CPSi_big_sub_small
+CPSi_big_sub_small: ; 0x020ACC44
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	mov r4, #0
@@ -14664,10 +14664,10 @@ _020ACC90:
 	strh r2, [r0, ip]
 	blt _020ACC90
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020ACC44
+	arm_func_end CPSi_big_sub_small
 
-	arm_func_start sub_020ACCAC
-sub_020ACCAC: ; 0x020ACCAC
+	arm_func_start CPSi_big_compare
+CPSi_big_compare: ; 0x020ACCAC
 	subs ip, r2, #1
 	bmi _020ACCDC
 _020ACCB4:
@@ -14684,10 +14684,10 @@ _020ACCB4:
 _020ACCDC:
 	mov r0, #0
 	bx lr
-	arm_func_end sub_020ACCAC
+	arm_func_end CPSi_big_compare
 
-	arm_func_start sub_020ACCE4
-sub_020ACCE4: ; 0x020ACCE4
+	arm_func_start CPSi_big_add_part
+CPSi_big_add_part: ; 0x020ACCE4
 	stmdb sp!, {r3, lr}
 	b _020ACD04
 _020ACCEC:
@@ -14703,7 +14703,7 @@ _020ACD04:
 	cmp r2, r3
 	blt _020ACCEC
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020ACCE4
+	arm_func_end CPSi_big_add_part
 
 	arm_func_start CPSi_big_mult
 CPSi_big_mult: ; 0x020ACD18
@@ -14718,11 +14718,11 @@ CPSi_big_mult: ; 0x020ACD18
 	bl MI_CpuFill8
 	mov r0, sl
 	mov r1, r8
-	bl sub_020ACA04
+	bl count_digits
 	mov fp, r0
 	mov r0, sb
 	mov r1, r8
-	bl sub_020ACA04
+	bl count_digits
 	str r0, [sp, #4]
 	cmp r0, #0
 	mov r5, #0
@@ -14741,7 +14741,7 @@ _020ACD7C:
 	add r2, r5, r6
 	mul r1, r3, r1
 	mov r3, r8
-	bl sub_020ACCE4
+	bl CPSi_big_add_part
 	add r6, r6, #1
 _020ACDA0:
 	cmp r6, fp
@@ -14755,8 +14755,8 @@ _020ACDA0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end CPSi_big_mult
 
-	arm_func_start sub_020ACDC4
-sub_020ACDC4: ; 0x020ACDC4
+	arm_func_start CPSi_big_mult_small
+CPSi_big_mult_small: ; 0x020ACDC4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r4, r3
@@ -14764,7 +14764,7 @@ sub_020ACDC4: ; 0x020ACDC4
 	mov r0, r6
 	mov r1, r4
 	mov r5, r2
-	bl sub_020ACA04
+	bl count_digits
 	mov r3, #0
 	mov ip, r3
 	cmp r0, #0
@@ -14789,17 +14789,17 @@ _020ACE14:
 	mov r1, #0
 	bl MI_CpuFill8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020ACDC4
+	arm_func_end CPSi_big_mult_small
 
-	arm_func_start sub_020ACE3C
-sub_020ACE3C: ; 0x020ACE3C
+	arm_func_start CPSi_big_sqr
+CPSi_big_sqr: ; 0x020ACE3C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sb, r1
 	mov r8, r2
 	mov sl, r0
 	mov r0, sb
 	mov r1, r8
-	bl sub_020ACA04
+	bl count_digits
 	mov fp, r0
 	cmp r8, fp, lsl #1
 	mov r0, fp, lsl #1
@@ -14854,18 +14854,18 @@ _020ACEEC:
 	mov r2, r5
 	mov r3, r8
 	mov r1, r7, lsl #1
-	bl sub_020ACCE4
+	bl CPSi_big_add_part
 	b _020ACF48
 _020ACF24:
 	mov r1, r7
 	mov r2, r5
 	mov r3, r8
-	bl sub_020ACCE4
+	bl CPSi_big_add_part
 	mov r1, r7
 	mov r2, r5
 	mov r0, sl
 	mov r3, r8
-	bl sub_020ACCE4
+	bl CPSi_big_add_part
 _020ACF48:
 	add r4, r4, #1
 _020ACF4C:
@@ -14879,34 +14879,34 @@ _020ACF4C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020ACF6C: .word 0x7FFF8000
-	arm_func_end sub_020ACE3C
+	arm_func_end CPSi_big_sqr
 
-	arm_func_start sub_020ACF70
-sub_020ACF70: ; 0x020ACF70
+	arm_func_start get48bits_1
+get48bits_1: ; 0x020ACF70
 	ldrh r1, [r0]
 	mov r0, #0
 	bx lr
-	arm_func_end sub_020ACF70
+	arm_func_end get48bits_1
 
-	arm_func_start sub_020ACF7C
-sub_020ACF7C: ; 0x020ACF7C
+	arm_func_start get48bits_2
+get48bits_2: ; 0x020ACF7C
 	ldrh r1, [r0]
 	ldrh r0, [r0, #-2]
 	mov r0, r0, lsl #0x10
 	bx lr
-	arm_func_end sub_020ACF7C
+	arm_func_end get48bits_2
 
-	arm_func_start sub_020ACF8C
-sub_020ACF8C: ; 0x020ACF8C
+	arm_func_start get48bits_3
+get48bits_3: ; 0x020ACF8C
 	ldrh r1, [r0]
 	ldrh r2, [r0, #-2]
 	ldrh r3, [r0, #-4]
 	orr r0, r3, r2, lsl #16
 	bx lr
-	arm_func_end sub_020ACF8C
+	arm_func_end get48bits_3
 
-	arm_func_start sub_020ACFA0
-sub_020ACFA0: ; 0x020ACFA0
+	arm_func_start get64bits
+get64bits: ; 0x020ACFA0
 	ldrh r2, [r0]
 	ldrh r3, [r0, #-2]
 	orr r1, r3, r2, lsl #16
@@ -14914,7 +14914,7 @@ sub_020ACFA0: ; 0x020ACFA0
 	ldrh r3, [r0, #-6]
 	orr r0, r3, r2, lsl #16
 	bx lr
-	arm_func_end sub_020ACFA0
+	arm_func_end get64bits
 
 	arm_func_start CPSi_big_div
 CPSi_big_div: ; 0x020ACFBC
@@ -14934,11 +14934,11 @@ CPSi_big_div: ; 0x020ACFBC
 	bl MI_CpuFill8
 	ldr r0, [sp, #4]
 	mov r1, sb
-	bl sub_020ACA04
+	bl count_digits
 	mov fp, r0
 	mov r0, sl
 	mov r1, sb
-	bl sub_020ACA04
+	bl count_digits
 	mov r5, r0
 	cmp fp, #0
 	cmpgt r5, #0
@@ -14963,7 +14963,7 @@ _020AD048:
 	add r0, sl, r5, lsl #1
 	sub r0, r0, #2
 	mov fp, r5, lsl #1
-	bl sub_020ACF8C
+	bl get48bits_3
 	str r0, [sp, #0x18]
 	str r1, [sp, #0x10]
 	b _020AD0B0
@@ -14973,13 +14973,13 @@ _020AD07C:
 	sub r0, r0, #2
 	ble _020AD0A0
 	mov fp, r5, lsl #1
-	bl sub_020ACF7C
+	bl get48bits_2
 	str r0, [sp, #0x18]
 	str r1, [sp, #0x10]
 	b _020AD0B0
 _020AD0A0:
 	mov fp, r5, lsl #1
-	bl sub_020ACF70
+	bl get48bits_1
 	str r0, [sp, #0x18]
 	str r1, [sp, #0x10]
 _020AD0B0:
@@ -14995,7 +14995,7 @@ _020AD0C8:
 	add r0, r6, #2
 	bl memmove
 	add r0, r7, fp
-	bl sub_020ACFA0
+	bl get64bits
 	ldr r2, [sp, #0x18]
 	ldr r3, [sp, #0x10]
 	bl _ll_udiv
@@ -15009,11 +15009,11 @@ _020AD0FC:
 	mov r1, sl
 	mov r2, r2, lsr #0x10
 	mov r3, sb
-	bl sub_020ACDC4
+	bl CPSi_big_mult_small
 	mov r0, r7
 	mov r1, r8
 	mov r2, sb
-	bl sub_020ACCAC
+	bl CPSi_big_compare
 	cmp r0, #0
 	sublt r5, r5, #1
 	blt _020AD0FC
@@ -15075,7 +15075,7 @@ CPSi_big_power: ; 0x020AD19C
 	mov r0, sb
 	mov r1, r8
 	strh r2, [sl]
-	bl sub_020ACA04
+	bl count_digits
 	sub r0, r8, r0
 	mov r6, r0, lsl #4
 	cmp r6, r8, lsl #4
@@ -15106,7 +15106,7 @@ _020AD25C:
 	mov r0, r4
 	mov r1, sl
 	mov r2, r8
-	bl sub_020ACE3C
+	bl CPSi_big_sqr
 	mov r0, r4
 	mov r1, sl
 	mov r2, fp
@@ -15162,8 +15162,8 @@ _020AD328: .word 0x021D4634
 _020AD32C: .word 0x021D4660
 	arm_func_end CPSi_big_power
 
-	arm_func_start sub_020AD330
-sub_020AD330: ; 0x020AD330
+	arm_func_start CPSi_big_modinv
+CPSi_big_modinv: ; 0x020AD330
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	ldr sb, [sp, #0x38]
@@ -15249,10 +15249,10 @@ _020AD440:
 	bl CPSi_big_div
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_020AD330
+	arm_func_end CPSi_big_modinv
 
-	arm_func_start sub_020AD47C
-sub_020AD47C: ; 0x020AD47C
+	arm_func_start CPSi_big_montmult
+CPSi_big_montmult: ; 0x020AD47C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, r3
 	mov r4, r6, lsl #1
@@ -15267,7 +15267,7 @@ sub_020AD47C: ; 0x020AD47C
 	mov r0, r7
 	mov r1, sb
 	mov r2, r6
-	bl sub_020ACE3C
+	bl CPSi_big_sqr
 	b _020AD4D8
 _020AD4BC:
 	cmp r8, #0
@@ -15312,7 +15312,7 @@ _020AD4D8:
 	mov r0, r7
 	ldr r1, [sp, #0x24]
 	mov r2, r6
-	bl sub_020ACCAC
+	bl CPSi_big_compare
 	cmp r0, #0
 	beq _020AD578
 	cmp r0, #1
@@ -15331,7 +15331,7 @@ _020AD58C:
 	mov r3, r6
 	bl CPSi_big_sub
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020AD47C
+	arm_func_end CPSi_big_montmult
 
 	arm_func_start CPSi_big_montpower
 CPSi_big_montpower: ; 0x020AD5A4
@@ -15366,7 +15366,7 @@ CPSi_big_montpower: ; 0x020AD5A4
 	str r0, [sp, #0x20]
 	add r5, r0, sl, lsl #1
 	mov r0, sb
-	bl sub_020ACA04
+	bl count_digits
 	mov r4, r0
 	ldr r0, [sp, #0x28]
 	mov r2, #1
@@ -15378,7 +15378,7 @@ CPSi_big_montpower: ; 0x020AD5A4
 	mov r0, r6
 	mov r2, sb
 	mov r3, sl
-	bl sub_020AD330
+	bl CPSi_big_modinv
 	ldr r1, [sp, #0x28]
 	mov r0, r7
 	mov r2, r6
@@ -15388,7 +15388,7 @@ CPSi_big_montpower: ; 0x020AD5A4
 	mov r1, r7
 	mov r2, #1
 	mov r3, sl
-	bl sub_020ACC44
+	bl CPSi_big_sub_small
 	str sl, [sp]
 	mov r0, r6
 	mov r1, r6
@@ -15428,7 +15428,7 @@ _020AD6F4:
 	mov r2, #1
 	mov r3, sl
 	str r8, [sp, #0x10]
-	bl sub_020AD47C
+	bl CPSi_big_montmult
 	ldr r1, [sp, #0x18]
 	sub r2, r4, r5, asr #4
 	add r1, r1, r2, lsl #1
@@ -15445,7 +15445,7 @@ _020AD6F4:
 	mov r0, fp
 	mov r3, sl
 	str r8, [sp, #0x10]
-	bl sub_020AD47C
+	bl CPSi_big_montmult
 _020AD75C:
 	ldr r0, [sp, #0x1c]
 	add r5, r5, #1
@@ -15460,7 +15460,7 @@ _020AD76C:
 	mov r3, sl
 	mov r2, #0
 	str r8, [sp, #0x10]
-	bl sub_020AD47C
+	bl CPSi_big_montmult
 	ldr r1, _020AD7AC ; =0x021D4660
 	ldr r0, [sp, #0x28]
 	ldr r1, [r1]
