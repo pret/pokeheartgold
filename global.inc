@@ -26140,7 +26140,7 @@
 .public sub_0202A14C
 .public sub_0202A36C
 .public sub_0202A53C
-.public sub_0202A55C
+.public Pokedex_GetNatDexFlag
 .public sub_0202A57C
 .public sub_0202A59C
 .public sub_0202A5E8
@@ -29030,8 +29030,8 @@
 .public sub_020747BC
 .public sub_020748B8
 .public sub_020748CC
-.public sub_02074910
-.public sub_0207491C
+.public SavArray_IsNatDexEnabled
+.public Pokedex_IsNatDexEnabled
 .public sub_02074930
 .public sub_02074944
 .public sub_0207495C
@@ -29683,3 +29683,12 @@
 .public sub_0207496C
 .public sub_02074A6C
 .public sub_0207791C
+.public sub_020773AC
+.public sub_020773D4
+.public sub_02077400
+.public sub_020774A0
+.public sub_020774E0
+.public sub_02077604
+.public sub_02077634
+.public sub_02077650
+.public sub_02077664

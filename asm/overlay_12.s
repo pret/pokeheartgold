@@ -31048,7 +31048,7 @@ _02246A72:
 	str r0, [sp, #0xdc]
 	ldr r0, [r4]
 	bl ov12_0223A93C
-	bl sub_0207491C
+	bl Pokedex_IsNatDexEnabled
 	str r0, [sp, #0xe0]
 	bl sub_02021BD0
 	str r0, [r4, #0x54]

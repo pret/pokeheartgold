@@ -830,7 +830,7 @@ _0222767E:
 	add r0, r4, #0
 	bl sub_0201A4B0
 	ldr r0, [r5, #8]
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _022276A6
 	bl ov74_022339C8

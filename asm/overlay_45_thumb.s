@@ -3797,7 +3797,7 @@ _0222B958:
 	add r1, #0x5e
 	strb r0, [r1]
 	ldr r0, [sp, #0xc]
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	add r1, r5, #0
 	add r1, #0x5f
 	strb r0, [r1]

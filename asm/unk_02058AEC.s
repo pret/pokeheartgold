@@ -31,7 +31,7 @@ sub_02058AEC: ; 0x02058AEC
 	add r0, r4, #0
 	bl sub_0208AD34
 	add r0, r5, #0
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288

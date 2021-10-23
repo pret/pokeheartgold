@@ -719,7 +719,7 @@ sub_0203E76C: ; 0x0203E76C
 	strh r0, [r4, #0x18]
 	strb r7, [r4, #0x12]
 	add r0, r5, #0
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288
@@ -774,7 +774,7 @@ sub_0203E7F4: ; 0x0203E7F4
 	mov r0, #2
 	strb r0, [r4, #0x12]
 	ldr r0, [r5, #0xc]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	mov r0, #0
 	str r0, [r4, #0x2c]
@@ -1685,7 +1685,7 @@ sub_0203EEE4: ; 0x0203EEE4
 	bl sub_02031978
 	str r0, [r4, #4]
 	ldr r0, [sp]
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	str r0, [r4, #8]
 	add r0, r6, #0
 	bl sub_0203EE54
@@ -2105,7 +2105,7 @@ sub_0203F218: ; 0x0203F218
 	bl Sav2_Pokedex_get
 	str r0, [r5, #0x20]
 	ldr r0, [r4, #0xc]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r5, #0x2c]
 	ldr r0, [r4, #0xc]
 	str r0, [r5, #0x10]
@@ -2915,7 +2915,7 @@ sub_0203F844: ; 0x0203F844
 	ldr r0, [r5, #0xc]
 	str r0, [r4, #0x20]
 	ldr r0, [r5, #0xc]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x14]
 	bl sub_0203A040
@@ -3303,7 +3303,7 @@ sub_0203FB94: ; 0x0203FB94
 	bl sub_0202D95C
 	str r0, [r4, #0x20]
 	ldr r0, [r5, #0xc]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	mov r0, #0
 	str r0, [r4, #0x2c]

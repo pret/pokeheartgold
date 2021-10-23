@@ -1990,7 +1990,7 @@ _0203CB1A:
 	bl sub_0202D95C
 	str r0, [r7, #0x20]
 	ldr r0, [r5, #0xc]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r7, #0x1c]
 	ldr r0, [r5, #0xc]
 	bl sub_02088288
@@ -2045,7 +2045,7 @@ _0203CBA8:
 	mov r0, #2
 	strb r0, [r7, #0x12]
 	ldr r0, [r5, #0xc]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r7, #0x1c]
 	ldr r0, [r5, #0xc]
 	bl sub_02088288
@@ -2109,7 +2109,7 @@ _0203CC3E:
 	mov r0, #2
 	strb r0, [r7, #0x12]
 	ldr r0, [r5, #0xc]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r7, #0x1c]
 	ldr r0, [r5, #0xc]
 	bl sub_02088288

@@ -6561,7 +6561,7 @@ _021E8A06:
 	strh r0, [r4, #0x18]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -31386,7 +31386,7 @@ ov14_021F5190: ; 0x021F5190
 	bne _021F5208
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	ldrh r1, [r6, #4]
 	bl sub_02074930
 	add r6, r0, #0

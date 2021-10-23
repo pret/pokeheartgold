@@ -24484,7 +24484,7 @@ sub_02066FEC: ; 0x02066FEC
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288

@@ -26,7 +26,7 @@ ov24_022598C0: ; 0x022598C0
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #4]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	lsl r0, r0, #0x1f

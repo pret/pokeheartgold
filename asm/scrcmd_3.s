@@ -24,7 +24,7 @@ sub_02048218: ; 0x02048218
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _02048268
 	ldr r2, [sp, #0x18]
@@ -147,7 +147,7 @@ sub_020482F4: ; 0x020482F4
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _0204834C
 	ldr r0, [sp, #0x10]

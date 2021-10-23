@@ -24049,7 +24049,7 @@ _021F3102:
 	pop {r4, r5, r6, pc}
 _021F3112:
 	add r0, r6, #0
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	bne _021F312C
 	ldr r0, [r5, #0x28]
@@ -24099,7 +24099,7 @@ _021F3166:
 	ldr r0, [r5, #0x1c]
 	bl Sav2_Pokedex_get
 	add r6, r0, #0
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	add r1, r4, #0
 	add r1, #0x4d
 	ldrb r1, [r1]
@@ -30143,7 +30143,7 @@ ov101_021F5F40: ; 0x021F5F40
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	ldrb r1, [r4, #4]
 	mov r2, #1
 	lsl r0, r0, #0x18

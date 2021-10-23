@@ -9875,7 +9875,7 @@ _02045486:
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	strh r0, [r6]
 	b _020454A0
 _0204549C:

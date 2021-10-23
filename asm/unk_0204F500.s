@@ -1178,7 +1178,7 @@ sub_0204FDA0: ; 0x0204FDA0
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288
@@ -1855,7 +1855,7 @@ sub_020502E0: ; 0x020502E0
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288

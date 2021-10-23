@@ -1551,7 +1551,7 @@ _02029E80: .word 0x000001ED
 sub_02029E84: ; 0x02029E84
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _02029E98
 	add r0, r4, #0
@@ -2492,8 +2492,8 @@ _0202A554: .word 0xBEEFCAFE
 _0202A558: .word 0x00000337
 	thumb_func_end sub_0202A53C
 
-	thumb_func_start sub_0202A55C
-sub_0202A55C: ; 0x0202A55C
+	thumb_func_start Pokedex_GetNatDexFlag
+Pokedex_GetNatDexFlag: ; 0x0202A55C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4]
@@ -2508,7 +2508,7 @@ _0202A56C:
 	nop
 _0202A574: .word 0xBEEFCAFE
 _0202A578: .word 0x00000337
-	thumb_func_end sub_0202A55C
+	thumb_func_end Pokedex_GetNatDexFlag
 
 	thumb_func_start sub_0202A57C
 sub_0202A57C: ; 0x0202A57C

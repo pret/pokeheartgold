@@ -824,7 +824,7 @@ sub_0204F448: ; 0x0204F448
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288

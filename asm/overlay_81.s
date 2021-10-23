@@ -6026,7 +6026,7 @@ ov81_02240E78: ; 0x02240E78
 	strh r1, [r0, #0x18]
 	sub r0, r2, #4
 	ldr r0, [r4, r0]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	mov r1, #7
 	lsl r1, r1, #6
 	ldr r2, [r4, r1]

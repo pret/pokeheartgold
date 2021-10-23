@@ -7310,7 +7310,7 @@ ov112_021E95A0: ; 0x021E95A0
 	bl sub_02032674
 	ldr r0, [r6, #0x20]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _021E95C4
 	mov r7, #0x14
@@ -7362,7 +7362,7 @@ ov112_021E9610: ; 0x021E9610
 	ldr r0, [r6, #0x20]
 	str r1, [sp]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _021E9628
 	mov r5, #0x14

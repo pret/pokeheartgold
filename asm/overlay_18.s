@@ -274,7 +274,7 @@ ov18_021E5AA0: ; 0x021E5AA0
 	strb r0, [r4, r1]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	ldr r0, _021E5B58 ; =0x00001860
 	beq _021E5B00

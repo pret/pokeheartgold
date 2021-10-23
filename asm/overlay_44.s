@@ -3225,7 +3225,7 @@ _0222B7F0:
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x19]
 	ldr r0, [sp, #0x10]
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x1a]
 	ldr r0, [r5, #4]

@@ -2625,7 +2625,7 @@ ov82_0223F224: ; 0x0223F224
 	add r0, r4, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	add r1, r4, #0
 	add r1, #0xa4
 	ldr r1, [r1]

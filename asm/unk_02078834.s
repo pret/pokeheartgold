@@ -53383,7 +53383,7 @@ _02092EC4:
 	blo _02092F2E
 	ldr r0, [r4, #0x38]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _02092F2E
 	ldr r1, [sp]
