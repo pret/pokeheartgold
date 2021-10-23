@@ -225,6 +225,8 @@ Static main
 	Object itemtool.o
 	Object bag.o
 	Object unk_02078834.o
+	Object use_item_on_mon.o
+	Object unk_02090C94.o
 
 	### RAM not yet assigned ###
 	Object bss_temp.o

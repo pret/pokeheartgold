@@ -6764,7 +6764,7 @@ ov83_0224152C: ; 0x0224152C
 	str r2, [sp]
 	mov r2, #0
 	add r3, r2, #0
-	bl sub_020902D0
+	bl UseItemOnPokemon
 	pop {r3, pc}
 	thumb_func_end ov83_0224152C
 

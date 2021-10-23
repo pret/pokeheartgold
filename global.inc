@@ -29194,7 +29194,7 @@
 .public sub_0208F7E0
 .public sub_0208F814
 .public sub_0208FB64
-.public sub_020902D0
+.public UseItemOnPokemon
 .public sub_02090C94
 .public sub_02090D0C
 .public sub_02090D14
@@ -29692,3 +29692,14 @@
 .public sub_02077634
 .public sub_02077650
 .public sub_02077664
+.public CanUseItemOnMonInParty
+.public LoadOVY13
+.public UseItemOnMonInParty
+.public sub_02090FA8
+.public sub_020968B0
+.public sub_020342C4
+.public sub_02091570
+.public sub_02091590
+.public sub_02091598
+.public sub_020915A0
+.public sub_020915A4
