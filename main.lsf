@@ -216,6 +216,10 @@ Static main
 	Object unk_02074120.o
 	Object party.o
 	Object unk_02074910.o
+	Object bag_view.o
+	Object itemtool.o
+	Object bag.o
+	Object unk_02078834.o
 
 	### RAM not yet assigned ###
 	Object bss_temp.o

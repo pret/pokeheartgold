@@ -76,6 +76,7 @@
 .public Bag_HasItem
 .public Bag_HasSpaceForItem
 .public Bag_TakeItem
+.public BagView_SetItem
 .public BgClearTilemapBufferAndCommit
 .public BgCommitTilemapBufferToVram
 .public BgConfig_Alloc
@@ -29678,3 +29679,7 @@
 .public swprintf
 .public vsprintf
 .public wcslen
+.public ItemToTMHMId
+.public sub_0207496C
+.public sub_02074A6C
+.public sub_0207791C
