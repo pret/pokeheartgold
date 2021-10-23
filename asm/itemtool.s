@@ -775,7 +775,7 @@ _02077C30:
 	cmp r0, r1
 	beq _02077C8A
 	lsl r1, r0, #3
-	ldr r0, _02077C94 ; =0x02100194
+	ldr r0, _02077C94 ; =_02100194
 	ldrh r0, [r0, r1]
 	bx lr
 _02077C42:
@@ -791,7 +791,7 @@ _02077C4A:
 	bx lr
 _02077C54:
 	lsl r1, r0, #3
-	ldr r0, _02077CA0 ; =0x02100196
+	ldr r0, _02077CA0 ; =_02100194 + 2
 	ldrh r0, [r0, r1]
 	bx lr
 _02077C5C:
@@ -808,7 +808,7 @@ _02077C64:
 	bx lr
 _02077C70:
 	lsl r1, r0, #3
-	ldr r0, _02077CA8 ; =0x02100198
+	ldr r0, _02077CA8 ; =_02100194 + 4
 	ldrh r0, [r0, r1]
 	bx lr
 _02077C78:
@@ -818,7 +818,7 @@ _02077C78:
 	cmp r0, r1
 	beq _02077C8A
 	lsl r1, r0, #3
-	ldr r0, _02077CAC ; =0x0210019A
+	ldr r0, _02077CAC ; =_02100194 + 6
 	ldrh r0, [r0, r1]
 	bx lr
 _02077C8A:
@@ -826,20 +826,20 @@ _02077C8A:
 	bx lr
 	nop
 _02077C90: .word 0x0000FFFF
-_02077C94: .word 0x02100194
+_02077C94: .word _02100194
 _02077C98: .word 0x00000319
 _02077C9C: .word 0x0000031B
-_02077CA0: .word 0x02100196
+_02077CA0: .word _02100194 + 2
 _02077CA4: .word 0x0000031A
-_02077CA8: .word 0x02100198
-_02077CAC: .word 0x0210019A
+_02077CA8: .word _02100194 + 4
+_02077CAC: .word _02100194 + 6
 	thumb_func_end GetItemIndexMapping
 
 	thumb_func_start UpConvertItemId_Gen3to4
 UpConvertItemId_Gen3to4: ; 0x02077CB0
 	push {r3, r4}
 	mov r2, #0x86
-	ldr r3, _02077CDC ; =0x02100194
+	ldr r3, _02077CDC ; =_02100194
 	mov r4, #1
 	lsl r2, r2, #2
 _02077CBA:
@@ -861,7 +861,7 @@ _02077CCA:
 	pop {r3, r4}
 	bx lr
 	nop
-_02077CDC: .word 0x02100194
+_02077CDC: .word _02100194
 	thumb_func_end UpConvertItemId_Gen3to4
 
 	thumb_func_start sub_02077CE0
@@ -894,21 +894,21 @@ _02077CF6:
 	beq _02077D20
 	b _02077D2E
 _02077D04:
-	ldr r1, _02077D34 ; =0x02100194
+	ldr r1, _02077D34 ; =_02100194
 	lsl r3, r3, #3
 	ldrh r1, [r1, r3]
 	mov r0, #0x11
 	bl AllocAndReadWholeNarcMemberByIdPair
 	pop {r3, pc}
 _02077D12:
-	ldr r1, _02077D38 ; =0x02100196
+	ldr r1, _02077D38 ; =_02100194 + 2
 	lsl r3, r3, #3
 	ldrh r1, [r1, r3]
 	mov r0, #0x12
 	bl AllocAndReadWholeNarcMemberByIdPair
 	pop {r3, pc}
 _02077D20:
-	ldr r1, _02077D3C ; =0x02100198
+	ldr r1, _02077D3C ; =_02100194 + 4
 	lsl r3, r3, #3
 	ldrh r1, [r1, r3]
 	mov r0, #0x12
@@ -918,9 +918,9 @@ _02077D2E:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_02077D34: .word 0x02100194
-_02077D38: .word 0x02100196
-_02077D3C: .word 0x02100198
+_02077D34: .word _02100194
+_02077D38: .word _02100194 + 2
+_02077D3C: .word _02100194 + 4
 	thumb_func_end LoadItemDataOrGfx
 
 	thumb_func_start GetItemNameIntoString
@@ -1369,16 +1369,16 @@ _02078014:
 	sub r0, r0, r2
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0xf
-	ldr r0, _02078020 ; =0x021000CC
+	ldr r0, _02078020 ; =_021000CC
 	ldrh r0, [r0, r1]
 	bx lr
 	.balign 4, 0
-_02078020: .word 0x021000CC
+_02078020: .word _021000CC
 	thumb_func_end TMHMGetMove
 
 	thumb_func_start MoveIsHM
 MoveIsHM: ; 0x02078024
-	ldr r2, _02078048 ; =0x021000CC
+	ldr r2, _02078048 ; =_021000CC
 	mov r3, #0
 _02078028:
 	lsl r1, r3, #1
@@ -1398,7 +1398,7 @@ _02078038:
 	mov r0, #0
 	bx lr
 	nop
-_02078048: .word 0x021000CC
+_02078048: .word _021000CC
 	thumb_func_end MoveIsHM
 
 	thumb_func_start ItemToTMHMId
