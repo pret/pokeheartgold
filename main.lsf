@@ -228,9 +228,6 @@ Static main
 	Object use_item_on_mon.o
 	Object unk_02090C94.o
 
-	### RAM not yet assigned ###
-	Object bss_temp.o
-
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o

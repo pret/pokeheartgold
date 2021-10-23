@@ -3,6 +3,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D43B4:
+	.space 4
+
 	.text
 
 	thumb_func_start sub_02090C94
@@ -11321,7 +11326,7 @@ _02096334: .word MI_WaitDma
 PrintErrorMessageAndReset: ; 0x02096338
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
-	ldr r0, _02096548 ; =0x021D43B4
+	ldr r0, _02096548 ; =_021D43B4
 	ldr r1, [r0]
 	cmp r1, #1
 	bne _02096346
@@ -11538,7 +11543,7 @@ _02096544:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02096548: .word 0x021D43B4
+_02096548: .word _021D43B4
 _0209654C: .word 0x02108528
 _02096550: .word sub_02096318
 _02096554: .word 0xFFFFE0FF

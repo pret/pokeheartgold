@@ -5034,7 +5034,7 @@ _0206BDE4:
 sub_0206BDF4: ; 0x0206BDF4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	ldr r0, _0206BE30 ; =0x021D4218
+	ldr r0, _0206BE30 ; =_021D4218
 	mov r4, #0
 	str r5, [r0]
 	mov r6, #5
@@ -5061,7 +5061,7 @@ _0206BE1E:
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0206BE30: .word 0x021D4218
+_0206BE30: .word _021D4218
 	thumb_func_end sub_0206BDF4
 
 	thumb_func_start sub_0206BE34
@@ -9281,3 +9281,8 @@ _021100C8:
 _021100DC:
 	.byte 0x00, 0x05, 0x01, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0xFD, 0xFF
+
+	.bss
+
+_021D4218:
+	.space 4

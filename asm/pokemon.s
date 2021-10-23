@@ -3,6 +3,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D421C:
+	.space 0x198
+
 	.rodata
 
 _020FF4E4: ; Held item odds
@@ -5130,9 +5135,9 @@ CalcLevelBySpeciesAndExp_PreloadedPersonal: ; 0x0206FDCC
 	mov r1, #0x15
 	add r4, r2, #0
 	bl GetPersonalAttr
-	ldr r1, _0206FDF4 ; =0x021D421C
+	ldr r1, _0206FDF4 ; =_021D421C
 	bl LoadGrowthTable
-	ldr r2, _0206FDF8 ; =0x021D4220
+	ldr r2, _0206FDF8 ; =_021D421C + 4
 	mov r1, #1
 _0206FDE0:
 	ldr r0, [r2]
@@ -5146,8 +5151,8 @@ _0206FDEE:
 	sub r0, r1, #1
 	pop {r4, pc}
 	nop
-_0206FDF4: .word 0x021D421C
-_0206FDF8: .word 0x021D4220
+_0206FDF4: .word _021D421C
+_0206FDF8: .word _021D421C + 4
 	thumb_func_end CalcLevelBySpeciesAndExp_PreloadedPersonal
 
 	thumb_func_start GetMonNature

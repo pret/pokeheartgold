@@ -77,7 +77,7 @@ SaveBlock2_new: ; 0x020271B0
 	mov r0, #0
 	add r1, r4, #0
 	bl MIi_CpuClearFast
-	ldr r0, _0202729C ; =0x021D2228
+	ldr r0, _0202729C ; =_021D2228
 	str r4, [r0]
 	bl SaveDetectFlash
 	str r0, [r4]
@@ -184,7 +184,7 @@ _02027290:
 	pop {r3, r4, r5, pc}
 	nop
 _02027298: .word 0x0002330C
-_0202729C: .word 0x021D2228
+_0202729C: .word _021D2228
 _020272A0: .word 0x00023308
 _020272A4: .word 0x00023014
 _020272A8: .word 0x000232B4
@@ -194,17 +194,17 @@ _020272AC: .word 0x000232F8
 	thumb_func_start sub_020272B0
 sub_020272B0: ; 0x020272B0
 	push {r3, lr}
-	ldr r0, _020272C4 ; =0x021D2228
+	ldr r0, _020272C4 ; =_021D2228
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _020272BE
 	bl GF_AssertFail
 _020272BE:
-	ldr r0, _020272C4 ; =0x021D2228
+	ldr r0, _020272C4 ; =_021D2228
 	ldr r0, [r0]
 	pop {r3, pc}
 	.balign 4, 0
-_020272C4: .word 0x021D2228
+_020272C4: .word _021D2228
 	thumb_func_end sub_020272B0
 
 	thumb_func_start SavArray_get
@@ -565,12 +565,12 @@ _0202752E:
 
 	thumb_func_start sub_02027534
 sub_02027534: ; 0x02027534
-	ldr r0, _0202753C ; =0x021D2228
+	ldr r0, _0202753C ; =_021D2228
 	ldr r3, _02027540 ; =sub_02027190
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_0202753C: .word 0x021D2228
+_0202753C: .word _021D2228
 _02027540: .word sub_02027190
 	thumb_func_end sub_02027534
 
@@ -3029,7 +3029,7 @@ _02028798:
 	bl OS_ReleaseLockID
 	cmp r5, #0
 	bne _020287E2
-	ldr r0, _020287E8 ; =0x021D2228
+	ldr r0, _020287E8 ; =_021D2228
 	ldr r0, [r0]
 	bl FreeToHeap
 	mov r0, #1
@@ -3039,17 +3039,17 @@ _020287E2:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020287E8: .word 0x021D2228
+_020287E8: .word _021D2228
 	thumb_func_end FlashLoadChunk
 
 	thumb_func_start FlashWriteCommandCallback
 FlashWriteCommandCallback: ; 0x020287EC
-	ldr r0, _020287F4 ; =0x021D2228
+	ldr r0, _020287F4 ; =_021D2228
 	mov r1, #1
 	str r1, [r0, #4]
 	bx lr
 	.balign 4, 0
-_020287F4: .word 0x021D2228
+_020287F4: .word _021D2228
 	thumb_func_end FlashWriteCommandCallback
 
 	thumb_func_start FlashWriteChunkInternal
@@ -3088,7 +3088,7 @@ _02028814:
 	mov r1, #1
 	bl SaveErrorHandling
 _02028842:
-	ldr r0, _0202886C ; =0x021D2228
+	ldr r0, _0202886C ; =_021D2228
 	mov r1, #0
 	str r1, [r0, #4]
 	str r1, [sp]
@@ -3109,7 +3109,7 @@ _02028842:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0202886C: .word 0x021D2228
+_0202886C: .word _021D2228
 _02028870: .word FlashWriteCommandCallback
 	thumb_func_end FlashWriteChunkInternal
 
@@ -3117,7 +3117,7 @@ _02028870: .word FlashWriteCommandCallback
 WaitFlashWrite: ; 0x02028874
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _020288D0 ; =0x021D2228
+	ldr r0, _020288D0 ; =_021D2228
 	add r4, r2, #0
 	ldr r0, [r0, #4]
 	cmp r0, #1
@@ -3163,7 +3163,7 @@ _020288CC:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_020288D0: .word 0x021D2228
+_020288D0: .word _021D2228
 	thumb_func_end WaitFlashWrite
 
 	thumb_func_start SaveErrorHandling
@@ -3177,7 +3177,7 @@ SaveErrorHandling: ; 0x020288D4
 	lsl r0, r5, #0x10
 	lsr r0, r0, #0x10
 	bl OS_ReleaseLockID
-	ldr r0, _020288FC ; =0x021D2228
+	ldr r0, _020288FC ; =_021D2228
 	ldr r0, [r0]
 	bl FreeToHeap
 	mov r0, #1
@@ -3185,7 +3185,7 @@ SaveErrorHandling: ; 0x020288D4
 	bl ShowSaveDataWriteError
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_020288FC: .word 0x021D2228
+_020288FC: .word _021D2228
 	thumb_func_end SaveErrorHandling
 
 	thumb_func_start sub_02028900
