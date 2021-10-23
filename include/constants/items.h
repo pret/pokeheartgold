@@ -232,6 +232,8 @@
 #define HOLD_EFFECT_EVOLVE_DUSCLOPS       145
 
 #define ITEM_NONE                  0
+
+// Balls
 #define ITEM_MASTER_BALL           1
 #define ITEM_ULTRA_BALL            2
 #define ITEM_GREAT_BALL            3
@@ -248,6 +250,8 @@
 #define ITEM_HEAL_BALL            14
 #define ITEM_QUICK_BALL           15
 #define ITEM_CHERISH_BALL         16
+
+// Pokemon Items
 #define ITEM_POTION               17
 #define ITEM_ANTIDOTE             18
 #define ITEM_BURN_HEAL            19
@@ -319,6 +323,8 @@
 #define ITEM_THUNDERSTONE         83
 #define ITEM_WATER_STONE          84
 #define ITEM_LEAF_STONE           85
+
+// Unusable
 #define ITEM_TINYMUSHROOM         86
 #define ITEM_BIG_MUSHROOM         87
 #define ITEM_PEARL                88
@@ -345,10 +351,36 @@
 #define ITEM_DAWN_STONE          109
 #define ITEM_OVAL_STONE          110
 #define ITEM_ODD_KEYSTONE        111
+#define ITEM_GRISEOUS_ORB        112
+
+// Unused
+#define ITEM_UNUSED_113          113
+#define ITEM_UNUSED_114          114
+#define ITEM_UNUSED_115          115
+#define ITEM_UNUSED_116          116
+#define ITEM_UNUSED_117          117
+#define ITEM_UNUSED_118          118
+#define ITEM_UNUSED_119          119
+#define ITEM_UNUSED_120          120
+#define ITEM_UNUSED_121          121
+#define ITEM_UNUSED_122          122
+#define ITEM_UNUSED_123          123
+#define ITEM_UNUSED_124          124
+#define ITEM_UNUSED_125          125
+#define ITEM_UNUSED_126          126
+#define ITEM_UNUSED_127          127
+#define ITEM_UNUSED_128          128
+#define ITEM_UNUSED_129          129
+#define ITEM_UNUSED_130          130
+#define ITEM_UNUSED_131          131
+#define ITEM_UNUSED_132          132
+#define ITEM_UNUSED_133          133
+#define ITEM_UNUSED_134          134
 
 #define ITEM_ADAMANT_ORB         135
 #define ITEM_LUSTROUS_ORB        136
 
+// Mails
 #define ITEM_GRASS_MAIL          137
 #define ITEM_FLAME_MAIL          138
 #define ITEM_BUBBLE_MAIL         139
@@ -366,6 +398,7 @@
 #define LAST_MAIL_IDX ITEM_BRICK_MAIL
 #define NUM_MAILS (LAST_MAIL_IDX - FIRST_MAIL_IDX + 1)
 
+// Berries
 #define ITEM_CHERI_BERRY         149
 #define ITEM_CHESTO_BERRY        150
 #define ITEM_PECHA_BERRY         151
@@ -435,6 +468,7 @@
 #define LAST_BERRY_IDX ITEM_ROWAP_BERRY
 #define NUM_BERRIES (LAST_BERRY_IDX - FIRST_BERRY_IDX + 1)
 
+// Battle Held items
 #define ITEM_BRIGHTPOWDER        213
 #define ITEM_WHITE_HERB          214
 #define ITEM_MACHO_BRACE         215
@@ -482,11 +516,15 @@
 #define ITEM_METAL_POWDER        257
 #define ITEM_THICK_CLUB          258
 #define ITEM_STICK               259
+
+// Contest held items
 #define ITEM_RED_SCARF           260
 #define ITEM_BLUE_SCARF          261
 #define ITEM_PINK_SCARF          262
 #define ITEM_GREEN_SCARF         263
 #define ITEM_YELLOW_SCARF        264
+
+// New battle held items
 #define ITEM_WIDE_LENS           265
 #define ITEM_MUSCLE_BAND         266
 #define ITEM_WISE_GLASSES        267
@@ -520,6 +558,8 @@
 #define ITEM_SHED_SHELL          295
 #define ITEM_BIG_ROOT            296
 #define ITEM_CHOICE_SPECS        297
+
+// Arceus plates
 #define ITEM_FLAME_PLATE         298
 #define ITEM_SPLASH_PLATE        299
 #define ITEM_ZAP_PLATE           300
@@ -536,6 +576,8 @@
 #define ITEM_DRACO_PLATE         311
 #define ITEM_DREAD_PLATE         312
 #define ITEM_IRON_PLATE          313
+
+// Incenses
 #define ITEM_ODD_INCENSE         314
 #define ITEM_ROCK_INCENSE        315
 #define ITEM_FULL_INCENSE        316
@@ -543,6 +585,8 @@
 #define ITEM_ROSE_INCENSE        318
 #define ITEM_LUCK_INCENSE        319
 #define ITEM_PURE_INCENSE        320
+
+// Evolution held items
 #define ITEM_PROTECTOR           321
 #define ITEM_ELECTIRIZER         322
 #define ITEM_MAGMARIZER          323
@@ -551,6 +595,7 @@
 #define ITEM_RAZOR_CLAW          326
 #define ITEM_RAZOR_FANG          327
 
+// TMs/HMs
 #define ITEM_TM01                328
 #define ITEM_TM02                329
 #define ITEM_TM03                330
@@ -652,6 +697,111 @@
 #define ITEM_HM07                426
 #define ITEM_HM08                427
 
+#define TM_FOCUS_PUNCH  ITEM_TM01
+#define TM_DRAGON_CLAW  ITEM_TM02
+#define TM_WATER_PULSE  ITEM_TM03
+#define TM_CALM_MIND    ITEM_TM04
+#define TM_ROAR         ITEM_TM05
+#define TM_TOXIC        ITEM_TM06
+#define TM_HAIL         ITEM_TM07
+#define TM_BULK_UP      ITEM_TM08
+#define TM_BULLET_SEED  ITEM_TM09
+#define TM_HIDDEN_POWER ITEM_TM10
+#define TM_SUNNY_DAY    ITEM_TM11
+#define TM_TAUNT        ITEM_TM12
+#define TM_ICE_BEAM     ITEM_TM13
+#define TM_BLIZZARD     ITEM_TM14
+#define TM_HYPER_BEAM   ITEM_TM15
+#define TM_LIGHT_SCREEN ITEM_TM16
+#define TM_PROTECT      ITEM_TM17
+#define TM_RAIN_DANCE   ITEM_TM18
+#define TM_GIGA_DRAIN   ITEM_TM19
+#define TM_SAFEGUARD    ITEM_TM20
+#define TM_FRUSTRATION  ITEM_TM21
+#define TM_SOLAR_BEAM   ITEM_TM22
+#define TM_IRON_TAIL    ITEM_TM23
+#define TM_THUNDERBOLT  ITEM_TM24
+#define TM_THUNDER      ITEM_TM25
+#define TM_EARTHQUAKE   ITEM_TM26
+#define TM_RETURN       ITEM_TM27
+#define TM_DIG          ITEM_TM28
+#define TM_PSYCHIC      ITEM_TM29
+#define TM_SHADOW_BALL  ITEM_TM30
+#define TM_BRICK_BREAK  ITEM_TM31
+#define TM_DOUBLE_TEAM  ITEM_TM32
+#define TM_REFLECT      ITEM_TM33
+#define TM_SHOCK_WAVE   ITEM_TM34
+#define TM_FLAMETHROWER ITEM_TM35
+#define TM_SLUDGE_BOMB  ITEM_TM36
+#define TM_SANDSTORM    ITEM_TM37
+#define TM_FIRE_BLAST   ITEM_TM38
+#define TM_ROCK_TOMB    ITEM_TM39
+#define TM_AERIAL_ACE   ITEM_TM40
+#define TM_TORMENT      ITEM_TM41
+#define TM_FACADE       ITEM_TM42
+#define TM_SECRET_POWER ITEM_TM43
+#define TM_REST         ITEM_TM44
+#define TM_ATTRACT      ITEM_TM45
+#define TM_THIEF        ITEM_TM46
+#define TM_STEEL_WING   ITEM_TM47
+#define TM_SKILL_SWAP   ITEM_TM48
+#define TM_SNATCH       ITEM_TM49
+#define TM_OVERHEAT     ITEM_TM50
+#define TM_ROOST        ITEM_TM51
+#define TM_FOCUS_BLAST  ITEM_TM52
+#define TM_ENERGY_BALL  ITEM_TM53
+#define TM_FALSE_SWIPE  ITEM_TM54
+#define TM_BRINE        ITEM_TM55
+#define TM_FLING        ITEM_TM56
+#define TM_CHARGE_BEAM  ITEM_TM57
+#define TM_ENDURE       ITEM_TM58
+#define TM_DRAGON_PULSE ITEM_TM59
+#define TM_DRAIN_PUNCH  ITEM_TM60
+#define TM_WILL_O_WISP  ITEM_TM61
+#define TM_SILVER_WIND  ITEM_TM62
+#define TM_EMBARGO      ITEM_TM63
+#define TM_EXPLOSION    ITEM_TM64
+#define TM_SHADOW_CLAW  ITEM_TM65
+#define TM_PAYBACK      ITEM_TM66
+#define TM_RECYCLE      ITEM_TM67
+#define TM_GIGA_IMPACT  ITEM_TM68
+#define TM_ROCK_POLISH  ITEM_TM69
+#define TM_FLASH        ITEM_TM70
+#define TM_STONE_EDGE   ITEM_TM71
+#define TM_AVALANCHE    ITEM_TM72
+#define TM_THUNDER_WAVE ITEM_TM73
+#define TM_GYRO_BALL    ITEM_TM74
+#define TM_SWORDS_DANCE ITEM_TM75
+#define TM_STEALTH_ROCK ITEM_TM76
+#define TM_PSYCH_UP     ITEM_TM77
+#define TM_CAPTIVATE    ITEM_TM78
+#define TM_DARK_PULSE   ITEM_TM79
+#define TM_ROCK_SLIDE   ITEM_TM80
+#define TM_X_SCISSOR    ITEM_TM81
+#define TM_SLEEP_TALK   ITEM_TM82
+#define TM_NATURAL_GIFT ITEM_TM83
+#define TM_POISON_JAB   ITEM_TM84
+#define TM_DREAM_EATER  ITEM_TM85
+#define TM_GRASS_KNOT   ITEM_TM86
+#define TM_SWAGGER      ITEM_TM87
+#define TM_PLUCK        ITEM_TM88
+#define TM_U_TURN       ITEM_TM89
+#define TM_SUBSTITUTE   ITEM_TM90
+#define TM_FLASH_CANNON ITEM_TM91
+#define TM_TRICK_ROOM   ITEM_TM92
+#define HM_CUT          ITEM_HM01
+#define HM_FLY          ITEM_HM02
+#define HM_SURF         ITEM_HM03
+#define HM_STRENGTH     ITEM_HM04
+#define HM_DEFOG        ITEM_HM05
+#define HM_ROCK_SMASH   ITEM_HM06
+#define HM_WATERFALL    ITEM_HM07
+#define HM_ROCK_CLIMB   ITEM_HM08
+
+#define NUM_TMS 92
+#define NUM_HMS 8
+
+// Key Items
 #define ITEM_EXPLORER_KIT        428
 #define ITEM_LOOT_SACK           429
 #define ITEM_RULE_BOOK           430
@@ -764,109 +914,5 @@
 #define ITEM_BLUE_ORB            535
 #define ITEM_ENIGMA_STONE        536
 #define ITEMS_COUNT              537
-
-#define TM_FOCUS_PUNCH  ITEM_TM01
-#define TM_DRAGON_CLAW  ITEM_TM02
-#define TM_WATER_PULSE  ITEM_TM03
-#define TM_CALM_MIND    ITEM_TM04
-#define TM_ROAR         ITEM_TM05
-#define TM_TOXIC        ITEM_TM06
-#define TM_HAIL         ITEM_TM07
-#define TM_BULK_UP      ITEM_TM08
-#define TM_BULLET_SEED  ITEM_TM09
-#define TM_HIDDEN_POWER ITEM_TM10
-#define TM_SUNNY_DAY    ITEM_TM11
-#define TM_TAUNT        ITEM_TM12
-#define TM_ICE_BEAM     ITEM_TM13
-#define TM_BLIZZARD     ITEM_TM14
-#define TM_HYPER_BEAM   ITEM_TM15
-#define TM_LIGHT_SCREEN ITEM_TM16
-#define TM_PROTECT      ITEM_TM17
-#define TM_RAIN_DANCE   ITEM_TM18
-#define TM_GIGA_DRAIN   ITEM_TM19
-#define TM_SAFEGUARD    ITEM_TM20
-#define TM_FRUSTRATION  ITEM_TM21
-#define TM_SOLAR_BEAM   ITEM_TM22
-#define TM_IRON_TAIL    ITEM_TM23
-#define TM_THUNDERBOLT  ITEM_TM24
-#define TM_THUNDER      ITEM_TM25
-#define TM_EARTHQUAKE   ITEM_TM26
-#define TM_RETURN       ITEM_TM27
-#define TM_DIG          ITEM_TM28
-#define TM_PSYCHIC      ITEM_TM29
-#define TM_SHADOW_BALL  ITEM_TM30
-#define TM_BRICK_BREAK  ITEM_TM31
-#define TM_DOUBLE_TEAM  ITEM_TM32
-#define TM_REFLECT      ITEM_TM33
-#define TM_SHOCK_WAVE   ITEM_TM34
-#define TM_FLAMETHROWER ITEM_TM35
-#define TM_SLUDGE_BOMB  ITEM_TM36
-#define TM_SANDSTORM    ITEM_TM37
-#define TM_FIRE_BLAST   ITEM_TM38
-#define TM_ROCK_TOMB    ITEM_TM39
-#define TM_AERIAL_ACE   ITEM_TM40
-#define TM_TORMENT      ITEM_TM41
-#define TM_FACADE       ITEM_TM42
-#define TM_SECRET_POWER ITEM_TM43
-#define TM_REST         ITEM_TM44
-#define TM_ATTRACT      ITEM_TM45
-#define TM_THIEF        ITEM_TM46
-#define TM_STEEL_WING   ITEM_TM47
-#define TM_SKILL_SWAP   ITEM_TM48
-#define TM_SNATCH       ITEM_TM49
-#define TM_OVERHEAT     ITEM_TM50
-#define TM_ROOST        ITEM_TM51
-#define TM_FOCUS_BLAST  ITEM_TM52
-#define TM_ENERGY_BALL  ITEM_TM53
-#define TM_FALSE_SWIPE  ITEM_TM54
-#define TM_BRINE        ITEM_TM55
-#define TM_FLING        ITEM_TM56
-#define TM_CHARGE_BEAM  ITEM_TM57
-#define TM_ENDURE       ITEM_TM58
-#define TM_DRAGON_PULSE ITEM_TM59
-#define TM_DRAIN_PUNCH  ITEM_TM60
-#define TM_WILL_O_WISP  ITEM_TM61
-#define TM_SILVER_WIND  ITEM_TM62
-#define TM_EMBARGO      ITEM_TM63
-#define TM_EXPLOSION    ITEM_TM64
-#define TM_SHADOW_CLAW  ITEM_TM65
-#define TM_PAYBACK      ITEM_TM66
-#define TM_RECYCLE      ITEM_TM67
-#define TM_GIGA_IMPACT  ITEM_TM68
-#define TM_ROCK_POLISH  ITEM_TM69
-#define TM_FLASH        ITEM_TM70
-#define TM_STONE_EDGE   ITEM_TM71
-#define TM_AVALANCHE    ITEM_TM72
-#define TM_THUNDER_WAVE ITEM_TM73
-#define TM_GYRO_BALL    ITEM_TM74
-#define TM_SWORDS_DANCE ITEM_TM75
-#define TM_STEALTH_ROCK ITEM_TM76
-#define TM_PSYCH_UP     ITEM_TM77
-#define TM_CAPTIVATE    ITEM_TM78
-#define TM_DARK_PULSE   ITEM_TM79
-#define TM_ROCK_SLIDE   ITEM_TM80
-#define TM_X_SCISSOR    ITEM_TM81
-#define TM_SLEEP_TALK   ITEM_TM82
-#define TM_NATURAL_GIFT ITEM_TM83
-#define TM_POISON_JAB   ITEM_TM84
-#define TM_DREAM_EATER  ITEM_TM85
-#define TM_GRASS_KNOT   ITEM_TM86
-#define TM_SWAGGER      ITEM_TM87
-#define TM_PLUCK        ITEM_TM88
-#define TM_U_TURN       ITEM_TM89
-#define TM_SUBSTITUTE   ITEM_TM90
-#define TM_FLASH_CANNON ITEM_TM91
-#define TM_TRICK_ROOM   ITEM_TM92
-#define HM_CUT          ITEM_HM01
-#define HM_FLY          ITEM_HM02
-#define HM_SURF         ITEM_HM03
-#define HM_STRENGTH     ITEM_HM04
-#define HM_DEFOG        ITEM_HM05
-#define HM_ROCK_SMASH   ITEM_HM06
-#define HM_WATERFALL    ITEM_HM07
-#define HM_ROCK_CLIMB   ITEM_HM08
-
-#define NUM_TMS 92
-#define NUM_HMS 8
 
 #endif //POKEHEARTGOLD_CONSTANTS_ITEMS_H
