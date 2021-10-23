@@ -1527,7 +1527,7 @@ _02238414:
 	mvn r0, r0
 	cmp r4, r0
 	beq _0223842C
-	bl sub_020AE420
+	bl WCM_GetPhase
 	cmp r0, #9
 	beq _02238428
 	mov r4, #0xd

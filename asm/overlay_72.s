@@ -716,7 +716,7 @@ _02237E04:
 	mvn r0, r0
 	cmp r4, r0
 	beq _02237E1C
-	bl sub_020AE420
+	bl WCM_GetPhase
 	cmp r0, #9
 	beq _02237E18
 	mov r4, #5

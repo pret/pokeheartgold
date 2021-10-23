@@ -15526,8 +15526,8 @@ _020AD840:
 
 	; NitroWiFi: libwcm.a
 
-	arm_func_start sub_020AD850
-sub_020AD850: ; 0x020AD850
+	arm_func_start WCM_Init
+WCM_Init: ; 0x020AD850
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -15582,8 +15582,8 @@ _020AD8BC:
 	ldr r1, [r2]
 	add r1, r1, #0x2200
 	strh r0, [r1, #0xf8]
-	bl sub_020AE7B4
-	bl sub_020AFE3C
+	bl WcmInitOption
+	bl WCMi_InitCpsif
 	bl OS_IsTickAvailable
 	cmp r0, #0
 	bne _020AD930
@@ -15605,10 +15605,10 @@ _020AD940:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020AD964: .word 0x021D5FEC
-	arm_func_end sub_020AD850
+	arm_func_end WCM_Init
 
-	arm_func_start sub_020AD968
-sub_020AD968: ; 0x020AD968
+	arm_func_start WCM_Finish
+WCM_Finish: ; 0x020AD968
 	stmdb sp!, {r3, lr}
 	bl OS_DisableInterrupts
 	ldr r2, _020AD9BC ; =0x021D5FEC
@@ -15634,10 +15634,10 @@ _020AD9A8:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020AD9BC: .word 0x021D5FEC
-	arm_func_end sub_020AD968
+	arm_func_end WCM_Finish
 
-	arm_func_start sub_020AD9C0
-sub_020AD9C0: ; 0x020AD9C0
+	arm_func_start WCM_StartupAsync
+WCM_StartupAsync: ; 0x020AD9C0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -15663,7 +15663,7 @@ _020AD9F0:
 _020ADA14:
 	mov r0, r6
 	mov r1, r5
-	bl sub_020AE4FC
+	bl WcmConfigure
 	b _020ADA48
 _020ADA24:
 	bl OS_RestoreInterrupts
@@ -15698,7 +15698,7 @@ _020ADA70: ; jump table
 	b _020ADAB4 ; case 6
 _020ADA8C:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #7
@@ -15710,7 +15710,7 @@ _020ADAA4:
 	ldmia sp!, {r4, r5, r6, pc}
 _020ADAB4:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #7
@@ -15723,7 +15723,7 @@ _020ADACC:
 	cmp r0, #0
 	beq _020ADAFC
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #7
@@ -15734,18 +15734,18 @@ _020ADAFC:
 	mov r0, #5
 	ldmia sp!, {r4, r5, r6, pc}
 _020ADB0C:
-	ldr r0, _020ADBBC ; =sub_020AEAA8
+	ldr r0, _020ADBBC ; =WcmWmcbIndication
 	bl WM_SetIndCallback
 	cmp r0, #0
 	beq _020ADB34
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #7
 	ldmia sp!, {r4, r5, r6, pc}
 _020ADB34:
-	ldr r0, _020ADBC0 ; =sub_020AEB20
+	ldr r0, _020ADBC0 ; =WcmWmcbCommon
 	bl WM_Enable
 	cmp r0, #2
 	beq _020ADB58
@@ -15756,7 +15756,7 @@ _020ADB34:
 	b _020ADB90
 _020ADB58:
 	mov r0, #2
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020ADBB8 ; =0x021D5FEC
 	mov r1, #1
 	ldr r0, [r0]
@@ -15765,14 +15765,14 @@ _020ADB58:
 	b _020ADBA8
 _020ADB78:
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 _020ADB90:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #7
@@ -15784,12 +15784,12 @@ _020ADBA8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020ADBB8: .word 0x021D5FEC
-_020ADBBC: .word sub_020AEAA8
-_020ADBC0: .word sub_020AEB20
-	arm_func_end sub_020AD9C0
+_020ADBBC: .word WcmWmcbIndication
+_020ADBC0: .word WcmWmcbCommon
+	arm_func_end WCM_StartupAsync
 
-	arm_func_start sub_020ADBC4
-sub_020ADBC4: ; 0x020ADBC4
+	arm_func_start WCM_CleanupAsync
+WCM_CleanupAsync: ; 0x020ADBC4
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020ADCAC ; =0x021D5FEC
@@ -15821,7 +15821,7 @@ _020ADC24:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _020ADC30:
-	ldr r0, _020ADCB0 ; =sub_020AEB20
+	ldr r0, _020ADCB0 ; =WcmWmcbCommon
 	bl WM_PowerOff
 	cmp r0, #2
 	beq _020ADC54
@@ -15832,7 +15832,7 @@ _020ADC30:
 	b _020ADC84
 _020ADC54:
 	mov r0, #4
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020ADCAC ; =0x021D5FEC
 	mov r1, #2
 	ldr r0, [r0]
@@ -15846,7 +15846,7 @@ _020ADC74:
 	ldmia sp!, {r4, pc}
 _020ADC84:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #7
@@ -15858,24 +15858,24 @@ _020ADC9C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020ADCAC: .word 0x021D5FEC
-_020ADCB0: .word sub_020AEB20
-	arm_func_end sub_020ADBC4
+_020ADCB0: .word WcmWmcbCommon
+	arm_func_end WCM_CleanupAsync
 
-	arm_func_start sub_020ADCB4
-sub_020ADCB4: ; 0x020ADCB4
+	arm_func_start WCM_SearchAsync
+WCM_SearchAsync: ; 0x020ADCB4
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	cmpne r1, #0
 	bne _020ADCCC
-	bl sub_020ADE4C
+	bl WCM_EndSearchAsync
 	ldmia sp!, {r3, pc}
 _020ADCCC:
-	bl sub_020ADCD4
+	bl WCM_BeginSearchAsync
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020ADCB4
+	arm_func_end WCM_SearchAsync
 
-	arm_func_start sub_020ADCD4
-sub_020ADCD4: ; 0x020ADCD4
+	arm_func_start WCM_BeginSearchAsync
+WCM_BeginSearchAsync: ; 0x020ADCD4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -15903,7 +15903,7 @@ _020ADD2C:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl sub_020AE61C
+	bl WcmEditScanExParam
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #2
@@ -15912,7 +15912,7 @@ _020ADD4C:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl sub_020AE61C
+	bl WcmEditScanExParam
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #0
@@ -15925,7 +15925,7 @@ _020ADD78:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl sub_020AE61C
+	bl WcmEditScanExParam
 	ldr r0, _020ADE44 ; =0x021D5FEC
 	ldr r0, [r0]
 	add r1, r0, #0x2200
@@ -15934,7 +15934,7 @@ _020ADD78:
 	ldr r0, [r0, #0x288]
 	bl DC_InvalidateRange
 	ldr r2, _020ADE44 ; =0x021D5FEC
-	ldr r0, _020ADE48 ; =sub_020AEDDC
+	ldr r0, _020ADE48 ; =WcmWmcbScanEx
 	ldr r1, [r2]
 	add r1, r1, #0x2000
 	ldr r3, [r1, #0x284]
@@ -15953,7 +15953,7 @@ _020ADD78:
 	b _020ADE1C
 _020ADDEC:
 	mov r0, #5
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020ADE44 ; =0x021D5FEC
 	mov r1, #3
 	ldr r0, [r0]
@@ -15967,7 +15967,7 @@ _020ADE0C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020ADE1C:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #7
@@ -15979,11 +15979,11 @@ _020ADE34:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020ADE44: .word 0x021D5FEC
-_020ADE48: .word sub_020AEDDC
-	arm_func_end sub_020ADCD4
+_020ADE48: .word WcmWmcbScanEx
+	arm_func_end WCM_BeginSearchAsync
 
-	arm_func_start sub_020ADE4C
-sub_020ADE4C: ; 0x020ADE4C
+	arm_func_start WCM_EndSearchAsync
+WCM_EndSearchAsync: ; 0x020ADE4C
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020ADEEC ; =0x021D5FEC
@@ -16006,7 +16006,7 @@ _020ADE74:
 	b _020ADED0
 _020ADE98:
 	mov r0, #7
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020ADEEC ; =0x021D5FEC
 	mov r1, #4
 	ldr r0, [r0]
@@ -16032,10 +16032,10 @@ _020ADEDC:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020ADEEC: .word 0x021D5FEC
-	arm_func_end sub_020ADE4C
+	arm_func_end WCM_EndSearchAsync
 
-	arm_func_start sub_020ADEF0
-sub_020ADEF0: ; 0x020ADEF0
+	arm_func_start WCM_ConnectAsync
+WCM_ConnectAsync: ; 0x020ADEF0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -16124,7 +16124,7 @@ _020ADFFC:
 	ldrh r2, [r1, #0x6e]
 	orr r2, r2, #3
 	strh r2, [r1, #0x70]
-	bl sub_020AE450
+	bl WCM_UpdateOption
 	b _020AE05C
 _020AE038:
 	bl OS_RestoreInterrupts
@@ -16140,7 +16140,7 @@ _020AE050:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020AE05C:
 	ldr r1, _020AE0EC ; =0x0000FFFF
-	ldr r0, _020AE0F0 ; =sub_020AEB20
+	ldr r0, _020AE0F0 ; =WcmWmcbCommon
 	mov r3, r1
 	mov r2, #0x50
 	str r1, [sp]
@@ -16154,7 +16154,7 @@ _020AE05C:
 	b _020AE0C0
 _020AE090:
 	mov r0, #8
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AE0E8 ; =0x021D5FEC
 	mov r1, #5
 	ldr r0, [r0]
@@ -16168,7 +16168,7 @@ _020AE0B0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020AE0C0:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #7
@@ -16181,11 +16181,11 @@ _020AE0D8:
 	.align 2, 0
 _020AE0E8: .word 0x021D5FEC
 _020AE0EC: .word 0x0000FFFF
-_020AE0F0: .word sub_020AEB20
-	arm_func_end sub_020ADEF0
+_020AE0F0: .word WcmWmcbCommon
+	arm_func_end WCM_ConnectAsync
 
-	arm_func_start sub_020AE0F4
-sub_020AE0F4: ; 0x020AE0F4
+	arm_func_start WCM_DisconnectAsync
+WCM_DisconnectAsync: ; 0x020AE0F4
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020AE208 ; =0x021D5FEC
@@ -16221,7 +16221,7 @@ _020AE160:
 	cmp r0, #1
 	bne _020AE18C
 	mov r0, #0xa
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AE208 ; =0x021D5FEC
 	mov r1, #6
 	ldr r0, [r0]
@@ -16229,7 +16229,7 @@ _020AE160:
 	strh r1, [r0, #0x80]
 	b _020AE1F8
 _020AE18C:
-	ldr r0, _020AE20C ; =sub_020AF574
+	ldr r0, _020AE20C ; =WcmWmcbEndDCF
 	bl WM_EndDCF
 	cmp r0, #2
 	beq _020AE1B0
@@ -16240,7 +16240,7 @@ _020AE18C:
 	b _020AE1E0
 _020AE1B0:
 	mov r0, #0xa
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AE208 ; =0x021D5FEC
 	mov r1, #6
 	ldr r0, [r0]
@@ -16254,7 +16254,7 @@ _020AE1D0:
 	ldmia sp!, {r4, pc}
 _020AE1E0:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #7
@@ -16266,11 +16266,11 @@ _020AE1F8:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020AE208: .word 0x021D5FEC
-_020AE20C: .word sub_020AF574
-	arm_func_end sub_020AE0F4
+_020AE20C: .word WcmWmcbEndDCF
+	arm_func_end WCM_DisconnectAsync
 
-	arm_func_start sub_020AE210
-sub_020AE210: ; 0x020AE210
+	arm_func_start WCM_TerminateAsync
+WCM_TerminateAsync: ; 0x020AE210
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020AE414 ; =0x021D5FEC
@@ -16312,7 +16312,7 @@ _020AE290:
 	ldmia sp!, {r3, r4, r5, pc}
 _020AE29C:
 	mov r0, #0xd
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r1, _020AE414 ; =0x021D5FEC
 	mov r2, #9
 	ldr r1, [r1]
@@ -16332,7 +16332,7 @@ _020AE2D8:
 	cmp r0, #1
 	bne _020AE304
 	mov r0, #0xd
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AE414 ; =0x021D5FEC
 	mov r1, #9
 	ldr r0, [r0]
@@ -16357,7 +16357,7 @@ _020AE334:
 	cmp r0, #0
 	bne _020AE3A0
 	mov r0, #1
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r1, _020AE414 ; =0x021D5FEC
 	mov r2, #0
 	ldr r1, [r1]
@@ -16368,16 +16368,16 @@ _020AE334:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _020AE36C:
-	ldr r0, _020AE418 ; =sub_020AEB20
+	ldr r0, _020AE418 ; =WcmWmcbCommon
 	bl WM_Disable
 	b _020AE3A0
 _020AE378:
-	ldr r0, _020AE418 ; =sub_020AEB20
+	ldr r0, _020AE418 ; =WcmWmcbCommon
 	bl WM_PowerOff
 	b _020AE3A0
 _020AE384:
 	ldr r1, _020AE414 ; =0x021D5FEC
-	ldr r0, _020AE41C ; =sub_020AF690
+	ldr r0, _020AE41C ; =WcmWmcbReset
 	ldr r1, [r1]
 	mov r2, #1
 	add r1, r1, #0x2000
@@ -16393,7 +16393,7 @@ _020AE3A0:
 	b _020AE3EC
 _020AE3BC:
 	mov r0, #0xd
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AE414 ; =0x021D5FEC
 	mov r1, #9
 	ldr r0, [r0]
@@ -16407,7 +16407,7 @@ _020AE3DC:
 	ldmia sp!, {r3, r4, r5, pc}
 _020AE3EC:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, #7
@@ -16419,12 +16419,12 @@ _020AE404:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020AE414: .word 0x021D5FEC
-_020AE418: .word sub_020AEB20
-_020AE41C: .word sub_020AF690
-	arm_func_end sub_020AE210
+_020AE418: .word WcmWmcbCommon
+_020AE41C: .word WcmWmcbReset
+	arm_func_end WCM_TerminateAsync
 
-	arm_func_start sub_020AE420
-sub_020AE420: ; 0x020AE420
+	arm_func_start WCM_GetPhase
+WCM_GetPhase: ; 0x020AE420
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020AE44C ; =0x021D5FEC
@@ -16438,10 +16438,10 @@ sub_020AE420: ; 0x020AE420
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020AE44C: .word 0x021D5FEC
-	arm_func_end sub_020AE420
+	arm_func_end WCM_GetPhase
 
-	arm_func_start sub_020AE450
-sub_020AE450: ; 0x020AE450
+	arm_func_start WCM_UpdateOption
+WCM_UpdateOption: ; 0x020AE450
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
@@ -16484,19 +16484,19 @@ _020AE4A4:
 	.align 2, 0
 _020AE4E4: .word 0x021D5FEC
 _020AE4E8: .word 0x00003FFE
-	arm_func_end sub_020AE450
+	arm_func_end WCM_UpdateOption
 
-	arm_func_start sub_020AE4EC
-sub_020AE4EC: ; 0x020AE4EC
+	arm_func_start WCMi_GetSystemWork
+WCMi_GetSystemWork: ; 0x020AE4EC
 	ldr r0, _020AE4F8 ; =0x021D5FEC
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _020AE4F8: .word 0x021D5FEC
-	arm_func_end sub_020AE4EC
+	arm_func_end WCMi_GetSystemWork
 
-	arm_func_start sub_020AE4FC
-sub_020AE4FC: ; 0x020AE4FC
+	arm_func_start WcmConfigure
+WcmConfigure: ; 0x020AE4FC
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r5, r0
 	mov r4, r1
@@ -16574,15 +16574,15 @@ _020AE604:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020AE618: .word 0x021D5FEC
-	arm_func_end sub_020AE4FC
+	arm_func_end WcmConfigure
 
-	arm_func_start sub_020AE61C
-sub_020AE61C: ; 0x020AE61C
+	arm_func_start WcmEditScanExParam
+WcmEditScanExParam: ; 0x020AE61C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, r2
 	mov r4, r1
-	bl sub_020AE450
+	bl WCM_UpdateOption
 	ldr r2, _020AE7A8 ; =0x021D5FEC
 	mov r3, #0x400
 	ldr r1, [r2]
@@ -16593,7 +16593,7 @@ sub_020AE61C: ; 0x020AE61C
 	ldr r1, [r2]
 	add r1, r1, #0x2200
 	strh r3, [r1, #0x8c]
-	bl sub_020AE7D4
+	bl WcmGetNextScanChannel
 	ldr r1, _020AE7A8 ; =0x021D5FEC
 	mov r2, #1
 	mov r2, r2, lsl r0
@@ -16688,10 +16688,10 @@ _020AE790:
 _020AE7A8: .word 0x021D5FEC
 _020AE7AC: .word 0x02108FC0
 _020AE7B0: .word 0x02108FC8
-	arm_func_end sub_020AE61C
+	arm_func_end WcmEditScanExParam
 
-	arm_func_start sub_020AE7B4
-sub_020AE7B4: ; 0x020AE7B4
+	arm_func_start WcmInitOption
+WcmInitOption: ; 0x020AE7B4
 	ldr r0, _020AE7CC ; =0x021D5FEC
 	ldr r1, _020AE7D0 ; =0x00AAA082
 	ldr r0, [r0]
@@ -16701,10 +16701,10 @@ sub_020AE7B4: ; 0x020AE7B4
 	.align 2, 0
 _020AE7CC: .word 0x021D5FEC
 _020AE7D0: .word 0x00AAA082
-	arm_func_end sub_020AE7B4
+	arm_func_end WcmInitOption
 
-	arm_func_start sub_020AE7D4
-sub_020AE7D4: ; 0x020AE7D4
+	arm_func_start WcmGetNextScanChannel
+WcmGetNextScanChannel: ; 0x020AE7D4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _020AE85C ; =0x021D5FEC
 	ldr lr, _020AE860 ; =0x4EC4EC4F
@@ -16744,10 +16744,10 @@ _020AE82C:
 	.align 2, 0
 _020AE85C: .word 0x021D5FEC
 _020AE860: .word 0x4EC4EC4F
-	arm_func_end sub_020AE7D4
+	arm_func_end WcmGetNextScanChannel
 
-	arm_func_start sub_020AE864
-sub_020AE864: ; 0x020AE864
+	arm_func_start WcmNotify
+WcmNotify: ; 0x020AE864
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr ip, _020AE8A4 ; =0x021D5FEC
 	mov r5, r0
@@ -16762,14 +16762,14 @@ sub_020AE864: ; 0x020AE864
 	mov r1, r5
 	mov r2, r4
 	mov r3, lr
-	bl sub_020AE8A8
+	bl WcmNotifyEx
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020AE8A4: .word 0x021D5FEC
-	arm_func_end sub_020AE864
+	arm_func_end WcmNotify
 
-	arm_func_start sub_020AE8A8
-sub_020AE8A8: ; 0x020AE8A8
+	arm_func_start WcmNotifyEx
+WcmNotifyEx: ; 0x020AE8A8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
 	ldr ip, _020AE8F8 ; =0x021D5FEC
@@ -16792,10 +16792,10 @@ sub_020AE8A8: ; 0x020AE8A8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020AE8F8: .word 0x021D5FEC
-	arm_func_end sub_020AE8A8
+	arm_func_end WcmNotifyEx
 
-	arm_func_start sub_020AE8FC
-sub_020AE8FC: ; 0x020AE8FC
+	arm_func_start WcmSetPhase
+WcmSetPhase: ; 0x020AE8FC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
@@ -16826,7 +16826,7 @@ _020AE938:
 	ldr r0, [r0]
 	ldr r1, _020AE98C ; =0x022F5341
 	add r0, r0, #0x2cc
-	ldr r3, _020AE990 ; =sub_020AEA08
+	ldr r3, _020AE990 ; =WcmKeepAliveAlarm
 	add r0, r0, #0x2000
 	bl OS_SetAlarm
 _020AE97C:
@@ -16836,11 +16836,11 @@ _020AE97C:
 	.align 2, 0
 _020AE988: .word 0x021D5FEC
 _020AE98C: .word 0x022F5341
-_020AE990: .word sub_020AEA08
-	arm_func_end sub_020AE8FC
+_020AE990: .word WcmKeepAliveAlarm
+	arm_func_end WcmSetPhase
 
-	arm_func_start sub_020AE994
-sub_020AE994: ; 0x020AE994
+	arm_func_start WCMi_ResetKeepAliveAlarm
+WCMi_ResetKeepAliveAlarm: ; 0x020AE994
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	bl OS_DisableInterrupts
@@ -16859,7 +16859,7 @@ sub_020AE994: ; 0x020AE994
 	add r0, r1, #0x2cc
 	mov r2, #0
 	ldr r1, _020AEA00 ; =0x022F5341
-	ldr r3, _020AEA04 ; =sub_020AEA08
+	ldr r3, _020AEA04 ; =WcmKeepAliveAlarm
 	add r0, r0, #0x2000
 	str r2, [sp]
 	bl OS_SetAlarm
@@ -16871,19 +16871,19 @@ _020AE9EC:
 	.align 2, 0
 _020AE9FC: .word 0x021D5FEC
 _020AEA00: .word 0x022F5341
-_020AEA04: .word sub_020AEA08
-	arm_func_end sub_020AE994
+_020AEA04: .word WcmKeepAliveAlarm
+	arm_func_end WCMi_ResetKeepAliveAlarm
 
-	arm_func_start sub_020AEA08
-sub_020AEA08: ; 0x020AEA08
+	arm_func_start WcmKeepAliveAlarm
+WcmKeepAliveAlarm: ; 0x020AEA08
 	stmdb sp!, {r3, lr}
-	bl sub_020AFEB0
-	bl sub_020AE994
+	bl WCMi_CpsifSendNullPacket
+	bl WCMi_ResetKeepAliveAlarm
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020AEA08
+	arm_func_end WcmKeepAliveAlarm
 
-	arm_func_start sub_020AEA18
-sub_020AEA18: ; 0x020AEA18
+	arm_func_start WcmCountBits
+WcmCountBits: ; 0x020AEA18
 	mov r1, r0
 	mov r0, #0
 	mov r3, #1
@@ -16898,16 +16898,16 @@ _020AEA38:
 	bic r1, r1, r3, lsl r2
 	add r0, r0, #1
 	b _020AEA24
-	arm_func_end sub_020AEA18
+	arm_func_end WcmCountBits
 
-	arm_func_start sub_020AEA44
-sub_020AEA44: ; 0x020AEA44
+	arm_func_start WcmCountLeadingZero
+WcmCountLeadingZero: ; 0x020AEA44
 	clz r0, r0
 	bx lr
-	arm_func_end sub_020AEA44
+	arm_func_end WcmCountLeadingZero
 
-	arm_func_start sub_020AEA4C
-sub_020AEA4C: ; 0x020AEA4C
+	arm_func_start WcmWmReset
+WcmWmReset: ; 0x020AEA4C
 	stmdb sp!, {r3, lr}
 	ldr r0, _020AEAA0 ; =0x021D5FEC
 	ldr r0, [r0]
@@ -16916,26 +16916,26 @@ sub_020AEA4C: ; 0x020AEA4C
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r2, #1
-	ldr r0, _020AEAA4 ; =sub_020AF690
+	ldr r0, _020AEAA4 ; =WcmWmcbReset
 	strb r2, [r1, #0x26b]
 	bl WM_Reset
 	cmp r0, #2
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r1, #0
 	mov r2, r1
 	mov r0, #7
 	mov r3, #0x610
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020AEAA0: .word 0x021D5FEC
-_020AEAA4: .word sub_020AF690
-	arm_func_end sub_020AEA4C
+_020AEAA4: .word WcmWmcbReset
+	arm_func_end WcmWmReset
 
-	arm_func_start sub_020AEAA8
-sub_020AEAA8: ; 0x020AEAA8
+	arm_func_start WcmWmcbIndication
+WcmWmcbIndication: ; 0x020AEAA8
 	stmdb sp!, {r3, lr}
 	ldrh r1, [r0, #2]
 	cmp r1, #8
@@ -16960,21 +16960,21 @@ _020AEAE8: ; jump table
 	b _020AEB08 ; case 4
 _020AEAFC:
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldmia sp!, {r3, pc}
 _020AEB08:
-	bl sub_020AEA4C
+	bl WcmWmReset
 	ldmia sp!, {r3, pc}
 _020AEB10:
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020AEB1C: .word 0x021D5FEC
-	arm_func_end sub_020AEAA8
+	arm_func_end WcmWmcbIndication
 
-	arm_func_start sub_020AEB20
-sub_020AEB20: ; 0x020AEB20
+	arm_func_start WcmWmcbCommon
+WcmWmcbCommon: ; 0x020AEB20
 	stmdb sp!, {r3, lr}
 	ldrh r1, [r0, #2]
 	mov r2, #0x14
@@ -17013,7 +17013,7 @@ _020AEB94:
 	beq _020AEC70
 	b _020AECC0
 _020AEBA0:
-	ldr r0, _020AEDB8 ; =sub_020AEB20
+	ldr r0, _020AEDB8 ; =WcmWmcbCommon
 	bl WM_PowerOn
 	mov r2, r0
 	b _020AECC0
@@ -17025,45 +17025,45 @@ _020AEBB0:
 	b _020AEBE4
 _020AEBC4:
 	mov r0, #1
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, #0
 	ldr r3, _020AEDBC ; =0x00000663
 	mov r1, r0
 	mov r2, r0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 _020AEBE4:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r1, #0
 	ldr r3, _020AEDC0 ; =0x0000066C
 	mov r2, r1
 	mov r0, #7
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 _020AEC04:
 	mov r0, #3
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, #0
 	ldr r3, _020AEDC4 ; =0x00000673
 	mov r1, r0
 	mov r2, r0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 _020AEC24:
-	ldr r0, _020AEDB8 ; =sub_020AEB20
+	ldr r0, _020AEDB8 ; =WcmWmcbCommon
 	bl WM_Disable
 	mov r2, r0
 	b _020AECC0
 _020AEC34:
-	ldr r0, _020AEDB8 ; =sub_020AEB20
+	ldr r0, _020AEDB8 ; =WcmWmcbCommon
 	mov r1, #0
 	bl WM_SetBeaconIndication
 	mov r2, r0
 	b _020AECC0
 _020AEC48:
 	ldr r1, _020AEDC8 ; =0x021D5FEC
-	ldr r0, _020AEDB8 ; =sub_020AEB20
+	ldr r0, _020AEDB8 ; =WcmWmcbCommon
 	ldr r3, [r1]
 	add r2, r3, #0x2000
 	ldrb r1, [r2, #0x250]
@@ -17087,7 +17087,7 @@ _020AEC70:
 	cmp r1, #0x30000
 	movne r3, #1
 	add r1, r2, #0x2140
-	ldr r0, _020AEDCC ; =sub_020AF138
+	ldr r0, _020AEDCC ; =WcmWmcbConnect
 	moveq r3, #0
 	mov r2, #0
 	str ip, [sp]
@@ -17101,7 +17101,7 @@ _020AECC0:
 	cmp r2, #8
 	bne _020AED10
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AEDC8 ; =0x021D5FEC
 	mov r2, #0
 	ldr r1, [r0]
@@ -17112,11 +17112,11 @@ _020AECC0:
 	mov r0, #1
 	movne r1, #0
 	rsb r3, r0, #0x6b0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 _020AED10:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AEDC8 ; =0x021D5FEC
 	ldr r3, _020AEDD0 ; =0x000006B8
 	ldr r1, [r0]
@@ -17127,11 +17127,11 @@ _020AED10:
 	addeq r1, r1, #0x2140
 	movne r1, #0
 	mov r0, #7
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 _020AED48:
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AEDC8 ; =0x021D5FEC
 	ldr r3, _020AEDD4 ; =0x000006DE
 	ldr r1, [r0]
@@ -17142,11 +17142,11 @@ _020AED48:
 	addeq r1, r1, #0x2140
 	movne r1, #0
 	mov r0, #1
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 _020AED80:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AEDC8 ; =0x021D5FEC
 	ldr r3, _020AEDD8 ; =0x000006E8
 	ldr r1, [r0]
@@ -17157,22 +17157,22 @@ _020AED80:
 	addeq r1, r1, #0x2140
 	movne r1, #0
 	mov r0, #7
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020AEDB8: .word sub_020AEB20
+_020AEDB8: .word WcmWmcbCommon
 _020AEDBC: .word 0x00000663
 _020AEDC0: .word 0x0000066C
 _020AEDC4: .word 0x00000673
 _020AEDC8: .word 0x021D5FEC
-_020AEDCC: .word sub_020AF138
+_020AEDCC: .word WcmWmcbConnect
 _020AEDD0: .word 0x000006B8
 _020AEDD4: .word 0x000006DE
 _020AEDD8: .word 0x000006E8
-	arm_func_end sub_020AEB20
+	arm_func_end WcmWmcbCommon
 
-	arm_func_start sub_020AEDDC
-sub_020AEDDC: ; 0x020AEDDC
+	arm_func_start WcmWmcbScanEx
+WcmWmcbScanEx: ; 0x020AEDDC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r5, r0
@@ -17195,12 +17195,12 @@ _020AEE10:
 	cmp r0, #5
 	bne _020AEE44
 	mov r0, #6
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, #0
 	ldr r3, _020AF09C ; =0x00000704
 	mov r1, r0
 	mov r2, r0
-	bl sub_020AE864
+	bl WcmNotify
 _020AEE44:
 	ldr r1, _020AF098 ; =0x021D5FEC
 	ldr r2, [r1]
@@ -17238,14 +17238,14 @@ _020AEEBC:
 	add r2, r5, r4, lsl #2
 	ldrh r1, [r0, #0x50]
 	ldr r0, [r2, #0x10]
-	bl sub_020AFB3C
+	bl WCMi_EntryApList
 	str r8, [sp]
 	add r0, r5, r4, lsl #2
 	ldr r2, [r0, #0x10]
 	mov r0, r7
 	mov r1, r6
 	mov r3, r5
-	bl sub_020AE8A8
+	bl WcmNotifyEx
 	ldrh r0, [r5, #0xe]
 	add r4, r4, #1
 	cmp r4, r0
@@ -17260,7 +17260,7 @@ _020AEEFC:
 	bne _020AEF68
 	ldr r0, _020AF0A4 ; =0x00003FFE
 	and r0, r1, r0
-	bl sub_020AEA18
+	bl WcmCountBits
 	movs r1, r0
 	beq _020AEF68
 	ldr r0, _020AF098 ; =0x021D5FEC
@@ -17277,14 +17277,14 @@ _020AEEFC:
 	mov r3, r1
 	mov r0, #8
 	str r4, [sp]
-	bl sub_020AE8A8
+	bl WcmNotifyEx
 _020AEF68:
 	ldrh r0, [r5, #0xa]
-	bl sub_020AEA44
+	bl WcmCountLeadingZero
 	rsb r0, r0, #0x20
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_020AE7D4
+	bl WcmGetNextScanChannel
 	ldr r1, _020AF098 ; =0x021D5FEC
 	mov r2, #1
 	mov r2, r2, lsl r0
@@ -17299,7 +17299,7 @@ _020AEF68:
 	ldr r0, [r0, #0x288]
 	bl DC_InvalidateRange
 	ldr r2, _020AF098 ; =0x021D5FEC
-	ldr r0, _020AF0AC ; =sub_020AEDDC
+	ldr r0, _020AF0AC ; =WcmWmcbScanEx
 	ldr r1, [r2]
 	add r1, r1, #0x2000
 	ldr r3, [r1, #0x284]
@@ -17312,12 +17312,12 @@ _020AEF68:
 	mov r4, r0
 	b _020AF004
 _020AEFE8:
-	ldr r0, _020AF0B0 ; =sub_020AF0C0
+	ldr r0, _020AF0B0 ; =WcmWmcbEndScan
 	bl WM_EndScan
 	mov r4, r0
 	b _020AF004
 _020AEFF8:
-	bl sub_020AEA4C
+	bl WcmWmReset
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _020AF004:
@@ -17329,36 +17329,36 @@ _020AF004:
 	cmp r4, #8
 	bne _020AF044
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r1, #0
 	ldr r3, _020AF0B4 ; =0x00000753
 	mov r2, r1
 	mov r0, #1
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _020AF044:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r1, #0
 	ldr r3, _020AF0B8 ; =0x0000075C
 	mov r2, r1
 	mov r0, #7
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _020AF068:
-	bl sub_020AEA4C
+	bl WcmWmReset
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _020AF074:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r1, #0
 	ldr r3, _020AF0BC ; =0x0000076D
 	mov r2, r1
 	mov r0, #7
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
@@ -17367,15 +17367,15 @@ _020AF09C: .word 0x00000704
 _020AF0A0: .word 0x0000071A
 _020AF0A4: .word 0x00003FFE
 _020AF0A8: .word 0x00000728
-_020AF0AC: .word sub_020AEDDC
-_020AF0B0: .word sub_020AF0C0
+_020AF0AC: .word WcmWmcbScanEx
+_020AF0B0: .word WcmWmcbEndScan
 _020AF0B4: .word 0x00000753
 _020AF0B8: .word 0x0000075C
 _020AF0BC: .word 0x0000076D
-	arm_func_end sub_020AEDDC
+	arm_func_end WcmWmcbScanEx
 
-	arm_func_start sub_020AF0C0
-sub_020AF0C0: ; 0x020AF0C0
+	arm_func_start WcmWmcbEndScan
+WcmWmcbEndScan: ; 0x020AF0C0
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #4
@@ -17389,32 +17389,32 @@ _020AF0D4: ; jump table
 	b _020AF110 ; case 4
 _020AF0E8:
 	mov r0, #3
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, #0
 	ldr r3, _020AF130 ; =0x00000783
 	mov r1, r0
 	mov r2, r0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 _020AF108:
-	bl sub_020AEA4C
+	bl WcmWmReset
 	ldmia sp!, {r3, pc}
 _020AF110:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r1, #0
 	ldr r3, _020AF134 ; =0x00000793
 	mov r2, r1
 	mov r0, #7
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020AF130: .word 0x00000783
 _020AF134: .word 0x00000793
-	arm_func_end sub_020AF0C0
+	arm_func_end WcmWmcbEndScan
 
-	arm_func_start sub_020AF138
-sub_020AF138: ; 0x020AF138
+	arm_func_start WcmWmcbConnect
+WcmWmcbConnect: ; 0x020AF138
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrh r0, [r4, #2]
@@ -17478,7 +17478,7 @@ _020AF204:
 	strh r1, [r0, #0x82]
 _020AF210:
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldmia sp!, {r4, pc}
 _020AF21C:
 	add r0, r2, #0x2200
@@ -17489,7 +17489,7 @@ _020AF21C:
 	add r0, r0, #0x2200
 	strh r1, [r0, #0x80]
 _020AF238:
-	bl sub_020AEA4C
+	bl WcmWmReset
 	ldmia sp!, {r4, pc}
 _020AF240:
 	ldr r1, _020AF380 ; =0x021D5FEC
@@ -17499,8 +17499,8 @@ _020AF240:
 	cmp r0, #0xc
 	bne _020AF268
 	mov r0, #8
-	bl sub_020AE8FC
-	bl sub_020AEA4C
+	bl WcmSetPhase
+	bl WcmWmReset
 	ldmia sp!, {r4, pc}
 _020AF268:
 	ldrh r2, [r4, #0xa]
@@ -17512,7 +17512,7 @@ _020AF268:
 	add r0, r3, #0x2200
 	strh r2, [r0, #0x82]
 	ldr r1, [r1]
-	ldr r0, _020AF388 ; =sub_020AF464
+	ldr r0, _020AF388 ; =WcmWmcbStartDCF
 	add r1, r1, #0x1500
 	mov r2, #0x620
 	bl WM_StartDCF
@@ -17523,39 +17523,39 @@ _020AF268:
 	cmp r0, #8
 	bne _020AF2DC
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF380 ; =0x021D5FEC
 	ldr r3, _020AF38C ; =0x000007ED
 	ldr r1, [r0]
 	mov r0, #1
 	add r1, r1, #0x2140
 	mov r2, #0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r4, pc}
 _020AF2DC:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF380 ; =0x021D5FEC
 	ldr r3, _020AF390 ; =0x000007F6
 	ldr r1, [r0]
 	mov r0, #7
 	add r1, r1, #0x2140
 	mov r2, #0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r4, pc}
 _020AF304:
-	bl sub_020AEA4C
+	bl WcmWmReset
 	ldmia sp!, {r4, pc}
 _020AF30C:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF380 ; =0x021D5FEC
 	ldrh r2, [r4, #8]
 	ldr r0, [r0]
 	ldr r3, _020AF394 ; =0x00000804
 	add r1, r0, #0x2140
 	mov r0, #7
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r4, pc}
 _020AF334:
 	ldr r0, _020AF380 ; =0x021D5FEC
@@ -17565,32 +17565,32 @@ _020AF334:
 	strh r1, [r0, #0xf8]
 _020AF348:
 	mov r0, #8
-	bl sub_020AE8FC
-	bl sub_020AEA4C
+	bl WcmSetPhase
+	bl WcmWmReset
 	ldmia sp!, {r4, pc}
 _020AF358:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF380 ; =0x021D5FEC
 	ldr r3, _020AF398 ; =0x0000081B
 	ldr r1, [r0]
 	mov r0, #7
 	add r1, r1, #0x2140
 	mov r2, #0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020AF380: .word 0x021D5FEC
 _020AF384: .word 0x000007D7
-_020AF388: .word sub_020AF464
+_020AF388: .word WcmWmcbStartDCF
 _020AF38C: .word 0x000007ED
 _020AF390: .word 0x000007F6
 _020AF394: .word 0x00000804
 _020AF398: .word 0x0000081B
-	arm_func_end sub_020AF138
+	arm_func_end WcmWmcbConnect
 
-	arm_func_start sub_020AF39C
-sub_020AF39C: ; 0x020AF39C
+	arm_func_start WcmWmcbDisconnect
+WcmWmcbDisconnect: ; 0x020AF39C
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #4
@@ -17610,47 +17610,47 @@ _020AF3C4:
 	cmp r0, #0xc
 	bne _020AF3EC
 	mov r0, #0xa
-	bl sub_020AE8FC
-	bl sub_020AEA4C
+	bl WcmSetPhase
+	bl WcmWmReset
 	ldmia sp!, {r3, pc}
 _020AF3EC:
 	add r1, r1, #0x2200
 	mov r2, #0
 	mov r0, #3
 	strh r2, [r1, #0x82]
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r1, _020AF458 ; =0x021D5FEC
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r3, _020AF45C ; =0x0000083D
 	mov r2, r0
 	add r1, r1, #0x2140
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 _020AF420:
 	mov r0, #0xa
-	bl sub_020AE8FC
-	bl sub_020AEA4C
+	bl WcmSetPhase
+	bl WcmWmReset
 	ldmia sp!, {r3, pc}
 _020AF430:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF458 ; =0x021D5FEC
 	ldr r3, _020AF460 ; =0x0000084F
 	ldr r1, [r0]
 	mov r0, #7
 	add r1, r1, #0x2140
 	mov r2, #0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020AF458: .word 0x021D5FEC
 _020AF45C: .word 0x0000083D
 _020AF460: .word 0x0000084F
-	arm_func_end sub_020AF39C
+	arm_func_end WcmWmcbDisconnect
 
-	arm_func_start sub_020AF464
-sub_020AF464: ; 0x020AF464
+	arm_func_start WcmWmcbStartDCF
+WcmWmcbStartDCF: ; 0x020AF464
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrh r0, [r4, #2]
@@ -17673,63 +17673,63 @@ _020AF498:
 	cmp r0, #0xc
 	bne _020AF4C0
 	mov r0, #8
-	bl sub_020AE8FC
-	bl sub_020AEA4C
+	bl WcmSetPhase
+	bl WcmWmReset
 	ldmia sp!, {r4, pc}
 _020AF4C0:
 	mov r0, #9
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r1, _020AF564 ; =0x021D5FEC
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r3, _020AF568 ; =0x00000872
 	mov r2, r0
 	add r1, r1, #0x2140
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r4, pc}
 _020AF4E8:
 	ldr r0, [r4, #8]
 	ldrh r0, [r0, #0xe]
 	mov r0, r0, asr #8
 	and r0, r0, #0xff
-	bl sub_020B036C
+	bl WCMi_ShelterRssi
 	ldr r0, [r4, #8]
 	mov r1, #0x620
 	bl DC_InvalidateRange
 	ldr r0, [r4, #8]
-	bl sub_020AFE7C
+	bl WCMi_CpsifRecvCallback
 	ldmia sp!, {r4, pc}
 _020AF514:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF564 ; =0x021D5FEC
 	ldrh r2, [r4, #4]
 	ldr r0, [r0]
 	ldr r3, _020AF56C ; =0x00000881
 	add r1, r0, #0x2140
 	mov r0, #7
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r4, pc}
 _020AF53C:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF564 ; =0x021D5FEC
 	ldr r3, _020AF570 ; =0x0000088C
 	ldr r1, [r0]
 	mov r0, #7
 	add r1, r1, #0x2140
 	mov r2, #0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020AF564: .word 0x021D5FEC
 _020AF568: .word 0x00000872
 _020AF56C: .word 0x00000881
 _020AF570: .word 0x0000088C
-	arm_func_end sub_020AF464
+	arm_func_end WcmWmcbStartDCF
 
-	arm_func_start sub_020AF574
-sub_020AF574: ; 0x020AF574
+	arm_func_start WcmWmcbEndDCF
+WcmWmcbEndDCF: ; 0x020AF574
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #4
@@ -17749,11 +17749,11 @@ _020AF59C:
 	cmp r0, #0xc
 	bne _020AF5C4
 	mov r0, #0xa
-	bl sub_020AE8FC
-	bl sub_020AEA4C
+	bl WcmSetPhase
+	bl WcmWmReset
 	ldmia sp!, {r3, pc}
 _020AF5C4:
-	ldr r0, _020AF684 ; =sub_020AF39C
+	ldr r0, _020AF684 ; =WcmWmcbDisconnect
 	mov r1, #0
 	bl WM_Disconnect
 	cmp r0, #2
@@ -17763,56 +17763,56 @@ _020AF5C4:
 	cmp r0, #8
 	bne _020AF620
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF680 ; =0x021D5FEC
 	ldr r3, _020AF688 ; =0x000008B4
 	ldr r1, [r0]
 	mov r0, #1
 	add r1, r1, #0x2140
 	mov r2, #0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 _020AF610:
 	mov r0, #0xa
-	bl sub_020AE8FC
-	bl sub_020AEA4C
+	bl WcmSetPhase
+	bl WcmWmReset
 	ldmia sp!, {r3, pc}
 _020AF620:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r1, _020AF680 ; =0x021D5FEC
 	mov r0, #7
 	ldr r1, [r1]
 	mov r2, #0
 	add r1, r1, #0x2140
 	mov r3, #0x8c0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 _020AF648:
 	mov r0, #0xa
-	bl sub_020AE8FC
-	bl sub_020AEA4C
+	bl WcmSetPhase
+	bl WcmWmReset
 	ldmia sp!, {r3, pc}
 _020AF658:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF680 ; =0x021D5FEC
 	ldr r3, _020AF68C ; =0x000008D3
 	ldr r1, [r0]
 	mov r0, #7
 	add r1, r1, #0x2140
 	mov r2, #0
-	bl sub_020AE864
+	bl WcmNotify
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020AF680: .word 0x021D5FEC
-_020AF684: .word sub_020AF39C
+_020AF684: .word WcmWmcbDisconnect
 _020AF688: .word 0x000008B4
 _020AF68C: .word 0x000008D3
-	arm_func_end sub_020AF574
+	arm_func_end WcmWmcbEndDCF
 
-	arm_func_start sub_020AF690
-sub_020AF690: ; 0x020AF690
+	arm_func_start WcmWmcbReset
+WcmWmcbReset: ; 0x020AF690
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldrh r0, [r0, #2]
@@ -17849,22 +17849,22 @@ _020AF6DC: ; jump table
 	b _020AF8CC ; case 13
 _020AF714:
 	mov r0, #3
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r1, #0
 	ldr r3, _020AF990 ; =0x000008F5
 	mov r2, r1
 	mov r0, #1
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _020AF738:
 	mov r0, #3
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r0, #0
 	ldr r3, _020AF994 ; =0x000008FB
 	mov r1, r0
 	mov r2, r0
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _020AF75C:
@@ -17892,7 +17892,7 @@ _020AF75C:
 	mov r0, r0, lsl #0x10
 	mov ip, r0, lsr #0x10
 	movne r3, #1
-	ldr r0, _020AF998 ; =sub_020AF138
+	ldr r0, _020AF998 ; =WcmWmcbConnect
 	moveq r3, #0
 	add r1, lr, #0x2140
 	mov r2, #0
@@ -17906,66 +17906,66 @@ _020AF75C:
 	cmp r0, #8
 	bne _020AF81C
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF98C ; =0x021D5FEC
 	ldr r3, _020AF99C ; =0x0000091C
 	ldr r0, [r0]
 	mov r2, r4
 	add r1, r0, #0x2140
 	mov r0, #1
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _020AF81C:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF98C ; =0x021D5FEC
 	ldr r3, _020AF9A0 ; =0x00000925
 	ldr r0, [r0]
 	mov r2, r4
 	add r1, r0, #0x2140
 	mov r0, #7
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _020AF848:
 	mov r0, #3
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF98C ; =0x021D5FEC
 	ldr r3, _020AF9A4 ; =0x0000092D
 	ldr r0, [r0]
 	mov r2, r4
 	add r1, r0, #0x2140
 	mov r0, #1
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _020AF874:
 	mov r0, #3
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r0, _020AF98C ; =0x021D5FEC
 	ldr r3, _020AF9A8 ; =0x00000935
 	ldr r1, [r0]
 	mov r0, #0
 	add r1, r1, #0x2140
 	mov r2, #1
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _020AF8A0:
 	mov r0, #3
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r1, _020AF98C ; =0x021D5FEC
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r3, _020AF9AC ; =0x0000093C
 	mov r2, r0
 	add r1, r1, #0x2140
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _020AF8CC:
-	ldr r0, _020AF9B0 ; =sub_020AEB20
+	ldr r0, _020AF9B0 ; =WcmWmcbCommon
 	bl WM_PowerOff
 	cmp r0, #2
 	addeq sp, sp, #4
@@ -17975,27 +17975,27 @@ _020AF8CC:
 	cmp r0, #8
 	bne _020AF914
 	mov r0, #0xc
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r1, #0
 	ldr r3, _020AF9B4 ; =0x0000094A
 	mov r2, r1
 	mov r0, #1
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _020AF914:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r1, #0
 	ldr r3, _020AF9B8 ; =0x00000953
 	mov r2, r1
 	mov r0, #7
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _020AF938:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	ldr r1, _020AF98C ; =0x021D5FEC
 	mov r0, #7
 	ldr r1, [r1]
@@ -18003,40 +18003,40 @@ _020AF938:
 	add r1, r1, #0x2000
 	ldr r2, [r1, #0x260]
 	mov r1, #0
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _020AF968:
 	mov r0, #0xb
-	bl sub_020AE8FC
+	bl WcmSetPhase
 	mov r1, #0
 	mov r2, r1
 	mov r0, #7
 	mov r3, #0x960
-	bl sub_020AE864
+	bl WcmNotify
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _020AF98C: .word 0x021D5FEC
 _020AF990: .word 0x000008F5
 _020AF994: .word 0x000008FB
-_020AF998: .word sub_020AF138
+_020AF998: .word WcmWmcbConnect
 _020AF99C: .word 0x0000091C
 _020AF9A0: .word 0x00000925
 _020AF9A4: .word 0x0000092D
 _020AF9A8: .word 0x00000935
 _020AF9AC: .word 0x0000093C
-_020AF9B0: .word sub_020AEB20
+_020AF9B0: .word WcmWmcbCommon
 _020AF9B4: .word 0x0000094A
 _020AF9B8: .word 0x00000953
-	arm_func_end sub_020AF690
+	arm_func_end WcmWmcbReset
 
-	arm_func_start sub_020AF9BC
-sub_020AF9BC: ; 0x020AF9BC
+	arm_func_start WCM_ClearApList
+WCM_ClearApList: ; 0x020AF9BC
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	mov r4, r0
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	cmp r0, #0
 	bne _020AF9E0
 	mov r0, r4
@@ -18056,14 +18056,14 @@ _020AFA04:
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020AF9BC
+	arm_func_end WCM_ClearApList
 
-	arm_func_start sub_020AFA10
-sub_020AFA10: ; 0x020AFA10
+	arm_func_start WCM_CountApList
+WCM_CountApList: ; 0x020AFA10
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_DisableInterrupts
 	mov r4, r0
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	cmp r0, #0
 	mov r5, #0
 	bne _020AFA3C
@@ -18084,15 +18084,15 @@ _020AFA58:
 	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020AFA10
+	arm_func_end WCM_CountApList
 
-	arm_func_start sub_020AFA68
-sub_020AFA68: ; 0x020AFA68
+	arm_func_start WCM_LockApList
+WCM_LockApList: ; 0x020AFA68
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
 	mov r4, r0
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	cmp r0, #0
 	bne _020AFA94
 	mov r0, r4
@@ -18122,15 +18122,15 @@ _020AFAD0:
 	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020AFA68
+	arm_func_end WCM_LockApList
 
-	arm_func_start sub_020AFAE4
-sub_020AFAE4: ; 0x020AFAE4
+	arm_func_start WCM_PointApList
+WCM_PointApList: ; 0x020AFAE4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
 	mov r5, r0
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	cmp r0, #0
 	bne _020AFB10
 	mov r0, r5
@@ -18139,7 +18139,7 @@ sub_020AFAE4: ; 0x020AFAE4
 	ldmia sp!, {r3, r4, r5, pc}
 _020AFB10:
 	mov r0, r4
-	bl sub_020AFD30
+	bl WcmSearchIndexedApList
 	movs r4, r0
 	mov r0, r5
 	bne _020AFB30
@@ -18150,14 +18150,14 @@ _020AFB30:
 	bl OS_RestoreInterrupts
 	add r0, r4, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020AFAE4
+	arm_func_end WCM_PointApList
 
-	arm_func_start sub_020AFB3C
-sub_020AFB3C: ; 0x020AFB3C
+	arm_func_start WCMi_EntryApList
+WCMi_EntryApList: ; 0x020AFB3C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	movs r6, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, r6, #0x2000
@@ -18167,10 +18167,10 @@ sub_020AFB3C: ; 0x020AFB3C
 	cmpeq r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, r5, #4
-	bl sub_020AFCC4
+	bl WcmSearchApList
 	movs r7, r0
 	bne _020AFB84
-	bl sub_020AFBC8
+	bl WcmAllocApList
 	mov r7, r0
 _020AFB84:
 	cmp r7, #0
@@ -18178,7 +18178,7 @@ _020AFB84:
 	ldreq r0, [r0, #0x278]
 	cmpeq r0, #1
 	bne _020AFBA0
-	bl sub_020AFC94
+	bl WcmGetOldestApList
 	mov r7, r0
 _020AFBA0:
 	cmp r7, #0
@@ -18189,14 +18189,14 @@ _020AFBA0:
 	strh r4, [r7, #2]
 	bl MIi_CpuCopyFast
 	mov r0, r7
-	bl sub_020AFD80
+	bl WcmAppendApList
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020AFB3C
+	arm_func_end WCMi_EntryApList
 
-	arm_func_start sub_020AFBC8
-sub_020AFBC8: ; 0x020AFBC8
+	arm_func_start WcmAllocApList
+WcmAllocApList: ; 0x020AFBC8
 	stmdb sp!, {r4, lr}
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	add r2, r0, #0x2000
 	ldr r1, [r2, #0x270]
 	mov r0, #0
@@ -18249,12 +18249,12 @@ _020AFC44:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020AFC90: .word 0x4EC4EC4F
-	arm_func_end sub_020AFBC8
+	arm_func_end WcmAllocApList
 
-	arm_func_start sub_020AFC94
-sub_020AFC94: ; 0x020AFC94
+	arm_func_start WcmGetOldestApList
+WcmGetOldestApList: ; 0x020AFC94
 	stmdb sp!, {r3, lr}
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	add r0, r0, #0x2000
 	ldr r1, [r0, #0x270]
 	cmp r1, #0
@@ -18266,13 +18266,13 @@ sub_020AFC94: ; 0x020AFC94
 _020AFCBC:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020AFC94
+	arm_func_end WcmGetOldestApList
 
-	arm_func_start sub_020AFCC4
-sub_020AFCC4: ; 0x020AFCC4
+	arm_func_start WcmSearchApList
+WcmSearchApList: ; 0x020AFCC4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	add r0, r0, #0x2000
 	mov r4, #0
 	cmp r5, #0
@@ -18290,7 +18290,7 @@ sub_020AFCC4: ; 0x020AFCC4
 _020AFD08:
 	mov r1, r5
 	add r0, r4, #0x14
-	bl sub_020B0248
+	bl WCM_CompareBssID
 	cmp r0, #0
 	bne _020AFD28
 	ldr r4, [r4, #0xc]
@@ -18299,13 +18299,13 @@ _020AFD08:
 _020AFD28:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020AFCC4
+	arm_func_end WcmSearchApList
 
-	arm_func_start sub_020AFD30
-sub_020AFD30: ; 0x020AFD30
+	arm_func_start WcmSearchIndexedApList
+WcmSearchIndexedApList: ; 0x020AFD30
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	add r1, r0, #0x2000
 	ldr r2, [r1, #0x270]
 	mov r0, #0
@@ -18324,13 +18324,13 @@ _020AFD68:
 	cmpne r0, #0
 	bne _020AFD68
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020AFD30
+	arm_func_end WcmSearchIndexedApList
 
-	arm_func_start sub_020AFD80
-sub_020AFD80: ; 0x020AFD80
+	arm_func_start WcmAppendApList
+WcmAppendApList: ; 0x020AFD80
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	add r1, r0, #0x2000
 	ldr r0, [r1, #0x270]
 	cmp r4, #0
@@ -18378,10 +18378,10 @@ _020AFDF8:
 	add r1, r1, #1
 	str r1, [r0]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020AFD80
+	arm_func_end WcmAppendApList
 
-	arm_func_start sub_020AFE3C
-sub_020AFE3C: ; 0x020AFE3C
+	arm_func_start WCMi_InitCpsif
+WCMi_InitCpsif: ; 0x020AFE3C
 	stmdb sp!, {r3, lr}
 	ldr r1, _020AFE74 ; =0x021D5FF0
 	ldrb r0, [r1]
@@ -18399,10 +18399,10 @@ sub_020AFE3C: ; 0x020AFE3C
 	.align 2, 0
 _020AFE74: .word 0x021D5FF0
 _020AFE78: .word 0x021D5FFC
-	arm_func_end sub_020AFE3C
+	arm_func_end WCMi_InitCpsif
 
-	arm_func_start sub_020AFE7C
-sub_020AFE7C: ; 0x020AFE7C
+	arm_func_start WCMi_CpsifRecvCallback
+WCMi_CpsifRecvCallback: ; 0x020AFE7C
 	stmdb sp!, {r3, lr}
 	ldr r1, _020AFEAC ; =0x021D5FF0
 	mov r2, r0
@@ -18417,12 +18417,12 @@ sub_020AFE7C: ; 0x020AFE7C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020AFEAC: .word 0x021D5FF0
-	arm_func_end sub_020AFE7C
+	arm_func_end WCMi_CpsifRecvCallback
 
-	arm_func_start sub_020AFEB0
-sub_020AFEB0: ; 0x020AFEB0
+	arm_func_start WCMi_CpsifSendNullPacket
+WCMi_CpsifSendNullPacket: ; 0x020AFEB0
 	stmdb sp!, {r4, lr}
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	movs r4, r0
 	ldmeqia sp!, {r4, pc}
 	add r0, r4, #0x2000
@@ -18433,11 +18433,11 @@ sub_020AFEB0: ; 0x020AFEB0
 	cmp r0, #1
 	ldmeqia sp!, {r4, pc}
 	ldr r0, _020AFF18 ; =0x021D5FFC
-	bl sub_020B01C0
+	bl WcmCpsifTryLockMutexInIRQ
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	add r1, r4, #0x144
-	ldr r0, _020AFF1C ; =sub_020B01AC
+	ldr r0, _020AFF1C ; =WcmCpsifKACallback
 	add r1, r1, #0x2000
 	add r2, r4, #0xf00
 	mov r3, #0
@@ -18445,18 +18445,18 @@ sub_020AFEB0: ; 0x020AFEB0
 	cmp r0, #2
 	ldmeqia sp!, {r4, pc}
 	ldr r0, _020AFF18 ; =0x021D5FFC
-	bl sub_020B0210
+	bl WcmCpsifUnlockMutexInIRQ
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020AFF18: .word 0x021D5FFC
-_020AFF1C: .word sub_020B01AC
-	arm_func_end sub_020AFEB0
+_020AFF1C: .word WcmCpsifKACallback
+	arm_func_end WCMi_CpsifSendNullPacket
 
 	arm_func_start WCM_GetApMacAddress
 WCM_GetApMacAddress: ; 0x020AFF20
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	mov r4, r0
 	bl OS_DisableInterrupts
 	cmp r4, #0
@@ -18474,13 +18474,13 @@ _020AFF58:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end WCM_GetApMacAddress
 
-	arm_func_start sub_020AFF64
-sub_020AFF64: ; 0x020AFF64
+	arm_func_start WCM_GetApEssid
+WCM_GetApEssid: ; 0x020AFF64
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, #0
 	mov r5, r0
 	mov r4, r7
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	mov r6, r0
 	bl OS_DisableInterrupts
 	cmp r6, #0
@@ -18501,7 +18501,7 @@ _020AFFB0:
 	strneh r4, [r5]
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020AFF64
+	arm_func_end WCM_GetApEssid
 
 	arm_func_start WCM_SetRecvDCFCallback
 WCM_SetRecvDCFCallback: ; 0x020AFFC4
@@ -18525,7 +18525,7 @@ WCM_SendDCFDataEx: ; 0x020AFFE4
 	mov r6, r3
 	bl OS_DisableInterrupts
 	mov r5, r0
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	cmp r0, #0
 	bne _020B001C
 	mov r0, r5
@@ -18535,7 +18535,7 @@ WCM_SendDCFDataEx: ; 0x020AFFE4
 _020B001C:
 	ldr r0, _020B015C ; =0x021D5FFC
 	bl OS_LockMutex
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	movs r7, r0
 	bne _020B0048
 	ldr r0, _020B015C ; =0x021D5FFC
@@ -18573,7 +18573,7 @@ _020B007C:
 	bl MI_CpuCopy8
 _020B00A8:
 	ldr r1, [sp, #0x20]
-	ldr r0, _020B0160 ; =sub_020B016C
+	ldr r0, _020B0160 ; =WcmCpsifWmCallback
 	add r6, r8, r1
 	mov r3, r6, lsl #0x10
 	mov r1, r4
@@ -18623,13 +18623,13 @@ _020B0144:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020B015C: .word 0x021D5FFC
-_020B0160: .word sub_020B016C
+_020B0160: .word WcmCpsifWmCallback
 _020B0164: .word 0x021D5FF4
 _020B0168: .word 0x021D5FF0
 	arm_func_end WCM_SendDCFDataEx
 
-	arm_func_start sub_020B016C
-sub_020B016C: ; 0x020B016C
+	arm_func_start WcmCpsifWmCallback
+WcmCpsifWmCallback: ; 0x020B016C
 	stmdb sp!, {r3, lr}
 	ldrh r1, [r0]
 	cmp r1, #0x12
@@ -18640,7 +18640,7 @@ sub_020B016C: ; 0x020B016C
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	bne _020B0198
-	bl sub_020AE994
+	bl WCMi_ResetKeepAliveAlarm
 _020B0198:
 	ldr r0, _020B01A8 ; =0x021D5FF4
 	bl OS_WakeupThread
@@ -18648,20 +18648,20 @@ _020B0198:
 	.align 2, 0
 _020B01A4: .word 0x021D5FF0
 _020B01A8: .word 0x021D5FF4
-	arm_func_end sub_020B016C
+	arm_func_end WcmCpsifWmCallback
 
-	arm_func_start sub_020B01AC
-sub_020B01AC: ; 0x020B01AC
-	ldr ip, _020B01B8 ; =sub_020B0210
+	arm_func_start WcmCpsifKACallback
+WcmCpsifKACallback: ; 0x020B01AC
+	ldr ip, _020B01B8 ; =WcmCpsifUnlockMutexInIRQ
 	ldr r0, _020B01BC ; =0x021D5FFC
 	bx ip
 	.align 2, 0
-_020B01B8: .word sub_020B0210
+_020B01B8: .word WcmCpsifUnlockMutexInIRQ
 _020B01BC: .word 0x021D5FFC
-	arm_func_end sub_020B01AC
+	arm_func_end WcmCpsifKACallback
 
-	arm_func_start sub_020B01C0
-sub_020B01C0: ; 0x020B01C0
+	arm_func_start WcmCpsifTryLockMutexInIRQ
+WcmCpsifTryLockMutexInIRQ: ; 0x020B01C0
 	ldr r2, [r0, #8]
 	cmp r2, #0
 	bne _020B01E8
@@ -18684,10 +18684,10 @@ _020B01E8:
 	bx lr
 	.align 2, 0
 _020B020C: .word OS_IrqHandler
-	arm_func_end sub_020B01C0
+	arm_func_end WcmCpsifTryLockMutexInIRQ
 
-	arm_func_start sub_020B0210
-sub_020B0210: ; 0x020B0210
+	arm_func_start WcmCpsifUnlockMutexInIRQ
+WcmCpsifUnlockMutexInIRQ: ; 0x020B0210
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #8]
 	ldr r1, _020B0244 ; =OS_IrqHandler
@@ -18703,10 +18703,10 @@ sub_020B0210: ; 0x020B0210
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020B0244: .word OS_IrqHandler
-	arm_func_end sub_020B0210
+	arm_func_end WcmCpsifUnlockMutexInIRQ
 
-	arm_func_start sub_020B0248
-sub_020B0248: ; 0x020B0248
+	arm_func_start WCM_CompareBssID
+WCM_CompareBssID: ; 0x020B0248
 	mov ip, #0
 _020B024C:
 	ldrb r3, [r0, ip]
@@ -18719,14 +18719,14 @@ _020B024C:
 	blt _020B024C
 	mov r0, #1
 	bx lr
-	arm_func_end sub_020B0248
+	arm_func_end WCM_CompareBssID
 
-	arm_func_start sub_020B0274
-sub_020B0274: ; 0x020B0274
+	arm_func_start WCM_GetLinkLevel
+WCM_GetLinkLevel: ; 0x020B0274
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_DisableInterrupts
 	mov r4, r0
-	bl sub_020AE4EC
+	bl WCMi_GetSystemWork
 	cmp r0, #0
 	mov r5, #0
 	beq _020B02A8
@@ -18734,17 +18734,17 @@ sub_020B0274: ; 0x020B0274
 	ldr r0, [r0, #0x260]
 	cmp r0, #9
 	bne _020B02A8
-	bl sub_020B0338
+	bl WcmGetLinkLevel
 	mov r5, r0
 _020B02A8:
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020B0274
+	arm_func_end WCM_GetLinkLevel
 
-	arm_func_start sub_020B02B8
-sub_020B02B8: ; 0x020B02B8
+	arm_func_start WCMi_GetRssiAverage
+WCMi_GetRssiAverage: ; 0x020B02B8
 	stmdb sp!, {r3, lr}
 	ldr r1, _020B0330 ; =0x021D601C
 	mov r0, #0
@@ -18783,12 +18783,12 @@ _020B0328:
 	.align 2, 0
 _020B0330: .word 0x021D601C
 _020B0334: .word 0x021D6020
-	arm_func_end sub_020B02B8
+	arm_func_end WCMi_GetRssiAverage
 
-	arm_func_start sub_020B0338
-sub_020B0338: ; 0x020B0338
+	arm_func_start WcmGetLinkLevel
+WcmGetLinkLevel: ; 0x020B0338
 	stmdb sp!, {r3, lr}
-	bl sub_020B02B8
+	bl WCMi_GetRssiAverage
 	mov r1, #0
 	cmp r0, #0x1c
 	movhs r1, #3
@@ -18801,10 +18801,10 @@ sub_020B0338: ; 0x020B0338
 _020B0364:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020B0338
+	arm_func_end WcmGetLinkLevel
 
-	arm_func_start sub_020B036C
-sub_020B036C: ; 0x020B036C
+	arm_func_start WCMi_ShelterRssi
+WCMi_ShelterRssi: ; 0x020B036C
 	stmdb sp!, {r3, lr}
 	ldr r2, _020B03C4 ; =0x021D601C
 	tst r0, #2
@@ -18830,33 +18830,33 @@ sub_020B036C: ; 0x020B036C
 	.align 2, 0
 _020B03C4: .word 0x021D601C
 _020B03C8: .word 0x021D6020
-	arm_func_end sub_020B036C
+	arm_func_end WCMi_ShelterRssi
 
 	; NitroWiFi: libstubsmd5.a
 
-	arm_func_start sub_020B03CC
-sub_020B03CC: ; 0x020B03CC
+	arm_func_start MD5Init
+MD5Init: ; 0x020B03CC
 	ldr ip, _020B03D4 ; =DGT_Hash1Reset
 	bx ip
 	.align 2, 0
 _020B03D4: .word DGT_Hash1Reset
-	arm_func_end sub_020B03CC
+	arm_func_end MD5Init
 
-	arm_func_start sub_020B03D8
-sub_020B03D8: ; 0x020B03D8
+	arm_func_start MD5Update
+MD5Update: ; 0x020B03D8
 	ldr ip, _020B03E0 ; =DGT_Hash1SetSource
 	bx ip
 	.align 2, 0
 _020B03E0: .word DGT_Hash1SetSource
-	arm_func_end sub_020B03D8
+	arm_func_end MD5Update
 
-	arm_func_start sub_020B03E4
-sub_020B03E4: ; 0x020B03E4
+	arm_func_start MD5Final
+MD5Final: ; 0x020B03E4
 	ldr ip, _020B03EC ; =DGT_Hash1GetDigest_R
 	bx ip
 	.align 2, 0
 _020B03EC: .word DGT_Hash1GetDigest_R
-	arm_func_end sub_020B03E4
+	arm_func_end MD5Final
 
 	.rodata
 

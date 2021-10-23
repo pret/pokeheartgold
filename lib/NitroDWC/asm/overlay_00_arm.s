@@ -1193,7 +1193,7 @@ _021E8BD0:
 	mov r1, #0xe
 	bl OS_SNPrintf
 	add r0, sp, #0x14
-	bl sub_020AFF64
+	bl WCM_GetApEssid
 	mov r5, r0
 	mov r1, #0x20
 	bl DC_InvalidateRange
@@ -5481,7 +5481,7 @@ _021EC6E0:
 	ldrh r0, [r1, #6]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_020AE420
+	bl WCM_GetPhase
 	cmp r0, #9
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _021EC720 ; =_0221A75C
@@ -5704,10 +5704,10 @@ _021EC9D0: .word _0221A75C
 
 	arm_func_start ov00_021EC9D4
 ov00_021EC9D4: ; 0x021EC9D4
-	ldr ip, _021EC9DC ; =sub_020B0274
+	ldr ip, _021EC9DC ; =WCM_GetLinkLevel
 	bx ip
 	.balign 4, 0
-_021EC9DC: .word sub_020B0274
+_021EC9DC: .word WCM_GetLinkLevel
 	arm_func_end ov00_021EC9D4
 
 	arm_func_start ov00_021EC9E0
@@ -5762,7 +5762,7 @@ _021ECA74:
 	cmp r0, #3
 	bge _021ECAD8
 	add r0, sp, #0
-	bl sub_020AFF64
+	bl WCM_GetApEssid
 	mov r5, r0
 	mov r1, #0x20
 	bl DC_InvalidateRange
@@ -22108,7 +22108,7 @@ ov00_021FA75C: ; 0x021FA75C
 	ldr r0, _021FA8FC ; =_0221B0AC
 	mov r1, #0x2300
 	ldr r0, [r0]
-	bl sub_020AD850
+	bl WCM_Init
 	cmp r0, #1
 	beq _021FA8E8
 	cmp r0, #4
@@ -22622,7 +22622,7 @@ _021FAF40:
 	mov r0, #0
 	ldr r1, [r1, #0xc]
 	strb r2, [r1, #0x17]
-	bl sub_020AFF64
+	bl WCM_GetApEssid
 	movs r4, r0
 	beq _021FAF78
 	mov r1, #0x20
@@ -23281,7 +23281,7 @@ _021FB7E0:
 ov00_021FB7F4: ; 0x021FB7F4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
-	bl sub_020AE420
+	bl WCM_GetPhase
 	ldrb r2, [r7, #0xd13]
 	mov r1, #0xc0
 	cmp r0, #3
@@ -23350,7 +23350,7 @@ _021FB8E0:
 	add r0, r5, r4
 	add r1, r1, #0xc00
 	orr r2, r6, r2
-	bl sub_020ADEF0
+	bl WCM_ConnectAsync
 	b _021FB928
 _021FB904:
 	cmp r0, #9
@@ -23625,7 +23625,7 @@ _021FBC70:
 	arm_func_start ov00_021FBC78
 ov00_021FBC78: ; 0x021FBC78
 	stmdb sp!, {r3, lr}
-	bl sub_020AE420
+	bl WCM_GetPhase
 	cmp r0, #0xc
 	addls pc, pc, r0, lsl #2
 	b _021FBD00
@@ -23647,19 +23647,19 @@ _021FBCC0:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 _021FBCC8:
-	bl sub_020AD968
+	bl WCM_Finish
 	b _021FBD00
 _021FBCD0:
-	bl sub_020ADBC4
+	bl WCM_CleanupAsync
 	b _021FBD00
 _021FBCD8:
-	bl sub_020ADE4C
+	bl WCM_EndSearchAsync
 	b _021FBD00
 _021FBCE0:
-	bl sub_020AE0F4
+	bl WCM_DisconnectAsync
 	b _021FBD00
 _021FBCE8:
-	bl sub_020AE210
+	bl WCM_TerminateAsync
 	b _021FBD00
 _021FBCF0:
 	mov r0, #0
@@ -24165,7 +24165,7 @@ ov00_021FC32C: ; 0x021FC32C
 	bl ov00_021FAE14
 	mov r4, r0
 	mov r5, #9
-	bl sub_020AE420
+	bl WCM_GetPhase
 	cmp r0, #0xc
 	addls pc, pc, r0, lsl #2
 	b _021FC400
@@ -24205,13 +24205,13 @@ _021FC3B4:
 	bl ov00_021FC568
 	b _021FC400
 _021FC3D0:
-	bl sub_020ADE4C
+	bl WCM_EndSearchAsync
 	b _021FC400
 _021FC3D8:
-	bl sub_020AE0F4
+	bl WCM_DisconnectAsync
 	b _021FC400
 _021FC3E0:
-	bl sub_020AE210
+	bl WCM_TerminateAsync
 	mov r0, #4
 	bl ov00_021FAEE8
 	mov r5, #0x11
@@ -24233,7 +24233,7 @@ ov00_021FC408: ; 0x021FC408
 	mov r4, r0
 	bl ov00_021FAECC
 	mov r5, r0
-	bl sub_020AE420
+	bl WCM_GetPhase
 	cmp r5, #2
 	cmpeq r0, #3
 	bne _021FC440
@@ -24765,7 +24765,7 @@ _021FCB0C:
 	ldmloia sp!, {r3, r4, r5, pc}
 _021FCB38:
 	strb r1, [r5, #0xd13]
-	bl sub_020ADE4C
+	bl WCM_EndSearchAsync
 	cmp r0, #1
 	strneb r4, [r5, #0xd0e]
 	movne r4, #7
@@ -24810,7 +24810,7 @@ ov00_021FCBB4: ; 0x021FCBB4
 	movgt r2, #0xc
 	ldr r2, [ip, r2, lsl #2]
 	orr r2, r3, r2
-	bl sub_020ADCB4
+	bl WCM_SearchAsync
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021FCBD4: .word _02216074
@@ -24820,7 +24820,7 @@ _021FCBD4: .word _02216074
 ov00_021FCBD8: ; 0x021FCBD8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
-	bl sub_020AE420
+	bl WCM_GetPhase
 	mov r4, r0
 	mov r0, #0x10
 	bl ov00_021FAE14
@@ -24835,7 +24835,7 @@ ov00_021FCBD8: ; 0x021FCBD8
 	bl ov00_021FBF24
 	ldr r1, _021FCC5C ; =ov00_021FB62C
 	add r0, sp, #0
-	bl sub_020AD9C0
+	bl WCM_StartupAsync
 	cmp r0, #1
 	beq _021FCC30
 	cmp r0, #4
@@ -24866,7 +24866,7 @@ ov00_021FCC60: ; 0x021FCC60
 	mov r0, #0x10
 	bl ov00_021FAE14
 	mov r5, r0
-	bl sub_020AE420
+	bl WCM_GetPhase
 	cmp r0, #9
 	bne _021FCD04
 	sub r0, r4, #0xa
@@ -27847,14 +27847,14 @@ ov00_021FF31C: ; 0x021FF31C
 	add r0, sp, #0x10
 	mov r5, r1
 	mov r4, r2
-	bl sub_020B03CC
+	bl MD5Init
 	add r0, sp, #0x10
 	mov r1, r6
 	mov r2, r5
-	bl sub_020B03D8
+	bl MD5Update
 	add r0, sp, #0
 	add r1, sp, #0x10
-	bl sub_020B03E4
+	bl MD5Final
 	add r0, sp, #0
 	mov r1, r4
 	bl ov00_021FF2DC
