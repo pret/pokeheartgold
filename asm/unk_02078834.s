@@ -5,6 +5,7 @@
 
 	.public _020FA484
 	.public _020FF639
+	.public _021D43B0
 
 	.text
 
@@ -20236,7 +20237,7 @@ _02082A88:
 	ldr r3, [r4, #8]
 	bl sub_02082AEC
 _02082AA4:
-	ldr r0, _02082AE4 ; =0x021D43B0
+	ldr r0, _02082AE4 ; =_021D43B0
 	mov r1, #1
 	str r4, [r0]
 	mov r0, #0
@@ -20262,7 +20263,7 @@ _02082AD4: .word sub_02083140
 _02082AD8: .word 0x000004C4
 _02082ADC: .word gMain + 0x60
 _02082AE0: .word 0x000004B8
-_02082AE4: .word 0x021D43B0
+_02082AE4: .word _021D43B0
 _02082AE8: .word 0x000005C4
 	thumb_func_end sub_02082908
 

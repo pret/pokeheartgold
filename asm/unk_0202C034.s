@@ -46,14 +46,14 @@ _0202C060:
 	add r0, r7, #0
 	bl sub_0203A01C
 	mov r2, #0x23
-	ldr r1, _0202C088 ; =0x021D2230
+	ldr r1, _0202C088 ; =_021D2230
 	add r0, r7, #0
 	lsl r2, r2, #6
 	bl MI_CpuCopy8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0202C084: .word 0x0000FFFF
-_0202C088: .word 0x021D2230
+_0202C088: .word _021D2230
 	thumb_func_end sub_0202C03C
 
 	thumb_func_start sub_0202C08C
@@ -966,10 +966,10 @@ _0202C6F0: .word 0x0000FFFF
 
 	thumb_func_start sub_0202C6F4
 sub_0202C6F4: ; 0x0202C6F4
-	ldr r0, _0202C6F8 ; =0x021D2230
+	ldr r0, _0202C6F8 ; =_021D2230
 	bx lr
 	.balign 4, 0
-_0202C6F8: .word 0x021D2230
+_0202C6F8: .word _021D2230
 	thumb_func_end sub_0202C6F4
 
 	thumb_func_start sub_0202C6FC
@@ -978,12 +978,12 @@ sub_0202C6FC: ; 0x0202C6FC
 	mov r1, #0x19
 	bl SavArray_get
 	mov r2, #0x23
-	ldr r1, _0202C710 ; =0x021D2230
+	ldr r1, _0202C710 ; =_021D2230
 	lsl r2, r2, #6
 	bl MI_CpuCopy8
 	pop {r3, pc}
 	.balign 4, 0
-_0202C710: .word 0x021D2230
+_0202C710: .word _021D2230
 	thumb_func_end sub_0202C6FC
 
 	thumb_func_start sub_0202C714
@@ -993,10 +993,10 @@ sub_0202C714: ; 0x0202C714
 	bl SavArray_get
 	add r1, r0, #0
 	mov r2, #0x23
-	ldr r0, _0202C72C ; =0x021D2230
+	ldr r0, _0202C72C ; =_021D2230
 	lsl r2, r2, #6
 	bl MI_CpuCopy8
 	pop {r3, pc}
 	nop
-_0202C72C: .word 0x021D2230
+_0202C72C: .word _021D2230
 	thumb_func_end sub_0202C714

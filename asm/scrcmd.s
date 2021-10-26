@@ -1030,14 +1030,14 @@ _02040FBC:
 	mov r3, #0
 	bl ov01_021EF4DC
 _02040FDC:
-	ldr r1, _02040FEC ; =0x021EF349
+	ldr r1, _02040FEC ; =ov01_021EF348
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
-_02040FEC: .word 0x021EF349
+_02040FEC: .word ov01_021EF348
 	thumb_func_end sub_02040F94
 
 	thumb_func_start sub_02040FF0

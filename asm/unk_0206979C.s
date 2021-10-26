@@ -1,6 +1,8 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public _021DA51C
+
 	.text
 
 	thumb_func_start sub_0206979C
@@ -2808,7 +2810,7 @@ _0206AC36:
 	add r1, r5, #0
 	bl sub_0206B880
 	ldr r1, _0206AEA8 ; =0xBCFC0304
-	ldr r0, _0206AEAC ; =0x021DA51C
+	ldr r0, _0206AEAC ; =_021DA51C
 	str r1, [r0, #0x20]
 	add r0, r6, #0
 	bl ScriptEnvironment_GetSav2Ptr
@@ -3095,7 +3097,7 @@ _0206AEA2:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0206AEA8: .word 0xBCFC0304
-_0206AEAC: .word 0x021DA51C
+_0206AEAC: .word _021DA51C
 _0206AEB0: .word 0x020FF468
 _0206AEB4: .word 0x020FF46A
 _0206AEB8: .word 0x021F7919
