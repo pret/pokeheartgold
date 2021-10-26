@@ -140,7 +140,7 @@ ov06_0221BAF0: ; 0x0221BAF0
 	cmp r0, #0
 	ble _0221BB0E
 	bl sub_02026E48
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 _0221BB0E:
 	bl sub_02015460
 _0221BB12:

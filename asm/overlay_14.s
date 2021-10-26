@@ -26613,7 +26613,7 @@ ov14_021F2C1C: ; 0x021F2C1C
 	add r4, r3, #0
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -26639,7 +26639,7 @@ ov14_021F2C50: ; 0x021F2C50
 	add r4, r3, #0
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -27968,7 +27968,7 @@ _021F365A:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
 	add r7, r0, #0
 	add r0, r5, #0
@@ -27983,7 +27983,7 @@ _021F365A:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
 	mov r0, #0x20
 	str r0, [sp]
@@ -28206,7 +28206,7 @@ ov14_021F3844: ; 0x021F3844
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
@@ -28256,7 +28256,7 @@ ov14_021F38B0: ; 0x021F38B0
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2

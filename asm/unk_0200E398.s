@@ -2546,7 +2546,7 @@ sub_0200F748: ; 0x0200F748
 	bl sub_0200AF00
 	mov r1, #1
 	str r0, [sp, #4]
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x19
 	add r7, r0, #0
 	add r0, r4, #0
@@ -2573,7 +2573,7 @@ sub_0200F748: ; 0x0200F748
 	ldr r1, [sp, #4]
 	bl sub_0200B0F8
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x20

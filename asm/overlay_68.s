@@ -3289,7 +3289,7 @@ ov68_021E734C: ; 0x021E734C
 	str r0, [r2]
 	str r3, [r1]
 	bl NNS_G3dGlbFlushP
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #4]
 	bl sub_02008120
 	ldr r0, _021E7384 ; =0x04000540

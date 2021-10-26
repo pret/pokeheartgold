@@ -2474,7 +2474,7 @@ ov57_02238C0C: ; 0x02238C0C
 	cmp r0, #0
 	ble _02238C22
 	bl sub_02026E48
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 _02238C22:
 	bl sub_02015460
 	mov r0, #1

@@ -18934,7 +18934,7 @@ _021EF1C8: .word 0x021FF0EC
 ov112_021EF1CC: ; 0x021EF1CC
 	push {lr}
 	sub sp, #0x14
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -22290,13 +22290,13 @@ ov112_021F0C50: ; 0x021F0C50
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x77
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	mov r1, #0x1e
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -24508,7 +24508,7 @@ ov112_021F1D70: ; 0x021F1D70
 	add r0, r6, #0
 	bl sub_02024B1C
 	add r1, r4, #0
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	ldr r1, [sp]
 	add r0, r7, #0
@@ -25054,7 +25054,7 @@ _021F21B8:
 	ldr r0, [sp, #0x1c]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x20

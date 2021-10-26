@@ -93,7 +93,7 @@ _0200CF8E:
 	ldr r1, [r5]
 	add r0, r7, #0
 	bl sub_02022588
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	ldr r0, [r5, #8]
 	cmp r0, #1
 	bne _0200CFDA

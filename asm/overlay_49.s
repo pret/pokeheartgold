@@ -4308,7 +4308,7 @@ _0225A636:
 	mov r3, #0x40
 	str r6, [sp, #4]
 	bl GfGfxLoader_GXLoadPal
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

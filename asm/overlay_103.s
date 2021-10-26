@@ -3288,7 +3288,7 @@ _021EE260:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	str r0, [sp, #8]
 	mov r0, #0x9d
 	str r0, [sp]

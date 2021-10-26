@@ -107,7 +107,7 @@ _02246A2C:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 _02246A44:
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x7f
@@ -2216,7 +2216,7 @@ ov71_022479C8: ; 0x022479C8
 	add r2, r1, #0
 	bl sub_020C2528
 	bl sub_020C23F4
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0xc]
 	bl sub_02009418
 	ldr r0, [r4, #0xc]
@@ -2945,9 +2945,9 @@ ov71_02247FF8: ; 0x02247FF8
 	mov r3, #8
 	bl ov71_022472C4
 	add r0, sp, #0x5c
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, sp, #0x38
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #1
@@ -4215,9 +4215,9 @@ ov71_02248A08: ; 0x02248A08
 	mov r3, #0xc
 	bl ov71_022472C4
 	add r0, sp, #0x60
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, sp, #0x3c
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #1
@@ -6120,9 +6120,9 @@ ov71_022498F0: ; 0x022498F0
 	mov r3, #8
 	bl ov71_022472C4
 	add r0, sp, #0x5c
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, sp, #0x38
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #1
@@ -7638,9 +7638,9 @@ ov71_0224A510: ; 0x0224A510
 	mov r3, #8
 	bl ov71_022472C4
 	add r0, sp, #0x5c
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, sp, #0x38
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #1
@@ -9305,7 +9305,7 @@ ov71_0224B234: ; 0x0224B234
 	add r2, r1, #0
 	bl sub_020C2528
 	bl sub_020C23F4
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x10]
 	bl sub_02009418
 	ldr r0, [r4, #0x10]
@@ -10036,9 +10036,9 @@ ov71_0224B848: ; 0x0224B848
 	mov r3, #8
 	bl ov71_022472C4
 	add r0, sp, #0x5c
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, sp, #0x38
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #1

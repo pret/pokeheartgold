@@ -2644,7 +2644,7 @@ ov60_021E6E40: ; 0x021E6E40
 	bl sub_02022588
 	bl sub_020216C8
 	bl sub_02022638
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80

@@ -1145,7 +1145,7 @@ ov72_02238194: ; 0x02238194
 	mov r1, #0x43
 	bl NARC_ctor
 	add r7, r0, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

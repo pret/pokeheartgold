@@ -10177,7 +10177,7 @@ ov02_0224A834: ; 0x0224A834
 	bl sub_0200A7BC
 	bl sub_0200AF00
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
 	add r5, r0, #0
 	add r0, r4, #0
@@ -10232,7 +10232,7 @@ ov02_0224A88C: ; 0x0224A88C
 	add r1, r6, #0
 	bl sub_0200B0F8
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x20

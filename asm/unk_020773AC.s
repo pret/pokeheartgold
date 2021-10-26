@@ -169,7 +169,7 @@ sub_020774E0: ; 0x020774E0
 	cmp r0, #0
 	ble _020774F6
 	bl sub_02026E48
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 _020774F6:
 	bl sub_02015460
 	mov r0, #1

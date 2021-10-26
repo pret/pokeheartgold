@@ -2284,7 +2284,7 @@ ov44_0222B030: ; 0x0222B030
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r6, r0, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -19304,7 +19304,7 @@ ov44_0223376C: ; 0x0223376C
 	sub sp, #0x24
 	add r7, r0, #0
 	add r6, r1, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

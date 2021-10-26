@@ -2109,7 +2109,7 @@ ov70_02238900: ; 0x02238900
 	mov r1, #0x3d
 	bl NARC_ctor
 	str r0, [sp, #0x18]
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]

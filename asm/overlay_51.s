@@ -3680,7 +3680,7 @@ ov51_021E78F8: ; 0x021E78F8
 	orr r0, r1
 	str r0, [r2]
 	bl ov51_021E7D68
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80

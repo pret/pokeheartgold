@@ -699,7 +699,7 @@ sub_020139D0: ; 0x020139D0
 	cmp r1, #1
 	bne _02013A36
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r0, #0
 	add r0, r4, #0
 	add r2, r6, #0
@@ -707,7 +707,7 @@ sub_020139D0: ; 0x020139D0
 	b _02013A46
 _02013A36:
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r0, #0
 	add r0, r4, #0
 	add r2, r6, #0
@@ -1045,7 +1045,7 @@ _02013C82:
 	beq _02013CC2
 _02013C98:
 	add r0, r5, #0
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	str r7, [sp]
 	ldr r0, [sp, #0x30]
 	str r6, [sp, #4]

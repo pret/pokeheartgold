@@ -7270,7 +7270,7 @@ ov85_021E8F88: ; 0x021E8F88
 	sub sp, #0x18
 	add r6, r0, #0
 	str r1, [sp, #0x14]
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

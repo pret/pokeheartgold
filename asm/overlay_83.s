@@ -17571,7 +17571,7 @@ ov83_02246E08: ; 0x02246E08
 	str r2, [sp, #0x18]
 	bl sub_0202055C
 	bl ov83_022472DC
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80
@@ -18679,7 +18679,7 @@ _022476EA:
 	ldr r0, [r5, #4]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
 	str r0, [sp, #0x18]
 	add r0, r4, #0
@@ -18693,7 +18693,7 @@ _022476EA:
 	ldr r0, [r5, #4]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
 	mov r0, #0x20
 	str r0, [sp]

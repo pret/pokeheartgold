@@ -1867,7 +1867,7 @@ ov48_02259688: ; 0x02259688
 	sub sp, #0x14
 	add r5, r0, #0
 	add r6, r1, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

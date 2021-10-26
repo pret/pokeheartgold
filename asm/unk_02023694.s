@@ -2287,10 +2287,10 @@ sub_020245FC: ; 0x020245FC
 	bl memset
 	add r0, r4, #0
 	add r0, #0xb4
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	add r0, r4, #0
 	add r0, #0xd8
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	mov r0, #0
 	str r0, [r4, #0x30]
 	pop {r4, pc}
@@ -2481,7 +2481,7 @@ _02024774:
 	ldr r1, [r1]
 	add r0, #0xb4
 	add r4, #0x40
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -2753,22 +2753,22 @@ _0202491A:
 	lsl r1, r4, #0x10
 	ldr r0, [r5, #4]
 	lsr r1, r1, #0x10
-	bl sub_020B6E80
+	bl NNS_G2dGetAnimSequenceByIdx
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #8
-	bl sub_020B8BC4
+	bl NNS_G2dSetCellAnimationSequence
 	mov r0, #1
 	str r0, [r5, #0x14]
 	pop {r3, r4, r5, pc}
 _02024936:
 	add r5, #0x40
 	ldr r0, [r5, #0x70]
-	bl sub_020B6E80
+	bl NNS_G2dGetAnimSequenceByIdx
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #8
-	bl sub_020B8E98
+	bl NNS_G2dSetAnimSequenceToMCAnimation
 	mov r0, #1
 	str r0, [r5, #0x14]
 	pop {r3, r4, r5, pc}
@@ -2804,7 +2804,7 @@ _02024974:
 	add r5, #0x40
 	add r0, r5, #0
 	add r0, #8
-	bl sub_020B781C
+	bl NNS_G2dResetAnimCtrlState
 	mov r0, #1
 	str r0, [r5, #0x14]
 	add r0, r4, #0
@@ -2816,7 +2816,7 @@ _0202498E:
 	add r5, #0x40
 	add r0, r5, #0
 	add r0, #8
-	bl sub_020B781C
+	bl NNS_G2dResetAnimCtrlState
 	mov r0, #1
 	str r0, [r5, #0x14]
 	add r0, r4, #0
@@ -2846,12 +2846,12 @@ sub_020249B0: ; 0x020249B0
 _020249C0:
 	add r0, #0x40
 	add r0, #8
-	bl sub_020B8BDC
+	bl NNS_G2dTickCellAnimation
 	pop {r3, pc}
 _020249CA:
 	add r0, #0x40
 	add r0, #8
-	bl sub_020B9044
+	bl NNS_G2dTickMCAnimation
 	pop {r3, pc}
 	thumb_func_end sub_020249B0
 
@@ -2868,23 +2868,23 @@ sub_020249D4: ; 0x020249D4
 _020249E4:
 	add r0, #0x40
 	add r0, #8
-	bl sub_020B8BFC
+	bl NNS_G2dSetCellAnimationCurrentFrame
 	pop {r3, pc}
 _020249EE:
 	add r0, #0x40
 	add r0, #8
-	bl sub_020B9124
+	bl NNS_G2dSetMCAnimationCurrentFrame
 	pop {r3, pc}
 	thumb_func_end sub_020249D4
 
 	thumb_func_start sub_020249F8
 sub_020249F8: ; 0x020249F8
-	ldr r3, _02024A00 ; =sub_020B77A8
+	ldr r3, _02024A00 ; =NNS_G2dGetAnimCtrlCurrentFrame
 	add r0, #0x40
 	add r0, #8
 	bx r3
 	.balign 4, 0
-_02024A00: .word sub_020B77A8
+_02024A00: .word NNS_G2dGetAnimCtrlCurrentFrame
 	thumb_func_end sub_020249F8
 
 	thumb_func_start sub_02024A04
@@ -3477,12 +3477,12 @@ sub_02024DA8: ; 0x02024DA8
 	add r4, #0x40
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_020B6E80
+	bl NNS_G2dGetAnimSequenceByIdx
 	add r4, #8
 	add r1, r0, #0
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
-	bl sub_020B8B04
+	bl NNS_G2dInitCellAnimation
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_02024DA8
@@ -3500,17 +3500,17 @@ sub_02024DC8: ; 0x02024DC8
 	ldr r0, [r4, #4]
 	mov r1, #0
 	ldr r5, [r5, #4]
-	bl sub_020B6E80
+	bl NNS_G2dGetAnimSequenceByIdx
 	str r0, [sp, #0x18]
 	add r0, r6, #0
 	add r0, #0xb4
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r7, r0, #0
 	add r0, r6, #0
 	add r0, #0xb4
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0
 	mvn r1, r1
 	str r1, [sp]
@@ -3527,7 +3527,7 @@ sub_02024DC8: ; 0x02024DC8
 	ldr r2, [r6, #0x40]
 	ldr r3, [r4, #0x60]
 	add r0, #8
-	bl sub_020B8B40
+	bl NNS_G2dInitCellAnimationVramTransfered
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end sub_02024DC8
@@ -3542,10 +3542,10 @@ sub_02024E24: ; 0x02024E24
 	ldr r0, [r4, #0x70]
 	add r7, r1, #0
 	mov r1, #0
-	bl sub_020B6E80
+	bl NNS_G2dGetAnimSequenceByIdx
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x6c]
-	bl sub_020B8F50
+	bl NNS_G2dGetMCBankNumNodesRequired
 	add r6, r0, #0
 	mov r1, #0x28
 	add r0, r7, #0
@@ -3568,11 +3568,11 @@ sub_02024E24: ; 0x02024E24
 	ldr r1, [r4, #0x74]
 	ldr r2, [r4, #0x78]
 	add r0, #8
-	bl sub_020B91D8
+	bl NNS_G2dInitMCAnimation
 	add r4, #8
 	ldr r1, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_020B8E98
+	bl NNS_G2dSetAnimSequenceToMCAnimation
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3598,7 +3598,7 @@ _02024E9C:
 _02024E9E:
 	cmp r4, #0
 	beq _02024EAE
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r4, #0
 	bl _u32_div_f
 	pop {r4, pc}
@@ -3631,8 +3631,8 @@ sub_02024EB4: ; 0x02024EB4
 	mov r0, #0x45
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020BA034
-	bl sub_020BA560
+	bl NNS_G2dBeginRendering
+	bl NNS_G2dPushMtx
 	add r1, r4, #0
 	mov r0, #0x45
 	add r1, #0x26
@@ -3668,7 +3668,7 @@ _02024F2A:
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	ldr r2, [sp, #8]
-	bl sub_020BA7D4
+	bl NNS_G2dTranslate
 	add r0, r4, #0
 	add r0, #0x26
 	ldrb r0, [r0]
@@ -3677,11 +3677,11 @@ _02024F2A:
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4, #0x14]
-	bl sub_020BA7D4
+	bl NNS_G2dTranslate
 	ldr r0, [r4, #0x18]
 	ldr r1, [r4, #0x1c]
 	ldr r2, [r4, #0x20]
-	bl sub_020BA8D0
+	bl NNS_G2dScale
 	ldrh r0, [r4, #0x24]
 	ldr r2, _0202500C ; =0x021094DC
 	asr r0, r0, #4
@@ -3691,14 +3691,14 @@ _02024F2A:
 	lsl r1, r1, #1
 	ldrsh r0, [r2, r0]
 	ldrsh r1, [r2, r1]
-	bl sub_020BAA24
+	bl NNS_G2dRotZ
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4, #0x14]
 	neg r0, r0
 	neg r1, r1
 	neg r2, r2
-	bl sub_020BA7D4
+	bl NNS_G2dTranslate
 _02024F78:
 	add r0, r4, #0
 	add r0, #0x28
@@ -3761,16 +3761,16 @@ _02024FEA:
 	add r4, #0x40
 	add r4, #8
 	add r0, r4, #0
-	bl sub_020BA148
+	bl NNS_G2dDrawCellAnimation
 	b _02025000
 _02024FF6:
 	add r4, #0x40
 	add r4, #8
 	add r0, r4, #0
-	bl sub_020BA484
+	bl NNS_G2dDrawMultiCellAnimation
 _02025000:
-	bl sub_020BA784
-	bl sub_020BA0DC
+	bl NNS_G2dPopMtx
+	bl NNS_G2dEndRendering
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

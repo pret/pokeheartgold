@@ -1364,7 +1364,7 @@ _0221C908:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r2, #0x32
 	add r1, r0, #0
 	add r0, r4, #0
@@ -1374,7 +1374,7 @@ _0221C908:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
 	mov r0, #0x20
 	str r0, [sp]
@@ -1402,7 +1402,7 @@ ov63_0221C954: ; 0x0221C954
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	cmp r5, #0
 	beq _0221C97C
@@ -1442,7 +1442,7 @@ ov63_0221C99C: ; 0x0221C99C
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r6, r0, #0
 	bl sub_02026EA4
 	mov r1, #1
@@ -1476,7 +1476,7 @@ ov63_0221C9E0: ; 0x0221C9E0
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	mov r0, #1
 	lsl r0, r0, #8
@@ -1689,7 +1689,7 @@ ov63_0221CB94: ; 0x0221CB94
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
 	ldrb r0, [r0, #5]
@@ -1759,7 +1759,7 @@ _0221CC04:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r4, r0, #0
 	ldr r0, [sp, #0x20]
 	ldr r1, [r0, #0x38]
@@ -4681,7 +4681,7 @@ ov63_0221E450: ; 0x0221E450
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	str r0, [r4, #0x20]
 	ldr r0, [sp, #0x18]
 	cmp r0, #2
@@ -5990,7 +5990,7 @@ _0221EF06:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r2, #0x32
 	add r1, r0, #0
 	add r0, r4, #0
@@ -6004,7 +6004,7 @@ _0221EF06:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
 	mov r0, #0x20
 	str r0, [sp]

@@ -4390,7 +4390,7 @@ ov87_021E7AF8: ; 0x021E7AF8
 	mov r1, #0x7a
 	bl sub_0202055C
 	bl ov87_021E7EF0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80

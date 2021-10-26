@@ -6939,7 +6939,7 @@ _021E8C14:
 	beq _021E8C58
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #0x20
@@ -6949,7 +6949,7 @@ _021E8C58:
 	beq _021E8C6E
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #0x20
@@ -7192,7 +7192,7 @@ _021E8E2A:
 	beq _021E8E54
 	ldr r0, [sp, #0x24]
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r0, #0
 	mov r0, #0x56
 	lsl r0, r0, #2
@@ -7206,7 +7206,7 @@ _021E8E54:
 	beq _021E8E72
 	ldr r0, [sp, #0x24]
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r0, #0
 	mov r0, #0x56
 	lsl r0, r0, #2
@@ -7247,7 +7247,7 @@ _021E8EA2:
 	beq _021E8EC2
 	ldr r0, [sp, #0x28]
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x20
@@ -7258,7 +7258,7 @@ _021E8EC2:
 	beq _021E8EDA
 	ldr r0, [sp, #0x28]
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x20
@@ -19487,7 +19487,7 @@ _021EEAEA:
 	add r0, r6, #0
 	bl sub_02024B34
 	add r1, r7, #0
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	cmp r7, #1
 	bne _021EEB52
@@ -19740,7 +19740,7 @@ ov96_021EED14: ; 0x021EED14
 	add r0, r6, #0
 	bl sub_02024B1C
 	add r1, r4, #0
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	ldr r1, [sp]
 	add r0, r7, #0
@@ -19795,7 +19795,7 @@ _021EED86:
 	ldr r0, [r0]
 	bl sub_02024B34
 	add r1, r5, #0
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r5, r0, #0
 	mov r0, #0x20
 	str r0, [sp]
@@ -22294,7 +22294,7 @@ _021F013C:
 	add r0, sp, #0xe4
 	mov r1, #0x16
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -30735,13 +30735,13 @@ _021F4420:
 	str r0, [sp, #0xc]
 	add r0, r7, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r6, r5
 	add r1, #0x88
 	str r0, [r1]
 	ldr r0, [sp, #0xc]
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r6, r5
 	add r1, #0x90
 	str r0, [r1]
@@ -32317,7 +32317,7 @@ _021F504A:
 	mov r2, #0x8f
 	str r3, [sp]
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -39680,33 +39680,33 @@ ov96_021F8AFC: ; 0x021F8AFC
 	str r0, [sp]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	str r0, [sp, #4]
 	lsl r0, r5, #9
 	str r0, [sp, #8]
 	add r0, r7, #0
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	ldr r3, [sp, #4]
 	ldr r2, [sp, #8]
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r3, r2
-	bl sub_020B8024
+	bl NNS_G2dSetImageLocation
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	str r0, [sp, #0xc]
 	add r0, r5, #6
 	lsl r0, r0, #5
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	ldr r3, [sp, #0xc]
 	ldr r2, [sp, #0x10]
 	ldr r0, [sp]
 	add r1, r6, #0
 	add r2, r3, r2
-	bl sub_020B806C
+	bl NNS_G2dSetImagePaletteLocation
 	add r0, r4, #0
 	add r1, r7, #0
 	bl sub_02024B00
@@ -40946,7 +40946,7 @@ _021F94DE:
 	mov r1, #0x12
 	str r3, [sp]
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -47271,7 +47271,7 @@ _021FC79C:
 	add r0, sp, #0xa4
 	mov r1, #0x16
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -55978,13 +55978,13 @@ _02200D90:
 	add r5, r1, r0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r5, r1]
 	ldr r0, [sp, #8]
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -57089,7 +57089,7 @@ _02201588:
 	mov r2, #0x92
 	str r3, [sp]
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -62150,7 +62150,7 @@ _02203F80:
 	add r5, r6, r0
 	add r0, r7, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0xd
 	lsl r1, r1, #8
 	add r2, r4, #0
@@ -62162,7 +62162,7 @@ _02203F80:
 	str r0, [r5, #0x3c]
 	ldr r0, [sp]
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	lsl r1, r4, #5
 	add r1, #0x20
 	add r0, r1, r0
@@ -63235,7 +63235,7 @@ _02204820:
 	add r0, sp, #0xa8
 	mov r1, #0x16
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -71477,13 +71477,13 @@ _022089E4:
 	add r5, r1, r0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	ldr r0, [sp, #8]
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -77026,7 +77026,7 @@ _0220B58E:
 	ldr r0, [r0]
 	bl sub_02024CB8
 	add r6, r0, #0
-	bl sub_020B75CC
+	bl NNS_G2dGetAnimCtrlCurrentElement
 	add r5, r0, #0
 	ldr r0, [r6, #0xc]
 	cmp r0, #0
@@ -88405,7 +88405,7 @@ _02210CCC:
 	add r0, sp, #0x108
 	str r1, [sp]
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #1
 	str r0, [sp]
 	mov r1, #0x7e

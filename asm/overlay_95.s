@@ -297,7 +297,7 @@ ov95_021E5B58: ; 0x021E5B58
 	cmp r0, #0
 	ble _021E5B6E
 	bl sub_02026E48
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 _021E5B6E:
 	bl sub_02015460
 	mov r0, #1

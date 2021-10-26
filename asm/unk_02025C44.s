@@ -8,7 +8,7 @@ sub_02025C44: ; 0x02025C44
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020B9F0C
+	bl NNS_G2dInitRenderer
 	add r5, #0x80
 	str r4, [r5]
 	pop {r3, r4, r5, pc}
@@ -21,7 +21,7 @@ sub_02025C54: ; 0x02025C54
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_020B9FD8
+	bl NNS_G2dInitRenderSurface
 	add r2, r5, #0
 	ldmia r4!, {r0, r1}
 	stmia r2!, {r0, r1}
@@ -37,7 +37,7 @@ sub_02025C54: ; 0x02025C54
 	cmp r0, #0
 	beq _02025C84
 	add r1, r5, #0
-	bl sub_020B9FC8
+	bl NNS_G2dAddRendererTargetSurface
 _02025C84:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

@@ -1250,7 +1250,7 @@ ov90_022590CC: ; 0x022590CC
 	str r1, [sp, #0x14]
 	add r6, r2, #0
 	str r3, [sp, #0x18]
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

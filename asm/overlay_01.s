@@ -966,7 +966,7 @@ ov01_021E6138: ; 0x021E6138
 ov01_021E6178: ; 0x021E6178
 	push {lr}
 	sub sp, #0x14
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7c

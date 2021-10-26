@@ -493,7 +493,7 @@ ov41_0224621C: ; 0x0224621C
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_02026E48
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
 	beq _02246234
@@ -1031,7 +1031,7 @@ ov41_022465D8: ; 0x022465D8
 	add r6, r2, #0
 	ldr r7, [sp, #0x18]
 	str r1, [r0]
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r1, _02246660 ; =0x04000470
 	lsl r0, r4, #0xc
 	str r0, [r1]
@@ -1248,7 +1248,7 @@ ov41_02246778: ; 0x02246778
 	mov r0, #0x10
 	orr r0, r1
 	str r0, [r2]
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r0, #0x1f
@@ -1277,7 +1277,7 @@ ov41_022467D4: ; 0x022467D4
 	push {r3, lr}
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	pop {r3, pc}
 	thumb_func_end ov41_022467D4
 
@@ -1653,7 +1653,7 @@ ov41_02246A94: ; 0x02246A94
 	bl sub_02022588
 	bl sub_020216C8
 	bl sub_02022638
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7c
@@ -12456,7 +12456,7 @@ ov41_0224BACC: ; 0x0224BACC
 	bl OverlayManager_GetData
 	add r5, r0, #0
 	bl sub_02026E48
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r5, #0x10]
 	bl ov41_0224B554
 	mov r0, #0

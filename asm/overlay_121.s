@@ -726,7 +726,7 @@ _021E5F08: .word 0x021E702C
 ov121_021E5F0C: ; 0x021E5F0C
 	push {lr}
 	sub sp, #0x14
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

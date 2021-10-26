@@ -9008,7 +9008,7 @@ ov59_0223C304: ; 0x0223C304
 	bl sub_02026E48
 	bl sub_0201543C
 	bl sub_02026E48
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	bl sub_02023154
 	ldr r2, _0223C348 ; =0x04000440
 	mov r3, #0
@@ -9020,7 +9020,7 @@ ov59_0223C304: ; 0x0223C304
 	str r0, [r2]
 	str r3, [r1]
 	bl NNS_G3dGlbFlushP
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0xc]
 	bl sub_02008120
 	bl sub_02015460

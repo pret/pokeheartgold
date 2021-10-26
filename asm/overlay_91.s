@@ -6986,7 +6986,7 @@ ov91_0225FA9C: ; 0x0225FA9C
 	sub sp, #0x24
 	add r7, r0, #0
 	add r6, r1, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

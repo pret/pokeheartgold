@@ -12770,7 +12770,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	ldr r0, [r6, r4]
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	bl sub_020741B0
@@ -12801,7 +12801,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	ldr r0, [r1, r0]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	ldr r1, [sp, #0x18]
 	add r7, r0, #0
 	ldr r0, [r1, #0x14]
@@ -21838,7 +21838,7 @@ sub_020837AC: ; 0x020837AC
 	sub sp, #0x14
 	add r5, r0, #0
 	add r7, r1, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -39011,7 +39011,7 @@ sub_0208BE00: ; 0x0208BE00
 	ldr r0, [r1, r0]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	mov r0, #0x8b
 	lsl r0, r0, #2
@@ -42987,7 +42987,7 @@ _0208DED8: .word 0x04000008
 sub_0208DEDC: ; 0x0208DEDC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

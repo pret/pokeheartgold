@@ -136,7 +136,7 @@ _0200805A:
 	add r5, #0xac
 	cmp r6, #4
 	blt _0200805A
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r2, _02008114 ; =0x00000333
 	mov r0, #0
 	strb r0, [r4, r2]
@@ -496,7 +496,7 @@ _020081C8:
 	add r2, r3, r2
 	ldr r3, [sp, #0x1c]
 	asr r1, r1, #0x10
-	bl sub_020B7418
+	bl NNS_G2dDrawSpriteFast
 	b _020083B6
 _0200834A:
 	mov r0, #0x34
@@ -551,7 +551,7 @@ _0200834A:
 	lsl r1, r1, #0x10
 	asr r1, r1, #0x10
 	add r2, r6, r2
-	bl sub_020B7418
+	bl NNS_G2dDrawSpriteFast
 _020083B6:
 	add r0, r4, #0
 	add r0, #0x6c
@@ -713,7 +713,7 @@ _020084C0:
 	ldr r2, _0200851C ; =0xFFFFFC18
 	asr r0, r0, #0x10
 	asr r1, r1, #0x10
-	bl sub_020B7418
+	bl NNS_G2dDrawSpriteFast
 _020084FA:
 	ldr r0, [sp, #0x14]
 	add r4, #0xac
@@ -2909,7 +2909,7 @@ sub_02009418: ; 0x02009418
 	strb r1, [r4, r0]
 	sub r0, #0x81
 	add r0, r4, r0
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0xc2
 	lsl r3, r3, #2
 	mov r1, #0x20
@@ -2935,7 +2935,7 @@ sub_02009418: ; 0x02009418
 	ldr r1, [r4, r1]
 	mov r2, #0
 	add r3, r4, r3
-	bl sub_020B82CC
+	bl NNS_G2dLoadImage2DMapping
 _02009466:
 	ldr r0, _020094AC ; =0x00000332
 	ldrb r1, [r4, r0]
@@ -2945,7 +2945,7 @@ _02009466:
 	strb r1, [r4, r0]
 	sub r0, #0x5e
 	add r0, r4, r0
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	mov r3, #0xbe
 	lsl r3, r3, #2
 	add r0, r3, #0

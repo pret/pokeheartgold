@@ -22707,7 +22707,7 @@ ov18_021F111C: ; 0x021F111C
 	add r4, r3, #0
 	bl sub_02024B1C
 	ldr r1, [sp, #0x10]
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -23961,7 +23961,7 @@ _021F1AC8:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
@@ -23976,7 +23976,7 @@ _021F1AC8:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r4, r0, #0
 	ldr r0, [sp, #0x60]
 	cmp r0, #0
@@ -39453,7 +39453,7 @@ ov18_021F9518: ; 0x021F9518
 	ldr r0, [r5, r0]
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x80

@@ -1893,7 +1893,7 @@ _021E6764:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r5, r0, #0
 	ldr r0, [sp, #0x10]
 	ldr r1, [r0, #0x14]
@@ -1933,7 +1933,7 @@ _021E67A6:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	ldr r0, [sp, #0x10]
 	ldr r2, [r0, #0x38]

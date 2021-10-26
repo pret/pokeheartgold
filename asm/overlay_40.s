@@ -49,7 +49,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	mov r0, #0x6d
 	bl sub_02007FD4
 	str r0, [r4, #0x64]
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x28]
 	mov r1, #1
 	bl sub_02003B50

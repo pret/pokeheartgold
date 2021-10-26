@@ -3595,7 +3595,7 @@ ov82_0223F95C: ; 0x0223F95C
 	add r5, r0, #0
 	str r1, [sp, #0x14]
 	bl ov82_0223FC14
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80

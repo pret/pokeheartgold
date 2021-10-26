@@ -1952,7 +1952,7 @@ _021E685E:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r0, #0
 	mov r2, #0x32
 	ldr r0, [sp, #0x28]
@@ -1965,7 +1965,7 @@ _021E685E:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
 	mov r0, #0x20
 	str r0, [sp]
@@ -2454,7 +2454,7 @@ _021E6C84:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x66
 	str r0, [sp, #0x2c]
 	lsl r0, r6, #5
@@ -2569,7 +2569,7 @@ _021E6DCE:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r6, r0, #0
 	ldr r0, [sp, #0x18]
 	ldr r1, [r0, #0x38]

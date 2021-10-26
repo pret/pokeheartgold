@@ -21718,7 +21718,7 @@ ov74_02231BF0: ; 0x02231BF0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r6, r0, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -29397,7 +29397,7 @@ ov74_02235690: ; 0x02235690
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	ldr r6, _022356F8 ; =0x0223D454
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -30045,7 +30045,7 @@ ov74_02235B14: ; 0x02235B14
 	ldr r0, [sp, #0x20]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r2, #0x32
 	add r1, r0, #0
 	lsl r2, r2, #6
@@ -30055,7 +30055,7 @@ ov74_02235B14: ; 0x02235B14
 	ldr r0, [sp, #0x20]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
 	mov r0, #0x20
 	str r0, [sp]

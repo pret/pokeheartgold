@@ -922,7 +922,7 @@ ov61_021E60E8: ; 0x021E60E8
 	push {r4, r5, lr}
 	sub sp, #0x24
 	add r4, r0, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80
@@ -2987,11 +2987,11 @@ ov61_021E7108: ; 0x021E7108
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	str r0, [sp, #4]
 	add r0, r7, #0
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	mov r1, #0x32
 	add r5, r0, #0
 	add r0, r4, #0

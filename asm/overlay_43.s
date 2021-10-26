@@ -977,7 +977,7 @@ ov43_0222A690: ; 0x0222A690
 	sub sp, #0x3c
 	add r7, r1, #0
 	add r6, r0, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0x10
 	add r1, r7, #0
 	bl sub_0202055C
