@@ -5347,15 +5347,15 @@ _020B4B60: .word 0x5F564354
 _020B4B64: .word 0x021D848C
 	arm_func_end sub_020B4A8C
 
-	arm_func_start sub_020B4B68
-sub_020B4B68: ; 0x020B4B68
+	arm_func_start NNS_FndInitList
+NNS_FndInitList: ; 0x020B4B68
 	mov r2, #0
 	str r2, [r0]
 	str r2, [r0, #4]
 	strh r2, [r0, #8]
 	strh r1, [r0, #0xa]
 	bx lr
-	arm_func_end sub_020B4B68
+	arm_func_end NNS_FndInitList
 
 	arm_func_start sub_020B4B80
 sub_020B4B80: ; 0x020B4B80
@@ -5454,8 +5454,8 @@ _020B4C80:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020B4C50
 
-	arm_func_start sub_020B4CB4
-sub_020B4CB4: ; 0x020B4CB4
+	arm_func_start NNS_FndRemoveListObject
+NNS_FndRemoveListObject: ; 0x020B4CB4
 	stmdb sp!, {r3, lr}
 	ldrh ip, [r0, #0xa]
 	ldr r3, [r1, ip]
@@ -5480,7 +5480,7 @@ sub_020B4CB4: ; 0x020B4CB4
 	sub r1, r1, #1
 	strh r1, [r0, #8]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020B4CB4
+	arm_func_end NNS_FndRemoveListObject
 
 	.rodata
 

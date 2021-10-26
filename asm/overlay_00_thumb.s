@@ -1697,7 +1697,7 @@ ov00_021E6638: ; 0x021E6638
 	bl OS_DisableInterrupts
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020B55AC
+	bl NNS_FndGetGroupIDForMBlockExpHeap
 	cmp r0, #0x10
 	bne _021E666E
 	ldr r0, _021E6684 ; =_0221A680
@@ -3242,7 +3242,7 @@ ov00_021E714C: ; 0x021E714C
 	ldr r0, [r2]
 	ldr r0, [r0, r1]
 	mov r1, #0x10
-	bl sub_020B5594
+	bl NNS_FndSetGroupIDForExpHeap
 	ldr r0, _021E7208 ; =_0221A680
 	ldr r1, [r0]
 	ldr r0, _021E7218 ; =0x00000F9C
