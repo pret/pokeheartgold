@@ -42,7 +42,7 @@ _02020582:
 	ldr r1, [r1]
 	ldr r0, [r1, #8]
 	ldr r1, [r1]
-	bl sub_020B62C8
+	bl NNS_GfdInitVramTransferManager
 	pop {r3, r4, r5, pc}
 	nop
 _020205A8: .word _021D2194
@@ -103,7 +103,7 @@ _0202060A:
 	add r1, r4, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_020B634C
+	bl NNS_GfdRegisterNewVramTransferTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02020618: .word _021D2194
@@ -116,7 +116,7 @@ sub_0202061C: ; 0x0202061C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02020632
-	bl sub_020B62EC
+	bl NNS_GfdDoVramTransfer
 	ldr r0, _02020634 ; =_021D2194
 	mov r1, #0
 	ldr r0, [r0]

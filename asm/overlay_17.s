@@ -2121,7 +2121,7 @@ ov17_02202BF8: ; 0x02202BF8
 	beq _02202C0A
 	bl sub_0200D034
 _02202C0A:
-	bl sub_020B62EC
+	bl NNS_GfdDoVramTransfer
 	add r4, #0x88
 	ldr r0, [r4]
 	bl sub_0201EEB4

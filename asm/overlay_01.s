@@ -34999,8 +34999,8 @@ ov01_021F61F8: ; 0x021F61F8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl sub_0201A430
-	bl sub_020B6918
-	bl sub_020B6C80
+	bl NNS_GfdResetLnkTexVramState
+	bl NNS_GfdResetLnkPlttVramState
 	mov r4, #0
 	add r6, r5, #4
 	mov r7, #0x30

@@ -2045,7 +2045,7 @@ _021E686C:
 	bl ov109_021E6898
 	add r0, r4, #0
 	bl ov109_021E68D4
-	bl sub_020B62EC
+	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x14]
 	bl sub_0201EEB4
 	ldr r3, _021E6890 ; =0x027E0000

@@ -7,8 +7,8 @@ _021D43B8:
 	.space 0x10
 
 
-	.public _02110924
-	.public _0211092C
+	.public NNS_GfdDefaultFuncAllocTexVram
+	.public NNS_GfdDefaultFuncAllocPlttVram
 
 	.text
 
@@ -786,7 +786,7 @@ _02098A60:
 sub_02098A84: ; 0x02098A84
 	stmdb sp!, {lr}
 	sub sp, sp, #4
-	ldr r3, _02098AB4 ; =_0211092C
+	ldr r3, _02098AB4 ; =NNS_GfdDefaultFuncAllocPlttVram
 	mov r2, #0
 	ldr r3, [r3]
 	blx r3
@@ -797,7 +797,7 @@ sub_02098A84: ; 0x02098A84
 	ldmia sp!, {lr}
 	bx lr
 	.align 2, 0
-_02098AB4: .word _0211092C
+_02098AB4: .word NNS_GfdDefaultFuncAllocPlttVram
 _02098AB8: .word 0x0000FFFF
 	arm_func_end sub_02098A84
 
@@ -805,7 +805,7 @@ _02098AB8: .word 0x0000FFFF
 sub_02098ABC: ; 0x02098ABC
 	stmdb sp!, {lr}
 	sub sp, sp, #4
-	ldr r3, _02098AEC ; =_02110924
+	ldr r3, _02098AEC ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r2, #0
 	ldr r3, [r3]
 	blx r3
@@ -816,7 +816,7 @@ sub_02098ABC: ; 0x02098ABC
 	ldmia sp!, {lr}
 	bx lr
 	.align 2, 0
-_02098AEC: .word _02110924
+_02098AEC: .word NNS_GfdDefaultFuncAllocTexVram
 _02098AF0: .word 0x0000FFFF
 	arm_func_end sub_02098ABC
 

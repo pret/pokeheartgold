@@ -186,7 +186,7 @@ sub_02014EBC: ; 0x02014EBC
 	beq _02014EDA
 	add r0, r5, #0
 	add r0, #0x58
-	bl sub_020B5CD8
+	bl NNS_GfdSetFrmTexVramState
 	b _02014EFA
 _02014EDA:
 	mov r0, #2
@@ -199,7 +199,7 @@ _02014EE6:
 	ldr r0, [r4, #0x58]
 	cmp r0, #0
 	beq _02014EF2
-	bl sub_020B68A4
+	bl NNS_GfdFreeLnkTexVram
 	str r7, [r4, #0x58]
 _02014EF2:
 	add r6, r6, #1
@@ -215,7 +215,7 @@ _02014EFA:
 	beq _02014F10
 	add r0, r5, #0
 	add r0, #0x98
-	bl sub_020B5EC4
+	bl NNS_GfdSetFrmPlttVramState
 	b _02014F38
 _02014F10:
 	mov r0, #8
@@ -230,7 +230,7 @@ _02014F1C:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02014F30
-	bl sub_020B6C3C
+	bl NNS_GfdFreeLnkPlttVram
 	add r0, r4, #0
 	add r0, #0x98
 	str r7, [r0]
@@ -766,7 +766,7 @@ _0201528A:
 	beq _020152A0
 	add r0, r5, #0
 	add r0, #0x58
-	bl sub_020B5C98
+	bl NNS_GfdGetFrmTexVramState
 	b _020152B6
 _020152A0:
 	mov r0, #2
@@ -787,7 +787,7 @@ _020152B6:
 	beq _020152C6
 	add r0, r5, #0
 	add r0, #0x98
-	bl sub_020B5EA8
+	bl NNS_GfdGetFrmPlttVramState
 	b _020152E0
 _020152C6:
 	mov r0, #8

@@ -6604,7 +6604,7 @@ ov108_021E8CD4: ; 0x021E8CD4
 	add r0, #0xf1
 	strb r6, [r0]
 	mov r0, #0x80
-	bl sub_020B67B4
+	bl NNS_GfdGetLnkTexVramManagerWorkSize
 	add r6, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0
@@ -6623,7 +6623,7 @@ ov108_021E8CD4: ; 0x021E8CD4
 	bl sub_02026FE8
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_020B6B14
+	bl NNS_GfdGetLnkPlttVramManagerWorkSize
 	add r6, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0

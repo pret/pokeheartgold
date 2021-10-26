@@ -2921,7 +2921,7 @@ ov59_022393D4: ; 0x022393D4
 	beq _022393E6
 	bl sub_0200D034
 _022393E6:
-	bl sub_020B62EC
+	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x54]
 	bl sub_0201EEB4
 	ldr r3, _02239400 ; =0x027E0000

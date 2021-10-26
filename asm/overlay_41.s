@@ -1267,8 +1267,8 @@ _022467C4: .word 0xFFCFFFEF
 	thumb_func_start ov41_022467C8
 ov41_022467C8: ; 0x022467C8
 	push {r3, lr}
-	bl sub_020B5AAC
-	bl sub_020B5EE0
+	bl NNS_GfdResetFrmTexVramState
+	bl NNS_GfdResetFrmPlttVramState
 	pop {r3, pc}
 	thumb_func_end ov41_022467C8
 
