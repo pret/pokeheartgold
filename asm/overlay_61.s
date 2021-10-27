@@ -1765,12 +1765,12 @@ ov61_021E67D4: ; 0x021E67D4
 	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r6, r0, #0
 	ldr r0, [sp, #4]
 	ldr r2, [r5, #8]
 	add r1, r6, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r4, #4]
 	ldr r2, [r5, #8]
 	ldr r3, [r5, #0xc]
@@ -1948,7 +1948,7 @@ ov61_021E6918: ; 0x021E6918
 	beq _021E6930
 	add r0, r1, #0
 	ldr r1, [r4, #4]
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4]
 	bl FreeToHeap
 _021E6930:
@@ -2670,7 +2670,7 @@ _021E6EB6:
 	ldrh r0, [r1, #0x20]
 	ldrh r1, [r1, #0x22]
 	add r3, sp, #0
-	bl sub_020C28F8
+	bl NNS_G3dScrPosToWorldLine
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

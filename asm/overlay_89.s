@@ -5177,12 +5177,12 @@ ov89_0225B100: ; 0x0225B100
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	lsl r2, r2, #0x18
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	mov r2, #0x1f
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 _0225B13A:
 	add r4, #0x1c
 	add r0, r4, #0
@@ -6030,12 +6030,12 @@ ov89_0225B784: ; 0x0225B784
 	ldr r0, [r6, #0x14]
 	mov r1, #0
 	lsl r2, r2, #0x18
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	mov r2, #0x1f
 	ldr r0, [r6, #0x14]
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 _0225B7C0:
 	mov r4, #0
 	add r5, r7, #0
@@ -6062,12 +6062,12 @@ _0225B7C4:
 	ldr r0, [r6, #0x14]
 	mov r1, #0
 	lsl r2, r2, #0x18
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	mov r2, #0x1f
 	ldr r0, [r6, #0x14]
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 _0225B804:
 	add r6, #0x1c
 	add r0, r6, #0
@@ -6521,12 +6521,12 @@ ov89_0225BB28: ; 0x0225BB28
 	ldr r0, [r6, #0x14]
 	mov r1, #0
 	lsl r2, r2, #0x18
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	mov r2, #0x1f
 	ldr r0, [r6, #0x14]
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 _0225BB6A:
 	mov r4, #0
 _0225BB6C:
@@ -6801,12 +6801,12 @@ ov89_0225BD48: ; 0x0225BD48
 	ldr r0, [r6, #0x14]
 	mov r1, #0
 	lsl r2, r2, #0x18
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	mov r2, #0x1f
 	ldr r0, [r6, #0x14]
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 _0225BD8A:
 	mov r4, #0
 _0225BD8C:

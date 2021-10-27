@@ -7665,7 +7665,7 @@ _0226000E:
 	beq _0226001E
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_020C39D8
+	bl NNS_G3dGetResDictIdxByName
 	add r1, r0, #0
 	b _02260022
 _0226001E:
@@ -8357,7 +8357,7 @@ _02260508:
 	ldr r0, [r5, r0]
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	mov r1, #0x64
 	str r1, [sp]
 	mov r0, #2
@@ -8822,11 +8822,11 @@ _022608CE:
 	cmp r1, #5
 	bne _022608FC
 	ldr r1, _02260948 ; =0x00007FFF
-	bl sub_020C34D8
+	bl NNS_G3dMdlSetMdlAmbAll
 	b _02260902
 _022608FC:
 	ldr r1, _0226094C ; =0x00004A52
-	bl sub_020C34D8
+	bl NNS_G3dMdlSetMdlAmbAll
 _02260902:
 	add r0, r5, #0
 	bl ov91_02260B5C

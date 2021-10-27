@@ -10420,7 +10420,7 @@ _0225D4B2:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, r6, #0
-	bl sub_020C3598
+	bl NNS_G3dMdlSetMdlLightEnableFlagAll
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225D4A0
@@ -11626,7 +11626,7 @@ ov49_0225DD0C: ; 0x0225DD0C
 	add r0, r5, r0
 	ldrb r1, [r1]
 	ldr r0, [r0, #8]
-	bl sub_020C3698
+	bl NNS_G3dMdlSetMdlAlphaAll
 _0225DD44:
 	add r0, r4, #4
 	bl sub_020181EC
@@ -11641,7 +11641,7 @@ _0225DD44:
 	lsl r0, r0, #4
 	add r0, r5, r0
 	ldr r0, [r0, #8]
-	bl sub_020C3698
+	bl NNS_G3dMdlSetMdlAlphaAll
 _0225DD64:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -26634,7 +26634,7 @@ _022656EE:
 	ldr r0, _02265714 ; =0x00010558
 	ldr r1, _02265718 ; =0x00007FFF
 	ldr r0, [r5, r0]
-	bl sub_020C3558
+	bl NNS_G3dMdlSetMdlEmiAll
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0xf
@@ -27132,7 +27132,7 @@ _02265AA6:
 	ldr r1, [sp, #4]
 	ldr r0, [r0, #8]
 	ldr r1, [r1, #4]
-	bl sub_020C3658
+	bl NNS_G3dMdlSetMdlPolygonIDAll
 	ldr r0, [sp, #4]
 	add r0, #0xc
 	str r0, [sp, #4]
@@ -28957,7 +28957,7 @@ _022668F0:
 	ldr r0, _02266974 ; =0x00010558
 	ldr r0, [r1, r0]
 	mov r1, #0x1f
-	bl sub_020C3698
+	bl NNS_G3dMdlSetMdlAlphaAll
 	b _02266956
 _0226691E:
 	ldr r0, _02266970 ; =0x00000958
@@ -28981,7 +28981,7 @@ _0226691E:
 	lsr r1, r1, #0x1d
 	add r1, r2, r1
 	asr r1, r1, #3
-	bl sub_020C3698
+	bl NNS_G3dMdlSetMdlAlphaAll
 	mov r0, #0
 	str r0, [sp, #8]
 	b _02266956

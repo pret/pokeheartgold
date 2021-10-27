@@ -649,13 +649,13 @@ _021E5DEC:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5, #0x60]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r7, r0, #0
 	add r0, r5, #0
 	ldr r2, [r5, #0x58]
 	add r0, #0x80
 	add r1, r7, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #0x70]
 	ldr r2, [r5, #0x58]
 	add r1, r7, #0
@@ -674,13 +674,13 @@ _021E5E5E:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5, #0x64]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r7, r0, #0
 	add r0, r5, #0
 	ldr r2, [r5, #0x58]
 	add r0, #0x80
 	add r1, r7, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #0x74]
 	ldr r2, [r5, #0x58]
 	add r1, r7, #0
@@ -698,13 +698,13 @@ _021E5E98:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5, #0x68]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r7, r0, #0
 	add r0, r5, #0
 	ldr r2, [r5, #0x58]
 	add r0, #0x80
 	add r1, r7, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #0x78]
 	ldr r2, [r5, #0x58]
 	add r1, r7, #0
@@ -722,13 +722,13 @@ _021E5ED0:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5, #0x6c]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r4, r0, #0
 	add r0, r5, #0
 	ldr r2, [r5, #0x58]
 	add r0, #0x80
 	add r1, r4, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #0x7c]
 	ldr r2, [r5, #0x58]
 	add r1, r4, #0
@@ -785,7 +785,7 @@ _021E5F58:
 	cmp r1, #0
 	beq _021E5F6A
 	add r0, r6, #0
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r5, #0x60]
 	bl FreeToHeap
 _021E5F6A:
@@ -7467,7 +7467,7 @@ _021E94D8:
 	lsl r0, r0, #6
 	ldr r1, [r1]
 	add r0, r7, r0
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	add r0, r6, r4
 	add r0, #0xdc
 	ldr r0, [r0]
@@ -8093,25 +8093,25 @@ _021E99DE:
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #2
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #1
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #0xf
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	ldr r0, [sp, #0x1c]
 	ldr r1, _021E9B48 ; =_021EB2C4
 	lsl r0, r0, #3
@@ -8137,7 +8137,7 @@ _021E9A6A:
 	add r0, #0xdc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [sp, #0x24]
 	mov r0, #7
 	ldr r1, [sp, #0xc]
@@ -8145,7 +8145,7 @@ _021E9A6A:
 	add r0, r1, r0
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x28]
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	add r1, r5, r4
 	add r1, #0xe4
 	str r0, [r1]

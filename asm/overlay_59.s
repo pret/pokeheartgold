@@ -9131,7 +9131,7 @@ _0223C3EC:
 ov59_0223C3F0: ; 0x0223C3F0
 	push {r3, r4, lr}
 	sub sp, #4
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_Init
 	bl G3X_InitMtxStack
 	ldr r0, _0223C45C ; =0x04000060

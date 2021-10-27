@@ -3190,7 +3190,7 @@ ov68_021E7224: ; 0x021E7224
 ov68_021E7288: ; 0x021E7288
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_Init
 	bl G3X_InitMtxStack
 	ldr r1, _021E7330 ; =0x04000060

@@ -276,7 +276,7 @@ _021E5B28:
 	add r5, r6, r0
 	ldr r1, [r5, #0x6c]
 	add r0, r7, #0
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r5, #0x5c]
 	bl FreeToHeap
 	add r0, r4, #1
@@ -519,21 +519,21 @@ _021E5D04:
 	ldr r0, [r5, #0x54]
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	ldr r0, [r5, #0x54]
 	mov r1, #0
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #2
 	ldr r0, [r5, #0x54]
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #1
 	ldr r0, [r5, #0x54]
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r4, #0
 	add r7, #0x80
 _021E5D5A:
@@ -548,12 +548,12 @@ _021E5D5A:
 	bl NARC_AllocAndReadWholeMember
 	mov r1, #0
 	str r0, [r6, #0x5c]
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [sp, #0xc]
 	ldr r1, [sp, #0xc]
 	ldr r2, [r5, #0x54]
 	add r0, r7, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r6, #0x6c]
 	ldr r1, [sp, #0xc]
 	ldr r2, [r5, #0x54]

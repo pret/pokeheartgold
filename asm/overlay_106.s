@@ -282,21 +282,21 @@ _021E5AC8:
 	ldr r0, [r4, #0x54]
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	ldr r0, [r4, #0x54]
 	mov r1, #0
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #2
 	ldr r0, [r4, #0x54]
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #1
 	ldr r0, [r4, #0x54]
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 _021E5B3A:
 	ldr r0, [sp, #4]
 	mov r5, #0
@@ -326,12 +326,12 @@ _021E5B5A:
 	bl GfGfxLoader_LoadFromNarc
 	str r0, [r6, #0x5c]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r7, r0, #0
 	ldr r0, [sp, #0x20]
 	ldr r2, [r4, #0x54]
 	add r1, r7, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r6, #0x6c]
 	ldr r2, [r4, #0x54]
 	ldr r3, [sp, #0x1c]
@@ -399,7 +399,7 @@ _021E5BEC:
 	beq _021E5C04
 	ldr r1, [r5, #0x6c]
 	add r0, r7, #0
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r5, #0x5c]
 	bl FreeToHeap
 _021E5C04:

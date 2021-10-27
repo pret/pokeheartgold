@@ -79,7 +79,7 @@ sub_02069800: ; 0x02069800
 	add r0, r4, #0
 	mov r1, #0
 	str r4, [r5, #8]
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [r5, #0xc]
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02069800
@@ -119,7 +119,7 @@ sub_0206983C: ; 0x0206983C
 	ldr r1, [r5, #0xc]
 	add r0, #0x14
 	add r2, r4, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #0x10]
 	cmp r0, #0
 	bne _02069862
@@ -188,7 +188,7 @@ sub_020698B8: ; 0x020698B8
 	cmp r1, #0
 	beq _020698CC
 	add r0, #0x14
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	mov r0, #0
 	str r0, [r4, #0x10]
 _020698CC:

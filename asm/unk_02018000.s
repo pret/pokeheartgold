@@ -153,7 +153,7 @@ sub_020180F8: ; 0x020180F8
 	beq _02018116
 	add r0, r1, #0
 	ldr r1, [r4, #8]
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	bne _02018116
@@ -479,12 +479,12 @@ sub_020182F8: ; 0x020182F8
 	add r0, r2, #0
 	mov r1, #0
 	add r6, r3, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [r5, #4]
 	ldr r1, [r5, #4]
 	ldr r2, [r4, #8]
 	add r0, r6, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #8]
 	ldr r1, [r5, #4]
 	ldr r2, [r4, #8]

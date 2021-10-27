@@ -9569,21 +9569,21 @@ ov01_021EA3B0: ; 0x021EA3B0
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #2
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #1
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	pop {r4, pc}
 	thumb_func_end ov01_021EA3B0
 
@@ -10398,7 +10398,7 @@ ov01_021EA9B0: ; 0x021EA9B0
 	beq _021EA9C8
 	ldrh r1, [r5, #0x20]
 	add r0, r6, #0
-	bl sub_020C3498
+	bl NNS_G3dMdlSetMdlDiffAll
 _021EA9C8:
 	mov r0, #2
 	lsl r0, r0, #8
@@ -10406,7 +10406,7 @@ _021EA9C8:
 	beq _021EA9D8
 	ldrh r1, [r5, #0x22]
 	add r0, r6, #0
-	bl sub_020C34D8
+	bl NNS_G3dMdlSetMdlAmbAll
 _021EA9D8:
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -10414,7 +10414,7 @@ _021EA9D8:
 	beq _021EA9E8
 	ldrh r1, [r5, #0x24]
 	add r0, r6, #0
-	bl sub_020C3518
+	bl NNS_G3dMdlSetMdlSpecAll
 _021EA9E8:
 	mov r0, #2
 	lsl r0, r0, #0xa
@@ -10422,7 +10422,7 @@ _021EA9E8:
 	beq _021EA9F8
 	ldrh r1, [r5, #0x26]
 	add r0, r6, #0
-	bl sub_020C3558
+	bl NNS_G3dMdlSetMdlEmiAll
 _021EA9F8:
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -10430,7 +10430,7 @@ _021EA9F8:
 	beq _021EAA08
 	ldr r1, [r5, #0x30]
 	add r0, r6, #0
-	bl sub_020C3598
+	bl NNS_G3dMdlSetMdlLightEnableFlagAll
 _021EAA08:
 	mov r0, #2
 	lsl r0, r0, #0xc
@@ -10438,7 +10438,7 @@ _021EAA08:
 	beq _021EAA18
 	ldr r1, [r5, #0x34]
 	add r0, r6, #0
-	bl sub_020C35D8
+	bl NNS_G3dMdlSetMdlPolygonModeAll
 _021EAA18:
 	mov r0, #1
 	lsl r0, r0, #0xe
@@ -10446,7 +10446,7 @@ _021EAA18:
 	beq _021EAA28
 	ldr r1, [r5, #0x38]
 	add r0, r6, #0
-	bl sub_020C3618
+	bl NNS_G3dMdlSetMdlCullModeAll
 _021EAA28:
 	mov r0, #2
 	lsl r0, r0, #0xe
@@ -10454,7 +10454,7 @@ _021EAA28:
 	beq _021EAA38
 	ldr r1, [r5, #0x3c]
 	add r0, r6, #0
-	bl sub_020C3658
+	bl NNS_G3dMdlSetMdlPolygonIDAll
 _021EAA38:
 	mov r0, #1
 	lsl r0, r0, #0x10
@@ -10462,7 +10462,7 @@ _021EAA38:
 	beq _021EAA48
 	ldr r1, [r5, #0x40]
 	add r0, r6, #0
-	bl sub_020C3698
+	bl NNS_G3dMdlSetMdlAlphaAll
 _021EAA48:
 	mov r1, #2
 	lsl r1, r1, #0x10
@@ -10473,7 +10473,7 @@ _021EAA48:
 	lsr r1, r1, #2
 	add r0, r6, #0
 	and r1, r2
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 _021EAA5E:
 	mov r1, #1
 	lsl r1, r1, #0x12
@@ -10484,7 +10484,7 @@ _021EAA5E:
 	lsr r1, r1, #4
 	add r0, r6, #0
 	and r1, r2
-	bl sub_020C3718
+	bl NNS_G3dMdlSetMdlDepthTestCondAll
 _021EAA74:
 	mov r1, #2
 	lsl r1, r1, #0x12
@@ -10495,7 +10495,7 @@ _021EAA74:
 	lsr r1, r1, #6
 	add r0, r6, #0
 	and r1, r2
-	bl sub_020C3758
+	bl NNS_G3dMdlSetMdl1DotAll
 _021EAA8A:
 	mov r1, #1
 	lsl r1, r1, #0x14
@@ -10506,7 +10506,7 @@ _021EAA8A:
 	lsr r1, r1, #8
 	add r0, r6, #0
 	and r1, r2
-	bl sub_020C3798
+	bl NNS_G3dMdlSetMdlFarClipAll
 _021EAAA0:
 	mov r1, #2
 	lsl r1, r1, #0x14
@@ -10517,7 +10517,7 @@ _021EAAA0:
 	lsr r1, r1, #0xa
 	add r0, r6, #0
 	and r1, r2
-	bl sub_020C37D8
+	bl NNS_G3dMdlSetMdlXLDepthUpdateAll
 _021EAAB6:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021EA9B0
@@ -25036,7 +25036,7 @@ _021F171C:
 	add r0, r4, #0
 	bl sub_02023F90
 	mov r1, #1
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 	add r0, r4, #0
 	bl sub_02023F90
 	bl ov01_021EA3B0
@@ -44783,7 +44783,7 @@ ov01_021FA97C: ; 0x021FA97C
 	bl ov01_021F72DC
 	bl sub_02023F90
 	mov r1, #0
-	bl sub_020C342C
+	bl NNS_G3dMdlGetMdlFogEnableFlag
 	str r0, [sp, #0x1c]
 	b _021FA9D2
 _021FA9CE:
@@ -44886,7 +44886,7 @@ _021FAA98:
 	ldr r0, [r5, #0x24]
 	bl sub_02023F90
 	mov r1, #0
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 _021FAAAA:
 	ldr r0, [sp, #0x10]
 	bl sub_02023EF4
@@ -47635,7 +47635,7 @@ ov01_021FBE80: ; 0x021FBE80
 	beq _021FBE9E
 	add r0, r1, #0
 	ldr r1, [r4, #8]
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	bne _021FBE9E
@@ -47901,12 +47901,12 @@ ov01_021FC030: ; 0x021FC030
 	add r0, r2, #0
 	mov r1, #0
 	add r6, r3, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [r5, #4]
 	ldr r1, [r5, #4]
 	ldr r2, [r4, #8]
 	add r0, r6, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #8]
 	ldr r1, [r5, #4]
 	ldr r2, [r4, #8]
@@ -50977,10 +50977,10 @@ ov01_021FD624: ; 0x021FD624
 	ldr r0, [r5, #0x34]
 	mov r1, #1
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	ldr r0, [r5, #0x34]
 	add r1, r4, #0
-	bl sub_020C3698
+	bl NNS_G3dMdlSetMdlAlphaAll
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021FD624
 
@@ -52986,11 +52986,11 @@ ov01_021FE558: ; 0x021FE558
 	ldr r0, [r0, #0xc]
 	mov r1, #1
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	ldr r0, [r4, #0x14]
 	ldr r1, [r4, #0xc]
 	ldr r0, [r0, #0xc]
-	bl sub_020C3698
+	bl NNS_G3dMdlSetMdlAlphaAll
 	ldr r0, [r4, #0x18]
 	add r1, sp, #0
 	bl sub_020699BC
@@ -57043,7 +57043,7 @@ ov01_022003C4: ; 0x022003C4
 	add r4, r0, #0
 	bl sub_02023F90
 	mov r1, #0
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -64102,7 +64102,7 @@ ov01_02203B98: ; 0x02203B98
 	add r4, r0, #0
 	bl sub_02023F90
 	mov r1, #0
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -65324,7 +65324,7 @@ ov01_02204470: ; 0x02204470
 	add r0, r4, #0
 	mov r1, #0
 	add r6, r3, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r7, r0, #0
 	bne _0220448A
 	bl GF_AssertFail
@@ -65332,7 +65332,7 @@ _0220448A:
 	ldr r0, [sp]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5]
 	cmp r0, #0
 	bne _0220449E
@@ -65408,11 +65408,11 @@ _022044EE:
 
 	thumb_func_start ov01_02204500
 ov01_02204500: ; 0x02204500
-	ldr r3, _02204508 ; =sub_020C2BA0
+	ldr r3, _02204508 ; =NNS_G3dFreeAnmObj
 	ldr r1, [r1]
 	bx r3
 	nop
-_02204508: .word sub_020C2BA0
+_02204508: .word NNS_G3dFreeAnmObj
 	thumb_func_end ov01_02204500
 
 	thumb_func_start ov01_0220450C
@@ -65686,7 +65686,7 @@ ov01_022046A4: ; 0x022046A4
 	add r5, r1, #0
 	add r0, r2, #0
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0

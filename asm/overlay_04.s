@@ -2149,7 +2149,7 @@ _02254F62:
 	bl ov01_021F72DC
 	bl sub_02023F90
 	add r1, r6, #0
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 _02254F7C:
 	add r0, r7, #0
 	bl sub_0205F1D0

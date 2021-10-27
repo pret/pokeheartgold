@@ -2239,7 +2239,7 @@ ov85_021E6980: ; 0x021E6980
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _021E6A10 ; =0x04000060
 	ldr r1, _021E6A14 ; =0xFFFFCFFD

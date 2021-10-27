@@ -1168,7 +1168,7 @@ _022466EC: .word 0x0224C06C
 	thumb_func_start ov41_022466F0
 ov41_022466F0: ; 0x022466F0
 	push {r3, lr}
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	mov r0, #1
 	add r1, r0, #0

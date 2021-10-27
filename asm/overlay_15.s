@@ -9320,24 +9320,24 @@ _021FDDB6:
 	ldr r0, [r4, #0x54]
 	mov r1, #1
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	ldr r0, [r4, #0x54]
 	mov r1, #1
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r1, #1
 	ldr r0, [r4, #0x54]
 	lsl r2, r1, #9
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r1, #1
 	ldr r0, [r4, #0x54]
 	lsl r2, r1, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #0x3f
 	ldr r0, [r4, #0x54]
 	mov r1, #1
 	lsl r2, r2, #0x18
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	mov r6, #0
 	add r5, r4, #0
 _021FDE0E:
@@ -9348,13 +9348,13 @@ _021FDE0E:
 	bl NARC_AllocAndReadWholeMember
 	mov r1, #0
 	str r0, [r5, #0x5c]
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [sp, #0x14]
 	ldr r0, _021FDF14 ; =0x00000808
 	ldr r1, [sp, #0x14]
 	ldr r2, [r4, #0x54]
 	add r0, r7, r0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	add r1, r5, #0
 	add r1, #0xa0
 	str r0, [r1]
@@ -9372,13 +9372,13 @@ _021FDE0E:
 	bl NARC_AllocAndReadWholeMember
 	mov r1, #0
 	str r0, [r5, #0x7c]
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [sp, #0x18]
 	ldr r0, _021FDF14 ; =0x00000808
 	ldr r1, [sp, #0x18]
 	ldr r2, [r4, #0x54]
 	add r0, r7, r0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	add r1, r5, #0
 	add r1, #0xc0
 	str r0, [r1]
@@ -9404,13 +9404,13 @@ _021FDE0E:
 	add r0, #0x9c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r5, r0, #0
 	ldr r0, _021FDF14 ; =0x00000808
 	ldr r2, [r4, #0x54]
 	add r0, r7, r0
 	add r1, r5, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	add r1, r4, #0
 	add r1, #0xe0
 	str r0, [r1]
@@ -9476,12 +9476,12 @@ _021FDF30:
 	add r1, #0xa0
 	ldr r1, [r1]
 	add r0, r5, r7
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	add r1, r4, #0
 	add r1, #0xc0
 	ldr r1, [r1]
 	add r0, r5, r7
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4, #0x5c]
 	bl FreeToHeap
 	ldr r0, [r4, #0x7c]
@@ -9495,7 +9495,7 @@ _021FDF30:
 	add r1, #0xe0
 	ldr r1, [r1]
 	add r0, r5, r0
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [sp]
 	add r0, #0x9c
 	ldr r0, [r0]

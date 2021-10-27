@@ -34300,7 +34300,7 @@ _021F6134: .word 0x000008C2
 ov96_021F6138: ; 0x021F6138
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _021F61B0 ; =0x04000540
 	mov r3, #2

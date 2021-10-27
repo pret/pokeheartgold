@@ -6553,7 +6553,7 @@ ov108_021E8CD4: ; 0x021E8CD4
 	mov r2, #0xf4
 	add r5, r0, #0
 	bl MI_CpuFill8
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_Init
 	bl G3X_InitMtxStack
 	ldr r0, _021E8DF4 ; =0x04000060
@@ -7142,12 +7142,12 @@ ov108_021E9198: ; 0x021E9198
 	bl sub_02007C98
 	str r0, [r4]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [r4, #4]
 	ldr r1, [r4, #4]
 	ldr r2, [r6, #8]
 	add r0, r5, #4
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r4, #8]
 	ldr r1, [r4, #4]
 	ldr r2, [r6, #8]
@@ -7166,7 +7166,7 @@ ov108_021E91D4: ; 0x021E91D4
 	beq _021E91F6
 	ldr r1, [r4, #8]
 	add r0, r0, #4
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4]
 	bl FreeToHeap
 	add r0, r4, #0

@@ -6137,7 +6137,7 @@ ov63_0221F088: ; 0x0221F088
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _0221F118 ; =0x04000060
 	ldr r2, _0221F11C ; =0xFFFFCFFD

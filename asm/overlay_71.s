@@ -1855,13 +1855,13 @@ ov71_02247708: ; 0x02247708
 	mov r2, #0x1f
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	pop {r3, pc}
 _02247722:
 	mov r2, #0x1f
 	mov r1, #1
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov71_02247708
@@ -2804,7 +2804,7 @@ ov71_02247ED0: ; 0x02247ED0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _02247F78 ; =0x04000060
 	ldr r2, _02247F7C ; =0xFFFFCFFD
@@ -4078,7 +4078,7 @@ ov71_022488E4: ; 0x022488E4
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _022489C4 ; =0x04000060
 	ldr r1, _022489C8 ; =0xFFFFCFFD
@@ -5993,7 +5993,7 @@ ov71_022497E0: ; 0x022497E0
 	push {r3, r4, lr}
 	sub sp, #0x24
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _022498B4 ; =0x04000060
 	ldr r1, _022498B8 ; =0xFFFFCFFD
@@ -7504,7 +7504,7 @@ ov71_0224A3F0: ; 0x0224A3F0
 	push {r3, r4, lr}
 	sub sp, #0x24
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _0224A4D0 ; =0x04000060
 	ldr r1, _0224A4D4 ; =0xFFFFCFFD
@@ -8755,7 +8755,7 @@ ov71_0224ADE4: ; 0x0224ADE4
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _0224AEC8 ; =0x04000060
 	ldr r1, _0224AECC ; =0xFFFFCFFD
@@ -9895,7 +9895,7 @@ ov71_0224B720: ; 0x0224B720
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _0224B7C8 ; =0x04000060
 	ldr r2, _0224B7CC ; =0xFFFFCFFD
