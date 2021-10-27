@@ -32,7 +32,7 @@ _0225EEA8:
 	mov r0, #0x34
 	mov r2, #0x20
 	strb ip, [r3, #0x7f]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add sp, sp, #0x80
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov93_0225EE98
@@ -105,7 +105,7 @@ _0225EFD4:
 	mov r0, #0x40
 	add r1, sp, #0x44
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r1, sl, sb, lsl #5
 	ldr r0, [r1, #0xc]
 	ldr r1, [r1, #0x10]
@@ -128,12 +128,12 @@ _0225EFD4:
 	mov r0, #0x22
 	add r1, sp, #0x40
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x21
 	add r1, sp, #0x3c
 	mov r2, #1
 	str r6, [sp, #0x3c]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldrh r3, [sp, #2]
 	ldrh r2, [sp]
 	mov r0, #0x23
@@ -142,7 +142,7 @@ _0225EFD4:
 	str r2, [sp, #0x34]
 	mov r2, #2
 	str r5, [sp, #0x38]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r1, sl, sb, lsl #5
 	ldr r0, [r1, #0x14]
 	ldr r1, [r1, #0x18]
@@ -165,12 +165,12 @@ _0225EFD4:
 	mov r0, #0x22
 	add r1, sp, #0x30
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x21
 	add r1, sp, #0x2c
 	mov r2, #1
 	str r6, [sp, #0x2c]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldrh r3, [sp, #2]
 	ldrh r2, [sp]
 	mov r0, #0x23
@@ -179,7 +179,7 @@ _0225EFD4:
 	str r2, [sp, #0x24]
 	mov r2, #2
 	str r4, [sp, #0x28]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r1, sl, sb, lsl #5
 	ldr r0, [r1, #0x24]
 	ldr r1, [r1, #0x28]
@@ -202,12 +202,12 @@ _0225EFD4:
 	mov r0, #0x22
 	add r1, sp, #0x20
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x21
 	add r1, sp, #0x1c
 	mov r2, #1
 	str r6, [sp, #0x1c]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldrh r3, [sp, #2]
 	ldrh r2, [sp]
 	mov r0, #0x23
@@ -216,7 +216,7 @@ _0225EFD4:
 	str r2, [sp, #0x14]
 	mov r2, #2
 	str fp, [sp, #0x18]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r1, sl, sb, lsl #5
 	ldr r0, [r1, #0x1c]
 	ldr r1, [r1, #0x20]
@@ -239,12 +239,12 @@ _0225EFD4:
 	mov r0, #0x22
 	add r1, sp, #0x10
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x21
 	add r1, sp, #0xc
 	mov r2, #1
 	str r6, [sp, #0xc]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0
 	str r0, [sp, #8]
 	ldrh r3, [sp, #2]
@@ -254,11 +254,11 @@ _0225EFD4:
 	orr r2, r3, r2, lsl #16
 	str r2, [sp, #4]
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x41
 	mov r2, r1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add sb, sb, #1
 	cmp sb, #8
 	blt _0225EFD4

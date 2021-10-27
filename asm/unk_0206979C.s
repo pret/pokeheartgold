@@ -146,7 +146,7 @@ sub_02069870: ; 0x02069870
 	ldr r0, [r5, #0x10]
 	ldr r1, [r5, #0xc]
 	add r2, r4, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02069870
 
@@ -313,10 +313,10 @@ _02069980: .word sub_02069964
 
 	thumb_func_start sub_02069984
 sub_02069984: ; 0x02069984
-	ldr r3, _02069988 ; =sub_020BE294
+	ldr r3, _02069988 ; =NNS_G3dRenderObjAddAnmObj
 	bx r3
 	.balign 4, 0
-_02069988: .word sub_020BE294
+_02069988: .word NNS_G3dRenderObjAddAnmObj
 	thumb_func_end sub_02069984
 
 	thumb_func_start sub_0206998C

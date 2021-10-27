@@ -6686,7 +6686,7 @@ ov108_021E8E10: ; 0x021E8E10
 	add r4, r0, #0
 	bl sub_02026E48
 	bl sub_02023154
-	bl sub_020C23F4
+	bl NNS_G3dGeFlushBuffer
 	ldr r2, _021E8E58 ; =0x04000440
 	mov r3, #0
 	add r1, r2, #0
@@ -6793,7 +6793,7 @@ ov108_021E8ED8: ; 0x021E8ED8
 	bne _021E8EFA
 	bl sub_02026E48
 	bl sub_02023154
-	bl sub_020C23F4
+	bl NNS_G3dGeFlushBuffer
 	ldr r0, _021E8EFC ; =0x04000540
 	mov r1, #1
 	str r1, [r0]
@@ -7051,7 +7051,7 @@ _021E90FA:
 	beq _021E9124
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_020BE4D0
+	bl NNS_G3dTexReleaseTexKey
 	ldr r1, _021E913C ; =0x02110928
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
@@ -7061,7 +7061,7 @@ _021E90FA:
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r6, #0xc]
-	bl sub_020BE588
+	bl NNS_G3dPlttReleasePlttKey
 	ldr r1, _021E9140 ; =0x02110930
 	ldr r1, [r1]
 	blx r1
@@ -7152,7 +7152,7 @@ ov108_021E9198: ; 0x021E9198
 	ldr r1, [r4, #4]
 	ldr r2, [r6, #8]
 	ldr r3, [r6, #0xc]
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov108_021E9198
@@ -7179,22 +7179,22 @@ _021E91F6:
 
 	thumb_func_start ov108_021E91F8
 ov108_021E91F8: ; 0x021E91F8
-	ldr r3, _021E9200 ; =sub_020BE294
+	ldr r3, _021E9200 ; =NNS_G3dRenderObjAddAnmObj
 	add r0, #0x10
 	ldr r1, [r1, #8]
 	bx r3
 	.balign 4, 0
-_021E9200: .word sub_020BE294
+_021E9200: .word NNS_G3dRenderObjAddAnmObj
 	thumb_func_end ov108_021E91F8
 
 	thumb_func_start ov108_021E9204
 ov108_021E9204: ; 0x021E9204
-	ldr r3, _021E920C ; =sub_020BE388
+	ldr r3, _021E920C ; =NNS_G3dRenderObjRemoveAnmObj
 	add r0, #0x10
 	ldr r1, [r1, #8]
 	bx r3
 	.balign 4, 0
-_021E920C: .word sub_020BE388
+_021E920C: .word NNS_G3dRenderObjRemoveAnmObj
 	thumb_func_end ov108_021E9204
 
 	thumb_func_start ov108_021E9210

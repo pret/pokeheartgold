@@ -1000,9 +1000,9 @@ sub_02025BF0: ; 0x02025BF0
 	add r4, r0, #0
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_020BE4D0
+	bl NNS_G3dTexReleaseTexKey
 	add r0, r4, #0
-	bl sub_020BE588
+	bl NNS_G3dPlttReleasePlttKey
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end sub_02025BF0

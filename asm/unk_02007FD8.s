@@ -229,7 +229,7 @@ sub_02008120: ; 0x02008120
 	bl sub_020094FC
 	add r0, r5, #0
 	bl sub_0200994C
-	bl sub_020C23F4
+	bl NNS_G3dGeFlushBuffer
 	mov r6, #0xb3
 	mov r0, #0
 	ldr r4, _02008494 ; =0x04000444
@@ -288,7 +288,7 @@ _02008192:
 	add r1, #0x24
 	blx r2
 _020081A0:
-	bl sub_020C23F4
+	bl NNS_G3dGeFlushBuffer
 	ldr r0, _0200849C ; =0x00000333
 	ldrb r0, [r5, r0]
 	cmp r0, #1

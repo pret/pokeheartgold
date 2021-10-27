@@ -6677,22 +6677,22 @@ ov91_0225F7A8: ; 0x0225F7A8
 	ldr r2, _0225F86C ; =0xFFFFF000
 	add r1, r0, #0
 	add r3, r0, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _0225F870 ; =0x00007FFF
 	mov r0, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r0, _0225F870 ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r0, _0225F870 ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	add r0, r4, r0
@@ -6701,11 +6701,11 @@ ov91_0225F7A8: ; 0x0225F7A8
 	mov r0, #0x12
 	add r1, sp, #8
 	str r2, [sp, #8]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x13
 	ldr r1, _0225F874 ; =0x000019CC
 	lsl r0, r0, #6
@@ -6716,11 +6716,11 @@ ov91_0225F7A8: ; 0x0225F7A8
 	mov r0, #0x12
 	add r1, sp, #4
 	str r2, [sp, #4]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r1, [r5, #0x10]
 	add r0, r4, #0
 	bl ov91_0226078C
@@ -6728,7 +6728,7 @@ ov91_0225F7A8: ; 0x0225F7A8
 	mov r0, #0x12
 	add r1, sp, #0
 	str r2, [sp]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_02026E50
@@ -7633,7 +7633,7 @@ _0225FFD6:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	add r1, r5, #0
-	bl sub_020BE0E4
+	bl NNS_G3dAnmObjDisableID
 	add r5, r5, #1
 _0225FFE4:
 	cmp r7, #0
@@ -7679,7 +7679,7 @@ _02260022:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_020BE0A8
+	bl NNS_G3dAnmObjEnableID
 _02260034:
 	add r7, r7, #1
 	add r5, #0x10
@@ -8946,7 +8946,7 @@ _0226097A:
 	add r2, r0, #0
 	add r3, r0, #0
 	str r0, [sp, #4]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -8965,7 +8965,7 @@ ov91_02260A10: ; 0x02260A10
 	add r2, r0, #0
 	add r3, r0, #0
 	str r0, [sp, #4]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0

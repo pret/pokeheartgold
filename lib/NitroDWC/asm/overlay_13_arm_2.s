@@ -31486,7 +31486,7 @@ _022406A4:
 	add r0, r2, r7, lsl #2
 	ldr r1, [r0, #0x674]
 	add r0, r2, r8
-	bl sub_020BC384
+	bl NNS_G2dFontInitUTF16
 	add r7, r7, #1
 	cmp r7, #2
 	add r8, r8, #8
@@ -31510,7 +31510,7 @@ _022406FC:
 	add r0, r2, r8, lsl #2
 	ldr r1, [r0, #0x674]
 	add r0, r2, r7
-	bl sub_020BC384
+	bl NNS_G2dFontInitUTF16
 	add r8, r8, #1
 	cmp r8, #2
 	add r7, r7, #8
@@ -31572,7 +31572,7 @@ ov13_02240798: ; 0x02240798
 	mov r0, r6
 	strh r1, [r4, #0x2c]
 	mov r1, r5
-	bl sub_020BD590
+	bl NNSi_G2dCalcRequiredOBJ
 	ldr r1, [sp, #0x20]
 	cmp r7, #1
 	str r0, [r1]
@@ -31585,7 +31585,7 @@ ov13_02240798: ; 0x02240798
 	mov r2, r6
 	mov r3, r5
 	add r1, ip, r7, lsl #7
-	bl sub_020BD3FC
+	bl NNS_G2dCharCanvasInitForOBJ1D
 	ldr r1, [r4, #0x14]
 	mov r0, r4
 	ldr r2, [r1, #4]
@@ -31671,7 +31671,7 @@ _02240938:
 	mov r0, r4
 	mov r2, r6
 	mov r3, r5
-	bl sub_020BD3D0
+	bl NNS_G2dCharCanvasInitForBG
 	ldr r0, _022409FC ; =0x0224F5E0
 	mov r1, #1
 	ldr r0, [r0]
@@ -31699,7 +31699,7 @@ _02240988:
 	str r7, [sp, #8]
 	mov r5, #0xf
 	str r5, [sp, #0xc]
-	bl sub_020BD484
+	bl NNS_G2dMapScrToCharText
 	mov r0, r4
 	mov r1, #0
 	bl ov13_02240D80
@@ -31862,7 +31862,7 @@ _02240BA8:
 	add r0, r0, #0x18
 	strb lr, [sp, #8]
 	strb ip, [sp, #9]
-	bl sub_020BDB00
+	bl NNSi_G2dTextCanvasDrawText
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov13_02240B28
@@ -31880,7 +31880,7 @@ ov13_02240BD8: ; 0x02240BD8
 	mov r3, r2
 	mov r2, r1
 	add r1, lr, ip, lsl #3
-	bl sub_020BD2AC
+	bl NNS_G2dCharCanvasDrawChar
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -31907,14 +31907,14 @@ _02240C48:
 	ldr r0, [r0]
 	add r4, r0, r5, lsl #3
 	mov r0, r4
-	bl sub_020BC3A8
+	bl NNS_G2dFontFindGlyphIndex
 	mov r1, r0
 	ldr r0, _02240CBC ; =0x0000FFFF
 	cmp r1, r0
 	ldreq r0, [r4]
 	ldreqh r1, [r0, #2]
 	mov r0, r4
-	bl sub_020BC3F0
+	bl NNS_G2dFontGetCharWidthsFromIndex
 	ldrh r1, [r6]
 	mov r2, r0
 	mov r0, sl
@@ -31989,7 +31989,7 @@ _02240D40:
 	add r0, r0, #0x18
 	strb lr, [sp, #0x10]
 	strb ip, [sp, #0x11]
-	bl sub_020BDC24
+	bl NNSi_G2dTextCanvasDrawTextRect
 	add sp, sp, #0x18
 	ldmia sp!, {r4, pc}
 	arm_func_end ov13_02240CC0
@@ -32040,7 +32040,7 @@ ov13_02240D94: ; 0x02240D94
 	str r1, [sp, #0xc]
 	ldrb r1, [r4, #0x2e]
 	ldrb r2, [r4, #0x2f]
-	bl sub_020BD5EC
+	bl NNS_G2dArrangeOBJ1D
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end ov13_02240D94

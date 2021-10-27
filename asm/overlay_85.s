@@ -2065,18 +2065,18 @@ ov85_021E67F4: ; 0x021E67F4
 	ldr r2, _021E6848 ; =0xFFFFF000
 	add r1, r0, #0
 	add r3, r0, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _021E684C ; =0x00007FFF
 	mov r0, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r0, _021E684C ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r0, _021E684C ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	add r0, r4, #0
 	bl ov85_021E7628
 	add r0, r4, #0

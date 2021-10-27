@@ -669,9 +669,9 @@ sub_02023B38: ; 0x02023B38
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r3, #0
-	bl sub_020BE4D0
+	bl NNS_G3dTexReleaseTexKey
 	add r0, r5, #0
-	bl sub_020BE588
+	bl NNS_G3dPlttReleasePlttKey
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02023B38
@@ -2021,7 +2021,7 @@ sub_0202441C: ; 0x0202441C
 	add r4, r0, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_020BEDB0
+	bl NNS_G3dReleaseMdlSet
 	add r4, #0x8c
 	ldr r0, [r4]
 	add r1, sp, #4
@@ -2358,7 +2358,7 @@ _02024636:
 	add r1, r4, #0
 	add r1, #0x26
 	ldrb r1, [r1]
-	bl sub_020BBEC4
+	bl NNS_G2dSetRndCoreAffineOverwriteMode
 	add r0, r4, #0
 	add r0, #0x27
 	ldrb r2, [r0]
@@ -2370,7 +2370,7 @@ _02024636:
 	mov r3, #2
 	and r1, r2
 	and r2, r3
-	bl sub_020BBF84
+	bl NNS_G2dSetRndCoreFlipMode
 	add r0, r4, #0
 	mov r2, #1
 	add r0, #0x34
@@ -2487,7 +2487,7 @@ _02024774:
 	cmp r0, r1
 	beq _0202479E
 	ldr r0, [r4, #0x60]
-	bl sub_020BAF3C
+	bl NNS_G2dFreeCellTransferStateHandle
 _0202479E:
 	add r0, r5, #0
 	add r0, #0xec
@@ -3495,7 +3495,7 @@ sub_02024DC8: ; 0x02024DC8
 	add r4, r6, #0
 	add r4, #0x40
 	add r5, r0, #0
-	bl sub_020BAEE4
+	bl NNS_G2dGetNewCellTransferStateHandle
 	str r0, [r4, #0x60]
 	ldr r0, [r4, #4]
 	mov r1, #0
@@ -3627,7 +3627,7 @@ sub_02024EB4: ; 0x02024EB4
 	ldr r0, [r5, r0]
 	add r1, #0xb4
 	add r2, #0xd8
-	bl sub_020BAB4C
+	bl NNS_G2dSetRendererImageProxy
 	mov r0, #0x45
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3639,7 +3639,7 @@ sub_02024EB4: ; 0x02024EB4
 	lsl r0, r0, #2
 	ldrb r1, [r1]
 	ldr r0, [r5, r0]
-	bl sub_020BBEC4
+	bl NNS_G2dSetRndCoreAffineOverwriteMode
 	add r0, r4, #0
 	add r0, #0x26
 	ldrb r0, [r0]
@@ -3655,7 +3655,7 @@ sub_02024EB4: ; 0x02024EB4
 	mov r3, #2
 	and r1, r2
 	and r2, r3
-	bl sub_020BBF84
+	bl NNS_G2dSetRndCoreFlipMode
 	b _02024F2A
 _02024F1C:
 	mov r0, #0x45
@@ -3663,7 +3663,7 @@ _02024F1C:
 	mov r1, #0
 	ldr r0, [r5, r0]
 	add r2, r1, #0
-	bl sub_020BBF84
+	bl NNS_G2dSetRndCoreFlipMode
 _02024F2A:
 	ldr r0, [sp]
 	ldr r1, [sp, #4]

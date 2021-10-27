@@ -75,7 +75,7 @@ sub_02018068: ; 0x02018068
 	beq _02018098
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_020BE4D0
+	bl NNS_G3dTexReleaseTexKey
 	ldr r1, _020180B4 ; =0x02110928
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
@@ -85,7 +85,7 @@ sub_02018068: ; 0x02018068
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r4, #0xc]
-	bl sub_020BE588
+	bl NNS_G3dPlttReleasePlttKey
 	ldr r1, _020180B8 ; =0x02110930
 	ldr r1, [r1]
 	blx r1
@@ -287,20 +287,20 @@ sub_020181B0: ; 0x020181B0
 
 	thumb_func_start sub_020181D4
 sub_020181D4: ; 0x020181D4
-	ldr r3, _020181DC ; =sub_020BE294
+	ldr r3, _020181DC ; =NNS_G3dRenderObjAddAnmObj
 	ldr r1, [r1, #8]
 	bx r3
 	nop
-_020181DC: .word sub_020BE294
+_020181DC: .word NNS_G3dRenderObjAddAnmObj
 	thumb_func_end sub_020181D4
 
 	thumb_func_start sub_020181E0
 sub_020181E0: ; 0x020181E0
-	ldr r3, _020181E8 ; =sub_020BE388
+	ldr r3, _020181E8 ; =NNS_G3dRenderObjRemoveAnmObj
 	ldr r1, [r1, #8]
 	bx r3
 	nop
-_020181E8: .word sub_020BE388
+_020181E8: .word NNS_G3dRenderObjRemoveAnmObj
 	thumb_func_end sub_020181E0
 
 	thumb_func_start sub_020181EC
@@ -489,7 +489,7 @@ sub_020182F8: ; 0x020182F8
 	ldr r1, [r5, #4]
 	ldr r2, [r4, #8]
 	ldr r3, [r4, #0xc]
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_020182F8
 

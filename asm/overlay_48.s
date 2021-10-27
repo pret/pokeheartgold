@@ -1973,7 +1973,7 @@ ov48_02259750: ; 0x02259750
 	ldr r3, _02259784 ; =0xFFFFF001
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0

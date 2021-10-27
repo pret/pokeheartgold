@@ -2429,11 +2429,11 @@ ov92_0225D970: ; 0x0225D970
 	mov r0, #0x1c
 	add r1, r6, #0
 	mov r2, #3
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x19
 	add r1, r4, #0
 	mov r2, #0xc
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, r5, #0
 	add r0, #0x60
 	bl NNS_G3dGlbSetBaseScale
@@ -2553,18 +2553,18 @@ ov92_0225DA40: ; 0x0225DA40
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	asr r3, r3, #0x10
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _0225DD08 ; =0x00007FFF
 	mov r0, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r0, _0225DD08 ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r0, _0225DD08 ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	mov r7, #0
 	add r4, r7, #0
 _0225DA9C:
@@ -2576,7 +2576,7 @@ _0225DA9C:
 	add r6, r0, r4
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0x1b
 	mov r2, #0x1e
 	lsl r1, r1, #4
@@ -2590,7 +2590,7 @@ _0225DA9C:
 	mov r0, #0x12
 	add r1, sp, #0x14
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r1, [r5, #4]
 	ldr r0, _0225DD0C ; =0x00000BD8
 	add r0, r1, r0
@@ -2703,7 +2703,7 @@ _0225DBA8:
 	mul r6, r0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r2, #0x1b
 	lsl r2, r2, #4
 	add r1, r4, r2
@@ -2715,7 +2715,7 @@ _0225DBA8:
 	str r2, [sp, #0x10]
 	mov r0, #0x12
 	add r1, sp, #0x10
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x45
 	ldr r1, [r5, #4]
 	lsl r0, r0, #2
@@ -2723,7 +2723,7 @@ _0225DBA8:
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r2, #0x1b
 	lsl r2, r2, #4
 	add r1, r4, r2
@@ -2735,14 +2735,14 @@ _0225DBA8:
 	str r2, [sp, #0xc]
 	mov r0, #0x12
 	add r1, sp, #0xc
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r1, [r5, #4]
 	ldr r0, _0225DD20 ; =0x00000944
 	add r4, r1, r0
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r2, #0x1b
 	lsl r2, r2, #4
 	add r1, r4, r2
@@ -2754,7 +2754,7 @@ _0225DBA8:
 	str r2, [sp, #8]
 	mov r0, #0x12
 	add r1, sp, #8
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r1, [r5, #4]
 	ldr r0, _0225DD24 ; =0x00001FAC
 	ldr r0, [r1, r0]
@@ -2765,7 +2765,7 @@ _0225DBA8:
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r2, #0x1b
 	lsl r2, r2, #4
 	add r1, r4, r2
@@ -2777,7 +2777,7 @@ _0225DBA8:
 	str r2, [sp, #4]
 	mov r0, #0x12
 	add r1, sp, #4
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r1, [r5, #4]
 	ldr r0, _0225DD2C ; =0x00001FA8
 	ldr r0, [r1, r0]
@@ -2814,7 +2814,7 @@ _0225DCA6:
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r2, #0x1b
 	lsl r2, r2, #4
 	add r1, r4, r2
@@ -2826,7 +2826,7 @@ _0225DCA6:
 	str r2, [sp]
 	mov r0, #0x12
 	add r1, sp, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r1, [r5, #4]
 	ldr r0, _0225DD40 ; =0x00001D9C
 	ldr r0, [r1, r0]

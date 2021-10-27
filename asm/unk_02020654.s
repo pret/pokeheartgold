@@ -14,7 +14,7 @@ sub_02020654: ; 0x02020654
 	ldr r2, _02020670 ; =sub_02020684
 	add r1, r4, #0
 	add r5, r0, #0
-	bl sub_020BAD38
+	bl NNS_G2dInitCellTransferStateManager
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -23,10 +23,10 @@ _02020670: .word sub_02020684
 
 	thumb_func_start sub_02020674
 sub_02020674: ; 0x02020674
-	ldr r3, _02020678 ; =sub_020BAD9C
+	ldr r3, _02020678 ; =NNS_G2dUpdateCellTransferStateManager
 	bx r3
 	.balign 4, 0
-_02020678: .word sub_020BAD9C
+_02020678: .word NNS_G2dUpdateCellTransferStateManager
 	thumb_func_end sub_02020674
 
 	thumb_func_start sub_0202067C
@@ -413,7 +413,7 @@ sub_020208DC: ; 0x020208DC
 	add r0, r4, #0
 	add r0, #0x3c
 	add r1, sp, #0
-	bl sub_020C3818
+	bl NNS_G3dGetResDataByName
 	add r1, r0, #0
 	b _020208FC
 _020208FA:
@@ -571,7 +571,7 @@ sub_020209E0: ; 0x020209E0
 	add r0, r4, #0
 	add r0, #0x3c
 	add r1, sp, #0
-	bl sub_020C3818
+	bl NNS_G3dGetResDataByName
 	add r1, r0, #0
 	b _02020A00
 _020209FE:

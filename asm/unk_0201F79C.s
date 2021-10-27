@@ -378,7 +378,7 @@ _0201F9B0:
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0x10
 	str r0, [sp, #0x10]
@@ -386,7 +386,7 @@ _0201F9B0:
 	str r0, [sp, #0x18]
 	mov r0, #0x1b
 	mov r2, #3
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, sp, #0x28
 	bl sub_0201FAC8
 	add r4, r0, #0
@@ -394,7 +394,7 @@ _0201F9B0:
 	mov r0, #0x12
 	add r1, sp, #0xc
 	str r2, [sp, #0xc]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, r4, #0
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
@@ -428,7 +428,7 @@ sub_0201FA34: ; 0x0201FA34
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, [r4, #0x10]
 	lsl r2, r0, #0xc
 	ldr r0, [r4, #0xc]
@@ -441,7 +441,7 @@ sub_0201FA34: ; 0x0201FA34
 	mov r0, #0x1b
 	add r1, sp, #0x10
 	mov r2, #3
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, sp, #0x1c
 	bl sub_0201FAC8
 	add r4, r0, #0
@@ -449,7 +449,7 @@ sub_0201FA34: ; 0x0201FA34
 	mov r0, #0x12
 	add r1, sp, #0xc
 	str r2, [sp, #0xc]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, r4, #0
 	add sp, #0x28
 	pop {r3, r4, r5, pc}
@@ -489,22 +489,22 @@ sub_0201FAC8: ; 0x0201FAC8
 	mov r0, #0x29
 	add r1, sp, #4
 	str r2, [sp, #8]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x40
 	add r1, sp, #0
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x41
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x70
 	add r1, r4, #0
 	mov r2, #3
-	bl sub_020C2528
-	bl sub_020C23F4
+	bl NNS_G3dGeBufferOP_N
+	bl NNS_G3dGeFlushBuffer
 	add r4, sp, #8
 _0201FB06:
 	add r0, r4, #0

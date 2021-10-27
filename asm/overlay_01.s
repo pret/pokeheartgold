@@ -10322,7 +10322,7 @@ _021EA91E:
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r3]
 	add r0, r4, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 _021EA938:
 	add r1, r4, #4
 	mov r0, #1
@@ -10331,7 +10331,7 @@ _021EA938:
 	beq _021EA94A
 	ldrh r1, [r6, #0x18]
 	add r0, r4, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 _021EA94A:
 	add r4, r4, #1
 	add r5, r5, #6
@@ -10348,7 +10348,7 @@ _021EA94A:
 	ldrh r0, [r0, #0x20]
 	ldrh r1, [r1, #0x22]
 	ldr r2, [r2, #0x28]
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 _021EA96C:
 	mov r0, #3
 	lsl r0, r0, #0xa
@@ -10360,7 +10360,7 @@ _021EA96C:
 	ldrh r0, [r0, #0x24]
 	ldrh r1, [r1, #0x26]
 	ldr r2, [r2, #0x2c]
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 _021EA984:
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -10380,7 +10380,7 @@ _021EA984:
 	ldr r0, [r0, #0x30]
 	ldr r2, [r2, #0x38]
 	ldr r3, [r3, #0x3c]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 _021EA9AC:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -10541,7 +10541,7 @@ ov01_021EAAB8: ; 0x021EAAB8
 	ldrsh r1, [r5, r4]
 	ldrsh r2, [r2, r4]
 	ldrsh r3, [r3, r4]
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021EAAB8
 
@@ -10554,7 +10554,7 @@ ov01_021EAAE0: ; 0x021EAAE0
 	strh r2, [r4, r3]
 	add r0, r1, #0
 	ldrh r1, [r4, r3]
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	pop {r4, pc}
 	thumb_func_end ov01_021EAAE0
 
@@ -29915,7 +29915,7 @@ _021F3BE8:
 	ldrh r2, [r2, #2]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_020C2150
+	bl NNS_G3dDraw1Mat1Shp
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -47518,7 +47518,7 @@ ov01_021FBDA8: ; 0x021FBDA8
 	beq _021FBDD8
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_020BE4D0
+	bl NNS_G3dTexReleaseTexKey
 	ldr r1, _021FBDF4 ; =0x02110928
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
@@ -47528,7 +47528,7 @@ ov01_021FBDA8: ; 0x021FBDA8
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r4, #0xc]
-	bl sub_020BE588
+	bl NNS_G3dPlttReleasePlttKey
 	ldr r1, _021FBDF8 ; =0x02110930
 	ldr r1, [r1]
 	blx r1
@@ -47562,7 +47562,7 @@ ov01_021FBDFC: ; 0x021FBDFC
 	beq _021FBE2C
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_020BE4D0
+	bl NNS_G3dTexReleaseTexKey
 	ldr r1, _021FBE3C ; =0x02110928
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
@@ -47572,7 +47572,7 @@ ov01_021FBDFC: ; 0x021FBDFC
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r4, #0xc]
-	bl sub_020BE588
+	bl NNS_G3dPlttReleasePlttKey
 	ldr r1, _021FBE40 ; =0x02110930
 	ldr r1, [r1]
 	blx r1
@@ -47759,20 +47759,20 @@ ov01_021FBF2C: ; 0x021FBF2C
 
 	thumb_func_start ov01_021FBF50
 ov01_021FBF50: ; 0x021FBF50
-	ldr r3, _021FBF58 ; =sub_020BE294
+	ldr r3, _021FBF58 ; =NNS_G3dRenderObjAddAnmObj
 	ldr r1, [r1, #8]
 	bx r3
 	nop
-_021FBF58: .word sub_020BE294
+_021FBF58: .word NNS_G3dRenderObjAddAnmObj
 	thumb_func_end ov01_021FBF50
 
 	thumb_func_start ov01_021FBF5C
 ov01_021FBF5C: ; 0x021FBF5C
-	ldr r3, _021FBF64 ; =sub_020BE388
+	ldr r3, _021FBF64 ; =NNS_G3dRenderObjRemoveAnmObj
 	ldr r1, [r1, #8]
 	bx r3
 	nop
-_021FBF64: .word sub_020BE388
+_021FBF64: .word NNS_G3dRenderObjRemoveAnmObj
 	thumb_func_end ov01_021FBF5C
 
 	thumb_func_start ov01_021FBF68
@@ -47911,7 +47911,7 @@ ov01_021FC030: ; 0x021FC030
 	ldr r1, [r5, #4]
 	ldr r2, [r4, #8]
 	ldr r3, [r4, #0xc]
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021FC030
 
@@ -65342,7 +65342,7 @@ _0220449E:
 	ldr r3, [sp, #0x18]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	str r4, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -65417,11 +65417,11 @@ _02204508: .word sub_020C2BA0
 
 	thumb_func_start ov01_0220450C
 ov01_0220450C: ; 0x0220450C
-	ldr r3, _02204514 ; =sub_020BE294
+	ldr r3, _02204514 ; =NNS_G3dRenderObjAddAnmObj
 	ldr r1, [r1]
 	bx r3
 	nop
-_02204514: .word sub_020BE294
+_02204514: .word NNS_G3dRenderObjAddAnmObj
 	thumb_func_end ov01_0220450C
 
 	thumb_func_start ov01_02204518
@@ -65455,7 +65455,7 @@ _02204534:
 	mov r0, #0
 	pop {r3, pc}
 _0220454A:
-	bl sub_020BE388
+	bl NNS_G3dRenderObjRemoveAnmObj
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0

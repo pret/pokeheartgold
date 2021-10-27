@@ -6304,7 +6304,7 @@ ov63_0221F1D0: ; 0x0221F1D0
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, r4, #0
 	add r0, #0xf8
 	ldr r0, [r0]
@@ -6313,11 +6313,11 @@ ov63_0221F1D0: ; 0x0221F1D0
 	mov r0, #0x12
 	add r1, sp, #4
 	str r2, [sp, #4]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r4, #0xfc
 	ldr r0, [r4]
 	bl ov63_0221FAA0
@@ -6325,7 +6325,7 @@ ov63_0221F1D0: ; 0x0221F1D0
 	mov r0, #0x12
 	add r1, sp, #0
 	str r2, [sp]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _0221F234 ; =0x04000540
 	mov r1, #1
 	str r1, [r0]

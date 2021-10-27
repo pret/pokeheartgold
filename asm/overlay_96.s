@@ -34376,26 +34376,26 @@ ov96_021F61C8: ; 0x021F61C8
 	str r0, [r3]
 	mov r0, #0x1b
 	mov r2, #3
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F635C ; =0x00310081
 	add r1, sp, #0x3c
 	str r0, [sp, #0x3c]
 	mov r0, #0x29
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0xbf
 	str r0, [sp, #0x38]
 	mov r0, #0x20
 	add r1, sp, #0x38
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	bl NNS_G3dGlbFlushP
 	mov r0, #3
 	str r0, [sp, #0x34]
 	mov r0, #0x40
 	add r1, sp, #0x34
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F6360 ; =0x0221E5A0
 	mov r2, #0
 	str r2, [r0]
@@ -34411,7 +34411,7 @@ ov96_021F61C8: ; 0x021F61C8
 	mov r0, #0x23
 	add r1, sp, #0x2c
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F6368 ; =0xE800E000
 	add r1, sp, #0x24
 	str r0, [sp, #0x24]
@@ -34419,7 +34419,7 @@ ov96_021F61C8: ; 0x021F61C8
 	str r0, [sp, #0x28]
 	mov r0, #0x23
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r5, r4, #4
 	ldr r4, _021F6364 ; =0x0221DC10
 	mov r6, #1
@@ -34461,7 +34461,7 @@ _021F624E:
 	mov r0, #0x23
 	add r1, sp, #0x1c
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F6378 ; =0x45800000
 	add r1, r7, #0
 	bl _fmul
@@ -34477,7 +34477,7 @@ _021F624E:
 	mov r0, #0x23
 	add r1, sp, #0x14
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r1, _021F6360 ; =0x0221E5A0
 	ldr r0, [r4]
 	ldr r2, [r1]
@@ -34492,7 +34492,7 @@ _021F624E:
 	mov r0, #0x20
 	add r1, sp, #0x10
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F6360 ; =0x0221E5A0
 	mov r1, #0x1f
 	ldr r0, [r0]
@@ -34522,7 +34522,7 @@ _021F624E:
 	mov r0, #0x23
 	add r1, sp, #8
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F6368 ; =0xE800E000
 	add r1, sp, #0
 	str r0, [sp]
@@ -34530,11 +34530,11 @@ _021F624E:
 	str r0, [sp, #4]
 	mov r0, #0x23
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x41
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	nop

@@ -60,13 +60,13 @@ _021E596A:
 	ldrsh r2, [r3, r7]
 	ldrsh r3, [r3, r6]
 	add r0, r4, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r2, [r5, #4]
 	lsl r1, r4, #1
 	add r1, r2, r1
 	ldrh r1, [r1, #0x18]
 	add r0, r4, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -76,12 +76,12 @@ _021E596A:
 	ldrh r0, [r2, #0x20]
 	ldrh r1, [r2, #0x22]
 	ldr r2, [r2, #0x28]
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r2, [r5, #4]
 	ldrh r0, [r2, #0x24]
 	ldrh r1, [r2, #0x26]
 	ldr r2, [r2, #0x2c]
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	ldr r3, [r5, #4]
 	ldr r0, [r3, #0x40]
 	str r0, [sp]
@@ -91,7 +91,7 @@ _021E596A:
 	ldr r1, [r3, #0x34]
 	ldr r2, [r3, #0x38]
 	ldr r3, [r3, #0x3c]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 	mov r0, #6
 	str r0, [sp]
 	mov r1, #1
@@ -638,10 +638,10 @@ _021E5DEA:
 	ldr r2, [r5, #0x54]
 	ldr r3, [sp, #0xc]
 	add r1, r7, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r6, #0x64]
 	add r0, r5, #0
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

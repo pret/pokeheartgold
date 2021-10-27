@@ -1537,7 +1537,7 @@ ov71_022474CC: ; 0x022474CC
 	add r5, r0, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	bl sub_02023154
 	ldr r0, [r5, #0x1c]
 	mov r6, #0
@@ -1562,7 +1562,7 @@ _02247502:
 	mov r0, #0x12
 	add r1, sp, #0
 	str r2, [sp]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1637,7 +1637,7 @@ ov71_02247514: ; 0x02247514
 	add r2, r0, #0
 	add r3, r0, #0
 	str r0, [sp, #4]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 _022475AC:
 	add r1, r4, #0
 	add r0, r4, #4
@@ -1935,7 +1935,7 @@ ov71_02247738: ; 0x02247738
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	bl sub_02023154
 	add r1, r4, #0
 	ldr r0, [r4, #0x5c]
@@ -1949,7 +1949,7 @@ ov71_02247738: ; 0x02247738
 	mov r0, #0x12
 	add r1, sp, #0
 	str r2, [sp]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, r4, #0
 	add sp, #0x4c
 	pop {r3, r4, pc}
@@ -2214,8 +2214,8 @@ ov71_022479C8: ; 0x022479C8
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
-	bl sub_020C23F4
+	bl NNS_G3dGeBufferOP_N
+	bl NNS_G3dGeFlushBuffer
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0xc]
 	bl sub_02009418
@@ -2225,7 +2225,7 @@ ov71_022479C8: ; 0x022479C8
 	str r2, [sp]
 	mov r0, #0x12
 	add r1, sp, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, [r4, #0x70]
 	bl ov71_022474CC
 	mov r0, #0
@@ -9303,8 +9303,8 @@ ov71_0224B234: ; 0x0224B234
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
-	bl sub_020C23F4
+	bl NNS_G3dGeBufferOP_N
+	bl NNS_G3dGeFlushBuffer
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x10]
 	bl sub_02009418
@@ -9314,7 +9314,7 @@ ov71_0224B234: ; 0x0224B234
 	str r2, [sp]
 	mov r0, #0x12
 	add r1, sp, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, [r4, #0x74]
 	cmp r0, #0
 	beq _0224B272

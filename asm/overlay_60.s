@@ -660,10 +660,10 @@ _021E5DEC:
 	ldr r2, [r5, #0x58]
 	add r1, r7, #0
 	add r3, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r5, #0x70]
 	add r0, r5, #4
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 _021E5E5E:
 	ldr r0, [sp]
 	cmp r0, #0
@@ -685,10 +685,10 @@ _021E5E5E:
 	ldr r2, [r5, #0x58]
 	add r1, r7, #0
 	add r3, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r5, #0x74]
 	add r0, r5, #4
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 _021E5E98:
 	ldr r1, [sp, #0x28]
 	cmp r1, #0
@@ -709,10 +709,10 @@ _021E5E98:
 	ldr r2, [r5, #0x58]
 	add r1, r7, #0
 	add r3, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r5, #0x78]
 	add r0, r5, #4
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 _021E5ED0:
 	ldr r1, [sp, #0x2c]
 	cmp r1, #0
@@ -733,10 +733,10 @@ _021E5ED0:
 	ldr r2, [r5, #0x58]
 	add r1, r4, #0
 	add r3, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r5, #0x7c]
 	add r0, r5, #4
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 _021E5F08:
 	ldr r6, _021E5F44 ; =_021EAE30
 	add r3, sp, #4
@@ -1284,10 +1284,10 @@ _021E62C0:
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r3]
 	mov r0, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _021E6410 ; =0x00007FFF
 	mov r0, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r3, _021E6414 ; =0x000001E2
 	mov r0, #1
 	add r2, r3, #2
@@ -1295,10 +1295,10 @@ _021E62C0:
 	add r3, r3, #4
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r3]
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _021E6410 ; =0x00007FFF
 	mov r0, #1
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r2, _021E6408 ; =0x04000060
 	ldr r0, _021E640C ; =0xFFFFCFFF
 	ldrh r1, [r2]
@@ -1425,7 +1425,7 @@ _021E642E:
 	str r1, [r5, r0]
 	ldr r1, _021E6540 ; =0x00007FFF
 	mov r0, #1
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	mov r0, #0x5f
 	add r1, r4, #0
 	lsl r0, r0, #2
@@ -8155,13 +8155,13 @@ _021E9A6A:
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x28]
 	ldr r3, [sp, #0x14]
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	add r1, r5, r4
 	ldr r0, [sp, #0x20]
 	add r1, #0xe4
 	ldr r1, [r1]
 	add r0, r0, r7
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 	add r0, r6, #1
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
@@ -8219,7 +8219,7 @@ _021E9A6A:
 	mov r0, #5
 	mov r2, #2
 	add r3, r1, #0
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8402,11 +8402,11 @@ _021E9C9C:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	asr r3, r3, #0x10
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	lsl r1, r4, #1
 	ldrh r1, [r5, r1]
 	add r0, r4, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -8419,13 +8419,13 @@ _021E9C9C:
 	ldrh r1, [r1, r4]
 	ldrh r0, [r0, r4]
 	mov r2, #0
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r0, _021E9D00 ; =_021EB1FC
 	ldr r1, _021E9D04 ; =_021EB20E
 	ldrh r0, [r0, r4]
 	ldrh r1, [r1, r4]
 	mov r2, #0
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E9CF0: .word _021EB554

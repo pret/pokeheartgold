@@ -19,10 +19,7 @@ getword() {
 
 POSITIONAL=()
 
-while [[ $# -gt 0 ]]; do
-  key="$1"
-  case $key in
-  -h)
+usage () {
     echo "Diff segments of a Nintendo DS ROM"
     echo "Usage: $0 [-h] [-7] [-m OVERLAY] [-r BASEROM] [-d BUILDDIR] [START [END]]"
     echo ""
@@ -36,6 +33,13 @@ while [[ $# -gt 0 ]]; do
     echo "  -d BUILDDIR   Look for compiled binaries in this directory (default: build/heartgold.us)"
     echo "  -t            Force THUMB instructions (default: ARM)"
     echo "  -h            Show this message and exit"
+}
+
+while [[ $# -gt 0 ]]; do
+  key="$1"
+  case $key in
+  -h)
+    usage
     exit 0
     ;;
   -7)
@@ -65,6 +69,11 @@ while [[ $# -gt 0 ]]; do
     builddir="$2"
     shift
     shift
+    ;;
+  -*)
+    usage
+    echo unrecognized option flag: "$1" >&2
+    exit 1
     ;;
   *)
     POSITIONAL+=("$1")
