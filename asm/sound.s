@@ -106,7 +106,7 @@ DoSoundUpdateFrame: ; 0x02004208
 _02004232:
 	bl sub_02004300
 _02004236:
-	bl sub_020C79B4
+	bl NNS_SndUpdateDriverInfo
 	ldr r0, _020042E8 ; =gMain
 	ldr r1, [r0, #0x48]
 	mov r0, #2
@@ -120,10 +120,10 @@ _0200424C:
 	add r0, r4, r6
 	add r1, r5, #0
 	add r2, r7, #0
-	bl sub_020C83C0
+	bl NNS_SndPlayerReadDriverTrackInfo
 	add r0, r5, #0
 	add r1, sp, #0x24
-	bl sub_020C7A94
+	bl NNS_SndReadDriverChannelInfo
 	add r5, r5, #1
 	cmp r5, #0x10
 	blt _0200424C
@@ -1103,14 +1103,14 @@ sub_0200498C: ; 0x0200498C
 	bl NNS_SndHandleInit
 	ldr r1, _020049C4 ; =0x0000A7FE
 	mov r0, #9
-	bl sub_020C7FAC
+	bl NNS_SndPlayerSetAllocatableChannel
 	mov r0, #9
 	mov r1, #1
-	bl sub_020C7F8C
+	bl NNS_SndPlayerSetPlayableSeqCount
 	ldr r1, [r4]
 	ldr r2, _020049C8 ; =0x00002EE0
 	mov r0, #9
-	bl sub_020C7FC4
+	bl NNS_SndPlayerCreateHeap
 	cmp r0, #1
 	beq _020049B8
 	bl GF_AssertFail
@@ -1179,21 +1179,21 @@ _02004A28: .word _021D05E0
 
 	thumb_func_start sub_02004A2C
 sub_02004A2C: ; 0x02004A2C
-	ldr r3, _02004A34 ; =sub_020C816C
+	ldr r3, _02004A34 ; =NNS_SndPlayerPauseByPlayerNo
 	add r1, r0, #0
 	mov r0, #9
 	bx r3
 	.balign 4, 0
-_02004A34: .word sub_020C816C
+_02004A34: .word NNS_SndPlayerPauseByPlayerNo
 	thumb_func_end sub_02004A2C
 
 	thumb_func_start sub_02004A38
 sub_02004A38: ; 0x02004A38
-	ldr r3, _02004A40 ; =sub_020C81F0
+	ldr r3, _02004A40 ; =NNS_SndPlayerCountPlayingSeqByPlayerNo
 	mov r0, #9
 	bx r3
 	nop
-_02004A40: .word sub_020C81F0
+_02004A40: .word NNS_SndPlayerCountPlayingSeqByPlayerNo
 	thumb_func_end sub_02004A38
 
 	.data

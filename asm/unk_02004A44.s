@@ -1251,7 +1251,7 @@ _020053E0:
 	add r0, r4, #0
 	bl GetSoundPlayer
 	add r1, r5, #0
-	bl sub_020C815C
+	bl NNS_SndPlayerPause
 	strb r5, [r6]
 _020053EE:
 	pop {r4, r5, r6, pc}
@@ -1280,7 +1280,7 @@ sub_02005408: ; 0x02005408
 	bl GetSoundPlayer
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_020C8230
+	bl NNS_SndPlayerMoveVolume
 	cmp r6, #0
 	bne _02005428
 	lsl r0, r5, #0x18
@@ -1304,7 +1304,7 @@ _02005434:
 _0200543A:
 	bl GetSoundPlayer
 	add r1, r4, #0
-	bl sub_020C821C
+	bl NNS_SndPlayerSetInitialVolume
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200542C
@@ -1387,7 +1387,7 @@ GF_SndPlayerCountPlayingSeqByPlayerNo: ; 0x020054C0
 	bl GF_AssertFail
 _020054CA:
 	add r0, r4, #0
-	bl sub_020C81F0
+	bl NNS_SndPlayerCountPlayingSeqByPlayerNo
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end GF_SndPlayerCountPlayingSeqByPlayerNo
@@ -1592,7 +1592,7 @@ _02005624:
 	bl sub_02004400
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020C7C90
+	bl NNS_SndWaveOutAllocChannel
 	str r0, [r4]
 	cmp r0, #0
 	bne _02005646
@@ -1613,7 +1613,7 @@ _02005652:
 	bl sub_02004400
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_020C7C90
+	bl NNS_SndWaveOutAllocChannel
 	str r0, [r6]
 	cmp r0, #0
 	bne _02005670
@@ -1657,7 +1657,7 @@ _020056A6:
 	add r0, r5, #0
 	bl sub_020055AC
 	ldr r0, [r0]
-	bl sub_020C7CD4
+	bl NNS_SndWaveOutFreeChannel
 	mov r0, #0
 	strb r0, [r6]
 	pop {r4, r5, r6, pc}
@@ -1671,7 +1671,7 @@ _020056C8:
 	add r0, r5, #0
 	bl sub_020055AC
 	ldr r0, [r0]
-	bl sub_020C7CD4
+	bl NNS_SndWaveOutFreeChannel
 	mov r0, #0
 	strb r0, [r4]
 	pop {r4, r5, r6, pc}
@@ -1704,7 +1704,7 @@ sub_020056E8: ; 0x020056E8
 	ldr r2, [r3, #8]
 	ldr r0, [r0]
 	ldr r3, [r3, #0xc]
-	bl sub_020C7CEC
+	bl NNS_SndWaveOutStart
 	add r5, r0, #0
 	bne _02005720
 	add r0, r4, #0
@@ -1721,7 +1721,7 @@ sub_02005728: ; 0x02005728
 	push {r3, lr}
 	bl sub_020055AC
 	ldr r0, [r0]
-	bl sub_020C7E0C
+	bl NNS_SndWaveOutStop
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02005728
@@ -1731,7 +1731,7 @@ sub_02005738: ; 0x02005738
 	push {r3, lr}
 	bl sub_020055AC
 	ldr r0, [r0]
-	bl sub_020C7F18
+	bl NNS_SndWaveOutIsPlaying
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02005738
@@ -1747,7 +1747,7 @@ _02005752:
 	bl sub_020055AC
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl sub_020C7EF4
+	bl NNS_SndWaveOutSetPan
 	pop {r4, pc}
 	thumb_func_end sub_02005748
 
@@ -1758,7 +1758,7 @@ sub_02005760: ; 0x02005760
 	bl sub_020055AC
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl sub_020C7E70
+	bl NNS_SndWaveOutSetSpeed
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02005760
@@ -1779,14 +1779,14 @@ sub_02005774: ; 0x02005774
 	bl _s32_div_f
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020C7E48
+	bl NNS_SndWaveOutSetVolume
 	pop {r3, r4, r5, pc}
 _0200579C:
 	add r0, r4, #0
 	bl sub_020055AC
 	ldr r0, [r0]
 	add r1, r5, #0
-	bl sub_020C7E48
+	bl NNS_SndWaveOutSetVolume
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005774
 
@@ -1990,7 +1990,7 @@ sub_02005918: ; 0x02005918
 	bl GetSoundPlayer
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_020C827C
+	bl NNS_SndPlayerSetTrackPitch
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005918
 
@@ -2027,7 +2027,7 @@ sub_02005958: ; 0x02005958
 	bl GetSoundPlayer
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_020C829C
+	bl NNS_SndPlayerSetTrackPan
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005958
 
@@ -2037,7 +2037,7 @@ sub_0200596C: ; 0x0200596C
 	add r4, r1, #0
 	bl GetSoundPlayer
 	add r1, r4, #0
-	bl sub_020C82DC
+	bl NNS_SndPlayerSetTempoRatio
 	pop {r4, pc}
 	thumb_func_end sub_0200596C
 
@@ -2097,10 +2097,10 @@ _020059C6:
 
 	thumb_func_start sub_020059D0
 sub_020059D0: ; 0x020059D0
-	ldr r3, _020059D4 ; =sub_020C7988
+	ldr r3, _020059D4 ; =NNS_SndSetMasterVolume
 	bx r3
 	.balign 4, 0
-_020059D4: .word sub_020C7988
+_020059D4: .word NNS_SndSetMasterVolume
 	thumb_func_end sub_020059D0
 
 	thumb_func_start sub_020059D8
@@ -2255,12 +2255,12 @@ sub_02005AB0: ; 0x02005AB0
 
 	thumb_func_start sub_02005AEC
 sub_02005AEC: ; 0x02005AEC
-	ldr r3, _02005AF4 ; =sub_020C7FAC
+	ldr r3, _02005AF4 ; =NNS_SndPlayerSetAllocatableChannel
 	add r1, r0, #0
 	mov r0, #7
 	bx r3
 	.balign 4, 0
-_02005AF4: .word sub_020C7FAC
+_02005AF4: .word NNS_SndPlayerSetAllocatableChannel
 	thumb_func_end sub_02005AEC
 
 	thumb_func_start sub_02005AF8
@@ -2356,7 +2356,7 @@ _02005B8E:
 	bl GetSoundPlayer
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020C8374
+	bl NNS_SndPlayerReadVariable
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_02005B78
@@ -2529,17 +2529,17 @@ sub_02005CC0: ; 0x02005CC0
 	bl GetSoundPlayer
 	ldr r2, _02005CF0 ; =0x0000A7FE
 	mov r1, #0xf
-	bl sub_020C82BC
+	bl NNS_SndPlayerSetTrackAllocatableChannel
 	mov r0, #7
 	bl GetSoundPlayer
 	ldr r2, _02005CF0 ; =0x0000A7FE
 	mov r1, #0xf
-	bl sub_020C82BC
+	bl NNS_SndPlayerSetTrackAllocatableChannel
 	mov r0, #2
 	bl GetSoundPlayer
 	ldr r2, _02005CF0 ; =0x0000A7FE
 	mov r1, #0xf
-	bl sub_020C82BC
+	bl NNS_SndPlayerSetTrackAllocatableChannel
 	pop {r3, pc}
 	nop
 _02005CF0: .word 0x0000A7FE

@@ -211,13 +211,13 @@ sub_02005EB4: ; 0x02005EB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020C80C4
+	bl NNS_SndPlayerStopSeqBySeqNo
 	add r0, r5, #0
 	bl sub_02005C6C
 	cmp r5, r0
 	beq _02005ECE
 	add r1, r4, #0
-	bl sub_020C80C4
+	bl NNS_SndPlayerStopSeqBySeqNo
 _02005ECE:
 	add r0, r5, #0
 	bl sub_020054D4
@@ -334,7 +334,7 @@ sub_02005FA0: ; 0x02005FA0
 	bl sub_02004400
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_020C811C
+	bl NNS_SndPlayerStopSeqAll
 	ldrb r0, [r5]
 	cmp r0, #1
 	bne _02005FC4
@@ -364,7 +364,7 @@ sub_02005FD8: ; 0x02005FD8
 	mov r0, #7
 	bl GetSoundPlayer
 	mov r1, #0
-	bl sub_020C8058
+	bl NNS_SndPlayerStopSeq
 	bl sub_02005EEC
 	mov r5, #0
 	add r4, r5, #0
@@ -552,10 +552,10 @@ _02006150: .word 0x0000FFFF
 
 	thumb_func_start sub_02006154
 sub_02006154: ; 0x02006154
-	ldr r3, _02006158 ; =sub_020C80C4
+	ldr r3, _02006158 ; =NNS_SndPlayerStopSeqBySeqNo
 	bx r3
 	.balign 4, 0
-_02006158: .word sub_020C80C4
+_02006158: .word NNS_SndPlayerStopSeqBySeqNo
 	thumb_func_end sub_02006154
 
 	thumb_func_start sub_0200615C
@@ -564,7 +564,7 @@ sub_0200615C: ; 0x0200615C
 	add r4, r1, #0
 	bl GetSoundPlayer
 	add r1, r4, #0
-	bl sub_020C8058
+	bl NNS_SndPlayerStopSeq
 	pop {r4, pc}
 	thumb_func_end sub_0200615C
 
@@ -629,7 +629,7 @@ sub_020061B4: ; 0x020061B4
 	bl GetSoundPlayer
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_020C829C
+	bl NNS_SndPlayerSetTrackPan
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020061B4
 
@@ -641,7 +641,7 @@ sub_020061D0: ; 0x020061D0
 	bl GetSoundPlayer
 	ldr r1, _020061E8 ; =0x0000FFFF
 	add r2, r4, #0
-	bl sub_020C829C
+	bl NNS_SndPlayerSetTrackPan
 	pop {r4, pc}
 	nop
 _020061E8: .word 0x0000FFFF
@@ -661,7 +661,7 @@ _020061FC:
 	bl GetSoundPlayer
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_020C829C
+	bl NNS_SndPlayerSetTrackPan
 	add r5, r5, #1
 	cmp r5, #4
 	blt _020061FC
@@ -802,11 +802,11 @@ sub_02006300: ; 0x02006300
 	mov r0, #1
 	bl GetSoundPlayer
 	add r1, r5, #0
-	bl sub_020C8058
+	bl NNS_SndPlayerStopSeq
 	mov r0, #8
 	bl GetSoundPlayer
 	add r1, r5, #0
-	bl sub_020C8058
+	bl NNS_SndPlayerStopSeq
 	ldrb r0, [r6]
 	cmp r0, #1
 	bne _02006344
@@ -1828,7 +1828,7 @@ sub_02006BB0: ; 0x02006BB0
 	mov r0, #2
 	bl GetSoundPlayer
 	add r1, r4, #0
-	bl sub_020C8058
+	bl NNS_SndPlayerStopSeq
 	mov r0, #6
 	bl sub_02005328
 	bl sub_02004714

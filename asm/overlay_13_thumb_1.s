@@ -17,10 +17,10 @@ _0221BA0C:
 	bl NNS_SndPlayerSetPlayerVolume
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_020C7F8C
+	bl NNS_SndPlayerSetPlayableSeqCount
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_020C7FAC
+	bl NNS_SndPlayerSetAllocatableChannel
 	add r5, r5, #1
 	cmp r5, #0x20
 	blt _0221BA0C
