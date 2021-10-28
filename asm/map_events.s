@@ -431,15 +431,15 @@ _0203B8B4:
 	.balign 4, 0
 	thumb_func_end WildEncounters_ReadFromNarc
 
-	thumb_func_start sub_0203B8B8
-sub_0203B8B8: ; 0x0203B8B8
+	thumb_func_start MapEvents_GetLoadedEncTable
+MapEvents_GetLoadedEncTable: ; 0x0203B8B8
 	ldr r1, [r0, #0x14]
 	mov r0, #0x92
 	lsl r0, r0, #4
 	add r0, r1, r0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0203B8B8
+	thumb_func_end MapEvents_GetLoadedEncTable
 
 	thumb_func_start sub_0203B8C4
 sub_0203B8C4: ; 0x0203B8C4

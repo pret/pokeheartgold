@@ -27075,7 +27075,7 @@
 .public sub_0203B7C4
 .public sub_0203B7F4
 .public sub_0203B80C
-.public sub_0203B8B8
+.public MapEvents_GetLoadedEncTable
 .public sub_0203B904
 .public sub_0203B91C
 .public sub_0203B920

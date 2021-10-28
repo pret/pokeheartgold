@@ -964,7 +964,7 @@ sub_02004898: ; 0x02004898
 	ldr r0, _020048BC ; =0x000BEC0C
 	add r0, r4, r0
 	bl GF_Snd_SaveState
-	mov r0, #0
+	mov r0, #GROUP_GLOBAL
 	bl GF_Snd_LoadGroup
 	ldr r0, _020048C0 ; =BANK_GAMEBOY
 	bl GF_Snd_LoadBank
@@ -1002,7 +1002,7 @@ _020048EC: .word 0x000BEC80
 	thumb_func_start sub_020048F0
 sub_020048F0: ; 0x020048F0
 	push {r3, lr}
-	mov r0, #7
+	mov r0, #PLAYER_BGM
 	mov r1, #0
 	bl NNS_SndPlayerStopSeqByPlayerNo
 	mov r0, #7
@@ -1015,7 +1015,7 @@ sub_020048F0: ; 0x020048F0
 	thumb_func_start sub_02004908
 sub_02004908: ; 0x02004908
 	push {r3, lr}
-	mov r0, #1
+	mov r0, #PLAYER_FIELD
 	mov r1, #0
 	bl NNS_SndPlayerStopSeqByPlayerNo
 	mov r0, #0

@@ -1,3 +1,4 @@
+#include "constants/abilities.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -2234,7 +2235,7 @@ _02246CD6:
 	bl SavArray_PlayerParty_get
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0
@@ -2611,7 +2612,7 @@ _02247002:
 	ldr r0, [r0]
 	bl sub_02052544
 	ldr r0, [sp, #0x20]
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
@@ -2739,7 +2740,7 @@ _02247106:
 	ldr r0, [r0]
 	bl sub_02051F00
 	ldr r0, [sp, #0xc]
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	add r5, r0, #0
 	add r5, #0x78
 	mov r6, #0
@@ -2814,7 +2815,7 @@ _022471AC:
 	bl SavArray_PlayerParty_get
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0
@@ -4710,7 +4711,7 @@ _02248010: .word 0x0000013B
 	thumb_func_start ov02_02248014
 ov02_02248014: ; 0x02248014
 	push {r3, lr}
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	ldrb r0, [r0]
 	pop {r3, pc}
 	.balign 4, 0
@@ -4719,7 +4720,7 @@ ov02_02248014: ; 0x02248014
 	thumb_func_start ov02_02248020
 ov02_02248020: ; 0x02248020
 	push {r3, lr}
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	ldrb r0, [r0, #1]
 	pop {r3, pc}
 	.balign 4, 0
@@ -4730,7 +4731,7 @@ ov02_0224802C: ; 0x0224802C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	cmp r4, #0
 	beq _02248044
 	cmp r4, #1
@@ -4808,7 +4809,7 @@ _022480B0:
 	thumb_func_start ov02_022480B4
 ov02_022480B4: ; 0x022480B4
 	push {r3, lr}
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	ldrb r0, [r0, #2]
 	pop {r3, pc}
 	.balign 4, 0
@@ -5565,7 +5566,7 @@ ov02_02248618: ; 0x02248618
 _0224863C:
 	mov r0, #1
 	strb r0, [r5, #0xd]
-	mov r0, #0x7b
+	mov r0, #NUM_ABILITIES
 _02248642:
 	strb r0, [r5, #0xe]
 	mov r0, #0

@@ -1,3 +1,4 @@
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -292,78 +293,78 @@ _02004B38: ; jump table
 	.short _02004E22 - _02004B38 - 2 ; case 74
 	.short _02004E32 - _02004B38 - 2 ; case 75
 _02004BD0:
-	mov r0, #1
+	mov r0, #GROUP_SE_FIELD
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004BDA:
-	mov r0, #1
+	mov r0, #GROUP_SE_FIELD
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
-	ldr r0, _02004E4C ; =0x0000058F
+	ldr r0, _02004E4C ; =SEQ_SE_PL_BALLOON02
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E50 ; =0x00000591
+	ldr r0, _02004E50 ; =SEQ_SE_PL_BALLOON03_2
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E54 ; =0x00000593
+	ldr r0, _02004E54 ; =SEQ_SE_PL_BALLOON05
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E58 ; =0x0000058E
+	ldr r0, _02004E58 ; =SEQ_SE_PL_BALLOON01
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E5C ; =0x00000594
+	ldr r0, _02004E5C ; =SEQ_SE_PL_BALLOON07
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E60 ; =0x00000596
+	ldr r0, _02004E60 ; =SEQ_SE_PL_ALERT4
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E64 ; =0x0000064F
+	ldr r0, _02004E64 ; =SEQ_SE_DP_FW104
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E68 ; =0x00000582
+	ldr r0, _02004E68 ; =SEQ_SE_PL_NOMI02
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E6C ; =0x00000722
+	ldr r0, _02004E6C ; =SEQ_SE_DP_023
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E70 ; =0x00000583
+	ldr r0, _02004E70 ; =SEQ_SE_PL_POINT1
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E74 ; =0x00000584
+	ldr r0, _02004E74 ; =SEQ_SE_PL_POINT2
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E78 ; =0x00000585
+	ldr r0, _02004E78 ; =SEQ_SE_PL_POINT3
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E7C ; =0x00000587
+	ldr r0, _02004E7C ; =SEQ_SE_PL_BALLOON05_2
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E80 ; =0x0000063D
+	ldr r0, _02004E80 ; =SEQ_SE_DP_HAMARU
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E84 ; =0x00000642
+	ldr r0, _02004E84 ; =SEQ_SE_DP_CON_016
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E88 ; =0x0000058A
+	ldr r0, _02004E88 ; =SEQ_SE_PL_KIRAKIRA
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
-	ldr r0, _02004E8C ; =0x00000581
+	ldr r0, _02004E8C ; =SEQ_SE_PL_FCALL
 	mov r1, #1
 	bl GF_Snd_LoadSeqEx
 	b _02004E48
 _02004C6C:
-	mov r0, #0xe
+	mov r0, #GROUP_SE_NUTMIXER
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004C76:
-	mov r0, #2
+	mov r0, #GROUP_SE_BATTLE
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004C80:
-	mov r0, #3
+	mov r0, #WAVE_ARC_SE_HIROBA>>8
 	lsl r0, r0, #8
 	bl GF_Snd_LoadBank
 	mov r0, #3
@@ -372,204 +373,204 @@ _02004C80:
 	add r4, r0, #0
 	b _02004E48
 _02004C94:
-	mov r0, #0xd
+	mov r0, #GROUP_SE_TRADE
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004C9E:
-	mov r0, #1
+	mov r0, #GROUP_SE_FIELD
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004CA8:
-	mov r0, #2
+	mov r0, #GROUP_SE_BATTLE
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004CB2:
-	mov r0, #1
+	mov r0, #GROUP_SE_FIELD
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004CBC:
-	mov r0, #0xb
+	mov r0, #GROUP_SE_CONTEST
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004CC6:
-	mov r0, #1
+	mov r0, #GROUP_SE_FIELD
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004CD0:
-	mov r0, #0xe
+	mov r0, #GROUP_SE_NUTMIXER
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004CDA:
-	mov r0, #1
+	mov r0, #GROUP_SE_FIELD
 	bl GF_Snd_LoadGroup
-	mov r0, #8
+	mov r0, #GROUP_SE_DIG
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004CEA:
-	mov r0, #1
+	mov r0, #GROUP_SE_FIELD
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004CF4:
-	ldr r0, _02004E90 ; =0x00000302
+	ldr r0, _02004E90 ; =BANK_SE_THLON
 	bl GF_Snd_LoadBank
-	ldr r0, _02004E90 ; =0x00000302
+	ldr r0, _02004E90 ; =WAVE_ARC_SE_THLON
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004D04:
-	ldr r0, _02004E94 ; =0x00000303
+	ldr r0, _02004E94 ; =BANK_SE_THLON_OPED
 	bl GF_Snd_LoadBank
-	ldr r0, _02004E94 ; =0x00000303
+	ldr r0, _02004E94 ; =WAVE_ARC_SE_THLON_OPED
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004D14:
-	mov r0, #3
+	mov r0, #GROUP_SE_BAG
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D1E:
-	mov r0, #6
+	mov r0, #GROUP_SE_SLOT
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D28:
-	mov r0, #5
+	mov r0, #GROUP_SE_NAMEIN
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D32:
-	mov r0, #9
+	mov r0, #GROUP_SE_IMAGE
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D3C:
-	mov r0, #0xa
+	mov r0, #GROUP_SE_ZUKAN
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D46:
-	ldr r0, _02004E98 ; =0x000002F5
+	ldr r0, _02004E98 ; =BANK_SE_TOWNMAP
 	bl GF_Snd_LoadBank
-	ldr r0, _02004E98 ; =0x000002F5
+	ldr r0, _02004E98 ; =WAVE_ARC_SE_TOWNMAP
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004D56:
-	mov r0, #0xc
+	mov r0, #GROUP_SE_TRCARD
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D60:
-	mov r0, #7
+	mov r0, #GROUP_SE_POKELIST
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D6A:
-	mov r0, #8
+	mov r0, #GROUP_SE_DIG
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D74:
-	mov r0, #0xf
+	mov r0, #GROUP_SE_CUSTOM
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D7E:
-	mov r0, #3
+	mov r0, #GROUP_SE_BAG
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D88:
-	mov r0, #5
+	mov r0, #GROUP_SE_NAMEIN
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D92:
-	mov r0, #0xf
+	mov r0, #GROUP_SE_CUSTOM
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004D9C:
-	mov r0, #4
+	mov r0, #GROUP_SE_CLIMAX
 	bl GF_Snd_LoadGroup
 	add r4, r0, #0
 	b _02004E48
 _02004DA6:
-	ldr r0, _02004E9C ; =0x000002FF
+	ldr r0, _02004E9C ; =BANK_SE_SCRATCH
 	bl GF_Snd_LoadBank
-	ldr r0, _02004E9C ; =0x000002FF
+	ldr r0, _02004E9C ; =WAVE_ARC_SE_SCRATCH
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004DB6:
-	ldr r0, _02004EA0 ; =0x00000301
+	ldr r0, _02004EA0 ; =BANK_SE_PLANTER
 	bl GF_Snd_LoadBank
-	ldr r0, _02004EA0 ; =0x00000301
+	ldr r0, _02004EA0 ; =WAVE_ARC_SE_PLANTER
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004DC6:
-	mov r0, #0xbf
+	mov r0, #BANK_SE_LINEAR>>2
 	lsl r0, r0, #2
 	bl GF_Snd_LoadBank
-	mov r0, #0xbf
+	mov r0, #WAVE_ARC_SE_LINEAR>>2
 	lsl r0, r0, #2
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004DDA:
-	ldr r0, _02004EA4 ; =0x00000305
+	ldr r0, _02004EA4 ; =BANK_SE_COIN
 	bl GF_Snd_LoadBank
-	ldr r0, _02004EA4 ; =0x00000305
+	ldr r0, _02004EA4 ; =WAVE_ARC_SE_COIN
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004DEA:
-	ldr r0, _02004EA8 ; =0x00000306
+	ldr r0, _02004EA8 ; =BANK_SE_DENDO
 	bl GF_Snd_LoadBank
-	ldr r0, _02004EA8 ; =0x00000306
+	ldr r0, _02004EA8 ; =WAVE_ARC_SE_DENDO
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004DFA:
-	mov r0, #0xc1
+	mov r0, #BANK_SE_JUICE>>2
 	lsl r0, r0, #2
 	bl GF_Snd_LoadBank
-	mov r0, #0xc1
+	mov r0, #WAVE_ARC_SE_JUICE>>2
 	lsl r0, r0, #2
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004E0E:
-	mov r0, #0xc2
+	mov r0, #BANK_SE_PHC>>2
 	lsl r0, r0, #2
 	bl GF_Snd_LoadBank
-	mov r0, #0xc2
+	mov r0, #WAVE_ARC_SE_PHC>>2
 	lsl r0, r0, #2
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004E22:
-	ldr r0, _02004EAC ; =0x00000307
+	ldr r0, _02004EAC ; =WAVE_ARC_SE_SEKIBAN
 	bl GF_Snd_LoadBank
-	ldr r0, _02004EAC ; =0x00000307
+	ldr r0, _02004EAC ; =WAVE_ARC_SE_SEKIBAN
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004E32:
-	ldr r0, _02004EB0 ; =0x00000309
+	ldr r0, _02004EB0 ; =WAVE_ARC_SE_EVENT
 	bl GF_Snd_LoadBank
-	ldr r0, _02004EB0 ; =0x00000309
+	ldr r0, _02004EB0 ; =WAVE_ARC_SE_EVENT
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
