@@ -64,7 +64,7 @@ sub_02004A44: ; 0x02004A44
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #5
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strb r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -74,7 +74,7 @@ sub_02004A44: ; 0x02004A44
 sub_02004A54: ; 0x02004A54
 	push {r3, lr}
 	mov r0, #5
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	ldrb r0, [r0]
 	pop {r3, pc}
 	thumb_func_end sub_02004A54
@@ -84,7 +84,7 @@ sub_02004A60: ; 0x02004A60
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xa
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	ldr r0, _02004A8C ; =0x000004C1
 	cmp r5, r0
@@ -109,7 +109,7 @@ _02004A8C: .word 0x000004C1
 sub_02004A90: ; 0x02004A90
 	push {r3, lr}
 	mov r0, #0xa
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	ldrh r0, [r0]
 	pop {r3, pc}
 	thumb_func_end sub_02004A90
@@ -119,7 +119,7 @@ sub_02004A9C: ; 0x02004A9C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0xb
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strh r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -129,7 +129,7 @@ sub_02004A9C: ; 0x02004A9C
 sub_02004AAC: ; 0x02004AAC
 	push {r3, lr}
 	mov r0, #0xb
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	ldrh r0, [r0]
 	pop {r3, pc}
 	thumb_func_end sub_02004AAC
@@ -139,7 +139,7 @@ sub_02004AB8: ; 0x02004AB8
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x3a
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strh r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -150,7 +150,7 @@ sub_02004AC8: ; 0x02004AC8
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x20
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strh r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -161,10 +161,10 @@ sub_02004AD8: ; 0x02004AD8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0x15
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #0x16
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	cmp r5, #0x33
 	bhs _02004AF6
 	strb r5, [r4]
@@ -182,9 +182,9 @@ sub_02004AFC: ; 0x02004AFC
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x15
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	mov r0, #0x16
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strb r4, [r0]
 	pop {r4, pc}
 	thumb_func_end sub_02004AFC
@@ -193,7 +193,7 @@ sub_02004AFC: ; 0x02004AFC
 sub_02004B10: ; 0x02004B10
 	push {r4, lr}
 	mov r0, #0x16
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	bl sub_02005318
 	mov r0, #0
@@ -302,55 +302,55 @@ _02004BDA:
 	add r4, r0, #0
 	ldr r0, _02004E4C ; =0x0000058F
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E50 ; =0x00000591
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E54 ; =0x00000593
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E58 ; =0x0000058E
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E5C ; =0x00000594
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E60 ; =0x00000596
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E64 ; =0x0000064F
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E68 ; =0x00000582
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E6C ; =0x00000722
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E70 ; =0x00000583
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E74 ; =0x00000584
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E78 ; =0x00000585
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E7C ; =0x00000587
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E80 ; =0x0000063D
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E84 ; =0x00000642
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E88 ; =0x0000058A
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	ldr r0, _02004E8C ; =0x00000581
 	mov r1, #1
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	b _02004E48
 _02004C6C:
 	mov r0, #0xe
@@ -365,10 +365,10 @@ _02004C76:
 _02004C80:
 	mov r0, #3
 	lsl r0, r0, #8
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	mov r0, #3
 	lsl r0, r0, #8
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004C94:
@@ -420,16 +420,16 @@ _02004CEA:
 	b _02004E48
 _02004CF4:
 	ldr r0, _02004E90 ; =0x00000302
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	ldr r0, _02004E90 ; =0x00000302
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004D04:
 	ldr r0, _02004E94 ; =0x00000303
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	ldr r0, _02004E94 ; =0x00000303
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004D14:
@@ -459,9 +459,9 @@ _02004D3C:
 	b _02004E48
 _02004D46:
 	ldr r0, _02004E98 ; =0x000002F5
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	ldr r0, _02004E98 ; =0x000002F5
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004D56:
@@ -506,71 +506,71 @@ _02004D9C:
 	b _02004E48
 _02004DA6:
 	ldr r0, _02004E9C ; =0x000002FF
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	ldr r0, _02004E9C ; =0x000002FF
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004DB6:
 	ldr r0, _02004EA0 ; =0x00000301
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	ldr r0, _02004EA0 ; =0x00000301
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004DC6:
 	mov r0, #0xbf
 	lsl r0, r0, #2
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	mov r0, #0xbf
 	lsl r0, r0, #2
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004DDA:
 	ldr r0, _02004EA4 ; =0x00000305
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	ldr r0, _02004EA4 ; =0x00000305
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004DEA:
 	ldr r0, _02004EA8 ; =0x00000306
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	ldr r0, _02004EA8 ; =0x00000306
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004DFA:
 	mov r0, #0xc1
 	lsl r0, r0, #2
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	mov r0, #0xc1
 	lsl r0, r0, #2
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004E0E:
 	mov r0, #0xc2
 	lsl r0, r0, #2
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	mov r0, #0xc2
 	lsl r0, r0, #2
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004E22:
 	ldr r0, _02004EAC ; =0x00000307
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	ldr r0, _02004EAC ; =0x00000307
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004E32:
 	ldr r0, _02004EB0 ; =0x00000309
-	bl sub_020047C8
+	bl GF_Snd_LoadBank
 	ldr r0, _02004EB0 ; =0x00000309
-	bl sub_020047A8
+	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004E42:
@@ -627,13 +627,13 @@ sub_02004EC4: ; 0x02004EC4
 	mov r0, #0x15
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	str r0, [sp]
 	mov r0, #0x16
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	str r0, [sp, #4]
 	mov r0, #0xe
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r7, r0, #0
 	cmp r4, #0x33
 	bhs _02004EF8
@@ -831,16 +831,16 @@ sub_02005060: ; 0x02005060
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x18
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	ldr r0, [r0]
-	bl sub_02004714
+	bl GF_Snd_LoadState
 	mov r0, #0x19
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl GF_Snd_SaveState
 	add r0, r4, #0
 	bl sub_02004B24
 	mov r0, #0x1a
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl GF_Snd_SaveState
 	pop {r4, pc}
 	thumb_func_end sub_02005060
@@ -850,12 +850,12 @@ sub_0200508C: ; 0x0200508C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	mov r0, #0xc
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r0, #0x18
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	mov r0, #0x20
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	mov r0, #0
 	bl GetSoundPlayer
 	bl sub_020054F0
@@ -906,11 +906,11 @@ _02005104:
 	bne _0200513C
 	mov r0, #2
 	bl sub_02005328
-	bl sub_02004714
+	bl GF_Snd_LoadState
 	mov r0, #4
 	bl sub_02004B24
 	mov r0, #0x1a
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl GF_Snd_SaveState
 	cmp r4, r5
 	beq _02005130
@@ -939,7 +939,7 @@ sub_02005150: ; 0x02005150
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0x20
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	ldrh r0, [r4]
 	bl sub_02005504
@@ -949,16 +949,16 @@ sub_02005150: ; 0x02005150
 	bne _02005178
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	bl GF_AssertFail
 	b _02005180
 _02005178:
 	ldrh r0, [r4]
 	mov r1, #6
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 _02005180:
 	mov r0, #0x1b
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl GF_Snd_SaveState
 	mov r0, #1
 	mov r1, #0
@@ -978,10 +978,10 @@ sub_020051A4: ; 0x020051A4
 	add r7, r0, #0
 	mov r0, #0x13
 	add r5, r1, #0
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r0, #0x20
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	ldrb r0, [r6]
 	cmp r0, #1
@@ -991,19 +991,19 @@ sub_020051A4: ; 0x020051A4
 _020051C4:
 	mov r0, #1
 	bl sub_02005328
-	bl sub_02004714
+	bl GF_Snd_LoadState
 	mov r0, #0
 	bl sub_02004AFC
 	ldrh r0, [r4]
 	mov r1, #2
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	mov r0, #0x19
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl GF_Snd_SaveState
 	mov r0, #4
 	bl sub_02004B24
 	mov r0, #0x1a
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl GF_Snd_SaveState
 	ldrh r0, [r4]
 	bl sub_02005504
@@ -1013,16 +1013,16 @@ _020051C4:
 	bne _02005212
 	add r0, r7, #0
 	mov r1, #4
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 	bl GF_AssertFail
 	b _0200521A
 _02005212:
 	ldrh r0, [r4]
 	mov r1, #4
-	bl sub_02004784
+	bl GF_Snd_LoadSeqEx
 _0200521A:
 	mov r0, #0x1b
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl GF_Snd_SaveState
 _02005224:
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1034,15 +1034,15 @@ sub_02005228: ; 0x02005228
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x18
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl sub_02005B20
 	mov r0, #2
 	bl sub_02005328
-	bl sub_02004714
+	bl GF_Snd_LoadState
 	mov r0, #5
 	bl sub_02004B24
 	mov r0, #0x1a
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl GF_Snd_SaveState
 	mov r0, #1
 	bl sub_020059E0
@@ -1057,7 +1057,7 @@ sub_02005260: ; 0x02005260
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x18
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl sub_02005FA0
 	bl sub_020053F0
 	mov r0, #4
@@ -1072,7 +1072,7 @@ sub_02005280: ; 0x02005280
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x18
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl sub_02005FA0
 	mov r0, #6
 	bl sub_02005060
@@ -1089,7 +1089,7 @@ sub_020052A4: ; 0x020052A4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x18
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl sub_02005FA0
 	mov r0, #7
 	bl sub_02005060
@@ -1109,7 +1109,7 @@ sub_020052C8: ; 0x020052C8
 	add r0, r4, #0
 	bl sub_02004B24
 	mov r0, #0x1c
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl GF_Snd_SaveState
 	pop {r4, pc}
 	.balign 4, 0
@@ -1121,7 +1121,7 @@ sub_020052E4: ; 0x020052E4
 	add r5, r0, #0
 	mov r0, #0x18
 	add r4, r1, #0
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl sub_02005FA0
 	add r0, r5, #0
 	bl sub_02005060
@@ -1147,7 +1147,7 @@ sub_02005318: ; 0x02005318
 	push {r3, lr}
 	mov r0, #4
 	bl sub_02005328
-	bl sub_02004714
+	bl GF_Snd_LoadState
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02005318
@@ -1161,7 +1161,7 @@ sub_02005328: ; 0x02005328
 	blt _02005342
 	bl GF_AssertFail
 	mov r0, #0x1b
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	ldr r0, [r0]
 	pop {r3, r4, r5, pc}
 _02005342:
@@ -1183,37 +1183,37 @@ _02005352: ; jump table
 	.short _0200539C - _02005352 - 2 ; case 6
 _02005360:
 	mov r0, #0x17
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
 	b _020053A4
 _0200536A:
 	mov r0, #0x18
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
 	b _020053A4
 _02005374:
 	mov r0, #0x19
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
 	b _020053A4
 _0200537E:
 	mov r0, #0x1a
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
 	b _020053A4
 _02005388:
 	mov r0, #0x1b
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
 	b _020053A4
 _02005392:
 	mov r0, #0x1c
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
 	b _020053A4
 _0200539C:
 	mov r0, #0x1d
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
 _020053A4:
 	ldr r0, [r5]
@@ -1227,7 +1227,7 @@ sub_020053A8: ; 0x020053A8
 	cmp r0, #1
 	bne _020053BC
 	mov r0, #0xc
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r4, #0
 	b _020053CA
@@ -1235,7 +1235,7 @@ _020053BC:
 	cmp r0, #7
 	bne _020053EE
 	mov r0, #0xd
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r4, #7
 _020053CA:
@@ -1261,10 +1261,10 @@ _020053EE:
 sub_020053F0: ; 0x020053F0
 	push {r4, lr}
 	mov r0, #0xc
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #0xd
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	mov r1, #0
 	strb r1, [r4]
 	strb r1, [r0]
@@ -1530,10 +1530,10 @@ sub_020055AC: ; 0x020055AC
 	add r5, r0, #0
 	bl GetSoundDataPointer
 	mov r0, #0x10
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r0, #0x11
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	cmp r5, #0xe
 	beq _020055D0
@@ -1558,11 +1558,11 @@ _020055EC:
 	cmp r5, #0xe
 	bne _020055F8
 	mov r0, #0
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	pop {r4, r5, r6, pc}
 _020055F8:
 	mov r0, #1
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_020055AC
 
@@ -1572,10 +1572,10 @@ sub_02005600: ; 0x02005600
 	add r5, r0, #0
 	bl GetSoundDataPointer
 	mov r0, #0x10
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r0, #0x11
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	cmp r5, #0xe
 	beq _02005624
@@ -1589,7 +1589,7 @@ _02005624:
 	cmp r0, #0
 	bne _0200564C
 	mov r0, #0
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl NNS_SndWaveOutAllocChannel
@@ -1610,7 +1610,7 @@ _02005652:
 	cmp r0, #0
 	bne _02005676
 	mov r0, #1
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	add r0, r5, #0
 	bl NNS_SndWaveOutAllocChannel
@@ -1637,10 +1637,10 @@ sub_02005680: ; 0x02005680
 	add r5, r0, #0
 	bl GetSoundDataPointer
 	mov r0, #0x10
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r0, #0x11
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	cmp r5, #0xe
 	beq _020056A6
@@ -1800,7 +1800,7 @@ sub_020057AC: ; 0x020057AC
 	add r5, r3, #0
 	bl GetSoundDataPointer
 	mov r0, #0x22
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	cmp r5, #0xe
 	beq _020057D0
@@ -1891,7 +1891,7 @@ _0200584A:
 	add r0, r5, #0
 	bl sub_02005774
 	mov r0, #0xf
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	mov r1, #1
 	strb r1, [r0]
 	add r0, r4, #0
@@ -1929,10 +1929,10 @@ sub_020058B8: ; 0x020058B8
 	add r5, r0, #0
 	bl GetSoundDataPointer
 	mov r0, #0xf
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #0x22
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	cmp r5, #0xe
 	beq _020058DC
@@ -2058,7 +2058,7 @@ sub_02005990: ; 0x02005990
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #7
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	str r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -2069,7 +2069,7 @@ sub_020059A0: ; 0x020059A0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #8
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	str r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -2079,7 +2079,7 @@ sub_020059A0: ; 0x020059A0
 sub_020059B0: ; 0x020059B0
 	push {r3, lr}
 	mov r0, #8
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	ldrh r1, [r0]
 	cmp r1, #0
 	bne _020059C6
@@ -2116,7 +2116,7 @@ sub_020059E0: ; 0x020059E0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x13
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strb r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -2150,7 +2150,7 @@ sub_02005A10: ; 0x02005A10
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp, #8]
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	add r0, sp, #0x10
 	ldrb r0, [r0, #0x10]
@@ -2204,7 +2204,7 @@ sub_02005A74: ; 0x02005A74
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp, #8]
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	add r0, sp, #0x10
 	ldrb r0, [r0, #0x14]
@@ -2233,7 +2233,7 @@ sub_02005AB0: ; 0x02005AB0
 	mov r0, #2
 	add r5, r1, #0
 	add r7, r3, #0
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r6, #0
@@ -2320,7 +2320,7 @@ sub_02005B58: ; 0x02005B58
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x35
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strb r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -2331,7 +2331,7 @@ sub_02005B68: ; 0x02005B68
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x36
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strb r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -2366,7 +2366,7 @@ sub_02005BA8: ; 0x02005BA8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0x37
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	ldrb r1, [r4]
 	add r0, r5, #0
@@ -2399,7 +2399,7 @@ sub_02005BEC: ; 0x02005BEC
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x38
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strb r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -2409,7 +2409,7 @@ sub_02005BEC: ; 0x02005BEC
 sub_02005BFC: ; 0x02005BFC
 	push {r3, lr}
 	mov r0, #0x38
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	ldrb r0, [r0]
 	pop {r3, pc}
 	thumb_func_end sub_02005BFC
@@ -2419,7 +2419,7 @@ sub_02005C08: ; 0x02005C08
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x39
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strb r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -2429,7 +2429,7 @@ sub_02005C08: ; 0x02005C08
 sub_02005C18: ; 0x02005C18
 	push {r3, lr}
 	mov r0, #0x39
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	ldrb r0, [r0]
 	pop {r3, pc}
 	thumb_func_end sub_02005C18

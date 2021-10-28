@@ -1,3 +1,4 @@
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -57,7 +58,7 @@ InitSoundData: ; 0x02004174
 	add r0, #0x94
 	bl sub_0200498C
 	add r0, r4, #0
-	bl sub_0200487C
+	bl GF_SndHandleInitAll
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -91,9 +92,9 @@ DoSoundUpdateFrame: ; 0x02004208
 	bl GetSoundDataPointer
 	add r4, r0, #0
 	mov r0, #0x12
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	mov r0, #0x20
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	bl sub_020043CC
 	cmp r0, #0
 	bne _02004236
@@ -331,8 +332,8 @@ GetSoundDataPointer: ; 0x020043F8
 _020043FC: .word _02111958
 	thumb_func_end GetSoundDataPointer
 
-	thumb_func_start sub_02004400
-sub_02004400: ; 0x02004400
+	thumb_func_start GF_SdatGetAttrPtr
+GF_SdatGetAttrPtr: ; 0x02004400
 	push {r4, lr}
 	add r4, r0, #0
 	bl GetSoundDataPointer
@@ -706,7 +707,7 @@ _020046D8: .word 0x000BEC78
 _020046DC: .word 0x000BEC79
 _020046E0: .word 0x000BEC7A
 _020046E4: .word 0x000BEC7C
-	thumb_func_end sub_02004400
+	thumb_func_end GF_SdatGetAttrPtr
 
 	thumb_func_start GF_Snd_SaveState
 GF_Snd_SaveState: ; 0x020046E8
@@ -732,8 +733,8 @@ _0200470C:
 	pop {r3, r4, r5, pc}
 	thumb_func_end GF_Snd_SaveState
 
-	thumb_func_start sub_02004714
-sub_02004714: ; 0x02004714
+	thumb_func_start GF_Snd_LoadState
+GF_Snd_LoadState: ; 0x02004714
 	push {r4, lr}
 	add r4, r0, #0
 	bl GetSoundDataPointer
@@ -743,7 +744,7 @@ sub_02004714: ; 0x02004714
 	bl NNS_SndHeapLoadState
 	bl GF_SndHeapGetFreeSize
 	pop {r4, pc}
-	thumb_func_end sub_02004714
+	thumb_func_end GF_Snd_LoadState
 
 	thumb_func_start GF_SndHeapGetFreeSize
 GF_SndHeapGetFreeSize: ; 0x0200472C
@@ -776,8 +777,8 @@ GF_Snd_LoadGroup: ; 0x02004744
 	.balign 4, 0
 	thumb_func_end GF_Snd_LoadGroup
 
-	thumb_func_start sub_02004764
-sub_02004764: ; 0x02004764
+	thumb_func_start GF_Snd_LoadSeq
+GF_Snd_LoadSeq: ; 0x02004764
 	push {r4, lr}
 	add r4, r0, #0
 	bl GetSoundDataPointer
@@ -791,10 +792,10 @@ sub_02004764: ; 0x02004764
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02004764
+	thumb_func_end GF_Snd_LoadSeq
 
-	thumb_func_start sub_02004784
-sub_02004784: ; 0x02004784
+	thumb_func_start GF_Snd_LoadSeqEx
+GF_Snd_LoadSeqEx: ; 0x02004784
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -810,10 +811,10 @@ sub_02004784: ; 0x02004784
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02004784
+	thumb_func_end GF_Snd_LoadSeqEx
 
-	thumb_func_start sub_020047A8
-sub_020047A8: ; 0x020047A8
+	thumb_func_start GF_Snd_LoadWaveArc
+GF_Snd_LoadWaveArc: ; 0x020047A8
 	push {r4, lr}
 	add r4, r0, #0
 	bl GetSoundDataPointer
@@ -827,10 +828,10 @@ sub_020047A8: ; 0x020047A8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020047A8
+	thumb_func_end GF_Snd_LoadWaveArc
 
-	thumb_func_start sub_020047C8
-sub_020047C8: ; 0x020047C8
+	thumb_func_start GF_Snd_LoadBank
+GF_Snd_LoadBank: ; 0x020047C8
 	push {r4, lr}
 	add r4, r0, #0
 	bl GetSoundDataPointer
@@ -844,7 +845,7 @@ sub_020047C8: ; 0x020047C8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020047C8
+	thumb_func_end GF_Snd_LoadBank
 
 	thumb_func_start GetSoundPlayer
 GetSoundPlayer: ; 0x020047E8
@@ -938,8 +939,8 @@ _02004874: .word 0x000BEC88
 _02004878: .word 0x000BEC0C
 	thumb_func_end GF_SoundDataInit
 
-	thumb_func_start sub_0200487C
-sub_0200487C: ; 0x0200487C
+	thumb_func_start GF_SndHandleInitAll
+GF_SndHandleInitAll: ; 0x0200487C
 	push {r3, r4, r5, lr}
 	ldr r1, _02004894 ; =0x000BEB78
 	mov r4, #0
@@ -954,7 +955,7 @@ _02004884:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02004894: .word 0x000BEB78
-	thumb_func_end sub_0200487C
+	thumb_func_end GF_SndHandleInitAll
 
 	thumb_func_start sub_02004898
 sub_02004898: ; 0x02004898
@@ -965,8 +966,8 @@ sub_02004898: ; 0x02004898
 	bl GF_Snd_SaveState
 	mov r0, #0
 	bl GF_Snd_LoadGroup
-	ldr r0, _020048C0 ; =0x000002BD
-	bl sub_020047C8
+	ldr r0, _020048C0 ; =BANK_GAMEBOY
+	bl GF_Snd_LoadBank
 	ldr r0, _020048C4 ; =0x000BEC10
 	add r0, r4, r0
 	bl GF_Snd_SaveState
