@@ -24508,7 +24508,7 @@ ov13_0223AAFC: ; 0x0223AAFC
 	ldr r0, _0223AB80 ; =0x0224F5A8
 	ldr r0, [r0]
 	ldr r1, [r0, #0x98]
-	bl sub_020C9558
+	bl NNS_SndArcInitOnMemory
 	mov r0, #0
 	bl NNS_SndArcPlayerSetup
 	ldr r0, _0223AB80 ; =0x0224F5A8

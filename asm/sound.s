@@ -61,7 +61,7 @@ InitSoundData: ; 0x02004174
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_020C9CD8
+	bl NNS_SndHeapGetSize
 	ldr r1, _02004200 ; =_0211194C
 	str r0, [r1, #8]
 	bl sub_0200472C
@@ -715,7 +715,7 @@ GF_Snd_SaveState: ; 0x020046E8
 	bl GetSoundDataPointer
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_020C9BB8
+	bl NNS_SndHeapSaveState
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -740,7 +740,7 @@ sub_02004714: ; 0x02004714
 	add r0, #0x94
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl sub_020C9C04
+	bl NNS_SndHeapLoadState
 	bl sub_0200472C
 	pop {r4, pc}
 	thumb_func_end sub_02004714
@@ -751,7 +751,7 @@ sub_0200472C: ; 0x0200472C
 	bl GetSoundDataPointer
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_020C9CE8
+	bl NNS_SndHeapGetFreeSize
 	ldr r1, _02004740 ; =_0211194C
 	str r0, [r1, #8]
 	pop {r3, pc}
@@ -768,7 +768,7 @@ GF_Snd_LoadGroup: ; 0x02004744
 	add r1, #0x94
 	ldr r1, [r1]
 	add r0, r4, #0
-	bl sub_020C9DAC
+	bl NNS_SndArcLoadGroup
 	add r4, r0, #0
 	bl sub_0200472C
 	add r0, r4, #0
@@ -785,7 +785,7 @@ sub_02004764: ; 0x02004764
 	add r1, #0x94
 	ldr r1, [r1]
 	add r0, r4, #0
-	bl sub_020C9DC4
+	bl NNS_SndArcLoadSeq
 	add r4, r0, #0
 	bl sub_0200472C
 	add r0, r4, #0
@@ -804,7 +804,7 @@ sub_02004784: ; 0x02004784
 	ldr r2, [r2]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020C9E48
+	bl NNS_SndArcLoadSeqEx
 	add r4, r0, #0
 	bl sub_0200472C
 	add r0, r4, #0
@@ -821,7 +821,7 @@ sub_020047A8: ; 0x020047A8
 	add r1, #0x94
 	ldr r1, [r1]
 	add r0, r4, #0
-	bl sub_020C9E1C
+	bl NNS_SndArcLoadWaveArc
 	add r4, r0, #0
 	bl sub_0200472C
 	add r0, r4, #0
@@ -838,7 +838,7 @@ sub_020047C8: ; 0x020047C8
 	add r1, #0x94
 	ldr r1, [r1]
 	add r0, r4, #0
-	bl sub_020C9DF0
+	bl NNS_SndArcLoadBank
 	add r4, r0, #0
 	bl sub_0200472C
 	add r0, r4, #0
@@ -1140,7 +1140,7 @@ sub_020049D0: ; 0x020049D0
 	ldr r0, _02004A00 ; =_021D05E4
 	mov r1, #9
 	mov r3, #0x41
-	bl sub_020CA8E4
+	bl NNS_SndArcPlayerStartSeqEx
 	cmp r0, #1
 	beq _020049F6
 	mov r4, #0

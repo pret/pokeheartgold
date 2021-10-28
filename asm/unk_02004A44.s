@@ -1809,7 +1809,7 @@ sub_020057AC: ; 0x020057AC
 	bl GF_AssertFail
 _020057D0:
 	add r0, r6, #0
-	bl sub_020C9788
+	bl NNS_SndArcGetWaveArcInfo
 	add r7, r0, #0
 	bne _020057E4
 	bl GF_AssertFail
@@ -1820,7 +1820,7 @@ _020057E4:
 	ldr r0, [r7]
 	lsl r0, r0, #8
 	lsr r0, r0, #8
-	bl sub_020C98B4
+	bl NNS_SndArcGetFileSize
 	add r6, r0, #0
 	bne _020057FC
 	bl GF_AssertFail
@@ -1850,7 +1850,7 @@ _02005818:
 	lsr r0, r0, #8
 	add r2, r6, #0
 	mov r3, #0
-	bl sub_020C98DC
+	bl NNS_SndArcReadFile
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -1956,7 +1956,7 @@ _020058F2:
 	thumb_func_start sub_020058F4
 sub_020058F4: ; 0x020058F4
 	push {r4, lr}
-	bl sub_020C906C
+	bl NNS_SndCaptureIsActive
 	add r4, r0, #0
 	cmp r4, #1
 	bne _02005904
@@ -1968,18 +1968,18 @@ _02005904:
 
 	thumb_func_start sub_02005908
 sub_02005908: ; 0x02005908
-	ldr r3, _0200590C ; =sub_020C907C
+	ldr r3, _0200590C ; =NNS_SndCaptureGetCaptureType
 	bx r3
 	.balign 4, 0
-_0200590C: .word sub_020C907C
+_0200590C: .word NNS_SndCaptureGetCaptureType
 	thumb_func_end sub_02005908
 
 	thumb_func_start sub_02005910
 sub_02005910: ; 0x02005910
-	ldr r3, _02005914 ; =sub_020C9014
+	ldr r3, _02005914 ; =NNS_SndCaptureStopReverb
 	bx r3
 	.balign 4, 0
-_02005914: .word sub_020C9014
+_02005914: .word NNS_SndCaptureStopReverb
 	thumb_func_end sub_02005910
 
 	thumb_func_start sub_02005918

@@ -1921,7 +1921,7 @@ _02006C6A:
 	add r1, r5, #0
 	add r2, r7, #0
 	str r6, [sp]
-	bl sub_020CA8E4
+	bl NNS_SndArcPlayerStartSeqEx
 	add r4, r0, #0
 	bl sub_02005CC0
 	add r0, r4, #0
