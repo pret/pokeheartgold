@@ -9,7 +9,7 @@ _0211194C:
 _02111950:
 	.space 0x4
 
-_02111954:
+sSndHeapFreeSize:
 	.space 0x4
 
 _02111958:
@@ -62,14 +62,14 @@ InitSoundData: ; 0x02004174
 	add r0, #0x94
 	ldr r0, [r0]
 	bl NNS_SndHeapGetSize
-	ldr r1, _02004200 ; =_0211194C
-	str r0, [r1, #8]
-	bl sub_0200472C
+	ldr r1, _02004200 ; =.bss
+	str r0, [r1, #sSndHeapFreeSize - .bss]
+	bl GF_SndHeapGetFreeSize
 	add r0, r4, #0
 	bl sub_02004898
-	ldr r0, _02004200 ; =_0211194C
+	ldr r0, _02004200 ; =.bss
 	mov r1, #0
-	str r1, [r0, #4]
+	str r1, [r0, #_02111950 - .bss]
 	ldr r0, _02004204 ; =0x000BEC3C
 	str r5, [r4, r0]
 	ldrh r0, [r6]
@@ -80,7 +80,7 @@ InitSoundData: ; 0x02004174
 	nop
 _020041F8: .word 0x000BEAE0
 _020041FC: .word _0210E980
-_02004200: .word _0211194C
+_02004200: .word .bss
 _02004204: .word 0x000BEC3C
 	thumb_func_end InitSoundData
 
@@ -205,8 +205,8 @@ sub_02004300: ; 0x02004300
 	push {r4, lr}
 	bl GetSoundDataPointer
 	add r4, r0, #0
-	ldr r0, _020043A4 ; =_0211194C
-	ldr r0, [r0]
+	ldr r0, _020043A4 ; =.bss
+	ldr r0, [r0, #_0211194C - .bss]
 	cmp r0, #6
 	bhi _020043A0
 	add r0, r0, r0
@@ -277,7 +277,7 @@ _02004394:
 _020043A0:
 	pop {r4, pc}
 	nop
-_020043A4: .word _0211194C
+_020043A4: .word .bss
 _020043A8: .word 0x000BEBFE
 _020043AC: .word 0x000BEBF8
 	thumb_func_end sub_02004300
@@ -290,12 +290,12 @@ sub_020043B0: ; 0x020043B0
 	ldr r1, _020043C4 ; =0x000BEBEC
 	mov r2, #0
 	strh r2, [r0, r1]
-	ldr r0, _020043C8 ; =_0211194C
-	str r4, [r0]
+	ldr r0, _020043C8 ; =.bss
+	str r4, [r0, #_0211194C - .bss]
 	pop {r4, pc}
 	.balign 4, 0
 _020043C4: .word 0x000BEBEC
-_020043C8: .word _0211194C
+_020043C8: .word .bss
 	thumb_func_end sub_020043B0
 
 	thumb_func_start sub_020043CC
@@ -727,7 +727,7 @@ _02004706:
 	beq _0200470C
 	str r4, [r5]
 _0200470C:
-	bl sub_0200472C
+	bl GF_SndHeapGetFreeSize
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end GF_Snd_SaveState
@@ -741,23 +741,23 @@ sub_02004714: ; 0x02004714
 	ldr r0, [r0]
 	add r1, r4, #0
 	bl NNS_SndHeapLoadState
-	bl sub_0200472C
+	bl GF_SndHeapGetFreeSize
 	pop {r4, pc}
 	thumb_func_end sub_02004714
 
-	thumb_func_start sub_0200472C
-sub_0200472C: ; 0x0200472C
+	thumb_func_start GF_SndHeapGetFreeSize
+GF_SndHeapGetFreeSize: ; 0x0200472C
 	push {r3, lr}
 	bl GetSoundDataPointer
 	add r0, #0x94
 	ldr r0, [r0]
 	bl NNS_SndHeapGetFreeSize
-	ldr r1, _02004740 ; =_0211194C
-	str r0, [r1, #8]
+	ldr r1, _02004740 ; =.bss
+	str r0, [r1, #sSndHeapFreeSize - .bss]
 	pop {r3, pc}
 	.balign 4, 0
-_02004740: .word _0211194C
-	thumb_func_end sub_0200472C
+_02004740: .word .bss
+	thumb_func_end GF_SndHeapGetFreeSize
 
 	thumb_func_start GF_Snd_LoadGroup
 GF_Snd_LoadGroup: ; 0x02004744
@@ -770,7 +770,7 @@ GF_Snd_LoadGroup: ; 0x02004744
 	add r0, r4, #0
 	bl NNS_SndArcLoadGroup
 	add r4, r0, #0
-	bl sub_0200472C
+	bl GF_SndHeapGetFreeSize
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -787,7 +787,7 @@ sub_02004764: ; 0x02004764
 	add r0, r4, #0
 	bl NNS_SndArcLoadSeq
 	add r4, r0, #0
-	bl sub_0200472C
+	bl GF_SndHeapGetFreeSize
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -806,7 +806,7 @@ sub_02004784: ; 0x02004784
 	add r1, r4, #0
 	bl NNS_SndArcLoadSeqEx
 	add r4, r0, #0
-	bl sub_0200472C
+	bl GF_SndHeapGetFreeSize
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -823,7 +823,7 @@ sub_020047A8: ; 0x020047A8
 	add r0, r4, #0
 	bl NNS_SndArcLoadWaveArc
 	add r4, r0, #0
-	bl sub_0200472C
+	bl GF_SndHeapGetFreeSize
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -840,7 +840,7 @@ sub_020047C8: ; 0x020047C8
 	add r0, r4, #0
 	bl NNS_SndArcLoadBank
 	add r4, r0, #0
-	bl sub_0200472C
+	bl GF_SndHeapGetFreeSize
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
