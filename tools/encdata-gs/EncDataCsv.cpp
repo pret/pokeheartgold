@@ -1,3 +1,4 @@
+#include <array>
 #include "EncDataCsv.h"
 
 const std::array<std::string, ENCDATA_NCOL> default_colnames {

@@ -2301,7 +2301,7 @@ sub_02040750: ; 0x02040750
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _02040764:
-	bl sub_0203B904
+	bl MapEvents_GetLoadedLevelScripts
 	add r1, r0, #0
 	bne _02040770
 	mov r0, #0
@@ -2352,7 +2352,7 @@ sub_020407AC: ; 0x020407AC
 	mov r0, #0
 	pop {r4, pc}
 _020407BE:
-	bl sub_0203B904
+	bl MapEvents_GetLoadedLevelScripts
 	add r1, r0, #0
 	bne _020407CA
 	mov r0, #0

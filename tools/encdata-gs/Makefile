@@ -19,7 +19,7 @@ all: $(PROGRAM)
 	@:
 
 clean:
-	$(RM) -r msgenc msgenc.exe $(OBJS) $(DEPDIR)
+	$(RM) -r $(PROGRAM) $(PROGRAM).exe $(OBJS) $(DEPDIR)
 
 $(PROGRAM): $(OBJS)
 	$(CXX) $(LDFLAGS) -o $@ $^
