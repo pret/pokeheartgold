@@ -14,7 +14,8 @@ public:
     CsvFile() = default;
     CsvFile(const fs::path & filename, bool has_header = true) { FromFile(filename, has_header); };
     void FromFile(const fs::path & filename, bool has_header = true);
-    void ToFile(const fs::path & filename, bool write_header = true);
+
+    virtual void ToFile(const fs::path & filename, bool write_header = true);
     bool GetRow(int i, std::vector<std::string> &row) const;
     bool GetCol(int i, std::vector<std::string> &col) const;
     bool GetCol(const std::string &name, std::vector<std::string> &col) const;
@@ -46,6 +47,10 @@ public:
         _nrow = nrow;
         _ncol = ncol;
         resize_internal();
+    }
+    template <typename _It>
+    void SetColnames(_It _begin, _It _end) {
+        _colnames.assign(_begin, _end);
     }
 };
 

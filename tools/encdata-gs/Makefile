@@ -1,11 +1,11 @@
 CXX := g++
 
-CXXFLAGS := -std=c++17 -O2
+CXXFLAGS := -std=c++17 -O2 -g
 
 DEPDIR := .deps
 DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
-CXX_SRCS := encdata-gs.cpp CsvFile.cpp ParseSpeciesHeader.cpp
+CXX_SRCS := encdata-gs.cpp CsvFile.cpp ParseSpeciesHeader.cpp EncDataCsv.cpp
 
 CXX_OBJS := $(CXX_SRCS:%.cpp=%.o)
 SRCS     := $(CXX_SRCS)

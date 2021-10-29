@@ -8,6 +8,7 @@
 #include <iostream>
 #include <filesystem>
 #include <cassert>
+#include <algorithm>
 
 namespace fs = std::filesystem;
 
