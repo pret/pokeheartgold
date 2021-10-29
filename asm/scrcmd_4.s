@@ -10,7 +10,7 @@ sub_020483D8: ; 0x020483D8
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -41,7 +41,7 @@ sub_02048414: ; 0x02048414
 	ldr r6, [r0]
 	mov r1, #0x10
 	add r0, r6, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r4, r0, #0
 	add r0, r1, #1
@@ -67,7 +67,7 @@ sub_02048448: ; 0x02048448
 	ldr r4, [r0]
 	mov r1, #0x10
 	add r0, r4, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r2, [r5, #8]
 	add r1, r2, #1
 	str r1, [r5, #8]
@@ -87,7 +87,7 @@ sub_0204846C: ; 0x0204846C
 	ldr r4, [r0]
 	mov r1, #0x10
 	add r0, r4, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r2, [r5, #8]
 	add r1, r2, #1
 	str r1, [r5, #8]
@@ -107,7 +107,7 @@ sub_02048490: ; 0x02048490
 	ldr r6, [r0]
 	mov r1, #0x10
 	add r0, r6, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -140,7 +140,7 @@ sub_020484D8: ; 0x020484D8
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -168,7 +168,7 @@ sub_02048510: ; 0x02048510
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -196,7 +196,7 @@ sub_02048548: ; 0x02048548
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -224,7 +224,7 @@ sub_02048580: ; 0x02048580
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -253,7 +253,7 @@ sub_020485BC: ; 0x020485BC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -282,7 +282,7 @@ sub_020485F4: ; 0x020485F4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -317,7 +317,7 @@ sub_0204863C: ; 0x0204863C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -365,7 +365,7 @@ sub_0204869C: ; 0x0204869C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -408,7 +408,7 @@ sub_020486F0: ; 0x020486F0
 	ldr r6, [r0]
 	mov r1, #0x10
 	add r0, r6, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -445,7 +445,7 @@ sub_02048738: ; 0x02048738
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -483,7 +483,7 @@ sub_02048794: ; 0x02048794
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -516,7 +516,7 @@ sub_020487CC: ; 0x020487CC
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r7, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -547,7 +547,7 @@ sub_02048818: ; 0x02048818
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -615,7 +615,7 @@ sub_020488A4: ; 0x020488A4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r4, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -653,7 +653,7 @@ sub_020488F4: ; 0x020488F4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r4, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -691,7 +691,7 @@ sub_02048944: ; 0x02048944
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r4, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -728,7 +728,7 @@ sub_02048994: ; 0x02048994
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -756,7 +756,7 @@ sub_020489CC: ; 0x020489CC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -777,7 +777,7 @@ sub_020489F4: ; 0x020489F4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -804,7 +804,7 @@ sub_02048A1C: ; 0x02048A1C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -844,7 +844,7 @@ sub_02048A7C: ; 0x02048A7C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r4, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -901,7 +901,7 @@ sub_02048AF4: ; 0x02048AF4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -929,7 +929,7 @@ sub_02048B2C: ; 0x02048B2C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -958,7 +958,7 @@ sub_02048B64: ; 0x02048B64
 	ldr r6, [r0]
 	mov r1, #0x10
 	add r0, r6, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r4, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -1004,7 +1004,7 @@ sub_02048BCC: ; 0x02048BCC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1037,7 +1037,7 @@ sub_02048C10: ; 0x02048C10
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1065,7 +1065,7 @@ sub_02048C48: ; 0x02048C48
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1093,7 +1093,7 @@ sub_02048C80: ; 0x02048C80
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1123,7 +1123,7 @@ sub_02048CBC: ; 0x02048CBC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1151,7 +1151,7 @@ sub_02048CF4: ; 0x02048CF4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1180,7 +1180,7 @@ sub_02048D2C: ; 0x02048D2C
 	ldr r6, [r0]
 	mov r1, #0x10
 	add r0, r6, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -1213,7 +1213,7 @@ sub_02048D74: ; 0x02048D74
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1248,7 +1248,7 @@ sub_02048DBC: ; 0x02048DBC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1274,7 +1274,7 @@ sub_02048DF0: ; 0x02048DF0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1302,7 +1302,7 @@ sub_02048E28: ; 0x02048E28
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1330,7 +1330,7 @@ sub_02048E60: ; 0x02048E60
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -1358,7 +1358,7 @@ sub_02048E98: ; 0x02048E98
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r2, [r4, #8]
 	add r1, r2, #1
 	str r1, [r4, #8]

@@ -18,7 +18,7 @@ sub_0204EBE8: ; 0x0204EBE8
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r5, #0
 	add r1, #0x80
 	lsl r2, r4, #0x18
@@ -52,7 +52,7 @@ sub_0204EC30: ; 0x0204EC30
 	add r5, r0, #0
 	ldr r0, [r4]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -124,7 +124,7 @@ sub_0204ECD0: ; 0x0204ECD0
 	mov r1, #0x14
 	str r2, [sp]
 	add r6, r3, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #4]
 	mov r0, #0x20
 	bl sub_0209174C
@@ -251,7 +251,7 @@ sub_0204EDDC: ; 0x0204EDDC
 	add r5, r0, #0
 	ldr r0, [r4]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r4, [r0]
 	cmp r4, #0
 	bne _0204EE06

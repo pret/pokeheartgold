@@ -309,7 +309,7 @@ _02049E7E:
 _02049E90:
 	add r0, r1, #0
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r2, r0, #0
 	ldr r1, [r7, #0x74]
 	add r0, r5, #0
@@ -320,7 +320,7 @@ _02049E90:
 _02049EA8:
 	add r0, r1, #0
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r7, #0x80
 	ldr r2, [r7]
 	add r1, r0, #0

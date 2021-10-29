@@ -20163,7 +20163,7 @@ ov01_021EF348: ; 0x021EF348
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldrb r0, [r0]
 	bl sub_0205B624
 	pop {r3, pc}
@@ -20322,7 +20322,7 @@ ov01_021EF488: ; 0x021EF488
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0xa
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl sub_0205F26C
 	lsl r0, r0, #0x18
@@ -20527,30 +20527,30 @@ ov01_021EF620: ; 0x021EF620
 	add r4, r1, #0
 	mov r1, #0x11
 	add r5, r0, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	mov r1, #0x12
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	mov r1, #0x10
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	mov r1, #1
 	str r0, [r4, #8]
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0x14]
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021EF620
@@ -20562,26 +20562,26 @@ ov01_021EF668: ; 0x021EF668
 	mov r1, #0x11
 	add r5, r0, #0
 	add r4, r2, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	mov r1, #0x12
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	mov r1, #1
 	str r0, [r4, #4]
 	str r6, [r4, #8]
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0x14]
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021EF668
@@ -26218,7 +26218,7 @@ _021F1F96:
 	lsl r1, r1, #0x10
 	add r0, r7, #0
 	lsr r1, r1, #0x10
-	bl sub_02040410
+	bl FlagSet
 	add r0, r5, #0
 	bl sub_0205E400
 	mov r1, #0xa
@@ -26228,7 +26228,7 @@ _021F1F96:
 	add r0, r7, #0
 	add r1, r1, r2
 	ldrh r1, [r1, #8]
-	bl sub_02040424
+	bl FlagClear
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _021F1FF4:
@@ -57984,7 +57984,7 @@ ov01_02200AF0: ; 0x02200AF0
 	ldr r6, [r0]
 	mov r1, #0x10
 	add r0, r6, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x1c]
 	bl ScriptReadHalfword
@@ -58027,7 +58027,7 @@ ov01_02200AF0: ; 0x02200AF0
 	mov r1, #1
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r5, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
@@ -60282,7 +60282,7 @@ ov01_02201D1C: ; 0x02201D1C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60306,7 +60306,7 @@ ov01_02201D4C: ; 0x02201D4C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -60353,7 +60353,7 @@ ov01_02201DA4: ; 0x02201DA4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -61147,7 +61147,7 @@ ov01_02202430: ; 0x02202430
 	ldrb r4, [r1]
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r7, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61189,7 +61189,7 @@ ov01_02202480: ; 0x02202480
 	add r6, r0, #0
 	ldr r0, [r5]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	lsl r2, r6, #0x18
 	ldr r0, [r0]
 	add r1, r4, #0
@@ -61813,7 +61813,7 @@ ov01_02202980: ; 0x02202980
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61895,7 +61895,7 @@ ov01_02202A28: ; 0x02202A28
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -61931,7 +61931,7 @@ ov01_02202A70: ; 0x02202A70
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -62453,7 +62453,7 @@ ov01_02202E68: ; 0x02202E68
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x28]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	ldr r0, [sp, #0x14]
 	bl ScriptReadHalfword
@@ -62527,7 +62527,7 @@ _02202F10:
 	mov r1, #1
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	mov r1, #1
 	str r1, [sp]
 	str r6, [sp, #4]
@@ -62799,7 +62799,7 @@ ov01_02203138: ; 0x02203138
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	lsl r1, r6, #0x18
 	lsl r2, r7, #0x18
 	add r4, #0x80
@@ -62819,7 +62819,7 @@ ov01_02203188: ; 0x02203188
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl ov01_021EEB38
 	mov r0, #0
@@ -62834,7 +62834,7 @@ ov01_022031A0: ; 0x022031A0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r0, #0
 	add r4, #0x80
 	ldr r0, [r4]
@@ -67117,7 +67117,7 @@ ov01_02205164: ; 0x02205164
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	lsl r1, r6, #0x18
 	lsl r2, r7, #0x18
 	add r4, #0x80
@@ -67137,7 +67137,7 @@ ov01_022051B4: ; 0x022051B4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl ov01_021EEE30
 	mov r0, #0
@@ -67152,7 +67152,7 @@ ov01_022051CC: ; 0x022051CC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r0, #0
 	add r4, #0x80
 	ldr r0, [r4]

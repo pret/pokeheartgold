@@ -20426,7 +20426,7 @@ _0224F5A4:
 	bl sub_0204055C
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl sub_020403FC
+	bl FlagGet
 	cmp r0, #0
 	bne _0224F5BE
 	add r4, r4, #1

@@ -1282,7 +1282,7 @@ sub_0204005C: ; 0x0204005C
 	mov r1, #0x37
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_020401B4
+	bl FieldSysGetAttrAddrInternal
 	str r0, [sp]
 	ldr r0, [r7, #0x40]
 	bl sub_0205C654
@@ -1451,8 +1451,8 @@ LoadScriptsAndMessagesForCurrentMap: ; 0x0204018C
 	pop {r3, r4, r5, pc}
 	thumb_func_end LoadScriptsAndMessagesForCurrentMap
 
-	thumb_func_start sub_020401B4
-sub_020401B4: ; 0x020401B4
+	thumb_func_start FieldSysGetAttrAddrInternal
+FieldSysGetAttrAddrInternal: ; 0x020401B4
 	push {r3, lr}
 	cmp r1, #0x37
 	bls _020401BC
@@ -1654,10 +1654,10 @@ _020402E8:
 	bl GF_AssertFail
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_020401B4
+	thumb_func_end FieldSysGetAttrAddrInternal
 
-	thumb_func_start sub_020402F0
-sub_020402F0: ; 0x020402F0
+	thumb_func_start FieldSysGetAttrAddr
+FieldSysGetAttrAddr: ; 0x020402F0
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0x10]
 	add r5, r1, #0
@@ -1674,11 +1674,11 @@ _02040302:
 _0204030E:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_020401B4
+	bl FieldSysGetAttrAddrInternal
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02040318: .word 0x0003643F
-	thumb_func_end sub_020402F0
+	thumb_func_end FieldSysGetAttrAddr
 
 	thumb_func_start sub_0204031C
 sub_0204031C: ; 0x0204031C
@@ -1759,7 +1759,7 @@ _0204039A:
 	ldr r1, _020403A8 ; =0x00007FD6
 	add r0, r5, #0
 	sub r1, r4, r1
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	pop {r3, r4, r5, pc}
 	nop
 _020403A8: .word 0x00007FD6
@@ -1779,8 +1779,8 @@ _020403BA:
 	.balign 4, 0
 	thumb_func_end VarGet
 
-	thumb_func_start sub_020403C0
-sub_020403C0: ; 0x020403C0
+	thumb_func_start VarSet
+VarSet: ; 0x020403C0
 	push {r4, lr}
 	add r4, r2, #0
 	bl GetVarPointer
@@ -1793,10 +1793,10 @@ _020403D0:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020403C0
+	thumb_func_end VarSet
 
-	thumb_func_start sub_020403D8
-sub_020403D8: ; 0x020403D8
+	thumb_func_start VarGetObjectEventGraphicsId
+VarGetObjectEventGraphicsId: ; 0x020403D8
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -1813,10 +1813,10 @@ _020403E6:
 	pop {r3, r4, r5, pc}
 	nop
 _020403F8: .word 0x00004020
-	thumb_func_end sub_020403D8
+	thumb_func_end VarGetObjectEventGraphicsId
 
-	thumb_func_start sub_020403FC
-sub_020403FC: ; 0x020403FC
+	thumb_func_start FlagGet
+FlagGet: ; 0x020403FC
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
@@ -1825,10 +1825,10 @@ sub_020403FC: ; 0x020403FC
 	bl CheckFlagInArray
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020403FC
+	thumb_func_end FlagGet
 
-	thumb_func_start sub_02040410
-sub_02040410: ; 0x02040410
+	thumb_func_start FlagSet
+FlagSet: ; 0x02040410
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
@@ -1837,10 +1837,10 @@ sub_02040410: ; 0x02040410
 	bl SetFlagInArray
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02040410
+	thumb_func_end FlagSet
 
-	thumb_func_start sub_02040424
-sub_02040424: ; 0x02040424
+	thumb_func_start FlagClear
+FlagClear: ; 0x02040424
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
@@ -1849,10 +1849,10 @@ sub_02040424: ; 0x02040424
 	bl ClearFlagInArray
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02040424
+	thumb_func_end FlagClear
 
-	thumb_func_start sub_02040438
-sub_02040438: ; 0x02040438
+	thumb_func_start ClearTempFieldEventData
+ClearTempFieldEventData: ; 0x02040438
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
@@ -1877,10 +1877,10 @@ sub_02040438: ; 0x02040438
 	bl memset
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02040438
+	thumb_func_end ClearTempFieldEventData
 
-	thumb_func_start sub_02040470
-sub_02040470: ; 0x02040470
+	thumb_func_start ClearDailyFlags
+ClearDailyFlags: ; 0x02040470
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
@@ -1896,7 +1896,7 @@ _02040484:
 	bne _02040484
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02040470
+	thumb_func_end ClearDailyFlags
 
 	thumb_func_start sub_02040490
 sub_02040490: ; 0x02040490
@@ -1906,19 +1906,19 @@ sub_02040490: ; 0x02040490
 	mov r1, #0x2a
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	strh r4, [r0]
 	add r0, r5, #0
 	mov r1, #0x2b
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	strh r6, [r0]
 	add r0, r5, #0
 	mov r1, #0x2c
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	strh r7, [r0]
 	add r0, r5, #0
 	mov r1, #0x2d
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, sp, #8
 	ldrh r1, [r1, #0x10]
 	strh r1, [r0]
@@ -2074,15 +2074,15 @@ sub_020405AC: ; 0x020405AC
 	add r5, r1, #0
 	add r4, r0, #0
 	mov r1, #0x2a
-	bl sub_020401B4
+	bl FieldSysGetAttrAddrInternal
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0x2b
-	bl sub_020401B4
+	bl FieldSysGetAttrAddrInternal
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0x2c
-	bl sub_020401B4
+	bl FieldSysGetAttrAddrInternal
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0204056C
@@ -2210,7 +2210,7 @@ _020406B4:
 	bl sub_0204055C
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl sub_020403FC
+	bl FlagGet
 	cmp r0, #0
 	bne _02040704
 	ldr r1, [r4, #4]

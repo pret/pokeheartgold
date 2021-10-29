@@ -136,7 +136,7 @@ sub_02055508: ; 0x02055508
 	bl sub_02055670
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02040470
+	bl ClearDailyFlags
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
 	bl sub_0206759C

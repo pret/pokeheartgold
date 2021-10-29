@@ -30,7 +30,7 @@ ov22_022598C0: ; 0x022598C0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x27
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	lsl r2, r6, #0x18
 	lsl r3, r7, #0x18
 	add r5, #0x80
@@ -53,7 +53,7 @@ ov22_0225991C: ; 0x0225991C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x27
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl ov01_021EEC68
 	mov r0, #0
@@ -73,7 +73,7 @@ ov22_02259934: ; 0x02259934
 	ldrb r4, [r1]
 	ldr r0, [r0]
 	mov r1, #0x27
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r0, #0
 	add r5, #0x80
 	ldr r0, [r5]

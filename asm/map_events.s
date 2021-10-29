@@ -421,9 +421,9 @@ WildEncounters_ReadFromNarc: ; 0x0203B88C
 	add r2, r0, #0
 	add r0, r5, #0
 #ifdef HEARTGOLD
-	mov r1, #0x25 NARC_fielddata_encountdata_g_enc_data
+	mov r1, #0x25 ; NARC_fielddata_encountdata_g_enc_data
 #else
-	mov r1, #0x88 NARC_fielddata_encountdata_s_enc_data
+	mov r1, #0x88 ; NARC_fielddata_encountdata_s_enc_data
 #endif
 	bl ReadWholeNarcMemberByIdPair
 _0203B8B4:

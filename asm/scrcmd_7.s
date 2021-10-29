@@ -20,56 +20,56 @@ sub_02049460: ; 0x02049460
 	bne _020494C0
 	add r0, r4, #0
 	mov r1, #0x19
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #0x18]
 	add r0, r4, #0
 	mov r1, #0x1a
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #0x1b
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r0, r4, #0
 	mov r1, #0x1c
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r0, r4, #0
 	mov r1, #0x1d
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0x1e
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0x1f
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	b _02049500
 _020494C0:
 	add r0, r4, #0
 	mov r1, #0x20
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #0x18]
 	add r0, r4, #0
 	mov r1, #0x21
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #0x22
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r0, r4, #0
 	mov r1, #0x23
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r0, r4, #0
 	mov r1, #0x24
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0x25
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0x26
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 _02049500:
 	add r7, r0, #0
 	ldr r0, [sp, #0x18]
@@ -120,13 +120,13 @@ sub_0204952C: ; 0x0204952C
 	add r5, #0x80
 	ldr r0, [r5]
 	mov r1, #0x1f
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	b _02049574
 _0204956A:
 	add r5, #0x80
 	ldr r0, [r5]
 	mov r1, #0x26
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 _02049574:
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -157,7 +157,7 @@ sub_0204959C: ; 0x0204959C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x1d
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -178,13 +178,13 @@ sub_020495C4: ; 0x020495C4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x1c
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x23
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -220,7 +220,7 @@ sub_02049618: ; 0x02049618
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #8
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -246,10 +246,10 @@ sub_02049648: ; 0x02049648
 	ldr r7, [r0]
 	mov r1, #8
 	add r0, r7, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r0, r7, #0
 	mov r1, #0x18
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -313,7 +313,7 @@ sub_020496DC: ; 0x020496DC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x18
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -366,7 +366,7 @@ sub_02049750: ; 0x02049750
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #8
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -431,7 +431,7 @@ sub_020497D8: ; 0x020497D8
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #8
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -496,7 +496,7 @@ sub_02049860: ; 0x02049860
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #8
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -555,7 +555,7 @@ sub_020498D4: ; 0x020498D4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x18
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -599,7 +599,7 @@ _02049936:
 	add r5, #0x80
 	ldr r0, [r5]
 	mov r1, #0x18
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl sub_02052564
 _02049946:
@@ -617,7 +617,7 @@ sub_02049950: ; 0x02049950
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x18
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -664,7 +664,7 @@ sub_020499AC: ; 0x020499AC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x18
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	mov r2, #0
 	str r2, [sp]
 	str r2, [sp, #4]
@@ -687,7 +687,7 @@ sub_020499D8: ; 0x020499D8
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0xa
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl sub_0205F24C
 	add r1, r0, #0
@@ -709,7 +709,7 @@ sub_02049A00: ; 0x02049A00
 	ldr r5, [r0]
 	mov r1, #0xa
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r7, #0
 	bl ScriptReadWord

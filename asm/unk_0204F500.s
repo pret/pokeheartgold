@@ -69,7 +69,7 @@ sub_0204F500: ; 0x0204F500
 	ldr r7, [r0]
 	mov r1, #0x10
 	add r0, r7, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #8]
 	ldr r1, [r0, #8]
@@ -587,7 +587,7 @@ sub_0204F8DC: ; 0x0204F8DC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r0, #0
 	cmp r7, #4
 	bhi _0204F9CC
@@ -1301,7 +1301,7 @@ sub_0204FE78: ; 0x0204FE78
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r0, #0
 	cmp r7, #4
 	bhi _0204FF68

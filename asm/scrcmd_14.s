@@ -10,7 +10,7 @@ sub_0204CB5C: ; 0x0204CB5C
 	ldr r0, [r0]
 	mov r1, #0x10
 	ldr r5, [r0, #0xc]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl Sav2_DayCare_get
@@ -91,7 +91,7 @@ sub_0204CBF8: ; 0x0204CBF8
 	ldr r5, [r0]
 	mov r1, #0x10
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r7, r0, #0
 	add r0, r4, #0
 	ldr r6, [r5, #0xc]
@@ -135,7 +135,7 @@ sub_0204CC58: ; 0x0204CC58
 	ldr r5, [r0]
 	mov r1, #0x10
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r7, r0, #0
 	add r0, r4, #0
 	ldr r5, [r5, #0xc]
@@ -174,7 +174,7 @@ sub_0204CCAC: ; 0x0204CCAC
 	ldr r0, [r0]
 	mov r1, #0x10
 	ldr r4, [r0, #0xc]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -211,7 +211,7 @@ sub_0204CCFC: ; 0x0204CCFC
 	ldr r5, [r0]
 	mov r1, #0x10
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -270,7 +270,7 @@ sub_0204CD74: ; 0x0204CD74
 	ldr r0, [r0]
 	mov r1, #0x10
 	ldr r5, [r0, #0xc]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword

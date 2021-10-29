@@ -176,7 +176,7 @@ sub_02053038: ; 0x02053038
 	cmp r0, #0
 	bne _02053062
 	add r0, r4, #0
-	bl sub_02040438
+	bl ClearTempFieldEventData
 _02053062:
 	cmp r6, #0
 	bne _0205306E
