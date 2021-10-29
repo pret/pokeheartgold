@@ -182,7 +182,7 @@ sub_0204EF40: ; 0x0204EF40
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r0, #0
 	cmp r7, #4
 	bhi _0204F05E

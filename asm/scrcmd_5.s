@@ -15,7 +15,7 @@ sub_02048EB8: ; 0x02048EB8
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r4, #8]
 	add r3, r1, #1
 	str r3, [r4, #8]

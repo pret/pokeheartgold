@@ -13,7 +13,7 @@ sub_0204BC98: ; 0x0204BC98
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0xa
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -39,7 +39,7 @@ sub_0204BCCC: ; 0x0204BCCC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0xa
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80

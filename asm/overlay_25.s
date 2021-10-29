@@ -52,7 +52,7 @@ _0225990E:
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x18
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp]
 	ldr r0, [r5, #0x10]
 	add r1, r6, #0

@@ -4611,7 +4611,7 @@ sub_0205E34C: ; 0x0205E34C
 	bl sub_0205F1E4
 	lsl r1, r4, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020403FC
+	bl FlagGet
 	cmp r0, #0
 	bne _0205E388
 	ldr r1, [sp]
@@ -4691,7 +4691,7 @@ sub_0205E400: ; 0x0205E400
 	bl sub_0205F52C
 	lsl r1, r5, #0x10
 	lsr r1, r1, #0x10
-	bl sub_02040410
+	bl FlagSet
 	add r0, r4, #0
 	bl sub_0205E3CC
 	pop {r3, r4, r5, pc}
@@ -5413,7 +5413,7 @@ _0205EA1A:
 	beq _0205EA30
 	ldrh r1, [r4, #8]
 	add r0, r7, #0
-	bl sub_020403FC
+	bl FlagGet
 	cmp r0, #0
 	bne _0205EA42
 _0205EA30:
@@ -6078,7 +6078,7 @@ sub_0205EF70: ; 0x0205EF70
 	sub r1, #0x65
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020403D8
+	bl VarGetObjectEventGraphicsId
 	add r1, r0, #0
 _0205EF86:
 	add r0, r1, #0
@@ -19442,22 +19442,22 @@ _02064AF6:
 	bl sub_0203FED4
 	add r0, r5, #0
 	mov r1, #0x2a
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldrh r1, [r4, #4]
 	strh r1, [r0]
 	add r0, r5, #0
 	mov r1, #0x2b
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldrh r1, [r4, #6]
 	strh r1, [r0]
 	add r0, r5, #0
 	mov r1, #0x2c
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldrh r1, [r4, #8]
 	strh r1, [r0]
 	add r0, r5, #0
 	mov r1, #0x2d
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldrh r1, [r4, #0xa]
 	strh r1, [r0]
 	ldr r0, [r6]

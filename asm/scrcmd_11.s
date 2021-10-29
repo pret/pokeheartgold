@@ -199,7 +199,7 @@ _0204BEB6:
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -246,7 +246,7 @@ _0204BF22:
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword

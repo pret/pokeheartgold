@@ -9492,7 +9492,7 @@ ov03_0225894C: ; 0x0225894C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9532,7 +9532,7 @@ ov03_02258998: ; 0x02258998
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r6, r0, #0
 	add r0, r1, #1
@@ -9563,7 +9563,7 @@ ov03_022589D4: ; 0x022589D4
 	ldr r6, [r0]
 	mov r1, #0x10
 	add r0, r6, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r0, r5, #0
 	bl ScriptReadHalfword
 	add r1, r0, #0
@@ -9596,7 +9596,7 @@ ov03_02258A18: ; 0x02258A18
 	ldr r5, [r0]
 	mov r1, #0x10
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r0, r4, #0
 	bl ScriptReadHalfword
 	add r4, #0x80

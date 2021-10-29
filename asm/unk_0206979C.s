@@ -4652,7 +4652,7 @@ sub_0206BB2C: ; 0x0206BB2C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x15
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -4676,7 +4676,7 @@ sub_0206BB5C: ; 0x0206BB5C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x15
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r0, r4, #0
 	bl ScriptReadHalfword
 	add r1, r0, #0
@@ -4701,7 +4701,7 @@ sub_0206BB90: ; 0x0206BB90
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x15
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r4, #0x64]
 	ldr r0, [r0]
 	lsl r1, r1, #0x18
@@ -4718,7 +4718,7 @@ sub_0206BBAC: ; 0x0206BBAC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x15
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -4775,7 +4775,7 @@ sub_0206BC2C: ; 0x0206BC2C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x15
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -4802,7 +4802,7 @@ sub_0206BC64: ; 0x0206BC64
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x15
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r0, r4, #0
 	bl ScriptReadHalfword
 	add r4, #0x80
@@ -4822,7 +4822,7 @@ sub_0206BC8C: ; 0x0206BC8C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x15
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	mov r0, #1
 	bl sub_02002C60
 	mov r0, #0
