@@ -38,6 +38,7 @@ KNARC        := $(TOOLSDIR)/knarc/knarc$(EXE)
 O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
 MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
 ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
+ENCDATA_GS   := $(TOOLSDIR)/encdata-gs/encdata-gs$(EXE)
 
 NTRMERGE     := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
 
@@ -49,7 +50,8 @@ NATIVE_TOOLS := \
 	$(KNARC) \
 	$(O2NARC) \
 	$(MSGENC) \
-	$(ASPATCH)
+	$(ASPATCH) \
+	$(ENCDATA_GS)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 

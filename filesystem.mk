@@ -423,5 +423,15 @@ include files/msgdata/msg.mk
 
 MWCFLAGS += -I./files
 
-%.narc: $(wildcard %/*.bin)
+ENCDATA_NARCS := \
+	files/fielddata/encountdata/g_enc_data.narc \
+	files/fielddata/encountdata/s_enc_data.narc
+
+$(ENCDATA_NARCS): %.narc: %.csv include/constants/species.h
+	@$(RM) $*/*.bin
+	$(ENCDATA_GS) $^ $*
+	$(KNARC) -d $* -p $@ -i
+
+%.narc: NARC_DEPS = $(wildcard $*/*.bin)
+%.narc: $(NARC_DEPS)
 	$(KNARC) -d $* -p $@ -i

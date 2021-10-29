@@ -48,6 +48,7 @@ void CsvFile::FromFile(const fs::path &filename, bool has_header) {
             _colnames.resize(_ncol);
         }
     }
+    handle.clear();
     handle.seekg(0);
     if (has_header) {
         std::getline(handle, line);
@@ -60,7 +61,7 @@ void CsvFile::FromFile(const fs::path &filename, bool has_header) {
         }
     }
     _rows.resize(_nrow);
-    for (auto vec : _rows) {
+    for (auto & vec : _rows) {
         vec.resize(_ncol);
         std::getline(handle, line);
         ParseRow(line, vec, false);
@@ -180,7 +181,7 @@ void CsvFile::WriteRow(std::ofstream &ofile, const std::vector<std::string> &row
         } else {
             first = false;
         }
-        bool has_comma = entry.find(',');
+        bool has_comma = (entry.find(',') != std::string::npos);
         if (has_comma) {
             ofile << '"';
         }

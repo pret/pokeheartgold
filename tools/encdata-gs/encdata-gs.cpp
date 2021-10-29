@@ -68,7 +68,10 @@ Options::Options(int argc, char **argv) {
 int Options::main_compile() {
     int i = 0;
     for (const auto & row : csvfile) {
-        fs::path outfilename = bindir / ("bin_" + std::to_string(i) + "_" + row[ENCDATA_MAPNAME] + ".bin");
+        char numbuf[4] {};
+        sprintf(numbuf, "%03d", i);
+        std::string filename = "bin_" + std::string(numbuf) + "_" + row[ENCDATA_MAPNAME] + ".bin";
+        fs::path outfilename = bindir / filename;
         std::ofstream binfile(outfilename, std::ios::binary);
         ENC_DATA encData {};
         csvfile.to_struct(i, encData, species_h);

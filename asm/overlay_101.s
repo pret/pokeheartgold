@@ -1,3 +1,4 @@
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -23654,7 +23655,7 @@ ov101_021F2E04: ; 0x021F2E04
 	cmp r0, #0
 	bne _021F2E1C
 	add sp, #0xc4
-	mov r0, #0x13
+	mov r0, #SPECIES_RATTATA
 	pop {r3, r4, r5, r6, pc}
 _021F2E1C:
 	add r0, sp, #0
@@ -23665,14 +23666,14 @@ _021F2E1C:
 	cmp r4, #2
 	bne _021F2E34
 	add r0, sp, #0xc0
-	ldrh r1, [r0]
+	ldrh r1, [r0] // swarmSpecies[3]
 	add r0, sp, #0x80
-	strh r1, [r0, #0x22]
+	strh r1, [r0, #0x22] // goodRodSlots[3].species
 _021F2E34:
 	bl LCRandom
 	mov r1, #5
 	bl _s32_div_f
-	add r0, sp, #0x94
+	add r0, sp, #0x94 // goodRodSlots
 	lsl r1, r1, #2
 	add r0, #2
 	add sp, #0xc4
@@ -23687,13 +23688,13 @@ _021F2E4A:
 	beq _021F2E5C
 	b _021F2E60
 _021F2E58:
-	add r4, sp, #0x2c
+	add r4, sp, #0x2c // landSlots.species_day
 	b _021F2E62
 _021F2E5C:
-	add r4, sp, #0x44
+	add r4, sp, #0x44 // landSlots.species_nite
 	b _021F2E62
 _021F2E60:
-	add r4, sp, #0x14
+	add r4, sp, #0x14 // landSlots.species_morn
 _021F2E62:
 	bl LCRandom
 	mov r1, #0xc
