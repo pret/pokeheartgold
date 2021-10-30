@@ -4,6 +4,7 @@
 #include <nnsys/snd/heap.h>
 #include <nnsys/snd/sndarc.h>
 #include <nnsys/snd/player.h>
+#include <nnsys/snd/sndarc_loader.h>
 #include <nnsys/snd/sndarc_player.h>
 #include <nnsys/snd/main.h>
 
