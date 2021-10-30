@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start sub_02006C8C
-sub_02006C8C: ; 0x02006C8C
+	thumb_func_start ChatotSoundMain
+ChatotSoundMain: ; 0x02006C8C
 	push {r4, lr}
 	mov r0, #0x10
 	bl GF_SdatGetAttrPtr
@@ -32,7 +32,7 @@ _02006CC2:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02006C8C
+	thumb_func_end ChatotSoundMain
 
 	thumb_func_start Chatot_checkCry
 Chatot_checkCry: ; 0x02006CC8

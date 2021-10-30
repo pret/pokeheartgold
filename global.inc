@@ -25131,7 +25131,7 @@
 .public sub_02006B24
 .public sub_02006B84
 .public sub_02006BCC
-.public sub_02006C8C
+.public ChatotSoundMain
 .public sub_02006D04
 .public sub_02006DB8
 .public sub_02006E3C
