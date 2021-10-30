@@ -21,14 +21,14 @@ struct SND_WORK {
     /* 0xBEBEC */ u16 unk_BEBEC;
     /* 0xBEBEE */ u8 unk_BEBEE;
     /* 0xBEBEF */ u8 unk_BEBEF;
-    /* 0xBEBF0 */ s32 unk_BEBF0;
-    /* 0xBEBF4 */ u8 unk_BEBF4[4];
-    /* 0xBEBF8 */ u32 unk_BEBF8;
-    /* 0xBEBFC */ u8 unk_BEBFC[2];
-    /* 0xBEBFE */ u16 unk_BEBFE;
+    /* 0xBEBF0 */ int fadeTimer;
+    /* 0xBEBF4 */ int unk_BEBF4;
+    /* 0xBEBF8 */ int queuedSeqFadeInDuration;
+    /* 0xBEBFC */ u16 unk_BEBFC;
+    /* 0xBEBFE */ u16 queuedSeqNo;
     /* 0xBEC00 */ u8 unk_BEC00;
     /* 0xBEBC1 */ u8 unk_BEC01;
-    /* 0xBEC02 */ u16 unk_BEC02;
+    /* 0xBEC02 */ u16 afterFanfareWaitTimer;
     /* 0xBEC04 */ u8 unk_BEC04;
     /* 0xBEC05 */ u8 unk_BEC05;
     /* 0xBEC06 */ u8 unk_BEC06;
@@ -44,17 +44,14 @@ struct SND_WORK {
     /* 0xBEC2C */ u32 unk_BEC2C;
     /* 0xBEC30 */ u8 unk_BEC30[8];
     /* 0xBEC38 */ u32 unk_BEC38;
-    /* 0xBEC3C */ SOUND_CHATOT *chatot;
-    /* 0xBEC40 */ u32 unk_BEC40;
-    /* 0xBEC44 */ u32 unk_BEC44;
-    /* 0xBEC48 */ u32 unk_BEC48;
-    /* 0xBEC4C */ u32 unk_BEC4C;
-    /* 0xBEC50 */ u32 unk_BEC50[2];
-    /* 0xBEC58 */ u32 unk_BEC58[2];
-    /* 0xBEC60 */ u32 unk_BEC60[2];
-    /* 0xBEC68 */ u32 unk_BEC68[2];
-    /* 0xBEC70 */ u16 unk_BEC70[2];
-    /* 0xBEC74 */ u8 unk_BEC74[2];
+    /* 0xBEC3C */ SOUND_CHATOT *myChatot;
+    /* 0xBEC40 */ SOUND_CHATOT *otherChatots[4];
+    /* 0xBEC50 */ u32 cryPattern[2];
+    /* 0xBEC58 */ u32 cryPan[2];
+    /* 0xBEC60 */ u32 cryVolume[2];
+    /* 0xBEC68 */ u32 cryHeapId[2];
+    /* 0xBEC70 */ u16 cryNo[2];
+    /* 0xBEC74 */ u8 cryDelayTimer[2];
     /* 0xBEC76 */ u8 unk_BEC76;
     /* 0xBEC77 */ u8 unk_BEC77;
     /* 0xBEC78 */ u8 unk_BEC78;
@@ -63,7 +60,7 @@ struct SND_WORK {
     /* 0xBEC7C */ u32 unk_BEC7C;
     /* 0xBEC80 */ u32 unk_BEC80_00:1;
     /* 0xBEC80 */ u32 unk_BEC80_01:31;
-    /* 0xBEC84 */ u32 unk_BEC84;
+    /* 0xBEC84 */ u32 gbSoundsVolume;
 }; // size: 0xBEC88
 
 SND_WORK sSoundWork;
@@ -76,8 +73,8 @@ void GF_InitMic(SND_WORK *work);
 void SndRadio_Init(NNSSndHeapHandle *heap_p);
 void GF_SndHandleInitAll(SND_WORK *work);
 void sub_02004898(struct SND_WORK *work);
-void sub_02004300(void);
-BOOL sub_020043CC(void);
+void GF_SndCallback(void);
+BOOL GF_SndIsFanfarePlaying(void);
 BOOL sub_02004924(void);
 
 void InitSoundData(SOUND_CHATOT *chatot, OPTIONS *options) {
@@ -94,88 +91,96 @@ void InitSoundData(SOUND_CHATOT *chatot, OPTIONS *options) {
     GF_SndHeapGetFreeSize();
     sub_02004898(work);
     _02111950 = 0;
-    work->chatot = chatot;
+    work->myChatot = chatot;
     GF_SndSetMonoFlag(options->soundMethod);
 }
 
 void DoSoundUpdateFrame(void) {
-    SND_WORK *work;
     int i;
-    SNDChannelInfo sp24;
-    SNDTrackInfo sp8;
-    void *stripped_0;
-    void *stripped_1;
 
-    work = GetSoundDataPointer();
-    stripped_0 = GF_SdatGetAttrPtr(18);
-    stripped_1 = GF_SdatGetAttrPtr(32);
-    if (!sub_020043CC()) {
-        if (work->unk_BEBF0 > 0) {
-            work->unk_BEBF0--;
+    SND_WORK *work = GetSoundDataPointer();
+
+    // debug stuff left in
+    void *stripped_0 = GF_SdatGetAttrPtr(18);
+    void *stripped_1 = GF_SdatGetAttrPtr(32);
+
+    // Only handle fade transitions if fanfare not playing
+    if (!GF_SndIsFanfarePlaying()) {
+        if (work->fadeTimer > 0) {
+            work->fadeTimer--;
         }
-        sub_02004300();
+        GF_SndCallback();
     }
+
+    // debug stuff left in
     NNS_SndUpdateDriverInfo();
     if (gMain.newKeys & PAD_BUTTON_DEBUG) {
+        SNDChannelInfo sp24;
+        SNDTrackInfo sp8;
         for (i = 0; i < 16; i++) {
             NNS_SndPlayerReadDriverTrackInfo(&work->unk_BEB78[7], i, &sp8);
             NNS_SndReadDriverChannelInfo(i, &sp24);
         }
     }
+
     ChatotSoundMain();
+
+    // Up to two Pokemon cries can be queued.
     for (i = 0; i < 2; i++) {
-        if (work->unk_BEC74[i] != 0) {
-            work->unk_BEC74[i]--;
-            if (work->unk_BEC74[i] == 0) {
-                sub_020063A4(work->unk_BEC50[i], work->unk_BEC70[i], work->unk_BEC58[i], work->unk_BEC60[i], work->unk_BEC68[i], 0);
+        if (work->cryDelayTimer[i] != 0) {
+            work->cryDelayTimer[i]--;
+            if (work->cryDelayTimer[i] == 0) {
+                PlayCryEx(work->cryPattern[i], work->cryNo[i], work->cryPan[i], work->cryVolume[i], work->cryHeapId[i], 0);
             }
         }
     }
+
+    // New to HG/SS
     if (work->unk_BEC80_00 && !sub_02004924()) {
         work->unk_BEC80_01++;
     }
     NNS_SndMain();
 }
 
-void sub_02004300(void) {
+void GF_SndCallback(void) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
     switch (_0211194C) {
     case 1:
-        sub_020043B0(2);
+        GF_SndSetState(2);
         break;
     case 3:
-        if (!sub_02005F88()) {
-            sub_020043B0(2);
+        if (!GF_SndGetFadeTimer()) {
+            GF_SndSetState(2);
         }
         break;
     case 4:
-        if (!sub_02005F88()) {
-            sub_020043B0(2);
+        if (!GF_SndGetFadeTimer()) {
+            GF_SndSetState(2);
         }
         break;
     case 5:
-        if (!sub_02005F88() && !sub_020059B0()) {
+        if (!GF_SndGetFadeTimer() && !GF_SndGetAfterFadeDelayTimer()) {
             GF_SndStopPlayerField();
-            if (work->unk_BEBFE != 0) {
-                PlayBGM(work->unk_BEBFE);
+            if (work->queuedSeqNo != 0) {
+                PlayBGM(work->queuedSeqNo);
             }
         }
         break;
     case 6:
-        if (!sub_02005F88() && !sub_020059B0()) {
+        if (!GF_SndGetFadeTimer() && !GF_SndGetAfterFadeDelayTimer()) {
             GF_SndStopPlayerField();
-            if (work->unk_BEBFE != 0) {
-                PlayBGM(work->unk_BEBFE);
+            if (work->queuedSeqNo != 0) {
+                PlayBGM(work->queuedSeqNo);
             }
-            sub_02005F10(0x7F, work->unk_BEBF8, 0);
+            GF_SndStartFadeInBGM(0x7F, work->queuedSeqFadeInDuration, 0);
         }
         break;
     }
 }
 
-void sub_020043B0(u32 state) {
+void GF_SndSetState(u32 state) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
@@ -183,14 +188,14 @@ void sub_020043B0(u32 state) {
     _0211194C = state;
 }
 
-BOOL sub_020043CC(void) {
+BOOL GF_SndIsFanfarePlaying(void) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    if (GF_SndPlayerCountPlayingSeqByPlayerNo(2) != 0) {
+    if (GF_SndPlayerCountPlayingSeqByPlayerNo(PLAYER_ME) != 0) {
         return TRUE;
     }
-    if (work->unk_BEC02 != 0) {
+    if (work->afterFanfareWaitTimer != 0) {
         return TRUE;
     }
     return FALSE;
@@ -220,21 +225,21 @@ void *GF_SdatGetAttrPtr(u32 attr) {
     case 4:
         return &work->unk_BEBD0;
     case 7:
-        return &work->unk_BEBF0;
+        return &work->fadeTimer;
     case 8:
         return &work->unk_BEBF4;
     case 9:
-        return &work->unk_BEBF8;
+        return &work->queuedSeqFadeInDuration;
     case 10:
         return &work->unk_BEBFC;
     case 11:
-        return &work->unk_BEBFE;
+        return &work->queuedSeqNo;
     case 12:
         return &work->unk_BEC00;
     case 13:
         return &work->unk_BEC01;
     case 14:
-        return &work->unk_BEC02;
+        return &work->afterFanfareWaitTimer;
     case 15:
         return &work->unk_BEC04;
     case 16:
@@ -278,39 +283,39 @@ void *GF_SdatGetAttrPtr(u32 attr) {
     case 35:
         return &work->unk_BEC38;
     case 36:
-        return &work->chatot;
+        return &work->myChatot;
     case 37:
-        return &work->unk_BEC40;
+        return &work->otherChatots[0];
     case 38:
-        return &work->unk_BEC44;
+        return &work->otherChatots[1];
     case 39:
-        return &work->unk_BEC48;
+        return &work->otherChatots[2];
     case 40:
-        return &work->unk_BEC4C;
+        return &work->otherChatots[3];
     case 41:
-        return &work->unk_BEC50[0];
+        return &work->cryPattern[0];
     case 42:
-        return &work->unk_BEC58[0];
+        return &work->cryPan[0];
     case 43:
-        return &work->unk_BEC60[0];
+        return &work->cryVolume[0];
     case 44:
-        return &work->unk_BEC68[0];
+        return &work->cryHeapId[0];
     case 45:
-        return &work->unk_BEC70[0];
+        return &work->cryNo[0];
     case 46:
-        return &work->unk_BEC74[0];
+        return &work->cryDelayTimer[0];
     case 47:
-        return &work->unk_BEC50[1];
+        return &work->cryPattern[1];
     case 48:
-        return &work->unk_BEC58[1];
+        return &work->cryPan[1];
     case 49:
-        return &work->unk_BEC60[1];
+        return &work->cryVolume[1];
     case 50:
-        return &work->unk_BEC68[1];
+        return &work->cryHeapId[1];
     case 51:
-        return &work->unk_BEC70[1];
+        return &work->cryNo[1];
     case 52:
-        return &work->unk_BEC74[1];
+        return &work->cryDelayTimer[1];
     case 53:
         return &work->unk_BEC76;
     case 54:
@@ -494,23 +499,23 @@ BOOL sub_02004924(void) {
     return (work->unk_BEC80_01 > 90) ? TRUE : FALSE;
 }
 
-void sub_02004940(void) {
+void GF_SndWorkMicCounterReset(void) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
     work->unk_BEC80_01 = 0;
 }
 
-void sub_02004958(u8 a0) {
+void GF_SndWorkSetGbSoundsVolume(u8 a0) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    work->unk_BEC84 = a0;
+    work->gbSoundsVolume = a0;
 }
 
-u8 sub_0200496C(void) {
+u8 GF_SndWorkGetGbSoundsVolume(void) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    return work->unk_BEC84;
+    return work->gbSoundsVolume;
 }

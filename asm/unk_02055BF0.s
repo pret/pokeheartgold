@@ -419,7 +419,7 @@ _02055F1C:
 	strb r0, [r4]
 	b _02055FF2
 _02055F24:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _02055FF2
 	ldr r1, [r4, #4]

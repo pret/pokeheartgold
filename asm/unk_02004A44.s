@@ -191,7 +191,7 @@ sub_02004A60: ; 0x02004A60
 	mov r0, #0xa
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
-	ldr r0, _02004A8C ; =0x000004C1
+	ldr r0, _02004A8C ; =SEQ_GS_P_START
 	cmp r5, r0
 	bls _02004A82
 	add r0, r5, #0
@@ -207,7 +207,7 @@ _02004A84:
 	bl sub_02004A9C
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02004A8C: .word 0x000004C1
+_02004A8C: .word SEQ_GS_P_START
 	thumb_func_end sub_02004A60
 
 	thumb_func_start sub_02004A90
@@ -665,14 +665,14 @@ _02004E0E:
 	add r4, r0, #0
 	b _02004E48
 _02004E22:
-	ldr r0, _02004EAC ; =WAVE_ARC_SE_SEKIBAN
+	ldr r0, _02004EAC ; =BANK_SE_SEKIBAN
 	bl GF_Snd_LoadBank
 	ldr r0, _02004EAC ; =WAVE_ARC_SE_SEKIBAN
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004E32:
-	ldr r0, _02004EB0 ; =WAVE_ARC_SE_EVENT
+	ldr r0, _02004EB0 ; =BANK_SE_EVENT
 	bl GF_Snd_LoadBank
 	ldr r0, _02004EB0 ; =WAVE_ARC_SE_EVENT
 	bl GF_Snd_LoadWaveArc
@@ -685,32 +685,32 @@ _02004E48:
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-_02004E4C: .word 0x0000058F
-_02004E50: .word 0x00000591
-_02004E54: .word 0x00000593
-_02004E58: .word 0x0000058E
-_02004E5C: .word 0x00000594
-_02004E60: .word 0x00000596
-_02004E64: .word 0x0000064F
-_02004E68: .word 0x00000582
-_02004E6C: .word 0x00000722
-_02004E70: .word 0x00000583
-_02004E74: .word 0x00000584
-_02004E78: .word 0x00000585
-_02004E7C: .word 0x00000587
-_02004E80: .word 0x0000063D
-_02004E84: .word 0x00000642
-_02004E88: .word 0x0000058A
-_02004E8C: .word 0x00000581
-_02004E90: .word 0x00000302
-_02004E94: .word 0x00000303
-_02004E98: .word 0x000002F5
-_02004E9C: .word 0x000002FF
-_02004EA0: .word 0x00000301
-_02004EA4: .word 0x00000305
-_02004EA8: .word 0x00000306
-_02004EAC: .word 0x00000307
-_02004EB0: .word 0x00000309
+_02004E4C: .word SEQ_SE_PL_BALLOON02
+_02004E50: .word SEQ_SE_PL_BALLOON03_2
+_02004E54: .word SEQ_SE_PL_BALLOON05
+_02004E58: .word SEQ_SE_PL_BALLOON01
+_02004E5C: .word SEQ_SE_PL_BALLOON07
+_02004E60: .word SEQ_SE_PL_ALERT4
+_02004E64: .word SEQ_SE_DP_FW104
+_02004E68: .word SEQ_SE_PL_NOMI02
+_02004E6C: .word SEQ_SE_DP_023
+_02004E70: .word SEQ_SE_PL_POINT1
+_02004E74: .word SEQ_SE_PL_POINT2
+_02004E78: .word SEQ_SE_PL_POINT3
+_02004E7C: .word SEQ_SE_PL_BALLOON05_2
+_02004E80: .word SEQ_SE_DP_HAMARU
+_02004E84: .word SEQ_SE_DP_CON_016
+_02004E88: .word SEQ_SE_PL_KIRAKIRA
+_02004E8C: .word SEQ_SE_PL_FCALL
+_02004E90: .word BANK_SE_THLON
+_02004E94: .word BANK_SE_THLON_OPED
+_02004E98: .word BANK_SE_TOWNMAP
+_02004E9C: .word BANK_SE_SCRATCH
+_02004EA0: .word BANK_SE_PLANTER
+_02004EA4: .word BANK_SE_COIN
+_02004EA8: .word BANK_SE_DENDO
+_02004EAC: .word BANK_SE_SEKIBAN
+_02004EB0: .word BANK_SE_EVENT
 	thumb_func_end sub_02004B24
 
 	thumb_func_start sub_02004EB4
@@ -1071,7 +1071,7 @@ _02005180:
 	mov r0, #0x7f
 	mov r1, #0x28
 	mov r2, #0
-	bl sub_02005F10
+	bl GF_SndStartFadeInBGM
 	mov r0, #0
 	bl sub_020059E0
 	pop {r3, r4, r5, pc}
@@ -1376,8 +1376,8 @@ sub_020053F0: ; 0x020053F0
 	pop {r4, pc}
 	thumb_func_end sub_020053F0
 
-	thumb_func_start sub_02005408
-sub_02005408: ; 0x02005408
+	thumb_func_start GF_SndHandleMoveVolume
+GF_SndHandleMoveVolume: ; 0x02005408
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r2, #0
@@ -1390,14 +1390,14 @@ sub_02005408: ; 0x02005408
 	bne _02005428
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02004958
+	bl GF_SndWorkSetGbSoundsVolume
 _02005428:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_02005408
+	thumb_func_end GF_SndHandleMoveVolume
 
-	thumb_func_start sub_0200542C
-sub_0200542C: ; 0x0200542C
+	thumb_func_start GF_SndHandleSetInitialVolume
+GF_SndHandleSetInitialVolume: ; 0x0200542C
 	push {r4, lr}
 	add r4, r1, #0
 	bpl _02005434
@@ -1412,7 +1412,7 @@ _0200543A:
 	bl NNS_SndPlayerSetInitialVolume
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200542C
+	thumb_func_end GF_SndHandleSetInitialVolume
 
 	thumb_func_start sub_02005448
 sub_02005448: ; 0x02005448
@@ -1454,7 +1454,7 @@ _0200547E:
 	bl _s32_div_f
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0200542C
+	bl GF_SndHandleSetInitialVolume
 _02005496:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005464
@@ -1480,7 +1480,7 @@ sub_020054AC: ; 0x020054AC
 	bl sub_020054D4
 	bl sub_0200480C
 	add r1, r4, #0
-	bl sub_0200542C
+	bl GF_SndHandleSetInitialVolume
 	pop {r4, pc}
 	thumb_func_end sub_020054AC
 
@@ -1622,7 +1622,7 @@ sub_02005584: ; 0x02005584
 	beq _0200559C
 	bl GF_AssertFail
 _0200559C:
-	bl sub_02004940
+	bl GF_SndWorkMicCounterReset
 	pop {r3, pc}
 	nop
 _020055A4: .word _021D05E8
@@ -2087,8 +2087,8 @@ sub_02005910: ; 0x02005910
 _02005914: .word NNS_SndCaptureStopReverb
 	thumb_func_end sub_02005910
 
-	thumb_func_start sub_02005918
-sub_02005918: ; 0x02005918
+	thumb_func_start GF_SndHandleSetTrackPitch
+GF_SndHandleSetTrackPitch: ; 0x02005918
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
@@ -2097,7 +2097,7 @@ sub_02005918: ; 0x02005918
 	add r2, r4, #0
 	bl NNS_SndPlayerSetTrackPitch
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02005918
+	thumb_func_end GF_SndHandleSetTrackPitch
 
 	thumb_func_start sub_0200592C
 sub_0200592C: ; 0x0200592C
@@ -2108,7 +2108,7 @@ sub_0200592C: ; 0x0200592C
 	bl sub_0200480C
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0200592C
 
@@ -2120,12 +2120,12 @@ sub_02005944: ; 0x02005944
 	bl sub_0200480C
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005944
 
-	thumb_func_start sub_02005958
-sub_02005958: ; 0x02005958
+	thumb_func_start GF_SndHandleSetTrackPan
+GF_SndHandleSetTrackPan: ; 0x02005958
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
@@ -2134,17 +2134,17 @@ sub_02005958: ; 0x02005958
 	add r2, r4, #0
 	bl NNS_SndPlayerSetTrackPan
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02005958
+	thumb_func_end GF_SndHandleSetTrackPan
 
-	thumb_func_start sub_0200596C
-sub_0200596C: ; 0x0200596C
+	thumb_func_start GF_SndHandleSetTempoRatio
+GF_SndHandleSetTempoRatio: ; 0x0200596C
 	push {r4, lr}
 	add r4, r1, #0
 	bl GF_GetSoundHandle
 	add r1, r4, #0
 	bl NNS_SndPlayerSetTempoRatio
 	pop {r4, pc}
-	thumb_func_end sub_0200596C
+	thumb_func_end GF_SndHandleSetTempoRatio
 
 	thumb_func_start GF_SndSetMonoFlag
 GF_SndSetMonoFlag: ; 0x0200597C
@@ -2180,8 +2180,8 @@ sub_020059A0: ; 0x020059A0
 	.balign 4, 0
 	thumb_func_end sub_020059A0
 
-	thumb_func_start sub_020059B0
-sub_020059B0: ; 0x020059B0
+	thumb_func_start GF_SndGetAfterFadeDelayTimer
+GF_SndGetAfterFadeDelayTimer: ; 0x020059B0
 	push {r3, lr}
 	mov r0, #8
 	bl GF_SdatGetAttrPtr
@@ -2198,7 +2198,7 @@ _020059C6:
 	ldrh r0, [r0]
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020059B0
+	thumb_func_end GF_SndGetAfterFadeDelayTimer
 
 	thumb_func_start sub_020059D0
 sub_020059D0: ; 0x020059D0
@@ -2270,7 +2270,7 @@ sub_02005A10: ; 0x02005A10
 	mov r0, #0
 	strb r0, [r4]
 	mov r0, #5
-	bl sub_020043B0
+	bl GF_SndSetState
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -2324,7 +2324,7 @@ sub_02005A74: ; 0x02005A74
 	ldr r0, [sp, #0x20]
 	str r0, [r4]
 	mov r0, #6
-	bl sub_020043B0
+	bl GF_SndSetState
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -2358,15 +2358,15 @@ sub_02005AB0: ; 0x02005AB0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02005AB0
 
-	thumb_func_start sub_02005AEC
-sub_02005AEC: ; 0x02005AEC
+	thumb_func_start GF_SndSetAllocatableChannelForBGMPlayer
+GF_SndSetAllocatableChannelForBGMPlayer: ; 0x02005AEC
 	ldr r3, _02005AF4 ; =NNS_SndPlayerSetAllocatableChannel
 	add r1, r0, #0
 	mov r0, #7
 	bx r3
 	.balign 4, 0
 _02005AF4: .word NNS_SndPlayerSetAllocatableChannel
-	thumb_func_end sub_02005AEC
+	thumb_func_end GF_SndSetAllocatableChannelForBGMPlayer
 
 	thumb_func_start sub_02005AF8
 sub_02005AF8: ; 0x02005AF8
@@ -2374,13 +2374,13 @@ sub_02005AF8: ; 0x02005AF8
 	cmp r0, #0
 	bne _02005B0C
 	ldr r0, _02005B18 ; =0x0000A7FE
-	bl sub_02005AEC
+	bl GF_SndSetAllocatableChannelForBGMPlayer
 	mov r0, #0
 	bl sub_02005910
 	b _02005B12
 _02005B0C:
 	ldr r0, _02005B1C ; =0x00003FFF
-	bl sub_02005AEC
+	bl GF_SndSetAllocatableChannelForBGMPlayer
 _02005B12:
 	bl sub_020058F4
 	pop {r3, pc}
@@ -2392,7 +2392,7 @@ _02005B1C: .word 0x00003FFF
 	thumb_func_start sub_02005B20
 sub_02005B20: ; 0x02005B20
 	push {r3, lr}
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _02005B4A
 	mov r0, #0
@@ -2412,13 +2412,13 @@ _02005B4A:
 	pop {r3, pc}
 	thumb_func_end sub_02005B20
 
-	thumb_func_start sub_02005B50
-sub_02005B50: ; 0x02005B50
+	thumb_func_start GF_SndHandleSetPlayerVolume
+GF_SndHandleSetPlayerVolume: ; 0x02005B50
 	ldr r3, _02005B54 ; =NNS_SndPlayerSetPlayerVolume
 	bx r3
 	.balign 4, 0
 _02005B54: .word NNS_SndPlayerSetPlayerVolume
-	thumb_func_end sub_02005B50
+	thumb_func_end GF_SndHandleSetPlayerVolume
 
 	thumb_func_start sub_02005B58
 sub_02005B58: ; 0x02005B58
@@ -2485,7 +2485,7 @@ sub_02005BA8: ; 0x02005BA8
 	lsl r3, r2, #2
 	ldr r2, _02005BE8 ; =_020F5710
 	ldrb r2, [r2, r3]
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	ldrb r0, [r4, #1]
 	cmp r0, #8
 	blo _02005BDC
@@ -2557,7 +2557,7 @@ _02005C3C:
 	bne _02005C6A
 	bl sub_02004A90
 	add r4, r0, #0
-	bl sub_0200496C
+	bl GF_SndWorkGetGbSoundsVolume
 	add r5, r0, #0
 	add r0, r4, #0
 	bl GBSounds_GetGBSeqNoByDSSeqNo
@@ -2569,7 +2569,7 @@ _02005C60:
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 _02005C6A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005C24
@@ -2627,20 +2627,20 @@ _02005CAE:
 _02005CBC: .word _020F5730
 	thumb_func_end GBSounds_GetDSSeqNoByGBSeqNo
 
-	thumb_func_start sub_02005CC0
-sub_02005CC0: ; 0x02005CC0
+	thumb_func_start GBSounds_SetAllocatableChannels
+GBSounds_SetAllocatableChannels: ; 0x02005CC0
 	push {r3, lr}
-	mov r0, #0
+	mov r0, #0 ; HANDLE_FIELD
 	bl GF_GetSoundHandle
 	ldr r2, _02005CF0 ; =0x0000A7FE
 	mov r1, #0xf
 	bl NNS_SndPlayerSetTrackAllocatableChannel
-	mov r0, #7
+	mov r0, #7 ; HANDLE_BGM
 	bl GF_GetSoundHandle
 	ldr r2, _02005CF0 ; =0x0000A7FE
 	mov r1, #0xf
 	bl NNS_SndPlayerSetTrackAllocatableChannel
-	mov r0, #2
+	mov r0, #2 ; HANDLE_ME
 	bl GF_GetSoundHandle
 	ldr r2, _02005CF0 ; =0x0000A7FE
 	mov r1, #0xf
@@ -2648,7 +2648,7 @@ sub_02005CC0: ; 0x02005CC0
 	pop {r3, pc}
 	nop
 _02005CF0: .word 0x0000A7FE
-	thumb_func_end sub_02005CC0
+	thumb_func_end GBSounds_SetAllocatableChannels
 
 	thumb_func_start sub_02005CF4
 sub_02005CF4: ; 0x02005CF4

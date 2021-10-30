@@ -26193,7 +26193,7 @@ _02067CF2:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]

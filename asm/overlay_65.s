@@ -3618,7 +3618,7 @@ ov65_0221DC34: ; 0x0221DC34
 _0221DC8E:
 	lsl r1, r2, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 _0221DC96:
 	ldr r0, _0221DCB8 ; =0x0000040C
 	mov r1, #1

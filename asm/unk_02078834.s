@@ -30603,10 +30603,10 @@ _02087BC2:
 	bl OverlayManager_FreeData
 	mov r0, #1
 	mov r1, #0x7f
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	mov r0, #7
 	mov r1, #0x7f
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	mov r0, #0x7e
 	bl DestroyHeap
 	mov r0, #1
@@ -30760,10 +30760,10 @@ _02087D04:
 _02087D0C:
 	mov r0, #1
 	mov r1, #0x7f
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	mov r0, #7
 	mov r1, #0x7f
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	mov r0, #1
 	bl sub_02005B68
 	ldr r0, [r5, #0x10]
@@ -30948,10 +30948,10 @@ sub_02087E70: ; 0x02087E70
 	bl ov40_0222C480
 	mov r0, #1
 	mov r1, #0x2a
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	mov r0, #7
 	mov r1, #0x2a
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	cmp r5, #0
 	beq _02087EB0
 	ldr r1, _02087EF0 ; =0x00000482

@@ -85,11 +85,11 @@ sub_02005DA0: ; 0x02005DA0
 	add r1, r4, #0
 	bl sub_02005464
 	mov r0, #1
-	bl sub_020043B0
+	bl GF_SndSetState
 	cmp r4, #0
 	bne _02005DC2
 	mov r0, #0x80
-	bl sub_02004958
+	bl GF_SndWorkSetGbSoundsVolume
 _02005DC2:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005DA0
@@ -199,7 +199,7 @@ _02005E9A:
 	add r0, r4, #0
 	bl sub_02004A60
 	mov r0, #1
-	bl sub_020043B0
+	bl GF_SndSetState
 	add r0, r5, #0
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -244,13 +244,13 @@ sub_02005EEC: ; 0x02005EEC
 	mov r0, #0
 	bl sub_02004AB8
 	mov r0, #0
-	bl sub_020043B0
+	bl GF_SndSetState
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02005EEC
 
-	thumb_func_start sub_02005F10
-sub_02005F10: ; 0x02005F10
+	thumb_func_start GF_SndStartFadeInBGM
+GF_SndStartFadeInBGM: ; 0x02005F10
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -265,20 +265,20 @@ sub_02005F10: ; 0x02005F10
 	bne _02005F36
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 _02005F36:
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r5, #0
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	add r0, r5, #0
 	bl sub_02005990
 	mov r0, #3
-	bl sub_020043B0
+	bl GF_SndSetState
 _02005F4C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02005F10
+	thumb_func_end GF_SndStartFadeInBGM
 
 	thumb_func_start sub_02005F50
 sub_02005F50: ; 0x02005F50
@@ -290,31 +290,31 @@ sub_02005F50: ; 0x02005F50
 	add r6, r0, #0
 	cmp r6, #0xff
 	beq _02005F86
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _02005F80
 	add r0, r6, #0
 	bl sub_0200480C
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	add r0, r4, #0
 	bl sub_02005990
 _02005F80:
 	mov r0, #4
-	bl sub_020043B0
+	bl GF_SndSetState
 _02005F86:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02005F50
 
-	thumb_func_start sub_02005F88
-sub_02005F88: ; 0x02005F88
+	thumb_func_start GF_SndGetFadeTimer
+GF_SndGetFadeTimer: ; 0x02005F88
 	push {r3, lr}
 	mov r0, #7
 	bl GF_SdatGetAttrPtr
 	ldrh r0, [r0]
 	pop {r3, pc}
-	thumb_func_end sub_02005F88
+	thumb_func_end GF_SndGetFadeTimer
 
 	thumb_func_start sub_02005F94
 sub_02005F94: ; 0x02005F94
@@ -348,7 +348,7 @@ _02005FC4:
 	bl sub_02005728
 _02005FD0:
 	mov r0, #0
-	bl sub_020043B0
+	bl GF_SndSetState
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005FA0
 
@@ -670,8 +670,8 @@ _020061FC:
 _02006214: .word 0x0000FFFF
 	thumb_func_end sub_020061EC
 
-	thumb_func_start sub_02006218
-sub_02006218: ; 0x02006218
+	thumb_func_start PlayCry
+PlayCry: ; 0x02006218
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -766,7 +766,7 @@ _020062CC:
 	.balign 4, 0
 _020062D8: .word 0x000001EE
 _020062DC: .word 0x000001B9
-	thumb_func_end sub_02006218
+	thumb_func_end PlayCry
 
 	thumb_func_start sub_020062E0
 sub_020062E0: ; 0x020062E0
@@ -861,8 +861,8 @@ _0200639A:
 	.balign 4, 0
 	thumb_func_end sub_02006360
 
-	thumb_func_start sub_020063A4
-sub_020063A4: ; 0x020063A4
+	thumb_func_start PlayCryEx
+PlayCryEx: ; 0x020063A4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	str r0, [sp, #4]
@@ -968,7 +968,7 @@ _0200645E: ; jump table
 	.short _02006478 - _0200645E - 2 ; case 12
 _02006478:
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r0, [sp, #8]
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -976,7 +976,7 @@ _02006478:
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1000,7 +1000,7 @@ _020064BA:
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1043,11 +1043,11 @@ _020064EE: ; jump table
 _0200650C:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1056,11 +1056,11 @@ _0200650C:
 _0200652A:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1072,11 +1072,11 @@ _0200652A:
 _02006550:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1084,7 +1084,7 @@ _02006550:
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	mov r2, #0x40
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	add r0, r4, #0
 	mov r1, #0x14
 	add r2, r5, #0
@@ -1092,7 +1092,7 @@ _02006550:
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #8
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	ldr r2, [sp, #0x18]
 	add r0, r4, #0
 	mov r1, #8
@@ -1101,11 +1101,11 @@ _02006550:
 _02006596:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1116,7 +1116,7 @@ _02006596:
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	mov r2, #0xc0
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	add r0, r4, #0
 	mov r1, #0x10
 	add r2, r5, #0
@@ -1124,7 +1124,7 @@ _02006596:
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #8
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	ldr r2, [sp, #0x18]
 	add r0, r4, #0
 	mov r1, #8
@@ -1168,11 +1168,11 @@ _020065E4:
 _02006636:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1181,16 +1181,16 @@ _02006636:
 	add r2, r0, #0
 	ldr r1, _02006748 ; =0x0000FFFF
 	sub r2, #0xe1
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	b _02006814
 _02006660:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1198,7 +1198,7 @@ _02006660:
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	mov r2, #0x2c
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	mov r1, #0x3f
 	add r0, r4, #0
 	mvn r1, r1
@@ -1207,7 +1207,7 @@ _02006660:
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #8
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	ldr r2, [sp, #0x18]
 	add r0, r4, #0
 	mov r1, #8
@@ -1216,11 +1216,11 @@ _02006660:
 _020066A8:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1232,16 +1232,16 @@ _020066A8:
 	add r2, r0, #0
 	ldr r1, _02006748 ; =0x0000FFFF
 	sub r2, #0x81
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	b _02006814
 _020066DA:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1252,7 +1252,7 @@ _020066DA:
 	ldr r1, _02006748 ; =0x0000FFFF
 	mov r0, #1
 	mov r2, #0x3c
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	b _02006814
 _0200670A:
 	mov r0, #0xe
@@ -1284,11 +1284,11 @@ _02006748: .word 0x0000FFFF
 _0200674C:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _0200681C ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1300,16 +1300,16 @@ _0200674C:
 	add r2, r0, #0
 	ldr r1, _0200681C ; =0x0000FFFF
 	sub r2, #0x2d
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	b _02006814
 _0200677E:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _0200681C ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1318,16 +1318,16 @@ _0200677E:
 	add r2, r0, #0
 	ldr r1, _0200681C ; =0x0000FFFF
 	sub r2, #0x61
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	b _02006814
 _020067A8:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	ldr r1, _0200681C ; =0x0000FFFF
 	mov r0, #1
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
@@ -1339,12 +1339,12 @@ _020067A8:
 	add r2, r0, #0
 	ldr r1, _0200681C ; =0x0000FFFF
 	sub r2, #0x61
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	b _02006814
 _020067DA:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x7f
@@ -1356,23 +1356,23 @@ _020067DA:
 	ldr r1, _0200681C ; =0x0000FFFF
 	mov r0, #8
 	add r2, r6, #0
-	bl sub_02005958
+	bl GF_SndHandleSetTrackPan
 	mov r0, #8
 	add r1, r7, #0
 	mov r2, #0
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	b _02006814
 _0200680C:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 _02006814:
 	mov r0, #1
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0200681C: .word 0x0000FFFF
-	thumb_func_end sub_020063A4
+	thumb_func_end PlayCryEx
 
 	thumb_func_start sub_02006820
 sub_02006820: ; 0x02006820
@@ -1381,7 +1381,7 @@ sub_02006820: ; 0x02006820
 	add r5, r0, #0
 	add r0, r4, #0
 	add r1, r2, #0
-	bl sub_0200542C
+	bl GF_SndHandleSetInitialVolume
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02005464
@@ -1440,11 +1440,11 @@ sub_02006884: ; 0x02006884
 	bne _020068B0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	ldr r2, [r5]
 	mov r0, #8
 	mov r1, #0
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 _020068B0:
 	ldr r0, [r5]
 	sub r0, r0, #1
@@ -1589,7 +1589,7 @@ _020069C4:
 	add r2, r7, #0
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl sub_020063A4
+	bl PlayCryEx
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 _020069E8:
@@ -1715,12 +1715,12 @@ sub_02006AC0: ; 0x02006AC0
 	bl sub_02006E3C
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02006218
+	bl PlayCry
 	add r5, r0, #0
 	ldr r1, _02006AF0 ; =0x0000FFFF
 	mov r0, #8
 	add r2, r4, #0
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	add r0, r5, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1923,7 +1923,7 @@ _02006C6A:
 	str r6, [sp]
 	bl NNS_SndArcPlayerStartSeqEx
 	add r4, r0, #0
-	bl sub_02005CC0
+	bl GBSounds_SetAllocatableChannels
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}

@@ -17769,7 +17769,7 @@ _021EDDD0:
 	ldrh r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	add r0, r4, #0
 	bl ov96_021EDD64
 	mov r0, #1

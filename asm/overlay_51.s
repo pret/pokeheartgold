@@ -270,7 +270,7 @@ _021E5CC4:
 	bl sub_0203A964
 	mov r0, #1
 	mov r1, #0x2a
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -523,7 +523,7 @@ ov51_021E5EC8: ; 0x021E5EC8
 	bl DestroyHeap
 	mov r0, #1
 	mov r1, #0x7f
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop

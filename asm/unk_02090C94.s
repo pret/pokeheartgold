@@ -14357,7 +14357,7 @@ _02097928:
 	bl sub_0200FB5C
 	cmp r0, #0
 	beq _02097938
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	beq _0209793E
 _02097938:
@@ -14595,7 +14595,7 @@ _02097AF8:
 	bl sub_0200FB5C
 	cmp r0, #0
 	beq _02097B08
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	beq _02097B0E
 _02097B08:

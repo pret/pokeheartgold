@@ -95,7 +95,7 @@ _020491AC: .word sub_020491B0
 	thumb_func_start sub_020491B0
 sub_020491B0: ; 0x020491B0
 	push {r3, lr}
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _020491BE
 	mov r0, #1
@@ -114,7 +114,7 @@ sub_020491C4: ; 0x020491C4
 	add r1, r0, #0
 	mov r0, #0x7f
 	mov r2, #0
-	bl sub_02005F10
+	bl GF_SndStartFadeInBGM
 	ldr r1, _020491E4 ; =sub_020491B0
 	add r0, r4, #0
 	bl SetupNativeScript
@@ -254,7 +254,7 @@ sub_020492A0: ; 0x020492A0
 	add r1, r4, #0
 	mov r3, #0x64
 	str r2, [sp, #4]
-	bl sub_020063A4
+	bl PlayCryEx
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, pc}

@@ -4670,7 +4670,7 @@ _021E7E80:
 	mov r0, #0
 	ldrb r1, [r1, r2]
 	mov r2, #0xf
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	ldr r1, [sp]
 	mov r0, #5
 	ldrb r2, [r1, r4]
@@ -4681,7 +4681,7 @@ _021E7E80:
 	add r1, r1, r3
 	ldrb r1, [r2, r1]
 	add r2, r0, #0
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7EBC:
 	cmp r7, #0x10
@@ -4701,7 +4701,7 @@ _021E7EC6:
 	mov r0, #0
 	mov r1, #0x80
 	mov r2, #0xf
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	mov r0, #0
 	mvn r0, r0
 	add r5, #0xc4
@@ -26491,7 +26491,7 @@ _021F21D2:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #4
 	str r0, [r4]
 	b _021F2324
@@ -27144,7 +27144,7 @@ ov01_021F2700: ; 0x021F2700
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	ldrh r0, [r5]
 	add r0, r0, #1
 	strh r0, [r5]
@@ -59819,7 +59819,7 @@ ov01_02201990: ; 0x02201990
 	bl VarGet
 	add r1, r0, #0
 	mov r0, #1
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0

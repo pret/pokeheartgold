@@ -7960,7 +7960,7 @@ ov02_022497C0: ; 0x022497C0
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 _02249802:
 	mov r0, #0x7a
 	lsl r0, r0, #2
@@ -13856,7 +13856,7 @@ _0224C42A:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 _0224C456:
 	ldr r0, [r5]
 	add r0, r0, #1
@@ -14079,7 +14079,7 @@ _0224C5D6:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 _0224C602:
 	ldr r0, [r5]
 	add r0, r0, #1
@@ -21591,7 +21591,7 @@ _0224FE18:
 	str r3, [sp, #4]
 	add r2, r4, #0
 	add r3, r4, #0
-	bl sub_020063A4
+	bl PlayCryEx
 	add sp, #8
 	pop {r4, pc}
 _0224FE2C:
@@ -24918,7 +24918,7 @@ _0225181E:
 	mov r1, #0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #0
 	strh r0, [r4, #0xa]
 	strh r0, [r4, #8]

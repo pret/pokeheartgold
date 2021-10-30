@@ -346,7 +346,7 @@ _021E5BB4:
 	mov r1, #0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02006218
+	bl PlayCry
 	add r0, r4, #0
 	mov r1, #7
 	bl ov61_021E6DFC
@@ -498,7 +498,7 @@ _021E5CF2:
 	add r1, r6, #0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

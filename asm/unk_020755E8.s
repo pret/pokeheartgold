@@ -1341,7 +1341,7 @@ _02076038:
 	add r1, #0x80
 	ldrh r0, [r0]
 	ldrb r1, [r1]
-	bl sub_02006218
+	bl PlayCry
 	ldr r0, [r4, #0x28]
 	bl Mon_GetBoxMon
 	add r2, r0, #0
@@ -1728,7 +1728,7 @@ _0207639A:
 	add r1, #0x80
 	ldrh r0, [r0]
 	ldrb r1, [r1]
-	bl sub_02006218
+	bl PlayCry
 	add r0, r4, #0
 	add r0, #0x64
 	ldrb r0, [r0]
@@ -2648,7 +2648,7 @@ _02076B56:
 	add r1, #0x80
 	ldrh r0, [r0]
 	ldrb r1, [r1]
-	bl sub_02006218
+	bl PlayCry
 	add r0, r4, #0
 	add r0, #0x64
 	ldrb r0, [r0]

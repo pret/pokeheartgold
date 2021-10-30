@@ -1218,7 +1218,7 @@ _0222A7E2:
 	bne _0222A7F2
 	mov r0, #0
 	mov r1, #0x78
-	bl sub_0200542C
+	bl GF_SndHandleSetInitialVolume
 _0222A7F2:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -11258,7 +11258,7 @@ _0222F878:
 	mov r0, #0x78
 	mov r1, #0x1e
 	mov r2, #1
-	bl sub_02005F10
+	bl GF_SndStartFadeInBGM
 _0222F894:
 	add r0, r5, #0
 	bl ov44_0222C120
@@ -20336,7 +20336,7 @@ ov44_02233F50: ; 0x02233F50
 	beq _02233F62
 	mov r0, #0
 	mov r1, #0x78
-	bl sub_0200542C
+	bl GF_SndHandleSetInitialVolume
 _02233F62:
 	pop {r3, pc}
 	thumb_func_end ov44_02233F50

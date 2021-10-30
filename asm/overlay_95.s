@@ -1461,7 +1461,7 @@ _021E643C:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	ldr r2, [r4]
 	add r0, r4, #0
 	ldr r2, [r2, #0xc]
@@ -1740,7 +1740,7 @@ _021E668A:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	ldr r2, [r4]
 	add r0, r4, #0
 	ldr r2, [r2, #0xc]

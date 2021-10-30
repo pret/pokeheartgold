@@ -27421,7 +27421,7 @@ _021F4A98:
 	str r0, [r4, #8]
 	b _021F4AE8
 _021F4AA0:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021F4AE8
 	ldr r0, [r4, #0xc]

@@ -4191,12 +4191,12 @@ ov45_0222BC84: ; 0x0222BC84
 	bne _0222BC96
 	mov r0, #7
 	mov r1, #0x2a
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	pop {r3, pc}
 _0222BC96:
 	mov r0, #7
 	mov r1, #0x7f
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	pop {r3, pc}
 	thumb_func_end ov45_0222BC84
 

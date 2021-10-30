@@ -386,7 +386,7 @@ _020528CE:
 	str r0, [r4]
 	b _0205296E
 _020528DE:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _0205296E
 	bl sub_02054F14
