@@ -4,86 +4,12 @@
 
 	.bss
 
-_0211194C:
-	.space 0x4
-
-_02111950:
-	.space 0x4
-
-sSndHeapFreeSize:
-	.space 0x4
-
-_02111958:
-	.space 0xBEC88
-
-_021D05E0:
-	.space 0x4
-
-_021D05E4:
-	.space 0x4
+	.public _0211194C
+	.public _02111950
+	.public sSndHeapFreeSize ; 02111954
+	.public sSoundWork ; 02111958
 
 	.text
-
-	thumb_func_start InitSoundData
-InitSoundData: ; 0x02004174
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r6, r1, #0
-	bl GetSoundDataPointer
-	add r4, r0, #0
-	bl NNS_SndInit
-	add r0, r4, #0
-	bl GF_SoundDataInit
-	add r0, r4, #0
-	bl GF_InitMic
-	add r0, r4, #0
-	ldr r1, _020041F8 ; =0x000BEAE0
-	add r0, #0x98
-	bl NNS_SndHeapCreate
-	add r1, r4, #0
-	add r1, #0x94
-	str r0, [r1]
-	add r2, r4, #0
-	add r2, #0x94
-	ldr r1, _020041FC ; =_0210E980
-	ldr r2, [r2]
-	add r0, r4, #0
-	mov r3, #0
-	bl NNS_SndArcInit
-	add r0, r4, #0
-	add r0, #0x94
-	ldr r0, [r0]
-	bl NNS_SndArcPlayerSetup
-	add r0, r4, #0
-	add r0, #0x94
-	bl sub_0200498C
-	add r0, r4, #0
-	bl GF_SndHandleInitAll
-	add r0, r4, #0
-	add r0, #0x94
-	ldr r0, [r0]
-	bl NNS_SndHeapGetSize
-	ldr r1, _02004200 ; =.bss
-	str r0, [r1, #sSndHeapFreeSize - .bss]
-	bl GF_SndHeapGetFreeSize
-	add r0, r4, #0
-	bl sub_02004898
-	ldr r0, _02004200 ; =.bss
-	mov r1, #0
-	str r1, [r0, #_02111950 - .bss]
-	ldr r0, _02004204 ; =0x000BEC3C
-	str r5, [r4, r0]
-	ldrh r0, [r6]
-	lsl r0, r0, #0x1a
-	lsr r0, r0, #0x1e
-	bl GF_SndSetMonoFlag
-	pop {r4, r5, r6, pc}
-	nop
-_020041F8: .word 0x000BEAE0
-_020041FC: .word _0210E980
-_02004200: .word .bss
-_02004204: .word 0x000BEC3C
-	thumb_func_end InitSoundData
 
 	thumb_func_start DoSoundUpdateFrame
 DoSoundUpdateFrame: ; 0x02004208
@@ -206,8 +132,8 @@ sub_02004300: ; 0x02004300
 	push {r4, lr}
 	bl GetSoundDataPointer
 	add r4, r0, #0
-	ldr r0, _020043A4 ; =.bss
-	ldr r0, [r0, #_0211194C - .bss]
+	ldr r0, _020043A4 ; =_0211194C
+	ldr r0, [r0, #_0211194C - _0211194C]
 	cmp r0, #6
 	bhi _020043A0
 	add r0, r0, r0
@@ -278,7 +204,7 @@ _02004394:
 _020043A0:
 	pop {r4, pc}
 	nop
-_020043A4: .word .bss
+_020043A4: .word _0211194C
 _020043A8: .word 0x000BEBFE
 _020043AC: .word 0x000BEBF8
 	thumb_func_end sub_02004300
@@ -291,12 +217,12 @@ sub_020043B0: ; 0x020043B0
 	ldr r1, _020043C4 ; =0x000BEBEC
 	mov r2, #0
 	strh r2, [r0, r1]
-	ldr r0, _020043C8 ; =.bss
-	str r4, [r0, #_0211194C - .bss]
+	ldr r0, _020043C8 ; =_0211194C
+	str r4, [r0, #_0211194C - _0211194C]
 	pop {r4, pc}
 	.balign 4, 0
 _020043C4: .word 0x000BEBEC
-_020043C8: .word .bss
+_020043C8: .word _0211194C
 	thumb_func_end sub_020043B0
 
 	thumb_func_start sub_020043CC
@@ -326,10 +252,10 @@ _020043F4: .word 0x000BEC02
 
 	thumb_func_start GetSoundDataPointer
 GetSoundDataPointer: ; 0x020043F8
-	ldr r0, _020043FC ; =_02111958
+	ldr r0, _020043FC ; =sSoundWork
 	bx lr
 	.balign 4, 0
-_020043FC: .word _02111958
+_020043FC: .word sSoundWork
 	thumb_func_end GetSoundDataPointer
 
 	thumb_func_start GF_SdatGetAttrPtr
@@ -753,11 +679,11 @@ GF_SndHeapGetFreeSize: ; 0x0200472C
 	add r0, #0x94
 	ldr r0, [r0]
 	bl NNS_SndHeapGetFreeSize
-	ldr r1, _02004740 ; =.bss
-	str r0, [r1, #sSndHeapFreeSize - .bss]
+	ldr r1, _02004740 ; =_0211194C
+	str r0, [r1, #8]
 	pop {r3, pc}
 	.balign 4, 0
-_02004740: .word .bss
+_02004740: .word _0211194C
 	thumb_func_end GF_SndHeapGetFreeSize
 
 	thumb_func_start GF_Snd_LoadGroup
@@ -1095,110 +1021,3 @@ sub_02004980: ; 0x02004980
 	bl sub_020048F0
 	pop {r3, pc}
 	thumb_func_end sub_02004980
-
-	thumb_func_start sub_0200498C
-sub_0200498C: ; 0x0200498C
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, _020049C0 ; =_021D05E4
-	bl NNS_SndHandleInit
-	ldr r1, _020049C4 ; =0x0000A7FE
-	mov r0, #9
-	bl NNS_SndPlayerSetAllocatableChannel
-	mov r0, #9
-	mov r1, #1
-	bl NNS_SndPlayerSetPlayableSeqCount
-	ldr r1, [r4]
-	ldr r2, _020049C8 ; =0x00002EE0
-	mov r0, #9
-	bl NNS_SndPlayerCreateHeap
-	cmp r0, #1
-	beq _020049B8
-	bl GF_AssertFail
-_020049B8:
-	ldr r0, _020049CC ; =_021D05E0
-	mov r1, #0
-	str r1, [r0]
-	pop {r4, pc}
-	.balign 4, 0
-_020049C0: .word _021D05E4
-_020049C4: .word 0x0000A7FE
-_020049C8: .word 0x00002EE0
-_020049CC: .word _021D05E0
-	thumb_func_end sub_0200498C
-
-	thumb_func_start sub_020049D0
-sub_020049D0: ; 0x020049D0
-	push {r3, r4, lr}
-	sub sp, #4
-	add r4, r0, #0
-	bl sub_02004980
-	add r0, r4, #0
-	bl NNS_SndArcGetSeqParam
-	add r2, r0, #0
-	str r4, [sp]
-	ldrh r2, [r2]
-	ldr r0, _02004A00 ; =_021D05E4
-	mov r1, #9
-	mov r3, #0x41
-	bl NNS_SndArcPlayerStartSeqEx
-	cmp r0, #1
-	beq _020049F6
-	mov r4, #0
-_020049F6:
-	ldr r1, _02004A04 ; =_021D05E0
-	str r4, [r1]
-	add sp, #4
-	pop {r3, r4, pc}
-	nop
-_02004A00: .word _021D05E4
-_02004A04: .word _021D05E0
-	thumb_func_end sub_020049D0
-
-	thumb_func_start sub_02004A08
-sub_02004A08: ; 0x02004A08
-	push {r3, lr}
-	add r1, r0, #0
-	mov r0, #9
-	bl NNS_SndPlayerStopSeqByPlayerNo
-	ldr r0, _02004A1C ; =_021D05E0
-	mov r1, #0
-	str r1, [r0]
-	pop {r3, pc}
-	nop
-_02004A1C: .word _021D05E0
-	thumb_func_end sub_02004A08
-
-	thumb_func_start sub_02004A20
-sub_02004A20: ; 0x02004A20
-	ldr r0, _02004A28 ; =_021D05E0
-	ldr r0, [r0]
-	bx lr
-	nop
-_02004A28: .word _021D05E0
-	thumb_func_end sub_02004A20
-
-	thumb_func_start sub_02004A2C
-sub_02004A2C: ; 0x02004A2C
-	ldr r3, _02004A34 ; =NNS_SndPlayerPauseByPlayerNo
-	add r1, r0, #0
-	mov r0, #9
-	bx r3
-	.balign 4, 0
-_02004A34: .word NNS_SndPlayerPauseByPlayerNo
-	thumb_func_end sub_02004A2C
-
-	thumb_func_start sub_02004A38
-sub_02004A38: ; 0x02004A38
-	ldr r3, _02004A40 ; =NNS_SndPlayerCountPlayingSeqByPlayerNo
-	mov r0, #9
-	bx r3
-	nop
-_02004A40: .word NNS_SndPlayerCountPlayingSeqByPlayerNo
-	thumb_func_end sub_02004A38
-
-	.data
-
-_0210E980:
-	.asciz "data/sound/gs_sound_data.sdat"
-	.balign 4, 0

@@ -401,6 +401,7 @@ DIFF_ARCS += $(2)
 .PHONY: $(2)
 endef
 
+$(eval $(call arc_strip_name,files/fielddata/script/scr_seq.narc,files/a/0/1/2))
 $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/g_enc_data.narc,files/a/0/3/7))
@@ -418,6 +419,7 @@ $(DIFF_ARCS):
 $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
 
 include files/msgdata/msg.mk
+include sound_data.mk
 
 %.naix: %.narc ;
 

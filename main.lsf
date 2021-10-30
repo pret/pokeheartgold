@@ -18,6 +18,8 @@ Static main
 	Object font.o
 	Object palette.o
 	Object sound.o
+	Object sound_s.o
+	Object gb_sounds_sys.o
 	Object unk_02004A44.o
 	Object unk_02005D10.o
 	Object sound_chatot.o

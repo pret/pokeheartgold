@@ -15,5 +15,6 @@
 #include <nitro/ctrdg.h>
 #include <nitro/mb.h>
 #include <nitro/spi.h>
+#include <nitro/snd.h>
 
 #endif //NITRO_H_

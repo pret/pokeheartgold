@@ -1416,7 +1416,7 @@ LoadScriptsAndMessagesParameterized: ; 0x02040168
 	add r5, r1, #0
 	add r1, r2, #0
 	add r4, r3, #0
-	mov r0, #0xc
+	mov r0, #0xc ; NARC_fielddata_script_scr_seq
 	mov r2, #0xb
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5, #0x7c]
