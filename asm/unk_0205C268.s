@@ -19670,7 +19670,7 @@ _02064CC2:
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_02054F28
-	bl sub_02004A20
+	bl SndRadio_GetSeqNo
 	cmp r0, #0
 	bne _02064D08
 	ldr r1, [r4, #0x20]
@@ -19703,7 +19703,7 @@ _02064D08:
 	bl sub_02069DC8
 	b _02064D8C
 _02064D3E:
-	bl sub_02004A20
+	bl SndRadio_GetSeqNo
 	cmp r0, #0
 	bne _02064D58
 	ldr r1, _02064DA4 ; =0x000003F5

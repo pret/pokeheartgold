@@ -130,14 +130,14 @@ sub_02005DF4: ; 0x02005DF4
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #0
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	bl sub_020054F0
 	bl sub_02005504
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_020051A4
 	mov r0, #0
-	bl sub_02004A08
+	bl SndRadio_StopSeq
 	ldrh r0, [r4]
 	bl sub_02005504
 	add r2, r0, #0
@@ -195,7 +195,7 @@ _02005E74:
 	bl sub_02004920
 _02005E9A:
 	mov r0, #0
-	bl sub_02004A08
+	bl SndRadio_StopSeq
 	add r0, r4, #0
 	bl sub_02004A60
 	mov r0, #1
@@ -213,7 +213,7 @@ sub_02005EB4: ; 0x02005EB4
 	add r4, r1, #0
 	bl NNS_SndPlayerStopSeqBySeqNo
 	add r0, r5, #0
-	bl sub_02005C6C
+	bl GBSounds_GetGBSeqNoByDSSeqNo
 	cmp r5, r0
 	beq _02005ECE
 	add r1, r4, #0
@@ -224,7 +224,7 @@ _02005ECE:
 	cmp r0, #0xff
 	beq _02005EE4
 	bl sub_0200480C
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	bl NNS_SndHandleReleaseSeq
 _02005EE4:
 	bl sub_02005EEC
@@ -236,7 +236,7 @@ _02005EE4:
 sub_02005EEC: ; 0x02005EEC
 	push {r3, lr}
 	mov r0, #0
-	bl sub_02004A08
+	bl SndRadio_StopSeq
 	mov r0, #0
 	bl sub_02004A60
 	mov r0, #0
@@ -362,7 +362,7 @@ sub_02005FD8: ; 0x02005FD8
 	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r0, #7
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	mov r1, #0
 	bl NNS_SndPlayerStopSeq
 	bl sub_02005EEC
@@ -562,7 +562,7 @@ _02006158: .word NNS_SndPlayerStopSeqBySeqNo
 sub_0200615C: ; 0x0200615C
 	push {r4, lr}
 	add r4, r1, #0
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r4, #0
 	bl NNS_SndPlayerStopSeq
 	pop {r4, pc}
@@ -626,7 +626,7 @@ sub_020061B4: ; 0x020061B4
 	add r4, r2, #0
 	bl sub_020054D4
 	bl sub_0200480C
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r5, #0
 	add r2, r4, #0
 	bl NNS_SndPlayerSetTrackPan
@@ -638,7 +638,7 @@ sub_020061D0: ; 0x020061D0
 	push {r4, lr}
 	add r4, r1, #0
 	bl sub_0200480C
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	ldr r1, _020061E8 ; =0x0000FFFF
 	add r2, r4, #0
 	bl NNS_SndPlayerSetTrackPan
@@ -658,7 +658,7 @@ sub_020061EC: ; 0x020061EC
 	mov r5, #0
 _020061FC:
 	add r0, r4, r5
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r7, #0
 	add r2, r6, #0
 	bl NNS_SndPlayerSetTrackPan
@@ -800,11 +800,11 @@ sub_02006300: ; 0x02006300
 	mov r0, #0xf
 	bl GF_SdatGetAttrPtr
 	mov r0, #1
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r5, #0
 	bl NNS_SndPlayerStopSeq
 	mov r0, #8
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r5, #0
 	bl NNS_SndPlayerStopSeq
 	ldrb r0, [r6]
@@ -1769,7 +1769,7 @@ sub_02006B24: ; 0x02006B24
 	b _02006B4E
 _02006B48:
 	mov r0, #1
-	bl sub_02004A2C
+	bl SndRadio_PausePlayer
 _02006B4E:
 	mov r0, #0x1d
 	bl GF_SdatGetAttrPtr
@@ -1826,7 +1826,7 @@ sub_02006BB0: ; 0x02006BB0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #2
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r4, #0
 	bl NNS_SndPlayerStopSeq
 	mov r0, #6
@@ -1856,7 +1856,7 @@ _02006BE0:
 	bl sub_020053A8
 _02006BF8:
 	mov r0, #0
-	bl sub_02004A2C
+	bl SndRadio_PausePlayer
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -1891,7 +1891,7 @@ sub_02006C14: ; 0x02006C14
 	bne _02006C6A
 	add r0, sp, #0x10
 	ldrh r0, [r0, #0x10]
-	bl sub_02005C6C
+	bl GBSounds_GetGBSeqNoByDSSeqNo
 	add r1, sp, #0x10
 	ldrh r1, [r1, #0x10]
 	add r4, r0, #0
@@ -1916,7 +1916,7 @@ _02006C5E:
 	bl GF_Snd_LoadSeqEx
 _02006C6A:
 	ldr r0, [sp, #4]
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	ldr r3, [sp, #8]
 	add r1, r5, #0
 	add r2, r7, #0

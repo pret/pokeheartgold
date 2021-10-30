@@ -563,7 +563,7 @@
 .public GetPersonalAttr
 .public GetRivalNamePtr
 .public GetSoundDataPointer
-.public GetSoundPlayer
+.public GF_GetSoundHandle
 .public GetSpeciesName
 .public GetSpeciesNameIntoArray
 .public GetStoragePCPointer
@@ -25027,11 +25027,11 @@
 .public sub_02004940
 .public sub_02004958
 .public sub_0200496C
-.public sub_020049D0
-.public sub_02004A08
-.public sub_02004A20
-.public sub_02004A2C
-.public sub_02004A38
+.public SndRadio_StartSeq
+.public SndRadio_StopSeq
+.public SndRadio_GetSeqNo
+.public SndRadio_PausePlayer
+.public SndRadio_CountPlayingSeq
 .public sub_02004A44
 .public sub_02004A54
 .public sub_02004A60
@@ -25095,7 +25095,7 @@
 .public sub_02005BFC
 .public sub_02005C18
 .public sub_02005C24
-.public sub_02005C6C
+.public GBSounds_GetGBSeqNoByDSSeqNo
 .public sub_02005CC0
 .public sub_02005CF4
 .public sub_02005D00

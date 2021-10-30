@@ -74,4 +74,6 @@ typedef struct NNSSndArc
 
 void NNS_SndArcInit(NNSSndArc *arc, const char *filePath, NNSSndHeapHandle heap, BOOL symbolLoadFlag);
 
+const NNSSndSeqParam* NNS_SndArcGetSeqParam(int seqNo);
+
 #endif //NNSYS_SND_SNDARC_H_

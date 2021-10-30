@@ -26222,7 +26222,7 @@ _022522B0: .word sub_02093010
 	thumb_func_start ov02_022522B4
 ov02_022522B4: ; 0x022522B4
 	push {r3, lr}
-	bl sub_02004A20
+	bl SndRadio_GetSeqNo
 	lsl r0, r0, #0x10
 	ldr r2, _0225232C ; =0x00000492
 	lsr r0, r0, #0x10

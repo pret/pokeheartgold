@@ -26416,7 +26416,7 @@ _021F2148:
 	bl sub_02066A3C
 	cmp r0, #0
 	bne _021F2172
-	bl sub_02004A20
+	bl SndRadio_GetSeqNo
 	cmp r0, #0
 	bne _021F2172
 	ldr r0, [r4, #0x1c]
@@ -26798,7 +26798,7 @@ _021F2476:
 	mov r2, #4
 	bl sub_02054FDC
 _021F249A:
-	bl sub_02004A20
+	bl SndRadio_GetSeqNo
 	cmp r0, #0
 	beq _021F24AE
 	mov r0, #0x28
@@ -26813,7 +26813,7 @@ _021F24AE:
 	mov r0, #1
 	pop {r4, pc}
 _021F24B8:
-	bl sub_02004A20
+	bl SndRadio_GetSeqNo
 	cmp r0, #0
 	bne _021F24D2
 	ldr r0, [r4, #8]

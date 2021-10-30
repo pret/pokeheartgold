@@ -3,6 +3,7 @@
 #include "sound_chatot.h"
 #include "options.h"
 #include "main.h"
+#include "constants/sndseq.h"
 
 #define ASM_EXTERN extern
 
@@ -10,7 +11,7 @@ struct SND_WORK {
     /* 0x00000 */ NNSSndArc arc;
     /* 0x00094 */ NNSSndHeapHandle heap;
     /* 0x00098 */ u8 heap_buf[SND_HEAP_SIZE];
-    /* 0xBEB78 */ NNSSndHandle unk_BEB78[SND_PLAYER_COUNT];
+    /* 0xBEB78 */ NNSSndHandle unk_BEB78[SND_HANDLE_MAX];
     /* 0xBEB9C */ u32 unk_BEB9C;
     /* 0xBEBA0 */ u32 unk_BEBA0;
     /* 0xBEBA4 */ u32 unk_BEBA4;
@@ -36,13 +37,7 @@ struct SND_WORK {
     /* 0xBEC09 */ u8 unk_BEC09;
     /* 0xBEC0A */ u8 unk_BEC0A;
     /* 0xBEC0B */ u8 unk_BEC0B;
-    /* 0xBEC0C */ u32 unk_BEC0C;
-    /* 0xBEC10 */ u32 unk_BEC10;
-    /* 0xBEC14 */ u32 unk_BEC14;
-    /* 0xBEC18 */ u32 unk_BEC18;
-    /* 0xBEC1C */ u32 unk_BEC1C;
-    /* 0xBEC20 */ u32 unk_BEC20;
-    /* 0xBEC24 */ u32 unk_BEC24;
+    /* 0xBEC0C */ int stateSaveDepth[7];
     /* 0xBEC28 */ u8 unk_BEC28;
     /* 0xBEC29 */ u8 unk_BEC29;
     /* 0xBEC2A */ u16 unk_BEC2A;
@@ -68,7 +63,7 @@ struct SND_WORK {
     /* 0xBEC7C */ u32 unk_BEC7C;
     /* 0xBEC80 */ u32 unk_BEC80_00:1;
     /* 0xBEC80 */ u32 unk_BEC80_01:31;
-    /* 0xBEC84 */ u8 padding_BEC84[4];
+    /* 0xBEC84 */ u32 unk_BEC84;
 }; // size: 0xBEC88
 
 SND_WORK sSoundWork;
@@ -78,7 +73,7 @@ u32 sSndHeapFreeSize;
 
 void GF_SoundDataInit(SND_WORK *work);
 void GF_InitMic(SND_WORK *work);
-void sub_0200498C(NNSSndHeapHandle *heap_p);
+void SndRadio_Init(NNSSndHeapHandle *heap_p);
 void GF_SndHandleInitAll(SND_WORK *work);
 void sub_02004898(struct SND_WORK *work);
 void sub_02004300(void);
@@ -93,7 +88,7 @@ void InitSoundData(SOUND_CHATOT *chatot, OPTIONS *options) {
     work->heap = NNS_SndHeapCreate(work->heap_buf, sizeof(work->heap_buf));
     NNS_SndArcInit(&work->arc, "data/sound/gs_sound_data.sdat", work->heap, FALSE);
     NNS_SndArcPlayerSetup(work->heap);
-    sub_0200498C(&work->heap);
+    SndRadio_Init(&work->heap);
     GF_SndHandleInitAll(work);
     sSndHeapFreeSize = NNS_SndHeapGetSize(work->heap);
     GF_SndHeapGetFreeSize();
@@ -162,7 +157,7 @@ void sub_02004300(void) {
         break;
     case 5:
         if (!sub_02005F88() && !sub_020059B0()) {
-            sub_020048F0();
+            GF_SndStopPlayerField();
             if (work->unk_BEBFE != 0) {
                 PlayBGM(work->unk_BEBFE);
             }
@@ -170,7 +165,7 @@ void sub_02004300(void) {
         break;
     case 6:
         if (!sub_02005F88() && !sub_020059B0()) {
-            sub_020048F0();
+            GF_SndStopPlayerField();
             if (work->unk_BEBFE != 0) {
                 PlayBGM(work->unk_BEBFE);
             }
@@ -257,19 +252,19 @@ void *GF_SdatGetAttrPtr(u32 attr) {
     case 22:
         return &work->unk_BEC0B;
     case 23:
-        return &work->unk_BEC0C;
+        return &work->stateSaveDepth[0];
     case 24:
-        return &work->unk_BEC10;
+        return &work->stateSaveDepth[1];
     case 25:
-        return &work->unk_BEC14;
+        return &work->stateSaveDepth[2];
     case 26:
-        return &work->unk_BEC18;
+        return &work->stateSaveDepth[3];
     case 27:
-        return &work->unk_BEC1C;
+        return &work->stateSaveDepth[4];
     case 28:
-        return &work->unk_BEC20;
+        return &work->stateSaveDepth[5];
     case 29:
-        return &work->unk_BEC24;
+        return &work->stateSaveDepth[6];
     case 30:
         return &work->unk_BEC28;
     case 31:
@@ -412,13 +407,110 @@ BOOL GF_Snd_LoadBank(int bankNo) {
     return ret;
 }
 
-NNSSndHandle *GetSoundPlayer(int playerNo) {
+NNSSndHandle *GF_GetSoundHandle(int playerNo) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    if (playerNo >= SND_PLAYER_COUNT) {
+    if (playerNo >= SND_HANDLE_MAX) {
         GF_ASSERT(0);
         playerNo = 0;
     }
     return &work->unk_BEB78[playerNo];
+}
+
+enum SoundHandleNo sub_0200480C(int playerNo) {
+    switch (playerNo) {
+    case PLAYER_FIELD:
+        return SND_HANDLE_FIELD;
+    case PLAYER_PV:
+        return SND_HANDLE_PV;
+    case PLAYER_ME:
+        return SND_HANDLE_ME;
+    case PLAYER_SE_1:
+        return SND_HANDLE_SE_1;
+    case PLAYER_SE_2:
+        return SND_HANDLE_SE_2;
+    case PLAYER_SE_3:
+        return SND_HANDLE_SE_3;
+    case PLAYER_SE_4:
+        return SND_HANDLE_SE_4;
+    case PLAYER_BGM:
+        return SND_HANDLE_BGM;
+    default:
+        GF_ASSERT(0);
+        return SND_HANDLE_SE_1;
+    }
+}
+
+void GF_SoundDataInit(SND_WORK *work) {
+    int i;
+
+    memset(work, 0, sizeof(SND_WORK));
+    for (i = 0; i < 7; i++) {
+        work->stateSaveDepth[i] = i + 1;
+    }
+}
+
+void GF_SndHandleInitAll(struct SND_WORK *work) {
+    int i;
+
+    for (i = 0; i < SND_HANDLE_MAX; i++) {
+        NNS_SndHandleInit(&work->unk_BEB78[i]);
+    }
+}
+
+void sub_02004898(SND_WORK *work) {
+    GF_Snd_SaveState(&work->stateSaveDepth[0]);
+    GF_Snd_LoadGroup(GROUP_GLOBAL);
+    GF_Snd_LoadBank(BANK_GAMEBOY);
+    GF_Snd_SaveState(&work->stateSaveDepth[1]);
+}
+
+void GF_InitMic(SND_WORK *work) {
+    MIC_Init();
+    PM_SetAmp(PM_AMP_ON);
+    PM_SetAmpGain(PM_AMPGAIN_80);
+    work->unk_BEC80_00 = TRUE;
+}
+
+void GF_SndStopPlayerField(void) {
+    NNS_SndPlayerStopSeqByPlayerNo(PLAYER_BGM, 0);
+    NNS_SndHandleReleaseSeq(GF_GetSoundHandle(SND_HANDLE_BGM));
+}
+
+void GF_SndStopPlayerBgm(void) {
+    NNS_SndPlayerStopSeqByPlayerNo(PLAYER_FIELD, 0);
+    NNS_SndHandleReleaseSeq(GF_GetSoundHandle(SND_HANDLE_FIELD));
+}
+
+void sub_02004920(u16 unk) {
+#pragma unused(unk)
+}
+
+BOOL sub_02004924(void) {
+    SND_WORK *work;
+
+    work = GetSoundDataPointer();
+    return (work->unk_BEC80_01 > 90) ? TRUE : FALSE;
+}
+
+void sub_02004940(void) {
+    SND_WORK *work;
+
+    work = GetSoundDataPointer();
+    work->unk_BEC80_01 = 0;
+}
+
+void sub_02004958(u8 a0) {
+    SND_WORK *work;
+
+    work = GetSoundDataPointer();
+    work->unk_BEC84 = a0;
+}
+
+u8 sub_0200496C(void) {
+    SND_WORK *work;
+
+    work = GetSoundDataPointer();
+    return work->unk_BEC84;
 }
