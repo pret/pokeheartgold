@@ -9,8 +9,8 @@ void MIi_CpuClear32(register u32 value, register u32 * dst, register u32 size);
 void MIi_CpuCopy32(register u32 * src, register u32 * dst, register u32 size);
 void MIi_CpuClearFast(register u32 value, register u32 * dst, register u32 size);
 void MIi_CpuCopyFast(register u32 * src, register u32 * dst, register u32 size);
-void MI_CpuFill8(register u8 value, register u8 * dst, register u32 size);
-void MI_CpuCopy8(register u8 * src, register u8 * dst, register u32 size);
+void MI_CpuFill8(void *dest, u8 data, u32 size);
+void MI_CpuCopy8(const void * src, void * dst, u32 size);
 
 static inline void MI_CpuCopy16(void *src, void *dst, u32 size) {
     MIi_CpuCopy16(src, dst, size);
