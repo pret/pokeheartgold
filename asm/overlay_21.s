@@ -42,8 +42,8 @@ _022598E0:
 _02259908: .word 0x022599F0
 	thumb_func_end ov21_022598C0
 
-	thumb_func_start ov21_0225990C
-ov21_0225990C: ; 0x0225990C
+	thumb_func_start ScrCmd_432
+ScrCmd_432: ; 0x0225990C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -83,10 +83,10 @@ _02259952:
 	nop
 _02259958: .word 0x022599F0
 _0225995C: .word 0x022599F2
-	thumb_func_end ov21_0225990C
+	thumb_func_end ScrCmd_432
 
-	thumb_func_start ov21_02259960
-ov21_02259960: ; 0x02259960
+	thumb_func_start ScrCmd_433
+ScrCmd_433: ; 0x02259960
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -154,7 +154,7 @@ _022599E6:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022599EC: .word 0x022599F0
-	thumb_func_end ov21_02259960
+	thumb_func_end ScrCmd_433
 
 	.rodata
 

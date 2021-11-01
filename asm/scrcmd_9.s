@@ -58,8 +58,8 @@ _020FBFEE:
 
 	.text
 
-	thumb_func_start sub_02049CA8
-sub_02049CA8: ; 0x02049CA8
+	thumb_func_start ScrCmd_410
+ScrCmd_410: ; 0x02049CA8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -80,10 +80,10 @@ sub_02049CA8: ; 0x02049CA8
 	str r0, [r1]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_02049CA8
+	thumb_func_end ScrCmd_410
 
-	thumb_func_start sub_02049CD8
-sub_02049CD8: ; 0x02049CD8
+	thumb_func_start ScrCmd_409
+ScrCmd_409: ; 0x02049CD8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -91,10 +91,10 @@ sub_02049CD8: ; 0x02049CD8
 	bl sub_0204A810
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_02049CD8
+	thumb_func_end ScrCmd_409
 
-	thumb_func_start sub_02049CE8
-sub_02049CE8: ; 0x02049CE8
+	thumb_func_start ScrCmd_411
+ScrCmd_411: ; 0x02049CE8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -108,10 +108,10 @@ sub_02049CE8: ; 0x02049CE8
 	add r1, #0xa0
 	str r0, [r1]
 	pop {r4, pc}
-	thumb_func_end sub_02049CE8
+	thumb_func_end ScrCmd_411
 
-	thumb_func_start sub_02049D04
-sub_02049D04: ; 0x02049D04
+	thumb_func_start ScrCmd_412
+ScrCmd_412: ; 0x02049D04
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r0, #0
@@ -466,10 +466,10 @@ _02049FBE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02049FC4: .word 0x00000884
-	thumb_func_end sub_02049D04
+	thumb_func_end ScrCmd_412
 
-	thumb_func_start sub_02049FC8
-sub_02049FC8: ; 0x02049FC8
+	thumb_func_start ScrCmd_413
+ScrCmd_413: ; 0x02049FC8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -526,10 +526,10 @@ sub_02049FC8: ; 0x02049FC8
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02049FC8
+	thumb_func_end ScrCmd_413
 
-	thumb_func_start sub_0204A048
-sub_0204A048: ; 0x0204A048
+	thumb_func_start ScrCmd_414
+ScrCmd_414: ; 0x0204A048
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -547,10 +547,10 @@ sub_0204A048: ; 0x0204A048
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204A048
+	thumb_func_end ScrCmd_414
 
-	thumb_func_start sub_0204A070
-sub_0204A070: ; 0x0204A070
+	thumb_func_start ScrCmd_415
+ScrCmd_415: ; 0x0204A070
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -568,10 +568,10 @@ sub_0204A070: ; 0x0204A070
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204A070
+	thumb_func_end ScrCmd_415
 
-	thumb_func_start sub_0204A098
-sub_0204A098: ; 0x0204A098
+	thumb_func_start ScrCmd_416
+ScrCmd_416: ; 0x0204A098
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -682,10 +682,10 @@ _0204A178:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0204A180: .word 0x0000083E
-	thumb_func_end sub_0204A098
+	thumb_func_end ScrCmd_416
 
-	thumb_func_start sub_0204A184
-sub_0204A184: ; 0x0204A184
+	thumb_func_start ScrCmd_417
+ScrCmd_417: ; 0x0204A184
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -731,7 +731,7 @@ _0204A1DC:
 	.balign 4, 0
 _0204A1E0: .word 0x000008DA
 _0204A1E4: .word sub_0204A1E8
-	thumb_func_end sub_0204A184
+	thumb_func_end ScrCmd_417
 
 	thumb_func_start sub_0204A1E8
 sub_0204A1E8: ; 0x0204A1E8
@@ -773,8 +773,8 @@ _0204A228: .word 0x000008D5
 _0204A22C: .word 0x000008D4
 	thumb_func_end sub_0204A1E8
 
-	thumb_func_start sub_0204A230
-sub_0204A230: ; 0x0204A230
+	thumb_func_start ScrCmd_418
+ScrCmd_418: ; 0x0204A230
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -807,10 +807,10 @@ sub_0204A230: ; 0x0204A230
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end sub_0204A230
+	thumb_func_end ScrCmd_418
 
-	thumb_func_start sub_0204A27C
-sub_0204A27C: ; 0x0204A27C
+	thumb_func_start ScrCmd_419
+ScrCmd_419: ; 0x0204A27C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -829,7 +829,7 @@ sub_0204A27C: ; 0x0204A27C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204A27C
+	thumb_func_end ScrCmd_419
 
 	thumb_func_start sub_0204A2A8
 sub_0204A2A8: ; 0x0204A2A8
@@ -874,8 +874,8 @@ _0204A2E4:
 _0204A2E8: .word _020FBF70
 	thumb_func_end sub_0204A2A8
 
-	thumb_func_start sub_0204A2EC
-sub_0204A2EC: ; 0x0204A2EC
+	thumb_func_start ScrCmd_554
+ScrCmd_554: ; 0x0204A2EC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -896,10 +896,10 @@ sub_0204A2EC: ; 0x0204A2EC
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0204A2EC
+	thumb_func_end ScrCmd_554
 
-	thumb_func_start sub_0204A31C
-sub_0204A31C: ; 0x0204A31C
+	thumb_func_start ScrCmd_555
+ScrCmd_555: ; 0x0204A31C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -928,10 +928,10 @@ sub_0204A31C: ; 0x0204A31C
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204A31C
+	thumb_func_end ScrCmd_555
 
-	thumb_func_start sub_0204A360
-sub_0204A360: ; 0x0204A360
+	thumb_func_start ScrCmd_556
+ScrCmd_556: ; 0x0204A360
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -960,10 +960,10 @@ sub_0204A360: ; 0x0204A360
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204A360
+	thumb_func_end ScrCmd_556
 
-	thumb_func_start sub_0204A3A4
-sub_0204A3A4: ; 0x0204A3A4
+	thumb_func_start ScrCmd_557
+ScrCmd_557: ; 0x0204A3A4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -1000,7 +1000,7 @@ _0204A3EC:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204A3A4
+	thumb_func_end ScrCmd_557
 
 	thumb_func_start sub_0204A3F4
 sub_0204A3F4: ; 0x0204A3F4

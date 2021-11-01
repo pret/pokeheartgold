@@ -174,8 +174,8 @@ _02259A28: .word 0x000002D6
 _02259A2C: .word 0x0000FFFF
 	thumb_func_end ov25_02259948
 
-	thumb_func_start ov25_02259A30
-ov25_02259A30: ; 0x02259A30
+	thumb_func_start ScrCmd_809
+ScrCmd_809: ; 0x02259A30
 	push {r3, r4, r5, lr}
 	sub sp, #0x18
 	add r5, r0, #0
@@ -231,7 +231,7 @@ _02259A7E:
 	.balign 4, 0
 _02259AA4: .word _02259D84
 _02259AA8: .word 0x021EF349
-	thumb_func_end ov25_02259A30
+	thumb_func_end ScrCmd_809
 
 	thumb_func_start ov25_02259AAC
 ov25_02259AAC: ; 0x02259AAC

@@ -54,8 +54,8 @@ sub_0204BD98: ; 0x0204BD98
 	pop {r3, pc}
 	thumb_func_end sub_0204BD98
 
-	thumb_func_start sub_0204BDA4
-sub_0204BDA4: ; 0x0204BDA4
+	thumb_func_start ScrCmd_489
+ScrCmd_489: ; 0x0204BDA4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r4, r0, #0
@@ -285,7 +285,7 @@ _0204BF8C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0204BF94: .word _020FC0E8
-	thumb_func_end sub_0204BDA4
+	thumb_func_end ScrCmd_489
 
 	thumb_func_start sub_0204BF98
 sub_0204BF98: ; 0x0204BF98

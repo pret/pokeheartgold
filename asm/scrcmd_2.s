@@ -363,8 +363,8 @@ _0210FA3C:
 
 	.text
 
-	thumb_func_start sub_02048060
-sub_02048060: ; 0x02048060
+	thumb_func_start ScrCmd_275
+ScrCmd_275: ; 0x02048060
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x8c
 	add r7, r0, #0
@@ -474,10 +474,10 @@ _020480FA:
 	.balign 4, 0
 _02048124: .word 0x020FBF22
 _02048128: .word 0x0000FFFF
-	thumb_func_end sub_02048060
+	thumb_func_end ScrCmd_275
 
-	thumb_func_start sub_0204812C
-sub_0204812C: ; 0x0204812C
+	thumb_func_start ScrCmd_782
+ScrCmd_782: ; 0x0204812C
 	push {r3, lr}
 	sub sp, #0x10
 	ldr r1, _02048154 ; =0x0000FFFF
@@ -499,10 +499,10 @@ sub_0204812C: ; 0x0204812C
 	pop {r3, pc}
 	.balign 4, 0
 _02048154: .word 0x0000FFFF
-	thumb_func_end sub_0204812C
+	thumb_func_end ScrCmd_782
 
-	thumb_func_start sub_02048158
-sub_02048158: ; 0x02048158
+	thumb_func_start ScrCmd_276
+ScrCmd_276: ; 0x02048158
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -529,10 +529,10 @@ sub_02048158: ; 0x02048158
 	pop {r3, r4, pc}
 	nop
 _02048190: .word _0210FA3C
-	thumb_func_end sub_02048158
+	thumb_func_end ScrCmd_276
 
-	thumb_func_start sub_02048194
-sub_02048194: ; 0x02048194
+	thumb_func_start ScrCmd_277
+ScrCmd_277: ; 0x02048194
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -567,10 +567,10 @@ _020481B6:
 	pop {r3, r4, pc}
 	nop
 _020481D8: .word _0210F9CC
-	thumb_func_end sub_02048194
+	thumb_func_end ScrCmd_277
 
-	thumb_func_start sub_020481DC
-sub_020481DC: ; 0x020481DC
+	thumb_func_start ScrCmd_278
+ScrCmd_278: ; 0x020481DC
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -598,4 +598,4 @@ sub_020481DC: ; 0x020481DC
 	pop {r3, r4, pc}
 	.balign 4, 0
 _02048214: .word _0210F9E8
-	thumb_func_end sub_020481DC
+	thumb_func_end ScrCmd_278

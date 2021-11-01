@@ -8,8 +8,8 @@
 
 	.text
 
-	thumb_func_start sub_02048218
-sub_02048218: ; 0x02048218
+	thumb_func_start ScrCmd_771
+ScrCmd_771: ; 0x02048218
 	push {r3, r4, lr}
 	sub sp, #0x1c
 	add r4, r0, #0
@@ -68,10 +68,10 @@ _02048288:
 	nop
 _02048290: .word _0210FA04
 _02048294: .word _0210F9CC
-	thumb_func_end sub_02048218
+	thumb_func_end ScrCmd_771
 
-	thumb_func_start sub_02048298
-sub_02048298: ; 0x02048298
+	thumb_func_start ScrCmd_772
+ScrCmd_772: ; 0x02048298
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r6, r0, #0
@@ -114,10 +114,10 @@ _020482BE:
 	nop
 _020482EC: .word _0210F9D4
 _020482F0: .word _0210F9CC
-	thumb_func_end sub_02048298
+	thumb_func_end ScrCmd_772
 
-	thumb_func_start sub_020482F4
-sub_020482F4: ; 0x020482F4
+	thumb_func_start ScrCmd_834
+ScrCmd_834: ; 0x020482F4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -201,10 +201,10 @@ _0204838C:
 	.balign 4, 0
 _02048394: .word _0210FA04
 _02048398: .word 0x0000FFFF
-	thumb_func_end sub_020482F4
+	thumb_func_end ScrCmd_834
 
-	thumb_func_start sub_0204839C
-sub_0204839C: ; 0x0204839C
+	thumb_func_start ScrCmd_835
+ScrCmd_835: ; 0x0204839C
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -233,4 +233,4 @@ _020483D2:
 	strh r4, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0204839C
+	thumb_func_end ScrCmd_835

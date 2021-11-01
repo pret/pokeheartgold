@@ -19788,8 +19788,8 @@ ov01_021EF034: ; 0x021EF034
 	.balign 4, 0
 	thumb_func_end ov01_021EF034
 
-	thumb_func_start ov01_021EF050
-ov01_021EF050: ; 0x021EF050
+	thumb_func_start ScrCmd_044
+ScrCmd_044: ; 0x021EF050
 	push {r3, lr}
 	ldr r2, [r0, #8]
 	add r1, r2, #1
@@ -19799,10 +19799,10 @@ ov01_021EF050: ; 0x021EF050
 	bl ov01_021EF530
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov01_021EF050
+	thumb_func_end ScrCmd_044
 
-	thumb_func_start ov01_021EF064
-ov01_021EF064: ; 0x021EF064
+	thumb_func_start ScrCmd_438
+ScrCmd_438: ; 0x021EF064
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -19832,10 +19832,10 @@ _021EF098:
 	pop {r3, r4, r5, pc}
 	nop
 _021EF0A0: .word 0x022067C8
-	thumb_func_end ov01_021EF064
+	thumb_func_end ScrCmd_438
 
-	thumb_func_start ov01_021EF0A4
-ov01_021EF0A4: ; 0x021EF0A4
+	thumb_func_start ScrCmd_439
+ScrCmd_439: ; 0x021EF0A4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -19867,10 +19867,10 @@ ov01_021EF0A4: ; 0x021EF0A4
 	bl DestroyMsgData
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021EF0A4
+	thumb_func_end ScrCmd_439
 
-	thumb_func_start ov01_021EF0F0
-ov01_021EF0F0: ; 0x021EF0F0
+	thumb_func_start ScrCmd_440
+ScrCmd_440: ; 0x021EF0F0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -19912,10 +19912,10 @@ ov01_021EF0F0: ; 0x021EF0F0
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021EF150: .word ov01_021EF348
-	thumb_func_end ov01_021EF0F0
+	thumb_func_end ScrCmd_440
 
-	thumb_func_start ov01_021EF154
-ov01_021EF154: ; 0x021EF154
+	thumb_func_start ScrCmd_441
+ScrCmd_441: ; 0x021EF154
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -19943,10 +19943,10 @@ ov01_021EF154: ; 0x021EF154
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EF154
+	thumb_func_end ScrCmd_441
 
-	thumb_func_start ov01_021EF194
-ov01_021EF194: ; 0x021EF194
+	thumb_func_start ScrCmd_442
+ScrCmd_442: ; 0x021EF194
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -19978,10 +19978,10 @@ ov01_021EF194: ; 0x021EF194
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021EF1DC: .word ov01_021EF348
-	thumb_func_end ov01_021EF194
+	thumb_func_end ScrCmd_442
 
-	thumb_func_start ov01_021EF1E0
-ov01_021EF1E0: ; 0x021EF1E0
+	thumb_func_start ScrCmd_443
+ScrCmd_443: ; 0x021EF1E0
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -20045,10 +20045,10 @@ _021EF24C:
 _021EF25C: .word 0x0000FFFF
 _021EF260: .word 0x000002D3
 _021EF264: .word ov01_021EF348
-	thumb_func_end ov01_021EF1E0
+	thumb_func_end ScrCmd_443
 
-	thumb_func_start ov01_021EF268
-ov01_021EF268: ; 0x021EF268
+	thumb_func_start ScrCmd_444
+ScrCmd_444: ; 0x021EF268
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -20101,10 +20101,10 @@ ov01_021EF268: ; 0x021EF268
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021EF2DC: .word ov01_021EF348
-	thumb_func_end ov01_021EF268
+	thumb_func_end ScrCmd_444
 
-	thumb_func_start ov01_021EF2E0
-ov01_021EF2E0: ; 0x021EF2E0
+	thumb_func_start ScrCmd_527
+ScrCmd_527: ; 0x021EF2E0
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -20131,10 +20131,10 @@ ov01_021EF2E0: ; 0x021EF2E0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021EF318: .word ov01_021EF348
-	thumb_func_end ov01_021EF2E0
+	thumb_func_end ScrCmd_527
 
-	thumb_func_start ov01_021EF31C
-ov01_021EF31C: ; 0x021EF31C
+	thumb_func_start ScrCmd_045
+ScrCmd_045: ; 0x021EF31C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20155,7 +20155,7 @@ ov01_021EF31C: ; 0x021EF31C
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021EF344: .word ov01_021EF348
-	thumb_func_end ov01_021EF31C
+	thumb_func_end ScrCmd_045
 
 	thumb_func_start ov01_021EF348
 ov01_021EF348: ; 0x021EF348
@@ -20169,8 +20169,8 @@ ov01_021EF348: ; 0x021EF348
 	pop {r3, pc}
 	thumb_func_end ov01_021EF348
 
-	thumb_func_start ov01_021EF35C
-ov01_021EF35C: ; 0x021EF35C
+	thumb_func_start ScrCmd_046
+ScrCmd_046: ; 0x021EF35C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20197,10 +20197,10 @@ ov01_021EF35C: ; 0x021EF35C
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021EF394: .word ov01_021EF348
-	thumb_func_end ov01_021EF35C
+	thumb_func_end ScrCmd_046
 
-	thumb_func_start ov01_021EF398
-ov01_021EF398: ; 0x021EF398
+	thumb_func_start ScrCmd_592
+ScrCmd_592: ; 0x021EF398
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -20232,10 +20232,10 @@ ov01_021EF398: ; 0x021EF398
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021EF3DC: .word ov01_021EF348
-	thumb_func_end ov01_021EF398
+	thumb_func_end ScrCmd_592
 
-	thumb_func_start ov01_021EF3E0
-ov01_021EF3E0: ; 0x021EF3E0
+	thumb_func_start ScrCmd_047
+ScrCmd_047: ; 0x021EF3E0
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20261,10 +20261,10 @@ ov01_021EF3E0: ; 0x021EF3E0
 	pop {r3, r4, pc}
 	nop
 _021EF418: .word ov01_021EF348
-	thumb_func_end ov01_021EF3E0
+	thumb_func_end ScrCmd_047
 
-	thumb_func_start ov01_021EF41C
-ov01_021EF41C: ; 0x021EF41C
+	thumb_func_start ScrCmd_132
+ScrCmd_132: ; 0x021EF41C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -20312,10 +20312,10 @@ _021EF474:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021EF484: .word ov01_021EF348
-	thumb_func_end ov01_021EF41C
+	thumb_func_end ScrCmd_132
 
-	thumb_func_start ov01_021EF488
-ov01_021EF488: ; 0x021EF488
+	thumb_func_start ScrCmd_455
+ScrCmd_455: ; 0x021EF488
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20341,7 +20341,7 @@ ov01_021EF488: ; 0x021EF488
 	pop {r3, r4, pc}
 	nop
 _021EF4C0: .word ov01_021EF348
-	thumb_func_end ov01_021EF488
+	thumb_func_end ScrCmd_455
 
 	thumb_func_start ov01_021EF4C4
 ov01_021EF4C4: ; 0x021EF4C4
@@ -57975,8 +57975,8 @@ _02200AEA:
 	pop {r4, pc}
 	thumb_func_end ov01_02200AB0
 
-	thumb_func_start ov01_02200AF0
-ov01_02200AF0: ; 0x02200AF0
+	thumb_func_start ScrCmd_648
+ScrCmd_648: ; 0x02200AF0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x48
 	str r0, [sp, #0x1c]
@@ -58140,7 +58140,7 @@ _02200C14:
 _02200C60: .word 0x02209AE0
 _02200C64: .word 0x0000FFFE
 _02200C68: .word ov01_02200C6C
-	thumb_func_end ov01_02200AF0
+	thumb_func_end ScrCmd_648
 
 	thumb_func_start ov01_02200C6C
 ov01_02200C6C: ; 0x02200C6C
@@ -58850,8 +58850,8 @@ _022011CC: .word 0x000005DC
 _022011D0: .word 0x00000207
 	thumb_func_end ov01_0220116C
 
-	thumb_func_start ov01_022011D4
-ov01_022011D4: ; 0x022011D4
+	thumb_func_start ScrCmd_657
+ScrCmd_657: ; 0x022011D4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r4, r0, #0
@@ -58991,10 +58991,10 @@ _022012EC:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02201300: .word 0x022093C2
-	thumb_func_end ov01_022011D4
+	thumb_func_end ScrCmd_657
 
-	thumb_func_start ov01_02201304
-ov01_02201304: ; 0x02201304
+	thumb_func_start ScrCmd_689
+ScrCmd_689: ; 0x02201304
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	mov r1, #0
@@ -59135,10 +59135,10 @@ _02201418:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02201420: .word 0x000001DF
-	thumb_func_end ov01_02201304
+	thumb_func_end ScrCmd_689
 
-	thumb_func_start ov01_02201424
-ov01_02201424: ; 0x02201424
+	thumb_func_start ScrCmd_659
+ScrCmd_659: ; 0x02201424
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -59170,10 +59170,10 @@ ov01_02201424: ; 0x02201424
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ov01_02201424
+	thumb_func_end ScrCmd_659
 
-	thumb_func_start ov01_02201470
-ov01_02201470: ; 0x02201470
+	thumb_func_start ScrCmd_674
+ScrCmd_674: ; 0x02201470
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -59251,10 +59251,10 @@ _02201508:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _02201514: .word 0x000001DF
-	thumb_func_end ov01_02201470
+	thumb_func_end ScrCmd_674
 
-	thumb_func_start ov01_02201518
-ov01_02201518: ; 0x02201518
+	thumb_func_start ScrCmd_675
+ScrCmd_675: ; 0x02201518
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -59304,10 +59304,10 @@ ov01_02201518: ; 0x02201518
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201518
+	thumb_func_end ScrCmd_675
 
-	thumb_func_start ov01_02201594
-ov01_02201594: ; 0x02201594
+	thumb_func_start ScrCmd_670
+ScrCmd_670: ; 0x02201594
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -59441,7 +59441,7 @@ _02201682:
 	nop
 _02201698: .word 0x0000010A
 _0220169C: .word 0x0000FFFF
-	thumb_func_end ov01_02201594
+	thumb_func_end ScrCmd_670
 
 	thumb_func_start ov01_022016A0
 ov01_022016A0: ; 0x022016A0
@@ -59559,8 +59559,8 @@ _02201786:
 	.balign 4, 0
 	thumb_func_end ov01_022016A0
 
-	thumb_func_start ov01_0220178C
-ov01_0220178C: ; 0x0220178C
+	thumb_func_start ScrCmd_671
+ScrCmd_671: ; 0x0220178C
 	push {r3, r4, r5, r6, r7, lr}
 	add r0, #0x80
 	ldr r4, [r0]
@@ -59594,10 +59594,10 @@ ov01_0220178C: ; 0x0220178C
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_0220178C
+	thumb_func_end ScrCmd_671
 
-	thumb_func_start ov01_022017DC
-ov01_022017DC: ; 0x022017DC
+	thumb_func_start ScrCmd_672
+ScrCmd_672: ; 0x022017DC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -59642,10 +59642,10 @@ ov01_022017DC: ; 0x022017DC
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022017DC
+	thumb_func_end ScrCmd_672
 
-	thumb_func_start ov01_02201844
-ov01_02201844: ; 0x02201844
+	thumb_func_start ScrCmd_676
+ScrCmd_676: ; 0x02201844
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -59675,10 +59675,10 @@ ov01_02201844: ; 0x02201844
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02201844
+	thumb_func_end ScrCmd_676
 
-	thumb_func_start ov01_0220188C
-ov01_0220188C: ; 0x0220188C
+	thumb_func_start ScrCmd_699
+ScrCmd_699: ; 0x0220188C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	mov r1, #0
@@ -59751,10 +59751,10 @@ _02201926:
 	mov r0, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_0220188C
+	thumb_func_end ScrCmd_699
 
-	thumb_func_start ov01_0220192C
-ov01_0220192C: ; 0x0220192C
+	thumb_func_start ScrCmd_700
+ScrCmd_700: ; 0x0220192C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	mov r1, #0
@@ -59794,10 +59794,10 @@ _02201974:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_0220192C
+	thumb_func_end ScrCmd_700
 
-	thumb_func_start ov01_0220197C
-ov01_0220197C: ; 0x0220197C
+	thumb_func_start ScrCmd_702
+ScrCmd_702: ; 0x0220197C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -59806,10 +59806,10 @@ ov01_0220197C: ; 0x0220197C
 	bl sub_02039F68
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ov01_0220197C
+	thumb_func_end ScrCmd_702
 
-	thumb_func_start ov01_02201990
-ov01_02201990: ; 0x02201990
+	thumb_func_start ScrCmd_703
+ScrCmd_703: ; 0x02201990
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -59823,10 +59823,10 @@ ov01_02201990: ; 0x02201990
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201990
+	thumb_func_end ScrCmd_703
 
-	thumb_func_start ov01_022019B0
-ov01_022019B0: ; 0x022019B0
+	thumb_func_start ScrCmd_707
+ScrCmd_707: ; 0x022019B0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -59853,10 +59853,10 @@ ov01_022019B0: ; 0x022019B0
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_022019B0
+	thumb_func_end ScrCmd_707
 
-	thumb_func_start ov01_022019F0
-ov01_022019F0: ; 0x022019F0
+	thumb_func_start ScrCmd_708
+ScrCmd_708: ; 0x022019F0
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -59874,10 +59874,10 @@ ov01_022019F0: ; 0x022019F0
 	bl ov02_022460AC
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ov01_022019F0
+	thumb_func_end ScrCmd_708
 
-	thumb_func_start ov01_02201A18
-ov01_02201A18: ; 0x02201A18
+	thumb_func_start ScrCmd_774
+ScrCmd_774: ; 0x02201A18
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -59895,10 +59895,10 @@ ov01_02201A18: ; 0x02201A18
 	bl ov02_0224618C
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ov01_02201A18
+	thumb_func_end ScrCmd_774
 
-	thumb_func_start ov01_02201A40
-ov01_02201A40: ; 0x02201A40
+	thumb_func_start ScrCmd_709
+ScrCmd_709: ; 0x02201A40
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -59906,10 +59906,10 @@ ov01_02201A40: ; 0x02201A40
 	bl ov02_022462E8
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ov01_02201A40
+	thumb_func_end ScrCmd_709
 
-	thumb_func_start ov01_02201A50
-ov01_02201A50: ; 0x02201A50
+	thumb_func_start ScrCmd_561
+ScrCmd_561: ; 0x02201A50
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -59953,10 +59953,10 @@ ov01_02201A50: ; 0x02201A50
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201A50
+	thumb_func_end ScrCmd_561
 
-	thumb_func_start ov01_02201AB8
-ov01_02201AB8: ; 0x02201AB8
+	thumb_func_start ScrCmd_775
+ScrCmd_775: ; 0x02201AB8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -59996,10 +59996,10 @@ ov01_02201AB8: ; 0x02201AB8
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201AB8
+	thumb_func_end ScrCmd_775
 
-	thumb_func_start ov01_02201B14
-ov01_02201B14: ; 0x02201B14
+	thumb_func_start ScrCmd_714
+ScrCmd_714: ; 0x02201B14
 	push {r3, lr}
 	ldr r2, [r0, #8]
 	add r1, r2, #1
@@ -60011,7 +60011,7 @@ ov01_02201B14: ; 0x02201B14
 	bl ov02_022467C4
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ov01_02201B14
+	thumb_func_end ScrCmd_714
 
 	thumb_func_start ov01_02201B2C
 ov01_02201B2C: ; 0x02201B2C
@@ -60027,8 +60027,8 @@ _02201B36:
 _02201B3C: .word 0x0000FFFF
 	thumb_func_end ov01_02201B2C
 
-	thumb_func_start ov01_02201B40
-ov01_02201B40: ; 0x02201B40
+	thumb_func_start ScrCmd_724
+ScrCmd_724: ; 0x02201B40
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl ScriptReadHalfword
@@ -60126,10 +60126,10 @@ _02201C00:
 _02201C04:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02201B40
+	thumb_func_end ScrCmd_724
 
-	thumb_func_start ov01_02201C08
-ov01_02201C08: ; 0x02201C08
+	thumb_func_start ScrCmd_725
+ScrCmd_725: ; 0x02201C08
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -60173,10 +60173,10 @@ _02201C56:
 	pop {r4, r5, r6, pc}
 	nop
 _02201C5C: .word 0x0000FFFF
-	thumb_func_end ov01_02201C08
+	thumb_func_end ScrCmd_725
 
-	thumb_func_start ov01_02201C60
-ov01_02201C60: ; 0x02201C60
+	thumb_func_start ScrCmd_726
+ScrCmd_726: ; 0x02201C60
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -60184,10 +60184,10 @@ ov01_02201C60: ; 0x02201C60
 	bl ov01_021E7F00
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov01_02201C60
+	thumb_func_end ScrCmd_726
 
-	thumb_func_start ov01_02201C70
-ov01_02201C70: ; 0x02201C70
+	thumb_func_start ScrCmd_735
+ScrCmd_735: ; 0x02201C70
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -60206,10 +60206,10 @@ ov01_02201C70: ; 0x02201C70
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201C70
+	thumb_func_end ScrCmd_735
 
-	thumb_func_start ov01_02201C9C
-ov01_02201C9C: ; 0x02201C9C
+	thumb_func_start ScrCmd_736
+ScrCmd_736: ; 0x02201C9C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -60220,10 +60220,10 @@ ov01_02201C9C: ; 0x02201C9C
 	bl sub_02031BB8
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov01_02201C9C
+	thumb_func_end ScrCmd_736
 
-	thumb_func_start ov01_02201CB4
-ov01_02201CB4: ; 0x02201CB4
+	thumb_func_start ScrCmd_737
+ScrCmd_737: ; 0x02201CB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -60242,10 +60242,10 @@ ov01_02201CB4: ; 0x02201CB4
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201CB4
+	thumb_func_end ScrCmd_737
 
-	thumb_func_start ov01_02201CE0
-ov01_02201CE0: ; 0x02201CE0
+	thumb_func_start ScrCmd_738
+ScrCmd_738: ; 0x02201CE0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -60273,10 +60273,10 @@ _02201D06:
 	strh r5, [r7]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02201CE0
+	thumb_func_end ScrCmd_738
 
-	thumb_func_start ov01_02201D1C
-ov01_02201D1C: ; 0x02201D1C
+	thumb_func_start ScrCmd_739
+ScrCmd_739: ; 0x02201D1C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -60297,10 +60297,10 @@ ov01_02201D1C: ; 0x02201D1C
 	pop {r3, r4, r5, pc}
 	nop
 _02201D48: .word sub_02042974
-	thumb_func_end ov01_02201D1C
+	thumb_func_end ScrCmd_739
 
-	thumb_func_start ov01_02201D4C
-ov01_02201D4C: ; 0x02201D4C
+	thumb_func_start ScrCmd_740
+ScrCmd_740: ; 0x02201D4C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -60337,10 +60337,10 @@ ov01_02201D4C: ; 0x02201D4C
 	pop {r4, r5, r6, pc}
 	nop
 _02201DA0: .word sub_02042974
-	thumb_func_end ov01_02201D4C
+	thumb_func_end ScrCmd_740
 
-	thumb_func_start ov01_02201DA4
-ov01_02201DA4: ; 0x02201DA4
+	thumb_func_start ScrCmd_741
+ScrCmd_741: ; 0x02201DA4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	add r5, r0, #0
@@ -60500,10 +60500,10 @@ _02201EBC:
 	.balign 4, 0
 _02201F08: .word gGameVersion
 _02201F0C: .word 0x00001388
-	thumb_func_end ov01_02201DA4
+	thumb_func_end ScrCmd_741
 
-	thumb_func_start ov01_02201F10
-ov01_02201F10: ; 0x02201F10
+	thumb_func_start ScrCmd_743
+ScrCmd_743: ; 0x02201F10
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -60517,10 +60517,10 @@ ov01_02201F10: ; 0x02201F10
 	bl ov03_02258CFC
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ov01_02201F10
+	thumb_func_end ScrCmd_743
 
-	thumb_func_start ov01_02201F30
-ov01_02201F30: ; 0x02201F30
+	thumb_func_start ScrCmd_744
+ScrCmd_744: ; 0x02201F30
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r0, #0x80
@@ -60571,7 +60571,7 @@ _02201F80:
 	.balign 4, 0
 _02201F90: .word 0x022093B4
 _02201F94: .word 0x000001ED
-	thumb_func_end ov01_02201F30
+	thumb_func_end ScrCmd_744
 
 	thumb_func_start ov01_02201F98
 ov01_02201F98: ; 0x02201F98
@@ -60660,8 +60660,8 @@ _02201FE4:
 _02202058: .word 0x0000019F
 	thumb_func_end ov01_02201F98
 
-	thumb_func_start ov01_0220205C
-ov01_0220205C: ; 0x0220205C
+	thumb_func_start ScrCmd_770
+ScrCmd_770: ; 0x0220205C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -60719,10 +60719,10 @@ _022020C4:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_0220205C
+	thumb_func_end ScrCmd_770
 
-	thumb_func_start ov01_022020CC
-ov01_022020CC: ; 0x022020CC
+	thumb_func_start ScrCmd_776
+ScrCmd_776: ; 0x022020CC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r0, #0x80
@@ -60822,10 +60822,10 @@ _02202138:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022021A8: .word 0x00000146
-	thumb_func_end ov01_022020CC
+	thumb_func_end ScrCmd_776
 
-	thumb_func_start ov01_022021AC
-ov01_022021AC: ; 0x022021AC
+	thumb_func_start ScrCmd_777
+ScrCmd_777: ; 0x022021AC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -60857,10 +60857,10 @@ ov01_022021AC: ; 0x022021AC
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_022021AC
+	thumb_func_end ScrCmd_777
 
-	thumb_func_start ov01_022021F8
-ov01_022021F8: ; 0x022021F8
+	thumb_func_start ScrCmd_778
+ScrCmd_778: ; 0x022021F8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	str r0, [sp, #0x10]
@@ -60979,10 +60979,10 @@ _02202276:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _02202304: .word 0x022093BA
-	thumb_func_end ov01_022021F8
+	thumb_func_end ScrCmd_778
 
-	thumb_func_start ov01_02202308
-ov01_02202308: ; 0x02202308
+	thumb_func_start ScrCmd_618
+ScrCmd_618: ; 0x02202308
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -61007,10 +61007,10 @@ _02202336:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_02202308
+	thumb_func_end ScrCmd_618
 
-	thumb_func_start ov01_0220233C
-ov01_0220233C: ; 0x0220233C
+	thumb_func_start ScrCmd_779
+ScrCmd_779: ; 0x0220233C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -61038,7 +61038,7 @@ _02202372:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_0220233C
+	thumb_func_end ScrCmd_779
 
 	thumb_func_start ov01_02202378
 ov01_02202378: ; 0x02202378
@@ -61132,8 +61132,8 @@ _02202408:
 _0220242C: .word 0x022093D0
 	thumb_func_end ov01_02202378
 
-	thumb_func_start ov01_02202430
-ov01_02202430: ; 0x02202430
+	thumb_func_start ScrCmd_780
+ScrCmd_780: ; 0x02202430
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
@@ -61169,10 +61169,10 @@ ov01_02202430: ; 0x02202430
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0220247C: .word sub_02042974
-	thumb_func_end ov01_02202430
+	thumb_func_end ScrCmd_780
 
-	thumb_func_start ov01_02202480
-ov01_02202480: ; 0x02202480
+	thumb_func_start ScrCmd_745
+ScrCmd_745: ; 0x02202480
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -61197,10 +61197,10 @@ ov01_02202480: ; 0x02202480
 	bl sub_0200C944
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02202480
+	thumb_func_end ScrCmd_745
 
-	thumb_func_start ov01_022024B8
-ov01_022024B8: ; 0x022024B8
+	thumb_func_start ScrCmd_811
+ScrCmd_811: ; 0x022024B8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61229,10 +61229,10 @@ ov01_022024B8: ; 0x022024B8
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022024B8
+	thumb_func_end ScrCmd_811
 
-	thumb_func_start ov01_022024FC
-ov01_022024FC: ; 0x022024FC
+	thumb_func_start ScrCmd_812
+ScrCmd_812: ; 0x022024FC
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -61241,10 +61241,10 @@ ov01_022024FC: ; 0x022024FC
 	bl sub_0202F1F4
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov01_022024FC
+	thumb_func_end ScrCmd_812
 
-	thumb_func_start ov01_02202510
-ov01_02202510: ; 0x02202510
+	thumb_func_start ScrCmd_821
+ScrCmd_821: ; 0x02202510
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61284,7 +61284,7 @@ ov01_02202510: ; 0x02202510
 	strh r1, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02202510
+	thumb_func_end ScrCmd_821
 
 	thumb_func_start ov01_02202570
 ov01_02202570: ; 0x02202570
@@ -61318,8 +61318,8 @@ _022025A2:
 	.balign 4, 0
 	thumb_func_end ov01_02202570
 
-	thumb_func_start ov01_022025A8
-ov01_022025A8: ; 0x022025A8
+	thumb_func_start ScrCmd_825
+ScrCmd_825: ; 0x022025A8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61347,10 +61347,10 @@ ov01_022025A8: ; 0x022025A8
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_022025A8
+	thumb_func_end ScrCmd_825
 
-	thumb_func_start ov01_022025EC
-ov01_022025EC: ; 0x022025EC
+	thumb_func_start ScrCmd_826
+ScrCmd_826: ; 0x022025EC
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -61390,10 +61390,10 @@ _02202640:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022025EC
+	thumb_func_end ScrCmd_826
 
-	thumb_func_start ov01_02202648
-ov01_02202648: ; 0x02202648
+	thumb_func_start ScrCmd_572
+ScrCmd_572: ; 0x02202648
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61412,10 +61412,10 @@ ov01_02202648: ; 0x02202648
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02202648
+	thumb_func_end ScrCmd_572
 
-	thumb_func_start ov01_02202674
-ov01_02202674: ; 0x02202674
+	thumb_func_start ScrCmd_133
+ScrCmd_133: ; 0x02202674
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61442,10 +61442,10 @@ ov01_02202674: ; 0x02202674
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02202674
+	thumb_func_end ScrCmd_133
 
-	thumb_func_start ov01_022026B4
-ov01_022026B4: ; 0x022026B4
+	thumb_func_start ScrCmd_134
+ScrCmd_134: ; 0x022026B4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61474,7 +61474,7 @@ ov01_022026B4: ; 0x022026B4
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022026B4
+	thumb_func_end ScrCmd_134
 
 	thumb_func_start ov01_022026F8
 ov01_022026F8: ; 0x022026F8
@@ -61501,8 +61501,8 @@ _02202714:
 	.balign 4, 0
 	thumb_func_end ov01_022026F8
 
-	thumb_func_start ov01_0220271C
-ov01_0220271C: ; 0x0220271C
+	thumb_func_start ScrCmd_135
+ScrCmd_135: ; 0x0220271C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	mov r1, #0
@@ -61635,10 +61635,10 @@ _02202812:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_0220271C
+	thumb_func_end ScrCmd_135
 
-	thumb_func_start ov01_02202834
-ov01_02202834: ; 0x02202834
+	thumb_func_start ScrCmd_836
+ScrCmd_836: ; 0x02202834
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -61741,10 +61741,10 @@ _022028FA:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02202904: .word 0x0000017E
-	thumb_func_end ov01_02202834
+	thumb_func_end ScrCmd_836
 
-	thumb_func_start ov01_02202908
-ov01_02202908: ; 0x02202908
+	thumb_func_start ScrCmd_839
+ScrCmd_839: ; 0x02202908
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -61763,10 +61763,10 @@ _02202926:
 _0220292C:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov01_02202908
+	thumb_func_end ScrCmd_839
 
-	thumb_func_start ov01_02202930
-ov01_02202930: ; 0x02202930
+	thumb_func_start ScrCmd_785
+ScrCmd_785: ; 0x02202930
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -61804,10 +61804,10 @@ _02202964:
 _0220297C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_02202930
+	thumb_func_end ScrCmd_785
 
-	thumb_func_start ov01_02202980
-ov01_02202980: ; 0x02202980
+	thumb_func_start ScrCmd_786
+ScrCmd_786: ; 0x02202980
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -61829,10 +61829,10 @@ ov01_02202980: ; 0x02202980
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02202980
+	thumb_func_end ScrCmd_786
 
-	thumb_func_start ov01_022029B0
-ov01_022029B0: ; 0x022029B0
+	thumb_func_start ScrCmd_787
+ScrCmd_787: ; 0x022029B0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -61886,10 +61886,10 @@ _02202A20:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022029B0
+	thumb_func_end ScrCmd_787
 
-	thumb_func_start ov01_02202A28
-ov01_02202A28: ; 0x02202A28
+	thumb_func_start ScrCmd_788
+ScrCmd_788: ; 0x02202A28
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -61921,10 +61921,10 @@ ov01_02202A28: ; 0x02202A28
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02202A28
+	thumb_func_end ScrCmd_788
 
-	thumb_func_start ov01_02202A70
-ov01_02202A70: ; 0x02202A70
+	thumb_func_start ScrCmd_789
+ScrCmd_789: ; 0x02202A70
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -61961,10 +61961,10 @@ _02202AA2:
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02202A70
+	thumb_func_end ScrCmd_789
 
-	thumb_func_start ov01_02202ABC
-ov01_02202ABC: ; 0x02202ABC
+	thumb_func_start ScrCmd_790
+ScrCmd_790: ; 0x02202ABC
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -61993,10 +61993,10 @@ ov01_02202ABC: ; 0x02202ABC
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02202ABC
+	thumb_func_end ScrCmd_790
 
-	thumb_func_start ov01_02202B00
-ov01_02202B00: ; 0x02202B00
+	thumb_func_start ScrCmd_652
+ScrCmd_652: ; 0x02202B00
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62050,10 +62050,10 @@ _02202B6A:
 _02202B74:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02202B00
+	thumb_func_end ScrCmd_652
 
-	thumb_func_start ov01_02202B78
-ov01_02202B78: ; 0x02202B78
+	thumb_func_start ScrCmd_654
+ScrCmd_654: ; 0x02202B78
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62090,10 +62090,10 @@ ov01_02202B78: ; 0x02202B78
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02202B78
+	thumb_func_end ScrCmd_654
 
-	thumb_func_start ov01_02202BD0
-ov01_02202BD0: ; 0x02202BD0
+	thumb_func_start ScrCmd_655
+ScrCmd_655: ; 0x02202BD0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62134,10 +62134,10 @@ _02202C0E:
 	.balign 4, 0
 _02202C20: .word 0x022093E0
 _02202C24: .word 0x022093E2
-	thumb_func_end ov01_02202BD0
+	thumb_func_end ScrCmd_655
 
-	thumb_func_start ov01_02202C28
-ov01_02202C28: ; 0x02202C28
+	thumb_func_start ScrCmd_656
+ScrCmd_656: ; 0x02202C28
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62175,7 +62175,7 @@ _02202C74:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02202C28
+	thumb_func_end ScrCmd_656
 
 	thumb_func_start ov01_02202C7C
 ov01_02202C7C: ; 0x02202C7C
@@ -62441,8 +62441,8 @@ _02202E60: .word 0x02209AF4
 _02202E64: .word 0x00000FC8
 	thumb_func_end ov01_02202E00
 
-	thumb_func_start ov01_02202E68
-ov01_02202E68: ; 0x02202E68
+	thumb_func_start ScrCmd_653
+ScrCmd_653: ; 0x02202E68
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x6c
 	str r0, [sp, #0x14]
@@ -62668,7 +62668,7 @@ _0220304C: .word 0x022093E0
 _02203050: .word 0x0000FFFD
 _02203054: .word 0x0000FFFE
 _02203058: .word ov01_0220305C
-	thumb_func_end ov01_02202E68
+	thumb_func_end ScrCmd_653
 
 	thumb_func_start ov01_0220305C
 ov01_0220305C: ; 0x0220305C
@@ -62699,8 +62699,8 @@ _02203084:
 _02203090: .word 0x0000EEEE
 	thumb_func_end ov01_0220305C
 
-	thumb_func_start ov01_02203094
-ov01_02203094: ; 0x02203094
+	thumb_func_start ScrCmd_742
+ScrCmd_742: ; 0x02203094
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -62773,10 +62773,10 @@ _0220312E:
 	bl FreeToHeap
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02203094
+	thumb_func_end ScrCmd_742
 
-	thumb_func_start ov01_02203138
-ov01_02203138: ; 0x02203138
+	thumb_func_start ScrCmd_113
+ScrCmd_113: ; 0x02203138
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -62811,10 +62811,10 @@ ov01_02203138: ; 0x02203138
 	str r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02203138
+	thumb_func_end ScrCmd_113
 
-	thumb_func_start ov01_02203188
-ov01_02203188: ; 0x02203188
+	thumb_func_start ScrCmd_114
+ScrCmd_114: ; 0x02203188
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -62825,10 +62825,10 @@ ov01_02203188: ; 0x02203188
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02203188
+	thumb_func_end ScrCmd_114
 
-	thumb_func_start ov01_022031A0
-ov01_022031A0: ; 0x022031A0
+	thumb_func_start ScrCmd_115
+ScrCmd_115: ; 0x022031A0
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -62843,7 +62843,7 @@ ov01_022031A0: ; 0x022031A0
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022031A0
+	thumb_func_end ScrCmd_115
 
 	thumb_func_start ov01_022031C0
 ov01_022031C0: ; 0x022031C0
@@ -67093,8 +67093,8 @@ _02205156:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_022050F8
 
-	thumb_func_start ov01_02205164
-ov01_02205164: ; 0x02205164
+	thumb_func_start ScrCmd_795
+ScrCmd_795: ; 0x02205164
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -67129,10 +67129,10 @@ ov01_02205164: ; 0x02205164
 	str r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02205164
+	thumb_func_end ScrCmd_795
 
-	thumb_func_start ov01_022051B4
-ov01_022051B4: ; 0x022051B4
+	thumb_func_start ScrCmd_796
+ScrCmd_796: ; 0x022051B4
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -67143,10 +67143,10 @@ ov01_022051B4: ; 0x022051B4
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022051B4
+	thumb_func_end ScrCmd_796
 
-	thumb_func_start ov01_022051CC
-ov01_022051CC: ; 0x022051CC
+	thumb_func_start ScrCmd_797
+ScrCmd_797: ; 0x022051CC
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -67161,7 +67161,7 @@ ov01_022051CC: ; 0x022051CC
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022051CC
+	thumb_func_end ScrCmd_797
 
 	thumb_func_start ov01_022051EC
 ov01_022051EC: ; 0x022051EC
@@ -67443,8 +67443,8 @@ _022053E8:
 	.balign 4, 0
 	thumb_func_end ov01_022053C4
 
-	thumb_func_start ov01_022053EC
-ov01_022053EC: ; 0x022053EC
+	thumb_func_start ScrCmd_808
+ScrCmd_808: ; 0x022053EC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -67468,7 +67468,7 @@ ov01_022053EC: ; 0x022053EC
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02205420: .word SDK_OVERLAY_OVY_25_ID
-	thumb_func_end ov01_022053EC
+	thumb_func_end ScrCmd_808
 
 	thumb_func_start ov01_02205424
 ov01_02205424: ; 0x02205424
