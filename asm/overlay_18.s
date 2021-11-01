@@ -318,7 +318,7 @@ _021E5B32:
 _021E5B38:
 	mov r0, #1
 	mov r1, #0x2a
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	ldr r0, _021E5B60 ; =0x0000185C
 	mov r1, #2
 	strb r1, [r4, r0]
@@ -392,7 +392,7 @@ _021E5BD0:
 	bl DestroyHeap
 	mov r0, #1
 	mov r1, #0x7f
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	bl sub_02004B10
 	ldr r0, _021E5C18 ; =ov18_021E5C3C
 	blx ov123_0225F688
@@ -16377,7 +16377,7 @@ _021EDE30:
 	lsl r1, r5, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #0
 	bl sub_02006E3C
 	mov r0, #1
@@ -38086,7 +38086,7 @@ _021F8A66:
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	add r3, r2, #0
-	bl sub_020063A4
+	bl PlayCryEx
 	mov r0, #9
 	mov r1, #3
 	lsl r0, r0, #6

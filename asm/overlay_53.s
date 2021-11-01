@@ -3597,7 +3597,7 @@ _021E760C:
 	str r0, [r4, #0xc]
 	b _021E7CF8
 _021E762A:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021E76A0
 	ldr r0, _021E7938 ; =0x000003F1
@@ -3763,7 +3763,7 @@ _021E775E:
 	bl sub_020248F0
 	mov r0, #0xb7
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #0x37
 	str r0, [r4, #0xc]
 	b _021E7CF8

@@ -23389,7 +23389,7 @@ _022328B8:
 	mov r1, #0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02006218
+	bl PlayCry
 	add sp, #0x78
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

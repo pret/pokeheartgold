@@ -455,7 +455,7 @@ LevelScripts_ReadFromNarc: ; 0x0203B8C4
 	add r1, r5, r1
 	lsl r2, r2, #8
 	bl MIi_CpuClearFast
-	mov r0, #0xc
+	mov r0, #0xc ; NARC_fielddata_script_scr_seq
 	add r1, r4, #0
 	bl GetNarcMemberSizeByIdPair
 	mov r1, #1
@@ -467,7 +467,7 @@ _0203B8F4:
 	mov r0, #0x82
 	lsl r0, r0, #4
 	add r0, r5, r0
-	mov r1, #0xc
+	mov r1, #0xc ; NARC_fielddata_script_scr_seq
 	add r2, r4, #0
 	bl ReadWholeNarcMemberByIdPair
 	pop {r3, r4, r5, pc}

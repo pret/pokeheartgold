@@ -21571,7 +21571,7 @@ _022363D4:
 	add r2, r4, r2
 	ldrh r0, [r0, #0x2c]
 	ldrb r1, [r2, r1]
-	bl sub_02006218
+	bl PlayCry
 	pop {r3, r4, r5, pc}
 _0223649C:
 	add r0, r5, #0
@@ -25837,7 +25837,7 @@ _0223871A:
 	add r2, r5, r2
 	ldrh r0, [r0, #0x2c]
 	ldrb r1, [r2, r1]
-	bl sub_02006218
+	bl PlayCry
 _022387D0:
 	add r0, r4, #0
 	mov r1, #0xa

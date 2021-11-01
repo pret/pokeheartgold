@@ -34448,13 +34448,13 @@ ov49_022693D4: ; 0x022693D4
 	lsl r0, r3, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #0
-	bl sub_02006218
+	bl PlayCry
 	pop {r3, pc}
 _022693EA:
 	lsl r0, r3, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #0
-	bl sub_02006218
+	bl PlayCry
 _022693F4:
 	pop {r3, pc}
 	.balign 4, 0

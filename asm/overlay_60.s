@@ -207,7 +207,7 @@ _021E5A94:
 	mov r0, #0xf9 ; LUGIA
 #endif
 	mov r1, #0
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #1
 	mov r1, #0x30
 	bl sub_020054AC
@@ -324,7 +324,7 @@ _021E5B62:
 	mov r0, #4
 	str r0, [r5]
 _021E5BA0:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021E5C8E
 	mov r0, #0x3f
@@ -358,7 +358,7 @@ _021E5BD0:
 	ldr r2, [r4]
 	add r0, #0xcc
 	bl ov60_021E641C
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021E5C8E
 	mov r0, #0x3f
@@ -392,7 +392,7 @@ _021E5C1C:
 	ldr r2, [r4]
 	add r0, #0xcc
 	bl ov60_021E641C
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021E5C8E
 	mov r0, #0x3f

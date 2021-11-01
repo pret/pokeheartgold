@@ -1363,7 +1363,7 @@ _021E633C:
 	bne _021E6354
 	mov r0, #0xf9
 	mov r1, #0
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #5
 	mov r1, #0xd
 	bl ov106_021E601C

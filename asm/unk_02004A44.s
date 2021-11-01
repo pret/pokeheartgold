@@ -5,47 +5,151 @@
 	.rodata
 
 _020F5710:
-	.byte 0x00
-_020F5711:
-	.byte 0x2A, 0x00, 0x00, 0x40, 0x6B, 0x00, 0x00, 0x20, 0x2F, 0x00, 0x00, 0x40, 0x77, 0x00, 0x00
-	.byte 0x00, 0x3E, 0x00, 0x00, 0x30, 0x7F, 0x00, 0x00, 0x00, 0x34, 0x00, 0x00, 0x30, 0x75, 0x00, 0x00
+	.byte 0x00, 0x2A, 0x00, 0x00
+	.byte 0x40, 0x6B, 0x00, 0x00
+	.byte 0x20, 0x2F, 0x00, 0x00
+	.byte 0x40, 0x77, 0x00, 0x00
+	.byte 0x00, 0x3E, 0x00, 0x00
+	.byte 0x30, 0x7F, 0x00, 0x00
+	.byte 0x00, 0x34, 0x00, 0x00
+	.byte 0x30, 0x75, 0x00, 0x00
 _020F5730:
-	.byte 0xEC, 0x03
-_020F5732:
-	.byte 0xC2, 0x04, 0xED, 0x03, 0xC3, 0x04, 0xEE, 0x03, 0xC4, 0x04, 0xEF, 0x03, 0xC5, 0x04
-	.byte 0xF0, 0x03, 0xC6, 0x04, 0xF3, 0x03, 0xC7, 0x04, 0xF4, 0x03, 0xC8, 0x04, 0xF5, 0x03, 0xC9, 0x04
-	.byte 0xF6, 0x03, 0xCA, 0x04, 0xF7, 0x03, 0xCB, 0x04, 0xFA, 0x03, 0xCE, 0x04, 0xFB, 0x03, 0xCF, 0x04
-	.byte 0xFC, 0x03, 0xD0, 0x04, 0xFD, 0x03, 0xD1, 0x04, 0xFE, 0x03, 0xD2, 0x04, 0xFF, 0x03, 0xD3, 0x04
-	.byte 0x00, 0x04, 0xD4, 0x04, 0x01, 0x04, 0xD5, 0x04, 0x02, 0x04, 0xD6, 0x04, 0x03, 0x04, 0xD7, 0x04
-	.byte 0x04, 0x04, 0xD8, 0x04, 0x05, 0x04, 0xD9, 0x04, 0x06, 0x04, 0xDA, 0x04, 0x07, 0x04, 0xDB, 0x04
-	.byte 0x08, 0x04, 0xDC, 0x04, 0x09, 0x04, 0xDD, 0x04, 0x0A, 0x04, 0xDE, 0x04, 0x0B, 0x04, 0xDF, 0x04
-	.byte 0x0C, 0x04, 0xE0, 0x04, 0x0D, 0x04, 0xE1, 0x04, 0x0E, 0x04, 0xE2, 0x04, 0x0F, 0x04, 0xE3, 0x04
-	.byte 0x10, 0x04, 0xE4, 0x04, 0x11, 0x04, 0xE5, 0x04, 0x12, 0x04, 0xE6, 0x04, 0x13, 0x04, 0xE7, 0x04
-	.byte 0x14, 0x04, 0xE8, 0x04, 0x15, 0x04, 0xE9, 0x04, 0x16, 0x04, 0xEA, 0x04, 0x17, 0x04, 0xEB, 0x04
-	.byte 0x18, 0x04, 0xEC, 0x04, 0x19, 0x04, 0xED, 0x04, 0x1A, 0x04, 0xEE, 0x04, 0x1B, 0x04, 0xEF, 0x04
-	.byte 0x1C, 0x04, 0xF0, 0x04, 0x1D, 0x04, 0xF1, 0x04, 0x1E, 0x04, 0xF2, 0x04, 0x1F, 0x04, 0xF3, 0x04
-	.byte 0x20, 0x04, 0xF4, 0x04, 0x21, 0x04, 0xF5, 0x04, 0x22, 0x04, 0xF6, 0x04, 0x23, 0x04, 0xF7, 0x04
-	.byte 0x24, 0x04, 0xF8, 0x04, 0x25, 0x04, 0xF9, 0x04, 0x26, 0x04, 0xFA, 0x04, 0x27, 0x04, 0xFB, 0x04
-	.byte 0x28, 0x04, 0xFC, 0x04, 0x29, 0x04, 0xFD, 0x04, 0x2A, 0x04, 0xFE, 0x04, 0x2B, 0x04, 0xFF, 0x04
-	.byte 0x2C, 0x04, 0x00, 0x05, 0x2D, 0x04, 0x01, 0x05, 0x2E, 0x04, 0x02, 0x05, 0x2F, 0x04, 0x03, 0x05
-	.byte 0x30, 0x04, 0x04, 0x05, 0x31, 0x04, 0x05, 0x05, 0x32, 0x04, 0x06, 0x05, 0x33, 0x04, 0x07, 0x05
-	.byte 0x34, 0x04, 0x08, 0x05, 0x35, 0x04, 0x09, 0x05, 0x36, 0x04, 0x0A, 0x05, 0x37, 0x04, 0x0B, 0x05
-	.byte 0x38, 0x04, 0x0C, 0x05, 0x39, 0x04, 0x0D, 0x05, 0x3A, 0x04, 0x0E, 0x05, 0x3B, 0x04, 0x0F, 0x05
-	.byte 0x3C, 0x04, 0x10, 0x05, 0x3D, 0x04, 0x11, 0x05, 0x3E, 0x04, 0x12, 0x05, 0x3F, 0x04, 0x13, 0x05
-	.byte 0x40, 0x04, 0x14, 0x05, 0x41, 0x04, 0x15, 0x05, 0x42, 0x04, 0x16, 0x05, 0x44, 0x04, 0x18, 0x05
-	.byte 0x45, 0x04, 0x19, 0x05, 0x46, 0x04, 0x1A, 0x05, 0x47, 0x04, 0x1B, 0x05, 0x48, 0x04, 0x1C, 0x05
-	.byte 0x49, 0x04, 0x1D, 0x05, 0x4A, 0x04, 0x1E, 0x05, 0x4B, 0x04, 0x1F, 0x05, 0x4C, 0x04, 0x20, 0x05
-	.byte 0x4D, 0x04, 0x21, 0x05, 0x4E, 0x04, 0x22, 0x05, 0x4F, 0x04, 0x23, 0x05, 0x50, 0x04, 0x24, 0x05
-	.byte 0x51, 0x04, 0x25, 0x05, 0x52, 0x04, 0x26, 0x05, 0x53, 0x04, 0x27, 0x05, 0x54, 0x04, 0x28, 0x05
-	.byte 0x55, 0x04, 0x29, 0x05, 0x56, 0x04, 0x2A, 0x05, 0x57, 0x04, 0x2B, 0x05, 0x58, 0x04, 0x2C, 0x05
-	.byte 0x59, 0x04, 0x2D, 0x05, 0x5A, 0x04, 0x2E, 0x05, 0x5B, 0x04, 0x2F, 0x05, 0x5C, 0x04, 0x30, 0x05
-	.byte 0x5D, 0x04, 0x31, 0x05, 0x5E, 0x04, 0x32, 0x05, 0x5F, 0x04, 0x33, 0x05, 0x60, 0x04, 0x34, 0x05
-	.byte 0x61, 0x04, 0x35, 0x05, 0x62, 0x04, 0x36, 0x05, 0x63, 0x04, 0x37, 0x05, 0x64, 0x04, 0x38, 0x05
-	.byte 0x65, 0x04, 0x39, 0x05, 0x66, 0x04, 0x3A, 0x05, 0x67, 0x04, 0x3B, 0x05, 0x68, 0x04, 0x3C, 0x05
-	.byte 0x69, 0x04, 0x3D, 0x05, 0x6A, 0x04, 0x3E, 0x05, 0x6B, 0x04, 0x3F, 0x05, 0x6E, 0x04, 0x40, 0x05
-	.byte 0x6F, 0x04, 0x41, 0x05, 0x70, 0x04, 0x42, 0x05, 0x71, 0x04, 0x43, 0x05, 0x72, 0x04, 0x44, 0x05
-	.byte 0x73, 0x04, 0x45, 0x05, 0x74, 0x04, 0x46, 0x05, 0x75, 0x04, 0x47, 0x05, 0x82, 0x04, 0x48, 0x05
-	.byte 0x85, 0x04, 0x49, 0x05, 0x86, 0x04, 0x4A, 0x05, 0x87, 0x04, 0x4B, 0x05, 0xC0, 0x04, 0x4C, 0x05
+	.short SEQ_GS_TITLE, SEQ_GS_P_TITLE
+	.short SEQ_GS_TITLE01, SEQ_GS_P_TITLE01
+	.short SEQ_GS_OPENING_TITLE_G, SEQ_GS_P_OPENING_TITLE_G
+	.short SEQ_GS_OPENING_TITLE_S, SEQ_GS_P_OPENING_TITLE_S
+	.short SEQ_GS_POKEMON_THEME, SEQ_GS_P_POKEMON_THEME
+	.short SEQ_GS_SHINKA, SEQ_GS_P_SHINKA
+	.short SEQ_GS_KOUKAN, SEQ_GS_P_KOUKAN
+	.short SEQ_GS_BICYCLE, SEQ_GS_P_BICYCLE
+	.short SEQ_GS_NAMINORI, SEQ_GS_P_NAMINORI
+	.short SEQ_GS_E_DENDOUIRI, SEQ_GS_P_E_DENDOUIRI
+	.short SEQ_GS_T_WAKABA, SEQ_GS_P_T_WAKABA
+	.short SEQ_GS_C_YOSHINO, SEQ_GS_P_C_YOSHINO
+	.short SEQ_GS_C_KIKYOU, SEQ_GS_P_C_KIKYOU
+	.short SEQ_GS_T_HIWADA, SEQ_GS_P_T_HIWADA
+	.short SEQ_GS_C_KOGANE, SEQ_GS_P_C_KOGANE
+	.short SEQ_GS_C_ENJU, SEQ_GS_P_C_ENJU
+	.short SEQ_GS_C_ASAGI, SEQ_GS_P_C_ASAGI
+	.short SEQ_GS_C_TANBA, SEQ_GS_P_C_TANBA
+	.short SEQ_GS_T_CHOUJI, SEQ_GS_P_T_CHOUJI
+	.short SEQ_GS_C_FUSUBE, SEQ_GS_P_C_FUSUBE
+	.short SEQ_GS_R_1_29, SEQ_GS_P_R_1_29
+	.short SEQ_GS_R_1_30, SEQ_GS_P_R_1_30
+	.short SEQ_GS_R_2_30, SEQ_GS_P_R_2_30
+	.short SEQ_GS_R_3_30, SEQ_GS_P_R_3_30
+	.short SEQ_GS_R_4_34, SEQ_GS_P_R_4_34
+	.short SEQ_GS_R_5_34, SEQ_GS_P_R_5_34
+	.short SEQ_GS_R_6_34, SEQ_GS_P_R_6_34
+	.short SEQ_GS_R_8_34, SEQ_GS_P_R_8_34
+	.short SEQ_GS_R_6_38, SEQ_GS_P_R_6_38
+	.short SEQ_GS_R_7_42, SEQ_GS_P_R_7_42
+	.short SEQ_GS_C_KUCHIBA, SEQ_GS_P_C_KUCHIBA
+	.short SEQ_GS_C_YAMABUKI, SEQ_GS_P_C_YAMABUKI
+	.short SEQ_GS_C_HANADA, SEQ_GS_P_C_HANADA
+	.short SEQ_GS_T_CHION, SEQ_GS_P_T_CHION
+	.short SEQ_GS_C_TAMAMUSHI, SEQ_GS_P_C_TAMAMUSHI
+	.short SEQ_GS_C_SEKICHIKU, SEQ_GS_P_C_SEKICHIKU
+	.short SEQ_GS_C_NIBI, SEQ_GS_P_C_NIBI
+	.short SEQ_GS_C_TOKIWA, SEQ_GS_P_C_TOKIWA
+	.short SEQ_GS_T_MASARA, SEQ_GS_P_T_MASARA
+	.short SEQ_GS_T_GUREN, SEQ_GS_P_T_GUREN
+	.short SEQ_GS_R_9_01, SEQ_GS_P_R_9_01
+	.short SEQ_GS_R_16_01, SEQ_GS_P_R_16_01
+	.short SEQ_GS_R_17_01, SEQ_GS_P_R_17_01
+	.short SEQ_GS_R_9_03, SEQ_GS_P_R_9_03
+	.short SEQ_GS_R_10_03, SEQ_GS_P_R_10_03
+	.short SEQ_GS_R_12_03, SEQ_GS_P_R_12_03
+	.short SEQ_GS_R_13_03, SEQ_GS_P_R_13_03
+	.short SEQ_GS_R_14_03, SEQ_GS_P_R_14_03
+	.short SEQ_GS_R_15_03, SEQ_GS_P_R_15_03
+	.short SEQ_GS_R_16_03, SEQ_GS_P_R_16_03
+	.short SEQ_GS_R_17_03, SEQ_GS_P_R_17_03
+	.short SEQ_GS_R_10_11, SEQ_GS_P_R_10_11
+	.short SEQ_GS_R_13_11, SEQ_GS_P_R_13_11
+	.short SEQ_GS_R_12_24, SEQ_GS_P_R_12_24
+	.short SEQ_GS_R_1_26, SEQ_GS_P_R_1_26
+	.short SEQ_GS_POKESEN, SEQ_GS_P_POKESEN
+	.short SEQ_GS_FS, SEQ_GS_P_FS
+	.short SEQ_GS_GYM, SEQ_GS_P_GYM
+	.short SEQ_GS_UTSUGI_RABO, SEQ_GS_P_UTSUGI_RABO
+	.short SEQ_GS_OHKIDO, SEQ_GS_P_OHKIDO
+	.short SEQ_GS_KABURENJOU, SEQ_GS_P_KABURENJOU
+	.short SEQ_GS_GAME, SEQ_GS_P_GAME
+	.short SEQ_GS_BATTLETOWER, SEQ_GS_P_BATTLETOWER
+	.short SEQ_GS_BATTLETOWER2, SEQ_GS_P_BATTLETOWER2
+	.short SEQ_GS_TO_MADATSUBOMI1, SEQ_GS_P_TO_MADATSUBOMI1
+	.short SEQ_GS_D_CHIKATSUURO, SEQ_GS_P_D_CHIKATSUURO
+	.short SEQ_GS_D_UNKNOWN_ISEKI, SEQ_GS_P_D_UNKNOWN_ISEKI
+	.short SEQ_GS_D_KOUEN, SEQ_GS_P_D_KOUEN
+	.short SEQ_GS_TO_YAKETA, SEQ_GS_P_TO_YAKETA
+	.short SEQ_GS_TO_SUZU, SEQ_GS_P_TO_SUZU
+	.short SEQ_GS_TO_TOUDAI, SEQ_GS_P_TO_TOUDAI
+	.short SEQ_GS_D_AJITO, SEQ_GS_P_D_AJITO
+	.short SEQ_GS_D_KOORINONUKE, SEQ_GS_P_D_KOORINONUKE
+	.short SEQ_GS_RYUUNOANA, SEQ_GS_P_RYUUNOANA
+	.short SEQ_GS_D_IWAYAMA, SEQ_GS_P_D_IWAYAMA
+	.short SEQ_GS_D_TOKIWANOMORI3, SEQ_GS_P_D_TOKIWANOMORI3
+	.short SEQ_GS_D_CHAMPROAD, SEQ_GS_P_D_CHAMPROAD
+	.short SEQ_GS_CHAMPROAD, SEQ_GS_P_CHAMPROAD
+	.short SEQ_GS_E_TSURETEKE1, SEQ_GS_P_E_TSURETEKE1
+	.short SEQ_GS_E_TSURETEKE2, SEQ_GS_P_E_TSURETEKE2
+	.short SEQ_GS_E_RIVAL1, SEQ_GS_P_E_RIVAL1
+	.short SEQ_GS_E_RIVAL2, SEQ_GS_P_E_RIVAL2
+	.short SEQ_GS_TAIKAIMAE, SEQ_GS_P_TAIKAIMAE
+	.short SEQ_GS_TAIKAI, SEQ_GS_P_TAIKAI
+	.short SEQ_GS_KAIDENPA, SEQ_GS_P_KAIDENPA
+	.short SEQ_GS_SENKYO, SEQ_GS_P_SENKYO
+	.short SEQ_GS_E_LINEAR, SEQ_GS_P_E_LINEAR
+	.short SEQ_GS_KOUSOKUSEN, SEQ_GS_P_KOUSOKUSEN
+	.short SEQ_GS_OTSUKIMI_EVENT, SEQ_GS_P_OTSUKIMI_EVENT
+	.short SEQ_GS_RADIO_JINGLE, SEQ_GS_P_RADIO_JINGLE
+	.short SEQ_GS_RADIO_KOMORIUTA, SEQ_GS_P_RADIO_KOMORIUTA
+	.short SEQ_GS_RADIO_MARCH, SEQ_GS_P_RADIO_MARCH
+	.short SEQ_GS_RADIO_UNKNOWN, SEQ_GS_P_RADIO_UNKNOWN
+	.short SEQ_GS_HUE, SEQ_GS_P_HUE
+	.short SEQ_GS_OHKIDO_RABO, SEQ_GS_P_OHKIDO_RABO
+	.short SEQ_GS_AIKOTOBA, SEQ_GS_P_AIKOTOBA
+	.short SEQ_GS_E_MINAKI, SEQ_GS_P_E_MINAKI
+	.short SEQ_GS_IBUKI, SEQ_GS_P_IBUKI
+	.short SEQ_GS_EYE_J_SHOUJO, SEQ_GS_P_EYE_J_SHOUJO
+	.short SEQ_GS_EYE_J_SHOUNEN, SEQ_GS_P_EYE_J_SHOUNEN
+	.short SEQ_GS_EYE_J_AYASHII, SEQ_GS_P_EYE_J_AYASHII
+	.short SEQ_GS_EYE_BOUZU, SEQ_GS_P_EYE_BOUZU
+	.short SEQ_GS_EYE_MAIKO, SEQ_GS_P_EYE_MAIKO
+	.short SEQ_GS_EYE_ROCKET, SEQ_GS_P_EYE_ROCKET
+	.short SEQ_GS_EYE_K_SHOUJO, SEQ_GS_P_EYE_K_SHOUJO
+	.short SEQ_GS_EYE_K_SHOUNEN, SEQ_GS_P_EYE_K_SHOUNEN
+	.short SEQ_GS_EYE_K_AYASHII, SEQ_GS_P_EYE_K_AYASHII
+	.short SEQ_GS_VS_NORAPOKE, SEQ_GS_P_VS_NORAPOKE
+	.short SEQ_GS_VS_TRAINER, SEQ_GS_P_VS_TRAINER
+	.short SEQ_GS_VS_GYMREADER, SEQ_GS_P_VS_GYMREADER
+	.short SEQ_GS_VS_RIVAL, SEQ_GS_P_VS_RIVAL
+	.short SEQ_GS_VS_ROCKET, SEQ_GS_P_VS_ROCKET
+	.short SEQ_GS_VS_SUICUNE, SEQ_GS_P_VS_SUICUNE
+	.short SEQ_GS_VS_ENTEI, SEQ_GS_P_VS_ENTEI
+	.short SEQ_GS_VS_RAIKOU, SEQ_GS_P_VS_RAIKOU
+	.short SEQ_GS_VS_CHAMP, SEQ_GS_P_VS_CHAMP
+	.short SEQ_GS_VS_NORAPOKE_KANTO, SEQ_GS_P_VS_NORAPOKE_KANTO
+	.short SEQ_GS_VS_TRAINER_KANTO, SEQ_GS_P_VS_TRAINER_KANTO
+	.short SEQ_GS_VS_GYMREADER_KANTO, SEQ_GS_P_VS_GYMREADER_KANTO
+	.short SEQ_GS_WIN1, SEQ_GS_P_WIN1
+	.short SEQ_GS_WIN2, SEQ_GS_P_WIN2
+	.short SEQ_GS_WIN2_NOT_FAN, SEQ_GS_P_WIN2_NOT_FAN
+	.short SEQ_GS_WIN3, SEQ_GS_P_WIN3
+	.short SEQ_GS_PT_ENTR, SEQ_GS_P_PT_ENTR
+	.short SEQ_GS_PT_OPEN, SEQ_GS_P_PT_OPEN
+	.short SEQ_GS_PT_TITLE, SEQ_GS_P_PT_TITLE
+	.short SEQ_GS_PT_GAME, SEQ_GS_P_PT_GAME
+	.short SEQ_GS_PT_GAMEF, SEQ_GS_P_PT_GAMEF
+	.short SEQ_GS_PT_RESULT, SEQ_GS_P_PT_RESULT
+	.short SEQ_GS_PT_END, SEQ_GS_P_PT_END
+	.short SEQ_GS_PT_END_FIELD, SEQ_GS_P_PT_END_FIELD
+	.short SEQ_GS_WIFITOWER, SEQ_GS_P_WIFITOWER
+	.short SEQ_GS_SAFARI_ROAD, SEQ_GS_P_SAFARI_ROAD
+	.short SEQ_GS_SAFARI_HOUSE, SEQ_GS_P_SAFARI_HOUSE
+	.short SEQ_GS_SAFARI_FIELD, SEQ_GS_P_SAFARI_FIELD
+	.short SEQ_PL_BICYCLE, SEQ_PL_P_BICYCLE
 
 	.bss
 
@@ -87,13 +191,13 @@ sub_02004A60: ; 0x02004A60
 	mov r0, #0xa
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
-	ldr r0, _02004A8C ; =0x000004C1
+	ldr r0, _02004A8C ; =SEQ_GS_P_START
 	cmp r5, r0
 	bls _02004A82
 	add r0, r5, #0
 	bl sub_02004AB8
 	add r0, r5, #0
-	bl sub_02005C98
+	bl GBSounds_GetDSSeqNoByGBSeqNo
 	strh r0, [r4]
 	b _02004A84
 _02004A82:
@@ -103,7 +207,7 @@ _02004A84:
 	bl sub_02004A9C
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02004A8C: .word 0x000004C1
+_02004A8C: .word SEQ_GS_P_START
 	thumb_func_end sub_02004A60
 
 	thumb_func_start sub_02004A90
@@ -561,14 +665,14 @@ _02004E0E:
 	add r4, r0, #0
 	b _02004E48
 _02004E22:
-	ldr r0, _02004EAC ; =WAVE_ARC_SE_SEKIBAN
+	ldr r0, _02004EAC ; =BANK_SE_SEKIBAN
 	bl GF_Snd_LoadBank
 	ldr r0, _02004EAC ; =WAVE_ARC_SE_SEKIBAN
 	bl GF_Snd_LoadWaveArc
 	add r4, r0, #0
 	b _02004E48
 _02004E32:
-	ldr r0, _02004EB0 ; =WAVE_ARC_SE_EVENT
+	ldr r0, _02004EB0 ; =BANK_SE_EVENT
 	bl GF_Snd_LoadBank
 	ldr r0, _02004EB0 ; =WAVE_ARC_SE_EVENT
 	bl GF_Snd_LoadWaveArc
@@ -581,32 +685,32 @@ _02004E48:
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-_02004E4C: .word 0x0000058F
-_02004E50: .word 0x00000591
-_02004E54: .word 0x00000593
-_02004E58: .word 0x0000058E
-_02004E5C: .word 0x00000594
-_02004E60: .word 0x00000596
-_02004E64: .word 0x0000064F
-_02004E68: .word 0x00000582
-_02004E6C: .word 0x00000722
-_02004E70: .word 0x00000583
-_02004E74: .word 0x00000584
-_02004E78: .word 0x00000585
-_02004E7C: .word 0x00000587
-_02004E80: .word 0x0000063D
-_02004E84: .word 0x00000642
-_02004E88: .word 0x0000058A
-_02004E8C: .word 0x00000581
-_02004E90: .word 0x00000302
-_02004E94: .word 0x00000303
-_02004E98: .word 0x000002F5
-_02004E9C: .word 0x000002FF
-_02004EA0: .word 0x00000301
-_02004EA4: .word 0x00000305
-_02004EA8: .word 0x00000306
-_02004EAC: .word 0x00000307
-_02004EB0: .word 0x00000309
+_02004E4C: .word SEQ_SE_PL_BALLOON02
+_02004E50: .word SEQ_SE_PL_BALLOON03_2
+_02004E54: .word SEQ_SE_PL_BALLOON05
+_02004E58: .word SEQ_SE_PL_BALLOON01
+_02004E5C: .word SEQ_SE_PL_BALLOON07
+_02004E60: .word SEQ_SE_PL_ALERT4
+_02004E64: .word SEQ_SE_DP_FW104
+_02004E68: .word SEQ_SE_PL_NOMI02
+_02004E6C: .word SEQ_SE_DP_023
+_02004E70: .word SEQ_SE_PL_POINT1
+_02004E74: .word SEQ_SE_PL_POINT2
+_02004E78: .word SEQ_SE_PL_POINT3
+_02004E7C: .word SEQ_SE_PL_BALLOON05_2
+_02004E80: .word SEQ_SE_DP_HAMARU
+_02004E84: .word SEQ_SE_DP_CON_016
+_02004E88: .word SEQ_SE_PL_KIRAKIRA
+_02004E8C: .word SEQ_SE_PL_FCALL
+_02004E90: .word BANK_SE_THLON
+_02004E94: .word BANK_SE_THLON_OPED
+_02004E98: .word BANK_SE_TOWNMAP
+_02004E9C: .word BANK_SE_SCRATCH
+_02004EA0: .word BANK_SE_PLANTER
+_02004EA4: .word BANK_SE_COIN
+_02004EA8: .word BANK_SE_DENDO
+_02004EAC: .word BANK_SE_SEKIBAN
+_02004EB0: .word BANK_SE_EVENT
 	thumb_func_end sub_02004B24
 
 	thumb_func_start sub_02004EB4
@@ -858,7 +962,7 @@ sub_0200508C: ; 0x0200508C
 	mov r0, #0x20
 	bl GF_SdatGetAttrPtr
 	mov r0, #0
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	bl sub_020054F0
 	add r7, r0, #0
 	lsl r0, r7, #0x10
@@ -867,7 +971,7 @@ sub_0200508C: ; 0x0200508C
 	cmp r7, r0
 	ble _020050C2
 	add r0, r4, #0
-	bl sub_02005C98
+	bl GBSounds_GetDSSeqNoByGBSeqNo
 	add r4, r0, #0
 _020050C2:
 	ldrb r0, [r6]
@@ -967,7 +1071,7 @@ _02005180:
 	mov r0, #0x7f
 	mov r1, #0x28
 	mov r2, #0
-	bl sub_02005F10
+	bl GF_SndStartFadeInBGM
 	mov r0, #0
 	bl sub_020059E0
 	pop {r3, r4, r5, pc}
@@ -1243,14 +1347,14 @@ _020053CA:
 	cmp r5, #0
 	bne _020053E0
 	add r0, r4, #0
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	bl sub_020054F0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02004A60
 _020053E0:
 	add r0, r4, #0
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r5, #0
 	bl NNS_SndPlayerPause
 	strb r5, [r6]
@@ -1272,13 +1376,13 @@ sub_020053F0: ; 0x020053F0
 	pop {r4, pc}
 	thumb_func_end sub_020053F0
 
-	thumb_func_start sub_02005408
-sub_02005408: ; 0x02005408
+	thumb_func_start GF_SndHandleMoveVolume
+GF_SndHandleMoveVolume: ; 0x02005408
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r2, #0
 	add r6, r0, #0
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r5, #0
 	add r2, r4, #0
 	bl NNS_SndPlayerMoveVolume
@@ -1286,14 +1390,14 @@ sub_02005408: ; 0x02005408
 	bne _02005428
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02004958
+	bl GF_SndWorkSetGbSoundsVolume
 _02005428:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_02005408
+	thumb_func_end GF_SndHandleMoveVolume
 
-	thumb_func_start sub_0200542C
-sub_0200542C: ; 0x0200542C
+	thumb_func_start GF_SndHandleSetInitialVolume
+GF_SndHandleSetInitialVolume: ; 0x0200542C
 	push {r4, lr}
 	add r4, r1, #0
 	bpl _02005434
@@ -1303,12 +1407,12 @@ _02005434:
 	ble _0200543A
 	mov r4, #0x7f
 _0200543A:
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r4, #0
 	bl NNS_SndPlayerSetInitialVolume
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200542C
+	thumb_func_end GF_SndHandleSetInitialVolume
 
 	thumb_func_start sub_02005448
 sub_02005448: ; 0x02005448
@@ -1350,7 +1454,7 @@ _0200547E:
 	bl _s32_div_f
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0200542C
+	bl GF_SndHandleSetInitialVolume
 _02005496:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005464
@@ -1376,7 +1480,7 @@ sub_020054AC: ; 0x020054AC
 	bl sub_020054D4
 	bl sub_0200480C
 	add r1, r4, #0
-	bl sub_0200542C
+	bl GF_SndHandleSetInitialVolume
 	pop {r4, pc}
 	thumb_func_end sub_020054AC
 
@@ -1518,7 +1622,7 @@ sub_02005584: ; 0x02005584
 	beq _0200559C
 	bl GF_AssertFail
 _0200559C:
-	bl sub_02004940
+	bl GF_SndWorkMicCounterReset
 	pop {r3, pc}
 	nop
 _020055A4: .word _021D05E8
@@ -1983,17 +2087,17 @@ sub_02005910: ; 0x02005910
 _02005914: .word NNS_SndCaptureStopReverb
 	thumb_func_end sub_02005910
 
-	thumb_func_start sub_02005918
-sub_02005918: ; 0x02005918
+	thumb_func_start GF_SndHandleSetTrackPitch
+GF_SndHandleSetTrackPitch: ; 0x02005918
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r5, #0
 	add r2, r4, #0
 	bl NNS_SndPlayerSetTrackPitch
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02005918
+	thumb_func_end GF_SndHandleSetTrackPitch
 
 	thumb_func_start sub_0200592C
 sub_0200592C: ; 0x0200592C
@@ -2004,7 +2108,7 @@ sub_0200592C: ; 0x0200592C
 	bl sub_0200480C
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0200592C
 
@@ -2016,31 +2120,31 @@ sub_02005944: ; 0x02005944
 	bl sub_0200480C
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005944
 
-	thumb_func_start sub_02005958
-sub_02005958: ; 0x02005958
+	thumb_func_start GF_SndHandleSetTrackPan
+GF_SndHandleSetTrackPan: ; 0x02005958
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r5, #0
 	add r2, r4, #0
 	bl NNS_SndPlayerSetTrackPan
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02005958
+	thumb_func_end GF_SndHandleSetTrackPan
 
-	thumb_func_start sub_0200596C
-sub_0200596C: ; 0x0200596C
+	thumb_func_start GF_SndHandleSetTempoRatio
+GF_SndHandleSetTempoRatio: ; 0x0200596C
 	push {r4, lr}
 	add r4, r1, #0
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r4, #0
 	bl NNS_SndPlayerSetTempoRatio
 	pop {r4, pc}
-	thumb_func_end sub_0200596C
+	thumb_func_end GF_SndHandleSetTempoRatio
 
 	thumb_func_start GF_SndSetMonoFlag
 GF_SndSetMonoFlag: ; 0x0200597C
@@ -2076,8 +2180,8 @@ sub_020059A0: ; 0x020059A0
 	.balign 4, 0
 	thumb_func_end sub_020059A0
 
-	thumb_func_start sub_020059B0
-sub_020059B0: ; 0x020059B0
+	thumb_func_start GF_SndGetAfterFadeDelayTimer
+GF_SndGetAfterFadeDelayTimer: ; 0x020059B0
 	push {r3, lr}
 	mov r0, #8
 	bl GF_SdatGetAttrPtr
@@ -2094,7 +2198,7 @@ _020059C6:
 	ldrh r0, [r0]
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020059B0
+	thumb_func_end GF_SndGetAfterFadeDelayTimer
 
 	thumb_func_start sub_020059D0
 sub_020059D0: ; 0x020059D0
@@ -2166,7 +2270,7 @@ sub_02005A10: ; 0x02005A10
 	mov r0, #0
 	strb r0, [r4]
 	mov r0, #5
-	bl sub_020043B0
+	bl GF_SndSetState
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -2220,7 +2324,7 @@ sub_02005A74: ; 0x02005A74
 	ldr r0, [sp, #0x20]
 	str r0, [r4]
 	mov r0, #6
-	bl sub_020043B0
+	bl GF_SndSetState
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -2254,15 +2358,15 @@ sub_02005AB0: ; 0x02005AB0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02005AB0
 
-	thumb_func_start sub_02005AEC
-sub_02005AEC: ; 0x02005AEC
+	thumb_func_start GF_SndSetAllocatableChannelForBGMPlayer
+GF_SndSetAllocatableChannelForBGMPlayer: ; 0x02005AEC
 	ldr r3, _02005AF4 ; =NNS_SndPlayerSetAllocatableChannel
 	add r1, r0, #0
 	mov r0, #7
 	bx r3
 	.balign 4, 0
 _02005AF4: .word NNS_SndPlayerSetAllocatableChannel
-	thumb_func_end sub_02005AEC
+	thumb_func_end GF_SndSetAllocatableChannelForBGMPlayer
 
 	thumb_func_start sub_02005AF8
 sub_02005AF8: ; 0x02005AF8
@@ -2270,13 +2374,13 @@ sub_02005AF8: ; 0x02005AF8
 	cmp r0, #0
 	bne _02005B0C
 	ldr r0, _02005B18 ; =0x0000A7FE
-	bl sub_02005AEC
+	bl GF_SndSetAllocatableChannelForBGMPlayer
 	mov r0, #0
 	bl sub_02005910
 	b _02005B12
 _02005B0C:
 	ldr r0, _02005B1C ; =0x00003FFF
-	bl sub_02005AEC
+	bl GF_SndSetAllocatableChannelForBGMPlayer
 _02005B12:
 	bl sub_020058F4
 	pop {r3, pc}
@@ -2288,11 +2392,11 @@ _02005B1C: .word 0x00003FFF
 	thumb_func_start sub_02005B20
 sub_02005B20: ; 0x02005B20
 	push {r3, lr}
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _02005B4A
 	mov r0, #0
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	bl sub_020054F0
 	mov r1, #0
 	mvn r1, r1
@@ -2308,13 +2412,13 @@ _02005B4A:
 	pop {r3, pc}
 	thumb_func_end sub_02005B20
 
-	thumb_func_start sub_02005B50
-sub_02005B50: ; 0x02005B50
+	thumb_func_start GF_SndHandleSetPlayerVolume
+GF_SndHandleSetPlayerVolume: ; 0x02005B50
 	ldr r3, _02005B54 ; =NNS_SndPlayerSetPlayerVolume
 	bx r3
 	.balign 4, 0
 _02005B54: .word NNS_SndPlayerSetPlayerVolume
-	thumb_func_end sub_02005B50
+	thumb_func_end GF_SndHandleSetPlayerVolume
 
 	thumb_func_start sub_02005B58
 sub_02005B58: ; 0x02005B58
@@ -2354,7 +2458,7 @@ _02005B8E:
 	add r0, r5, #0
 	bl sub_020054D4
 	bl sub_0200480C
-	bl GetSoundPlayer
+	bl GF_GetSoundHandle
 	add r1, r4, #0
 	add r2, r6, #0
 	bl NNS_SndPlayerReadVariable
@@ -2372,7 +2476,7 @@ sub_02005BA8: ; 0x02005BA8
 	ldrb r1, [r4]
 	add r0, r5, #0
 	lsl r2, r1, #2
-	ldr r1, _02005BE0 ; =_020F5711
+	ldr r1, _02005BE0 ; =_020F5710 + 1
 	ldrb r1, [r1, r2]
 	bl sub_020054AC
 	ldrb r2, [r4]
@@ -2381,7 +2485,7 @@ sub_02005BA8: ; 0x02005BA8
 	lsl r3, r2, #2
 	ldr r2, _02005BE8 ; =_020F5710
 	ldrb r2, [r2, r3]
-	bl sub_02005918
+	bl GF_SndHandleSetTrackPitch
 	ldrb r0, [r4, #1]
 	cmp r0, #8
 	blo _02005BDC
@@ -2390,7 +2494,7 @@ sub_02005BA8: ; 0x02005BA8
 _02005BDC:
 	pop {r3, r4, r5, pc}
 	nop
-_02005BE0: .word _020F5711
+_02005BE0: .word _020F5710 + 1
 _02005BE4: .word 0x0000FFFF
 _02005BE8: .word _020F5710
 	thumb_func_end sub_02005BA8
@@ -2453,10 +2557,10 @@ _02005C3C:
 	bne _02005C6A
 	bl sub_02004A90
 	add r4, r0, #0
-	bl sub_0200496C
+	bl GF_SndWorkGetGbSoundsVolume
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02005C6C
+	bl GBSounds_GetGBSeqNoByDSSeqNo
 	cmp r4, r0
 	beq _02005C60
 	add r0, r4, #0
@@ -2465,13 +2569,13 @@ _02005C60:
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 _02005C6A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02005C24
 
-	thumb_func_start sub_02005C6C
-sub_02005C6C: ; 0x02005C6C
+	thumb_func_start GBSounds_GetGBSeqNoByDSSeqNo
+GBSounds_GetGBSeqNoByDSSeqNo: ; 0x02005C6C
 	push {r3, r4}
 	ldr r2, _02005C90 ; =_020F5730
 	mov r4, #0
@@ -2480,7 +2584,7 @@ _02005C72:
 	ldrh r1, [r2, r3]
 	cmp r0, r1
 	bne _02005C82
-	ldr r0, _02005C94 ; =_020F5732
+	ldr r0, _02005C94 ; =_020F5730 + 2
 	ldrh r0, [r0, r3]
 	pop {r3, r4}
 	bx lr
@@ -2494,11 +2598,11 @@ _02005C82:
 	bx lr
 	.balign 4, 0
 _02005C90: .word _020F5730
-_02005C94: .word _020F5732
-	thumb_func_end sub_02005C6C
+_02005C94: .word _020F5730 + 2
+	thumb_func_end GBSounds_GetGBSeqNoByDSSeqNo
 
-	thumb_func_start sub_02005C98
-sub_02005C98: ; 0x02005C98
+	thumb_func_start GBSounds_GetDSSeqNoByGBSeqNo
+GBSounds_GetDSSeqNoByGBSeqNo: ; 0x02005C98
 	push {r3, r4}
 	ldr r2, _02005CBC ; =_020F5730
 	mov r4, #0
@@ -2521,30 +2625,30 @@ _02005CAE:
 	bx lr
 	.balign 4, 0
 _02005CBC: .word _020F5730
-	thumb_func_end sub_02005C98
+	thumb_func_end GBSounds_GetDSSeqNoByGBSeqNo
 
-	thumb_func_start sub_02005CC0
-sub_02005CC0: ; 0x02005CC0
+	thumb_func_start GBSounds_SetAllocatableChannels
+GBSounds_SetAllocatableChannels: ; 0x02005CC0
 	push {r3, lr}
-	mov r0, #0
-	bl GetSoundPlayer
+	mov r0, #0 ; HANDLE_FIELD
+	bl GF_GetSoundHandle
 	ldr r2, _02005CF0 ; =0x0000A7FE
 	mov r1, #0xf
 	bl NNS_SndPlayerSetTrackAllocatableChannel
-	mov r0, #7
-	bl GetSoundPlayer
+	mov r0, #7 ; HANDLE_BGM
+	bl GF_GetSoundHandle
 	ldr r2, _02005CF0 ; =0x0000A7FE
 	mov r1, #0xf
 	bl NNS_SndPlayerSetTrackAllocatableChannel
-	mov r0, #2
-	bl GetSoundPlayer
+	mov r0, #2 ; HANDLE_ME
+	bl GF_GetSoundHandle
 	ldr r2, _02005CF0 ; =0x0000A7FE
 	mov r1, #0xf
 	bl NNS_SndPlayerSetTrackAllocatableChannel
 	pop {r3, pc}
 	nop
 _02005CF0: .word 0x0000A7FE
-	thumb_func_end sub_02005CC0
+	thumb_func_end GBSounds_SetAllocatableChannels
 
 	thumb_func_start sub_02005CF4
 sub_02005CF4: ; 0x02005CF4

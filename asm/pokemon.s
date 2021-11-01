@@ -9882,7 +9882,7 @@ sub_02071FDC: ; 0x02071FDC
 	ldr r3, [sp, #0x1c]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020063A4
+	bl PlayCryEx
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _02072014:
@@ -9908,7 +9908,7 @@ _02072030:
 	ldr r3, [sp, #0x1c]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020063A4
+	bl PlayCryEx
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -10001,7 +10001,7 @@ sub_020720D4: ; 0x020720D4
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020720D4
 

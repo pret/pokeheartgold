@@ -11112,7 +11112,7 @@ _02261A2E:
 	add r1, r0, #0
 	add r1, #0xf9
 	add r1, r2, r1
-	bl sub_0200596C
+	bl GF_SndHandleSetTempoRatio
 	mov r0, #3
 	ldrsb r0, [r4, r0]
 	cmp r0, #0xc
@@ -11199,11 +11199,11 @@ _02261B0C: .word 0x00000587
 ov91_02261B10: ; 0x02261B10
 	mov r0, #7
 	add r1, r0, #0
-	ldr r3, _02261B1C ; =sub_0200596C
+	ldr r3, _02261B1C ; =GF_SndHandleSetTempoRatio
 	add r1, #0xf9
 	bx r3
 	nop
-_02261B1C: .word sub_0200596C
+_02261B1C: .word GF_SndHandleSetTempoRatio
 	thumb_func_end ov91_02261B10
 
 	thumb_func_start ov91_02261B20
