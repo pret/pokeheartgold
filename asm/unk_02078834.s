@@ -47590,6 +47590,7 @@ _02102422:
 	.short 0x008C, 0x008D, 0x008E
 
 	.balign 4, 0
+	.public _02102610
 _02102610:
 	.word sub_02082908, sub_02082B20, sub_02082EE8, 0xFFFFFFFF
 _02102620:
