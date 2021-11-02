@@ -67,6 +67,7 @@ Options::Options(int argc, char **argv) {
 
 int Options::main_compile() {
     int i = 0;
+    fs::create_directories(bindir);
     for (const auto & row : csvfile) {
         char numbuf[4] {};
         sprintf(numbuf, "%03d", i);

@@ -325,7 +325,7 @@ ov40_0222B934: ; 0x0222B934
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r1, r5, #0
 	add r1, #0x5c
 	ldrb r1, [r1]
@@ -10008,7 +10008,7 @@ ov40_022306F0: ; 0x022306F0
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r1, sp, #4
 	str r1, [sp]
 	ldr r1, _02230734 ; =0x0000086C

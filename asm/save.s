@@ -228,13 +228,13 @@ _020272D6:
 _020272E8: .word 0x0002301C
 	thumb_func_end SavArray_get
 
-	thumb_func_start sub_020272EC
-sub_020272EC: ; 0x020272EC
+	thumb_func_start SavArray_const_get
+SavArray_const_get: ; 0x020272EC
 	ldr r3, _020272F0 ; =SavArray_get
 	bx r3
 	.balign 4, 0
 _020272F0: .word SavArray_get
-	thumb_func_end sub_020272EC
+	thumb_func_end SavArray_const_get
 
 	thumb_func_start sub_020272F4
 sub_020272F4: ; 0x020272F4
@@ -517,7 +517,7 @@ sub_020274E4: ; 0x020274E4
 	thumb_func_start sub_020274E8
 sub_020274E8: ; 0x020274E8
 	push {r3, lr}
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	bl sub_0202A9D8
 	pop {r3, pc}
 	thumb_func_end sub_020274E8
@@ -525,7 +525,7 @@ sub_020274E8: ; 0x020274E8
 	thumb_func_start sub_020274F4
 sub_020274F4: ; 0x020274F4
 	push {r3, lr}
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	bl sub_0202A9C4
 	pop {r3, pc}
 	thumb_func_end sub_020274F4
@@ -1235,7 +1235,7 @@ sub_020279EC: ; 0x020279EC
 	add r6, r0, #0
 	add r4, r1, #0
 	add r5, r2, #0
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r7, r0, #0
 	mov r0, #1
 	str r0, [r4]
@@ -2636,7 +2636,7 @@ sub_020284A4: ; 0x020284A4
 	add r6, r2, #0
 	str r3, [sp, #8]
 	ldr r7, [sp, #0x48]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	str r0, [sp, #0xc]
 	ldr r0, _020286AC ; =_020F645C
 	ldr r0, [r0]
@@ -2889,7 +2889,7 @@ sub_020286B4: ; 0x020286B4
 	add r5, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	ldr r1, [sp, #0x18]
 	add r2, r4, #0
 	str r1, [sp]
@@ -2907,7 +2907,7 @@ sub_020286D4: ; 0x020286D4
 	add r5, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r1, sp, #8
 	ldrb r1, [r1, #0x10]
 	add r2, r4, #0

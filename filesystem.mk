@@ -384,13 +384,6 @@ NITROFS_FILES := \
 	files/pbr/zukan.narc \
 	files/dwc/utility.bin
 
-.PHONY: filesystem clean-filesystem
-filesystem: $(NITROFS_FILES)
-
-clean-filesystem:
-	$(RM) files/msgdata/msg/*.bin
-	$(RM) $(DIFF_ARCS)
-
 # TODO: file rules
 # Some filenames are stripped and replaced with a serial number
 # such that the XYZth file is mapped to a/X/Y/Z.
@@ -400,6 +393,9 @@ $(2): $(1)
 DIFF_ARCS += $(2)
 .PHONY: $(2)
 endef
+
+NARCS := $(filter %.narc,$(NITROFS_FILES))
+NAIXS := $(NARCS:%.narc=%.naix)
 
 $(eval $(call arc_strip_name,files/fielddata/script/scr_seq.narc,files/a/0/1/2))
 $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
@@ -419,21 +415,57 @@ $(DIFF_ARCS):
 $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
 
 include files/msgdata/msg.mk
-include sound_data.mk
+include files/data/sound/sound_data.mk
 
-%.naix: %.narc ;
-
-MWCFLAGS += -I./files
-
+# Encounter data
 ENCDATA_NARCS := \
 	files/fielddata/encountdata/g_enc_data.narc \
 	files/fielddata/encountdata/s_enc_data.narc
 
+ENCDATA_DIRS := $(ENCDATA_NARCS:%.narc=%)
+ENCDATA_CSVS := $(ENCDATA_NARCS:%.narc=%.csv)
+ENCDATA_BINS := $(foreach csv,$(ENCDATA_CSVS),$(addprefix $(csv:%.csv=%/),$(patsubst %,bin_%.bin,$(shell cut -d, -f1 $(csv) | tail -n+2))))
+
+# Delete intermediate bin files
+.INTERMEDIATE: $(ENCDATA_BINS)
+
 $(ENCDATA_NARCS): %.narc: %.csv include/constants/species.h
-	@$(RM) $*/*.bin
 	$(ENCDATA_GS) $^ $*
 	$(KNARC) -d $* -p $@ -i
+	@$(RM) $*/*.bin
+
+# Use the assembler to build the scripts
+# Framework for when we actually get around to script dumping
+SCRIPT_DIR  := files/fielddata/script/scr_seq
+SCRIPT_NARC := $(SCRIPT_DIR).narc
+SCRIPT_SRCS := $(wildcard $(SCRIPT_DIR)/*.s)
+SCRIPT_OBJS := $(SCRIPT_SRCS:%.s=%.o)
+SCRIPT_BINS := $(SCRIPT_SRCS:%.s=%.bin)
+
+# Delete intermediate object files
+.INTERMEDIATE: $(SCRIPT_OBJS)
+
+ifeq ($(NODEP),)
+$(SCRIPT_DIR)/%.bin: dep = $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $*.s)
+else
+$(SCRIPT_DIR)/%.bin: dep :=
+endif
+
+$(SCRIPT_BINS): %.bin: %.s $$(dep)
+	$(WINE) $(MWAS) $(MWASFLAGS) -o $*.o $<
+	$(OBJCOPY) -O binary $*.o $@
+
+$(SCRIPT_NARC): $(SCRIPT_BINS)
 
 %.narc: NARC_DEPS = $(wildcard $*/*.bin)
 %.narc: $(NARC_DEPS)
 	$(KNARC) -d $* -p $@ -i
+
+%.naix: %.narc ;
+
+.PHONY: filesystem clean-filesystem
+filesystem: $(NITROFS_FILES)
+
+clean-filesystem:
+	$(RM) files/msgdata/msg/*.bin
+	$(RM) $(DIFF_ARCS) $(NAIXS)

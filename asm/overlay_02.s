@@ -25875,7 +25875,7 @@ ov02_02251FDC: ; 0x02251FDC
 	bl Sav2_PlayerData_GetProfileAddr
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x38]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x30]

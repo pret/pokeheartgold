@@ -216,7 +216,7 @@
 .public ConvertUIntToDecimalString
 .public CopyBoxPokemonToBoxPokemon
 .public CopyBoxPokemonToPokemon
-.public CopyPlayerName
+.public Sav2_Profile_PlayerName_set
 .public CopyPokemonToBoxPokemon
 .public CopyPokemonToPokemon
 .public CopyStringToU16Array
@@ -561,7 +561,7 @@
 .public GetPartyMonByIndex
 .public GetPercentProgressTowardsNextLevel
 .public GetPersonalAttr
-.public GetRivalNamePtr
+.public Sav2_Misc_RivalName_get
 .public GetSoundDataPointer
 .public GF_GetSoundHandle
 .public GetSpeciesName
@@ -26080,7 +26080,7 @@
 .public sub_02027190
 .public sub_020271A0
 .public sub_020272B0
-.public sub_020272EC
+.public SavArray_const_get
 .public sub_020272F4
 .public sub_020273B0
 .public sub_020273F0
@@ -26151,13 +26151,13 @@
 .public sub_0202A8A8
 .public sub_0202A8B4
 .public sub_0202A8BC
-.public sub_0202A954
-.public sub_0202A960
+.public Sav2_Misc_get
+.public Sav2_Misc_const_get
 .public sub_0202A96C
 .public sub_0202A978
 .public sub_0202A988
 .public sub_0202A998
-.public sub_0202A9B0
+.public Sav2_Misc_RivalName_set
 .public sub_0202A9C4
 .public sub_0202A9D8
 .public sub_0202A9E8
@@ -28949,7 +28949,7 @@
 .public sub_0206D02C
 .public sub_0206D328
 .public sub_0206D494
-.public sub_0206D894
+.public MonIsInGameTradePoke
 .public sub_0206D8D0
 .public sub_0206DB28
 .public sub_0206DB30

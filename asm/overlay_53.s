@@ -291,12 +291,12 @@ ov53_021E5B48: ; 0x021E5B48
 	ldr r1, [r1, #4]
 	bl PlayerProfile_SetTrainerGender
 	ldr r0, [r4, #4]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	mov r1, #0x49
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
 	ldr r1, [r1, #0x18]
-	bl sub_0202A9B0
+	bl Sav2_Misc_RivalName_set
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

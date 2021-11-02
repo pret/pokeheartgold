@@ -37012,7 +37012,7 @@ _021F7016:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	ldr r0, [r5, #0x38]
 	mov r1, #0
 	add r2, r4, #0
@@ -59570,7 +59570,7 @@ ScrCmd_671: ; 0x0220178C
 	bl GetPartyMonByIndex
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #5
@@ -59627,7 +59627,7 @@ ScrCmd_672: ; 0x022017DC
 	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r1, sp, #8
 	add r2, sp, #4
 	add r3, sp, #0
@@ -60800,7 +60800,7 @@ _02202138:
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [r7, #0xc]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	mov r1, #0
 	add r4, r0, #0
 	add r0, r5, #0

@@ -4389,7 +4389,7 @@ _02092D52:
 	cmp r0, #0
 	bne _02092D68
 	ldr r0, [r5, #0xc]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r2, sp, #8
 	ldrb r1, [r2, #4]
 	ldrb r2, [r2, #5]
@@ -11179,7 +11179,7 @@ sub_020961D8: ; 0x020961D8
 	bl sub_02090C94
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0xc]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	str r0, [r4, #0x14]
 	add r0, r4, #0
 	str r6, [r4, #0x20]

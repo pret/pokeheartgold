@@ -1,3 +1,4 @@
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -8403,8 +8404,9 @@ _0206D892:
 	pop {r4, pc}
 	thumb_func_end sub_0206D850
 
-	thumb_func_start sub_0206D894
-sub_0206D894: ; 0x0206D894
+	thumb_func_start MonIsInGameTradePoke
+MonIsInGameTradePoke: ; 0x0206D894
+	; BOOL MonIsInGameTradePoke(struct Pokemon *poke, int tradeno);
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -8419,7 +8421,7 @@ sub_0206D894: ; 0x0206D894
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0206D9D0
+	bl MonIsInGameTradePokeEx
 	add r5, r0, #0
 	add r0, r4, #0
 	bl FreeToHeap
@@ -8433,7 +8435,7 @@ _0206D8C8:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206D894
+	thumb_func_end MonIsInGameTradePoke
 
 	thumb_func_start sub_0206D8D0
 sub_0206D8D0: ; 0x0206D8D0
@@ -8445,7 +8447,7 @@ sub_0206D8D0: ; 0x0206D8D0
 	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #5
@@ -8560,8 +8562,9 @@ _0206D9C8: .word gGameLanguage
 _0206D9CC: .word gGameVersion
 	thumb_func_end sub_0206D8D0
 
-	thumb_func_start sub_0206D9D0
-sub_0206D9D0: ; 0x0206D9D0
+	thumb_func_start MonIsInGameTradePokeEx
+MonIsInGameTradePokeEx: ; 0x0206D9D0
+	; BOOL MonIsInGameTradePokeEx(struct Pokemon *poke, struct InGameTrade *trade, int tradeno);
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -8574,9 +8577,9 @@ sub_0206D9D0: ; 0x0206D9D0
 	lsr r1, r0, #0x10
 	cmp r6, #7
 	bne _0206D9F8
-	cmp r1, #0x15
+	cmp r1, #SPECIES_SPEAROW
 	beq _0206DA04
-	cmp r1, #0x16
+	cmp r1, #SPECIES_FEAROW
 	beq _0206DA04
 	add sp, #8
 	mov r0, #0
@@ -8721,7 +8724,7 @@ _0206DB18:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0206DB24: .word gGameVersion
-	thumb_func_end sub_0206D9D0
+	thumb_func_end MonIsInGameTradePokeEx
 
 	thumb_func_start sub_0206DB28
 sub_0206DB28: ; 0x0206DB28

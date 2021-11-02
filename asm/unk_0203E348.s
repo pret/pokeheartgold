@@ -2589,7 +2589,7 @@ _0203F618:
 	cmp r0, #0
 	bne _0203F626
 	add r0, r5, #0
-	bl sub_0203F650
+	bl NamingScreen_SetName
 _0203F626:
 	ldr r1, [r4, #8]
 	cmp r1, #0
@@ -2613,8 +2613,8 @@ _0203F648:
 _0203F64C: .word 0x02102610
 	thumb_func_end sub_0203F580
 
-	thumb_func_start sub_0203F650
-sub_0203F650: ; 0x0203F650
+	thumb_func_start NamingScreen_SetName
+NamingScreen_SetName: ; 0x0203F650
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl sub_0205064C
@@ -2644,14 +2644,14 @@ _0203F682:
 	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, [r4, #0xc]
 	add r1, #0x1c
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	pop {r4, r5, r6, pc}
 _0203F692:
 	ldr r0, [r5, #0xc]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	ldr r1, [r4, #0xc]
 	ldr r1, [r1, #0x18]
-	bl sub_0202A9B0
+	bl Sav2_Misc_RivalName_set
 	pop {r4, r5, r6, pc}
 _0203F6A2:
 	ldr r6, [r4, #4]
@@ -2683,7 +2683,7 @@ _0203F6CA:
 _0203F6DC:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203F650
+	thumb_func_end NamingScreen_SetName
 
 	thumb_func_start sub_0203F6E0
 sub_0203F6E0: ; 0x0203F6E0

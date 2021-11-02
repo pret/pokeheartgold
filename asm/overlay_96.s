@@ -5931,7 +5931,7 @@ _021E8504:
 	bl String_c_str
 	add r1, r0, #0
 	add r0, r6, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #0

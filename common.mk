@@ -94,7 +94,7 @@ LCF               := $(NEF:%.nef=%.lcf)
 SBIN              := $(NEF:%.nef=%.sbin)
 XMAP              := $(NEF).xMAP
 
-MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -I$(WORK_DIR)/lib/include -ipa file -interworking
+MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -gccinc -i ./include -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -ipa file -interworking
 MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -i ./include -DSDK_ASM
 MWLDFLAGS         := -nodead -w off -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS

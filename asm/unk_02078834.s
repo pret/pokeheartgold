@@ -30963,7 +30963,7 @@ _02087EB0:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r1, r4, #0
 	add r1, #0x5c
 	bl sub_0202AC0C

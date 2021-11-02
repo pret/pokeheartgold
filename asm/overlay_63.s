@@ -4530,7 +4530,7 @@ _0221E350:
 _0221E362:
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0206D894
+	bl MonIsInGameTradePoke
 	cmp r0, #1
 	bne _0221E372
 	mov r5, #8
@@ -4538,7 +4538,7 @@ _0221E362:
 _0221E372:
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0206D894
+	bl MonIsInGameTradePoke
 	cmp r0, #1
 	bne _0221E382
 	mov r5, #9

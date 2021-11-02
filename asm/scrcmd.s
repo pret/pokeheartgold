@@ -1,6 +1,12 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public _020FAC94
+	.public _020FAC9C
+	.public _020FACB0
+	.public _020FACC4
+	.public _020FACDC
+
 	.bss
 
 _021D415C:

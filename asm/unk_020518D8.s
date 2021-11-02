@@ -307,7 +307,7 @@ sub_02051AAC: ; 0x02051AAC
 	add r0, r4, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]

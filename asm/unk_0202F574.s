@@ -449,7 +449,7 @@ sub_0202F844: ; 0x0202F844
 	add r5, #0x18
 	add r0, r4, #0
 	add r1, r5, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0202F844
