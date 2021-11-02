@@ -14199,7 +14199,7 @@ sub_020977CC: ; 0x020977CC
 	ldr r0, [sp, #0x1c]
 	str r0, [r4, #0xc]
 	mov r0, #0
-	bl ov01_021EA6C4
+	bl LoadAreaOrDungeonLightTxt
 	mov r0, #0
 	strb r0, [r4]
 	ldr r0, [r5, #0x10]
@@ -14441,7 +14441,7 @@ sub_020979A8: ; 0x020979A8
 	ldr r0, [sp, #0x1c]
 	str r0, [r4, #0xc]
 	mov r0, #0
-	bl ov01_021EA6C4
+	bl LoadAreaOrDungeonLightTxt
 	mov r0, #0
 	strb r0, [r4]
 	ldr r0, [r5, #0x10]

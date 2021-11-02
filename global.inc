@@ -2892,7 +2892,7 @@
 .public ov01_021EA564
 .public ov01_021EA578
 .public ov01_021EA668
-.public ov01_021EA6C4
+.public LoadAreaOrDungeonLightTxt
 .public ov01_021EA724
 .public ov01_021EA73C
 .public ov01_021EA7E0
@@ -25820,8 +25820,8 @@
 .public sub_02020A0C
 .public sub_02020A18
 .public sub_02020A24
-.public sub_02020AB4
-.public sub_02020AF8
+.public Ascii_GetDelim
+.public Ascii_StrToL
 .public sub_02020B78
 .public sub_02020B8C
 .public sub_02020B94
