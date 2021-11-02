@@ -280,8 +280,8 @@ _02005F4C:
 	.balign 4, 0
 	thumb_func_end GF_SndStartFadeInBGM
 
-	thumb_func_start sub_02005F50
-sub_02005F50: ; 0x02005F50
+	thumb_func_start GF_SndStartFadeOutBGM
+GF_SndStartFadeOutBGM: ; 0x02005F50
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -305,7 +305,7 @@ _02005F80:
 	bl GF_SndSetState
 _02005F86:
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_02005F50
+	thumb_func_end GF_SndStartFadeOutBGM
 
 	thumb_func_start GF_SndGetFadeTimer
 GF_SndGetFadeTimer: ; 0x02005F88

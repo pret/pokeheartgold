@@ -83917,7 +83917,7 @@ _022603A6:
 	bl sub_020090E4
 	mov r0, #0
 	mov r1, #0x10
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldrb r0, [r5, #6]
 	add r0, r0, #1
 	strb r0, [r5, #6]
@@ -85165,7 +85165,7 @@ _02260DAE:
 _02260DD2:
 	mov r0, #0
 	mov r1, #0x10
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 _02260DDA:
 	ldrb r0, [r5, #6]
 	add r0, r0, #1

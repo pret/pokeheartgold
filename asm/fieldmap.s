@@ -153,52 +153,65 @@ _020FA558:
 	.byte 0xE3, 0x00, 0x01, 0x00, 0x00, 0x00, 0xE5, 0x00, 0x35, 0x00, 0x01, 0x00, 0x00, 0x00, 0xE6, 0x00
 sNumScriptCmds:
 	.word 0x00000355
+	.public _020FAC94
 _020FAC94:
 	.byte 0x03, 0x19, 0x0D, 0x06, 0x04, 0x0D, 0x1F, 0x02
+	.public _020FAC9C
 _020FAC9C:
-	.byte 0x01, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x01, 0x00, 0x01, 0x00, 0x00
+	.byte 0x01, 0x00, 0x00
+	.byte 0x00, 0x01, 0x00
+	.byte 0x00, 0x00, 0x01
+	.byte 0x01, 0x01, 0x00
+	.byte 0x00, 0x01, 0x01
+	.byte 0x01, 0x00, 0x01
+	.public _020FACB0
+	.balign 4, 0
 _020FACB0:
-	.byte 0x14, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00
-	.byte 0x19, 0x00, 0x00, 0x00
+	.word SDK_OVERLAY_OVY_20_ID
+	.word SDK_OVERLAY_OVY_24_ID
+	.word SDK_OVERLAY_OVY_21_ID
+	.word SDK_OVERLAY_OVY_22_ID
+	.word SDK_OVERLAY_OVY_25_ID
+	.public _020FACC4
 _020FACC4:
 	.byte 0xFF, 0xFF, 0xFF, 0x07, 0xFF, 0xFF, 0xFF, 0x07, 0xFF, 0xFF, 0xFF, 0x07
 	.byte 0xFF, 0xFF, 0xFF, 0x07, 0xFF, 0xFF, 0xFF, 0x07, 0xFF, 0xFF, 0xFF, 0x07
+	.public _020FACDC
 _020FACDC:
 	.byte 0x00, 0x30, 0x08, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x04, 0x00, 0x00, 0xD0, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x10, 0x04, 0x00, 0x00, 0x80, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x04, 0x00
 gScriptCmdTable:
-	.word ScrCmd_000
-	.word ScrCmd_001
-	.word ScrCmd_002
-	.word ScrCmd_003
-	.word ScrCmd_004
-	.word ScrCmd_005
-	.word ScrCmd_006
-	.word ScrCmd_007
-	.word ScrCmd_008
-	.word ScrCmd_009
-	.word ScrCmd_010
-	.word ScrCmd_011
-	.word ScrCmd_012
-	.word ScrCmd_013
-	.word ScrCmd_014
-	.word ScrCmd_015
-	.word ScrCmd_016
-	.word ScrCmd_017
-	.word ScrCmd_018
-	.word ScrCmd_019
-	.word ScrCmd_020
-	.word ScrCmd_021
-	.word ScrCmd_022
-	.word ScrCmd_023
-	.word ScrCmd_024
-	.word ScrCmd_025
-	.word ScrCmd_026
-	.word ScrCmd_027
-	.word ScrCmd_028
-	.word ScrCmd_029
+	.word ScrCmd_Nop
+	.word ScrCmd_Dummy
+	.word ScrCmd_End
+	.word ScrCmd_Wait
+	.word ScrCmd_LoadByte
+	.word ScrCmd_LoadWord
+	.word ScrCmd_LoadByteFromAddr
+	.word ScrCmd_WriteByteToAddr
+	.word ScrCmd_SetPtrByte
+	.word ScrCmd_CopyLocal
+	.word ScrCmd_CopyByte
+	.word ScrCmd_CompareLocalToLocal
+	.word ScrCmd_CompareLocalToValue
+	.word ScrCmd_CompareLocalToAddr
+	.word ScrCmd_CompareAddrToLocal
+	.word ScrCmd_CompareAddrToValue
+	.word ScrCmd_CompareAddrToAddr
+	.word ScrCmd_CompareVarToValue
+	.word ScrCmd_CompareVarToVar
+	.word ScrCmd_RunScript
+	.word ScrCmd_RunScriptWait
+	.word ScrCmd_RestartCurrentScript
+	.word ScrCmd_GoTo
+	.word ScrCmd_ObjectGoTo
+	.word ScrCmd_BgGoTo
+	.word ScrCmd_DirectionGoTo
+	.word ScrCmd_Call
+	.word ScrCmd_Return
+	.word ScrCmd_GoToIf
+	.word ScrCmd_CallIf
 	.word ScrCmd_030
 	.word ScrCmd_031
 	.word ScrCmd_032
@@ -606,7 +619,7 @@ gScriptCmdTable:
 	.word ScrCmd_434
 	.word ScrCmd_435
 	.word ScrCmd_436
-	.word ScrCmd_437
+	.word ScrCmd_DebugWatch
 	.word ScrCmd_438
 	.word ScrCmd_439
 	.word ScrCmd_440
@@ -655,7 +668,7 @@ gScriptCmdTable:
 	.word ScrCmd_483
 	.word ScrCmd_484
 	.word ScrCmd_485
-	.word ScrCmd_001
+	.word ScrCmd_Dummy
 	.word ScrCmd_487
 	.word ScrCmd_488
 	.word ScrCmd_489

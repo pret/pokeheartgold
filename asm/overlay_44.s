@@ -11245,7 +11245,7 @@ ov44_0222F830: ; 0x0222F830
 	bne _0222F878
 	mov r0, #0
 	mov r1, #0x1e
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	b _0222F894
 _0222F878:
 	cmp r4, #0x10

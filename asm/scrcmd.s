@@ -8,29 +8,29 @@ _021D415C:
 
 	.text
 
-	thumb_func_start ScrCmd_000
-ScrCmd_000: ; 0x02040890
+	thumb_func_start ScrCmd_Nop
+ScrCmd_Nop: ; 0x02040890
 	mov r0, #0
 	bx lr
-	thumb_func_end ScrCmd_000
+	thumb_func_end ScrCmd_Nop
 
-	thumb_func_start ScrCmd_001
-ScrCmd_001: ; 0x02040894
+	thumb_func_start ScrCmd_Dummy
+ScrCmd_Dummy: ; 0x02040894
 	mov r0, #0
 	bx lr
-	thumb_func_end ScrCmd_001
+	thumb_func_end ScrCmd_Dummy
 
-	thumb_func_start ScrCmd_002
-ScrCmd_002: ; 0x02040898
+	thumb_func_start ScrCmd_End
+ScrCmd_End: ; 0x02040898
 	push {r3, lr}
 	bl StopScript
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_002
+	thumb_func_end ScrCmd_End
 
-	thumb_func_start ScrCmd_003
-ScrCmd_003: ; 0x020408A4
+	thumb_func_start ScrCmd_Wait
+ScrCmd_Wait: ; 0x020408A4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -45,18 +45,18 @@ ScrCmd_003: ; 0x020408A4
 	add r1, r4, #0
 	bl GetVarPointer
 	strh r7, [r0]
-	ldr r1, _020408D4 ; =sub_020408D8
+	ldr r1, _020408D4 ; =RunPauseTimer
 	add r0, r5, #0
 	str r4, [r5, #0x64]
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020408D4: .word sub_020408D8
-	thumb_func_end ScrCmd_003
+_020408D4: .word RunPauseTimer
+	thumb_func_end ScrCmd_Wait
 
-	thumb_func_start sub_020408D8
-sub_020408D8: ; 0x020408D8
+	thumb_func_start RunPauseTimer
+RunPauseTimer: ; 0x020408D8
 	push {r3, lr}
 	add r1, r0, #0
 	ldr r1, [r1, #0x64]
@@ -77,10 +77,10 @@ _020408FA:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020408D8
+	thumb_func_end RunPauseTimer
 
-	thumb_func_start ScrCmd_437
-ScrCmd_437: ; 0x02040900
+	thumb_func_start ScrCmd_DebugWatch
+ScrCmd_DebugWatch: ; 0x02040900
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -91,10 +91,10 @@ ScrCmd_437: ; 0x02040900
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_437
+	thumb_func_end ScrCmd_DebugWatch
 
-	thumb_func_start ScrCmd_004
-ScrCmd_004: ; 0x02040918
+	thumb_func_start ScrCmd_LoadByte
+ScrCmd_LoadByte: ; 0x02040918
 	ldr r1, [r0, #8]
 	add r2, r1, #1
 	str r2, [r0, #8]
@@ -107,10 +107,10 @@ ScrCmd_004: ; 0x02040918
 	str r2, [r0, #0x64]
 	mov r0, #0
 	bx lr
-	thumb_func_end ScrCmd_004
+	thumb_func_end ScrCmd_LoadByte
 
-	thumb_func_start ScrCmd_005
-ScrCmd_005: ; 0x02040930
+	thumb_func_start ScrCmd_LoadWord
+ScrCmd_LoadWord: ; 0x02040930
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r2, [r4, #8]
@@ -124,10 +124,10 @@ ScrCmd_005: ; 0x02040930
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_005
+	thumb_func_end ScrCmd_LoadWord
 
-	thumb_func_start ScrCmd_006
-ScrCmd_006: ; 0x0204094C
+	thumb_func_start ScrCmd_LoadByteFromAddr
+ScrCmd_LoadByteFromAddr: ; 0x0204094C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -141,10 +141,10 @@ ScrCmd_006: ; 0x0204094C
 	str r1, [r0, #0x64]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_006
+	thumb_func_end ScrCmd_LoadByteFromAddr
 
-	thumb_func_start ScrCmd_007
-ScrCmd_007: ; 0x02040968
+	thumb_func_start ScrCmd_WriteByteToAddr
+ScrCmd_WriteByteToAddr: ; 0x02040968
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadWord
@@ -156,10 +156,10 @@ ScrCmd_007: ; 0x02040968
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_007
+	thumb_func_end ScrCmd_WriteByteToAddr
 
-	thumb_func_start ScrCmd_008
-ScrCmd_008: ; 0x02040980
+	thumb_func_start ScrCmd_SetPtrByte
+ScrCmd_SetPtrByte: ; 0x02040980
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadWord
@@ -173,10 +173,10 @@ ScrCmd_008: ; 0x02040980
 	strb r1, [r0]
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_008
+	thumb_func_end ScrCmd_SetPtrByte
 
-	thumb_func_start ScrCmd_009
-ScrCmd_009: ; 0x0204099C
+	thumb_func_start ScrCmd_CopyLocal
+ScrCmd_CopyLocal: ; 0x0204099C
 	ldr r1, [r0, #8]
 	add r2, r1, #1
 	str r2, [r0, #8]
@@ -193,10 +193,10 @@ ScrCmd_009: ; 0x0204099C
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end ScrCmd_009
+	thumb_func_end ScrCmd_CopyLocal
 
-	thumb_func_start ScrCmd_010
-ScrCmd_010: ; 0x020409BC
+	thumb_func_start ScrCmd_CopyByte
+ScrCmd_CopyByte: ; 0x020409BC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadWord
@@ -207,10 +207,10 @@ ScrCmd_010: ; 0x020409BC
 	strb r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_010
+	thumb_func_end ScrCmd_CopyByte
 
-	thumb_func_start sub_020409D4
-sub_020409D4: ; 0x020409D4
+	thumb_func_start Compare
+Compare: ; 0x020409D4
 	cmp r0, r1
 	bhs _020409DC
 	mov r0, #0
@@ -223,10 +223,10 @@ _020409DC:
 _020409E4:
 	mov r0, #2
 	bx lr
-	thumb_func_end sub_020409D4
+	thumb_func_end Compare
 
-	thumb_func_start ScrCmd_011
-ScrCmd_011: ; 0x020409E8
+	thumb_func_start ScrCmd_CompareLocalToLocal
+ScrCmd_CompareLocalToLocal: ; 0x020409E8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
@@ -246,14 +246,14 @@ ScrCmd_011: ; 0x020409E8
 	ldr r1, [r1, #0x64]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_020409D4
+	bl Compare
 	strb r0, [r4, #2]
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_011
+	thumb_func_end ScrCmd_CompareLocalToLocal
 
-	thumb_func_start ScrCmd_012
-ScrCmd_012: ; 0x02040A18
+	thumb_func_start ScrCmd_CompareLocalToValue
+ScrCmd_CompareLocalToValue: ; 0x02040A18
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
@@ -268,15 +268,15 @@ ScrCmd_012: ; 0x02040A18
 	ldrb r1, [r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020409D4
+	bl Compare
 	strb r0, [r4, #2]
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_012
+	thumb_func_end ScrCmd_CompareLocalToValue
 
-	thumb_func_start ScrCmd_013
-ScrCmd_013: ; 0x02040A40
+	thumb_func_start ScrCmd_CompareLocalToAddr
+ScrCmd_CompareLocalToAddr: ; 0x02040A40
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r2, [r4, #8]
@@ -291,14 +291,14 @@ ScrCmd_013: ; 0x02040A40
 	bl ScriptReadWord
 	ldrb r1, [r0]
 	add r0, r5, #0
-	bl sub_020409D4
+	bl Compare
 	strb r0, [r4, #2]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_013
+	thumb_func_end ScrCmd_CompareLocalToAddr
 
-	thumb_func_start ScrCmd_014
-ScrCmd_014: ; 0x02040A68
+	thumb_func_start ScrCmd_CompareAddrToLocal
+ScrCmd_CompareAddrToLocal: ; 0x02040A68
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadWord
@@ -312,15 +312,15 @@ ScrCmd_014: ; 0x02040A68
 	ldr r1, [r1, #0x64]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_020409D4
+	bl Compare
 	strb r0, [r4, #2]
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_014
+	thumb_func_end ScrCmd_CompareAddrToLocal
 
-	thumb_func_start ScrCmd_015
-ScrCmd_015: ; 0x02040A90
+	thumb_func_start ScrCmd_CompareAddrToValue
+ScrCmd_CompareAddrToValue: ; 0x02040A90
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadWord
@@ -329,14 +329,14 @@ ScrCmd_015: ; 0x02040A90
 	add r1, r2, #1
 	str r1, [r4, #8]
 	ldrb r1, [r2]
-	bl sub_020409D4
+	bl Compare
 	strb r0, [r4, #2]
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_015
+	thumb_func_end ScrCmd_CompareAddrToValue
 
-	thumb_func_start ScrCmd_016
-ScrCmd_016: ; 0x02040AAC
+	thumb_func_start ScrCmd_CompareAddrToAddr
+ScrCmd_CompareAddrToAddr: ; 0x02040AAC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadWord
@@ -345,15 +345,15 @@ ScrCmd_016: ; 0x02040AAC
 	bl ScriptReadWord
 	ldrb r1, [r0]
 	add r0, r4, #0
-	bl sub_020409D4
+	bl Compare
 	strb r0, [r5, #2]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_016
+	thumb_func_end ScrCmd_CompareAddrToAddr
 
-	thumb_func_start ScrCmd_017
-ScrCmd_017: ; 0x02040ACC
+	thumb_func_start ScrCmd_CompareVarToValue
+ScrCmd_CompareVarToValue: ; 0x02040ACC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -367,15 +367,15 @@ ScrCmd_017: ; 0x02040ACC
 	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_020409D4
+	bl Compare
 	strb r0, [r4, #2]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_017
+	thumb_func_end ScrCmd_CompareVarToValue
 
-	thumb_func_start ScrCmd_018
-ScrCmd_018: ; 0x02040AF8
+	thumb_func_start ScrCmd_CompareVarToVar
+ScrCmd_CompareVarToVar: ; 0x02040AF8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -395,14 +395,14 @@ ScrCmd_018: ; 0x02040AF8
 	add r1, r0, #0
 	ldrh r0, [r4]
 	ldrh r1, [r1]
-	bl sub_020409D4
+	bl Compare
 	strb r0, [r5, #2]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_018
+	thumb_func_end ScrCmd_CompareVarToVar
 
-	thumb_func_start ScrCmd_019
-ScrCmd_019: ; 0x02040B30
+	thumb_func_start ScrCmd_RunScript
+ScrCmd_RunScript: ; 0x02040B30
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r0, #0x80
@@ -427,10 +427,10 @@ ScrCmd_019: ; 0x02040B30
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_019
+	thumb_func_end ScrCmd_RunScript
 
-	thumb_func_start ScrCmd_020
-ScrCmd_020: ; 0x02040B68
+	thumb_func_start ScrCmd_RunScriptWait
+ScrCmd_RunScriptWait: ; 0x02040B68
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r0, #0x80
@@ -474,7 +474,7 @@ ScrCmd_020: ; 0x02040B68
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02040BC8: .word sub_02040BCC
-	thumb_func_end ScrCmd_020
+	thumb_func_end ScrCmd_RunScriptWait
 
 	thumb_func_start sub_02040BCC
 sub_02040BCC: ; 0x02040BCC
@@ -503,8 +503,8 @@ _02040BF8:
 	.balign 4, 0
 	thumb_func_end sub_02040BCC
 
-	thumb_func_start ScrCmd_021
-ScrCmd_021: ; 0x02040BFC
+	thumb_func_start ScrCmd_RestartCurrentScript
+ScrCmd_RestartCurrentScript: ; 0x02040BFC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -527,10 +527,10 @@ ScrCmd_021: ; 0x02040BFC
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_021
+	thumb_func_end ScrCmd_RestartCurrentScript
 
-	thumb_func_start ScrCmd_022
-ScrCmd_022: ; 0x02040C2C
+	thumb_func_start ScrCmd_GoTo
+ScrCmd_GoTo: ; 0x02040C2C
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadWord
@@ -541,10 +541,10 @@ ScrCmd_022: ; 0x02040C2C
 	bl ScriptJump
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_022
+	thumb_func_end ScrCmd_GoTo
 
-	thumb_func_start ScrCmd_023
-ScrCmd_023: ; 0x02040C44
+	thumb_func_start ScrCmd_ObjectGoTo
+ScrCmd_ObjectGoTo: ; 0x02040C44
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -570,10 +570,10 @@ ScrCmd_023: ; 0x02040C44
 _02040C78:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_023
+	thumb_func_end ScrCmd_ObjectGoTo
 
-	thumb_func_start ScrCmd_024
-ScrCmd_024: ; 0x02040C7C
+	thumb_func_start ScrCmd_BgGoTo
+ScrCmd_BgGoTo: ; 0x02040C7C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x74]
@@ -596,10 +596,10 @@ _02040CA6:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_024
+	thumb_func_end ScrCmd_BgGoTo
 
-	thumb_func_start ScrCmd_025
-ScrCmd_025: ; 0x02040CAC
+	thumb_func_start ScrCmd_DirectionGoTo
+ScrCmd_DirectionGoTo: ; 0x02040CAC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -624,10 +624,10 @@ ScrCmd_025: ; 0x02040CAC
 _02040CDC:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_025
+	thumb_func_end ScrCmd_DirectionGoTo
 
-	thumb_func_start ScrCmd_026
-ScrCmd_026: ; 0x02040CE0
+	thumb_func_start ScrCmd_Call
+ScrCmd_Call: ; 0x02040CE0
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadWord
@@ -638,19 +638,19 @@ ScrCmd_026: ; 0x02040CE0
 	bl ScriptCall
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_026
+	thumb_func_end ScrCmd_Call
 
-	thumb_func_start ScrCmd_027
-ScrCmd_027: ; 0x02040CF8
+	thumb_func_start ScrCmd_Return
+ScrCmd_Return: ; 0x02040CF8
 	push {r3, lr}
 	bl ScriptReturn
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_027
+	thumb_func_end ScrCmd_Return
 
-	thumb_func_start ScrCmd_028
-ScrCmd_028: ; 0x02040D04
+	thumb_func_start ScrCmd_GoToIf
+ScrCmd_GoToIf: ; 0x02040D04
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -661,7 +661,7 @@ ScrCmd_028: ; 0x02040D04
 	add r1, r0, #0
 	lsl r0, r4, #1
 	add r3, r4, r0
-	ldr r0, _02040D34 ; =0x020FAC9C
+	ldr r0, _02040D34 ; =_020FAC9C
 	ldrb r2, [r5, #2]
 	add r0, r0, r3
 	ldrb r0, [r2, r0]
@@ -675,11 +675,11 @@ _02040D30:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02040D34: .word 0x020FAC9C
-	thumb_func_end ScrCmd_028
+_02040D34: .word _020FAC9C
+	thumb_func_end ScrCmd_GoToIf
 
-	thumb_func_start ScrCmd_029
-ScrCmd_029: ; 0x02040D38
+	thumb_func_start ScrCmd_CallIf
+ScrCmd_CallIf: ; 0x02040D38
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -690,7 +690,7 @@ ScrCmd_029: ; 0x02040D38
 	add r1, r0, #0
 	lsl r0, r4, #1
 	add r3, r4, r0
-	ldr r0, _02040D68 ; =0x020FAC9C
+	ldr r0, _02040D68 ; =_020FAC9C
 	ldrb r2, [r5, #2]
 	add r0, r0, r3
 	ldrb r0, [r2, r0]
@@ -704,8 +704,8 @@ _02040D64:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02040D68: .word 0x020FAC9C
-	thumb_func_end ScrCmd_029
+_02040D68: .word _020FAC9C
+	thumb_func_end ScrCmd_CallIf
 
 	thumb_func_start ScrCmd_030
 ScrCmd_030: ; 0x02040D6C
@@ -1936,7 +1936,7 @@ ScrCmd_063: ; 0x02041684
 	mov r0, #4
 	str r0, [sp]
 	ldr r0, [r4, #8]
-	ldr r1, _020416DC ; =0x020FAC94
+	ldr r1, _020416DC ; =_020FAC94
 	ldr r2, _020416D8 ; =0x000003D9
 	mov r3, #0xb
 	bl Std_CreateYesNoMenu
@@ -1950,7 +1950,7 @@ ScrCmd_063: ; 0x02041684
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020416D8: .word 0x000003D9
-_020416DC: .word 0x020FAC94
+_020416DC: .word _020FAC94
 _020416E0: .word sub_020416E4
 	thumb_func_end ScrCmd_063
 
@@ -10537,7 +10537,7 @@ ScrCmd_519: ; 0x020459AC
 	bl GetPartyCount
 	add r2, sp, #0x18
 	mov r4, #0
-	ldr r3, _02045A5C ; =0x020FACC4
+	ldr r3, _02045A5C ; =_020FACC4
 	str r0, [sp, #8]
 	add r7, r2, #0
 	ldmia r3!, {r0, r1}
@@ -10607,7 +10607,7 @@ _02045A50:
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02045A5C: .word 0x020FACC4
+_02045A5C: .word _020FACC4
 	thumb_func_end ScrCmd_519
 
 	thumb_func_start ScrCmd_520
@@ -13794,7 +13794,7 @@ ScrCmd_621: ; 0x02047358
 	sub sp, #0x28
 	add r0, #0x80
 	ldr r4, [r0]
-	ldr r5, _020473D4 ; =0x020FACDC
+	ldr r5, _020473D4 ; =_020FACDC
 	add r3, sp, #4
 	mov r2, #4
 _02047366:
@@ -13854,7 +13854,7 @@ _020473CC:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_020473D4: .word 0x020FACDC
+_020473D4: .word _020FACDC
 	thumb_func_end ScrCmd_621
 
 	thumb_func_start ScrCmd_622
@@ -15065,14 +15065,14 @@ ScrCmd_784: ; 0x02047C80
 _02047C98:
 	cmp r0, #0
 	bne _02047CAA
-	ldr r0, _02047CB8 ; =0x020FACB0
+	ldr r0, _02047CB8 ; =_020FACB0
 	lsl r1, r2, #2
 	ldr r0, [r0, r1]
 	mov r1, #2
 	bl HandleLoadOverlay
 	b _02047CB4
 _02047CAA:
-	ldr r0, _02047CB8 ; =0x020FACB0
+	ldr r0, _02047CB8 ; =_020FACB0
 	lsl r1, r2, #2
 	ldr r0, [r0, r1]
 	bl UnloadOverlayByID
@@ -15080,7 +15080,7 @@ _02047CB4:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_02047CB8: .word 0x020FACB0
+_02047CB8: .word _020FACB0
 	thumb_func_end ScrCmd_784
 
 	thumb_func_start ScrCmd_794

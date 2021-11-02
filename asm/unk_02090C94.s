@@ -14351,7 +14351,7 @@ _02097902:
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #6
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #1
 	strb r0, [r4]
 	b _020979A2
@@ -14589,7 +14589,7 @@ _02097AD2:
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #6
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #1
 	strb r0, [r4]
 	b _02097B72

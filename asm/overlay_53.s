@@ -3592,7 +3592,7 @@ _021E760C:
 	bne _021E76A0
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #0x2f
 	str r0, [r4, #0xc]
 	b _021E7CF8

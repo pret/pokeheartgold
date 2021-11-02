@@ -27409,7 +27409,7 @@ _021F4A60:
 _021F4A88:
 	mov r0, #0
 	mov r1, #4
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	b _021F4A98
 _021F4A92:
 	mov r0, #2

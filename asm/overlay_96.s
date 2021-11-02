@@ -13216,7 +13216,7 @@ _021EBAAA:
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #0x5a
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldr r0, _021EBAF8 ; =0x000008DD
 	bl PlaySE
 	ldrb r0, [r4]
@@ -14101,7 +14101,7 @@ _021EC1D0:
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #0x1e
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -22172,7 +22172,7 @@ _021F00BC:
 _021F00C2:
 	mov r0, #0
 	mov r1, #0x18
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #0x18
 	str r0, [sp]
 	mov r0, #1
@@ -38196,7 +38196,7 @@ _021F801E:
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #0xc
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldrb r0, [r7]
 	add r0, r0, #1
 	strb r0, [r7]

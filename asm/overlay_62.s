@@ -77,7 +77,7 @@ ov62_021E5900: ; 0x021E5900
 	bl ov62_021E5A5C
 	mov r0, #0
 	mov r1, #0xa
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #1
 	pop {r4, pc}
 	nop

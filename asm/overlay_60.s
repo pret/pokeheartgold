@@ -200,7 +200,7 @@ _021E5A94:
 	strh r1, [r4, r0]
 	mov r0, #0
 	mov r1, #0x3c
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 #ifdef HEARTGOLD
 	mov r0, #0xfa ; HO-OH
 #else
@@ -283,7 +283,7 @@ _021E5B2A:
 	bl GX_EngineAToggleLayers
 	mov r0, #0
 	mov r1, #0x3c
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #5
 	str r0, [r5]
 	b _021E5C8E

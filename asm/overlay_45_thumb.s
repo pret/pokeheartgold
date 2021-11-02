@@ -4043,7 +4043,7 @@ ov45_0222BB60: ; 0x0222BB60
 	bne _0222BBA6
 	mov r0, #0
 	mov r1, #0x7f
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #1
 	strb r0, [r5, #0xe]
 	b _0222BBA6

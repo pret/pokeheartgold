@@ -19406,7 +19406,7 @@ ov112_021EF568: ; 0x021EF568
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #0x10
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #2
 	add sp, #0xc
 	pop {pc}

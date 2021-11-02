@@ -82,7 +82,7 @@ ScrCmd_084: ; 0x02049188
 	bl ScriptReadHalfword
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldr r1, _020491AC ; =sub_020491B0
 	add r0, r5, #0
 	bl SetupNativeScript

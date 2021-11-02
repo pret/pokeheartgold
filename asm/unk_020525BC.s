@@ -380,7 +380,7 @@ _0205288C:
 _020528CE:
 	mov r0, #0
 	mov r1, #0x14
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

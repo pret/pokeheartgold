@@ -348,7 +348,7 @@ _021E5BC4:
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #0x1a
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
