@@ -18199,7 +18199,7 @@ _02064218:
 	lsl r1, r1, #0x10
 	ldr r0, [r5, #0xc]
 	lsr r1, r1, #0x10
-	bl sub_02040514
+	bl TrainerFlagCheck
 	cmp r0, #0
 	bne _02064254
 	ldr r0, [sp, #0x28]

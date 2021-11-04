@@ -713,8 +713,8 @@ _02040D64:
 _02040D68: .word _020FAC9C
 	thumb_func_end ScrCmd_CallIf
 
-	thumb_func_start ScrCmd_030
-ScrCmd_030: ; 0x02040D6C
+	thumb_func_start ScrCmd_SetFlag
+ScrCmd_SetFlag: ; 0x02040D6C
 	push {r4, lr}
 	add r1, r0, #0
 	add r1, #0x80
@@ -725,10 +725,10 @@ ScrCmd_030: ; 0x02040D6C
 	bl FlagSet
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_030
+	thumb_func_end ScrCmd_SetFlag
 
-	thumb_func_start ScrCmd_031
-ScrCmd_031: ; 0x02040D84
+	thumb_func_start ScrCmd_ClearFlag
+ScrCmd_ClearFlag: ; 0x02040D84
 	push {r4, lr}
 	add r1, r0, #0
 	add r1, #0x80
@@ -739,10 +739,10 @@ ScrCmd_031: ; 0x02040D84
 	bl FlagClear
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_031
+	thumb_func_end ScrCmd_ClearFlag
 
-	thumb_func_start ScrCmd_032
-ScrCmd_032: ; 0x02040D9C
+	thumb_func_start ScrCmd_CheckFlag
+ScrCmd_CheckFlag: ; 0x02040D9C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -755,10 +755,10 @@ ScrCmd_032: ; 0x02040D9C
 	strb r0, [r4, #2]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_032
+	thumb_func_end ScrCmd_CheckFlag
 
-	thumb_func_start ScrCmd_035
-ScrCmd_035: ; 0x02040DB8
+	thumb_func_start ScrCmd_CheckFlagVar
+ScrCmd_CheckFlagVar: ; 0x02040DB8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -784,10 +784,10 @@ ScrCmd_035: ; 0x02040DB8
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_035
+	thumb_func_end ScrCmd_CheckFlagVar
 
-	thumb_func_start ScrCmd_033
-ScrCmd_033: ; 0x02040DF4
+	thumb_func_start ScrCmd_SetFlagVar
+ScrCmd_SetFlagVar: ; 0x02040DF4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -805,10 +805,10 @@ ScrCmd_033: ; 0x02040DF4
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_033
+	thumb_func_end ScrCmd_SetFlagVar
 
-	thumb_func_start ScrCmd_034
-ScrCmd_034: ; 0x02040E1C
+	thumb_func_start ScrCmd_ClearFlagVar
+ScrCmd_ClearFlagVar: ; 0x02040E1C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -826,10 +826,10 @@ ScrCmd_034: ; 0x02040E1C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_034
+	thumb_func_end ScrCmd_ClearFlagVar
 
-	thumb_func_start ScrCmd_036
-ScrCmd_036: ; 0x02040E44
+	thumb_func_start ScrCmd_SetTrainerFlag
+ScrCmd_SetTrainerFlag: ; 0x02040E44
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -842,13 +842,13 @@ ScrCmd_036: ; 0x02040E44
 	add r1, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_0204052C
+	bl TrainerFlagSet
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_036
+	thumb_func_end ScrCmd_SetTrainerFlag
 
-	thumb_func_start ScrCmd_037
-ScrCmd_037: ; 0x02040E68
+	thumb_func_start ScrCmd_ClearTrainerFlag
+ScrCmd_ClearTrainerFlag: ; 0x02040E68
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -861,13 +861,13 @@ ScrCmd_037: ; 0x02040E68
 	add r1, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_02040544
+	bl TrainerFlagClear
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_037
+	thumb_func_end ScrCmd_ClearTrainerFlag
 
-	thumb_func_start ScrCmd_038
-ScrCmd_038: ; 0x02040E8C
+	thumb_func_start ScrCmd_CheckTrainerFlag
+ScrCmd_CheckTrainerFlag: ; 0x02040E8C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -881,14 +881,14 @@ ScrCmd_038: ; 0x02040E8C
 	bl VarGet
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02040514
+	bl TrainerFlagCheck
 	strb r0, [r5, #2]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_038
+	thumb_func_end ScrCmd_CheckTrainerFlag
 
-	thumb_func_start ScrCmd_039
-ScrCmd_039: ; 0x02040EB4
+	thumb_func_start ScrCmd_AddVar
+ScrCmd_AddVar: ; 0x02040EB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -909,10 +909,10 @@ ScrCmd_039: ; 0x02040EB4
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_039
+	thumb_func_end ScrCmd_AddVar
 
-	thumb_func_start ScrCmd_040
-ScrCmd_040: ; 0x02040EE4
+	thumb_func_start ScrCmd_SubVar
+ScrCmd_SubVar: ; 0x02040EE4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -933,10 +933,10 @@ ScrCmd_040: ; 0x02040EE4
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_040
+	thumb_func_end ScrCmd_SubVar
 
-	thumb_func_start ScrCmd_041
-ScrCmd_041: ; 0x02040F14
+	thumb_func_start ScrCmd_SetVar
+ScrCmd_SetVar: ; 0x02040F14
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -952,10 +952,10 @@ ScrCmd_041: ; 0x02040F14
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_041
+	thumb_func_end ScrCmd_SetVar
 
-	thumb_func_start ScrCmd_042
-ScrCmd_042: ; 0x02040F38
+	thumb_func_start ScrCmd_CopyVar
+ScrCmd_CopyVar: ; 0x02040F38
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -976,10 +976,10 @@ ScrCmd_042: ; 0x02040F38
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_042
+	thumb_func_end ScrCmd_CopyVar
 
-	thumb_func_start ScrCmd_043
-ScrCmd_043: ; 0x02040F68
+	thumb_func_start ScrCmd_SetOrCopyVar
+ScrCmd_SetOrCopyVar: ; 0x02040F68
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -998,7 +998,7 @@ ScrCmd_043: ; 0x02040F68
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_043
+	thumb_func_end ScrCmd_SetOrCopyVar
 
 	thumb_func_start ScrCmd_048
 ScrCmd_048: ; 0x02040F94

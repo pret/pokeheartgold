@@ -696,7 +696,7 @@ ScrCmd_224: ; 0x020499D8
 	lsl r1, r1, #0x10
 	ldr r0, [r0, #0xc]
 	lsr r1, r1, #0x10
-	bl sub_0204052C
+	bl TrainerFlagSet
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ScrCmd_224
@@ -720,7 +720,7 @@ ScrCmd_225: ; 0x02049A00
 	lsl r1, r1, #0x10
 	ldr r0, [r5, #0xc]
 	lsr r1, r1, #0x10
-	bl sub_02040514
+	bl TrainerFlagCheck
 	cmp r0, #1
 	bne _02049A3E
 	ldr r1, [r7, #8]

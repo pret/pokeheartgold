@@ -224,4 +224,104 @@
 	.word \sub-.-4
 	.endm
 
+	; Set event flag
+	.macro setflag flag
+	.short 30
+	.short \flag
+	.endm
+
+	; Clear event flag
+	.macro clearflag flag
+	.short 31
+	.short \flag
+	.endm
+
+	; Check event flag, store result on context
+	.macro checkflag flag
+	.short 32
+	.short \flag
+	.endm
+
+	; Set event flag referenced in var
+	.macro setflagvar var
+	.short 33
+	.short \var
+	.endm
+
+	; Clear event flag referenced in var
+	.macro clearflagvar var
+	.short 34
+	.short \var
+	.endm
+
+	; Check event flag referenced in var, store result in other var
+	.macro checkflagvar var_flag, var_dest
+	.short 35
+	.short \var_flag
+	.short \var_dest
+	.endm
+
+	; Set trainer defeated flag
+	.macro settrainerflag var_or_trno
+	.short 36
+	.short \var_or_trno
+	.endm
+
+	; Clear trainer defeated flag
+	.macro cleartrainerflag var_or_trno
+	.short 37
+	.short \var_or_trno
+	.endm
+
+	; Check trainer defeated flag, store result on context
+	.macro checktrainerflag var_or_trno
+	.short 38
+	.short \var_or_trno
+	.endm
+
+	; Increment var value by value
+	.macro addvar var, var_or_addend
+	.short 39
+	.short \var
+	.short \var_or_addend
+	.endm
+
+	; Decrement var value by value
+	.macro subvar var, var_or_addend
+	.short 40
+	.short \var
+	.short \var_or_addend
+	.endm
+
+	; Set var to short literal
+	.macro setvar var, val
+	.short 41
+	.short \var
+	.short \val
+	.endm
+
+	; Set var from other var
+	.macro copyvar dst, src
+	.short 42
+	.short \dst
+	.short \src
+	.endm
+
+	; Set var from other var or short literal
+	.macro setorcopyvar dst, src
+	.short 43
+	.short \dst
+	.short \src
+	.endm
+
+	.macro scrcmd_044 a
+	.short 44
+	.byte \a
+	.endm
+
+	.macro scrcmd_045 a
+	.short 45
+	.byte \a
+	.endm
+
 	.endif ; ASM_SCRIPT_INC

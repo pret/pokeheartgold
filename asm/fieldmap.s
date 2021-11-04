@@ -212,20 +212,20 @@ gScriptCmdTable:
 	.word ScrCmd_Return                                 ; 027
 	.word ScrCmd_GoToIf                                 ; 028
 	.word ScrCmd_CallIf                                 ; 029
-	.word ScrCmd_030                                    ; 030
-	.word ScrCmd_031                                    ; 031
-	.word ScrCmd_032                                    ; 032
-	.word ScrCmd_033                                    ; 033
-	.word ScrCmd_034                                    ; 034
-	.word ScrCmd_035                                    ; 035
-	.word ScrCmd_036                                    ; 036
-	.word ScrCmd_037                                    ; 037
-	.word ScrCmd_038                                    ; 038
-	.word ScrCmd_039                                    ; 039
-	.word ScrCmd_040                                    ; 040
-	.word ScrCmd_041                                    ; 041
-	.word ScrCmd_042                                    ; 042
-	.word ScrCmd_043                                    ; 043
+	.word ScrCmd_SetFlag                                ; 030
+	.word ScrCmd_ClearFlag                              ; 031
+	.word ScrCmd_CheckFlag                              ; 032
+	.word ScrCmd_SetFlagVar                             ; 033
+	.word ScrCmd_ClearFlagVar                           ; 034
+	.word ScrCmd_CheckFlagVar                           ; 035
+	.word ScrCmd_SetTrainerFlag                         ; 036
+	.word ScrCmd_ClearTrainerFlag                       ; 037
+	.word ScrCmd_CheckTrainerFlag                       ; 038
+	.word ScrCmd_AddVar                                 ; 039
+	.word ScrCmd_SubVar                                 ; 040
+	.word ScrCmd_SetVar                                 ; 041
+	.word ScrCmd_CopyVar                                ; 042
+	.word ScrCmd_SetOrCopyVar                           ; 043
 	.word ScrCmd_044                                    ; 044
 	.word ScrCmd_045                                    ; 045
 	.word ScrCmd_046                                    ; 046
@@ -1988,8 +1988,8 @@ _02040510:
 	pop {r3, pc}
 	thumb_func_end sub_02040500
 
-	thumb_func_start sub_02040514
-sub_02040514: ; 0x02040514
+	thumb_func_start TrainerFlagCheck
+TrainerFlagCheck: ; 0x02040514
 	push {r4, lr}
 	add r4, r1, #0
 	bl SavArray_Flags_get
@@ -2000,10 +2000,10 @@ sub_02040514: ; 0x02040514
 	lsr r1, r1, #0x10
 	bl CheckFlagInArray
 	pop {r4, pc}
-	thumb_func_end sub_02040514
+	thumb_func_end TrainerFlagCheck
 
-	thumb_func_start sub_0204052C
-sub_0204052C: ; 0x0204052C
+	thumb_func_start TrainerFlagSet
+TrainerFlagSet: ; 0x0204052C
 	push {r4, lr}
 	add r4, r1, #0
 	bl SavArray_Flags_get
@@ -2014,10 +2014,10 @@ sub_0204052C: ; 0x0204052C
 	lsr r1, r1, #0x10
 	bl SetFlagInArray
 	pop {r4, pc}
-	thumb_func_end sub_0204052C
+	thumb_func_end TrainerFlagSet
 
-	thumb_func_start sub_02040544
-sub_02040544: ; 0x02040544
+	thumb_func_start TrainerFlagClear
+TrainerFlagClear: ; 0x02040544
 	push {r4, lr}
 	add r4, r1, #0
 	bl SavArray_Flags_get
@@ -2028,7 +2028,7 @@ sub_02040544: ; 0x02040544
 	lsr r1, r1, #0x10
 	bl ClearFlagInArray
 	pop {r4, pc}
-	thumb_func_end sub_02040544
+	thumb_func_end TrainerFlagClear
 
 	thumb_func_start sub_0204055C
 sub_0204055C: ; 0x0204055C
