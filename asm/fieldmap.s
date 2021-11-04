@@ -182,859 +182,859 @@ _020FACDC:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x04, 0x00, 0x00, 0xD0, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x10, 0x04, 0x00, 0x00, 0x80, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x04, 0x00
 gScriptCmdTable:
-	.word ScrCmd_Nop
-	.word ScrCmd_Dummy
-	.word ScrCmd_End
-	.word ScrCmd_Wait
-	.word ScrCmd_LoadByte
-	.word ScrCmd_LoadWord
-	.word ScrCmd_LoadByteFromAddr
-	.word ScrCmd_WriteByteToAddr
-	.word ScrCmd_SetPtrByte
-	.word ScrCmd_CopyLocal
-	.word ScrCmd_CopyByte
-	.word ScrCmd_CompareLocalToLocal
-	.word ScrCmd_CompareLocalToValue
-	.word ScrCmd_CompareLocalToAddr
-	.word ScrCmd_CompareAddrToLocal
-	.word ScrCmd_CompareAddrToValue
-	.word ScrCmd_CompareAddrToAddr
-	.word ScrCmd_CompareVarToValue
-	.word ScrCmd_CompareVarToVar
-	.word ScrCmd_RunScript
-	.word ScrCmd_RunScriptWait
-	.word ScrCmd_RestartCurrentScript
-	.word ScrCmd_GoTo
-	.word ScrCmd_ObjectGoTo
-	.word ScrCmd_BgGoTo
-	.word ScrCmd_DirectionGoTo
-	.word ScrCmd_Call
-	.word ScrCmd_Return
-	.word ScrCmd_GoToIf
-	.word ScrCmd_CallIf
-	.word ScrCmd_030
-	.word ScrCmd_031
-	.word ScrCmd_032
-	.word ScrCmd_033
-	.word ScrCmd_034
-	.word ScrCmd_035
-	.word ScrCmd_036
-	.word ScrCmd_037
-	.word ScrCmd_038
-	.word ScrCmd_039
-	.word ScrCmd_040
-	.word ScrCmd_041
-	.word ScrCmd_042
-	.word ScrCmd_043
-	.word ScrCmd_044
-	.word ScrCmd_045
-	.word ScrCmd_046
-	.word ScrCmd_047
-	.word ScrCmd_048
-	.word ScrCmd_049
-	.word ScrCmd_050
-	.word ScrCmd_051
-	.word ScrCmd_052
-	.word ScrCmd_053
-	.word ScrCmd_054
-	.word ScrCmd_055
-	.word ScrCmd_056
-	.word ScrCmd_057
-	.word ScrCmd_058
-	.word ScrCmd_059
-	.word ScrCmd_060
-	.word ScrCmd_061
-	.word ScrCmd_062
-	.word ScrCmd_063
-	.word ScrCmd_064
-	.word ScrCmd_065
-	.word ScrCmd_066
-	.word ScrCmd_067
-	.word ScrCmd_068
-	.word ScrCmd_069
-	.word ScrCmd_070
-	.word ScrCmd_071
-	.word ScrCmd_072
-	.word ScrCmd_073
-	.word ScrCmd_074
-	.word ScrCmd_075
-	.word ScrCmd_076
-	.word ScrCmd_077
-	.word ScrCmd_078
-	.word ScrCmd_079
-	.word ScrCmd_080
-	.word ScrCmd_081
-	.word ScrCmd_082
-	.word ScrCmd_083
-	.word ScrCmd_084
-	.word ScrCmd_085
-	.word ScrCmd_086
-	.word ScrCmd_087
-	.word ScrCmd_088
-	.word ScrCmd_089
-	.word ScrCmd_090
-	.word ScrCmd_091
-	.word ScrCmd_092
-	.word ScrCmd_093
-	.word ScrCmd_094
-	.word ScrCmd_095
-	.word ScrCmd_096
-	.word ScrCmd_097
-	.word ScrCmd_098
-	.word ScrCmd_099
-	.word ScrCmd_100
-	.word ScrCmd_101
-	.word ScrCmd_102
-	.word ScrCmd_103
-	.word ScrCmd_104
-	.word ScrCmd_105
-	.word ScrCmd_106
-	.word ScrCmd_107
-	.word ScrCmd_108
-	.word ScrCmd_109
-	.word ScrCmd_110
-	.word ScrCmd_111
-	.word ScrCmd_112
-	.word ScrCmd_113
-	.word ScrCmd_114
-	.word ScrCmd_115
-	.word ScrCmd_116
-	.word ScrCmd_117
-	.word ScrCmd_118
-	.word ScrCmd_119
-	.word ScrCmd_120
-	.word ScrCmd_121
-	.word ScrCmd_122
-	.word ScrCmd_123
-	.word ScrCmd_124
-	.word ScrCmd_125
-	.word ScrCmd_126
-	.word ScrCmd_127
-	.word ScrCmd_128
-	.word ScrCmd_129
-	.word ScrCmd_130
-	.word ScrCmd_131
-	.word ScrCmd_132
-	.word ScrCmd_133
-	.word ScrCmd_134
-	.word ScrCmd_135
-	.word ScrCmd_136
-	.word ScrCmd_137
-	.word ScrCmd_138
-	.word ScrCmd_139
-	.word ScrCmd_140
-	.word ScrCmd_141
-	.word ScrCmd_142
-	.word ScrCmd_143
-	.word ScrCmd_144
-	.word ScrCmd_145
-	.word ScrCmd_146
-	.word ScrCmd_147
-	.word ScrCmd_148
-	.word ScrCmd_149
-	.word ScrCmd_150
-	.word ScrCmd_151
-	.word ScrCmd_152
-	.word ScrCmd_153
-	.word ScrCmd_154
-	.word ScrCmd_155
-	.word ScrCmd_156
-	.word ScrCmd_157
-	.word ScrCmd_158
-	.word ScrCmd_159
-	.word ScrCmd_160
-	.word ScrCmd_161
-	.word ScrCmd_162
-	.word ScrCmd_163
-	.word ScrCmd_164
-	.word ScrCmd_165
-	.word ScrCmd_166
-	.word ScrCmd_167
-	.word ScrCmd_168
-	.word ScrCmd_169
-	.word ScrCmd_170
-	.word ScrCmd_171
-	.word ScrCmd_172
-	.word ScrCmd_173
-	.word ScrCmd_174
-	.word ScrCmd_175
-	.word ScrCmd_176
-	.word ScrCmd_177
-	.word ScrCmd_178
-	.word ScrCmd_179
-	.word ScrCmd_180
-	.word ScrCmd_181
-	.word ScrCmd_182
-	.word ScrCmd_183
-	.word ScrCmd_184
-	.word ScrCmd_185
-	.word ScrCmd_186
-	.word ScrCmd_187
-	.word ScrCmd_188
-	.word ScrCmd_189
-	.word ScrCmd_190
-	.word ScrCmd_191
-	.word ScrCmd_192
-	.word ScrCmd_193
-	.word ScrCmd_194
-	.word ScrCmd_195
-	.word ScrCmd_196
-	.word ScrCmd_197
-	.word ScrCmd_198
-	.word ScrCmd_199
-	.word ScrCmd_200
-	.word ScrCmd_201
-	.word ScrCmd_202
-	.word ScrCmd_203
-	.word ScrCmd_204
-	.word ScrCmd_205
-	.word ScrCmd_206
-	.word ScrCmd_207
-	.word ScrCmd_208
-	.word ScrCmd_209
-	.word ScrCmd_210
-	.word ScrCmd_211
-	.word ScrCmd_212
-	.word ScrCmd_213
-	.word ScrCmd_214
-	.word ScrCmd_215
-	.word ScrCmd_216
-	.word ScrCmd_217
-	.word ScrCmd_218
-	.word ScrCmd_219
-	.word ScrCmd_220
-	.word ScrCmd_221
-	.word ScrCmd_222
-	.word ScrCmd_223
-	.word ScrCmd_224
-	.word ScrCmd_225
-	.word ScrCmd_226
-	.word ScrCmd_227
-	.word ScrCmd_228
-	.word ScrCmd_229
-	.word ScrCmd_230
-	.word ScrCmd_231
-	.word ScrCmd_232
-	.word ScrCmd_233
-	.word ScrCmd_234
-	.word ScrCmd_235
-	.word ScrCmd_236
-	.word ScrCmd_237
-	.word ScrCmd_238
-	.word ScrCmd_239
-	.word ScrCmd_240
-	.word ScrCmd_241
-	.word ScrCmd_242
-	.word ScrCmd_243
-	.word ScrCmd_244
-	.word ScrCmd_245
-	.word ScrCmd_246
-	.word ScrCmd_247
-	.word ScrCmd_248
-	.word ScrCmd_249
-	.word ScrCmd_250
-	.word ScrCmd_251
-	.word ScrCmd_252
-	.word ScrCmd_253
-	.word ScrCmd_254
-	.word ScrCmd_255
-	.word ScrCmd_256
-	.word ScrCmd_257
-	.word ScrCmd_258
-	.word ScrCmd_259
-	.word ScrCmd_260
-	.word ScrCmd_261
-	.word ScrCmd_262
-	.word ScrCmd_263
-	.word ScrCmd_264
-	.word ScrCmd_265
-	.word ScrCmd_266
-	.word ScrCmd_267
-	.word ScrCmd_268
-	.word ScrCmd_269
-	.word ScrCmd_270
-	.word ScrCmd_271
-	.word ScrCmd_272
-	.word ScrCmd_273
-	.word ScrCmd_274
-	.word ScrCmd_275
-	.word ScrCmd_276
-	.word ScrCmd_277
-	.word ScrCmd_278
-	.word ScrCmd_279
-	.word ScrCmd_280
-	.word ScrCmd_281
-	.word ScrCmd_282
-	.word ScrCmd_283
-	.word ScrCmd_284
-	.word ScrCmd_285
-	.word ScrCmd_286
-	.word ScrCmd_287
-	.word ScrCmd_288
-	.word ScrCmd_289
-	.word ScrCmd_290
-	.word ScrCmd_291
-	.word ScrCmd_292
-	.word ScrCmd_293
-	.word ScrCmd_294
-	.word ScrCmd_295
-	.word ScrCmd_296
-	.word ScrCmd_297
-	.word ScrCmd_298
-	.word ScrCmd_299
-	.word ScrCmd_300
-	.word ScrCmd_301
-	.word ScrCmd_302
-	.word ScrCmd_303
-	.word ScrCmd_304
-	.word ScrCmd_305
-	.word ScrCmd_306
-	.word ScrCmd_307
-	.word ScrCmd_308
-	.word ScrCmd_309
-	.word ScrCmd_310
-	.word ScrCmd_311
-	.word ScrCmd_312
-	.word ScrCmd_313
-	.word ScrCmd_314
-	.word ScrCmd_315
-	.word ScrCmd_316
-	.word ScrCmd_317
-	.word ScrCmd_318
-	.word ScrCmd_319
-	.word ScrCmd_320
-	.word ScrCmd_321
-	.word ScrCmd_322
-	.word ScrCmd_323
-	.word ScrCmd_324
-	.word ScrCmd_325
-	.word ScrCmd_326
-	.word ScrCmd_327
-	.word ScrCmd_328
-	.word ScrCmd_329
-	.word ScrCmd_330
-	.word ScrCmd_331
-	.word ScrCmd_332
-	.word ScrCmd_333
-	.word ScrCmd_334
-	.word ScrCmd_335
-	.word ScrCmd_336
-	.word ScrCmd_337
-	.word ScrCmd_338
-	.word ScrCmd_339
-	.word ScrCmd_340
-	.word ScrCmd_341
-	.word ScrCmd_342
-	.word ScrCmd_343
-	.word ScrCmd_344
-	.word ScrCmd_345
-	.word ScrCmd_346
-	.word ScrCmd_347
-	.word ScrCmd_348
-	.word ScrCmd_349
-	.word ScrCmd_350
-	.word ScrCmd_351
-	.word ScrCmd_352
-	.word ScrCmd_353
-	.word ScrCmd_354
-	.word ScrCmd_355
-	.word ScrCmd_356
-	.word ScrCmd_357
-	.word ScrCmd_358
-	.word ScrCmd_359
-	.word ScrCmd_360
-	.word ScrCmd_361
-	.word ScrCmd_362
-	.word ScrCmd_363
-	.word ScrCmd_364
-	.word ScrCmd_365
-	.word ScrCmd_366
-	.word ScrCmd_367
-	.word ScrCmd_368
-	.word ScrCmd_369
-	.word ScrCmd_370
-	.word ScrCmd_371
-	.word ScrCmd_372
-	.word ScrCmd_373
-	.word ScrCmd_374
-	.word ScrCmd_375
-	.word ScrCmd_376
-	.word ScrCmd_377
-	.word ScrCmd_378
-	.word ScrCmd_379
-	.word ScrCmd_380
-	.word ScrCmd_381
-	.word ScrCmd_382
-	.word ScrCmd_383
-	.word ScrCmd_384
-	.word ScrCmd_385
-	.word ScrCmd_386
-	.word ScrCmd_387
-	.word ScrCmd_388
-	.word ScrCmd_389
-	.word ScrCmd_390
-	.word ScrCmd_391
-	.word ScrCmd_392
-	.word ScrCmd_393
-	.word ScrCmd_394
-	.word ScrCmd_395
-	.word ScrCmd_396
-	.word ScrCmd_397
-	.word ScrCmd_398
-	.word ScrCmd_399
-	.word ScrCmd_400
-	.word ScrCmd_401
-	.word ScrCmd_402
-	.word ScrCmd_403
-	.word ScrCmd_404
-	.word ScrCmd_405
-	.word ScrCmd_406
-	.word ScrCmd_407
-	.word ScrCmd_408
-	.word ScrCmd_409
-	.word ScrCmd_410
-	.word ScrCmd_411
-	.word ScrCmd_412
-	.word ScrCmd_413
-	.word ScrCmd_414
-	.word ScrCmd_415
-	.word ScrCmd_416
-	.word ScrCmd_417
-	.word ScrCmd_418
-	.word ScrCmd_419
-	.word ScrCmd_420
-	.word ScrCmd_421
-	.word ScrCmd_422
-	.word ScrCmd_423
-	.word ScrCmd_424
-	.word ScrCmd_425
-	.word ScrCmd_426
-	.word ScrCmd_427
-	.word ScrCmd_428
-	.word ScrCmd_116
-	.word ScrCmd_430
-	.word ScrCmd_431
-	.word ScrCmd_432
-	.word ScrCmd_433
-	.word ScrCmd_434
-	.word ScrCmd_435
-	.word ScrCmd_436
-	.word ScrCmd_DebugWatch
-	.word ScrCmd_438
-	.word ScrCmd_439
-	.word ScrCmd_440
-	.word ScrCmd_441
-	.word ScrCmd_442
-	.word ScrCmd_443
-	.word ScrCmd_444
-	.word ScrCmd_445
-	.word ScrCmd_446
-	.word ScrCmd_447
-	.word ScrCmd_448
-	.word ScrCmd_449
-	.word ScrCmd_450
-	.word ScrCmd_451
-	.word ScrCmd_452
-	.word ScrCmd_453
-	.word ScrCmd_454
-	.word ScrCmd_455
-	.word ScrCmd_456
-	.word ScrCmd_457
-	.word ScrCmd_458
-	.word ScrCmd_459
-	.word ScrCmd_460
-	.word ScrCmd_461
-	.word ScrCmd_462
-	.word ScrCmd_463
-	.word ScrCmd_464
-	.word ScrCmd_465
-	.word ScrCmd_466
-	.word ScrCmd_467
-	.word ScrCmd_468
-	.word ScrCmd_469
-	.word ScrCmd_470
-	.word ScrCmd_471
-	.word ScrCmd_472
-	.word ScrCmd_473
-	.word ScrCmd_474
-	.word ScrCmd_475
-	.word ScrCmd_476
-	.word ScrCmd_477
-	.word ScrCmd_478
-	.word ScrCmd_479
-	.word ScrCmd_480
-	.word ScrCmd_481
-	.word ScrCmd_482
-	.word ScrCmd_483
-	.word ScrCmd_484
-	.word ScrCmd_485
-	.word ScrCmd_Dummy
-	.word ScrCmd_487
-	.word ScrCmd_488
-	.word ScrCmd_489
-	.word ScrCmd_490
-	.word ScrCmd_491
-	.word ScrCmd_492
-	.word ScrCmd_493
-	.word ScrCmd_494
-	.word ScrCmd_495
-	.word ScrCmd_496
-	.word ScrCmd_497
-	.word ScrCmd_498
-	.word ScrCmd_499
-	.word ScrCmd_500
-	.word ScrCmd_501
-	.word ScrCmd_502
-	.word ScrCmd_503
-	.word ScrCmd_504
-	.word ScrCmd_505
-	.word ScrCmd_506
-	.word ScrCmd_507
-	.word ScrCmd_508
-	.word ScrCmd_509
-	.word ScrCmd_510
-	.word ScrCmd_511
-	.word ScrCmd_512
-	.word ScrCmd_513
-	.word ScrCmd_514
-	.word ScrCmd_515
-	.word ScrCmd_516
-	.word ScrCmd_517
-	.word ScrCmd_518
-	.word ScrCmd_519
-	.word ScrCmd_520
-	.word ScrCmd_521
-	.word ScrCmd_522
-	.word ScrCmd_523
-	.word ScrCmd_524
-	.word ScrCmd_525
-	.word ScrCmd_526
-	.word ScrCmd_527
-	.word ScrCmd_528
-	.word ScrCmd_529
-	.word ScrCmd_530
-	.word ScrCmd_531
-	.word ScrCmd_532
-	.word ScrCmd_533
-	.word ScrCmd_534
-	.word ScrCmd_535
-	.word ScrCmd_536
-	.word ScrCmd_537
-	.word ScrCmd_538
-	.word ScrCmd_539
-	.word ScrCmd_540
-	.word ScrCmd_541
-	.word ScrCmd_542
-	.word ScrCmd_543
-	.word ScrCmd_544
-	.word ScrCmd_545
-	.word ScrCmd_546
-	.word ScrCmd_547
-	.word ScrCmd_548
-	.word ScrCmd_549
-	.word ScrCmd_550
-	.word ScrCmd_551
-	.word ScrCmd_552
-	.word ScrCmd_553
-	.word ScrCmd_554
-	.word ScrCmd_555
-	.word ScrCmd_556
-	.word ScrCmd_557
-	.word ScrCmd_558
-	.word ScrCmd_559
-	.word ScrCmd_560
-	.word ScrCmd_561
-	.word ScrCmd_562
-	.word ScrCmd_563
-	.word ScrCmd_564
-	.word ScrCmd_565
-	.word ScrCmd_566
-	.word ScrCmd_567
-	.word ScrCmd_568
-	.word ScrCmd_569
-	.word ScrCmd_570
-	.word ScrCmd_571
-	.word ScrCmd_572
-	.word ScrCmd_573
-	.word ScrCmd_574
-	.word ScrCmd_575
-	.word ScrCmd_576
-	.word ScrCmd_577
-	.word ScrCmd_578
-	.word ScrCmd_579
-	.word ScrCmd_580
-	.word ScrCmd_581
-	.word ScrCmd_582
-	.word ScrCmd_583
-	.word ScrCmd_584
-	.word ScrCmd_585
-	.word ScrCmd_586
-	.word ScrCmd_587
-	.word ScrCmd_588
-	.word ScrCmd_589
-	.word ScrCmd_590
-	.word ScrCmd_591
-	.word ScrCmd_592
-	.word ScrCmd_593
-	.word ScrCmd_594
-	.word ScrCmd_595
-	.word ScrCmd_596
-	.word ScrCmd_597
-	.word ScrCmd_598
-	.word ScrCmd_599
-	.word ScrCmd_600
-	.word ScrCmd_601
-	.word ScrCmd_602
-	.word ScrCmd_603
-	.word ScrCmd_604
-	.word ScrCmd_605
-	.word ScrCmd_606
-	.word ScrCmd_607
-	.word ScrCmd_608
-	.word ScrCmd_609
-	.word ScrCmd_610
-	.word ScrCmd_611
-	.word ScrCmd_612
-	.word ScrCmd_613
-	.word ScrCmd_614
-	.word ScrCmd_615
-	.word ScrCmd_616
-	.word ScrCmd_617
-	.word ScrCmd_618
-	.word ScrCmd_619
-	.word ScrCmd_620
-	.word ScrCmd_621
-	.word ScrCmd_622
-	.word ScrCmd_623
-	.word ScrCmd_624
-	.word ScrCmd_625
-	.word ScrCmd_626
-	.word ScrCmd_627
-	.word ScrCmd_628
-	.word ScrCmd_629
-	.word ScrCmd_630
-	.word ScrCmd_631
-	.word ScrCmd_632
-	.word ScrCmd_633
-	.word ScrCmd_634
-	.word ScrCmd_635
-	.word ScrCmd_636
-	.word ScrCmd_637
-	.word ScrCmd_638
-	.word ScrCmd_639
-	.word ScrCmd_640
-	.word ScrCmd_641
-	.word ScrCmd_642
-	.word ScrCmd_643
-	.word ScrCmd_644
-	.word ScrCmd_645
-	.word ScrCmd_646
-	.word ScrCmd_647
-	.word ScrCmd_648
-	.word ScrCmd_649
-	.word ScrCmd_650
-	.word ScrCmd_651
-	.word ScrCmd_652
-	.word ScrCmd_653
-	.word ScrCmd_654
-	.word ScrCmd_655
-	.word ScrCmd_656
-	.word ScrCmd_657
-	.word ScrCmd_658
-	.word ScrCmd_659
-	.word ScrCmd_660
-	.word ScrCmd_661
-	.word ScrCmd_662
-	.word ScrCmd_663
-	.word ScrCmd_664
-	.word ScrCmd_665
-	.word ScrCmd_666
-	.word ScrCmd_667
-	.word ScrCmd_668
-	.word ScrCmd_669
-	.word ScrCmd_670
-	.word ScrCmd_671
-	.word ScrCmd_672
-	.word ScrCmd_673
-	.word ScrCmd_674
-	.word ScrCmd_675
-	.word ScrCmd_676
-	.word ScrCmd_677
-	.word ScrCmd_678
-	.word ScrCmd_679
-	.word ScrCmd_680
-	.word ScrCmd_681
-	.word ScrCmd_682
-	.word ScrCmd_683
-	.word ScrCmd_684
-	.word ScrCmd_685
-	.word ScrCmd_686
-	.word ScrCmd_687
-	.word ScrCmd_688
-	.word ScrCmd_689
-	.word ScrCmd_690
-	.word ScrCmd_691
-	.word ScrCmd_692
-	.word ScrCmd_693
-	.word ScrCmd_694
-	.word ScrCmd_695
-	.word ScrCmd_696
-	.word ScrCmd_697
-	.word ScrCmd_698
-	.word ScrCmd_699
-	.word ScrCmd_700
-	.word ScrCmd_701
-	.word ScrCmd_702
-	.word ScrCmd_703
-	.word ScrCmd_704
-	.word ScrCmd_705
-	.word ScrCmd_706
-	.word ScrCmd_707
-	.word ScrCmd_708
-	.word ScrCmd_709
-	.word ScrCmd_710
-	.word ScrCmd_711
-	.word ScrCmd_712
-	.word ScrCmd_713
-	.word ScrCmd_714
-	.word ScrCmd_715
-	.word ScrCmd_716
-	.word ScrCmd_717
-	.word ScrCmd_718
-	.word ScrCmd_719
-	.word ScrCmd_720
-	.word ScrCmd_721
-	.word ScrCmd_722
-	.word ScrCmd_723
-	.word ScrCmd_724
-	.word ScrCmd_725
-	.word ScrCmd_726
-	.word ScrCmd_727
-	.word ScrCmd_728
-	.word ScrCmd_729
-	.word ScrCmd_730
-	.word ScrCmd_731
-	.word ScrCmd_732
-	.word ScrCmd_733
-	.word ScrCmd_734
-	.word ScrCmd_735
-	.word ScrCmd_736
-	.word ScrCmd_737
-	.word ScrCmd_738
-	.word ScrCmd_739
-	.word ScrCmd_740
-	.word ScrCmd_741
-	.word ScrCmd_742
-	.word ScrCmd_743
-	.word ScrCmd_744
-	.word ScrCmd_745
-	.word ScrCmd_746
-	.word ScrCmd_747
-	.word ScrCmd_748
-	.word ScrCmd_749
-	.word ScrCmd_750
-	.word ScrCmd_751
-	.word ScrCmd_752
-	.word ScrCmd_753
-	.word ScrCmd_754
-	.word ScrCmd_755
-	.word ScrCmd_756
-	.word ScrCmd_757
-	.word ScrCmd_758
-	.word ScrCmd_759
-	.word ScrCmd_760
-	.word ScrCmd_761
-	.word ScrCmd_762
-	.word ScrCmd_763
-	.word ScrCmd_764
-	.word ScrCmd_765
-	.word ScrCmd_766
-	.word ScrCmd_767
-	.word ScrCmd_768
-	.word ScrCmd_769
-	.word ScrCmd_770
-	.word ScrCmd_771
-	.word ScrCmd_772
-	.word ScrCmd_773
-	.word ScrCmd_774
-	.word ScrCmd_775
-	.word ScrCmd_776
-	.word ScrCmd_777
-	.word ScrCmd_778
-	.word ScrCmd_779
-	.word ScrCmd_780
-	.word ScrCmd_781
-	.word ScrCmd_782
-	.word ScrCmd_783
-	.word ScrCmd_784
-	.word ScrCmd_785
-	.word ScrCmd_786
-	.word ScrCmd_787
-	.word ScrCmd_788
-	.word ScrCmd_789
-	.word ScrCmd_790
-	.word ScrCmd_791
-	.word ScrCmd_792
-	.word ScrCmd_793
-	.word ScrCmd_794
-	.word ScrCmd_795
-	.word ScrCmd_796
-	.word ScrCmd_797
-	.word ScrCmd_798
-	.word ScrCmd_799
-	.word ScrCmd_800
-	.word ScrCmd_801
-	.word ScrCmd_802
-	.word ScrCmd_803
-	.word ScrCmd_804
-	.word ScrCmd_805
-	.word ScrCmd_806
-	.word ScrCmd_807
-	.word ScrCmd_808
-	.word ScrCmd_809
-	.word ScrCmd_810
-	.word ScrCmd_811
-	.word ScrCmd_812
-	.word ScrCmd_813
-	.word ScrCmd_814
-	.word ScrCmd_815
-	.word ScrCmd_816
-	.word ScrCmd_817
-	.word ScrCmd_818
-	.word ScrCmd_819
-	.word ScrCmd_820
-	.word ScrCmd_821
-	.word ScrCmd_822
-	.word ScrCmd_823
-	.word ScrCmd_824
-	.word ScrCmd_825
-	.word ScrCmd_826
-	.word ScrCmd_827
-	.word ScrCmd_828
-	.word ScrCmd_829
-	.word ScrCmd_830
-	.word ScrCmd_831
-	.word ScrCmd_832
-	.word ScrCmd_833
-	.word ScrCmd_834
-	.word ScrCmd_835
-	.word ScrCmd_836
-	.word ScrCmd_837
-	.word ScrCmd_838
-	.word ScrCmd_839
-	.word ScrCmd_840
-	.word ScrCmd_841
-	.word ScrCmd_842
-	.word ScrCmd_843
-	.word ScrCmd_844
-	.word ScrCmd_845
-	.word ScrCmd_846
-	.word ScrCmd_847
-	.word ScrCmd_848
-	.word ScrCmd_849
-	.word ScrCmd_850
-	.word ScrCmd_851
-	.word ScrCmd_852
+	.word ScrCmd_Nop                                    ; 000
+	.word ScrCmd_Dummy                                  ; 001
+	.word ScrCmd_End                                    ; 002
+	.word ScrCmd_Wait                                   ; 003
+	.word ScrCmd_LoadByte                               ; 004
+	.word ScrCmd_LoadWord                               ; 005
+	.word ScrCmd_LoadByteFromAddr                       ; 006
+	.word ScrCmd_WriteByteToAddr                        ; 007
+	.word ScrCmd_SetPtrByte                             ; 008
+	.word ScrCmd_CopyLocal                              ; 009
+	.word ScrCmd_CopyByte                               ; 010
+	.word ScrCmd_CompareLocalToLocal                    ; 011
+	.word ScrCmd_CompareLocalToValue                    ; 012
+	.word ScrCmd_CompareLocalToAddr                     ; 013
+	.word ScrCmd_CompareAddrToLocal                     ; 014
+	.word ScrCmd_CompareAddrToValue                     ; 015
+	.word ScrCmd_CompareAddrToAddr                      ; 016
+	.word ScrCmd_CompareVarToValue                      ; 017
+	.word ScrCmd_CompareVarToVar                        ; 018
+	.word ScrCmd_RunScript                              ; 019
+	.word ScrCmd_RunScriptWait                          ; 020
+	.word ScrCmd_RestartCurrentScript                   ; 021
+	.word ScrCmd_GoTo                                   ; 022
+	.word ScrCmd_ObjectGoTo                             ; 023
+	.word ScrCmd_BgGoTo                                 ; 024
+	.word ScrCmd_DirectionGoTo                          ; 025
+	.word ScrCmd_Call                                   ; 026
+	.word ScrCmd_Return                                 ; 027
+	.word ScrCmd_GoToIf                                 ; 028
+	.word ScrCmd_CallIf                                 ; 029
+	.word ScrCmd_030                                    ; 030
+	.word ScrCmd_031                                    ; 031
+	.word ScrCmd_032                                    ; 032
+	.word ScrCmd_033                                    ; 033
+	.word ScrCmd_034                                    ; 034
+	.word ScrCmd_035                                    ; 035
+	.word ScrCmd_036                                    ; 036
+	.word ScrCmd_037                                    ; 037
+	.word ScrCmd_038                                    ; 038
+	.word ScrCmd_039                                    ; 039
+	.word ScrCmd_040                                    ; 040
+	.word ScrCmd_041                                    ; 041
+	.word ScrCmd_042                                    ; 042
+	.word ScrCmd_043                                    ; 043
+	.word ScrCmd_044                                    ; 044
+	.word ScrCmd_045                                    ; 045
+	.word ScrCmd_046                                    ; 046
+	.word ScrCmd_047                                    ; 047
+	.word ScrCmd_048                                    ; 048
+	.word ScrCmd_049                                    ; 049
+	.word ScrCmd_050                                    ; 050
+	.word ScrCmd_051                                    ; 051
+	.word ScrCmd_052                                    ; 052
+	.word ScrCmd_053                                    ; 053
+	.word ScrCmd_054                                    ; 054
+	.word ScrCmd_055                                    ; 055
+	.word ScrCmd_056                                    ; 056
+	.word ScrCmd_057                                    ; 057
+	.word ScrCmd_058                                    ; 058
+	.word ScrCmd_059                                    ; 059
+	.word ScrCmd_060                                    ; 060
+	.word ScrCmd_061                                    ; 061
+	.word ScrCmd_062                                    ; 062
+	.word ScrCmd_063                                    ; 063
+	.word ScrCmd_064                                    ; 064
+	.word ScrCmd_065                                    ; 065
+	.word ScrCmd_066                                    ; 066
+	.word ScrCmd_067                                    ; 067
+	.word ScrCmd_068                                    ; 068
+	.word ScrCmd_069                                    ; 069
+	.word ScrCmd_070                                    ; 070
+	.word ScrCmd_071                                    ; 071
+	.word ScrCmd_072                                    ; 072
+	.word ScrCmd_073                                    ; 073
+	.word ScrCmd_074                                    ; 074
+	.word ScrCmd_075                                    ; 075
+	.word ScrCmd_076                                    ; 076
+	.word ScrCmd_077                                    ; 077
+	.word ScrCmd_078                                    ; 078
+	.word ScrCmd_079                                    ; 079
+	.word ScrCmd_080                                    ; 080
+	.word ScrCmd_081                                    ; 081
+	.word ScrCmd_082                                    ; 082
+	.word ScrCmd_083                                    ; 083
+	.word ScrCmd_084                                    ; 084
+	.word ScrCmd_085                                    ; 085
+	.word ScrCmd_086                                    ; 086
+	.word ScrCmd_087                                    ; 087
+	.word ScrCmd_088                                    ; 088
+	.word ScrCmd_089                                    ; 089
+	.word ScrCmd_090                                    ; 090
+	.word ScrCmd_091                                    ; 091
+	.word ScrCmd_092                                    ; 092
+	.word ScrCmd_093                                    ; 093
+	.word ScrCmd_094                                    ; 094
+	.word ScrCmd_095                                    ; 095
+	.word ScrCmd_096                                    ; 096
+	.word ScrCmd_097                                    ; 097
+	.word ScrCmd_098                                    ; 098
+	.word ScrCmd_099                                    ; 099
+	.word ScrCmd_100                                    ; 100
+	.word ScrCmd_101                                    ; 101
+	.word ScrCmd_102                                    ; 102
+	.word ScrCmd_103                                    ; 103
+	.word ScrCmd_104                                    ; 104
+	.word ScrCmd_105                                    ; 105
+	.word ScrCmd_106                                    ; 106
+	.word ScrCmd_107                                    ; 107
+	.word ScrCmd_108                                    ; 108
+	.word ScrCmd_109                                    ; 109
+	.word ScrCmd_110                                    ; 110
+	.word ScrCmd_111                                    ; 111
+	.word ScrCmd_112                                    ; 112
+	.word ScrCmd_113                                    ; 113
+	.word ScrCmd_114                                    ; 114
+	.word ScrCmd_115                                    ; 115
+	.word ScrCmd_116                                    ; 116
+	.word ScrCmd_117                                    ; 117
+	.word ScrCmd_118                                    ; 118
+	.word ScrCmd_119                                    ; 119
+	.word ScrCmd_120                                    ; 120
+	.word ScrCmd_121                                    ; 121
+	.word ScrCmd_122                                    ; 122
+	.word ScrCmd_123                                    ; 123
+	.word ScrCmd_124                                    ; 124
+	.word ScrCmd_125                                    ; 125
+	.word ScrCmd_126                                    ; 126
+	.word ScrCmd_127                                    ; 127
+	.word ScrCmd_128                                    ; 128
+	.word ScrCmd_129                                    ; 129
+	.word ScrCmd_130                                    ; 130
+	.word ScrCmd_131                                    ; 131
+	.word ScrCmd_132                                    ; 132
+	.word ScrCmd_133                                    ; 133
+	.word ScrCmd_134                                    ; 134
+	.word ScrCmd_135                                    ; 135
+	.word ScrCmd_136                                    ; 136
+	.word ScrCmd_137                                    ; 137
+	.word ScrCmd_138                                    ; 138
+	.word ScrCmd_139                                    ; 139
+	.word ScrCmd_140                                    ; 140
+	.word ScrCmd_141                                    ; 141
+	.word ScrCmd_142                                    ; 142
+	.word ScrCmd_143                                    ; 143
+	.word ScrCmd_144                                    ; 144
+	.word ScrCmd_145                                    ; 145
+	.word ScrCmd_146                                    ; 146
+	.word ScrCmd_147                                    ; 147
+	.word ScrCmd_148                                    ; 148
+	.word ScrCmd_149                                    ; 149
+	.word ScrCmd_150                                    ; 150
+	.word ScrCmd_151                                    ; 151
+	.word ScrCmd_152                                    ; 152
+	.word ScrCmd_153                                    ; 153
+	.word ScrCmd_154                                    ; 154
+	.word ScrCmd_155                                    ; 155
+	.word ScrCmd_156                                    ; 156
+	.word ScrCmd_157                                    ; 157
+	.word ScrCmd_158                                    ; 158
+	.word ScrCmd_159                                    ; 159
+	.word ScrCmd_160                                    ; 160
+	.word ScrCmd_161                                    ; 161
+	.word ScrCmd_162                                    ; 162
+	.word ScrCmd_163                                    ; 163
+	.word ScrCmd_164                                    ; 164
+	.word ScrCmd_165                                    ; 165
+	.word ScrCmd_166                                    ; 166
+	.word ScrCmd_167                                    ; 167
+	.word ScrCmd_168                                    ; 168
+	.word ScrCmd_169                                    ; 169
+	.word ScrCmd_170                                    ; 170
+	.word ScrCmd_171                                    ; 171
+	.word ScrCmd_172                                    ; 172
+	.word ScrCmd_173                                    ; 173
+	.word ScrCmd_174                                    ; 174
+	.word ScrCmd_175                                    ; 175
+	.word ScrCmd_176                                    ; 176
+	.word ScrCmd_177                                    ; 177
+	.word ScrCmd_178                                    ; 178
+	.word ScrCmd_179                                    ; 179
+	.word ScrCmd_180                                    ; 180
+	.word ScrCmd_181                                    ; 181
+	.word ScrCmd_182                                    ; 182
+	.word ScrCmd_183                                    ; 183
+	.word ScrCmd_184                                    ; 184
+	.word ScrCmd_185                                    ; 185
+	.word ScrCmd_186                                    ; 186
+	.word ScrCmd_187                                    ; 187
+	.word ScrCmd_188                                    ; 188
+	.word ScrCmd_189                                    ; 189
+	.word ScrCmd_190                                    ; 190
+	.word ScrCmd_191                                    ; 191
+	.word ScrCmd_192                                    ; 192
+	.word ScrCmd_193                                    ; 193
+	.word ScrCmd_194                                    ; 194
+	.word ScrCmd_195                                    ; 195
+	.word ScrCmd_196                                    ; 196
+	.word ScrCmd_197                                    ; 197
+	.word ScrCmd_198                                    ; 198
+	.word ScrCmd_199                                    ; 199
+	.word ScrCmd_200                                    ; 200
+	.word ScrCmd_201                                    ; 201
+	.word ScrCmd_202                                    ; 202
+	.word ScrCmd_203                                    ; 203
+	.word ScrCmd_204                                    ; 204
+	.word ScrCmd_205                                    ; 205
+	.word ScrCmd_206                                    ; 206
+	.word ScrCmd_207                                    ; 207
+	.word ScrCmd_208                                    ; 208
+	.word ScrCmd_209                                    ; 209
+	.word ScrCmd_210                                    ; 210
+	.word ScrCmd_211                                    ; 211
+	.word ScrCmd_212                                    ; 212
+	.word ScrCmd_213                                    ; 213
+	.word ScrCmd_214                                    ; 214
+	.word ScrCmd_215                                    ; 215
+	.word ScrCmd_216                                    ; 216
+	.word ScrCmd_217                                    ; 217
+	.word ScrCmd_218                                    ; 218
+	.word ScrCmd_219                                    ; 219
+	.word ScrCmd_220                                    ; 220
+	.word ScrCmd_221                                    ; 221
+	.word ScrCmd_222                                    ; 222
+	.word ScrCmd_223                                    ; 223
+	.word ScrCmd_224                                    ; 224
+	.word ScrCmd_225                                    ; 225
+	.word ScrCmd_226                                    ; 226
+	.word ScrCmd_227                                    ; 227
+	.word ScrCmd_228                                    ; 228
+	.word ScrCmd_229                                    ; 229
+	.word ScrCmd_230                                    ; 230
+	.word ScrCmd_231                                    ; 231
+	.word ScrCmd_232                                    ; 232
+	.word ScrCmd_233                                    ; 233
+	.word ScrCmd_234                                    ; 234
+	.word ScrCmd_235                                    ; 235
+	.word ScrCmd_236                                    ; 236
+	.word ScrCmd_237                                    ; 237
+	.word ScrCmd_238                                    ; 238
+	.word ScrCmd_239                                    ; 239
+	.word ScrCmd_240                                    ; 240
+	.word ScrCmd_241                                    ; 241
+	.word ScrCmd_242                                    ; 242
+	.word ScrCmd_243                                    ; 243
+	.word ScrCmd_244                                    ; 244
+	.word ScrCmd_245                                    ; 245
+	.word ScrCmd_246                                    ; 246
+	.word ScrCmd_247                                    ; 247
+	.word ScrCmd_248                                    ; 248
+	.word ScrCmd_249                                    ; 249
+	.word ScrCmd_250                                    ; 250
+	.word ScrCmd_251                                    ; 251
+	.word ScrCmd_252                                    ; 252
+	.word ScrCmd_253                                    ; 253
+	.word ScrCmd_254                                    ; 254
+	.word ScrCmd_255                                    ; 255
+	.word ScrCmd_256                                    ; 256
+	.word ScrCmd_257                                    ; 257
+	.word ScrCmd_258                                    ; 258
+	.word ScrCmd_259                                    ; 259
+	.word ScrCmd_260                                    ; 260
+	.word ScrCmd_261                                    ; 261
+	.word ScrCmd_262                                    ; 262
+	.word ScrCmd_263                                    ; 263
+	.word ScrCmd_264                                    ; 264
+	.word ScrCmd_265                                    ; 265
+	.word ScrCmd_266                                    ; 266
+	.word ScrCmd_267                                    ; 267
+	.word ScrCmd_268                                    ; 268
+	.word ScrCmd_269                                    ; 269
+	.word ScrCmd_270                                    ; 270
+	.word ScrCmd_271                                    ; 271
+	.word ScrCmd_272                                    ; 272
+	.word ScrCmd_273                                    ; 273
+	.word ScrCmd_274                                    ; 274
+	.word ScrCmd_275                                    ; 275
+	.word ScrCmd_276                                    ; 276
+	.word ScrCmd_277                                    ; 277
+	.word ScrCmd_278                                    ; 278
+	.word ScrCmd_279                                    ; 279
+	.word ScrCmd_280                                    ; 280
+	.word ScrCmd_281                                    ; 281
+	.word ScrCmd_282                                    ; 282
+	.word ScrCmd_283                                    ; 283
+	.word ScrCmd_284                                    ; 284
+	.word ScrCmd_285                                    ; 285
+	.word ScrCmd_286                                    ; 286
+	.word ScrCmd_287                                    ; 287
+	.word ScrCmd_288                                    ; 288
+	.word ScrCmd_289                                    ; 289
+	.word ScrCmd_290                                    ; 290
+	.word ScrCmd_291                                    ; 291
+	.word ScrCmd_292                                    ; 292
+	.word ScrCmd_293                                    ; 293
+	.word ScrCmd_294                                    ; 294
+	.word ScrCmd_295                                    ; 295
+	.word ScrCmd_296                                    ; 296
+	.word ScrCmd_297                                    ; 297
+	.word ScrCmd_298                                    ; 298
+	.word ScrCmd_299                                    ; 299
+	.word ScrCmd_300                                    ; 300
+	.word ScrCmd_301                                    ; 301
+	.word ScrCmd_302                                    ; 302
+	.word ScrCmd_303                                    ; 303
+	.word ScrCmd_304                                    ; 304
+	.word ScrCmd_305                                    ; 305
+	.word ScrCmd_306                                    ; 306
+	.word ScrCmd_307                                    ; 307
+	.word ScrCmd_308                                    ; 308
+	.word ScrCmd_309                                    ; 309
+	.word ScrCmd_310                                    ; 310
+	.word ScrCmd_311                                    ; 311
+	.word ScrCmd_312                                    ; 312
+	.word ScrCmd_313                                    ; 313
+	.word ScrCmd_314                                    ; 314
+	.word ScrCmd_315                                    ; 315
+	.word ScrCmd_316                                    ; 316
+	.word ScrCmd_317                                    ; 317
+	.word ScrCmd_318                                    ; 318
+	.word ScrCmd_319                                    ; 319
+	.word ScrCmd_320                                    ; 320
+	.word ScrCmd_321                                    ; 321
+	.word ScrCmd_322                                    ; 322
+	.word ScrCmd_323                                    ; 323
+	.word ScrCmd_324                                    ; 324
+	.word ScrCmd_325                                    ; 325
+	.word ScrCmd_326                                    ; 326
+	.word ScrCmd_327                                    ; 327
+	.word ScrCmd_328                                    ; 328
+	.word ScrCmd_329                                    ; 329
+	.word ScrCmd_330                                    ; 330
+	.word ScrCmd_331                                    ; 331
+	.word ScrCmd_332                                    ; 332
+	.word ScrCmd_333                                    ; 333
+	.word ScrCmd_334                                    ; 334
+	.word ScrCmd_335                                    ; 335
+	.word ScrCmd_336                                    ; 336
+	.word ScrCmd_337                                    ; 337
+	.word ScrCmd_338                                    ; 338
+	.word ScrCmd_339                                    ; 339
+	.word ScrCmd_340                                    ; 340
+	.word ScrCmd_341                                    ; 341
+	.word ScrCmd_342                                    ; 342
+	.word ScrCmd_343                                    ; 343
+	.word ScrCmd_344                                    ; 344
+	.word ScrCmd_345                                    ; 345
+	.word ScrCmd_346                                    ; 346
+	.word ScrCmd_347                                    ; 347
+	.word ScrCmd_348                                    ; 348
+	.word ScrCmd_349                                    ; 349
+	.word ScrCmd_350                                    ; 350
+	.word ScrCmd_351                                    ; 351
+	.word ScrCmd_352                                    ; 352
+	.word ScrCmd_353                                    ; 353
+	.word ScrCmd_354                                    ; 354
+	.word ScrCmd_355                                    ; 355
+	.word ScrCmd_356                                    ; 356
+	.word ScrCmd_357                                    ; 357
+	.word ScrCmd_358                                    ; 358
+	.word ScrCmd_359                                    ; 359
+	.word ScrCmd_360                                    ; 360
+	.word ScrCmd_361                                    ; 361
+	.word ScrCmd_362                                    ; 362
+	.word ScrCmd_363                                    ; 363
+	.word ScrCmd_364                                    ; 364
+	.word ScrCmd_365                                    ; 365
+	.word ScrCmd_366                                    ; 366
+	.word ScrCmd_367                                    ; 367
+	.word ScrCmd_368                                    ; 368
+	.word ScrCmd_369                                    ; 369
+	.word ScrCmd_370                                    ; 370
+	.word ScrCmd_371                                    ; 371
+	.word ScrCmd_372                                    ; 372
+	.word ScrCmd_373                                    ; 373
+	.word ScrCmd_374                                    ; 374
+	.word ScrCmd_375                                    ; 375
+	.word ScrCmd_376                                    ; 376
+	.word ScrCmd_377                                    ; 377
+	.word ScrCmd_378                                    ; 378
+	.word ScrCmd_379                                    ; 379
+	.word ScrCmd_380                                    ; 380
+	.word ScrCmd_381                                    ; 381
+	.word ScrCmd_382                                    ; 382
+	.word ScrCmd_383                                    ; 383
+	.word ScrCmd_384                                    ; 384
+	.word ScrCmd_385                                    ; 385
+	.word ScrCmd_386                                    ; 386
+	.word ScrCmd_387                                    ; 387
+	.word ScrCmd_388                                    ; 388
+	.word ScrCmd_389                                    ; 389
+	.word ScrCmd_390                                    ; 390
+	.word ScrCmd_391                                    ; 391
+	.word ScrCmd_392                                    ; 392
+	.word ScrCmd_393                                    ; 393
+	.word ScrCmd_394                                    ; 394
+	.word ScrCmd_395                                    ; 395
+	.word ScrCmd_396                                    ; 396
+	.word ScrCmd_397                                    ; 397
+	.word ScrCmd_398                                    ; 398
+	.word ScrCmd_399                                    ; 399
+	.word ScrCmd_400                                    ; 400
+	.word ScrCmd_401                                    ; 401
+	.word ScrCmd_402                                    ; 402
+	.word ScrCmd_403                                    ; 403
+	.word ScrCmd_404                                    ; 404
+	.word ScrCmd_405                                    ; 405
+	.word ScrCmd_406                                    ; 406
+	.word ScrCmd_407                                    ; 407
+	.word ScrCmd_408                                    ; 408
+	.word ScrCmd_409                                    ; 409
+	.word ScrCmd_410                                    ; 410
+	.word ScrCmd_411                                    ; 411
+	.word ScrCmd_412                                    ; 412
+	.word ScrCmd_413                                    ; 413
+	.word ScrCmd_414                                    ; 414
+	.word ScrCmd_415                                    ; 415
+	.word ScrCmd_416                                    ; 416
+	.word ScrCmd_417                                    ; 417
+	.word ScrCmd_418                                    ; 418
+	.word ScrCmd_419                                    ; 419
+	.word ScrCmd_420                                    ; 420
+	.word ScrCmd_421                                    ; 421
+	.word ScrCmd_422                                    ; 422
+	.word ScrCmd_423                                    ; 423
+	.word ScrCmd_424                                    ; 424
+	.word ScrCmd_425                                    ; 425
+	.word ScrCmd_426                                    ; 426
+	.word ScrCmd_427                                    ; 427
+	.word ScrCmd_428                                    ; 428
+	.word ScrCmd_116                                    ; 429
+	.word ScrCmd_430                                    ; 430
+	.word ScrCmd_431                                    ; 431
+	.word ScrCmd_432                                    ; 432
+	.word ScrCmd_433                                    ; 433
+	.word ScrCmd_434                                    ; 434
+	.word ScrCmd_435                                    ; 435
+	.word ScrCmd_436                                    ; 436
+	.word ScrCmd_DebugWatch                             ; 437
+	.word ScrCmd_438                                    ; 438
+	.word ScrCmd_439                                    ; 439
+	.word ScrCmd_440                                    ; 440
+	.word ScrCmd_441                                    ; 441
+	.word ScrCmd_442                                    ; 442
+	.word ScrCmd_443                                    ; 443
+	.word ScrCmd_444                                    ; 444
+	.word ScrCmd_445                                    ; 445
+	.word ScrCmd_446                                    ; 446
+	.word ScrCmd_447                                    ; 447
+	.word ScrCmd_448                                    ; 448
+	.word ScrCmd_449                                    ; 449
+	.word ScrCmd_450                                    ; 450
+	.word ScrCmd_451                                    ; 451
+	.word ScrCmd_452                                    ; 452
+	.word ScrCmd_453                                    ; 453
+	.word ScrCmd_454                                    ; 454
+	.word ScrCmd_455                                    ; 455
+	.word ScrCmd_456                                    ; 456
+	.word ScrCmd_457                                    ; 457
+	.word ScrCmd_458                                    ; 458
+	.word ScrCmd_459                                    ; 459
+	.word ScrCmd_460                                    ; 460
+	.word ScrCmd_461                                    ; 461
+	.word ScrCmd_462                                    ; 462
+	.word ScrCmd_463                                    ; 463
+	.word ScrCmd_464                                    ; 464
+	.word ScrCmd_465                                    ; 465
+	.word ScrCmd_466                                    ; 466
+	.word ScrCmd_467                                    ; 467
+	.word ScrCmd_468                                    ; 468
+	.word ScrCmd_469                                    ; 469
+	.word ScrCmd_470                                    ; 470
+	.word ScrCmd_471                                    ; 471
+	.word ScrCmd_472                                    ; 472
+	.word ScrCmd_473                                    ; 473
+	.word ScrCmd_474                                    ; 474
+	.word ScrCmd_475                                    ; 475
+	.word ScrCmd_476                                    ; 476
+	.word ScrCmd_477                                    ; 477
+	.word ScrCmd_478                                    ; 478
+	.word ScrCmd_479                                    ; 479
+	.word ScrCmd_480                                    ; 480
+	.word ScrCmd_481                                    ; 481
+	.word ScrCmd_482                                    ; 482
+	.word ScrCmd_483                                    ; 483
+	.word ScrCmd_484                                    ; 484
+	.word ScrCmd_485                                    ; 485
+	.word ScrCmd_Dummy                                  ; 486
+	.word ScrCmd_487                                    ; 487
+	.word ScrCmd_488                                    ; 488
+	.word ScrCmd_489                                    ; 489
+	.word ScrCmd_490                                    ; 490
+	.word ScrCmd_491                                    ; 491
+	.word ScrCmd_492                                    ; 492
+	.word ScrCmd_493                                    ; 493
+	.word ScrCmd_494                                    ; 494
+	.word ScrCmd_495                                    ; 495
+	.word ScrCmd_496                                    ; 496
+	.word ScrCmd_497                                    ; 497
+	.word ScrCmd_498                                    ; 498
+	.word ScrCmd_499                                    ; 499
+	.word ScrCmd_500                                    ; 500
+	.word ScrCmd_501                                    ; 501
+	.word ScrCmd_502                                    ; 502
+	.word ScrCmd_503                                    ; 503
+	.word ScrCmd_504                                    ; 504
+	.word ScrCmd_505                                    ; 505
+	.word ScrCmd_506                                    ; 506
+	.word ScrCmd_507                                    ; 507
+	.word ScrCmd_508                                    ; 508
+	.word ScrCmd_509                                    ; 509
+	.word ScrCmd_510                                    ; 510
+	.word ScrCmd_511                                    ; 511
+	.word ScrCmd_512                                    ; 512
+	.word ScrCmd_513                                    ; 513
+	.word ScrCmd_514                                    ; 514
+	.word ScrCmd_515                                    ; 515
+	.word ScrCmd_516                                    ; 516
+	.word ScrCmd_517                                    ; 517
+	.word ScrCmd_518                                    ; 518
+	.word ScrCmd_519                                    ; 519
+	.word ScrCmd_520                                    ; 520
+	.word ScrCmd_521                                    ; 521
+	.word ScrCmd_522                                    ; 522
+	.word ScrCmd_523                                    ; 523
+	.word ScrCmd_524                                    ; 524
+	.word ScrCmd_525                                    ; 525
+	.word ScrCmd_526                                    ; 526
+	.word ScrCmd_527                                    ; 527
+	.word ScrCmd_528                                    ; 528
+	.word ScrCmd_529                                    ; 529
+	.word ScrCmd_530                                    ; 530
+	.word ScrCmd_531                                    ; 531
+	.word ScrCmd_532                                    ; 532
+	.word ScrCmd_533                                    ; 533
+	.word ScrCmd_534                                    ; 534
+	.word ScrCmd_535                                    ; 535
+	.word ScrCmd_536                                    ; 536
+	.word ScrCmd_537                                    ; 537
+	.word ScrCmd_538                                    ; 538
+	.word ScrCmd_539                                    ; 539
+	.word ScrCmd_540                                    ; 540
+	.word ScrCmd_541                                    ; 541
+	.word ScrCmd_542                                    ; 542
+	.word ScrCmd_543                                    ; 543
+	.word ScrCmd_544                                    ; 544
+	.word ScrCmd_545                                    ; 545
+	.word ScrCmd_546                                    ; 546
+	.word ScrCmd_547                                    ; 547
+	.word ScrCmd_548                                    ; 548
+	.word ScrCmd_549                                    ; 549
+	.word ScrCmd_550                                    ; 550
+	.word ScrCmd_551                                    ; 551
+	.word ScrCmd_552                                    ; 552
+	.word ScrCmd_553                                    ; 553
+	.word ScrCmd_554                                    ; 554
+	.word ScrCmd_555                                    ; 555
+	.word ScrCmd_556                                    ; 556
+	.word ScrCmd_557                                    ; 557
+	.word ScrCmd_558                                    ; 558
+	.word ScrCmd_559                                    ; 559
+	.word ScrCmd_560                                    ; 560
+	.word ScrCmd_561                                    ; 561
+	.word ScrCmd_562                                    ; 562
+	.word ScrCmd_563                                    ; 563
+	.word ScrCmd_564                                    ; 564
+	.word ScrCmd_565                                    ; 565
+	.word ScrCmd_566                                    ; 566
+	.word ScrCmd_567                                    ; 567
+	.word ScrCmd_568                                    ; 568
+	.word ScrCmd_569                                    ; 569
+	.word ScrCmd_570                                    ; 570
+	.word ScrCmd_571                                    ; 571
+	.word ScrCmd_572                                    ; 572
+	.word ScrCmd_573                                    ; 573
+	.word ScrCmd_574                                    ; 574
+	.word ScrCmd_575                                    ; 575
+	.word ScrCmd_576                                    ; 576
+	.word ScrCmd_577                                    ; 577
+	.word ScrCmd_578                                    ; 578
+	.word ScrCmd_579                                    ; 579
+	.word ScrCmd_580                                    ; 580
+	.word ScrCmd_581                                    ; 581
+	.word ScrCmd_582                                    ; 582
+	.word ScrCmd_583                                    ; 583
+	.word ScrCmd_584                                    ; 584
+	.word ScrCmd_585                                    ; 585
+	.word ScrCmd_586                                    ; 586
+	.word ScrCmd_587                                    ; 587
+	.word ScrCmd_588                                    ; 588
+	.word ScrCmd_589                                    ; 589
+	.word ScrCmd_590                                    ; 590
+	.word ScrCmd_591                                    ; 591
+	.word ScrCmd_592                                    ; 592
+	.word ScrCmd_593                                    ; 593
+	.word ScrCmd_594                                    ; 594
+	.word ScrCmd_595                                    ; 595
+	.word ScrCmd_596                                    ; 596
+	.word ScrCmd_597                                    ; 597
+	.word ScrCmd_598                                    ; 598
+	.word ScrCmd_599                                    ; 599
+	.word ScrCmd_600                                    ; 600
+	.word ScrCmd_601                                    ; 601
+	.word ScrCmd_602                                    ; 602
+	.word ScrCmd_603                                    ; 603
+	.word ScrCmd_604                                    ; 604
+	.word ScrCmd_605                                    ; 605
+	.word ScrCmd_606                                    ; 606
+	.word ScrCmd_607                                    ; 607
+	.word ScrCmd_608                                    ; 608
+	.word ScrCmd_609                                    ; 609
+	.word ScrCmd_610                                    ; 610
+	.word ScrCmd_611                                    ; 611
+	.word ScrCmd_612                                    ; 612
+	.word ScrCmd_613                                    ; 613
+	.word ScrCmd_614                                    ; 614
+	.word ScrCmd_615                                    ; 615
+	.word ScrCmd_616                                    ; 616
+	.word ScrCmd_617                                    ; 617
+	.word ScrCmd_618                                    ; 618
+	.word ScrCmd_619                                    ; 619
+	.word ScrCmd_620                                    ; 620
+	.word ScrCmd_621                                    ; 621
+	.word ScrCmd_622                                    ; 622
+	.word ScrCmd_623                                    ; 623
+	.word ScrCmd_624                                    ; 624
+	.word ScrCmd_625                                    ; 625
+	.word ScrCmd_626                                    ; 626
+	.word ScrCmd_627                                    ; 627
+	.word ScrCmd_628                                    ; 628
+	.word ScrCmd_629                                    ; 629
+	.word ScrCmd_630                                    ; 630
+	.word ScrCmd_631                                    ; 631
+	.word ScrCmd_632                                    ; 632
+	.word ScrCmd_633                                    ; 633
+	.word ScrCmd_634                                    ; 634
+	.word ScrCmd_635                                    ; 635
+	.word ScrCmd_636                                    ; 636
+	.word ScrCmd_637                                    ; 637
+	.word ScrCmd_638                                    ; 638
+	.word ScrCmd_639                                    ; 639
+	.word ScrCmd_640                                    ; 640
+	.word ScrCmd_641                                    ; 641
+	.word ScrCmd_642                                    ; 642
+	.word ScrCmd_643                                    ; 643
+	.word ScrCmd_644                                    ; 644
+	.word ScrCmd_645                                    ; 645
+	.word ScrCmd_646                                    ; 646
+	.word ScrCmd_647                                    ; 647
+	.word ScrCmd_648                                    ; 648
+	.word ScrCmd_649                                    ; 649
+	.word ScrCmd_650                                    ; 650
+	.word ScrCmd_651                                    ; 651
+	.word ScrCmd_652                                    ; 652
+	.word ScrCmd_653                                    ; 653
+	.word ScrCmd_654                                    ; 654
+	.word ScrCmd_655                                    ; 655
+	.word ScrCmd_656                                    ; 656
+	.word ScrCmd_657                                    ; 657
+	.word ScrCmd_658                                    ; 658
+	.word ScrCmd_659                                    ; 659
+	.word ScrCmd_660                                    ; 660
+	.word ScrCmd_661                                    ; 661
+	.word ScrCmd_662                                    ; 662
+	.word ScrCmd_663                                    ; 663
+	.word ScrCmd_664                                    ; 664
+	.word ScrCmd_665                                    ; 665
+	.word ScrCmd_666                                    ; 666
+	.word ScrCmd_667                                    ; 667
+	.word ScrCmd_668                                    ; 668
+	.word ScrCmd_669                                    ; 669
+	.word ScrCmd_670                                    ; 670
+	.word ScrCmd_671                                    ; 671
+	.word ScrCmd_672                                    ; 672
+	.word ScrCmd_673                                    ; 673
+	.word ScrCmd_674                                    ; 674
+	.word ScrCmd_675                                    ; 675
+	.word ScrCmd_676                                    ; 676
+	.word ScrCmd_677                                    ; 677
+	.word ScrCmd_678                                    ; 678
+	.word ScrCmd_679                                    ; 679
+	.word ScrCmd_680                                    ; 680
+	.word ScrCmd_681                                    ; 681
+	.word ScrCmd_682                                    ; 682
+	.word ScrCmd_683                                    ; 683
+	.word ScrCmd_684                                    ; 684
+	.word ScrCmd_685                                    ; 685
+	.word ScrCmd_686                                    ; 686
+	.word ScrCmd_687                                    ; 687
+	.word ScrCmd_688                                    ; 688
+	.word ScrCmd_689                                    ; 689
+	.word ScrCmd_690                                    ; 690
+	.word ScrCmd_691                                    ; 691
+	.word ScrCmd_692                                    ; 692
+	.word ScrCmd_693                                    ; 693
+	.word ScrCmd_694                                    ; 694
+	.word ScrCmd_695                                    ; 695
+	.word ScrCmd_696                                    ; 696
+	.word ScrCmd_697                                    ; 697
+	.word ScrCmd_698                                    ; 698
+	.word ScrCmd_699                                    ; 699
+	.word ScrCmd_700                                    ; 700
+	.word ScrCmd_701                                    ; 701
+	.word ScrCmd_702                                    ; 702
+	.word ScrCmd_703                                    ; 703
+	.word ScrCmd_704                                    ; 704
+	.word ScrCmd_705                                    ; 705
+	.word ScrCmd_706                                    ; 706
+	.word ScrCmd_707                                    ; 707
+	.word ScrCmd_708                                    ; 708
+	.word ScrCmd_709                                    ; 709
+	.word ScrCmd_710                                    ; 710
+	.word ScrCmd_711                                    ; 711
+	.word ScrCmd_712                                    ; 712
+	.word ScrCmd_713                                    ; 713
+	.word ScrCmd_714                                    ; 714
+	.word ScrCmd_715                                    ; 715
+	.word ScrCmd_716                                    ; 716
+	.word ScrCmd_717                                    ; 717
+	.word ScrCmd_718                                    ; 718
+	.word ScrCmd_719                                    ; 719
+	.word ScrCmd_720                                    ; 720
+	.word ScrCmd_721                                    ; 721
+	.word ScrCmd_722                                    ; 722
+	.word ScrCmd_723                                    ; 723
+	.word ScrCmd_724                                    ; 724
+	.word ScrCmd_725                                    ; 725
+	.word ScrCmd_726                                    ; 726
+	.word ScrCmd_727                                    ; 727
+	.word ScrCmd_728                                    ; 728
+	.word ScrCmd_729                                    ; 729
+	.word ScrCmd_730                                    ; 730
+	.word ScrCmd_731                                    ; 731
+	.word ScrCmd_732                                    ; 732
+	.word ScrCmd_733                                    ; 733
+	.word ScrCmd_734                                    ; 734
+	.word ScrCmd_735                                    ; 735
+	.word ScrCmd_736                                    ; 736
+	.word ScrCmd_737                                    ; 737
+	.word ScrCmd_738                                    ; 738
+	.word ScrCmd_739                                    ; 739
+	.word ScrCmd_740                                    ; 740
+	.word ScrCmd_741                                    ; 741
+	.word ScrCmd_742                                    ; 742
+	.word ScrCmd_743                                    ; 743
+	.word ScrCmd_744                                    ; 744
+	.word ScrCmd_745                                    ; 745
+	.word ScrCmd_746                                    ; 746
+	.word ScrCmd_747                                    ; 747
+	.word ScrCmd_748                                    ; 748
+	.word ScrCmd_749                                    ; 749
+	.word ScrCmd_750                                    ; 750
+	.word ScrCmd_751                                    ; 751
+	.word ScrCmd_752                                    ; 752
+	.word ScrCmd_753                                    ; 753
+	.word ScrCmd_754                                    ; 754
+	.word ScrCmd_755                                    ; 755
+	.word ScrCmd_756                                    ; 756
+	.word ScrCmd_757                                    ; 757
+	.word ScrCmd_758                                    ; 758
+	.word ScrCmd_759                                    ; 759
+	.word ScrCmd_760                                    ; 760
+	.word ScrCmd_761                                    ; 761
+	.word ScrCmd_762                                    ; 762
+	.word ScrCmd_763                                    ; 763
+	.word ScrCmd_764                                    ; 764
+	.word ScrCmd_765                                    ; 765
+	.word ScrCmd_766                                    ; 766
+	.word ScrCmd_767                                    ; 767
+	.word ScrCmd_768                                    ; 768
+	.word ScrCmd_769                                    ; 769
+	.word ScrCmd_770                                    ; 770
+	.word ScrCmd_771                                    ; 771
+	.word ScrCmd_772                                    ; 772
+	.word ScrCmd_773                                    ; 773
+	.word ScrCmd_774                                    ; 774
+	.word ScrCmd_775                                    ; 775
+	.word ScrCmd_776                                    ; 776
+	.word ScrCmd_777                                    ; 777
+	.word ScrCmd_778                                    ; 778
+	.word ScrCmd_779                                    ; 779
+	.word ScrCmd_780                                    ; 780
+	.word ScrCmd_781                                    ; 781
+	.word ScrCmd_782                                    ; 782
+	.word ScrCmd_783                                    ; 783
+	.word ScrCmd_784                                    ; 784
+	.word ScrCmd_785                                    ; 785
+	.word ScrCmd_786                                    ; 786
+	.word ScrCmd_787                                    ; 787
+	.word ScrCmd_788                                    ; 788
+	.word ScrCmd_789                                    ; 789
+	.word ScrCmd_790                                    ; 790
+	.word ScrCmd_791                                    ; 791
+	.word ScrCmd_792                                    ; 792
+	.word ScrCmd_793                                    ; 793
+	.word ScrCmd_794                                    ; 794
+	.word ScrCmd_795                                    ; 795
+	.word ScrCmd_796                                    ; 796
+	.word ScrCmd_797                                    ; 797
+	.word ScrCmd_798                                    ; 798
+	.word ScrCmd_799                                    ; 799
+	.word ScrCmd_800                                    ; 800
+	.word ScrCmd_801                                    ; 801
+	.word ScrCmd_802                                    ; 802
+	.word ScrCmd_803                                    ; 803
+	.word ScrCmd_804                                    ; 804
+	.word ScrCmd_805                                    ; 805
+	.word ScrCmd_806                                    ; 806
+	.word ScrCmd_807                                    ; 807
+	.word ScrCmd_808                                    ; 808
+	.word ScrCmd_809                                    ; 809
+	.word ScrCmd_810                                    ; 810
+	.word ScrCmd_811                                    ; 811
+	.word ScrCmd_812                                    ; 812
+	.word ScrCmd_813                                    ; 813
+	.word ScrCmd_814                                    ; 814
+	.word ScrCmd_815                                    ; 815
+	.word ScrCmd_816                                    ; 816
+	.word ScrCmd_817                                    ; 817
+	.word ScrCmd_818                                    ; 818
+	.word ScrCmd_819                                    ; 819
+	.word ScrCmd_820                                    ; 820
+	.word ScrCmd_821                                    ; 821
+	.word ScrCmd_822                                    ; 822
+	.word ScrCmd_823                                    ; 823
+	.word ScrCmd_824                                    ; 824
+	.word ScrCmd_825                                    ; 825
+	.word ScrCmd_826                                    ; 826
+	.word ScrCmd_827                                    ; 827
+	.word ScrCmd_828                                    ; 828
+	.word ScrCmd_829                                    ; 829
+	.word ScrCmd_830                                    ; 830
+	.word ScrCmd_831                                    ; 831
+	.word ScrCmd_832                                    ; 832
+	.word ScrCmd_833                                    ; 833
+	.word ScrCmd_834                                    ; 834
+	.word ScrCmd_835                                    ; 835
+	.word ScrCmd_836                                    ; 836
+	.word ScrCmd_837                                    ; 837
+	.word ScrCmd_838                                    ; 838
+	.word ScrCmd_839                                    ; 839
+	.word ScrCmd_840                                    ; 840
+	.word ScrCmd_841                                    ; 841
+	.word ScrCmd_842                                    ; 842
+	.word ScrCmd_843                                    ; 843
+	.word ScrCmd_844                                    ; 844
+	.word ScrCmd_845                                    ; 845
+	.word ScrCmd_846                                    ; 846
+	.word ScrCmd_847                                    ; 847
+	.word ScrCmd_848                                    ; 848
+	.word ScrCmd_849                                    ; 849
+	.word ScrCmd_850                                    ; 850
+	.word ScrCmd_851                                    ; 851
+	.word ScrCmd_852                                    ; 852
 
 	.text
 
