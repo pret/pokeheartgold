@@ -176,7 +176,7 @@ AddTextPrinterParameterized: ; 0x020200A8
 	strb r0, [r2, #0x1b]
 	ldr r2, [sp, #0x28]
 	add r0, sp, #0
-	bl sub_020201A4
+	bl AddTextPrinter
 	add sp, #0x1c
 	pop {pc}
 	nop
@@ -220,7 +220,7 @@ AddTextPrinterParameterized2: ; 0x020200FC
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x2c]
 	add r0, sp, #0
-	bl sub_020201A4
+	bl AddTextPrinter
 	add sp, #0x1c
 	pop {pc}
 	nop
@@ -264,15 +264,15 @@ AddTextPrinterParameterized3: ; 0x02020150
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x34]
 	add r0, sp, #0
-	bl sub_020201A4
+	bl AddTextPrinter
 	add sp, #0x1c
 	pop {pc}
 	nop
 _020201A0: .word 0x0210F6D8
 	thumb_func_end AddTextPrinterParameterized3
 
-	thumb_func_start sub_020201A4
-sub_020201A4: ; 0x020201A4
+	thumb_func_start AddTextPrinter
+AddTextPrinter: ; 0x020201A4
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	ldr r0, _020202E0 ; =0x0210F6D8
@@ -432,7 +432,7 @@ _020202D0:
 _020202E0: .word 0x0210F6D8
 _020202E4: .word _021D1F6C
 _020202E8: .word sub_020202EC
-	thumb_func_end sub_020201A4
+	thumb_func_end AddTextPrinter
 
 	thumb_func_start sub_020202EC
 sub_020202EC: ; 0x020202EC

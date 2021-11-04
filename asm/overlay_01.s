@@ -19788,18 +19788,18 @@ ov01_021EF034: ; 0x021EF034
 	.balign 4, 0
 	thumb_func_end ov01_021EF034
 
-	thumb_func_start ScrCmd_044
-ScrCmd_044: ; 0x021EF050
+	thumb_func_start ScrCmd_Message
+ScrCmd_Message: ; 0x021EF050
 	push {r3, lr}
 	ldr r2, [r0, #8]
 	add r1, r2, #1
 	str r1, [r0, #8]
 	ldrb r2, [r2]
 	ldr r1, [r0, #0x78]
-	bl ov01_021EF530
+	bl ovFieldMain_ShowMessageInField
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_044
+	thumb_func_end ScrCmd_Message
 
 	thumb_func_start ScrCmd_438
 ScrCmd_438: ; 0x021EF064
@@ -19862,7 +19862,7 @@ ScrCmd_439: ; 0x021EF0A4
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl ov01_021EF530
+	bl ovFieldMain_ShowMessageInField
 	add r0, r5, #0
 	bl DestroyMsgData
 	mov r0, #0
@@ -20348,7 +20348,7 @@ ov01_021EF4C4: ; 0x021EF4C4
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl ov01_021EF60C
+	bl ovFieldMain_GetTextFrameDelay
 	strb r0, [r4]
 	mov r0, #0
 	strb r0, [r4, #1]
@@ -20370,20 +20370,20 @@ ov01_021EF4DC: ; 0x021EF4DC
 	add r1, sp, #8
 	add r7, r2, #0
 	ldr r4, [sp, #0x38]
-	bl ov01_021EF620
+	bl ovFieldMain_GetMsgBoxParameters
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	add r1, sp, #8
-	bl ov01_021EF6A8
+	bl ovFieldMain_CreateMessageBox
 	add r0, sp, #8
 	add r1, r6, #0
 	add r2, r7, #0
-	bl ov01_021EF6EC
+	bl ovFieldMain_ReadAndExpandMsgDataViaBuffer
 	cmp r4, #0
 	bne _021EF51C
 	add r0, r5, #0
-	bl ov01_021EF60C
+	bl ovFieldMain_GetTextFrameDelay
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #1
@@ -20401,8 +20401,8 @@ _021EF522:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EF4DC
 
-	thumb_func_start ov01_021EF530
-ov01_021EF530: ; 0x021EF530
+	thumb_func_start ovFieldMain_ShowMessageInField
+ovFieldMain_ShowMessageInField: ; 0x021EF530
 	push {r4, r5, r6, lr}
 	sub sp, #0x18
 	add r5, r0, #0
@@ -20411,21 +20411,21 @@ ov01_021EF530: ; 0x021EF530
 	ldr r0, [r0]
 	add r1, sp, #0
 	add r6, r2, #0
-	bl ov01_021EF620
+	bl ovFieldMain_GetMsgBoxParameters
 	add r5, #0x80
 	ldr r0, [r5]
 	add r1, sp, #0
-	bl ov01_021EF6A8
+	bl ovFieldMain_CreateMessageBox
 	add r0, sp, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov01_021EF6EC
+	bl ovFieldMain_ReadAndExpandMsgDataViaBuffer
 	add r0, sp, #0
 	mov r1, #1
-	bl ov01_021EF780
+	bl ovFieldMain_AddTextPrinterParameterized
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021EF530
+	thumb_func_end ovFieldMain_ShowMessageInField
 
 	thumb_func_start ov01_021EF564
 ov01_021EF564: ; 0x021EF564
@@ -20438,12 +20438,12 @@ ov01_021EF564: ; 0x021EF564
 	add r1, sp, #4
 	add r6, r2, #0
 	add r7, r3, #0
-	bl ov01_021EF620
+	bl ovFieldMain_GetMsgBoxParameters
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	add r1, sp, #4
-	bl ov01_021EF6A8
+	bl ovFieldMain_CreateMessageBox
 	add r0, sp, #0x20
 	ldrh r0, [r0, #0x10]
 	add r1, r4, #0
@@ -20457,7 +20457,7 @@ ov01_021EF564: ; 0x021EF564
 	cmp r0, #0xff
 	beq _021EF5BC
 	add r0, r5, #0
-	bl ov01_021EF60C
+	bl ovFieldMain_GetTextFrameDelay
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -20471,7 +20471,7 @@ ov01_021EF564: ; 0x021EF564
 _021EF5BC:
 	add r0, sp, #4
 	mov r1, #1
-	bl ov01_021EF780
+	bl ovFieldMain_AddTextPrinterParameterized
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EF564
@@ -20486,18 +20486,18 @@ ov01_021EF5C8: ; 0x021EF5C8
 	ldr r0, [r0]
 	add r2, sp, #4
 	add r6, r3, #0
-	bl ov01_021EF668
+	bl ovFieldMain_GetMsgBoxParametersEx
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	add r1, sp, #4
-	bl ov01_021EF6A8
+	bl ovFieldMain_CreateMessageBox
 	ldr r1, [r5, #0x78]
 	add r0, sp, #4
 	add r2, r4, #0
-	bl ov01_021EF6EC
+	bl ovFieldMain_ReadAndExpandMsgDataViaBuffer
 	add r0, r5, #0
-	bl ov01_021EF60C
+	bl ovFieldMain_GetTextFrameDelay
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -20509,8 +20509,8 @@ ov01_021EF5C8: ; 0x021EF5C8
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov01_021EF5C8
 
-	thumb_func_start ov01_021EF60C
-ov01_021EF60C: ; 0x021EF60C
+	thumb_func_start ovFieldMain_GetTextFrameDelay
+ovFieldMain_GetTextFrameDelay: ; 0x021EF60C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -20519,10 +20519,10 @@ ov01_021EF60C: ; 0x021EF60C
 	bl Options_GetTextFrameDelay
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EF60C
+	thumb_func_end ovFieldMain_GetTextFrameDelay
 
-	thumb_func_start ov01_021EF620
-ov01_021EF620: ; 0x021EF620
+	thumb_func_start ovFieldMain_GetMsgBoxParameters
+ovFieldMain_GetMsgBoxParameters: ; 0x021EF620
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	mov r1, #0x11
@@ -20553,10 +20553,10 @@ ov01_021EF620: ; 0x021EF620
 	bl FieldSysGetAttrAddr
 	str r0, [r4, #0x14]
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_021EF620
+	thumb_func_end ovFieldMain_GetMsgBoxParameters
 
-	thumb_func_start ov01_021EF668
-ov01_021EF668: ; 0x021EF668
+	thumb_func_start ovFieldMain_GetMsgBoxParametersEx
+ovFieldMain_GetMsgBoxParametersEx: ; 0x021EF668
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	mov r1, #0x11
@@ -20584,10 +20584,10 @@ ov01_021EF668: ; 0x021EF668
 	bl FieldSysGetAttrAddr
 	str r0, [r4, #0x14]
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021EF668
+	thumb_func_end ovFieldMain_GetMsgBoxParametersEx
 
-	thumb_func_start ov01_021EF6A8
-ov01_021EF6A8: ; 0x021EF6A8
+	thumb_func_start ovFieldMain_CreateMessageBox
+ovFieldMain_CreateMessageBox: ; 0x021EF6A8
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -20619,10 +20619,10 @@ _021EF6E2:
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_021EF6A8
+	thumb_func_end ovFieldMain_CreateMessageBox
 
-	thumb_func_start ov01_021EF6EC
-ov01_021EF6EC: ; 0x021EF6EC
+	thumb_func_start ovFieldMain_ReadAndExpandMsgDataViaBuffer
+ovFieldMain_ReadAndExpandMsgDataViaBuffer: ; 0x021EF6EC
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
@@ -20635,7 +20635,7 @@ ov01_021EF6EC: ; 0x021EF6EC
 	bl StringExpandPlaceholders
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EF6EC
+	thumb_func_end ovFieldMain_ReadAndExpandMsgDataViaBuffer
 
 	thumb_func_start ov01_021EF708
 ov01_021EF708: ; 0x021EF708
@@ -20697,8 +20697,8 @@ ov01_021EF758: ; 0x021EF758
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021EF758
 
-	thumb_func_start ov01_021EF780
-ov01_021EF780: ; 0x021EF780
+	thumb_func_start ovFieldMain_AddTextPrinterParameterized
+ovFieldMain_AddTextPrinterParameterized: ; 0x021EF780
 	push {r3, r4, lr}
 	sub sp, #0xc
 	mov r3, #0
@@ -20714,7 +20714,7 @@ ov01_021EF780: ; 0x021EF780
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EF780
+	thumb_func_end ovFieldMain_AddTextPrinterParameterized
 
 	thumb_func_start ov01_021EF7A0
 ov01_021EF7A0: ; 0x021EF7A0

@@ -314,9 +314,10 @@
 	.short \src
 	.endm
 
-	.macro scrcmd_044 a
+	; Print message in field window from current map message bank
+	.macro message msg_id
 	.short 44
-	.byte \a
+	.byte \msg_id
 	.endm
 
 	.macro scrcmd_045 a

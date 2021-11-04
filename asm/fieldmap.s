@@ -226,7 +226,7 @@ gScriptCmdTable:
 	.word ScrCmd_SetVar                                 ; 041
 	.word ScrCmd_CopyVar                                ; 042
 	.word ScrCmd_SetOrCopyVar                           ; 043
-	.word ScrCmd_044                                    ; 044
+	.word ScrCmd_Message                                    ; 044
 	.word ScrCmd_045                                    ; 045
 	.word ScrCmd_046                                    ; 046
 	.word ScrCmd_047                                    ; 047
