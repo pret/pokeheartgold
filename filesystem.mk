@@ -453,7 +453,7 @@ endif
 
 $(SCRIPT_BINS): %.bin: %.s $$(dep)
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $*.o $<
-	$(OBJCOPY) -O binary $*.o $@
+	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
 
 $(SCRIPT_NARC): $(SCRIPT_BINS)
 
