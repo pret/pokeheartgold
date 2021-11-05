@@ -1,6 +1,11 @@
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=c11 -O2 -DPNG_SKIP_SETJMP_CHECK
+CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=c11 -O2 -DPNG_SKIP_SETJMP_CHECK 
+
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+CFLAGS += -I $(HOMEBREW_PREFIX)/opt/libpng/include -L $(HOMEBREW_PREFIX)/opt/libpng/lib
+endif
 
 LIBS = -lpng -lz
 
