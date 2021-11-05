@@ -9,7 +9,6 @@ OPTFLAGS       := -O4,p
 
 include config.mk
 include common.mk
-include graphics_files_rules.mk
 include filesystem.mk
 
 $(ASM_OBJS): MWASFLAGS += -include $(WORK_DIR)/include/config.h

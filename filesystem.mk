@@ -406,6 +406,7 @@ $(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_enc_$(shortname).narc,files/a/1/3/3))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/s_enc_data.narc,files/a/1/3/6))
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
+$(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
 
@@ -416,46 +417,11 @@ $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
 
 include files/msgdata/msg.mk
 include files/data/sound/sound_data.mk
+include files/data/gs_areawindow.mk
+include files/fielddata/encountdata/gs_enc_data.mk
+include files/fielddata/script/scr_seq.mk
 
-# Encounter data
-ENCDATA_NARCS := \
-	files/fielddata/encountdata/g_enc_data.narc \
-	files/fielddata/encountdata/s_enc_data.narc
-
-ENCDATA_DIRS := $(ENCDATA_NARCS:%.narc=%)
-ENCDATA_CSVS := $(ENCDATA_NARCS:%.narc=%.csv)
-ENCDATA_BINS := $(foreach csv,$(ENCDATA_CSVS),$(addprefix $(csv:%.csv=%/),$(patsubst %,bin_%.bin,$(shell cut -d, -f1 $(csv) | tail -n+2))))
-
-# Delete intermediate bin files
-.INTERMEDIATE: $(ENCDATA_BINS)
-
-$(ENCDATA_NARCS): %.narc: %.csv include/constants/species.h
-	$(ENCDATA_GS) $^ $*
-	$(KNARC) -d $* -p $@ -i
-	@$(RM) $*/*.bin
-
-# Use the assembler to build the scripts
-# Framework for when we actually get around to script dumping
-SCRIPT_DIR  := files/fielddata/script/scr_seq
-SCRIPT_NARC := $(SCRIPT_DIR).narc
-SCRIPT_SRCS := $(wildcard $(SCRIPT_DIR)/*.s)
-SCRIPT_OBJS := $(SCRIPT_SRCS:%.s=%.o)
-SCRIPT_BINS := $(SCRIPT_SRCS:%.s=%.bin)
-
-# Delete intermediate object files
-.INTERMEDIATE: $(SCRIPT_OBJS)
-
-ifeq ($(NODEP),)
-$(SCRIPT_DIR)/%.bin: dep = $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $*.s)
-else
-$(SCRIPT_DIR)/%.bin: dep :=
-endif
-
-$(SCRIPT_BINS): %.bin: %.s $$(dep)
-	$(WINE) $(MWAS) $(MWASFLAGS) -o $*.o $<
-	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
-
-$(SCRIPT_NARC): $(SCRIPT_BINS)
+include graphics_files_rules.mk
 
 %.narc: NARC_DEPS = $(wildcard $*/*.bin)
 %.narc: $(NARC_DEPS)
@@ -463,9 +429,11 @@ $(SCRIPT_NARC): $(SCRIPT_BINS)
 
 %.naix: %.narc ;
 
-.PHONY: filesystem clean-filesystem
+.PHONY: filesystem clean-filesystem clean-fs
 filesystem: $(NITROFS_FILES)
 
+clean-fs: clean-filesystem
 clean-filesystem:
 	$(RM) files/msgdata/msg/*.bin
 	$(RM) $(DIFF_ARCS) $(NAIXS)
+	$(RM) $(FS_CLEAN_TARGETS)

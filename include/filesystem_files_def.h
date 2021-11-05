@@ -168,7 +168,7 @@ typedef enum NarcId
     NARC_a_1_6_0,
     NARC_a_1_6_1,
     NARC_a_1_6_2,
-    NARC_a_1_6_3,
+    NARC_data_gs_areawindow,
     NARC_a_1_6_4,
     NARC_a_1_6_5,
     NARC_a_1_6_6,

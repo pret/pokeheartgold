@@ -9,6 +9,8 @@ $(MSGDATA_MSG_DIR).narc: %.narc: $(MSGFILE_BIN)
 $(MSGFILE_BIN): %.bin: %.txt charmap.txt
 	$(MSGENC) $(MSGENCFLAGS) -e -c charmap.txt $< $@
 
+FS_CLEAN_TARGETS += $(MSGDATA_MSG_DIR).narc $(MSGFILE_BIN)
+
 files/msgdata/msg/msg_00000000.bin: MSGENCFLAGS = -k 0xFEE8
 files/msgdata/msg/msg_00000001.bin: MSGENCFLAGS = -k 0x9140
 files/msgdata/msg/msg_00000002.bin: MSGENCFLAGS = -k 0xC48B
