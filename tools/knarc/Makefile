@@ -8,7 +8,7 @@ else
 C_SRCS   :=
 UNAME_S  := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
-LDFLAGS  += -lstdc++ -lc++ -lc
+LDFLAGS  += -lstdc++ -lc++ -lc -D_LIBCPP_NO_EXPERIMENTAL_DEPRECATION_WARNING_FILESYSTEM
 else
 LDFLAGS  += -lstdc++fs
 endif

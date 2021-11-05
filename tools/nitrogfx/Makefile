@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=c11 -O2 -DPNG_SKIP_SETJMP_
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
-CFLAGS += -I $(HOMEBREW_PREFIX)/opt/libpng/include -L $(HOMEBREW_PREFIX)/opt/libpng/lib
+CFLAGS += $(shell pkg-config --cflags libpng) $(shell pkg-config --libs libpng)
 endif
 
 LIBS = -lpng -lz

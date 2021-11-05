@@ -8,7 +8,12 @@ endif
 DEPDIR := .deps
 DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
-SRCS := msgenc.cpp MessagesConverter.cpp MessagesDecoder.cpp MessagesEncoder.cpp
+define SRCS :=
+	msgenc.cpp
+	MessagesConverter.cpp
+	MessagesDecoder.cpp
+	MessagesEncoder.cpp
+endef
 
 OBJS := $(SRCS:%.cpp=%.o)
 
