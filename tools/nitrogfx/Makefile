@@ -1,13 +1,8 @@
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=c11 -O2 -DPNG_SKIP_SETJMP_CHECK 
+CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=c11 -O2 -DPNG_SKIP_SETJMP_CHECK $(shell pkg-config --cflags libpng)
 
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Darwin)
-CFLAGS += $(shell pkg-config --cflags libpng) $(shell pkg-config --libs libpng)
-endif
-
-LIBS = -lpng -lz
+LIBS = -lpng -lz $(shell pkg-config --libs libpng)
 
 SRCS = main.c convert_png.c gfx.c jasc_pal.c lz.c rl.c util.c font.c huff.c
 

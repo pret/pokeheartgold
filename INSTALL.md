@@ -21,6 +21,7 @@ Building the ROM requires the following packages:
 * wine (to run the mwcc executables)
 * python3 (for asm preprocessor)
 * libpng-devel (libpng-dev on Ubuntu)
+* pkg-config
 
 NOTE: If you are using Arch/Manjaro or Void you will only need base-devel instead of build-essentials or make or git. You will still need wine.
 
@@ -48,6 +49,7 @@ You will still require the following packages:
 * git
 * build-essentials
 * libpng-devel
+* pkg-config
 
 Install them using either the Cygwin package manager or using pacman on Msys2.
 
