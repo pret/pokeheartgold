@@ -23,7 +23,7 @@ jobs:
         run: |
           sudo apt update
           sudo ACCEPT_EULA=Y apt -y --fix-missing --allow-downgrades upgrade
-          sudo apt -y --allow-downgrades install g++-8-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full
+          sudo apt -y --allow-downgrades install g++-8-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config
           sudo dpkg --add-architecture i386
           wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
           sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport

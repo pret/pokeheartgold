@@ -12,18 +12,21 @@ WINE :=
 GREP := grep -P
 SED := sed -r
 SHA1SUM := sha1sum
+MKTEMP := mktemp
 else
 EXE :=
 WINE := wine
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
 GREP := grep -E
-SED := perl -p -e
+SED := gsed -r
 SHA1SUM := shasum
+MKTEMP := gmktemp
 else
 GREP := grep -P
 SED := sed -r
 SHA1SUM := sha1sum
+MKTEMP := mktemp
 endif
 endif
 

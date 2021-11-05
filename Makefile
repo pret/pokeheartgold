@@ -4,10 +4,11 @@ PROC_S         := arm5te
 PROC_LD        := v5te
 LCF_TEMPLATE   := ARM9-TS.lcf.template
 LIBS           := -Llib -lsyscall -nostdlib
-ALL_BUILDDIRS  := $(BUILD_DIR)/lib
 OPTFLAGS       := -O4,p
 
 include config.mk
+
+ALL_BUILDDIRS  := $(BUILD_DIR)/lib
 include common.mk
 include filesystem.mk
 

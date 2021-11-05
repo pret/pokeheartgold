@@ -21,6 +21,7 @@ Building the ROM requires the following packages:
 * wine (to run the mwcc executables)
 * python3 (for asm preprocessor)
 * libpng-devel (libpng-dev on Ubuntu)
+* pkg-config
 
 NOTE: If you are using Arch/Manjaro or Void you will only need base-devel instead of build-essentials or make or git. You will still need wine.
 
@@ -48,6 +49,7 @@ You will still require the following packages:
 * git
 * build-essentials
 * libpng-devel
+* pkg-config
 
 Install them using either the Cygwin package manager or using pacman on Msys2.
 
@@ -55,24 +57,25 @@ Install them using either the Cygwin package manager or using pacman on Msys2.
 
 #### macOS
 
-**macOS 10.14 Mojave or older is required**. macOS 10.15 Catalina and macOS 11.X Big Sur are not supported due to missing support for 32-bit binaries (thus making wine emulation unfeasible). You will also require the following packages:
+macOS 10.15 Catalina and later is supported on Intel and ARM64 hardware configurations. On ARM64, Rosetta 2 must be installed, as well as the following dependencies:
 
+* GNU coreutils
 * GNU make
-* LLVM 8 clang compiler
-* gcc@5 (for mwasmarm_patcher)
+* GNU sed
+* LLVM clang compiler
 * arm-gcc-bin
 * git
 * libpng
-* wine-stable and xquartz dependency
+* pkg-config
+* wine-crossover (includes wine32on64, required on Catalina and later to run 32-bit x86 EXEs)
 
 They can be installed with the following commands:
 
 ```console
 $ brew tap osx-cross/homebrew-arm
-$ brew tap homebrew/cask-versions
-$ brew install make llvm@8 gcc@5 arm-gcc-bin libpng git
-$ brew install --cask xquartz
-$ brew install --cask --no-quarantine wine-stable
+$ brew tap gcenx/wine
+$ brew install coreutils make gnu-sed llvm arm-gcc-bin libpng git pkg-config
+$ brew install wine-crossover
 ```
 
 ### 4. Build ROM
@@ -99,9 +102,9 @@ Note: Docker may not run at a full performance if its underlying Linux kernel is
 
 #### macOS
 
-To avoid issues run the build as shown below. This avoids issues with missing features (i.e. "introduced in macOS 10.15" errors) and Apple's make not following standards.
+To avoid issues, you will need to run the build as shown below. This avoids issues with missing features (i.e. "introduced in macOS 10.15" errors) and Apple's `make` being an older version.
 
 ```console
-$ export PATH=/usr/local/opt/llvm@8/bin:$PATH CC=clang CXX=clang++
+$ export PATH=${HOMEBREW_PREFIX}/opt/llvm/bin:$PATH CC=clang CXX=clang++
 $ gmake
 ```
