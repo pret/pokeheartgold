@@ -33,6 +33,13 @@ NM=arm-none-eabi-nm
 OBJCOPY=arm-none-eabi-objcopy
 STEM="$1"
 
+# MacOS requires GNU mktemp explicitly
+if [[ "$OSTYPE" == "darwin"* ]]; then
+MKTEMP=gmktemp
+else
+MKTEMP=mktemp
+fi
+
 [[ -z "$STEM" ]] && { echo "usage: $0 [-h] STEM"; exit 1; }
 [[ $STEM == "-h" ]] && {
   echo "usage: $0 [-h] STEM"
@@ -75,7 +82,7 @@ autoload_start=$(($(getword ${STEM}.sbin $((ptr+8)))-static_load))
 
 # Truncate the static module and dump
 static_size=$autoload_start
-static_sbin=$(mktemp --suffix=sbin)
+static_sbin=$($MKTEMP --suffix=sbin)
 dd if=${STEM}.sbin of=$static_sbin bs=1 count=${static_size} 2>/dev/null
 flags="$flags --update-section $(basename $STEM)=$static_sbin"
 to_clean=$static_sbin
@@ -86,7 +93,7 @@ to_clean=$static_sbin
 # Autoload table is struct { u32 load; u32 size; u32 bsssize; } table[];
 while read -r name; do
   aload_text_size=$(getword ${STEM}.sbin $((autoload_table_start+4)))
-  aload_sbin=$(mktemp --suffix=sbin)
+  aload_sbin=$($MKTEMP --suffix=sbin)
   dd if=${STEM}.sbin of=$aload_sbin bs=1 skip=$autoload_start count=$aload_text_size 2>/dev/null
   ((autoload_start+=aload_text_size))
   ((autoload_table_start+=12))

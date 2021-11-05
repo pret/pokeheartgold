@@ -107,7 +107,7 @@ OVERLAYS          :=
 endif
 
 # Make sure build directories exist before compiling anything
-DUMMY != mkdir -p $(ALL_BUILDDIRS)
+DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS))
 
 .SECONDARY:
 .SECONDEXPANSION:
@@ -148,7 +148,7 @@ $(LCF): $(LSF) $(LCF_TEMPLATE)
 ifeq ($(PROC),arm946e)
 	echo "KEEP_SECTION\n{\n\t.exceptix\n}" >> $@
 else
-	sed -i -r '/\} > check\.WORKRAM/a SDK_SUBPRIV_ARENA_LO = SDK_SUBPRIV_ARENA_LO + SDK_AUTOLOAD.EXT_WRAM.SIZE + SDK_AUTOLOAD.EXT_WRAM.BSS_SIZE;' $@
+	$(SED) -i '/\} > check\.WORKRAM/a SDK_SUBPRIV_ARENA_LO = SDK_SUBPRIV_ARENA_LO + SDK_AUTOLOAD.EXT_WRAM.SIZE + SDK_AUTOLOAD.EXT_WRAM.BSS_SIZE;' $@
 endif
 
 $(NEF): $(LCF) $(ALL_OBJS)
