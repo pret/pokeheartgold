@@ -629,7 +629,7 @@ u16 MapHeader_GetNightMusicId(u32 map_no) {
 
 BOOL MapHeader_HasWildEncounters(u32 map_no) {
     map_no = MapNumberBoundsCheck(map_no);
-    return sMapHeaders[map_no].wild_encounter_bank != 0xFF;
+    return sMapHeaders[map_no].wild_encounter_bank != ENCDATA_NA;
 }
 
 u8 MapHeader_GetWildEncounterBank(u32 map_no) {

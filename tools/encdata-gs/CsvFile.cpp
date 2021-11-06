@@ -5,7 +5,9 @@ void CsvFile::ParseRow(std::string &line, std::vector<std::string> &row, bool re
     std::string entry, qbuf;
     bool isQuoted = false;
     int i = 0;
-    row.clear();
+    if (resize) {
+        row.clear();
+    }
     std::stringstream line_s(line);
     while (std::getline(line_s, entry, ',')) {
         if (!isQuoted && entry[0] == '"') {

@@ -167,6 +167,7 @@ case "$mode" in
       ${MYDIR}/ntrextractfile ${baserom} ${filepath} >${basefile}
     }
     diff -u <(hexdump -Cv $basefile) <(hexdump -Cv $buildfile)
+    exit 0
     ;;
 esac
 
