@@ -8,8 +8,8 @@ _020FC224:
 
 	.text
 
-	thumb_func_start sub_0204EE20
-sub_0204EE20: ; 0x0204EE20
+	thumb_func_start ScrCmd_490
+ScrCmd_490: ; 0x0204EE20
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -20,10 +20,10 @@ sub_0204EE20: ; 0x0204EE20
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204EE20
+	thumb_func_end ScrCmd_490
 
-	thumb_func_start sub_0204EE38
-sub_0204EE38: ; 0x0204EE38
+	thumb_func_start ScrCmd_491
+ScrCmd_491: ; 0x0204EE38
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -34,10 +34,10 @@ sub_0204EE38: ; 0x0204EE38
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204EE38
+	thumb_func_end ScrCmd_491
 
-	thumb_func_start sub_0204EE50
-sub_0204EE50: ; 0x0204EE50
+	thumb_func_start ScrCmd_628
+ScrCmd_628: ; 0x0204EE50
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r0, #0
@@ -142,10 +142,10 @@ _0204EECC:
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_0204EE50
+	thumb_func_end ScrCmd_628
 
-	thumb_func_start sub_0204EF40
-sub_0204EF40: ; 0x0204EF40
+	thumb_func_start ScrCmd_633
+ScrCmd_633: ; 0x0204EF40
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -182,7 +182,7 @@ sub_0204EF40: ; 0x0204EF40
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r0, #0
 	cmp r7, #4
 	bhi _0204F05E
@@ -287,7 +287,7 @@ _0204F066:
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0204EF40
+	thumb_func_end ScrCmd_633
 
 	thumb_func_start sub_0204F06C
 sub_0204F06C: ; 0x0204F06C
@@ -429,8 +429,8 @@ _0204F16E:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0204F06C
 
-	thumb_func_start sub_0204F174
-sub_0204F174: ; 0x0204F174
+	thumb_func_start ScrCmd_636
+ScrCmd_636: ; 0x0204F174
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -455,10 +455,10 @@ sub_0204F174: ; 0x0204F174
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204F174
+	thumb_func_end ScrCmd_636
 
-	thumb_func_start sub_0204F1AC
-sub_0204F1AC: ; 0x0204F1AC
+	thumb_func_start ScrCmd_634
+ScrCmd_634: ; 0x0204F1AC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -482,7 +482,7 @@ sub_0204F1AC: ; 0x0204F1AC
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204F1AC
+	thumb_func_end ScrCmd_634
 
 	thumb_func_start sub_0204F1E4
 sub_0204F1E4: ; 0x0204F1E4
@@ -824,7 +824,7 @@ sub_0204F448: ; 0x0204F448
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288

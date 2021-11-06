@@ -1416,7 +1416,7 @@ _022384D6:
 	lsl r1, r1, #2
 	ldr r0, [r4, #0x58]
 	ldr r1, [r7, r1]
-	bl sub_020781B4
+	bl Sav2_Bag_copy
 	ldr r0, [r4, #0x58]
 	bl FreeToHeap
 	mov r1, #0x11
@@ -2080,14 +2080,14 @@ _02238AB8:
 	sub r1, #0x28
 	str r0, [r4, r1]
 	mov r0, #5
-	bl sub_02078188
+	bl Sav2_Bag_new
 	str r0, [r4, #0x58]
 	mov r1, #0x42
 	ldr r0, [sp, #4]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	ldr r1, [r4, #0x58]
-	bl sub_020781B4
+	bl Sav2_Bag_copy
 	mov r0, #5
 	bl sub_020293E8
 	str r0, [r4, #0x60]
@@ -5653,7 +5653,7 @@ _0223A7BC:
 	bl sub_02035650
 	cmp r0, #0
 	beq _0223A7D0
-	bl sub_020DEF44
+	bl WM_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	bl sub_0203A930
@@ -7434,7 +7434,7 @@ _0223B474:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x18]
 	bl ov12_0223AA88
-	bl sub_020780BC
+	bl BallToItemId
 	cmp r0, #0xb
 	bne _0223B492
 	ldr r0, [sp, #8]
@@ -14811,7 +14811,7 @@ ov12_0223EB88: ; 0x0223EB88
 	ldr r0, [r4, r1]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0207809C
+	bl ItemToBallId
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -31048,7 +31048,7 @@ _02246A72:
 	str r0, [sp, #0xdc]
 	ldr r0, [r4]
 	bl ov12_0223A93C
-	bl sub_0207491C
+	bl Pokedex_IsNatDexEnabled
 	str r0, [sp, #0xe0]
 	bl sub_02021BD0
 	str r0, [r4, #0x54]
@@ -34479,7 +34479,7 @@ ov12_02248660: ; 0x02248660
 	add r0, r4, r0
 	bl LoadAllWazaTbl
 	mov r0, #5
-	bl sub_02078138
+	bl LoadAllItemData
 	ldr r1, _022486AC ; =0x00002120
 	str r0, [r4, r1]
 	add r0, r4, #0
@@ -47258,7 +47258,7 @@ _0224E93C:
 	ldrb r0, [r0, r5]
 	lsl r0, r0, #0x1b
 	lsr r0, r0, #0x1b
-	bl sub_02091510
+	bl SetDexBanksByGiratinaForme
 	mov r0, #5
 	bl sub_02091308
 	mov r1, #0
@@ -55498,7 +55498,7 @@ ov12_02252700: ; 0x02252700
 	bne _0225274E
 	ldr r0, [sp, #4]
 	ldrh r0, [r4, r0]
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	bne _0225274E
 	mov r7, #1
@@ -55519,7 +55519,7 @@ ov12_0225275C: ; 0x0225275C
 	add r1, r0, r2
 	ldr r0, _02252778 ; =0x00002DB8
 	ldrh r0, [r1, r0]
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	bne _02252774
 	mov r0, #1
@@ -62909,7 +62909,7 @@ _02255EE2:
 	ldr r0, _02255F78 ; =0x00002DB8
 	add r1, r4, r1
 	ldrh r0, [r1, r0]
-	bl sub_020780E4
+	bl ItemIdIsBerry
 	cmp r0, #1
 	bne _02255EF8
 	mov r6, #1
@@ -64113,7 +64113,7 @@ ov12_022567D4: ; 0x022567D4
 	add r0, r5, #0
 	add r1, r6, #0
 	bl ov12_0223AA88
-	bl sub_020780BC
+	bl BallToItemId
 	add r2, r0, #0
 	b _02256818
 _02256814:
@@ -67001,13 +67001,13 @@ ov12_02257E74: ; 0x02257E74
 	add r0, r1, #0
 	mov r1, #0
 	add r4, r2, #0
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r1, r0, #0
 	ldr r0, _02257E94 ; =0x00002120
 	ldr r0, [r5, r0]
-	bl sub_02078160
+	bl GetItemDataPtrFromArray
 	add r1, r4, #0
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02257E94: .word 0x00002120
@@ -83917,7 +83917,7 @@ _022603A6:
 	bl sub_020090E4
 	mov r0, #0
 	mov r1, #0x10
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldrb r0, [r5, #6]
 	add r0, r0, #1
 	strb r0, [r5, #6]
@@ -85165,7 +85165,7 @@ _02260DAE:
 _02260DD2:
 	mov r0, #0
 	mov r1, #0x10
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 _02260DDA:
 	ldrb r0, [r5, #6]
 	add r0, r0, #1

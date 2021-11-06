@@ -2065,18 +2065,18 @@ ov85_021E67F4: ; 0x021E67F4
 	ldr r2, _021E6848 ; =0xFFFFF000
 	add r1, r0, #0
 	add r3, r0, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _021E684C ; =0x00007FFF
 	mov r0, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r0, _021E684C ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r0, _021E684C ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	add r0, r4, #0
 	bl ov85_021E7628
 	add r0, r4, #0
@@ -2239,7 +2239,7 @@ ov85_021E6980: ; 0x021E6980
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _021E6A10 ; =0x04000060
 	ldr r1, _021E6A14 ; =0xFFFFCFFD
@@ -7270,7 +7270,7 @@ ov85_021E8F88: ; 0x021E8F88
 	sub sp, #0x18
 	add r6, r0, #0
 	str r1, [sp, #0x14]
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

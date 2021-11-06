@@ -112,7 +112,7 @@ _0205193C:
 	cmp r7, #4
 	blt _0205193C
 	add r0, r6, #0
-	bl sub_02078188
+	bl Sav2_Bag_new
 	mov r1, #0x42
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -307,7 +307,7 @@ sub_02051AAC: ; 0x02051AAC
 	add r0, r4, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
@@ -677,7 +677,7 @@ _02051E14:
 	lsl r1, r1, #2
 	ldr r0, [sp, #0x14]
 	ldr r1, [r5, r1]
-	bl sub_020781B4
+	bl Sav2_Bag_copy
 	mov r1, #0x11
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
@@ -900,7 +900,7 @@ _02052004:
 	lsl r1, r1, #2
 	ldr r0, [sp, #0x10]
 	ldr r1, [r5, r1]
-	bl sub_020781B4
+	bl Sav2_Bag_copy
 	mov r1, #0x11
 	lsl r1, r1, #4
 	ldr r0, [sp, #0xc]
@@ -1128,7 +1128,7 @@ _020521F6:
 	lsl r1, r1, #2
 	ldr r0, [sp, #0x1c]
 	ldr r1, [r5, r1]
-	bl sub_020781B4
+	bl Sav2_Bag_copy
 	mov r1, #0x11
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x18]
@@ -1357,7 +1357,7 @@ sub_0205239C: ; 0x0205239C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r1, [sp]
-	bl sub_020781B4
+	bl Sav2_Bag_copy
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]

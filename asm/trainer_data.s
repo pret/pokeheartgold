@@ -29,8 +29,8 @@ EnemyTrainerSet_Init: ; 0x020733C0
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0x10]
 	add r0, r4, #0
-	bl sub_0202A960
-	bl GetRivalNamePtr
+	bl Sav2_Misc_const_get
+	bl Sav2_Misc_RivalName_get
 	ldr r4, [sp]
 	str r0, [sp, #0xc]
 	add r0, r4, #0

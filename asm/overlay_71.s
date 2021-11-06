@@ -107,7 +107,7 @@ _02246A2C:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 _02246A44:
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x7f
@@ -1537,7 +1537,7 @@ ov71_022474CC: ; 0x022474CC
 	add r5, r0, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	bl sub_02023154
 	ldr r0, [r5, #0x1c]
 	mov r6, #0
@@ -1562,7 +1562,7 @@ _02247502:
 	mov r0, #0x12
 	add r1, sp, #0
 	str r2, [sp]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1637,7 +1637,7 @@ ov71_02247514: ; 0x02247514
 	add r2, r0, #0
 	add r3, r0, #0
 	str r0, [sp, #4]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 _022475AC:
 	add r1, r4, #0
 	add r0, r4, #4
@@ -1855,13 +1855,13 @@ ov71_02247708: ; 0x02247708
 	mov r2, #0x1f
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	pop {r3, pc}
 _02247722:
 	mov r2, #0x1f
 	mov r1, #1
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov71_02247708
@@ -1935,7 +1935,7 @@ ov71_02247738: ; 0x02247738
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	bl sub_02023154
 	add r1, r4, #0
 	ldr r0, [r4, #0x5c]
@@ -1949,7 +1949,7 @@ ov71_02247738: ; 0x02247738
 	mov r0, #0x12
 	add r1, sp, #0
 	str r2, [sp]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, r4, #0
 	add sp, #0x4c
 	pop {r3, r4, pc}
@@ -2214,9 +2214,9 @@ ov71_022479C8: ; 0x022479C8
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
-	bl sub_020C23F4
-	bl sub_020B7350
+	bl NNS_G3dGeBufferOP_N
+	bl NNS_G3dGeFlushBuffer
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0xc]
 	bl sub_02009418
 	ldr r0, [r4, #0xc]
@@ -2225,7 +2225,7 @@ ov71_022479C8: ; 0x022479C8
 	str r2, [sp]
 	mov r0, #0x12
 	add r1, sp, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, [r4, #0x70]
 	bl ov71_022474CC
 	mov r0, #0
@@ -2804,7 +2804,7 @@ ov71_02247ED0: ; 0x02247ED0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _02247F78 ; =0x04000060
 	ldr r2, _02247F7C ; =0xFFFFCFFD
@@ -2945,9 +2945,9 @@ ov71_02247FF8: ; 0x02247FF8
 	mov r3, #8
 	bl ov71_022472C4
 	add r0, sp, #0x5c
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, sp, #0x38
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #1
@@ -4078,7 +4078,7 @@ ov71_022488E4: ; 0x022488E4
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _022489C4 ; =0x04000060
 	ldr r1, _022489C8 ; =0xFFFFCFFD
@@ -4215,9 +4215,9 @@ ov71_02248A08: ; 0x02248A08
 	mov r3, #0xc
 	bl ov71_022472C4
 	add r0, sp, #0x60
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, sp, #0x3c
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #1
@@ -5993,7 +5993,7 @@ ov71_022497E0: ; 0x022497E0
 	push {r3, r4, lr}
 	sub sp, #0x24
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _022498B4 ; =0x04000060
 	ldr r1, _022498B8 ; =0xFFFFCFFD
@@ -6120,9 +6120,9 @@ ov71_022498F0: ; 0x022498F0
 	mov r3, #8
 	bl ov71_022472C4
 	add r0, sp, #0x5c
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, sp, #0x38
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #1
@@ -7504,7 +7504,7 @@ ov71_0224A3F0: ; 0x0224A3F0
 	push {r3, r4, lr}
 	sub sp, #0x24
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _0224A4D0 ; =0x04000060
 	ldr r1, _0224A4D4 ; =0xFFFFCFFD
@@ -7638,9 +7638,9 @@ ov71_0224A510: ; 0x0224A510
 	mov r3, #8
 	bl ov71_022472C4
 	add r0, sp, #0x5c
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, sp, #0x38
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #1
@@ -8755,7 +8755,7 @@ ov71_0224ADE4: ; 0x0224ADE4
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _0224AEC8 ; =0x04000060
 	ldr r1, _0224AECC ; =0xFFFFCFFD
@@ -9303,9 +9303,9 @@ ov71_0224B234: ; 0x0224B234
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
-	bl sub_020C23F4
-	bl sub_020B7350
+	bl NNS_G3dGeBufferOP_N
+	bl NNS_G3dGeFlushBuffer
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x10]
 	bl sub_02009418
 	ldr r0, [r4, #0x10]
@@ -9314,7 +9314,7 @@ ov71_0224B234: ; 0x0224B234
 	str r2, [sp]
 	mov r0, #0x12
 	add r1, sp, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, [r4, #0x74]
 	cmp r0, #0
 	beq _0224B272
@@ -9895,7 +9895,7 @@ ov71_0224B720: ; 0x0224B720
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _0224B7C8 ; =0x04000060
 	ldr r2, _0224B7CC ; =0xFFFFCFFD
@@ -10036,9 +10036,9 @@ ov71_0224B848: ; 0x0224B848
 	mov r3, #8
 	bl ov71_022472C4
 	add r0, sp, #0x5c
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, sp, #0x38
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r3, #0
 	str r3, [sp]
 	mov r2, #1

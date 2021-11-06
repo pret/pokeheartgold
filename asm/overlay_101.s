@@ -1,3 +1,5 @@
+#include "constants/species.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -351,7 +353,7 @@ _021E799A:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5]
-	bl sub_02095EF8
+	bl AllocAndReadPhoneBook
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -538,7 +540,7 @@ ov101_021E7B54: ; 0x021E7B54
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02095F68
+	bl FreePhoneBook
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	str r1, [r0, #0x5c]
@@ -12698,7 +12700,7 @@ ov101_021ED980: ; 0x021ED980
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4]
-	bl sub_02095EF8
+	bl AllocAndReadPhoneBook
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -12834,7 +12836,7 @@ ov101_021EDAF8: ; 0x021EDAF8
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02095F68
+	bl FreePhoneBook
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	str r1, [r0, #0x5c]
@@ -21432,7 +21434,7 @@ ov101_021F1D74: ; 0x021F1D74
 	ldr r0, [r5]
 	str r0, [r4]
 	ldr r0, [r5]
-	bl sub_02095EF8
+	bl AllocAndReadPhoneBook
 	add r1, r4, #0
 	add r1, #0x80
 	str r0, [r1]
@@ -21577,7 +21579,7 @@ _021F1E88:
 	add r0, r6, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02095F68
+	bl FreePhoneBook
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #0xdc
@@ -23654,7 +23656,7 @@ ov101_021F2E04: ; 0x021F2E04
 	cmp r0, #0
 	bne _021F2E1C
 	add sp, #0xc4
-	mov r0, #0x13
+	mov r0, #SPECIES_RATTATA
 	pop {r3, r4, r5, r6, pc}
 _021F2E1C:
 	add r0, sp, #0
@@ -23665,14 +23667,14 @@ _021F2E1C:
 	cmp r4, #2
 	bne _021F2E34
 	add r0, sp, #0xc0
-	ldrh r1, [r0]
+	ldrh r1, [r0] // swarmSpecies[3]
 	add r0, sp, #0x80
-	strh r1, [r0, #0x22]
+	strh r1, [r0, #0x22] // goodRodSlots[3].species
 _021F2E34:
 	bl LCRandom
 	mov r1, #5
 	bl _s32_div_f
-	add r0, sp, #0x94
+	add r0, sp, #0x94 // goodRodSlots
 	lsl r1, r1, #2
 	add r0, #2
 	add sp, #0xc4
@@ -23687,13 +23689,13 @@ _021F2E4A:
 	beq _021F2E5C
 	b _021F2E60
 _021F2E58:
-	add r4, sp, #0x2c
+	add r4, sp, #0x2c // landSlots.species_day
 	b _021F2E62
 _021F2E5C:
-	add r4, sp, #0x44
+	add r4, sp, #0x44 // landSlots.species_nite
 	b _021F2E62
 _021F2E60:
-	add r4, sp, #0x14
+	add r4, sp, #0x14 // landSlots.species_morn
 _021F2E62:
 	bl LCRandom
 	mov r1, #0xc
@@ -24049,7 +24051,7 @@ _021F3102:
 	pop {r4, r5, r6, pc}
 _021F3112:
 	add r0, r6, #0
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	bne _021F312C
 	ldr r0, [r5, #0x28]
@@ -24099,7 +24101,7 @@ _021F3166:
 	ldr r0, [r5, #0x1c]
 	bl Sav2_Pokedex_get
 	add r6, r0, #0
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	add r1, r4, #0
 	add r1, #0x4d
 	ldrb r1, [r1]
@@ -27407,7 +27409,7 @@ _021F4A60:
 _021F4A88:
 	mov r0, #0
 	mov r1, #4
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	b _021F4A98
 _021F4A92:
 	mov r0, #2
@@ -27419,7 +27421,7 @@ _021F4A98:
 	str r0, [r4, #8]
 	b _021F4AE8
 _021F4AA0:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021F4AE8
 	ldr r0, [r4, #0xc]
@@ -29961,12 +29963,12 @@ ov101_021F5DEC: ; 0x021F5DEC
 	orr r0, r1
 	strb r0, [r4]
 	mov r0, #0
-	bl sub_02004A08
-	ldr r0, _021F5E18 ; =0x0000044A
-	bl sub_020049D0
+	bl SndRadio_StopSeq
+	ldr r0, _021F5E18 ; =SEQ_GS_RADIO_JINGLE
+	bl SndRadio_StartSeq
 	pop {r4, pc}
 	.balign 4, 0
-_021F5E18: .word 0x0000044A
+_021F5E18: .word SEQ_GS_RADIO_JINGLE
 	thumb_func_end ov101_021F5DEC
 
 	thumb_func_start ov101_021F5E1C
@@ -30078,7 +30080,7 @@ _021F5EC8:
 	strb r0, [r4]
 	b _021F5EF0
 _021F5EDE:
-	bl sub_02004A38
+	bl SndRadio_CountPlayingSeq
 	cmp r0, #0
 	bne _021F5EF0
 	mov r0, #0
@@ -30098,7 +30100,7 @@ ov101_021F5EF4: ; 0x021F5EF4
 	cmp r1, #4
 	bne _021F5F1A
 	bl LCRandom
-	ldr r1, _021F5F34 ; =0x000061A8
+	ldr r1, _021F5F34 ; =25000
 	bl _s32_div_f
 	add r0, r1, #0
 	mov r1, #0xfa
@@ -30107,10 +30109,10 @@ ov101_021F5EF4: ; 0x021F5EF4
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	lsl r2, r1, #1
-	ldr r0, _021F5F38 ; =0x021F8A9C
+	ldr r0, _021F5F38 ; =ov101_021F8A9C
 	b _021F5F1E
 _021F5F1A:
-	ldr r0, _021F5F3C ; =0x021F8A94
+	ldr r0, _021F5F3C ; =ov101_021F8A94
 	lsl r2, r1, #1
 _021F5F1E:
 	ldrb r3, [r4, #4]
@@ -30121,12 +30123,12 @@ _021F5F1E:
 	lsr r1, r1, #0x18
 	orr r1, r3
 	strb r1, [r4, #4]
-	bl sub_020049D0
+	bl SndRadio_StartSeq
 	pop {r4, pc}
 	.balign 4, 0
-_021F5F34: .word 0x000061A8
-_021F5F38: .word 0x021F8A9C
-_021F5F3C: .word 0x021F8A94
+_021F5F34: .word 25000
+_021F5F38: .word ov101_021F8A9C
+_021F5F3C: .word ov101_021F8A94
 	thumb_func_end ov101_021F5EF4
 
 	thumb_func_start ov101_021F5F40
@@ -30143,7 +30145,7 @@ ov101_021F5F40: ; 0x021F5F40
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	ldrb r1, [r4, #4]
 	mov r2, #1
 	lsl r0, r0, #0x18
@@ -30417,12 +30419,12 @@ ov101_021F6148: ; 0x021F6148
 	bl sub_02004A90
 	mov r1, #1
 	bl sub_02005EB4
-	ldr r0, _021F617C ; =0x0000044E
-	bl sub_020049D0
+	ldr r0, _021F617C ; =SEQ_GS_HUE
+	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021F617C: .word 0x0000044E
+_021F617C: .word SEQ_GS_HUE
 	thumb_func_end ov101_021F6148
 
 	thumb_func_start ov101_021F6180
@@ -30494,12 +30496,12 @@ ov101_021F61D8: ; 0x021F61D8
 	bl sub_02004A90
 	mov r1, #1
 	bl sub_02005EB4
-	ldr r0, _021F620C ; =0x0000044D
-	bl sub_020049D0
+	ldr r0, _021F620C ; =SEQ_GS_RADIO_UNKNOWN
+	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021F620C: .word 0x0000044D
+_021F620C: .word SEQ_GS_RADIO_UNKNOWN
 	thumb_func_end ov101_021F61D8
 
 	thumb_func_start ov101_021F6210
@@ -30573,12 +30575,12 @@ ov101_021F6268: ; 0x021F6268
 	bl sub_02005EB4
 	mov r0, #0
 	strb r0, [r4, #4]
-	ldr r0, _021F62A0 ; =0x0000049E
-	bl sub_020049D0
+	ldr r0, _021F62A0 ; =SEQ_GS_SENKYO_R
+	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021F62A0: .word 0x0000049E
+_021F62A0: .word SEQ_GS_SENKYO_R
 	thumb_func_end ov101_021F6268
 
 	thumb_func_start ov101_021F62A4
@@ -30675,12 +30677,12 @@ ov101_021F632C: ; 0x021F632C
 	bl sub_02004A90
 	mov r1, #0
 	bl sub_02005EB4
-	ldr r0, _021F6360 ; =0x00000495
-	bl sub_020049D0
+	ldr r0, _021F6360 ; =SEQ_GS_RADIO_VARIETY
+	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021F6360: .word 0x00000495
+_021F6360: .word SEQ_GS_RADIO_VARIETY
 	thumb_func_end ov101_021F632C
 
 	thumb_func_start ov101_021F6364
@@ -31058,12 +31060,12 @@ ov101_021F6620: ; 0x021F6620
 	bl sub_02004A90
 	mov r1, #0
 	bl sub_02005EB4
-	ldr r0, _021F6654 ; =0x00000495
-	bl sub_020049D0
+	ldr r0, _021F6654 ; =SEQ_GS_RADIO_VARIETY
+	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021F6654: .word 0x00000495
+_021F6654: .word SEQ_GS_RADIO_VARIETY
 	thumb_func_end ov101_021F6620
 
 	thumb_func_start ov101_021F6658
@@ -31303,9 +31305,9 @@ ov101_021F680C: ; 0x021F680C
 	bl sub_02004A90
 	mov r1, #0
 	bl sub_02005EB4
-	mov r0, #0x45
+	mov r0, #SEQ_GS_AIKOTOBA>>4
 	lsl r0, r0, #4
-	bl sub_020049D0
+	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov101_021F680C
@@ -31507,12 +31509,12 @@ ov101_021F69A8: ; 0x021F69A8
 	bl sub_02004A90
 	mov r1, #0
 	bl sub_02005EB4
-	ldr r0, _021F69DC ; =0x00000494
-	bl sub_020049D0
+	ldr r0, _021F69DC ; =SEQ_GS_RADIO_PT
+	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021F69DC: .word 0x00000494
+_021F69DC: .word SEQ_GS_RADIO_PT
 	thumb_func_end ov101_021F69A8
 
 	thumb_func_start ov101_021F69E0
@@ -31772,12 +31774,12 @@ ov101_021F6BAC: ; 0x021F6BAC
 	bl sub_02004A90
 	mov r1, #0
 	bl sub_02005EB4
-	ldr r0, _021F6BE0 ; =0x00000493
-	bl sub_020049D0
+	ldr r0, _021F6BE0 ; =SEQ_GS_RADIO_TRAINER
+	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021F6BE0: .word 0x00000493
+_021F6BE0: .word SEQ_GS_RADIO_TRAINER
 	thumb_func_end ov101_021F6BAC
 
 	thumb_func_start ov101_021F6BE4
@@ -31988,12 +31990,12 @@ ov101_021F6D3C: ; 0x021F6D3C
 	bl sub_02004A90
 	mov r1, #0
 	bl sub_02005EB4
-	ldr r0, _021F6D74 ; =0x0000044F
-	bl sub_020049D0
+	ldr r0, _021F6D74 ; =SEQ_GS_OHKIDO_RABO
+	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021F6D74: .word 0x0000044F
+_021F6D74: .word SEQ_GS_OHKIDO_RABO
 	thumb_func_end ov101_021F6D3C
 
 	thumb_func_start ov101_021F6D78
@@ -32698,12 +32700,12 @@ ov101_021F72C4: ; 0x021F72C4
 	bl sub_02005EB4
 	mov r0, #0
 	strb r0, [r4, #4]
-	ldr r0, _021F72FC ; =0x00000445
-	bl sub_020049D0
+	ldr r0, _021F72FC ; =SEQ_GS_KAIDENPA
+	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021F72FC: .word 0x00000445
+_021F72FC: .word SEQ_GS_KAIDENPA
 	thumb_func_end ov101_021F72C4
 
 	thumb_func_start ov101_021F7300
@@ -33133,8 +33135,13 @@ _021F7358:
 	.byte 0x81, 0x61, 0x1F, 0x02, 0xD9, 0x61, 0x1F, 0x02, 0x31, 0x62, 0x1F, 0x02, 0x11, 0x62, 0x1F, 0x02
 	.byte 0x69, 0x62, 0x1F, 0x02, 0xC5, 0x62, 0x1F, 0x02, 0xA5, 0x62, 0x1F, 0x02, 0xC5, 0x72, 0x1F, 0x02
 	.byte 0x21, 0x73, 0x1F, 0x02, 0x01, 0x73, 0x1F, 0x02, 0x7D, 0x64, 0x1F, 0x02, 0xD1, 0x64, 0x1F, 0x02
-	.byte 0xB1, 0x64, 0x1F, 0x02, 0x4C, 0x04, 0x4B, 0x04, 0x91, 0x04, 0x92, 0x04, 0xC2, 0x04, 0xC4, 0x04
-	.byte 0xCC, 0x04, 0xCD, 0x04, 0x1A, 0x05, 0x25, 0x05, 0x26, 0x05, 0x27, 0x05, 0x28, 0x05, 0x29, 0x05
+	.byte 0xB1, 0x64, 0x1F, 0x02
+ov101_021F8A94:
+	.short SEQ_GS_RADIO_MARCH, SEQ_GS_RADIO_KOMORIUTA, SEQ_GS_RADIO_R_101, SEQ_GS_RADIO_R_201
+ov101_021F8A9C:
+	.short SEQ_GS_P_TITLE, SEQ_GS_P_OPENING_TITLE_G, SEQ_GS_P_ENDING, SEQ_GS_P_ENDING2
+ov101_021F8AA4:
+	.byte 0x1A, 0x05, 0x25, 0x05, 0x26, 0x05, 0x27, 0x05, 0x28, 0x05, 0x29, 0x05
 	.byte 0x2A, 0x05, 0x2B, 0x05, 0x2C, 0x05, 0x2D, 0x05, 0x2E, 0x05, 0x2F, 0x05, 0x34, 0x05, 0x24, 0x05
 	.byte 0x1E, 0x05, 0x23, 0x05, 0x20, 0x05, 0x1F, 0x05, 0x22, 0x05, 0xC6, 0x04, 0xFF, 0x04, 0x00, 0x00
 	.byte 0x00, 0x03, 0xFF, 0x00, 0x03, 0xFF, 0x00, 0x03, 0xFF, 0x00, 0x03, 0xFF, 0x00, 0x03, 0xFF, 0x00

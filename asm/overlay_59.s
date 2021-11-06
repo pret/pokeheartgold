@@ -2921,7 +2921,7 @@ ov59_022393D4: ; 0x022393D4
 	beq _022393E6
 	bl sub_0200D034
 _022393E6:
-	bl sub_020B62EC
+	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x54]
 	bl sub_0201EEB4
 	ldr r3, _02239400 ; =0x027E0000
@@ -9008,7 +9008,7 @@ ov59_0223C304: ; 0x0223C304
 	bl sub_02026E48
 	bl sub_0201543C
 	bl sub_02026E48
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	bl sub_02023154
 	ldr r2, _0223C348 ; =0x04000440
 	mov r3, #0
@@ -9020,7 +9020,7 @@ ov59_0223C304: ; 0x0223C304
 	str r0, [r2]
 	str r3, [r1]
 	bl NNS_G3dGlbFlushP
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0xc]
 	bl sub_02008120
 	bl sub_02015460
@@ -9131,7 +9131,7 @@ _0223C3EC:
 ov59_0223C3F0: ; 0x0223C3F0
 	push {r3, r4, lr}
 	sub sp, #4
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_Init
 	bl G3X_InitMtxStack
 	ldr r0, _0223C45C ; =0x04000060

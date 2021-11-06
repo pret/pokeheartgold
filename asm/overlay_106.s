@@ -189,10 +189,10 @@ _021E5A4E:
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r7]
 	add r0, r4, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldrh r1, [r6, #0x18]
 	add r0, r4, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	add r4, r4, #1
 	add r5, r5, #6
 	add r6, r6, #2
@@ -282,21 +282,21 @@ _021E5AC8:
 	ldr r0, [r4, #0x54]
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	ldr r0, [r4, #0x54]
 	mov r1, #0
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #2
 	ldr r0, [r4, #0x54]
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #1
 	ldr r0, [r4, #0x54]
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 _021E5B3A:
 	ldr r0, [sp, #4]
 	mov r5, #0
@@ -326,20 +326,20 @@ _021E5B5A:
 	bl GfGfxLoader_LoadFromNarc
 	str r0, [r6, #0x5c]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r7, r0, #0
 	ldr r0, [sp, #0x20]
 	ldr r2, [r4, #0x54]
 	add r1, r7, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r6, #0x6c]
 	ldr r2, [r4, #0x54]
 	ldr r3, [sp, #0x1c]
 	add r1, r7, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r6, #0x6c]
 	add r0, r4, #0
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 _021E5B94:
 	add r0, r5, #1
 	lsl r0, r0, #0x10
@@ -399,7 +399,7 @@ _021E5BEC:
 	beq _021E5C04
 	ldr r1, [r5, #0x6c]
 	add r0, r7, #0
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r5, #0x5c]
 	bl FreeToHeap
 _021E5C04:
@@ -638,12 +638,12 @@ ov106_021E5D70: ; 0x021E5D70
 	ldrh r0, [r2, #0x24]
 	ldrh r1, [r2, #0x26]
 	ldr r2, [r2, #0x2c]
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r2, [r4]
 	ldrh r0, [r2, #0x28]
 	ldrh r1, [r2, #0x2a]
 	ldr r2, [r2, #0x30]
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	ldr r3, [r4]
 	ldr r0, [r3, #0x44]
 	str r0, [sp]
@@ -653,7 +653,7 @@ ov106_021E5D70: ; 0x021E5D70
 	ldr r1, [r3, #0x38]
 	ldr r2, [r3, #0x3c]
 	ldr r3, [r3, #0x40]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0201BB68
@@ -1363,7 +1363,7 @@ _021E633C:
 	bne _021E6354
 	mov r0, #0xf9
 	mov r1, #0
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #5
 	mov r1, #0xd
 	bl ov106_021E601C
@@ -1893,7 +1893,7 @@ _021E6764:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r5, r0, #0
 	ldr r0, [sp, #0x10]
 	ldr r1, [r0, #0x14]
@@ -1933,7 +1933,7 @@ _021E67A6:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	ldr r0, [sp, #0x10]
 	ldr r2, [r0, #0x38]

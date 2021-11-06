@@ -30,7 +30,7 @@ ov22_022598C0: ; 0x022598C0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x27
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	lsl r2, r6, #0x18
 	lsl r3, r7, #0x18
 	add r5, #0x80
@@ -47,22 +47,22 @@ ov22_022598C0: ; 0x022598C0
 	.balign 4, 0
 	thumb_func_end ov22_022598C0
 
-	thumb_func_start ov22_0225991C
-ov22_0225991C: ; 0x0225991C
+	thumb_func_start ScrCmd_117
+ScrCmd_117: ; 0x0225991C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x27
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl ov01_021EEC68
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov22_0225991C
+	thumb_func_end ScrCmd_117
 
-	thumb_func_start ov22_02259934
-ov22_02259934: ; 0x02259934
+	thumb_func_start ScrCmd_118
+ScrCmd_118: ; 0x02259934
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r1, [r5, #8]
@@ -73,7 +73,7 @@ ov22_02259934: ; 0x02259934
 	ldrb r4, [r1]
 	ldr r0, [r0]
 	mov r1, #0x27
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r0, #0
 	add r5, #0x80
 	ldr r0, [r5]
@@ -83,10 +83,10 @@ ov22_02259934: ; 0x02259934
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov22_02259934
+	thumb_func_end ScrCmd_118
 
-	thumb_func_start ov22_02259960
-ov22_02259960: ; 0x02259960
+	thumb_func_start ScrCmd_119
+ScrCmd_119: ; 0x02259960
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -105,10 +105,10 @@ ov22_02259960: ; 0x02259960
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov22_02259960
+	thumb_func_end ScrCmd_119
 
-	thumb_func_start ov22_0225998C
-ov22_0225998C: ; 0x0225998C
+	thumb_func_start ScrCmd_120
+ScrCmd_120: ; 0x0225998C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -127,10 +127,10 @@ ov22_0225998C: ; 0x0225998C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov22_0225998C
+	thumb_func_end ScrCmd_120
 
-	thumb_func_start ov22_022599B8
-ov22_022599B8: ; 0x022599B8
+	thumb_func_start ScrCmd_121
+ScrCmd_121: ; 0x022599B8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -149,10 +149,10 @@ ov22_022599B8: ; 0x022599B8
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov22_022599B8
+	thumb_func_end ScrCmd_121
 
-	thumb_func_start ov22_022599E4
-ov22_022599E4: ; 0x022599E4
+	thumb_func_start ScrCmd_569
+ScrCmd_569: ; 0x022599E4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -171,10 +171,10 @@ ov22_022599E4: ; 0x022599E4
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov22_022599E4
+	thumb_func_end ScrCmd_569
 
-	thumb_func_start ov22_02259A10
-ov22_02259A10: ; 0x02259A10
+	thumb_func_start ScrCmd_532
+ScrCmd_532: ; 0x02259A10
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r1, r6, #0
@@ -204,10 +204,10 @@ _02259A48:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov22_02259A10
+	thumb_func_end ScrCmd_532
 
-	thumb_func_start ov22_02259A50
-ov22_02259A50: ; 0x02259A50
+	thumb_func_start ScrCmd_570
+ScrCmd_570: ; 0x02259A50
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -242,10 +242,10 @@ _02259A94:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov22_02259A50
+	thumb_func_end ScrCmd_570
 
-	thumb_func_start ov22_02259A9C
-ov22_02259A9C: ; 0x02259A9C
+	thumb_func_start ScrCmd_533
+ScrCmd_533: ; 0x02259A9C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -272,10 +272,10 @@ ov22_02259A9C: ; 0x02259A9C
 	strh r0, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov22_02259A9C
+	thumb_func_end ScrCmd_533
 
-	thumb_func_start ov22_02259ADC
-ov22_02259ADC: ; 0x02259ADC
+	thumb_func_start ScrCmd_122
+ScrCmd_122: ; 0x02259ADC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -294,10 +294,10 @@ ov22_02259ADC: ; 0x02259ADC
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov22_02259ADC
+	thumb_func_end ScrCmd_122
 
-	thumb_func_start ov22_02259B08
-ov22_02259B08: ; 0x02259B08
+	thumb_func_start ScrCmd_123
+ScrCmd_123: ; 0x02259B08
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -316,10 +316,10 @@ ov22_02259B08: ; 0x02259B08
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov22_02259B08
+	thumb_func_end ScrCmd_123
 
-	thumb_func_start ov22_02259B34
-ov22_02259B34: ; 0x02259B34
+	thumb_func_start ScrCmd_124
+ScrCmd_124: ; 0x02259B34
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -352,4 +352,4 @@ _02259B76:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov22_02259B34
+	thumb_func_end ScrCmd_124

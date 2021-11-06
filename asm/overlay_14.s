@@ -2149,7 +2149,7 @@ _021E699C:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021E69C4
 	mov r0, #0
@@ -2178,7 +2178,7 @@ _021E69D6:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021E6A02
 	mov r0, #0
@@ -2247,7 +2247,7 @@ _021E6A66:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021E6A8A
 	mov r0, #0
@@ -2299,7 +2299,7 @@ _021E6ACE:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp]
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021E6AEC
 	mov r0, #0
@@ -2313,7 +2313,7 @@ _021E6AEC:
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	add r0, r7, #0
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021E6B0A
 	mov r0, #0
@@ -6561,7 +6561,7 @@ _021E8A06:
 	strh r0, [r4, #0x18]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -6648,7 +6648,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	bl Sav2_Bag_get
 	ldr r1, _021E8B10 ; =0x021F7D14
 	mov r2, #9
-	bl sub_02078644
+	bl CreateBagView
 	str r0, [r4, #0x18]
 	ldr r1, [r4]
 	mov r2, #1
@@ -13356,7 +13356,7 @@ _021EBFF8:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021EC03C
 	ldr r0, _021EC0E4 ; =0x000005F3
@@ -15066,7 +15066,7 @@ _021ECE3A:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021ECE82
 	ldr r0, _021ECF54 ; =0x000005F3
@@ -15246,7 +15246,7 @@ _021ECFC2:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021ED022
 	ldr r0, _021ED1A8 ; =0x000005F3
@@ -17548,7 +17548,7 @@ _021EE29A:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021EE2D2
 	ldr r0, _021EE320 ; =0x000005F3
@@ -18795,7 +18795,7 @@ ov14_021EEC9C: ; 0x021EEC9C
 	ldr r1, [r5, #0x34]
 	ldr r0, _021EED20 ; =0x000088C8
 	ldrh r0, [r1, r0]
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021EED0C
 	add r0, r5, #0
@@ -20050,7 +20050,7 @@ _021EF718:
 	ldr r1, [r5, #0x34]
 	ldr r0, _021EF898 ; =0x000088C8
 	ldrh r0, [r1, r0]
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021EF776
 	add r0, r5, #0
@@ -20225,7 +20225,7 @@ ov14_021EF8AC: ; 0x021EF8AC
 	mov r2, #0
 	ldrh r0, [r3, r1]
 	strh r2, [r3, r1]
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021EF908
 	cmp r4, r6
@@ -20859,7 +20859,7 @@ _021EFE10:
 	bne _021EFE6C
 	ldr r1, _021EFEF0 ; =0x000088C8
 	ldrh r0, [r0, r1]
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021EFE7A
 	add r0, r4, #0
@@ -21804,7 +21804,7 @@ _021F05E4:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021F0606
 	add r0, r5, #0
@@ -21929,7 +21929,7 @@ _021F06EE:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021F0710
 	add r0, r5, #0
@@ -22233,7 +22233,7 @@ _021F096A:
 	bl ov14_021F2A18
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	ldr r1, [r5, #0x34]
 	bne _021F0998
@@ -23883,7 +23883,7 @@ _021F168A:
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021F16E2
 	ldr r0, [r5, #0x34]
@@ -24749,7 +24749,7 @@ _021F1DD6:
 	ldr r1, [r5, #0x34]
 	ldr r0, _021F1EAC ; =0x000088C8
 	ldrh r0, [r1, r0]
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _021F1E46
 	add r0, r5, #0
@@ -26613,7 +26613,7 @@ ov14_021F2C1C: ; 0x021F2C1C
 	add r4, r3, #0
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -26639,7 +26639,7 @@ ov14_021F2C50: ; 0x021F2C50
 	add r4, r3, #0
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -27968,7 +27968,7 @@ _021F365A:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
 	add r7, r0, #0
 	add r0, r5, #0
@@ -27983,7 +27983,7 @@ _021F365A:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
 	mov r0, #0x20
 	str r0, [sp]
@@ -28053,7 +28053,7 @@ ov14_021F3714: ; 0x021F3714
 	bl sub_0200D4A4
 	mov r0, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -28085,7 +28085,7 @@ ov14_021F3714: ; 0x021F3714
 	bl sub_0200D4A4
 	mov r0, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -28182,7 +28182,7 @@ ov14_021F3844: ; 0x021F3844
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r1, r0, #0
 	mov r0, #0xa
 	str r0, [sp]
@@ -28206,11 +28206,11 @@ ov14_021F3844: ; 0x021F3844
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r1, r0, #0
 	mov r0, #0x20
 	str r0, [sp]
@@ -28232,7 +28232,7 @@ ov14_021F38B0: ; 0x021F38B0
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r1, r0, #0
 	mov r0, #0xa
 	str r0, [sp]
@@ -28256,11 +28256,11 @@ ov14_021F38B0: ; 0x021F38B0
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r1, r0, #0
 	mov r0, #0x20
 	str r0, [sp]
@@ -31386,7 +31386,7 @@ ov14_021F5190: ; 0x021F5190
 	bne _021F5208
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	ldrh r1, [r6, #4]
 	bl sub_02074930
 	add r6, r0, #0
@@ -31900,7 +31900,7 @@ _021F557E:
 	ldr r1, [sp, #0xc]
 	ldr r0, [r0, #0x28]
 	mov r2, #0xa
-	bl sub_02077D40
+	bl GetItemNameIntoString
 	mov r2, #0
 	ldr r0, _021F561C ; =0x00010200
 	str r2, [sp]
@@ -31917,7 +31917,7 @@ _021F557E:
 	ldr r1, [sp, #0xc]
 	ldr r0, [r0, #0x28]
 	mov r2, #0xa
-	bl sub_02077D64
+	bl GetItemDescIntoString
 	mov r2, #0
 	ldr r0, _021F561C ; =0x00010200
 	str r2, [sp]

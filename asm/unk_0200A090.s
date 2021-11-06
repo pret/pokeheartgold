@@ -1562,7 +1562,7 @@ sub_0200AB88: ; 0x0200AB88
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020B6FC8
+	bl NNS_G2dGetUnpackedMultiCellBank
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1578,7 +1578,7 @@ sub_0200ABA4: ; 0x0200ABA4
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020B6D24
+	bl NNS_G2dGetUnpackedMCAnimBank
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2342,7 +2342,7 @@ sub_0200B12C: ; 0x0200B12C
 	mov r1, #0
 	bl sub_0200B0F8
 	add r1, r4, #0
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

@@ -1867,7 +1867,7 @@ ov48_02259688: ; 0x02259688
 	sub sp, #0x14
 	add r5, r0, #0
 	add r6, r1, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -1973,7 +1973,7 @@ ov48_02259750: ; 0x02259750
 	ldr r3, _02259784 ; =0xFFFFF001
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0

@@ -384,13 +384,6 @@ NITROFS_FILES := \
 	files/pbr/zukan.narc \
 	files/dwc/utility.bin
 
-.PHONY: filesystem clean-filesystem
-filesystem: $(NITROFS_FILES)
-
-clean-filesystem:
-	$(RM) files/msgdata/msg/*.bin
-	$(RM) $(DIFF_ARCS)
-
 # TODO: file rules
 # Some filenames are stripped and replaced with a serial number
 # such that the XYZth file is mapped to a/X/Y/Z.
@@ -401,11 +394,20 @@ DIFF_ARCS += $(2)
 .PHONY: $(2)
 endef
 
+NARCS := $(filter %.narc,$(NITROFS_FILES))
+NAIXS := $(NARCS:%.narc=%.naix)
+
+$(eval $(call arc_strip_name,files/fielddata/script/scr_seq.narc,files/a/0/1/2))
 $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
+$(eval $(call arc_strip_name,files/fielddata/encountdata/g_enc_data.narc,files/a/0/3/7))
+$(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data.narc,files/a/0/7/4))
 $(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
-$(eval $(call arc_strip_name,files/a/1/3/3.$(buildname),files/a/1/3/3))
+$(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_enc_$(shortname).narc,files/a/1/3/3))
+$(eval $(call arc_strip_name,files/fielddata/encountdata/s_enc_data.narc,files/a/1/3/6))
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
+$(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
+$(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
 
 $(DIFF_ARCS):
@@ -414,10 +416,24 @@ $(DIFF_ARCS):
 $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
 
 include files/msgdata/msg.mk
+include files/data/sound/sound_data.mk
+include files/data/gs_areawindow.mk
+include files/fielddata/encountdata/gs_enc_data.mk
+include files/fielddata/script/scr_seq.mk
+
+include graphics_files_rules.mk
+
+%.narc: NARC_DEPS = $(wildcard $*/*.bin)
+%.narc: $(NARC_DEPS)
+	$(KNARC) -d $* -p $@ -i
 
 %.naix: %.narc ;
 
-MWCFLAGS += -I./files
+.PHONY: filesystem clean-filesystem clean-fs
+filesystem: $(NITROFS_FILES)
 
-#%.narc:
-#	$(KNARC) -d $* -p $@
+clean-fs: clean-filesystem
+clean-filesystem:
+	$(RM) files/msgdata/msg/*.bin
+	$(RM) $(DIFF_ARCS) $(NAIXS)
+	$(RM) $(FS_CLEAN_TARGETS)

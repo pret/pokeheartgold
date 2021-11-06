@@ -14,7 +14,7 @@ sub_02020654: ; 0x02020654
 	ldr r2, _02020670 ; =sub_02020684
 	add r1, r4, #0
 	add r5, r0, #0
-	bl sub_020BAD38
+	bl NNS_G2dInitCellTransferStateManager
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -23,10 +23,10 @@ _02020670: .word sub_02020684
 
 	thumb_func_start sub_02020674
 sub_02020674: ; 0x02020674
-	ldr r3, _02020678 ; =sub_020BAD9C
+	ldr r3, _02020678 ; =NNS_G2dUpdateCellTransferStateManager
 	bx r3
 	.balign 4, 0
-_02020678: .word sub_020BAD9C
+_02020678: .word NNS_G2dUpdateCellTransferStateManager
 	thumb_func_end sub_02020674
 
 	thumb_func_start sub_0202067C
@@ -413,7 +413,7 @@ sub_020208DC: ; 0x020208DC
 	add r0, r4, #0
 	add r0, #0x3c
 	add r1, sp, #0
-	bl sub_020C3818
+	bl NNS_G3dGetResDataByName
 	add r1, r0, #0
 	b _020208FC
 _020208FA:
@@ -571,7 +571,7 @@ sub_020209E0: ; 0x020209E0
 	add r0, r4, #0
 	add r0, #0x3c
 	add r1, sp, #0
-	bl sub_020C3818
+	bl NNS_G3dGetResDataByName
 	add r1, r0, #0
 	b _02020A00
 _020209FE:
@@ -679,8 +679,8 @@ _02020A94:
 _02020A9C: .word 0xFFFFFFF8
 	thumb_func_end sub_02020A24
 
-	thumb_func_start sub_02020AA0
-sub_02020AA0: ; 0x02020AA0
+	thumb_func_start Ascii_StrLen
+Ascii_StrLen: ; 0x02020AA0
 	mov r2, #0
 	ldrsb r1, [r0, r2]
 	cmp r1, #0
@@ -693,10 +693,10 @@ _02020AA8:
 _02020AB0:
 	add r0, r2, #0
 	bx lr
-	thumb_func_end sub_02020AA0
+	thumb_func_end Ascii_StrLen
 
-	thumb_func_start sub_02020AB4
-sub_02020AB4: ; 0x02020AB4
+	thumb_func_start Ascii_GetDelim
+Ascii_GetDelim: ; 0x02020AB4
 	push {r4, r5}
 	mov r4, #1
 	mov r3, #0
@@ -735,13 +735,13 @@ _02020AEA:
 	pop {r4, r5}
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02020AB4
+	thumb_func_end Ascii_GetDelim
 
-	thumb_func_start sub_02020AF8
-sub_02020AF8: ; 0x02020AF8
+	thumb_func_start Ascii_StrToL
+Ascii_StrToL: ; 0x02020AF8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_02020AA0
+	bl Ascii_StrLen
 	mov r5, #1
 	mov r6, #0
 	sub r3, r0, #1
@@ -777,7 +777,7 @@ _02020B36:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_02020AF8
+	thumb_func_end Ascii_StrToL
 
 	thumb_func_start sub_02020B3C
 sub_02020B3C: ; 0x02020B3C
@@ -795,7 +795,7 @@ _02020B46:
 	cmp r2, #4
 	blo _02020B46
 	add r0, r4, #0
-	bl sub_02020AA0
+	bl Ascii_StrLen
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	ldr r2, _02020B74 ; =0x00000000

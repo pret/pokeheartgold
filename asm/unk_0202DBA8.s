@@ -679,24 +679,24 @@ _0202E030: .word 0x000007FF
 	thumb_func_start sub_0202E034
 sub_0202E034: ; 0x0202E034
 	push {r3, lr}
-	ldr r1, _0202E050 ; =0x021D2AF4
+	ldr r1, _0202E050 ; =_021D2AF4
 	ldr r1, [r1]
 	cmp r1, #0
 	bne _0202E046
 	bl sub_020270E4
-	ldr r1, _0202E050 ; =0x021D2AF4
+	ldr r1, _0202E050 ; =_021D2AF4
 	str r0, [r1]
 _0202E046:
 	mov r0, #0x1b
 	bl sub_0202893C
 	pop {r3, pc}
 	nop
-_0202E050: .word 0x021D2AF4
+_0202E050: .word _021D2AF4
 	thumb_func_end sub_0202E034
 
 	thumb_func_start sub_0202E054
 sub_0202E054: ; 0x0202E054
-	ldr r0, _0202E064 ; =0x021D2AF4
+	ldr r0, _0202E064 ; =_021D2AF4
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0202E060
@@ -705,13 +705,13 @@ sub_0202E054: ; 0x0202E054
 _0202E060:
 	bx lr
 	nop
-_0202E064: .word 0x021D2AF4
+_0202E064: .word _021D2AF4
 	thumb_func_end sub_0202E054
 
 	thumb_func_start sub_0202E068
 sub_0202E068: ; 0x0202E068
 	push {r3, r4, r5, lr}
-	ldr r4, _0202E08C ; =0x021D2AF4
+	ldr r4, _0202E08C ; =_021D2AF4
 	mov r5, #0
 _0202E06E:
 	ldr r0, [r4]
@@ -729,14 +729,14 @@ _0202E07E:
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 	nop
-_0202E08C: .word 0x021D2AF4
+_0202E08C: .word _021D2AF4
 	thumb_func_end sub_0202E068
 
 	thumb_func_start sub_0202E090
 sub_0202E090: ; 0x0202E090
 	push {r3, lr}
 	add r1, r0, #0
-	ldr r0, _0202E0A8 ; =0x021D2AF4
+	ldr r0, _0202E0A8 ; =_021D2AF4
 	ldr r0, [r0]
 	bl sub_0202DBCC
 	cmp r0, #0
@@ -747,14 +747,14 @@ _0202E0A4:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_0202E0A8: .word 0x021D2AF4
+_0202E0A8: .word _021D2AF4
 	thumb_func_end sub_0202E090
 
 	thumb_func_start sub_0202E0AC
 sub_0202E0AC: ; 0x0202E0AC
 	push {r3, lr}
 	add r1, r0, #0
-	ldr r0, _0202E0C4 ; =0x021D2AF4
+	ldr r0, _0202E0C4 ; =_021D2AF4
 	ldr r0, [r0]
 	bl sub_0202DBCC
 	cmp r0, #0
@@ -765,17 +765,17 @@ _0202E0C0:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_0202E0C4: .word 0x021D2AF4
+_0202E0C4: .word _021D2AF4
 	thumb_func_end sub_0202E0AC
 
 	thumb_func_start sub_0202E0C8
 sub_0202E0C8: ; 0x0202E0C8
 	add r1, r0, #0
-	ldr r0, _0202E0D4 ; =0x021D2AF4
+	ldr r0, _0202E0D4 ; =_021D2AF4
 	ldr r3, _0202E0D8 ; =sub_0202DD7C
 	ldr r0, [r0]
 	bx r3
 	nop
-_0202E0D4: .word 0x021D2AF4
+_0202E0D4: .word _021D2AF4
 _0202E0D8: .word sub_0202DD7C
 	thumb_func_end sub_0202E0C8

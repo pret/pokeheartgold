@@ -127,8 +127,8 @@ _02028F18:
 	bx lr
 	thumb_func_end PlayerProfile_IsNameEmpty
 
-	thumb_func_start CopyPlayerName
-CopyPlayerName: ; 0x02028F24
+	thumb_func_start Sav2_Profile_PlayerName_set
+Sav2_Profile_PlayerName_set: ; 0x02028F24
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -143,7 +143,7 @@ _02028F38:
 	bl CopyU16StringArray
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end CopyPlayerName
+	thumb_func_end Sav2_Profile_PlayerName_set
 
 	thumb_func_start PlayerName_StringToFlat
 PlayerName_StringToFlat: ; 0x02028F44

@@ -390,7 +390,7 @@ _02022820:
 _02022822:
 	cmp r4, #0
 	beq _02022832
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r4, #0
 	bl _u32_div_f
 	pop {r4, pc}
@@ -449,7 +449,7 @@ sub_02022874: ; 0x02022874
 	str r0, [r4, #0xc]
 	add r4, #0x10
 	add r0, r4, #0
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	pop {r4, pc}
 	thumb_func_end sub_02022874
 
@@ -697,7 +697,7 @@ sub_02022A38: ; 0x02022A38
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x10
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	ldr r0, [r4, #4]
 	mov r2, #1
 	tst r0, r2

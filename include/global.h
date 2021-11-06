@@ -3,6 +3,9 @@
 
 #include <nitro.h>
 #include <nitro/code16.h>
+#include <nnsys.h>
+
+#include <string.h>
 
 #include "config.h" // MUST COME BEFORE ANY OTHER GAMEFREAK HEADERS
 #include "assert.h"

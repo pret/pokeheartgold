@@ -1,3 +1,4 @@
+#include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -53,7 +54,7 @@ _022598E0:
 	bl String_dtor
 	ldr r0, [r4, #8]
 	add r1, sp, #4
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	ldr r1, [r4]
 	ldr r0, [r4, #8]
 	ldr r1, [r1, #0x40]
@@ -135,7 +136,7 @@ ov23_02259964: ; 0x02259964
 	ldr r0, [r4, #0x3c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078078
+	bl ItemToMailId
 	add r1, r0, #0
 	ldr r0, [r4, #0x20]
 	add r3, r5, #0
@@ -197,7 +198,7 @@ ov23_02259A24: ; 0x02259A24
 	ldr r0, [r4, #0x3c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078078
+	bl ItemToMailId
 	add r1, r0, #0
 	ldr r0, [r4, #0x20]
 	add r3, r6, #0
@@ -235,7 +236,7 @@ ov23_02259AA0: ; 0x02259AA0
 	bl GetPartyMonByIndex
 	add r1, r5, #0
 	str r0, [sp]
-	bl sub_0206D894
+	bl MonIsInGameTradePoke
 	cmp r0, #0
 	bne _02259AC8
 	add sp, #8
@@ -243,7 +244,7 @@ ov23_02259AA0: ; 0x02259AA0
 	pop {r3, r4, r5, r6, r7, pc}
 _02259AC8:
 	ldr r0, [sp]
-	mov r1, #0xa2
+	mov r1, #MON_DATA_CAPSULE
 	mov r2, #0
 	bl GetMonData
 	lsl r0, r0, #0x18

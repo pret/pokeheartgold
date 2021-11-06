@@ -148,7 +148,7 @@ sub_02069744: ; 0x02069744
 	beq _02069778
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_020BE4D0
+	bl NNS_G3dTexReleaseTexKey
 	ldr r1, _0206977C ; =0x02110928
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
@@ -158,7 +158,7 @@ sub_02069744: ; 0x02069744
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r4, #0x10]
-	bl sub_020BE588
+	bl NNS_G3dPlttReleasePlttKey
 	ldr r1, _02069780 ; =0x02110930
 	ldr r1, [r1]
 	blx r1

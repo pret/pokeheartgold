@@ -1595,7 +1595,7 @@ sub_020314C4: ; 0x020314C4
 	add r0, r6, #0
 	bl Sav2_SysInfo_get
 	add r0, r6, #0
-	bl sub_0202A960
+	bl Sav2_Misc_const_get
 	add r7, r0, #0
 	add r0, sp, #0x10
 	bl OS_GetOwnerInfo

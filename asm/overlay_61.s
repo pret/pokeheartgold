@@ -346,7 +346,7 @@ _021E5BB4:
 	mov r1, #0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02006218
+	bl PlayCry
 	add r0, r4, #0
 	mov r1, #7
 	bl ov61_021E6DFC
@@ -498,7 +498,7 @@ _021E5CF2:
 	add r1, r6, #0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -922,7 +922,7 @@ ov61_021E60E8: ; 0x021E60E8
 	push {r4, r5, lr}
 	sub sp, #0x24
 	add r4, r0, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80
@@ -1017,18 +1017,18 @@ _021E6190:
 	ldr r2, _021E61F8 ; =0xFFFFF000
 	add r1, r0, #0
 	add r3, r0, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _021E61F4 ; =0x00007FFF
 	mov r0, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r0, _021E61F4 ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r0, _021E61F4 ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -1054,7 +1054,7 @@ ov61_021E61FC: ; 0x021E61FC
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	bl sub_02023154
 	add r0, r4, #0
 	bl ov61_021E6240
@@ -1062,7 +1062,7 @@ ov61_021E61FC: ; 0x021E61FC
 	mov r0, #0x12
 	add r1, sp, #0
 	str r2, [sp]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_02026E50
@@ -1173,14 +1173,14 @@ _021E6308:
 	mov r1, #0
 	add r0, r6, #0
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, r5, #0
 	bl ov61_021E6A28
 	mov r0, #0x12
 	add r1, sp, #4
 	add r2, r7, #0
 	str r7, [sp, #4]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	bl NNS_G3dGlbFlushP
 _021E632E:
 	add r4, r4, #1
@@ -1765,37 +1765,37 @@ ov61_021E67D4: ; 0x021E67D4
 	bl GfGfxLoader_LoadFromNarc
 	str r0, [r4]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r6, r0, #0
 	ldr r0, [sp, #4]
 	ldr r2, [r5, #8]
 	add r1, r6, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r4, #4]
 	ldr r2, [r5, #8]
 	ldr r3, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov61_021E67D4
 
 	thumb_func_start ov61_021E6814
 ov61_021E6814: ; 0x021E6814
-	ldr r3, _021E681C ; =sub_020BE294
+	ldr r3, _021E681C ; =NNS_G3dRenderObjAddAnmObj
 	ldr r1, [r1, #4]
 	bx r3
 	nop
-_021E681C: .word sub_020BE294
+_021E681C: .word NNS_G3dRenderObjAddAnmObj
 	thumb_func_end ov61_021E6814
 
 	thumb_func_start ov61_021E6820
 ov61_021E6820: ; 0x021E6820
-	ldr r3, _021E6828 ; =sub_020BE388
+	ldr r3, _021E6828 ; =NNS_G3dRenderObjRemoveAnmObj
 	ldr r1, [r1, #4]
 	bx r3
 	nop
-_021E6828: .word sub_020BE388
+_021E6828: .word NNS_G3dRenderObjRemoveAnmObj
 	thumb_func_end ov61_021E6820
 
 	thumb_func_start ov61_021E682C
@@ -1948,7 +1948,7 @@ ov61_021E6918: ; 0x021E6918
 	beq _021E6930
 	add r0, r1, #0
 	ldr r1, [r4, #4]
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4]
 	bl FreeToHeap
 _021E6930:
@@ -2093,7 +2093,7 @@ ov61_021E6A28: ; 0x021E6A28
 	mov r0, #0x19
 	add r1, sp, #0
 	mov r2, #0xc
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, r4, #0
 	bl NNS_G3dDraw
 	add sp, #0x30
@@ -2670,7 +2670,7 @@ _021E6EB6:
 	ldrh r0, [r1, #0x20]
 	ldrh r1, [r1, #0x22]
 	add r3, sp, #0
-	bl sub_020C28F8
+	bl NNS_G3dScrPosToWorldLine
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2987,11 +2987,11 @@ ov61_021E7108: ; 0x021E7108
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	str r0, [sp, #4]
 	add r0, r7, #0
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	mov r1, #0x32
 	add r5, r0, #0
 	add r0, r4, #0

@@ -200,14 +200,14 @@ _021E5A94:
 	strh r1, [r4, r0]
 	mov r0, #0
 	mov r1, #0x3c
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 #ifdef HEARTGOLD
 	mov r0, #0xfa ; HO-OH
 #else
 	mov r0, #0xf9 ; LUGIA
 #endif
 	mov r1, #0
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #1
 	mov r1, #0x30
 	bl sub_020054AC
@@ -283,7 +283,7 @@ _021E5B2A:
 	bl GX_EngineAToggleLayers
 	mov r0, #0
 	mov r1, #0x3c
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #5
 	str r0, [r5]
 	b _021E5C8E
@@ -324,7 +324,7 @@ _021E5B62:
 	mov r0, #4
 	str r0, [r5]
 _021E5BA0:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021E5C8E
 	mov r0, #0x3f
@@ -358,7 +358,7 @@ _021E5BD0:
 	ldr r2, [r4]
 	add r0, #0xcc
 	bl ov60_021E641C
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021E5C8E
 	mov r0, #0x3f
@@ -392,7 +392,7 @@ _021E5C1C:
 	ldr r2, [r4]
 	add r0, #0xcc
 	bl ov60_021E641C
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021E5C8E
 	mov r0, #0x3f
@@ -649,21 +649,21 @@ _021E5DEC:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5, #0x60]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r7, r0, #0
 	add r0, r5, #0
 	ldr r2, [r5, #0x58]
 	add r0, #0x80
 	add r1, r7, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #0x70]
 	ldr r2, [r5, #0x58]
 	add r1, r7, #0
 	add r3, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r5, #0x70]
 	add r0, r5, #4
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 _021E5E5E:
 	ldr r0, [sp]
 	cmp r0, #0
@@ -674,21 +674,21 @@ _021E5E5E:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5, #0x64]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r7, r0, #0
 	add r0, r5, #0
 	ldr r2, [r5, #0x58]
 	add r0, #0x80
 	add r1, r7, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #0x74]
 	ldr r2, [r5, #0x58]
 	add r1, r7, #0
 	add r3, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r5, #0x74]
 	add r0, r5, #4
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 _021E5E98:
 	ldr r1, [sp, #0x28]
 	cmp r1, #0
@@ -698,21 +698,21 @@ _021E5E98:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5, #0x68]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r7, r0, #0
 	add r0, r5, #0
 	ldr r2, [r5, #0x58]
 	add r0, #0x80
 	add r1, r7, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #0x78]
 	ldr r2, [r5, #0x58]
 	add r1, r7, #0
 	add r3, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r5, #0x78]
 	add r0, r5, #4
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 _021E5ED0:
 	ldr r1, [sp, #0x2c]
 	cmp r1, #0
@@ -722,21 +722,21 @@ _021E5ED0:
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5, #0x6c]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r4, r0, #0
 	add r0, r5, #0
 	ldr r2, [r5, #0x58]
 	add r0, #0x80
 	add r1, r4, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #0x7c]
 	ldr r2, [r5, #0x58]
 	add r1, r4, #0
 	add r3, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r5, #0x7c]
 	add r0, r5, #4
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 _021E5F08:
 	ldr r6, _021E5F44 ; =_021EAE30
 	add r3, sp, #4
@@ -785,7 +785,7 @@ _021E5F58:
 	cmp r1, #0
 	beq _021E5F6A
 	add r0, r6, #0
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r5, #0x60]
 	bl FreeToHeap
 _021E5F6A:
@@ -1284,10 +1284,10 @@ _021E62C0:
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r3]
 	mov r0, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _021E6410 ; =0x00007FFF
 	mov r0, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r3, _021E6414 ; =0x000001E2
 	mov r0, #1
 	add r2, r3, #2
@@ -1295,10 +1295,10 @@ _021E62C0:
 	add r3, r3, #4
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r3]
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _021E6410 ; =0x00007FFF
 	mov r0, #1
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r2, _021E6408 ; =0x04000060
 	ldr r0, _021E640C ; =0xFFFFCFFF
 	ldrh r1, [r2]
@@ -1425,7 +1425,7 @@ _021E642E:
 	str r1, [r5, r0]
 	ldr r1, _021E6540 ; =0x00007FFF
 	mov r0, #1
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	mov r0, #0x5f
 	add r1, r4, #0
 	lsl r0, r0, #2
@@ -2644,7 +2644,7 @@ ov60_021E6E40: ; 0x021E6E40
 	bl sub_02022588
 	bl sub_020216C8
 	bl sub_02022638
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80
@@ -7467,7 +7467,7 @@ _021E94D8:
 	lsl r0, r0, #6
 	ldr r1, [r1]
 	add r0, r7, r0
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	add r0, r6, r4
 	add r0, #0xdc
 	ldr r0, [r0]
@@ -8093,25 +8093,25 @@ _021E99DE:
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #2
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #1
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #0xf
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	ldr r0, [sp, #0x1c]
 	ldr r1, _021E9B48 ; =_021EB2C4
 	lsl r0, r0, #3
@@ -8137,7 +8137,7 @@ _021E9A6A:
 	add r0, #0xdc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [sp, #0x24]
 	mov r0, #7
 	ldr r1, [sp, #0xc]
@@ -8145,7 +8145,7 @@ _021E9A6A:
 	add r0, r1, r0
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x28]
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	add r1, r5, r4
 	add r1, #0xe4
 	str r0, [r1]
@@ -8155,13 +8155,13 @@ _021E9A6A:
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x28]
 	ldr r3, [sp, #0x14]
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	add r1, r5, r4
 	ldr r0, [sp, #0x20]
 	add r1, #0xe4
 	ldr r1, [r1]
 	add r0, r0, r7
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 	add r0, r6, #1
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
@@ -8219,7 +8219,7 @@ _021E9A6A:
 	mov r0, #5
 	mov r2, #2
 	add r3, r1, #0
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8402,11 +8402,11 @@ _021E9C9C:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	asr r3, r3, #0x10
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	lsl r1, r4, #1
 	ldrh r1, [r5, r1]
 	add r0, r4, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -8419,13 +8419,13 @@ _021E9C9C:
 	ldrh r1, [r1, r4]
 	ldrh r0, [r0, r4]
 	mov r2, #0
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r0, _021E9D00 ; =_021EB1FC
 	ldr r1, _021E9D04 ; =_021EB20E
 	ldrh r0, [r0, r4]
 	ldrh r1, [r1, r4]
 	mov r2, #0
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E9CF0: .word _021EB554

@@ -406,7 +406,7 @@ sub_020550E4: ; 0x020550E4
 	beq _0205510C
 	mov r0, #0
 	mov r1, #0x28
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 _0205510C:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

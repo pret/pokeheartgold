@@ -1117,7 +1117,7 @@ _021E6120:
 	beq _021E612E
 	bl sub_0200D034
 _021E612E:
-	bl sub_020B62EC
+	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x14]
 	bl sub_0201EEB4
 	ldr r3, _021E6148 ; =0x027E0000

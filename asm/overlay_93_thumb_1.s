@@ -1373,18 +1373,18 @@ ov93_0225D07C: ; 0x0225D07C
 	ldr r2, _0225D1C0 ; =0xFFFFF000
 	add r1, r0, #0
 	add r3, r0, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _0225D1C4 ; =0x0000739C
 	mov r0, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r0, _0225D1C8 ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r0, _0225D1C8 ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	add r0, sp, #0x28
 	bl NNS_G3dGlbSetBaseTrans
 	ldr r1, _0225D1CC ; =0x021DA558
@@ -1406,7 +1406,7 @@ ov93_0225D07C: ; 0x0225D07C
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _0225D1D4 ; =0x000013B0
 	add r0, r4, r0
 	bl sub_020181EC
@@ -1419,7 +1419,7 @@ ov93_0225D07C: ; 0x0225D07C
 	mov r0, #0x12
 	add r1, sp, #0
 	str r2, [sp]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	bl sub_02026E48
 	bl sub_0201543C
 	cmp r0, #0
@@ -4789,17 +4789,17 @@ ov93_0225EB70: ; 0x0225EB70
 	str r0, [sp, #0x1c]
 	mov r0, #0x32
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _0225EC84 ; =0x00007FFF
 	add r1, sp, #0x18
 	str r0, [sp, #0x18]
 	mov r0, #0x33
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0
 	str r0, [sp, #0x2c]
 	mov r0, #0x13
@@ -4810,7 +4810,7 @@ ov93_0225EB70: ; 0x0225EB70
 	str r0, [sp, #0x34]
 	mov r0, #0x1c
 	mov r2, #3
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x99
 	lsl r0, r0, #2
 	ldr r4, [r5, r0]
@@ -4841,23 +4841,23 @@ ov93_0225EB70: ; 0x0225EB70
 	add r1, sp, #0x20
 	mov r2, #3
 	str r6, [sp, #0x24]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #3
 	str r0, [sp, #0x14]
 	mov r0, #0x10
 	add r1, sp, #0x14
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x15
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #2
 	str r0, [sp, #0x10]
 	mov r0, #0x10
 	add r1, sp, #0x10
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #1
 	add r1, r0, #0
 	bl ov93_0225EE4C
@@ -4876,27 +4876,27 @@ ov93_0225EB70: ; 0x0225EB70
 	str r0, [sp, #0xc]
 	mov r0, #0x2a
 	add r1, sp, #0xc
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	lsr r0, r4, #0x11
 	str r0, [sp, #8]
 	mov r0, #0x2b
 	add r1, sp, #8
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _0225EC94 ; =0x001F00C1
 	add r1, sp, #4
 	str r0, [sp, #4]
 	mov r0, #0x29
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r0, r5, #0
 	bl ov93_0225EFAC
 	mov r2, #1
 	mov r0, #0x12
 	add r1, sp, #0
 	str r2, [sp]
-	bl sub_020C2528
-	bl sub_020C23F4
+	bl NNS_G3dGeBufferOP_N
+	bl NNS_G3dGeFlushBuffer
 	add sp, #0x38
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5153,7 +5153,7 @@ _0225EE5C:
 	str r0, [sp, #4]
 	mov r0, #0x30
 	add r1, sp, #4
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	cmp r4, #0
 	beq _0225EE76
 	mov r0, #1
@@ -5168,7 +5168,7 @@ _0225EE78:
 	str r0, [sp]
 	mov r0, #0x31
 	add r1, sp, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add sp, #8
 	pop {r4, pc}
 	nop

@@ -1254,7 +1254,7 @@ ov111_021E62E0: ; 0x021E62E0
 	ldr r0, [r5]
 	bl sub_02024B1C
 	add r1, r4, #0
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r5, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0

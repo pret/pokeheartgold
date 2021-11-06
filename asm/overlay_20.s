@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ov20_022598C0
-ov20_022598C0: ; 0x022598C0
+	thumb_func_start ScrCmd_116
+ScrCmd_116: ; 0x022598C0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	mov r1, #0
@@ -84,7 +84,7 @@ ov20_022598C0: ; 0x022598C0
 	add r0, r0, r1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov20_022598C0
+	thumb_func_end ScrCmd_116
 
 	thumb_func_start ov20_0225996C
 ov20_0225996C: ; 0x0225996C
@@ -179,7 +179,7 @@ ov20_02259A1C: ; 0x02259A1C
 	mov r1, #0x10
 	add r7, r2, #0
 	add r4, r3, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, sp, #0x10
 	add r5, r0, #0
 	ldrh r1, [r1, #0x10]
@@ -221,8 +221,8 @@ ov20_02259A1C: ; 0x02259A1C
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov20_02259A1C
 
-	thumb_func_start ov20_02259A88
-ov20_02259A88: ; 0x02259A88
+	thumb_func_start ScrCmd_390
+ScrCmd_390: ; 0x02259A88
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -253,7 +253,7 @@ ov20_02259A88: ; 0x02259A88
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r7, #0
-	bl ov20_022598C0
+	bl ScrCmd_116
 	add r1, sp, #0
 	strh r0, [r1, #2]
 	ldrh r1, [r1, #2]
@@ -302,10 +302,10 @@ _02259B38:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov20_02259A88
+	thumb_func_end ScrCmd_390
 
-	thumb_func_start ov20_02259B40
-ov20_02259B40: ; 0x02259B40
+	thumb_func_start ScrCmd_391
+ScrCmd_391: ; 0x02259B40
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -326,7 +326,7 @@ ov20_02259B40: ; 0x02259B40
 	bl SavArray_Flags_get
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov20_022598C0
+	bl ScrCmd_116
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r4, #0
@@ -335,10 +335,10 @@ ov20_02259B40: ; 0x02259B40
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov20_02259B40
+	thumb_func_end ScrCmd_391
 
-	thumb_func_start ov20_02259B88
-ov20_02259B88: ; 0x02259B88
+	thumb_func_start ScrCmd_393
+ScrCmd_393: ; 0x02259B88
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -384,10 +384,10 @@ ov20_02259B88: ; 0x02259B88
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov20_02259B88
+	thumb_func_end ScrCmd_393
 
-	thumb_func_start ov20_02259BF4
-ov20_02259BF4: ; 0x02259BF4
+	thumb_func_start ScrCmd_392
+ScrCmd_392: ; 0x02259BF4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -426,7 +426,7 @@ ov20_02259BF4: ; 0x02259BF4
 	bl GetMonData
 	add r5, r0, #0
 	ldr r0, [sp, #4]
-	bl ov20_022598C0
+	bl ScrCmd_116
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r1, r6, #0x18
@@ -441,7 +441,7 @@ ov20_02259BF4: ; 0x02259BF4
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov20_02259BF4
+	thumb_func_end ScrCmd_392
 
 	.rodata
 

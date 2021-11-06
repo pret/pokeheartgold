@@ -176,7 +176,7 @@ sub_02053038: ; 0x02053038
 	cmp r0, #0
 	bne _02053062
 	add r0, r4, #0
-	bl sub_02040438
+	bl ClearTempFieldEventData
 _02053062:
 	cmp r6, #0
 	bne _0205306E
@@ -980,7 +980,7 @@ _020536D0:
 	str r0, [r4]
 	b _02053708
 _020536E0:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _02053708
 	ldr r1, [r4, #4]
@@ -1176,7 +1176,7 @@ _0205384E:
 	str r0, [r4]
 	b _02053886
 _0205385E:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _02053886
 	ldr r1, [r4, #4]
@@ -1349,7 +1349,7 @@ _02053996:
 	str r0, [r4]
 	b _020539D4
 _020539B0:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _020539D4
 	add r0, r6, #0
@@ -1452,7 +1452,7 @@ _02053A5C:
 	mov r0, #0
 	mov r1, #0x80
 	mov r2, #0xf
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	mov r1, #0
 	add r0, r6, #0
 	mvn r1, r1
@@ -1606,7 +1606,7 @@ _02053B82:
 	str r0, [r4]
 	b _02053BE2
 _02053B9C:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _02053BE2
 	ldr r1, [r6]
@@ -1863,7 +1863,7 @@ _02053D7A:
 	str r0, [r4]
 	b _02053E02
 _02053D8A:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _02053E02
 	ldr r1, [r6]
@@ -2024,7 +2024,7 @@ _02053EC6:
 	str r0, [r4]
 	b _02053F0E
 _02053ED6:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _02053F0E
 	ldr r0, [sp]
@@ -2155,7 +2155,7 @@ _02053FD2:
 	str r0, [r4]
 	b _0205402C
 _02053FE2:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _0205402C
 	ldr r0, [sp]
@@ -2292,7 +2292,7 @@ _020540EC:
 	str r0, [r4]
 	b _02054124
 _020540FC:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _02054124
 	ldr r1, [r4, #4]

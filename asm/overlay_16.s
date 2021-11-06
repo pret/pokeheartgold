@@ -720,7 +720,7 @@ _022018FA:
 	add r0, r6, #0
 	lsr r1, r1, #0x10
 	add r2, r7, #0
-	bl sub_02078550
+	bl Bag_GetQuantity
 	add r0, r5, r0
 	lsl r0, r0, #0x10
 	add r4, r4, #1
@@ -746,7 +746,7 @@ _02201926:
 	add r0, r6, #0
 	lsr r1, r1, #0x10
 	add r2, r7, #0
-	bl sub_02078550
+	bl Bag_GetQuantity
 	add r0, r5, r0
 	lsl r0, r0, #0x10
 	add r4, r4, #1
@@ -963,7 +963,7 @@ _02201ABA:
 	ldr r2, _02201B18 ; =0x02201BA0
 	str r1, [r2]
 	ldr r2, [r4]
-	bl sub_02078644
+	bl CreateBagView
 	str r0, [r4, #0x10]
 	ldr r1, [r4, #4]
 	mov r2, #6
@@ -979,7 +979,7 @@ _02201ADC:
 	ldr r2, _02201B18 ; =0x02201BA0
 	str r1, [r2]
 	ldr r2, [r4]
-	bl sub_02078644
+	bl CreateBagView
 	str r0, [r4, #0x10]
 	ldr r1, [r4, #4]
 	mov r2, #6

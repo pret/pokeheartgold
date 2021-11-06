@@ -966,7 +966,7 @@ ov01_021E6138: ; 0x021E6138
 ov01_021E6178: ; 0x021E6178
 	push {lr}
 	sub sp, #0x14
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7c
@@ -1023,7 +1023,7 @@ ov01_021E61A4: ; 0x021E61A4
 ov01_021E61E0: ; 0x021E61E0
 	push {r4, lr}
 	sub sp, #0x10
-	ldr r4, _021E6210 ; =_022062DC
+	ldr r4, _021E6210 ; =ov01_022062DC
 	add r3, sp, #0
 	add r2, r3, #0
 	ldmia r4!, {r0, r1}
@@ -1042,7 +1042,7 @@ ov01_021E61E0: ; 0x021E61E0
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
-_021E6210: .word _022062DC
+_021E6210: .word ov01_022062DC
 	thumb_func_end ov01_021E61E0
 
 	thumb_func_start ov01_021E6214
@@ -1540,8 +1540,8 @@ _021E6628: .word ov01_021E5900
 	thumb_func_start ov01_021E662C
 ov01_021E662C: ; 0x021E662C
 	push {r3, lr}
-	bl sub_020DE0C8
-	bl sub_020DE0C8
+	bl CARD_SpiWaitGetStatus
+	bl CARD_SpiWaitGetStatus
 	cmp r0, #0xaa
 	bne _021E663E
 	mov r0, #1
@@ -4670,7 +4670,7 @@ _021E7E80:
 	mov r0, #0
 	ldrb r1, [r1, r2]
 	mov r2, #0xf
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	ldr r1, [sp]
 	mov r0, #5
 	ldrb r2, [r1, r4]
@@ -4681,7 +4681,7 @@ _021E7E80:
 	add r1, r1, r3
 	ldrb r1, [r2, r1]
 	add r2, r0, #0
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7EBC:
 	cmp r7, #0x10
@@ -4701,7 +4701,7 @@ _021E7EC6:
 	mov r0, #0
 	mov r1, #0x80
 	mov r2, #0xf
-	bl sub_02005408
+	bl GF_SndHandleMoveVolume
 	mov r0, #0
 	mvn r0, r0
 	add r5, #0xc4
@@ -9569,21 +9569,21 @@ ov01_021EA3B0: ; 0x021EA3B0
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #2
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #1
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	pop {r4, pc}
 	thumb_func_end ov01_021EA3B0
 
@@ -9607,7 +9607,7 @@ ov01_021EA3E0: ; 0x021EA3E0
 _021EA400:
 	add r1, r5, #0
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	ldrsb r1, [r5, r4]
 	cmp r1, #0x45
 	bne _021EA41A
@@ -9620,31 +9620,31 @@ _021EA400:
 _021EA41A:
 	add r1, r5, #0
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r1, r5, #0
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r1, r5, #0
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r1, r5, #0
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r1, r5, #0
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r1, r5, #0
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r1, r5, #0
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r1, r5, #0
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r1, r5, #0
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	ldr r1, [sp, #8]
 	add r1, r1, #1
 	str r1, [sp, #8]
@@ -9688,14 +9688,14 @@ _021EA4AC:
 	ldr r1, [sp, #0x10]
 	add r4, r5, r1
 	add r1, sp, #0x11c
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	str r0, [sp, #4]
 	add r0, sp, #0x11c
 	add r1, sp, #0x1c
 	mov r2, #0x2c
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r0, sp, #0x1c
-	bl sub_02020AF8
+	bl Ascii_StrToL
 	ldr r1, [sp, #0x10]
 	add r6, r4, #0
 	str r0, [r5, r1]
@@ -9747,7 +9747,7 @@ _021EA502:
 	bl ov01_021EA668
 	add r1, sp, #0x11c
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	ldr r1, [sp, #0x10]
 	add r1, #0x30
 	str r1, [sp, #0x10]
@@ -9791,15 +9791,15 @@ ov01_021EA578: ; 0x021EA578
 	add r7, r2, #0
 	add r1, sp, #0x11c
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	str r0, [sp]
 	add r0, sp, #0x11c
 	add r1, sp, #0x1c
 	mov r2, #0x2c
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r4, r0, #0
 	add r0, sp, #0x1c
-	bl sub_02020AF8
+	bl Ascii_StrToL
 	cmp r0, #1
 	bne _021EA650
 	mov r6, #0
@@ -9808,10 +9808,10 @@ _021EA5A6:
 	add r0, r4, #0
 	add r1, sp, #0x1c
 	mov r2, #0x2c
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r4, r0, #0
 	add r0, sp, #0x1c
-	bl sub_02020AF8
+	bl Ascii_StrToL
 	strh r0, [r5]
 	add r6, r6, #1
 	add r5, r5, #2
@@ -9833,10 +9833,10 @@ _021EA5DA:
 	add r0, r4, #0
 	add r1, sp, #0x1c
 	mov r2, #0x2c
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r4, r0, #0
 	add r0, sp, #0x1c
-	bl sub_02020AF8
+	bl Ascii_StrToL
 	add r6, r6, #1
 	stmia r5!, {r0}
 	cmp r6, #3
@@ -9915,7 +9915,7 @@ ov01_021EA668: ; 0x021EA668
 	add r1, sp, #0x10c
 	add r1, #2
 	mov r2, #0xd
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r6, sp, #0x10c
 	add r7, sp, #0xc
 	str r0, [sp]
@@ -9927,10 +9927,10 @@ _021EA688:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #0x2c
-	bl sub_02020AB4
+	bl Ascii_GetDelim
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02020AF8
+	bl Ascii_StrToL
 	strh r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #2
@@ -9954,8 +9954,8 @@ _021EA688:
 	.balign 4, 0
 	thumb_func_end ov01_021EA668
 
-	thumb_func_start ov01_021EA6C4
-ov01_021EA6C4: ; 0x021EA6C4
+	thumb_func_start LoadAreaOrDungeonLightTxt
+LoadAreaOrDungeonLightTxt: ; 0x021EA6C4
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -10002,7 +10002,7 @@ _021EA706:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021EA720: .word 0x02206450
-	thumb_func_end ov01_021EA6C4
+	thumb_func_end LoadAreaOrDungeonLightTxt
 
 	thumb_func_start ov01_021EA724
 ov01_021EA724: ; 0x021EA724
@@ -10322,7 +10322,7 @@ _021EA91E:
 	ldrsh r2, [r5, r2]
 	ldrsh r3, [r5, r3]
 	add r0, r4, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 _021EA938:
 	add r1, r4, #4
 	mov r0, #1
@@ -10331,7 +10331,7 @@ _021EA938:
 	beq _021EA94A
 	ldrh r1, [r6, #0x18]
 	add r0, r4, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 _021EA94A:
 	add r4, r4, #1
 	add r5, r5, #6
@@ -10348,7 +10348,7 @@ _021EA94A:
 	ldrh r0, [r0, #0x20]
 	ldrh r1, [r1, #0x22]
 	ldr r2, [r2, #0x28]
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 _021EA96C:
 	mov r0, #3
 	lsl r0, r0, #0xa
@@ -10360,7 +10360,7 @@ _021EA96C:
 	ldrh r0, [r0, #0x24]
 	ldrh r1, [r1, #0x26]
 	ldr r2, [r2, #0x2c]
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 _021EA984:
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -10380,7 +10380,7 @@ _021EA984:
 	ldr r0, [r0, #0x30]
 	ldr r2, [r2, #0x38]
 	ldr r3, [r3, #0x3c]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 _021EA9AC:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -10398,7 +10398,7 @@ ov01_021EA9B0: ; 0x021EA9B0
 	beq _021EA9C8
 	ldrh r1, [r5, #0x20]
 	add r0, r6, #0
-	bl sub_020C3498
+	bl NNS_G3dMdlSetMdlDiffAll
 _021EA9C8:
 	mov r0, #2
 	lsl r0, r0, #8
@@ -10406,7 +10406,7 @@ _021EA9C8:
 	beq _021EA9D8
 	ldrh r1, [r5, #0x22]
 	add r0, r6, #0
-	bl sub_020C34D8
+	bl NNS_G3dMdlSetMdlAmbAll
 _021EA9D8:
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -10414,7 +10414,7 @@ _021EA9D8:
 	beq _021EA9E8
 	ldrh r1, [r5, #0x24]
 	add r0, r6, #0
-	bl sub_020C3518
+	bl NNS_G3dMdlSetMdlSpecAll
 _021EA9E8:
 	mov r0, #2
 	lsl r0, r0, #0xa
@@ -10422,7 +10422,7 @@ _021EA9E8:
 	beq _021EA9F8
 	ldrh r1, [r5, #0x26]
 	add r0, r6, #0
-	bl sub_020C3558
+	bl NNS_G3dMdlSetMdlEmiAll
 _021EA9F8:
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -10430,7 +10430,7 @@ _021EA9F8:
 	beq _021EAA08
 	ldr r1, [r5, #0x30]
 	add r0, r6, #0
-	bl sub_020C3598
+	bl NNS_G3dMdlSetMdlLightEnableFlagAll
 _021EAA08:
 	mov r0, #2
 	lsl r0, r0, #0xc
@@ -10438,7 +10438,7 @@ _021EAA08:
 	beq _021EAA18
 	ldr r1, [r5, #0x34]
 	add r0, r6, #0
-	bl sub_020C35D8
+	bl NNS_G3dMdlSetMdlPolygonModeAll
 _021EAA18:
 	mov r0, #1
 	lsl r0, r0, #0xe
@@ -10446,7 +10446,7 @@ _021EAA18:
 	beq _021EAA28
 	ldr r1, [r5, #0x38]
 	add r0, r6, #0
-	bl sub_020C3618
+	bl NNS_G3dMdlSetMdlCullModeAll
 _021EAA28:
 	mov r0, #2
 	lsl r0, r0, #0xe
@@ -10454,7 +10454,7 @@ _021EAA28:
 	beq _021EAA38
 	ldr r1, [r5, #0x3c]
 	add r0, r6, #0
-	bl sub_020C3658
+	bl NNS_G3dMdlSetMdlPolygonIDAll
 _021EAA38:
 	mov r0, #1
 	lsl r0, r0, #0x10
@@ -10462,7 +10462,7 @@ _021EAA38:
 	beq _021EAA48
 	ldr r1, [r5, #0x40]
 	add r0, r6, #0
-	bl sub_020C3698
+	bl NNS_G3dMdlSetMdlAlphaAll
 _021EAA48:
 	mov r1, #2
 	lsl r1, r1, #0x10
@@ -10473,7 +10473,7 @@ _021EAA48:
 	lsr r1, r1, #2
 	add r0, r6, #0
 	and r1, r2
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 _021EAA5E:
 	mov r1, #1
 	lsl r1, r1, #0x12
@@ -10484,7 +10484,7 @@ _021EAA5E:
 	lsr r1, r1, #4
 	add r0, r6, #0
 	and r1, r2
-	bl sub_020C3718
+	bl NNS_G3dMdlSetMdlDepthTestCondAll
 _021EAA74:
 	mov r1, #2
 	lsl r1, r1, #0x12
@@ -10495,7 +10495,7 @@ _021EAA74:
 	lsr r1, r1, #6
 	add r0, r6, #0
 	and r1, r2
-	bl sub_020C3758
+	bl NNS_G3dMdlSetMdl1DotAll
 _021EAA8A:
 	mov r1, #1
 	lsl r1, r1, #0x14
@@ -10506,7 +10506,7 @@ _021EAA8A:
 	lsr r1, r1, #8
 	add r0, r6, #0
 	and r1, r2
-	bl sub_020C3798
+	bl NNS_G3dMdlSetMdlFarClipAll
 _021EAAA0:
 	mov r1, #2
 	lsl r1, r1, #0x14
@@ -10517,7 +10517,7 @@ _021EAAA0:
 	lsr r1, r1, #0xa
 	add r0, r6, #0
 	and r1, r2
-	bl sub_020C37D8
+	bl NNS_G3dMdlSetMdlXLDepthUpdateAll
 _021EAAB6:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021EA9B0
@@ -10541,7 +10541,7 @@ ov01_021EAAB8: ; 0x021EAAB8
 	ldrsh r1, [r5, r4]
 	ldrsh r2, [r2, r4]
 	ldrsh r3, [r3, r4]
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021EAAB8
 
@@ -10554,7 +10554,7 @@ ov01_021EAAE0: ; 0x021EAAE0
 	strh r2, [r4, r3]
 	add r0, r1, #0
 	ldrh r1, [r4, r3]
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	pop {r4, pc}
 	thumb_func_end ov01_021EAAE0
 
@@ -11407,10 +11407,10 @@ _021EB0C8:
 	bl sub_020209E0
 	add r1, r5, r6
 	str r0, [r1, #0xc]
-	ldr r1, _021EB110 ; =0x02209898
+	ldr r1, _021EB110 ; =ov01_02209898
 	ldr r2, [sp, #4]
 	add r0, sp, #0x10
-	bl sprintf
+	bl sprintf ; result never used
 	ldr r0, [r5, #4]
 	mov r2, #4
 	add r0, r0, #4
@@ -11432,7 +11432,7 @@ _021EB0C8:
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021EB110: .word 0x02209898
+_021EB110: .word ov01_02209898
 	thumb_func_end ov01_021EB058
 
 	thumb_func_start ov01_021EB114
@@ -19788,21 +19788,21 @@ ov01_021EF034: ; 0x021EF034
 	.balign 4, 0
 	thumb_func_end ov01_021EF034
 
-	thumb_func_start ov01_021EF050
-ov01_021EF050: ; 0x021EF050
+	thumb_func_start ScrCmd_Message
+ScrCmd_Message: ; 0x021EF050
 	push {r3, lr}
 	ldr r2, [r0, #8]
 	add r1, r2, #1
 	str r1, [r0, #8]
 	ldrb r2, [r2]
 	ldr r1, [r0, #0x78]
-	bl ov01_021EF530
+	bl ovFieldMain_ShowMessageInField
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov01_021EF050
+	thumb_func_end ScrCmd_Message
 
-	thumb_func_start ov01_021EF064
-ov01_021EF064: ; 0x021EF064
+	thumb_func_start ScrCmd_438
+ScrCmd_438: ; 0x021EF064
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -19832,10 +19832,10 @@ _021EF098:
 	pop {r3, r4, r5, pc}
 	nop
 _021EF0A0: .word 0x022067C8
-	thumb_func_end ov01_021EF064
+	thumb_func_end ScrCmd_438
 
-	thumb_func_start ov01_021EF0A4
-ov01_021EF0A4: ; 0x021EF0A4
+	thumb_func_start ScrCmd_439
+ScrCmd_439: ; 0x021EF0A4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -19862,15 +19862,15 @@ ov01_021EF0A4: ; 0x021EF0A4
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl ov01_021EF530
+	bl ovFieldMain_ShowMessageInField
 	add r0, r5, #0
 	bl DestroyMsgData
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021EF0A4
+	thumb_func_end ScrCmd_439
 
-	thumb_func_start ov01_021EF0F0
-ov01_021EF0F0: ; 0x021EF0F0
+	thumb_func_start ScrCmd_440
+ScrCmd_440: ; 0x021EF0F0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -19912,10 +19912,10 @@ ov01_021EF0F0: ; 0x021EF0F0
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021EF150: .word ov01_021EF348
-	thumb_func_end ov01_021EF0F0
+	thumb_func_end ScrCmd_440
 
-	thumb_func_start ov01_021EF154
-ov01_021EF154: ; 0x021EF154
+	thumb_func_start ScrCmd_441
+ScrCmd_441: ; 0x021EF154
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -19943,10 +19943,10 @@ ov01_021EF154: ; 0x021EF154
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EF154
+	thumb_func_end ScrCmd_441
 
-	thumb_func_start ov01_021EF194
-ov01_021EF194: ; 0x021EF194
+	thumb_func_start ScrCmd_442
+ScrCmd_442: ; 0x021EF194
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -19978,10 +19978,10 @@ ov01_021EF194: ; 0x021EF194
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021EF1DC: .word ov01_021EF348
-	thumb_func_end ov01_021EF194
+	thumb_func_end ScrCmd_442
 
-	thumb_func_start ov01_021EF1E0
-ov01_021EF1E0: ; 0x021EF1E0
+	thumb_func_start ScrCmd_443
+ScrCmd_443: ; 0x021EF1E0
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -20045,10 +20045,10 @@ _021EF24C:
 _021EF25C: .word 0x0000FFFF
 _021EF260: .word 0x000002D3
 _021EF264: .word ov01_021EF348
-	thumb_func_end ov01_021EF1E0
+	thumb_func_end ScrCmd_443
 
-	thumb_func_start ov01_021EF268
-ov01_021EF268: ; 0x021EF268
+	thumb_func_start ScrCmd_444
+ScrCmd_444: ; 0x021EF268
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -20101,10 +20101,10 @@ ov01_021EF268: ; 0x021EF268
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021EF2DC: .word ov01_021EF348
-	thumb_func_end ov01_021EF268
+	thumb_func_end ScrCmd_444
 
-	thumb_func_start ov01_021EF2E0
-ov01_021EF2E0: ; 0x021EF2E0
+	thumb_func_start ScrCmd_527
+ScrCmd_527: ; 0x021EF2E0
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -20131,10 +20131,10 @@ ov01_021EF2E0: ; 0x021EF2E0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021EF318: .word ov01_021EF348
-	thumb_func_end ov01_021EF2E0
+	thumb_func_end ScrCmd_527
 
-	thumb_func_start ov01_021EF31C
-ov01_021EF31C: ; 0x021EF31C
+	thumb_func_start ScrCmd_045
+ScrCmd_045: ; 0x021EF31C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20155,7 +20155,7 @@ ov01_021EF31C: ; 0x021EF31C
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021EF344: .word ov01_021EF348
-	thumb_func_end ov01_021EF31C
+	thumb_func_end ScrCmd_045
 
 	thumb_func_start ov01_021EF348
 ov01_021EF348: ; 0x021EF348
@@ -20163,14 +20163,14 @@ ov01_021EF348: ; 0x021EF348
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldrb r0, [r0]
 	bl sub_0205B624
 	pop {r3, pc}
 	thumb_func_end ov01_021EF348
 
-	thumb_func_start ov01_021EF35C
-ov01_021EF35C: ; 0x021EF35C
+	thumb_func_start ScrCmd_046
+ScrCmd_046: ; 0x021EF35C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20197,10 +20197,10 @@ ov01_021EF35C: ; 0x021EF35C
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021EF394: .word ov01_021EF348
-	thumb_func_end ov01_021EF35C
+	thumb_func_end ScrCmd_046
 
-	thumb_func_start ov01_021EF398
-ov01_021EF398: ; 0x021EF398
+	thumb_func_start ScrCmd_592
+ScrCmd_592: ; 0x021EF398
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -20232,10 +20232,10 @@ ov01_021EF398: ; 0x021EF398
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021EF3DC: .word ov01_021EF348
-	thumb_func_end ov01_021EF398
+	thumb_func_end ScrCmd_592
 
-	thumb_func_start ov01_021EF3E0
-ov01_021EF3E0: ; 0x021EF3E0
+	thumb_func_start ScrCmd_047
+ScrCmd_047: ; 0x021EF3E0
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20261,10 +20261,10 @@ ov01_021EF3E0: ; 0x021EF3E0
 	pop {r3, r4, pc}
 	nop
 _021EF418: .word ov01_021EF348
-	thumb_func_end ov01_021EF3E0
+	thumb_func_end ScrCmd_047
 
-	thumb_func_start ov01_021EF41C
-ov01_021EF41C: ; 0x021EF41C
+	thumb_func_start ScrCmd_132
+ScrCmd_132: ; 0x021EF41C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -20312,17 +20312,17 @@ _021EF474:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021EF484: .word ov01_021EF348
-	thumb_func_end ov01_021EF41C
+	thumb_func_end ScrCmd_132
 
-	thumb_func_start ov01_021EF488
-ov01_021EF488: ; 0x021EF488
+	thumb_func_start ScrCmd_455
+ScrCmd_455: ; 0x021EF488
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0xa
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl sub_0205F26C
 	lsl r0, r0, #0x18
@@ -20341,14 +20341,14 @@ ov01_021EF488: ; 0x021EF488
 	pop {r3, r4, pc}
 	nop
 _021EF4C0: .word ov01_021EF348
-	thumb_func_end ov01_021EF488
+	thumb_func_end ScrCmd_455
 
 	thumb_func_start ov01_021EF4C4
 ov01_021EF4C4: ; 0x021EF4C4
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl ov01_021EF60C
+	bl ovFieldMain_GetTextFrameDelay
 	strb r0, [r4]
 	mov r0, #0
 	strb r0, [r4, #1]
@@ -20370,20 +20370,20 @@ ov01_021EF4DC: ; 0x021EF4DC
 	add r1, sp, #8
 	add r7, r2, #0
 	ldr r4, [sp, #0x38]
-	bl ov01_021EF620
+	bl ovFieldMain_GetMsgBoxParameters
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	add r1, sp, #8
-	bl ov01_021EF6A8
+	bl ovFieldMain_CreateMessageBox
 	add r0, sp, #8
 	add r1, r6, #0
 	add r2, r7, #0
-	bl ov01_021EF6EC
+	bl ovFieldMain_ReadAndExpandMsgDataViaBuffer
 	cmp r4, #0
 	bne _021EF51C
 	add r0, r5, #0
-	bl ov01_021EF60C
+	bl ovFieldMain_GetTextFrameDelay
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #1
@@ -20401,8 +20401,8 @@ _021EF522:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EF4DC
 
-	thumb_func_start ov01_021EF530
-ov01_021EF530: ; 0x021EF530
+	thumb_func_start ovFieldMain_ShowMessageInField
+ovFieldMain_ShowMessageInField: ; 0x021EF530
 	push {r4, r5, r6, lr}
 	sub sp, #0x18
 	add r5, r0, #0
@@ -20411,21 +20411,21 @@ ov01_021EF530: ; 0x021EF530
 	ldr r0, [r0]
 	add r1, sp, #0
 	add r6, r2, #0
-	bl ov01_021EF620
+	bl ovFieldMain_GetMsgBoxParameters
 	add r5, #0x80
 	ldr r0, [r5]
 	add r1, sp, #0
-	bl ov01_021EF6A8
+	bl ovFieldMain_CreateMessageBox
 	add r0, sp, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov01_021EF6EC
+	bl ovFieldMain_ReadAndExpandMsgDataViaBuffer
 	add r0, sp, #0
 	mov r1, #1
-	bl ov01_021EF780
+	bl ovFieldMain_AddTextPrinterParameterized
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021EF530
+	thumb_func_end ovFieldMain_ShowMessageInField
 
 	thumb_func_start ov01_021EF564
 ov01_021EF564: ; 0x021EF564
@@ -20438,12 +20438,12 @@ ov01_021EF564: ; 0x021EF564
 	add r1, sp, #4
 	add r6, r2, #0
 	add r7, r3, #0
-	bl ov01_021EF620
+	bl ovFieldMain_GetMsgBoxParameters
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	add r1, sp, #4
-	bl ov01_021EF6A8
+	bl ovFieldMain_CreateMessageBox
 	add r0, sp, #0x20
 	ldrh r0, [r0, #0x10]
 	add r1, r4, #0
@@ -20457,7 +20457,7 @@ ov01_021EF564: ; 0x021EF564
 	cmp r0, #0xff
 	beq _021EF5BC
 	add r0, r5, #0
-	bl ov01_021EF60C
+	bl ovFieldMain_GetTextFrameDelay
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -20471,7 +20471,7 @@ ov01_021EF564: ; 0x021EF564
 _021EF5BC:
 	add r0, sp, #4
 	mov r1, #1
-	bl ov01_021EF780
+	bl ovFieldMain_AddTextPrinterParameterized
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EF564
@@ -20486,18 +20486,18 @@ ov01_021EF5C8: ; 0x021EF5C8
 	ldr r0, [r0]
 	add r2, sp, #4
 	add r6, r3, #0
-	bl ov01_021EF668
+	bl ovFieldMain_GetMsgBoxParametersEx
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	add r1, sp, #4
-	bl ov01_021EF6A8
+	bl ovFieldMain_CreateMessageBox
 	ldr r1, [r5, #0x78]
 	add r0, sp, #4
 	add r2, r4, #0
-	bl ov01_021EF6EC
+	bl ovFieldMain_ReadAndExpandMsgDataViaBuffer
 	add r0, r5, #0
-	bl ov01_021EF60C
+	bl ovFieldMain_GetTextFrameDelay
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -20509,8 +20509,8 @@ ov01_021EF5C8: ; 0x021EF5C8
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov01_021EF5C8
 
-	thumb_func_start ov01_021EF60C
-ov01_021EF60C: ; 0x021EF60C
+	thumb_func_start ovFieldMain_GetTextFrameDelay
+ovFieldMain_GetTextFrameDelay: ; 0x021EF60C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -20519,75 +20519,75 @@ ov01_021EF60C: ; 0x021EF60C
 	bl Options_GetTextFrameDelay
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EF60C
+	thumb_func_end ovFieldMain_GetTextFrameDelay
 
-	thumb_func_start ov01_021EF620
-ov01_021EF620: ; 0x021EF620
+	thumb_func_start ovFieldMain_GetMsgBoxParameters
+ovFieldMain_GetMsgBoxParameters: ; 0x021EF620
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	mov r1, #0x11
 	add r5, r0, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	mov r1, #0x12
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	mov r1, #0x10
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	mov r1, #1
 	str r0, [r4, #8]
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0x14]
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_021EF620
+	thumb_func_end ovFieldMain_GetMsgBoxParameters
 
-	thumb_func_start ov01_021EF668
-ov01_021EF668: ; 0x021EF668
+	thumb_func_start ovFieldMain_GetMsgBoxParametersEx
+ovFieldMain_GetMsgBoxParametersEx: ; 0x021EF668
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	mov r1, #0x11
 	add r5, r0, #0
 	add r4, r2, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	mov r1, #0x12
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	mov r1, #1
 	str r0, [r4, #4]
 	str r6, [r4, #8]
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [r4, #0x14]
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021EF668
+	thumb_func_end ovFieldMain_GetMsgBoxParametersEx
 
-	thumb_func_start ov01_021EF6A8
-ov01_021EF6A8: ; 0x021EF6A8
+	thumb_func_start ovFieldMain_CreateMessageBox
+ovFieldMain_CreateMessageBox: ; 0x021EF6A8
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -20619,10 +20619,10 @@ _021EF6E2:
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_021EF6A8
+	thumb_func_end ovFieldMain_CreateMessageBox
 
-	thumb_func_start ov01_021EF6EC
-ov01_021EF6EC: ; 0x021EF6EC
+	thumb_func_start ovFieldMain_ReadAndExpandMsgDataViaBuffer
+ovFieldMain_ReadAndExpandMsgDataViaBuffer: ; 0x021EF6EC
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
@@ -20635,7 +20635,7 @@ ov01_021EF6EC: ; 0x021EF6EC
 	bl StringExpandPlaceholders
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EF6EC
+	thumb_func_end ovFieldMain_ReadAndExpandMsgDataViaBuffer
 
 	thumb_func_start ov01_021EF708
 ov01_021EF708: ; 0x021EF708
@@ -20697,8 +20697,8 @@ ov01_021EF758: ; 0x021EF758
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021EF758
 
-	thumb_func_start ov01_021EF780
-ov01_021EF780: ; 0x021EF780
+	thumb_func_start ovFieldMain_AddTextPrinterParameterized
+ovFieldMain_AddTextPrinterParameterized: ; 0x021EF780
 	push {r3, r4, lr}
 	sub sp, #0xc
 	mov r3, #0
@@ -20714,7 +20714,7 @@ ov01_021EF780: ; 0x021EF780
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EF780
+	thumb_func_end ovFieldMain_AddTextPrinterParameterized
 
 	thumb_func_start ov01_021EF7A0
 ov01_021EF7A0: ; 0x021EF7A0
@@ -25036,7 +25036,7 @@ _021F171C:
 	add r0, r4, #0
 	bl sub_02023F90
 	mov r1, #1
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 	add r0, r4, #0
 	bl sub_02023F90
 	bl ov01_021EA3B0
@@ -26218,7 +26218,7 @@ _021F1F96:
 	lsl r1, r1, #0x10
 	add r0, r7, #0
 	lsr r1, r1, #0x10
-	bl sub_02040410
+	bl FlagSet
 	add r0, r5, #0
 	bl sub_0205E400
 	mov r1, #0xa
@@ -26228,7 +26228,7 @@ _021F1F96:
 	add r0, r7, #0
 	add r1, r1, r2
 	ldrh r1, [r1, #8]
-	bl sub_02040424
+	bl FlagClear
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _021F1FF4:
@@ -26416,7 +26416,7 @@ _021F2148:
 	bl sub_02066A3C
 	cmp r0, #0
 	bne _021F2172
-	bl sub_02004A20
+	bl SndRadio_GetSeqNo
 	cmp r0, #0
 	bne _021F2172
 	ldr r0, [r4, #0x1c]
@@ -26491,7 +26491,7 @@ _021F21D2:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #4
 	str r0, [r4]
 	b _021F2324
@@ -26798,7 +26798,7 @@ _021F2476:
 	mov r2, #4
 	bl sub_02054FDC
 _021F249A:
-	bl sub_02004A20
+	bl SndRadio_GetSeqNo
 	cmp r0, #0
 	beq _021F24AE
 	mov r0, #0x28
@@ -26813,7 +26813,7 @@ _021F24AE:
 	mov r0, #1
 	pop {r4, pc}
 _021F24B8:
-	bl sub_02004A20
+	bl SndRadio_GetSeqNo
 	cmp r0, #0
 	bne _021F24D2
 	ldr r0, [r4, #8]
@@ -27144,7 +27144,7 @@ ov01_021F2700: ; 0x021F2700
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	ldrh r0, [r5]
 	add r0, r0, #1
 	strh r0, [r5]
@@ -29915,7 +29915,7 @@ _021F3BE8:
 	ldrh r2, [r2, #2]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_020C2150
+	bl NNS_G3dDraw1Mat1Shp
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -34999,8 +34999,8 @@ ov01_021F61F8: ; 0x021F61F8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl sub_0201A430
-	bl sub_020B6918
-	bl sub_020B6C80
+	bl NNS_GfdResetLnkTexVramState
+	bl NNS_GfdResetLnkPlttVramState
 	mov r4, #0
 	add r6, r5, #4
 	mov r7, #0x30
@@ -37012,7 +37012,7 @@ _021F7016:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	ldr r0, [r5, #0x38]
 	mov r1, #0
 	add r2, r4, #0
@@ -44783,7 +44783,7 @@ ov01_021FA97C: ; 0x021FA97C
 	bl ov01_021F72DC
 	bl sub_02023F90
 	mov r1, #0
-	bl sub_020C342C
+	bl NNS_G3dMdlGetMdlFogEnableFlag
 	str r0, [sp, #0x1c]
 	b _021FA9D2
 _021FA9CE:
@@ -44886,7 +44886,7 @@ _021FAA98:
 	ldr r0, [r5, #0x24]
 	bl sub_02023F90
 	mov r1, #0
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 _021FAAAA:
 	ldr r0, [sp, #0x10]
 	bl sub_02023EF4
@@ -47518,7 +47518,7 @@ ov01_021FBDA8: ; 0x021FBDA8
 	beq _021FBDD8
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_020BE4D0
+	bl NNS_G3dTexReleaseTexKey
 	ldr r1, _021FBDF4 ; =0x02110928
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
@@ -47528,7 +47528,7 @@ ov01_021FBDA8: ; 0x021FBDA8
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r4, #0xc]
-	bl sub_020BE588
+	bl NNS_G3dPlttReleasePlttKey
 	ldr r1, _021FBDF8 ; =0x02110930
 	ldr r1, [r1]
 	blx r1
@@ -47562,7 +47562,7 @@ ov01_021FBDFC: ; 0x021FBDFC
 	beq _021FBE2C
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_020BE4D0
+	bl NNS_G3dTexReleaseTexKey
 	ldr r1, _021FBE3C ; =0x02110928
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
@@ -47572,7 +47572,7 @@ ov01_021FBDFC: ; 0x021FBDFC
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r4, #0xc]
-	bl sub_020BE588
+	bl NNS_G3dPlttReleasePlttKey
 	ldr r1, _021FBE40 ; =0x02110930
 	ldr r1, [r1]
 	blx r1
@@ -47635,7 +47635,7 @@ ov01_021FBE80: ; 0x021FBE80
 	beq _021FBE9E
 	add r0, r1, #0
 	ldr r1, [r4, #8]
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	bne _021FBE9E
@@ -47759,20 +47759,20 @@ ov01_021FBF2C: ; 0x021FBF2C
 
 	thumb_func_start ov01_021FBF50
 ov01_021FBF50: ; 0x021FBF50
-	ldr r3, _021FBF58 ; =sub_020BE294
+	ldr r3, _021FBF58 ; =NNS_G3dRenderObjAddAnmObj
 	ldr r1, [r1, #8]
 	bx r3
 	nop
-_021FBF58: .word sub_020BE294
+_021FBF58: .word NNS_G3dRenderObjAddAnmObj
 	thumb_func_end ov01_021FBF50
 
 	thumb_func_start ov01_021FBF5C
 ov01_021FBF5C: ; 0x021FBF5C
-	ldr r3, _021FBF64 ; =sub_020BE388
+	ldr r3, _021FBF64 ; =NNS_G3dRenderObjRemoveAnmObj
 	ldr r1, [r1, #8]
 	bx r3
 	nop
-_021FBF64: .word sub_020BE388
+_021FBF64: .word NNS_G3dRenderObjRemoveAnmObj
 	thumb_func_end ov01_021FBF5C
 
 	thumb_func_start ov01_021FBF68
@@ -47901,17 +47901,17 @@ ov01_021FC030: ; 0x021FC030
 	add r0, r2, #0
 	mov r1, #0
 	add r6, r3, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [r5, #4]
 	ldr r1, [r5, #4]
 	ldr r2, [r4, #8]
 	add r0, r6, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5, #8]
 	ldr r1, [r5, #4]
 	ldr r2, [r4, #8]
 	ldr r3, [r4, #0xc]
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021FC030
 
@@ -50977,10 +50977,10 @@ ov01_021FD624: ; 0x021FD624
 	ldr r0, [r5, #0x34]
 	mov r1, #1
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	ldr r0, [r5, #0x34]
 	add r1, r4, #0
-	bl sub_020C3698
+	bl NNS_G3dMdlSetMdlAlphaAll
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021FD624
 
@@ -52986,11 +52986,11 @@ ov01_021FE558: ; 0x021FE558
 	ldr r0, [r0, #0xc]
 	mov r1, #1
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	ldr r0, [r4, #0x14]
 	ldr r1, [r4, #0xc]
 	ldr r0, [r0, #0xc]
-	bl sub_020C3698
+	bl NNS_G3dMdlSetMdlAlphaAll
 	ldr r0, [r4, #0x18]
 	add r1, sp, #0
 	bl sub_020699BC
@@ -57043,7 +57043,7 @@ ov01_022003C4: ; 0x022003C4
 	add r4, r0, #0
 	bl sub_02023F90
 	mov r1, #0
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -57975,8 +57975,8 @@ _02200AEA:
 	pop {r4, pc}
 	thumb_func_end ov01_02200AB0
 
-	thumb_func_start ov01_02200AF0
-ov01_02200AF0: ; 0x02200AF0
+	thumb_func_start ScrCmd_648
+ScrCmd_648: ; 0x02200AF0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x48
 	str r0, [sp, #0x1c]
@@ -57984,7 +57984,7 @@ ov01_02200AF0: ; 0x02200AF0
 	ldr r6, [r0]
 	mov r1, #0x10
 	add r0, r6, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x1c]
 	bl ScriptReadHalfword
@@ -58027,7 +58027,7 @@ ov01_02200AF0: ; 0x02200AF0
 	mov r1, #1
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r5, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
@@ -58140,7 +58140,7 @@ _02200C14:
 _02200C60: .word 0x02209AE0
 _02200C64: .word 0x0000FFFE
 _02200C68: .word ov01_02200C6C
-	thumb_func_end ov01_02200AF0
+	thumb_func_end ScrCmd_648
 
 	thumb_func_start ov01_02200C6C
 ov01_02200C6C: ; 0x02200C6C
@@ -58850,8 +58850,8 @@ _022011CC: .word 0x000005DC
 _022011D0: .word 0x00000207
 	thumb_func_end ov01_0220116C
 
-	thumb_func_start ov01_022011D4
-ov01_022011D4: ; 0x022011D4
+	thumb_func_start ScrCmd_657
+ScrCmd_657: ; 0x022011D4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r4, r0, #0
@@ -58991,10 +58991,10 @@ _022012EC:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02201300: .word 0x022093C2
-	thumb_func_end ov01_022011D4
+	thumb_func_end ScrCmd_657
 
-	thumb_func_start ov01_02201304
-ov01_02201304: ; 0x02201304
+	thumb_func_start ScrCmd_689
+ScrCmd_689: ; 0x02201304
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	mov r1, #0
@@ -59135,10 +59135,10 @@ _02201418:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02201420: .word 0x000001DF
-	thumb_func_end ov01_02201304
+	thumb_func_end ScrCmd_689
 
-	thumb_func_start ov01_02201424
-ov01_02201424: ; 0x02201424
+	thumb_func_start ScrCmd_659
+ScrCmd_659: ; 0x02201424
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -59170,10 +59170,10 @@ ov01_02201424: ; 0x02201424
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ov01_02201424
+	thumb_func_end ScrCmd_659
 
-	thumb_func_start ov01_02201470
-ov01_02201470: ; 0x02201470
+	thumb_func_start ScrCmd_674
+ScrCmd_674: ; 0x02201470
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -59251,10 +59251,10 @@ _02201508:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _02201514: .word 0x000001DF
-	thumb_func_end ov01_02201470
+	thumb_func_end ScrCmd_674
 
-	thumb_func_start ov01_02201518
-ov01_02201518: ; 0x02201518
+	thumb_func_start ScrCmd_675
+ScrCmd_675: ; 0x02201518
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -59304,10 +59304,10 @@ ov01_02201518: ; 0x02201518
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201518
+	thumb_func_end ScrCmd_675
 
-	thumb_func_start ov01_02201594
-ov01_02201594: ; 0x02201594
+	thumb_func_start ScrCmd_670
+ScrCmd_670: ; 0x02201594
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -59441,7 +59441,7 @@ _02201682:
 	nop
 _02201698: .word 0x0000010A
 _0220169C: .word 0x0000FFFF
-	thumb_func_end ov01_02201594
+	thumb_func_end ScrCmd_670
 
 	thumb_func_start ov01_022016A0
 ov01_022016A0: ; 0x022016A0
@@ -59559,8 +59559,8 @@ _02201786:
 	.balign 4, 0
 	thumb_func_end ov01_022016A0
 
-	thumb_func_start ov01_0220178C
-ov01_0220178C: ; 0x0220178C
+	thumb_func_start ScrCmd_671
+ScrCmd_671: ; 0x0220178C
 	push {r3, r4, r5, r6, r7, lr}
 	add r0, #0x80
 	ldr r4, [r0]
@@ -59570,7 +59570,7 @@ ov01_0220178C: ; 0x0220178C
 	bl GetPartyMonByIndex
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #5
@@ -59594,10 +59594,10 @@ ov01_0220178C: ; 0x0220178C
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_0220178C
+	thumb_func_end ScrCmd_671
 
-	thumb_func_start ov01_022017DC
-ov01_022017DC: ; 0x022017DC
+	thumb_func_start ScrCmd_672
+ScrCmd_672: ; 0x022017DC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -59627,7 +59627,7 @@ ov01_022017DC: ; 0x022017DC
 	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	add r1, sp, #8
 	add r2, sp, #4
 	add r3, sp, #0
@@ -59642,10 +59642,10 @@ ov01_022017DC: ; 0x022017DC
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022017DC
+	thumb_func_end ScrCmd_672
 
-	thumb_func_start ov01_02201844
-ov01_02201844: ; 0x02201844
+	thumb_func_start ScrCmd_676
+ScrCmd_676: ; 0x02201844
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -59675,10 +59675,10 @@ ov01_02201844: ; 0x02201844
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02201844
+	thumb_func_end ScrCmd_676
 
-	thumb_func_start ov01_0220188C
-ov01_0220188C: ; 0x0220188C
+	thumb_func_start ScrCmd_699
+ScrCmd_699: ; 0x0220188C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	mov r1, #0
@@ -59751,10 +59751,10 @@ _02201926:
 	mov r0, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_0220188C
+	thumb_func_end ScrCmd_699
 
-	thumb_func_start ov01_0220192C
-ov01_0220192C: ; 0x0220192C
+	thumb_func_start ScrCmd_700
+ScrCmd_700: ; 0x0220192C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	mov r1, #0
@@ -59794,10 +59794,10 @@ _02201974:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_0220192C
+	thumb_func_end ScrCmd_700
 
-	thumb_func_start ov01_0220197C
-ov01_0220197C: ; 0x0220197C
+	thumb_func_start ScrCmd_702
+ScrCmd_702: ; 0x0220197C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -59806,10 +59806,10 @@ ov01_0220197C: ; 0x0220197C
 	bl sub_02039F68
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ov01_0220197C
+	thumb_func_end ScrCmd_702
 
-	thumb_func_start ov01_02201990
-ov01_02201990: ; 0x02201990
+	thumb_func_start ScrCmd_703
+ScrCmd_703: ; 0x02201990
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -59819,14 +59819,14 @@ ov01_02201990: ; 0x02201990
 	bl VarGet
 	add r1, r0, #0
 	mov r0, #1
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201990
+	thumb_func_end ScrCmd_703
 
-	thumb_func_start ov01_022019B0
-ov01_022019B0: ; 0x022019B0
+	thumb_func_start ScrCmd_707
+ScrCmd_707: ; 0x022019B0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -59853,10 +59853,10 @@ ov01_022019B0: ; 0x022019B0
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_022019B0
+	thumb_func_end ScrCmd_707
 
-	thumb_func_start ov01_022019F0
-ov01_022019F0: ; 0x022019F0
+	thumb_func_start ScrCmd_708
+ScrCmd_708: ; 0x022019F0
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -59874,10 +59874,10 @@ ov01_022019F0: ; 0x022019F0
 	bl ov02_022460AC
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ov01_022019F0
+	thumb_func_end ScrCmd_708
 
-	thumb_func_start ov01_02201A18
-ov01_02201A18: ; 0x02201A18
+	thumb_func_start ScrCmd_774
+ScrCmd_774: ; 0x02201A18
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -59895,10 +59895,10 @@ ov01_02201A18: ; 0x02201A18
 	bl ov02_0224618C
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ov01_02201A18
+	thumb_func_end ScrCmd_774
 
-	thumb_func_start ov01_02201A40
-ov01_02201A40: ; 0x02201A40
+	thumb_func_start ScrCmd_709
+ScrCmd_709: ; 0x02201A40
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -59906,10 +59906,10 @@ ov01_02201A40: ; 0x02201A40
 	bl ov02_022462E8
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ov01_02201A40
+	thumb_func_end ScrCmd_709
 
-	thumb_func_start ov01_02201A50
-ov01_02201A50: ; 0x02201A50
+	thumb_func_start ScrCmd_561
+ScrCmd_561: ; 0x02201A50
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -59953,10 +59953,10 @@ ov01_02201A50: ; 0x02201A50
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201A50
+	thumb_func_end ScrCmd_561
 
-	thumb_func_start ov01_02201AB8
-ov01_02201AB8: ; 0x02201AB8
+	thumb_func_start ScrCmd_775
+ScrCmd_775: ; 0x02201AB8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -59996,10 +59996,10 @@ ov01_02201AB8: ; 0x02201AB8
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201AB8
+	thumb_func_end ScrCmd_775
 
-	thumb_func_start ov01_02201B14
-ov01_02201B14: ; 0x02201B14
+	thumb_func_start ScrCmd_714
+ScrCmd_714: ; 0x02201B14
 	push {r3, lr}
 	ldr r2, [r0, #8]
 	add r1, r2, #1
@@ -60011,7 +60011,7 @@ ov01_02201B14: ; 0x02201B14
 	bl ov02_022467C4
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ov01_02201B14
+	thumb_func_end ScrCmd_714
 
 	thumb_func_start ov01_02201B2C
 ov01_02201B2C: ; 0x02201B2C
@@ -60027,8 +60027,8 @@ _02201B36:
 _02201B3C: .word 0x0000FFFF
 	thumb_func_end ov01_02201B2C
 
-	thumb_func_start ov01_02201B40
-ov01_02201B40: ; 0x02201B40
+	thumb_func_start ScrCmd_724
+ScrCmd_724: ; 0x02201B40
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl ScriptReadHalfword
@@ -60126,10 +60126,10 @@ _02201C00:
 _02201C04:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02201B40
+	thumb_func_end ScrCmd_724
 
-	thumb_func_start ov01_02201C08
-ov01_02201C08: ; 0x02201C08
+	thumb_func_start ScrCmd_725
+ScrCmd_725: ; 0x02201C08
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -60173,10 +60173,10 @@ _02201C56:
 	pop {r4, r5, r6, pc}
 	nop
 _02201C5C: .word 0x0000FFFF
-	thumb_func_end ov01_02201C08
+	thumb_func_end ScrCmd_725
 
-	thumb_func_start ov01_02201C60
-ov01_02201C60: ; 0x02201C60
+	thumb_func_start ScrCmd_726
+ScrCmd_726: ; 0x02201C60
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -60184,10 +60184,10 @@ ov01_02201C60: ; 0x02201C60
 	bl ov01_021E7F00
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov01_02201C60
+	thumb_func_end ScrCmd_726
 
-	thumb_func_start ov01_02201C70
-ov01_02201C70: ; 0x02201C70
+	thumb_func_start ScrCmd_735
+ScrCmd_735: ; 0x02201C70
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -60206,10 +60206,10 @@ ov01_02201C70: ; 0x02201C70
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201C70
+	thumb_func_end ScrCmd_735
 
-	thumb_func_start ov01_02201C9C
-ov01_02201C9C: ; 0x02201C9C
+	thumb_func_start ScrCmd_736
+ScrCmd_736: ; 0x02201C9C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -60220,10 +60220,10 @@ ov01_02201C9C: ; 0x02201C9C
 	bl sub_02031BB8
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov01_02201C9C
+	thumb_func_end ScrCmd_736
 
-	thumb_func_start ov01_02201CB4
-ov01_02201CB4: ; 0x02201CB4
+	thumb_func_start ScrCmd_737
+ScrCmd_737: ; 0x02201CB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -60242,10 +60242,10 @@ ov01_02201CB4: ; 0x02201CB4
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02201CB4
+	thumb_func_end ScrCmd_737
 
-	thumb_func_start ov01_02201CE0
-ov01_02201CE0: ; 0x02201CE0
+	thumb_func_start ScrCmd_738
+ScrCmd_738: ; 0x02201CE0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -60273,16 +60273,16 @@ _02201D06:
 	strh r5, [r7]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02201CE0
+	thumb_func_end ScrCmd_738
 
-	thumb_func_start ov01_02201D1C
-ov01_02201D1C: ; 0x02201D1C
+	thumb_func_start ScrCmd_739
+ScrCmd_739: ; 0x02201D1C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -60297,16 +60297,16 @@ ov01_02201D1C: ; 0x02201D1C
 	pop {r3, r4, r5, pc}
 	nop
 _02201D48: .word sub_02042974
-	thumb_func_end ov01_02201D1C
+	thumb_func_end ScrCmd_739
 
-	thumb_func_start ov01_02201D4C
-ov01_02201D4C: ; 0x02201D4C
+	thumb_func_start ScrCmd_740
+ScrCmd_740: ; 0x02201D4C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -60337,10 +60337,10 @@ ov01_02201D4C: ; 0x02201D4C
 	pop {r4, r5, r6, pc}
 	nop
 _02201DA0: .word sub_02042974
-	thumb_func_end ov01_02201D4C
+	thumb_func_end ScrCmd_740
 
-	thumb_func_start ov01_02201DA4
-ov01_02201DA4: ; 0x02201DA4
+	thumb_func_start ScrCmd_741
+ScrCmd_741: ; 0x02201DA4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	add r5, r0, #0
@@ -60353,7 +60353,7 @@ ov01_02201DA4: ; 0x02201DA4
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -60500,10 +60500,10 @@ _02201EBC:
 	.balign 4, 0
 _02201F08: .word gGameVersion
 _02201F0C: .word 0x00001388
-	thumb_func_end ov01_02201DA4
+	thumb_func_end ScrCmd_741
 
-	thumb_func_start ov01_02201F10
-ov01_02201F10: ; 0x02201F10
+	thumb_func_start ScrCmd_743
+ScrCmd_743: ; 0x02201F10
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -60517,10 +60517,10 @@ ov01_02201F10: ; 0x02201F10
 	bl ov03_02258CFC
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ov01_02201F10
+	thumb_func_end ScrCmd_743
 
-	thumb_func_start ov01_02201F30
-ov01_02201F30: ; 0x02201F30
+	thumb_func_start ScrCmd_744
+ScrCmd_744: ; 0x02201F30
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r0, #0x80
@@ -60571,7 +60571,7 @@ _02201F80:
 	.balign 4, 0
 _02201F90: .word 0x022093B4
 _02201F94: .word 0x000001ED
-	thumb_func_end ov01_02201F30
+	thumb_func_end ScrCmd_744
 
 	thumb_func_start ov01_02201F98
 ov01_02201F98: ; 0x02201F98
@@ -60660,8 +60660,8 @@ _02201FE4:
 _02202058: .word 0x0000019F
 	thumb_func_end ov01_02201F98
 
-	thumb_func_start ov01_0220205C
-ov01_0220205C: ; 0x0220205C
+	thumb_func_start ScrCmd_770
+ScrCmd_770: ; 0x0220205C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -60719,10 +60719,10 @@ _022020C4:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_0220205C
+	thumb_func_end ScrCmd_770
 
-	thumb_func_start ov01_022020CC
-ov01_022020CC: ; 0x022020CC
+	thumb_func_start ScrCmd_776
+ScrCmd_776: ; 0x022020CC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r0, #0x80
@@ -60800,7 +60800,7 @@ _02202138:
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [r7, #0xc]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	mov r1, #0
 	add r4, r0, #0
 	add r0, r5, #0
@@ -60822,10 +60822,10 @@ _02202138:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022021A8: .word 0x00000146
-	thumb_func_end ov01_022020CC
+	thumb_func_end ScrCmd_776
 
-	thumb_func_start ov01_022021AC
-ov01_022021AC: ; 0x022021AC
+	thumb_func_start ScrCmd_777
+ScrCmd_777: ; 0x022021AC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -60857,10 +60857,10 @@ ov01_022021AC: ; 0x022021AC
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_022021AC
+	thumb_func_end ScrCmd_777
 
-	thumb_func_start ov01_022021F8
-ov01_022021F8: ; 0x022021F8
+	thumb_func_start ScrCmd_778
+ScrCmd_778: ; 0x022021F8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	str r0, [sp, #0x10]
@@ -60979,10 +60979,10 @@ _02202276:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _02202304: .word 0x022093BA
-	thumb_func_end ov01_022021F8
+	thumb_func_end ScrCmd_778
 
-	thumb_func_start ov01_02202308
-ov01_02202308: ; 0x02202308
+	thumb_func_start ScrCmd_618
+ScrCmd_618: ; 0x02202308
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -61007,10 +61007,10 @@ _02202336:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_02202308
+	thumb_func_end ScrCmd_618
 
-	thumb_func_start ov01_0220233C
-ov01_0220233C: ; 0x0220233C
+	thumb_func_start ScrCmd_779
+ScrCmd_779: ; 0x0220233C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -61038,7 +61038,7 @@ _02202372:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_0220233C
+	thumb_func_end ScrCmd_779
 
 	thumb_func_start ov01_02202378
 ov01_02202378: ; 0x02202378
@@ -61132,8 +61132,8 @@ _02202408:
 _0220242C: .word 0x022093D0
 	thumb_func_end ov01_02202378
 
-	thumb_func_start ov01_02202430
-ov01_02202430: ; 0x02202430
+	thumb_func_start ScrCmd_780
+ScrCmd_780: ; 0x02202430
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
@@ -61147,7 +61147,7 @@ ov01_02202430: ; 0x02202430
 	ldrb r4, [r1]
 	ldr r0, [r0]
 	mov r1, #0x14
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r7, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61169,10 +61169,10 @@ ov01_02202430: ; 0x02202430
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0220247C: .word sub_02042974
-	thumb_func_end ov01_02202430
+	thumb_func_end ScrCmd_780
 
-	thumb_func_start ov01_02202480
-ov01_02202480: ; 0x02202480
+	thumb_func_start ScrCmd_745
+ScrCmd_745: ; 0x02202480
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -61189,7 +61189,7 @@ ov01_02202480: ; 0x02202480
 	add r6, r0, #0
 	ldr r0, [r5]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	lsl r2, r6, #0x18
 	ldr r0, [r0]
 	add r1, r4, #0
@@ -61197,10 +61197,10 @@ ov01_02202480: ; 0x02202480
 	bl sub_0200C944
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02202480
+	thumb_func_end ScrCmd_745
 
-	thumb_func_start ov01_022024B8
-ov01_022024B8: ; 0x022024B8
+	thumb_func_start ScrCmd_811
+ScrCmd_811: ; 0x022024B8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61229,10 +61229,10 @@ ov01_022024B8: ; 0x022024B8
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022024B8
+	thumb_func_end ScrCmd_811
 
-	thumb_func_start ov01_022024FC
-ov01_022024FC: ; 0x022024FC
+	thumb_func_start ScrCmd_812
+ScrCmd_812: ; 0x022024FC
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -61241,10 +61241,10 @@ ov01_022024FC: ; 0x022024FC
 	bl sub_0202F1F4
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov01_022024FC
+	thumb_func_end ScrCmd_812
 
-	thumb_func_start ov01_02202510
-ov01_02202510: ; 0x02202510
+	thumb_func_start ScrCmd_821
+ScrCmd_821: ; 0x02202510
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61284,7 +61284,7 @@ ov01_02202510: ; 0x02202510
 	strh r1, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02202510
+	thumb_func_end ScrCmd_821
 
 	thumb_func_start ov01_02202570
 ov01_02202570: ; 0x02202570
@@ -61318,8 +61318,8 @@ _022025A2:
 	.balign 4, 0
 	thumb_func_end ov01_02202570
 
-	thumb_func_start ov01_022025A8
-ov01_022025A8: ; 0x022025A8
+	thumb_func_start ScrCmd_825
+ScrCmd_825: ; 0x022025A8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61347,10 +61347,10 @@ ov01_022025A8: ; 0x022025A8
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_022025A8
+	thumb_func_end ScrCmd_825
 
-	thumb_func_start ov01_022025EC
-ov01_022025EC: ; 0x022025EC
+	thumb_func_start ScrCmd_826
+ScrCmd_826: ; 0x022025EC
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -61390,10 +61390,10 @@ _02202640:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022025EC
+	thumb_func_end ScrCmd_826
 
-	thumb_func_start ov01_02202648
-ov01_02202648: ; 0x02202648
+	thumb_func_start ScrCmd_572
+ScrCmd_572: ; 0x02202648
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61412,10 +61412,10 @@ ov01_02202648: ; 0x02202648
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02202648
+	thumb_func_end ScrCmd_572
 
-	thumb_func_start ov01_02202674
-ov01_02202674: ; 0x02202674
+	thumb_func_start ScrCmd_133
+ScrCmd_133: ; 0x02202674
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61442,10 +61442,10 @@ ov01_02202674: ; 0x02202674
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02202674
+	thumb_func_end ScrCmd_133
 
-	thumb_func_start ov01_022026B4
-ov01_022026B4: ; 0x022026B4
+	thumb_func_start ScrCmd_134
+ScrCmd_134: ; 0x022026B4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61474,7 +61474,7 @@ ov01_022026B4: ; 0x022026B4
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022026B4
+	thumb_func_end ScrCmd_134
 
 	thumb_func_start ov01_022026F8
 ov01_022026F8: ; 0x022026F8
@@ -61501,8 +61501,8 @@ _02202714:
 	.balign 4, 0
 	thumb_func_end ov01_022026F8
 
-	thumb_func_start ov01_0220271C
-ov01_0220271C: ; 0x0220271C
+	thumb_func_start ScrCmd_135
+ScrCmd_135: ; 0x0220271C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	mov r1, #0
@@ -61635,10 +61635,10 @@ _02202812:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_0220271C
+	thumb_func_end ScrCmd_135
 
-	thumb_func_start ov01_02202834
-ov01_02202834: ; 0x02202834
+	thumb_func_start ScrCmd_836
+ScrCmd_836: ; 0x02202834
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -61741,10 +61741,10 @@ _022028FA:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02202904: .word 0x0000017E
-	thumb_func_end ov01_02202834
+	thumb_func_end ScrCmd_836
 
-	thumb_func_start ov01_02202908
-ov01_02202908: ; 0x02202908
+	thumb_func_start ScrCmd_839
+ScrCmd_839: ; 0x02202908
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -61763,10 +61763,10 @@ _02202926:
 _0220292C:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov01_02202908
+	thumb_func_end ScrCmd_839
 
-	thumb_func_start ov01_02202930
-ov01_02202930: ; 0x02202930
+	thumb_func_start ScrCmd_785
+ScrCmd_785: ; 0x02202930
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -61804,16 +61804,16 @@ _02202964:
 _0220297C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_02202930
+	thumb_func_end ScrCmd_785
 
-	thumb_func_start ov01_02202980
-ov01_02202980: ; 0x02202980
+	thumb_func_start ScrCmd_786
+ScrCmd_786: ; 0x02202980
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -61829,10 +61829,10 @@ ov01_02202980: ; 0x02202980
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02202980
+	thumb_func_end ScrCmd_786
 
-	thumb_func_start ov01_022029B0
-ov01_022029B0: ; 0x022029B0
+	thumb_func_start ScrCmd_787
+ScrCmd_787: ; 0x022029B0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -61886,16 +61886,16 @@ _02202A20:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022029B0
+	thumb_func_end ScrCmd_787
 
-	thumb_func_start ov01_02202A28
-ov01_02202A28: ; 0x02202A28
+	thumb_func_start ScrCmd_788
+ScrCmd_788: ; 0x02202A28
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -61921,17 +61921,17 @@ ov01_02202A28: ; 0x02202A28
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02202A28
+	thumb_func_end ScrCmd_788
 
-	thumb_func_start ov01_02202A70
-ov01_02202A70: ; 0x02202A70
+	thumb_func_start ScrCmd_789
+ScrCmd_789: ; 0x02202A70
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r5, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -61961,10 +61961,10 @@ _02202AA2:
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02202A70
+	thumb_func_end ScrCmd_789
 
-	thumb_func_start ov01_02202ABC
-ov01_02202ABC: ; 0x02202ABC
+	thumb_func_start ScrCmd_790
+ScrCmd_790: ; 0x02202ABC
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -61993,10 +61993,10 @@ ov01_02202ABC: ; 0x02202ABC
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_02202ABC
+	thumb_func_end ScrCmd_790
 
-	thumb_func_start ov01_02202B00
-ov01_02202B00: ; 0x02202B00
+	thumb_func_start ScrCmd_652
+ScrCmd_652: ; 0x02202B00
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62050,10 +62050,10 @@ _02202B6A:
 _02202B74:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02202B00
+	thumb_func_end ScrCmd_652
 
-	thumb_func_start ov01_02202B78
-ov01_02202B78: ; 0x02202B78
+	thumb_func_start ScrCmd_654
+ScrCmd_654: ; 0x02202B78
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62090,10 +62090,10 @@ ov01_02202B78: ; 0x02202B78
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02202B78
+	thumb_func_end ScrCmd_654
 
-	thumb_func_start ov01_02202BD0
-ov01_02202BD0: ; 0x02202BD0
+	thumb_func_start ScrCmd_655
+ScrCmd_655: ; 0x02202BD0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62134,10 +62134,10 @@ _02202C0E:
 	.balign 4, 0
 _02202C20: .word 0x022093E0
 _02202C24: .word 0x022093E2
-	thumb_func_end ov01_02202BD0
+	thumb_func_end ScrCmd_655
 
-	thumb_func_start ov01_02202C28
-ov01_02202C28: ; 0x02202C28
+	thumb_func_start ScrCmd_656
+ScrCmd_656: ; 0x02202C28
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62175,7 +62175,7 @@ _02202C74:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02202C28
+	thumb_func_end ScrCmd_656
 
 	thumb_func_start ov01_02202C7C
 ov01_02202C7C: ; 0x02202C7C
@@ -62441,8 +62441,8 @@ _02202E60: .word 0x02209AF4
 _02202E64: .word 0x00000FC8
 	thumb_func_end ov01_02202E00
 
-	thumb_func_start ov01_02202E68
-ov01_02202E68: ; 0x02202E68
+	thumb_func_start ScrCmd_653
+ScrCmd_653: ; 0x02202E68
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x6c
 	str r0, [sp, #0x14]
@@ -62453,7 +62453,7 @@ ov01_02202E68: ; 0x02202E68
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x28]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	ldr r0, [sp, #0x14]
 	bl ScriptReadHalfword
@@ -62527,7 +62527,7 @@ _02202F10:
 	mov r1, #1
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	mov r1, #1
 	str r1, [sp]
 	str r6, [sp, #4]
@@ -62668,7 +62668,7 @@ _0220304C: .word 0x022093E0
 _02203050: .word 0x0000FFFD
 _02203054: .word 0x0000FFFE
 _02203058: .word ov01_0220305C
-	thumb_func_end ov01_02202E68
+	thumb_func_end ScrCmd_653
 
 	thumb_func_start ov01_0220305C
 ov01_0220305C: ; 0x0220305C
@@ -62699,8 +62699,8 @@ _02203084:
 _02203090: .word 0x0000EEEE
 	thumb_func_end ov01_0220305C
 
-	thumb_func_start ov01_02203094
-ov01_02203094: ; 0x02203094
+	thumb_func_start ScrCmd_742
+ScrCmd_742: ; 0x02203094
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -62773,10 +62773,10 @@ _0220312E:
 	bl FreeToHeap
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02203094
+	thumb_func_end ScrCmd_742
 
-	thumb_func_start ov01_02203138
-ov01_02203138: ; 0x02203138
+	thumb_func_start ScrCmd_113
+ScrCmd_113: ; 0x02203138
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -62799,7 +62799,7 @@ ov01_02203138: ; 0x02203138
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	lsl r1, r6, #0x18
 	lsl r2, r7, #0x18
 	add r4, #0x80
@@ -62811,30 +62811,30 @@ ov01_02203138: ; 0x02203138
 	str r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02203138
+	thumb_func_end ScrCmd_113
 
-	thumb_func_start ov01_02203188
-ov01_02203188: ; 0x02203188
+	thumb_func_start ScrCmd_114
+ScrCmd_114: ; 0x02203188
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl ov01_021EEB38
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02203188
+	thumb_func_end ScrCmd_114
 
-	thumb_func_start ov01_022031A0
-ov01_022031A0: ; 0x022031A0
+	thumb_func_start ScrCmd_115
+ScrCmd_115: ; 0x022031A0
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r0, #0
 	add r4, #0x80
 	ldr r0, [r4]
@@ -62843,7 +62843,7 @@ ov01_022031A0: ; 0x022031A0
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022031A0
+	thumb_func_end ScrCmd_115
 
 	thumb_func_start ov01_022031C0
 ov01_022031C0: ; 0x022031C0
@@ -64102,7 +64102,7 @@ ov01_02203B98: ; 0x02203B98
 	add r4, r0, #0
 	bl sub_02023F90
 	mov r1, #0
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -65324,7 +65324,7 @@ ov01_02204470: ; 0x02204470
 	add r0, r4, #0
 	mov r1, #0
 	add r6, r3, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r7, r0, #0
 	bne _0220448A
 	bl GF_AssertFail
@@ -65332,7 +65332,7 @@ _0220448A:
 	ldr r0, [sp]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r5]
 	cmp r0, #0
 	bne _0220449E
@@ -65342,7 +65342,7 @@ _0220449E:
 	ldr r3, [sp, #0x18]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	str r4, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -65408,20 +65408,20 @@ _022044EE:
 
 	thumb_func_start ov01_02204500
 ov01_02204500: ; 0x02204500
-	ldr r3, _02204508 ; =sub_020C2BA0
+	ldr r3, _02204508 ; =NNS_G3dFreeAnmObj
 	ldr r1, [r1]
 	bx r3
 	nop
-_02204508: .word sub_020C2BA0
+_02204508: .word NNS_G3dFreeAnmObj
 	thumb_func_end ov01_02204500
 
 	thumb_func_start ov01_0220450C
 ov01_0220450C: ; 0x0220450C
-	ldr r3, _02204514 ; =sub_020BE294
+	ldr r3, _02204514 ; =NNS_G3dRenderObjAddAnmObj
 	ldr r1, [r1]
 	bx r3
 	nop
-_02204514: .word sub_020BE294
+_02204514: .word NNS_G3dRenderObjAddAnmObj
 	thumb_func_end ov01_0220450C
 
 	thumb_func_start ov01_02204518
@@ -65455,7 +65455,7 @@ _02204534:
 	mov r0, #0
 	pop {r3, pc}
 _0220454A:
-	bl sub_020BE388
+	bl NNS_G3dRenderObjRemoveAnmObj
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -65686,7 +65686,7 @@ ov01_022046A4: ; 0x022046A4
 	add r5, r1, #0
 	add r0, r2, #0
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -65716,7 +65716,7 @@ ov01_022046D4: ; 0x022046D4
 	bl ov01_022046C8
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020B597C
+	bl NNS_FndAllocFromAllocator
 	pop {r4, pc}
 	thumb_func_end ov01_022046D4
 
@@ -67093,8 +67093,8 @@ _02205156:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_022050F8
 
-	thumb_func_start ov01_02205164
-ov01_02205164: ; 0x02205164
+	thumb_func_start ScrCmd_795
+ScrCmd_795: ; 0x02205164
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -67117,7 +67117,7 @@ ov01_02205164: ; 0x02205164
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	lsl r1, r6, #0x18
 	lsl r2, r7, #0x18
 	add r4, #0x80
@@ -67129,30 +67129,30 @@ ov01_02205164: ; 0x02205164
 	str r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_02205164
+	thumb_func_end ScrCmd_795
 
-	thumb_func_start ov01_022051B4
-ov01_022051B4: ; 0x022051B4
+	thumb_func_start ScrCmd_796
+ScrCmd_796: ; 0x022051B4
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl ov01_021EEE30
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022051B4
+	thumb_func_end ScrCmd_796
 
-	thumb_func_start ov01_022051CC
-ov01_022051CC: ; 0x022051CC
+	thumb_func_start ScrCmd_797
+ScrCmd_797: ; 0x022051CC
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x28
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, r0, #0
 	add r4, #0x80
 	ldr r0, [r4]
@@ -67161,7 +67161,7 @@ ov01_022051CC: ; 0x022051CC
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_022051CC
+	thumb_func_end ScrCmd_797
 
 	thumb_func_start ov01_022051EC
 ov01_022051EC: ; 0x022051EC
@@ -67443,8 +67443,8 @@ _022053E8:
 	.balign 4, 0
 	thumb_func_end ov01_022053C4
 
-	thumb_func_start ov01_022053EC
-ov01_022053EC: ; 0x022053EC
+	thumb_func_start ScrCmd_808
+ScrCmd_808: ; 0x022053EC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -67468,7 +67468,7 @@ ov01_022053EC: ; 0x022053EC
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02205420: .word SDK_OVERLAY_OVY_25_ID
-	thumb_func_end ov01_022053EC
+	thumb_func_end ScrCmd_808
 
 	thumb_func_start ov01_02205424
 ov01_02205424: ; 0x02205424
@@ -69380,7 +69380,7 @@ ov01_022062CC: ; 0x022062CC
 
 	.rodata
 
-_022062DC:
+ov01_022062DC:
 	.byte 0x14, 0x00, 0x00, 0x00
 	.byte 0x00, 0x80, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -69395,6 +69395,7 @@ _022062DC:
 	.public ov01_02206378
 ov01_02206378:
 	.word ov01_021E5924, ov01_021E5BE4, ov01_021E5C24, 0xFFFFFFFF
+ov01_02206388:
 	.byte 0x60, 0x40, 0x20, 0x00, 0x40, 0x60, 0x7F, 0x2E
 	.byte 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x40, 0x60, 0x7F, 0x2E, 0x40, 0x60, 0x40, 0x60, 0x6C, 0x2E, 0x60
 	.byte 0x6C, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x48, 0x6C
@@ -69408,8 +69409,16 @@ ov01_02206378:
 	.byte 0x0C, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x82, 0xE8, 0xC1, 0x05, 0x00, 0x00, 0x00, 0x00
 	.byte 0xC3, 0xD4, 0x05, 0x00, 0x43, 0xC0, 0xFD, 0xFF, 0xC1, 0xAE, 0x29, 0x00, 0x62, 0xE2, 0xC1, 0x05
 	.byte 0x00, 0x00, 0x00, 0x00, 0x9B, 0x20, 0x05, 0x00, 0xDA, 0x6B, 0xFC, 0xFF, 0xC1, 0x7E, 0x2C, 0x00
-	.byte 0x20, 0x98, 0x20, 0x02, 0x50, 0x98, 0x20, 0x02, 0x38, 0x98, 0x20, 0x02, 0x68, 0x98, 0x20, 0x02
-	.byte 0x80, 0x98, 0x20, 0x02, 0x62, 0xE5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+
+ov01_02206450:
+	.word ov01_02209820
+	.word ov01_02209850
+	.word ov01_02209838
+	.word ov01_02209868
+	.word ov01_02209880
+
+ov01_02206464:
+	.byte 0x62, 0xE5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x40, 0xF9, 0xFF, 0x18, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x29, 0x00, 0x62, 0xDD, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5C, 0x46, 0x19, 0x00
@@ -70168,7 +70177,9 @@ ov01_02206378:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x04, 0x0A, 0x07, 0x05, 0x0A, 0x0A, 0x0E, 0x01, 0x58, 0x01, 0xCF, 0x00
 	.byte 0xDC, 0x00, 0x7A, 0x00, 0x7B, 0x00, 0x7C, 0x00, 0x7F, 0x00, 0x7D, 0x00, 0x7E, 0x00, 0x00, 0x00
-	.byte 0x07, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+ov01_022093D0:
+	.word 7, 3
+	.word 5, 2
 	.byte 0x23, 0x01, 0x28, 0x00, 0xBD, 0x00, 0x20, 0x01, 0xD2, 0x00, 0x20, 0x00, 0xC4, 0x00, 0x30, 0x00
 	.byte 0xCD, 0x00, 0x20, 0x01, 0x09, 0x00, 0x40, 0x00, 0x07, 0x00, 0x40, 0x00, 0x14, 0x01, 0x30, 0x01
 	.byte 0x08, 0x00, 0x40, 0x00, 0xBA, 0x01, 0x28, 0x01, 0x91, 0x01, 0x28, 0x01, 0xD2, 0x01, 0x30, 0x00
@@ -70255,15 +70266,27 @@ ov01_02206378:
 
 	.data
 
-	.byte 0x64, 0x61, 0x74, 0x61, 0x2F, 0x61, 0x72, 0x65, 0x61, 0x30, 0x30, 0x6C, 0x69, 0x67, 0x68, 0x74
-	.byte 0x2E, 0x74, 0x78, 0x74, 0x00, 0x00, 0x00, 0x00, 0x64, 0x61, 0x74, 0x61, 0x2F, 0x61, 0x72, 0x65
-	.byte 0x61, 0x30, 0x32, 0x6C, 0x69, 0x67, 0x68, 0x74, 0x2E, 0x74, 0x78, 0x74, 0x00, 0x00, 0x00, 0x00
-	.byte 0x64, 0x61, 0x74, 0x61, 0x2F, 0x61, 0x72, 0x65, 0x61, 0x30, 0x31, 0x6C, 0x69, 0x67, 0x68, 0x74
-	.byte 0x2E, 0x74, 0x78, 0x74, 0x00, 0x00, 0x00, 0x00, 0x64, 0x61, 0x74, 0x61, 0x2F, 0x64, 0x75, 0x6E
-	.byte 0x32, 0x30, 0x5F, 0x30, 0x31, 0x6C, 0x69, 0x67, 0x68, 0x74, 0x2E, 0x74, 0x78, 0x74, 0x00, 0x00
-	.byte 0x64, 0x61, 0x74, 0x61, 0x2F, 0x64, 0x75, 0x6E, 0x32, 0x30, 0x5F, 0x30, 0x32, 0x6C, 0x69, 0x67
-	.byte 0x68, 0x74, 0x2E, 0x74, 0x78, 0x74, 0x00, 0x00, 0x64, 0x61, 0x74, 0x61, 0x2F, 0x66, 0x6C, 0x64
-	.byte 0x5F, 0x61, 0x6E, 0x69, 0x6D, 0x65, 0x25, 0x64, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.balign 4, 0
+ov01_02209820:
+	.asciz "data/area00light.txt"
+	.balign 4, 0
+ov01_02209838:
+	.asciz "data/area02light.txt"
+	.balign 4, 0
+ov01_02209850:
+	.asciz "data/area01light.txt"
+	.balign 4, 0
+ov01_02209868:
+	.asciz "data/dun20_01light.txt"
+	.balign 4, 0
+ov01_02209880:
+	.asciz "data/dun20_02light.txt"
+	.balign 4, 0
+ov01_02209898:
+	.asciz "data/fld_anime%d.bin"
+
+	.balign 4, 0
+ov01_022098B0:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF9, 0xC8, 0x1E, 0x02, 0x00, 0x00, 0xFF, 0xFF
 	.byte 0xDC, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

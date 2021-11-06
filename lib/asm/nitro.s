@@ -10953,26 +10953,28 @@ _020DDC4C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end CARDi_SendtoPxi
 
-	arm_func_start sub_020DDC70
-sub_020DDC70: ; 0x020DDC70
+	; Functions presumably in libcard but not present in plat
+
+	arm_func_start CARD_SetSpiReadWaitCycles
+CARD_SetSpiReadWaitCycles: ; 0x020DDC70
 	ldr r1, _020DDC7C ; =0x021E4088
 	strb r0, [r1, #2]
 	bx lr
 	.align 2, 0
 _020DDC7C: .word 0x021E4088
-	arm_func_end sub_020DDC70
+	arm_func_end CARD_SetSpiReadWaitCycles
 
-	arm_func_start sub_020DDC80
-sub_020DDC80: ; 0x020DDC80
+	arm_func_start CARD_SetSpiWriteWaitCycles
+CARD_SetSpiWriteWaitCycles: ; 0x020DDC80
 	ldr r1, _020DDC8C ; =0x021E4088
 	strb r0, [r1, #1]
 	bx lr
 	.align 2, 0
 _020DDC8C: .word 0x021E4088
-	arm_func_end sub_020DDC80
+	arm_func_end CARD_SetSpiWriteWaitCycles
 
-	arm_func_start sub_020DDC90
-sub_020DDC90: ; 0x020DDC90
+	arm_func_start CARDi_SpiDummyWait
+CARDi_SpiDummyWait: ; 0x020DDC90
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bl OS_GetTick
 	mov r4, #0
@@ -11000,10 +11002,10 @@ _020DDCB4:
 	.align 2, 0
 _020DDCEC: .word 0x000082EA
 _020DDCF0: .word 0x021E4088
-	arm_func_end sub_020DDC90
+	arm_func_end CARDi_SpiDummyWait
 
-	arm_func_start sub_020DDCF4
-sub_020DDCF4: ; 0x020DDCF4
+	arm_func_start CARD_SpiWaitInit
+CARD_SpiWaitInit: ; 0x020DDCF4
 	stmdb sp!, {r3, lr}
 	ldr r1, _020DDD38 ; =0x021E4088
 	mov r0, #0x32
@@ -11025,10 +11027,10 @@ sub_020DDCF4: ; 0x020DDCF4
 _020DDD38: .word 0x021E4088
 _020DDD3C: .word _02110FBC
 _020DDD40: .word 0x0000FFFD
-	arm_func_end sub_020DDCF4
+	arm_func_end CARD_SpiWaitInit
 
-	arm_func_start sub_020DDD44
-sub_020DDD44: ; 0x020DDD44
+	arm_func_start CARDi_SpiWaitWriteByte
+CARDi_SpiWaitWriteByte: ; 0x020DDD44
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, r0
 	bl OS_GetTick
@@ -11075,10 +11077,10 @@ _020DDDC0:
 _020DDDE4: .word 0x000082EA
 _020DDDE8: .word 0x021E4088
 _020DDDEC: .word 0x040001A2
-	arm_func_end sub_020DDD44
+	arm_func_end CARDi_SpiWaitWriteByte
 
-	arm_func_start sub_020DDDF0
-sub_020DDDF0: ; 0x020DDDF0
+	arm_func_start CARDi_SpiWaitReadByte
+CARDi_SpiWaitReadByte: ; 0x020DDDF0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, r0
 	bl OS_GetTick
@@ -11123,10 +11125,10 @@ _020DDE5C:
 _020DDE88: .word 0x000082EA
 _020DDE8C: .word 0x021E4088
 _020DDE90: .word 0x040001A2
-	arm_func_end sub_020DDDF0
+	arm_func_end CARDi_SpiWaitReadByte
 
-	arm_func_start sub_020DDE94
-sub_020DDE94: ; 0x020DDE94
+	arm_func_start CARD_SpiWaitReadRange
+CARD_SpiWaitReadRange: ; 0x020DDE94
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldr r2, _020DDFC4 ; =0x021E409C
 	ldr r1, _020DDFC8 ; =0x021E4088
@@ -11151,11 +11153,11 @@ _020DDED8:
 	ldr r1, _020DDFD4 ; =0x0000A042
 	ldr r0, _020DDFD8 ; =0x021E408C
 	strh r1, [r2]
-	bl sub_020DDD44
-	bl sub_020DDC90
+	bl CARDi_SpiWaitWriteByte
+	bl CARDi_SpiDummyWait
 	ldr r0, _020DDFD8 ; =0x021E408C
-	bl sub_020DDDF0
-	bl sub_020DDC90
+	bl CARDi_SpiWaitReadByte
+	bl CARDi_SpiDummyWait
 	ldrb r4, [r6]
 	ldr r0, _020DDFC8 ; =0x021E4088
 	mov r5, #0
@@ -11175,7 +11177,7 @@ _020DDF40:
 	mov r0, r7
 	cmp r5, sl
 	streqh sb, [r8]
-	bl sub_020DDDF0
+	bl CARDi_SpiWaitReadByte
 	add r5, r5, #1
 _020DDF54:
 	cmp r5, r4
@@ -11186,7 +11188,7 @@ _020DDF60:
 	ldr r1, _020DDFD0 ; =0x040001A0
 	ldr r0, _020DDFD8 ; =0x021E408C
 	strh r2, [r1]
-	bl sub_020DDDF0
+	bl CARDi_SpiWaitReadByte
 _020DDF74:
 	mov r5, #0
 	b _020DDF8C
@@ -11219,10 +11221,10 @@ _020DDFD0: .word 0x040001A0
 _020DDFD4: .word 0x0000A042
 _020DDFD8: .word 0x021E408C
 _020DDFDC: .word 0x0000A002
-	arm_func_end sub_020DDE94
+	arm_func_end CARD_SpiWaitReadRange
 
-	arm_func_start sub_020DDFE0
-sub_020DDFE0: ; 0x020DDFE0
+	arm_func_start CARD_SpiWaitWriteRange
+CARD_SpiWaitWriteRange: ; 0x020DDFE0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r7, _020DE0AC ; =0x021E4158
 	ldr r3, _020DE0B0 ; =0x021E4088
@@ -11247,8 +11249,8 @@ _020DE024:
 	ldr r1, _020DE0BC ; =0x0000A042
 	ldr r0, _020DE0C0 ; =0x021E408C
 	strh r1, [r2]
-	bl sub_020DDD44
-	bl sub_020DDC90
+	bl CARDi_SpiWaitWriteByte
+	bl CARDi_SpiDummyWait
 	ldr r0, _020DE0B0 ; =0x021E4088
 	mov r4, #0
 	str r6, [r0, #8]
@@ -11261,7 +11263,7 @@ _020DE064:
 	mov r0, r6
 	cmp r4, sb
 	streqh r8, [r7]
-	bl sub_020DDD44
+	bl CARDi_SpiWaitWriteByte
 	add r4, r4, #1
 _020DE078:
 	cmp r4, r5
@@ -11286,10 +11288,10 @@ _020DE0B8: .word 0x040001A0
 _020DE0BC: .word 0x0000A042
 _020DE0C0: .word 0x021E408C
 _020DE0C4: .word 0x0000A002
-	arm_func_end sub_020DDFE0
+	arm_func_end CARD_SpiWaitWriteRange
 
-	arm_func_start sub_020DE0C8
-sub_020DE0C8: ; 0x020DE0C8
+	arm_func_start CARD_SpiWaitGetStatus
+CARD_SpiWaitGetStatus: ; 0x020DE0C8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r3, _020DE228 ; =0x021E409C
 	ldr r1, _020DE22C ; =0x021E4088
@@ -11337,7 +11339,7 @@ _020DE164:
 	ldr r1, _020DE23C ; =0x0000A042
 	ldr r0, _020DE240 ; =0x021E408C
 	strh r1, [r2]
-	bl sub_020DDD44
+	bl CARDi_SpiWaitWriteByte
 	strb r0, [sp]
 	bl OS_GetTick
 	mov r4, r0
@@ -11368,7 +11370,7 @@ _020DE1A0:
 	ldr r1, _020DE238 ; =0x040001A0
 	ldr r0, _020DE240 ; =0x021E408C
 	strh r2, [r1]
-	bl sub_020DDDF0
+	bl CARDi_SpiWaitReadByte
 	ldr r1, _020DE238 ; =0x040001A0
 _020DE1FC:
 	ldrh r0, [r1]
@@ -11391,13 +11393,15 @@ _020DE238: .word 0x040001A0
 _020DE23C: .word 0x0000A042
 _020DE240: .word 0x021E408C
 _020DE244: .word 0x0000A002
-	arm_func_end sub_020DE0C8
+	arm_func_end CARD_SpiWaitGetStatus
 
-	arm_func_start sub_020DE248
-sub_020DE248: ; 0x020DE248
+	; libwm
+
+	arm_func_start WM_Init
+WM_Init: ; 0x020DE248
 	stmdb sp!, {r3, lr}
 	mov r2, #0xf00
-	bl sub_020DE274
+	bl WmInitCore
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r1, _020DE270 ; =0x021E4220
@@ -11407,10 +11411,10 @@ sub_020DE248: ; 0x020DE248
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DE270: .word 0x021E4220
-	arm_func_end sub_020DE248
+	arm_func_end WM_Init
 
-	arm_func_start sub_020DE274
-sub_020DE274: ; 0x020DE274
+	arm_func_start WmInitCore
+WmInitCore: ; 0x020DE274
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r6, r0
 	mov r4, r1
@@ -11478,7 +11482,7 @@ _020DE30C:
 	ldr r0, [r1, #0xc]
 	add r0, r0, #0x100
 	str r0, [r1, #0x10]
-	bl sub_020DEB08
+	bl WmClearFifoRecvFlag
 	ldr r1, _020DE444 ; =0x021E4220
 	mov r3, #0
 	ldr r0, [r1, #4]
@@ -11526,7 +11530,7 @@ _020DE3EC:
 _020DE414:
 	cmp r6, #0xa
 	blt _020DE3EC
-	ldr r1, _020DE454 ; =sub_020DE75C
+	ldr r1, _020DE454 ; =WmReceiveFifo
 	mov r0, #0xa
 	bl PXI_SetFifoRecvCallback
 	ldr r1, _020DE444 ; =0x021E4220
@@ -11541,15 +11545,15 @@ _020DE444: .word 0x021E4220
 _020DE448: .word 0x021E4228
 _020DE44C: .word 0x021E4248
 _020DE450: .word 0x021E42C0
-_020DE454: .word sub_020DE75C
-	arm_func_end sub_020DE274
+_020DE454: .word WmReceiveFifo
+	arm_func_end WmInitCore
 
-	arm_func_start sub_020DE458
-sub_020DE458: ; 0x020DE458
+	arm_func_start WM_Finish
+WM_Finish: ; 0x020DE458
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	mov r4, r0
-	bl sub_020DE664
+	bl WMi_CheckInitialized
 	cmp r0, #0
 	beq _020DE480
 	mov r0, r4
@@ -11559,10 +11563,10 @@ sub_020DE458: ; 0x020DE458
 _020DE480:
 	mov r0, #1
 	mov r1, #0
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
-	bl sub_020DEB08
+	bl WmClearFifoRecvFlag
 	mov r0, #0xa
 	mov r1, #0
 	bl PXI_SetFifoRecvCallback
@@ -11576,10 +11580,10 @@ _020DE480:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020DE4C4: .word 0x021E4220
-	arm_func_end sub_020DE458
+	arm_func_end WM_Finish
 
-	arm_func_start sub_020DE4C8
-sub_020DE4C8: ; 0x020DE4C8
+	arm_func_start WMi_SetCallbackTable
+WMi_SetCallbackTable: ; 0x020DE4C8
 	ldr r2, _020DE4DC ; =0x021E4220
 	ldr r2, [r2, #4]
 	add r0, r2, r0, lsl #2
@@ -11587,10 +11591,10 @@ sub_020DE4C8: ; 0x020DE4C8
 	bx lr
 	.align 2, 0
 _020DE4DC: .word 0x021E4220
-	arm_func_end sub_020DE4C8
+	arm_func_end WMi_SetCallbackTable
 
-	arm_func_start sub_020DE4E0
-sub_020DE4E0: ; 0x020DE4E0
+	arm_func_start WmGetCommandBuffer4Arm7
+WmGetCommandBuffer4Arm7: ; 0x020DE4E0
 	stmdb sp!, {r3, lr}
 	ldr r0, _020DE534 ; =0x021E4228
 	add r1, sp, #0
@@ -11614,14 +11618,14 @@ sub_020DE4E0: ; 0x020DE4E0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DE534: .word 0x021E4228
-	arm_func_end sub_020DE4E0
+	arm_func_end WmGetCommandBuffer4Arm7
 
-	arm_func_start sub_020DE538
-sub_020DE538: ; 0x020DE538
+	arm_func_start WMi_SendCommand
+WMi_SendCommand: ; 0x020DE538
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020DE4E0
+	bl WmGetCommandBuffer4Arm7
 	movs r4, r0
 	moveq r0, #8
 	ldmeqia sp!, {r3, r4, r5, lr}
@@ -11664,14 +11668,14 @@ _020DE598:
 	bx lr
 	.align 2, 0
 _020DE5E0: .word 0x021E4228
-	arm_func_end sub_020DE538
+	arm_func_end WMi_SendCommand
 
-	arm_func_start sub_020DE5E4
-sub_020DE5E4: ; 0x020DE5E4
+	arm_func_start WMi_SendCommandDirect
+WMi_SendCommandDirect: ; 0x020DE5E4
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r4, r1
-	bl sub_020DE4E0
+	bl WmGetCommandBuffer4Arm7
 	movs r5, r0
 	moveq r0, #8
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -11697,19 +11701,19 @@ sub_020DE5E4: ; 0x020DE5E4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020DE650: .word 0x021E4228
-	arm_func_end sub_020DE5E4
+	arm_func_end WMi_SendCommandDirect
 
-	arm_func_start sub_020DE654
-sub_020DE654: ; 0x020DE654
+	arm_func_start WMi_GetSystemWork
+WMi_GetSystemWork: ; 0x020DE654
 	ldr r0, _020DE660 ; =0x021E4220
 	ldr r0, [r0, #4]
 	bx lr
 	.align 2, 0
 _020DE660: .word 0x021E4220
-	arm_func_end sub_020DE654
+	arm_func_end WMi_GetSystemWork
 
-	arm_func_start sub_020DE664
-sub_020DE664: ; 0x020DE664
+	arm_func_start WMi_CheckInitialized
+WMi_CheckInitialized: ; 0x020DE664
 	ldr r0, _020DE67C ; =0x021E4220
 	ldrh r0, [r0]
 	cmp r0, #0
@@ -11718,12 +11722,12 @@ sub_020DE664: ; 0x020DE664
 	bx lr
 	.align 2, 0
 _020DE67C: .word 0x021E4220
-	arm_func_end sub_020DE664
+	arm_func_end WMi_CheckInitialized
 
-	arm_func_start sub_020DE680
-sub_020DE680: ; 0x020DE680
+	arm_func_start WMi_CheckIdle
+WMi_CheckIdle: ; 0x020DE680
 	stmdb sp!, {r3, lr}
-	bl sub_020DE664
+	bl WMi_CheckInitialized
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _020DE6C4 ; =0x021E4220
@@ -11741,13 +11745,13 @@ sub_020DE680: ; 0x020DE680
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DE6C4: .word 0x021E4220
-	arm_func_end sub_020DE680
+	arm_func_end WMi_CheckIdle
 
-	arm_func_start sub_020DE6C8
-sub_020DE6C8: ; 0x020DE6C8
+	arm_func_start WMi_CheckStateEx
+WMi_CheckStateEx: ; 0x020DE6C8
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
-	bl sub_020DE664
+	bl WMi_CheckInitialized
 	cmp r0, #0
 	ldmneia sp!, {r3, lr}
 	addne sp, sp, #0x10
@@ -11784,10 +11788,10 @@ _020DE730:
 	bx lr
 	.align 2, 0
 _020DE758: .word 0x021E4220
-	arm_func_end sub_020DE6C8
+	arm_func_end WMi_CheckStateEx
 
-	arm_func_start sub_020DE75C
-sub_020DE75C: ; 0x020DE75C
+	arm_func_start WmReceiveFifo
+WmReceiveFifo: ; 0x020DE75C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	ldr r0, _020DEAF4 ; =0x021E4220
@@ -11887,7 +11891,7 @@ _020DE8B0:
 	add r0, r4, r1, lsl #2
 	bne _020DE8EC
 	ldr r4, [r0, #0x18]
-	bl sub_020DE458
+	bl WM_Finish
 	cmp r4, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -12021,7 +12025,7 @@ _020DEAB4:
 	ldr r0, [r4, #0x10]
 	mov r1, #0x100
 	bl DC_InvalidateRange
-	bl sub_020DEB08
+	bl WmClearFifoRecvFlag
 	ldr r0, [r4, #0x10]
 	cmp sl, r0
 	addeq sp, sp, #8
@@ -12040,10 +12044,10 @@ _020DEAF8: .word 0x021E4270
 _020DEAFC: .word 0x0000FFFF
 _020DEB00: .word 0x021E4284
 _020DEB04: .word 0x021E4294
-	arm_func_end sub_020DE75C
+	arm_func_end WmReceiveFifo
 
-	arm_func_start sub_020DEB08
-sub_020DEB08: ; 0x020DEB08
+	arm_func_start WmClearFifoRecvFlag
+WmClearFifoRecvFlag: ; 0x020DEB08
 	ldr r1, _020DEB20 ; =0x027FFF96
 	ldrh r0, [r1]
 	tst r0, #1
@@ -12052,12 +12056,12 @@ sub_020DEB08: ; 0x020DEB08
 	bx lr
 	.align 2, 0
 _020DEB20: .word 0x027FFF96
-	arm_func_end sub_020DEB08
+	arm_func_end WmClearFifoRecvFlag
 
-	arm_func_start sub_020DEB24
-sub_020DEB24: ; 0x020DEB24
+	arm_func_start WMi_GetStatusAddress
+WMi_GetStatusAddress: ; 0x020DEB24
 	stmdb sp!, {r3, lr}
-	bl sub_020DE664
+	bl WMi_CheckInitialized
 	cmp r0, #0
 	movne r0, #0
 	ldreq r0, _020DEB44 ; =0x021E4220
@@ -12066,10 +12070,10 @@ sub_020DEB24: ; 0x020DEB24
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DEB44: .word 0x021E4220
-	arm_func_end sub_020DEB24
+	arm_func_end WMi_GetStatusAddress
 
-	arm_func_start sub_020DEB48
-sub_020DEB48: ; 0x020DEB48
+	arm_func_start WM_GetAID
+WM_GetAID: ; 0x020DEB48
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020DEB74 ; =0x021E4220
@@ -12083,10 +12087,10 @@ sub_020DEB48: ; 0x020DEB48
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020DEB74: .word 0x021E4220
-	arm_func_end sub_020DEB48
+	arm_func_end WM_GetAID
 
-	arm_func_start sub_020DEB78
-sub_020DEB78: ; 0x020DEB78
+	arm_func_start WM_GetConnectedAIDs
+WM_GetConnectedAIDs: ; 0x020DEB78
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020DEBA4 ; =0x021E4220
@@ -12100,15 +12104,15 @@ sub_020DEB78: ; 0x020DEB78
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020DEBA4: .word 0x021E4220
-	arm_func_end sub_020DEB78
+	arm_func_end WM_GetConnectedAIDs
 
-	arm_func_start sub_020DEBA8
-sub_020DEBA8: ; 0x020DEBA8
+	arm_func_start WM_SetIndCallback
+WM_SetIndCallback: ; 0x020DEBA8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	bl OS_DisableInterrupts
 	mov r5, r0
-	bl sub_020DE664
+	bl WMi_CheckInitialized
 	movs r4, r0
 	beq _020DEBD4
 	mov r0, r5
@@ -12116,16 +12120,16 @@ sub_020DEBA8: ; 0x020DEBA8
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 _020DEBD4:
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	str r6, [r0, #0xc8]
 	mov r0, r5
 	bl OS_RestoreInterrupts
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020DEBA8
+	arm_func_end WM_SetIndCallback
 
-	arm_func_start sub_020DEBEC
-sub_020DEBEC: ; 0x020DEBEC
+	arm_func_start WM_SetPortCallback
+WM_SetPortCallback: ; 0x020DEBEC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x44
 	movs r5, r1
@@ -12155,7 +12159,7 @@ sub_020DEBEC: ; 0x020DEBEC
 _020DEC54:
 	bl OS_DisableInterrupts
 	mov r8, r0
-	bl sub_020DE664
+	bl WMi_CheckInitialized
 	movs r7, r0
 	beq _020DEC7C
 	mov r0, r8
@@ -12164,15 +12168,15 @@ _020DEC54:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _020DEC7C:
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	add r0, r0, r6, lsl #2
 	str r5, [r0, #0xcc]
 	str r4, [r0, #0x10c]
 	cmp r5, #0
 	beq _020DECAC
-	bl sub_020DEB78
+	bl WM_GetConnectedAIDs
 	strh r0, [sp, #0x22]
-	bl sub_020DEB48
+	bl WM_GetAID
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
 	blx r5
@@ -12184,15 +12188,15 @@ _020DECAC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020DECC0: .word 0x0000FFFF
-	arm_func_end sub_020DEBEC
+	arm_func_end WM_SetPortCallback
 
-	arm_func_start sub_020DECC4
-sub_020DECC4: ; 0x020DECC4
+	arm_func_start WM_ReadStatus
+WM_ReadStatus: ; 0x020DECC4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r4, r0
-	bl sub_020DE664
+	bl WMi_CheckInitialized
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	cmp r5, #0
@@ -12207,17 +12211,17 @@ sub_020DECC4: ; 0x020DECC4
 	bl MIi_CpuCopyFast
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020DECC4
+	arm_func_end WM_ReadStatus
 
-	arm_func_start sub_020DED10
-sub_020DED10: ; 0x020DED10
+	arm_func_start WM_GetMPSendBufferSize
+WM_GetMPSendBufferSize: ; 0x020DED10
 	stmdb sp!, {r4, lr}
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r4, r0
 	mov r0, #2
 	mov r1, #7
 	mov r2, #8
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
@@ -12238,17 +12242,17 @@ sub_020DED10: ; 0x020DED10
 	add r0, r0, #0x1f
 	bic r0, r0, #0x1f
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DED10
+	arm_func_end WM_GetMPSendBufferSize
 
-	arm_func_start sub_020DED7C
-sub_020DED7C: ; 0x020DED7C
+	arm_func_start WM_GetMPReceiveBufferSize
+WM_GetMPReceiveBufferSize: ; 0x020DED7C
 	stmdb sp!, {r3, r4, r5, lr}
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r4, r0
 	mov r0, #2
 	mov r1, #7
 	mov r2, #8
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -12291,17 +12295,17 @@ sub_020DED7C: ; 0x020DED7C
 	bic r0, r0, #0x1f
 	mov r0, r0, lsl #1
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020DED7C
+	arm_func_end WM_GetMPReceiveBufferSize
 
-	arm_func_start sub_020DEE40
-sub_020DEE40: ; 0x020DEE40
+	arm_func_start WM_ReadMPData
+WM_ReadMPData: ; 0x020DEE40
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x3c
 	mov r5, r0
 	mov r4, r1
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r6, r0
-	bl sub_020DE664
+	bl WMi_CheckInitialized
 	cmp r0, #0
 	addne sp, sp, #0x3c
 	movne r0, #0
@@ -12355,12 +12359,12 @@ _020DEEE0:
 	mov r0, #0
 	add sp, sp, #0x3c
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end sub_020DEE40
+	arm_func_end WM_ReadMPData
 
-	arm_func_start sub_020DEF24
-sub_020DEF24: ; 0x020DEF24
+	arm_func_start WM_GetAllowedChannel
+WM_GetAllowedChannel: ; 0x020DEF24
 	stmdb sp!, {r3, lr}
-	bl sub_020DE664
+	bl WMi_CheckInitialized
 	cmp r0, #0
 	movne r0, #0x8000
 	ldreq r0, _020DEF40 ; =0x027FFCFA
@@ -12368,14 +12372,14 @@ sub_020DEF24: ; 0x020DEF24
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020DEF40: .word 0x027FFCFA
-	arm_func_end sub_020DEF24
+	arm_func_end WM_GetAllowedChannel
 
-	arm_func_start sub_020DEF44
-sub_020DEF44: ; 0x020DEF44
+	arm_func_start WM_GetLinkLevel
+WM_GetLinkLevel: ; 0x020DEF44
 	stmdb sp!, {r4, lr}
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r4, r0
-	bl sub_020DE664
+	bl WMi_CheckInitialized
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
@@ -12411,10 +12415,10 @@ _020DEFB4:
 _020DEFCC:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DEF44
+	arm_func_end WM_GetLinkLevel
 
-	arm_func_start sub_020DEFD4
-sub_020DEFD4: ; 0x020DEFD4
+	arm_func_start WM_GetDispersionBeaconPeriod
+WM_GetDispersionBeaconPeriod: ; 0x020DEFD4
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
@@ -12453,10 +12457,10 @@ _020DEFF0:
 	.align 2, 0
 _020DF05C: .word 0x027FFC3C
 _020DF060: .word 0x66666667
-	arm_func_end sub_020DEFD4
+	arm_func_end WM_GetDispersionBeaconPeriod
 
-	arm_func_start sub_020DF064
-sub_020DF064: ; 0x020DF064
+	arm_func_start WM_GetDispersionScanPeriod
+WM_GetDispersionScanPeriod: ; 0x020DF064
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
@@ -12496,10 +12500,10 @@ _020DF080:
 	.align 2, 0
 _020DF0F0: .word 0x027FFC3C
 _020DF0F4: .word 0x66666667
-	arm_func_end sub_020DF064
+	arm_func_end WM_GetDispersionScanPeriod
 
-	arm_func_start sub_020DF0F8
-sub_020DF0F8: ; 0x020DF0F8
+	arm_func_start WM_GetOtherElements
+WM_GetOtherElements: ; 0x020DF0F8
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x84
 	ldrh r2, [r1, #0x3c]
@@ -12595,10 +12599,10 @@ _020DF230:
 	str r0, [lr]
 	add sp, sp, #0x84
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end sub_020DF0F8
+	arm_func_end WM_GetOtherElements
 
-	arm_func_start sub_020DF250
-sub_020DF250: ; 0x020DF250
+	arm_func_start WM_GetNextTgid
+WM_GetNextTgid: ; 0x020DF250
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	ldr r0, _020DF2C0 ; =_02110FC0
@@ -12630,200 +12634,200 @@ _020DF298:
 	ldmia sp!, {pc}
 	.align 2, 0
 _020DF2C0: .word _02110FC0
-	arm_func_end sub_020DF250
+	arm_func_end WM_GetNextTgid
 
-	arm_func_start sub_020DF2C4
-sub_020DF2C4: ; 0x020DF2C4
-	ldr ip, _020DF2D0 ; =sub_020DF2D4
+	arm_func_start WM_Enable
+WM_Enable: ; 0x020DF2C4
+	ldr ip, _020DF2D0 ; =WMi_EnableEx
 	mov r1, #0
 	bx ip
 	.align 2, 0
-_020DF2D0: .word sub_020DF2D4
-	arm_func_end sub_020DF2C4
+_020DF2D0: .word WMi_EnableEx
+	arm_func_end WM_Enable
 
-	arm_func_start sub_020DF2D4
-sub_020DF2D4: ; 0x020DF2D4
+	arm_func_start WMi_EnableEx
+WMi_EnableEx: ; 0x020DF2D4
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r5, r0
 	mov r4, r1
 	mov r0, #1
 	mov r1, #0
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r1, r5
 	mov r0, #3
-	bl sub_020DE4C8
-	bl sub_020DE654
+	bl WMi_SetCallbackTable
+	bl WMi_GetSystemWork
 	mov r3, r0
 	ldr r1, [r3, #0x10]
 	mov r0, #3
 	stmia sp, {r1, r4}
 	mov r1, #4
 	ldmia r3, {r2, r3}
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020DF2D4
+	arm_func_end WMi_EnableEx
 
-	arm_func_start sub_020DF338
-sub_020DF338: ; 0x020DF338
+	arm_func_start WM_Disable
+WM_Disable: ; 0x020DF338
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
 	mov r1, r0
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r1, r4
 	mov r0, #4
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #4
 	mov r1, #0
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DF338
+	arm_func_end WM_Disable
 
-	arm_func_start sub_020DF378
-sub_020DF378: ; 0x020DF378
+	arm_func_start WM_PowerOn
+WM_PowerOn: ; 0x020DF378
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
 	mov r1, r0
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r1, r4
 	mov r0, #5
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #5
 	mov r1, #0
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DF378
+	arm_func_end WM_PowerOn
 
-	arm_func_start sub_020DF3B8
-sub_020DF3B8: ; 0x020DF3B8
+	arm_func_start WM_PowerOff
+WM_PowerOff: ; 0x020DF3B8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
 	mov r1, #2
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r1, r4
 	mov r0, #6
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #6
 	mov r1, #0
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DF3B8
+	arm_func_end WM_PowerOff
 
-	arm_func_start sub_020DF3F8
-sub_020DF3F8: ; 0x020DF3F8
-	ldr ip, _020DF404 ; =sub_020DF420
+	arm_func_start WM_Initialize
+WM_Initialize: ; 0x020DF3F8
+	ldr ip, _020DF404 ; =WMi_InitializeEx
 	mov r3, #0
 	bx ip
 	.align 2, 0
-_020DF404: .word sub_020DF420
-	arm_func_end sub_020DF3F8
+_020DF404: .word WMi_InitializeEx
+	arm_func_end WM_Initialize
 
-	arm_func_start sub_020DF408
-sub_020DF408: ; 0x020DF408
-	ldr ip, _020DF41C ; =sub_020DF420
+	arm_func_start WM_InitializeForListening
+WM_InitializeForListening: ; 0x020DF408
+	ldr ip, _020DF41C ; =WMi_InitializeEx
 	cmp r3, #0
 	mov r3, #1
 	orreq r3, r3, #2
 	bx ip
 	.align 2, 0
-_020DF41C: .word sub_020DF420
-	arm_func_end sub_020DF408
+_020DF41C: .word WMi_InitializeEx
+	arm_func_end WM_InitializeForListening
 
-	arm_func_start sub_020DF420
-sub_020DF420: ; 0x020DF420
+	arm_func_start WMi_InitializeEx
+WMi_InitializeEx: ; 0x020DF420
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r5, r1
 	mov r1, r2
 	mov r4, r3
-	bl sub_020DE248
+	bl WM_Init
 	cmp r0, #0
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r1, r5
 	mov r0, #0
-	bl sub_020DE4C8
-	bl sub_020DE654
+	bl WMi_SetCallbackTable
+	bl WMi_GetSystemWork
 	mov r3, r0
 	ldr r1, [r3, #0x10]
 	mov r0, #0
 	stmia sp, {r1, r4}
 	mov r1, #4
 	ldmia r3, {r2, r3}
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020DF420
+	arm_func_end WMi_InitializeEx
 
-	arm_func_start sub_020DF480
-sub_020DF480: ; 0x020DF480
+	arm_func_start WM_Reset
+WM_Reset: ; 0x020DF480
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020DE680
+	bl WMi_CheckIdle
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r1, r4
 	mov r0, #1
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #1
 	mov r1, #0
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DF480
+	arm_func_end WM_Reset
 
-	arm_func_start sub_020DF4B8
-sub_020DF4B8: ; 0x020DF4B8
+	arm_func_start WM_End
+WM_End: ; 0x020DF4B8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
 	mov r1, #2
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r1, r4
 	mov r0, #2
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #2
 	mov r1, #0
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DF4B8
+	arm_func_end WM_End
 
-	arm_func_start sub_020DF4F8
-sub_020DF4F8: ; 0x020DF4F8
+	arm_func_start WM_SetParentParameter
+WM_SetParentParameter: ; 0x020DF4F8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	mov r0, #1
 	mov r1, #2
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	cmp r4, #0
@@ -12857,10 +12861,10 @@ _020DF57C:
 	ldmia sp!, {r3, r4, r5, pc}
 _020DF584:
 	mov r0, r4
-	bl sub_020DF5D4
+	bl WmCheckParentParameter
 	mov r1, r5
 	mov r0, #7
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, r4
 	mov r1, #0x40
 	bl DC_StoreRange
@@ -12873,14 +12877,14 @@ _020DF5B8:
 	mov r2, r4
 	mov r0, #7
 	mov r1, #1
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020DF4F8
+	arm_func_end WM_SetParentParameter
 
-	arm_func_start sub_020DF5D4
-sub_020DF5D4: ; 0x020DF5D4
+	arm_func_start WmCheckParentParameter
+WmCheckParentParameter: ; 0x020DF5D4
 	ldrh r1, [r0, #4]
 	cmp r1, #0x70
 	movhi r0, #0
@@ -12905,66 +12909,66 @@ _020DF614:
 _020DF61C:
 	mov r0, #1
 	bx lr
-	arm_func_end sub_020DF5D4
+	arm_func_end WmCheckParentParameter
 
-	arm_func_start sub_020DF624
-sub_020DF624: ; 0x020DF624
+	arm_func_start WMi_StartParentEx
+WMi_StartParentEx: ; 0x020DF624
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	mov r0, #1
 	mov r1, #2
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	add r1, r0, #0x100
 	mov r2, #0
 	strh r2, [r1, #0x50]
 	str r2, [r0, #0x14c]
 	mov r1, r5
 	mov r0, #8
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r2, r4
 	mov r0, #8
 	mov r1, #1
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020DF624
+	arm_func_end WMi_StartParentEx
 
-	arm_func_start sub_020DF680
-sub_020DF680: ; 0x020DF680
-	ldr ip, _020DF68C ; =sub_020DF624
+	arm_func_start WM_StartParent
+WM_StartParent: ; 0x020DF680
+	ldr ip, _020DF68C ; =WMi_StartParentEx
 	mov r1, #1
 	bx ip
 	.align 2, 0
-_020DF68C: .word sub_020DF624
-	arm_func_end sub_020DF680
+_020DF68C: .word WMi_StartParentEx
+	arm_func_end WM_StartParent
 
-	arm_func_start sub_020DF690
-sub_020DF690: ; 0x020DF690
+	arm_func_start WM_EndParent
+WM_EndParent: ; 0x020DF690
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
 	mov r1, #7
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r1, r4
 	mov r0, #9
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #9
 	mov r1, #0
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DF690
+	arm_func_end WM_EndParent
 
-	arm_func_start sub_020DF6D0
-sub_020DF6D0: ; 0x020DF6D0
+	arm_func_start WM_StartScan
+WM_StartScan: ; 0x020DF6D0
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	mov r5, r0
@@ -12973,7 +12977,7 @@ sub_020DF6D0: ; 0x020DF6D0
 	mov r2, r0
 	mov r1, #2
 	mov r3, #5
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #0x10
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -12998,7 +13002,7 @@ _020DF738:
 _020DF744:
 	mov r1, r5
 	mov r0, #0xa
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #0xa
 	strh r0, [sp]
 	ldrh r2, [r4, #4]
@@ -13021,15 +13025,15 @@ _020DF744:
 	strb r2, [sp, #0xe]
 	ldrb r2, [r4, #0xd]
 	strb r2, [sp, #0xf]
-	bl sub_020DE5E4
+	bl WMi_SendCommandDirect
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020DF6D0
+	arm_func_end WM_StartScan
 
-	arm_func_start sub_020DF7BC
-sub_020DF7BC: ; 0x020DF7BC
+	arm_func_start WM_StartScanEx
+WM_StartScanEx: ; 0x020DF7BC
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x3c
 	mov r5, r0
@@ -13038,7 +13042,7 @@ sub_020DF7BC: ; 0x020DF7BC
 	mov r2, r0
 	mov r1, #2
 	mov r3, #5
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #0x3c
 	ldmneia sp!, {r4, r5, pc}
@@ -13083,7 +13087,7 @@ sub_020DF7BC: ; 0x020DF7BC
 _020DF884:
 	mov r1, r5
 	mov r0, #0x26
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #0x26
 	strh r0, [sp]
 	ldrh r2, [r4, #6]
@@ -13110,35 +13114,35 @@ _020DF884:
 	bl MI_CpuCopy8
 	add r0, sp, #0
 	mov r1, #0x3c
-	bl sub_020DE5E4
+	bl WMi_SendCommandDirect
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #0x3c
 	ldmia sp!, {r4, r5, pc}
-	arm_func_end sub_020DF7BC
+	arm_func_end WM_StartScanEx
 
-	arm_func_start sub_020DF90C
-sub_020DF90C: ; 0x020DF90C
+	arm_func_start WM_EndScan
+WM_EndScan: ; 0x020DF90C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
 	mov r1, #5
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r1, r4
 	mov r0, #0xb
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #0xb
 	mov r1, #0
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020DF90C
+	arm_func_end WM_EndScan
 
-	arm_func_start sub_020DF94C
-sub_020DF94C: ; 0x020DF94C
+	arm_func_start WM_StartConnectEx
+WM_StartConnectEx: ; 0x020DF94C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x28
 	mov r7, r0
@@ -13147,7 +13151,7 @@ sub_020DF94C: ; 0x020DF94C
 	mov r1, #2
 	mov r5, r2
 	mov r4, r3
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #0x28
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -13159,14 +13163,14 @@ sub_020DF94C: ; 0x020DF94C
 	mov r0, r6
 	mov r1, r1, lsl #1
 	bl DC_StoreRange
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	add r1, r0, #0x100
 	mov r2, #0
 	strh r2, [r1, #0x50]
 	str r2, [r0, #0x14c]
 	mov r1, r7
 	mov r0, #0xc
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #0xc
 	strh r0, [sp]
 	str r6, [sp, #4]
@@ -13187,20 +13191,20 @@ _020DF9F0:
 	mov r1, #0x28
 	str r4, [sp, #0x20]
 	strh r2, [sp, #0x26]
-	bl sub_020DE5E4
+	bl WMi_SendCommandDirect
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #0x28
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020DF94C
+	arm_func_end WM_StartConnectEx
 
-	arm_func_start sub_020DFA18
-sub_020DFA18: ; 0x020DFA18
+	arm_func_start WM_Disconnect
+WM_Disconnect: ; 0x020DFA18
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r5, r0
 	mov r4, r1
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r1, #0xa
 	mov r6, r0
 	str r1, [sp]
@@ -13210,7 +13214,7 @@ sub_020DFA18: ; 0x020DFA18
 	mov r2, #9
 	mov r3, #8
 	str ip, [sp, #4]
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #8
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -13249,31 +13253,31 @@ _020DFAC4:
 _020DFAD4:
 	mov r1, r5
 	mov r0, #0xd
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r1, #1
 	mov r2, r1, lsl r4
 	mov r0, #0xd
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020DFA18
+	arm_func_end WM_Disconnect
 
-	arm_func_start sub_020DFB00
-sub_020DFB00: ; 0x020DFB00
+	arm_func_start WMi_StartMP
+WMi_StartMP: ; 0x020DFB00
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x40
 	mov r8, r0
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	ldr r4, [r0, #4]
 	mov r0, #2
 	mov r1, #7
 	mov r2, #8
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #0x40
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -13314,12 +13318,12 @@ sub_020DFB00: ; 0x020DFB00
 	ldrh r0, [r4, #0x9c]
 	cmp r0, #0
 	bne _020DFBF8
-	bl sub_020DED7C
+	bl WM_GetMPReceiveBufferSize
 	cmp r6, r0
 	addlt sp, sp, #0x40
 	movlt r0, #6
 	ldmltia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	bl sub_020DED10
+	bl WM_GetMPSendBufferSize
 	cmp sb, r0
 	addlt sp, sp, #0x40
 	movlt r0, #6
@@ -13327,7 +13331,7 @@ sub_020DFB00: ; 0x020DFB00
 _020DFBF8:
 	mov r1, r8
 	mov r0, #0xe
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #0x40
@@ -13350,15 +13354,15 @@ _020DFBF8:
 	bl MIi_CpuCopy32
 	add r0, sp, #0
 	mov r1, #0x40
-	bl sub_020DE5E4
+	bl WMi_SendCommandDirect
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #0x40
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020DFB00
+	arm_func_end WMi_StartMP
 
-	arm_func_start sub_020DFC70
-sub_020DFC70: ; 0x020DFC70
+	arm_func_start WM_StartMPEx
+WM_StartMPEx: ; 0x020DFC70
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x18
 	mov r7, r1
@@ -13396,15 +13400,15 @@ sub_020DFC70: ; 0x020DFC70
 	mov r2, r6
 	mov r3, r5
 	str r4, [sp, #4]
-	bl sub_020DFB00
+	bl WMi_StartMP
 	add sp, sp, #0x18
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020DFD10: .word 0x00001E03
-	arm_func_end sub_020DFC70
+	arm_func_end WM_StartMPEx
 
-	arm_func_start sub_020DFD14
-sub_020DFD14: ; 0x020DFD14
+	arm_func_start WM_StartMP
+WM_StartMP: ; 0x020DFD14
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x18
 	mov r6, r1
@@ -13428,13 +13432,13 @@ sub_020DFD14: ; 0x020DFD14
 	add ip, sp, #8
 	str lr, [sp]
 	str ip, [sp, #4]
-	bl sub_020DFB00
+	bl WMi_StartMP
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020DFD14
+	arm_func_end WM_StartMP
 
-	arm_func_start sub_020DFD7C
-sub_020DFD7C: ; 0x020DFD7C
+	arm_func_start WM_SetMPDataToPortEx
+WM_SetMPDataToPortEx: ; 0x020DFD7C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x14
 	mov sb, r0
@@ -13442,12 +13446,12 @@ sub_020DFD7C: ; 0x020DFD7C
 	mov r7, r2
 	mov r6, r3
 	mov r4, #1
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	ldr r5, [r0, #4]
 	mov r0, #2
 	mov r1, #9
 	mov r2, #0xa
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #0x14
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, pc}
@@ -13507,23 +13511,23 @@ _020DFDFC:
 	mov r0, #0xf
 	mov r1, #7
 	str r8, [sp, #0x10]
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020DFD7C
+	arm_func_end WM_SetMPDataToPortEx
 
-	arm_func_start sub_020DFEAC
-sub_020DFEAC: ; 0x020DFEAC
+	arm_func_start WM_EndMP
+WM_EndMP: ; 0x020DFEAC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r4, r0
 	mov r0, #2
 	mov r1, #9
 	mov r2, #0xa
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldr r0, [r4, #4]
@@ -13537,26 +13541,26 @@ sub_020DFEAC: ; 0x020DFEAC
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r1, r5
 	mov r0, #0x10
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020DFEAC
+	arm_func_end WM_EndMP
 
-	arm_func_start sub_020DFF1C
-sub_020DFF1C: ; 0x020DFF1C
+	arm_func_start WM_StartDCF
+WM_StartDCF: ; 0x020DFF1C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r4, r0
 	mov r0, #1
 	mov r1, #8
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, [r4, #4]
@@ -13579,30 +13583,30 @@ sub_020DFF1C: ; 0x020DFF1C
 	bl DC_StoreRange
 	mov r1, r7
 	mov r0, #0x11
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r2, r6
 	mov r3, r5
 	mov r0, #0x11
 	mov r1, #2
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020DFF1C
+	arm_func_end WM_StartDCF
 
-	arm_func_start sub_020DFFBC
-sub_020DFFBC: ; 0x020DFFBC
+	arm_func_start WM_SetDCFData
+WM_SetDCFData: ; 0x020DFFBC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r8, r0
 	mov r0, #1
 	mov r1, #0xb
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #0x10
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
@@ -13626,7 +13630,7 @@ sub_020DFFBC: ; 0x020DFFBC
 	bl DC_StoreRange
 	mov r1, r7
 	mov r0, #0x12
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	add r1, sp, #8
 	mov r0, r6
 	mov r2, #6
@@ -13637,24 +13641,24 @@ sub_020DFFBC: ; 0x020DFFBC
 	ldr r3, [sp, #0xc]
 	mov r0, #0x12
 	mov r1, #4
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020E0084: .word 0x000005E4
-	arm_func_end sub_020DFFBC
+	arm_func_end WM_SetDCFData
 
-	arm_func_start sub_020E0088
-sub_020E0088: ; 0x020E0088
+	arm_func_start WM_EndDCF
+WM_EndDCF: ; 0x020E0088
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r4, r0
 	mov r0, #1
 	mov r1, #0xb
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldr r0, [r4, #4]
@@ -13668,17 +13672,17 @@ sub_020E0088: ; 0x020E0088
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r1, r5
 	mov r0, #0x13
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r0, #0x13
 	mov r1, #0
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020E0088
+	arm_func_end WM_EndDCF
 
-	arm_func_start sub_020E00F4
-sub_020E00F4: ; 0x020E00F4
+	arm_func_start WM_StartDataSharing
+WM_StartDataSharing: ; 0x020E00F4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	mov sl, r0
@@ -13689,7 +13693,7 @@ sub_020E00F4: ; 0x020E00F4
 	mov r2, #0xa
 	mov r5, r3
 	mov r8, #1
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -13705,10 +13709,10 @@ sub_020E00F4: ; 0x020E00F4
 	addeq sp, sp, #0xc
 	moveq r0, #6
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl sub_020DEB48
+	bl WM_GetAID
 	movs r4, r0
 	bne _020E0170
-	bl sub_020DEB78
+	bl WM_GetConnectedAIDs
 	mov r8, r0
 _020E0170:
 	mov r1, sl
@@ -13763,15 +13767,15 @@ _020E021C:
 	strh r1, [sl, r0]
 	cmp r2, #4
 	blt _020E021C
-	ldr r1, _020E0338 ; =sub_020E07B0
+	ldr r1, _020E0338 ; =WmDataSharingReceiveCallback_Parent
 	mov r0, r7
 	mov r2, sl
-	bl sub_020DEBEC
+	bl WM_SetPortCallback
 	mov r7, sl
 	mov sb, #0
 	add r4, sl, #0x800
 	mov r6, #1
-	ldr fp, _020E033C ; =sub_020E06D8
+	ldr fp, _020E033C ; =WmDataSharingSetDataCallback
 	ldr r5, _020E0340 ; =0x0000FFFF
 	b _020E02F8
 _020E0264:
@@ -13790,7 +13794,7 @@ _020E0264:
 	ldrh r3, [r4, #0x16]
 	stmib sp, {r3, r6}
 	ldrh r3, [r4, #0x14]
-	bl sub_020DFD7C
+	bl WM_SetMPDataToPortEx
 	cmp r0, #7
 	bne _020E02CC
 	add r0, sl, sb, lsl #1
@@ -13823,25 +13827,25 @@ _020E02F8:
 	blt _020E0264
 	b _020E032C
 _020E0314:
-	ldr r1, _020E0344 ; =sub_020E08DC
+	ldr r1, _020E0344 ; =WmDataSharingReceiveCallback_Child
 	mov r4, #3
 	mov r0, r7
 	mov r2, sl
 	strh r4, [r3, #0xa]
-	bl sub_020DEBEC
+	bl WM_SetPortCallback
 _020E032C:
 	mov r0, #0
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020E0338: .word sub_020E07B0
-_020E033C: .word sub_020E06D8
+_020E0338: .word WmDataSharingReceiveCallback_Parent
+_020E033C: .word WmDataSharingSetDataCallback
 _020E0340: .word 0x0000FFFF
-_020E0344: .word sub_020E08DC
-	arm_func_end sub_020E00F4
+_020E0344: .word WmDataSharingReceiveCallback_Child
+	arm_func_end WM_StartDataSharing
 
-	arm_func_start sub_020E0348
-sub_020E0348: ; 0x020E0348
+	arm_func_start WM_EndDataSharing
+WM_EndDataSharing: ; 0x020E0348
 	stmdb sp!, {r4, lr}
 	movs r4, r0
 	moveq r0, #6
@@ -13854,16 +13858,16 @@ sub_020E0348: ; 0x020E0348
 	ldrh r0, [r0, #0x16]
 	mov r1, #0
 	mov r2, r1
-	bl sub_020DEBEC
+	bl WM_SetPortCallback
 	add r1, r4, #0x800
 	mov r0, #0
 	strh r0, [r1, #0xe]
 	strh r0, [r1, #0x1c]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E0348
+	arm_func_end WM_EndDataSharing
 
-	arm_func_start sub_020E0390
-sub_020E0390: ; 0x020E0390
+	arm_func_start WM_StepDataSharing
+WM_StepDataSharing: ; 0x020E0390
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	mov sl, r0
@@ -13872,7 +13876,7 @@ sub_020E0390: ; 0x020E0390
 	mov r0, #2
 	mov r1, #9
 	mov r2, #0xa
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -13888,10 +13892,10 @@ sub_020E0390: ; 0x020E0390
 	addeq sp, sp, #0xc
 	moveq r0, #6
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl sub_020DEB48
+	bl WM_GetAID
 	movs r5, r0
 	bne _020E0404
-	bl sub_020DEB78
+	bl WM_GetConnectedAIDs
 	mov r4, r0
 _020E0404:
 	add r0, sl, #0x800
@@ -13917,7 +13921,7 @@ _020E0404:
 	strh r2, [ip, #0x1c]
 	ldrh r3, [ip, #0xe]
 	ldrh r1, [ip, #8]
-	ldr r0, _020E06D0 ; =sub_020E06D8
+	ldr r0, _020E06D0 ; =WmDataSharingSetDataCallback
 	and r3, r3, r4
 	mov r3, r3, lsl #0x10
 	mov r3, r3, lsr #0x10
@@ -13930,7 +13934,7 @@ _020E0404:
 	ldrh r3, [ip, #0x14]
 	mov r1, sl
 	add r2, sl, r6, lsl #9
-	bl sub_020DFD7C
+	bl WM_SetMPDataToPortEx
 	cmp r0, #7
 	bne _020E04C8
 	add r0, sl, r6, lsl #1
@@ -13996,20 +14000,20 @@ _020E0580:
 _020E0584:
 	mov r0, sl
 	mov r1, #0
-	bl sub_020E0A9C
+	bl WmDataSharingSendDataSet
 	cmp r5, #0
 	beq _020E06C4
 	mov r0, sl
 	mov r2, sb
 	mov r1, #0
-	bl sub_020E09D0
+	bl WmDataSharingReceiveData
 	add r0, sl, #0x800
 	ldrh r0, [r0, #0x18]
 	cmp r0, #0
 	bne _020E06C4
 	mov r0, sl
 	mov r1, fp
-	bl sub_020E0A9C
+	bl WmDataSharingSendDataSet
 	b _020E06C4
 _020E05C8:
 	cmp r0, #4
@@ -14057,7 +14061,7 @@ _020E0648:
 	add r3, sl, #0x800
 	ldrh r1, [r3, #0xe]
 	mov r4, #1
-	ldr r0, _020E06D0 ; =sub_020E06D8
+	ldr r0, _020E06D0 ; =WmDataSharingSetDataCallback
 	str r1, [sp]
 	ldrh r5, [r3, #0x16]
 	mov r1, sl
@@ -14065,7 +14069,7 @@ _020E0648:
 	str r5, [sp, #4]
 	str r4, [sp, #8]
 	ldrh r3, [r3, #0x10]
-	bl sub_020DFD7C
+	bl WM_SetMPDataToPortEx
 	add r1, sl, #0x800
 	ldrh r2, [r1, #0xa]
 	cmp r0, #2
@@ -14081,22 +14085,22 @@ _020E06C4:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020E06D0: .word sub_020E06D8
+_020E06D0: .word WmDataSharingSetDataCallback
 _020E06D4: .word 0x0000FFFF
-	arm_func_end sub_020E0390
+	arm_func_end WM_StepDataSharing
 
-	arm_func_start sub_020E06D8
-sub_020E06D8: ; 0x020E06D8
+	arm_func_start WmDataSharingSetDataCallback
+WmDataSharingSetDataCallback: ; 0x020E06D8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	ldrh r2, [r5, #0xa]
-	ldr r1, _020E07A8 ; =sub_020E07B0
+	ldr r1, _020E07A8 ; =WmDataSharingReceiveCallback_Parent
 	add r0, r0, r2, lsl #2
 	ldr r2, [r0, #0xcc]
 	ldr r4, [r0, #0x10c]
 	cmp r2, r1
-	ldrne r0, _020E07AC ; =sub_020E08DC
+	ldrne r0, _020E07AC ; =WmDataSharingReceiveCallback_Child
 	cmpne r2, r0
 	ldmneia sp!, {r3, r4, r5, pc}
 	cmp r4, #0
@@ -14104,7 +14108,7 @@ sub_020E06D8: ; 0x020E06D8
 	ldr r0, [r5, #0x20]
 	cmp r4, r0
 	ldmneia sp!, {r3, r4, r5, pc}
-	bl sub_020DEB48
+	bl WM_GetAID
 	ldrh r1, [r5, #2]
 	cmp r1, #0
 	bne _020E0764
@@ -14143,12 +14147,12 @@ _020E0798:
 	strh r1, [r0, #0x1c]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020E07A8: .word sub_020E07B0
-_020E07AC: .word sub_020E08DC
-	arm_func_end sub_020E06D8
+_020E07A8: .word WmDataSharingReceiveCallback_Parent
+_020E07AC: .word WmDataSharingReceiveCallback_Child
+	arm_func_end WmDataSharingSetDataCallback
 
-	arm_func_start sub_020E07B0
-sub_020E07B0: ; 0x020E07B0
+	arm_func_start WmDataSharingReceiveCallback_Parent
+WmDataSharingReceiveCallback_Parent: ; 0x020E07B0
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r4, [r0, #0x1c]
 	cmp r4, #0
@@ -14181,15 +14185,15 @@ _020E081C:
 	ldrh r1, [r0, #0x12]
 	ldr r2, [r0, #0xc]
 	mov r0, r4
-	bl sub_020E09D0
+	bl WmDataSharingReceiveData
 	mov r0, r4
 	mov r1, #0
-	bl sub_020E0A9C
+	bl WmDataSharingSendDataSet
 	ldmia sp!, {r4, r5, r6, pc}
 _020E083C:
 	mov r0, r4
 	mov r1, #0
-	bl sub_020E0A9C
+	bl WmDataSharingSendDataSet
 	ldmia sp!, {r4, r5, r6, pc}
 _020E084C:
 	ldrh r5, [r0, #0x12]
@@ -14216,24 +14220,24 @@ _020E089C:
 	bl OS_RestoreInterrupts
 	mov r0, r4
 	mov r1, #0
-	bl sub_020E0A9C
+	bl WmDataSharingSendDataSet
 	add r0, r4, #0x800
 	ldrh r0, [r0, #0x18]
 	cmp r0, #1
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r0, r4
 	mov r1, #0
-	bl sub_020E0A9C
+	bl WmDataSharingSendDataSet
 	ldmia sp!, {r4, r5, r6, pc}
 _020E08CC:
 	add r0, r4, #0x800
 	mov r1, #5
 	strh r1, [r0, #0x1c]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020E07B0
+	arm_func_end WmDataSharingReceiveCallback_Parent
 
-	arm_func_start sub_020E08DC
-sub_020E08DC: ; 0x020E08DC
+	arm_func_start WmDataSharingReceiveCallback_Child
+WmDataSharingReceiveCallback_Child: ; 0x020E08DC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	ldr r4, [r8, #0x1c]
@@ -14263,7 +14267,7 @@ _020E093C:
 	ldr r7, [r8, #0xc]
 	ldrh r5, [r8, #0x10]
 	ldrh r6, [r7]
-	bl sub_020DEB48
+	bl WM_GetAID
 	add r1, r4, #0x800
 	ldrh r1, [r1, #0x14]
 	cmp r5, r1
@@ -14299,10 +14303,10 @@ _020E09C0:
 	mov r1, #5
 	strh r1, [r0, #0x1c]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020E08DC
+	arm_func_end WmDataSharingReceiveCallback_Child
 
-	arm_func_start sub_020E09D0
-sub_020E09D0: ; 0x020E09D0
+	arm_func_start WmDataSharingReceiveData
+WmDataSharingReceiveData: ; 0x020E09D0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r3, r1
@@ -14332,7 +14336,7 @@ _020E0A34:
 	add r2, r6, r4, lsl #9
 	mov r0, r6
 	add r2, r2, #4
-	bl sub_020E0C44
+	bl WmGetSharedDataAddress
 	mov r1, r0
 	add r0, r6, #0x800
 	cmp r5, #0
@@ -14357,10 +14361,10 @@ _020E0A6C:
 	strh r1, [r2, r4]
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020E09D0
+	arm_func_end WmDataSharingReceiveData
 
-	arm_func_start sub_020E0A9C
-sub_020E0A9C: ; 0x020E0A9C
+	arm_func_start WmDataSharingSendDataSet
+WmDataSharingSendDataSet: ; 0x020E0A9C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0xc
 	mov sl, r0
@@ -14373,7 +14377,7 @@ sub_020E0A9C: ; 0x020E0A9C
 	ldrh r1, [sl, r1]
 	cmp r1, #0
 	bne _020E0BDC
-	bl sub_020DEB78
+	bl WM_GetConnectedAIDs
 	add r1, sl, #0x800
 	ldrh r6, [r1, #8]
 	ldrh r1, [r1, #0x18]
@@ -14407,7 +14411,7 @@ sub_020E0A9C: ; 0x020E0A9C
 	add r3, sl, #0x800
 	ldrh r1, [r3, #0xe]
 	mov r4, #1
-	ldr r0, _020E0BE8 ; =sub_020E06D8
+	ldr r0, _020E0BE8 ; =WmDataSharingSetDataCallback
 	and r1, r1, r7
 	mov r1, r1, lsl #0x10
 	mov r1, r1, lsr #0x10
@@ -14418,7 +14422,7 @@ sub_020E0A9C: ; 0x020E0A9C
 	str r5, [sp, #4]
 	str r4, [sp, #8]
 	ldrh r3, [r3, #0x14]
-	bl sub_020DFD7C
+	bl WM_SetMPDataToPortEx
 	cmp r0, #7
 	bne _020E0BB8
 	add r0, sl, r6, lsl #1
@@ -14447,12 +14451,12 @@ _020E0BDC:
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_020E0BE8: .word sub_020E06D8
+_020E0BE8: .word WmDataSharingSetDataCallback
 _020E0BEC: .word 0x0000FFFF
-	arm_func_end sub_020E0A9C
+	arm_func_end WmDataSharingSendDataSet
 
-	arm_func_start sub_020E0BF0
-sub_020E0BF0: ; 0x020E0BF0
+	arm_func_start WM_GetSharedDataAddress
+WM_GetSharedDataAddress: ; 0x020E0BF0
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov r3, r2
@@ -14472,12 +14476,12 @@ sub_020E0BF0: ; 0x020E0BF0
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	add r2, lr, #4
-	bl sub_020E0C44
+	bl WmGetSharedDataAddress
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E0BF0
+	arm_func_end WM_GetSharedDataAddress
 
-	arm_func_start sub_020E0C44
-sub_020E0C44: ; 0x020E0C44
+	arm_func_start WmGetSharedDataAddress
+WmGetSharedDataAddress: ; 0x020E0C44
 	stmdb sp!, {r3, r4, r5, lr}
 	mov ip, #1
 	mov r3, ip, lsl r3
@@ -14490,34 +14494,34 @@ sub_020E0C44: ; 0x020E0C44
 	ldrh r1, [r1, #0x10]
 	mla r0, r1, r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020E0C44
+	arm_func_end WmGetSharedDataAddress
 
-	arm_func_start sub_020E0C74
-sub_020E0C74: ; 0x020E0C74
+	arm_func_start WM_StartKeySharing
+WM_StartKeySharing: ; 0x020E0C74
 	stmdb sp!, {r3, lr}
 	mov ip, #1
 	rsb r2, ip, #0x10000
 	mov r3, #2
 	str ip, [sp]
-	bl sub_020E00F4
+	bl WM_StartDataSharing
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E0C74
+	arm_func_end WM_StartKeySharing
 
-	arm_func_start sub_020E0C90
-sub_020E0C90: ; 0x020E0C90
-	ldr ip, _020E0C98 ; =sub_020E0348
+	arm_func_start WM_EndKeySharing
+WM_EndKeySharing: ; 0x020E0C90
+	ldr ip, _020E0C98 ; =WM_EndDataSharing
 	bx ip
 	.align 2, 0
-_020E0C98: .word sub_020E0348
-	arm_func_end sub_020E0C90
+_020E0C98: .word WM_EndDataSharing
+	arm_func_end WM_EndKeySharing
 
-	arm_func_start sub_020E0C9C
-sub_020E0C9C: ; 0x020E0C9C
+	arm_func_start WM_SetWEPKey
+WM_SetWEPKey: ; 0x020E0C9C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_020DE680
+	bl WMi_CheckIdle
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	cmp r5, #3
@@ -14534,25 +14538,25 @@ sub_020E0C9C: ; 0x020E0C9C
 _020E0CE4:
 	mov r1, r6
 	mov r0, #0x14
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r2, r5
 	mov r3, r4
 	mov r0, #0x14
 	mov r1, #2
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020E0C9C
+	arm_func_end WM_SetWEPKey
 
-	arm_func_start sub_020E0D10
-sub_020E0D10: ; 0x020E0D10
+	arm_func_start WM_SetWEPKeyEx
+WM_SetWEPKeyEx: ; 0x020E0D10
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020DE680
+	bl WMi_CheckIdle
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	cmp r6, #3
@@ -14569,20 +14573,20 @@ sub_020E0D10: ; 0x020E0D10
 _020E0D5C:
 	mov r1, r7
 	mov r0, #0x27
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r2, r6
 	mov r3, r4
 	mov r0, #0x27
 	mov r1, #3
 	str r5, [sp]
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020E0D10
+	arm_func_end WM_SetWEPKeyEx
 
-	arm_func_start sub_020E0D8C
-sub_020E0D8C: ; 0x020E0D8C
+	arm_func_start WM_SetGameInfo
+WM_SetGameInfo: ; 0x020E0D8C
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0xc
 	mov r7, r0
@@ -14592,7 +14596,7 @@ sub_020E0D8C: ; 0x020E0D8C
 	mov r1, #7
 	mov r2, #9
 	mov r4, r3
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, r6, r7, pc}
@@ -14613,7 +14617,7 @@ sub_020E0D8C: ; 0x020E0D8C
 	bl DC_StoreRange
 	mov r1, r7
 	mov r0, #0x18
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	ldrh r0, [sp, #0x20]
 	str r4, [sp]
 	ldrb r1, [sp, #0x24]
@@ -14623,21 +14627,21 @@ sub_020E0D8C: ; 0x020E0D8C
 	mov r3, r5
 	mov r0, #0x18
 	mov r1, #5
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _020E0E40: .word 0x021E4CC0
-	arm_func_end sub_020E0D8C
+	arm_func_end WM_SetGameInfo
 
-	arm_func_start sub_020E0E44
-sub_020E0E44: ; 0x020E0E44
+	arm_func_start WM_SetBeaconIndication
+WM_SetBeaconIndication: ; 0x020E0E44
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_020DE680
+	bl WMi_CheckIdle
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	cmp r4, #0
@@ -14646,62 +14650,62 @@ sub_020E0E44: ; 0x020E0E44
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r1, r5
 	mov r0, #0x19
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r2, r4
 	mov r0, #0x19
 	mov r1, #1
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020E0E44
+	arm_func_end WM_SetBeaconIndication
 
-	arm_func_start sub_020E0E94
-sub_020E0E94: ; 0x020E0E94
+	arm_func_start WM_SetLifeTime
+WM_SetLifeTime: ; 0x020E0E94
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020DE680
+	bl WMi_CheckIdle
 	cmp r0, #0
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r1, r7
 	mov r0, #0x1d
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	ldrh ip, [sp, #0x20]
 	mov r2, r6
 	mov r3, r5
 	mov r0, #0x1d
 	mov r1, #4
 	stmia sp, {r4, ip}
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020E0E94
+	arm_func_end WM_SetLifeTime
 
-	arm_func_start sub_020E0EF4
-sub_020E0EF4: ; 0x020E0EF4
+	arm_func_start WM_MeasureChannel
+WM_MeasureChannel: ; 0x020E0EF4
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0xc
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020DE654
+	bl WMi_GetSystemWork
 	mov r0, #1
 	mov r1, #2
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, r6, r7, pc}
 	mov r1, r7
 	mov r0, #0x1e
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	ldrh r2, [sp, #0x20]
 	mov r3, #0x1e
 	add r0, sp, #0
@@ -14711,38 +14715,38 @@ sub_020E0EF4: ; 0x020E0EF4
 	strh r5, [sp, #4]
 	strh r4, [sp, #6]
 	strh r2, [sp, #8]
-	bl sub_020DE5E4
+	bl WMi_SendCommandDirect
 	cmp r0, #0
 	moveq r0, #2
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, pc}
-	arm_func_end sub_020E0EF4
+	arm_func_end WM_MeasureChannel
 
-	arm_func_start sub_020E0F6C
-sub_020E0F6C: ; 0x020E0F6C
+	arm_func_start WM_SetEntry
+WM_SetEntry: ; 0x020E0F6C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	mov r0, #2
 	mov r1, #7
 	mov r2, #9
-	bl sub_020DE6C8
+	bl WMi_CheckStateEx
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r1, r5
 	mov r0, #0x21
-	bl sub_020DE4C8
+	bl WMi_SetCallbackTable
 	mov r2, r4
 	mov r0, #0x21
 	mov r1, #1
-	bl sub_020DE538
+	bl WMi_SendCommand
 	cmp r0, #0
 	moveq r0, #2
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020E0F6C
+	arm_func_end WM_SetEntry
 
-	arm_func_start sub_020E0FB8
-sub_020E0FB8: ; 0x020E0FB8
+	arm_func_start CTRDGi_InitCommon
+CTRDGi_InitCommon: ; 0x020E0FB8
 	stmdb sp!, {r3, lr}
 	ldr r1, _020E0FE4 ; =0x021E4D44
 	mov r3, #0
@@ -14758,40 +14762,40 @@ sub_020E0FB8: ; 0x020E0FB8
 _020E0FE4: .word 0x021E4D44
 _020E0FE8: .word 0x05000001
 _020E0FEC: .word 0x021E4D40
-	arm_func_end sub_020E0FB8
+	arm_func_end CTRDGi_InitCommon
 
-	arm_func_start sub_020E0FF0
-sub_020E0FF0: ; 0x020E0FF0
+	arm_func_start CTRDG_IsAgbCartridge
+CTRDG_IsAgbCartridge: ; 0x020E0FF0
 	stmdb sp!, {r3, lr}
 	bl CTRDG_IsExisting
 	cmp r0, #0
 	beq _020E1010
-	bl sub_020E1040
+	bl CTRDGi_IsAgbCartridgeAtInit
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, pc}
 _020E1010:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E0FF0
+	arm_func_end CTRDG_IsAgbCartridge
 
-	arm_func_start sub_020E1018
-sub_020E1018: ; 0x020E1018
+	arm_func_start CTRDG_IsOptionCartridge
+CTRDG_IsOptionCartridge: ; 0x020E1018
 	stmdb sp!, {r3, lr}
 	bl CTRDG_IsExisting
 	cmp r0, #0
 	beq _020E1038
-	bl sub_020E1040
+	bl CTRDGi_IsAgbCartridgeAtInit
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
 _020E1038:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E1018
+	arm_func_end CTRDG_IsOptionCartridge
 
-	arm_func_start sub_020E1040
-sub_020E1040: ; 0x020E1040
+	arm_func_start CTRDGi_IsAgbCartridgeAtInit
+CTRDGi_IsAgbCartridgeAtInit: ; 0x020E1040
 	ldr r0, _020E1054 ; =0x027FFC30
 	ldrb r0, [r0, #5]
 	mov r0, r0, lsl #0x1f
@@ -14799,27 +14803,27 @@ sub_020E1040: ; 0x020E1040
 	bx lr
 	.align 2, 0
 _020E1054: .word 0x027FFC30
-	arm_func_end sub_020E1040
+	arm_func_end CTRDGi_IsAgbCartridgeAtInit
 
-	arm_func_start sub_020E1058
-sub_020E1058: ; 0x020E1058
+	arm_func_start CTRDG_GetAgbGameCode
+CTRDG_GetAgbGameCode: ; 0x020E1058
 	stmdb sp!, {r4, lr}
 	mov r4, #0
 	bl CTRDG_IsExisting
 	cmp r0, #0
 	beq _020E1074
-	bl sub_020E107C
+	bl CTRDGi_GetAgbGameCodeAtInit
 	mov r4, r0
 _020E1074:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E1058
+	arm_func_end CTRDG_GetAgbGameCode
 
-	arm_func_start sub_020E107C
-sub_020E107C: ; 0x020E107C
+	arm_func_start CTRDGi_GetAgbGameCodeAtInit
+CTRDGi_GetAgbGameCodeAtInit: ; 0x020E107C
 	stmdb sp!, {r4, lr}
 	mov r4, #0
-	bl sub_020E1040
+	bl CTRDGi_IsAgbCartridgeAtInit
 	cmp r0, #0
 	ldrne r0, _020E109C ; =0x027FFC30
 	ldrne r4, [r0, #8]
@@ -14827,27 +14831,27 @@ sub_020E107C: ; 0x020E107C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020E109C: .word 0x027FFC30
-	arm_func_end sub_020E107C
+	arm_func_end CTRDGi_GetAgbGameCodeAtInit
 
-	arm_func_start sub_020E10A0
-sub_020E10A0: ; 0x020E10A0
+	arm_func_start CTRDG_GetAgbMakerCode
+CTRDG_GetAgbMakerCode: ; 0x020E10A0
 	stmdb sp!, {r4, lr}
 	mov r4, #0
 	bl CTRDG_IsExisting
 	cmp r0, #0
 	beq _020E10BC
-	bl sub_020E10C4
+	bl CTRDGi_GetAgbMakerCodeAtInit
 	mov r4, r0
 _020E10BC:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E10A0
+	arm_func_end CTRDG_GetAgbMakerCode
 
-	arm_func_start sub_020E10C4
-sub_020E10C4: ; 0x020E10C4
+	arm_func_start CTRDGi_GetAgbMakerCodeAtInit
+CTRDGi_GetAgbMakerCodeAtInit: ; 0x020E10C4
 	stmdb sp!, {r4, lr}
 	mov r4, #0
-	bl sub_020E1040
+	bl CTRDGi_IsAgbCartridgeAtInit
 	cmp r0, #0
 	ldrne r0, _020E10E4 ; =0x027FFC30
 	ldrneh r4, [r0, #6]
@@ -14855,7 +14859,7 @@ sub_020E10C4: ; 0x020E10C4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020E10E4: .word 0x027FFC30
-	arm_func_end sub_020E10C4
+	arm_func_end CTRDGi_GetAgbMakerCodeAtInit
 
 	arm_func_start CTRDG_IsPulledOut
 CTRDG_IsPulledOut: ; 0x020E10E8
@@ -14904,9 +14908,9 @@ CTRDG_IsExisting: ; 0x020E1134
 	ldr r0, _020E1238 ; =0x021E4D40
 	add r1, sp, #8
 	ldrh r0, [r0, #6]
-	bl sub_020E12BC
+	bl CTRDGi_LockByProcessor
 	add r0, sp, #0
-	bl sub_020E1240
+	bl CTRDGi_ChangeLatestAccessCycle
 	mov r0, #0x8000000
 	ldrb r2, [r0, #0xb2]
 	cmp r2, #0x96
@@ -14944,11 +14948,11 @@ _020E11FC:
 	strb r0, [r1, #5]
 _020E1210:
 	add r0, sp, #0
-	bl sub_020E1288
+	bl CTRDGi_RestoreAccessCycle
 	ldr r0, _020E1238 ; =0x021E4D40
 	add r1, sp, #8
 	ldrh r0, [r0, #6]
-	bl sub_020E1318
+	bl CTRDGi_UnlockByProcessor
 	mov r0, r4
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
@@ -14958,8 +14962,8 @@ _020E1238: .word 0x021E4D40
 _020E123C: .word 0x0801FFFE
 	arm_func_end CTRDG_IsExisting
 
-	arm_func_start sub_020E1240
-sub_020E1240: ; 0x020E1240
+	arm_func_start CTRDGi_ChangeLatestAccessCycle
+CTRDGi_ChangeLatestAccessCycle: ; 0x020E1240
 	ldr r2, _020E1284 ; =0x04000204
 	ldrh r1, [r2]
 	and r1, r1, #0xc
@@ -14979,10 +14983,10 @@ sub_020E1240: ; 0x020E1240
 	bx lr
 	.align 2, 0
 _020E1284: .word 0x04000204
-	arm_func_end sub_020E1240
+	arm_func_end CTRDGi_ChangeLatestAccessCycle
 
-	arm_func_start sub_020E1288
-sub_020E1288: ; 0x020E1288
+	arm_func_start CTRDGi_RestoreAccessCycle
+CTRDGi_RestoreAccessCycle: ; 0x020E1288
 	ldr r3, _020E12B8 ; =0x04000204
 	ldr r2, [r0]
 	ldrh r1, [r3]
@@ -14997,10 +15001,10 @@ sub_020E1288: ; 0x020E1288
 	bx lr
 	.align 2, 0
 _020E12B8: .word 0x04000204
-	arm_func_end sub_020E1288
+	arm_func_end CTRDGi_RestoreAccessCycle
 
-	arm_func_start sub_020E12BC
-sub_020E12BC: ; 0x020E12BC
+	arm_func_start CTRDGi_LockByProcessor
+CTRDGi_LockByProcessor: ; 0x020E12BC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r5, _020E1314 ; =0x027FFFE8
 	mov r7, r0
@@ -15023,17 +15027,14 @@ _020E12D0:
 	mov r0, r4
 	bl SVC_WaitByLoop
 	b _020E12D0
-	arm_func_end sub_020E12BC
-
-	arm_func_start sub_020E1310
-sub_020E1310: ; 0x020E1310
+_020E1310: ; 0x020E1310
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020E1314: .word 0x027FFFE8
-	arm_func_end sub_020E1310
+	arm_func_end CTRDGi_LockByProcessor
 
-	arm_func_start sub_020E1318
-sub_020E1318: ; 0x020E1318
+	arm_func_start CTRDGi_UnlockByProcessor
+CTRDGi_UnlockByProcessor: ; 0x020E1318
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	ldr r1, [r4]
@@ -15044,10 +15045,10 @@ _020E1330:
 	ldr r0, [r4, #4]
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E1318
+	arm_func_end CTRDGi_UnlockByProcessor
 
-	arm_func_start sub_020E133C
-sub_020E133C: ; 0x020E133C
+	arm_func_start CTRDGi_SendtoPxi
+CTRDGi_SendtoPxi: ; 0x020E133C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r1, r7
@@ -15069,10 +15070,10 @@ _020E1368:
 	cmp r0, #0
 	bne _020E1368
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020E133C
+	arm_func_end CTRDGi_SendtoPxi
 
-	arm_func_start sub_020E138C
-sub_020E138C: ; 0x020E138C
+	arm_func_start CTRDG_CpuCopy8
+CTRDG_CpuCopy8: ; 0x020E138C
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov r3, r2
@@ -15085,7 +15086,7 @@ sub_020E138C: ; 0x020E138C
 	mov r2, r0
 	mov r0, #0
 	str ip, [sp]
-	bl sub_020E1434
+	bl CTRDGi_CopyCommon
 	ldmia sp!, {r3, pc}
 _020E13C4:
 	mov ip, #1
@@ -15093,14 +15094,14 @@ _020E13C4:
 	mov r2, lr
 	mov r0, #0
 	str ip, [sp]
-	bl sub_020E1434
+	bl CTRDGi_CopyCommon
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020E13E0: .word 0x0A010000
-	arm_func_end sub_020E138C
+	arm_func_end CTRDG_CpuCopy8
 
-	arm_func_start sub_020E13E4
-sub_020E13E4: ; 0x020E13E4
+	arm_func_start CTRDG_CpuCopy16
+CTRDG_CpuCopy16: ; 0x020E13E4
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov r3, r2
@@ -15109,12 +15110,12 @@ sub_020E13E4: ; 0x020E13E4
 	mov r2, lr
 	mov r0, #0
 	str ip, [sp]
-	bl sub_020E1434
+	bl CTRDGi_CopyCommon
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E13E4
+	arm_func_end CTRDG_CpuCopy16
 
-	arm_func_start sub_020E140C
-sub_020E140C: ; 0x020E140C
+	arm_func_start CTRDG_CpuCopy32
+CTRDG_CpuCopy32: ; 0x020E140C
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov r3, r2
@@ -15123,12 +15124,12 @@ sub_020E140C: ; 0x020E140C
 	mov r2, lr
 	mov r0, #0
 	str ip, [sp]
-	bl sub_020E1434
+	bl CTRDGi_CopyCommon
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E140C
+	arm_func_end CTRDG_CpuCopy32
 
-	arm_func_start sub_020E1434
-sub_020E1434: ; 0x020E1434
+	arm_func_start CTRDGi_CopyCommon
+CTRDGi_CopyCommon: ; 0x020E1434
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -15138,7 +15139,7 @@ sub_020E1434: ; 0x020E1434
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_020E16C0
+	bl CTRDG_CheckEnabled
 	ldr r0, _020E156C ; =0x021E4D40
 	ldrh r0, [r0, #6]
 	bl OS_LockCartridge
@@ -15220,21 +15221,21 @@ _020E154C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020E156C: .word 0x021E4D40
-	arm_func_end sub_020E1434
+	arm_func_end CTRDGi_CopyCommon
 
-	arm_func_start sub_020E1570
-sub_020E1570: ; 0x020E1570
-	ldr ip, _020E1584 ; =sub_020E1588
+	arm_func_start CTRDG_Read32
+CTRDG_Read32: ; 0x020E1570
+	ldr ip, _020E1584 ; =CTRDGi_AccessCommon
 	mov r2, r1
 	mov r1, #0
 	mov r3, #0x41
 	bx ip
 	.align 2, 0
-_020E1584: .word sub_020E1588
-	arm_func_end sub_020E1570
+_020E1584: .word CTRDGi_AccessCommon
+	arm_func_end CTRDG_Read32
 
-	arm_func_start sub_020E1588
-sub_020E1588: ; 0x020E1588
+	arm_func_start CTRDGi_AccessCommon
+CTRDGi_AccessCommon: ; 0x020E1588
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -15244,7 +15245,7 @@ sub_020E1588: ; 0x020E1588
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_020E16C0
+	bl CTRDG_CheckEnabled
 	ldr r0, _020E1664 ; =0x021E4D40
 	ldrh r0, [r0, #6]
 	bl OS_LockCartridge
@@ -15300,26 +15301,26 @@ _020E1644:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020E1664: .word 0x021E4D40
-	arm_func_end sub_020E1588
+	arm_func_end CTRDGi_AccessCommon
 
-	arm_func_start sub_020E1668
-sub_020E1668: ; 0x020E1668
+	arm_func_start CTRDG_IsEnabled
+CTRDG_IsEnabled: ; 0x020E1668
 	ldr r0, _020E1674 ; =0x021E4D40
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _020E1674: .word 0x021E4D40
-	arm_func_end sub_020E1668
+	arm_func_end CTRDG_IsEnabled
 
-	arm_func_start sub_020E1678
-sub_020E1678: ; 0x020E1678
+	arm_func_start CTRDG_Enable
+CTRDG_Enable: ; 0x020E1678
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
 	ldr r1, _020E16BC ; =0x021E4D40
 	mov r4, r0
 	str r5, [r1]
-	bl sub_020E1018
+	bl CTRDG_IsOptionCartridge
 	cmp r0, #0
 	bne _020E16B0
 	cmp r5, #0
@@ -15333,20 +15334,20 @@ _020E16B0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020E16BC: .word 0x021E4D40
-	arm_func_end sub_020E1678
+	arm_func_end CTRDG_Enable
 
-	arm_func_start sub_020E16C0
-sub_020E16C0: ; 0x020E16C0
+	arm_func_start CTRDG_CheckEnabled
+CTRDG_CheckEnabled: ; 0x020E16C0
 	stmdb sp!, {r3, lr}
-	bl sub_020E1018
+	bl CTRDG_IsOptionCartridge
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl sub_020E1668
+	bl CTRDG_IsEnabled
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	bl OS_Terminate
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E16C0
+	arm_func_end CTRDG_CheckEnabled
 
 	arm_func_start CTRDG_Init
 CTRDG_Init: ; 0x020E16E4
@@ -15357,7 +15358,7 @@ CTRDG_Init: ; 0x020E16E4
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r1, #1
 	str r1, [r0, #8]
-	bl sub_020E0FB8
+	bl CTRDGi_InitCommon
 	ldr r0, _020E1784 ; =0x021E4D60
 	mov r1, #0
 	str r1, [r0, #0xc]
@@ -15370,37 +15371,37 @@ _020E171C:
 	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _020E171C
-	ldr r1, _020E1788 ; =sub_020E198C
+	ldr r1, _020E1788 ; =CTRDGi_CallbackForInitModuleInfo
 	mov r0, #0xd
 	bl PXI_SetFifoRecvCallback
-	bl sub_020E1798
+	bl CTRDGi_InitModuleInfo
 	mov r0, #0xd
 	mov r1, #0
 	bl PXI_SetFifoRecvCallback
-	ldr r1, _020E178C ; =sub_020E19B8
+	ldr r1, _020E178C ; =CTRDGi_PulledOutCallback
 	mov r0, #0xd
 	bl PXI_SetFifoRecvCallback
 	ldr r1, _020E1784 ; =0x021E4D60
 	mov r2, #0
 	ldr r0, _020E1790 ; =0x021E4E40
 	str r2, [r1, #0x18]
-	bl sub_020E34C0
-	ldr r1, _020E1794 ; =sub_020E1A28
+	bl CTRDGi_InitTaskThread
+	ldr r1, _020E1794 ; =CTRDGi_CallbackForSetPhi
 	mov r0, #0x11
 	bl PXI_SetFifoRecvCallback
 	mov r0, #0
-	bl sub_020E1678
+	bl CTRDG_Enable
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020E1784: .word 0x021E4D60
-_020E1788: .word sub_020E198C
-_020E178C: .word sub_020E19B8
+_020E1788: .word CTRDGi_CallbackForInitModuleInfo
+_020E178C: .word CTRDGi_PulledOutCallback
 _020E1790: .word 0x021E4E40
-_020E1794: .word sub_020E1A28
+_020E1794: .word CTRDGi_CallbackForSetPhi
 	arm_func_end CTRDG_Init
 
-	arm_func_start sub_020E1798
-sub_020E1798: ; 0x020E1798
+	arm_func_start CTRDGi_InitModuleInfo
+CTRDGi_InitModuleInfo: ; 0x020E1798
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	ldr r0, _020E1960 ; =0x021E4D60
@@ -15425,13 +15426,13 @@ sub_020E1798: ; 0x020E1798
 	strh r2, [r3]
 	ldrh r0, [r1, #2]
 	add r1, sp, #8
-	bl sub_020E12BC
+	bl CTRDGi_LockByProcessor
 	ldr r1, _020E1970 ; =0x04000204
 	add r0, sp, #0
 	ldrh r1, [r1]
 	and r1, r1, #0x8000
 	mov r6, r1, asr #0xf
-	bl sub_020E1240
+	bl CTRDGi_ChangeLatestAccessCycle
 	ldr r3, _020E1970 ; =0x04000204
 	ldr r0, _020E1974 ; =0x021E4D80
 	ldrh r2, [r3]
@@ -15452,11 +15453,11 @@ sub_020E1798: ; 0x020E1798
 	bic r1, r1, #0x8000
 	orr r1, r1, r6, lsl #15
 	strh r1, [r2]
-	bl sub_020E1288
+	bl CTRDGi_RestoreAccessCycle
 	ldr r0, _020E196C ; =0x021E4D44
 	add r1, sp, #8
 	ldrh r0, [r0, #2]
-	bl sub_020E1318
+	bl CTRDGi_UnlockByProcessor
 	ldr r1, _020E197C ; =0x027FFF9B
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -15503,7 +15504,7 @@ _020E18F8:
 	mov r0, r0, lsr #5
 	mov r0, r0, lsl #6
 	orr r0, r0, #1
-	bl sub_020E133C
+	bl CTRDGi_SendtoPxi
 	mov r7, #1
 	ldr r6, _020E196C ; =0x021E4D44
 	b _020E1938
@@ -15533,10 +15534,10 @@ _020E197C: .word 0x027FFF9B
 _020E1980: .word 0x027FFC30
 _020E1984: .word 0xFFFF0020
 _020E1988: .word 0x021E4D84
-	arm_func_end sub_020E1798
+	arm_func_end CTRDGi_InitModuleInfo
 
-	arm_func_start sub_020E198C
-sub_020E198C: ; 0x020E198C
+	arm_func_start CTRDGi_CallbackForInitModuleInfo
+CTRDGi_CallbackForInitModuleInfo: ; 0x020E198C
 	stmdb sp!, {r3, lr}
 	and r0, r1, #0x3f
 	cmp r0, #1
@@ -15550,10 +15551,10 @@ _020E19AC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020E19B4: .word 0x021E4D44
-	arm_func_end sub_020E198C
+	arm_func_end CTRDGi_CallbackForInitModuleInfo
 
-	arm_func_start sub_020E19B8
-sub_020E19B8: ; 0x020E19B8
+	arm_func_start CTRDGi_PulledOutCallback
+CTRDGi_PulledOutCallback: ; 0x020E19B8
 	stmdb sp!, {r3, lr}
 	and r0, r1, #0x3f
 	cmp r0, #0x11
@@ -15570,7 +15571,7 @@ sub_020E19B8: ; 0x020E19B8
 _020E19EC:
 	cmp r0, #0
 	beq _020E19F8
-	bl sub_020E1A14
+	bl CTRDG_TerminateForPulledOut
 _020E19F8:
 	ldr r0, _020E1A10 ; =0x021E4D60
 	mov r1, #1
@@ -15581,29 +15582,29 @@ _020E1A08:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020E1A10: .word 0x021E4D60
-	arm_func_end sub_020E19B8
+	arm_func_end CTRDGi_PulledOutCallback
 
-	arm_func_start sub_020E1A14
-sub_020E1A14: ; 0x020E1A14
+	arm_func_start CTRDG_TerminateForPulledOut
+CTRDG_TerminateForPulledOut: ; 0x020E1A14
 	stmdb sp!, {r3, lr}
 	mov r0, #2
-	bl sub_020E133C
+	bl CTRDGi_SendtoPxi
 	bl OS_Terminate
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E1A14
+	arm_func_end CTRDG_TerminateForPulledOut
 
-	arm_func_start sub_020E1A28
-sub_020E1A28: ; 0x020E1A28
+	arm_func_start CTRDGi_CallbackForSetPhi
+CTRDGi_CallbackForSetPhi: ; 0x020E1A28
 	ldr r0, _020E1A38 ; =0x021E4D60
 	mov r1, #0
 	str r1, [r0, #4]
 	bx lr
 	.align 2, 0
 _020E1A38: .word 0x021E4D60
-	arm_func_end sub_020E1A28
+	arm_func_end CTRDGi_CallbackForSetPhi
 
-	arm_func_start sub_020E1A3C
-sub_020E1A3C: ; 0x020E1A3C
+	arm_func_start CTRDG_IdentifyAgbBackup
+CTRDG_IdentifyAgbBackup: ; 0x020E1A3C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	cmp r7, #1
@@ -15624,7 +15625,7 @@ sub_020E1A3C: ; 0x020E1A3C
 	orr r2, r2, #3
 	strh r2, [r4]
 	str r1, [r0]
-	bl sub_020E1C18
+	bl CTRDGi_ReadFlashID
 	ldr r2, _020E1BAC ; =0x04000204
 	mov r4, r0
 	ldrh r1, [r2]
@@ -15714,10 +15715,10 @@ _020E1BD4: .word 0x021E4F40
 _020E1BD8: .word 0x021E4F5C
 _020E1BDC: .word _02110FC4
 _020E1BE0: .word 0x021E4F60
-	arm_func_end sub_020E1A3C
+	arm_func_end CTRDG_IdentifyAgbBackup
 
-	arm_func_start sub_020E1BE4
-sub_020E1BE4: ; 0x020E1BE4
+	arm_func_start CTRDGi_SetFlashBankMx
+CTRDGi_SetFlashBankMx: ; 0x020E1BE4
 	ldr r3, _020E1C10 ; =0x0A005555
 	mov r2, #0xaa
 	ldr r1, _020E1C14 ; =0x0A002AAA
@@ -15732,10 +15733,10 @@ sub_020E1BE4: ; 0x020E1BE4
 	.align 2, 0
 _020E1C10: .word 0x0A005555
 _020E1C14: .word 0x0A002AAA
-	arm_func_end sub_020E1BE4
+	arm_func_end CTRDGi_SetFlashBankMx
 
-	arm_func_start sub_020E1C18
-sub_020E1C18: ; 0x020E1C18
+	arm_func_start CTRDGi_ReadFlashID
+CTRDGi_ReadFlashID: ; 0x020E1C18
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r5, _020E1D10 ; =0x04000208
 	mov r0, #0
@@ -15754,22 +15755,22 @@ sub_020E1C18: ; 0x020E1C18
 	ldrh r2, [r5]
 	ldr r1, [r1, #0x1c]
 	strh r1, [r5]
-	bl sub_020E1D24
+	bl StartFlashTimer
 	ldr r4, _020E1D14 ; =0x021E4F2C
 	ldrh r0, [r4, #2]
 	cmp r0, #0
 	bne _020E1C84
 _020E1C74:
-	bl sub_020E1D6C
+	bl CheckFlashTimer
 	ldrh r0, [r4, #2]
 	cmp r0, #0
 	beq _020E1C74
 _020E1C84:
 	ldr r0, _020E1D20 ; =0x0A000001
-	bl sub_020E1DC8
+	bl CTRDGi_ReadSrFunc
 	mov r4, r0, lsl #0x18
 	mov r0, #0xa000000
-	bl sub_020E1DC8
+	bl CTRDGi_ReadSrFunc
 	ldr ip, _020E1D10 ; =0x04000208
 	orr r4, r0, r4, lsr #16
 	ldrh r2, [ip]
@@ -15789,13 +15790,13 @@ _020E1C84:
 	ldrh r2, [ip]
 	ldr r1, [r1, #0x1c]
 	strh r1, [ip]
-	bl sub_020E1D24
+	bl StartFlashTimer
 	ldr r5, _020E1D14 ; =0x021E4F2C
 	ldrh r0, [r5, #2]
 	cmp r0, #0
 	bne _020E1D08
 _020E1CF8:
-	bl sub_020E1D6C
+	bl CheckFlashTimer
 	ldrh r0, [r5, #2]
 	cmp r0, #0
 	beq _020E1CF8
@@ -15808,10 +15809,10 @@ _020E1D14: .word 0x021E4F2C
 _020E1D18: .word 0x0A005555
 _020E1D1C: .word 0x0A002AAA
 _020E1D20: .word 0x0A000001
-	arm_func_end sub_020E1C18
+	arm_func_end CTRDGi_ReadFlashID
 
-	arm_func_start sub_020E1D24
-sub_020E1D24: ; 0x020E1D24
+	arm_func_start StartFlashTimer
+StartFlashTimer: ; 0x020E1D24
 	stmdb sp!, {r3, lr}
 	ldr r1, _020E1D64 ; =_02110FC4
 	ldr r2, _020E1D68 ; =0x021E4F2C
@@ -15831,10 +15832,10 @@ sub_020E1D24: ; 0x020E1D24
 	.align 2, 0
 _020E1D64: .word _02110FC4
 _020E1D68: .word 0x021E4F2C
-	arm_func_end sub_020E1D24
+	arm_func_end StartFlashTimer
 
-	arm_func_start sub_020E1D6C
-sub_020E1D6C: ; 0x020E1D6C
+	arm_func_start CheckFlashTimer
+CheckFlashTimer: ; 0x020E1D6C
 	stmdb sp!, {r3, lr}
 	bl OS_GetTick
 	ldr r3, _020E1DC0 ; =0x021E4F2C
@@ -15859,33 +15860,33 @@ sub_020E1D6C: ; 0x020E1D6C
 	.align 2, 0
 _020E1DC0: .word 0x021E4F2C
 _020E1DC4: .word 0x000082EA
-	arm_func_end sub_020E1D6C
+	arm_func_end CheckFlashTimer
 
-	arm_func_start sub_020E1DC8
-sub_020E1DC8: ; 0x020E1DC8
+	arm_func_start CTRDGi_ReadSrFunc
+CTRDGi_ReadSrFunc: ; 0x020E1DC8
 	ldrb r0, [r0]
 	bx lr
-	arm_func_end sub_020E1DC8
+	arm_func_end CTRDGi_ReadSrFunc
 
-	arm_func_start sub_020E1DD0
-sub_020E1DD0: ; 0x020E1DD0
+	arm_func_start CTRDGi_PollingSR512kCOMMON
+CTRDGi_PollingSR512kCOMMON: ; 0x020E1DD0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r4, r0
 	mov r8, r1
 	mov r7, r2
 	mov r6, #0
-	bl sub_020E1D24
+	bl StartFlashTimer
 	ldr r5, _020E1E54 ; =0x021E4F2C
 _020E1DEC:
 	mov r0, r8
-	bl sub_020E1DC8
+	bl CTRDGi_ReadSrFunc
 	cmp r0, r7
 	beq _020E1E40
 	ldrh r0, [r5, #2]
 	cmp r0, #0
 	beq _020E1DEC
 	mov r0, r8
-	bl sub_020E1DC8
+	bl CTRDGi_ReadSrFunc
 	cmp r7, r0
 	beq _020E1E40
 	ldr r0, _020E1E58 ; =_02110FC4
@@ -15908,27 +15909,27 @@ _020E1E40:
 _020E1E54: .word 0x021E4F2C
 _020E1E58: .word _02110FC4
 _020E1E5C: .word 0x0A005555
-	arm_func_end sub_020E1DD0
+	arm_func_end CTRDGi_PollingSR512kCOMMON
 
-	arm_func_start sub_020E1E60
-sub_020E1E60: ; 0x020E1E60
+	arm_func_start CTRDGi_PollingSR1MCOMMON
+CTRDGi_PollingSR1MCOMMON: ; 0x020E1E60
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
 	mov r6, r2
 	mov r5, #0
-	bl sub_020E1D24
+	bl StartFlashTimer
 	ldr r4, _020E1F0C ; =0x021E4F2C
 _020E1E7C:
-	bl sub_020E1D6C
+	bl CheckFlashTimer
 	mov r0, r7
-	bl sub_020E1DC8
+	bl CTRDGi_ReadSrFunc
 	cmp r0, r6
 	beq _020E1EF8
 	tst r0, #0x20
 	beq _020E1EC4
 	mov r0, r7
-	bl sub_020E1DC8
+	bl CTRDGi_ReadSrFunc
 	cmp r6, r0
 	beq _020E1EF8
 	orr r0, r8, #0xa000
@@ -15943,7 +15944,7 @@ _020E1EC4:
 	cmp r0, #0
 	beq _020E1E7C
 	mov r0, r7
-	bl sub_020E1DC8
+	bl CTRDGi_ReadSrFunc
 	cmp r6, r0
 	beq _020E1EF8
 	orr r0, r8, #0xc000
@@ -15961,10 +15962,10 @@ _020E1EF8:
 	.align 2, 0
 _020E1F0C: .word 0x021E4F2C
 _020E1F10: .word 0x0A005555
-	arm_func_end sub_020E1E60
+	arm_func_end CTRDGi_PollingSR1MCOMMON
 
-	arm_func_start sub_020E1F14
-sub_020E1F14: ; 0x020E1F14
+	arm_func_start CTRDGi_ReadAgbFlashCore
+CTRDGi_ReadAgbFlashCore: ; 0x020E1F14
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -15996,7 +15997,7 @@ sub_020E1F14: ; 0x020E1F14
 	bne _020E1F98
 	mov r0, r5, lsl #0xc
 	mov r0, r0, lsr #0x10
-	bl sub_020E1BE4
+	bl CTRDGi_SetFlashBankMx
 	and r5, r5, #0xf
 _020E1F98:
 	ldr r0, _020E2004 ; =_02110FC4
@@ -16030,10 +16031,10 @@ _020E1FD0:
 _020E1FFC: .word 0x021E4F2C
 _020E2000: .word 0x04000204
 _020E2004: .word _02110FC4
-	arm_func_end sub_020E1F14
+	arm_func_end CTRDGi_ReadAgbFlashCore
 
-	arm_func_start sub_020E2008
-sub_020E2008: ; 0x020E2008
+	arm_func_start CTRDGi_VerifyFlashSectorCore
+CTRDGi_VerifyFlashSectorCore: ; 0x020E2008
 	cmp r2, #0
 	sub r2, r2, #1
 	beq _020E2034
@@ -16049,10 +16050,10 @@ _020E2014:
 _020E2034:
 	mov r0, #0
 	bx lr
-	arm_func_end sub_020E2008
+	arm_func_end CTRDGi_VerifyFlashSectorCore
 
-	arm_func_start sub_020E203C
-sub_020E203C: ; 0x020E203C
+	arm_func_start CTRDGi_VerifyAgbFlashCore
+CTRDGi_VerifyAgbFlashCore: ; 0x020E203C
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -16083,7 +16084,7 @@ sub_020E203C: ; 0x020E203C
 	bne _020E20BC
 	mov r0, r5, lsl #0xc
 	mov r0, r0, lsr #0x10
-	bl sub_020E1BE4
+	bl CTRDGi_SetFlashBankMx
 	and r5, r5, #0xf
 _020E20BC:
 	ldr r1, _020E2114 ; =_02110FC4
@@ -16093,7 +16094,7 @@ _020E20BC:
 	ldrh r1, [r1, #8]
 	mov r1, r5, lsl r1
 	add r1, r1, #0xa000000
-	bl sub_020E2008
+	bl CTRDGi_VerifyFlashSectorCore
 	ldr r3, _020E2110 ; =0x04000204
 	ldr r1, _020E210C ; =0x021E4F2C
 	ldrh r2, [r3]
@@ -16110,10 +16111,10 @@ _020E20BC:
 _020E210C: .word 0x021E4F2C
 _020E2110: .word 0x04000204
 _020E2114: .word _02110FC4
-	arm_func_end sub_020E203C
+	arm_func_end CTRDGi_VerifyAgbFlashCore
 
-	arm_func_start sub_020E2118
-sub_020E2118: ; 0x020E2118
+	arm_func_start CTRDGi_WriteAndVerifyAgbFlashSectorCore
+CTRDGi_WriteAndVerifyAgbFlashSectorCore: ; 0x020E2118
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x24
 	mov r4, r0
@@ -16131,13 +16132,13 @@ sub_020E2118: ; 0x020E2118
 _020E2150:
 	mov r0, r5
 	mov r1, r6
-	bl sub_020E21C4
+	bl CTRDG_WriteAgbFlashSector
 	cmp r0, #0
 	bne _020E2180
 	mov r0, r5
 	mov r1, r6
 	mov r2, r7
-	bl sub_020E21DC
+	bl CTRDG_VerifyAgbFlash
 	cmp r0, #0
 	addeq sp, sp, #0x24
 	ldmeqia sp!, {r4, r5, r6, r7, pc}
@@ -16149,10 +16150,10 @@ _020E2180:
 	blo _020E2150
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, pc}
-	arm_func_end sub_020E2118
+	arm_func_end CTRDGi_WriteAndVerifyAgbFlashSectorCore
 
-	arm_func_start sub_020E219C
-sub_020E219C: ; 0x020E219C
+	arm_func_start CTRDG_ReadAgbFlash
+CTRDG_ReadAgbFlash: ; 0x020E219C
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
@@ -16160,13 +16161,13 @@ sub_020E219C: ; 0x020E219C
 	str r1, [sp, #0x14]
 	str r2, [sp, #0x1c]
 	str r3, [sp, #0x18]
-	bl sub_020E1F14
+	bl CTRDGi_ReadAgbFlashCore
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
-	arm_func_end sub_020E219C
+	arm_func_end CTRDG_ReadAgbFlash
 
-	arm_func_start sub_020E21C4
-sub_020E21C4: ; 0x020E21C4
+	arm_func_start CTRDG_WriteAgbFlashSector
+CTRDG_WriteAgbFlashSector: ; 0x020E21C4
 	stmdb sp!, {r3, lr}
 	ldr r2, _020E21D8 ; =0x021E4F2C
 	ldr r2, [r2, #4]
@@ -16174,40 +16175,40 @@ sub_020E21C4: ; 0x020E21C4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020E21D8: .word 0x021E4F2C
-	arm_func_end sub_020E21C4
+	arm_func_end CTRDG_WriteAgbFlashSector
 
-	arm_func_start sub_020E21DC
-sub_020E21DC: ; 0x020E21DC
+	arm_func_start CTRDG_VerifyAgbFlash
+CTRDG_VerifyAgbFlash: ; 0x020E21DC
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
 	str r1, [sp, #0xc]
 	str r2, [sp, #0x18]
-	bl sub_020E203C
+	bl CTRDGi_VerifyAgbFlashCore
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
-	arm_func_end sub_020E21DC
+	arm_func_end CTRDG_VerifyAgbFlash
 
-	arm_func_start sub_020E2200
-sub_020E2200:
+	arm_func_start CTRDG_WriteAndVerifyAgbFlashAsync
+CTRDG_WriteAndVerifyAgbFlashAsync:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	str r1, [sp, #0xc]
 	strh r0, [sp, #0x20]
 	str r2, [sp, #0x18]
-	ldr r1, _020E222C ; =sub_020E2118
+	ldr r1, _020E222C ; =CTRDGi_WriteAndVerifyAgbFlashSectorCore
 	add r0, sp, #0
 	mov r2, r3
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E222C: .word sub_020E2118
-	arm_func_end sub_020E2200
+_020E222C: .word CTRDGi_WriteAndVerifyAgbFlashSectorCore
+	arm_func_end CTRDG_WriteAndVerifyAgbFlashAsync
 
-	arm_func_start sub_020E2230
-sub_020E2230: ; 0x020E2230
+	arm_func_start CTRDGi_EraseFlashChipCoreAT
+CTRDGi_EraseFlashChipCoreAT: ; 0x020E2230
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020E22FC ; =0x021E4F2C
 	ldrh r0, [r0]
@@ -16267,10 +16268,10 @@ _020E2308: .word 0x021E4F48
 _020E230C: .word 0x0A005555
 _020E2310: .word 0x0A002AAA
 _020E2314: .word 0x021E4F5C
-	arm_func_end sub_020E2230
+	arm_func_end CTRDGi_EraseFlashChipCoreAT
 
-	arm_func_start sub_020E2318
-sub_020E2318: ; 0x020E2318
+	arm_func_start CTRDGi_EraseFlashSectorCoreAT
+CTRDGi_EraseFlashSectorCoreAT: ; 0x020E2318
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -16348,10 +16349,10 @@ _020E2430: .word 0x0A005555
 _020E2434: .word 0x0A002AAA
 _020E2438: .word 0x04000208
 _020E243C: .word 0x021E4F5C
-	arm_func_end sub_020E2318
+	arm_func_end CTRDGi_EraseFlashSectorCoreAT
 
-	arm_func_start sub_020E2440
-sub_020E2440: ; 0x020E2440
+	arm_func_start CTRDGi_EraseFlash4KBCoreAT
+CTRDGi_EraseFlash4KBCoreAT: ; 0x020E2440
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -16375,7 +16376,7 @@ _020E248C:
 	mov r7, r4
 _020E2490:
 	mov r0, r6
-	bl sub_020E27A8
+	bl CTRDGi_EraseFlashSectorAT
 	cmp r0, #0
 	beq _020E24B0
 	sub r1, r7, #1
@@ -16398,10 +16399,10 @@ _020E24B0:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _020E24E4: .word 0x000080FF
-	arm_func_end sub_020E2440
+	arm_func_end CTRDGi_EraseFlash4KBCoreAT
 
-	arm_func_start sub_020E24E8
-sub_020E24E8: ; 0x020E24E8
+	arm_func_start CTRDGi_WriteFlashSectorCoreAT
+CTRDGi_WriteFlashSectorCoreAT: ; 0x020E24E8
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -16475,10 +16476,10 @@ _020E25F4: .word 0x0A005555
 _020E25F8: .word 0x0A002AAA
 _020E25FC: .word 0x04000208
 _020E2600: .word 0x021E4F5C
-	arm_func_end sub_020E24E8
+	arm_func_end CTRDGi_WriteFlashSectorCoreAT
 
-	arm_func_start sub_020E2604
-sub_020E2604: ; 0x020E2604
+	arm_func_start CTRDGi_WriteFlash4KBCoreAT
+CTRDGi_WriteFlash4KBCoreAT: ; 0x020E2604
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -16506,7 +16507,7 @@ _020E265C:
 _020E2660:
 	mov r0, r5
 	mov r1, r6
-	bl sub_020E27CC
+	bl CTRDGi_WriteFlashSectorAT
 	cmp r0, #0
 	beq _020E2684
 	sub r1, r8, #1
@@ -16532,134 +16533,150 @@ _020E2684:
 	.align 2, 0
 _020E26C0: .word 0x000080FF
 _020E26C4: .word 0x021E4F28
-	arm_func_end sub_020E2604
+	arm_func_end CTRDGi_WriteFlash4KBCoreAT
 
-	arm_func_start sub_020E26C8
-sub_020E26C8: ; 0x020E26C8
+	arm_func_start CTRDGi_EraseFlashChipAT
+CTRDGi_EraseFlashChipAT: ; 0x020E26C8
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	add r0, sp, #0
-	bl sub_020E2230
+	bl CTRDGi_EraseFlashChipCoreAT
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
+	arm_func_end CTRDGi_EraseFlashChipAT
+
+	arm_func_start CTRDGi_EraseFlash4KBAT
+CTRDGi_EraseFlash4KBAT:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
-	bl sub_020E2440
+	bl CTRDGi_EraseFlash4KBCoreAT
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
+	arm_func_end CTRDGi_EraseFlash4KBAT
+
+	arm_func_start CTRDGi_WriteFlash4KBAT
+CTRDGi_WriteFlash4KBAT:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
 	str r1, [sp, #0xc]
-	bl sub_020E2604
+	bl CTRDGi_WriteFlash4KBCoreAT
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
+	arm_func_end CTRDGi_WriteFlash4KBAT
+
+	arm_func_start CTRDGi_EraseFlashChipAsyncAT
+CTRDGi_EraseFlashChipAsyncAT:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
-	ldr r1, _020E2754 ; =sub_020E2230
+	ldr r1, _020E2754 ; =CTRDGi_EraseFlashChipCoreAT
 	mov r2, r0
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E2754: .word sub_020E2230
-	arm_func_end sub_020E26C8
+_020E2754: .word CTRDGi_EraseFlashChipCoreAT
+	arm_func_end CTRDGi_EraseFlashChipAsyncAT
 
-	arm_func_start sub_020E2758
-sub_020E2758: ; 0x020E2758
+	arm_func_start CTRDGi_EraseFlash4KBAsyncAT
+CTRDGi_EraseFlash4KBAsyncAT: ; 0x020E2758
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	mov r2, r1
 	strh r0, [sp, #0x20]
-	ldr r1, _020E277C ; =sub_020E2440
+	ldr r1, _020E277C ; =CTRDGi_EraseFlash4KBCoreAT
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E277C: .word sub_020E2440
-	arm_func_end sub_020E2758
+_020E277C: .word CTRDGi_EraseFlash4KBCoreAT
+	arm_func_end CTRDGi_EraseFlash4KBAsyncAT
 
-	arm_func_start sub_020E2780
-sub_020E2780: ; 0x020E2780
+	arm_func_start CTRDGi_WriteFlash4KBAsyncAT
+CTRDGi_WriteFlash4KBAsyncAT: ; 0x020E2780
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	str r1, [sp, #0xc]
 	strh r0, [sp, #0x20]
-	ldr r1, _020E27A4 ; =sub_020E2604
+	ldr r1, _020E27A4 ; =CTRDGi_WriteFlash4KBCoreAT
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E27A4: .word sub_020E2604
-	arm_func_end sub_020E2780
+_020E27A4: .word CTRDGi_WriteFlash4KBCoreAT
+	arm_func_end CTRDGi_WriteFlash4KBAsyncAT
 
-	arm_func_start sub_020E27A8
-sub_020E27A8: ; 0x020E27A8
+	arm_func_start CTRDGi_EraseFlashSectorAT
+CTRDGi_EraseFlashSectorAT: ; 0x020E27A8
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
-	bl sub_020E2318
+	bl CTRDGi_EraseFlashSectorCoreAT
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
-	arm_func_end sub_020E27A8
+	arm_func_end CTRDGi_EraseFlashSectorAT
 
-	arm_func_start sub_020E27CC
-sub_020E27CC: ; 0x020E27CC
+	arm_func_start CTRDGi_WriteFlashSectorAT
+CTRDGi_WriteFlashSectorAT: ; 0x020E27CC
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
 	str r1, [sp, #0xc]
-	bl sub_020E24E8
+	bl CTRDGi_WriteFlashSectorCoreAT
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
+	arm_func_end CTRDGi_WriteFlashSectorAT
+
+	arm_func_start CTRDGi_EraseFlashSectorAsyncAT
+CTRDGi_EraseFlashSectorAsyncAT:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	mov r2, r1
 	strh r0, [sp, #0x20]
-	ldr r1, _020E2818 ; =sub_020E2318
+	ldr r1, _020E2818 ; =CTRDGi_EraseFlashSectorCoreAT
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E2818: .word sub_020E2318
-	arm_func_end sub_020E27CC
+_020E2818: .word CTRDGi_EraseFlashSectorCoreAT
+	arm_func_end CTRDGi_EraseFlashSectorAsyncAT
 
-	arm_func_start sub_020E281C
-sub_020E281C: ; 0x020E281C
+	arm_func_start CTRDGi_WriteFlashSectorAsyncAT
+CTRDGi_WriteFlashSectorAsyncAT: ; 0x020E281C
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	str r1, [sp, #0xc]
 	strh r0, [sp, #0x20]
-	ldr r1, _020E2840 ; =sub_020E24E8
+	ldr r1, _020E2840 ; =CTRDGi_WriteFlashSectorCoreAT
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E2840: .word sub_020E24E8
-	arm_func_end sub_020E281C
+_020E2840: .word CTRDGi_WriteFlashSectorCoreAT
+	arm_func_end CTRDGi_WriteFlashSectorAsyncAT
 
-	arm_func_start sub_020E2844
-sub_020E2844: ; 0x020E2844
+	arm_func_start CTRDGi_EraseFlashChipCoreLE
+CTRDGi_EraseFlashChipCoreLE: ; 0x020E2844
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020E2910 ; =0x021E4F2C
 	ldrh r0, [r0]
@@ -16719,10 +16736,10 @@ _020E291C: .word 0x021E4F48
 _020E2920: .word 0x0A005555
 _020E2924: .word 0x0A002AAA
 _020E2928: .word 0x021E4F5C
-	arm_func_end sub_020E2844
+	arm_func_end CTRDGi_EraseFlashChipCoreLE
 
-	arm_func_start sub_020E292C
-sub_020E292C: ; 0x020E292C
+	arm_func_start CTRDGi_EraseFlashSectorCoreLE
+CTRDGi_EraseFlashSectorCoreLE: ; 0x020E292C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -16801,10 +16818,10 @@ _020E2A50: .word 0x021E4F48
 _020E2A54: .word 0x0A005555
 _020E2A58: .word 0x0A002AAA
 _020E2A5C: .word 0x021E4F5C
-	arm_func_end sub_020E292C
+	arm_func_end CTRDGi_EraseFlashSectorCoreLE
 
-	arm_func_start sub_020E2A60
-sub_020E2A60: ; 0x020E2A60
+	arm_func_start CTRDGi_ProgramFlashByteLE
+CTRDGi_ProgramFlashByteLE: ; 0x020E2A60
 	stmdb sp!, {r3, lr}
 	ldr ip, _020E2AA8 ; =0x0A005555
 	mov r3, #0xaa
@@ -16827,10 +16844,10 @@ sub_020E2A60: ; 0x020E2A60
 _020E2AA8: .word 0x0A005555
 _020E2AAC: .word 0x0A002AAA
 _020E2AB0: .word 0x021E4F5C
-	arm_func_end sub_020E2A60
+	arm_func_end CTRDGi_ProgramFlashByteLE
 
-	arm_func_start sub_020E2AB4
-sub_020E2AB4: ; 0x020E2AB4
+	arm_func_start CTRDGi_WriteFlashSectorCoreLE
+CTRDGi_WriteFlashSectorCoreLE: ; 0x020E2AB4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -16848,7 +16865,7 @@ sub_020E2AB4: ; 0x020E2AB4
 	ldrhs r0, _020E2C64 ; =0x000080FF
 	ldmhsia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	ldr r0, _020E2C68 ; =_02110FC4
-	ldr r6, _020E2C6C ; =sub_020E2C84
+	ldr r6, _020E2C6C ; =CTRDGi_VerifyFlashCoreFF
 	ldr r0, [r0]
 	mov sb, #0
 	ldrh r0, [r0, #8]
@@ -16856,12 +16873,12 @@ sub_020E2AB4: ; 0x020E2AB4
 	add r7, r0, #0xa000000
 _020E2B10:
 	mov r0, r8
-	bl sub_020E2D64
+	bl CTRDGi_EraseFlashSectorLE
 	movs r4, r0
 	bne _020E2B38
 	mov r0, r7
 	mov r1, r6
-	bl sub_020E2CB8
+	bl CTRDGi_VerifyFlashErase
 	mov r0, r0, lsl #0x10
 	movs r4, r0, lsr #0x10
 	beq _020E2B58
@@ -16883,7 +16900,7 @@ _020E2B58:
 	blo _020E2B8C
 _020E2B70:
 	mov r0, r8
-	bl sub_020E2D64
+	bl CTRDGi_EraseFlashSectorLE
 	add r0, sb, #1
 	mov r0, r0, lsl #0x10
 	cmp r6, r0, lsr #16
@@ -16918,7 +16935,7 @@ _020E2B8C:
 _020E2BF0:
 	mov r0, r5
 	mov r1, r7
-	bl sub_020E2A60
+	bl CTRDGi_ProgramFlashByteLE
 	movs r4, r0
 	bne _020E2C24
 	ldrh r0, [r6]
@@ -16949,16 +16966,16 @@ _020E2C24:
 	.align 2, 0
 _020E2C64: .word 0x000080FF
 _020E2C68: .word _02110FC4
-_020E2C6C: .word sub_020E2C84
+_020E2C6C: .word CTRDGi_VerifyFlashCoreFF
 _020E2C70: .word 0x021E4F2C
 _020E2C74: .word 0x04000204
 _020E2C78: .word 0x021E4F28
 _020E2C7C: .word 0x021E4F48
 _020E2C80: .word 0x04000208
-	arm_func_end sub_020E2AB4
+	arm_func_end CTRDGi_WriteFlashSectorCoreLE
 
-	arm_func_start sub_020E2C84
-sub_020E2C84: ; 0x020E2C84
+	arm_func_start CTRDGi_VerifyFlashCoreFF
+CTRDGi_VerifyFlashCoreFF: ; 0x020E2C84
 	ldr r1, _020E2CB4 ; =_02110FC4
 	ldr r1, [r1]
 	ldr r2, [r1, #4]
@@ -16975,10 +16992,10 @@ _020E2CAC:
 	bx lr
 	.align 2, 0
 _020E2CB4: .word _02110FC4
-	arm_func_end sub_020E2C84
+	arm_func_end CTRDGi_VerifyFlashCoreFF
 
-	arm_func_start sub_020E2CB8
-sub_020E2CB8: ; 0x020E2CB8
+	arm_func_start CTRDGi_VerifyFlashErase
+CTRDGi_VerifyFlashErase: ; 0x020E2CB8
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _020E2D34 ; =0x021E4F2C
 	mov r5, r0
@@ -17015,85 +17032,93 @@ _020E2D34: .word 0x021E4F2C
 _020E2D38: .word 0x04000204
 _020E2D3C: .word _02110FC4
 _020E2D40: .word 0x00008004
-	arm_func_end sub_020E2CB8
+	arm_func_end CTRDGi_VerifyFlashErase
 
-	arm_func_start sub_020E2D44
-sub_020E2D44: ; 0x020E2D44
+	arm_func_start CTRDGi_EraseFlashChipLE
+CTRDGi_EraseFlashChipLE: ; 0x020E2D44
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	add r0, sp, #0
-	bl sub_020E2844
+	bl CTRDGi_EraseFlashChipCoreLE
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
-	arm_func_end sub_020E2D44
+	arm_func_end CTRDGi_EraseFlashChipLE
 
-	arm_func_start sub_020E2D64
-sub_020E2D64: ; 0x020E2D64
+	arm_func_start CTRDGi_EraseFlashSectorLE
+CTRDGi_EraseFlashSectorLE: ; 0x020E2D64
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
-	bl sub_020E292C
+	bl CTRDGi_EraseFlashSectorCoreLE
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
+	arm_func_end CTRDGi_EraseFlashSectorLE
+
+	arm_func_start CTRDGi_WriteFlashSectorLE
+CTRDGi_WriteFlashSectorLE:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
 	str r1, [sp, #0xc]
-	bl sub_020E2AB4
+	bl CTRDGi_WriteFlashSectorCoreLE
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
+	arm_func_end CTRDGi_WriteFlashSectorLE
+
+	arm_func_start CTRDGi_EraseFlashChipAsyncLE
+CTRDGi_EraseFlashChipAsyncLE:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
-	ldr r1, _020E2DD0 ; =sub_020E2844
+	ldr r1, _020E2DD0 ; =CTRDGi_EraseFlashChipCoreLE
 	mov r2, r0
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E2DD0: .word sub_020E2844
-	arm_func_end sub_020E2D64
+_020E2DD0: .word CTRDGi_EraseFlashChipCoreLE
+	arm_func_end CTRDGi_EraseFlashChipAsyncLE
 
-	arm_func_start sub_020E2DD4
-sub_020E2DD4: ; 0x020E2DD4
+	arm_func_start CTRDGi_EraseFlashSectorAsyncLE
+CTRDGi_EraseFlashSectorAsyncLE: ; 0x020E2DD4
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	mov r2, r1
 	strh r0, [sp, #0x20]
-	ldr r1, _020E2DF8 ; =sub_020E292C
+	ldr r1, _020E2DF8 ; =CTRDGi_EraseFlashSectorCoreLE
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E2DF8: .word sub_020E292C
-	arm_func_end sub_020E2DD4
+_020E2DF8: .word CTRDGi_EraseFlashSectorCoreLE
+	arm_func_end CTRDGi_EraseFlashSectorAsyncLE
 
-	arm_func_start sub_020E2DFC
-sub_020E2DFC: ; 0x020E2DFC
+	arm_func_start CTRDGi_WriteFlashSectorAsyncLE
+CTRDGi_WriteFlashSectorAsyncLE: ; 0x020E2DFC
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	str r1, [sp, #0xc]
 	strh r0, [sp, #0x20]
-	ldr r1, _020E2E20 ; =sub_020E2AB4
+	ldr r1, _020E2E20 ; =CTRDGi_WriteFlashSectorCoreLE
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E2E20: .word sub_020E2AB4
-	arm_func_end sub_020E2DFC
+_020E2E20: .word CTRDGi_WriteFlashSectorCoreLE
+	arm_func_end CTRDGi_WriteFlashSectorAsyncLE
 
-	arm_func_start sub_020E2E24
-sub_020E2E24: ; 0x020E2E24
+	arm_func_start CTRDGi_EraseFlashChipCoreMX
+CTRDGi_EraseFlashChipCoreMX: ; 0x020E2E24
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020E2EF0 ; =0x021E4F2C
 	ldrh r0, [r0]
@@ -17153,10 +17178,10 @@ _020E2EFC: .word 0x021E4F48
 _020E2F00: .word 0x0A005555
 _020E2F04: .word 0x0A002AAA
 _020E2F08: .word 0x021E4F5C
-	arm_func_end sub_020E2E24
+	arm_func_end CTRDGi_EraseFlashChipCoreMX
 
-	arm_func_start sub_020E2F0C
-sub_020E2F0C: ; 0x020E2F0C
+	arm_func_start CTRDGi_EraseFlashSectorCoreMX
+CTRDGi_EraseFlashSectorCoreMX: ; 0x020E2F0C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x28
 	mov r5, r0
@@ -17191,7 +17216,7 @@ sub_020E2F0C: ; 0x020E2F0C
 	and r1, r3, #3
 	mov r0, r0, lsr #0x10
 	str r1, [sp]
-	bl sub_020E1BE4
+	bl CTRDGi_SetFlashBankMx
 	and sl, r4, #0xf
 	mov r8, #0
 	add r7, r5, #4
@@ -17258,10 +17283,10 @@ _020E3084: .word 0x0A005555
 _020E3088: .word 0x021E4F48
 _020E308C: .word 0x0A002AAA
 _020E3090: .word 0x021E4F5C
-	arm_func_end sub_020E2F0C
+	arm_func_end CTRDGi_EraseFlashSectorCoreMX
 
-	arm_func_start sub_020E3094
-sub_020E3094: ; 0x020E3094
+	arm_func_start CTRDGi_ProgramFlashByteMX
+CTRDGi_ProgramFlashByteMX: ; 0x020E3094
 	stmdb sp!, {r3, lr}
 	ldr ip, _020E30DC ; =0x0A005555
 	mov r3, #0xaa
@@ -17284,10 +17309,10 @@ sub_020E3094: ; 0x020E3094
 _020E30DC: .word 0x0A005555
 _020E30E0: .word 0x0A002AAA
 _020E30E4: .word 0x021E4F5C
-	arm_func_end sub_020E3094
+	arm_func_end CTRDGi_ProgramFlashByteMX
 
-	arm_func_start sub_020E30E8
-sub_020E30E8: ; 0x020E30E8
+	arm_func_start CTRDGi_WriteFlashSectorCoreMX
+CTRDGi_WriteFlashSectorCoreMX: ; 0x020E30E8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -17308,7 +17333,7 @@ sub_020E30E8: ; 0x020E30E8
 	ldrhs r0, _020E3248 ; =0x000080FF
 	ldmhsia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	mov r0, r4
-	bl sub_020E3280
+	bl CTRDGi_EraseFlashSectorMX
 	movs r6, r0
 	addne sp, sp, #0x24
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, pc}
@@ -17327,7 +17352,7 @@ sub_020E30E8: ; 0x020E30E8
 	strh r1, [r5]
 	mov r0, r0, lsr #0x10
 	and r5, r3, #3
-	bl sub_020E1BE4
+	bl CTRDGi_SetFlashBankMx
 	ldr r0, _020E3244 ; =_02110FC4
 	ldr r8, _020E3254 ; =0x021E4F28
 	ldr r2, [r0]
@@ -17349,7 +17374,7 @@ sub_020E30E8: ; 0x020E30E8
 _020E31D0:
 	mov r0, r7
 	mov r1, r4
-	bl sub_020E3094
+	bl CTRDGi_ProgramFlashByteMX
 	movs r6, r0
 	bne _020E3204
 	ldrh r0, [r8]
@@ -17385,85 +17410,93 @@ _020E3250: .word 0x04000204
 _020E3254: .word 0x021E4F28
 _020E3258: .word 0x04000208
 _020E325C: .word 0x021E4F48
-	arm_func_end sub_020E30E8
+	arm_func_end CTRDGi_WriteFlashSectorCoreMX
 
-	arm_func_start sub_020E3260
-sub_020E3260: ; 0x020E3260
+	arm_func_start CTRDGi_EraseFlashChipMX
+CTRDGi_EraseFlashChipMX: ; 0x020E3260
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	add r0, sp, #0
-	bl sub_020E2E24
+	bl CTRDGi_EraseFlashChipCoreMX
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
-	arm_func_end sub_020E3260
+	arm_func_end CTRDGi_EraseFlashChipMX
 
-	arm_func_start sub_020E3280
-sub_020E3280: ; 0x020E3280
+	arm_func_start CTRDGi_EraseFlashSectorMX
+CTRDGi_EraseFlashSectorMX: ; 0x020E3280
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
-	bl sub_020E2F0C
+	bl CTRDGi_EraseFlashSectorCoreMX
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
+	arm_func_end CTRDGi_EraseFlashSectorMX
+
+	arm_func_start CTRDGi_WriteFlashSectorMX
+CTRDGi_WriteFlashSectorMX:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
 	str r1, [sp, #0xc]
-	bl sub_020E30E8
+	bl CTRDGi_WriteFlashSectorCoreMX
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
+	arm_func_end CTRDGi_WriteFlashSectorMX
+
+	arm_func_start CTRDGi_EraseFlashChipAsyncMX
+CTRDGi_EraseFlashChipAsyncMX:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
-	ldr r1, _020E32EC ; =sub_020E2E24
+	ldr r1, _020E32EC ; =CTRDGi_EraseFlashChipCoreMX
 	mov r2, r0
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E32EC: .word sub_020E2E24
-	arm_func_end sub_020E3280
+_020E32EC: .word CTRDGi_EraseFlashChipCoreMX
+	arm_func_end CTRDGi_EraseFlashChipAsyncMX
 
-	arm_func_start sub_020E32F0
-sub_020E32F0: ; 0x020E32F0
+	arm_func_start CTRDGi_EraseFlashSectorAsyncMX
+CTRDGi_EraseFlashSectorAsyncMX: ; 0x020E32F0
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	mov r2, r1
 	strh r0, [sp, #0x20]
-	ldr r1, _020E3314 ; =sub_020E2F0C
+	ldr r1, _020E3314 ; =CTRDGi_EraseFlashSectorCoreMX
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E3314: .word sub_020E2F0C
-	arm_func_end sub_020E32F0
+_020E3314: .word CTRDGi_EraseFlashSectorCoreMX
+	arm_func_end CTRDGi_EraseFlashSectorAsyncMX
 
-	arm_func_start sub_020E3318
-sub_020E3318: ; 0x020E3318
+	arm_func_start CTRDGi_WriteFlashSectorAsyncMX
+CTRDGi_WriteFlashSectorAsyncMX: ; 0x020E3318
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	str r1, [sp, #0xc]
 	strh r0, [sp, #0x20]
-	ldr r1, _020E333C ; =sub_020E30E8
+	ldr r1, _020E333C ; =CTRDGi_WriteFlashSectorCoreMX
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E333C: .word sub_020E30E8
-	arm_func_end sub_020E3318
+_020E333C: .word CTRDGi_WriteFlashSectorCoreMX
+	arm_func_end CTRDGi_WriteFlashSectorAsyncMX
 
-	arm_func_start sub_020E3340
-sub_020E3340: ; 0x020E3340
+	arm_func_start CTRDGi_WriteFlashSectorCoreMX5
+CTRDGi_WriteFlashSectorCoreMX5: ; 0x020E3340
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -17484,7 +17517,7 @@ sub_020E3340: ; 0x020E3340
 	ldrhs r0, _020E3460 ; =0x000080FF
 	ldmhsia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	mov r0, r4
-	bl sub_020E2D64
+	bl CTRDGi_EraseFlashSectorLE
 	movs r6, r0
 	addne sp, sp, #0x24
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, pc}
@@ -17514,7 +17547,7 @@ sub_020E3340: ; 0x020E3340
 _020E33FC:
 	mov r0, r7
 	mov r1, r4
-	bl sub_020E2A60
+	bl CTRDGi_ProgramFlashByteLE
 	movs r6, r0
 	bne _020E3430
 	ldrh r0, [r8]
@@ -17543,35 +17576,39 @@ _020E3460: .word 0x000080FF
 _020E3464: .word 0x021E4F2C
 _020E3468: .word 0x04000204
 _020E346C: .word 0x021E4F28
-	arm_func_end sub_020E3340
+	arm_func_end CTRDGi_WriteFlashSectorCoreMX5
 
-	arm_func_start sub_020E3470
-sub_020E3470: ; 0x020E3470
+	arm_func_start CTRDGi_WriteFlashSectorMX5
+CTRDGi_WriteFlashSectorMX5: ; 0x020E3470
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	strh r0, [sp, #0x20]
 	add r0, sp, #0
 	str r1, [sp, #0xc]
-	bl sub_020E3340
+	bl CTRDGi_WriteFlashSectorCoreMX5
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
+	arm_func_end CTRDGi_WriteFlashSectorMX5
+
+	arm_func_start CTRDGi_WriteFlashSectorAsyncMX5
+CTRDGi_WriteFlashSectorAsyncMX5:
 	stmdb sp!, {lr}
 	sub sp, sp, #0x24
 	str r1, [sp, #0xc]
 	strh r0, [sp, #0x20]
-	ldr r1, _020E34BC ; =sub_020E3340
+	ldr r1, _020E34BC ; =CTRDGi_WriteFlashSectorCoreMX5
 	add r0, sp, #0
-	bl sub_020E366C
+	bl CTRDGi_SetTask
 	add sp, sp, #0x24
 	ldmia sp!, {pc}
 	.align 2, 0
-_020E34BC: .word sub_020E3340
-	arm_func_end sub_020E3470
+_020E34BC: .word CTRDGi_WriteFlashSectorCoreMX5
+	arm_func_end CTRDGi_WriteFlashSectorAsyncMX5
 
-	arm_func_start sub_020E34C0
-sub_020E34C0: ; 0x020E34C0
+	arm_func_start CTRDGi_InitTaskThread
+CTRDGi_InitTaskThread: ; 0x020E34C0
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r5, r0
@@ -17583,13 +17620,13 @@ sub_020E34C0: ; 0x020E34C0
 	bne _020E352C
 	add r0, r5, #0xc4
 	str r5, [r1]
-	bl sub_020E3568
+	bl CTRDGi_InitTaskInfo
 	ldr r0, _020E3540 ; =0x021E4F6C
-	bl sub_020E3568
+	bl CTRDGi_InitTaskInfo
 	mov r0, #0
 	str r0, [r5, #0xc0]
 	mov r2, #0x400
-	ldr r1, _020E3544 ; =sub_020E357C
+	ldr r1, _020E3544 ; =CTRDGi_TaskThread
 	ldr r3, _020E3548 ; =0x021E5390
 	mov r0, r5
 	str r2, [sp]
@@ -17607,12 +17644,12 @@ _020E352C:
 	.align 2, 0
 _020E353C: .word 0x021E4F68
 _020E3540: .word 0x021E4F6C
-_020E3544: .word sub_020E357C
+_020E3544: .word CTRDGi_TaskThread
 _020E3548: .word 0x021E5390
-	arm_func_end sub_020E34C0
+	arm_func_end CTRDGi_InitTaskThread
 
-	arm_func_start sub_020E354C
-sub_020E354C: ; 0x020E354C
+	arm_func_start CTRDGi_IsTaskAvailable
+CTRDGi_IsTaskAvailable: ; 0x020E354C
 	ldr r0, _020E3564 ; =0x021E4F68
 	ldr r0, [r0]
 	cmp r0, #0
@@ -17621,20 +17658,20 @@ sub_020E354C: ; 0x020E354C
 	bx lr
 	.align 2, 0
 _020E3564: .word 0x021E4F68
-	arm_func_end sub_020E354C
+	arm_func_end CTRDGi_IsTaskAvailable
 
-	arm_func_start sub_020E3568
-sub_020E3568: ; 0x020E3568
+	arm_func_start CTRDGi_InitTaskInfo
+CTRDGi_InitTaskInfo: ; 0x020E3568
 	ldr ip, _020E3578 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x24
 	bx ip
 	.align 2, 0
 _020E3578: .word MI_CpuFill8
-	arm_func_end sub_020E3568
+	arm_func_end CTRDGi_InitTaskInfo
 
-	arm_func_start sub_020E357C
-sub_020E357C: ; 0x020E357C
+	arm_func_start CTRDGi_TaskThread
+CTRDGi_TaskThread: ; 0x020E357C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x24
 	mov r4, #0
@@ -17702,17 +17739,17 @@ _020E365C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020E3668: .word 0x021E4F68
-	arm_func_end sub_020E357C
+	arm_func_end CTRDGi_TaskThread
 
-	arm_func_start sub_020E366C
-sub_020E366C: ; 0x020E366C
+	arm_func_start CTRDGi_SetTask
+CTRDGi_SetTask: ; 0x020E366C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r3, _020E370C ; =0x021E4F68
 	mov r7, r0
 	mov r5, r1
 	mov r6, r2
 	ldr r4, [r3]
-	bl sub_020E354C
+	bl CTRDGi_IsTaskAvailable
 	cmp r0, #0
 	bne _020E3694
 	bl OS_Terminate
@@ -17751,7 +17788,7 @@ _020E36A8:
 	.align 2, 0
 _020E370C: .word 0x021E4F68
 _020E3710: .word 0x021E4F6C
-	arm_func_end sub_020E366C
+	arm_func_end CTRDGi_SetTask
 
 	arm_func_start MATH_CountPopulation
 MATH_CountPopulation: ; 0x020E3714
@@ -17775,8 +17812,8 @@ _020E3750: .word 0x33333333
 _020E3754: .word 0x0F0F0F0F
 	arm_func_end MATH_CountPopulation
 
-	arm_func_start sub_020E3758
-sub_020E3758: ; 0x020E3758
+	arm_func_start MATH_CalcMD5
+MATH_CalcMD5: ; 0x020E3758
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x58
 	mov r6, r0
@@ -17793,10 +17830,10 @@ sub_020E3758: ; 0x020E3758
 	bl DGT_Hash1GetDigest_R
 	add sp, sp, #0x58
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020E3758
+	arm_func_end MATH_CalcMD5
 
-	arm_func_start sub_020E3798
-sub_020E3798: ; 0x020E3798
+	arm_func_start MATH_CalcSHA1
+MATH_CalcSHA1: ; 0x020E3798
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x68
 	mov r6, r0
@@ -17813,10 +17850,10 @@ sub_020E3798: ; 0x020E3798
 	bl DGT_Hash2GetDigest
 	add sp, sp, #0x68
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020E3798
+	arm_func_end MATH_CalcSHA1
 
-	arm_func_start sub_020E37D8
-sub_020E37D8: ; 0x020E37D8
+	arm_func_start MATHi_CRC8InitTable
+MATHi_CRC8InitTable: ; 0x020E37D8
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	mov r2, ip
@@ -17835,10 +17872,10 @@ _020E37EC:
 	cmp ip, #0x100
 	blo _020E37E4
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E37D8
+	arm_func_end MATHi_CRC8InitTable
 
-	arm_func_start sub_020E3818
-sub_020E3818: ; 0x020E3818
+	arm_func_start MATHi_CRC8Update
+MATHi_CRC8Update: ; 0x020E3818
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldrb lr, [r1]
@@ -17855,7 +17892,7 @@ _020E382C:
 _020E3848:
 	strb lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E3818
+	arm_func_end MATHi_CRC8Update
 
 	arm_func_start MATHi_CRC16InitTable
 MATHi_CRC16InitTable: ; 0x020E3850
@@ -17882,8 +17919,8 @@ _020E3868:
 	ldmia sp!, {r4, pc}
 	arm_func_end MATHi_CRC16InitTable
 
-	arm_func_start sub_020E389C
-sub_020E389C: ; 0x020E389C
+	arm_func_start MATHi_CRC16InitTableRev
+MATHi_CRC16InitTableRev: ; 0x020E389C
 	stmdb sp!, {r3, lr}
 	mov lr, #0
 	mov r3, lr
@@ -17903,10 +17940,10 @@ _020E38B0:
 	cmp lr, #0x100
 	blo _020E38A8
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E389C
+	arm_func_end MATHi_CRC16InitTableRev
 
-	arm_func_start sub_020E38E0
-sub_020E38E0: ; 0x020E38E0
+	arm_func_start MATHi_CRC16Update
+MATHi_CRC16Update: ; 0x020E38E0
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldrh lr, [r1]
@@ -17925,10 +17962,10 @@ _020E38F4:
 _020E3918:
 	strh lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E38E0
+	arm_func_end MATHi_CRC16Update
 
-	arm_func_start sub_020E3920
-sub_020E3920: ; 0x020E3920
+	arm_func_start MATHi_CRC16UpdateRev
+MATHi_CRC16UpdateRev: ; 0x020E3920
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldrh lr, [r1]
@@ -17947,10 +17984,10 @@ _020E3934:
 _020E3958:
 	strh lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E3920
+	arm_func_end MATHi_CRC16UpdateRev
 
-	arm_func_start sub_020E3960
-sub_020E3960: ; 0x020E3960
+	arm_func_start MATHi_CRC32InitTableRev
+MATHi_CRC32InitTableRev: ; 0x020E3960
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	mov r2, ip
@@ -17969,10 +18006,10 @@ _020E3974:
 	cmp ip, #0x100
 	blo _020E396C
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E3960
+	arm_func_end MATHi_CRC32InitTableRev
 
-	arm_func_start sub_020E39A0
-sub_020E39A0: ; 0x020E39A0
+	arm_func_start MATHi_CRC32UpdateRev
+MATHi_CRC32UpdateRev: ; 0x020E39A0
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldr lr, [r1]
@@ -17990,10 +18027,10 @@ _020E39B4:
 _020E39D4:
 	str lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E39A0
+	arm_func_end MATHi_CRC32UpdateRev
 
-	arm_func_start sub_020E39DC
-sub_020E39DC: ; 0x020E39DC
+	arm_func_start MATH_CalcCRC8
+MATH_CalcCRC8: ; 0x020E39DC
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, #0
@@ -18001,13 +18038,13 @@ sub_020E39DC: ; 0x020E39DC
 	add r1, sp, #0
 	mov r2, lr
 	strb ip, [sp]
-	bl sub_020E3818
+	bl MATHi_CRC8Update
 	ldrb r0, [sp]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E39DC
+	arm_func_end MATH_CalcCRC8
 
-	arm_func_start sub_020E3A04
-sub_020E3A04: ; 0x020E3A04
+	arm_func_start MATH_CalcCRC16
+MATH_CalcCRC16: ; 0x020E3A04
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, #0
@@ -18015,10 +18052,10 @@ sub_020E3A04: ; 0x020E3A04
 	add r1, sp, #0
 	mov r2, lr
 	strh ip, [sp]
-	bl sub_020E3920
+	bl MATHi_CRC16UpdateRev
 	ldrh r0, [sp]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E3A04
+	arm_func_end MATH_CalcCRC16
 
 	arm_func_start MATH_CalcCRC16CCITT
 MATH_CalcCRC16CCITT: ; 0x020E3A2C
@@ -18029,15 +18066,15 @@ MATH_CalcCRC16CCITT: ; 0x020E3A2C
 	add r1, sp, #0
 	mov r2, lr
 	strh ip, [sp]
-	bl sub_020E38E0
+	bl MATHi_CRC16Update
 	ldrh r0, [sp]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020E3A54: .word 0x0000FFFF
 	arm_func_end MATH_CalcCRC16CCITT
 
-	arm_func_start sub_020E3A58
-sub_020E3A58: ; 0x020E3A58
+	arm_func_start MATH_CalcCRC32
+MATH_CalcCRC32: ; 0x020E3A58
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mvn ip, #0
@@ -18045,14 +18082,14 @@ sub_020E3A58: ; 0x020E3A58
 	add r1, sp, #0
 	mov r2, lr
 	str ip, [sp]
-	bl sub_020E39A0
+	bl MATHi_CRC32UpdateRev
 	ldr r0, [sp]
 	mvn r0, r0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E3A58
+	arm_func_end MATH_CalcCRC32
 
-	arm_func_start sub_020E3A84
-sub_020E3A84: ; 0x020E3A84
+	arm_func_start MATH_QSort
+MATH_QSort: ; 0x020E3A84
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	cmp r1, #1
 	ble _020E3D6C
@@ -18286,10 +18323,10 @@ _020E3D68:
 _020E3D6C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
-	arm_func_end sub_020E3A84
+	arm_func_end MATH_QSort
 
-	arm_func_start sub_020E3D74
-sub_020E3D74: ; 0x020E3D74
+	arm_func_start STD_CopyLString
+STD_CopyLString: ; 0x020E3D74
 	stmdb sp!, {r4, lr}
 	sub ip, r2, #1
 	mov r4, r1
@@ -18315,12 +18352,12 @@ _020E3DB0:
 	strneb r2, [r0, lr]
 _020E3DC8:
 	mov r0, r1
-	bl sub_020E3DD4
+	bl STD_GetStringLength
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E3D74
+	arm_func_end STD_CopyLString
 
-	arm_func_start sub_020E3DD4
-sub_020E3DD4: ; 0x020E3DD4
+	arm_func_start STD_GetStringLength
+STD_GetStringLength: ; 0x020E3DD4
 	ldrsb r1, [r0]
 	mov r2, #0
 	cmp r1, #0
@@ -18333,10 +18370,10 @@ _020E3DE4:
 _020E3DF4:
 	mov r0, r2
 	bx lr
-	arm_func_end sub_020E3DD4
+	arm_func_end STD_GetStringLength
 
-	arm_func_start sub_020E3DFC
-sub_020E3DFC: ; 0x020E3DFC
+	arm_func_start STD_CompareString
+STD_CompareString: ; 0x020E3DFC
 	b _020E3E08
 _020E3E00:
 	add r0, r0, #1
@@ -18351,10 +18388,10 @@ _020E3E08:
 _020E3E20:
 	sub r0, r2, r3
 	bx lr
-	arm_func_end sub_020E3DFC
+	arm_func_end STD_CompareString
 
-	arm_func_start sub_020E3E28
-sub_020E3E28: ; 0x020E3E28
+	arm_func_start STD_CompareNString
+STD_CompareNString: ; 0x020E3E28
 	stmdb sp!, {r3, lr}
 	cmp r2, #0
 	beq _020E3E60
@@ -18373,10 +18410,10 @@ _020E3E40:
 _020E3E60:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E3E28
+	arm_func_end STD_CompareNString
 
-	arm_func_start sub_020E3E68
-sub_020E3E68: ; 0x020E3E68
+	arm_func_start string_put_char
+string_put_char: ; 0x020E3E68
 	ldr r2, [r0]
 	cmp r2, #0
 	beq _020E3E88
@@ -18390,10 +18427,10 @@ _020E3E88:
 	add r1, r1, #1
 	str r1, [r0, #4]
 	bx lr
-	arm_func_end sub_020E3E68
+	arm_func_end string_put_char
 
-	arm_func_start sub_020E3E98
-sub_020E3E98: ; 0x020E3E98
+	arm_func_start string_fill_char
+string_fill_char: ; 0x020E3E98
 	stmdb sp!, {r3, lr}
 	cmp r2, #0
 	ldmleia sp!, {r3, pc}
@@ -18417,10 +18454,10 @@ _020E3ED0:
 	add r1, r1, r2
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020E3E98
+	arm_func_end string_fill_char
 
-	arm_func_start sub_020E3EEC
-sub_020E3EEC: ; 0x020E3EEC
+	arm_func_start string_put_string
+string_put_string: ; 0x020E3EEC
 	stmdb sp!, {r4, lr}
 	cmp r2, #0
 	ldmleia sp!, {r4, pc}
@@ -18445,7 +18482,7 @@ _020E3F28:
 	add r1, r1, r2
 	str r1, [r0, #4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020E3EEC
+	arm_func_end string_put_string
 
 	arm_func_start STD_TVSNPrintf
 STD_TVSNPrintf: ; 0x020E3F44
@@ -18468,20 +18505,20 @@ _020E3F70:
 	cmp r0, #0x3c
 	bhs _020E3FAC
 	add r0, sp, #0xc
-	bl sub_020E3E68
+	bl string_put_char
 	ldrsb r1, [sb, #1]!
 	cmp r1, #0
 	beq _020E4764
 	add r0, sp, #0xc
 	add sb, sb, #1
-	bl sub_020E3E68
+	bl string_put_char
 	b _020E4764
 _020E3FAC:
 	cmp r1, #0x25
 	beq _020E3FC4
 	add r0, sp, #0xc
 	add sb, sb, #1
-	bl sub_020E3E68
+	bl string_put_char
 	b _020E4764
 _020E3FC4:
 	mov r5, #0
@@ -18657,11 +18694,11 @@ _020E41E4:
 	mov r1, r4, lsl #0x18
 	add r0, sp, #0xc
 	mov r1, r1, asr #0x18
-	bl sub_020E3E68
+	bl string_put_char
 	add r0, sp, #0xc
 	sub r2, sl, #1
 	mov r1, #0x20
-	bl sub_020E3E98
+	bl string_fill_char
 	b _020E4250
 _020E4220:
 	tst r5, #0x10
@@ -18671,11 +18708,11 @@ _020E4220:
 	add r0, sp, #0xc
 	mov r1, r1, asr #0x18
 	sub r2, sl, #1
-	bl sub_020E3E98
+	bl string_fill_char
 	mov r1, r4, lsl #0x18
 	add r0, sp, #0xc
 	mov r1, r1, asr #0x18
-	bl sub_020E3E68
+	bl string_put_char
 _020E4250:
 	add sb, sb, #1
 	b _020E4764
@@ -18709,11 +18746,11 @@ _020E42A4:
 	add r0, sp, #0xc
 	mov r1, r7
 	mov r2, r4
-	bl sub_020E3EEC
+	bl string_put_string
 	add r0, sp, #0xc
 	mov r2, sl
 	mov r1, #0x20
-	bl sub_020E3E98
+	bl string_fill_char
 	b _020E4304
 _020E42D4:
 	tst r5, #0x10
@@ -18723,11 +18760,11 @@ _020E42D4:
 	add r0, sp, #0xc
 	mov r2, sl
 	mov r1, r1, asr #0x18
-	bl sub_020E3E98
+	bl string_fill_char
 	add r0, sp, #0xc
 	mov r1, r7
 	mov r2, r4
-	bl sub_020E3EEC
+	bl string_put_string
 _020E4304:
 	add sb, sb, #1
 	b _020E4764
@@ -18762,13 +18799,13 @@ _020E4364:
 	bne _020E4380
 	add r0, sp, #0xc
 	add sb, sb, #1
-	bl sub_020E3E68
+	bl string_put_char
 	b _020E4764
 _020E4380:
 	mov r1, r2
 	add r0, sp, #0xc
 	sub r2, sb, r2
-	bl sub_020E3EEC
+	bl string_put_string
 	b _020E4764
 _020E4394:
 	orr r5, r5, #0x1000
@@ -19003,7 +19040,7 @@ _020E46B0:
 	add r0, sp, #0xc
 	mov r2, sl
 	mov r1, #0x20
-	bl sub_020E3E98
+	bl string_fill_char
 _020E46DC:
 	cmp r4, #0
 	ble _020E4708
@@ -19014,14 +19051,14 @@ _020E46F0:
 	ldrsb r1, [r5, #-1]!
 	mov r0, r7
 	sub r4, r4, #1
-	bl sub_020E3E68
+	bl string_put_char
 	cmp r4, #0
 	bgt _020E46F0
 _020E4708:
 	add r0, sp, #0xc
 	mov r2, r6
 	mov r1, #0x30
-	bl sub_020E3E98
+	bl string_fill_char
 	cmp r8, #0
 	ble _020E4744
 	add r0, sp, #0x18
@@ -19031,7 +19068,7 @@ _020E472C:
 	ldrsb r1, [r5, #-1]!
 	mov r0, r4
 	sub r8, r8, #1
-	bl sub_020E3E68
+	bl string_put_char
 	cmp r8, #0
 	bgt _020E472C
 _020E4744:
@@ -19041,7 +19078,7 @@ _020E4744:
 	add r0, sp, #0xc
 	mov r2, sl
 	mov r1, #0x20
-	bl sub_020E3E98
+	bl string_fill_char
 _020E4760:
 	add sb, sb, #1
 _020E4764:
@@ -19093,6 +19130,8 @@ _0210D650:
 	.byte 0xDD, 0xFF, 0xDF, 0xFF, 0xE1, 0xFF, 0xE2, 0xFF, 0xE4, 0xFF, 0xE5, 0xFF, 0xE7, 0xFF, 0xE9, 0xFF
 	.byte 0xEA, 0xFF, 0xEC, 0xFF, 0xED, 0xFF, 0xEF, 0xFF, 0xF0, 0xFF, 0xF2, 0xFF, 0xF3, 0xFF, 0xF5, 0xFF
 	.byte 0xF6, 0xFF, 0xF8, 0xFF, 0xF9, 0xFF, 0xFA, 0xFF, 0xFC, 0xFF, 0xFD, 0xFF, 0xFF, 0xFF, 0x00, 0x00
+	.public _0210D750
+_0210D750:
 	.byte 0x00, 0x80, 0x5B, 0xFE, 0x97, 0xFE, 0xBB, 0xFE, 0xD4, 0xFE, 0xE7, 0xFE, 0xF7, 0xFE, 0x04, 0xFF
 	.byte 0x10, 0xFF, 0x1A, 0xFF, 0x23, 0xFF, 0x2C, 0xFF, 0x33, 0xFF, 0x3A, 0xFF, 0x40, 0xFF, 0x46, 0xFF
 	.byte 0x4C, 0xFF, 0x51, 0xFF, 0x56, 0xFF, 0x5B, 0xFF, 0x5F, 0xFF, 0x64, 0xFF, 0x68, 0xFF, 0x6C, 0xFF

@@ -25737,7 +25737,7 @@ ov80_02236330: ; 0x02236330
 	ldr r1, [r1]
 	str r0, [r1]
 	ldr r0, [r4]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	add r1, r4, #0
 	add r1, #0xac
 	ldr r1, [r1]

@@ -104,7 +104,7 @@ _02050704:
 	ldr r1, _02050720 ; =0x00004013
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
-	bl sub_020403C0
+	bl VarSet
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x14]
 	bl sub_02052554

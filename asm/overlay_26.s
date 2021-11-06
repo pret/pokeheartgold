@@ -73,7 +73,7 @@ _02259930:
 	cmp r1, r7
 	beq _02259944
 	add r0, r6, #0
-	bl sub_02040514
+	bl TrainerFlagCheck
 	cmp r0, #0
 	bne _02259944
 	lsl r0, r4, #0x10

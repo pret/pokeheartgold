@@ -6677,22 +6677,22 @@ ov91_0225F7A8: ; 0x0225F7A8
 	ldr r2, _0225F86C ; =0xFFFFF000
 	add r1, r0, #0
 	add r3, r0, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r1, _0225F870 ; =0x00007FFF
 	mov r0, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	ldr r0, _0225F870 ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r0, _0225F870 ; =0x00007FFF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	add r0, r4, r0
@@ -6701,11 +6701,11 @@ ov91_0225F7A8: ; 0x0225F7A8
 	mov r0, #0x12
 	add r1, sp, #8
 	str r2, [sp, #8]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0x13
 	ldr r1, _0225F874 ; =0x000019CC
 	lsl r0, r0, #6
@@ -6716,11 +6716,11 @@ ov91_0225F7A8: ; 0x0225F7A8
 	mov r0, #0x12
 	add r1, sp, #4
 	str r2, [sp, #4]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x11
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r1, [r5, #0x10]
 	add r0, r4, #0
 	bl ov91_0226078C
@@ -6728,7 +6728,7 @@ ov91_0225F7A8: ; 0x0225F7A8
 	mov r0, #0x12
 	add r1, sp, #0
 	str r2, [sp]
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_02026E50
@@ -6986,7 +6986,7 @@ ov91_0225FA9C: ; 0x0225FA9C
 	sub sp, #0x24
 	add r7, r0, #0
 	add r6, r1, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -7633,7 +7633,7 @@ _0225FFD6:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	add r1, r5, #0
-	bl sub_020BE0E4
+	bl NNS_G3dAnmObjDisableID
 	add r5, r5, #1
 _0225FFE4:
 	cmp r7, #0
@@ -7665,7 +7665,7 @@ _0226000E:
 	beq _0226001E
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_020C39D8
+	bl NNS_G3dGetResDictIdxByName
 	add r1, r0, #0
 	b _02260022
 _0226001E:
@@ -7679,7 +7679,7 @@ _02260022:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_020BE0A8
+	bl NNS_G3dAnmObjEnableID
 _02260034:
 	add r7, r7, #1
 	add r5, #0x10
@@ -8357,7 +8357,7 @@ _02260508:
 	ldr r0, [r5, r0]
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	mov r1, #0x64
 	str r1, [sp]
 	mov r0, #2
@@ -8822,11 +8822,11 @@ _022608CE:
 	cmp r1, #5
 	bne _022608FC
 	ldr r1, _02260948 ; =0x00007FFF
-	bl sub_020C34D8
+	bl NNS_G3dMdlSetMdlAmbAll
 	b _02260902
 _022608FC:
 	ldr r1, _0226094C ; =0x00004A52
-	bl sub_020C34D8
+	bl NNS_G3dMdlSetMdlAmbAll
 _02260902:
 	add r0, r5, #0
 	bl ov91_02260B5C
@@ -8946,7 +8946,7 @@ _0226097A:
 	add r2, r0, #0
 	add r3, r0, #0
 	str r0, [sp, #4]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -8965,7 +8965,7 @@ ov91_02260A10: ; 0x02260A10
 	add r2, r0, #0
 	add r3, r0, #0
 	str r0, [sp, #4]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -11112,7 +11112,7 @@ _02261A2E:
 	add r1, r0, #0
 	add r1, #0xf9
 	add r1, r2, r1
-	bl sub_0200596C
+	bl GF_SndHandleSetTempoRatio
 	mov r0, #3
 	ldrsb r0, [r4, r0]
 	cmp r0, #0xc
@@ -11199,11 +11199,11 @@ _02261B0C: .word 0x00000587
 ov91_02261B10: ; 0x02261B10
 	mov r0, #7
 	add r1, r0, #0
-	ldr r3, _02261B1C ; =sub_0200596C
+	ldr r3, _02261B1C ; =GF_SndHandleSetTempoRatio
 	add r1, #0xf9
 	bx r3
 	nop
-_02261B1C: .word sub_0200596C
+_02261B1C: .word GF_SndHandleSetTempoRatio
 	thumb_func_end ov91_02261B10
 
 	thumb_func_start ov91_02261B20

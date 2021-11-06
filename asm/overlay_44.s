@@ -1218,7 +1218,7 @@ _0222A7E2:
 	bne _0222A7F2
 	mov r0, #0
 	mov r1, #0x78
-	bl sub_0200542C
+	bl GF_SndHandleSetInitialVolume
 _0222A7F2:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -2284,7 +2284,7 @@ ov44_0222B030: ; 0x0222B030
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r6, r0, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -3225,7 +3225,7 @@ _0222B7F0:
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x19]
 	ldr r0, [sp, #0x10]
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x1a]
 	ldr r0, [r5, #4]
@@ -11138,7 +11138,7 @@ ov44_0222F780: ; 0x0222F780
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -11245,7 +11245,7 @@ ov44_0222F830: ; 0x0222F830
 	bne _0222F878
 	mov r0, #0
 	mov r1, #0x1e
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	b _0222F894
 _0222F878:
 	cmp r4, #0x10
@@ -11258,7 +11258,7 @@ _0222F878:
 	mov r0, #0x78
 	mov r1, #0x1e
 	mov r2, #1
-	bl sub_02005F10
+	bl GF_SndStartFadeInBGM
 _0222F894:
 	add r0, r5, #0
 	bl ov44_0222C120
@@ -12703,7 +12703,7 @@ _02230322:
 	bl sub_0202C298
 	add r1, r0, #0
 	add r0, r6, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	ldr r0, _0223069C ; =0x00000B1C
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -15304,7 +15304,7 @@ ov44_02231918: ; 0x02231918
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	ldr r0, _02231954 ; =0x00000B1C
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -19304,7 +19304,7 @@ ov44_0223376C: ; 0x0223376C
 	sub sp, #0x24
 	add r7, r0, #0
 	add r6, r1, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -20336,7 +20336,7 @@ ov44_02233F50: ; 0x02233F50
 	beq _02233F62
 	mov r0, #0
 	mov r1, #0x78
-	bl sub_0200542C
+	bl GF_SndHandleSetInitialVolume
 _02233F62:
 	pop {r3, pc}
 	thumb_func_end ov44_02233F50

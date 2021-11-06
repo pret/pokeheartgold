@@ -1990,7 +1990,7 @@ _0203CB1A:
 	bl sub_0202D95C
 	str r0, [r7, #0x20]
 	ldr r0, [r5, #0xc]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r7, #0x1c]
 	ldr r0, [r5, #0xc]
 	bl sub_02088288
@@ -2045,7 +2045,7 @@ _0203CBA8:
 	mov r0, #2
 	strb r0, [r7, #0x12]
 	ldr r0, [r5, #0xc]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r7, #0x1c]
 	ldr r0, [r5, #0xc]
 	bl sub_02088288
@@ -2109,7 +2109,7 @@ _0203CC3E:
 	mov r0, #2
 	strb r0, [r7, #0x12]
 	ldr r0, [r5, #0xc]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r7, #0x1c]
 	ldr r0, [r5, #0xc]
 	bl sub_02088288
@@ -2152,7 +2152,7 @@ _0203CC3E:
 	b _0203CEFE
 _0203CCD4:
 	ldrh r0, [r6, #0x28]
-	bl sub_02078078
+	bl ItemToMailId
 	add r3, r0, #0
 	mov r0, #0xb
 	add r2, r6, #0
@@ -2237,7 +2237,7 @@ _0203CD68:
 	ldr r1, _0203CEEC ; =_020FA0B8
 	add r0, r7, #0
 	mov r2, #0xb
-	bl sub_02078644
+	bl CreateBagView
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -2514,9 +2514,9 @@ sub_0203CFC0: ; 0x0203CFC0
 	bl sub_02050650
 	add r4, r0, #0
 	mov r0, #0xb
-	bl sub_02077878
+	bl BagView_New
 	add r7, r0, #0
-	bl sub_02077890
+	bl BagView_sizeof
 	mov r1, #0xe
 	lsl r1, r1, #6
 	add r2, r0, #0
@@ -2630,7 +2630,7 @@ _0203D0AC:
 	ldr r0, [r4, r0]
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _0203D12C
 	ldr r0, [sp, #0xc]
@@ -2640,7 +2640,7 @@ _0203D0AC:
 	cmp r0, #0
 	bne _0203D12C
 	add r0, r5, #0
-	bl sub_02078078
+	bl ItemToMailId
 	add r3, r0, #0
 	mov r0, #0xb
 	str r0, [sp]
@@ -3347,7 +3347,7 @@ sub_0203D664: ; 0x0203D664
 	mov r7, #0xb
 _0203D688:
 	add r0, r5, #0
-	bl sub_020780F4
+	bl BerryToItemId
 	add r1, r0, #0
 	add r0, r4, #0
 	add r2, r6, #0

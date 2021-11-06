@@ -1,6 +1,14 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D41CC:
+	.space 0xC
+
+_021D41D8:
+	.space 0x40
+
 	.rodata
 
 _020FC7CC:
@@ -31,7 +39,7 @@ sub_02058AEC: ; 0x02058AEC
 	add r0, r4, #0
 	bl sub_0208AD34
 	add r0, r5, #0
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288
@@ -2537,7 +2545,7 @@ sub_02059EBC: ; 0x02059EBC
 	bl sub_02037FCC
 	cmp r0, #0
 	beq _02059ED8
-	ldr r0, _02059F24 ; =0x021D41CC
+	ldr r0, _02059F24 ; =_021D41CC
 	mov r2, #0
 	str r2, [r0]
 	ldr r1, _02059F28 ; =sub_02059F78
@@ -2583,7 +2591,7 @@ _02059F18:
 _02059F22:
 	pop {r4, pc}
 	.balign 4, 0
-_02059F24: .word 0x021D41CC
+_02059F24: .word _021D41CC
 _02059F28: .word sub_02059F78
 _02059F2C: .word sub_0205A0B4
 	thumb_func_end sub_02059EBC
@@ -2642,7 +2650,7 @@ sub_02059F78: ; 0x02059F78
 	str r0, [r4, #0x14]
 	pop {r3, r4, r5, pc}
 _02059F88:
-	ldr r0, _02059FEC ; =0x021D41CC
+	ldr r0, _02059FEC ; =_021D41CC
 	ldr r1, [r0]
 	add r1, r1, #1
 	str r1, [r0]
@@ -2683,7 +2691,7 @@ _02059FC8:
 _02059FEA:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02059FEC: .word 0x021D41CC
+_02059FEC: .word _021D41CC
 _02059FF0: .word sub_02059FF8
 _02059FF4: .word sub_02059F30
 	thumb_func_end sub_02059F78
@@ -2735,7 +2743,7 @@ sub_0205A03C: ; 0x0205A03C
 	pop {r3, r4, r5, r6, r7, pc}
 _0205A04A:
 	mov r7, #0x11
-	ldr r5, _0205A078 ; =0x021D41D8
+	ldr r5, _0205A078 ; =_021D41D8
 	mov r6, #0
 	add r4, r1, #0
 	lsl r7, r7, #4
@@ -2759,7 +2767,7 @@ _0205A054:
 _0205A076:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0205A078: .word 0x021D41D8
+_0205A078: .word _021D41D8
 	thumb_func_end sub_0205A03C
 
 	thumb_func_start sub_0205A07C
@@ -2991,7 +2999,7 @@ _0205A21C:
 	pop {r4, r5, r6, pc}
 _0205A230:
 	add r1, #0x50
-	ldr r0, _0205A280 ; =0x021D41CC
+	ldr r0, _0205A280 ; =_021D41CC
 	add r1, #0x30
 	str r1, [r0, #4]
 	ldrb r0, [r1, #0x1c]
@@ -3037,7 +3045,7 @@ _0205A27A:
 	mov r0, #5
 	pop {r4, r5, r6, pc}
 	nop
-_0205A280: .word 0x021D41CC
+_0205A280: .word _021D41CC
 	thumb_func_end sub_0205A200
 
 	thumb_func_start sub_0205A284
@@ -3056,7 +3064,7 @@ sub_0205A284: ; 0x0205A284
 	bx lr
 _0205A29C:
 	add r4, #0x50
-	ldr r3, _0205A354 ; =0x021D41CC
+	ldr r3, _0205A354 ; =_021D41CC
 	add r4, #0x30
 	str r4, [r3, #4]
 	ldrb r3, [r4, #0x1c]
@@ -3159,7 +3167,7 @@ _0205A34E:
 	pop {r3, r4}
 	bx lr
 	.balign 4, 0
-_0205A354: .word 0x021D41CC
+_0205A354: .word _021D41CC
 	thumb_func_end sub_0205A284
 
 	thumb_func_start sub_0205A358
@@ -3307,10 +3315,10 @@ sub_0205A430: ; 0x0205A430
 	ldrb r0, [r2]
 	str r0, [r1, #0x30]
 	ldrb r1, [r2]
-	ldr r0, _0205A448 ; =0x021D41CC
+	ldr r0, _0205A448 ; =_021D41CC
 	str r1, [r0, #8]
 _0205A444:
 	bx lr
 	nop
-_0205A448: .word 0x021D41CC
+_0205A448: .word _021D41CC
 	thumb_func_end sub_0205A430

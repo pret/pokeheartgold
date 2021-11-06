@@ -4,10 +4,10 @@
 	.rodata
 
 _020F5950:
-	.word sub_020B80A0
-	.word sub_020B82CC
-	.word sub_020B80A0
-	.word sub_020B82CC
+	.word NNS_G2dLoadImage1DMapping
+	.word NNS_G2dLoadImage2DMapping
+	.word NNS_G2dLoadImage1DMapping
+	.word NNS_G2dLoadImage2DMapping
 	.word GX_LoadOBJ
 	.word GXS_LoadOBJ
 

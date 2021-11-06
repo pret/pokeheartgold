@@ -3,6 +3,15 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.bss
+
+_021D421C:
+	.space 0x194
+
+	.public _021D43B0
+_021D43B0:
+	.space 0x4
+
 	.rodata
 
 _020FF4E4: ; Held item odds
@@ -132,31 +141,31 @@ _020FF639: ; Nature stat mods
 	.byte  0,  0,  0, -1,  1
 	.byte  0,  0,  0,  0,  0
 _020FF6B6: ; Pokeathlon performance mods? type: s8[][5]
-	.byte 0x0A, 0x00, 0x00, 0x00, 0xF6
-	.byte 0x23, 0xDD, 0x00, 0x00, 0x00
-	.byte 0x23, 0x00, 0x00, 0x00, 0xDD
-	.byte 0x23, 0x00, 0x00, 0xDD, 0x00
-	.byte 0x23, 0x00, 0xDD, 0x00, 0x00
-	.byte 0xDD, 0x23, 0x00, 0x00, 0x00
-	.byte 0x00, 0x0A, 0x00, 0xF6, 0x00
-	.byte 0x00, 0x23, 0x00, 0x00, 0xDD
-	.byte 0x00, 0x23, 0x00, 0xDD, 0x00
-	.byte 0x00, 0x23, 0xDD, 0x00, 0x00
-	.byte 0xDD, 0x00, 0x00, 0x00, 0x23
-	.byte 0x00, 0xDD, 0x00, 0x00, 0x23
-	.byte 0x00, 0x00, 0xF6, 0x00, 0x0A
-	.byte 0x00, 0x00, 0x00, 0xDD, 0x23
-	.byte 0x00, 0x00, 0xDD, 0x00, 0x23
-	.byte 0xDD, 0x00, 0x00, 0x23, 0x00
-	.byte 0x00, 0xDD, 0x00, 0x23, 0x00
-	.byte 0x00, 0x00, 0x00, 0x23, 0xDD
-	.byte 0xF6, 0x00, 0x00, 0x0A, 0x00
-	.byte 0x00, 0x00, 0xDD, 0x23, 0x00
-	.byte 0xDD, 0x00, 0x23, 0x00, 0x00
-	.byte 0x00, 0xDD, 0x23, 0x00, 0x00
-	.byte 0x00, 0x00, 0x23, 0x00, 0xDD
-	.byte 0x00, 0x00, 0x23, 0xDD, 0x00
-	.byte 0x00, 0xF6, 0x0A, 0x00, 0x00
+	.byte  10,   0,   0,   0, -10
+	.byte  35, -35,   0,   0,   0
+	.byte  35,   0,   0,   0, -35
+	.byte  35,   0,   0, -35,   0
+	.byte  35,   0, -35,   0,   0
+	.byte -35,  35,   0,   0,   0
+	.byte   0,  10,   0, -10,   0
+	.byte   0,  35,   0,   0, -35
+	.byte   0,  35,   0, -35,   0
+	.byte   0,  35, -35,   0,   0
+	.byte -35,   0,   0,   0,  35
+	.byte   0, -35,   0,   0,  35
+	.byte   0,   0, -10,   0,  10
+	.byte   0,   0,   0, -35,  35
+	.byte   0,   0, -35,   0,  35
+	.byte -35,   0,   0,  35,   0
+	.byte   0, -35,   0,  35,   0
+	.byte   0,   0,   0,  35, -35
+	.byte -10,   0,   0,  10,   0
+	.byte   0,   0, -35,  35,   0
+	.byte -35,   0,  35,   0,   0
+	.byte   0, -35,  35,   0,   0
+	.byte   0,   0,  35,   0, -35
+	.byte   0,   0,  35, -35,   0
+	.byte   0, -10,  10,   0,   0
 _020FF733: ; Substruct offsets
 	.byte 0x00, 0x20, 0x40, 0x60
 	.byte 0x00, 0x20, 0x60, 0x40
@@ -686,6 +695,11 @@ _020FF7B4: ; aprijuice related?
 	.short 0x0215
 	.short 0x0216
 	.short 0x0218
+
+	.data
+
+_021100E8:
+	.asciz "poketool/personal/pms.narc"
 
 	.text
 
@@ -5125,9 +5139,9 @@ CalcLevelBySpeciesAndExp_PreloadedPersonal: ; 0x0206FDCC
 	mov r1, #0x15
 	add r4, r2, #0
 	bl GetPersonalAttr
-	ldr r1, _0206FDF4 ; =0x021D421C
+	ldr r1, _0206FDF4 ; =_021D421C
 	bl LoadGrowthTable
-	ldr r2, _0206FDF8 ; =0x021D4220
+	ldr r2, _0206FDF8 ; =_021D421C + 4
 	mov r1, #1
 _0206FDE0:
 	ldr r0, [r2]
@@ -5141,8 +5155,8 @@ _0206FDEE:
 	sub r0, r1, #1
 	pop {r4, pc}
 	nop
-_0206FDF4: .word 0x021D421C
-_0206FDF8: .word 0x021D4220
+_0206FDF4: .word _021D421C
+_0206FDF8: .word _021D421C + 4
 	thumb_func_end CalcLevelBySpeciesAndExp_PreloadedPersonal
 
 	thumb_func_start GetMonNature
@@ -5460,7 +5474,7 @@ sub_02070028: ; 0x02070028
 	bl GetBoxMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	pop {r3, pc}
 	thumb_func_end sub_02070028
 
@@ -9868,7 +9882,7 @@ sub_02071FDC: ; 0x02071FDC
 	ldr r3, [sp, #0x1c]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020063A4
+	bl PlayCryEx
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _02072014:
@@ -9894,7 +9908,7 @@ _02072030:
 	ldr r3, [sp, #0x1c]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020063A4
+	bl PlayCryEx
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -9987,7 +10001,7 @@ sub_020720D4: ; 0x020720D4
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020720D4
 

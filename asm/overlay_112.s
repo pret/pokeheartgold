@@ -72,13 +72,13 @@ _021E5960: .word 0x021FF9E0
 	thumb_func_start ov112_021E5964
 ov112_021E5964: ; 0x021E5964
 	push {r3, lr}
-	bl sub_020DDCF4
+	bl CARD_SpiWaitInit
 	mov r0, #0x32
-	bl sub_020DDC80
+	bl CARD_SetSpiWriteWaitCycles
 	mov r0, #0x32
-	bl sub_020DDC70
+	bl CARD_SetSpiReadWaitCycles
 	ldr r0, _021E599C ; =0x021FFA18
-	bl sub_020DDE94
+	bl CARD_SpiWaitReadRange
 	bl ov112_021E594C
 	ldr r0, _021E59A0 ; =0x021FF500
 	mov r1, #0xff
@@ -153,7 +153,7 @@ _021E59FE:
 	blt _021E59F6
 	ldr r0, _021E5A0C ; =0x021FFA18
 	add r1, r5, #0
-	bl sub_020DDFE0
+	bl CARD_SpiWaitWriteRange
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E5A0C: .word 0x021FFA18
@@ -393,7 +393,7 @@ _021E5B94: .word 0x021FF9E0
 ov112_021E5B98: ; 0x021E5B98
 	push {r3, r4, r5, lr}
 	ldr r0, _021E5D28 ; =0x021FFA18
-	bl sub_020DDE94
+	bl CARD_SpiWaitReadRange
 	add r4, r0, #0
 	bl ov112_021E5A84
 	cmp r0, #0
@@ -3552,14 +3552,14 @@ ov112_021E73C8: ; 0x021E73C8
 	bl ov112_021E5D44
 	ldr r0, _021E744C ; =ov112_021E6BDC
 	bl ov112_021E5D50
-	bl sub_020DE0C8
-	bl sub_020DE0C8
+	bl CARD_SpiWaitGetStatus
+	bl CARD_SpiWaitGetStatus
 	cmp r0, #0xaa
 	bne _021E7414
 	mov r0, #0
-	bl sub_020DDC80
+	bl CARD_SetSpiWriteWaitCycles
 	mov r0, #0
-	bl sub_020DDC70
+	bl CARD_SetSpiReadWaitCycles
 _021E7414:
 	ldr r0, _021E7450 ; =0x021FFB08
 	bl OS_InitMutex
@@ -7310,7 +7310,7 @@ ov112_021E95A0: ; 0x021E95A0
 	bl sub_02032674
 	ldr r0, [r6, #0x20]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _021E95C4
 	mov r7, #0x14
@@ -7362,7 +7362,7 @@ ov112_021E9610: ; 0x021E9610
 	ldr r0, [r6, #0x20]
 	str r1, [sp]
 	bl Sav2_Pokedex_get
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _021E9628
 	mov r5, #0x14
@@ -18934,7 +18934,7 @@ _021EF1C8: .word 0x021FF0EC
 ov112_021EF1CC: ; 0x021EF1CC
 	push {lr}
 	sub sp, #0x14
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -19406,7 +19406,7 @@ ov112_021EF568: ; 0x021EF568
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #0x10
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #2
 	add sp, #0xc
 	pop {pc}
@@ -20558,7 +20558,7 @@ _021EFE6E:
 	beq _021EFE96
 	add r0, r6, #0
 	mov r2, #0x9a
-	bl sub_02077D40
+	bl GetItemNameIntoString
 	mov r0, #0xc1
 	lsl r0, r0, #0xa
 	str r0, [sp]
@@ -22290,13 +22290,13 @@ ov112_021F0C50: ; 0x021F0C50
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x77
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	mov r1, #0x1e
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -22984,7 +22984,7 @@ _021F116A:
 	ldrb r1, [r5, r1]
 	add r0, sp, #8
 	mov r2, #8
-	bl sub_020E3A84
+	bl MATH_QSort
 	ldr r0, _021F1280 ; =0x0000013E
 	ldrb r4, [r5, r0]
 	cmp r4, #2
@@ -24508,7 +24508,7 @@ ov112_021F1D70: ; 0x021F1D70
 	add r0, r6, #0
 	bl sub_02024B1C
 	add r1, r4, #0
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	ldr r1, [sp]
 	add r0, r7, #0
@@ -25054,7 +25054,7 @@ _021F21B8:
 	ldr r0, [sp, #0x1c]
 	bl sub_02024B34
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x20

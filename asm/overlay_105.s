@@ -57,13 +57,13 @@ _021E5964:
 	ldrsh r2, [r3, r7]
 	ldrsh r3, [r3, r6]
 	add r0, r4, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	ldr r2, [r5, #4]
 	lsl r1, r4, #1
 	add r1, r2, r1
 	ldrh r1, [r1, #0x18]
 	add r0, r4, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -73,12 +73,12 @@ _021E5964:
 	ldrh r0, [r2, #0x20]
 	ldrh r1, [r2, #0x22]
 	ldr r2, [r2, #0x28]
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r2, [r5, #4]
 	ldrh r0, [r2, #0x24]
 	ldrh r1, [r2, #0x26]
 	ldr r2, [r2, #0x2c]
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	ldr r3, [r5, #4]
 	ldr r0, [r3, #0x40]
 	str r0, [sp]
@@ -88,7 +88,7 @@ _021E5964:
 	ldr r1, [r3, #0x34]
 	ldr r2, [r3, #0x38]
 	ldr r3, [r3, #0x3c]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 	mov r0, #6
 	str r0, [sp]
 	mov r1, #1
@@ -276,7 +276,7 @@ _021E5B28:
 	add r5, r6, r0
 	ldr r1, [r5, #0x6c]
 	add r0, r7, #0
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r5, #0x5c]
 	bl FreeToHeap
 	add r0, r4, #1
@@ -519,21 +519,21 @@ _021E5D04:
 	ldr r0, [r5, #0x54]
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	ldr r0, [r5, #0x54]
 	mov r1, #0
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #2
 	ldr r0, [r5, #0x54]
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #1
 	ldr r0, [r5, #0x54]
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r4, #0
 	add r7, #0x80
 _021E5D5A:
@@ -548,20 +548,20 @@ _021E5D5A:
 	bl NARC_AllocAndReadWholeMember
 	mov r1, #0
 	str r0, [r6, #0x5c]
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [sp, #0xc]
 	ldr r1, [sp, #0xc]
 	ldr r2, [r5, #0x54]
 	add r0, r7, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	str r0, [r6, #0x6c]
 	ldr r1, [sp, #0xc]
 	ldr r2, [r5, #0x54]
 	ldr r3, [sp, #8]
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [r6, #0x6c]
 	add r0, r5, #0
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

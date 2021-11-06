@@ -458,7 +458,7 @@ ov54_021E5C84: ; 0x021E5C84
 	str r0, [r4, #0x10]
 _021E5CB4:
 	bl sub_0200D034
-	bl sub_020B62EC
+	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x14]
 	bl sub_0201EEB4
 	ldr r3, _021E5CDC ; =0x027E0000

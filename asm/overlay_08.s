@@ -3737,10 +3737,10 @@ _0221DB64:
 	add r0, r1, r0
 	ldrh r0, [r0, #0x34]
 _0221DB72:
-	ldr r3, _0221DB78 ; =sub_02078024
+	ldr r3, _0221DB78 ; =MoveIsHM
 	bx r3
 	nop
-_0221DB78: .word sub_02078024
+_0221DB78: .word MoveIsHM
 	thumb_func_end ov08_0221DB54
 
 	thumb_func_start ov08_0221DB7C
@@ -8302,7 +8302,7 @@ ov08_02220224: ; 0x02220224
 	ldr r2, [sp, #0xc]
 	ldrh r0, [r0, #0x22]
 	ldr r2, [r2, #0xc]
-	bl sub_02077CE8
+	bl LoadItemDataOrGfx
 	ldr r2, [sp, #0xc]
 	add r6, r0, #0
 	ldrb r3, [r2, #0x11]
@@ -8324,7 +8324,7 @@ ov08_02220224: ; 0x02220224
 	add r0, r6, #0
 	mov r1, #0xf
 	mov r4, #0
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _02220278
 	mov r0, #1
@@ -8334,7 +8334,7 @@ ov08_02220224: ; 0x02220224
 _02220278:
 	add r0, r6, #0
 	mov r1, #0x10
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _0222028C
 	mov r0, #2
@@ -8344,7 +8344,7 @@ _02220278:
 _0222028C:
 	add r0, r6, #0
 	mov r1, #0x11
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _022202A0
 	mov r0, #4
@@ -8354,7 +8354,7 @@ _0222028C:
 _022202A0:
 	add r0, r6, #0
 	mov r1, #0x12
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _022202B4
 	mov r0, #8
@@ -8364,7 +8364,7 @@ _022202A0:
 _022202B4:
 	add r0, r6, #0
 	mov r1, #0x13
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _022202C8
 	mov r0, #0x10
@@ -8374,7 +8374,7 @@ _022202B4:
 _022202C8:
 	add r0, r6, #0
 	mov r1, #0x14
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _022202DC
 	mov r0, #0x20
@@ -8384,7 +8384,7 @@ _022202C8:
 _022202DC:
 	add r0, r6, #0
 	mov r1, #0x15
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _022202F0
 	mov r0, #0x40
@@ -8468,12 +8468,12 @@ _0222033A:
 _02220396:
 	add r0, r6, #0
 	mov r1, #0x24
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	bne _022203AE
 	add r0, r6, #0
 	mov r1, #0x25
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _022203BE
 _022203AE:
@@ -9474,7 +9474,7 @@ ov08_02220C08: ; 0x02220C08
 	add r6, r3, #0
 	cmp r0, #0
 	beq _02220C38
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #1
 	bne _02220C26
 	add r0, r5, #0
@@ -15287,7 +15287,7 @@ ov08_02223A3C: ; 0x02223A3C
 	ldr r2, [r2, #0xc]
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
-	bl sub_02077D64
+	bl GetItemDescIntoString
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -15508,7 +15508,7 @@ _02223C0A:
 	lsl r2, r2, #0x10
 	ldr r1, [sp, #8]
 	lsr r2, r2, #0x10
-	bl sub_02078724
+	bl Bag_GetPocketSlotN
 	add r5, r0, #0
 	beq _02223C7C
 	ldrh r0, [r5]
@@ -15716,7 +15716,7 @@ _02223D9E:
 	add r5, r4, r0
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -15731,7 +15731,7 @@ _02223D9E:
 	bl sub_0200D504
 	mov r0, #1
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	str r7, [sp]
 	str r0, [sp, #4]
 	mov r0, #0
@@ -15796,7 +15796,7 @@ ov08_02223E3C: ; 0x02223E3C
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -15820,7 +15820,7 @@ ov08_02223E74: ; 0x02223E74
 	add r0, r1, #0
 	mov r1, #2
 	add r4, r2, #0
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r2, r0, #0
 	mov r0, #3
 	str r0, [sp]

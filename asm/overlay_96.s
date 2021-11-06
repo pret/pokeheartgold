@@ -5931,7 +5931,7 @@ _021E8504:
 	bl String_c_str
 	add r1, r0, #0
 	add r0, r6, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #0
@@ -6939,7 +6939,7 @@ _021E8C14:
 	beq _021E8C58
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #0x20
@@ -6949,7 +6949,7 @@ _021E8C58:
 	beq _021E8C6E
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #0x20
@@ -7192,7 +7192,7 @@ _021E8E2A:
 	beq _021E8E54
 	ldr r0, [sp, #0x24]
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r0, #0
 	mov r0, #0x56
 	lsl r0, r0, #2
@@ -7206,7 +7206,7 @@ _021E8E54:
 	beq _021E8E72
 	ldr r0, [sp, #0x24]
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r0, #0
 	mov r0, #0x56
 	lsl r0, r0, #2
@@ -7247,7 +7247,7 @@ _021E8EA2:
 	beq _021E8EC2
 	ldr r0, [sp, #0x28]
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x20
@@ -7258,7 +7258,7 @@ _021E8EC2:
 	beq _021E8EDA
 	ldr r0, [sp, #0x28]
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x20
@@ -13216,7 +13216,7 @@ _021EBAAA:
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #0x5a
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldr r0, _021EBAF8 ; =0x000008DD
 	bl PlaySE
 	ldrb r0, [r4]
@@ -14101,7 +14101,7 @@ _021EC1D0:
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #0x1e
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -15511,7 +15511,7 @@ _021ECC8C:
 	ldr r3, _021ECD1C ; =ov96_021ECC58
 	add r0, r7, #0
 	add r2, r1, #0
-	bl sub_020E3A84
+	bl MATH_QSort
 	ldr r3, _021ECD20 ; =0xFF00FFFF
 	mov r2, #0
 	add r1, r7, #0
@@ -17769,7 +17769,7 @@ _021EDDD0:
 	ldrh r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	add r0, r4, #0
 	bl ov96_021EDD64
 	mov r0, #1
@@ -18407,7 +18407,7 @@ _021EE2BA:
 	ldr r3, _021EE31C ; =ov96_021ECC58
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_020E3A84
+	bl MATH_QSort
 	ldr r1, [r4]
 	ldr r0, _021EE320 ; =0xFFFF0000
 	add r2, r1, #0
@@ -19487,7 +19487,7 @@ _021EEAEA:
 	add r0, r6, #0
 	bl sub_02024B34
 	add r1, r7, #0
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
 	cmp r7, #1
 	bne _021EEB52
@@ -19740,7 +19740,7 @@ ov96_021EED14: ; 0x021EED14
 	add r0, r6, #0
 	bl sub_02024B1C
 	add r1, r4, #0
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	ldr r1, [sp]
 	add r0, r7, #0
@@ -19795,7 +19795,7 @@ _021EED86:
 	ldr r0, [r0]
 	bl sub_02024B34
 	add r1, r5, #0
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r5, r0, #0
 	mov r0, #0x20
 	str r0, [sp]
@@ -22172,7 +22172,7 @@ _021F00BC:
 _021F00C2:
 	mov r0, #0
 	mov r1, #0x18
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #0x18
 	str r0, [sp]
 	mov r0, #1
@@ -22294,7 +22294,7 @@ _021F013C:
 	add r0, sp, #0xe4
 	mov r1, #0x16
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -28100,7 +28100,7 @@ _021F2FF6:
 	add r0, sp, #0x14
 	mov r1, #0xc
 	mov r2, #4
-	bl sub_020E3A84
+	bl MATH_QSort
 	mov r4, #0
 _021F305A:
 	lsl r1, r4, #2
@@ -30735,13 +30735,13 @@ _021F4420:
 	str r0, [sp, #0xc]
 	add r0, r7, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r6, r5
 	add r1, #0x88
 	str r0, [r1]
 	ldr r0, [sp, #0xc]
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r1, r6, r5
 	add r1, #0x90
 	str r0, [r1]
@@ -32317,7 +32317,7 @@ _021F504A:
 	mov r2, #0x8f
 	str r3, [sp]
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -34300,7 +34300,7 @@ _021F6134: .word 0x000008C2
 ov96_021F6138: ; 0x021F6138
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	ldr r0, _021F61B0 ; =0x04000540
 	mov r3, #2
@@ -34376,26 +34376,26 @@ ov96_021F61C8: ; 0x021F61C8
 	str r0, [r3]
 	mov r0, #0x1b
 	mov r2, #3
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F635C ; =0x00310081
 	add r1, sp, #0x3c
 	str r0, [sp, #0x3c]
 	mov r0, #0x29
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r0, #0xbf
 	str r0, [sp, #0x38]
 	mov r0, #0x20
 	add r1, sp, #0x38
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	bl NNS_G3dGlbFlushP
 	mov r0, #3
 	str r0, [sp, #0x34]
 	mov r0, #0x40
 	add r1, sp, #0x34
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F6360 ; =0x0221E5A0
 	mov r2, #0
 	str r2, [r0]
@@ -34411,7 +34411,7 @@ ov96_021F61C8: ; 0x021F61C8
 	mov r0, #0x23
 	add r1, sp, #0x2c
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F6368 ; =0xE800E000
 	add r1, sp, #0x24
 	str r0, [sp, #0x24]
@@ -34419,7 +34419,7 @@ ov96_021F61C8: ; 0x021F61C8
 	str r0, [sp, #0x28]
 	mov r0, #0x23
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add r5, r4, #4
 	ldr r4, _021F6364 ; =0x0221DC10
 	mov r6, #1
@@ -34461,7 +34461,7 @@ _021F624E:
 	mov r0, #0x23
 	add r1, sp, #0x1c
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F6378 ; =0x45800000
 	add r1, r7, #0
 	bl _fmul
@@ -34477,7 +34477,7 @@ _021F624E:
 	mov r0, #0x23
 	add r1, sp, #0x14
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r1, _021F6360 ; =0x0221E5A0
 	ldr r0, [r4]
 	ldr r2, [r1]
@@ -34492,7 +34492,7 @@ _021F624E:
 	mov r0, #0x20
 	add r1, sp, #0x10
 	mov r2, #1
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F6360 ; =0x0221E5A0
 	mov r1, #0x1f
 	ldr r0, [r0]
@@ -34522,7 +34522,7 @@ _021F624E:
 	mov r0, #0x23
 	add r1, sp, #8
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	ldr r0, _021F6368 ; =0xE800E000
 	add r1, sp, #0
 	str r0, [sp]
@@ -34530,11 +34530,11 @@ _021F624E:
 	str r0, [sp, #4]
 	mov r0, #0x23
 	mov r2, #2
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	mov r1, #0
 	mov r0, #0x41
 	add r2, r1, #0
-	bl sub_020C2528
+	bl NNS_G3dGeBufferOP_N
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -38196,7 +38196,7 @@ _021F801E:
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #0xc
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldrb r0, [r7]
 	add r0, r0, #1
 	strb r0, [r7]
@@ -39680,33 +39680,33 @@ ov96_021F8AFC: ; 0x021F8AFC
 	str r0, [sp]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	str r0, [sp, #4]
 	lsl r0, r5, #9
 	str r0, [sp, #8]
 	add r0, r7, #0
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	ldr r3, [sp, #4]
 	ldr r2, [sp, #8]
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, r3, r2
-	bl sub_020B8024
+	bl NNS_G2dSetImageLocation
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	str r0, [sp, #0xc]
 	add r0, r5, #6
 	lsl r0, r0, #5
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	ldr r3, [sp, #0xc]
 	ldr r2, [sp, #0x10]
 	ldr r0, [sp]
 	add r1, r6, #0
 	add r2, r3, r2
-	bl sub_020B806C
+	bl NNS_G2dSetImagePaletteLocation
 	add r0, r4, #0
 	add r1, r7, #0
 	bl sub_02024B00
@@ -40946,7 +40946,7 @@ _021F94DE:
 	mov r1, #0x12
 	str r3, [sp]
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -47271,7 +47271,7 @@ _021FC79C:
 	add r0, sp, #0xa4
 	mov r1, #0x16
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -55978,13 +55978,13 @@ _02200D90:
 	add r5, r1, r0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r5, r1]
 	ldr r0, [sp, #8]
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -57089,7 +57089,7 @@ _02201588:
 	mov r2, #0x92
 	str r3, [sp]
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -61404,7 +61404,7 @@ _0220397A:
 	str r0, [sp]
 	add r0, sp, #4
 	mov r2, #8
-	bl sub_020E3A84
+	bl MATH_QSort
 	mov r4, #0
 	add r7, sp, #4
 _022039C0:
@@ -62150,7 +62150,7 @@ _02203F80:
 	add r5, r6, r0
 	add r0, r7, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0xd
 	lsl r1, r1, #8
 	add r2, r4, #0
@@ -62162,7 +62162,7 @@ _02203F80:
 	str r0, [r5, #0x3c]
 	ldr r0, [sp]
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	lsl r1, r4, #5
 	add r1, #0x20
 	add r0, r1, r0
@@ -63235,7 +63235,7 @@ _02204820:
 	add r0, sp, #0xa8
 	mov r1, #0x16
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -71477,13 +71477,13 @@ _022089E4:
 	add r5, r1, r0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	ldr r0, [sp, #8]
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -77026,7 +77026,7 @@ _0220B58E:
 	ldr r0, [r0]
 	bl sub_02024CB8
 	add r6, r0, #0
-	bl sub_020B75CC
+	bl NNS_G2dGetAnimCtrlCurrentElement
 	add r5, r0, #0
 	ldr r0, [r6, #0xc]
 	cmp r0, #0
@@ -82809,7 +82809,7 @@ _0220E1CA:
 	add r0, sp, #0x40
 	mov r1, #0xc
 	mov r2, #8
-	bl sub_020E3A84
+	bl MATH_QSort
 	mov r5, #0
 	add r4, sp, #0x40
 _0220E1DE:
@@ -88405,7 +88405,7 @@ _02210CCC:
 	add r0, sp, #0x108
 	str r1, [sp]
 	bl ov96_021E92B0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #1
 	str r0, [sp]
 	mov r1, #0x7e
@@ -95599,7 +95599,7 @@ _022145AC:
 	str r0, [sp]
 	add r0, sp, #8
 	mov r2, #4
-	bl sub_020E3A84
+	bl MATH_QSort
 	mov r5, #0
 	add r7, sp, #8
 _022145CE:
@@ -101710,7 +101710,7 @@ _022174D0:
 	add r0, sp, #0x88
 	mov r1, #4
 	mov r2, #8
-	bl sub_020E3A84
+	bl MATH_QSort
 	mov r5, #0
 	add r4, sp, #0x88
 _0221752C:
@@ -101996,7 +101996,7 @@ _02217752:
 	add r0, sp, #0xc
 	mov r1, #4
 	mov r2, #2
-	bl sub_020E3A84
+	bl MATH_QSort
 	ldr r5, [sp, #8]
 	mov r6, #0
 	add r4, r7, #0

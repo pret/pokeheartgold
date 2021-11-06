@@ -91,7 +91,7 @@ _0200B1C0:
 	lsl r2, r4, #0x10
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x10
-	bl sub_020B7994
+	bl NNS_G2dGetNewOamManagerInstance
 	cmp r0, #0
 	bne _0200B1EC
 	bl GF_AssertFail
@@ -114,7 +114,7 @@ _0200B1EC:
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x10
-	bl sub_020B7994
+	bl NNS_G2dGetNewOamManagerInstance
 	cmp r0, #0
 	bne _0200B21C
 	bl GF_AssertFail
@@ -132,11 +132,11 @@ sub_0200B224: ; 0x0200B224
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0200B23C
-	bl sub_020B7FE4
+	bl NNS_G2dApplyAndResetOamManagerBuffer
 	ldr r0, _0200B240 ; =_021D0EB0
 	ldr r0, [r0]
 	add r0, #0x1c
-	bl sub_020B7FE4
+	bl NNS_G2dApplyAndResetOamManagerBuffer
 _0200B23C:
 	pop {r3, pc}
 	nop
@@ -243,7 +243,7 @@ sub_0200B2F0: ; 0x0200B2F0
 	add r2, r1, #0
 	ldr r0, [r0]
 	add r1, r3, #0
-	bl sub_020B7B10
+	bl NNS_G2dEntryOamManagerOamWithAffineIdx
 	add r4, r0, #0
 	bne _0200B308
 	bl GF_AssertFail
@@ -263,7 +263,7 @@ sub_0200B310: ; 0x0200B310
 	ldr r0, [r0]
 	add r1, r3, #0
 	add r0, #0x1c
-	bl sub_020B7B10
+	bl NNS_G2dEntryOamManagerOamWithAffineIdx
 	add r4, r0, #0
 	bne _0200B32A
 	bl GF_AssertFail
@@ -280,7 +280,7 @@ sub_0200B334: ; 0x0200B334
 	add r1, r0, #0
 	ldr r0, _0200B350 ; =_021D0EB0
 	ldr r0, [r0]
-	bl sub_020B7BF4
+	bl NNS_G2dEntryOamManagerAffine
 	add r4, r0, #0
 	ldr r0, _0200B354 ; =0x0000FFFE
 	cmp r4, r0
@@ -301,7 +301,7 @@ sub_0200B358: ; 0x0200B358
 	ldr r0, _0200B378 ; =_021D0EB0
 	ldr r0, [r0]
 	add r0, #0x1c
-	bl sub_020B7BF4
+	bl NNS_G2dEntryOamManagerAffine
 	add r4, r0, #0
 	ldr r0, _0200B37C ; =0x0000FFFE
 	cmp r4, r0

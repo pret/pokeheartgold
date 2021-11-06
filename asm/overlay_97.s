@@ -340,7 +340,7 @@ _0221E860: .word _0221FC98
 ov97_0221E864: ; 0x0221E864
 	push {lr}
 	sub sp, #0x14
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #1
 	str r0, [sp]
 	mov r1, #0x7e
@@ -2713,13 +2713,13 @@ ov97_0221FBA0: ; 0x0221FBA0
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x9f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	mov r1, #0xa
 	lsl r1, r1, #6
 	str r0, [r5, r1]

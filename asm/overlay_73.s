@@ -897,7 +897,7 @@ ov73_021E6090: ; 0x021E6090
 	sub sp, #0x18
 	add r6, r0, #0
 	str r1, [sp, #0x14]
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -5164,7 +5164,7 @@ ov73_021E8198: ; 0x021E8198
 	mov r1, #0x96
 	bl NARC_ctor
 	str r0, [sp, #0x14]
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

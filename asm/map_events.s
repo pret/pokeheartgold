@@ -51,7 +51,7 @@ _0203B658:
 	add r1, r4, #0
 	bl MapEvents_ReadFromNarc
 	ldr r0, [r5, #0x14]
-	bl sub_0203B828
+	bl MapEvents_ComputeRamHeader
 	mov r0, #0x92
 	ldr r1, [r5, #0x14]
 	lsl r0, r0, #4
@@ -60,7 +60,7 @@ _0203B658:
 	bl WildEncounters_ReadFromNarc
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
-	bl sub_0203B8C4
+	bl LevelScripts_ReadFromNarc
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0203B648
@@ -343,8 +343,8 @@ sub_0203B80C: ; 0x0203B80C
 	.balign 4, 0
 	thumb_func_end sub_0203B80C
 
-	thumb_func_start sub_0203B828
-sub_0203B828: ; 0x0203B828
+	thumb_func_start MapEvents_ComputeRamHeader
+MapEvents_ComputeRamHeader: ; 0x0203B828
 	add r1, r0, #0
 	ldr r2, [r0, #0x20]
 	add r1, #0x20
@@ -402,7 +402,7 @@ _0203B886:
 	mov r1, #0
 	str r1, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_0203B828
+	thumb_func_end MapEvents_ComputeRamHeader
 
 	thumb_func_start WildEncounters_ReadFromNarc
 WildEncounters_ReadFromNarc: ; 0x0203B88C
@@ -421,9 +421,9 @@ WildEncounters_ReadFromNarc: ; 0x0203B88C
 	add r2, r0, #0
 	add r0, r5, #0
 #ifdef HEARTGOLD
-	mov r1, #0x25
+	mov r1, #0x25 ; NARC_fielddata_encountdata_g_enc_data
 #else
-	mov r1, #0x88
+	mov r1, #0x88 ; NARC_fielddata_encountdata_s_enc_data
 #endif
 	bl ReadWholeNarcMemberByIdPair
 _0203B8B4:
@@ -431,18 +431,18 @@ _0203B8B4:
 	.balign 4, 0
 	thumb_func_end WildEncounters_ReadFromNarc
 
-	thumb_func_start sub_0203B8B8
-sub_0203B8B8: ; 0x0203B8B8
+	thumb_func_start MapEvents_GetLoadedEncTable
+MapEvents_GetLoadedEncTable: ; 0x0203B8B8
 	ldr r1, [r0, #0x14]
 	mov r0, #0x92
 	lsl r0, r0, #4
 	add r0, r1, r0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0203B8B8
+	thumb_func_end MapEvents_GetLoadedEncTable
 
-	thumb_func_start sub_0203B8C4
-sub_0203B8C4: ; 0x0203B8C4
+	thumb_func_start LevelScripts_ReadFromNarc
+LevelScripts_ReadFromNarc: ; 0x0203B8C4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -455,7 +455,7 @@ sub_0203B8C4: ; 0x0203B8C4
 	add r1, r5, r1
 	lsl r2, r2, #8
 	bl MIi_CpuClearFast
-	mov r0, #0xc
+	mov r0, #0xc ; NARC_fielddata_script_scr_seq
 	add r1, r4, #0
 	bl GetNarcMemberSizeByIdPair
 	mov r1, #1
@@ -467,14 +467,14 @@ _0203B8F4:
 	mov r0, #0x82
 	lsl r0, r0, #4
 	add r0, r5, r0
-	mov r1, #0xc
+	mov r1, #0xc ; NARC_fielddata_script_scr_seq
 	add r2, r4, #0
 	bl ReadWholeNarcMemberByIdPair
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0203B8C4
+	thumb_func_end LevelScripts_ReadFromNarc
 
-	thumb_func_start sub_0203B904
-sub_0203B904: ; 0x0203B904
+	thumb_func_start MapEvents_GetLoadedLevelScripts
+MapEvents_GetLoadedLevelScripts: ; 0x0203B904
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
@@ -487,4 +487,4 @@ _0203B912:
 	lsl r0, r0, #4
 	add r0, r1, r0
 	pop {r4, pc}
-	thumb_func_end sub_0203B904
+	thumb_func_end MapEvents_GetLoadedLevelScripts

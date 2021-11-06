@@ -1219,7 +1219,7 @@ ov15_021F9D9C: ; 0x021F9D9C
 	add r5, r0, #0
 	add r4, r1, #0
 	add r0, r2, #0
-	bl sub_02078000
+	bl TMHMGetMove
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
@@ -3673,7 +3673,7 @@ ov15_021FAFFC: ; 0x021FAFFC
 	beq _021FB050
 	str r0, [sp]
 	ldr r0, [r5]
-	bl sub_02077B5C
+	bl MoveItemSlotInList
 	add r0, r4, #0
 	bl ov15_021F9F08
 	ldr r1, _021FB05C ; =0x0000066C
@@ -3831,7 +3831,7 @@ ov15_021FB14C: ; 0x021FB14C
 	add r0, #0x66
 	ldrh r0, [r0]
 	mov r2, #6
-	bl sub_02077CE8
+	bl LoadItemDataOrGfx
 	add r7, r0, #0
 	mov r0, #0x8d
 	lsl r0, r0, #2
@@ -3891,7 +3891,7 @@ _021FB1B8:
 _021FB1E8:
 	add r0, r7, #0
 	mov r1, #6
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _021FB280
 	mov r2, #0x8d
@@ -3970,7 +3970,7 @@ _021FB27A:
 _021FB280:
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	bne _021FB2AE
 	mov r0, #0x8d
@@ -3978,7 +3978,7 @@ _021FB280:
 	ldr r0, [r4, r0]
 	add r0, #0x66
 	ldrh r0, [r0]
-	bl sub_02078168
+	bl ItemIdIsNotApricornBall
 	cmp r0, #1
 	bne _021FB2A4
 	mov r1, #8
@@ -3993,13 +3993,13 @@ _021FB2A4:
 _021FB2AE:
 	add r0, r7, #0
 	mov r1, #4
-	bl sub_02077DAC
+	bl GetItemAttr_PreloadedItemData
 	cmp r0, #0
 	beq _021FB310
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020781C4
+	bl Bag_GetRegisteredItemSlot1
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -4009,7 +4009,7 @@ _021FB2AE:
 	beq _021FB2E8
 	add r0, r1, #4
 	ldr r0, [r4, r0]
-	bl sub_020781D0
+	bl Bag_GetRegisteredItemSlot2
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -4507,7 +4507,7 @@ ov15_021FB680: ; 0x021FB680
 	add r2, #0x66
 	ldrh r2, [r2]
 	ldr r1, [r4, r1]
-	bl sub_02077AA4
+	bl GetItemUseErrorMessage
 	add r0, r4, #0
 	mov r1, #0
 	bl ov15_021FEF48
@@ -4622,7 +4622,7 @@ _021FB7B0:
 	ldrh r2, [r2]
 	ldr r1, [r4, r1]
 	mov r3, #6
-	bl sub_02077980
+	bl TryFormatRegisteredKeyItemUseMessage
 	cmp r0, #1
 	bne _021FB7D6
 	add r0, r4, #0
@@ -4703,7 +4703,7 @@ _021FB850:
 	ldr r0, [r4, r0]
 	add r0, #0x66
 	ldrh r0, [r0]
-	bl sub_02078000
+	bl TMHMGetMove
 	add r5, r0, #0
 	mov r0, #0xbd
 	lsl r0, r0, #2
@@ -4712,7 +4712,7 @@ _021FB850:
 	add r2, r5, #0
 	bl BufferMoveName
 	add r0, r5, #0
-	bl sub_02078024
+	bl MoveIsHM
 	cmp r0, #1
 	ldr r2, _021FB9C4 ; =0x000005E4
 	bne _021FB88A
@@ -5061,7 +5061,7 @@ ov15_021FBB28: ; 0x021FBB28
 	ldrb r1, [r1, #0xd]
 	ldrh r2, [r2]
 	ldrh r3, [r4, r3]
-	bl sub_02078480
+	bl Pocket_TakeItem
 	add r0, r4, #0
 	bl ov15_021F9F08
 	mov r0, #0x8d
@@ -5250,7 +5250,7 @@ ov15_021FBCAC: ; 0x021FBCAC
 	ldr r0, [r1, #4]
 	ldrb r1, [r1, #0xd]
 	ldrh r2, [r2]
-	bl sub_02078568
+	bl Pocket_GetQuantity
 	cmp r0, #1
 	bne _021FBCF2
 	add r0, r4, #0
@@ -5869,7 +5869,7 @@ _021FC186:
 	ldrb r1, [r1, #0xd]
 	ldrh r2, [r2]
 	ldrh r3, [r5, r3]
-	bl sub_02078480
+	bl Pocket_TakeItem
 	add r0, r5, #0
 	bl ov15_021F9F08
 	mov r0, #0x8d
@@ -5920,7 +5920,7 @@ ov15_021FC224: ; 0x021FC224
 	ldr r1, [r5, r1]
 	add r1, #0x66
 	ldrh r1, [r1]
-	bl sub_020781DC
+	bl Bag_TryRegisterItem
 	cmp r0, #0
 	bne _021FC28C
 	mov r0, #0x2f
@@ -6070,7 +6070,7 @@ ov15_021FC37C: ; 0x021FC37C
 	ldr r1, [r5, r1]
 	add r1, #0x66
 	ldrh r1, [r1]
-	bl sub_02078208
+	bl Bag_UnregisterItem
 	add r0, r5, #0
 	bl ov15_02200294
 	add r0, r5, #0
@@ -6488,7 +6488,7 @@ _021FC6B4:
 	ldr r0, [r5, r0]
 	add r0, #0x66
 	ldrh r0, [r0]
-	bl sub_02078168
+	bl ItemIdIsNotApricornBall
 	cmp r0, #0
 	bne _021FC75C
 _021FC6E4:
@@ -7203,7 +7203,7 @@ _021FCC7C:
 	ldr r0, [r1, #4]
 	ldrb r1, [r1, #0xd]
 	ldrh r2, [r2]
-	bl sub_02078568
+	bl Pocket_GetQuantity
 	cmp r0, #1
 	bne _021FCD0C
 	mov r0, #0x2f
@@ -7944,7 +7944,7 @@ _021FD2B4:
 	ldrb r1, [r1, #0xd]
 	ldrh r2, [r2]
 	ldrh r3, [r4, r3]
-	bl sub_02078480
+	bl Pocket_TakeItem
 	add r0, r4, #0
 	bl ov15_021F9F08
 	add r4, #0x34
@@ -8777,11 +8777,11 @@ ov15_021FD93C: ; 0x021FD93C
 	ldr r0, _021FDAA0 ; =0x00003DEF
 	ldr r1, _021FDAA4 ; =0x0000294A
 	mov r2, #0
-	bl sub_020BF084
+	bl NNS_G3dGlbMaterialColorDiffAmb
 	ldr r0, _021FDAA0 ; =0x00003DEF
 	mov r2, #0
 	add r1, r0, #0
-	bl sub_020BF0A8
+	bl NNS_G3dGlbMaterialColorSpecEmi
 	mov r0, #0x1f
 	mov r1, #0
 	str r0, [sp]
@@ -8789,7 +8789,7 @@ ov15_021FD93C: ; 0x021FD93C
 	mov r2, #3
 	add r3, r1, #0
 	str r1, [sp, #4]
-	bl sub_020BF0CC
+	bl NNS_G3dGlbPolygonAttr
 	ldr r2, _021FDA94 ; =0x04000060
 	ldr r0, _021FDA98 ; =0xFFFFCFFF
 	ldrh r1, [r2]
@@ -8883,10 +8883,10 @@ _021FDA58:
 	add r0, r4, #0
 	add r1, r6, #0
 	add r3, r2, #0
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_020BF070
+	bl NNS_G3dGlbLightColor
 	add r4, r4, #1
 	cmp r4, #4
 	blo _021FDA58
@@ -9320,24 +9320,24 @@ _021FDDB6:
 	ldr r0, [r4, #0x54]
 	mov r1, #1
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	ldr r0, [r4, #0x54]
 	mov r1, #1
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r1, #1
 	ldr r0, [r4, #0x54]
 	lsl r2, r1, #9
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r1, #1
 	ldr r0, [r4, #0x54]
 	lsl r2, r1, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #0x3f
 	ldr r0, [r4, #0x54]
 	mov r1, #1
 	lsl r2, r2, #0x18
-	bl sub_020C2C54
+	bl NNSi_G3dModifyPolygonAttrMask
 	mov r6, #0
 	add r5, r4, #0
 _021FDE0E:
@@ -9348,13 +9348,13 @@ _021FDE0E:
 	bl NARC_AllocAndReadWholeMember
 	mov r1, #0
 	str r0, [r5, #0x5c]
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [sp, #0x14]
 	ldr r0, _021FDF14 ; =0x00000808
 	ldr r1, [sp, #0x14]
 	ldr r2, [r4, #0x54]
 	add r0, r7, r0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	add r1, r5, #0
 	add r1, #0xa0
 	str r0, [r1]
@@ -9364,7 +9364,7 @@ _021FDE0E:
 	ldr r1, [sp, #0x14]
 	ldr r2, [r4, #0x54]
 	ldr r3, [sp, #0xc]
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	ldr r1, [sp, #4]
 	ldr r0, [sp, #0x10]
 	add r1, r1, r6
@@ -9372,13 +9372,13 @@ _021FDE0E:
 	bl NARC_AllocAndReadWholeMember
 	mov r1, #0
 	str r0, [r5, #0x7c]
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	str r0, [sp, #0x18]
 	ldr r0, _021FDF14 ; =0x00000808
 	ldr r1, [sp, #0x18]
 	ldr r2, [r4, #0x54]
 	add r0, r7, r0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	add r1, r5, #0
 	add r1, #0xc0
 	str r0, [r1]
@@ -9388,7 +9388,7 @@ _021FDE0E:
 	ldr r1, [sp, #0x18]
 	ldr r2, [r4, #0x54]
 	ldr r3, [sp, #0xc]
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #8
@@ -9404,13 +9404,13 @@ _021FDE0E:
 	add r0, #0x9c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_020C3B90
+	bl NNS_G3dGetAnmByIdx
 	add r5, r0, #0
 	ldr r0, _021FDF14 ; =0x00000808
 	ldr r2, [r4, #0x54]
 	add r0, r7, r0
 	add r1, r5, #0
-	bl sub_020C2B7C
+	bl NNS_G3dAllocAnmObj
 	add r1, r4, #0
 	add r1, #0xe0
 	str r0, [r1]
@@ -9420,7 +9420,7 @@ _021FDE0E:
 	ldr r2, [r4, #0x54]
 	ldr r3, [sp, #0xc]
 	add r1, r5, #0
-	bl sub_020BE008
+	bl NNS_G3dAnmObjInit
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
@@ -9437,7 +9437,7 @@ _021FDE0E:
 	add r1, r4, r1
 	add r1, #0xa0
 	ldr r1, [r1]
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 	add r1, r4, #0
 	add r1, #0xe4
 	ldr r1, [r1]
@@ -9446,11 +9446,11 @@ _021FDE0E:
 	add r1, r4, r1
 	add r1, #0xc0
 	ldr r1, [r1]
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 	add r0, r4, #0
 	add r4, #0xe0
 	ldr r1, [r4]
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 	ldr r0, [sp, #0x10]
 	bl NARC_dtor
 	add sp, #0x1c
@@ -9476,12 +9476,12 @@ _021FDF30:
 	add r1, #0xa0
 	ldr r1, [r1]
 	add r0, r5, r7
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	add r1, r4, #0
 	add r1, #0xc0
 	ldr r1, [r1]
 	add r0, r5, r7
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4, #0x5c]
 	bl FreeToHeap
 	ldr r0, [r4, #0x7c]
@@ -9495,7 +9495,7 @@ _021FDF30:
 	add r1, #0xe0
 	ldr r1, [r1]
 	add r0, r5, r0
-	bl sub_020C2BA0
+	bl NNS_G3dFreeAnmObj
 	ldr r0, [sp]
 	add r0, #0x9c
 	ldr r0, [r0]
@@ -9523,7 +9523,7 @@ ov15_021FDF88: ; 0x021FDF88
 	add r1, r4, r1
 	add r1, #0xc0
 	ldr r1, [r1]
-	bl sub_020BE388
+	bl NNS_G3dRenderObjRemoveAnmObj
 	add r1, r4, #0
 	add r1, #0xe4
 	ldr r1, [r1]
@@ -9532,7 +9532,7 @@ ov15_021FDF88: ; 0x021FDF88
 	add r1, r4, r1
 	add r1, #0xa0
 	ldr r1, [r1]
-	bl sub_020BE388
+	bl NNS_G3dRenderObjRemoveAnmObj
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -9570,7 +9570,7 @@ ov15_021FDF88: ; 0x021FDF88
 	add r1, r4, r1
 	add r1, #0xa0
 	ldr r1, [r1]
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 	add r1, r4, #0
 	add r1, #0xe4
 	ldr r1, [r1]
@@ -9579,7 +9579,7 @@ ov15_021FDF88: ; 0x021FDF88
 	add r1, r4, r1
 	add r1, #0xc0
 	ldr r1, [r1]
-	bl sub_020BE294
+	bl NNS_G3dRenderObjAddAnmObj
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021FE01C: .word 0x0000081C
@@ -10321,7 +10321,7 @@ ov15_021FE5C4: ; 0x021FE5C4
 	add r1, r6, #0
 	mov r2, #6
 	add r4, r0, #0
-	bl sub_02077D64
+	bl GetItemDescIntoString
 	b _021FE5F4
 _021FE5E6:
 	mov r0, #0x2f
@@ -10359,7 +10359,7 @@ ov15_021FE620: ; 0x021FE620
 	add r4, r5, #0
 	add r0, r1, #0
 	add r4, #0x14
-	bl sub_02078000
+	bl TMHMGetMove
 	str r0, [sp, #0x10]
 	mov r0, #0x2f
 	lsl r0, r0, #4
@@ -12326,7 +12326,7 @@ _021FF5D8:
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020781C4
+	bl Bag_GetRegisteredItemSlot1
 	ldr r1, [r4]
 	ldrh r1, [r1, r7]
 	cmp r1, r0
@@ -12340,7 +12340,7 @@ _021FF610:
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020781D0
+	bl Bag_GetRegisteredItemSlot2
 	ldr r1, [r4]
 	ldrh r1, [r1, r7]
 	cmp r1, r0
@@ -12723,7 +12723,7 @@ ov15_021FF8F0: ; 0x021FF8F0
 	add r4, r1, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -12739,7 +12739,7 @@ ov15_021FF8F0: ; 0x021FF8F0
 	bl sub_0200E248
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -12809,7 +12809,7 @@ ov15_021FF97C: ; 0x021FF97C
 	cmp r4, #0
 	beq _021FFA34
 	add r0, r6, #0
-	bl sub_02078000
+	bl TMHMGetMove
 	mov r1, #3
 	add r4, r0, #0
 	bl GetWazaAttr
@@ -13011,7 +13011,7 @@ ov15_021FFAD0: ; 0x021FFAD0
 _021FFB54:
 	mov r0, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	ldr r0, _021FFDBC ; =0x0000C0FC
 	str r6, [sp]
@@ -13111,7 +13111,7 @@ _021FFB54:
 _021FFC2A:
 	mov r0, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	str r6, [sp]
 	add r3, r0, #0
 	mov r1, #0x93

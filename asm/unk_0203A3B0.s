@@ -6,6 +6,53 @@
 _021D4154:
 	.space 0x4
 
+	.rodata
+
+_020F6A9C:
+	.byte 0xFC, 0x01, 0x14, 0x00
+	.byte 0xFF, 0xFF, 0x00, 0x00
+_020F6AA4:
+	.byte 0xF8, 0x01, 0x14, 0x00
+	.byte 0xFF, 0xFF, 0x00, 0x00
+_020F6AAC:
+	.byte 0xF4, 0x01, 0x14, 0x00
+	.byte 0xFF, 0xFF, 0x00, 0x00
+_020F6AB4:
+	.byte 0xF0, 0x01, 0x14, 0x00
+	.byte 0xFF, 0xFF, 0x00, 0x00
+_020F6ABC:
+	.byte 0xF0, 0x01, 0x14, 0x00
+	.byte 0xF4, 0x01, 0x14, 0x00
+	.byte 0xF8, 0x01, 0x14, 0x00
+	.byte 0xFC, 0x01, 0x14, 0x00
+	.byte 0xFF, 0xFF, 0x00, 0x00
+
+	.data
+
+	.balign 4, 0
+_0210F91C:
+	.word _020F6AB4
+	.word _020F6AAC
+	.word _020F6AA4
+	.word _020F6A9C
+	.word _020F6ABC
+
+	.balign 4, 0
+_0210F930:
+	.asciz "data/pl_wm.NCLR"
+
+	.balign 4, 0
+_0210F940:
+	.asciz "data/pl_wifi.NCGR"
+
+	.balign 4, 0
+_0210F954:
+	.asciz "data/pl_wm.NCGR"
+
+	.balign 4, 0
+_0210F964:
+	.asciz "data/wm256k.NCGR"
+
 	.text
 
 	thumb_func_start sub_0203A3B0
@@ -655,7 +702,7 @@ _0203A868: .word 0x40000200
 	thumb_func_start sub_0203A86C
 sub_0203A86C: ; 0x0203A86C
 	push {r3, lr}
-	ldr r0, _0203A87C ; =0x021D4154
+	ldr r0, _0203A87C ; =_021D4154
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0203A87A
@@ -663,7 +710,7 @@ sub_0203A86C: ; 0x0203A86C
 _0203A87A:
 	pop {r3, pc}
 	.balign 4, 0
-_0203A87C: .word 0x021D4154
+_0203A87C: .word _021D4154
 	thumb_func_end sub_0203A86C
 
 	thumb_func_start sub_0203A880
@@ -721,7 +768,7 @@ sub_0203A8CC: ; 0x0203A8CC
 	bl sub_02034DCC
 	cmp r0, #0
 	beq _0203A908
-	ldr r0, _0203A90C ; =0x021D4154
+	ldr r0, _0203A90C ; =_021D4154
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0203A8EC
@@ -738,38 +785,38 @@ _0203A8EC:
 	add r2, r6, #0
 	add r3, r7, #0
 	bl sub_0203A3B0
-	ldr r1, _0203A90C ; =0x021D4154
+	ldr r1, _0203A90C ; =_021D4154
 	str r0, [r1]
 _0203A908:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0203A90C: .word 0x021D4154
+_0203A90C: .word _021D4154
 _0203A910: .word 0x0210F91C
 	thumb_func_end sub_0203A8CC
 
 	thumb_func_start sub_0203A914
 sub_0203A914: ; 0x0203A914
 	push {r3, lr}
-	ldr r0, _0203A92C ; =0x021D4154
+	ldr r0, _0203A92C ; =_021D4154
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0203A928
 	bl sub_0203A444
-	ldr r0, _0203A92C ; =0x021D4154
+	ldr r0, _0203A92C ; =_021D4154
 	mov r1, #0
 	str r1, [r0]
 _0203A928:
 	pop {r3, pc}
 	nop
-_0203A92C: .word 0x021D4154
+_0203A92C: .word _021D4154
 	thumb_func_end sub_0203A914
 
 	thumb_func_start sub_0203A930
 sub_0203A930: ; 0x0203A930
 	push {r3, lr}
 	add r1, r0, #0
-	ldr r0, _0203A944 ; =0x021D4154
+	ldr r0, _0203A944 ; =_021D4154
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0203A940
@@ -777,14 +824,14 @@ sub_0203A930: ; 0x0203A930
 _0203A940:
 	pop {r3, pc}
 	nop
-_0203A944: .word 0x021D4154
+_0203A944: .word _021D4154
 	thumb_func_end sub_0203A930
 
 	thumb_func_start sub_0203A948
 sub_0203A948: ; 0x0203A948
 	push {r3, lr}
 	add r3, r0, #0
-	ldr r0, _0203A960 ; =0x021D4154
+	ldr r0, _0203A960 ; =_021D4154
 	add r2, r1, #0
 	ldr r0, [r0]
 	cmp r0, #0
@@ -794,7 +841,7 @@ sub_0203A948: ; 0x0203A948
 _0203A95C:
 	pop {r3, pc}
 	nop
-_0203A960: .word 0x021D4154
+_0203A960: .word _021D4154
 	thumb_func_end sub_0203A948
 
 	thumb_func_start sub_0203A964
@@ -851,7 +898,7 @@ _0203A9C6:
 
 	thumb_func_start sub_0203A9C8
 sub_0203A9C8: ; 0x0203A9C8
-	ldr r0, _0203A9D8 ; =0x021D4154
+	ldr r0, _0203A9D8 ; =_021D4154
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0203A9D6
@@ -861,5 +908,5 @@ sub_0203A9C8: ; 0x0203A9C8
 _0203A9D6:
 	bx lr
 	.balign 4, 0
-_0203A9D8: .word 0x021D4154
+_0203A9D8: .word _021D4154
 	thumb_func_end sub_0203A9C8

@@ -18,6 +18,7 @@ Static main
 	Object font.o
 	Object palette.o
 	Object sound.o
+	Object sound_radio_sys.o
 	Object unk_02004A44.o
 	Object unk_02005D10.o
 	Object sound_chatot.o
@@ -216,13 +217,25 @@ Static main
 	Object unk_02074120.o
 	Object party.o
 	Object unk_02074910.o
-
-	### RAM not yet assigned ###
-	Object bss_temp.o
+	Object unk_02074944.o
+	Object unk_02074E5C.o
+	Object unk_020755E8.o
+	Object unk_020773AC.o
+	Object unk_02077678.o
+	Object bag_view.o
+	Object itemtool.o
+	Object bag.o
+	Object unk_02078834.o
+	Object use_item_on_mon.o
+	Object unk_02090C94.o
 
 	### Vendor libraries ###
 	Object middleware.o
 	Object sdk.o
+	Object dwcbm.o
+	Object dwcaccount.o
+	Object wifi.o
+	Object libVCT.o
 	Object nnsys.o
 
 	### NitroSDK ###
@@ -1131,7 +1144,7 @@ Overlay OVY_74
 {
     After OVY_38
     Object overlay_74_thumb.o
-    Object overlay_74_arm.o
+    Object nitrocrypto.o
     ### Size 0x16020 ###
     ### BSS Size 0x1980 ###
     ### SINIT Start 0x223bbb0 ###

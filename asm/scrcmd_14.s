@@ -3,14 +3,14 @@
 
 	.text
 
-	thumb_func_start sub_0204CB5C
-sub_0204CB5C: ; 0x0204CB5C
+	thumb_func_start ScrCmd_312
+ScrCmd_312: ; 0x0204CB5C
 	push {r3, r4, r5, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
 	ldr r5, [r0, #0xc]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl Sav2_DayCare_get
@@ -18,10 +18,10 @@ sub_0204CB5C: ; 0x0204CB5C
 	bl sub_0206CE94
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0204CB5C
+	thumb_func_end ScrCmd_312
 
-	thumb_func_start sub_0204CB7C
-sub_0204CB7C: ; 0x0204CB7C
+	thumb_func_start ScrCmd_313
+ScrCmd_313: ; 0x0204CB7C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -42,10 +42,10 @@ sub_0204CB7C: ; 0x0204CB7C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CB7C
+	thumb_func_end ScrCmd_313
 
-	thumb_func_start sub_0204CBAC
-sub_0204CBAC: ; 0x0204CBAC
+	thumb_func_start ScrCmd_365
+ScrCmd_365: ; 0x0204CBAC
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -56,10 +56,10 @@ sub_0204CBAC: ; 0x0204CBAC
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CBAC
+	thumb_func_end ScrCmd_365
 
-	thumb_func_start sub_0204CBC4
-sub_0204CBC4: ; 0x0204CBC4
+	thumb_func_start ScrCmd_366
+ScrCmd_366: ; 0x0204CBC4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -81,17 +81,17 @@ sub_0204CBC4: ; 0x0204CBC4
 	bl GiveEggToPlayer
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0204CBC4
+	thumb_func_end ScrCmd_366
 
-	thumb_func_start sub_0204CBF8
-sub_0204CBF8: ; 0x0204CBF8
+	thumb_func_start ScrCmd_361
+ScrCmd_361: ; 0x0204CBF8
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r5, [r0]
 	mov r1, #0x10
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r7, r0, #0
 	add r0, r4, #0
 	ldr r6, [r5, #0xc]
@@ -125,17 +125,17 @@ sub_0204CBF8: ; 0x0204CBF8
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CBF8
+	thumb_func_end ScrCmd_361
 
-	thumb_func_start sub_0204CC58
-sub_0204CC58: ; 0x0204CC58
+	thumb_func_start ScrCmd_367
+ScrCmd_367: ; 0x0204CC58
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r5, [r0]
 	mov r1, #0x10
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r7, r0, #0
 	add r0, r4, #0
 	ldr r5, [r5, #0xc]
@@ -164,17 +164,17 @@ sub_0204CC58: ; 0x0204CC58
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CC58
+	thumb_func_end ScrCmd_367
 
-	thumb_func_start sub_0204CCAC
-sub_0204CCAC: ; 0x0204CCAC
+	thumb_func_start ScrCmd_371
+ScrCmd_371: ; 0x0204CCAC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
 	ldr r4, [r0, #0xc]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -201,17 +201,17 @@ sub_0204CCAC: ; 0x0204CCAC
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CCAC
+	thumb_func_end ScrCmd_371
 
-	thumb_func_start sub_0204CCFC
-sub_0204CCFC: ; 0x0204CCFC
+	thumb_func_start ScrCmd_372
+ScrCmd_372: ; 0x0204CCFC
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r5, [r0]
 	mov r1, #0x10
 	add r0, r5, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -228,10 +228,10 @@ sub_0204CCFC: ; 0x0204CCFC
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CCFC
+	thumb_func_end ScrCmd_372
 
-	thumb_func_start sub_0204CD34
-sub_0204CD34: ; 0x0204CD34
+	thumb_func_start ScrCmd_373
+ScrCmd_373: ; 0x0204CD34
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r1, r6, #0
@@ -259,10 +259,10 @@ sub_0204CD34: ; 0x0204CD34
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CD34
+	thumb_func_end ScrCmd_373
 
-	thumb_func_start sub_0204CD74
-sub_0204CD74: ; 0x0204CD74
+	thumb_func_start ScrCmd_385
+ScrCmd_385: ; 0x0204CD74
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -270,7 +270,7 @@ sub_0204CD74: ; 0x0204CD74
 	ldr r0, [r0]
 	mov r1, #0x10
 	ldr r5, [r0, #0xc]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -322,10 +322,10 @@ sub_0204CD74: ; 0x0204CD74
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0204CD74
+	thumb_func_end ScrCmd_385
 
-	thumb_func_start sub_0204CE00
-sub_0204CE00: ; 0x0204CE00
+	thumb_func_start ScrCmd_387
+ScrCmd_387: ; 0x0204CE00
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -346,10 +346,10 @@ sub_0204CE00: ; 0x0204CE00
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CE00
+	thumb_func_end ScrCmd_387
 
-	thumb_func_start sub_0204CE30
-sub_0204CE30: ; 0x0204CE30
+	thumb_func_start ScrCmd_388
+ScrCmd_388: ; 0x0204CE30
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -370,10 +370,10 @@ sub_0204CE30: ; 0x0204CE30
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CE30
+	thumb_func_end ScrCmd_388
 
-	thumb_func_start sub_0204CE60
-sub_0204CE60: ; 0x0204CE60
+	thumb_func_start ScrCmd_715
+ScrCmd_715: ; 0x0204CE60
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	add r0, #0x80
@@ -454,7 +454,7 @@ _0204CEFA:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CE60
+	thumb_func_end ScrCmd_715
 
 	thumb_func_start sub_0204CF10
 sub_0204CF10: ; 0x0204CF10
@@ -530,8 +530,8 @@ _0204CF44:
 	.balign 4, 0
 	thumb_func_end sub_0204CF10
 
-	thumb_func_start sub_0204CFB8
-sub_0204CFB8: ; 0x0204CFB8
+	thumb_func_start ScrCmd_690
+ScrCmd_690: ; 0x0204CFB8
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -627,4 +627,4 @@ _0204D07E:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0204D084: .word 0x000001DF
-	thumb_func_end sub_0204CFB8
+	thumb_func_end ScrCmd_690

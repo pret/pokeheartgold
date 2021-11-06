@@ -15,7 +15,7 @@ sub_02026EB4: ; 0x02026EB4
 	bl AllocFromHeap
 	add r4, r0, #0
 	str r6, [r4]
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_InitMtxStack
 	mov r1, #2
 	ldr r0, _02026F50 ; =0x04000540
@@ -23,7 +23,7 @@ sub_02026EB4: ; 0x02026EB4
 	str r1, [r0]
 	bne _02026F00
 	lsl r0, r5, #7
-	bl sub_020B67B4
+	bl NNS_GfdGetLnkTexVramManagerWorkSize
 	add r6, r0, #0
 	ldr r0, [r4]
 	add r1, r6, #0
@@ -48,7 +48,7 @@ _02026F0A:
 	bne _02026F34
 	ldr r0, [sp, #0x20]
 	lsl r0, r0, #8
-	bl sub_020B6B14
+	bl NNS_GfdGetLnkPlttVramManagerWorkSize
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -158,7 +158,7 @@ sub_02026FE8: ; 0x02026FE8
 	sub sp, #4
 	ldr r4, [sp, #0x10]
 	str r4, [sp]
-	bl sub_020B67BC
+	bl NNS_GfdInitLnkTexVramManager
 	add sp, #4
 	pop {r3, r4, pc}
 	thumb_func_end sub_02026FE8
@@ -166,22 +166,22 @@ sub_02026FE8: ; 0x02026FE8
 	thumb_func_start sub_02026FF8
 sub_02026FF8: ; 0x02026FF8
 	push {r3, lr}
-	bl sub_020B6B1C
+	bl NNS_GfdInitLnkPlttVramManager
 	pop {r3, pc}
 	thumb_func_end sub_02026FF8
 
 	thumb_func_start sub_02027000
 sub_02027000: ; 0x02027000
-	ldr r3, _02027004 ; =sub_020B5A24
+	ldr r3, _02027004 ; =NNS_GfdInitFrmTexVramManager
 	bx r3
 	.balign 4, 0
-_02027004: .word sub_020B5A24
+_02027004: .word NNS_GfdInitFrmTexVramManager
 	thumb_func_end sub_02027000
 
 	thumb_func_start sub_02027008
 sub_02027008: ; 0x02027008
-	ldr r3, _0202700C ; =sub_020B5D18
+	ldr r3, _0202700C ; =NNS_GfdInitFrmPlttVramManager
 	bx r3
 	.balign 4, 0
-_0202700C: .word sub_020B5D18
+_0202700C: .word NNS_GfdInitFrmPlttVramManager
 	thumb_func_end sub_02027008

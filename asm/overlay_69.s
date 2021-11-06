@@ -2842,7 +2842,7 @@ ov69_021E706C: ; 0x021E706C
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	asr r3, r3, #0x10
-	bl sub_020BF034
+	bl NNS_G3dGlbLightVector
 	pop {r4, pc}
 	nop
 _021E70A0: .word 0x0000C2EC

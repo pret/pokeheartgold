@@ -15,6 +15,16 @@ _021D1BA4:
 _021D1F24:
 	.space 0x48
 
+	.data
+
+_0210F6CC:
+	.byte 0x71, 0x02, 0x00, 0x00
+_0210F6D0:
+	.byte 0x00, 0x00, 0x00, 0x00, 0xDF, 0xB0, 0x08, 0x99, 0x00, 0x00, 0x00, 0x00
+	.public _0210F6DC
+_0210F6DC:
+	.byte 0x01, 0x00, 0x00, 0x00
+
 	.text
 
 	thumb_func_start sub_0201FBB8
@@ -262,7 +272,7 @@ SetMTRNGSeed: ; 0x0201FD74
 	ldr r1, _0201FDA8 ; =_021D15A4
 	mov r4, #0x27
 	str r0, [r1, #8]
-	ldr r1, _0201FDAC ; =0x0210F6CC
+	ldr r1, _0201FDAC ; =_0210F6CC
 	mov r0, #1
 	str r0, [r1]
 	ldr r1, _0201FDB0 ; =_021D15AC + 0x4
@@ -280,13 +290,13 @@ _0201FD88:
 	stmia r1!, {r2}
 	cmp r0, r4
 	blt _0201FD88
-	ldr r1, _0201FDAC ; =0x0210F6CC
+	ldr r1, _0201FDAC ; =_0210F6CC
 	str r0, [r1]
 	pop {r4, r5}
 	bx lr
 	nop
 _0201FDA8: .word _021D15A4
-_0201FDAC: .word 0x0210F6CC
+_0201FDAC: .word _0210F6CC
 _0201FDB0: .word _021D15AC + 0x4
 _0201FDB4: .word 0x6C078965
 	thumb_func_end SetMTRNGSeed
@@ -294,7 +304,7 @@ _0201FDB4: .word 0x6C078965
 	thumb_func_start MTRandom
 MTRandom: ; 0x0201FDB8
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r0, _0201FE9C ; =0x0210F6CC
+	ldr r0, _0201FE9C ; =_0210F6CC
 	ldr r1, [r0]
 	mov r0, #0x27
 	lsl r0, r0, #4
@@ -307,7 +317,7 @@ MTRandom: ; 0x0201FDB8
 	bl SetMTRNGSeed
 _0201FDD2:
 	ldr r4, _0201FEA4 ; =_021D15AC
-	ldr r1, _0201FEA8 ; =0x0210F6D0
+	ldr r1, _0201FEA8 ; =_0210F6D0
 	ldr r5, _0201FEAC ; =0x7FFFFFFF
 	ldr r6, _0201FEB0 ; =0x00000634
 	mov r0, #0
@@ -337,7 +347,7 @@ _0201FDDC:
 	lsl r1, r0, #2
 	add r1, r2, r1
 	mov r2, #0xe3
-	ldr r4, _0201FEA8 ; =0x0210F6D0
+	ldr r4, _0201FEA8 ; =_0210F6D0
 	ldr r3, _0201FEB4 ; =0x0000026F
 	lsl r2, r2, #2
 _0201FE14:
@@ -381,15 +391,15 @@ _0201FE3C:
 	eor r3, r0
 	lsl r0, r4, #0x1f
 	lsr r1, r0, #0x1d
-	ldr r0, _0201FEA8 ; =0x0210F6D0
+	ldr r0, _0201FEA8 ; =_0210F6D0
 	ldr r0, [r0, r1]
 	mov r1, #0
 	eor r0, r3
 	str r0, [r2, #0x44]
-	ldr r0, _0201FE9C ; =0x0210F6CC
+	ldr r0, _0201FE9C ; =_0210F6CC
 	str r1, [r0]
 _0201FE70:
-	ldr r0, _0201FE9C ; =0x0210F6CC
+	ldr r0, _0201FE9C ; =_0210F6CC
 	ldr r2, [r0]
 	add r1, r2, #1
 	str r1, [r0]
@@ -412,10 +422,10 @@ _0201FE70:
 	eor r0, r1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0201FE9C: .word 0x0210F6CC
+_0201FE9C: .word _0210F6CC
 _0201FEA0: .word 0x00001571
 _0201FEA4: .word _021D15AC
-_0201FEA8: .word 0x0210F6D0
+_0201FEA8: .word _0210F6D0
 _0201FEAC: .word 0x7FFFFFFF
 _0201FEB0: .word 0x00000634
 _0201FEB4: .word 0x0000026F

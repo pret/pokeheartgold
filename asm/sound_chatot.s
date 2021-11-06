@@ -1,16 +1,17 @@
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start sub_02006C8C
-sub_02006C8C: ; 0x02006C8C
+	thumb_func_start ChatotSoundMain
+ChatotSoundMain: ; 0x02006C8C
 	push {r4, lr}
 	mov r0, #0x10
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #0x1e
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _02006CC2
@@ -32,17 +33,17 @@ _02006CC2:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02006C8C
+	thumb_func_end ChatotSoundMain
 
 	thumb_func_start Chatot_checkCry
 Chatot_checkCry: ; 0x02006CC8
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	mov r0, #0x1f
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
 	mov r0, #0x36
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	add r0, r6, #0
 	bl Chatot_exists
@@ -78,7 +79,7 @@ sub_02006D04: ; 0x02006D04
 	bl sub_020059D8
 	str r0, [sp]
 	mov r0, #0x1e
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	str r0, [sp, #4]
 	add r0, r6, #0
 	bl Chatot_checkCry
@@ -153,10 +154,10 @@ _02006D2C:
 sub_02006DB8: ; 0x02006DB8
 	push {r3, r4, r5, lr}
 	mov r0, #0x10
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
 	mov r0, #0x1e
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	ldrb r0, [r5]
 	cmp r0, #1
@@ -229,7 +230,7 @@ sub_02006E3C: ; 0x02006E3C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x1f
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	strb r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -244,7 +245,7 @@ sub_02006E4C: ; 0x02006E4C
 	add r7, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr ; ->myChatot
 	cmp r5, #0
 	bne _02006E70
 	ldr r0, [r0]
@@ -267,16 +268,16 @@ _02006E7C:
 	mov r0, #0xb
 	str r0, [sp]
 	mov r0, #0
-	ldr r1, _02006E9C ; =0x000001B9
+	ldr r1, _02006E9C ; =SPECIES_CHATOT
 	add r2, r6, #0
 	add r3, r4, #0
 	str r0, [sp, #4]
-	bl sub_020063A4
+	bl PlayCryEx
 _02006E98:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02006E9C: .word 0x000001B9
+_02006E9C: .word SPECIES_CHATOT
 	thumb_func_end sub_02006E4C
 
 	thumb_func_start sub_02006EA0
@@ -288,7 +289,7 @@ sub_02006EA0: ; 0x02006EA0
 	add r7, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_02004400
+	bl GF_SdatGetAttrPtr
 	cmp r5, #0
 	bne _02006EC4
 	ldr r0, [r0]

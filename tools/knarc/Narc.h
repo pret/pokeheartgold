@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#if (__GNUC__ <= 7) && !defined _MSC_VER
+#if (__cplusplus < 201703L)
 #include <experimental/filesystem>
 namespace fs = std::experimental::filesystem;
 #else

@@ -830,7 +830,7 @@ _0222767E:
 	add r0, r4, #0
 	bl sub_0201A4B0
 	ldr r0, [r5, #8]
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _022276A6
 	bl ov74_022339C8
@@ -11826,7 +11826,7 @@ _0222CF06:
 	cmp r0, #0x2b
 	bne _0222CF2E
 _0222CF22:
-	bl sub_020DEF44
+	bl WM_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	bl sub_0203A930
@@ -17793,7 +17793,7 @@ ov74_0222FF28: ; 0x0222FF28
 	mov r1, #1
 	add r0, #0x60
 	strb r1, [r0]
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	add r1, r4, #0
 	add r1, #0x62
 	strh r0, [r1]
@@ -17826,9 +17826,9 @@ ov74_0222FF68: ; 0x0222FF68
 	push {r4, lr}
 	bl ov74_02231054
 	add r4, r0, #0
-	bl sub_020DEFD4
+	bl WM_GetDispersionBeaconPeriod
 	strh r0, [r4, #0x18]
-	bl sub_020DF250
+	bl WM_GetNextTgid
 	strh r0, [r4, #0xc]
 	pop {r4, pc}
 	.balign 4, 0
@@ -17844,7 +17844,7 @@ ov74_0222FF80: ; 0x0222FF80
 	bl ov74_02231054
 	ldrh r0, [r0, #0x32]
 	strh r0, [r4, #4]
-	bl sub_020DF064
+	bl WM_GetDispersionScanPeriod
 	strh r0, [r4, #6]
 	mov r0, #0xff
 	strb r0, [r4, #8]
@@ -17861,7 +17861,7 @@ ov74_0222FFAC: ; 0x0222FFAC
 	push {r3, r4, r5, r6, r7, lr}
 	bl ov74_022310C4
 	add r7, r0, #0
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	add r3, r0, #0
 	beq _0222FFF8
 	ldrh r2, [r7, #4]
@@ -17971,7 +17971,7 @@ ov74_02230070: ; 0x02230070
 	bl ov74_0223107C
 	cmp r0, #0xc
 	bne _02230092
-	bl sub_020DE458
+	bl WM_Finish
 	mov r0, #0xc
 	bl ov74_02231070
 	mov r0, #1
@@ -19176,7 +19176,7 @@ _02230A06:
 ov74_02230A14: ; 0x02230A14
 	push {r3, lr}
 	ldr r0, _02230A30 ; =ov74_0222FFFC
-	bl sub_020DEBA8
+	bl WM_SetIndCallback
 	cmp r0, #0
 	beq _02230A2A
 	mov r0, #4
@@ -19288,7 +19288,7 @@ _02230AA2:
 	ldr r0, [r4, #0x34]
 	mov r1, #2
 	add r7, #0xe0
-	bl sub_020DE248
+	bl WM_Init
 	bl ov74_02230A14
 	str r0, [r4, #0x10]
 	mov r2, #0
@@ -19383,7 +19383,7 @@ _02230B84:
 	add r7, r7, r0
 	bl ov74_02231184
 	str r7, [r0, #0xc]
-	bl sub_020DF250
+	bl WM_GetNextTgid
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02230BA8: .word 0x00400131
@@ -19779,7 +19779,7 @@ ov74_02230E7C: ; 0x02230E7C
 	mov r0, #0
 	pop {r3, pc}
 _02230E8C:
-	bl sub_020DEF44
+	bl WM_GetLinkLevel
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov74_02230E7C
@@ -20012,7 +20012,7 @@ ov74_02231008: ; 0x02231008
 	beq _0223102E
 	pop {r4, pc}
 _02231022:
-	bl sub_020DE458
+	bl WM_Finish
 	mov r0, #1
 	bl ov74_0223113C
 	pop {r4, pc}
@@ -20731,7 +20731,7 @@ ov74_02231460: ; 0x02231460
 	mov r1, #0
 	add r2, r6, #0
 	lsr r3, r3, #0x10
-	bl sub_020DFD7C
+	bl WM_SetMPDataToPortEx
 	cmp r0, #2
 	beq _02231496
 	bl ov74_02231448
@@ -20750,7 +20750,7 @@ _0223149C: .word ov74_02230018
 ov74_022314A0: ; 0x022314A0
 	push {r3, lr}
 	ldr r0, _022314B8 ; =ov74_02230030
-	bl sub_020DF2C4
+	bl WM_Enable
 	cmp r0, #2
 	beq _022314B4
 	bl ov74_02231448
@@ -20767,7 +20767,7 @@ _022314B8: .word ov74_02230030
 ov74_022314BC: ; 0x022314BC
 	push {r3, lr}
 	ldr r0, _022314D8 ; =ov74_02230070
-	bl sub_020DF338
+	bl WM_Disable
 	cmp r0, #2
 	beq _022314D4
 	bl ov74_02231448
@@ -20792,7 +20792,7 @@ ov74_022314DC: ; 0x022314DC
 	mov r1, #3
 	mov r2, #0x11
 	lsr r3, r3, #0x10
-	bl sub_020E0EF4
+	bl WM_MeasureChannel
 	cmp r0, #2
 	beq _022314FE
 	bl ov74_02231448
@@ -20821,7 +20821,7 @@ ov74_02231508: ; 0x02231508
 	strh r0, [r5, #4]
 	ldr r0, _02231540 ; =ov74_02230110
 	add r1, r5, #0
-	bl sub_020DF4F8
+	bl WM_SetParentParameter
 	cmp r0, #2
 	beq _0223153C
 	bl ov74_02231448
@@ -20838,7 +20838,7 @@ _02231540: .word ov74_02230110
 ov74_02231544: ; 0x02231544
 	push {r3, lr}
 	ldr r0, _0223155C ; =ov74_02230138
-	bl sub_020DF680
+	bl WM_StartParent
 	cmp r0, #2
 	beq _02231558
 	bl ov74_02231448
@@ -20857,7 +20857,7 @@ ov74_02231560: ; 0x02231560
 	bl ov74_022310C4
 	add r1, r0, #0
 	ldr r0, _02231580 ; =ov74_02230404
-	bl sub_020DF6D0
+	bl WM_StartScan
 	cmp r0, #2
 	beq _0223157A
 	bl ov74_02231448
@@ -20930,7 +20930,7 @@ ov74_02231584: ; 0x02231584
 	bl ov74_022310C4
 	add r1, r0, #0
 	ldr r0, _02231618 ; =ov74_02230520
-	bl sub_020DF6D0
+	bl WM_StartScan
 	cmp r0, #2
 	beq _0223160E
 	bl ov74_02231448
@@ -20948,7 +20948,7 @@ _02231618: .word ov74_02230520
 ov74_0223161C: ; 0x0223161C
 	push {r3, lr}
 	ldr r0, _02231634 ; =ov74_02230590
-	bl sub_020DF90C
+	bl WM_EndScan
 	cmp r0, #2
 	beq _02231630
 	bl ov74_02231448
@@ -20974,7 +20974,7 @@ ov74_02231638: ; 0x02231638
 	ldr r0, _0223166C ; =ov74_022305E4
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_020DF94C
+	bl WM_StartConnectEx
 	cmp r0, #2
 	beq _02231664
 	bl ov74_02231448
@@ -20996,7 +20996,7 @@ ov74_02231670: ; 0x02231670
 	ldr r1, _022316E0 ; =ov74_022308E0
 	mov r0, #4
 	mov r2, #0
-	bl sub_020DEBEC
+	bl WM_SetPortCallback
 	cmp r0, #0
 	beq _0223168C
 	bl ov74_02231448
@@ -21031,7 +21031,7 @@ _0223169C:
 	add r1, r6, #0
 	lsr r2, r2, #0x10
 	add r3, r7, #0
-	bl sub_020DFD14
+	bl WM_StartMP
 	cmp r0, #2
 	beq _022316DA
 	bl ov74_02231448
@@ -21051,7 +21051,7 @@ _022316E4: .word ov74_022306C8
 ov74_022316E8: ; 0x022316E8
 	push {r3, lr}
 	ldr r0, _02231700 ; =ov74_02230964
-	bl sub_020DF378
+	bl WM_PowerOn
 	cmp r0, #2
 	beq _022316FC
 	bl ov74_02231448
@@ -21068,7 +21068,7 @@ _02231700: .word ov74_02230964
 ov74_02231704: ; 0x02231704
 	push {r3, lr}
 	ldr r0, _02231720 ; =ov74_02230988
-	bl sub_020DF3B8
+	bl WM_PowerOff
 	cmp r0, #2
 	beq _0223171C
 	bl ov74_02231448
@@ -21086,7 +21086,7 @@ _02231720: .word ov74_02230988
 ov74_02231724: ; 0x02231724
 	push {r3, lr}
 	ldr r0, _02231740 ; =ov74_022309AC
-	bl sub_020DF480
+	bl WM_Reset
 	cmp r0, #2
 	beq _0223173C
 	bl ov74_02231448
@@ -21104,7 +21104,7 @@ _02231740: .word ov74_022309AC
 ov74_02231744: ; 0x02231744
 	push {r3, lr}
 	ldr r0, _02231760 ; =ov74_022309F0
-	bl sub_020DF4B8
+	bl WM_End
 	cmp r0, #2
 	beq _0223175C
 	bl ov74_02231448
@@ -21284,7 +21284,7 @@ _0223187E:
 	add r1, r0, #0
 	add r2, sp, #0
 	mov r3, #0x10
-	bl sub_020E219C
+	bl CTRDG_ReadAgbFlash
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -21718,7 +21718,7 @@ ov74_02231BF0: ; 0x02231BF0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r6, r0, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -23334,7 +23334,7 @@ _022327D6:
 	beq _022328B8
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02077CB0
+	bl UpConvertItemId_Gen3to4
 	add r7, r0, #0
 	mov r0, #0x40
 	mov r1, #0x4c
@@ -23343,7 +23343,7 @@ _022327D6:
 	lsr r1, r1, #0x10
 	mov r2, #0x4c
 	add r6, r0, #0
-	bl sub_02077D40
+	bl GetItemNameIntoString
 	mov r0, #0
 	mvn r0, r0
 	str r0, [sp, #0x60]
@@ -23389,7 +23389,7 @@ _022328B8:
 	mov r1, #0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02006218
+	bl PlayCry
 	add sp, #0x78
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -25346,7 +25346,7 @@ _02233920: .word ov60_021EAFE0
 ov74_02233924: ; 0x02233924
 	push {r3, lr}
 	mov r0, #1
-	bl sub_020E1A3C
+	bl CTRDG_IdentifyAgbBackup
 	cmp r0, #0
 	bne _02233934
 	mov r0, #1
@@ -25395,7 +25395,7 @@ _0223397A:
 	ldr r0, _022339A8 ; =0x08000100
 	ldr r1, _022339AC ; =0x0223D354
 	mov r2, #0xfc
-	bl sub_020E140C
+	bl CTRDG_CpuCopy32
 _02233984:
 	bl ov74_02233924
 	cmp r0, #0
@@ -25455,14 +25455,14 @@ ov74_022339D4: ; 0x022339D4
 	ldr r0, _02233A80 ; =0x0223CAFC
 	mov r1, #0
 	str r1, [r0]
-	bl sub_020E0FF0
+	bl CTRDG_IsAgbCartridge
 	cmp r0, #0
 	bne _022339F0
 	add sp, #0xc0
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _022339F0:
-	bl sub_020E1058
+	bl CTRDG_GetAgbGameCode
 	mov r2, #0
 	cmp r4, #0
 	ble _02233A14
@@ -25491,13 +25491,13 @@ _02233A14:
 	pop {r3, r4, r5, pc}
 _02233A22:
 	mov r0, #1
-	bl sub_020E1678
+	bl CTRDG_Enable
 	add r4, sp, #0
 	mov r0, #2
 	lsl r0, r0, #0x1a
 	add r1, r4, #0
 	mov r2, #0xc0
-	bl sub_020E140C
+	bl CTRDG_CpuCopy32
 	ldr r3, _02233A84 ; =0x0223CB04
 	mov r2, #0
 _02233A3A:
@@ -25583,7 +25583,7 @@ ov74_02233AB8: ; 0x02233AB8
 	lsr r0, r0, #0x10
 	mov r1, #0
 	lsl r3, r3, #0xc
-	bl sub_020E219C
+	bl CTRDG_ReadAgbFlash
 	pop {r3, pc}
 	thumb_func_end ov74_02233AB8
 
@@ -26034,7 +26034,7 @@ ov74_02233DBC: ; 0x02233DBC
 	lsr r0, r0, #0x18
 	add r1, r5, #0
 	mov r2, #4
-	bl sub_020E2200
+	bl CTRDG_WriteAndVerifyAgbFlashAsync
 	pop {r4, r5, r6, pc}
 	nop
 _02233E38: .word 0x0223D33C
@@ -27963,7 +27963,7 @@ ov74_02234A9C: ; 0x02234A9C
 	beq _02234AFE
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02077CB0
+	bl UpConvertItemId_Gen3to4
 	str r0, [sp, #8]
 _02234AFE:
 	add r0, r4, #0
@@ -28682,7 +28682,7 @@ ov74_0223514C: ; 0x0223514C
 	sub sp, #0x1fc
 	sub sp, #0x1fc
 	sub sp, #0x130
-	bl sub_020E1058
+	bl CTRDG_GetAgbGameCode
 	lsr r1, r0, #0x18
 	lsl r1, r1, #0x18
 	lsr r2, r1, #0x18
@@ -28709,26 +28709,26 @@ _02235182:
 	cmp r6, r0
 	bne _022351CC
 	mov r0, #1
-	bl sub_020E1678
+	bl CTRDG_Enable
 	mov r0, #0x81
 	ldr r2, _022351E8 ; =0x000004A8
 	lsl r0, r0, #0x14
 	add r1, r7, #0
-	bl sub_020E138C
+	bl CTRDG_CpuCopy8
 	ldr r0, _022351EC ; =0x08020000
 	add r1, sp, #0
 	mov r2, #0x80
-	bl sub_020E138C
+	bl CTRDG_CpuCopy8
 	mov r0, #0
-	bl sub_020E1678
+	bl CTRDG_Enable
 	ldr r0, _022351F0 ; =ov74_02235138
 	ldr r1, _022351F4 ; =FreeToHeap
-	bl ov74_0223B214
+	bl CRYPTO_SetAllocator
 	ldr r1, _022351E8 ; =0x000004A8
 	ldr r3, _022351F8 ; =_0223B690
 	add r0, r7, #0
 	add r2, sp, #0
-	bl ov74_022370E4
+	bl CRYPTO_VerifySignature
 	cmp r0, #0
 	beq _022351CC
 	add sp, #0x1fc
@@ -28762,13 +28762,13 @@ _022351F8: .word _0223B690
 ov74_022351FC: ; 0x022351FC
 	push {r3, lr}
 	bl CTRDG_Init
-	bl sub_020E0FF0
+	bl CTRDG_IsAgbCartridge
 	cmp r0, #0
 	bne _0223520E
 	mov r0, #0
 	pop {r3, pc}
 _0223520E:
-	bl sub_020E10A0
+	bl CTRDG_GetAgbMakerCode
 	ldr r1, _0223522C ; =0x00003130
 	cmp r0, r1
 	beq _0223521C
@@ -28797,13 +28797,13 @@ ov74_02235230: ; 0x02235230
 	pop {r3, pc}
 _0223523E:
 	mov r0, #1
-	bl sub_020E1678
+	bl CTRDG_Enable
 	mov r0, #0x81
 	lsl r0, r0, #0x14
 	add r1, sp, #0
-	bl sub_020E1570
+	bl CTRDG_Read32
 	mov r0, #0
-	bl sub_020E1678
+	bl CTRDG_Enable
 	ldr r0, [sp]
 	pop {r3, pc}
 	thumb_func_end ov74_02235230
@@ -28825,14 +28825,14 @@ _0223526A:
 	add r4, r0, #0
 _02235274:
 	mov r0, #1
-	bl sub_020E1678
+	bl CTRDG_Enable
 	ldr r0, _0223529C ; =0x08100100
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_020E13E4
+	bl CTRDG_CpuCopy16
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_020E1678
+	bl CTRDG_Enable
 	bl CTRDG_IsExisting
 	cmp r0, #0
 	bne _02235298
@@ -29397,7 +29397,7 @@ ov74_02235690: ; 0x02235690
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	ldr r6, _022356F8 ; =0x0223D454
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -30045,7 +30045,7 @@ ov74_02235B14: ; 0x02235B14
 	ldr r0, [sp, #0x20]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r2, #0x32
 	add r1, r0, #0
 	lsl r2, r2, #6
@@ -30055,7 +30055,7 @@ ov74_02235B14: ; 0x02235B14
 	ldr r0, [sp, #0x20]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
 	mov r0, #0x20
 	str r0, [sp]
@@ -30267,12 +30267,12 @@ _02235D36:
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r7, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r4, r0, #0
 	bl sub_02077CE0
 	add r6, r0, #0
@@ -30471,11 +30471,11 @@ ov74_02235ED0: ; 0x02235ED0
 	bl AllocFromHeap
 	ldr r1, _02235F50 ; =0x0000A001
 	add r4, r0, #0
-	bl sub_020E389C
+	bl MATHi_CRC16InitTableRev
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x50
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	add r6, r0, #0
 	add r0, r4, #0
 	bl FreeToHeap
@@ -30511,7 +30511,7 @@ _02235F12:
 	add r1, r5, #0
 	lsl r2, r2, #2
 	add r3, r7, #0
-	bl ov74_0223706C
+	bl CRYPTO_RC4Encrypt
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0xc
@@ -30534,11 +30534,11 @@ ov74_02235F58: ; 0x02235F58
 	bl AllocFromHeap
 	ldr r1, _02235FF0 ; =0x0000A001
 	add r4, r0, #0
-	bl sub_020E389C
+	bl MATHi_CRC16InitTableRev
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x50
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	add r6, r0, #0
 	add r0, r4, #0
 	bl FreeToHeap
@@ -30586,7 +30586,7 @@ _02235FB2:
 	add r1, r5, #0
 	lsl r2, r2, #2
 	add r3, r7, #0
-	bl ov74_0223706C
+	bl CRYPTO_RC4Encrypt
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0xc
@@ -30621,10 +30621,10 @@ ov74_02236010: ; 0x02236010
 	and r0, r1
 	asr r0, r0, #0xf
 	bne _0223602C
-	bl sub_020E0FF0
+	bl CTRDG_IsAgbCartridge
 	cmp r0, #0
 	bne _0223602C
-	bl sub_020E1A14
+	bl CTRDG_TerminateForPulledOut
 _0223602C:
 	pop {r3, pc}
 	nop
@@ -30945,7 +30945,7 @@ ov74_02236258: ; 0x02236258
 	bl OS_Terminate
 	mov r0, #0
 _0223626C:
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	add r4, r0, #0
 	mov r0, #2
 	lsl r0, r0, #0xe
@@ -31038,7 +31038,7 @@ _0223630E:
 	mov r1, #0x3f
 	lsl r1, r1, #6
 	add r1, r2, r1
-	bl sub_020DF6D0
+	bl WM_StartScan
 	cmp r0, #2
 	beq _0223632A
 	bl ov74_022361B8
@@ -31213,7 +31213,7 @@ _02236488: .word 0x00001158
 ov74_0223648C: ; 0x0223648C
 	push {r3, lr}
 	ldr r0, _022364A4 ; =ov74_022364A8
-	bl sub_020DF90C
+	bl WM_EndScan
 	cmp r0, #2
 	beq _022364A0
 	bl ov74_022361B8
@@ -31321,7 +31321,7 @@ ov74_0223653C: ; 0x0223653C
 	ldr r1, _0223656C ; =ov74_02236570
 	ldr r0, [r0]
 	mov r2, #2
-	bl sub_020DF3F8
+	bl WM_Initialize
 	cmp r0, #2
 	beq _02236562
 	bl ov74_022361B8
@@ -31349,7 +31349,7 @@ ov74_02236570: ; 0x02236570
 	pop {r3, pc}
 _02236584:
 	ldr r0, _022365A8 ; =ov74_02236514
-	bl sub_020DEBA8
+	bl WM_SetIndCallback
 	cmp r0, #0
 	beq _0223659A
 	bl ov74_022361B8
@@ -31379,7 +31379,7 @@ _022365BE:
 	mov r0, #3
 	bl ov74_02236168
 	ldr r0, _022365F4 ; =ov74_022364C0
-	bl sub_020DF4B8
+	bl WM_End
 	cmp r0, #2
 	beq _022365E8
 	mov r0, #9
@@ -31430,7 +31430,7 @@ ov74_02236620: ; 0x02236620
 	mov r0, #3
 	bl ov74_02236168
 	ldr r0, _02236640 ; =ov74_02236644
-	bl sub_020DF480
+	bl WM_Reset
 	cmp r0, #2
 	beq _0223663A
 	bl ov74_022361B8
@@ -31828,7 +31828,7 @@ _022368FA:
 	ldr r2, [r3, r2]
 	add r0, r3, r0
 	add r3, r1, #0
-	bl ov74_0223706C
+	bl CRYPTO_RC4Encrypt
 	ldr r1, _02236968 ; =0x0223E2FC
 	ldr r2, _02236974 ; =0x0000104C
 	ldr r1, [r1]

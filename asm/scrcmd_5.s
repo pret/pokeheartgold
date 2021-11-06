@@ -8,14 +8,14 @@ _021D416C:
 
 	.text
 
-	thumb_func_start sub_02048EB8
-sub_02048EB8: ; 0x02048EB8
+	thumb_func_start ScrCmd_852
+ScrCmd_852: ; 0x02048EB8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	ldr r1, [r4, #8]
 	add r3, r1, #1
 	str r3, [r4, #8]
@@ -28,10 +28,10 @@ sub_02048EB8: ; 0x02048EB8
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02048EB8
+	thumb_func_end ScrCmd_852
 
-	thumb_func_start sub_02048EE0
-sub_02048EE0: ; 0x02048EE0
+	thumb_func_start ScrCmd_503
+ScrCmd_503: ; 0x02048EE0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -52,10 +52,10 @@ sub_02048EE0: ; 0x02048EE0
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02048EE0
+	thumb_func_end ScrCmd_503
 
-	thumb_func_start sub_02048F10
-sub_02048F10: ; 0x02048F10
+	thumb_func_start ScrCmd_504
+ScrCmd_504: ; 0x02048F10
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r4, r0, #0
@@ -234,10 +234,10 @@ _02049082:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02049088: .word 0x00000000
-	thumb_func_end sub_02048F10
+	thumb_func_end ScrCmd_504
 
-	thumb_func_start sub_0204908C
-sub_0204908C: ; 0x0204908C
+	thumb_func_start ScrCmd_505
+ScrCmd_505: ; 0x0204908C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -246,7 +246,7 @@ sub_0204908C: ; 0x0204908C
 	bl sub_02066CF4
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_0204908C
+	thumb_func_end ScrCmd_505
 
 	thumb_func_start sub_020490A0
 sub_020490A0: ; 0x020490A0

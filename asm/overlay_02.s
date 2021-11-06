@@ -1,3 +1,4 @@
+#include "constants/abilities.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -2234,7 +2235,7 @@ _02246CD6:
 	bl SavArray_PlayerParty_get
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0
@@ -2611,7 +2612,7 @@ _02247002:
 	ldr r0, [r0]
 	bl sub_02052544
 	ldr r0, [sp, #0x20]
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
@@ -2739,7 +2740,7 @@ _02247106:
 	ldr r0, [r0]
 	bl sub_02051F00
 	ldr r0, [sp, #0xc]
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	add r5, r0, #0
 	add r5, #0x78
 	mov r6, #0
@@ -2814,7 +2815,7 @@ _022471AC:
 	bl SavArray_PlayerParty_get
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0
@@ -4710,7 +4711,7 @@ _02248010: .word 0x0000013B
 	thumb_func_start ov02_02248014
 ov02_02248014: ; 0x02248014
 	push {r3, lr}
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	ldrb r0, [r0]
 	pop {r3, pc}
 	.balign 4, 0
@@ -4719,7 +4720,7 @@ ov02_02248014: ; 0x02248014
 	thumb_func_start ov02_02248020
 ov02_02248020: ; 0x02248020
 	push {r3, lr}
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	ldrb r0, [r0, #1]
 	pop {r3, pc}
 	.balign 4, 0
@@ -4730,7 +4731,7 @@ ov02_0224802C: ; 0x0224802C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	cmp r4, #0
 	beq _02248044
 	cmp r4, #1
@@ -4808,7 +4809,7 @@ _022480B0:
 	thumb_func_start ov02_022480B4
 ov02_022480B4: ; 0x022480B4
 	push {r3, lr}
-	bl sub_0203B8B8
+	bl MapEvents_GetLoadedEncTable
 	ldrb r0, [r0, #2]
 	pop {r3, pc}
 	.balign 4, 0
@@ -5565,7 +5566,7 @@ ov02_02248618: ; 0x02248618
 _0224863C:
 	mov r0, #1
 	strb r0, [r5, #0xd]
-	mov r0, #0x7b
+	mov r0, #NUM_ABILITIES
 _02248642:
 	strb r0, [r5, #0xe]
 	mov r0, #0
@@ -7959,7 +7960,7 @@ ov02_022497C0: ; 0x022497C0
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 _02249802:
 	mov r0, #0x7a
 	lsl r0, r0, #2
@@ -10177,7 +10178,7 @@ ov02_0224A834: ; 0x0224A834
 	bl sub_0200A7BC
 	bl sub_0200AF00
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
 	add r5, r0, #0
 	add r0, r4, #0
@@ -10232,7 +10233,7 @@ ov02_0224A88C: ; 0x0224A88C
 	add r1, r6, #0
 	bl sub_0200B0F8
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x20
@@ -13855,7 +13856,7 @@ _0224C42A:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 _0224C456:
 	ldr r0, [r5]
 	add r0, r0, #1
@@ -14078,7 +14079,7 @@ _0224C5D6:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 _0224C602:
 	ldr r0, [r5]
 	add r0, r0, #1
@@ -20425,7 +20426,7 @@ _0224F5A4:
 	bl sub_0204055C
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl sub_020403FC
+	bl FlagGet
 	cmp r0, #0
 	bne _0224F5BE
 	add r4, r4, #1
@@ -21590,7 +21591,7 @@ _0224FE18:
 	str r3, [sp, #4]
 	add r2, r4, #0
 	add r3, r4, #0
-	bl sub_020063A4
+	bl PlayCryEx
 	add sp, #8
 	pop {r4, pc}
 _0224FE2C:
@@ -24917,7 +24918,7 @@ _0225181E:
 	mov r1, #0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #0
 	strh r0, [r4, #0xa]
 	strh r0, [r4, #8]
@@ -25796,7 +25797,7 @@ _02251F4E:
 	pop {r3, r4, r5, r6, r7, pc}
 _02251F52:
 	mov r0, #4
-	bl sub_02095EF8
+	bl AllocAndReadPhoneBook
 	add r6, r0, #0
 	ldr r2, [r4]
 	add r0, r5, #0
@@ -25805,7 +25806,7 @@ _02251F52:
 	add r7, r0, #0
 	beq _02251F9C
 	add r0, r6, #0
-	bl sub_02095F68
+	bl FreePhoneBook
 	cmp r7, #2
 	bne _02251F90
 	ldr r2, [r5, #0x3c]
@@ -25836,7 +25837,7 @@ _02251F9C:
 	cmp r1, r0
 	bls _02251FB8
 	add r0, r6, #0
-	bl sub_02095F68
+	bl FreePhoneBook
 	mov r0, #0
 	str r0, [r5, #8]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -25847,7 +25848,7 @@ _02251FB8:
 	bl ov02_02251FDC
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02095F68
+	bl FreePhoneBook
 	cmp r4, #0
 	bne _02251FD2
 	mov r0, #0
@@ -25874,7 +25875,7 @@ ov02_02251FDC: ; 0x02251FDC
 	bl Sav2_PlayerData_GetProfileAddr
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x38]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x30]
@@ -26221,7 +26222,7 @@ _022522B0: .word sub_02093010
 	thumb_func_start ov02_022522B4
 ov02_022522B4: ; 0x022522B4
 	push {r3, lr}
-	bl sub_02004A20
+	bl SndRadio_GetSeqNo
 	lsl r0, r0, #0x10
 	ldr r2, _0225232C ; =0x00000492
 	lsr r0, r0, #0x10

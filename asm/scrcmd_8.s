@@ -3,14 +3,14 @@
 
 	.text
 
-	thumb_func_start sub_02049A44
-sub_02049A44: ; 0x02049A44
+	thumb_func_start ScrCmd_683
+ScrCmd_683: ; 0x02049A44
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x18
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -22,17 +22,17 @@ sub_02049A44: ; 0x02049A44
 	strh r1, [r0]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02049A44
+	thumb_func_end ScrCmd_683
 
-	thumb_func_start sub_02049A6C
-sub_02049A6C: ; 0x02049A6C
+	thumb_func_start ScrCmd_465
+ScrCmd_465: ; 0x02049A6C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x10
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -280,4 +280,4 @@ _02049CA2:
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_02049A6C
+	thumb_func_end ScrCmd_465

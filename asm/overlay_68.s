@@ -3190,7 +3190,7 @@ ov68_021E7224: ; 0x021E7224
 ov68_021E7288: ; 0x021E7288
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_020C2698
+	bl NNS_G3dInit
 	bl G3X_Init
 	bl G3X_InitMtxStack
 	ldr r1, _021E7330 ; =0x04000060
@@ -3289,7 +3289,7 @@ ov68_021E734C: ; 0x021E734C
 	str r0, [r2]
 	str r3, [r1]
 	bl NNS_G3dGlbFlushP
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #4]
 	bl sub_02008120
 	ldr r0, _021E7384 ; =0x04000540

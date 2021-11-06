@@ -1341,7 +1341,7 @@ ov45_0222A844: ; 0x0222A844
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #8
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	mov r0, #0x20
 	add r1, r7, #0
 	bl String_ctor
@@ -3797,7 +3797,7 @@ _0222B958:
 	add r1, #0x5e
 	strb r0, [r1]
 	ldr r0, [sp, #0xc]
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	add r1, r5, #0
 	add r1, #0x5f
 	strb r0, [r1]
@@ -4043,7 +4043,7 @@ ov45_0222BB60: ; 0x0222BB60
 	bne _0222BBA6
 	mov r0, #0
 	mov r1, #0x7f
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #1
 	strb r0, [r5, #0xe]
 	b _0222BBA6
@@ -4191,12 +4191,12 @@ ov45_0222BC84: ; 0x0222BC84
 	bne _0222BC96
 	mov r0, #7
 	mov r1, #0x2a
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	pop {r3, pc}
 _0222BC96:
 	mov r0, #7
 	mov r1, #0x7f
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	pop {r3, pc}
 	thumb_func_end ov45_0222BC84
 
@@ -8074,21 +8074,21 @@ _0222D76C:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x40
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x80
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #2
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #8
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	mov r2, #1
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl sub_020C2BAC
+	bl NNSi_G3dModifyMatFlag
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov45_0222D740
@@ -14534,7 +14534,7 @@ _02230572:
 	mov r0, #0
 _02230574:
 	mov r1, #0
-	bl sub_020C33C0
+	bl NNS_G3dMdlGetMdlLightEnableFlag
 	mov r6, #0
 	ldr r5, _02230630 ; =0x02254C38
 	str r0, [r4, #0x2c]
@@ -15186,7 +15186,7 @@ _02230A24:
 	bl sub_0201F64C
 	ldr r0, [r4, #8]
 	mov r1, #0x14
-	bl sub_020C3658
+	bl NNS_G3dMdlSetMdlPolygonIDAll
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -15202,12 +15202,12 @@ _02230A48: .word sub_02018068
 
 	thumb_func_start ov45_02230A4C
 ov45_02230A4C: ; 0x02230A4C
-	ldr r3, _02230A54 ; =sub_020C3698
+	ldr r3, _02230A54 ; =NNS_G3dMdlSetMdlAlphaAll
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #8]
 	bx r3
 	.balign 4, 0
-_02230A54: .word sub_020C3698
+_02230A54: .word NNS_G3dMdlSetMdlAlphaAll
 	thumb_func_end ov45_02230A4C
 
 	thumb_func_start ov45_02230A58
@@ -15766,7 +15766,7 @@ ov45_02230E64: ; 0x02230E64
 	bl sub_02023FDC
 	add r4, #0x8c
 	ldr r1, [r4]
-	bl sub_020C3598
+	bl NNS_G3dMdlSetMdlLightEnableFlagAll
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov45_02230E64

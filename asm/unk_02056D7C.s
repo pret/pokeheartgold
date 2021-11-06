@@ -17,6 +17,15 @@ _020FC7B8:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x08, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 
+	.data
+
+_0210FAB4:
+	.byte 0x04, 0x00, 0x07, 0x00, 0x0B, 0x00, 0x07, 0x00
+_0210FABC:
+	.byte 0x04, 0x00, 0x06, 0x00, 0x0B, 0x00, 0x06, 0x00
+_0210FAC4:
+	.byte 0x04, 0x00, 0x08, 0x00, 0x0B, 0x00, 0x08, 0x00
+
 	.text
 
 	thumb_func_start sub_02056D7C
@@ -2214,11 +2223,11 @@ sub_02057D74: ; 0x02057D74
 	add r7, r0, #0
 	cmp r7, #2
 	bne _02057D8C
-	ldr r0, _02057DFC ; =0x0210FAB4
+	ldr r0, _02057DFC ; =_0210FAB4
 	str r0, [sp]
 	b _02057D90
 _02057D8C:
-	ldr r0, _02057E00 ; =0x0210FABC
+	ldr r0, _02057E00 ; =_0210FABC
 	str r0, [sp]
 _02057D90:
 	mov r1, #0
@@ -2278,8 +2287,8 @@ _02057DF8:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02057DFC: .word 0x0210FAB4
-_02057E00: .word 0x0210FABC
+_02057DFC: .word _0210FAB4
+_02057E00: .word _0210FABC
 _02057E04: .word _021D41C4
 	thumb_func_end sub_02057D74
 

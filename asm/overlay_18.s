@@ -274,7 +274,7 @@ ov18_021E5AA0: ; 0x021E5AA0
 	strb r0, [r4, r1]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0202A55C
+	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	ldr r0, _021E5B58 ; =0x00001860
 	beq _021E5B00
@@ -310,15 +310,15 @@ _021E5B12:
 	ldr r0, [r0]
 	mov r2, #0
 	bl sub_0202A640
-	bl sub_02091510
+	bl SetDexBanksByGiratinaForme
 	b _021E5B38
 _021E5B32:
 	mov r0, #0
-	bl sub_02091510
+	bl SetDexBanksByGiratinaForme
 _021E5B38:
 	mov r0, #1
 	mov r1, #0x2a
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	ldr r0, _021E5B60 ; =0x0000185C
 	mov r1, #2
 	strb r1, [r4, r0]
@@ -392,7 +392,7 @@ _021E5BD0:
 	bl DestroyHeap
 	mov r0, #1
 	mov r1, #0x7f
-	bl sub_02005B50
+	bl GF_SndHandleSetPlayerVolume
 	bl sub_02004B10
 	ldr r0, _021E5C18 ; =ov18_021E5C3C
 	blx ov123_0225F688
@@ -5310,7 +5310,7 @@ ov18_021E8410: ; 0x021E8410
 	add r6, r0, #0
 	ldr r0, _021E84E0 ; =0x000018CC
 	add r5, r6, r0
-	bl sub_02091540
+	bl GetDexZknDataNarcID
 	mov r1, #0x25
 	bl NARC_ctor
 	add r4, r0, #0
@@ -16377,7 +16377,7 @@ _021EDE30:
 	lsl r1, r5, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #0
 	bl sub_02006E3C
 	mov r0, #1
@@ -17983,7 +17983,7 @@ ov18_021EEA84: ; 0x021EEA84
 	add r7, r1, #0
 	add r5, r2, #0
 	add r6, r3, #0
-	bl sub_02091558
+	bl GetDexHeightMsgBank
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #0x1b
@@ -18069,7 +18069,7 @@ ov18_021EEB34: ; 0x021EEB34
 	add r7, r1, #0
 	add r5, r2, #0
 	add r6, r3, #0
-	bl sub_0209154C
+	bl GetDexWeightMsgBank
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #0x1b
@@ -22707,7 +22707,7 @@ ov18_021F111C: ; 0x021F111C
 	add r4, r3, #0
 	bl sub_02024B1C
 	ldr r1, [sp, #0x10]
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -23961,7 +23961,7 @@ _021F1AC8:
 	ldr r0, [r0]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
@@ -23976,7 +23976,7 @@ _021F1AC8:
 	ldr r0, [r0]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r4, r0, #0
 	ldr r0, [sp, #0x60]
 	cmp r0, #0
@@ -36845,11 +36845,15 @@ ov18_021F8168: ; 0x021F8168
 	sub sp, #0xc
 	add r5, r0, #0
 	add r4, r1, #0
+	; u32 size;
+	; void * ret;
+	; GF_ASSERT(a < 82);
 	cmp r5, #0x52
 	blo _021F8178
 	bl GF_AssertFail
 _021F8178:
-	bl sub_02091540
+	; ret = GfGfxLoader_LoadFromNarc_GetSizeOut(GetDexZknDataNarcID(), a0 + 11, FALSE, 37, FALSE, &size);
+	bl GetDexZknDataNarcID
 	mov r2, #0
 	str r2, [sp]
 	add r1, sp, #8
@@ -36858,9 +36862,11 @@ _021F8178:
 	add r1, r5, #0
 	mov r3, #0x25
 	bl GfGfxLoader_LoadFromNarc_GetSizeOut
+	; *a1 = size / 2;
 	ldr r1, [sp, #8]
 	lsr r1, r1, #1
 	str r1, [r4]
+	; return ret;
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov18_021F8168
@@ -38080,7 +38086,7 @@ _021F8A66:
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	add r3, r2, #0
-	bl sub_020063A4
+	bl PlayCryEx
 	mov r0, #9
 	mov r1, #3
 	lsl r0, r0, #6
@@ -38563,7 +38569,7 @@ _021F8CDA:
 	bl ScrStrBufs_delete
 	add r0, r4, #0
 	bl DestroyMsgData
-	bl sub_02091558
+	bl GetDexHeightMsgBank
 	add r2, r0, #0
 	ldr r3, [r5, #0x14]
 	mov r0, #0
@@ -38586,7 +38592,7 @@ _021F8CDA:
 	bl ov18_021F9648
 	add r0, r4, #0
 	bl DestroyMsgData
-	bl sub_0209154C
+	bl GetDexWeightMsgBank
 	add r2, r0, #0
 	ldr r3, [r5, #0x14]
 	mov r0, #0
@@ -39447,7 +39453,7 @@ ov18_021F9518: ; 0x021F9518
 	ldr r0, [r5, r0]
 	bl sub_02024B1C
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x80

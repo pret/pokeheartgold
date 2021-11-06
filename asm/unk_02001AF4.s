@@ -1,3 +1,4 @@
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -135,7 +136,7 @@ sub_02001BE0: ; 0x02001BE0
 	add r3, r2, #0
 	tst r3, r5
 	beq _02001C06
-	ldr r0, _02001C90 ; =0x000005DC
+	ldr r0, _02001C90 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	ldrb r0, [r4, #0x15]
 	ldr r1, [r4]
@@ -147,7 +148,7 @@ _02001C06:
 	ldr r3, [r4, #0x10]
 	tst r3, r2
 	beq _02001C16
-	ldr r0, _02001C90 ; =0x000005DC
+	ldr r0, _02001C90 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	sub r0, r5, #3
 	pop {r3, r4, r5, pc}
@@ -155,7 +156,7 @@ _02001C16:
 	mov r3, #0x40
 	tst r3, r2
 	beq _02001C30
-	ldr r2, _02001C90 ; =0x000005DC
+	ldr r2, _02001C90 ; =SEQ_SE_DP_SELECT
 	bl sub_02001C98
 	cmp r0, #1
 	bne _02001C2A
@@ -169,7 +170,7 @@ _02001C30:
 	mov r1, #0x80
 	tst r1, r2
 	beq _02001C4C
-	ldr r2, _02001C90 ; =0x000005DC
+	ldr r2, _02001C90 ; =SEQ_SE_DP_SELECT
 	add r1, r5, #0
 	bl sub_02001C98
 	cmp r0, #1
@@ -184,7 +185,7 @@ _02001C4C:
 	mov r1, #0x20
 	tst r1, r2
 	beq _02001C68
-	ldr r2, _02001C90 ; =0x000005DC
+	ldr r2, _02001C90 ; =SEQ_SE_DP_SELECT
 	mov r1, #2
 	bl sub_02001C98
 	cmp r0, #1
@@ -199,7 +200,7 @@ _02001C68:
 	mov r1, #0x10
 	tst r2, r1
 	beq _02001C84
-	ldr r2, _02001C90 ; =0x000005DC
+	ldr r2, _02001C90 ; =SEQ_SE_DP_SELECT
 	mov r1, #3
 	bl sub_02001C98
 	cmp r0, #1
@@ -216,7 +217,7 @@ _02001C84:
 	pop {r3, r4, r5, pc}
 	nop
 _02001C8C: .word gMain
-_02001C90: .word 0x000005DC
+_02001C90: .word SEQ_SE_DP_SELECT
 	thumb_func_end sub_02001BE0
 
 	thumb_func_start sub_02001C94

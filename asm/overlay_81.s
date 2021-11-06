@@ -6026,7 +6026,7 @@ ov81_02240E78: ; 0x02240E78
 	strh r1, [r0, #0x18]
 	sub r0, r2, #4
 	ldr r0, [r4, r0]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	mov r1, #7
 	lsl r1, r1, #6
 	ldr r2, [r4, r1]
@@ -9284,7 +9284,7 @@ ov81_0224276C: ; 0x0224276C
 	sub sp, #0x14
 	add r5, r0, #0
 	bl ov81_02242B90
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80
@@ -9888,7 +9888,7 @@ ov81_02242C48: ; 0x02242C48
 	str r0, [r2]
 	str r3, [r1]
 	bl NNS_G3dGlbFlushP
-	bl sub_020B7350
+	bl NNS_G2dSetupSoftwareSpriteCamera
 	add r0, r4, #0
 	bl sub_02008120
 	ldr r0, _02242C7C ; =0x04000540
@@ -10144,7 +10144,7 @@ ov81_02242E14: ; 0x02242E14
 	add r4, r2, #0
 	bl sub_02024B1C
 	add r1, r6, #0
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0

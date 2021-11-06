@@ -153,875 +153,888 @@ _020FA558:
 	.byte 0xE3, 0x00, 0x01, 0x00, 0x00, 0x00, 0xE5, 0x00, 0x35, 0x00, 0x01, 0x00, 0x00, 0x00, 0xE6, 0x00
 sNumScriptCmds:
 	.word 0x00000355
+	.public _020FAC94
 _020FAC94:
 	.byte 0x03, 0x19, 0x0D, 0x06, 0x04, 0x0D, 0x1F, 0x02
+	.public _020FAC9C
 _020FAC9C:
-	.byte 0x01, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x01, 0x00, 0x01, 0x00, 0x00
+	.byte 0x01, 0x00, 0x00
+	.byte 0x00, 0x01, 0x00
+	.byte 0x00, 0x00, 0x01
+	.byte 0x01, 0x01, 0x00
+	.byte 0x00, 0x01, 0x01
+	.byte 0x01, 0x00, 0x01
+	.public _020FACB0
+	.balign 4, 0
 _020FACB0:
-	.byte 0x14, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00
-	.byte 0x19, 0x00, 0x00, 0x00
+	.word SDK_OVERLAY_OVY_20_ID
+	.word SDK_OVERLAY_OVY_24_ID
+	.word SDK_OVERLAY_OVY_21_ID
+	.word SDK_OVERLAY_OVY_22_ID
+	.word SDK_OVERLAY_OVY_25_ID
+	.public _020FACC4
 _020FACC4:
 	.byte 0xFF, 0xFF, 0xFF, 0x07, 0xFF, 0xFF, 0xFF, 0x07, 0xFF, 0xFF, 0xFF, 0x07
 	.byte 0xFF, 0xFF, 0xFF, 0x07, 0xFF, 0xFF, 0xFF, 0x07, 0xFF, 0xFF, 0xFF, 0x07
+	.public _020FACDC
 _020FACDC:
 	.byte 0x00, 0x30, 0x08, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x04, 0x00, 0x00, 0xD0, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x10, 0x04, 0x00, 0x00, 0x80, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x04, 0x00
 gScriptCmdTable:
-	.word sub_02040890
-	.word sub_02040894
-	.word sub_02040898
-	.word sub_020408A4
-	.word sub_02040918
-	.word sub_02040930
-	.word sub_0204094C
-	.word sub_02040968
-	.word sub_02040980
-	.word sub_0204099C
-	.word sub_020409BC
-	.word sub_020409E8
-	.word sub_02040A18
-	.word sub_02040A40
-	.word sub_02040A68
-	.word sub_02040A90
-	.word sub_02040AAC
-	.word sub_02040ACC
-	.word sub_02040AF8
-	.word sub_02040B30
-	.word sub_02040B68
-	.word sub_02040BFC
-	.word sub_02040C2C
-	.word sub_02040C44
-	.word sub_02040C7C
-	.word sub_02040CAC
-	.word sub_02040CE0
-	.word sub_02040CF8
-	.word sub_02040D04
-	.word sub_02040D38
-	.word sub_02040D6C
-	.word sub_02040D84
-	.word sub_02040D9C
-	.word sub_02040DF4
-	.word sub_02040E1C
-	.word sub_02040DB8
-	.word sub_02040E44
-	.word sub_02040E68
-	.word sub_02040E8C
-	.word sub_02040EB4
-	.word sub_02040EE4
-	.word sub_02040F14
-	.word sub_02040F38
-	.word sub_02040F68
-	.word ov01_021EF050
-	.word ov01_021EF31C
-	.word ov01_021EF35C
-	.word ov01_021EF3E0
-	.word sub_02040F94
-	.word sub_02040FF0
-	.word sub_02041064
-	.word sub_020410E0
-	.word sub_02041110
-	.word sub_02041168
-	.word sub_020411A4
-	.word sub_02041328
-	.word sub_020413D4
-	.word sub_02041410
-	.word sub_0204142C
-	.word sub_0204146C
-	.word sub_020415C4
-	.word sub_02041674
-	.word sub_020411D8
-	.word sub_02041684
-	.word sub_020417EC
-	.word sub_02041808
-	.word sub_02041824
-	.word sub_02041890
-	.word sub_02041950
-	.word sub_0204196C
-	.word sub_02041988
-	.word sub_020419E8
-	.word sub_02041A98
-	.word sub_02049228
-	.word sub_02049244
-	.word sub_02049260
-	.word sub_020492A0
-	.word sub_020492E0
-	.word sub_02049304
-	.word sub_02049320
-	.word sub_02049134
-	.word sub_02049144
-	.word sub_02049158
-	.word sub_02049170
-	.word sub_02049188
-	.word sub_020491C4
-	.word sub_020491E8
-	.word sub_02049204
-	.word sub_02049214
-	.word sub_02049344
-	.word sub_0204937C
-	.word sub_020493B4
-	.word sub_020493C0
-	.word sub_020493D4
-	.word sub_02041B04
-	.word sub_02041C98
-	.word sub_02041D40
-	.word sub_02041F50
-	.word sub_02041F60
-	.word sub_02041F8C
-	.word sub_02041FB8
-	.word sub_02042000
-	.word sub_02042034
-	.word sub_020420CC
-	.word sub_0204219C
-	.word sub_020422B4
-	.word sub_020422F8
-	.word sub_02042394
-	.word sub_02042478
-	.word sub_020424AC
-	.word sub_0204CA50
-	.word sub_0204CA74
-	.word sub_0204CAC8
-	.word ov01_02203138
-	.word ov01_02203188
-	.word ov01_022031A0
-	.word ov20_022598C0
-	.word ov22_0225991C
-	.word ov22_02259934
-	.word ov22_02259960
-	.word ov22_0225998C
-	.word ov22_022599B8
-	.word ov22_02259ADC
-	.word ov22_02259B08
-	.word ov22_02259B34
-	.word sub_0204E9D8
-	.word sub_0204EA30
-	.word sub_0204EA88
-	.word sub_0204EAE0
-	.word sub_0204EB7C
-	.word sub_0204EBB0
-	.word sub_02043964
-	.word ov01_021EF41C
-	.word ov01_02202674
-	.word ov01_022026B4
-	.word ov01_0220271C
-	.word sub_02042530
-	.word sub_0204D088
-	.word sub_0204D248
-	.word sub_0204D2D0
-	.word sub_0204D328
-	.word sub_0204D3CC
-	.word sub_020428D8
-	.word sub_020431E4
-	.word sub_02046F34
-	.word sub_02046F6C
-	.word sub_02046FC8
-	.word sub_02046FFC
-	.word sub_020472C4
-	.word sub_020472E8
-	.word sub_02042A10
-	.word sub_02042AB0
-	.word sub_02042AC0
-	.word sub_02042ACC
-	.word sub_02042D00
-	.word sub_02042D58
-	.word sub_02042E48
-	.word sub_02042E5C
-	.word sub_02042F04
-	.word sub_02042F5C
-	.word sub_02042F78
-	.word sub_02042F88
-	.word sub_02042F98
-	.word sub_02042FC4
-	.word sub_02042FDC
-	.word sub_02043044
-	.word sub_020430A4
-	.word sub_020430C4
-	.word sub_02049460
-	.word sub_0204952C
-	.word sub_0204959C
-	.word sub_020495C4
-	.word sub_020431B4
-	.word sub_02043214
-	.word sub_02043400
-	.word sub_02043448
-	.word sub_0204346C
-	.word sub_020435E8
-	.word sub_02043618
-	.word sub_02043648
-	.word sub_02043678
-	.word sub_020436C4
-	.word sub_020436F4
-	.word sub_02043724
-	.word sub_020437B4
-	.word sub_020437E4
-	.word sub_02043884
-	.word sub_0204389C
-	.word sub_020438C4
-	.word sub_020438DC
-	.word sub_02048414
-	.word sub_02048448
-	.word sub_0204846C
-	.word sub_02048490
-	.word sub_02048510
-	.word sub_02048548
-	.word sub_02048580
-	.word sub_020485BC
-	.word sub_020485F4
-	.word sub_020486F0
-	.word sub_02048794
-	.word sub_020487CC
-	.word sub_02048818
-	.word sub_020488A4
-	.word sub_020488F4
-	.word sub_02048944
-	.word sub_02043938
-	.word sub_02048994
-	.word sub_020489CC
-	.word sub_020489F4
-	.word sub_02048A1C
-	.word sub_020438EC
-	.word sub_02049618
-	.word sub_02049648
-	.word sub_02043990
-	.word sub_02049750
-	.word sub_020497D8
-	.word sub_02049860
-	.word sub_02049894
-	.word sub_020498C8
-	.word sub_020498D4
-	.word sub_02049904
-	.word sub_02049980
-	.word sub_020499AC
-	.word sub_020499D8
-	.word sub_02049A00
-	.word sub_02043A28
-	.word sub_02043AC0
-	.word sub_02043B58
-	.word sub_02043B64
-	.word sub_02043B70
-	.word sub_02043BA0
-	.word sub_0206BB2C
-	.word sub_0206BB5C
-	.word sub_0206BBAC
-	.word sub_0206BC2C
-	.word sub_0206BC64
-	.word sub_0206BC8C
-	.word sub_0204DB3C
-	.word sub_0204DBA0
-	.word sub_02043BA4
-	.word sub_02043C24
-	.word sub_02043C54
-	.word sub_02043CB4
-	.word sub_02043CE4
-	.word sub_02043D14
-	.word sub_02043D44
-	.word sub_02043D74
-	.word sub_02043D78
-	.word sub_02043E08
-	.word sub_02043F0C
-	.word sub_02043F48
-	.word sub_02043F54
-	.word sub_02043F70
-	.word sub_02043FC4
-	.word sub_02042DC0
-	.word sub_02042DFC
-	.word sub_02044024
-	.word sub_02044070
-	.word sub_0204407C
-	.word sub_020440AC
-	.word sub_020440E4
-	.word sub_0204435C
-	.word sub_0204436C
-	.word sub_02044124
-	.word sub_02044190
-	.word sub_020441A0
-	.word sub_020441D8
-	.word sub_02044270
-	.word sub_020442FC
-	.word sub_02044348
-	.word sub_02044380
-	.word sub_020443BC
-	.word sub_02044418
-	.word sub_020442AC
-	.word sub_02048060
-	.word sub_02048158
-	.word sub_02048194
-	.word sub_020481DC
-	.word sub_020445C0
-	.word sub_020445CC
-	.word sub_020445F8
-	.word sub_02044628
-	.word sub_02044640
-	.word sub_0204468C
-	.word sub_0204469C
-	.word sub_02044480
-	.word sub_02044490
-	.word sub_020444CC
-	.word sub_0204458C
-	.word sub_0204E610
-	.word sub_0204E640
-	.word sub_0204E654
-	.word sub_0204E684
-	.word sub_0204E6A0
-	.word sub_0204E6E8
-	.word sub_0204E748
-	.word sub_0204E71C
-	.word sub_0204E774
-	.word sub_0204E788
-	.word sub_0204E7B4
-	.word sub_0204E7C8
-	.word sub_0204E838
-	.word sub_0204E864
-	.word sub_0204E878
-	.word sub_0204E88C
-	.word sub_0204E8B8
-	.word sub_02044954
-	.word sub_020449AC
-	.word sub_020449C4
-	.word sub_020449DC
-	.word sub_020449F4
-	.word sub_0204CB5C
-	.word sub_0204CB7C
-	.word sub_02044A0C
-	.word sub_02044A1C
-	.word sub_02044A44
-	.word sub_02044A6C
-	.word sub_02044AA8
-	.word sub_02044AB8
-	.word sub_02044AE0
-	.word sub_02044AF0
-	.word sub_02044B10
-	.word sub_02044B40
-	.word sub_02044B50
-	.word sub_02044B60
-	.word sub_02044B70
-	.word sub_02044B80
-	.word sub_02044B9C
-	.word sub_02044BB8
-	.word sub_02044BC8
-	.word sub_02044BD8
-	.word sub_0204D95C
-	.word sub_020430D4
-	.word sub_02043124
-	.word sub_020446AC
-	.word sub_02048A7C
-	.word sub_02048AF4
-	.word sub_020446EC
-	.word sub_0204473C
-	.word sub_020447CC
-	.word sub_02044804
-	.word sub_0204483C
-	.word sub_0204488C
-	.word sub_020448DC
-	.word sub_02041728
-	.word sub_02041758
-	.word sub_02044928
-	.word sub_02041018
-	.word sub_02042574
-	.word sub_020425D4
-	.word sub_020425F8
-	.word sub_02042860
-	.word sub_0204280C
-	.word sub_0204D180
-	.word sub_0204D1DC
-	.word sub_0204D988
-	.word sub_0204D9E0
-	.word sub_0204DA68
-	.word sub_0204DAE4
-	.word sub_0204CA98
-	.word sub_0204CBF8
-	.word sub_02045394
-	.word sub_020453D0
-	.word sub_0204D154
-	.word sub_0204CBAC
-	.word sub_0204CBC4
-	.word sub_0204CC58
-	.word sub_0204CB0C
-	.word sub_02044C54
-	.word sub_02043164
-	.word sub_0204CCAC
-	.word sub_0204CCFC
-	.word sub_0204CD34
-	.word sub_02044C64
-	.word sub_02044C98
-	.word sub_02044CCC
-	.word sub_02044CFC
-	.word sub_02044D28
-	.word sub_02044D68
-	.word sub_02044D8C
-	.word sub_02044DC4
-	.word sub_0204D6C0
-	.word sub_0204D708
-	.word sub_0204D7D8
-	.word sub_0204CD74
-	.word sub_0204236C
-	.word sub_0204CE00
-	.word sub_0204CE30
-	.word sub_0204DF54
-	.word ov20_02259A88
-	.word ov20_02259B40
-	.word ov20_02259BF4
-	.word ov20_02259B88
-	.word sub_0204EBE8
-	.word sub_0204EC30
-	.word sub_0204DBE8
-	.word sub_0204DC90
-	.word sub_0204DCD4
-	.word sub_02048B64
-	.word sub_0204E8CC
-	.word sub_0204E928
-	.word sub_0204E980
-	.word sub_02044DFC
-	.word sub_02044E40
-	.word sub_02044E9C
-	.word sub_02044F00
-	.word sub_02044F30
-	.word sub_02042E8C
-	.word sub_02049CD8
-	.word sub_02049CA8
-	.word sub_02049CE8
-	.word sub_02049D04
-	.word sub_02049FC8
-	.word sub_0204A048
-	.word sub_0204A070
-	.word sub_0204A098
-	.word sub_0204A184
-	.word sub_0204A230
-	.word sub_0204A27C
-	.word sub_02045040
-	.word sub_02045060
-	.word sub_020450B8
-	.word sub_02044F74
-	.word sub_02044FAC
-	.word sub_02044FE4
-	.word sub_0204DD34
-	.word sub_02045028
-	.word sub_0204DEE4
-	.word ov20_022598C0
-	.word sub_02047060
-	.word sub_020470F4
-	.word ov21_0225990C
-	.word ov21_02259960
-	.word sub_0204D4D0
-	.word sub_0204D48C
-	.word sub_02042A20
-	.word sub_02040900
-	.word ov01_021EF064
-	.word ov01_021EF0A4
-	.word ov01_021EF0F0
-	.word ov01_021EF154
-	.word ov01_021EF194
-	.word ov01_021EF1E0
-	.word ov01_021EF268
-	.word sub_02043548
-	.word sub_02043574
-	.word sub_02045188
-	.word sub_020434DC
-	.word sub_02043538
-	.word sub_02042E2C
-	.word sub_02042AFC
-	.word sub_02042B1C
-	.word sub_02042C2C
-	.word sub_02042CA8
-	.word ov01_021EF488
-	.word sub_0204523C
-	.word sub_0204D5C0
-	.word sub_0204D634
-	.word sub_02045230
-	.word sub_02047120
-	.word sub_02047168
-	.word sub_0204720C
-	.word sub_02045254
-	.word sub_02045264
-	.word sub_02049A6C
-	.word sub_0204EC7C
-	.word sub_0204ED3C
-	.word sub_0204ED7C
-	.word sub_0204EDDC
-	.word sub_0204527C
-	.word sub_020452B0
-	.word sub_020452E0
-	.word sub_02045340
-	.word sub_02045374
-	.word sub_02045428
-	.word sub_0204542C
-	.word sub_02045440
-	.word sub_0204E150
-	.word sub_0204E1C4
-	.word sub_0204E26C
-	.word sub_0204E2D8
-	.word sub_02048BCC
-	.word sub_020454A4
-	.word sub_02045540
-	.word sub_02045568
-	.word sub_02040894
-	.word sub_02045588
-	.word sub_020455B0
-	.word sub_0204BDA4
-	.word sub_0204EE20
-	.word sub_0204EE38
-	.word sub_020432FC
-	.word sub_0204335C
-	.word sub_020433BC
-	.word sub_020455F0
-	.word sub_0204D8A0
-	.word sub_0204D8F0
-	.word sub_0204560C
-	.word sub_020456D8
-	.word sub_02045780
-	.word sub_0204579C
-	.word sub_020457B8
-	.word sub_02048EE0
-	.word sub_02048F10
-	.word sub_0204908C
-	.word sub_02048738
-	.word sub_0204583C
-	.word sub_0204C874
-	.word sub_0204C8D4
-	.word sub_0204C91C
-	.word sub_0204C9C0
-	.word sub_02045868
-	.word sub_0204588C
-	.word sub_020458A4
-	.word sub_020458CC
-	.word sub_02048B2C
-	.word sub_020458EC
-	.word sub_0204592C
-	.word sub_020459AC
-	.word sub_02045A60
-	.word sub_02045A74
-	.word sub_02045A88
-	.word sub_02045AAC
-	.word sub_02045B40
-	.word sub_02045BA4
-	.word sub_02045BCC
-	.word ov01_021EF2E0
-	.word sub_02045C64
-	.word sub_0204D8C8
-	.word sub_02045C84
-	.word sub_02045CC4
-	.word ov22_02259A10
-	.word ov22_02259A9C
-	.word sub_02045CFC
-	.word sub_0204D564
-	.word sub_02045D28
-	.word sub_02045D6C
-	.word sub_02045D7C
-	.word sub_02045E1C
-	.word sub_02045DE8
-	.word sub_0204863C
-	.word sub_0204D840
-	.word sub_02045E54
-	.word sub_020493E4
-	.word sub_02045EA8
-	.word sub_02045ED8
-	.word sub_02042BAC
-	.word sub_02042C44
-	.word sub_02042C5C
-	.word sub_02045F18
-	.word sub_02045F80
-	.word sub_02045FC4
-	.word sub_02046038
-	.word sub_0204A2EC
-	.word sub_0204A31C
-	.word sub_0204A360
-	.word sub_0204A3A4
-	.word sub_02044534
-	.word sub_0204184C
-	.word sub_02046078
-	.word ov01_02201A50
-	.word sub_020496DC
-	.word sub_02041B74
-	.word sub_02046108
-	.word sub_02046130
-	.word sub_020425A4
-	.word sub_0204E5BC
-	.word sub_0204615C
-	.word ov22_022599E4
-	.word ov22_02259A50
-	.word sub_020461A0
-	.word ov01_02202648
-	.word sub_02046290
-	.word sub_020424E8
-	.word sub_0204910C
-	.word sub_020462A8
-	.word sub_020462D8
-	.word sub_020462E4
-	.word sub_020462F0
-	.word sub_02048C10
-	.word sub_02041E84
-	.word sub_02046300
-	.word sub_02046360
-	.word sub_0204E338
-	.word sub_020418DC
-	.word sub_02044230
-	.word sub_02044674
-	.word sub_02049950
-	.word sub_02043E5C
-	.word sub_0204639C
-	.word sub_02043870
-	.word ov01_021EF398
-	.word sub_020463C4
-	.word sub_020463F4
-	.word sub_02046420
-	.word sub_02046B1C
-	.word sub_02046B48
-	.word sub_02046B64
-	.word sub_02046BB4
-	.word sub_02046BC4
-	.word sub_02046BDC
-	.word sub_02046CB4
-	.word sub_02046CF0
-	.word sub_02046D10
-	.word sub_02046D5C
-	.word sub_02046DA8
-	.word sub_02046DF8
-	.word sub_02046E38
-	.word sub_02046E5C
-	.word sub_02046E80
-	.word sub_02046E9C
-	.word sub_02045310
-	.word sub_0204723C
-	.word sub_0204727C
-	.word sub_02047304
-	.word sub_0204731C
-	.word sub_02047348
-	.word ov01_02202308
-	.word sub_0204E7DC
-	.word sub_0204E808
-	.word sub_02047358
-	.word sub_020473D8
-	.word sub_0204BC98
-	.word sub_0204BCCC
-	.word sub_0204BD04
-	.word sub_02048C80
-	.word sub_02046438
-	.word sub_0204EE50
-	.word sub_020432A0
-	.word sub_020432CC
-	.word sub_020464E0
-	.word sub_0204DFE4
-	.word sub_0204EF40
-	.word sub_0204F1AC
-	.word sub_02042644
-	.word sub_0204F174
-	.word sub_0204F8DC
-	.word sub_0204FAD4
-	.word sub_020426C4
-	.word sub_0204F9DC
-	.word sub_02043FEC
-	.word sub_02043FFC
-	.word sub_0204FE78
-	.word sub_02050014
-	.word sub_02042768
-	.word sub_0204FF78
-	.word sub_0204E0BC
-	.word ov01_02200AF0
-	.word sub_02046554
-	.word sub_02046584
-	.word sub_020465A0
-	.word ov01_02202B00
-	.word ov01_02202E68
-	.word ov01_02202B78
-	.word ov01_02202BD0
-	.word ov01_02202C28
-	.word ov01_022011D4
-	.word sub_020483D8
-	.word ov01_02201424
-	.word sub_02048C48
-	.word sub_0204869C
-	.word sub_020465FC
-	.word sub_02046674
-	.word sub_02049418
-	.word sub_0204941C
-	.word sub_02049440
-	.word sub_020466A8
-	.word sub_020484D8
-	.word sub_0204EB38
-	.word ov01_02201594
-	.word ov01_0220178C
-	.word ov01_022017DC
-	.word sub_020466E0
-	.word ov01_02201470
-	.word ov01_02201518
-	.word ov01_02201844
-	.word sub_02041A48
-	.word sub_02042110
-	.word sub_02042184
-	.word sub_020468F4
-	.word sub_02042CE0
-	.word sub_02046914
-	.word sub_02049A44
-	.word sub_02042948
-	.word sub_02044BE8
-	.word sub_02043EB8
-	.word sub_02045818
-	.word sub_0204E3CC
-	.word ov01_02201304
-	.word sub_0204CFB8
-	.word sub_02046970
-	.word sub_0204F500
-	.word sub_0204F6D0
-	.word sub_0204F778
-	.word sub_02041A0C
-	.word sub_020469B4
-	.word sub_0204F7FC
-	.word sub_02046A1C
-	.word ov01_0220188C
-	.word ov01_0220192C
-	.word sub_0204E470
-	.word ov01_0220197C
-	.word ov01_02201990
-	.word sub_0204512C
-	.word sub_02045160
-	.word sub_02043008
-	.word ov01_022019B0
-	.word ov01_022019F0
-	.word ov01_02201A40
-	.word ov03_02256B88
-	.word sub_02047414
-	.word sub_02047424
-	.word sub_0204749C
-	.word ov01_02201B14
-	.word sub_0204CE60
-	.word ov03_0225894C
-	.word ov03_02258978
-	.word ov03_02258998
-	.word ov03_022589D4
-	.word ov03_02258A18
-	.word ov03_02258BDC
-	.word sub_020474D8
-	.word sub_02047518
-	.word ov01_02201B40
-	.word ov01_02201C08
-	.word ov01_02201C60
-	.word sub_02047570
-	.word sub_0204759C
-	.word sub_020475C0
-	.word sub_020475F0
-	.word sub_02047634
-	.word sub_02047644
-	.word sub_02047664
-	.word sub_0204769C
-	.word ov01_02201C70
-	.word ov01_02201C9C
-	.word ov01_02201CB4
-	.word ov01_02201CE0
-	.word ov01_02201D1C
-	.word ov01_02201D4C
-	.word ov01_02201DA4
-	.word ov01_02203094
-	.word ov01_02201F10
-	.word ov01_02201F30
-	.word ov01_02202480
-	.word sub_020476B4
-	.word sub_0204771C
-	.word sub_02047790
-	.word sub_020477F8
-	.word sub_02047814
-	.word sub_02047830
-	.word sub_02047888
-	.word sub_02047AE8
-	.word sub_02047B38
-	.word sub_02047B5C
-	.word sub_02047B6C
-	.word sub_02047B7C
-	.word sub_02047B8C
-	.word sub_02047BA4
-	.word sub_02047BB4
-	.word sub_02047BC4
-	.word sub_02047BDC
-	.word sub_02047BF4
-	.word sub_02047C04
-	.word sub_02047C14
-	.word sub_02047C24
-	.word sub_02047C34
-	.word sub_02047C44
-	.word sub_02047C54
-	.word ov01_0220205C
-	.word sub_02048218
-	.word sub_02048298
-	.word sub_02047558
-	.word ov01_02201A18
-	.word ov01_02201AB8
-	.word ov01_022020CC
-	.word ov01_022021AC
-	.word ov01_022021F8
-	.word ov01_0220233C
-	.word ov01_02202430
-	.word sub_0204DDE4
-	.word sub_0204812C
-	.word sub_02047C64
-	.word sub_02047C80
-	.word ov01_02202930
-	.word ov01_02202980
-	.word ov01_022029B0
-	.word ov01_02202A28
-	.word ov01_02202A70
-	.word ov01_02202ABC
-	.word ov03_02258C00
-	.word ov03_02258CDC
-	.word sub_02047964
-	.word sub_02047CBC
-	.word ov01_02205164
-	.word ov01_022051B4
-	.word ov01_022051CC
-	.word sub_02047CFC
-	.word sub_02047D24
-	.word sub_02047D58
-	.word sub_02047D7C
-	.word sub_02047DB0
-	.word sub_02047DC8
-	.word sub_02046FAC
-	.word sub_02047E14
-	.word sub_02047E20
-	.word sub_0206DC50
-	.word ov01_022053EC
-	.word ov25_02259A30
-	.word sub_02047E30
-	.word ov01_022024B8
-	.word ov01_022024FC
-	.word sub_0204C83C
-	.word sub_02047E40
-	.word sub_02047778
-	.word sub_02047E54
-	.word sub_02047E64
-	.word sub_02047E7C
-	.word sub_02047E8C
-	.word sub_02047E9C
-	.word ov01_02202510
-	.word sub_02047EB4
-	.word sub_02047EC4
-	.word sub_02047F14
-	.word ov01_022025A8
-	.word ov01_022025EC
-	.word sub_0204E4E0
-	.word sub_0204E528
-	.word sub_02047F54
-	.word sub_02047F84
-	.word sub_02047FB4
-	.word sub_02047FD4
-	.word sub_02048004
-	.word sub_020482F4
-	.word sub_0204839C
-	.word ov01_02202834
-	.word sub_0204802C
-	.word sub_02047A7C
-	.word ov01_02202908
-	.word sub_02043598
-	.word sub_02041AC4
-	.word sub_02041AE4
-	.word sub_02048CBC
-	.word sub_02048CF4
-	.word sub_02048D2C
-	.word sub_02048D74
-	.word sub_02048DBC
-	.word sub_02048DF0
-	.word sub_02048E28
-	.word sub_02048E60
-	.word sub_02048E98
-	.word sub_02048EB8
+	.word ScrCmd_Nop                                    ; 000
+	.word ScrCmd_Dummy                                  ; 001
+	.word ScrCmd_End                                    ; 002
+	.word ScrCmd_Wait                                   ; 003
+	.word ScrCmd_LoadByte                               ; 004
+	.word ScrCmd_LoadWord                               ; 005
+	.word ScrCmd_LoadByteFromAddr                       ; 006
+	.word ScrCmd_WriteByteToAddr                        ; 007
+	.word ScrCmd_SetPtrByte                             ; 008
+	.word ScrCmd_CopyLocal                              ; 009
+	.word ScrCmd_CopyByte                               ; 010
+	.word ScrCmd_CompareLocalToLocal                    ; 011
+	.word ScrCmd_CompareLocalToValue                    ; 012
+	.word ScrCmd_CompareLocalToAddr                     ; 013
+	.word ScrCmd_CompareAddrToLocal                     ; 014
+	.word ScrCmd_CompareAddrToValue                     ; 015
+	.word ScrCmd_CompareAddrToAddr                      ; 016
+	.word ScrCmd_CompareVarToValue                      ; 017
+	.word ScrCmd_CompareVarToVar                        ; 018
+	.word ScrCmd_RunScript                              ; 019
+	.word ScrCmd_RunScriptWait                          ; 020
+	.word ScrCmd_RestartCurrentScript                   ; 021
+	.word ScrCmd_GoTo                                   ; 022
+	.word ScrCmd_ObjectGoTo                             ; 023
+	.word ScrCmd_BgGoTo                                 ; 024
+	.word ScrCmd_DirectionGoTo                          ; 025
+	.word ScrCmd_Call                                   ; 026
+	.word ScrCmd_Return                                 ; 027
+	.word ScrCmd_GoToIf                                 ; 028
+	.word ScrCmd_CallIf                                 ; 029
+	.word ScrCmd_SetFlag                                ; 030
+	.word ScrCmd_ClearFlag                              ; 031
+	.word ScrCmd_CheckFlag                              ; 032
+	.word ScrCmd_SetFlagVar                             ; 033
+	.word ScrCmd_ClearFlagVar                           ; 034
+	.word ScrCmd_CheckFlagVar                           ; 035
+	.word ScrCmd_SetTrainerFlag                         ; 036
+	.word ScrCmd_ClearTrainerFlag                       ; 037
+	.word ScrCmd_CheckTrainerFlag                       ; 038
+	.word ScrCmd_AddVar                                 ; 039
+	.word ScrCmd_SubVar                                 ; 040
+	.word ScrCmd_SetVar                                 ; 041
+	.word ScrCmd_CopyVar                                ; 042
+	.word ScrCmd_SetOrCopyVar                           ; 043
+	.word ScrCmd_Message                                    ; 044
+	.word ScrCmd_045                                    ; 045
+	.word ScrCmd_046                                    ; 046
+	.word ScrCmd_047                                    ; 047
+	.word ScrCmd_048                                    ; 048
+	.word ScrCmd_049                                    ; 049
+	.word ScrCmd_050                                    ; 050
+	.word ScrCmd_051                                    ; 051
+	.word ScrCmd_052                                    ; 052
+	.word ScrCmd_053                                    ; 053
+	.word ScrCmd_054                                    ; 054
+	.word ScrCmd_055                                    ; 055
+	.word ScrCmd_056                                    ; 056
+	.word ScrCmd_057                                    ; 057
+	.word ScrCmd_058                                    ; 058
+	.word ScrCmd_059                                    ; 059
+	.word ScrCmd_060                                    ; 060
+	.word ScrCmd_061                                    ; 061
+	.word ScrCmd_062                                    ; 062
+	.word ScrCmd_063                                    ; 063
+	.word ScrCmd_064                                    ; 064
+	.word ScrCmd_065                                    ; 065
+	.word ScrCmd_066                                    ; 066
+	.word ScrCmd_067                                    ; 067
+	.word ScrCmd_068                                    ; 068
+	.word ScrCmd_069                                    ; 069
+	.word ScrCmd_070                                    ; 070
+	.word ScrCmd_071                                    ; 071
+	.word ScrCmd_072                                    ; 072
+	.word ScrCmd_073                                    ; 073
+	.word ScrCmd_074                                    ; 074
+	.word ScrCmd_075                                    ; 075
+	.word ScrCmd_076                                    ; 076
+	.word ScrCmd_077                                    ; 077
+	.word ScrCmd_078                                    ; 078
+	.word ScrCmd_079                                    ; 079
+	.word ScrCmd_080                                    ; 080
+	.word ScrCmd_081                                    ; 081
+	.word ScrCmd_082                                    ; 082
+	.word ScrCmd_083                                    ; 083
+	.word ScrCmd_084                                    ; 084
+	.word ScrCmd_085                                    ; 085
+	.word ScrCmd_086                                    ; 086
+	.word ScrCmd_087                                    ; 087
+	.word ScrCmd_088                                    ; 088
+	.word ScrCmd_089                                    ; 089
+	.word ScrCmd_090                                    ; 090
+	.word ScrCmd_091                                    ; 091
+	.word ScrCmd_092                                    ; 092
+	.word ScrCmd_093                                    ; 093
+	.word ScrCmd_094                                    ; 094
+	.word ScrCmd_095                                    ; 095
+	.word ScrCmd_096                                    ; 096
+	.word ScrCmd_097                                    ; 097
+	.word ScrCmd_098                                    ; 098
+	.word ScrCmd_099                                    ; 099
+	.word ScrCmd_100                                    ; 100
+	.word ScrCmd_101                                    ; 101
+	.word ScrCmd_102                                    ; 102
+	.word ScrCmd_103                                    ; 103
+	.word ScrCmd_104                                    ; 104
+	.word ScrCmd_105                                    ; 105
+	.word ScrCmd_106                                    ; 106
+	.word ScrCmd_107                                    ; 107
+	.word ScrCmd_108                                    ; 108
+	.word ScrCmd_109                                    ; 109
+	.word ScrCmd_110                                    ; 110
+	.word ScrCmd_111                                    ; 111
+	.word ScrCmd_112                                    ; 112
+	.word ScrCmd_113                                    ; 113
+	.word ScrCmd_114                                    ; 114
+	.word ScrCmd_115                                    ; 115
+	.word ScrCmd_116                                    ; 116
+	.word ScrCmd_117                                    ; 117
+	.word ScrCmd_118                                    ; 118
+	.word ScrCmd_119                                    ; 119
+	.word ScrCmd_120                                    ; 120
+	.word ScrCmd_121                                    ; 121
+	.word ScrCmd_122                                    ; 122
+	.word ScrCmd_123                                    ; 123
+	.word ScrCmd_124                                    ; 124
+	.word ScrCmd_125                                    ; 125
+	.word ScrCmd_126                                    ; 126
+	.word ScrCmd_127                                    ; 127
+	.word ScrCmd_128                                    ; 128
+	.word ScrCmd_129                                    ; 129
+	.word ScrCmd_130                                    ; 130
+	.word ScrCmd_131                                    ; 131
+	.word ScrCmd_132                                    ; 132
+	.word ScrCmd_133                                    ; 133
+	.word ScrCmd_134                                    ; 134
+	.word ScrCmd_135                                    ; 135
+	.word ScrCmd_136                                    ; 136
+	.word ScrCmd_137                                    ; 137
+	.word ScrCmd_138                                    ; 138
+	.word ScrCmd_139                                    ; 139
+	.word ScrCmd_140                                    ; 140
+	.word ScrCmd_141                                    ; 141
+	.word ScrCmd_142                                    ; 142
+	.word ScrCmd_143                                    ; 143
+	.word ScrCmd_144                                    ; 144
+	.word ScrCmd_145                                    ; 145
+	.word ScrCmd_146                                    ; 146
+	.word ScrCmd_147                                    ; 147
+	.word ScrCmd_148                                    ; 148
+	.word ScrCmd_149                                    ; 149
+	.word ScrCmd_150                                    ; 150
+	.word ScrCmd_151                                    ; 151
+	.word ScrCmd_152                                    ; 152
+	.word ScrCmd_153                                    ; 153
+	.word ScrCmd_154                                    ; 154
+	.word ScrCmd_155                                    ; 155
+	.word ScrCmd_156                                    ; 156
+	.word ScrCmd_157                                    ; 157
+	.word ScrCmd_158                                    ; 158
+	.word ScrCmd_159                                    ; 159
+	.word ScrCmd_160                                    ; 160
+	.word ScrCmd_161                                    ; 161
+	.word ScrCmd_162                                    ; 162
+	.word ScrCmd_163                                    ; 163
+	.word ScrCmd_164                                    ; 164
+	.word ScrCmd_165                                    ; 165
+	.word ScrCmd_166                                    ; 166
+	.word ScrCmd_167                                    ; 167
+	.word ScrCmd_168                                    ; 168
+	.word ScrCmd_169                                    ; 169
+	.word ScrCmd_170                                    ; 170
+	.word ScrCmd_171                                    ; 171
+	.word ScrCmd_172                                    ; 172
+	.word ScrCmd_173                                    ; 173
+	.word ScrCmd_174                                    ; 174
+	.word ScrCmd_175                                    ; 175
+	.word ScrCmd_176                                    ; 176
+	.word ScrCmd_177                                    ; 177
+	.word ScrCmd_178                                    ; 178
+	.word ScrCmd_179                                    ; 179
+	.word ScrCmd_180                                    ; 180
+	.word ScrCmd_181                                    ; 181
+	.word ScrCmd_182                                    ; 182
+	.word ScrCmd_183                                    ; 183
+	.word ScrCmd_184                                    ; 184
+	.word ScrCmd_185                                    ; 185
+	.word ScrCmd_186                                    ; 186
+	.word ScrCmd_187                                    ; 187
+	.word ScrCmd_188                                    ; 188
+	.word ScrCmd_189                                    ; 189
+	.word ScrCmd_190                                    ; 190
+	.word ScrCmd_191                                    ; 191
+	.word ScrCmd_192                                    ; 192
+	.word ScrCmd_193                                    ; 193
+	.word ScrCmd_194                                    ; 194
+	.word ScrCmd_195                                    ; 195
+	.word ScrCmd_196                                    ; 196
+	.word ScrCmd_197                                    ; 197
+	.word ScrCmd_198                                    ; 198
+	.word ScrCmd_199                                    ; 199
+	.word ScrCmd_200                                    ; 200
+	.word ScrCmd_201                                    ; 201
+	.word ScrCmd_202                                    ; 202
+	.word ScrCmd_203                                    ; 203
+	.word ScrCmd_204                                    ; 204
+	.word ScrCmd_205                                    ; 205
+	.word ScrCmd_206                                    ; 206
+	.word ScrCmd_207                                    ; 207
+	.word ScrCmd_208                                    ; 208
+	.word ScrCmd_209                                    ; 209
+	.word ScrCmd_210                                    ; 210
+	.word ScrCmd_211                                    ; 211
+	.word ScrCmd_212                                    ; 212
+	.word ScrCmd_213                                    ; 213
+	.word ScrCmd_214                                    ; 214
+	.word ScrCmd_215                                    ; 215
+	.word ScrCmd_216                                    ; 216
+	.word ScrCmd_217                                    ; 217
+	.word ScrCmd_218                                    ; 218
+	.word ScrCmd_219                                    ; 219
+	.word ScrCmd_220                                    ; 220
+	.word ScrCmd_221                                    ; 221
+	.word ScrCmd_222                                    ; 222
+	.word ScrCmd_223                                    ; 223
+	.word ScrCmd_224                                    ; 224
+	.word ScrCmd_225                                    ; 225
+	.word ScrCmd_226                                    ; 226
+	.word ScrCmd_227                                    ; 227
+	.word ScrCmd_228                                    ; 228
+	.word ScrCmd_229                                    ; 229
+	.word ScrCmd_230                                    ; 230
+	.word ScrCmd_231                                    ; 231
+	.word ScrCmd_232                                    ; 232
+	.word ScrCmd_233                                    ; 233
+	.word ScrCmd_234                                    ; 234
+	.word ScrCmd_235                                    ; 235
+	.word ScrCmd_236                                    ; 236
+	.word ScrCmd_237                                    ; 237
+	.word ScrCmd_238                                    ; 238
+	.word ScrCmd_239                                    ; 239
+	.word ScrCmd_240                                    ; 240
+	.word ScrCmd_241                                    ; 241
+	.word ScrCmd_242                                    ; 242
+	.word ScrCmd_243                                    ; 243
+	.word ScrCmd_244                                    ; 244
+	.word ScrCmd_245                                    ; 245
+	.word ScrCmd_246                                    ; 246
+	.word ScrCmd_247                                    ; 247
+	.word ScrCmd_248                                    ; 248
+	.word ScrCmd_249                                    ; 249
+	.word ScrCmd_250                                    ; 250
+	.word ScrCmd_251                                    ; 251
+	.word ScrCmd_252                                    ; 252
+	.word ScrCmd_253                                    ; 253
+	.word ScrCmd_254                                    ; 254
+	.word ScrCmd_255                                    ; 255
+	.word ScrCmd_256                                    ; 256
+	.word ScrCmd_257                                    ; 257
+	.word ScrCmd_258                                    ; 258
+	.word ScrCmd_259                                    ; 259
+	.word ScrCmd_260                                    ; 260
+	.word ScrCmd_261                                    ; 261
+	.word ScrCmd_262                                    ; 262
+	.word ScrCmd_263                                    ; 263
+	.word ScrCmd_264                                    ; 264
+	.word ScrCmd_265                                    ; 265
+	.word ScrCmd_266                                    ; 266
+	.word ScrCmd_267                                    ; 267
+	.word ScrCmd_268                                    ; 268
+	.word ScrCmd_269                                    ; 269
+	.word ScrCmd_270                                    ; 270
+	.word ScrCmd_271                                    ; 271
+	.word ScrCmd_272                                    ; 272
+	.word ScrCmd_273                                    ; 273
+	.word ScrCmd_274                                    ; 274
+	.word ScrCmd_275                                    ; 275
+	.word ScrCmd_276                                    ; 276
+	.word ScrCmd_277                                    ; 277
+	.word ScrCmd_278                                    ; 278
+	.word ScrCmd_279                                    ; 279
+	.word ScrCmd_280                                    ; 280
+	.word ScrCmd_281                                    ; 281
+	.word ScrCmd_282                                    ; 282
+	.word ScrCmd_283                                    ; 283
+	.word ScrCmd_284                                    ; 284
+	.word ScrCmd_285                                    ; 285
+	.word ScrCmd_286                                    ; 286
+	.word ScrCmd_287                                    ; 287
+	.word ScrCmd_288                                    ; 288
+	.word ScrCmd_289                                    ; 289
+	.word ScrCmd_290                                    ; 290
+	.word ScrCmd_291                                    ; 291
+	.word ScrCmd_292                                    ; 292
+	.word ScrCmd_293                                    ; 293
+	.word ScrCmd_294                                    ; 294
+	.word ScrCmd_295                                    ; 295
+	.word ScrCmd_296                                    ; 296
+	.word ScrCmd_297                                    ; 297
+	.word ScrCmd_298                                    ; 298
+	.word ScrCmd_299                                    ; 299
+	.word ScrCmd_300                                    ; 300
+	.word ScrCmd_301                                    ; 301
+	.word ScrCmd_302                                    ; 302
+	.word ScrCmd_303                                    ; 303
+	.word ScrCmd_304                                    ; 304
+	.word ScrCmd_305                                    ; 305
+	.word ScrCmd_306                                    ; 306
+	.word ScrCmd_307                                    ; 307
+	.word ScrCmd_308                                    ; 308
+	.word ScrCmd_309                                    ; 309
+	.word ScrCmd_310                                    ; 310
+	.word ScrCmd_311                                    ; 311
+	.word ScrCmd_312                                    ; 312
+	.word ScrCmd_313                                    ; 313
+	.word ScrCmd_314                                    ; 314
+	.word ScrCmd_315                                    ; 315
+	.word ScrCmd_316                                    ; 316
+	.word ScrCmd_317                                    ; 317
+	.word ScrCmd_318                                    ; 318
+	.word ScrCmd_319                                    ; 319
+	.word ScrCmd_320                                    ; 320
+	.word ScrCmd_321                                    ; 321
+	.word ScrCmd_322                                    ; 322
+	.word ScrCmd_323                                    ; 323
+	.word ScrCmd_324                                    ; 324
+	.word ScrCmd_325                                    ; 325
+	.word ScrCmd_326                                    ; 326
+	.word ScrCmd_327                                    ; 327
+	.word ScrCmd_328                                    ; 328
+	.word ScrCmd_329                                    ; 329
+	.word ScrCmd_330                                    ; 330
+	.word ScrCmd_331                                    ; 331
+	.word ScrCmd_332                                    ; 332
+	.word ScrCmd_333                                    ; 333
+	.word ScrCmd_334                                    ; 334
+	.word ScrCmd_335                                    ; 335
+	.word ScrCmd_336                                    ; 336
+	.word ScrCmd_337                                    ; 337
+	.word ScrCmd_338                                    ; 338
+	.word ScrCmd_339                                    ; 339
+	.word ScrCmd_340                                    ; 340
+	.word ScrCmd_341                                    ; 341
+	.word ScrCmd_342                                    ; 342
+	.word ScrCmd_343                                    ; 343
+	.word ScrCmd_344                                    ; 344
+	.word ScrCmd_345                                    ; 345
+	.word ScrCmd_346                                    ; 346
+	.word ScrCmd_347                                    ; 347
+	.word ScrCmd_348                                    ; 348
+	.word ScrCmd_349                                    ; 349
+	.word ScrCmd_350                                    ; 350
+	.word ScrCmd_351                                    ; 351
+	.word ScrCmd_352                                    ; 352
+	.word ScrCmd_353                                    ; 353
+	.word ScrCmd_354                                    ; 354
+	.word ScrCmd_355                                    ; 355
+	.word ScrCmd_356                                    ; 356
+	.word ScrCmd_357                                    ; 357
+	.word ScrCmd_358                                    ; 358
+	.word ScrCmd_359                                    ; 359
+	.word ScrCmd_360                                    ; 360
+	.word ScrCmd_361                                    ; 361
+	.word ScrCmd_362                                    ; 362
+	.word ScrCmd_363                                    ; 363
+	.word ScrCmd_364                                    ; 364
+	.word ScrCmd_365                                    ; 365
+	.word ScrCmd_366                                    ; 366
+	.word ScrCmd_367                                    ; 367
+	.word ScrCmd_368                                    ; 368
+	.word ScrCmd_369                                    ; 369
+	.word ScrCmd_370                                    ; 370
+	.word ScrCmd_371                                    ; 371
+	.word ScrCmd_372                                    ; 372
+	.word ScrCmd_373                                    ; 373
+	.word ScrCmd_374                                    ; 374
+	.word ScrCmd_375                                    ; 375
+	.word ScrCmd_376                                    ; 376
+	.word ScrCmd_377                                    ; 377
+	.word ScrCmd_378                                    ; 378
+	.word ScrCmd_379                                    ; 379
+	.word ScrCmd_380                                    ; 380
+	.word ScrCmd_381                                    ; 381
+	.word ScrCmd_382                                    ; 382
+	.word ScrCmd_383                                    ; 383
+	.word ScrCmd_384                                    ; 384
+	.word ScrCmd_385                                    ; 385
+	.word ScrCmd_386                                    ; 386
+	.word ScrCmd_387                                    ; 387
+	.word ScrCmd_388                                    ; 388
+	.word ScrCmd_389                                    ; 389
+	.word ScrCmd_390                                    ; 390
+	.word ScrCmd_391                                    ; 391
+	.word ScrCmd_392                                    ; 392
+	.word ScrCmd_393                                    ; 393
+	.word ScrCmd_394                                    ; 394
+	.word ScrCmd_395                                    ; 395
+	.word ScrCmd_396                                    ; 396
+	.word ScrCmd_397                                    ; 397
+	.word ScrCmd_398                                    ; 398
+	.word ScrCmd_399                                    ; 399
+	.word ScrCmd_400                                    ; 400
+	.word ScrCmd_401                                    ; 401
+	.word ScrCmd_402                                    ; 402
+	.word ScrCmd_403                                    ; 403
+	.word ScrCmd_404                                    ; 404
+	.word ScrCmd_405                                    ; 405
+	.word ScrCmd_406                                    ; 406
+	.word ScrCmd_407                                    ; 407
+	.word ScrCmd_408                                    ; 408
+	.word ScrCmd_409                                    ; 409
+	.word ScrCmd_410                                    ; 410
+	.word ScrCmd_411                                    ; 411
+	.word ScrCmd_412                                    ; 412
+	.word ScrCmd_413                                    ; 413
+	.word ScrCmd_414                                    ; 414
+	.word ScrCmd_415                                    ; 415
+	.word ScrCmd_416                                    ; 416
+	.word ScrCmd_417                                    ; 417
+	.word ScrCmd_418                                    ; 418
+	.word ScrCmd_419                                    ; 419
+	.word ScrCmd_420                                    ; 420
+	.word ScrCmd_421                                    ; 421
+	.word ScrCmd_422                                    ; 422
+	.word ScrCmd_423                                    ; 423
+	.word ScrCmd_424                                    ; 424
+	.word ScrCmd_425                                    ; 425
+	.word ScrCmd_426                                    ; 426
+	.word ScrCmd_427                                    ; 427
+	.word ScrCmd_428                                    ; 428
+	.word ScrCmd_116                                    ; 429
+	.word ScrCmd_430                                    ; 430
+	.word ScrCmd_431                                    ; 431
+	.word ScrCmd_432                                    ; 432
+	.word ScrCmd_433                                    ; 433
+	.word ScrCmd_434                                    ; 434
+	.word ScrCmd_435                                    ; 435
+	.word ScrCmd_436                                    ; 436
+	.word ScrCmd_DebugWatch                             ; 437
+	.word ScrCmd_438                                    ; 438
+	.word ScrCmd_439                                    ; 439
+	.word ScrCmd_440                                    ; 440
+	.word ScrCmd_441                                    ; 441
+	.word ScrCmd_442                                    ; 442
+	.word ScrCmd_443                                    ; 443
+	.word ScrCmd_444                                    ; 444
+	.word ScrCmd_445                                    ; 445
+	.word ScrCmd_446                                    ; 446
+	.word ScrCmd_447                                    ; 447
+	.word ScrCmd_448                                    ; 448
+	.word ScrCmd_449                                    ; 449
+	.word ScrCmd_450                                    ; 450
+	.word ScrCmd_451                                    ; 451
+	.word ScrCmd_452                                    ; 452
+	.word ScrCmd_453                                    ; 453
+	.word ScrCmd_454                                    ; 454
+	.word ScrCmd_455                                    ; 455
+	.word ScrCmd_456                                    ; 456
+	.word ScrCmd_457                                    ; 457
+	.word ScrCmd_458                                    ; 458
+	.word ScrCmd_459                                    ; 459
+	.word ScrCmd_460                                    ; 460
+	.word ScrCmd_461                                    ; 461
+	.word ScrCmd_462                                    ; 462
+	.word ScrCmd_463                                    ; 463
+	.word ScrCmd_464                                    ; 464
+	.word ScrCmd_465                                    ; 465
+	.word ScrCmd_466                                    ; 466
+	.word ScrCmd_467                                    ; 467
+	.word ScrCmd_468                                    ; 468
+	.word ScrCmd_469                                    ; 469
+	.word ScrCmd_470                                    ; 470
+	.word ScrCmd_471                                    ; 471
+	.word ScrCmd_472                                    ; 472
+	.word ScrCmd_473                                    ; 473
+	.word ScrCmd_474                                    ; 474
+	.word ScrCmd_475                                    ; 475
+	.word ScrCmd_476                                    ; 476
+	.word ScrCmd_477                                    ; 477
+	.word ScrCmd_478                                    ; 478
+	.word ScrCmd_479                                    ; 479
+	.word ScrCmd_480                                    ; 480
+	.word ScrCmd_481                                    ; 481
+	.word ScrCmd_482                                    ; 482
+	.word ScrCmd_483                                    ; 483
+	.word ScrCmd_484                                    ; 484
+	.word ScrCmd_485                                    ; 485
+	.word ScrCmd_Dummy                                  ; 486
+	.word ScrCmd_487                                    ; 487
+	.word ScrCmd_488                                    ; 488
+	.word ScrCmd_489                                    ; 489
+	.word ScrCmd_490                                    ; 490
+	.word ScrCmd_491                                    ; 491
+	.word ScrCmd_492                                    ; 492
+	.word ScrCmd_493                                    ; 493
+	.word ScrCmd_494                                    ; 494
+	.word ScrCmd_495                                    ; 495
+	.word ScrCmd_496                                    ; 496
+	.word ScrCmd_497                                    ; 497
+	.word ScrCmd_498                                    ; 498
+	.word ScrCmd_499                                    ; 499
+	.word ScrCmd_500                                    ; 500
+	.word ScrCmd_501                                    ; 501
+	.word ScrCmd_502                                    ; 502
+	.word ScrCmd_503                                    ; 503
+	.word ScrCmd_504                                    ; 504
+	.word ScrCmd_505                                    ; 505
+	.word ScrCmd_506                                    ; 506
+	.word ScrCmd_507                                    ; 507
+	.word ScrCmd_508                                    ; 508
+	.word ScrCmd_509                                    ; 509
+	.word ScrCmd_510                                    ; 510
+	.word ScrCmd_511                                    ; 511
+	.word ScrCmd_512                                    ; 512
+	.word ScrCmd_513                                    ; 513
+	.word ScrCmd_514                                    ; 514
+	.word ScrCmd_515                                    ; 515
+	.word ScrCmd_516                                    ; 516
+	.word ScrCmd_517                                    ; 517
+	.word ScrCmd_518                                    ; 518
+	.word ScrCmd_519                                    ; 519
+	.word ScrCmd_520                                    ; 520
+	.word ScrCmd_521                                    ; 521
+	.word ScrCmd_522                                    ; 522
+	.word ScrCmd_523                                    ; 523
+	.word ScrCmd_524                                    ; 524
+	.word ScrCmd_525                                    ; 525
+	.word ScrCmd_526                                    ; 526
+	.word ScrCmd_527                                    ; 527
+	.word ScrCmd_528                                    ; 528
+	.word ScrCmd_529                                    ; 529
+	.word ScrCmd_530                                    ; 530
+	.word ScrCmd_531                                    ; 531
+	.word ScrCmd_532                                    ; 532
+	.word ScrCmd_533                                    ; 533
+	.word ScrCmd_534                                    ; 534
+	.word ScrCmd_535                                    ; 535
+	.word ScrCmd_536                                    ; 536
+	.word ScrCmd_537                                    ; 537
+	.word ScrCmd_538                                    ; 538
+	.word ScrCmd_539                                    ; 539
+	.word ScrCmd_540                                    ; 540
+	.word ScrCmd_541                                    ; 541
+	.word ScrCmd_542                                    ; 542
+	.word ScrCmd_543                                    ; 543
+	.word ScrCmd_544                                    ; 544
+	.word ScrCmd_545                                    ; 545
+	.word ScrCmd_546                                    ; 546
+	.word ScrCmd_547                                    ; 547
+	.word ScrCmd_548                                    ; 548
+	.word ScrCmd_549                                    ; 549
+	.word ScrCmd_550                                    ; 550
+	.word ScrCmd_551                                    ; 551
+	.word ScrCmd_552                                    ; 552
+	.word ScrCmd_553                                    ; 553
+	.word ScrCmd_554                                    ; 554
+	.word ScrCmd_555                                    ; 555
+	.word ScrCmd_556                                    ; 556
+	.word ScrCmd_557                                    ; 557
+	.word ScrCmd_558                                    ; 558
+	.word ScrCmd_559                                    ; 559
+	.word ScrCmd_560                                    ; 560
+	.word ScrCmd_561                                    ; 561
+	.word ScrCmd_562                                    ; 562
+	.word ScrCmd_563                                    ; 563
+	.word ScrCmd_564                                    ; 564
+	.word ScrCmd_565                                    ; 565
+	.word ScrCmd_566                                    ; 566
+	.word ScrCmd_567                                    ; 567
+	.word ScrCmd_568                                    ; 568
+	.word ScrCmd_569                                    ; 569
+	.word ScrCmd_570                                    ; 570
+	.word ScrCmd_571                                    ; 571
+	.word ScrCmd_572                                    ; 572
+	.word ScrCmd_573                                    ; 573
+	.word ScrCmd_574                                    ; 574
+	.word ScrCmd_575                                    ; 575
+	.word ScrCmd_576                                    ; 576
+	.word ScrCmd_577                                    ; 577
+	.word ScrCmd_578                                    ; 578
+	.word ScrCmd_579                                    ; 579
+	.word ScrCmd_580                                    ; 580
+	.word ScrCmd_581                                    ; 581
+	.word ScrCmd_582                                    ; 582
+	.word ScrCmd_583                                    ; 583
+	.word ScrCmd_584                                    ; 584
+	.word ScrCmd_585                                    ; 585
+	.word ScrCmd_586                                    ; 586
+	.word ScrCmd_587                                    ; 587
+	.word ScrCmd_588                                    ; 588
+	.word ScrCmd_589                                    ; 589
+	.word ScrCmd_590                                    ; 590
+	.word ScrCmd_591                                    ; 591
+	.word ScrCmd_592                                    ; 592
+	.word ScrCmd_593                                    ; 593
+	.word ScrCmd_594                                    ; 594
+	.word ScrCmd_595                                    ; 595
+	.word ScrCmd_596                                    ; 596
+	.word ScrCmd_597                                    ; 597
+	.word ScrCmd_598                                    ; 598
+	.word ScrCmd_599                                    ; 599
+	.word ScrCmd_600                                    ; 600
+	.word ScrCmd_601                                    ; 601
+	.word ScrCmd_602                                    ; 602
+	.word ScrCmd_603                                    ; 603
+	.word ScrCmd_604                                    ; 604
+	.word ScrCmd_605                                    ; 605
+	.word ScrCmd_606                                    ; 606
+	.word ScrCmd_607                                    ; 607
+	.word ScrCmd_608                                    ; 608
+	.word ScrCmd_609                                    ; 609
+	.word ScrCmd_610                                    ; 610
+	.word ScrCmd_611                                    ; 611
+	.word ScrCmd_612                                    ; 612
+	.word ScrCmd_613                                    ; 613
+	.word ScrCmd_614                                    ; 614
+	.word ScrCmd_615                                    ; 615
+	.word ScrCmd_616                                    ; 616
+	.word ScrCmd_617                                    ; 617
+	.word ScrCmd_618                                    ; 618
+	.word ScrCmd_619                                    ; 619
+	.word ScrCmd_620                                    ; 620
+	.word ScrCmd_621                                    ; 621
+	.word ScrCmd_622                                    ; 622
+	.word ScrCmd_623                                    ; 623
+	.word ScrCmd_624                                    ; 624
+	.word ScrCmd_625                                    ; 625
+	.word ScrCmd_626                                    ; 626
+	.word ScrCmd_627                                    ; 627
+	.word ScrCmd_628                                    ; 628
+	.word ScrCmd_629                                    ; 629
+	.word ScrCmd_630                                    ; 630
+	.word ScrCmd_631                                    ; 631
+	.word ScrCmd_632                                    ; 632
+	.word ScrCmd_633                                    ; 633
+	.word ScrCmd_634                                    ; 634
+	.word ScrCmd_635                                    ; 635
+	.word ScrCmd_636                                    ; 636
+	.word ScrCmd_637                                    ; 637
+	.word ScrCmd_638                                    ; 638
+	.word ScrCmd_639                                    ; 639
+	.word ScrCmd_640                                    ; 640
+	.word ScrCmd_641                                    ; 641
+	.word ScrCmd_642                                    ; 642
+	.word ScrCmd_643                                    ; 643
+	.word ScrCmd_644                                    ; 644
+	.word ScrCmd_645                                    ; 645
+	.word ScrCmd_646                                    ; 646
+	.word ScrCmd_647                                    ; 647
+	.word ScrCmd_648                                    ; 648
+	.word ScrCmd_649                                    ; 649
+	.word ScrCmd_650                                    ; 650
+	.word ScrCmd_651                                    ; 651
+	.word ScrCmd_652                                    ; 652
+	.word ScrCmd_653                                    ; 653
+	.word ScrCmd_654                                    ; 654
+	.word ScrCmd_655                                    ; 655
+	.word ScrCmd_656                                    ; 656
+	.word ScrCmd_657                                    ; 657
+	.word ScrCmd_658                                    ; 658
+	.word ScrCmd_659                                    ; 659
+	.word ScrCmd_660                                    ; 660
+	.word ScrCmd_661                                    ; 661
+	.word ScrCmd_662                                    ; 662
+	.word ScrCmd_663                                    ; 663
+	.word ScrCmd_664                                    ; 664
+	.word ScrCmd_665                                    ; 665
+	.word ScrCmd_666                                    ; 666
+	.word ScrCmd_667                                    ; 667
+	.word ScrCmd_668                                    ; 668
+	.word ScrCmd_669                                    ; 669
+	.word ScrCmd_670                                    ; 670
+	.word ScrCmd_671                                    ; 671
+	.word ScrCmd_672                                    ; 672
+	.word ScrCmd_673                                    ; 673
+	.word ScrCmd_674                                    ; 674
+	.word ScrCmd_675                                    ; 675
+	.word ScrCmd_676                                    ; 676
+	.word ScrCmd_677                                    ; 677
+	.word ScrCmd_678                                    ; 678
+	.word ScrCmd_679                                    ; 679
+	.word ScrCmd_680                                    ; 680
+	.word ScrCmd_681                                    ; 681
+	.word ScrCmd_682                                    ; 682
+	.word ScrCmd_683                                    ; 683
+	.word ScrCmd_684                                    ; 684
+	.word ScrCmd_685                                    ; 685
+	.word ScrCmd_686                                    ; 686
+	.word ScrCmd_687                                    ; 687
+	.word ScrCmd_688                                    ; 688
+	.word ScrCmd_689                                    ; 689
+	.word ScrCmd_690                                    ; 690
+	.word ScrCmd_691                                    ; 691
+	.word ScrCmd_692                                    ; 692
+	.word ScrCmd_693                                    ; 693
+	.word ScrCmd_694                                    ; 694
+	.word ScrCmd_695                                    ; 695
+	.word ScrCmd_696                                    ; 696
+	.word ScrCmd_697                                    ; 697
+	.word ScrCmd_698                                    ; 698
+	.word ScrCmd_699                                    ; 699
+	.word ScrCmd_700                                    ; 700
+	.word ScrCmd_701                                    ; 701
+	.word ScrCmd_702                                    ; 702
+	.word ScrCmd_703                                    ; 703
+	.word ScrCmd_704                                    ; 704
+	.word ScrCmd_705                                    ; 705
+	.word ScrCmd_706                                    ; 706
+	.word ScrCmd_707                                    ; 707
+	.word ScrCmd_708                                    ; 708
+	.word ScrCmd_709                                    ; 709
+	.word ScrCmd_710                                    ; 710
+	.word ScrCmd_711                                    ; 711
+	.word ScrCmd_712                                    ; 712
+	.word ScrCmd_713                                    ; 713
+	.word ScrCmd_714                                    ; 714
+	.word ScrCmd_715                                    ; 715
+	.word ScrCmd_716                                    ; 716
+	.word ScrCmd_717                                    ; 717
+	.word ScrCmd_718                                    ; 718
+	.word ScrCmd_719                                    ; 719
+	.word ScrCmd_720                                    ; 720
+	.word ScrCmd_721                                    ; 721
+	.word ScrCmd_722                                    ; 722
+	.word ScrCmd_723                                    ; 723
+	.word ScrCmd_724                                    ; 724
+	.word ScrCmd_725                                    ; 725
+	.word ScrCmd_726                                    ; 726
+	.word ScrCmd_727                                    ; 727
+	.word ScrCmd_728                                    ; 728
+	.word ScrCmd_729                                    ; 729
+	.word ScrCmd_730                                    ; 730
+	.word ScrCmd_731                                    ; 731
+	.word ScrCmd_732                                    ; 732
+	.word ScrCmd_733                                    ; 733
+	.word ScrCmd_734                                    ; 734
+	.word ScrCmd_735                                    ; 735
+	.word ScrCmd_736                                    ; 736
+	.word ScrCmd_737                                    ; 737
+	.word ScrCmd_738                                    ; 738
+	.word ScrCmd_739                                    ; 739
+	.word ScrCmd_740                                    ; 740
+	.word ScrCmd_741                                    ; 741
+	.word ScrCmd_742                                    ; 742
+	.word ScrCmd_743                                    ; 743
+	.word ScrCmd_744                                    ; 744
+	.word ScrCmd_745                                    ; 745
+	.word ScrCmd_746                                    ; 746
+	.word ScrCmd_747                                    ; 747
+	.word ScrCmd_748                                    ; 748
+	.word ScrCmd_749                                    ; 749
+	.word ScrCmd_750                                    ; 750
+	.word ScrCmd_751                                    ; 751
+	.word ScrCmd_752                                    ; 752
+	.word ScrCmd_753                                    ; 753
+	.word ScrCmd_754                                    ; 754
+	.word ScrCmd_755                                    ; 755
+	.word ScrCmd_756                                    ; 756
+	.word ScrCmd_757                                    ; 757
+	.word ScrCmd_758                                    ; 758
+	.word ScrCmd_759                                    ; 759
+	.word ScrCmd_760                                    ; 760
+	.word ScrCmd_761                                    ; 761
+	.word ScrCmd_762                                    ; 762
+	.word ScrCmd_763                                    ; 763
+	.word ScrCmd_764                                    ; 764
+	.word ScrCmd_765                                    ; 765
+	.word ScrCmd_766                                    ; 766
+	.word ScrCmd_767                                    ; 767
+	.word ScrCmd_768                                    ; 768
+	.word ScrCmd_769                                    ; 769
+	.word ScrCmd_770                                    ; 770
+	.word ScrCmd_771                                    ; 771
+	.word ScrCmd_772                                    ; 772
+	.word ScrCmd_773                                    ; 773
+	.word ScrCmd_774                                    ; 774
+	.word ScrCmd_775                                    ; 775
+	.word ScrCmd_776                                    ; 776
+	.word ScrCmd_777                                    ; 777
+	.word ScrCmd_778                                    ; 778
+	.word ScrCmd_779                                    ; 779
+	.word ScrCmd_780                                    ; 780
+	.word ScrCmd_781                                    ; 781
+	.word ScrCmd_782                                    ; 782
+	.word ScrCmd_783                                    ; 783
+	.word ScrCmd_784                                    ; 784
+	.word ScrCmd_785                                    ; 785
+	.word ScrCmd_786                                    ; 786
+	.word ScrCmd_787                                    ; 787
+	.word ScrCmd_788                                    ; 788
+	.word ScrCmd_789                                    ; 789
+	.word ScrCmd_790                                    ; 790
+	.word ScrCmd_791                                    ; 791
+	.word ScrCmd_792                                    ; 792
+	.word ScrCmd_793                                    ; 793
+	.word ScrCmd_794                                    ; 794
+	.word ScrCmd_795                                    ; 795
+	.word ScrCmd_796                                    ; 796
+	.word ScrCmd_797                                    ; 797
+	.word ScrCmd_798                                    ; 798
+	.word ScrCmd_799                                    ; 799
+	.word ScrCmd_800                                    ; 800
+	.word ScrCmd_801                                    ; 801
+	.word ScrCmd_802                                    ; 802
+	.word ScrCmd_803                                    ; 803
+	.word ScrCmd_804                                    ; 804
+	.word ScrCmd_805                                    ; 805
+	.word ScrCmd_806                                    ; 806
+	.word ScrCmd_807                                    ; 807
+	.word ScrCmd_808                                    ; 808
+	.word ScrCmd_809                                    ; 809
+	.word ScrCmd_810                                    ; 810
+	.word ScrCmd_811                                    ; 811
+	.word ScrCmd_812                                    ; 812
+	.word ScrCmd_813                                    ; 813
+	.word ScrCmd_814                                    ; 814
+	.word ScrCmd_815                                    ; 815
+	.word ScrCmd_816                                    ; 816
+	.word ScrCmd_817                                    ; 817
+	.word ScrCmd_818                                    ; 818
+	.word ScrCmd_819                                    ; 819
+	.word ScrCmd_820                                    ; 820
+	.word ScrCmd_821                                    ; 821
+	.word ScrCmd_822                                    ; 822
+	.word ScrCmd_823                                    ; 823
+	.word ScrCmd_824                                    ; 824
+	.word ScrCmd_825                                    ; 825
+	.word ScrCmd_826                                    ; 826
+	.word ScrCmd_827                                    ; 827
+	.word ScrCmd_828                                    ; 828
+	.word ScrCmd_829                                    ; 829
+	.word ScrCmd_830                                    ; 830
+	.word ScrCmd_831                                    ; 831
+	.word ScrCmd_832                                    ; 832
+	.word ScrCmd_833                                    ; 833
+	.word ScrCmd_834                                    ; 834
+	.word ScrCmd_835                                    ; 835
+	.word ScrCmd_836                                    ; 836
+	.word ScrCmd_837                                    ; 837
+	.word ScrCmd_838                                    ; 838
+	.word ScrCmd_839                                    ; 839
+	.word ScrCmd_840                                    ; 840
+	.word ScrCmd_841                                    ; 841
+	.word ScrCmd_842                                    ; 842
+	.word ScrCmd_843                                    ; 843
+	.word ScrCmd_844                                    ; 844
+	.word ScrCmd_845                                    ; 845
+	.word ScrCmd_846                                    ; 846
+	.word ScrCmd_847                                    ; 847
+	.word ScrCmd_848                                    ; 848
+	.word ScrCmd_849                                    ; 849
+	.word ScrCmd_850                                    ; 850
+	.word ScrCmd_851                                    ; 851
+	.word ScrCmd_852                                    ; 852
 
 	.text
 
@@ -1282,7 +1295,7 @@ sub_0204005C: ; 0x0204005C
 	mov r1, #0x37
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_020401B4
+	bl FieldSysGetAttrAddrInternal
 	str r0, [sp]
 	ldr r0, [r7, #0x40]
 	bl sub_0205C654
@@ -1416,7 +1429,7 @@ LoadScriptsAndMessagesParameterized: ; 0x02040168
 	add r5, r1, #0
 	add r1, r2, #0
 	add r4, r3, #0
-	mov r0, #0xc
+	mov r0, #0xc ; NARC_fielddata_script_scr_seq
 	mov r2, #0xb
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [r5, #0x7c]
@@ -1451,8 +1464,8 @@ LoadScriptsAndMessagesForCurrentMap: ; 0x0204018C
 	pop {r3, r4, r5, pc}
 	thumb_func_end LoadScriptsAndMessagesForCurrentMap
 
-	thumb_func_start sub_020401B4
-sub_020401B4: ; 0x020401B4
+	thumb_func_start FieldSysGetAttrAddrInternal
+FieldSysGetAttrAddrInternal: ; 0x020401B4
 	push {r3, lr}
 	cmp r1, #0x37
 	bls _020401BC
@@ -1654,10 +1667,10 @@ _020402E8:
 	bl GF_AssertFail
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_020401B4
+	thumb_func_end FieldSysGetAttrAddrInternal
 
-	thumb_func_start sub_020402F0
-sub_020402F0: ; 0x020402F0
+	thumb_func_start FieldSysGetAttrAddr
+FieldSysGetAttrAddr: ; 0x020402F0
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0x10]
 	add r5, r1, #0
@@ -1674,11 +1687,11 @@ _02040302:
 _0204030E:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_020401B4
+	bl FieldSysGetAttrAddrInternal
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02040318: .word 0x0003643F
-	thumb_func_end sub_020402F0
+	thumb_func_end FieldSysGetAttrAddr
 
 	thumb_func_start sub_0204031C
 sub_0204031C: ; 0x0204031C
@@ -1759,7 +1772,7 @@ _0204039A:
 	ldr r1, _020403A8 ; =0x00007FD6
 	add r0, r5, #0
 	sub r1, r4, r1
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	pop {r3, r4, r5, pc}
 	nop
 _020403A8: .word 0x00007FD6
@@ -1779,8 +1792,8 @@ _020403BA:
 	.balign 4, 0
 	thumb_func_end VarGet
 
-	thumb_func_start sub_020403C0
-sub_020403C0: ; 0x020403C0
+	thumb_func_start VarSet
+VarSet: ; 0x020403C0
 	push {r4, lr}
 	add r4, r2, #0
 	bl GetVarPointer
@@ -1793,10 +1806,10 @@ _020403D0:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020403C0
+	thumb_func_end VarSet
 
-	thumb_func_start sub_020403D8
-sub_020403D8: ; 0x020403D8
+	thumb_func_start VarGetObjectEventGraphicsId
+VarGetObjectEventGraphicsId: ; 0x020403D8
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -1813,10 +1826,10 @@ _020403E6:
 	pop {r3, r4, r5, pc}
 	nop
 _020403F8: .word 0x00004020
-	thumb_func_end sub_020403D8
+	thumb_func_end VarGetObjectEventGraphicsId
 
-	thumb_func_start sub_020403FC
-sub_020403FC: ; 0x020403FC
+	thumb_func_start FlagGet
+FlagGet: ; 0x020403FC
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
@@ -1825,10 +1838,10 @@ sub_020403FC: ; 0x020403FC
 	bl CheckFlagInArray
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020403FC
+	thumb_func_end FlagGet
 
-	thumb_func_start sub_02040410
-sub_02040410: ; 0x02040410
+	thumb_func_start FlagSet
+FlagSet: ; 0x02040410
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
@@ -1837,10 +1850,10 @@ sub_02040410: ; 0x02040410
 	bl SetFlagInArray
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02040410
+	thumb_func_end FlagSet
 
-	thumb_func_start sub_02040424
-sub_02040424: ; 0x02040424
+	thumb_func_start FlagClear
+FlagClear: ; 0x02040424
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
@@ -1849,10 +1862,10 @@ sub_02040424: ; 0x02040424
 	bl ClearFlagInArray
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02040424
+	thumb_func_end FlagClear
 
-	thumb_func_start sub_02040438
-sub_02040438: ; 0x02040438
+	thumb_func_start ClearTempFieldEventData
+ClearTempFieldEventData: ; 0x02040438
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
@@ -1877,10 +1890,10 @@ sub_02040438: ; 0x02040438
 	bl memset
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02040438
+	thumb_func_end ClearTempFieldEventData
 
-	thumb_func_start sub_02040470
-sub_02040470: ; 0x02040470
+	thumb_func_start ClearDailyFlags
+ClearDailyFlags: ; 0x02040470
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
@@ -1896,7 +1909,7 @@ _02040484:
 	bne _02040484
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02040470
+	thumb_func_end ClearDailyFlags
 
 	thumb_func_start sub_02040490
 sub_02040490: ; 0x02040490
@@ -1906,19 +1919,19 @@ sub_02040490: ; 0x02040490
 	mov r1, #0x2a
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	strh r4, [r0]
 	add r0, r5, #0
 	mov r1, #0x2b
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	strh r6, [r0]
 	add r0, r5, #0
 	mov r1, #0x2c
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	strh r7, [r0]
 	add r0, r5, #0
 	mov r1, #0x2d
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r1, sp, #8
 	ldrh r1, [r1, #0x10]
 	strh r1, [r0]
@@ -1975,8 +1988,8 @@ _02040510:
 	pop {r3, pc}
 	thumb_func_end sub_02040500
 
-	thumb_func_start sub_02040514
-sub_02040514: ; 0x02040514
+	thumb_func_start TrainerFlagCheck
+TrainerFlagCheck: ; 0x02040514
 	push {r4, lr}
 	add r4, r1, #0
 	bl SavArray_Flags_get
@@ -1987,10 +2000,10 @@ sub_02040514: ; 0x02040514
 	lsr r1, r1, #0x10
 	bl CheckFlagInArray
 	pop {r4, pc}
-	thumb_func_end sub_02040514
+	thumb_func_end TrainerFlagCheck
 
-	thumb_func_start sub_0204052C
-sub_0204052C: ; 0x0204052C
+	thumb_func_start TrainerFlagSet
+TrainerFlagSet: ; 0x0204052C
 	push {r4, lr}
 	add r4, r1, #0
 	bl SavArray_Flags_get
@@ -2001,10 +2014,10 @@ sub_0204052C: ; 0x0204052C
 	lsr r1, r1, #0x10
 	bl SetFlagInArray
 	pop {r4, pc}
-	thumb_func_end sub_0204052C
+	thumb_func_end TrainerFlagSet
 
-	thumb_func_start sub_02040544
-sub_02040544: ; 0x02040544
+	thumb_func_start TrainerFlagClear
+TrainerFlagClear: ; 0x02040544
 	push {r4, lr}
 	add r4, r1, #0
 	bl SavArray_Flags_get
@@ -2015,7 +2028,7 @@ sub_02040544: ; 0x02040544
 	lsr r1, r1, #0x10
 	bl ClearFlagInArray
 	pop {r4, pc}
-	thumb_func_end sub_02040544
+	thumb_func_end TrainerFlagClear
 
 	thumb_func_start sub_0204055C
 sub_0204055C: ; 0x0204055C
@@ -2074,15 +2087,15 @@ sub_020405AC: ; 0x020405AC
 	add r5, r1, #0
 	add r4, r0, #0
 	mov r1, #0x2a
-	bl sub_020401B4
+	bl FieldSysGetAttrAddrInternal
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0x2b
-	bl sub_020401B4
+	bl FieldSysGetAttrAddrInternal
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0x2c
-	bl sub_020401B4
+	bl FieldSysGetAttrAddrInternal
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0204056C
@@ -2210,7 +2223,7 @@ _020406B4:
 	bl sub_0204055C
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl sub_020403FC
+	bl FlagGet
 	cmp r0, #0
 	bne _02040704
 	ldr r1, [r4, #4]
@@ -2301,7 +2314,7 @@ sub_02040750: ; 0x02040750
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _02040764:
-	bl sub_0203B904
+	bl MapEvents_GetLoadedLevelScripts
 	add r1, r0, #0
 	bne _02040770
 	mov r0, #0
@@ -2352,7 +2365,7 @@ sub_020407AC: ; 0x020407AC
 	mov r0, #0
 	pop {r4, pc}
 _020407BE:
-	bl sub_0203B904
+	bl MapEvents_GetLoadedLevelScripts
 	add r1, r0, #0
 	bne _020407CA
 	mov r0, #0

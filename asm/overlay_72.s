@@ -716,7 +716,7 @@ _02237E04:
 	mvn r0, r0
 	cmp r4, r0
 	beq _02237E1C
-	bl sub_020AE420
+	bl WCM_GetPhase
 	cmp r0, #9
 	beq _02237E18
 	mov r4, #5
@@ -1145,7 +1145,7 @@ ov72_02238194: ; 0x02238194
 	mov r1, #0x43
 	bl NARC_ctor
 	add r7, r0, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e

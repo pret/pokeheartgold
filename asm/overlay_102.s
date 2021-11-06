@@ -3556,7 +3556,7 @@ ov102_021E909C: ; 0x021E909C
 	str r0, [r4, r1]
 	add r0, r4, #0
 	bl ov102_021E9198
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r2, #0
 	str r2, [sp]
 	mov r1, #0x7f
@@ -4211,9 +4211,9 @@ ov102_021E95E0: ; 0x021E95E0
 	str r0, [sp, #0x14]
 _021E9606:
 	ldr r0, [sp, #0x1c]
-	bl sub_020B804C
+	bl NNS_G2dInitImagePaletteProxy
 	add r0, r7, #0
-	bl sub_020B8008
+	bl NNS_G2dInitImageProxy
 	mov r0, #0
 	str r0, [sp]
 	add r0, r6, #1

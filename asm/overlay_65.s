@@ -1428,7 +1428,7 @@ _0221CA50:
 	beq _0221CA60
 	lsl r0, r6, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	add r0, r0, #1
 	strh r0, [r4, #2]
 _0221CA60:
@@ -2574,7 +2574,7 @@ ov65_0221D3E8: ; 0x0221D3E8
 	sub sp, #0x14
 	add r5, r0, #0
 	add r7, r1, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x64
@@ -3129,7 +3129,7 @@ _0221D842:
 	add r1, r6, #0
 	mov r2, #0x1a
 	add r5, r0, #0
-	bl sub_02077D40
+	bl GetItemNameIntoString
 	mov r0, #3
 	str r0, [sp]
 	mov r3, #0
@@ -3618,7 +3618,7 @@ ov65_0221DC34: ; 0x0221DC34
 _0221DC8E:
 	lsl r1, r2, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02006218
+	bl PlayCry
 _0221DC96:
 	ldr r0, _0221DCB8 ; =0x0000040C
 	mov r1, #1
@@ -4679,7 +4679,7 @@ _0221E4C0:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r6, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	mov r0, #0xda
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]

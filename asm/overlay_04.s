@@ -1914,7 +1914,7 @@ ov04_02254D98: ; 0x02254D98
 	ldr r1, [r6, #4]
 	ldr r5, [r1, #0x24]
 	mov r1, #0x1e
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	ldr r0, [r4]
 	bl ov04_02254F20
@@ -1953,7 +1953,7 @@ ov04_02254DE0: ; 0x02254DE0
 	add r5, r0, #0
 	ldr r2, [r5, #4]
 	ldr r4, [r2, #0x24]
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	ldr r0, [r6]
 	bl ov04_02254F20
@@ -2149,7 +2149,7 @@ _02254F62:
 	bl ov01_021F72DC
 	bl sub_02023F90
 	add r1, r6, #0
-	bl sub_020C36D8
+	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 _02254F7C:
 	add r0, r7, #0
 	bl sub_0205F1D0

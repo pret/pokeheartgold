@@ -119,23 +119,23 @@ _0202A94C: .word 0x000002A2
 _0202A950: .word 0x0000011F
 	thumb_func_end sub_0202A8BC
 
-	thumb_func_start sub_0202A954
-sub_0202A954: ; 0x0202A954
+	thumb_func_start Sav2_Misc_get
+Sav2_Misc_get: ; 0x0202A954
 	ldr r3, _0202A95C ; =SavArray_get
 	mov r1, #9
 	bx r3
 	nop
 _0202A95C: .word SavArray_get
-	thumb_func_end sub_0202A954
+	thumb_func_end Sav2_Misc_get
 
-	thumb_func_start sub_0202A960
-sub_0202A960: ; 0x0202A960
-	ldr r3, _0202A968 ; =sub_020272EC
+	thumb_func_start Sav2_Misc_const_get
+Sav2_Misc_const_get: ; 0x0202A960
+	ldr r3, _0202A968 ; =SavArray_const_get
 	mov r1, #9
 	bx r3
 	nop
-_0202A968: .word sub_020272EC
-	thumb_func_end sub_0202A960
+_0202A968: .word SavArray_const_get
+	thumb_func_end Sav2_Misc_const_get
 
 	thumb_func_start sub_0202A96C
 sub_0202A96C: ; 0x0202A96C
@@ -179,16 +179,16 @@ sub_0202A998: ; 0x0202A998
 	pop {r3, pc}
 	thumb_func_end sub_0202A998
 
-	thumb_func_start GetRivalNamePtr
-GetRivalNamePtr: ; 0x0202A9A8
+	thumb_func_start Sav2_Misc_RivalName_get
+Sav2_Misc_RivalName_get: ; 0x0202A9A8
 	mov r1, #0x27
 	lsl r1, r1, #4
 	add r0, r0, r1
 	bx lr
-	thumb_func_end GetRivalNamePtr
+	thumb_func_end Sav2_Misc_RivalName_get
 
-	thumb_func_start sub_0202A9B0
-sub_0202A9B0: ; 0x0202A9B0
+	thumb_func_start Sav2_Misc_RivalName_set
+Sav2_Misc_RivalName_set: ; 0x0202A9B0
 	add r2, r0, #0
 	add r0, r1, #0
 	mov r1, #0x27
@@ -199,7 +199,7 @@ sub_0202A9B0: ; 0x0202A9B0
 	bx r3
 	.balign 4, 0
 _0202A9C0: .word CopyStringToU16Array
-	thumb_func_end sub_0202A9B0
+	thumb_func_end Sav2_Misc_RivalName_set
 
 	thumb_func_start sub_0202A9C4
 sub_0202A9C4: ; 0x0202A9C4

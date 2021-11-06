@@ -16,7 +16,7 @@ sub_0203DE74: ; 0x0203DE74
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0203DFE0
-	ldr r1, _0203DEA0 ; =0x021D4158
+	ldr r1, _0203DEA0 ; =_021D4158
 	str r0, [r1]
 	ldr r1, [r4, #4]
 	cmp r1, #0
@@ -31,20 +31,20 @@ _0203DE98:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0203DEA0: .word 0x021D4158
+_0203DEA0: .word _021D4158
 	thumb_func_end sub_0203DE74
 
 	thumb_func_start sub_0203DEA4
 sub_0203DEA4: ; 0x0203DEA4
 	push {r3, lr}
 	bl sub_0203DFE0
-	ldr r1, _0203DEB8 ; =0x021D4158
+	ldr r1, _0203DEB8 ; =_021D4158
 	str r0, [r1]
 	bl sub_02053470
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_0203DEB8: .word 0x021D4158
+_0203DEB8: .word _021D4158
 	thumb_func_end sub_0203DEA4
 
 	thumb_func_start sub_0203DEBC
@@ -616,7 +616,7 @@ _0203E2F0: .word 0x00000109
 
 	thumb_func_start sub_0203E2F4
 sub_0203E2F4: ; 0x0203E2F4
-	ldr r0, _0203E304 ; =0x021D4158
+	ldr r0, _0203E304 ; =_021D4158
 	ldr r3, _0203E308 ; =sub_02037504
 	ldr r0, [r0]
 	mov r1, #1
@@ -624,13 +624,13 @@ sub_0203E2F4: ; 0x0203E2F4
 	str r1, [r0, #8]
 	bx r3
 	nop
-_0203E304: .word 0x021D4158
+_0203E304: .word _021D4158
 _0203E308: .word sub_02037504
 	thumb_func_end sub_0203E2F4
 
 	thumb_func_start sub_0203E30C
 sub_0203E30C: ; 0x0203E30C
-	ldr r0, _0203E31C ; =0x021D4158
+	ldr r0, _0203E31C ; =_021D4158
 	ldr r3, _0203E320 ; =sub_020374E4
 	ldr r0, [r0]
 	mov r1, #0
@@ -638,13 +638,13 @@ sub_0203E30C: ; 0x0203E30C
 	str r1, [r0, #8]
 	bx r3
 	nop
-_0203E31C: .word 0x021D4158
+_0203E31C: .word _021D4158
 _0203E320: .word sub_020374E4
 	thumb_func_end sub_0203E30C
 
 	thumb_func_start sub_0203E324
 sub_0203E324: ; 0x0203E324
-	ldr r0, _0203E338 ; =0x021D4158
+	ldr r0, _0203E338 ; =_021D4158
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -655,7 +655,7 @@ _0203E332:
 	ldr r0, [r0, #0x14]
 	bx lr
 	nop
-_0203E338: .word 0x021D4158
+_0203E338: .word _021D4158
 	thumb_func_end sub_0203E324
 
 	thumb_func_start sub_0203E33C
@@ -686,7 +686,7 @@ sub_0203E348: ; 0x0203E348
 
 	thumb_func_start sub_0203E354
 sub_0203E354: ; 0x0203E354
-	ldr r0, _0203E364 ; =0x021D4158
+	ldr r0, _0203E364 ; =_021D4158
 	mov r1, #1
 	ldr r0, [r0]
 	mvn r1, r1
@@ -694,5 +694,5 @@ sub_0203E354: ; 0x0203E354
 	str r1, [r0]
 	bx lr
 	nop
-_0203E364: .word 0x021D4158
+_0203E364: .word _021D4158
 	thumb_func_end sub_0203E354

@@ -2625,7 +2625,7 @@ ov82_0223F224: ; 0x0223F224
 	add r0, r4, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl sub_02074910
+	bl SavArray_IsNatDexEnabled
 	add r1, r4, #0
 	add r1, #0xa4
 	ldr r1, [r1]
@@ -3595,7 +3595,7 @@ ov82_0223F95C: ; 0x0223F95C
 	add r5, r0, #0
 	str r1, [sp, #0x14]
 	bl ov82_0223FC14
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80

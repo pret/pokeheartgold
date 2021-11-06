@@ -1523,7 +1523,7 @@ _021E6582:
 	bl sub_02024B1C
 	mov r1, #1
 	add r7, r0, #0
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r0, #0
 	add r0, r5, #0
 	add r1, r1, r4
@@ -1531,7 +1531,7 @@ _021E6582:
 	bl GX_LoadOBJ
 	add r0, r7, #0
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	add r1, r0, #0
 	add r0, r5, #0
 	add r1, r1, r4

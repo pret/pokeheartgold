@@ -2833,7 +2833,7 @@ ov84_0223F2B4: ; 0x0223F2B4
 	str r3, [sp, #0x1c]
 	bl sub_0202055C
 	bl ov84_0223F480
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80

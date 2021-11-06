@@ -1697,7 +1697,7 @@ ov00_021E6638: ; 0x021E6638
 	bl OS_DisableInterrupts
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020B55AC
+	bl NNS_FndGetGroupIDForMBlockExpHeap
 	cmp r0, #0x10
 	bne _021E666E
 	ldr r0, _021E6684 ; =_0221A680
@@ -3242,7 +3242,7 @@ ov00_021E714C: ; 0x021E714C
 	ldr r0, [r2]
 	ldr r0, [r0, r1]
 	mov r1, #0x10
-	bl sub_020B5594
+	bl NNS_FndSetGroupIDForExpHeap
 	ldr r0, _021E7208 ; =_0221A680
 	ldr r1, [r0]
 	ldr r0, _021E7218 ; =0x00000F9C
@@ -3509,7 +3509,7 @@ _021E737E:
 	ldr r1, [r0, #4]
 	ldr r0, _021E73DC ; =0x000019F8
 	add r0, r1, r0
-	bl sub_020C8A78
+	bl NNS_SndStrmInit
 	ldr r1, _021E73CC ; =_0221A684
 	mov r0, #0
 	ldr r2, [r1, #4]
@@ -4164,13 +4164,13 @@ _021E7858:
 	ldr r0, [r3, #4]
 	add r0, r0, r2
 	add r2, sp, #0x14
-	bl sub_020C8AF0
+	bl NNS_SndStrmAllocChannel
 	ldr r0, _021E797C ; =_0221A684
 	ldr r1, [r0, #4]
 	ldr r0, _021E7990 ; =0x000019F8
 	add r0, r1, r0
 	add r1, r7, #0
-	bl sub_020C8D88
+	bl NNS_SndStrmSetVolume
 	ldr r0, _021E797C ; =_0221A684
 	ldr r3, _021E7994 ; =0x0000088C
 	ldr r2, [r0, #4]
@@ -4186,7 +4186,7 @@ _021E7858:
 	add r0, r2, r0
 	add r2, r2, r3
 	sub r3, #0xc
-	bl sub_020C8B78
+	bl NNS_SndStrmSetup
 	ldr r1, _021E797C ; =_0221A684
 	ldr r0, _021E799C ; =0x000019EC
 	ldr r2, [r1, #4]
@@ -4283,14 +4283,14 @@ _021E79B0: .word 0x000019F0
 	thumb_func_start ov00_021E79B4
 ov00_021E79B4: ; 0x021E79B4
 	ldr r0, _021E79C0 ; =_0221A684
-	ldr r3, _021E79C4 ; =sub_020C8D18
+	ldr r3, _021E79C4 ; =NNS_SndStrmStart
 	ldr r1, [r0, #4]
 	ldr r0, _021E79C8 ; =0x000019F8
 	add r0, r1, r0
 	bx r3
 	.balign 4, 0
 _021E79C0: .word _0221A684
-_021E79C4: .word sub_020C8D18
+_021E79C4: .word NNS_SndStrmStart
 _021E79C8: .word 0x000019F8
 	thumb_func_end ov00_021E79B4
 
@@ -4362,12 +4362,12 @@ ov00_021E7A30: ; 0x021E7A30
 	ldr r1, [r0, #4]
 	ldr r0, _021E7A98 ; =0x000019F8
 	add r0, r1, r0
-	bl sub_020C8D6C
+	bl NNS_SndStrmStop
 	ldr r0, _021E7A90 ; =_0221A684
 	ldr r1, [r0, #4]
 	ldr r0, _021E7A98 ; =0x000019F8
 	add r0, r1, r0
-	bl sub_020C8B50
+	bl NNS_SndStrmFreeChannel
 	bl sub_020B49AC
 	ldr r0, _021E7A90 ; =_0221A684
 	ldr r1, _021E7A9C ; =0x00000888

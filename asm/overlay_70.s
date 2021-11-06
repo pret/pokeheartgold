@@ -1527,7 +1527,7 @@ _02238414:
 	mvn r0, r0
 	cmp r4, r0
 	beq _0223842C
-	bl sub_020AE420
+	bl WCM_GetPhase
 	cmp r0, #9
 	beq _02238428
 	mov r4, #0xd
@@ -2109,7 +2109,7 @@ ov70_02238900: ; 0x02238900
 	mov r1, #0x3d
 	bl NARC_ctor
 	str r0, [sp, #0x18]
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -5739,7 +5739,7 @@ ov70_0223A578: ; 0x0223A578
 	ldr r0, [sp, #0x18]
 	lsr r1, r1, #0x10
 	mov r2, #0x3d
-	bl sub_02077D40
+	bl GetItemNameIntoString
 	add r0, r5, #0
 	mov r1, #0x3b
 	bl NewString_ReadMsgData
@@ -13094,7 +13094,7 @@ _0223E1DA:
 	ldr r0, [sp, #0x18]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	beq _0223E230
 	add r0, r7, #0
@@ -13799,7 +13799,7 @@ ov70_0223E76C: ; 0x0223E76C
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02078068
+	bl ItemIdIsMail
 	cmp r0, #0
 	beq _0223E786
 	mov r0, #1
@@ -20096,7 +20096,7 @@ ov70_0224182C: ; 0x0224182C
 	lsl r1, r1, #2
 	add r0, r4, #0
 	add r1, r5, r1
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	ldr r1, _02241860 ; =0x00000122
 	add r0, r4, #0
 	ldrb r1, [r5, r1]

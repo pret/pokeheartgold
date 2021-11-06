@@ -291,12 +291,12 @@ ov53_021E5B48: ; 0x021E5B48
 	ldr r1, [r1, #4]
 	bl PlayerProfile_SetTrainerGender
 	ldr r0, [r4, #4]
-	bl sub_0202A954
+	bl Sav2_Misc_get
 	mov r1, #0x49
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
 	ldr r1, [r1, #0x18]
-	bl sub_0202A9B0
+	bl Sav2_Misc_RivalName_set
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -3592,12 +3592,12 @@ _021E760C:
 	bne _021E76A0
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	mov r0, #0x2f
 	str r0, [r4, #0xc]
 	b _021E7CF8
 _021E762A:
-	bl sub_02005F88
+	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021E76A0
 	ldr r0, _021E7938 ; =0x000003F1
@@ -3763,7 +3763,7 @@ _021E775E:
 	bl sub_020248F0
 	mov r0, #0xb7
 	add r1, r5, #0
-	bl sub_02006218
+	bl PlayCry
 	mov r0, #0x37
 	str r0, [r4, #0xc]
 	b _021E7CF8

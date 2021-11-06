@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start sub_0204BC98
-sub_0204BC98: ; 0x0204BC98
+	thumb_func_start ScrCmd_623
+ScrCmd_623: ; 0x0204BC98
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -13,7 +13,7 @@ sub_0204BC98: ; 0x0204BC98
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0xa
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -27,10 +27,10 @@ sub_0204BC98: ; 0x0204BC98
 	bl ov01_02204840
 	mov r0, #1
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0204BC98
+	thumb_func_end ScrCmd_623
 
-	thumb_func_start sub_0204BCCC
-sub_0204BCCC: ; 0x0204BCCC
+	thumb_func_start ScrCmd_624
+ScrCmd_624: ; 0x0204BCCC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -39,7 +39,7 @@ sub_0204BCCC: ; 0x0204BCCC
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0xa
-	bl sub_020402F0
+	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -55,10 +55,10 @@ sub_0204BCCC: ; 0x0204BCCC
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204BCCC
+	thumb_func_end ScrCmd_624
 
-	thumb_func_start sub_0204BD04
-sub_0204BD04: ; 0x0204BD04
+	thumb_func_start ScrCmd_625
+ScrCmd_625: ; 0x0204BD04
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -110,4 +110,4 @@ _0204BD70:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204BD04
+	thumb_func_end ScrCmd_625

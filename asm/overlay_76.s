@@ -348,7 +348,7 @@ _021E5BC4:
 	bl sub_0200FA24
 	mov r0, #0
 	mov r1, #0x1a
-	bl sub_02005F50
+	bl GF_SndStartFadeOutBGM
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -933,7 +933,7 @@ ov76_021E607C: ; 0x021E607C
 	bl sub_02022588
 	bl sub_020216C8
 	bl sub_02022638
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80
@@ -2324,11 +2324,11 @@ _021E6B3C:
 	str r6, [r5, #0x14]
 	add r0, r7, #0
 	mov r1, #1
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	str r0, [r5, #0xc]
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	str r0, [r5, #0x10]
 	add r0, r4, #1
 	lsl r0, r0, #0x18

@@ -6764,7 +6764,7 @@ ov83_0224152C: ; 0x0224152C
 	str r2, [sp]
 	mov r2, #0
 	add r3, r2, #0
-	bl sub_020902D0
+	bl UseItemOnPokemon
 	pop {r3, pc}
 	thumb_func_end ov83_0224152C
 
@@ -17571,7 +17571,7 @@ ov83_02246E08: ; 0x02246E08
 	str r2, [sp, #0x18]
 	bl sub_0202055C
 	bl ov83_022472DC
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x80
@@ -17676,7 +17676,7 @@ _02246E4C:
 _02246EFC:
 	mov r0, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r2, r0, #0
 	str r4, [sp]
 	mov r0, #1
@@ -17693,7 +17693,7 @@ _02246EFC:
 	str r0, [r6, r1]
 	mov r0, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r2, r0, #0
 	str r4, [sp]
 	mov r0, #1
@@ -17747,7 +17747,7 @@ _02246EFC:
 	str r0, [r5, r1]
 	mov r0, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r2, r0, #0
 	mov r0, #3
 	str r0, [sp]
@@ -18100,7 +18100,7 @@ ov83_02247264: ; 0x02247264
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -18130,7 +18130,7 @@ ov83_022472A0: ; 0x022472A0
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02077C18
+	bl GetItemIndexMapping
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -18679,7 +18679,7 @@ _022476EA:
 	ldr r0, [r5, #4]
 	bl sub_02024B1C
 	mov r1, #2
-	bl sub_020B802C
+	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
 	str r0, [sp, #0x18]
 	add r0, r4, #0
@@ -18693,7 +18693,7 @@ _022476EA:
 	ldr r0, [r5, #4]
 	bl sub_02024B34
 	mov r1, #2
-	bl sub_020B8078
+	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
 	mov r0, #0x20
 	str r0, [sp]

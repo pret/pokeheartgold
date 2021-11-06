@@ -26,8 +26,8 @@ _020FC1D8:
 
 	.text
 
-	thumb_func_start sub_0204E5BC
-sub_0204E5BC: ; 0x0204E5BC
+	thumb_func_start ScrCmd_567
+ScrCmd_567: ; 0x0204E5BC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -63,4 +63,4 @@ sub_0204E5BC: ; 0x0204E5BC
 	.balign 4, 0
 _0204E608: .word _020FC1D8
 _0204E60C: .word _020FC1D8 + 2
-	thumb_func_end sub_0204E5BC
+	thumb_func_end ScrCmd_567

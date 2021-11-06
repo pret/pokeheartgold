@@ -1274,10 +1274,10 @@ ov13_02227FAC: ; 0x02227FAC
 	mov r4, #0
 	ldrh r5, [r0]
 	strh r4, [r0]
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	cmp r0, #0x8000
 	beq _02227FD4
-	bl sub_020DEF44
+	bl WM_GetLinkLevel
 	mov r4, r0
 _02227FD4:
 	ldr r2, _02228044 ; =0x04000208
@@ -23255,7 +23255,7 @@ ov13_02239B34: ; 0x02239B34
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 _02239B48:
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	cmp r0, #0x8000
 	bne _02239B48
 	ldr r0, _02239B64 ; =0x0224F5A0
@@ -23279,7 +23279,7 @@ ov13_02239B68: ; 0x02239B68
 	ldr r1, _02239C2C ; =ov13_02239D60
 	ldr r0, [r0]
 	mov r2, #3
-	bl sub_020DF3F8
+	bl WM_Initialize
 	cmp r0, #2
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -23288,7 +23288,7 @@ _02239BA8:
 	ldr r0, [r4]
 	add r0, r0, #0x28c
 	add r0, r0, #0x1400
-	bl sub_020DECC4
+	bl WM_ReadStatus
 	ldr ip, [r4]
 	add r0, ip, #0x1600
 	ldrh r0, [r0, #0x8c]
@@ -23308,7 +23308,7 @@ _02239BDC:
 	str r0, [lr]
 	add r0, ip, #0x1000
 	str r1, [r0, #0x648]
-	bl sub_020DF064
+	bl WM_GetDispersionScanPeriod
 	ldr r1, _02239C28 ; =0x0224F5A0
 	ldr r1, [r1]
 	add r1, r1, #0x1600
@@ -23332,7 +23332,7 @@ ov13_02239C34: ; 0x02239C34
 	ldr r1, [r1]
 	add r1, r1, #0x248
 	add r1, r1, #0x1400
-	bl sub_020DF7BC
+	bl WM_StartScanEx
 	cmp r0, #2
 	moveq r0, #1
 	movne r0, #0
@@ -23353,7 +23353,7 @@ ov13_02239C68: ; 0x02239C68
 	ldr r0, [r1]
 	add r0, r0, #0x28c
 	add r0, r0, #0x1400
-	bl sub_020DECC4
+	bl WM_ReadStatus
 	ldr r0, _02239CFC ; =0x0224F5A0
 	ldr r0, [r0]
 	add r0, r0, #0x1600
@@ -23361,7 +23361,7 @@ ov13_02239C68: ; 0x02239C68
 	cmp r0, #2
 	beq _02239CE4
 	ldr r0, _02239D00 ; =ov13_02239D60
-	bl sub_020DF480
+	bl WM_Reset
 	cmp r0, #2
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
@@ -23370,7 +23370,7 @@ _02239CC0:
 	ldr r0, [r4]
 	add r0, r0, #0x28c
 	add r0, r0, #0x1400
-	bl sub_020DECC4
+	bl WM_ReadStatus
 	ldr r0, [r4]
 	add r0, r0, #0x1600
 	ldrh r0, [r0, #0x8c]
@@ -23378,7 +23378,7 @@ _02239CC0:
 	bne _02239CC0
 _02239CE4:
 	ldr r0, _02239D00 ; =ov13_02239D60
-	bl sub_020DF4B8
+	bl WM_End
 	cmp r0, #2
 	movne r0, #0
 	moveq r0, #1
@@ -23535,7 +23535,7 @@ _02239EA0:
 	add r0, sp, #4
 	mov r1, r4
 	strb r2, [sb, #0x28]
-	bl sub_020DF0F8
+	bl WM_GetOtherElements
 	ldrb r8, [sp, #4]
 	mov r7, #0
 	cmp r8, #0
@@ -23591,7 +23591,7 @@ ov13_02239F98: ; 0x02239F98
 	str r0, [r1]
 	ldr r1, _02239FD8 ; =0x0000A001
 	add r0, r2, #0x400
-	bl sub_020E389C
+	bl MATHi_CRC16InitTableRev
 	ldr r0, _02239FD4 ; =0x0224F5A4
 	ldr r0, [r0]
 	bl sub_0209E628
@@ -24411,7 +24411,7 @@ _0223A9E0:
 	add r0, r1, #0xf8
 	add r0, r0, #0x400
 	add r1, r1, r7
-	bl sub_020E3A04
+	bl MATH_CalcCRC16
 	ldr r1, [r8]
 	add r1, r1, r6, lsl #8
 	strh r0, [r1, #0xfe]
@@ -24508,7 +24508,7 @@ ov13_0223AAFC: ; 0x0223AAFC
 	ldr r0, _0223AB80 ; =0x0224F5A8
 	ldr r0, [r0]
 	ldr r1, [r0, #0x98]
-	bl sub_020C9558
+	bl NNS_SndArcInitOnMemory
 	mov r0, #0
 	bl NNS_SndArcPlayerSetup
 	ldr r0, _0223AB80 ; =0x0224F5A8
@@ -25470,14 +25470,14 @@ ov13_0223B788: ; 0x0223B788
 	str r1, [r3, #0xb8c]
 	ldr r0, [r4]
 	ldr r1, _0223B8F8 ; =ov13_0223BA3C
-	bl sub_020DF3F8
+	bl WM_Initialize
 	cmp r0, #2
 	bne _0223B8DC
 _0223B7E0:
 	ldr r0, [r4]
 	add r0, r0, #0x3b8
 	add r0, r0, #0x1000
-	bl sub_020DECC4
+	bl WM_ReadStatus
 	ldr ip, [r4]
 	add r0, ip, #0x1300
 	ldrh r0, [r0, #0xb8]
@@ -25497,7 +25497,7 @@ _0223B814:
 	str r0, [lr]
 	add r0, ip, #0x1000
 	str r1, [r0, #0x374]
-	bl sub_020DF064
+	bl WM_GetDispersionScanPeriod
 	ldr r1, _0223B8F4 ; =0x0224F5B4
 	ldr r1, [r1]
 	add r1, r1, #0x1300
@@ -25562,7 +25562,7 @@ ov13_0223B90C: ; 0x0223B90C
 	ldr r1, [r1]
 	add r1, r1, #0x374
 	add r1, r1, #0x1000
-	bl sub_020DF7BC
+	bl WM_StartScanEx
 	cmp r0, #2
 	moveq r0, #1
 	movne r0, #0
@@ -25583,7 +25583,7 @@ ov13_0223B940: ; 0x0223B940
 	ldr r0, [r1]
 	add r0, r0, #0x3b8
 	add r0, r0, #0x1000
-	bl sub_020DECC4
+	bl WM_ReadStatus
 	ldr r0, _0223BA18 ; =0x0224F5B4
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -25591,7 +25591,7 @@ ov13_0223B940: ; 0x0223B940
 	cmp r0, #2
 	beq _0223B9BC
 	ldr r0, _0223BA1C ; =ov13_0223BA3C
-	bl sub_020DF480
+	bl WM_Reset
 	cmp r0, #2
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
@@ -25600,7 +25600,7 @@ _0223B998:
 	ldr r0, [r4]
 	add r0, r0, #0x3b8
 	add r0, r0, #0x1000
-	bl sub_020DECC4
+	bl WM_ReadStatus
 	ldr r0, [r4]
 	add r0, r0, #0x1300
 	ldrh r0, [r0, #0xb8]
@@ -25608,7 +25608,7 @@ _0223B998:
 	bne _0223B998
 _0223B9BC:
 	ldr r0, _0223BA1C ; =ov13_0223BA3C
-	bl sub_020DF4B8
+	bl WM_End
 	cmp r0, #2
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
@@ -27797,7 +27797,7 @@ ov13_0223D744: ; 0x0223D744
 	ldr r1, _0223D780 ; =0x0224F5C0
 	ldr r0, _0223D784 ; =ov13_0223D788
 	ldr r1, [r1, #4]
-	bl sub_020DF4F8
+	bl WM_SetParentParameter
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -27861,7 +27861,7 @@ ov13_0223D7F4: ; 0x0223D7F4
 	ldr r2, [r2, #4]
 	ldr r0, _0223D854 ; =ov13_0223D858
 	add r2, r2, #0x13c0
-	bl sub_020E0C9C
+	bl WM_SetWEPKey
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -27905,7 +27905,7 @@ ov13_0223D890: ; 0x0223D890
 	movls r0, #1
 	ldmlsia sp!, {r3, pc}
 	ldr r0, _0223D8F0 ; =ov13_0223D8F4
-	bl sub_020DF680
+	bl WM_StartParent
 	cmp r0, #2
 	beq _0223D8CC
 	bl ov13_0223D724
@@ -27977,7 +27977,7 @@ _0223D980:
 	bne _0223D9C8
 	ldrh r1, [r4, #0x10]
 	mov r0, #0
-	bl sub_020DFA18
+	bl WM_Disconnect
 	cmp r0, #2
 	ldmeqia sp!, {r3, r4, r5, pc}
 	bl ov13_0223D724
@@ -28060,7 +28060,7 @@ ov13_0223DA64: ; 0x0223DA64
 	mov r2, r3, lsl #0x10
 	mov r2, r2, lsr #0x10
 	add r3, lr, #0xf80
-	bl sub_020DFD14
+	bl WM_StartMP
 	cmp r0, #2
 	addeq sp, sp, #8
 	moveq r0, #1
@@ -28133,7 +28133,7 @@ _0223DBA4:
 	mov r2, #7
 	mov r3, #0x44
 	str ip, [sp]
-	bl sub_020E00F4
+	bl WM_StartDataSharing
 	cmp r0, #0
 	beq _0223DBE4
 	bl ov13_0223D724
@@ -28172,7 +28172,7 @@ ov13_0223DC28: ; 0x0223DC28
 	mov r1, #0xd
 	ldr r0, [r0, #4]
 	add r0, r0, #0x1e00
-	bl sub_020E0C74
+	bl WM_StartKeySharing
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -28189,7 +28189,7 @@ ov13_0223DC64: ; 0x0223DC64
 	ldr r0, _0223DC90 ; =0x0224F5C0
 	ldr r0, [r0, #4]
 	add r0, r0, #0x1e00
-	bl sub_020E0C90
+	bl WM_EndKeySharing
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -28206,7 +28206,7 @@ ov13_0223DC94: ; 0x0223DC94
 	mov r0, #3
 	bl ov13_0223D6A8
 	ldr r0, _0223DCC0 ; =ov13_0223DCC4
-	bl sub_020DFEAC
+	bl WM_EndMP
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -28249,7 +28249,7 @@ _0223DD14: .word 0x022472B4
 ov13_0223DD18: ; 0x0223DD18
 	stmdb sp!, {r3, lr}
 	ldr r0, _0223DD3C ; =ov13_0223DD40
-	bl sub_020DF690
+	bl WM_EndParent
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -28288,7 +28288,7 @@ ov13_0223DD64: ; 0x0223DD64
 	ldr r0, _0223DDB0 ; =0x0224F5C0
 	ldr r0, [r0, #4]
 	add r0, r0, #0x1e00
-	bl sub_020E0C90
+	bl WM_EndKeySharing
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -28305,7 +28305,7 @@ ov13_0223DDB4: ; 0x0223DDB4
 	mov r0, #3
 	bl ov13_0223D6A8
 	ldr r0, _0223DDE0 ; =ov13_0223DDE4
-	bl sub_020DFEAC
+	bl WM_EndMP
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -28341,7 +28341,7 @@ ov13_0223DE18: ; 0x0223DE18
 	bl ov13_0223D6A8
 	ldr r0, _0223DE4C ; =ov13_0223DE50
 	mov r1, #0
-	bl sub_020DFA18
+	bl WM_Disconnect
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -28373,7 +28373,7 @@ ov13_0223DE74: ; 0x0223DE74
 	mov r0, #3
 	bl ov13_0223D6A8
 	ldr r0, _0223DEA0 ; =ov13_0223DEA4
-	bl sub_020DF480
+	bl WM_Reset
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -28511,7 +28511,7 @@ _0223E010: .word 0x00010DCD
 ov13_0223E014: ; 0x0223E014
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_020DEF24
+	bl WM_GetAllowedChannel
 	cmp r0, #0x8000
 	bne _0223E040
 	mov r0, #3
@@ -28627,7 +28627,7 @@ ov13_0223E188: ; 0x0223E188
 	mov r1, #3
 	mov r2, #0x11
 	str ip, [sp]
-	bl sub_020E0EF4
+	bl WM_MeasureChannel
 	ldmia sp!, {r3, pc}
 	arm_func_end ov13_0223E188
 
@@ -28793,7 +28793,7 @@ ov13_0223E3A0: ; 0x0223E3A0
 	ldr r0, [r0, #4]
 	mov r2, #2
 	add r0, r0, #0x80
-	bl sub_020DF3F8
+	bl WM_Initialize
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -28819,7 +28819,7 @@ ov13_0223E3EC: ; 0x0223E3EC
 	ldmia sp!, {r3, pc}
 _0223E40C:
 	ldr r0, _0223E438 ; =ov13_0223E380
-	bl sub_020DEBA8
+	bl WM_SetIndCallback
 	cmp r0, #0
 	beq _0223E42C
 	bl ov13_0223D724
@@ -28888,7 +28888,7 @@ _0223E4D8:
 	strh r5, [r1, #0xc]
 	ldr r0, [r0, #4]
 	strh r4, [r0, #0x32]
-	bl sub_020DEFD4
+	bl WM_GetDispersionBeaconPeriod
 	ldr r1, _0223E5A4 ; =0x0224F5C0
 	mov r2, #0xd0
 	ldr r3, [r1, #4]
@@ -28972,7 +28972,7 @@ ov13_0223E5F0: ; 0x0223E5F0
 	add r0, r2, #0x3e0
 	add r0, r0, #0x1000
 	add r2, r2, #0x1c00
-	bl sub_020E0390
+	bl WM_StepDataSharing
 	mov r4, r0
 	cmp r4, #7
 	bne _0223E640
@@ -29117,7 +29117,7 @@ _0223E7D8:
 	mov r0, #3
 	bl ov13_0223D6A8
 	ldr r0, _0223E808 ; =ov13_0223DED8
-	bl sub_020DF4B8
+	bl WM_End
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -29270,7 +29270,7 @@ ov13_0223E9D8: ; 0x0223E9D8
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xa90]
-	bl sub_020DF250
+	bl WM_GetNextTgid
 	ldr r3, _0223EA54 ; =0x0224F5C8
 	mov r2, #0x40
 	ldr r1, [r3]
@@ -31486,7 +31486,7 @@ _022406A4:
 	add r0, r2, r7, lsl #2
 	ldr r1, [r0, #0x674]
 	add r0, r2, r8
-	bl sub_020BC384
+	bl NNS_G2dFontInitUTF16
 	add r7, r7, #1
 	cmp r7, #2
 	add r8, r8, #8
@@ -31510,7 +31510,7 @@ _022406FC:
 	add r0, r2, r8, lsl #2
 	ldr r1, [r0, #0x674]
 	add r0, r2, r7
-	bl sub_020BC384
+	bl NNS_G2dFontInitUTF16
 	add r8, r8, #1
 	cmp r8, #2
 	add r7, r7, #8
@@ -31572,7 +31572,7 @@ ov13_02240798: ; 0x02240798
 	mov r0, r6
 	strh r1, [r4, #0x2c]
 	mov r1, r5
-	bl sub_020BD590
+	bl NNSi_G2dCalcRequiredOBJ
 	ldr r1, [sp, #0x20]
 	cmp r7, #1
 	str r0, [r1]
@@ -31585,7 +31585,7 @@ ov13_02240798: ; 0x02240798
 	mov r2, r6
 	mov r3, r5
 	add r1, ip, r7, lsl #7
-	bl sub_020BD3FC
+	bl NNS_G2dCharCanvasInitForOBJ1D
 	ldr r1, [r4, #0x14]
 	mov r0, r4
 	ldr r2, [r1, #4]
@@ -31671,7 +31671,7 @@ _02240938:
 	mov r0, r4
 	mov r2, r6
 	mov r3, r5
-	bl sub_020BD3D0
+	bl NNS_G2dCharCanvasInitForBG
 	ldr r0, _022409FC ; =0x0224F5E0
 	mov r1, #1
 	ldr r0, [r0]
@@ -31699,7 +31699,7 @@ _02240988:
 	str r7, [sp, #8]
 	mov r5, #0xf
 	str r5, [sp, #0xc]
-	bl sub_020BD484
+	bl NNS_G2dMapScrToCharText
 	mov r0, r4
 	mov r1, #0
 	bl ov13_02240D80
@@ -31862,7 +31862,7 @@ _02240BA8:
 	add r0, r0, #0x18
 	strb lr, [sp, #8]
 	strb ip, [sp, #9]
-	bl sub_020BDB00
+	bl NNSi_G2dTextCanvasDrawText
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov13_02240B28
@@ -31880,7 +31880,7 @@ ov13_02240BD8: ; 0x02240BD8
 	mov r3, r2
 	mov r2, r1
 	add r1, lr, ip, lsl #3
-	bl sub_020BD2AC
+	bl NNS_G2dCharCanvasDrawChar
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -31907,14 +31907,14 @@ _02240C48:
 	ldr r0, [r0]
 	add r4, r0, r5, lsl #3
 	mov r0, r4
-	bl sub_020BC3A8
+	bl NNS_G2dFontFindGlyphIndex
 	mov r1, r0
 	ldr r0, _02240CBC ; =0x0000FFFF
 	cmp r1, r0
 	ldreq r0, [r4]
 	ldreqh r1, [r0, #2]
 	mov r0, r4
-	bl sub_020BC3F0
+	bl NNS_G2dFontGetCharWidthsFromIndex
 	ldrh r1, [r6]
 	mov r2, r0
 	mov r0, sl
@@ -31989,7 +31989,7 @@ _02240D40:
 	add r0, r0, #0x18
 	strb lr, [sp, #0x10]
 	strb ip, [sp, #0x11]
-	bl sub_020BDC24
+	bl NNSi_G2dTextCanvasDrawTextRect
 	add sp, sp, #0x18
 	ldmia sp!, {r4, pc}
 	arm_func_end ov13_02240CC0
@@ -32040,7 +32040,7 @@ ov13_02240D94: ; 0x02240D94
 	str r1, [sp, #0xc]
 	ldrb r1, [r4, #0x2e]
 	ldrb r2, [r4, #0x2f]
-	bl sub_020BD5EC
+	bl NNS_G2dArrangeOBJ1D
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end ov13_02240D94

@@ -977,7 +977,7 @@ ov43_0222A690: ; 0x0222A690
 	sub sp, #0x3c
 	add r7, r1, #0
 	add r6, r0, #0
-	bl sub_020B78D4
+	bl NNS_G2dInitOamManagerModule
 	mov r0, #0x10
 	add r1, r7, #0
 	bl sub_0202055C
@@ -1545,7 +1545,7 @@ ov43_0222AB20: ; 0x0222AB20
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r5, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	ldr r0, [r4, #0x50]
 	mov r1, #0
 	add r2, r5, #0
@@ -1571,7 +1571,7 @@ ov43_0222AB5C: ; 0x0222AB5C
 	bl sub_0202C298
 	add r1, r0, #0
 	add r0, r4, #0
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	ldr r0, [r5, #0x50]
 	mov r1, #0
 	add r2, r4, #0
@@ -2124,7 +2124,7 @@ _0222AF88:
 	bl String_c_str
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
-	bl CopyPlayerName
+	bl Sav2_Profile_PlayerName_set
 	ldr r0, [r6, #0x50]
 	ldr r2, [sp, #0xc]
 	mov r1, #0
