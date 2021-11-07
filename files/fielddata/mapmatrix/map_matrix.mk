@@ -1,0 +1,7 @@
+FIELDDATA_MAPMATRIX_MAP_MATRIX_DIR := files/fielddata/mapmatrix/map_matrix
+MATRIX_FILES := $(sort $(wildcard $(FIELDDATA_MAPMATRIX_MAP_MATRIX_DIR)/*.bin))
+
+$(FIELDDATA_MAPMATRIX_MAP_MATRIX_DIR).narc: %.narc: $(MATRIX_FILES)
+	$(KNARC) -d $* -p $@ -i
+
+FS_CLEAN_TARGETS += $(FIELDDATA_MAPMATRIX_MAP_MATRIX_DIR).narc
