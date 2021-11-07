@@ -59,10 +59,10 @@ sub_0205455C: ; 0x0205455C
 	mov r2, #0
 	add r1, sp, #0x18
 	strb r2, [r1]
-	bl sub_0203B004
+	bl MapMatrix_GetWidth
 	add r6, r0, #0
 	ldr r0, [sp, #4]
-	bl sub_0203B014
+	bl MapMatrix_GetHeight
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp, #0x14]
@@ -80,7 +80,7 @@ _0205458C:
 	lsr r4, r0, #0x10
 	ldr r1, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203AFE0
+	bl MapMatrix_GetMapData
 	add r1, sp, #0x18
 	add r1, #2
 	add r2, sp, #0x18

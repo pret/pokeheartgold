@@ -140,6 +140,7 @@ Static main
 	Object unk_0203A3B0.o
 	Object communication_error.o
 	Object wfc_user_info_warning.o
+	Object map_matrix_c.o
 	Object map_matrix.o
 	Object map_header.o
 	Object map_events.o
