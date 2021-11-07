@@ -310,3 +310,151 @@ void SortPocket(ITEM_SLOT *slots, u32 count) {
         }
     }
 }
+
+BAG_VIEW *CreateBagView(BAG_DATA *bag, const u8 *pockets, u32 heap_id) {
+    int i;
+    BAG_VIEW *ret = BagView_New(heap_id);
+    for (i = 0; pockets[i] != POCKET_BAG_VIEW_END; i++) {
+        switch (pockets[i]) {
+        case POCKET_KEY_ITEMS:
+            BagView_SetItem(ret, bag->keyItems, POCKET_KEY_ITEMS, i);
+            break;
+        case POCKET_ITEMS:
+            BagView_SetItem(ret, bag->items, POCKET_ITEMS, i);
+            break;
+        case POCKET_BERRIES:
+            BagView_SetItem(ret, bag->berries, POCKET_BERRIES, i);
+            break;
+        case POCKET_MEDICINE:
+            BagView_SetItem(ret, bag->medicine, POCKET_MEDICINE, i);
+            break;
+        case POCKET_BALLS:
+            BagView_SetItem(ret, bag->balls, POCKET_BALLS, i);
+            break;
+        case POCKET_BATTLE_ITEMS:
+            BagView_SetItem(ret, bag->battleItems, POCKET_BATTLE_ITEMS, i);
+            break;
+        case POCKET_MAIL:
+            BagView_SetItem(ret, bag->mail, POCKET_MAIL, i);
+            break;
+        case POCKET_TMHMS:
+            BagView_SetItem(ret, bag->TMsHMs, POCKET_TMHMS, i);
+            break;
+        }
+    }
+    return ret;
+}
+
+ITEM_SLOT *Bag_GetPocketSlotN(BAG_DATA *bag, u8 pocket, int n) {
+    ITEM_SLOT *slots;
+    u32 count;
+    int i;
+
+    switch (pocket) {
+    case POCKET_KEY_ITEMS:
+        slots = bag->keyItems;
+        count = NUM_BAG_KEY_ITEMS;
+        break;
+    case POCKET_ITEMS:
+        slots = bag->items;
+        count = NUM_BAG_ITEMS;
+        break;
+    case POCKET_BERRIES:
+        slots = bag->berries;
+        count = NUM_BAG_BERRIES;
+        break;
+    case POCKET_MEDICINE:
+        slots = bag->medicine;
+        count = NUM_BAG_MEDICINE;
+        break;
+    case POCKET_BALLS:
+        slots = bag->balls;
+        count = NUM_BAG_BALLS;
+        break;
+    case POCKET_BATTLE_ITEMS:
+        slots = bag->battleItems;
+        count = NUM_BAG_BATTLE_ITEMS;
+        break;
+    case POCKET_MAIL:
+        slots = bag->mail;
+        count = NUM_BAG_MAIL;
+        break;
+    case POCKET_TMHMS:
+        slots = bag->TMsHMs;
+        count = NUM_BAG_TMS_HMS;
+        break;
+    }
+    // UB: If pocket invalid, count and slot are uninitialized
+    if (n >= count) {
+        return NULL;
+    }
+    return &slots[n];
+}
+
+BAG_DATA *Sav2_Bag_get(SAVEDATA *saveData) {
+    return SavArray_get(saveData, SAVE_BAG);
+}
+
+BAG_CURSOR *BagCursor_new(u32 heap_id) {
+    BAG_CURSOR *ret = AllocFromHeap(heap_id, sizeof(BAG_CURSOR));
+    MI_CpuClear16(ret, sizeof(BAG_CURSOR));
+    return ret;
+}
+
+void BagCursor_Field_PocketGetPosition(BAG_CURSOR *cursor, int pocket, u8 *position_p, u8 *scroll_p) {
+    *position_p = cursor->field.position[pocket];
+    *scroll_p = cursor->field.scroll[pocket];
+}
+
+u16 BagCursor_Field_GetPocket(BAG_CURSOR *cursor) {
+    return cursor->field.pocket;
+}
+
+void BagCursor_Field_PocketSetPosition(BAG_CURSOR *cursor, int pocket, u8 position, u8 scroll) {
+    cursor->field.position[pocket] = position;
+    cursor->field.scroll[pocket] = scroll;
+}
+
+void BagCursor_Field_SetPocket(BAG_CURSOR *cursor, u16 a1) {
+    cursor->field.pocket = a1;
+}
+
+void BagCursor_Battle_PocketGetPosition(BAG_CURSOR *cursor, int pocket, u8 *position_p, u8 *scroll_p) {
+    *position_p = cursor->battle.position[pocket];
+    *scroll_p = cursor->battle.scroll[pocket];
+}
+
+u16 BagCursor_Battle_GetLastUsedItem(BAG_CURSOR *cursor) {
+    return cursor->battle.lastUsedItem;
+}
+
+u16 BagCursor_Battle_GetLastUsedOnPoke(BAG_CURSOR *cursor) {
+    return cursor->battle.lastUsedOnPoke;
+}
+
+u16 BagCursor_Battle_GetPocket(BAG_CURSOR *cursor) {
+    return cursor->battle.pocket;
+}
+
+void BagCursor_Battle_PocketSetPosition(BAG_CURSOR *cursor, int pocket, u8 position, u8 scroll) {
+    cursor->battle.position[pocket] = position;
+    cursor->battle.scroll[pocket] = scroll;
+}
+
+void BagCursor_Battle_Init(BAG_CURSOR *cursor) {
+    int i;
+
+    for (i = 0; i < 5u; i++) {
+        BagCursor_Battle_PocketSetPosition(cursor, i, 0, 0);
+    }
+    BagCursor_Battle_SetPocket(cursor, 0);
+}
+
+void BagCursor_SetLastUsedItemAndPoke(BAG_CURSOR *cursor, u16 itemId, u16 usedOnPoke) {
+    cursor->battle.lastUsedItem = itemId;
+    cursor->battle.lastUsedOnPoke = usedOnPoke;
+}
+
+void BagCursor_Battle_SetPocket(BAG_CURSOR *cursor, u16 pocket) {
+    cursor->battle.pocket = pocket;
+}

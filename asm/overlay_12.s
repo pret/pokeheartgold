@@ -1144,7 +1144,7 @@ _02237FD8:
 	bl ov12_0223A620
 	add r0, r4, #0
 	bl ov12_0223AA84
-	bl sub_02078804
+	bl BagCursor_Battle_Init
 	mov r0, #5
 	mov r1, #4
 	mov r2, #0
@@ -39380,7 +39380,7 @@ _0224ABC8:
 	bl ov12_0223AA84
 	ldrh r1, [r6]
 	ldrb r2, [r6, #2]
-	bl sub_02078828
+	bl BagCursor_SetLastUsedItemAndPoke
 _0224AC02:
 	ldrh r1, [r6]
 	mov r0, #0x4a
