@@ -4,6 +4,8 @@
 #include "item.h"
 #include "save.h"
 
+typedef struct BAG_CURSOR BAG_CURSOR;
+
 typedef struct BAG_VIEW_POCKET {
     ITEM_SLOT *slots;
     u8 padding[4];
@@ -14,7 +16,18 @@ typedef struct BAG_VIEW_POCKET {
 typedef struct BAG_VIEW {
     SAVEDATA *saveData;
     BAG_VIEW_POCKET pockets[8];
-    u8 padding_64[0x18];
+    u8 unk_64;
+    u8 unk_65;
+    u16 unk_66;
+    u16 unk_68;
+    u8 filler_6A[2];
+    BAG_CURSOR *unk_6C;
+    void *unk_70;
+    u8 unk_74;
+    u8 unk_75;
+    u16 unk_76_0:1;
+    u16 unk_76_1:15;
+    u32 unk_78;
 } BAG_VIEW; // size: 0x7C
 
 BAG_VIEW *BagView_New(u8 heap_id);

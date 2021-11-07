@@ -39,10 +39,10 @@ typedef struct BAG_CURSOR_BATTLE {
     u16 pocket;
 } BAG_CURSOR_BATTLE;
 
-typedef struct BAG_CURSOR {
+struct BAG_CURSOR {
     BAG_CURSOR_FIELD field;
     BAG_CURSOR_BATTLE battle;
-} BAG_CURSOR;
+};
 
 u32 Sav2_Bag_sizeof(void);
 void Sav2_Bag_init(BAG_DATA *);
