@@ -225,6 +225,7 @@ Static main
 	Object bag_view.o
 	Object itemtool.o
 	Object bag.o
+	Object bag_s.o
 	Object unk_02078834.o
 	Object use_item_on_mon.o
 	Object unk_02090C94.o

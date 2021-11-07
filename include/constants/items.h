@@ -19,6 +19,9 @@
 #define NUM_BAG_BALLS         24
 #define NUM_BAG_BATTLE_ITEMS  30
 
+#define BAG_SLOT_QUANTITY_MAX                    999
+#define BAG_TMHM_QUANTITY_MAX                     99
+
 #define ITEMATTR_PRICE                             0
 #define ITEMATTR_HOLD_EFFECT                       1
 #define ITEMATTR_HOLD_EFFECT_PARAM                 2
