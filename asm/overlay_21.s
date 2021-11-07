@@ -1,5 +1,7 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
+#include "constants/items.h"
+#include "constants/species.h"
 
 	.text
 
@@ -16,7 +18,7 @@ ov21_022598C0: ; 0x022598C0
 	ldr r0, [r4]
 	bl GetVarPointer
 	mov r4, #0
-	ldr r7, _02259908 ; =0x022599F0
+	ldr r7, _02259908 ; =_022599F0
 	str r0, [sp]
 	add r5, r4, #0
 _022598E0:
@@ -39,7 +41,7 @@ _022598E0:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02259908: .word 0x022599F0
+_02259908: .word _022599F0
 	thumb_func_end ov21_022598C0
 
 	thumb_func_start ScrCmd_432
@@ -60,14 +62,14 @@ ScrCmd_432: ; 0x0225990C
 	ldr r0, [r5]
 	bl VarGet
 	mov r5, #0
-	ldr r2, _02259958 ; =0x022599F0
+	ldr r2, _02259958 ; =_022599F0
 	strh r5, [r4]
 _02259938:
 	lsl r3, r5, #2
 	ldrh r1, [r2, r3]
 	cmp r0, r1
 	bne _02259948
-	ldr r0, _0225995C ; =0x022599F2
+	ldr r0, _0225995C ; =_022599F0 + 2
 	ldrh r0, [r0, r3]
 	strh r0, [r4]
 	b _02259952
@@ -81,8 +83,8 @@ _02259952:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_02259958: .word 0x022599F0
-_0225995C: .word 0x022599F2
+_02259958: .word _022599F0
+_0225995C: .word _022599F0 + 2
 	thumb_func_end ScrCmd_432
 
 	thumb_func_start ScrCmd_433
@@ -125,7 +127,7 @@ _022599B0:
 	ldr r0, [r6, #0xc]
 	lsl r7, r4, #2
 	bl Sav2_Bag_get
-	ldr r1, _022599EC ; =0x022599F0
+	ldr r1, _022599EC ; =_022599F0
 	mov r2, #4
 	ldrh r1, [r1, r7]
 	bl Bag_GetQuantity
@@ -135,7 +137,7 @@ _022599B0:
 	ldr r0, [sp]
 	cmp r5, r0
 	blo _022599DC
-	ldr r0, _022599EC ; =0x022599F0
+	ldr r0, _022599EC ; =_022599F0
 	ldrh r1, [r0, r7]
 	ldr r0, [sp, #8]
 	strh r1, [r0]
@@ -153,11 +155,16 @@ _022599E6:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_022599EC: .word 0x022599F0
+_022599EC: .word _022599F0
 	thumb_func_end ScrCmd_433
 
 	.rodata
 
 _022599F0:
-	.byte 0x67, 0x00, 0x8E, 0x00, 0x65, 0x00, 0x8A, 0x00, 0x66, 0x00, 0x8C, 0x00, 0x63, 0x00, 0x59, 0x01
-	.byte 0x64, 0x00, 0x5B, 0x01, 0x68, 0x00, 0x9A, 0x01, 0x69, 0x00, 0x98, 0x01
+	.short ITEM_OLD_AMBER, SPECIES_AERODACTYL
+	.short ITEM_HELIX_FOSSIL, SPECIES_OMANYTE
+	.short ITEM_DOME_FOSSIL, SPECIES_KABUTO
+	.short ITEM_ROOT_FOSSIL, SPECIES_LILEEP
+	.short ITEM_CLAW_FOSSIL, SPECIES_ANORITH
+	.short ITEM_ARMOR_FOSSIL, SPECIES_SHIELDON
+	.short ITEM_SKULL_FOSSIL, SPECIES_CRANIDOS

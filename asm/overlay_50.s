@@ -157,7 +157,7 @@ _021E5A08: .word 0x00000674
 ov50_021E5A0C: ; 0x021E5A0C
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
-	ldr r5, _021E5A38 ; =0x021E5A9C
+	ldr r5, _021E5A38 ; =_021E5A9C
 	add r3, sp, #0
 	add r4, r0, #0
 	add r2, r3, #0
@@ -177,7 +177,7 @@ ov50_021E5A0C: ; 0x021E5A0C
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E5A38: .word 0x021E5A9C
+_021E5A38: .word _021E5A9C
 	thumb_func_end ov50_021E5A0C
 
 	thumb_func_start ov50_021E5A3C
@@ -223,7 +223,7 @@ _021E5A4E:
 	.rodata
 
 _021E5A8C:
-	.byte 0xC1, 0x5A, 0x1E, 0x02
-	.byte 0x91, 0x5D, 0x1E, 0x02, 0xC9, 0x5E, 0x1E, 0x02, 0x33, 0x00, 0x00, 0x00, 0xC1, 0x80, 0x1E, 0x02
-	.byte 0x49, 0x82, 0x1E, 0x02, 0xAD, 0x82, 0x1E, 0x02, 0x34, 0x00, 0x00, 0x00
+	.word ov51_021E5AC0, ov51_021E5D90, ov51_021E5EC8, SDK_OVERLAY_OVY_51_ID
+_021E5A9C:
+	.word ov52_021E80C0, ov52_021E8248, ov52_021E82AC, SDK_OVERLAY_OVY_52_ID
 	; 0x021E5AAC
