@@ -1,7 +1,7 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
-	.include "constants/items.h"
-	.include "constants/species.h"
+#include "constants/items.h"
+#include "constants/species.h"
 
 	.text
 
