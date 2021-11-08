@@ -74,11 +74,11 @@ u8 sub_0207791C(BAG_VIEW *bagView) {
     return bagView->unk_75;
 }
 
-/*static*/ u16 sub_02077924(SAVEDATA *saveData) {
+static u16 get_num_coins(SAVEDATA *saveData) {
     return CheckCoins(Sav2_PlayerData_GetCoinsAddr(saveData));
 }
 
-/*static*/ int sub_02077930(SAVEDATA *saveData) {
+static int get_num_seals(SAVEDATA *saveData) {
     int i, total;
     SEALCASE *sealCase = Sav2_SealCase_get(saveData);
     total = 0;
@@ -88,18 +88,17 @@ u8 sub_0207791C(BAG_VIEW *bagView) {
     return total;
 }
 
-/*static*/ u32 sub_02077950(SAVEDATA *saveData) {
+static u32 get_num_fashion_accessories(SAVEDATA *saveData) {
     return FashionCase_CountAccessories(SaveDressupData_GetFashionCase(Save_DressupData_get(saveData)));
 }
 
-/*static*/ u32 sub_02077960(SAVEDATA *saveData) {
+static u32 get_num_fashion_backgrounds(SAVEDATA *saveData) {
     return FashionCase_CountWallpapers(SaveDressupData_GetFashionCase(Save_DressupData_get(saveData)));
 }
 
-/*static*/ u32 sub_02077970(SAVEDATA *saveData) {
+static u32 get_num_battle_points(SAVEDATA *saveData) {
     return FrontierData_BattlePointAction(Save_FrontierData_get(saveData), 0, 0);
 }
-/*
 
 BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, u32 heap_id) {
     MSGDATA *msgData;
@@ -111,6 +110,63 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
 
     if (itemId == ITEM_NONE) {
         fmtStr = NewString_ReadMsgData(msgData, 102);
+    } else if (itemId == ITEM_POINT_CARD) {
+        fmtStr = NewString_ReadMsgData(msgData, 100);
+        BufferIntegerAsString(msgFmt, 0, get_num_battle_points(saveData), 4, STRCONVMODE_LEFT_ALIGN, TRUE);
+    } else if (itemId == ITEM_SEAL_CASE) {
+        fmtStr = NewString_ReadMsgData(msgData, 95);
+        BufferIntegerAsString(msgFmt, 0, get_num_seals(saveData), 4, STRCONVMODE_LEFT_ALIGN, TRUE);
+    } else if (itemId == ITEM_FASHION_CASE) {
+        fmtStr = NewString_ReadMsgData(msgData, 96);
+        BufferIntegerAsString(msgFmt, 0, get_num_fashion_accessories(saveData), 3, STRCONVMODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(msgFmt, 1, get_num_fashion_backgrounds(saveData), 2, STRCONVMODE_LEFT_ALIGN, TRUE);
+    } else if (itemId == ITEM_COIN_CASE) {
+        fmtStr = NewString_ReadMsgData(msgData, 58);
+        BufferIntegerAsString(msgFmt, 0, get_num_coins(saveData), 5, STRCONVMODE_LEFT_ALIGN, TRUE);
+    } else {
+        ScrStrBufs_delete(msgFmt);
+        DestroyMsgData(msgData);
+        return FALSE;
+    }
+    StringExpandPlaceholders(msgFmt, dest, fmtStr);
+    String_dtor(fmtStr);
+    ScrStrBufs_delete(msgFmt);
+    DestroyMsgData(msgData);
+    return TRUE;
+}
+
+void GetItemUseErrorMessage(PLAYERDATA *playerData, STRING *dest, u32 unused, int code, u32 heap_id) {
+    MSGDATA *msgData;
+    switch (code) {
+    case ITEMUSEERROR_NODISMOUNT:
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
+        ReadMsgDataIntoString(msgData, 57, dest);
+        DestroyMsgData(msgData);
+        break;
+    case ITEMUSEERROR_NOFOLLOWER:
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
+        ReadMsgDataIntoString(msgData, 118, dest);
+        DestroyMsgData(msgData);
+        break;
+    case ITEMUSEERROR_NOTNOW:
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
+        ReadMsgDataIntoString(msgData, 119, dest);
+        DestroyMsgData(msgData);
+        break;
+    default:
+    {
+        MSGFMT *msgFmt;
+        STRING *string;
+
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000040_bin, heap_id);
+        msgFmt = ScrStrBufs_new(heap_id);
+        string = NewString_ReadMsgData(msgData, 37);
+        BufferPlayersName(msgFmt, 0, playerData);
+        StringExpandPlaceholders(msgFmt, dest, string);
+        String_dtor(string);
+        ScrStrBufs_delete(msgFmt);
+        DestroyMsgData(msgData);
+    }
+        break;
     }
 }
-*/

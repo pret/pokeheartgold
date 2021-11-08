@@ -223,7 +223,6 @@ Static main
 	Object unk_020773AC.o
 	Object unk_02077678.o
 	Object bag_view.o
-	Object bag_view_s.o
 	Object itemtool.o
 	Object bag.o
 	Object unk_02078834.o

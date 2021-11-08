@@ -35,5 +35,6 @@ typedef struct MSGDATA {
 MSGDATA *NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc, s32 fileId, u32 heap_id);
 void DestroyMsgData(MSGDATA *msgData);
 STRING *NewString_ReadMsgData(MSGDATA *msgData, s32 strno);
+void ReadMsgDataIntoString(MSGDATA *msgData, s32 strno, STRING *dest);
 
 #endif //POKEHEARTGOLD_MSGDATA_H

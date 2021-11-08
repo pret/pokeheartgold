@@ -4,6 +4,14 @@
 #include "item.h"
 #include "save.h"
 
+// for GetItemUseErrorMessage
+enum ItemUseError {
+    ITEMUSEERROR_OAKSWORDS  = 0,
+    ITEMUSEERROR_NODISMOUNT = 1,
+    ITEMUSEERROR_NOFOLLOWER = 2,
+    ITEMUSEERROR_NOTNOW     = 3,
+};
+
 typedef struct BAG_CURSOR BAG_CURSOR;
 
 typedef struct BAG_VIEW_POCKET {
