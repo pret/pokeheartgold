@@ -59,7 +59,7 @@ void Bag_UnregisterItem(BAG_DATA *bag, u16 itemId) {
     }
 }
 
-u32 Bag_GetItemPocket(BAG_DATA *bag, u16 itemId, ITEM_SLOT **ppSlots, u32 *pCount, u32 heap_id) {
+static u32 Bag_GetItemPocket(BAG_DATA *bag, u16 itemId, ITEM_SLOT **ppSlots, u32 *pCount, u32 heap_id) {
     u32 pocket = GetItemAttr(itemId, ITEMATTR_FIELD_POCKET, heap_id);
     switch (pocket) {
     case POCKET_KEY_ITEMS:
@@ -98,7 +98,7 @@ u32 Bag_GetItemPocket(BAG_DATA *bag, u16 itemId, ITEM_SLOT **ppSlots, u32 *pCoun
     return pocket;
 }
 
-ITEM_SLOT *Pocket_GetItemSlotForAdd(ITEM_SLOT *slots, u32 count, u16 itemId, u16 quantity, u16 maxQuantity) {
+static ITEM_SLOT *Pocket_GetItemSlotForAdd(ITEM_SLOT *slots, u32 count, u16 itemId, u16 quantity, u16 maxQuantity) {
     int i;
     int found = -1;
 
@@ -122,7 +122,7 @@ ITEM_SLOT *Pocket_GetItemSlotForAdd(ITEM_SLOT *slots, u32 count, u16 itemId, u16
     return &slots[found];
 }
 
-ITEM_SLOT *Bag_GetItemSlotForAdd(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id) {
+static ITEM_SLOT *Bag_GetItemSlotForAdd(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id) {
     ITEM_SLOT *slots;
     u32 count;
     u32 pocket_id;
@@ -158,7 +158,7 @@ BOOL Bag_AddItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id) {
     return TRUE;
 }
 
-ITEM_SLOT *Pocket_GetItemSlotForRemove(ITEM_SLOT *slots, u32 count, u16 itemId, u16 quantity) {
+static ITEM_SLOT *Pocket_GetItemSlotForRemove(ITEM_SLOT *slots, u32 count, u16 itemId, u16 quantity) {
     int i;
 
     for (i = 0; i < count; i++) {
@@ -172,7 +172,7 @@ ITEM_SLOT *Pocket_GetItemSlotForRemove(ITEM_SLOT *slots, u32 count, u16 itemId, 
     return NULL;
 }
 
-ITEM_SLOT *Bag_GetItemSlotForRemove(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id) {
+static ITEM_SLOT *Bag_GetItemSlotForRemove(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id) {
     ITEM_SLOT *slots;
     u32 count;
     u32 pocket_id;
@@ -283,13 +283,13 @@ u16 Pocket_GetQuantity(ITEM_SLOT *slots, u32 count, u16 itemId) {
     return slot->quantity;
 }
 
-void SwapItemSlots(ITEM_SLOT *a, ITEM_SLOT *b) {
+static void SwapItemSlots(ITEM_SLOT *a, ITEM_SLOT *b) {
     ITEM_SLOT c = *a;
     *a = *b;
     *b = c;
 }
 
-void PocketCompaction(ITEM_SLOT *slots, u32 count) {
+static void PocketCompaction(ITEM_SLOT *slots, u32 count) {
     int i, j;
     for (i = 0; i < count - 1; i++) {
         for (j = i + 1; j < count; j++) {
@@ -300,7 +300,7 @@ void PocketCompaction(ITEM_SLOT *slots, u32 count) {
     }
 }
 
-void SortPocket(ITEM_SLOT *slots, u32 count) {
+static void SortPocket(ITEM_SLOT *slots, u32 count) {
     int i, j;
     for (i = 0; i < count - 1; i++) {
         for (j = i + 1; j < count; j++) {

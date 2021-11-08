@@ -6,6 +6,9 @@
 #include "save.h"
 #include "bag_view.h"
 
+/*
+ * Return value of Bag_TryRegisterItem
+ */
 typedef enum RegisterItemResult {
     REG_ITEM_FAIL,
     REG_ITEM_SLOT1,
@@ -45,7 +48,26 @@ struct BAG_CURSOR {
 };
 
 u32 Sav2_Bag_sizeof(void);
+BAG_DATA *Sav2_Bag_new(u32 heap_id);
 void Sav2_Bag_init(BAG_DATA *);
+void Sav2_Bag_copy(const BAG_DATA *src, BAG_DATA *dst);
+u16 Bag_GetRegisteredItemSlot1(BAG_DATA *bag);
+u16 Bag_GetRegisteredItemSlot2(BAG_DATA *bag);
+RegisterItemResult Bag_TryRegisterItem(BAG_DATA *bag, u16 itemId);
+void Bag_UnregisterItem(BAG_DATA *bag, u16 itemId);
+BOOL Bag_HasSpaceForItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id);
+BOOL Bag_AddItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id);
+BOOL Bag_TakeItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id);
+BOOL Pocket_TakeItem(ITEM_SLOT *slots, u32 count, u16 itemId, u16 quantity);
+BOOL Bag_HasItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id);
+BOOL Bag_PocketNotEmpty(BAG_DATA *bag, int pocket);
+u16 Bag_GetQuantity(BAG_DATA *bag, u16 itemId, u32 heap_id);
+u16 Pocket_GetQuantity(ITEM_SLOT *slots, u32 count, u16 itemId);
+
+BAG_VIEW *CreateBagView(BAG_DATA *bag, const u8 *pockets, u32 heap_id);
+ITEM_SLOT *Bag_GetPocketSlotN(BAG_DATA *bag, u8 pocket, int n);
+BAG_DATA *Sav2_Bag_get(SAVEDATA *saveData);
+
 BAG_CURSOR *BagCursor_new(u32 heap_id);
 void BagCursor_Field_PocketGetPosition(BAG_CURSOR *cursor, int pocket, u8 *position_p, u8 *scroll_p);
 u16 BagCursor_Field_GetPocket(BAG_CURSOR *cursor);
