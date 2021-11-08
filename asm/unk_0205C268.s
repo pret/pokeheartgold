@@ -24856,7 +24856,7 @@ sub_020672D8: ; 0x020672D8
 	pop {r3, r4, r5, r6, r7, pc}
 _020672F2:
 	add r0, r4, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	mov r1, #0xd
 	mov r2, #0
 	add r4, r0, #0
@@ -24953,7 +24953,7 @@ sub_02067398: ; 0x02067398
 	pop {r4, r5, r6, r7, pc}
 _020673B6:
 	add r0, r4, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	mov r1, #0xd
 	mov r2, #0
 	add r7, r0, #0
@@ -25108,7 +25108,7 @@ sub_020674BC: ; 0x020674BC
 	bl sub_020674B0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	add r1, r4, #0
 	bl sub_0202D638
 	add r0, r4, #0
@@ -25121,7 +25121,7 @@ sub_020674E0: ; 0x020674E0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	add r6, r0, #0
 	bl sub_0202D63C
 	bl sub_020674B0
@@ -25148,7 +25148,7 @@ sub_0206751C: ; 0x0206751C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r6, r0, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202D908

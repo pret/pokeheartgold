@@ -33,7 +33,7 @@ ov67_021E5900: ; 0x021E5900
 	bl sub_0203107C
 	str r0, [r4, #0x1c]
 	ldr r0, [r5]
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	str r0, [r4, #0x20]
 	ldr r0, [r5]
 	bl sub_0202D928

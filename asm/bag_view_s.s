@@ -4,36 +4,11 @@
 	.include "global.inc"
 	.public sub_02077924
 	.public sub_02077930
+	.public sub_02077950
+	.public sub_02077960
+	.public sub_02077970
 
 	.text
-
-	thumb_func_start sub_02077950
-sub_02077950: ; 0x02077950
-	push {r3, lr}
-	bl sub_0202C028
-	bl sub_0202B9E0
-	bl sub_0202BACC
-	pop {r3, pc}
-	thumb_func_end sub_02077950
-
-	thumb_func_start sub_02077960
-sub_02077960: ; 0x02077960
-	push {r3, lr}
-	bl sub_0202C028
-	bl sub_0202B9E0
-	bl sub_0202BAE8
-	pop {r3, pc}
-	thumb_func_end sub_02077960
-
-	thumb_func_start sub_02077970
-sub_02077970: ; 0x02077970
-	push {r3, lr}
-	bl sub_0202D918
-	mov r1, #0
-	add r2, r1, #0
-	bl sub_0202D3F8
-	pop {r3, pc}
-	thumb_func_end sub_02077970
 
 	thumb_func_start TryFormatRegisteredKeyItemUseMessage
 TryFormatRegisteredKeyItemUseMessage: ; 0x02077980

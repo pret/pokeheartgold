@@ -35,7 +35,7 @@ typedef struct BAG_CURSOR_BATTLE {
     u8 scroll[5];
     u8 position[5];
     u16 lastUsedItem;
-    u16 lastUsedOnPoke;
+    u16 lastUsedPocket;
     u16 pocket;
 } BAG_CURSOR_BATTLE;
 
@@ -53,11 +53,11 @@ void BagCursor_Field_PocketSetPosition(BAG_CURSOR *cursor, int pocket, u8 positi
 void BagCursor_Field_SetPocket(BAG_CURSOR *cursor, u16 a1);
 void BagCursor_Battle_PocketGetPosition(BAG_CURSOR *cursor, int pocket, u8 *position_p, u8 *scroll_p);
 u16 BagCursor_Battle_GetLastUsedItem(BAG_CURSOR *cursor);
-u16 BagCursor_Battle_GetLastUsedOnPoke(BAG_CURSOR *cursor);
+u16 BagCursor_Battle_GetLastUsedPocket(BAG_CURSOR *cursor);
 u16 BagCursor_Battle_GetPocket(BAG_CURSOR *cursor);
 void BagCursor_Battle_PocketSetPosition(BAG_CURSOR *cursor, int pocket, u8 position, u8 scroll);
 void BagCursor_Battle_Init(BAG_CURSOR *cursor);
-void BagCursor_SetLastUsedItemAndPoke(BAG_CURSOR *cursor, u16 itemId, u16 usedOnPoke);
+void BagCursor_SetLastUsedItem(BAG_CURSOR *cursor, u16 itemId, u16 usedOnPoke);
 void BagCursor_Battle_SetPocket(BAG_CURSOR *cursor, u16 pocket);
 
 #endif //POKEHEARTGOLD_BAG_H

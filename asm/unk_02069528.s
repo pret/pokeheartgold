@@ -16,7 +16,7 @@ sub_02069528: ; 0x02069528
 	bl sub_0202CA44
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	str r0, [sp, #4]
 	add r0, r7, #0
 	mov r1, #0

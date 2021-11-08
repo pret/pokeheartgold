@@ -19365,10 +19365,10 @@ _021EECD2:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 	add r2, r0, #0
 	b _021EED04
 _021EECEE:

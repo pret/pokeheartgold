@@ -428,8 +428,8 @@ u16 BagCursor_Battle_GetLastUsedItem(BAG_CURSOR *cursor) {
     return cursor->battle.lastUsedItem;
 }
 
-u16 BagCursor_Battle_GetLastUsedOnPoke(BAG_CURSOR *cursor) {
-    return cursor->battle.lastUsedOnPoke;
+u16 BagCursor_Battle_GetLastUsedPocket(BAG_CURSOR *cursor) {
+    return cursor->battle.lastUsedPocket;
 }
 
 u16 BagCursor_Battle_GetPocket(BAG_CURSOR *cursor) {
@@ -450,9 +450,9 @@ void BagCursor_Battle_Init(BAG_CURSOR *cursor) {
     BagCursor_Battle_SetPocket(cursor, 0);
 }
 
-void BagCursor_SetLastUsedItemAndPoke(BAG_CURSOR *cursor, u16 itemId, u16 usedOnPoke) {
+void BagCursor_SetLastUsedItem(BAG_CURSOR *cursor, u16 itemId, u16 usedOnPoke) {
     cursor->battle.lastUsedItem = itemId;
-    cursor->battle.lastUsedOnPoke = usedOnPoke;
+    cursor->battle.lastUsedPocket = usedOnPoke;
 }
 
 void BagCursor_Battle_SetPocket(BAG_CURSOR *cursor, u16 pocket) {

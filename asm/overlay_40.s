@@ -1274,7 +1274,7 @@ _0222C1AE:
 	bne _0222C200
 	add r1, #0x18
 	ldr r0, [r5, r1]
-	bl sub_0202C028
+	bl Save_DressupData_get
 	add r1, r4, #0
 	bl sub_0202B9B8
 	bl sub_0202BC10
@@ -16872,10 +16872,10 @@ _02233D72:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 	add r1, r5, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -17573,7 +17573,7 @@ _0223434A:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0202C028
+	bl Save_DressupData_get
 	mov r1, #0
 	bl sub_0202B9B8
 	mov r1, #0x8b

@@ -5,8 +5,11 @@
 #include "coins.h"
 #include "player_data.h"
 #include "capsule.h"
-
-// Unknown object
+#include "fashion_case.h"
+#include "frontier_data.h"
+#include "msgdata.h"
+#include "msgfmt.h"
+#include "constants/items.h"
 
 BAG_VIEW *BagView_New(u8 heap_id) {
     BAG_VIEW *ret = AllocFromHeap(heap_id, sizeof(BAG_VIEW));
@@ -84,3 +87,30 @@ u8 sub_0207791C(BAG_VIEW *bagView) {
     }
     return total;
 }
+
+/*static*/ u32 sub_02077950(SAVEDATA *saveData) {
+    return FashionCase_CountAccessories(SaveDressupData_GetFashionCase(Save_DressupData_get(saveData)));
+}
+
+/*static*/ u32 sub_02077960(SAVEDATA *saveData) {
+    return FashionCase_CountWallpapers(SaveDressupData_GetFashionCase(Save_DressupData_get(saveData)));
+}
+
+/*static*/ u32 sub_02077970(SAVEDATA *saveData) {
+    return FrontierData_BattlePointAction(Save_FrontierData_get(saveData), 0, 0);
+}
+/*
+
+BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, u32 heap_id) {
+    MSGDATA *msgData;
+    STRING *fmtStr;
+    MSGFMT *msgFmt;
+
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
+    msgFmt = ScrStrBufs_new(heap_id);
+
+    if (itemId == ITEM_NONE) {
+        fmtStr = NewString_ReadMsgData(msgData, 102);
+    }
+}
+*/

@@ -15,7 +15,7 @@
 #define SAVE_UNK_9                9
 #define SAVE_UNK_10              10
 #define SAVE_UNK_11              11
-#define SAVE_UNK_12              12
+#define SAVE_DRESSUP_DATA        12
 #define SAVE_MAILBOX             13
 #define SAVE_UNK_14              14
 #define SAVE_UNK_15              15
