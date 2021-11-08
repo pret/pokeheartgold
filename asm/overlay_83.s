@@ -17713,7 +17713,7 @@ _02246EFC:
 	add r6, #0x10
 	cmp r4, #9
 	ble _02246EFC
-	bl sub_02077CE0
+	bl GetItemIconCell
 	add r2, r0, #0
 	mov r0, #4
 	str r0, [sp]
@@ -17729,7 +17729,7 @@ _02246EFC:
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r5, r1]
-	bl sub_02077CE4
+	bl GetItemIconAnim
 	add r2, r0, #0
 	mov r0, #4
 	str r0, [sp]

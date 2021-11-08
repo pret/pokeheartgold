@@ -29090,8 +29090,8 @@
 .public MoveItemSlotInList
 .public GetItemIndexMapping
 .public UpConvertItemId_Gen3to4
-.public sub_02077CE0
-.public sub_02077CE4
+.public GetItemIconCell
+.public GetItemIconAnim
 .public LoadItemDataOrGfx
 .public GetItemNameIntoString
 .public GetItemDescIntoString
@@ -29108,7 +29108,7 @@
 .public GetNutName
 .public LoadAllItemData
 .public GetItemDataPtrFromArray
-.public ItemIdIsNotApricornBall
+.public ItemIdIsNotJohtoBall
 .public Sav2_Bag_sizeof
 .public Sav2_Bag_new
 .public Sav2_Bag_init

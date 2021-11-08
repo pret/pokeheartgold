@@ -9,35 +9,41 @@
 #define POCKET_MAIL         5
 #define POCKET_BATTLE_ITEMS 6
 #define POCKET_KEY_ITEMS    7
+#define POCKETS_COUNT       8
 
 #define POCKET_BAG_VIEW_END 0xFF
 
 #define NUM_BAG_ITEMS        165
-#define NUM_BAG_KEY_ITEMS     50
-#define NUM_BAG_TMS_HMS      101
-#define NUM_BAG_MAIL          12
 #define NUM_BAG_MEDICINE      40
-#define NUM_BAG_BERRIES       64
 #define NUM_BAG_BALLS         24
+#define NUM_BAG_TMS_HMS      101
+#define NUM_BAG_BERRIES       64
+#define NUM_BAG_MAIL          12
 #define NUM_BAG_BATTLE_ITEMS  30
+#define NUM_BAG_KEY_ITEMS     50
 
 #define BAG_SLOT_QUANTITY_MAX                    999
 #define BAG_TMHM_QUANTITY_MAX                     99
+
+#define ITEMNARC_PARAM                             0
+#define ITEMNARC_NCGR                              1
+#define ITEMNARC_NCLR                              2
+#define ITEMNARC_AGBCODE                           3
 
 #define ITEMATTR_PRICE                             0
 #define ITEMATTR_HOLD_EFFECT                       1
 #define ITEMATTR_HOLD_EFFECT_PARAM                 2
 #define ITEMATTR_PREVENT_TOSS                      3
 #define ITEMATTR_SELECTABLE                        4
-#define ITEMATTR_POCKET                            5
-#define ITEMATTR_UNKA                              6
-#define ITEMATTR_UNKB                              7
-#define ITEMATTR_UNK4                              8
-#define ITEMATTR_UNK5                              9
-#define ITEMATTR_UNK6                             10
+#define ITEMATTR_FIELD_POCKET                      5
+#define ITEMATTR_FIELDUSEFUNC                      6
+#define ITEMATTR_BATTLEUSEFUNC                     7
+#define ITEMATTR_PLUCK_EFFECT                      8
+#define ITEMATTR_FLING_EFFECT                      9
+#define ITEMATTR_FLING_POWER                      10
 #define ITEMATTR_NATURAL_GIFT_POWER               11
 #define ITEMATTR_NATURAL_GIFT_TYPE                12
-#define ITEMATTR_UNK8_B                           13
+#define ITEMATTR_BATTLE_POCKET                    13
 #define ITEMATTR_PARTY_USE                        14
 #define ITEMATTR_SLP_HEAL                         15
 #define ITEMATTR_PSN_HEAL                         16
@@ -83,6 +89,9 @@
 #define ITEMATTR_FRIENDSHIP_MOD_LO_PARAM          56
 #define ITEMATTR_FRIENDSHIP_MOD_MED_PARAM         57
 #define ITEMATTR_FRIENDSHIP_MOD_HI_PARAM          58
+
+#define PARTYUSE_NO              0
+#define PARTYUSE_YES             1
 
 #define PP_RESTORE_ALL  127
 #define HP_RESTORE_ALL  255
@@ -919,5 +928,8 @@
 #define ITEM_BLUE_ORB            535
 #define ITEM_ENIGMA_STONE        536
 #define ITEMS_COUNT              537
+
+#define ITEM_MIN                1
+#define ITEM_MAX  ITEMS_COUNT - 1
 
 #endif //POKEHEARTGOLD_CONSTANTS_ITEMS_H

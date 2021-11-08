@@ -15751,7 +15751,7 @@ _02223D9E:
 	add r4, r4, #1
 	cmp r4, #6
 	blo _02223D9E
-	bl sub_02077CE0
+	bl GetItemIconCell
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -15763,7 +15763,7 @@ _02223D9E:
 	ldr r1, [r6, r1]
 	add r2, r7, #0
 	bl sub_0200D6EC
-	bl sub_02077CE4
+	bl GetItemIconAnim
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]

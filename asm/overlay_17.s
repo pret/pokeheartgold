@@ -2818,7 +2818,7 @@ ov17_022030A8: ; 0x022030A8
 	ldr r1, [r4, r1]
 	ldr r2, [r4, r2]
 	bl sub_0200D5D4
-	bl sub_02077CE0
+	bl GetItemIconCell
 	add r3, r0, #0
 	mov r0, #0
 	mov r2, #0x13
@@ -2834,7 +2834,7 @@ ov17_022030A8: ; 0x022030A8
 	ldr r1, [r4, r1]
 	ldr r2, [r4, r2]
 	bl sub_0200D6EC
-	bl sub_02077CE4
+	bl GetItemIconAnim
 	add r3, r0, #0
 	mov r0, #0
 	mov r2, #0x13

@@ -3978,7 +3978,7 @@ _021FB280:
 	ldr r0, [r4, r0]
 	add r0, #0x66
 	ldrh r0, [r0]
-	bl ItemIdIsNotApricornBall
+	bl ItemIdIsNotJohtoBall
 	cmp r0, #1
 	bne _021FB2A4
 	mov r1, #8
@@ -6488,7 +6488,7 @@ _021FC6B4:
 	ldr r0, [r5, r0]
 	add r0, #0x66
 	ldrh r0, [r0]
-	bl ItemIdIsNotApricornBall
+	bl ItemIdIsNotJohtoBall
 	cmp r0, #0
 	bne _021FC75C
 _021FC6E4:
@@ -13167,7 +13167,7 @@ _021FFC2A:
 	mov r2, #0xf
 	mov r3, #0x31
 	bl sub_0200D6D4
-	bl sub_02077CE0
+	bl GetItemIconCell
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -13240,7 +13240,7 @@ _021FFC2A:
 	mov r2, #0xf
 	mov r3, #0x32
 	bl sub_0200D704
-	bl sub_02077CE4
+	bl GetItemIconAnim
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]

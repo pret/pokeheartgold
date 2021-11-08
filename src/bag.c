@@ -60,7 +60,7 @@ void Bag_UnregisterItem(BAG_DATA *bag, u16 itemId) {
 }
 
 u32 Bag_GetItemPocket(BAG_DATA *bag, u16 itemId, ITEM_SLOT **ppSlots, u32 *pCount, u32 heap_id) {
-    u32 pocket = GetItemAttr(itemId, ITEMATTR_POCKET, heap_id);
+    u32 pocket = GetItemAttr(itemId, ITEMATTR_FIELD_POCKET, heap_id);
     switch (pocket) {
     case POCKET_KEY_ITEMS:
         *ppSlots = bag->keyItems;
