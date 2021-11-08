@@ -39,7 +39,7 @@ struct MapData* MapMatrix_MapData_New(u32 heap_id);
 void MapMatrix_MapData_Free(struct MapData* map_data);
 u16 GetMapData(u32 map_no, struct MapMatrix* map_matrix);
 void RemoveMahoganyTownAntennaTree(struct MapMatrix* map_matrix);
-BOOL sub_0203B114(struct SaveBlock2* sav2, u32 map_no);
+BOOL ShouldUseAlternateLakeOfRage(struct SaveBlock2* sav2, u32 map_no);
 void SetLakeOfRageWaterLevel(struct MapMatrix* map_matrix, BOOL lower_water_level);
 void sub_0203B1FC(struct MapMatrix* map_matrix, struct SaveBlock2* sav2);
 

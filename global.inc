@@ -27052,7 +27052,7 @@
 .public MapMatrix_MapData_Free
 .public GetMapData
 .public RemoveMahoganyTownAntennaTree
-.public sub_0203B114
+.public ShouldUseAlternateLakeOfRage
 .public SetLakeOfRageWaterLevel
 .public sub_0203B1FC
 .public sub_0203B58C

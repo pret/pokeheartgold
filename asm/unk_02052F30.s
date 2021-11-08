@@ -204,7 +204,7 @@ _02053088:
 	bl sub_0202AE8C
 	ldr r0, [r4, #0xc]
 	add r1, r7, #0
-	bl sub_0203B114
+	bl ShouldUseAlternateLakeOfRage
 	add r1, r0, #0
 	ldr r0, [r4, #0x30]
 	bl SetLakeOfRageWaterLevel

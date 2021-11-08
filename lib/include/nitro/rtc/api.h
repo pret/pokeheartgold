@@ -15,7 +15,7 @@ typedef struct {
     u32 year;
     u32 month;
     u32 day;
-    RTCWeek day_of_week;
+    RTCWeek week;
 } RTCDate;
 
 #endif //NITRO_RTC_API_H_

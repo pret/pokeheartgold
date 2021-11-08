@@ -1,4 +1,5 @@
 #include "global.h"
+#include "constants/maps.h"
 #include "filesystem.h"
 #include "map_header.h"
 #include "map_matrix.h"
@@ -156,48 +157,30 @@ void RemoveMahoganyTownAntennaTree(struct MapMatrix* map_matrix) {
     maps[width * 5 + 16] = 86;
 }
 
-asm BOOL sub_0203B114(struct SaveBlock2* sav2, u32 map_no) {
-	push {r3, r4, r5, lr}
-	sub sp, #0x10
-	add r5, r1, #0
-	bl SavArray_Flags_get
-	add r4, r0, #0
-	add r0, sp, #0
-	bl GF_RTC_CopyDate
-	add r0, r4, #0
-	mov r1, #0xca
-	bl CheckFlagInArray
-	cmp r0, #0
-	bne _0203B140
-	add r0, r4, #0
-	mov r1, #1
-	bl sub_02066C4C
-	add sp, #0x10
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_0203B140:
-	cmp r5, #0x58
-	beq _0203B148
-	cmp r5, #0x2d
-	bne _0203B14E
-_0203B148:
-	ldr r0, [sp, #0xc]
-	cmp r0, #3
-	beq _0203B15C
-_0203B14E:
-	add r0, r4, #0
-	mov r1, #1
-	bl sub_02066C4C
-	add sp, #0x10
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_0203B15C:
-	add r0, r4, #0
-	mov r1, #1
-	bl sub_02066C1C
-	mov r0, #1
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
+// https://bulbapedia.bulbagarden.net/wiki/Lake_of_Rage#Geography
+BOOL ShouldUseAlternateLakeOfRage(struct SaveBlock2* sav2, u32 map_no) {
+    RTCDate date;
+    struct ScriptState *state = SavArray_Flags_get(sav2);
+
+    GF_RTC_CopyDate(&date);
+
+    if (CheckFlagInArray(state, 202) == FALSE) {
+        // The player hasn't battled the Red Gyarados yet.
+        sub_02066C4C(state, 1);
+        return FALSE;
+    }
+
+    // FIXME(tgsm): this smells like a fakematch, but honestly I'm not sure.
+    if ((map_no == MAP_T29 || map_no == MAP_R43) && date.week == RTC_WEEK_WEDNESDAY) {
+        goto rain_rain_go_away;
+    } else {
+        sub_02066C4C(state, 1);
+        return FALSE;
+    }
+
+rain_rain_go_away:
+    sub_02066C1C(state, 1);
+    return TRUE;
 }
 
 void SetLakeOfRageWaterLevel(struct MapMatrix* map_matrix, BOOL lower_water_level) {
