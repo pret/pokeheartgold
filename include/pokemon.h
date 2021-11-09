@@ -8,7 +8,7 @@
 #include "constants/species.h"
 #include "mail.h"
 #include "constants/pokemon.h"
-#include "string16.h"
+#include "sys/string.h"
 #include "player_data.h"
 #include "sound_chatot.h"
 
@@ -122,7 +122,7 @@ typedef union {
     PokemonDataBlockD blockD;
 } PokemonDataBlock;
 
-struct BoxPokemon {
+typedef struct BoxPokemon {
     /* 0x000 */ u32 pid;
     /* 0x004 */ u16 party_lock:1;
                 u16 box_lock:1;
@@ -130,9 +130,9 @@ struct BoxPokemon {
                 u16 Unused:13;    // Might be used for validity checks
     /* 0x006 */ u16 checksum;  // Stored checksum of pokemon
     /* 0x008 */ PokemonDataBlock substructs[4];
-};
+} BOXMON;
 
-struct PartyPokemon
+typedef struct PartyPokemon
 {
     /* 0x088 */ u32 status; // slp:3, psn:1, brn:1, frz:1, prz:1, tox:1, ...
     /* 0x08C */ u8 level;
@@ -144,14 +144,14 @@ struct PartyPokemon
     /* 0x096 */ u16 speed;
     /* 0x098 */ u16 spatk;
     /* 0x09A */ u16 spdef;
-    /* 0x09C */ struct Mail mail;
+    /* 0x09C */ MAIL mail;
     /* 0x0D4 */ u8 sealCoords[8][3]; // seal coords
-};
+} PARTYMON;
 
-struct Pokemon {
-    /* 0x000 */ struct BoxPokemon box;
-    /* 0x088 */ struct PartyPokemon party;
-}; // size: 0xEC
+typedef struct Pokemon {
+    /* 0x000 */ BOXMON box;
+    /* 0x088 */ PARTYMON party;
+} POKEMON; // size: 0xEC
 
 struct SomeDrawPokemonStruct
 {
@@ -296,8 +296,8 @@ void Party_SpreadPokerus(struct PlayerParty * party);
 BOOL Pokemon_HasPokerus(struct Pokemon * pokemon);
 BOOL Pokemon_IsImmuneToPokerus(struct Pokemon * pokemon);
 void Pokemon_UpdateArceusForme(struct Pokemon * pokemon);
-void FUN_02069FB0(struct SaveChatotSoundClip *r7, u32 r5, u16 r4, s32 r6, s32 sp18, u32 sp1C, u32 sp20);
-void FUN_0206A014(struct Pokemon * pokemon, struct PlayerData * a1, u32 pokeball, u32 a3, u32 encounterType, u32 heap_id);
+void FUN_02069FB0(SOUND_CHATOT *r7, u32 r5, u16 r4, s32 r6, s32 sp18, u32 sp1C, u32 sp20);
+void FUN_0206A014(struct Pokemon * pokemon, PLAYERDATA * a1, u32 pokeball, u32 a3, u32 encounterType, u32 heap_id);
 void FUN_0206A094(struct Pokemon * pokemon, u32 a1, u32 a2);
 BOOL FUN_0206A13C(struct Pokemon * pokemon, u32 a1);
 void FUN_0206A1C4(struct Pokemon * pokemon);
@@ -306,7 +306,7 @@ int LowestFlagNo(u32 mask);
 BOOL IsPokemonLegendaryOrMythical(u16 species);
 u16 GetLegendaryMon(u32 idx);
 BOOL FUN_0206A998(struct Pokemon * pokemon);
-BOOL FUN_0206A9AC(struct BoxPokemon * boxmon, struct PlayerData * sb2, u32 heap_id);
+BOOL FUN_0206A9AC(struct BoxPokemon * boxmon, PLAYERDATA * sb2, u32 heap_id);
 void Pokemon_RemoveCapsule(struct Pokemon * pokemon);
 void RestoreBoxMonPP(struct BoxPokemon * boxmon);
 
