@@ -21,6 +21,5 @@ typedef struct POKEWALKER {
 } POKEWALKER; // size=0x134
 
 void Pokewalker_UnlockCourse(POKEWALKER *pokeWalker, int courseNo);
-BOOL sub_020326FC(POKEWALKER *pokeWalker);
 
 #endif //POKEHEARTGOLD_POKEWALKER_H

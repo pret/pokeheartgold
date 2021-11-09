@@ -1,5 +1,7 @@
 #include "pokewalker.h"
 
+static BOOL sub_020326FC(POKEWALKER *pokeWalker);
+
 POKEWALKER *Sav2_Pokewalker_get(SAVEDATA *saveData) {
     return SavArray_get(saveData, SAVE_POKEWALKER);
 }
@@ -69,7 +71,9 @@ BOOL sub_020326DC(POKEWALKER *pokeWalker, BOXMON *boxmon) {
     return FALSE;
 }
 
-BOOL sub_020326FC(POKEWALKER *pokeWalker) {
+static BOOL sub_020326FC(POKEWALKER *pokeWalker) {
+    // This is an annoying hack to get it matching.
+    // Should just memcmp with (BOXMON){}
     u8 * ptr = (u8 *)pokeWalker;
     int i;
 
