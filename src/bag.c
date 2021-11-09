@@ -1,4 +1,3 @@
-#include "global.h"
 #include "constants/items.h"
 #include "save.h"
 #include "bag.h"

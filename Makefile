@@ -12,17 +12,17 @@ ALL_BUILDDIRS  := $(BUILD_DIR)/lib
 include common.mk
 include filesystem.mk
 
-$(ASM_OBJS): MWASFLAGS += -include $(WORK_DIR)/include/config.h
+$(ASM_OBJS): MWASFLAGS += -DPM_ASM -include config.h
+$(C_OBJS):   MWCFLAGS  +=          -include global.h
 
-$(ASM_SRCS): $(WORK_DIR)/include/config.h
+$(ASM_OBJS): dep += $(WORK_DIR)/include/config.h $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $(WORK_DIR)/include/config.h)
+$(C_OBJS):   dep += $(WORK_DIR)/include/global.h $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $(WORK_DIR)/include/global.h)
 
 ROM             := $(BUILD_DIR)/poke$(buildname).nds
 BANNER          := $(ROM:%.nds=%.bnr)
 BANNER_SPEC     := $(buildname)/banner.bsf
 ICON_PNG        := $(buildname)/icon.png
 HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
-
-MWASFLAGS += -DPM_ASM
 
 .PHONY: main sub libsyscall
 .PRECIOUS: $(ROM)

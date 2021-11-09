@@ -1,4 +1,3 @@
-#include "global.h"
 #include "script.h"
 
 void InitScriptContext(struct ScriptContext* ctx, ScrCmdFunc* cmd_table, u32 cmd_count) {

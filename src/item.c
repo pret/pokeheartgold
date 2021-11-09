@@ -1,4 +1,3 @@
-#include "global.h"
 #include "item.h"
 #include "constants/items.h"
 #include "constants/moves.h"

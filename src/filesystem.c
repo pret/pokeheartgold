@@ -1,6 +1,5 @@
 #define _IN_FILESYSTEM_C // Place sNarcFileList here when filesystem.h is included
 
-#include "global.h"
 #include "filesystem.h"
 
 static void ReadFromNarcMemberByPathAndId(void * dest, const char * path, s32 file_idx, u32 offset, u32 size) {

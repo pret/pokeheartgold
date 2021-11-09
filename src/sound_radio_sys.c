@@ -1,4 +1,3 @@
-#include "global.h"
 #include "sound.h"
 
 int sRadioSeqNo = 0;

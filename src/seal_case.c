@@ -1,4 +1,3 @@
-#include "global.h"
 #include "seal_case.h"
 
 u32 Sav2_SealCase_sizeof(void) {
