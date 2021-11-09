@@ -1860,7 +1860,7 @@ _0206E622:
 _0206E62E:
 	add r0, #0xd4
 	add r1, r2, #0
-	bl sub_0202CBDC
+	bl CopyCapsule
 	mov r0, #1
 	pop {r3, pc}
 _0206E63A:
@@ -2872,7 +2872,7 @@ _0206ED5C:
 	add r3, #0xd4
 	add r0, r2, #0
 	add r1, r3, #0
-	bl sub_0202CBDC
+	bl CopyCapsule
 	pop {r3, pc}
 _0206ED68:
 	add r0, r3, #0

@@ -61407,7 +61407,7 @@ ScrCmd_572: ; 0x02202648
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Sav2_SealCase_get
-	bl sub_0202CD74
+	bl SealCase_GetTotalSeals
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -61438,7 +61438,7 @@ ScrCmd_133: ; 0x02202674
 	ldr r0, [r0, #0xc]
 	bl Sav2_SealCase_get
 	add r1, r6, #0
-	bl sub_0202CD94
+	bl SealCase_CountSealOccurrenceAnywhere
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -61470,7 +61470,7 @@ ScrCmd_134: ; 0x022026B4
 	lsl r2, r4, #0x10
 	add r1, r6, #0
 	asr r2, r2, #0x10
-	bl sub_0202CCAC
+	bl GiveOrTakeSeal
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -61554,7 +61554,7 @@ ScrCmd_135: ; 0x0220271C
 _02202790:
 	ldr r0, [sp, #0x10]
 	add r1, r4, #1
-	bl sub_0202CD94
+	bl SealCase_CountSealOccurrenceAnywhere
 	sub r1, r6, r0
 	ldr r0, [sp, #0x18]
 	add r4, r4, #1
@@ -61604,7 +61604,7 @@ _022027E8:
 	ldrb r1, [r5]
 	ldr r0, [sp, #0x10]
 	mov r2, #1
-	bl sub_0202CCAC
+	bl GiveOrTakeSeal
 	b _02202806
 _022027FE:
 	add r1, r1, #1

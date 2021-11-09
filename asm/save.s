@@ -37,7 +37,7 @@ _020F64C4:
 	.word 0x0000000E, 0x00000000, sub_0202C730, sub_0202C75C
 	.word 0x0000000F, 0x00000000, sub_0202C9A0, sub_0202C9A8
 	.word 0x00000010, 0x00000000, GameStats_sizeof, GameStats_init
-	.word 0x00000011, 0x00000000, sub_0202CBC0, sub_0202CBC8
+	.word 0x00000011, 0x00000000, Sav2_SealCase_sizeof, Sav2_SealCase_init
 	.word 0x00000012, 0x00000000, Sav2_Chatot_sizeof, Sav2_Chatot_init
 	.word 0x00000013, 0x00000000, sub_02031000, sub_02031008
 	.word 0x00000014, 0x00000000, sub_0202D938, sub_0202D93C

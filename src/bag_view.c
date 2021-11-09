@@ -4,7 +4,7 @@
 #include "save.h"
 #include "coins.h"
 #include "player_data.h"
-#include "capsule.h"
+#include "seal_case.h"
 #include "fashion_case.h"
 #include "frontier_data.h"
 #include "msgdata.h"
@@ -83,8 +83,8 @@ static int get_num_seals(SAVEDATA *saveData) {
     int i, total;
     SEALCASE *sealCase = Sav2_SealCase_get(saveData);
     total = 0;
-    for (i = CAPSULE_MIN; i <= CAPSULE_MAX; i++) {
-        total += sub_0202CD94(sealCase, i);
+    for (i = SEAL_MIN; i <= SEAL_MAX; i++) {
+        total += SealCase_CountSealOccurrenceAnywhere(sealCase, i);
     }
     return total;
 }

@@ -4600,7 +4600,7 @@ _0206BA96:
 	ldr r1, [sp, #8]
 	ldr r0, [r6, #0x20]
 	sub r1, r1, #1
-	bl sub_0202CBF4
+	bl SealCase_GetCapsuleI
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0xab
@@ -4608,10 +4608,10 @@ _0206BA96:
 	ldr r1, [sp, #8]
 	ldr r0, [r6, #0x20]
 	sub r1, r1, #1
-	bl sub_0202CBF4
+	bl SealCase_GetCapsuleI
 	mov r1, #0
-	bl sub_0202CC30
-	bl sub_0202CC48
+	bl CapsuleGetSealI
+	bl SealOnCapsuleGetID
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bl sub_0209106C

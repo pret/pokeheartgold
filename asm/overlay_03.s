@@ -7476,7 +7476,7 @@ _022579C0:
 	sub r0, #0x37
 	ldrh r1, [r2, r1]
 	ldr r0, [r2, r0]
-	bl sub_0202CD94
+	bl SealCase_CountSealOccurrenceAnywhere
 	pop {r4, pc}
 _022579D4:
 	mov r0, #0
@@ -7902,7 +7902,7 @@ _02257D3A:
 	ldrh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, r0]
-	bl sub_0202CD3C
+	bl SealCase_CheckSealQuantity
 _02257D4C:
 	cmp r0, #0
 	bne _02257D60
@@ -8126,7 +8126,7 @@ _02257EDE:
 	ldrh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, r0]
-	bl sub_0202CCAC
+	bl GiveOrTakeSeal
 _02257EF0:
 	mov r1, #0xa3
 	lsl r1, r1, #2
