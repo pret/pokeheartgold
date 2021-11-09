@@ -20,7 +20,7 @@
 #define SAVE_UNK_14              14
 #define SAVE_UNK_15              15
 #define SAVE_GAMESTATS           16
-#define SAVE_UNK_17              17
+#define SAVE_SEAL_CASE              17
 #define SAVE_CHATOT              18
 #define SAVE_UNK_19              19
 #define SAVE_UNK_20              20

@@ -61407,7 +61407,7 @@ ScrCmd_572: ; 0x02202648
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Sav2_SealCase_get
-	bl SealCase_GetTotalSeals
+	bl SealCase_CountUniqueSeals
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}

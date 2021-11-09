@@ -26305,7 +26305,7 @@
 .public Sav2_SealCase_init
 .public CopyCapsule
 .public SealCase_GetCapsuleI
-.public SealCase_CopyCapsuleI
+.public SealCase_SetCapsuleI
 .public CapsuleGetSealI
 .public SealOnCapsuleGetID
 .public SealOnCapsuleGetX
@@ -26315,9 +26315,9 @@
 .public SealIsOnCapsule
 .public SealCaseInventory_SetSealQuantity
 .public GiveOrTakeSeal
-.public GiveOrTakeSeal_NoConsiderCapsules
+.public GiveOrTakeSeal2
 .public SealCase_CheckSealQuantity
-.public SealCase_GetTotalSeals
+.public SealCase_CountUniqueSeals
 .public SealCase_CountSealOccurrenceAnywhere
 .public sub_0202D234
 .public sub_0202D240

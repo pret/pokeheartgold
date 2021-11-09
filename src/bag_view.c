@@ -79,8 +79,8 @@ static u16 get_num_coins(SAVEDATA *saveData) {
     return CheckCoins(Sav2_PlayerData_GetCoinsAddr(saveData));
 }
 
-static int get_num_seals(SAVEDATA *saveData) {
-    int i, total;
+static u32 get_num_seals(SAVEDATA *saveData) {
+    u32 i, total;
     SEALCASE *sealCase = Sav2_SealCase_get(saveData);
     total = 0;
     for (i = SEAL_MIN; i <= SEAL_MAX; i++) {

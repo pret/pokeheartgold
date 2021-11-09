@@ -63,7 +63,7 @@ ov57_022378DC: ; 0x022378DC
 	str r5, [r4, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl SealCase_GetTotalSeals
+	bl SealCase_CountUniqueSeals
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1d
 	sub r1, r1, r2
@@ -75,7 +75,7 @@ ov57_022378DC: ; 0x022378DC
 _02237954:
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl SealCase_GetTotalSeals
+	bl SealCase_CountUniqueSeals
 	asr r1, r0, #2
 	lsr r1, r1, #0x1d
 	add r1, r0, r1
@@ -1613,7 +1613,7 @@ _02238550:
 	ldr r0, [r0, #0x20]
 	ldr r2, [r7, r2]
 	add r1, sp, #0
-	bl SealCase_CopyCapsuleI
+	bl SealCase_SetCapsuleI
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5571,7 +5571,7 @@ _0223A484:
 	ldrb r1, [r2, r1]
 	ldr r0, [r0, #0x20]
 	mov r2, #1
-	bl GiveOrTakeSeal_NoConsiderCapsules
+	bl GiveOrTakeSeal2
 	add r0, r4, #0
 	bl ov57_022399F8
 	add r0, r4, #0
