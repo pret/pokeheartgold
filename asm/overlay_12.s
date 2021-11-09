@@ -39380,7 +39380,7 @@ _0224ABC8:
 	bl ov12_0223AA84
 	ldrh r1, [r6]
 	ldrb r2, [r6, #2]
-	bl BagCursor_SetLastUsedItem
+	bl BagCursor_Battle_SetLastUsedItem
 _0224AC02:
 	ldrh r1, [r6]
 	mov r0, #0x4a

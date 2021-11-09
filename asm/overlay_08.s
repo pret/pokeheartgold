@@ -3806,7 +3806,7 @@ _0221DBF0:
 	bl ov12_0223AA84
 	add r1, r4, #0
 	add r2, r6, #0
-	bl BagCursor_SetLastUsedItem
+	bl BagCursor_Battle_SetLastUsedItem
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov08_0221DBCC
 
@@ -14436,7 +14436,7 @@ ov08_02223390: ; 0x02223390
 	bl ov12_0223AA84
 	add r1, r5, #0
 	add r2, r7, #0
-	bl BagCursor_SetLastUsedItem
+	bl BagCursor_Battle_SetLastUsedItem
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov08_02223390
 

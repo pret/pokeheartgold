@@ -29134,7 +29134,7 @@
 .public BagCursor_Battle_GetPocket
 .public BagCursor_Battle_PocketSetPosition
 .public BagCursor_Battle_Init
-.public BagCursor_SetLastUsedItem
+.public BagCursor_Battle_SetLastUsedItem
 .public BagCursor_Battle_SetPocket
 .public sub_02078B58
 .public sub_02078B78
