@@ -5,6 +5,7 @@
 #include "item.h"
 #include "save.h"
 #include "bag_view.h"
+#include "bag_cursor.h"
 
 /*
  * Return value of Bag_TryRegisterItem
@@ -15,37 +16,22 @@ typedef enum RegisterItemResult {
     REG_ITEM_SLOT2,
 } RegisterItemResult;
 
+/*
+ * The player's inventory. All items in all pockets,
+ * and the two items registered to the touchscreen
+ * buttons.
+ */
 typedef struct BagData {
-    ITEM_SLOT items[NUM_BAG_ITEMS];
-    ITEM_SLOT keyItems[NUM_BAG_KEY_ITEMS];
-    ITEM_SLOT TMsHMs[NUM_BAG_TMS_HMS];
-    ITEM_SLOT mail[NUM_BAG_MAIL];
-    ITEM_SLOT medicine[NUM_BAG_MEDICINE];
-    ITEM_SLOT berries[NUM_BAG_BERRIES];
-    ITEM_SLOT balls[NUM_BAG_BALLS];
-    ITEM_SLOT battleItems[NUM_BAG_BATTLE_ITEMS];
-    u16 registeredItems[2];
+    ITEM_SLOT items[NUM_BAG_ITEMS];                // General items
+    ITEM_SLOT keyItems[NUM_BAG_KEY_ITEMS];         // Key items
+    ITEM_SLOT TMsHMs[NUM_BAG_TMS_HMS];             // Move machines
+    ITEM_SLOT mail[NUM_BAG_MAIL];                  // Mail items
+    ITEM_SLOT medicine[NUM_BAG_MEDICINE];          // Healing items
+    ITEM_SLOT berries[NUM_BAG_BERRIES];            // Berries
+    ITEM_SLOT balls[NUM_BAG_BALLS];                // Balls
+    ITEM_SLOT battleItems[NUM_BAG_BATTLE_ITEMS];   // Battle-only items
+    u16 registeredItems[2];                        // IDs of registered key items
 } BAG_DATA;
-
-typedef struct BAG_CURSOR_FIELD {
-    u8 scroll[8];
-    u8 position[8];
-    u16 pocket;
-    u16 padding;
-} BAG_CURSOR_FIELD;
-
-typedef struct BAG_CURSOR_BATTLE {
-    u8 scroll[5];
-    u8 position[5];
-    u16 lastUsedItem;
-    u16 lastUsedPocket;
-    u16 pocket;
-} BAG_CURSOR_BATTLE;
-
-struct BAG_CURSOR {
-    BAG_CURSOR_FIELD field;
-    BAG_CURSOR_BATTLE battle;
-};
 
 u32 Sav2_Bag_sizeof(void);
 BAG_DATA *Sav2_Bag_new(u32 heap_id);

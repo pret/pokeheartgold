@@ -29,7 +29,7 @@ void sub_0207789C(BAG_VIEW *a0, SAVEDATA *a1, u8 a2, BAG_CURSOR *a3, u32 a4) {
     sub_02077894(a0, a2);
     a0->saveData = a1;
     a0->unk_78 = a4;
-    a0->unk_6C = a3;
+    a0->cursor = a3;
     a0->unk_66 = 0;
 }
 
@@ -37,6 +37,7 @@ void BagView_SetItem(BAG_VIEW *bagView, ITEM_SLOT *slots, u8 pocketId, u8 positi
     // Bug: position was likely intended to force a particular display order.
     // Likely intended as an index to bagView->pockets.
     // However, this variable is unused.
+    // This bug was introduced in HGSS.
 #pragma unused(position)
     bagView->pockets[pocketId].slots = slots;
     bagView->pockets[pocketId].pocketId = pocketId;
@@ -135,26 +136,31 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
     return TRUE;
 }
 
-void GetItemUseErrorMessage(PLAYERDATA *playerData, STRING *dest, u32 unused, int code, u32 heap_id) {
+void GetItemUseErrorMessage(PLAYERDATA *playerData, STRING *dest, u16 itemId, enum ItemUseError code, u32 heap_id) {
+#pragma unused(itemId)
     MSGDATA *msgData;
     switch (code) {
     case ITEMUSEERROR_NODISMOUNT:
+        // You can't dismount your Bike here.
         msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
         ReadMsgDataIntoString(msgData, 57, dest);
         DestroyMsgData(msgData);
         break;
     case ITEMUSEERROR_NOFOLLOWER:
+        // Can't be used when you have someone with you!
         msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
         ReadMsgDataIntoString(msgData, 118, dest);
         DestroyMsgData(msgData);
         break;
     case ITEMUSEERROR_NOTNOW:
+        // You can't be doing that now!
         msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
         ReadMsgDataIntoString(msgData, 119, dest);
         DestroyMsgData(msgData);
         break;
     default:
     {
+        // {PLAYER}! This isn't the time to use that!
         MSGFMT *msgFmt;
         STRING *string;
 
