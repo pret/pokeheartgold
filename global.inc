@@ -29728,3 +29728,5 @@
 .public sub_02059B18
 .public sub_02059B08
 .public sub_0205A4B4
+.public sub_02092B04
+.public sub_02078D24

@@ -4677,7 +4677,7 @@ _0222C372:
 	add r0, r7, #0
 	pop {r4, r5, r6, r7, pc}
 _0222C388:
-	ldr r0, _0222C4D8 ; =0x02078D25
+	ldr r0, _0222C4D8 ; =sub_02078D24
 	bl ov00_021E5CBC
 	ldr r0, _0222C4DC ; =0x00000D6C
 	mov r1, #0
@@ -4824,7 +4824,7 @@ _0222C46A:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0222C4D8: .word 0x02078D25
+_0222C4D8: .word sub_02078D24
 _0222C4DC: .word 0x00000D6C
 _0222C4E0: .word 0x00000B0C
 _0222C4E4: .word 0x000010BE

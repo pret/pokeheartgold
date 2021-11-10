@@ -10,14 +10,31 @@ else
 EXE :=
 endif
 
+CXXSRCS := calcrom.cpp BuildAnalyzer.cpp ElfFile.cpp Glob.cpp
+CXXOBJS := $(CXXSRCS:%.cpp=%.o)
+
+DEPDIR := .deps
+DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
+
 TARGET := calcrom$(EXE)
 
 .PHONY: all clean
 
 all: $(TARGET)
 
-$(TARGET): calcrom.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^
-
 clean:
-	$(RM) $(TARGET)
+	$(RM) -r $(TARGET) $(CXXOBJS) $(DEPDIR)
+
+$(TARGET): $(CXXOBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^
+
+%.o: %.cpp
+%.o: %.cpp $(DEPDIR)/%.d | $(DEPDIR)
+	$(CXX) $(CXXFLAGS) $(DEPFLAGS) -c -o $@ $<
+
+$(DEPDIR): ; @mkdir -p $@
+
+DEPFILES := $(CXXSRCS:%.cpp=$(DEPDIR)/%.d)
+$(DEPFILES):
+
+include $(wildcard $(DEPFILES))
