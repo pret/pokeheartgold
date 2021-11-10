@@ -2,6 +2,8 @@
 #define CALCROM_BUILDANALYZER_H
 
 #include <filesystem>
+#include <utility>
+#include <vector>
 
 using namespace std;
 using namespace std::filesystem;
@@ -42,13 +44,15 @@ class BuildAnalyzer {
     string version = "";
     path srcbase;
     string builddir;
-    int num_hardcoded_pointers = 0;
 
     // Accumulate sizes
     //        src   asm
     // data  _____|_____
     // text       |
     unsigned sizes[SECTION_MAX][SOURCE_MAX] = {{0, 0}, {0, 0}};
+    vector<pair<unsigned, unsigned>> ranges;
+    unsigned n_hardcoded = 0;
+    unsigned n_relocations = 0;
 
     void AnalyzeObject(path fname_s);
 public:

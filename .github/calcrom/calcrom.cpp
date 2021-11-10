@@ -31,6 +31,7 @@
  *      Handle errors when paths are missing
  *  - 0.2.3 (10 Nov 2021):
  *      Refactor classes into separate objects to improve future maintainability
+ *      Report hardcoded pointers
  */
 
 #include <iostream>

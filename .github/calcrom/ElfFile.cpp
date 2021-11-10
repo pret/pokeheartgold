@@ -1,3 +1,4 @@
+#include <iostream>
 #include "ElfFile.h"
 
 void Elf32File::ReadElfHeaderAndVerify() {
@@ -34,17 +35,9 @@ void Elf32File::ReadStrtab() {
 void Elf32File::ReadSymtab() {
     auto sec = find_if(shdr.begin(), shdr.end(), [](Elf32_Shdr const& candidate) { return candidate.sh_type == SHT_SYMTAB; });
     assert(sec != shdr.end());
-    strtab.resize(sec->sh_size);
+    symtab.resize(sec->sh_size);
     handle.seekg(sec->sh_offset);
-    handle.read((char*)strtab.data(), sec->sh_size);
-}
-
-vector<char> Elf32File::ReadSectionData(Elf32_Shdr &_shdr) {
-    vector<char> ret;
-    ret.resize(_shdr.sh_size);
-    handle.seekg(_shdr.sh_offset);
-    handle.read(ret.data(), _shdr.sh_size);
-    return ret;
+    handle.read((char*)symtab.data(), sec->sh_size);
 }
 
 Elf32File::Elf32File(path const& filename, bool read_syms) : handle(filename, ios::binary) {
@@ -66,6 +59,45 @@ vector<Elf32_Shdr> &Elf32File::GetSectionHeaders() {
     return shdr;
 }
 
-string Elf32File::GetSectionName(Elf32_Shdr &section) {
-    return shstrtab.data() + section.sh_name;
+string Elf32File::GetSectionName(const Elf32_Shdr &section) const {
+    return string(shstrtab.data() + section.sh_name);
+}
+
+string Elf32File::GetSymbolName(const Elf32_Sym &symbol) const {
+    return string(strtab.data() + symbol.st_name);
+}
+
+Elf32_Sym &Elf32File::FindSymbol(const string &name) {
+    for (Elf32_Sym &sym : symtab) {
+        cerr << GetSymbolName(sym) << endl;
+        if (name == GetSymbolName(sym)) {
+            return sym;
+        }
+    }
+    return *symtab.end();
+}
+
+Elf32_Sym &Elf32File::operator[](const string &name) {
+    sym_iterator ret;
+
+    for (ret = symtab.begin(); ret != symtab.end(); ret++) {
+        if (name == GetSymbolName(*ret)) {
+            break;
+        }
+    }
+    return *ret;
+}
+
+Elf32_Sym &Elf32File::at(const string &name) {
+    sym_iterator ret;
+
+    for (ret = symtab.begin(); ret != symtab.end(); ret++) {
+        if (name == GetSymbolName(*ret)) {
+            break;
+        }
+    }
+    if (ret == symtab.end()) {
+        throw runtime_error("no symbol named " + name);
+    }
+    return *ret;
 }
