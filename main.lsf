@@ -215,6 +215,7 @@ Static main
 	Object pokemon_storage_system.o
 	Object unk_02074120.o
 	Object party.o
+	Object party_s.o
 	Object unk_02074910.o
 	Object unk_02074944.o
 	Object unk_02074E5C.o

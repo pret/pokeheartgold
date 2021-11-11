@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_ITEM_H
 
 #include "sys/string.h"
+#include "heap.h"
 
 /*
  * Item slot in memory/save file.
@@ -96,7 +97,7 @@ typedef struct ItemData
 } ITEMDATA;
 
 /*
- * void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, u32 heap_id)
+ * void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, HeapID heap_id)
  *
  * Move item slot within an array, shifting the intermediate slots.
  * Performs the operation out-of-place using a temporary array from the heap.
@@ -107,7 +108,7 @@ typedef struct ItemData
  * @param pocket:      Pocket ID
  * @param heap_id:     Heap ID to allocate the temporary array from
  */
-void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, u32 heap_id);
+void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, HeapID heap_id);
 
 
 /*
@@ -158,7 +159,7 @@ int GetItemIconCell(void);
 int GetItemIconAnim(void);
 
 /*
- * void *LoadItemDataOrGfx(u16 itemId, int attrno, u32 heap_id)
+ * void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heap_id)
  *
  * Loads the raw data corresponding to the given item. Allocates a new buffer.
  *
@@ -173,10 +174,10 @@ int GetItemIconAnim(void);
  *
  * If itemId or attrno is invalid, or if allocation failed, returns NULL
  */
-void *LoadItemDataOrGfx(u16 itemId, int attrno, u32 heap_id);
+void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heap_id);
 
 /*
- * void GetItemNameIntoString(STRING *dest, u16 itemId, u32 heap_id)
+ * void GetItemNameIntoString(STRING *dest, u16 itemId, HeapID heap_id)
  *
  * Reads the name of the indicated item into the preallocated string.
  *
@@ -184,10 +185,10 @@ void *LoadItemDataOrGfx(u16 itemId, int attrno, u32 heap_id);
  * @param itemId:      The item whose name you want to get
  * @param heap_id:     Heap in which to allocate the temporary MSGDATA
  */
-void GetItemNameIntoString(STRING *dest, u16 itemId, u32 heap_id);
+void GetItemNameIntoString(STRING *dest, u16 itemId, HeapID heap_id);
 
 /*
- * void GetItemDescIntoString(STRING *dest, u16 itemId, u32 heap_id)
+ * void GetItemDescIntoString(STRING *dest, u16 itemId, HeapID heap_id)
  *
  * Reads the description of the indicated item into the preallocated string.
  *
@@ -195,10 +196,10 @@ void GetItemNameIntoString(STRING *dest, u16 itemId, u32 heap_id);
  * @param itemId:      The item whose description you want to get
  * @param heap_id:     Heap in which to allocate the temporary MSGDATA
  */
-void GetItemDescIntoString(STRING *dest, u16 itemId, u32 heap_id);
+void GetItemDescIntoString(STRING *dest, u16 itemId, HeapID heap_id);
 
 /*
- * s32 GetItemAttr(u16 itemId, u16 attrno, u32 heap_id)
+ * s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heap_id)
  *
  * Gets the specified item effect parameter from itemtool/itemdata/item_data.narc
  *
@@ -208,10 +209,10 @@ void GetItemDescIntoString(STRING *dest, u16 itemId, u32 heap_id);
  *
  * @returns: Integer attribute value
  */
-s32 GetItemAttr(u16 itemId, u16 attrno, u32 heap_id);
+s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heap_id);
 
 /*
- * s32 GetItemAttr_PreloadedItemData(u16 itemId, u16 attrno, u32 heap_id)
+ * s32 GetItemAttr_PreloadedItemData(u16 itemId, u16 attrno, HeapID heap_id)
  *
  * Gets the specified item effect parameter from itemtool/itemdata/item_data.narc
  *
@@ -333,7 +334,7 @@ BOOL ItemIdIsBerry(u16 itemId);
 u16 BerryToItemId(u8 berryId);
 
 /*
- * STRING *GetNutName(u16 berryId, u32 heap_id)
+ * STRING *GetNutName(u16 berryId, HeapID heap_id)
  *
  * Creates a new STRING containing the name of the berry
  *
@@ -342,10 +343,10 @@ u16 BerryToItemId(u8 berryId);
  *
  * @returns: New string containing the name of the berry
  */
-STRING *GetNutName(u16 berryId, u32 heap_id);
+STRING *GetNutName(u16 berryId, HeapID heap_id);
 
 /*
- * ITEMDATA *LoadAllItemData(u32 heap_id)
+ * ITEMDATA *LoadAllItemData(HeapID heap_id)
  *
  * Reads the entire FIMG of itemtool/itemdata/item_data.narc into a new buffer
  *
@@ -353,7 +354,7 @@ STRING *GetNutName(u16 berryId, u32 heap_id);
  *
  * @returns: Pointer to new array.
  */
-ITEMDATA *LoadAllItemData(u32 heap_id);
+ITEMDATA *LoadAllItemData(HeapID heap_id);
 
 /*
  * ITEMDATA *GetItemDataPtrFromArray(ITEMDATA *itemData, u32 itemDataIdx)

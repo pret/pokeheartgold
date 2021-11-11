@@ -665,7 +665,7 @@ static const u16 sItemNarcIds[][4] = {
     { NARC_item_data_item_data_00000513_bin, NARC_item_icon_item_icon_757_NCGR, NARC_item_icon_item_icon_758_NCLR, AGB_ITEM_NONE }, // ITEM_ENIGMA_STONE
 };
 
-void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, u32 heap_id) {
+void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, HeapID heap_id) {
     ITEM_SLOT *buf;
     int i, j;
     if (from == to) {
@@ -750,7 +750,7 @@ int GetItemIconAnim(void) {
     return NARC_item_icon_item_icon_000_NANR;
 }
 
-void *LoadItemDataOrGfx(u16 itemId, int attrno, u32 heap_id) {
+void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heap_id) {
     if (itemId > ITEM_MAX) {
         itemId = ITEM_NONE;
     }
@@ -766,13 +766,13 @@ void *LoadItemDataOrGfx(u16 itemId, int attrno, u32 heap_id) {
     return NULL;
 }
 
-void GetItemNameIntoString(STRING *dest, u16 itemId, u32 heap_id) {
+void GetItemNameIntoString(STRING *dest, u16 itemId, HeapID heap_id) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000222_bin, heap_id);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
 }
 
-void GetItemDescIntoString(STRING *dest, u16 itemId, u32 heap_id) {
+void GetItemDescIntoString(STRING *dest, u16 itemId, HeapID heap_id) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000221_bin, heap_id);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
@@ -780,7 +780,7 @@ void GetItemDescIntoString(STRING *dest, u16 itemId, u32 heap_id) {
 
 static s32 GetItemAttrSub(ITEMPARTYPARAM *param, u16 attrno);
 
-s32 GetItemAttr(u16 itemId, u16 attrno, u32 heap_id) {
+s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heap_id) {
     ITEMDATA *itemData = (ITEMDATA *)LoadItemDataOrGfx(itemId, ITEMNARC_PARAM, heap_id);
     s32 ret = GetItemAttr_PreloadedItemData(itemData, attrno);
     FreeToHeapExplicit(heap_id, itemData);
@@ -1015,7 +1015,7 @@ u16 BerryToItemId(u8 berryId) {
     return (u16)(berryId + FIRST_BERRY_IDX);
 }
 
-STRING *GetNutName(u16 berryId, u32 heap_id) {
+STRING *GetNutName(u16 berryId, HeapID heap_id) {
     STRING *ret;
     MSGDATA *msgData;
 
@@ -1028,7 +1028,7 @@ STRING *GetNutName(u16 berryId, u32 heap_id) {
     return ret;
 }
 
-ITEMDATA *LoadAllItemData(u32 heap_id) {
+ITEMDATA *LoadAllItemData(HeapID heap_id) {
     return AllocAndReadFromNarcMemberByIdPair(NARC_itemtool_itemdata_item_data, 0, heap_id, 0, GetItemIndexMapping(ITEM_MAX, ITEMNARC_PARAM) * sizeof(ITEMDATA));
 }
 

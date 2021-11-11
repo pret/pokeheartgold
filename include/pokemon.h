@@ -194,12 +194,12 @@ struct Evolution
 
 #define PARTY_SIZE 6
 
-struct PlayerParty
+typedef struct PARTY
 {
     int maxCount;
     int curCount;
     struct Pokemon mons[PARTY_SIZE];
-};
+} PARTY;
 
 void ZeroMonData(struct Pokemon * pokemon);
 void ZeroBoxMonData(struct BoxPokemon * boxmon);
@@ -269,7 +269,7 @@ u8 GetBoxMonUnownLetter(struct BoxPokemon * boxmon);
 u8 GetMonUnownLetter(struct Pokemon * pokemon);
 struct BoxPokemon * FUN_020690E4(struct Pokemon * pokemon);
 
-u16 GetMonEvolution(struct PlayerParty * party, struct Pokemon * pokemon, u32 context, u32 usedItem, u32 * method_ret);
+u16 GetMonEvolution(PARTY * party, struct Pokemon * pokemon, u32 context, u32 usedItem, u32 * method_ret);
 u16 ReadFromPersonalPmsNarc(u16 species);
 u16 GetEggSpecies(u16 species);
 BOOL FUN_020690E8(struct Pokemon * pokemon);
@@ -282,7 +282,7 @@ void FUN_020698E0(struct Pokemon * pokemon, int slot1, int slot2);
 void FUN_020698E8(struct BoxPokemon * boxmon, int slot1, int slot2);
 void FUN_020699A4(struct Pokemon * pokemon, u32 slot);
 void CopyBoxPokemonToPokemon(struct BoxPokemon * src, struct Pokemon * dest);
-u8 Party_GetMaxLevel(struct PlayerParty * party);
+u8 Party_GetMaxLevel(PARTY * party);
 u16 SpeciesToSinnohDexNo(u16 species);
 u16 SinnohDexNoToSpecies(u16 sinnoh_dex);
 void CopyPokemonToPokemon(struct Pokemon * src, struct Pokemon * dest);
@@ -290,9 +290,9 @@ void CopyPokemonToBoxPokemon(struct Pokemon * src, struct BoxPokemon * dest);
 void CopyBoxPokemonToBoxPokemon(struct BoxPokemon * src, struct BoxPokemon * dest);
 s8 MonGetFlavorPreference(struct Pokemon * pokemon, int flavor);
 int Species_LoadLearnsetTable(u16 species, u32 forme, u16 * dest);
-void Party_GivePokerusAtRandom(struct PlayerParty * party);
-void Party_UpdatePokerus(struct PlayerParty * party, int r5);
-void Party_SpreadPokerus(struct PlayerParty * party);
+void Party_GivePokerusAtRandom(PARTY * party);
+void Party_UpdatePokerus(PARTY * party, int r5);
+void Party_SpreadPokerus(PARTY * party);
 BOOL Pokemon_HasPokerus(struct Pokemon * pokemon);
 BOOL Pokemon_IsImmuneToPokerus(struct Pokemon * pokemon);
 void Pokemon_UpdateArceusForme(struct Pokemon * pokemon);
