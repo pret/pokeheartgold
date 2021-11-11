@@ -304,8 +304,8 @@ sub_0202D3E4: ; 0x0202D3E4
 	bx lr
 	thumb_func_end sub_0202D3E4
 
-	thumb_func_start sub_0202D3F8
-sub_0202D3F8: ; 0x0202D3F8
+	thumb_func_start FrontierData_BattlePointAction
+FrontierData_BattlePointAction: ; 0x0202D3F8
 	cmp r2, #6
 	bhi _0202D446
 	add r2, r2, r2
@@ -357,7 +357,7 @@ _0202D446:
 	bx lr
 	nop
 _0202D44C: .word 0x0000270F
-	thumb_func_end sub_0202D3F8
+	thumb_func_end FrontierData_BattlePointAction
 
 	thumb_func_start sub_0202D450
 sub_0202D450: ; 0x0202D450
@@ -1081,8 +1081,8 @@ sub_0202D908: ; 0x0202D908
 	.balign 4, 0
 	thumb_func_end sub_0202D908
 
-	thumb_func_start sub_0202D918
-sub_0202D918: ; 0x0202D918
+	thumb_func_start Save_FrontierData_get
+Save_FrontierData_get: ; 0x0202D918
 	push {r3, lr}
 	bl sub_0203107C
 	ldr r1, _0202D924 ; =0x00000954
@@ -1090,7 +1090,7 @@ sub_0202D918: ; 0x0202D918
 	pop {r3, pc}
 	.balign 4, 0
 _0202D924: .word 0x00000954
-	thumb_func_end sub_0202D918
+	thumb_func_end Save_FrontierData_get
 
 	thumb_func_start sub_0202D928
 sub_0202D928: ; 0x0202D928

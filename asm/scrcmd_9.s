@@ -889,10 +889,10 @@ ScrCmd_554: ; 0x0204A2EC
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -921,10 +921,10 @@ ScrCmd_555: ; 0x0204A31C
 	add r2, r6, #0
 	bl GameStats_Add
 	add r0, r4, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	add r1, r6, #0
 	mov r2, #5
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -953,10 +953,10 @@ ScrCmd_556: ; 0x0204A360
 	add r2, r6, #0
 	bl GameStats_Add
 	add r0, r4, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	add r1, r6, #0
 	mov r2, #6
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -985,10 +985,10 @@ ScrCmd_557: ; 0x0204A3A4
 	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 	cmp r0, r6
 	bhs _0204A3EA
 	mov r0, #0
@@ -1470,7 +1470,7 @@ _0204A720:
 sub_0204A730: ; 0x0204A730
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	cmp r4, #0
 	bne _0204A746
 	mov r1, #5
@@ -1487,7 +1487,7 @@ _0204A746:
 	thumb_func_start sub_0204A750
 sub_0204A750: ; 0x0204A750
 	push {r3, lr}
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	mov r1, #5
 	mov r2, #0
 	bl sub_0202D5DC
@@ -1503,7 +1503,7 @@ sub_0204A764: ; 0x0204A764
 	bl sub_0202D908
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	mov r1, #0
 	add r6, r0, #0
 	add r0, r4, #0
@@ -1612,7 +1612,7 @@ sub_0204A824: ; 0x0204A824
 	bl sub_0202D908
 	str r0, [r4, #0x70]
 	add r0, r6, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	str r0, [r4, #0x74]
 	ldr r0, _0204AA20 ; =0x12345678
 	mov r1, #0
@@ -2713,7 +2713,7 @@ _0204B0C6:
 	ldr r0, [r4, #0x74]
 	add r1, r5, #0
 	mov r2, #5
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2764,7 +2764,7 @@ sub_0204B120: ; 0x0204B120
 	add r5, r0, #0
 	add r0, r1, #0
 	add r4, r2, #0
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	add r6, r0, #0
 	cmp r4, #0
 	beq _0204B13C

@@ -883,10 +883,10 @@ ov16_02201A34: ; 0x02201A34
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_020787A8
+	bl BagCursor_new
 	str r0, [r4, #0x18]
 	ldr r0, [r4]
-	bl sub_020787A8
+	bl BagCursor_new
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0

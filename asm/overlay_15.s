@@ -1295,7 +1295,7 @@ _021F9E12:
 	ldr r0, [r0, #0x6c]
 	add r2, #1
 	add r3, sp, #0
-	bl sub_020787C0
+	bl BagCursor_Field_PocketGetPosition
 	add r0, sp, #0
 	ldrb r0, [r0, #1]
 	strh r0, [r6, #4]
@@ -1312,7 +1312,7 @@ _021F9E3E:
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	ldr r0, [r0, #0x6c]
-	bl sub_020787D0
+	bl BagCursor_Field_GetPocket
 	mov r1, #0xc
 	mul r1, r0
 	ldr r1, [r4, r1]
@@ -1392,7 +1392,7 @@ _021F9EC2:
 	ldr r0, [r0, #0x6c]
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_020787D4
+	bl BagCursor_Field_PocketSetPosition
 _021F9EE2:
 	add r4, r4, #1
 	add r5, #0xc
@@ -1410,7 +1410,7 @@ _021F9EE2:
 	ldr r1, [sp]
 	add r1, r1, r3
 	ldrb r1, [r1, #8]
-	bl sub_020787E0
+	bl BagCursor_Field_SetPocket
 _021F9F06:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov15_021F9EA8
@@ -3978,7 +3978,7 @@ _021FB280:
 	ldr r0, [r4, r0]
 	add r0, #0x66
 	ldrh r0, [r0]
-	bl ItemIdIsNotApricornBall
+	bl ItemIdIsNotJohtoBall
 	cmp r0, #1
 	bne _021FB2A4
 	mov r1, #8
@@ -6488,7 +6488,7 @@ _021FC6B4:
 	ldr r0, [r5, r0]
 	add r0, #0x66
 	ldrh r0, [r0]
-	bl ItemIdIsNotApricornBall
+	bl ItemIdIsNotJohtoBall
 	cmp r0, #0
 	bne _021FC75C
 _021FC6E4:
@@ -13167,7 +13167,7 @@ _021FFC2A:
 	mov r2, #0xf
 	mov r3, #0x31
 	bl sub_0200D6D4
-	bl sub_02077CE0
+	bl GetItemIconCell
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -13240,7 +13240,7 @@ _021FFC2A:
 	mov r2, #0xf
 	mov r3, #0x32
 	bl sub_0200D704
-	bl sub_02077CE4
+	bl GetItemIconAnim
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]

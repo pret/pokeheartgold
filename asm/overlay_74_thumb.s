@@ -30274,9 +30274,9 @@ _02235D36:
 	mov r1, #2
 	bl GetItemIndexMapping
 	add r4, r0, #0
-	bl sub_02077CE0
+	bl GetItemIconCell
 	add r6, r0, #0
-	bl sub_02077CE4
+	bl GetItemIconAnim
 	str r0, [sp]
 	mov r0, #1
 	str r0, [sp, #4]

@@ -1933,13 +1933,13 @@ sub_0203F0D0: ; 0x0203F0D0
 	bl GetPartyMonByIndex
 	str r0, [r5]
 	add r0, r6, #0
-	bl sub_0202C028
+	bl Save_DressupData_get
 	str r0, [sp]
 	mov r1, #0
 	bl sub_0202B9B8
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl sub_0202B9E0
+	bl SaveDressupData_GetFashionCase
 	str r4, [r5, #4]
 	str r0, [r5, #8]
 	add r0, r6, #0
@@ -2953,7 +2953,7 @@ sub_0203F8EC: ; 0x0203F8EC
 	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	str r0, [r4]
 	ldr r0, [r5, #0xc]
 	bl sub_0202D928

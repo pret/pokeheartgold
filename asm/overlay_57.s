@@ -63,7 +63,7 @@ ov57_022378DC: ; 0x022378DC
 	str r5, [r4, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl sub_0202CD74
+	bl SealCase_CountUniqueSeals
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1d
 	sub r1, r1, r2
@@ -75,7 +75,7 @@ ov57_022378DC: ; 0x022378DC
 _02237954:
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl sub_0202CD74
+	bl SealCase_CountUniqueSeals
 	asr r1, r0, #2
 	lsr r1, r1, #0x1d
 	add r1, r0, r1
@@ -101,7 +101,7 @@ _02237974:
 	str r0, [r4, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl sub_0202CC54
+	bl SealCase_inventory_get
 	str r0, [r4, #0x64]
 	mov r6, #0
 	add r5, r4, #0
@@ -110,7 +110,7 @@ _0223799C:
 	ldr r0, [r4]
 	add r1, r6, #0
 	ldr r0, [r0, #0x20]
-	bl sub_0202CBF4
+	bl SealCase_GetCapsuleI
 	str r7, [r5, #4]
 	str r0, [r5, #8]
 	add r6, r6, #1
@@ -1613,7 +1613,7 @@ _02238550:
 	ldr r0, [r0, #0x20]
 	ldr r2, [r7, r2]
 	add r1, sp, #0
-	bl sub_0202CC0C
+	bl SealCase_SetCapsuleI
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2078,7 +2078,7 @@ _02238906:
 _0223890A:
 	ldr r0, [r4, #8]
 	add r1, r5, #0
-	bl sub_0202CC60
+	bl SealIsOnCapsule
 	cmp r0, #0
 	bne _0223891E
 	add r6, r6, #1
@@ -3653,18 +3653,18 @@ _0223951E:
 	add r7, #8
 	ldr r0, [r7, r6]
 	add r1, sp, #0x10
-	bl sub_0202CBDC
+	bl CopyCapsule
 	add r0, r5, #0
 	str r0, [sp, #4]
 	add r0, #8
 	str r0, [sp, #4]
 	ldr r0, [r0, r4]
 	ldr r1, [r7, r6]
-	bl sub_0202CBDC
+	bl CopyCapsule
 	ldr r1, [sp, #4]
 	add r0, sp, #0x10
 	ldr r1, [r1, r4]
-	bl sub_0202CBDC
+	bl CopyCapsule
 	add r0, r5, #0
 	bl ov57_022394AC
 	add sp, #0x28
@@ -4282,7 +4282,7 @@ _02239A22:
 	add r4, r0, #0
 	ldr r0, [r7, #0x64]
 	sub r1, r1, #1
-	bl sub_0202CC5C
+	bl SealCaseInventory_GetSealQuantity
 	add r1, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -4351,7 +4351,7 @@ _02239AB8:
 	str r0, [sp, #0x10]
 	ldr r0, [r6, #0x64]
 	sub r1, r7, #1
-	bl sub_0202CC5C
+	bl SealCaseInventory_GetSealQuantity
 	add r1, r0, #0
 	mov r3, #1
 	ldr r0, [sp, #0x10]
@@ -5066,8 +5066,8 @@ ov57_0223A07C: ; 0x0223A07C
 _0223A086:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0202CC30
-	bl sub_0202CC48
+	bl CapsuleGetSealI
+	bl SealOnCapsuleGetID
 	cmp r0, #0
 	beq _0223A098
 	add r5, r5, #1
@@ -5464,7 +5464,7 @@ _0223A39A:
 	add r0, r2, r0
 	ldr r5, [r0, #4]
 	ldr r0, [r2, #0x20]
-	bl sub_0202CBF4
+	bl SealCase_GetCapsuleI
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0xab
@@ -5571,7 +5571,7 @@ _0223A484:
 	ldrb r1, [r2, r1]
 	ldr r0, [r0, #0x20]
 	mov r2, #1
-	bl sub_0202CCEC
+	bl GiveOrTakeSeal2
 	add r0, r4, #0
 	bl ov57_022399F8
 	add r0, r4, #0
@@ -6966,7 +6966,7 @@ _0223B05A:
 	beq _0223B0B0
 	ldr r0, [r4, #0x64]
 	sub r1, r1, #1
-	bl sub_0202CC5C
+	bl SealCaseInventory_GetSealQuantity
 	cmp r0, #0
 	beq _0223B0B0
 	lsl r1, r5, #0x18
@@ -6987,7 +6987,7 @@ _0223B05A:
 	ldrb r1, [r6, r5]
 	ldr r0, [r0, #0x20]
 	mvn r2, r2
-	bl sub_0202CCAC
+	bl GiveOrTakeSeal
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov57_02239A8C
@@ -7874,14 +7874,14 @@ ov57_0223B75C: ; 0x0223B75C
 	mov r0, #0xfb
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	ldr r3, _0223B770 ; =sub_0202CBDC
+	ldr r3, _0223B770 ; =CopyCapsule
 	lsl r0, r0, #3
 	add r0, r1, r0
 	ldr r0, [r0, #8]
 	add r1, #0x68
 	bx r3
 	.balign 4, 0
-_0223B770: .word sub_0202CBDC
+_0223B770: .word CopyCapsule
 	thumb_func_end ov57_0223B75C
 
 	thumb_func_start ov57_0223B774
@@ -7890,14 +7890,14 @@ ov57_0223B774: ; 0x0223B774
 	add r2, r0, #0
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
-	ldr r3, _0223B788 ; =sub_0202CBDC
+	ldr r3, _0223B788 ; =CopyCapsule
 	lsl r1, r1, #3
 	add r1, r2, r1
 	add r0, #0x68
 	ldr r1, [r1, #8]
 	bx r3
 	.balign 4, 0
-_0223B788: .word sub_0202CBDC
+_0223B788: .word CopyCapsule
 	thumb_func_end ov57_0223B774
 
 	thumb_func_start ov57_0223B78C
@@ -7908,7 +7908,7 @@ ov57_0223B78C: ; 0x0223B78C
 _0223B792:
 	ldr r0, [r5, #0x64]
 	add r1, r4, #0
-	bl sub_0202CC5C
+	bl SealCaseInventory_GetSealQuantity
 	add r1, r5, r4
 	add r1, #0x80
 	add r4, r4, #1
@@ -7929,7 +7929,7 @@ _0223B7AE:
 	ldrb r2, [r2]
 	ldr r0, [r5, #0x64]
 	add r1, r4, #0
-	bl sub_0202CCA8
+	bl SealCaseInventory_SetSealQuantity
 	add r4, r4, #1
 	cmp r4, #0x51
 	blt _0223B7AE

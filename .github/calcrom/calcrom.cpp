@@ -29,172 +29,21 @@
  *      Make calcrom more generic and configurable via command line
  *  - 0.2.2 (18 Sep 2021):
  *      Handle errors when paths are missing
+ *  - 0.2.3 (10 Nov 2021):
+ *      Refactor classes into separate objects to improve future maintainability
+ *      Report hardcoded pointers
  */
 
 #include <iostream>
 #include <fstream>
-#include <elf.h>
-#include <glob.h>
-#include <cstring>
 #include <vector>
 #include <string>
-#include <cassert>
 #include <algorithm>
 #include <filesystem>
+#include "BuildAnalyzer.h"
 
 using namespace std;
 using namespace std::filesystem;
-
-// Wraps glob results from <glob.h>
-struct Glob : public vector<char const *> {
-    glob_t glob_result;
-    int glob_flags;
-public:
-    // Call glob with the supplied pattern
-    Glob(const char * pattern, int _glob_flags) : glob_flags(_glob_flags) {
-        int result = glob(pattern, glob_flags, nullptr, &glob_result);
-        if (result) {
-            throw runtime_error(string("Glob(") + pattern + ") failed with error " + to_string(result));
-        }
-        assign(glob_result.gl_pathv, glob_result.gl_pathv + glob_result.gl_pathc);
-    };
-    Glob(const string& pattern, int _glob_flags) : Glob(pattern.c_str(), _glob_flags) {}
-    ~Glob() {
-        globfree(&glob_result);
-    }
-};
-
-struct Elf32File {
-    ifstream handle;
-    Elf32_Ehdr ehdr;
-    vector<Elf32_Shdr> shdr;
-    vector<Elf32_Sym> symtab;
-    vector<char> shstrtab;
-    vector<char> strtab;
-
-private:
-    void ReadElfHeaderAndVerify() {
-        handle.seekg(0);
-        handle.read((char *)ehdr.e_ident, EI_NIDENT);
-        assert(memcmp(ehdr.e_ident, ELFMAG, SELFMAG) == 0);
-        assert(ehdr.e_ident[EI_CLASS] == ELFCLASS32);
-        assert(ehdr.e_ident[EI_DATA] == ELFDATA2LSB);
-        assert(ehdr.e_ident[EI_VERSION] == EV_CURRENT);
-        handle.read((char*)&ehdr + EI_NIDENT, sizeof(ehdr) - EI_NIDENT);
-        assert(ehdr.e_shentsize == sizeof(Elf32_Shdr));
-    }
-    void ReadSectionHeaders() {
-        shdr.resize(ehdr.e_shnum);
-        handle.seekg(ehdr.e_shoff);
-        handle.read((char*)shdr.data(), ehdr.e_shnum * ehdr.e_shentsize);
-    }
-    void ReadShstrtab() {
-        shstrtab.resize(shdr[ehdr.e_shstrndx].sh_size);
-        handle.seekg(shdr[ehdr.e_shstrndx].sh_offset);
-        handle.read((char*)shstrtab.data(), shdr[ehdr.e_shstrndx].sh_size);
-    }
-    void ReadStrtab() {
-        int i;
-        for (i = 1; i < ehdr.e_shnum; i++) {
-            if (i == ehdr.e_shstrndx) continue;
-            if (shdr[i].sh_type == SHT_STRTAB) break;
-        }
-        assert(i != ehdr.e_shnum);
-        strtab.resize(shdr[i].sh_size);
-        handle.seekg(shdr[i].sh_offset);
-        handle.read((char*)strtab.data(), shdr[i].sh_size);
-    }
-    void ReadSymtab() {
-        auto sec = find_if(shdr.begin(), shdr.end(), [](Elf32_Shdr const& candidate) { return candidate.sh_type == SHT_SYMTAB; });
-        assert(sec != shdr.end());
-        strtab.resize(sec->sh_size);
-        handle.seekg(sec->sh_offset);
-        handle.read((char*)strtab.data(), sec->sh_size);
-    }
-public:
-    Elf32File(path const& filename, bool read_syms = false) : handle(filename, ios::binary) {
-        assert(handle.good());
-        ReadElfHeaderAndVerify();
-        ReadSectionHeaders();
-        ReadShstrtab();
-        if (read_syms) {
-            ReadStrtab();
-            ReadSymtab();
-        }
-    }
-    ~Elf32File() {
-        handle.close();
-    }
-};
-
-string default_version("");
-
-void analyze(path& basedir, path& subdir, string& version = default_version) {
-    // Accumulate sizes
-    //        src   asm
-    // data  _____|_____
-    // text       |
-    unsigned sizes[2][2] = {{0, 0}, {0, 0}};
-
-    if (!version.empty()) {
-        sizes[1][1] = 0x800; // libsyscall.a
-    }
-
-    path srcbase = basedir / subdir;
-    string builddir = srcbase / "build" / version;
-    if (!exists(srcbase)) {
-        throw runtime_error("No such directory: " + srcbase.string());
-    }
-    string pattern = srcbase.string() + "/{src,asm,lib/{src,asm},lib/{!syscall}/{src,asm}}/*.{c,s,cpp}";
-    for (char const * & fname : Glob(pattern, GLOB_TILDE | GLOB_BRACE | GLOB_NOSORT))
-    {
-        path fname_s(fname);
-        string ext = fname_s.extension();
-        bool is_asm = ext == ".s";
-        fname_s = builddir / relative(fname_s, srcbase);
-        fname_s = fname_s.replace_extension(".o");
-#ifndef NDEBUG
-        cerr << fname << " --> " << fname_s << endl;
-#endif
-        if (!exists(fname_s)) {
-            throw runtime_error("No such file: " + fname_s.string());
-        }
-
-        Elf32File elf(fname_s);
-
-        // Analyze sections
-        for (Elf32_Shdr & hdr : elf.shdr) {
-            string shname = elf.shstrtab.data() + hdr.sh_name;
-            bool is_text = (shname == ".text" || shname == ".init" || shname == ".itcm");
-            bool is_data = (shname == ".data" || shname == ".rodata" || shname == ".sdata" || shname == ".dtcm");
-            size_t size = hdr.sh_size + (hdr.sh_size & 3 ? 4 - (hdr.sh_size & 3) : 0);
-            if (is_text || is_data)
-            {
-                sizes[is_text][is_asm] += size;
-            }
-        }
-    }
-
-    cout << "Analysis of " << (version.empty() ? subdir.string() : version) << " binary:" << endl;
-    // Report code
-    unsigned total_text = sizes[1][0] + sizes[1][1];
-    double total_text_d = total_text;
-    double src_text_d = sizes[1][0];
-    double asm_text_d = sizes[1][1];
-    cout << "  " << total_text << " total bytes of code" << endl;
-    cout << "    " << sizes[1][0] << " bytes of code in src (" << (src_text_d / total_text_d * 100.0) << "%)" << endl;
-    cout << "    " << sizes[1][1] << " bytes of code in asm (" << (asm_text_d / total_text_d * 100.0) << "%)" << endl;
-    cout << endl;
-    // Report data
-    unsigned total_data = sizes[0][0] + sizes[0][1];
-    double total_data_d = total_data;
-    double src_data_d = sizes[0][0];
-    double asm_data_d = sizes[0][1];
-    cout << "  " << total_data << " total bytes of data" << endl;
-    cout << "    " << sizes[0][0] << " bytes of data in src (" << (src_data_d / total_data_d * 100.0) << "%)" << endl;
-    cout << "    " << sizes[0][1] << " bytes of data in asm (" << (asm_data_d / total_data_d * 100.0) << "%)" << endl;
-    // Let vectors fall to gc
-}
 
 class missing_option : public invalid_argument {
 public:
@@ -225,19 +74,20 @@ struct Options {
             }
         }
     }
+    int main() {
+        for (string &romname: romnames) {
+            cout << BuildAnalyzer(projectdir, arm9subdir, romname)() << endl;
+        }
+        cout << BuildAnalyzer(projectdir, arm7subdir)();
+        return 0;
+    }
 };
 
 int main(int argc, char ** argv)
 {
     try {
         Options options(argc, argv);
-
-        for (string &romname: options.romnames)
-        {
-            analyze(options.projectdir, options.arm9subdir, romname);
-            cout << endl;
-        }
-        analyze(options.projectdir, options.arm7subdir);
+        return options.main();
     } catch (missing_option& e) {
         cerr << "Missing value for option " << e.what() << endl;
         return 1;
@@ -251,5 +101,4 @@ int main(int argc, char ** argv)
         cerr << "Unhandled exception: " << e.what() << endl;
         return 1;
     }
-    return 0;
 }

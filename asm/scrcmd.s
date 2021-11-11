@@ -4403,7 +4403,7 @@ sub_02042A30: ; 0x02042A30
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_0202C028
+	bl Save_DressupData_get
 	cmp r5, #0
 	bne _02042A4E
 	add r1, r4, #0
@@ -4432,7 +4432,7 @@ sub_02042A60: ; 0x02042A60
 	ldr r0, [r5, #0xc]
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0202C028
+	bl Save_DressupData_get
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -4908,7 +4908,7 @@ ScrCmd_256: ; 0x02042DFC
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202C028
+	bl Save_DressupData_get
 	mov r1, #0
 	bl sub_0202B9B8
 	add r1, r4, #0
@@ -9068,8 +9068,8 @@ ScrCmd_403: ; 0x02044DFC
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202C028
-	bl sub_0202B9E0
+	bl Save_DressupData_get
+	bl SaveDressupData_GetFashionCase
 	add r1, r4, #0
 	add r2, r6, #0
 	bl sub_0202BB08
@@ -9107,8 +9107,8 @@ ScrCmd_404: ; 0x02044E40
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202C028
-	bl sub_0202B9E0
+	bl Save_DressupData_get
+	bl SaveDressupData_GetFashionCase
 	add r1, r6, #0
 	add r2, r7, #0
 	bl sub_0202BA2C
@@ -9148,8 +9148,8 @@ ScrCmd_405: ; 0x02044E9C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202C028
-	bl sub_0202B9E0
+	bl Save_DressupData_get
+	bl SaveDressupData_GetFashionCase
 	add r1, r7, #0
 	bl sub_0202BA70
 	cmp r6, r0
@@ -9179,8 +9179,8 @@ ScrCmd_406: ; 0x02044F00
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202C028
-	bl sub_0202B9E0
+	bl Save_DressupData_get
+	bl SaveDressupData_GetFashionCase
 	add r1, r4, #0
 	bl sub_0202BBD8
 	mov r0, #0
@@ -9210,8 +9210,8 @@ ScrCmd_407: ; 0x02044F30
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202C028
-	bl sub_0202B9E0
+	bl Save_DressupData_get
+	bl SaveDressupData_GetFashionCase
 	add r1, r6, #0
 	bl sub_0202BA5C
 	strh r0, [r4]
@@ -10807,8 +10807,8 @@ ScrCmd_526: ; 0x02045BCC
 	str r0, [sp]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_0202C028
-	bl sub_0202B9E0
+	bl Save_DressupData_get
+	bl SaveDressupData_GetFashionCase
 	mov r6, #0
 	add r7, r0, #0
 	add r4, r6, #0
@@ -10993,8 +10993,8 @@ ScrCmd_536: ; 0x02045D28
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202C028
-	bl sub_0202B9E0
+	bl Save_DressupData_get
+	bl SaveDressupData_GetFashionCase
 	add r1, r4, #0
 	add r2, r6, #0
 	bl sub_0202BB7C

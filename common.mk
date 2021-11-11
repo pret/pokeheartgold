@@ -154,7 +154,10 @@ else
 endif
 
 $(NEF): $(LCF) $(ALL_OBJS)
-	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) $(ALL_OBJS:$(BUILD_DIR)/%=%)
+	echo $(ALL_OBJS:$(BUILD_DIR)/%=%) >$(BUILD_DIR)/obj.list
+	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) @obj.list
+
+.INTERMEDIATE: $(BUILD_DIR)/obj.list
 
 $(SBIN): build/%.sbin: build/%.nef
 ifeq ($(COMPARE),1)

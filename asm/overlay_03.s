@@ -7476,7 +7476,7 @@ _022579C0:
 	sub r0, #0x37
 	ldrh r1, [r2, r1]
 	ldr r0, [r2, r0]
-	bl sub_0202CD94
+	bl SealCase_CountSealOccurrenceAnywhere
 	pop {r4, pc}
 _022579D4:
 	mov r0, #0
@@ -7902,7 +7902,7 @@ _02257D3A:
 	ldrh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, r0]
-	bl sub_0202CD3C
+	bl SealCase_CheckSealQuantity
 _02257D4C:
 	cmp r0, #0
 	bne _02257D60
@@ -8126,7 +8126,7 @@ _02257EDE:
 	ldrh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, r0]
-	bl sub_0202CCAC
+	bl GiveOrTakeSeal
 _02257EF0:
 	mov r1, #0xa3
 	lsl r1, r1, #2
@@ -9253,7 +9253,7 @@ ov03_02258764: ; 0x02258764
 	ldr r1, [r4, #4]
 	add r0, r5, #0
 	bl sub_0203E3D4
-	ldr r1, _022587CC ; =0x02092B05
+	ldr r1, _022587CC ; =sub_02092B04
 	add r0, r6, #0
 	add r2, r4, #0
 	bl sub_02050510
@@ -9265,7 +9265,7 @@ _022587C2:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _022587C8: .word 0x022597F0
-_022587CC: .word 0x02092B05
+_022587CC: .word sub_02092B04
 _022587D0: .word 0x00000272
 	thumb_func_end ov03_02258764
 
@@ -9499,13 +9499,13 @@ ScrCmd_716: ; 0x0225894C
 	ldr r0, [r0]
 	bl sub_0203EB08
 	str r0, [r4]
-	ldr r1, _02258974 ; =0x02042975
+	ldr r1, _02258974 ; =sub_02042974
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02258974: .word 0x02042975
+_02258974: .word sub_02042974
 	thumb_func_end ScrCmd_716
 
 	thumb_func_start ScrCmd_717

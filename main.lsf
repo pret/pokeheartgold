@@ -106,7 +106,6 @@ Static main
 	Object unk_0202C9A0.o
 	Object unk_0202CA24.o
 	Object seal_case.o
-	Object unk_0202CC54.o
 	Object igt.o
 	Object sav_chatot.o
 	Object unk_0202CF1C.o
@@ -223,7 +222,7 @@ Static main
 	Object unk_020773AC.o
 	Object unk_02077678.o
 	Object bag_view.o
-	Object itemtool.o
+	Object item.o
 	Object bag.o
 	Object unk_02078834.o
 	Object use_item_on_mon.o

@@ -2507,7 +2507,7 @@ ov86_021E6DD8: ; 0x021E6DD8
 	mov r1, #0x89
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	cmp r4, #6
 	bhi _021E6E1C
 	add r1, r4, r4

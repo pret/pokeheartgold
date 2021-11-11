@@ -6971,10 +6971,10 @@ ov80_0222D13C: ; 0x0222D13C
 	bl ov80_0222BDF4
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -6998,10 +6998,10 @@ ov80_0222D168: ; 0x0222D168
 	add r2, r5, #0
 	bl GameStats_Add
 	ldr r0, [r4, #8]
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	add r1, r5, #0
 	mov r2, #5
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -7024,10 +7024,10 @@ ov80_0222D1A0: ; 0x0222D1A0
 	add r2, r5, #0
 	bl GameStats_Add
 	ldr r0, [r4, #8]
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	add r1, r5, #0
 	mov r2, #6
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -24972,7 +24972,7 @@ _02235D3E:
 	cmp r0, #1
 	bne _02235DA8
 	ldr r0, [r4]
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	mov r1, #6
 	mov r2, #2
 	bl sub_0202D57C

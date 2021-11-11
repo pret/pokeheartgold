@@ -1,4 +1,3 @@
-#include "global.h"
 #include "coins.h"
 
 void InitCoins(u16* coins) {

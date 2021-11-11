@@ -58,7 +58,7 @@ _02260C66:
 	mov r1, #0xb
 	bl sub_0203B610
 	mov r0, #0xb
-	bl sub_020787A8
+	bl BagCursor_new
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]

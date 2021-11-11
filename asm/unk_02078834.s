@@ -30709,7 +30709,7 @@ _02087C92:
 	str r0, [sp, #4]
 _02087C9E:
 	add r0, r4, #0
-	bl sub_020787A8
+	bl BagCursor_new
 	mov r1, #0x43
 	ldr r2, [r5, #0x10]
 	lsl r1, r1, #2

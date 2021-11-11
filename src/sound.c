@@ -1,4 +1,3 @@
-#include "global.h"
 #include "sound.h"
 #include "sound_chatot.h"
 #include "options.h"

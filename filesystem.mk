@@ -399,6 +399,8 @@ NAIXS := $(NARCS:%.narc=%.naix)
 
 $(eval $(call arc_strip_name,files/fielddata/script/scr_seq.narc,files/a/0/1/2))
 $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
+$(eval $(call arc_strip_name,files/itemtool/itemdata/item_data.narc,files/a/0/1/7))
+$(eval $(call arc_strip_name,files/itemtool/itemdata/item_icon.narc,files/a/0/1/8))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/g_enc_data.narc,files/a/0/3/7))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data.narc,files/a/0/7/4))

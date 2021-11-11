@@ -46454,10 +46454,10 @@ _02232758:
 _02232774:
 	ldr r0, [sp, #0x14]
 	add r1, r5, #0
-	bl sub_0202CC30
+	bl CapsuleGetSealI
 	add r7, r0, #0
 	beq _022327E0
-	bl sub_0202CC48
+	bl SealOnCapsuleGetID
 	cmp r0, #0
 	beq _022327E0
 	cmp r0, #0x51
@@ -46525,10 +46525,10 @@ _022327F6:
 _02232804:
 	ldr r0, [sp, #0x18]
 	add r1, r5, #0
-	bl sub_0202CC30
+	bl CapsuleGetSealI
 	add r7, r0, #0
 	beq _02232870
-	bl sub_0202CC48
+	bl SealOnCapsuleGetID
 	cmp r0, #0
 	beq _02232870
 	cmp r0, #0x51
@@ -46596,10 +46596,10 @@ _02232886:
 _02232894:
 	ldr r0, [sp, #0x1c]
 	add r1, r5, #0
-	bl sub_0202CC30
+	bl CapsuleGetSealI
 	add r7, r0, #0
 	beq _02232900
-	bl sub_0202CC48
+	bl SealOnCapsuleGetID
 	cmp r0, #0
 	beq _02232900
 	cmp r0, #0x51
@@ -46667,10 +46667,10 @@ _02232916:
 _02232924:
 	ldr r0, [sp, #0x20]
 	add r1, r5, #0
-	bl sub_0202CC30
+	bl CapsuleGetSealI
 	add r7, r0, #0
 	beq _02232990
-	bl sub_0202CC48
+	bl SealOnCapsuleGetID
 	cmp r0, #0
 	beq _02232990
 	cmp r0, #0x51
@@ -47125,13 +47125,13 @@ ov07_02232C64: ; 0x02232C64
 	add r1, sp, #0
 	bl ov07_02232BB0
 	ldr r0, [r4, #0x14]
-	bl sub_0202CC48
+	bl SealOnCapsuleGetID
 	bl sub_0209109C
 	ldr r0, [r4, #0x14]
-	bl sub_0202CC4C
+	bl SealOnCapsuleGetX
 	add r6, r0, #0
 	ldr r0, [r4, #0x14]
-	bl sub_0202CC50
+	bl SealOnCapsuleGetY
 	sub r6, #0xbe
 	lsl r1, r6, #0x10
 	asr r3, r1, #0x10
@@ -50490,10 +50490,10 @@ ov07_022344E4: ; 0x022344E4
 ov07_02234510: ; 0x02234510
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0202CC4C
+	bl SealOnCapsuleGetX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0202CC50
+	bl SealOnCapsuleGetY
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0xbe
@@ -50519,7 +50519,7 @@ _0223453C:
 	sub r1, r1, #1
 	bne _0223453C
 	add r0, r4, #0
-	bl sub_0202CC48
+	bl SealOnCapsuleGetID
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bl sub_0209109C

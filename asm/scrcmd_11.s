@@ -1026,7 +1026,7 @@ _0204C56A:
 	bl Sav2_SealCase_get
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0202CD3C
+	bl SealCase_CheckSealQuantity
 	pop {r3, r4, r5, pc}
 _0204C57A:
 	mov r0, #1
@@ -1059,20 +1059,20 @@ _0204C5A2:
 	bl Sav2_SealCase_get
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0202CCAC
+	bl GiveOrTakeSeal
 	pop {r3, r4, r5, pc}
 _0204C5B2:
 	ldr r0, [r5, #0xc]
-	bl sub_0202C028
-	bl sub_0202B9E0
+	bl Save_DressupData_get
+	bl SaveDressupData_GetFashionCase
 	add r1, r4, #0
 	mov r2, #1
 	bl sub_0202BB08
 	pop {r3, r4, r5, pc}
 _0204C5C6:
 	ldr r0, [r5, #0xc]
-	bl sub_0202C028
-	bl sub_0202B9E0
+	bl Save_DressupData_get
+	bl SaveDressupData_GetFashionCase
 	add r1, r4, #0
 	bl sub_0202BBD8
 	pop {r3, r4, r5, pc}

@@ -202,10 +202,10 @@ _0204F602:
 	str r0, [sp, #8]
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202D918
+	bl Save_FrontierData_get
 	add r1, r6, #0
 	mov r2, #5
-	bl sub_0202D3F8
+	bl FrontierData_BattlePointAction
 _0204F630:
 	cmp r4, #0
 	bne _0204F63C

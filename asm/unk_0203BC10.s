@@ -3366,7 +3366,7 @@ _0203D688:
 	mov r1, #4
 	add r2, sp, #8
 	add r3, #1
-	bl sub_020787C0
+	bl BagCursor_Field_PocketGetPosition
 	ldr r0, [sp]
 	ldr r1, _0203D6C4 ; =sub_0203D6C8
 	bl sub_0203C8F0
@@ -3391,7 +3391,7 @@ sub_0203D6C8: ; 0x0203D6C8
 	ldr r0, [r0]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_020787D4
+	bl BagCursor_Field_PocketSetPosition
 	mov r1, #0xe
 	lsl r1, r1, #6
 	ldr r1, [r4, r1]
