@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <utility>
 #include <vector>
+#include <unordered_set>
 #include "ElfFile.h"
 
 using namespace std;

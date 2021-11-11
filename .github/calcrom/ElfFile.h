@@ -8,7 +8,6 @@
 
 using namespace std;
 using namespace std::filesystem;
-using sym_iterator = vector<Elf32_Sym>::iterator;
 
 class Elf32File {
     ifstream handle;
@@ -27,10 +26,15 @@ private:
     void ReadStrtab();
     void ReadSymtab();
 public:
+    typedef unsigned int elfload;
+    static const elfload sections = 1;
+    static const elfload programs = 2;
+    static const elfload symbols  = 4;
+
     Elf32File() = default;
-    Elf32File(path const& filename, bool read_syms = false);
+    Elf32File(path const& filename, elfload load = sections);
     ~Elf32File();
-    void open(path const& filename, bool read_syms = false);
+    void open(path const& filename, elfload load = sections);
     void close();
     bool is_open() const;
     template <typename _V>
@@ -49,7 +53,6 @@ public:
     vector<Elf32_Phdr>& GetProgramHeaders();
     string GetSectionName(const Elf32_Shdr &section) const;
     string GetSymbolName(const Elf32_Sym &symbol) const;
-    Elf32_Sym &FindSymbol(const string &name);
     Elf32_Sym &operator[](const string &name);
     Elf32_Sym &at(const string &name);
 };

@@ -58,29 +58,33 @@ void Elf32File::ReadSymtab() {
     handle.read((char*)symtab.data(), sec->sh_size);
 }
 
-Elf32File::Elf32File(path const& filename, bool read_syms) {
-    open(filename, read_syms);
+Elf32File::Elf32File(path const& filename, elfload load) {
+    open(filename, load);
 }
 
-void Elf32File::open(path const& filename, bool read_syms) {
-    if (handle.is_open()) {
-        close();
-    }
+void Elf32File::open(path const& filename, elfload load) {
+    assert(!is_open());
     handle.open(filename, ios::binary);
     assert(handle.good());
     ReadElfHeaderAndVerify();
-    ReadSectionHeaders();
-    ReadProgramHeaders();
-    ReadShstrtab();
-    if (read_syms) {
+    if (load & sections) {
+        ReadSectionHeaders();
+        ReadShstrtab();
+    }
+    if (load & programs) {
+        ReadProgramHeaders();
+    }
+    if (load & symbols) {
+        assert(load & sections);
         ReadStrtab();
         ReadSymtab();
     }
 }
 
 void Elf32File::close() {
-    assert(is_open());
-    handle.close();
+    if (is_open()) {
+        handle.close();
+    }
     memset(&ehdr, 0, sizeof(ehdr));
     shdr.clear();
     symtab.clear();
@@ -113,35 +117,12 @@ string Elf32File::GetSymbolName(const Elf32_Sym &symbol) const {
     return string(strtab.data() + symbol.st_name);
 }
 
-Elf32_Sym &Elf32File::FindSymbol(const string &name) {
-    for (Elf32_Sym &sym : symtab) {
-        cerr << GetSymbolName(sym) << endl;
-        if (name == GetSymbolName(sym)) {
-            return sym;
-        }
-    }
-    return *symtab.end();
-}
-
 Elf32_Sym &Elf32File::operator[](const string &name) {
-    sym_iterator ret;
-
-    for (ret = symtab.begin(); ret != symtab.end(); ret++) {
-        if (name == GetSymbolName(*ret)) {
-            break;
-        }
-    }
-    return *ret;
+    return *find_if(symtab.begin(), symtab.end(), [&](Elf32_Sym const &sym) { return name == GetSymbolName(sym); });
 }
 
 Elf32_Sym &Elf32File::at(const string &name) {
-    sym_iterator ret;
-
-    for (ret = symtab.begin(); ret != symtab.end(); ret++) {
-        if (name == GetSymbolName(*ret)) {
-            break;
-        }
-    }
+    auto ret = find_if(symtab.begin(), symtab.end(), [&](Elf32_Sym const &sym) { return name == GetSymbolName(sym); });
     if (ret == symtab.end()) {
         throw runtime_error("no symbol named " + name);
     }

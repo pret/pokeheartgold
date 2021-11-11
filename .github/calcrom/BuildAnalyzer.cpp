@@ -6,16 +6,10 @@
 string default_version("");
 
 void BuildAnalyzer::AnalyzeObject(path fname_s) {
-#ifndef NDEBUG
-    cerr << fname_s;
-#endif
     string ext = fname_s.extension();
     SourceType sourceType = ext == ".s" ? SOURCE_ASM : SOURCE_C;
     fname_s = builddir / relative(fname_s, srcbase);
     fname_s = fname_s.replace_extension(".o");
-#ifndef NDEBUG
-    cerr << " --> " << fname_s << endl;
-#endif
     if (!exists(fname_s)) {
         throw runtime_error("No such file: " + fname_s.string());
     }
@@ -28,21 +22,30 @@ void BuildAnalyzer::AnalyzeObject(path fname_s) {
         SectionType sectionType = GetSectionType(shname);
         if (sectionType != SECTION_OTHER) {
             sizes[sectionType][sourceType] += (hdr.sh_size + 3) & ~3;
-            for (unsigned & word : elf.ReadSectionData<unsigned>(hdr)) {
+            auto data = elf.ReadSectionData<unsigned>(hdr);
+#ifndef NDEBUG
+            unordered_set<unsigned> unique_addrs;
+#endif
+            for (const auto & word : data) {
                 if (word == 0) {
                     continue; // might be a relocation
                 }
-                for (auto & phdr : program.GetProgramHeaders()) {
-                    if (phdr.p_vaddr <= word && word < phdr.p_vaddr + phdr.p_memsz) {
+                if (find_if(program.GetProgramHeaders().cbegin(), program.GetProgramHeaders().cend(), [&word](const auto & phdr) {
+                    return phdr.p_vaddr <= word && word < phdr.p_vaddr + phdr.p_memsz;
+                }) != program.GetProgramHeaders().cend()) {
 #ifndef NDEBUG
-                        if (version == "") {
-                            cerr << "hardcoded ichneumon pointer to " << hex << word << endl;
-                        }
+                    unique_addrs.insert(word);
 #endif
-                        n_hardcoded++;
-                    }
+                    n_hardcoded++;
                 }
             }
+#ifndef NDEBUG
+            if (!version.empty()) {
+                for (const auto & word : unique_addrs) {
+                    cerr << "hardcoded " << version << " pointer to " << hex << word << endl;
+                }
+            }
+#endif
         } else if (hdr.sh_type == SHT_RELA) {
             n_relocations += elf.GetSectionElementCount<Elf32_Rela>(hdr);
         }
@@ -75,7 +78,7 @@ BuildAnalyzer::BuildAnalyzer(path &_basedir, path &_subdir, string &_version) :
     if (globber.size() == 0) {
         throw runtime_error("unable to find an ELF file with section data");
     }
-    program.open(globber[0]);
+    program.open(globber[0], Elf32File::sections | Elf32File::programs);
 }
 
 BuildAnalyzer &BuildAnalyzer::operator()() {
