@@ -11,7 +11,7 @@
 #include "sys/string.h"
 #include "msgdata.h"
 
-const u16 _021000BC[POCKETS_COUNT] = {
+static const u16 sPocketCounts[POCKETS_COUNT] = {
     NUM_BAG_ITEMS,
     NUM_BAG_MEDICINE,
     NUM_BAG_BALLS,
@@ -22,7 +22,7 @@ const u16 _021000BC[POCKETS_COUNT] = {
     NUM_BAG_KEY_ITEMS,
 };
 
-const u16 _021000CC[] = {
+static const u16 sTMHMMoves[] = {
     MOVE_FOCUS_PUNCH,                  // TM01
     MOVE_DRAGON_CLAW,                  // TM02
     MOVE_WATER_PULSE,                  // TM03
@@ -125,7 +125,7 @@ const u16 _021000CC[] = {
     MOVE_ROCK_CLIMB,                   // HM08
 };
 
-const u16 _02100194[][4] = {
+static const u16 sItemNarcIds[][4] = {
     { NARC_item_data_item_data_00000000_bin, NARC_item_icon_item_icon_793_NCGR, NARC_item_icon_item_icon_794_NCLR, AGB_ITEM_NONE }, // ITEM_NONE
     { NARC_item_data_item_data_00000001_bin, NARC_item_icon_item_icon_002_NCGR, NARC_item_icon_item_icon_003_NCLR, AGB_ITEM_MASTER_BALL }, // ITEM_MASTER_BALL
     { NARC_item_data_item_data_00000002_bin, NARC_item_icon_item_icon_004_NCGR, NARC_item_icon_item_icon_005_NCLR, AGB_ITEM_ULTRA_BALL }, // ITEM_ULTRA_BALL
@@ -672,10 +672,10 @@ void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, u32 heap
         return;
     }
 
-    buf = AllocFromHeap(heap_id, _021000BC[pocket] * sizeof(ITEM_SLOT));
+    buf = AllocFromHeap(heap_id, sPocketCounts[pocket] * sizeof(ITEM_SLOT));
 
     j = 0;
-    for (i = 0; i < _021000BC[pocket]; i++) {
+    for (i = 0; i < sPocketCounts[pocket]; i++) {
         if (from != i) {
             if (to == j) {
                 buf[j] = slots[from];
@@ -686,11 +686,11 @@ void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, u32 heap
         }
     }
 
-    if (to == _021000BC[pocket] - 1) {
+    if (to == sPocketCounts[pocket] - 1) {
         buf[j] = slots[from];
     }
 
-    for (j = 0; j < _021000BC[pocket]; j++) {
+    for (j = 0; j < sPocketCounts[pocket]; j++) {
         slots[j] = buf[j];
     }
 
@@ -701,7 +701,7 @@ int GetItemIndexMapping(u16 itemId, int attrNo) {
     switch (attrNo) {
     case ITEMNARC_PARAM:
         if (itemId != ITEM_NONE && itemId != 0xFFFF) {
-            return _02100194[itemId][ITEMNARC_PARAM];
+            return sItemNarcIds[itemId][ITEMNARC_PARAM];
         }
         break;
     case ITEMNARC_NCGR:
@@ -710,7 +710,7 @@ int GetItemIndexMapping(u16 itemId, int attrNo) {
         } else if (itemId == 0xFFFF) {
             return NARC_item_icon_item_icon_795_NCGR;
         } else {
-            return _02100194[itemId][ITEMNARC_NCGR];
+            return sItemNarcIds[itemId][ITEMNARC_NCGR];
         }
     case ITEMNARC_NCLR:
         if (itemId == ITEM_NONE) {
@@ -718,11 +718,11 @@ int GetItemIndexMapping(u16 itemId, int attrNo) {
         } else if (itemId == 0xFFFF) {
             return NARC_item_icon_item_icon_796_NCLR;
         } else {
-            return _02100194[itemId][ITEMNARC_NCLR];
+            return sItemNarcIds[itemId][ITEMNARC_NCLR];
         }
     case ITEMNARC_AGBCODE:
         if (itemId != ITEM_NONE && itemId != 0xFFFF) {
-            return _02100194[itemId][ITEMNARC_AGBCODE];
+            return sItemNarcIds[itemId][ITEMNARC_AGBCODE];
         }
         break;
     }
@@ -734,7 +734,7 @@ u16 UpConvertItemId_Gen3to4(u16 agbcode) {
     u16 ntrcode;
 
     for (ntrcode = ITEM_MIN; ntrcode <= ITEM_MAX; ntrcode++) {
-        if (agbcode == _02100194[ntrcode][ITEMNARC_AGBCODE]) {
+        if (agbcode == sItemNarcIds[ntrcode][ITEMNARC_AGBCODE]) {
             return ntrcode;
         }
     }
@@ -756,11 +756,11 @@ void *LoadItemDataOrGfx(u16 itemId, int attrno, u32 heap_id) {
     }
     switch (attrno) {
     case ITEMNARC_PARAM:
-        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_data, _02100194[itemId][ITEMNARC_PARAM], heap_id);
+        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_data, sItemNarcIds[itemId][ITEMNARC_PARAM], heap_id);
     case ITEMNARC_NCGR:
-        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_icon, _02100194[itemId][ITEMNARC_NCGR], heap_id);
+        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_icon, sItemNarcIds[itemId][ITEMNARC_NCGR], heap_id);
     case ITEMNARC_NCLR:
-        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_icon, _02100194[itemId][ITEMNARC_NCLR], heap_id);
+        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_icon, sItemNarcIds[itemId][ITEMNARC_NCLR], heap_id);
     }
 
     return NULL;
@@ -934,14 +934,14 @@ u16 TMHMGetMove(u16 itemId) {
     }
 
     itemId -= ITEM_TM01;
-    return _021000CC[itemId];
+    return sTMHMMoves[itemId];
 }
 
 BOOL MoveIsHM(u16 moveId) {
     u8 i;
 
     for (i = 0; i < NUM_HMS; i++) {
-        if (_021000CC[i + ITEM_HM01 - ITEM_TM01] == moveId) {
+        if (sTMHMMoves[i + ITEM_HM01 - ITEM_TM01] == moveId) {
             return TRUE;
         }
     }

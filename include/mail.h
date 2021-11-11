@@ -14,12 +14,12 @@ union MailPatternData
 
 typedef struct Mail
 {
-    u32 author_otId; // author otid
-    u8 author_gender; // author gender
-    u8 author_language; // language
-    u8 author_version; // version
-    u8 mail_type; // mail type
-    u16 author_name[OT_NAME_LENGTH + 1]; // author name
+    u32 author_otId;
+    u8 author_gender;
+    u8 author_language;
+    u8 author_version;
+    u8 mail_type;
+    u16 author_name[OT_NAME_LENGTH + 1];
     union MailPatternData unk_18[3];
     u8 padding_1E[2];
     MAIL_MESSAGE unk_20[3];

@@ -151,8 +151,6 @@ BOOL SealCase_CheckSealQuantity(const SEALCASE *sealCase, int sealId, s16 quanti
             return FALSE;
         }
     }
-
-    return TRUE;
 }
 
 int SealCase_CountUniqueSeals(const SEALCASE *sealCase) {
