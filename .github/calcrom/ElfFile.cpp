@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cassert>
 #include <algorithm>
+#include <cstring>
 #include "ElfFile.h"
 
 void Elf32File::ReadElfHeaderAndVerify() {
@@ -13,17 +14,30 @@ void Elf32File::ReadElfHeaderAndVerify() {
     handle.read((char*)&ehdr + EI_NIDENT, sizeof(ehdr) - EI_NIDENT);
     assert(ehdr.e_shentsize == sizeof(Elf32_Shdr));
 }
+
 void Elf32File::ReadSectionHeaders() {
+    assert(shdr.empty());
     shdr.resize(ehdr.e_shnum);
     handle.seekg(ehdr.e_shoff);
     handle.read((char*)shdr.data(), ehdr.e_shnum * ehdr.e_shentsize);
 }
+
+void Elf32File::ReadProgramHeaders() {
+    assert(phdr.empty());
+    phdr.resize(ehdr.e_phnum);
+    handle.seekg(ehdr.e_phoff);
+    handle.read((char*)phdr.data(), ehdr.e_phnum * ehdr.e_phentsize);
+}
+
 void Elf32File::ReadShstrtab() {
+    assert(shstrtab.empty());
     shstrtab.resize(shdr[ehdr.e_shstrndx].sh_size);
     handle.seekg(shdr[ehdr.e_shstrndx].sh_offset);
     handle.read((char*)shstrtab.data(), shdr[ehdr.e_shstrndx].sh_size);
 }
+
 void Elf32File::ReadStrtab() {
+    assert(strtab.empty());
     int i;
     for (i = 1; i < ehdr.e_shnum; i++) {
         if (i == ehdr.e_shstrndx) continue;
@@ -34,7 +48,9 @@ void Elf32File::ReadStrtab() {
     handle.seekg(shdr[i].sh_offset);
     handle.read((char*)strtab.data(), shdr[i].sh_size);
 }
+
 void Elf32File::ReadSymtab() {
+    assert(symtab.empty());
     auto sec = find_if(shdr.begin(), shdr.end(), [](Elf32_Shdr const& candidate) { return candidate.sh_type == SHT_SYMTAB; });
     assert(sec != shdr.end());
     symtab.resize(sec->sh_size);
@@ -42,10 +58,19 @@ void Elf32File::ReadSymtab() {
     handle.read((char*)symtab.data(), sec->sh_size);
 }
 
-Elf32File::Elf32File(path const& filename, bool read_syms) : handle(filename, ios::binary) {
+Elf32File::Elf32File(path const& filename, bool read_syms) {
+    open(filename, read_syms);
+}
+
+void Elf32File::open(path const& filename, bool read_syms) {
+    if (handle.is_open()) {
+        close();
+    }
+    handle.open(filename, ios::binary);
     assert(handle.good());
     ReadElfHeaderAndVerify();
     ReadSectionHeaders();
+    ReadProgramHeaders();
     ReadShstrtab();
     if (read_syms) {
         ReadStrtab();
@@ -53,12 +78,31 @@ Elf32File::Elf32File(path const& filename, bool read_syms) : handle(filename, io
     }
 }
 
-Elf32File::~Elf32File() {
+void Elf32File::close() {
+    assert(is_open());
     handle.close();
+    memset(&ehdr, 0, sizeof(ehdr));
+    shdr.clear();
+    symtab.clear();
+    phdr.clear();
+    shstrtab.clear();
+    strtab.clear();
+}
+
+bool Elf32File::is_open() const {
+    return handle.is_open();
+}
+
+Elf32File::~Elf32File() {
+    close();
 }
 
 vector<Elf32_Shdr> &Elf32File::GetSectionHeaders() {
     return shdr;
+}
+
+vector<Elf32_Phdr> &Elf32File::GetProgramHeaders() {
+    return phdr;
 }
 
 string Elf32File::GetSectionName(const Elf32_Shdr &section) const {

@@ -3691,7 +3691,7 @@ _037FCEC4:
 	bx lr
 	.align 2, 0
 _037FCEE4: .word SNDi_Work + 0x540
-_037FCEE8: .word 0x03807B8C
+_037FCEE8: .word SNDi_Work + 0x780
 	arm_func_end SND_SeqInit
 
 	arm_func_start SND_SeqMain
@@ -3930,7 +3930,7 @@ _037FD214:
 	.align 2, 0
 _037FD21C: .word SNDi_Work + 0x540
 _037FD220: .word SNDi_SharedWork
-_037FD224: .word 0x03807B8C
+_037FD224: .word SNDi_Work + 0x780
 	arm_func_end SND_PrepareSeq
 
 	arm_func_start ReadByte
@@ -3952,7 +3952,7 @@ _037FD258:
 	ldr r0, _037FD280 ; =sMmlPrintEnable
 	ldr r1, [r5, #0x28]
 	ldr r2, [r0, #4]
-	ldr r0, _037FD284 ; =SNDi_Work + 0x780
+	ldr r0, _037FD284 ; =seqCache + 0x8
 	sub r2, r4, r2
 	ldrb r0, [r0, r2]
 	add r1, r1, #1
@@ -3961,7 +3961,7 @@ _037FD258:
 	bx lr
 	.align 2, 0
 _037FD280: .word sMmlPrintEnable
-_037FD284: .word 0x038073F8
+_037FD284: .word seqCache + 0x8
 	arm_func_end ReadByte
 
 	arm_func_start SND_StartPreparedSeq
@@ -4593,7 +4593,7 @@ GetPlayerTrack: ; 0x037FDA14
 	addne r0, r0, r1, lsl #6
 	bx lr
 	.align 2, 0
-_037FDA3C: .word 0x03807B8C
+_037FDA3C: .word SNDi_Work + 0x780
 	arm_func_end GetPlayerTrack
 
 	arm_func_start ClosePlayerTrack
@@ -4621,7 +4621,7 @@ _037FDA8C:
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
 	.align 2, 0
-_037FDA94: .word 0x03807B8C
+_037FDA94: .word SNDi_Work + 0x780
 	arm_func_end ClosePlayerTrack
 
 	arm_func_start FinishPlayer
@@ -5633,7 +5633,7 @@ _037FE84C:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_037FE85C: .word 0x03807B8C
+_037FE85C: .word SNDi_Work + 0x780
 	arm_func_end AllocTrack
 
 	arm_func_start SetTrackMute

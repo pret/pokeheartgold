@@ -1,6 +1,10 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public OSi_IrqThreadQueue
+	.public OSi_IrqCallbackInfo
+	.public OS_InitLock__isInitialized
+
 	.text
 
 	arm_func_start OS_IrqHandler
@@ -47,7 +51,7 @@ _037F8550:
 	mov ip, r0
 	cmp ip, #0
 	bne _037F8550
-	ldr ip, _037F8654 ; =0x03806BA4
+	ldr ip, _037F8654 ; =OSi_IrqThreadQueue
 	str r3, [ip]
 	str r3, [ip, #4]
 	ldr ip, _037F8658 ; =OSi_ThreadInfo
@@ -111,7 +115,7 @@ _037F8600:
 	stmda sp!, {r0, r1, r2, r3, ip, lr}
 	ldmia sp!, {pc}
 	.align 2, 0
-_037F8654: .word 0x03806BA4
+_037F8654: .word OSi_IrqThreadQueue
 _037F8658: .word OSi_ThreadInfo
 	arm_func_end OS_IrqHandler_ThreadSwitch
 
@@ -127,7 +131,7 @@ OSi_IrqCallback: ; 0x037F8660
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #0xc
 	mul r5, r0, r1
-	ldr r2, _037F86D8 ; =0x03806BAC
+	ldr r2, _037F86D8 ; =OSi_IrqCallbackInfo
 	ldr r3, _037F86DC ; =OSi_IrqCallbackInfoIndex
 	mov r4, r0, lsl #1
 	ldr r1, [r2, r5]
@@ -138,13 +142,13 @@ OSi_IrqCallback: ; 0x037F8660
 	cmp r1, #0
 	mov r4, r4, lsl r3
 	beq _037F86A8
-	ldr r0, _037F86E0 ; =0x03806BB4
+	ldr r0, _037F86E0 ; =OSi_IrqCallbackInfo + 0x8
 	ldr r0, [r0, r5]
 	mov lr, pc
 	bx r1
 _037F86A8:
 	ldr r2, _037F86E4 ; =0x0380FFF8
-	ldr r0, _037F86E8 ; =0x03806BB0
+	ldr r0, _037F86E8 ; =OSi_IrqCallbackInfo + 0x4
 	ldr r1, [r2]
 	orr r1, r1, r4
 	str r1, [r2]
@@ -157,11 +161,11 @@ _037F86D0:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_037F86D8: .word 0x03806BAC
+_037F86D8: .word OSi_IrqCallbackInfo
 _037F86DC: .word OSi_IrqCallbackInfoIndex
-_037F86E0: .word 0x03806BB4
+_037F86E0: .word OSi_IrqCallbackInfo + 0x8
 _037F86E4: .word 0x0380FFF8
-_037F86E8: .word 0x03806BB0
+_037F86E8: .word OSi_IrqCallbackInfo + 0x4
 	arm_func_end OSi_IrqCallback
 
 	arm_func_start OSi_IrqDma0
@@ -240,7 +244,7 @@ _037F8768: .word OSi_IrqCallback
 OSi_IrqVBlank: ; 0x037F876C
 	stmdb sp!, {r3, lr}
 	ldr r2, _037F87B0 ; =0x027FFC3C
-	ldr r0, _037F87B4 ; =0x03806BAC
+	ldr r0, _037F87B4 ; =OSi_IrqCallbackInfo
 	ldr r1, [r2]
 	ldr r3, [r0, #0x60]
 	add r0, r1, #1
@@ -258,7 +262,7 @@ _037F8798:
 	bx lr
 	.align 2, 0
 _037F87B0: .word 0x027FFC3C
-_037F87B4: .word 0x03806BAC
+_037F87B4: .word OSi_IrqCallbackInfo
 _037F87B8: .word 0x0380FFF8
 	arm_func_end OSi_IrqVBlank
 
@@ -266,7 +270,7 @@ _037F87B8: .word 0x0380FFF8
 
 	arm_func_start OS_InitIrqTable
 OS_InitIrqTable: ; 0x037F87BC
-	ldr r0, _037F87D8 ; =0x03806BA4
+	ldr r0, _037F87D8 ; =OSi_IrqThreadQueue
 	mov r2, #0
 	str r2, [r0, #4]
 	ldr r1, _037F87DC ; =0x027FFC3C
@@ -274,7 +278,7 @@ OS_InitIrqTable: ; 0x037F87BC
 	str r2, [r1]
 	bx lr
 	.align 2, 0
-_037F87D8: .word 0x03806BA4
+_037F87D8: .word OSi_IrqThreadQueue
 _037F87DC: .word 0x027FFC3C
 	arm_func_end OS_InitIrqTable
 
@@ -284,8 +288,8 @@ OS_SetIrqFunction: ; 0x037F87E0
 	ldr r4, _037F8870 ; =OS_IRQTable
 	mov sb, #0
 	mov r2, #0xc
-	ldr r5, _037F8874 ; =0x03806C0C
-	ldr r7, _037F8878 ; =0x03806BAC
+	ldr r5, _037F8874 ; =OSi_IrqCallbackInfo + 0x60
+	ldr r7, _037F8878 ; =OSi_IrqCallbackInfo
 	mov r8, sb
 	mov lr, sb
 	mov ip, #1
@@ -323,8 +327,8 @@ _037F8858:
 	bx lr
 	.align 2, 0
 _037F8870: .word OS_IRQTable
-_037F8874: .word 0x03806C0C
-_037F8878: .word 0x03806BAC
+_037F8874: .word OSi_IrqCallbackInfo + 0x60
+_037F8878: .word OSi_IrqCallbackInfo
 	arm_func_end OS_SetIrqFunction
 
 	arm_func_start OSi_EnterTimerCallback
@@ -332,23 +336,23 @@ OSi_EnterTimerCallback: ; 0x037F887C
 	stmdb sp!, {r4, lr}
 	mov r3, #0xc
 	mul r4, r0, r3
-	ldr ip, _037F88BC ; =0x03806BDC
-	ldr r3, _037F88C0 ; =0x03806BE4
+	ldr ip, _037F88BC ; =OSi_IrqCallbackInfo + 0x30
+	ldr r3, _037F88C0 ; =OSi_IrqCallbackInfo + 0x38
 	str r1, [ip, r4]
 	add r0, r0, #3
 	mov r1, #1
 	mov r0, r1, lsl r0
 	str r2, [r3, r4]
 	bl OS_EnableIrqMask
-	ldr r0, _037F88C4 ; =0x03806BE0
+	ldr r0, _037F88C4 ; =OSi_IrqCallbackInfo + 0x34
 	mov r1, #1
 	str r1, [r0, r4]
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_037F88BC: .word 0x03806BDC
-_037F88C0: .word 0x03806BE4
-_037F88C4: .word 0x03806BE0
+_037F88BC: .word OSi_IrqCallbackInfo + 0x30
+_037F88C0: .word OSi_IrqCallbackInfo + 0x38
+_037F88C4: .word OSi_IrqCallbackInfo + 0x34
 	arm_func_end OSi_EnterTimerCallback
 
 	arm_func_start OS_SetIrqMask
@@ -442,7 +446,7 @@ _037F89B8: .word 0x04000214
 	arm_func_start OS_InitLock
 OS_InitLock: ; 0x037F89BC
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _037F8A24 ; =0x03806C18
+	ldr r0, _037F8A24 ; =OS_InitLock__isInitialized
 	ldr r1, [r0]
 	cmp r1, #0
 	bne _037F8A1C
@@ -471,7 +475,7 @@ _037F8A1C:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_037F8A24: .word 0x03806C18
+_037F8A24: .word OS_InitLock__isInitialized
 _037F8A28: .word 0x027FFFF0
 _037F8A2C: .word 0x027FFFB8
 	arm_func_end OS_InitLock

@@ -15,18 +15,24 @@ class Elf32File {
     Elf32_Ehdr ehdr;
     vector<Elf32_Shdr> shdr;
     vector<Elf32_Sym> symtab;
+    vector<Elf32_Phdr> phdr;
     vector<char> shstrtab;
     vector<char> strtab;
 
 private:
     void ReadElfHeaderAndVerify();
     void ReadSectionHeaders();
+    void ReadProgramHeaders();
     void ReadShstrtab();
     void ReadStrtab();
     void ReadSymtab();
 public:
+    Elf32File() = default;
     Elf32File(path const& filename, bool read_syms = false);
     ~Elf32File();
+    void open(path const& filename, bool read_syms = false);
+    void close();
+    bool is_open() const;
     template <typename _V>
     vector<_V> ReadSectionData(const Elf32_Shdr &_shdr) {
         vector<_V> ret;
@@ -40,6 +46,7 @@ public:
         return (_shdr.sh_size + sizeof(_V) - 1) / sizeof(_V);
     }
     vector<Elf32_Shdr>& GetSectionHeaders();
+    vector<Elf32_Phdr>& GetProgramHeaders();
     string GetSectionName(const Elf32_Shdr &section) const;
     string GetSymbolName(const Elf32_Sym &symbol) const;
     Elf32_Sym &FindSymbol(const string &name);

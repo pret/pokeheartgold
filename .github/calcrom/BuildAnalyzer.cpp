@@ -32,8 +32,13 @@ void BuildAnalyzer::AnalyzeObject(path fname_s) {
                 if (word == 0) {
                     continue; // might be a relocation
                 }
-                for (auto & _pair : ranges) {
-                    if (_pair.first <= word && word < _pair.second) {
+                for (auto & phdr : program.GetProgramHeaders()) {
+                    if (phdr.p_vaddr <= word && word < phdr.p_vaddr + phdr.p_memsz) {
+#ifndef NDEBUG
+                        if (version == "") {
+                            cerr << "hardcoded ichneumon pointer to " << hex << word << endl;
+                        }
+#endif
                         n_hardcoded++;
                     }
                 }
@@ -44,15 +49,21 @@ void BuildAnalyzer::AnalyzeObject(path fname_s) {
     }
 }
 
-BuildAnalyzer::BuildAnalyzer(path &_basedir, path &_subdir, string &_version) :
-    basedir(_basedir),
-    subdir(_subdir),
-    version(_version),
-    ranges(3)
-{
+void BuildAnalyzer::reset() {
+    memset(sizes, 0, sizeof(sizes));
     if (!version.empty()) {
         sizes[SECTION_TEXT][SOURCE_ASM] = 0x800; // libsyscall.a
     }
+    n_hardcoded = 0;
+    n_relocations = 0;
+}
+
+BuildAnalyzer::BuildAnalyzer(path &_basedir, path &_subdir, string &_version) :
+    basedir(_basedir),
+    subdir(_subdir),
+    version(_version)
+{
+    reset();
     srcbase = basedir / subdir;
     builddir = srcbase / "build" / version;
     if (!exists(srcbase)) {
@@ -60,33 +71,30 @@ BuildAnalyzer::BuildAnalyzer(path &_basedir, path &_subdir, string &_version) :
     }
 
     string elfpat = builddir + "/*.elf";
-    bool elf_found = false;
-    for (char const * & fname : Glob(elfpat, GLOB_TILDE | GLOB_BRACE | GLOB_NOSORT)) {
-        Elf32File elf(fname, true);
-        ranges[0] = {elf.at("SDK_STATIC_START").st_value, elf.at("SDK_SECTION_ARENA_START").st_value};
-        if (version == "") {
-            ranges[1] = {elf.at("SDK_AUTOLOAD_MAIN_START").st_value, elf.at("SDK_AUTOLOAD_MAIN_BSS_END").st_value};
-            ranges[2] = {elf.at("SDK_AUTOLOAD_WRAM_START").st_value, elf.at("SDK_AUTOLOAD_WRAM_BSS_END").st_value};
-        } else {
-            ranges[1] = {elf.at("SDK_AUTOLOAD_ITCM_START").st_value, elf.at("SDK_AUTOLOAD_ITCM_BSS_END").st_value};
-            ranges[2] = {elf.at("SDK_AUTOLOAD_DTCM_START").st_value, elf.at("SDK_AUTOLOAD_DTCM_BSS_END").st_value};
-        }
-        elf_found = true;
-    }
-    if (!elf_found) {
+    Glob globber(elfpat, GLOB_TILDE | GLOB_BRACE | GLOB_NOSORT);
+    if (globber.size() == 0) {
         throw runtime_error("unable to find an ELF file with section data");
     }
+    program.open(globber[0]);
 }
 
 BuildAnalyzer &BuildAnalyzer::operator()() {
+    if (analyzed) {
+        reset();
+    }
     string pattern = srcbase.string() + "/{src,asm,lib/{src,asm},lib/{!syscall}/{src,asm}}/*.{c,s,cpp}";
     for (char const * & fname : Glob(pattern, GLOB_TILDE | GLOB_BRACE | GLOB_NOSORT)) {
         AnalyzeObject(fname);
     }
+    analyzed = true;
     return *this;
 }
 
 ostream &operator<<(ostream &strm, BuildAnalyzer &_this) {
+    if (!_this.analyzed) {
+        strm << "Haven't analyzed this ROM, please call the BuildAnalyzer instance" << endl;
+        return strm;
+    }
 
     strm << "Analysis of " << (_this.version.empty() ? _this.subdir.string() : _this.version) << " binary:" << endl;
     // Report code
