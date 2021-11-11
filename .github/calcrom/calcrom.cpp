@@ -101,5 +101,4 @@ int main(int argc, char ** argv)
         cerr << "Unhandled exception: " << e.what() << endl;
         return 1;
     }
-    return 0;
 }

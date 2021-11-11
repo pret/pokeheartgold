@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cassert>
+#include <algorithm>
 #include "ElfFile.h"
 
 void Elf32File::ReadElfHeaderAndVerify() {

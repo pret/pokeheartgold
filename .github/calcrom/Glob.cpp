@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "Glob.h"
 
 Glob::Glob(const char *pattern, int _glob_flags) : glob_flags(_glob_flags) {

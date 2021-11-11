@@ -1,12 +1,40 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public __sinit__
+	.public OSi_ThreadInfo
 
 	.bss
 
 	; msl
 _021E5390:
-	.space 0x558
+	.space 0x10
+
+_021E53A0:
+	.space 0x100
+
+_021E54A0:
+	.space 0x24
+
+_021E54C4:
+	.space 0x24
+
+_021E54E8:
+	.space 0x48
+
+_021E5530:
+	.space 0x60
+
+_021E5590:
+	.space 0x330
+
+_021E58C0:
+	.space 0x4
+
+_021E58C4:
+	.space 0x20
+
+_ZSt13__new_handler:
+	.space 0x4
 
 __global_destructor_chain: ; 0x021E58E8
 	.space 4
@@ -20,30 +48,30 @@ abort: ; 0x020E47C0
 	stmdb sp!, {r3, lr}
 	mov r0, #1
 	bl signal
-	ldr r1, _020E47E0 ; =0x021E5390
+	ldr r1, _020E47E0 ; =_021E5390
 	mov r0, #1
 	str r0, [r1, #0xc]
 	bl exit
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020E47E0: .word 0x021E5390
+_020E47E0: .word _021E5390
 	arm_func_end abort
 
 	arm_func_start exit
 exit: ; 0x020E47E4
 	stmdb sp!, {r4, lr}
-	ldr r1, _020E482C ; =0x021E5390
+	ldr r1, _020E482C ; =_021E5390
 	mov r4, r0
 	ldr r0, [r1, #0xc]
 	cmp r0, #0
 	bne _020E4820
 	bl __destroy_global_chain
-	ldr r0, _020E482C ; =0x021E5390
+	ldr r0, _020E482C ; =_021E5390
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _020E4820
 	blx r0
-	ldr r0, _020E482C ; =0x021E5390
+	ldr r0, _020E482C ; =_021E5390
 	mov r1, #0
 	str r1, [r0, #4]
 _020E4820:
@@ -51,55 +79,55 @@ _020E4820:
 	bl __exit
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020E482C: .word 0x021E5390
+_020E482C: .word _021E5390
 	arm_func_end exit
 
 	arm_func_start __exit
 __exit: ; 0x020E4830
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _020E4940 ; =0x021E54E8
+	ldr r0, _020E4940 ; =_021E54E8
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020E4868
-	ldr r0, _020E4944 ; =0x021E16A0
-	ldr r1, _020E4948 ; =0x021E54A0
+	ldr r0, _020E4944 ; =OSi_ThreadInfo
+	ldr r1, _020E4948 ; =_021E54A0
 	ldr r2, [r0, #4]
-	ldr r0, _020E494C ; =0x021E54C4
+	ldr r0, _020E494C ; =_021E54C4
 	ldr r3, [r2, #0x6c]
 	mov r2, #1
 	str r3, [r1]
 	str r2, [r0]
 	b _020E48C0
 _020E4868:
-	ldr r0, _020E4944 ; =0x021E16A0
-	ldr r1, _020E4948 ; =0x021E54A0
+	ldr r0, _020E4944 ; =OSi_ThreadInfo
+	ldr r1, _020E4948 ; =_021E54A0
 	ldr r0, [r0, #4]
 	ldr r1, [r1]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E4898
-	ldr r0, _020E494C ; =0x021E54C4
+	ldr r0, _020E494C ; =_021E54C4
 	ldr r1, [r0]
 	add r1, r1, #1
 	str r1, [r0]
 	b _020E48C0
 _020E4898:
-	ldr r0, _020E4940 ; =0x021E54E8
+	ldr r0, _020E4940 ; =_021E54E8
 	bl OS_LockMutex
-	ldr r0, _020E4944 ; =0x021E16A0
-	ldr r1, _020E4948 ; =0x021E54A0
+	ldr r0, _020E4944 ; =OSi_ThreadInfo
+	ldr r1, _020E4948 ; =_021E54A0
 	ldr r2, [r0, #4]
-	ldr r0, _020E494C ; =0x021E54C4
+	ldr r0, _020E494C ; =_021E54C4
 	ldr r3, [r2, #0x6c]
 	mov r2, #1
 	str r3, [r1]
 	str r2, [r0]
 _020E48C0:
-	ldr r4, _020E4950 ; =0x021E5390
+	ldr r4, _020E4950 ; =_021E5390
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	ble _020E48F4
-	ldr r5, _020E4954 ; =0x021E53A0
+	ldr r5, _020E4954 ; =_021E53A0
 _020E48D4:
 	ldr r0, [r4, #8]
 	sub r1, r0, #1
@@ -110,20 +138,20 @@ _020E48D4:
 	cmp r0, #0
 	bgt _020E48D4
 _020E48F4:
-	ldr r0, _020E494C ; =0x021E54C4
+	ldr r0, _020E494C ; =_021E54C4
 	ldr r1, [r0]
 	subs r1, r1, #1
 	str r1, [r0]
 	bne _020E4910
-	ldr r0, _020E4940 ; =0x021E54E8
+	ldr r0, _020E4940 ; =_021E54E8
 	bl OS_UnlockMutex
 _020E4910:
-	ldr r0, _020E4950 ; =0x021E5390
+	ldr r0, _020E4950 ; =_021E5390
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _020E4930
 	blx r0
-	ldr r0, _020E4950 ; =0x021E5390
+	ldr r0, _020E4950 ; =_021E5390
 	mov r1, #0
 	str r1, [r0]
 _020E4930:
@@ -132,12 +160,12 @@ _020E4930:
 	bl _ExitProcess
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020E4940: .word 0x021E54E8
-_020E4944: .word 0x021E16A0
-_020E4948: .word 0x021E54A0
-_020E494C: .word 0x021E54C4
-_020E4950: .word 0x021E5390
-_020E4954: .word 0x021E53A0
+_020E4940: .word _021E54E8
+_020E4944: .word OSi_ThreadInfo
+_020E4948: .word _021E54A0
+_020E494C: .word _021E54C4
+_020E4950: .word _021E5390
+_020E4954: .word _021E53A0
 	arm_func_end __exit
 
 	arm_func_start nan
@@ -391,31 +419,31 @@ fread: ; 0x020E4C24
 	movne r6, #5
 	mov r0, #0x18
 	mul r4, r6, r0
-	ldr r5, _020E4D20 ; =0x021E54E8
+	ldr r5, _020E4D20 ; =_021E54E8
 	mov sb, r1
 	add r0, r5, r4
 	mov r8, r2
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020E4C88
-	ldr r0, _020E4D24 ; =0x021E16A0
-	ldr r2, _020E4D28 ; =0x021E54A0
+	ldr r0, _020E4D24 ; =OSi_ThreadInfo
+	ldr r2, _020E4D28 ; =_021E54A0
 	ldr r1, [r0, #4]
-	ldr r0, _020E4D2C ; =0x021E54C4
+	ldr r0, _020E4D2C ; =_021E54C4
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
 	str r1, [r0, r6, lsl #2]
 	b _020E4CE0
 _020E4C88:
-	ldr r0, _020E4D24 ; =0x021E16A0
-	ldr r1, _020E4D28 ; =0x021E54A0
+	ldr r0, _020E4D24 ; =OSi_ThreadInfo
+	ldr r1, _020E4D28 ; =_021E54A0
 	ldr r0, [r0, #4]
 	ldr r1, [r1, r6, lsl #2]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E4CB8
-	ldr r1, _020E4D2C ; =0x021E54C4
+	ldr r1, _020E4D2C ; =_021E54C4
 	ldr r0, [r1, r6, lsl #2]
 	add r0, r0, #1
 	str r0, [r1, r6, lsl #2]
@@ -423,10 +451,10 @@ _020E4C88:
 _020E4CB8:
 	add r0, r5, r4
 	bl OS_LockMutex
-	ldr r0, _020E4D24 ; =0x021E16A0
-	ldr r2, _020E4D28 ; =0x021E54A0
+	ldr r0, _020E4D24 ; =OSi_ThreadInfo
+	ldr r2, _020E4D28 ; =_021E54A0
 	ldr r1, [r0, #4]
-	ldr r0, _020E4D2C ; =0x021E54C4
+	ldr r0, _020E4D2C ; =_021E54C4
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
@@ -437,7 +465,7 @@ _020E4CE0:
 	mov r2, r8
 	mov r3, r7
 	bl __fread
-	ldr r1, _020E4D2C ; =0x021E54C4
+	ldr r1, _020E4D2C ; =_021E54C4
 	mov r7, r0
 	ldr r0, [r1, r6, lsl #2]
 	subs r0, r0, #1
@@ -450,10 +478,10 @@ _020E4D14:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _020E4D1C: .word _02110FCC
-_020E4D20: .word 0x021E54E8
-_020E4D24: .word 0x021E16A0
-_020E4D28: .word 0x021E54A0
-_020E4D2C: .word 0x021E54C4
+_020E4D20: .word _021E54E8
+_020E4D24: .word OSi_ThreadInfo
+_020E4D28: .word _021E54A0
+_020E4D2C: .word _021E54C4
 	arm_func_end fread
 
 	arm_func_start __fread
@@ -991,7 +1019,7 @@ _ftell: ; 0x020E5484
 	cmp r1, #0
 	beq _020E54C4
 _020E54B0:
-	ldr r0, _020E54FC ; =0x021E58C0
+	ldr r0, _020E54FC ; =_021E58C0
 	mov r1, #0x28
 	str r1, [r0]
 	sub r0, r1, #0x29
@@ -1012,7 +1040,7 @@ _020E54C4:
 	subhs r0, r0, r1
 	bx lr
 	.align 2, 0
-_020E54FC: .word 0x021E58C0
+_020E54FC: .word _021E58C0
 	arm_func_end _ftell
 
 	arm_func_start ftell
@@ -1034,29 +1062,29 @@ ftell: ; 0x020E5500
 _020E5538:
 	mov r0, #0x18
 	mul r4, r6, r0
-	ldr r5, _020E560C ; =0x021E54E8
+	ldr r5, _020E560C ; =_021E54E8
 	add r0, r5, r4
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020E5578
-	ldr r0, _020E5610 ; =0x021E16A0
-	ldr r2, _020E5614 ; =0x021E54A0
+	ldr r0, _020E5610 ; =OSi_ThreadInfo
+	ldr r2, _020E5614 ; =_021E54A0
 	ldr r1, [r0, #4]
-	ldr r0, _020E5618 ; =0x021E54C4
+	ldr r0, _020E5618 ; =_021E54C4
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
 	str r1, [r0, r6, lsl #2]
 	b _020E55D0
 _020E5578:
-	ldr r0, _020E5610 ; =0x021E16A0
-	ldr r1, _020E5614 ; =0x021E54A0
+	ldr r0, _020E5610 ; =OSi_ThreadInfo
+	ldr r1, _020E5614 ; =_021E54A0
 	ldr r0, [r0, #4]
 	ldr r1, [r1, r6, lsl #2]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E55A8
-	ldr r1, _020E5618 ; =0x021E54C4
+	ldr r1, _020E5618 ; =_021E54C4
 	ldr r0, [r1, r6, lsl #2]
 	add r0, r0, #1
 	str r0, [r1, r6, lsl #2]
@@ -1064,10 +1092,10 @@ _020E5578:
 _020E55A8:
 	add r0, r5, r4
 	bl OS_LockMutex
-	ldr r0, _020E5610 ; =0x021E16A0
-	ldr r2, _020E5614 ; =0x021E54A0
+	ldr r0, _020E5610 ; =OSi_ThreadInfo
+	ldr r2, _020E5614 ; =_021E54A0
 	ldr r1, [r0, #4]
-	ldr r0, _020E5618 ; =0x021E54C4
+	ldr r0, _020E5618 ; =_021E54C4
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
@@ -1075,7 +1103,7 @@ _020E55A8:
 _020E55D0:
 	mov r0, r7
 	bl _ftell
-	ldr r1, _020E5618 ; =0x021E54C4
+	ldr r1, _020E5618 ; =_021E54C4
 	mov r7, r0
 	ldr r0, [r1, r6, lsl #2]
 	subs r0, r0, #1
@@ -1090,10 +1118,10 @@ _020E55F8:
 _020E5600: .word _02110FCC
 _020E5604: .word _02111018
 _020E5608: .word _02111064
-_020E560C: .word 0x021E54E8
-_020E5610: .word 0x021E16A0
-_020E5614: .word 0x021E54A0
-_020E5618: .word 0x021E54C4
+_020E560C: .word _021E54E8
+_020E5610: .word OSi_ThreadInfo
+_020E5614: .word _021E54A0
+_020E5618: .word _021E54C4
 	arm_func_end ftell
 
 	arm_func_start _fseek
@@ -1110,7 +1138,7 @@ _fseek: ; 0x020E561C
 	ldreqb r1, [r5, #0xd]
 	cmpeq r1, #0
 	beq _020E5668
-	ldr r0, _020E5800 ; =0x021E58C0
+	ldr r0, _020E5800 ; =_021E58C0
 	mov r1, #0x28
 	str r1, [r0]
 	sub r0, r1, #0x29
@@ -1130,7 +1158,7 @@ _020E5668:
 	mov r0, #1
 	strb r0, [r5, #0xd]
 	mov r2, #0
-	ldr r0, _020E5800 ; =0x021E58C0
+	ldr r0, _020E5800 ; =_021E58C0
 	mov r1, #0x28
 	str r2, [r5, #0x28]
 	str r1, [r0]
@@ -1209,7 +1237,7 @@ _020E5778:
 	mov r0, #1
 	strb r0, [r5, #0xd]
 	mov r2, #0
-	ldr r0, _020E5800 ; =0x021E58C0
+	ldr r0, _020E5800 ; =_021E58C0
 	mov r1, #0x28
 	str r2, [r5, #0x28]
 	str r1, [r0]
@@ -1229,7 +1257,7 @@ _020E57F0:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_020E5800: .word 0x021E58C0
+_020E5800: .word _021E58C0
 	arm_func_end _fseek
 
 	arm_func_start fseek
@@ -1253,29 +1281,29 @@ fseek: ; 0x020E5804
 _020E5844:
 	mov r0, #0x18
 	mul r4, r6, r0
-	ldr r5, _020E5920 ; =0x021E54E8
+	ldr r5, _020E5920 ; =_021E54E8
 	add r0, r5, r4
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020E5884
-	ldr r0, _020E5924 ; =0x021E16A0
-	ldr r2, _020E5928 ; =0x021E54A0
+	ldr r0, _020E5924 ; =OSi_ThreadInfo
+	ldr r2, _020E5928 ; =_021E54A0
 	ldr r1, [r0, #4]
-	ldr r0, _020E592C ; =0x021E54C4
+	ldr r0, _020E592C ; =_021E54C4
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
 	str r1, [r0, r6, lsl #2]
 	b _020E58DC
 _020E5884:
-	ldr r0, _020E5924 ; =0x021E16A0
-	ldr r1, _020E5928 ; =0x021E54A0
+	ldr r0, _020E5924 ; =OSi_ThreadInfo
+	ldr r1, _020E5928 ; =_021E54A0
 	ldr r0, [r0, #4]
 	ldr r1, [r1, r6, lsl #2]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E58B4
-	ldr r1, _020E592C ; =0x021E54C4
+	ldr r1, _020E592C ; =_021E54C4
 	ldr r0, [r1, r6, lsl #2]
 	add r0, r0, #1
 	str r0, [r1, r6, lsl #2]
@@ -1283,10 +1311,10 @@ _020E5884:
 _020E58B4:
 	add r0, r5, r4
 	bl OS_LockMutex
-	ldr r0, _020E5924 ; =0x021E16A0
-	ldr r2, _020E5928 ; =0x021E54A0
+	ldr r0, _020E5924 ; =OSi_ThreadInfo
+	ldr r2, _020E5928 ; =_021E54A0
 	ldr r1, [r0, #4]
-	ldr r0, _020E592C ; =0x021E54C4
+	ldr r0, _020E592C ; =_021E54C4
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
@@ -1296,7 +1324,7 @@ _020E58DC:
 	mov r1, r8
 	mov r2, r7
 	bl _fseek
-	ldr r1, _020E592C ; =0x021E54C4
+	ldr r1, _020E592C ; =_021E54C4
 	mov r7, r0
 	ldr r0, [r1, r6, lsl #2]
 	subs r0, r0, #1
@@ -1311,10 +1339,10 @@ _020E590C:
 _020E5914: .word _02110FCC
 _020E5918: .word _02111018
 _020E591C: .word _02111064
-_020E5920: .word 0x021E54E8
-_020E5924: .word 0x021E16A0
-_020E5928: .word 0x021E54A0
-_020E592C: .word 0x021E54C4
+_020E5920: .word _021E54E8
+_020E5924: .word OSi_ThreadInfo
+_020E5928: .word _021E54A0
+_020E592C: .word _021E54C4
 	arm_func_end fseek
 
 	arm_func_start rewind
@@ -4003,39 +4031,39 @@ printf: ; 0x020E7D70
 	ldmgeia sp!, {r4, lr}
 	addge sp, sp, #0x10
 	bxge lr
-	ldr r0, _020E7E74 ; =0x021E5530
+	ldr r0, _020E7E74 ; =_021E5530
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020E7DCC
-	ldr r0, _020E7E78 ; =0x021E16A0
-	ldr r1, _020E7E7C ; =0x021E54A0
+	ldr r0, _020E7E78 ; =OSi_ThreadInfo
+	ldr r1, _020E7E7C ; =_021E54A0
 	ldr r2, [r0, #4]
-	ldr r0, _020E7E80 ; =0x021E54C4
+	ldr r0, _020E7E80 ; =_021E54C4
 	ldr r3, [r2, #0x6c]
 	mov r2, #1
 	str r3, [r1, #0xc]
 	str r2, [r0, #0xc]
 	b _020E7E24
 _020E7DCC:
-	ldr r0, _020E7E78 ; =0x021E16A0
-	ldr r1, _020E7E7C ; =0x021E54A0
+	ldr r0, _020E7E78 ; =OSi_ThreadInfo
+	ldr r1, _020E7E7C ; =_021E54A0
 	ldr r0, [r0, #4]
 	ldr r1, [r1, #0xc]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E7DFC
-	ldr r0, _020E7E80 ; =0x021E54C4
+	ldr r0, _020E7E80 ; =_021E54C4
 	ldr r1, [r0, #0xc]
 	add r1, r1, #1
 	str r1, [r0, #0xc]
 	b _020E7E24
 _020E7DFC:
-	ldr r0, _020E7E74 ; =0x021E5530
+	ldr r0, _020E7E74 ; =_021E5530
 	bl OS_LockMutex
-	ldr r0, _020E7E78 ; =0x021E16A0
-	ldr r1, _020E7E7C ; =0x021E54A0
+	ldr r0, _020E7E78 ; =OSi_ThreadInfo
+	ldr r1, _020E7E7C ; =_021E54A0
 	ldr r2, [r0, #4]
-	ldr r0, _020E7E80 ; =0x021E54C4
+	ldr r0, _020E7E80 ; =_021E54C4
 	ldr r3, [r2, #0x6c]
 	mov r2, #1
 	str r3, [r1, #0xc]
@@ -4048,13 +4076,13 @@ _020E7E24:
 	ldr r1, _020E7E70 ; =_02111018
 	add r3, r3, #4
 	bl __pformatter
-	ldr r1, _020E7E80 ; =0x021E54C4
+	ldr r1, _020E7E80 ; =_021E54C4
 	mov r4, r0
 	ldr r0, [r1, #0xc]
 	subs r0, r0, #1
 	str r0, [r1, #0xc]
 	bne _020E7E60
-	ldr r0, _020E7E74 ; =0x021E5530
+	ldr r0, _020E7E74 ; =_021E5530
 	bl OS_UnlockMutex
 _020E7E60:
 	mov r0, r4
@@ -4063,10 +4091,10 @@ _020E7E60:
 	bx lr
 	.align 2, 0
 _020E7E70: .word _02111018
-_020E7E74: .word 0x021E5530
-_020E7E78: .word 0x021E16A0
-_020E7E7C: .word 0x021E54A0
-_020E7E80: .word 0x021E54C4
+_020E7E74: .word _021E5530
+_020E7E78: .word OSi_ThreadInfo
+_020E7E7C: .word _021E54A0
+_020E7E80: .word _021E54C4
 _020E7E84: .word __FileWrite
 	arm_func_end printf
 
@@ -5719,56 +5747,56 @@ _020E9468:
 	mvn r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _020E9470:
-	ldr r0, _020E956C ; =0x021E5590
+	ldr r0, _020E956C ; =_021E5590
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020E94A4
-	ldr r0, _020E9570 ; =0x021E16A0
-	ldr r1, _020E9574 ; =0x021E54A0
+	ldr r0, _020E9570 ; =OSi_ThreadInfo
+	ldr r1, _020E9574 ; =_021E54A0
 	ldr r2, [r0, #4]
-	ldr r0, _020E9578 ; =0x021E54C4
+	ldr r0, _020E9578 ; =_021E54C4
 	ldr r3, [r2, #0x6c]
 	mov r2, #1
 	str r3, [r1, #0x1c]
 	str r2, [r0, #0x1c]
 	b _020E94FC
 _020E94A4:
-	ldr r0, _020E9570 ; =0x021E16A0
-	ldr r1, _020E9574 ; =0x021E54A0
+	ldr r0, _020E9570 ; =OSi_ThreadInfo
+	ldr r1, _020E9574 ; =_021E54A0
 	ldr r0, [r0, #4]
 	ldr r1, [r1, #0x1c]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E94D4
-	ldr r0, _020E9578 ; =0x021E54C4
+	ldr r0, _020E9578 ; =_021E54C4
 	ldr r1, [r0, #0x1c]
 	add r1, r1, #1
 	str r1, [r0, #0x1c]
 	b _020E94FC
 _020E94D4:
-	ldr r0, _020E956C ; =0x021E5590
+	ldr r0, _020E956C ; =_021E5590
 	bl OS_LockMutex
-	ldr r0, _020E9570 ; =0x021E16A0
-	ldr r1, _020E9574 ; =0x021E54A0
+	ldr r0, _020E9570 ; =OSi_ThreadInfo
+	ldr r1, _020E9574 ; =_021E54A0
 	ldr r2, [r0, #4]
-	ldr r0, _020E9578 ; =0x021E54C4
+	ldr r0, _020E9578 ; =_021E54C4
 	ldr r3, [r2, #0x6c]
 	mov r2, #1
 	str r3, [r1, #0x1c]
 	str r2, [r0, #0x1c]
 _020E94FC:
-	ldr r1, _020E957C ; =0x021E58C4
+	ldr r1, _020E957C ; =_021E58C4
 	sub r2, r5, #1
 	ldr r4, [r1, r2, lsl #2]
 	cmp r4, #1
 	movne r0, #0
 	strne r0, [r1, r2, lsl #2]
-	ldr r0, _020E9578 ; =0x021E54C4
+	ldr r0, _020E9578 ; =_021E54C4
 	ldr r1, [r0, #0x1c]
 	subs r1, r1, #1
 	str r1, [r0, #0x1c]
 	bne _020E9530
-	ldr r0, _020E956C ; =0x021E5590
+	ldr r0, _020E956C ; =_021E5590
 	bl OS_UnlockMutex
 _020E9530:
 	cmp r4, #1
@@ -5790,11 +5818,11 @@ _020E955C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020E956C: .word 0x021E5590
-_020E9570: .word 0x021E16A0
-_020E9574: .word 0x021E54A0
-_020E9578: .word 0x021E54C4
-_020E957C: .word 0x021E58C4
+_020E956C: .word _021E5590
+_020E9570: .word OSi_ThreadInfo
+_020E9574: .word _021E54A0
+_020E9578: .word _021E54C4
+_020E957C: .word _021E58C4
 	arm_func_end signal
 
 	arm_func_start strlen
@@ -7640,7 +7668,7 @@ strtold: ; 0x020EAD88
 	bl _dgr
 	bls _020EAE4C
 _020EAE40:
-	ldr r0, _020EAE64 ; =0x021E58C0
+	ldr r0, _020EAE64 ; =_021E58C0
 	mov r1, #0x22
 	str r1, [r0]
 _020EAE4C:
@@ -7651,7 +7679,7 @@ _020EAE4C:
 	.align 2, 0
 _020EAE5C: .word __StringRead
 _020EAE60: .word 0x7FEFFFFF
-_020EAE64: .word 0x021E58C0
+_020EAE64: .word _021E58C0
 	arm_func_end strtold
 
 	arm_func_start atof
@@ -8309,7 +8337,7 @@ strtoul: ; 0x020EB6CC
 	ldr r1, [sp, #0x14]
 	cmp r1, #0
 	beq _020EB748
-	ldr r0, _020EB760 ; =0x021E58C0
+	ldr r0, _020EB760 ; =_021E58C0
 	mov r1, #0x22
 	str r1, [r0]
 	add sp, sp, #0x20
@@ -8323,7 +8351,7 @@ _020EB748:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020EB75C: .word __StringRead
-_020EB760: .word 0x021E58C0
+_020EB760: .word _021E58C0
 	arm_func_end strtoul
 
 	arm_func_start strtol
@@ -8366,7 +8394,7 @@ _020EB7E0:
 	bls _020EB814
 _020EB7F0:
 	ldr r0, [sp, #0x18]
-	ldr r1, _020EB828 ; =0x021E58C0
+	ldr r1, _020EB828 ; =_021E58C0
 	mov r2, #0x22
 	cmp r0, #0
 	movne r0, #0x80000000
@@ -8381,7 +8409,7 @@ _020EB814:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020EB824: .word __StringRead
-_020EB828: .word 0x021E58C0
+_020EB828: .word _021E58C0
 	arm_func_end strtol
 
 	arm_func_start atoi
@@ -11032,7 +11060,7 @@ _020EDC50:
 	orrs r0, r7, r5
 	bne _020EDC88
 	ldr r0, _020EDEB4 ; =_021110EC
-	ldr r1, _020EDEB8 ; =0x021E58C0
+	ldr r1, _020EDEB8 ; =_021E58C0
 	ldr r0, [r0]
 	mov r2, #0x21
 	str r2, [r1]
@@ -11187,7 +11215,7 @@ _020EDEA8: .word 0x43400000
 _020EDEAC: .word 0xFFFFFC01
 _020EDEB0: .word 0x3FE00000
 _020EDEB4: .word _021110EC
-_020EDEB8: .word 0x021E58C0
+_020EDEB8: .word _021E58C0
 _020EDEBC: .word 0x41E00000
 _020EDEC0: .word 0x3FEFFFFF
 _020EDEC4: .word 0x3FD00000
@@ -14898,7 +14926,7 @@ _020F1120:
 _020F112C:
 	ldr r2, _020F114C ; =0x7FF80000
 	orr r1, r1, r2
-	ldr r3, _020F1150 ; =0x021E58C0
+	ldr r3, _020F1150 ; =_021E58C0
 	mov r4, #0x21
 	str r4, [r3]
 	ldmia sp!, {r4, r5, r6, lr}
@@ -14906,7 +14934,7 @@ _020F112C:
 	.align 2, 0
 _020F1148: .word 0x7FF00000
 _020F114C: .word 0x7FF80000
-_020F1150: .word 0x021E58C0
+_020F1150: .word _021E58C0
 
 	.public _drsb
 _drsb: ; 0x020F1154
@@ -18987,7 +19015,7 @@ _Znwm: ; 0x020F4918
 	sub sp, sp, #0x18
 	mov fp, sp
 	movs r6, r0
-	ldr r4, _020F4978 ; =0x021E58E4
+	ldr r4, _020F4978 ; =_ZSt13__new_handler
 	moveq r6, #4
 _020F4930:
 	mov r0, r6
@@ -19014,7 +19042,7 @@ _020F4970:
 	add sp, fp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, fp, pc}
 	.align 2, 0
-_020F4978: .word 0x021E58E4
+_020F4978: .word _ZSt13__new_handler
 	arm_func_end _Znwm
 
 	arm_func_start _ZnwmRKSt9nothrow_t
