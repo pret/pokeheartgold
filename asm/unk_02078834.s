@@ -5,7 +5,11 @@
 
 	.public _020FA484
 	.public _020FF639
-	.public _021D43B0
+
+	.bss
+
+_021D43B0:
+	.space 0x4
 
 	.text
 
