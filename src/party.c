@@ -45,7 +45,7 @@ BOOL AddMonToParty(SAVE_PARTY_T *party, const POKEMON *pokemon) {
         return FALSE;
     }
     party->party.mons[party->party.curCount] = *pokemon;
-    MI_CpuFill8(party->extra.unk_00[party->party.curCount], 0, 5);
+    MI_CpuFill8(&party->extra.unk_00[party->party.curCount], 0, sizeof(PARTY_EXTRA_SUB));
     party->party.curCount++;
     return TRUE;
 }
@@ -55,14 +55,10 @@ BOOL RemoveMonFromParty(SAVE_PARTY_T *party, int slot) {
     GF_ASSERT(party->party.curCount > 0);
     for (; slot < party->party.curCount - 1; slot++) {
         party->party.mons[slot] = party->party.mons[slot + 1];
-        party->extra.unk_00[slot][0] = party->extra.unk_00[slot + 1][0];
-        party->extra.unk_00[slot][1] = party->extra.unk_00[slot + 1][1];
-        party->extra.unk_00[slot][2] = party->extra.unk_00[slot + 1][2];
-        party->extra.unk_00[slot][3] = party->extra.unk_00[slot + 1][3];
-        party->extra.unk_00[slot][4] = party->extra.unk_00[slot + 1][4];
+        party->extra.unk_00[slot] = party->extra.unk_00[slot + 1];
     }
     ZeroMonData(&party->party.mons[slot]);
-    MI_CpuFill8(party->extra.unk_00[slot], 0, 5);
+    MI_CpuFill8(&party->extra.unk_00[slot], 0, sizeof(PARTY_EXTRA_SUB));
     party->party.curCount--;
     return TRUE;
 }
@@ -80,11 +76,68 @@ POKEMON *GetPartyMonByIndex(SAVE_PARTY_T *party, int slot) {
     return &party->party.mons[slot];
 }
 
-void sub_02074670(const SAVE_PARTY_T *party, u8 *dest, int slot);
-void sub_020746BC(SAVE_PARTY_T *party, const u8 *src, int slot);
-void sub_02074708(SAVE_PARTY_T *party, int slot);
-void sub_02074740(SAVE_PARTY_T *party, int slot, const POKEMON *src);
-void sub_020747BC(SAVE_PARTY_T *party, int slotA, int slotB);
-void sub_020748B8(const SAVE_PARTY_T *src, SAVE_PARTY_T *dest);
-BOOL sub_020748CC(const SAVE_PARTY_T *party, u16 species);
-SAVE_PARTY_T *SavArray_PlayerParty_get(SAVEDATA *saveData);
+void sub_02074670(const SAVE_PARTY_T *party, PARTY_EXTRA_SUB *dest, int slot) {
+    PARTY_ASSERT_SLOT(party, slot);
+    *dest = party->extra.unk_00[slot];
+}
+
+void sub_020746BC(SAVE_PARTY_T *party, const PARTY_EXTRA_SUB *src, int slot) {
+    PARTY_ASSERT_SLOT(party, slot);
+    party->extra.unk_00[slot] = *src;
+}
+
+void sub_02074708(SAVE_PARTY_T *party, int slot) {
+    PARTY_ASSERT_SLOT(party, slot);
+    MI_CpuFill8(&party->extra.unk_00[slot], 0, sizeof(PARTY_EXTRA_SUB));
+}
+
+void sub_02074740(SAVE_PARTY_T *party, int slot, const POKEMON *src) {
+    PARTY_ASSERT_SLOT(party, slot);
+    {
+        BOOL valid = GetMonData(&party->party.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - GetMonData(src, MON_DATA_SPECIES_EXISTS, NULL);
+        party->party.mons[slot] = *src;
+        MI_CpuFill8(&party->extra.unk_00[slot], 0, sizeof(PARTY_EXTRA_SUB));
+        party->party.curCount += valid;
+    }
+}
+
+BOOL sub_020747BC(SAVE_PARTY_T *party, int slotA, int slotB) {
+    PARTY_ASSERT_SLOT(party, slotA);
+    PARTY_ASSERT_SLOT(party, slotB);
+    {
+        PARTY_EXTRA_SUB tmp_PARTY_EXTRA_SUB;
+        POKEMON *tmp_POKEMON;
+        u8 *r5;
+
+        tmp_POKEMON = AllocFromHeap(0, sizeof(POKEMON));
+        *tmp_POKEMON = party->party.mons[slotA];
+        party->party.mons[slotA] = party->party.mons[slotB];
+        party->party.mons[slotB] = *tmp_POKEMON;
+        FreeToHeap(tmp_POKEMON);
+
+        tmp_PARTY_EXTRA_SUB = party->extra.unk_00[slotA];
+        party->extra.unk_00[slotA] = party->extra.unk_00[slotB];
+        party->extra.unk_00[slotB] = tmp_PARTY_EXTRA_SUB;
+    }
+    return FALSE;
+}
+
+void sub_020748B8(const SAVE_PARTY_T *src, SAVE_PARTY_T *dest) {
+    *dest = *src;
+}
+
+BOOL sub_020748CC(const SAVE_PARTY_T *party, u16 species) {
+    int i;
+
+    for (i = 0; i < party->party.curCount; i++) {
+        if (species == GetMonData(&party->party.mons[i], MON_DATA_SPECIES2, NULL)) {
+            break;
+        }
+    }
+
+    return (i != party->party.curCount);
+}
+
+SAVE_PARTY_T *SavArray_PlayerParty_get(SAVEDATA *saveData) {
+    return (SAVE_PARTY_T *) SavArray_get(saveData, SAVE_PARTY);
+}

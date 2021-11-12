@@ -3,8 +3,12 @@
 
 #include "pokemon.h"
 
+typedef struct PARTY_EXTRA_SUB {
+    u8 unk_00[5];
+} PARTY_EXTRA_SUB;
+
 typedef struct PARTY_EXTRA {
-    u8 unk_00[PARTY_SIZE][5];
+    PARTY_EXTRA_SUB unk_00[PARTY_SIZE];
 } PARTY_EXTRA;
 
 typedef struct SAVE_PARTY_T {
@@ -22,11 +26,11 @@ BOOL RemoveMonFromParty(SAVE_PARTY_T *party, int slot);
 int GetPartyMaxCount(const SAVE_PARTY_T *party);
 int GetPartyCount(const SAVE_PARTY_T *party);
 POKEMON *GetPartyMonByIndex(SAVE_PARTY_T *party, int slot);
-void sub_02074670(const SAVE_PARTY_T *party, u8 *dest, int slot);
-void sub_020746BC(SAVE_PARTY_T *party, const u8 *src, int slot);
+void sub_02074670(const SAVE_PARTY_T *party, PARTY_EXTRA_SUB *dest, int slot);
+void sub_020746BC(SAVE_PARTY_T *party, const PARTY_EXTRA_SUB *src, int slot);
 void sub_02074708(SAVE_PARTY_T *party, int slot);
 void sub_02074740(SAVE_PARTY_T *party, int slot, const POKEMON *src);
-void sub_020747BC(SAVE_PARTY_T *party, int slotA, int slotB);
+BOOL sub_020747BC(SAVE_PARTY_T *party, int slotA, int slotB);
 void sub_020748B8(const SAVE_PARTY_T *src, SAVE_PARTY_T *dest);
 BOOL sub_020748CC(const SAVE_PARTY_T *party, u16 species);
 SAVE_PARTY_T *SavArray_PlayerParty_get(SAVEDATA *saveData);
