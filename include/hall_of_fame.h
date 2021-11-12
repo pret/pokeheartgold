@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_HALL_OF_FAME_H
 
 #include "sys/string.h"
+#include "party.h"
 
 #define NUM_HOF_RECORDS 30
 
@@ -45,5 +46,13 @@ typedef struct HofDisplayMon
     u16 moves[4];
 } SHOW_HOFMON;
 
+u32 Sav2_HOF_sizeof(void);
+void Sav2_HOF_init(HALL_OF_FAME *hof);
+void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, SAVE_PARTY_T *party, RTCDate *date);
+u32 Sav2_HOF_GetNumRecords(const HALL_OF_FAME *hallOfFame);
+int Sav2_HOF_TranslateRecordIdx(const HALL_OF_FAME *hallOfFame, int num);
+u32 Sav2_HOF_RecordCountMons(HALL_OF_FAME *hallOfFame, int num);
+void Sav2_HOF_GetMonStatsByIndexPair(HALL_OF_FAME *hallOfFame, int teamNum, int monNum, SHOW_HOFMON *dest);
+void Sav2_HOF_GetClearDate(HALL_OF_FAME * hof, int num, RTCDate * dest);
 
 #endif //POKEHEARTGOLD_HALL_OF_FAME_H

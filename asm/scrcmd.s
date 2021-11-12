@@ -11247,7 +11247,7 @@ _02045F50:
 	cmp r1, #1
 	bne _02045F66
 	mov r1, #0
-	bl sub_0202E2C4
+	bl Sav2_HOF_TranslateRecordIdx
 	strh r0, [r5]
 	add r0, r4, #0
 	bl FreeToHeap

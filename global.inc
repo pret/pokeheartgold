@@ -26415,11 +26415,11 @@
 .public sub_0202E090
 .public sub_0202E0AC
 .public sub_0202E0C8
-.public sub_0202E298
-.public sub_0202E2C4
-.public sub_0202E2F8
-.public sub_0202E344
-.public sub_0202E3C4
+.public Sav2_HOF_GetNumRecords
+.public Sav2_HOF_TranslateRecordIdx
+.public Sav2_HOF_RecordCountMons
+.public Sav2_HOF_GetMonStatsByIndexPair
+.public Sav2_HOF_GetClearDate
 .public sub_0202E41C
 .public sub_0202E424
 .public sub_0202E43C
