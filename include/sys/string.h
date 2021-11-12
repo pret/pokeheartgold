@@ -1,6 +1,9 @@
 #ifndef POKEHEARTGOLD_STRING_H
 #define POKEHEARTGOLD_STRING_H
 
+#include "constants/charcode.h"
+#include "heap.h"
+
 typedef struct STRING {
     u16 maxsize;
     u16 size;
@@ -9,6 +12,8 @@ typedef struct STRING {
     u8 padding[2];
 } STRING;
 
+STRING *String_ctor(u32 maxsize, HeapID heapId);
 void String_dtor(STRING *string);
+void CopyStringToU16Array(const STRING *string, u16 *dest, u32 n);
 
 #endif //POKEHEARTGOLD_STRING_H

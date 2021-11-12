@@ -217,13 +217,8 @@ u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature);
 void CreateMonWithFixedIVs(struct Pokemon * pokemon, int species, int level, int ivs, int personality);
 void CalcMonLevelAndStats(struct Pokemon * pokemon);
 void CalcMonStats(struct Pokemon * pokemon);
-#ifndef IN_POKEMON_C
-u32 GetMonData();
-u32 GetBoxMonData();
-#else
 u32 GetMonData(struct Pokemon * pokemon, int attr, void * ptr);
 u32 GetBoxMonData(struct BoxPokemon * pokemon, int attr, void * ptr);
-#endif
 void SetMonData(struct Pokemon * pokemon, int attr, void * ptr);
 void SetBoxMonData(struct BoxPokemon * pokemon, int attr, void * ptr);
 void AddMonData(struct Pokemon * pokemon, int attr, int amount);
