@@ -91,7 +91,7 @@ void sub_02074708(SAVE_PARTY_T *party, int slot) {
     MI_CpuFill8(&party->extra.unk_00[slot], 0, sizeof(PARTY_EXTRA_SUB));
 }
 
-void sub_02074740(SAVE_PARTY_T *party, int slot, const POKEMON *src) {
+void sub_02074740(SAVE_PARTY_T *party, int slot, POKEMON *src) {
     PARTY_ASSERT_SLOT(party, slot);
     {
         BOOL valid = GetMonData(&party->party.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - GetMonData(src, MON_DATA_SPECIES_EXISTS, NULL);
@@ -126,7 +126,7 @@ void sub_020748B8(const SAVE_PARTY_T *src, SAVE_PARTY_T *dest) {
     *dest = *src;
 }
 
-BOOL sub_020748CC(const SAVE_PARTY_T *party, u16 species) {
+BOOL sub_020748CC(SAVE_PARTY_T *party, u16 species) {
     int i;
 
     for (i = 0; i < party->party.curCount; i++) {

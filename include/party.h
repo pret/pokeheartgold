@@ -29,10 +29,10 @@ POKEMON *GetPartyMonByIndex(SAVE_PARTY_T *party, int slot);
 void sub_02074670(const SAVE_PARTY_T *party, PARTY_EXTRA_SUB *dest, int slot);
 void sub_020746BC(SAVE_PARTY_T *party, const PARTY_EXTRA_SUB *src, int slot);
 void sub_02074708(SAVE_PARTY_T *party, int slot);
-void sub_02074740(SAVE_PARTY_T *party, int slot, const POKEMON *src);
+void sub_02074740(SAVE_PARTY_T *party, int slot, POKEMON *src);
 BOOL sub_020747BC(SAVE_PARTY_T *party, int slotA, int slotB);
 void sub_020748B8(const SAVE_PARTY_T *src, SAVE_PARTY_T *dest);
-BOOL sub_020748CC(const SAVE_PARTY_T *party, u16 species);
+BOOL sub_020748CC(SAVE_PARTY_T *party, u16 species);
 SAVE_PARTY_T *SavArray_PlayerParty_get(SAVEDATA *saveData);
 
 #endif //GUARD_PARTY_H
