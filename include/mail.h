@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_MAIL_H
 
 #include "mail_message.h"
+#include "heap.h"
 
 union MailPatternData
 {
@@ -24,5 +25,7 @@ typedef struct Mail
     u8 padding_1E[2];
     MAIL_MESSAGE unk_20[3];
 } MAIL;
+
+MAIL *Mail_new(HeapID heap_id);
 
 #endif //POKEHEARTGOLD_MAIL_H
