@@ -25631,7 +25631,7 @@
 .public sub_02017FAC
 .public sub_02017FCC
 .public sub_02017FE4
-.public sub_02018000
+.public LocationIsDiamondPearlCompatible
 .public sub_02018030
 .public sub_02018068
 .public sub_020180BC

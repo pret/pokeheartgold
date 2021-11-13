@@ -3,6 +3,7 @@
 
 #include "constants/charcode.h"
 #include "heap.h"
+#include "string_util.h"
 
 typedef struct STRING {
     u16 maxsize;
