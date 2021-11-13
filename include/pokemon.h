@@ -11,6 +11,7 @@
 #include "sys/string.h"
 #include "player_data.h"
 #include "sound_chatot.h"
+#include "seal_case.h"
 
 struct BaseStats {
     /* 0x00 */ u8 hp;
@@ -86,7 +87,8 @@ typedef struct {
     // TODO: Finish HoennRibbonSet
     /* 0x14 */ u32 ribbonFlags; // cool, ...
     /* 0x18 */ u8 fatefulEncounter:1, gender:2, alternateForm:5;
-    /* 0x19 */ u8 HGSS_shinyLeaves; // TODO: Turn into bitfield
+    /* 0x19 */ u8 HGSS_shinyLeaves:6;
+    /* 0x19 */ u8 unk_19_6:2;
     /* 0x1A */ u16 Unused;
     /* 0x1C */ u16 Platinum_EggLocation;
     /* 0x1E */ u16 Platinum_MetLocation;
@@ -145,7 +147,7 @@ typedef struct PartyPokemon
     /* 0x098 */ u16 spatk;
     /* 0x09A */ u16 spdef;
     /* 0x09C */ MAIL mail;
-    /* 0x0D4 */ u8 sealCoords[8][3]; // seal coords
+    /* 0x0D4 */ CAPSULE sealCoords; // seal coords
 } PARTYMON;
 
 typedef struct Pokemon {
@@ -225,7 +227,7 @@ void AddMonData(POKEMON * pokemon, int attr, int amount);
 struct BaseStats * AllocAndLoadMonPersonal(int species, u32 heap_id);
 int GetPersonalAttr(struct BaseStats * baseStats, enum BaseStat attr);
 void FreeMonPersonal(struct BaseStats * personal);
-int GetMonBaseStat_HandleFormeConversion(int species, int form, enum BaseStat stat_id);
+int GetMonBaseStat_HandleAlternateForme(int species, int form, enum BaseStat stat_id);
 int GetMonBaseStat(int species, enum BaseStat stat_id);
 u8 GetPercentProgressTowardsNextLevel(POKEMON * pokemon);
 u32 CalcMonExpToNextLevel(POKEMON * pokemon);

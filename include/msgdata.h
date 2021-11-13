@@ -32,9 +32,12 @@ typedef struct MSGDATA {
     };
 } MSGDATA;
 
-MSGDATA *NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc, s32 fileId, u32 heap_id);
+MSGDATA *NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc, s32 fileId, HeapID heap_id);
 void DestroyMsgData(MSGDATA *msgData);
 STRING *NewString_ReadMsgData(MSGDATA *msgData, s32 strno);
 void ReadMsgDataIntoString(MSGDATA *msgData, s32 strno, STRING *dest);
+void GetSpeciesNameIntoArray(u16 species, HeapID heap_id, u16 *dest);
+STRING *GetSpeciesName(u16 species, HeapID heap_id);
+void StringCopy(STRING *dest, const STRING *src);
 
 #endif //POKEHEARTGOLD_MSGDATA_H

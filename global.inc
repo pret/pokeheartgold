@@ -28975,7 +28975,7 @@
 .public sub_02070DB4
 .public sub_02071BC8
 .public sub_02071BD0
-.public sub_02071C28
+.public GetArceusTypeByHeldItemEffect
 .public sub_02071D3C
 .public sub_02071FDC
 .public sub_0207204C

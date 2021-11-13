@@ -27,5 +27,6 @@ typedef struct Mail
 } MAIL;
 
 MAIL *Mail_new(HeapID heap_id);
+void Mail_copy(const MAIL *src, MAIL *dest);
 
 #endif //POKEHEARTGOLD_MAIL_H

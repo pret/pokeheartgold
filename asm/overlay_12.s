@@ -64747,7 +64747,7 @@ _02256C9E:
 	bl GetItemAttr
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02071C28
+	bl GetArceusTypeByHeldItemEffect
 	mov r1, #0x46
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
