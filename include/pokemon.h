@@ -220,10 +220,11 @@ void CreateMonWithFixedIVs(POKEMON * pokemon, int species, int level, int ivs, i
 void CalcMonLevelAndStats(POKEMON * pokemon);
 void CalcMonStats(POKEMON * pokemon);
 u32 GetMonData(POKEMON * pokemon, int attr, void * ptr);
-u32 GetBoxMonData(BOXMON * pokemon, int attr, void * ptr);
+u32 GetBoxMonData(BOXMON * boxmon, int attr, void * ptr);
 void SetMonData(POKEMON * pokemon, int attr, void * ptr);
-void SetBoxMonData(BOXMON * pokemon, int attr, void * ptr);
+void SetBoxMonData(BOXMON * boxmon, int attr, void * ptr);
 void AddMonData(POKEMON * pokemon, int attr, int amount);
+void AddBoxMonData(BOXMON * boxmon, int attr, int amount);
 struct BaseStats * AllocAndLoadMonPersonal(int species, u32 heap_id);
 int GetPersonalAttr(struct BaseStats * baseStats, enum BaseStat attr);
 void FreeMonPersonal(struct BaseStats * personal);
