@@ -11,8 +11,6 @@
 #include "constants/abilities.h"
 #include "constants/map_sections.h"
 
-u32 _021D421C[MAX_LEVEL + 1];
-
 void MonEncryptSegment(void *data, u32 size, u32 key);
 void MonDecryptSegment(void *data, u32 size, u32 key);
 u32 CalcMonChecksum(void *data, u32 size);
@@ -26,6 +24,8 @@ void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * data);
 void AddMonDataInternal(POKEMON * pokemon, int attr, int value);
 void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value);
 PokemonDataBlock *GetSubstruct(BOXMON *boxmon, u32 pid, u8 which_struct);
+void LoadMonPersonal(int species, BASE_STATS *dest);
+int ResolveMonForme(int species, int forme);
 
 #define ENCRY_ARGS_PTY(mon) (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.pid
 #define ENCRY_ARGS_BOX(boxmon) (u16 *)&(boxmon)->substructs, sizeof((boxmon)->substructs), (boxmon)->checksum
@@ -41,6 +41,9 @@ PokemonDataBlock *GetSubstruct(BOXMON *boxmon, u32 pid, u8 which_struct);
     (((pid) & 0xFFFFu))) \
     < 8u)
 #define CALC_UNOWN_LETTER(pid) ((u32)((((pid) & 0x3000000) >> 18) | (((pid) & 0x30000) >> 12) | (((pid) & 0x300) >> 6) | (((pid) & 0x3) >> 0)) % 28u)
+
+extern const s8 sNatureStatMods[NATURE_NUM][NUM_EV_STATS];
+extern const s8 sFriendshipModTable[FRIENDSHIP_EVENT_NUM][FRIENDSHIP_TIER_NUM];
 
 void ZeroMonData(POKEMON *pokemon) {
     MI_CpuClearFast(pokemon, sizeof(POKEMON));
@@ -1366,8 +1369,8 @@ void AddBoxMonDataInternal(struct BoxPokemon * boxmon, int attr, int value) {
         break;
     case MON_DATA_FRIENDSHIP: {
         int friendship = blockA->friendship;
-        if (friendship + value > 255) {
-            friendship = 255;
+        if (friendship + value > FRIENDSHIP_MAX) {
+            friendship = FRIENDSHIP_MAX;
         }
         friendship += value;
         if (friendship < 0) {
@@ -1662,4 +1665,314 @@ void AddBoxMonDataInternal(struct BoxPokemon * boxmon, int attr, int value) {
     default:
         GF_ASSERT(0);
     }
+}
+
+BASE_STATS *AllocAndLoadMonPersonal_HandleAlternateForme(int species, int forme, HeapID heap_id) {
+    BASE_STATS *ret = AllocFromHeap(heap_id, sizeof(BASE_STATS));
+    LoadMonBaseStats_HandleAlternateForme(species, forme, ret);
+    return ret;
+}
+
+BASE_STATS *AllocAndLoadMonPersonal(int species, HeapID heap_id) {
+    BASE_STATS *ret = AllocFromHeap(heap_id, sizeof(BASE_STATS));
+    LoadMonPersonal(species, ret);
+    return ret;
+}
+
+int GetPersonalAttr(BASE_STATS * baseStats, BaseStat attr) {
+    int ret;
+    GF_ASSERT(baseStats != NULL);
+    switch (attr) {
+    case BASE_HP:
+        ret = baseStats->hp;
+        break;
+    case BASE_ATK:
+        ret = baseStats->atk;
+        break;
+    case BASE_DEF:
+        ret = baseStats->def;
+        break;
+    case BASE_SPEED:
+        ret = baseStats->speed;
+        break;
+    case BASE_SPATK:
+        ret = baseStats->spatk;
+        break;
+    case BASE_SPDEF:
+        ret = baseStats->spdef;
+        break;
+    case BASE_TYPE1:
+        ret = baseStats->types[0];
+        break;
+    case BASE_TYPE2:
+        ret = baseStats->types[1];
+        break;
+    case BASE_CATCH_RATE:
+        ret = baseStats->catchRate;
+        break;
+    case BASE_EXP_YIELD:
+        ret = baseStats->expYield;
+        break;
+    case BASE_HP_YIELD:
+        ret = baseStats->hp_yield;
+        break;
+    case BASE_ATK_YIELD:
+        ret = baseStats->atk_yield;
+        break;
+    case BASE_DEF_YIELD:
+        ret = baseStats->def_yield;
+        break;
+    case BASE_SPEED_YIELD:
+        ret = baseStats->speed_yield;
+        break;
+    case BASE_SPATK_YIELD:
+        ret = baseStats->spatk_yield;
+        break;
+    case BASE_SPDEF_YIELD:
+        ret = baseStats->spdef_yield;
+        break;
+    case BASE_ITEM_1:
+        ret = baseStats->item1;
+        break;
+    case BASE_ITEM_2:
+        ret = baseStats->item2;
+        break;
+    case BASE_GENDER_RATIO:
+        ret = baseStats->genderRatio;
+        break;
+    case BASE_EGG_CYCLES:
+        ret = baseStats->eggCycles;
+        break;
+    case BASE_FRIENDSHIP:
+        ret = baseStats->friendship;
+        break;
+    case BASE_GROWTH_RATE:
+        ret = baseStats->growthRate;
+        break;
+    case BASE_EGG_GROUP_1:
+        ret = baseStats->eggGroups[0];
+        break;
+    case GASE_EGG_GROUP_2:
+        ret = baseStats->eggGroups[1];
+        break;
+    case BASE_ABILITY_1:
+        ret = baseStats->abilities[0];
+        break;
+    case BASE_ABILITY_2:
+        ret = baseStats->abilities[1];
+        break;
+    case BASE_GREAT_MARSH_RATE:
+        ret = baseStats->greatMarshRate;
+        break;
+    case BASE_COLOR:
+        ret = baseStats->color;
+        break;
+    case BASE_FLIP:
+        ret = baseStats->flip;
+        break;
+    case BASE_TMHM_1:
+        ret = (int)baseStats->unk1C;
+        break;
+    case BASE_TMHM_2:
+        ret = (int)baseStats->unk20;
+        break;
+    case BASE_TMHM_3:
+        ret = (int)baseStats->unk24;
+        break;
+    case BASE_TMHM_4:
+        ret = (int)baseStats->unk28;
+        break;
+    }
+    return ret;
+}
+
+void FreeMonPersonal(BASE_STATS * personal) {
+    GF_ASSERT(personal != NULL);
+    FreeToHeap(personal);
+}
+
+int GetMonBaseStat_HandleAlternateForme(int species, int forme, BaseStat attr) {
+    int ret;
+    BASE_STATS * personal = AllocAndLoadMonPersonal(ResolveMonForme(species, forme), 0);
+    ret = GetPersonalAttr(personal, attr);
+    FreeMonPersonal(personal);
+    return ret;
+}
+
+int GetMonBaseStat(int species, BaseStat attr) {
+    int ret;
+    BASE_STATS * personal = AllocAndLoadMonPersonal(species, 0);
+    ret = GetPersonalAttr(personal, attr);
+    FreeMonPersonal(personal);
+    return ret;
+}
+
+int GetMonBaseStatEx_HandleAlternateForme(NARC *narc, int species, int forme, BaseStat attr) {
+    int resolved = ResolveMonForme(species, forme);
+    int ret;
+    BASE_STATS *buf = AllocFromHeap(0, sizeof(BASE_STATS));
+    NARC_ReadWholeMember(narc, resolved, buf);
+    ret = GetPersonalAttr(buf, attr);
+    FreeToHeap(buf);
+    return ret;
+}
+
+u8 GetPercentProgressTowardsNextLevel(POKEMON * pokemon) {
+    BOOL decry = AcquireMonLock(pokemon);
+    u16 species = (u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    u8 level = (u8)GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+    u32 lo = GetMonExpBySpeciesAndLevel(species, level);
+    u32 hi = GetMonExpBySpeciesAndLevel(species, level + 1);
+    u32 cur = GetMonData(pokemon, MON_DATA_EXPERIENCE, NULL);
+    ReleaseMonLock(pokemon, decry);
+    return (u8)(100 * (cur - lo) / (hi - lo));
+}
+
+u32 CalcMonExpToNextLevel(POKEMON * pokemon) {
+    return CalcBoxMonExpToNextLevel(&pokemon->box);
+}
+
+u32 CalcBoxMonExpToNextLevel(BOXMON * boxmon) {
+    u16 species = (u16)GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
+    u16 level = (u16)(CalcBoxMonLevel(boxmon) + 1);
+    u32 cur = GetBoxMonData(boxmon, MON_DATA_EXPERIENCE, NULL);
+    u32 hi = GetMonExpBySpeciesAndLevel(species, level);
+    return hi - cur;
+}
+
+u32 GetMonBaseExperienceAtCurrentLevel(POKEMON * pokemon) {
+    int species = (int)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    int level = (int)GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+    return GetMonExpBySpeciesAndLevel(species, level);
+}
+
+u32 GetMonExpBySpeciesAndLevel(int species, int level) {
+    return GetExpByGrowthRateAndLevel(GetMonBaseStat(species, BASE_GROWTH_RATE), level);
+}
+
+void LoadGrowthTable(int growthRate, u32 * dest) {
+    GF_ASSERT(growthRate < 8);
+    ReadWholeNarcMemberByIdPair(dest, NARC_POKETOOL_PERSONAL_GROWTBL, growthRate);
+}
+
+u32 GetExpByGrowthRateAndLevel(int growthRate, int level) {
+    u32 * table;
+    u32 ret;
+    GF_ASSERT(growthRate < 8);
+    GF_ASSERT(level <= MAX_LEVEL + 1);
+    table = (u32 *)AllocFromHeap(0, (MAX_LEVEL + 1) * sizeof(u32));
+    LoadGrowthTable(growthRate, table);
+    ret = table[level];
+    FreeToHeap(table);
+    return ret;
+}
+
+int CalcMonLevel(struct Pokemon * pokemon) {
+    return CalcBoxMonLevel(&pokemon->box);
+}
+
+int CalcBoxMonLevel(struct BoxPokemon * boxmon) {
+    BOOL decry = AcquireBoxMonLock(boxmon);
+    int species = (int)GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
+    int exp = (int)GetBoxMonData(boxmon, MON_DATA_EXPERIENCE, NULL);
+    ReleaseBoxMonLock(boxmon, decry);
+    return CalcLevelBySpeciesAndExp((u16)species, (u32)exp);
+}
+
+int CalcLevelBySpeciesAndExp(u16 species, u32 exp) {
+    int level;
+    struct BaseStats * personal = AllocAndLoadMonPersonal(species, 0);
+    level = CalcLevelBySpeciesAndExp_PreloadedPersonal(personal, species, exp);
+    FreeMonPersonal(personal);
+    return level;
+}
+
+int CalcLevelBySpeciesAndExp_PreloadedPersonal(struct BaseStats * personal, u16 species, u32 exp) {
+#pragma unused(species)
+    static u32 table[101];
+    int i;
+    LoadGrowthTable(GetPersonalAttr(personal, BASE_GROWTH_RATE), table);
+    for (i = 1; i < 101; i++) {
+        if (table[i] > exp) {
+            break;
+        }
+    }
+    return i - 1;
+}
+
+u8 GetMonNature(struct Pokemon * pokemon) {
+    return GetBoxMonNature(&pokemon->box);
+}
+
+u8 GetBoxMonNature(struct BoxPokemon * boxmon) {
+    BOOL decry = AcquireBoxMonLock(boxmon);
+    u32 personality = GetBoxMonData(boxmon, MON_DATA_PERSONALITY, NULL);
+    ReleaseBoxMonLock(boxmon, decry);
+    return GetNatureFromPersonality(personality);
+}
+
+u8 GetNatureFromPersonality(u32 pid) {
+    return (u8)(pid % 25);
+}
+
+u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex) {
+    u16 retVal;
+
+    // Dont modify HP, Accuracy, or Evasion by nature
+    if (statIndex < STAT_ATK || statIndex > STAT_SPDEF) {
+        return n;
+    }
+
+    switch (sNatureStatMods[nature][statIndex - 1]) {
+    case 1:
+        // NOTE: will overflow for n > 595 because the intermediate value is cast to u16 before the division.
+        retVal = n * 110;
+        retVal /= 100;
+        break;
+    case -1:
+        // NOTE: will overflow for n > 728, see above
+        retVal = n * 90;
+        retVal /= 100;
+        break;
+    default:
+        retVal = n;
+        break;
+    }
+    return retVal;
+}
+
+void MonApplyFriendshipMod(struct Pokemon * pokemon, u32 kind, u32 location) {
+    u16 species;
+    u8 effect;
+    u8 tier;
+    s16 friendship;
+    s8 mod;
+
+    if (kind == FRIENDSHIP_EVENT_WALKING && (LCRandom() & 1))
+        return;
+
+    species = (u16)GetMonData(pokemon, MON_DATA_SPECIES2, NULL);
+    if (species == SPECIES_NONE || species == SPECIES_EGG)
+        return;
+
+    effect = (u8)GetItemAttr((u16)GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL), ITEMATTR_HOLD_EFFECT, 0);
+    tier = FRIENDSHIP_TIER_LOW;
+    friendship = (s16)GetMonData(pokemon, MON_DATA_FRIENDSHIP, NULL);
+    if (friendship >= FRIENDSHIP_TIER_MID_MIN)
+        tier++;
+    if (friendship >= FRIENDSHIP_TIER_HI_MIN)
+        tier++;
+    mod = sFriendshipModTable[kind][tier];
+    if (mod > 0 && GetMonData(pokemon, MON_DATA_DP_POKEBALL, NULL) == ITEM_LUXURY_BALL)
+        mod++;
+    if (mod > 0 && GetMonData(pokemon, MON_DATA_EGG_MET_LOCATION, NULL) == location)
+        mod++;
+    if (mod > 0 && effect == HOLD_EFFECT_FRIENDSHIP_UP)
+        mod = (s8)(mod * 150 / 100);
+    friendship += mod;
+    if (friendship < 0)
+        friendship = 0;
+    if (friendship > FRIENDSHIP_MAX)
+        friendship = FRIENDSHIP_MAX;
+    SetMonData(pokemon, MON_DATA_FRIENDSHIP, &friendship);
 }

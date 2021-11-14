@@ -13,7 +13,7 @@
 #include "sound_chatot.h"
 #include "seal_case.h"
 
-struct BaseStats {
+typedef struct BaseStats {
     /* 0x00 */ u8 hp;
     /* 0x01 */ u8 atk;
     /* 0x02 */ u8 def;
@@ -46,7 +46,7 @@ struct BaseStats {
     /* 0x20 */ u32 unk20;
     /* 0x24 */ u32 unk24;
     /* 0x28 */ u32 unk28;
-};
+} BASE_STATS;
 
 // Structs
 
@@ -206,7 +206,7 @@ typedef struct PARTY
 void ZeroMonData(POKEMON * pokemon);
 void ZeroBoxMonData(BOXMON * boxmon);
 u32 SizeOfStructPokemon(void);
-POKEMON * AllocMonZeroed(u32 heap_id);
+POKEMON * AllocMonZeroed(HeapID heap_id);
 BOOL AcquireMonLock(POKEMON * mon);
 BOOL ReleaseMonLock(POKEMON * mon, BOOL decrypt_result);
 BOOL AcquireBoxMonLock(BOXMON * mon);
@@ -224,14 +224,16 @@ u32 GetBoxMonData(BOXMON * boxmon, int attr, void * ptr);
 void SetMonData(POKEMON * pokemon, int attr, void * ptr);
 void SetBoxMonData(BOXMON * boxmon, int attr, void * ptr);
 void AddMonData(POKEMON * pokemon, int attr, int amount);
-void AddBoxMonData(BOXMON * boxmon, int attr, int amount);
-struct BaseStats * AllocAndLoadMonPersonal(int species, u32 heap_id);
-int GetPersonalAttr(struct BaseStats * baseStats, enum BaseStat attr);
-void FreeMonPersonal(struct BaseStats * personal);
-int GetMonBaseStat_HandleAlternateForme(int species, int form, enum BaseStat stat_id);
-int GetMonBaseStat(int species, enum BaseStat stat_id);
+//void AddBoxMonData(BOXMON * boxmon, int attr, int amount);
+BASE_STATS * AllocAndLoadMonPersonal_HandleAlternateForme(int species, int form, HeapID heap_id);
+BASE_STATS * AllocAndLoadMonPersonal(int species, HeapID heap_id);
+int GetPersonalAttr(BASE_STATS * baseStats, BaseStat attr);
+void FreeMonPersonal(BASE_STATS * personal);
+int GetMonBaseStat_HandleAlternateForme(int species, int form, BaseStat stat_id);
+int GetMonBaseStat(int species, BaseStat stat_id);
 u8 GetPercentProgressTowardsNextLevel(POKEMON * pokemon);
 u32 CalcMonExpToNextLevel(POKEMON * pokemon);
+u32 CalcBoxMonExpToNextLevel(BOXMON * pokemon);
 u32 GetMonBaseExperienceAtCurrentLevel(POKEMON * pokemon);
 u32 GetMonExpBySpeciesAndLevel(int species, int level);
 void LoadGrowthTable(int growthRate, u32 * table);
@@ -239,7 +241,7 @@ u32 GetExpByGrowthRateAndLevel(int rate, int level);
 int CalcMonLevel(POKEMON * pokemon);
 int CalcBoxMonLevel(BOXMON * boxmon);
 int CalcLevelBySpeciesAndExp(u16 species, u32 experience);
-int CalcLevelBySpeciesAndExp_PreloadedPersonal(struct BaseStats * personal, u16 species, u32 experience);
+int CalcLevelBySpeciesAndExp_PreloadedPersonal(BASE_STATS * personal, u16 species, u32 experience);
 u8 GetBoxMonNature(BOXMON * boxmon);
 u8 GetMonNature(POKEMON * mon);
 u8 GetNatureFromPersonality(u32 pid);
@@ -249,36 +251,14 @@ u8 GetBoxMonGender(BOXMON * boxmon);
 u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid);
 u8 MonIsShiny(POKEMON * pokemon);
 u32 GenerateShinyPersonality(u32 otid);
-void FUN_02068B70(struct SomeDrawPokemonStruct * spC, BOXMON * boxmon, u8 sp10);
-void FUN_02068C00(struct SomeDrawPokemonStruct * spC, int species, u8 gender, u8 sp10, u8 shiny, u8 forme, u32 personality);
-u8 FUN_02068E14(POKEMON * pokemon, u32 a1);
-u8 FUN_02068E1C(BOXMON * boxmon, u32 a1);
-u8 FUN_02068E88(int species, u8 gender, u32 a2, u8 forme, u32 pid);
 u32 GetArceusTypeByHeldItemEffect(u16 plate);
-int FUN_0206AA30(int a0);
-void FUN_02068B68(struct SomeDrawPokemonStruct * spC, POKEMON * pokemon, u8 sp10);
-void FUN_02068FE0(struct SomeDrawPokemonStruct * a0, u16 a1, int a2);
-void FUN_02069010(void * dest, int a1);
-void FUN_02069038(u32 a0, u32 a1, u32 a2, s32 a3, u32 a4, u32 a5, u32 a6);
-void FUN_020690AC(struct SomeDrawPokemonStruct * a0, u32 a1);
-u32 FUN_020690C4(void);
-u32 FUN_020690C8(void);
 u8 GetBoxMonUnownLetter(BOXMON * boxmon);
 u8 GetMonUnownLetter(POKEMON * pokemon);
-BOXMON * FUN_020690E4(POKEMON * pokemon);
 
 u16 GetMonEvolution(PARTY * party, POKEMON * pokemon, u32 context, u32 usedItem, u32 * method_ret);
 u16 ReadFromPersonalPmsNarc(u16 species);
 u16 GetEggSpecies(u16 species);
-BOOL FUN_020690E8(POKEMON * pokemon);
-u32 FUN_02069698(POKEMON * pokemon, u16 move);
-void FUN_02069708(POKEMON * pokemon, u16 move);
-void FUN_02069718(BOXMON * boxmon, u16 move);
 void MonSetMoveInSlot(POKEMON * pokemon, u16 move, u8 slot);
-u32 FUN_02069818(POKEMON * pokemon, u32 * r5, u16 * sp0);
-void FUN_020698E0(POKEMON * pokemon, int slot1, int slot2);
-void FUN_020698E8(BOXMON * boxmon, int slot1, int slot2);
-void FUN_020699A4(POKEMON * pokemon, u32 slot);
 void CopyBoxPokemonToPokemon(BOXMON * src, POKEMON * dest);
 u8 Party_GetMaxLevel(PARTY * party);
 u16 SpeciesToSinnohDexNo(u16 species);
@@ -294,17 +274,9 @@ void Party_SpreadPokerus(PARTY * party);
 BOOL Pokemon_HasPokerus(POKEMON * pokemon);
 BOOL Pokemon_IsImmuneToPokerus(POKEMON * pokemon);
 void Pokemon_UpdateArceusForme(POKEMON * pokemon);
-void FUN_02069FB0(SOUND_CHATOT *r7, u32 r5, u16 r4, s32 r6, s32 sp18, u32 sp1C, u32 sp20);
-void FUN_0206A014(POKEMON * pokemon, PLAYERDATA * a1, u32 pokeball, u32 a3, u32 encounterType, u32 heap_id);
-void FUN_0206A094(POKEMON * pokemon, u32 a1, u32 a2);
-BOOL FUN_0206A13C(POKEMON * pokemon, u32 a1);
-void FUN_0206A1C4(POKEMON * pokemon);
-void FUN_0206A23C(POKEMON * r5, u32 personality);
 int LowestFlagNo(u32 mask);
 BOOL IsPokemonLegendaryOrMythical(u16 species);
 u16 GetLegendaryMon(u32 idx);
-BOOL FUN_0206A998(POKEMON * pokemon);
-BOOL FUN_0206A9AC(BOXMON * boxmon, PLAYERDATA * sb2, u32 heap_id);
 void Pokemon_RemoveCapsule(POKEMON * pokemon);
 void RestoreBoxMonPP(BOXMON * boxmon);
 

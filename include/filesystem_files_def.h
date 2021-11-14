@@ -8,7 +8,7 @@ typedef enum NarcId
     NARC_a_0_0_0 = 0,
     NARC_a_0_0_1,
     NARC_a_0_0_2,
-    NARC_a_0_0_3,
+    NARC_POKETOOL_PERSONAL_GROWTBL,
     NARC_a_0_0_4,
     NARC_a_0_0_5,
     NARC_a_0_0_6,

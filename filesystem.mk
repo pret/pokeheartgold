@@ -397,6 +397,7 @@ endef
 NARCS := $(filter %.narc,$(NITROFS_FILES))
 NAIXS := $(NARCS:%.narc=%.naix)
 
+$(eval $(call arc_strip_name,files/poketool/personal/growtbl.narc,files/a/0/0/3))
 $(eval $(call arc_strip_name,files/fielddata/script/scr_seq.narc,files/a/0/1/2))
 $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_data.narc,files/a/0/1/7))

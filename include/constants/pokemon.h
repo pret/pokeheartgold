@@ -96,6 +96,8 @@
 #define NATURE_CAREFUL  23
 #define NATURE_QUIRKY   24
 
+#define NATURE_NUM      25
+
 // Pokemon Stats
 #define STAT_HP      0
 #define STAT_ATK     1
@@ -106,8 +108,9 @@
 #define STAT_ACC     6 // Only in battles.
 #define STAT_EVASION 7 // Only in battles.
 
-#define NUM_EV_STATS     NUM_STATS - 1 // excludes HP
-#define NUM_BATTLE_STATS NUM_STATS + 2 // includes Accuracy and Evasion
+#define NUM_STATS        6
+#define NUM_EV_STATS     (NUM_STATS - 1) // excludes HP
+#define NUM_BATTLE_STATS (NUM_STATS + 2) // includes Accuracy and Evasion
 
 // Shiny odds
 #define SHINY_ODDS 8 // Actual probability is SHINY_ODDS/65536
@@ -336,9 +339,19 @@ enum MonGender
 #define FRIENDSHIP_EVENT_HEAL_FIELD_PSN   7
 #define FRIENDSHIP_EVENT_FAINT_LARGE      8 // If opponent was >= 30 levels higher. See AdjustFriendshipOnBattleFaint
 
+#define FRIENDSHIP_EVENT_NUM              9
+
+#define FRIENDSHIP_TIER_LOW               0
+#define FRIENDSHIP_TIER_LOW_MIN           0
+#define FRIENDSHIP_TIER_MID               1
+#define FRIENDSHIP_TIER_MID_MIN         100
+#define FRIENDSHIP_TIER_HI                2
+#define FRIENDSHIP_TIER_HI_MIN          200
+#define FRIENDSHIP_TIER_NUM               3
+#define FRIENDSHIP_MAX                  255
+
 #ifndef PM_ASM
-// TODO: Identify the rest of these
-enum BaseStat {
+typedef enum BaseStat {
     BASE_HP = 0,
     BASE_ATK,
     BASE_DEF,
@@ -372,7 +385,7 @@ enum BaseStat {
     BASE_TMHM_2,
     BASE_TMHM_3,
     BASE_TMHM_4,
-};
+} BaseStat;
 
 typedef enum {
     EGG = 0,
