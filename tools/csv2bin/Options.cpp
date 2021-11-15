@@ -32,7 +32,7 @@ void Options::usage(std::ostream &strm) {
     strm << "both the CSV and the corresponding field in the compiled binary" << std::endl;
     strm << "Each line shall have the following format:" << std::endl;
     strm << std::endl;
-    strm << "column_name:width[:path/to/c/header.h]" << std::endl;
+    strm << "column_name:width[.bits][:path/to/c/header.h[:const-prefix]]" << std::endl;
     strm << std::endl;
     strm << "column_name must match the CSV header line." << std::endl;
     strm << "width must be a valid Nitro type name - either 'u' or 's'," << std::endl;
@@ -40,9 +40,16 @@ void Options::usage(std::ostream &strm) {
     strm << "  To designate a column as an index column, use 'skip'." << std::endl;
     strm << "  To designate a column as binary padding, use 'pad' followed by" << std::endl;
     strm << "  the number of padding bytes." << std::endl;
+    strm << "  To designate a bitfield to a typed or padded field, add a period (.) followed" << std::endl;
+    strm << "  by the number of bits. For example, 'can_cycle:u8.1'" << std::endl;
     strm << "the optional header file path should be relative to" << std::endl;
     strm << "  the directory of execution, or you can pass a different" << std::endl;
     strm << R"(  root using "-i".)" << std::endl;
+    strm << "  This spec supports the special header type 'bool', which maps" << std::endl;
+    strm << "  the strings 'true' and 'false'." << std::endl;
+    strm << "the optional const-prefix restricts the header parsing to only those" << std::endl;
+    strm << "  constants beginning with the specified prefix. Default behavior is to" << std::endl;
+    strm << "  consider all constants defined in that header." << std::endl;
     strm << std::endl;
     strm << "Note 2: In disasm mode, the manifest must define all columns." << std::endl;
     strm << "In compile mode, missing columns will be assumed to be u32." << std::endl;
@@ -52,6 +59,7 @@ void Options::usage(std::ostream &strm) {
 
 Options::Options(int argc, char **argv) {
     std::vector<std::string> argvec(argv + 1, argv + argc);
+    include_paths.insert(include_paths.begin(), ".");
     for (auto iarg = argvec.begin(); iarg != argvec.end(); iarg ++) {
         if (*iarg == "-i" || *iarg == "--include") {
             iarg++;
@@ -182,21 +190,9 @@ int Options::main_compile() {
         }
     }
 
+    BufferedRowConverter converter(manifest, csvFile);
     for (const auto &row : csvFile) {
-        for (const auto &name : manifest.colnames) {
-            ColumnSpec &spec = manifest[name];
-            auto col_i = std::find(csvFile.GetColnames().cbegin(), csvFile.GetColnames().cend(), name);
-            if (col_i == csvFile.GetColnames().cend()) {
-                spec.write((std::ofstream &)binfile, "");
-            } else {
-                spec.write((std::ofstream &)binfile, row[col_i - csvFile.GetColnames().cbegin()]);
-            }
-        }
-        // Word aligned
-        if ((binfile.tellp() & 3) != 0) {
-            static const unsigned char padding[3] = {0};
-            binfile.write((const char *)padding, (-binfile.tellp()) & 3);
-        }
+        (std::ofstream &)binfile << converter;
     }
     return 0;
 }
@@ -240,25 +236,10 @@ int Options::main_disasm() {
     assert(binfsize % manifest.size() == 0);
     csvFile.resize(binfsize / manifest.size(), colnames.size());
     csvFile.SetColnames(colnames.cbegin(), colnames.cend());
+
+    BufferedRowConverter converter(manifest, csvFile);
     for (int i = 0; i < csvFile.nrow(); i++) {
-        for (const auto &name : manifest.colnames) {
-            ColumnSpec &spec = manifest[name];
-            auto col_i = std::find(csvFile.GetColnames().cbegin(), csvFile.GetColnames().cend(), name);
-            try {
-                if (col_i == csvFile.GetColnames().cend()) {
-                    spec.read((std::ifstream &)binfile, i);
-                }
-                else {
-                    csvFile[i][col_i - csvFile.GetColnames().cbegin()] = spec.read((std::ifstream &)binfile, i);
-                }
-            } catch (const padding_warning &w) {
-                std::cerr << "csv2bin warning: row " << i << " column " << name << ": " << w.what() << std::endl;
-            }
-        }
-        // Word aligned
-        if ((binfile.tellg() & 3) != 0) {
-            binfile.seekg(((int)binfile.tellg() + 3) & ~3);
-        }
+        (std::ifstream &)binfile >> converter;
     }
     csvFile.ToFile(posargs[1]);
     return 0;

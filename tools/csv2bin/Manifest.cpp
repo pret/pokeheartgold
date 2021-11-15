@@ -1,27 +1,51 @@
 #include "Manifest.h"
 
-void ColumnSpec::_init(int _width, const fs::path &headerfile, const std::string &prefix) {
+static std::map<std::pair<fs::path, std::string>, std::map<std::string, int>> HeaderCache {
+    {"bool", {
+         {"false", 0},
+         {"true", 1}
+     }}
+};
+
+void ColumnSpec::translate_width(std::string &width, int &bytes, int &bits) {
+    int dotpos = width.find('.');
+    bytes = std::stoi(width.substr(0, dotpos));
+    if (dotpos == std::string::npos) {
+        bits = 0;
+    } else {
+        bits = std::stoi(width.substr(dotpos + 1));
+    }
+}
+
+void ColumnSpec::_init(int _width, const fs::path &headerfile, const std::string &prefix, int _nbits) {
     width = _width;
+    nbits = _nbits;
     if (!headerfile.empty()) {
-        std::ifstream handle(headerfile);
-        std::regex pattern("#define +(" + prefix + "\\w+) +(\\d+)$");
-        std::string line;
-        std::smatch results;
-        while (std::getline(handle, line)) {
-            if (std::regex_match(line, results, pattern)) {
-                constants[results[1]] = std::stoi(results[2]);
+        try {
+            constants = HeaderCache.at({headerfile, prefix});
+        } catch (const std::out_of_range &e) {
+            std::ifstream handle(headerfile);
+            std::regex pattern("#define +(" + prefix + "\\w+) +(\\d+)$");
+            std::string line;
+            std::smatch results;
+            while (std::getline(handle, line)) {
+                if (std::regex_match(line, results, pattern)) {
+                    constants[results[1]] = std::stoi(results[2]);
+                }
             }
+            HeaderCache[{headerfile, prefix}] = constants;
         }
     }
 }
 
-ColumnSpec::ColumnSpec(int _width, const fs::path& headerfile, const std::string &prefix) {
-    _init(_width, headerfile);
+ColumnSpec::ColumnSpec(int _width, const fs::path& headerfile, const std::string &prefix, int _nbits) {
+    _init(_width, headerfile, prefix, _nbits);
 }
 
 ColumnSpec::ColumnSpec(std::string &_width, const fs::path &headerfile, const std::string &prefix) {
     int sign;
     int nbit;
+    int nbytes;
 
     if (_width == "skip") {
         _init(skip, headerfile, prefix);
@@ -29,7 +53,9 @@ ColumnSpec::ColumnSpec(std::string &_width, const fs::path &headerfile, const st
     }
 
     if (_width.substr(0, 3) == "pad") {
-        _init(pad | std::stoi(_width.substr(3)), headerfile, prefix);
+        std::string __width = _width.substr(3);
+        translate_width(__width, nbytes, nbit);
+        _init(pad | nbytes, headerfile, prefix, nbit);
         return;
     }
 
@@ -44,119 +70,20 @@ ColumnSpec::ColumnSpec(std::string &_width, const fs::path &headerfile, const st
         throw std::invalid_argument("width param must be a valid fixed-width type spec");
     }
 
-    nbit = std::stoi(_width.substr(1));
-    switch (nbit) {
+    std::string __width = _width.substr(1);
+    translate_width(__width, nbytes, nbit);
+    switch (nbytes) {
     case 8:
     case 16:
     case 32:
     case 64:
-        sign *= nbit / 8;
+        sign *= nbytes / 8;
         break;
     default:
         throw std::invalid_argument("width param must be a valid fixed-width type spec");
     }
 
-    _init(sign, headerfile, prefix);
-}
-
-void ColumnSpec::align(std::ifstream &strm) const {
-    unsigned alignment = abs(width);
-    if (alignment == 1) {
-        return;
-    }
-    long pos = strm.tellg();
-    if (pos & (alignment - 1)) {
-        strm.seekg((pos + alignment - 1) & ~(alignment - 1));
-    }
-}
-
-void ColumnSpec::align(std::ofstream &strm) const {
-    unsigned alignment = abs(width);
-    if (alignment == 1) {
-        return;
-    }
-    long pos = strm.tellp();
-    if (pos & (alignment - 1)) {
-        unsigned char buffer[sizeof(long long)] = {0};
-        strm.write((const char *)buffer, (unsigned)((-pos) & (alignment - 1)));
-    }
-}
-
-std::string ColumnSpec::read(std::ifstream &strm, const int row_i) const {
-    unsigned long long result = 0;
-    unsigned nbytes = size();
-    if (is_padding()) {
-        char padding[nbytes];
-        strm.read(padding, nbytes);
-        for (int i = 0; i < nbytes; i++) {
-            if (padding[i]) {
-                throw padding_warning("nonzero bytes found in pad column. some data loss may occur.");
-            }
-        }
-        return "";
-    }
-    if (is_skipped()) {
-        if (row_i == -1) {
-            return "";
-        }
-        result = row_i;
-    } else {
-        static unsigned char buffer[sizeof(long long)];
-        align(strm);
-        strm.read((char *)buffer, nbytes);
-        for (unsigned i = 0; i < nbytes; i++) {
-            result |= buffer[i] << (i * 8);
-        }
-        if (is_signed() && nbytes < sizeof(long long) && (buffer[nbytes - 1] & 0x80)) {
-            result |= -1ull << (8 * nbytes); // sign extend
-        }
-    }
-    std::string ret;
-    if (!constants.empty()) {
-        const auto mp = std::find_if(constants.cbegin(), constants.cend(), [&](const auto &my_pair) {
-            return my_pair.second == result;
-        });
-        if (mp != constants.cend()) {
-            ret = mp->first;
-        }
-    }
-    if (ret.empty()) {
-        if (is_signed()) {
-            ret = std::to_string((long long)result);
-        }
-        else {
-            ret = std::to_string(result);
-        }
-    }
-    return ret;
-}
-
-void ColumnSpec::write(std::ofstream &strm, const std::string& data) const {
-    if (is_skipped()) {
-        return;
-    }
-    static unsigned char buffer[sizeof(long long)];
-    if (is_padding()) {
-        memset(buffer, 0, sizeof(long long));
-        strm.write((const char *)buffer, size());
-        return;
-    }
-    long long result;
-    unsigned nbytes = size();
-    if (!constants.empty()) {
-        try {
-            result = constants.at(data);
-        } catch (const std::out_of_range &e) {
-            result = std::stoll(data);
-        }
-    } else {
-        result = std::stoll(data);
-    }
-    for (unsigned i = 0; i < nbytes; i++) {
-        buffer[i] = result >> (8 * i);
-    }
-    align(strm);
-    strm.write((const char *)buffer, nbytes);
+    _init(sign, headerfile, prefix, nbit);
 }
 
 Manifest::Manifest(const fs::path &filename, std::vector<fs::path> &header_dirs) {
@@ -170,22 +97,33 @@ void Manifest::read(const fs::path &filename, std::vector<fs::path> &header_dirs
         line = line.substr(0, line.find_last_not_of(" \t\r\n") + 1);
         fs::path headerfile;
         std::string prefix;
-        size_t first_colon = line.find(':');
-        if (first_colon == std::string::npos) {
-            continue;
+
+        // Tokenize with colons
+        std::vector<std::string> tokens;
+        size_t s = 0;
+        size_t e;
+        do {
+            e = line.find(':', s);
+            tokens.emplace_back(line.substr(s, e - s));
+            s = e + 1;
+        } while (e != std::string::npos);
+
+        std::string name = tokens.at(0);
+        try {
+            mapping.at(name);
+            throw std::invalid_argument("duplicate column in manifest: " + name);
+        } catch (const std::out_of_range &e) {
+            // discard silently, we gucci
         }
-        std::string name = line.substr(0, first_colon);
-        assert(!mapping[name].is_init());
-        size_t second_colon = line.find(':', first_colon + 1);
-        std::string width = line.substr(first_colon + 1, (second_colon == std::string::npos) ? std::string::npos : second_colon - first_colon - 1);
-        if (second_colon != std::string::npos) {
-            size_t third_colon = line.find(':', second_colon + 1);
-            if (third_colon != std::string::npos) {
-                prefix = line.substr(third_colon + 1);
+        std::string width = tokens.at(1);
+        if (tokens.size() > 2) {
+            if (tokens.size() > 3) {
+                prefix = tokens[3];
             }
+            fs::path header_name = tokens[2];
             for (auto &root : header_dirs) {
-                if (fs::exists(root / line.substr(second_colon + 1, (third_colon == std::string::npos) ? std::string::npos : third_colon - second_colon - 1))) {
-                    headerfile = root / line.substr(second_colon + 1, (third_colon == std::string::npos) ? std::string::npos : third_colon - second_colon - 1);
+                if (fs::exists(root / header_name)) {
+                    headerfile = root / header_name;
                     break;
                 }
             }
@@ -214,4 +152,86 @@ size_t Manifest::size(const int alignment) const {
         ret &= ~(alignment - 1);
     }
     return ret;
+}
+
+BufferedRowConverter::BufferedRowConverter(Manifest &_manifest, CsvFile &_csvFile):
+    manifest(_manifest),
+    csvFile(_csvFile)
+{
+    bufsize = manifest.size();
+    buffer = new unsigned char[bufsize];
+    byte_cursor = 0;
+    bit_cursor = 0;
+    row_cursor = 0;
+}
+
+BufferedRowConverter::~BufferedRowConverter() {
+    delete[] buffer;
+}
+
+std::ifstream &operator>>(std::ifstream &strm, BufferedRowConverter &cvtr) {
+    strm.read((char *)cvtr.buffer, cvtr.bufsize);
+    cvtr.to_strings();
+    cvtr++;
+    return strm;
+}
+
+std::ofstream &operator<<(std::ofstream &strm, BufferedRowConverter &cvtr) {
+    cvtr.to_bytes();
+    strm.write((char *)cvtr.buffer, cvtr.bufsize);
+    cvtr++;
+    return strm;
+}
+
+void BufferedRowConverter::to_strings() {
+    if (row_cursor >= csvFile.nrow()) {
+        throw std::out_of_range("invalid row idx");
+    }
+    carriage_return();
+    std::vector<std::string> &row = csvFile[row_cursor];
+    size_t column_i = 0;
+    for (const auto colname : manifest.colnames) {
+        const ColumnSpec &spec = manifest[colname];
+        if (spec.is_skipped()) {
+            row.at(column_i++) = spec[row_cursor];
+            continue;
+        } else {
+            align(spec.size(), spec.num_bits());
+            unsigned long long val = get(spec.type(), spec.num_bits());
+            if (spec.is_padding()) {
+                if (val != 0) {
+                    std::cerr << "csv2bin warning: nonzero data in padding field may result in data loss" << std::endl;
+                }
+            } else {
+                row.at(column_i++) = spec[val];
+            }
+            advance(spec.size(), spec.num_bits());
+        }
+    }
+}
+
+void BufferedRowConverter::to_bytes() {
+    if (row_cursor >= csvFile.nrow()) {
+        throw std::out_of_range("invalid row idx");
+    }
+    carriage_return();
+    std::vector<std::string> &row = csvFile[row_cursor];
+    size_t column_i = 0;
+    for (const auto colname : manifest.colnames) {
+        const ColumnSpec &spec = manifest[colname];
+        if (spec.is_skipped()) {
+            column_i++;
+            continue;
+        } else {
+            align(spec.size(), spec.num_bits());
+            unsigned long long val;
+            if (spec.is_padding()) {
+                val = 0;
+            } else {
+                val = spec[row.at(column_i++)];
+            }
+            set(val, spec.type(), spec.num_bits());
+            advance(spec.size(), spec.num_bits());
+        }
+    }
 }

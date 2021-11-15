@@ -2,6 +2,7 @@
 #define GUARD_MANIFEST_H
 
 #include "global.h"
+#include "CsvFile.h"
 
 template <typename T = unsigned, typename C = char>
 C* to_array(C* buf, const T val, off_t offset = 0) {
@@ -42,30 +43,53 @@ class ColumnSpec {
     static const width_t pad  = 512;
 
     width_t width = 0;                              // number of bytes. positive = unsigned, negative = signed
-    std::unordered_map<std::string, int> constants; // from a C header, specified in the manifest
+    unsigned char nbits = 0;
+    std::map<std::string, int> constants; // from a C header, specified in the manifest
 
-    void align(std::ofstream &strm) const;
-    void align(std::ifstream &strm) const;
-    void _init(int _width, const fs::path &headerfile = "", const std::string &prefix = "");
+    void _init(int _width, const fs::path &headerfile = "", const std::string &prefix = "", int _nbits = 0);
+    static void translate_width(std::string &width, int &bytes, int &bits);
 public:
     ColumnSpec() = default;
-    explicit ColumnSpec(int _width, const fs::path& headerfile = "", const std::string &prefix = "");
+    explicit ColumnSpec(int _width, const fs::path& headerfile = "", const std::string &prefix = "", int _nbits = 0);
     explicit ColumnSpec(std::string &_width, const fs::path& headerfile = "", const std::string &prefix = "");
-    std::string read(std::ifstream &strm, int row_i = -1) const;
-    void write(std::ofstream &strm, const std::string& data) const;
     size_t size() const {
-        if (width == skip) {
+        if (is_skipped()) {
             return 0;
         }
-        if ((width & ~0xFF) == pad) {
+        if (is_padding()) {
             return width & 0xFF;
         }
         return abs(width);
     }
+    int type() const {
+        if (is_skipped()) {
+            return 0;
+        }
+        if (is_padding()) {
+            return width & 0xFF;
+        }
+        return width;
+    }
     bool is_signed() const { return width < 0; }
     bool is_init() const { return width != 0; }
-    bool is_padding() const { return (width & ~0xFF) == pad; }
+    bool is_padding() const { return width > 0 && (width & ~0xFF) == pad; }
     bool is_skipped() const { return width == skip; }
+    bool is_bitfield() const { return nbits != 0; }
+    unsigned num_bits() const { return nbits; }
+    const std::string operator[](int i) const {
+        auto it = std::find_if(constants.cbegin(), constants.cend(), [&](const auto pair) { return pair.second == i; });
+        if (it == constants.end()) {
+            return std::to_string(i);
+        }
+        return it->first;
+    }
+    int operator[](const std::string &key) const {
+        try {
+            return constants.at(key);
+        } catch (std::out_of_range &e) {
+            return std::stoi(key);
+        }
+    }
 };
 
 // File format: newline separated
@@ -99,5 +123,144 @@ public:
     }
 };
 
+class BufferedRowConverter {
+    Manifest &manifest;
+    CsvFile &csvFile;
+    unsigned char *buffer;
+    size_t bufsize;
+    off_t byte_cursor = 0;
+    off_t bit_cursor = 0;
+    off_t row_cursor = 0;
+public:
+    BufferedRowConverter(Manifest &_manifest, CsvFile &_csvFile);
+    ~BufferedRowConverter();
+    void to_strings();
+    void to_bytes();
+    friend std::ifstream &operator>>(std::ifstream &strm, BufferedRowConverter &cvtr);
+    friend std::ofstream &operator<<(std::ofstream &strm, BufferedRowConverter &cvtr);
+    BufferedRowConverter &operator++() {
+        if (row_cursor >= csvFile.nrow()) {
+            throw std::out_of_range("BufferedRowConverter++");
+        }
+        row_cursor++;
+        return *this;
+    };
+    BufferedRowConverter &operator++(int i) {
+        if (row_cursor + i > csvFile.nrow()) {
+            throw std::out_of_range("BufferedRowConverter++");
+        }
+        row_cursor++;
+        return *this;
+    };
+    unsigned bitmask(unsigned nbits) const {
+        return ((1ul << nbits) - 1) << bit_cursor;
+    }
+    void align(const unsigned alignment, const unsigned bitcount) {
+        if (bitcount == 0 && bit_cursor != 0) {
+            byte_cursor++;
+            bit_cursor = 0;
+        }
+        if (alignment == 1) return;
+        if (byte_cursor & (alignment - 1)) {
+            byte_cursor += alignment - 1;
+            byte_cursor &= ~(alignment - 1);
+            bit_cursor = 0;
+        }
+    }
+    unsigned long long get(int width, int numbits = 0) const {
+        unsigned long ret;
+        if (byte_cursor + abs(width) > bufsize) {
+            throw std::out_of_range("BufferedRowConverter::get");
+        }
+        switch (width) {
+        case 1:
+            ret = from_array<uint8_t>(buffer, byte_cursor);
+            break;
+        case 2:
+            ret = from_array<uint16_t>(buffer, byte_cursor);
+            break;
+        case 4:
+            ret = from_array<uint32_t>(buffer, byte_cursor);
+            break;
+        case 8:
+            ret = from_array<uint64_t>(buffer, byte_cursor);
+            break;
+        case -1:
+            ret = from_array<int8_t>(buffer, byte_cursor);
+            break;
+        case -2:
+            ret = from_array<int16_t>(buffer, byte_cursor);
+            break;
+        case -4:
+            ret = from_array<int32_t>(buffer, byte_cursor);
+            break;
+        case -8:
+            ret = from_array<int64_t>(buffer, byte_cursor);
+            break;
+        default:
+            throw std::invalid_argument("BufferedRowConverter::get");
+        }
+        if (numbits != 0) {
+            ret &= bitmask(numbits);
+            ret >>= numbits;
+        }
+        return ret;
+    }
+    void set(unsigned long long val, int width, int numbits = 0) {
+        if (numbits != 0) {
+            val <<= numbits;
+            val &= bitmask(numbits);
+            val |= (get(width) & ~bitmask(numbits));
+        }
+        if (byte_cursor + abs(width) > bufsize) {
+            throw std::out_of_range("BufferedRowConverter::set");
+        }
+        switch (width) {
+        case 1:
+            to_array<uint8_t>(buffer, val, byte_cursor);
+            break;
+        case 2:
+            to_array<uint16_t>(buffer, val, byte_cursor);
+            break;
+        case 4:
+            to_array<uint32_t>(buffer, val, byte_cursor);
+            break;
+        case 8:
+            to_array<uint64_t>(buffer, val, byte_cursor);
+            break;
+        case -1:
+            to_array<int8_t>(buffer, val, byte_cursor);
+            break;
+        case -2:
+            to_array<int16_t>(buffer, val, byte_cursor);
+            break;
+        case -4:
+            to_array<int32_t>(buffer, val, byte_cursor);
+            break;
+        case -8:
+            to_array<int64_t>(buffer, val, byte_cursor);
+            break;
+        default:
+            throw std::invalid_argument("BufferedRowConverter::set");
+        }
+    }
+    void advance(int nbytes, int nbits = 0) {
+        if (nbits != 0) {
+            bit_cursor += nbits;
+            if (bit_cursor >= nbytes * 8) {
+                byte_cursor += nbytes;
+                bit_cursor -= nbytes * 8;
+            }
+        } else {
+            byte_cursor += nbytes;
+            bit_cursor = 0;
+        }
+    }
+    void carriage_return() {
+        byte_cursor = 0;
+        bit_cursor = 0;
+        memset(buffer, 0, bufsize);
+    }
+};
 
 #endif //GUARD_MANIFEST_H
