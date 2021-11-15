@@ -84,24 +84,30 @@ void ColumnSpec::align(std::ofstream &strm) const {
 
 std::string ColumnSpec::read(std::ifstream &strm, const int row_i) const {
     unsigned long long result = 0;
-    if ((width & ~0xFF) == pad) {
-        strm.seekg(width & 0xFF, std::ios::cur);
+    unsigned nbytes = size();
+    if (is_padding()) {
+        char padding[nbytes];
+        strm.read(padding, nbytes);
+        for (int i = 0; i < nbytes; i++) {
+            if (padding[i]) {
+                throw padding_warning("nonzero bytes found in pad column. some data loss may occur.");
+            }
+        }
         return "";
     }
-    if (width == skip) {
+    if (is_skipped()) {
         if (row_i == -1) {
             return "";
         }
         result = row_i;
     } else {
         static unsigned char buffer[sizeof(long long)];
-        unsigned nbytes = abs(width);
         align(strm);
         strm.read((char *)buffer, nbytes);
         for (unsigned i = 0; i < nbytes; i++) {
             result |= buffer[i] << (i * 8);
         }
-        if (width < 0 && nbytes < sizeof(long long) && (buffer[nbytes - 1] & 0x80)) {
+        if (is_signed() && nbytes < sizeof(long long) && (buffer[nbytes - 1] & 0x80)) {
             result |= -1ull << (8 * nbytes); // sign extend
         }
     }
@@ -115,7 +121,7 @@ std::string ColumnSpec::read(std::ifstream &strm, const int row_i) const {
         }
     }
     if (ret.empty()) {
-        if (width < 0) {
+        if (is_signed()) {
             ret = std::to_string((long long)result);
         }
         else {
@@ -126,17 +132,17 @@ std::string ColumnSpec::read(std::ifstream &strm, const int row_i) const {
 }
 
 void ColumnSpec::write(std::ofstream &strm, const std::string& data) const {
-    if (width == skip) {
+    if (is_skipped()) {
         return;
     }
     static unsigned char buffer[sizeof(long long)];
-    if ((width & ~0xFF) == pad) {
+    if (is_padding()) {
         memset(buffer, 0, sizeof(long long));
-        strm.write((const char *)buffer, width & 0xFF);
+        strm.write((const char *)buffer, size());
         return;
     }
     long long result;
-    unsigned nbytes = abs(width);
+    unsigned nbytes = size();
     if (!constants.empty()) {
         try {
             result = constants.at(data);

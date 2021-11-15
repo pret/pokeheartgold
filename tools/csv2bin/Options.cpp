@@ -1,13 +1,5 @@
 #include "Options.h"
 
-template <typename T = unsigned, typename C = char>
-C* to_array(C* buf, const T val, size_t offset = 0) {
-    for (int i = 0; i < sizeof(T); i++) {
-        buf[offset + i] = (val >> (8 * i * sizeof(C)));
-    }
-    return buf;
-}
-
 template <typename V>
 V& to_upper(V& vec) {
     std::for_each(vec.begin(), vec.end(), [](typename V::value_type &x) { x = std::toupper(x); });
@@ -84,11 +76,14 @@ Options::Options(int argc, char **argv) {
     if (posargs[0] == "compile") {
         execMode = EXEC_CSV2BIN;
     } else if (posargs[0] == "disasm") {
+        if (naix_mode) {
+            std::cerr << "csv2bin warning: --naix with disasm mode is equivalent to --narc" << std::endl;
+        }
         execMode = EXEC_BIN2CSV;
     } else {
         throw argument_error(R"(first positional argument must be either "compile" or "disasm", not )" + posargs[0]);
     }
-    binfile.open(posargs[2], std::ios::binary | (execMode == EXEC_CSV2BIN ? std::ios::out : std::ios::in | std::ios::ate));
+    binfile.open(posargs[2], std::ios::binary | (execMode == EXEC_CSV2BIN ? std::ios::out : narc_mode ? std::ios::in | std::ios::ate : std::ios::in));
     manifest.read(posargs[3], include_paths);
     if (execMode == EXEC_CSV2BIN) {
         csvFile.FromFile(posargs[1]);
@@ -209,21 +204,50 @@ int Options::main_disasm() {
             colnames.emplace_back(*name_i);
         }
     }
-    // binfile was opened at end (ios::ate)
-    size_t binfsize = binfile.tellg();
+    size_t binfsize;
+    size_t binfoff;
+    if (narc_mode) {
+        static char narc_header[16];
+        static char btaf_header[12];
+        binfile.read(narc_header, 16);
+        assert(memcmp(narc_header, "NARC\xfe\xff\x00\x01", 8) == 0);
+        binfile.read(btaf_header, 12);
+        assert(memcmp(btaf_header, "BTAF", 4) == 0);
+        size_t fatb_size = from_array<unsigned>(btaf_header, 4) - 12;
+        size_t nrow = from_array<unsigned>(btaf_header, 8);
+        binfile.seekg(fatb_size, std::ios::cur);
+        static char btnf_header[8];
+        binfile.read(btnf_header, 8);
+        assert(memcmp(btnf_header, "BTNF", 4) == 0);
+        size_t fntb_size = from_array<unsigned>(btnf_header, 4) - 8;
+        binfile.seekg(fntb_size, std::ios::cur);
+        static char gmif_header[8];
+        binfile.read(gmif_header, 8);
+        assert(memcmp(gmif_header, "GMIF", 4) == 0);
+        binfsize = from_array<unsigned>(gmif_header, 4);
+        assert(binfsize / manifest.size() == nrow);
+    } else {
+        // binfile was opened at end (ios::ate)
+        binfsize = binfile.tellg();
+        // rewind
+        binfile.seekg(0);
+    }
     assert(binfsize % manifest.size() == 0);
-    // rewind
-    binfile.seekg(0);
     csvFile.resize(binfsize / manifest.size(), colnames.size());
     csvFile.SetColnames(colnames.cbegin(), colnames.cend());
     for (int i = 0; i < csvFile.nrow(); i++) {
         for (const auto &name : manifest.colnames) {
             ColumnSpec &spec = manifest[name];
             auto col_i = std::find(csvFile.GetColnames().cbegin(), csvFile.GetColnames().cend(), name);
-            if (col_i == csvFile.GetColnames().cend()) {
-                spec.read((std::ifstream &)binfile, i);
-            } else {
-                csvFile[i][col_i - csvFile.GetColnames().cbegin()] = spec.read((std::ifstream &)binfile, i);
+            try {
+                if (col_i == csvFile.GetColnames().cend()) {
+                    spec.read((std::ifstream &)binfile, i);
+                }
+                else {
+                    csvFile[i][col_i - csvFile.GetColnames().cbegin()] = spec.read((std::ifstream &)binfile, i);
+                }
+            } catch (const padding_warning &w) {
+                std::cerr << "csv2bin warning: row " << i << " column " << name << ": " << w.what() << std::endl;
             }
         }
         // Word aligned

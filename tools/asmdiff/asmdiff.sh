@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-MYDIR=$(dirname $0)
+MYDIR=$(dirname "$0")
 
-mkdir -p ${MYDIR}/.bins
+mkdir -p "${MYDIR}"/.bins
 
 DEFAULT_BASEROM=baserom.nds
 DEFAULT_ARM9BUILDDIR=build/heartgold.us
@@ -10,8 +10,8 @@ DEFAULT_ARM7BUILDDIR=sub/build
 DEFAULT_FSDIR=files
 
 # Build C utils on demand
-[[ $MYDIR/ntruncompbw -nt $MYDIR/ntruncompbw.c ]] || gcc -O3 -g -DNDEBUG -o $MYDIR/ntruncompbw $MYDIR/ntruncompbw.c
-[[ $MYDIR/ntrextractfile -nt $MYDIR/ntrextractfile.c ]] || gcc -O3 -g -DNDEBUG -o $MYDIR/ntrextractfile $MYDIR/ntrextractfile.c
+[[ $MYDIR/ntruncompbw -nt $MYDIR/ntruncompbw.c ]] || gcc -O3 -g -DNDEBUG -o "$MYDIR"/ntruncompbw "$MYDIR"/ntruncompbw.c
+[[ $MYDIR/ntrextractfile -nt $MYDIR/ntrextractfile.c ]] || gcc -O3 -g -DNDEBUG -o "$MYDIR"/ntrextractfile "$MYDIR"/ntrextractfile.c
 
 getword() {
   od -j "$2" -N 4 -A n -t u "$1" | awk '{$1=$1};1'
@@ -53,7 +53,7 @@ while [[ $# -gt 0 ]]; do
     shift
     ;;
   -m)
-    [[ -n $overlay ]] && { echo can only do one overlay at a time; exit 1; }
+    [[ -n $overlay ]] && { echo "can only do one overlay at a time"; exit 1; }
     mode=overlay
     overlay="$2"
     basestem=${basestem}.o${overlay}
@@ -68,7 +68,7 @@ while [[ $# -gt 0 ]]; do
     shift
     ;;
   -f)
-    mode=file
+    mode="file"
     filepath="$2"
     shift 2
     ;;
@@ -124,7 +124,7 @@ case "$mode" in
       dd if="$baserom" of="$basefile" bs=1 skip="$fileoff" count="$filesize" 2>/dev/null
       (( param & 16777216 )) && {
         compsize=$((param & 16777215))
-        $MYDIR/ntruncompbw $basefile $vma $((vma+compsize)) || { rm -f $basefile; exit 1; }
+        "$MYDIR"/ntruncompbw "$basefile" "$vma" $((vma+compsize)) || { rm -f "$basefile"; exit 1; }
       }
     }
     buildfile=$builddir/OVY_${overlay}.sbin
@@ -151,7 +151,7 @@ case "$mode" in
         _start_ModuleParams=$(getword "$baserom" $((fileoff+size+4)))
         compstatend=$(getword "$basefile" $((_start_ModuleParams+20)))
         [[ $compstatend != "0" ]] && {
-          $MYDIR/ntruncompbw $basefile $vma $compstatend || { rm -f $basefile; exit 1; }
+          "$MYDIR"/ntruncompbw "$basefile" "$vma" "$compstatend" || { rm -f "$basefile"; exit 1; }
           dd if=/dev/zero of="$basefile" bs=1 seek="$((_start_ModuleParams+20))" count=4 conv=notrunc 2>/dev/null
         }
       }
@@ -163,17 +163,17 @@ case "$mode" in
     [[ -f "${buildfile}" ]] || { echo file not found: "${buildfile}"; exit 1; }
     basefile=${MYDIR}/.files/${filepath}
     [[ -f "${basefile}" ]] || {
-      mkdir -p $(dirname "${basefile}")
-      ${MYDIR}/ntrextractfile ${baserom} ${filepath} >${basefile}
+      mkdir -p "$(dirname "${basefile}")"
+      "${MYDIR}"/ntrextractfile "${baserom}" "${filepath}" >"${basefile}"
     }
-    diff -u <(hexdump -Cv $basefile) <(hexdump -Cv $buildfile)
+    diff -u <(hexdump -Cv "$basefile") <(hexdump -Cv "$buildfile")
     exit 0
     ;;
 esac
 
 [[ -n "$1" ]] && start=$(($1)) || start=$vma
-[[ -n "$2" ]] && size=$(($2)) || size=$(wc -c <$basefile)
+[[ -n "$2" ]] && size=$(($2)) || size=$(wc -c <"$basefile")
 do-objdump () {
-  arm-none-eabi-objdump -Drz -bbinary -m$proc $thumb --adjust-vma=$vma --start-address=$start --stop-address=$((start+size)) $1
+  arm-none-eabi-objdump -Drz -bbinary -m$proc $thumb --adjust-vma="$vma" --start-address="$start" --stop-address=$((start+size)) "$1"
 }
-diff -u <(do-objdump $basefile) <(do-objdump $buildfile)
+diff -u <(do-objdump "$basefile") <(do-objdump "$buildfile")

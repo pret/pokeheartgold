@@ -3,6 +3,31 @@
 
 #include "global.h"
 
+template <typename T = unsigned, typename C = char>
+C* to_array(C* buf, const T val, off_t offset = 0) {
+    for (int i = 0; i < sizeof(T); i++) {
+        buf[offset + i] = (val >> (8 * i * sizeof(C)));
+    }
+    return buf;
+}
+
+template <typename T = unsigned, typename C = char>
+T from_array(const C* buf, off_t offset = 0) {
+    T ret = 0;
+    for (int i = 0; i < sizeof(T); i++) {
+        ret |= buf[offset + i] << (8 * i * sizeof(C));
+    }
+    return ret;
+}
+
+class padding_warning : public std::exception {
+    std::string _what;
+public:
+    padding_warning(const char *c) : _what(c) {}
+    padding_warning(const std::string &s) : _what(s) {}
+    const char * what() const noexcept { return _what.c_str(); }
+};
+
 class ColumnSpec {
     typedef int width_t;
     static const width_t u8   =   1;
