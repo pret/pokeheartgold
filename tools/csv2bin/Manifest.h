@@ -32,13 +32,15 @@ public:
         if (width == skip) {
             return 0;
         }
-        if (width == pad) {
+        if ((width & ~0xFF) == pad) {
             return width & 0xFF;
         }
         return abs(width);
     }
     bool is_signed() const { return width < 0; }
     bool is_init() const { return width != 0; }
+    bool is_padding() const { return (width & ~0xFF) == pad; }
+    bool is_skipped() const { return width == skip; }
 };
 
 // File format: newline separated
@@ -62,7 +64,7 @@ public:
     manifest_reverse_iter rend() { return mapping.rend(); }
     manifest_const_reverse_iter crbegin() { return mapping.crbegin(); }
     manifest_const_reverse_iter crend() { return mapping.crend(); }
-    [[nodiscard]] size_t size() const;
+    [[nodiscard]] size_t size(const int alignment = 4) const;
     template <typename Iter>
     void assign(Iter first, Iter last) {
         mapping.clear();

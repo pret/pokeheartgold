@@ -24,6 +24,8 @@ class Options {
     Manifest manifest;
     std::vector<fs::path> include_paths;
     std::vector<std::string> posargs;
+    bool narc_mode = false;
+    bool naix_mode = false;
 
     int main_compile();
     int main_disasm();

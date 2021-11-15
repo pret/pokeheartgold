@@ -10,8 +10,8 @@ DEFAULT_ARM7BUILDDIR=sub/build
 DEFAULT_FSDIR=files
 
 # Build C utils on demand
-[[ $MYDIR/ntruncompbw -nt $MYDIR/ntruncompbw.c ]] || gcc -O3 -g -o $MYDIR/ntruncompbw $MYDIR/ntruncompbw.c
-[[ $MYDIR/ntrextractfile -nt $MYDIR/ntrextractfile.c ]] || gcc -O3 -g -o $MYDIR/ntrextractfile $MYDIR/ntrextractfile.c
+[[ $MYDIR/ntruncompbw -nt $MYDIR/ntruncompbw.c ]] || gcc -O3 -g -DNDEBUG -o $MYDIR/ntruncompbw $MYDIR/ntruncompbw.c
+[[ $MYDIR/ntrextractfile -nt $MYDIR/ntrextractfile.c ]] || gcc -O3 -g -DNDEBUG -o $MYDIR/ntrextractfile $MYDIR/ntrextractfile.c
 
 getword() {
   od -j "$2" -N 4 -A n -t u "$1" | awk '{$1=$1};1'

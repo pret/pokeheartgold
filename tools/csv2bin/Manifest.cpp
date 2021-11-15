@@ -30,6 +30,7 @@ ColumnSpec::ColumnSpec(std::string &_width, const fs::path &headerfile, const st
 
     if (_width.substr(0, 3) == "pad") {
         _init(pad | std::stoi(_width.substr(3)), headerfile, prefix);
+        return;
     }
 
     switch (_width[0]) {
@@ -83,6 +84,10 @@ void ColumnSpec::align(std::ofstream &strm) const {
 
 std::string ColumnSpec::read(std::ifstream &strm, const int row_i) const {
     unsigned long long result = 0;
+    if ((width & ~0xFF) == pad) {
+        strm.seekg(width & 0xFF, std::ios::cur);
+        return "";
+    }
     if (width == skip) {
         if (row_i == -1) {
             return "";
@@ -125,6 +130,11 @@ void ColumnSpec::write(std::ofstream &strm, const std::string& data) const {
         return;
     }
     static unsigned char buffer[sizeof(long long)];
+    if ((width & ~0xFF) == pad) {
+        memset(buffer, 0, sizeof(long long));
+        strm.write((const char *)buffer, width & 0xFF);
+        return;
+    }
     long long result;
     unsigned nbytes = abs(width);
     if (!constants.empty()) {
@@ -183,15 +193,19 @@ ColumnSpec &Manifest::operator[](const std::string &name) {
     return mapping[name];
 }
 
-size_t Manifest::size() const {
+size_t Manifest::size(const int alignment) const {
     size_t ret = 0;
     for (const auto & name : colnames) {
         size_t lsize = mapping.at(name).size();
-        ret += (2 * lsize - 1);
-        ret &= ~(lsize - 1);
+        if (lsize != 0) {
+            ret += (2 * lsize - 1);
+            ret &= ~(lsize - 1);
+        }
     }
     // Word align
-    ret += 3;
-    ret &= ~3;
+    if (alignment != 0) {
+        ret += alignment - 1;
+        ret &= ~(alignment - 1);
+    }
     return ret;
 }

@@ -6,14 +6,9 @@ ENCDATA_NARCS := \
 
 ENCDATA_DIRS := $(ENCDATA_NARCS:%.narc=%)
 ENCDATA_CSVS := $(ENCDATA_NARCS:%.narc=%.csv)
-ENCDATA_BINS := $(foreach csv,$(ENCDATA_CSVS),$(addprefix $(csv:%.csv=%/),$(patsubst %,bin_%.bin,$(shell cut -d, -f1 $(csv) | tail -n+2))))
 
-# Delete intermediate bin files
-.INTERMEDIATE: $(ENCDATA_BINS)
-
-$(ENCDATA_NARCS): %.narc: %.csv include/constants/species.h
-	$(ENCDATA_GS) $^ $*
-	$(KNARC) -d $* -p $@ -i
-	@$(RM) $*/*.bin
+$(ENCDATA_NARCS): MANIFEST = files/fielddata/encountdata/enc_data.txt
+$(ENCDATA_NARCS): %.narc: %.csv $(MANIFEST) include/constants/species.h
+	$(CSV2BIN) compile $< $@ $(MANIFEST) -i $(WORK_DIR)/include --naix
 
 FS_CLEAN_TARGETS += $(ENCDATA_NARCS)
