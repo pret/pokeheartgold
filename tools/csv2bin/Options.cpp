@@ -28,6 +28,8 @@ void Options::usage(std::ostream &strm) {
     strm << "  -h           Prints this message and exits" << std::endl;
     strm << std::endl;
     strm << "Note: Manifest file format declares each column on a separate line." << std::endl;
+    strm << "Columns must be declared in the same order as they would appear in" << std::endl;
+    strm << "both the CSV and the corresponding field in the compiled binary" << std::endl;
     strm << "Each line shall have the following format:" << std::endl;
     strm << std::endl;
     strm << "column_name:width[:path/to/c/header.h]" << std::endl;
@@ -43,6 +45,9 @@ void Options::usage(std::ostream &strm) {
     strm << R"(  root using "-i".)" << std::endl;
     strm << std::endl;
     strm << "Note 2: In disasm mode, the manifest must define all columns." << std::endl;
+    strm << "In compile mode, missing columns will be assumed to be u32." << std::endl;
+    strm << "The corresponding field will be inserted after the previous named" << std::endl;
+    strm << "column from the CSV." << std::endl;
 }
 
 Options::Options(int argc, char **argv) {
@@ -109,7 +114,7 @@ int Options::main_compile() {
                 manifest.colnames.insert(manifest.colnames.cbegin(), *name_i);
             } else {
                 auto dest_i = std::find(manifest.colnames.cbegin(), manifest.colnames.cend(), name_i[-1]);
-                manifest.colnames.insert(dest_i, *name_i);
+                manifest.colnames.insert(dest_i + 1, *name_i);
             }
         }
     }
