@@ -106,7 +106,7 @@ Options::Options(int argc, char **argv) {
         binfile.out = new std::ofstream(posargs[2], std::ios::binary);
         break;
     case EXEC_BIN2CSV:
-        binfile.in = new std::ifstream(posargs[2], static_cast<std::ios::openmode>(std::ios::binary | (narc_mode ? 0 : std::ios::ate)));
+        binfile.in = new std::ifstream(posargs[2], narc_mode ? std::ios::binary : std::ios::binary | std::ios::ate);
         break;
     default:
         assert(0);
@@ -180,10 +180,10 @@ int Options::main_compile() {
         unsigned gmif_size = manifest.size() * csvFile.nrow() + 8;
         unsigned btaf_size = 8 * csvFile.nrow() + 12;
         unsigned btnf_size = 16;
-        char *narc_header = new char[16];
-        char *gmif = new char[8];
-        char *btnf = new char[btnf_size];
-        char *btaf = new char[btaf_size];
+        auto *narc_header = new unsigned char[16];
+        auto *gmif = new unsigned char[8];
+        auto *btnf = new unsigned char[btnf_size];
+        auto *btaf = new unsigned char[btaf_size];
         memcpy(narc_header, "NARC\xFE\xFF\x00\x01\x00\x00\x00\x00\x10\x00\x03\x00", 16);
         to_array<unsigned>(narc_header, gmif_size + btaf_size + btnf_size + 16, 8);
         memcpy(btaf, "BTAF", 4);
@@ -201,10 +201,10 @@ int Options::main_compile() {
         memcpy(btnf, "BTNF\x10\x00\x00\x00\x04\x00\x00\x00\x00\x00\x01\x00", 16);
         memcpy(gmif, "GMIF", 4);
         to_array<unsigned>(gmif, gmif_size, 4);
-        binfile.out->write(narc_header, 16);
-        binfile.out->write(btaf, btaf_size);
-        binfile.out->write(btnf, btnf_size);
-        binfile.out->write(gmif, 8);
+        binfile.out->write((const char *)narc_header, 16);
+        binfile.out->write((const char *)btaf, btaf_size);
+        binfile.out->write((const char *)btnf, btnf_size);
+        binfile.out->write((const char *)gmif, 8);
         delete[] gmif;
         delete[] btnf;
         delete[] btaf;
