@@ -7,8 +7,8 @@ on:
 
 env:
   LM_LICENSE_FILE: "$GITHUB_WORKSPACE/tools/mwccarm/license.dat"
-  CC: gcc-8
-  CXX: g++-8
+  CC: gcc-10
+  CXX: g++-10
   CALCROM_DISCORD_WEBHOOK_AVATAR_URL: "https://i.imgur.com/38BQHdd.png"
   CALCROM_DISCORD_WEBHOOK_USERNAME: OK
   CALCROM_WEBHOOK_URL: ${{ secrets.WEBHOOKURL }}
@@ -23,7 +23,7 @@ jobs:
         run: |
           sudo apt update
           sudo ACCEPT_EULA=Y apt -y --fix-missing --allow-downgrades upgrade
-          sudo apt -y --allow-downgrades install g++-8-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config
+          sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config
           sudo dpkg --add-architecture i386
           wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
           sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
