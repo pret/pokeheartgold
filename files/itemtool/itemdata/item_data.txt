@@ -1,3 +1,4 @@
+item:skip:constants/items.h:ITEM_
 price:u16
 holdEffect:u8:constants/items.h:HOLD_EFFECT_
 holdEffectParam:u8
