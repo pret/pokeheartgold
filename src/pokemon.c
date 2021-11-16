@@ -26,6 +26,11 @@ void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value);
 PokemonDataBlock *GetSubstruct(BOXMON *boxmon, u32 pid, u8 which_struct);
 void LoadMonPersonal(int species, BASE_STATS *dest);
 int ResolveMonForme(int species, int forme);
+u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid);
+u32 MaskOfFlagNo(int flagno);
+void sub_0207013C(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing, BOOL a3);
+void sub_02070588(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 pid);
+void sub_020701E4(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 pid);
 
 #define ENCRY_ARGS_PTY(mon) (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.pid
 #define ENCRY_ARGS_BOX(boxmon) (u16 *)&(boxmon)->substructs, sizeof((boxmon)->substructs), (boxmon)->checksum
@@ -1679,7 +1684,7 @@ BASE_STATS *AllocAndLoadMonPersonal(int species, HeapID heap_id) {
     return ret;
 }
 
-int GetPersonalAttr(BASE_STATS * baseStats, BaseStat attr) {
+int GetPersonalAttr(const BASE_STATS *baseStats, BaseStat attr) {
     int ret;
     GF_ASSERT(baseStats != NULL);
     switch (attr) {
@@ -1976,3 +1981,212 @@ void MonApplyFriendshipMod(struct Pokemon * pokemon, u32 kind, u32 location) {
         friendship = FRIENDSHIP_MAX;
     SetMonData(pokemon, MON_DATA_FRIENDSHIP, &friendship);
 }
+
+u8 GetMonGender(POKEMON *pokemon) {
+    return GetBoxMonGender(&pokemon->box);
+}
+
+u8 GetBoxMonGender(BOXMON *boxmon) {
+    BOOL decry = AcquireBoxMonLock(boxmon);
+    u16 species = GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
+    u32 pid = GetBoxMonData(boxmon, MON_DATA_PERSONALITY, NULL);
+    ReleaseBoxMonLock(boxmon, decry);
+    return GetGenderBySpeciesAndPersonality(species, pid);
+}
+
+u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid) {
+    BASE_STATS *personal = AllocAndLoadMonPersonal(species, 0);
+    u8 gender = GetGenderBySpeciesAndPersonality_PreloadedPersonal(personal, species, pid);
+    FreeMonPersonal(personal);
+    return gender;
+}
+
+u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid) {
+#pragma unused(species)
+    enum MonGender gender;
+    u8 ratio = GetPersonalAttr(personal, BASE_GENDER_RATIO);
+    switch (ratio) {
+    case MON_RATIO_MALE:
+        return MON_MALE;
+    case MON_RATIO_FEMALE:
+        return MON_FEMALE;
+    case MON_RATIO_UNKNOWN:
+        return MON_GENDERLESS;
+    default:
+        if (ratio > (u8)pid) {
+            gender = MON_FEMALE;
+        } else {
+            gender = MON_MALE;
+        }
+        return gender;
+    }
+}
+
+BOOL BoxMonIsHoldingMail(BOXMON *boxmon) {
+    return ItemIdIsMail(GetBoxMonData(boxmon, MON_DATA_HELD_ITEM, NULL));
+}
+
+u8 MonIsShiny(POKEMON *pokemon) {
+    return BoxMonIsShiny(&pokemon->box);
+}
+
+u8 BoxMonIsShiny(BOXMON *boxmon) {
+    u32 otid = GetBoxMonData(boxmon, MON_DATA_OTID, NULL);
+    u32 pid = GetBoxMonData(boxmon, MON_DATA_PERSONALITY, NULL);
+    return CalcShininessByOtIdAndPersonality(otid, pid);
+}
+
+u8 CalcShininessByOtIdAndPersonality(u32 otid, u32 pid) {
+    return (u8)SHINY_CHECK(otid, pid);
+}
+
+u32 GenerateShinyPersonality(u32 otid) {
+    int r4;
+    u16 r6;
+    u16 r5;
+    otid = (u32)((((otid & 0xFFFF0000) >> 16) ^ (otid & 0xFFFF)) >> 3u);
+    r6 = (u16)(LCRandom() & 7);
+    r5 = (u16)(LCRandom() & 7);
+    for (r4 = 0; r4 < 13; r4++) {
+        if (MaskOfFlagNo(r4) & otid) {
+            if (LCRandom() & 1)
+                r6 |= MaskOfFlagNo(r4 + 3);
+            else
+                r5 |= MaskOfFlagNo(r4 + 3);
+        }
+        else if (LCRandom() & 1) {
+            r6 |= MaskOfFlagNo(r4 + 3);
+            r5 |= MaskOfFlagNo(r4 + 3);
+        }
+    }
+    return (u32)((r5 << 16) | r6);
+}
+
+void sub_02070124(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing) {
+    sub_0207013C(a0, boxmon, whichFacing, FALSE);
+}
+
+void sub_02070130(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing) {
+    sub_0207013C(a0, boxmon, whichFacing, TRUE);
+}
+
+void sub_0207013C(struct SomeDrawPokemonStruct *spC, BOXMON *boxmon, u8 whichFacing, BOOL sp14) {
+    BOOL decry = AcquireBoxMonLock(boxmon);
+    u16 species = GetBoxMonData(boxmon, MON_DATA_SPECIES2, NULL);
+    u8 gender = GetBoxMonGender(boxmon);
+    u8 shiny = BoxMonIsShiny(boxmon);
+    u32 pid = GetBoxMonData(boxmon, MON_DATA_PERSONALITY, NULL);
+    u8 forme;
+    if (species == SPECIES_EGG) {
+        if (GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL) == SPECIES_MANAPHY) {
+            forme = FORME_EGG_MANAPHY;
+        } else {
+            forme = FORME_EGG_STANDARD;
+        }
+    } else {
+        forme = GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
+    }
+    if (sp14 == TRUE) {
+        sub_02070588(spC, species, gender, whichFacing, shiny, forme, pid);
+    } else {
+        sub_020701E4(spC, species, gender, whichFacing, shiny, forme, pid);
+    }
+    ReleaseBoxMonLock(boxmon, decry);
+}
+/*
+
+void sub_020701E4(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality) {
+    spC->unk6 = 0;
+    spC->unk8 = 0;
+    spC->unkC = 0;
+    switch (species)
+    {
+    case SPECIES_BURMY:
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x48 + forme * 2);
+        spC->palDataID = (u16)(shiny + 0xAA + forme * 2);
+        break;
+    case SPECIES_WORMADAM:
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x4E + forme * 2);
+        spC->palDataID = (u16)(shiny + 0xB0 + forme * 2);
+        break;
+    case SPECIES_SHELLOS:
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing + 0x54 + forme);
+        spC->palDataID = (u16)(shiny + 0xB6 + forme * 2);
+        break;
+    case SPECIES_GASTRODON:
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing + 0x58 + forme);
+        spC->palDataID = (u16)(shiny + 0xBA + forme * 2);
+        break;
+    case SPECIES_CHERRIM:
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing + 0x5C + forme);
+        spC->palDataID = (u16)(shiny * 2 + 0xBE + forme);
+        break;
+    case SPECIES_ARCEUS:
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x60 + forme * 2);
+        spC->palDataID = (u16)(shiny + 0xC2 + forme * 2);
+        break;
+    case SPECIES_CASTFORM:
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing * 2 + 0x40 + forme);
+        spC->palDataID = (u16)(shiny * 4 + 0xA2 + forme);
+        break;
+    case SPECIES_DEOXYS:
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing / 2 + forme * 2);
+        spC->palDataID = (u16)(shiny + 0x9E);
+        break;
+    case SPECIES_UNOWN:
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x8 + forme * 2);
+        spC->palDataID = (u16)(shiny + 0xA0);
+        break;
+    case SPECIES_EGG: // egg, manaphy egg
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(0x84 + forme);
+        spC->palDataID = (u16)(0xE6 + forme);
+        break;
+    case SPECIES_MANAPHY_EGG: // bad egg
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = 0x84;
+        spC->palDataID = 0xE6;
+        break;
+    case SPECIES_SHAYMIN: // land, sky
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x86 + forme * 2);
+        spC->palDataID = (u16)(shiny + 0xE8);
+        break;
+    case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x8A + forme * 2);
+        spC->palDataID = (u16)(shiny + 0xEC);
+        break;
+    case SPECIES_GIRATINA: // altered, origin
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x96 + forme * 2);
+        spC->palDataID = (u16)(shiny + 0xF8);
+        break;
+    case SPECIES_PICHU: // spiky-ear
+        spC->narcID = NARC_a_0_7_2;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x9A + forme * 2);
+        spC->palDataID = (u16)(shiny + 0xFC);
+        break;
+    default:
+        spC->narcID = NARC_a_0_0_4;
+        spC->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
+        spC->palDataID = (u16)(shiny + (species * 6 + 4));
+        if (species == SPECIES_SPINDA && whichFacing == 2)
+        {
+            spC->unk6 = SPECIES_SPINDA;
+            spC->unk8 = 0;
+            spC->unkC = personality;
+        }
+        break;
+    }
+}
+*/

@@ -517,4 +517,8 @@ typedef enum EvoMethod
 #define GROWTH_UNUSED_6        6
 #define GROWTH_UNUSED_7        7
 
+// Egg forme
+#define FORME_EGG_STANDARD     0
+#define FORME_EGG_MANAPHY      1
+
 #endif //POKEHEARTGOLD_CONSTANTS_POKEMON_H

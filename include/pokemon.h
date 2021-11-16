@@ -157,9 +157,9 @@ typedef struct Pokemon {
 
 struct SomeDrawPokemonStruct
 {
-    u16 unk0;
-    u16 unk2;
-    u16 unk4;
+    u16 narcID;
+    u16 charDataID;
+    u16 palDataID;
     u16 unk6;
     u8 unk8;
     u8 filler_9[3];
@@ -227,7 +227,7 @@ void AddMonData(POKEMON * pokemon, int attr, int amount);
 //void AddBoxMonData(BOXMON * boxmon, int attr, int amount);
 BASE_STATS * AllocAndLoadMonPersonal_HandleAlternateForme(int species, int form, HeapID heap_id);
 BASE_STATS * AllocAndLoadMonPersonal(int species, HeapID heap_id);
-int GetPersonalAttr(BASE_STATS * baseStats, BaseStat attr);
+int GetPersonalAttr(const BASE_STATS *baseStats, BaseStat attr);
 void FreeMonPersonal(BASE_STATS * personal);
 int GetMonBaseStat_HandleAlternateForme(int species, int form, BaseStat stat_id);
 int GetMonBaseStat(int species, BaseStat stat_id);
@@ -250,6 +250,8 @@ u8 GetMonGender(POKEMON * pokemon);
 u8 GetBoxMonGender(BOXMON * boxmon);
 u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid);
 u8 MonIsShiny(POKEMON * pokemon);
+u8 BoxMonIsShiny(BOXMON * pokemon);
+u8 CalcShininessByOtIdAndPersonality(u32 otid, u32 pid);
 u32 GenerateShinyPersonality(u32 otid);
 u32 GetArceusTypeByHeldItemEffect(u16 plate);
 u8 GetBoxMonUnownLetter(BOXMON * boxmon);

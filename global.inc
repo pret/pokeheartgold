@@ -28958,7 +28958,7 @@
 .public sub_0206DB94
 .public ScrCmd_807
 .public sub_0206DCC4
-.public sub_02070028
+.public BoxMonIsHoldingMail
 .public sub_02070124
 .public sub_02070130
 .public sub_0207013C

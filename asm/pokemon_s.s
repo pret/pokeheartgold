@@ -6,8 +6,8 @@
 	.rodata
 
 _020FF4E4: ; Held item odds
-	.short 0x002D, 0x005F
-	.short 0x0014, 0x0050
+	.short 45, 95
+	.short 20, 80
 _020FF4EC: ; Rotom moves
 	.short MOVE_NONE
 	.short MOVE_OVERHEAT
@@ -35,16 +35,16 @@ _020FF50C:
 	.word 0x00000003
 	.public sFriendshipModTable
 sFriendshipModTable: ; Friendship table
-	.byte 0x05, 0x03, 0x02
-	.byte 0x05, 0x03, 0x02
-	.byte 0x01, 0x01, 0x00
-	.byte 0x03, 0x02, 0x01
-	.byte 0x01, 0x01, 0x00
-	.byte 0x01, 0x01, 0x01
-	.byte 0xFF, 0xFF, 0xFF
-	.byte 0xFB, 0xFB, 0xF6
-	.byte 0xFB, 0xFB, 0xF6
-	.byte 0x03, 0x02, 0x01
+	.byte   5,   3,   2
+	.byte   5,   3,   2
+	.byte   1,   1,   0
+	.byte   3,   2,   1
+	.byte   1,   1,   0
+	.byte   1,   1,   1
+	.byte  -1,  -1,  -1
+	.byte  -5,  -5, -10
+	.byte  -5,  -5, -10
+	.byte   3,   2,   1
 	.balign 4, 0
 _020FF544:
 	.word           1
@@ -74,11 +74,19 @@ _020FF564: ; Legendaries
 	.short SPECIES_DARKRAI
 	.short SPECIES_SHAYMIN
 	.short SPECIES_ARCEUS
+
+	.balign 4, 0
 _020FF588:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x2F, 0x4E, 0x00, 0x00
-	.byte 0x2A, 0x4E, 0x00, 0x00, 0x27, 0x4E, 0x00, 0x00, 0x27, 0x4E, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.short 0x0000 ; s16
+	.short 0x0000 ; s16
+	.short 0x0000 ; s16
+	.short 0x0000 ; u16
+	.word 0x00000000 ; u32
+	.word 0x00000000 ; u32
+	.word 0x00000001 ; u32
+	.word 0x00004E2F, 0x00004E2A, 0x00004E27, 0x00004E27, 0xFFFFFFFF, 0xFFFFFFFF ; u32[6]
+	.word 0x00000002 ; u32
+	.word 0x00000001 ; u32
 _020FF5BC: ; Flavor preferences
 	.byte  0,  0,  0,  0,  0
 	.byte  1,  0,  0,  0, -1
@@ -698,336 +706,6 @@ _021100E8:
 	.public GenPersonalityByGenderAndNature
 	.public LoadGrowthTable
 	.public GetExpByGrowthRateAndLevel
-
-	thumb_func_start GetMonGender
-GetMonGender: ; 0x0206FF88
-	ldr r3, _0206FF8C ; =GetBoxMonGender
-	bx r3
-	.balign 4, 0
-_0206FF8C: .word GetBoxMonGender
-	thumb_func_end GetMonGender
-
-	thumb_func_start GetBoxMonGender
-GetBoxMonGender: ; 0x0206FF90
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	bl AcquireBoxMonLock
-	add r6, r0, #0
-	add r0, r5, #0
-	mov r1, #5
-	mov r2, #0
-	bl GetBoxMonData
-	lsl r0, r0, #0x10
-	mov r1, #0
-	lsr r4, r0, #0x10
-	add r0, r5, #0
-	add r2, r1, #0
-	bl GetBoxMonData
-	add r7, r0, #0
-	add r0, r5, #0
-	add r1, r6, #0
-	bl ReleaseBoxMonLock
-	add r0, r4, #0
-	add r1, r7, #0
-	bl GetGenderBySpeciesAndPersonality
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end GetBoxMonGender
-
-	thumb_func_start GetGenderBySpeciesAndPersonality
-GetGenderBySpeciesAndPersonality: ; 0x0206FFC8
-	push {r4, r5, r6, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	mov r1, #0
-	bl AllocAndLoadMonPersonal
-	add r6, r0, #0
-	add r1, r5, #0
-	add r2, r4, #0
-	bl GetGenderBySpeciesAndPersonality_PreloadedPersonal
-	add r4, r0, #0
-	add r0, r6, #0
-	bl FreeMonPersonal
-	add r0, r4, #0
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end GetGenderBySpeciesAndPersonality
-
-	thumb_func_start GetGenderBySpeciesAndPersonality_PreloadedPersonal
-GetGenderBySpeciesAndPersonality_PreloadedPersonal: ; 0x0206FFEC
-	push {r4, lr}
-	mov r1, #0x12
-	add r4, r2, #0
-	bl GetPersonalAttr
-	lsl r0, r0, #0x18
-	lsr r1, r0, #0x18
-	beq _02070006
-	cmp r1, #0xfe
-	beq _0207000A
-	cmp r1, #0xff
-	beq _0207000E
-	b _02070012
-_02070006:
-	mov r0, #0
-	pop {r4, pc}
-_0207000A:
-	mov r0, #1
-	pop {r4, pc}
-_0207000E:
-	mov r0, #2
-	pop {r4, pc}
-_02070012:
-	lsl r0, r4, #0x18
-	lsr r0, r0, #0x18
-	cmp r1, r0
-	bls _0207001E
-	mov r0, #1
-	b _02070020
-_0207001E:
-	mov r0, #0
-_02070020:
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end GetGenderBySpeciesAndPersonality_PreloadedPersonal
-
-	thumb_func_start sub_02070028
-sub_02070028: ; 0x02070028
-	push {r3, lr}
-	mov r1, #6
-	mov r2, #0
-	bl GetBoxMonData
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
-	bl ItemIdIsMail
-	pop {r3, pc}
-	thumb_func_end sub_02070028
-
-	thumb_func_start MonIsShiny
-MonIsShiny: ; 0x0207003C
-	ldr r3, _02070040 ; =BoxMonIsShiny
-	bx r3
-	.balign 4, 0
-_02070040: .word BoxMonIsShiny
-	thumb_func_end MonIsShiny
-
-	thumb_func_start BoxMonIsShiny
-BoxMonIsShiny: ; 0x02070044
-	push {r3, r4, r5, lr}
-	mov r1, #7
-	mov r2, #0
-	add r5, r0, #0
-	bl GetBoxMonData
-	mov r1, #0
-	add r4, r0, #0
-	add r0, r5, #0
-	add r2, r1, #0
-	bl GetBoxMonData
-	add r1, r0, #0
-	add r0, r4, #0
-	bl CalcShininessByOtIdAndPersonality
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end BoxMonIsShiny
-
-	thumb_func_start CalcShininessByOtIdAndPersonality
-CalcShininessByOtIdAndPersonality: ; 0x02070068
-	ldr r3, _02070090 ; =0xFFFF0000
-	lsl r2, r1, #0x10
-	and r1, r3
-	and r3, r0
-	lsl r0, r0, #0x10
-	lsr r3, r3, #0x10
-	lsr r0, r0, #0x10
-	lsr r1, r1, #0x10
-	eor r0, r3
-	lsr r2, r2, #0x10
-	eor r0, r1
-	eor r0, r2
-	cmp r0, #8
-	bhs _02070088
-	mov r0, #1
-	b _0207008A
-_02070088:
-	mov r0, #0
-_0207008A:
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	bx lr
-	.balign 4, 0
-_02070090: .word 0xFFFF0000
-	thumb_func_end CalcShininessByOtIdAndPersonality
-
-	thumb_func_start GenerateShinyPersonality
-GenerateShinyPersonality: ; 0x02070094
-	push {r3, r4, r5, r6, r7, lr}
-	add r7, r0, #0
-	ldr r0, _02070120 ; =0xFFFF0000
-	and r0, r7
-	lsr r1, r0, #0x10
-	lsl r0, r7, #0x10
-	lsr r0, r0, #0x10
-	eor r0, r1
-	lsr r7, r0, #3
-	bl LCRandom
-	mov r1, #7
-	and r0, r1
-	lsl r0, r0, #0x10
-	lsr r6, r0, #0x10
-	bl LCRandom
-	mov r1, #7
-	and r0, r1
-	lsl r0, r0, #0x10
-	lsr r5, r0, #0x10
-	mov r4, #0
-_020700C0:
-	add r0, r4, #0
-	bl MaskOfFlagNo
-	tst r0, r7
-	beq _020700F0
-	bl LCRandom
-	mov r1, #1
-	tst r0, r1
-	beq _020700E2
-	add r0, r4, #3
-	bl MaskOfFlagNo
-	orr r0, r6
-	lsl r0, r0, #0x10
-	lsr r6, r0, #0x10
-	b _02070112
-_020700E2:
-	add r0, r4, #3
-	bl MaskOfFlagNo
-	orr r0, r5
-	lsl r0, r0, #0x10
-	lsr r5, r0, #0x10
-	b _02070112
-_020700F0:
-	bl LCRandom
-	mov r1, #1
-	tst r0, r1
-	beq _02070112
-	add r0, r4, #3
-	bl MaskOfFlagNo
-	orr r0, r6
-	lsl r0, r0, #0x10
-	lsr r6, r0, #0x10
-	add r0, r4, #3
-	bl MaskOfFlagNo
-	orr r0, r5
-	lsl r0, r0, #0x10
-	lsr r5, r0, #0x10
-_02070112:
-	add r4, r4, #1
-	cmp r4, #0xd
-	blt _020700C0
-	lsl r0, r5, #0x10
-	orr r0, r6
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02070120: .word 0xFFFF0000
-	thumb_func_end GenerateShinyPersonality
-
-	thumb_func_start sub_02070124
-sub_02070124: ; 0x02070124
-	push {r3, lr}
-	mov r3, #0
-	bl sub_0207013C
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end sub_02070124
-
-	thumb_func_start sub_02070130
-sub_02070130: ; 0x02070130
-	push {r3, lr}
-	mov r3, #1
-	bl sub_0207013C
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end sub_02070130
-
-	thumb_func_start sub_0207013C
-sub_0207013C: ; 0x0207013C
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x20
-	add r5, r1, #0
-	str r0, [sp, #0xc]
-	add r0, r5, #0
-	str r2, [sp, #0x10]
-	str r3, [sp, #0x14]
-	bl AcquireBoxMonLock
-	str r0, [sp, #0x1c]
-	add r0, r5, #0
-	mov r1, #0xae
-	mov r2, #0
-	bl GetBoxMonData
-	lsl r0, r0, #0x10
-	lsr r4, r0, #0x10
-	add r0, r5, #0
-	bl GetBoxMonGender
-	str r0, [sp, #0x18]
-	add r0, r5, #0
-	bl BoxMonIsShiny
-	mov r1, #0
-	add r7, r0, #0
-	add r0, r5, #0
-	add r2, r1, #0
-	bl GetBoxMonData
-	add r6, r0, #0
-	ldr r0, _020701DC ; =0x000001EE
-	cmp r4, r0
-	bne _02070198
-	add r0, r5, #0
-	mov r1, #5
-	mov r2, #0
-	bl GetBoxMonData
-	ldr r1, _020701E0 ; =0x000001EA
-	cmp r0, r1
-	bne _02070194
-	mov r1, #1
-	b _020701A6
-_02070194:
-	mov r1, #0
-	b _020701A6
-_02070198:
-	add r0, r5, #0
-	mov r1, #0x70
-	mov r2, #0
-	bl GetBoxMonData
-	lsl r0, r0, #0x18
-	lsr r1, r0, #0x18
-_020701A6:
-	ldr r0, [sp, #0x14]
-	str r7, [sp]
-	cmp r0, #1
-	bne _020701C0
-	str r1, [sp, #4]
-	str r6, [sp, #8]
-	ldr r0, [sp, #0xc]
-	ldr r2, [sp, #0x18]
-	ldr r3, [sp, #0x10]
-	add r1, r4, #0
-	bl sub_02070588
-	b _020701D0
-_020701C0:
-	str r1, [sp, #4]
-	str r6, [sp, #8]
-	ldr r0, [sp, #0xc]
-	ldr r2, [sp, #0x18]
-	ldr r3, [sp, #0x10]
-	add r1, r4, #0
-	bl sub_020701E4
-_020701D0:
-	ldr r1, [sp, #0x1c]
-	add r0, r5, #0
-	bl ReleaseBoxMonLock
-	add sp, #0x20
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_020701DC: .word 0x000001EE
-_020701E0: .word 0x000001EA
-	thumb_func_end sub_0207013C
 
 	thumb_func_start sub_020701E4
 sub_020701E4: ; 0x020701E4

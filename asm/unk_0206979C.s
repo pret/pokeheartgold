@@ -5093,7 +5093,7 @@ sub_0206BE34: ; 0x0206BE34
 	bl GetMonData
 	add r0, r4, #0
 	bl Mon_GetBoxMon
-	bl sub_02070028
+	bl BoxMonIsHoldingMail
 	cmp r0, #0
 	beq _0206BE8A
 	ldr r0, [sp, #8]
@@ -5307,7 +5307,7 @@ sub_0206BFC4: ; 0x0206BFC4
 	bl sub_0206BF60
 _0206C03C:
 	add r0, r5, #0
-	bl sub_02070028
+	bl BoxMonIsHoldingMail
 	cmp r0, #0
 	beq _0206C056
 	ldr r0, [sp, #4]

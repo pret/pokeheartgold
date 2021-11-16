@@ -515,6 +515,10 @@
 #define SPECIES_WORMADAM_SANDY 499
 #define SPECIES_WORMADAM_TRASH 500
 
+// TODO: rotom, shaymin, giratina, pichu
+
 #define NUM_SPECIES                 SPECIES_WORMADAM_TRASH
+
+#define SPECIES_BAD_EGG        SPECIES_MANAPHY_EGG
 
 #endif //POKEHEARTGOLD_CONSTANTS_SPECIES_H
