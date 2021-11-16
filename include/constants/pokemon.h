@@ -506,15 +506,15 @@ typedef enum EvoMethod
     EVO_ROUTE217,
 } EvoMethod;
 
-enum GrowthRate
-{
-    GROWTH_MEDIUM_FAST = 0,
-    GROWTH_ERRATIC,
-    GROWTH_FLUCTUATING,
-    GROWTH_MEDIUM_SLOW,
-    GROWTH_FAST,
-    GROWTH_SLOW,
-};
 #endif //PM_ASM
+
+#define GROWTH_MEDIUM_FAST     0
+#define GROWTH_ERRATIC         1
+#define GROWTH_FLUCTUATING     2
+#define GROWTH_MEDIUM_SLOW     3
+#define GROWTH_FAST            4
+#define GROWTH_SLOW            5
+#define GROWTH_UNUSED_6        6
+#define GROWTH_UNUSED_7        7
 
 #endif //POKEHEARTGOLD_CONSTANTS_POKEMON_H

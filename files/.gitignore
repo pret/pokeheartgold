@@ -13,7 +13,9 @@ a/1/6/3
 a/2/1/4
 a/2/5/2
 msgdata/msg.narc
-fielddata/encountdata/*.narc
+fielddata/encountdata/g_enc_data.narc
+fielddata/encountdata/s_enc_data.narc
 data/gs_areawindow.narc
 itemtool/itemdata/item_icon.narc
 itemtool/itemdata/item_data.narc
+poketool/personal/growtbl.narc

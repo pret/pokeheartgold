@@ -432,6 +432,7 @@ include files/data/gs_areawindow.mk
 include files/fielddata/encountdata/gs_enc_data.mk
 include files/fielddata/script/scr_seq.mk
 include files/itemtool/itemdata/item_data.mk
+include files/poketool/personal/growtbl.mk
 
 include graphics_files_rules.mk
 
