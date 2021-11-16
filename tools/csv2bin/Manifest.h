@@ -21,6 +21,23 @@ T from_array(const C* buf, off_t offset = 0) {
     return ret;
 }
 
+template <typename T = unsigned, typename C = char>
+std::vector<C> & to_array(std::vector<C> & buf, const T val, off_t offset = 0) {
+    for (int i = 0; i < sizeof(T); i++) {
+        buf[offset + i] = (val >> (8 * i * sizeof(C)));
+    }
+    return buf;
+}
+
+template <typename T = unsigned, typename C = char>
+T from_array(const std::vector<C> & buf, off_t offset = 0) {
+    T ret = 0;
+    for (int i = 0; i < sizeof(T); i++) {
+        ret |= buf[offset + i] << (8 * i * sizeof(C));
+    }
+    return ret;
+}
+
 class padding_warning : public std::exception {
     std::string _what;
 public:
@@ -76,6 +93,12 @@ public:
     bool is_skipped() const { return width == skip; }
     bool is_bitfield() const { return nbits != 0; }
     unsigned num_bits() const { return nbits; }
+    unsigned get_alignment() const {
+        if (is_skipped() || is_padding()) {
+            return 1;
+        }
+        return size();
+    }
     const std::string operator[](int i) const {
         auto it = std::find_if(constants.cbegin(), constants.cend(), [&](const auto pair) { return pair.second == i; });
         if (it == constants.end()) {
@@ -126,14 +149,13 @@ public:
 class BufferedRowConverter {
     Manifest &manifest;
     CsvFile &csvFile;
-    unsigned char *buffer;
-    size_t bufsize;
+    std::vector<unsigned char>buffer;
     off_t byte_cursor = 0;
     off_t bit_cursor = 0;
     off_t row_cursor = 0;
+    unsigned char padval = 0;
 public:
-    BufferedRowConverter(Manifest &_manifest, CsvFile &_csvFile);
-    ~BufferedRowConverter();
+    BufferedRowConverter(Manifest &_manifest, CsvFile &_csvFile, unsigned char _padval = 0);
     void to_strings();
     void to_bytes();
     friend std::ifstream &operator>>(std::ifstream &strm, BufferedRowConverter &cvtr);
@@ -150,6 +172,7 @@ public:
             throw std::out_of_range("BufferedRowConverter++");
         }
         row_cursor++;
+        carriage_return();
         return *this;
     };
     unsigned bitmask(unsigned nbits) const {
@@ -169,7 +192,7 @@ public:
     }
     unsigned long long get(int width, int numbits = 0) const {
         unsigned long ret;
-        if (byte_cursor + abs(width) > bufsize) {
+        if (byte_cursor + abs(width) > buffer.size()) {
             throw std::out_of_range("BufferedRowConverter::get");
         }
         switch (width) {
@@ -202,17 +225,17 @@ public:
         }
         if (numbits != 0) {
             ret &= bitmask(numbits);
-            ret >>= numbits;
+            ret >>= bit_cursor;
         }
         return ret;
     }
     void set(unsigned long long val, int width, int numbits = 0) {
         if (numbits != 0) {
-            val <<= numbits;
+            val <<= bit_cursor;
             val &= bitmask(numbits);
             val |= (get(width) & ~bitmask(numbits));
         }
-        if (byte_cursor + abs(width) > bufsize) {
+        if (byte_cursor + abs(width) > buffer.size()) {
             throw std::out_of_range("BufferedRowConverter::set");
         }
         switch (width) {
@@ -259,7 +282,7 @@ public:
     void carriage_return() {
         byte_cursor = 0;
         bit_cursor = 0;
-        memset(buffer, 0, bufsize);
+        buffer.assign(buffer.size(), 0);
     }
 };
 

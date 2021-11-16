@@ -11,6 +11,9 @@
 #define POCKET_KEY_ITEMS    7
 #define POCKETS_COUNT       8
 
+#define BPOCKET_BALLS_F      0
+#define BPOCKET_
+
 #define POCKET_BAG_VIEW_END 0xFF
 
 #define NUM_BAG_ITEMS        165

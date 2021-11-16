@@ -7,25 +7,27 @@ V& to_upper(V& vec) {
 }
 
 void Options::short_usage(std::ostream &strm) {
-    strm << "Usage: csv2bin MODE CSV BIN [MANIFEST] [-i|--include PATH ...] [-h|--help] [--narc]" << std::endl;
+    strm << "Usage: csv2bin [OPTIONS] MODE CSV BIN MANIFEST" << std::endl;
 }
 
 void Options::usage(std::ostream &strm) {
     short_usage(strm);
     strm << std::endl;
-    strm << R"(  MODE         Either "compile" or "disasm", controls)" << std::endl;
-    strm << "               the mode of execution." << std::endl;
-    strm << "  CSV          Path to the CSV file. If compiling, the file" << std::endl;
-    strm << "               must exist." << std::endl;
-    strm << "  BIN          Path to the compiled binary. If disassembling," << std::endl;
-    strm << "               the file must exist." << std::endl;
-    strm << "  MANIFEST     Column specification for the CSV file. Not all" << std::endl;
-    strm << "               columns need to be specified, but missing columns" << std::endl;
-    strm << "               are presumed to be u32." << std::endl;
-    strm << "  -i PATH      Add header search paths. Can repeat as much as you want." << std::endl;
-    strm << "  --narc       Output a NARC file" << std::endl;
-    strm << "  --naix       Output a NAIX file. Implies --narc" << std::endl;
-    strm << "  -h           Prints this message and exits" << std::endl;
+    strm << R"(  MODE                 Either "compile" or "disasm", controls)" << std::endl;
+    strm << "                       the mode of execution." << std::endl;
+    strm << "  CSV                  Path to the CSV file. If compiling, the file" << std::endl;
+    strm << "                       must exist." << std::endl;
+    strm << "  BIN                  Path to the compiled binary. If disassembling," << std::endl;
+    strm << "                       the file must exist." << std::endl;
+    strm << "  MANIFEST             Column specification for the CSV file. Not all" << std::endl;
+    strm << "                       columns need to be specified, but missing columns" << std::endl;
+    strm << "                       are presumed to be u32." << std::endl;
+    strm << "  -i PATH              Add header search paths. Can repeat as much as you want." << std::endl;
+    strm << "  --include PATH       Alias for -i" << std::endl;
+    strm << "  --narc               Output a NARC file" << std::endl;
+    strm << "  --naix               Output a NAIX file. Implies --narc" << std::endl;
+    strm << "  --pad PADVAL         Pads with PADVAL between rows (default: 0)" << std::endl;
+    strm << "  -h                   Prints this message and exits" << std::endl;
     strm << std::endl;
     strm << "Note: Manifest file format declares each column on a separate line." << std::endl;
     strm << "Columns must be declared in the same order as they would appear in" << std::endl;
@@ -76,6 +78,9 @@ Options::Options(int argc, char **argv) {
         } else if (*iarg == "--naix") {
             naix_mode = true;
             narc_mode = true;
+        } else if (*iarg == "--pad") {
+            iarg++;
+            padval = std::stoi(*iarg, 0, 0);
         } else if ((*iarg)[0] == '-') {
             throw argument_error("caught invalid option flag: " + *iarg);
         } else {
@@ -96,10 +101,41 @@ Options::Options(int argc, char **argv) {
     } else {
         throw argument_error(R"(first positional argument must be either "compile" or "disasm", not )" + posargs[0]);
     }
-    binfile.open(posargs[2], std::ios::binary | (execMode == EXEC_CSV2BIN ? std::ios::out : narc_mode ? std::ios::in | std::ios::ate : std::ios::in));
+    std::ios::openmode openmode = std::ios::binary;
+    if (execMode == EXEC_CSV2BIN) {
+        openmode |= std::ios::out;
+    } else {
+        openmode |= std::ios::in;
+        if (!narc_mode) {
+            openmode |= std::ios::ate;
+        }
+    }
+    switch (execMode) {
+    case EXEC_CSV2BIN:
+        binfile.out = new std::ofstream(posargs[2], std::ios::binary);
+        break;
+    case EXEC_BIN2CSV:
+        binfile.in = new std::ifstream(posargs[2], std::ios::binary | (narc_mode ? 0 : std::ios::ate));
+        break;
+    default:
+        assert(0);
+    }
     manifest.read(posargs[3], include_paths);
     if (execMode == EXEC_CSV2BIN) {
         csvFile.FromFile(posargs[1]);
+    }
+}
+
+Options::~Options() {
+    switch (execMode) {
+    case EXEC_CSV2BIN:
+        delete binfile.out;
+        break;
+    case EXEC_BIN2CSV:
+        delete binfile.in;
+        break;
+    default:
+        assert(0);
     }
 }
 
@@ -174,10 +210,10 @@ int Options::main_compile() {
         memcpy(btnf, "BTNF\x10\x00\x00\x00\x04\x00\x00\x00\x00\x00\x01\x00", 16);
         memcpy(gmif, "GMIF", 4);
         to_array<unsigned>(gmif, gmif_size, 4);
-        binfile.write(narc_header, 16);
-        binfile.write(btaf, btaf_size);
-        binfile.write(btnf, btnf_size);
-        binfile.write(gmif, 8);
+        binfile.out->write(narc_header, 16);
+        binfile.out->write(btaf, btaf_size);
+        binfile.out->write(btnf, btnf_size);
+        binfile.out->write(gmif, 8);
         delete[] gmif;
         delete[] btnf;
         delete[] btaf;
@@ -190,9 +226,9 @@ int Options::main_compile() {
         }
     }
 
-    BufferedRowConverter converter(manifest, csvFile);
+    BufferedRowConverter converter(manifest, csvFile, padval);
     for (const auto &row : csvFile) {
-        (std::ofstream &)binfile << converter;
+        *binfile.out << converter;
     }
     return 0;
 }
@@ -206,39 +242,40 @@ int Options::main_disasm() {
         }
     }
     size_t binfsize;
+    size_t manifest_size = manifest.size();
     if (narc_mode) {
         static char narc_header[16];
         static char btaf_header[12];
-        binfile.read(narc_header, 16);
+        binfile.in->read(narc_header, 16);
         assert(memcmp(narc_header, "NARC\xfe\xff\x00\x01", 8) == 0);
-        binfile.read(btaf_header, 12);
+        binfile.in->read(btaf_header, 12);
         assert(memcmp(btaf_header, "BTAF", 4) == 0);
         size_t fatb_size = from_array<unsigned>(btaf_header, 4) - 12;
         size_t nrow = from_array<unsigned>(btaf_header, 8);
-        binfile.seekg(fatb_size, std::ios::cur);
+        binfile.in->seekg(fatb_size, std::ios::cur);
         static char btnf_header[8];
-        binfile.read(btnf_header, 8);
+        binfile.in->read(btnf_header, 8);
         assert(memcmp(btnf_header, "BTNF", 4) == 0);
         size_t fntb_size = from_array<unsigned>(btnf_header, 4) - 8;
-        binfile.seekg(fntb_size, std::ios::cur);
+        binfile.in->seekg(fntb_size, std::ios::cur);
         static char gmif_header[8];
-        binfile.read(gmif_header, 8);
+        binfile.in->read(gmif_header, 8);
         assert(memcmp(gmif_header, "GMIF", 4) == 0);
-        binfsize = from_array<unsigned>(gmif_header, 4);
-        assert(binfsize / manifest.size() == nrow);
+        binfsize = from_array<unsigned>(gmif_header, 4) - 8;
+        assert(binfsize / manifest_size == nrow);
     } else {
         // binfile was opened at end (ios::ate)
-        binfsize = binfile.tellg();
+        binfsize = binfile.in->tellg();
         // rewind
-        binfile.seekg(0);
+        binfile.in->seekg(0);
     }
-    assert(binfsize % manifest.size() == 0);
-    csvFile.resize(binfsize / manifest.size(), colnames.size());
+    assert(binfsize % manifest_size == 0);
+    csvFile.resize(binfsize / manifest_size, colnames.size());
     csvFile.SetColnames(colnames.cbegin(), colnames.cend());
 
-    BufferedRowConverter converter(manifest, csvFile);
+    BufferedRowConverter converter(manifest, csvFile, padval);
     for (int i = 0; i < csvFile.nrow(); i++) {
-        (std::ifstream &)binfile >> converter;
+        *binfile.in >> converter;
     }
     csvFile.ToFile(posargs[1]);
     return 0;

@@ -1,6 +1,10 @@
 CXX ?= g++
 
-CXXFLAGS := -std=c++17 -O2 -g
+CXXFLAGS := -std=c++17 -g
+
+ifeq ($(DEBUG),)
+CXXFLAGS += -O2 -DNDEBUG
+endif
 
 DEPDIR := .deps
 DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d

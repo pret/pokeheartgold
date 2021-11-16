@@ -121,10 +121,14 @@ void Manifest::read(const fs::path &filename, std::vector<fs::path> &header_dirs
                 prefix = tokens[3];
             }
             fs::path header_name = tokens[2];
-            for (auto &root : header_dirs) {
-                if (fs::exists(root / header_name)) {
-                    headerfile = root / header_name;
-                    break;
+            if (header_name == "bool") {
+                headerfile = "bool";
+            } else {
+                for (auto &root: header_dirs) {
+                    if (fs::exists(root / header_name)) {
+                        headerfile = root / header_name;
+                        break;
+                    }
                 }
             }
         }
@@ -139,11 +143,31 @@ ColumnSpec &Manifest::operator[](const std::string &name) {
 
 size_t Manifest::size(const int alignment) const {
     size_t ret = 0;
+    size_t bitpos = 0;
     for (const auto & name : colnames) {
-        size_t lsize = mapping.at(name).size();
-        if (lsize != 0) {
-            ret += (2 * lsize - 1);
-            ret &= ~(lsize - 1);
+        auto &spec = mapping.at(name);
+        if (spec.is_skipped()) {
+            continue;
+        }
+        size_t bytect = spec.size();
+        size_t aln = spec.get_alignment();
+        size_t bitct = spec.num_bits();
+        if (bitpos != 0 && bitct == 0) {
+            bitpos = 0;
+            ret++;
+        }
+        if (bitpos == 0 && aln != 1) {
+            ret += aln - 1;
+            ret &= ~(aln - 1);
+        }
+        if (bitct != 0) {
+            bitpos += bitct;
+            if (bitpos >= 8 * bytect) {
+                ret += bytect;
+                bitpos -= 8 * bytect;
+            }
+        } else {
+            ret += bytect;
         }
     }
     // Word align
@@ -154,23 +178,22 @@ size_t Manifest::size(const int alignment) const {
     return ret;
 }
 
-BufferedRowConverter::BufferedRowConverter(Manifest &_manifest, CsvFile &_csvFile):
+BufferedRowConverter::BufferedRowConverter(Manifest &_manifest, CsvFile &_csvFile, unsigned char _padval):
     manifest(_manifest),
-    csvFile(_csvFile)
+    csvFile(_csvFile),
+    padval(_padval)
 {
-    bufsize = manifest.size();
-    buffer = new unsigned char[bufsize];
+    buffer.resize(manifest.size());
+    carriage_return();
     byte_cursor = 0;
     bit_cursor = 0;
     row_cursor = 0;
 }
 
-BufferedRowConverter::~BufferedRowConverter() {
-    delete[] buffer;
-}
-
 std::ifstream &operator>>(std::ifstream &strm, BufferedRowConverter &cvtr) {
-    strm.read((char *)cvtr.buffer, cvtr.bufsize);
+    std::ios::iostate state = strm.rdstate();
+    size_t pos = strm.tellg();
+    strm.read((char *)cvtr.buffer.data(), cvtr.buffer.size());
     cvtr.to_strings();
     cvtr++;
     return strm;
@@ -178,7 +201,7 @@ std::ifstream &operator>>(std::ifstream &strm, BufferedRowConverter &cvtr) {
 
 std::ofstream &operator<<(std::ofstream &strm, BufferedRowConverter &cvtr) {
     cvtr.to_bytes();
-    strm.write((char *)cvtr.buffer, cvtr.bufsize);
+    strm.write((char *)cvtr.buffer.data(), cvtr.buffer.size());
     cvtr++;
     return strm;
 }
@@ -187,7 +210,6 @@ void BufferedRowConverter::to_strings() {
     if (row_cursor >= csvFile.nrow()) {
         throw std::out_of_range("invalid row idx");
     }
-    carriage_return();
     std::vector<std::string> &row = csvFile[row_cursor];
     size_t column_i = 0;
     for (const auto colname : manifest.colnames) {
@@ -214,7 +236,6 @@ void BufferedRowConverter::to_bytes() {
     if (row_cursor >= csvFile.nrow()) {
         throw std::out_of_range("invalid row idx");
     }
-    carriage_return();
     std::vector<std::string> &row = csvFile[row_cursor];
     size_t column_i = 0;
     for (const auto colname : manifest.colnames) {
@@ -223,7 +244,7 @@ void BufferedRowConverter::to_bytes() {
             column_i++;
             continue;
         } else {
-            align(spec.size(), spec.num_bits());
+            align(spec.get_alignment(), spec.num_bits());
             unsigned long long val;
             if (spec.is_padding()) {
                 val = 0;
@@ -233,5 +254,12 @@ void BufferedRowConverter::to_bytes() {
             set(val, spec.type(), spec.num_bits());
             advance(spec.size(), spec.num_bits());
         }
+    }
+    if (bit_cursor != 0) {
+        const ColumnSpec &spec = manifest[*manifest.colnames.crbegin()];
+        byte_cursor += spec.size();
+    }
+    while (byte_cursor < buffer.size()) {
+        buffer[byte_cursor++] = padval;
     }
 }

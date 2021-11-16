@@ -19,13 +19,17 @@ public:
 
 class Options {
     ExecMode execMode = EXEC_UNSET;
-    std::fstream binfile;
+    union {
+        std::ifstream *in;
+        std::ofstream *out;
+    } binfile;
     CsvFile csvFile;
     Manifest manifest;
     std::vector<fs::path> include_paths;
     std::vector<std::string> posargs;
     bool narc_mode = false;
     bool naix_mode = false;
+    unsigned char padval = 0;
 
     int main_compile();
     int main_disasm();
@@ -33,6 +37,7 @@ public:
     static void short_usage(std::ostream &strm = std::cout);
     static void usage(std::ostream &strm = std::cout);
     Options(int argc, char ** argv);
+    ~Options();
     int main();
 };
 
