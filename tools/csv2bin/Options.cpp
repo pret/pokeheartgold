@@ -166,7 +166,7 @@ int Options::main_compile() {
             to_array<unsigned>(btaf, i * manifest.size(), 12 + 8 * i);
             to_array<unsigned>(btaf, i * manifest.size() + manifest.size(0), 16 + 8 * i);
             if (naix_mode) {
-                char num_buf[5] = {0};
+                char num_buf[10] = {0};
                 sprintf(num_buf, "%04d", i);
                 naixfile << "    NARC_" << guard_sub << "_" << num_buf << "_bin = " << i << "," << std::endl;
             }
@@ -206,7 +206,6 @@ int Options::main_disasm() {
         }
     }
     size_t binfsize;
-    size_t binfoff;
     if (narc_mode) {
         static char narc_header[16];
         static char btaf_header[12];

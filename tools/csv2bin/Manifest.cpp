@@ -1,7 +1,7 @@
 #include "Manifest.h"
 
-static std::map<std::pair<fs::path, std::string>, std::map<std::string, int>> HeaderCache {
-    {"bool", {
+std::map<std::pair<fs::path, std::string>, std::map<std::string, int>> HeaderCache {
+    {{"bool", ""}, {
          {"false", 0},
          {"true", 1}
      }}
