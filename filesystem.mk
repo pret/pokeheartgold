@@ -418,6 +418,14 @@ $(DIFF_ARCS):
 
 $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
 
+CSV2BINFLAGS := -i $(WORK_DIR)/include --naix
+
+ifeq ($(NODEP),)
+%.narc: csvdep = $(addprefix $(WORK_DIR)/include/,$(filter-out bool,$(shell cut -d: -f3 $(MANIFEST) | sort -u)))
+else
+%.narc: csvdep :=
+endif
+
 include files/msgdata/msg.mk
 include files/data/sound/sound_data.mk
 include files/data/gs_areawindow.mk

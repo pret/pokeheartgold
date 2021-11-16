@@ -11,6 +11,20 @@
 #define POCKET_KEY_ITEMS    7
 #define POCKETS_COUNT       8
 
+// Where the item will be listed in the battle bag
+// Encoded in a bitfield in item_data.narc
+#define BTLPOCKET_BALLS_F          (1<<0)
+#define BTLPOCKET_BATTLE_ITEMS_F   (1<<1)
+#define BTLPOCKET_HP_RESTORE_F     (1<<2)
+#define BTLPOCKET_STATUS_RESTORE_F (1<<3)
+#define BTLPOCKET_PP_RESTORE_F     (1<<4)
+
+// The above is remapped in overlay_08
+#define BTLPOCKETLIST_HP_PP_RESTORE  0
+#define BTLPOCKETLIST_STATUS_RESTORE 1
+#define BTLPOCKETLIST_BALLS          2
+#define BTLPOCKETLIST_BATTLE_ITEMS   3
+
 #define BPOCKET_BALLS_F      0
 #define BPOCKET_
 
