@@ -101,21 +101,12 @@ Options::Options(int argc, char **argv) {
     } else {
         throw argument_error(R"(first positional argument must be either "compile" or "disasm", not )" + posargs[0]);
     }
-    std::ios::openmode openmode = std::ios::binary;
-    if (execMode == EXEC_CSV2BIN) {
-        openmode |= std::ios::out;
-    } else {
-        openmode |= std::ios::in;
-        if (!narc_mode) {
-            openmode |= std::ios::ate;
-        }
-    }
     switch (execMode) {
     case EXEC_CSV2BIN:
         binfile.out = new std::ofstream(posargs[2], std::ios::binary);
         break;
     case EXEC_BIN2CSV:
-        binfile.in = new std::ifstream(posargs[2], std::ios::binary | (narc_mode ? 0 : std::ios::ate));
+        binfile.in = new std::ifstream(posargs[2], static_cast<std::ios::openmode>(std::ios::binary | (narc_mode ? 0 : std::ios::ate)));
         break;
     default:
         assert(0);
