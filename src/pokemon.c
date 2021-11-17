@@ -2265,3 +2265,118 @@ u8 sub_02070438(u16 species, u8 forme) {
     }
     return forme;
 }
+
+void sub_02070560(struct SomeDrawPokemonStruct * spC, u16 species, u8 whichFacing, u8 gender, u32 shiny) {
+    spC->narcID = NARC_pbr_pokegra;
+    spC->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
+    spC->palDataID = (u16)(shiny + (species * 6 + 4));
+}
+
+void sub_02070588(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality) {
+    spC->unk6 = 0;
+    spC->unk8 = 0;
+    spC->unkC = 0;
+    forme = sub_02070438(species, forme);
+    switch (species) {
+    case SPECIES_BURMY:
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x48 + forme * 2);
+        spC->palDataID = (u16)(shiny + 0x92 + forme * 2);
+        break;
+    case SPECIES_WORMADAM:
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x4E + forme * 2);
+        spC->palDataID = (u16)(shiny + 0x98 + forme * 2);
+        break;
+    case SPECIES_SHELLOS:
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = (u16)(whichFacing + 0x54 + forme);
+        spC->palDataID = (u16)(shiny + 0x9E + forme * 2);
+        break;
+    case SPECIES_GASTRODON:
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = (u16)(whichFacing + 0x58 + forme);
+        spC->palDataID = (u16)(shiny + 0xA2 + forme * 2);
+        break;
+    case SPECIES_CHERRIM:
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = (u16)(whichFacing + 0x5C + forme);
+        spC->palDataID = (u16)(shiny * 2 + 0xA6 + forme);
+        break;
+    case SPECIES_ARCEUS:
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x60 + forme * 2);
+        spC->palDataID = (u16)(shiny + 0xAA + forme * 2);
+        break;
+    case SPECIES_CASTFORM:
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = (u16)(whichFacing * 2 + 0x40 + forme);
+        spC->palDataID = (u16)(shiny * 4 + 0x8A + forme);
+        break;
+    case SPECIES_DEOXYS:
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = (u16)(whichFacing / 2 + forme * 2);
+        spC->palDataID = (u16)(shiny + 0x86);
+        break;
+    case SPECIES_UNOWN:
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = (u16)(whichFacing / 2 + 0x8 + forme * 2);
+        spC->palDataID = (u16)(shiny + 0x88);
+        break;
+    case SPECIES_EGG: // egg, manaphy egg
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = (u16)(0x84 + forme);
+        spC->palDataID = (u16)(0xCE + forme);
+        break;
+    case SPECIES_MANAPHY_EGG: // bad egg
+        spC->narcID = NARC_pbr_otherpoke;
+        spC->charDataID = 0x84;
+        spC->palDataID = 0xCE;
+        break;
+    case SPECIES_SHAYMIN: // land, sky
+        if (forme != 0) {
+            spC->narcID = NARC_poketool_pokegra_otherpoke;
+            spC->charDataID = (u16)(whichFacing / 2 + 0x86 + forme * 2);
+            spC->palDataID = (u16)(shiny + 0xEA);
+        } else {
+            sub_02070560(spC, species, whichFacing, gender, shiny);
+        }
+        break;
+    case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
+        if (forme != 0) {
+            spC->narcID = NARC_poketool_pokegra_otherpoke;
+            spC->charDataID = (u16)(whichFacing / 2 + 0x8A + forme * 2);
+            spC->palDataID = (u16)(shiny + 0xEC + forme * 2);
+        } else {
+            sub_02070560(spC, species, whichFacing, gender, shiny);
+        }
+        break;
+    case SPECIES_GIRATINA: // altered, origin
+        if (forme != 0) {
+            spC->narcID = NARC_poketool_pokegra_otherpoke;
+            spC->charDataID = (u16)(whichFacing / 2 + 0x96 + forme * 2);
+            spC->palDataID = (u16)(shiny + 0xF8 + forme * 2);
+        } else {
+            sub_02070560(spC, species, whichFacing, gender, shiny);
+        }
+        break;
+    case SPECIES_PICHU: // spiky-ear
+        if (forme != 0) {
+            spC->narcID = NARC_poketool_pokegra_otherpoke;
+            spC->charDataID = (u16)(whichFacing / 2 + 0x9C);
+            spC->palDataID = (u16)(shiny + 0xFE);
+        } else {
+            sub_02070560(spC, species, whichFacing, gender, shiny);
+        }
+        break;
+    default:
+        sub_02070560(spC, species, whichFacing, gender, shiny);
+        if (species == SPECIES_SPINDA && whichFacing == 2)
+        {
+            spC->unk6 = SPECIES_SPINDA;
+            spC->unk8 = 0;
+            spC->unkC = personality;
+        }
+        break;
+    }
+}
