@@ -2189,3 +2189,79 @@ void sub_020701E4(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8
         break;
     }
 }
+
+u8 sub_02070438(u16 species, u8 forme) {
+    switch (species) {
+    case SPECIES_BURMY:
+        if (forme > 2) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_WORMADAM:
+        if (forme > 2) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_SHELLOS:
+        if (forme > 1) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_GASTRODON:
+        if (forme > 1) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_CHERRIM:
+        if (forme > 1) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_ARCEUS:
+        if (forme > 17) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_CASTFORM:
+        if (forme > 3) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_DEOXYS:
+        if (forme > 3) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_UNOWN:
+        if (forme >= 28) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_EGG:
+        if (forme > 1) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_SHAYMIN:
+        if (forme > 1) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_ROTOM:
+        if (forme > 5) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_GIRATINA:
+        if (forme > 1) {
+            forme = 0;
+        }
+        break;
+    case SPECIES_PICHU:
+        if (forme > 1) {
+            forme = 0;
+        }
+        break;
+    }
+    return forme;
+}
