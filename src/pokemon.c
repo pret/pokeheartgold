@@ -2412,3 +2412,85 @@ u8 sub_02070854(BOXMON *boxmon, u8 whichFacing, BOOL a2) {
         return sub_020708D8(species, gender, whichFacing, forme, pid);
     }
 }
+
+u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid) {
+    // species -> r5
+    // gender -> r6
+    // whichFacing -> r4
+    // forme -> <overwrittten>
+    // pid -> sp18
+#pragma unused(pid)
+    NarcId narcId;
+    s32 fileId;
+    u8 ret;
+
+    forme = sub_02070438(species, forme);
+    switch (species) {
+    case SPECIES_BURMY:
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x48 + whichFacing / 2 + forme * 2;
+        break;
+    case SPECIES_WORMADAM:
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x4E + whichFacing / 2 + forme * 2;
+        break;
+    case SPECIES_SHELLOS:
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x54 + whichFacing + forme;
+        break;
+    case SPECIES_GASTRODON:
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x58 + whichFacing + forme;
+        break;
+    case SPECIES_CHERRIM:
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x5C + whichFacing + forme;
+        break;
+    case SPECIES_ARCEUS:
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x60 + whichFacing / 2 + forme * 2;
+        break;
+    case SPECIES_CASTFORM:
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x40 + 2 * whichFacing + forme;
+        break;
+    case SPECIES_DEOXYS:
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x00 + whichFacing / 2 + forme * 2;
+        break;
+    case SPECIES_UNOWN:
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x08 + whichFacing / 2 + forme * 2;
+        break;
+    case SPECIES_EGG: // egg, manaphy egg
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x84 + forme;
+        break;
+    case SPECIES_MANAPHY_EGG: // bad egg
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x84;
+        break;
+    case SPECIES_SHAYMIN: // land, sky
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x88 + whichFacing / 2 + forme * 2;
+        break;
+    case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x8C + whichFacing / 2 + forme * 2;
+        break;
+    case SPECIES_GIRATINA: // altered, origin
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x98 + whichFacing / 2 + forme * 2;
+        break;
+    case SPECIES_PICHU: // spiky-ear
+        narcId = NARC_poketool_pokegra_height_0;
+        fileId = 0x9C + whichFacing / 2 + forme * 2;
+        break;
+    default:
+        narcId = NARC_poketool_pokegra_height;
+        fileId = species * 4 + whichFacing + (gender != MON_FEMALE ? 1 : 0);
+        break;
+    }
+    ReadWholeNarcMemberByIdPair(&ret, narcId, fileId);
+    return ret;
+}
