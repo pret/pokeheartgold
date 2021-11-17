@@ -19,3 +19,5 @@ data/gs_areawindow.narc
 itemtool/itemdata/item_icon.narc
 itemtool/itemdata/item_data.narc
 poketool/personal/growtbl.narc
+poketool/pokegra/pokegra.narc
+poketool/pokegra/otherpoke.narc
