@@ -32,6 +32,9 @@ void sub_0207013C(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFaci
 void sub_02070588(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 pid);
 void sub_020701E4(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 pid);
 u8 sub_02070438(u16 species, u8 forme);
+u8 sub_02070854(BOXMON *boxmon, u8 whichFacing, BOOL a2);
+u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid);
+u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid);
 
 #define ENCRY_ARGS_PTY(mon) (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.pid
 #define ENCRY_ARGS_BOX(boxmon) (u16 *)&(boxmon)->substructs, sizeof((boxmon)->substructs), (boxmon)->checksum
@@ -2378,5 +2381,34 @@ void sub_02070588(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8
             spC->unkC = personality;
         }
         break;
+    }
+}
+
+u8 sub_0207083C(BOXMON *boxmon, u8 whichFacing) {
+    return sub_02070854(boxmon, whichFacing, FALSE);
+}
+
+u8 sub_02070848(BOXMON *boxmon, u8 whichFacing) {
+    return sub_02070854(boxmon, whichFacing, TRUE);
+}
+
+u8 sub_02070854(BOXMON *boxmon, u8 whichFacing, BOOL a2) {
+    u16 species = GetBoxMonData(boxmon, MON_DATA_SPECIES2, NULL);
+    u8 gender = GetBoxMonGender(boxmon);
+    u32 pid = GetBoxMonData(boxmon, MON_DATA_PERSONALITY, NULL);
+    u8 forme;
+    if (species == SPECIES_EGG) {
+        if (GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL) == SPECIES_MANAPHY) {
+            forme = FORME_EGG_MANAPHY;
+        } else {
+            forme = FORME_EGG_STANDARD;
+        }
+    } else {
+        forme = GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
+    }
+    if (a2 == TRUE) {
+        return sub_02070A64(species, gender, whichFacing, forme, pid);
+    } else {
+        return sub_020708D8(species, gender, whichFacing, forme, pid);
     }
 }
