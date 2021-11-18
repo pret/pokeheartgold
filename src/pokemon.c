@@ -3477,3 +3477,74 @@ void sub_02071D3C(SAVE_PARTY_T *party, BOOL force_origin) {
         }
     }
 }
+
+void Mon_UpdateShayminForme(POKEMON *pokemon, int forme) {
+    BoxMon_UpdateShayminForme(&pokemon->box, forme);
+    CalcMonLevelAndStats(pokemon);
+}
+
+void BoxMon_UpdateShayminForme(BOXMON *boxmon, int forme) {
+    if (GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL) == SPECIES_SHAYMIN) {
+        GF_ASSERT(forme <= 1);
+        SetBoxMonData(boxmon, MON_DATA_FORME, &forme);
+        UpdateBoxMonAbility(boxmon);
+    }
+}
+
+BOOL Mon_CanUseGracidea(POKEMON *pokemon) {
+    RTCTime time;
+    int species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    int forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
+    int status = GetMonData(pokemon, MON_DATA_STATUS, NULL);
+    int hp = GetMonData(pokemon, MON_DATA_HP, NULL);
+    BOOL fatefulEncounter = GetMonData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
+    GF_RTC_CopyTime(&time);
+
+    if (species == SPECIES_SHAYMIN && forme == SHAYMIN_LAND && hp != 0 && fatefulEncounter == TRUE && !(status & MON_STATUS_FRZ_MASK) && (time.hour >= 4 && time.hour < 20)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+void Party_ResetAllShayminToLandForme(SAVE_PARTY_T *party) {
+    int npoke = GetPartyCount(party);
+    int i;
+    int species;
+    int forme;
+    POKEMON *mon;
+    for (i = 0; i < npoke; i++) {
+        mon = GetPartyMonByIndex(party, i);
+        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        forme = GetMonData(mon, MON_DATA_FORME, NULL);
+        if (species == SPECIES_SHAYMIN && forme == SHAYMIN_SKY) {
+            Mon_UpdateShayminForme(mon, SHAYMIN_LAND);
+        }
+    }
+}
+
+BOOL Party_TryResetShaymin(SAVE_PARTY_T *party, int min_max, const RTCTime *time) {
+    int hour, minute;
+    if (time->hour >= 20 || time->hour < 4) {
+        hour = time->hour;
+        if (hour < 4) {
+            hour += 24;
+        }
+        minute = time->minute + 60 * (hour - 20);
+        if (minute < min_max + 1) {
+            Party_ResetAllShayminToLandForme(party);
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    } else {
+        hour = time->hour;
+        minute = time->minute + 60 * (hour - 4);
+        if (minute < min_max) {
+            Party_ResetAllShayminToLandForme(party);
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+}
