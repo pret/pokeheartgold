@@ -102,6 +102,7 @@ s32 Mon_UpdateGiratinaForme(POKEMON * pokemon);
 s32 BoxMon_UpdateGiratinaForme(BOXMON * boxmon);
 void Mon_UpdateShayminForme(POKEMON *pokemon, int forme);
 void BoxMon_UpdateShayminForme(BOXMON *pokemon, int forme);
+void UpdateMonAbility(POKEMON *boxmon);
 void UpdateBoxMonAbility(BOXMON *boxmon);
 int LowestFlagNo(u32 mask);
 BOOL IsPokemonLegendaryOrMythical(u16 species);

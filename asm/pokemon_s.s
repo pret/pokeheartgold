@@ -8,6 +8,7 @@
 _020FF4E4: ; Held item odds
 	.short 45, 95
 	.short 20, 80
+	.public _020FF4EC
 _020FF4EC: ; Rotom moves
 	.short MOVE_NONE
 	.short MOVE_OVERHEAT
@@ -707,138 +708,6 @@ _020FF7B4: ; aprijuice related?
 	.public GetExpByGrowthRateAndLevel
 	.public sub_02070560
 	.public Mon_ForceSetGiratinaOriginForme
-
-	thumb_func_start Mon_UpdateRotomForme
-Mon_UpdateRotomForme: ; 0x02071EC0
-	push {r0, r1, r2, r3}
-	push {r3, r4, r5, r6, r7, lr}
-	str r2, [sp]
-	mov r1, #5
-	mov r2, #0
-	add r4, r0, #0
-	bl GetMonData
-	ldr r1, _02071FBC ; =0x000001DF SPECIES_ROTOM
-	cmp r0, r1
-	beq _02071EE0
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7}
-	pop {r3}
-	add sp, #0x10
-	bx r3
-_02071EE0:
-	add r0, r4, #0
-	mov r1, #0x70
-	mov r2, #0
-	bl GetMonData
-	ldr r0, [sp, #0x1c]
-	mov r5, #0
-	lsl r1, r0, #1
-	ldr r0, _02071FC0 ; =_020FF4EC
-	add r7, r5, #0
-	ldrh r6, [r0, r1] ; Move associated with the old forme
-_02071EF6:
-	add r1, r5, #0
-	add r0, r4, #0
-	add r1, #0x36
-	add r2, r7, #0
-	bl GetMonData
-	ldr r3, _02071FC4 ; =_020FF4EC + 2
-	add r2, r0, #0
-	mov r1, #1
-_02071F08:
-	cmp r2, #0
-	beq _02071F34
-	ldrh r0, [r3]
-	cmp r2, r0
-	bne _02071F34
-	cmp r6, #0
-	beq _02071F28
-	lsl r1, r6, #0x10
-	lsl r2, r5, #0x18
-	add r0, r4, #0
-	lsr r1, r1, #0x10
-	lsr r2, r2, #0x18
-	bl MonSetMoveInSlot_ResetPpUp
-	mov r6, #0
-	b _02071F3C
-_02071F28:
-	add r0, r4, #0
-	add r1, r5, #0
-	bl MonDeleteMoveSlot
-	sub r5, r5, #1
-	b _02071F3C
-_02071F34:
-	add r1, r1, #1
-	add r3, r3, #2
-	cmp r1, #6
-	blo _02071F08
-_02071F3C:
-	add r5, r5, #1
-	cmp r5, #4
-	blt _02071EF6
-	cmp r6, #0
-	beq _02071F84
-	mov r5, #0
-	add r7, r5, #0
-_02071F4A:
-	add r1, r5, #0
-	add r0, r4, #0
-	add r1, #0x36
-	add r2, r7, #0
-	bl GetMonData
-	cmp r0, #0
-	bne _02071F6A
-	lsl r1, r6, #0x10
-	lsl r2, r5, #0x18
-	add r0, r4, #0
-	lsr r1, r1, #0x10
-	lsr r2, r2, #0x18
-	bl MonSetMoveInSlot_ResetPpUp
-	b _02071F70
-_02071F6A:
-	add r5, r5, #1
-	cmp r5, #4
-	blt _02071F4A
-_02071F70:
-	cmp r5, #4
-	bne _02071F84
-	ldr r2, [sp]
-	lsl r1, r6, #0x10
-	lsl r2, r2, #0x18
-	add r0, r4, #0
-	lsr r1, r1, #0x10
-	lsr r2, r2, #0x18
-	bl MonSetMoveInSlot_ResetPpUp
-_02071F84:
-	add r0, r4, #0
-	mov r1, #0x36
-	mov r2, #0
-	bl GetMonData
-	cmp r0, #0
-	bne _02071F9C
-	add r0, r4, #0
-	mov r1, #0x54
-	mov r2, #0
-	bl MonSetMoveInSlot_ResetPpUp
-_02071F9C:
-	add r0, r4, #0
-	mov r1, #0x70
-	add r2, sp, #0x1c
-	bl SetMonData
-	add r0, r4, #0
-	bl UpdateMonAbility
-	add r0, r4, #0
-	bl CalcMonLevelAndStats
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7}
-	pop {r3}
-	add sp, #0x10
-	bx r3
-	.balign 4, 0
-_02071FBC: .word 0x000001DF
-_02071FC0: .word _020FF4EC
-_02071FC4: .word _020FF4EC + 2
-	thumb_func_end Mon_UpdateRotomForme
 
 	thumb_func_start LoadWotbl_HandleAlternateForme
 LoadWotbl_HandleAlternateForme: ; 0x02071FC8

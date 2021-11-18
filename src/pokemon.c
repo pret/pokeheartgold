@@ -63,6 +63,9 @@ BOOL MonHasMove(POKEMON *pokemon, u16 move_id);
 extern const s8 sNatureStatMods[NATURE_NUM][NUM_EV_STATS];
 extern const s8 sFlavorPreferencesByNature[NATURE_NUM][FLAVOR_MAX];
 extern const s8 sFriendshipModTable[FRIENDSHIP_EVENT_NUM][FRIENDSHIP_TIER_NUM];
+extern const struct UnkStruct_0200D748 _020FF588;
+extern const s32 _020FF50C[];
+extern const u16 _020FF4EC[ROTOM_FORME_MAX];
 
 void ZeroMonData(POKEMON *pokemon) {
     MI_CpuClearFast(pokemon, sizeof(POKEMON));
@@ -2607,9 +2610,6 @@ u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid) {
     return ret;
 }
 
-extern const struct UnkStruct_0200D748 _020FF588;
-extern const s32 _020FF50C[];
-
 struct UnkStruct_0200CF18 *sub_02070C24(void * r6, s32 sp18, s32 sp1C, s32 sp20, s32 sp88, s32 trainerClass, s32 sp90, s32 sp94, s32 r5, HeapID heapId) {
     s32 r7;
     NARC *narc_r4;
@@ -3547,4 +3547,48 @@ BOOL Party_TryResetShaymin(SAVE_PARTY_T *party, int min_max, const RTCTime *time
             return FALSE;
         }
     }
+}
+
+BOOL Mon_UpdateRotomForme(POKEMON *pokemon, int forme, int defaultSlot) {
+    int i, j;
+    int cur_move;
+    int new_move;
+    if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) != SPECIES_ROTOM) {
+        return FALSE;
+    }
+    GetMonData(pokemon, MON_DATA_FORME, NULL);
+    new_move = _020FF4EC[forme];
+    for (i = 0; i < MON_MOVES; i++) {
+        cur_move = GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL);
+        for (j = ROTOM_HEAT; j < (unsigned)ROTOM_FORME_MAX; j++) {
+            if (cur_move != MOVE_NONE && cur_move == _020FF4EC[j]) {
+                if (new_move != MOVE_NONE) {
+                    MonSetMoveInSlot_ResetPpUp(pokemon, new_move, i);
+                    new_move = MOVE_NONE;
+                } else {
+                    MonDeleteMoveSlot(pokemon, i);
+                    i--;
+                }
+                break;
+            }
+        }
+    }
+    if (new_move != MOVE_NONE) {
+        for (i = 0; i < MON_MOVES; i++) {
+            if (GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
+                MonSetMoveInSlot_ResetPpUp(pokemon, new_move, i);
+                break;
+            }
+        }
+        if (i == MON_MOVES) {
+            MonSetMoveInSlot_ResetPpUp(pokemon, new_move, defaultSlot);
+        }
+    }
+    if (GetMonData(pokemon, MON_DATA_MOVE1, NULL) == MOVE_NONE) {
+        MonSetMoveInSlot_ResetPpUp(pokemon, MOVE_THUNDER_SHOCK, 0);
+    }
+    SetMonData(pokemon, MON_DATA_FORME, &forme);
+    UpdateMonAbility(pokemon);
+    CalcMonLevelAndStats(pokemon);
+    return TRUE;
 }
