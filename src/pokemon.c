@@ -5,8 +5,11 @@
 #include "item.h"
 #include "msgdata.h"
 #include "map_section.h"
+#include "unk_0200CF18.h"
+#include "unk_02023694.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/trainer_class.h"
 #include "constants/balls.h"
 #include "constants/abilities.h"
 #include "constants/map_sections.h"
@@ -2595,4 +2598,50 @@ u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid) {
     }
     ReadWholeNarcMemberByIdPair(&ret, narcId, fileId);
     return ret;
+}
+
+struct UnkStruct_02070D3C {
+    NarcId narcId;
+    s32 ncgr_id;
+    s32 nclr_id;
+    s32 ncer_id;
+    s32 nanr_id;
+    s32 ncbr_id;
+};
+
+void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3);
+
+extern const struct UnkStruct_0200D748 _020FF588;
+extern const s32 _020FF50C[];
+
+struct UnkStruct_0200CF18 *sub_02070C24(void * r6, s32 sp18, s32 sp1C, s32 sp20, s32 sp88, s32 trainerClass, s32 sp90, s32 sp94, s32 r5, HeapID heapId) {
+    s32 r7;
+    NARC *narc_r4;
+    struct UnkStruct_0200CF18 *ret_r4;
+    struct UnkStruct_0200D748 sp3C;
+    struct UnkStruct_02070D3C sp24;
+
+    r7 = 1;
+    sub_02070D3C(trainerClass, sp90, sp94, &sp24);
+    if (trainerClass == TRAINERCLASS_CASTLE_VALET) {
+        r7 = 2;
+    }
+    narc_r4 = NARC_ctor(sp24.narcId, heapId);
+    sub_0200D504(r6, sp18, narc_r4, sp24.ncgr_id, 0, 1, r5 + 0x4E2F);
+    sub_0200D68C(sp1C, 2, r6, sp18, narc_r4, sp24.nclr_id, 0, r7, 1, r5 + 0x4E2A);
+    sub_0200D6EC(r6, sp18, narc_r4, sp24.ncer_id, 0, r5 + 0x4E27);
+    sub_0200D71C(r6, sp18, narc_r4, sp24.nanr_id, 0, r5 + 0x4E27);
+    NARC_dtor(narc_r4);
+    sp3C = _020FF588;
+    sp3C.unk_14[0] = r5 + 0x4E2F;
+    sp3C.unk_14[1] = r5 + 0x4E2A;
+    sp3C.unk_14[2] = r5 + 0x4E27;
+    sp3C.unk_14[3] = r5 + 0x4E27;
+    sp3C.unk_08 = _020FF50C[r5];
+    ret_r4 = sub_0200D734(r6, sp18, &sp3C);
+    sub_02024AA8(ret_r4->unk_00, 0);
+    sub_0200DDB8(ret_r4, sp20, sp88);
+    sub_0200DC18(ret_r4);
+    sub_0200DC78(ret_r4, 1);
+    return ret_r4;
 }

@@ -26,6 +26,7 @@ _020FF4F8: ; Mythicals
 	.short SPECIES_SHAYMIN
 	.short SPECIES_ARCEUS
 	.balign 4, 0
+	.public _020FF50C
 _020FF50C:
 	.word 0x00000000
 	.word 0x00000001
@@ -76,6 +77,7 @@ _020FF564: ; Legendaries
 	.short SPECIES_ARCEUS
 
 	.balign 4, 0
+	.public _020FF588
 _020FF588:
 	.short 0x0000 ; s16
 	.short 0x0000 ; s16
@@ -707,136 +709,6 @@ _021100E8:
 	.public LoadGrowthTable
 	.public GetExpByGrowthRateAndLevel
 	.public sub_02070560
-
-	thumb_func_start sub_02070C24
-sub_02070C24: ; 0x02070C24
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x70
-	add r6, r0, #0
-	str r1, [sp, #0x18]
-	str r2, [sp, #0x1c]
-	str r3, [sp, #0x20]
-	ldr r0, [sp, #0x8c]
-	ldr r1, [sp, #0x90]
-	ldr r2, [sp, #0x94]
-	add r3, sp, #0x24
-	ldr r5, [sp, #0x98]
-	mov r7, #1
-	bl sub_02070D3C
-	ldr r0, [sp, #0x8c]
-	cmp r0, #0x66
-	bne _02070C48
-	mov r7, #2
-_02070C48:
-	ldr r0, [sp, #0x24]
-	ldr r1, [sp, #0x9c]
-	bl NARC_ctor
-	add r4, r0, #0
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	ldr r0, _02070D28 ; =0x00004E2F
-	ldr r1, [sp, #0x18]
-	add r0, r5, r0
-	str r0, [sp, #8]
-	ldr r3, [sp, #0x28]
-	add r0, r6, #0
-	add r2, r4, #0
-	bl sub_0200D504
-	str r4, [sp]
-	ldr r0, [sp, #0x2c]
-	ldr r3, [sp, #0x18]
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	str r7, [sp, #0xc]
-	mov r0, #1
-	str r0, [sp, #0x10]
-	ldr r0, _02070D2C ; =0x00004E2A
-	mov r1, #2
-	add r0, r5, r0
-	str r0, [sp, #0x14]
-	ldr r0, [sp, #0x1c]
-	add r2, r6, #0
-	bl sub_0200D68C
-	mov r0, #0
-	str r0, [sp]
-	ldr r0, _02070D30 ; =0x00004E27
-	ldr r1, [sp, #0x18]
-	add r0, r5, r0
-	str r0, [sp, #4]
-	ldr r3, [sp, #0x30]
-	add r0, r6, #0
-	add r2, r4, #0
-	bl sub_0200D6EC
-	mov r0, #0
-	str r0, [sp]
-	ldr r0, _02070D30 ; =0x00004E27
-	ldr r1, [sp, #0x18]
-	add r0, r5, r0
-	str r0, [sp, #4]
-	ldr r3, [sp, #0x34]
-	add r0, r6, #0
-	add r2, r4, #0
-	bl sub_0200D71C
-	add r0, r4, #0
-	bl NARC_dtor
-	ldr r4, _02070D34 ; =_020FF588
-	add r3, sp, #0x3c
-	mov r2, #6
-_02070CC6:
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _02070CC6
-	ldr r0, [r4]
-	ldr r1, _02070D28 ; =0x00004E2F
-	str r0, [r3]
-	add r0, r5, r1
-	str r0, [sp, #0x50]
-	sub r0, r1, #5
-	add r0, r5, r0
-	sub r1, #8
-	str r0, [sp, #0x54]
-	add r0, r5, r1
-	str r0, [sp, #0x58]
-	str r0, [sp, #0x5c]
-	ldr r0, _02070D38 ; =_020FF50C
-	lsl r1, r5, #2
-	ldr r0, [r0, r1]
-	ldr r1, [sp, #0x18]
-	str r0, [sp, #0x44]
-	add r0, r6, #0
-	add r2, sp, #0x3c
-	bl sub_0200D734
-	add r4, r0, #0
-	ldr r0, [r4]
-	mov r1, #0
-	bl sub_02024AA8
-	ldr r1, [sp, #0x20]
-	ldr r2, [sp, #0x88]
-	lsl r1, r1, #0x10
-	lsl r2, r2, #0x10
-	add r0, r4, #0
-	asr r1, r1, #0x10
-	asr r2, r2, #0x10
-	bl sub_0200DDB8
-	add r0, r4, #0
-	bl sub_0200DC18
-	add r0, r4, #0
-	mov r1, #1
-	bl sub_0200DC78
-	add r0, r4, #0
-	add sp, #0x70
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02070D28: .word 0x00004E2F
-_02070D2C: .word 0x00004E2A
-_02070D30: .word 0x00004E27
-_02070D34: .word _020FF588
-_02070D38: .word _020FF50C
-	thumb_func_end sub_02070C24
 
 	thumb_func_start sub_02070D3C
 sub_02070D3C: ; 0x02070D3C
