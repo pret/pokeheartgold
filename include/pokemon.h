@@ -69,7 +69,7 @@ u32 TryAppendBoxMonMove(BOXMON *boxmon, u16 move);
 void BoxMonSetMoveInSlot(BOXMON *boxmon, u16 move, u8 slot);
 void DeleteMonFirstMoveAndAppend(POKEMON *pokemon, u16 move);
 void DeleteBoxMonFirstMoveAndAppend(BOXMON *boxmon, u16 move);
-void LoadWotbl_HandleAlternateForme(u16 species, int forme, u16 *wotbl);
+void LoadWotbl_HandleAlternateForme(int species, int forme, u16 *wotbl);
 void MonSwapMoves(POKEMON *pokemon, int a, int b);
 void BoxMonSwapMoves(BOXMON *boxmon, int a, int b);
 

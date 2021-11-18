@@ -38,7 +38,7 @@ typedef enum NarcId
     NARC_a_0_3_0,
     NARC_a_0_3_1,
     NARC_a_0_3_2,
-    NARC_a_0_3_3,
+    NARC_poketool_personal_wotbl,
     NARC_a_0_3_4,
     NARC_a_0_3_5,
     NARC_a_0_3_6,

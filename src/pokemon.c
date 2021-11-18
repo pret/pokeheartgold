@@ -9,6 +9,7 @@
 #include "map_section.h"
 #include "unk_0200CF18.h"
 #include "unk_02023694.h"
+#include "unk_02078834.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/trainer_class.h"
@@ -44,6 +45,7 @@ void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *
 s32 sub_0207280C(s32 trainer_class, s32 a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
 BOOL MonHasMove(POKEMON *pokemon, u16 move_id);
+void sub_0207213C(BOXMON *boxmon, PLAYERDATA *playerData, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
 
 #define ENCRY_ARGS_PTY(mon) (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.pid
 #define ENCRY_ARGS_BOX(boxmon) (u16 *)&(boxmon)->substructs, sizeof((boxmon)->substructs), (boxmon)->checksum
@@ -3591,4 +3593,63 @@ BOOL Mon_UpdateRotomForme(POKEMON *pokemon, int forme, int defaultSlot) {
     UpdateMonAbility(pokemon);
     CalcMonLevelAndStats(pokemon);
     return TRUE;
+}
+
+void LoadWotbl_HandleAlternateForme(int species, int forme, u16 * wotbl) {
+    ReadWholeNarcMemberByIdPair(wotbl, NARC_poketool_personal_wotbl, ResolveMonForme(species, forme));
+}
+
+void sub_02071FDC(SOUND_CHATOT *r6, u32 r5, u16 r4, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24) {
+#pragma unused(unused)
+    if (r4 == SPECIES_CHATOT) {
+        if (!sub_02006F30((int)r5)) {
+            sub_02006E3C(1);
+            PlayCryEx(r5, r4, sp18, sp1C, sp24, 0);
+        } else {
+            if (sp20) {
+                sub_02006E3C(1);
+            }
+            sub_02006E4C(r6, 0, sp1C, sp18);
+        }
+    } else {
+        PlayCryEx(r5, r4, sp18, sp1C, sp24, 0);
+    }
+}
+
+void sub_0207204C(SOUND_CHATOT *r7, u32 r6, u16 r5, s32 r4, s32 sp20, u32 sp24, u32 sp28, u32 sp2C, u8 sp30) {
+    if (r5 == SPECIES_CHATOT) {
+        if (!sub_02006F30((int)r6)) {
+            sub_02006E3C(1);
+            sub_02006920(r6, r5, sp20, sp24, sp2C, sp30, r4);
+        } else {
+            if (sp28) {
+                sub_02006E3C(1);
+            }
+            sub_02006EA0(r7, 0, sp24, sp20, sp30);
+        }
+    } else {
+        sub_02006920(r6, r5, sp20, sp24, sp2C, sp30, r4);
+    }
+}
+
+void sub_020720D4(POKEMON *pokemon) {
+    PlayCry(GetMonData(pokemon, MON_DATA_SPECIES, NULL), GetMonData(pokemon, MON_DATA_FORME, NULL));
+}
+
+void sub_020720FC(POKEMON * pokemon, PLAYERDATA * a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+    u32 hp;
+    sub_0207213C(&pokemon->box, a1, pokeball, a3, encounterType, heap_id);
+    if (pokeball == ITEM_HEAL_BALL) {
+        hp = GetMonData(pokemon, MON_DATA_MAXHP, NULL);
+        SetMonData(pokemon, MON_DATA_HP, &hp);
+        hp = 0;
+        SetMonData(pokemon, MON_DATA_STATUS, &hp);
+    }
+}
+
+void sub_0207213C(BOXMON * boxmon, PLAYERDATA * a1, u32 pokeball, u32 a3, u32 encounterType, u32 heap_id) {
+    sub_0208F270(boxmon, a1, 0, a3, heap_id);
+    SetBoxMonData(boxmon, MON_DATA_GAME_VERSION, (void *)&gGameVersion);
+    SetBoxMonData(boxmon, MON_DATA_POKEBALL, &pokeball);
+    SetBoxMonData(boxmon, MON_DATA_ENCOUNTER_TYPE, &encounterType);
 }
