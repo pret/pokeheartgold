@@ -7837,7 +7837,7 @@ sub_0207C5D4: ; 0x0207C5D4
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r6, #0
-	bl sub_02071BC8
+	bl Pokemon_UpdateArceusForme
 	add r0, r6, #0
 	bl Mon_UpdateGiratinaForme
 	str r0, [r4]
@@ -7898,7 +7898,7 @@ sub_0207C658: ; 0x0207C658
 	add r2, sp, #0x1c
 	bl SetMonData
 	add r0, r5, #0
-	bl sub_02071BC8
+	bl Pokemon_UpdateArceusForme
 	add r0, r5, #0
 	bl Mon_UpdateGiratinaForme
 	ldr r1, _0207C6B4 ; =0x00000C65
@@ -13852,7 +13852,7 @@ _0207F590:
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r6, #0
-	bl sub_02071BC8
+	bl Pokemon_UpdateArceusForme
 	add r0, r6, #0
 	bl Mon_UpdateGiratinaForme
 	ldr r1, _0207F684 ; =0x00000C65
@@ -14298,7 +14298,7 @@ sub_0207F924: ; 0x0207F924
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0
-	bl sub_02071BC8
+	bl Pokemon_UpdateArceusForme
 	add r0, r5, #0
 	bl Mon_UpdateGiratinaForme
 	ldr r1, _0207F9BC ; =0x00000C65

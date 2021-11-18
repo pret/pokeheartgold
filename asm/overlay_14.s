@@ -1521,7 +1521,7 @@ ov14_021E64D0: ; 0x021E64D0
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
-	bl sub_02071BD0
+	bl BoxMon_UpdateArceusForme
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0

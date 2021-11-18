@@ -28973,8 +28973,8 @@
 .public sub_02070D90
 .public sub_02070D94
 .public sub_02070DB4
-.public sub_02071BC8
-.public sub_02071BD0
+.public Pokemon_UpdateArceusForme
+.public BoxMon_UpdateArceusForme
 .public GetArceusTypeByHeldItemEffect
 .public sub_02071D3C
 .public sub_02071FDC
@@ -29029,7 +29029,7 @@
 .public sub_02074740
 .public sub_020747BC
 .public sub_020748B8
-.public sub_020748CC
+.public PartyHasMon
 .public SavArray_IsNatDexEnabled
 .public Pokedex_IsNatDexEnabled
 .public sub_02074930

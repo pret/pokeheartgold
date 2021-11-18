@@ -6824,7 +6824,7 @@ _0221F664:
 	ldr r1, _0221F710 ; =0x000001B9
 	add r0, r7, #0
 	str r6, [r5, #0x28]
-	bl sub_020748CC
+	bl PartyHasMon
 	cmp r0, #0
 	bne _0221F6BC
 	ldr r0, [r5, #0x10]

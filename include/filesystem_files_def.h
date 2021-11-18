@@ -166,7 +166,7 @@ typedef enum NarcId
     NARC_a_1_5_8,
     NARC_a_1_5_9,
     NARC_a_1_6_0,
-    NARC_a_1_6_1,
+    NARC_poketool_pokezukan,
     NARC_a_1_6_2,
     NARC_data_gs_areawindow,
     NARC_a_1_6_4,

@@ -18339,7 +18339,7 @@ _02240A1A:
 	ldr r0, [r5]
 	ldr r1, _02240A78 ; =0x000001B9
 	ldr r0, [r0, #8]
-	bl sub_020748CC
+	bl PartyHasMon
 	cmp r0, #0
 	bne _02240A62
 	ldr r0, [r5]

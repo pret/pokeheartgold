@@ -126,7 +126,7 @@ void sub_020748B8(const SAVE_PARTY_T *src, SAVE_PARTY_T *dest) {
     *dest = *src;
 }
 
-BOOL sub_020748CC(SAVE_PARTY_T *party, u16 species) {
+BOOL PartyHasMon(SAVE_PARTY_T *party, u16 species) {
     int i;
 
     for (i = 0; i < party->party.curCount; i++) {

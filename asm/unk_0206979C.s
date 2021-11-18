@@ -5124,7 +5124,7 @@ _0206BE8A:
 	bl RemoveMonFromParty
 	ldr r1, _0206BED4 ; =0x000001B9
 	add r0, r6, #0
-	bl sub_020748CC
+	bl PartyHasMon
 	cmp r0, #0
 	bne _0206BED0
 	add r0, r7, #0

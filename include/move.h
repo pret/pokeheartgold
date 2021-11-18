@@ -1,6 +1,22 @@
 #ifndef POKEHEARTGOLD_MOVE_H
 #define POKEHEARTGOLD_MOVE_H
 
+typedef enum MoveAttr {
+    MOVEATTR_EFFECT = 0,
+    MOVEATTR_CLASS,
+    MOVEATTR_POWER,
+    MOVEATTR_TYPE,
+    MOVEATTR_ACCURACY,
+    MOVEATTR_PP,
+    MOVEATTR_EFFECT_CHANCE,
+    MOVEATTR_UNK7,
+    MOVEATTR_PRIORTY,
+    MOVEATTR_UNK9,
+    MOVEATTR_UNK10,
+    MOVEATTR_CONTEST_TYPE,
+} MoveAttr;
+
+u32 GetWazaAttr(u16 moveId, MoveAttr attrno);
 u8 WazaGetMaxPp(u16 moveId, u8 ppUps);
 
 #endif //POKEHEARTGOLD_MOVE_H

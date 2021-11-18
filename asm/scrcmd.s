@@ -10456,7 +10456,7 @@ ScrCmd_517: ; 0x020458EC
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_020748CC
+	bl PartyHasMon
 	strh r0, [r4]
 	mov r0, #1
 	pop {r4, r5, r6, pc}

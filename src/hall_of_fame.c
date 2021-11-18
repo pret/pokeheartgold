@@ -1,4 +1,5 @@
 #include "hall_of_fame.h"
+#include "pokemon.h"
 #include "party.h"
 
 #define ASSERT_HALL_OF_FAME(hof) ({                \

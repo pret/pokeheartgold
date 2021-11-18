@@ -1,0 +1,6 @@
+#ifndef POKEHEARTGOLD_GF_RTC_H
+#define POKEHEARTGOLD_GF_RTC_H
+
+s32 IsNighttime(void);
+
+#endif //POKEHEARTGOLD_GF_RTC_H
