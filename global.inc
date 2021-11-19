@@ -28982,10 +28982,10 @@
 .public sub_020720D4
 .public sub_020720FC
 .public sub_0207217C
-.public sub_020721A4
-.public sub_0207224C
-.public sub_0207227C
-.public sub_0207235C
+.public WildMonSetRandomHeldItem
+.public GetMonTMHMCompat
+.public GetTMHMCompatBySpeciesAndForme
+.public SetMonPersonality
 .public sub_02072490
 .public sub_020726E0
 .public sub_020726F8

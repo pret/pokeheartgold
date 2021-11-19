@@ -1,4 +1,5 @@
 #include "constants/abilities.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -5460,12 +5461,12 @@ _02248576:
 _02248578:
 	ldr r1, [r6]
 	add r0, r4, #0
-	bl sub_020721A4
+	bl WildMonSetRandomHeldItem
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
 	bl GetMonData
-	cmp r0, #0xc9
+	cmp r0, #SPECIES_UNOWN
 	bne _022485A2
 	add r0, r5, #0
 	bl ov02_02248444

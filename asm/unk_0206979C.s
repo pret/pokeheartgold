@@ -6075,7 +6075,7 @@ _0206C604:
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0xc]
 	lsr r2, r2, #0x18
-	bl sub_0207227C
+	bl GetTMHMCompatBySpeciesAndForme
 	cmp r0, #0
 	beq _0206C646
 	ldr r1, [r4, r6]

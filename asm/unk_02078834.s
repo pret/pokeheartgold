@@ -19120,7 +19120,7 @@ _02082110:
 	bl ItemToTMHMId
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_0207224C
+	bl GetMonTMHMCompat
 	cmp r0, #0
 	bne _02082126
 	mov r0, #0xff

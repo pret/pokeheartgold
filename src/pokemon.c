@@ -46,6 +46,7 @@ s32 sub_0207280C(s32 trainer_class, s32 a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
 BOOL MonHasMove(POKEMON *pokemon, u16 move_id);
 void sub_0207213C(BOXMON *boxmon, PLAYERDATA *playerData, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
+void sub_02072190(BOXMON *boxmon, PLAYERDATA *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
 
 #define ENCRY_ARGS_PTY(mon) (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.pid
 #define ENCRY_ARGS_BOX(boxmon) (u16 *)&(boxmon)->substructs, sizeof((boxmon)->substructs), (boxmon)->checksum
@@ -68,6 +69,7 @@ extern const s8 sFriendshipModTable[FRIENDSHIP_EVENT_NUM][FRIENDSHIP_TIER_NUM];
 extern const struct UnkStruct_0200D748 _020FF588;
 extern const s32 _020FF50C[];
 extern const u16 _020FF4EC[ROTOM_FORME_MAX];
+extern const u16 sItemOdds[][2];
 
 void ZeroMonData(POKEMON *pokemon) {
     MI_CpuClearFast(pokemon, sizeof(POKEMON));
@@ -3647,9 +3649,143 @@ void sub_020720FC(POKEMON * pokemon, PLAYERDATA * a1, u32 pokeball, u32 a3, u32 
     }
 }
 
-void sub_0207213C(BOXMON * boxmon, PLAYERDATA * a1, u32 pokeball, u32 a3, u32 encounterType, u32 heap_id) {
+void sub_0207213C(BOXMON * boxmon, PLAYERDATA * a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
     sub_0208F270(boxmon, a1, 0, a3, heap_id);
     SetBoxMonData(boxmon, MON_DATA_GAME_VERSION, (void *)&gGameVersion);
     SetBoxMonData(boxmon, MON_DATA_POKEBALL, &pokeball);
     SetBoxMonData(boxmon, MON_DATA_ENCOUNTER_TYPE, &encounterType);
+}
+
+void sub_0207217C(POKEMON *pokemon, PLAYERDATA *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+    sub_02072190(&pokemon->box, a1, pokeball, a3, encounterType, heap_id);
+}
+
+void sub_02072190(BOXMON *boxmon, PLAYERDATA *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+    sub_0207213C(boxmon, a1, pokeball, a3, encounterType, heap_id);
+}
+
+void WildMonSetRandomHeldItem(struct Pokemon * pokemon, u32 a1, u32 a2) {
+    u32 chance;
+    u16 species;
+    u16 forme;
+    u16 item1;
+    u16 item2;
+    if (!(a1 & 0x81)) {
+        chance = (u32)(LCRandom() % 100);
+        species = (u16)GetMonData(pokemon, MON_DATA_SPECIES, 0);
+        forme = (u16)GetMonData(pokemon, MON_DATA_FORME, 0);
+        item1 = (u16)GetMonBaseStat_HandleAlternateForme(species, forme, BASE_ITEM_1);
+        item2 = (u16)GetMonBaseStat_HandleAlternateForme(species, forme, BASE_ITEM_2);
+        if (item1 == item2 && item1 != ITEM_NONE) {
+            SetMonData(pokemon, MON_DATA_HELD_ITEM, &item1);
+        } else {
+            if (chance >= sItemOdds[a2][0]) {
+                if (chance < sItemOdds[a2][1]) {
+                    SetMonData(pokemon, MON_DATA_HELD_ITEM, &item1);
+                } else {
+                    SetMonData(pokemon, MON_DATA_HELD_ITEM, &item2);
+                }
+            }
+        }
+    }
+}
+
+BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u32 tmhm);
+BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u32 tmhm);
+
+BOOL GetMonTMHMCompat(POKEMON *pokemon, u32 tmhm) {
+    return GetBoxMonTMHMCompat(&pokemon->box, tmhm);
+}
+
+BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u32 tmhm) {
+    u16 species;
+    u32 forme;
+
+    species = GetBoxMonData(boxmon, MON_DATA_SPECIES2, NULL);
+    forme = GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
+    return GetTMHMCompatBySpeciesAndForme(species, forme, tmhm);
+}
+
+BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u32 tmhm) {
+    u32 mask;
+    enum BaseStat baseStat;
+    if (species == SPECIES_EGG) {
+        return FALSE;
+    }
+
+    // mask = 1 << (a2 % 32);
+    // baseStat = BASE_TMHM_1 + (a2 / 32);
+    if (tmhm < 32) {
+        mask = 1 << tmhm;
+        baseStat = BASE_TMHM_1;
+    } else if (tmhm < 64) {
+        mask = 1 << (tmhm - 32);
+        baseStat = BASE_TMHM_2;
+    } else if (tmhm < 96) {
+        mask = 1 << (tmhm - 64);
+        baseStat = BASE_TMHM_3;
+    } else {
+        mask = 1 << (tmhm - 96);
+        baseStat = BASE_TMHM_4;
+    }
+    return (GetMonBaseStat_HandleAlternateForme(species, forme, baseStat) & mask) != 0;
+}
+
+void UpdateMonAbility(POKEMON *pokemon) {
+    UpdateBoxMonAbility(&pokemon->box);
+}
+
+void UpdateBoxMonAbility(BOXMON *boxmon) {
+    BOOL decry = AcquireBoxMonLock(boxmon);
+    int species = GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
+    int pid = GetBoxMonData(boxmon, MON_DATA_PERSONALITY, NULL);
+    int forme = GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
+    int ability1 = GetMonBaseStat_HandleAlternateForme(species, forme, BASE_ABILITY_1);
+    int ability2 = GetMonBaseStat_HandleAlternateForme(species, forme, BASE_ABILITY_2);
+    if (ability2 != ABILITY_NONE) {
+        if (pid & 1) {
+            SetBoxMonData(boxmon, MON_DATA_ABILITY, &ability2);
+        } else {
+            SetBoxMonData(boxmon, MON_DATA_ABILITY, &ability1);
+        }
+    } else {
+        SetBoxMonData(boxmon, MON_DATA_ABILITY, &ability1);
+    }
+    ReleaseBoxMonLock(boxmon, decry);
+}
+
+void SetMonPersonality(struct Pokemon * r5, u32 personality) {
+    PokemonDataBlockA * r4;
+    PokemonDataBlockB * r6;
+    PokemonDataBlockC * r7;
+    PokemonDataBlockD * sp8;
+    PokemonDataBlockA * spC;
+    PokemonDataBlockB * sp10;
+    PokemonDataBlockC * sp14;
+    PokemonDataBlockD * sp18;
+    struct Pokemon * sp4;
+
+    sp4 = AllocMonZeroed(0);
+    CopyPokemonToPokemon(r5, sp4);
+    r4 = &GetSubstruct(&sp4->box, r5->box.pid, 0)->blockA;
+    r6 = &GetSubstruct(&sp4->box, r5->box.pid, 1)->blockB;
+    r7 = &GetSubstruct(&sp4->box, r5->box.pid, 2)->blockC;
+    sp8 = &GetSubstruct(&sp4->box, r5->box.pid, 3)->blockD;
+    spC = &GetSubstruct(&r5->box, personality, 0)->blockA;
+    sp10 = &GetSubstruct(&r5->box, personality, 1)->blockB;
+    sp14 = &GetSubstruct(&r5->box, personality, 2)->blockC;
+    sp18 = &GetSubstruct(&r5->box, personality, 3)->blockD;
+
+    DECRYPT_BOX(&sp4->box);
+    DECRYPT_PTY(r5);
+    DECRYPT_BOX(&r5->box);
+    r5->box.pid = personality;
+    *spC = *r4;
+    *sp10 = *r6;
+    *sp14 = *r7;
+    *sp18 = *sp8;
+    r5->box.checksum = CHECKSUM(&r5->box);
+    ENCRYPT_BOX(&r5->box);
+    ENCRYPT_PTY(r5);
+    FreeToHeap(sp4);
 }
