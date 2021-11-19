@@ -105,7 +105,7 @@ void BoxMon_UpdateShayminForme(BOXMON *pokemon, int forme);
 void UpdateMonAbility(POKEMON *boxmon);
 void UpdateBoxMonAbility(BOXMON *boxmon);
 int LowestFlagNo(u32 mask);
-BOOL IsPokemonLegendaryOrMythical(u16 species);
+BOOL IsPokemonLegendaryOrMythical(u16 species, u16 forme);
 u16 GetLegendaryMon(u32 idx);
 void Pokemon_RemoveCapsule(POKEMON * pokemon);
 void RestoreBoxMonPP(BOXMON * boxmon);

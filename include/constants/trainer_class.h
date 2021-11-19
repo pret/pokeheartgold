@@ -91,11 +91,11 @@
 #define TRAINERCLASS_ELITE_FOUR_WILL                                87
 #define TRAINERCLASS_ELITE_FOUR_KAREN                               88
 #define TRAINERCLASS_ELITE_FOUR_KOGA                                89
-#define TRAINERCLASS_PKMN_TRAINER_FTR_AROMA_LADY                    90
-#define TRAINERCLASS_PKMN_TRAINER_FTR_RICH_BOY                      91
-#define TRAINERCLASS_PKMN_TRAINER_FTR_PICNICKER                     92
-#define TRAINERCLASS_PKMN_TRAINER_FTR_CAMPER                        93
-#define TRAINERCLASS_PKMN_TRAINER_FTR_POKEKID                       94
+#define TRAINERCLASS_PKMN_TRAINER_CHERYL                            90
+#define TRAINERCLASS_PKMN_TRAINER_RILEY                             91
+#define TRAINERCLASS_PKMN_TRAINER_BUCK                              92
+#define TRAINERCLASS_PKMN_TRAINER_MIRA                              93
+#define TRAINERCLASS_PKMN_TRAINER_MARLEY                            94
 #define TRAINERCLASS_PKMN_TRAINER_FTR_LUCAS                         95
 #define TRAINERCLASS_PKMN_TRAINER_FTR_DAWN                          96
 #define TRAINERCLASS_TOWER_TYCOON                                   97
@@ -130,5 +130,24 @@
 #define TRAINERCLASS_PKMN_TRAINER_DAWN_DP                          126
 #define TRAINERCLASS_PKMN_TRAINER_LUCAS_PT                         127
 #define TRAINERCLASS_PKMN_TRAINER_DAWN_PT                          128
+
+// Back pick idx
+#define TRAINER_BACKPIC_ETHAN                       0
+#define TRAINER_BACKPIC_LYRA                        1
+#define TRAINER_BACKPIC_RIVAL                       2
+#define TRAINER_BACKPIC_LANCE                       3
+#define TRAINER_BACKPIC_CHERYL                      4
+#define TRAINER_BACKPIC_RILEY                       5
+#define TRAINER_BACKPIC_BUCK                        6
+#define TRAINER_BACKPIC_MIRA                        7
+#define TRAINER_BACKPIC_MARLEY                      8
+#define TRAINER_BACKPIC_LUCAS_DP                    9
+#define TRAINER_BACKPIC_DAWN_DP                    10
+#define TRAINER_BACKPIC_BARRY_DP                   11
+#define TRAINER_BACKPIC_LUCAS_PT                   12
+#define TRAINER_BACKPIC_DAWN_PT                    13
+#define TRAINER_BACKPIC_BARRY_PT                   14
+#define TRAINER_BACKPIC_ETHAN_2                    15
+#define TRAINER_BACKPIC_LYRA_2                     16
 
 #endif //POKEHEARTGOLD_CONSTANTS_TRAINER_CLASS_H

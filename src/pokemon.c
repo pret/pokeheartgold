@@ -6,6 +6,7 @@
 #include "item.h"
 #include "msgdata.h"
 #include "party.h"
+#include "trainer_data.h"
 #include "map_section.h"
 #include "unk_0200CF18.h"
 #include "unk_02023694.h"
@@ -21,7 +22,7 @@ void MonEncryptSegment(void *data, u32 size, u32 key);
 void MonDecryptSegment(void *data, u32 size, u32 key);
 u32 CalcMonChecksum(void *data, u32 size);
 void InitBoxMonMoveset(BOXMON *boxmon);
-void LoadMonBaseStats_HandleAlternateForme(u32 species, u32 forme, struct BaseStats *dest);
+void LoadMonBaseStats_HandleAlternateForme(int species, int forme, BASE_STATS *dest);
 u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
 u32 GetMonDataInternal(POKEMON * pokemon, int attr, void * dest);
 u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest);
@@ -42,7 +43,7 @@ u8 sub_02070854(BOXMON *boxmon, u8 whichFacing, BOOL a2);
 u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid);
 u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid);
 void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3);
-s32 sub_0207280C(s32 trainer_class, s32 a1);
+int sub_0207280C(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
 BOOL MonHasMove(POKEMON *pokemon, u16 move_id);
 void sub_0207213C(BOXMON *boxmon, PLAYERDATA *playerData, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
@@ -70,6 +71,9 @@ extern const struct UnkStruct_0200D748 _020FF588;
 extern const s32 _020FF50C[];
 extern const u16 _020FF4EC[ROTOM_FORME_MAX];
 extern const u16 sItemOdds[][2];
+extern const u8 _020FF733[32][4];
+extern const u16 sLegendaryMonsList[18];
+extern const u16 _020FF4F8[9];
 
 void ZeroMonData(POKEMON *pokemon) {
     MI_CpuClearFast(pokemon, sizeof(POKEMON));
@@ -285,7 +289,7 @@ void CalcMonLevelAndStats(POKEMON * pokemon) {
 }
 
 void CalcMonStats(POKEMON * pokemon) {
-    struct BaseStats * baseStats;
+    BASE_STATS * baseStats;
     int level;
     int maxHp;
     int hpIv;
@@ -329,7 +333,7 @@ void CalcMonStats(POKEMON * pokemon) {
     forme = (int)GetMonData(pokemon, MON_DATA_FORME, NULL);
     species = (int)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
 
-    baseStats = (struct BaseStats *)AllocFromHeap(0, sizeof(struct BaseStats));
+    baseStats = (BASE_STATS *)AllocFromHeap(0, sizeof(BASE_STATS));
     LoadMonBaseStats_HandleAlternateForme(species, forme, baseStats);
 
     if (species == SPECIES_SHEDINJA) {
@@ -1907,13 +1911,13 @@ int CalcBoxMonLevel(BOXMON * boxmon) {
 
 int CalcLevelBySpeciesAndExp(u16 species, u32 exp) {
     int level;
-    struct BaseStats * personal = AllocAndLoadMonPersonal(species, 0);
+    BASE_STATS * personal = AllocAndLoadMonPersonal(species, 0);
     level = CalcLevelBySpeciesAndExp_PreloadedPersonal(personal, species, exp);
     FreeMonPersonal(personal);
     return level;
 }
 
-int CalcLevelBySpeciesAndExp_PreloadedPersonal(struct BaseStats * personal, u16 species, u32 exp) {
+int CalcLevelBySpeciesAndExp_PreloadedPersonal(BASE_STATS * personal, u16 species, u32 exp) {
 #pragma unused(species)
     static u32 table[101];
     int i;
@@ -3788,4 +3792,250 @@ void SetMonPersonality(struct Pokemon * r5, u32 personality) {
     ENCRYPT_BOX(&r5->box);
     ENCRYPT_PTY(r5);
     FreeToHeap(sp4);
+}
+
+u32 sub_02072490(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL forceAbility) {
+    GF_ASSERT(ability < 2);
+    GF_ASSERT(gender != 0xFF);
+    if (forceAbility) {
+        u32 r4 = ((pid & 0xFFFF0000) >> 16) ^ (u16)pid;
+        pid = GenPersonalityByGenderAndNature(species, gender, nature);
+        if ((pid & 1) != ability) {
+            pid++;
+        }
+        pid |= ((u16)pid ^ r4) << 16;
+    } else {
+        u32 r1;
+        u8 ratio = GetMonBaseStat(species, BASE_GENDER_RATIO);
+        GF_ASSERT((nature & 1) == ability);
+        r1 = ((pid & 0xFFFF0000) >> 16) ^ (u16)pid;
+        pid = (0xFF00 ^ (r1 & 0xFF00)) << 16;
+        pid += nature - (pid % 25);
+        switch (ratio) {
+        case MON_RATIO_MALE:
+        case MON_RATIO_FEMALE:
+        case MON_RATIO_UNKNOWN:
+            break;
+        default:
+            if (gender == MON_MALE) {
+                if (ratio > (u8)pid) {
+                    pid += 25 * ((ratio - (u8)pid) / 25u + 1);
+                    if ((pid & 1) != ability) {
+                        GF_ASSERT((u8)pid <= 230);
+                        pid += 25;
+                    }
+                }
+            } else {
+                if (ratio < (u8)pid) {
+                    pid -= 25 * (((u8)pid - ratio) / 25u + 1);
+                    if ((pid & 1) != ability) {
+                        GF_ASSERT((u8)pid >= 25);
+                        pid -= 25;
+                    }
+                }
+            }
+            break;
+        }
+    }
+    return pid;
+}
+
+void LoadMonPersonal(int species, BASE_STATS *personal) {
+    ReadWholeNarcMemberByIdPair(personal, NARC_poketool_personal_personal, species);
+}
+
+void LoadMonBaseStats_HandleAlternateForme(int species, int forme, BASE_STATS *personal) {
+    ReadWholeNarcMemberByIdPair(personal, NARC_poketool_personal_personal, ResolveMonForme(species, forme));
+}
+
+void LoadMonEvolutionTable(u16 species, struct Evolution *evo) {
+    ReadWholeNarcMemberByIdPair(evo, NARC_poketool_personal_evo, species);
+}
+
+void MonEncryptSegment(void *data, u32 size, u32 seed) {
+    _MonEncryptSegment(data, size, seed);
+}
+
+void MonDecryptSegment(void *data, u32 size, u32 seed) {
+    _MonDecryptSegment(data, size, seed);
+}
+
+u32 CalcMonChecksum(void * _data, u32 size) {
+    int i;
+    const u16 *data = _data;
+    u16 ret = 0;
+    for (i = 0; i < size / 2; i++) {
+        ret += data[i];
+    }
+    return ret;
+}
+
+PokemonDataBlock *GetSubstruct(BOXMON *boxmon, u32 pid, u8 which) {
+    pid = ((pid & 0x3E000) >> 13);
+    GF_ASSERT(which <= 3);
+    return (PokemonDataBlock *)((char *)boxmon->substructs + _020FF733[pid][which]);
+}
+
+int ResolveMonForme(int species, int forme) {
+    switch (species) {
+    case SPECIES_DEOXYS:
+        if (forme != DEOXYS_NORMAL && forme <= DEOXYS_FORME_MAX - 1) {
+            return SPECIES_DEOXYS_ATK + forme - DEOXYS_ATTACK;
+        }
+        break;
+    case SPECIES_WORMADAM:
+        if (forme != WORMADAM_PLANT && forme <= WORMADAM_FORME_MAX - 1) {
+            return SPECIES_WORMADAM_SANDY + forme - WORMADAM_SANDY;
+        }
+        break;
+    case SPECIES_GIRATINA:
+        if (forme != GIRATINA_ALTERED && forme <= GIRATINA_FORME_MAX - 1) {
+            return SPECIES_GIRATINA_ORIGIN + forme - GIRATINA_ORIGIN;
+        }
+        break;
+    case SPECIES_SHAYMIN:
+        if (forme != SHAYMIN_LAND && forme <= SHAYMIN_FORME_MAX - 1) {
+            return SPECIES_SHAYMIN_SKY + forme - SHAYMIN_SKY;
+        }
+        break;
+    case SPECIES_ROTOM:
+        if (forme != ROTOM_NORMAL && forme <= ROTOM_FORME_MAX - 1) {
+            return SPECIES_ROTOM_HEAT + forme - ROTOM_HEAT;
+        }
+        break;
+    }
+    return species;
+}
+
+u32 MaskOfFlagNo(int flagno) {
+    // This is completely inane.
+    int i;
+    u32 ret = 1;
+    GF_ASSERT(flagno < 32);
+    for (i = 0; i < flagno; i++) {
+        ret <<= 1;
+    }
+    return ret;
+}
+
+int LowestFlagNo(u32 mask) {
+    // ctz
+    int i;
+    u32 bit = 1;
+    for (i = 0; i < 32; i++) {
+        if (mask & bit) {
+            break;
+        }
+        bit <<= 1;
+    }
+    return i;
+}
+
+BOOL IsPokemonLegendaryOrMythical(u16 species, u16 forme) {
+    int i;
+    for (i = 0; i < NELEMS(sLegendaryMonsList); i++) {
+        if (species == sLegendaryMonsList[i]) {
+            return TRUE;
+        }
+    }
+    if (species == SPECIES_PICHU && forme == PICHU_SPIKY_EAR) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+u16 GetLegendaryMon(u32 idx) {
+    if (idx >= NELEMS(sLegendaryMonsList)) {
+        idx = 0;
+    }
+    return sLegendaryMonsList[idx];
+}
+
+BOOL sub_02072740(u16 species) {
+    int i;
+    for (i = 0; i < NELEMS(_020FF4F8); i++) {
+        if (species == _020FF4F8[i]) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+BOOL sub_02072760(POKEMON *pokemon) {
+    u16 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    u16 forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
+    return IsPokemonLegendaryOrMythical(species, forme);
+}
+
+BOOL sub_02072788(BOXMON * boxmon, PLAYERDATA * playerData, HeapID heap_id) {
+    u32 myId = PlayerProfile_GetTrainerID(playerData);
+    u32 otId = GetBoxMonData(boxmon, MON_DATA_OTID, NULL);
+    u32 myGender = PlayerProfile_GetTrainerGender(playerData);
+    u32 otGender = GetBoxMonData(boxmon, MON_DATA_MET_GENDER, NULL);
+    STRING * r7 = PlayerProfile_GetPlayerName_NewString(playerData, heap_id);
+    STRING * r6 = String_ctor(OT_NAME_LENGTH + 1, heap_id);
+    BOOL ret = FALSE;
+    GetBoxMonData(boxmon, MON_DATA_OT_NAME_2, r6);
+    if (myId == otId && myGender == otGender && StringCompare(r7, r6) == 0) {
+        ret = TRUE;
+    }
+    String_dtor(r6);
+    String_dtor(r7);
+    return ret;
+}
+
+int sub_0207280C(int trainerClass, int a1) {
+    switch (trainerClass) {
+    case TRAINERCLASS_PKMN_TRAINER_ETHAN:
+    case TRAINERCLASS_PKMN_TRAINER_LYRA:
+        if (a1) {
+            return trainerClass - TRAINERCLASS_PKMN_TRAINER_ETHAN + TRAINER_BACKPIC_ETHAN_2;
+        } else {
+            return trainerClass - TRAINERCLASS_PKMN_TRAINER_ETHAN + TRAINER_BACKPIC_ETHAN;
+        }
+    case TRAINERCLASS_RIVAL:
+        return TRAINER_BACKPIC_RIVAL;
+    case TRAINERCLASS_PKMN_TRAINER_LUCAS_DP:
+    case TRAINERCLASS_PKMN_TRAINER_DAWN_DP:
+        return trainerClass - TRAINERCLASS_PKMN_TRAINER_LUCAS_DP + TRAINER_BACKPIC_LUCAS_DP;
+    case TRAINERCLASS_PKMN_TRAINER_LANCE:
+        return TRAINER_BACKPIC_LANCE;
+    case TRAINERCLASS_PKMN_TRAINER_CHERYL:
+    case TRAINERCLASS_PKMN_TRAINER_RILEY:
+    case TRAINERCLASS_PKMN_TRAINER_BUCK:
+    case TRAINERCLASS_PKMN_TRAINER_MIRA:
+    case TRAINERCLASS_PKMN_TRAINER_MARLEY:
+        return trainerClass - TRAINERCLASS_PKMN_TRAINER_CHERYL + TRAINER_BACKPIC_CHERYL;
+    case TRAINERCLASS_PKMN_TRAINER_LUCAS_PT:
+    case TRAINERCLASS_PKMN_TRAINER_DAWN_PT:
+        return trainerClass - TRAINERCLASS_PKMN_TRAINER_LUCAS_PT + TRAINER_BACKPIC_LUCAS_PT;
+    default:
+        if (TrainerClass_GetGenderOrTrainerCount(trainerClass) == 1) {
+            return TRAINER_BACKPIC_LYRA;
+        } else {
+            return TRAINER_BACKPIC_ETHAN;
+        }
+    }
+    return trainerClass;
+}
+
+void Pokemon_RemoveCapsule(POKEMON * pokemon) {
+    u8 sp0 = 0;
+    CAPSULE sp1;
+    MI_CpuClearFast(&sp1, sizeof(sp1));
+    SetMonData(pokemon, MON_DATA_CAPSULE, &sp0);
+    SetMonData(pokemon, MON_DATA_SEAL_COORDS, &sp1);
+}
+
+void RestoreBoxMonPP(BOXMON * boxmon) {
+    int i;
+    u8 pp;
+    BOOL decry = AcquireBoxMonLock(boxmon);
+    for (i = 0; i < 4; i++) {
+        if (GetBoxMonData(boxmon, MON_DATA_MOVE1 + i, NULL) != MOVE_NONE) {
+            pp = (u8)GetBoxMonData(boxmon, MON_DATA_MOVE1MAXPP + i, NULL);
+            SetBoxMonData(boxmon, MON_DATA_MOVE1PP + i, &pp);
+        }
+    }
+    ReleaseBoxMonLock(boxmon, decry);
 }

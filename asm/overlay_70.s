@@ -16606,7 +16606,7 @@ ov70_0223FD64: ; 0x0223FD64
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_02072894
+	bl Pokemon_RemoveCapsule
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -17022,7 +17022,7 @@ ov70_0224006C: ; 0x0224006C
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_02072894
+	bl Pokemon_RemoveCapsule
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	add r0, r1, #0
@@ -18323,7 +18323,7 @@ _02240A1A:
 	ldr r0, [r0, #8]
 	bl GetPartyMonByIndex
 	add r4, r0, #0
-	bl sub_02072894
+	bl Pokemon_RemoveCapsule
 	mov r2, #0x12
 	ldr r0, [r5]
 	lsl r2, r2, #4

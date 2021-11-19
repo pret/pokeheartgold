@@ -5519,7 +5519,7 @@ _0207B392:
 	ldrh r0, [r2, r1]
 	add r1, #0xd
 	ldrb r1, [r2, r1]
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #1
 	bne _0207B3B8
 	mov r0, #0
@@ -5594,7 +5594,7 @@ sub_0207B418: ; 0x0207B418
 	ldrh r0, [r2, r1]
 	add r1, #0xd
 	ldrb r1, [r2, r1]
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #1
 	bne _0207B444
 	mov r0, #0
@@ -5668,7 +5668,7 @@ sub_0207B4A0: ; 0x0207B4A0
 	ldrh r0, [r2, r1]
 	add r1, #0xd
 	ldrb r1, [r2, r1]
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #1
 	bne _0207B4CC
 	mov r0, #0
@@ -14454,7 +14454,7 @@ sub_0207FAA8: ; 0x0207FAA8
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
 	bl GetPartyMonByIndex
-	bl sub_02072894
+	bl Pokemon_RemoveCapsule
 	ldr r0, _0207FACC ; =0x00000654
 	mov r1, #0
 	ldr r0, [r4, r0]

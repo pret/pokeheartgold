@@ -7,7 +7,7 @@ typedef enum NarcId
 {
     NARC_a_0_0_0 = 0,
     NARC_a_0_0_1,
-    NARC_a_0_0_2,
+    NARC_poketool_personal_personal,
     NARC_poketool_personal_growtbl,
     NARC_poketool_pokegra_pokegra,
     NARC_poketool_pokegra_height,
@@ -39,7 +39,7 @@ typedef enum NarcId
     NARC_a_0_3_1,
     NARC_a_0_3_2,
     NARC_poketool_personal_wotbl,
-    NARC_a_0_3_4,
+    NARC_poketool_personal_evo,
     NARC_a_0_3_5,
     NARC_a_0_3_6,
     NARC_fielddata_encountdata_g_enc_data,

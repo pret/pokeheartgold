@@ -397,6 +397,7 @@ endef
 NARCS := $(filter %.narc,$(NITROFS_FILES))
 NAIXS := $(NARCS:%.narc=%.naix)
 
+$(eval $(call arc_strip_name,files/poketool/personal/personal.narc,files/a/0/0/2))
 $(eval $(call arc_strip_name,files/poketool/personal/growtbl.narc,files/a/0/0/3))
 $(eval $(call arc_strip_name,files/poketool/pokegra/pokegra.narc,files/a/0/0/4))
 $(eval $(call arc_strip_name,files/poketool/pokegra/height.narc,files/a/0/0/5))
@@ -406,6 +407,7 @@ $(eval $(call arc_strip_name,files/itemtool/itemdata/item_data.narc,files/a/0/1/
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_icon.narc,files/a/0/1/8))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
 $(eval $(call arc_strip_name,files/poketool/personal/wotbl.narc,files/a/0/3/3))
+$(eval $(call arc_strip_name,files/poketool/personal/evo.narc,files/a/0/3/4))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/g_enc_data.narc,files/a/0/3/7))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data.narc,files/a/0/7/4))
 $(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))

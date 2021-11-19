@@ -39300,7 +39300,7 @@ _0224AB4A:
 	str r0, [r4, r1]
 	b _0224AB6E
 _0224AB64:
-	bl sub_020726E0
+	bl LowestFlagNo
 	mov r1, #0x13
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -41236,7 +41236,7 @@ _0224BA6C:
 	and r0, r1
 	beq _0224BACC
 	lsr r0, r0, #0x10
-	bl sub_020726E0
+	bl LowestFlagNo
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -44278,7 +44278,7 @@ ov12_0224D1DC: ; 0x0224D1DC
 	and r0, r1
 	beq _0224D212
 	lsr r0, r0, #0x1c
-	bl sub_020726E0
+	bl LowestFlagNo
 	str r0, [r4, #0x74]
 	ldr r1, _0224D218 ; =0x0000213C
 	ldr r0, _0224D21C ; =0x0FFFFFFF
@@ -45688,7 +45688,7 @@ _0224DCB6:
 	asr r0, r0, #0x18
 	and r1, r3
 	str r1, [r5, r2]
-	bl sub_020726E0
+	bl LowestFlagNo
 	str r0, [r5, #0x74]
 	ldr r0, [sp, #4]
 	cmp r0, #1
@@ -45760,7 +45760,7 @@ _0224DD3E:
 	asr r0, r0, #0x1c
 	and r1, r3
 	str r1, [r5, r2]
-	bl sub_020726E0
+	bl LowestFlagNo
 	mov r2, #0x45
 	str r0, [r5, #0x74]
 	add r0, r5, #0

@@ -17,5 +17,6 @@ STRING *String_ctor(u32 maxsize, HeapID heapId);
 void String_dtor(STRING *string);
 void CopyStringToU16Array(const STRING *string, u16 *dest, u32 n);
 void CopyU16ArrayToString(STRING *string, const u16 *src);
+int StringCompare(STRING *a, STRING *b);
 
 #endif //POKEHEARTGOLD_STRING_H

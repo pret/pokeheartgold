@@ -356,7 +356,7 @@ _0204F0A8:
 	blo _0204F10E
 	ldr r1, [sp, #8]
 	add r0, r7, #0
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #1
 	beq _0204F10E
 	ldr r0, [sp, #0x10]

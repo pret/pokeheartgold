@@ -279,7 +279,7 @@ _02074B50:
 	cmp r0, #0
 	beq _02074B6C
 	add r1, r7, #0
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #0
 	beq _02074B6C
 	ldrh r0, [r5]
@@ -629,7 +629,7 @@ _02074DD0:
 	bne _02074DF6
 	ldrh r0, [r4]
 	mov r1, #0
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #1
 	bne _02074DF6
 	add r7, r7, #1

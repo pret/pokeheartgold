@@ -6808,7 +6808,7 @@ _0221F664:
 	mov r3, #0
 	bl sub_0208F260
 	add r0, r4, #0
-	bl sub_02072894
+	bl Pokemon_RemoveCapsule
 	ldr r0, [sp, #0xc]
 	ldr r1, [r5, #0x38]
 	bl CopyPokemonToPokemon
