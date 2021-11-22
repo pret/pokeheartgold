@@ -4951,7 +4951,7 @@ u32 _u32_getDigitN(u32 num, u8 digit) {
     return (num % sp0[digit + 1]) / sp0[digit];
 }
 
-int sub_02073058(int a0) {
+s16 sub_02073058(s16 a0) {
     if (a0 <= -120) {
         return -4;
     } else if (a0 <= -80) {
@@ -5012,4 +5012,37 @@ void CalcBoxMonPokeathlonPerformance(BOXMON *boxmon, struct UnkStruct_Pokeathlon
     dest->unk_0[4].unk_0_0 = data[1];
     dest->unk_0[4].unk_0_6 = data[11];
     dest->unk_0[4].unk_0_3 = data[12];
+}
+
+void CalcMonPokeathlonPerformance(POKEMON *pokemon, struct UnkStruct_Pokeathlon_Something *dest) {
+    CalcBoxMonPokeathlonPerformance(Mon_GetBoxMon(pokemon), dest);
+}
+
+void sub_02073248(struct UnkStruct_Pokeathlon_Something_3 *dest, BOXMON *boxmon, const s8 *sp0, int r3) {
+#pragma unused(r3)
+    int i;
+    struct UnkStruct_Pokeathlon_Something sp4;
+
+    MI_CpuFill8(dest, 0, sizeof(struct UnkStruct_Pokeathlon_Something_3));
+    CalcBoxMonPokeathlonPerformance(boxmon, &sp4);
+    for (i = 0; i < 5u; i++) {
+        s16 r0 = sp4.unk_0[i].unk_0_0 + (sp0 == NULL ? sub_02073058(sp4.unk_0[i].unk_2) : sub_02073058(sp4.unk_0[i].unk_2 + sp0[i]));
+        if (r0 < sp4.unk_0[i].unk_0_6) {
+            r0 = sp4.unk_0[i].unk_0_6;
+        } else if (r0 > sp4.unk_0[i].unk_0_3) {
+            r0 = sp4.unk_0[i].unk_0_3;
+        }
+        if (r0 == sp4.unk_0[i].unk_0_0) {
+            dest->unk_2[i] = 0;
+        } else if (r0 < sp4.unk_0[i].unk_0_0) {
+            dest->unk_2[i] = 2;
+        } else {
+            dest->unk_2[i] = 1;
+        }
+        dest->unk_0 |= r0 << (3 * i);
+    }
+}
+
+void sub_020732E4(struct UnkStruct_Pokeathlon_Something_3 *dest, POKEMON *pokemon, const s8 *sp0, int r3) {
+    sub_02073248(dest, Mon_GetBoxMon(pokemon), sp0, r3);
 }

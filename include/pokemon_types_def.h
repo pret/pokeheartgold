@@ -263,7 +263,7 @@ struct UnkStruct_Pokeathlon_Something_sub {
     u16 unk_0_3:3;
     u16 unk_0_6:3;
     u16 dummy:7;
-    u16 unk_2;
+    s16 unk_2;
 };
 
 struct UnkStruct_Pokeathlon_Something {
@@ -275,6 +275,12 @@ struct UnkStruct_Pokeathlon_Something_2 {
     u8 unk_1;
     u8 unk_2;
     u8 unk_3;
+};
+
+struct UnkStruct_Pokeathlon_Something_3 {
+    u16 unk_0;
+    u8 unk_2[5];
+    u8 dummy;
 };
 
 #endif //POKEHEARTGOLD_POKEMON_TYPES_DEF_H
