@@ -11,6 +11,7 @@
 #include "unk_0200CF18.h"
 #include "unk_02023694.h"
 #include "unk_02078834.h"
+#include "unk_02016EDC.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/trainer_class.h"
@@ -64,16 +65,693 @@ void sub_02072190(BOXMON *boxmon, PLAYERDATA *a1, u32 pokeball, u32 a3, u32 enco
     < 8u)
 #define CALC_UNOWN_LETTER(pid) ((u32)((((pid) & 0x3000000) >> 18) | (((pid) & 0x30000) >> 12) | (((pid) & 0x300) >> 6) | (((pid) & 0x3) >> 0)) % 28u)
 
-extern const s8 sNatureStatMods[NATURE_NUM][NUM_EV_STATS];
-extern const s8 sFlavorPreferencesByNature[NATURE_NUM][FLAVOR_MAX];
-extern const s8 sFriendshipModTable[FRIENDSHIP_EVENT_NUM][FRIENDSHIP_TIER_NUM];
-extern const struct UnkStruct_0200D748 _020FF588;
-extern const s32 _020FF50C[];
-extern const u16 _020FF4EC[ROTOM_FORME_MAX];
-extern const u16 sItemOdds[][2];
-extern const u8 _020FF733[32][4];
-extern const u16 sLegendaryMonsList[18];
-extern const u16 _020FF4F8[9];
+const s8 sNatureStatMods[NATURE_NUM][NUM_EV_STATS] = {
+    { 0,  0,  0,  0,  0},
+    { 1, -1,  0,  0,  0},
+    { 1,  0, -1,  0,  0},
+    { 1,  0,  0, -1,  0},
+    { 1,  0,  0,  0, -1},
+    {-1,  1,  0,  0,  0},
+    { 0,  0,  0,  0,  0},
+    { 0,  1, -1,  0,  0},
+    { 0,  1,  0, -1,  0},
+    { 0,  1,  0,  0, -1},
+    {-1,  0,  1,  0,  0},
+    { 0, -1,  1,  0,  0},
+    { 0,  0,  0,  0,  0},
+    { 0,  0,  1, -1,  0},
+    { 0,  0,  1,  0, -1},
+    {-1,  0,  0,  1,  0},
+    { 0, -1,  0,  1,  0},
+    { 0,  0, -1,  1,  0},
+    { 0,  0,  0,  0,  0},
+    { 0,  0,  0,  1, -1},
+    {-1,  0,  0,  0,  1},
+    { 0, -1,  0,  0,  1},
+    { 0,  0, -1,  0,  1},
+    { 0,  0,  0, -1,  1},
+    { 0,  0,  0,  0,  0},
+};
+
+static const s8 sFlavorPreferencesByNature[NATURE_NUM][FLAVOR_MAX] = {
+    { 0,  0,  0,  0,  0},
+    { 1,  0,  0,  0, -1},
+    { 1,  0, -1,  0,  0},
+    { 1, -1,  0,  0,  0},
+    { 1,  0,  0, -1,  0},
+    {-1,  0,  0,  0,  1},
+    { 0,  0,  0,  0,  0},
+    { 0,  0, -1,  0,  1},
+    { 0, -1,  0,  0,  1},
+    { 0,  0,  0, -1,  1},
+    {-1,  0,  1,  0,  0},
+    { 0,  0,  1,  0, -1},
+    { 0,  0,  0,  0,  0},
+    { 0, -1,  1,  0,  0},
+    { 0,  0,  1, -1,  0},
+    {-1,  1,  0,  0,  0},
+    { 0,  1,  0,  0, -1},
+    { 0,  1, -1,  0,  0},
+    { 0,  0,  0,  0,  0},
+    { 0,  1,  0, -1,  0},
+    {-1,  0,  0,  1,  0},
+    { 0,  0,  0,  1, -1},
+    { 0,  0, -1,  1,  0},
+    { 0, -1,  0,  1,  0},
+    { 0,  0,  0,  0,  0},
+};
+
+static const s8 sFriendshipModTable[FRIENDSHIP_EVENT_NUM][FRIENDSHIP_TIER_NUM] = {
+    {  5,   3,   2},
+    {  5,   3,   2},
+    {  1,   1,   0},
+    {  3,   2,   1},
+    {  1,   1,   0},
+    {  1,   1,   1},
+    { -1,  -1,  -1},
+    { -5,  -5, -10},
+    { -5,  -5, -10},
+    {  3,   2,   1},
+};
+
+static const struct UnkStruct_0200D748 _020FF588 = {
+    0, 0, 0, 0,
+    0, 0, 1,
+    {0x4E2F, 0x4E2A, 0x4E27, 0x4E27, -1u, -1u},
+    2, 1
+};
+
+static const s32 _020FF50C[] = {
+    0, 1, 1, 2, 0, 3
+};
+
+static const u16 _020FF4EC[ROTOM_FORME_MAX] = {
+    MOVE_NONE,
+    MOVE_OVERHEAT,
+    MOVE_HYDRO_PUMP,
+    MOVE_BLIZZARD,
+    MOVE_AIR_SLASH,
+    MOVE_LEAF_STORM,
+};
+
+static const u16 sItemOdds[2][2] = {
+    {45, 95},
+    {20, 80},
+};
+
+static const u8 _020FF733[32][4] = {
+    {0x00, 0x20, 0x40, 0x60},
+    {0x00, 0x20, 0x60, 0x40},
+    {0x00, 0x40, 0x20, 0x60},
+    {0x00, 0x60, 0x20, 0x40},
+    {0x00, 0x40, 0x60, 0x20},
+    {0x00, 0x60, 0x40, 0x20},
+    {0x20, 0x00, 0x40, 0x60},
+    {0x20, 0x00, 0x60, 0x40},
+    {0x40, 0x00, 0x20, 0x60},
+    {0x60, 0x00, 0x20, 0x40},
+    {0x40, 0x00, 0x60, 0x20},
+    {0x60, 0x00, 0x40, 0x20},
+    {0x20, 0x40, 0x00, 0x60},
+    {0x20, 0x60, 0x00, 0x40},
+    {0x40, 0x20, 0x00, 0x60},
+    {0x60, 0x20, 0x00, 0x40},
+    {0x40, 0x60, 0x00, 0x20},
+    {0x60, 0x40, 0x00, 0x20},
+    {0x20, 0x40, 0x60, 0x00},
+    {0x20, 0x60, 0x40, 0x00},
+    {0x40, 0x20, 0x60, 0x00},
+    {0x60, 0x20, 0x40, 0x00},
+    {0x40, 0x60, 0x20, 0x00},
+    {0x60, 0x40, 0x20, 0x00},
+    {0x00, 0x20, 0x40, 0x60},
+    {0x00, 0x20, 0x60, 0x40},
+    {0x00, 0x40, 0x20, 0x60},
+    {0x00, 0x60, 0x20, 0x40},
+    {0x00, 0x40, 0x60, 0x20},
+    {0x00, 0x60, 0x40, 0x20},
+    {0x20, 0x00, 0x40, 0x60},
+    {0x20, 0x00, 0x60, 0x40},
+};
+
+static const u16 sLegendaryMonsList[18] = {
+    SPECIES_MEWTWO,
+    SPECIES_MEW,
+    SPECIES_LUGIA,
+    SPECIES_HO_OH,
+    SPECIES_CELEBI,
+    SPECIES_KYOGRE,
+    SPECIES_GROUDON,
+    SPECIES_RAYQUAZA,
+    SPECIES_JIRACHI,
+    SPECIES_DEOXYS,
+    SPECIES_DIALGA,
+    SPECIES_PALKIA,
+    SPECIES_GIRATINA,
+    SPECIES_PHIONE,
+    SPECIES_MANAPHY,
+    SPECIES_DARKRAI,
+    SPECIES_SHAYMIN,
+    SPECIES_ARCEUS,
+};
+
+static const u16 _020FF4F8[9] = {
+    SPECIES_MEW,
+    SPECIES_CELEBI,
+    SPECIES_JIRACHI,
+    SPECIES_DEOXYS,
+    SPECIES_PHIONE,
+    SPECIES_MANAPHY,
+    SPECIES_DARKRAI,
+    SPECIES_SHAYMIN,
+    SPECIES_ARCEUS,
+};
+
+static const s8 _020FF6B6[NATURE_NUM][5] = {
+    { 10,   0,   0,   0, -10},
+    { 35, -35,   0,   0,   0},
+    { 35,   0,   0,   0, -35},
+    { 35,   0,   0, -35,   0},
+    { 35,   0, -35,   0,   0},
+    {-35,  35,   0,   0,   0},
+    {  0,  10,   0, -10,   0},
+    {  0,  35,   0,   0, -35},
+    {  0,  35,   0, -35,   0},
+    {  0,  35, -35,   0,   0},
+    {-35,   0,   0,   0,  35},
+    {  0, -35,   0,   0,  35},
+    {  0,   0, -10,   0,  10},
+    {  0,   0,   0, -35,  35},
+    {  0,   0, -35,   0,  35},
+    {-35,   0,   0,  35,   0},
+    {  0, -35,   0,  35,   0},
+    {  0,   0,   0,  35, -35},
+    {-10,   0,   0,  10,   0},
+    {  0,   0, -35,  35,   0},
+    {-35,   0,  35,   0,   0},
+    {  0, -35,  35,   0,   0},
+    {  0,   0,  35,   0, -35},
+    {  0,   0,  35, -35,   0},
+    {  0, -10,  10,   0,   0},
+};
+
+static const u16 _020FF7B4[] = {
+      0,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60,
+     61,
+     62,
+     63,
+     64,
+     65,
+     66,
+     67,
+     68,
+     69,
+     70,
+     71,
+     72,
+     73,
+     74,
+     75,
+     76,
+     77,
+     78,
+     79,
+     80,
+     81,
+     82,
+     83,
+     84,
+     85,
+     86,
+     87,
+     88,
+     89,
+     90,
+     91,
+     92,
+     93,
+     94,
+     95,
+     96,
+     97,
+     98,
+     99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    280,
+    281,
+    282,
+    283,
+    284,
+    285,
+    286,
+    287,
+    288,
+    289,
+    290,
+    291,
+    292,
+    293,
+    294,
+    295,
+    296,
+    297,
+    298,
+    299,
+    300,
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307,
+    308,
+    309,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319,
+    320,
+    321,
+    322,
+    323,
+    324,
+    325,
+    326,
+    327,
+    328,
+    329,
+    330,
+    331,
+    332,
+    333,
+    334,
+    335,
+    336,
+    337,
+    338,
+    339,
+    340,
+    341,
+    342,
+    343,
+    344,
+    345,
+    346,
+    347,
+    348,
+    349,
+    350,
+    351,
+    352,
+    353,
+    354,
+    355,
+    356,
+    357,
+    358,
+    359,
+    360,
+    361,
+    362,
+    363,
+    364,
+    365,
+    366,
+    367,
+    368,
+    369,
+    370,
+    371,
+    372,
+    373,
+    374,
+    375,
+    376,
+    377,
+    378,
+    379,
+    380,
+    381,
+    382,
+    383,
+    384,
+    385,
+    386,
+    387,
+    388,
+    389,
+    390,
+    391,
+    392,
+    393,
+    394,
+    395,
+    396,
+    397,
+    398,
+    399,
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409,
+    410,
+    411,
+    412,
+    413,
+    417,
+    418,
+    419,
+    420,
+    421,
+    422,
+    423,
+    424,
+    425,
+    426,
+    427,
+    428,
+    429,
+    430,
+    431,
+    432,
+    433,
+    434,
+    435,
+    436,
+    437,
+    438,
+    439,
+    440,
+    441,
+    442,
+    445,
+    448,
+    449,
+    450,
+    451,
+    452,
+    453,
+    454,
+    455,
+    456,
+    458,
+    460,
+    461,
+    462,
+    463,
+    464,
+    465,
+    466,
+    467,
+    468,
+    469,
+    470,
+    471,
+    472,
+    473,
+    474,
+    475,
+    476,
+    477,
+    478,
+    479,
+    480,
+    481,
+    482,
+    483,
+    484,
+    485,
+    486,
+    487,
+    488,
+    489,
+    490,
+    491,
+    492,
+    493,
+    494,
+    495,
+    496,
+    497,
+    498,
+    499,
+    500,
+    501,
+    502,
+    503,
+    504,
+    505,
+    506,
+    507,
+    508,
+    509,
+    510,
+    511,
+    512,
+    513,
+    514,
+    515,
+    521,
+    522,
+    523,
+    524,
+    525,
+    526,
+    527,
+    528,
+    530,
+    531,
+    532,
+    533,
+    534,
+    536,
+
+};
 
 void ZeroMonData(POKEMON *pokemon) {
     MI_CpuClearFast(pokemon, sizeof(POKEMON));
@@ -4038,4 +4716,301 @@ void RestoreBoxMonPP(BOXMON * boxmon) {
         }
     }
     ReleaseBoxMonLock(boxmon, decry);
+}
+
+void sub_02072914(NARC *narc, struct UnkStruct_02072914_sub *dest, u16 a2, u16 a3) {
+    struct UnkStruct_02072914 sp4;
+    int r5 = (a3 & 1 ? 0 : 1);
+    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(struct UnkStruct_02072914_sub_sub) * 10);
+}
+
+void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6) {
+    struct UnkStruct_02072914 spA;
+    struct UnkStruct_0207294C sp4;
+    int r4 = (a4 == 2 ? 0 : 1);
+    NARC_ReadFromMember(narc, 0, a3 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &spA);
+    sp4.unk_0 = spA.unk0[r4].unk_1;
+    sp4.unk_2 = spA.unk0[r4].unk_2;
+    sp4.unk_4 = a5;
+    sub_02016F40(a1, a2, &sp4, a6);
+}
+
+void sub_020729A4(NARC *narc, u8 *ret, u16 a2, u16 a3) {
+    struct UnkStruct_02072914 sp4;
+    int r5 = (a3 & 1 ? 0 : 1);
+    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    *ret = sp4.unk0[r5].unk_0;
+}
+
+void sub_020729D8(NARC *narc, s8 *ret, u16 a2, u16 a3) {
+    struct UnkStruct_02072914 sp4;
+    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    *ret = sp4.unk_56;
+}
+
+void sub_020729FC(NARC *narc, s8 *ret, u16 a2, u16 a3) {
+    struct UnkStruct_02072914 sp4;
+    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    *ret = sp4.unk_57;
+}
+
+void sub_02072A20(NARC *narc, u8 *ret, u16 a2, u16 a3) {
+    struct UnkStruct_02072914 sp4;
+    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    *ret = sp4.unk_58;
+}
+
+BOOL SetTrMonCapsule(int a0, POKEMON *pokemon, HeapID heap_id) {
+    CAPSULE capsule;
+    int data;
+    NARC *narc;
+    if (a0 == 0) {
+        return FALSE;
+    }
+    narc = NARC_ctor(NARC_application_custom_ball_edit_gs_cb_data, heap_id);
+    data = 1;
+    NARC_ReadFromMember(narc, 0, (a0 - 1) * sizeof(CAPSULE), sizeof(CAPSULE), &capsule);
+    SetMonData(pokemon, MON_DATA_CAPSULE, &data);
+    SetMonData(pokemon, MON_DATA_SEAL_COORDS, &capsule);
+    NARC_dtor(narc);
+    return TRUE;
+}
+
+void sub_02072A98(POKEMON *pokemon, struct UnkPokemonStruct_02072A98 *dest) {
+    PokemonDataBlockA *dbA; // r5
+    PokemonDataBlockB *dbB; // sp4
+    PokemonDataBlockC *dbC; // r7
+    PokemonDataBlockD *dbD; // ip
+    BOXMON *boxmon; // r6
+    int i;
+
+    if (!pokemon->box.party_lock) {
+        DECRYPT_PTY(pokemon);
+        DECRYPT_BOX(&pokemon->box);
+    }
+    boxmon = Mon_GetBoxMon(pokemon);
+    dbA = &GetSubstruct(boxmon, boxmon->pid, 0)->blockA;
+    dbB = &GetSubstruct(boxmon, boxmon->pid, 1)->blockB;
+    dbC = &GetSubstruct(boxmon, boxmon->pid, 2)->blockC;
+    dbD = &GetSubstruct(boxmon, boxmon->pid, 3)->blockD;
+
+    dest->pid = boxmon->pid;
+    dest->party_lock = FALSE;
+    dest->box_lock = FALSE;
+    dest->checksum_fail = boxmon->checksum_fail;
+
+    dest->species = dbA->species;
+    dest->heldItem = dbA->heldItem;
+    dest->otID = dbA->otID;
+    dest->exp = dbA->exp;
+    dest->friendship = dbA->friendship;
+    dest->ability = dbA->ability;
+    dest->hpEV = dbA->hpEV;
+    dest->atkEV = dbA->atkEV;
+    dest->defEV = dbA->defEV;
+    dest->spdEV = dbA->spdEV;
+    dest->spatkEV = dbA->spatkEV;
+    dest->spdefEV = dbA->spdefEV;
+    dest->originLanguage = dbA->originLanguage;
+
+    for (i = 0; i < MON_MOVES; i++) {
+        dest->moves[i] = dbB->moves[i];
+        dest->movePP[i] = dbB->movePP[i];
+        dest->movePpUps[i] = dbB->movePpUps[i];
+    }
+    dest->hpIV = dbB->hpIV;
+    dest->atkIV = dbB->atkIV;
+    dest->defIV = dbB->defIV;
+    dest->spdIV = dbB->spdIV;
+    dest->spatkIV = dbB->spatkIV;
+    dest->spdefIV = dbB->spdefIV;
+    dest->isEgg = dbB->isEgg;
+    dest->isNicknamed = dbB->isNicknamed;
+    dest->fatefulEncounter = dbB->fatefulEncounter;
+    dest->gender = dbB->gender;
+    dest->alternateForm = dbB->alternateForm;
+
+    for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
+        dest->nickname[i] = dbC->nickname[i];
+    }
+
+    for (i = 0; i < OT_NAME_LENGTH + 1; i++) {
+        dest->otTrainerName[i] = dbD->otTrainerName[i];
+    }
+    dest->pokeball = dbD->pokeball;
+
+    dest->status = pokemon->party.status;
+    dest->level = pokemon->party.level;
+    dest->capsule = pokemon->party.capsule;
+    dest->hp = pokemon->party.hp;
+    dest->maxHp = pokemon->party.maxHp;
+    dest->atk = pokemon->party.atk;
+    dest->def = pokemon->party.def;
+    dest->speed = pokemon->party.speed;
+    dest->spatk = pokemon->party.spatk;
+    dest->spdef = pokemon->party.spdef;
+
+    if (!pokemon->box.party_lock) {
+        ENCRYPT_PTY(pokemon);
+        ENCRYPT_BOX(&pokemon->box);
+    }
+}
+
+void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, POKEMON *pokemon) {
+    PokemonDataBlockA *dbA; // r5
+    PokemonDataBlockB *dbB; // r6
+    PokemonDataBlockC *dbC; // r7
+    PokemonDataBlockD *dbD; // ip
+    BOXMON *boxmon; // sp4
+    int i;
+
+    MI_CpuClearFast(pokemon, sizeof(POKEMON));
+    boxmon = Mon_GetBoxMon(pokemon);
+    dbA = &GetSubstruct(boxmon, src->pid, 0)->blockA;
+    dbB = &GetSubstruct(boxmon, src->pid, 1)->blockB;
+    dbC = &GetSubstruct(boxmon, src->pid, 2)->blockC;
+    dbD = &GetSubstruct(boxmon, src->pid, 3)->blockD;
+
+    boxmon->pid = src->pid;
+    boxmon->party_lock = FALSE;
+    boxmon->box_lock = FALSE;
+    boxmon->checksum_fail = src->checksum_fail;
+
+    dbA->species = src->species;
+    dbA->heldItem = src->heldItem;
+    dbA->otID = src->otID;
+    dbA->exp = src->exp;
+    dbA->friendship = src->friendship;
+    dbA->ability = src->ability;
+    dbA->hpEV = src->hpEV;
+    dbA->atkEV = src->atkEV;
+    dbA->defEV = src->defEV;
+    dbA->spdEV = src->spdEV;
+    dbA->spatkEV = src->spatkEV;
+    dbA->spdefEV = src->spdefEV;
+    dbA->originLanguage = src->originLanguage;
+
+    for (i = 0; i < MON_MOVES; i++) {
+        dbB->moves[i] = src->moves[i];
+        dbB->movePP[i] = src->movePP[i];
+        dbB->movePpUps[i] = src->movePpUps[i];
+    }
+    dbB->hpIV = src->hpIV;
+    dbB->atkIV = src->atkIV;
+    dbB->defIV = src->defIV;
+    dbB->spdIV = src->spdIV;
+    dbB->spatkIV = src->spatkIV;
+    dbB->spdefIV = src->spdefIV;
+    dbB->isEgg = src->isEgg;
+    dbB->isNicknamed = src->isNicknamed;
+    dbB->fatefulEncounter = src->fatefulEncounter;
+    dbB->gender = src->gender;
+    dbB->alternateForm = src->alternateForm;
+
+    for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
+        dbC->nickname[i] = src->nickname[i];
+    }
+
+    for (i = 0; i < OT_NAME_LENGTH + 1; i++) {
+        dbD->otTrainerName[i] = src->otTrainerName[i];
+    }
+    dbD->HGSS_Pokeball = src->pokeball;
+    if (src->pokeball <= BALL_CHERISH) {
+        dbD->pokeball = src->pokeball;
+    } else {
+        dbD->pokeball = BALL_POKE;
+    }
+
+    pokemon->party.status = src->status;
+    pokemon->party.level = src->level;
+    pokemon->party.capsule = src->capsule;
+    pokemon->party.hp = src->hp;
+    pokemon->party.maxHp = src->maxHp;
+    pokemon->party.atk = src->atk;
+    pokemon->party.def = src->def;
+    pokemon->party.speed = src->speed;
+    pokemon->party.spatk = src->spatk;
+    pokemon->party.spdef = src->spdef;
+
+    ENCRYPT_PTY(pokemon);
+    pokemon->box.checksum = CHECKSUM(&pokemon->box);
+    ENCRYPT_BOX(&pokemon->box);
+}
+
+u32 _u32_getDigitN(u32 num, u8 digit) {
+    const u32 sp0[8] = {
+        1,
+        10,
+        100,
+        1000,
+        10000,
+        100000,
+        1000000,
+        10000000
+    };
+    return (num % sp0[digit + 1]) / sp0[digit];
+}
+
+int sub_02073058(int a0) {
+    if (a0 <= -120) {
+        return -4;
+    } else if (a0 <= -80) {
+        return -3;
+    } else if (a0 <= -40) {
+        return -2;
+    } else if (a0 <= -15) {
+        return -1;
+    } else if (a0 <= 14) {
+        return 0;
+    } else if (a0 <= 39) {
+        return 1;
+    } else if (a0 <= 79) {
+        return 2;
+    } else if (a0 <= 119) {
+        return 3;
+    } else {
+        return 4;
+    }
+}
+
+void CalcBoxMonPokeathlonPerformance(BOXMON *boxmon, struct UnkStruct_Pokeathlon_Something *dest) {
+    u32 pid;
+    u32 nature;
+    u8 data[20];
+    RTCDate date;
+    RTCTime time;
+    int i;
+    s16 day;
+    u16 species;
+    u16 forme;
+
+    pid = GetBoxMonData(boxmon, MON_DATA_PERSONALITY, NULL);
+    nature = GetBoxMonNature(boxmon);
+    GF_RTC_CopyDateTime(&date, &time);
+    day = date.day;
+
+    for (i = 0u; i < 5u; i++) {
+        u32 r3 = _u32_getDigitN(pid, i);
+        dest->unk_0[i].unk_2 = _020FF6B6[nature][i] + (2 * _u32_getDigitN(r3 + (day + (7 - i)) * (day + (i + 3)), 0) - 9);
+    }
+
+    species = GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
+    forme = GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
+    ReadWholeNarcMemberByIdPair(data, NARC_a_1_6_9, _020FF7B4[species] + forme);
+    dest->unk_0[0].unk_0_0 = data[0];
+    dest->unk_0[0].unk_0_6 = data[9];
+    dest->unk_0[0].unk_0_3 = data[10];
+    dest->unk_0[1].unk_0_0 = data[3];
+    dest->unk_0[1].unk_0_6 = data[15];
+    dest->unk_0[1].unk_0_3 = data[16];
+    dest->unk_0[2].unk_0_0 = data[4];
+    dest->unk_0[2].unk_0_6 = data[17];
+    dest->unk_0[2].unk_0_3 = data[18];
+    dest->unk_0[3].unk_0_0 = data[2];
+    dest->unk_0[3].unk_0_6 = data[13];
+    dest->unk_0[3].unk_0_3 = data[14];
+    dest->unk_0[4].unk_0_0 = data[1];
+    dest->unk_0[4].unk_0_6 = data[11];
+    dest->unk_0[4].unk_0_3 = data[12];
 }

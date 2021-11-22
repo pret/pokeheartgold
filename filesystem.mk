@@ -417,6 +417,7 @@ $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_enc_$(
 $(eval $(call arc_strip_name,files/fielddata/encountdata/s_enc_data.narc,files/a/1/3/6))
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
+$(eval $(call arc_strip_name,files/application/custom_ball/edit/gs_cb_data.narc,files/a/1/8/5))
 $(eval $(call arc_strip_name,files/pbr/dp_height.narc,files/a/1/9/4))
 $(eval $(call arc_strip_name,files/pbr/dp_height_o.narc,files/a/1/9/5))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))

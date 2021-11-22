@@ -190,7 +190,7 @@ typedef enum NarcId
     NARC_a_1_8_2,
     NARC_a_1_8_3,
     NARC_a_1_8_4,
-    NARC_a_1_8_5,
+    NARC_application_custom_ball_edit_gs_cb_data,
     NARC_a_1_8_6,
     NARC_a_1_8_7,
     NARC_a_1_8_8,

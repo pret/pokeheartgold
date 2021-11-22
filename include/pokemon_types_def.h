@@ -119,9 +119,9 @@ typedef union {
 typedef struct BoxPokemon {
     /* 0x000 */ u32 pid;
     /* 0x004 */ u16 party_lock:1;
-    u16 box_lock:1;
-    u16 checksum_fail:1;
-    u16 Unused:13;    // Might be used for validity checks
+                u16 box_lock:1;
+                u16 checksum_fail:1;
+                u16 Unused:13;    // Might be used for validity checks
     /* 0x006 */ u16 checksum;  // Stored checksum of pokemon
     /* 0x008 */ PokemonDataBlock substructs[4];
 } BOXMON;
@@ -145,6 +145,53 @@ typedef struct Pokemon {
     /* 0x000 */ BOXMON box;
     /* 0x088 */ PARTYMON party;
 } POKEMON; // size: 0xEC
+
+struct UnkPokemonStruct_02072A98 {
+    /* 0x00 */ u32 pid;
+    /* 0x04 */ u16 party_lock:1;
+               u16 box_lock:1;
+               u16 checksum_fail:1;
+    /* 0x06 */ u16 species;
+    /* 0x08 */ u16 heldItem;
+    /* 0x0C */ u32 otID;
+    /* 0x10 */ u32 exp;
+    /* 0x14 */ u8 friendship;
+    /* 0x15 */ u8 ability;
+    /* 0x16 */ u8 hpEV;
+    /* 0x17 */ u8 atkEV;
+    /* 0x18 */ u8 defEV;
+    /* 0x19 */ u8 spdEV;
+    /* 0x1A */ u8 spatkEV;
+    /* 0x1B */ u8 spdefEV;
+    /* 0x1C */ u16 moves[4];
+    /* 0x24 */ u8 movePP[4];
+    /* 0x28 */ u8 movePpUps[4];
+    /* 0x2C */ u32 hpIV:5;
+               u32 atkIV:5;
+               u32 defIV:5;
+               u32 spdIV:5;
+               u32 spatkIV:5;
+               u32 spdefIV:5;
+               u32 isEgg:1;
+               u32 isNicknamed:1;
+    /* 0x30 */ u8 fatefulEncounter:1;
+               u8 gender:2;
+               u8 alternateForm:5;
+    /* 0x32 */ u16 nickname[POKEMON_NAME_LENGTH + 1];
+    /* 0x48 */ u16 otTrainerName[OT_NAME_LENGTH + 1];
+    /* 0x58 */ u8 pokeball;
+    /* 0x59 */ u8 originLanguage;
+    /* 0x5C */ u32 status;
+    /* 0x60 */ u8 level;
+    /* 0x61 */ u8 capsule;
+    /* 0x62 */ u16 hp;
+    /* 0x64 */ u16 maxHp;
+    /* 0x66 */ u16 atk;
+    /* 0x68 */ u16 def;
+    /* 0x6A */ u16 speed;
+    /* 0x6C */ u16 spatk;
+    /* 0x6E */ u16 spdef;
+};
 
 struct SomeDrawPokemonStruct {
     u16 narcID;
@@ -210,5 +257,24 @@ typedef struct SAVE_PARTY_T {
     PARTY party;
     PARTY_EXTRA extra;
 } SAVE_PARTY_T;
+
+struct UnkStruct_Pokeathlon_Something_sub {
+    u16 unk_0_0:3;
+    u16 unk_0_3:3;
+    u16 unk_0_6:3;
+    u16 dummy:7;
+    u16 unk_2;
+};
+
+struct UnkStruct_Pokeathlon_Something {
+    struct UnkStruct_Pokeathlon_Something_sub unk_0[5];
+};
+
+struct UnkStruct_Pokeathlon_Something_2 {
+    u8 unk_0;
+    u8 unk_1;
+    u8 unk_2;
+    u8 unk_3;
+};
 
 #endif //POKEHEARTGOLD_POKEMON_TYPES_DEF_H
