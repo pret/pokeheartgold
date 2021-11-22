@@ -30,7 +30,6 @@ COMPSTATIC   := $(TOOLSDIR)/bin/compstatic.exe
 export LM_LICENSE_FILE := $(TOOLSDIR)/mwccarm/license.dat
 
 # Native tools
-SCANINC      := $(TOOLSDIR)/scaninc/scaninc$(EXE)
 JSONPROC     := $(TOOLSDIR)/jsonproc/jsonproc$(EXE)
 GFX          := $(TOOLSDIR)/nitrogfx/nitrogfx$(EXE)
 FIXROM       := $(TOOLSDIR)/fixrom/fixrom$(EXE)
@@ -43,7 +42,6 @@ CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
 NTRMERGE     := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
 
 NATIVE_TOOLS := \
-	$(SCANINC) \
 	$(JSONPROC) \
 	$(GFX) \
 	$(FIXROM) \
@@ -124,16 +122,34 @@ $(MWAS):
 all: tools
 
 ifeq ($(NODEP),)
-$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
-else
-$(BUILD_DIR)/%.o: dep :=
+ifneq ($(WINE),)
+WINEPATH := $(shell winepath -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
 endif
+define fixdep
+$(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(WINEPATH)#$(PROJECT_ROOT)#g' $(1)
+endef
+DEPFLAGS := -gccdep -MMD
+DEPFILES := $(ALL_OBJS:%.o=%.d)
+$(DEPFILES):
 
-$(BUILD_DIR)/%.o: %.c $$(dep)
+$(BUILD_DIR)/%.o: %.c
+$(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
+	$(WINE) $(MWCC) $(MWCFLAGS) $(DEPFLAGS) -c -o $@ $<
+	@$(call fixdep,$(BUILD_DIR)/$*.d)
+
+$(BUILD_DIR)/%.o: %.s
+$(BUILD_DIR)/%.o: %.s $(BUILD_DIR)/%.d
+	$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $<
+	@$(call fixdep,$(BUILD_DIR)/$*.d)
+
+include $(wildcard $(DEPFILES))
+else
+$(BUILD_DIR)/%.o: %.c
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $@ $<
 
-$(BUILD_DIR)/%.o: %.s $$(dep)
+$(BUILD_DIR)/%.o: %.s
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $@ $<
+endif
 
 $(NATIVE_TOOLS): tools
 

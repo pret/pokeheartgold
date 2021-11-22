@@ -15,8 +15,10 @@ include filesystem.mk
 $(ASM_OBJS): MWASFLAGS += -DPM_ASM -include config.h
 $(C_OBJS):   MWCFLAGS  +=          -include global.h
 
-$(ASM_OBJS): dep += $(WORK_DIR)/include/config.h $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $(WORK_DIR)/include/config.h)
-$(C_OBJS):   dep += $(WORK_DIR)/include/global.h $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $(WORK_DIR)/include/global.h)
+ifeq ($(NODEP),)
+$(ASM_OBJS): $(WORK_DIR)/include/config.h
+$(C_OBJS):   $(WORK_DIR)/include/global.h
+endif
 
 ROM             := $(BUILD_DIR)/poke$(buildname).nds
 BANNER          := $(ROM:%.nds=%.bnr)
