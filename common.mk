@@ -124,6 +124,10 @@ all: tools
 ifeq ($(NODEP),)
 ifneq ($(WINE),)
 WINEPATH := $(shell winepath -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
+else
+ifeq ($(WSLENV),)
+WINEPATH := $(shell wslpath -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
+endif
 endif
 define fixdep
 $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(WINEPATH)#$(PROJECT_ROOT)#g' $(1)
