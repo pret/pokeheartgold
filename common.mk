@@ -122,16 +122,16 @@ $(MWAS):
 all: tools
 
 ifeq ($(NODEP),)
-ifneq ($(WINE),)
-WINEPATH := $(shell winepath -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
-else
-ifeq ($(WSLENV),)
-WINEPATH := $(shell wslpath -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
-endif
-endif
+ifneq ($(WINPATH),)
+PROJECT_ROOT_NT := $(shell $(WINPATH) -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
 define fixdep
-$(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(WINEPATH)#$(PROJECT_ROOT)#g' $(1)
+$(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(PROJECT_ROOT_NT)#$(PROJECT_ROOT)#g' $(1)
 endef
+else
+define fixdep
+$(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g' $(1)
+endef
+endif
 DEPFLAGS := -gccdep -MMD
 DEPFILES := $(ALL_OBJS:%.o=%.d)
 $(DEPFILES):
