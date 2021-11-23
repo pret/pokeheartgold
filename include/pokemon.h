@@ -53,7 +53,7 @@ int CalcLevelBySpeciesAndExp_PreloadedPersonal(BASE_STATS * personal, u16 specie
 u8 GetBoxMonNature(BOXMON * boxmon);
 u8 GetMonNature(POKEMON * mon);
 u8 GetNatureFromPersonality(u32 pid);
-void MonApplyFriendshipMod(POKEMON * pokemon, u32 kind, u32 location);
+void MonApplyFriendshipMod(POKEMON * pokemon, u8 kind, u16 location);
 u8 GetMonGender(POKEMON * pokemon);
 u8 GetBoxMonGender(BOXMON * boxmon);
 u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid);

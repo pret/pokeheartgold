@@ -364,7 +364,7 @@ enum MonGender
 #define FRIENDSHIP_EVENT_FAINT_SMALL      6
 #define FRIENDSHIP_EVENT_HEAL_FIELD_PSN   7
 #define FRIENDSHIP_EVENT_FAINT_LARGE      8 // If opponent was >= 30 levels higher. See AdjustFriendshipOnBattleFaint
-#define FRIENDHSIP_EVENT_9                9
+#define FRIENDHSIP_EVENT_CONTEST_WIN      9 // Leftover from Platinum
 
 #define FRIENDSHIP_EVENT_NUM              10
 
