@@ -28976,7 +28976,7 @@
 .public Pokemon_UpdateArceusForme
 .public BoxMon_UpdateArceusForme
 .public GetArceusTypeByHeldItemEffect
-.public sub_02071D3C
+.public Party_UpdateAllGiratina_DistortionWorld
 .public sub_02071FDC
 .public sub_0207204C
 .public sub_020720D4
@@ -28990,10 +28990,10 @@
 .public LowestFlagNo
 .public IsPokemonLegendaryOrMythical
 .public GetLegendaryMon
-.public sub_02072740
-.public sub_02072760
-.public sub_02072788
-.public sub_0207280C
+.public SpeciesIsMythical
+.public MonCheckFrontierIneligibility
+.public BoxmonBelongsToPlayer
+.public TrainerClassToBackpicID
 .public Pokemon_RemoveCapsule
 .public sub_02072914
 .public sub_0207294C

@@ -71857,7 +71857,7 @@ _0225A2DA:
 	add r0, r6, #0
 	bl ov12_02261EF0
 	mov r1, #0
-	bl sub_0207280C
+	bl TrainerClassToBackpicID
 _0225A2FC:
 	str r0, [r4, #0xc]
 	add r0, r6, #0

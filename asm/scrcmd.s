@@ -12578,7 +12578,7 @@ ScrCmd_696: ; 0x020469B4
 	bl SavArray_PlayerParty_get
 	str r0, [sp]
 	add r1, r5, #0
-	bl sub_02071D3C
+	bl Party_UpdateAllGiratina_DistortionWorld
 	ldr r0, [sp]
 	bl GetPartyCount
 	add r7, r0, #0

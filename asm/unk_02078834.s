@@ -45546,7 +45546,7 @@ _0208F3B4:
 	pop {r3, r4, r5, r6, r7, pc}
 _0208F3D0:
 	add r2, r6, #0
-	bl sub_02072788
+	bl BoxmonBelongsToPlayer
 	cmp r0, #1
 	bne _0208F416
 	add r0, r4, #0
@@ -45628,7 +45628,7 @@ _0208F486:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_02072788
+	bl BoxmonBelongsToPlayer
 	cmp r0, #0
 	bne _0208F4EC
 	add r0, r4, #0

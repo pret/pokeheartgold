@@ -44,7 +44,7 @@ u8 sub_02070854(BOXMON *boxmon, u8 whichFacing, BOOL a2);
 u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid);
 u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid);
 void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3);
-int sub_0207280C(int trainer_class, int a1);
+int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
 BOOL MonHasMove(POKEMON *pokemon, u16 move_id);
 void sub_0207213C(BOXMON *boxmon, PLAYERDATA *playerData, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
@@ -215,7 +215,7 @@ static const u16 sLegendaryMonsList[18] = {
     SPECIES_ARCEUS,
 };
 
-static const u16 _020FF4F8[9] = {
+static const u16 sMythicalMonsList[9] = {
     SPECIES_MEW,
     SPECIES_CELEBI,
     SPECIES_JIRACHI,
@@ -3338,7 +3338,7 @@ void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *
         a3->ncbr_id = trainer_class * 5 + 4;
     } else {
         a3->narcId = NARC_a_0_0_6;
-        trainer_class = sub_0207280C(trainer_class, a2);
+        trainer_class = TrainerClassToBackpicID(trainer_class, a2);
         a3->ncgr_id = trainer_class * 5 + 0;
         a3->nclr_id = trainer_class * 5 + 1;
         a3->ncer_id = trainer_class * 5 + 2;
@@ -4149,7 +4149,7 @@ void Mon_ForceSetGiratinaOriginForme(POKEMON *pokemon) {
     }
 }
 
-void sub_02071D3C(SAVE_PARTY_T *party, BOOL force_origin) {
+void Party_UpdateAllGiratina_DistortionWorld(SAVE_PARTY_T *party, BOOL force_origin) {
     int npoke = GetPartyCount(party);
     int i;
     POKEMON *pokemon;
@@ -4471,10 +4471,10 @@ void SetMonPersonality(struct Pokemon * r5, u32 personality) {
     FreeToHeap(sp4);
 }
 
-u32 sub_02072490(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL forceAbility) {
+u32 sub_02072490(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode) {
     GF_ASSERT(ability < 2);
     GF_ASSERT(gender != 0xFF);
-    if (forceAbility) {
+    if (gen_mode) {
         u32 r4 = ((pid & 0xFFFF0000) >> 16) ^ (u16)pid;
         pid = GenPersonalityByGenderAndNature(species, gender, nature);
         if ((pid & 1) != ability) {
@@ -4628,23 +4628,23 @@ u16 GetLegendaryMon(u32 idx) {
     return sLegendaryMonsList[idx];
 }
 
-BOOL sub_02072740(u16 species) {
+BOOL SpeciesIsMythical(u16 species) {
     int i;
-    for (i = 0; i < NELEMS(_020FF4F8); i++) {
-        if (species == _020FF4F8[i]) {
+    for (i = 0; i < NELEMS(sMythicalMonsList); i++) {
+        if (species == sMythicalMonsList[i]) {
             return TRUE;
         }
     }
     return FALSE;
 }
 
-BOOL sub_02072760(POKEMON *pokemon) {
+BOOL MonCheckFrontierIneligibility(POKEMON *pokemon) {
     u16 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
     u16 forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
     return IsPokemonLegendaryOrMythical(species, forme);
 }
 
-BOOL sub_02072788(BOXMON * boxmon, PLAYERDATA * playerData, HeapID heap_id) {
+BOOL BoxmonBelongsToPlayer(BOXMON * boxmon, PLAYERDATA * playerData, HeapID heap_id) {
     u32 myId = PlayerProfile_GetTrainerID(playerData);
     u32 otId = GetBoxMonData(boxmon, MON_DATA_OTID, NULL);
     u32 myGender = PlayerProfile_GetTrainerGender(playerData);
@@ -4661,7 +4661,7 @@ BOOL sub_02072788(BOXMON * boxmon, PLAYERDATA * playerData, HeapID heap_id) {
     return ret;
 }
 
-int sub_0207280C(int trainerClass, int a1) {
+int TrainerClassToBackpicID(int trainerClass, int a1) {
     switch (trainerClass) {
     case TRAINERCLASS_PKMN_TRAINER_ETHAN:
     case TRAINERCLASS_PKMN_TRAINER_LYRA:
@@ -5018,8 +5018,8 @@ void CalcMonPokeathlonPerformance(POKEMON *pokemon, struct PokeathlonTodayPerfor
     CalcBoxMonPokeathlonPerformance(Mon_GetBoxMon(pokemon), dest);
 }
 
-void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BOXMON *boxmon, const s8 *aprijuice, int r3) {
-#pragma unused(r3)
+void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BOXMON *boxmon, const s8 *aprijuice, HeapID heap_id) {
+#pragma unused(heap_id)
     int i;
     struct PokeathlonTodayPerformance basePerf;
 
@@ -5046,6 +5046,6 @@ void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BOXMON *
     }
 }
 
-void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, POKEMON *pokemon, const s8 *aprijuice, int r3) {
-    CalcBoxmonPokeathlonStars(dest, Mon_GetBoxMon(pokemon), aprijuice, r3);
+void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, POKEMON *pokemon, const s8 *aprijuice, HeapID heap_id) {
+    CalcBoxmonPokeathlonStars(dest, Mon_GetBoxMon(pokemon), aprijuice, heap_id);
 }

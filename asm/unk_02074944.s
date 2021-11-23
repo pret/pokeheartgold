@@ -132,7 +132,7 @@ _02074A2A:
 	cmp r0, r1
 	bne _02074A4C
 	add r0, r6, #0
-	bl sub_02072740
+	bl SpeciesIsMythical
 	cmp r0, #1
 	beq _02074A48
 	mov r0, #1
@@ -147,7 +147,7 @@ _02074A4C:
 	cmp r0, #0
 	bne _02074A66
 	add r0, r7, #0
-	bl sub_02072760
+	bl MonCheckFrontierIneligibility
 	cmp r0, #0
 	beq _02074A66
 	mov r0, #0
@@ -283,7 +283,7 @@ _02074B50:
 	cmp r0, #0
 	beq _02074B6C
 	ldrh r0, [r5]
-	bl sub_02072740
+	bl SpeciesIsMythical
 	cmp r0, #0
 	bne _02074B6C
 	add r4, r4, #1
@@ -624,7 +624,7 @@ _02074DD0:
 	ldrh r0, [r4]
 	cmp r0, #0
 	beq _02074DF6
-	bl sub_02072740
+	bl SpeciesIsMythical
 	cmp r0, #0
 	bne _02074DF6
 	ldrh r0, [r4]
