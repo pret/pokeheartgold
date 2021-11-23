@@ -227,7 +227,7 @@ static const u16 _020FF4F8[9] = {
     SPECIES_ARCEUS,
 };
 
-static const s8 _020FF6B6[NATURE_NUM][5] = {
+static const s8 sPokeathlonPerformanceNatureMods[NATURE_NUM][5] = {
     { 10,   0,   0,   0, -10},
     { 35, -35,   0,   0,   0},
     { 35,   0,   0,   0, -35},
@@ -255,7 +255,7 @@ static const s8 _020FF6B6[NATURE_NUM][5] = {
     {  0, -10,  10,   0,   0},
 };
 
-static const u16 _020FF7B4[] = {
+static const u16 sPokeathlonPerformanceArcIdxs[] = {
       0,
       0,
       1,
@@ -4951,7 +4951,7 @@ u32 _u32_getDigitN(u32 num, u8 digit) {
     return (num % sp0[digit + 1]) / sp0[digit];
 }
 
-s16 sub_02073058(s16 a0) {
+s16 PokeathlonStatScoreToStars(s16 a0) {
     if (a0 <= -120) {
         return -4;
     } else if (a0 <= -80) {
@@ -4973,10 +4973,10 @@ s16 sub_02073058(s16 a0) {
     }
 }
 
-void CalcBoxMonPokeathlonPerformance(BOXMON *boxmon, struct UnkStruct_Pokeathlon_Something *dest) {
+void CalcBoxMonPokeathlonPerformance(BOXMON *boxmon, struct PokeathlonTodayPerformance *dest) {
     u32 pid;
     u32 nature;
-    u8 data[20];
+    struct PokeathlonBasePerformance data;
     RTCDate date;
     RTCTime time;
     int i;
@@ -4989,60 +4989,63 @@ void CalcBoxMonPokeathlonPerformance(BOXMON *boxmon, struct UnkStruct_Pokeathlon
     GF_RTC_CopyDateTime(&date, &time);
     day = date.day;
 
-    for (i = 0u; i < 5u; i++) {
-        u32 r3 = _u32_getDigitN(pid, i);
-        dest->unk_0[i].unk_2 = _020FF6B6[nature][i] + (2 * _u32_getDigitN(r3 + (day + (7 - i)) * (day + (i + 3)), 0) - 9);
+    for (i = PERFORMANCE_MIN; i < PERFORMANCE_MAX; i++) {
+        u32 pid_digit = _u32_getDigitN(pid, i);
+        dest->stats[i].dailyMod = sPokeathlonPerformanceNatureMods[nature][i] + (2 * _u32_getDigitN(pid_digit + (day + (7 - i)) * (day + (i + 3)), 0) - 9);
     }
 
     species = GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
     forme = GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
-    ReadWholeNarcMemberByIdPair(data, NARC_a_1_6_9, _020FF7B4[species] + forme);
-    dest->unk_0[0].unk_0_0 = data[0];
-    dest->unk_0[0].unk_0_6 = data[9];
-    dest->unk_0[0].unk_0_3 = data[10];
-    dest->unk_0[1].unk_0_0 = data[3];
-    dest->unk_0[1].unk_0_6 = data[15];
-    dest->unk_0[1].unk_0_3 = data[16];
-    dest->unk_0[2].unk_0_0 = data[4];
-    dest->unk_0[2].unk_0_6 = data[17];
-    dest->unk_0[2].unk_0_3 = data[18];
-    dest->unk_0[3].unk_0_0 = data[2];
-    dest->unk_0[3].unk_0_6 = data[13];
-    dest->unk_0[3].unk_0_3 = data[14];
-    dest->unk_0[4].unk_0_0 = data[1];
-    dest->unk_0[4].unk_0_6 = data[11];
-    dest->unk_0[4].unk_0_3 = data[12];
+    ReadWholeNarcMemberByIdPair(&data, NARC_poketool_personal_performance, sPokeathlonPerformanceArcIdxs[species] + forme);
+    dest->stats[PERFORMANCE_POWER].base = data.base[ARCPERF_POWER];
+    dest->stats[PERFORMANCE_POWER].lo = data.minmax[ARCPERF_POWER][0];
+    dest->stats[PERFORMANCE_POWER].hi = data.minmax[ARCPERF_POWER][1];
+    dest->stats[PERFORMANCE_SKILL].base = data.base[ARCPERF_SKILL];
+    dest->stats[PERFORMANCE_SKILL].lo = data.minmax[ARCPERF_SKILL][0];
+    dest->stats[PERFORMANCE_SKILL].hi = data.minmax[ARCPERF_SKILL][1];
+    dest->stats[PERFORMANCE_SPEED].base = data.base[ARCPERF_SPEED];
+    dest->stats[PERFORMANCE_SPEED].lo = data.minmax[ARCPERF_SPEED][0];
+    dest->stats[PERFORMANCE_SPEED].hi = data.minmax[ARCPERF_SPEED][1];
+    dest->stats[PERFORMANCE_JUMP].base = data.base[ARCPERF_JUMP];
+    dest->stats[PERFORMANCE_JUMP].lo = data.minmax[ARCPERF_JUMP][0];
+    dest->stats[PERFORMANCE_JUMP].hi = data.minmax[ARCPERF_JUMP][1];
+    dest->stats[PERFORMANCE_STAMINA].base = data.base[ARCPERF_STAMINA];
+    dest->stats[PERFORMANCE_STAMINA].lo = data.minmax[ARCPERF_STAMINA][0];
+    dest->stats[PERFORMANCE_STAMINA].hi = data.minmax[ARCPERF_STAMINA][1];
 }
 
-void CalcMonPokeathlonPerformance(POKEMON *pokemon, struct UnkStruct_Pokeathlon_Something *dest) {
+void CalcMonPokeathlonPerformance(POKEMON *pokemon, struct PokeathlonTodayPerformance *dest) {
     CalcBoxMonPokeathlonPerformance(Mon_GetBoxMon(pokemon), dest);
 }
 
-void sub_02073248(struct UnkStruct_Pokeathlon_Something_3 *dest, BOXMON *boxmon, const s8 *sp0, int r3) {
+void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BOXMON *boxmon, const s8 *aprijuice, int r3) {
 #pragma unused(r3)
     int i;
-    struct UnkStruct_Pokeathlon_Something sp4;
+    struct PokeathlonTodayPerformance basePerf;
 
-    MI_CpuFill8(dest, 0, sizeof(struct UnkStruct_Pokeathlon_Something_3));
-    CalcBoxMonPokeathlonPerformance(boxmon, &sp4);
-    for (i = 0; i < 5u; i++) {
-        s16 r0 = sp4.unk_0[i].unk_0_0 + (sp0 == NULL ? sub_02073058(sp4.unk_0[i].unk_2) : sub_02073058(sp4.unk_0[i].unk_2 + sp0[i]));
-        if (r0 < sp4.unk_0[i].unk_0_6) {
-            r0 = sp4.unk_0[i].unk_0_6;
-        } else if (r0 > sp4.unk_0[i].unk_0_3) {
-            r0 = sp4.unk_0[i].unk_0_3;
+    MI_CpuFill8(dest, 0, sizeof(struct PokeathlonPerformanceStars));
+    CalcBoxMonPokeathlonPerformance(boxmon, &basePerf);
+    for (i = PERFORMANCE_MIN; i < PERFORMANCE_MAX; i++) {
+        s16 stars = basePerf.stats[i].base + (
+            aprijuice != NULL
+            ? PokeathlonStatScoreToStars(basePerf.stats[i].dailyMod + aprijuice[i])
+            : PokeathlonStatScoreToStars(basePerf.stats[i].dailyMod));
+        if (stars < basePerf.stats[i].lo) {
+            stars = basePerf.stats[i].lo;
+        } else if (stars > basePerf.stats[i].hi) {
+            stars = basePerf.stats[i].hi;
         }
-        if (r0 == sp4.unk_0[i].unk_0_0) {
-            dest->unk_2[i] = 0;
-        } else if (r0 < sp4.unk_0[i].unk_0_0) {
-            dest->unk_2[i] = 2;
+        if (stars == basePerf.stats[i].base) {
+            dest->color[i] = STARS_AT_BASE;
+        } else if (stars < basePerf.stats[i].base) {
+            dest->color[i] = STARS_BELOW_BASE;
         } else {
-            dest->unk_2[i] = 1;
+            dest->color[i] = STARS_ABOVE_BASE;
         }
-        dest->unk_0 |= r0 << (3 * i);
+        dest->stars |= stars << (3 * i);
     }
 }
 
-void sub_020732E4(struct UnkStruct_Pokeathlon_Something_3 *dest, POKEMON *pokemon, const s8 *sp0, int r3) {
-    sub_02073248(dest, Mon_GetBoxMon(pokemon), sp0, r3);
+void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, POKEMON *pokemon, const s8 *aprijuice, int r3) {
+    CalcBoxmonPokeathlonStars(dest, Mon_GetBoxMon(pokemon), aprijuice, r3);
 }

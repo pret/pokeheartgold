@@ -29003,8 +29003,8 @@
 .public sub_02072A20
 .public sub_02072A98
 .public sub_02072D64
-.public sub_02073248
-.public sub_020732E4
+.public CalcBoxmonPokeathlonStars
+.public CalcMonPokeathlonStars
 .public sub_02074120
 .public sub_02074128
 .public sub_02074170

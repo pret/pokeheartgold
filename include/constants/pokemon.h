@@ -105,6 +105,25 @@
 #define FLAVOR_SOUR      4
 #define FLAVOR_MAX       5
 
+#define PERFORMANCE_MIN       0u
+#define PERFORMANCE_POWER     0u
+#define PERFORMANCE_SKILL     1u
+#define PERFORMANCE_SPEED     2u
+#define PERFORMANCE_JUMP      3u
+#define PERFORMANCE_STAMINA   4u
+#define PERFORMANCE_MAX       5u
+
+// for some reason the order is different in performance.narc
+#define ARCPERF_POWER         0
+#define ARCPERF_STAMINA       1
+#define ARCPERF_JUMP          2
+#define ARCPERF_SKILL         3
+#define ARCPERF_SPEED         4
+
+#define STARS_AT_BASE        0
+#define STARS_ABOVE_BASE     1
+#define STARS_BELOW_BASE     2
+
 // Pokemon Stats
 #define STAT_HP      0
 #define STAT_ATK     1

@@ -258,28 +258,28 @@ typedef struct SAVE_PARTY_T {
     PARTY_EXTRA extra;
 } SAVE_PARTY_T;
 
-struct UnkStruct_Pokeathlon_Something_sub {
-    u16 unk_0_0:3;
-    u16 unk_0_3:3;
-    u16 unk_0_6:3;
+struct PokeathlonBasePerformance {
+    u8 base[5];
+    u8 dummy[4];
+    u8 minmax[5][2];
+    u8 dummy2;
+};
+
+struct TodayPerformanceStat {
+    u16 base:3;
+    u16 hi:3;
+    u16 lo:3;
     u16 dummy:7;
-    s16 unk_2;
+    s16 dailyMod;
 };
 
-struct UnkStruct_Pokeathlon_Something {
-    struct UnkStruct_Pokeathlon_Something_sub unk_0[5];
+struct PokeathlonTodayPerformance {
+    struct TodayPerformanceStat stats[5];
 };
 
-struct UnkStruct_Pokeathlon_Something_2 {
-    u8 unk_0;
-    u8 unk_1;
-    u8 unk_2;
-    u8 unk_3;
-};
-
-struct UnkStruct_Pokeathlon_Something_3 {
-    u16 unk_0;
-    u8 unk_2[5];
+struct PokeathlonPerformanceStars {
+    u16 stars;
+    u8 color[5];
     u8 dummy;
 };
 

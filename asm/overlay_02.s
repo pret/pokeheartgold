@@ -20595,7 +20595,7 @@ ov02_0224F6AC: ; 0x0224F6AC
 	add r0, sp, #0
 	add r2, sp, #8
 	mov r3, #0xb
-	bl sub_020732E4
+	bl CalcMonPokeathlonStars
 	add r0, sp, #0
 	ldrh r2, [r0]
 	lsl r0, r2, #0x1d

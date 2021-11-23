@@ -38345,7 +38345,7 @@ _0208B8E8:
 	add r1, r4, #0
 	add r2, sp, #0x14
 	mov r3, #0x13
-	bl sub_02073248
+	bl CalcBoxmonPokeathlonStars
 	add r3, sp, #0xc
 	ldrb r0, [r3, #6]
 	mov r1, #0x4f

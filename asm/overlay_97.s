@@ -624,7 +624,7 @@ ov97_0221EA88: ; 0x0221EA88
 	add r0, sp, #0
 	add r2, sp, #8
 	mov r3, #0x5c
-	bl sub_020732E4
+	bl CalcMonPokeathlonStars
 	add r1, sp, #0
 	ldrh r0, [r1]
 	lsl r0, r0, #0x1d
@@ -704,7 +704,7 @@ ov97_0221EB38: ; 0x0221EB38
 	add r0, sp, #0
 	mov r2, #0
 	mov r3, #0x5c
-	bl sub_02073248
+	bl CalcBoxmonPokeathlonStars
 	add r1, sp, #0
 	ldrh r0, [r1]
 	lsl r0, r0, #0x1d

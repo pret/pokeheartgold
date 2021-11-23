@@ -174,7 +174,7 @@ typedef enum NarcId
     NARC_a_1_6_6,
     NARC_a_1_6_7,
     NARC_a_1_6_8,
-    NARC_a_1_6_9,
+    NARC_poketool_personal_performance,
     NARC_a_1_7_0,
     NARC_a_1_7_1,
     NARC_a_1_7_2,

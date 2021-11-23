@@ -8020,7 +8020,7 @@ _0223BB18:
 	ldr r1, [r1]
 	ldr r3, [r4]
 	add r0, #0x16
-	bl sub_020732E4
+	bl CalcMonPokeathlonStars
 	add r0, r4, #0
 	add r7, r4, #0
 	mov r3, #0
@@ -8401,7 +8401,7 @@ ov59_0223BE18: ; 0x0223BE18
 	ldr r3, [r5]
 	add r0, #0x16
 	add r2, #0x10
-	bl sub_020732E4
+	bl CalcMonPokeathlonStars
 	mov r4, #0
 _0223BE30:
 	lsl r2, r4, #0x18
