@@ -5026,10 +5026,11 @@ void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BOXMON *
     MI_CpuFill8(dest, 0, sizeof(struct PokeathlonPerformanceStars));
     CalcBoxMonPokeathlonPerformance(boxmon, &basePerf);
     for (i = PERFORMANCE_MIN; i < PERFORMANCE_MAX; i++) {
-        s16 stars = basePerf.stats[i].base + (
+        s16 stars = (
             aprijuice != NULL
             ? PokeathlonStatScoreToStars(basePerf.stats[i].dailyMod + aprijuice[i])
             : PokeathlonStatScoreToStars(basePerf.stats[i].dailyMod));
+        stars += basePerf.stats[i].base;
         if (stars < basePerf.stats[i].lo) {
             stars = basePerf.stats[i].lo;
         } else if (stars > basePerf.stats[i].hi) {
