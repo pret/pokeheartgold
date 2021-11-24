@@ -1,6 +1,22 @@
 #ifndef POKEHEARTGOLD_MOVE_H
 #define POKEHEARTGOLD_MOVE_H
 
+typedef struct WazaTbl {
+    u16 effect;
+    u8 class;
+    u8 power;
+    u8 type;
+    u8 accuracy;
+    u8 pp;
+    u8 effectChance;
+    u16 unk8;
+    s8 priority;
+    u8 unkB;
+    u8 unkC;
+    u8 contestType;
+    u8 padding[2];
+} WAZA;
+
 typedef enum MoveAttr {
     MOVEATTR_EFFECT = 0,
     MOVEATTR_CLASS,

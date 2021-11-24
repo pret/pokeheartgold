@@ -16,7 +16,7 @@ typedef enum NarcId
     NARC_a_0_0_8,
     NARC_a_0_0_9,
     NARC_a_0_1_0,
-    NARC_a_0_1_1,
+    NARC_poketool_waza_waza_tbl,
     NARC_fielddata_script_scr_seq,
     NARC_a_0_1_3,
     NARC_a_0_1_4,
