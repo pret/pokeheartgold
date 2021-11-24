@@ -161,9 +161,9 @@ void RemoveMahoganyTownAntennaTree(MAPMATRIX* map_matrix) {
     maps[width * 5 + 16] = 86;
 }
 
-BOOL ShouldUseAlternateLakeOfRage(struct SaveBlock2* sav2, u32 map_no) {
+BOOL ShouldUseAlternateLakeOfRage(SAVEDATA* savedata, u32 map_no) {
     RTCDate date;
-    struct ScriptState *state = SavArray_Flags_get(sav2);
+    struct ScriptState *state = SavArray_Flags_get(savedata);
 
     GF_RTC_CopyDate(&date);
 
