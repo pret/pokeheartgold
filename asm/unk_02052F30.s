@@ -456,7 +456,7 @@ _020532B8:
 	bl SetLakeOfRageWaterLevel
 	ldr r0, [r4, #0x30]
 	ldr r1, [r4, #0xc]
-	bl sub_0203B1FC
+	bl PlaceSafariZoneAreas
 	ldr r0, [r4, #0x70]
 	cmp r0, #6
 	blt _020532DA

@@ -27054,7 +27054,7 @@
 .public RemoveMahoganyTownAntennaTree
 .public ShouldUseAlternateLakeOfRage
 .public SetLakeOfRageWaterLevel
-.public sub_0203B1FC
+.public PlaceSafariZoneAreas
 .public sub_0203B58C
 .public sub_0203B5AC
 .public sub_0203B5D8
