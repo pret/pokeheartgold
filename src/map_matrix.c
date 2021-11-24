@@ -154,7 +154,7 @@ void RemoveMahoganyTownAntennaTree(MAPMATRIX* map_matrix) {
     u16* maps = map_matrix->data.maps.data;
     u8 width = map_matrix->width;
 
-    if (map_matrix->matrix_id != 0) {
+    if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_00000000_bin) {
         return;
     }
 
@@ -190,7 +190,7 @@ void SetLakeOfRageWaterLevel(MAPMATRIX* map_matrix, BOOL lower_water_level) {
     u16* maps = map_matrix->data.maps.data;
     u8 width = map_matrix->width;
 
-    if (map_matrix->matrix_id != 0) {
+    if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_00000000_bin) {
         return;
     }
 
@@ -215,7 +215,7 @@ void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SAVEDATA* save) {
     u16* maps = map_matrix->data.maps.data;
     s32 width = map_matrix->width;
 
-    if (map_matrix->matrix_id != 212) { // Safari Zone
+    if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_00000212_bin) { // Safari Zone
         return;
     }
 
