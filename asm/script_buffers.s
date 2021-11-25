@@ -221,7 +221,7 @@ BufferRivalsName: ; 0x0200BE6C
 	add r0, r2, #0
 	add r4, r1, #0
 	bl Sav2_Misc_const_get
-	bl Sav2_Misc_RivalName_get
+	bl Sav2_Misc_RivalName_const_get
 	add r1, r0, #0
 	ldr r0, [r5, #0xc]
 	bl CopyU16ArrayToString

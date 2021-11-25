@@ -243,7 +243,7 @@ typedef struct PARTY {
     int maxCount;
     int curCount;
     struct Pokemon mons[PARTY_SIZE];
-} PARTY;
+} PARTY_CORE;
 
 typedef struct PARTY_EXTRA_SUB {
     u8 unk_00[5];
@@ -254,9 +254,9 @@ typedef struct PARTY_EXTRA {
 } PARTY_EXTRA;
 
 typedef struct SAVE_PARTY_T {
-    PARTY party;
+    PARTY_CORE core;
     PARTY_EXTRA extra;
-} SAVE_PARTY_T;
+} PARTY;
 
 struct PokeathlonBasePerformance {
     u8 base[5];

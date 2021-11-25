@@ -48,7 +48,7 @@ typedef struct HofDisplayMon
 
 u32 Sav2_HOF_sizeof(void);
 void Sav2_HOF_init(HALL_OF_FAME *hof);
-void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, SAVE_PARTY_T *party, RTCDate *date);
+void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date);
 u32 Sav2_HOF_GetNumRecords(const HALL_OF_FAME *hallOfFame);
 int Sav2_HOF_TranslateRecordIdx(const HALL_OF_FAME *hallOfFame, int num);
 u32 Sav2_HOF_RecordCountMons(HALL_OF_FAME *hallOfFame, int num);

@@ -23,7 +23,7 @@ void Sav2_HOF_init(HALL_OF_FAME *hof) {
     MI_CpuClear32(hof, sizeof(HALL_OF_FAME));
 }
 
-void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, SAVE_PARTY_T *party, RTCDate *date) {
+void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
     ASSERT_HALL_OF_FAME(hof);
     if (hof->num_total < 9999) {
         HOFTEAM *team = &hof->parties[hof->next_record];

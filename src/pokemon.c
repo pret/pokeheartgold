@@ -2783,7 +2783,7 @@ BOOL sub_02070DB4(POKEMON * pokemon) {
     return FALSE;
 }
 
-u16 GetMonEvolution(SAVE_PARTY_T *party, POKEMON *pokemon, u8 context, u16 usedItem, int *method_ret) {
+u16 GetMonEvolution(PARTY *party, POKEMON *pokemon, u8 context, u16 usedItem, int *method_ret) {
     u16 species;
     u16 heldItem;
     u8 level;
@@ -3258,7 +3258,7 @@ void CopyBoxPokemonToPokemon(const BOXMON * src, POKEMON * dest) {
     CalcMonLevelAndStats(dest);
 }
 
-u8 Party_GetMaxLevel(SAVE_PARTY_T * party) {
+u8 Party_GetMaxLevel(PARTY * party) {
     int i;
     int r7 = GetPartyCount(party);
     u8 ret = 1;
@@ -3321,7 +3321,7 @@ int Species_LoadLearnsetTable(u16 species, u32 forme, u16 * dest) {
     return i;
 }
 
-void Party_GivePokerusAtRandom(SAVE_PARTY_T * party) {
+void Party_GivePokerusAtRandom(PARTY * party) {
     int count = GetPartyCount(party);
     int idx;
     POKEMON * pokemon;
@@ -3349,7 +3349,7 @@ void Party_GivePokerusAtRandom(SAVE_PARTY_T * party) {
     }
 }
 
-u8 Party_MaskMonsWithPokerus(SAVE_PARTY_T * party, u8 mask) {
+u8 Party_MaskMonsWithPokerus(PARTY * party, u8 mask) {
     int i = 0;
     u32 flag = 1;
     u8 ret = 0;
@@ -3375,7 +3375,7 @@ u8 Party_MaskMonsWithPokerus(SAVE_PARTY_T * party, u8 mask) {
     return ret;
 }
 
-void Party_UpdatePokerus(SAVE_PARTY_T * party, int r5)
+void Party_UpdatePokerus(PARTY * party, int r5)
 {
     int i;
     u8 pokerus;
@@ -3400,7 +3400,7 @@ void Party_UpdatePokerus(SAVE_PARTY_T * party, int r5)
     }
 }
 
-void Party_SpreadPokerus(SAVE_PARTY_T * party)
+void Party_SpreadPokerus(PARTY * party)
 {
     int count = GetPartyCount(party);
     int i;
@@ -3542,7 +3542,7 @@ void Mon_ForceSetGiratinaOriginForme(POKEMON *pokemon) {
     }
 }
 
-void Party_UpdateAllGiratina_DistortionWorld(SAVE_PARTY_T *party, BOOL force_origin) {
+void Party_UpdateAllGiratina_DistortionWorld(PARTY *party, BOOL force_origin) {
     int npoke = GetPartyCount(party);
     int i;
     POKEMON *pokemon;
@@ -3585,7 +3585,7 @@ BOOL Mon_CanUseGracidea(POKEMON *pokemon) {
     }
 }
 
-void Party_ResetAllShayminToLandForme(SAVE_PARTY_T *party) {
+void Party_ResetAllShayminToLandForme(PARTY *party) {
     int npoke = GetPartyCount(party);
     int i;
     int species;
@@ -3601,7 +3601,7 @@ void Party_ResetAllShayminToLandForme(SAVE_PARTY_T *party) {
     }
 }
 
-BOOL Party_TryResetShaymin(SAVE_PARTY_T *party, int min_max, const RTCTime *time) {
+BOOL Party_TryResetShaymin(PARTY *party, int min_max, const RTCTime *time) {
     int hour, minute;
     if (time->hour >= 20 || time->hour < 4) {
         hour = time->hour;
@@ -4162,7 +4162,7 @@ int TrainerClassToBackpicID(int trainerClass, int a1) {
     case TRAINERCLASS_PKMN_TRAINER_DAWN_PT:
         return trainerClass - TRAINERCLASS_PKMN_TRAINER_LUCAS_PT + TRAINER_BACKPIC_LUCAS_PT;
     default:
-        if (TrainerClass_GetGenderOrTrainerCount(trainerClass) == 1) {
+        if (TrainerClass_GetGenderOrTrainerCount(trainerClass) == TRAINER_FEMALE) {
             return TRAINER_BACKPIC_LYRA;
         } else {
             return TRAINER_BACKPIC_ETHAN;

@@ -561,7 +561,7 @@
 .public GetPartyMonByIndex
 .public GetPercentProgressTowardsNextLevel
 .public GetPersonalAttr
-.public Sav2_Misc_RivalName_get
+.public Sav2_Misc_RivalName_const_get
 .public GetSoundDataPointer
 .public GF_GetSoundHandle
 .public GetSpeciesName
@@ -26149,8 +26149,8 @@
 .public sub_0202A640
 .public sub_0202A798
 .public sub_0202A8A8
-.public sub_0202A8B4
-.public sub_0202A8BC
+.public Sav2_Misc_sizeof
+.public Sav2_Misc_init
 .public Sav2_Misc_get
 .public Sav2_Misc_const_get
 .public sub_0202A96C

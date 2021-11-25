@@ -73,12 +73,12 @@ void LoadWotbl_HandleAlternateForme(int species, int forme, u16 *wotbl);
 void MonSwapMoves(POKEMON *pokemon, int a, int b);
 void BoxMonSwapMoves(BOXMON *boxmon, int a, int b);
 
-u16 GetMonEvolution(SAVE_PARTY_T * party, POKEMON * pokemon, u8 context, u16 usedItem, int *method_ret);
+u16 GetMonEvolution(PARTY * party, POKEMON * pokemon, u8 context, u16 usedItem, int *method_ret);
 u16 ReadFromPersonalPmsNarc(u16 species);
 u16 GetEggSpecies(u16 species);
 void MonSetMoveInSlot(POKEMON * pokemon, u16 move, u8 slot);
 void CopyBoxPokemonToPokemon(const BOXMON * src, POKEMON * dest);
-u8 Party_GetMaxLevel(SAVE_PARTY_T * party);
+u8 Party_GetMaxLevel(PARTY * party);
 u16 SpeciesToSinnohDexNo(u16 species);
 u16 SinnohDexNoToSpecies(u16 sinnoh_dex);
 void CopyPokemonToPokemon(const POKEMON * src, POKEMON * dest);
@@ -88,10 +88,10 @@ s8 MonGetFlavorPreference(POKEMON * pokemon, int flavor);
 s8 BoxMonGetFlavorPreference(BOXMON * boxmon, int flavor);
 s8 GetFlavorPreferenceFromPID(u32 personality, int flavor);
 int Species_LoadLearnsetTable(u16 species, u32 forme, u16 * dest);
-void Party_GivePokerusAtRandom(SAVE_PARTY_T * party);
-u8 Party_MaskMonsWithPokerus(SAVE_PARTY_T * party, u8 mask);
-void Party_UpdatePokerus(SAVE_PARTY_T * party, int r5);
-void Party_SpreadPokerus(SAVE_PARTY_T * party);
+void Party_GivePokerusAtRandom(PARTY * party);
+u8 Party_MaskMonsWithPokerus(PARTY * party, u8 mask);
+void Party_UpdatePokerus(PARTY * party, int r5);
+void Party_SpreadPokerus(PARTY * party);
 BOOL Pokemon_HasPokerus(POKEMON * pokemon);
 BOOL BoxMon_HasPokerus(BOXMON * boxmon);
 BOOL Pokemon_IsImmuneToPokerus(POKEMON * pokemon);
@@ -109,5 +109,6 @@ BOOL IsPokemonLegendaryOrMythical(u16 species, u16 forme);
 u16 GetLegendaryMon(u32 idx);
 void Pokemon_RemoveCapsule(POKEMON * pokemon);
 void RestoreBoxMonPP(BOXMON * boxmon);
+BOOL SetTrMonCapsule(int a0, POKEMON *pokemon, HeapID heap_id);
 
 #endif //POKEDIAMOND_POKEMON_H
