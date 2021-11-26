@@ -38,6 +38,6 @@ STRING *NewString_ReadMsgData(MSGDATA *msgData, s32 strno);
 void ReadMsgDataIntoString(MSGDATA *msgData, s32 strno, STRING *dest);
 void GetSpeciesNameIntoArray(u16 species, HeapID heap_id, u16 *dest);
 STRING *GetSpeciesName(u16 species, HeapID heap_id);
-void ReadMsgData_NewNarc_ExistingString(NarcId narcId, s32 fileId, u32 msgId, u32 heapId, STRING *dest);
+void ReadMsgData_NewNarc_ExistingString(NarcId narcId, s32 fileId, u32 msgId, HeapID heapId, STRING *dest);
 
 #endif //POKEHEARTGOLD_MSGDATA_H
