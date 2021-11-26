@@ -1418,7 +1418,7 @@
 .public Std_CreateYesNoMenu
 .public StopScript
 .public StrAddChar
-.public StrUpperFirstChar
+.public StrUpperCharN
 .public String16_FormatInteger
 .public String16_FormatUnsignedLongLong
 .public StringAllCharsValid

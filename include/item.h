@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_ITEM_H
 #define POKEHEARTGOLD_ITEM_H
 
-#include "sys/string.h"
+#include "pm_string.h"
 #include "heap.h"
 
 /*

@@ -24,8 +24,7 @@ inline static void Decrypt1(MAT_ENTRY * arg0, u32 arg1, u32 seed) {
 inline static void Decrypt2(u16 * arg0, u32 count, u32 arg2) {
     u16 seed = (u16)((arg2 + 1) * 596947);
 
-    while (count-- > 0)
-    {
+    while (count-- > 0) {
         *arg0 ^= seed;
         arg0++;
         seed += 18749;

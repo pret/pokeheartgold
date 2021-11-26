@@ -1,16 +1,10 @@
 #ifndef GUARD_MSGFMT_H
 #define GUARD_MSGFMT_H
 
-#include "sys/string.h"
+#include "pm_string.h"
 #include "player_data.h"
 
 typedef struct MSGFMT MSGFMT;
-
-typedef enum STRCONVMODE {
-    STRCONVMODE_LEFT_ALIGN,
-    STRCONVMODE_RIGHT_ALIGN,
-    STRCONVMODE_LEADING_ZEROS,
-} STRCONVMODE;
 
 MSGFMT *ScrStrBufs_new(u32 heap_id);
 void ScrStrBufs_delete(MSGFMT *msgFmt);

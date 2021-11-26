@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_TRAINER_DATA_H
 #define POKEHEARTGOLD_TRAINER_DATA_H
 
-#include "sys/string.h"
+#include "pm_string.h"
 #include "pokemon_types_def.h"
 #include "constants/pokemon.h"
 

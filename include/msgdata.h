@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_MSGDATA_H
 #define POKEHEARTGOLD_MSGDATA_H
 
-#include "sys/string.h"
+#include "pm_string.h"
 #include "filesystem.h"
 #include "msgdata/msg.naix"
 

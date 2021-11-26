@@ -1919,12 +1919,12 @@ ScrStrBufs_UpperFirstChar: ; 0x0200CB5C
 	ldr r2, [r0, #8]
 	lsl r0, r1, #3
 	add r0, r2, r0
-	ldr r3, _0200CB6C ; =StrUpperFirstChar
+	ldr r3, _0200CB6C ; =StrUpperCharN
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bx r3
 	nop
-_0200CB6C: .word StrUpperFirstChar
+_0200CB6C: .word StrUpperCharN
 	thumb_func_end ScrStrBufs_UpperFirstChar
 
 	thumb_func_start sub_0200CB70

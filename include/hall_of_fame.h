@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_HALL_OF_FAME_H
 #define POKEHEARTGOLD_HALL_OF_FAME_H
 
-#include "sys/string.h"
+#include "pm_string.h"
 #include "party.h"
 
 #define NUM_HOF_RECORDS 30

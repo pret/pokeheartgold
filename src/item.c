@@ -8,7 +8,7 @@
 #include "filesystem.h"
 #include "itemtool/itemdata/item_data.naix"
 #include "itemtool/itemdata/item_icon.naix"
-#include "sys/string.h"
+#include "pm_string.h"
 #include "msgdata.h"
 
 static const u16 sPocketCounts[POCKETS_COUNT] = {

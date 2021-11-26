@@ -6,7 +6,7 @@
 
 #include "constants/species.h"
 #include "constants/pokemon.h"
-#include "sys/string.h"
+#include "pm_string.h"
 #include "player_data.h"
 #include "sound_chatot.h"
 #include "filesystem.h"
