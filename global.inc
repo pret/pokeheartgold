@@ -29730,3 +29730,12 @@
 .public sub_0205A4B4
 .public sub_02092B04
 .public sub_02078D24
+.public _0210F6DC
+.public _021094DC
+.public NNS_GfdDefaultFuncFreeTexVram
+.public NNS_GfdDefaultFuncFreePlttVram
+.public _02110A0C
+.public _021DA4A4
+.public _021DA51C
+.public _021DA558
+.public _021DA6F4
