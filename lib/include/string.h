@@ -7,8 +7,8 @@ extern "C" {
 
 #ifndef __MWERKS__
 void *__memcpy(void *dest, const void *src, size_t size);
+void *__builtin__clear(void *data, size_t size);
 #endif
-
 void *memset(void *data, int value, unsigned size);
 void *memmove(void *dest, const void *src, unsigned size);
 #define memcpy(dest, src, size) __memcpy(dest, src, size)

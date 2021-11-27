@@ -37,4 +37,9 @@ typedef struct RTCTime {
     u32 second;
 } RTCTime;
 
+typedef void (*RTCCallback)(RTCResult result, void *arg);
+
+void RTC_Init(void);
+RTCResult RTC_GetDateTimeAsync(RTCDate *date, RTCTime *time, RTCCallback callback, void *arg);
+
 #endif //NITRO_RTC_API_H_

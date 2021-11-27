@@ -4413,7 +4413,7 @@ ov02_02247DA0: ; 0x02247DA0
 	add r0, r7, #0
 	bl ov02_0224E340
 	add r7, r0, #0
-	bl sub_02014830
+	bl GF_RTC_GetTimeOfDayWildParam
 	add r3, r0, #0
 	add r0, sp, #0x20
 	ldrb r0, [r0, #0x10]

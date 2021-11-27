@@ -25525,8 +25525,8 @@
 .public sub_02014540
 .public sub_0201457C
 .public sub_020145B4
-.public sub_02014830
-.public sub_0201485C
+.public GF_RTC_GetTimeOfDayWildParam
+.public GF_RTC_GetTimeOfDayWildParamByHour
 .public sub_020148F4
 .public sub_02014904
 .public sub_02014A08

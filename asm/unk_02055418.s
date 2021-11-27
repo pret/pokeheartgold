@@ -230,7 +230,7 @@ sub_020555F0: ; 0x020555F0
 	ldr r0, [r0, #0xc]
 	bl Sav2_SysInfo_RTC_get
 	ldr r0, [r0, #0x14]
-	bl sub_0201485C
+	bl GF_RTC_GetTimeOfDayWildParamByHour
 	pop {r3, pc}
 	thumb_func_end sub_020555F0
 

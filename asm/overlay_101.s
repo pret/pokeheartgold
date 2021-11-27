@@ -6471,7 +6471,7 @@ ov101_021EA990: ; 0x021EA990
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
-	bl sub_02014830
+	bl GF_RTC_GetTimeOfDayWildParam
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldrb r1, [r5, r1]
@@ -21717,7 +21717,7 @@ _021F1FB2:
 	add r0, #0x28
 	bl GF_RTC_CopyDateTime
 	ldr r0, [r4, #0x38]
-	bl sub_0201485C
+	bl GF_RTC_GetTimeOfDayWildParamByHour
 	add r1, r4, #0
 	add r1, #0x23
 	strb r0, [r1]
