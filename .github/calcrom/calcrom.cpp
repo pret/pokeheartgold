@@ -11,7 +11,7 @@
  *
  * Requirements:
  *  - Must have C++11 compliant compiler.
- *  - MacOS X: Must provide elf.h on the include (-I) path.
+ *  - Mac OS X: Must provide elf.h on the include (-I) path.
  *  - Must be placed in ".github/calcrom/".
  *
  * Changelog:
@@ -35,7 +35,6 @@
  */
 
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -47,7 +46,7 @@ using namespace std::filesystem;
 
 class missing_option : public invalid_argument {
 public:
-    missing_option(string& error) : invalid_argument{error.c_str()} {}
+    explicit missing_option(string& error) : invalid_argument{error.c_str()} {}
 };
 
 struct Options {

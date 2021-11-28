@@ -1,9 +1,10 @@
 #include <iostream>
+#include <algorithm>
+#include <cstring>
 #include "BuildAnalyzer.h"
 #include "Glob.h"
-#include "ElfFile.h"
 
-string default_version("");
+string default_version;
 
 void BuildAnalyzer::AnalyzeObject(path fname_s) {
     string ext = fname_s.extension();
@@ -16,6 +17,8 @@ void BuildAnalyzer::AnalyzeObject(path fname_s) {
 
     Elf32File elf(fname_s);
 
+    path fname_b = fname_s.filename();
+
     // Analyze sections
     for (Elf32_Shdr & hdr : elf.GetSectionHeaders()) {
         string shname = elf.GetSectionName(hdr);
@@ -23,9 +26,6 @@ void BuildAnalyzer::AnalyzeObject(path fname_s) {
         if (sectionType != SECTION_OTHER) {
             sizes[sectionType][sourceType] += (hdr.sh_size + 3) & ~3;
             auto data = elf.ReadSectionData<unsigned>(hdr);
-#ifndef NDEBUG
-            unordered_set<unsigned> unique_addrs;
-#endif
             for (const auto & word : data) {
                 if (word == 0) {
                     continue; // might be a relocation
@@ -34,18 +34,17 @@ void BuildAnalyzer::AnalyzeObject(path fname_s) {
                     return phdr.p_vaddr <= word && word < phdr.p_vaddr + phdr.p_memsz;
                 }) != program.GetProgramHeaders().cend()) {
 #ifndef NDEBUG
-                    unique_addrs.insert(word);
+                    try {
+                        unsigned addr = (&word - &*data.cbegin()) * 4 + xmap.at({fname_b.string(), shname});
+                        fprintf(stderr, "%s\t%08X\t%08X\n", fname_b.c_str(), addr, word);
+                    } catch (const out_of_range &e) {
+                        fprintf(stderr, "Error: missing xmap reference to %s:%s\n", fname_b.c_str(), shname.c_str());
+                        throw e;
+                    }
 #endif
                     n_hardcoded++;
                 }
             }
-#ifndef NDEBUG
-            if (!version.empty()) {
-                for (const auto & word : unique_addrs) {
-                    cerr << "hardcoded " << version << " pointer to " << hex << word << endl;
-                }
-            }
-#endif
         } else if (hdr.sh_type == SHT_RELA) {
             n_relocations += elf.GetSectionElementCount<Elf32_Rela>(hdr);
         }
@@ -61,6 +60,26 @@ void BuildAnalyzer::reset() {
     n_relocations = 0;
 }
 
+void BuildAnalyzer::LoadProgramElf() {
+    string elfpat = builddir + "/*.elf";
+    Glob globber(elfpat, GLOB_TILDE | GLOB_BRACE | GLOB_NOSORT);
+    if (globber.empty()) {
+        throw runtime_error("unable to find an ELF file with section data");
+    }
+    program.open(globber[0], Elf32File::sections | Elf32File::programs);
+}
+
+#ifndef NDEBUG
+void BuildAnalyzer::LoadProgramXmap() {
+    string xmappat = builddir + "/*.xMAP";
+    Glob globber(xmappat, GLOB_TILDE | GLOB_BRACE | GLOB_NOSORT);
+    if (globber.empty()) {
+        throw runtime_error("unable to find an xMAP file with object load info");
+    }
+    xmap.open(globber[0]);
+}
+#endif
+
 BuildAnalyzer::BuildAnalyzer(path &_basedir, path &_subdir, string &_version) :
     basedir(_basedir),
     subdir(_subdir),
@@ -73,12 +92,10 @@ BuildAnalyzer::BuildAnalyzer(path &_basedir, path &_subdir, string &_version) :
         throw runtime_error("No such directory: " + srcbase.string());
     }
 
-    string elfpat = builddir + "/*.elf";
-    Glob globber(elfpat, GLOB_TILDE | GLOB_BRACE | GLOB_NOSORT);
-    if (globber.size() == 0) {
-        throw runtime_error("unable to find an ELF file with section data");
-    }
-    program.open(globber[0], Elf32File::sections | Elf32File::programs);
+    LoadProgramElf();
+#ifndef NDEBUG
+    LoadProgramXmap();
+#endif
 }
 
 BuildAnalyzer &BuildAnalyzer::operator()() {

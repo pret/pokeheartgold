@@ -110,11 +110,11 @@ vector<Elf32_Phdr> &Elf32File::GetProgramHeaders() {
 }
 
 string Elf32File::GetSectionName(const Elf32_Shdr &section) const {
-    return string(shstrtab.data() + section.sh_name);
+    return {shstrtab.data() + section.sh_name};
 }
 
 string Elf32File::GetSymbolName(const Elf32_Sym &symbol) const {
-    return string(strtab.data() + symbol.st_name);
+    return {strtab.data() + symbol.st_name};
 }
 
 Elf32_Sym &Elf32File::operator[](const string &name) {

@@ -6,6 +6,9 @@
 #include <vector>
 #include <unordered_set>
 #include "ElfFile.h"
+#ifndef NDEBUG
+#include "MwerksXmapFile.h"
+#endif
 
 using namespace std;
 using namespace std::filesystem;
@@ -44,10 +47,13 @@ class BuildAnalyzer {
     bool analyzed = false;
     path basedir;
     path subdir;
-    string version = "";
+    string version;
     path srcbase;
     string builddir;
     Elf32File program;
+#ifndef NDEBUG
+    MwerksXmapFile xmap;
+#endif
 
     // Accumulate sizes
     //        src   asm
@@ -59,6 +65,8 @@ class BuildAnalyzer {
 
     void reset();
     void AnalyzeObject(path fname_s);
+    void LoadProgramElf();
+    void LoadProgramXmap();
 public:
     BuildAnalyzer(path &_basedir, path &_subdir, string &_version = default_version);
     BuildAnalyzer &operator()();

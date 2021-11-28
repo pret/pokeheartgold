@@ -11,7 +11,7 @@ using namespace std::filesystem;
 
 class Elf32File {
     ifstream handle;
-    Elf32_Ehdr ehdr;
+    Elf32_Ehdr ehdr {};
     vector<Elf32_Shdr> shdr;
     vector<Elf32_Sym> symtab;
     vector<Elf32_Phdr> phdr;
@@ -32,22 +32,22 @@ public:
     static const elfload symbols  = 4;
 
     Elf32File() = default;
-    Elf32File(path const& filename, elfload load = sections);
+    explicit Elf32File(path const& filename, elfload load = sections);
     ~Elf32File();
     void open(path const& filename, elfload load = sections);
     void close();
     bool is_open() const;
-    template <typename _V>
-    vector<_V> ReadSectionData(const Elf32_Shdr &_shdr) {
-        vector<_V> ret;
-        ret.resize((_shdr.sh_size + sizeof(_V) - 1) / sizeof(_V));
+    template <typename V>
+    vector<V> ReadSectionData(const Elf32_Shdr &_shdr) {
+        vector<V> ret;
+        ret.resize((_shdr.sh_size + sizeof(V) - 1) / sizeof(V));
         handle.seekg(_shdr.sh_offset);
         handle.read((char *)ret.data(), _shdr.sh_size);
         return ret;
     }
-    template <typename _V>
+    template <typename V>
     size_t GetSectionElementCount(const Elf32_Shdr &_shdr) {
-        return (_shdr.sh_size + sizeof(_V) - 1) / sizeof(_V);
+        return (_shdr.sh_size + sizeof(V) - 1) / sizeof(V);
     }
     vector<Elf32_Shdr>& GetSectionHeaders();
     vector<Elf32_Phdr>& GetProgramHeaders();
