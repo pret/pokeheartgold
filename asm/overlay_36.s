@@ -280,7 +280,7 @@ _021E5B36:
 	str r2, [sp]
 	bl CreateKenyaMail
 _021E5B4E:
-	ldr r4, _021E5BB0 ; =0x021E5C34
+	ldr r4, _021E5BB0 ; =ov36_021E5C34
 	add r6, r0, #0
 	mov r5, #0
 	add r7, sp, #0x20
@@ -366,6 +366,7 @@ _021E5C00: .word 0x0000DB56
 	.public ov36_021E5C04
 ov36_021E5C04:
 	.word ov36_021E599C, ov36_021E59B4, ov36_021E5A1C, 0xFFFFFFFF
+	.public ov36_021E5C14
 ov36_021E5C14:
 	.word ov36_021E5948, ov36_021E5960, ov36_021E5980, 0xFFFFFFFF
 	.public ov36_021E5C24
