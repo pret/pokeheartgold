@@ -6583,14 +6583,14 @@ _021E8A06:
 	ldr r0, [r0, #4]
 	mov r2, #9
 	str r0, [r4, #0x30]
-	ldr r0, _021E8A78 ; =0x02103A1C
+	ldr r0, _021E8A78 ; =_02103A1C
 	bl OverlayManager_new
 	str r0, [r5, #0x14]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E8A74: .word ov14_021F7D0C
-_021E8A78: .word 0x02103A1C
+_021E8A78: .word _02103A1C
 	thumb_func_end ov14_021E89B8
 
 	thumb_func_start ov14_021E8A7C

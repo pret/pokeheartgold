@@ -3533,7 +3533,7 @@ ov68_021E74D8: ; 0x021E74D8
 	bl sub_02089D40
 	mov r1, #0x17
 	lsl r1, r1, #4
-	ldr r0, _021E7564 ; =0x02103A1C
+	ldr r0, _021E7564 ; =_02103A1C
 	add r1, r4, r1
 	mov r2, #0x42
 	bl OverlayManager_new
@@ -3545,7 +3545,7 @@ ov68_021E74D8: ; 0x021E74D8
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021E7560: .word _021E7BE8
-_021E7564: .word 0x02103A1C
+_021E7564: .word _02103A1C
 	thumb_func_end ov68_021E74D8
 
 	thumb_func_start ov68_021E7568

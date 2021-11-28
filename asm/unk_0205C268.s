@@ -19531,7 +19531,7 @@ sub_02064B54: ; 0x02064B54
 	lsl r0, r0, #2
 	add r0, r5, r0
 	str r0, [r4, #0x20]
-	ldr r1, _02064BEC ; =0x0210159C
+	ldr r1, _02064BEC ; =_0210159C
 	add r0, r5, #0
 	bl ScrUnk80_AddOvyMan
 	mov r0, #0xe
@@ -19542,7 +19542,7 @@ sub_02064B54: ; 0x02064B54
 	bl sub_0203C8F0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02064BEC: .word 0x0210159C
+_02064BEC: .word _0210159C
 _02064BF0: .word sub_0203CA9C
 	thumb_func_end sub_02064B54
 
@@ -19868,7 +19868,7 @@ sub_02064E18: ; 0x02064E18
 	lsl r0, r0, #2
 	add r0, r5, r0
 	str r0, [r4, #0x20]
-	ldr r1, _02064EB0 ; =0x0210159C
+	ldr r1, _02064EB0 ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
@@ -19880,7 +19880,7 @@ sub_02064E18: ; 0x02064E18
 	bl sub_0203C8F0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02064EB0: .word 0x0210159C
+_02064EB0: .word _0210159C
 _02064EB4: .word sub_0203CA9C
 	thumb_func_end sub_02064E18
 
@@ -20427,7 +20427,7 @@ _02065280:
 	strb r2, [r1]
 	str r5, [r4, #0x1c]
 	str r0, [r4, #0x20]
-	ldr r1, _02065308 ; =0x0210159C
+	ldr r1, _02065308 ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
@@ -20439,7 +20439,7 @@ _02065280:
 	bl sub_0203C8F0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02065308: .word 0x0210159C
+_02065308: .word _0210159C
 _0206530C: .word sub_0203CA9C
 	thumb_func_end sub_02065258
 
@@ -24403,7 +24403,7 @@ _02066F64:
 	lsr r2, r0, #0x18
 	cmp r2, #6
 	blo _02066F64
-	ldr r1, _02066F8C ; =0x0210159C
+	ldr r1, _02066F8C ; =_0210159C
 	add r0, r6, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
@@ -24412,7 +24412,7 @@ _02066F64:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02066F8C: .word 0x0210159C
+_02066F8C: .word _0210159C
 	thumb_func_end sub_02066EDC
 
 	thumb_func_start sub_02066F90
@@ -24519,7 +24519,7 @@ sub_02066FEC: ; 0x02066FEC
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
-	ldr r1, _02067084 ; =0x02103A1C
+	ldr r1, _02067084 ; =_02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
@@ -24529,7 +24529,7 @@ sub_02066FEC: ; 0x02066FEC
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02067080: .word _020FE4B0
-_02067084: .word 0x02103A1C
+_02067084: .word _02103A1C
 	thumb_func_end sub_02066FEC
 
 	thumb_func_start sub_02067088

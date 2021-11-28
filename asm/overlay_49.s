@@ -11196,7 +11196,7 @@ _0225DA04:
 	cmp r5, #2
 	blt _0225DA04
 	mov r0, #0
-	ldr r7, _0225DA68 ; =0x02110928
+	ldr r7, _0225DA68 ; =NNS_GfdDefaultFuncFreeTexVram
 	str r0, [sp, #4]
 _0225DA18:
 	ldr r4, [sp]
@@ -11216,7 +11216,7 @@ _0225DA1C:
 	blx r1
 	add r0, r6, #0
 	bl NNS_G3dPlttReleasePlttKey
-	ldr r1, _0225DA6C ; =0x02110930
+	ldr r1, _0225DA6C ; =NNS_GfdDefaultFuncFreePlttVram
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r4, #0x20]
@@ -11236,8 +11236,8 @@ _0225DA1C:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0225DA68: .word 0x02110928
-_0225DA6C: .word 0x02110930
+_0225DA68: .word NNS_GfdDefaultFuncFreeTexVram
+_0225DA6C: .word NNS_GfdDefaultFuncFreePlttVram
 	thumb_func_end ov49_0225D9D0
 
 	thumb_func_start ov49_0225DA70
@@ -26693,7 +26693,7 @@ _0226575C: .word 0x00010640
 ov49_02265760: ; 0x02265760
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
-	ldr r7, _022657A8 ; =0x02110928
+	ldr r7, _022657A8 ; =NNS_GfdDefaultFuncFreeTexVram
 	add r5, r0, #0
 	mov r4, #0
 _0226576A:
@@ -26712,7 +26712,7 @@ _0226576A:
 	blx r1
 	add r0, r6, #0
 	bl NNS_G3dPlttReleasePlttKey
-	ldr r1, _022657B0 ; =0x02110930
+	ldr r1, _022657B0 ; =NNS_GfdDefaultFuncFreePlttVram
 	ldr r1, [r1]
 	blx r1
 	ldr r0, _022657AC ; =0x00010640
@@ -26725,9 +26725,9 @@ _0226576A:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_022657A8: .word 0x02110928
+_022657A8: .word NNS_GfdDefaultFuncFreeTexVram
 _022657AC: .word 0x00010640
-_022657B0: .word 0x02110930
+_022657B0: .word NNS_GfdDefaultFuncFreePlttVram
 	thumb_func_end ov49_02265760
 
 	thumb_func_start ov49_022657B4

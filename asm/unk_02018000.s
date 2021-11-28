@@ -45,17 +45,17 @@ sub_02018068: ; 0x02018068
 	add r1, sp, #4
 	add r2, sp, #0
 	bl NNS_G3dTexReleaseTexKey
-	ldr r1, _020180B4 ; =0x02110928
+	ldr r1, _020180B4 ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
 	blx r1
-	ldr r1, _020180B4 ; =0x02110928
+	ldr r1, _020180B4 ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r0, [sp]
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r4, #0xc]
 	bl NNS_G3dPlttReleasePlttKey
-	ldr r1, _020180B8 ; =0x02110930
+	ldr r1, _020180B8 ; =NNS_GfdDefaultFuncFreePlttVram
 	ldr r1, [r1]
 	blx r1
 _02018098:
@@ -74,8 +74,8 @@ _020180A6:
 	add sp, #8
 	pop {r4, pc}
 	nop
-_020180B4: .word 0x02110928
-_020180B8: .word 0x02110930
+_020180B4: .word NNS_GfdDefaultFuncFreeTexVram
+_020180B8: .word NNS_GfdDefaultFuncFreePlttVram
 	thumb_func_end sub_02018068
 
 	thumb_func_start sub_020180BC

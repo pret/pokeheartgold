@@ -9189,14 +9189,14 @@ _0223C470: .word 0xBFFF0000
 	thumb_func_start ov59_0223C474
 ov59_0223C474: ; 0x0223C474
 	push {r3, r4, r5, lr}
-	ldr r3, _0223C4AC ; =0x02110924
+	ldr r3, _0223C4AC ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r0, #2
 	mov r1, #0
 	ldr r3, [r3]
 	lsl r0, r0, #0xe
 	add r2, r1, #0
 	blx r3
-	ldr r3, _0223C4B0 ; =0x0211092C
+	ldr r3, _0223C4B0 ; =NNS_GfdDefaultFuncAllocPlttVram
 	mov r1, #0
 	add r4, r0, #0
 	ldr r3, [r3]
@@ -9215,14 +9215,14 @@ _0223C4A4:
 	bl sub_02014DA0
 	pop {r3, r4, r5, pc}
 	nop
-_0223C4AC: .word 0x02110924
-_0223C4B0: .word 0x0211092C
+_0223C4AC: .word NNS_GfdDefaultFuncAllocTexVram
+_0223C4B0: .word NNS_GfdDefaultFuncAllocPlttVram
 	thumb_func_end ov59_0223C474
 
 	thumb_func_start ov59_0223C4B4
 ov59_0223C4B4: ; 0x0223C4B4
 	push {r4, lr}
-	ldr r3, _0223C4CC ; =0x02110924
+	ldr r3, _0223C4CC ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r2, #0
 	ldr r3, [r3]
 	blx r3
@@ -9232,13 +9232,13 @@ ov59_0223C4B4: ; 0x0223C4B4
 	lsr r0, r0, #0xd
 	pop {r4, pc}
 	nop
-_0223C4CC: .word 0x02110924
+_0223C4CC: .word NNS_GfdDefaultFuncAllocTexVram
 	thumb_func_end ov59_0223C4B4
 
 	thumb_func_start ov59_0223C4D0
 ov59_0223C4D0: ; 0x0223C4D0
 	push {r4, lr}
-	ldr r3, _0223C4E8 ; =0x0211092C
+	ldr r3, _0223C4E8 ; =NNS_GfdDefaultFuncAllocPlttVram
 	mov r2, #0
 	ldr r3, [r3]
 	blx r3
@@ -9248,7 +9248,7 @@ ov59_0223C4D0: ; 0x0223C4D0
 	lsr r0, r0, #0xd
 	pop {r4, pc}
 	nop
-_0223C4E8: .word 0x0211092C
+_0223C4E8: .word NNS_GfdDefaultFuncAllocPlttVram
 	thumb_func_end ov59_0223C4D0
 
 	thumb_func_start ov59_0223C4EC

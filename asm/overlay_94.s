@@ -460,7 +460,7 @@ ov94_021E5C84: ; 0x021E5C84
 	thumb_func_start ov94_021E5CA0
 ov94_021E5CA0: ; 0x021E5CA0
 	push {r4, lr}
-	ldr r3, _021E5CC0 ; =0x02110924
+	ldr r3, _021E5CC0 ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r2, #0
 	ldr r3, [r3]
 	blx r3
@@ -474,13 +474,13 @@ _021E5CB2:
 	lsr r0, r0, #0xd
 	pop {r4, pc}
 	nop
-_021E5CC0: .word 0x02110924
+_021E5CC0: .word NNS_GfdDefaultFuncAllocTexVram
 	thumb_func_end ov94_021E5CA0
 
 	thumb_func_start ov94_021E5CC4
 ov94_021E5CC4: ; 0x021E5CC4
 	push {r4, lr}
-	ldr r3, _021E5CE4 ; =0x0211092C
+	ldr r3, _021E5CE4 ; =NNS_GfdDefaultFuncAllocPlttVram
 	mov r2, #1
 	ldr r3, [r3]
 	blx r3
@@ -494,7 +494,7 @@ _021E5CD6:
 	lsr r0, r0, #0xd
 	pop {r4, pc}
 	nop
-_021E5CE4: .word 0x0211092C
+_021E5CE4: .word NNS_GfdDefaultFuncAllocPlttVram
 	thumb_func_end ov94_021E5CC4
 
 	.rodata

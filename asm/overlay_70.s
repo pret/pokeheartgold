@@ -19590,7 +19590,7 @@ ov70_022413AC: ; 0x022413AC
 	add r0, #0xbc
 	bl sub_0208AD34
 	add r1, r4, #0
-	ldr r0, _02241464 ; =0x02103A1C
+	ldr r0, _02241464 ; =_02103A1C
 	add r1, #0xbc
 	mov r2, #0x3d
 	bl OverlayManager_new
@@ -19605,7 +19605,7 @@ ov70_022413AC: ; 0x022413AC
 	pop {r4, pc}
 	.balign 4, 0
 _02241460: .word ov70_02245D48
-_02241464: .word 0x02103A1C
+_02241464: .word _02103A1C
 	thumb_func_end ov70_022413AC
 
 	thumb_func_start ov70_02241468

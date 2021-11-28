@@ -4212,7 +4212,7 @@ _0221E0D6:
 	add r0, #0xc
 	bl sub_02089D40
 	add r1, r5, #0
-	ldr r0, _0221E140 ; =0x02103A1C
+	ldr r0, _0221E140 ; =_02103A1C
 	add r1, #0xc
 	mov r2, #0x1a
 	bl OverlayManager_new
@@ -4224,7 +4224,7 @@ _0221E130: .word 0x00002224
 _0221E134: .word 0x00002228
 _0221E138: .word 0x00002E20
 _0221E13C: .word _0221FD34
-_0221E140: .word 0x02103A1C
+_0221E140: .word _02103A1C
 	thumb_func_end ov65_0221E06C
 
 	thumb_func_start ov65_0221E144

@@ -1016,7 +1016,7 @@ _0223E58A:
 	bl ov82_0223E8C4
 	add r1, r4, #0
 	add r1, #0xa4
-	ldr r0, _0223E5D0 ; =0x02103A1C
+	ldr r0, _0223E5D0 ; =_02103A1C
 	ldr r1, [r1]
 	mov r2, #0x69
 	bl OverlayManager_new
@@ -1035,7 +1035,7 @@ _0223E5C0: .word 0x000005DD
 _0223E5C4: .word 0x000005F3
 _0223E5C8: .word 0x000005DC
 _0223E5CC: .word 0x00000623
-_0223E5D0: .word 0x02103A1C
+_0223E5D0: .word _02103A1C
 	thumb_func_end ov82_0223E2EC
 
 	thumb_func_start ov82_0223E5D4

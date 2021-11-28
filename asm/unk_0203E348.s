@@ -354,11 +354,11 @@ _0203E4E6:
 sub_0203E4EC: ; 0x0203E4EC
 	ldr r3, _0203E4F4 ; =ScrUnk80_AddOvyMan
 	add r2, r1, #0
-	ldr r1, _0203E4F8 ; =0x02103A1C
+	ldr r1, _0203E4F8 ; =_02103A1C
 	bx r3
 	.balign 4, 0
 _0203E4F4: .word ScrUnk80_AddOvyMan
-_0203E4F8: .word 0x02103A1C
+_0203E4F8: .word _02103A1C
 	thumb_func_end sub_0203E4EC
 
 	thumb_func_start sub_0203E4FC
@@ -416,14 +416,14 @@ sub_0203E550: ; 0x0203E550
 	str r6, [r4, #0x18]
 	add r0, #0x26
 	strb r7, [r0]
-	ldr r1, _0203E57C ; =0x0210159C
+	ldr r1, _0203E57C ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0203E57C: .word 0x0210159C
+_0203E57C: .word _0210159C
 	thumb_func_end sub_0203E550
 
 	thumb_func_start sub_0203E580
@@ -435,14 +435,14 @@ sub_0203E580: ; 0x0203E580
 	add r5, r1, #0
 	bl sub_0203E4FC
 	add r4, r0, #0
-	ldr r1, _0203E5A0 ; =0x0210159C
+	ldr r1, _0203E5A0 ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
-_0203E5A0: .word 0x0210159C
+_0203E5A0: .word _0210159C
 	thumb_func_end sub_0203E580
 
 	thumb_func_start sub_0203E5A4
@@ -454,14 +454,14 @@ sub_0203E5A4: ; 0x0203E5A4
 	add r5, r1, #0
 	bl sub_0203E4FC
 	add r4, r0, #0
-	ldr r1, _0203E5C4 ; =0x0210159C
+	ldr r1, _0203E5C4 ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
-_0203E5C4: .word 0x0210159C
+_0203E5C4: .word _0210159C
 	thumb_func_end sub_0203E5A4
 
 	thumb_func_start sub_0203E5C8
@@ -484,14 +484,14 @@ sub_0203E5D0: ; 0x0203E5D0
 	add r6, r0, #0
 	add r0, #0x26
 	strb r4, [r0]
-	ldr r1, _0203E5F4 ; =0x0210159C
+	ldr r1, _0203E5F4 ; =_0210159C
 	add r0, r5, #0
 	add r2, r6, #0
 	bl ScrUnk80_AddOvyMan
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0203E5F4: .word 0x0210159C
+_0203E5F4: .word _0210159C
 	thumb_func_end sub_0203E5D0
 
 	thumb_func_start sub_0203E5F8
@@ -536,7 +536,7 @@ _0203E630: ; jump table
 	.short _0203E6A2 - _0203E630 - 2 ; case 3
 	.short _0203E6C2 - _0203E630 - 2 ; case 4
 _0203E63A:
-	ldr r1, _0203E6D0 ; =0x0210159C
+	ldr r1, _0203E6D0 ; =_0210159C
 	ldr r2, [r4, #4]
 	add r0, r6, #0
 	bl ScrUnk80_AddOvyMan
@@ -610,7 +610,7 @@ _0203E6CC:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0203E6D0: .word 0x0210159C
+_0203E6D0: .word _0210159C
 	thumb_func_end sub_0203E604
 
 	thumb_func_start sub_0203E6D4
@@ -680,14 +680,14 @@ sub_0203E740: ; 0x0203E740
 	add r6, r0, #0
 	add r0, #0x26
 	strb r4, [r0]
-	ldr r1, _0203E768 ; =0x0210159C
+	ldr r1, _0203E768 ; =_0210159C
 	add r0, r5, #0
 	add r2, r6, #0
 	bl ScrUnk80_AddOvyMan
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
 	nop
-_0203E768: .word 0x0210159C
+_0203E768: .word _0210159C
 	thumb_func_end sub_0203E740
 
 	thumb_func_start sub_0203E76C
@@ -2500,12 +2500,12 @@ _0203F56C: .word _020FA2A4
 	thumb_func_start sub_0203F570
 sub_0203F570: ; 0x0203F570
 	ldr r3, _0203F578 ; =ScrUnk80_AddOvyMan
-	ldr r1, _0203F57C ; =0x02102830
+	ldr r1, _0203F57C ; =_02102830
 	add r2, r0, #0
 	bx r3
 	.balign 4, 0
 _0203F578: .word ScrUnk80_AddOvyMan
-_0203F57C: .word 0x02102830
+_0203F57C: .word _02102830
 	thumb_func_end sub_0203F570
 
 	thumb_func_start sub_0203F580
@@ -2539,7 +2539,7 @@ _0203F5AC:
 	str r0, [r4]
 	b _0203F648
 _0203F5BA:
-	ldr r1, _0203F64C ; =0x02102610
+	ldr r1, _0203F64C ; =_02102610
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	bl sub_02050624
@@ -2610,7 +2610,7 @@ _0203F648:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0203F64C: .word 0x02102610
+_0203F64C: .word _02102610
 	thumb_func_end sub_0203F580
 
 	thumb_func_start NamingScreen_SetName
@@ -3238,14 +3238,14 @@ sub_0203FAE8: ; 0x0203FAE8
 	str r5, [r4, #0x1c]
 	add r0, r5, r0
 	str r0, [r4, #0x20]
-	ldr r1, _0203FB5C ; =0x0210159C
+	ldr r1, _0203FB5C ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop
-_0203FB5C: .word 0x0210159C
+_0203FB5C: .word _0210159C
 	thumb_func_end sub_0203FAE8
 
 	thumb_func_start sub_0203FB60
@@ -3320,7 +3320,7 @@ sub_0203FB94: ; 0x0203FB94
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
-	ldr r1, _0203FC10 ; =0x02103A1C
+	ldr r1, _0203FC10 ; =_02103A1C
 	add r0, r5, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
@@ -3328,7 +3328,7 @@ sub_0203FB94: ; 0x0203FB94
 	pop {r4, r5, r6, pc}
 	nop
 _0203FC0C: .word _020FA0B0
-_0203FC10: .word 0x02103A1C
+_0203FC10: .word _02103A1C
 	thumb_func_end sub_0203FB94
 
 	thumb_func_start sub_0203FC14

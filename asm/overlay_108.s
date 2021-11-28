@@ -7052,17 +7052,17 @@ _021E90FA:
 	add r1, sp, #4
 	add r2, sp, #0
 	bl NNS_G3dTexReleaseTexKey
-	ldr r1, _021E913C ; =0x02110928
+	ldr r1, _021E913C ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
 	blx r1
-	ldr r1, _021E913C ; =0x02110928
+	ldr r1, _021E913C ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r0, [sp]
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r6, #0xc]
 	bl NNS_G3dPlttReleasePlttKey
-	ldr r1, _021E9140 ; =0x02110930
+	ldr r1, _021E9140 ; =NNS_GfdDefaultFuncFreePlttVram
 	ldr r1, [r1]
 	blx r1
 _021E9124:
@@ -7078,8 +7078,8 @@ _021E912E:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021E913C: .word 0x02110928
-_021E9140: .word 0x02110930
+_021E913C: .word NNS_GfdDefaultFuncFreeTexVram
+_021E9140: .word NNS_GfdDefaultFuncFreePlttVram
 	thumb_func_end ov108_021E90C4
 
 	thumb_func_start ov108_021E9144

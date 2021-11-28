@@ -29733,10 +29733,16 @@
 .public _0210F6DC
 .public _021094DC
 .public NNS_GfdDefaultFuncFreeTexVram
+.public NNS_GfdDefaultFuncAllocTexVram
 .public NNS_GfdDefaultFuncFreePlttVram
+.public NNS_GfdDefaultFuncAllocPlttVram
 .public _02110A0C
 .public _021DA4A4
 .public _021DA51C
 .public _021DA558
 .public _021DA6F4
 .public ov36_021E5C14
+.public _0210159C
+.public _02103A1C
+.public _02102830
+.public _02102610

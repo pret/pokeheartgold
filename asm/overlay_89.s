@@ -4053,17 +4053,17 @@ _0225A8FC:
 	add r1, sp, #8
 	add r2, sp, #4
 	bl NNS_G3dTexReleaseTexKey
-	ldr r1, _0225A950 ; =0x02110928
+	ldr r1, _0225A950 ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r0, [sp, #8]
 	ldr r1, [r1]
 	blx r1
-	ldr r1, _0225A950 ; =0x02110928
+	ldr r1, _0225A950 ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r5, #0xc]
 	bl NNS_G3dPlttReleasePlttKey
-	ldr r1, _0225A954 ; =0x02110930
+	ldr r1, _0225A954 ; =NNS_GfdDefaultFuncFreePlttVram
 	ldr r1, [r1]
 	blx r1
 _0225A926:
@@ -4091,8 +4091,8 @@ _0225A94A:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0225A950: .word 0x02110928
-_0225A954: .word 0x02110930
+_0225A950: .word NNS_GfdDefaultFuncFreeTexVram
+_0225A954: .word NNS_GfdDefaultFuncFreePlttVram
 	thumb_func_end ov89_0225A878
 
 	thumb_func_start ov89_0225A958
@@ -4162,7 +4162,7 @@ ov89_0225A9B4: ; 0x0225A9B4
 	add r4, r0, #0
 	add r0, r5, #0
 	bl NNS_G3dPlttGetRequiredSize
-	ldr r3, _0225AA18 ; =0x02110924
+	ldr r3, _0225AA18 ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r1, #0
 	add r6, r0, #0
 	ldr r3, [r3]
@@ -4174,7 +4174,7 @@ ov89_0225A9B4: ; 0x0225A9B4
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _0225A9DE:
-	ldr r3, _0225AA1C ; =0x0211092C
+	ldr r3, _0225AA1C ; =NNS_GfdDefaultFuncAllocPlttVram
 	mov r1, #2
 	ldrh r2, [r5, #0x20]
 	lsl r1, r1, #0xe
@@ -4185,7 +4185,7 @@ _0225A9DE:
 	blx r3
 	add r6, r0, #0
 	bne _0225AA00
-	ldr r1, _0225AA20 ; =0x02110928
+	ldr r1, _0225AA20 ; =NNS_GfdDefaultFuncFreeTexVram
 	add r0, r4, #0
 	ldr r1, [r1]
 	blx r1
@@ -4202,9 +4202,9 @@ _0225AA00:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
-_0225AA18: .word 0x02110924
-_0225AA1C: .word 0x0211092C
-_0225AA20: .word 0x02110928
+_0225AA18: .word NNS_GfdDefaultFuncAllocTexVram
+_0225AA1C: .word NNS_GfdDefaultFuncAllocPlttVram
+_0225AA20: .word NNS_GfdDefaultFuncFreeTexVram
 	thumb_func_end ov89_0225A9B4
 
 	thumb_func_start ov89_0225AA24

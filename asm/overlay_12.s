@@ -3575,14 +3575,14 @@ _022396EC: .word sub_02026F54
 	thumb_func_start ov12_022396F0
 ov12_022396F0: ; 0x022396F0
 	push {r3, r4, r5, lr}
-	ldr r3, _02239728 ; =0x02110924
+	ldr r3, _02239728 ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r0, #2
 	mov r1, #0
 	ldr r3, [r3]
 	lsl r0, r0, #0xe
 	add r2, r1, #0
 	blx r3
-	ldr r3, _0223972C ; =0x0211092C
+	ldr r3, _0223972C ; =NNS_GfdDefaultFuncAllocPlttVram
 	mov r1, #0
 	add r4, r0, #0
 	ldr r3, [r3]
@@ -3601,8 +3601,8 @@ _02239720:
 	bl sub_02014DA0
 	pop {r3, r4, r5, pc}
 	nop
-_02239728: .word 0x02110924
-_0223972C: .word 0x0211092C
+_02239728: .word NNS_GfdDefaultFuncAllocTexVram
+_0223972C: .word NNS_GfdDefaultFuncAllocPlttVram
 	thumb_func_end ov12_022396F0
 
 	thumb_func_start ov12_02239730

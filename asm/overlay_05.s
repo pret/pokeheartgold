@@ -4124,7 +4124,7 @@ _0221DB48: .word 0x00000B58
 	thumb_func_start ov05_0221DB4C
 ov05_0221DB4C: ; 0x0221DB4C
 	push {r4, lr}
-	ldr r3, _0221DB6C ; =0x02110924
+	ldr r3, _0221DB6C ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r2, #0
 	ldr r3, [r3]
 	blx r3
@@ -4138,13 +4138,13 @@ _0221DB64:
 	lsr r0, r0, #0xd
 	pop {r4, pc}
 	nop
-_0221DB6C: .word 0x02110924
+_0221DB6C: .word NNS_GfdDefaultFuncAllocTexVram
 	thumb_func_end ov05_0221DB4C
 
 	thumb_func_start ov05_0221DB70
 ov05_0221DB70: ; 0x0221DB70
 	push {r4, lr}
-	ldr r3, _0221DB90 ; =0x0211092C
+	ldr r3, _0221DB90 ; =NNS_GfdDefaultFuncAllocPlttVram
 	mov r2, #1
 	ldr r3, [r3]
 	blx r3
@@ -4158,7 +4158,7 @@ _0221DB88:
 	lsr r0, r0, #0xd
 	pop {r4, pc}
 	nop
-_0221DB90: .word 0x0211092C
+_0221DB90: .word NNS_GfdDefaultFuncAllocPlttVram
 	thumb_func_end ov05_0221DB70
 
 	thumb_func_start ov05_0221DB94
