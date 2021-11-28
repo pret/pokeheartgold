@@ -3683,7 +3683,7 @@ _02024F2A:
 	ldr r2, [r4, #0x20]
 	bl NNS_G2dScale
 	ldrh r0, [r4, #0x24]
-	ldr r2, _0202500C ; =0x021094DC
+	ldr r2, _0202500C ; =_021094DC
 	asr r0, r0, #4
 	lsl r1, r0, #1
 	lsl r0, r1, #1
@@ -3774,7 +3774,7 @@ _02025000:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_0202500C: .word 0x021094DC
+_0202500C: .word _021094DC
 	thumb_func_end sub_02024EB4
 
 	thumb_func_start sub_02025010

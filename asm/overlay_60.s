@@ -3914,7 +3914,7 @@ ov60_021E77C0: ; 0x021E77C0
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	add r0, r2, #1
-	ldr r1, _021E7854 ; =0x021094DC
+	ldr r1, _021E7854 ; =_021094DC
 	lsl r0, r0, #1
 	ldrsh r0, [r1, r0]
 	strh r0, [r4, #0xc]
@@ -3978,7 +3978,7 @@ _021E7848:
 _021E7850:
 	pop {r4, pc}
 	nop
-_021E7854: .word 0x021094DC
+_021E7854: .word _021094DC
 _021E7858: .word 0x00007FFF
 _021E785C: .word 0xFFFF1FFF
 _021E7860: .word 0x04001000

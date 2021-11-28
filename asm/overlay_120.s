@@ -925,7 +925,7 @@ ov120_0225F6BC: ; 0x0225F6BC
 	ldrsh r1, [r4, r0]
 	asr r2, r2, #4
 	lsl r3, r2, #2
-	ldr r2, _0225F6F4 ; =0x021094DC
+	ldr r2, _0225F6F4 ; =_021094DC
 	mov r0, #4
 	ldrsh r0, [r4, r0]
 	ldrsh r2, [r2, r3]
@@ -945,7 +945,7 @@ ov120_0225F6BC: ; 0x0225F6BC
 	strh r0, [r4, #8]
 	pop {r4, pc}
 	nop
-_0225F6F4: .word 0x021094DC
+_0225F6F4: .word _021094DC
 _0225F6F8: .word 0x0000FFFF
 	thumb_func_end ov120_0225F6BC
 

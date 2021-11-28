@@ -351,7 +351,7 @@ sub_02014C60: ; 0x02014C60
 _02014C78:
 	asr r0, r4, #4
 	lsl r1, r0, #2
-	ldr r0, _02014CB4 ; =0x021094DC
+	ldr r0, _02014CB4 ; =_021094DC
 	ldr r2, [sp, #4]
 	ldrsh r0, [r0, r1]
 	ldr r3, [sp, #8]
@@ -379,7 +379,7 @@ _02014CAE:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_02014CB4: .word 0x021094DC
+_02014CB4: .word _021094DC
 _02014CB8: .word 0x00000000
 	thumb_func_end sub_02014C60
 

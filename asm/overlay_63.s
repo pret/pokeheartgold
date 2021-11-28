@@ -7198,10 +7198,10 @@ _0221F86C:
 	mov r1, #1
 	bl G3B_LightVector
 	ldrh r0, [r4, #0x28]
-	ldr r3, _0221FA90 ; =0x021094DC
+	ldr r3, _0221FA90 ; =_021094DC
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _0221FA90 ; =0x021094DC
+	ldr r0, _0221FA90 ; =_021094DC
 	add r2, r0, r1
 	ldrsh r1, [r3, r1]
 	mov r3, #2
@@ -7213,10 +7213,10 @@ _0221F86C:
 	add r1, r5, #0
 	bl MTX_Concat44
 	ldrh r0, [r4, #0x2a]
-	ldr r3, _0221FA90 ; =0x021094DC
+	ldr r3, _0221FA90 ; =_021094DC
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _0221FA90 ; =0x021094DC
+	ldr r0, _0221FA90 ; =_021094DC
 	add r2, r0, r1
 	ldrsh r1, [r3, r1]
 	mov r3, #2
@@ -7228,10 +7228,10 @@ _0221F86C:
 	add r1, r5, #0
 	bl MTX_Concat44
 	ldrh r0, [r4, #0x2c]
-	ldr r3, _0221FA90 ; =0x021094DC
+	ldr r3, _0221FA90 ; =_021094DC
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _0221FA90 ; =0x021094DC
+	ldr r0, _0221FA90 ; =_021094DC
 	add r2, r0, r1
 	ldrsh r1, [r3, r1]
 	mov r3, #2
@@ -7353,7 +7353,7 @@ _0221FA80: .word 0x0000019A
 _0221FA84: .word 0x00002D6B
 _0221FA88: .word 0x00000FFF
 _0221FA8C: .word 0xFFFFF001
-_0221FA90: .word 0x021094DC
+_0221FA90: .word _021094DC
 _0221FA94: .word 0x00007FFF
 _0221FA98: .word 0x00008D1C
 _0221FA9C: .word 0x0000151C

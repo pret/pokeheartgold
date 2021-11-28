@@ -615,7 +615,7 @@ _0225F724:
 	mov r1, fp, asr #4
 	mov r7, r1, lsl #1
 	add r2, r7, #1
-	ldr r1, _0225F8A4 ; =0x021094DC
+	ldr r1, _0225F8A4 ; =_021094DC
 	mov r2, r2, lsl #1
 	ldrsh r3, [r1, r2]
 	mov r2, r0, asr #4
@@ -657,7 +657,7 @@ _0225F724:
 	mov r1, r3, lsr #0x1f
 _0225F7D0:
 	add r6, r1, r6, asr #2
-	ldr r3, _0225F8A4 ; =0x021094DC
+	ldr r3, _0225F8A4 ; =_021094DC
 	mov r7, r6
 	mov r8, lr
 	mov ip, #1
@@ -711,7 +711,7 @@ _0225F7E4:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.balign 4, 0
-_0225F8A4: .word 0x021094DC
+_0225F8A4: .word _021094DC
 _0225F8A8: .word 0x92492493
 	arm_func_end ov93_0225F548
 

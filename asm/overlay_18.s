@@ -30342,7 +30342,7 @@ ov18_021F4EB0: ; 0x021F4EB0
 	asr r0, r0, #4
 	lsl r6, r0, #1
 	add r5, r1, #0
-	ldr r0, _021F4F90 ; =0x021094DC
+	ldr r0, _021F4F90 ; =_021094DC
 	lsl r1, r6, #1
 	ldrsh r7, [r0, r1]
 	add r4, r2, #0
@@ -30381,7 +30381,7 @@ _021F4F10:
 	add r7, r0, #0
 	add r0, r6, #1
 	lsl r1, r0, #1
-	ldr r0, _021F4F90 ; =0x021094DC
+	ldr r0, _021F4F90 ; =_021094DC
 	ldrsh r6, [r0, r1]
 	add r0, r6, #0
 	bl _fflt
@@ -30431,7 +30431,7 @@ _021F4F6E:
 	strh r0, [r4]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021F4F90: .word 0x021094DC
+_021F4F90: .word _021094DC
 _021F4F94: .word 0x45800000
 	thumb_func_end ov18_021F4EB0
 

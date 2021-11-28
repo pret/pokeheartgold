@@ -1097,10 +1097,10 @@ _021E625C:
 	add r0, r4, #0
 	add r0, #0x74
 	ldrh r0, [r0]
-	ldr r1, _021E6340 ; =0x021094DC
+	ldr r1, _021E6340 ; =_021094DC
 	asr r0, r0, #4
 	lsl r3, r0, #2
-	ldr r0, _021E6340 ; =0x021094DC
+	ldr r0, _021E6340 ; =_021094DC
 	ldrsh r1, [r1, r3]
 	add r2, r0, r3
 	mov r3, #2
@@ -1143,7 +1143,7 @@ _021E629C:
 	asr r0, r4, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
-	ldr r3, _021E6340 ; =0x021094DC
+	ldr r3, _021E6340 ; =_021094DC
 	add r2, r2, #1
 	lsl r2, r2, #1
 	ldrsh r1, [r3, r1]
@@ -1191,7 +1191,7 @@ _021E632E:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E633C: .word ov61_021E73EC
-_021E6340: .word 0x021094DC
+_021E6340: .word _021094DC
 _021E6344: .word ov61_021E73E0
 _021E6348: .word 0x021DA558
 _021E634C: .word 0x021DA51C
@@ -2004,8 +2004,8 @@ _021E696E:
 	str r0, [sp]
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _021E6A24 ; =0x021094DC
-	ldr r3, _021E6A24 ; =0x021094DC
+	ldr r0, _021E6A24 ; =_021094DC
+	ldr r3, _021E6A24 ; =_021094DC
 	add r2, r0, r1
 	ldrsh r1, [r3, r1]
 	mov r3, #2
@@ -2080,7 +2080,7 @@ _021E696E:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _021E6A20: .word ov61_021E73B0
-_021E6A24: .word 0x021094DC
+_021E6A24: .word _021094DC
 	thumb_func_end ov61_021E6944
 
 	thumb_func_start ov61_021E6A28
@@ -2120,7 +2120,7 @@ ov61_021E6A48: ; 0x021E6A48
 	add r0, r5, #0
 	add r0, #0x76
 	ldrh r0, [r0]
-	ldr r3, _021E6ADC ; =0x021094DC
+	ldr r3, _021E6ADC ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -2137,7 +2137,7 @@ ov61_021E6A48: ; 0x021E6A48
 	add r0, r5, #0
 	add r0, #0x74
 	ldrh r0, [r0]
-	ldr r3, _021E6ADC ; =0x021094DC
+	ldr r3, _021E6ADC ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -2167,7 +2167,7 @@ ov61_021E6A48: ; 0x021E6A48
 	add sp, #0x94
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021E6ADC: .word 0x021094DC
+_021E6ADC: .word _021094DC
 	thumb_func_end ov61_021E6A48
 
 	thumb_func_start ov61_021E6AE0
@@ -3179,7 +3179,7 @@ ov61_021E7268: ; 0x021E7268
 	asr r0, r6, #4
 	lsl r3, r0, #1
 	lsl r1, r3, #1
-	ldr r2, _021E733C ; =0x021094DC
+	ldr r2, _021E733C ; =_021094DC
 	add r3, r3, #1
 	lsl r3, r3, #1
 	ldrsh r1, [r2, r1]
@@ -3232,7 +3232,7 @@ _021E7324:
 _021E7330: .word ov61_021E73D4
 _021E7334: .word ov61_021E738C
 _021E7338: .word 0x0000D73F
-_021E733C: .word 0x021094DC
+_021E733C: .word _021094DC
 _021E7340: .word 0x0000024E
 _021E7344: .word 0x000003A7
 	thumb_func_end ov61_021E7268

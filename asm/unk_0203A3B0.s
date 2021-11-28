@@ -200,7 +200,7 @@ sub_0203A4AC: ; 0x0203A4AC
 	lsl r1, r1, #2
 	bl AllocFromHeapAtEnd
 	str r0, [sp]
-	ldr r0, _0203A4D0 ; =0x0210F930
+	ldr r0, _0203A4D0 ; =_0210F930
 	add r1, sp, #0
 	bl sub_0201A3F8
 	mov r1, #0x96
@@ -210,7 +210,7 @@ sub_0203A4AC: ; 0x0203A4AC
 	ldr r0, [sp]
 	pop {r3, pc}
 	nop
-_0203A4D0: .word 0x0210F930
+_0203A4D0: .word _0210F930
 	thumb_func_end sub_0203A4AC
 
 	thumb_func_start sub_0203A4D4
@@ -226,7 +226,7 @@ sub_0203A4D4: ; 0x0203A4D4
 	str r0, [sp, #4]
 	cmp r0, #0
 	beq _0203A52A
-	ldr r0, _0203A530 ; =0x0210F930
+	ldr r0, _0203A530 ; =_0210F930
 	add r1, sp, #4
 	bl sub_0201A3F8
 	mov r1, #0x96
@@ -257,7 +257,7 @@ _0203A52A:
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
-_0203A530: .word 0x0210F930
+_0203A530: .word _0210F930
 	thumb_func_end sub_0203A4D4
 
 	thumb_func_start sub_0203A534
@@ -271,7 +271,7 @@ sub_0203A534: ; 0x0203A534
 	bne _0203A546
 	bl GF_AssertFail
 _0203A546:
-	ldr r0, _0203A590 ; =0x0210F940
+	ldr r0, _0203A590 ; =_0210F940
 	add r1, sp, #0x14
 	bl sub_0201A3F8
 	b _0203A578
@@ -279,7 +279,7 @@ _0203A550:
 	cmp r1, r0
 	add r1, sp, #0x14
 	beq _0203A568
-	ldr r0, _0203A594 ; =0x0210F954
+	ldr r0, _0203A594 ; =_0210F954
 	bl sub_0201A3F8
 	mov r1, #0x96
 	ldr r0, [sp, #0x14]
@@ -287,7 +287,7 @@ _0203A550:
 	bl DC_FlushRange
 	b _0203A578
 _0203A568:
-	ldr r0, _0203A598 ; =0x0210F964
+	ldr r0, _0203A598 ; =_0210F964
 	bl sub_0201A3F8
 	mov r1, #0x13
 	ldr r0, [sp, #0x14]
@@ -304,9 +304,9 @@ _0203A578:
 	bx r3
 	nop
 _0203A58C: .word 0x00300010
-_0203A590: .word 0x0210F940
-_0203A594: .word 0x0210F954
-_0203A598: .word 0x0210F964
+_0203A590: .word _0210F940
+_0203A594: .word _0210F954
+_0203A598: .word _0210F964
 	thumb_func_end sub_0203A534
 
 	thumb_func_start sub_0203A59C

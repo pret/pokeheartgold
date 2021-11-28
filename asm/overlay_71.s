@@ -1578,7 +1578,7 @@ ov71_02247514: ; 0x02247514
 	add r0, r4, #0
 	add r0, #0x80
 	ldrh r0, [r0]
-	ldr r3, _022475C0 ; =0x021094DC
+	ldr r3, _022475C0 ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -1595,7 +1595,7 @@ ov71_02247514: ; 0x02247514
 	add r0, r4, #0
 	add r0, #0x82
 	ldrh r0, [r0]
-	ldr r3, _022475C0 ; =0x021094DC
+	ldr r3, _022475C0 ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -1612,7 +1612,7 @@ ov71_02247514: ; 0x02247514
 	add r0, r4, #0
 	add r0, #0x84
 	ldrh r0, [r0]
-	ldr r3, _022475C0 ; =0x021094DC
+	ldr r3, _022475C0 ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -1649,7 +1649,7 @@ _022475AC:
 	add sp, #0x50
 	pop {r4, pc}
 	.balign 4, 0
-_022475C0: .word 0x021094DC
+_022475C0: .word _021094DC
 	thumb_func_end ov71_02247514
 
 	thumb_func_start ov71_022475C4
@@ -1884,7 +1884,7 @@ ov71_02247738: ; 0x02247738
 	add r0, r4, #0
 	add r0, #0x80
 	ldrh r0, [r0]
-	ldr r3, _022477E8 ; =0x021094DC
+	ldr r3, _022477E8 ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -1901,7 +1901,7 @@ ov71_02247738: ; 0x02247738
 	add r0, r4, #0
 	add r0, #0x82
 	ldrh r0, [r0]
-	ldr r3, _022477E8 ; =0x021094DC
+	ldr r3, _022477E8 ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -1918,7 +1918,7 @@ ov71_02247738: ; 0x02247738
 	add r0, r4, #0
 	add r0, #0x84
 	ldrh r0, [r0]
-	ldr r3, _022477E8 ; =0x021094DC
+	ldr r3, _022477E8 ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -1954,7 +1954,7 @@ ov71_02247738: ; 0x02247738
 	add sp, #0x4c
 	pop {r3, r4, pc}
 	.balign 4, 0
-_022477E8: .word 0x021094DC
+_022477E8: .word _021094DC
 	thumb_func_end ov71_02247738
 
 	thumb_func_start ov71_022477EC

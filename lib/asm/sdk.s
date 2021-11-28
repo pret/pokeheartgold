@@ -1845,7 +1845,7 @@ sub_02099948: ; 0x02099948
 	ldr r0, [r5, #0x40]
 	ldrh r1, [r4, #0x20]
 	ldr r0, [r0, #0x20]
-	ldr r6, _02099DA8 ; =0x021094DC
+	ldr r6, _02099DA8 ; =_021094DC
 	ldr r0, [r0, #0x14]
 	mov r1, r1, asr #4
 	ldrh r0, [r0]
@@ -2109,7 +2109,7 @@ _02099D10:
 	bx lr
 	.align 2, 0
 _02099DA4: .word 0x040004A4
-_02099DA8: .word 0x021094DC
+_02099DA8: .word _021094DC
 _02099DAC: .word _021105E4
 _02099DB0: .word 0x00000CCD
 _02099DB4: .word 0xFFFFF333
@@ -2148,7 +2148,7 @@ sub_02099DC8: ; 0x02099DC8
 	ldr r0, [r5, #0x40]
 	ldrh r1, [r4, #0x20]
 	ldr r0, [r0, #0x20]
-	ldr r6, _0209A224 ; =0x021094DC
+	ldr r6, _0209A224 ; =_021094DC
 	ldr r0, [r0]
 	mov r1, r1, asr #4
 	mov r2, r1, lsl #1
@@ -2411,7 +2411,7 @@ _0209A18C:
 	bx lr
 	.align 2, 0
 _0209A220: .word 0x040004A4
-_0209A224: .word 0x021094DC
+_0209A224: .word _021094DC
 _0209A228: .word _021105E4
 _0209A22C: .word 0x00000CCD
 _0209A230: .word 0xFFFFF333
@@ -2450,7 +2450,7 @@ sub_0209A244: ; 0x0209A244
 	ldr r0, [r5, #0x40]
 	ldrh r1, [r4, #0x20]
 	ldr r0, [r0, #0x20]
-	ldr r6, _0209A57C ; =0x021094DC
+	ldr r6, _0209A57C ; =_021094DC
 	ldr r0, [r0, #0x14]
 	mov r1, r1, asr #4
 	ldrh r0, [r0]
@@ -2636,7 +2636,7 @@ _0209A4E4:
 	bx lr
 	.align 2, 0
 _0209A578: .word 0x040004A4
-_0209A57C: .word 0x021094DC
+_0209A57C: .word _021094DC
 _0209A580: .word _021105E4
 _0209A584: .word 0x04000454
 _0209A588: .word 0x04000470
@@ -2673,7 +2673,7 @@ sub_0209A594: ; 0x0209A594
 	ldr r0, [r5, #0x40]
 	ldrh r1, [r4, #0x20]
 	ldr r0, [r0, #0x20]
-	ldr r6, _0209A8CC ; =0x021094DC
+	ldr r6, _0209A8CC ; =_021094DC
 	ldr r0, [r0]
 	mov r1, r1, asr #4
 	mov r2, r1, lsl #1
@@ -2859,7 +2859,7 @@ _0209A834:
 	bx lr
 	.align 2, 0
 _0209A8C8: .word 0x040004A4
-_0209A8CC: .word 0x021094DC
+_0209A8CC: .word _021094DC
 _0209A8D0: .word _021105E4
 _0209A8D4: .word 0x04000454
 _0209A8D8: .word 0x04000470
@@ -3882,7 +3882,7 @@ _0209B7F0:
 	str r3, [sp, #8]
 	bl MTX_MultVec43
 	ldrh r0, [r6, #0x20]
-	ldr r2, _0209BAF0 ; =0x021094DC
+	ldr r2, _0209BAF0 ; =_021094DC
 	mov sb, #0
 	mov r0, r0, asr #4
 	mov r3, r0, lsl #1
@@ -3963,7 +3963,7 @@ _0209B910:
 	str r3, [sp, #8]
 	bl MTX_MultVec43
 	ldrh r0, [r6, #0x20]
-	ldr r2, _0209BAF0 ; =0x021094DC
+	ldr r2, _0209BAF0 ; =_021094DC
 	mov lr, #0
 	mov r0, r0, asr #4
 	mov r3, r0, lsl #1
@@ -4057,7 +4057,7 @@ _0209BA74:
 	bx lr
 	.align 2, 0
 _0209BAEC: .word 0x040004A4
-_0209BAF0: .word 0x021094DC
+_0209BAF0: .word _021094DC
 _0209BAF4: .word 0x04000454
 _0209BAF8: .word 0x04000470
 _0209BAFC: .word 0x04000480
@@ -4168,7 +4168,7 @@ _0209BC34:
 	str r3, [sp, #8]
 	bl MTX_MultVec43
 	ldrh r0, [r8, #0x20]
-	ldr r2, _0209BF3C ; =0x021094DC
+	ldr r2, _0209BF3C ; =_021094DC
 	ldr ip, [sp]
 	mov r0, r0, asr #4
 	mov r3, r0, lsl #1
@@ -4249,7 +4249,7 @@ _0209BD60:
 	str r3, [sp, #8]
 	bl MTX_MultVec43
 	ldrh r0, [r8, #0x20]
-	ldr r2, _0209BF3C ; =0x021094DC
+	ldr r2, _0209BF3C ; =_021094DC
 	mov r8, #0
 	mov r0, r0, asr #4
 	mov r3, r0, lsl #1
@@ -4342,7 +4342,7 @@ _0209BEC4:
 	bx lr
 	.align 2, 0
 _0209BF38: .word 0x040004A4
-_0209BF3C: .word 0x021094DC
+_0209BF3C: .word _021094DC
 _0209BF40: .word 0x04000454
 _0209BF44: .word 0x04000470
 _0209BF48: .word 0x04000480
@@ -4881,12 +4881,12 @@ _0209C6E8:
 	add r1, r1, #0x10000
 	mov r2, r0, lsl #1
 	str r1, [sp, #0x18]
-	ldr r0, _0209D1EC ; =0x021094DC
+	ldr r0, _0209D1EC ; =_021094DC
 	mov r1, r2, lsl #1
 	ldrsh r0, [r0, r1]
 	add r1, r2, #1
 	mov r2, r1, lsl #1
-	ldr r1, _0209D1EC ; =0x021094DC
+	ldr r1, _0209D1EC ; =_021094DC
 	ldrsh r3, [r1, r2]
 	ldr r2, [sb, #0x5c]
 	mov r1, #0x800
@@ -5597,7 +5597,7 @@ _0209D1DC: .word 0x00000FFF
 _0209D1E0: .word 0x021D43B8
 _0209D1E4: .word 0x5EEDF715
 _0209D1E8: .word 0x1B0CB173
-_0209D1EC: .word 0x021094DC
+_0209D1EC: .word _021094DC
 _0209D1F0: .word 0x00000003
 _0209D1F4: .word 0xAAAAAAAB
 _0209D1F8: .word 0x0000FFFF
@@ -6308,7 +6308,7 @@ sub_0209DBD4: ; 0x0209DBD4
 	b _0209DC8C
 _0209DC00:
 	ldrh r1, [r0]
-	ldr r3, _0209DCA8 ; =0x021094DC
+	ldr r3, _0209DCA8 ; =_021094DC
 	add r0, sp, #0
 	mov r1, r1, asr #4
 	mov r2, r1, lsl #1
@@ -6321,7 +6321,7 @@ _0209DC00:
 	b _0209DC8C
 _0209DC30:
 	ldrh r1, [r0]
-	ldr r3, _0209DCA8 ; =0x021094DC
+	ldr r3, _0209DCA8 ; =_021094DC
 	add r0, sp, #0
 	mov r1, r1, asr #4
 	mov r2, r1, lsl #1
@@ -6334,7 +6334,7 @@ _0209DC30:
 	b _0209DC8C
 _0209DC60:
 	ldrh r1, [r0]
-	ldr r3, _0209DCA8 ; =0x021094DC
+	ldr r3, _0209DCA8 ; =_021094DC
 	add r0, sp, #0
 	mov r1, r1, asr #4
 	mov r2, r1, lsl #1
@@ -6353,7 +6353,7 @@ _0209DC8C:
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
-_0209DCA8: .word 0x021094DC
+_0209DCA8: .word _021094DC
 	arm_func_end sub_0209DBD4
 
 	arm_func_start sub_0209DCAC
