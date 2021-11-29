@@ -29746,3 +29746,6 @@
 .public _02103A1C
 .public _02102830
 .public _02102610
+.public sub_0203DB6C
+.public sub_0203DB70
+.public sub_0203DB74

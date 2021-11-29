@@ -4,7 +4,11 @@
 #include <vector>
 #include <fstream>
 #include <filesystem>
+#ifdef __APPLE__
+#include <libelf/libelf.h>
+#else
 #include <elf.h>
+#endif //__APPLE__
 
 using namespace std;
 using namespace std::filesystem;
