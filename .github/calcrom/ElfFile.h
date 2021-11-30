@@ -44,7 +44,7 @@ public:
     template <typename V>
     vector<V> ReadSectionData(const Elf32_Shdr &_shdr) {
         vector<V> ret;
-        ret.resize((_shdr.sh_size + sizeof(V) - 1) / sizeof(V));
+        ret.resize(GetSectionElementCount<V>(_shdr));
         handle.seekg(_shdr.sh_offset);
         handle.read((char *)ret.data(), _shdr.sh_size);
         return ret;

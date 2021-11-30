@@ -47,6 +47,8 @@ void BuildAnalyzer::AnalyzeObject(path fname_s) {
             }
         } else if (hdr.sh_type == SHT_RELA) {
             n_relocations += elf.GetSectionElementCount<Elf32_Rela>(hdr);
+        } else if (hdr.sh_type == SHT_REL) {
+            n_relocations += elf.GetSectionElementCount<Elf32_Rel>(hdr);
         }
     }
 }
