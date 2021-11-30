@@ -29749,3 +29749,8 @@
 .public sub_0203DB6C
 .public sub_0203DB70
 .public sub_0203DB74
+.public sub_02063E50
+.public sub_02063E70
+.public sub_02063FE4
+.public sub_02063FFC
+.public sub_0206402C

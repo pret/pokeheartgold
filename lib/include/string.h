@@ -7,21 +7,17 @@
 _MSL_BEGIN_NAMESPACE_STD
 _MSL_BEGIN_EXTERN_C
 
-#ifndef __MWERKS__
-void *__memcpy(void *dest, const void *src, size_t size);
-void *__builtin__clear(void *data, size_t size);
-#endif
 void *memset(void *data, int value, size_t size);
-void *memmove(void *dest, const void *src, unsigned size);
-#define memcpy(dest, src, size) __memcpy(dest, src, size)
-void *memchr(const void *arr, int value, unsigned size);
-int memcmp(const void *a, const void *b, unsigned size);
+void *memmove(void *dest, const void *src, size_t size);
+void *memcpy(void *dest, const void *src, size_t size);
+void *memchr(const void *arr, int value, size_t size);
+int memcmp(const void *a, const void *b, size_t size);
 char *strcpy(char *dest, const char *src);
 unsigned strlen(const char *str);
-char *strncpy(char *dest, const char *src, unsigned n);
+char *strncpy(char *dest, const char *src, size_t n);
 int strcmp(const char *a, const char *b);
 char *strcat(char *dest, const char *src);
-char *strncat(char *dest, const char *src, unsigned n);
+char *strncat(char *dest, const char *src, size_t n);
 unsigned strspn(const char *a, const char *b);
 char *strtok(char *str, const char *sep);
 char *strstr(const char *haystack, const char *needle);
