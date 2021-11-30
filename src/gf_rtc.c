@@ -30,8 +30,7 @@ static inline RTCTime *getTime(struct GFRtcWork *work) {
 
 void GF_InitRTCWork(void) {
     RTC_Init();
-    //memset(&sRTCWork, 0, sizeof(sRTCWork));
-    __builtin__clear(&sRTCWork, sizeof(sRTCWork));
+    memset(&sRTCWork, 0, sizeof(sRTCWork));
     sRTCWork.getDateTimeSuccess = FALSE;
     sRTCWork.getDateTimeLock = FALSE;
     sRTCWork.getDateTimeSleep = 0;
