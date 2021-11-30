@@ -135,7 +135,7 @@ $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g' $(1)
 touch -r $(1:%.d=%.o) $(1)
 endef
 endif
-DEPFLAGS := -gccdep -MMD
+DEPFLAGS := -gccdep -MD
 DEPFILES := $(ALL_OBJS:%.o=%.d)
 $(DEPFILES):
 

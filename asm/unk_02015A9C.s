@@ -557,9 +557,9 @@ sub_02015DC8: ; 0x02015DC8
 	mov r0, #0
 _02015DCE:
 	lsl r1, r0, #1
-	ldr r0, _02015DD8 ; =0x020F612C
+	ldr r0, _02015DD8 ; =_020F612C
 	ldrh r0, [r0, r1]
 	bx lr
 	nop
-_02015DD8: .word 0x020F612C
+_02015DD8: .word _020F612C
 	thumb_func_end sub_02015DC8
