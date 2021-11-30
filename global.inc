@@ -29755,3 +29755,5 @@
 .public sub_02063FFC
 .public sub_0206402C
 .public __global_destructor_chain
+.public ov07_022377F4
+.public ov07_022377DC
