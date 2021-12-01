@@ -1,4 +1,4 @@
-CXX := g++
+CXX ?= g++
 CXXFLAGS := -g -O2 -std=c++17
 ifeq ($(DEBUG),)
 CXXFLAGS += -DNDEBUG

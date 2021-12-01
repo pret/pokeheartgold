@@ -38,11 +38,11 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include <filesystem>
+#include "find_filesystem.h"
 #include "BuildAnalyzer.h"
 
 using namespace std;
-using namespace std::filesystem;
+using namespace fs;
 
 class missing_option : public invalid_argument {
 public:
