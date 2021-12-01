@@ -1963,7 +1963,7 @@ u8 GetNatureFromPersonality(u32 pid) {
     return (u8)(pid % 25);
 }
 
-const s8 sNatureStatMods[NATURE_NUM][NUM_EV_STATS] = {
+const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS] = {
     { 0,  0,  0,  0,  0},
     { 1, -1,  0,  0,  0},
     { 1,  0, -1,  0,  0},
@@ -1999,7 +1999,7 @@ u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex) {
         return n;
     }
 
-    switch (sNatureStatMods[nature][statIndex - 1]) {
+    switch (gNatureStatMods[nature][statIndex - 1]) {
     case 1:
         // NOTE: will overflow for n > 595 because the intermediate value is cast to u16 before the division.
         retVal = n * 110;
@@ -2720,8 +2720,7 @@ struct UnkStruct_0200CF18 *sub_02070C24(void * r6, s32 sp18, s32 sp1C, s32 sp20,
     return ret_r4;
 }
 
-void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3)
-{
+void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3) {
     if (a1 == 2) {
         a3->narcId = NARC_a_0_5_8;
         a3->ncgr_id = trainer_class * 5 + 0;
@@ -3152,8 +3151,7 @@ void BoxMonSetMoveInSlot(BOXMON* boxmon, u16 move, u8 slot) {
     SetBoxMonData(boxmon, MON_DATA_MOVE1PP + slot, &pp);
 }
 
-u32 MonTryLearnMoveOnLevelUp(POKEMON * pokemon, int * last_i, u16 * sp0)
-{
+u32 MonTryLearnMoveOnLevelUp(POKEMON * pokemon, int * last_i, u16 * sp0) {
     u32 ret = 0;
     u16 * wotbl = AllocFromHeap(0, 22 * sizeof(u16));
     u16 species = (u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
@@ -3375,8 +3373,7 @@ u8 Party_MaskMonsWithPokerus(PARTY * party, u8 mask) {
     return ret;
 }
 
-void Party_UpdatePokerus(PARTY * party, int r5)
-{
+void Party_UpdatePokerus(PARTY * party, int r5) {
     int i;
     u8 pokerus;
     POKEMON * pokemon;
@@ -3400,8 +3397,7 @@ void Party_UpdatePokerus(PARTY * party, int r5)
     }
 }
 
-void Party_SpreadPokerus(PARTY * party)
-{
+void Party_SpreadPokerus(PARTY * party) {
     int count = GetPartyCount(party);
     int i;
     POKEMON * pokemon;

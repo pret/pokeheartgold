@@ -11,6 +11,8 @@
 #include "sound_chatot.h"
 #include "filesystem.h"
 
+extern const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS];
+
 void ZeroMonData(POKEMON * pokemon);
 void ZeroBoxMonData(BOXMON * boxmon);
 u32 SizeOfStructPokemon(void);

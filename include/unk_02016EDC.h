@@ -1,5 +1,5 @@
-#ifndef Pokemon_RemoveCapsule_UNK_02016EDC_H
-#define Pokemon_RemoveCapsule_UNK_02016EDC_H
+#ifndef POKEHEARTGOLD_UNK_02016EDC_H
+#define POKEHEARTGOLD_UNK_02016EDC_H
 
 struct UnkStruct_02072914_sub_sub {
     u8 filler_0[4];
@@ -27,4 +27,4 @@ struct UnkStruct_0207294C {
 
 void sub_02016F40(void *, void *, struct UnkStruct_0207294C *, u8);
 
-#endif //Pokemon_RemoveCapsule_UNK_02016EDC_H
+#endif //POKEHEARTGOLD_UNK_02016EDC_H

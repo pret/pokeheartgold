@@ -65,11 +65,11 @@ BOOL RemoveMonFromParty(PARTY *party, int slot) {
 
 int GetPartyMaxCount(const PARTY *party) {
     return party->core.maxCount;
-};
+}
 
 int GetPartyCount(const PARTY *party) {
     return party->core.curCount;
-};
+}
 
 POKEMON *GetPartyMonByIndex(PARTY *party, int slot) {
     PARTY_ASSERT_SLOT(party, slot);
@@ -102,23 +102,20 @@ void sub_02074740(PARTY *party, int slot, POKEMON *src) {
 }
 
 BOOL sub_020747BC(PARTY *party, int slotA, int slotB) {
+    PARTY_EXTRA_SUB tmp_PARTY_EXTRA_SUB;
+    POKEMON *tmp_POKEMON;
+
     PARTY_ASSERT_SLOT(party, slotA);
     PARTY_ASSERT_SLOT(party, slotB);
-    {
-        PARTY_EXTRA_SUB tmp_PARTY_EXTRA_SUB;
-        POKEMON *tmp_POKEMON;
-        u8 *r5;
+    tmp_POKEMON = AllocFromHeap(0, sizeof(POKEMON));
+    *tmp_POKEMON = party->core.mons[slotA];
+    party->core.mons[slotA] = party->core.mons[slotB];
+    party->core.mons[slotB] = *tmp_POKEMON;
+    FreeToHeap(tmp_POKEMON);
 
-        tmp_POKEMON = AllocFromHeap(0, sizeof(POKEMON));
-        *tmp_POKEMON = party->core.mons[slotA];
-        party->core.mons[slotA] = party->core.mons[slotB];
-        party->core.mons[slotB] = *tmp_POKEMON;
-        FreeToHeap(tmp_POKEMON);
-
-        tmp_PARTY_EXTRA_SUB = party->extra.unk_00[slotA];
-        party->extra.unk_00[slotA] = party->extra.unk_00[slotB];
-        party->extra.unk_00[slotB] = tmp_PARTY_EXTRA_SUB;
-    }
+    tmp_PARTY_EXTRA_SUB = party->extra.unk_00[slotA];
+    party->extra.unk_00[slotA] = party->extra.unk_00[slotB];
+    party->extra.unk_00[slotB] = tmp_PARTY_EXTRA_SUB;
     return FALSE;
 }
 

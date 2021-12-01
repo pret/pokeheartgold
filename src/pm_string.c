@@ -255,8 +255,7 @@ BOOL StringCompare(STRING * str1, STRING * str2) {
     return TRUE;
 }
 
-u16 StringGetLength(STRING * str)
-{
+u16 StringGetLength(STRING * str) {
     ASSERT_STRING(str);
     return str->size;
 }
@@ -265,8 +264,7 @@ int StringCountLines(volatile STRING * str) {
     ASSERT_STRING(str);
 
     int i, nline;
-    for (i = 0, nline = 1; i < str->size; i++)
-    {
+    for (i = 0, nline = 1; i < str->size; i++) {
         if (str->data[i] == CHAR_LF)
             nline++;
     }
