@@ -1,10 +1,13 @@
+#include "constants/map_sections.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.rodata
 
 _020F6280:
-	.byte 0x00, 0x00, 0xD0, 0x07, 0xB8, 0x0B, 0x00, 0x00
+	.short MAPSEC_MYSTERY_ZONE
+	.short METLOC_DAY_CARE_COUPLE
+	.short METLOC_LOVELY_PLACE
 
 	.text
 
@@ -60,3 +63,34 @@ _02017FF2:
 	.balign 4, 0
 _02017FFC: .word _020F6280
 	thumb_func_end sub_02017FE4
+
+	thumb_func_start LocationIsDiamondPearlCompatible
+LocationIsDiamondPearlCompatible: ; 0x02018000
+	cmp r0, #MAPSEC_TWINLEAF_TOWN
+	blo _02018008
+	cmp r0, #MAPSEC_BATTLE_PARK
+	bls _02018022
+_02018008:
+	mov r1, #METLOC_DAY_CARE_COUPLE>>4
+	lsl r1, r1, #4
+	cmp r0, r1
+	blo _02018016
+	add r1, #METLOC_RILEY-METLOC_DAY_CARE_COUPLE
+	cmp r0, r1
+	bls _02018022
+_02018016:
+	ldr r1, _0201802C ; =METLOC_LOVELY_PLACE
+	cmp r0, r1
+	blo _02018026
+	add r1, #METLOC_CONCERT_EVENT-METLOC_LOVELY_PLACE
+	cmp r0, r1
+	bhi _02018026
+_02018022:
+	mov r0, #1
+	bx lr
+_02018026:
+	mov r0, #0
+	bx lr
+	nop
+_0201802C: .word METLOC_LOVELY_PLACE
+	thumb_func_end LocationIsDiamondPearlCompatible

@@ -326,7 +326,7 @@ _02037EC4: .word sub_02033A0C
 sub_02037EC8: ; 0x02037EC8
 	push {r4}
 	sub sp, #0xc
-	ldr r4, _02037F10 ; =0x020F6A90
+	ldr r4, _02037F10 ; =_020F6A90
 	add r3, sp, #0
 	ldmia r4!, {r0, r1}
 	add r2, r3, #0
@@ -365,7 +365,7 @@ _02037F08:
 	pop {r4}
 	bx lr
 	.balign 4, 0
-_02037F10: .word 0x020F6A90
+_02037F10: .word _020F6A90
 _02037F14: .word _021D4150
 	thumb_func_end sub_02037EC8
 

@@ -30,7 +30,6 @@ COMPSTATIC   := $(TOOLSDIR)/bin/compstatic.exe
 export LM_LICENSE_FILE := $(TOOLSDIR)/mwccarm/license.dat
 
 # Native tools
-SCANINC      := $(TOOLSDIR)/scaninc/scaninc$(EXE)
 JSONPROC     := $(TOOLSDIR)/jsonproc/jsonproc$(EXE)
 GFX          := $(TOOLSDIR)/nitrogfx/nitrogfx$(EXE)
 FIXROM       := $(TOOLSDIR)/fixrom/fixrom$(EXE)
@@ -38,12 +37,11 @@ KNARC        := $(TOOLSDIR)/knarc/knarc$(EXE)
 O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
 MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
 ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
-ENCDATA_GS   := $(TOOLSDIR)/encdata-gs/encdata-gs$(EXE)
+CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
 
 NTRMERGE     := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
 
 NATIVE_TOOLS := \
-	$(SCANINC) \
 	$(JSONPROC) \
 	$(GFX) \
 	$(FIXROM) \
@@ -51,7 +49,7 @@ NATIVE_TOOLS := \
 	$(O2NARC) \
 	$(MSGENC) \
 	$(ASPATCH) \
-	$(ENCDATA_GS)
+	$(CSV2BIN)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 
@@ -116,6 +114,7 @@ DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS))
 .DELETE_ON_ERROR:
 .PHONY: all tidy clean tools clean-tools $(TOOLDIRS)
 .PRECIOUS: $(SBIN)
+.NOTPARALLEL:
 
 .PHONY: $(MWAS)
 $(MWAS):
@@ -124,16 +123,42 @@ $(MWAS):
 all: tools
 
 ifeq ($(NODEP),)
-$(BUILD_DIR)/%.o: dep = $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $(filter $*.c $*.s,$(ALL_SRCS)))
+ifneq ($(WINPATH),)
+PROJECT_ROOT_NT := $(shell $(WINPATH) -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
+define fixdep
+$(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(PROJECT_ROOT_NT)#$(PROJECT_ROOT)#g' $(1)
+touch -r $(1:%.d=%.o) $(1)
+endef
 else
-$(BUILD_DIR)/%.o: dep :=
+define fixdep
+$(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g' $(1)
+touch -r $(1:%.d=%.o) $(1)
+endef
 endif
+DEPFLAGS := -gccdep -MD
+DEPFILES := $(ALL_OBJS:%.o=%.d)
+$(DEPFILES):
 
-$(BUILD_DIR)/%.o: %.c $$(dep)
+$(BUILD_DIR)/lib/NitroSDK/%.o: MWCCVER := 2.0/sp2p3
+
+$(BUILD_DIR)/%.o: %.c
+$(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
+	$(WINE) $(MWCC) $(MWCFLAGS) $(DEPFLAGS) -c -o $@ $<
+	@$(call fixdep,$(BUILD_DIR)/$*.d)
+
+$(BUILD_DIR)/%.o: %.s
+$(BUILD_DIR)/%.o: %.s $(BUILD_DIR)/%.d
+	$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $<
+	@$(call fixdep,$(BUILD_DIR)/$*.d)
+
+include $(wildcard $(DEPFILES))
+else
+$(BUILD_DIR)/%.o: %.c
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $@ $<
 
-$(BUILD_DIR)/%.o: %.s $$(dep)
+$(BUILD_DIR)/%.o: %.s
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $@ $<
+endif
 
 $(NATIVE_TOOLS): tools
 

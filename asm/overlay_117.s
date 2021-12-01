@@ -129,7 +129,7 @@ _0225F100:
 	ldr r1, [r4, r0]
 	add r0, r0, #4
 	lsl r2, r1, #5
-	ldr r1, _0225F2BC ; =0x0225FB0C
+	ldr r1, _0225F2BC ; =ov117_0225FB0C
 	ldr r1, [r1, r2]
 	str r1, [r4, r0]
 	b _0225F330
@@ -156,9 +156,9 @@ _0225F136:
 	mul r1, r0
 	lsl r3, r0, #5
 	add r0, r2, r1
-	ldr r1, _0225F2C0 ; =0x0225FAF4
-	ldr r2, _0225F2C4 ; =0x0225FAF8
-	ldr r5, _0225F2C8 ; =0x0225FAFC
+	ldr r1, _0225F2C0 ; =ov117_0225FAF4
+	ldr r2, _0225F2C4 ; =ov117_0225FAF8
+	ldr r5, _0225F2C8 ; =ov117_0225FAFC
 	ldr r1, [r1, r3]
 	ldr r2, [r2, r3]
 	ldr r3, [r5, r3]
@@ -175,9 +175,9 @@ _0225F136:
 	mul r1, r0
 	lsl r3, r0, #5
 	add r0, r2, r1
-	ldr r1, _0225F2CC ; =0x0225FB00
-	ldr r2, _0225F2D0 ; =0x0225FB04
-	ldr r5, _0225F2D4 ; =0x0225FB08
+	ldr r1, _0225F2CC ; =ov117_0225FB00
+	ldr r2, _0225F2D0 ; =ov117_0225FB04
+	ldr r5, _0225F2D4 ; =ov117_0225FB08
 	ldr r1, [r1, r3]
 	ldr r2, [r2, r3]
 	ldr r3, [r5, r3]
@@ -205,7 +205,7 @@ _0225F136:
 	mov r0, #0x14
 	mul r0, r2
 	lsl r3, r2, #5
-	ldr r2, _0225F2DC ; =0x0225FB10
+	ldr r2, _0225F2DC ; =ov117_0225FB10
 	add r0, r1, r0
 	ldr r2, [r2, r3]
 	mov r1, #0
@@ -224,9 +224,9 @@ _0225F136:
 	mov r0, #0xf2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	ldr r1, _0225F2C0 ; =0x0225FAF4
+	ldr r1, _0225F2C0 ; =ov117_0225FAF4
 	lsl r3, r0, #5
-	ldr r2, _0225F2CC ; =0x0225FB00
+	ldr r2, _0225F2CC ; =ov117_0225FB00
 	ldr r1, [r1, r3]
 	ldr r2, [r2, r3]
 	add r0, sp, #0x40
@@ -282,7 +282,7 @@ _0225F136:
 	b _0225F330
 _0225F256:
 	lsl r2, r0, #5
-	ldr r0, _0225F2BC ; =0x0225FB0C
+	ldr r0, _0225F2BC ; =ov117_0225FB0C
 	ldr r2, [r0, r2]
 	add r0, r1, #4
 	str r2, [r4, r0]
@@ -332,15 +332,15 @@ _0225F2A4:
 	b _0225F330
 	.balign 4, 0
 _0225F2B8: .word 0x000927C0
-_0225F2BC: .word 0x0225FB0C
-_0225F2C0: .word 0x0225FAF4
-_0225F2C4: .word 0x0225FAF8
-_0225F2C8: .word 0x0225FAFC
-_0225F2CC: .word 0x0225FB00
-_0225F2D0: .word 0x0225FB04
-_0225F2D4: .word 0x0225FB08
+_0225F2BC: .word ov117_0225FB0C
+_0225F2C0: .word ov117_0225FAF4
+_0225F2C4: .word ov117_0225FAF8
+_0225F2C8: .word ov117_0225FAFC
+_0225F2CC: .word ov117_0225FB00
+_0225F2D0: .word ov117_0225FB04
+_0225F2D4: .word ov117_0225FB08
 _0225F2D8: .word 0xFFFFF99A
-_0225F2DC: .word 0x0225FB10
+_0225F2DC: .word ov117_0225FB10
 _0225F2E0:
 	mov r0, #1
 	mov r1, #0
@@ -591,41 +591,41 @@ _0225F4E0: .word _0225FACC
 	thumb_func_start ov117_0225F4E4
 ov117_0225F4E4: ; 0x0225F4E4
 	ldr r3, _0225F4EC ; =ov117_0225F524
-	ldr r2, _0225F4F0 ; =0x0225FAD4
+	ldr r2, _0225F4F0 ; =ov117_0225FAD4
 	bx r3
 	nop
 _0225F4EC: .word ov117_0225F524
-_0225F4F0: .word 0x0225FAD4
+_0225F4F0: .word ov117_0225FAD4
 	thumb_func_end ov117_0225F4E4
 
 	thumb_func_start ov117_0225F4F4
 ov117_0225F4F4: ; 0x0225F4F4
 	ldr r3, _0225F4FC ; =ov117_0225F524
-	ldr r2, _0225F500 ; =0x0225FADC
+	ldr r2, _0225F500 ; =ov117_0225FADC
 	bx r3
 	nop
 _0225F4FC: .word ov117_0225F524
-_0225F500: .word 0x0225FADC
+_0225F500: .word ov117_0225FADC
 	thumb_func_end ov117_0225F4F4
 
 	thumb_func_start ov117_0225F504
 ov117_0225F504: ; 0x0225F504
 	ldr r3, _0225F50C ; =ov117_0225F524
-	ldr r2, _0225F510 ; =0x0225FAE4
+	ldr r2, _0225F510 ; =ov117_0225FAE4
 	bx r3
 	nop
 _0225F50C: .word ov117_0225F524
-_0225F510: .word 0x0225FAE4
+_0225F510: .word ov117_0225FAE4
 	thumb_func_end ov117_0225F504
 
 	thumb_func_start ov117_0225F514
 ov117_0225F514: ; 0x0225F514
 	ldr r3, _0225F51C ; =ov117_0225F524
-	ldr r2, _0225F520 ; =0x0225FAEC
+	ldr r2, _0225F520 ; =ov117_0225FAEC
 	bx r3
 	nop
 _0225F51C: .word ov117_0225F524
-_0225F520: .word 0x0225FAEC
+_0225F520: .word ov117_0225FAEC
 	thumb_func_end ov117_0225F514
 
 	thumb_func_start ov117_0225F524
@@ -1311,10 +1311,44 @@ _0225FAC8: .word 0x00007FFF
 
 _0225FACC:
 	.byte 0xDE, 0xDF, 0xE0, 0xE1
-	.byte 0xE8, 0x01, 0x00, 0x00, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0x01, 0x00, 0x00, 0xE6, 0xE7, 0xE8, 0xE9
-	.byte 0xE5, 0x01, 0x00, 0x00, 0xEA, 0xEB, 0xEC, 0xED, 0xDF, 0x01, 0x00, 0x00, 0xEE, 0xEF, 0xF0, 0xF1
-	.byte 0xBC, 0x02, 0x00, 0x00, 0x00, 0x40, 0x10, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x20, 0xFE, 0xFF
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x06, 0x00, 0x00, 0x40, 0x01, 0x00, 0x04, 0x00, 0x00, 0x00
+	.byte 0xE8, 0x01, 0x00, 0x00
+
+ov117_0225FAD4: ; 0x0225FAD4
+	.byte 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0x01, 0x00, 0x00
+
+ov117_0225FADC: ; 0x0225FADC
+	.byte 0xE6, 0xE7, 0xE8, 0xE9
+	.byte 0xE5, 0x01, 0x00, 0x00
+
+ov117_0225FAE4: ; 0x0225FAE4
+	.byte 0xEA, 0xEB, 0xEC, 0xED, 0xDF, 0x01, 0x00, 0x00
+
+ov117_0225FAEC: ; 0x0225FAEC
+	.byte 0xEE, 0xEF, 0xF0, 0xF1
+	.byte 0xBC, 0x02, 0x00, 0x00
+
+ov117_0225FAF4: ; 0x0225FAF4
+	.byte 0x00, 0x40, 0x10, 0x00
+
+ov117_0225FAF8: ; 0x0225FAF8
+	.byte 0x00, 0x00, 0x08, 0x00
+
+ov117_0225FAFC: ; 0x0225FAFC
+	.byte 0x00, 0x20, 0xFE, 0xFF
+
+ov117_0225FB00: ; 0x0225FB00
+	.byte 0x00, 0x00, 0x00, 0x00
+
+ov117_0225FB04: ; 0x0225FB04
+	.byte 0x00, 0x40, 0x06, 0x00
+
+ov117_0225FB08: ; 0x0225FB08
+	.byte 0x00, 0x40, 0x01, 0x00
+
+ov117_0225FB0C: ; 0x0225FB0C
+	.byte 0x04, 0x00, 0x00, 0x00
+
+ov117_0225FB10: ; 0x0225FB10
 	.byte 0xFE, 0xFF, 0x01, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x08, 0x00, 0x00, 0xE0, 0x01, 0x00
 	.byte 0x00, 0x00, 0x0A, 0x00, 0x00, 0x40, 0x06, 0x00, 0x00, 0xC0, 0xFE, 0xFF, 0x03, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0xE0, 0x01, 0x00

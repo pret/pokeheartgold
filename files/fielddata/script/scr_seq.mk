@@ -10,14 +10,21 @@ SCRIPT_BINS := $(SCRIPT_SRCS:%.s=%.bin)
 .INTERMEDIATE: $(SCRIPT_OBJS)
 
 ifeq ($(NODEP),)
-$(SCRIPT_DIR)/%.bin: dep = $(shell $(SCANINC) -I . -I ./include -I $(WORK_DIR)/files -I $(WORK_DIR)/lib/include $*.s)
-else
-$(SCRIPT_DIR)/%.bin: dep :=
-endif
+$(SCRIPT_DEPS) := $(SCRIPT_BINS:%.bin=%.d)
+$(SCRIPT_DEPS):
 
-$(SCRIPT_BINS): %.bin: %.s $$(dep)
+$(SCRIPT_BINS): %.bin: %.s
+$(SCRIPT_BINS): %.bin: %.s %.d
+	$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $<
+	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
+	@$(call fixdep,$*.d)
+
+include $(wildcard $(SCRIPT_DEPS))
+else
+$(SCRIPT_BINS): %.bin: %.s
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $*.o $<
 	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
+endif
 
 $(SCRIPT_NARC): $(SCRIPT_BINS)
 

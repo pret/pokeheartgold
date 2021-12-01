@@ -41,16 +41,16 @@ sub_0202A8A8: ; 0x0202A8A8
 _0202A8B0: .word GF_RTC_CopyDateTime
 	thumb_func_end sub_0202A8A8
 
-	thumb_func_start sub_0202A8B4
-sub_0202A8B4: ; 0x0202A8B4
+	thumb_func_start Sav2_Misc_sizeof
+Sav2_Misc_sizeof: ; 0x0202A8B4
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0202A8B4
+	thumb_func_end Sav2_Misc_sizeof
 
-	thumb_func_start sub_0202A8BC
-sub_0202A8BC: ; 0x0202A8BC
+	thumb_func_start Sav2_Misc_init
+Sav2_Misc_init: ; 0x0202A8BC
 	push {r4, lr}
 	add r4, r0, #0
 	mov r2, #0x2e
@@ -117,7 +117,7 @@ _0202A93A:
 _0202A948: .word 0x0000FFFF
 _0202A94C: .word 0x000002A2
 _0202A950: .word 0x0000011F
-	thumb_func_end sub_0202A8BC
+	thumb_func_end Sav2_Misc_init
 
 	thumb_func_start Sav2_Misc_get
 Sav2_Misc_get: ; 0x0202A954
@@ -179,13 +179,13 @@ sub_0202A998: ; 0x0202A998
 	pop {r3, pc}
 	thumb_func_end sub_0202A998
 
-	thumb_func_start Sav2_Misc_RivalName_get
-Sav2_Misc_RivalName_get: ; 0x0202A9A8
+	thumb_func_start Sav2_Misc_RivalName_const_get
+Sav2_Misc_RivalName_const_get: ; 0x0202A9A8
 	mov r1, #0x27
 	lsl r1, r1, #4
 	add r0, r0, r1
 	bx lr
-	thumb_func_end Sav2_Misc_RivalName_get
+	thumb_func_end Sav2_Misc_RivalName_const_get
 
 	thumb_func_start Sav2_Misc_RivalName_set
 Sav2_Misc_RivalName_set: ; 0x0202A9B0

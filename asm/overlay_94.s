@@ -402,7 +402,7 @@ ov94_021E5C28: ; 0x021E5C28
 	bl sub_02015504
 	ldr r1, [r0, #0x14]
 	lsl r2, r1, #3
-	ldr r1, _021E5C58 ; =0x021E5CE8
+	ldr r1, _021E5C58 ; =_021E5CE8
 	ldr r2, [r1, r2]
 	ldr r1, [r4, #0x20]
 	ldr r1, [r1]
@@ -411,7 +411,7 @@ ov94_021E5C28: ; 0x021E5C28
 	str r1, [r4, #0x28]
 	ldr r0, [r0, #0x14]
 	lsl r1, r0, #3
-	ldr r0, _021E5C5C ; =0x021E5CEC
+	ldr r0, _021E5C5C ; =ov94_021E5CEC
 	ldr r1, [r0, r1]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
@@ -420,8 +420,8 @@ ov94_021E5C28: ; 0x021E5C28
 	str r0, [r4, #0x2c]
 	pop {r4, pc}
 	nop
-_021E5C58: .word 0x021E5CE8
-_021E5C5C: .word 0x021E5CEC
+_021E5C58: .word _021E5CE8
+_021E5C5C: .word ov94_021E5CEC
 	thumb_func_end ov94_021E5C28
 
 	thumb_func_start ov94_021E5C60
@@ -460,7 +460,7 @@ ov94_021E5C84: ; 0x021E5C84
 	thumb_func_start ov94_021E5CA0
 ov94_021E5CA0: ; 0x021E5CA0
 	push {r4, lr}
-	ldr r3, _021E5CC0 ; =0x02110924
+	ldr r3, _021E5CC0 ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r2, #0
 	ldr r3, [r3]
 	blx r3
@@ -474,13 +474,13 @@ _021E5CB2:
 	lsr r0, r0, #0xd
 	pop {r4, pc}
 	nop
-_021E5CC0: .word 0x02110924
+_021E5CC0: .word NNS_GfdDefaultFuncAllocTexVram
 	thumb_func_end ov94_021E5CA0
 
 	thumb_func_start ov94_021E5CC4
 ov94_021E5CC4: ; 0x021E5CC4
 	push {r4, lr}
-	ldr r3, _021E5CE4 ; =0x0211092C
+	ldr r3, _021E5CE4 ; =NNS_GfdDefaultFuncAllocPlttVram
 	mov r2, #1
 	ldr r3, [r3]
 	blx r3
@@ -494,13 +494,16 @@ _021E5CD6:
 	lsr r0, r0, #0xd
 	pop {r4, pc}
 	nop
-_021E5CE4: .word 0x0211092C
+_021E5CE4: .word NNS_GfdDefaultFuncAllocPlttVram
 	thumb_func_end ov94_021E5CC4
 
 	.rodata
 
 _021E5CE8:
-	.byte 0x8C, 0xBF, 0xFF, 0xFF, 0xE0, 0x2E, 0x00, 0x00
+	.byte 0x8C, 0xBF, 0xFF, 0xFF
+
+ov94_021E5CEC: ; 0x021E5CEC
+	.byte 0xE0, 0x2E, 0x00, 0x00
 	.byte 0x88, 0x13, 0x00, 0x00, 0xEC, 0x2C, 0x00, 0x00, 0x8C, 0xBF, 0xFF, 0xFF, 0x88, 0x13, 0x00, 0x00
 	.byte 0x88, 0x13, 0x00, 0x00, 0xAC, 0x0D, 0x00, 0x00, 0x8C, 0xBF, 0xFF, 0xFF, 0x48, 0xF4, 0xFF, 0xFF
 	.byte 0x88, 0x13, 0x00, 0x00, 0x6C, 0xEE, 0xFF, 0xFF

@@ -3578,12 +3578,12 @@ _02077390: .word 0x000005E6
 sub_02077394: ; 0x02077394
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _020773A8 ; =0x02103A1C
+	ldr r0, _020773A8 ; =_02103A1C
 	ldr r1, [r4, #0x3c]
 	ldr r2, [r4, #0x5c]
 	bl OverlayManager_new
 	str r0, [r4, #0x38]
 	pop {r4, pc}
 	nop
-_020773A8: .word 0x02103A1C
+_020773A8: .word _02103A1C
 	thumb_func_end sub_02077394

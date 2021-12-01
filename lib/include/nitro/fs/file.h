@@ -186,6 +186,7 @@ int FS_ReadFileAsync(FSFile * p_file, void * dst, s32 len);
 int FS_ReadFile(FSFile * p_file, void * dst, s32 len);
 BOOL FS_SeekFile(FSFile * p_file, s32 offset, FSSeekFileMode origin);
 BOOL FS_ChangeDir(const char * path);
+u32 FS_SetDefaultDMA(u32 dma_no);
 
 static inline u32 const FS_GetFileImageTop(volatile const FSFile * p_file) {
     return p_file->prop.file.top;

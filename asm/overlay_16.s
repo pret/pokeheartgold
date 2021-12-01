@@ -908,7 +908,7 @@ ov16_02201A4C: ; 0x02201A4C
 ov16_02201A60: ; 0x02201A60
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _02201A74 ; =0x02201B68
+	ldr r0, _02201A74 ; =ov16_02201B68
 	ldr r2, [r4]
 	add r1, r4, #0
 	bl OverlayManager_new
@@ -916,7 +916,7 @@ ov16_02201A60: ; 0x02201A60
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02201A74: .word 0x02201B68
+_02201A74: .word ov16_02201B68
 	thumb_func_end ov16_02201A60
 
 	thumb_func_start ov16_02201A78
@@ -960,7 +960,7 @@ ov16_02201AA0: ; 0x02201AA0
 	b _02201AFE
 _02201ABA:
 	ldr r1, _02201B14 ; =_02201B60
-	ldr r2, _02201B18 ; =0x02201BA0
+	ldr r2, _02201B18 ; =_02201BA0
 	str r1, [r2]
 	ldr r2, [r4]
 	bl CreateBagView
@@ -975,8 +975,8 @@ _02201ABA:
 	bl sub_0207789C
 	b _02201B02
 _02201ADC:
-	ldr r1, _02201B1C ; =0x02201B64
-	ldr r2, _02201B18 ; =0x02201BA0
+	ldr r1, _02201B1C ; =ov16_02201B64
+	ldr r2, _02201B18 ; =_02201BA0
 	str r1, [r2]
 	ldr r2, [r4]
 	bl CreateBagView
@@ -993,7 +993,7 @@ _02201ADC:
 _02201AFE:
 	bl GF_AssertFail
 _02201B02:
-	ldr r0, _02201B20 ; =0x02201B78
+	ldr r0, _02201B20 ; =ov16_02201B78
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4]
 	bl OverlayManager_new
@@ -1003,9 +1003,9 @@ _02201B02:
 	pop {r3, r4, pc}
 	.balign 4, 0
 _02201B14: .word _02201B60
-_02201B18: .word 0x02201BA0
-_02201B1C: .word 0x02201B64
-_02201B20: .word 0x02201B78
+_02201B18: .word _02201BA0
+_02201B1C: .word ov16_02201B64
+_02201B20: .word ov16_02201B78
 	thumb_func_end ov16_02201AA0
 
 	thumb_func_start ov16_02201B24
@@ -1044,8 +1044,17 @@ _02201B5C: .word 0x0000FFFF
 	.rodata
 
 _02201B60:
-	.byte 0x00, 0xFF, 0x00, 0x00, 0x04, 0xFF, 0x00, 0x00, 0x11, 0x1C, 0x20, 0x02, 0x79, 0x1C, 0x20, 0x02
-	.byte 0x05, 0x1D, 0x20, 0x02, 0xFF, 0xFF, 0xFF, 0xFF, 0x81, 0x93, 0x1F, 0x02, 0x09, 0x96, 0x1F, 0x02
+	.byte 0x00, 0xFF, 0x00, 0x00
+
+ov16_02201B64: ; 0x02201B64
+	.byte 0x04, 0xFF, 0x00, 0x00
+
+ov16_02201B68: ; 0x02201B68
+	.byte 0x11, 0x1C, 0x20, 0x02, 0x79, 0x1C, 0x20, 0x02
+	.byte 0x05, 0x1D, 0x20, 0x02, 0xFF, 0xFF, 0xFF, 0xFF
+
+ov16_02201B78: ; 0x02201B78
+	.byte 0x81, 0x93, 0x1F, 0x02, 0x09, 0x96, 0x1F, 0x02
 	.byte 0x2D, 0x98, 0x1F, 0x02, 0x0F, 0x00, 0x00, 0x00,
 
 	.data

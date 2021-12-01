@@ -6990,7 +6990,7 @@ _020B9D8C:
 	tst r0, #4
 	beq _020B9DC0
 	ldrh r0, [r5, #0x4c]
-	ldr r2, _020B9E34 ; =0x021094DC
+	ldr r2, _020B9E34 ; =_021094DC
 	mov r0, r0, asr #4
 	mov r1, r0, lsl #1
 	add r0, r1, #1
@@ -7033,7 +7033,7 @@ _020B9E20:
 	.align 2, 0
 _020B9E2C: .word _021109DC
 _020B9E30: .word _021D94D8
-_020B9E34: .word 0x021094DC
+_020B9E34: .word _021094DC
 	arm_func_end DrawCellAnimationImpl_
 
 	arm_func_start DrawNode_
@@ -7069,7 +7069,7 @@ _020B9EA0:
 	tst r0, #4
 	beq _020B9ED4
 	ldrh r0, [r5, #0x1c]
-	ldr r2, _020B9F08 ; =0x021094DC
+	ldr r2, _020B9F08 ; =_021094DC
 	mov r0, r0, asr #4
 	mov r1, r0, lsl #1
 	add r0, r1, #1
@@ -7094,7 +7094,7 @@ _020B9EF0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020B9F04: .word _021D94D8
-_020B9F08: .word 0x021094DC
+_020B9F08: .word _021094DC
 	arm_func_end DrawNode_
 
 	arm_func_start NNS_G2dInitRenderer
@@ -7535,7 +7535,7 @@ _020BA4F4:
 	tst r0, #4
 	beq _020BA528
 	ldrh r0, [r4, #0x58]
-	ldr r2, _020BA55C ; =0x021094DC
+	ldr r2, _020BA55C ; =_021094DC
 	mov r0, r0, asr #4
 	mov r1, r0, lsl #1
 	add r0, r1, #1
@@ -7560,7 +7560,7 @@ _020BA544:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020BA558: .word _021D94D8
-_020BA55C: .word 0x021094DC
+_020BA55C: .word _021094DC
 	arm_func_end NNS_G2dDrawMultiCellAnimation
 
 	arm_func_start NNS_G2dPushMtx
@@ -27563,6 +27563,7 @@ _021094B8:
 	.byte 0x04, 0x05, 0x07, 0x08, 0x03, 0x05, 0x06, 0x08
 	.byte 0x03, 0x04, 0x06, 0x07, 0x01, 0x02, 0x07, 0x08, 0x00, 0x02, 0x06, 0x08, 0x00, 0x01, 0x06, 0x07
 	.byte 0x01, 0x02, 0x04, 0x05, 0x00, 0x02, 0x03, 0x05, 0x00, 0x01, 0x03, 0x04
+	.public _021094DC
 _021094DC: ; fx16 sin/cos lookup table? there's too many of these
 	.short 0x0000, 0x1000
 	.short 0x0006, 0x1000
@@ -31666,11 +31667,13 @@ _021094DC: ; fx16 sin/cos lookup table? there's too many of these
 	.public NNS_GfdDefaultFuncAllocTexVram
 NNS_GfdDefaultFuncAllocTexVram:
 	.word AllocTexVram_
+	.public NNS_GfdDefaultFuncFreeTexVram
 NNS_GfdDefaultFuncFreeTexVram:
 	.word FreeTexVram_
 	.public NNS_GfdDefaultFuncAllocPlttVram
 NNS_GfdDefaultFuncAllocPlttVram:
 	.word AllocPlttVram_
+	.public NNS_GfdDefaultFuncFreePlttVram
 NNS_GfdDefaultFuncFreePlttVram:
 	.word FreePlttVram_
 _02110934:
@@ -31717,6 +31720,7 @@ _02110A04:
 	.word NNSi_G3dAnmCalcNsBva
 _02110A08:
 	.word NNSi_G3dAnmCalcNsBca
+	.public _02110A0C
 _02110A0C:
 	.word NNSi_G3dAnmCalcNsBta
 _02110A10:

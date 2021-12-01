@@ -10,6 +10,7 @@
 
 #include "config.h" // MUST COME BEFORE ANY OTHER GAMEFREAK HEADERS
 #include "constants/global.h"
+#include "pm_version.h"
 #include "assert.h"
 
 #define NELEMS(a) (sizeof(a) / sizeof(*(a)))

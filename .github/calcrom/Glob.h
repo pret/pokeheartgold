@@ -8,7 +8,7 @@
 using namespace std;
 
 class Glob : public vector<const char *> {
-    glob_t glob_result;
+    glob_t glob_result {};
     int glob_flags;
 public:
     // Call glob with the supplied pattern

@@ -2,6 +2,8 @@ CXX := g++
 CXXFLAGS := -g -O2 -std=c++17
 ifeq ($(DEBUG),)
 CXXFLAGS += -DNDEBUG
+else
+CXXFLAGS := $(patsubst -O2,-Og,$(CXXFLAGS))
 endif
 
 ifeq ($(OS),Windows_NT)
@@ -10,7 +12,7 @@ else
 EXE :=
 endif
 
-CXXSRCS := calcrom.cpp BuildAnalyzer.cpp ElfFile.cpp Glob.cpp
+CXXSRCS := calcrom.cpp BuildAnalyzer.cpp ElfFile.cpp Glob.cpp MwerksXmapFile.cpp
 CXXOBJS := $(CXXSRCS:%.cpp=%.o)
 
 DEPDIR := .deps

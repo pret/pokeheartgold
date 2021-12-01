@@ -461,7 +461,7 @@ ov58_02237BD4: ; 0x02237BD4
 	ldrb r1, [r5, #0x1c]
 	add r0, #0x26
 	strb r1, [r0]
-	ldr r0, _02237C48 ; =0x0210159C
+	ldr r0, _02237C48 ; =_0210159C
 	ldr r2, [r5]
 	add r1, r4, #0
 	bl OverlayManager_new
@@ -470,7 +470,7 @@ ov58_02237BD4: ; 0x02237BD4
 	mov r0, #4
 	pop {r3, r4, r5, pc}
 	nop
-_02237C48: .word 0x0210159C
+_02237C48: .word _0210159C
 	thumb_func_end ov58_02237BD4
 
 	thumb_func_start ov58_02237C4C
@@ -512,7 +512,7 @@ _02237C84:
 ov58_02237C88: ; 0x02237C88
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _02237C9C ; =0x02237D2C
+	ldr r0, _02237C9C ; =ov58_02237D2C
 	ldr r2, [r4]
 	add r1, r4, #0
 	bl OverlayManager_new
@@ -520,7 +520,7 @@ ov58_02237C88: ; 0x02237C88
 	mov r0, #6
 	pop {r4, pc}
 	.balign 4, 0
-_02237C9C: .word 0x02237D2C
+_02237C9C: .word ov58_02237D2C
 	thumb_func_end ov58_02237C88
 
 	thumb_func_start ov58_02237CA0
@@ -590,6 +590,9 @@ _02237D18: .word 0x04001000
 
 _02237D1C:
 	.byte 0x41, 0x7D, 0x23, 0x02
-	.byte 0xA9, 0x7D, 0x23, 0x02, 0x69, 0x7E, 0x23, 0x02, 0x3B, 0x00, 0x00, 0x00, 0xE1, 0xA8, 0x23, 0x02
+	.byte 0xA9, 0x7D, 0x23, 0x02, 0x69, 0x7E, 0x23, 0x02, 0x3B, 0x00, 0x00, 0x00
+
+ov58_02237D2C: ; 0x02237D2C
+	.byte 0xE1, 0xA8, 0x23, 0x02
 	.byte 0x49, 0xA9, 0x23, 0x02, 0xB9, 0xA9, 0x23, 0x02, 0x3B, 0x00, 0x00, 0x00
 	; 0x02237D3C

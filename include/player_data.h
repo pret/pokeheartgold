@@ -29,5 +29,8 @@ typedef struct PLAYERDATA {
 } PLAYERDATA;
 
 u16 *Sav2_PlayerData_GetCoinsAddr(SAVEDATA *saveData);
+u32 PlayerProfile_GetTrainerID(PLAYERDATA *playerData);
+u32 PlayerProfile_GetTrainerGender(PLAYERDATA *playerData);
+STRING *PlayerProfile_GetPlayerName_NewString(PLAYERDATA *playerData, HeapID heap_id);
 
 #endif //POKEHEARTGOLD_PLAYER_DATA_H

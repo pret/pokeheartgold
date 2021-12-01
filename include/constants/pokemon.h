@@ -96,6 +96,34 @@
 #define NATURE_CAREFUL  23
 #define NATURE_QUIRKY   24
 
+#define NATURE_NUM      25
+
+#define FLAVOR_SPICY     0
+#define FLAVOR_DRY       1
+#define FLAVOR_SWEET     2
+#define FLAVOR_BITTER    3
+#define FLAVOR_SOUR      4
+#define FLAVOR_MAX       5
+
+#define PERFORMANCE_MIN       0u
+#define PERFORMANCE_POWER     0u
+#define PERFORMANCE_SKILL     1u
+#define PERFORMANCE_SPEED     2u
+#define PERFORMANCE_JUMP      3u
+#define PERFORMANCE_STAMINA   4u
+#define PERFORMANCE_MAX       5u
+
+// for some reason the order is different in performance.narc
+#define ARCPERF_POWER         0
+#define ARCPERF_STAMINA       1
+#define ARCPERF_JUMP          2
+#define ARCPERF_SKILL         3
+#define ARCPERF_SPEED         4
+
+#define STARS_AT_BASE        0
+#define STARS_ABOVE_BASE     1
+#define STARS_BELOW_BASE     2
+
 // Pokemon Stats
 #define STAT_HP      0
 #define STAT_ATK     1
@@ -106,8 +134,9 @@
 #define STAT_ACC     6 // Only in battles.
 #define STAT_EVASION 7 // Only in battles.
 
-#define NUM_EV_STATS     NUM_STATS - 1 // excludes HP
-#define NUM_BATTLE_STATS NUM_STATS + 2 // includes Accuracy and Evasion
+#define NUM_STATS        6
+#define NUM_EV_STATS     (NUM_STATS - 1) // excludes HP
+#define NUM_BATTLE_STATS (NUM_STATS + 2) // includes Accuracy and Evasion
 
 // Shiny odds
 #define SHINY_ODDS 8 // Actual probability is SHINY_ODDS/65536
@@ -335,10 +364,21 @@ enum MonGender
 #define FRIENDSHIP_EVENT_FAINT_SMALL      6
 #define FRIENDSHIP_EVENT_HEAL_FIELD_PSN   7
 #define FRIENDSHIP_EVENT_FAINT_LARGE      8 // If opponent was >= 30 levels higher. See AdjustFriendshipOnBattleFaint
+#define FRIENDHSIP_EVENT_CONTEST_WIN      9 // Leftover from Platinum
+
+#define FRIENDSHIP_EVENT_NUM              10
+
+#define FRIENDSHIP_TIER_LOW               0
+#define FRIENDSHIP_TIER_LOW_MIN           0
+#define FRIENDSHIP_TIER_MID               1
+#define FRIENDSHIP_TIER_MID_MIN         100
+#define FRIENDSHIP_TIER_HI                2
+#define FRIENDSHIP_TIER_HI_MIN          200
+#define FRIENDSHIP_TIER_NUM               3
+#define FRIENDSHIP_MAX                  255
 
 #ifndef PM_ASM
-// TODO: Identify the rest of these
-enum BaseStat {
+typedef enum BaseStat {
     BASE_HP = 0,
     BASE_ATK,
     BASE_DEF,
@@ -372,7 +412,7 @@ enum BaseStat {
     BASE_TMHM_2,
     BASE_TMHM_3,
     BASE_TMHM_4,
-};
+} BaseStat;
 
 typedef enum {
     EGG = 0,
@@ -405,33 +445,67 @@ typedef enum {
     ARCEUS_INSECT = 6,
     ARCEUS_SPOOKY = 7,
     ARCEUS_IRON = 8,
-    ARCEUS_FLAME = 9,
-    ARCEUS_SPLASH = 10,
-    ARCEUS_MEADOW = 11,
-    ARCEUS_ZAP = 12,
-    ARCEUS_MIND = 13,
-    ARCEUS_ICICLE = 14,
-    ARCEUS_DRACO = 15,
-    ARCEUS_DREAD = 16,
+    ARCEUS_MYSTERY = 9,
+    ARCEUS_FLAME = 10,
+    ARCEUS_SPLASH = 11,
+    ARCEUS_MEADOW = 12,
+    ARCEUS_ZAP = 13,
+    ARCEUS_MIND = 14,
+    ARCEUS_ICICLE = 15,
+    ARCEUS_DRACO = 16,
+    ARCEUS_DREAD = 17,
+    ARCEUS_FORME_MAX = 18,
+
     BURMY_PLANT = 0,
     BURMY_SANDY = 1,
     BURMY_TRASH = 2,
+    BURMY_FORME_MAX = 3,
+
+    WORMADAM_PLANT = 0,
+    WORMADAM_SANDY = 1,
+    WORMADAM_TRASH = 2,
+    WORMADAM_FORME_MAX = 3,
+
     DEOXYS_NORMAL = 0,
     DEOXYS_ATTACK = 1,
     DEOXYS_DEFENSE = 2,
     DEOXYS_SPEED = 3,
+    DEOXYS_FORME_MAX = 4,
+
     GIRATINA_ALTERED = 0,
     GIRATINA_ORIGIN = 1,
+    GIRATINA_FORME_MAX = 2,
+
     ROTOM_NORMAL = 0,
     ROTOM_HEAT = 1,
     ROTOM_WASH = 2,
     ROTOM_FROST = 3,
     ROTOM_FAN = 4,
     ROTOM_MOW = 5,
+    ROTOM_FORME_MAX = 6,
+
     SHAYMIN_LAND = 0,
     SHAYMIN_SKY = 1,
+    SHAYMIN_FORME_MAX = 2,
+
     SHELLOS_WEST = 0,
     SHELLOS_EAST = 1,
+    SHELLOS_FORME_MAX = 2,
+
+    GASTRODON_WEST = 0,
+    GASTRODON_EAST = 1,
+    GASTRODON_FORME_MAX = 2,
+
+    CASTFORM_NORMAL = 0,
+    CASTFORM_SUNNY = 1,
+    CASTFORM_RAINY = 2,
+    CASTFORM_SNOWY = 3,
+    CASTFORM_FORME_MAX = 4,
+
+    CHERRIM_CLOUDY = 0,
+    CHERRIM_SUNNY = 1,
+    CHERRIM_FORME_MAX = 2,
+
     UNOWN_A = 0,
     UNOWN_B = 1,
     UNOWN_C = 2,
@@ -459,7 +533,16 @@ typedef enum {
     UNOWN_Y = 24,
     UNOWN_Z = 25,
     UNOWN_EXCLAMATION_MARK = 26,
-    UNOWN_QUESTION_MARK = 27
+    UNOWN_QUESTION_MARK = 27,
+    UNOWN_FORME_MAX = 28,
+
+    PICHU_NORMAL = 0,
+    PICHU_SPIKY_EAR = 1,
+    PICHU_FORME_MAX = 2,
+
+    EGG_STANDARD = 0,
+    EGG_MANAPHY = 1,
+    EGG_FORME_MAX = 2,
 } AlternateForms;
 
 typedef enum EvoMethod
@@ -493,15 +576,22 @@ typedef enum EvoMethod
     EVO_ROUTE217,
 } EvoMethod;
 
-enum GrowthRate
-{
-    GROWTH_MEDIUM_FAST = 0,
-    GROWTH_ERRATIC,
-    GROWTH_FLUCTUATING,
-    GROWTH_MEDIUM_SLOW,
-    GROWTH_FAST,
-    GROWTH_SLOW,
-};
+typedef enum {
+    EVOCTX_LEVELUP,
+    EVOCTX_TRADE,
+    EVOCTX_ITEM_CHECK,
+    EVOCTX_ITEM_USE,
+} EvolveContext;
+
 #endif //PM_ASM
+
+#define GROWTH_MEDIUM_FAST     0
+#define GROWTH_ERRATIC         1
+#define GROWTH_FLUCTUATING     2
+#define GROWTH_MEDIUM_SLOW     3
+#define GROWTH_FAST            4
+#define GROWTH_SLOW            5
+#define GROWTH_UNUSED_6        6
+#define GROWTH_UNUSED_7        7
 
 #endif //POKEHEARTGOLD_CONSTANTS_POKEMON_H

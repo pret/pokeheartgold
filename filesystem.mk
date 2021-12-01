@@ -397,18 +397,35 @@ endef
 NARCS := $(filter %.narc,$(NITROFS_FILES))
 NAIXS := $(NARCS:%.narc=%.naix)
 
+$(eval $(call arc_strip_name,files/poketool/personal/personal.narc,files/a/0/0/2))
+$(eval $(call arc_strip_name,files/poketool/personal/growtbl.narc,files/a/0/0/3))
+$(eval $(call arc_strip_name,files/poketool/pokegra/pokegra.narc,files/a/0/0/4))
+$(eval $(call arc_strip_name,files/poketool/pokegra/height.narc,files/a/0/0/5))
+$(eval $(call arc_strip_name,files/poketool/waza/waza_tbl.narc,files/a/0/1/1))
 $(eval $(call arc_strip_name,files/fielddata/script/scr_seq.narc,files/a/0/1/2))
 $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_data.narc,files/a/0/1/7))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_icon.narc,files/a/0/1/8))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
+$(eval $(call arc_strip_name,files/poketool/personal/wotbl.narc,files/a/0/3/3))
+$(eval $(call arc_strip_name,files/poketool/personal/evo.narc,files/a/0/3/4))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/g_enc_data.narc,files/a/0/3/7))
+$(eval $(call arc_strip_name,files/poketool/trainer/trdata.narc,files/a/0/5/5))
+$(eval $(call arc_strip_name,files/poketool/trainer/trpoke.narc,files/a/0/5/6))
+$(eval $(call arc_strip_name,files/poketool/trmsg/trtbl.narc,files/a/0/5/7))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data.narc,files/a/0/7/4))
 $(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
+$(eval $(call arc_strip_name,files/poketool/pokegra/otherpoke.narc,files/a/1/1/4))
+$(eval $(call arc_strip_name,files/poketool/pokegra/height_o.narc,files/a/1/1/7))
+$(eval $(call arc_strip_name,files/poketool/trmsg/trtblofs.narc,files/a/1/3/1))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_enc_$(shortname).narc,files/a/1/3/3))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/s_enc_data.narc,files/a/1/3/6))
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
+$(eval $(call arc_strip_name,files/poketool/personal/performance.narc,files/a/1/6/9))
+$(eval $(call arc_strip_name,files/application/custom_ball/edit/gs_cb_data.narc,files/a/1/8/5))
+$(eval $(call arc_strip_name,files/pbr/dp_height.narc,files/a/1/9/4))
+$(eval $(call arc_strip_name,files/pbr/dp_height_o.narc,files/a/1/9/5))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
 
@@ -417,11 +434,21 @@ $(DIFF_ARCS):
 
 $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
 
+CSV2BINFLAGS := -i $(WORK_DIR)/include --naix
+
+ifeq ($(NODEP),)
+%.narc: csvdep = $(addprefix $(WORK_DIR)/include/,$(filter-out bool,$(shell cut -d: -f3 $(MANIFEST) | sort -u)))
+else
+%.narc: csvdep :=
+endif
+
 include files/msgdata/msg.mk
 include files/data/sound/sound_data.mk
 include files/data/gs_areawindow.mk
 include files/fielddata/encountdata/gs_enc_data.mk
-include files/fielddata/script/scr_seq.mk
+# include files/fielddata/script/scr_seq.mk
+include files/itemtool/itemdata/item_data.mk
+include files/poketool/personal/growtbl.mk
 
 include graphics_files_rules.mk
 

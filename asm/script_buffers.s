@@ -221,7 +221,7 @@ BufferRivalsName: ; 0x0200BE6C
 	add r0, r2, #0
 	add r4, r1, #0
 	bl Sav2_Misc_const_get
-	bl Sav2_Misc_RivalName_get
+	bl Sav2_Misc_RivalName_const_get
 	add r1, r0, #0
 	ldr r0, [r5, #0xc]
 	bl CopyU16ArrayToString
@@ -1919,12 +1919,12 @@ ScrStrBufs_UpperFirstChar: ; 0x0200CB5C
 	ldr r2, [r0, #8]
 	lsl r0, r1, #3
 	add r0, r2, r0
-	ldr r3, _0200CB6C ; =StrUpperFirstChar
+	ldr r3, _0200CB6C ; =StrUpperCharN
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bx r3
 	nop
-_0200CB6C: .word StrUpperFirstChar
+_0200CB6C: .word StrUpperCharN
 	thumb_func_end ScrStrBufs_UpperFirstChar
 
 	thumb_func_start sub_0200CB70

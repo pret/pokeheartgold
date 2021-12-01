@@ -605,7 +605,7 @@ sub_02023AA0: ; 0x02023AA0
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _02023ADE
-	ldr r3, _02023B30 ; =0x02110924
+	ldr r3, _02023B30 ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r1, #0
 	ldr r3, [r3]
 	add r2, r1, #0
@@ -622,7 +622,7 @@ _02023AE2:
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	beq _02023AFE
-	ldr r3, _02023B30 ; =0x02110924
+	ldr r3, _02023B30 ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r1, #1
 	ldr r3, [r3]
 	mov r2, #0
@@ -639,7 +639,7 @@ _02023B02:
 	ldr r0, [sp]
 	cmp r0, #0
 	beq _02023B26
-	ldr r3, _02023B34 ; =0x0211092C
+	ldr r3, _02023B34 ; =NNS_GfdDefaultFuncAllocPlttVram
 	mov r1, #2
 	ldrh r2, [r5, #0x20]
 	lsl r1, r1, #0xe
@@ -660,8 +660,8 @@ _02023B2A:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_02023B30: .word 0x02110924
-_02023B34: .word 0x0211092C
+_02023B30: .word NNS_GfdDefaultFuncAllocTexVram
+_02023B34: .word NNS_GfdDefaultFuncAllocPlttVram
 	thumb_func_end sub_02023AA0
 
 	thumb_func_start sub_02023B38
@@ -703,28 +703,28 @@ sub_02023B70: ; 0x02023B70
 	add r4, r2, #0
 	cmp r0, #0
 	beq _02023B82
-	ldr r1, _02023B9C ; =0x02110928
+	ldr r1, _02023B9C ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r1, [r1]
 	blx r1
 _02023B82:
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _02023B8E
-	ldr r1, _02023B9C ; =0x02110928
+	ldr r1, _02023B9C ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r1, [r1]
 	blx r1
 _02023B8E:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02023B9A
-	ldr r1, _02023BA0 ; =0x02110930
+	ldr r1, _02023BA0 ; =NNS_GfdDefaultFuncFreePlttVram
 	ldr r1, [r1]
 	blx r1
 _02023B9A:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02023B9C: .word 0x02110928
-_02023BA0: .word 0x02110930
+_02023B9C: .word NNS_GfdDefaultFuncFreeTexVram
+_02023BA0: .word NNS_GfdDefaultFuncFreePlttVram
 	thumb_func_end sub_02023B70
 
 	thumb_func_start sub_02023BA4
@@ -2223,7 +2223,7 @@ _02024586:
 	add r6, #0x10
 	cmp r4, r6
 	beq _020245C8
-	ldr r7, _020245CC ; =0x020F6314
+	ldr r7, _020245CC ; =_020F6314
 _0202459E:
 	add r2, r4, #0
 	add r2, #0x34
@@ -2238,7 +2238,7 @@ _0202459E:
 	ldrb r1, [r1]
 	add r0, r4, #0
 	lsl r2, r1, #2
-	ldr r1, _020245D0 ; =0x020F631C
+	ldr r1, _020245D0 ; =_020F631C
 	ldr r1, [r1, r2]
 	blx r1
 	mov r0, #1
@@ -2249,8 +2249,8 @@ _0202459E:
 _020245C8:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_020245CC: .word 0x020F6314
-_020245D0: .word 0x020F631C
+_020245CC: .word _020F6314
+_020245D0: .word _020F631C
 	thumb_func_end sub_0202457C
 
 	thumb_func_start sub_020245D4
@@ -3683,7 +3683,7 @@ _02024F2A:
 	ldr r2, [r4, #0x20]
 	bl NNS_G2dScale
 	ldrh r0, [r4, #0x24]
-	ldr r2, _0202500C ; =0x021094DC
+	ldr r2, _0202500C ; =_021094DC
 	asr r0, r0, #4
 	lsl r1, r0, #1
 	lsl r0, r1, #1
@@ -3774,7 +3774,7 @@ _02025000:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_0202500C: .word 0x021094DC
+_0202500C: .word _021094DC
 	thumb_func_end sub_02024EB4
 
 	thumb_func_start sub_02025010

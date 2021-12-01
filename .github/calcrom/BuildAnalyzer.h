@@ -4,6 +4,11 @@
 #include <filesystem>
 #include <utility>
 #include <vector>
+#include <unordered_set>
+#include "ElfFile.h"
+#ifndef NDEBUG
+#include "MwerksXmapFile.h"
+#endif
 
 using namespace std;
 using namespace std::filesystem;
@@ -39,22 +44,29 @@ static enum SectionType GetSectionType(const string &shname) {
 }
 
 class BuildAnalyzer {
+    bool analyzed = false;
     path basedir;
     path subdir;
-    string version = "";
+    string version;
     path srcbase;
     string builddir;
+    Elf32File program;
+#ifndef NDEBUG
+    MwerksXmapFile xmap;
+#endif
 
     // Accumulate sizes
     //        src   asm
     // data  _____|_____
     // text       |
     unsigned sizes[SECTION_MAX][SOURCE_MAX] = {{0, 0}, {0, 0}};
-    vector<pair<unsigned, unsigned>> ranges;
     unsigned n_hardcoded = 0;
     unsigned n_relocations = 0;
 
+    void reset();
     void AnalyzeObject(path fname_s);
+    void LoadProgramElf();
+    void LoadProgramXmap();
 public:
     BuildAnalyzer(path &_basedir, path &_subdir, string &_version = default_version);
     BuildAnalyzer &operator()();

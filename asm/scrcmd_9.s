@@ -1322,7 +1322,7 @@ _0204A61C:
 	bne _0204A65C
 	ldr r1, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #1
 	beq _0204A65C
 	ldr r0, [sp, #4]
@@ -3354,7 +3354,7 @@ sub_0204B538: ; 0x0204B538
 	mov r4, #0
 _0204B58C:
 	add r0, r4, #0
-	bl sub_0207272C
+	bl GetLegendaryMon
 	add r7, r0, #0
 	ldr r0, [sp, #0x18]
 	add r1, r7, #0

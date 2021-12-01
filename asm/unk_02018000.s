@@ -3,37 +3,6 @@
 
 	.text
 
-	thumb_func_start sub_02018000
-sub_02018000: ; 0x02018000
-	cmp r0, #1
-	blo _02018008
-	cmp r0, #0x6f
-	bls _02018022
-_02018008:
-	mov r1, #0x7d
-	lsl r1, r1, #4
-	cmp r0, r1
-	blo _02018016
-	add r1, #0xa
-	cmp r0, r1
-	bls _02018022
-_02018016:
-	ldr r1, _0201802C ; =0x00000BB8
-	cmp r0, r1
-	blo _02018026
-	add r1, #0x4c
-	cmp r0, r1
-	bhi _02018026
-_02018022:
-	mov r0, #1
-	bx lr
-_02018026:
-	mov r0, #0
-	bx lr
-	nop
-_0201802C: .word 0x00000BB8
-	thumb_func_end sub_02018000
-
 	thumb_func_start sub_02018030
 sub_02018030: ; 0x02018030
 	push {r3, r4, r5, lr}
@@ -76,17 +45,17 @@ sub_02018068: ; 0x02018068
 	add r1, sp, #4
 	add r2, sp, #0
 	bl NNS_G3dTexReleaseTexKey
-	ldr r1, _020180B4 ; =0x02110928
+	ldr r1, _020180B4 ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
 	blx r1
-	ldr r1, _020180B4 ; =0x02110928
+	ldr r1, _020180B4 ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r0, [sp]
 	ldr r1, [r1]
 	blx r1
 	ldr r0, [r4, #0xc]
 	bl NNS_G3dPlttReleasePlttKey
-	ldr r1, _020180B8 ; =0x02110930
+	ldr r1, _020180B8 ; =NNS_GfdDefaultFuncFreePlttVram
 	ldr r1, [r1]
 	blx r1
 _02018098:
@@ -105,8 +74,8 @@ _020180A6:
 	add sp, #8
 	pop {r4, pc}
 	nop
-_020180B4: .word 0x02110928
-_020180B8: .word 0x02110930
+_020180B4: .word NNS_GfdDefaultFuncFreeTexVram
+_020180B8: .word NNS_GfdDefaultFuncFreePlttVram
 	thumb_func_end sub_02018068
 
 	thumb_func_start sub_020180BC
@@ -316,7 +285,7 @@ sub_020181EC: ; 0x020181EC
 	add r0, r4, #0
 	add r0, #0x70
 	ldrh r0, [r0]
-	ldr r3, _02018284 ; =0x021094DC
+	ldr r3, _02018284 ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -333,7 +302,7 @@ sub_020181EC: ; 0x020181EC
 	add r0, r4, #0
 	add r0, #0x74
 	ldrh r0, [r0]
-	ldr r3, _02018284 ; =0x021094DC
+	ldr r3, _02018284 ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -350,7 +319,7 @@ sub_020181EC: ; 0x020181EC
 	add r0, r4, #0
 	add r0, #0x72
 	ldrh r0, [r0]
-	ldr r3, _02018284 ; =0x021094DC
+	ldr r3, _02018284 ; =_021094DC
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -375,7 +344,7 @@ _02018280:
 	add sp, #0x48
 	pop {r4, pc}
 	.balign 4, 0
-_02018284: .word 0x021094DC
+_02018284: .word _021094DC
 	thumb_func_end sub_020181EC
 
 	thumb_func_start sub_02018288

@@ -356,7 +356,7 @@ _0204F0A8:
 	blo _0204F10E
 	ldr r1, [sp, #8]
 	add r0, r7, #0
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #1
 	beq _0204F10E
 	ldr r0, [sp, #0x10]
@@ -748,7 +748,7 @@ _0204F374:
 	orr r0, r1
 	strb r0, [r2]
 _0204F3E2:
-	ldr r1, _0204F3F4 ; =0x0210159C
+	ldr r1, _0204F3F4 ; =_0210159C
 	add r0, r6, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
@@ -757,7 +757,7 @@ _0204F3E2:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0204F3F4: .word 0x0210159C
+_0204F3F4: .word _0210159C
 	thumb_func_end sub_0204F320
 
 	thumb_func_start sub_0204F3F8
@@ -853,7 +853,7 @@ sub_0204F448: ; 0x0204F448
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
-	ldr r1, _0204F4D4 ; =0x02103A1C
+	ldr r1, _0204F4D4 ; =_02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
@@ -863,7 +863,7 @@ sub_0204F448: ; 0x0204F448
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0204F4D0: .word _020FC224
-_0204F4D4: .word 0x02103A1C
+_0204F4D4: .word _02103A1C
 	thumb_func_end sub_0204F448
 
 	thumb_func_start sub_0204F4D8

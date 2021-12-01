@@ -10456,7 +10456,7 @@ ScrCmd_517: ; 0x020458EC
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
 	add r1, r6, #0
-	bl sub_020748CC
+	bl PartyHasMon
 	strh r0, [r4]
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -11247,7 +11247,7 @@ _02045F50:
 	cmp r1, #1
 	bne _02045F66
 	mov r1, #0
-	bl sub_0202E2C4
+	bl Sav2_HOF_TranslateRecordIdx
 	strh r0, [r5]
 	add r0, r4, #0
 	bl FreeToHeap
@@ -12578,7 +12578,7 @@ ScrCmd_696: ; 0x020469B4
 	bl SavArray_PlayerParty_get
 	str r0, [sp]
 	add r1, r5, #0
-	bl sub_02071D3C
+	bl Party_UpdateAllGiratina_DistortionWorld
 	ldr r0, [sp]
 	bl GetPartyCount
 	add r7, r0, #0

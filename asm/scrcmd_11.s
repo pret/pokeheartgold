@@ -401,7 +401,7 @@ _0204C072:
 _0204C074:
 	ldr r1, [sp, #0x38]
 	add r0, r4, #0
-	bl sub_0207235C
+	bl SetMonPersonality
 	add r0, r4, #0
 	bl GetMonGender
 	str r0, [sp, #0x34]

@@ -328,10 +328,18 @@ uint32_t ReadNtrImage(char *path, int tilesWidth, int bitDepth, int metatileWidt
 
     int tileSize = bitDepth * 8;
 
-    int numTiles = (charHeader[0x18] + (charHeader[0x19] << 8) + (charHeader[0x1A] << 16) + (charHeader[0x1B] << 24))
-            / (64 / (8 / bitDepth));
+    if (tilesWidth == 0) {
+        tilesWidth = ReadS16(charHeader, 0xA);
+        if (tilesWidth < 0) {
+            tilesWidth = 1;
+        }
+    }
 
-    int tilesHeight = (numTiles + tilesWidth - 1) / tilesWidth;
+    int numTiles = ReadS32(charHeader, 0x18) / (64 / (8 / bitDepth));
+
+    int tilesHeight = ReadS16(charHeader, 0x8);
+    if (tilesHeight < 0)
+        tilesHeight = (numTiles + tilesWidth - 1) / tilesWidth;
 
     if (tilesWidth % metatileWidth != 0)
         FATAL_ERROR("The width in tiles (%d) isn't a multiple of the specified metatile width (%d)", tilesWidth, metatileWidth);

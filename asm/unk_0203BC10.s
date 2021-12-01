@@ -15,15 +15,21 @@ _020FA0C4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00
 	.byte 0x64, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00
-	.byte 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-_020FA0F8:
-	.byte 0xFD, 0xC8, 0x03, 0x02, 0x01, 0x00, 0x00, 0x00
-	.byte 0x45, 0xCA, 0x03, 0x02, 0x02, 0x00, 0x00, 0x00, 0x0D, 0xCF, 0x03, 0x02, 0x03, 0x00, 0x00, 0x00
-	.byte 0xA9, 0xD1, 0x03, 0x02, 0x04, 0x00, 0x00, 0x00, 0x45, 0xD2, 0x03, 0x02, 0x05, 0x00, 0x00, 0x00
-	.byte 0x19, 0xD3, 0x03, 0x02, 0x06, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xFF, 0xFF, 0x07, 0x00, 0x00, 0x00
-	.byte 0x95, 0xD3, 0x03, 0x02, 0x08, 0x00, 0x00, 0x00, 0x89, 0xD4, 0x03, 0x02, 0x0E, 0x00, 0x00, 0x00
-	.byte 0x01, 0xD5, 0x03, 0x02, 0x0E, 0x00, 0x00, 0x00, 0x01, 0xD5, 0x03, 0x02, 0x0E, 0x00, 0x00, 0x00
-	.byte 0x01, 0xD5, 0x03, 0x02, 0x0E, 0x00, 0x00, 0x00, 0xCD, 0xD2, 0x03, 0x02
+	.byte 0x03, 0x00, 0x00, 0x00
+_020FA0F4:
+	.word  0, sub_0203C8FC
+	.word  1, sub_0203CA44
+	.word  2, sub_0203CF0C
+	.word  3, sub_0203D1A8
+	.word  4, sub_0203D244
+	.word  5, sub_0203D318
+	.word  6, -2
+	.word  7, sub_0203D394
+	.word  8, sub_0203D488
+	.word 14, sub_0203D500
+	.word 14, sub_0203D500
+	.word 14, sub_0203D500
+	.word 14, sub_0203D2CC
 	.public _020FA15C
 _020FA15C:
 	.word sub_0203DEA4, sub_0203DEBC, sub_0203DED4, 0xFFFFFFFF
@@ -1214,7 +1220,7 @@ sub_0203C508: ; 0x0203C508
 	add r0, r4, r0
 	add r0, #0x3a
 	ldrb r1, [r0]
-	ldr r0, _0203C5A0 ; =_020FA0F8
+	ldr r0, _0203C5A0 ; =_020FA0F4 + 4
 	lsl r2, r1, #3
 	ldr r2, [r0, r2]
 	mov r0, #1
@@ -1237,7 +1243,7 @@ _0203C550:
 	add r0, #0x3a
 	ldrb r0, [r0]
 	lsl r1, r0, #3
-	ldr r0, _0203C5A0 ; =_020FA0F8
+	ldr r0, _0203C5A0 ; =_020FA0F4 + 4
 	ldr r6, [r0, r1]
 	add r0, r5, #0
 	mov r1, #0
@@ -1262,7 +1268,7 @@ _0203C596:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0203C59C: .word 0x000005DC
-_0203C5A0: .word _020FA0F8
+_0203C5A0: .word _020FA0F4 + 4
 	thumb_func_end sub_0203C508
 
 	thumb_func_start sub_0203C5A4
@@ -1335,7 +1341,7 @@ _0203C602:
 	add r0, r5, r0
 	add r0, #0x3a
 	ldrb r1, [r0]
-	ldr r0, _0203C698 ; =_020FA0F8
+	ldr r0, _0203C698 ; =_020FA0F4 + 4
 	lsl r2, r1, #3
 	ldr r2, [r0, r2]
 	mov r0, #1
@@ -1361,7 +1367,7 @@ _0203C644:
 	add r0, #0x3a
 	ldrb r0, [r0]
 	lsl r1, r0, #3
-	ldr r0, _0203C698 ; =_020FA0F8
+	ldr r0, _0203C698 ; =_020FA0F4 + 4
 	ldr r6, [r0, r1]
 	add r0, r4, #0
 	mov r1, #0
@@ -1390,7 +1396,7 @@ _0203C690:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0203C694: .word 0x000005DC
-_0203C698: .word _020FA0F8
+_0203C698: .word _020FA0F4 + 4
 	thumb_func_end sub_0203C5A4
 
 	thumb_func_start sub_0203C69C
@@ -2599,7 +2605,7 @@ _0203D066:
 	bl sub_02077904
 	strh r0, [r5, #0x28]
 	ldr r0, [sp, #8]
-	ldr r1, _0203D19C ; =0x0210159C
+	ldr r1, _0203D19C ; =_0210159C
 	add r2, r5, #0
 	bl ScrUnk80_AddOvyMan
 	mov r0, #0xe
@@ -2696,7 +2702,7 @@ _0203D166:
 	add r0, #0x24
 	strb r1, [r0]
 	ldr r0, [sp, #8]
-	ldr r1, _0203D19C ; =0x0210159C
+	ldr r1, _0203D19C ; =_0210159C
 	add r2, r5, #0
 	bl ScrUnk80_AddOvyMan
 	mov r0, #0xe
@@ -2718,7 +2724,7 @@ _0203D190:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0203D19C: .word 0x0210159C
+_0203D19C: .word _0210159C
 _0203D1A0: .word sub_0203CA9C
 _0203D1A4: .word sub_0203D830
 	thumb_func_end sub_0203CFC0
@@ -3291,7 +3297,7 @@ _0203D604:
 	add r0, r0, r1
 	str r0, [r5, #0x20]
 	ldr r0, [sp]
-	ldr r1, _0203D65C ; =0x0210159C
+	ldr r1, _0203D65C ; =_0210159C
 	add r2, r5, #0
 	bl ScrUnk80_AddOvyMan
 	mov r0, #0xe1
@@ -3324,7 +3330,7 @@ _0203D650:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0203D65C: .word 0x0210159C
+_0203D65C: .word _0210159C
 _0203D660: .word sub_0203CA9C
 	thumb_func_end sub_0203D580
 
@@ -3714,7 +3720,7 @@ sub_0203D940: ; 0x0203D940
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	bl sub_02090F90
-	ldr r1, _0203D9AC ; =0x0210159C
+	ldr r1, _0203D9AC ; =_0210159C
 	add r0, r7, #0
 	add r2, r4, #0
 	bl ScrUnk80_AddOvyMan
@@ -3726,7 +3732,7 @@ sub_0203D940: ; 0x0203D940
 	bl sub_0203C8F0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0203D9AC: .word 0x0210159C
+_0203D9AC: .word _0210159C
 _0203D9B0: .word sub_0203CA9C
 	thumb_func_end sub_0203D940
 

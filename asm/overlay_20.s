@@ -89,7 +89,7 @@ ScrCmd_116: ; 0x022598C0
 	thumb_func_start ov20_0225996C
 ov20_0225996C: ; 0x0225996C
 	push {r3, r4}
-	ldr r3, _0225999C ; =0x02259C74
+	ldr r3, _0225999C ; =_02259C74
 	mov r4, #1
 	mov r2, #6
 _02259974:
@@ -114,7 +114,7 @@ _0225998A:
 	pop {r3, r4}
 	bx lr
 	nop
-_0225999C: .word 0x02259C74
+_0225999C: .word _02259C74
 	thumb_func_end ov20_0225996C
 
 	thumb_func_start ov20_022599A0
@@ -141,8 +141,8 @@ ov20_022599A0: ; 0x022599A0
 	add r4, r0, #0
 	mov r1, #6
 	mul r4, r1
-	ldr r0, _02259A10 ; =0x02259C78
-	ldr r2, _02259A14 ; =0x02259C76
+	ldr r0, _02259A10 ; =ov20_02259C78
+	ldr r2, _02259A14 ; =ov20_02259C76
 	ldrh r0, [r0, r4]
 	ldrh r2, [r2, r4]
 	asr r1, r5, #0x1f
@@ -152,7 +152,7 @@ ov20_022599A0: ; 0x022599A0
 	bl _ll_udiv
 	add r2, r0, #0
 	add r0, r6, #0
-	ldr r6, _02259A18 ; =0x02259C74
+	ldr r6, _02259A18 ; =_02259C74
 	add r3, r1, #0
 	mov r5, #0
 	ldrh r4, [r6, r4]
@@ -166,9 +166,9 @@ ov20_022599A0: ; 0x022599A0
 	bl _ll_udiv
 	pop {r4, r5, r6, pc}
 	nop
-_02259A10: .word 0x02259C78
-_02259A14: .word 0x02259C76
-_02259A18: .word 0x02259C74
+_02259A10: .word ov20_02259C78
+_02259A14: .word ov20_02259C76
+_02259A18: .word _02259C74
 	thumb_func_end ov20_022599A0
 
 	thumb_func_start ov20_02259A1C
@@ -446,7 +446,13 @@ ScrCmd_392: ; 0x02259BF4
 	.rodata
 
 _02259C74:
-	.byte 0x22, 0x01, 0x01, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x01, 0x00, 0x0A, 0x00
+	.byte 0x22, 0x01
+
+ov20_02259C76: ; 0x02259C76
+	.byte 0x01, 0x00
+
+ov20_02259C78: ; 0x02259C78
+	.byte 0x00, 0x00, 0x2C, 0x01, 0x01, 0x00, 0x0A, 0x00
 	.byte 0x90, 0x01, 0x02, 0x00, 0x6E, 0x00, 0xF4, 0x01, 0x04, 0x00, 0x36, 0x01, 0x58, 0x02, 0x14, 0x00
 	.byte 0xC6, 0x02, 0xBC, 0x02, 0x32, 0x00, 0x96, 0x0A, 0x20, 0x03, 0x64, 0x00, 0x1E, 0x1E, 0x84, 0x03
 	.byte 0x96, 0x00, 0x2E, 0x45, 0xE8, 0x03, 0x96, 0x00, 0xC6, 0x7F, 0x4C, 0x04, 0x64, 0x00, 0x5E, 0xBA

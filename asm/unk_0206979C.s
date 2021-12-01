@@ -4572,7 +4572,7 @@ _0206BA4E:
 	str r5, [r4, #0x1c]
 	str r0, [r4, #0x20]
 	ldr r0, [sp]
-	ldr r1, _0206BB28 ; =0x0210159C
+	ldr r1, _0206BB28 ; =_0210159C
 	add r2, r4, #0
 	bl sub_02050624
 	mov r0, #4
@@ -4643,7 +4643,7 @@ _0206BB1C:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0206BB24: .word 0x020FF480
-_0206BB28: .word 0x0210159C
+_0206BB28: .word _0210159C
 	thumb_func_end sub_0206B984
 
 	thumb_func_start ScrCmd_232
@@ -5093,7 +5093,7 @@ sub_0206BE34: ; 0x0206BE34
 	bl GetMonData
 	add r0, r4, #0
 	bl Mon_GetBoxMon
-	bl sub_02070028
+	bl BoxMonIsHoldingMail
 	cmp r0, #0
 	beq _0206BE8A
 	ldr r0, [sp, #8]
@@ -5124,7 +5124,7 @@ _0206BE8A:
 	bl RemoveMonFromParty
 	ldr r1, _0206BED4 ; =0x000001B9
 	add r0, r6, #0
-	bl sub_020748CC
+	bl PartyHasMon
 	cmp r0, #0
 	bne _0206BED0
 	add r0, r7, #0
@@ -5307,7 +5307,7 @@ sub_0206BFC4: ; 0x0206BFC4
 	bl sub_0206BF60
 _0206C03C:
 	add r0, r5, #0
-	bl sub_02070028
+	bl BoxMonIsHoldingMail
 	cmp r0, #0
 	beq _0206C056
 	ldr r0, [sp, #4]
@@ -6075,7 +6075,7 @@ _0206C604:
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0xc]
 	lsr r2, r2, #0x18
-	bl sub_0207227C
+	bl GetTMHMCompatBySpeciesAndForme
 	cmp r0, #0
 	beq _0206C646
 	ldr r1, [r4, r6]

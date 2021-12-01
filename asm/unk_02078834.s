@@ -4,8 +4,12 @@
 	.include "global.inc"
 
 	.public _020FA484
-	.public _020FF639
-	.public _021D43B0
+	.public gNatureStatMods
+
+	.bss
+
+_021D43B0:
+	.space 0x4
 
 	.text
 
@@ -5515,7 +5519,7 @@ _0207B392:
 	ldrh r0, [r2, r1]
 	add r1, #0xd
 	ldrb r1, [r2, r1]
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #1
 	bne _0207B3B8
 	mov r0, #0
@@ -5590,7 +5594,7 @@ sub_0207B418: ; 0x0207B418
 	ldrh r0, [r2, r1]
 	add r1, #0xd
 	ldrb r1, [r2, r1]
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #1
 	bne _0207B444
 	mov r0, #0
@@ -5664,7 +5668,7 @@ sub_0207B4A0: ; 0x0207B4A0
 	ldrh r0, [r2, r1]
 	add r1, #0xd
 	ldrb r1, [r2, r1]
-	bl sub_020726F8
+	bl IsPokemonLegendaryOrMythical
 	cmp r0, #1
 	bne _0207B4CC
 	mov r0, #0
@@ -7833,7 +7837,7 @@ sub_0207C5D4: ; 0x0207C5D4
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r6, #0
-	bl sub_02071BC8
+	bl Pokemon_UpdateArceusForme
 	add r0, r6, #0
 	bl Mon_UpdateGiratinaForme
 	str r0, [r4]
@@ -7894,7 +7898,7 @@ sub_0207C658: ; 0x0207C658
 	add r2, sp, #0x1c
 	bl SetMonData
 	add r0, r5, #0
-	bl sub_02071BC8
+	bl Pokemon_UpdateArceusForme
 	add r0, r5, #0
 	bl Mon_UpdateGiratinaForme
 	ldr r1, _0207C6B4 ; =0x00000C65
@@ -13848,7 +13852,7 @@ _0207F590:
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r6, #0
-	bl sub_02071BC8
+	bl Pokemon_UpdateArceusForme
 	add r0, r6, #0
 	bl Mon_UpdateGiratinaForme
 	ldr r1, _0207F684 ; =0x00000C65
@@ -14294,7 +14298,7 @@ sub_0207F924: ; 0x0207F924
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0
-	bl sub_02071BC8
+	bl Pokemon_UpdateArceusForme
 	add r0, r5, #0
 	bl Mon_UpdateGiratinaForme
 	ldr r1, _0207F9BC ; =0x00000C65
@@ -14450,7 +14454,7 @@ sub_0207FAA8: ; 0x0207FAA8
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
 	bl GetPartyMonByIndex
-	bl sub_02072894
+	bl Pokemon_RemoveCapsule
 	ldr r0, _0207FACC ; =0x00000654
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -19116,7 +19120,7 @@ _02082110:
 	bl ItemToTMHMId
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_0207224C
+	bl GetMonTMHMCompat
 	cmp r0, #0
 	bne _02082126
 	mov r0, #0xff
@@ -38341,7 +38345,7 @@ _0208B8E8:
 	add r1, r4, #0
 	add r2, sp, #0x14
 	mov r3, #0x13
-	bl sub_02073248
+	bl CalcBoxmonPokeathlonStars
 	add r3, sp, #0xc
 	ldrb r0, [r3, #6]
 	mov r1, #0x4f
@@ -40274,7 +40278,7 @@ sub_0208C7F8: ; 0x0208C7F8
 	ldr r4, _0208C840 ; =0x000E0F00
 	lsl r0, r1, #2
 	add r1, r1, r0
-	ldr r0, _0208C844 ; =_020FF639
+	ldr r0, _0208C844 ; =gNatureStatMods
 	add r0, r0, r1
 	ldrsb r0, [r3, r0]
 	cmp r0, #0
@@ -40303,7 +40307,7 @@ _0208C81A:
 	.balign 4, 0
 _0208C83C: .word 0x00000263
 _0208C840: .word 0x000E0F00
-_0208C844: .word _020FF639
+_0208C844: .word gNatureStatMods
 _0208C848: .word 0x000E0800
 _0208C84C: .word 0x000E0700
 	thumb_func_end sub_0208C7F8
@@ -45542,7 +45546,7 @@ _0208F3B4:
 	pop {r3, r4, r5, r6, r7, pc}
 _0208F3D0:
 	add r2, r6, #0
-	bl sub_02072788
+	bl BoxmonBelongsToPlayer
 	cmp r0, #1
 	bne _0208F416
 	add r0, r4, #0
@@ -45624,7 +45628,7 @@ _0208F486:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_02072788
+	bl BoxmonBelongsToPlayer
 	cmp r0, #0
 	bne _0208F4EC
 	add r0, r4, #0
@@ -47658,6 +47662,7 @@ _02102814:
 	.word 0x65
 	.word 0x80
 	.word 0x85
+	.public _02102830
 _02102830:
 	.word sub_02087B10, sub_02087B64, sub_02087BAC, 0xFFFFFFFF
 _02102840:
@@ -48062,6 +48067,7 @@ _021039E8:
 	.byte 0x08, 0x27, 0x50, 0x70, 0x30, 0x4F, 0x10, 0x2F, 0x30, 0x4F, 0x30, 0x4F, 0x30, 0x4F, 0x50, 0x70
 	.byte 0x58, 0x77, 0x10, 0x2F, 0x58, 0x77, 0x30, 0x4F, 0x58, 0x77, 0x50, 0x70, 0x0C, 0x33, 0x74, 0x8B
 	.byte 0x4C, 0x73, 0x74, 0x8B, 0xB0, 0xBF, 0xD0, 0xFF, 0xFF, 0x00, 0x00, 0x00
+	.public _02103A1C
 _02103A1C:
 	.word sub_02088298, sub_02088424, sub_0208856C, 0xFFFFFFFF
 _02103A2C:

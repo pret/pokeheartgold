@@ -1,16 +1,14 @@
 #ifndef MSL_STDDEF_H_
 #define MSL_STDDEF_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <size_t.h>
 
-typedef unsigned long size_t;
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
 
 #define offsetof(type, field) ((size_t)&((type *)0)->field)
 
-#ifdef __cplusplus
-};
-#endif
+_MSL_END_EXTERN_C
+_MSL_END_NAMESPACE_STD
 
 #endif //MSL_STDDEF_H_

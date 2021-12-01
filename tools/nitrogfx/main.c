@@ -206,7 +206,7 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     struct GbaToPngOptions options;
     options.paletteFilePath = NULL;
     options.hasTransparency = false;
-    options.width = 1;
+    options.width = 0;
     options.metatileWidth = 1;
     options.metatileHeight = 1;
     options.palIndex = 1;
@@ -286,7 +286,7 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
         }
     }
 
-    if (options.metatileWidth > options.width)
+    if (options.width != 0 && options.metatileWidth > options.width)
         options.width = options.metatileWidth;
 
     ConvertNtrToPng(inputPath, outputPath, &options);

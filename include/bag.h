@@ -4,6 +4,7 @@
 #include "constants/items.h"
 #include "item.h"
 #include "save.h"
+#include "heap.h"
 #include "bag_view.h"
 #include "bag_cursor.h"
 
@@ -43,7 +44,7 @@ typedef struct BagData {
 u32 Sav2_Bag_sizeof(void);
 
 /*
- * BAG_DATA *Sav2_Bag_new(u32 heap_id)
+ * BAG_DATA *Sav2_Bag_new(HeapID heap_id)
  *
  * Allocates a new BAG_DATA
  *
@@ -51,7 +52,7 @@ u32 Sav2_Bag_sizeof(void);
  *
  * @returns: Pointer to the BAG_DATA instance
  */
-BAG_DATA *Sav2_Bag_new(u32 heap_id);
+BAG_DATA *Sav2_Bag_new(HeapID heap_id);
 
 /*
  * void Sav2_Bag_init(BAG_DATA *bagData)
@@ -113,10 +114,10 @@ RegisterItemResult Bag_TryRegisterItem(BAG_DATA *bag, u16 itemId);
 void Bag_UnregisterItem(BAG_DATA *bag, u16 itemId);
 
 /*
- * BOOL Bag_HasSpaceForItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id)
- * BOOL Bag_AddItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id)
- * BOOL Bag_TakeItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id)
- * BOOL Bag_HasItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id)
+ * BOOL Bag_HasSpaceForItem(BAG_DATA *bag, u16 itemId, u16 quantity, HeapID heap_id)
+ * BOOL Bag_AddItem(BAG_DATA *bag, u16 itemId, u16 quantity, HeapID heap_id)
+ * BOOL Bag_TakeItem(BAG_DATA *bag, u16 itemId, u16 quantity, HeapID heap_id)
+ * BOOL Bag_HasItem(BAG_DATA *bag, u16 itemId, u16 quantity, HeapID heap_id)
  *
  * Inventory checkers and modifiers.
  * HasSpaceForItem checks whether there is an empty slot
@@ -142,10 +143,10 @@ void Bag_UnregisterItem(BAG_DATA *bag, u16 itemId);
  * @returns: TRUE if the action succeeded or would succeed,
  *   otherwise FALSE.
  */
-BOOL Bag_HasSpaceForItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id);
-BOOL Bag_AddItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id);
-BOOL Bag_TakeItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id);
-BOOL Bag_HasItem(BAG_DATA *bag, u16 itemId, u16 quantity, u32 heap_id);
+BOOL Bag_HasSpaceForItem(BAG_DATA *bag, u16 itemId, u16 quantity, HeapID heap_id);
+BOOL Bag_AddItem(BAG_DATA *bag, u16 itemId, u16 quantity, HeapID heap_id);
+BOOL Bag_TakeItem(BAG_DATA *bag, u16 itemId, u16 quantity, HeapID heap_id);
+BOOL Bag_HasItem(BAG_DATA *bag, u16 itemId, u16 quantity, HeapID heap_id);
 
 /*
  * BOOL Pocket_TakeItem(ITEM_SLOT *slots, u32 count, u16 itemId, u16 quantity)
@@ -175,7 +176,7 @@ BOOL Pocket_TakeItem(ITEM_SLOT *slots, u32 count, u16 itemId, u16 quantity);
 BOOL Bag_PocketNotEmpty(BAG_DATA *bag, int pocket);
 
 /*
- * u16 Bag_GetQuantity(BAG_DATA *bag, u16 itemId, u32 heap_id)
+ * u16 Bag_GetQuantity(BAG_DATA *bag, u16 itemId, HeapID heap_id)
  * u16 Pocket_GetQuantity(ITEM_SLOT *slots, u32 count, u16 itemId)
  *
  * Looks up the item in its pocket or the specified ITEM_SLOT
@@ -190,11 +191,11 @@ BOOL Bag_PocketNotEmpty(BAG_DATA *bag, int pocket);
  *
  * @returns: Quantity of that item in the bag or array.
  */
-u16 Bag_GetQuantity(BAG_DATA *bag, u16 itemId, u32 heap_id);
+u16 Bag_GetQuantity(BAG_DATA *bag, u16 itemId, HeapID heap_id);
 u16 Pocket_GetQuantity(ITEM_SLOT *slots, u32 count, u16 itemId);
 
 /*
- * BAG_VIEW *CreateBagView(BAG_DATA *bag, const u8 *pockets, u32 heap_id)
+ * BAG_VIEW *CreateBagView(BAG_DATA *bag, const u8 *pockets, HeapID heap_id)
  *
  * Creates a BAG_VIEW with a specified subset of pockets.
  *
@@ -205,7 +206,7 @@ u16 Pocket_GetQuantity(ITEM_SLOT *slots, u32 count, u16 itemId);
  *
  * @returns: Pointer to newly-allocated BAG_VIEW
  */
-BAG_VIEW *CreateBagView(BAG_DATA *bag, const u8 *pockets, u32 heap_id);
+BAG_VIEW *CreateBagView(BAG_DATA *bag, const u8 *pockets, HeapID heap_id);
 
 /*
  * ITEM_SLOT *Bag_GetPocketSlotN(BAG_DATA *bag, u8 pocket, int n)
