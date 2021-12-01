@@ -8436,11 +8436,11 @@ _0205FB46:
 	lsl r0, r0, #0x16
 	lsr r0, r0, #0x1b
 	lsl r1, r0, #2
-	ldr r0, _0205FB54 ; =0x02209A38
+	ldr r0, _0205FB54 ; =ov01_02209A38
 	ldr r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-_0205FB54: .word 0x02209A38
+_0205FB54: .word ov01_02209A38
 	thumb_func_end sub_0205FB38
 
 	thumb_func_start sub_0205FB58
