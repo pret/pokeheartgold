@@ -4819,7 +4819,7 @@ ov01_021E7FA8: ; 0x021E7FA8
 	add r0, r4, #0
 	bl sub_02054E5C
 	ldr r1, [r4, #0x30]
-	bl GetMapData
+	bl GetMapModelNo
 	bl sub_02054E50
 	cmp r0, #0
 	beq _021E7FD4
@@ -31865,7 +31865,7 @@ _021F4A7E:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F4A82:
 	add r1, r6, #0
-	bl GetMapData
+	bl GetMapModelNo
 	add r4, r0, #0
 	ldr r0, _021F4AA8 ; =0x0000FFFF
 	cmp r4, r0

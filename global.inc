@@ -27042,7 +27042,7 @@
 .public sub_0203A9C8
 .public sub_0203AC88
 .public sub_0203AC90
-.public MapMatrix_GetMapData
+.public MapMatrix_GetMapModelNo
 .public MapMatrix_GetWidth
 .public MapMatrix_GetHeight
 .public MapMatrix_GetMapHeader
@@ -27050,7 +27050,7 @@
 .public MapMatrix_GetMapAltitude
 .public MapMatrix_MapData_New
 .public MapMatrix_MapData_Free
-.public GetMapData
+.public GetMapModelNo
 .public RemoveMahoganyTownAntennaTree
 .public ShouldUseAlternateLakeOfRage
 .public SetLakeOfRageWaterLevel

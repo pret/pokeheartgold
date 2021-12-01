@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_SAFARI_ZONE_H
 #define POKEHEARTGOLD_SAFARI_ZONE_H
 
+#include "save.h"
+
 #define SAFARI_ZONE_MAX_OBJECTS 30
 #define SAFARI_ZONE_COLS 3
 #define SAFARI_ZONE_ROWS 2
@@ -39,5 +41,8 @@ typedef struct SAFARIZONE {
     u8 unk5F9_6:2;
     u16 unk5FA;
 } SAFARIZONE;
+
+SAFARIZONE* sub_0202F57C(SAVEDATA* savedata);
+SAFARIZONE_UNKSUB1* sub_0202F630(SAFARIZONE* safari_zone, s32);
 
 #endif

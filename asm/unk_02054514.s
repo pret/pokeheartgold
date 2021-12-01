@@ -80,7 +80,7 @@ _0205458C:
 	lsr r4, r0, #0x10
 	ldr r1, [sp, #4]
 	add r0, r4, #0
-	bl MapMatrix_GetMapData
+	bl MapMatrix_GetMapModelNo
 	add r1, sp, #0x18
 	add r1, #2
 	add r2, sp, #0x18

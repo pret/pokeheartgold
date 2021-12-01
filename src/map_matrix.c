@@ -2,6 +2,7 @@
 #include "constants/maps.h"
 #include "fielddata/mapmatrix/map_matrix.naix"
 #include "filesystem.h"
+#include "gf_rtc.h"
 #include "map_header.h"
 #include "map_matrix.h"
 #include "safari_zone.h"
@@ -13,9 +14,6 @@ extern void* SavArray_Flags_get(SAVEDATA* savedata);
 extern void sub_02066C1C(struct ScriptState* state, u32);
 extern void sub_02066C4C(struct ScriptState* state, u32);
 extern BOOL CheckFlagInArray(struct ScriptState* state, u16 flag_id);
-extern void GF_RTC_CopyDate(RTCDate* date);
-extern SAFARIZONE* sub_0202F57C(SAVEDATA* savedata);
-extern SAFARIZONE_UNKSUB1* sub_0202F630(SAFARIZONE* safari_zone, s32);
 
 static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA* map_matrix_data, u16 matrix_id, u32 map_no) {
     map_matrix_data->width = 0;
@@ -26,7 +24,7 @@ static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA* map_matrix_data, u16 mat
     for (i = 0; i < MAP_MATRIX_MAX_SIZE; i++) {
         map_matrix_data->headers[i] = 0;
         map_matrix_data->altitudes[i] = 0;
-        map_matrix_data->maps.data[i] = 0;
+        map_matrix_data->maps.models[i] = 0;
     }
 
     for (i = 0; i < MAP_MATRIX_MAX_NAME_LENGTH; i++) {
@@ -60,7 +58,7 @@ static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA* map_matrix_data, u16 mat
         cursor += map_matrix_data->width * map_matrix_data->height * sizeof(u8);
     }
 
-    MI_CpuCopy8(cursor, map_matrix_data->maps.data, map_matrix_data->width * map_matrix_data->height * sizeof(u16));
+    MI_CpuCopy8(cursor, map_matrix_data->maps.models, map_matrix_data->width * map_matrix_data->height * sizeof(u16));
     FreeToHeap(buffer);
 }
 
@@ -87,9 +85,9 @@ void MapMatrix_Free(MAPMATRIX* map_matrix) {
     FreeToHeap(map_matrix);
 }
 
-u16 MapMatrix_GetMapData(s32 map_no, MAPMATRIX* map_matrix) {
+u16 MapMatrix_GetMapModelNo(s32 map_no, MAPMATRIX* map_matrix) {
     GF_ASSERT(map_no < map_matrix->width * map_matrix->height);
-    return map_matrix->data.maps.data[map_no];
+    return map_matrix->data.maps.models[map_no];
 }
 
 u8 MapMatrix_GetWidth(MAPMATRIX* map_matrix) {
@@ -124,7 +122,7 @@ u8 MapMatrix_GetMapAltitude(MAPMATRIX* map_matrix, u8 matrix_id, u16 x, u16 y, i
     return map_matrix->data.altitudes[y * matrix_width + x];
 }
 
-MAPDATA* MapMatrix_MapData_New(u32 heap_id) {
+MAPDATA* MapMatrix_MapData_New(HeapID heap_id) {
     MAPDATA* map_data = AllocFromHeap(heap_id, sizeof(MAPDATA));
 
     void* buffer = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_fielddata_mapmatrix_map_matrix, 0, heap_id);
@@ -145,20 +143,24 @@ void MapMatrix_MapData_Free(MAPDATA* map_data) {
     FreeToHeap(map_data);
 }
 
-u16 GetMapData(u32 map_no, MAPMATRIX* map_matrix) {
+u16 GetMapModelNo(u32 map_no, MAPMATRIX* map_matrix) {
     GF_ASSERT(map_matrix != NULL);
-    return MapMatrix_GetMapData(map_no, map_matrix);
+    return MapMatrix_GetMapModelNo(map_no, map_matrix);
 }
 
 void RemoveMahoganyTownAntennaTree(MAPMATRIX* map_matrix) {
-    u16* maps = map_matrix->data.maps.data;
+    u16* models = map_matrix->data.maps.models;
     u8 width = map_matrix->width;
 
     if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_00000000_bin) {
         return;
     }
 
-    maps[width * 5 + 16] = 86;
+    models[width * 5 + 16] = 86;
+}
+
+static inline BOOL MapAndDayCheck(u32 map_no, RTCDate* date) {
+    return (map_no == MAP_T29 || map_no == MAP_R43) && date->week == RTC_WEEK_WEDNESDAY;
 }
 
 BOOL ShouldUseAlternateLakeOfRage(SAVEDATA* savedata, u32 map_no) {
@@ -173,21 +175,17 @@ BOOL ShouldUseAlternateLakeOfRage(SAVEDATA* savedata, u32 map_no) {
         return FALSE;
     }
 
-    // FIXME(tgsm): this smells like a fakematch, but honestly I'm not sure.
-    if ((map_no == MAP_T29 || map_no == MAP_R43) && date.week == RTC_WEEK_WEDNESDAY) {
-        goto disable_rain;
-    } else {
+    if (!MapAndDayCheck(map_no, &date)) {
         sub_02066C4C(state, 1);
         return FALSE;
+    } else {
+        sub_02066C1C(state, 1);
+        return TRUE;
     }
-
-disable_rain:
-    sub_02066C1C(state, 1);
-    return TRUE;
 }
 
 void SetLakeOfRageWaterLevel(MAPMATRIX* map_matrix, BOOL lower_water_level) {
-    u16* maps = map_matrix->data.maps.data;
+    u16* models = map_matrix->data.maps.models;
     u8 width = map_matrix->width;
 
     if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_00000000_bin) {
@@ -195,24 +193,24 @@ void SetLakeOfRageWaterLevel(MAPMATRIX* map_matrix, BOOL lower_water_level) {
     }
 
     if (lower_water_level) {
-        maps[width * 1 + 15] = 95;
-        maps[width * 1 + 16] = 96;
-        maps[width * 1 + 17] = 97;
-        maps[width * 2 + 15] = 98;
-        maps[width * 2 + 16] = 99;
-        maps[width * 2 + 17] = 100;
+        models[width * 1 + 15] = 95;
+        models[width * 1 + 16] = 96;
+        models[width * 1 + 17] = 97;
+        models[width * 2 + 15] = 98;
+        models[width * 2 + 16] = 99;
+        models[width * 2 + 17] = 100;
     } else {
-        maps[width * 1 + 15] = 89;
-        maps[width * 1 + 16] = 90;
-        maps[width * 1 + 17] = 91;
-        maps[width * 2 + 15] = 92;
-        maps[width * 2 + 16] = 93;
-        maps[width * 2 + 17] = 94;
+        models[width * 1 + 15] = 89;
+        models[width * 1 + 16] = 90;
+        models[width * 1 + 17] = 91;
+        models[width * 2 + 15] = 92;
+        models[width * 2 + 16] = 93;
+        models[width * 2 + 17] = 94;
     }
 }
 
 void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SAVEDATA* save) {
-    u16* maps = map_matrix->data.maps.data;
+    u16* models = map_matrix->data.maps.models;
     s32 width = map_matrix->width;
 
     if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_00000212_bin) { // Safari Zone
@@ -225,7 +223,7 @@ void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SAVEDATA* save) {
     for (s32 y = 0; y < SAFARI_ZONE_ROWS; y++) {
         for (s32 x = 0; x < SAFARI_ZONE_COLS; x++) {
             u8 area_no = sz_sub->areas[(y * SAFARI_ZONE_COLS) + x].area_no;
-            maps[width * (y + 1) + x + 1] = 652 + area_no;
+            models[width * (y + 1) + x + 1] = 652 + area_no;
         }
     }
 }
