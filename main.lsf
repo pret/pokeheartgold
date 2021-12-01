@@ -229,7 +229,8 @@ Static main
 
 	### Vendor libraries ###
 	Object middleware.o
-	Object sdk.o
+	Object jn_spl.o
+	Object wvr.o
 	Object dwcbm.o
 	Object dwcaccount.o
 	Object wifi.o
