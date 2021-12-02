@@ -410,6 +410,7 @@ $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
 $(eval $(call arc_strip_name,files/poketool/personal/wotbl.narc,files/a/0/3/3))
 $(eval $(call arc_strip_name,files/poketool/personal/evo.narc,files/a/0/3/4))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/g_enc_data.narc,files/a/0/3/7))
+$(eval $(call arc_strip_name,files/fielddata/mapmatrix/map_matrix.narc,files/a/0/4/1))
 $(eval $(call arc_strip_name,files/poketool/trainer/trdata.narc,files/a/0/5/5))
 $(eval $(call arc_strip_name,files/poketool/trainer/trpoke.narc,files/a/0/5/6))
 $(eval $(call arc_strip_name,files/poketool/trmsg/trtbl.narc,files/a/0/5/7))
@@ -449,6 +450,7 @@ include files/fielddata/encountdata/gs_enc_data.mk
 # include files/fielddata/script/scr_seq.mk
 include files/itemtool/itemdata/item_data.mk
 include files/poketool/personal/growtbl.mk
+include files/fielddata/mapmatrix/map_matrix.mk
 
 include graphics_files_rules.mk
 

@@ -1,0 +1,3 @@
+FIELDDATA_MAPMATRIX_MAP_MATRIX_DIR := files/fielddata/mapmatrix/map_matrix
+
+FS_CLEAN_TARGETS += $(FIELDDATA_MAPMATRIX_MAP_MATRIX_DIR).narc

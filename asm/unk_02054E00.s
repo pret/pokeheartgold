@@ -52,10 +52,10 @@ _02054E6C:
 	pop {r3, r4, r5, r6, r7, pc}
 _02054E74:
 	ldr r0, [r6, #0x30]
-	bl sub_0203B004
+	bl MapMatrix_GetWidth
 	add r7, r0, #0
 	ldr r0, [r6, #0x30]
-	bl sub_0203B014
+	bl MapMatrix_GetHeight
 	asr r1, r5, #4
 	lsr r1, r1, #0x1b
 	add r1, r5, r1
