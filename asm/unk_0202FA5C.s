@@ -3,6 +3,7 @@
 
 	.bss
 
+	.public _021D2AF8
 _021D2AF8:
 	.space 0x4
 
