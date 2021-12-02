@@ -137,7 +137,7 @@ ov101_021E7834: ; 0x021E7834
 	add r4, r0, #0
 	bl ov101_021E7B54
 	ldr r0, [r4, #0x38]
-	bl sub_0203B0C8
+	bl MapMatrix_MapData_Free
 	ldr r2, [r4, #0x10]
 	ldr r0, [r2, #0x1c]
 	cmp r0, #6
@@ -344,7 +344,7 @@ _021E799A:
 	orr r0, r3
 	strb r0, [r5, r2]
 	ldr r0, [r5]
-	bl sub_0203B094
+	bl MapMatrix_MapData_New
 	str r0, [r5, #0x38]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x24]
@@ -12614,7 +12614,7 @@ ov101_Radio_OvyExit: ; 0x021ED924
 	add r4, r0, #0
 	bl ov101_021EDAF8
 	ldr r0, [r4, #0x38]
-	bl sub_0203B0C8
+	bl MapMatrix_MapData_Free
 	ldr r2, [r4, #0x10]
 	ldr r0, [r2, #0x1c]
 	cmp r0, #6
@@ -12691,7 +12691,7 @@ ov101_021ED980: ; 0x021ED980
 	orr r0, r3
 	strb r0, [r4, r2]
 	ldr r0, [r4]
-	bl sub_0203B094
+	bl MapMatrix_MapData_New
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]

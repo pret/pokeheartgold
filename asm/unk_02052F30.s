@@ -204,10 +204,10 @@ _02053088:
 	bl sub_0202AE8C
 	ldr r0, [r4, #0xc]
 	add r1, r7, #0
-	bl sub_0203B114
+	bl ShouldUseAlternateLakeOfRage
 	add r1, r0, #0
 	ldr r0, [r4, #0x30]
-	bl sub_0203B16C
+	bl SetLakeOfRageWaterLevel
 _020530A6:
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
@@ -446,17 +446,17 @@ _02053296:
 	cmp r0, #0
 	beq _020532B8
 	ldr r0, [r4, #0x30]
-	bl sub_0203B0F4
+	bl RemoveMahoganyTownAntennaTree
 _020532B8:
 	add r0, r5, #0
 	mov r1, #1
 	bl sub_02066C74
 	add r1, r0, #0
 	ldr r0, [r4, #0x30]
-	bl sub_0203B16C
+	bl SetLakeOfRageWaterLevel
 	ldr r0, [r4, #0x30]
 	ldr r1, [r4, #0xc]
-	bl sub_0203B1FC
+	bl PlaceSafariZoneAreas
 	ldr r0, [r4, #0x70]
 	cmp r0, #6
 	blt _020532DA

@@ -4332,7 +4332,7 @@ _02092CC8:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	add r0, r6, #0
-	bl sub_0203B024
+	bl MapMatrix_GetMapHeader
 	strh r0, [r4, #0x12]
 	add r0, r6, #0
 	bl MapMatrix_Free

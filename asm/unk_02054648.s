@@ -49,7 +49,7 @@ sub_02054654: ; 0x02054654
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0x30]
 	str r2, [sp, #0xc]
-	bl sub_0203B004
+	bl MapMatrix_GetWidth
 	str r0, [sp, #0x28]
 	lsl r0, r0, #5
 	str r0, [sp, #0x14]
@@ -292,7 +292,7 @@ sub_02054824: ; 0x02054824
 	add r4, r2, #0
 	add r5, r1, #0
 	add r7, r3, #0
-	bl sub_0203B004
+	bl MapMatrix_GetWidth
 	asr r2, r4, #4
 	asr r1, r5, #4
 	lsr r2, r2, #0x1b
@@ -715,7 +715,7 @@ _02054AF4:
 	add r4, r0, #0
 	ldr r0, [sp]
 	ldr r0, [r0, #0x30]
-	bl sub_0203B004
+	bl MapMatrix_GetWidth
 	add r1, r0, #0
 	add r0, r4, #0
 	add r2, sp, #0x10
@@ -789,7 +789,7 @@ _02054B84:
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r0, [r0, #0x30]
-	bl sub_0203B004
+	bl MapMatrix_GetWidth
 	add r1, r0, #0
 	add r0, r6, #0
 	add r2, sp, #0x10
@@ -1029,7 +1029,7 @@ _02054D3A:
 	add r5, r0, #0
 	ldr r0, [sp]
 	ldr r0, [r0, #0x30]
-	bl sub_0203B004
+	bl MapMatrix_GetWidth
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, sp, #0x14

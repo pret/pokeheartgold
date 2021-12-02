@@ -1776,7 +1776,7 @@ sub_0203C920: ; 0x0203C920
 	ldr r0, [r4, #0x30]
 	asr r1, r1, #5
 	asr r2, r2, #5
-	bl sub_0203B024
+	bl MapMatrix_GetMapHeader
 	strh r0, [r5, #0x1a]
 	ldr r0, [sp, #4]
 	ldr r0, [r0]

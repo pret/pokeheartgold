@@ -12691,7 +12691,7 @@ ov02_0224BB18: ; 0x0224BB18
 	strb r0, [r4, #0xe]
 	strb r0, [r4, #0xf]
 	ldr r0, [r5, #0x30]
-	bl sub_0203B004
+	bl MapMatrix_GetWidth
 	add r1, r0, #0
 	ldr r0, [sp]
 	add r2, sp, #0x14
@@ -15106,7 +15106,7 @@ ov02_0224CDB0: ; 0x0224CDB0
 	strb r0, [r4, #0xe]
 	strb r0, [r4, #0xf]
 	ldr r0, [r5, #0x30]
-	bl sub_0203B004
+	bl MapMatrix_GetWidth
 	add r1, r0, #0
 	ldr r0, [sp]
 	add r2, sp, #0x14
