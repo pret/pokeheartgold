@@ -4,14 +4,32 @@
 	.bss
 
 _021D43C8:
-	.space 0x58
+	.space 0xC
+
+_021D43D4: ; 0x021D43D4
+	.space 0x5
+
+_021D43D9: ; 0x021D43D9
+	.space 0x1
+
+_021D43DA: ; 0x021D43DA
+	.space 0x4
+
+_021D43DE: ; 0x021D43DE
+	.space 0x2
+
+_021D43E0: ; 0x021D43E0
+	.space 0x20
+
+_021D4400: ; 0x021D4400
+	.space 0x20
 
 	.text
 
 	arm_func_start sub_0209E404
 sub_0209E404: ; 0x0209E404
 	stmdb sp!, {r3, lr}
-	ldr r1, _0209E42C ; =0x021D43C8
+	ldr r1, _0209E42C ; =_021D43C8
 	mov r2, r0
 	ldr r0, [r1, #8]
 	mov r1, #0x300
@@ -21,14 +39,14 @@ sub_0209E404: ; 0x0209E404
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0209E42C: .word 0x021D43C8
+_0209E42C: .word _021D43C8
 	arm_func_end sub_0209E404
 
 	arm_func_start sub_0209E430
 sub_0209E430: ; 0x0209E430
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	ldr r0, _0209E4F0 ; =0x021D43D4
+	ldr r0, _0209E4F0 ; =_021D43D4
 	mov r1, r4
 	mov r2, #6
 	bl MI_CpuCopy8
@@ -40,7 +58,7 @@ sub_0209E430: ; 0x0209E430
 	str r0, [r4]
 	and r1, r2, r1
 	str r1, [r4, #4]
-	ldr r0, _0209E4F8 ; =0x021D43D9
+	ldr r0, _0209E4F8 ; =_021D43D9
 	add r1, r4, #8
 	mov r2, #6
 	bl MI_CpuCopy8
@@ -58,13 +76,13 @@ sub_0209E430: ; 0x0209E430
 	str r0, [r4, #8]
 	and r1, r1, r3
 	str r1, [r4, #0xc]
-	ldr r0, _0209E4FC ; =0x021D43DE
+	ldr r0, _0209E4FC ; =_021D43DE
 	add r1, r4, #0x10
 	mov r2, #2
 	bl MI_CpuCopy8
 	ldrh r1, [r4, #0x10]
 	ldr r3, _0209E500 ; =0x000003FF
-	ldr r0, _0209E504 ; =0x021D43E0
+	ldr r0, _0209E504 ; =_021D43E0
 	mov r1, r1, asr #6
 	strh r1, [r4, #0x10]
 	ldrh ip, [r4, #0x10]
@@ -75,18 +93,18 @@ sub_0209E430: ; 0x0209E430
 	bl MI_CpuCopy8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0209E4F0: .word 0x021D43D4
+_0209E4F0: .word _021D43D4
 _0209E4F4: .word 0x000007FF
-_0209E4F8: .word 0x021D43D9
-_0209E4FC: .word 0x021D43DE
+_0209E4F8: .word _021D43D9
+_0209E4FC: .word _021D43DE
 _0209E500: .word 0x000003FF
-_0209E504: .word 0x021D43E0
+_0209E504: .word _021D43E0
 	arm_func_end sub_0209E430
 
 	arm_func_start sub_0209E508
 sub_0209E508: ; 0x0209E508
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r2, _0209E5D8 ; =0x021D43C8
+	ldr r2, _0209E5D8 ; =_021D43C8
 	mov sl, r1
 	ldr sb, [r2, #8]
 	bl sub_0209EF2C
@@ -94,7 +112,7 @@ sub_0209E508: ; 0x0209E508
 	add r0, sl, #0x200
 	bl MATHi_CRC16InitTableRev
 	mov r5, #0x100
-	ldr r6, _0209E5E0 ; =0x021D43D4
+	ldr r6, _0209E5E0 ; =_021D43D4
 	mov r8, #0
 	mov r4, r5
 	mov fp, #0xe
@@ -141,9 +159,9 @@ _0209E588:
 	moveq r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0209E5D8: .word 0x021D43C8
+_0209E5D8: .word _021D43C8
 _0209E5DC: .word 0x0000A001
-_0209E5E0: .word 0x021D43D4
+_0209E5E0: .word _021D43D4
 	arm_func_end sub_0209E508
 
 	arm_func_start sub_0209E5E4
@@ -158,20 +176,20 @@ sub_0209E5E4: ; 0x0209E5E4
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
 	ldrh r2, [r4]
-	ldr r1, _0209E624 ; =0x021D43C8
+	ldr r1, _0209E624 ; =_021D43C8
 	mov r0, #1
 	mov r2, r2, lsl #3
 	sub r2, r2, #0x400
 	str r2, [r1, #8]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0209E624: .word 0x021D43C8
+_0209E624: .word _021D43C8
 	arm_func_end sub_0209E5E4
 
 	arm_func_start sub_0209E628
 sub_0209E628: ; 0x0209E628
 	stmdb sp!, {r3, lr}
-	ldr r1, _0209E650 ; =0x021D43C8
+	ldr r1, _0209E650 ; =_021D43C8
 	mov r2, r0
 	ldr r0, [r1, #8]
 	mov r1, #0x400
@@ -181,13 +199,13 @@ sub_0209E628: ; 0x0209E628
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0209E650: .word 0x021D43C8
+_0209E650: .word _021D43C8
 	arm_func_end sub_0209E628
 
 	arm_func_start sub_0209E654
 sub_0209E654: ; 0x0209E654
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r3, _0209E6D8 ; =0x021D43C8
+	ldr r3, _0209E6D8 ; =_021D43C8
 	mov sl, #0x100
 	ldr r5, [r3, #8]
 	mov r8, r0
@@ -223,13 +241,13 @@ _0209E6B0:
 	moveq r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0209E6D8: .word 0x021D43C8
+_0209E6D8: .word _021D43C8
 	arm_func_end sub_0209E654
 
 	arm_func_start sub_0209E6DC
 sub_0209E6DC: ; 0x0209E6DC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r1, _0209E76C ; =0x021D43C8
+	ldr r1, _0209E76C ; =_021D43C8
 	mov r8, r0
 	mov sl, #0x100
 	ldr r6, [r1, #8]
@@ -267,18 +285,18 @@ _0209E718:
 	moveq r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0209E76C: .word 0x021D43C8
+_0209E76C: .word _021D43C8
 	arm_func_end sub_0209E6DC
 
 	arm_func_start sub_0209E770
 sub_0209E770: ; 0x0209E770
 	ldr ip, _0209E780 ; =MI_CpuCopy8
-	ldr r1, _0209E784 ; =0x021D43D4
+	ldr r1, _0209E784 ; =_021D43D4
 	mov r2, #0xe
 	bx ip
 	.align 2, 0
 _0209E780: .word MI_CpuCopy8
-_0209E784: .word 0x021D43D4
+_0209E784: .word _021D43D4
 	arm_func_end sub_0209E770
 
 	arm_func_start sub_0209E788
@@ -390,7 +408,7 @@ sub_0209E8A0: ; 0x0209E8A0
 sub_0209E8CC: ; 0x0209E8CC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x3c
-	ldr sl, _0209ED20 ; =0x021D4400
+	ldr sl, _0209ED20 ; =_021D4400
 	mov r8, r1, lsr #0x10
 	mov r4, sl, lsl #8
 	mov sb, r4
@@ -448,7 +466,7 @@ sub_0209E8CC: ; 0x0209E8CC
 _0209E9B0:
 	cmp r6, #0
 	bne _0209EBF0
-	ldr r0, _0209ED30 ; =0x021D43C8
+	ldr r0, _0209ED30 ; =_021D43C8
 	cmp r7, #7
 	str r5, [r0, #4]
 	addls pc, pc, r7, lsl #2
@@ -599,11 +617,11 @@ _0209EBD0:
 	movge r6, #1
 	b _0209E9B0
 _0209EBF0:
-	ldr r0, _0209ED30 ; =0x021D43C8
+	ldr r0, _0209ED30 ; =_021D43C8
 	ldr r0, [r0, #4]
 	cmp r0, #1
 	bne _0209E9B0
-	ldr r0, _0209ED30 ; =0x021D43C8
+	ldr r0, _0209ED30 ; =_021D43C8
 	mov r6, #0
 	ldrh r0, [r0]
 	cmp r0, #0
@@ -687,11 +705,11 @@ _0209ED14:
 	add sp, sp, #0x3c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0209ED20: .word 0x021D4400
+_0209ED20: .word _021D4400
 _0209ED24: .word 0x01020000
 _0209ED28: .word 0x02002200
 _0209ED2C: .word 0x03002100
-_0209ED30: .word 0x021D43C8
+_0209ED30: .word _021D43C8
 _0209ED34: .word 0x000082EA
 	arm_func_end sub_0209E8CC
 
@@ -841,7 +859,7 @@ _0209EEF8: .word sub_0209EEFC
 
 	arm_func_start sub_0209EEFC
 sub_0209EEFC: ; 0x0209EEFC
-	ldr r0, _0209EF28 ; =0x021D43C8
+	ldr r0, _0209EF28 ; =_021D43C8
 	and r1, r1, #0xff
 	strh r1, [r0]
 	mov r1, #1
@@ -849,11 +867,11 @@ sub_0209EEFC: ; 0x0209EEFC
 	cmp r2, #0
 	movne r1, #0xff
 	strneh r1, [r0]
-	ldr r0, _0209EF28 ; =0x021D43C8
+	ldr r0, _0209EF28 ; =_021D43C8
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
-_0209EF28: .word 0x021D43C8
+_0209EF28: .word _021D43C8
 	arm_func_end sub_0209EEFC
 
 	arm_func_start sub_0209EF2C
@@ -863,7 +881,7 @@ sub_0209EF2C: ; 0x0209EF2C
 	mov r4, r0
 	ldr r3, [r4, #8]
 	ldr r2, [r4, #0xc]
-	ldr r1, _0209EFE0 ; =0x021D43D4
+	ldr r1, _0209EFE0 ; =_021D43D4
 	str r2, [sp, #4]
 	str r3, [sp]
 	mov r2, #5
@@ -878,8 +896,8 @@ sub_0209EF2C: ; 0x0209EF2C
 	and r1, r0, lr, lsr #8
 	and r0, r2, #0x1f
 	orr lr, r1, r0, lsl #3
-	ldr r2, _0209EFE0 ; =0x021D43D4
-	ldr r1, _0209EFE4 ; =0x021D43DA
+	ldr r2, _0209EFE0 ; =_021D43D4
+	ldr r1, _0209EFE4 ; =_021D43DA
 	strb lr, [r2, #5]
 	add r0, sp, #0
 	str ip, [sp]
@@ -888,33 +906,33 @@ sub_0209EF2C: ; 0x0209EF2C
 	bl MI_CpuCopy8
 	ldrh r0, [r4, #0x10]
 	ldr r1, [sp, #4]
-	ldr r3, _0209EFE0 ; =0x021D43D4
+	ldr r3, _0209EFE0 ; =_021D43D4
 	and r1, r1, #0x3f
 	mov r0, r0, lsl #0x1e
 	orr r0, r1, r0, lsr #24
 	strb r0, [r3, #0xa]
 	ldrh r2, [r4, #0x10]
 	add r0, r4, #0x12
-	ldr r1, _0209EFE8 ; =0x021D43E0
+	ldr r1, _0209EFE8 ; =_021D43E0
 	mov r4, r2, asr #2
 	mov r2, #2
 	strb r4, [r3, #0xb]
 	bl MI_CpuCopy8
-	ldr r0, _0209EFE0 ; =0x021D43D4
+	ldr r0, _0209EFE0 ; =_021D43D4
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0209EFE0: .word 0x021D43D4
-_0209EFE4: .word 0x021D43DA
-_0209EFE8: .word 0x021D43E0
+_0209EFE0: .word _021D43D4
+_0209EFE4: .word _021D43DA
+_0209EFE8: .word _021D43E0
 	arm_func_end sub_0209EF2C
 
 	arm_func_start sub_0209EFEC
 sub_0209EFEC: ; 0x0209EFEC
-	ldr r0, _0209EFF4 ; =0x021D43D4
+	ldr r0, _0209EFF4 ; =_021D43D4
 	bx lr
 	.align 2, 0
-_0209EFF4: .word 0x021D43D4
+_0209EFF4: .word _021D43D4
 	arm_func_end sub_0209EFEC
 
 	arm_func_start sub_0209EFF8
@@ -1148,7 +1166,7 @@ sub_0209F300: ; 0x0209F300
 	addeq sp, sp, #4
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, pc}
-	ldr r1, _0209F3FC ; =0x02108F9C
+	ldr r1, _0209F3FC ; =_02108F9C
 	add r0, r4, #0xc0
 	mov r2, #4
 	bl memcmp
@@ -1175,7 +1193,7 @@ sub_0209F300: ; 0x0209F300
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, pc}
 _0209F3B0:
-	ldr r1, _0209F3FC ; =0x02108F9C
+	ldr r1, _0209F3FC ; =_02108F9C
 	add r0, r4, #0xc8
 	mov r2, #4
 	bl memcmp
@@ -1196,7 +1214,7 @@ _0209F3F0:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_0209F3FC: .word 0x02108F9C
+_0209F3FC: .word _02108F9C
 	arm_func_end sub_0209F300
 
 	arm_func_start sub_0209F400
@@ -1286,7 +1304,7 @@ _0209F510:
 	eor r0, r0, #0xd6
 	strb r0, [r2], #1
 	blt _0209F510
-	ldr r2, _0209F628 ; =0x02108FA8
+	ldr r2, _0209F628 ; =_02108FA8
 	add r4, sp, #8
 	mov r5, #0
 _0209F534:
@@ -1305,7 +1323,7 @@ _0209F534:
 	add r1, sp, #0
 	mov r2, #8
 	bl MI_CpuCopy8
-	ldr r4, _0209F62C ; =0x02108FA0
+	ldr r4, _0209F62C ; =_02108FA0
 	add r3, sp, #0
 	mov r5, #0
 	add r0, sp, #8
@@ -1354,8 +1372,8 @@ _0209F5E4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0209F624: .word 0x0000FFFF
-_0209F628: .word 0x02108FA8
-_0209F62C: .word 0x02108FA0
+_0209F628: .word _02108FA8
+_0209F62C: .word _02108FA0
 	arm_func_end sub_0209F4AC
 
 	arm_func_start sub_0209F630
