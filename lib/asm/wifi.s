@@ -4,7 +4,148 @@
 	.bss
 
 _021D4420:
-	.space 0x1C20
+	.space 0x4
+
+_021D4424: ; 0x021D4424
+	.space 0x4
+
+_021D4428: ; 0x021D4428
+	.space 0x4
+
+_021D442C: ; 0x021D442C
+	.space 0x4
+
+_021D4430: ; 0x021D4430
+	.space 0x30
+
+_021D4460: ; 0x021D4460
+	.space 0x4
+
+_021D4464: ; 0x021D4464
+	.space 0x20
+
+_021D4484: ; 0x021D4484
+	.space 0x8
+
+_021D448C: ; 0x021D448C
+	.space 0x4
+
+_021D4490: ; 0x021D4490
+	.space 0x4
+
+_021D4494: ; 0x021D4494
+	.space 0x18
+
+_021D44AC: ; 0x021D44AC
+	.space 0x8
+
+_021D44B4: ; 0x021D44B4
+	.space 0x20
+
+_021D44D4: ; 0x021D44D4
+	.space 0x38
+
+_021D450C: ; 0x021D450C
+	.space 0x10
+
+_021D451C: ; 0x021D451C
+	.space 0x104
+
+_021D4620: ; 0x021D4620
+	.space 0x14
+
+_021D4634: ; 0x021D4634
+	.space 0x8
+
+_021D463C: ; 0x021D463C
+	.space 0x10
+
+_021D464C: ; 0x021D464C
+	.space 0x14
+
+_021D4660: ; 0x021D4660
+	.space 0x10
+
+_021D4670: ; 0x021D4670
+	.space 0x10
+
+_021D4680: ; 0x021D4680
+	.space 0x8
+
+_021D4688: ; 0x021D4688
+	.space 0x18
+
+_021D46A0: ; 0x021D46A0
+	.space 0xA
+
+_021D46AA: ; 0x021D46AA
+	.space 0x56
+
+_021D4700: ; 0x021D4700
+	.space 0x20
+
+_021D4720: ; 0x021D4720
+	.space 0x44
+
+_021D4764: ; 0x021D4764
+	.space 0x64
+
+_021D47C8: ; 0x021D47C8
+	.space 0xC0
+
+_021D4888: ; 0x021D4888
+	.space 0xC0
+
+_021D4948: ; 0x021D4948
+	.space 0x1C0
+
+_021D4B08: ; 0x021D4B08
+	.space 0x2A
+
+_021D4B32: ; 0x021D4B32
+	.space 0x1A
+
+_021D4B4C: ; 0x021D4B4C
+	.space 0x2A
+
+_021D4B76: ; 0x021D4B76
+	.space 0x156
+
+_021D4CCC: ; 0x021D4CCC
+	.space 0x994
+
+_021D5660: ; 0x021D5660
+	.space 0x800
+
+_021D5E60: ; 0x021D5E60
+	.space 0x8
+
+_021D5E68: ; 0x021D5E68
+	.space 0x170
+
+_021D5FD8: ; 0x021D5FD8
+	.space 0x13
+
+_021D5FEB: ; 0x021D5FEB
+	.space 0x1
+
+_021D5FEC: ; 0x021D5FEC
+	.space 0x4
+
+_021D5FF0: ; 0x021D5FF0
+	.space 0x4
+
+_021D5FF4: ; 0x021D5FF4
+	.space 0x8
+
+_021D5FFC: ; 0x021D5FFC
+	.space 0x20
+
+_021D601C: ; 0x021D601C
+	.space 0x4
+
+_021D6020: ; 0x021D6020
+	.space 0x20
 
 	.text
 
@@ -41,7 +182,7 @@ SOCLi_StartupSOCL: ; 0x020A0840
 	bmi _020A086C
 	ldr r0, _020A0878 ; =_02110660
 	bl SOCL_CreateSocket
-	ldr r1, _020A087C ; =0x021D4420
+	ldr r1, _020A087C ; =_021D4420
 	str r0, [r1, #0xc]
 _020A086C:
 	mov r0, r4
@@ -49,21 +190,21 @@ _020A086C:
 	.align 2, 0
 _020A0874: .word _02110628
 _020A0878: .word _02110660
-_020A087C: .word 0x021D4420
+_020A087C: .word _021D4420
 	arm_func_end SOCLi_StartupSOCL
 
 	arm_func_start SOCLi_StartupCPS
 SOCLi_StartupCPS: ; 0x020A0880
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _020A09B4 ; =_02110628
-	ldr r4, _020A09B8 ; =0x021D4430
+	ldr r4, _020A09B8 ; =_021D4430
 	ldr r5, [r0]
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x30
 	bl MI_CpuFill8
 	ldr r1, [r5, #0x18]
-	ldr r0, _020A09BC ; =0x021D4420
+	ldr r0, _020A09BC ; =_021D4420
 	ldr r2, _020A09C0 ; =SOCL_LinkIsOn
 	str r1, [r0, #0x14]
 	ldr r3, [r5, #0x1c]
@@ -97,7 +238,7 @@ _020A0900:
 	moveq lr, #0x10c0
 	ldr r2, _020A09C4 ; =_02110648
 	add r0, lr, lr, lsr #31
-	ldr r1, _020A09C8 ; =0x021D4670
+	ldr r1, _020A09C8 ; =_021D4670
 	mov r3, #0
 	strh lr, [r2, #2]
 	mov r0, r0, asr #1
@@ -109,7 +250,7 @@ _020A0900:
 	cmp r0, #0
 	beq _020A0974
 	ldr r1, _020A09CC ; =SOCLi_DhcpTimeout
-	ldr r0, _020A09BC ; =0x021D4420
+	ldr r0, _020A09BC ; =_021D4420
 	str r3, [r4]
 	str r1, [r4, #0xc]
 	str r2, [r0, #8]
@@ -117,7 +258,7 @@ _020A0900:
 	str r0, [r4, #0x28]
 	b _020A0988
 _020A0974:
-	ldr r0, _020A09BC ; =0x021D4420
+	ldr r0, _020A09BC ; =_021D4420
 	ldr r1, _020A09D0 ; =SOCLi_SetMyIP
 	str r3, [r0, #8]
 	str r2, [r4]
@@ -136,11 +277,11 @@ _020A0988:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020A09B4: .word _02110628
-_020A09B8: .word 0x021D4430
-_020A09BC: .word 0x021D4420
+_020A09B8: .word _021D4430
+_020A09BC: .word _021D4420
 _020A09C0: .word SOCL_LinkIsOn
 _020A09C4: .word _02110648
-_020A09C8: .word 0x021D4670
+_020A09C8: .word _021D4670
 _020A09CC: .word SOCLi_DhcpTimeout
 _020A09D0: .word SOCLi_SetMyIP
 _020A09D4: .word CPSi_RecvCallbackFunc
@@ -150,17 +291,17 @@ _020A09D8: .word SOCLi_TrashSocket
 	arm_func_start SOCLi_SetMyIP
 SOCLi_SetMyIP: ; 0x020A09DC
 	ldr r0, _020A0A30 ; =_02110628
-	ldr r1, _020A0A34 ; =0x021D4670
+	ldr r1, _020A0A34 ; =_021D4670
 	ldr ip, [r0]
-	ldr r0, _020A0A38 ; =0x021D463C
+	ldr r0, _020A0A38 ; =_021D463C
 	ldr r3, [ip, #4]
-	ldr r2, _020A0A3C ; =0x021D464C
+	ldr r2, _020A0A3C ; =_021D464C
 	str r3, [r1]
 	ldr r3, [ip, #8]
-	ldr r1, _020A0A40 ; =0x021D4680
+	ldr r1, _020A0A40 ; =_021D4680
 	str r3, [r0]
 	ldr r3, [ip, #0xc]
-	ldr r0, _020A0A44 ; =0x021D4420
+	ldr r0, _020A0A44 ; =_021D4420
 	str r3, [r2]
 	ldr r2, [ip, #0x10]
 	str r2, [r1]
@@ -172,22 +313,22 @@ SOCLi_SetMyIP: ; 0x020A09DC
 	bx lr
 	.align 2, 0
 _020A0A30: .word _02110628
-_020A0A34: .word 0x021D4670
-_020A0A38: .word 0x021D463C
-_020A0A3C: .word 0x021D464C
-_020A0A40: .word 0x021D4680
-_020A0A44: .word 0x021D4420
+_020A0A34: .word _021D4670
+_020A0A38: .word _021D463C
+_020A0A3C: .word _021D464C
+_020A0A40: .word _021D4680
+_020A0A44: .word _021D4420
 	arm_func_end SOCLi_SetMyIP
 
 	arm_func_start SOCLi_DhcpTimeout
 SOCLi_DhcpTimeout: ; 0x020A0A48
-	ldr r0, _020A0A5C ; =0x021D4420
+	ldr r0, _020A0A5C ; =_021D4420
 	ldr r1, [r0, #8]
 	orr r1, r1, #2
 	str r1, [r0, #8]
 	bx lr
 	.align 2, 0
-_020A0A5C: .word 0x021D4420
+_020A0A5C: .word _021D4420
 	arm_func_end SOCLi_DhcpTimeout
 
 	arm_func_start SOCL_LinkIsOn
@@ -219,7 +360,7 @@ SOCLi_StartupCommandPacketQueue: ; 0x020A0A78
 	movs r6, r0
 	mvneq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
-	ldr r0, _020A0B04 ; =0x021D4464
+	ldr r0, _020A0B04 ; =_021D4464
 	mov r1, r6
 	mov r2, r4
 	bl OS_InitMessageQueue
@@ -234,20 +375,20 @@ _020A0AD8:
 	add r5, r5, #0x2c
 	bgt _020A0AD8
 _020A0AF0:
-	ldr r1, _020A0B08 ; =0x021D4460
+	ldr r1, _020A0B08 ; =_021D4460
 	mov r0, #0
 	str r6, [r1]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020A0B00: .word _02110628
-_020A0B04: .word 0x021D4464
-_020A0B08: .word 0x021D4460
+_020A0B04: .word _021D4464
+_020A0B08: .word _021D4460
 	arm_func_end SOCLi_StartupCommandPacketQueue
 
 	arm_func_start SOCLi_CleanupCommandPacketQueue
 SOCLi_CleanupCommandPacketQueue: ; 0x020A0B0C
 	stmdb sp!, {r3, lr}
-	ldr r0, _020A0B4C ; =0x021D4460
+	ldr r0, _020A0B4C ; =_021D4460
 	ldr r2, [r0, #0x20]
 	ldr r1, [r0, #0x18]
 	cmp r2, r1
@@ -258,12 +399,12 @@ SOCLi_CleanupCommandPacketQueue: ; 0x020A0B0C
 	ldr r1, [r1]
 	ldr r1, [r1, #0x1c]
 	blx r1
-	ldr r1, _020A0B4C ; =0x021D4460
+	ldr r1, _020A0B4C ; =_021D4460
 	mov r0, #0
 	str r0, [r1]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A0B4C: .word 0x021D4460
+_020A0B4C: .word _021D4460
 _020A0B50: .word _02110628
 	arm_func_end SOCLi_CleanupCommandPacketQueue
 
@@ -271,7 +412,7 @@ _020A0B50: .word _02110628
 SOCLi_AllocCommandPacket: ; 0x020A0B54
 	stmdb sp!, {r3, lr}
 	mov r2, r0
-	ldr r0, _020A0B78 ; =0x021D4464
+	ldr r0, _020A0B78 ; =_021D4464
 	add r1, sp, #0
 	bl OS_ReceiveMessage
 	cmp r0, #0
@@ -279,7 +420,7 @@ SOCLi_AllocCommandPacket: ; 0x020A0B54
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A0B78: .word 0x021D4464
+_020A0B78: .word _021D4464
 	arm_func_end SOCLi_AllocCommandPacket
 
 	arm_func_start SOCLi_CreateCommandPacket
@@ -307,12 +448,12 @@ SOCLi_FreeCommandPacket: ; 0x020A0BBC
 	stmdb sp!, {r3, lr}
 	movs r1, r0
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _020A0BD8 ; =0x021D4464
+	ldr r0, _020A0BD8 ; =_021D4464
 	mov r2, #0
 	bl OS_SendMessage
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A0BD8: .word 0x021D4464
+_020A0BD8: .word _021D4464
 	arm_func_end SOCLi_FreeCommandPacket
 
 	arm_func_start SOCLi_GetCtrlPipe
@@ -677,7 +818,7 @@ _020A0FEC:
 	str r1, [r7, #0x104]
 	b _020A105C
 _020A104C:
-	ldr r0, _020A1064 ; =0x021D442C
+	ldr r0, _020A1064 ; =_021D442C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x68]
 	str r0, [r6, #0x68]
@@ -685,7 +826,7 @@ _020A105C:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A1064: .word 0x021D442C
+_020A1064: .word _021D442C
 	arm_func_end SOCLi_InitSocket
 
 	arm_func_start SOCLi_InitSocketBuffer
@@ -1679,13 +1820,13 @@ SOCLi_UdpRecvCallback: ; 0x020A1D10
 	streq r5, [r4, #0x104]
 	b _020A1DE4
 _020A1DC0:
-	ldr r0, _020A1E20 ; =0x021D4484
+	ldr r0, _020A1E20 ; =_021D4484
 	ldr r1, [r0]
 	add r1, r1, #1
 	str r1, [r0]
 	b _020A1DE4
 _020A1DD4:
-	ldr r0, _020A1E20 ; =0x021D4484
+	ldr r0, _020A1E20 ; =_021D4484
 	ldr r1, [r0, #4]
 	add r1, r1, #1
 	str r1, [r0, #4]
@@ -1706,7 +1847,7 @@ _020A1DE4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020A1E1C: .word _02110628
-_020A1E20: .word 0x021D4484
+_020A1E20: .word _021D4484
 	arm_func_end SOCLi_UdpRecvCallback
 
 	arm_func_start SOCL_WriteTo
@@ -2111,7 +2252,7 @@ _020A236C:
 	arm_func_start SOCLi_GetOptimumSendBufLen
 SOCLi_GetOptimumSendBufLen: ; 0x020A2388
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _020A2424 ; =0x021E16A0
+	ldr r1, _020A2424 ; =OSi_ThreadInfo
 	mov r4, r0
 	ldr r0, [r1, #4]
 	ldr r5, [r0, #0xa4]
@@ -2123,7 +2264,7 @@ SOCLi_GetOptimumSendBufLen: ; 0x020A2388
 	ldrneh r2, [r5, #0x2c]
 	cmpne r2, #0
 	beq _020A23DC
-	ldr r1, _020A2428 ; =0x021D4430
+	ldr r1, _020A2428 ; =_021D4430
 	cmp r3, r2
 	ldr r1, [r1, #0x24]
 	movgt r3, r2
@@ -2132,12 +2273,12 @@ SOCLi_GetOptimumSendBufLen: ; 0x020A2388
 	mov r5, r3, lsl #1
 	b _020A23F8
 _020A23DC:
-	ldr r1, _020A2428 ; =0x021D4430
+	ldr r1, _020A2428 ; =_021D4430
 	ldr r1, [r1, #0x24]
 	mov r5, r1, lsl #1
 	b _020A23F8
 _020A23EC:
-	ldr r1, _020A2428 ; =0x021D4430
+	ldr r1, _020A2428 ; =_021D4430
 	ldr r1, [r1, #0x24]
 	mov r5, r1, lsl #1
 _020A23F8:
@@ -2154,8 +2295,8 @@ _020A241C:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020A2424: .word 0x021E16A0
-_020A2428: .word 0x021D4430
+_020A2424: .word OSi_ThreadInfo
+_020A2428: .word _021D4430
 	arm_func_end SOCLi_GetOptimumSendBufLen
 
 	arm_func_start SOCLi_MemCpy
@@ -2518,7 +2659,7 @@ _020A28C8:
 SOCLi_TrashSocket: ; 0x020A28DC
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_DisableInterrupts
-	ldr r4, _020A2914 ; =0x021D4490
+	ldr r4, _020A2914 ; =_021D4490
 	mov r5, r0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -2533,16 +2674,16 @@ _020A2908:
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020A2914: .word 0x021D4490
+_020A2914: .word _021D4490
 	arm_func_end SOCLi_TrashSocket
 
 	arm_func_start SOCL_Cleanup
 SOCL_Cleanup: ; 0x020A2918
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _020A29AC ; =0x021D4424
+	ldr r1, _020A29AC ; =_021D4424
 	ldr r0, [r1]
 	cmp r0, #0
-	ldreq r0, _020A29B0 ; =0x021D4670
+	ldreq r0, _020A29B0 ; =_021D4670
 	ldreq r0, [r0]
 	streq r0, [r1]
 	bl SOCL_CalmDown
@@ -2568,7 +2709,7 @@ _020A295C:
 	ldr r0, [r1, #0x28]
 	cmp r0, #0
 	bne _020A2998
-	ldr r0, _020A29B8 ; =0x021D4430
+	ldr r0, _020A29B8 ; =_021D4430
 	ldr r1, [r1, #0x1c]
 	ldr r0, [r0, #0x1c]
 	blx r1
@@ -2580,17 +2721,17 @@ _020A29A4:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020A29AC: .word 0x021D4424
-_020A29B0: .word 0x021D4670
+_020A29AC: .word _021D4424
+_020A29B0: .word _021D4670
 _020A29B4: .word _02110628
-_020A29B8: .word 0x021D4430
+_020A29B8: .word _021D4430
 	arm_func_end SOCL_Cleanup
 
 	arm_func_start SOCL_CloseAll
 SOCL_CloseAll: ; 0x020A29BC
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r4, _020A2A58 ; =0x021D442C
-	ldr r5, _020A2A5C ; =0x021D448C
+	ldr r4, _020A2A58 ; =_021D442C
+	ldr r5, _020A2A5C ; =_021D448C
 _020A29C8:
 	bl OS_DisableInterrupts
 	ldr r6, [r5]
@@ -2615,18 +2756,18 @@ _020A29FC:
 	bl SOCL_Close
 	b _020A29C8
 _020A2A14:
-	ldr r0, _020A2A5C ; =0x021D448C
+	ldr r0, _020A2A5C ; =_021D448C
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _020A2A3C
-	ldr r0, _020A2A58 ; =0x021D442C
+	ldr r0, _020A2A58 ; =_021D442C
 	ldr r0, [r0]
 	cmp r1, r0
 	ldreq r0, [r1, #0x7c]
 	cmpeq r0, #0
 	bne _020A2A50
 _020A2A3C:
-	ldr r0, _020A2A60 ; =0x021D4490
+	ldr r0, _020A2A60 ; =_021D4490
 	ldr r0, [r0]
 	cmp r0, #0
 	moveq r0, #0
@@ -2635,29 +2776,29 @@ _020A2A50:
 	mvn r0, #0x19
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020A2A58: .word 0x021D442C
-_020A2A5C: .word 0x021D448C
-_020A2A60: .word 0x021D4490
+_020A2A58: .word _021D442C
+_020A2A5C: .word _021D448C
+_020A2A60: .word _021D4490
 	arm_func_end SOCL_CloseAll
 
 	arm_func_start SOCL_CalmDown
 SOCL_CalmDown: ; 0x020A2A64
 	stmdb sp!, {r4, lr}
-	ldr r0, _020A2ADC ; =0x021D442C
+	ldr r0, _020A2ADC ; =_021D442C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _020A2AB8
 	bl SOCL_CloseAll
 	movs r4, r0
 	bne _020A2AB0
-	ldr r0, _020A2ADC ; =0x021D442C
+	ldr r0, _020A2ADC ; =_021D442C
 	ldr r0, [r0]
 	bl SOCL_Close
-	ldr r0, _020A2ADC ; =0x021D442C
+	ldr r0, _020A2ADC ; =_021D442C
 	ldr r0, [r0]
 	bl SOCL_IsClosed
 	cmp r0, #0
-	ldrne r0, _020A2ADC ; =0x021D442C
+	ldrne r0, _020A2ADC ; =_021D442C
 	movne r1, #0
 	strne r1, [r0]
 	mvn r4, #0x19
@@ -2676,7 +2817,7 @@ _020A2AD4:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A2ADC: .word 0x021D442C
+_020A2ADC: .word _021D442C
 	arm_func_end SOCL_CalmDown
 
 	arm_func_start SOCL_Resolve
@@ -2733,7 +2874,7 @@ SOCL_InetAtoH: ; 0x020A2B90
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
-	ldr r1, _020A2BD8 ; =0x021D4680
+	ldr r1, _020A2BD8 ; =_021D4680
 	mov r5, r0
 	ldmia r1, {r6, r7}
 	mov r2, #0
@@ -2741,7 +2882,7 @@ SOCL_InetAtoH: ; 0x020A2B90
 	mov r0, r4
 	str r2, [r1, #4]
 	bl CPS_Resolve
-	ldr r1, _020A2BD8 ; =0x021D4680
+	ldr r1, _020A2BD8 ; =_021D4680
 	mov r4, r0
 	mov r0, r5
 	stmia r1, {r6, r7}
@@ -2749,7 +2890,7 @@ SOCL_InetAtoH: ; 0x020A2B90
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A2BD8: .word 0x021D4680
+_020A2BD8: .word _021D4680
 	arm_func_end SOCL_InetAtoH
 
 	arm_func_start SOCL_SetResolver
@@ -2761,23 +2902,23 @@ SOCL_SetResolver: ; 0x020A2BDC
 	cmp r0, #0
 	mvneq r0, #0x26
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r1, _020A2C0C ; =0x021D4680
+	ldr r1, _020A2C0C ; =_021D4680
 	mov r0, #0
 	str r5, [r1]
 	str r4, [r1, #4]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020A2C0C: .word 0x021D4680
+_020A2C0C: .word _021D4680
 	arm_func_end SOCL_SetResolver
 
 	arm_func_start SOCL_GetHostID
 SOCL_GetHostID: ; 0x020A2C10
 	stmdb sp!, {r3, lr}
-	ldr r0, _020A2C6C ; =0x021D4670
+	ldr r0, _020A2C6C ; =_021D4670
 	ldr r2, [r0]
 	cmp r2, #0
 	bne _020A2C50
-	ldr r0, _020A2C70 ; =0x021D4428
+	ldr r0, _020A2C70 ; =_021D4428
 	ldr r0, [r0]
 	and r0, r0, #3
 	cmp r0, #1
@@ -2789,18 +2930,18 @@ SOCL_GetHostID: ; 0x020A2C10
 	bl OS_Sleep
 	b _020A2C60
 _020A2C50:
-	ldr r0, _020A2C74 ; =0x021D4424
+	ldr r0, _020A2C74 ; =_021D4424
 	ldr r1, [r0]
 	cmp r1, #0
 	streq r2, [r0]
 _020A2C60:
-	ldr r0, _020A2C6C ; =0x021D4670
+	ldr r0, _020A2C6C ; =_021D4670
 	ldr r0, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A2C6C: .word 0x021D4670
-_020A2C70: .word 0x021D4428
-_020A2C74: .word 0x021D4424
+_020A2C6C: .word _021D4670
+_020A2C70: .word _021D4428
+_020A2C74: .word _021D4424
 	arm_func_end SOCL_GetHostID
 
 	arm_func_start SOCL_GetStatus
@@ -2898,11 +3039,11 @@ SOCLi_RoundUp4: ; 0x020A2D90
 SOCLi_SocketRegister: ; 0x020A2D9C
 	ldr ip, _020A2DAC ; =SOCLi_SocketRegisterList
 	mov r1, r0
-	ldr r0, _020A2DB0 ; =0x021D448C
+	ldr r0, _020A2DB0 ; =_021D448C
 	bx ip
 	.align 2, 0
 _020A2DAC: .word SOCLi_SocketRegisterList
-_020A2DB0: .word 0x021D448C
+_020A2DB0: .word _021D448C
 	arm_func_end SOCLi_SocketRegister
 
 	arm_func_start SOCLi_SocketRegisterList
@@ -2917,22 +3058,22 @@ SOCLi_SocketRegisterList: ; 0x020A2DB4
 SOCLi_SocketRegisterTrash: ; 0x020A2DC4
 	ldr ip, _020A2DD4 ; =SOCLi_SocketRegisterList
 	mov r1, r0
-	ldr r0, _020A2DD8 ; =0x021D4490
+	ldr r0, _020A2DD8 ; =_021D4490
 	bx ip
 	.align 2, 0
 _020A2DD4: .word SOCLi_SocketRegisterList
-_020A2DD8: .word 0x021D4490
+_020A2DD8: .word _021D4490
 	arm_func_end SOCLi_SocketRegisterTrash
 
 	arm_func_start SOCLi_SocketUnregister
 SOCLi_SocketUnregister: ; 0x020A2DDC
 	ldr ip, _020A2DEC ; =SOCLi_SocketUnregisterList
 	mov r1, r0
-	ldr r0, _020A2DF0 ; =0x021D448C
+	ldr r0, _020A2DF0 ; =_021D448C
 	bx ip
 	.align 2, 0
 _020A2DEC: .word SOCLi_SocketUnregisterList
-_020A2DF0: .word 0x021D448C
+_020A2DF0: .word _021D448C
 	arm_func_end SOCLi_SocketUnregister
 
 	arm_func_start SOCLi_SocketUnregisterList
@@ -2967,11 +3108,11 @@ _020A2E34:
 SOCLi_SocketUnregisterTrash: ; 0x020A2E3C
 	ldr ip, _020A2E4C ; =SOCLi_SocketUnregisterList
 	mov r1, r0
-	ldr r0, _020A2E50 ; =0x021D4490
+	ldr r0, _020A2E50 ; =_021D4490
 	bx ip
 	.align 2, 0
 _020A2E4C: .word SOCLi_SocketUnregisterList
-_020A2E50: .word 0x021D4490
+_020A2E50: .word _021D4490
 	arm_func_end SOCLi_SocketUnregisterTrash
 
 	arm_func_start SOCL_SocketIsInvalid
@@ -2980,7 +3121,7 @@ SOCL_SocketIsInvalid: ; 0x020A2E54
 	mov r1, r0
 	cmp r1, #0
 	ble _020A2E74
-	ldr r0, _020A2E84 ; =0x021D448C
+	ldr r0, _020A2E84 ; =_021D448C
 	bl SOCLi_SocketGetNextPtr
 	cmp r0, #0
 	bne _020A2E7C
@@ -2991,21 +3132,21 @@ _020A2E7C:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A2E84: .word 0x021D448C
+_020A2E84: .word _021D448C
 	arm_func_end SOCL_SocketIsInvalid
 
 	arm_func_start SOCL_SocketIsInTrash
 SOCL_SocketIsInTrash: ; 0x020A2E88
 	stmdb sp!, {r3, lr}
 	mov r1, r0
-	ldr r0, _020A2EA8 ; =0x021D4490
+	ldr r0, _020A2EA8 ; =_021D4490
 	bl SOCLi_SocketGetNextPtr
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A2EA8: .word 0x021D4490
+_020A2EA8: .word _021D4490
 	arm_func_end SOCL_SocketIsInTrash
 
 	arm_func_start SOC_Socket
@@ -3196,11 +3337,11 @@ SOC_GetHostByName: ; 0x020A30D4
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r0, _020A317C ; =0x021D451C
+	ldr r0, _020A317C ; =_021D451C
 	ldr r2, _020A3180 ; =0x00000101
 	mov r1, #0
 	bl MI_CpuFill8
-	ldr r0, _020A317C ; =0x021D451C
+	ldr r0, _020A317C ; =_021D451C
 	ldr r2, _020A3180 ; =0x00000101
 	mov r1, r5
 	bl STD_CopyLString
@@ -3208,19 +3349,19 @@ SOC_GetHostByName: ; 0x020A30D4
 	mov r2, r4, lsr #8
 	mov ip, r4, lsl #8
 	mov lr, r4, lsl #0x18
-	ldr r4, _020A317C ; =0x021D451C
-	ldr r1, _020A3184 ; =0x021D4494
+	ldr r4, _020A317C ; =_021D451C
+	ldr r1, _020A3184 ; =_021D4494
 	mov r0, #0
 	str r4, [r1, #0x20]
 	str r0, [r1, #0x24]
 	mov r4, #2
 	strh r4, [r1, #0x28]
 	mov r4, #4
-	ldr r5, _020A3188 ; =0x021D44AC
+	ldr r5, _020A3188 ; =_021D44AC
 	strh r4, [r1, #0x2a]
 	and r3, r3, #0xff
 	and r2, r2, #0xff00
-	ldr r4, _020A318C ; =0x021D4494
+	ldr r4, _020A318C ; =_021D4494
 	str r5, [r1, #0x2c]
 	str r4, [r1, #0x18]
 	and ip, ip, #0xff0000
@@ -3229,16 +3370,16 @@ SOC_GetHostByName: ; 0x020A30D4
 	orr r2, ip, r2
 	str r0, [r1, #0x1c]
 	orr r2, r3, r2
-	ldr r0, _020A3190 ; =0x021D44B4
+	ldr r0, _020A3190 ; =_021D44B4
 	str r2, [r1]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020A317C: .word 0x021D451C
+_020A317C: .word _021D451C
 _020A3180: .word 0x00000101
-_020A3184: .word 0x021D4494
-_020A3188: .word 0x021D44AC
-_020A318C: .word 0x021D4494
-_020A3190: .word 0x021D44B4
+_020A3184: .word _021D4494
+_020A3188: .word _021D44AC
+_020A318C: .word _021D4494
+_020A3190: .word _021D44B4
 	arm_func_end SOC_GetHostByName
 
 	arm_func_start SOC_GetSockName
@@ -3404,7 +3545,7 @@ _020A339C:
 	arm_func_start AllocFunc_SOCL
 AllocFunc_SOCL: ; 0x020A33A4
 	stmdb sp!, {r4, lr}
-	ldr r1, _020A33CC ; =0x021D4494
+	ldr r1, _020A33CC ; =_021D4494
 	add r4, r0, #4
 	ldr r2, [r1, #0xc]
 	mov r1, r4
@@ -3414,7 +3555,7 @@ AllocFunc_SOCL: ; 0x020A33A4
 	strne r4, [r0], #4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A33CC: .word 0x021D4494
+_020A33CC: .word _021D4494
 	arm_func_end AllocFunc_SOCL
 
 	arm_func_start FreeFunc_SOCL
@@ -3422,7 +3563,7 @@ FreeFunc_SOCL: ; 0x020A33D0
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r1, _020A33F8 ; =0x021D4494
+	ldr r1, _020A33F8 ; =_021D4494
 	ldr r2, [r0, #-4]
 	ldr r3, [r1, #4]
 	sub r1, r0, #4
@@ -3430,7 +3571,7 @@ FreeFunc_SOCL: ; 0x020A33D0
 	blx r3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A33F8: .word 0x021D4494
+_020A33F8: .word _021D4494
 	arm_func_end FreeFunc_SOCL
 
 	arm_func_start SOC_Startup
@@ -3440,7 +3581,7 @@ SOC_Startup: ; 0x020A33FC
 	ldr ip, _020A3560 ; =AllocFunc_SOCL
 	cmp r1, #1
 	moveq r2, #1
-	ldr r1, _020A3564 ; =0x021D4494
+	ldr r1, _020A3564 ; =_021D4494
 	movne r2, #0
 	str r2, [r1, #0x40]
 	ldr r6, [r0, #0x10]
@@ -3520,15 +3661,15 @@ SOC_Startup: ; 0x020A33FC
 	ldr r2, [r0, #0x2c]
 	str r2, [r1, #0x70]
 	ldr r2, [r0, #0x30]
-	ldr r0, _020A356C ; =0x021D44D4
+	ldr r0, _020A356C ; =_021D44D4
 	str r2, [r1, #0x74]
 	bl SOCL_Startup
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020A3560: .word AllocFunc_SOCL
-_020A3564: .word 0x021D4494
+_020A3564: .word _021D4494
 _020A3568: .word FreeFunc_SOCL
-_020A356C: .word 0x021D44D4
+_020A356C: .word _021D44D4
 	arm_func_end SOC_Startup
 
 	arm_func_start SOC_Cleanup
@@ -3543,17 +3684,17 @@ _020A3578: .word SOCL_Cleanup
 SOC_InetNtoA: ; 0x020A357C
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
-	ldr r2, _020A35A8 ; =0x021D450C
+	ldr r2, _020A35A8 ; =_021D450C
 	add r1, sp, #8
 	mov r0, #2
 	mov r3, #0x10
 	bl SOC_InetNtoP
-	ldr r0, _020A35A8 ; =0x021D450C
+	ldr r0, _020A35A8 ; =_021D450C
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_020A35A8: .word 0x021D450C
+_020A35A8: .word _021D450C
 	arm_func_end SOC_InetNtoA
 
 	arm_func_start SOC_InetAtoN
@@ -3778,8 +3919,8 @@ _020A3864:
 	arm_func_start reset_network_vars
 reset_network_vars: ; 0x020A3874
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _020A3968 ; =0x021D4620
-	ldr r2, _020A3968 ; =0x021D4620
+	ldr r1, _020A3968 ; =_021D4620
+	ldr r2, _020A3968 ; =_021D4620
 	ldr r1, [r1, #0x50]
 	str r0, [r2, #0xc]
 	cmp r1, #0
@@ -3794,10 +3935,10 @@ reset_network_vars: ; 0x020A3874
 	str r1, [r2, #0x20]
 	cmp r3, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	ldr r0, _020A396C ; =0x021D46A0
+	ldr r0, _020A396C ; =_021D46A0
 	mov r2, #0x60
 	bl MI_CpuFill8
-	ldr r0, _020A3970 ; =0x021E16A0
+	ldr r0, _020A3970 ; =OSi_ThreadInfo
 	ldr r6, [r0, #8]
 	cmp r6, #0
 	beq _020A3924
@@ -3825,8 +3966,8 @@ _020A3918:
 	bne _020A38DC
 _020A3924:
 	mov r6, #0
-	ldr r7, _020A3974 ; =0x021D4948
-	ldr r4, _020A3968 ; =0x021D4620
+	ldr r7, _020A3974 ; =_021D4948
+	ldr r4, _020A3968 ; =_021D4620
 	mov r5, r6
 _020A3934:
 	ldrh r0, [r7, #4]
@@ -3844,16 +3985,16 @@ _020A3950:
 	bl CPSi_SslCleanup
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A3968: .word 0x021D4620
-_020A396C: .word 0x021D46A0
-_020A3970: .word 0x021E16A0
-_020A3974: .word 0x021D4948
+_020A3968: .word _021D4620
+_020A396C: .word _021D46A0
+_020A3970: .word OSi_ThreadInfo
+_020A3974: .word _021D4948
 	arm_func_end reset_network_vars
 
 	arm_func_start OS_YieldThread__
 OS_YieldThread__: ; 0x020A3978
 	stmdb sp!, {r3, lr}
-	ldr r0, _020A399C ; =0x021D4620
+	ldr r0, _020A399C ; =_021D4620
 	ldr r0, [r0, #0x24]
 	cmp r0, #0
 	bne _020A3994
@@ -3863,7 +4004,7 @@ _020A3994:
 	bl OS_Sleep
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A399C: .word 0x021D4620
+_020A399C: .word _021D4620
 	arm_func_end OS_YieldThread__
 
 	arm_func_start empty_func
@@ -3890,7 +4031,7 @@ CPS_Startup: ; 0x020A39AC
 	cmpeq r5, #0
 	mov r1, #0
 	beq _020A3A04
-	ldr r0, _020A3BA8 ; =0x021D4620
+	ldr r0, _020A3BA8 ; =_021D4620
 	ldr r2, _020A3BAC ; =0x6C078965
 	str r5, [r0, #0x68]
 	str r3, [r0, #0x6c]
@@ -3903,7 +4044,7 @@ CPS_Startup: ; 0x020A39AC
 	b _020A3A34
 _020A3A04:
 	bl OS_GetTick
-	ldr r2, _020A3BA8 ; =0x021D4620
+	ldr r2, _020A3BA8 ; =_021D4620
 	ldr r3, _020A3BAC ; =0x6C078965
 	str r0, [r2, #0x68]
 	str r1, [r2, #0x6c]
@@ -3920,26 +4061,26 @@ _020A3A34:
 	ldrne r0, [r4, #8]
 	cmpne r0, #0
 	beq _020A3A58
-	ldr r0, _020A3BA8 ; =0x021D4620
+	ldr r0, _020A3BA8 ; =_021D4620
 	str r1, [r0, #0x14]
 	ldr r1, [r4, #8]
 	b _020A3A64
 _020A3A58:
 	ldr r1, _020A3BB8 ; =empty_func
-	ldr r0, _020A3BA8 ; =0x021D4620
+	ldr r0, _020A3BA8 ; =_021D4620
 	str r1, [r0, #0x14]
 _020A3A64:
 	str r1, [r0, #0x40]
 	ldr r1, [r4]
-	ldr r0, _020A3BA8 ; =0x021D4620
-	ldr r2, _020A3BA8 ; =0x021D4620
+	ldr r0, _020A3BA8 ; =_021D4620
+	ldr r2, _020A3BA8 ; =_021D4620
 	str r1, [r0, #0x10]
 	ldr r1, [r4, #0x24]
 	cmp r1, #0
 	ldreq r1, _020A3BBC ; =0x000005B4
 	strh r1, [r0, #2]
 	ldr r1, [r4, #0x28]
-	ldr r0, _020A3BA8 ; =0x021D4620
+	ldr r0, _020A3BA8 ; =_021D4620
 	str r1, [r0, #0x34]
 	ldr r1, [r4, #0x2c]
 	str r1, [r0, #0x24]
@@ -3949,9 +4090,9 @@ _020A3A64:
 	str r1, [r0, #0x18]
 	ldr r1, [r4, #0x10]
 	cmp r1, #0
-	ldrne r0, _020A3BA8 ; =0x021D4620
+	ldrne r0, _020A3BA8 ; =_021D4620
 	ldreq r1, _020A3BC0 ; =default_link_is_on
-	ldreq r0, _020A3BA8 ; =0x021D4620
+	ldreq r0, _020A3BA8 ; =_021D4620
 	str r1, [r0, #0x48]
 	ldr r1, [r4, #0x1c]
 	mov r0, #0
@@ -3976,12 +4117,12 @@ _020A3A64:
 	mla r4, r5, r0, r4
 	mla r4, r0, r1, r4
 	str ip, [r2, #0x68]
-	ldr r0, _020A3BC8 ; =0x021D4B08
+	ldr r0, _020A3BC8 ; =_021D4B08
 	str r5, [r2, #0x6c]
 	add r1, r4, #0x400
 	strh r1, [r2, #8]
 	bl OS_GetMacAddress
-	ldr r0, _020A3BA8 ; =0x021D4620
+	ldr r0, _020A3BA8 ; =_021D4620
 	mov r2, #0
 	strb r2, [r0, #1]
 	mov r1, #0x800
@@ -3989,29 +4130,29 @@ _020A3A64:
 	ldr r0, _020A3BCC ; =_02110684
 	ldr r1, _020A3BD0 ; =tcpip
 	ldr r4, [r0]
-	ldr r0, _020A3BD4 ; =0x021D4888
-	ldr r3, _020A3BD8 ; =0x021D5E60
+	ldr r0, _020A3BD4 ; =_021D4888
+	ldr r3, _020A3BD8 ; =_021D5E60
 	str r4, [sp, #4]
 	bl OS_CreateThread
 	mov r1, #0x800
 	ldr r0, _020A3BCC ; =_02110684
 	str r1, [sp]
 	ldr r1, [r0]
-	ldr r0, _020A3BDC ; =0x021D47C8
+	ldr r0, _020A3BDC ; =_021D47C8
 	str r1, [sp, #4]
 	ldr r1, _020A3BE0 ; =scavenger
-	ldr r3, _020A3BE4 ; =0x021D5660
+	ldr r3, _020A3BE4 ; =_021D5660
 	mov r2, #0
 	bl OS_CreateThread
-	ldr r0, _020A3BD4 ; =0x021D4888
+	ldr r0, _020A3BD4 ; =_021D4888
 	bl OS_WakeupThreadDirect
-	ldr r0, _020A3BDC ; =0x021D47C8
+	ldr r0, _020A3BDC ; =_021D47C8
 	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020A3BA4: .word _version_UBIQUITOUS_CPS
-_020A3BA8: .word 0x021D4620
+_020A3BA8: .word _021D4620
 _020A3BAC: .word 0x6C078965
 _020A3BB0: .word 0x5D588B65
 _020A3BB4: .word 0x00269EC3
@@ -4019,14 +4160,14 @@ _020A3BB8: .word empty_func
 _020A3BBC: .word 0x000005B4
 _020A3BC0: .word default_link_is_on
 _020A3BC4: .word 0x00000F88
-_020A3BC8: .word 0x021D4B08
+_020A3BC8: .word _021D4B08
 _020A3BCC: .word _02110684
 _020A3BD0: .word tcpip
-_020A3BD4: .word 0x021D4888
-_020A3BD8: .word 0x021D5E60
-_020A3BDC: .word 0x021D47C8
+_020A3BD4: .word _021D4888
+_020A3BD8: .word _021D5E60
+_020A3BDC: .word _021D47C8
 _020A3BE0: .word scavenger
-_020A3BE4: .word 0x021D5660
+_020A3BE4: .word _021D5660
 	arm_func_end CPS_Startup
 
 	arm_func_start CPS_CalmDown
@@ -4034,14 +4175,14 @@ CPS_CalmDown: ; 0x020A3BE8
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_DisableInterrupts
 	mov r4, r0
-	ldr r0, _020A3C30 ; =0x021D47C8
+	ldr r0, _020A3C30 ; =_021D47C8
 	bl OS_IsThreadTerminated
 	movs r5, r0
-	ldreq r1, _020A3C34 ; =0x021D4620
+	ldreq r1, _020A3C34 ; =_021D4620
 	ldreq r0, [r1, #0x44]
 	cmpeq r0, #0
 	bne _020A3C20
-	ldr r0, _020A3C30 ; =0x021D47C8
+	ldr r0, _020A3C30 ; =_021D47C8
 	mov r2, #1
 	str r2, [r1, #0x44]
 	bl OS_WakeupThreadDirect
@@ -4051,40 +4192,40 @@ _020A3C20:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020A3C30: .word 0x021D47C8
-_020A3C34: .word 0x021D4620
+_020A3C30: .word _021D47C8
+_020A3C34: .word _021D4620
 	arm_func_end CPS_CalmDown
 
 	arm_func_start CPS_SetScavengerCallback
 CPS_SetScavengerCallback: ; 0x020A3C38
-	ldr r1, _020A3C44 ; =0x021D4620
+	ldr r1, _020A3C44 ; =_021D4620
 	str r0, [r1, #0x3c]
 	bx lr
 	.align 2, 0
-_020A3C44: .word 0x021D4620
+_020A3C44: .word _021D4620
 	arm_func_end CPS_SetScavengerCallback
 
 	arm_func_start CPS_Cleanup
 CPS_Cleanup: ; 0x020A3C48
 	stmdb sp!, {r3, lr}
 	bl CPS_CalmDown
-	ldr r0, _020A3C84 ; =0x021D47C8
+	ldr r0, _020A3C84 ; =_021D47C8
 	bl OS_JoinThread
-	ldr r0, _020A3C88 ; =0x021D4888
+	ldr r0, _020A3C88 ; =_021D4888
 	bl OS_DestroyThread
-	ldr r1, _020A3C8C ; =0x021D4620
+	ldr r1, _020A3C8C ; =_021D4620
 	mov r0, #0
 	str r0, [r1, #0x54]
 	bl reset_network_vars
-	ldr r0, _020A3C8C ; =0x021D4620
+	ldr r0, _020A3C8C ; =_021D4620
 	mov r1, #0
 	str r1, [r0, #0x58]
 	str r1, [r0, #0x5c]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A3C84: .word 0x021D47C8
-_020A3C88: .word 0x021D4888
-_020A3C8C: .word 0x021D4620
+_020A3C84: .word _021D47C8
+_020A3C88: .word _021D4888
+_020A3C8C: .word _021D4620
 	arm_func_end CPS_Cleanup
 
 	arm_func_start CPS_SetThreadPriority
@@ -4092,18 +4233,18 @@ CPS_SetThreadPriority: ; 0x020A3C90
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r2, _020A3CBC ; =_02110684
-	ldr r0, _020A3CC0 ; =0x021D4888
+	ldr r0, _020A3CC0 ; =_021D4888
 	mov r1, r4
 	str r4, [r2]
 	bl OS_SetThreadPriority
-	ldr r0, _020A3CC4 ; =0x021D47C8
+	ldr r0, _020A3CC4 ; =_021D47C8
 	mov r1, r4
 	bl OS_SetThreadPriority
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020A3CBC: .word _02110684
-_020A3CC0: .word 0x021D4888
-_020A3CC4: .word 0x021D47C8
+_020A3CC0: .word _021D4888
+_020A3CC4: .word _021D47C8
 	arm_func_end CPS_SetThreadPriority
 
 	arm_func_start calc_checksum_do
@@ -4217,7 +4358,7 @@ ip_islocal: ; 0x020A3E04
 	subne r1, ip, #0x81000000
 	cmpne r0, r1
 	beq _020A3E38
-	ldr r1, _020A3E40 ; =0x021D4620
+	ldr r1, _020A3E40 ; =_021D4620
 	ldr r3, [r1, #0x1c]
 	ldr r1, [r1, #0x50]
 	and r2, r0, r3
@@ -4228,7 +4369,7 @@ _020A3E38:
 	mov r0, ip
 	bx lr
 	.align 2, 0
-_020A3E40: .word 0x021D4620
+_020A3E40: .word _021D4620
 	arm_func_end ip_islocal
 
 	arm_func_start get_targetip
@@ -4237,12 +4378,12 @@ get_targetip: ; 0x020A3E44
 	mov r4, r0
 	bl ip_islocal
 	cmp r0, #0
-	ldreq r0, _020A3E64 ; =0x021D4620
+	ldreq r0, _020A3E64 ; =_021D4620
 	ldreq r4, [r0, #0x2c]
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A3E64: .word 0x021D4620
+_020A3E64: .word _021D4620
 	arm_func_end get_targetip
 
 	arm_func_start is_broadcast
@@ -4253,7 +4394,7 @@ is_broadcast: ; 0x020A3E68
 	bl ip_islocal
 	cmp r0, #0
 	beq _020A3E98
-	ldr r0, _020A3EA0 ; =0x021D4620
+	ldr r0, _020A3EA0 ; =_021D4620
 	ldr r0, [r0, #0x1c]
 	mvn r1, r0
 	and r0, r1, r5
@@ -4263,7 +4404,7 @@ _020A3E98:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020A3EA0: .word 0x021D4620
+_020A3EA0: .word _021D4620
 	arm_func_end is_broadcast
 
 	arm_func_start is_multicast
@@ -4278,7 +4419,7 @@ is_multicast: ; 0x020A3EA4
 	arm_func_start ip_isme
 ip_isme: ; 0x020A3EB8
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _020A3F30 ; =0x021D4620
+	ldr r1, _020A3F30 ; =_021D4620
 	mov r4, #1
 	ldr r1, [r1, #0x50]
 	mov r6, r0
@@ -4311,7 +4452,7 @@ _020A3F28:
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020A3F30: .word 0x021D4620
+_020A3F30: .word _021D4620
 _020A3F34: .word 0x7F000001
 	arm_func_end ip_isme
 
@@ -4350,19 +4491,19 @@ send_packet: ; 0x020A3F64
 	bl WCM_SendDCFDataEx
 	cmp r0, #0
 	movlt r1, #1
-	ldr r0, _020A3FBC ; =0x021D4620
+	ldr r0, _020A3FBC ; =_021D4620
 	movge r1, #0
 	strb r1, [r0]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A3FB8: .word _02110690
-_020A3FBC: .word 0x021D4620
+_020A3FBC: .word _021D4620
 	arm_func_end send_packet
 
 	arm_func_start put_in_buffer
 put_in_buffer: ; 0x020A3FC0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r4, _020A41A8 ; =0x021D4620
+	ldr r4, _020A41A8 ; =_021D4620
 	mov r7, r0
 	ldr ip, [r4, #0x58]
 	mov r6, r2
@@ -4395,7 +4536,7 @@ put_in_buffer: ; 0x020A3FC0
 	cmp r2, #0
 	cmpne r2, #6
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
-	ldr r2, _020A41A8 ; =0x021D4620
+	ldr r2, _020A41A8 ; =_021D4620
 	add r0, r0, #9
 	bic r0, r0, #1
 	ldr r8, [r2, #0x28]
@@ -4410,7 +4551,7 @@ put_in_buffer: ; 0x020A3FC0
 	cmp r0, r4
 	ldmlsia sp!, {r4, r5, r6, r7, r8, pc}
 _020A4080:
-	ldr r0, _020A41A8 ; =0x021D4620
+	ldr r0, _020A41A8 ; =_021D4620
 	ldr r2, [r0, #0x5c]
 	cmp r4, r2
 	bne _020A40A4
@@ -4428,7 +4569,7 @@ _020A40A4:
 	cmp r0, r3
 	ldmlsia sp!, {r4, r5, r6, r7, r8, pc}
 _020A40C0:
-	ldr r0, _020A41A8 ; =0x021D4620
+	ldr r0, _020A41A8 ; =_021D4620
 	ldr lr, [r0, #0x28]
 	ldr r2, [r0, #0x5c]
 	add lr, lr, r3
@@ -4441,11 +4582,11 @@ _020A40C0:
 	ldrhs r0, [r0, #0x28]
 	movhs r2, #0
 	strhsh r2, [ip, r0]
-	ldr r0, _020A41A8 ; =0x021D4620
+	ldr r0, _020A41A8 ; =_021D4620
 	mov r2, #0
 	str r2, [r0, #0x28]
 _020A4100:
-	ldr ip, _020A41A8 ; =0x021D4620
+	ldr ip, _020A41A8 ; =_021D4620
 	mov r0, r1
 	ldr lr, [ip, #0x58]
 	ldr r1, [ip, #0x28]
@@ -4456,7 +4597,7 @@ _020A4100:
 	add r1, r3, r1
 	add r1, r1, #2
 	bl MI_CpuCopy8
-	ldr r1, _020A41A8 ; =0x021D4620
+	ldr r1, _020A41A8 ; =_021D4620
 	mov r0, r7
 	ldr r3, [r1, #0x58]
 	ldr r1, [r1, #0x28]
@@ -4464,7 +4605,7 @@ _020A4100:
 	add r1, r3, r1
 	add r1, r1, #8
 	bl MI_CpuCopy8
-	ldr r1, _020A41A8 ; =0x021D4620
+	ldr r1, _020A41A8 ; =_021D4620
 	add r0, r6, #6
 	ldr r3, [r1, #0x58]
 	ldr r1, [r1, #0x28]
@@ -4477,7 +4618,7 @@ _020A4100:
 	ldrne r2, [sp, #0x1c]
 	cmpne r2, #0
 	beq _020A419C
-	ldr r1, _020A41A8 ; =0x021D4620
+	ldr r1, _020A41A8 ; =_021D4620
 	ldr r3, [r1, #0x58]
 	ldr r1, [r1, #0x28]
 	add r1, r3, r1
@@ -4485,11 +4626,11 @@ _020A4100:
 	add r1, r1, r5
 	bl MI_CpuCopy8
 _020A419C:
-	ldr r0, _020A41A8 ; =0x021D4620
+	ldr r0, _020A41A8 ; =_021D4620
 	str r4, [r0, #0x28]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020A41A8: .word 0x021D4620
+_020A41A8: .word _021D4620
 _020A41AC: .word 0x000005E4
 _020A41B0: .word _02110690
 	arm_func_end put_in_buffer
@@ -4502,7 +4643,7 @@ CPSi_RecvCallbackFunc: ; 0x020A41B4
 	str ip, [sp]
 	str ip, [sp, #4]
 	bl put_in_buffer
-	ldr r0, _020A4208 ; =0x021D4620
+	ldr r0, _020A4208 ; =_021D4620
 	ldr r1, [r0, #0x54]
 	cmp r1, #0
 	addeq sp, sp, #8
@@ -4512,13 +4653,13 @@ CPSi_RecvCallbackFunc: ; 0x020A41B4
 	cmp r0, #0
 	addne sp, sp, #8
 	ldmneia sp!, {r3, pc}
-	ldr r0, _020A4208 ; =0x021D4620
+	ldr r0, _020A4208 ; =_021D4620
 	ldr r0, [r0, #0x54]
 	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A4208: .word 0x021D4620
+_020A4208: .word _021D4620
 	arm_func_end CPSi_RecvCallbackFunc
 
 	arm_func_start receive_packet
@@ -4526,14 +4667,14 @@ receive_packet: ; 0x020A420C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r0
 	bl OS_DisableInterrupts
-	ldr sb, _020A42C4 ; =0x021D4620
+	ldr sb, _020A42C4 ; =_021D4620
 	mov r6, r0
 	ldr r1, [sb, #0x30]
 	ldr r0, [sb, #0x28]
 	cmp r1, r0
 	bne _020A4260
 	mov r5, #0
-	ldr r8, _020A42C8 ; =0x021E16A0
+	ldr r8, _020A42C8 ; =OSi_ThreadInfo
 	mov r4, r5
 _020A423C:
 	ldr r1, [r8, #4]
@@ -4548,7 +4689,7 @@ _020A423C:
 _020A4260:
 	mov r0, r6
 	bl OS_RestoreInterrupts
-	ldr r0, _020A42C4 ; =0x021D4620
+	ldr r0, _020A42C4 ; =_021D4620
 	mov r3, #0
 	ldr r5, [r0, #0x58]
 	mov r1, r3
@@ -4565,7 +4706,7 @@ _020A4278:
 	cmp r2, #0
 	beq _020A4278
 	sub r1, r2, #2
-	ldr r0, _020A42C4 ; =0x021D4620
+	ldr r0, _020A42C4 ; =_021D4620
 	str r1, [r7]
 	ldr r1, [r0, #0x58]
 	ldr r0, [r0, #0x30]
@@ -4573,15 +4714,15 @@ _020A4278:
 	add r0, r0, #2
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020A42C4: .word 0x021D4620
-_020A42C8: .word 0x021E16A0
+_020A42C4: .word _021D4620
+_020A42C8: .word OSi_ThreadInfo
 	arm_func_end receive_packet
 
 	arm_func_start throw_packet
 throw_packet: ; 0x020A42CC
 	stmdb sp!, {r3, lr}
 	bl OS_DisableInterrupts
-	ldr r1, _020A430C ; =0x021D4620
+	ldr r1, _020A430C ; =_021D4620
 	ldr ip, [r1, #0x30]
 	ldr r3, [r1, #0x58]
 	ldr r2, [r1, #0x30]
@@ -4596,7 +4737,7 @@ throw_packet: ; 0x020A42CC
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A430C: .word 0x021D4620
+_020A430C: .word _021D4620
 	arm_func_end throw_packet
 
 	arm_func_start inq_arpcache
@@ -4607,11 +4748,11 @@ inq_arpcache: ; 0x020A4310
 	ldr r1, _020A43C8 ; =0x7F000001
 	mov r4, r0
 	cmp r5, r1
-	ldrne r0, _020A43CC ; =0x021D4620
+	ldrne r0, _020A43CC ; =_021D4620
 	mov r7, #0
 	ldrne r0, [r0, #0x50]
 	cmpne r5, r0
-	ldreq r7, _020A43D0 ; =0x021D4B08
+	ldreq r7, _020A43D0 ; =_021D4B08
 	beq _020A43B8
 	mov r0, r5
 	bl is_broadcast
@@ -4625,7 +4766,7 @@ _020A4360:
 	ldr r7, _020A43D4 ; =_02110688
 	b _020A43B8
 _020A4368:
-	ldr r1, _020A43D8 ; =0x021D46A0
+	ldr r1, _020A43D8 ; =_021D46A0
 	mov r6, r7
 _020A4370:
 	ldr r0, [r1]
@@ -4634,10 +4775,10 @@ _020A4370:
 	bl OS_GetTick
 	mov r2, #0xc
 	mul r3, r6, r2
-	ldr r2, _020A43D8 ; =0x021D46A0
+	ldr r2, _020A43D8 ; =_021D46A0
 	mov r5, r0, lsr #0x10
 	add r0, r2, r3
-	ldr r2, _020A43DC ; =0x021D46AA
+	ldr r2, _020A43DC ; =_021D46AA
 	orr r5, r5, r1, lsl #16
 	strh r5, [r2, r3]
 	add r7, r0, #4
@@ -4654,11 +4795,11 @@ _020A43B8:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A43C8: .word 0x7F000001
-_020A43CC: .word 0x021D4620
-_020A43D0: .word 0x021D4B08
+_020A43CC: .word _021D4620
+_020A43D0: .word _021D4B08
 _020A43D4: .word _02110688
-_020A43D8: .word 0x021D46A0
-_020A43DC: .word 0x021D46AA
+_020A43D8: .word _021D46A0
+_020A43DC: .word _021D46AA
 	arm_func_end inq_arpcache
 
 	arm_func_start send_arprequest
@@ -4674,7 +4815,7 @@ send_arprequest: ; 0x020A43E0
 	mov r1, #0xff
 	mov r2, #6
 	bl MI_CpuFill8
-	ldr r0, _020A44CC ; =0x021D4B08
+	ldr r0, _020A44CC ; =_021D4B08
 	add r1, sp, #6
 	mov r2, #6
 	bl MI_CpuCopy8
@@ -4687,11 +4828,11 @@ send_arprequest: ; 0x020A43E0
 	ldr r1, _020A44D4 ; =0x00000406
 	strb r0, [sp, #0x10]
 	strh r1, [sp, #0x12]
-	ldr r0, _020A44CC ; =0x021D4B08
+	ldr r0, _020A44CC ; =_021D4B08
 	add r1, sp, #0x16
 	mov r2, #6
 	bl MI_CpuCopy8
-	ldr r0, _020A44D8 ; =0x021D4620
+	ldr r0, _020A44D8 ; =_021D4620
 	mov r1, r4, lsr #0x10
 	ldr r3, [r0, #0x50]
 	mov r0, r1, lsl #0x10
@@ -4723,17 +4864,17 @@ send_arprequest: ; 0x020A43E0
 	add sp, sp, #0x2c
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_020A44CC: .word 0x021D4B08
+_020A44CC: .word _021D4B08
 _020A44D0: .word 0x00000608
 _020A44D4: .word 0x00000406
-_020A44D8: .word 0x021D4620
+_020A44D8: .word _021D4620
 	arm_func_end send_arprequest
 
 	arm_func_start arprequest
 arprequest: ; 0x020A44DC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, #0
-	ldr r4, _020A4548 ; =0x021D4620
+	ldr r4, _020A4548 ; =_021D4620
 	mov sb, r0
 	mov r5, #0x64
 	mov r6, r7
@@ -4761,7 +4902,7 @@ _020A4500:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020A4548: .word 0x021D4620
+_020A4548: .word _021D4620
 	arm_func_end arprequest
 
 	arm_func_start reg_arpcache
@@ -4771,7 +4912,7 @@ reg_arpcache: ; 0x020A454C
 	mov r6, r1
 	mov r7, r0
 	cmp r6, r3
-	ldrne r0, _020A467C ; =0x021D4620
+	ldrne r0, _020A467C ; =_021D4620
 	mov r5, r2
 	ldrne r0, [r0, #0x50]
 	cmpne r6, r0
@@ -4788,7 +4929,7 @@ reg_arpcache: ; 0x020A454C
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	mov r0, r0, lsl #0x10
-	ldr r2, _020A4680 ; =0x021D46A0
+	ldr r2, _020A4680 ; =_021D46A0
 	mov r4, r0, lsr #0x10
 	mov r1, #0
 _020A45B0:
@@ -4797,8 +4938,8 @@ _020A45B0:
 	bne _020A45E8
 	mov r0, #0xc
 	mul r5, r1, r0
-	ldr r0, _020A4680 ; =0x021D46A0
-	ldr r3, _020A4684 ; =0x021D46AA
+	ldr r0, _020A4680 ; =_021D46A0
+	ldr r3, _020A4684 ; =_021D46AA
 	add r1, r0, r5
 	mov r0, r7
 	add r1, r1, #4
@@ -4814,7 +4955,7 @@ _020A45E8:
 	cmp r5, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r2, #0
-	ldr r3, _020A4680 ; =0x021D46A0
+	ldr r3, _020A4680 ; =_021D46A0
 	mov r1, r2
 	mov r5, r2
 _020A4610:
@@ -4835,21 +4976,21 @@ _020A4610:
 _020A4648:
 	mov r0, #0xc
 	mul r5, r1, r0
-	ldr r3, _020A4680 ; =0x021D46A0
+	ldr r3, _020A4680 ; =_021D46A0
 	mov r0, r7
 	add r1, r3, r5
 	add r1, r1, #4
 	mov r2, #6
 	str r6, [r3, r5]
 	bl MI_CpuCopy8
-	ldr r0, _020A4684 ; =0x021D46AA
+	ldr r0, _020A4684 ; =_021D46AA
 	strh r4, [r0, r5]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A4678: .word 0x7F000001
-_020A467C: .word 0x021D4620
-_020A4680: .word 0x021D46A0
-_020A4684: .word 0x021D46AA
+_020A467C: .word _021D4620
+_020A4680: .word _021D46A0
+_020A4684: .word _021D46AA
 	arm_func_end reg_arpcache
 
 	arm_func_start send_ether
@@ -4898,7 +5039,7 @@ _020A46FC:
 	strb r0, [r8, #-0xa]
 	strb r4, [r8, #-9]
 _020A472C:
-	ldr r0, _020A4754 ; =0x021D4B08
+	ldr r0, _020A4754 ; =_021D4B08
 	sub r1, r8, #8
 	mov r2, #6
 	bl MI_CpuCopy8
@@ -4909,7 +5050,7 @@ _020A472C:
 	bl send_packet
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020A4754: .word 0x021D4B08
+_020A4754: .word _021D4B08
 	arm_func_end send_ether
 
 	arm_func_start send_ip_frag
@@ -4944,7 +5085,7 @@ send_ip_frag: ; 0x020A4758
 	orr r0, r2, r0, asr #8
 	strh r0, [r8, #-0xa]
 	cmp r4, r1
-	ldrne r0, _020A4874 ; =0x021D4620
+	ldrne r0, _020A4874 ; =_021D4620
 	ldrne r0, [r0, #0x50]
 	cmpne r4, r0
 	beq _020A4800
@@ -4959,7 +5100,7 @@ send_ip_frag: ; 0x020A4758
 _020A4800:
 	ldr r0, _020A4870 ; =0x7F000001
 	cmp r4, r0
-	ldrne r0, _020A4874 ; =0x021D4620
+	ldrne r0, _020A4874 ; =_021D4620
 	ldrne r0, [r0, #0x50]
 	cmpne r4, r0
 	beq _020A482C
@@ -4975,7 +5116,7 @@ _020A482C:
 	bl MI_CpuCopy8
 	bl OS_DisableInterrupts
 	mov r4, r0
-	ldr r0, _020A487C ; =0x021D4B08
+	ldr r0, _020A487C ; =_021D4B08
 	str r6, [sp]
 	mov r1, r0
 	str r5, [sp, #4]
@@ -4988,9 +5129,9 @@ _020A482C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020A4870: .word 0x7F000001
-_020A4874: .word 0x021D4620
+_020A4874: .word _021D4620
 _020A4878: .word _02110690
-_020A487C: .word 0x021D4B08
+_020A487C: .word _021D4B08
 	arm_func_end send_ip_frag
 
 	arm_func_start send_ip
@@ -5001,7 +5142,7 @@ send_ip: ; 0x020A4880
 	mov r0, #0x45
 	strb r0, [sl, #-0x14]
 	mov r4, #0
-	ldr r7, _020A4A70 ; =0x021D4620
+	ldr r7, _020A4A70 ; =_021D4620
 	strb r4, [sl, #-0x13]
 	ldrh r0, [r7, #6]
 	ldr r6, [sp, #0x30]
@@ -5127,7 +5268,7 @@ _020A4A40:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020A4A70: .word 0x021D4620
+_020A4A70: .word _021D4620
 _020A4A74: .word 0x000005C8
 	arm_func_end send_ip
 
@@ -5139,8 +5280,8 @@ send_ping: ; 0x020A4A78
 	ldr r4, [r5, #0x4c]
 	mov r6, r1
 	mov r1, #8
-	ldr r3, _020A4B20 ; =0x021D4620
-	ldr r2, _020A4B24 ; =0x021E16A0
+	ldr r3, _020A4B20 ; =_021D4620
+	ldr r2, _020A4B24 ; =OSi_ThreadInfo
 	strh r1, [r4, #0x22]
 	ldr r2, [r2, #4]
 	ldrh lr, [r3, #4]
@@ -5176,15 +5317,15 @@ send_ping: ; 0x020A4A78
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A4B20: .word 0x021D4620
-_020A4B24: .word 0x021E16A0
+_020A4B20: .word _021D4620
+_020A4B24: .word OSi_ThreadInfo
 	arm_func_end send_ping
 
 	arm_func_start send_udp
 send_udp: ; 0x020A4B28
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
-	ldr r7, _020A4C60 ; =0x021D4620
+	ldr r7, _020A4C60 ; =_021D4620
 	mov r5, r2
 	ldr r2, [r7, #0x50]
 	mov r6, r1
@@ -5261,7 +5402,7 @@ send_udp: ; 0x020A4B28
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A4C60: .word 0x021D4620
+_020A4C60: .word _021D4620
 	arm_func_end send_udp
 
 	arm_func_start send_tcp
@@ -5276,14 +5417,14 @@ send_tcp: ; 0x020A4C64
 	mov r6, r3
 	addeq sp, sp, #8
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-	ldr r0, _020A4EC8 ; =0x021E16A0
-	ldr r1, _020A4ECC ; =0x021D4888
+	ldr r0, _020A4EC8 ; =OSi_ThreadInfo
+	ldr r1, _020A4ECC ; =_021D4888
 	ldr r0, [r0, #4]
 	cmp r0, r1
-	ldreq r4, _020A4ED0 ; =0x021D4B32
+	ldreq r4, _020A4ED0 ; =_021D4B32
 	ldrne r0, [r7, #0x4c]
 	addne r4, r0, #0x22
-	ldr r0, _020A4ED4 ; =0x021D4620
+	ldr r0, _020A4ED4 ; =_021D4620
 	ands r2, r6, #2
 	movne r5, #0x18
 	moveq r5, #0x14
@@ -5421,10 +5562,10 @@ _020A4E48:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_020A4EC8: .word 0x021E16A0
-_020A4ECC: .word 0x021D4888
-_020A4ED0: .word 0x021D4B32
-_020A4ED4: .word 0x021D4620
+_020A4EC8: .word OSi_ThreadInfo
+_020A4ECC: .word _021D4888
+_020A4ED0: .word _021D4B32
+_020A4ED4: .word _021D4620
 	arm_func_end send_tcp
 
 	arm_func_start reply_arp
@@ -5437,11 +5578,11 @@ reply_arp: ; 0x020A4ED8
 	mov r2, #0xa
 	strh r3, [r4, #6]
 	bl MI_CpuCopy8
-	ldr r0, _020A4F78 ; =0x021D4B08
+	ldr r0, _020A4F78 ; =_021D4B08
 	add r1, r4, #8
 	mov r2, #6
 	bl MI_CpuCopy8
-	ldr r3, _020A4F7C ; =0x021D4620
+	ldr r3, _020A4F7C ; =_021D4620
 	add r0, r4, #0x12
 	ldr r2, [r3, #0x50]
 	sub r1, r4, #0xe
@@ -5459,7 +5600,7 @@ reply_arp: ; 0x020A4ED8
 	orr r3, r3, ip, asr #8
 	strh r3, [r4, #0x10]
 	bl MI_CpuCopy8
-	ldr r0, _020A4F78 ; =0x021D4B08
+	ldr r0, _020A4F78 ; =_021D4B08
 	sub r1, r4, #8
 	mov r2, #6
 	bl MI_CpuCopy8
@@ -5470,8 +5611,8 @@ reply_arp: ; 0x020A4ED8
 	bl send_packet
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A4F78: .word 0x021D4B08
-_020A4F7C: .word 0x021D4620
+_020A4F78: .word _021D4B08
+_020A4F7C: .word _021D4620
 	arm_func_end reply_arp
 
 	arm_func_start dispatch_arp
@@ -5480,11 +5621,11 @@ dispatch_arp: ; 0x020A4F80
 	mov r6, r0
 	cmp r1, #0x1c
 	ldmloia sp!, {r3, r4, r5, r6, r7, pc}
-	ldr r1, _020A50B8 ; =0x021D4B08
+	ldr r1, _020A50B8 ; =_021D4B08
 	add r0, r6, #8
 	bl maccmp
 	cmp r0, #0
-	ldrne r0, _020A50BC ; =0x021D4620
+	ldrne r0, _020A50BC ; =_021D4620
 	ldrne r0, [r0, #0x50]
 	cmpne r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -5514,7 +5655,7 @@ dispatch_arp: ; 0x020A4F80
 	mov r0, r3, lsl #0x10
 	mov r1, r1, lsl #0x10
 	ldrh ip, [r6, #0x18]
-	ldr r2, _020A50BC ; =0x021D4620
+	ldr r2, _020A50BC ; =_021D4620
 	mov r3, r0, lsr #0x10
 	mov r1, r1, lsr #0x10
 	ldr r0, [r2, #0x50]
@@ -5552,13 +5693,13 @@ _020A5098:
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	cmp r7, #0
 	cmpne r5, #0
-	ldrne r0, _020A50BC ; =0x021D4620
+	ldrne r0, _020A50BC ; =_021D4620
 	movne r1, #1
 	strneb r1, [r0, #1]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A50B8: .word 0x021D4B08
-_020A50BC: .word 0x021D4620
+_020A50B8: .word _021D4B08
+_020A50BC: .word _021D4620
 _020A50C0: .word 0x00000406
 	arm_func_end dispatch_arp
 
@@ -5631,7 +5772,7 @@ process_icmp_reply: ; 0x020A51A8
 	mov r7, r1
 	mov r6, r2
 	bl OS_DisableInterrupts
-	ldr r1, _020A52A4 ; =0x021E16A0
+	ldr r1, _020A52A4 ; =OSi_ThreadInfo
 	mov r5, r0
 	ldr r1, [r1, #8]
 	cmp r1, #0
@@ -5693,7 +5834,7 @@ _020A5298:
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020A52A4: .word 0x021E16A0
+_020A52A4: .word OSi_ThreadInfo
 	arm_func_end process_icmp_reply
 
 	arm_func_start valid_IP
@@ -5770,7 +5911,7 @@ _020A5394: .word 0x0000FFFF
 	arm_func_start check_listener
 check_listener: ; 0x020A5398
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r2, _020A5468 ; =0x021E16A0
+	ldr r2, _020A5468 ; =OSi_ThreadInfo
 	ldr ip, [r2, #8]
 	cmp ip, #0
 	beq _020A5460
@@ -5827,7 +5968,7 @@ _020A5460:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020A5468: .word 0x021E16A0
+_020A5468: .word OSi_ThreadInfo
 	arm_func_end check_listener
 
 	arm_func_start check_socket
@@ -5885,7 +6026,7 @@ _020A5518:
 	arm_func_start find_socket
 find_socket: ; 0x020A5520
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r2, _020A5580 ; =0x021E16A0
+	ldr r2, _020A5580 ; =OSi_ThreadInfo
 	mov r7, r0
 	ldr r5, [r2, #8]
 	mov r6, r1
@@ -5912,7 +6053,7 @@ _020A5578:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A5580: .word 0x021E16A0
+_020A5580: .word OSi_ThreadInfo
 	arm_func_end find_socket
 
 	arm_func_start parse_mss
@@ -5977,8 +6118,8 @@ tcp_send_handshake: ; 0x020A5624
 	bl no_need_inq
 	cmp r0, #0
 	bne _020A565C
-	ldr r0, _020A5690 ; =0x021E16A0
-	ldr r1, _020A5694 ; =0x021D4888
+	ldr r0, _020A5690 ; =OSi_ThreadInfo
+	ldr r1, _020A5694 ; =_021D4888
 	ldr r0, [r0, #4]
 	cmp r0, r1
 	beq _020A567C
@@ -5998,8 +6139,8 @@ _020A567C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_020A5690: .word 0x021E16A0
-_020A5694: .word 0x021D4888
+_020A5690: .word OSi_ThreadInfo
+_020A5694: .word _021D4888
 	arm_func_end tcp_send_handshake
 
 	arm_func_start tcp_send_ack
@@ -6025,7 +6166,7 @@ _020A56BC: .word tcp_send_handshake
 	arm_func_start tcp_send_rst
 tcp_send_rst: ; 0x020A56C0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r4, _020A57F0 ; =0x021D4764
+	ldr r4, _020A57F0 ; =_021D4764
 	mov r8, r0
 	mov r7, r1
 	mov r6, r2
@@ -6035,8 +6176,8 @@ tcp_send_rst: ; 0x020A56C0
 	mov r5, r3
 	bl MI_CpuFill8
 	ldrh r3, [r7, #2]
-	ldr r0, _020A57F4 ; =0x021D4720
-	ldr r2, _020A57F8 ; =0x021D4620
+	ldr r0, _020A57F4 ; =_021D4720
+	ldr r2, _020A57F8 ; =_021D4620
 	mov r1, r3, lsl #8
 	orr r1, r1, r3, asr #8
 	strh r1, [r0, #0x4e]
@@ -6102,9 +6243,9 @@ _020A5790:
 	bl tcp_send_handshake
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020A57F0: .word 0x021D4764
-_020A57F4: .word 0x021D4720
-_020A57F8: .word 0x021D4620
+_020A57F0: .word _021D4764
+_020A57F4: .word _021D4720
+_020A57F8: .word _021D4620
 	arm_func_end tcp_send_rst
 
 	arm_func_start dt_syn_LISTEN
@@ -6735,7 +6876,7 @@ dispatch_udp: ; 0x020A6080
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020A60B8:
 	bl OS_DisableInterrupts
-	ldr r1, _020A6288 ; =0x021E16A0
+	ldr r1, _020A6288 ; =OSi_ThreadInfo
 	mov r5, r0
 	ldr r1, [r1, #8]
 	cmp r1, #0
@@ -6858,7 +6999,7 @@ _020A627C:
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020A6288: .word 0x021E16A0
+_020A6288: .word OSi_ThreadInfo
 	arm_func_end dispatch_udp
 
 	arm_func_start check_frag
@@ -6892,7 +7033,7 @@ check_frag: ; 0x020A628C
 	mov r2, r0, lsr #0x10
 	mov r1, r1, lsr #0x10
 	ldrh r4, [sl, #4]
-	ldr r7, _020A654C ; =0x021D4948
+	ldr r7, _020A654C ; =_021D4948
 	mov r0, r6
 	mov r5, r3, lsr #0x1a
 	orr sb, r1, r2, lsl #16
@@ -6936,7 +7077,7 @@ _020A6390:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020A639C:
-	ldr r1, _020A6554 ; =0x021D4620
+	ldr r1, _020A6554 ; =_021D4620
 	add r0, r5, #0xe
 	ldr r1, [r1, #0x14]
 	add r0, r0, #0x1000
@@ -6970,7 +7111,7 @@ _020A6408:
 	cmp r8, #0x1000
 	bls _020A6440
 _020A641C:
-	ldr r1, _020A6554 ; =0x021D4620
+	ldr r1, _020A6554 ; =_021D4620
 	mov r0, #0
 	strh r0, [r7, #4]
 	ldr r0, [r7, #0x34]
@@ -7052,9 +7193,9 @@ _020A64F0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020A6548: .word 0x00003FFF
-_020A654C: .word 0x021D4948
+_020A654C: .word _021D4948
 _020A6550: .word 0x00001FFF
-_020A6554: .word 0x021D4620
+_020A6554: .word _021D4620
 	arm_func_end check_frag
 
 	arm_func_start dispatch_ip
@@ -7105,7 +7246,7 @@ dispatch_ip: ; 0x020A6558
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldrh ip, [r4, #0x12]
 	ldrh r3, [r4, #0x10]
-	ldr r2, _020A6718 ; =0x021D4620
+	ldr r2, _020A6718 ; =_021D4620
 	mov r0, ip, lsl #8
 	mov r1, r3, lsl #8
 	orr r3, r1, r3, asr #8
@@ -7153,7 +7294,7 @@ _020A667C:
 	bl dispatch_udp
 	b _020A66F4
 _020A66C8:
-	ldr r3, _020A6718 ; =0x021D4620
+	ldr r3, _020A6718 ; =_021D4620
 	ldr r3, [r3, #0x50]
 	cmp r3, #0
 	beq _020A66F4
@@ -7169,14 +7310,14 @@ _020A66F4:
 	ldr r0, [sp]
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	ldr r1, _020A6718 ; =0x021D4620
+	ldr r1, _020A6718 ; =_021D4620
 	sub r0, r4, #0xe
 	ldr r1, [r1, #0x40]
 	blx r1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A6714: .word 0x0000FFFF
-_020A6718: .word 0x021D4620
+_020A6718: .word _021D4620
 	arm_func_end dispatch_ip
 
 	arm_func_start tcpip
@@ -7219,8 +7360,8 @@ _020A6788: .word 0x00000806
 	arm_func_start CPS_SocGetEport
 CPS_SocGetEport: ; 0x020A678C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r0, _020A6828 ; =0x021E16A0
-	ldr r2, _020A682C ; =0x021D4620
+	ldr r0, _020A6828 ; =OSi_ThreadInfo
+	ldr r2, _020A682C ; =_021D4620
 	ldr r0, [r0, #8]
 	ldr r1, _020A6830 ; =0x00001388
 	mov r4, #0x400
@@ -7260,19 +7401,19 @@ _020A6808:
 _020A6814:
 	cmp r6, #0
 	bne _020A67AC
-	ldr r0, _020A682C ; =0x021D4620
+	ldr r0, _020A682C ; =_021D4620
 	ldrh r0, [r0, #8]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020A6828: .word 0x021E16A0
-_020A682C: .word 0x021D4620
+_020A6828: .word OSi_ThreadInfo
+_020A682C: .word _021D4620
 _020A6830: .word 0x00001388
 	arm_func_end CPS_SocGetEport
 
 	arm_func_start get_seqno
 get_seqno: ; 0x020A6834
 	stmdb sp!, {r3, lr}
-	ldr r1, _020A6874 ; =0x021D4620
+	ldr r1, _020A6874 ; =_021D4620
 	ldr r3, [r1, #0x70]
 	ldr r2, [r1, #0x68]
 	ldr r0, [r1, #0x6c]
@@ -7288,33 +7429,33 @@ get_seqno: ; 0x020A6834
 	str r0, [r1, #0x6c]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A6874: .word 0x021D4620
+_020A6874: .word _021D4620
 	arm_func_end get_seqno
 
 	arm_func_start CPS_SocRegister
 CPS_SocRegister: ; 0x020A6878
-	ldr r1, _020A6888 ; =0x021E16A0
+	ldr r1, _020A6888 ; =OSi_ThreadInfo
 	ldr r1, [r1, #4]
 	str r0, [r1, #0xa4]
 	bx lr
 	.align 2, 0
-_020A6888: .word 0x021E16A0
+_020A6888: .word OSi_ThreadInfo
 	arm_func_end CPS_SocRegister
 
 	arm_func_start CPS_SocUnRegister
 CPS_SocUnRegister: ; 0x020A688C
-	ldr r0, _020A68A0 ; =0x021E16A0
+	ldr r0, _020A68A0 ; =OSi_ThreadInfo
 	mov r1, #0
 	ldr r0, [r0, #4]
 	str r1, [r0, #0xa4]
 	bx lr
 	.align 2, 0
-_020A68A0: .word 0x021E16A0
+_020A68A0: .word OSi_ThreadInfo
 	arm_func_end CPS_SocUnRegister
 
 	arm_func_start CPS_SocDatagramMode
 CPS_SocDatagramMode: ; 0x020A68A4
-	ldr r0, _020A68CC ; =0x021E16A0
+	ldr r0, _020A68CC ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xa4]
 	cmp r1, #0
@@ -7325,20 +7466,20 @@ CPS_SocDatagramMode: ; 0x020A68A4
 	str r0, [r1, #0x44]
 	bx lr
 	.align 2, 0
-_020A68CC: .word 0x021E16A0
+_020A68CC: .word OSi_ThreadInfo
 	arm_func_end CPS_SocDatagramMode
 
 	arm_func_start CPS_SocBind
 CPS_SocBind: ; 0x020A68D0
 	stmdb sp!, {r4, lr}
-	ldr r3, _020A6924 ; =0x021E16A0
+	ldr r3, _020A6924 ; =OSi_ThreadInfo
 	ldr r3, [r3, #4]
 	ldr r4, [r3, #0xa4]
 	cmp r4, #0
 	ldmeqia sp!, {r4, pc}
 	ldr r3, _020A6928 ; =0x7F000001
 	cmp r2, r3
-	ldreq r2, _020A692C ; =0x021D4620
+	ldreq r2, _020A692C ; =_021D4620
 	ldreq r2, [r2, #0x50]
 	cmp r0, #0
 	strh r1, [r4, #0x1a]
@@ -7352,14 +7493,14 @@ CPS_SocBind: ; 0x020A68D0
 	strh r0, [r4, #0xa]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A6924: .word 0x021E16A0
+_020A6924: .word OSi_ThreadInfo
 _020A6928: .word 0x7F000001
-_020A692C: .word 0x021D4620
+_020A692C: .word _021D4620
 	arm_func_end CPS_SocBind
 
 	arm_func_start CPS_SocUse
 CPS_SocUse: ; 0x020A6930
-	ldr r0, _020A6960 ; =0x021E16A0
+	ldr r0, _020A6960 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xa4]
 	cmp r1, #0
@@ -7372,12 +7513,12 @@ CPS_SocUse: ; 0x020A6930
 	str r0, [r1, #0x38]
 	bx lr
 	.align 2, 0
-_020A6960: .word 0x021E16A0
+_020A6960: .word OSi_ThreadInfo
 	arm_func_end CPS_SocUse
 
 	arm_func_start CPS_SocRelease
 CPS_SocRelease: ; 0x020A6964
-	ldr r0, _020A6980 ; =0x021E16A0
+	ldr r0, _020A6980 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xa4]
 	cmp r1, #0
@@ -7385,18 +7526,18 @@ CPS_SocRelease: ; 0x020A6964
 	strne r0, [r1]
 	bx lr
 	.align 2, 0
-_020A6980: .word 0x021E16A0
+_020A6980: .word OSi_ThreadInfo
 	arm_func_end CPS_SocRelease
 
 	arm_func_start CPS_SocDup
 CPS_SocDup: ; 0x020A6984
-	ldr r1, _020A6998 ; =0x021E16A0
+	ldr r1, _020A6998 ; =OSi_ThreadInfo
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0xa4]
 	str r1, [r0, #0xa4]
 	bx lr
 	.align 2, 0
-_020A6998: .word 0x021E16A0
+_020A6998: .word OSi_ThreadInfo
 	arm_func_end CPS_SocDup
 
 	arm_func_start CPSi_TcpListenRaw
@@ -7421,20 +7562,20 @@ CPSi_TcpListenRaw: ; 0x020A699C
 
 	arm_func_start CPS_SetUdpCallback
 CPS_SetUdpCallback: ; 0x020A69DC
-	ldr r1, _020A69F4 ; =0x021E16A0
+	ldr r1, _020A69F4 ; =OSi_ThreadInfo
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0xa4]
 	cmp r1, #0
 	strne r0, [r1, #0x38]
 	bx lr
 	.align 2, 0
-_020A69F4: .word 0x021E16A0
+_020A69F4: .word OSi_ThreadInfo
 	arm_func_end CPS_SetUdpCallback
 
 	arm_func_start CPS_TcpListen
 CPS_TcpListen: ; 0x020A69F8
 	stmdb sp!, {r3, lr}
-	ldr r0, _020A6A2C ; =0x021E16A0
+	ldr r0, _020A6A2C ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xa4]
 	cmp r0, #0
@@ -7448,7 +7589,7 @@ _020A6A24:
 	bl CPSi_TcpListenRaw
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A6A2C: .word 0x021E16A0
+_020A6A2C: .word OSi_ThreadInfo
 	arm_func_end CPS_TcpListen
 
 	arm_func_start CPSi_TcpConnectRaw
@@ -7457,7 +7598,7 @@ CPSi_TcpConnectRaw: ; 0x020A6A30
 	mov sl, r0
 	bl get_seqno
 	mov r6, #2
-	ldr r4, _020A6AE0 ; =0x021D4620
+	ldr r4, _020A6AE0 ; =_021D4620
 	mov r8, r0
 	mov r7, #0
 	mov r5, #1
@@ -7501,13 +7642,13 @@ _020A6AD8:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020A6AE0: .word 0x021D4620
+_020A6AE0: .word _021D4620
 	arm_func_end CPSi_TcpConnectRaw
 
 	arm_func_start CPS_TcpConnect
 CPS_TcpConnect: ; 0x020A6AE4
 	stmdb sp!, {r3, lr}
-	ldr r0, _020A6B20 ; =0x021E16A0
+	ldr r0, _020A6B20 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xa4]
 	cmp r0, #0
@@ -7524,12 +7665,12 @@ _020A6B18:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A6B20: .word 0x021E16A0
+_020A6B20: .word OSi_ThreadInfo
 	arm_func_end CPS_TcpConnect
 
 	arm_func_start CPS_SocWho
 CPS_SocWho: ; 0x020A6B24
-	ldr r2, _020A6B70 ; =0x021E16A0
+	ldr r2, _020A6B70 ; =OSi_ThreadInfo
 	ldr r2, [r2, #4]
 	ldr r3, [r2, #0xa4]
 	cmp r3, #0
@@ -7550,7 +7691,7 @@ _020A6B68:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_020A6B70: .word 0x021E16A0
+_020A6B70: .word OSi_ThreadInfo
 	arm_func_end CPS_SocWho
 
 	arm_func_start CPSi_TcpShutdownRaw
@@ -7581,7 +7722,7 @@ _020A6BAC:
 	arm_func_start CPS_TcpShutdown
 CPS_TcpShutdown: ; 0x020A6BC4
 	stmdb sp!, {r4, lr}
-	ldr r0, _020A6BFC ; =0x021E16A0
+	ldr r0, _020A6BFC ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r4, [r0, #0xa4]
 	cmp r4, #0
@@ -7596,13 +7737,13 @@ _020A6BF0:
 	bl CPSi_TcpShutdownRaw
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A6BFC: .word 0x021E16A0
+_020A6BFC: .word OSi_ThreadInfo
 	arm_func_end CPS_TcpShutdown
 
 	arm_func_start CPS_TcpClose
 CPS_TcpClose: ; 0x020A6C00
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r0, _020A6C80 ; =0x021E16A0
+	ldr r0, _020A6C80 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r4, [r0, #0xa4]
 	cmp r4, #0
@@ -7616,7 +7757,7 @@ _020A6C2C:
 	bl OS_GetTick
 	mov r6, r0, lsr #0x10
 	orr r6, r6, r1, lsl #16
-	ldr r5, _020A6C84 ; =0x021D4620
+	ldr r5, _020A6C84 ; =_021D4620
 	b _020A6C44
 _020A6C40:
 	bl OS_YieldThread__
@@ -7638,8 +7779,8 @@ _020A6C74:
 	strb r0, [r4, #8]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020A6C80: .word 0x021E16A0
-_020A6C84: .word 0x021D4620
+_020A6C80: .word OSi_ThreadInfo
+_020A6C84: .word _021D4620
 	arm_func_end CPS_TcpClose
 
 	arm_func_start udp_read_raw
@@ -7711,7 +7852,7 @@ _020A6D40:
 	arm_func_start CPS_SocRead
 CPS_SocRead: ; 0x020A6D58
 	stmdb sp!, {r3, lr}
-	ldr r1, _020A6DB8 ; =0x021E16A0
+	ldr r1, _020A6DB8 ; =OSi_ThreadInfo
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0xa4]
 	cmp r1, #0
@@ -7738,7 +7879,7 @@ _020A6DA8:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A6DB8: .word 0x021E16A0
+_020A6DB8: .word OSi_ThreadInfo
 	arm_func_end CPS_SocRead
 
 	arm_func_start CPSi_SocConsumeRaw
@@ -7787,7 +7928,7 @@ _020A6E3C:
 	arm_func_start CPS_SocConsume
 CPS_SocConsume: ; 0x020A6E4C
 	stmdb sp!, {r3, lr}
-	ldr r1, _020A6E80 ; =0x021E16A0
+	ldr r1, _020A6E80 ; =OSi_ThreadInfo
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0xa4]
 	cmp r1, #0
@@ -7801,7 +7942,7 @@ _020A6E78:
 	bl CPSi_SocConsumeRaw
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A6E80: .word 0x021E16A0
+_020A6E80: .word OSi_ThreadInfo
 	arm_func_end CPS_SocConsume
 
 	arm_func_start tcp_write_do
@@ -7818,7 +7959,7 @@ tcp_write_do: ; 0x020A6E84
 	add r7, r0, #4
 	b _020A6F28
 _020A6EB0:
-	ldr r0, _020A6F44 ; =0x021D4620
+	ldr r0, _020A6F44 ; =_021D4620
 	ldrh r4, [r8, #0x2e]
 	ldrh r0, [r0, #2]
 	ldr r1, [r8, #0x34]
@@ -7858,7 +7999,7 @@ _020A6F3C:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020A6F44: .word 0x021D4620
+_020A6F44: .word _021D4620
 	arm_func_end tcp_write_do
 
 	arm_func_start tcp_write_do2
@@ -7910,7 +8051,7 @@ _020A6FC8:
 	bl tcp_write_do2
 	bl OS_GetTick
 	mov r5, r0, lsr #0x10
-	ldr r4, _020A7188 ; =0x021D4620
+	ldr r4, _020A7188 ; =_021D4620
 	orr r5, r5, r1, lsl #16
 _020A6FF8:
 	bl OS_YieldThread__
@@ -7965,7 +8106,7 @@ _020A708C:
 	bl OS_GetTick
 	mov r7, r0, lsr #0x10
 	orr r7, r7, r1, lsl #16
-	ldr r4, _020A7188 ; =0x021D4620
+	ldr r4, _020A7188 ; =_021D4620
 	b _020A70D8
 _020A70C8:
 	bl OS_YieldThread__
@@ -8002,7 +8143,7 @@ _020A7114:
 	sub sl, r0, r1
 	str sb, [sp, #8]
 _020A713C:
-	ldr r0, _020A7188 ; =0x021D4620
+	ldr r0, _020A7188 ; =_021D4620
 	ldr r0, [r0, #0x48]
 	blx r0
 	cmp r0, #0
@@ -8023,13 +8164,13 @@ _020A717C:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020A7188: .word 0x021D4620
+_020A7188: .word _021D4620
 	arm_func_end CPSi_TcpWrite2Raw
 
 	arm_func_start CPSi_SocWrite2
 CPSi_SocWrite2: ; 0x020A718C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr ip, _020A7258 ; =0x021E16A0
+	ldr ip, _020A7258 ; =OSi_ThreadInfo
 	mov r7, r1
 	ldr ip, [ip, #4]
 	mov r6, r2
@@ -8081,7 +8222,7 @@ _020A7224:
 _020A723C:
 	bl CPSi_TcpWrite2Raw
 _020A7240:
-	ldr r1, _020A725C ; =0x021D4620
+	ldr r1, _020A725C ; =_021D4620
 	ldrb r1, [r1]
 	cmp r1, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -8089,14 +8230,14 @@ _020A7250:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A7258: .word 0x021E16A0
-_020A725C: .word 0x021D4620
+_020A7258: .word OSi_ThreadInfo
+_020A725C: .word _021D4620
 	arm_func_end CPSi_SocWrite2
 
 	arm_func_start CPS_SocWrite
 CPS_SocWrite: ; 0x020A7260
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r3, _020A72F4 ; =0x021E16A0
+	ldr r3, _020A72F4 ; =OSi_ThreadInfo
 	mov r2, r0
 	ldr r4, [r3, #4]
 	mov r3, r1
@@ -8136,13 +8277,13 @@ _020A72EC:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020A72F4: .word 0x021E16A0
+_020A72F4: .word OSi_ThreadInfo
 	arm_func_end CPS_SocWrite
 
 	arm_func_start CPS_SocGetLength
 CPS_SocGetLength: ; 0x020A72F8
 	stmdb sp!, {r3, lr}
-	ldr r0, _020A7364 ; =0x021E16A0
+	ldr r0, _020A7364 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xa4]
 	cmp r0, #0
@@ -8173,13 +8314,13 @@ _020A735C:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A7364: .word 0x021E16A0
+_020A7364: .word OSi_ThreadInfo
 	arm_func_end CPS_SocGetLength
 
 	arm_func_start CPS_SocFlush
 CPS_SocFlush: ; 0x020A7368
 	stmdb sp!, {r4, lr}
-	ldr r0, _020A73A4 ; =0x021E16A0
+	ldr r0, _020A73A4 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r4, [r0, #0xa4]
 	cmp r4, #0
@@ -8194,30 +8335,30 @@ CPS_SocFlush: ; 0x020A7368
 	str r0, [r4, #0x60]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A73A4: .word 0x021E16A0
+_020A73A4: .word OSi_ThreadInfo
 	arm_func_end CPS_SocFlush
 
 	arm_func_start set_fixed_ip
 set_fixed_ip: ; 0x020A73A8
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r0, _020A7444 ; =0x021D4620
+	ldr r0, _020A7444 ; =_021D4620
 	ldr r0, [r0, #0x18]
 	blx r0
-	ldr r0, _020A7444 ; =0x021D4620
+	ldr r0, _020A7444 ; =_021D4620
 	ldr r0, [r0, #0x50]
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	bl send_arprequest
 	mov r0, #0x64
 	bl OS_Sleep
-	ldr r0, _020A7444 ; =0x021D4620
+	ldr r0, _020A7444 ; =_021D4620
 	ldr r0, [r0, #0x50]
 	bl send_arprequest
 	bl OS_GetTick
 	mov r6, r0, lsr #0x10
 	orr r6, r6, r1, lsl #16
 	mov r5, #0x64
-	ldr r4, _020A7444 ; =0x021D4620
+	ldr r4, _020A7444 ; =_021D4620
 	b _020A7418
 _020A73F8:
 	ldrb r0, [r4, #1]
@@ -8242,30 +8383,30 @@ _020A7418:
 	blt _020A73F8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020A7444: .word 0x021D4620
+_020A7444: .word _021D4620
 	arm_func_end set_fixed_ip
 
 	arm_func_start scavenger
 scavenger: ; 0x020A7448
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r3, _020A7798 ; =0x021D4620
+	ldr r3, _020A7798 ; =_021D4620
 	mov r1, #0
-	ldr r0, _020A779C ; =0x021D4700
+	ldr r0, _020A779C ; =_021D4700
 	mov r2, #0x64
 	str r1, [r3, #0x44]
 	bl MI_CpuFill8
-	ldr r1, _020A7798 ; =0x021D4620
+	ldr r1, _020A7798 ; =_021D4620
 	mov r3, #0x180
-	ldr r0, _020A77A0 ; =0x021D4CCC
+	ldr r0, _020A77A0 ; =_021D4CCC
 	str r3, [r1, #0x11c]
 	str r0, [r1, #0x120]
-	ldr r2, _020A77A4 ; =0x021D4B4C
+	ldr r2, _020A77A4 ; =_021D4B4C
 	str r3, [r1, #0x128]
-	ldr r0, _020A779C ; =0x021D4700
+	ldr r0, _020A779C ; =_021D4700
 	str r2, [r1, #0x12c]
 	bl CPS_SocRegister
 	mov sl, #1
-	ldr r0, _020A7798 ; =0x021D4620
+	ldr r0, _020A7798 ; =_021D4620
 	mov fp, sl
 	str sl, [sp]
 	str sl, [r0, #0xc]
@@ -8273,12 +8414,12 @@ scavenger: ; 0x020A7448
 _020A74A4:
 	mov r0, #0x3e8
 	bl OS_Sleep
-	ldr r0, _020A7798 ; =0x021D4620
+	ldr r0, _020A7798 ; =_021D4620
 	ldr r1, [r0, #0x44]
 	cmp r1, #0
 	bne _020A7778
 	bl OS_GetTick
-	ldr r2, _020A7798 ; =0x021D4620
+	ldr r2, _020A7798 ; =_021D4620
 	mov r5, r0, lsr #0x10
 	ldr r0, [r2, #0x48]
 	orr r5, r5, r1, lsl #16
@@ -8289,7 +8430,7 @@ _020A74A4:
 	subs r0, r0, #1
 	str r0, [sp]
 	bne _020A75E4
-	ldr r0, _020A7798 ; =0x021D4620
+	ldr r0, _020A7798 ; =_021D4620
 	ldr r1, [r0, #0x10]
 	tst r1, #1
 	beq _020A7510
@@ -8361,7 +8502,7 @@ _020A75D0:
 	mov r4, #0
 _020A75E4:
 	mov r3, #0
-	ldr r6, _020A77A8 ; =0x021D46A0
+	ldr r6, _020A77A8 ; =_021D46A0
 	ldr r1, _020A77AC ; =0x000003BD
 	mov r2, r3
 _020A75F4:
@@ -8378,7 +8519,7 @@ _020A7614:
 	cmp r3, #8
 	add r6, r6, #0xc
 	blt _020A75F4
-	ldr r0, _020A7798 ; =0x021D4620
+	ldr r0, _020A7798 ; =_021D4620
 	ldr r0, [r0, #0x2c]
 	cmp r0, #0
 	beq _020A7644
@@ -8387,7 +8528,7 @@ _020A7614:
 	bl send_arprequest
 	mov sl, #0x69
 _020A7644:
-	ldr r0, _020A77B0 ; =0x021E16A0
+	ldr r0, _020A77B0 ; =OSi_ThreadInfo
 	ldr sb, [r0, #8]
 	cmp sb, #0
 	beq _020A770C
@@ -8443,8 +8584,8 @@ _020A7700:
 	bne _020A7660
 _020A770C:
 	mov sb, #0
-	ldr r8, _020A77B4 ; =0x021D4948
-	ldr r6, _020A7798 ; =0x021D4620
+	ldr r8, _020A77B4 ; =_021D4948
+	ldr r6, _020A7798 ; =_021D4620
 	mov r7, sb
 _020A771C:
 	ldrh r0, [r8, #4]
@@ -8465,7 +8606,7 @@ _020A7748:
 	blt _020A771C
 	mov r0, r5
 	bl CPSi_SslPeriodical
-	ldr r0, _020A7798 ; =0x021D4620
+	ldr r0, _020A7798 ; =_021D4620
 	ldr r0, [r0, #0x3c]
 	cmp r0, #0
 	beq _020A74A4
@@ -8482,14 +8623,14 @@ _020A7790:
 	bl CPS_SocUnRegister
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020A7798: .word 0x021D4620
-_020A779C: .word 0x021D4700
-_020A77A0: .word 0x021D4CCC
-_020A77A4: .word 0x021D4B4C
-_020A77A8: .word 0x021D46A0
+_020A7798: .word _021D4620
+_020A779C: .word _021D4700
+_020A77A0: .word _021D4CCC
+_020A77A4: .word _021D4B4C
+_020A77A8: .word _021D46A0
 _020A77AC: .word 0x000003BD
-_020A77B0: .word 0x021E16A0
-_020A77B4: .word 0x021D4948
+_020A77B0: .word OSi_ThreadInfo
+_020A77B4: .word _021D4948
 	arm_func_end scavenger
 
 	arm_func_start dhcp_setcommon
@@ -8504,7 +8645,7 @@ dhcp_setcommon: ; 0x020A77B8
 	ldr r0, _020A7928 ; =0x00000101
 	mov r1, #6
 	strh r0, [r6]
-	ldr r0, _020A792C ; =0x021D4620
+	ldr r0, _020A792C ; =_021D4620
 	strb r1, [r6, #2]
 	ldr r3, [r0, #0x70]
 	ldr r2, [r0, #0x68]
@@ -8532,8 +8673,8 @@ dhcp_setcommon: ; 0x020A77B8
 	strh r2, [r6, #4]
 	orr r0, r0, r1, asr #8
 	strh r0, [r6, #6]
-	ldr r2, _020A792C ; =0x021D4620
-	ldr r0, _020A7930 ; =0x021D4B08
+	ldr r2, _020A792C ; =_021D4620
+	ldr r0, _020A7930 ; =_021D4B08
 	ldr r1, [r2, #0x50]
 	mov r1, r1, lsr #0x10
 	mov r1, r1, lsl #0x10
@@ -8562,7 +8703,7 @@ dhcp_setcommon: ; 0x020A77B8
 	strb r0, [r6, #0xf3]
 	strb r1, [r6, #0xf4]
 	mov r3, #1
-	ldr r0, _020A7930 ; =0x021D4B08
+	ldr r0, _020A7930 ; =_021D4B08
 	add r1, r6, #0xf6
 	mov r2, #6
 	strb r3, [r6, #0xf5]
@@ -8588,8 +8729,8 @@ dhcp_setcommon: ; 0x020A77B8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020A7928: .word 0x00000101
-_020A792C: .word 0x021D4620
-_020A7930: .word 0x021D4B08
+_020A792C: .word _021D4620
+_020A7930: .word _021D4B08
 _020A7934: .word 0x00008263
 _020A7938: .word 0x00006353
 _020A793C: .word 0x00000135
@@ -8618,12 +8759,12 @@ _020A7970:
 dhcp_send_discover: ; 0x020A7978
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r4, _020A7A34 ; =0x021D4B76
+	ldr r4, _020A7A34 ; =_021D4B76
 	add r2, sp, #0
 	mov r0, r4
 	mov r1, #1
 	bl dhcp_setcommon
-	ldr r1, _020A7A38 ; =0x021D4620
+	ldr r1, _020A7A38 ; =_021D4620
 	mov ip, r0
 	ldr r0, [r1, #0x34]
 	cmp r0, #0
@@ -8665,14 +8806,14 @@ _020A79FC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_020A7A34: .word 0x021D4B76
-_020A7A38: .word 0x021D4620
+_020A7A34: .word _021D4B76
+_020A7A38: .word _021D4620
 	arm_func_end dhcp_send_discover
 
 	arm_func_start dhcp_send_request
 dhcp_send_request: ; 0x020A7A3C
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r4, _020A7B3C ; =0x021D4B76
+	ldr r4, _020A7B3C ; =_021D4B76
 	mov r5, r0
 	add r2, sp, #0
 	mov r0, r4
@@ -8684,7 +8825,7 @@ dhcp_send_request: ; 0x020A7A3C
 	mov r0, #0x32
 	strb r0, [ip]
 	mov r0, #4
-	ldr r2, _020A7B40 ; =0x021D4620
+	ldr r2, _020A7B40 ; =_021D4620
 	strb r0, [ip, #1]
 	ldr r1, [r2, #0x34]
 	mov r3, #0x36
@@ -8737,8 +8878,8 @@ _020A7B08:
 	ldr r0, [sp]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020A7B3C: .word 0x021D4B76
-_020A7B40: .word 0x021D4620
+_020A7B3C: .word _021D4B76
+_020A7B40: .word _021D4620
 	arm_func_end dhcp_send_request
 
 	arm_func_start dhcp_analyze_response
@@ -8783,7 +8924,7 @@ _020A7B80:
 	ldr r0, [sp]
 	cmp r0, r1
 	bne _020A7E44
-	ldr r1, _020A7E8C ; =0x021D4B08
+	ldr r1, _020A7E8C ; =_021D4B08
 	add r0, r6, #0x1c
 	bl maccmp
 	cmp r0, #0
@@ -8815,7 +8956,7 @@ _020A7B80:
 	mov r0, #0
 	mov sb, #2
 	mov sl, #1
-	ldr ip, _020A7E90 ; =0x021D4620
+	ldr ip, _020A7E90 ; =_021D4620
 	b _020A7E30
 _020A7C64:
 	cmp r6, #0
@@ -8954,7 +9095,7 @@ _020A7E44:
 	ldr r0, [sp, #4]
 	bl CPS_SocConsume
 _020A7E4C:
-	ldr r0, _020A7E90 ; =0x021D4620
+	ldr r0, _020A7E90 ; =_021D4620
 	ldr r0, [r0, #0x48]
 	blx r0
 	cmp r0, #0
@@ -8972,8 +9113,8 @@ _020A7E80:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020A7E8C: .word 0x021D4B08
-_020A7E90: .word 0x021D4620
+_020A7E8C: .word _021D4B08
+_020A7E90: .word _021D4620
 	arm_func_end dhcp_analyze_response
 
 	arm_func_start dhcp_discover_server
@@ -9014,7 +9155,7 @@ dhcp_request_server: ; 0x020A7EEC
 	cmp r4, #1
 	mov r0, #0x44
 	bne _020A7F20
-	ldr r1, _020A7FE4 ; =0x021D4620
+	ldr r1, _020A7FE4 ; =_021D4620
 	ldr r2, [r1, #0x20]
 	mov r1, #0x43
 	bl CPS_SocBind
@@ -9039,7 +9180,7 @@ _020A7F54:
 	bl CPS_SocRelease
 	cmp r6, #2
 	bne _020A7F88
-	ldr r1, _020A7FE4 ; =0x021D4620
+	ldr r1, _020A7FE4 ; =_021D4620
 	mov r0, #1
 	ldr r2, [r1, #0x4c]
 	mov r2, r2, lsr #1
@@ -9050,7 +9191,7 @@ _020A7F54:
 	str r2, [r1, #0x38]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020A7F88:
-	ldr r0, _020A7FE4 ; =0x021D4620
+	ldr r0, _020A7FE4 ; =_021D4620
 	cmp r4, #1
 	ldr r1, [r0, #0x38]
 	mov r1, r1, lsr #1
@@ -9077,7 +9218,7 @@ _020A7FDC:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020A7FE4: .word 0x021D4620
+_020A7FE4: .word _021D4620
 	arm_func_end dhcp_request_server
 
 	arm_func_start dhcp_release_server
@@ -9085,12 +9226,12 @@ dhcp_release_server: ; 0x020A7FE8
 	stmdb sp!, {r4, lr}
 	bl CPS_SocUse
 	bl CPS_SocDatagramMode
-	ldr r1, _020A804C ; =0x021D4620
+	ldr r1, _020A804C ; =_021D4620
 	mov r0, #0x44
 	ldr r2, [r1, #0x20]
 	mov r1, #0x43
 	bl CPS_SocBind
-	ldr r4, _020A8050 ; =0x021D4B76
+	ldr r4, _020A8050 ; =_021D4B76
 	mov r1, #7
 	mov r0, r4
 	mov r2, #0
@@ -9108,8 +9249,8 @@ dhcp_release_server: ; 0x020A7FE8
 	bl CPS_SocRelease
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020A804C: .word 0x021D4620
-_020A8050: .word 0x021D4B76
+_020A804C: .word _021D4620
+_020A8050: .word _021D4B76
 	arm_func_end dhcp_release_server
 
 	arm_func_start dns_skipname
@@ -9296,7 +9437,7 @@ _020A82DC:
 	ldr r0, [sp]
 	bl CPS_SocConsume
 _020A82E4:
-	ldr r0, _020A8328 ; =0x021D4620
+	ldr r0, _020A8328 ; =_021D4620
 	ldr r0, [r0, #0x48]
 	blx r0
 	cmp r0, #0
@@ -9315,7 +9456,7 @@ _020A8318:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020A8324: .word 0x00001001
-_020A8328: .word 0x021D4620
+_020A8328: .word _021D4620
 	arm_func_end resolve_common
 
 	arm_func_start strtol10
@@ -9415,7 +9556,7 @@ resolve_sub: ; 0x020A83FC
 CPS_Resolve: ; 0x020A8460
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
-	ldr r2, _020A8590 ; =0x021D4620
+	ldr r2, _020A8590 ; =_021D4620
 	mov r6, #0
 	ldr r5, [r2, #0x70]
 	ldr r3, [r2, #0x68]
@@ -9452,7 +9593,7 @@ CPS_Resolve: ; 0x020A8460
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, #1
 	mov fp, r6
-	ldr r7, _020A8594 ; =0x021D4680
+	ldr r7, _020A8594 ; =_021D4680
 	strb r0, [sp]
 	strb r0, [sp, #1]
 	add r6, sp, #2
@@ -9494,8 +9635,8 @@ _020A8570:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020A8590: .word 0x021D4620
-_020A8594: .word 0x021D4680
+_020A8590: .word _021D4620
+_020A8594: .word _021D4680
 	arm_func_end CPS_Resolve
 
 	; NitroWiFi: libssl.a
@@ -9506,7 +9647,7 @@ find_session_from_id: ; 0x020A8598
 	mov r7, r0
 	bl OS_DisableInterrupts
 	mov r4, #0
-	ldr r6, _020A8628 ; =0x021D5E68
+	ldr r6, _020A8628 ; =_021D5E68
 	mov r5, r0
 	strb r4, [r7, #0x30]
 	mov r8, #0x20
@@ -9542,7 +9683,7 @@ _020A861C:
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020A8628: .word 0x021D5E68
+_020A8628: .word _021D5E68
 	arm_func_end find_session_from_id
 
 	arm_func_start find_session_from_IP
@@ -9553,7 +9694,7 @@ find_session_from_IP: ; 0x020A862C
 	mov r6, r2
 	bl OS_DisableInterrupts
 	mov r1, #0
-	ldr r5, _020A86C8 ; =0x021D5E68
+	ldr r5, _020A86C8 ; =_021D5E68
 	mov r4, r0
 	strb r1, [r8, #0x30]
 _020A8650:
@@ -9590,7 +9731,7 @@ _020A86BC:
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020A86C8: .word 0x021D5E68
+_020A86C8: .word _021D5E68
 	arm_func_end find_session_from_IP
 
 	arm_func_start cache_session
@@ -9602,7 +9743,7 @@ cache_session: ; 0x020A86CC
 	bl OS_DisableInterrupts
 	mov r4, r0
 	bl OS_GetTick
-	ldr sb, _020A87B4 ; =0x021D5E68
+	ldr sb, _020A87B4 ; =_021D5E68
 	mov r5, r0, lsr #0x10
 	mov r2, #0
 	mov r0, r2
@@ -9658,7 +9799,7 @@ _020A8774:
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020A87B4: .word 0x021D5E68
+_020A87B4: .word _021D5E68
 	arm_func_end cache_session
 
 	arm_func_start purge_session
@@ -9666,7 +9807,7 @@ purge_session: ; 0x020A87B8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	bl OS_DisableInterrupts
-	ldr r7, _020A881C ; =0x021D5E68
+	ldr r7, _020A881C ; =_021D5E68
 	mov r6, r0
 	mov r5, #0
 	mov r4, #0x20
@@ -9692,7 +9833,7 @@ _020A8810:
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020A881C: .word 0x021D5E68
+_020A881C: .word _021D5E68
 	arm_func_end purge_session
 
 	arm_func_start date2sec
@@ -9740,7 +9881,7 @@ enter_computebound: ; 0x020A8878
 	cmp r0, #0x20
 	mvnhs r0, #0
 	ldmhsia sp!, {r3, r4, r5, pc}
-	ldr r0, _020A88C0 ; =0x021E16A0
+	ldr r0, _020A88C0 ; =OSi_ThreadInfo
 	ldr r5, [r0, #4]
 	mov r0, r5
 	bl OS_GetThreadPriority
@@ -9753,7 +9894,7 @@ enter_computebound: ; 0x020A8878
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020A88BC: .word _021106B0
-_020A88C0: .word 0x021E16A0
+_020A88C0: .word OSi_ThreadInfo
 	arm_func_end enter_computebound
 
 	arm_func_start exit_computebound
@@ -9762,17 +9903,17 @@ exit_computebound: ; 0x020A88C4
 	mov r1, r0
 	cmp r1, #0x20
 	ldmhsia sp!, {r3, pc}
-	ldr r0, _020A88E4 ; =0x021E16A0
+	ldr r0, _020A88E4 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	bl OS_SetThreadPriority
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020A88E4: .word 0x021E16A0
+_020A88E4: .word OSi_ThreadInfo
 	arm_func_end exit_computebound
 
 	arm_func_start CPS_SetRootCa
 CPS_SetRootCa: ; 0x020A88E8
-	ldr r2, _020A890C ; =0x021E16A0
+	ldr r2, _020A890C ; =OSi_ThreadInfo
 	ldr r2, [r2, #4]
 	ldr r2, [r2, #0xa4]
 	cmp r2, #0
@@ -9782,7 +9923,7 @@ CPS_SetRootCa: ; 0x020A88E8
 	strne r1, [r2, #0x818]
 	bx lr
 	.align 2, 0
-_020A890C: .word 0x021E16A0
+_020A890C: .word OSi_ThreadInfo
 	arm_func_end CPS_SetRootCa
 
 	arm_func_start get_rootCA
@@ -10292,7 +10433,7 @@ validate_signature: ; 0x020A8F88
 	moveq r0, #2
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	mov r0, r0, lsl #1
-	ldr r1, _020A9128 ; =0x021D4634
+	ldr r1, _020A9128 ; =_021D4634
 	add r0, r0, r0, lsr #31
 	mov r5, r0, asr #1
 	ldr r1, [r1]
@@ -10373,7 +10514,7 @@ _020A90C8:
 _020A9108:
 	mov r5, #2
 _020A910C:
-	ldr r1, _020A912C ; =0x021D4660
+	ldr r1, _020A912C ; =_021D4660
 	mov r0, r4
 	ldr r1, [r1]
 	blx r1
@@ -10381,8 +10522,8 @@ _020A910C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_020A9128: .word 0x021D4634
-_020A912C: .word 0x021D4660
+_020A9128: .word _021D4634
+_020A912C: .word _021D4660
 	arm_func_end validate_signature
 
 	arm_func_start auth_cert
@@ -10882,7 +11023,7 @@ decrypt_premaster_secret: ; 0x020A979C
 	add r4, r0, #1
 	mov r0, #0x14
 	mul r0, r4, r0
-	ldr r1, _020A99D4 ; =0x021D4634
+	ldr r1, _020A99D4 ; =_021D4634
 	ldr r1, [r1]
 	blx r1
 	movs r5, r0
@@ -11005,15 +11146,15 @@ _020A99A8:
 	mov r3, r4
 	mov r2, #0x30
 	bl CPSi_char_from_big
-	ldr r1, _020A99D8 ; =0x021D4660
+	ldr r1, _020A99D8 ; =_021D4660
 	mov r0, r5
 	ldr r1, [r1]
 	blx r1
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020A99D4: .word 0x021D4634
-_020A99D8: .word 0x021D4660
+_020A99D4: .word _021D4634
+_020A99D8: .word _021D4660
 	arm_func_end decrypt_premaster_secret
 
 	arm_func_start create_ms_sub
@@ -11773,7 +11914,7 @@ parse_record_in_buf: ; 0x020AA460
 	mov r8, r1
 	cmp r2, #9
 	bne _020AA48C
-	ldr r1, _020AA6DC ; =0x021D4660
+	ldr r1, _020AA6DC ; =_021D4660
 	mov r0, r8
 	ldr r1, [r1]
 	blx r1
@@ -11803,7 +11944,7 @@ _020AA4C8:
 	mov r6, r0
 	cmp r2, #9
 	bne _020AA4F8
-	ldr r1, _020AA6DC ; =0x021D4660
+	ldr r1, _020AA6DC ; =_021D4660
 	mov r0, r8
 	ldr r1, [r1]
 	blx r1
@@ -11944,13 +12085,13 @@ _020AA6C0:
 	mov r0, #9
 	strb r0, [sb, #0x455]
 _020AA6C8:
-	ldr r1, _020AA6DC ; =0x021D4660
+	ldr r1, _020AA6DC ; =_021D4660
 	mov r0, r8
 	ldr r1, [r1]
 	blx r1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020AA6DC: .word 0x021D4660
+_020AA6DC: .word _021D4660
 	arm_func_end parse_record_in_buf
 
 	arm_func_start parse_record
@@ -11986,7 +12127,7 @@ _020AA6F4:
 	mov r0, #2
 	str r2, [sp]
 	bl CPSi_SocConsumeRaw
-	ldr r1, _020AA874 ; =0x021D4634
+	ldr r1, _020AA874 ; =_021D4634
 	ldr r0, [sp]
 	ldr r1, [r1]
 	blx r1
@@ -12012,7 +12153,7 @@ _020AA7AC:
 	mov r0, r4
 	mov r1, r6
 	bl update_digest
-	ldr r1, _020AA878 ; =0x021D4660
+	ldr r1, _020AA878 ; =_021D4660
 	mov r0, r6
 	ldr r1, [r1]
 	blx r1
@@ -12033,7 +12174,7 @@ _020AA7DC:
 	addhi sp, sp, #4
 	strhib r0, [r4, #0x455]
 	ldmhiia sp!, {r3, r4, r5, r6, pc}
-	ldr r1, _020AA874 ; =0x021D4634
+	ldr r1, _020AA874 ; =_021D4634
 	ldr r1, [r1]
 	blx r1
 	movs r6, r0
@@ -12046,7 +12187,7 @@ _020AA7DC:
 	bl tcp_read_raw_nbytes
 	cmp r0, #0
 	beq _020AA85C
-	ldr r1, _020AA878 ; =0x021D4660
+	ldr r1, _020AA878 ; =_021D4660
 	mov r0, r6
 	ldr r1, [r1]
 	blx r1
@@ -12063,8 +12204,8 @@ _020AA868:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_020AA874: .word 0x021D4634
-_020AA878: .word 0x021D4660
+_020AA874: .word _021D4634
+_020AA878: .word _021D4660
 _020AA87C: .word 0x00004805
 	arm_func_end parse_record
 
@@ -12072,13 +12213,13 @@ _020AA87C: .word 0x00004805
 set_random: ; 0x020AA880
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x74
-	ldr r2, _020AA9A0 ; =0x021D5E60
+	ldr r2, _020AA9A0 ; =_021D5E60
 	mov sl, r0
 	ldrb r0, [r2]
 	mov sb, r1
 	cmp r0, #0
 	bne _020AA8E4
-	ldr r2, _020AA9A4 ; =0x021D4688
+	ldr r2, _020AA9A4 ; =_021D4688
 	add r0, sp, #0
 	ldr r3, [r2]
 	ldmib r2, {r1, r4}
@@ -12101,7 +12242,7 @@ _020AA8E4:
 	addle sp, sp, #0x74
 	mov r1, #0x14
 	ldmleia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r5, _020AA9A8 ; =0x021D5FD8
+	ldr r5, _020AA9A8 ; =_021D5FD8
 	add r6, sp, #0x18
 	mov fp, r1
 	add r4, sp, #4
@@ -12119,7 +12260,7 @@ _020AA908:
 	mov r0, r6
 	mov r1, r4
 	bl CPSi_sha1_result_prng
-	ldr lr, _020AA9AC ; =0x021D5FEB
+	ldr lr, _020AA9AC ; =_021D5FEB
 	mov r3, #1
 	mov r2, #0x13
 	add ip, sp, #0x17
@@ -12147,10 +12288,10 @@ _020AA97C:
 	add sp, sp, #0x74
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020AA9A0: .word 0x021D5E60
-_020AA9A4: .word 0x021D4688
-_020AA9A8: .word 0x021D5FD8
-_020AA9AC: .word 0x021D5FEB
+_020AA9A0: .word _021D5E60
+_020AA9A4: .word _021D4688
+_020AA9A8: .word _021D5FD8
+_020AA9AC: .word _021D5FEB
 	arm_func_end set_random
 
 	arm_func_start CPS_SslAddRandomSeed
@@ -12163,7 +12304,7 @@ CPS_SslAddRandomSeed: ; 0x020AA9B0
 	bl CPSi_sha1_init
 	bl OS_DisableInterrupts
 	mov r4, r0
-	ldr r1, _020AAA18 ; =0x021D5FD8
+	ldr r1, _020AAA18 ; =_021D5FD8
 	add r0, sp, #0
 	mov r2, #0x14
 	bl CPSi_sha1_calc
@@ -12171,19 +12312,19 @@ CPS_SslAddRandomSeed: ; 0x020AA9B0
 	mov r2, r5
 	add r0, sp, #0
 	bl CPSi_sha1_calc
-	ldr r1, _020AAA18 ; =0x021D5FD8
+	ldr r1, _020AAA18 ; =_021D5FD8
 	add r0, sp, #0
 	bl CPSi_sha1_result
 	mov r0, r4
 	bl OS_RestoreInterrupts
-	ldr r0, _020AAA1C ; =0x021D5E60
+	ldr r0, _020AAA1C ; =_021D5E60
 	mov r1, #1
 	strb r1, [r0]
 	add sp, sp, #0x5c
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_020AAA18: .word 0x021D5FD8
-_020AAA1C: .word 0x021D5E60
+_020AAA18: .word _021D5FD8
+_020AAA1C: .word _021D5E60
 	arm_func_end CPS_SslAddRandomSeed
 
 	arm_func_start send_server_hello
@@ -12206,7 +12347,7 @@ send_server_hello: ; 0x020AAA20
 	add r0, r4, #0x58
 	mov r1, #0x1c
 	bl set_random
-	ldr r1, _020AAC74 ; =0x021D4634
+	ldr r1, _020AAC74 ; =_021D4634
 	add r0, r8, #0x9d
 	ldr r1, [r1]
 	blx r1
@@ -12247,7 +12388,7 @@ _020AAAF8:
 	add r0, r5, #0x2c
 	mov r1, #0x1c
 	bl set_random
-	ldr r0, _020AAC78 ; =0x021D5E60
+	ldr r0, _020AAC78 ; =_021D5E60
 	add r6, r5, #0x4c
 	ldr r3, [r0, #4]
 	sub r0, r6, #0x20
@@ -12261,7 +12402,7 @@ _020AAAF8:
 	mov r2, #0x20
 	strb r3, [r5, #0x4b]
 	bl MI_CpuCopy8
-	ldr r0, _020AAC78 ; =0x021D5E60
+	ldr r0, _020AAC78 ; =_021D5E60
 	mov r1, #0
 	ldr r2, [r0, #4]
 	strb r1, [r4, #0x31]
@@ -12336,23 +12477,23 @@ _020AAC08:
 	add r1, r6, #5
 	str sb, [sp]
 	bl CPSi_TcpWrite2Raw
-	ldr r1, _020AAC7C ; =0x021D4660
+	ldr r1, _020AAC7C ; =_021D4660
 	mov r0, r5
 	ldr r1, [r1]
 	blx r1
 	ldrb r0, [r4, #0x31]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020AAC74: .word 0x021D4634
-_020AAC78: .word 0x021D5E60
-_020AAC7C: .word 0x021D4660
+_020AAC74: .word _021D4634
+_020AAC78: .word _021D5E60
+_020AAC7C: .word _021D4660
 	arm_func_end send_server_hello
 
 	arm_func_start send_change_cipher_spec_and_finished
 send_change_cipher_spec_and_finished: ; 0x020AAC80
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
-	ldr r1, _020AADD0 ; =0x021D4634
+	ldr r1, _020AADD0 ; =_021D4634
 	mov r6, r0
 	ldr r1, [r1]
 	mov r0, #0x83
@@ -12428,21 +12569,21 @@ send_change_cipher_spec_and_finished: ; 0x020AAC80
 	mov r3, r2
 	str r6, [sp]
 	bl CPSi_TcpWrite2Raw
-	ldr r1, _020AADD4 ; =0x021D4660
+	ldr r1, _020AADD4 ; =_021D4660
 	mov r0, r4
 	ldr r1, [r1]
 	blx r1
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_020AADD0: .word 0x021D4634
-_020AADD4: .word 0x021D4660
+_020AADD0: .word _021D4634
+_020AADD4: .word _021D4660
 	arm_func_end send_change_cipher_spec_and_finished
 
 	arm_func_start send_client_hello
 send_client_hello: ; 0x020AADD8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _020AAF60 ; =0x021D4634
+	ldr r1, _020AAF60 ; =_021D4634
 	mov r7, r0
 	ldr r1, [r1]
 	mov r0, #0x98
@@ -12536,15 +12677,15 @@ _020AAEA8:
 	mov r2, r6
 	add r1, r5, #5
 	bl update_digest
-	ldr r1, _020AAF68 ; =0x021D4660
+	ldr r1, _020AAF68 ; =_021D4660
 	mov r0, r5
 	ldr r1, [r1]
 	blx r1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020AAF60: .word 0x021D4634
+_020AAF60: .word _021D4634
 _020AAF64: .word _021106B0
-_020AAF68: .word 0x021D4660
+_020AAF68: .word _021D4660
 	arm_func_end send_client_hello
 
 	arm_func_start send_client_key_exchange
@@ -12557,7 +12698,7 @@ send_client_key_exchange: ; 0x020AAF6C
 	cmp r0, #0
 	beq _020AAFA0
 	mov r2, #0
-	ldr r0, _020AB220 ; =0x02108FB8
+	ldr r0, _020AB220 ; =_02108FB8
 	mov r3, r2
 	mov r1, #7
 	str sl, [sp]
@@ -12571,7 +12712,7 @@ _020AAFA0:
 	mov r1, #0x2e
 	bl set_random
 	ldr sb, [r4, #0x594]
-	ldr r0, _020AB224 ; =0x021D4634
+	ldr r0, _020AB224 ; =_021D4634
 	mov r1, sb, lsl #1
 	ldr r2, [r0]
 	add r1, r1, r1, lsr #31
@@ -12598,13 +12739,13 @@ _020AAFA0:
 	mov r2, #0x30
 	strb r5, [r8, r3]
 	bl MI_CpuCopy8
-	ldr r1, _020AB224 ; =0x021D4634
+	ldr r1, _020AB224 ; =_021D4634
 	mov r0, r7, lsl #3
 	ldr r1, [r1]
 	blx r1
 	movs r5, r0
 	bne _020AB064
-	ldr r1, _020AB228 ; =0x021D4660
+	ldr r1, _020AB228 ; =_021D4660
 	mov r0, r8
 	ldr r1, [r1]
 	blx r1
@@ -12643,17 +12784,17 @@ _020AB064:
 	bl CPSi_big_power
 	mov r0, r6
 	bl exit_computebound
-	ldr r1, _020AB224 ; =0x021D4634
+	ldr r1, _020AB224 ; =_021D4634
 	add r0, sb, #0x49
 	ldr r1, [r1]
 	blx r1
 	movs r6, r0
 	bne _020AB124
-	ldr r1, _020AB228 ; =0x021D4660
+	ldr r1, _020AB228 ; =_021D4660
 	mov r0, r8
 	ldr r1, [r1]
 	blx r1
-	ldr r1, _020AB228 ; =0x021D4660
+	ldr r1, _020AB228 ; =_021D4660
 	mov r0, r5
 	ldr r1, [r1]
 	blx r1
@@ -12714,24 +12855,24 @@ _020AB1C0:
 	add r1, r6, #5
 	add r2, sb, #4
 	bl update_digest
-	ldr r1, _020AB228 ; =0x021D4660
+	ldr r1, _020AB228 ; =_021D4660
 	mov r0, r6
 	ldr r1, [r1]
 	blx r1
-	ldr r1, _020AB228 ; =0x021D4660
+	ldr r1, _020AB228 ; =_021D4660
 	mov r0, r5
 	ldr r1, [r1]
 	blx r1
-	ldr r1, _020AB228 ; =0x021D4660
+	ldr r1, _020AB228 ; =_021D4660
 	mov r0, r8
 	ldr r1, [r1]
 	blx r1
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020AB220: .word 0x02108FB8
-_020AB224: .word 0x021D4634
-_020AB228: .word 0x021D4660
+_020AB220: .word _02108FB8
+_020AB224: .word _021D4634
+_020AB228: .word _021D4660
 	arm_func_end send_client_key_exchange
 
 	arm_func_start mustget_change_cipher_spec_and_finished
@@ -12930,7 +13071,7 @@ CPSi_SslRead: ; 0x020AB474
 	bl tcp_read_raw_nbytes
 	cmp r0, #0
 	beq _020AB4DC
-	ldr r1, _020AB548 ; =0x021D4660
+	ldr r1, _020AB548 ; =_021D4660
 	ldr r0, [r4, #0x824]
 	ldr r1, [r1]
 	blx r1
@@ -12970,7 +13111,7 @@ _020AB528:
 	add r0, r1, r0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020AB548: .word 0x021D4660
+_020AB548: .word _021D4660
 	arm_func_end CPSi_SslRead
 
 	arm_func_start CPSi_SslConsume
@@ -12985,7 +13126,7 @@ CPSi_SslConsume: ; 0x020AB54C
 	ldr r0, [r4, #0x824]
 	cmp r0, #0
 	beq _020AB580
-	ldr r1, _020AB598 ; =0x021D4660
+	ldr r1, _020AB598 ; =_021D4660
 	ldr r1, [r1]
 	blx r1
 _020AB580:
@@ -12997,7 +13138,7 @@ _020AB58C:
 	str r0, [r4, #0x82c]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020AB598: .word 0x021D4660
+_020AB598: .word _021D4660
 	arm_func_end CPSi_SslConsume
 
 	arm_func_start try_fill_record
@@ -13027,7 +13168,7 @@ try_fill_record: ; 0x020AB59C
 	addhi sp, sp, #4
 	strhib r0, [r4, #0x455]
 	ldmhiia sp!, {r3, r4, r5, r6, pc}
-	ldr r1, _020AB6DC ; =0x021D4634
+	ldr r1, _020AB6DC ; =_021D4634
 	ldr r1, [r1]
 	blx r1
 	cmp r0, #0
@@ -13086,7 +13227,7 @@ _020AB6C0:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _020AB6D8: .word 0x00004805
-_020AB6DC: .word 0x021D4634
+_020AB6DC: .word _021D4634
 	arm_func_end try_fill_record
 
 	arm_func_start CPSi_SslGetLength
@@ -13145,7 +13286,7 @@ CPSi_SslWrite2: ; 0x020AB75C
 	str r0, [sp, #4]
 _020AB790:
 	ldr r0, _020AB884 ; =0x00000B4F
-	ldr r1, _020AB888 ; =0x021D4634
+	ldr r1, _020AB888 ; =_021D4634
 	cmp r5, r0
 	movgt r6, r0
 	movle r6, r5
@@ -13191,7 +13332,7 @@ _020AB790:
 	mov r3, r2
 	bl CPSi_TcpWrite2Raw
 	cmp r0, r7
-	ldr r1, _020AB88C ; =0x021D4660
+	ldr r1, _020AB88C ; =_021D4660
 	mov r0, r4
 	ldr r1, [r1]
 	movlo r6, #0
@@ -13208,8 +13349,8 @@ _020AB878:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020AB884: .word 0x00000B4F
-_020AB888: .word 0x021D4634
-_020AB88C: .word 0x021D4660
+_020AB888: .word _021D4634
+_020AB88C: .word _021D4660
 	arm_func_end CPSi_SslWrite2
 
 	arm_func_start CPSi_SslShutdown
@@ -13258,7 +13399,7 @@ CPSi_SslClose: ; 0x020AB910
 	ldr r0, [r4, #0x824]
 	cmp r0, #0
 	beq _020AB938
-	ldr r1, _020AB944 ; =0x021D4660
+	ldr r1, _020AB944 ; =_021D4660
 	ldr r1, [r1]
 	blx r1
 _020AB938:
@@ -13266,7 +13407,7 @@ _020AB938:
 	str r0, [r4, #0x824]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020AB944: .word 0x021D4660
+_020AB944: .word _021D4660
 	arm_func_end CPSi_SslClose
 
 	arm_func_start CPS_SetSsl
@@ -13275,7 +13416,7 @@ CPS_SetSsl: ; 0x020AB948
 	mov r4, r0
 	ldr r0, _020AB970 ; =_version_UBIQUITOUS_SSL
 	bl OSi_ReferSymbol
-	ldr r0, _020AB974 ; =0x021E16A0
+	ldr r0, _020AB974 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xa4]
 	cmp r0, #0
@@ -13283,7 +13424,7 @@ CPS_SetSsl: ; 0x020AB948
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020AB970: .word _version_UBIQUITOUS_SSL
-_020AB974: .word 0x021E16A0
+_020AB974: .word OSi_ThreadInfo
 	arm_func_end CPS_SetSsl
 
 	arm_func_start CPSi_SslPeriodical
@@ -13292,7 +13433,7 @@ CPSi_SslPeriodical: ; 0x020AB978
 	mov r5, r0
 	bl OS_DisableInterrupts
 	mov r4, #0
-	ldr r6, _020ABA4C ; =0x021D5E68
+	ldr r6, _020ABA4C ; =_021D5E68
 	ldr r1, _020ABA50 ; =0x000003BD
 	mov r2, r4
 _020AB994:
@@ -13309,7 +13450,7 @@ _020AB9B0:
 	add r6, r6, #0x5c
 	blt _020AB994
 	bl OS_RestoreInterrupts
-	ldr r0, _020ABA54 ; =0x021E16A0
+	ldr r0, _020ABA54 ; =OSi_ThreadInfo
 	ldr r4, [r0, #8]
 	cmp r4, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -13346,21 +13487,21 @@ _020ABA3C:
 	bne _020AB9D8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020ABA4C: .word 0x021D5E68
+_020ABA4C: .word _021D5E68
 _020ABA50: .word 0x000003BD
-_020ABA54: .word 0x021E16A0
+_020ABA54: .word OSi_ThreadInfo
 	arm_func_end CPSi_SslPeriodical
 
 	arm_func_start CPSi_SslCleanup
 CPSi_SslCleanup: ; 0x020ABA58
 	ldr ip, _020ABA6C ; =MI_CpuFill8
-	ldr r0, _020ABA70 ; =0x021D5E68
+	ldr r0, _020ABA70 ; =_021D5E68
 	mov r1, #0
 	mov r2, #0x170
 	bx ip
 	.align 2, 0
 _020ABA6C: .word MI_CpuFill8
-_020ABA70: .word 0x021D5E68
+_020ABA70: .word _021D5E68
 	arm_func_end CPSi_SslCleanup
 
 	arm_func_start char_from_long
@@ -15053,7 +15194,7 @@ _020AD198: .word 0x0000FFFF
 CPSi_big_power: ; 0x020AD19C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
-	ldr r4, _020AD328 ; =0x021D4634
+	ldr r4, _020AD328 ; =_021D4634
 	mov r8, r3
 	ldr r3, [r4]
 	mov sl, r0
@@ -15151,15 +15292,15 @@ _020AD304:
 	cmp r6, r8, lsl #4
 	blo _020AD25C
 _020AD310:
-	ldr r1, _020AD32C ; =0x021D4660
+	ldr r1, _020AD32C ; =_021D4660
 	mov r0, r4
 	ldr r1, [r1]
 	blx r1
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020AD328: .word 0x021D4634
-_020AD32C: .word 0x021D4660
+_020AD328: .word _021D4634
+_020AD32C: .word _021D4660
 	arm_func_end CPSi_big_power
 
 	arm_func_start CPSi_big_modinv
@@ -15340,7 +15481,7 @@ CPSi_big_montpower: ; 0x020AD5A4
 	mov sl, r3
 	mov r3, #0x16
 	mul r4, sl, r3
-	ldr r3, _020AD7A8 ; =0x021D4634
+	ldr r3, _020AD7A8 ; =_021D4634
 	mov fp, r0
 	ldr r3, [r3]
 	mov r0, r4
@@ -15461,15 +15602,15 @@ _020AD76C:
 	mov r2, #0
 	str r8, [sp, #0x10]
 	bl CPSi_big_montmult
-	ldr r1, _020AD7AC ; =0x021D4660
+	ldr r1, _020AD7AC ; =_021D4660
 	ldr r0, [sp, #0x28]
 	ldr r1, [r1]
 	blx r1
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020AD7A8: .word 0x021D4634
-_020AD7AC: .word 0x021D4660
+_020AD7A8: .word _021D4634
+_020AD7AC: .word _021D4660
 	arm_func_end CPSi_big_montpower
 
 	arm_func_start CPSi_big_from_char
@@ -15532,7 +15673,7 @@ WCM_Init: ; 0x020AD850
 	mov r6, r0
 	mov r5, r1
 	bl OS_DisableInterrupts
-	ldr r2, _020AD964 ; =0x021D5FEC
+	ldr r2, _020AD964 ; =_021D5FEC
 	mov r4, r0
 	ldr r1, [r2]
 	cmp r1, #0
@@ -15594,7 +15735,7 @@ _020AD930:
 	bne _020AD940
 	bl OS_InitAlarm
 _020AD940:
-	ldr r0, _020AD964 ; =0x021D5FEC
+	ldr r0, _020AD964 ; =_021D5FEC
 	ldr r0, [r0]
 	add r0, r0, #0x2cc
 	add r0, r0, #0x2000
@@ -15604,14 +15745,14 @@ _020AD940:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020AD964: .word 0x021D5FEC
+_020AD964: .word _021D5FEC
 	arm_func_end WCM_Init
 
 	arm_func_start WCM_Finish
 WCM_Finish: ; 0x020AD968
 	stmdb sp!, {r3, lr}
 	bl OS_DisableInterrupts
-	ldr r2, _020AD9BC ; =0x021D5FEC
+	ldr r2, _020AD9BC ; =_021D5FEC
 	ldr r1, [r2]
 	cmp r1, #0
 	bne _020AD98C
@@ -15633,7 +15774,7 @@ _020AD9A8:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020AD9BC: .word 0x021D5FEC
+_020AD9BC: .word _021D5FEC
 	arm_func_end WCM_Finish
 
 	arm_func_start WCM_StartupAsync
@@ -15642,7 +15783,7 @@ WCM_StartupAsync: ; 0x020AD9C0
 	mov r6, r0
 	mov r5, r1
 	bl OS_DisableInterrupts
-	ldr r1, _020ADBB8 ; =0x021D5FEC
+	ldr r1, _020ADBB8 ; =_021D5FEC
 	mov r4, r0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -15678,7 +15819,7 @@ _020ADA3C:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 _020ADA48:
-	ldr r0, _020ADBB8 ; =0x021D5FEC
+	ldr r0, _020ADBB8 ; =_021D5FEC
 	ldr r0, [r0]
 	add r1, r0, #0x2000
 	ldr r1, [r1, #0x26c]
@@ -15757,7 +15898,7 @@ _020ADB34:
 _020ADB58:
 	mov r0, #2
 	bl WcmSetPhase
-	ldr r0, _020ADBB8 ; =0x021D5FEC
+	ldr r0, _020ADBB8 ; =_021D5FEC
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x2200
@@ -15783,7 +15924,7 @@ _020ADBA8:
 	mov r0, #3
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020ADBB8: .word 0x021D5FEC
+_020ADBB8: .word _021D5FEC
 _020ADBBC: .word WcmWmcbIndication
 _020ADBC0: .word WcmWmcbCommon
 	arm_func_end WCM_StartupAsync
@@ -15792,7 +15933,7 @@ _020ADBC0: .word WcmWmcbCommon
 WCM_CleanupAsync: ; 0x020ADBC4
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
-	ldr r1, _020ADCAC ; =0x021D5FEC
+	ldr r1, _020ADCAC ; =_021D5FEC
 	mov r4, r0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -15833,7 +15974,7 @@ _020ADC30:
 _020ADC54:
 	mov r0, #4
 	bl WcmSetPhase
-	ldr r0, _020ADCAC ; =0x021D5FEC
+	ldr r0, _020ADCAC ; =_021D5FEC
 	mov r1, #2
 	ldr r0, [r0]
 	add r0, r0, #0x2200
@@ -15857,7 +15998,7 @@ _020ADC9C:
 	mov r0, #3
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020ADCAC: .word 0x021D5FEC
+_020ADCAC: .word _021D5FEC
 _020ADCB0: .word WcmWmcbCommon
 	arm_func_end WCM_CleanupAsync
 
@@ -15881,7 +16022,7 @@ WCM_BeginSearchAsync: ; 0x020ADCD4
 	mov r6, r1
 	mov r5, r2
 	bl OS_DisableInterrupts
-	ldr r1, _020ADE44 ; =0x021D5FEC
+	ldr r1, _020ADE44 ; =_021D5FEC
 	mov r4, r0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -15926,14 +16067,14 @@ _020ADD78:
 	mov r1, r6
 	mov r2, r5
 	bl WcmEditScanExParam
-	ldr r0, _020ADE44 ; =0x021D5FEC
+	ldr r0, _020ADE44 ; =_021D5FEC
 	ldr r0, [r0]
 	add r1, r0, #0x2200
 	add r0, r0, #0x2000
 	ldrh r1, [r1, #0x8c]
 	ldr r0, [r0, #0x288]
 	bl DC_InvalidateRange
-	ldr r2, _020ADE44 ; =0x021D5FEC
+	ldr r2, _020ADE44 ; =_021D5FEC
 	ldr r0, _020ADE48 ; =WcmWmcbScanEx
 	ldr r1, [r2]
 	add r1, r1, #0x2000
@@ -15954,7 +16095,7 @@ _020ADD78:
 _020ADDEC:
 	mov r0, #5
 	bl WcmSetPhase
-	ldr r0, _020ADE44 ; =0x021D5FEC
+	ldr r0, _020ADE44 ; =_021D5FEC
 	mov r1, #3
 	ldr r0, [r0]
 	add r0, r0, #0x2200
@@ -15978,7 +16119,7 @@ _020ADE34:
 	mov r0, #3
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020ADE44: .word 0x021D5FEC
+_020ADE44: .word _021D5FEC
 _020ADE48: .word WcmWmcbScanEx
 	arm_func_end WCM_BeginSearchAsync
 
@@ -15986,7 +16127,7 @@ _020ADE48: .word WcmWmcbScanEx
 WCM_EndSearchAsync: ; 0x020ADE4C
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
-	ldr r1, _020ADEEC ; =0x021D5FEC
+	ldr r1, _020ADEEC ; =_021D5FEC
 	mov r4, r0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -16007,7 +16148,7 @@ _020ADE74:
 _020ADE98:
 	mov r0, #7
 	bl WcmSetPhase
-	ldr r0, _020ADEEC ; =0x021D5FEC
+	ldr r0, _020ADEEC ; =_021D5FEC
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x2200
@@ -16031,7 +16172,7 @@ _020ADEDC:
 	mov r0, #3
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020ADEEC: .word 0x021D5FEC
+_020ADEEC: .word _021D5FEC
 	arm_func_end WCM_EndSearchAsync
 
 	arm_func_start WCM_ConnectAsync
@@ -16041,7 +16182,7 @@ WCM_ConnectAsync: ; 0x020ADEF0
 	mov r6, r1
 	mov r5, r2
 	bl OS_DisableInterrupts
-	ldr r2, _020AE0E8 ; =0x021D5FEC
+	ldr r2, _020AE0E8 ; =_021D5FEC
 	mov r4, r0
 	ldr ip, [r2]
 	cmp ip, #0
@@ -16111,13 +16252,13 @@ _020ADFEC:
 	mov r2, #0x52
 	bl MI_CpuFill8
 _020ADFFC:
-	ldr r1, _020AE0E8 ; =0x021D5FEC
+	ldr r1, _020AE0E8 ; =_021D5FEC
 	mov r0, r7
 	ldr r1, [r1]
 	mov r2, #0xc0
 	add r1, r1, #0x2140
 	bl MI_CpuCopy8
-	ldr r1, _020AE0E8 ; =0x021D5FEC
+	ldr r1, _020AE0E8 ; =_021D5FEC
 	mov r0, r5
 	ldr r1, [r1]
 	add r1, r1, #0x2100
@@ -16155,7 +16296,7 @@ _020AE05C:
 _020AE090:
 	mov r0, #8
 	bl WcmSetPhase
-	ldr r0, _020AE0E8 ; =0x021D5FEC
+	ldr r0, _020AE0E8 ; =_021D5FEC
 	mov r1, #5
 	ldr r0, [r0]
 	add r0, r0, #0x2200
@@ -16179,7 +16320,7 @@ _020AE0D8:
 	mov r0, #3
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020AE0E8: .word 0x021D5FEC
+_020AE0E8: .word _021D5FEC
 _020AE0EC: .word 0x0000FFFF
 _020AE0F0: .word WcmWmcbCommon
 	arm_func_end WCM_ConnectAsync
@@ -16188,7 +16329,7 @@ _020AE0F0: .word WcmWmcbCommon
 WCM_DisconnectAsync: ; 0x020AE0F4
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
-	ldr r1, _020AE208 ; =0x021D5FEC
+	ldr r1, _020AE208 ; =_021D5FEC
 	mov r4, r0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -16222,7 +16363,7 @@ _020AE160:
 	bne _020AE18C
 	mov r0, #0xa
 	bl WcmSetPhase
-	ldr r0, _020AE208 ; =0x021D5FEC
+	ldr r0, _020AE208 ; =_021D5FEC
 	mov r1, #6
 	ldr r0, [r0]
 	add r0, r0, #0x2200
@@ -16241,7 +16382,7 @@ _020AE18C:
 _020AE1B0:
 	mov r0, #0xa
 	bl WcmSetPhase
-	ldr r0, _020AE208 ; =0x021D5FEC
+	ldr r0, _020AE208 ; =_021D5FEC
 	mov r1, #6
 	ldr r0, [r0]
 	add r0, r0, #0x2200
@@ -16265,7 +16406,7 @@ _020AE1F8:
 	mov r0, #3
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020AE208: .word 0x021D5FEC
+_020AE208: .word _021D5FEC
 _020AE20C: .word WcmWmcbEndDCF
 	arm_func_end WCM_DisconnectAsync
 
@@ -16273,7 +16414,7 @@ _020AE20C: .word WcmWmcbEndDCF
 WCM_TerminateAsync: ; 0x020AE210
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_DisableInterrupts
-	ldr r1, _020AE414 ; =0x021D5FEC
+	ldr r1, _020AE414 ; =_021D5FEC
 	mov r4, r0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -16313,7 +16454,7 @@ _020AE290:
 _020AE29C:
 	mov r0, #0xd
 	bl WcmSetPhase
-	ldr r1, _020AE414 ; =0x021D5FEC
+	ldr r1, _020AE414 ; =_021D5FEC
 	mov r2, #9
 	ldr r1, [r1]
 	mov r0, r4
@@ -16333,7 +16474,7 @@ _020AE2D8:
 	bne _020AE304
 	mov r0, #0xd
 	bl WcmSetPhase
-	ldr r0, _020AE414 ; =0x021D5FEC
+	ldr r0, _020AE414 ; =_021D5FEC
 	mov r1, #9
 	ldr r0, [r0]
 	add r0, r0, #0x2200
@@ -16358,7 +16499,7 @@ _020AE334:
 	bne _020AE3A0
 	mov r0, #1
 	bl WcmSetPhase
-	ldr r1, _020AE414 ; =0x021D5FEC
+	ldr r1, _020AE414 ; =_021D5FEC
 	mov r2, #0
 	ldr r1, [r1]
 	mov r0, r4
@@ -16376,7 +16517,7 @@ _020AE378:
 	bl WM_PowerOff
 	b _020AE3A0
 _020AE384:
-	ldr r1, _020AE414 ; =0x021D5FEC
+	ldr r1, _020AE414 ; =_021D5FEC
 	ldr r0, _020AE41C ; =WcmWmcbReset
 	ldr r1, [r1]
 	mov r2, #1
@@ -16394,7 +16535,7 @@ _020AE3A0:
 _020AE3BC:
 	mov r0, #0xd
 	bl WcmSetPhase
-	ldr r0, _020AE414 ; =0x021D5FEC
+	ldr r0, _020AE414 ; =_021D5FEC
 	mov r1, #9
 	ldr r0, [r0]
 	add r0, r0, #0x2200
@@ -16418,7 +16559,7 @@ _020AE404:
 	mov r0, #3
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020AE414: .word 0x021D5FEC
+_020AE414: .word _021D5FEC
 _020AE418: .word WcmWmcbCommon
 _020AE41C: .word WcmWmcbReset
 	arm_func_end WCM_TerminateAsync
@@ -16427,7 +16568,7 @@ _020AE41C: .word WcmWmcbReset
 WCM_GetPhase: ; 0x020AE420
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
-	ldr r1, _020AE44C ; =0x021D5FEC
+	ldr r1, _020AE44C ; =_021D5FEC
 	mov r4, #0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -16437,7 +16578,7 @@ WCM_GetPhase: ; 0x020AE420
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020AE44C: .word 0x021D5FEC
+_020AE44C: .word _021D5FEC
 	arm_func_end WCM_GetPhase
 
 	arm_func_start WCM_UpdateOption
@@ -16445,7 +16586,7 @@ WCM_UpdateOption: ; 0x020AE450
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
-	ldr r1, _020AE4E4 ; =0x021D5FEC
+	ldr r1, _020AE4E4 ; =_021D5FEC
 	mov r2, #0
 	ldr r3, [r1]
 	add r1, r3, #0x2000
@@ -16482,17 +16623,17 @@ _020AE4A4:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020AE4E4: .word 0x021D5FEC
+_020AE4E4: .word _021D5FEC
 _020AE4E8: .word 0x00003FFE
 	arm_func_end WCM_UpdateOption
 
 	arm_func_start WCMi_GetSystemWork
 WCMi_GetSystemWork: ; 0x020AE4EC
-	ldr r0, _020AE4F8 ; =0x021D5FEC
+	ldr r0, _020AE4F8 ; =_021D5FEC
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
-_020AE4F8: .word 0x021D5FEC
+_020AE4F8: .word _021D5FEC
 	arm_func_end WCMi_GetSystemWork
 
 	arm_func_start WcmConfigure
@@ -16501,7 +16642,7 @@ WcmConfigure: ; 0x020AE4FC
 	movs r5, r0
 	mov r4, r1
 	bne _020AE54C
-	ldr r1, _020AE618 ; =0x021D5FEC
+	ldr r1, _020AE618 ; =_021D5FEC
 	mov r3, #3
 	ldr r0, [r1]
 	mov r2, #0
@@ -16518,7 +16659,7 @@ WcmConfigure: ; 0x020AE4FC
 	str r2, [r0, #0x278]
 	b _020AE604
 _020AE54C:
-	ldr r1, _020AE618 ; =0x021D5FEC
+	ldr r1, _020AE618 ; =_021D5FEC
 	ldr r2, [r5]
 	ldr r0, [r1]
 	and r2, r2, #3
@@ -16561,19 +16702,19 @@ _020AE5A4:
 	ldr r2, [r2, #0x274]
 	bl MI_CpuFill8
 _020AE5F0:
-	ldr r0, _020AE618 ; =0x021D5FEC
+	ldr r0, _020AE618 ; =_021D5FEC
 	ldr r1, [r5, #0xc]
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	str r1, [r0, #0x278]
 _020AE604:
-	ldr r0, _020AE618 ; =0x021D5FEC
+	ldr r0, _020AE618 ; =_021D5FEC
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	str r4, [r0, #0x27c]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020AE618: .word 0x021D5FEC
+_020AE618: .word _021D5FEC
 	arm_func_end WcmConfigure
 
 	arm_func_start WcmEditScanExParam
@@ -16583,7 +16724,7 @@ WcmEditScanExParam: ; 0x020AE61C
 	mov r0, r2
 	mov r4, r1
 	bl WCM_UpdateOption
-	ldr r2, _020AE7A8 ; =0x021D5FEC
+	ldr r2, _020AE7A8 ; =_021D5FEC
 	mov r3, #0x400
 	ldr r1, [r2]
 	mov r0, #0
@@ -16594,7 +16735,7 @@ WcmEditScanExParam: ; 0x020AE61C
 	add r1, r1, #0x2200
 	strh r3, [r1, #0x8c]
 	bl WcmGetNextScanChannel
-	ldr r1, _020AE7A8 ; =0x021D5FEC
+	ldr r1, _020AE7A8 ; =_021D5FEC
 	mov r2, #1
 	mov r2, r2, lsl r0
 	ldr r0, [r1]
@@ -16608,7 +16749,7 @@ WcmEditScanExParam: ; 0x020AE61C
 	bne _020AE690
 	bl WM_GetDispersionScanPeriod
 _020AE690:
-	ldr r2, _020AE7A8 ; =0x021D5FEC
+	ldr r2, _020AE7A8 ; =_021D5FEC
 	ldr r1, [r2]
 	add r1, r1, #0x2200
 	strh r0, [r1, #0x90]
@@ -16624,15 +16765,15 @@ _020AE690:
 	cmp r5, #0
 	mov r2, #6
 	bne _020AE6EC
-	ldr r1, _020AE7A8 ; =0x021D5FEC
-	ldr r0, _020AE7AC ; =0x02108FC0
+	ldr r1, _020AE7A8 ; =_021D5FEC
+	ldr r0, _020AE7AC ; =_02108FC0
 	ldr r1, [r1]
 	add r1, r1, #0x92
 	add r1, r1, #0x2200
 	bl MI_CpuCopy8
 	b _020AE704
 _020AE6EC:
-	ldr r1, _020AE7A8 ; =0x021D5FEC
+	ldr r1, _020AE7A8 ; =_021D5FEC
 	mov r0, r5
 	ldr r1, [r1]
 	add r1, r1, #0x92
@@ -16640,24 +16781,24 @@ _020AE6EC:
 	bl MI_CpuCopy8
 _020AE704:
 	cmp r4, #0
-	ldrne r0, _020AE7B0 ; =0x02108FC8
+	ldrne r0, _020AE7B0 ; =_02108FC8
 	mov r2, #0x20
 	cmpne r4, r0
 	bne _020AE748
-	ldr r1, _020AE7A8 ; =0x021D5FEC
-	ldr r0, _020AE7B0 ; =0x02108FC8
+	ldr r1, _020AE7A8 ; =_021D5FEC
+	ldr r0, _020AE7B0 ; =_02108FC8
 	ldr r1, [r1]
 	add r1, r1, #0x29c
 	add r1, r1, #0x2000
 	bl MI_CpuCopy8
-	ldr r0, _020AE7A8 ; =0x021D5FEC
+	ldr r0, _020AE7A8 ; =_021D5FEC
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x2200
 	strh r1, [r0, #0x9a]
 	b _020AE790
 _020AE748:
-	ldr r1, _020AE7A8 ; =0x021D5FEC
+	ldr r1, _020AE7A8 ; =_021D5FEC
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x29c
@@ -16673,40 +16814,40 @@ _020AE764:
 	add r4, r4, #1
 	blt _020AE764
 _020AE780:
-	ldr r0, _020AE7A8 ; =0x021D5FEC
+	ldr r0, _020AE7A8 ; =_021D5FEC
 	ldr r0, [r0]
 	add r0, r0, #0x2200
 	strh r1, [r0, #0x9a]
 _020AE790:
-	ldr r0, _020AE7A8 ; =0x021D5FEC
+	ldr r0, _020AE7A8 ; =_021D5FEC
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	str r1, [r0, #0x284]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020AE7A8: .word 0x021D5FEC
-_020AE7AC: .word 0x02108FC0
-_020AE7B0: .word 0x02108FC8
+_020AE7A8: .word _021D5FEC
+_020AE7AC: .word _02108FC0
+_020AE7B0: .word _02108FC8
 	arm_func_end WcmEditScanExParam
 
 	arm_func_start WcmInitOption
 WcmInitOption: ; 0x020AE7B4
-	ldr r0, _020AE7CC ; =0x021D5FEC
+	ldr r0, _020AE7CC ; =_021D5FEC
 	ldr r1, _020AE7D0 ; =0x00AAA082
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	str r1, [r0, #0x264]
 	bx lr
 	.align 2, 0
-_020AE7CC: .word 0x021D5FEC
+_020AE7CC: .word _021D5FEC
 _020AE7D0: .word 0x00AAA082
 	arm_func_end WcmInitOption
 
 	arm_func_start WcmGetNextScanChannel
 WcmGetNextScanChannel: ; 0x020AE7D4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r2, _020AE85C ; =0x021D5FEC
+	ldr r2, _020AE85C ; =_021D5FEC
 	ldr lr, _020AE860 ; =0x4EC4EC4F
 	ldr r2, [r2]
 	mov r1, r0
@@ -16742,14 +16883,14 @@ _020AE82C:
 	mov r0, r0, lsr #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020AE85C: .word 0x021D5FEC
+_020AE85C: .word _021D5FEC
 _020AE860: .word 0x4EC4EC4F
 	arm_func_end WcmGetNextScanChannel
 
 	arm_func_start WcmNotify
 WcmNotify: ; 0x020AE864
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr ip, _020AE8A4 ; =0x021D5FEC
+	ldr ip, _020AE8A4 ; =_021D5FEC
 	mov r5, r0
 	ldr r0, [ip]
 	mov r4, r1
@@ -16765,14 +16906,14 @@ WcmNotify: ; 0x020AE864
 	bl WcmNotifyEx
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020AE8A4: .word 0x021D5FEC
+_020AE8A4: .word _021D5FEC
 	arm_func_end WcmNotify
 
 	arm_func_start WcmNotifyEx
 WcmNotifyEx: ; 0x020AE8A8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
-	ldr ip, _020AE8F8 ; =0x021D5FEC
+	ldr ip, _020AE8F8 ; =_021D5FEC
 	ldr ip, [ip]
 	add ip, ip, #0x2000
 	ldr lr, [ip, #0x27c]
@@ -16791,7 +16932,7 @@ WcmNotifyEx: ; 0x020AE8A8
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020AE8F8: .word 0x021D5FEC
+_020AE8F8: .word _021D5FEC
 	arm_func_end WcmNotifyEx
 
 	arm_func_start WcmSetPhase
@@ -16799,7 +16940,7 @@ WcmSetPhase: ; 0x020AE8FC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
-	ldr r1, _020AE988 ; =0x021D5FEC
+	ldr r1, _020AE988 ; =_021D5FEC
 	mov r4, r0
 	ldr r1, [r1]
 	add r0, r1, #0x2000
@@ -16812,7 +16953,7 @@ WcmSetPhase: ; 0x020AE8FC
 	add r0, r0, #0x2000
 	bl OS_CancelAlarm
 _020AE938:
-	ldr r0, _020AE988 ; =0x021D5FEC
+	ldr r0, _020AE988 ; =_021D5FEC
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r1, [r0, #0x260]
@@ -16821,7 +16962,7 @@ _020AE938:
 	cmp r5, #9
 	bne _020AE97C
 	mov r2, #0
-	ldr r0, _020AE988 ; =0x021D5FEC
+	ldr r0, _020AE988 ; =_021D5FEC
 	str r2, [sp]
 	ldr r0, [r0]
 	ldr r1, _020AE98C ; =0x022F5341
@@ -16834,7 +16975,7 @@ _020AE97C:
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020AE988: .word 0x021D5FEC
+_020AE988: .word _021D5FEC
 _020AE98C: .word 0x022F5341
 _020AE990: .word WcmKeepAliveAlarm
 	arm_func_end WcmSetPhase
@@ -16844,13 +16985,13 @@ WCMi_ResetKeepAliveAlarm: ; 0x020AE994
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	bl OS_DisableInterrupts
-	ldr r1, _020AE9FC ; =0x021D5FEC
+	ldr r1, _020AE9FC ; =_021D5FEC
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x2cc
 	add r0, r0, #0x2000
 	bl OS_CancelAlarm
-	ldr r0, _020AE9FC ; =0x021D5FEC
+	ldr r0, _020AE9FC ; =_021D5FEC
 	ldr r1, [r0]
 	add r0, r1, #0x2000
 	ldr r0, [r0, #0x260]
@@ -16869,7 +17010,7 @@ _020AE9EC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_020AE9FC: .word 0x021D5FEC
+_020AE9FC: .word _021D5FEC
 _020AEA00: .word 0x022F5341
 _020AEA04: .word WcmKeepAliveAlarm
 	arm_func_end WCMi_ResetKeepAliveAlarm
@@ -16909,7 +17050,7 @@ WcmCountLeadingZero: ; 0x020AEA44
 	arm_func_start WcmWmReset
 WcmWmReset: ; 0x020AEA4C
 	stmdb sp!, {r3, lr}
-	ldr r0, _020AEAA0 ; =0x021D5FEC
+	ldr r0, _020AEAA0 ; =_021D5FEC
 	ldr r0, [r0]
 	add r1, r0, #0x2000
 	ldrb r0, [r1, #0x26b]
@@ -16930,7 +17071,7 @@ WcmWmReset: ; 0x020AEA4C
 	bl WcmNotify
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020AEAA0: .word 0x021D5FEC
+_020AEAA0: .word _021D5FEC
 _020AEAA4: .word WcmWmcbReset
 	arm_func_end WcmWmReset
 
@@ -16944,7 +17085,7 @@ WcmWmcbIndication: ; 0x020AEAA8
 	ldreqh r0, [r0, #6]
 	cmpeq r0, #0x25
 	ldmneia sp!, {r3, pc}
-	ldr r0, _020AEB1C ; =0x021D5FEC
+	ldr r0, _020AEB1C ; =_021D5FEC
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x260]
@@ -16970,7 +17111,7 @@ _020AEB10:
 	bl WcmSetPhase
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020AEB1C: .word 0x021D5FEC
+_020AEB1C: .word _021D5FEC
 	arm_func_end WcmWmcbIndication
 
 	arm_func_start WcmWmcbCommon
@@ -17062,7 +17203,7 @@ _020AEC34:
 	mov r2, r0
 	b _020AECC0
 _020AEC48:
-	ldr r1, _020AEDC8 ; =0x021D5FEC
+	ldr r1, _020AEDC8 ; =_021D5FEC
 	ldr r0, _020AEDB8 ; =WcmWmcbCommon
 	ldr r3, [r1]
 	add r2, r3, #0x2000
@@ -17073,7 +17214,7 @@ _020AEC48:
 	mov r2, r0
 	b _020AECC0
 _020AEC70:
-	ldr r0, _020AEDC8 ; =0x021D5FEC
+	ldr r0, _020AEDC8 ; =_021D5FEC
 	ldr r2, [r0]
 	add r0, r2, #0x2000
 	ldr r1, [r0, #0x264]
@@ -17102,7 +17243,7 @@ _020AECC0:
 	bne _020AED10
 	mov r0, #0xc
 	bl WcmSetPhase
-	ldr r0, _020AEDC8 ; =0x021D5FEC
+	ldr r0, _020AEDC8 ; =_021D5FEC
 	mov r2, #0
 	ldr r1, [r0]
 	add r0, r1, #0x2200
@@ -17117,7 +17258,7 @@ _020AECC0:
 _020AED10:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r0, _020AEDC8 ; =0x021D5FEC
+	ldr r0, _020AEDC8 ; =_021D5FEC
 	ldr r3, _020AEDD0 ; =0x000006B8
 	ldr r1, [r0]
 	mov r2, #0
@@ -17132,7 +17273,7 @@ _020AED10:
 _020AED48:
 	mov r0, #0xc
 	bl WcmSetPhase
-	ldr r0, _020AEDC8 ; =0x021D5FEC
+	ldr r0, _020AEDC8 ; =_021D5FEC
 	ldr r3, _020AEDD4 ; =0x000006DE
 	ldr r1, [r0]
 	mov r2, #0
@@ -17147,7 +17288,7 @@ _020AED48:
 _020AED80:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r0, _020AEDC8 ; =0x021D5FEC
+	ldr r0, _020AEDC8 ; =_021D5FEC
 	ldr r3, _020AEDD8 ; =0x000006E8
 	ldr r1, [r0]
 	mov r2, #0
@@ -17164,7 +17305,7 @@ _020AEDB8: .word WcmWmcbCommon
 _020AEDBC: .word 0x00000663
 _020AEDC0: .word 0x0000066C
 _020AEDC4: .word 0x00000673
-_020AEDC8: .word 0x021D5FEC
+_020AEDC8: .word _021D5FEC
 _020AEDCC: .word WcmWmcbConnect
 _020AEDD0: .word 0x000006B8
 _020AEDD4: .word 0x000006DE
@@ -17188,7 +17329,7 @@ _020AEDFC: ; jump table
 	b _020AF074 ; case 3
 	b _020AF074 ; case 4
 _020AEE10:
-	ldr r0, _020AF098 ; =0x021D5FEC
+	ldr r0, _020AF098 ; =_021D5FEC
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x260]
@@ -17202,7 +17343,7 @@ _020AEE10:
 	mov r2, r0
 	bl WcmNotify
 _020AEE44:
-	ldr r1, _020AF098 ; =0x021D5FEC
+	ldr r1, _020AF098 ; =_021D5FEC
 	ldr r2, [r1]
 	add r0, r2, #0x2000
 	ldr r0, [r0, #0x260]
@@ -17251,7 +17392,7 @@ _020AEEBC:
 	cmp r4, r0
 	blt _020AEEBC
 _020AEEFC:
-	ldr r0, _020AF098 ; =0x021D5FEC
+	ldr r0, _020AF098 ; =_021D5FEC
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r1, [r0, #0x264]
@@ -17263,7 +17404,7 @@ _020AEEFC:
 	bl WcmCountBits
 	movs r1, r0
 	beq _020AEF68
-	ldr r0, _020AF098 ; =0x021D5FEC
+	ldr r0, _020AF098 ; =_021D5FEC
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r6, [r0, #0x284]
@@ -17285,7 +17426,7 @@ _020AEF68:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl WcmGetNextScanChannel
-	ldr r1, _020AF098 ; =0x021D5FEC
+	ldr r1, _020AF098 ; =_021D5FEC
 	mov r2, #1
 	mov r2, r2, lsl r0
 	ldr r0, [r1]
@@ -17298,7 +17439,7 @@ _020AEF68:
 	ldrh r1, [r1, #0x8c]
 	ldr r0, [r0, #0x288]
 	bl DC_InvalidateRange
-	ldr r2, _020AF098 ; =0x021D5FEC
+	ldr r2, _020AF098 ; =_021D5FEC
 	ldr r0, _020AF0AC ; =WcmWmcbScanEx
 	ldr r1, [r2]
 	add r1, r1, #0x2000
@@ -17362,7 +17503,7 @@ _020AF074:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020AF098: .word 0x021D5FEC
+_020AF098: .word _021D5FEC
 _020AF09C: .word 0x00000704
 _020AF0A0: .word 0x0000071A
 _020AF0A4: .word 0x00003FFE
@@ -17458,7 +17599,7 @@ _020AF1C4:
 	ldmeqia sp!, {r4, pc}
 	b _020AF30C
 _020AF1D0:
-	ldr r1, _020AF380 ; =0x021D5FEC
+	ldr r1, _020AF380 ; =_021D5FEC
 	ldr r2, [r1]
 	add r0, r2, #0x2000
 	ldr r0, [r0, #0x260]
@@ -17492,7 +17633,7 @@ _020AF238:
 	bl WcmWmReset
 	ldmia sp!, {r4, pc}
 _020AF240:
-	ldr r1, _020AF380 ; =0x021D5FEC
+	ldr r1, _020AF380 ; =_021D5FEC
 	ldr r3, [r1]
 	add r0, r3, #0x2000
 	ldr r0, [r0, #0x260]
@@ -17524,7 +17665,7 @@ _020AF268:
 	bne _020AF2DC
 	mov r0, #0xc
 	bl WcmSetPhase
-	ldr r0, _020AF380 ; =0x021D5FEC
+	ldr r0, _020AF380 ; =_021D5FEC
 	ldr r3, _020AF38C ; =0x000007ED
 	ldr r1, [r0]
 	mov r0, #1
@@ -17535,7 +17676,7 @@ _020AF268:
 _020AF2DC:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r0, _020AF380 ; =0x021D5FEC
+	ldr r0, _020AF380 ; =_021D5FEC
 	ldr r3, _020AF390 ; =0x000007F6
 	ldr r1, [r0]
 	mov r0, #7
@@ -17549,7 +17690,7 @@ _020AF304:
 _020AF30C:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r0, _020AF380 ; =0x021D5FEC
+	ldr r0, _020AF380 ; =_021D5FEC
 	ldrh r2, [r4, #8]
 	ldr r0, [r0]
 	ldr r3, _020AF394 ; =0x00000804
@@ -17558,7 +17699,7 @@ _020AF30C:
 	bl WcmNotify
 	ldmia sp!, {r4, pc}
 _020AF334:
-	ldr r0, _020AF380 ; =0x021D5FEC
+	ldr r0, _020AF380 ; =_021D5FEC
 	ldrh r1, [r4, #0xe]
 	ldr r0, [r0]
 	add r0, r0, #0x2200
@@ -17571,7 +17712,7 @@ _020AF348:
 _020AF358:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r0, _020AF380 ; =0x021D5FEC
+	ldr r0, _020AF380 ; =_021D5FEC
 	ldr r3, _020AF398 ; =0x0000081B
 	ldr r1, [r0]
 	mov r0, #7
@@ -17580,7 +17721,7 @@ _020AF358:
 	bl WcmNotify
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020AF380: .word 0x021D5FEC
+_020AF380: .word _021D5FEC
 _020AF384: .word 0x000007D7
 _020AF388: .word WcmWmcbStartDCF
 _020AF38C: .word 0x000007ED
@@ -17603,7 +17744,7 @@ _020AF3B0: ; jump table
 	b _020AF420 ; case 3
 	b _020AF430 ; case 4
 _020AF3C4:
-	ldr r0, _020AF458 ; =0x021D5FEC
+	ldr r0, _020AF458 ; =_021D5FEC
 	ldr r1, [r0]
 	add r0, r1, #0x2000
 	ldr r0, [r0, #0x260]
@@ -17619,7 +17760,7 @@ _020AF3EC:
 	mov r0, #3
 	strh r2, [r1, #0x82]
 	bl WcmSetPhase
-	ldr r1, _020AF458 ; =0x021D5FEC
+	ldr r1, _020AF458 ; =_021D5FEC
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r3, _020AF45C ; =0x0000083D
@@ -17635,7 +17776,7 @@ _020AF420:
 _020AF430:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r0, _020AF458 ; =0x021D5FEC
+	ldr r0, _020AF458 ; =_021D5FEC
 	ldr r3, _020AF460 ; =0x0000084F
 	ldr r1, [r0]
 	mov r0, #7
@@ -17644,7 +17785,7 @@ _020AF430:
 	bl WcmNotify
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020AF458: .word 0x021D5FEC
+_020AF458: .word _021D5FEC
 _020AF45C: .word 0x0000083D
 _020AF460: .word 0x0000084F
 	arm_func_end WcmWmcbDisconnect
@@ -17666,7 +17807,7 @@ _020AF480:
 	beq _020AF4E8
 	b _020AF514
 _020AF498:
-	ldr r0, _020AF564 ; =0x021D5FEC
+	ldr r0, _020AF564 ; =_021D5FEC
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x260]
@@ -17679,7 +17820,7 @@ _020AF498:
 _020AF4C0:
 	mov r0, #9
 	bl WcmSetPhase
-	ldr r1, _020AF564 ; =0x021D5FEC
+	ldr r1, _020AF564 ; =_021D5FEC
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r3, _020AF568 ; =0x00000872
@@ -17702,7 +17843,7 @@ _020AF4E8:
 _020AF514:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r0, _020AF564 ; =0x021D5FEC
+	ldr r0, _020AF564 ; =_021D5FEC
 	ldrh r2, [r4, #4]
 	ldr r0, [r0]
 	ldr r3, _020AF56C ; =0x00000881
@@ -17713,7 +17854,7 @@ _020AF514:
 _020AF53C:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r0, _020AF564 ; =0x021D5FEC
+	ldr r0, _020AF564 ; =_021D5FEC
 	ldr r3, _020AF570 ; =0x0000088C
 	ldr r1, [r0]
 	mov r0, #7
@@ -17722,7 +17863,7 @@ _020AF53C:
 	bl WcmNotify
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020AF564: .word 0x021D5FEC
+_020AF564: .word _021D5FEC
 _020AF568: .word 0x00000872
 _020AF56C: .word 0x00000881
 _020AF570: .word 0x0000088C
@@ -17742,7 +17883,7 @@ _020AF588: ; jump table
 	b _020AF648 ; case 3
 	b _020AF658 ; case 4
 _020AF59C:
-	ldr r0, _020AF680 ; =0x021D5FEC
+	ldr r0, _020AF680 ; =_021D5FEC
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x260]
@@ -17764,7 +17905,7 @@ _020AF5C4:
 	bne _020AF620
 	mov r0, #0xc
 	bl WcmSetPhase
-	ldr r0, _020AF680 ; =0x021D5FEC
+	ldr r0, _020AF680 ; =_021D5FEC
 	ldr r3, _020AF688 ; =0x000008B4
 	ldr r1, [r0]
 	mov r0, #1
@@ -17780,7 +17921,7 @@ _020AF610:
 _020AF620:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r1, _020AF680 ; =0x021D5FEC
+	ldr r1, _020AF680 ; =_021D5FEC
 	mov r0, #7
 	ldr r1, [r1]
 	mov r2, #0
@@ -17796,7 +17937,7 @@ _020AF648:
 _020AF658:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r0, _020AF680 ; =0x021D5FEC
+	ldr r0, _020AF680 ; =_021D5FEC
 	ldr r3, _020AF68C ; =0x000008D3
 	ldr r1, [r0]
 	mov r0, #7
@@ -17805,7 +17946,7 @@ _020AF658:
 	bl WcmNotify
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020AF680: .word 0x021D5FEC
+_020AF680: .word _021D5FEC
 _020AF684: .word WcmWmcbDisconnect
 _020AF688: .word 0x000008B4
 _020AF68C: .word 0x000008D3
@@ -17818,7 +17959,7 @@ WcmWmcbReset: ; 0x020AF690
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	bne _020AF968
-	ldr r2, _020AF98C ; =0x021D5FEC
+	ldr r2, _020AF98C ; =_021D5FEC
 	mov r0, #0
 	ldr r1, [r2]
 	add r1, r1, #0x2000
@@ -17907,7 +18048,7 @@ _020AF75C:
 	bne _020AF81C
 	mov r0, #0xc
 	bl WcmSetPhase
-	ldr r0, _020AF98C ; =0x021D5FEC
+	ldr r0, _020AF98C ; =_021D5FEC
 	ldr r3, _020AF99C ; =0x0000091C
 	ldr r0, [r0]
 	mov r2, r4
@@ -17919,7 +18060,7 @@ _020AF75C:
 _020AF81C:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r0, _020AF98C ; =0x021D5FEC
+	ldr r0, _020AF98C ; =_021D5FEC
 	ldr r3, _020AF9A0 ; =0x00000925
 	ldr r0, [r0]
 	mov r2, r4
@@ -17931,7 +18072,7 @@ _020AF81C:
 _020AF848:
 	mov r0, #3
 	bl WcmSetPhase
-	ldr r0, _020AF98C ; =0x021D5FEC
+	ldr r0, _020AF98C ; =_021D5FEC
 	ldr r3, _020AF9A4 ; =0x0000092D
 	ldr r0, [r0]
 	mov r2, r4
@@ -17943,7 +18084,7 @@ _020AF848:
 _020AF874:
 	mov r0, #3
 	bl WcmSetPhase
-	ldr r0, _020AF98C ; =0x021D5FEC
+	ldr r0, _020AF98C ; =_021D5FEC
 	ldr r3, _020AF9A8 ; =0x00000935
 	ldr r1, [r0]
 	mov r0, #0
@@ -17955,7 +18096,7 @@ _020AF874:
 _020AF8A0:
 	mov r0, #3
 	bl WcmSetPhase
-	ldr r1, _020AF98C ; =0x021D5FEC
+	ldr r1, _020AF98C ; =_021D5FEC
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r3, _020AF9AC ; =0x0000093C
@@ -17996,7 +18137,7 @@ _020AF914:
 _020AF938:
 	mov r0, #0xb
 	bl WcmSetPhase
-	ldr r1, _020AF98C ; =0x021D5FEC
+	ldr r1, _020AF98C ; =_021D5FEC
 	mov r0, #7
 	ldr r1, [r1]
 	rsb r3, r0, #0x960
@@ -18017,7 +18158,7 @@ _020AF968:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_020AF98C: .word 0x021D5FEC
+_020AF98C: .word _021D5FEC
 _020AF990: .word 0x000008F5
 _020AF994: .word 0x000008FB
 _020AF998: .word WcmWmcbConnect
@@ -18383,7 +18524,7 @@ _020AFDF8:
 	arm_func_start WCMi_InitCpsif
 WCMi_InitCpsif: ; 0x020AFE3C
 	stmdb sp!, {r3, lr}
-	ldr r1, _020AFE74 ; =0x021D5FF0
+	ldr r1, _020AFE74 ; =_021D5FF0
 	ldrb r0, [r1]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
@@ -18392,19 +18533,19 @@ WCMi_InitCpsif: ; 0x020AFE3C
 	mov r2, #0
 	str r2, [r1, #0x24]
 	str r2, [r1, #8]
-	ldr r0, _020AFE78 ; =0x021D5FFC
+	ldr r0, _020AFE78 ; =_021D5FFC
 	str r2, [r1, #4]
 	bl OS_InitMutex
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020AFE74: .word 0x021D5FF0
-_020AFE78: .word 0x021D5FFC
+_020AFE74: .word _021D5FF0
+_020AFE78: .word _021D5FFC
 	arm_func_end WCMi_InitCpsif
 
 	arm_func_start WCMi_CpsifRecvCallback
 WCMi_CpsifRecvCallback: ; 0x020AFE7C
 	stmdb sp!, {r3, lr}
-	ldr r1, _020AFEAC ; =0x021D5FF0
+	ldr r1, _020AFEAC ; =_021D5FF0
 	mov r2, r0
 	ldr ip, [r1, #0x28]
 	cmp ip, #0
@@ -18416,7 +18557,7 @@ WCMi_CpsifRecvCallback: ; 0x020AFE7C
 	blx ip
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020AFEAC: .word 0x021D5FF0
+_020AFEAC: .word _021D5FF0
 	arm_func_end WCMi_CpsifRecvCallback
 
 	arm_func_start WCMi_CpsifSendNullPacket
@@ -18432,7 +18573,7 @@ WCMi_CpsifSendNullPacket: ; 0x020AFEB0
 	ldrb r0, [r0, #0x26b]
 	cmp r0, #1
 	ldmeqia sp!, {r4, pc}
-	ldr r0, _020AFF18 ; =0x021D5FFC
+	ldr r0, _020AFF18 ; =_021D5FFC
 	bl WcmCpsifTryLockMutexInIRQ
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -18444,11 +18585,11 @@ WCMi_CpsifSendNullPacket: ; 0x020AFEB0
 	bl WM_SetDCFData
 	cmp r0, #2
 	ldmeqia sp!, {r4, pc}
-	ldr r0, _020AFF18 ; =0x021D5FFC
+	ldr r0, _020AFF18 ; =_021D5FFC
 	bl WcmCpsifUnlockMutexInIRQ
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020AFF18: .word 0x021D5FFC
+_020AFF18: .word _021D5FFC
 _020AFF1C: .word WcmCpsifKACallback
 	arm_func_end WCMi_CpsifSendNullPacket
 
@@ -18508,12 +18649,12 @@ WCM_SetRecvDCFCallback: ; 0x020AFFC4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
-	ldr r1, _020AFFE0 ; =0x021D5FF0
+	ldr r1, _020AFFE0 ; =_021D5FF0
 	str r4, [r1, #0x28]
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020AFFE0: .word 0x021D5FF0
+_020AFFE0: .word _021D5FF0
 	arm_func_end WCM_SetRecvDCFCallback
 
 	arm_func_start WCM_SendDCFDataEx
@@ -18533,12 +18674,12 @@ WCM_SendDCFDataEx: ; 0x020AFFE4
 	mvn r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020B001C:
-	ldr r0, _020B015C ; =0x021D5FFC
+	ldr r0, _020B015C ; =_021D5FFC
 	bl OS_LockMutex
 	bl WCMi_GetSystemWork
 	movs r7, r0
 	bne _020B0048
-	ldr r0, _020B015C ; =0x021D5FFC
+	ldr r0, _020B015C ; =_021D5FFC
 	bl OS_UnlockMutex
 	mov r0, r5
 	bl OS_RestoreInterrupts
@@ -18553,7 +18694,7 @@ _020B0048:
 	cmp r0, #1
 	bne _020B007C
 _020B0064:
-	ldr r0, _020B015C ; =0x021D5FFC
+	ldr r0, _020B015C ; =_021D5FFC
 	bl OS_UnlockMutex
 	mov r0, r5
 	bl OS_RestoreInterrupts
@@ -18594,38 +18735,38 @@ _020B00D4: ; jump table
 	b _020B00F8 ; case 7
 	b _020B00F8 ; case 8
 _020B00F8:
-	ldr r0, _020B015C ; =0x021D5FFC
+	ldr r0, _020B015C ; =_021D5FFC
 	bl OS_UnlockMutex
 	mov r0, r5
 	bl OS_RestoreInterrupts
 	mvn r0, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020B0110:
-	ldr r0, _020B0164 ; =0x021D5FF4
+	ldr r0, _020B0164 ; =_021D5FF4
 	bl OS_SleepThread
-	ldr r0, _020B0168 ; =0x021D5FF0
+	ldr r0, _020B0168 ; =_021D5FF0
 	ldr r0, [r0, #0x24]
 	cmp r0, #0
 	beq _020B0144
 	cmp r0, #1
-	ldr r0, _020B015C ; =0x021D5FFC
+	ldr r0, _020B015C ; =_021D5FFC
 	bl OS_UnlockMutex
 	mov r0, r5
 	bl OS_RestoreInterrupts
 	mvn r0, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020B0144:
-	ldr r0, _020B015C ; =0x021D5FFC
+	ldr r0, _020B015C ; =_021D5FFC
 	bl OS_UnlockMutex
 	mov r0, r5
 	bl OS_RestoreInterrupts
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020B015C: .word 0x021D5FFC
+_020B015C: .word _021D5FFC
 _020B0160: .word WcmCpsifWmCallback
-_020B0164: .word 0x021D5FF4
-_020B0168: .word 0x021D5FF0
+_020B0164: .word _021D5FF4
+_020B0168: .word _021D5FF0
 	arm_func_end WCM_SendDCFDataEx
 
 	arm_func_start WcmCpsifWmCallback
@@ -18635,29 +18776,29 @@ WcmCpsifWmCallback: ; 0x020B016C
 	cmp r1, #0x12
 	ldmneia sp!, {r3, pc}
 	ldrh r2, [r0, #2]
-	ldr r1, _020B01A4 ; =0x021D5FF0
+	ldr r1, _020B01A4 ; =_021D5FF0
 	str r2, [r1, #0x24]
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	bne _020B0198
 	bl WCMi_ResetKeepAliveAlarm
 _020B0198:
-	ldr r0, _020B01A8 ; =0x021D5FF4
+	ldr r0, _020B01A8 ; =_021D5FF4
 	bl OS_WakeupThread
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B01A4: .word 0x021D5FF0
-_020B01A8: .word 0x021D5FF4
+_020B01A4: .word _021D5FF0
+_020B01A8: .word _021D5FF4
 	arm_func_end WcmCpsifWmCallback
 
 	arm_func_start WcmCpsifKACallback
 WcmCpsifKACallback: ; 0x020B01AC
 	ldr ip, _020B01B8 ; =WcmCpsifUnlockMutexInIRQ
-	ldr r0, _020B01BC ; =0x021D5FFC
+	ldr r0, _020B01BC ; =_021D5FFC
 	bx ip
 	.align 2, 0
 _020B01B8: .word WcmCpsifUnlockMutexInIRQ
-_020B01BC: .word 0x021D5FFC
+_020B01BC: .word _021D5FFC
 	arm_func_end WcmCpsifKACallback
 
 	arm_func_start WcmCpsifTryLockMutexInIRQ
@@ -18746,12 +18887,12 @@ _020B02A8:
 	arm_func_start WCMi_GetRssiAverage
 WCMi_GetRssiAverage: ; 0x020B02B8
 	stmdb sp!, {r3, lr}
-	ldr r1, _020B0330 ; =0x021D601C
+	ldr r1, _020B0330 ; =_021D601C
 	mov r0, #0
 	ldrb r1, [r1]
 	cmp r1, #0x10
 	bls _020B02FC
-	ldr r3, _020B0334 ; =0x021D6020
+	ldr r3, _020B0334 ; =_021D6020
 	mov r2, r0
 _020B02D8:
 	ldrb r1, [r3], #1
@@ -18768,7 +18909,7 @@ _020B02FC:
 	beq _020B0328
 	mov ip, r0
 	ble _020B0324
-	ldr r3, _020B0334 ; =0x021D6020
+	ldr r3, _020B0334 ; =_021D6020
 _020B0310:
 	ldrb r2, [r3], #1
 	add ip, ip, #1
@@ -18781,8 +18922,8 @@ _020B0328:
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B0330: .word 0x021D601C
-_020B0334: .word 0x021D6020
+_020B0330: .word _021D601C
+_020B0334: .word _021D6020
 	arm_func_end WCMi_GetRssiAverage
 
 	arm_func_start WcmGetLinkLevel
@@ -18806,7 +18947,7 @@ _020B0364:
 	arm_func_start WCMi_ShelterRssi
 WCMi_ShelterRssi: ; 0x020B036C
 	stmdb sp!, {r3, lr}
-	ldr r2, _020B03C4 ; =0x021D601C
+	ldr r2, _020B03C4 ; =_021D601C
 	tst r0, #2
 	ldrb ip, [r2]
 	mov r0, r0, asr #2
@@ -18814,7 +18955,7 @@ WCMi_ShelterRssi: ; 0x020B036C
 	mov r1, ip, lsr #0x1f
 	and lr, r0, #0xff
 	rsb r0, r1, ip, lsl #28
-	ldr r3, _020B03C8 ; =0x021D6020
+	ldr r3, _020B03C8 ; =_021D6020
 	add r0, r1, r0, ror #28
 	strb lr, [r3, r0]
 	add r0, ip, #1
@@ -18828,8 +18969,8 @@ WCMi_ShelterRssi: ; 0x020B036C
 	strb r0, [r2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B03C4: .word 0x021D601C
-_020B03C8: .word 0x021D6020
+_020B03C4: .word _021D601C
+_020B03C8: .word _021D6020
 	arm_func_end WCMi_ShelterRssi
 
 	; NitroWiFi: libstubsmd5.a
