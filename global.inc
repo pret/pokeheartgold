@@ -29736,3 +29736,15 @@
 .public _02108FC0
 .public _02108FC8
 .public _021D4670
+.public sub_02056A54
+.public sub_02056AEC
+.public sub_02056BC8
+.public sub_02056C64
+.public sub_02056680
+.public sub_020566F8
+.public sub_020567B4
+.public sub_0205681C
+.public sub_02056938
+.public _0210F6D8
+.public sub_02068DD0
+.public sub_02068DD4
