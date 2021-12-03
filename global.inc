@@ -29733,3 +29733,6 @@
 .public swprintf
 .public vsprintf
 .public wcslen
+.public _02108FC0
+.public _02108FC8
+.public _021D4670

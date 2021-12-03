@@ -1,12 +1,15 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public __sinit__
+	.type __sinit__, @function
 	.public OSi_ThreadInfo
+	.type OSi_ThreadInfo, @function
 
 	.bss
 
 	; msl
 	.public _021E5390
+	.type _021E5390, @function
 _021E5390:
 	.space 0x10
 
@@ -14133,7 +14136,9 @@ _020F0688: .word _ZNSt12length_errorD1Ev
 	; FP_fastI_v5t_LE.a
 
 	.public _dadd
+	.type _dadd, @function
 	.public _d_add
+	.type _d_add, @function
 _dadd: ; 0x020F068C
 _d_add:
 	stmdb sp!, {r4, lr}
@@ -14358,8 +14363,11 @@ _020F0980:
 _020F09A0: .word 0x7FF00000
 
 	.public _d2f
+	.type _d2f, @function
 	.public _d_dtof
+	.type _d_dtof, @function
     .public _f_qtof
+    .type _f_qtof, @function
 _d2f: ; 0x020F09A4
 _d_dtof:
 _f_qtof:
@@ -14439,7 +14447,9 @@ _020F0A9C:
 	bx lr
 
 	.public _dfix
+	.type _dfix, @function
 	.public _d_dtoi
+	.type _d_dtoi, @function
 _dfix: ; 0x020F0AA8
 _d_dtoi:
 	bic r3, r1, #0x80000000
@@ -14466,7 +14476,9 @@ _020F0AE4:
 _020F0AF0: .word 0x0000041E
 
 	.public _dfixu
+	.type _dfixu, @function
 	.public _d_dtou
+	.type _d_dtou, @function
 _dfixu: ; 0x020F0AF4
 _d_dtou:
 	tst r1, #0x80000000
@@ -14497,7 +14509,9 @@ _020F0B40:
 _020F0B48: .word 0x0000041E
 
 	.public _ll_ufrom_d
+	.type _ll_ufrom_d, @function
 	.public _d_dtoull
+	.type _d_dtoull, @function
 _ll_ufrom_d: ; 0x020F0B4C
 _d_dtoull:
 	tst r1, #0x80000000
@@ -14542,7 +14556,9 @@ _020F0BC8:
 _020F0BD4: .word 0x0000043E
 
 	.public _dflt
+	.type _dflt, @function
 	.public _d_itod
+	.type _d_itod, @function
 _dflt: ; 0x020F0BD8
 _d_itod:
 	ands r2, r0, #0x80000000
@@ -14564,7 +14580,9 @@ __d_itod_common:
 	bx lr
 
 	.public _dfltu
+	.type _dfltu, @function
 	.public _d_utod
+	.type _d_utod, @function
 _dfltu: ; 0x020F0C18
 _d_utod:
 	cmp r0, #0
@@ -14586,7 +14604,9 @@ _020F0C3C:
 	bx lr
 
 	.public _dmul
+	.type _dmul, @function
 	.public _d_mul
+	.type _d_mul, @function
 _dmul: ; 0x020F0C54
 _d_mul:
 	stmdb sp!, {r4, r5, r6, r7, lr}
@@ -14829,6 +14849,7 @@ _020F0FA4:
 _020F0FB4: .word 0x7FF00000
 
 	.public _dsqrt
+	.type _dsqrt, @function
 _dsqrt: ; 0x020F0FB8
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _020F1148 ; =0x7FF00000
@@ -14947,6 +14968,7 @@ _020F114C: .word 0x7FF80000
 _020F1150: .word _021E58C0
 
 	.public _drsb
+	.type _drsb, @function
 _drsb: ; 0x020F1154
 	eor r1, r1, r3
 	eor r3, r1, r3
@@ -14955,7 +14977,9 @@ _drsb: ; 0x020F1154
 	eor r2, r0, r2
 	eor r0, r0, r2
 	.public _dsub
+	.type _dsub, @function
 	.public _d_sub
+	.type _d_sub, @function
 _dsub: ; 0x020F116C
 _d_sub: ; 0x020F116C
 	stmdb sp!, {r4, lr}
@@ -15384,7 +15408,9 @@ _020F173C: ; 0x020F173C
 	bx lr
 
 	.public _dgeq
+	.type _dgeq, @function
 	.public _d_fge
+	.type _d_fge, @function
 _dgeq: ; 0x020F1744
 _d_fge:
 	mov ip, #0x200000
@@ -15432,7 +15458,9 @@ _020F17CC:
 	b _020F1758
 
 	.public _dgr
+	.type _dgr, @function
 	.public _d_fgt
+	.type _d_fgt, @function
 _dgr: ; 0x020F17DC
 _d_fgt:
 	mov ip, #0x200000
@@ -15480,7 +15508,9 @@ _020F1864:
 	b _020F17F0
 
 	.public _dleq
+	.type _dleq, @function
 	.public _d_fle
+	.type _d_fle, @function
 _dleq: ; 0x020F1874
 _d_fle:
 	mov ip, #0x200000
@@ -15532,7 +15562,9 @@ _020F1908:
 	b _020F1888
 
 	.public _dls
+	.type _dls, @function
 	.public _d_flt
+	.type _d_flt, @function
 _dls: ; 0x020F1918
 _d_flt:
 	mov ip, #0x200000
@@ -15582,7 +15614,9 @@ _020F19A4:
 	b _020F192C
 
 	.public _deq
+	.type _deq, @function
 	.public _d_feq
+	.type _d_feq, @function
 _deq: ; 0x020F19B4
 _d_feq:
 	mov ip, #0x200000
@@ -15627,7 +15661,9 @@ _020F1A30:
 	b _020F19C8
 
 	.public _dneq
+	.type _dneq, @function
 	.public _d_fne
+	.type _d_fne, @function
 _dneq: ; 0x020F1A40
 _d_fne:
 	mov ip, #0x200000
@@ -15672,7 +15708,9 @@ _020F1ABC:
 	b _020F1A54
 
 	.public _fgr
+	.type _fgr, @function
 	.public _f_fgt
+	.type _f_fgt, @function
 _fgr: ; 0x020F1ACC
 _f_fgt:
 	mov r3, #0xff000000
@@ -15701,7 +15739,9 @@ _020F1B14:
 	bx lr
 
 	.public _fleq
+	.type _fleq, @function
 	.public _f_fle
+	.type _f_fle, @function
 _fleq: ; 0x020F1B28
 _f_fle:
 	mov r3, #0xff000000
@@ -15733,7 +15773,9 @@ _020F1B78:
 	bx lr
 
 	.public _fls
+	.type _fls, @function
 	.public _f_flt
+	.type _f_flt, @function
 _fls: ; 0x020F1B90
 _f_flt:
 	mov r3, #0xff000000
@@ -15762,7 +15804,9 @@ _020F1BD8:
 	bx lr
 
 	.public _feq
+	.type _feq, @function
 	.public _f_feq
+	.type _f_feq, @function
 _feq: ; 0x020F1BEC
 _f_feq:
 	mov r3, #0xff000000
@@ -15795,7 +15839,9 @@ _020F1C40:
 	bx lr
 
 	.public _fneq
+	.type _fneq, @function
 	.public _f_fne
+	.type _f_fne, @function
 _fneq: ; 0x020F1C54
 _f_fne:
 	mov r3, #0xff000000
@@ -15828,12 +15874,15 @@ _020F1CA8:
 	bx lr
 
 	.public _frdiv
+	.type _frdiv, @function
 _frdiv: ; 0x020F1CBC
 	eor r0, r0, r1
 	eor r1, r0, r1
 	eor r0, r0, r1
 	.public _fdiv
+	.type _fdiv, @function
 	.public _f_div
+	.type _f_div, @function
 _fdiv: ; 0x020F1CC8
 _f_div:
 	stmdb sp!, {lr}
@@ -16050,7 +16099,9 @@ _020F2074:
 	bx lr
 
 	.public _f2d
+	.type _f2d, @function
 	.public _f_ftod
+	.type _f_ftod, @function
 _f2d: ; 0x020F2080
 _f_ftod:
 	and r2, r0, #0x80000000
@@ -16094,7 +16145,9 @@ _020F20F4:
 _020F2100: .word 0x7FF00000
 
 	.public _f_ftoi
+	.type _f_ftoi, @function
 	.public _ffix
+	.type _ffix, @function
 _f_ftoi: ; 0x020F2104
 _ffix:
 	bic r1, r0, #0x80000000
@@ -16113,7 +16166,9 @@ _020F212C:
 	bx lr
 
 	.public _ffixu
+	.type _ffixu, @function
 	.public _f_ftou
+	.type _f_ftou, @function
 _ffixu: ; 0x020F2138
 _f_ftou:
 	tst r0, #0x80000000
@@ -16136,7 +16191,9 @@ _020F2170:
 	bx lr
 
 	.public _fflt
+	.type _fflt, @function
 	.public _f_itof
+	.type _f_itof, @function
 _fflt: ; 0x020F2178
 _f_itof:
 	ands r2, r0, #0x80000000
@@ -16160,7 +16217,9 @@ __f_itof_common:
 	bx lr
 
 	.public _ffltu
+	.type _ffltu, @function
 	.public _f_utof
+	.type _f_utof, @function
 _ffltu: ; 0x020F21C0
 _f_utof:
 	cmp r0, #0
@@ -16185,7 +16244,9 @@ _020F21DC:
 	bx lr
 
 	.public _f_lltof
+	.type _f_lltof, @function
 	.public _ll_sto_f
+	.type _ll_sto_f, @function
 _f_lltof: ; 0x020F2208
 _ll_sto_f:
 	ands r2, r1, #0x80000000
@@ -16219,7 +16280,9 @@ _020F2228:
 	bx lr
 
 	.public _f_ulltof
+	.type _f_ulltof, @function
 	.public _ll_uto_f
+	.type _ll_uto_f, @function
 _f_ulltof: ; 0x020F2274
 _ll_uto_f:
 	cmp r1, #0
@@ -16252,7 +16315,9 @@ _020F22A4:
 	bx lr
 
 	.public _fmul
+	.type _fmul, @function
 	.public _f_mul
+	.type _f_mul, @function
 _fmul: ; 0x020F22DC
 _f_mul:
 	eor r2, r0, r1
@@ -16394,12 +16459,15 @@ _020F24B4:
 	bx lr
 
 	.public _frsb
+	.type _frsb, @function
 _frsb: ; 0x020F24BC
 	eor r0, r0, r1
 	eor r1, r0, r1
 	eor r0, r0, r1
 	.public _fsub
+	.type _fsub, @function
 	.public _f_sub
+	.type _f_sub, @function
 _fsub: ; 0x020F24C8
 _f_sub: ; 0x020F24C8
 	eors r2, r0, r1
@@ -16583,6 +16651,7 @@ _020F2738:
 	bx lr
 
 	.public _ll_mod
+	.type _ll_mod, @function
 _ll_mod: ; 0x020F2740
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
 	mov r4, r1
@@ -16590,7 +16659,9 @@ _ll_mod: ; 0x020F2740
 	b _020F2760
 
 	.public _ll_sdiv
+	.type _ll_sdiv, @function
 	.public _ll_div
+	.type _ll_div, @function
 _ll_sdiv: ; 0x020F2750
 _ll_div: ; 0x020F2750
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
@@ -16722,7 +16793,9 @@ _020F28EC:
 	bx lr
 
 	.public _ll_udiv
+	.type _ll_udiv, @function
 	.public _ull_div
+	.type _ull_div, @function
 _ll_udiv: ; 0x020F2900
 _ull_div:
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
@@ -16730,6 +16803,7 @@ _ull_div:
 	b _020F2914
 
 	.public _ull_mod
+	.type _ull_mod, @function
 _ull_mod: ; 0x020F290C
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
 	mov r4, #1
@@ -16750,7 +16824,9 @@ _020F2924:
 	bx lr
 
 	.public _ll_mul
+	.type _ll_mul, @function
 	.public _ull_mul
+	.type _ull_mul, @function
 _ll_mul: ; 0x020F2948
 _ull_mul: ; 0x020F2948
 	stmdb sp!, {r4, r5, lr}
@@ -16763,8 +16839,11 @@ _ull_mul: ; 0x020F2948
 	bx lr
 
 	.public _ll_shl
+	.type _ll_shl, @function
 	.public _ll_sll
+	.type _ll_sll, @function
 	.public _ull_sll
+	.type _ull_sll, @function
 _ll_shl: ; 0x020F2968
 _ll_sll:
 _ull_sll:
@@ -16783,6 +16862,7 @@ _020F298C:
 	bx lr
 
 	.public _s32_div_f
+	.type _s32_div_f, @function
 _s32_div_f: ; 0x020F2998
 	eor ip, r0, r1
 	and ip, ip, #0x80000000
@@ -16918,10 +16998,12 @@ _020F2B90:
 	bx lr
 
 	.public _u32_div_f
+	.type _u32_div_f, @function
 _u32_div_f: ; 0x020F2BA4
 	cmp r1, #0
 	bxeq lr
 	.public _u32_div_not_0_f
+	.type _u32_div_not_0_f, @function
 _u32_div_not_0_f: ; 0x020F2BAC
 	cmp r0, r1
 	movlo r1, r0
@@ -17044,6 +17126,7 @@ _u32_div_not_0_f: ; 0x020F2BAC
 	bx lr
 
 	.public _drdiv
+	.type _drdiv, @function
 _drdiv: ; 0x020F2D88
 	eor r1, r1, r3
 	eor r3, r1, r3
@@ -17052,7 +17135,9 @@ _drdiv: ; 0x020F2D88
 	eor r2, r0, r2
 	eor r0, r0, r2
 	.public _ddiv
+	.type _ddiv, @function
 	.public _d_div
+	.type _d_div, @function
 _ddiv: ; 0x020F2DA0
 _d_div:
 	stmdb sp!, {r4, r5, r6, lr}
@@ -17375,6 +17460,7 @@ _020F32D0:
 _020F32E0: .word 0x00000FFE
 
 	.public _fp_init
+	.type _fp_init, @function
 _fp_init: ; 0x020F32E4
 	bx lr
 
