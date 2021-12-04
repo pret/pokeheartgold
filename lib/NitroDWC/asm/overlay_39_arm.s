@@ -454,12 +454,12 @@ _022298C8: .word _0222AB84
 
 	arm_func_start ov39_022298CC
 ov39_022298CC: ; 0x022298CC
-	ldr ip, _022298DC ; =0x021EC2A8
+	ldr ip, _022298DC ; =ov00_021EC2A8
 	mov r1, r0
 	mov r0, #0
 	bx ip
 	.balign 4, 0
-_022298DC: .word 0x021EC2A8
+_022298DC: .word ov00_021EC2A8
 	arm_func_end ov39_022298CC
 
 	arm_func_start ov39_022298E0
@@ -475,21 +475,21 @@ ov39_022298E0: ; 0x022298E0
 
 	arm_func_start ov39_022298FC
 ov39_022298FC: ; 0x022298FC
-	ldr ip, _02229908 ; =0x020D2618
+	ldr ip, _02229908 ; =OS_LockMutex
 	ldr r0, _0222990C ; =ov39_0222AEB8
 	bx ip
 	.balign 4, 0
-_02229908: .word 0x020D2618
+_02229908: .word OS_LockMutex
 _0222990C: .word ov39_0222AEB8
 	arm_func_end ov39_022298FC
 
 	arm_func_start ov39_02229910
 ov39_02229910: ; 0x02229910
-	ldr ip, _0222991C ; =0x020D269C
+	ldr ip, _0222991C ; =OS_UnlockMutex
 	ldr r0, _02229920 ; =ov39_0222AEB8
 	bx ip
 	.balign 4, 0
-_0222991C: .word 0x020D269C
+_0222991C: .word OS_UnlockMutex
 _02229920: .word ov39_0222AEB8
 	arm_func_end ov39_02229910
 

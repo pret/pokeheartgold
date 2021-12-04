@@ -29758,3 +29758,7 @@
 .public _021D4420
 .public _021E58C0
 .public _021E58E0
+.public FS_NotifyArchiveAsyncEnd
+.public NNS_SndArcPlayerStartSeqArc
+.public NNS_SndPlayerSetVolume
+.public WM_GetSharedDataAddress

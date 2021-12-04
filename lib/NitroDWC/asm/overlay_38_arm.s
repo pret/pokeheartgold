@@ -3844,7 +3844,7 @@ _0221F3F4:
 	mov ip, #0
 	ldr r5, [sp, #8]
 	mov lr, #1
-	ldr r2, _0221F4F8 ; =0x0210E504
+	ldr r2, _0221F4F8 ; =_0210E504
 	mov r3, ip
 	b _0221F438
 _0221F430:
@@ -3904,7 +3904,7 @@ _0221F4E8: .word 0x0000024E
 _0221F4EC: .word ov38_02225C78
 _0221F4F0: .word 0x0000024F
 _0221F4F4: .word ov38_02225C98
-_0221F4F8: .word 0x0210E504
+_0221F4F8: .word _0210E504
 	arm_func_end ov38_0221F3B0
 
 	arm_func_start ov38_0221F4FC
@@ -4403,7 +4403,7 @@ _0221FBC0:
 	cmp r0, #0
 	beq _0221FCE8
 	add r4, r0, #9
-	ldr r1, _0221FE94 ; =0x0210E504
+	ldr r1, _0221FE94 ; =_0210E504
 	mov r2, #0
 	b _0221FBE8
 _0221FBE4:
@@ -4425,7 +4425,7 @@ _0221FC10:
 	cmp r0, #0
 	bne _0221FBE4
 	mov r3, r4
-	ldr r1, _0221FE94 ; =0x0210E504
+	ldr r1, _0221FE94 ; =_0210E504
 	mov r2, #0
 	b _0221FC2C
 _0221FC28:
@@ -4602,7 +4602,7 @@ _0221FE84: .word ov38_02225CCC
 _0221FE88: .word ov38_02225CD4
 _0221FE8C: .word 0x51EB851F
 _0221FE90: .word ov38_02225CD8
-_0221FE94: .word 0x0210E504
+_0221FE94: .word _0210E504
 _0221FE98: .word ov38_02225CE4
 _0221FE9C: .word ov38_02225CF4
 _0221FEA0: .word ov38_02224E6C
@@ -6512,12 +6512,12 @@ _022217F8: .word ov38_022261DC
 
 	arm_func_start ov38_022217FC
 ov38_022217FC: ; 0x022217FC
-	ldr ip, _0222180C ; =0x020D23B0
+	ldr ip, _0222180C ; =OS_SendMessage
 	mov r1, #0
 	mov r2, r1
 	bx ip
 	.balign 4, 0
-_0222180C: .word 0x020D23B0
+_0222180C: .word OS_SendMessage
 	arm_func_end ov38_022217FC
 
 	arm_func_start ov38_02221810
@@ -6567,23 +6567,23 @@ _02221884: .word STD_CompareNString
 
 	arm_func_start ov38_02221888
 ov38_02221888: ; 0x02221888
-	ldr ip, _02221898 ; =0x020D4994
+	ldr ip, _02221898 ; =MI_CpuFill8
 	mov r2, r1
 	mov r1, #0
 	bx ip
 	.balign 4, 0
-_02221898: .word 0x020D4994
+_02221898: .word MI_CpuFill8
 	arm_func_end ov38_02221888
 
 	arm_func_start ov38_0222189C
 ov38_0222189C: ; 0x0222189C
-	ldr ip, _022218B0 ; =0x020D4A50
+	ldr ip, _022218B0 ; =MI_CpuCopy8
 	mov r3, r0
 	mov r0, r1
 	mov r1, r3
 	bx ip
 	.balign 4, 0
-_022218B0: .word 0x020D4A50
+_022218B0: .word MI_CpuCopy8
 	arm_func_end ov38_0222189C
 
 	arm_func_start ov38_022218B4
@@ -7276,13 +7276,13 @@ _02222118: .word ov38_02226B10
 
 	arm_func_start ov38_0222211C
 ov38_0222211C: ; 0x0222211C
-	ldr ip, _02222130 ; =0x020D23B0
+	ldr ip, _02222130 ; =OS_SendMessage
 	mov r1, #0
 	ldr r0, _02222134 ; =ov38_02226B10
 	mov r2, r1
 	bx ip
 	.balign 4, 0
-_02222130: .word 0x020D23B0
+_02222130: .word OS_SendMessage
 _02222134: .word ov38_02226B10
 	arm_func_end ov38_0222211C
 
@@ -8692,23 +8692,23 @@ _02223354: .word STD_GetStringLength
 
 	arm_func_start ov38_02223358
 ov38_02223358: ; 0x02223358
-	ldr ip, _02223368 ; =0x020D4994
+	ldr ip, _02223368 ; =MI_CpuFill8
 	mov r2, r1
 	mov r1, #0
 	bx ip
 	.balign 4, 0
-_02223368: .word 0x020D4994
+_02223368: .word MI_CpuFill8
 	arm_func_end ov38_02223358
 
 	arm_func_start ov38_0222336C
 ov38_0222336C: ; 0x0222336C
-	ldr ip, _02223380 ; =0x020D4A50
+	ldr ip, _02223380 ; =MI_CpuCopy8
 	mov r3, r0
 	mov r0, r1
 	mov r1, r3
 	bx ip
 	.balign 4, 0
-_02223380: .word 0x020D4A50
+_02223380: .word MI_CpuCopy8
 	arm_func_end ov38_0222336C
 
 	arm_func_start ov38_02223384

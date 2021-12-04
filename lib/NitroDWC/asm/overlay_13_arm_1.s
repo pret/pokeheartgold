@@ -1,6 +1,8 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public _start_AutoloadDoneCallback
+
 	.text
 
 	arm_func_start ov13_0221BA70
@@ -1767,7 +1769,7 @@ _0221D2D0:
 	bne _0221D2D0
 _0221D2F4:
 	ldr r1, [sb, #0x28]
-	ldr r2, _0221D33C ; =0x02000AAC
+	ldr r2, _0221D33C ; =_start_AutoloadDoneCallback
 	ldr r3, [r6, #0x48]
 	ldr r0, _0221D340 ; =0xE12FFF1E
 	sub r1, r2, r1
@@ -1787,7 +1789,7 @@ _0221D324:
 _0221D330: .word 0x027FFE00
 _0221D334: .word ov13_02245988
 _0221D338: .word ov13_02245984
-_0221D33C: .word 0x02000AAC
+_0221D33C: .word _start_AutoloadDoneCallback
 _0221D340: .word 0xE12FFF1E
 	arm_func_end ov13_0221CECC
 

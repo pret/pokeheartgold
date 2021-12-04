@@ -659,7 +659,7 @@ ov13_022277B8: ; 0x022277B8
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, _02227878 ; =ov13_02245B20
-	ldr r1, _0222787C ; =0x020CFF84
+	ldr r1, _0222787C ; =GXS_LoadBG0Scr
 	bl ov13_02227924
 	ldr r3, _02227880 ; =0x01920000
 	ldr r2, _02227884 ; =0x04001010
@@ -697,7 +697,7 @@ ov13_022277B8: ; 0x022277B8
 	.balign 4, 0
 _02227874: .word ov13_0224F46C
 _02227878: .word ov13_02245B20
-_0222787C: .word 0x020CFF84
+_0222787C: .word GXS_LoadBG0Scr
 _02227880: .word 0x01920000
 _02227884: .word 0x04001010
 _02227888: .word ov13_0224F4F8
@@ -1085,7 +1085,7 @@ ov13_02227D58: ; 0x02227D58
 	mov r1, #4
 	bl ov13_0224128C
 	ldr r2, _02227DBC ; =ov13_0224F4B4
-	ldr r1, _02227DC0 ; =0x020D02E4
+	ldr r1, _02227DC0 ; =GX_LoadBG1Char
 	str r0, [r2]
 	ldr r0, _02227DC4 ; =ov13_02245D54
 	bl ov13_02227924
@@ -1109,7 +1109,7 @@ _02227DA8:
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02227DBC: .word ov13_0224F4B4
-_02227DC0: .word 0x020D02E4
+_02227DC0: .word GX_LoadBG1Char
 _02227DC4: .word ov13_02245D54
 _02227DC8: .word ov13_02245D04
 _02227DCC: .word GX_LoadBG1Scr
@@ -6272,28 +6272,28 @@ _0222C21C:
 	mov r0, #0
 	bl ov13_02240098
 	ldr r0, _0222C348 ; =ov13_0224606C
-	ldr r1, _0222C34C ; =0x020D0344
+	ldr r1, _0222C34C ; =GXS_LoadBG1Char
 	bl ov13_02227924
 	ldr r0, _0222C350 ; =ov13_02246080
-	ldr r1, _0222C354 ; =0x020CFCC0
+	ldr r1, _0222C354 ; =GXS_LoadBGPltt
 	bl ov13_02227924
 	ldr r0, _0222C358 ; =ov13_02246094
-	ldr r1, _0222C35C ; =0x020CFECC
+	ldr r1, _0222C35C ; =GXS_LoadOBJ
 	bl ov13_02227924
 	ldr r0, _0222C360 ; =ov13_022460AC
-	ldr r1, _0222C364 ; =0x020CFD70
+	ldr r1, _0222C364 ; =GXS_LoadOBJPltt
 	bl ov13_02227924
 	ldr r0, _0222C368 ; =ov13_022460C4
-	ldr r1, _0222C36C ; =0x020D03A4
+	ldr r1, _0222C36C ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _0222C370 ; =ov13_022460DC
 	ldr r1, _0222C374 ; =GX_LoadBGPltt
 	bl ov13_02227924
 	ldr r0, _0222C378 ; =ov13_022460F4
-	ldr r1, _0222C37C ; =0x020CFE74
+	ldr r1, _0222C37C ; =GX_LoadOBJ
 	bl ov13_02227924
 	ldr r0, _0222C380 ; =ov13_0224610C
-	ldr r1, _0222C384 ; =0x020CFD18
+	ldr r1, _0222C384 ; =GX_LoadOBJPltt
 	bl ov13_02227924
 	bl ov13_0222B980
 	cmp r0, #0
@@ -6341,21 +6341,21 @@ _0222C33C: .word ov13_02246018
 _0222C340: .word ov13_02246044
 _0222C344: .word ov13_02246058
 _0222C348: .word ov13_0224606C
-_0222C34C: .word 0x020D0344
+_0222C34C: .word GXS_LoadBG1Char
 _0222C350: .word ov13_02246080
-_0222C354: .word 0x020CFCC0
+_0222C354: .word GXS_LoadBGPltt
 _0222C358: .word ov13_02246094
-_0222C35C: .word 0x020CFECC
+_0222C35C: .word GXS_LoadOBJ
 _0222C360: .word ov13_022460AC
-_0222C364: .word 0x020CFD70
+_0222C364: .word GXS_LoadOBJPltt
 _0222C368: .word ov13_022460C4
-_0222C36C: .word 0x020D03A4
+_0222C36C: .word GX_LoadBG2Char
 _0222C370: .word ov13_022460DC
 _0222C374: .word GX_LoadBGPltt
 _0222C378: .word ov13_022460F4
-_0222C37C: .word 0x020CFE74
+_0222C37C: .word GX_LoadOBJ
 _0222C380: .word ov13_0224610C
-_0222C384: .word 0x020CFD18
+_0222C384: .word GX_LoadOBJPltt
 _0222C388: .word ov13_02246124
 _0222C38C: .word GXS_LoadBG1Scr
 _0222C390: .word ov13_02246138
@@ -6472,7 +6472,7 @@ _0222C4DC:
 	subs r2, r2, #1
 	bne _0222C4DC
 	ldr r0, _0222C590 ; =ov13_0224614C
-	ldr r1, _0222C594 ; =0x020D03A4
+	ldr r1, _0222C594 ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _0222C598 ; =ov13_02246164
 	ldr r1, _0222C59C ; =GX_LoadBGPltt
@@ -6510,7 +6510,7 @@ _0222C4DC:
 	.balign 4, 0
 _0222C58C: .word ov13_0224534E
 _0222C590: .word ov13_0224614C
-_0222C594: .word 0x020D03A4
+_0222C594: .word GX_LoadBG2Char
 _0222C598: .word ov13_02246164
 _0222C59C: .word GX_LoadBGPltt
 _0222C5A0: .word ov13_0224617C
@@ -7807,7 +7807,7 @@ _0222D55C:
 	bne _0222D55C
 	ldrb r2, [r4]
 	ldr r0, _0222D69C ; =ov13_02246258
-	ldr r1, _0222D6A0 ; =0x020D03A4
+	ldr r1, _0222D6A0 ; =GX_LoadBG2Char
 	strb r2, [r3]
 	bl ov13_02227924
 	ldr r0, _0222D6A4 ; =ov13_02246270
@@ -7881,7 +7881,7 @@ _0222D620:
 _0222D694: .word ov13_0224536C
 _0222D698: .word ov13_02245382
 _0222D69C: .word ov13_02246258
-_0222D6A0: .word 0x020D03A4
+_0222D6A0: .word GX_LoadBG2Char
 _0222D6A4: .word ov13_02246270
 _0222D6A8: .word GX_LoadBG2Scr
 _0222D6AC: .word ov13_0224F508
@@ -10274,7 +10274,7 @@ _0222F308: .word ov13_0222F3B4
 ov13_0222F30C: ; 0x0222F30C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0222F394 ; =ov13_02246300
-	ldr r1, _0222F398 ; =0x020D03A4
+	ldr r1, _0222F398 ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _0222F39C ; =ov13_02246318
 	ldr r1, _0222F3A0 ; =GX_LoadBGPltt
@@ -10308,7 +10308,7 @@ ov13_0222F30C: ; 0x0222F30C
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _0222F394: .word ov13_02246300
-_0222F398: .word 0x020D03A4
+_0222F398: .word GX_LoadBG2Char
 _0222F39C: .word ov13_02246318
 _0222F3A0: .word GX_LoadBGPltt
 _0222F3A4: .word ov13_02246330
@@ -10949,7 +10949,7 @@ _0222FB5C:
 	subs r2, r2, #1
 	bne _0222FB5C
 	ldr r0, _0222FC54 ; =ov13_02246358
-	ldr r1, _0222FC58 ; =0x020D0164
+	ldr r1, _0222FC58 ; =GX_LoadBG3Scr
 	bl ov13_02227924
 	add r0, sp, #0x16
 	bl ov13_022278C4
@@ -11004,7 +11004,7 @@ _0222FB5C:
 _0222FC4C: .word ov13_022453E3
 _0222FC50: .word ov13_022453CD
 _0222FC54: .word ov13_02246358
-_0222FC58: .word 0x020D0164
+_0222FC58: .word GX_LoadBG3Scr
 _0222FC5C: .word ov13_0224F538
 _0222FC60: .word 0x04001008
 _0222FC64: .word 0x0400000A
@@ -12546,10 +12546,10 @@ _02231108: .word ov13_022311C8
 ov13_0223110C: ; 0x0223110C
 	stmdb sp!, {r3, lr}
 	ldr r0, _022311A0 ; =ov13_02246370
-	ldr r1, _022311A4 ; =0x020CFD18
+	ldr r1, _022311A4 ; =GX_LoadOBJPltt
 	bl ov13_02227924
 	ldr r0, _022311A8 ; =ov13_02246384
-	ldr r1, _022311AC ; =0x020D03A4
+	ldr r1, _022311AC ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _022311B0 ; =ov13_0224639C
 	ldr r1, _022311B4 ; =GX_LoadBGPltt
@@ -12583,9 +12583,9 @@ ov13_0223110C: ; 0x0223110C
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _022311A0: .word ov13_02246370
-_022311A4: .word 0x020CFD18
+_022311A4: .word GX_LoadOBJPltt
 _022311A8: .word ov13_02246384
-_022311AC: .word 0x020D03A4
+_022311AC: .word GX_LoadBG2Char
 _022311B0: .word ov13_0224639C
 _022311B4: .word GX_LoadBGPltt
 _022311B8: .word ov13_022463B4
@@ -12913,7 +12913,7 @@ ov13_022315B0: ; 0x022315B0
 	mov r0, #0
 	bl ov13_02240B04
 	ldr r0, _0223169C ; =ov13_022463C8
-	ldr r1, _022316A0 ; =0x020CFD18
+	ldr r1, _022316A0 ; =GX_LoadOBJPltt
 	bl ov13_02227924
 	mov r0, #1
 	mov r1, r0
@@ -12967,7 +12967,7 @@ _02231688:
 	.balign 4, 0
 _02231698: .word ov13_0224F540
 _0223169C: .word ov13_022463C8
-_022316A0: .word 0x020CFD18
+_022316A0: .word GX_LoadOBJPltt
 _022316A4: .word ov13_02232E04
 _022316A8: .word ov13_0222FA3C
 _022316AC: .word ov13_02238440
@@ -13414,10 +13414,10 @@ _02231C88: .word ov13_02231D48
 ov13_02231C8C: ; 0x02231C8C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02231D20 ; =ov13_022463E4
-	ldr r1, _02231D24 ; =0x020CFD18
+	ldr r1, _02231D24 ; =GX_LoadOBJPltt
 	bl ov13_02227924
 	ldr r0, _02231D28 ; =ov13_022463F8
-	ldr r1, _02231D2C ; =0x020D03A4
+	ldr r1, _02231D2C ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _02231D30 ; =ov13_02246410
 	ldr r1, _02231D34 ; =GX_LoadBGPltt
@@ -13451,9 +13451,9 @@ ov13_02231C8C: ; 0x02231C8C
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02231D20: .word ov13_022463E4
-_02231D24: .word 0x020CFD18
+_02231D24: .word GX_LoadOBJPltt
 _02231D28: .word ov13_022463F8
-_02231D2C: .word 0x020D03A4
+_02231D2C: .word GX_LoadBG2Char
 _02231D30: .word ov13_02246410
 _02231D34: .word GX_LoadBGPltt
 _02231D38: .word ov13_02246428
@@ -13900,7 +13900,7 @@ ov13_022322D8: ; 0x022322D8
 	mov r0, #0
 	bl ov13_02240B04
 	ldr r0, _0223236C ; =ov13_02246440
-	ldr r1, _02232370 ; =0x020CFD18
+	ldr r1, _02232370 ; =GX_LoadOBJPltt
 	bl ov13_02227924
 	mov r0, #1
 	mov r1, r0
@@ -13930,7 +13930,7 @@ ov13_022322D8: ; 0x022322D8
 	.balign 4, 0
 _02232368: .word ov13_0224F544
 _0223236C: .word ov13_02246440
-_02232370: .word 0x020CFD18
+_02232370: .word GX_LoadOBJPltt
 _02232374: .word ov13_02232E04
 _02232378: .word ov13_0224F544
 	arm_func_end ov13_022322D8
@@ -14921,23 +14921,23 @@ _0223307C:
 	ldr r3, _022331E0 ; =0x0400000C
 	ldr r0, _022331E4 ; =ov13_02246474
 	ldrh r2, [r3]
-	ldr r1, _022331E8 ; =0x020CFD18
+	ldr r1, _022331E8 ; =GX_LoadOBJPltt
 	and r2, r2, #0x43
 	orr r2, r2, #0x218
 	orr r2, r2, #0xc00
 	strh r2, [r3]
 	bl ov13_02227924
 	ldr r0, _022331EC ; =ov13_02246488
-	ldr r1, _022331F0 ; =0x020D0464
+	ldr r1, _022331F0 ; =GX_LoadBG3Char
 	bl ov13_02227924
 	ldr r0, _022331F4 ; =ov13_022464A0
-	ldr r1, _022331F8 ; =0x020D03A4
+	ldr r1, _022331F8 ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r1, _022331FC ; =GX_LoadBGPltt
 	add r0, sp, #0x16
 	bl ov13_02227924
 	ldr r0, _02233200 ; =ov13_022464B8
-	ldr r1, _02233204 ; =0x020D0164
+	ldr r1, _02233204 ; =GX_LoadBG3Scr
 	bl ov13_02227924
 	add r0, sp, #0x2b
 	bl ov13_022278C4
@@ -15002,14 +15002,14 @@ _022331D8: .word ov13_02245548
 _022331DC: .word ov13_0224555D
 _022331E0: .word 0x0400000C
 _022331E4: .word ov13_02246474
-_022331E8: .word 0x020CFD18
+_022331E8: .word GX_LoadOBJPltt
 _022331EC: .word ov13_02246488
-_022331F0: .word 0x020D0464
+_022331F0: .word GX_LoadBG3Char
 _022331F4: .word ov13_022464A0
-_022331F8: .word 0x020D03A4
+_022331F8: .word GX_LoadBG2Char
 _022331FC: .word GX_LoadBGPltt
 _02233200: .word ov13_022464B8
-_02233204: .word 0x020D0164
+_02233204: .word GX_LoadBG3Scr
 _02233208: .word ov13_0224F54C
 _0223320C: .word 0x04001008
 _02233210: .word 0x0400000A
@@ -15739,7 +15739,7 @@ _02233BA4:
 	cmp r5, #2
 	blt _02233BA4
 	ldr r0, _02233DA4 ; =ov13_022464CC
-	ldr r1, _02233DA8 ; =0x020CFD18
+	ldr r1, _02233DA8 ; =GX_LoadOBJPltt
 	bl ov13_02227924
 	mov r0, #1
 	mov r1, r0
@@ -15871,7 +15871,7 @@ _02233D94:
 	.balign 4, 0
 _02233DA0: .word ov13_0224F54C
 _02233DA4: .word ov13_022464CC
-_02233DA8: .word 0x020CFD18
+_02233DA8: .word GX_LoadOBJPltt
 _02233DAC: .word 0x04000010
 _02233DB0: .word ov13_02230FD8
 _02233DB4: .word ov13_02231B18
@@ -17456,7 +17456,7 @@ _022352EC: .word ov13_02235384
 ov13_022352F0: ; 0x022352F0
 	stmdb sp!, {r3, lr}
 	ldr r0, _02235364 ; =ov13_02246504
-	ldr r1, _02235368 ; =0x020D03A4
+	ldr r1, _02235368 ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _0223536C ; =ov13_0224651C
 	ldr r1, _02235370 ; =GX_LoadBGPltt
@@ -17485,7 +17485,7 @@ ov13_022352F0: ; 0x022352F0
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02235364: .word ov13_02246504
-_02235368: .word 0x020D03A4
+_02235368: .word GX_LoadBG2Char
 _0223536C: .word ov13_0224651C
 _02235370: .word GX_LoadBGPltt
 _02235374: .word ov13_02246534
@@ -18544,7 +18544,7 @@ _02235FD8: .word ov13_02236084
 ov13_02235FDC: ; 0x02235FDC
 	stmdb sp!, {r3, lr}
 	ldr r0, _02236064 ; =ov13_02246584
-	ldr r1, _02236068 ; =0x020D03A4
+	ldr r1, _02236068 ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _0223606C ; =ov13_0224659C
 	ldr r1, _02236070 ; =GX_LoadBGPltt
@@ -18578,7 +18578,7 @@ ov13_02235FDC: ; 0x02235FDC
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02236064: .word ov13_02246584
-_02236068: .word 0x020D03A4
+_02236068: .word GX_LoadBG2Char
 _0223606C: .word ov13_0224659C
 _02236070: .word GX_LoadBGPltt
 _02236074: .word ov13_022465B4
@@ -18912,7 +18912,7 @@ _02236458: .word ov13_02236504
 ov13_0223645C: ; 0x0223645C
 	stmdb sp!, {r3, lr}
 	ldr r0, _022364E4 ; =ov13_022465C8
-	ldr r1, _022364E8 ; =0x020D03A4
+	ldr r1, _022364E8 ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _022364EC ; =ov13_022465E0
 	ldr r1, _022364F0 ; =GX_LoadBGPltt
@@ -18946,7 +18946,7 @@ ov13_0223645C: ; 0x0223645C
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _022364E4: .word ov13_022465C8
-_022364E8: .word 0x020D03A4
+_022364E8: .word GX_LoadBG2Char
 _022364EC: .word ov13_022465E0
 _022364F0: .word GX_LoadBGPltt
 _022364F4: .word ov13_022465F8
@@ -19314,10 +19314,10 @@ _0223694C:
 	subs r2, r2, #1
 	bne _0223694C
 	ldr r0, _02236A1C ; =ov13_0224660C
-	ldr r1, _02236A20 ; =0x020CFD18
+	ldr r1, _02236A20 ; =GX_LoadOBJPltt
 	bl ov13_02227924
 	ldr r0, _02236A24 ; =ov13_02246620
-	ldr r1, _02236A28 ; =0x020D03A4
+	ldr r1, _02236A28 ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _02236A2C ; =ov13_02246638
 	ldr r1, _02236A30 ; =GX_LoadBGPltt
@@ -19359,9 +19359,9 @@ _0223694C:
 	.balign 4, 0
 _02236A18: .word ov13_0224560C
 _02236A1C: .word ov13_0224660C
-_02236A20: .word 0x020CFD18
+_02236A20: .word GX_LoadOBJPltt
 _02236A24: .word ov13_02246620
-_02236A28: .word 0x020D03A4
+_02236A28: .word GX_LoadBG2Char
 _02236A2C: .word ov13_02246638
 _02236A30: .word GX_LoadBGPltt
 _02236A34: .word ov13_02246650
@@ -19796,7 +19796,7 @@ _02236F9C:
 	ldr r0, [r0]
 	bl ov13_0223FA50
 	ldr r0, _0223709C ; =ov13_02246664
-	ldr r1, _022370A0 ; =0x020CFD18
+	ldr r1, _022370A0 ; =GX_LoadOBJPltt
 	bl ov13_02227924
 	mov r0, #1
 	mov r1, r0
@@ -19858,7 +19858,7 @@ _0223708C:
 	.balign 4, 0
 _02237098: .word ov13_0224F56C
 _0223709C: .word ov13_02246664
-_022370A0: .word 0x020CFD18
+_022370A0: .word GX_LoadOBJPltt
 _022370A4: .word ov13_0222C44C
 _022370A8: .word ov13_02237618
 _022370AC: .word ov13_02232E04
@@ -20348,7 +20348,7 @@ _02237750:
 	subs r2, r2, #1
 	bne _02237750
 	ldr r0, _02237804 ; =ov13_0224667C
-	ldr r1, _02237808 ; =0x020D03A4
+	ldr r1, _02237808 ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _0223780C ; =ov13_02246694
 	ldr r1, _02237810 ; =GX_LoadBGPltt
@@ -20386,7 +20386,7 @@ _02237750:
 	.balign 4, 0
 _02237800: .word ov13_022456B8
 _02237804: .word ov13_0224667C
-_02237808: .word 0x020D03A4
+_02237808: .word GX_LoadBG2Char
 _0223780C: .word ov13_02246694
 _02237810: .word GX_LoadBGPltt
 _02237814: .word ov13_022466AC
@@ -20880,7 +20880,7 @@ _02237E58: .word ov13_02237F9C
 ov13_02237E5C: ; 0x02237E5C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02237EE4 ; =ov13_022466C0
-	ldr r1, _02237EE8 ; =0x020D03A4
+	ldr r1, _02237EE8 ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _02237EEC ; =ov13_022466D8
 	ldr r1, _02237EF0 ; =GX_LoadBGPltt
@@ -20914,7 +20914,7 @@ ov13_02237E5C: ; 0x02237E5C
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02237EE4: .word ov13_022466C0
-_02237EE8: .word 0x020D03A4
+_02237EE8: .word GX_LoadBG2Char
 _02237EEC: .word ov13_022466D8
 _02237EF0: .word GX_LoadBGPltt
 _02237EF4: .word ov13_022466F0
@@ -21768,7 +21768,7 @@ _022388EC: .word ov13_02238998
 ov13_022388F0: ; 0x022388F0
 	stmdb sp!, {r3, lr}
 	ldr r0, _02238978 ; =ov13_02246740
-	ldr r1, _0223897C ; =0x020D03A4
+	ldr r1, _0223897C ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _02238980 ; =ov13_02246758
 	ldr r1, _02238984 ; =GX_LoadBGPltt
@@ -21802,7 +21802,7 @@ ov13_022388F0: ; 0x022388F0
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02238978: .word ov13_02246740
-_0223897C: .word 0x020D03A4
+_0223897C: .word GX_LoadBG2Char
 _02238980: .word ov13_02246758
 _02238984: .word GX_LoadBGPltt
 _02238988: .word ov13_02246770
@@ -22090,7 +22090,7 @@ _02238CDC: .word ov13_02238D88
 ov13_02238CE0: ; 0x02238CE0
 	stmdb sp!, {r3, lr}
 	ldr r0, _02238D68 ; =ov13_02246784
-	ldr r1, _02238D6C ; =0x020D03A4
+	ldr r1, _02238D6C ; =GX_LoadBG2Char
 	bl ov13_02227924
 	ldr r0, _02238D70 ; =ov13_0224679C
 	ldr r1, _02238D74 ; =GX_LoadBGPltt
@@ -22124,7 +22124,7 @@ ov13_02238CE0: ; 0x02238CE0
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02238D68: .word ov13_02246784
-_02238D6C: .word 0x020D03A4
+_02238D6C: .word GX_LoadBG2Char
 _02238D70: .word ov13_0224679C
 _02238D74: .word GX_LoadBGPltt
 _02238D78: .word ov13_022467B4
@@ -24551,13 +24551,13 @@ ov13_0223ABB8: ; 0x0223ABB8
 	ldr r1, _0223ABD4 ; =ov13_0224F5A8
 	mov r2, r0
 	ldr r0, [r1]
-	ldr ip, _0223ABD8 ; =0x020CA954
+	ldr ip, _0223ABD8 ; =NNS_SndArcPlayerStartSeqArc
 	mov r1, #0
 	add r0, r0, #0x94
 	bx ip
 	.balign 4, 0
 _0223ABD4: .word ov13_0224F5A8
-_0223ABD8: .word 0x020CA954
+_0223ABD8: .word NNS_SndArcPlayerStartSeqArc
 	arm_func_end ov13_0223ABB8
 
 	arm_func_start ov13_0223ABDC
@@ -24565,18 +24565,18 @@ ov13_0223ABDC: ; 0x0223ABDC
 	ldr r2, _0223ABF4 ; =ov13_0224F5A8
 	mov r1, r0
 	ldr r0, [r2]
-	ldr ip, _0223ABF8 ; =0x020C8208
+	ldr ip, _0223ABF8 ; =NNS_SndPlayerSetVolume
 	add r0, r0, #0x94
 	bx ip
 	.balign 4, 0
 _0223ABF4: .word ov13_0224F5A8
-_0223ABF8: .word 0x020C8208
+_0223ABF8: .word NNS_SndPlayerSetVolume
 	arm_func_end ov13_0223ABDC
 
 	arm_func_start ov13_0223ABFC
 ov13_0223ABFC: ; 0x0223ABFC
 	ldr r2, _0223AC18 ; =ov13_0224F5A8
-	ldr ip, _0223AC1C ; =0x020C827C
+	ldr ip, _0223AC1C ; =NNS_SndPlayerSetTrackPitch
 	ldr r3, [r2]
 	mov r2, r1
 	mov r1, r0
@@ -24584,20 +24584,20 @@ ov13_0223ABFC: ; 0x0223ABFC
 	bx ip
 	.balign 4, 0
 _0223AC18: .word ov13_0224F5A8
-_0223AC1C: .word 0x020C827C
+_0223AC1C: .word NNS_SndPlayerSetTrackPitch
 	arm_func_end ov13_0223ABFC
 
 	arm_func_start ov13_0223AC20
 ov13_0223AC20: ; 0x0223AC20
 	ldr r0, _0223AC38 ; =ov13_0224F5A8
-	ldr ip, _0223AC3C ; =0x020C8058
+	ldr ip, _0223AC3C ; =NNS_SndPlayerStopSeq
 	ldr r0, [r0]
 	mov r1, #0
 	add r0, r0, #0x94
 	bx ip
 	.balign 4, 0
 _0223AC38: .word ov13_0224F5A8
-_0223AC3C: .word 0x020C8058
+_0223AC3C: .word NNS_SndPlayerStopSeq
 	arm_func_end ov13_0223AC20
 
 	arm_func_start ov13_0223AC40
@@ -28951,7 +28951,7 @@ _0223E5C4: .word ov13_0224F5C0
 	arm_func_start ov13_0223E5C8
 ov13_0223E5C8: ; 0x0223E5C8
 	ldr r1, _0223E5E8 ; =ov13_0224F5C0
-	ldr ip, _0223E5EC ; =0x020E0BF0
+	ldr ip, _0223E5EC ; =WM_GetSharedDataAddress
 	ldr r1, [r1, #4]
 	mov r2, r0
 	add r0, r1, #0x3e0
@@ -28960,7 +28960,7 @@ ov13_0223E5C8: ; 0x0223E5C8
 	bx ip
 	.balign 4, 0
 _0223E5E8: .word ov13_0224F5C0
-_0223E5EC: .word 0x020E0BF0
+_0223E5EC: .word WM_GetSharedDataAddress
 	arm_func_end ov13_0223E5C8
 
 	arm_func_start ov13_0223E5F0
@@ -30431,11 +30431,11 @@ _0223F940: .word ov13_0223F944
 
 	arm_func_start ov13_0223F944
 ov13_0223F944: ; 0x0223F944
-	ldr ip, _0223F950 ; =0x020D7EDC
+	ldr ip, _0223F950 ; =FS_NotifyArchiveAsyncEnd
 	mov r1, #0
 	bx ip
 	.balign 4, 0
-_0223F950: .word 0x020D7EDC
+_0223F950: .word FS_NotifyArchiveAsyncEnd
 	arm_func_end ov13_0223F944
 
 	arm_func_start ov13_0223F954
