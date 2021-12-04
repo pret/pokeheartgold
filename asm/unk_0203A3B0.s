@@ -774,7 +774,7 @@ sub_0203A8CC: ; 0x0203A8CC
 	beq _0203A8EC
 	bl sub_0203A914
 _0203A8EC:
-	ldr r0, _0203A910 ; =0x0210F91C
+	ldr r0, _0203A910 ; =_0210F91C
 	str r5, [sp]
 	str r0, [sp, #4]
 	ldr r0, [sp, #0x28]
@@ -792,7 +792,7 @@ _0203A908:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0203A90C: .word _021D4154
-_0203A910: .word 0x0210F91C
+_0203A910: .word _0210F91C
 	thumb_func_end sub_0203A8CC
 
 	thumb_func_start sub_0203A914

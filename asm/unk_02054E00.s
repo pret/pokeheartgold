@@ -363,7 +363,7 @@ _020550A6:
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	ldr r0, _020550DC ; =0x00000454
-	ldr r1, _020550E0 ; =0x020FC61C
+	ldr r1, _020550E0 ; =_020FC61C
 	mov r3, #0
 	mov r6, #6
 _020550BA:
@@ -386,7 +386,7 @@ _020550CE:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020550DC: .word 0x00000454
-_020550E0: .word 0x020FC61C
+_020550E0: .word _020FC61C
 	thumb_func_end sub_02055098
 
 	thumb_func_start sub_020550E4

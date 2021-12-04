@@ -222,7 +222,7 @@ _02259A7E:
 	ldrh r3, [r3, #0xc]
 	add r0, r5, #0
 	bl ov01_021EF564
-	ldr r1, _02259AA8 ; =0x021EF349
+	ldr r1, _02259AA8 ; =ov01_021EF348
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
@@ -230,7 +230,7 @@ _02259A7E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02259AA4: .word _02259D84
-_02259AA8: .word 0x021EF349
+_02259AA8: .word ov01_021EF348
 	thumb_func_end ScrCmd_809
 
 	thumb_func_start ov25_02259AAC

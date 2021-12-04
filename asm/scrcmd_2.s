@@ -435,7 +435,7 @@ _020480D8:
 _020480DC:
 	mov r1, #6
 _020480DE:
-	ldr r0, _02048124 ; =0x020FBF22
+	ldr r0, _02048124 ; =_020FBF22
 	mov r2, #0
 	add r6, sp, #0xc
 _020480E4:
@@ -472,7 +472,7 @@ _020480FA:
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02048124: .word 0x020FBF22
+_02048124: .word _020FBF22
 _02048128: .word 0x0000FFFF
 	thumb_func_end ScrCmd_275
 

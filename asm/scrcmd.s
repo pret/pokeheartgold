@@ -6450,13 +6450,13 @@ ScrCmd_214: ; 0x02043990
 	mov r3, #1
 	bl sub_0205B5B4
 	strb r0, [r7]
-	ldr r1, _02043A24 ; =0x021EF349
+	ldr r1, _02043A24 ; =ov01_021EF348
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02043A24: .word 0x021EF349
+_02043A24: .word ov01_021EF348
 	thumb_func_end ScrCmd_214
 
 	thumb_func_start ScrCmd_226
@@ -11922,7 +11922,7 @@ _0204647E:
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	ldr r1, _020464D8 ; =0x02108584
+	ldr r1, _020464D8 ; =_02108584
 	ldr r0, [r0, #0xc]
 	add r2, r4, #0
 	str r0, [r4, #8]
@@ -11952,7 +11952,7 @@ _0204647E:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020464D8: .word 0x02108584
+_020464D8: .word _02108584
 _020464DC: .word sub_02042974
 	thumb_func_end ScrCmd_627
 

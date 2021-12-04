@@ -11128,7 +11128,7 @@ ov45_0223AA80: ; 0x0223AA80
 	str r0, [r6, #4]
 	cmp r5, #0
 	ldmleia sp!, {r4, r5, r6, pc}
-	ldr r4, _0223AAE0 ; =0x021E58E0
+	ldr r4, _0223AAE0 ; =_021E58E0
 _0223AAAC:
 	mov r1, r4
 	mov r0, r5, lsl #3
@@ -14325,11 +14325,11 @@ ov45_0223D7B4: ; 0x0223D7B4
 	bxlt lr
 	cmp r0, #0x80
 	bxge lr
-	ldr r1, _0223D7D0 ; =0x0210E404
+	ldr r1, _0223D7D0 ; =_0210E404
 	ldrb r0, [r1, r0]
 	bx lr
 	.balign 4, 0
-_0223D7D0: .word 0x0210E404
+_0223D7D0: .word _0210E404
 	arm_func_end ov45_0223D7B4
 
 	arm_func_start ov45_0223D7D4
@@ -25832,7 +25832,7 @@ _0224755C:
 	mov r0, #0
 	cmp r2, #0
 	beq _02247594
-	ldr r1, _022475B4 ; =0x0210E404
+	ldr r1, _022475B4 ; =_0210E404
 _02247570:
 	cmp r2, #0
 	blt _02247584
@@ -25854,7 +25854,7 @@ _022475A4: .word ov45_0225590C
 _022475A8: .word ov45_02255918
 _022475AC: .word ov45_02255668
 _022475B0: .word ov45_02255928
-_022475B4: .word 0x0210E404
+_022475B4: .word _0210E404
 	arm_func_end ov45_02247518
 
 	arm_func_start ov45_022475B8

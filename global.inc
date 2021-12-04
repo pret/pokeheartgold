@@ -29749,3 +29749,12 @@
 .public sub_02068DD0
 .public sub_02068DD4
 .public _02111864
+.public sub_0202D230
+.public sub_0202E58C
+.public _02108584
+.public _0210E404
+.public _0210E504
+.public _0210E484
+.public _021D4420
+.public _021E58C0
+.public _021E58E0
