@@ -260,3 +260,4 @@ FX_AtanIdxTable_:
 	.short 0x1F84
 	.short 0x1FAE
 	.short 0x1FD7
+	.short 0x2000

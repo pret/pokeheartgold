@@ -246,7 +246,7 @@ Static main
 	Object fx_cp.o
 	Object fx_vec.o
 	Object fx_trig.o
-	Object fx_atan.o
+	Object fx_atanidx.o
 	Object fx.o
 	Object gx.o
 	Object gxstate.o
