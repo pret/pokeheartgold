@@ -169,7 +169,7 @@ Static main
 	Object scrcmd_15.o
 	Object scrcmd_16.o
 	Object scrcmd_17.o
-	Object scrcmd_18.o
+	Object scrcmd_items.o
 	Object scrcmd_19.o
 	Object scrcmd_20.o
 	Object unk_0204F500.o

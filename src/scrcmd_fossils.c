@@ -28,7 +28,7 @@ BOOL ScrCmd_CountFossils(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetFossilPokemon(SCRIPTCONTEXT* ctx) {                                                                                                                                                                                                                 
+BOOL ScrCmd_GetFossilPokemon(SCRIPTCONTEXT* ctx) {
     u16 *ret_ptr = GetVarPointer(ctx->unk80, ScriptReadHalfword(ctx));
     u16 fossil_id = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
 
@@ -54,11 +54,9 @@ BOOL ScrCmd_GetFossilMinimumAmount(SCRIPTCONTEXT* ctx) {
 
     u8 i;
     u16 total;
-    for (i = 0, total = 0; i < NELEMS(sFossilPokemonMap); i++)
-    {
+    for (i = 0, total = 0; i < NELEMS(sFossilPokemonMap); i++) {
         total += Bag_GetQuantity(Sav2_Bag_get(sav_ptr->savedata), sFossilPokemonMap[i][0], 4);
-        if (total >= needed_amount)
-        {
+        if (total >= needed_amount) {
             *ret_ptr1 = sFossilPokemonMap[i][0];
             *ret_ptr2 = i;
             break;

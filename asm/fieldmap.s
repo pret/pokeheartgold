@@ -226,7 +226,7 @@ gScriptCmdTable:
 	.word ScrCmd_SetVar                                 ; 041
 	.word ScrCmd_CopyVar                                ; 042
 	.word ScrCmd_SetOrCopyVar                           ; 043
-	.word ScrCmd_Message                                    ; 044
+	.word ScrCmd_Message                                ; 044
 	.word ScrCmd_045                                    ; 045
 	.word ScrCmd_046                                    ; 046
 	.word ScrCmd_047                                    ; 047
@@ -307,12 +307,12 @@ gScriptCmdTable:
 	.word ScrCmd_122                                    ; 122
 	.word ScrCmd_123                                    ; 123
 	.word ScrCmd_124                                    ; 124
-	.word ScrCmd_125                                    ; 125
-	.word ScrCmd_126                                    ; 126
-	.word ScrCmd_127                                    ; 127
-	.word ScrCmd_128                                    ; 128
-	.word ScrCmd_129                                    ; 129
-	.word ScrCmd_130                                    ; 130
+	.word ScrCmd_GiveItem                               ; 125
+	.word ScrCmd_TakeItem                               ; 126
+	.word ScrCmd_HasSpaceForItem                        ; 127
+	.word ScrCmd_HasItem                                ; 128
+	.word ScrCmd_ItemIsTMOrHM                           ; 129
+	.word ScrCmd_GetItemPocket                          ; 130
 	.word ScrCmd_131                                    ; 131
 	.word ScrCmd_132                                    ; 132
 	.word ScrCmd_133                                    ; 133
@@ -851,7 +851,7 @@ gScriptCmdTable:
 	.word ScrCmd_666                                    ; 666
 	.word ScrCmd_667                                    ; 667
 	.word ScrCmd_668                                    ; 668
-	.word ScrCmd_669                                    ; 669
+	.word ScrCmd_GetItemQuantity                        ; 669
 	.word ScrCmd_670                                    ; 670
 	.word ScrCmd_671                                    ; 671
 	.word ScrCmd_672                                    ; 672

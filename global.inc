@@ -1808,12 +1808,12 @@
 .public ScrCmd_122
 .public ScrCmd_123
 .public ScrCmd_124
-.public ScrCmd_125
-.public ScrCmd_126
-.public ScrCmd_127
-.public ScrCmd_128
-.public ScrCmd_129
-.public ScrCmd_130
+.public ScrCmd_GiveItem
+.public ScrCmd_TakeItem
+.public ScrCmd_HasSpaceForItem
+.public ScrCmd_HasItem
+.public ScrCmd_ItemIsTMOrHM
+.public ScrCmd_GetItemPocket
 .public ScrCmd_131
 .public ScrCmd_132
 .public ScrCmd_133
@@ -2349,7 +2349,7 @@
 .public ScrCmd_666
 .public ScrCmd_667
 .public ScrCmd_668
-.public ScrCmd_669
+.public ScrCmd_GetItemQuantity
 .public ScrCmd_670
 .public ScrCmd_671
 .public ScrCmd_672
@@ -28680,7 +28680,7 @@
 .public sub_0205BAF8
 .public sub_0205BB04
 .public sub_0205BB1C
-.public sub_0205BBB8
+.public ItemIsTMOrHM
 .public sub_0205BBD0
 .public sub_0205BC78
 .public sub_0205BD20
