@@ -1362,7 +1362,7 @@
 .public PlayerName_FlatToString
 .public PlayerName_StringToFlat
 .public PlayerProfile_AddMoney
-.public PlayerProfile_Copy
+.public PlayerProfile_copy
 .public PlayerProfile_CountBadges
 .public PlayerProfile_GetAvatar
 .public PlayerProfile_GetGameClearFlag

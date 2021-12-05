@@ -543,7 +543,7 @@ _02051CF4:
 	add r1, #0xf8
 	ldr r1, [r1]
 	add r0, r6, #0
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02051CE4
 
@@ -1349,7 +1349,7 @@ sub_0205239C: ; 0x0205239C
 	add r0, #0xf8
 	ldr r0, [r0]
 	add r1, r6, #0
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	ldr r0, [r5, #4]
 	add r1, r7, #0
 	bl sub_020748B8

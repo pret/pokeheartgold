@@ -27462,7 +27462,7 @@ _0223704E:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	ldrb r1, [r5, #6]
 	add r0, sp, #0x14
 	mov r2, #0xb
@@ -28405,7 +28405,7 @@ _0223777E:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	add r1, r7, #1
 	lsl r1, r1, #1
 	add r1, r5, r1
@@ -29131,7 +29131,7 @@ _02237CC0:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	ldrb r1, [r5, #0x11]
 	add r0, sp, #0x18
 	mov r2, #0xb
@@ -29921,7 +29921,7 @@ _0223829A:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	ldrb r1, [r7, #0x11]
 	add r0, sp, #0x20
 	mov r2, #0xb
