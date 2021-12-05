@@ -95,5 +95,5 @@ void DayCareMon_init(DAYCAREMON* mon) {
 }
 
 DAYCARE* Sav2_DayCare_get(SAVEDATA* savedata) {
-    return SavArray_get(savedata, 7);
+    return SavArray_get(savedata, SAVE_DAYCARE);
 }
