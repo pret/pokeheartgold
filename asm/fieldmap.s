@@ -611,11 +611,11 @@ gScriptCmdTable:
 	.word ScrCmd_426                                    ; 426
 	.word ScrCmd_427                                    ; 427
 	.word ScrCmd_428                                    ; 428
-	.word ScrCmd_116                                    ; 429
+	.word ScrCmd_CountFossils                           ; 429
 	.word ScrCmd_430                                    ; 430
 	.word ScrCmd_431                                    ; 431
-	.word ScrCmd_432                                    ; 432
-	.word ScrCmd_433                                    ; 433
+	.word ScrCmd_GetFossilPokemon                       ; 432
+	.word ScrCmd_GetFossilMinimumAmount                 ; 433
 	.word ScrCmd_434                                    ; 434
 	.word ScrCmd_435                                    ; 435
 	.word ScrCmd_436                                    ; 436

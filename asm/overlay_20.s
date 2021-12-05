@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ScrCmd_116
-ScrCmd_116: ; 0x022598C0
+	thumb_func_start ov20_022598C0
+ov20_022598C0: ; 0x022598C0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	mov r1, #0
@@ -84,7 +84,7 @@ ScrCmd_116: ; 0x022598C0
 	add r0, r0, r1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_116
+	thumb_func_end ov20_022598C0
 
 	thumb_func_start ov20_0225996C
 ov20_0225996C: ; 0x0225996C
@@ -253,7 +253,7 @@ ScrCmd_390: ; 0x02259A88
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r7, #0
-	bl ScrCmd_116
+	bl ov20_022598C0
 	add r1, sp, #0
 	strh r0, [r1, #2]
 	ldrh r1, [r1, #2]
@@ -326,7 +326,7 @@ ScrCmd_391: ; 0x02259B40
 	bl SavArray_Flags_get
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ScrCmd_116
+	bl ov20_022598C0
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r4, #0
@@ -426,7 +426,7 @@ ScrCmd_392: ; 0x02259BF4
 	bl GetMonData
 	add r5, r0, #0
 	ldr r0, [sp, #4]
-	bl ScrCmd_116
+	bl ov20_022598C0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r1, r6, #0x18

@@ -557,7 +557,7 @@ Overlay OVY_20
 Overlay OVY_21
 {
     After OVY_3
-    Object overlay_21.o
+    Object scrcmd_fossils.o
     ### Size 0x160 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259a0c ###

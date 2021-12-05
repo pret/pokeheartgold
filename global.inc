@@ -1799,7 +1799,7 @@
 .public ScrCmd_113
 .public ScrCmd_114
 .public ScrCmd_115
-.public ScrCmd_116
+.public ov20_022598C0
 .public ScrCmd_117
 .public ScrCmd_118
 .public ScrCmd_119
@@ -2114,8 +2114,8 @@
 .public ScrCmd_428
 .public ScrCmd_430
 .public ScrCmd_431
-.public ScrCmd_432
-.public ScrCmd_433
+.public ScrCmd_GetFossilPokemon
+.public ScrCmd_GetFossilMinimumAmount
 .public ScrCmd_434
 .public ScrCmd_435
 .public ScrCmd_436
@@ -14132,8 +14132,8 @@
 .public ov20_0225996C
 .public ov20_022599A0
 .public ov20_02259A1C
-.public ov21_022598C0
-.public ov22_022598C0
+.public ScrCmd_CountFossils
+.public ScrCmd_116
 .public ov23_022598C0
 .public ov23_02259944
 .public ov23_02259964
