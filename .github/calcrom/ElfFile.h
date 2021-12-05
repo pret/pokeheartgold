@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <fstream>
-#include <filesystem>
+#include "find_filesystem.h"
 #ifdef __APPLE__
 #include <libelf/libelf.h>
 #else
@@ -11,7 +11,7 @@
 #endif //__APPLE__
 
 using namespace std;
-using namespace std::filesystem;
+using namespace fs;
 
 class Elf32File {
     ifstream handle;

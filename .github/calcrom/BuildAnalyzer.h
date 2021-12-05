@@ -1,7 +1,7 @@
 #ifndef CALCROM_BUILDANALYZER_H
 #define CALCROM_BUILDANALYZER_H
 
-#include <filesystem>
+#include "find_filesystem.h"
 #include <utility>
 #include <vector>
 #include <unordered_set>
@@ -11,7 +11,7 @@
 #endif
 
 using namespace std;
-using namespace std::filesystem;
+using namespace fs;
 
 extern string default_version;
 

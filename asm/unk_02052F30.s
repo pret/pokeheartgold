@@ -463,7 +463,7 @@ _020532B8:
 	bl GF_AssertFail
 _020532DA:
 	ldr r0, [r4, #0x70]
-	ldr r1, _02053320 ; =0x020FC5CC
+	ldr r1, _02053320 ; =_020FC5CC
 	lsl r0, r0, #3
 	add r0, r1, r0
 	str r0, [r4, #0x74]
@@ -496,7 +496,7 @@ _020532DA:
 _0205331C:
 	pop {r3, r4, r5, pc}
 	nop
-_02053320: .word 0x020FC5CC
+_02053320: .word _020FC5CC
 	thumb_func_end sub_02053284
 
 	thumb_func_start sub_02053324
@@ -1761,12 +1761,12 @@ _02053CB2:
 	mov r1, #4
 	bl ov02_0224C1D8
 	add r2, r0, #0
-	ldr r1, _02053CC8 ; =0x0224C1F9
+	ldr r1, _02053CC8 ; =ov02_0224C1F8
 	add r0, r5, #0
 	bl sub_02050530
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02053CC8: .word 0x0224C1F9
+_02053CC8: .word ov02_0224C1F8
 	thumb_func_end sub_02053C90
 
 	thumb_func_start sub_02053CCC

@@ -10,11 +10,6 @@ sDispMode:
 GXi_VRamLockId:
 	.space 2
 
-	.rodata
-
-_0210D5DC:
-	.byte 0x00, 0x20, 0x00, 0x00
-
 	.data
 
 	.public sIsDispOn

@@ -1,12 +1,17 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public __sinit__
+	.public __exception_table_start__
+	.public __exception_table_end__
+	.type __sinit__, @function
 	.public OSi_ThreadInfo
+	.type OSi_ThreadInfo, @function
 
 	.bss
 
 	; msl
 	.public _021E5390
+	.type _021E5390, @function
 _021E5390:
 	.space 0x10
 
@@ -37,11 +42,16 @@ _021E56C0:
 _021E57C0:
 	.space 0x100
 
+	.public _021E58C0
 _021E58C0:
 	.space 0x4
 
 _021E58C4:
-	.space 0x20
+	.space 0x1C
+
+	.public _021E58E0
+_021E58E0:
+	.space 0x4
 
 _ZSt13__new_handler:
 	.space 0x4
@@ -14133,7 +14143,9 @@ _020F0688: .word _ZNSt12length_errorD1Ev
 	; FP_fastI_v5t_LE.a
 
 	.public _dadd
+	.type _dadd, @function
 	.public _d_add
+	.type _d_add, @function
 _dadd: ; 0x020F068C
 _d_add:
 	stmdb sp!, {r4, lr}
@@ -14358,8 +14370,11 @@ _020F0980:
 _020F09A0: .word 0x7FF00000
 
 	.public _d2f
+	.type _d2f, @function
 	.public _d_dtof
+	.type _d_dtof, @function
     .public _f_qtof
+    .type _f_qtof, @function
 _d2f: ; 0x020F09A4
 _d_dtof:
 _f_qtof:
@@ -14439,7 +14454,9 @@ _020F0A9C:
 	bx lr
 
 	.public _dfix
+	.type _dfix, @function
 	.public _d_dtoi
+	.type _d_dtoi, @function
 _dfix: ; 0x020F0AA8
 _d_dtoi:
 	bic r3, r1, #0x80000000
@@ -14466,7 +14483,9 @@ _020F0AE4:
 _020F0AF0: .word 0x0000041E
 
 	.public _dfixu
+	.type _dfixu, @function
 	.public _d_dtou
+	.type _d_dtou, @function
 _dfixu: ; 0x020F0AF4
 _d_dtou:
 	tst r1, #0x80000000
@@ -14497,7 +14516,9 @@ _020F0B40:
 _020F0B48: .word 0x0000041E
 
 	.public _ll_ufrom_d
+	.type _ll_ufrom_d, @function
 	.public _d_dtoull
+	.type _d_dtoull, @function
 _ll_ufrom_d: ; 0x020F0B4C
 _d_dtoull:
 	tst r1, #0x80000000
@@ -14542,7 +14563,9 @@ _020F0BC8:
 _020F0BD4: .word 0x0000043E
 
 	.public _dflt
+	.type _dflt, @function
 	.public _d_itod
+	.type _d_itod, @function
 _dflt: ; 0x020F0BD8
 _d_itod:
 	ands r2, r0, #0x80000000
@@ -14564,7 +14587,9 @@ __d_itod_common:
 	bx lr
 
 	.public _dfltu
+	.type _dfltu, @function
 	.public _d_utod
+	.type _d_utod, @function
 _dfltu: ; 0x020F0C18
 _d_utod:
 	cmp r0, #0
@@ -14586,7 +14611,9 @@ _020F0C3C:
 	bx lr
 
 	.public _dmul
+	.type _dmul, @function
 	.public _d_mul
+	.type _d_mul, @function
 _dmul: ; 0x020F0C54
 _d_mul:
 	stmdb sp!, {r4, r5, r6, r7, lr}
@@ -14829,6 +14856,7 @@ _020F0FA4:
 _020F0FB4: .word 0x7FF00000
 
 	.public _dsqrt
+	.type _dsqrt, @function
 _dsqrt: ; 0x020F0FB8
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _020F1148 ; =0x7FF00000
@@ -14947,6 +14975,7 @@ _020F114C: .word 0x7FF80000
 _020F1150: .word _021E58C0
 
 	.public _drsb
+	.type _drsb, @function
 _drsb: ; 0x020F1154
 	eor r1, r1, r3
 	eor r3, r1, r3
@@ -14955,7 +14984,9 @@ _drsb: ; 0x020F1154
 	eor r2, r0, r2
 	eor r0, r0, r2
 	.public _dsub
+	.type _dsub, @function
 	.public _d_sub
+	.type _d_sub, @function
 _dsub: ; 0x020F116C
 _d_sub: ; 0x020F116C
 	stmdb sp!, {r4, lr}
@@ -15384,7 +15415,9 @@ _020F173C: ; 0x020F173C
 	bx lr
 
 	.public _dgeq
+	.type _dgeq, @function
 	.public _d_fge
+	.type _d_fge, @function
 _dgeq: ; 0x020F1744
 _d_fge:
 	mov ip, #0x200000
@@ -15432,7 +15465,9 @@ _020F17CC:
 	b _020F1758
 
 	.public _dgr
+	.type _dgr, @function
 	.public _d_fgt
+	.type _d_fgt, @function
 _dgr: ; 0x020F17DC
 _d_fgt:
 	mov ip, #0x200000
@@ -15480,7 +15515,9 @@ _020F1864:
 	b _020F17F0
 
 	.public _dleq
+	.type _dleq, @function
 	.public _d_fle
+	.type _d_fle, @function
 _dleq: ; 0x020F1874
 _d_fle:
 	mov ip, #0x200000
@@ -15532,7 +15569,9 @@ _020F1908:
 	b _020F1888
 
 	.public _dls
+	.type _dls, @function
 	.public _d_flt
+	.type _d_flt, @function
 _dls: ; 0x020F1918
 _d_flt:
 	mov ip, #0x200000
@@ -15582,7 +15621,9 @@ _020F19A4:
 	b _020F192C
 
 	.public _deq
+	.type _deq, @function
 	.public _d_feq
+	.type _d_feq, @function
 _deq: ; 0x020F19B4
 _d_feq:
 	mov ip, #0x200000
@@ -15627,7 +15668,9 @@ _020F1A30:
 	b _020F19C8
 
 	.public _dneq
+	.type _dneq, @function
 	.public _d_fne
+	.type _d_fne, @function
 _dneq: ; 0x020F1A40
 _d_fne:
 	mov ip, #0x200000
@@ -15672,7 +15715,9 @@ _020F1ABC:
 	b _020F1A54
 
 	.public _fgr
+	.type _fgr, @function
 	.public _f_fgt
+	.type _f_fgt, @function
 _fgr: ; 0x020F1ACC
 _f_fgt:
 	mov r3, #0xff000000
@@ -15701,7 +15746,9 @@ _020F1B14:
 	bx lr
 
 	.public _fleq
+	.type _fleq, @function
 	.public _f_fle
+	.type _f_fle, @function
 _fleq: ; 0x020F1B28
 _f_fle:
 	mov r3, #0xff000000
@@ -15733,7 +15780,9 @@ _020F1B78:
 	bx lr
 
 	.public _fls
+	.type _fls, @function
 	.public _f_flt
+	.type _f_flt, @function
 _fls: ; 0x020F1B90
 _f_flt:
 	mov r3, #0xff000000
@@ -15762,7 +15811,9 @@ _020F1BD8:
 	bx lr
 
 	.public _feq
+	.type _feq, @function
 	.public _f_feq
+	.type _f_feq, @function
 _feq: ; 0x020F1BEC
 _f_feq:
 	mov r3, #0xff000000
@@ -15795,7 +15846,9 @@ _020F1C40:
 	bx lr
 
 	.public _fneq
+	.type _fneq, @function
 	.public _f_fne
+	.type _f_fne, @function
 _fneq: ; 0x020F1C54
 _f_fne:
 	mov r3, #0xff000000
@@ -15828,12 +15881,15 @@ _020F1CA8:
 	bx lr
 
 	.public _frdiv
+	.type _frdiv, @function
 _frdiv: ; 0x020F1CBC
 	eor r0, r0, r1
 	eor r1, r0, r1
 	eor r0, r0, r1
 	.public _fdiv
+	.type _fdiv, @function
 	.public _f_div
+	.type _f_div, @function
 _fdiv: ; 0x020F1CC8
 _f_div:
 	stmdb sp!, {lr}
@@ -16050,7 +16106,9 @@ _020F2074:
 	bx lr
 
 	.public _f2d
+	.type _f2d, @function
 	.public _f_ftod
+	.type _f_ftod, @function
 _f2d: ; 0x020F2080
 _f_ftod:
 	and r2, r0, #0x80000000
@@ -16094,7 +16152,9 @@ _020F20F4:
 _020F2100: .word 0x7FF00000
 
 	.public _f_ftoi
+	.type _f_ftoi, @function
 	.public _ffix
+	.type _ffix, @function
 _f_ftoi: ; 0x020F2104
 _ffix:
 	bic r1, r0, #0x80000000
@@ -16113,7 +16173,9 @@ _020F212C:
 	bx lr
 
 	.public _ffixu
+	.type _ffixu, @function
 	.public _f_ftou
+	.type _f_ftou, @function
 _ffixu: ; 0x020F2138
 _f_ftou:
 	tst r0, #0x80000000
@@ -16136,7 +16198,9 @@ _020F2170:
 	bx lr
 
 	.public _fflt
+	.type _fflt, @function
 	.public _f_itof
+	.type _f_itof, @function
 _fflt: ; 0x020F2178
 _f_itof:
 	ands r2, r0, #0x80000000
@@ -16160,7 +16224,9 @@ __f_itof_common:
 	bx lr
 
 	.public _ffltu
+	.type _ffltu, @function
 	.public _f_utof
+	.type _f_utof, @function
 _ffltu: ; 0x020F21C0
 _f_utof:
 	cmp r0, #0
@@ -16185,7 +16251,9 @@ _020F21DC:
 	bx lr
 
 	.public _f_lltof
+	.type _f_lltof, @function
 	.public _ll_sto_f
+	.type _ll_sto_f, @function
 _f_lltof: ; 0x020F2208
 _ll_sto_f:
 	ands r2, r1, #0x80000000
@@ -16219,7 +16287,9 @@ _020F2228:
 	bx lr
 
 	.public _f_ulltof
+	.type _f_ulltof, @function
 	.public _ll_uto_f
+	.type _ll_uto_f, @function
 _f_ulltof: ; 0x020F2274
 _ll_uto_f:
 	cmp r1, #0
@@ -16252,7 +16322,9 @@ _020F22A4:
 	bx lr
 
 	.public _fmul
+	.type _fmul, @function
 	.public _f_mul
+	.type _f_mul, @function
 _fmul: ; 0x020F22DC
 _f_mul:
 	eor r2, r0, r1
@@ -16394,12 +16466,15 @@ _020F24B4:
 	bx lr
 
 	.public _frsb
+	.type _frsb, @function
 _frsb: ; 0x020F24BC
 	eor r0, r0, r1
 	eor r1, r0, r1
 	eor r0, r0, r1
 	.public _fsub
+	.type _fsub, @function
 	.public _f_sub
+	.type _f_sub, @function
 _fsub: ; 0x020F24C8
 _f_sub: ; 0x020F24C8
 	eors r2, r0, r1
@@ -16583,6 +16658,7 @@ _020F2738:
 	bx lr
 
 	.public _ll_mod
+	.type _ll_mod, @function
 _ll_mod: ; 0x020F2740
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
 	mov r4, r1
@@ -16590,7 +16666,9 @@ _ll_mod: ; 0x020F2740
 	b _020F2760
 
 	.public _ll_sdiv
+	.type _ll_sdiv, @function
 	.public _ll_div
+	.type _ll_div, @function
 _ll_sdiv: ; 0x020F2750
 _ll_div: ; 0x020F2750
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
@@ -16722,7 +16800,9 @@ _020F28EC:
 	bx lr
 
 	.public _ll_udiv
+	.type _ll_udiv, @function
 	.public _ull_div
+	.type _ull_div, @function
 _ll_udiv: ; 0x020F2900
 _ull_div:
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
@@ -16730,6 +16810,7 @@ _ull_div:
 	b _020F2914
 
 	.public _ull_mod
+	.type _ull_mod, @function
 _ull_mod: ; 0x020F290C
 	stmdb sp!, {r4, r5, r6, r7, fp, ip, lr}
 	mov r4, #1
@@ -16750,7 +16831,9 @@ _020F2924:
 	bx lr
 
 	.public _ll_mul
+	.type _ll_mul, @function
 	.public _ull_mul
+	.type _ull_mul, @function
 _ll_mul: ; 0x020F2948
 _ull_mul: ; 0x020F2948
 	stmdb sp!, {r4, r5, lr}
@@ -16763,8 +16846,11 @@ _ull_mul: ; 0x020F2948
 	bx lr
 
 	.public _ll_shl
+	.type _ll_shl, @function
 	.public _ll_sll
+	.type _ll_sll, @function
 	.public _ull_sll
+	.type _ull_sll, @function
 _ll_shl: ; 0x020F2968
 _ll_sll:
 _ull_sll:
@@ -16783,6 +16869,7 @@ _020F298C:
 	bx lr
 
 	.public _s32_div_f
+	.type _s32_div_f, @function
 _s32_div_f: ; 0x020F2998
 	eor ip, r0, r1
 	and ip, ip, #0x80000000
@@ -16918,10 +17005,12 @@ _020F2B90:
 	bx lr
 
 	.public _u32_div_f
+	.type _u32_div_f, @function
 _u32_div_f: ; 0x020F2BA4
 	cmp r1, #0
 	bxeq lr
 	.public _u32_div_not_0_f
+	.type _u32_div_not_0_f, @function
 _u32_div_not_0_f: ; 0x020F2BAC
 	cmp r0, r1
 	movlo r1, r0
@@ -17044,6 +17133,7 @@ _u32_div_not_0_f: ; 0x020F2BAC
 	bx lr
 
 	.public _drdiv
+	.type _drdiv, @function
 _drdiv: ; 0x020F2D88
 	eor r1, r1, r3
 	eor r3, r1, r3
@@ -17052,7 +17142,9 @@ _drdiv: ; 0x020F2D88
 	eor r2, r0, r2
 	eor r0, r0, r2
 	.public _ddiv
+	.type _ddiv, @function
 	.public _d_div
+	.type _d_div, @function
 _ddiv: ; 0x020F2DA0
 _d_div:
 	stmdb sp!, {r4, r5, r6, lr}
@@ -17375,6 +17467,7 @@ _020F32D0:
 _020F32E0: .word 0x00000FFE
 
 	.public _fp_init
+	.type _fp_init, @function
 _fp_init: ; 0x020F32E4
 	bx lr
 
@@ -19503,15 +19596,15 @@ _020F4E58:
 
 	arm_func_start _Z20__FindExceptionTableP13ExceptionInfoPc
 _Z20__FindExceptionTableP13ExceptionInfoPc: ; 0x020F4E64
-	ldr r2, _020F4E7C ; =SDK_STATIC_ETABLE_START
-	ldr r1, _020F4E80 ; =SDK_STATIC_ETABLE_END
+	ldr r2, _020F4E7C ; =__exception_table_start__
+	ldr r1, _020F4E80 ; =__exception_table_end__
 	str r2, [r0, #0xc]
 	str r1, [r0, #0x10]
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_020F4E7C: .word SDK_STATIC_ETABLE_START
-_020F4E80: .word SDK_STATIC_ETABLE_END
+_020F4E7C: .word __exception_table_start__
+_020F4E80: .word __exception_table_end__
 	arm_func_end _Z20__FindExceptionTableP13ExceptionInfoPc
 
 	arm_func_start _Z16__SkipUnwindInfoPc
@@ -19601,6 +19694,7 @@ _020F4F80: .word sys_exit
 
 	.rodata
 
+	.public _0210E404
 _0210E404:
 	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B
 	.byte 0x0C, 0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B
@@ -19612,6 +19706,7 @@ _0210E404:
 	.byte 0x6C, 0x6D, 0x6E, 0x6F, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, 0x7B
 	.byte 0x7C, 0x7D, 0x7E, 0x7F
 
+	.public _0210E484
 _0210E484:
 	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B
 	.byte 0x0C, 0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B
@@ -19623,6 +19718,7 @@ _0210E484:
 	.byte 0x4C, 0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5A, 0x7B
 	.byte 0x7C, 0x7D, 0x7E, 0x7F
 
+	.public _0210E504
 _0210E504:
 	.byte 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00
 	.byte 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x06, 0x01, 0x04, 0x01, 0x04, 0x01, 0x04, 0x01, 0x04, 0x01
@@ -20116,7 +20212,132 @@ _02111848:
 	.word _ZSt9dthandlerv
 	.word _ZSt9duhandlerv
 
-	.section .exception,4,1
+	exception abort, 0x0025, 0x00100000
+	exception exit, 0x004D, 0x00100100
+	exception __exit, 0x0129, 0x00200300
+	exception nan, 0x0019, 0x00000000
+	exception malloc, 0x0019, 0x00100000
+	exception free, 0x0015, 0x00100000
+	exception __flush_line_buffered_output_files, 0x008D, 0x00403F00
+	exception __flush_all, 0x0069, 0x00403F00
+	exception __msl_assertion_failed, 0x003D, 0x00200100
+	exception __load_buffer, 0x008D, 0x00200700
+	exception __flush_buffer, 0x0089, 0x00200300
+	exception fread, 0x010D, 0x00407F00
+	exception __fread, 0x0349, 0x00507F00
+	exception __fwrite, 0x02B1, 0x0060FF00
+	exception fclose, 0x0075, 0x00200300
+	exception fflush, 0x00E9, 0x00100100
+	exception ftell, 0x011D, 0x00300F00
+	exception _fseek, 0x01E9, 0x00400320
+	exception fseek, 0x012D, 0x00403F00
+	exception rewind, 0x0025, 0x00100100
+	exception mbtowc, 0x001D, 0x00100000
+	exception wctomb, 0x001D, 0x00100000
+	exception mbstowcs, 0x0089, 0x00301F00
+	exception wcstombs, 0x0079, 0x00403F00
+	exception memset, 0x0015, 0x00100100
+	exception long2str__printf, 0x024D, 0x0090FF20
+	exception longlong2str__printf, 0x02FD, 0x00A0FF20
+	exception double2hex__printf, 0x04DD, 0x00F07F20
+	exception float2str__printf, 0x0765, 0x00C0FF20
+	exception __pformatter, 0x0824, _020F4F84
+	exception __FileWrite, 0x002D, 0x00200300
+	exception __StringWrite, 0x0045, 0x00200300
+	exception printf, 0x0119, 0x00300120
+	exception vsnprintf, 0x0069, 0x00300300
+	exception vsprintf, 0x0019, 0x00000000
+	exception snprintf, 0x0029, 0x00300020
+	exception sprintf, 0x002D, 0x00300020
+	exception qsort, 0x0165, 0x0070FF00
+	exception __sformatter, 0x0D54, _020F4F8C
+	exception vsscanf, 0x0055, 0x00200000
+	exception sscanf, 0x0029, 0x00300020
+	exception signal, 0x0131, 0x00200300
+	exception __strtold, 0x124C, _020F4F94
+	exception strtold, 0x00E1, 0x00500F00
+	exception atof, 0x0011, 0x00000000
+	exception __strtoul, 0x03E9, 0x0060FF00
+	exception __strtoull, 0x046D, 0x00807F00
+	exception strtoul, 0x0099, 0x00600300
+	exception strtol, 0x00C9, 0x00600300
+	exception atoi, 0x0015, 0x00000000
+	exception wmemcpy, 0x0011, 0x00000000
+	exception long2str__wprintf, 0x0251, 0x0090FF20
+	exception longlong2str__wprintf, 0x0301, 0x00A0FF20
+	exception double2hex__wprintf, 0x0399, 0x00F07F20
+	exception float2str__wprintf, 0x064C, _020F4F9C
+	exception __wpformatter, 0x08F0, _020F4FA4
+	exception __wStringWrite, 0x0041, 0x00200300
+	exception swprintf, 0x0029, 0x00300020
+	exception vswprintf, 0x0071, 0x00300300
+	exception __ieee754_pow, 0x1188, _020F4FAC
+	exception frexp, 0x00BD, 0x00300120
+	exception ldexp, 0x024D, 0x00300120
+	exception pow, 0x000D, 0x00000000
+	exception __rounddec, 0x0041, 0x00200300
+	exception __ull2dec, 0x00CD, 0x0050FF00
+	exception __timesdec, 0x0185, 0x00D0FF00
+	exception __str2dec, 0x009D, 0x00100000
+	exception __two_exp, 0x0385, 0x00B00300
+	exception __num2dec_internal, 0x0181, 0x00E01F00
+	exception __num2dec, 0x00A9, 0x00200300
+	exception __dec2num, 0x0624, _020F4FB4
+	exception scalbn, 0x002D, 0x00200100
+	exception __sys_alloc, 0x0019, 0x00000000
+	exception __sys_free, 0x0019, 0x00000000
+	exception _ZNSt3tr110shared_ptrIcEC1IcNSt6detail14default_deleteIA0_cEEEEPT_T0_, 0x0080, _020F4FBC
+	exception _ZNSt9exceptionD0Ev, 0x0015, 0x00100100
+	exception _ZNKSt3tr16detail18shared_ptr_deleterIcNSt6detail14default_deleteIA0_cEEE11get_deleterERKSt9type_info, 0x0029, 0x00100100
+	exception _ZNSt3tr16detail18shared_ptr_deleterIcNSt6detail14default_deleteIA0_cEEE7disposeEv, 0x0011, 0x00000000
+	exception _ZNSt3tr110shared_ptrIcED1Ev, 0x0040, _020F4FCC
+	exception _ZN10Metrowerks8move_ptrIcRNSt6detail14default_deleteIA0_cEEED1Ev, 0x0021, 0x00100100
+	exception _ZNSt3tr16detail18shared_ptr_deleterIcNSt6detail14default_deleteIA0_cEEED0Ev, 0x0015, 0x00100100
+	exception _ZNSt11logic_errorD1Ev, 0x0019, 0x00100100
+	exception _ZNSt11logic_errorD0Ev, 0x0021, 0x00100100
+	exception _ZNSt12length_errorD1Ev, 0x0019, 0x00100100
+	exception _ZNSt12length_errorD0Ev, 0x0021, 0x00100100
+	exception _ZNSt3tr16detail25shared_ptr_deleter_common7releaseEv, 0x0031, 0x00100100
+	exception _ZNSt3tr16detail25shared_ptr_deleter_common12release_weakEv, 0x002D, 0x00100000
+	exception _ZNSt15__vector_commonILb1EE18throw_length_errorEv, 0x0090, _020F4FE0
+	exception __read_console, 0x0051, 0x00300F00
+	exception __write_console, 0x0035, 0x00200700
+	exception _Z19FindExceptionRecordPcP13ExceptionInfo, 0x0109, 0x00503F00
+	exception _Z10NextActionP14ActionIterator, 0x0388, _020F4FF8
+	exception _Z11UnwindStackP12ThrowContextP13ExceptionInfoPc, 0x08B0, _020F5000
+	exception _Z23FindMostRecentExceptionP12ThrowContextP13ExceptionInfo, 0x0154, _020F5010
+	exception _Z17IsInSpecificationPcP16ex_specification, 0x0085, 0x00401F00
+	exception __unexpected, 0x00A8, _020F5018
+	exception _Z16HandleUnexpectedP12ThrowContextP13ExceptionInfoP16ex_specificationPc, 0x0060, _020F502C
+	exception _Z20FindExceptionHandlerP12ThrowContextP13ExceptionInfoPl, 0x01DC, _020F5034
+	exception _Z14__ThrowHandlerP12ThrowContext, 0x00ED, 0x00700300
+	exception __end__catch, 0x0029, 0x00100000
+	exception _ZNSt13bad_exceptionD0Ev, 0x0015, 0x00100100
+	exception _ZSt17__throw_bad_allocv, 0x0041, 0x00100000
+	exception _Znwm, 0x0064, _020F503C
+	exception _ZnwmRKSt9nothrow_t, 0x0044, _020F5054
+	exception _ZdlPv, 0x0015, 0x00100000
+	exception _Znam, 0x002C, _020F5070
+	exception _ZnamRKSt9nothrow_t, 0x002C, _020F5088
+	exception _ZdaPv, 0x000D, 0x00000000
+	exception _ZNSt9bad_allocD0Ev, 0x0015, 0x00100100
+	exception __call_static_initializers, 0x002D, 0x00100100
+	exception __destroy_global_chain, 0x0045, 0x00200300
+	exception _ZNKSt9type_infoeqERKS_, 0x0031, 0x00100000
+	exception _ZN10__cxxabiv117__class_type_infoD1Ev, 0x0015, 0x00100100
+	exception _ZN10__cxxabiv117__class_type_infoD0Ev, 0x001D, 0x00100100
+	exception _ZN10__cxxabiv117__class_type_infoD2Ev, 0x0015, 0x00100100
+	exception _ZN10__cxxabiv120__si_class_type_infoD1Ev, 0x0015, 0x00100100
+	exception _ZN10__cxxabiv120__si_class_type_infoD0Ev, 0x001D, 0x00100100
+	exception _ZSt9dthandlerv, 0x000D, 0x00000000
+	exception _ZSt9duhandlerv, 0x000D, 0x00000000
+	exception _ZSt9terminatev, 0x0019, 0x00100000
+	exception _ZSt10unexpectedv, 0x0019, 0x00100000
+	exception _Z16__SetupFrameInfoP12ThrowContextP13ExceptionInfo, 0x00A1, 0x00200700
+	exception _Z16__SkipUnwindInfoPc, 0x0031, 0x00200100
+	exception _ExitProcess, 0x000D, 0x00000000
+
+	.section .exception,4,1,2
 	; MSL symbols have exceptions for C++ mode, even when compiling C.
 
 _020F4F84:
@@ -20168,130 +20389,3 @@ _020F5070:
 _020F5088:
 	.byte 0x40, 0x80, 0x40, 0x00, 0x20, 0x00, 0x16, 0x20
 	.byte 0x00, 0x1E, 0x00, 0x8F, 0x00, 0x30, 0x00, 0x8D, 0x00, 0x00, 0x00, 0x00
-
-	.section .exceptix,4,1
-
-	.word abort, 0x00000025, 0x00100000
-	.word exit, 0x0000004D, 0x00100100
-	.word __exit, 0x00000129, 0x00200300
-	.word nan, 0x00000019, 0x00000000
-	.word malloc, 0x00000019, 0x00100000
-	.word free, 0x00000015, 0x00100000
-	.word __flush_line_buffered_output_files, 0x0000008D, 0x00403F00
-	.word __flush_all, 0x00000069, 0x00403F00
-	.word __msl_assertion_failed, 0x0000003D, 0x00200100
-	.word __load_buffer, 0x0000008D, 0x00200700
-	.word __flush_buffer, 0x00000089, 0x00200300
-	.word fread, 0x0000010D, 0x00407F00
-	.word __fread, 0x00000349, 0x00507F00
-	.word __fwrite, 0x000002B1, 0x0060FF00
-	.word fclose, 0x00000075, 0x00200300
-	.word fflush, 0x000000E9, 0x00100100
-	.word ftell, 0x0000011D, 0x00300F00
-	.word _fseek, 0x000001E9, 0x00400320
-	.word fseek, 0x0000012D, 0x00403F00
-	.word rewind, 0x00000025, 0x00100100
-	.word mbtowc, 0x0000001D, 0x00100000
-	.word wctomb, 0x0000001D, 0x00100000
-	.word mbstowcs, 0x00000089, 0x00301F00
-	.word wcstombs, 0x00000079, 0x00403F00
-	.word memset, 0x00000015, 0x00100100
-	.word long2str__printf, 0x0000024D, 0x0090FF20
-	.word longlong2str__printf, 0x000002FD, 0x00A0FF20
-	.word double2hex__printf, 0x000004DD, 0x00F07F20
-	.word float2str__printf, 0x00000765, 0x00C0FF20
-	.word __pformatter, 0x00000824, _020F4F84
-	.word __FileWrite, 0x0000002D, 0x00200300
-	.word __StringWrite, 0x00000045, 0x00200300
-	.word printf, 0x00000119, 0x00300120
-	.word vsnprintf, 0x00000069, 0x00300300
-	.word vsprintf, 0x00000019, 0x00000000
-	.word snprintf, 0x00000029, 0x00300020
-	.word sprintf, 0x0000002D, 0x00300020
-	.word qsort, 0x00000165, 0x0070FF00
-	.word __sformatter, 0x00000D54, _020F4F8C
-	.word vsscanf, 0x00000055, 0x00200000
-	.word sscanf, 0x00000029, 0x00300020
-	.word signal, 0x00000131, 0x00200300
-	.word __strtold, 0x0000124C, _020F4F94
-	.word strtold, 0x000000E1, 0x00500F00
-	.word atof, 0x00000011, 0x00000000
-	.word __strtoul, 0x000003E9, 0x0060FF00
-	.word __strtoull, 0x0000046D, 0x00807F00
-	.word strtoul, 0x00000099, 0x00600300
-	.word strtol, 0x000000C9, 0x00600300
-	.word atoi, 0x00000015, 0x00000000
-	.word wmemcpy, 0x00000011, 0x00000000
-	.word long2str__wprintf, 0x00000251, 0x0090FF20
-	.word longlong2str__wprintf, 0x00000301, 0x00A0FF20
-	.word double2hex__wprintf, 0x00000399, 0x00F07F20
-	.word float2str__wprintf, 0x0000064C, _020F4F9C
-	.word __wpformatter, 0x000008F0, _020F4FA4
-	.word __wStringWrite, 0x00000041, 0x00200300
-	.word swprintf, 0x00000029, 0x00300020
-	.word vswprintf, 0x00000071, 0x00300300
-	.word __ieee754_pow, 0x00001188, _020F4FAC
-	.word frexp, 0x000000BD, 0x00300120
-	.word ldexp, 0x0000024D, 0x00300120
-	.word pow, 0x0000000D, 0x00000000
-	.word __rounddec, 0x00000041, 0x00200300
-	.word __ull2dec, 0x000000CD, 0x0050FF00
-	.word __timesdec, 0x00000185, 0x00D0FF00
-	.word __str2dec, 0x0000009D, 0x00100000
-	.word __two_exp, 0x00000385, 0x00B00300
-	.word __num2dec_internal, 0x00000181, 0x00E01F00
-	.word __num2dec, 0x000000A9, 0x00200300
-	.word __dec2num, 0x00000624, _020F4FB4
-	.word scalbn, 0x0000002D, 0x00200100
-	.word __sys_alloc, 0x00000019, 0x00000000
-	.word __sys_free, 0x00000019, 0x00000000
-	.word _ZNSt3tr110shared_ptrIcEC1IcNSt6detail14default_deleteIA0_cEEEEPT_T0_, 0x00000080, _020F4FBC
-	.word _ZNSt9exceptionD0Ev, 0x00000015, 0x00100100
-	.word _ZNKSt3tr16detail18shared_ptr_deleterIcNSt6detail14default_deleteIA0_cEEE11get_deleterERKSt9type_info, 0x00000029, 0x00100100
-	.word _ZNSt3tr16detail18shared_ptr_deleterIcNSt6detail14default_deleteIA0_cEEE7disposeEv, 0x00000011, 0x00000000
-	.word _ZNSt3tr110shared_ptrIcED1Ev, 0x00000040, _020F4FCC
-	.word _ZN10Metrowerks8move_ptrIcRNSt6detail14default_deleteIA0_cEEED1Ev, 0x00000021, 0x00100100
-	.word _ZNSt3tr16detail18shared_ptr_deleterIcNSt6detail14default_deleteIA0_cEEED0Ev, 0x00000015, 0x00100100
-	.word _ZNSt11logic_errorD1Ev, 0x00000019, 0x00100100
-	.word _ZNSt11logic_errorD0Ev, 0x00000021, 0x00100100
-	.word _ZNSt12length_errorD1Ev, 0x00000019, 0x00100100
-	.word _ZNSt12length_errorD0Ev, 0x00000021, 0x00100100
-	.word _ZNSt3tr16detail25shared_ptr_deleter_common7releaseEv, 0x00000031, 0x00100100
-	.word _ZNSt3tr16detail25shared_ptr_deleter_common12release_weakEv, 0x0000002D, 0x00100000
-	.word _ZNSt15__vector_commonILb1EE18throw_length_errorEv, 0x00000090, _020F4FE0
-	.word __read_console, 0x00000051, 0x00300F00
-	.word __write_console, 0x00000035, 0x00200700
-	.word _Z19FindExceptionRecordPcP13ExceptionInfo, 0x00000109, 0x00503F00
-	.word _Z10NextActionP14ActionIterator, 0x00000388, _020F4FF8
-	.word _Z11UnwindStackP12ThrowContextP13ExceptionInfoPc, 0x000008B0, _020F5000
-	.word _Z23FindMostRecentExceptionP12ThrowContextP13ExceptionInfo, 0x00000154, _020F5010
-	.word _Z17IsInSpecificationPcP16ex_specification, 0x00000085, 0x00401F00
-	.word __unexpected, 0x000000A8, _020F5018
-	.word _Z16HandleUnexpectedP12ThrowContextP13ExceptionInfoP16ex_specificationPc, 0x00000060, _020F502C
-	.word _Z20FindExceptionHandlerP12ThrowContextP13ExceptionInfoPl, 0x000001DC, _020F5034
-	.word _Z14__ThrowHandlerP12ThrowContext, 0x000000ED, 0x00700300
-	.word __end__catch, 0x00000029, 0x00100000
-	.word _ZNSt13bad_exceptionD0Ev, 0x00000015, 0x00100100
-	.word _ZSt17__throw_bad_allocv, 0x00000041, 0x00100000
-	.word _Znwm, 0x00000064, _020F503C
-	.word _ZnwmRKSt9nothrow_t, 0x00000044, _020F5054
-	.word _ZdlPv, 0x00000015, 0x00100000
-	.word _Znam, 0x0000002C, _020F5070
-	.word _ZnamRKSt9nothrow_t, 0x0000002C, _020F5088
-	.word _ZdaPv, 0x0000000D, 0x00000000
-	.word _ZNSt9bad_allocD0Ev, 0x00000015, 0x00100100
-	.word __call_static_initializers, 0x0000002D, 0x00100100
-	.word __destroy_global_chain, 0x00000045, 0x00200300
-	.word _ZNKSt9type_infoeqERKS_, 0x00000031, 0x00100000
-	.word _ZN10__cxxabiv117__class_type_infoD1Ev, 0x00000015, 0x00100100
-	.word _ZN10__cxxabiv117__class_type_infoD0Ev, 0x0000001D, 0x00100100
-	.word _ZN10__cxxabiv117__class_type_infoD2Ev, 0x00000015, 0x00100100
-	.word _ZN10__cxxabiv120__si_class_type_infoD1Ev, 0x00000015, 0x00100100
-	.word _ZN10__cxxabiv120__si_class_type_infoD0Ev, 0x0000001D, 0x00100100
-	.word _ZSt9dthandlerv, 0x0000000D, 0x00000000
-	.word _ZSt9duhandlerv, 0x0000000D, 0x00000000
-	.word _ZSt9terminatev, 0x00000019, 0x00100000
-	.word _ZSt10unexpectedv, 0x00000019, 0x00100000
-	.word _Z16__SetupFrameInfoP12ThrowContextP13ExceptionInfo, 0x000000A1, 0x00200700
-	.word _Z16__SkipUnwindInfoPc, 0x00000031, 0x00200100
-	.word _ExitProcess, 0x0000000D, 0x00000000

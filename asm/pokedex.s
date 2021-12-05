@@ -1380,7 +1380,7 @@ _02029D32:
 sub_02029D50: ; 0x02029D50
 	push {r4, r5}
 	mov r3, #0
-	ldr r5, _02029D70 ; =0x020F6768
+	ldr r5, _02029D70 ; =_020F6768
 	mov r4, #1
 	add r1, r3, #0
 _02029D5A:
@@ -1397,14 +1397,14 @@ _02029D62:
 	pop {r4, r5}
 	bx lr
 	.balign 4, 0
-_02029D70: .word 0x020F6768
+_02029D70: .word _020F6768
 	thumb_func_end sub_02029D50
 
 	thumb_func_start sub_02029D74
 sub_02029D74: ; 0x02029D74
 	push {r4, r5}
 	mov r3, #0
-	ldr r5, _02029D94 ; =0x020F6764
+	ldr r5, _02029D94 ; =_020F6764
 	mov r4, #1
 	add r1, r3, #0
 _02029D7E:
@@ -1421,7 +1421,7 @@ _02029D86:
 	pop {r4, r5}
 	bx lr
 	.balign 4, 0
-_02029D94: .word 0x020F6764
+_02029D94: .word _020F6764
 	thumb_func_end sub_02029D74
 
 	thumb_func_start sub_02029D98

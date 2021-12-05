@@ -4125,7 +4125,7 @@ _021E7A76:
 	ldr r0, [r4, r0]
 	sub r1, #0x14
 	str r2, [r0, #4]
-	ldr r0, _021E7C84 ; =0x02102610
+	ldr r0, _021E7C84 ; =_02102610
 	ldr r1, [r4, r1]
 	ldr r2, [r4]
 	bl OverlayManager_new
@@ -4358,7 +4358,7 @@ _021E7C6C:
 	b _021E7C90
 	.balign 4, 0
 _021E7C80: .word 0x00000163
-_021E7C84: .word 0x02102610
+_021E7C84: .word _02102610
 _021E7C88:
 	mov r1, #6
 	add r2, r5, #0

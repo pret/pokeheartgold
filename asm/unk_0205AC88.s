@@ -3,8 +3,6 @@
 
 	.public _020FC824
 
-	.bss
-
 	.text
 
 	thumb_func_start sub_0205AC88

@@ -1563,13 +1563,13 @@ NNS_FndFreeToAllocator: ; 0x020B5990
 
 	arm_func_start NNS_FndInitAllocatorForExpHeap
 NNS_FndInitAllocatorForExpHeap: ; 0x020B59A4
-	ldr ip, _020B59B8 ; =0x02109200
+	ldr ip, _020B59B8 ; =_02109200
 	mov r3, #0
 	str ip, [r0]
 	stmib r0, {r1, r2, r3}
 	bx lr
 	.align 2, 0
-_020B59B8: .word 0x02109200
+_020B59B8: .word _02109200
 	arm_func_end NNS_FndInitAllocatorForExpHeap
 
 	arm_func_start AllocTexVram_
@@ -2385,7 +2385,7 @@ DoTransfer_: ; 0x020B61E8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r3, [r5]
-	ldr r2, _020B6214 ; =0x02109210
+	ldr r2, _020B6214 ; =_02109210
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #0xc]
 	ldr r4, [r2, r3, lsl #2]
@@ -2394,7 +2394,7 @@ DoTransfer_: ; 0x020B61E8
 	blx r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020B6214: .word 0x02109210
+_020B6214: .word _02109210
 	arm_func_end DoTransfer_
 
 	arm_func_start ResetTaskQueue_
@@ -2956,7 +2956,7 @@ _020B6914: .word _021D84E4
 NNS_GfdResetLnkTexVramState: ; 0x020B6918
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x30
-	ldr lr, _020B6B00 ; =0x021092A0
+	ldr lr, _020B6B00 ; =_021092A0
 	add r4, sp, #0
 	ldmia lr!, {r0, r1, r2, r3}
 	mov ip, r4
@@ -3087,7 +3087,7 @@ _020B6AE0:
 	add sp, sp, #0x30
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020B6B00: .word 0x021092A0
+_020B6B00: .word _021092A0
 _020B6B04: .word _021D84E4
 _020B6B08: .word _021D84E4
 _020B6B0C: .word _021D84E8
@@ -3801,10 +3801,10 @@ NNS_G2dSetupSoftwareSpriteCamera: ; 0x020B7350
 	bl G3i_OrthoW_
 	ldr r1, _020B7408 ; =0x0400044C
 	mov r5, #0
-	ldr r0, _020B740C ; =0x021092E0
+	ldr r0, _020B740C ; =_021092E0
 	str r5, [r1]
 	add r4, sp, #0x2c
-	ldr ip, _020B7410 ; =0x021092EC
+	ldr ip, _020B7410 ; =_021092EC
 	add lr, sp, #0x20
 	ldmia r0, {r0, r1, r2}
 	stmia lr, {r0, r1, r2}
@@ -3829,8 +3829,8 @@ NNS_G2dSetupSoftwareSpriteCamera: ; 0x020B7350
 _020B7400: .word 0xBFFF0000
 _020B7404: .word 0x04000580
 _020B7408: .word 0x0400044C
-_020B740C: .word 0x021092E0
-_020B7410: .word 0x021092EC
+_020B740C: .word _021092E0
+_020B7410: .word _021092EC
 _020B7414: .word 0x04000440
 	arm_func_end NNS_G2dSetupSoftwareSpriteCamera
 
@@ -8331,9 +8331,9 @@ CalcSpriteParams_: ; 0x020BAF88
 	mov r5, r5, lsl #0x16
 	mov ip, r0, asr #0xe
 	mov r5, r5, lsr #0x16
-	ldr r4, _020BB1CC ; =0x02109310
+	ldr r4, _020BB1CC ; =_02109310
 	mov r7, r5, lsl #0x10
-	ldr r0, _020BB1D0 ; =0x021092F8
+	ldr r0, _020BB1D0 ; =_021092F8
 	add r5, r4, ip, lsl #3
 	mov r8, lr, lsl #1
 	add r4, r0, ip, lsl #3
@@ -8363,7 +8363,7 @@ CalcSpriteParams_: ; 0x020BAF88
 	ldr r2, [r5, #8]
 	ldr r3, [r5]
 	cmp r2, #4
-	ldr r2, _020BB1D8 ; =0x02109344
+	ldr r2, _020BB1D8 ; =_02109344
 	moveq r1, r1, lsl #0xf
 	ldr r2, [r2, r3, lsl #2]
 	moveq r1, r1, lsr #0x10
@@ -8383,11 +8383,11 @@ _020BB068:
 	add ip, r2, r1, lsl r7
 	mov r1, lr, lsl #0x10
 	mov r8, r3, lsr #0x10
-	ldr r7, _020BB1DC ; =0x02109364
+	ldr r7, _020BB1DC ; =_02109364
 	ldr lr, [r5, #8]
 	mov r3, ip, lsr #3
 	orr ip, r3, lr, lsl #26
-	ldr r2, _020BB1E0 ; =0x02109394
+	ldr r2, _020BB1E0 ; =_02109394
 	mov lr, r1, lsr #0x10
 	add r1, r2, r8, lsl #4
 	add r3, r7, r8, lsl #4
@@ -8448,7 +8448,7 @@ _020BB15C:
 	mov r3, r1, lsl #0x12
 	ldr r1, [r5, #0xc]
 	mov r0, r0, lsl #0x10
-	ldr r2, _020BB1E8 ; =0x0210933C
+	ldr r2, _020BB1E8 ; =_0210933C
 	mov r3, r3, lsr #0x1f
 	cmp r1, #0
 	mov r0, r0, lsr #0x10
@@ -8471,14 +8471,14 @@ _020BB1A0:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020BB1C8: .word 0xC000C000
-_020BB1CC: .word 0x02109310
-_020BB1D0: .word 0x021092F8
+_020BB1CC: .word _02109310
+_020BB1D0: .word _021092F8
 _020BB1D4: .word 0x040004A8
-_020BB1D8: .word 0x02109344
-_020BB1DC: .word 0x02109364
-_020BB1E0: .word 0x02109394
+_020BB1D8: .word _02109344
+_020BB1DC: .word _02109364
+_020BB1E0: .word _02109394
 _020BB1E4: .word _021DA47C
-_020BB1E8: .word 0x0210933C
+_020BB1E8: .word _0210933C
 _020BB1EC: .word 0x040004AC
 	arm_func_end CalcSpriteParams_
 
@@ -8543,14 +8543,14 @@ NNS_G2dDrawOneOam3DDirectWithPosFast: ; 0x020BB234
 	cmp r1, #0x300
 	bne _020BB2F8
 	ldr r0, _020BB468 ; =0xC000C000
-	ldr r3, _020BB46C ; =0x02109310
+	ldr r3, _020BB46C ; =_02109310
 	and r2, r2, r0
 	and r0, r2, #0xc0000000
 	and r2, r2, #0xc000
 	mov ip, r2, asr #0xe
 	mov lr, r0, lsr #0x1e
 	ldr r1, _020BB470 ; =_021DA47C
-	ldr r2, _020BB474 ; =0x021092F8
+	ldr r2, _020BB474 ; =_021092F8
 	ldr r0, [r1, #8]
 	mov lr, lr, lsl #1
 	cmp r0, #0
@@ -8666,9 +8666,9 @@ _020BB328:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _020BB468: .word 0xC000C000
-_020BB46C: .word 0x02109310
+_020BB46C: .word _02109310
 _020BB470: .word _021DA47C
-_020BB474: .word 0x021092F8
+_020BB474: .word _021092F8
 _020BB478: .word 0x04000470
 _020BB47C: .word 0x0400046C
 _020BB480: .word _021109FC
@@ -8707,13 +8707,13 @@ DoAffineTransforme_: ; 0x020BB484
 	cmp r4, #0x300
 	bne _020BB548
 	ldr r3, _020BB72C ; =0xC000C000
-	ldr r4, _020BB730 ; =0x02109310
+	ldr r4, _020BB730 ; =_02109310
 	and r3, r5, r3
 	and r5, r3, #0xc0000000
 	and r3, r3, #0xc000
 	mov r6, r5, lsr #0x1e
 	mov r5, r3, asr #0xe
-	ldr r3, _020BB734 ; =0x021092F8
+	ldr r3, _020BB734 ; =_021092F8
 	mov r6, r6, lsl #1
 	add r4, r4, r5, lsl #3
 	add r3, r3, r5, lsl #3
@@ -8779,14 +8779,14 @@ _020BB5C8:
 	str r3, [r1]
 _020BB610:
 	ldr r6, [r1]
-	ldr r5, _020BB730 ; =0x02109310
+	ldr r5, _020BB730 ; =_02109310
 	and r4, r6, #0x300
 	cmp r4, #0x100
 	cmpne r4, #0x300
 	andne r3, r6, #0x30000000
 	orrne r4, r4, r3
 	ldr r3, _020BB72C ; =0xC000C000
-	ldr r8, _020BB734 ; =0x021092F8
+	ldr r8, _020BB734 ; =_021092F8
 	and r3, r6, r3
 	and r6, r3, #0xc0000000
 	and r3, r3, #0xc000
@@ -8852,8 +8852,8 @@ _020BB6D8:
 	.align 2, 0
 _020BB728: .word 0x01FF0000
 _020BB72C: .word 0xC000C000
-_020BB730: .word 0x02109310
-_020BB734: .word 0x021092F8
+_020BB730: .word _02109310
+_020BB734: .word _021092F8
 _020BB738: .word _021DA498
 _020BB73C: .word 0xC1FFFCFF
 _020BB740: .word 0xFE00FF00
@@ -8870,7 +8870,7 @@ DrawCellToSurface2D_: ; 0x020BB744
 	ldr r5, [r4, #0x2c]
 	mov fp, r1
 	cmp r5, #0
-	ldreq r5, _020BBB48 ; =0x021093CC
+	ldreq r5, _020BBB48 ; =_021093CC
 	ldr r2, [r0]
 	ldr r3, [r5, #0x10]
 	str r3, [sp, #0x18]
@@ -9050,7 +9050,7 @@ _020BB994:
 	beq _020BBA4C
 	and r1, sb, #0xc000
 	mov r2, r1, asr #0xe
-	ldr r1, _020BBB54 ; =0x02109310
+	ldr r1, _020BBB54 ; =_02109310
 	and r3, sb, #0xc0000000
 	mov r3, r3, lsr #0x1e
 	add r2, r1, r2, lsl #3
@@ -9075,7 +9075,7 @@ _020BBA4C:
 	and r1, sb, #0xc0000000
 	mov r1, r1, lsr #0x1e
 	mov r2, r1, lsl #1
-	ldr r1, _020BBB5C ; =0x021092F8
+	ldr r1, _020BBB5C ; =_021092F8
 	ldr r0, [r4, #0x38]
 	add r1, r1, r3, lsl #3
 	ldrh r1, [r2, r1]
@@ -9133,12 +9133,12 @@ _020BBB24:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020BBB44: .word _021DA498
-_020BBB48: .word 0x021093CC
+_020BBB48: .word _021093CC
 _020BBB4C: .word 0x0000FFFE
 _020BBB50: .word 0xC000C000
-_020BBB54: .word 0x02109310
+_020BBB54: .word _02109310
 _020BBB58: .word 0xFE00FFFF
-_020BBB5C: .word 0x021092F8
+_020BBB5C: .word _021092F8
 	arm_func_end DrawCellToSurface2D_
 
 	arm_func_start DrawOamToSurface3D_
@@ -9167,7 +9167,7 @@ DrawOamToSurface3D_: ; 0x020BBB60
 	and r2, r4, #0xc000
 	and r1, r4, #0xc0000000
 	mov r1, r1, lsr #0x1e
-	ldr r0, _020BBD9C ; =0x02109310
+	ldr r0, _020BBD9C ; =_02109310
 	mov r2, r2, asr #0xe
 	mov r1, r1, lsl #1
 	add r0, r0, r2, lsl #3
@@ -9202,7 +9202,7 @@ _020BBC08:
 	and r2, r4, #0xc000
 	and r1, r4, #0xc0000000
 	mov r1, r1, lsr #0x1e
-	ldr r0, _020BBDA0 ; =0x021092F8
+	ldr r0, _020BBDA0 ; =_021092F8
 	mov r2, r2, asr #0xe
 	mov r1, r1, lsl #1
 	add r0, r0, r2, lsl #3
@@ -9292,8 +9292,8 @@ _020BBD24:
 	.align 2, 0
 _020BBD94: .word _021DA498
 _020BBD98: .word 0xC000C000
-_020BBD9C: .word 0x02109310
-_020BBDA0: .word 0x021092F8
+_020BBD9C: .word _02109310
+_020BBDA0: .word _021092F8
 	arm_func_end DrawOamToSurface3D_
 
 	arm_func_start DrawCellToSurface3D_
@@ -9976,7 +9976,7 @@ GetCharIndex1D: ; 0x020BC5F0
 	mov sl, #3
 	ldr r7, [sp, #0x20]
 	ldr r6, [sp, #0x24]
-	ldr r8, _020BC6E4 ; =0x02109414
+	ldr r8, _020BC6E4 ; =_02109414
 	mov r5, #0
 	mov sb, sl
 	mvn r4, #0
@@ -10040,19 +10040,19 @@ _020BC69C:
 _020BC6E0: ; 0x020BC6E0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_020BC6E4: .word 0x02109414
+_020BC6E4: .word _02109414
 	arm_func_end GetCharIndex1D
 
 	arm_func_start OBJSizeToShape
 OBJSizeToShape: ; 0x020BC6E8
 	ldrb r3, [r0, #1]
-	ldr r2, _020BC700 ; =0x02109434
+	ldr r2, _020BC700 ; =_02109434
 	ldrb r1, [r0]
 	add r0, r2, r3, lsl #4
 	ldr r0, [r0, r1, lsl #2]
 	bx lr
 	.align 2, 0
-_020BC700: .word 0x02109434
+_020BC700: .word _02109434
 	arm_func_end OBJSizeToShape
 
 	arm_func_start ClearChar
@@ -10957,7 +10957,7 @@ NNS_G2dCharCanvasInitForBG: ; 0x020BD3D0
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	ldr lr, [sp, #0x10]
-	ldr ip, _020BD3F8 ; =0x021093FC
+	ldr ip, _020BD3F8 ; =_021093FC
 	str lr, [sp]
 	str ip, [sp, #4]
 	str r2, [sp, #8]
@@ -10965,7 +10965,7 @@ NNS_G2dCharCanvasInitForBG: ; 0x020BD3D0
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
 	.align 2, 0
-_020BD3F8: .word 0x021093FC
+_020BD3F8: .word _021093FC
 	arm_func_end NNS_G2dCharCanvasInitForBG
 
 	arm_func_start NNS_G2dCharCanvasInitForOBJ1D
@@ -10982,7 +10982,7 @@ NNS_G2dCharCanvasInitForOBJ1D: ; 0x020BD3FC
 	movge r5, #3
 	clzlt r4, r4
 	rsblt r5, r4, #0x1f
-	ldr r4, _020BD47C ; =0x02109414
+	ldr r4, _020BD47C ; =_02109414
 	ldr lr, [sp, #0xc]
 	add r5, r4, r5, lsl #3
 	add r4, r5, ip, lsl #1
@@ -10992,7 +10992,7 @@ NNS_G2dCharCanvasInitForOBJ1D: ; 0x020BD3FC
 	ldr lr, [sp, #0x20]
 	orr r5, r5, ip
 	str lr, [sp]
-	ldr ip, _020BD480 ; =0x02109408
+	ldr ip, _020BD480 ; =_02109408
 	bic lr, r5, #0xff00
 	mov r4, r4, lsl #0x18
 	orr r4, lr, r4, lsr #16
@@ -11003,8 +11003,8 @@ NNS_G2dCharCanvasInitForOBJ1D: ; 0x020BD3FC
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020BD47C: .word 0x02109414
-_020BD480: .word 0x02109408
+_020BD47C: .word _02109414
+_020BD480: .word _02109408
 	arm_func_end NNS_G2dCharCanvasInitForOBJ1D
 
 	arm_func_start NNS_G2dMapScrToCharText
@@ -11141,7 +11141,7 @@ NNS_G2dArrangeOBJ1D: ; 0x020BD5EC
 	movge r1, #3
 	clzlt r0, r0
 	rsblt r1, r0, #0x1f
-	ldr r0, _020BD8D8 ; =0x02109414
+	ldr r0, _020BD8D8 ; =_02109414
 	mvn r3, #0
 	add r1, r0, r1, lsl #3
 	add r0, r1, r2, lsl #1
@@ -11313,7 +11313,7 @@ _020BD8CC:
 	add sp, sp, #0x38
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020BD8D8: .word 0x02109414
+_020BD8D8: .word _02109414
 _020BD8DC: .word 0xFE00FF00
 _020BD8E0: .word 0x3FFF3FFF
 	arm_func_end NNS_G2dArrangeOBJ1D
@@ -14457,7 +14457,7 @@ _020C01F4:
 	orrne r0, r0, #0x20
 	strne r0, [r8]
 	ldrh r2, [r6, #0x1e]
-	ldr r0, _020C04B8 ; =0x02109474
+	ldr r0, _020C04B8 ; =_02109474
 	ldr ip, [r1, #0x94]
 	mov r2, r2, asr #6
 	and r2, r2, #7
@@ -14639,7 +14639,7 @@ _020C0484:
 	.align 2, 0
 _020C04B0: .word _021DA704
 _020C04B4: .word _021DA49C
-_020C04B8: .word 0x02109474
+_020C04B8: .word _02109474
 _020C04BC: .word 0x00293130
 _020C04C0: .word 0x00002B2A
 	arm_func_end NNSi_G3dFuncSbc_MAT_InternalDefault
@@ -14981,8 +14981,8 @@ _020C0924:
 	str r1, [sp, #4]
 	bl MI_Zero36B
 	ldrh r0, [r7]
-	ldr r2, _020C0B38 ; =0x02109494
-	ldr r1, _020C0B3C ; =0x02109495
+	ldr r2, _020C0B38 ; =_02109494
+	ldr r1, _020C0B3C ; =_02109494 + 1
 	tst r0, #0x100
 	mov r0, #0x1000
 	ldrb r2, [r2, fp, lsl #2]
@@ -15003,7 +15003,7 @@ _020C0924:
 	rsb r0, r0, #0
 	str r0, [sp, #4]
 _020C09A4:
-	ldr r0, _020C0B40 ; =0x02109496
+	ldr r0, _020C0B40 ; =_02109494 + 2
 	ldrb r0, [r0, fp, lsl #2]
 	add r1, r5, r0, lsl #2
 	ldr r0, [sp, #4]
@@ -15015,7 +15015,7 @@ _020C09A4:
 	rsb r0, r0, #0
 	str r0, [sp]
 _020C09D0:
-	ldr r0, _020C0B44 ; =0x02109497
+	ldr r0, _020C0B44 ; =_02109494 + 3
 	add r6, r6, #4
 	ldrb r0, [r0, fp, lsl #2]
 	add r1, r5, r0, lsl #2
@@ -15115,10 +15115,10 @@ _020C0B24:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020C0B38: .word 0x02109494
-_020C0B3C: .word 0x02109495
-_020C0B40: .word 0x02109496
-_020C0B44: .word 0x02109497
+_020C0B38: .word _02109494
+_020C0B3C: .word _02109494 + 1
+_020C0B40: .word _02109494 + 2
+_020C0B44: .word _02109494 + 3
 	arm_func_end NNSi_G3dFuncSbc_NODEDESC
 
 	arm_func_start NNSi_G3dFuncSbc_BB
@@ -19000,10 +19000,10 @@ _020C3F30:
 	ldrsh r6, [r1, #2]
 	bl MI_Zero36B
 	ldrh r0, [r5]
-	ldr r1, _020C403C ; =0x021094B8
+	ldr r1, _020C403C ; =_021094B8
 	mov r3, #0x1000
 	tst r0, #0x100
-	ldr r0, _020C4040 ; =0x021094B9
+	ldr r0, _020C4040 ; =_021094B8 + 1
 	ldrb r1, [r1, r4, lsl #2]
 	ldrb r0, [r0, r4, lsl #2]
 	rsbne r3, r3, #0
@@ -19015,14 +19015,14 @@ _020C3F30:
 	str r6, [r0, #0x28]
 	ldrh r0, [r5]
 	tst r0, #0x200
-	ldr r0, _020C4044 ; =0x021094BA
+	ldr r0, _020C4044 ; =_021094B8 + 2
 	rsbne r6, r6, #0
 	ldrb r0, [r0, r4, lsl #2]
 	add r0, r8, r0, lsl #2
 	str r6, [r0, #0x28]
 	ldrh r0, [r5]
 	tst r0, #0x400
-	ldr r0, _020C4048 ; =0x021094BB
+	ldr r0, _020C4048 ; =_021094B8 + 3
 	rsbne r7, r7, #0
 	ldrb r0, [r0, r4, lsl #2]
 	add r0, r8, r0, lsl #2
@@ -19055,10 +19055,10 @@ _020C4028:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020C4038: .word _021DA700
-_020C403C: .word 0x021094B8
-_020C4040: .word 0x021094B9
-_020C4044: .word 0x021094BA
-_020C4048: .word 0x021094BB
+_020C403C: .word _021094B8
+_020C4040: .word _021094B8 + 1
+_020C4044: .word _021094B8 + 2
+_020C4048: .word _021094B8 + 3
 	arm_func_end getMdlRot_
 
 	arm_func_start getJntSRTAnmResult_
@@ -20323,9 +20323,9 @@ getRotDataByIdx_: ; 0x020C51A0
 	ldrsh r3, [r2, #4]
 	tst r1, #0x10
 	subne r5, r4, #0x1000
-	ldr r4, _020C52FC ; =0x021094B8
+	ldr r4, _020C52FC ; =_021094B8
 	and r1, r1, #0xf
-	ldr lr, _020C5300 ; =0x021094B9
+	ldr lr, _020C5300 ; =_021094B8 + 1
 	moveq r5, #0x1000
 	ldrb r4, [r4, r1, lsl #2]
 	str r5, [r0, r1, lsl #2]
@@ -20334,13 +20334,13 @@ getRotDataByIdx_: ; 0x020C51A0
 	str r3, [r0, lr, lsl #2]
 	ldrsh lr, [r2]
 	tst lr, #0x20
-	ldr lr, _020C5304 ; =0x021094BA
+	ldr lr, _020C5304 ; =_021094B8 + 2
 	rsbne r3, r3, #0
 	ldrb lr, [lr, r1, lsl #2]
 	str r3, [r0, lr, lsl #2]
 	ldrsh r2, [r2]
 	tst r2, #0x40
-	ldr r2, _020C5308 ; =0x021094BB
+	ldr r2, _020C5308 ; =_021094B8 + 3
 	rsbne ip, ip, #0
 	ldrb r1, [r2, r1, lsl #2]
 	str ip, [r0, r1, lsl #2]
@@ -20389,10 +20389,10 @@ _020C5258:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020C52F8: .word 0x00007FFF
-_020C52FC: .word 0x021094B8
-_020C5300: .word 0x021094B9
-_020C5304: .word 0x021094BA
-_020C5308: .word 0x021094BB
+_020C52FC: .word _021094B8
+_020C5300: .word _021094B8 + 1
+_020C5304: .word _021094B8 + 2
+_020C5308: .word _021094B8 + 3
 	arm_func_end getRotDataByIdx_
 
 	arm_func_start GetMatColAnmValue_
@@ -24120,7 +24120,7 @@ NNSi_SndPlayerMain: ; 0x020C8498
 	movs r6, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r4, #0x8000
-	ldr r5, _020C85F4 ; =0x0210D750
+	ldr r5, _020C85F4 ; =_0210D750
 	rsb r4, r4, #0
 _020C84C4:
 	ldr r0, _020C85F0 ; =_021DF978
@@ -24206,7 +24206,7 @@ _020C85E0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020C85F0: .word _021DF978
-_020C85F4: .word 0x0210D750
+_020C85F4: .word _0210D750
 _020C85F8: .word 0x00007FFF
 	arm_func_end NNSi_SndPlayerMain
 
@@ -27140,7 +27140,7 @@ _020CAB44:
 NNSi_SndArcStrmMain: ; 0x020CAB94
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r7, _020CAC9C ; =_021E0FEC
-	ldr r4, _020CACA0 ; =0x0210D750
+	ldr r4, _020CACA0 ; =_0210D750
 	mov r5, #0
 _020CABA4:
 	ldr r1, [r7, #0x110]
@@ -27211,7 +27211,7 @@ _020CAC88:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020CAC9C: .word _021E0FEC
-_020CACA0: .word 0x0210D750
+_020CACA0: .word _0210D750
 	arm_func_end NNSi_SndArcStrmMain
 
 	arm_func_start FreePlayer

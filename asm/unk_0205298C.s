@@ -505,20 +505,20 @@ sub_02052D84: ; 0x02052D84
 	add r0, r4, #0
 	add r0, #0x1c
 	bl InitWindow
-	ldr r0, _02052DFC ; =0x020FC5A4
+	ldr r0, _02052DFC ; =_020FC5A4
 	bl GX_SetBanks
 	ldr r2, _02052E00 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
 	orr r0, r1
 	strh r0, [r2]
-	ldr r0, _02052E04 ; =0x020FC578
+	ldr r0, _02052E04 ; =_020FC578
 	bl SetBothScreensModesAndDisable
 	mov r0, #3
 	mov r1, #0
 	bl BG_SetMaskColor
 	ldr r0, [r4, #0x18]
-	ldr r2, _02052E08 ; =0x020FC588
+	ldr r2, _02052E08 ; =_020FC588
 	mov r1, #3
 	mov r3, #0
 	bl InitBgFromTemplate
@@ -544,10 +544,10 @@ sub_02052D84: ; 0x02052D84
 	add sp, #0x10
 	pop {r4, pc}
 	nop
-_02052DFC: .word 0x020FC5A4
+_02052DFC: .word _020FC5A4
 _02052E00: .word 0x04000304
-_02052E04: .word 0x020FC578
-_02052E08: .word 0x020FC588
+_02052E04: .word _020FC578
+_02052E08: .word _020FC588
 	thumb_func_end sub_02052D84
 
 	thumb_func_start sub_02052E0C

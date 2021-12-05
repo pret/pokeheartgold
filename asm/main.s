@@ -8,6 +8,7 @@
 gBacklightTop:
 	.space 0x4
 
+	.public _02111864
 _02111864:
 	.space 0x4
 

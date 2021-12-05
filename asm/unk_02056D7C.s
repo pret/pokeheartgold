@@ -1067,7 +1067,7 @@ _02057520: .word _021D41C4
 sub_02057524: ; 0x02057524
 	push {r3, r4, lr}
 	sub sp, #0x14
-	ldr r3, _0205754C ; =0x020FC7B8
+	ldr r3, _0205754C ; =_020FC7B8
 	add r4, r0, #0
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0
@@ -1086,7 +1086,7 @@ _02057542:
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
-_0205754C: .word 0x020FC7B8
+_0205754C: .word _020FC7B8
 	thumb_func_end sub_02057524
 
 	thumb_func_start sub_02057550
@@ -2094,10 +2094,10 @@ _02057C90: .word _021D41C4
 sub_02057C94: ; 0x02057C94
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
-	ldr r1, _02057D48 ; =0x020FC7A0
+	ldr r1, _02057D48 ; =_020FC7A0
 	add r0, sp, #8
 	ldrh r2, [r1]
-	ldr r3, _02057D4C ; =0x020FC7A8
+	ldr r3, _02057D4C ; =_020FC7A8
 	strh r2, [r0]
 	ldrh r2, [r1, #2]
 	strh r2, [r0, #2]
@@ -2187,8 +2187,8 @@ _02057D42:
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02057D48: .word 0x020FC7A0
-_02057D4C: .word 0x020FC7A8
+_02057D48: .word _020FC7A0
+_02057D4C: .word _020FC7A8
 	thumb_func_end sub_02057C94
 
 	thumb_func_start sub_02057D50

@@ -187,7 +187,7 @@ _021E8270:
 	lsl r2, r2, #2
 	ldr r2, [r4, r2]
 	lsl r3, r2, #2
-	ldr r2, _021E82A4 ; =_021E96C0
+	ldr r2, _021E82A4 ; =ov52_021E96C0
 	ldr r2, [r2, r3]
 	cmp r2, #0
 	beq _021E8284
@@ -210,7 +210,7 @@ _021E829A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E82A4: .word _021E96C0
+_021E82A4: .word ov52_021E96C0
 _021E82A8: .word 0x00004318
 	thumb_func_end ov52_021E8248
 
@@ -2588,7 +2588,12 @@ ov52_021E95A0: ; 0x021E95A0
 
 	.data
 
-_021E96C0:
-	.byte 0x00, 0x00, 0x00, 0x00, 0xF5, 0x8C, 0x1E, 0x02, 0x8D, 0x8D, 0x1E, 0x02, 0xC5, 0x8D, 0x1E, 0x02
-	.byte 0xDD, 0x8E, 0x1E, 0x02, 0xFD, 0x8E, 0x1E, 0x02, 0x65, 0x8E, 0x1E, 0x02, 0x00, 0x00, 0x00, 0x00
+ov52_021E96C0:
+	.word 0
+	.word ov52_021E8CF4
+	.word ov52_021E8D8C
+	.word ov52_021E8DC4
+	.word ov52_021E8EDC
+	.word ov52_021E8EFC
+	.word ov52_021E8E64
 	; 0x021E96E0

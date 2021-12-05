@@ -68,7 +68,7 @@ sub_02058AEC: ; 0x02058AEC
 	add r0, r5, #0
 	bl sub_0208828C
 	str r0, [r4, #0x34]
-	ldr r1, _02058B7C ; =0x020FC7CC
+	ldr r1, _02058B7C ; =_020FC7CC
 	add r0, r4, #0
 	bl sub_02089D40
 	ldr r1, _02058B80 ; =_02103A1C
@@ -79,7 +79,7 @@ sub_02058AEC: ; 0x02058AEC
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02058B7C: .word 0x020FC7CC
+_02058B7C: .word _020FC7CC
 _02058B80: .word _02103A1C
 	thumb_func_end sub_02058AEC
 

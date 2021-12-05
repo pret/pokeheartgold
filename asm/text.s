@@ -16,11 +16,11 @@ _021D1F94:
 
 	thumb_func_start sub_0201FFE0
 sub_0201FFE0: ; 0x0201FFE0
-	ldr r1, _0201FFE8 ; =0x0210F6D8
+	ldr r1, _0201FFE8 ; =_0210F6D8
 	str r0, [r1]
 	bx lr
 	nop
-_0201FFE8: .word 0x0210F6D8
+_0201FFE8: .word _0210F6D8
 	thumb_func_end sub_0201FFE0
 
 	thumb_func_start sub_0201FFEC
@@ -152,7 +152,7 @@ AddTextPrinterParameterized: ; 0x020200A8
 	strb r0, [r2, #0xb]
 	strh r3, [r2, #0xc]
 	strh r0, [r2, #0xe]
-	ldr r0, _020200F8 ; =0x0210F6D8
+	ldr r0, _020200F8 ; =_0210F6D8
 	lsl r1, r1, #3
 	ldr r0, [r0]
 	add r1, r0, r1
@@ -180,7 +180,7 @@ AddTextPrinterParameterized: ; 0x020200A8
 	add sp, #0x1c
 	pop {pc}
 	nop
-_020200F8: .word 0x0210F6D8
+_020200F8: .word _0210F6D8
 	thumb_func_end AddTextPrinterParameterized
 
 	thumb_func_start AddTextPrinterParameterized2
@@ -196,7 +196,7 @@ AddTextPrinterParameterized2: ; 0x020200FC
 	strb r0, [r2, #0xb]
 	strh r3, [r2, #0xc]
 	strh r0, [r2, #0xe]
-	ldr r0, _0202014C ; =0x0210F6D8
+	ldr r0, _0202014C ; =_0210F6D8
 	lsl r1, r1, #3
 	ldr r0, [r0]
 	add r1, r0, r1
@@ -224,7 +224,7 @@ AddTextPrinterParameterized2: ; 0x020200FC
 	add sp, #0x1c
 	pop {pc}
 	nop
-_0202014C: .word 0x0210F6D8
+_0202014C: .word _0210F6D8
 	thumb_func_end AddTextPrinterParameterized2
 
 	thumb_func_start AddTextPrinterParameterized3
@@ -244,7 +244,7 @@ AddTextPrinterParameterized3: ; 0x02020150
 	strh r0, [r2, #0x10]
 	ldr r0, [sp, #0x30]
 	strh r0, [r2, #0x12]
-	ldr r0, _020201A0 ; =0x0210F6D8
+	ldr r0, _020201A0 ; =_0210F6D8
 	ldr r3, [r0]
 	lsl r0, r1, #3
 	add r0, r3, r0
@@ -268,14 +268,14 @@ AddTextPrinterParameterized3: ; 0x02020150
 	add sp, #0x1c
 	pop {pc}
 	nop
-_020201A0: .word 0x0210F6D8
+_020201A0: .word _0210F6D8
 	thumb_func_end AddTextPrinterParameterized3
 
 	thumb_func_start AddTextPrinter
 AddTextPrinter: ; 0x020201A4
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	ldr r0, _020202E0 ; =0x0210F6D8
+	ldr r0, _020202E0 ; =_0210F6D8
 	add r6, r1, #0
 	ldr r0, [r0]
 	add r5, r2, #0
@@ -429,7 +429,7 @@ _020202D0:
 	mov r0, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020202E0: .word 0x0210F6D8
+_020202E0: .word _0210F6D8
 _020202E4: .word _021D1F6C
 _020202E8: .word sub_020202EC
 	thumb_func_end AddTextPrinter

@@ -229,7 +229,8 @@ Static main
 
 	### Vendor libraries ###
 	Object middleware.o
-	Object sdk.o
+	Object jn_spl.o
+	Object wvr.o
 	Object dwcbm.o
 	Object dwcaccount.o
 	Object wifi.o
@@ -245,7 +246,7 @@ Static main
 	Object fx_cp.o
 	Object fx_vec.o
 	Object fx_trig.o
-	Object fx_atan.o
+	Object fx_atanidx.o
 	Object fx.o
 	Object gx.o
 	Object gxstate.o

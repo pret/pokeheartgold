@@ -358,8 +358,8 @@ ov93_0225F370: ; 0x0225F370
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r2, [r4, #0x270]
-	ldr r3, _0225F43C ; =0x02262C07
-	ldr r1, _0225F440 ; =0x02262C05
+	ldr r3, _0225F43C ; =ov93_02262C07
+	ldr r1, _0225F440 ; =ov93_02262C05
 	ldrb lr, [r3, r2, lsl #2]
 	ldr r5, [r4, #0x230]
 	ldrb r3, [r1, r2, lsl #2]
@@ -367,14 +367,14 @@ ov93_0225F370: ; 0x0225F370
 	add r1, lr, r5, asr #12
 	cmp ip, r3
 	blt _0225F3E4
-	ldr r3, _0225F444 ; =0x02262C06
+	ldr r3, _0225F444 ; =ov93_02262C06
 	ldrb r3, [r3, r2, lsl #2]
 	cmp ip, r3
 	bgt _0225F3E4
 	ldr ip, [r4, #0x210]
 	cmp ip, r1
 	blt _0225F3E4
-	ldr r3, _0225F448 ; =0x02262C08
+	ldr r3, _0225F448 ; =ov93_02262C08
 	ldrb r2, [r3, r2, lsl #2]
 	cmp ip, r2
 	ble _0225F3EC
@@ -403,10 +403,10 @@ _0225F3EC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
-_0225F43C: .word 0x02262C07
-_0225F440: .word 0x02262C05
-_0225F444: .word 0x02262C06
-_0225F448: .word 0x02262C08
+_0225F43C: .word ov93_02262C07
+_0225F440: .word ov93_02262C05
+_0225F444: .word ov93_02262C06
+_0225F448: .word ov93_02262C08
 	arm_func_end ov93_0225F370
 
 	arm_func_start ov93_0225F44C
@@ -441,7 +441,7 @@ ov93_0225F44C: ; 0x0225F44C
 	strb r0, [r5, #0x274]
 _0225F4BC:
 	ldr r1, [r5, #0x270]
-	ldr r0, _0225F544 ; =0x02262C07
+	ldr r0, _0225F544 ; =ov93_02262C07
 	ldr ip, [r5, #0x210]
 	ldr r3, [r5, #0x22c]
 	ldr r2, [r5, #0x230]
@@ -478,7 +478,7 @@ _0225F51C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _0225F540: .word 0x0000058F
-_0225F544: .word 0x02262C07
+_0225F544: .word ov93_02262C07
 	arm_func_end ov93_0225F44C
 
 	arm_func_start ov93_0225F548
@@ -895,7 +895,7 @@ _0225FAFC: .word 0x00002715
 ov93_0225FB00: ; 0x0225FB00
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x34
-	ldr lr, _0225FB68 ; =0x02262C38
+	ldr lr, _0225FB68 ; =ov93_02262C38
 	mov r5, r0
 	ldmia lr!, {r0, r1, r2, r3}
 	add ip, sp, #0
@@ -920,7 +920,7 @@ ov93_0225FB00: ; 0x0225FB00
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, pc}
 	.balign 4, 0
-_0225FB68: .word 0x02262C38
+_0225FB68: .word ov93_02262C38
 	arm_func_end ov93_0225FB00
 
 	arm_func_start ov93_0225FB6C
@@ -937,7 +937,7 @@ ov93_0225FB6C: ; 0x0225FB6C
 	add r4, r0, #1
 _0225FB94:
 	ldr r1, [r6, #0x270]
-	ldr r0, _0225FBE0 ; =0x02262C07
+	ldr r0, _0225FBE0 ; =ov93_02262C07
 	ldr r3, [r6, #0x21c]
 	ldrb r0, [r0, r1, lsl #2]
 	ldr r2, [r6, #0x230]
@@ -956,7 +956,7 @@ _0225FB94:
 	bl sub_0200DC0C
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
-_0225FBE0: .word 0x02262C07
+_0225FBE0: .word ov93_02262C07
 	arm_func_end ov93_0225FB6C
 
 	arm_func_start ov93_0225FBE4
@@ -970,10 +970,25 @@ _0225FBEC: .word sub_0200D9DC
 	.rodata
 
 _02262C04:
-	.byte 0x80, 0x40, 0xC0, 0x10, 0xA8, 0x28, 0xD8, 0x00, 0xA8, 0x54, 0xAC, 0x08
+	.byte 0x80
+
+ov93_02262C05: ; 0x02262C05
+	.byte 0x40
+
+ov93_02262C06: ; 0x02262C06
+	.byte 0xC0
+
+ov93_02262C07: ; 0x02262C07
+	.byte 0x10
+
+ov93_02262C08: ; 0x02262C08
+	.byte 0xA8, 0x28, 0xD8, 0x00, 0xA8, 0x54, 0xAC, 0x08
 	.byte 0xA8, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0x0F, 0x00, 0x00, 0xFF, 0x0F, 0x00, 0x00, 0xFF, 0x0F
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xF0, 0x00, 0x00, 0x01, 0xF0, 0x00, 0x00
-	.byte 0x01, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+
+ov93_02262C38: ; 0x02262C38
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x13, 0x27, 0x00, 0x00
 	.byte 0x15, 0x27, 0x00, 0x00, 0x13, 0x27, 0x00, 0x00, 0x13, 0x27, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

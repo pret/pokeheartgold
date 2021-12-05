@@ -108,7 +108,7 @@ _021E59C0:
 	ldrh r1, [r5]
 	ldr r0, [r4, #0x10]
 	strh r1, [r0]
-	ldr r0, _021E5ADC ; =_021E5BF4
+	ldr r0, _021E5ADC ; =ov55_021E5BF4
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4]
 	bl OverlayManager_new
@@ -242,7 +242,7 @@ _021E5AD4:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
-_021E5ADC: .word _021E5BF4
+_021E5ADC: .word ov55_021E5BF4
 _021E5AE0: .word 0x0000FFFF
 _021E5AE4: .word ov55_021E5C04
 	thumb_func_end ov55_021E598C
@@ -382,11 +382,9 @@ _021E5BD0:
 
 	.rodata
 
-_021E5BF4:
-	.byte 0x21, 0x5C, 0x1E, 0x02, 0x9D, 0x5C, 0x1E, 0x02, 0xB5, 0x5C, 0x1E, 0x02
-	.byte 0x38, 0x00, 0x00, 0x00
+ov55_021E5BF4:
+	.word ov56_021E5C20, ov56_021E5C9C, ov56_021E5CB4, SDK_OVERLAY_OVY_56_ID
 
 ov55_021E5C04: ; 0x021E5C04
-	.byte 0x41, 0x77, 0x1E, 0x02, 0xB9, 0x77, 0x1E, 0x02, 0x69, 0x78, 0x1E, 0x02
-	.byte 0x66, 0x00, 0x00, 0x00
+	.word ov102_021E7740, ov102_021E77B8, ov102_021E7868, SDK_OVERLAY_OVY_102_ID
 	; 0x021E5C14

@@ -4,12 +4,12 @@
 #ifndef NDEBUG
 
 #include <string>
-#include <filesystem>
+#include "find_filesystem.h"
 #include <fstream>
 #include <map>
 
 using namespace std;
-using namespace std::filesystem;
+using namespace fs;
 
 class MwerksXmapFile {
     map<pair<string, string>, size_t> _section_addrs;
