@@ -1793,9 +1793,9 @@
 .public ScrCmd_107
 .public ScrCmd_108
 .public ScrCmd_109
-.public ScrCmd_110
-.public ScrCmd_111
-.public ScrCmd_112
+.public ScrCmd_AddMoney
+.public ScrCmd_SubMoneyImmediate
+.public ScrCmd_HasEnoughMoneyImmediate
 .public ScrCmd_113
 .public ScrCmd_114
 .public ScrCmd_115
@@ -2043,7 +2043,7 @@
 .public ScrCmd_357
 .public ScrCmd_358
 .public ScrCmd_359
-.public ScrCmd_360
+.public ScrCmd_SubMoneyVar
 .public ScrCmd_361
 .public ScrCmd_362
 .public ScrCmd_363
@@ -2051,7 +2051,7 @@
 .public ScrCmd_365
 .public ScrCmd_366
 .public ScrCmd_367
-.public ScrCmd_368
+.public ScrCmd_HasEnoughMoneyVar
 .public ScrCmd_369
 .public ScrCmd_370
 .public ScrCmd_371

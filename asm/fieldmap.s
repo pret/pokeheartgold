@@ -292,9 +292,9 @@ gScriptCmdTable:
 	.word ScrCmd_107                                    ; 107
 	.word ScrCmd_108                                    ; 108
 	.word ScrCmd_109                                    ; 109
-	.word ScrCmd_110                                    ; 110
-	.word ScrCmd_111                                    ; 111
-	.word ScrCmd_112                                    ; 112
+	.word ScrCmd_AddMoney                               ; 110
+	.word ScrCmd_SubMoneyImmediate                      ; 111
+	.word ScrCmd_HasEnoughMoneyImmediate                ; 112
 	.word ScrCmd_113                                    ; 113
 	.word ScrCmd_114                                    ; 114
 	.word ScrCmd_115                                    ; 115
@@ -542,7 +542,7 @@ gScriptCmdTable:
 	.word ScrCmd_357                                    ; 357
 	.word ScrCmd_358                                    ; 358
 	.word ScrCmd_359                                    ; 359
-	.word ScrCmd_360                                    ; 360
+	.word ScrCmd_SubMoneyVar                            ; 360
 	.word ScrCmd_361                                    ; 361
 	.word ScrCmd_362                                    ; 362
 	.word ScrCmd_363                                    ; 363
@@ -550,7 +550,7 @@ gScriptCmdTable:
 	.word ScrCmd_365                                    ; 365
 	.word ScrCmd_366                                    ; 366
 	.word ScrCmd_367                                    ; 367
-	.word ScrCmd_368                                    ; 368
+	.word ScrCmd_HasEnoughMoneyVar                      ; 368
 	.word ScrCmd_369                                    ; 369
 	.word ScrCmd_370                                    ; 370
 	.word ScrCmd_371                                    ; 371

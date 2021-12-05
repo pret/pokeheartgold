@@ -1,7 +1,6 @@
 #include "main.h"
 #include "options.h"
-
-extern OPTIONS* Sav2_PlayerData_GetOptionsAddr(SAVEDATA*);
+#include "player_data.h"
 
 OPTIONS* Options_new(HeapID heap_id) {
     OPTIONS* ret = AllocFromHeap(heap_id, sizeof(OPTIONS));

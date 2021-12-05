@@ -5,6 +5,7 @@
 #include "options.h"
 #include "coins.h"
 #include "igt.h"
+#include "pm_string.h"
 
 typedef struct PLAYERPROFILE {
     u16 name[OT_NAME_LENGTH + 1];
@@ -28,6 +29,8 @@ typedef struct PLAYERDATA {
     IGT igt;
 } PLAYERDATA;
 
+PLAYERPROFILE *Sav2_PlayerData_GetProfileAddr(SAVEDATA *saveData);
+OPTIONS *Sav2_PlayerData_GetOptionsAddr(SAVEDATA *saveData);
 u16 *Sav2_PlayerData_GetCoinsAddr(SAVEDATA *saveData);
 u32 PlayerProfile_GetTrainerID(PLAYERDATA *playerData);
 u32 PlayerProfile_GetTrainerGender(PLAYERDATA *playerData);

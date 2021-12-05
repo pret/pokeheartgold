@@ -164,7 +164,7 @@ Static main
 	Object scrcmd_10.o
 	Object scrcmd_11.o
 	Object scrcmd_12.o
-	Object scrcmd_13.o
+	Object scrcmd_money.o
 	Object scrcmd_14.o
 	Object scrcmd_15.o
 	Object scrcmd_16.o

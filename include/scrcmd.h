@@ -4,6 +4,8 @@
 #include "fieldmap.h"
 #include "script.h"
 
+extern SAVEDATA* ScriptEnvironment_GetSav2Ptr(UnkSavStruct80*);
+
 // scrcmd_fossils.c
 BOOL ScrCmd_CountFossils(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetFossilPokemon(SCRIPTCONTEXT* ctx);
@@ -17,5 +19,12 @@ BOOL ScrCmd_HasItem(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetItemQuantity(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_ItemIsTMOrHM(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetItemPocket(SCRIPTCONTEXT* ctx);
+
+// scrcmd_money.c
+BOOL ScrCmd_AddMoney(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_SubMoneyImmediate(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_SubMoneyVar(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_HasEnoughMoneyImmediate(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_HasEnoughMoneyVar(SCRIPTCONTEXT* ctx);
 
 #endif

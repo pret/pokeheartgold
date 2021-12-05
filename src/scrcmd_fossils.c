@@ -1,8 +1,7 @@
+#include "scrcmd.h"
 #include "bag.h"
 #include "constants/items.h"
 #include "constants/species.h"
-#include "fieldmap.h"
-#include "script.h"
 
 static const u16 sFossilPokemonMap[7][2] = {
     { ITEM_OLD_AMBER, SPECIES_AERODACTYL },
