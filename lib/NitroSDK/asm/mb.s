@@ -5,36 +5,36 @@
 
 	.text
 
-	arm_func_start ov13_0221BA70
-ov13_0221BA70: ; 0x0221BA70
+	arm_func_start MB_CommSetParentStateCallback
+MB_CommSetParentStateCallback: ; 0x0221BA70
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
-	ldr r1, _0221BA94 ; =ov13_0224CF4C
+	ldr r1, _0221BA94 ; =mbc
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	str r4, [r1, #0x4e4]
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
-_0221BA94: .word ov13_0224CF4C
-	arm_func_end ov13_0221BA70
+_0221BA94: .word mbc
+	arm_func_end MB_CommSetParentStateCallback
 
-	arm_func_start ov13_0221BA98
-ov13_0221BA98: ; 0x0221BA98
+	arm_func_start MB_CommGetChildUser
+MB_CommGetChildUser: ; 0x0221BA98
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
-	ldr r1, _0221BB18 ; =ov13_0224CF4C
+	ldr r1, _0221BB18 ; =mbc
 	mov r4, r0
 	ldr r0, [r1]
 	cmp r0, #0
 	beq _0221BB08
 	mov r0, r5
-	bl ov13_0221CE18
+	bl IsChildAidValid
 	cmp r0, #0
 	beq _0221BB08
-	ldr r0, _0221BB18 ; =ov13_0224CF4C
+	ldr r0, _0221BB18 ; =mbc
 	sub r1, r5, #1
 	ldr r3, [r0]
 	mov r2, #0x16
@@ -45,7 +45,7 @@ ov13_0221BA98: ; 0x0221BA98
 	bl MI_CpuCopy8
 	mov r0, r4
 	bl OS_RestoreInterrupts
-	ldr r0, _0221BB18 ; =ov13_0224CF4C
+	ldr r0, _0221BB18 ; =mbc
 	ldr r0, [r0]
 	add r0, r0, #0x72
 	add r0, r0, #0x1700
@@ -56,21 +56,21 @@ _0221BB08:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
-_0221BB18: .word ov13_0224CF4C
-	arm_func_end ov13_0221BA98
+_0221BB18: .word mbc
+	arm_func_end MB_CommGetChildUser
 
-	arm_func_start ov13_0221BB1C
-ov13_0221BB1C: ; 0x0221BB1C
+	arm_func_start MB_CommIsBootable
+MB_CommIsBootable: ; 0x0221BB1C
 	stmdb sp!, {r4, lr}
-	ldr r1, _0221BB6C ; =ov13_0224CF4C
+	ldr r1, _0221BB6C ; =mbc
 	mov r4, r0
 	ldr r1, [r1]
 	cmp r1, #0
 	beq _0221BB64
-	bl ov13_0221CE18
+	bl IsChildAidValid
 	cmp r0, #0
 	beq _0221BB64
-	ldr r0, _0221BB6C ; =ov13_0224CF4C
+	ldr r0, _0221BB6C ; =mbc
 	sub r1, r4, #1
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
@@ -83,11 +83,11 @@ _0221BB64:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
-_0221BB6C: .word ov13_0224CF4C
-	arm_func_end ov13_0221BB1C
+_0221BB6C: .word mbc
+	arm_func_end MB_CommIsBootable
 
-	arm_func_start ov13_0221BB70
-ov13_0221BB70: ; 0x0221BB70
+	arm_func_start MB_CommResponseRequest
+MB_CommResponseRequest: ; 0x0221BB70
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r1
 	mov r7, r0
@@ -123,15 +123,15 @@ _0221BBD0:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0221BBE0:
-	ldr r0, _0221BC4C ; =ov13_0224CF4C
+	ldr r0, _0221BC4C ; =mbc
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0221BC3C
 	mov r0, r7
-	bl ov13_0221CE18
+	bl IsChildAidValid
 	cmp r0, #0
 	beq _0221BC3C
-	ldr r0, _0221BC4C ; =ov13_0224CF4C
+	ldr r0, _0221BC4C ; =mbc
 	sub r2, r7, #1
 	ldr r1, [r0]
 	add r0, r1, r2, lsl #2
@@ -152,19 +152,19 @@ _0221BC3C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0221BC4C: .word ov13_0224CF4C
-	arm_func_end ov13_0221BB70
+_0221BC4C: .word mbc
+	arm_func_end MB_CommResponseRequest
 
-	arm_func_start ov13_0221BC50
-ov13_0221BC50: ; 0x0221BC50
+	arm_func_start MBi_CommChangeParentState
+MBi_CommChangeParentState: ; 0x0221BC50
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl ov13_0221CE18
+	bl IsChildAidValid
 	cmp r0, #0
 	beq _0221BC84
-	ldr r0, _0221BC98 ; =ov13_0224CF4C
+	ldr r0, _0221BC98 ; =mbc
 	sub r1, r6, #1
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
@@ -174,16 +174,16 @@ _0221BC84:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl ov13_0221BC9C
+	bl MBi_CommChangeParentStateCallbackOnly
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
-_0221BC98: .word ov13_0224CF4C
-	arm_func_end ov13_0221BC50
+_0221BC98: .word mbc
+	arm_func_end MBi_CommChangeParentState
 
-	arm_func_start ov13_0221BC9C
-ov13_0221BC9C: ; 0x0221BC9C
+	arm_func_start MBi_CommChangeParentStateCallbackOnly
+MBi_CommChangeParentStateCallbackOnly: ; 0x0221BC9C
 	stmdb sp!, {r3, lr}
-	ldr r3, _0221BCC0 ; =ov13_0224CF4C
+	ldr r3, _0221BCC0 ; =mbc
 	ldr r3, [r3]
 	add r3, r3, #0x1000
 	ldr r3, [r3, #0x4e4]
@@ -192,11 +192,11 @@ ov13_0221BC9C: ; 0x0221BC9C
 	blx r3
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
-_0221BCC0: .word ov13_0224CF4C
-	arm_func_end ov13_0221BC9C
+_0221BCC0: .word mbc
+	arm_func_end MBi_CommChangeParentStateCallbackOnly
 
-	arm_func_start ov13_0221BCC4
-ov13_0221BCC4: ; 0x0221BCC4
+	arm_func_start MBi_CommParentCallback
+MBi_CommParentCallback: ; 0x0221BCC4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r5, r0
 	mov r4, r1
@@ -235,7 +235,7 @@ _0221BD40:
 	mov r2, r4
 	mov r0, #0
 	mov r1, #1
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 	b _0221C114
 _0221BD54:
 	ldrh r0, [r4, #0x10]
@@ -245,7 +245,7 @@ _0221BD54:
 	bhs _0221C114
 	mov r2, r4
 	mov r1, #2
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 	b _0221C114
 _0221BD78:
 	ldrh r0, [r4, #0x10]
@@ -253,7 +253,7 @@ _0221BD78:
 	beq _0221C114
 	cmp r0, #0x10
 	bhs _0221C114
-	ldr r2, _0221C15C ; =ov13_0224CF4C
+	ldr r2, _0221C15C ; =mbc
 	sub r0, r0, #1
 	ldr r3, [r2]
 	mov r1, #0
@@ -268,7 +268,7 @@ _0221BD78:
 	add r0, r3, r0, lsl #2
 	mov r2, #4
 	bl MI_CpuFill8
-	ldr r0, _0221C15C ; =ov13_0224CF4C
+	ldr r0, _0221C15C ; =mbc
 	ldrh r1, [r4, #0x10]
 	ldr r0, [r0]
 	mov r2, #0x16
@@ -278,9 +278,9 @@ _0221BD78:
 	mov r1, #0
 	bl MI_CpuFill8
 	ldrh r0, [r4, #0x10]
-	bl ov13_02220624
+	bl MBi_ClearParentPieceBuffer
 	ldrh r1, [r4, #0x10]
-	ldr r0, _0221C15C ; =ov13_0224CF4C
+	ldr r0, _0221C15C ; =mbc
 	mov r3, #0
 	ldr r2, [r0]
 	sub r1, r1, #1
@@ -324,7 +324,7 @@ _0221BD78:
 	and r1, r1, r2
 	strh r1, [r0, #0x4c]
 _0221BEA4:
-	ldr r1, _0221C15C ; =ov13_0224CF4C
+	ldr r1, _0221C15C ; =mbc
 	ldrh r2, [r4, #0x10]
 	ldr r6, [r1]
 	mov r3, #1
@@ -345,7 +345,7 @@ _0221BEA4:
 	strh r1, [r0, #0x36]
 _0221BEF0:
 	ldrh r0, [r4, #0x10]
-	ldr r1, _0221C15C ; =ov13_0224CF4C
+	ldr r1, _0221C15C ; =mbc
 	ldr r2, [r1]
 	sub r1, r0, #1
 	add r1, r2, r1, lsl #2
@@ -355,14 +355,14 @@ _0221BEF0:
 	bne _0221BF20
 	mov r1, #9
 	mov r2, #0
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 _0221BF20:
 	ldrh r0, [r4, #0x10]
 	mov r2, r4
 	mov r1, #3
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 	ldrh r1, [r4, #0x10]
-	ldr r0, _0221C15C ; =ov13_0224CF4C
+	ldr r0, _0221C15C ; =mbc
 	mov r3, #0
 	ldr r2, [r0]
 	sub r0, r1, #1
@@ -372,14 +372,14 @@ _0221BF20:
 	b _0221C114
 _0221BF54:
 	mov r0, r4
-	bl ov13_0221C648
+	bl MBi_CommParentRecvData
 	b _0221C114
 _0221BF60:
-	bl ov13_0221CC0C
+	bl MBi_CommParentSendData
 	b _0221C114
 _0221BF68:
 	mov r8, #0
-	ldr r6, _0221C15C ; =ov13_0224CF4C
+	ldr r6, _0221C15C ; =mbc
 	ldr r4, _0221C160 ; =0x000005D4
 	mov r7, r8
 _0221BF78:
@@ -398,7 +398,7 @@ _0221BF78:
 	ldrh r2, [r2, #0x4e]
 	add r0, r0, sb
 	add r1, r1, #0x1340
-	bl ov13_0221DD44
+	bl MB_UpdateGameInfoMember
 	ldr r0, [r6]
 	add r0, r0, sb
 	add r0, r0, #0x1d00
@@ -408,15 +408,15 @@ _0221BFC8:
 	and r8, r0, #0xff
 	cmp r8, #0x10
 	blo _0221BF78
-	bl ov13_02220054
+	bl MBi_GetGgid
 	mov r6, r0
-	bl ov13_02220068
+	bl MBi_GetTgid
 	mov r4, r0
-	bl ov13_0222007C
+	bl MBi_GetAttribute
 	mov r2, r0
 	mov r0, r6
 	mov r1, r4
-	bl ov13_0221DE70
+	bl MB_SendGameInfoBeacon
 	b _0221C114
 _0221C000:
 	ldrh r0, [r4, #2]
@@ -443,12 +443,12 @@ _0221C010: ; jump table
 _0221C050:
 	mov r0, #0
 	mov r1, #9
-	bl ov13_0221CE34
+	bl MBi_CommCallParentError
 	b _0221C114
 _0221C060:
 	mov r0, #0
 	mov r1, #8
-	bl ov13_0221CE34
+	bl MBi_CommCallParentError
 	b _0221C114
 _0221C070:
 	ldrh r0, [r4]
@@ -489,23 +489,23 @@ _0221C080: ; jump table
 _0221C0F8:
 	mov r0, #0
 	mov r1, #9
-	bl ov13_0221CE34
+	bl MBi_CommCallParentError
 	b _0221C114
 _0221C108:
 	mov r0, #0
 	mov r1, #8
-	bl ov13_0221CE34
+	bl MBi_CommCallParentError
 _0221C114:
 	cmp r5, #0x11
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	ldr r1, _0221C15C ; =ov13_0224CF4C
+	ldr r1, _0221C15C ; =mbc
 	mov r0, #0
 	ldr r1, [r1]
 	mov r2, #0x7d00
 	add r3, r1, #0x1000
 	ldr r4, [r3, #0x4e4]
 	bl MIi_CpuClearFast
-	ldr r1, _0221C15C ; =ov13_0224CF4C
+	ldr r1, _0221C15C ; =mbc
 	mov r0, #0
 	str r0, [r1]
 	cmp r4, #0
@@ -515,12 +515,12 @@ _0221C114:
 	blx r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.balign 4, 0
-_0221C15C: .word ov13_0224CF4C
+_0221C15C: .word mbc
 _0221C160: .word 0x000005D4
-	arm_func_end ov13_0221BCC4
+	arm_func_end MBi_CommParentCallback
 
-	arm_func_start ov13_0221C164
-ov13_0221C164: ; 0x0221C164
+	arm_func_start MBi_CommParentRecvDataPerChild
+MBi_CommParentRecvDataPerChild: ; 0x0221C164
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x34
 	movs r6, r1
@@ -533,7 +533,7 @@ ov13_0221C164: ; 0x0221C164
 	mov r2, r6
 	add r0, r0, #0xa
 	bl ov13_022206EC
-	ldr r1, _0221C63C ; =ov13_0224CF4C
+	ldr r1, _0221C63C ; =mbc
 	ldrb r7, [sp, #0x20]
 	ldr r2, [r1]
 	sub r3, r6, #1
@@ -566,7 +566,7 @@ _0221C1F0:
 	add r1, sp, #0
 	mov r2, #0x1d
 	bl MI_CpuCopy8
-	ldr r2, _0221C63C ; =ov13_0224CF4C
+	ldr r2, _0221C63C ; =mbc
 	sub r0, r6, #1
 	ldr r1, [r2]
 	ldr r3, [sp]
@@ -584,7 +584,7 @@ _0221C1F0:
 	mla r1, r0, r2, r1
 	add r0, sp, #4
 	bl MI_CpuCopy8
-	ldr r0, _0221C63C ; =ov13_0224CF4C
+	ldr r0, _0221C63C ; =mbc
 	sub r2, r6, #1
 	ldr r3, [r0]
 	mov r0, #0x16
@@ -599,7 +599,7 @@ _0221C1F0:
 	strb r1, [r8, r7]
 	mov r0, r6
 	mov r1, #0xa
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 _0221C298:
 	cmp r4, #0xa
 	addne sp, sp, #0x34
@@ -608,7 +608,7 @@ _0221C298:
 	mov r0, #0
 	cmp lr, #0x10
 	bhs _0221C2F4
-	ldr r2, _0221C63C ; =ov13_0224CF4C
+	ldr r2, _0221C63C ; =mbc
 	ldr r1, _0221C640 ; =0x000005D4
 	ldr r3, [r2]
 	mla r4, lr, r1, r3
@@ -625,7 +625,7 @@ _0221C298:
 	cmp r3, r1
 	beq _0221C314
 _0221C2F4:
-	ldr r0, _0221C63C ; =ov13_0224CF4C
+	ldr r0, _0221C63C ; =mbc
 	sub r1, r6, #1
 	ldr r0, [r0]
 	mov r2, #4
@@ -648,7 +648,7 @@ _0221C324:
 _0221C33C:
 	cmp r5, #0x10
 	blo _0221C324
-	ldr r2, _0221C63C ; =ov13_0224CF4C
+	ldr r2, _0221C63C ; =mbc
 	ldr r1, _0221C640 ; =0x000005D4
 	ldr r2, [r2]
 	mla r1, lr, r1, r2
@@ -664,11 +664,11 @@ _0221C33C:
 	mov r0, r6
 	mov r1, #0xb
 	strh r2, [r3, #0x54]
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 	add sp, sp, #0x34
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _0221C390:
-	ldr r3, _0221C63C ; =ov13_0224CF4C
+	ldr r3, _0221C63C ; =mbc
 	sub ip, r6, #1
 	ldr r1, [r3]
 	add r0, r1, ip, lsl #1
@@ -721,7 +721,7 @@ _0221C3C0:
 	add r3, r3, ip, lsl #1
 	add r3, r3, #0x1700
 	strh r2, [r3, #0x54]
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 	add sp, sp, #0x34
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _0221C46C:
@@ -729,7 +729,7 @@ _0221C46C:
 	mov r0, r6
 	mov r1, #4
 	strh r2, [r4, #0x54]
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 	add sp, sp, #0x34
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _0221C488:
@@ -738,7 +738,7 @@ _0221C488:
 	mov r0, r6
 	mov r1, #0xe
 	mov r2, #0
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 	add sp, sp, #0x34
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _0221C4A8:
@@ -773,7 +773,7 @@ _0221C4A8:
 	add r3, r4, r3, lsl #1
 	add r3, r3, #0x1700
 	strh r2, [r3, #0x54]
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 	add sp, sp, #0x34
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _0221C530:
@@ -791,8 +791,8 @@ _0221C530:
 	mla r0, r4, r0, r2
 	add r0, r0, #0x1d00
 	ldrh r0, [r0, #0x4a]
-	bl ov13_0221CE08
-	ldr r2, _0221C63C ; =ov13_0224CF4C
+	bl MBi_calc_nextsendblock
+	ldr r2, _0221C63C ; =mbc
 	ldr r1, _0221C640 ; =0x000005D4
 	ldr r3, [r2]
 	ldr r2, _0221C644 ; =_02247480
@@ -826,7 +826,7 @@ _0221C5A0:
 	mov r1, #7
 	mov r2, #0
 	strh r3, [r5, r4]
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 	add sp, sp, #0x34
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _0221C5FC:
@@ -843,21 +843,21 @@ _0221C5FC:
 	mov r0, r6
 	mov r1, #8
 	strh r2, [r3, #0x54]
-	bl ov13_0221BC50
+	bl MBi_CommChangeParentState
 _0221C634:
 	add sp, sp, #0x34
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.balign 4, 0
-_0221C63C: .word ov13_0224CF4C
+_0221C63C: .word mbc
 _0221C640: .word 0x000005D4
 _0221C644: .word _02247480
-	arm_func_end ov13_0221C164
+	arm_func_end MBi_CommParentRecvDataPerChild
 
-	arm_func_start ov13_0221C648
-ov13_0221C648: ; 0x0221C648
+	arm_func_start MBi_CommParentRecvData
+MBi_CommParentRecvData: ; 0x0221C648
 	stmdb sp!, {r4, r5, r6, lr}
 	mov ip, #0
-	ldr r2, _0221C6E4 ; =ov13_0224CF4C
+	ldr r2, _0221C6E4 ; =mbc
 	ldr r1, _0221C6E8 ; =0x000005D4
 	mov r4, r0
 	mov r3, ip
@@ -889,7 +889,7 @@ _0221C6A4:
 	cmpne r1, #0
 	beq _0221C6CC
 	mov r1, r6
-	bl ov13_0221C164
+	bl MBi_CommParentRecvDataPerChild
 _0221C6CC:
 	add r0, r6, #1
 	mov r0, r0, lsl #0x10
@@ -898,35 +898,35 @@ _0221C6CC:
 	bls _0221C6A4
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
-_0221C6E4: .word ov13_0224CF4C
+_0221C6E4: .word mbc
 _0221C6E8: .word 0x000005D4
 _0221C6EC: .word _02247480
 _0221C6F0: .word 0x0000FFFF
-	arm_func_end ov13_0221C648
+	arm_func_end MBi_CommParentRecvData
 
-	arm_func_start ov13_0221C6F4
-ov13_0221C6F4: ; 0x0221C6F4
+	arm_func_start MBi_CommParentSendMsg
+MBi_CommParentSendMsg: ; 0x0221C6F4
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
-	ldr r2, _0221C730 ; =ov13_0224CF4C
+	ldr r2, _0221C730 ; =mbc
 	mov r4, r1
 	ldr r1, [r2]
 	strb r0, [sp]
 	add r0, sp, #0
-	bl ov13_02220668
-	ldr r0, _0221C730 ; =ov13_0224CF4C
+	bl MBi_MakeParentSendBuffer
+	ldr r0, _0221C730 ; =mbc
 	mov r1, r4
 	ldr r2, [r0]
 	mov r0, #6
-	bl ov13_0221DB30
+	bl MBi_BlockHeaderEnd
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
-_0221C730: .word ov13_0224CF4C
-	arm_func_end ov13_0221C6F4
+_0221C730: .word mbc
+	arm_func_end MBi_CommParentSendMsg
 
-	arm_func_start ov13_0221C734
-ov13_0221C734: ; 0x0221C734
+	arm_func_start MBi_CommParentSendDLFileInfo
+MBi_CommParentSendDLFileInfo: ; 0x0221C734
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x18
 	mov r5, #0
@@ -935,7 +935,7 @@ ov13_0221C734: ; 0x0221C734
 	mov r2, #0x10
 	mvn r4, #0
 	bl MI_CpuFill8
-	ldr r1, _0221C8C0 ; =ov13_0224CF4C
+	ldr r1, _0221C8C0 ; =mbc
 	mov r0, #1
 	ldr r1, [r1]
 	add ip, sp, #6
@@ -1014,10 +1014,10 @@ _0221C854:
 	add r0, sp, #0
 	strb r2, [sp]
 	strh r4, [sp, #2]
-	bl ov13_02220668
+	bl MBi_MakeParentSendBuffer
 	movs r1, r0
 	beq _0221C8A4
-	ldr r0, _0221C8C0 ; =ov13_0224CF4C
+	ldr r0, _0221C8C0 ; =mbc
 	ldr r3, _0221C8C8 ; =0x000005D4
 	ldr r0, [r0]
 	mov r2, #0xe4
@@ -1026,21 +1026,21 @@ _0221C854:
 	mla r0, r4, r3, r0
 	bl MI_CpuCopy8
 _0221C8A4:
-	ldr r0, _0221C8C0 ; =ov13_0224CF4C
+	ldr r0, _0221C8C0 ; =mbc
 	mov r1, r5
 	ldr r2, [r0]
 	mov r0, #0xea
-	bl ov13_0221DB30
+	bl MBi_BlockHeaderEnd
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
-_0221C8C0: .word ov13_0224CF4C
+_0221C8C0: .word mbc
 _0221C8C4: .word _02245980
 _0221C8C8: .word 0x000005D4
-	arm_func_end ov13_0221C734
+	arm_func_end MBi_CommParentSendDLFileInfo
 
-	arm_func_start ov13_0221C8CC
-ov13_0221C8CC: ; 0x0221C8CC
+	arm_func_start MBi_ReloadCache
+MBi_ReloadCache: ; 0x0221C8CC
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x4c
 	ldr r5, [r0, #0x14]
@@ -1083,13 +1083,13 @@ _0221C948:
 	str r0, [r4, #0xc]
 	add sp, sp, #0x4c
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end ov13_0221C8CC
+	arm_func_end MBi_ReloadCache
 
-	arm_func_start ov13_0221C970
-ov13_0221C970: ; 0x0221C970
+	arm_func_start MBi_CommParentSendBlock
+MBi_CommParentSendBlock: ; 0x0221C970
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x18
-	ldr r5, _0221CC00 ; =ov13_0224CF4C
+	ldr r5, _0221CC00 ; =mbc
 	ldr r0, [r5]
 	add r0, r0, #0x1000
 	ldrb r0, [r0, #0x524]
@@ -1128,8 +1128,8 @@ _0221C9FC:
 	addeq sp, sp, #0x18
 	moveq r0, #0x15
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov13_0221CD8C
-	ldr r0, _0221CC00 ; =ov13_0224CF4C
+	bl MBi_calc_sendblock
+	ldr r0, _0221CC00 ; =mbc
 	ldr r2, _0221CC04 ; =0x000005D4
 	ldr r6, [r0]
 	add r0, sp, #8
@@ -1145,12 +1145,12 @@ _0221C9FC:
 	ldrh r2, [r2, #0x48]
 	add r1, r1, r5
 	add r3, r3, r5
-	bl ov13_0221D904
+	bl MBi_get_blockinfo
 	cmp r0, #0
 	addeq sp, sp, #0x18
 	moveq r0, #0x15
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	ldr r0, _0221CC00 ; =ov13_0224CF4C
+	ldr r0, _0221CC00 ; =mbc
 	mov r3, #4
 	ldr r1, [r0]
 	strb r3, [sp]
@@ -1164,8 +1164,8 @@ _0221C9FC:
 	add r2, r2, #0x1d00
 	ldrh r2, [r2, #0x48]
 	strh r2, [sp, #4]
-	bl ov13_02220668
-	ldr r1, _0221CC00 ; =ov13_0224CF4C
+	bl MBi_MakeParentSendBuffer
+	ldr r1, _0221CC00 ; =mbc
 	ldr r4, _0221CC04 ; =0x000005D4
 	ldr r5, [r1]
 	ldrb r1, [sp, #0x14]
@@ -1186,15 +1186,15 @@ _0221C9FC:
 	mov r2, r0
 	mov r0, r5
 	mov r1, r4
-	bl ov13_022201B0
+	bl MBi_ReadFromCache
 	cmp r0, #0
 	bne _0221CBCC
-	ldr r0, _0221CC00 ; =ov13_0224CF4C
+	ldr r0, _0221CC00 ; =mbc
 	ldr r0, [r0]
 	add r0, r0, #0xce0
 	add r6, r0, #0x7000
 	mov r0, r6
-	bl ov13_02220410
+	bl MBi_IsTaskBusy
 	cmp r0, #0
 	bne _0221CBC0
 	ldr r0, [r5]
@@ -1235,7 +1235,7 @@ _0221CB8C:
 	bic r0, r4, #0x1f
 	str r0, [r7]
 	str r7, [r6, #0x10]
-	ldr r1, _0221CC08 ; =ov13_0221C8CC
+	ldr r1, _0221CC08 ; =MBi_ReloadCache
 	mov r0, r6
 	mov r2, #0
 	mov r3, #4
@@ -1246,7 +1246,7 @@ _0221CBC0:
 	mov r0, #0x15
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0221CBCC:
-	ldr r0, _0221CC00 ; =ov13_0224CF4C
+	ldr r0, _0221CC00 ; =mbc
 	ldr r4, [sp, #0xc]
 	ldr r2, [r0]
 	ldr r1, _0221CC04 ; =0x000005D4
@@ -1256,17 +1256,17 @@ _0221CBCC:
 	mla r1, r3, r1, r2
 	add r1, r1, #0x1d00
 	ldrh r1, [r1, #0x4c]
-	bl ov13_0221DB30
+	bl MBi_BlockHeaderEnd
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0221CC00: .word ov13_0224CF4C
+_0221CC00: .word mbc
 _0221CC04: .word 0x000005D4
-_0221CC08: .word ov13_0221C8CC
-	arm_func_end ov13_0221C970
+_0221CC08: .word MBi_ReloadCache
+	arm_func_end MBi_CommParentSendBlock
 
-	arm_func_start ov13_0221CC0C
-ov13_0221CC0C: ; 0x0221CC0C
+	arm_func_start MBi_CommParentSendData
+MBi_CommParentSendData: ; 0x0221CC0C
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	add r1, sp, #0
@@ -1274,7 +1274,7 @@ ov13_0221CC0C: ; 0x0221CC0C
 	mov r2, #0xa
 	bl MIi_CpuClear16
 	mov r3, #1
-	ldr r0, _0221CD84 ; =ov13_0224CF4C
+	ldr r0, _0221CD84 ; =mbc
 	mov r4, r3
 	ldr ip, [r0]
 	mov r5, r3
@@ -1335,59 +1335,59 @@ _0221CCD8:
 	cmp r1, #0
 	beq _0221CD04
 	mov r0, #5
-	bl ov13_0221C6F4
+	bl MBi_CommParentSendMsg
 	b _0221CD64
 _0221CD04:
 	ldrh r1, [sp]
 	cmp r1, #0
 	beq _0221CD1C
 	mov r0, #1
-	bl ov13_0221C6F4
+	bl MBi_CommParentSendMsg
 	b _0221CD64
 _0221CD1C:
 	ldrh r1, [sp, #8]
 	cmp r1, #0
 	beq _0221CD34
 	mov r0, #6
-	bl ov13_0221C6F4
+	bl MBi_CommParentSendMsg
 	b _0221CD64
 _0221CD34:
 	ldrh r1, [sp, #4]
 	cmp r1, #0
 	beq _0221CD4C
 	mov r0, #2
-	bl ov13_0221C6F4
+	bl MBi_CommParentSendMsg
 	b _0221CD64
 _0221CD4C:
 	ldrh r0, [sp, #2]
 	cmp r0, #0
 	beq _0221CD60
-	bl ov13_0221C734
+	bl MBi_CommParentSendDLFileInfo
 	b _0221CD64
 _0221CD60:
-	bl ov13_0221C970
+	bl MBi_CommParentSendBlock
 _0221CD64:
 	cmp r0, #0x15
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, pc}
 	ldr r1, _0221CD88 ; =0x0000FFFF
 	mov r0, #0
-	bl ov13_0221C6F4
+	bl MBi_CommParentSendMsg
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, pc}
 	.balign 4, 0
-_0221CD84: .word ov13_0224CF4C
+_0221CD84: .word mbc
 _0221CD88: .word 0x0000FFFF
-	arm_func_end ov13_0221CC0C
+	arm_func_end MBi_CommParentSendData
 
-	arm_func_start ov13_0221CD8C
-ov13_0221CD8C: ; 0x0221CD8C
+	arm_func_start MBi_calc_sendblock
+MBi_calc_sendblock: ; 0x0221CD8C
 	ldr r1, _0221CDFC ; =_02247480
 	mov r2, #1
 	ldr r1, [r1]
 	tst r1, r2, lsl r0
 	bxeq lr
-	ldr r2, _0221CE00 ; =ov13_0224CF4C
+	ldr r2, _0221CE00 ; =mbc
 	ldr r1, _0221CE04 ; =0x000005D4
 	ldr r2, [r2]
 	mla ip, r0, r1, r2
@@ -1413,20 +1413,20 @@ _0221CDF0:
 	bx lr
 	.balign 4, 0
 _0221CDFC: .word _02247480
-_0221CE00: .word ov13_0224CF4C
+_0221CE00: .word mbc
 _0221CE04: .word 0x000005D4
-	arm_func_end ov13_0221CD8C
+	arm_func_end MBi_calc_sendblock
 
-	arm_func_start ov13_0221CE08
-ov13_0221CE08: ; 0x0221CE08
+	arm_func_start MBi_calc_nextsendblock
+MBi_calc_nextsendblock: ; 0x0221CE08
 	cmp r1, r0
 	movls r1, r0
 	mov r0, r1
 	bx lr
-	arm_func_end ov13_0221CE08
+	arm_func_end MBi_calc_nextsendblock
 
-	arm_func_start ov13_0221CE18
-ov13_0221CE18: ; 0x0221CE18
+	arm_func_start IsChildAidValid
+IsChildAidValid: ; 0x0221CE18
 	cmp r0, #1
 	blo _0221CE2C
 	cmp r0, #0xf
@@ -1435,20 +1435,20 @@ ov13_0221CE18: ; 0x0221CE18
 _0221CE2C:
 	mov r0, #0
 	bx lr
-	arm_func_end ov13_0221CE18
+	arm_func_end IsChildAidValid
 
-	arm_func_start ov13_0221CE34
-ov13_0221CE34: ; 0x0221CE34
+	arm_func_start MBi_CommCallParentError
+MBi_CommCallParentError: ; 0x0221CE34
 	stmdb sp!, {r3, lr}
 	strh r1, [sp]
 	add r2, sp, #0
 	mov r1, #0xd
-	bl ov13_0221BC9C
+	bl MBi_CommChangeParentStateCallbackOnly
 	ldmia sp!, {r3, pc}
-	arm_func_end ov13_0221CE34
+	arm_func_end MBi_CommCallParentError
 
-	arm_func_start ov13_0221CE4C
-ov13_0221CE4C: ; 0x0221CE4C
+	arm_func_start MB_GetSegmentLength
+MB_GetSegmentLength: ; 0x0221CE4C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x60
 	mov r4, #0
@@ -1485,10 +1485,10 @@ _0221CEBC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0221CEC8: .word 0x027FFE00
-	arm_func_end ov13_0221CE4C
+	arm_func_end MB_GetSegmentLength
 
-	arm_func_start ov13_0221CECC
-ov13_0221CECC: ; 0x0221CECC
+	arm_func_start MB_ReadSegment
+MB_ReadSegment: ; 0x0221CECC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x6c
 	str r2, [sp, #4]
@@ -1580,7 +1580,7 @@ _0221CFF8:
 	mov r3, sb
 	add r5, r5, #0x70
 	sub r4, r4, #0x70
-	bl ov13_02220148
+	bl MBi_AttachCacheBuffer
 	ldr r8, [sl, #8]
 	mov r7, #0
 	b _0221D040
@@ -1645,7 +1645,7 @@ _0221D0C4:
 	ldr r2, [sb, #0x2c]
 	mov r0, r6
 	mov r3, r5
-	bl ov13_02220148
+	bl MBi_AttachCacheBuffer
 	ldr r1, [fp, #8]
 	ldr r4, [sb, #0x2c]
 	mov r0, sl
@@ -1662,7 +1662,7 @@ _0221D0C4:
 	ldr r2, [sb, #0x3c]
 	add r3, r5, r4
 	mov r0, r6
-	bl ov13_02220148
+	bl MBi_AttachCacheBuffer
 	mov r0, #1
 	str r0, [sp, #0x10]
 	b _0221D240
@@ -1685,7 +1685,7 @@ _0221D16C:
 	mov r1, r4
 	mov r2, #0x4400
 	mov r3, r5
-	bl ov13_02220148
+	bl MBi_AttachCacheBuffer
 	add r1, r4, #0x4400
 	mov r0, sl
 	sub r1, r1, r7
@@ -1701,7 +1701,7 @@ _0221D16C:
 	add r1, r4, #0x4400
 	mov r2, #0x4400
 	add r3, r5, #0x4400
-	bl ov13_02220148
+	bl MBi_AttachCacheBuffer
 	add r1, r4, #0x8800
 	mov r0, sl
 	sub r1, r1, r7
@@ -1717,7 +1717,7 @@ _0221D16C:
 	add r3, r5, #0x8800
 	mov r0, r6
 	mov r2, #0x4400
-	bl ov13_02220148
+	bl MBi_AttachCacheBuffer
 	mov r0, #1
 	str r0, [sp, #0x10]
 _0221D240:
@@ -1734,7 +1734,7 @@ _0221D240:
 	cmp r0, #0
 	beq _0221D30C
 	ldr r1, [sb, #0x20]
-	ldr r0, _0221D338 ; =ov13_02245984
+	ldr r0, _0221D338 ; =mbi_seg_header
 	str r1, [sp, #0x14]
 	ldr r2, [sb, #0x28]
 	ldr r1, [sb, #0x20]
@@ -1751,7 +1751,7 @@ _0221D240:
 	str r1, [sp, #0x20]
 	mov r1, #0x4000
 	mov r3, #1
-	bl ov13_0221D344
+	bl MBi_ReadSegmentHeader
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _0221D2F4
@@ -1762,7 +1762,7 @@ _0221D2D0:
 	mov r0, r7
 	mov r3, r5
 	add r2, r1, r2
-	bl ov13_0221D344
+	bl MBi_ReadSegmentHeader
 	add r4, r4, #8
 	ldr r0, [r4, #4]
 	cmp r0, #0
@@ -1788,13 +1788,13 @@ _0221D324:
 	.balign 4, 0
 _0221D330: .word 0x027FFE00
 _0221D334: .word ov13_02245988
-_0221D338: .word ov13_02245984
+_0221D338: .word mbi_seg_header
 _0221D33C: .word _start_AutoloadDoneCallback
 _0221D340: .word 0xE12FFF1E
-	arm_func_end ov13_0221CECC
+	arm_func_end MB_ReadSegment
 
-	arm_func_start ov13_0221D344
-ov13_0221D344: ; 0x0221D344
+	arm_func_start MBi_ReadSegmentHeader
+MBi_ReadSegmentHeader: ; 0x0221D344
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	ldr ip, [r0]
@@ -1826,17 +1826,17 @@ _0221D3A0:
 	sub r2, r2, lr
 	bl MI_CpuCopy8
 	ldmia sp!, {r3, pc}
-	arm_func_end ov13_0221D344
+	arm_func_end MBi_ReadSegmentHeader
 
-	arm_func_start ov13_0221D3BC
-ov13_0221D3BC: ; 0x0221D3BC
+	arm_func_start MB_RegisterFile
+MB_RegisterFile: ; 0x0221D3BC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r0
 	mov r7, r1
 	mov r4, #0xff
 	bl OS_DisableInterrupts
 	mov r5, r0
-	bl ov13_022200DC
+	bl MBi_IsStarted
 	cmp r0, #0
 	bne _0221D3F0
 	mov r0, r5
@@ -1844,7 +1844,7 @@ ov13_0221D3BC: ; 0x0221D3BC
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _0221D3F0:
-	ldr r0, _0221D640 ; =ov13_0224CF4C
+	ldr r0, _0221D640 ; =mbc
 	ldr r0, [r0]
 	add r1, r0, #0x1000
 	ldrb r1, [r1, #0x524]
@@ -1886,7 +1886,7 @@ _0221D468:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _0221D480:
 	ldr r1, _0221D644 ; =0x000005D4
-	ldr r2, _0221D640 ; =ov13_0224CF4C
+	ldr r2, _0221D640 ; =mbc
 	mul r6, r4, r1
 	add r0, r0, r6
 	add r0, r0, #0x1000
@@ -1897,18 +1897,18 @@ _0221D480:
 	add r0, r0, #0x1400
 	add sb, r0, r6
 	mov r0, sb
-	bl ov13_0221D64C
+	bl MBi_MakeDownloadFileInfo
 	add r0, r8, #0x1c
 	add r1, sb, #0xc4
 	mov r2, #0x20
 	bl MI_CpuCopy8
-	ldr r0, _0221D640 ; =ov13_0224CF4C
+	ldr r0, _0221D640 ; =mbc
 	mov r1, sb
 	ldr r0, [r0]
 	add r0, r0, #0x12c
 	add r0, r0, #0x1c00
 	add r0, r0, r6
-	bl ov13_0221D838
+	bl MBi_MakeBlockInfoTable
 	cmp r0, #0
 	bne _0221D4F8
 	mov r0, r5
@@ -1916,15 +1916,15 @@ _0221D480:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _0221D4F8:
-	ldr r0, _0221D640 ; =ov13_0224CF4C
+	ldr r0, _0221D640 ; =mbc
 	mov r1, r8
 	ldr r2, [r0]
 	add r0, r2, #0x6c
 	add r0, r0, #0x1800
 	add r0, r0, r6
 	add r2, r2, #0x1300
-	bl ov13_0221DBB4
-	ldr r1, _0221D640 ; =ov13_0224CF4C
+	bl MBi_MakeGameInfo
+	ldr r1, _0221D640 ; =mbc
 	ldr r0, [r1]
 	add r0, r0, r6
 	add r0, r0, #0x1000
@@ -1933,8 +1933,8 @@ _0221D4F8:
 	add r0, r0, #0x6c
 	add r0, r0, #0x1800
 	add r0, r0, r6
-	bl ov13_0221DDDC
-	ldr r2, _0221D640 ; =ov13_0224CF4C
+	bl MB_AddGameInfo
+	ldr r2, _0221D640 ; =mbc
 	ldr r3, _0221D648 ; =ov13_02247484
 	ldr r1, [r2]
 	ldrb r0, [r3]
@@ -1969,22 +1969,22 @@ _0221D4F8:
 	ldr r0, [r0, #0x6c]
 	cmp r0, #0
 	beq _0221D604
-	bl ov13_022203E0
+	bl MBi_IsTaskAvailable
 	cmp r0, #0
 	bne _0221D604
-	ldr r0, _0221D640 ; =ov13_0224CF4C
+	ldr r0, _0221D640 ; =mbc
 	ldr r0, [r0]
 	add r0, r0, #0xce0
 	add r0, r0, #0x7000
-	bl ov13_022203FC
-	ldr r0, _0221D640 ; =ov13_0224CF4C
+	bl MBi_InitTaskInfo
+	ldr r0, _0221D640 ; =mbc
 	mov r1, #0x800
 	ldr r0, [r0]
 	add r0, r0, #0x4e0
 	add r0, r0, #0x7000
-	bl ov13_02220360
+	bl MBi_InitTaskThread
 _0221D604:
-	ldr r2, _0221D640 ; =ov13_0224CF4C
+	ldr r2, _0221D640 ; =mbc
 	mov r3, #1
 	ldr r1, [r2]
 	mov r0, r5
@@ -2000,20 +2000,20 @@ _0221D604:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.balign 4, 0
-_0221D640: .word ov13_0224CF4C
+_0221D640: .word mbc
 _0221D644: .word 0x000005D4
 _0221D648: .word ov13_02247484
-	arm_func_end ov13_0221D3BC
+	arm_func_end MB_RegisterFile
 
-	arm_func_start ov13_0221D64C
-ov13_0221D64C: ; 0x0221D64C
+	arm_func_start MBi_MakeDownloadFileInfo
+MBi_MakeDownloadFileInfo: ; 0x0221D64C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r2, #0x22c0000
 	mov r4, r1
 	mov r5, r0
 	str r2, [sp]
 	ldr r0, [r4, #0x24]
-	ldr r7, _0221D6BC ; =_02242658
+	ldr r7, _0221D6BC ; =MBi_defaultLoadSegList
 	str r0, [r5]
 	ldr r0, [r4, #0x34]
 	add r8, r5, #0xc
@@ -2025,7 +2025,7 @@ _0221D680:
 	mov r1, r7
 	mov r2, r8
 	mov r3, r6
-	bl ov13_0221D6C0
+	bl MBi_SetSegmentInfo
 	add sb, sb, #1
 	cmp sb, #3
 	add r8, r8, #0x10
@@ -2037,11 +2037,11 @@ _0221D680:
 	bl MI_CpuCopy8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.balign 4, 0
-_0221D6BC: .word _02242658
-	arm_func_end ov13_0221D64C
+_0221D6BC: .word MBi_defaultLoadSegList
+	arm_func_end MBi_MakeDownloadFileInfo
 
-	arm_func_start ov13_0221D6C0
-ov13_0221D6C0: ; 0x0221D6C0
+	arm_func_start MBi_SetSegmentInfo
+MBi_SetSegmentInfo: ; 0x0221D6C0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r1, [r1]
 	mov r7, r0
@@ -2147,10 +2147,10 @@ _0221D80C:
 _0221D82C: .word 0x023FE800
 _0221D830: .word 0x037F8000
 _0221D834: .word 0x027FFE00
-	arm_func_end ov13_0221D6C0
+	arm_func_end MBi_SetSegmentInfo
 
-	arm_func_start ov13_0221D838
-ov13_0221D838: ; 0x0221D838
+	arm_func_start MBi_MakeBlockInfoTable
+MBi_MakeBlockInfoTable: ; 0x0221D838
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov sl, r0
 	add r6, sl, #0xc
@@ -2168,7 +2168,7 @@ _0221D854:
 	add r0, r0, r3
 	blo _0221D854
 	mov sb, #0
-	ldr r4, _0221D900 ; =ov13_0224CF4C
+	ldr r4, _0221D900 ; =mbc
 	strh sb, [r6]
 	add r5, r1, #0xc
 _0221D884:
@@ -2189,7 +2189,7 @@ _0221D884:
 	mov r0, sb
 	mov r2, r8
 	mov r7, r3, lsr #0x10
-	bl ov13_0221DA64
+	bl IsAbleToLoad
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -2204,11 +2204,11 @@ _0221D884:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.balign 4, 0
-_0221D900: .word ov13_0224CF4C
-	arm_func_end ov13_0221D838
+_0221D900: .word mbc
+	arm_func_end MBi_MakeBlockInfoTable
 
-	arm_func_start ov13_0221D904
-ov13_0221D904: ; 0x0221D904
+	arm_func_start MBi_get_blockinfo
+MBi_get_blockinfo: ; 0x0221D904
 	stmdb sp!, {r3, r4, r5, lr}
 	ldrh r4, [r1, #0x12]
 	cmp r2, r4
@@ -2228,7 +2228,7 @@ _0221D93C:
 	cmp ip, #0
 	movlt r0, #0
 	ldmltia sp!, {r3, r4, r5, pc}
-	ldr r4, _0221D9B4 ; =ov13_0224CF4C
+	ldr r4, _0221D9B4 ; =mbc
 	add r5, r1, ip, lsl #1
 	ldr lr, [r4]
 	ldrh r5, [r5, #0xc]
@@ -2256,12 +2256,12 @@ _0221D93C:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
-_0221D9B4: .word ov13_0224CF4C
-	arm_func_end ov13_0221D904
+_0221D9B4: .word mbc
+	arm_func_end MBi_get_blockinfo
 
-	arm_func_start ov13_0221D9B8
-ov13_0221D9B8: ; 0x0221D9B8
-	ldr r3, _0221DA5C ; =_02242658
+	arm_func_start MBi_IsAbleToRecv
+MBi_IsAbleToRecv: ; 0x0221D9B8
+	ldr r3, _0221DA5C ; =MBi_defaultLoadSegList
 	ldr r0, [r3, r0, lsl #2]
 	cmp r0, #0
 	beq _0221D9FC
@@ -2308,14 +2308,14 @@ _0221DA54:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_0221DA5C: .word _02242658
+_0221DA5C: .word MBi_defaultLoadSegList
 _0221DA60: .word 0x027FFE00
-	arm_func_end ov13_0221D9B8
+	arm_func_end MBi_IsAbleToRecv
 
-	arm_func_start ov13_0221DA64
-ov13_0221DA64: ; 0x0221DA64
+	arm_func_start IsAbleToLoad
+IsAbleToLoad: ; 0x0221DA64
 	stmdb sp!, {r3, lr}
-	ldr r3, _0221DB24 ; =_02242658
+	ldr r3, _0221DB24 ; =MBi_defaultLoadSegList
 	ldr r3, [r3, r0, lsl #2]
 	cmp r3, #0
 	beq _0221DA88
@@ -2324,7 +2324,7 @@ ov13_0221DA64: ; 0x0221DA64
 	cmp r3, #2
 	bne _0221DB14
 _0221DA88:
-	bl ov13_0221D9B8
+	bl MBi_IsAbleToRecv
 	ldmia sp!, {r3, pc}
 _0221DA90:
 	cmp r1, #0x2000000
@@ -2370,13 +2370,13 @@ _0221DB1C:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
-_0221DB24: .word _02242658
+_0221DB24: .word MBi_defaultLoadSegList
 _0221DB28: .word 0x023FE800
 _0221DB2C: .word 0x037F8000
-	arm_func_end ov13_0221DA64
+	arm_func_end IsAbleToLoad
 
-	arm_func_start ov13_0221DB30
-ov13_0221DB30: ; 0x0221DB30
+	arm_func_start MBi_BlockHeaderEnd
+MBi_BlockHeaderEnd: ; 0x0221DB30
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r4, r2
@@ -2389,12 +2389,12 @@ ov13_0221DB30: ; 0x0221DB30
 	mov r0, r4
 	mov r1, r6
 	mov r2, r5
-	bl ov13_0221FF74
+	bl MBi_SendMP
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov13_0221DB30
+	arm_func_end MBi_BlockHeaderEnd
 
-	arm_func_start ov13_0221DB68
-ov13_0221DB68: ; 0x0221DB68
+	arm_func_start MBi_calc_cksum
+MBi_calc_cksum: ; 0x0221DB68
 	mov r3, r1, asr #1
 	cmp r3, #0
 	mov r2, #0
@@ -2417,10 +2417,10 @@ _0221DB8C:
 	bx lr
 	.balign 4, 0
 _0221DBB0: .word 0x0000FFFF
-	arm_func_end ov13_0221DB68
+	arm_func_end MBi_calc_cksum
 
-	arm_func_start ov13_0221DBB4
-ov13_0221DBB4: ; 0x0221DBB4
+	arm_func_start MBi_MakeGameInfo
+MBi_MakeGameInfo: ; 0x0221DBB4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r5, r1
@@ -2434,14 +2434,14 @@ ov13_0221DBB4: ; 0x0221DBB4
 	ldr r0, [r5, #0xc]
 	mov r1, r6
 	mov r2, #1
-	bl ov13_0221DCA4
+	bl MBi_ReadIconInfo
 	cmp r0, #0
 	moveq r7, #1
 	ldr r0, [r5, #0x10]
 	mov r1, r6
 	mov r2, #0
 	movne r7, #0
-	bl ov13_0221DCA4
+	bl MBi_ReadIconInfo
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -2466,7 +2466,7 @@ _0221DC54:
 	ldrb r0, [r5, #0x18]
 	strb r0, [r6, #0x236]
 	ldr r0, [r5, #4]
-	bl ov13_0221DDB4
+	bl mystrlen
 	mov r2, r0, lsl #0x11
 	ldr r0, [r5, #4]
 	add r1, r6, #0x238
@@ -2483,10 +2483,10 @@ _0221DC54:
 	add r0, r6, #0x400
 	strh r1, [r0, #0xb0]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov13_0221DBB4
+	arm_func_end MBi_MakeGameInfo
 
-	arm_func_start ov13_0221DCA4
-ov13_0221DCA4: ; 0x0221DCA4
+	arm_func_start MBi_ReadIconInfo
+MBi_ReadIconInfo: ; 0x0221DCA4
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x48
 	cmp r2, #0
@@ -2528,10 +2528,10 @@ _0221DD24:
 	mov r0, #1
 	add sp, sp, #0x48
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov13_0221DCA4
+	arm_func_end MBi_ReadIconInfo
 
-	arm_func_start ov13_0221DD44
-ov13_0221DD44: ; 0x0221DD44
+	arm_func_start MB_UpdateGameInfoMember
+MB_UpdateGameInfoMember: ; 0x0221DD44
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r5, r2
@@ -2562,10 +2562,10 @@ _0221DD74:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0221DDB0: .word 0x0000014A
-	arm_func_end ov13_0221DD44
+	arm_func_end MB_UpdateGameInfoMember
 
-	arm_func_start ov13_0221DDB4
-ov13_0221DDB4: ; 0x0221DDB4
+	arm_func_start mystrlen
+mystrlen: ; 0x0221DDB4
 	ldrh r1, [r0], #2
 	mov r2, #0
 	cmp r1, #0
@@ -2578,10 +2578,10 @@ _0221DDC4:
 _0221DDD4:
 	mov r0, r2
 	bx lr
-	arm_func_end ov13_0221DDB4
+	arm_func_end mystrlen
 
-	arm_func_start ov13_0221DDDC
-ov13_0221DDDC: ; 0x0221DDDC
+	arm_func_start MB_AddGameInfo
+MB_AddGameInfo: ; 0x0221DDDC
 	ldr r1, _0221DE1C ; =ov13_022474A0
 	ldr r2, [r1, #0x18]
 	cmp r2, #0
@@ -2603,26 +2603,26 @@ _0221DE10:
 	bx lr
 	.balign 4, 0
 _0221DE1C: .word ov13_022474A0
-	arm_func_end ov13_0221DDDC
+	arm_func_end MB_AddGameInfo
 
-	arm_func_start ov13_0221DE20
-ov13_0221DE20: ; 0x0221DE20
+	arm_func_start MB_InitSendGameInfoStatus
+MB_InitSendGameInfoStatus: ; 0x0221DE20
 	ldr r0, _0221DE44 ; =ov13_022474A0
 	mov r2, #0
 	str r2, [r0, #0x18]
 	str r2, [r0, #0x1c]
 	mov r1, #1
 	strb r1, [r0, #0x24]
-	ldr ip, _0221DE48 ; =ov13_0221DE4C
+	ldr ip, _0221DE48 ; =MBi_ClearSendStatus
 	str r2, [r0, #0x14]
 	bx ip
 	.balign 4, 0
 _0221DE44: .word ov13_022474A0
-_0221DE48: .word ov13_0221DE4C
-	arm_func_end ov13_0221DE20
+_0221DE48: .word MBi_ClearSendStatus
+	arm_func_end MB_InitSendGameInfoStatus
 
-	arm_func_start ov13_0221DE4C
-ov13_0221DE4C: ; 0x0221DE4C
+	arm_func_start MBi_ClearSendStatus
+MBi_ClearSendStatus: ; 0x0221DE4C
 	ldr r0, _0221DE6C ; =ov13_022474A0
 	mov r1, #0
 	strb r1, [r0, #0x25]
@@ -2633,10 +2633,10 @@ ov13_0221DE4C: ; 0x0221DE4C
 	bx lr
 	.balign 4, 0
 _0221DE6C: .word ov13_022474A0
-	arm_func_end ov13_0221DE4C
+	arm_func_end MBi_ClearSendStatus
 
-	arm_func_start ov13_0221DE70
-ov13_0221DE70: ; 0x0221DE70
+	arm_func_start MB_SendGameInfoBeacon
+MB_SendGameInfoBeacon: ; 0x0221DE70
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r4, _0221DEF8 ; =ov13_022474A0
 	mov r7, r0
@@ -2656,46 +2656,46 @@ _0221DE94: ; jump table
 	b _0221DEE4 ; case 5
 	b _0221DE84 ; case 6
 _0221DEB0:
-	bl ov13_0221DEFC
+	bl MBi_ReadyBeaconSendStatus
 	cmp r0, #0
 	bne _0221DE84
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0221DEC0:
-	bl ov13_0221DF9C
+	bl MBi_InitSendFixedBeacon
 	b _0221DE84
 _0221DEC8:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov13_0221DFF0
+	bl MBi_SendFixedBeacon
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0221DEDC:
-	bl ov13_0221E154
+	bl MBi_InitSendVolatBeacon
 	b _0221DE84
 _0221DEE4:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov13_0221E184
+	bl MBi_SendVolatBeacon
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0221DEF8: .word ov13_022474A0
-	arm_func_end ov13_0221DE70
+	arm_func_end MB_SendGameInfoBeacon
 
-	arm_func_start ov13_0221DEFC
-ov13_0221DEFC: ; 0x0221DEFC
+	arm_func_start MBi_ReadyBeaconSendStatus
+MBi_ReadyBeaconSendStatus: ; 0x0221DEFC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r0, _0221DF94 ; =ov13_022474A0
 	ldr r1, [r0, #0x18]
 	cmp r1, #0
 	bne _0221DF4C
-	bl ov13_02220054
+	bl MBi_GetGgid
 	mov r4, r0
-	bl ov13_02220068
+	bl MBi_GetTgid
 	str r0, [sp]
 	mov ip, #8
-	ldr r1, _0221DF98 ; =ov13_022474E0
+	ldr r1, _0221DF98 ; =bsendBuff
 	mov r3, r4
 	mov r0, #0
 	mov r2, #0x70
@@ -2713,7 +2713,7 @@ _0221DF4C:
 	ldreq r1, [r0, #0x18]
 	ldr r0, _0221DF94 ; =ov13_022474A0
 	str r1, [r0, #0x1c]
-	bl ov13_0221DE4C
+	bl MBi_ClearSendStatus
 	ldr r1, _0221DF94 ; =ov13_022474A0
 	mov r2, #2
 	ldr r3, [r1, #0x1c]
@@ -2725,11 +2725,11 @@ _0221DF4C:
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _0221DF94: .word ov13_022474A0
-_0221DF98: .word ov13_022474E0
-	arm_func_end ov13_0221DEFC
+_0221DF98: .word bsendBuff
+	arm_func_end MBi_ReadyBeaconSendStatus
 
-	arm_func_start ov13_0221DF9C
-ov13_0221DF9C: ; 0x0221DF9C
+	arm_func_start MBi_InitSendFixedBeacon
+MBi_InitSendFixedBeacon: ; 0x0221DF9C
 	ldr r0, _0221DFEC ; =ov13_022474A0
 	ldrb r1, [r0, #0x24]
 	cmp r1, #2
@@ -2754,10 +2754,10 @@ _0221DFDC:
 	bx lr
 	.balign 4, 0
 _0221DFEC: .word ov13_022474A0
-	arm_func_end ov13_0221DF9C
+	arm_func_end MBi_InitSendFixedBeacon
 
-	arm_func_start ov13_0221DFF0
-ov13_0221DFF0: ; 0x0221DFF0
+	arm_func_start MBi_SendFixedBeacon
+MBi_SendFixedBeacon: ; 0x0221DFF0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r3, _0221E144 ; =ov13_022474A0
@@ -2774,7 +2774,7 @@ ov13_0221DFF0: ; 0x0221DFF0
 	bls _0221E048
 	sub r7, ip, r0
 	and r1, r7, #0xff
-	ldr r0, _0221E148 ; =ov13_022474EE
+	ldr r0, _0221E148 ; =bsendBuff + 0xE
 	rsb r2, r1, #0x62
 	add r1, r0, r1
 	mov r0, #0
@@ -2782,12 +2782,12 @@ ov13_0221DFF0: ; 0x0221DFF0
 	bl MIi_CpuClear16
 _0221E048:
 	ldr r0, _0221E144 ; =ov13_022474A0
-	ldr r1, _0221E148 ; =ov13_022474EE
+	ldr r1, _0221E148 ; =bsendBuff + 0xE
 	ldrb r2, [r0, #0x4c]
 	ldr r0, [r0, #0x20]
 	bl MIi_CpuCopy16
 	ldr r2, _0221E144 ; =ov13_022474A0
-	ldr r0, _0221E14C ; =ov13_022474E8
+	ldr r0, _0221E14C ; =bsendBuff + 0x8
 	ldrb r7, [r2, #0x27]
 	mov r3, #0
 	mov r1, #0x68
@@ -2818,7 +2818,7 @@ _0221E048:
 	strb ip, [r2, #0x29]
 	strb lr, [r2, #0x47]
 	strh r3, [r2, #0x48]
-	bl ov13_0221DB68
+	bl MBi_calc_cksum
 	ldr r1, _0221E144 ; =ov13_022474A0
 	strh r0, [r1, #0x48]
 	ldrb r0, [r1, #0x27]
@@ -2835,7 +2835,7 @@ _0221E048:
 	str r0, [r1, #0x20]
 _0221E118:
 	orr r0, r4, #3
-	ldr r1, _0221E150 ; =ov13_022474E0
+	ldr r1, _0221E150 ; =bsendBuff
 	mov r3, r6
 	str r5, [sp]
 	and r4, r0, #0xff
@@ -2847,13 +2847,13 @@ _0221E118:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0221E144: .word ov13_022474A0
-_0221E148: .word ov13_022474EE
-_0221E14C: .word ov13_022474E8
-_0221E150: .word ov13_022474E0
-	arm_func_end ov13_0221DFF0
+_0221E148: .word bsendBuff + 0xE
+_0221E14C: .word bsendBuff + 0x8
+_0221E150: .word bsendBuff
+	arm_func_end MBi_SendFixedBeacon
 
-	arm_func_start ov13_0221E154
-ov13_0221E154: ; 0x0221E154
+	arm_func_start MBi_InitSendVolatBeacon
+MBi_InitSendVolatBeacon: ; 0x0221E154
 	ldr r1, _0221E180 ; =ov13_022474A0
 	mov r3, #1
 	ldr r0, [r1, #0x1c]
@@ -2867,10 +2867,10 @@ ov13_0221E154: ; 0x0221E154
 	bx lr
 	.balign 4, 0
 _0221E180: .word ov13_022474A0
-	arm_func_end ov13_0221E154
+	arm_func_end MBi_InitSendVolatBeacon
 
-	arm_func_start ov13_0221E184
-ov13_0221E184: ; 0x0221E184
+	arm_func_start MBi_SendVolatBeacon
+MBi_SendVolatBeacon: ; 0x0221E184
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	ldr r3, _0221E3DC ; =ov13_022474A0
@@ -2882,7 +2882,7 @@ ov13_0221E184: ; 0x0221E184
 	str r2, [sp, #0x10]
 	cmp r3, r0
 	beq _0221E1B4
-	bl ov13_0221E154
+	bl MBi_InitSendVolatBeacon
 _0221E1B4:
 	ldr r2, _0221E3DC ; =ov13_022474A0
 	ldrb r0, [r2, #0x44]
@@ -2924,7 +2924,7 @@ _0221E1B4:
 _0221E248:
 	ldr r0, _0221E3DC ; =ov13_022474A0
 	mov sb, #0
-	ldr r1, _0221E3E0 ; =ov13_02247548
+	ldr r1, _0221E3E0 ; =bsendBuff + 0x68
 	ldr r2, [r0, #0x1c]
 	b _0221E26C
 _0221E25C:
@@ -2935,7 +2935,7 @@ _0221E25C:
 _0221E26C:
 	cmp sb, #8
 	blt _0221E25C
-	ldr r1, _0221E3E4 ; =ov13_022474F0
+	ldr r1, _0221E3E4 ; =bsendBuff + 0x10
 	mov r0, #0
 	mov r2, #0x58
 	bl MIi_CpuClear16
@@ -2948,7 +2948,7 @@ _0221E26C:
 	ldrh r2, [r0, #0xb0]
 	ldrh r0, [r1, #0x5a]
 	mov sb, sl
-	ldr r7, _0221E3E4 ; =ov13_022474F0
+	ldr r7, _0221E3E4 ; =bsendBuff + 0x10
 	eor r0, r2, r0
 	mov r4, r0, lsl #0x10
 	mov r8, r6
@@ -2984,17 +2984,17 @@ _0221E318:
 	bhs _0221E338
 	mov r0, #0x16
 	mul r1, sl, r0
-	ldr r2, _0221E3E4 ; =ov13_022474F0
+	ldr r2, _0221E3E4 ; =bsendBuff + 0x10
 	ldrb r0, [r2, r1]
 	bic r0, r0, #0xf0
 	strb r0, [r2, r1]
 _0221E338:
 	ldr r2, _0221E3DC ; =ov13_022474A0
 	mov r3, #0
-	ldr r0, _0221E3E8 ; =ov13_022474E8
+	ldr r0, _0221E3E8 ; =bsendBuff + 0x8
 	mov r1, #0x68
 	strh r3, [r2, #0x48]
-	bl ov13_0221DB68
+	bl MBi_calc_cksum
 	ldr r2, _0221E3DC ; =ov13_022474A0
 	strh r0, [r2, #0x48]
 	ldr r1, [r2, #0x1c]
@@ -3002,7 +3002,7 @@ _0221E338:
 	add r1, r1, #0x300
 	ldrh r3, [r0, #0xb0]
 	ldrh r0, [r1, #0x5a]
-	ldr r1, _0221E3EC ; =ov13_022474E0
+	ldr r1, _0221E3EC ; =bsendBuff
 	cmp r3, r0
 	moveq r0, #1
 	streqb r0, [r2, #0x24]
@@ -3032,14 +3032,14 @@ _0221E338:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.balign 4, 0
 _0221E3DC: .word ov13_022474A0
-_0221E3E0: .word ov13_02247548
-_0221E3E4: .word ov13_022474F0
-_0221E3E8: .word ov13_022474E8
-_0221E3EC: .word ov13_022474E0
-	arm_func_end ov13_0221E184
+_0221E3E0: .word bsendBuff + 0x68
+_0221E3E4: .word bsendBuff + 0x10
+_0221E3E8: .word bsendBuff + 0x8
+_0221E3EC: .word bsendBuff
+	arm_func_end MBi_SendVolatBeacon
 
-	arm_func_start ov13_0221E3F0
-ov13_0221E3F0: ; 0x0221E3F0
+	arm_func_start changeScanChannel
+changeScanChannel: ; 0x0221E3F0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	bl WM_GetAllowedChannel
@@ -3070,10 +3070,10 @@ _0221E41C:
 _0221E458:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov13_0221E3F0
+	arm_func_end changeScanChannel
 
-	arm_func_start ov13_0221E460
-ov13_0221E460: ; 0x0221E460
+	arm_func_start MBi_IsSendEnabled
+MBi_IsSendEnabled: ; 0x0221E460
 	ldr r1, _0221E4BC ; =ov13_0224CF40
 	mov r0, #0
 	ldr ip, [r1, #8]
@@ -3100,18 +3100,18 @@ _0221E4A4:
 	bx lr
 	.balign 4, 0
 _0221E4BC: .word ov13_0224CF40
-	arm_func_end ov13_0221E460
+	arm_func_end MBi_IsSendEnabled
 
-	arm_func_start ov13_0221E4C0
-ov13_0221E4C0: ; 0x0221E4C0
+	arm_func_start MBi_OnInitializeDone
+MBi_OnInitializeDone: ; 0x0221E4C0
 	stmdb sp!, {r3, lr}
-	ldr r0, _0221E508 ; =ov13_0221E554
+	ldr r0, _0221E508 ; =MBi_ParentCallback
 	bl WM_SetIndCallback
 	mov r1, r0
 	mov r0, #0x80
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	ldr r3, _0221E50C ; =ov13_0224598C
-	ldr r0, _0221E508 ; =ov13_0221E554
+	ldr r0, _0221E508 ; =MBi_ParentCallback
 	ldrh r1, [r3, #4]
 	str r1, [sp]
 	ldrh r1, [r3, #6]
@@ -3120,15 +3120,15 @@ ov13_0221E4C0: ; 0x0221E4C0
 	bl WM_SetLifeTime
 	mov r1, r0
 	mov r0, #0x1d
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
-_0221E508: .word ov13_0221E554
+_0221E508: .word MBi_ParentCallback
 _0221E50C: .word ov13_0224598C
-	arm_func_end ov13_0221E4C0
+	arm_func_end MBi_OnInitializeDone
 
-	arm_func_start ov13_0221E510
-ov13_0221E510: ; 0x0221E510
+	arm_func_start MBi_EndCommon
+MBi_EndCommon: ; 0x0221E510
 	stmdb sp!, {r3, lr}
 	ldr r2, _0221E550 ; =ov13_0224CF40
 	mov ip, #0
@@ -3147,10 +3147,10 @@ ov13_0221E510: ; 0x0221E510
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _0221E550: .word ov13_0224CF40
-	arm_func_end ov13_0221E510
+	arm_func_end MBi_EndCommon
 
-	arm_func_start ov13_0221E554
-ov13_0221E554: ; 0x0221E554
+	arm_func_start MBi_ParentCallback
+MBi_ParentCallback: ; 0x0221E554
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x1c
 	mov r4, r0
@@ -3200,7 +3200,7 @@ _0221E5D8:
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221E604:
-	bl ov13_0221E4C0
+	bl MBi_OnInitializeDone
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221E610:
@@ -3217,12 +3217,12 @@ _0221E610:
 	ldmia sp!, {r3, r4, pc}
 _0221E63C:
 	ldr r1, _0221ED9C ; =ov13_0224CF40
-	ldr r0, _0221EDA0 ; =ov13_0221E554
+	ldr r0, _0221EDA0 ; =MBi_ParentCallback
 	ldr r1, [r1, #8]
 	bl WM_SetParentParameter
 	mov r1, r0
 	mov r0, #7
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221E660:
@@ -3232,12 +3232,12 @@ _0221E660:
 	mov r0, #0x15
 	ldr r2, [r2, #0x51c]
 	blx r2
-	ldr r0, _0221EDA0 ; =ov13_0221E554
+	ldr r0, _0221EDA0 ; =MBi_ParentCallback
 	mov r1, #1
 	bl WM_SetBeaconIndication
 	mov r1, r0
 	mov r0, #0x19
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221E698:
@@ -3258,12 +3258,12 @@ _0221E698:
 	ldmia sp!, {r3, r4, pc}
 _0221E6D4:
 	ldr r1, _0221EDA4 ; =ov13_0224598C
-	ldr r0, _0221EDA0 ; =ov13_0221E554
+	ldr r0, _0221EDA0 ; =MBi_ParentCallback
 	ldr r1, [r1, #0xc]
 	bl WMi_StartParentEx
 	mov r1, r0
 	mov r0, #8
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221E6F8:
@@ -3280,7 +3280,7 @@ _0221E6F8:
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221E728:
-	bl ov13_0221E510
+	bl MBi_EndCommon
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221E734:
@@ -3382,16 +3382,16 @@ _0221E7D8:
 	str r1, [sp, #0x18]
 	ldrh r2, [r0, #0x1a]
 	ldr r1, [ip, #0x504]
-	ldr r0, _0221EDA0 ; =ov13_0221E554
+	ldr r0, _0221EDA0 ; =MBi_ParentCallback
 	add r3, ip, #0x40
 	bl WM_StartMPEx
 	mov r1, r0
 	mov r0, #0xe
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221E8C8:
-	bl ov13_0221E460
+	bl MBi_IsSendEnabled
 	cmp r0, #0
 	addeq sp, sp, #0x1c
 	ldmeqia sp!, {r3, r4, pc}
@@ -3590,13 +3590,13 @@ _0221EB4C:
 _0221EB9C:
 	strh r2, [r0, #0x2a]
 	ldr r1, [r1, #8]
-	ldr r0, _0221EDA0 ; =ov13_0221E554
+	ldr r0, _0221EDA0 ; =MBi_ParentCallback
 	add r1, r1, #0x500
 	strh r2, [r1, #0x28]
 	bl WM_End
 	mov r1, r0
 	mov r0, #2
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221EBC8:
@@ -3622,12 +3622,12 @@ _0221EBC8:
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221EC1C:
-	ldr r0, _0221EDA0 ; =ov13_0221E554
+	ldr r0, _0221EDA0 ; =MBi_ParentCallback
 	mov r1, #0
 	bl WM_SetBeaconIndication
 	mov r1, r0
 	mov r0, #0x19
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221EC3C:
@@ -3647,7 +3647,7 @@ _0221EC3C:
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221EC78:
-	bl ov13_0221E510
+	bl MBi_EndCommon
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, pc}
 _0221EC84:
@@ -3732,10 +3732,10 @@ _0221ED94:
 	ldmia sp!, {r3, r4, pc}
 	.balign 4, 0
 _0221ED9C: .word ov13_0224CF40
-_0221EDA0: .word ov13_0221E554
+_0221EDA0: .word MBi_ParentCallback
 _0221EDA4: .word ov13_0224598C
 _0221EDA8: .word 0x000032C8
-	arm_func_end ov13_0221E554
+	arm_func_end MBi_ParentCallback
 
 	arm_func_start ov13_0221EDAC
 ov13_0221EDAC: ; 0x0221EDAC
@@ -3837,7 +3837,7 @@ _0221EED8:
 	bl WM_SetLifeTime
 	mov r1, r0
 	mov r0, #0x1d
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221EF14:
@@ -3878,7 +3878,7 @@ _0221EF38:
 	bl WM_StartScan
 	mov r1, r0
 	mov r0, #0xa
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221EFB0:
@@ -4028,7 +4028,7 @@ _0221F1A0:
 	cmp r0, #0
 	beq _0221F1E0
 	ldr r0, _0221F640 ; =ov13_0224CF60
-	bl ov13_0221E3F0
+	bl changeScanChannel
 	cmp r0, #0
 	bne _0221F1E0
 	bl ov13_0221FCBC
@@ -4038,7 +4038,7 @@ _0221F1E0:
 	bl WM_StartScan
 	mov r1, r0
 	mov r0, #0xa
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221F200:
@@ -4054,7 +4054,7 @@ _0221F200:
 	cmp r0, #0
 	beq _0221F240
 	ldr r0, _0221F640 ; =ov13_0224CF60
-	bl ov13_0221E3F0
+	bl changeScanChannel
 	cmp r0, #0
 	bne _0221F240
 	bl ov13_0221FCBC
@@ -4064,7 +4064,7 @@ _0221F240:
 	bl WM_StartScan
 	mov r1, r0
 	mov r0, #0xa
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221F260:
@@ -4093,7 +4093,7 @@ _0221F29C:
 	bl WM_StartConnectEx
 	mov r1, r0
 	mov r0, #0xc
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221F2C8:
@@ -4176,7 +4176,7 @@ _0221F350:
 	bl WM_StartMPEx
 	mov r1, r0
 	mov r0, #0xe
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221F400:
@@ -4212,7 +4212,7 @@ _0221F468:
 	add r0, r4, #0x500
 	mov r1, #1
 	strh r1, [r0, #0x28]
-	bl ov13_0221E460
+	bl MBi_IsSendEnabled
 	cmp r0, #0
 	addeq sp, sp, #0x1c
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -4288,7 +4288,7 @@ _0221F564:
 	bl WM_End
 	mov r1, r0
 	mov r0, #2
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221F594:
@@ -4305,11 +4305,11 @@ _0221F594:
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221F5C4:
-	bl ov13_0221E510
+	bl MBi_EndCommon
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0221F5D0:
-	bl ov13_0221E460
+	bl MBi_IsSendEnabled
 	cmp r0, #0
 	addeq sp, sp, #0x1c
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -4644,7 +4644,7 @@ _0221FA44:
 	ldr r0, [r0, #8]
 	mov r1, #1
 	strb r1, [r0, #0x50d]
-	bl ov13_0221E4C0
+	bl MBi_OnInitializeDone
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
@@ -4672,7 +4672,7 @@ ov13_0221FA70: ; 0x0221FA70
 	add r1, r5, #0x1340
 	bl MIi_CpuClear16
 	mov r0, r6
-	bl ov13_0221BA70
+	bl MB_CommSetParentStateCallback
 	ldr r1, _0221FC40 ; =ov13_0224CF40
 	ldr r0, [r1, #8]
 	ldr r2, [r1, #0xc]
@@ -4725,11 +4725,11 @@ _0221FB14:
 	ldr r1, _0221FC40 ; =ov13_0224CF40
 	mov r2, #1
 	ldr r0, [r1, #8]
-	ldr r3, _0221FC4C ; =ov13_0221BCC4
+	ldr r3, _0221FC4C ; =MBi_CommParentCallback
 	add r0, r0, #0x500
 	strh r2, [r0, #0x24]
 	ldr r0, [r1, #8]
-	ldr r2, _0221FC50 ; =ov13_0221E554
+	ldr r2, _0221FC50 ; =MBi_ParentCallback
 	str r3, [r0, #0x51c]
 	ldr r0, [r1, #8]
 	str r2, [r0, #0x508]
@@ -4756,7 +4756,7 @@ _0221FB14:
 	bic r1, r1, #0x1f
 	mov r1, r1, lsl #1
 	strh r1, [r0, #0x1a]
-	bl ov13_0221DE20
+	bl MB_InitSendGameInfoStatus
 	bl ov13_0221F99C
 	mov r5, r0
 	mov r0, r4
@@ -4774,8 +4774,8 @@ _0221FB14:
 _0221FC40: .word ov13_0224CF40
 _0221FC44: .word 0x000069C0
 _0221FC48: .word 0x00005D40
-_0221FC4C: .word ov13_0221BCC4
-_0221FC50: .word ov13_0221E554
+_0221FC4C: .word MBi_CommParentCallback
+_0221FC50: .word MBi_ParentCallback
 	arm_func_end ov13_0221FA70
 
 	arm_func_start ov13_0221FC54
@@ -4802,7 +4802,7 @@ ov13_0221FC78: ; 0x0221FC78
 	mov r4, r0
 	mov r1, r4
 	mov r0, #1
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	cmp r4, #2
 	moveq r4, #0
 	mov r0, r4
@@ -4831,7 +4831,7 @@ ov13_0221FCBC: ; 0x0221FCBC
 	cmp r0, #0
 	bne _0221FCEC
 	mov r0, #0
-	bl ov13_0221E510
+	bl MBi_EndCommon
 	b _0221FD38
 _0221FCEC:
 	add r0, r2, #0x500
@@ -4844,7 +4844,7 @@ _0221FCEC:
 	mov r1, r5
 	add r0, r0, #0x500
 	strh r1, [r0, #0x26]
-	bl ov13_022203E0
+	bl MBi_IsTaskAvailable
 	cmp r0, #0
 	beq _0221FD30
 	ldr r0, _0221FD4C ; =ov13_0221FCB0
@@ -4889,7 +4889,7 @@ _0221FD88: .word ov13_0224CF40
 ov13_0221FD8C: ; 0x0221FD8C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
-	ldr r0, _0221FF0C ; =ov13_0221E554
+	ldr r0, _0221FF0C ; =MBi_ParentCallback
 	mov r1, r5
 	bl WM_Disconnect
 	cmp r5, #0
@@ -4917,7 +4917,7 @@ ov13_0221FD8C: ; 0x0221FD8C
 	mla r0, r4, r2, r0
 	bl MI_CpuFill8
 	mov r0, r5
-	bl ov13_02220624
+	bl MBi_ClearParentPieceBuffer
 	ldr ip, _0221FF10 ; =ov13_0224CF40
 	mov r2, #0
 	ldr r0, [ip, #0xc]
@@ -4986,7 +4986,7 @@ _0221FEF0:
 	str r1, [r0, #0x4e8]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0221FF0C: .word ov13_0221E554
+_0221FF0C: .word MBi_ParentCallback
 _0221FF10: .word ov13_0224CF40
 _0221FF14: .word 0x000005D4
 	arm_func_end ov13_0221FD8C
@@ -5017,14 +5017,14 @@ ov13_0221FF28: ; 0x0221FF28
 	mov r4, r0
 	mov r1, r4
 	mov r0, #0xf
-	bl ov13_022200FC
+	bl MBi_CheckWmErrcode
 	mov r0, r4
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end ov13_0221FF28
 
-	arm_func_start ov13_0221FF74
-ov13_0221FF74: ; 0x0221FF74
+	arm_func_start MBi_SendMP
+MBi_SendMP: ; 0x0221FF74
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr ip, _0222004C ; =ov13_0224CF40
 	mov r3, r1, lsl #0x10
@@ -5087,30 +5087,30 @@ _02220044:
 	.balign 4, 0
 _0222004C: .word ov13_0224CF40
 _02220050: .word ov13_0221EE1C
-	arm_func_end ov13_0221FF74
+	arm_func_end MBi_SendMP
 
-	arm_func_start ov13_02220054
-ov13_02220054: ; 0x02220054
+	arm_func_start MBi_GetGgid
+MBi_GetGgid: ; 0x02220054
 	ldr r0, _02220064 ; =ov13_0224CF40
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #8]
 	bx lr
 	.balign 4, 0
 _02220064: .word ov13_0224CF40
-	arm_func_end ov13_02220054
+	arm_func_end MBi_GetGgid
 
-	arm_func_start ov13_02220068
-ov13_02220068: ; 0x02220068
+	arm_func_start MBi_GetTgid
+MBi_GetTgid: ; 0x02220068
 	ldr r0, _02220078 ; =ov13_0224CF40
 	ldr r0, [r0, #8]
 	ldrh r0, [r0, #0xc]
 	bx lr
 	.balign 4, 0
 _02220078: .word ov13_0224CF40
-	arm_func_end ov13_02220068
+	arm_func_end MBi_GetTgid
 
-	arm_func_start ov13_0222007C
-ov13_0222007C: ; 0x0222007C
+	arm_func_start MBi_GetAttribute
+MBi_GetAttribute: ; 0x0222007C
 	ldr r0, _022200D8 ; =ov13_0224CF40
 	ldr r1, [r0, #8]
 	ldrh r0, [r1, #0x12]
@@ -5136,10 +5136,10 @@ ov13_0222007C: ; 0x0222007C
 	bx lr
 	.balign 4, 0
 _022200D8: .word ov13_0224CF40
-	arm_func_end ov13_0222007C
+	arm_func_end MBi_GetAttribute
 
-	arm_func_start ov13_022200DC
-ov13_022200DC: ; 0x022200DC
+	arm_func_start MBi_IsStarted
+MBi_IsStarted: ; 0x022200DC
 	ldr r0, _022200F8 ; =ov13_0224CF40
 	ldr r0, [r0, #8]
 	ldrb r0, [r0, #0x50d]
@@ -5149,10 +5149,10 @@ ov13_022200DC: ; 0x022200DC
 	bx lr
 	.balign 4, 0
 _022200F8: .word ov13_0224CF40
-	arm_func_end ov13_022200DC
+	arm_func_end MBi_IsStarted
 
-	arm_func_start ov13_022200FC
-ov13_022200FC: ; 0x022200FC
+	arm_func_start MBi_CheckWmErrcode
+MBi_CheckWmErrcode: ; 0x022200FC
 	stmdb sp!, {r3, lr}
 	cmp r1, #2
 	cmpne r1, #0
@@ -5168,7 +5168,7 @@ ov13_022200FC: ; 0x022200FC
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02220130: .word ov13_0224CF40
-	arm_func_end ov13_022200FC
+	arm_func_end MBi_CheckWmErrcode
 
 	arm_func_start ov13_02220134
 ov13_02220134: ; 0x02220134
@@ -5180,8 +5180,8 @@ ov13_02220134: ; 0x02220134
 _02220144: .word MI_CpuFill8
 	arm_func_end ov13_02220134
 
-	arm_func_start ov13_02220148
-ov13_02220148: ; 0x02220148
+	arm_func_start MBi_AttachCacheBuffer
+MBi_AttachCacheBuffer: ; 0x02220148
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, r0
 	mov sb, r1
@@ -5212,10 +5212,10 @@ _022201A4:
 	mov r0, r5
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov13_02220148
+	arm_func_end MBi_AttachCacheBuffer
 
-	arm_func_start ov13_022201B0
-ov13_022201B0: ; 0x022201B0
+	arm_func_start MBi_ReadFromCache
+MBi_ReadFromCache: ; 0x022201B0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	mov r8, r1
@@ -5257,7 +5257,7 @@ _02220238:
 	bl OS_RestoreInterrupts
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov13_022201B0
+	arm_func_end MBi_ReadFromCache
 
 	arm_func_start ov13_02220248
 ov13_02220248: ; 0x02220248
@@ -5341,8 +5341,8 @@ _02220358:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov13_02220248
 
-	arm_func_start ov13_02220360
-ov13_02220360: ; 0x02220360
+	arm_func_start MBi_InitTaskThread
+MBi_InitTaskThread: ; 0x02220360
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r5, r0
@@ -5355,7 +5355,7 @@ ov13_02220360: ; 0x02220360
 	bne _022203C8
 	add r0, r5, #0xc4
 	str r5, [r1]
-	bl ov13_022203FC
+	bl MBi_InitTaskInfo
 	sub r0, r6, #0xe4
 	mov lr, #0
 	bic ip, r0, #3
@@ -5377,10 +5377,10 @@ _022203C8:
 	.balign 4, 0
 _022203D8: .word ov13_0224CF80
 _022203DC: .word ov13_02220248
-	arm_func_end ov13_02220360
+	arm_func_end MBi_InitTaskThread
 
-	arm_func_start ov13_022203E0
-ov13_022203E0: ; 0x022203E0
+	arm_func_start MBi_IsTaskAvailable
+MBi_IsTaskAvailable: ; 0x022203E0
 	ldr r0, _022203F8 ; =ov13_0224CF80
 	ldr r0, [r0]
 	cmp r0, #0
@@ -5389,27 +5389,27 @@ ov13_022203E0: ; 0x022203E0
 	bx lr
 	.balign 4, 0
 _022203F8: .word ov13_0224CF80
-	arm_func_end ov13_022203E0
+	arm_func_end MBi_IsTaskAvailable
 
-	arm_func_start ov13_022203FC
-ov13_022203FC: ; 0x022203FC
+	arm_func_start MBi_InitTaskInfo
+MBi_InitTaskInfo: ; 0x022203FC
 	ldr ip, _0222040C ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x20
 	bx ip
 	.balign 4, 0
 _0222040C: .word MI_CpuFill8
-	arm_func_end ov13_022203FC
+	arm_func_end MBi_InitTaskInfo
 
-	arm_func_start ov13_02220410
-ov13_02220410: ; 0x02220410
+	arm_func_start MBi_IsTaskBusy
+MBi_IsTaskBusy: ; 0x02220410
 	ldr r0, [r0, #4]
 	mov r0, r0, lsl #0x1f
 	movs r0, r0, lsr #0x1f
 	movne r0, #1
 	moveq r0, #0
 	bx lr
-	arm_func_end ov13_02220410
+	arm_func_end MBi_IsTaskBusy
 
 	arm_func_start ov13_02220428
 ov13_02220428: ; 0x02220428
@@ -5420,7 +5420,7 @@ ov13_02220428: ; 0x02220428
 	mov r8, r1
 	mov r7, r2
 	mov r6, r3
-	bl ov13_022203E0
+	bl MBi_IsTaskAvailable
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldr r0, [sb, #4]
@@ -5522,7 +5522,7 @@ ov13_0222058C: ; 0x0222058C
 	mov r5, r0
 	bl OS_DisableInterrupts
 	mov r4, r0
-	bl ov13_022203E0
+	bl MBi_IsTaskAvailable
 	cmp r0, #0
 	beq _022205C4
 	ldr r0, _022205D0 ; =ov13_0224CF80
@@ -5570,8 +5570,8 @@ _0222061C: .word ov13_0224CF84
 _02220620: .word MI_CpuFill8
 	arm_func_end ov13_02220604
 
-	arm_func_start ov13_02220624
-ov13_02220624: ; 0x02220624
+	arm_func_start MBi_ClearParentPieceBuffer
+MBi_ClearParentPieceBuffer: ; 0x02220624
 	stmdb sp!, {r4, lr}
 	ldr r1, _02220664 ; =ov13_0224CF84
 	ldr r1, [r1, #4]
@@ -5590,10 +5590,10 @@ ov13_02220624: ; 0x02220624
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _02220664: .word ov13_0224CF84
-	arm_func_end ov13_02220624
+	arm_func_end MBi_ClearParentPieceBuffer
 
-	arm_func_start ov13_02220668
-ov13_02220668: ; 0x02220668
+	arm_func_start MBi_MakeParentSendBuffer
+MBi_MakeParentSendBuffer: ; 0x02220668
 	ldrb r2, [r0]
 	mov r3, r1
 	add r3, r3, #1
@@ -5631,7 +5631,7 @@ _022206DC:
 _022206E4:
 	mov r0, r3
 	bx lr
-	arm_func_end ov13_02220668
+	arm_func_end MBi_MakeParentSendBuffer
 
 	arm_func_start ov13_022206EC
 ov13_022206EC: ; 0x022206EC
@@ -5785,25 +5785,36 @@ _022208E4: .word ov13_0224CF84
 
 	.rodata
 
-_02242658:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x70, 0x00, 0x00
-	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+MBi_defaultLoadSegList:
+	.word 2
+	.word 0
+	.word 1
+
+mbi_seg_header_default:
+	.word 0x00004000, 0x00001000
+	.word 0x00007000, 0x00001000
+	.word 0x00000000, 0x00000000
 
 	.data
 
 _02245980:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
-ov13_02245984: ; 0x02245984
-	.byte 0x64, 0x26, 0x24, 0x02
+mbi_seg_header: ; 0x02245984
+	.word mbi_seg_header_default
 
 ov13_02245988: ; 0x02245988
-	.byte 0x72, 0x6F, 0x6D, 0x00
+	.asciz "rom"
+	.balign 4, 0
 
 ov13_0224598C: ; 0x0224598C
 	.byte 0x05, 0x00, 0x28, 0x00
-	.byte 0x28, 0x00, 0xFF, 0xFF, 0x9C, 0x59, 0x24, 0x02, 0x01, 0x00, 0x00, 0x00, 0x6D, 0x00, 0x75, 0x00
+	.byte 0x28, 0x00, 0xFF, 0xFF
+	.word ov13_0224599C
+	.byte 0x01, 0x00, 0x00, 0x00
+
+ov13_0224599C:
+	.byte 0x6D, 0x00, 0x75, 0x00
 	.byte 0x6C, 0x00, 0x74, 0x00, 0x69, 0x00, 0x62, 0x00, 0x6F, 0x00, 0x6F, 0x00, 0x74, 0x00, 0x00, 0x00
 
 	.bss
@@ -5817,25 +5828,13 @@ ov13_02247484: ; 0x02247484
 ov13_022474A0: ; 0x022474A0
 	.space 0x40
 
-ov13_022474E0: ; 0x022474E0
-	.space 0x8
-
-ov13_022474E8: ; 0x022474E8
-	.space 0x6
-
-ov13_022474EE: ; 0x022474EE
-	.space 0x2
-
-ov13_022474F0: ; 0x022474F0
-	.space 0x58
-
-ov13_02247548: ; 0x02247548
-	.space 0x59F8
+bsendBuff: ; 0x022474E0
+	.space 0x5A60
 
 ov13_0224CF40: ; 0x0224CF40
 	.space 0xC
 
-ov13_0224CF4C: ; 0x0224CF4C
+mbc: ; 0x0224CF4C
 	.space 0x14
 
 ov13_0224CF60: ; 0x0224CF60

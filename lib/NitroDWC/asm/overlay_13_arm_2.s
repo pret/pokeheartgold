@@ -26876,7 +26876,7 @@ _0223CB08:
 	mov r1, #1
 	bl ov13_0221F904
 	ldr r0, _0223CB30 ; =ov13_0223D124
-	bl ov13_0221BA70
+	bl MB_CommSetParentStateCallback
 	mov r0, #1
 	bl ov13_0223D448
 	add sp, sp, #0x7c
@@ -26931,7 +26931,7 @@ ov13_0223CB7C: ; 0x0223CB7C
 	add r4, sp, #0
 _0223CBC4:
 	mov r0, r4
-	bl ov13_0221CE4C
+	bl MB_GetSegmentLength
 	cmp r0, #0
 	beq _0223CC30
 	ldr r1, _0223CC4C ; =ov13_0224F5BC
@@ -26946,7 +26946,7 @@ _0223CBC4:
 	beq _0223CC30
 	mov r0, r4
 	mov r2, #0x10000
-	bl ov13_0221CECC
+	bl MB_ReadSegment
 	cmp r0, #0
 	beq _0223CC30
 	ldr r1, _0223CC4C ; =ov13_0224F5BC
@@ -26954,7 +26954,7 @@ _0223CBC4:
 	ldr r1, [r1]
 	add r1, r1, #0x1b000
 	ldr r1, [r1, #0x144]
-	bl ov13_0221D3BC
+	bl MB_RegisterFile
 	cmp r0, #0
 	movne r5, #1
 _0223CC30:
@@ -26975,7 +26975,7 @@ ov13_0223CC50: ; 0x0223CC50
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #1
 	mov r4, r0
-	bl ov13_0221BB70
+	bl MB_CommResponseRequest
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #1
@@ -27020,7 +27020,7 @@ ov13_0223CCF0: ; 0x0223CCF0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #0
 	mov r4, r0
-	bl ov13_0221BB70
+	bl MB_CommResponseRequest
 	cmp r0, #0
 	bne _0223CD8C
 	mov r0, #1
@@ -27080,7 +27080,7 @@ ov13_0223CDC8: ; 0x0223CDC8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #2
 	mov r4, r0
-	bl ov13_0221BB70
+	bl MB_CommResponseRequest
 	cmp r0, #0
 	bne _0223CE64
 	mov r0, #1
@@ -27216,7 +27216,7 @@ _0223CFA4:
 	tst r0, r5, lsl r6
 	beq _0223CFC8
 	mov r0, r6
-	bl ov13_0221BB1C
+	bl MB_CommIsBootable
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -27247,7 +27247,7 @@ _0223D000:
 	beq _0223D0A8
 	mov r0, r7
 	mov r1, r5
-	bl ov13_0221BB70
+	bl MB_CommResponseRequest
 	cmp r0, #0
 	orrne r0, r8, r6, lsl r7
 	movne r0, r0, lsl #0x10
@@ -27440,7 +27440,7 @@ _0223D2A4:
 	strh r1, [r3, #4]
 	bl ov13_0223CC50
 	mov r0, r5
-	bl ov13_0221BA98
+	bl MB_CommGetChildUser
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	ldr r1, _0223D444 ; =ov13_0224F5BC
@@ -29615,11 +29615,11 @@ _0223EE98: .word ov13_0224F5C8
 
 	arm_func_start ov13_0223EE9C
 ov13_0223EE9C: ; 0x0223EE9C
-	ldr ip, _0223EEA8 ; =ov13_0221BA98
+	ldr ip, _0223EEA8 ; =MB_CommGetChildUser
 	mov r0, #1
 	bx ip
 	.balign 4, 0
-_0223EEA8: .word ov13_0221BA98
+_0223EEA8: .word MB_CommGetChildUser
 	arm_func_end ov13_0223EE9C
 
 	arm_func_start ov13_0223EEAC

@@ -467,7 +467,7 @@ Overlay OVY_13
 {
     After OVY_0
     Object overlay_13_thumb_1.o
-    Object overlay_13_arm_1.o
+    Object mb.o
     Object overlay_13_thumb_2.o
     Object overlay_13_arm_2.o
     ### Size 0x2ba80 ###
