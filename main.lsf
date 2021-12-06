@@ -164,12 +164,12 @@ Static main
 	Object scrcmd_10.o
 	Object scrcmd_11.o
 	Object scrcmd_12.o
-	Object scrcmd_13.o
+	Object scrcmd_money.o
 	Object scrcmd_14.o
 	Object scrcmd_15.o
 	Object scrcmd_16.o
 	Object scrcmd_17.o
-	Object scrcmd_18.o
+	Object scrcmd_items.o
 	Object scrcmd_19.o
 	Object scrcmd_20.o
 	Object unk_0204F500.o
@@ -557,7 +557,7 @@ Overlay OVY_20
 Overlay OVY_21
 {
     After OVY_3
-    Object overlay_21.o
+    Object scrcmd_fossils.o
     ### Size 0x160 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259a0c ###

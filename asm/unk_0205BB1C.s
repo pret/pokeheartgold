@@ -86,8 +86,8 @@ _0205BBB0: .word 0x00989680
 _0205BBB4: .word 0x05F5E100
 	thumb_func_end sub_0205BB1C
 
-	thumb_func_start sub_0205BBB8
-sub_0205BBB8: ; 0x0205BBB8
+	thumb_func_start ItemIsTMOrHM
+ItemIsTMOrHM: ; 0x0205BBB8
 	mov r1, #0x52
 	lsl r1, r1, #2
 	cmp r0, r1
@@ -101,7 +101,7 @@ _0205BBCA:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205BBB8
+	thumb_func_end ItemIsTMOrHM
 
 	thumb_func_start sub_0205BBD0
 sub_0205BBD0: ; 0x0205BBD0

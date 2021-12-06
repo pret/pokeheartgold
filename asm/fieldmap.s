@@ -226,7 +226,7 @@ gScriptCmdTable:
 	.word ScrCmd_SetVar                                 ; 041
 	.word ScrCmd_CopyVar                                ; 042
 	.word ScrCmd_SetOrCopyVar                           ; 043
-	.word ScrCmd_Message                                    ; 044
+	.word ScrCmd_Message                                ; 044
 	.word ScrCmd_045                                    ; 045
 	.word ScrCmd_046                                    ; 046
 	.word ScrCmd_047                                    ; 047
@@ -292,9 +292,9 @@ gScriptCmdTable:
 	.word ScrCmd_107                                    ; 107
 	.word ScrCmd_108                                    ; 108
 	.word ScrCmd_109                                    ; 109
-	.word ScrCmd_110                                    ; 110
-	.word ScrCmd_111                                    ; 111
-	.word ScrCmd_112                                    ; 112
+	.word ScrCmd_AddMoney                               ; 110
+	.word ScrCmd_SubMoneyImmediate                      ; 111
+	.word ScrCmd_HasEnoughMoneyImmediate                ; 112
 	.word ScrCmd_113                                    ; 113
 	.word ScrCmd_114                                    ; 114
 	.word ScrCmd_115                                    ; 115
@@ -307,12 +307,12 @@ gScriptCmdTable:
 	.word ScrCmd_122                                    ; 122
 	.word ScrCmd_123                                    ; 123
 	.word ScrCmd_124                                    ; 124
-	.word ScrCmd_125                                    ; 125
-	.word ScrCmd_126                                    ; 126
-	.word ScrCmd_127                                    ; 127
-	.word ScrCmd_128                                    ; 128
-	.word ScrCmd_129                                    ; 129
-	.word ScrCmd_130                                    ; 130
+	.word ScrCmd_GiveItem                               ; 125
+	.word ScrCmd_TakeItem                               ; 126
+	.word ScrCmd_HasSpaceForItem                        ; 127
+	.word ScrCmd_HasItem                                ; 128
+	.word ScrCmd_ItemIsTMOrHM                           ; 129
+	.word ScrCmd_GetItemPocket                          ; 130
 	.word ScrCmd_131                                    ; 131
 	.word ScrCmd_132                                    ; 132
 	.word ScrCmd_133                                    ; 133
@@ -542,7 +542,7 @@ gScriptCmdTable:
 	.word ScrCmd_357                                    ; 357
 	.word ScrCmd_358                                    ; 358
 	.word ScrCmd_359                                    ; 359
-	.word ScrCmd_360                                    ; 360
+	.word ScrCmd_SubMoneyVar                            ; 360
 	.word ScrCmd_361                                    ; 361
 	.word ScrCmd_362                                    ; 362
 	.word ScrCmd_363                                    ; 363
@@ -550,7 +550,7 @@ gScriptCmdTable:
 	.word ScrCmd_365                                    ; 365
 	.word ScrCmd_366                                    ; 366
 	.word ScrCmd_367                                    ; 367
-	.word ScrCmd_368                                    ; 368
+	.word ScrCmd_HasEnoughMoneyVar                      ; 368
 	.word ScrCmd_369                                    ; 369
 	.word ScrCmd_370                                    ; 370
 	.word ScrCmd_371                                    ; 371
@@ -611,11 +611,11 @@ gScriptCmdTable:
 	.word ScrCmd_426                                    ; 426
 	.word ScrCmd_427                                    ; 427
 	.word ScrCmd_428                                    ; 428
-	.word ScrCmd_116                                    ; 429
+	.word ScrCmd_CountFossils                           ; 429
 	.word ScrCmd_430                                    ; 430
 	.word ScrCmd_431                                    ; 431
-	.word ScrCmd_432                                    ; 432
-	.word ScrCmd_433                                    ; 433
+	.word ScrCmd_GetFossilPokemon                       ; 432
+	.word ScrCmd_GetFossilMinimumAmount                 ; 433
 	.word ScrCmd_434                                    ; 434
 	.word ScrCmd_435                                    ; 435
 	.word ScrCmd_436                                    ; 436
@@ -851,7 +851,7 @@ gScriptCmdTable:
 	.word ScrCmd_666                                    ; 666
 	.word ScrCmd_667                                    ; 667
 	.word ScrCmd_668                                    ; 668
-	.word ScrCmd_669                                    ; 669
+	.word ScrCmd_GetItemQuantity                        ; 669
 	.word ScrCmd_670                                    ; 670
 	.word ScrCmd_671                                    ; 671
 	.word ScrCmd_672                                    ; 672

@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ov22_022598C0
-ov22_022598C0: ; 0x022598C0
+	thumb_func_start ScrCmd_116
+ScrCmd_116: ; 0x022598C0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -45,7 +45,7 @@ ov22_022598C0: ; 0x022598C0
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov22_022598C0
+	thumb_func_end ScrCmd_116
 
 	thumb_func_start ScrCmd_117
 ScrCmd_117: ; 0x0225991C

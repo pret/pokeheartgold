@@ -4115,12 +4115,12 @@ BOOL MonCheckFrontierIneligibility(POKEMON *pokemon) {
     return IsPokemonLegendaryOrMythical(species, forme);
 }
 
-BOOL BoxmonBelongsToPlayer(BOXMON * boxmon, PLAYERDATA * playerData, HeapID heap_id) {
-    u32 myId = PlayerProfile_GetTrainerID(playerData);
+BOOL BoxmonBelongsToPlayer(BOXMON * boxmon, PLAYERPROFILE * profile, HeapID heap_id) {
+    u32 myId = PlayerProfile_GetTrainerID(profile);
     u32 otId = GetBoxMonData(boxmon, MON_DATA_OTID, NULL);
-    u32 myGender = PlayerProfile_GetTrainerGender(playerData);
+    u32 myGender = PlayerProfile_GetTrainerGender(profile);
     u32 otGender = GetBoxMonData(boxmon, MON_DATA_MET_GENDER, NULL);
-    STRING * r7 = PlayerProfile_GetPlayerName_NewString(playerData, heap_id);
+    STRING * r7 = PlayerProfile_GetPlayerName_NewString(profile, heap_id);
     STRING * r6 = String_ctor(OT_NAME_LENGTH + 1, heap_id);
     BOOL ret = FALSE;
     GetBoxMonData(boxmon, MON_DATA_OT_NAME_2, r6);

@@ -72,7 +72,7 @@ _0203438A:
 	ldr r2, [r2]
 	ldr r0, [sp, #8]
 	ldr r1, [r2, r1]
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 _020343DA:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -165,7 +165,7 @@ _02034470:
 	mov r1, #0xd3
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	mov r0, #0x68
 	add r5, r4, #0
 	mul r5, r0
