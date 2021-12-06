@@ -1,6 +1,10 @@
 #ifndef POKEHEARTGOLD_SCRIPT_H
 #define POKEHEARTGOLD_SCRIPT_H
 
+#include "save.h"
+// #include "map_matrix.h"
+typedef struct MAPMATRIX MAPMATRIX;
+
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
 #define SCRIPT_MODE_NATIVE   2
@@ -11,10 +15,21 @@
 
 #define ScriptReadByte(ctx) *(ctx->script_ptr++)
 
-struct ScriptContext;
-typedef BOOL (*ScrCmdFunc)(struct ScriptContext* ctx);
+typedef struct UnkSavStruct80 {
+    u8 unk0[0x8];
+    void* bg_config;
+    SAVEDATA* savedata;
+    void* unk10;
+    void* map_events;
+    u8 unk18[0x12];
+    MAPMATRIX* map_matrix;
+    u8 unk34[0xF4];
+} UnkSavStruct80; // size: 0x128
 
-struct ScriptContext {
+typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
+typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT* ctx);
+
+typedef struct SCRIPTCONTEXT {
     u8 stack_depth;
     u8 mode;
     u8 comparison_result;
@@ -29,20 +44,20 @@ struct ScriptContext {
     void* msg_data;
     u8* unk7C;
     void* unk80;
-};
+} SCRIPTCONTEXT;
 
-void InitScriptContext(struct ScriptContext* ctx, ScrCmdFunc* cmd_table, u32 cmd_count);
-BOOL SetupBytecodeScript(struct ScriptContext* ctx, const u8* ptr);
-void SetupNativeScript(struct ScriptContext* ctx, ScrCmdFunc ptr);
-void StopScript(struct ScriptContext* ctx);
-void sub_0203FD68(struct ScriptContext* ctx, void* unk);
-BOOL RunScriptCommand(struct ScriptContext* ctx);
-BOOL ScriptPush(struct ScriptContext* ctx, const u8* ptr);
-const u8* ScriptPop(struct ScriptContext* ctx);
-void ScriptJump(struct ScriptContext* ctx, const u8* ptr);
-void ScriptCall(struct ScriptContext* ctx, const u8* ptr);
-void ScriptReturn(struct ScriptContext* ctx);
-u16 ScriptReadHalfword(struct ScriptContext* ctx);
-u32 ScriptReadWord(struct ScriptContext* ctx);
+void InitScriptContext(SCRIPTCONTEXT* ctx, ScrCmdFunc* cmd_table, u32 cmd_count);
+BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr);
+void SetupNativeScript(SCRIPTCONTEXT* ctx, ScrCmdFunc ptr);
+void StopScript(SCRIPTCONTEXT* ctx);
+void sub_0203FD68(SCRIPTCONTEXT* ctx, void* unk);
+BOOL RunScriptCommand(SCRIPTCONTEXT* ctx);
+BOOL ScriptPush(SCRIPTCONTEXT* ctx, const u8* ptr);
+const u8* ScriptPop(SCRIPTCONTEXT* ctx);
+void ScriptJump(SCRIPTCONTEXT* ctx, const u8* ptr);
+void ScriptCall(SCRIPTCONTEXT* ctx, const u8* ptr);
+void ScriptReturn(SCRIPTCONTEXT* ctx);
+u16 ScriptReadHalfword(SCRIPTCONTEXT* ctx);
+u32 ScriptReadWord(SCRIPTCONTEXT* ctx);
 
 #endif

@@ -453,7 +453,7 @@ _020750F4:
 	add r0, #0xf8
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0

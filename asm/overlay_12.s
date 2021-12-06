@@ -1398,7 +1398,7 @@ _022384D6:
 	add r1, #0xf8
 	ldr r0, [r5, #0x48]
 	ldr r1, [r1]
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	ldr r0, [r5, #0x48]
 	bl FreeToHeap
 	ldr r0, [sp]
@@ -2029,7 +2029,7 @@ _02238A7A:
 	str r1, [r6, #0x48]
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

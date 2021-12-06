@@ -1,6 +1,6 @@
 #include "script.h"
 
-void InitScriptContext(struct ScriptContext* ctx, ScrCmdFunc* cmd_table, u32 cmd_count) {
+void InitScriptContext(SCRIPTCONTEXT* ctx, ScrCmdFunc* cmd_table, u32 cmd_count) {
     s32 i = 0;
 
     ctx->mode = SCRIPT_MODE_STOPPED;
@@ -22,27 +22,27 @@ void InitScriptContext(struct ScriptContext* ctx, ScrCmdFunc* cmd_table, u32 cmd
     ctx->unk74 = NULL;
 }
 
-BOOL SetupBytecodeScript(struct ScriptContext* ctx, const u8* ptr) {
+BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr) {
     ctx->script_ptr = ptr;
     ctx->mode = SCRIPT_MODE_BYTECODE;
     return TRUE;
 }
 
-void SetupNativeScript(struct ScriptContext* ctx, ScrCmdFunc ptr) {
+void SetupNativeScript(SCRIPTCONTEXT* ctx, ScrCmdFunc ptr) {
     ctx->mode = SCRIPT_MODE_NATIVE;
     ctx->native_ptr = ptr;
 }
 
-void StopScript(struct ScriptContext* ctx) {
+void StopScript(SCRIPTCONTEXT* ctx) {
     ctx->mode = SCRIPT_MODE_STOPPED;
     ctx->script_ptr = NULL;
 }
 
-void sub_0203FD68(struct ScriptContext* ctx, void* unk) {
+void sub_0203FD68(SCRIPTCONTEXT* ctx, void* unk) {
     ctx->unk74 = unk;
 }
 
-BOOL RunScriptCommand(struct ScriptContext* ctx) {
+BOOL RunScriptCommand(SCRIPTCONTEXT* ctx) {
     if (ctx->mode == SCRIPT_MODE_STOPPED) {
         return FALSE;
     }
@@ -89,7 +89,7 @@ BOOL RunScriptCommand(struct ScriptContext* ctx) {
     return TRUE;
 }
 
-BOOL ScriptPush(struct ScriptContext* ctx, const u8* ptr) {
+BOOL ScriptPush(SCRIPTCONTEXT* ctx, const u8* ptr) {
     if (ctx->stack_depth + 1 >= (s32)NELEMS(ctx->stack)) {
         return TRUE;
     }
@@ -100,7 +100,7 @@ BOOL ScriptPush(struct ScriptContext* ctx, const u8* ptr) {
     return FALSE;
 }
 
-const u8* ScriptPop(struct ScriptContext* ctx) {
+const u8* ScriptPop(SCRIPTCONTEXT* ctx) {
     if (ctx->stack_depth == 0) {
         return NULL;
     }
@@ -108,27 +108,27 @@ const u8* ScriptPop(struct ScriptContext* ctx) {
     return ctx->stack[--ctx->stack_depth];
 }
 
-void ScriptJump(struct ScriptContext* ctx, const u8* ptr) {
+void ScriptJump(SCRIPTCONTEXT* ctx, const u8* ptr) {
     ctx->script_ptr = ptr;
 }
 
-void ScriptCall(struct ScriptContext* ctx, const u8* ptr) {
+void ScriptCall(SCRIPTCONTEXT* ctx, const u8* ptr) {
     ScriptPush(ctx, ctx->script_ptr);
     ctx->script_ptr = ptr;
 }
 
-void ScriptReturn(struct ScriptContext* ctx) {
+void ScriptReturn(SCRIPTCONTEXT* ctx) {
     ctx->script_ptr = ScriptPop(ctx);
 }
 
-u16 ScriptReadHalfword(struct ScriptContext* ctx) {
+u16 ScriptReadHalfword(SCRIPTCONTEXT* ctx) {
     u16 value = ScriptReadByte(ctx);
     value += ScriptReadByte(ctx) << 8;
 
     return value;
 }
 
-u32 ScriptReadWord(struct ScriptContext* ctx) {
+u32 ScriptReadWord(SCRIPTCONTEXT* ctx) {
     u32 value0 = ScriptReadByte(ctx);
     u32 value1 = ScriptReadByte(ctx);
     u32 value2 = ScriptReadByte(ctx);

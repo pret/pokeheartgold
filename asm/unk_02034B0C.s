@@ -947,7 +947,7 @@ _020351EA:
 	add r0, r3, #0
 	bl sub_02035798
 	add r1, r4, #0
-	bl PlayerProfile_Copy
+	bl PlayerProfile_copy
 	pop {r4, r5, r6, pc}
 _02035202:
 	add r5, r5, #1
