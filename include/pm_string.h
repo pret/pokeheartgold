@@ -31,5 +31,6 @@ STRING *StringDup(const STRING *src, HeapID heap_id);
 void StrAddChar(STRING *str, u16 _char);
 void CopyU16ArrayToString(STRING *dest, const u16 *src);
 void CopyU16ArrayToStringN(STRING *dest, const u16 *src, u32 n);
+u16 *String_c_str(STRING *string);
 
 #endif //POKEHEARTGOLD_STRING_H

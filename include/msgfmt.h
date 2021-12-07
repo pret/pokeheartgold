@@ -11,5 +11,6 @@ void ScrStrBufs_delete(MSGFMT *msgFmt);
 void StringExpandPlaceholders(MSGFMT *msgFmt, STRING *dest, const STRING *src);
 void BufferIntegerAsString(MSGFMT *msgFmt, u32 idx, int num, u32 numDigits, STRCONVMODE strconvmode, BOOL whichCharset);
 void BufferPlayersName(MSGFMT *msgFmt, u32 idx, PLAYERDATA *playerData);
+void sub_0200C528(MSGFMT *msgFmt, int slot, int wordno);
 
 #endif //GUARD_MSGFMT_H

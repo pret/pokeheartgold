@@ -95,6 +95,7 @@
 
 #define CHAR_LF           0xE000
 #define TRNAMECODE        0xF100
+#define EXT_CTRL_CODE_BEGIN 0xFFFE
 #define EOS               0xFFFF   // _EOM
 #define TRNAME_MASK       0x1FF
 #define EOS_TRNAME        0x1FF
