@@ -115,3 +115,56 @@ u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no) {
     String_dtor(msg);
     return ret;
 }
+
+u16 MailMsg_GetFieldI(const MAIL_MESSAGE *mailMessage, int field_no) {
+    // Potential UB: no bounds check
+    return mailMessage->fields[field_no];
+}
+
+u16 MailMsg_GetMsgBank(const MAIL_MESSAGE *mailMessage) {
+    return mailMessage->msg_bank;
+}
+
+u16 MailMsg_GetMsgNo(const MAIL_MESSAGE *mailMessage) {
+    return mailMessage->msg_no;
+}
+
+BOOL MailMsg_compare(const MAIL_MESSAGE *a, const MAIL_MESSAGE *b) {
+    int i;
+    if (a->msg_bank != b->msg_bank || a->msg_no != b->msg_no) {
+        return FALSE;
+    }
+    for (i = 0; i < MAILMSG_FIELDS_MAX; i++) {
+        if (a->fields[i] != b->fields[i]) {
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
+void MailMsg_copy(MAIL_MESSAGE *dst, const MAIL_MESSAGE *src) {
+    *dst = *src;
+}
+
+u32 MailMsg_NumMsgsInBank(u16 msg_bank) {
+    return (msg_bank < NELEMS(_020F60E0)) ? 20 : 0;
+}
+
+void MailMsg_SetMsgBankAndNum(MAIL_MESSAGE *mailMessage, u16 msg_bank, u16 msg_no) {
+    GF_ASSERT(msg_bank < NELEMS(_020F60E0));
+    mailMessage->msg_bank = msg_bank;
+    mailMessage->msg_no = msg_no;
+}
+
+void MailMsg_SetFieldI(MAIL_MESSAGE *mailMessage, u16 field_no, u16 ec_word) {
+    GF_ASSERT(field_no < MAILMSG_FIELDS_MAX);
+    mailMessage->fields[field_no] = ec_word;
+}
+
+void MailMsg_SetTrailingFieldsEmpty(MAIL_MESSAGE *mailMessage) {
+    u32 i;
+
+    for (i = MailMsg_NumFields(mailMessage->msg_bank, mailMessage->msg_no); i < MAILMSG_FIELDS_MAX; i++) {
+        mailMessage->fields[i] = EC_WORD_NULL;
+    }
+}

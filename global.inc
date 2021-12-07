@@ -4360,7 +4360,7 @@
 .public ov01_021EF4DC
 .public ov01_021EF564
 .public ov01_021EF5C8
-.public ov01_021EF708
+.public ovFieldMain_GetFormattedECMessage
 .public ov01_021EF758
 .public ov01_021EF7A0
 .public ov01_021EF7BC

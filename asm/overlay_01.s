@@ -20451,7 +20451,7 @@ ov01_021EF564: ; 0x021EF564
 	str r0, [sp]
 	add r0, sp, #4
 	add r3, r7, #0
-	bl ov01_021EF708
+	bl ovFieldMain_GetFormattedECMessage
 	add r0, sp, #0x20
 	ldrb r0, [r0, #0x14]
 	cmp r0, #0xff
@@ -20637,8 +20637,8 @@ ovFieldMain_ReadAndExpandMsgDataViaBuffer: ; 0x021EF6EC
 	.balign 4, 0
 	thumb_func_end ovFieldMain_ReadAndExpandMsgDataViaBuffer
 
-	thumb_func_start ov01_021EF708
-ov01_021EF708: ; 0x021EF708
+	thumb_func_start ovFieldMain_GetFormattedECMessage
+ovFieldMain_GetFormattedECMessage: ; 0x021EF708
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -20672,7 +20672,7 @@ ov01_021EF708: ; 0x021EF708
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EF708
+	thumb_func_end ovFieldMain_GetFormattedECMessage
 
 	thumb_func_start ov01_021EF758
 ov01_021EF758: ; 0x021EF758
