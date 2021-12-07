@@ -3,54 +3,9 @@
 
 	.rodata
 
-_020F60E0:
-	.short 0x0126, 0x0128, 0x0124, 0x0125, 0x0127
+	.public _020F60E0
 
 	.text
-
-	thumb_func_start MailMsg_init
-MailMsg_init: ; 0x0201581C
-	ldr r1, _02015830 ; =0x0000FFFF
-	mov r2, #0
-	strh r1, [r0]
-_02015822:
-	add r2, r2, #1
-	strh r1, [r0, #4]
-	add r0, r0, #2
-	cmp r2, #2
-	blt _02015822
-	bx lr
-	nop
-_02015830: .word 0x0000FFFF
-	thumb_func_end MailMsg_init
-
-	thumb_func_start MailMsg_init_withBank
-MailMsg_init_withBank: ; 0x02015834
-	strh r1, [r0]
-	mov r2, #0
-	ldr r1, _02015848 ; =0x0000FFFF
-	strh r2, [r0, #2]
-_0201583C:
-	add r2, r2, #1
-	strh r1, [r0, #4]
-	add r0, r0, #2
-	cmp r2, #2
-	blt _0201583C
-	bx lr
-	.balign 4, 0
-_02015848: .word 0x0000FFFF
-	thumb_func_end MailMsg_init_withBank
-
-	thumb_func_start MailMsg_init_default
-MailMsg_init_default: ; 0x0201584C
-	push {r4, lr}
-	mov r1, #4
-	add r4, r0, #0
-	bl MailMsg_init_withBank
-	mov r0, #5
-	strh r0, [r4, #2]
-	pop {r4, pc}
-	thumb_func_end MailMsg_init_default
 
 	thumb_func_start MailMsg_init_fromTemplate
 MailMsg_init_fromTemplate: ; 0x0201585C

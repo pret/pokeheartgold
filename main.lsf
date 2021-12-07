@@ -47,6 +47,7 @@ Static main
 	Object unk_02014A08.o
 	Object unk_02014DA0.o
 	Object mail_message.o
+	Object mail_message_s.o
 	Object unk_02015A9C.o
 	Object unk_02015DD8.o
 	Object unk_020163E0.o
