@@ -3857,10 +3857,10 @@ ov49_0225A3AC: ; 0x0225A3AC
 	mov r3, #0xb7
 	lsl r3, r3, #2
 	ldr r0, [r0, r3]
-	ldr r3, _0225A3B8 ; =sub_0200C7F4
+	ldr r3, _0225A3B8 ; =BufferJPGreeting
 	bx r3
 	nop
-_0225A3B8: .word sub_0200C7F4
+_0225A3B8: .word BufferJPGreeting
 	thumb_func_end ov49_0225A3AC
 
 	thumb_func_start ov49_0225A3BC
@@ -3868,10 +3868,10 @@ ov49_0225A3BC: ; 0x0225A3BC
 	mov r3, #0xb7
 	lsl r3, r3, #2
 	ldr r0, [r0, r3]
-	ldr r3, _0225A3C8 ; =sub_0200C82C
+	ldr r3, _0225A3C8 ; =BufferENGreeting
 	bx r3
 	nop
-_0225A3C8: .word sub_0200C82C
+_0225A3C8: .word BufferENGreeting
 	thumb_func_end ov49_0225A3BC
 
 	thumb_func_start ov49_0225A3CC
@@ -3879,10 +3879,10 @@ ov49_0225A3CC: ; 0x0225A3CC
 	mov r3, #0xb7
 	lsl r3, r3, #2
 	ldr r0, [r0, r3]
-	ldr r3, _0225A3D8 ; =sub_0200C864
+	ldr r3, _0225A3D8 ; =BufferFRGreeting
 	bx r3
 	nop
-_0225A3D8: .word sub_0200C864
+_0225A3D8: .word BufferFRGreeting
 	thumb_func_end ov49_0225A3CC
 
 	thumb_func_start ov49_0225A3DC
@@ -3890,10 +3890,10 @@ ov49_0225A3DC: ; 0x0225A3DC
 	mov r3, #0xb7
 	lsl r3, r3, #2
 	ldr r0, [r0, r3]
-	ldr r3, _0225A3E8 ; =sub_0200C89C
+	ldr r3, _0225A3E8 ; =BufferITGreeting
 	bx r3
 	nop
-_0225A3E8: .word sub_0200C89C
+_0225A3E8: .word BufferITGreeting
 	thumb_func_end ov49_0225A3DC
 
 	thumb_func_start ov49_0225A3EC
@@ -3901,10 +3901,10 @@ ov49_0225A3EC: ; 0x0225A3EC
 	mov r3, #0xb7
 	lsl r3, r3, #2
 	ldr r0, [r0, r3]
-	ldr r3, _0225A3F8 ; =sub_0200C8D4
+	ldr r3, _0225A3F8 ; =BufferDEGreeting
 	bx r3
 	nop
-_0225A3F8: .word sub_0200C8D4
+_0225A3F8: .word BufferDEGreeting
 	thumb_func_end ov49_0225A3EC
 
 	thumb_func_start ov49_0225A3FC
@@ -3912,10 +3912,10 @@ ov49_0225A3FC: ; 0x0225A3FC
 	mov r3, #0xb7
 	lsl r3, r3, #2
 	ldr r0, [r0, r3]
-	ldr r3, _0225A408 ; =sub_0200C90C
+	ldr r3, _0225A408 ; =BufferSPGreeting
 	bx r3
 	nop
-_0225A408: .word sub_0200C90C
+_0225A408: .word BufferSPGreeting
 	thumb_func_end ov49_0225A3FC
 
 	thumb_func_start ov49_0225A40C
@@ -6011,11 +6011,11 @@ ov49_0225B3D8: ; 0x0225B3D8
 	add r3, r1, #0
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _0225B3E4 ; =sub_0200C74C
+	ldr r3, _0225B3E4 ; =BufferWiFiPlazaActivityName
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_0225B3E4: .word sub_0200C74C
+_0225B3E4: .word BufferWiFiPlazaActivityName
 	thumb_func_end ov49_0225B3D8
 
 	thumb_func_start ov49_0225B3E8
@@ -6023,11 +6023,11 @@ ov49_0225B3E8: ; 0x0225B3E8
 	add r3, r1, #0
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _0225B3F4 ; =sub_0200C784
+	ldr r3, _0225B3F4 ; =BufferWiFiPlazaEventName
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_0225B3F4: .word sub_0200C784
+_0225B3F4: .word BufferWiFiPlazaEventName
 	thumb_func_end ov49_0225B3E8
 
 	thumb_func_start ov49_0225B3F8
@@ -6035,11 +6035,11 @@ ov49_0225B3F8: ; 0x0225B3F8
 	add r3, r1, #0
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _0225B404 ; =sub_0200C7BC
+	ldr r3, _0225B404 ; =BufferWiFiPlazaInstrumentName
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_0225B404: .word sub_0200C7BC
+_0225B404: .word BufferWiFiPlazaInstrumentName
 	thumb_func_end ov49_0225B3F8
 
 	thumb_func_start ov49_0225B408
@@ -6069,11 +6069,11 @@ ov49_0225B418: ; 0x0225B418
 
 	thumb_func_start ov49_0225B42C
 ov49_0225B42C: ; 0x0225B42C
-	ldr r3, _0225B434 ; =sub_0200C528
+	ldr r3, _0225B434 ; =BufferECWord
 	ldr r0, [r0]
 	bx r3
 	nop
-_0225B434: .word sub_0200C528
+_0225B434: .word BufferECWord
 	thumb_func_end ov49_0225B42C
 
 	thumb_func_start ov49_0225B438

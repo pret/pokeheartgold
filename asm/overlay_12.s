@@ -11080,7 +11080,7 @@ ov12_0223CEE4: ; 0x0223CEE4
 	add r3, r2, #0
 	ldr r0, [r4, #0x14]
 	ldr r2, [r4, #0x64]
-	bl sub_0200C490
+	bl BufferPCBoxName
 	pop {r4, pc}
 	thumb_func_end ov12_0223CEE4
 

@@ -1651,13 +1651,13 @@ ov43_0222ABFC: ; 0x0222ABFC
 
 	thumb_func_start ov43_0222AC18
 ov43_0222AC18: ; 0x0222AC18
-	ldr r3, _0222AC24 ; =sub_0200C74C
+	ldr r3, _0222AC24 ; =BufferWiFiPlazaActivityName
 	add r2, r1, #0
 	ldr r0, [r0, #0x50]
 	mov r1, #0
 	bx r3
 	nop
-_0222AC24: .word sub_0200C74C
+_0222AC24: .word BufferWiFiPlazaActivityName
 	thumb_func_end ov43_0222AC18
 
 	thumb_func_start ov43_0222AC28

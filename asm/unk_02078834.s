@@ -21540,7 +21540,7 @@ sub_020834FC: ; 0x020834FC
 	ldr r2, [r4, #0x48]
 	mov r1, #1
 	add r3, r6, #0
-	bl sub_0200C490
+	bl BufferPCBoxName
 	ldr r0, [sp, #0x10]
 	cmp r6, r0
 	beq _02083560
@@ -21550,7 +21550,7 @@ sub_020834FC: ; 0x020834FC
 	ldr r2, [r4, #0x48]
 	ldr r3, [sp, #0x10]
 	mov r1, #2
-	bl sub_0200C490
+	bl BufferPCBoxName
 	ldr r0, [r4, #0x44]
 	add r0, r0, #2
 	str r0, [r4, #0x44]
@@ -21562,7 +21562,7 @@ _02083560:
 	ldr r2, [r4, #0x48]
 	mov r1, #2
 	add r3, r6, #0
-	bl sub_0200C490
+	bl BufferPCBoxName
 _02083570:
 	mov r0, #0x56
 	lsl r0, r0, #2

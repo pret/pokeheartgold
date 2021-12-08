@@ -9598,7 +9598,7 @@ ov45_0222E1A0: ; 0x0222E1A0
 	ldr r2, [r5, #4]
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0200C7BC
+	bl BufferWiFiPlazaInstrumentName
 	add r0, r7, #0
 	mov r1, #8
 	bl NewString_ReadMsgData
@@ -9626,7 +9626,7 @@ ov45_0222E200: ; 0x0222E200
 	add r0, r4, #0
 	mov r1, #0
 	add r7, r3, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	ldr r0, [r5, #0xc]
 	cmp r0, #1
 	bne _0222E2EE
@@ -9778,7 +9778,7 @@ ov45_0222E33C: ; 0x0222E33C
 	add r0, r4, #0
 	mov r1, #0
 	add r6, r3, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	ldr r0, _0222E398 ; =gGameLanguage
 	mov r1, #1
 	ldrb r0, [r0]
@@ -9850,12 +9850,12 @@ _0222E3D4:
 	bne _0222E3E4
 	add r0, r7, #0
 	mov r2, #5
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	b _0222E3EC
 _0222E3E4:
 	add r0, r7, #0
 	mov r2, #6
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 _0222E3EC:
 	ldr r2, [r6, #4]
 	mov r1, #0xe
@@ -9900,21 +9900,21 @@ _0222E436:
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_0200C784
+	bl BufferWiFiPlazaEventName
 	mov r1, #0xf
 	b _0222E468
 _0222E444:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #1
-	bl sub_0200C784
+	bl BufferWiFiPlazaEventName
 	mov r1, #0x14
 	b _0222E468
 _0222E452:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #2
-	bl sub_0200C784
+	bl BufferWiFiPlazaEventName
 	mov r1, #0x10
 	b _0222E468
 _0222E460:
@@ -9979,7 +9979,7 @@ _0222E4C4:
 	ldr r2, [r6, #4]
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	ldr r1, [r6, #8]
 	mov r4, #0
 	cmp r1, #0

@@ -247,7 +247,7 @@ STRING *NewString_ReadMsgData(MSGDATA *msgData, s32 msg_no) {
     }
 }
 
-u16 MsgDataGetCount(MSGDATA * msgData) {
+u32 MsgDataGetCount(MSGDATA * msgData) {
     switch (msgData->type) {
     case MSGDATA_LOAD_DIRECT:
         return GetMsgCount_ExistingTable(msgData->direct);

@@ -24,7 +24,7 @@ ScrCmd_852: ; 0x02048EB8
 	str r2, [r4, #8]
 	ldrb r2, [r3]
 	ldr r0, [r0]
-	bl sub_0200CB70
+	bl BufferDeptStoreFloorNo
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0

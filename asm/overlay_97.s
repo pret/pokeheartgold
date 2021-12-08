@@ -1603,7 +1603,7 @@ ov97_0221F294: ; 0x0221F294
 	mov r1, #0
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_0200C944
+	bl BufferPokeathlonCourseName
 	ldr r0, [r4, #0x70]
 	ldr r1, [r4, #0x6c]
 	ldr r3, [r4]

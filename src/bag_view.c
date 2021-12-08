@@ -135,7 +135,7 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
     return TRUE;
 }
 
-void GetItemUseErrorMessage(PLAYERDATA *playerData, STRING *dest, u16 itemId, enum ItemUseError code, u32 heap_id) {
+void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, u32 heap_id) {
 #pragma unused(itemId)
     MSGDATA *msgData;
     switch (code) {
@@ -166,7 +166,7 @@ void GetItemUseErrorMessage(PLAYERDATA *playerData, STRING *dest, u16 itemId, en
         msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000040_bin, heap_id);
         msgFmt = ScrStrBufs_new(heap_id);
         string = NewString_ReadMsgData(msgData, 37);
-        BufferPlayersName(msgFmt, 0, playerData);
+        BufferPlayersName(msgFmt, 0, playerProfile);
         StringExpandPlaceholders(msgFmt, dest, string);
         String_dtor(string);
         ScrStrBufs_delete(msgFmt);

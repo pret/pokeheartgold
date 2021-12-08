@@ -12983,7 +12983,7 @@ _0224BE9C:
 	add r2, r0, #0
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0200C528
+	bl BufferECWord
 	mov r0, #0xc8
 	mov r1, #0xd
 	bl String_ctor

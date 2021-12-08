@@ -9,6 +9,12 @@
 
 #define MAX_MONEY 999999
 
+enum PlayerGender {
+    PLAYER_GENDER_MALE,
+    PLAYER_GENDER_FEMALE,
+    // TODO: define the other 4294967294 genders
+};
+
 typedef struct PLAYERPROFILE {
     u16 name[OT_NAME_LENGTH + 1];
     u32 id;

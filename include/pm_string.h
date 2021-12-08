@@ -32,5 +32,8 @@ void StrAddChar(STRING *str, u16 _char);
 void CopyU16ArrayToString(STRING *dest, const u16 *src);
 void CopyU16ArrayToStringN(STRING *dest, const u16 *src, u32 n);
 u16 *String_c_str(STRING *string);
+void String16_FormatInteger(STRING * str, int num, u32 ndigits, STRCONVMODE strConvMode, BOOL whichCharset);
+void StrUpperCharN(STRING * str, int n);
+void StringCat_HandleTrainerName(STRING * dest, STRING * src);
 
 #endif //POKEHEARTGOLD_STRING_H

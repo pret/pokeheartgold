@@ -7260,7 +7260,7 @@ _0206CF68:
 	ldr r0, [sp, #0x2c]
 	ldr r1, [sp, #8]
 	add r2, r4, #0
-	bl sub_0200C440
+	bl BufferGenderSymbol
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

@@ -1466,24 +1466,24 @@ ov90_02259250: ; 0x02259250
 
 	thumb_func_start ov90_0225926C
 ov90_0225926C: ; 0x0225926C
-	ldr r3, _02259278 ; =sub_0200C7BC
+	ldr r3, _02259278 ; =BufferWiFiPlazaInstrumentName
 	add r2, r1, #0
 	ldr r0, [r0, #4]
 	mov r1, #1
 	bx r3
 	nop
-_02259278: .word sub_0200C7BC
+_02259278: .word BufferWiFiPlazaInstrumentName
 	thumb_func_end ov90_0225926C
 
 	thumb_func_start ov90_0225927C
 ov90_0225927C: ; 0x0225927C
-	ldr r3, _02259288 ; =sub_0200C74C
+	ldr r3, _02259288 ; =BufferWiFiPlazaActivityName
 	add r2, r1, #0
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bx r3
 	nop
-_02259288: .word sub_0200C74C
+_02259288: .word BufferWiFiPlazaActivityName
 	thumb_func_end ov90_0225927C
 
 	thumb_func_start ov90_0225928C

@@ -17,7 +17,7 @@
 #define SAVE_UNK_11              11
 #define SAVE_DRESSUP_DATA        12
 #define SAVE_MAILBOX             13
-#define SAVE_UNK_14              14
+#define SAVE_FRIEND_GROUP        14
 #define SAVE_UNK_15              15
 #define SAVE_GAMESTATS           16
 #define SAVE_SEAL_CASE           17

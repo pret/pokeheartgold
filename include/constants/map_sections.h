@@ -331,4 +331,6 @@
 #define METLOC_EVENT_SITE              3075
 #define METLOC_CONCERT_EVENT           3076
 
+#define MAPLOC(sec)     ((sec)%1000)
+
 #endif

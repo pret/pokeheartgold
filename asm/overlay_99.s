@@ -973,7 +973,7 @@ _021E6090:
 	ldr r0, [sp, #8]
 	mov r1, #1
 	lsr r2, r2, #0x18
-	bl sub_0200C9C8
+	bl BufferPokeathlonEventName
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0
@@ -1096,7 +1096,7 @@ ov99_021E6188: ; 0x021E6188
 	mov r1, #0
 	lsr r2, r2, #0x18
 	add r7, r0, #0
-	bl sub_0200C984
+	bl BufferPokeathlonMedalName
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -1108,7 +1108,7 @@ ov99_021E6188: ; 0x021E6188
 	add r0, r7, #0
 	mov r1, #0
 	lsr r2, r2, #0x18
-	bl sub_0200C944
+	bl BufferPokeathlonCourseName
 	mov r1, #3
 	ldr r0, [r5, #0x10]
 	add r2, r1, #0
@@ -5286,7 +5286,7 @@ _021E8270:
 	add r0, r6, #0
 	mov r1, #0
 	lsr r2, r2, #0x18
-	bl sub_0200C984
+	bl BufferPokeathlonMedalName
 	ldr r0, [r5, r7]
 	add r1, r4, #6
 	mov r2, #4
@@ -6238,7 +6238,7 @@ ov99_021E89EC: ; 0x021E89EC
 	add r2, #0xac
 	ldrb r2, [r2]
 	mov r1, #0
-	bl sub_0200C9C8
+	bl BufferPokeathlonEventName
 	mov r3, #1
 	str r3, [sp]
 	ldr r0, [r5, #0x10]

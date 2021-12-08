@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_TRAINER_DATA_H
 
 #include "pm_string.h"
+#include "mail_message.h"
 #include "pokemon_types_def.h"
 #include "constants/pokemon.h"
 
@@ -94,20 +95,18 @@ typedef struct TrainerData {
     u16 items[4];
     u32 unk_C;
     u32 doubleBattle;
-} TRAINER;
-
-typedef struct TrainerRam {
-    TRAINER data;
     u16 name[OT_NAME_LENGTH + 1];
-    u8 padding[16];
-} TRAINER_RAM;
+    // Used in the Frontier
+    MAIL_MESSAGE winMessage;
+    MAIL_MESSAGE loseMessage;
+} TRAINER;
 
 typedef struct BattleSetupStruct {
     u32 flags;
     PARTY *parties[4];
     u16 field_14[2];
     u32 trainer_idxs[4];
-    TRAINER_RAM trainers[4];
+    TRAINER trainers[4];
 } BATTLE_SETUP;
 
 void TrainerData_ReadTrData(u32 trno, TRAINER *dest);

@@ -9549,7 +9549,7 @@ ScrCmd_718: ; 0x02258998
 	ldr r0, [r6]
 	add r1, r4, #0
 	lsr r2, r2, #0x18
-	bl sub_0200CA4C
+	bl BufferSafariZoneObjectName
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

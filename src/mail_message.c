@@ -61,7 +61,7 @@ STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId
         if (mailMessage->fields[i] == EC_WORD_NULL) {
             break;
         }
-        sub_0200C528(msgFmt, i, mailMessage->fields[i]);
+        BufferECWord(msgFmt, i, mailMessage->fields[i]);
     }
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, _020F60E0[mailMessage->msg_bank], heapId);

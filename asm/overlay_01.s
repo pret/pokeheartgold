@@ -61194,7 +61194,7 @@ ScrCmd_745: ; 0x02202480
 	ldr r0, [r0]
 	add r1, r4, #0
 	lsr r2, r2, #0x18
-	bl sub_0200C944
+	bl BufferPokeathlonCourseName
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_745

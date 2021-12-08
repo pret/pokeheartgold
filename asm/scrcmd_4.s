@@ -1110,7 +1110,7 @@ ScrCmd_626: ; 0x02048C80
 	ldr r0, [r6]
 	add r1, r4, #0
 	lsr r2, r2, #0x18
-	bl sub_0200CA0C
+	bl BufferApricornName
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

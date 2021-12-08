@@ -6879,7 +6879,7 @@ _021EACC2:
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200C528
+	bl BufferECWord
 	add r0, r5, #0
 	add r1, r5, #0
 	add r2, r5, #0
@@ -7017,7 +7017,7 @@ _021EADDE:
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200C528
+	bl BufferECWord
 	add r0, r5, #0
 	add r1, r5, #0
 	add r2, r5, #0

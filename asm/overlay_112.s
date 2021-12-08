@@ -14477,7 +14477,7 @@ ov112_021ECE28: ; 0x021ECE28
 	lsl r2, r2, #0x18
 	mov r1, #0
 	lsr r2, r2, #0x18
-	bl BufferPokewalkerMessage
+	bl BufferPokewalkerCourseName
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0x15
@@ -19671,7 +19671,7 @@ ov112_021EF758: ; 0x021EF758
 	ldr r0, [r5, r0]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl BufferPokewalkerMessage
+	bl BufferPokewalkerCourseName
 	ldr r0, _021EF8A8 ; =0x000010F0
 	ldr r1, [r5, r0]
 	ldr r0, _021EF8AC ; =0x0001D758
@@ -19843,7 +19843,7 @@ ov112_021EF8D4: ; 0x021EF8D4
 	ldr r0, [r5, r0]
 	mov r1, #1
 	lsr r2, r2, #0x18
-	bl BufferPokewalkerMessage
+	bl BufferPokewalkerCourseName
 	mov r0, #0xc
 	mov r1, #0x9a
 	bl String_ctor
@@ -19963,7 +19963,7 @@ ov112_021EF9D4: ; 0x021EF9D4
 	ldr r0, [r4, r0]
 	mov r1, #4
 	lsr r2, r2, #0x18
-	bl BufferPokewalkerMessage
+	bl BufferPokewalkerCourseName
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x30
@@ -20739,7 +20739,7 @@ ov112_021EFF84: ; 0x021EFF84
 	ldr r0, [r5, r0]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl BufferPokewalkerMessage
+	bl BufferPokewalkerCourseName
 	ldr r0, _021F00B8 ; =0x000010F0
 	ldr r1, [r5, r0]
 	ldr r0, _021F00BC ; =0x0001D758
@@ -20903,7 +20903,7 @@ ov112_021F0114: ; 0x021F0114
 	ldr r0, [r4, r0]
 	mov r1, #4
 	lsr r2, r2, #0x18
-	bl BufferPokewalkerMessage
+	bl BufferPokewalkerCourseName
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x30
@@ -21033,7 +21033,7 @@ ov112_021F01CC: ; 0x021F01CC
 	ldr r0, [r5, r0]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl BufferPokewalkerMessage
+	bl BufferPokewalkerCourseName
 	ldr r0, _021F0300 ; =0x000010F0
 	ldr r1, [r5, r0]
 	ldr r0, _021F0304 ; =0x0001D758

@@ -896,7 +896,7 @@ _0205AA1E:
 	beq _0205AA3A
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0200C528
+	bl BufferECWord
 _0205AA3A:
 	ldr r0, _0205AA48 ; =_020FC9D4
 	lsl r1, r4, #2

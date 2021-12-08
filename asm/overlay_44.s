@@ -7352,7 +7352,7 @@ _0222D956:
 	ldr r0, [r5, r0]
 	mov r1, #0
 	add r2, r6, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	mov r0, #0x5a
 	mov r2, #0x17
 	lsl r0, r0, #2
@@ -7758,7 +7758,7 @@ _0222DCC4:
 	ldr r0, [r4, r0]
 	mov r1, #1
 	mov r2, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	mov r1, #6
 	b _0222DD4C
 _0222DCDA:
@@ -7774,7 +7774,7 @@ _0222DCE2:
 	mov r1, #1
 	ldr r0, [r4, r0]
 	add r2, r1, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	mov r1, #6
 	b _0222DD4C
 _0222DCF8:
@@ -7790,7 +7790,7 @@ _0222DD00:
 	ldr r0, [r4, r0]
 	mov r1, #1
 	mov r2, #2
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	mov r1, #6
 	b _0222DD4C
 _0222DD16:
@@ -13971,7 +13971,7 @@ ov44_02230E5C: ; 0x02230E5C
 	mov r1, #0
 	ldr r0, [r5, r0]
 	add r2, r1, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -14016,7 +14016,7 @@ ov44_02230E5C: ; 0x02230E5C
 	mov r1, #0
 	ldr r0, [r5, r0]
 	mov r2, #1
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -14061,7 +14061,7 @@ ov44_02230E5C: ; 0x02230E5C
 	mov r1, #0
 	ldr r0, [r5, r0]
 	mov r2, #2
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -19222,19 +19222,19 @@ _022336BA:
 	mov r1, #0
 	ldr r0, [r4, #4]
 	add r2, r1, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	b _022336DC
 _022336C6:
 	ldr r0, [r4, #4]
 	mov r1, #0
 	mov r2, #1
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	b _022336DC
 _022336D2:
 	ldr r0, [r4, #4]
 	mov r1, #0
 	mov r2, #2
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 _022336DC:
 	ldrb r2, [r5]
 	ldr r1, _02233760 ; =ov44_0223689C

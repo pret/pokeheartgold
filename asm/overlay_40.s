@@ -20453,7 +20453,7 @@ _02235B66:
 	ldr r0, [sp, #0x18]
 	mov r1, #1
 	add r2, r5, #0
-	bl sub_0200C528
+	bl BufferECWord
 	ldr r0, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
 	add r1, r7, #0
@@ -20589,7 +20589,7 @@ _02235C96:
 	ldr r0, [sp, #0x18]
 	mov r1, #1
 	add r2, r5, #0
-	bl sub_0200C528
+	bl BufferECWord
 	ldr r0, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
 	add r1, r7, #0

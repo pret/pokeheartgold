@@ -42,5 +42,6 @@ STRING *GetSpeciesName(u16 species, HeapID heap_id);
 void ReadMsgData_NewNarc_ExistingString(NarcId narcId, s32 fileId, u32 msgId, HeapID heapId, STRING *dest);
 STRING * ReadMsgData_ExpandPlaceholders(MSGFMT * a0, MSGDATA * msgData, u32 msgno, HeapID heap_id);
 STRING * ReadMsgData_NewNarc_NewString(NarcId narc_id, u32 group, u32 num, u32 heap_id);
+u32 MsgDataGetCount(MSGDATA *msgData);
 
 #endif //POKEHEARTGOLD_MSGDATA_H

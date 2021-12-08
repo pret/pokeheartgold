@@ -1340,7 +1340,7 @@ sub_0204C700: ; 0x0204C700
 	ldrb r2, [r7]
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl BufferPokewalkerMessage
+	bl BufferPokewalkerCourseName
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0204C700
@@ -1371,7 +1371,7 @@ sub_0204C738: ; 0x0204C738
 	ldrb r2, [r7]
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl BufferPokewalkerMessage
+	bl BufferPokewalkerCourseName
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0204C738

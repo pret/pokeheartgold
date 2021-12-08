@@ -32,7 +32,8 @@ Static main
 	Object unk_0200A090.o
 	Object unk_0200B150.o
 	Object msgdata.o
-	Object script_buffers.o
+	Object msgfmt.o
+	Object message_printer.o
 	Object unk_0200CE7C.o
 	Object unk_0200CF18.o
 	Object unk_0200E320.o
@@ -47,7 +48,7 @@ Static main
 	Object unk_02014A08.o
 	Object unk_02014DA0.o
 	Object mail_message.o
-	Object unk_02015A9C.o
+	Object easy_chat.o
 	Object unk_02015DD8.o
 	Object unk_020163E0.o
 	Object unk_0201660C.o

@@ -5672,7 +5672,7 @@ ScrCmd_494: ; 0x020433BC
 	add r2, r0, #0
 	ldr r0, [r4]
 	add r1, r6, #0
-	bl sub_0200C528
+	bl BufferECWord
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -11055,7 +11055,7 @@ _02045DCE:
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r7, #0
-	bl sub_0200C528
+	bl BufferECWord
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -11600,19 +11600,19 @@ ScrCmd_571: ; 0x020461A0
 	ldr r2, [sp, #4]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200C528
+	bl BufferECWord
 	ldr r2, [sp, #8]
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200C528
+	bl BufferECWord
 	ldr r2, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0200C528
+	bl BufferECWord
 	add r0, r4, #0
 	mov r1, #3
 	add r2, r7, #0
-	bl sub_0200C528
+	bl BufferECWord
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #1
