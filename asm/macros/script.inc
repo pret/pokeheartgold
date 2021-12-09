@@ -1278,7 +1278,7 @@
 
 	.macro scrcmd_225 arg0
 	.short 225
-	.word \arg0
+	.word \arg0-.-4
 	.endm
 
 	.macro scrcmd_226 arg0, arg1, arg2, arg3

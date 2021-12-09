@@ -27,7 +27,7 @@ void ScrStrBufs_delete(MSGFMT *msgFmt);
 void StringExpandPlaceholders(MSGFMT *msgFmt, STRING *dest, STRING *src);
 void BufferIntegerAsString(MSGFMT *msgFmt, u32 idx, int num, u32 numDigits, STRCONVMODE strconvmode, BOOL whichCharset);
 void BufferPlayersName(MSGFMT *msgFmt, u32 idx, PLAYERPROFILE *playerProfile);
-void BufferECWord(MSGFMT *msgFmt, u32 idx, u32 wordno);
+void BufferECWord(MSGFMT *msgFmt, u32 idx, u16 wordno);
 void BufferSpeciesNameWithArticle(MSGFMT *msgFmt, u32 idx, u32 species);
 
 #endif //GUARD_MSGFMT_H

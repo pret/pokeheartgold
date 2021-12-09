@@ -3,4 +3,7 @@
 
 #define EC_WORD_NULL                (0xFFFF)
 
+#define EC_GROUP_MAX                (11)
+#define EC_WORD_MASK                (0xFFF)
+
 #endif //POKEHEARTGOLD_CONSTANTS_EASY_CHAT_H

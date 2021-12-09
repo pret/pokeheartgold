@@ -49,6 +49,7 @@ Static main
 	Object unk_02014DA0.o
 	Object mail_message.o
 	Object easy_chat.o
+	Object easy_chat_s.o
 	Object unk_02015DD8.o
 	Object unk_020163E0.o
 	Object unk_0201660C.o

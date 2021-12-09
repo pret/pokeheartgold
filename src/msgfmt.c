@@ -367,7 +367,7 @@ void BufferCityName(MSGFMT *msgFmt, u32 fieldno, u32 countryId, u32 cityId) {
     }
 }
 
-void BufferECWord(MSGFMT *msgFmt, u32 fieldno, u32 ecWordIdx) {
+void BufferECWord(MSGFMT *msgFmt, u32 fieldno, u16 ecWordIdx) {
     GetECWordIntoStringByIndex(ecWordIdx, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
