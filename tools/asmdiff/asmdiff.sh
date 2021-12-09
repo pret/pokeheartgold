@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+case $OSTYPE in
+  darwin*)
+    echo "" | gcut -f1 || { echo "This script requires GNU coreutils, install it via homebrew (brew install coreutils)"; exit 1; }
+    CUT=gcut
+    ;;
+  *)
+    CUT=cut
+    ;;
+esac
+
 MYDIR=$(dirname "$0")
 
 mkdir -p "${MYDIR}"/.bins "${MYDIR}"/.files
@@ -128,8 +138,8 @@ case "$mode" in
         "$MYDIR"/ntruncompbw "$basefile" "$vma" $((vma+compsize)) || { rm -f "$basefile"; exit 1; }
       }
     }
-    defsfile=$(cut -d '' -f2 "${builddir}/component.files")
-    ovyfile=$(tail -c+16 "${builddir}/${defsfile}" | cut -d '' -f$((overlay+1)) )
+    defsfile=$(${CUT} -d '' -f2 "${builddir}/component.files")
+    ovyfile=$(tail -c+16 "${builddir}/${defsfile}" | ${CUT} -d '' -f$((overlay+1)) )
     buildfile=$builddir/$ovyfile
     ;;
   static)
@@ -157,8 +167,8 @@ case "$mode" in
         }
       }
     }
-    compname=$(cut -d '' -f1 "${builddir}/component.files")
-    buildfile=${builddir}/${compname}.sbin
+    compname=$(${CUT} -d '' -f1 "${builddir}/component.files")
+    buildfile=${builddir}/${compname}
     ;;
   file)
     buildfile=${fsdir}/${filepath}
