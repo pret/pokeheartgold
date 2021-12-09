@@ -2,7 +2,7 @@
 
 MYDIR=$(dirname "$0")
 
-mkdir -p "${MYDIR}"/.bins
+mkdir -p "${MYDIR}"/.bins "${MYDIR}"/.files
 
 DEFAULT_BASEROM=baserom.nds
 DEFAULT_ARM9BUILDDIR=build/heartgold.us
@@ -10,8 +10,7 @@ DEFAULT_ARM7BUILDDIR=sub/build
 DEFAULT_FSDIR=files
 
 # Build C utils on demand
-[[ $MYDIR/ntruncompbw -nt $MYDIR/ntruncompbw.c ]] || gcc -O3 -g -DNDEBUG -o "$MYDIR"/ntruncompbw "$MYDIR"/ntruncompbw.c
-[[ $MYDIR/ntrextractfile -nt $MYDIR/ntrextractfile.c ]] || gcc -O3 -g -DNDEBUG -o "$MYDIR"/ntrextractfile "$MYDIR"/ntrextractfile.c
+make -C "${MYDIR}" --no-print-directory
 
 getword() {
   od -j "$2" -N 4 -A n -t u "$1" | awk '{$1=$1};1'
@@ -49,14 +48,12 @@ while [[ $# -gt 0 ]]; do
   -7)
     proc=armv4t
     builddir=${builddir:-$DEFAULT_ARM7BUILDDIR}
-    basestem=${basestem}.sub
     shift
     ;;
   -m)
     [[ -n $overlay ]] && { echo "can only do one overlay at a time"; exit 1; }
     mode=overlay
     overlay="$2"
-    basestem=${basestem}.o${overlay}
     shift 2
     ;;
   -r)
@@ -100,6 +97,10 @@ builddir=${builddir:-$DEFAULT_ARM9BUILDDIR}
 baserom=${baserom:-$DEFAULT_BASEROM}
 fsdir=${fsdir:-$DEFAULT_FSDIR}
 
+basestem=
+[[ $proc == armv4t ]] && basestem=${basestem}.sub
+[[ $mode == overlay ]] && basestem=${basestem}.o${overlay}
+
 basefile=${MYDIR}/.bins/${baserom}${basestem}.sbin
 
 case "$mode" in
@@ -127,17 +128,17 @@ case "$mode" in
         "$MYDIR"/ntruncompbw "$basefile" "$vma" $((vma+compsize)) || { rm -f "$basefile"; exit 1; }
       }
     }
-    buildfile=$builddir/OVY_${overlay}.sbin
+    defsfile=$(cut -d '' -f2 "${builddir}/component.files")
+    ovyfile=$(tail -c+16 "${builddir}/${defsfile}" | cut -d '' -f$((overlay+1)) )
+    buildfile=$builddir/$ovyfile
     ;;
   static)
     case $proc in
     armv4t)
       romtab=48
-      compname=ichneumon_sub
       ;;
     armv5te)
       romtab=32
-      compname=main
       ;;
     esac
 
@@ -156,6 +157,7 @@ case "$mode" in
         }
       }
     }
+    compname=$(cut -d '' -f1 "${builddir}/component.files")
     buildfile=${builddir}/${compname}.sbin
     ;;
   file)
@@ -163,7 +165,6 @@ case "$mode" in
     [[ -f "${buildfile}" ]] || { echo file not found: "${buildfile}"; exit 1; }
     basefile=${MYDIR}/.files/${filepath}
     [[ -f "${basefile}" ]] || {
-      mkdir -p "$(dirname "${basefile}")"
       "${MYDIR}"/ntrextractfile "${baserom}" "${filepath}" >"${basefile}"
     }
     diff -u <(hexdump -Cv "$basefile") <(hexdump -Cv "$buildfile")
