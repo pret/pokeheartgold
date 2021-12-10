@@ -123,6 +123,13 @@ case "$mode" in
       ovt=80
       ;;
     esac
+    defsfile=$(${CUT} -d '' -f2 "${builddir}/component.files")
+    if [ -n "${overlay##*[!0-9]*}" 2>/dev/null ] ; then
+      ovyfile=$(tail -c+16 "${builddir}/${defsfile}" | ${CUT} -d '' -f$((overlay+1)) )
+    else
+      ovyfile=${overlay%.*}.sbin
+      overlay=$(($(tail -c+16 "${builddir}/${defsfile}" | tr '\0' '\n' | grep -n $ovyfile | ${CUT} -d: -f1)-1))
+    fi
     ovtoff=$(getword "$baserom" "$ovt")
     vma=$(getword "$baserom" "$((ovtoff+32*overlay+4))")
     size=$(getword "$baserom" "$((ovtoff+32*overlay+8))")
@@ -138,8 +145,6 @@ case "$mode" in
         "$MYDIR"/ntruncompbw "$basefile" "$vma" $((vma+compsize)) || { rm -f "$basefile"; exit 1; }
       }
     }
-    defsfile=$(${CUT} -d '' -f2 "${builddir}/component.files")
-    ovyfile=$(tail -c+16 "${builddir}/${defsfile}" | ${CUT} -d '' -f$((overlay+1)) )
     buildfile=$builddir/$ovyfile
     ;;
   static)
