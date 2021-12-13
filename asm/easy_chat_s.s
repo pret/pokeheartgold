@@ -27,6 +27,7 @@ _020F6114:
 	.short 0x04A7, 0x04E1
 _020F6118:
 	.short 0x0479, 0x0498, 0x049B, 0x049C
+	.public _020F6120
 _020F6120:
 	.byte 0x01, 0x00
 	.byte 0x02, 0x01
@@ -75,120 +76,6 @@ _020F6158:
 	.word _020F6100, 0x00000002
 
 	.text
-
-	thumb_func_start sub_02015BF0
-sub_02015BF0: ; 0x02015BF0
-	mov r0, #8
-	bx lr
-	thumb_func_end sub_02015BF0
-
-	thumb_func_start sub_02015BF4
-sub_02015BF4: ; 0x02015BF4
-	push {r3, lr}
-	mov r2, #0
-	str r2, [r0]
-	ldr r3, _02015C20 ; =_020F6120
-	str r2, [r0, #4]
-_02015BFE:
-	ldrb r1, [r3]
-	cmp r1, #2
-	bne _02015C10
-	ldr r1, _02015C24 ; =_020F6120 + 1
-	lsl r2, r2, #1
-	ldrb r1, [r1, r2]
-	bl sub_02015CFC
-	b _02015C18
-_02015C10:
-	add r2, r2, #1
-	add r3, r3, #2
-	cmp r2, #6
-	blo _02015BFE
-_02015C18:
-	mov r0, #0x1e
-	bl sub_0202893C
-	pop {r3, pc}
-	.balign 4, 0
-_02015C20: .word _020F6120
-_02015C24: .word _020F6120 + 1
-	thumb_func_end sub_02015BF4
-
-	thumb_func_start sub_02015C28
-sub_02015C28: ; 0x02015C28
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0x1e
-	bl sub_02028900
-	add r0, r4, #0
-	mov r1, #0x1e
-	bl SavArray_get
-	pop {r4, pc}
-	thumb_func_end sub_02015C28
-
-	thumb_func_start sub_02015C3C
-sub_02015C3C: ; 0x02015C3C
-	ldr r0, [r0, #4]
-	add r2, r0, #0
-	lsr r2, r1
-	mov r0, #1
-	and r0, r2
-	bx lr
-	thumb_func_end sub_02015C3C
-
-	thumb_func_start sub_02015C48
-sub_02015C48: ; 0x02015C48
-	push {r3, r4, r5, lr}
-	add r4, r0, #0
-	mov r2, #0
-	ldr r3, [r4, #4]
-	add r5, r2, #0
-	mov r0, #1
-_02015C54:
-	add r1, r3, #0
-	lsr r1, r2
-	tst r1, r0
-	bne _02015C5E
-	add r5, r5, #1
-_02015C5E:
-	add r2, r2, #1
-	cmp r2, #0x20
-	blo _02015C54
-	cmp r5, #0
-	beq _02015CA0
-	bl LCRandom
-	add r1, r5, #0
-	bl _u32_div_f
-	ldr r3, [r4, #4]
-	mov r5, #0
-	mov r0, #1
-_02015C78:
-	add r2, r3, #0
-	lsr r2, r5
-	tst r2, r0
-	bne _02015C9A
-	cmp r1, #0
-	bne _02015C98
-	mov r0, #1
-	ldr r1, [r4, #4]
-	lsl r0, r5
-	orr r0, r1
-	str r0, [r4, #4]
-	mov r0, #0x1e
-	bl sub_0202893C
-	add r0, r5, #0
-	pop {r3, r4, r5, pc}
-_02015C98:
-	sub r1, r1, #1
-_02015C9A:
-	add r5, r5, #1
-	cmp r5, #0x20
-	blo _02015C78
-_02015CA0:
-	mov r0, #0x1e
-	bl sub_0202893C
-	mov r0, #0x20
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end sub_02015C48
 
 	thumb_func_start sub_02015CAC
 sub_02015CAC: ; 0x02015CAC

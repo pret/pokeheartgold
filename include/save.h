@@ -33,7 +33,7 @@
 #define SAVE_UNK_27              27
 #define SAVE_UNK_28              28
 #define SAVE_UNK_29              29
-#define SAVE_UNK_30              30
+#define SAVE_EASY_CHAT           30
 #define SAVE_UNK_31              31
 #define SAVE_UNK_32              32
 #define SAVE_UNK_33              33
@@ -51,6 +51,8 @@ typedef struct SaveBlock2 SAVEDATA;
 
 void *SavArray_get(SAVEDATA *save, int idx);
 const void *SavArray_const_get(const SAVEDATA *save, int idx);
+void sub_0202893C(int idx);
+BOOL sub_02028900(int idx);
 #endif //PM_ASM
 
 #endif //POKEHEARTGOLD_SAVE_H

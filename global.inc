@@ -26707,8 +26707,8 @@
 .public sub_02015720
 .public sub_02015754
 .public sub_0201576C
-.public sub_02015BF0
-.public sub_02015BF4
+.public Sav2_EasyChat_sizeof
+.public Sav2_EasyChat_init
 .public sub_02015C28
 .public sub_02015C3C
 .public sub_02015C48

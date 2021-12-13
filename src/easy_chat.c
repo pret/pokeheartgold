@@ -1,9 +1,12 @@
 #include "easy_chat.h"
 #include "save.h"
+#include "math_util.h"
 #include "msgdata/msg.naix"
 
 extern const u16 _020F612C[EC_GROUP_MAX];
 extern const u16 _020F6142[EC_GROUP_MAX];
+extern const u8 _020F6120[6][2];
+void sub_02015CFC(SAVE_EASY_CHAT_T *ec, u8 a1);
 
 BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno);
 
@@ -76,4 +79,59 @@ BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno) {
     }
 
     return FALSE;
+}
+
+u32 Sav2_EasyChat_sizeof(void) {
+    return sizeof(SAVE_EASY_CHAT_T);
+}
+
+void Sav2_EasyChat_init(SAVE_EASY_CHAT_T *ec) {
+    int i;
+
+    ec->unk0 = 0;
+    ec->unk4 = 0;
+    for (i = 0; i < NELEMS(_020F6120); i++) {
+        if (_020F6120[i][0] == 2) {
+            sub_02015CFC(ec, _020F6120[i][1]);
+            break;
+        }
+    }
+    sub_0202893C(SAVE_EASY_CHAT);
+}
+
+SAVE_EASY_CHAT_T *sub_02015C28(SAVEDATA *saveData) {
+    sub_02028900(SAVE_EASY_CHAT);
+    return SavArray_get(saveData, SAVE_EASY_CHAT);
+}
+
+BOOL sub_02015C3C(SAVE_EASY_CHAT_T *ec, int flag) {
+    return (ec->unk4 >> flag) & 1;
+}
+
+u32 sub_02015C48(SAVE_EASY_CHAT_T *ec) {
+    u32 i;
+    u32 n;
+    u32 k;
+
+    for (i = 0, n = 0; i < 32; i++) {
+        if (!((ec->unk4 >> i) & 1)) {
+            n++;
+        }
+    }
+
+    if (n != 0) {
+        k = LCRandom() % n;
+        for (i = 0; i < 32; i++) {
+            if (!((ec->unk4 >> i) & 1)) {
+                if (k == 0) {
+                    ec->unk4 |= 1 << i;
+                    sub_0202893C(SAVE_EASY_CHAT);
+                    return i;
+                }
+                k--;
+            }
+        }
+    }
+    sub_0202893C(SAVE_EASY_CHAT);
+    return 32;
 }
