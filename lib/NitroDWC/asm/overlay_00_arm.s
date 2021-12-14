@@ -25746,7 +25746,7 @@ _021FD794:
 	add r0, sp, #8
 	add r1, sp, #0
 	mov r2, #8
-	bl sub_020A0500
+	bl CRYPTO_RC4FastInit
 	ldr r0, _021FD9B4 ; =ov00_0221B0C0
 	mov r2, #0x70
 	ldr r3, [r0]

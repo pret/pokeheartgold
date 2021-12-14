@@ -877,8 +877,10 @@ _020A04F8:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020A041C
 
-	arm_func_start sub_020A0500
-sub_020A0500: ; 0x020A0500
+	; libcrypto.a:rc4.o
+
+	arm_func_start CRYPTO_RC4FastInit
+CRYPTO_RC4FastInit: ; 0x020A0500
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r3, #0
 	str r3, [r0]
@@ -920,10 +922,10 @@ _020A0578:
 	blt _020A0578
 	ldmia sp!, {r4, r5, r6, lr}
 	bx lr
-	arm_func_end sub_020A0500
+	arm_func_end CRYPTO_RC4FastInit
 
-	arm_func_start sub_020A0598
-sub_020A0598: ; 0x020A0598
+	arm_func_start CRYPTO_RC4Init
+CRYPTO_RC4Init: ; 0x020A0598
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #4
 	mov r3, #0
@@ -962,7 +964,9 @@ _020A05DC:
 	add sp, sp, #4
 	ldmia sp!, {r4, r5, r6, r7, lr}
 	bx lr
-	arm_func_end sub_020A0598
+	arm_func_end CRYPTO_RC4Init
+
+	; back to dwc
 
 	arm_func_start sub_020A0628
 sub_020A0628: ; 0x020A0628

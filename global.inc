@@ -29710,8 +29710,8 @@
 .public sub_020A03D0
 .public sub_020A0404
 .public sub_020A041C
-.public sub_020A0500
-.public sub_020A0598
+.public CRYPTO_RC4FastInit
+.public CRYPTO_RC4Init
 .public sub_020A0628
 .public sub_020B1694
 .public sub_020B17CC

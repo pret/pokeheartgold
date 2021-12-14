@@ -30504,7 +30504,7 @@ _02235F12:
 	add r1, sp, #4
 	mov r2, #8
 	add r4, r0, #0
-	bl sub_020A0598
+	bl CRYPTO_RC4Init
 	add r5, #0x50
 	mov r2, #0xd6
 	add r0, r4, #0
@@ -30579,7 +30579,7 @@ _02235FB2:
 	add r1, sp, #4
 	mov r2, #8
 	add r4, r0, #0
-	bl sub_020A0598
+	bl CRYPTO_RC4Init
 	add r5, #0x50
 	mov r2, #0xd6
 	add r0, r4, #0
@@ -31818,7 +31818,7 @@ _022368FA:
 	ldr r0, _02236974 ; =0x0000104C
 	add r0, r1, r0
 	add r1, sp, #0
-	bl sub_020A0598
+	bl CRYPTO_RC4Init
 	ldr r0, _02236968 ; =ov74_0223E2FC
 	ldr r2, _02236978 ; =0x00001178
 	ldr r3, [r0]
