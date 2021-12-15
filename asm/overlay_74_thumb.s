@@ -14020,7 +14020,7 @@ ov74_0222E060: ; 0x0222E060
 	bl GF_AssertFail
 _0222E072:
 	mov r0, #0x1b
-	bl sub_02028900
+	bl SaveSubstruct_AssertCRC
 	mov r0, #0xaf
 	lsl r0, r0, #6
 	ldr r1, [r4, r0]
@@ -14052,7 +14052,7 @@ _0222E094:
 	strb r1, [r2, r0]
 _0222E0B0:
 	mov r0, #0x1b
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	ldr r0, _0222E0C8 ; =0x00002BA4
 	ldr r0, [r4, r0]
 	bl ov74_022360A0

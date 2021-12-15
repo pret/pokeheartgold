@@ -7387,7 +7387,7 @@ ScrCmd_264: ; 0x02044124
 	str r0, [sp, #4]
 	ldr r0, [r5]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_02015C28
+	bl SaveData_EasyChat_get
 	add r5, r0, #0
 	cmp r4, #0
 	bne _0204417A
@@ -11041,8 +11041,8 @@ ScrCmd_538: ; 0x02045D7C
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02015C28
-	bl sub_02015C48
+	bl SaveData_EasyChat_get
+	bl SaveEasyChat_RandomTrendySayingSet
 	cmp r0, #0x20
 	bne _02045DCE
 	ldr r0, _02045DE4 ; =0x0000FFFF
@@ -11051,7 +11051,7 @@ ScrCmd_538: ; 0x02045D7C
 	pop {r3, r4, r5, r6, r7, pc}
 _02045DCE:
 	strh r0, [r4]
-	bl sub_02015CC8
+	bl TrendyWordIdxToECWord
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r7, #0
@@ -11076,8 +11076,8 @@ ScrCmd_540: ; 0x02045DE8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02015C28
-	bl sub_02015CAC
+	bl SaveData_EasyChat_get
+	bl SaveEasyChat_TrendySayingsUnlockedAllCheck
 	cmp r0, #1
 	bne _02045E14
 	mov r0, #1

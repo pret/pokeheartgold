@@ -1019,7 +1019,7 @@ _0205AADE:
 	cmp r1, #0
 	blt _0205AB1C
 	ldr r0, [sp, #0x20]
-	bl sub_02015CFC
+	bl SaveEasyChat_SetGreetingFlag
 _0205AB1C:
 	cmp r4, #7
 	bhi _0205AB54

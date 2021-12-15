@@ -4,15 +4,85 @@
 #include "gf_gfx_loader.h"
 #include "filesystem.h"
 #include "msgdata/msg.naix"
+#include "constants/species.h"
+#include "constants/pokemon.h"
+#include "constants/moves.h"
+#include "constants/abilities.h"
 
-extern const u16 _020F612C[EC_GROUP_MAX];
-extern const u16 _020F6142[EC_GROUP_MAX];
-extern const u8 _020F6120[6][2];
-extern const struct {
-    const u16 *data;
-    size_t count;
-} _020F6158[12];
-void sub_02015CFC(SAVE_EASY_CHAT_T *ec, u8 a1);
+static const u16 sNarcMsgCounts[EC_GROUP_MAX] = {
+    EC_WORDS_POKEMON_COUNT,
+    EC_WORDS_MOVE_COUNT,
+    EC_WORDS_STATUS_COUNT,
+    EC_WORDS_TRAINER_COUNT,
+    EC_WORDS_PEOPLE_COUNT,
+    EC_WORDS_GREETINGS_COUNT,
+    EC_WORDS_LIFESTYLE_COUNT,
+    EC_WORDS_FEELINGS_COUNT,
+    EC_WORDS_TOUGH_WORDS_COUNT,
+    EC_WORDS_UNION_COUNT,
+    EC_WORDS_QUESTION_MARKS_COUNT,
+};
+
+static const u16 sNarcMsgBanks[EC_GROUP_MAX] = {
+    NARC_msg_msg_00000237_bin,
+    NARC_msg_msg_00000751_bin,
+    NARC_msg_msg_00000735_bin,
+    NARC_msg_msg_00000721_bin,
+    NARC_msg_msg_00000285_bin,
+    NARC_msg_msg_00000286_bin,
+    NARC_msg_msg_00000287_bin,
+    NARC_msg_msg_00000288_bin,
+    NARC_msg_msg_00000289_bin,
+    NARC_msg_msg_00000290_bin,
+    NARC_msg_msg_00000291_bin,
+};
+
+static const u8 sLanguageToGreetingMap[6][2] = {
+    { LANGUAGE_JAPANESE, (EC_WORD_LIFESTYLE_KONNICHIWA-EC_WORDS_LIFESTYLE_MIN) },
+    { LANGUAGE_ENGLISH,  (EC_WORD_LIFESTYLE_HELLO-EC_WORDS_LIFESTYLE_MIN) },
+    { LANGUAGE_FRENCH,   (EC_WORD_LIFESTYLE_BONJOUR-EC_WORDS_LIFESTYLE_MIN) },
+    { LANGUAGE_ITALIAN,  (EC_WORD_LIFESTYLE_CIAO-EC_WORDS_LIFESTYLE_MIN) },
+    { LANGUAGE_GERMAN,   (EC_WORD_LIFESTYLE_HALLO-EC_WORDS_LIFESTYLE_MIN) },
+    { LANGUAGE_SPANISH,  (EC_WORD_LIFESTYLE_HOLA-EC_WORDS_LIFESTYLE_MIN) },
+};
+
+// Several easy chat words are identical in
+// the English localization. They are presented here.
+// This is a leftover from Diamond that is linked
+// simply because the routines that use it are
+// present in source but dead-stripped at link time.
+static const ECWORD _hey[] = {EC_WORD_LIFESTYLE_HEY, EC_WORD_LIFESTYLE_HEY_2};
+static const ECWORD _huh_[] = {EC_WORD_LIFESTYLE_HUH_, EC_WORD_LIFESTYLE_HUH__2};
+static const ECWORD _i[] = {EC_WORD_GREETINGS_I, EC_WORD_GREETINGS_I_2, EC_WORD_GREETINGS_I_3, EC_WORD_GREETINGS_I_4};
+static const ECWORD _kids[] = {EC_WORD_GREETINGS_KIDS, EC_WORD_GREETINGS_KIDS_2};
+static const ECWORD _no_way[] = {EC_WORD_LIFESTYLE_NO_WAY, EC_WORD_TOUGH_WORDS_NO_WAY};
+static const ECWORD _anticipation[] = {EC_WORD_TRAINER(ABILITY_ANTICIPATION), EC_WORD_TOUGH_WORDS_ANTICIPATION};
+static const ECWORD _you[] = {EC_WORD_GREETINGS_YOU, EC_WORD_GREETINGS_YOU_2};
+static const ECWORD _simple[] = {EC_WORD_TRAINER(ABILITY_SIMPLE), EC_WORD_TOUGH_WORDS_SIMPLE};
+static const ECWORD _welcome[] = {EC_WORD_LIFESTYLE_WELCOME, EC_WORD_LIFESTYLE_WELCOME_2};
+static const ECWORD _wow[] = {EC_WORD_LIFESTYLE_WOW, EC_WORD_LIFESTYLE_WOW_2};
+static const ECWORD _psychic[] = {EC_WORD_MOVE(MOVE_PSYCHIC), EC_WORD_STATUS(TYPE_PSYCHIC)};
+static const ECWORD _ok[] = {EC_WORD_LIFESTYLE_OK, EC_WORD_LIFESTYLE_OK_2};
+
+static const struct {
+    const ECWORD *data;
+    u32 count;
+} sIdenticalPhrases[12] = {
+    {_anticipation, NELEMS(_anticipation)},
+    {_hey, NELEMS(_hey)},
+    {_huh_, NELEMS(_huh_)},
+    {_i, NELEMS(_i)},
+    {_kids, NELEMS(_kids)},
+    {_no_way, NELEMS(_no_way)},
+    {_ok, NELEMS(_ok)},
+    {_psychic, NELEMS(_psychic)},
+    {_simple, NELEMS(_simple)},
+    {_welcome, NELEMS(_welcome)},
+    {_wow, NELEMS(_wow)},
+    {_you, NELEMS(_you)},
+};
+
+void SaveEasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 a1);
 
 BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno);
 
@@ -23,7 +93,7 @@ ECMAN *EasyChatManager_new(HeapID heapId) {
     ret = AllocFromHeap(heapId, sizeof(ECMAN));
     for (i = 0; i < EC_GROUP_MAX; i++) {
         ret->heapId = heapId;
-        ret->msgData[i] = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, _020F612C[i], heapId);
+        ret->msgData[i] = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, sNarcMsgBanks[i], heapId);
     }
     return ret;
 }
@@ -47,7 +117,7 @@ void GetECWordIntoStringByIndex(u16 ecWord, STRING *dest) {
     u32 category, msgno;
     if (ecWord != EC_WORD_NULL) {
         GetCategoryAndMsgNoByECWordIdx(ecWord, &category, &msgno);
-        category = _020F612C[category];
+        category = sNarcMsgBanks[category];
         ReadMsgData_NewNarc_ExistingString(NARC_msgdata_msg, category, msgno, 0, dest);
     } else {
         StringSetEmpty(dest);
@@ -59,9 +129,9 @@ u16 GetECWordIndexByPair(u32 category, u32 msgno) {
     u16 k;
     u16 j;
     for (i = 0; i < 11; i++) {
-        if (category == _020F612C[i]) {
+        if (category == sNarcMsgBanks[i]) {
             for (j = 0, k = 0; j < i; j++) {
-                k += _020F6142[j];
+                k += sNarcMsgCounts[j];
             }
             return (u16)(k + msgno);
         }
@@ -75,11 +145,11 @@ BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno) {
     r3 = ecWord & EC_WORD_MASK;
     j = 0;
 
-    for (i = 0; i < NELEMS(_020F6142); i++) {
-        j += _020F6142[i];
+    for (i = 0; i < NELEMS(sNarcMsgCounts); i++) {
+        j += sNarcMsgCounts[i];
         if (r3 < j) {
             *category = i;
-            *msgno = (r3 - (j - _020F6142[i]));
+            *msgno = (r3 - (j - sNarcMsgCounts[i]));
             return TRUE;
         }
     }
@@ -94,33 +164,33 @@ u32 Sav2_EasyChat_sizeof(void) {
 void Sav2_EasyChat_init(SAVE_EASY_CHAT_T *ec) {
     int i;
 
-    ec->unk0 = 0;
-    ec->unk4 = 0;
-    for (i = 0; i < NELEMS(_020F6120); i++) {
-        if (_020F6120[i][0] == GAME_LANGUAGE) {
-            sub_02015CFC(ec, _020F6120[i][1]);
+    ec->greetings = 0;
+    ec->trendy = 0;
+    for (i = 0; i < NELEMS(sLanguageToGreetingMap); i++) {
+        if (sLanguageToGreetingMap[i][0] == GAME_LANGUAGE) {
+            SaveEasyChat_SetGreetingFlag(ec, sLanguageToGreetingMap[i][1]);
             break;
         }
     }
-    sub_0202893C(SAVE_EASY_CHAT);
+    SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-SAVE_EASY_CHAT_T *sub_02015C28(SAVEDATA *saveData) {
-    sub_02028900(SAVE_EASY_CHAT);
+SAVE_EASY_CHAT_T *SaveData_EasyChat_get(SAVEDATA *saveData) {
+    SaveSubstruct_AssertCRC(SAVE_EASY_CHAT);
     return SavArray_get(saveData, SAVE_EASY_CHAT);
 }
 
-BOOL sub_02015C3C(SAVE_EASY_CHAT_T *ec, int flag) {
-    return (ec->unk4 >> flag) & 1;
+BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag) {
+    return (ec->trendy >> flag) & 1;
 }
 
-u32 sub_02015C48(SAVE_EASY_CHAT_T *ec) {
+u32 SaveEasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec) {
     u32 i;
     u32 n;
     u32 k;
 
     for (i = 0, n = 0; i < 32; i++) {
-        if (!((ec->unk4 >> i) & 1)) {
+        if (!((ec->trendy >> i) & 1)) {
             n++;
         }
     }
@@ -128,47 +198,47 @@ u32 sub_02015C48(SAVE_EASY_CHAT_T *ec) {
     if (n != 0) {
         k = LCRandom() % n;
         for (i = 0; i < 32; i++) {
-            if (!((ec->unk4 >> i) & 1)) {
+            if (!((ec->trendy >> i) & 1)) {
                 if (k == 0) {
-                    ec->unk4 |= 1 << i;
-                    sub_0202893C(SAVE_EASY_CHAT);
+                    ec->trendy |= 1 << i;
+                    SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
                     return i;
                 }
                 k--;
             }
         }
     }
-    sub_0202893C(SAVE_EASY_CHAT);
+    SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
     return 32;
 }
 
-BOOL sub_02015CAC(SAVE_EASY_CHAT_T *ec, int k) {
+BOOL SaveEasyChat_TrendySayingsUnlockedAllCheck(SAVE_EASY_CHAT_T *ec) {
     u32 i;
 
     for (i = 0; i < 32; i++) {
-        if (!((ec->unk4 >> i) & 1)) {
+        if (!((ec->trendy >> i) & 1)) {
             return FALSE;
         }
     }
     return TRUE;
 }
 
-u16 sub_02015CC8(u16 a0) {
+ECWORD TrendyWordIdxToECWord(u16 a0) {
     int i;
-    u16 n = 0;
-    for (i = 0; i < 9; i++) {
-        n += _020F6142[i];
+    ECWORD n = 0;
+    for (i = 0; i < EC_GROUP_UNION; i++) {
+        n += sNarcMsgCounts[i];
     }
     return n + a0;
 }
 
-BOOL sub_02015CF0(SAVE_EASY_CHAT_T *ec, u8 idx) {
-    return (ec->unk0 >> idx) & 1;
+BOOL SaveEasyChat_GetGreetingsFlag(SAVE_EASY_CHAT_T *ec, u8 idx) {
+    return (ec->greetings >> idx) & 1;
 }
 
-void sub_02015CFC(SAVE_EASY_CHAT_T *ec, u8 idx) {
-    ec->unk0 |= 1 << idx;
-    sub_0202893C(SAVE_EASY_CHAT);
+void SaveEasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 idx) {
+    ec->greetings |= 1 << idx;
+    SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
 struct UnkStruct_02015D14 *sub_02015D14(HeapID heapId) {
@@ -213,42 +283,43 @@ s16 sub_02015D94(struct UnkStruct_02015D14 *unk, int value) {
     return -1;
 }
 
-u16 sub_02015DC8(int a0) {
-    if (a0 >= 11) {
-        a0 = 0;
+u16 EasyChat_GetMsgBankForGroup(int category) {
+    if (category >= EC_GROUP_MAX) {
+        category = 0;
     }
-    return _020F612C[a0];
+    return sNarcMsgBanks[category];
 }
 
-// These two functions are required in order to force _020F6158 to link.
+// These two functions are required in order to force sIdenticalPhrases to link.
 // However, they are unlinked in heartgold and deadstripped in linktime.
 // The only reason why there's any code in here at all is because these
 // functions can be found in Diamond and Pearl.
-s32 DEADSTRIP__easy_chat_0(u16 a0) {
+s32 DEADSTRIP__easy_chat_0(ECWORD a0) {
     s32 r3;
     s32 r4;
 
-    for (r3 = 0; r3 < NELEMS(_020F6158); r3++) {
-        for (r4 = 0; r4 < _020F6158[r3].count; r4++) {
-            if (a0 == _020F6158[r3].data[r4])
-                return _020F6158[r3].count - 1;
+    for (r3 = 0; r3 < NELEMS(sIdenticalPhrases); r3++) {
+        for (r4 = 0; r4 < sIdenticalPhrases[r3].count; r4++) {
+            if (a0 == sIdenticalPhrases[r3].data[r4]) {
+                return sIdenticalPhrases[r3].count - 1;
+            }
         }
     }
     return 0;
 }
 
-u16 DEADSTRIP__easy_chat_1(u16 a0, s32 a1) {
+ECWORD DEADSTRIP__easy_chat_1(u16 a0, s32 a1) {
     s32 r7;
     s32 r2;
     s32 r0;
 
-    for (r7 = 0; r7 < NELEMS(_020F6158); r7++) {
-        for (r2 = 0; r2 < _020F6158[r7].count; r2++) {
-            if (a0 == _020F6158[r7].data[r2]) {
+    for (r7 = 0; r7 < NELEMS(sIdenticalPhrases); r7++) {
+        for (r2 = 0; r2 < sIdenticalPhrases[r7].count; r2++) {
+            if (a0 == sIdenticalPhrases[r7].data[r2]) {
                 // ERROR: Infinite loop when reached
-                for (r0 = 0; /*r0 <*/ _020F6158[r7].count; r0++) {
+                for (r0 = 0; /*r0 <*/ sIdenticalPhrases[r7].count; r0++) {
                     if (a1 == 0) {
-                        return _020F6158[r7].data[r0];
+                        return sIdenticalPhrases[r7].data[r0];
                     }
                     a1--;
                 }

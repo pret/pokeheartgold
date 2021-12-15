@@ -51,8 +51,8 @@ typedef struct SaveBlock2 SAVEDATA;
 
 void *SavArray_get(SAVEDATA *save, int idx);
 const void *SavArray_const_get(const SAVEDATA *save, int idx);
-void sub_0202893C(int idx);
-BOOL sub_02028900(int idx);
+void SaveSubstruct_UpdateCRC(int idx);
+BOOL SaveSubstruct_AssertCRC(int idx);
 #endif //PM_ASM
 
 #endif //POKEHEARTGOLD_SAVE_H

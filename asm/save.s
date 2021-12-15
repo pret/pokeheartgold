@@ -3188,8 +3188,8 @@ SaveErrorHandling: ; 0x020288D4
 _020288FC: .word _021D2228
 	thumb_func_end SaveErrorHandling
 
-	thumb_func_start sub_02028900
-sub_02028900: ; 0x02028900
+	thumb_func_start SaveSubstruct_AssertCRC
+SaveSubstruct_AssertCRC: ; 0x02028900
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl sub_020272B0
@@ -3216,10 +3216,10 @@ _02028932:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02028900
+	thumb_func_end SaveSubstruct_AssertCRC
 
-	thumb_func_start sub_0202893C
-sub_0202893C: ; 0x0202893C
+	thumb_func_start SaveSubstruct_UpdateCRC
+SaveSubstruct_UpdateCRC: ; 0x0202893C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl sub_020272B0
@@ -3238,7 +3238,7 @@ sub_0202893C: ; 0x0202893C
 	lsl r1, r1, #1
 	strh r0, [r4, r1]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0202893C
+	thumb_func_end SaveSubstruct_UpdateCRC
 
 	thumb_func_start sub_02028968
 sub_02028968: ; 0x02028968

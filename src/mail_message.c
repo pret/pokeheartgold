@@ -43,10 +43,10 @@ void MailMsg_init_fromTemplate(MAIL_MESSAGE *mailMessage, const MAIL_MSG_TEMPLAT
     MailMsg_init_withBank(mailMessage, template->msg_bank);
     mailMessage->msg_no = template->msg_no;
     if (template->ec_groups[0] > 0) {
-        mailMessage->fields[0] = GetECWordIndexByPair(sub_02015DC8(template->ec_groups[0]), template->ec_words[0]);
+        mailMessage->fields[0] = GetECWordIndexByPair(EasyChat_GetMsgBankForGroup(template->ec_groups[0]), template->ec_words[0]);
     }
     if (template->ec_groups[1] > 0) {
-        mailMessage->fields[1] = GetECWordIndexByPair(sub_02015DC8(template->ec_groups[1]), template->ec_words[1]);
+        mailMessage->fields[1] = GetECWordIndexByPair(EasyChat_GetMsgBankForGroup(template->ec_groups[1]), template->ec_words[1]);
     }
 }
 

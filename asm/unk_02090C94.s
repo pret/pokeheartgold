@@ -29,7 +29,7 @@ sub_02090C94: ; 0x02090C94
 	bl Sav2_Pokedex_get
 	str r0, [r4, #0xc]
 	add r0, r6, #0
-	bl sub_02015C28
+	bl SaveData_EasyChat_get
 	str r0, [r4, #0x10]
 	add r0, r6, #0
 	bl SavArray_Flags_get
@@ -2015,7 +2015,7 @@ _020919EC:
 	ldr r1, [sp, #8]
 	ldr r0, [sp, #0xc]
 	sub r1, r2, r1
-	bl sub_02015C3C
+	bl SaveEasyChat_GetTrendySayingFlag
 	cmp r0, #0
 	beq _02091A1E
 	ldrh r3, [r5]
@@ -2083,7 +2083,7 @@ _02091A68:
 	bhi _02091A80
 	ldr r0, [sp, #0x10]
 	sub r1, r1, r6
-	bl sub_02015CF0
+	bl SaveEasyChat_GetGreetingsFlag
 	cmp r0, #0
 	beq _02091AA2
 _02091A80:

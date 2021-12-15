@@ -18,11 +18,11 @@ sub_0202DBA8: ; 0x0202DBA8
 
 	thumb_func_start sub_0202DBB0
 sub_0202DBB0: ; 0x0202DBB0
-	ldr r3, _0202DBB8 ; =sub_0202893C
+	ldr r3, _0202DBB8 ; =SaveSubstruct_UpdateCRC
 	mov r0, #0x1b
 	bx r3
 	nop
-_0202DBB8: .word sub_0202893C
+_0202DBB8: .word SaveSubstruct_UpdateCRC
 	thumb_func_end sub_0202DBB0
 
 	thumb_func_start sub_0202DBBC
@@ -155,7 +155,7 @@ _0202DC94:
 	blt _0202DC52
 _0202DC9C:
 	mov r0, #0x1b
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	ldr r0, [sp, #0xc]
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -237,7 +237,7 @@ _0202DD30:
 	blt _0202DCF0
 _0202DD38:
 	mov r0, #0x1b
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	ldr r0, [sp, #8]
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -265,7 +265,7 @@ _0202DD5E:
 	lsl r2, r2, #2
 	bl MI_CpuCopy8
 	mov r0, #0x1b
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -296,7 +296,7 @@ _0202DD8A:
 	bic r2, r1
 	strh r2, [r3, r0]
 	mov r0, #0x1b
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0202DD7C
@@ -327,7 +327,7 @@ _0202DDBE:
 	add r1, r4, #0
 	bl sub_0202DF38
 	mov r0, #0x1b
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0202DDB0
@@ -350,7 +350,7 @@ _0202DDFA:
 	lsl r0, r0, #4
 	strh r2, [r1, r0]
 	mov r0, #0x1b
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0202DDEC
@@ -621,7 +621,7 @@ _0202DFBE:
 	orr r0, r3
 	strb r0, [r5, r1]
 	mov r0, #0x1b
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0202DFAC
 
@@ -651,7 +651,7 @@ _0202DFFC:
 	and r0, r6
 	strb r0, [r5, r1]
 	mov r0, #0x1b
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_0202DFDC
@@ -688,7 +688,7 @@ sub_0202E034: ; 0x0202E034
 	str r0, [r1]
 _0202E046:
 	mov r0, #0x1b
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	pop {r3, pc}
 	nop
 _0202E050: .word _021D2AF4

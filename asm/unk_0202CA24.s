@@ -19,7 +19,7 @@ sub_0202CA2C: ; 0x0202CA2C
 	mov r0, #0
 	bl MIi_CpuClear32
 	mov r0, #0x1a
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	pop {r3, pc}
 	.balign 4, 0
 _0202CA40: .word 0x00000FF8
@@ -30,7 +30,7 @@ sub_0202CA44: ; 0x0202CA44
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x1a
-	bl sub_02028900
+	bl SaveSubstruct_AssertCRC
 	add r0, r4, #0
 	mov r1, #0x1a
 	bl SavArray_get
@@ -61,7 +61,7 @@ _0202CA74:
 	strb r4, [r6, #6]
 	bl sub_0202CAE4
 	mov r0, #0x1a
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_0202CA58
 
@@ -180,7 +180,7 @@ _0202CB0A:
 	bl sub_0202CB60
 _0202CB52:
 	mov r0, #0x1a
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 _0202CB58:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -194,12 +194,12 @@ sub_0202CB5C: ; 0x0202CB5C
 
 	thumb_func_start sub_0202CB60
 sub_0202CB60: ; 0x0202CB60
-	ldr r3, _0202CB68 ; =sub_0202893C
+	ldr r3, _0202CB68 ; =SaveSubstruct_UpdateCRC
 	strb r1, [r0, #4]
 	mov r0, #0x1a
 	bx r3
 	.balign 4, 0
-_0202CB68: .word sub_0202893C
+_0202CB68: .word SaveSubstruct_UpdateCRC
 	thumb_func_end sub_0202CB60
 
 	thumb_func_start sub_0202CB6C
@@ -246,6 +246,6 @@ _0202CBA4:
 	cmp r7, r1
 	blt _0202CB7A
 	mov r0, #0x1a
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0202CB6C

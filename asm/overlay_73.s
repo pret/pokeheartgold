@@ -4738,7 +4738,7 @@ _021E7E0C:
 	blt _021E7D9E
 _021E7E18:
 	mov r0, #0x17
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

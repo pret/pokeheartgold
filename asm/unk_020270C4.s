@@ -8,7 +8,7 @@ sub_020270C4: ; 0x020270C4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x17
-	bl sub_02028900
+	bl SaveSubstruct_AssertCRC
 	add r0, r4, #0
 	mov r1, #0x17
 	bl SavArray_get
@@ -29,7 +29,7 @@ sub_020270E4: ; 0x020270E4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x1b
-	bl sub_02028900
+	bl SaveSubstruct_AssertCRC
 	add r0, r4, #0
 	mov r1, #0x1b
 	bl SavArray_get
