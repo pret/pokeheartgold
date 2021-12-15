@@ -101,7 +101,7 @@ _02052FC8:
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0
 	ldr r1, [r1]
-	bl sub_0203B648
+	bl Field_InitMapEvents
 	ldr r0, [r5, #0x20]
 	ldr r1, [r0, #4]
 	mov r0, #0
@@ -109,7 +109,7 @@ _02052FC8:
 	cmp r1, r0
 	beq _02053016
 	add r0, r5, #0
-	bl sub_0203B6E8
+	bl Field_GetWarpEventI
 	ldrh r2, [r0]
 	ldr r1, [r5, #0x20]
 	str r2, [r1, #8]
@@ -364,7 +364,7 @@ _020531B2:
 	ldr r3, [r3, #0x10]
 	bl sub_020699F8
 	add r0, r4, #0
-	bl sub_0203B6B0
+	bl Field_InitMapObjectsFromZoneEventData
 	ldr r0, [r4, #0x3c]
 	bl sub_0205F55C
 	add sp, #0x10

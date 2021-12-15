@@ -5351,8 +5351,8 @@ sub_0205E954: ; 0x0205E954
 	.balign 4, 0
 	thumb_func_end sub_0205E954
 
-	thumb_func_start sub_0205E9AC
-sub_0205E9AC: ; 0x0205E9AC
+	thumb_func_start InitMapObjectsFromEventTemplates
+InitMapObjectsFromEventTemplates: ; 0x0205E9AC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r2, #0
@@ -5395,7 +5395,7 @@ _0205E9EE:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205E9AC
+	thumb_func_end InitMapObjectsFromEventTemplates
 
 	thumb_func_start sub_0205EA08
 sub_0205EA08: ; 0x0205EA08

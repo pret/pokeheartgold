@@ -56,7 +56,7 @@ _02260C66:
 	add r0, r5, #0
 	mul r6, r1
 	mov r1, #0xb
-	bl sub_0203B610
+	bl Field_AllocateMapEvents
 	mov r0, #0xb
 	bl BagCursor_new
 	add r1, r5, #0

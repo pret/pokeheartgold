@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_MAP_HEADER_H
 #define POKEHEARTGOLD_MAP_HEADER_H
 
-struct MapHeader
+typedef struct MapHeader
 {
     u8 wild_encounter_bank;     // fielddata/encountdata/[gs]_enc_data.naix
     u8 area_data_bank;          // fielddata/areadata/area_data.naix
@@ -31,7 +31,7 @@ struct MapHeader
     u32 unk_14_1D:1;
     u32 unk_14_1E:1;
     u32 unk_14_1F:1;
-};
+} MAP_HEADER;
 
 u8 MapHeader_GetAreaDataBank(u32 map_no);
 u16 MapHeader_GetMoveModelBank(u32 map_no);

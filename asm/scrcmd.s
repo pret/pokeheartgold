@@ -3120,10 +3120,10 @@ ScrCmd_100: ; 0x02041FB8
 	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203B74C
+	bl Field_GetNumObjectEvents
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203B754
+	bl Field_GetObjectEvents
 	str r0, [sp]
 	ldr r3, [r5, #0x20]
 	ldr r0, [r5, #0x3c]
@@ -8145,7 +8145,7 @@ ScrCmd_338: ; 0x020446EC
 	ldr r0, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0203B75C
+	bl Field_SetObjectEventXYPos
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8236,7 +8236,7 @@ ScrCmd_340: ; 0x020447CC
 	add r2, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_0203B7C4
+	bl Field_SetObjectEventMovement
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_340
@@ -8263,7 +8263,7 @@ ScrCmd_341: ; 0x02044804
 	add r2, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_0203B794
+	bl Field_SetObjectEventFacing
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_341
@@ -8299,7 +8299,7 @@ ScrCmd_342: ; 0x0204483C
 	ldr r0, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0203B7F4
+	bl Field_SetWarpXYPos
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8336,7 +8336,7 @@ ScrCmd_343: ; 0x0204488C
 	ldr r0, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0203B80C
+	bl Field_SetBgEventXYPos
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

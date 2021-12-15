@@ -295,7 +295,7 @@ sub_0203E058: ; 0x0203E058
 	ldr r0, [r4, #0x30]
 	bl MapMatrix_Free
 	add r0, r4, #0
-	bl sub_0203B630
+	bl Field_FreeMapEvents
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]

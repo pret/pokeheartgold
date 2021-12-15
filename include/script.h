@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_SCRIPT_H
 
 #include "save.h"
+#include "map_events_internal.h"
 // #include "map_matrix.h"
 typedef struct MAPMATRIX MAPMATRIX;
 
@@ -15,15 +16,25 @@ typedef struct MAPMATRIX MAPMATRIX;
 
 #define ScriptReadByte(ctx) *(ctx->script_ptr++)
 
+typedef struct UnkSavStruct80_Sub20 {
+    int unk0;
+} UnkSavStruct80_Sub20;
+
+typedef struct UnkSavStruct80_Sub3C UnkSavStruct80_Sub3C;
+
 typedef struct UnkSavStruct80 {
     u8 unk0[0x8];
     void* bg_config;
     SAVEDATA* savedata;
     void* unk10;
-    void* map_events;
-    u8 unk18[0x12];
+    MAP_EVENTS* map_events;
+    u8 unk18[0x8];
+    UnkSavStruct80_Sub20* unk20;
+    u8 unk24[0xC];
     MAPMATRIX* map_matrix;
-    u8 unk34[0xF4];
+    u8 unk34[0x8];
+    UnkSavStruct80_Sub3C* unk3C;
+    u8 unk40[0xE8];
 } UnkSavStruct80; // size: 0x128
 
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;

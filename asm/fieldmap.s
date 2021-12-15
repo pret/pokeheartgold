@@ -2141,7 +2141,7 @@ sub_02040614: ; 0x02040614
 	str r0, [sp]
 	add r4, r1, #0
 	mov r6, #0
-	bl sub_0203B6E0
+	bl Field_GetNumBgEvents
 	add r5, r0, #0
 	add r2, r5, #1
 	mov r1, #6
@@ -2161,7 +2161,7 @@ sub_02040614: ; 0x02040614
 	pop {r4, r5, r6, r7, pc}
 _02040646:
 	ldr r0, [sp]
-	bl sub_0203B6D8
+	bl Field_GetBgEvents
 	add r4, r0, #0
 	bne _02040660
 	ldr r0, [sp, #0x1c]

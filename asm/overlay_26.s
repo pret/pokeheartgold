@@ -221,7 +221,7 @@ ov26_02259A24: ; 0x02259A24
 	add r4, r1, #0
 	str r0, [sp]
 	str r2, [sp, #4]
-	bl sub_0203B74C
+	bl Field_GetNumObjectEvents
 	add r7, r0, #0
 	add r0, r4, #0
 	bl sub_0205F27C

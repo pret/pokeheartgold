@@ -20409,10 +20409,10 @@ ov02_0224F580: ; 0x0224F580
 	str r0, [sp]
 	str r1, [sp, #4]
 	mov r4, #0
-	bl sub_0203B6D8
+	bl Field_GetBgEvents
 	add r5, r0, #0
 	ldr r0, [sp]
-	bl sub_0203B6E0
+	bl Field_GetNumBgEvents
 	add r7, r0, #0
 	beq _0224F5C6
 	cmp r5, #0

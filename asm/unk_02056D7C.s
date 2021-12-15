@@ -984,12 +984,12 @@ sub_02057480: ; 0x02057480
 	add r6, r1, #0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
-	bl sub_0203B74C
+	bl Field_GetNumObjectEvents
 	add r4, r0, #0
 	ldr r0, _020574C0 ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
-	bl sub_0203B754
+	bl Field_GetObjectEvents
 	mov r2, #0
 	cmp r4, #0
 	ble _020574BA

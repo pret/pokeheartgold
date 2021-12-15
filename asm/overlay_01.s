@@ -698,15 +698,15 @@ _021E5F3E:
 	add r1, r4, #0
 	str r4, [r0]
 	add r0, r5, #0
-	bl sub_0203B648
+	bl Field_InitMapEvents
 	add r0, r5, #0
 	mov r1, #1
 	bl sub_02053038
 	add r0, r5, #0
-	bl sub_0203B74C
+	bl Field_GetNumObjectEvents
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0203B754
+	bl Field_GetObjectEvents
 	str r0, [sp]
 	ldr r0, [r5, #0x3c]
 	ldr r3, [sp, #4]
@@ -722,7 +722,7 @@ _021E5F3E:
 	mov r2, #1
 	bl sub_02054FDC
 	add r0, r5, #0
-	bl sub_0203B6B0
+	bl Field_InitMapObjectsFromZoneEventData
 	add r0, r7, #0
 	bl sub_0203B984
 	add r1, r0, #0
@@ -2417,10 +2417,10 @@ _021E6C7C:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6C86:
 	add r0, r4, #0
-	bl sub_0203B6D8
+	bl Field_GetBgEvents
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203B6E0
+	bl Field_GetNumBgEvents
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
@@ -2567,10 +2567,10 @@ _021E6DC0: .word 0x000005FC
 ov01_021E6DC4: ; 0x021E6DC4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203B6D8
+	bl Field_GetBgEvents
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203B6E0
+	bl Field_GetNumBgEvents
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
@@ -2878,10 +2878,10 @@ _021E704E:
 	pop {r3, r4, r5, r6, pc}
 _021E7054:
 	add r0, r4, #0
-	bl sub_0203B6D8
+	bl Field_GetBgEvents
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203B6E0
+	bl Field_GetNumBgEvents
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
@@ -3715,10 +3715,10 @@ _021E7746:
 ov01_021E774C: ; 0x021E774C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203B744
+	bl Field_GetCoordEvents
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203B73C
+	bl Field_GetNumCoordEvents
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
@@ -4285,7 +4285,7 @@ ov01_021E7B90: ; 0x021E7B90
 	add r7, r1, #0
 	str r2, [sp]
 	add r5, r3, #0
-	bl sub_0203B700
+	bl Field_GetWarpEventAtXYPos
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -4296,7 +4296,7 @@ ov01_021E7B90: ; 0x021E7B90
 _021E7BAC:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0203B6E8
+	bl Field_GetWarpEventI
 	cmp r0, #0
 	bne _021E7BBC
 	mov r0, #0
@@ -4786,10 +4786,10 @@ _021E7F78:
 	pop {r3, r4, r5, pc}
 _021E7F7C:
 	add r0, r5, #0
-	bl sub_0203B6D8
+	bl Field_GetBgEvents
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203B6E0
+	bl Field_GetNumBgEvents
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0

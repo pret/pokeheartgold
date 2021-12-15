@@ -10,18 +10,20 @@ $(PMS_AIKOTOBA_NARC): %.narc: %.s %.d
 	@mkdir -p $*
 	@$(RM) $*/*
 	@$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -DPM_ASM -o $*.o $<
+	@$(call fixdep,$*.d)
 	@$(OBJCOPY) -O binary $*.o $*/tmp.bin
 	@$(KNARC) -p $@ -d $*
 
 $(PMS_AIKOTOBA_DEP):
 
-include $(PMS_AIKOTOBA_DEP)
+include $(wildcard $(PMS_AIKOTOBA_DEP))
 else
 $(PMS_AIKOTOBA_NARC): %.narc: %.s
 	@echo gen  $@
 	@mkdir -p $*
 	@$(RM) $*/*
 	@$(WINE) $(MWAS) $(MWASFLAGS) -DPM_ASM -o $*.o $<
+	@$(call fixdep,$*.d)
 	@$(OBJCOPY) -O binary $*.o $*/tmp.bin
 	@$(KNARC) -p $@ -d $*
 endif

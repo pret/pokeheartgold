@@ -37,7 +37,7 @@ typedef enum NarcId
     NARC_a_0_2_9,
     NARC_a_0_3_0,
     NARC_a_0_3_1,
-    NARC_a_0_3_2,
+    NARC_fielddata_eventdata_zone_event,
     NARC_poketool_personal_wotbl,
     NARC_poketool_personal_evo,
     NARC_a_0_3_5,
