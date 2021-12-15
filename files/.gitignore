@@ -28,6 +28,7 @@ a/1/6/9
 a/1/8/5
 a/1/9/4
 a/1/9/5
+a/2/1/2
 a/2/1/4
 a/2/5/2
 msgdata/msg.narc
@@ -37,3 +38,4 @@ data/gs_areawindow.narc
 itemtool/itemdata/item_icon.narc
 itemtool/itemdata/item_data.narc
 poketool/personal/growtbl.narc
+resource/eng/pms_aikotoba/pms_aikotoba.narc

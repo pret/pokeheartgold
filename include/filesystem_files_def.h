@@ -219,7 +219,7 @@ typedef enum NarcId
     NARC_a_2_0_9,
     NARC_a_2_1_0,
     NARC_a_2_1_1,
-    NARC_a_2_1_2,
+    NARC_resource_eng_pms_aikotoba_pms_aikotoba,
     NARC_a_2_1_3,
     NARC_application_zukanlist_zukan_data_zukan_data_gira,
     NARC_a_2_1_5,

@@ -241,41 +241,41 @@ void SaveEasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 idx) {
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-struct UnkStruct_02015D14 *sub_02015D14(HeapID heapId) {
+struct WallpaperPasswordBank *WallpaperPasswordBank_Create(HeapID heapId) {
     u32 size;
-    struct UnkStruct_02015D14 *ret;
+    struct WallpaperPasswordBank *ret;
 
-    ret = AllocFromHeap(heapId, sizeof(struct UnkStruct_02015D14));
-    memset(ret, 0, sizeof(struct UnkStruct_02015D14));
-    ret->unk4 = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_a_2_1_2, 0, FALSE, heapId, FALSE, &size);
-    ret->unk0 = size / 4;
+    ret = AllocFromHeap(heapId, sizeof(struct WallpaperPasswordBank));
+    memset(ret, 0, sizeof(struct WallpaperPasswordBank));
+    ret->words = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_resource_eng_pms_aikotoba_pms_aikotoba, 0, FALSE, heapId, FALSE, &size);
+    ret->count = size / 4;
     return ret;
 }
 
-void sub_02015D54(struct UnkStruct_02015D14 *unk) {
-    FreeToHeap(unk->unk4);
-    FreeToHeap(unk);
+void WallpaperPasswordBank_Delete(struct WallpaperPasswordBank *pwdBank) {
+    FreeToHeap(pwdBank->words);
+    FreeToHeap(pwdBank);
 }
 
-u32 sub_02015D68(struct UnkStruct_02015D14 *unk) {
-    return unk->unk0;
+u32 WallpaperPasswordBank_GetNum(struct WallpaperPasswordBank *pwdBank) {
+    return pwdBank->count;
 }
 
-u16 sub_02015D6C(struct UnkStruct_02015D14 *unk, int idx) {
-    GF_ASSERT(unk != NULL);
-    if (unk->unk0 <= idx) {
+ECWORD WallpaperPasswordBank_GetWordI(struct WallpaperPasswordBank *pwdBank, int idx) {
+    GF_ASSERT(pwdBank != NULL);
+    if (pwdBank->count <= idx) {
         return EC_WORD_NULL;
     } else {
-        return unk->unk4[idx];
+        return pwdBank->words[idx];
     }
 }
 
-s16 sub_02015D94(struct UnkStruct_02015D14 *unk, int value) {
+s16 WallpaperPasswordBank_GetIndexOfWord(struct WallpaperPasswordBank *unk, int value) {
     int i;
 
     GF_ASSERT(unk != NULL);
-    for (i = 0; i < unk->unk0; i++) {
-        if (value == unk->unk4[i]) {
+    for (i = 0; i < unk->count; i++) {
+        if (value == unk->words[i]) {
             return i;
         }
     }
@@ -294,7 +294,7 @@ u16 EasyChat_GetMsgBankForGroup(int category) {
 // However, they are unlinked in heartgold and deadstripped in linktime.
 // The only reason why there's any code in here at all is because these
 // functions can be found in Diamond and Pearl.
-s32 DEADSTRIP__easy_chat_0(ECWORD a0) {
+s32 GetDuplicateWordNum(ECWORD a0) {
     s32 r3;
     s32 r4;
 
@@ -308,7 +308,7 @@ s32 DEADSTRIP__easy_chat_0(ECWORD a0) {
     return 0;
 }
 
-ECWORD DEADSTRIP__easy_chat_1(u16 a0, s32 a1) {
+ECWORD RemapDuplicateWord(ECWORD a0, s32 a1) {
     s32 r7;
     s32 r2;
     s32 r0;
@@ -324,7 +324,7 @@ ECWORD DEADSTRIP__easy_chat_1(u16 a0, s32 a1) {
                     a1--;
                 }
                 GF_ASSERT(0);
-                return 0xFFFF;
+                return EC_WORD_NULL;
             }
         }
     }

@@ -6050,7 +6050,7 @@ ov45_0222C978: ; 0x0222C978
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl sub_02015D14
+	bl WallpaperPasswordBank_Create
 	add r5, #0xb4
 	str r0, [r5]
 	pop {r3, r4, r5, pc}
@@ -6059,12 +6059,12 @@ ov45_0222C978: ; 0x0222C978
 
 	thumb_func_start ov45_0222C994
 ov45_0222C994: ; 0x0222C994
-	ldr r3, _0222C99C ; =sub_02015D54
+	ldr r3, _0222C99C ; =WallpaperPasswordBank_Delete
 	add r0, #0xb4
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_0222C99C: .word sub_02015D54
+_0222C99C: .word WallpaperPasswordBank_Delete
 	thumb_func_end ov45_0222C994
 
 	thumb_func_start ov45_0222C9A0
@@ -6144,7 +6144,7 @@ ov45_0222CA10: ; 0x0222CA10
 	add r4, r1, #0
 	add r6, r0, #0
 	add r5, r2, #0
-	bl sub_02015D68
+	bl WallpaperPasswordBank_GetNum
 	add r7, r0, #0
 	str r4, [sp, #8]
 	add r0, sp, #8
@@ -6155,7 +6155,7 @@ ov45_0222CA10: ; 0x0222CA10
 	add r0, r0, r4
 	bl _u32_div_f
 	add r0, r6, #0
-	bl sub_02015D6C
+	bl WallpaperPasswordBank_GetWordI
 	strh r0, [r5]
 	add r0, sp, #8
 	ldrb r0, [r0, #1]
@@ -6164,7 +6164,7 @@ ov45_0222CA10: ; 0x0222CA10
 	add r0, r4, r0
 	bl _u32_div_f
 	add r0, r6, #0
-	bl sub_02015D6C
+	bl WallpaperPasswordBank_GetWordI
 	strh r0, [r5, #2]
 	add r0, sp, #8
 	ldrb r4, [r0, #2]
@@ -6173,14 +6173,14 @@ ov45_0222CA10: ; 0x0222CA10
 	add r0, r0, r4
 	bl _u32_div_f
 	add r0, r6, #0
-	bl sub_02015D6C
+	bl WallpaperPasswordBank_GetWordI
 	strh r0, [r5, #4]
 	ldr r0, [sp]
 	add r1, r7, #0
 	add r0, r4, r0
 	bl _u32_div_f
 	add r0, r6, #0
-	bl sub_02015D6C
+	bl WallpaperPasswordBank_GetWordI
 	strh r0, [r5, #6]
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}

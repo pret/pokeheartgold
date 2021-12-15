@@ -26716,11 +26716,11 @@
 .public TrendyWordIdxToECWord
 .public SaveEasyChat_GetGreetingsFlag
 .public SaveEasyChat_SetGreetingFlag
-.public sub_02015D14
-.public sub_02015D54
-.public sub_02015D68
-.public sub_02015D6C
-.public sub_02015D94
+.public WallpaperPasswordBank_Create
+.public WallpaperPasswordBank_Delete
+.public WallpaperPasswordBank_GetNum
+.public WallpaperPasswordBank_GetWordI
+.public WallpaperPasswordBank_GetIndexOfWord
 .public EasyChat_GetMsgBankForGroup
 .public sub_02015DDC
 .public sub_02015E20

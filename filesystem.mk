@@ -427,6 +427,7 @@ $(eval $(call arc_strip_name,files/poketool/personal/performance.narc,files/a/1/
 $(eval $(call arc_strip_name,files/application/custom_ball/edit/gs_cb_data.narc,files/a/1/8/5))
 $(eval $(call arc_strip_name,files/pbr/dp_height.narc,files/a/1/9/4))
 $(eval $(call arc_strip_name,files/pbr/dp_height_o.narc,files/a/1/9/5))
+$(eval $(call arc_strip_name,files/resource/eng/pms_aikotoba/pms_aikotoba.narc,files/a/2/1/2))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
 
@@ -451,6 +452,7 @@ include files/fielddata/encountdata/gs_enc_data.mk
 include files/itemtool/itemdata/item_data.mk
 include files/poketool/personal/growtbl.mk
 include files/fielddata/mapmatrix/map_matrix.mk
+include files/resource/eng/pms_aikotoba/pms_aikotoba.mk
 
 include graphics_files_rules.mk
 

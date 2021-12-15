@@ -69,3 +69,6 @@ cmake-build-*
 
 # MacOS garbage
 .DS_Store
+
+# Depfiles
+*.d

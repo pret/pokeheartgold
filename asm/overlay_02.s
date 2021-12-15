@@ -14695,28 +14695,28 @@ ov02_0224CAB8: ; 0x0224CAB8
 	add r6, r2, #0
 	str r1, [sp]
 	add r7, r3, #0
-	bl sub_02015D68
+	bl WallpaperPasswordBank_GetNum
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02015D94
+	bl WallpaperPasswordBank_GetIndexOfWord
 	add r1, sp, #4
 	strh r0, [r1, #4]
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_02015D94
+	bl WallpaperPasswordBank_GetIndexOfWord
 	add r1, sp, #4
 	strh r0, [r1, #6]
 	add r1, sp, #0x18
 	ldrh r1, [r1, #0x10]
 	add r0, r5, #0
-	bl sub_02015D94
+	bl WallpaperPasswordBank_GetIndexOfWord
 	add r1, sp, #4
 	strh r0, [r1, #8]
 	add r1, sp, #0x18
 	ldrh r1, [r1, #0x14]
 	add r0, r5, #0
-	bl sub_02015D94
+	bl WallpaperPasswordBank_GetIndexOfWord
 	add r1, sp, #4
 	mov r2, #0
 	strh r0, [r1, #0xa]
@@ -14863,28 +14863,28 @@ ov02_0224CBF8: ; 0x0224CBF8
 	add r6, r2, #0
 	str r1, [sp]
 	add r7, r3, #0
-	bl sub_02015D68
+	bl WallpaperPasswordBank_GetNum
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02015D94
+	bl WallpaperPasswordBank_GetIndexOfWord
 	add r1, sp, #4
 	strh r0, [r1, #4]
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_02015D94
+	bl WallpaperPasswordBank_GetIndexOfWord
 	add r1, sp, #4
 	strh r0, [r1, #6]
 	add r1, sp, #0x18
 	ldrh r1, [r1, #0x10]
 	add r0, r5, #0
-	bl sub_02015D94
+	bl WallpaperPasswordBank_GetIndexOfWord
 	add r1, sp, #4
 	strh r0, [r1, #8]
 	add r1, sp, #0x18
 	ldrh r1, [r1, #0x14]
 	add r0, r5, #0
-	bl sub_02015D94
+	bl WallpaperPasswordBank_GetIndexOfWord
 	add r1, sp, #4
 	mov r2, #0
 	strh r0, [r1, #0xa]
@@ -15034,7 +15034,7 @@ ov02_0224CD38: ; 0x0224CD38
 	add r7, r1, #0
 	str r2, [sp, #8]
 	add r5, r3, #0
-	bl sub_02015D14
+	bl WallpaperPasswordBank_Create
 	add r4, r0, #0
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerID_VisibleHalf
@@ -15049,7 +15049,7 @@ ov02_0224CD38: ; 0x0224CD38
 	bl ov02_0224CAB8
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02015D54
+	bl WallpaperPasswordBank_Delete
 	add r0, r5, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -15064,7 +15064,7 @@ ov02_0224CD74: ; 0x0224CD74
 	add r7, r1, #0
 	str r2, [sp, #8]
 	add r5, r3, #0
-	bl sub_02015D14
+	bl WallpaperPasswordBank_Create
 	add r4, r0, #0
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerID_VisibleHalf
@@ -15079,7 +15079,7 @@ ov02_0224CD74: ; 0x0224CD74
 	bl ov02_0224CBF8
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02015D54
+	bl WallpaperPasswordBank_Delete
 	add r0, r5, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}

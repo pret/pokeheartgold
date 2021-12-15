@@ -155,25 +155,37 @@ static inline void usage() {
     cout << "\toutfile\tOutput NARC file" << endl;
     cout << "Options:" << endl;
     cout << "\t-f|--flatten\tDon't generate NARC headers" << endl;
+    cout << "\t-n|--naix\tCreate a NARC index header" << endl;
+    cout << "\t-p PAD|--padding PAD\tPad with byte value (default: 255)" << endl;
 }
 
 int main(int argc, char ** argv) {
     // CLI arguments
     int flatten = 0;
+    int naix = 0;
     char padding = '\xFF';
     static option options [] {
         { "flatten", no_argument, &flatten, 1 },
         { "padding", required_argument, nullptr, 'p' },
-        {nullptr, 0, nullptr, 0}
+        { "naix", no_argument, &naix, 1 },
+        { nullptr, 0, nullptr, 0 }
     };
     int opt_index;
     int c;
-    while ((c = getopt_long(argc, argv, "fp:", options, &opt_index)) != -1)
+    while ((c = getopt_long(argc, argv, "fnp:", options, &opt_index)) != -1)
     {
-        if (c == 'f') {
+        switch (c) {
+        case 'f':
             flatten = 1;
-        } else if (c == 'p') {
-            padding = strtol(optarg, NULL, 0);
+            break;
+        case 'p':
+            padding = static_cast<char>(strtol(optarg, NULL, 0));
+            break;
+        case 'n':
+            naix = 1;
+            break;
+        default:
+            exit(EXIT_FAILURE);
         }
     }
     argv += optind;
@@ -212,7 +224,7 @@ int main(int argc, char ** argv) {
     {
         // .data contains the size table
         Elf32_Shdr & data_sec = elf.shdr[".data"];
-        uint32_t * _data = (uint32_t *)elf.read(data_sec);
+        auto * _data = (uint32_t *)elf.read(data_sec);
 
         if (_data == nullptr) {
             cerr << "ERROR: Missing required section .data" << endl;
