@@ -26,6 +26,12 @@ typedef struct Mail
     MAIL_MESSAGE unk_20[3];
 } MAIL;
 
+#define MAILBOX_MSG_COUNT       (20)
+
+typedef struct Mailbox {
+    MAIL msgs[MAILBOX_MSG_COUNT];
+} MAILBOX;
+
 MAIL *Mail_new(HeapID heap_id);
 void Mail_copy(const MAIL *src, MAIL *dest);
 

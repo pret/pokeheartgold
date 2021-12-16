@@ -21,5 +21,6 @@ void MailMsg_init(MAIL_MESSAGE *msg);
 BOOL MailMsg_compare(const MAIL_MESSAGE *a, const MAIL_MESSAGE *b);
 void MailMsg_SetMsgBankAndNum(MAIL_MESSAGE *mailMessage, u16 msg_bank, u16 msg_no);
 void MailMsg_SetFieldI(MAIL_MESSAGE *mailMessage, u16 field_no, u16 ec_word);
+void MailMsg_copy(MAIL_MESSAGE *dst, const MAIL_MESSAGE *src);
 
 #endif //POKEHEARTGOLD_MAIL_MESSAGE_H

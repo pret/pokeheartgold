@@ -15,10 +15,22 @@ struct UnkStruct_020F67A4 {
     u8 dummy;
 };
 
-extern const struct UnkStruct_020F67A4 _020F67A4[7];
+const struct UnkStruct_020F67A4 _020F67A4[7] = {
+    { 0x1EE, 0x21C, SPECIES_GIRATINA, GIRATINA_ORIGIN },
+    { 0x1F3, 0x21D, SPECIES_SHAYMIN, SHAYMIN_SKY },
+    { 0x1E6, 0x21E, SPECIES_ROTOM, ROTOM_HEAT },
+    { 0x1E6, 0x21F, SPECIES_ROTOM, ROTOM_WASH },
+    { 0x1E6, 0x220, SPECIES_ROTOM, ROTOM_FROST },
+    { 0x1E6, 0x221, SPECIES_ROTOM, ROTOM_FAN },
+    { 0x1E6, 0x222, SPECIES_ROTOM, ROTOM_MOW },
+};
 
 extern u16 sub_020741B0(POKEMON *pokemon);
 extern u8 sub_02074364(u32 species, u32 forme, u32 isEgg);
+
+int MailArray_GetFirstEmptySlotIdx(MAIL* msgs, int nmsg);
+MAIL* Mailbox_GetPtrToSlotI(MAIL *msgs, int n, int i);
+u32 MailArray_CountMessages(MAIL *msgs, int n);
 
 void Mail_init(MAIL *mail) {
     int i;
@@ -158,4 +170,168 @@ MAIL *CreateKenyaMail(POKEMON *pokemon, u8 mailType, u8 gender, STRING *name, u8
     ret->unk_18[0].unk_0_C = r0;
 
     return ret;
+}
+
+u32 Mail_GetOTID(const MAIL *mail) {
+    return mail->author_otId;
+}
+
+u16 *Mail_GetAuthorNamePtr(MAIL *mail) {
+    return mail->author_name;
+}
+
+u8 Mail_GetAuthorGender(const MAIL *mail) {
+    return mail->author_gender;
+}
+
+u8 Mail_GetType(const MAIL *mail) {
+    return mail->mail_type;
+}
+
+void Mail_SetType(MAIL *mail, u8 mailType) {
+    if (mailType < NUM_MAIL) {
+        mail->mail_type = mailType;
+    }
+}
+
+u8 Mail_GetLanguage(const MAIL *mail) {
+    return mail->author_language;
+}
+
+u8 Mail_GetVersion(const MAIL *mail) {
+    return mail->author_version;
+}
+
+u16 sub_0202B404(MAIL *mail, u8 r1, u8 r4, u16 r3) {
+    int i;
+    union MailPatternData sp0;
+    if (r1 < NELEMS(mail->unk_18)) {
+        sp0 = mail->unk_18[r1];
+        for (i = 0; i < NELEMS(_020F67A4); i++) {
+            if (_020F67A4[i].unk_0 == sp0.unk_0_0 && _020F67A4[i].unk_6 == ((r3 >> (5 * r1)) & 31)) {
+                sp0.unk_0_0 = _020F67A4[i].unk_2;
+                sp0.unk_0_C = sub_02074364(_020F67A4[i].unk_4, _020F67A4[i].unk_6, FALSE);
+                break;
+            }
+        }
+        if (sp0.unk_0_0 > 546) {
+            sp0.unk_0_0 = 7;
+            sp0.unk_0_C = 0;
+        }
+        switch (r4) {
+        case 0:
+            return sp0.unk_0_0;
+        case 1:
+            return sp0.unk_0_C;
+        case 2:
+        default:
+            return sp0.raw;
+        }
+    }
+
+    return 0;
+}
+
+u16 sub_0202B4E4(const MAIL *mail) {
+    return mail->unk_1E;
+}
+
+MAIL_MESSAGE *Mail_GetUnk20Array(MAIL *mail, int i) {
+    if (i < NELEMS(mail->unk_20)) {
+        return &mail->unk_20[i];
+    } else {
+        return &mail->unk_20[0];
+    }
+}
+
+void Mail_CopyToUnk20Array(MAIL *mail, const MAIL_MESSAGE *src, int i) {
+    if (i < NELEMS(mail->unk_20)) {
+        MailMsg_copy(&mail->unk_20[i], src);
+    }
+}
+
+MAILBOX *Sav2_Mailbox_get(SAVEDATA *saveData) {
+    return (MAILBOX *)SavArray_get(saveData, SAVE_MAILBOX);
+}
+
+u32 Sav2_Mailbox_sizeof(void) {
+    return sizeof(MAILBOX);
+}
+
+void Sav2_Mailbox_init(MAILBOX *mailbox) {
+    int i;
+    for (i = 0; i < MAILBOX_MSG_COUNT; i++) {
+        Mail_init(&mailbox->msgs[i]);
+    }
+}
+
+int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox) {
+    return MailArray_GetFirstEmptySlotIdx(mailbox->msgs, MAILBOX_MSG_COUNT);
+}
+
+void Mailbox_DeleteSlotI(MAIL *msgs, int n, int i) {
+    MAIL *mail = Mailbox_GetPtrToSlotI(msgs, n, i);
+    if (mail != NULL) {
+        Mail_init(mail);
+    }
+}
+
+void Mailbox_CopyMailToSlotI(MAIL *msgs, int n, int i, const MAIL *src) {
+    MAIL *dest = Mailbox_GetPtrToSlotI(msgs, n, i);
+    if (dest != NULL) {
+        Mail_copy(src, dest);
+    }
+}
+
+u32 Mailbox_CountMessages(MAILBOX *mailbox) {
+    return MailArray_CountMessages(mailbox->msgs, MAILBOX_MSG_COUNT);
+}
+
+MAIL *Mailbox_AllocAndFetchMailI(MAIL *msgs, int n, int i, HeapID heapId) {
+    const MAIL *src = Mailbox_GetPtrToSlotI(msgs, n, i);
+    MAIL *ret = Mail_new(heapId);
+    if (src != NULL) {
+        Mail_copy(src, ret);
+    }
+    return ret;
+}
+
+void Mailbox_FetchMailToBuffer(MAIL *msgs, int n, int i, MAIL *dest) {
+    const MAIL *src = Mailbox_GetPtrToSlotI(msgs, n, i);
+    if (src == NULL) {
+        Mail_init(dest);
+    } else {
+        Mail_copy(src, dest);
+    }
+}
+
+int MailArray_GetFirstEmptySlotIdx(MAIL *msgs, int n) {
+    int i;
+    for (i = 0; i < n; i++) {
+        if (!Mail_TypeIsValid(&msgs[i])) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+u32 MailArray_CountMessages(MAIL *msgs, int n) {
+    int i;
+    u32 ct = 0;
+    for (i = 0; i < n; i++) {
+        if (Mail_TypeIsValid(&msgs[i])) {
+            ct++;
+        }
+    }
+
+    return ct;
+}
+
+MAIL *Mailbox_GetPtrToSlotI(MAIL *msgs, int n, int i) {
+#pragma unused(n)
+    if (i < MAILBOX_MSG_COUNT) {
+        return &msgs[i];
+    } else {
+        return NULL;
+    }
 }
