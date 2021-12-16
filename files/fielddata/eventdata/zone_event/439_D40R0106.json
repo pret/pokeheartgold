@@ -1,0 +1,31 @@
+{
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1171,
+      "scr": 7102,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 14,
+      "y": 27,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 16,
+      "y": 29,
+      "header": "MAP_D40R0104",
+      "anchor": 4,
+      "height": 0
+    }
+  ]
+}

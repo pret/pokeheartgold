@@ -1,0 +1,151 @@
+{
+  "bgs": [
+    {
+      "scr": 4,
+      "type": 0,
+      "x": 2,
+      "y": 24,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": 4,
+      "type": 0,
+      "x": 8,
+      "y": 24,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 354,
+      "mvt": 15,
+      "type": 0,
+      "flag": 748,
+      "scr": 1,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 13,
+      "y": 4,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 319,
+      "mvt": 16,
+      "type": 1,
+      "flag": 0,
+      "scr": 3070,
+      "dirn": 2,
+      "eye": 4,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 14,
+      "y": 15,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 319,
+      "mvt": 17,
+      "type": 1,
+      "flag": 0,
+      "scr": 3021,
+      "dirn": 3,
+      "eye": 1,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 9,
+      "y": 18,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 326,
+      "mvt": 17,
+      "type": 1,
+      "flag": 0,
+      "scr": 3004,
+      "dirn": 3,
+      "eye": 2,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 11,
+      "z": 0,
+      "unk1E": 3
+    },
+    {
+      "id": 4,
+      "ovid": 326,
+      "mvt": 16,
+      "type": 1,
+      "flag": 0,
+      "scr": 3069,
+      "dirn": 2,
+      "eye": 2,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 24,
+      "y": 18,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 5,
+      "ovid": 168,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 3,
+      "dirn": 1,
+      "eye": 2,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 7,
+      "y": 23,
+      "z": 0,
+      "unk1E": 3
+    }
+  ],
+  "warps": [
+    {
+      "x": 6,
+      "y": 25,
+      "header": "MAP_T25",
+      "anchor": 2,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": 2,
+      "x": 13,
+      "y": 11,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 1,
+      "var": 16650
+    }
+  ]
+}

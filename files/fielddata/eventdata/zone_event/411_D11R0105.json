@@ -1,0 +1,154 @@
+{
+  "bgs": [
+    {
+      "scr": 8223,
+      "type": 2,
+      "x": 27,
+      "y": 22,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1255,
+      "scr": 7227,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 29,
+      "y": 4,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1258,
+      "scr": 7228,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 42,
+      "y": 8,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 1024,
+      "mvt": 15,
+      "type": 0,
+      "flag": 774,
+      "scr": 1,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 27,
+      "y": 22,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 45,
+      "y": 22,
+      "header": "MAP_D11R0104",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 38,
+      "y": 23,
+      "header": "MAP_D11R0104",
+      "anchor": 5,
+      "height": 0
+    },
+    {
+      "x": 33,
+      "y": 4,
+      "header": "MAP_D11R0104",
+      "anchor": 6,
+      "height": 0
+    },
+    {
+      "x": 28,
+      "y": 13,
+      "header": "MAP_D11R0104",
+      "anchor": 7,
+      "height": 0
+    },
+    {
+      "x": 12,
+      "y": 19,
+      "header": "MAP_D11R0104",
+      "anchor": 8,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "header": "MAP_D11R0104",
+      "anchor": 9,
+      "height": 0
+    },
+    {
+      "x": 38,
+      "y": 22,
+      "header": "MAP_D11R0104",
+      "anchor": 5,
+      "height": 0
+    },
+    {
+      "x": 33,
+      "y": 3,
+      "header": "MAP_D11R0104",
+      "anchor": 6,
+      "height": 0
+    },
+    {
+      "x": 28,
+      "y": 12,
+      "header": "MAP_D11R0104",
+      "anchor": 7,
+      "height": 0
+    },
+    {
+      "x": 12,
+      "y": 18,
+      "header": "MAP_D11R0104",
+      "anchor": 8,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "header": "MAP_D11R0104",
+      "anchor": 9,
+      "height": 0
+    },
+    {
+      "x": 45,
+      "y": 21,
+      "header": "MAP_D11R0104",
+      "anchor": 4,
+      "height": 0
+    }
+  ]
+}

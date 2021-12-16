@@ -1,0 +1,117 @@
+{
+  "bgs": [
+    {
+      "scr": 8165,
+      "type": 2,
+      "x": 28,
+      "y": 41,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8204,
+      "type": 2,
+      "x": 23,
+      "y": 12,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8205,
+      "type": 2,
+      "x": 20,
+      "y": 40,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1242,
+      "scr": 7233,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 31,
+      "y": 40,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1243,
+      "scr": 7234,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 10,
+      "y": 40,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 24,
+      "y": 12,
+      "header": "MAP_D41R0106",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 39,
+      "y": 19,
+      "header": "MAP_D41R0106",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 39,
+      "y": 31,
+      "header": "MAP_D41R0106",
+      "anchor": 3,
+      "height": 0
+    },
+    {
+      "x": 39,
+      "y": 43,
+      "header": "MAP_D41R0106",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 32,
+      "y": 51,
+      "header": "MAP_D41R0106",
+      "anchor": 5,
+      "height": 0
+    },
+    {
+      "x": 18,
+      "y": 51,
+      "header": "MAP_D41R0106",
+      "anchor": 6,
+      "height": 0
+    },
+    {
+      "x": 14,
+      "y": 39,
+      "header": "MAP_D41R0107",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

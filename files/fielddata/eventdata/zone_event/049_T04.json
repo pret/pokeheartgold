@@ -1,0 +1,256 @@
+{
+  "bgs": [
+    {
+      "scr": 11,
+      "type": 1,
+      "x": 1324,
+      "y": 106,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8,
+      "type": 1,
+      "x": 1321,
+      "y": 135,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 7,
+      "type": 1,
+      "x": 1309,
+      "y": 137,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 10,
+      "type": 1,
+      "x": 1317,
+      "y": 123,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 9,
+      "type": 1,
+      "x": 1295,
+      "y": 144,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8106,
+      "type": 2,
+      "x": 1298,
+      "y": 110,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 322,
+      "mvt": 3,
+      "type": 0,
+      "flag": 0,
+      "scr": 1,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 3,
+      "yrange": 1,
+      "x": 1307,
+      "y": 119,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 325,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 3,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1297,
+      "y": 127,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 1016,
+      "mvt": 2,
+      "type": 0,
+      "flag": 0,
+      "scr": 4,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1296,
+      "y": 127,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 332,
+      "mvt": 3,
+      "type": 0,
+      "flag": 0,
+      "scr": 5,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 2,
+      "yrange": 1,
+      "x": 1314,
+      "y": 136,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 4,
+      "ovid": 323,
+      "mvt": 3,
+      "type": 0,
+      "flag": 0,
+      "scr": 2,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 2,
+      "yrange": 3,
+      "x": 1326,
+      "y": 116,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 5,
+      "ovid": 146,
+      "mvt": 2,
+      "type": 0,
+      "flag": 0,
+      "scr": 6,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1300,
+      "y": 110,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 6,
+      "ovid": 328,
+      "mvt": 14,
+      "type": 0,
+      "flag": 638,
+      "scr": 12,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1325,
+      "y": 108,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 7,
+      "ovid": 322,
+      "mvt": 0,
+      "type": 0,
+      "flag": 783,
+      "scr": 14,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1290,
+      "y": 108,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 1305,
+      "y": 116,
+      "header": "MAP_T04R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1319,
+      "y": 123,
+      "header": "MAP_T04R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1304,
+      "y": 131,
+      "header": "MAP_T04R0301",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1309,
+      "y": 131,
+      "header": "MAP_T04PC0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1318,
+      "y": 134,
+      "header": "MAP_T04GYM0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1308,
+      "y": 144,
+      "header": "MAP_T04FS0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1298,
+      "y": 144,
+      "header": "MAP_T04R0401",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1290,
+      "y": 107,
+      "header": "MAP_D03R0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

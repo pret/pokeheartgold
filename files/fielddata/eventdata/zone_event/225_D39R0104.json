@@ -1,0 +1,70 @@
+{
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 85,
+      "mvt": 0,
+      "type": 0,
+      "flag": 16,
+      "scr": 10001,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 10,
+      "y": 12,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1208,
+      "scr": 7154,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 12,
+      "y": 13,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 5,
+      "y": 11,
+      "header": "MAP_D39R0103",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 5,
+      "y": 10,
+      "header": "MAP_D39R0103",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 24,
+      "y": 12,
+      "header": "MAP_D39R0103",
+      "anchor": 3,
+      "height": 0
+    },
+    {
+      "x": 24,
+      "y": 11,
+      "header": "MAP_D39R0103",
+      "anchor": 3,
+      "height": 0
+    }
+  ]
+}

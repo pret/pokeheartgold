@@ -1,0 +1,31 @@
+{
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 364,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 0,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 20,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 6,
+      "y": 22,
+      "header": "MAP_T10R0601",
+      "anchor": 1,
+      "height": 0
+    }
+  ]
+}

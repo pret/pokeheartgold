@@ -1,0 +1,391 @@
+{
+  "bgs": [
+    {
+      "scr": 3,
+      "type": 1,
+      "x": 429,
+      "y": 266,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 1,
+      "type": 1,
+      "x": 429,
+      "y": 286,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 2,
+      "type": 1,
+      "x": 440,
+      "y": 287,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 4,
+      "type": 1,
+      "x": 443,
+      "y": 292,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8146,
+      "type": 2,
+      "x": 442,
+      "y": 296,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8149,
+      "type": 2,
+      "x": 422,
+      "y": 263,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8148,
+      "type": 2,
+      "x": 424,
+      "y": 278,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8147,
+      "type": 2,
+      "x": 418,
+      "y": 314,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8150,
+      "type": 2,
+      "x": 423,
+      "y": 311,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 351,
+      "mvt": 17,
+      "type": 1,
+      "flag": 0,
+      "scr": 3041,
+      "dirn": 3,
+      "eye": 3,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 422,
+      "y": 290,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1146,
+      "scr": 7011,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 435,
+      "y": 274,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 85,
+      "mvt": 0,
+      "type": 0,
+      "flag": 16,
+      "scr": 10001,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 424,
+      "y": 262,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 85,
+      "mvt": 0,
+      "type": 0,
+      "flag": 17,
+      "scr": 10001,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 423,
+      "y": 263,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 4,
+      "ovid": 85,
+      "mvt": 0,
+      "type": 0,
+      "flag": 19,
+      "scr": 10001,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 426,
+      "y": 264,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 5,
+      "ovid": 85,
+      "mvt": 0,
+      "type": 0,
+      "flag": 21,
+      "scr": 10001,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 417,
+      "y": 272,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 6,
+      "ovid": 85,
+      "mvt": 0,
+      "type": 0,
+      "flag": 22,
+      "scr": 10001,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 416,
+      "y": 273,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 7,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1147,
+      "scr": 7012,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 418,
+      "y": 273,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 8,
+      "ovid": 328,
+      "mvt": 14,
+      "type": 0,
+      "flag": 638,
+      "scr": 5,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 435,
+      "y": 284,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 9,
+      "ovid": 386,
+      "mvt": 0,
+      "type": 0,
+      "flag": 742,
+      "scr": 0,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 441,
+      "y": 285,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 430,
+      "y": 261,
+      "header": "MAP_R36R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 431,
+      "y": 261,
+      "header": "MAP_R36R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 447,
+      "y": 293,
+      "header": "MAP_R32R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 447,
+      "y": 294,
+      "header": "MAP_R32R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 436,
+      "y": 266,
+      "header": "MAP_D24R0202",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 436,
+      "y": 309,
+      "header": "MAP_D24R0204",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 425,
+      "y": 309,
+      "header": "MAP_D24R0206",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 425,
+      "y": 289,
+      "header": "MAP_D24R0208",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 430,
+      "y": 284,
+      "header": "MAP_D24R0211",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 431,
+      "y": 284,
+      "header": "MAP_D24R0211",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 441,
+      "y": 285,
+      "header": "MAP_D24R0102",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 430,
+      "y": 284,
+      "header": "MAP_D24R0211",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 431,
+      "y": 284,
+      "header": "MAP_D24R0211",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 430,
+      "y": 284,
+      "header": "MAP_D24R0217",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 431,
+      "y": 284,
+      "header": "MAP_D24R0217",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 419,
+      "y": 308,
+      "header": "MAP_D25R0101",
+      "anchor": 6,
+      "height": 0
+    },
+    {
+      "x": 419,
+      "y": 289,
+      "header": "MAP_D25R0101",
+      "anchor": 7,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": 8,
+      "x": 441,
+      "y": 286,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 1,
+      "var": 16635
+    }
+  ]
+}

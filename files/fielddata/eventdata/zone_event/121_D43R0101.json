@@ -1,0 +1,153 @@
+{
+  "bgs": [
+    {
+      "scr": 8080,
+      "type": 2,
+      "x": 26,
+      "y": 35,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8079,
+      "type": 2,
+      "x": 18,
+      "y": 33,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1119,
+      "scr": 7178,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 34,
+      "y": 14,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1120,
+      "scr": 7179,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 35,
+      "y": 33,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1121,
+      "scr": 7180,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 42,
+      "y": 40,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 84,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 10002,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 43,
+      "y": 52,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 4,
+      "ovid": 84,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 10002,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 25,
+      "y": 17,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 5,
+      "ovid": 84,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 10002,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 24,
+      "y": 15,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 46,
+      "y": 59,
+      "header": "MAP_R22R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 19,
+      "y": 7,
+      "header": "MAP_D43R0102",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 19,
+      "y": 6,
+      "header": "MAP_D43R0102",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

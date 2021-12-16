@@ -1,0 +1,38 @@
+{
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 394,
+      "mvt": 15,
+      "type": 0,
+      "flag": 0,
+      "scr": 1,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 5,
+      "y": 4,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 1,
+      "y": 7,
+      "header": "MAP_T08",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 10,
+      "y": 7,
+      "header": "MAP_R15",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "bgs": [
+    {
+      "scr": 7,
+      "type": 1,
+      "x": 516,
+      "y": 172,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8,
+      "type": 1,
+      "x": 526,
+      "y": 174,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 9,
+      "type": 1,
+      "x": 520,
+      "y": 184,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 328,
+      "mvt": 15,
+      "type": 0,
+      "flag": 517,
+      "scr": 1,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 540,
+      "y": 175,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 330,
+      "mvt": 5,
+      "type": 0,
+      "flag": 0,
+      "scr": 3,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 1,
+      "yrange": 0,
+      "x": 523,
+      "y": 175,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 332,
+      "mvt": 15,
+      "type": 0,
+      "flag": 505,
+      "scr": 5,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 523,
+      "y": 184,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 319,
+      "mvt": 15,
+      "type": 0,
+      "flag": 487,
+      "scr": 4,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 530,
+      "y": 175,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 524,
+      "y": 165,
+      "header": "MAP_R43R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 525,
+      "y": 165,
+      "header": "MAP_R43R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 523,
+      "y": 183,
+      "header": "MAP_T28GYM0103",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 534,
+      "y": 183,
+      "header": "MAP_T28PC0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 537,
+      "y": 174,
+      "header": "MAP_T28R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 528,
+      "y": 174,
+      "header": "MAP_D35R0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": 2,
+      "x": 540,
+      "y": 176,
+      "w": 1,
+      "h": 2,
+      "z": 0,
+      "val": 0,
+      "var": 16506
+    }
+  ]
+}

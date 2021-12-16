@@ -1,0 +1,148 @@
+{
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 325,
+      "mvt": 3,
+      "type": 0,
+      "flag": 0,
+      "scr": 2,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 3,
+      "y": 25,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 322,
+      "mvt": 5,
+      "type": 0,
+      "flag": 0,
+      "scr": 1,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 1,
+      "yrange": 0,
+      "x": 9,
+      "y": 8,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 101,
+      "mvt": 0,
+      "type": 0,
+      "flag": 712,
+      "scr": 0,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 9,
+      "y": 4,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 1032,
+      "mvt": 0,
+      "type": 0,
+      "flag": 712,
+      "scr": 0,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 9,
+      "y": 4,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 5,
+      "y": 9,
+      "header": "MAP_T25",
+      "anchor": 10,
+      "height": 0
+    },
+    {
+      "x": 5,
+      "y": 30,
+      "header": "MAP_T25",
+      "anchor": 11,
+      "height": 0
+    },
+    {
+      "x": 8,
+      "y": 3,
+      "header": "MAP_D37R0102",
+      "anchor": 5,
+      "height": 0
+    },
+    {
+      "x": 8,
+      "y": 24,
+      "header": "MAP_D37R0102",
+      "anchor": 6,
+      "height": 0
+    },
+    {
+      "x": 25,
+      "y": 9,
+      "header": "MAP_D37R0102",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 25,
+      "y": 3,
+      "header": "MAP_D37R0104",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 8,
+      "y": 4,
+      "header": "MAP_D37R0102",
+      "anchor": 5,
+      "height": 0
+    },
+    {
+      "x": 8,
+      "y": 5,
+      "header": "MAP_D37R0102",
+      "anchor": 5,
+      "height": 0
+    },
+    {
+      "x": 8,
+      "y": 25,
+      "header": "MAP_D37R0102",
+      "anchor": 6,
+      "height": 0
+    },
+    {
+      "x": 8,
+      "y": 26,
+      "header": "MAP_D37R0102",
+      "anchor": 6,
+      "height": 0
+    }
+  ]
+}

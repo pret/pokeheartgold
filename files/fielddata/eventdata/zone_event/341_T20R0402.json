@@ -1,0 +1,67 @@
+{
+  "bgs": [
+    {
+      "scr": 4,
+      "type": 0,
+      "x": 8,
+      "y": 4,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 5,
+      "type": 0,
+      "x": 6,
+      "y": 4,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 101,
+      "mvt": 16,
+      "type": 0,
+      "flag": 741,
+      "scr": 1,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 7,
+      "y": 7,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 1032,
+      "mvt": 44,
+      "type": 0,
+      "flag": 741,
+      "scr": 2,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 2,
+      "yrange": 2,
+      "x": 4,
+      "y": 6,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 3,
+      "y": 4,
+      "header": "MAP_T20R0401",
+      "anchor": 1,
+      "height": 0
+    }
+  ]
+}

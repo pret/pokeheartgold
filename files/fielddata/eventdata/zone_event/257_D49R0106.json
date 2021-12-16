@@ -1,0 +1,178 @@
+{
+  "bgs": [
+    {
+      "scr": 6,
+      "type": 0,
+      "x": 3,
+      "y": 3,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": 7,
+      "type": 0,
+      "x": 10,
+      "y": 3,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": 7,
+      "type": 0,
+      "x": 11,
+      "y": 3,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": 5,
+      "type": 0,
+      "x": 6,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": 5,
+      "type": 0,
+      "x": 8,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": 5,
+      "type": 0,
+      "x": 7,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 336,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 2,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 7,
+      "y": 3,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 336,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 1,
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1,
+      "y": 14,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 332,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 3,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 11,
+      "y": 7,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 1018,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 4,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 12,
+      "y": 7,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 4,
+      "ovid": 401,
+      "mvt": 0,
+      "type": 0,
+      "flag": 728,
+      "scr": 0,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 3,
+      "y": 3,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 5,
+      "ovid": 402,
+      "mvt": 0,
+      "type": 0,
+      "flag": 729,
+      "scr": 0,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 10,
+      "y": 3,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 7,
+      "y": 2,
+      "header": "MAP_D49R0107",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 3,
+      "y": 14,
+      "header": "MAP_D49R0105",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

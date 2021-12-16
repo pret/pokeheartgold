@@ -1,0 +1,251 @@
+{
+  "bgs": [
+    {
+      "scr": 5,
+      "type": 1,
+      "x": 1213,
+      "y": 405,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 6,
+      "type": 1,
+      "x": 1220,
+      "y": 435,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 4,
+      "type": 1,
+      "x": 1193,
+      "y": 441,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 10,
+      "type": 1,
+      "x": 1208,
+      "y": 424,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8134,
+      "type": 2,
+      "x": 1232,
+      "y": 413,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 328,
+      "mvt": 3,
+      "type": 0,
+      "flag": 0,
+      "scr": 2,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 2,
+      "yrange": 1,
+      "x": 1198,
+      "y": 441,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 325,
+      "mvt": 3,
+      "type": 0,
+      "flag": 0,
+      "scr": 3,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 1213,
+      "y": 426,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 317,
+      "mvt": 3,
+      "type": 0,
+      "flag": 0,
+      "scr": 1,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 1212,
+      "y": 413,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 86,
+      "mvt": 0,
+      "type": 0,
+      "flag": 16,
+      "scr": 10000,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1211,
+      "y": 424,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 4,
+      "ovid": 262,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 2800,
+      "dirn": 0,
+      "eye": 28,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1206,
+      "y": 421,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 5,
+      "ovid": 328,
+      "mvt": 14,
+      "type": 0,
+      "flag": 638,
+      "scr": 7,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1201,
+      "y": 445,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 6,
+      "ovid": 378,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 9,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1220,
+      "y": 411,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 1241,
+      "y": 422,
+      "header": "MAP_R15R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1241,
+      "y": 423,
+      "header": "MAP_R15R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1203,
+      "y": 445,
+      "header": "MAP_W19R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1204,
+      "y": 445,
+      "header": "MAP_W19R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1197,
+      "y": 416,
+      "header": "MAP_T08FS0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1214,
+      "y": 403,
+      "header": "MAP_T08R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1215,
+      "y": 403,
+      "header": "MAP_T08R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1195,
+      "y": 439,
+      "header": "MAP_T08GYM0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1200,
+      "y": 439,
+      "header": "MAP_T08R0401",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1209,
+      "y": 439,
+      "header": "MAP_T08PC0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1222,
+      "y": 435,
+      "header": "MAP_T08R0601",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

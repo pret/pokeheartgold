@@ -1,0 +1,130 @@
+{
+  "bgs": [
+    {
+      "scr": 8075,
+      "type": 2,
+      "x": 29,
+      "y": 11,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 220,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 1,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 36,
+      "y": 30,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1168,
+      "scr": 7099,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 25,
+      "y": 17,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1169,
+      "scr": 7100,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 29,
+      "y": 25,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1170,
+      "scr": 7101,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 25,
+      "y": 30,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 27,
+      "y": 28,
+      "header": "MAP_D40R0102",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 27,
+      "y": 27,
+      "header": "MAP_D40R0102",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 32,
+      "y": 14,
+      "header": "MAP_D40R0102",
+      "anchor": 11,
+      "height": 0
+    },
+    {
+      "x": 32,
+      "y": 13,
+      "header": "MAP_D40R0102",
+      "anchor": 11,
+      "height": 0
+    },
+    {
+      "x": 31,
+      "y": 31,
+      "header": "MAP_D40R0106",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 31,
+      "y": 43,
+      "header": "MAP_D40R0107",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

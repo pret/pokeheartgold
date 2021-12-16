@@ -1,0 +1,163 @@
+{
+  "bgs": [
+    {
+      "scr": 8,
+      "type": 0,
+      "x": 4,
+      "y": 6,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8,
+      "type": 0,
+      "x": 6,
+      "y": 6,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8,
+      "type": 0,
+      "x": 8,
+      "y": 6,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8,
+      "type": 0,
+      "x": 10,
+      "y": 6,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8,
+      "type": 0,
+      "x": 12,
+      "y": 6,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 409,
+      "mvt": 0,
+      "type": 0,
+      "flag": 643,
+      "scr": 2,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 4,
+      "y": 6,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 410,
+      "mvt": 0,
+      "type": 0,
+      "flag": 646,
+      "scr": 3,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 6,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 411,
+      "mvt": 0,
+      "type": 0,
+      "flag": 645,
+      "scr": 4,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 6,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 412,
+      "mvt": 0,
+      "type": 0,
+      "flag": 644,
+      "scr": 5,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 10,
+      "y": 6,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 4,
+      "ovid": 413,
+      "mvt": 0,
+      "type": 0,
+      "flag": 647,
+      "scr": 6,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 12,
+      "y": 6,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 5,
+      "ovid": 183,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 1,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 11,
+      "y": 9,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 7,
+      "y": 2,
+      "header": "MAP_T11R0703",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

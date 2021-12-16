@@ -1,0 +1,133 @@
+{
+  "bgs": [
+    {
+      "scr": 4,
+      "type": 0,
+      "x": 12,
+      "y": 26,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": 4,
+      "type": 0,
+      "x": 18,
+      "y": 26,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 352,
+      "mvt": 15,
+      "type": 0,
+      "flag": 745,
+      "scr": 2,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 15,
+      "y": 4,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 323,
+      "mvt": 0,
+      "type": 1,
+      "flag": 0,
+      "scr": 3049,
+      "dirn": 3,
+      "eye": 3,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 12,
+      "y": 15,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 323,
+      "mvt": 0,
+      "type": 1,
+      "flag": 0,
+      "scr": 3028,
+      "dirn": 2,
+      "eye": 3,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 18,
+      "y": 11,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 168,
+      "mvt": 15,
+      "type": 0,
+      "flag": 740,
+      "scr": 3,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 17,
+      "y": 26,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 4,
+      "ovid": 168,
+      "mvt": 15,
+      "type": 0,
+      "flag": 739,
+      "scr": 6,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 15,
+      "y": 20,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 15,
+      "y": 28,
+      "header": "MAP_T22",
+      "anchor": 2,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": 5,
+      "x": 15,
+      "y": 20,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 0,
+      "var": 16384
+    }
+  ]
+}

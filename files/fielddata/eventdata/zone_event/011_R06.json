@@ -1,0 +1,145 @@
+{
+  "bgs": [
+    {
+      "scr": 2,
+      "type": 1,
+      "x": 1311,
+      "y": 266,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 345,
+      "mvt": 0,
+      "type": 1,
+      "flag": 0,
+      "scr": 3598,
+      "dirn": 3,
+      "eye": 4,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1291,
+      "y": 272,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 346,
+      "mvt": 0,
+      "type": 1,
+      "flag": 0,
+      "scr": 3599,
+      "dirn": 3,
+      "eye": 4,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1295,
+      "y": 285,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 316,
+      "mvt": 0,
+      "type": 1,
+      "flag": 0,
+      "scr": 3597,
+      "dirn": 0,
+      "eye": 2,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1303,
+      "y": 274,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 316,
+      "mvt": 0,
+      "type": 1,
+      "flag": 0,
+      "scr": 5597,
+      "dirn": 0,
+      "eye": 2,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1304,
+      "y": 274,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 4,
+      "ovid": 328,
+      "mvt": 15,
+      "type": 0,
+      "flag": 600,
+      "scr": 1,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1309,
+      "y": 266,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 5,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1299,
+      "scr": 7191,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1291,
+      "y": 282,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 1300,
+      "y": 261,
+      "header": "MAP_R06R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1301,
+      "y": 261,
+      "header": "MAP_R06R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1309,
+      "y": 265,
+      "header": "MAP_R06R0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

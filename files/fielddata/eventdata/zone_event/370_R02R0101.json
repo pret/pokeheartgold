@@ -1,0 +1,130 @@
+{
+  "bgs": [
+    {
+      "scr": 1,
+      "type": 1,
+      "x": 1047,
+      "y": 139,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 318,
+      "mvt": 8,
+      "type": 1,
+      "flag": 0,
+      "scr": 3247,
+      "dirn": 1,
+      "eye": 3,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1029,
+      "y": 131,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 86,
+      "mvt": 0,
+      "type": 0,
+      "flag": 16,
+      "scr": 10000,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1034,
+      "y": 137,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1232,
+      "scr": 7212,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1053,
+      "y": 129,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 262,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 2800,
+      "dirn": 0,
+      "eye": 1,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1052,
+      "y": 157,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 1028,
+      "y": 138,
+      "header": "MAP_R02R0501",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 1029,
+      "y": 138,
+      "header": "MAP_R02R0501",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 1050,
+      "y": 183,
+      "header": "MAP_R02R0301",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1051,
+      "y": 183,
+      "header": "MAP_R02R0301",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1048,
+      "y": 137,
+      "header": "MAP_D01R0101",
+      "anchor": 7,
+      "height": 0
+    },
+    {
+      "x": 1047,
+      "y": 155,
+      "header": "MAP_R02R0201",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

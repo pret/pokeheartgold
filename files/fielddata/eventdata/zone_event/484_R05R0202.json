@@ -1,0 +1,84 @@
+{
+  "bgs": [
+    {
+      "scr": 8057,
+      "type": 2,
+      "x": 5,
+      "y": 14,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8058,
+      "type": 2,
+      "x": 7,
+      "y": 30,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 328,
+      "mvt": 2,
+      "type": 0,
+      "flag": 0,
+      "scr": 1,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 7,
+      "y": 27,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 4,
+      "y": 3,
+      "header": "MAP_R05R0201",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "header": "MAP_R05R0201",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "header": "MAP_R05R0201",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 4,
+      "y": 57,
+      "header": "MAP_R06R0101",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 4,
+      "y": 58,
+      "header": "MAP_R06R0101",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 4,
+      "y": 56,
+      "header": "MAP_R06R0101",
+      "anchor": 2,
+      "height": 0
+    }
+  ]
+}

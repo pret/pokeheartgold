@@ -1,0 +1,138 @@
+{
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 34,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 4,
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 9,
+      "y": 16,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 34,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 6,
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 9,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 34,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 5,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 14,
+      "y": 9,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 372,
+      "mvt": 3,
+      "type": 0,
+      "flag": 624,
+      "scr": 9,
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 17,
+      "y": 10,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 11,
+      "y": 23,
+      "header": "MAP_R26",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 11,
+      "y": 2,
+      "header": "MAP_D43R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 21,
+      "y": 8,
+      "header": "MAP_R22",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1,
+      "y": 8,
+      "header": "MAP_R28",
+      "anchor": 0,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": 1,
+      "x": 11,
+      "y": 16,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 0,
+      "var": 16656
+    },
+    {
+      "scr": 3,
+      "x": 8,
+      "y": 8,
+      "w": 1,
+      "h": 4,
+      "z": 0,
+      "val": 1,
+      "var": 16656
+    },
+    {
+      "scr": 2,
+      "x": 14,
+      "y": 8,
+      "w": 1,
+      "h": 4,
+      "z": 0,
+      "val": 0,
+      "var": 16673
+    }
+  ]
+}

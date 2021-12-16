@@ -1,0 +1,252 @@
+{
+  "bgs": [
+    {
+      "scr": 6,
+      "type": 1,
+      "x": 377,
+      "y": 235,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 5,
+      "type": 1,
+      "x": 427,
+      "y": 248,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 4,
+      "type": 1,
+      "x": 441,
+      "y": 244,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 7,
+      "type": 1,
+      "x": 394,
+      "y": 223,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": 8011,
+      "type": 2,
+      "x": 391,
+      "y": 243,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": 0,
+      "ovid": 332,
+      "mvt": 16,
+      "type": 0,
+      "flag": 0,
+      "scr": 9,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 426,
+      "y": 246,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 1,
+      "ovid": 319,
+      "mvt": 5,
+      "type": 0,
+      "flag": 0,
+      "scr": 10,
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 2,
+      "yrange": 0,
+      "x": 435,
+      "y": 245,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 2,
+      "ovid": 351,
+      "mvt": 17,
+      "type": 1,
+      "flag": 0,
+      "scr": 3394,
+      "dirn": 3,
+      "eye": 3,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 380,
+      "y": 244,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 3,
+      "ovid": 146,
+      "mvt": 16,
+      "type": 1,
+      "flag": 0,
+      "scr": 3023,
+      "dirn": 2,
+      "eye": 6,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 401,
+      "y": 248,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 4,
+      "ovid": 381,
+      "mvt": 0,
+      "type": 0,
+      "flag": 450,
+      "scr": 1,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 415,
+      "y": 246,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 5,
+      "ovid": 319,
+      "mvt": 0,
+      "type": 0,
+      "flag": 463,
+      "scr": 8,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 415,
+      "y": 249,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 6,
+      "ovid": 146,
+      "mvt": 2,
+      "type": 0,
+      "flag": 452,
+      "scr": 2,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 431,
+      "y": 244,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 7,
+      "ovid": 262,
+      "mvt": 0,
+      "type": 0,
+      "flag": 0,
+      "scr": 2800,
+      "dirn": 0,
+      "eye": 12,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 382,
+      "y": 233,
+      "z": 0,
+      "unk1E": 0
+    },
+    {
+      "id": 8,
+      "ovid": 87,
+      "mvt": 0,
+      "type": 0,
+      "flag": 1276,
+      "scr": 7066,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "unk12": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 393,
+      "y": 237,
+      "z": 0,
+      "unk1E": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 374,
+      "y": 238,
+      "header": "MAP_R36R0201",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 374,
+      "y": 237,
+      "header": "MAP_R36R0201",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 430,
+      "y": 252,
+      "header": "MAP_R36R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 431,
+      "y": 252,
+      "header": "MAP_R36R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 447,
+      "y": 246,
+      "header": "MAP_T22R0701",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 447,
+      "y": 247,
+      "header": "MAP_T22R0701",
+      "anchor": 1,
+      "height": 0
+    }
+  ]
+}
