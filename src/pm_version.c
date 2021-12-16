@@ -1,2 +1,2 @@
-const int gGameVersion = GAME_VERSION;
-const int gGameLanguage = GAME_LANGUAGE;
+const u8 gGameVersion = GAME_VERSION;
+const u8 gGameLanguage = GAME_LANGUAGE;

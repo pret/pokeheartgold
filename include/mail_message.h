@@ -17,4 +17,7 @@ typedef struct MailMessageTemplate {
     u16 ec_words[MAILMSG_FIELDS_MAX];
 } MAIL_MSG_TEMPLATE;
 
+void MailMsg_init(MAIL_MESSAGE *msg);
+BOOL MailMsg_compare(const MAIL_MESSAGE *a, const MAIL_MESSAGE *b);
+
 #endif //POKEHEARTGOLD_MAIL_MESSAGE_H

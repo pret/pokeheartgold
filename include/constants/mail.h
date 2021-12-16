@@ -15,4 +15,6 @@
 #define MAIL_BRICK                                   11
 #define NUM_MAIL                                     12
 
+#define MAIL_NONE                                    0xFF
+
 #endif //POKEHEARTGOLD_CONSTANTS_MAIL_H

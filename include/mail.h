@@ -22,7 +22,7 @@ typedef struct Mail
     u8 mail_type;
     u16 author_name[OT_NAME_LENGTH + 1];
     union MailPatternData unk_18[3];
-    u8 padding_1E[2];
+    u16 unk_1E;
     MAIL_MESSAGE unk_20[3];
 } MAIL;
 

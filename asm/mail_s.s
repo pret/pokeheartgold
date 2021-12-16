@@ -4,178 +4,15 @@
 	.rodata
 
 _020F67A4:
-	.byte 0xEE, 0x01
-_020F67A6:
-	.byte 0x1C, 0x02
-_020F67A8:
-	.byte 0xE7, 0x01
-_020F67AA:
-	.byte 0x01, 0x00, 0xF3, 0x01, 0x1D, 0x02
-	.byte 0xEC, 0x01, 0x01, 0x00, 0xE6, 0x01, 0x1E, 0x02, 0xDF, 0x01, 0x01, 0x00, 0xE6, 0x01, 0x1F, 0x02
-	.byte 0xDF, 0x01, 0x02, 0x00, 0xE6, 0x01, 0x20, 0x02, 0xDF, 0x01, 0x03, 0x00, 0xE6, 0x01, 0x21, 0x02
-	.byte 0xDF, 0x01, 0x04, 0x00, 0xE6, 0x01, 0x22, 0x02, 0xDF, 0x01, 0x05, 0x00
+	.short 0x01EE, 0x021C, 0x01E7, 0x0001
+	.short 0x01F3, 0x021D, 0x01EC, 0x0001
+	.short 0x01E6, 0x021E, 0x01DF, 0x0001
+	.short 0x01E6, 0x021F, 0x01DF, 0x0002
+	.short 0x01E6, 0x0220, 0x01DF, 0x0003
+	.short 0x01E6, 0x0221, 0x01DF, 0x0004
+	.short 0x01E6, 0x0222, 0x01DF, 0x0005
 
 	.text
-
-	thumb_func_start Mail_init
-Mail_init: ; 0x0202B060
-	push {r3, r4, r5, lr}
-	add r4, r0, #0
-	mov r0, #0
-	str r0, [r4]
-	strb r0, [r4, #4]
-	ldr r0, _0202B0AC ; =gGameLanguage
-	mov r1, #8
-	ldrb r0, [r0]
-	strb r0, [r4, #5]
-	ldr r0, _0202B0B0 ; =gGameVersion
-	ldrb r0, [r0]
-	strb r0, [r4, #6]
-	mov r0, #0xff
-	strb r0, [r4, #7]
-	add r0, r4, #0
-	add r0, #8
-	bl StringFillEOS
-	ldr r0, _0202B0B4 ; =0x0000FFFF
-	mov r1, #0
-	add r2, r4, #0
-_0202B08A:
-	add r1, r1, #1
-	strh r0, [r2, #0x18]
-	add r2, r2, #2
-	cmp r1, #3
-	blt _0202B08A
-	mov r5, #0
-	strh r5, [r4, #0x1e]
-	add r4, #0x20
-_0202B09A:
-	add r0, r4, #0
-	bl MailMsg_init
-	add r5, r5, #1
-	add r4, #8
-	cmp r5, #3
-	blt _0202B09A
-	pop {r3, r4, r5, pc}
-	nop
-_0202B0AC: .word gGameLanguage
-_0202B0B0: .word gGameVersion
-_0202B0B4: .word 0x0000FFFF
-	thumb_func_end Mail_init
-
-	thumb_func_start Mail_TypeIsValid
-Mail_TypeIsValid: ; 0x0202B0B8
-	ldrb r0, [r0, #7]
-	cmp r0, #0xb
-	bhi _0202B0C2
-	mov r0, #1
-	bx lr
-_0202B0C2:
-	mov r0, #0
-	bx lr
-	.balign 4, 0
-	thumb_func_end Mail_TypeIsValid
-
-	thumb_func_start Mail_new
-Mail_new: ; 0x0202B0C8
-	push {r4, lr}
-	mov r1, #0x38
-	bl AllocFromHeapAtEnd
-	add r4, r0, #0
-	bl Mail_init
-	add r0, r4, #0
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end Mail_new
-
-	thumb_func_start Mail_copy
-Mail_copy: ; 0x0202B0DC
-	ldr r3, _0202B0E4 ; =MI_CpuCopy8
-	mov r2, #0x38
-	bx r3
-	nop
-_0202B0E4: .word MI_CpuCopy8
-	thumb_func_end Mail_copy
-
-	thumb_func_start Mail_compare
-Mail_compare: ; 0x0202B0E8
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	ldr r1, [r5]
-	ldr r0, [r4]
-	cmp r1, r0
-	bne _0202B11E
-	ldrb r1, [r5, #4]
-	ldrb r0, [r4, #4]
-	cmp r1, r0
-	bne _0202B11E
-	ldrb r1, [r5, #5]
-	ldrb r0, [r4, #5]
-	cmp r1, r0
-	bne _0202B11E
-	ldrb r1, [r5, #6]
-	ldrb r0, [r4, #6]
-	cmp r1, r0
-	bne _0202B11E
-	ldrb r1, [r5, #7]
-	ldrb r0, [r4, #7]
-	cmp r1, r0
-	bne _0202B11E
-	ldrh r1, [r5, #0x1e]
-	ldrh r0, [r4, #0x1e]
-	cmp r1, r0
-	beq _0202B122
-_0202B11E:
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_0202B122:
-	add r0, r5, #0
-	add r1, r4, #0
-	add r0, #8
-	add r1, #8
-	bl StringNotEqual
-	cmp r0, #0
-	beq _0202B136
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_0202B136:
-	mov r2, #0
-	add r3, r4, #0
-	add r6, r5, #0
-_0202B13C:
-	ldrh r1, [r6, #0x18]
-	ldrh r0, [r3, #0x18]
-	cmp r1, r0
-	beq _0202B148
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_0202B148:
-	add r2, r2, #1
-	add r3, r3, #2
-	add r6, r6, #2
-	cmp r2, #3
-	blt _0202B13C
-	mov r6, #0
-	add r4, #0x20
-	add r5, #0x20
-_0202B158:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl MailMsg_compare
-	cmp r0, #0
-	bne _0202B168
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_0202B168:
-	add r6, r6, #1
-	add r4, #8
-	add r5, #8
-	cmp r6, #3
-	blt _0202B158
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end Mail_compare
 
 	thumb_func_start Mail_SetNewMessageDetails
 Mail_SetNewMessageDetails: ; 0x0202B178
@@ -539,7 +376,7 @@ _0202B42A:
 	bne _0202B46C
 	add r3, sp, #0
 	lsl r1, r0, #3
-	ldr r5, _0202B4CC ; =_020F67A6
+	ldr r5, _0202B4CC ; =_020F67A4 + 2
 	ldrh r0, [r3]
 	ldr r2, _0202B4D0 ; =0xFFFFF000
 	ldrh r5, [r5, r1]
@@ -548,8 +385,8 @@ _0202B42A:
 	and r2, r5
 	orr r0, r2
 	strh r0, [r3]
-	ldr r0, _0202B4D4 ; =_020F67A8
-	ldr r2, _0202B4D8 ; =_020F67AA
+	ldr r0, _0202B4D4 ; =_020F67A4 + 4
+	ldr r2, _0202B4D8 ; =_020F67A4 + 6
 	ldrh r0, [r0, r1]
 	ldrb r1, [r2, r1]
 	mov r2, #0
@@ -617,10 +454,10 @@ _0202B4C0:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _0202B4C8: .word _020F67A4
-_0202B4CC: .word _020F67A6
+_0202B4CC: .word _020F67A4 + 2
 _0202B4D0: .word 0xFFFFF000
-_0202B4D4: .word _020F67A8
-_0202B4D8: .word _020F67AA
+_0202B4D4: .word _020F67A4 + 4
+_0202B4D8: .word _020F67A4 + 6
 _0202B4DC: .word 0xFFFF0FFF
 _0202B4E0: .word 0x00000222
 	thumb_func_end sub_0202B404
