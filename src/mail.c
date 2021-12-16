@@ -1,7 +1,23 @@
 #include "mail.h"
 #include "string_util.h"
 #include "mail_message.h"
+#include "party.h"
+#include "player_data.h"
+#include "pokemon.h"
 #include "constants/mail.h"
+
+struct UnkStruct_020F67A4 {
+    u16 unk_0;
+    u16 unk_2;
+    u16 unk_4;
+    u8 unk_6;
+    u8 dummy;
+};
+
+extern const struct UnkStruct_020F67A4 _020F67A4[7];
+
+extern u16 sub_020741B0(POKEMON *pokemon);
+extern u8 sub_02074364(u32 species, u32 forme, u32 isEgg);
 
 void Mail_init(MAIL *mail) {
     int i;
@@ -59,4 +75,46 @@ BOOL Mail_compare(const MAIL *a, const MAIL *b) {
     }
 
     return TRUE;
+}
+
+void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *saveData) {
+    u8 i, j, ip, k;
+    u16 species;
+    u32 r5, isEgg, forme;
+    PLAYERPROFILE *profile;
+    PARTY *party;
+    POKEMON *pokemon;
+
+    Mail_init(mail);
+    mail->mail_type = mailType;
+    party = SavArray_PlayerParty_get(saveData);
+    profile = Sav2_PlayerData_GetProfileAddr(saveData);
+    CopyU16StringArray(mail->author_name, PlayerProfile_GetNamePtr(profile));
+    mail->author_gender = PlayerProfile_GetTrainerGender(profile);
+    mail->author_otId = PlayerProfile_GetTrainerID(profile);
+
+    mail->unk_1E = 0;
+    for (i = mon_no, j = 0; i < GetPartyCount(party); i++) {
+        pokemon = GetPartyMonByIndex(party, i);
+        species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+        isEgg = GetMonData(pokemon, MON_DATA_IS_EGG, NULL);
+        forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
+        r5 = sub_020741B0(pokemon);
+        ip = sub_02074364(species, forme, isEgg);
+
+        mail->unk_18[j].unk_0_0 = r5;
+        mail->unk_18[j].unk_0_C = ip;
+        for (k = 0; k < NELEMS(_020F67A4); k++) {
+            if (_020F67A4[k].unk_2 == mail->unk_18[j].unk_0_0 && _020F67A4[k].unk_6 == forme) {
+                mail->unk_18[j].unk_0_0 = _020F67A4[k].unk_0;
+                mail->unk_18[j].unk_0_C = sub_02074364(species, 0, isEgg);
+                mail->unk_1E |= _020F67A4[k].unk_6 << (5 * j);
+                break;
+            }
+        }
+        j++;
+        if (j >= 3) {
+            break;
+        }
+    }
 }

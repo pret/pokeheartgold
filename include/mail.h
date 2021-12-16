@@ -8,9 +8,9 @@ union MailPatternData
 {
     u16 raw;
     struct {
-        u16 unk_0:12;
-        u16 unk_C:4;
-    } bits;
+        u16 unk_0_0:12;
+        u16 unk_0_C:4;
+    };
 };
 
 typedef struct Mail
