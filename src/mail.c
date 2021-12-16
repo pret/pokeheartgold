@@ -5,6 +5,7 @@
 #include "player_data.h"
 #include "pokemon.h"
 #include "constants/mail.h"
+#include "constants/easy_chat.h"
 
 struct UnkStruct_020F67A4 {
     u16 unk_0;
@@ -117,4 +118,44 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *sav
             break;
         }
     }
+}
+
+MAIL *CreateKenyaMail(POKEMON *pokemon, u8 mailType, u8 gender, STRING *name, u8 otId) {
+    u8 r0;
+    u32 r5;
+    u16 species;
+    u32 isEgg, forme;
+    MAIL *ret = Mail_new(3);
+    Mail_init(ret);
+    ret->mail_type = mailType;
+    CopyStringToU16Array(name, ret->author_name, OT_NAME_LENGTH + 1);
+    ret->author_gender = gender;
+    ret->author_otId = otId;
+
+    // LETTER! Thank you!
+    MailMsg_SetMsgBankAndNum(&ret->unk_20[0], 1, 7);
+    MailMsg_SetFieldI(&ret->unk_20[0], 0, EC_WORD_FEELINGS_LETTER);
+    MailMsg_SetFieldI(&ret->unk_20[0], 1, EC_WORD_NULL);
+
+    // ADVENTURE was fun, wasn't it?
+    MailMsg_SetMsgBankAndNum(&ret->unk_20[1], 1, 15);
+    MailMsg_SetFieldI(&ret->unk_20[1], 0, EC_WORD_FEELINGS_ADVENTURE);
+    MailMsg_SetFieldI(&ret->unk_20[1], 1, EC_WORD_NULL);
+
+    // ZUBAT was the one thing I wanted to avoid...
+    MailMsg_SetMsgBankAndNum(&ret->unk_20[2], 2, 1);
+    MailMsg_SetFieldI(&ret->unk_20[2], 0, EC_WORD_POKEMON(SPECIES_ZUBAT));
+    MailMsg_SetFieldI(&ret->unk_20[2], 1, EC_WORD_NULL);
+
+    ret->unk_1E = 0;
+
+    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    isEgg = GetMonData(pokemon, MON_DATA_IS_EGG, NULL);
+    forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
+    r5 = sub_020741B0(pokemon);
+    r0 = sub_02074364(species, forme, isEgg);
+    ret->unk_18[0].unk_0_0 = r5;
+    ret->unk_18[0].unk_0_C = r0;
+
+    return ret;
 }
