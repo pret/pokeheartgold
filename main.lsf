@@ -62,6 +62,7 @@ Static main
 	Object heap.o
 	Object bg_window.o
 	Object unk_0201F4C4.o
+	Object unk_0201F79C.o
 	Object string_control_code.o
 	Object math_util.o
 	Object text.o
