@@ -15,6 +15,8 @@ include filesystem.mk
 $(ASM_OBJS): MWASFLAGS += -DPM_ASM -include config.h
 $(C_OBJS):   MWCFLAGS  +=          -include global.h
 
+$(BUILD_DIR)/asm/nitrocrypto.o:  MWCCVER := 1.2/sp2p3
+
 ifeq ($(NODEP),)
 $(ASM_OBJS): $(WORK_DIR)/include/config.h
 $(C_OBJS):   $(WORK_DIR)/include/global.h

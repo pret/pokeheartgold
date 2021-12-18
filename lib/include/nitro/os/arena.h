@@ -12,6 +12,6 @@ void* OS_GetInitArenaLo(OSArenaId id);
 void OS_SetArenaHi(OSArenaId id, void* newHi);
 void OS_SetArenaLo(OSArenaId id, void* newLo);
 void *OS_AllocFromArenaHi(OSArenaId arena, u32 size, u32 align);
-void *OS_AllocFromArenaLo(OSArenaId arena, u32 size, u32 align);
+void *OS_AllocFromArenaLo(OSArenaId id, u32 size, u32 align);
 
 #endif //NITRO_OS_ARENA_H
