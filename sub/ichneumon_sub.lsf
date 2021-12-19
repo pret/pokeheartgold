@@ -17,9 +17,8 @@ Autoload WRAM
 	Object sp_main_help.o
 	Object OS_irqHandler.o
 	Object OS_irqTable.o
-	Object sub.wram.o
 	Object OS_interrupt.o
-	Object OS_irqTable.o
+	Object sub.wram.o
 	Object OS_spinLock.o
 	Object OS_thread.o
 	Object OS_context.o

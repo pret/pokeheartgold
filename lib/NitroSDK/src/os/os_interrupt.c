@@ -23,7 +23,7 @@ void OS_SetIrqFunction(OSIrqMask intrBit, OSIrqFunction function) {
                 info = &OSi_IrqCallbackInfo[i - REG_OS_IE_T0_SHIFT + OSi_IRQCALLBACK_NO_TIMER0];
             }
 #ifdef SDK_ARM7
-            else if (i == REG_OS_IE_VB_SHIFT) {
+                else if (i == REG_OS_IE_VB_SHIFT) {
                 info = &OSi_IrqCallbackInfo[OSi_IRQCALLBACK_NO_VBLANK];
             }
 #endif
@@ -51,11 +51,11 @@ OSIrqFunction OS_GetIrqFunction(OSIrqMask intrBit) {
                 return (OSIrqFunction)OSi_IrqCallbackInfo[i - REG_OS_IE_T0_SHIFT + OSi_IRQCALLBACK_NO_TIMER0].func;
             }
 #ifdef SDK_ARM7
-            else if (i == REG_OS_IE_VBLANK_SHIFT) {
+            else if (i == REG_OS_IE_VB_SHIFT) {
                 return (OSIrqFunction)OSi_IrqCallbackInfo[OSi_IRQCALLBACK_NO_VBLANK].func;
             }
 #endif
-             return *funcPtr;
+            return *funcPtr;
         }
         intrBit >>= 1;
         funcPtr++;
@@ -85,6 +85,14 @@ OSIrqMask OS_SetIrqMask(OSIrqMask newMask) {
     OS_RestoreIrq(ime);
     return prep;
 }
+
+#ifdef SDK_ARM7
+BOOL OS_DisableIrq(void) {
+    BOOL ime = reg_OS_IME;
+    reg_OS_IME = 0;
+    return ime;
+}
+#endif
 
 OSIrqMask OS_EnableIrqMask(OSIrqMask newMask) {
     BOOL ime = OS_DisableIrq();

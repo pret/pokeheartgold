@@ -44,11 +44,15 @@ static inline void OS_SetIrqCheckFlag(OSIrqMask intr) {
     *(vu32 *)HW_INTR_CHECK_BUF |= (u32)intr;
 }
 
+#ifdef SDK_ARM9
 static inline BOOL OS_DisableIrq(void) {
     BOOL ime = reg_OS_IME;
     reg_OS_IME = 0;
     return ime;
 }
+#else
+BOOL OS_DisableIrq(void);
+#endif
 
 static inline BOOL OS_RestoreIrq(BOOL enable) {
     BOOL ime = reg_OS_IME;
