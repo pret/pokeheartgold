@@ -3245,7 +3245,7 @@ _03803324:
 	mov r0, r0, lsl #0x10
 	mov r7, r0, lsr #0x10
 	mov r0, r7
-	bl OSi_DoLockByWord
+	bl OS_LockCartridge
 	ldr ip, _03803434 ; =0x0000FFFF
 	mov sl, #0
 	eor r0, ip, #3

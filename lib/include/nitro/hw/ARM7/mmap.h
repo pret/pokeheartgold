@@ -27,4 +27,6 @@
 #define HW_VBLANK_COUNT_BUF         (HW_MAIN_MEM + 0x007ffc3c)
 #define HW_LOCK_ID_FLAG_SUB         (HW_MAIN_MEM + 0x007fffb8)
 
+#define HW_CARD_LOCK_BUF            (HW_MAIN_MEM + 0x007FFFE0)
+
 #endif //NITRO_HW_ARM7_MMAP_H
