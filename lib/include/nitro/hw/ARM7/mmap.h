@@ -22,6 +22,7 @@
 #define HW_PRV_WRAM_SYSRV           (HW_PRV_WRAM + HW_PRV_WRAM_SIZE - HW_PRV_WRAM_SYSRV_SIZE)
 
 #define HW_INTR_CHECK_BUF           (HW_PRV_WRAM_SYSRV + 0x38)
+#define HW_INTR_VECTOR_BUF          (HW_PRV_WRAM_SYSRV + 0x3C)
 
 #define HW_VBLANK_COUNT_BUF         (HW_MAIN_MEM + 0x007ffc3c)
 #define HW_LOCK_ID_FLAG_SUB         (HW_MAIN_MEM + 0x007fffb8)

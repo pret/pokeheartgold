@@ -5,8 +5,10 @@
 #include <nitro/hw/consts.h>
 
 #ifdef SDK_ARM7
+#include <nitro/os/ARM7/interrupt.h>
 #define OS_IRQ_TABLE_MAX 25
 #else // SDK_ARM9
+//#include <nitro/os/ARM9/interrupt.h>
 #define OS_IRQ_TABLE_MAX 22
 #endif //SDK_ARM7 SDK_ARM9
 
@@ -26,13 +28,6 @@
 #else // SDK_ARM7
 #define OSi_IRQCALLBACK_NUM       (8+1)
 #endif // SDK_ARM9 SDK_ARM7
-
-#ifdef SDK_ARM7
-static inline void OSi_SetVBlankCount(u32 count)
-{
-    *(u32 *)HW_VBLANK_COUNT_BUF = count;
-}
-#endif //SDK_ARM7
 
 extern OSIrqFunction OS_IRQTable[];
 extern OSIrqCallbackInfo OSi_IrqCallbackInfo[OSi_IRQCALLBACK_NUM];

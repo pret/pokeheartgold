@@ -22,8 +22,46 @@ DEFAULT_FSDIR=files
 # Build C utils on demand
 make -C "${MYDIR}" --no-print-directory
 
+# getword FILE OFFSET
 getword() {
   od -j "$2" -N 4 -A n -t u "$1" | awk '{$1=$1};1'
+}
+
+# dump_autoload SBIN PROC VMA AUTOLOAD
+dump_autoload() {
+  outfile="${1}_a${5}"
+  # ARM9 has the start module params in the footer
+  if [ "$proc" == armv5te ]; then
+    _start_ModuleParams=$(($(getword "$1" $(($4-8)))-$3))
+  else
+    _start_ModuleParams=0
+    # Have to be a bit clever for ARM7
+    for i in $(seq 0 4 $4); do
+      if [ $(getword "$1" $i ) == $(($3 + $4)) ]; then
+        _start_ModuleParams=$((i-4))
+        break
+      fi
+    done
+  fi
+  printf "0x%08X\n" $(($3 + _start_ModuleParams)) >&2
+  [[ $_start_ModuleParams == 0 ]] && { echo "Unable to find _start_ModuleParams"; exit 1; }
+  aload_list=$(($(getword "$1" $_start_ModuleParams)-$3))
+  aload_list_end=$(($(getword "$1" $((_start_ModuleParams+4)))-$3))
+  aload_start=$(($(getword "$1" $((_start_ModuleParams+8)))-$3))
+  printf "0x%08X\t0x%08X\t0x%08X\n" $aload_list $aload_list_end $aload_start >&2
+  [[ $aload_list == $aload_list_end ]] && { echo "error: autoload index exceeds list size"; exit 1; }
+  for i in $(seq 1 "$5"); do
+    avma=$(getword "$1" $aload_list)
+    asize=$(getword "$1" $((aload_list+4)))
+    ((aload_start+=asize))
+    ((aload_list+=12))
+    [[ $aload_list == $aload_list_end ]] && { echo "error: autoload index exceeds list size"; exit 1; }
+  done
+  avma=$(getword "$1" $aload_list)
+  asize=$(getword "$1" $((aload_list+4)))
+  dd if="$1" of="$outfile" bs=1 skip=$aload_start count=$asize 2>/dev/null
+  printf "%s\t0x%08X\n" $outfile $avma >&2
+  echo $outfile $avma
 }
 
 [[ -n "$DEVKITARM" ]] && export PATH=${DEVKITARM}/bin:${PATH}
@@ -39,6 +77,7 @@ usage () {
     echo ""
     echo "Options:"
     echo "  -7            Diff the ARM7 module (default: ARM9)"
+    echo "  -a AUTOLOAD   Diff the indicated autoload module (default: static module)"
     echo "  -m OVERLAY    Diff the indicated overlay module (default: static module)"
     echo "  -r BASEROM    Use the indicated baserom (default: baserom.nds)"
     echo "  -d BUILDDIR   Look for compiled binaries in this directory (default: build/heartgold.us)"
@@ -59,6 +98,12 @@ while [[ $# -gt 0 ]]; do
     proc=armv4t
     builddir=${builddir:-$DEFAULT_ARM7BUILDDIR}
     shift
+    ;;
+  -a)
+    [[ -n $autoload ]] && { echo "can only do one autoload at a time"; exit 1; }
+    mode=autoload
+    autoload="$2"
+    shift 2
     ;;
   -m)
     [[ -n $overlay ]] && { echo "can only do one overlay at a time"; exit 1; }
@@ -123,7 +168,11 @@ case "$mode" in
       ovt=80
       ;;
     esac
-    defsfile=$(${CUT} -d '' -f2 "${builddir}/component.files")
+    if [ -f "${builddir}/component.files" ]; then
+      defsfile=$(${CUT} -d '' -f2 "${builddir}/component.files")
+    else
+      defsfile=$( cd "${builddir}"; ls *.lcf | sed 's/.lcf/_defs.sbin/' )
+    fi
     if [ -n "${overlay##*[!0-9]*}" 2>/dev/null ] ; then
       ovyfile=$(tail -c+16 "${builddir}/${defsfile}" | ${CUT} -d '' -f$((overlay+1)) )
     else
@@ -147,7 +196,7 @@ case "$mode" in
     }
     buildfile=$builddir/$ovyfile
     ;;
-  static)
+  static|autoload)
     case $proc in
     armv4t)
       romtab=48
@@ -172,8 +221,21 @@ case "$mode" in
         }
       }
     }
-    compname=$(${CUT} -d '' -f1 "${builddir}/component.files")
+    if [ -f "${builddir}/component.files" ]; then
+      compname=$(${CUT} -d '' -f1 "${builddir}/component.files")
+      defsfile=$(${CUT} -d '' -f2 "${builddir}/component.files")
+    else
+      compname=$( cd "${builddir}"; ls *.lcf | sed 's/lcf/sbin/' )
+      defsfile=$( cd "${builddir}"; ls *.lcf | sed 's/.lcf/_defs.sbin/' )
+    fi
     buildfile=${builddir}/${compname}
+    if [ "$mode" == "autoload" ]; then
+      resp=$( dump_autoload "$basefile" "$proc" "$vma" "$size" "$autoload" )
+      basefile=$(echo $resp | cut -d' ' -f1)
+      resp=$( dump_autoload "$buildfile" "$proc" "$vma" "$size" "$autoload" )
+      buildfile=$(echo $resp | cut -d' ' -f1)
+      vma=$(echo $resp | cut -d' ' -f2)
+    fi
     ;;
   file)
     buildfile=${fsdir}/${filepath}

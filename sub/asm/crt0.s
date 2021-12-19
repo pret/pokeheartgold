@@ -144,6 +144,7 @@ _0238018C:
 _02380194: .word 0x027FFFFA
 	arm_func_end detect_main_memory_size
 
+	.public _start_ModuleParams
 _start_ModuleParams: ; 0x02380198
 	.word SDK_AUTOLOAD_LIST
 	.word SDK_AUTOLOAD_LIST_END

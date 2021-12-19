@@ -118,6 +118,7 @@ void OS_SetPeriodicAlarm(OSAlarm *alarm, OSTick start, OSTick period, OSAlarmHan
     alarm->handler = handler;
     alarm->arg = arg;
     OSi_InsertAlarm(alarm, 0);
+    OS_RestoreInterrupts(enabled);
 }
 
 void OS_CancelAlarm(OSAlarm *alarm) {

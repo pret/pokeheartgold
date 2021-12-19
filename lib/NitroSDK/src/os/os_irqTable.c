@@ -18,7 +18,7 @@ u16 OSi_IrqCallbackInfoIndex[] = {
 
 void OS_IrqDummy(void) {}
 
-void OSi_IrqCallback(int index) {
+void OSi_IrqCallback(s32 index) {
     OSIrqMask imask = (1UL << OSi_IrqCallbackInfoIndex[index]);
     void (*callback)(void *) = OSi_IrqCallbackInfo[index].func;
     OSi_IrqCallbackInfo[index].func = NULL;

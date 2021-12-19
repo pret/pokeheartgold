@@ -18,6 +18,8 @@
 extern OSIrqFunction OS_IRQTable[];
 extern OSIrqCallbackInfo OSi_IrqCallbackInfo[9];
 
+#define OS_IE_FIFO_RECV       (1UL << REG_OS_IE_IFN_SHIFT)
+
 static inline void OSi_SetVBlankCount(u32 count)
 {
     *(u32 *)HW_VBLANK_COUNT_BUF = count;

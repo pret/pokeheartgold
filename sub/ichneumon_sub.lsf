@@ -26,9 +26,20 @@ Autoload WRAM
 	Object OS_init.o
 	Object OS_arena.o
 	Object OS_alloc.o
+	Object OS_timer.o
+	Object OS_tick.o
+	Object OS_alarm.o
+	Object OS_valarm.o
+	Object OS_system.o
+	Object OS_reset.o
+	Object OS_terminate_proc.o
+	### Insert MI here ###
+	Object PXI_fifo.o
+	Object PAD_xyButton.o
 	Object sub.wram_1.o
 	Object libsyscall.o
 	Object sub.wram_2.o
+	Object OS_reset.o (.wram)
 	Object sub.wram_2.o (.wram)
 }
 

@@ -3,1108 +3,11 @@
 
 	.text
 
-	arm_func_start OSi_SetTimerReserved
-OSi_SetTimerReserved: ; 0x037FA130
-	ldr r1, _037FA148 ; =OSi_TimerReserved
-	mov r2, #1
-	ldrh r3, [r1]
-	orr r0, r3, r2, lsl r0
-	strh r0, [r1]
-	bx lr
-	.align 2, 0
-_037FA148: .word OSi_TimerReserved
-	arm_func_end OSi_SetTimerReserved
-
-	arm_func_start OS_InitTick
-OS_InitTick: ; 0x037FA14C
-	stmdb sp!, {r3, lr}
-	ldr r1, _037FA1BC ; =OSi_UseTick
-	ldrh r0, [r1]
-	cmp r0, #0
-	bne _037FA1B4
-	mov r2, #1
-	mov r0, #0
-	strh r2, [r1]
-	bl OSi_SetTimerReserved
-	ldr r0, _037FA1BC ; =OSi_UseTick
-	mov r2, #0
-	str r2, [r0, #8]
-	ldr r3, _037FA1C0 ; =0x04000102
-	str r2, [r0, #0xc]
-	strh r2, [r3]
-	ldr r1, _037FA1C4 ; =OSi_CountUpTick
-	strh r2, [r3, #-2]
-	mov r2, #0xc1
-	mov r0, #8
-	strh r2, [r3]
-	bl OS_SetIrqFunction
-	mov r0, #8
-	bl OS_EnableIrqMask
-	ldr r0, _037FA1BC ; =OSi_UseTick
-	mov r1, #0
-	str r1, [r0, #4]
-_037FA1B4:
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037FA1BC: .word OSi_UseTick
-_037FA1C0: .word 0x04000102
-_037FA1C4: .word OSi_CountUpTick
-	arm_func_end OS_InitTick
-
-	arm_func_start OS_IsTickAvailable
-OS_IsTickAvailable: ; 0x037FA1C8
-	ldr r0, _037FA1D4 ; =OSi_UseTick
-	ldrh r0, [r0]
-	bx lr
-	.align 2, 0
-_037FA1D4: .word OSi_UseTick
-	arm_func_end OS_IsTickAvailable
-
-	arm_func_start OSi_CountUpTick
-OSi_CountUpTick: ; 0x037FA1D8
-	ldr r0, _037FA230 ; =OSi_UseTick
-	mov r3, #0
-	ldr r2, [r0, #8]
-	ldr r1, [r0, #0xc]
-	adds r2, r2, #1
-	str r2, [r0, #8]
-	adc r1, r1, #0
-	str r1, [r0, #0xc]
-	ldr r1, [r0, #4]
-	cmp r1, #0
-	beq _037FA21C
-	ldr r2, _037FA234 ; =0x04000102
-	mov r1, #0xc1
-	strh r3, [r2]
-	strh r3, [r2, #-2]
-	strh r1, [r2]
-	str r3, [r0, #4]
-_037FA21C:
-	ldr ip, _037FA238 ; =OSi_EnterTimerCallback
-	mov r0, #0
-	ldr r1, _037FA23C ; =OSi_CountUpTick
-	mov r2, r0
-	bx ip
-	.align 2, 0
-_037FA230: .word OSi_UseTick
-_037FA234: .word 0x04000102
-_037FA238: .word OSi_EnterTimerCallback
-_037FA23C: .word OSi_CountUpTick
-	arm_func_end OSi_CountUpTick
-
-	arm_func_start OS_GetTick
-OS_GetTick: ; 0x037FA240
-	stmdb sp!, {lr}
-	sub sp, sp, #0xc
-	bl OS_DisableInterrupts
-	ldr lr, _037FA2D8 ; =0x04000100
-	ldr r1, _037FA2DC ; =OSi_UseTick
-	ldrh r3, [lr]
-	ldr r2, _037FA2E0 ; =0x0000FFFF
-	strh r3, [sp]
-	ldr ip, [r1, #8]
-	ldr r3, [r1, #0xc]
-	sub r1, r2, #0x10000
-	and ip, ip, r1
-	and r1, r3, r2
-	str ip, [sp, #4]
-	str r1, [sp, #8]
-	ldr r1, [lr, #0x114]
-	tst r1, #8
-	beq _037FA2AC
-	ldrh r1, [sp]
-	tst r1, #0x8000
-	bne _037FA2AC
-	ldr r2, [sp, #4]
-	ldr r1, [sp, #8]
-	adds r2, r2, #1
-	adc r1, r1, #0
-	str r2, [sp, #4]
-	str r1, [sp, #8]
-_037FA2AC:
-	bl OS_RestoreInterrupts
-	ldr r2, [sp, #4]
-	ldr r1, [sp, #8]
-	ldrh r0, [sp]
-	mov r1, r1, lsl #0x10
-	orr r1, r1, r2, lsr #16
-	orr r1, r1, r0, asr #31
-	orr r0, r0, r2, lsl #16
-	add sp, sp, #0xc
-	ldmia sp!, {lr}
-	bx lr
-	.align 2, 0
-_037FA2D8: .word 0x04000100
-_037FA2DC: .word OSi_UseTick
-_037FA2E0: .word 0x0000FFFF
-	arm_func_end OS_GetTick
-
-	arm_func_start OSi_SetTimer
-OSi_SetTimer: ; 0x037FA2E4
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r4, r0
-	bl OS_GetTick
-	ldr r3, _037FA360 ; =0x04000106
-	mov r2, #0
-	strh r2, [r3]
-	ldr ip, [r4, #0xc]
-	ldr r3, [r4, #0x10]
-	subs r5, ip, r0
-	sbc r4, r3, r1
-	ldr r1, _037FA364 ; =OSi_AlarmHandler
-	mov r0, #1
-	bl OSi_EnterTimerCallback
-	subs r0, r5, #0
-	mov r3, #0
-	sbcs r0, r4, #0
-	ldrlt r3, _037FA368 ; =0x0000FFFE
-	blt _037FA340
-	subs r0, r5, #0x10000
-	sbcs r0, r4, r3
-	mvnlt r0, r5
-	movlt r0, r0, lsl #0x10
-	movlt r3, r0, lsr #0x10
-_037FA340:
-	ldr r2, _037FA36C ; =0x04000104
-	mov r1, #0xc1
-	strh r3, [r2]
-	mov r0, #0x10
-	strh r1, [r2, #2]
-	bl OS_EnableIrqMask
-	ldmia sp!, {r3, r4, r5, lr}
-	bx lr
-	.align 2, 0
-_037FA360: .word 0x04000106
-_037FA364: .word OSi_AlarmHandler
-_037FA368: .word 0x0000FFFE
-_037FA36C: .word 0x04000104
-	arm_func_end OSi_SetTimer
-
-	arm_func_start OS_InitAlarm
-OS_InitAlarm: ; 0x037FA370
-	stmdb sp!, {r3, lr}
-	ldr r1, _037FA3B0 ; =OSi_UseAlarm
-	ldrh r0, [r1]
-	cmp r0, #0
-	bne _037FA3A8
-	mov r0, #1
-	strh r0, [r1]
-	bl OSi_SetTimerReserved
-	ldr r1, _037FA3B0 ; =OSi_UseAlarm
-	mov r2, #0
-	str r2, [r1, #4]
-	mov r0, #0x10
-	str r2, [r1, #8]
-	bl OS_DisableIrqMask
-_037FA3A8:
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037FA3B0: .word OSi_UseAlarm
-	arm_func_end OS_InitAlarm
-
-	arm_func_start OS_IsAlarmAvailable
-OS_IsAlarmAvailable: ; 0x037FA3B4
-	ldr r0, _037FA3C0 ; =OSi_UseAlarm
-	ldrh r0, [r0]
-	bx lr
-	.align 2, 0
-_037FA3C0: .word OSi_UseAlarm
-	arm_func_end OS_IsAlarmAvailable
-
-	arm_func_start OS_CreateAlarm
-OS_CreateAlarm: ; 0x037FA3C4
-	mov r1, #0
-	str r1, [r0]
-	str r1, [r0, #8]
-	bx lr
-	arm_func_end OS_CreateAlarm
-
-	arm_func_start OSi_InsertAlarm
-OSi_InsertAlarm: ; 0x037FA3D4
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	mov r8, r0
-	ldr r0, [r8, #0x20]
-	ldr r3, [r8, #0x1c]
-	cmp r0, #0
-	mov r7, r1
-	mov r6, r2
-	cmpeq r3, #0
-	beq _037FA448
-	bl OS_GetTick
-	ldr r6, [r8, #0x28]
-	ldr r7, [r8, #0x24]
-	cmp r6, r1
-	cmpeq r7, r0
-	bhs _037FA448
-	ldr r5, [r8, #0x1c]
-	ldr r4, [r8, #0x20]
-	subs r0, r0, r7
-	mov r2, r5
-	mov r3, r4
-	sbc r1, r1, r6
-	bl _ll_udiv
-	adds r2, r0, #1
-	adc r0, r1, #0
-	umull r3, r1, r5, r2
-	mla r1, r5, r0, r1
-	mla r1, r4, r2, r1
-	adds r7, r7, r3
-	adc r6, r6, r1
-_037FA448:
-	str r7, [r8, #0xc]
-	ldr r0, _037FA4FC ; =OSi_UseAlarm
-	str r6, [r8, #0x10]
-	mov r2, #0
-	ldr r5, [r0, #4]
-	mov r1, r2
-	b _037FA4B8
-_037FA464:
-	ldr r3, [r5, #0xc]
-	ldr r0, [r5, #0x10]
-	subs r4, r7, r3
-	sbc r3, r6, r0
-	subs r0, r4, r1
-	sbcs r0, r3, r2
-	bge _037FA4B4
-	ldr r0, [r5, #0x14]
-	str r0, [r8, #0x14]
-	str r8, [r5, #0x14]
-	str r5, [r8, #0x18]
-	ldr r0, [r8, #0x14]
-	cmp r0, #0
-	strne r8, [r0, #0x18]
-	bne _037FA4F4
-	ldr r1, _037FA4FC ; =OSi_UseAlarm
-	mov r0, r8
-	str r8, [r1, #4]
-	bl OSi_SetTimer
-	b _037FA4F4
-_037FA4B4:
-	ldr r5, [r5, #0x18]
-_037FA4B8:
-	cmp r5, #0
-	bne _037FA464
-	ldr r1, _037FA4FC ; =OSi_UseAlarm
-	mov r0, #0
-	str r0, [r8, #0x18]
-	ldr r0, [r1, #8]
-	str r8, [r1, #8]
-	str r0, [r8, #0x14]
-	cmp r0, #0
-	strne r8, [r0, #0x18]
-	bne _037FA4F4
-	str r8, [r1, #8]
-	mov r0, r8
-	str r8, [r1, #4]
-	bl OSi_SetTimer
-_037FA4F4:
-	ldmia sp!, {r4, r5, r6, r7, r8, lr}
-	bx lr
-	.align 2, 0
-_037FA4FC: .word OSi_UseAlarm
-	arm_func_end OSi_InsertAlarm
-
-	arm_func_start OS_SetAlarm
-OS_SetAlarm: ; 0x037FA500
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	movs r6, r0
-	mov r5, r1
-	mov r4, r2
-	mov r7, r3
-	beq _037FA524
-	ldr r0, [r6]
-	cmp r0, #0
-	beq _037FA528
-_037FA524:
-	bl OS_Terminate
-_037FA528:
-	bl OS_DisableInterrupts
-	mov r1, #0
-	str r1, [r6, #0x1c]
-	str r1, [r6, #0x20]
-	str r7, [r6]
-	ldr r1, [sp, #0x18]
-	mov r7, r0
-	str r1, [r6, #4]
-	bl OS_GetTick
-	adds r3, r5, r0
-	adc r2, r4, r1
-	mov r0, r6
-	mov r1, r3
-	bl OSi_InsertAlarm
-	mov r0, r7
-	bl OS_RestoreInterrupts
-	ldmia sp!, {r3, r4, r5, r6, r7, lr}
-	bx lr
-	arm_func_end OS_SetAlarm
-
-	arm_func_start OS_SetPeriodicAlarm
-OS_SetPeriodicAlarm: ; 0x037FA570
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r5, [sp, #0x18]
-	movs r4, r0
-	mov r8, r1
-	mov r7, r2
-	mov r6, r3
-	beq _037FA598
-	ldr r0, [r4]
-	cmp r0, #0
-	beq _037FA59C
-_037FA598:
-	bl OS_Terminate
-_037FA59C:
-	bl OS_DisableInterrupts
-	str r6, [r4, #0x1c]
-	str r5, [r4, #0x20]
-	str r8, [r4, #0x24]
-	mov r1, #0
-	mov r5, r0
-	ldr r0, [sp, #0x1c]
-	str r7, [r4, #0x28]
-	ldr r3, [sp, #0x20]
-	str r0, [r4]
-	mov r0, r4
-	mov r2, r1
-	str r3, [r4, #4]
-	bl OSi_InsertAlarm
-	mov r0, r5
-	bl OS_RestoreInterrupts
-	ldmia sp!, {r4, r5, r6, r7, r8, lr}
-	bx lr
-	arm_func_end OS_SetPeriodicAlarm
-
-	arm_func_start OS_CancelAlarm
-OS_CancelAlarm: ; 0x037FA5E4
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	bl OS_DisableInterrupts
-	ldr r1, [r5]
-	mov r4, r0
-	cmp r1, #0
-	bne _037FA608
-	bl OS_RestoreInterrupts
-	b _037FA660
-_037FA608:
-	ldr r0, [r5, #0x18]
-	cmp r0, #0
-	ldreq r2, [r5, #0x14]
-	ldreq r1, _037FA668 ; =OSi_UseAlarm
-	streq r2, [r1, #8]
-	ldrne r1, [r5, #0x14]
-	strne r1, [r0, #0x14]
-	ldr r1, [r5, #0x14]
-	cmp r1, #0
-	strne r0, [r1, #0x18]
-	bne _037FA648
-	ldr r1, _037FA668 ; =OSi_UseAlarm
-	cmp r0, #0
-	str r0, [r1, #4]
-	beq _037FA648
-	bl OSi_SetTimer
-_037FA648:
-	mov r1, #0
-	str r1, [r5]
-	str r1, [r5, #0x1c]
-	mov r0, r4
-	str r1, [r5, #0x20]
-	bl OS_RestoreInterrupts
-_037FA660:
-	ldmia sp!, {r3, r4, r5, lr}
-	bx lr
-	.align 2, 0
-_037FA668: .word OSi_UseAlarm
-	arm_func_end OS_CancelAlarm
-
-	arm_func_start OSi_AlarmHandler
-OSi_AlarmHandler: ; 0x037FA66C
-	stmdb sp!, {r0, lr}
-	bl OSi_ArrangeTimer
-	ldmia sp!, {r0, lr}
-	bx lr
-	arm_func_end OSi_AlarmHandler
-
-	arm_func_start OSi_ArrangeTimer
-OSi_ArrangeTimer: ; 0x037FA67C
-	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _037FA764 ; =0x04000106
-	mov r2, #0
-	mov r0, #0x10
-	strh r2, [r1]
-	bl OS_DisableIrqMask
-	ldr r1, _037FA768 ; =SNDi_Work + 0x780
-	ldr r0, [r1]
-	orr r0, r0, #0x10
-	str r0, [r1]
-	bl OS_GetTick
-	ldr r2, _037FA76C ; =OSi_UseAlarm
-	ldr r4, [r2, #4]
-	cmp r4, #0
-	beq _037FA75C
-	ldr r3, [r4, #0x10]
-	ldr ip, [r4, #0xc]
-	cmp r1, r3
-	cmpeq r0, ip
-	bhs _037FA6D8
-	mov r0, r4
-	bl OSi_SetTimer
-	b _037FA75C
-_037FA6D8:
-	ldr r1, [r4, #0x18]
-	mov r0, #0
-	str r1, [r2, #4]
-	cmp r1, #0
-	streq r0, [r2, #8]
-	strne r0, [r1, #0x14]
-	ldr r0, [r4, #0x20]
-	ldr r1, [r4, #0x1c]
-	cmp r0, #0
-	ldr r5, [r4]
-	mov r0, #0
-	cmpeq r1, #0
-	streq r0, [r4]
-	cmp r5, #0
-	beq _037FA720
-	ldr r0, [r4, #4]
-	mov lr, pc
-	bx r5
-_037FA720:
-	ldr r0, [r4, #0x20]
-	ldr r1, [r4, #0x1c]
-	cmp r0, #0
-	cmpeq r1, #0
-	mov r1, #0
-	beq _037FA748
-	mov r0, r4
-	mov r2, r1
-	str r5, [r4]
-	bl OSi_InsertAlarm
-_037FA748:
-	ldr r0, _037FA76C ; =OSi_UseAlarm
-	ldr r0, [r0, #4]
-	cmp r0, #0
-	beq _037FA75C
-	bl OSi_SetTimer
-_037FA75C:
-	ldmia sp!, {r3, r4, r5, lr}
-	bx lr
-	.align 2, 0
-_037FA764: .word 0x04000106
-_037FA768: .word 0x0380FFF8
-_037FA76C: .word OSi_UseAlarm
-	arm_func_end OSi_ArrangeTimer
-
-	arm_func_start OS_InitVAlarm
-OS_InitVAlarm: ; 0x037FA770
-	stmdb sp!, {r3, lr}
-	ldr r1, _037FA7B8 ; =OSi_UseVAlarm
-	ldrh r0, [r1]
-	cmp r0, #0
-	bne _037FA7B0
-	mov r0, #1
-	strh r0, [r1]
-	mov r2, #0
-	str r2, [r1, #0xc]
-	mov r0, #4
-	str r2, [r1, #0x10]
-	bl OS_DisableIrqMask
-	ldr r0, _037FA7B8 ; =OSi_UseVAlarm
-	mov r1, #0
-	str r1, [r0, #8]
-	str r1, [r0, #4]
-_037FA7B0:
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037FA7B8: .word OSi_UseVAlarm
-	arm_func_end OS_InitVAlarm
-
-	arm_func_start OS_IsVAlarmAvailable
-OS_IsVAlarmAvailable: ; 0x037FA7BC
-	ldr r0, _037FA7C8 ; =OSi_UseVAlarm
-	ldrh r0, [r0]
-	bx lr
-	.align 2, 0
-_037FA7C8: .word OSi_UseVAlarm
-	arm_func_end OS_IsVAlarmAvailable
-
-	arm_func_start OSi_InsertVAlarm
-OSi_InsertVAlarm: ; 0x037FA7CC
-	stmdb sp!, {r3, lr}
-	ldr r1, _037FA86C ; =OSi_UseVAlarm
-	ldr r3, [r1, #0xc]
-	b _037FA830
-_037FA7DC:
-	ldr r2, [r0, #0xc]
-	ldr r1, [r3, #0xc]
-	cmp r1, r2
-	blo _037FA82C
-	bne _037FA800
-	ldrsh r2, [r3, #0x10]
-	ldrsh r1, [r0, #0x10]
-	cmp r2, r1
-	ble _037FA82C
-_037FA800:
-	ldr r1, [r3, #0x14]
-	str r1, [r0, #0x14]
-	str r3, [r0, #0x18]
-	str r0, [r3, #0x14]
-	cmp r1, #0
-	strne r0, [r1, #0x18]
-	bne _037FA864
-	ldr r1, _037FA86C ; =OSi_UseVAlarm
-	str r0, [r1, #0xc]
-	bl OSi_SetNextVAlarm
-	b _037FA864
-_037FA82C:
-	ldr r3, [r3, #0x18]
-_037FA830:
-	cmp r3, #0
-	bne _037FA7DC
-	; OSi_AppendVAlarm
-	ldr r1, _037FA86C ; =OSi_UseVAlarm
-	mov r2, #0
-	ldr r3, [r1, #0x10]
-	str r3, [r0, #0x14]
-	str r2, [r0, #0x18]
-	str r0, [r1, #0x10]
-	cmp r3, #0
-	strne r0, [r3, #0x18]
-	bne _037FA864
-	str r0, [r1, #0xc]
-	bl OSi_SetNextVAlarm
-_037FA864:
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037FA86C: .word OSi_UseVAlarm
-	arm_func_end OSi_InsertVAlarm
-
-	arm_func_start OSi_DetachVAlarm
-OSi_DetachVAlarm: ; 0x037FA870
-	cmp r0, #0
-	bxeq lr
-	ldr r2, [r0, #0x18]
-	ldr r1, [r0, #0x14]
-	cmp r2, #0
-	ldreq r0, _037FA8A4 ; =OSi_UseVAlarm
-	strne r1, [r2, #0x14]
-	streq r1, [r0, #0x10]
-	cmp r1, #0
-	ldreq r0, _037FA8A4 ; =OSi_UseVAlarm
-	strne r2, [r1, #0x18]
-	streq r2, [r0, #0xc]
-	bx lr
-	.align 2, 0
-_037FA8A4: .word OSi_UseVAlarm
-	arm_func_end OSi_DetachVAlarm
-
-	arm_func_start OS_CreateVAlarm
-OS_CreateVAlarm: ; 0x037FA8A8
-	mov r1, #0
-	str r1, [r0]
-	str r1, [r0, #8]
-	str r1, [r0, #0x20]
-	bx lr
-	arm_func_end OS_CreateVAlarm
-
-	arm_func_start OS_SetVAlarm
-OS_SetVAlarm: ; 0x037FA8BC
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	mov r8, r0
-	mov r7, r1
-	mov r6, r2
-	mov r5, r3
-	bl OS_DisableInterrupts
-	mov r4, r0
-	cmp r8, #0
-	beq _037FA8EC
-	ldr r0, [r8]
-	cmp r0, #0
-	beq _037FA8F0
-_037FA8EC:
-	bl OS_Terminate
-_037FA8F0:
-	ldr r0, _037FA948 ; =0x04000006
-	ldrh sb, [r0]
-	mov r0, sb
-	bl OSi_GetVFrame
-	mov r1, #0
-	str r1, [r8, #0x1c]
-	cmp r7, sb
-	strh r7, [r8, #0x10]
-	addle r0, r0, #1
-	str r0, [r8, #0xc]
-	strh r6, [r8, #0x12]
-	ldr r0, [sp, #0x20]
-	str r5, [r8]
-	str r0, [r8, #4]
-	mov r1, #0
-	mov r0, r8
-	str r1, [r8, #0x24]
-	bl OSi_InsertVAlarm
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	bx lr
-	.align 2, 0
-_037FA948: .word 0x04000006
-	arm_func_end OS_SetVAlarm
-
-	arm_func_start OS_SetPeriodicVAlarm
-OS_SetPeriodicVAlarm: ; 0x037FA94C
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	mov r8, r0
-	mov r7, r1
-	mov r6, r2
-	mov r5, r3
-	bl OS_DisableInterrupts
-	mov r4, r0
-	cmp r8, #0
-	beq _037FA97C
-	ldr r0, [r8]
-	cmp r0, #0
-	beq _037FA980
-_037FA97C:
-	bl OS_Terminate
-_037FA980:
-	ldr r0, _037FA9D8 ; =0x04000006
-	ldrh sb, [r0]
-	mov r0, sb
-	bl OSi_GetVFrame
-	mov r1, #1
-	str r1, [r8, #0x1c]
-	cmp r7, sb
-	strh r7, [r8, #0x10]
-	addle r0, r0, #1
-	str r0, [r8, #0xc]
-	strh r6, [r8, #0x12]
-	ldr r0, [sp, #0x20]
-	str r5, [r8]
-	str r0, [r8, #4]
-	mov r1, #0
-	mov r0, r8
-	str r1, [r8, #0x24]
-	bl OSi_InsertVAlarm
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	bx lr
-	.align 2, 0
-_037FA9D8: .word 0x04000006
-	arm_func_end OS_SetPeriodicVAlarm
-
-	arm_func_start OSi_SetNextVAlarm
-OSi_SetNextVAlarm: ; 0x037FA9DC
-	stmdb sp!, {r4, lr}
-	ldr r1, _037FAA30 ; =OSi_VAlarmHandler
-	mov r4, r0
-	mov r0, #4
-	bl OS_SetIrqFunction
-	ldrsh r3, [r4, #0x10]
-	ldr r2, _037FAA34 ; =0x04000004
-	mov r0, r3, lsl #0x18
-	ldrh r1, [r2]
-	and r3, r3, #0x100
-	and r1, r1, #0x3f
-	orr r0, r1, r0, lsr #16
-	orr r0, r0, r3, asr #1
-	strh r0, [r2]
-	ldrh r1, [r2]
-	mov r0, #4
-	orr r1, r1, #0x20
-	strh r1, [r2]
-	bl OS_EnableIrqMask
-	ldmia sp!, {r4, lr}
-	bx lr
-	.align 2, 0
-_037FAA30: .word OSi_VAlarmHandler
-_037FAA34: .word 0x04000004
-	arm_func_end OSi_SetNextVAlarm
-
-	arm_func_start OS_SetVAlarmTag
-OS_SetVAlarmTag: ; 0x037FAA38
-	stmdb sp!, {r3, r4, r5, lr}
-	movs r4, r1
-	mov r5, r0
-	bne _037FAA4C
-	bl OS_Terminate
-_037FAA4C:
-	cmp r5, #0
-	strne r4, [r5, #8]
-	ldmia sp!, {r3, r4, r5, lr}
-	bx lr
-	arm_func_end OS_SetVAlarmTag
-
-	arm_func_start OS_CancelVAlarm
-OS_CancelVAlarm: ; 0x037FAA5C
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	bl OS_DisableInterrupts
-	mov r1, #1
-	str r1, [r5, #0x24]
-	ldr r1, [r5]
-	mov r4, r0
-	cmp r1, #0
-	bne _037FAA88
-	bl OS_RestoreInterrupts
-	b _037FAAA0
-_037FAA88:
-	mov r0, r5
-	bl OSi_DetachVAlarm
-	mov r1, #0
-	mov r0, r4
-	str r1, [r5]
-	bl OS_RestoreInterrupts
-_037FAAA0:
-	ldmia sp!, {r3, r4, r5, lr}
-	bx lr
-	arm_func_end OS_CancelVAlarm
-
-	arm_func_start OS_CancelVAlarms
-OS_CancelVAlarms: ; 0x037FAAA8
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r0
-	bl OS_DisableInterrupts
-	mov r5, r0
-	cmp r7, #0
-	bne _037FAAC4
-	bl OS_Terminate
-_037FAAC4:
-	ldr r0, _037FAB18 ; =OSi_UseVAlarm
-	mov r4, #0
-	ldr r0, [r0, #0xc]
-	cmp r0, #0
-	ldrne r6, [r0, #0x18]
-	moveq r6, #0
-	b _037FAB00
-_037FAAE0:
-	ldr r1, [r0, #8]
-	cmp r1, r7
-	bne _037FAAF0
-	bl OS_CancelVAlarm
-_037FAAF0:
-	mov r0, r6
-	cmp r6, #0
-	ldrne r6, [r6, #0x18]
-	moveq r6, r4
-_037FAB00:
-	cmp r0, #0
-	bne _037FAAE0
-	mov r0, r5
-	bl OS_RestoreInterrupts
-	ldmia sp!, {r3, r4, r5, r6, r7, lr}
-	bx lr
-	.align 2, 0
-_037FAB18: .word OSi_UseVAlarm
-	arm_func_end OS_CancelVAlarms
-
-	arm_func_start OSi_VAlarmHandler
-OSi_VAlarmHandler: ; 0x037FAB1C
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	mov r0, #4
-	bl OS_DisableIrqMask
-	ldr r2, _037FACBC ; =0x04000004
-	ldr r1, _037FACC0 ; =SNDi_Work + 0x780
-	ldrh r0, [r2]
-	bic r0, r0, #0x20
-	strh r0, [r2]
-	ldr r0, [r1]
-	orr r0, r0, #4
-	str r0, [r1]
-	ldrh r0, [r2]
-	mov r1, r0, asr #8
-	mov r0, r0, lsl #1
-	and r1, r1, #0xff
-	and r0, r0, #0x100
-	orr r0, r1, r0
-	sub r0, r0, #1
-	bl OSi_GetVFrame
-	ldr sl, _037FACC4 ; =0x04000006
-	mov r6, #0
-	ldr r5, _037FACC8 ; =OSi_UseVAlarm
-	sub r7, sl, #2
-	mov fp, #1
-	mov r8, r6
-	b _037FACA8
-_037FAB84:
-	ldrh sb, [sl]
-	mov r0, sb
-	bl OSi_GetVFrame
-	ldrsh r1, [r4, #0x10]
-	ldr r2, [r4, #0xc]
-	sub r1, sb, r1
-	mov sb, r0
-	subs r0, sb, r2
-	bmi _037FABB8
-	cmp r0, #0
-	bne _037FABC0
-	cmp r1, #0
-	bge _037FABC0
-_037FABB8:
-	mov r0, r8
-	b _037FABDC
-_037FABC0:
-	cmp r1, #0
-	addlt r0, r1, #7
-	addlt r1, r0, #0x100
-	ldrsh r0, [r4, #0x12]
-	cmp r1, r0
-	movle r0, fp
-	movgt r0, #2
-_037FABDC:
-	cmp r0, #0
-	beq _037FABF8
-	cmp r0, #1
-	beq _037FAC34
-	cmp r0, #2
-	beq _037FAC8C
-	b _037FACA8
-_037FABF8:
-	mov r0, r4
-	bl OSi_SetNextVAlarm
-	ldrh r1, [sl]
-	ldrsh r0, [r4, #0x10]
-	cmp r0, r1
-	ldreq r0, [r4, #0xc]
-	cmpeq r0, sb
-	bne _037FACB4
-	mov r0, #4
-	bl OS_DisableIrqMask
-	ldrh r1, [r7]
-	mov r0, #4
-	bic r1, r1, #0x20
-	strh r1, [r7]
-	bl OS_ResetRequestIrqMask
-_037FAC34:
-	ldr sb, [r4]
-	mov r0, r4
-	bl OSi_DetachVAlarm
-	str r6, [r4]
-	cmp sb, #0
-	beq _037FAC58
-	ldr r0, [r4, #4]
-	mov lr, pc
-	bx sb
-_037FAC58:
-	ldr r0, [r4, #0x1c]
-	cmp r0, #0
-	beq _037FACA8
-	ldr r0, [r4, #0x24]
-	cmp r0, #0
-	bne _037FACA8
-	str sb, [r4]
-	ldr r1, [r5, #8]
-	mov r0, r4
-	add r1, r1, #1
-	str r1, [r4, #0xc]
-	bl OSi_InsertVAlarm
-	b _037FACA8
-_037FAC8C:
-	mov r0, r4
-	bl OSi_DetachVAlarm
-	ldr r1, [r5, #8]
-	mov r0, r4
-	add r1, r1, #1
-	str r1, [r4, #0xc]
-	bl OSi_InsertVAlarm
-_037FACA8:
-	ldr r4, [r5, #0xc]
-	cmp r4, #0
-	bne _037FAB84
-_037FACB4:
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	bx lr
-	.align 2, 0
-_037FACBC: .word 0x04000004
-_037FACC0: .word 0x0380FFF8
-_037FACC4: .word 0x04000006
-_037FACC8: .word OSi_UseVAlarm
-	arm_func_end OSi_VAlarmHandler
-
-	arm_func_start OSi_GetVFrame
-OSi_GetVFrame: ; 0x037FACCC
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl OS_DisableInterrupts
-	ldr r1, _037FAD0C ; =OSi_UseVAlarm
-	ldr r2, [r1, #4]
-	cmp r4, r2
-	ldrlt r2, [r1, #8]
-	addlt r2, r2, #1
-	strlt r2, [r1, #8]
-	ldr r1, _037FAD0C ; =OSi_UseVAlarm
-	str r4, [r1, #4]
-	bl OS_RestoreInterrupts
-	ldr r0, _037FAD0C ; =OSi_UseVAlarm
-	ldr r0, [r0, #8]
-	ldmia sp!, {r4, lr}
-	bx lr
-	.align 2, 0
-_037FAD0C: .word OSi_UseVAlarm
-	arm_func_end OSi_GetVFrame
-
-	arm_func_start OS_EnableInterrupts
-OS_EnableInterrupts: ; 0x037FAD10
-	mrs r0, cpsr
-	bic r1, r0, #0x80
-	msr cpsr_c, r1
-	and r0, r0, #0x80
-	bx lr
-	arm_func_end OS_EnableInterrupts
-
-	arm_func_start OS_DisableInterrupts
-OS_DisableInterrupts: ; 0x037FAD24
-	mrs r0, cpsr
-	orr r1, r0, #0x80
-	msr cpsr_c, r1
-	and r0, r0, #0x80
-	bx lr
-	arm_func_end OS_DisableInterrupts
-
-	arm_func_start OS_RestoreInterrupts
-OS_RestoreInterrupts: ; 0x037FAD38
-	mrs r1, cpsr
-	bic r2, r1, #0x80
-	orr r2, r2, r0
-	msr cpsr_c, r2
-	and r0, r1, #0x80
-	bx lr
-	arm_func_end OS_RestoreInterrupts
-
-	arm_func_start OS_DisableInterrupts_IrqAndFiq
-OS_DisableInterrupts_IrqAndFiq: ; 0x037FAD50
-	mrs r0, cpsr
-	orr r1, r0, #0xc0
-	msr cpsr_c, r1
-	and r0, r0, #0xc0
-	bx lr
-	arm_func_end OS_DisableInterrupts_IrqAndFiq
-
-	arm_func_start OS_RestoreInterrupts_IrqAndFiq
-OS_RestoreInterrupts_IrqAndFiq: ; 0x037FAD64
-	mrs r1, cpsr
-	bic r2, r1, #0xc0
-	orr r2, r2, r0
-	msr cpsr_c, r2
-	and r0, r1, #0xc0
-	bx lr
-	arm_func_end OS_RestoreInterrupts_IrqAndFiq
-
-	arm_func_start OS_GetProcMode
-OS_GetProcMode: ; 0x037FAD7C
-	mrs r0, cpsr
-	and r0, r0, #0x1f
-	bx lr
-	arm_func_end OS_GetProcMode
-
-	arm_func_start OS_SpinWait
-OS_SpinWait: ; 0x037FAD88
-	ldr ip, _037FAD9C ; =SVC_WaitByLoop
-	mov r1, r0, asr #1
-	add r0, r0, r1, lsr #30
-	mov r0, r0, asr #2
-	bx ip
-	.align 2, 0
-_037FAD9C: .word SVC_WaitByLoop
-	arm_func_end OS_SpinWait
-
-	arm_func_start OS_InitReset
-OS_InitReset: ; 0x037FADA0
-	stmdb sp!, {r3, lr}
-	ldr r2, _037FADD0 ; =OSi_IsInitReset
-	ldrh r0, [r2]
-	cmp r0, #0
-	bne _037FADC8
-	ldr r1, _037FADD4 ; =OSi_CommonCallback
-	mov r3, #1
-	mov r0, #0xc
-	strh r3, [r2]
-	bl PXI_SetFifoRecvCallback
-_037FADC8:
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037FADD0: .word OSi_IsInitReset
-_037FADD4: .word OSi_CommonCallback
-	arm_func_end OS_InitReset
-
-	arm_func_start OS_IsResetOccurred
-OS_IsResetOccurred: ; 0x037FADD8
-	ldr r0, _037FADE4 ; =OSi_IsInitReset
-	ldrh r0, [r0, #2]
-	bx lr
-	.align 2, 0
-_037FADE4: .word OSi_IsInitReset
-	arm_func_end OS_IsResetOccurred
-
-	arm_func_start OSi_CommonCallback
-OSi_CommonCallback: ; 0x037FADE8
-	stmdb sp!, {r3, lr}
-	and r0, r1, #0x7f00
-	mov r0, r0, lsl #8
-	mov r0, r0, lsr #0x10
-	cmp r0, #0x10
-	ldreq r0, _037FAE18 ; =OSi_IsInitReset
-	moveq r1, #1
-	streqh r1, [r0, #2]
-	beq _037FAE10
-	bl OS_Terminate
-_037FAE10:
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037FAE18: .word OSi_IsInitReset
-	arm_func_end OSi_CommonCallback
-
-	arm_func_start OS_ResetSystem
-OS_ResetSystem: ; 0x037FAE1C
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r0, #0
-	bl MI_StopDma
-	mov r0, #1
-	bl MI_StopDma
-	mov r0, #2
-	bl MI_StopDma
-	mov r0, #3
-	bl MI_StopDma
-	mov r0, #0x40000
-	bl OS_SetIrqMask
-	mvn r0, #0
-	bl OS_ResetRequestIrqMask
-	bl SND_Shutdown
-	mov r6, #0xc
-	mov r5, #0x1000
-	mov r4, #0
-_037FAE60:
-	mov r0, r6
-	mov r1, r5
-	mov r2, r4
-	bl PXI_SendWordByFifo
-	cmp r0, #0
-	bne _037FAE60
-	; OSi_DoResetSystem
-	ldr r0, _037FAE90 ; =0x04000208
-	mov r1, #0
-	strh r1, [r0]
-	bl OSi_DoBoot
-	ldmia sp!, {r4, r5, r6, lr}
-	bx lr
-	.align 2, 0
-_037FAE90: .word 0x04000208
-	arm_func_end OS_ResetSystem
-
-	arm_func_start OS_Terminate
-OS_Terminate: ; 0x037FAE94
-	stmdb sp!, {r3, lr}
-	mov r0, #0
-	bl CTRDG_VibPulseEdgeUpdate
-_037FAEA0:
-	bl OS_DisableInterrupts
-	bl SVC_Halt
-	b _037FAEA0
-	arm_func_end OS_Terminate
+	.public OSi_SetTimerReserved
+	.public OS_IsTickAvailable
+	.public FifoCtrlInit
+	.public FifoRecvCallbackTable
+	.public PADi_XYButtonAvailable
 
 	arm_func_start MI_WaitDma
 MI_WaitDma: ; 0x037FAEAC
@@ -8207,7 +7110,7 @@ arg$3983: ; 0x0380679C
 buf$3759: ; 0x038067A0
 	.byte 0x06
 
-	.data
+	.section .data,4,1,1
 
 sMasterPan: ; 0x03806AEC
 	.word 0xFFFFFFFF
@@ -8233,141 +7136,149 @@ isFirstCheck$3676: ; 0x03806B04
 
 	.bss
 
-OSi_TimerReserved: ; 0x03806DC0
-	.space 2
-
-	.balign 4, 0
-OSi_UseTick: ; 0x03806DC4
-	.space 2
-
-	.balign 4, 0
-OSi_NeedResetTimer: ; 0x03806DC8
-	.space 4
-
-OSi_TickCounter: ; 0x03806DCC
-	.space 8
-
-OSi_UseAlarm: ; 0x03806DD4
-	.space 2
-
-	.balign 4, 0
-OSi_AlarmQueue: ; 0x03806DD8
-	.space 8
-
-OSi_UseVAlarm: ; 0x03806DE0
-	.space 2
-
-	.balign 4, 0
-OSi_PreviousVCount: ; 0x03806DE4
-	.space 4
-
-OSi_VFrameCount: ; 0x03806DE8
-	.space 4
-
-OSi_VAlarmQueue: ; 0x03806DEC
-	.space 8
-
-OSi_IsInitReset: ; 0x03806DF4
-	.space 2
-
-OSi_IsResetOccurred: ; 0x03806DF6
-	.space 2
-
-FifoCtrlInit: ; 0x03806DF8
-	.space 2
-
-	.balign 4, 0
-FifoRecvCallbackTable: ; 0x03806DFC
-	.space 0x80
-
-PADi_XYButtonAvailable: ; 0x03806E7C
-	.space 4
-
+	.type PADi_XYButtonAlarm,@object
 PADi_XYButtonAlarm: ; 0x03806E80
 	.space 0x2C
+	.size PADi_XYButtonAlarm,.-PADi_XYButtonAlarm
 
+	.type sSurroundDecay,@object
 sSurroundDecay: ; 0x03806EAC
 	.space 0x4
+	.size sSurroundDecay,.-sSurroundDecay
 
+	.type sOrgPan,@object
 sOrgPan: ; 0x03806EB0
 	.space 0x10
+	.size sOrgPan,.-sOrgPan
 
+	.type sOrgVolume,@object
 sOrgVolume: ; 0x03806EC0
 	.space 0x10
+	.size sOrgVolume,.-sOrgVolume
 
+	.type initialized$3619,@object
 initialized$3619: ; 0x03806ED0
 	.space 0x4
+	.size initialized$3619,.-initialized$3619
 
+	.type sndMesgBuffer,@object
 sndMesgBuffer: ; 0x03806ED4
 	.space 0x20
+	.size sndMesgBuffer,.-sndMesgBuffer
 
+	.type sndMesgQueue,@object
 sndMesgQueue: ; 0x03806EF4
 	.space 0x20
+	.size sndMesgQueue,.-sndMesgQueue
 
+	.type sndAlarm,@object
 sndAlarm: ; 0x03806F14
 	.space 0x2C
+	.size sndAlarm,.-sndAlarm
 
+	.type sndThread,@object
 sndThread: ; 0x03806F40
 	.space 0xA4
+	.size sndThread,.-sndThread
 
+	.type sndStack,@object
 sndStack: ; 0x03806FE4
 	.space 0x400
+	.size sndStack,.-sndStack
 
+	.type sWeakLockChannel,@object
 sWeakLockChannel: ; 0x038073E4
 	.space 0x4
+	.size sWeakLockChannel,.-sWeakLockChannel
 
+	.type sLockChannel,@object
 sLockChannel: ; 0x038073E8
 	.space 0x4
+	.size sLockChannel,.-sLockChannel
 
+	.type sMmlPrintEnable,@object
 sMmlPrintEnable: ; 0x038073EC
 	.space 0x4
+	.size sMmlPrintEnable,.-sMmlPrintEnable
 
+	.type seqCache,@object
 seqCache: ; 0x038073F0
 	.space 0x18
+	.size seqCache,.-seqCache
 
+	.type SNDi_SharedWork,@object
 SNDi_SharedWork: ; 0x03807408
 	.space 0x4
+	.size SNDi_SharedWork,.-SNDi_SharedWork
 
+	.type SNDi_Work,@object
 SNDi_Work: ; 0x0380740C
 	.space 0x1180
+	.size SNDi_Work,.-SNDi_Work
 
+	.type sCommandMesgQueue,@object
 sCommandMesgQueue: ; 0x0380858C
 	.space 0x20
+	.size sCommandMesgQueue,.-sCommandMesgQueue
 
+	.type sCommandMesgBuffer,@object
 sCommandMesgBuffer: ; 0x038085AC
 	.space 0x20
+	.size sCommandMesgBuffer,.-sCommandMesgBuffer
 
+	.type CARDi_EnableFlag,@object
 CARDi_EnableFlag: ; 0x038085CC
 	.space 0x4
+	.size CARDi_EnableFlag,.-CARDi_EnableFlag
 
 	.balign 32, 0
+	.type cardi_common,@object
 cardi_common: ; 0x038085E0
 	.space 0x200
+	.size cardi_common,.-cardi_common
 
+	.type cardi_thread_stack,@object
 cardi_thread_stack: ; 0x038087E0
 	.space 0x400
+	.size cardi_thread_stack,.-cardi_thread_stack
 
+	.type status_checked$3825,@object
 status_checked$3825: ; 0x03808BE0
 	.space 0x4
+	.size status_checked$3825,.-status_checked$3825
 
+	.type cardi_param,@object
 cardi_param: ; 0x03808BE4
 	.space 0x10
+	.size cardi_param,.-cardi_param
 
+	.type cardi_rom_base,@object
 cardi_rom_base: ; 0x03808BF4
 	.space 0x4
+	.size cardi_rom_base,.-cardi_rom_base
 
 	.balign 32, 0
+	.type rom_stat,@object
 rom_stat: ; 0x03808C00
 	.space 0x220
+	.size rom_stat,.-rom_stat
 
+	.type skipCheck$3668,@object
 skipCheck$3668: ; 0x03808E20
 	.space 0x4
+	.size skipCheck$3668,.-skipCheck$3668
 
+	.type isCardPullOut,@object
 isCardPullOut: ; 0x03808E24
 	.space 0x4
+	.size isCardPullOut,.-isCardPullOut
 
+	.type isInitialized$3621,@object
 isInitialized$3621: ; 0x03808E28
 	.space 0x4
+	.size isInitialized$3621,.-isInitialized$3621
 
+	.type detectPullOut,@object
 detectPullOut: ; 0x03808E2C
 	.space 0x4
+	.size detectPullOut,.-detectPullOut

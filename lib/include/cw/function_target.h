@@ -10,8 +10,8 @@
 
 #define ALIGN(num) __attribute__ ((aligned(num)))
 
-#ifdef __CLION_IDE__
+#ifndef __MWERKS__
 #define asm
-#endif //__CLION_IDE__
+#endif //__MWERKS__
 
 #endif //GUARD_CW_FUNCTION_TARGET_H

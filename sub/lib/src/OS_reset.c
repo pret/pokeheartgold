@@ -278,7 +278,7 @@ asm void OSi_DoBoot(void) {
     strh r0, [r1]
 @waitMainpIntf2:
     ldrh r0, [r1]
-    and r0, r0, #0x000F
+    cmp r0, #0x0001
     beq @waitMainpIntf2
     ldr r3, =HW_ROM_HEADER_BUF
     ldr r12, [r3, #0x34] // ARM7 entry
