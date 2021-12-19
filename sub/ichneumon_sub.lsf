@@ -15,6 +15,8 @@ Autoload WRAM
 	Address 0x037F8000
 	Object sp_main.o
 	Object sp_main_help.o
+	Object OS_irqHandler.o
+	Object OS_irqTable.o
 	Object sub.wram.o
 	Object OS_interrupt.o
 	Object OS_irqTable.o

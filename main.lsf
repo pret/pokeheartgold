@@ -319,7 +319,9 @@ Autoload DTCM
 {
 	Address 0x027E0000
 	Object os_irqHandler.o (.dtcm)
+	Object os_irqTable.o (.dtcm)
 	Object os_irqHandler.o (.dtcm.bss)
+	Object os_irqTable.o (.dtcm.bss)
 }
 Overlay OVY_0
 {

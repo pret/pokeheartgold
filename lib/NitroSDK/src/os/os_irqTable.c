@@ -1,6 +1,7 @@
 #include <nitro/os/interrupt.h>
+#include <nitro/os/irqTable.h>
 
-OSIrqCallbackInfo OSi_IrqCallbackInfo[8];
+OSIrqCallbackInfo OSi_IrqCallbackInfo[OSi_IRQCALLBACK_NUM];
 
 u16 OSi_IrqCallbackInfoIndex[] = {
     REG_OS_IE_D0_SHIFT,
@@ -15,6 +16,47 @@ u16 OSi_IrqCallbackInfoIndex[] = {
     REG_OS_IE_VB_SHIFT,
 #endif
 };
+
+#ifdef SDK_ARM9
+#include <nitro/dtcm_begin.h>
+#endif
+OSIrqFunction OS_IRQTable[] = {
+#ifdef SDK_ARM7
+    OSi_IrqVBlank,
+#else
+    OS_IrqDummy,
+#endif
+    OS_IrqDummy,
+    OS_IrqDummy,
+    OSi_IrqTimer0,
+    OSi_IrqTimer1,
+    OSi_IrqTimer2,
+    OSi_IrqTimer3,
+    OS_IrqDummy,
+    OSi_IrqDma0,
+    OSi_IrqDma1,
+    OSi_IrqDma2,
+    OSi_IrqDma3,
+    OS_IrqDummy,
+    OS_IrqDummy,
+    OS_IrqDummy,
+    OS_IrqDummy,
+    OS_IrqDummy,
+    OS_IrqDummy,
+    OS_IrqDummy,
+    OS_IrqDummy,
+    OS_IrqDummy,
+    OS_IrqDummy,
+#ifdef SDK_ARM7
+    OS_IrqDummy,
+    OS_IrqDummy,
+    OS_IrqDummy,
+#endif
+};
+
+#ifdef SDK_ARM9
+#include <nitro/dtcm_end.h>
+#endif
 
 void OS_IrqDummy(void) {}
 
@@ -59,3 +101,14 @@ void OSi_IrqTimer2(void) {
 void OSi_IrqTimer3(void) {
     OSi_IrqCallback(OSi_IRQCALLBACK_NO_TIMER3);
 }
+
+#ifdef SDK_ARM7
+void OSi_IrqVBlank(void) {
+    void (*callback)(void) = (void(*)(void))OSi_IrqCallbackInfo[OSi_IRQCALLBACK_NO_VBLANK].func;
+    (*(u32 *)HW_VBLANK_COUNT_BUF)++;
+    if (callback) {
+        callback();
+    }
+    OS_SetIrqCheckFlag(1UL << REG_OS_IE_VB_SHIFT);
+}
+#endif //SDK_ARM7

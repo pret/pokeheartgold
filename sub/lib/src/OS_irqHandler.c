@@ -148,7 +148,7 @@ asm void OS_IrqHandler_ThreadSwitch(void) {
     stmib r0!, {sp}
 #endif
 #ifdef SDK_ARM9
-    stmdb sp!, {r1}
+stmdb sp!, {r1}
     add r0, r1, #OSThread.context
     add r0, r0, #OSContext.cp_context
     ldr r1, =CPi_RestoreContext
