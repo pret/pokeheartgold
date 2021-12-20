@@ -12,98 +12,6 @@
 	.public PXI_IsCallbackReady
 	.public PXIi_SetToFifo
 
-	arm_func_start EXIi_SetBitRcnt0L
-EXIi_SetBitRcnt0L: ; 0x037FB51C
-	ldr r2, _037FB538 ; =0x04000134
-	mvn r3, r0
-	ldrh r0, [r2]
-	and r0, r3, r0
-	orr r0, r1, r0
-	strh r0, [r2]
-	bx lr
-	.align 2, 0
-_037FB538: .word 0x04000134
-	arm_func_end EXIi_SetBitRcnt0L
-
-	arm_func_start EXIi_SelectRcnt
-EXIi_SelectRcnt: ; 0x037FB53C
-	ldr ip, _037FB550 ; =EXIi_SetBitRcnt0L
-	mov r0, r0, lsl #0x10
-	mov r1, r0, lsr #0x10
-	mov r0, #0xc000
-	bx ip
-	.align 2, 0
-_037FB550: .word EXIi_SetBitRcnt0L
-	arm_func_end EXIi_SelectRcnt
-
-	arm_func_start PAD_InitXYButton
-PAD_InitXYButton: ; 0x037FB554
-	stmdb sp!, {lr}
-	sub sp, sp, #0xc
-	bl OS_IsTickAvailable
-	cmp r0, #0
-	beq _037FB574
-	bl OS_IsAlarmAvailable
-	cmp r0, #0
-	bne _037FB57C
-_037FB574:
-	mov r0, #0
-	b _037FB5D4
-_037FB57C:
-	ldr r0, _037FB5E0 ; =PADi_XYButtonAvailable
-	ldr r0, [r0]
-	cmp r0, #0
-	movne r0, #0
-	bne _037FB5D4
-	ldr r0, _037FB5E4 ; =PADi_XYButtonAlarm
-	bl OS_CreateAlarm
-	bl OS_GetTick
-	ldr r2, _037FB5E8 ; =PADi_XYButton_Callback
-	ldr r3, _037FB5EC ; =0x0000082E
-	str r2, [sp, #4]
-	adds ip, r0, r3
-	mov lr, #0
-	str lr, [sp, #8]
-	adc r2, r1, #0
-	ldr r0, _037FB5E4 ; =PADi_XYButtonAlarm
-	mov r1, ip
-	str lr, [sp]
-	bl OS_SetPeriodicAlarm
-	ldr r1, _037FB5E0 ; =PADi_XYButtonAvailable
-	mov r0, #1
-	str r0, [r1]
-_037FB5D4:
-	add sp, sp, #0xc
-	ldmia sp!, {lr}
-	bx lr
-	.align 2, 0
-_037FB5E0: .word PADi_XYButtonAvailable
-_037FB5E4: .word PADi_XYButtonAlarm
-_037FB5E8: .word PADi_XYButton_Callback
-_037FB5EC: .word 0x0000082E
-	arm_func_end PAD_InitXYButton
-
-	arm_func_start PADi_XYButton_Callback
-PADi_XYButton_Callback: ; 0x037FB5F0
-	stmdb sp!, {r4, lr}
-	mov r0, #0x8000
-	mov r4, #0
-	bl EXIi_SelectRcnt
-	ldr r0, _037FB628 ; =0x04000136
-	ldrh r1, [r0]
-	ldr r0, _037FB62C ; =0x027FFFA8
-	tst r1, #0x80
-	movne r4, #0x8000
-	and r1, r1, #0xb
-	orr r1, r4, r1, lsl #10
-	strh r1, [r0]
-	ldmia sp!, {r4, lr}
-	bx lr
-	.align 2, 0
-_037FB628: .word 0x04000136
-_037FB62C: .word 0x027FFFA8
-	arm_func_end PADi_XYButton_Callback
-
 	arm_func_start SND_Enable
 SND_Enable: ; 0x037FB630
 	ldr r1, _037FB644 ; =0x04000501
@@ -6610,6 +6518,7 @@ isFirstCheck$3676: ; 0x03806B04
 	.bss
 
 	.type PADi_XYButtonAlarm,@object
+	.public PADi_XYButtonAlarm
 PADi_XYButtonAlarm: ; 0x03806E80
 	.space 0x2C
 	.size PADi_XYButtonAlarm,.-PADi_XYButtonAlarm

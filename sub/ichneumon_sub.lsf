@@ -37,6 +37,7 @@ Autoload WRAM
 	Object MI_memory.o
 	Object MI_swap.o
 	Object PXI_fifo.o
+	Object EXI_genPort.o
 	Object PAD_xyButton.o
 	Object sub.wram_1.o
 	Object libsyscall.o

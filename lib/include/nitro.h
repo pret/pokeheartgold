@@ -17,5 +17,6 @@
 #include <nitro/snd.h>
 #include <nitro/pad.h>
 #include <nitro/rtc.h>
+#include <nitro/exi.h>
 
 #endif //NITRO_H_

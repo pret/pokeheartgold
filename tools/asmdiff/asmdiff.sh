@@ -27,7 +27,7 @@ getword() {
   od -j "$2" -N 4 -A n -t u "$1" | awk '{$1=$1};1'
 }
 
-# dump_autoload SBIN PROC VMA AUTOLOAD
+# dump_autoload SBIN PROC VMA SIZE AUTOLOAD
 dump_autoload() {
   outfile="${1}_a${5}"
   # ARM9 has the start module params in the footer
@@ -229,6 +229,7 @@ case "$mode" in
     if [ "$mode" == "autoload" ]; then
       resp=$( dump_autoload "$basefile" "$proc" "$vma" "$size" "$autoload" )
       basefile=$(echo $resp | cut -d' ' -f1)
+      size=$( wc -c <${buildfile} )
       resp=$( dump_autoload "$buildfile" "$proc" "$vma" "$size" "$autoload" )
       buildfile=$(echo $resp | cut -d' ' -f1)
       vma=$(echo $resp | cut -d' ' -f2)
