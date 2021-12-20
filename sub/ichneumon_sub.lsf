@@ -33,7 +33,9 @@ Autoload WRAM
 	Object OS_system.o
 	Object OS_reset.o
 	Object OS_terminate_proc.o
-	### Insert MI here ###
+	Object MI_dma.o
+	Object MI_memory.o
+	Object MI_swap.o
 	Object PXI_fifo.o
 	Object PAD_xyButton.o
 	Object sub.wram_1.o

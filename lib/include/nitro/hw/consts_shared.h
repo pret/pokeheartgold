@@ -14,7 +14,7 @@
 #define NITRO_HW_CONSTS_SHARED_H_
 
 #include <nitro/hw/mmap_shared.h>
-#include <nitro/hw/io_reg_shared.h>
+#include <nitro/hw/common/io_reg.h>
 
 //Shared Consts
 

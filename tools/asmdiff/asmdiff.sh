@@ -43,12 +43,10 @@ dump_autoload() {
       fi
     done
   fi
-  printf "0x%08X\n" $(($3 + _start_ModuleParams))
   [[ $_start_ModuleParams == 0 ]] && { echo "Unable to find _start_ModuleParams"; exit 1; }
   aload_list=$(($(getword "$1" $_start_ModuleParams)-$3))
   aload_list_end=$(($(getword "$1" $((_start_ModuleParams+4)))-$3))
   aload_start=$(($(getword "$1" $((_start_ModuleParams+8)))-$3))
-  printf "0x%08X\t0x%08X\t0x%08X\n" $aload_list $aload_list_end $aload_start
   [[ $aload_list == $aload_list_end ]] && { echo "error: autoload index exceeds list size"; exit 1; }
   for i in $(seq 1 "$5"); do
     avma=$(getword "$1" $aload_list)
@@ -60,7 +58,6 @@ dump_autoload() {
   avma=$(getword "$1" $aload_list)
   asize=$(getword "$1" $((aload_list+4)))
   dd if="$1" of="$outfile" bs=1 skip=$aload_start count=$asize 2>/dev/null
-  printf "%s\t0x%08X\n" $outfile $avma
   echo $outfile $avma
 }
 
@@ -248,7 +245,6 @@ case "$mode" in
     exit 0
     ;;
 esac
-
 [[ -n "$1" ]] && start=$(($1)) || start=$vma
 [[ -n "$2" ]] && size=$(($2)) || size=$(wc -c <"$basefile")
 do-objdump () {
