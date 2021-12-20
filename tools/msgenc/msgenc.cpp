@@ -22,6 +22,7 @@ static inline void usage() {
     cout << "-c CHARMAP    Required: Path to a text file with a character mapping, for example pokeheartgold/charmap.txt." << endl;
     cout << "-d            Decode from binary to text, also print the key" << endl;
     cout << "-e            Encode from text to binary using the provided key" << endl;
+    cout << "--gmm         Text file is GMM (Gamefreak XML format)" << endl;
     cout << "-k KEY        The 16-bit encryption key for this message bank. Default: computes it from the binary file name" << endl;
     cout << "-v            Print the program version and exit." << endl;
     cout << "-h            Print this message and exit." << endl;
@@ -37,6 +38,7 @@ struct Options {
     bool printUsage = false;
     bool printVersion = false;
     string dumpBinary;
+    MessagesConverter::txtfmt textFormat = MessagesConverter::PlainText;
     Options(int argc, char ** argv) {
         for (int i = 1; i < argc; i++) {
             string arg(argv[i]);
@@ -59,6 +61,8 @@ struct Options {
                 charmap = argv[++i];
             } else if (arg == "-D") {
                 dumpBinary = argv[++i];
+            } else if (arg == "--gmm") {
+                textFormat = MessagesConverter::GamefreakGMM;
             } else if (arg[0] != '-') {
                 posargs.push_back(arg);
             } else {
@@ -101,6 +105,7 @@ int main(int argc, char ** argv) {
         {
             converter = new MessagesEncoder(options.posargs[0], options.key, options.charmap, options.posargs[1]);
         }
+        converter->SetTextMode(options.textFormat);
         converter->ReadInput();
         converter->ReadCharmap();
         converter->Convert();

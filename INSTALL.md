@@ -22,6 +22,7 @@ Building the ROM requires the following packages:
 * python3 (for asm preprocessor)
 * libpng-devel (libpng-dev on Ubuntu)
 * pkg-config
+* pugixml
 
 NOTE: If you are using Arch/Manjaro or Void you will only need base-devel instead of build-essentials or make or git. You will still need wine.
 
@@ -49,6 +50,7 @@ You will still require the following packages:
 * git
 * build-essentials
 * libpng-devel
+* pugixml
 * pkg-config
 
 Install them using either the Cygwin package manager or using pacman on Msys2.
@@ -67,6 +69,7 @@ macOS 10.15 Catalina and later is supported on Intel and ARM64 hardware configur
 * git
 * libpng
 * pkg-config
+* pugixml
 * wine-crossover (includes wine32on64, required on Catalina and later to run 32-bit x86 EXEs)
 
 They can be installed with the following commands:

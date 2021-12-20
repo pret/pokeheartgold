@@ -77,6 +77,13 @@ protected:
     static void WriteTextFile(string& filename, string const & contents);
 
 public:
+    typedef int txtfmt;
+    static const txtfmt PlainText = 0;
+    static const txtfmt GamefreakGMM = 1;
+protected:
+    txtfmt text_format = PlainText;
+
+public:
     MessagesConverter(ConvertMode _mode, string &_textfilename, int _key, string &_charmapfilename, string &_binfilename) :
         mode(_mode),
         textfilename(_textfilename),
@@ -98,6 +105,10 @@ public:
     }
 
     void WriteBinaryDecoded(string &filename);
+
+    void SetTextMode(txtfmt fmt) {
+        text_format = fmt;
+    }
 };
 
 #endif //GUARD_MESSAGESCONVERTER_H
