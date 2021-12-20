@@ -4,7 +4,7 @@
 u16 FifoCtrlInit = 0;
 PXIFifoCallback FifoRecvCallbackTable[PXI_MAX_FIFO_TAG];
 
-s32 PXIi_SetToFifo(u32 data);
+PXIFifoStatus PXIi_SetToFifo(u32 data);
 
 void PXI_Init(void) {
     PXI_InitFifo();
@@ -21,19 +21,39 @@ void PXI_InitFifo(void) {
         for (i = 0; i < PXI_MAX_FIFO_TAG; i++) {
             FifoRecvCallbackTable[i] = NULL;
         }
-        reg_PXI_MAINP_FIFO_CNT = REG_PXI_MAINP_FIFO_CNT_FIELD(
+        reg_PXI_FIFO_CNT = REG_PXI_FIFO_CNT_FIELD(
             1,1,1,0,0,1,0,0,0
         );
         OS_ResetRequestIrqMask(OS_IE_FIFO_RECV);
         OS_SetIrqFunction(OS_IE_FIFO_RECV, PXIi_HandlerRecvFifoNotEmpty);
         OS_EnableIrqMask(OS_IE_FIFO_RECV);
+#ifdef SDK_ARM7
         for (i = 8; i >= 0; i--) {
-            reg_PXI_MAINPINTF = (i << REG_PXI_MAINPINTF_A7STATUS_SHIFT);
+            reg_PXI_INTF = (i << REG_PXI_INTF_A7STATUS_SHIFT);
             OS_SpinWait(1000);
-            if (((reg_PXI_MAINPINTF & REG_PXI_MAINPINTF_A9STATUS_MASK) >> REG_PXI_MAINPINTF_A9STATUS_SHIFT) != i) {
+            if (((reg_PXI_INTF & REG_PXI_INTF_A9STATUS_MASK) >> REG_PXI_INTF_A9STATUS_SHIFT) != i) {
                 i = 8;
             }
         }
+#else
+        {
+            int timeout;
+            s32 c;
+            for (i = 0;; i++) {
+                c = (reg_PXI_INTF & REG_PXI_INTF_A9STATUS_MASK) >> REG_PXI_INTF_A9STATUS_SHIFT;
+                reg_PXI_INTF = c << REG_PXI_INTF_A7STATUS_SHIFT;
+                if (c == 0 && i > 4) {
+                    break;
+                }
+                for (timeout = 1000; ((reg_PXI_INTF & REG_PXI_INTF_A9STATUS_MASK) >> REG_PXI_INTF_A9STATUS_SHIFT) == c; timeout--) {
+                    if (timeout == 0) {
+                        i = 0;
+                        break;
+                    }
+                }
+            }
+        }
+#endif
     }
     OS_RestoreInterrupts(enabled);
 }
@@ -65,14 +85,17 @@ s32 PXI_SendWordByFifo(s32 fifotag, u32 data, BOOL err) {
     return PXIi_SetToFifo(fifomsg.raw);
 }
 
-s32 PXIi_SetToFifo(u32 data) {
+#ifdef SDK_ARM9
+static inline
+#endif
+PXIFifoStatus PXIi_SetToFifo(u32 data) {
     OSIntrMode enabled;
-    if (reg_PXI_MAINP_FIFO_CNT & REG_PXI_MAINP_FIFO_CNT_ERR_MASK) {
-        reg_PXI_MAINP_FIFO_CNT |= (REG_PXI_MAINP_FIFO_CNT_E_MASK | REG_PXI_MAINP_FIFO_CNT_ERR_MASK);
+    if (reg_PXI_FIFO_CNT & REG_PXI_FIFO_CNT_ERR_MASK) {
+        reg_PXI_FIFO_CNT |= (REG_PXI_FIFO_CNT_E_MASK | REG_PXI_FIFO_CNT_ERR_MASK);
         return PXI_FIFO_FAIL_SEND_ERR;
     }
     enabled = OS_DisableInterrupts();
-    if (reg_PXI_MAINP_FIFO_CNT & REG_PXI_MAINP_FIFO_CNT_SEND_FULL_MASK) {
+    if (reg_PXI_FIFO_CNT & REG_PXI_FIFO_CNT_SEND_FULL_MASK) {
         OS_RestoreInterrupts(enabled);
         return PXI_FIFO_FAIL_SEND_FULL;
     }
@@ -82,14 +105,14 @@ s32 PXIi_SetToFifo(u32 data) {
     return PXI_FIFO_SUCCESS;
 }
 
-static inline s32 PXIi_GetFromFifo(u32 *data_p) {
+static inline PXIFifoStatus PXIi_GetFromFifo(u32 *data_p) {
     OSIntrMode enabled;
-    if (reg_PXI_MAINP_FIFO_CNT & REG_PXI_MAINP_FIFO_CNT_ERR_MASK) {
-        reg_PXI_MAINP_FIFO_CNT |= (REG_PXI_MAINP_FIFO_CNT_E_MASK | REG_PXI_MAINP_FIFO_CNT_ERR_MASK);
+    if (reg_PXI_FIFO_CNT & REG_PXI_FIFO_CNT_ERR_MASK) {
+        reg_PXI_FIFO_CNT |= (REG_PXI_FIFO_CNT_E_MASK | REG_PXI_FIFO_CNT_ERR_MASK);
         return PXI_FIFO_FAIL_RECV_ERR;
     }
     enabled = OS_DisableInterrupts();
-    if (reg_PXI_MAINP_FIFO_CNT & REG_PXI_MAINP_FIFO_CNT_RECV_EMP_MASK) {
+    if (reg_PXI_FIFO_CNT & REG_PXI_FIFO_CNT_RECV_EMP_MASK) {
         OS_RestoreInterrupts(enabled);
         return PXI_FIFO_FAIL_RECV_EMPTY;
     }
