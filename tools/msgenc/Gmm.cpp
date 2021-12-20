@@ -1,6 +1,7 @@
 #include "Gmm.h"
 #include <pugixml.hpp>
 #include <iostream>
+#include <sstream>
 
 static const char WINCTXNAME[] = "window_context_name";
 static const char LANGUAGE[] = "English";
@@ -44,11 +45,15 @@ void GMM::ToFile(const std::vector<std::string> &messages) {
     if (body.empty()) {
         throw std::runtime_error("failed to create gmm body node");
     }
+    char row_no_buf[6] = "00000";
+    std::string rowname_pref = filename.substr(filename.find_last_of('/') + 1).substr(0, filename.find_first_of('.'));
     for (const auto &message : messages) {
+        std::string rowname = rowname_pref + '_' + row_no_buf;
         auto row = body.append_child("row");
         if (row.empty()) {
             throw std::runtime_error("failed to create gmm row node");
         }
+        row.append_attribute("id").set_value(rowname.c_str());
         auto windowcontextname = row.append_child("attribute");
         windowcontextname.append_attribute("name").set_value(WINCTXNAME);
         auto language = row.append_child("language");
@@ -69,6 +74,17 @@ void GMM::ToFile(const std::vector<std::string> &messages) {
         } else {
             windowattr.set_value("used");
             language.append_child(pugi::xml_node_type::node_pcdata).set_value(message.c_str());
+        }
+        for (int i = 4; i >= 0; i--) {
+            row_no_buf[i]++;
+            if (row_no_buf[i] > '9') {
+                if (i == 0) {
+                    throw std::runtime_error("message count overflow");
+                }
+                row_no_buf[i] = '0';
+            } else {
+                break;
+            }
         }
     }
     doc.save(stream);

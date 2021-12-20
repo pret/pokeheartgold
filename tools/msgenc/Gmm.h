@@ -8,10 +8,11 @@
 #include <pugixml.hpp>
 
 class GMM {
+    std::string filename;
     std::fstream stream;
     pugi::xml_document doc;
 public:
-    GMM(std::string &filename, std::ios::openmode openmode) : stream(filename, openmode) {}
+    GMM(std::string &_filename, std::ios::openmode _openmode) : filename(_filename), stream(_filename, _openmode) {}
     void FromFile(std::vector<std::string> &messages);
     void ToFile(std::vector<std::string> const &messages);
 };
