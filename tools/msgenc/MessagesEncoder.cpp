@@ -31,6 +31,8 @@ void MessagesEncoder::ReadMessagesFromText(string& fname) {
 
 void MessagesEncoder::ReadMessagesFromGMM(string& filename) {
     GMM(filename, std::ios::in).FromFile(vec_decoded);
+    header.count = vec_decoded.size();
+    debug_printf("%d lines\n", header.count);
 }
 
 u16string MessagesEncoder::EncodeMessage(const string & message, int & i) {
