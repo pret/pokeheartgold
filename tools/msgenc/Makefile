@@ -1,11 +1,6 @@
-FOUND_PUGIXML := $(shell pkg-config --exists pugixml && echo yes)
-ifneq ($(FOUND_PUGIXML),yes)
-$(error Missing required packages: "pugixml")
-endif
-
-CXXFLAGS := -std=c++17 -O2 -Wall -Wno-switch $(shell pkg-config --cflags pugixml)
+CXXFLAGS := -std=c++17 -O2 -Wall -Wno-switch
 CFLAGS   := -O2 -Wall -Wno-switch
-LDFLAGS  := $(shell pkg-config --libs pugixml)
+LDFLAGS  :=
 
 ifeq ($(DEBUG),)
 CXXFLAGS += -DNDEBUG
@@ -19,7 +14,8 @@ SRCS := \
 	MessagesConverter.cpp \
 	MessagesDecoder.cpp \
 	MessagesEncoder.cpp \
-	Gmm.cpp
+	Gmm.cpp \
+	pugixml.cpp
 
 OBJS := $(SRCS:%.cpp=%.o)
 

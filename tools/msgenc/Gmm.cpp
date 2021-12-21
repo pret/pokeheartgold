@@ -1,7 +1,8 @@
 #include "Gmm.h"
-#include <pugixml.hpp>
+#include "pugixml.hpp"
 #include <iostream>
 #include <sstream>
+#include <cstring>
 
 static const char WINCTXNAME[] = "window_context_name";
 static const char LANGUAGE[] = "English";
