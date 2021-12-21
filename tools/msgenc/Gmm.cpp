@@ -7,6 +7,9 @@ static const char WINCTXNAME[] = "window_context_name";
 static const char LANGUAGE[] = "English";
 static const char JAPANESE[] = "日本語";
 
+// Reads header constants from the supplied file.
+// Expects them to be of the format `#define +{name} +{integer value}`
+// and that the integer value is in sequential order starting from 0.
 void GMM::ReadGmmHeader(const string &_filename) {
     ifstream hstrm(_filename, ios::ate | ios::binary);
     if (!hstrm.good()) {
@@ -28,6 +31,9 @@ void GMM::ReadGmmHeader(const string &_filename) {
     delete[] buf;
 }
 
+// Reads header constants to the supplied file.
+// Prints them in the format `#define {name} {integer value}`
+// such that the integer value is in sequential order starting from 0.
 void GMM::WriteGmmHeader(const string &_filename) {
     ofstream hstrm(_filename);
     string guard(_filename);
@@ -59,6 +65,7 @@ void GMM::WriteGmmHeader(const string &_filename) {
     hstrm << "#endif //MSGENC_" << guard << endl;
 }
 
+// Reads messages from GMM into memory to be converted
 void GMM::FromFile(MessagesConverter &converter) {
     pugi::xml_parse_result result = doc.load(stream);
     if (!result) {
@@ -101,13 +108,14 @@ void GMM::FromFile(MessagesConverter &converter) {
     }
 }
 
+// Writes decoded messages to a new GMM file
 void GMM::ToFile(MessagesConverter &converter) {
     if (!converter.GetHeaderFilename().empty()) {
         ReadGmmHeader(converter.GetHeaderFilename());
     }
     auto it = id_strings.cbegin();
     auto body = doc.append_child("body");
-    body.append_attribute("language").set_value("English");
+    body.append_attribute("language").set_value(LANGUAGE);
     if (body.empty()) {
         throw runtime_error("failed to create gmm body node");
     }
