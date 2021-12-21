@@ -9,6 +9,7 @@ SCRIPT_BINS := $(SCRIPT_SRCS:%.s=%.bin)
 # Delete intermediate object files
 .INTERMEDIATE: $(SCRIPT_OBJS)
 
+ifeq (1,0)
 ifeq ($(NODEP),)
 $(SCRIPT_DEPS) := $(SCRIPT_BINS:%.bin=%.d)
 $(SCRIPT_DEPS):
@@ -24,6 +25,9 @@ else
 $(SCRIPT_BINS): %.bin: %.s
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $*.o $<
 	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
+endif
+else
+$(SCRIPT_BINS):
 endif
 
 $(SCRIPT_NARC): $(SCRIPT_BINS)

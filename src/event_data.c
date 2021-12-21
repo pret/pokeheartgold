@@ -1,10 +1,6 @@
 #include "event_data.h"
-#include "save.h"
 
 static u8 sTempFlags[NUM_TEMP_FLAGS / 8] = {0};
-
-u8 *GetFlagAddr(SCRIPT_STATE *scriptState, u16 flagno);
-u16 *GetVarAddr(SCRIPT_STATE *scriptState, u16 varno);
 
 u32 SavArray_Flags_sizeof(void) {
     return sizeof(SCRIPT_STATE);

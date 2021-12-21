@@ -6,14 +6,11 @@
 #include "map_header.h"
 #include "map_matrix.h"
 #include "safari_zone.h"
+#include "event_data.h"
 #include <nitro/rtc.h>
 
-struct ScriptState;
-
-extern void* SavArray_Flags_get(SAVEDATA* savedata);
-extern void sub_02066C1C(struct ScriptState* state, u32);
-extern void sub_02066C4C(struct ScriptState* state, u32);
-extern BOOL CheckFlagInArray(struct ScriptState* state, u16 flag_id);
+extern void sub_02066C1C(SCRIPT_STATE* state, u32);
+extern void sub_02066C4C(SCRIPT_STATE* state, u32);
 
 static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA* map_matrix_data, u16 matrix_id, u32 map_no) {
     map_matrix_data->width = 0;
@@ -165,11 +162,11 @@ static inline BOOL MapAndDayCheck(u32 map_no, RTCDate* date) {
 
 BOOL ShouldUseAlternateLakeOfRage(SAVEDATA* savedata, u32 map_no) {
     RTCDate date;
-    struct ScriptState *state = SavArray_Flags_get(savedata);
+    SCRIPT_STATE *state = SavArray_Flags_get(savedata);
 
     GF_RTC_CopyDate(&date);
 
-    if (CheckFlagInArray(state, 202) == FALSE) {
+    if (CheckFlagInArray(state, FLAG_RED_GYARADOS_MEET) == FALSE) {
         // The player hasn't battled the Red Gyarados yet.
         sub_02066C4C(state, 1);
         return FALSE;
