@@ -8,15 +8,24 @@ static const char LANGUAGE[] = "English";
 static const char JAPANESE[] = "日本語";
 
 void GMM::ReadGmmHeader(const string &_filename) {
-    ifstream hstrm(_filename);
-    string hstrng;
-    hstrm >> hstrng;
-    regex pattern(R"(#define\s+(\w+)\s+([0-9]+)\n)");
+    ifstream hstrm(_filename, ios::ate | ios::binary);
+    if (!hstrm.good()) {
+        return;
+    }
+    int fsize = hstrm.tellg();
+    auto buf = new char[fsize + 1];
+    hstrm.seekg(0);
+    hstrm.read(buf, fsize);
+    buf[fsize] = 0;
+    string hstrng(buf);
+    regex pattern(R"(#define\s+(\w+)\s+([0-9]+))");
     smatch results;
     id_strings.clear();
     while (regex_search(hstrng, results, pattern)) {
         id_strings.emplace_back(results[1]);
+        hstrng = results.suffix().str();
     }
+    delete[] buf;
 }
 
 void GMM::WriteGmmHeader(const string &_filename) {

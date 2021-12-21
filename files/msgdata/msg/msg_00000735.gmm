@@ -1,74 +1,74 @@
 <?xml version="1.0"?>
 <body language="English">
-	<row id="msg_00000735_normal">
+	<row id="msg_00000735_normal" index="0">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">NORMAL</language>
 	</row>
-	<row id="msg_00000735_fighting">
+	<row id="msg_00000735_fighting" index="1">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">FIGHTING</language>
 	</row>
-	<row id="msg_00000735_flying">
+	<row id="msg_00000735_flying" index="2">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">FLYING</language>
 	</row>
-	<row id="msg_00000735_poison">
+	<row id="msg_00000735_poison" index="3">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">POISON</language>
 	</row>
-	<row id="msg_00000735_ground">
+	<row id="msg_00000735_ground" index="4">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">GROUND</language>
 	</row>
-	<row id="msg_00000735_rock">
+	<row id="msg_00000735_rock" index="5">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">ROCK</language>
 	</row>
-	<row id="msg_00000735_bug">
+	<row id="msg_00000735_bug" index="6">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">BUG</language>
 	</row>
-	<row id="msg_00000735_ghost">
+	<row id="msg_00000735_ghost" index="7">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">GHOST</language>
 	</row>
-	<row id="msg_00000735_steel">
+	<row id="msg_00000735_steel" index="8">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">STEEL</language>
 	</row>
-	<row id="msg_00000735_mystery">
+	<row id="msg_00000735_mystery" index="9">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">???</language>
 	</row>
-	<row id="msg_00000735_fire">
+	<row id="msg_00000735_fire" index="10">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">FIRE</language>
 	</row>
-	<row id="msg_00000735_water">
+	<row id="msg_00000735_water" index="11">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">WATER</language>
 	</row>
-	<row id="msg_00000735_grass">
+	<row id="msg_00000735_grass" index="12">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">GRASS</language>
 	</row>
-	<row id="msg_00000735_electric">
+	<row id="msg_00000735_electric" index="13">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">ELECTRIC</language>
 	</row>
-	<row id="msg_00000735_psychic">
+	<row id="msg_00000735_psychic" index="14">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">PSYCHIC</language>
 	</row>
-	<row id="msg_00000735_ice">
+	<row id="msg_00000735_ice" index="15">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">ICE</language>
 	</row>
-	<row id="msg_00000735_dragon">
+	<row id="msg_00000735_dragon" index="16">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">DRAGON</language>
 	</row>
-	<row id="msg_00000735_dark">
+	<row id="msg_00000735_dark" index="17">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">DARK</language>
 	</row>
