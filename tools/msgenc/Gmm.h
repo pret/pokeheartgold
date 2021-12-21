@@ -15,6 +15,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <cstring>
 #include "pugixml.hpp"
 #include "MessagesConverter.h"
 

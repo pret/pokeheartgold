@@ -67,7 +67,7 @@ __global_destructor_chain: ; 0x021E58E8
 abort: ; 0x020E47C0
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl signal
+	bl raise
 	ldr r1, _020E47E0 ; =_021E5390
 	mov r0, #1
 	str r0, [r1, #0xc]
@@ -5755,8 +5755,8 @@ sscanf: ; 0x020E9428
 	bx lr
 	arm_func_end sscanf
 
-	arm_func_start signal
-signal: ; 0x020E9450
+	arm_func_start raise
+raise: ; 0x020E9450
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	cmp r5, #1
@@ -5843,7 +5843,7 @@ _020E9570: .word OSi_ThreadInfo
 _020E9574: .word _021E54A0
 _020E9578: .word _021E54C4
 _020E957C: .word _021E58C4
-	arm_func_end signal
+	arm_func_end raise
 
 	arm_func_start strlen
 strlen: ; 0x020E9580
@@ -20253,7 +20253,7 @@ _02111848:
 	exception __sformatter, 0x0D54, _020F4F8C
 	exception vsscanf, 0x0055, 0x00200000
 	exception sscanf, 0x0029, 0x00300020
-	exception signal, 0x0131, 0x00200300
+	exception raise, 0x0131, 0x00200300
 	exception __strtold, 0x124C, _020F4F94
 	exception strtold, 0x00E1, 0x00500F00
 	exception atof, 0x0011, 0x00000000

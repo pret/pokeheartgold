@@ -1,6 +1,5 @@
 #include "Gmm.h"
 #include "pugixml.hpp"
-#include <cstring>
 #include <regex>
 
 static const char WINCTXNAME[] = "window_context_name";
