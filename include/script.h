@@ -16,17 +16,81 @@ typedef struct MAPMATRIX MAPMATRIX;
 
 #define ScriptReadByte(ctx) *(ctx->script_ptr++)
 
+typedef struct UnkSavStruct80 UnkSavStruct80;
+
+typedef struct UnkSavStruct80_Sub10_SubC {
+    u32 check;
+    u8 unk_4;
+    u8 unk_5;
+    u8 unk_6;
+    u8 unk_7;
+    u8 unk_8;
+    u8 unk_9;
+    u16 unk_A;
+    u32 unk_C;
+    u32 unk_10;
+    u32 unk_14;
+    u32 unk_18;
+    u32 unk_1C;
+    u32 unk_20;
+    u32 unk_24;
+    u32 unk_28;
+    u32 unk_2C;
+    u32 unk_30;
+    u32 unk_34;
+    u32 unk_38[3];
+    u32 unk_44;
+    u32 unk_48;
+    u32 unk_4C;
+    u32 unk_50;
+    u32 unk_54;
+    u32 unk_58;
+    u32 unk_5C;
+    u32 unk_60;
+    u32 unk_64;
+    u32 unk_68;
+    u32 unk_6C;
+    u32 unk_70;
+    u32 unk_74;
+    u32 unk_78;
+    u32 unk_7C;
+    u32 unk_80;
+    u32 unk_84;
+    u32 unk_88;
+    u16 unk_8C[14];
+    void (*unk_A8)(UnkSavStruct80* fsys);
+    u32 unk_AC;
+    u32 unk_B0;
+    u32 unk_B4;
+    u32 unk_B8;
+    u32 unk_BC;
+    u32 unk_C0;
+    u32 unk_C4;
+    u32 unk_C8;
+    u32 unk_CC;
+    u32 unk_D0;
+    u32 unk_D4;
+    u32 unk_D8;
+    u32 unk_DC;
+} UnkSavStruct80_Sub10_SubC;
+
+typedef struct UnkSavStruct80_Sub10 {
+    u8 filler_00[12];
+    void *unkC; // maybe a union? sometimes cast to UnkSavStruct80_Sub10_SubC
+    u8 filler_10[0x10];
+} UnkSavStruct80_Sub10;
+
 typedef struct UnkSavStruct80_Sub20 {
     int unk0;
 } UnkSavStruct80_Sub20;
 
 typedef struct UnkSavStruct80_Sub3C UnkSavStruct80_Sub3C;
 
-typedef struct UnkSavStruct80 {
+struct UnkSavStruct80 {
     u8 unk0[0x8];
     void* bg_config;
     SAVEDATA* savedata;
-    void* unk10;
+    UnkSavStruct80_Sub10* unk10;
     MAP_EVENTS* map_events;
     u8 unk18[0x8];
     UnkSavStruct80_Sub20* unk20;
@@ -35,7 +99,7 @@ typedef struct UnkSavStruct80 {
     u8 unk34[0x8];
     UnkSavStruct80_Sub3C* unk3C;
     u8 unk40[0xE8];
-} UnkSavStruct80; // size: 0x128
+}; // size: 0x128
 
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
 typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT* ctx);
@@ -54,7 +118,7 @@ typedef struct SCRIPTCONTEXT {
     void* unk74;
     void* msg_data;
     u8* unk7C;
-    void* unk80;
+    UnkSavStruct80* unk80;
 } SCRIPTCONTEXT;
 
 void InitScriptContext(SCRIPTCONTEXT* ctx, ScrCmdFunc* cmd_table, u32 cmd_count);
