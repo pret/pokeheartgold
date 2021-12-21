@@ -1,2 +1,0 @@
-Roll the ball while keeping MIME JR.\nbalanced on top.
-     

@@ -26,7 +26,10 @@ class MessagesDecoder : public MessagesConverter
     void CmdmapRegisterCommand(string& command, uint16_t value) override;
 
 public:
-    MessagesDecoder(string &_textfilename, int _key, string &_charmapfilename, string &_binfilename) : MessagesConverter(CONV_DECODE, _textfilename, _key, _charmapfilename, _binfilename) {}
+    MessagesDecoder(Options &options) : MessagesConverter(options) {
+        textfilename = options.posargs[1];
+        binfilename = options.posargs[0];
+    }
     void ReadInput() override;
     void Convert() override;
     void WriteOutput() override;

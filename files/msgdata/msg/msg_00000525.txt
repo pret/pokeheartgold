@@ -1,3 +1,0 @@
-I am Bruno of the Elite Four.\rI always train to the extreme because\nI believe in our potential.\rThat is how we became strong.\nCan you withstand our power?\rHm? I see no fear in you. You look\ndetermined. Perfect for battle!\rReady, {STRVAR_1 3, 0, 0}?\rYou will bow down to our\noverwhelming power!\rHoo hah!\r
-Having lost, I have no right to\nsay anything...\fGo face your next challenge!\r
-Having lost, I have no right to\nsay anything...\fGo face your next challenge!

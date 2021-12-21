@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_00000735_normal">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NORMAL</language>
+	</row>
+	<row id="msg_00000735_fighting">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FIGHTING</language>
+	</row>
+	<row id="msg_00000735_flying">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLYING</language>
+	</row>
+	<row id="msg_00000735_poison">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISON</language>
+	</row>
+	<row id="msg_00000735_ground">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GROUND</language>
+	</row>
+	<row id="msg_00000735_rock">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROCK</language>
+	</row>
+	<row id="msg_00000735_bug">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BUG</language>
+	</row>
+	<row id="msg_00000735_ghost">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GHOST</language>
+	</row>
+	<row id="msg_00000735_steel">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STEEL</language>
+	</row>
+	<row id="msg_00000735_mystery">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">???</language>
+	</row>
+	<row id="msg_00000735_fire">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FIRE</language>
+	</row>
+	<row id="msg_00000735_water">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WATER</language>
+	</row>
+	<row id="msg_00000735_grass">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRASS</language>
+	</row>
+	<row id="msg_00000735_electric">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ELECTRIC</language>
+	</row>
+	<row id="msg_00000735_psychic">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PSYCHIC</language>
+	</row>
+	<row id="msg_00000735_ice">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICE</language>
+	</row>
+	<row id="msg_00000735_dragon">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRAGON</language>
+	</row>
+	<row id="msg_00000735_dark">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DARK</language>
+	</row>
+</body>

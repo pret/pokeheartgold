@@ -1,0 +1,1875 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_00000751_none">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">-</language>
+	</row>
+	<row id="msg_00000751_pound">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POUND</language>
+	</row>
+	<row id="msg_00000751_karate_chop">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KARATE CHOP</language>
+	</row>
+	<row id="msg_00000751_double_slap">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DOUBLESLAP</language>
+	</row>
+	<row id="msg_00000751_comet_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COMET PUNCH</language>
+	</row>
+	<row id="msg_00000751_mega_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEGA PUNCH</language>
+	</row>
+	<row id="msg_00000751_pay_day">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PAY DAY</language>
+	</row>
+	<row id="msg_00000751_fire_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FIRE PUNCH</language>
+	</row>
+	<row id="msg_00000751_ice_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICE PUNCH</language>
+	</row>
+	<row id="msg_00000751_thunder_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">THUNDERPUNCH</language>
+	</row>
+	<row id="msg_00000751_scratch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SCRATCH</language>
+	</row>
+	<row id="msg_00000751_vise_grip">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VICEGRIP</language>
+	</row>
+	<row id="msg_00000751_guillotine">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GUILLOTINE</language>
+	</row>
+	<row id="msg_00000751_razor_wind">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAZOR WIND</language>
+	</row>
+	<row id="msg_00000751_swords_dance">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWORDS DANCE</language>
+	</row>
+	<row id="msg_00000751_cut">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CUT</language>
+	</row>
+	<row id="msg_00000751_gust">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GUST</language>
+	</row>
+	<row id="msg_00000751_wing_attack">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WING ATTACK</language>
+	</row>
+	<row id="msg_00000751_whirlwind">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WHIRLWIND</language>
+	</row>
+	<row id="msg_00000751_fly">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLY</language>
+	</row>
+	<row id="msg_00000751_bind">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BIND</language>
+	</row>
+	<row id="msg_00000751_slam">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLAM</language>
+	</row>
+	<row id="msg_00000751_vine_whip">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VINE WHIP</language>
+	</row>
+	<row id="msg_00000751_stomp">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STOMP</language>
+	</row>
+	<row id="msg_00000751_double_kick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DOUBLE KICK</language>
+	</row>
+	<row id="msg_00000751_mega_kick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEGA KICK</language>
+	</row>
+	<row id="msg_00000751_jump_kick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">JUMP KICK</language>
+	</row>
+	<row id="msg_00000751_rolling_kick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROLLING KICK</language>
+	</row>
+	<row id="msg_00000751_sand_attack">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SAND-ATTACK</language>
+	</row>
+	<row id="msg_00000751_headbutt">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEADBUTT</language>
+	</row>
+	<row id="msg_00000751_horn_attack">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HORN ATTACK</language>
+	</row>
+	<row id="msg_00000751_fury_attack">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FURY ATTACK</language>
+	</row>
+	<row id="msg_00000751_horn_drill">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HORN DRILL</language>
+	</row>
+	<row id="msg_00000751_tackle">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TACKLE</language>
+	</row>
+	<row id="msg_00000751_body_slam">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BODY SLAM</language>
+	</row>
+	<row id="msg_00000751_wrap">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WRAP</language>
+	</row>
+	<row id="msg_00000751_take_down">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TAKE DOWN</language>
+	</row>
+	<row id="msg_00000751_thrash">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">THRASH</language>
+	</row>
+	<row id="msg_00000751_double_edge">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DOUBLE-EDGE</language>
+	</row>
+	<row id="msg_00000751_tail_whip">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TAIL WHIP</language>
+	</row>
+	<row id="msg_00000751_poison_sting">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISON STING</language>
+	</row>
+	<row id="msg_00000751_twineedle">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TWINEEDLE</language>
+	</row>
+	<row id="msg_00000751_pin_missile">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PIN MISSILE</language>
+	</row>
+	<row id="msg_00000751_leer">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEER</language>
+	</row>
+	<row id="msg_00000751_bite">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BITE</language>
+	</row>
+	<row id="msg_00000751_growl">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GROWL</language>
+	</row>
+	<row id="msg_00000751_roar">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROAR</language>
+	</row>
+	<row id="msg_00000751_sing">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SING</language>
+	</row>
+	<row id="msg_00000751_supersonic">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUPERSONIC</language>
+	</row>
+	<row id="msg_00000751_sonic_boom">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SONICBOOM</language>
+	</row>
+	<row id="msg_00000751_disable">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DISABLE</language>
+	</row>
+	<row id="msg_00000751_acid">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ACID</language>
+	</row>
+	<row id="msg_00000751_ember">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EMBER</language>
+	</row>
+	<row id="msg_00000751_flamethrower">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLAMETHROWER</language>
+	</row>
+	<row id="msg_00000751_mist">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIST</language>
+	</row>
+	<row id="msg_00000751_water_gun">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WATER GUN</language>
+	</row>
+	<row id="msg_00000751_hydro_pump">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYDRO PUMP</language>
+	</row>
+	<row id="msg_00000751_surf">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SURF</language>
+	</row>
+	<row id="msg_00000751_ice_beam">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICE BEAM</language>
+	</row>
+	<row id="msg_00000751_blizzard">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BLIZZARD</language>
+	</row>
+	<row id="msg_00000751_psybeam">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PSYBEAM</language>
+	</row>
+	<row id="msg_00000751_bubble_beam">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BUBBLEBEAM</language>
+	</row>
+	<row id="msg_00000751_aurora_beam">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AURORA BEAM</language>
+	</row>
+	<row id="msg_00000751_hyper_beam">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYPER BEAM</language>
+	</row>
+	<row id="msg_00000751_peck">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PECK</language>
+	</row>
+	<row id="msg_00000751_drill_peck">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRILL PECK</language>
+	</row>
+	<row id="msg_00000751_submission">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUBMISSION</language>
+	</row>
+	<row id="msg_00000751_low_kick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LOW KICK</language>
+	</row>
+	<row id="msg_00000751_counter">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COUNTER</language>
+	</row>
+	<row id="msg_00000751_seismic_toss">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SEISMIC TOSS</language>
+	</row>
+	<row id="msg_00000751_strength">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STRENGTH</language>
+	</row>
+	<row id="msg_00000751_absorb">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ABSORB</language>
+	</row>
+	<row id="msg_00000751_mega_drain">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEGA DRAIN</language>
+	</row>
+	<row id="msg_00000751_leech_seed">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEECH SEED</language>
+	</row>
+	<row id="msg_00000751_growth">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GROWTH</language>
+	</row>
+	<row id="msg_00000751_razor_leaf">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAZOR LEAF</language>
+	</row>
+	<row id="msg_00000751_solar_beam">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SOLARBEAM</language>
+	</row>
+	<row id="msg_00000751_poison_powder">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISONPOWDER</language>
+	</row>
+	<row id="msg_00000751_stun_spore">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STUN SPORE</language>
+	</row>
+	<row id="msg_00000751_sleep_powder">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLEEP POWDER</language>
+	</row>
+	<row id="msg_00000751_petal_dance">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PETAL DANCE</language>
+	</row>
+	<row id="msg_00000751_string_shot">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STRING SHOT</language>
+	</row>
+	<row id="msg_00000751_dragon_rage">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRAGON RAGE</language>
+	</row>
+	<row id="msg_00000751_fire_spin">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FIRE SPIN</language>
+	</row>
+	<row id="msg_00000751_thunder_shock">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">THUNDERSHOCK</language>
+	</row>
+	<row id="msg_00000751_thunderbolt">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">THUNDERBOLT</language>
+	</row>
+	<row id="msg_00000751_thunder_wave">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">THUNDER WAVE</language>
+	</row>
+	<row id="msg_00000751_thunder">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">THUNDER</language>
+	</row>
+	<row id="msg_00000751_rock_throw">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROCK THROW</language>
+	</row>
+	<row id="msg_00000751_earthquake">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EARTHQUAKE</language>
+	</row>
+	<row id="msg_00000751_fissure">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FISSURE</language>
+	</row>
+	<row id="msg_00000751_dig">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DIG</language>
+	</row>
+	<row id="msg_00000751_toxic">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOXIC</language>
+	</row>
+	<row id="msg_00000751_confusion">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CONFUSION</language>
+	</row>
+	<row id="msg_00000751_psychic">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PSYCHIC</language>
+	</row>
+	<row id="msg_00000751_hypnosis">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYPNOSIS</language>
+	</row>
+	<row id="msg_00000751_meditate">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEDITATE</language>
+	</row>
+	<row id="msg_00000751_agility">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AGILITY</language>
+	</row>
+	<row id="msg_00000751_quick_attack">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">QUICK ATTACK</language>
+	</row>
+	<row id="msg_00000751_rage">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAGE</language>
+	</row>
+	<row id="msg_00000751_teleport">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TELEPORT</language>
+	</row>
+	<row id="msg_00000751_night_shade">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIGHT SHADE</language>
+	</row>
+	<row id="msg_00000751_mimic">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIMIC</language>
+	</row>
+	<row id="msg_00000751_screech">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SCREECH</language>
+	</row>
+	<row id="msg_00000751_double_team">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DOUBLE TEAM</language>
+	</row>
+	<row id="msg_00000751_recover">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RECOVER</language>
+	</row>
+	<row id="msg_00000751_harden">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HARDEN</language>
+	</row>
+	<row id="msg_00000751_minimize">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MINIMIZE</language>
+	</row>
+	<row id="msg_00000751_smokescreen">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SMOKESCREEN</language>
+	</row>
+	<row id="msg_00000751_confuse_ray">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CONFUSE RAY</language>
+	</row>
+	<row id="msg_00000751_withdraw">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WITHDRAW</language>
+	</row>
+	<row id="msg_00000751_defense_curl">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEFENSE CURL</language>
+	</row>
+	<row id="msg_00000751_barrier">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BARRIER</language>
+	</row>
+	<row id="msg_00000751_light_screen">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LIGHT SCREEN</language>
+	</row>
+	<row id="msg_00000751_haze">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HAZE</language>
+	</row>
+	<row id="msg_00000751_reflect">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REFLECT</language>
+	</row>
+	<row id="msg_00000751_focus_energy">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FOCUS ENERGY</language>
+	</row>
+	<row id="msg_00000751_bide">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BIDE</language>
+	</row>
+	<row id="msg_00000751_metronome">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">METRONOME</language>
+	</row>
+	<row id="msg_00000751_mirror_move">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIRROR MOVE</language>
+	</row>
+	<row id="msg_00000751_self_destruct">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SELFDESTRUCT</language>
+	</row>
+	<row id="msg_00000751_egg_bomb">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EGG BOMB</language>
+	</row>
+	<row id="msg_00000751_lick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LICK</language>
+	</row>
+	<row id="msg_00000751_smog">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SMOG</language>
+	</row>
+	<row id="msg_00000751_sludge">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLUDGE</language>
+	</row>
+	<row id="msg_00000751_bone_club">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BONE CLUB</language>
+	</row>
+	<row id="msg_00000751_fire_blast">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FIRE BLAST</language>
+	</row>
+	<row id="msg_00000751_waterfall">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WATERFALL</language>
+	</row>
+	<row id="msg_00000751_clamp">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CLAMP</language>
+	</row>
+	<row id="msg_00000751_swift">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWIFT</language>
+	</row>
+	<row id="msg_00000751_skull_bash">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SKULL BASH</language>
+	</row>
+	<row id="msg_00000751_spike_cannon">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPIKE CANNON</language>
+	</row>
+	<row id="msg_00000751_constrict">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CONSTRICT</language>
+	</row>
+	<row id="msg_00000751_amnesia">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AMNESIA</language>
+	</row>
+	<row id="msg_00000751_kinesis">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KINESIS</language>
+	</row>
+	<row id="msg_00000751_soft_boiled">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SOFTBOILED</language>
+	</row>
+	<row id="msg_00000751_high_jump_kick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HI JUMP KICK</language>
+	</row>
+	<row id="msg_00000751_glare">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GLARE</language>
+	</row>
+	<row id="msg_00000751_dream_eater">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DREAM EATER</language>
+	</row>
+	<row id="msg_00000751_poison_gas">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISON GAS</language>
+	</row>
+	<row id="msg_00000751_barrage">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BARRAGE</language>
+	</row>
+	<row id="msg_00000751_leech_life">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEECH LIFE</language>
+	</row>
+	<row id="msg_00000751_lovely_kiss">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LOVELY KISS</language>
+	</row>
+	<row id="msg_00000751_sky_attack">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SKY ATTACK</language>
+	</row>
+	<row id="msg_00000751_transform">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRANSFORM</language>
+	</row>
+	<row id="msg_00000751_bubble">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BUBBLE</language>
+	</row>
+	<row id="msg_00000751_dizzy_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DIZZY PUNCH</language>
+	</row>
+	<row id="msg_00000751_spore">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPORE</language>
+	</row>
+	<row id="msg_00000751_flash">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLASH</language>
+	</row>
+	<row id="msg_00000751_psywave">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PSYWAVE</language>
+	</row>
+	<row id="msg_00000751_splash">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPLASH</language>
+	</row>
+	<row id="msg_00000751_acid_armor">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ACID ARMOR</language>
+	</row>
+	<row id="msg_00000751_crabhammer">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CRABHAMMER</language>
+	</row>
+	<row id="msg_00000751_explosion">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EXPLOSION</language>
+	</row>
+	<row id="msg_00000751_fury_swipes">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FURY SWIPES</language>
+	</row>
+	<row id="msg_00000751_bonemerang">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BONEMERANG</language>
+	</row>
+	<row id="msg_00000751_rest">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REST</language>
+	</row>
+	<row id="msg_00000751_rock_slide">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROCK SLIDE</language>
+	</row>
+	<row id="msg_00000751_hyper_fang">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYPER FANG</language>
+	</row>
+	<row id="msg_00000751_sharpen">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHARPEN</language>
+	</row>
+	<row id="msg_00000751_conversion">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CONVERSION</language>
+	</row>
+	<row id="msg_00000751_tri_attack">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRI ATTACK</language>
+	</row>
+	<row id="msg_00000751_super_fang">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUPER FANG</language>
+	</row>
+	<row id="msg_00000751_slash">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLASH</language>
+	</row>
+	<row id="msg_00000751_substitute">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUBSTITUTE</language>
+	</row>
+	<row id="msg_00000751_struggle">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STRUGGLE</language>
+	</row>
+	<row id="msg_00000751_sketch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SKETCH</language>
+	</row>
+	<row id="msg_00000751_triple_kick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRIPLE KICK</language>
+	</row>
+	<row id="msg_00000751_thief">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">THIEF</language>
+	</row>
+	<row id="msg_00000751_spider_web">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPIDER WEB</language>
+	</row>
+	<row id="msg_00000751_mind_reader">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIND READER</language>
+	</row>
+	<row id="msg_00000751_nightmare">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIGHTMARE</language>
+	</row>
+	<row id="msg_00000751_flame_wheel">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLAME WHEEL</language>
+	</row>
+	<row id="msg_00000751_snore">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SNORE</language>
+	</row>
+	<row id="msg_00000751_curse">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CURSE</language>
+	</row>
+	<row id="msg_00000751_flail">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLAIL</language>
+	</row>
+	<row id="msg_00000751_conversion_2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CONVERSION 2</language>
+	</row>
+	<row id="msg_00000751_aeroblast">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AEROBLAST</language>
+	</row>
+	<row id="msg_00000751_cotton_spore">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COTTON SPORE</language>
+	</row>
+	<row id="msg_00000751_reversal">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REVERSAL</language>
+	</row>
+	<row id="msg_00000751_spite">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPITE</language>
+	</row>
+	<row id="msg_00000751_powder_snow">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POWDER SNOW</language>
+	</row>
+	<row id="msg_00000751_protect">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PROTECT</language>
+	</row>
+	<row id="msg_00000751_mach_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MACH PUNCH</language>
+	</row>
+	<row id="msg_00000751_scary_face">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SCARY FACE</language>
+	</row>
+	<row id="msg_00000751_feint_attack">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FAINT ATTACK</language>
+	</row>
+	<row id="msg_00000751_sweet_kiss">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWEET KISS</language>
+	</row>
+	<row id="msg_00000751_belly_drum">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BELLY DRUM</language>
+	</row>
+	<row id="msg_00000751_sludge_bomb">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLUDGE BOMB</language>
+	</row>
+	<row id="msg_00000751_mud_slap">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MUD-SLAP</language>
+	</row>
+	<row id="msg_00000751_octazooka">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OCTAZOOKA</language>
+	</row>
+	<row id="msg_00000751_spikes">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPIKES</language>
+	</row>
+	<row id="msg_00000751_zap_cannon">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ZAP CANNON</language>
+	</row>
+	<row id="msg_00000751_foresight">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FORESIGHT</language>
+	</row>
+	<row id="msg_00000751_destiny_bond">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DESTINY BOND</language>
+	</row>
+	<row id="msg_00000751_perish_song">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PERISH SONG</language>
+	</row>
+	<row id="msg_00000751_icy_wind">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICY WIND</language>
+	</row>
+	<row id="msg_00000751_detect">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DETECT</language>
+	</row>
+	<row id="msg_00000751_bone_rush">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BONE RUSH</language>
+	</row>
+	<row id="msg_00000751_lock_on">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LOCK-ON</language>
+	</row>
+	<row id="msg_00000751_outrage">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OUTRAGE</language>
+	</row>
+	<row id="msg_00000751_sandstorm">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SANDSTORM</language>
+	</row>
+	<row id="msg_00000751_giga_drain">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GIGA DRAIN</language>
+	</row>
+	<row id="msg_00000751_endure">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ENDURE</language>
+	</row>
+	<row id="msg_00000751_charm">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHARM</language>
+	</row>
+	<row id="msg_00000751_rollout">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROLLOUT</language>
+	</row>
+	<row id="msg_00000751_false_swipe">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FALSE SWIPE</language>
+	</row>
+	<row id="msg_00000751_swagger">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWAGGER</language>
+	</row>
+	<row id="msg_00000751_milk_drink">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MILK DRINK</language>
+	</row>
+	<row id="msg_00000751_spark">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPARK</language>
+	</row>
+	<row id="msg_00000751_fury_cutter">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FURY CUTTER</language>
+	</row>
+	<row id="msg_00000751_steel_wing">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STEEL WING</language>
+	</row>
+	<row id="msg_00000751_mean_look">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEAN LOOK</language>
+	</row>
+	<row id="msg_00000751_attract">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ATTRACT</language>
+	</row>
+	<row id="msg_00000751_sleep_talk">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLEEP TALK</language>
+	</row>
+	<row id="msg_00000751_heal_bell">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEAL BELL</language>
+	</row>
+	<row id="msg_00000751_return">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RETURN</language>
+	</row>
+	<row id="msg_00000751_present">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PRESENT</language>
+	</row>
+	<row id="msg_00000751_frustration">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FRUSTRATION</language>
+	</row>
+	<row id="msg_00000751_safeguard">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SAFEGUARD</language>
+	</row>
+	<row id="msg_00000751_pain_split">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PAIN SPLIT</language>
+	</row>
+	<row id="msg_00000751_sacred_fire">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SACRED FIRE</language>
+	</row>
+	<row id="msg_00000751_magnitude">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGNITUDE</language>
+	</row>
+	<row id="msg_00000751_dynamic_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DYNAMICPUNCH</language>
+	</row>
+	<row id="msg_00000751_megahorn">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEGAHORN</language>
+	</row>
+	<row id="msg_00000751_dragon_breath">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRAGONBREATH</language>
+	</row>
+	<row id="msg_00000751_baton_pass">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATON PASS</language>
+	</row>
+	<row id="msg_00000751_encore">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ENCORE</language>
+	</row>
+	<row id="msg_00000751_pursuit">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PURSUIT</language>
+	</row>
+	<row id="msg_00000751_rapid_spin">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAPID SPIN</language>
+	</row>
+	<row id="msg_00000751_sweet_scent">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWEET SCENT</language>
+	</row>
+	<row id="msg_00000751_iron_tail">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">IRON TAIL</language>
+	</row>
+	<row id="msg_00000751_metal_claw">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">METAL CLAW</language>
+	</row>
+	<row id="msg_00000751_vital_throw">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VITAL THROW</language>
+	</row>
+	<row id="msg_00000751_morning_sun">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MORNING SUN</language>
+	</row>
+	<row id="msg_00000751_synthesis">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SYNTHESIS</language>
+	</row>
+	<row id="msg_00000751_moonlight">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOONLIGHT</language>
+	</row>
+	<row id="msg_00000751_hidden_power">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HIDDEN POWER</language>
+	</row>
+	<row id="msg_00000751_cross_chop">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CROSS CHOP</language>
+	</row>
+	<row id="msg_00000751_twister">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TWISTER</language>
+	</row>
+	<row id="msg_00000751_rain_dance">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAIN DANCE</language>
+	</row>
+	<row id="msg_00000751_sunny_day">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUNNY DAY</language>
+	</row>
+	<row id="msg_00000751_crunch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CRUNCH</language>
+	</row>
+	<row id="msg_00000751_mirror_coat">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIRROR COAT</language>
+	</row>
+	<row id="msg_00000751_psych_up">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PSYCH UP</language>
+	</row>
+	<row id="msg_00000751_extreme_speed">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EXTREMESPEED</language>
+	</row>
+	<row id="msg_00000751_ancient_power">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ANCIENTPOWER</language>
+	</row>
+	<row id="msg_00000751_shadow_ball">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHADOW BALL</language>
+	</row>
+	<row id="msg_00000751_future_sight">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FUTURE SIGHT</language>
+	</row>
+	<row id="msg_00000751_rock_smash">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROCK SMASH</language>
+	</row>
+	<row id="msg_00000751_whirlpool">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WHIRLPOOL</language>
+	</row>
+	<row id="msg_00000751_beat_up">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BEAT UP</language>
+	</row>
+	<row id="msg_00000751_fake_out">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FAKE OUT</language>
+	</row>
+	<row id="msg_00000751_uproar">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">UPROAR</language>
+	</row>
+	<row id="msg_00000751_stockpile">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STOCKPILE</language>
+	</row>
+	<row id="msg_00000751_spit_up">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPIT UP</language>
+	</row>
+	<row id="msg_00000751_swallow">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWALLOW</language>
+	</row>
+	<row id="msg_00000751_heat_wave">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEAT WAVE</language>
+	</row>
+	<row id="msg_00000751_hail">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HAIL</language>
+	</row>
+	<row id="msg_00000751_torment">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TORMENT</language>
+	</row>
+	<row id="msg_00000751_flatter">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLATTER</language>
+	</row>
+	<row id="msg_00000751_will_o_wisp">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WILL-O-WISP</language>
+	</row>
+	<row id="msg_00000751_memento">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEMENTO</language>
+	</row>
+	<row id="msg_00000751_facade">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FACADE</language>
+	</row>
+	<row id="msg_00000751_focus_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FOCUS PUNCH</language>
+	</row>
+	<row id="msg_00000751_smelling_salts">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SMELLINGSALT</language>
+	</row>
+	<row id="msg_00000751_follow_me">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FOLLOW ME</language>
+	</row>
+	<row id="msg_00000751_nature_power">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NATURE POWER</language>
+	</row>
+	<row id="msg_00000751_charge">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHARGE</language>
+	</row>
+	<row id="msg_00000751_taunt">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TAUNT</language>
+	</row>
+	<row id="msg_00000751_helping_hand">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HELPING HAND</language>
+	</row>
+	<row id="msg_00000751_trick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRICK</language>
+	</row>
+	<row id="msg_00000751_role_play">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROLE PLAY</language>
+	</row>
+	<row id="msg_00000751_wish">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WISH</language>
+	</row>
+	<row id="msg_00000751_assist">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ASSIST</language>
+	</row>
+	<row id="msg_00000751_ingrain">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INGRAIN</language>
+	</row>
+	<row id="msg_00000751_superpower">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUPERPOWER</language>
+	</row>
+	<row id="msg_00000751_magic_coat">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGIC COAT</language>
+	</row>
+	<row id="msg_00000751_recycle">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RECYCLE</language>
+	</row>
+	<row id="msg_00000751_revenge">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REVENGE</language>
+	</row>
+	<row id="msg_00000751_brick_break">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BRICK BREAK</language>
+	</row>
+	<row id="msg_00000751_yawn">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">YAWN</language>
+	</row>
+	<row id="msg_00000751_knock_off">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KNOCK OFF</language>
+	</row>
+	<row id="msg_00000751_endeavor">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ENDEAVOR</language>
+	</row>
+	<row id="msg_00000751_eruption">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ERUPTION</language>
+	</row>
+	<row id="msg_00000751_skill_swap">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SKILL SWAP</language>
+	</row>
+	<row id="msg_00000751_imprison">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">IMPRISON</language>
+	</row>
+	<row id="msg_00000751_refresh">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REFRESH</language>
+	</row>
+	<row id="msg_00000751_grudge">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRUDGE</language>
+	</row>
+	<row id="msg_00000751_snatch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SNATCH</language>
+	</row>
+	<row id="msg_00000751_secret_power">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SECRET POWER</language>
+	</row>
+	<row id="msg_00000751_dive">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DIVE</language>
+	</row>
+	<row id="msg_00000751_arm_thrust">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARM THRUST</language>
+	</row>
+	<row id="msg_00000751_camouflage">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CAMOUFLAGE</language>
+	</row>
+	<row id="msg_00000751_tail_glow">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TAIL GLOW</language>
+	</row>
+	<row id="msg_00000751_luster_purge">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LUSTER PURGE</language>
+	</row>
+	<row id="msg_00000751_mist_ball">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIST BALL</language>
+	</row>
+	<row id="msg_00000751_feather_dance">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FEATHERDANCE</language>
+	</row>
+	<row id="msg_00000751_teeter_dance">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TEETER DANCE</language>
+	</row>
+	<row id="msg_00000751_blaze_kick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BLAZE KICK</language>
+	</row>
+	<row id="msg_00000751_mud_sport">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MUD SPORT</language>
+	</row>
+	<row id="msg_00000751_ice_ball">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICE BALL</language>
+	</row>
+	<row id="msg_00000751_needle_arm">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NEEDLE ARM</language>
+	</row>
+	<row id="msg_00000751_slack_off">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLACK OFF</language>
+	</row>
+	<row id="msg_00000751_hyper_voice">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYPER VOICE</language>
+	</row>
+	<row id="msg_00000751_poison_fang">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISON FANG</language>
+	</row>
+	<row id="msg_00000751_crush_claw">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CRUSH CLAW</language>
+	</row>
+	<row id="msg_00000751_blast_burn">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BLAST BURN</language>
+	</row>
+	<row id="msg_00000751_hydro_cannon">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYDRO CANNON</language>
+	</row>
+	<row id="msg_00000751_meteor_mash">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">METEOR MASH</language>
+	</row>
+	<row id="msg_00000751_astonish">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ASTONISH</language>
+	</row>
+	<row id="msg_00000751_weather_ball">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WEATHER BALL</language>
+	</row>
+	<row id="msg_00000751_aromatherapy">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AROMATHERAPY</language>
+	</row>
+	<row id="msg_00000751_fake_tears">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FAKE TEARS</language>
+	</row>
+	<row id="msg_00000751_air_cutter">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AIR CUTTER</language>
+	</row>
+	<row id="msg_00000751_overheat">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OVERHEAT</language>
+	</row>
+	<row id="msg_00000751_odor_sleuth">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ODOR SLEUTH</language>
+	</row>
+	<row id="msg_00000751_rock_tomb">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROCK TOMB</language>
+	</row>
+	<row id="msg_00000751_silver_wind">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SILVER WIND</language>
+	</row>
+	<row id="msg_00000751_metal_sound">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">METAL SOUND</language>
+	</row>
+	<row id="msg_00000751_grass_whistle">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRASSWHISTLE</language>
+	</row>
+	<row id="msg_00000751_tickle">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TICKLE</language>
+	</row>
+	<row id="msg_00000751_cosmic_power">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COSMIC POWER</language>
+	</row>
+	<row id="msg_00000751_water_spout">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WATER SPOUT</language>
+	</row>
+	<row id="msg_00000751_signal_beam">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SIGNAL BEAM</language>
+	</row>
+	<row id="msg_00000751_shadow_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHADOW PUNCH</language>
+	</row>
+	<row id="msg_00000751_extrasensory">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EXTRASENSORY</language>
+	</row>
+	<row id="msg_00000751_sky_uppercut">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SKY UPPERCUT</language>
+	</row>
+	<row id="msg_00000751_sand_tomb">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SAND TOMB</language>
+	</row>
+	<row id="msg_00000751_sheer_cold">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHEER COLD</language>
+	</row>
+	<row id="msg_00000751_muddy_water">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MUDDY WATER</language>
+	</row>
+	<row id="msg_00000751_bullet_seed">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BULLET SEED</language>
+	</row>
+	<row id="msg_00000751_aerial_ace">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AERIAL ACE</language>
+	</row>
+	<row id="msg_00000751_icicle_spear">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICICLE SPEAR</language>
+	</row>
+	<row id="msg_00000751_iron_defense">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">IRON DEFENSE</language>
+	</row>
+	<row id="msg_00000751_block">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BLOCK</language>
+	</row>
+	<row id="msg_00000751_howl">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HOWL</language>
+	</row>
+	<row id="msg_00000751_dragon_claw">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRAGON CLAW</language>
+	</row>
+	<row id="msg_00000751_frenzy_plant">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FRENZY PLANT</language>
+	</row>
+	<row id="msg_00000751_bulk_up">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BULK UP</language>
+	</row>
+	<row id="msg_00000751_bounce">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BOUNCE</language>
+	</row>
+	<row id="msg_00000751_mud_shot">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MUD SHOT</language>
+	</row>
+	<row id="msg_00000751_poison_tail">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISON TAIL</language>
+	</row>
+	<row id="msg_00000751_covet">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COVET</language>
+	</row>
+	<row id="msg_00000751_volt_tackle">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VOLT TACKLE</language>
+	</row>
+	<row id="msg_00000751_magical_leaf">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGICAL LEAF</language>
+	</row>
+	<row id="msg_00000751_water_sport">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WATER SPORT</language>
+	</row>
+	<row id="msg_00000751_calm_mind">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CALM MIND</language>
+	</row>
+	<row id="msg_00000751_leaf_blade">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEAF BLADE</language>
+	</row>
+	<row id="msg_00000751_dragon_dance">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRAGON DANCE</language>
+	</row>
+	<row id="msg_00000751_rock_blast">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROCK BLAST</language>
+	</row>
+	<row id="msg_00000751_shock_wave">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHOCK WAVE</language>
+	</row>
+	<row id="msg_00000751_water_pulse">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WATER PULSE</language>
+	</row>
+	<row id="msg_00000751_doom_desire">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DOOM DESIRE</language>
+	</row>
+	<row id="msg_00000751_psycho_boost">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PSYCHO BOOST</language>
+	</row>
+	<row id="msg_00000751_roost">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROOST</language>
+	</row>
+	<row id="msg_00000751_gravity">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRAVITY</language>
+	</row>
+	<row id="msg_00000751_miracle_eye">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIRACLE EYE</language>
+	</row>
+	<row id="msg_00000751_wake_up_slap">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WAKE-UP SLAP</language>
+	</row>
+	<row id="msg_00000751_hammer_arm">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HAMMER ARM</language>
+	</row>
+	<row id="msg_00000751_gyro_ball">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYRO BALL</language>
+	</row>
+	<row id="msg_00000751_healing_wish">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEALING WISH</language>
+	</row>
+	<row id="msg_00000751_brine">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BRINE</language>
+	</row>
+	<row id="msg_00000751_natural_gift">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NATURAL GIFT</language>
+	</row>
+	<row id="msg_00000751_feint">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FEINT</language>
+	</row>
+	<row id="msg_00000751_pluck">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PLUCK</language>
+	</row>
+	<row id="msg_00000751_tailwind">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TAILWIND</language>
+	</row>
+	<row id="msg_00000751_acupressure">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ACUPRESSURE</language>
+	</row>
+	<row id="msg_00000751_metal_burst">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">METAL BURST</language>
+	</row>
+	<row id="msg_00000751_u_turn">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">U-TURN</language>
+	</row>
+	<row id="msg_00000751_close_combat">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CLOSE COMBAT</language>
+	</row>
+	<row id="msg_00000751_payback">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PAYBACK</language>
+	</row>
+	<row id="msg_00000751_assurance">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ASSURANCE</language>
+	</row>
+	<row id="msg_00000751_embargo">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EMBARGO</language>
+	</row>
+	<row id="msg_00000751_fling">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLING</language>
+	</row>
+	<row id="msg_00000751_psycho_shift">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PSYCHO SHIFT</language>
+	</row>
+	<row id="msg_00000751_trump_card">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRUMP CARD</language>
+	</row>
+	<row id="msg_00000751_heal_block">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEAL BLOCK</language>
+	</row>
+	<row id="msg_00000751_wring_out">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WRING OUT</language>
+	</row>
+	<row id="msg_00000751_power_trick">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POWER TRICK</language>
+	</row>
+	<row id="msg_00000751_gastro_acid">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GASTRO ACID</language>
+	</row>
+	<row id="msg_00000751_lucky_chant">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LUCKY CHANT</language>
+	</row>
+	<row id="msg_00000751_me_first">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ME FIRST</language>
+	</row>
+	<row id="msg_00000751_copycat">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COPYCAT</language>
+	</row>
+	<row id="msg_00000751_power_swap">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POWER SWAP</language>
+	</row>
+	<row id="msg_00000751_guard_swap">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GUARD SWAP</language>
+	</row>
+	<row id="msg_00000751_punishment">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PUNISHMENT</language>
+	</row>
+	<row id="msg_00000751_last_resort">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LAST RESORT</language>
+	</row>
+	<row id="msg_00000751_worry_seed">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WORRY SEED</language>
+	</row>
+	<row id="msg_00000751_sucker_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUCKER PUNCH</language>
+	</row>
+	<row id="msg_00000751_toxic_spikes">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOXIC SPIKES</language>
+	</row>
+	<row id="msg_00000751_heart_swap">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEART SWAP</language>
+	</row>
+	<row id="msg_00000751_aqua_ring">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AQUA RING</language>
+	</row>
+	<row id="msg_00000751_magnet_rise">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGNET RISE</language>
+	</row>
+	<row id="msg_00000751_flare_blitz">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLARE BLITZ</language>
+	</row>
+	<row id="msg_00000751_force_palm">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FORCE PALM</language>
+	</row>
+	<row id="msg_00000751_aura_sphere">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AURA SPHERE</language>
+	</row>
+	<row id="msg_00000751_rock_polish">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROCK POLISH</language>
+	</row>
+	<row id="msg_00000751_poison_jab">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISON JAB</language>
+	</row>
+	<row id="msg_00000751_dark_pulse">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DARK PULSE</language>
+	</row>
+	<row id="msg_00000751_night_slash">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIGHT SLASH</language>
+	</row>
+	<row id="msg_00000751_aqua_tail">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AQUA TAIL</language>
+	</row>
+	<row id="msg_00000751_seed_bomb">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SEED BOMB</language>
+	</row>
+	<row id="msg_00000751_air_slash">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AIR SLASH</language>
+	</row>
+	<row id="msg_00000751_x_scissor">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">X-SCISSOR</language>
+	</row>
+	<row id="msg_00000751_bug_buzz">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BUG BUZZ</language>
+	</row>
+	<row id="msg_00000751_dragon_pulse">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRAGON PULSE</language>
+	</row>
+	<row id="msg_00000751_dragon_rush">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRAGON RUSH</language>
+	</row>
+	<row id="msg_00000751_power_gem">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POWER GEM</language>
+	</row>
+	<row id="msg_00000751_drain_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRAIN PUNCH</language>
+	</row>
+	<row id="msg_00000751_vacuum_wave">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VACUUM WAVE</language>
+	</row>
+	<row id="msg_00000751_focus_blast">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FOCUS BLAST</language>
+	</row>
+	<row id="msg_00000751_energy_ball">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ENERGY BALL</language>
+	</row>
+	<row id="msg_00000751_brave_bird">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BRAVE BIRD</language>
+	</row>
+	<row id="msg_00000751_earth_power">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EARTH POWER</language>
+	</row>
+	<row id="msg_00000751_switcheroo">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWITCHEROO</language>
+	</row>
+	<row id="msg_00000751_giga_impact">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GIGA IMPACT</language>
+	</row>
+	<row id="msg_00000751_nasty_plot">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NASTY PLOT</language>
+	</row>
+	<row id="msg_00000751_bullet_punch">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BULLET PUNCH</language>
+	</row>
+	<row id="msg_00000751_avalanche">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AVALANCHE</language>
+	</row>
+	<row id="msg_00000751_ice_shard">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICE SHARD</language>
+	</row>
+	<row id="msg_00000751_shadow_claw">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHADOW CLAW</language>
+	</row>
+	<row id="msg_00000751_thunder_fang">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">THUNDER FANG</language>
+	</row>
+	<row id="msg_00000751_ice_fang">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICE FANG</language>
+	</row>
+	<row id="msg_00000751_fire_fang">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FIRE FANG</language>
+	</row>
+	<row id="msg_00000751_shadow_sneak">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHADOW SNEAK</language>
+	</row>
+	<row id="msg_00000751_mud_bomb">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MUD BOMB</language>
+	</row>
+	<row id="msg_00000751_psycho_cut">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PSYCHO CUT</language>
+	</row>
+	<row id="msg_00000751_zen_headbutt">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ZEN HEADBUTT</language>
+	</row>
+	<row id="msg_00000751_mirror_shot">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIRROR SHOT</language>
+	</row>
+	<row id="msg_00000751_flash_cannon">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLASH CANNON</language>
+	</row>
+	<row id="msg_00000751_rock_climb">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROCK CLIMB</language>
+	</row>
+	<row id="msg_00000751_defog">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEFOG</language>
+	</row>
+	<row id="msg_00000751_trick_room">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRICK ROOM</language>
+	</row>
+	<row id="msg_00000751_draco_meteor">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRACO METEOR</language>
+	</row>
+	<row id="msg_00000751_discharge">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DISCHARGE</language>
+	</row>
+	<row id="msg_00000751_lava_plume">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LAVA PLUME</language>
+	</row>
+	<row id="msg_00000751_leaf_storm">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEAF STORM</language>
+	</row>
+	<row id="msg_00000751_power_whip">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POWER WHIP</language>
+	</row>
+	<row id="msg_00000751_rock_wrecker">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROCK WRECKER</language>
+	</row>
+	<row id="msg_00000751_cross_poison">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CROSS POISON</language>
+	</row>
+	<row id="msg_00000751_gunk_shot">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GUNK SHOT</language>
+	</row>
+	<row id="msg_00000751_iron_head">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">IRON HEAD</language>
+	</row>
+	<row id="msg_00000751_magnet_bomb">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGNET BOMB</language>
+	</row>
+	<row id="msg_00000751_stone_edge">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STONE EDGE</language>
+	</row>
+	<row id="msg_00000751_captivate">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CAPTIVATE</language>
+	</row>
+	<row id="msg_00000751_stealth_rock">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STEALTH ROCK</language>
+	</row>
+	<row id="msg_00000751_grass_knot">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRASS KNOT</language>
+	</row>
+	<row id="msg_00000751_chatter">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHATTER</language>
+	</row>
+	<row id="msg_00000751_judgment">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">JUDGMENT</language>
+	</row>
+	<row id="msg_00000751_bug_bite">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BUG BITE</language>
+	</row>
+	<row id="msg_00000751_charge_beam">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHARGE BEAM</language>
+	</row>
+	<row id="msg_00000751_wood_hammer">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WOOD HAMMER</language>
+	</row>
+	<row id="msg_00000751_aqua_jet">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AQUA JET</language>
+	</row>
+	<row id="msg_00000751_attack_order">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ATTACK ORDER</language>
+	</row>
+	<row id="msg_00000751_defend_order">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEFEND ORDER</language>
+	</row>
+	<row id="msg_00000751_heal_order">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEAL ORDER</language>
+	</row>
+	<row id="msg_00000751_head_smash">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEAD SMASH</language>
+	</row>
+	<row id="msg_00000751_double_hit">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DOUBLE HIT</language>
+	</row>
+	<row id="msg_00000751_roar_of_time">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROAR OF TIME</language>
+	</row>
+	<row id="msg_00000751_spacial_rend">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPACIAL REND</language>
+	</row>
+	<row id="msg_00000751_lunar_dance">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LUNAR DANCE</language>
+	</row>
+	<row id="msg_00000751_crush_grip">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CRUSH GRIP</language>
+	</row>
+	<row id="msg_00000751_magma_storm">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGMA STORM</language>
+	</row>
+	<row id="msg_00000751_dark_void">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DARK VOID</language>
+	</row>
+	<row id="msg_00000751_seed_flare">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SEED FLARE</language>
+	</row>
+	<row id="msg_00000751_ominous_wind">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OMINOUS WIND</language>
+	</row>
+	<row id="msg_00000751_shadow_force">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHADOW FORCE</language>
+	</row>
+</body>

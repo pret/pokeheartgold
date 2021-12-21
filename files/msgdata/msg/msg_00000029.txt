@@ -1,9 +1,0 @@
-Caught {STRVAR_1 0, 0, 0}!
-Swap the {STRVAR_1 0, 0, 0} for your\n{STRVAR_1 0, 1, 0}?
-Released {STRVAR_1 0, 1, 0} and caught\n{STRVAR_1 0, 0, 0}!
-Released {STRVAR_1 0, 0, 0} and kept\n{STRVAR_1 0, 1, 0}!
-{STRVAR_1 0, 0, 0}
-♂
-♀
-
-     

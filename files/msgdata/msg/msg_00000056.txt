@@ -1,9 +1,0 @@
-Elder: You showed us what you’ve got,\nand it is indeed good...\rTake this Technical Machine.\rHowever, you should care more about\nyour Pokémon.\rThe way you treat your Pokémon can\nbe too harsh...\rRemember, Pokémon are not tools\nof war...\r
-{STRVAR_1 3, 0, 0}: ...\r...Humph!\nHe calls himself the Elder, but he was\fno match for me.\rSure enough, those who lecture how\nyou should be “nice” to Pokémon...\fThey cannot defeat me.\rAll I care about are strong Pokémon\nthat win every time.\rThe rest of them don’t mean anything\nto me.\r
-{STRVAR_1 3, 0, 0} used\nan Escape Rope!
-So good of you to come here!\rSprout Tower is a place of training.\nPeople and Pokémon test their bonds\fto build a bright future together.\fI am the final test.\rAllow me to check the ties between\nyou and your Pokémon!\r
-Hmmm...\nThe way you battle is quite elegant.\rYou should be able to stand up\nto Falkner.\rAnd you should be able to make good use\nof this...\rIt is a Technical Machine called Flash.\nTake it with you!\r
-When a Pokémon learns Flash, you can\nilluminate caves no matter how dark\fthey may be.\rYou can try it on BELLSPROUT,\nfor example...
-I hope you learn and grow from\nyour journey.
-It’s a powerful painting of a\nBELLSPROUT.
-A Pokémon statue...\nIt looks very distinguished.

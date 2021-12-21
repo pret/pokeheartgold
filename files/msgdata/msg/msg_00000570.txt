@@ -1,9 +1,0 @@
-All the SLOWPOKE have disappeared\nfrom the town.\rThe forest’s protector may be\nangry with us...\rIt may be a bad omen. We should stay in.
-The SLOWPOKE have returned...\rBut my FARFETCH’D haven’t come back.\nMy apprentice has gone to look for them\fin the Ilex Forest.\rIt’s been ages now.\nWhere in the world is that lazy guy?
-You chased off Team Rocket and went to\nIlex Forest alone?\rThat takes guts!\nI like that. Come train with us.
-Where have all the SLOWPOKE gone?\nAre they out playing somewhere?
-I’m sorry--I forgot to thank you.\nThis is Charcoal that I made.\rFire-type moves will become\nmore powerful when a Pokémon\fholds that.
-{STRVAR_1 3, 0, 0} received\nthe Charcoal!
-The SLOWPOKE came back, and you even\nfound FARFETCH’D.\fYou’re the coolest, man!
-Uh-oh, your Bag is chock-full.
-FARFETCH’D: Kwaa!

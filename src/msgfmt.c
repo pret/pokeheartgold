@@ -9,6 +9,14 @@
 #include "friend_group.h"
 #include "string_control_code.h"
 #include "constants/map_sections.h"
+#include "msgdata/msg/msg_00000445.h"
+#include "msgdata/msg/msg_00000040.h"
+#include "msgdata/msg/msg_00000313.h"
+#include "msgdata/msg/msg_00000021.h"
+#include "msgdata/msg/msg_00000430.h"
+#include "msgdata/msg/msg_00000428.h"
+#include "msgdata/msg/msg_00000274.h"
+#include "msgdata/msg/msg_00000191.h"
 
 void ScrStrBufs_InitSub(MSGFMT_FIELD *field);
 
@@ -99,9 +107,9 @@ void BufferFriendsName(MSGFMT *msgFmt, u32 fieldno, SAVEDATA *saveData) {
     PLAYERPROFILE *playerProfile = Sav2_PlayerData_GetProfileAddr(saveData);
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000445_bin, msgFmt->heapId);
     if (PlayerProfile_GetTrainerGender(playerProfile) == PLAYER_GENDER_MALE) {
-        ReadMsgDataIntoString(msgData, 1, msgFmt->buffer); // Lyra
+        ReadMsgDataIntoString(msgData, msg_00000445_00001, msgFmt->buffer); // Lyra
     } else {
-        ReadMsgDataIntoString(msgData, 0, msgFmt->buffer); // Ethan
+        ReadMsgDataIntoString(msgData, msg_00000445_00000, msgFmt->buffer); // Ethan
     }
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
@@ -327,10 +335,10 @@ void BufferGenderSymbol(MSGFMT *msgFmt, u32 fieldno, u32 gender) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000040_bin, msgFmt->heapId);
     switch (gender) {
     case PLAYER_GENDER_MALE:
-        ReadMsgDataIntoString(msgData, 55, msgFmt->buffer);
+        ReadMsgDataIntoString(msgData, msg_00000040_00055, msgFmt->buffer);
         break;
     case PLAYER_GENDER_FEMALE:
-        ReadMsgDataIntoString(msgData, 56, msgFmt->buffer);
+        ReadMsgDataIntoString(msgData, msg_00000040_00056, msgFmt->buffer);
         break;
     default:
         StringSetEmpty(msgFmt->buffer);
@@ -545,7 +553,7 @@ void BufferSPGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
 void BufferPokeathlonCourseName(MSGFMT *msgFmt, u32 fieldno, u32 courseId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000313_bin, msgFmt->heapId);
     GF_ASSERT(courseId < 11);
-    ReadMsgDataIntoString(msgData, courseId + 0, msgFmt->buffer);
+    ReadMsgDataIntoString(msgData, courseId + msg_00000313_00000, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
 }
@@ -553,7 +561,7 @@ void BufferPokeathlonCourseName(MSGFMT *msgFmt, u32 fieldno, u32 courseId) {
 void BufferPokeathlonMedalName(MSGFMT *msgFmt, u32 fieldno, u32 medalId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000313_bin, msgFmt->heapId);
     GF_ASSERT(medalId < 5);
-    ReadMsgDataIntoString(msgData, medalId + 15, msgFmt->buffer);
+    ReadMsgDataIntoString(msgData, medalId + msg_00000313_00015, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
 }
@@ -561,7 +569,7 @@ void BufferPokeathlonMedalName(MSGFMT *msgFmt, u32 fieldno, u32 medalId) {
 void BufferPokeathlonEventName(MSGFMT *msgFmt, u32 fieldno, u32 eventId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000313_bin, msgFmt->heapId);
     GF_ASSERT(eventId < 10);
-    ReadMsgDataIntoString(msgData, eventId + 20, msgFmt->buffer);
+    ReadMsgDataIntoString(msgData, eventId + msg_00000313_00020, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
 }
@@ -572,7 +580,7 @@ void BufferApricornName(MSGFMT *msgFmt, u32 fieldno, u32 apricornId) {
         GF_ASSERT(apricornId < 7);
         apricornId = 0;
     }
-    ReadMsgDataIntoString(msgData, apricornId + 7, msgFmt->buffer);
+    ReadMsgDataIntoString(msgData, apricornId + msg_00000021_00007, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
 }
@@ -583,7 +591,7 @@ void BufferSafariZoneObjectName(MSGFMT *msgFmt, u32 fieldno, u32 objectId) {
         GF_ASSERT(objectId < 24);
         objectId = 0;
     }
-    ReadMsgDataIntoString(msgData, objectId + 14, msgFmt->buffer);
+    ReadMsgDataIntoString(msgData, objectId + msg_00000430_00014, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
 }
@@ -594,7 +602,7 @@ void BufferSafariZoneAreaName(MSGFMT *msgFmt, u32 fieldno, u32 areaId) {
         GF_ASSERT(areaId < 12);
         areaId = 0;
     }
-    ReadMsgDataIntoString(msgData, areaId + 0, msgFmt->buffer);
+    ReadMsgDataIntoString(msgData, areaId + msg_00000428_00000, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
 }
@@ -605,7 +613,7 @@ void BufferPokewalkerCourseName(MSGFMT *msgFmt, u32 fieldno, u32 courseId) {
         GF_ASSERT(courseId < 27);
         courseId = 0;
     }
-    ReadMsgDataIntoString(msgData, courseId + 91, msgFmt->buffer);
+    ReadMsgDataIntoString(msgData, courseId + msg_00000274_00091, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
 }
@@ -632,9 +640,9 @@ void BufferDeptStoreFloorNo(MSGFMT *msgFmt, u32 fieldno, u32 floor) {
     GF_ASSERT(floor <= 6);
     if (msgData != NULL) {
         if (floor == 0) {
-            msgno = 122;
+            msgno = msg_00000191_00122;
         } else {
-            msgno = 116 + floor - 1;
+            msgno = msg_00000191_00116 + floor - 1;
         }
         ReadMsgDataIntoString(msgData, msgno, msgFmt->buffer);
         SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);

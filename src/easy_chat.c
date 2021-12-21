@@ -9,6 +9,18 @@
 #include "constants/moves.h"
 #include "constants/abilities.h"
 
+#include "msgdata/msg/msg_00000237.h"
+#include "msgdata/msg/msg_00000751.h"
+#include "msgdata/msg/msg_00000735.h"
+#include "msgdata/msg/msg_00000721.h"
+#include "msgdata/msg/msg_00000285.h"
+#include "msgdata/msg/msg_00000286.h"
+#include "msgdata/msg/msg_00000287.h"
+#include "msgdata/msg/msg_00000288.h"
+#include "msgdata/msg/msg_00000289.h"
+#include "msgdata/msg/msg_00000290.h"
+#include "msgdata/msg/msg_00000291.h"
+
 static const u16 sNarcMsgCounts[EC_GROUP_MAX] = {
     EC_WORDS_POKEMON_COUNT,
     EC_WORDS_MOVE_COUNT,
@@ -38,12 +50,12 @@ static const u16 sNarcMsgBanks[EC_GROUP_MAX] = {
 };
 
 static const u8 sLanguageToGreetingMap[6][2] = {
-    { LANGUAGE_JAPANESE, (EC_WORD_LIFESTYLE_KONNICHIWA-EC_WORDS_LIFESTYLE_MIN) },
-    { LANGUAGE_ENGLISH,  (EC_WORD_LIFESTYLE_HELLO-EC_WORDS_LIFESTYLE_MIN) },
-    { LANGUAGE_FRENCH,   (EC_WORD_LIFESTYLE_BONJOUR-EC_WORDS_LIFESTYLE_MIN) },
-    { LANGUAGE_ITALIAN,  (EC_WORD_LIFESTYLE_CIAO-EC_WORDS_LIFESTYLE_MIN) },
-    { LANGUAGE_GERMAN,   (EC_WORD_LIFESTYLE_HALLO-EC_WORDS_LIFESTYLE_MIN) },
-    { LANGUAGE_SPANISH,  (EC_WORD_LIFESTYLE_HOLA-EC_WORDS_LIFESTYLE_MIN) },
+    { LANGUAGE_JAPANESE, msg_00000287_konnichiwa },
+    { LANGUAGE_ENGLISH,  msg_00000287_hello },
+    { LANGUAGE_FRENCH,   msg_00000287_bonjour},
+    { LANGUAGE_ITALIAN,  msg_00000287_ciao },
+    { LANGUAGE_GERMAN,   msg_00000287_hallo },
+    { LANGUAGE_SPANISH,  msg_00000287_hola },
 };
 
 // Several easy chat words are identical in

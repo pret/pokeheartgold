@@ -165,7 +165,7 @@ void MessagesDecoder::WriteMessagesToText(string& filename) {
 }
 
 void MessagesDecoder::WriteMessagesToGMM(string &filename) {
-    GMM(filename, std::ios::out).ToFile(vec_decoded);
+    GMM(filename, std::ios::out).ToFile(*this);
 }
 
 // Public virtual functions

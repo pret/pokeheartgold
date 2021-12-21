@@ -145,17 +145,17 @@ MAIL *CreateKenyaMail(POKEMON *pokemon, u8 mailType, u8 gender, STRING *name, u8
     ret->author_otId = otId;
 
     // LETTER! Thank you!
-    MailMsg_SetMsgBankAndNum(&ret->unk_20[0], 1, 7);
+    MailMsg_SetMsgBankAndNum(&ret->unk_20[0], 1, msg_00000296_00007);
     MailMsg_SetFieldI(&ret->unk_20[0], 0, EC_WORD_FEELINGS_LETTER);
     MailMsg_SetFieldI(&ret->unk_20[0], 1, EC_WORD_NULL);
 
     // ADVENTURE was fun, wasn't it?
-    MailMsg_SetMsgBankAndNum(&ret->unk_20[1], 1, 15);
+    MailMsg_SetMsgBankAndNum(&ret->unk_20[1], 1, msg_00000296_00015);
     MailMsg_SetFieldI(&ret->unk_20[1], 0, EC_WORD_FEELINGS_ADVENTURE);
     MailMsg_SetFieldI(&ret->unk_20[1], 1, EC_WORD_NULL);
 
     // ZUBAT was the one thing I wanted to avoid...
-    MailMsg_SetMsgBankAndNum(&ret->unk_20[2], 2, 1);
+    MailMsg_SetMsgBankAndNum(&ret->unk_20[2], 2, msg_00000292_00001);
     MailMsg_SetFieldI(&ret->unk_20[2], 0, EC_WORD_POKEMON(SPECIES_ZUBAT));
     MailMsg_SetFieldI(&ret->unk_20[2], 1, EC_WORD_NULL);
 

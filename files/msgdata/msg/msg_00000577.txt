@@ -1,9 +1,0 @@
-Huh? You need medicine?\nYour Pokémon appear to be fine.\fIs something worrying you?\r...\rThe Lighthouse Pokémon is in trouble?\rI got it!\fThis ought to do the trick.
-                     
-My SecretPotion is a tad too strong.\fI only offer it in an emergency.
-What’s up?\nNeed some medicine? {YESNO 0}
-                 
-    
-           
-             
-                

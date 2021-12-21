@@ -1,6 +1,0 @@
-Sigh... I opened a branch here,\nbut I can’t sell my Bicycles.\fWhy is that?\rCould you ride a Bicycle and\nadvertise for me? {YESNO 0}
-Really? Great!\rGive me your name and phone number,\nand I’ll loan you a Bicycle. {YESNO 0}
-                  
-The main shop is at Cerulean\nback in Kanto.\rSay hello to the shop manager\nif you happen to go there!\rOur Bicycles are first-rate!\nYou can ride them in Kanto, too!
-Sigh... Oh, for the kindness\nof people...
-It’s a shiny new Bicycle!

@@ -1,6 +1,0 @@
-CANCEL
-IN PARTY
-Are these three OK?
-Is this Pokémon OK?
-Cancel Participation?
-Which Pokémon will you take?

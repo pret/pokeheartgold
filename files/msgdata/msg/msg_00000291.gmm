@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_00000291_single">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SINGLE</language>
+	</row>
+	<row id="msg_00000291_double">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DOUBLE</language>
+	</row>
+	<row id="msg_00000291_mix_battle">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIX BATTLE</language>
+	</row>
+	<row id="msg_00000291_multi_battle">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MULTI BATTLE</language>
+	</row>
+	<row id="msg_00000291_level_50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEVEL 50</language>
+	</row>
+	<row id="msg_00000291_level_100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEVEL 100</language>
+	</row>
+	<row id="msg_00000291_colosseum">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COLOSSEUM</language>
+	</row>
+	<row id="msg_00000291_pokemon">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POKéMON</language>
+	</row>
+	<row id="msg_00000291_drawing">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRAWING</language>
+	</row>
+	<row id="msg_00000291_record">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RECORD</language>
+	</row>
+	<row id="msg_00000291_gotcha">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GOTCHA</language>
+	</row>
+	<row id="msg_00000291_chat">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHAT</language>
+	</row>
+	<row id="msg_00000291_friend_code">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FRIEND CODE</language>
+	</row>
+	<row id="msg_00000291_connection">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CONNECTION</language>
+	</row>
+	<row id="msg_00000291_voice_chat">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VOICE CHAT</language>
+	</row>
+	<row id="msg_00000291_wi_fi">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WI-FI</language>
+	</row>
+	<row id="msg_00000291_underground">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">UNDERGROUND</language>
+	</row>
+	<row id="msg_00000291_union">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">UNION</language>
+	</row>
+	<row id="msg_00000291_poffin">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POFFIN</language>
+	</row>
+	<row id="msg_00000291_contest">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CONTEST</language>
+	</row>
+	<row id="msg_00000291_battle_tower">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE TOWER</language>
+	</row>
+	<row id="msg_00000291_gts">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GTS</language>
+	</row>
+	<row id="msg_00000291_secret_base">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SECRET BASE</language>
+	</row>
+</body>

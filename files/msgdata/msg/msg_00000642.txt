@@ -1,4 +1,0 @@
-Bike Shop
-{STRVAR_1 3, 0, 0}...is that you?\rYou’re something else, aren’t you?
-{STRVAR_1 3, 0, 0}...is that you?\rYou’re something else, aren’t you?
-Oh, hey, this is the Bike Shop! I’ve\nbeen selling a lot of Bikes lately!\rIt’s because you’ve been riding around\non that Bike advertising for me!\rI was wondering how best to thank you,\nand I thought I’d just give you\fthat Bicycle you’re riding around.\rIt’s yours! Thanks so much!

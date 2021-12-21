@@ -1,9 +1,0 @@
-Ahem, do you hear me?\r...I am the Director.\rWe have decided to broadcast wonderful\nshows to praise Team Rocket!\rEveryone, I don’t want to hear you\ncomplain. Just do a good job to...\r
-Yikes!\nI am busy impersonating the...\fWho are you?\r
-...Oh no, it’s you again, {STRVAR_1 3, 0, 0}?\r
-Petrel: No, no, no! I was pretending to\nbe the Director to influence the entire\fregion to support Team Rocket!\rThis time I won’t hold back!\nGive me all you’ve got!\r
-Petrel: Listen carefully.\rWe stashed the real Director in the\nunderground warehouse.\rIt’s at the far end of the\nGoldenrod Tunnel.\rI am a nice guy. I will give you the\nBasement Key to get to the\funderground warehouse.\fTake it with gratitude!\r
-Petrel: We stashed the Director in the\nunderground warehouse.\rIt’s at the far end of the\nGoldenrod Tunnel.\rHahaha...\nI doubt a child like you’ll get that far.
-Director: Hello, it is you! You know,\nI really love Pokémon.\rI built this Radio Tower just so I could\nexpress my love of Pokémon.\rIt would be nice if people enjoyed our\nprograms.
-5F Director’s Office
-Go up for Observation Deck

@@ -1,7 +1,0 @@
-It’s a replica of an ancient Pokémon.
-Hmmm.\nWhen did this appear...?\rI wonder what these symbols mean...\f..................\r
-Hey, you!\nLet’s go back to the Research Center!\r
-The symbols on the stone panel were\nlike this...\r
-OUR FRIENDS LOOK\nUP AND HEARTILY\fCONGRATULATE US\r
-I wonder what it means.\nWe need to examine the ruins once again.\r
-{STRVAR_1 3, 0, 0} opened the UNOWN Report\nand made notes!

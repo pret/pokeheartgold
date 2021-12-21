@@ -1,6 +1,0 @@
-PLAYER: {STRVAR_1 3, 0, 0}
-This document certifies that\nyou have made the great\nachievement of catching all\nthe Pokémon in Johto.
-This document certifies\nthat you have successfully\ncompleted your\nNational Pokédex.
-GAME FREAK
-{ALN_CENTER}{STRVAR_1 3, 0, 0} and {STRVAR_1 1, 1, 0}
-{ALN_CENTER}Fighting together, walking\n{ALN_CENTER}together. Forging a bond that\n{ALN_CENTER}cannot be broken and will go\n{ALN_CENTER}on continually into eternity.\n{ALN_CENTER}This bond is illuminated here.

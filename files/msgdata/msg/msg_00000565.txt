@@ -1,2 +1,0 @@
-The number of Gym Badges you have\nshows how strong a Trainer you are.\rThe more Badges you have, the\nbetter the items you’ll see in shops!
-A Great Ball is better for catching\nPokémon than a Poké Ball.\rBut Kurt’s might be better sometimes.

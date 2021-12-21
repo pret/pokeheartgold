@@ -1,8 +1,0 @@
-You must be an adventuring Trainer.\nDid you challenge the Pokémon Gym yet?
-                                                                                             
-Lyra: I knew it was you, {STRVAR_1 3, 0, 0}!\rHow did you get past me?\nHere is something neat for\fsurprising me, {STRVAR_1 3, 0, 0}!\r
-Ethan: I knew it was you, {STRVAR_1 3, 0, 0}!\rHow did you get past me?\nHere is something neat for\fsurprising me, {STRVAR_1 3, 0, 0}!\r
-The Vs. Recorder can record\nyour Pokémon battles.\rI have to go now!\fI won’t let you pass me again!\r
-The Vs. Recorder can record\nyour Pokémon battles.\rI have to go now!\fI won’t let you pass me again!\r
-Let’s go, MARILL!\r
-Come on, MARILL!\r

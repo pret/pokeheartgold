@@ -30,7 +30,7 @@ void MessagesEncoder::ReadMessagesFromText(string& fname) {
 }
 
 void MessagesEncoder::ReadMessagesFromGMM(string& filename) {
-    GMM(filename, std::ios::in).FromFile(vec_decoded);
+    GMM(filename, std::ios::in).FromFile(*this);
     header.count = vec_decoded.size();
     debug_printf("%d lines\n", header.count);
 }

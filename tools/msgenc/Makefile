@@ -11,6 +11,7 @@ DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
 SRCS := \
 	msgenc.cpp \
+	Options.cpp \
 	MessagesConverter.cpp \
 	MessagesDecoder.cpp \
 	MessagesEncoder.cpp \

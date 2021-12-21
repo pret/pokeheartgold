@@ -1,9 +1,0 @@
-Professor Elm: Touch a Poké Ball to\nsee what Pokémon is inside!
-Professor Elm: So, you like {COLOR 3}CHIKORITA{COLOR 0},\nthe Grass-type Pokémon?
-Professor Elm: You’ll take {COLOR 1}CYNDAQUIL{COLOR 0},\nthe Fire-type Pokémon?
-Professor Elm: Do you want {COLOR 2}TOTODILE{COLOR 0},\nthe Water-type Pokémon?
-{COLOR 3}CHIKORITA{COLOR 0}, the Grass-type Pokémon, is\nin this Poké Ball!
-{COLOR 1}CYNDAQUIL{COLOR 0}, the Fire-type Pokémon, is\nin this Poké Ball!
-{COLOR 2}TOTODILE{COLOR 0}, the Water-type Pokémon, is\nin this Poké Ball!
-Once you’ve decided, touch a Poké Ball!
-Touch the Poké Ball button to select.\nTouch elsewhere to change your selection.

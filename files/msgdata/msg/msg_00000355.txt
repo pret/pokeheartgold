@@ -1,6 +1,0 @@
-If you cruise down the Cycling Road,\nyou will end up in Fuchsia City.
-Hello, hello. Would you like to hear\na trendy saying? {YESNO 0}
-Very well...\rThe trendy thing for you to say\nwould be...\r{STRVAR_1 28, 0, 0}!\rThat’s a trendy sort of thing\nto say.
-Oh, come on now! With an attitude\nlike that, you’ll fall behind the times!
-I hope you’ll use trendy sayings\nin trendy ways.
-Hello, hello. Are you using\ntrendy sayings?

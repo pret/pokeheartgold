@@ -2,6 +2,7 @@
 #define GUARD_MESSAGESCONVERTER_H
 
 #include "util.h"
+#include "Options.h"
 #include <string>
 #include <fstream>
 #include <map>
@@ -16,12 +17,6 @@ static inline uint16_t enc_short(uint16_t value, uint16_t & seed) {
     seed += 18749;
     return value;
 }
-
-enum ConvertMode : uint8_t {
-    CONV_ENCODE = 0,
-    CONV_DECODE,
-    CONV_INVALID = 0xFF,
-};
 
 struct MsgArcHeader
 {
@@ -62,6 +57,7 @@ protected:
     string textfilename;
     string charmapfilename;
     string binfilename;
+    string headerfilename;
 
     MsgArcHeader header = {};
     vector<MsgAlloc> alloc_table;
@@ -84,13 +80,13 @@ protected:
     txtfmt text_format = PlainText;
 
 public:
-    MessagesConverter(ConvertMode _mode, string &_textfilename, int _key, string &_charmapfilename, string &_binfilename) :
-        mode(_mode),
-        textfilename(_textfilename),
-        charmapfilename(_charmapfilename),
-        binfilename(_binfilename)
+    MessagesConverter(Options &options) :
+        mode(options.mode),
+        charmapfilename(options.charmap),
+        headerfilename(options.gmm_header),
+        text_format(options.textFormat)
     {
-        header.key = (_key == 0) ? CalcCRC() : static_cast<uint16_t>(_key);
+        header.key = (options.key == 0) ? CalcCRC() : static_cast<uint16_t>(options.key);
     }
     void ReadCharmap();
     virtual void ReadInput() = 0;
@@ -106,8 +102,15 @@ public:
 
     void WriteBinaryDecoded(string &filename);
 
-    void SetTextMode(txtfmt fmt) {
-        text_format = fmt;
+    vector<string> &GetDecodedMessages() {
+        return vec_decoded;
+    }
+    vector<u16string> &GetEncodedMessages() {
+        return vec_encoded;
+    }
+
+    string &GetHeaderFilename() {
+        return headerfilename;
     }
 };
 

@@ -1,7 +1,0 @@
-sleep
-poison
-burn
-paralysis
-frozen
-confusion
-infatuation

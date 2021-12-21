@@ -1,8 +1,0 @@
-You see the item over there?\rIt was me who dropped it, but I cannot\nget over there to pick it up.\rWhy?\rWalking on ice makes your feet freeze!\rMy shoes are so worn that the soles\nare gone!
-You see the item over there?\rIt was me who dropped it, but I cannot\nget over there to pick it up.\rWhy?\rWalking on ice makes your feet freeze!\rMy shoes are so worn that the soles\nare gone!\r
-The item you picked up over there...\nit was an HM, wasn’t it?\rI am the one who dropped it...but I\nwant you to keep it.\fYou took the time to get it, right?\rIt contains Waterfall.\nHave fun climbing waterfalls!\rMe?\rI still need a new pair of shoes\nbefore I can enjoy waterfalls.
-Me oh my...\nIs that you, {STRVAR_1 3, 0, 0}?\fFancy meeting you here!\rTo tell the truth...my sandals are\nfrozen on the ice, and I am stuck here.\rIn other words, my flip-flops are\nquick-frozen to the ground.\rTee hee.\rWell, it’s no laughing matter. Would you\ncome around and push my back?
-Me oh my...\nIs that you, {STRVAR_1 3, 0, 0}?\fFancy meeting you here!\rTo tell the truth...my sandals are\nfrozen on the ice, and I am stuck here.\rIn other words, my flip-flops are\nquick-frozen with the ground.\rTee hee.\rWell, it’s no laughing matter.\nWould you push my back? {YESNO 0}
-{SIZE 200}SHOVE!{SIZE 100}\r
-Don’t be so cruel.\nYou will push my back,\fwon’t you? {YESNO 0}
-You really are kind.\rThank you so much!\r

@@ -1,5 +1,0 @@
-Hi, I’m looking for this Pokémon.\rIf you have a KRABBY, would you\ntrade it for my VOLTORB? {YESNO 0}
-Great! Thank you!\rI finally got a KRABBY!
-You don’t have a KRABBY?\nThat’s too bad, then.
-You don’t have one either?\rGee, that’s really disappointing...
-Hi! The KRABBY you traded me is\ndoing great!
