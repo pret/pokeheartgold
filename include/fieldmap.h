@@ -2,8 +2,65 @@
 #define POKEHEARTGOLD_FIELDMAP_H
 
 #include "script.h"
+#include "trainer_data.h"
 
-u16* GetVarPointer(UnkSavStruct80*, u16);
-u16 VarGet(UnkSavStruct80*, u16);
+typedef struct HiddenItem {
+    u16 unk0;
+    u16 unk2;
+    u8 unk4;
+    u8 dummy;
+} HiddenItem;
+
+void sub_0203FE74(UnkSavStruct80 *a0, u16 a1, UnkSavStruct80_Sub3C *a2);
+void sub_0203FEA4(UnkSavStruct80 *a0, UnkSavStruct80_Sub3C *a1, int a2, int a3, int a4, int a5, int a6, int a7);
+void sub_0203FED4(UnkSavStruct80 *a0, u16 a1, UnkSavStruct80_Sub3C *a2, void *a3);
+void sub_0203FF0C(UnkSavStruct80 *a0, u16 a1, UnkSavStruct80_Sub3C *a2);
+BOOL sub_0203FF44(UnkSavStruct80_Sub10_SubC *unk);
+UnkSavStruct80_Sub10_SubC *sub_0204001C(void);
+void sub_02040044(SCRIPTCONTEXT *ctx);
+void sub_0204005C(UnkSavStruct80 *a0, UnkSavStruct80_Sub10_SubC *a1, u16 a2, UnkSavStruct80_Sub3C *a3, u32 a4);
+SCRIPTCONTEXT *CreateScriptContext(UnkSavStruct80 *a0, u16 mapId);
+void SetUpScriptContextForMap(UnkSavStruct80 *a0, SCRIPTCONTEXT *ctx, u16 mapId, u32 unused_r3);
+u16 LoadScriptsAndMessagesByMapId(UnkSavStruct80 *a0, u16 mapId);
+void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *a0, enum Unk80_10_C_Field a1);
+void *FieldSysGetAttrAddr(UnkSavStruct80 *a0, enum Unk80_10_C_Field a1);
+void sub_0204031C(UnkSavStruct80 *a0);
+void ScriptRunByIndex(SCRIPTCONTEXT *ctx, int idx);
+u8 *LoadScriptsForCurrentMap(u32 mapId);
+int GetCurrentMapMessageBank(u32 mapId);
+u16* GetVarPointer(UnkSavStruct80* fsys, u16 varId);
+u16 VarGet(UnkSavStruct80* fsys, u16 varId);
+BOOL VarSet(UnkSavStruct80* fsys, u16 varId, u16 value);
+u16 VarGetObjectEventGraphicsId(UnkSavStruct80* fsys, u16 objId);
+BOOL FlagGet(UnkSavStruct80 *fsys, u16 flagId);
+void FlagSet(UnkSavStruct80 *fsys, u16 flagId);
+void FlagClear(UnkSavStruct80 *fsys, u16 flagId);
+void ClearTempFieldEventData(UnkSavStruct80 *fsys);
+void ClearDailyFlags(UnkSavStruct80 *fsys);
+void sub_02040490(UnkSavStruct80 *a0, u16 a1, u16 a2, u16 a3, u16 a4);
+u16 sub_020404C8(u16 a0);
+BOOL sub_020404EC(u16 a0);
+BOOL sub_02040500(TRAINER *trainer);
+BOOL TrainerFlagCheck(SAVEDATA *a0, u16 trno);
+void TrainerFlagSet(SAVEDATA *a0, u16 trno);
+void TrainerFlagClear(SAVEDATA *a0, u16 trno);
+u16 sub_0204055C(u16 a0);
+u16 sub_0204056C(u16 a0);
+u8 sub_02040578(u16 a0);
+BOOL sub_020405AC(UnkSavStruct80 *a0, u16 a1);
+BOOL sub_02040614(UnkSavStruct80 *fsys, HeapID heapId);
+void RunPokemonCenterScriptsInNewContext(UnkSavStruct80 *fsys);
+void sub_02040734(UnkSavStruct80 *fsys, u16 a1);
+BOOL sub_02040750(UnkSavStruct80 *fsys, u8 a1);
+BOOL sub_020407AC(UnkSavStruct80 *fsys);
+u16 sub_020407E4(u8 *a0, u8 a1);
+u16 sub_0204080C(UnkSavStruct80 *a0, u8 *a1);
+
+UnkSavStruct80_Sub10 *sub_020504C0(UnkSavStruct80 *a0, u32 a1);
+void sub_020504F0(UnkSavStruct80 *a0, void (*a1)(void *), UnkSavStruct80_Sub10_SubC *a2);
+void sub_02050530(UnkSavStruct80 *a0, void (*a1)(void *), UnkSavStruct80_Sub10_SubC *a2);
+UnkSavStruct80 *sub_0205064C(UnkSavStruct80_Sub10 *a0);
+void LoadScriptsAndMessagesParameterized(UnkSavStruct80 *a0, SCRIPTCONTEXT *a1, u16 scriptBank, u16 msgBank);
+void LoadScriptsAndMessagesForCurrentMap(UnkSavStruct80 *a0, SCRIPTCONTEXT *a1);
 
 #endif

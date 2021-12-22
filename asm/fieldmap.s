@@ -3137,7 +3137,7 @@ _02040770:
 	b _02040784
 _0204077E:
 	add r1, r4, #0
-	bl _020407E4
+	bl sub_020407E4
 _02040784:
 	add r1, r0, #0
 	ldr r0, _020407A8 ; =0x0000FFFF
@@ -3193,6 +3193,10 @@ _020407DC:
 	pop {r4, pc}
 	.balign 4, 0
 _020407E0: .word 0x0000FFFF
+	thumb_func_end sub_020407AC
+
+	thumb_func_start sub_020407E4
+sub_020407E4:
 _020407E4:
 	ldrb r2, [r0]
 	cmp r2, #0
@@ -3212,14 +3216,11 @@ _020407EE:
 _02040800:
 	add r0, r0, #5
 	b _020407E4
-	thumb_func_end sub_020407AC
-
-	thumb_func_start sub_02040804
-sub_02040804: ; 0x02040804
+_02040804: ; 0x02040804
 	bx lr
 	nop
 _02040808: .word 0x0000FFFF
-	thumb_func_end sub_02040804
+	thumb_func_end sub_020407E4
 
 	thumb_func_start sub_0204080C
 sub_0204080C: ; 0x0204080C
