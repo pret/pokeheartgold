@@ -29,7 +29,7 @@ void *FieldSysGetAttrAddr(UnkSavStruct80 *a0, enum Unk80_10_C_Field a1);
 void sub_0204031C(UnkSavStruct80 *a0);
 void ScriptRunByIndex(SCRIPTCONTEXT *ctx, int idx);
 u8 *LoadScriptsForCurrentMap(u32 mapId);
-int GetCurrentMapMessageBank(u32 mapId);
+u32 GetCurrentMapMessageBank(u32 mapId);
 u16* GetVarPointer(UnkSavStruct80* fsys, u16 varId);
 u16 VarGet(UnkSavStruct80* fsys, u16 varId);
 BOOL VarSet(UnkSavStruct80* fsys, u16 varId, u16 value);
@@ -57,6 +57,11 @@ BOOL sub_02040750(UnkSavStruct80 *fsys, u8 a1);
 BOOL sub_020407AC(UnkSavStruct80 *fsys);
 u16 sub_020407E4(u8 *a0, u8 a1);
 u16 sub_0204080C(UnkSavStruct80 *a0, u8 *a1);
+
+
+
+BOOL sub_0203BC10(UnkSavStruct80 *);
+void sub_0203BD64(UnkSavStruct80 *);
 
 UnkSavStruct80_Sub10 *sub_020504C0(UnkSavStruct80 *a0, u32 a1);
 void sub_020504F0(UnkSavStruct80 *a0, BOOL (*a1)(UnkSavStruct80_Sub10 *), UnkSavStruct80_Sub10_SubC *a2);

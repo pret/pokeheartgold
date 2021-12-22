@@ -60,7 +60,7 @@ typedef struct UnkSavStruct80_Sub10_SubC {
     u32 unk_50;
     UnkSavStruct80_Sub10_SubC_Sub54 unk_54[2];
     u16 unk_8C[14];
-    void (*unk_A8)(UnkSavStruct80* fsys);
+    void (*scrctx_end_cb)(UnkSavStruct80* fsys);
     u32 unk_AC;
     u32 unk_B0;
     u32 unk_B4;

@@ -1,10 +1,11 @@
 //#define _IN_FIELDMAP_C
 
 #include "fieldmap.h"
+#include "map_header.h"
+#include "event_data.h"
 #include "script_cmd_table.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
-
 
 struct ScriptBankMapping {
     u16 mapIdLo;
@@ -79,14 +80,14 @@ BOOL sub_0203FF44(UnkSavStruct80_Sub10 *unk) {
             r4->unk_9--;
         }
         if (r4->unk_9 == 0) {
-            void (*r5)(UnkSavStruct80 *a0) = r4->unk_A8;
+            void (*callback)(UnkSavStruct80 *a0) = r4->scrctx_end_cb;
             ScrStrBufs_delete(r4->unk_44);
             String_dtor(r4->unk_48);
             String_dtor(r4->unk_4C);
             r4->check = 0;
             FreeToHeap(r4);
-            if (r5 != NULL) {
-                (*r5)(sp0);
+            if (callback != NULL) {
+                (*callback)(sp0);
                 return FALSE;
             } else {
                 return TRUE;
@@ -282,4 +283,35 @@ void* FieldSysGetAttrAddr(UnkSavStruct80 *fsys, enum Unk80_10_C_Field field) {
     GF_ASSERT(unk != NULL);
     GF_ASSERT(unk->check == Unk80_10_C_MAGIC);
     return FieldSysGetAttrAddrInternal(unk, field);
+}
+
+void sub_0204031C(UnkSavStruct80 *fsys) {
+    UnkSavStruct80_Sub10_SubC *unk = sub_02050650(fsys->unk10);
+    if (sub_0203BC10(fsys) == TRUE) {
+        unk->scrctx_end_cb = sub_0203BD64;
+    }
+}
+
+void ScriptRunByIndex(SCRIPTCONTEXT *ctx, int idx) {
+    ctx->script_ptr += 4 * idx;
+    ctx->script_ptr += ScriptReadWord(ctx);
+}
+
+u8 *LoadScriptsForCurrentMap(u32 mapno) {
+    return AllocAndReadWholeNarcMemberByIdPair(NARC_fielddata_script_scr_seq, MapHeader_GetScriptsBank(mapno), HEAP_ID_FIELDMAP);
+}
+
+u32 GetCurrentMapMessageBank(u32 mapno) {
+    return MapHeader_GetMsgBank(mapno);
+}
+
+u16 *GetVarPointer(UnkSavStruct80 *fsys, u16 varIdx) {
+    SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
+    if (varIdx < VAR_BASE) {
+        return NULL;
+    } else if (varIdx < SPECIAL_VAR_BASE) {
+        return GetVarAddr(state, varIdx);
+    } else {
+        return FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_00 + varIdx - SPECIAL_VAR_BASE);
+    }
 }

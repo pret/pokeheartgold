@@ -3,9 +3,7 @@
 
 #include "save.h"
 #include "constants/flags.h"
-
-#define NUM_VARS            368
-#define VAR_BASE         0x4000
+#include "constants/vars.h"
 
 typedef struct ScriptState {
     u16 vars[NUM_VARS];
