@@ -3,8 +3,8 @@
 
 #include "save.h"
 #include "map_events_internal.h"
-// #include "map_matrix.h"
-typedef struct MAPMATRIX MAPMATRIX;
+#include "map_matrix.h"
+#include "msgdata.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -17,6 +17,9 @@ typedef struct MAPMATRIX MAPMATRIX;
 #define ScriptReadByte(ctx) *(ctx->script_ptr++)
 
 typedef struct UnkSavStruct80 UnkSavStruct80;
+typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
+
+#define Unk80_10_C_MAGIC         (222271)
 
 typedef struct UnkSavStruct80_Sub10_SubC {
     u32 check;
@@ -38,10 +41,10 @@ typedef struct UnkSavStruct80_Sub10_SubC {
     u32 unk_2C;
     u32 unk_30;
     u32 unk_34;
-    u32 unk_38[3];
-    u32 unk_44;
-    u32 unk_48;
-    u32 unk_4C;
+    SCRIPTCONTEXT* unk_38[3];
+    MSGFMT* unk_44;
+    STRING* unk_48;
+    STRING* unk_4C;
     u32 unk_50;
     u32 unk_54;
     u32 unk_58;
@@ -74,10 +77,74 @@ typedef struct UnkSavStruct80_Sub10_SubC {
     u32 unk_DC;
 } UnkSavStruct80_Sub10_SubC;
 
+enum Unk80_10_C_Field {
+    UNK80_10_C_10                =  0,
+    UNK80_10_C_14                =  1,
+    UNK80_10_C_24                =  2,
+    UNK80_10_C_05                =  3,
+    UNK80_10_C_06                =  4,
+    UNK80_10_C_07                =  5,
+    UNK80_10_C_08                =  6,
+    UNK80_10_C_09                =  7,
+    UNK80_10_C_0A                =  8,
+    UNK80_10_C_28                =  9,
+    UNK80_10_C_2C                = 10,
+    UNK80_10_C_30                = 11,
+    UNK80_10_C_34                = 12,
+    UNK80_10_C_SCRCTX_0          = 13,
+    UNK80_10_C_SCRCTX_1          = 14,
+    UNK80_10_C_SCRCTX_2          = 15,
+    UNK80_10_C_MSGFMT            = 16,
+    UNK80_10_C_STRBUF1           = 17,
+    UNK80_10_C_STRBUF2           = 18,
+    UNK80_10_C_50                = 19,
+    UNK80_10_C_AC                = 20,
+    UNK80_10_C_B0                = 21,
+    UNK80_10_C_B4                = 22,
+    UNK80_10_C_B8                = 23,
+    UNK80_10_C_0C                = 24,
+    UNK80_10_C_54                = 25,
+    UNK80_10_C_58                = 26,
+    UNK80_10_C_5C                = 27,
+    UNK80_10_C_60                = 28,
+    UNK80_10_C_64                = 29,
+    UNK80_10_C_68                = 30,
+    UNK80_10_C_6C                = 31,
+    UNK80_10_C_70                = 32,
+    UNK80_10_C_74                = 33,
+    UNK80_10_C_78                = 34,
+    UNK80_10_C_7C                = 35,
+    UNK80_10_C_80                = 36,
+    UNK80_10_C_84                = 37,
+    UNK80_10_C_88                = 38,
+    UNK80_10_C_BC                = 39,
+    UNK80_10_C_CC                = 40,
+    UNK80_10_C_DC                = 41,
+    UNK80_10_C_8C_00             = 42,
+    UNK80_10_C_8C_01             = 43,
+    UNK80_10_C_8C_02             = 44,
+    UNK80_10_C_8C_03             = 45,
+    UNK80_10_C_8C_04             = 46,
+    UNK80_10_C_8C_05             = 47,
+    UNK80_10_C_8C_06             = 48,
+    UNK80_10_C_8C_07             = 49,
+    UNK80_10_C_8C_08             = 50,
+    UNK80_10_C_8C_09             = 51,
+    UNK80_10_C_8C_10             = 52,
+    UNK80_10_C_8C_11             = 53,
+    UNK80_10_C_8C_12             = 54,
+    UNK80_10_C_8C_13             = 55,
+};
+
 typedef struct UnkSavStruct80_Sub10 {
-    u8 filler_00[12];
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
     void *unkC; // maybe a union? sometimes cast to UnkSavStruct80_Sub10_SubC
-    u8 filler_10[0x10];
+    u32 unk10;
+    u32 unk14;
+    u32 unk18;
+    void *unk1C; // size=4
 } UnkSavStruct80_Sub10;
 
 typedef struct UnkSavStruct80_Sub20 {
@@ -104,7 +171,7 @@ struct UnkSavStruct80 {
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
 typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT* ctx);
 
-typedef struct SCRIPTCONTEXT {
+struct SCRIPTCONTEXT {
     u8 stack_depth;
     u8 mode;
     u8 comparison_result;
@@ -116,10 +183,10 @@ typedef struct SCRIPTCONTEXT {
     u32 cmd_count;
     u32 data[4];
     void* unk74;
-    void* msg_data;
+    MSGDATA* msg_data;
     u8* unk7C;
     UnkSavStruct80* unk80;
-} SCRIPTCONTEXT;
+};
 
 void InitScriptContext(SCRIPTCONTEXT* ctx, ScrCmdFunc* cmd_table, u32 cmd_count);
 BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr);
