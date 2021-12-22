@@ -18,8 +18,19 @@
 
 typedef struct UnkSavStruct80 UnkSavStruct80;
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
+typedef struct UnkSavStruct80_Sub3C UnkSavStruct80_Sub3C;
 
 #define Unk80_10_C_MAGIC         (222271)
+
+typedef struct UnkSavStruct80_Sub10_SubC_Sub54 {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkC;
+    int unk10;
+    UnkSavStruct80_Sub3C *unk14;
+    int unk18;
+} UnkSavStruct80_Sub10_SubC_Sub54;
 
 typedef struct UnkSavStruct80_Sub10_SubC {
     u32 check;
@@ -37,29 +48,16 @@ typedef struct UnkSavStruct80_Sub10_SubC {
     u32 unk_1C;
     u32 unk_20;
     u32 unk_24;
-    u32 unk_28;
-    u32 unk_2C;
+    void* unk_28;
+    UnkSavStruct80_Sub3C* unk_2C;
     u32 unk_30;
-    u32 unk_34;
+    void* unk_34;
     SCRIPTCONTEXT* unk_38[3];
     MSGFMT* unk_44;
     STRING* unk_48;
     STRING* unk_4C;
     u32 unk_50;
-    u32 unk_54;
-    u32 unk_58;
-    u32 unk_5C;
-    u32 unk_60;
-    u32 unk_64;
-    u32 unk_68;
-    u32 unk_6C;
-    u32 unk_70;
-    u32 unk_74;
-    u32 unk_78;
-    u32 unk_7C;
-    u32 unk_80;
-    u32 unk_84;
-    u32 unk_88;
+    UnkSavStruct80_Sub10_SubC_Sub54 unk_54[2];
     u16 unk_8C[14];
     void (*unk_A8)(UnkSavStruct80* fsys);
     u32 unk_AC;
@@ -151,8 +149,6 @@ typedef struct UnkSavStruct80_Sub20 {
     int unk0;
 } UnkSavStruct80_Sub20;
 
-typedef struct UnkSavStruct80_Sub3C UnkSavStruct80_Sub3C;
-
 struct UnkSavStruct80 {
     u8 unk0[0x8];
     void* bg_config;
@@ -165,7 +161,8 @@ struct UnkSavStruct80 {
     MAPMATRIX* map_matrix;
     u8 unk34[0x8];
     UnkSavStruct80_Sub3C* unk3C;
-    u8 unk40[0xE8];
+    void *unk40;
+    u8 unk44[0xE4];
 }; // size: 0x128
 
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
@@ -179,20 +176,20 @@ struct SCRIPTCONTEXT {
     ScrCmdFunc native_ptr;
     const u8* script_ptr;
     const u8* stack[20];
-    ScrCmdFunc* cmd_table;
+    const ScrCmdFunc* cmd_table;
     u32 cmd_count;
     u32 data[4];
-    void* unk74;
+    UnkSavStruct80_Sub10* unk74;
     MSGDATA* msg_data;
-    u8* unk7C;
+    u8* mapScripts;
     UnkSavStruct80* unk80;
 };
 
-void InitScriptContext(SCRIPTCONTEXT* ctx, ScrCmdFunc* cmd_table, u32 cmd_count);
+void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_count);
 BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr);
 void SetupNativeScript(SCRIPTCONTEXT* ctx, ScrCmdFunc ptr);
 void StopScript(SCRIPTCONTEXT* ctx);
-void sub_0203FD68(SCRIPTCONTEXT* ctx, void* unk);
+void sub_0203FD68(SCRIPTCONTEXT* ctx, UnkSavStruct80_Sub10 *unk);
 BOOL RunScriptCommand(SCRIPTCONTEXT* ctx);
 BOOL ScriptPush(SCRIPTCONTEXT* ctx, const u8* ptr);
 const u8* ScriptPop(SCRIPTCONTEXT* ctx);

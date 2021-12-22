@@ -5,7 +5,7 @@ import re
 
 
 # Design spec
-# Read the names of all script commands from asm/fieldmap.s::gScriptCmdTable
+# Read the names of all script commands from asm/fieldmap_s.s::gScriptCmdTable
 # Look up each of them in the xmap
 # Load the C or ASM file
 # Track calls to GetScriptByte, GetScriptHalfword, and GetScriptWord
@@ -101,7 +101,7 @@ def parse_args_c(scrcmds, filename, syms):
 def main():
     scrcmds = []
     objects = collections.defaultdict(list)
-    with open('asm/fieldmap.s') as fp:
+    with open('asm/fieldmap_s.s') as fp:
         # seek to gScriptCommandTable
         for line in fp:
             if line.startswith('gScriptCmdTable:'):

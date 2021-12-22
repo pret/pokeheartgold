@@ -1,6 +1,6 @@
 #include "script.h"
 
-void InitScriptContext(SCRIPTCONTEXT* ctx, ScrCmdFunc* cmd_table, u32 cmd_count) {
+void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_count) {
     s32 i = 0;
 
     ctx->mode = SCRIPT_MODE_STOPPED;
@@ -38,7 +38,7 @@ void StopScript(SCRIPTCONTEXT* ctx) {
     ctx->script_ptr = NULL;
 }
 
-void sub_0203FD68(SCRIPTCONTEXT* ctx, void* unk) {
+void sub_0203FD68(SCRIPTCONTEXT* ctx, UnkSavStruct80_Sub10 *unk) {
     ctx->unk74 = unk;
 }
 
