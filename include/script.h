@@ -5,6 +5,7 @@
 #include "map_events_internal.h"
 #include "map_matrix.h"
 #include "msgdata.h"
+#include "window.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -64,14 +65,8 @@ typedef struct UnkSavStruct80_Sub10_SubC {
     u32 unk_B0;
     u32 unk_B4;
     u32 unk_B8;
-    u32 unk_BC;
-    u32 unk_C0;
-    u32 unk_C4;
-    u32 unk_C8;
-    u32 unk_CC;
-    u32 unk_D0;
-    u32 unk_D4;
-    u32 unk_D8;
+    WINDOW unk_BC;
+    WINDOW unk_CC;
     u32 unk_DC;
 } UnkSavStruct80_Sub10_SubC;
 
@@ -101,20 +96,20 @@ enum Unk80_10_C_Field {
     UNK80_10_C_B4                = 22,
     UNK80_10_C_B8                = 23,
     UNK80_10_C_0C                = 24,
-    UNK80_10_C_54                = 25,
-    UNK80_10_C_58                = 26,
-    UNK80_10_C_5C                = 27,
-    UNK80_10_C_60                = 28,
-    UNK80_10_C_64                = 29,
-    UNK80_10_C_68                = 30,
-    UNK80_10_C_6C                = 31,
-    UNK80_10_C_70                = 32,
-    UNK80_10_C_74                = 33,
-    UNK80_10_C_78                = 34,
-    UNK80_10_C_7C                = 35,
-    UNK80_10_C_80                = 36,
-    UNK80_10_C_84                = 37,
-    UNK80_10_C_88                = 38,
+    UNK80_10_C_54_0_00           = 25,
+    UNK80_10_C_54_0_04           = 26,
+    UNK80_10_C_54_0_08           = 27,
+    UNK80_10_C_54_0_0C           = 28,
+    UNK80_10_C_54_0_10           = 29,
+    UNK80_10_C_54_0_14           = 30,
+    UNK80_10_C_54_0_18           = 31,
+    UNK80_10_C_54_1_00           = 32,
+    UNK80_10_C_54_1_04           = 33,
+    UNK80_10_C_54_1_08           = 34,
+    UNK80_10_C_54_1_0C           = 35,
+    UNK80_10_C_54_1_10           = 36,
+    UNK80_10_C_54_1_14           = 37,
+    UNK80_10_C_54_1_18           = 38,
     UNK80_10_C_BC                = 39,
     UNK80_10_C_CC                = 40,
     UNK80_10_C_DC                = 41,

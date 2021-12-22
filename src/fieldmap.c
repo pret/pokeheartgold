@@ -134,7 +134,7 @@ SCRIPTCONTEXT *CreateScriptContext(UnkSavStruct80 *a0, u16 mapId) {
 }
 
 void SetUpScriptContextForMap(UnkSavStruct80 *a0, SCRIPTCONTEXT *ctx, u16 mapId, u32 unused_r3) {
-#pragma unused(r3)
+#pragma unused(unused_r3)
     u16 r6;
 
     ctx->unk80 = a0;
@@ -165,4 +165,121 @@ u16 LoadScriptsAndMessagesByMapId(UnkSavStruct80 *fsys, SCRIPTCONTEXT *ctx, u16 
 void LoadScriptsAndMessagesParameterized(UnkSavStruct80 *fsys, SCRIPTCONTEXT *ctx, int scriptBank, u32 msgBank) {
     ctx->mapScripts = AllocAndReadWholeNarcMemberByIdPair(NARC_fielddata_script_scr_seq, scriptBank, HEAP_ID_FIELDMAP);
     ctx->msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, HEAP_ID_FIELDMAP);
+}
+
+void LoadScriptsAndMessagesForCurrentMap(UnkSavStruct80 *fsys, SCRIPTCONTEXT *ctx) {
+    ctx->mapScripts = LoadScriptsForCurrentMap(fsys->unk20->unk0);
+    ctx->msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fsys->unk20->unk0), HEAP_ID_FIELDMAP);
+}
+
+void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_C_Field field) {
+    switch (field) {
+    case UNK80_10_C_10:
+        return &unk->unk_10;
+    case UNK80_10_C_14:
+        return &unk->unk_14;
+    case UNK80_10_C_24:
+        return &unk->unk_24;
+    case UNK80_10_C_05:
+        return &unk->unk_5;
+    case UNK80_10_C_06:
+        return &unk->unk_6;
+    case UNK80_10_C_07:
+        return &unk->unk_7;
+    case UNK80_10_C_08:
+        return &unk->unk_8;
+    case UNK80_10_C_09:
+        return &unk->unk_9;
+    case UNK80_10_C_0A:
+        return &unk->unk_A;
+    case UNK80_10_C_28:
+        return &unk->unk_28;
+    case UNK80_10_C_2C:
+        return &unk->unk_2C;
+    case UNK80_10_C_30:
+        return &unk->unk_30;
+    case UNK80_10_C_34:
+        return &unk->unk_34;
+    case UNK80_10_C_SCRCTX_0:
+    case UNK80_10_C_SCRCTX_1:
+    case UNK80_10_C_SCRCTX_2:
+        return &unk->unk_38[field - UNK80_10_C_SCRCTX_0];
+    case UNK80_10_C_MSGFMT:
+        return &unk->unk_44;
+    case UNK80_10_C_STRBUF1:
+        return &unk->unk_48;
+    case UNK80_10_C_STRBUF2:
+        return &unk->unk_4C;
+    case UNK80_10_C_50:
+        return &unk->unk_50;
+    case UNK80_10_C_AC:
+        return &unk->unk_AC;
+    case UNK80_10_C_B0:
+        return &unk->unk_B0;
+    case UNK80_10_C_B4:
+        return &unk->unk_B4;
+    case UNK80_10_C_B8:
+        return &unk->unk_B8;
+    case UNK80_10_C_0C:
+        return &unk->unk_C;
+    case UNK80_10_C_54_0_00:
+        return &unk->unk_54[0].unk0;
+    case UNK80_10_C_54_0_04:
+        return &unk->unk_54[0].unk4;
+    case UNK80_10_C_54_0_08:
+        return &unk->unk_54[0].unk8;
+    case UNK80_10_C_54_0_0C:
+        return &unk->unk_54[0].unkC;
+    case UNK80_10_C_54_0_10:
+        return &unk->unk_54[0].unk10;
+    case UNK80_10_C_54_0_14:
+        return &unk->unk_54[0].unk14;
+    case UNK80_10_C_54_0_18:
+        return &unk->unk_54[0].unk18;
+    case UNK80_10_C_54_1_00:
+        return &unk->unk_54[1].unk0;
+    case UNK80_10_C_54_1_04:
+        return &unk->unk_54[1].unk4;
+    case UNK80_10_C_54_1_08:
+        return &unk->unk_54[1].unk8;
+    case UNK80_10_C_54_1_0C:
+        return &unk->unk_54[1].unkC;
+    case UNK80_10_C_54_1_10:
+        return &unk->unk_54[1].unk10;
+    case UNK80_10_C_54_1_14:
+        return &unk->unk_54[1].unk14;
+    case UNK80_10_C_54_1_18:
+        return &unk->unk_54[1].unk18;
+    case UNK80_10_C_BC:
+        return &unk->unk_BC;
+    case UNK80_10_C_CC:
+        return &unk->unk_CC;
+    case UNK80_10_C_DC:
+        return &unk->unk_DC;
+    case UNK80_10_C_8C_00:
+    case UNK80_10_C_8C_01:
+    case UNK80_10_C_8C_02:
+    case UNK80_10_C_8C_03:
+    case UNK80_10_C_8C_04:
+    case UNK80_10_C_8C_05:
+    case UNK80_10_C_8C_06:
+    case UNK80_10_C_8C_07:
+    case UNK80_10_C_8C_08:
+    case UNK80_10_C_8C_09:
+    case UNK80_10_C_8C_10:
+    case UNK80_10_C_8C_11:
+    case UNK80_10_C_8C_12:
+    case UNK80_10_C_8C_13:
+        return &unk->unk_8C[field - UNK80_10_C_8C_00];
+    default:
+        GF_ASSERT(0);
+        return NULL;
+    }
+}
+
+void* FieldSysGetAttrAddr(UnkSavStruct80 *fsys, enum Unk80_10_C_Field field) {
+    UnkSavStruct80_Sub10_SubC *unk = sub_02050650(fsys->unk10);
+    GF_ASSERT(unk != NULL);
+    GF_ASSERT(unk->check == Unk80_10_C_MAGIC);
+    return FieldSysGetAttrAddrInternal(unk, field);
 }
