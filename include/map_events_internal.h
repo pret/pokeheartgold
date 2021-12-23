@@ -60,7 +60,7 @@ typedef struct MAP_EVENTS {
     WARP_EVENT *warp_events;
     COORD_EVENT *coord_events;
     u8 event_data[0x800];
-    u8 lvscrseq[0x100];
+    u8 script_header[0x100];
     ENC_DATA wildEncounters;
 } MAP_EVENTS;
 

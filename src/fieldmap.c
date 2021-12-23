@@ -58,7 +58,7 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
 
 #define HEAP_ID_FIELDMAP                  11
 
-void sub_0203FE74(UnkSavStruct80 *a0, u16 a1, UnkSavStruct80_Sub3C *a2) {
+void StartMapSceneScript(UnkSavStruct80 *a0, u16 a1, UnkSavStruct80_Sub3C *a2) {
     UnkSavStruct80_Sub10_SubC *r4 = sub_0204001C();
     sub_0204005C(a0, r4, a1, a2, NULL);
     sub_020504F0(a0, sub_0203FF44, r4);
@@ -569,48 +569,48 @@ HiddenItemResponse* AllocAndFetchNearbyHiddenItems(UnkSavStruct80 *fsys, HeapID 
 }
 
 void RunPokemonCenterScriptsInNewContext(UnkSavStruct80 *fsys) {
-    sub_02040734(fsys, 9600);
+    StartMapLoadScript(fsys, 9600);
 }
 
-void sub_02040734(UnkSavStruct80 *fsys, u16 mapno) {
+void StartMapLoadScript(UnkSavStruct80 *fsys, u16 mapno) {
     SCRIPTCONTEXT *ctx = CreateScriptContext(fsys, mapno);
     while (RunScriptCommand(ctx) == TRUE) {}
     DestroyScriptContext(ctx);
 }
 
-BOOL sub_02040750(UnkSavStruct80 *fsys, u8 a1) {
-    u8 *scripts;
+BOOL TryStartMapScriptByType(UnkSavStruct80 *fsys, u8 type) {
+    u8 *header;
     u16 r1;
     if (fsys->unkAC != 0) {
         return FALSE;
     }
-    scripts = MapEvents_GetLoadedLevelScripts(fsys);
-    if (scripts == NULL) {
+    header = MapEvents_GetScriptHeader(fsys);
+    if (header == NULL) {
         return FALSE;
     }
-    r1 = (a1 == 1) ? sub_0204080C(fsys, scripts, a1) : sub_020407E4(scripts, a1);
+    r1 = (type == 1) ? GetMapSceneScriptId(fsys, header, type) : GetMapLoadScriptId(header, type);
     if (r1 == 0xFFFF) {
         return FALSE;
     }
-    (a1 == 1) ? sub_0203FE74(fsys, r1, NULL) : sub_02040734(fsys, r1);
+    (type == 1) ? StartMapSceneScript(fsys, r1, NULL) : StartMapLoadScript(fsys, r1);
     return TRUE;
 }
 
 BOOL sub_020407AC(UnkSavStruct80 *fsys) {
-    u8 *scripts;
+    u8 *header;
     u16 r1;
     if (fsys->unkAC != 0) {
         return FALSE;
     }
-    scripts = MapEvents_GetLoadedLevelScripts(fsys);
-    if (scripts == NULL) {
+    header = MapEvents_GetScriptHeader(fsys);
+    if (header == NULL) {
         return FALSE;
     }
-    r1 = sub_0204080C(fsys, scripts, 1);
+    r1 = GetMapSceneScriptId(fsys, header, 1);
     return r1 != 0xFFFF;
 }
 
-u16 sub_020407E4(u8 *a0, u8 a1) {
+u16 GetMapLoadScriptId(u8 *a0, u8 a1) {
     while (1) {
         if (a0[0] == 0) {
             return 0xFFFF;
@@ -622,7 +622,7 @@ u16 sub_020407E4(u8 *a0, u8 a1) {
     }
 }
 
-u16 sub_0204080C(UnkSavStruct80 *a0, u8 *a1, u8 a2) {
+u16 GetMapSceneScriptId(UnkSavStruct80 *a0, u8 *a1, u8 a2) {
     u32 r1;
     while (1) {
         if (a1[0] == 0) {

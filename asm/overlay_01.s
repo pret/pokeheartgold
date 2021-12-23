@@ -179,7 +179,7 @@ _021E5A50:
 	bl sub_0205B4EC
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_02040750
+	bl TryStartMapScriptByType
 	ldr r1, _021E5BD4 ; =0x00001079
 	add r0, r5, r7
 	bl _u32_div_f
@@ -252,7 +252,7 @@ _021E5B2A:
 _021E5B32:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_02040750
+	bl TryStartMapScriptByType
 	mov r0, #4
 	bl ov01_021FB4C0
 	ldr r1, [r4, #4]
@@ -2241,7 +2241,7 @@ ov01_021E6AF4: ; 0x021E6AF4
 	bne _021E6B12
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_02040750
+	bl TryStartMapScriptByType
 	cmp r0, #1
 	bne _021E6B12
 	mov r0, #1
@@ -2402,13 +2402,13 @@ _021E6C50:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	add r2, r5, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	b _021E6C7C
 _021E6C72:
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 _021E6C7C:
 	mov r0, #0
 	add r4, #0xd0
@@ -2433,7 +2433,7 @@ _021E6C86:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #0
 	add r4, #0xd0
 	strh r0, [r4]
@@ -2453,7 +2453,7 @@ _021E6CBC:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #0
 	add r4, #0xd0
 	strh r0, [r4]
@@ -2470,7 +2470,7 @@ _021E6CE8:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #0
 	add r4, #0xd0
 	strh r0, [r4]
@@ -2530,7 +2530,7 @@ _021E6D6E:
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6D88:
@@ -2583,7 +2583,7 @@ ov01_021E6DC4: ; 0x021E6DC4
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E6DF6:
@@ -2614,7 +2614,7 @@ ov01_021E6E00: ; 0x021E6E00
 	ldr r1, _021E6ED0 ; =0x0000238D
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E6E32:
@@ -2663,7 +2663,7 @@ _021E6E88:
 	add r0, r5, #0
 	lsr r1, r1, #0x10
 	add r2, r4, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E6EA2:
@@ -2735,7 +2735,7 @@ ov01_021E6EFC: ; 0x021E6EFC
 	add r0, r5, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E6F2A:
@@ -2770,7 +2770,7 @@ _021E6F5A:
 	add r0, r5, #0
 	lsr r1, r1, #0x10
 	add r2, r4, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E6F78:
@@ -2827,7 +2827,7 @@ ov01_021E6FD4: ; 0x021E6FD4
 	bne _021E6FF6
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_02040750
+	bl TryStartMapScriptByType
 	cmp r0, #1
 	bne _021E6FF6
 	add sp, #4
@@ -2865,13 +2865,13 @@ _021E7022:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	add r2, r5, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	b _021E704E
 _021E7044:
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 _021E704E:
 	add sp, #4
 	mov r0, #1
@@ -2894,7 +2894,7 @@ _021E7054:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	add sp, #4
 	mov r0, #1
 	pop {r3, r4, r5, r6, pc}
@@ -2912,7 +2912,7 @@ _021E7086:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	add sp, #4
 	mov r0, #1
 	pop {r3, r4, r5, r6, pc}
@@ -3729,7 +3729,7 @@ ov01_021E774C: ; 0x021E774C
 	beq _021E777A
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E777A:
@@ -3895,7 +3895,7 @@ ov01_021E788C: ; 0x021E788C
 	ldr r1, _021E78D4 ; =0x000007E5
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E78CE:
@@ -4024,7 +4024,7 @@ _021E79AC:
 	ldr r1, _021E79C8 ; =0x000007D3
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E79C2:
@@ -4055,7 +4055,7 @@ _021E79E2:
 	ldr r1, _021E7A04 ; =0x00002263
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r4, pc}
 _021E7A00:
@@ -4125,7 +4125,7 @@ _021E7A7C:
 	ldr r1, _021E7A94 ; =0x000028A0
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E7A90:

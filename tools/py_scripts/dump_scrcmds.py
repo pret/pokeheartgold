@@ -1,6 +1,4 @@
-import collections
 import json
-import operator
 import os.path
 import warnings
 import enum

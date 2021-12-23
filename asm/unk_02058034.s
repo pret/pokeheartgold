@@ -755,7 +755,7 @@ _020585CA:
 	ldr r0, [r0]
 	mov r2, #0
 	ldr r0, [r0, #0x14]
-	bl sub_0203FE74
+	bl StartMapSceneScript
 _020585E0:
 	ldr r0, [sp]
 	add r0, r0, #1

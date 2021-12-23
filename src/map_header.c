@@ -614,9 +614,9 @@ u16 MapHeader_GetScriptsBank(u32 map_no) {
     return sMapHeaders[map_no].scripts_bank;
 }
 
-u16 MapHeader_GetLevelScriptsBank(u32 map_no) {
+u16 MapHeader_GetScriptHeaderBank(u32 map_no) {
     map_no = MapNumberBoundsCheck(map_no);
-    return sMapHeaders[map_no].level_scripts_bank;
+    return sMapHeaders[map_no].script_header_bank;
 }
 
 u16 MapHeader_GetDayMusicId(u32 map_no) {

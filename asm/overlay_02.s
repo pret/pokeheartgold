@@ -12660,7 +12660,7 @@ ov02_0224BAE4: ; 0x0224BAE4
 	ldr r1, _0224BB14 ; =0x000007E6
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r4, pc}
 _0224BB0E:
@@ -25822,7 +25822,7 @@ _02251F52:
 	ldr r0, [r5, #0x3c]
 	ldr r1, _02251FD8 ; =0x000007FF
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _02251F90:

@@ -5,7 +5,7 @@
 void MapEvents_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
 void MapEvents_ComputeRamHeader(MAP_EVENTS *events);
 void WildEncounters_ReadFromNarc(ENC_DATA *encounters, u32 mapno);
-void LevelScripts_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
+void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
 
 extern void InitMapObjectsFromEventTemplates(UnkSavStruct80_Sub3C*, int, u32, OBJECT_EVENT*);
 
@@ -24,7 +24,7 @@ void Field_InitMapEvents(UnkSavStruct80 *work, u32 mapno) {
     MapEvents_ReadFromNarc(work->map_events, mapno);
     MapEvents_ComputeRamHeader(work->map_events);
     WildEncounters_ReadFromNarc(&work->map_events->wildEncounters, mapno);
-    LevelScripts_ReadFromNarc(work->map_events, mapno);
+    MapScriptHeader_ReadFromNarc(work->map_events, mapno);
 }
 
 void MapEvents_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
@@ -200,14 +200,14 @@ ENC_DATA *MapEvents_GetLoadedEncTable(UnkSavStruct80 *fsys) {
     return &fsys->map_events->wildEncounters;
 }
 
-void LevelScripts_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
-    int bank = MapHeader_GetLevelScriptsBank(mapno);
-    MI_CpuClearFast(events->lvscrseq, sizeof(events->lvscrseq));
-    GF_ASSERT(GetNarcMemberSizeByIdPair(NARC_fielddata_script_scr_seq, bank) < sizeof(events->lvscrseq));
-    ReadWholeNarcMemberByIdPair(events->lvscrseq, NARC_fielddata_script_scr_seq, bank);
+void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
+    int bank = MapHeader_GetScriptHeaderBank(mapno);
+    MI_CpuClearFast(events->script_header, sizeof(events->script_header));
+    GF_ASSERT(GetNarcMemberSizeByIdPair(NARC_fielddata_script_scr_seq, bank) < sizeof(events->script_header));
+    ReadWholeNarcMemberByIdPair(events->script_header, NARC_fielddata_script_scr_seq, bank);
 }
 
-u8 *MapEvents_GetLoadedLevelScripts(UnkSavStruct80 *fsys) {
+u8 *MapEvents_GetScriptHeader(UnkSavStruct80 *fsys) {
     GF_ASSERT(fsys->map_events != NULL);
-    return fsys->map_events->lvscrseq;
+    return fsys->map_events->script_header;
 }

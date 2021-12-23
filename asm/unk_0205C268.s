@@ -18047,7 +18047,7 @@ _020640EC:
 	ldr r1, _020641E8 ; =0x00000E9B
 	ldr r2, [sp, #0x54]
 	add r0, r5, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	cmp r4, #0
 	beq _02064114
 	add r0, sp, #0x28
@@ -18127,7 +18127,7 @@ _02064180:
 	ldr r1, _020641E8 ; =0x00000E9B
 	ldr r2, [sp, #0x54]
 	add r0, r5, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	ldr r0, [sp, #0x48]
 	str r0, [sp]
 	ldr r0, [sp, #0x4c]

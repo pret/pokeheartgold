@@ -275,7 +275,7 @@ _0205311E:
 _02053134:
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_02040750
+	bl TryStartMapScriptByType
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x7e

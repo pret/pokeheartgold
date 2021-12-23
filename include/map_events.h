@@ -8,6 +8,6 @@
 
 u32 Field_GetNumBgEvents(const UnkSavStruct80 *fsys);
 BG_EVENT *Field_GetBgEvents(UnkSavStruct80 *fsys);
-u8 *MapEvents_GetLoadedLevelScripts(UnkSavStruct80 *fsys);
+u8 *MapEvents_GetScriptHeader(UnkSavStruct80 *fsys);
 
 #endif //POKEHEARTGOLD_MAP_EVENTS_H

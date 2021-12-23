@@ -11,7 +11,7 @@ typedef struct HiddenItemResponse {
     u8 dummy;
 } HiddenItemResponse;
 
-void sub_0203FE74(UnkSavStruct80 *a0, u16 a1, UnkSavStruct80_Sub3C *a2);
+void StartMapSceneScript(UnkSavStruct80 *a0, u16 a1, UnkSavStruct80_Sub3C *a2);
 void sub_0203FEA4(UnkSavStruct80 *a0, UnkSavStruct80_Sub3C *a1, int a2, int a3, int a4, int a5, int a6, int a7);
 void sub_0203FED4(UnkSavStruct80_Sub10 *a0, u16 a1, UnkSavStruct80_Sub3C *a2, void *a3);
 void sub_0203FF0C(UnkSavStruct80_Sub10 *a0, u16 a1, UnkSavStruct80_Sub3C *a2);
@@ -52,11 +52,11 @@ u8 sub_02040578(u16 a0);
 BOOL sub_020405AC(UnkSavStruct80_Sub10_SubC *a0, u16 a1);
 HiddenItemResponse* AllocAndFetchNearbyHiddenItems(UnkSavStruct80 *fsys, HeapID heapId);
 void RunPokemonCenterScriptsInNewContext(UnkSavStruct80 *fsys);
-void sub_02040734(UnkSavStruct80 *fsys, u16 a1);
-BOOL sub_02040750(UnkSavStruct80 *fsys, u8 a1);
+void StartMapLoadScript(UnkSavStruct80 *fsys, u16 a1);
+BOOL TryStartMapScriptByType(UnkSavStruct80 *fsys, u8 type);
 BOOL sub_020407AC(UnkSavStruct80 *fsys);
-u16 sub_020407E4(u8 *a0, u8 a1);
-u16 sub_0204080C(UnkSavStruct80 *a0, u8 *a1, u8 a2);
+u16 GetMapLoadScriptId(u8 *a0, u8 a1);
+u16 GetMapSceneScriptId(UnkSavStruct80 *a0, u8 *a1, u8 a2);
 
 
 

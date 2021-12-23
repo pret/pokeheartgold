@@ -863,7 +863,7 @@
 .public Mailbox_GetFirstEmptySlotIdx
 .public Main_SetVBlankIntrCB
 .public MapEvents_GetLoadedEncTable
-.public MapEvents_GetLoadedLevelScripts
+.public MapEvents_GetScriptHeader
 .public MapHeader_GetAreaDataBank
 .public MapHeader_GetAreaIcon
 .public MapHeader_GetBattleBg
@@ -875,7 +875,7 @@
 .public MapHeader_GetField14_1E
 .public MapHeader_GetField14_1F
 .public MapHeader_GetFollowMode
-.public MapHeader_GetLevelScriptsBank
+.public MapHeader_GetScriptHeaderBank
 .public MapHeader_GetMapEvolutionMethod
 .public MapHeader_GetMapSec
 .public MapHeader_GetMatrixId
@@ -28292,7 +28292,7 @@
 .public sub_0203FCB8
 .public sub_0203FD08
 .public sub_0203FD68
-.public sub_0203FE74
+.public StartMapSceneScript
 .public sub_0203FEA4
 .public sub_0203FED4
 .public sub_0203FF0C
@@ -28303,7 +28303,7 @@
 .public sub_02040500
 .public HiddenItemScriptNoToFlagId
 .public AllocAndFetchNearbyHiddenItems
-.public sub_02040750
+.public TryStartMapScriptByType
 .public sub_020407AC
 .public sub_02042974
 .public sub_020429F8
