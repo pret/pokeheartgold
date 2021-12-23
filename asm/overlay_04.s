@@ -2310,10 +2310,10 @@ _022550A8:
 	pop {r4, r5, r6, pc}
 _022550B4:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	lsl r1, r6, #0x10
 	lsl r2, r2, #0x10

@@ -31,10 +31,10 @@ sub_0203DB78: ; 0x0203DB78
 	bl sub_0205C654
 	add r7, r0, #0
 	ldr r0, [r6, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	str r0, [r4]
 	ldr r0, [r6, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	str r0, [r5]
 	cmp r7, #3
 	bhi _0203DBCE
@@ -258,7 +258,7 @@ sub_0203DD10: ; 0x0203DD10
 	pop {r4, pc}
 _0203DD1E:
 	ldrh r0, [r1]
-	bl sub_0204055C
+	bl HiddenItemScriptNoToFlagId
 	add r1, r0, #0
 	add r0, r4, #0
 	bl FlagGet
@@ -401,11 +401,11 @@ sub_0203DE04: ; 0x0203DE04
 	ldr r0, [r0, #0x40]
 	str r1, [sp, #4]
 	str r2, [sp, #8]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r4, r0, #0
 	ldr r0, [sp, #8]
 	mov r7, #0

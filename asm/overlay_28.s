@@ -1003,7 +1003,7 @@ ov28_0225DD28: ; 0x0225DD28
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #8
-	bl sub_02040614
+	bl AllocAndFetchNearbyHiddenItems
 	mov r1, #0x81
 	lsl r1, r1, #2
 	str r0, [r4, r1]

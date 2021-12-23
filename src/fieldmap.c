@@ -4,6 +4,7 @@
 #include "map_header.h"
 #include "event_data.h"
 #include "script_cmd_table.h"
+#include "map_events.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
 
@@ -13,7 +14,7 @@ struct ScriptBankMapping {
     u16 msgBank;
 };
 
-struct UnkStruct_020FA558 {
+struct HiddenItemData {
     u16 unk0;
     u8 unk2;
     u8 unk3;
@@ -22,7 +23,7 @@ struct UnkStruct_020FA558 {
 };
 
 extern const struct ScriptBankMapping sScriptBankMapping[30];
-extern const struct UnkStruct_020FA558 _020FA558[231];
+extern const struct HiddenItemData _020FA558[231];
 
 #define HEAP_ID_FIELDMAP                  11
 
@@ -416,18 +417,18 @@ void TrainerFlagClear(SAVEDATA *saveData, u32 trainer) {
     ClearFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
-u16 sub_0204055C(u16 a0) {
+u16 HiddenItemScriptNoToFlagId(u16 a0) {
     return a0 - 8000 + HIDDEN_ITEMS_FLAG_BASE;
 }
 
-u16 sub_0204056C(u16 a0) {
+u16 HiddenItemScriptNoToHiddenItemIdx(u16 a0) {
     return a0 - 8000;
 }
 
 u8 sub_02040578(u16 a0) {
-    const struct UnkStruct_020FA558 *r4 = _020FA558;
+    const struct HiddenItemData *r4 = _020FA558;
     int i;
-    u16 r0 = sub_0204056C(a0);
+    u16 r0 = HiddenItemScriptNoToHiddenItemIdx(a0);
 
     for (i = 0; i < NELEMS(_020FA558); i++) {
         if (r0 == r4[i].unk6) {
@@ -445,7 +446,7 @@ u8 sub_02040578(u16 a0) {
 BOOL sub_020405AC(UnkSavStruct80_Sub10_SubC *a0, u16 a1) {
     int i;
     u16 r0;
-    const struct UnkStruct_020FA558 *r3;
+    const struct HiddenItemData *r3;
     u16 *r7;
     u16 *r6;
     u16 *r4;
@@ -454,7 +455,7 @@ BOOL sub_020405AC(UnkSavStruct80_Sub10_SubC *a0, u16 a1) {
     r6 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_8C_01);
     r4 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_8C_02);
     r3 = _020FA558;
-    r0 = sub_0204056C(a1);
+    r0 = HiddenItemScriptNoToHiddenItemIdx(a1);
 
     for (i = 0; i < NELEMS(_020FA558); i++) {
         if (r0 == r3[i].unk6) {
@@ -468,6 +469,70 @@ BOOL sub_020405AC(UnkSavStruct80_Sub10_SubC *a0, u16 a1) {
 
     *r7 = r3[i].unk0;
     *r6 = r3[i].unk2;
-    *r4 = sub_0204055C(a1);
+    *r4 = HiddenItemScriptNoToFlagId(a1);
     return TRUE;
+}
+
+HiddenItemResponse* AllocAndFetchNearbyHiddenItems(UnkSavStruct80 *fsys, HeapID heapId) {
+    HiddenItemResponse *ret;
+    const BG_EVENT *bgEvents;
+    int i;
+    int num_bgs;
+    int j;
+    int x;
+    int y;
+    int left;
+    int right;
+    int top;
+    int bottom;
+
+    j = 0;
+    num_bgs = Field_GetNumBgEvents(fsys);
+    num_bgs++;
+    ret = AllocFromHeap(heapId, num_bgs * sizeof(HiddenItemResponse));
+    if (num_bgs == 1) {
+        ret[0].unk4 = 0xFF;
+        ret[0].x = -1;
+        ret[0].y = -1;
+        return ret;
+    }
+    bgEvents = Field_GetBgEvents(fsys);
+    if (bgEvents == NULL) {
+        ret[0].unk4 = 0xFF;
+        ret[0].x = -1;
+        ret[0].y = -1;
+        return ret;
+    }
+    x = GetPlayerXCoord(fsys->unk40);
+    y = GetPlayerYCoord(fsys->unk40);
+    left = x - 17;
+    right = x + 17;
+    top = y - 17;
+    bottom = y + 17;
+    if (left < 0) {
+        left = 0;
+    }
+    if (top < 0) {
+        top = 0;
+    }
+    // UB: Out-of-array access
+    for (i = 0; i < num_bgs; i++) {
+        if (bgEvents[i].type == 2
+        && !FlagGet(fsys, HiddenItemScriptNoToFlagId(bgEvents[i].scr))) {
+            if (bgEvents[i].x >= left
+               && bgEvents[i].x <= right
+               && bgEvents[i].y >= top
+               && bgEvents[i].y <= bottom
+            ) {
+                ret[j].unk4 = sub_02040578(bgEvents[i].scr);
+                ret[j].x = bgEvents[i].x - x;
+                ret[j].y = bgEvents[i].y - y;
+                j++;
+            }
+        }
+    }
+    ret[j].unk4 = 0xFF;
+    ret[j].x = -1;
+    ret[j].y = -1;
+    return ret;
 }

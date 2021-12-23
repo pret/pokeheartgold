@@ -6,10 +6,10 @@
 typedef struct BG_EVENT {
     u16 scr;
     u16 type;
-    s32 x;
-    s32 y;
-    s32 z;
-    s32 dir;
+    int x;
+    int y;
+    int z;
+    u16 dir;
 } BG_EVENT;
 
 typedef struct OBJECT_EVENT {

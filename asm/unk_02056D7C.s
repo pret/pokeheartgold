@@ -167,12 +167,12 @@ sub_02056E60: ; 0x02056E60
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r0, _02056E9C ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 _02056E9A:
 	pop {r3, pc}
 	.balign 4, 0
@@ -253,7 +253,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -266,7 +266,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -292,7 +292,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -304,7 +304,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -377,13 +377,13 @@ sub_0205701C: ; 0x0205701C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, _02057048 ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1521,12 +1521,12 @@ _02057868:
 	bne _0205787A
 	b _020579FC
 _0205787A:
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldrh r1, [r6]
 	sub r0, r0, r1
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x18]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	ldrh r1, [r6, #2]
 	sub r7, r0, r1
 	ldr r0, [sp, #0x18]

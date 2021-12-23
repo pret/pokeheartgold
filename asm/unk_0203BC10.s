@@ -1762,10 +1762,10 @@ sub_0203C920: ; 0x0203C920
 	add r0, r4, r0
 	str r0, [r5, #0xc]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r7, r0, #0
 	asr r1, r6, #4
 	asr r2, r7, #4

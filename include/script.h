@@ -6,6 +6,7 @@
 #include "map_matrix.h"
 #include "msgdata.h"
 #include "window.h"
+#include "field_player_avatar.h"
 #include "constants/vars.h"
 
 #define SCRIPT_MODE_STOPPED  0
@@ -157,7 +158,7 @@ struct UnkSavStruct80 {
     MAPMATRIX* map_matrix;
     u8 unk34[0x8];
     UnkSavStruct80_Sub3C* unk3C;
-    void *unk40;
+    FIELD_PLAYER_AVATAR *unk40;
     u8 unk44[0xE4];
 }; // size: 0x128
 

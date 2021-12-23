@@ -597,10 +597,10 @@ _0205606C:
 	bl ov01_021E90C0
 	str r0, [r4, #0x18]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r1, r0, #0
 	ldr r2, [r4, #0x18]
 	add r0, r6, #0
@@ -658,10 +658,10 @@ _020560E6:
 	bl ov01_021E90C0
 	str r0, [r4, #0x18]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r1, r0, #0
 	ldr r2, [r4, #0x18]
 	add r0, r6, #0
@@ -1211,10 +1211,10 @@ _0205655C:
 	bl sub_0205C6DC
 	add r7, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	ldr r1, [sp]
 	add r0, r4, #0
@@ -1241,10 +1241,10 @@ _020565A6:
 	bl ov01_021E90C0
 	str r0, [r5, #0x18]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r1, r0, #0
 	ldr r2, [r5, #0x18]
 	add r0, r6, #0
@@ -1298,10 +1298,10 @@ _0205661A:
 	bl sub_0205C6DC
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	ldr r1, [sp]
 	add r0, r5, #0

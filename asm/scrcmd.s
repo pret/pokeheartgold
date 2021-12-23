@@ -3482,10 +3482,10 @@ ScrCmd_105: ; 0x020422B4
 	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	strh r0, [r6]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}

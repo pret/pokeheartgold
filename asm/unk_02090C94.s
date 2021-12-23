@@ -4249,10 +4249,10 @@ sub_02092BE8: ; 0x02092BE8
 	cmp r0, #0
 	beq _02092C60
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	str r0, [r4, #8]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	str r0, [r4, #0xc]
 	ldr r1, [r4, #8]
 	asr r0, r1, #4

@@ -9608,13 +9608,13 @@ ScrCmd_720: ; 0x02258A18
 	bl sub_0205C654
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_02060F0C
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	bl sub_02060F18

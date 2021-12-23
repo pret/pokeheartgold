@@ -2193,10 +2193,10 @@ sub_0206A798: ; 0x0206A798
 	strb r0, [r4, #0x15]
 	strb r0, [r4, #0x17]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	strh r0, [r4, #0x30]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	strh r0, [r4, #0x32]
 	ldr r0, [r5, #0x40]
 	bl sub_0205C654
@@ -2278,12 +2278,12 @@ sub_0206A860: ; 0x0206A860
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r1, r4, #0
 	add r1, #0x94
 	strh r0, [r1]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r1, r4, #0
 	add r1, #0x96
 	strh r0, [r1]

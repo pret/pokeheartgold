@@ -1406,10 +1406,10 @@ sub_0204A6A8: ; 0x0204A6A8
 	bl sub_0203B968
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r1, [r5, #0x20]
 	ldr r1, [r1]
 	str r1, [r4]

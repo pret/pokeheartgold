@@ -4,12 +4,12 @@
 #include "script.h"
 #include "trainer_data.h"
 
-typedef struct HiddenItem {
-    u16 unk0;
-    u16 unk2;
+typedef struct HiddenItemResponse {
+    s16 x;
+    s16 y;
     u8 unk4;
     u8 dummy;
-} HiddenItem;
+} HiddenItemResponse;
 
 void sub_0203FE74(UnkSavStruct80 *a0, u16 a1, UnkSavStruct80_Sub3C *a2);
 void sub_0203FEA4(UnkSavStruct80 *a0, UnkSavStruct80_Sub3C *a1, int a2, int a3, int a4, int a5, int a6, int a7);
@@ -46,11 +46,11 @@ BOOL sub_02040500(u32 trainer);
 BOOL TrainerFlagCheck(SAVEDATA *a0, u32 trno);
 void TrainerFlagSet(SAVEDATA *a0, u32 trno);
 void TrainerFlagClear(SAVEDATA *a0, u32 trno);
-u16 sub_0204055C(u16 a0);
-u16 sub_0204056C(u16 a0);
+u16 HiddenItemScriptNoToFlagId(u16 a0);
+u16 HiddenItemScriptNoToHiddenItemIdx(u16 a0);
 u8 sub_02040578(u16 a0);
 BOOL sub_020405AC(UnkSavStruct80_Sub10_SubC *a0, u16 a1);
-BOOL sub_02040614(UnkSavStruct80 *fsys, HeapID heapId);
+HiddenItemResponse* AllocAndFetchNearbyHiddenItems(UnkSavStruct80 *fsys, HeapID heapId);
 void RunPokemonCenterScriptsInNewContext(UnkSavStruct80 *fsys);
 void sub_02040734(UnkSavStruct80 *fsys, u16 a1);
 BOOL sub_02040750(UnkSavStruct80 *fsys, u8 a1);

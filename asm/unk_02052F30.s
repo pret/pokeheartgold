@@ -531,10 +531,10 @@ sub_02053350: ; 0x02053350
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r1, [r4, #0x20]
 	ldr r1, [r1]
 	str r1, [r5]

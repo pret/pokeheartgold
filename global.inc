@@ -28301,8 +28301,8 @@
 .public sub_020404C8
 .public sub_020404EC
 .public sub_02040500
-.public sub_0204055C
-.public sub_02040614
+.public HiddenItemScriptNoToFlagId
+.public AllocAndFetchNearbyHiddenItems
 .public sub_02040750
 .public sub_020407AC
 .public sub_02042974
@@ -28717,8 +28717,8 @@
 .public sub_0205C600
 .public sub_0205C654
 .public sub_0205C660
-.public sub_0205C67C
-.public sub_0205C688
+.public GetPlayerXCoord
+.public GetPlayerYCoord
 .public sub_0205C6AC
 .public sub_0205C6BC
 .public sub_0205C6CC

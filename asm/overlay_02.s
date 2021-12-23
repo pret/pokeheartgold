@@ -2208,10 +2208,10 @@ ov02_02246C8C: ; 0x02246C8C
 	pop {r3, r4, r5, r6, r7, pc}
 _02246CA0:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2795,10 +2795,10 @@ ov02_02247170: ; 0x02247170
 	bl SavArray_Flags_get
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15427,10 +15427,10 @@ ov02_0224D044: ; 0x0224D044
 	add r1, sp, #0
 	bl sub_0205C6AC
 	add r0, r6, #0
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0205C654
@@ -18059,10 +18059,10 @@ ov02_0224E340: ; 0x0224E340
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov02_0224E31C
@@ -18120,10 +18120,10 @@ _0224E3BE:
 	bl sub_0205C654
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	str r0, [sp, #8]
 	add r0, r7, #0
 	bl sub_02060F0C
@@ -18310,12 +18310,12 @@ _0224E52A:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	lsl r0, r0, #0x10
 	asr r7, r0, #0x10
 	ldr r0, [r5, #0x40]
@@ -18490,11 +18490,11 @@ ov02_0224E698: ; 0x0224E698
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	lsl r0, r0, #0x10
 	asr r6, r0, #0x10
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	ldr r0, [r5, #0x40]
@@ -18583,13 +18583,13 @@ ov02_0224E754: ; 0x0224E754
 	bl sub_0205C654
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r5, r0, #0
 	add r0, r6, #0
 	bl sub_02060F0C
 	add r7, r5, r0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r5, r0, #0
 	add r0, r6, #0
 	bl sub_02060F18
@@ -20316,10 +20316,10 @@ ov02_0224F4BC: ; 0x0224F4BC
 	strb r0, [r5, #0xf]
 	strb r0, [r5, #0x10]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x3c]
 	bl sub_0205F168
@@ -20425,7 +20425,7 @@ _0224F5A4:
 	cmp r0, #2
 	bne _0224F5BE
 	ldrh r0, [r5]
-	bl sub_0204055C
+	bl HiddenItemScriptNoToFlagId
 	add r1, r0, #0
 	ldr r0, [sp]
 	bl FlagGet
