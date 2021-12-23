@@ -13,7 +13,16 @@ struct ScriptBankMapping {
     u16 msgBank;
 };
 
+struct UnkStruct_020FA558 {
+    u16 unk0;
+    u8 unk2;
+    u8 unk3;
+    u16 unk4;
+    u16 unk6;
+};
+
 extern const struct ScriptBankMapping sScriptBankMapping[30];
+extern const struct UnkStruct_020FA558 _020FA558[231];
 
 #define HEAP_ID_FIELDMAP                  11
 
@@ -374,4 +383,91 @@ void sub_02040490(UnkSavStruct80 *fsys, u16 a1, u16 a2, u16 a3, u16 a4) {
     *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_01) = a2;
     *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_02) = a3;
     *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_03) = a4;
+}
+
+u16 sub_020404C8(u16 a0) {
+    if (a0 < 5000) {
+        return a0 - 3000 + 1;
+    } else {
+        return a0 - 5000 + 1;
+    }
+}
+
+BOOL sub_020404EC(u16 a0) {
+    return a0 >= 5000;
+}
+
+BOOL sub_02040500(u32 trainer) {
+    return TrainerData_GetAttr(trainer, TRATTR_DOUBLEBTL) != 0;
+}
+
+BOOL TrainerFlagCheck(SAVEDATA *saveData, u32 trainer) {
+    SCRIPT_STATE *scriptState = SavArray_Flags_get(saveData);
+    return CheckFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
+}
+
+void TrainerFlagSet(SAVEDATA *saveData, u32 trainer) {
+    SCRIPT_STATE *scriptState = SavArray_Flags_get(saveData);
+    SetFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
+}
+
+void TrainerFlagClear(SAVEDATA *saveData, u32 trainer) {
+    SCRIPT_STATE *scriptState = SavArray_Flags_get(saveData);
+    ClearFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
+}
+
+u16 sub_0204055C(u16 a0) {
+    return a0 - 8000 + HIDDEN_ITEMS_FLAG_BASE;
+}
+
+u16 sub_0204056C(u16 a0) {
+    return a0 - 8000;
+}
+
+u8 sub_02040578(u16 a0) {
+    const struct UnkStruct_020FA558 *r4 = _020FA558;
+    int i;
+    u16 r0 = sub_0204056C(a0);
+
+    for (i = 0; i < NELEMS(_020FA558); i++) {
+        if (r0 == r4[i].unk6) {
+            break;
+        }
+    }
+    if (i >= NELEMS(_020FA558)) {
+        GF_ASSERT(0);
+        return 0;
+    }
+
+    return r4[i].unk3;
+}
+
+BOOL sub_020405AC(UnkSavStruct80_Sub10_SubC *a0, u16 a1) {
+    int i;
+    u16 r0;
+    const struct UnkStruct_020FA558 *r3;
+    u16 *r7;
+    u16 *r6;
+    u16 *r4;
+
+    r7 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_8C_00);
+    r6 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_8C_01);
+    r4 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_8C_02);
+    r3 = _020FA558;
+    r0 = sub_0204056C(a1);
+
+    for (i = 0; i < NELEMS(_020FA558); i++) {
+        if (r0 == r3[i].unk6) {
+            break;
+        }
+    }
+    if (i >= NELEMS(_020FA558)) {
+        GF_ASSERT(0);
+        return FALSE;
+    }
+
+    *r7 = r3[i].unk0;
+    *r6 = r3[i].unk2;
+    *r4 = sub_0204055C(a1);
+    return TRUE;
 }

@@ -7,6 +7,9 @@
 
 #define FLAG_RED_GYARADOS_MEET      202
 
+#define HIDDEN_ITEMS_FLAG_BASE      800
+#define NUM_HIDDEN_ITEMS            231
+
 #define TRAINER_FLAG_BASE          1360
 
 #define DAILY_FLAG_BASE            2720

@@ -111,5 +111,6 @@ typedef struct BattleSetupStruct {
 
 void TrainerData_ReadTrData(u32 trno, TRAINER *dest);
 TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass);
+int TrainerData_GetAttr(u32 tr_idx, TrainerAttr attr_no);
 
 #endif //POKEHEARTGOLD_TRAINER_DATA_H
