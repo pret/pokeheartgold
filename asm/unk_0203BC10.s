@@ -30,12 +30,6 @@ _020FA0F4:
 	.word 14, sub_0203D500
 	.word 14, sub_0203D500
 	.word 14, sub_0203D2CC
-	.public _020FA15C
-_020FA15C:
-	.word sub_0203DEA4, sub_0203DEBC, sub_0203DED4, 0xFFFFFFFF
-	.public _020FA16C
-_020FA16C:
-	.word sub_0203DE74, sub_0203DEBC, sub_0203DED4, 0xFFFFFFFF
 
 	.text
 
