@@ -159,7 +159,9 @@ struct UnkSavStruct80 {
     u8 unk34[0x8];
     UnkSavStruct80_Sub3C* unk3C;
     FIELD_PLAYER_AVATAR *unk40;
-    u8 unk44[0xE4];
+    u8 unk44[0x68];
+    u32 unkAC;
+    u8 unkB0[0x58];
 }; // size: 0x128
 
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;

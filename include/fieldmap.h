@@ -56,7 +56,7 @@ void sub_02040734(UnkSavStruct80 *fsys, u16 a1);
 BOOL sub_02040750(UnkSavStruct80 *fsys, u8 a1);
 BOOL sub_020407AC(UnkSavStruct80 *fsys);
 u16 sub_020407E4(u8 *a0, u8 a1);
-u16 sub_0204080C(UnkSavStruct80 *a0, u8 *a1);
+u16 sub_0204080C(UnkSavStruct80 *a0, u8 *a1, u8 a2);
 
 
 

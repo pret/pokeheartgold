@@ -154,7 +154,6 @@ Static main
 	Object unk_0203E348.o
 	Object script.o
 	Object fieldmap.o
-	Object fieldmap_s.o
 	Object scrcmd.o
 	Object scrcmd_2.o
 	Object scrcmd_3.o

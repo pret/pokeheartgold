@@ -1,9 +1,8 @@
-//#define _IN_FIELDMAP_C
+#define _IN_FIELDMAP_C
 
 #include "fieldmap.h"
 #include "map_header.h"
 #include "event_data.h"
-#include "script_cmd_table.h"
 #include "map_events.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
@@ -22,8 +21,40 @@ struct HiddenItemData {
     u16 unk6;
 };
 
-extern const struct ScriptBankMapping sScriptBankMapping[30];
-extern const struct HiddenItemData _020FA558[231];
+#include "data/fieldmap.h"
+
+const struct ScriptBankMapping sScriptBankMapping[30] = {
+    {10490, NARC_scr_seq_scr_seq_00000263_bin, NARC_msg_msg_00000433_bin},
+    {10450, NARC_scr_seq_scr_seq_00000264_bin,  NARC_msg_msg_00000019_bin},
+    {10440, NARC_scr_seq_scr_seq_00000002_bin, NARC_msg_msg_00000748_bin},
+    {10400, NARC_scr_seq_scr_seq_00000151_bin, NARC_msg_msg_00000246_bin},
+    {10350, NARC_scr_seq_scr_seq_00000952_bin, NARC_msg_msg_00000726_bin},
+    {10300, NARC_scr_seq_scr_seq_00000734_bin, NARC_msg_msg_00000444_bin},
+    {10200, NARC_scr_seq_scr_seq_00000144_bin, NARC_msg_msg_00000209_bin},
+    {10150, NARC_scr_seq_scr_seq_00000955_bin, NARC_msg_msg_00000732_bin},
+    {10100, NARC_scr_seq_scr_seq_00000954_bin, NARC_msg_msg_00000733_bin},
+    {10000, NARC_scr_seq_scr_seq_00000146_bin, NARC_msg_msg_00000211_bin},
+    { 9950, NARC_scr_seq_scr_seq_00000148_bin, NARC_msg_msg_00000666_bin},
+    { 9900, NARC_scr_seq_scr_seq_00000136_bin,  NARC_msg_msg_00000040_bin},
+    { 9850, NARC_scr_seq_scr_seq_00000167_bin, NARC_msg_msg_00000312_bin},
+    { 9800, NARC_scr_seq_scr_seq_00000166_bin,  NARC_msg_msg_00000043_bin},
+    { 9700, NARC_scr_seq_scr_seq_00000163_bin, NARC_msg_msg_00000266_bin},
+    { 9600, NARC_scr_seq_scr_seq_00000149_bin,  NARC_msg_msg_00000040_bin},
+    { 9500, NARC_scr_seq_scr_seq_00000265_bin, NARC_msg_msg_00000439_bin},
+    { 9300, NARC_scr_seq_scr_seq_00000143_bin, NARC_msg_msg_00000204_bin},
+    { 9200, NARC_scr_seq_scr_seq_00000164_bin, NARC_msg_msg_00000267_bin},
+    { 9100, NARC_scr_seq_scr_seq_00000000_bin,  NARC_msg_msg_00000014_bin},
+    { 9000, NARC_scr_seq_scr_seq_00000004_bin,  NARC_msg_msg_00000046_bin},
+    { 8900, NARC_scr_seq_scr_seq_00000165_bin, NARC_msg_msg_00000268_bin},
+    { 8800, NARC_scr_seq_scr_seq_00000262_bin, NARC_msg_msg_00000427_bin},
+    { 8000, NARC_scr_seq_scr_seq_00000145_bin, NARC_msg_msg_00000210_bin},
+    { 7000, NARC_scr_seq_scr_seq_00000141_bin, NARC_msg_msg_00000199_bin},
+    { 5000, NARC_scr_seq_scr_seq_00000953_bin,  NARC_msg_msg_00000040_bin},
+    { 3000, NARC_scr_seq_scr_seq_00000953_bin,  NARC_msg_msg_00000040_bin},
+    { 2800, NARC_scr_seq_scr_seq_00000150_bin,  NARC_msg_msg_00000023_bin},
+    { 2500, NARC_scr_seq_scr_seq_00000001_bin,  NARC_msg_msg_00000020_bin},
+    { 2000, NARC_scr_seq_scr_seq_00000003_bin,  NARC_msg_msg_00000040_bin},
+};
 
 #define HEAP_ID_FIELDMAP                  11
 
@@ -535,4 +566,90 @@ HiddenItemResponse* AllocAndFetchNearbyHiddenItems(UnkSavStruct80 *fsys, HeapID 
     ret[j].x = -1;
     ret[j].y = -1;
     return ret;
+}
+
+void RunPokemonCenterScriptsInNewContext(UnkSavStruct80 *fsys) {
+    sub_02040734(fsys, 9600);
+}
+
+void sub_02040734(UnkSavStruct80 *fsys, u16 mapno) {
+    SCRIPTCONTEXT *ctx = CreateScriptContext(fsys, mapno);
+    while (RunScriptCommand(ctx) == TRUE) {}
+    DestroyScriptContext(ctx);
+}
+
+BOOL sub_02040750(UnkSavStruct80 *fsys, u8 a1) {
+    u8 *scripts;
+    u16 r1;
+    if (fsys->unkAC != 0) {
+        return FALSE;
+    }
+    scripts = MapEvents_GetLoadedLevelScripts(fsys);
+    if (scripts == NULL) {
+        return FALSE;
+    }
+    r1 = (a1 == 1) ? sub_0204080C(fsys, scripts, a1) : sub_020407E4(scripts, a1);
+    if (r1 == 0xFFFF) {
+        return FALSE;
+    }
+    (a1 == 1) ? sub_0203FE74(fsys, r1, NULL) : sub_02040734(fsys, r1);
+    return TRUE;
+}
+
+BOOL sub_020407AC(UnkSavStruct80 *fsys) {
+    u8 *scripts;
+    u16 r1;
+    if (fsys->unkAC != 0) {
+        return FALSE;
+    }
+    scripts = MapEvents_GetLoadedLevelScripts(fsys);
+    if (scripts == NULL) {
+        return FALSE;
+    }
+    r1 = sub_0204080C(fsys, scripts, 1);
+    return r1 != 0xFFFF;
+}
+
+u16 sub_020407E4(u8 *a0, u8 a1) {
+    while (1) {
+        if (a0[0] == 0) {
+            return 0xFFFF;
+        } else if (a0[0] == a1) {
+            return a0[1] + (a0[2] << 8);
+        } else {
+            a0 += 5;
+        }
+    }
+}
+
+u16 sub_0204080C(UnkSavStruct80 *a0, u8 *a1, u8 a2) {
+    u32 r1;
+    while (1) {
+        if (a1[0] == 0) {
+            return 0xFFFF;
+        } else if (a1[0] == a2) {
+            r1 = a1[1] + (a1[2] << 8) + (a1[3] << 16) + (a1[4] << 24);
+            a1 += 5;
+            break;
+        } else {
+            a1 += 5;
+        }
+    }
+    if (r1 == 0) {
+        return 0xFFFF;
+    }
+    a1 += r1;
+    while (1) {
+        u16 var1;
+        u16 var2;
+        var1 = a1[0] + (a1[1] << 8);
+        if (var1 == 0) {
+            return 0xFFFF;
+        }
+        var2 = a1[2] + (a1[3] << 8);
+        if (VarGet(a0, var1) == VarGet(a0, var2)) {
+            return a1[4] + (a1[5] << 8);
+        }
+        a1 += 6;
+    }
 }
