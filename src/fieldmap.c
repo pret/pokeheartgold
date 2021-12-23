@@ -315,3 +315,63 @@ u16 *GetVarPointer(UnkSavStruct80 *fsys, u16 varIdx) {
         return FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_00 + varIdx - SPECIAL_VAR_BASE);
     }
 }
+
+u16 VarGet(UnkSavStruct80 *fsys, u16 varIdx) {
+    u16 *ptr = GetVarPointer(fsys, varIdx);
+    if (ptr != NULL) {
+        varIdx = *ptr;
+    }
+    return varIdx;
+}
+
+BOOL VarSet(UnkSavStruct80 *fsys, u16 varIdx, u16 value) {
+    u16 *ptr = GetVarPointer(fsys, varIdx);
+    if (ptr == NULL) {
+        return FALSE;
+    }
+    *ptr = value;
+    return TRUE;
+}
+
+u16 VarGetObjectEventGraphicsId(UnkSavStruct80 *fsys, u16 varobjId) {
+    GF_ASSERT(varobjId < NUM_OBJ_GFX_VARS);
+    return VarGet(fsys, VAR_OBJ_GFX_BASE + varobjId);
+}
+
+BOOL FlagGet(UnkSavStruct80 *fsys, u16 flagId) {
+    return CheckFlagInArray(SavArray_Flags_get(fsys->savedata), flagId);
+}
+
+void FlagSet(UnkSavStruct80 *fsys, u16 flagId) {
+    return SetFlagInArray(SavArray_Flags_get(fsys->savedata), flagId);
+}
+
+void FlagClear(UnkSavStruct80 *fsys, u16 flagId) {
+    return ClearFlagInArray(SavArray_Flags_get(fsys->savedata), flagId);
+}
+
+void ClearTempFieldEventData(UnkSavStruct80 *fsys) {
+    u8 *flags;
+    u16 *vars;
+
+    SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
+    flags = GetFlagAddr(state, FLAG_TEMP_001);
+    memset(flags, 0, NUM_TEMP_FLAGS / 8);
+    vars = GetVarAddr(state, TEMP_VAR_BASE);
+    memset(vars, 0, NUM_TEMP_VARS * 2);
+}
+
+void ClearDailyFlags(UnkSavStruct80 *fsys) {
+    u8 *flags;
+
+    SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
+    flags = GetFlagAddr(state, DAILY_FLAG_BASE);
+    memset(flags, 0, NUM_DAILY_FLAGS / 8);
+}
+
+void sub_02040490(UnkSavStruct80 *fsys, u16 a1, u16 a2, u16 a3, u16 a4) {
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_00) = a1;
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_01) = a2;
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_02) = a3;
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_03) = a4;
+}

@@ -6,6 +6,7 @@
 #include "map_matrix.h"
 #include "msgdata.h"
 #include "window.h"
+#include "constants/vars.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -59,7 +60,7 @@ typedef struct UnkSavStruct80_Sub10_SubC {
     STRING* unk_4C;
     u32 unk_50;
     UnkSavStruct80_Sub10_SubC_Sub54 unk_54[2];
-    u16 unk_8C[14];
+    u16 unk_8C[NUM_SPECIAL_VARS];
     void (*scrctx_end_cb)(UnkSavStruct80* fsys);
     u32 unk_AC;
     u32 unk_B0;
