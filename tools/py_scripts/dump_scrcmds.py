@@ -13,7 +13,15 @@ import argparse
 class ScriptType(enum.Enum):
     normal = 0
     special = 1
-    init = 2
+
+    @classmethod
+    def convert(cls, arg: str):
+        if arg.isnumeric():
+            return cls(int(arg))
+        elif arg in cls.__members__:
+            return cls.__members__[arg]
+        else:
+            raise TypeError
 
 
 class Namespace(argparse.Namespace):
@@ -36,6 +44,9 @@ class ScriptParserBase(abc.ABC):
     @abc.abstractmethod
     def __str__(self):
         return NotImplemented
+
+    def __repr__(self):
+        return f'<{self.__class__.__name__}(raw=bytes({len(self.raw)}), prefix={self.prefix!r})>'
     
     
 class NormalScriptParser(ScriptParserBase):
@@ -117,7 +128,7 @@ class NormalScriptParser(ScriptParserBase):
 
     def __str__(self):
         if not self.is_parsed:
-            return f'<{self.__class__.__name__}(raw=bytes({len(self.raw)}, prefix={self.prefix!r})>'
+            return repr(self)
         s = '#include "constants/scrcmd.h\n'
         s += '\t.include "asm/macros/script.inc"\n\n'
         s += '\t.rodata\n\n'
@@ -144,64 +155,54 @@ class NormalScriptParser(ScriptParserBase):
 class SpecialScriptParser(ScriptParserBase):
     def __init__(self, raw: bytes, prefix='_EV'):
         super().__init__(raw, prefix)
-        self.table_1: list[tuple[int, int, int]] = []
+        self.table: list[tuple[int, int, int]] = []
+        self.init_offset: int = -1
+        self.init_vars: list[tuple[int, int, int]] = []
 
     def parse_all(self):
+        i = 0
         for i in range(0, len(self.raw), 5):
-            if self.raw[i] == 255:
+            if self.raw[i] == 0:
                 break
-            self.table_1.append((
-                self.raw[i],
-                int.from_bytes(self.raw[i + 1:i + 3], 'little'),
-                int.from_bytes(self.raw[i + 3:i + 5], 'little')
-            ))
-        self.is_parsed = True
-
-    def __str__(self):
-        if not self.is_parsed:
-            return f'<{self.__class__.__name__}(raw=bytes({len(self.raw)}, prefix={self.prefix!r})>'
-        s = '\t.rodata\n\t.option align, off\n\n'
-        for kind, val1, val2 in self.table_1:
-            s += f'\t.byte {kind}\n\t.short {val1}, {val2}\n'
-        s += '\t.byte 0xFF\n\t.balign 4, 0\n'
-        return s
-
-
-class InitScriptParser(ScriptParserBase):
-    def __init__(self, raw: bytes, prefix='_EV'):
-        super().__init__(raw, prefix)
-        self.table_1: list[tuple[int, int]] = []
-        self.table_2: dict[int, list[tuple[int, int, int]]] = collections.defaultdict(list)
-
-    def parse_all(self):
-        for i in range(0, len(self.raw), 5):
-            if self.raw[i] == 255:
-                break
-            self.table_1.append((self.raw[i], int.from_bytes(self.raw[i + 1:i + 5], 'little')))
-        for kind, offset in sorted(self.table_1, key=operator.itemgetter(1)):
-            for i in range(offset, len(self.raw), 6):
-                if (a := int.from_bytes(self.raw[i:i + 2], 'little')) == 65535:
+            if self.raw[i] == 1:
+                self.init_offset = i + 5 + int.from_bytes(self.raw[i + 1:i + 5], 'little')
+                self.table.append((1, -1, -1))
+            else:
+                self.table.append((
+                    self.raw[i],
+                    int.from_bytes(self.raw[i + 1:i + 3], 'little'),
+                    int.from_bytes(self.raw[i + 3:i + 5], 'little')
+                ))
+        if self.init_offset != -1:
+            for i in range(self.init_offset, len(self.raw), 6):
+                if (a := int.from_bytes(self.raw[i:i + 2], 'little')) == 0:
                     break
-                self.table_2[i].append((
+                self.init_vars.append((
                     a,
                     int.from_bytes(self.raw[i + 2:i + 4], 'little'),
                     int.from_bytes(self.raw[i + 4:i + 6], 'little')
                 ))
+            i += 2
+        else:
+            i += 1
+        assert ((i + 3) & ~3) == len(self.raw)
         self.is_parsed = True
 
     def __str__(self):
         if not self.is_parsed:
-            return f'<{self.__class__.__name__}(raw=bytes({len(self.raw)}, prefix={self.prefix!r})>'
-        s = '\t.rodata\n\t.option align, off\n\n'
-        for kind, val in self.table_1:
-            s += f'\t.byte {kind}\n\t.word {self.prefix}_{val:04X}\n'
-        s += '\t.byte 0xFF\n\n'
-        for addr, table in sorted(self.table_2.items()):
-            s += f'{self.prefix}_{addr:04X}:\n'
-            for flex1, flex2, script in table:
+            return repr(self)
+        s = '\t.rodata\n\t.option alignment off\n\n'
+        for kind, val1, val2 in self.table:
+            if kind == 1:
+                s += f'\t.byte 1\n\t.word {self.prefix}_{self.init_offset:04X}-.-5\n'
+            else:
+                s += f'\t.byte {kind}\n\t.short {val1}, {val2}\n'
+        s += '\t.byte 0\n\n'
+        if self.init_offset != -1:
+            s += f'{self.prefix}_{self.init_offset:04X}:\n'
+            for flex1, flex2, script in self.init_vars:
                 s += f'\t.short {flex1}, {flex2}, {script}\n'
-            s += '\t.short 0xFFFF\n\n'
-        s += '\t.balign 4, 0\n'
+            s += '\t.short 0\n\n\t.balign 4, 0\n'
         return s
 
 
@@ -210,15 +211,13 @@ def main():
     parser.add_argument('binfile', type=argparse.FileType('rb'))
     parser.add_argument('scrfile', type=argparse.FileType('w'))
     parser.add_argument('name')
-    parser.add_argument('--mode', type=lambda x: ScriptType(int(x)), default=ScriptType.normal)
+    parser.add_argument('--mode', type=ScriptType.convert, default=ScriptType.normal)
     args = parser.parse_args(namespace=Namespace())
 
     if args.mode is ScriptType.normal:
         cls = NormalScriptParser
     elif args.mode is ScriptType.special:
         cls = SpecialScriptParser
-    elif args.mode is ScriptType.init:
-        cls = InitScriptParser
     else:
         raise TypeError(args.mode)
     parser = cls(args.binfile.read(), args.name)

@@ -99,7 +99,7 @@ BOOL sub_0203FF44(UnkSavStruct80_Sub10 *unk) {
 
     switch (r4->unk_4) {
     case 0:
-        r4->unk_38[0] = CreateScriptContext(sp0, r4->unk_A);
+        r4->scriptContexts[0] = CreateScriptContext(sp0, r4->unk_A);
         r4->unk_9 = 1;
         r4->unk_44 = ScrStrBufs_new_custom(8, 64, HEAP_ID_FIELDMAP);
         r4->unk_48 = String_ctor(1024, HEAP_ID_FIELDMAP);
@@ -108,7 +108,7 @@ BOOL sub_0203FF44(UnkSavStruct80_Sub10 *unk) {
         // fallthrough
     case 1:
         for (i = 0; i < 3; i++) {
-            struct SCRIPTCONTEXT *ctx = r4->unk_38[i];
+            struct SCRIPTCONTEXT *ctx = r4->scriptContexts[i];
             if (ctx == NULL) {
                 continue;
             }
@@ -117,7 +117,7 @@ BOOL sub_0203FF44(UnkSavStruct80_Sub10 *unk) {
             }
             DestroyScriptContext(ctx);
             GF_ASSERT(r4->unk_9 != 0);
-            r4->unk_38[i] = NULL;
+            r4->scriptContexts[i] = NULL;
             r4->unk_9--;
         }
         if (r4->unk_9 == 0) {
@@ -154,7 +154,7 @@ void DestroyScriptContext(SCRIPTCONTEXT *ctx) {
 }
 
 void sub_0204005C(UnkSavStruct80 *a0, UnkSavStruct80_Sub10_SubC *a1, u16 a2, UnkSavStruct80_Sub3C *a3, void* a4) {
-    u16 *sp0 = FieldSysGetAttrAddrInternal(a1, UNK80_10_C_8C_13);
+    u16 *sp0 = FieldSysGetAttrAddrInternal(a1, UNK80_10_C_SPECIAL_VAR_RESULT);
     a1->unk_28 = sub_0205C654(a0->unk40);
     a1->unk_2C = a3;
     a1->unk_A = a2;
@@ -245,7 +245,7 @@ void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_
     case UNK80_10_C_SCRCTX_0:
     case UNK80_10_C_SCRCTX_1:
     case UNK80_10_C_SCRCTX_2:
-        return &unk->unk_38[field - UNK80_10_C_SCRCTX_0];
+        return &unk->scriptContexts[field - UNK80_10_C_SCRCTX_0];
     case UNK80_10_C_MSGFMT:
         return &unk->unk_44;
     case UNK80_10_C_STRBUF1:
@@ -298,21 +298,21 @@ void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_
         return &unk->unk_CC;
     case UNK80_10_C_DC:
         return &unk->unk_DC;
-    case UNK80_10_C_8C_00:
-    case UNK80_10_C_8C_01:
-    case UNK80_10_C_8C_02:
-    case UNK80_10_C_8C_03:
-    case UNK80_10_C_8C_04:
-    case UNK80_10_C_8C_05:
-    case UNK80_10_C_8C_06:
-    case UNK80_10_C_8C_07:
-    case UNK80_10_C_8C_08:
-    case UNK80_10_C_8C_09:
-    case UNK80_10_C_8C_10:
-    case UNK80_10_C_8C_11:
-    case UNK80_10_C_8C_12:
-    case UNK80_10_C_8C_13:
-        return &unk->unk_8C[field - UNK80_10_C_8C_00];
+    case UNK80_10_C_SPECIAL_VAR_8000:
+    case UNK80_10_C_SPECIAL_VAR_8001:
+    case UNK80_10_C_SPECIAL_VAR_8002:
+    case UNK80_10_C_SPECIAL_VAR_8003:
+    case UNK80_10_C_SPECIAL_VAR_8004:
+    case UNK80_10_C_SPECIAL_VAR_8005:
+    case UNK80_10_C_SPECIAL_VAR_8006:
+    case UNK80_10_C_SPECIAL_VAR_8007:
+    case UNK80_10_C_SPECIAL_VAR_8008:
+    case UNK80_10_C_SPECIAL_VAR_8009:
+    case UNK80_10_C_SPECIAL_VAR_800A:
+    case UNK80_10_C_SPECIAL_VAR_800B:
+    case UNK80_10_C_SPECIAL_VAR_800C:
+    case UNK80_10_C_SPECIAL_VAR_RESULT:
+        return &unk->specialVars[field - UNK80_10_C_SPECIAL_VAR_8000];
     default:
         GF_ASSERT(0);
         return NULL;
@@ -353,7 +353,7 @@ u16 *GetVarPointer(UnkSavStruct80 *fsys, u16 varIdx) {
     } else if (varIdx < SPECIAL_VAR_BASE) {
         return GetVarAddr(state, varIdx);
     } else {
-        return FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_00 + varIdx - SPECIAL_VAR_BASE);
+        return FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8000 + varIdx - SPECIAL_VAR_BASE);
     }
 }
 
@@ -411,10 +411,10 @@ void ClearDailyFlags(UnkSavStruct80 *fsys) {
 }
 
 void sub_02040490(UnkSavStruct80 *fsys, u16 a1, u16 a2, u16 a3, u16 a4) {
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_00) = a1;
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_01) = a2;
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_02) = a3;
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_8C_03) = a4;
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8000) = a1;
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8001) = a2;
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8002) = a3;
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8003) = a4;
 }
 
 u16 sub_020404C8(u16 a0) {
@@ -482,9 +482,9 @@ BOOL sub_020405AC(UnkSavStruct80_Sub10_SubC *a0, u16 a1) {
     u16 *r6;
     u16 *r4;
 
-    r7 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_8C_00);
-    r6 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_8C_01);
-    r4 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_8C_02);
+    r7 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8000);
+    r6 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8001);
+    r4 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8002);
     r3 = _020FA558;
     r0 = HiddenItemScriptNoToHiddenItemIdx(a1);
 
