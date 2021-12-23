@@ -1,5 +1,5 @@
 import collections
-import glob
+import json
 import os.path
 import re
 
@@ -101,7 +101,8 @@ def parse_args_c(scrcmds, filename, syms):
 def main():
     scrcmds = []
     objects = collections.defaultdict(list)
-    with open('asm/fieldmap_s.s') as fp:
+    project_root = os.path.join(os.path.dirname(__file__), '../..')
+    with open(os.path.join(project_root, 'asm/fieldmap_s.s')) as fp:
         # seek to gScriptCommandTable
         for line in fp:
             if line.startswith('gScriptCmdTable:'):
@@ -111,7 +112,7 @@ def main():
             scrcmds.append([line.split()[1], []])
 
     pat = re.compile(r'\s+[0-9A-F]{8}\s+[0-9A-F]{8}\s+\.text\s+(?P<symbol>\w+)\s+\((?P<object>\S+)\)')
-    with open('build/heartgold.us/main.nef.xMAP') as fp:
+    with open(os.path.join(project_root, 'build/heartgold.us/main.nef.xMAP')) as fp:
         for line in fp:
             if (m := pat.match(line)) is not None and any(x[0] == m['symbol'] for x in scrcmds):
                 objects[m['object']].append(m['symbol'])
@@ -124,79 +125,13 @@ def main():
         else:
             raise OSError('no source file found for %s' % obj)
 
-    # Special case: scrcmd 465
-    # Calls and jumps
-    call_jumps = {
-        22: 0,
-        23: 1,
-        24: 1,
-        25: 1,
-        26: 0,
-        28: 1,
-        29: 1,
-        225: 0
-    }
+    def keyfix(key: str):
+        key = key.replace('ScrCmd_', '').lower()
+        if key.isnumeric():
+            key = f'scrcmd_{key}'
+        return key
 
-    os.system('tools/knarc/knarc -d files/fielddata/script/scr_seq -u files/fielddata/script/scr_seq.narc')
-    for file in glob.glob('files/fielddata/script/scr_seq/scr_seq_*.bin'):
-        bname = os.path.basename(file).replace('.bin', '')
-        print(bname)
-        with open(file, 'rb') as fp, open(file.replace('.bin', '.s'), 'wt') as ofp:
-            offsets = []
-            print('\t.include "macros/script.inc"', file=ofp)
-            print('\t.text', file=ofp)
-            while (word := fp.read(4)) != b'' and (offset := int.from_bytes(word, 'little')) & 0xFFFF != 0xFD13:
-                offset += fp.tell()
-                print(f'\tscrdef {bname}_{offset:04X}', file=ofp)
-                offsets.append(offset)
-
-            fp.seek(-2, os.SEEK_CUR)
-            print('\tscrdef_end\n', file=ofp)
-            if fp.tell() not in offsets:
-                ofp.truncate(0)
-                continue
-            addr = fp.tell()
-            lines = {}
-            while (short := fp.read(2)) != b'':
-                cmd = int.from_bytes(short, 'little')
-                if cmd >= len(scrcmds):
-                    fp.seek(-2, os.SEEK_CUR)
-                    if fp.tell() & 15:
-                        ba = fp.read(16 - (fp.tell() & 15))
-                        lines[addr] = f'\t.byte {", ".join("0x%02X" % b for b in ba)}'
-                        addr = fp.tell()
-                    while (ba := fp.read(16)) != b'':
-                        lines[addr] = f'\t.byte {", ".join("0x%02X" % b for b in ba)}'
-                        addr = fp.tell()
-                    break
-                name, args = scrcmds[cmd]
-        
-                name = name.replace('ScrCmd_', '').replace('_', '').lower()
-                if name.isnumeric():
-                    name = f'scrcmd_{name}'
-                params = []
-                for i, arg in enumerate(args):
-                    params.append(int.from_bytes(fp.read(arg), 'little'))
-                    if cmd in call_jumps:
-                        offsets.append(params[i] + fp.tell())
-                    elif cmd == 465:
-                        if params[0] != 6:
-                            params.append(int.from_bytes(fp.read(2), 'little'))
-                            if params[0] <= 3:
-                                params.append(int.from_bytes(fp.read(2), 'little'))
-                        break
-                print(f'\t{name} {", ".join(map(str, params))}')
-                lines[addr] = f'\t{name} {", ".join(map(str, params))}'
-                if fp.tell() + 1 in offsets:
-                    if fp.read(1) == b'\0':
-                        lines[fp.tell() - 1] = '\t.byte 0'
-                    else:
-                        fp.seek(-1, os.SEEK_CUR)
-                addr = fp.tell()
-            for addr, line in sorted(lines.items()):
-                if addr in offsets:
-                    print(f'{bname}_{addr:04X}:', file=ofp)
-                print(line, file=ofp)
+    print(json.dumps({'commands': [{'name': keyfix(key), 'args': args} for key, args in scrcmds]}, indent=2))
 
 
 if __name__ == '__main__':

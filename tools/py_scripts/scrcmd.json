@@ -1,0 +1,5272 @@
+{
+  "commands": [
+    {
+      "name": "nop",
+      "args": []
+    },
+    {
+      "name": "dummy",
+      "args": []
+    },
+    {
+      "name": "end",
+      "args": []
+    },
+    {
+      "name": "wait",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "loadbyte",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "loadword",
+      "args": [
+        1,
+        4
+      ]
+    },
+    {
+      "name": "loadbytefromaddr",
+      "args": [
+        1,
+        4
+      ]
+    },
+    {
+      "name": "writebytetoaddr",
+      "args": [
+        4,
+        1
+      ]
+    },
+    {
+      "name": "setptrbyte",
+      "args": [
+        4,
+        1
+      ]
+    },
+    {
+      "name": "copylocal",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "copybyte",
+      "args": [
+        4,
+        4
+      ]
+    },
+    {
+      "name": "comparelocaltolocal",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "comparelocaltovalue",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "comparelocaltoaddr",
+      "args": [
+        1,
+        4
+      ]
+    },
+    {
+      "name": "compareaddrtolocal",
+      "args": [
+        4,
+        1
+      ]
+    },
+    {
+      "name": "compareaddrtovalue",
+      "args": [
+        4,
+        1
+      ]
+    },
+    {
+      "name": "compareaddrtoaddr",
+      "args": [
+        4,
+        4
+      ]
+    },
+    {
+      "name": "comparevartovalue",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "comparevartovar",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "runscript",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "runscriptwait",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "restartcurrentscript",
+      "args": []
+    },
+    {
+      "name": "goto",
+      "args": [
+        4
+      ]
+    },
+    {
+      "name": "objectgoto",
+      "args": [
+        1,
+        4
+      ]
+    },
+    {
+      "name": "bggoto",
+      "args": [
+        1,
+        4
+      ]
+    },
+    {
+      "name": "directiongoto",
+      "args": [
+        1,
+        4
+      ]
+    },
+    {
+      "name": "call",
+      "args": [
+        4
+      ]
+    },
+    {
+      "name": "return",
+      "args": []
+    },
+    {
+      "name": "gotoif",
+      "args": [
+        1,
+        4
+      ]
+    },
+    {
+      "name": "callif",
+      "args": [
+        1,
+        4
+      ]
+    },
+    {
+      "name": "setflag",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "clearflag",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "checkflag",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "setflagvar",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "clearflagvar",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "checkflagvar",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "settrainerflag",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "cleartrainerflag",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "checktrainerflag",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "addvar",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "subvar",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "setvar",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "copyvar",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "setorcopyvar",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "message",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_045",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_046",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_047",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_048",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_049",
+      "args": []
+    },
+    {
+      "name": "scrcmd_050",
+      "args": []
+    },
+    {
+      "name": "scrcmd_051",
+      "args": []
+    },
+    {
+      "name": "scrcmd_052",
+      "args": []
+    },
+    {
+      "name": "scrcmd_053",
+      "args": []
+    },
+    {
+      "name": "scrcmd_054",
+      "args": []
+    },
+    {
+      "name": "scrcmd_055",
+      "args": [
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_056",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_057",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_058",
+      "args": []
+    },
+    {
+      "name": "scrcmd_059",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_060",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_061",
+      "args": []
+    },
+    {
+      "name": "scrcmd_062",
+      "args": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_063",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_064",
+      "args": []
+    },
+    {
+      "name": "scrcmd_065",
+      "args": []
+    },
+    {
+      "name": "scrcmd_066",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_067",
+      "args": []
+    },
+    {
+      "name": "scrcmd_068",
+      "args": []
+    },
+    {
+      "name": "scrcmd_069",
+      "args": []
+    },
+    {
+      "name": "scrcmd_070",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_071",
+      "args": []
+    },
+    {
+      "name": "scrcmd_072",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_073",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_074",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_075",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_076",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_077",
+      "args": []
+    },
+    {
+      "name": "scrcmd_078",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_079",
+      "args": []
+    },
+    {
+      "name": "scrcmd_080",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_081",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_082",
+      "args": []
+    },
+    {
+      "name": "scrcmd_083",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_084",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_085",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_086",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_087",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_088",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_089",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_090",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_091",
+      "args": []
+    },
+    {
+      "name": "scrcmd_092",
+      "args": []
+    },
+    {
+      "name": "scrcmd_093",
+      "args": []
+    },
+    {
+      "name": "scrcmd_094",
+      "args": [
+        2,
+        4
+      ]
+    },
+    {
+      "name": "scrcmd_095",
+      "args": []
+    },
+    {
+      "name": "scrcmd_096",
+      "args": []
+    },
+    {
+      "name": "scrcmd_097",
+      "args": []
+    },
+    {
+      "name": "scrcmd_098",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_099",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_100",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_101",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_102",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_103",
+      "args": []
+    },
+    {
+      "name": "scrcmd_104",
+      "args": []
+    },
+    {
+      "name": "scrcmd_105",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_106",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_107",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_108",
+      "args": [
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_109",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "addmoney",
+      "args": [
+        4
+      ]
+    },
+    {
+      "name": "submoneyimmediate",
+      "args": [
+        4
+      ]
+    },
+    {
+      "name": "hasenoughmoneyimmediate",
+      "args": [
+        2,
+        4
+      ]
+    },
+    {
+      "name": "scrcmd_113",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_114",
+      "args": []
+    },
+    {
+      "name": "scrcmd_115",
+      "args": []
+    },
+    {
+      "name": "scrcmd_116",
+      "args": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_117",
+      "args": []
+    },
+    {
+      "name": "scrcmd_118",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_119",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_120",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_121",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_122",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_123",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_124",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "giveitem",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "takeitem",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "hasspaceforitem",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "hasitem",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "itemistmorhm",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "getitempocket",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_131",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_132",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_133",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_134",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_135",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_136",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_137",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_138",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_139",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_140",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_141",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_142",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_143",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_144",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_145",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_146",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_147",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_148",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_149",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_150",
+      "args": []
+    },
+    {
+      "name": "scrcmd_151",
+      "args": []
+    },
+    {
+      "name": "scrcmd_152",
+      "args": []
+    },
+    {
+      "name": "scrcmd_153",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_154",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_155",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_156",
+      "args": []
+    },
+    {
+      "name": "scrcmd_157",
+      "args": []
+    },
+    {
+      "name": "scrcmd_158",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_159",
+      "args": []
+    },
+    {
+      "name": "scrcmd_160",
+      "args": []
+    },
+    {
+      "name": "scrcmd_161",
+      "args": []
+    },
+    {
+      "name": "scrcmd_162",
+      "args": []
+    },
+    {
+      "name": "scrcmd_163",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_164",
+      "args": []
+    },
+    {
+      "name": "scrcmd_165",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_166",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_167",
+      "args": []
+    },
+    {
+      "name": "scrcmd_168",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_169",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_170",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_171",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_172",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_173",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_174",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_175",
+      "args": []
+    },
+    {
+      "name": "scrcmd_176",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_177",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_178",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_179",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_180",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_181",
+      "args": []
+    },
+    {
+      "name": "scrcmd_182",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_183",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_184",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_185",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_186",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_187",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_188",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_189",
+      "args": []
+    },
+    {
+      "name": "scrcmd_190",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_191",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_192",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_193",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_194",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_195",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_196",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_197",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_198",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_199",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_200",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_201",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_202",
+      "args": [
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_203",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_204",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_205",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_206",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_207",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_208",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_209",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_210",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_211",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_212",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_213",
+      "args": [
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_214",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_215",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_216",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_217",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_218",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_219",
+      "args": []
+    },
+    {
+      "name": "scrcmd_220",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_221",
+      "args": [
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_222",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_223",
+      "args": []
+    },
+    {
+      "name": "scrcmd_224",
+      "args": []
+    },
+    {
+      "name": "scrcmd_225",
+      "args": [
+        4
+      ]
+    },
+    {
+      "name": "scrcmd_226",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_227",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_228",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_229",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_230",
+      "args": []
+    },
+    {
+      "name": "scrcmd_231",
+      "args": []
+    },
+    {
+      "name": "scrcmd_232",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_233",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_234",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_235",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_236",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_237",
+      "args": []
+    },
+    {
+      "name": "scrcmd_238",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_239",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_240",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_241",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_242",
+      "args": [
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_243",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_244",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_245",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_246",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_247",
+      "args": []
+    },
+    {
+      "name": "scrcmd_248",
+      "args": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_249",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_250",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_251",
+      "args": []
+    },
+    {
+      "name": "scrcmd_252",
+      "args": []
+    },
+    {
+      "name": "scrcmd_253",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_254",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_255",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_256",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_257",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_258",
+      "args": []
+    },
+    {
+      "name": "scrcmd_259",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_260",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_261",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_262",
+      "args": []
+    },
+    {
+      "name": "scrcmd_263",
+      "args": []
+    },
+    {
+      "name": "scrcmd_264",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_265",
+      "args": []
+    },
+    {
+      "name": "scrcmd_266",
+      "args": []
+    },
+    {
+      "name": "scrcmd_267",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_268",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_269",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_270",
+      "args": []
+    },
+    {
+      "name": "scrcmd_271",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_272",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_273",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_274",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_275",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_276",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_277",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_278",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_279",
+      "args": []
+    },
+    {
+      "name": "scrcmd_280",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_281",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_282",
+      "args": []
+    },
+    {
+      "name": "scrcmd_283",
+      "args": []
+    },
+    {
+      "name": "scrcmd_284",
+      "args": []
+    },
+    {
+      "name": "scrcmd_285",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_286",
+      "args": []
+    },
+    {
+      "name": "scrcmd_287",
+      "args": []
+    },
+    {
+      "name": "scrcmd_288",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_289",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_290",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_291",
+      "args": []
+    },
+    {
+      "name": "scrcmd_292",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_293",
+      "args": []
+    },
+    {
+      "name": "scrcmd_294",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_295",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_296",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_297",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_298",
+      "args": []
+    },
+    {
+      "name": "scrcmd_299",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_300",
+      "args": []
+    },
+    {
+      "name": "scrcmd_301",
+      "args": []
+    },
+    {
+      "name": "scrcmd_302",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_303",
+      "args": []
+    },
+    {
+      "name": "scrcmd_304",
+      "args": []
+    },
+    {
+      "name": "scrcmd_305",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_306",
+      "args": []
+    },
+    {
+      "name": "scrcmd_307",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_308",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_309",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_310",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_311",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_312",
+      "args": []
+    },
+    {
+      "name": "scrcmd_313",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_314",
+      "args": []
+    },
+    {
+      "name": "scrcmd_315",
+      "args": []
+    },
+    {
+      "name": "scrcmd_316",
+      "args": []
+    },
+    {
+      "name": "scrcmd_317",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_318",
+      "args": []
+    },
+    {
+      "name": "scrcmd_319",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_320",
+      "args": []
+    },
+    {
+      "name": "scrcmd_321",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_322",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_323",
+      "args": []
+    },
+    {
+      "name": "scrcmd_324",
+      "args": []
+    },
+    {
+      "name": "scrcmd_325",
+      "args": []
+    },
+    {
+      "name": "scrcmd_326",
+      "args": []
+    },
+    {
+      "name": "scrcmd_327",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_328",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_329",
+      "args": []
+    },
+    {
+      "name": "scrcmd_330",
+      "args": []
+    },
+    {
+      "name": "scrcmd_331",
+      "args": []
+    },
+    {
+      "name": "scrcmd_332",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_333",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_334",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_335",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_336",
+      "args": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_337",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_338",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_339",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_340",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_341",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_342",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_343",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_344",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_345",
+      "args": []
+    },
+    {
+      "name": "scrcmd_346",
+      "args": []
+    },
+    {
+      "name": "scrcmd_347",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_348",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_349",
+      "args": []
+    },
+    {
+      "name": "scrcmd_350",
+      "args": []
+    },
+    {
+      "name": "scrcmd_351",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_352",
+      "args": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_353",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_354",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_355",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_356",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_357",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_358",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_359",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "submoneyvar",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_361",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_362",
+      "args": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_363",
+      "args": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_364",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_365",
+      "args": []
+    },
+    {
+      "name": "scrcmd_366",
+      "args": []
+    },
+    {
+      "name": "scrcmd_367",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "hasenoughmoneyvar",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_369",
+      "args": []
+    },
+    {
+      "name": "scrcmd_370",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_371",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_372",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_373",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_374",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_375",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_376",
+      "args": []
+    },
+    {
+      "name": "scrcmd_377",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_378",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_379",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_380",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_381",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_382",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_383",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_384",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_385",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_386",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_387",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_388",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_389",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_390",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_391",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_392",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_393",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_394",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_395",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_396",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_397",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_398",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_399",
+      "args": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_400",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_401",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_402",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_403",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_404",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_405",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_406",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_407",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_408",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_409",
+      "args": []
+    },
+    {
+      "name": "scrcmd_410",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_411",
+      "args": []
+    },
+    {
+      "name": "scrcmd_412",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_413",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_414",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_415",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_416",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_417",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_418",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_419",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_420",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_421",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_422",
+      "args": [
+        2,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_423",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_424",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_425",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_426",
+      "args": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_427",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_428",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "countfossils",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_430",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_431",
+      "args": []
+    },
+    {
+      "name": "getfossilpokemon",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "getfossilminimumamount",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_434",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_435",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_436",
+      "args": []
+    },
+    {
+      "name": "debugwatch",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_438",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_439",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_440",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_441",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_442",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_443",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_444",
+      "args": [
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_445",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_446",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_447",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_448",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_449",
+      "args": []
+    },
+    {
+      "name": "scrcmd_450",
+      "args": []
+    },
+    {
+      "name": "scrcmd_451",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_452",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_453",
+      "args": []
+    },
+    {
+      "name": "scrcmd_454",
+      "args": []
+    },
+    {
+      "name": "scrcmd_455",
+      "args": []
+    },
+    {
+      "name": "scrcmd_456",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_457",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_458",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_459",
+      "args": []
+    },
+    {
+      "name": "scrcmd_460",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_461",
+      "args": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_462",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_463",
+      "args": []
+    },
+    {
+      "name": "scrcmd_464",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_465",
+      "args": [
+        2
+      ],
+      "switch_arg": 0,
+      "cases": {
+        "0": [
+          2,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ],
+        "2": [
+          2,
+          2
+        ],
+        "3": [
+          2,
+          2
+        ],
+        "4": [
+          2
+        ],
+        "5": [
+          2
+        ],
+        "6": []
+      }
+    },
+    {
+      "name": "scrcmd_466",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_467",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_468",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_469",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_470",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_471",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_472",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_473",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_474",
+      "args": []
+    },
+    {
+      "name": "scrcmd_475",
+      "args": []
+    },
+    {
+      "name": "scrcmd_476",
+      "args": []
+    },
+    {
+      "name": "scrcmd_477",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_478",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_479",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_480",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_481",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_482",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_483",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_484",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_485",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "dummy_486",
+      "args": []
+    },
+    {
+      "name": "scrcmd_487",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_488",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_489",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_490",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_491",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_492",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_493",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_494",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_495",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_496",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_497",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_498",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_499",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_500",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_501",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_502",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_503",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_504",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_505",
+      "args": []
+    },
+    {
+      "name": "scrcmd_506",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_507",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_508",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_509",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_510",
+      "args": []
+    },
+    {
+      "name": "scrcmd_511",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_512",
+      "args": []
+    },
+    {
+      "name": "scrcmd_513",
+      "args": []
+    },
+    {
+      "name": "scrcmd_514",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_515",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_516",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_517",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_518",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_519",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_520",
+      "args": []
+    },
+    {
+      "name": "scrcmd_521",
+      "args": []
+    },
+    {
+      "name": "scrcmd_522",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_523",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_524",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_525",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_526",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_527",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_528",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_529",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_530",
+      "args": [
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_531",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_532",
+      "args": [
+        2,
+        4
+      ]
+    },
+    {
+      "name": "scrcmd_533",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_534",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_535",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_536",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_537",
+      "args": []
+    },
+    {
+      "name": "scrcmd_538",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_539",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_540",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_541",
+      "args": [
+        1,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_542",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_543",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_544",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_545",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_546",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_547",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_548",
+      "args": []
+    },
+    {
+      "name": "scrcmd_549",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_550",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_551",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_552",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_553",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_554",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_555",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_556",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_557",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_558",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_559",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_560",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_561",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_562",
+      "args": [
+        2,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_563",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_564",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_565",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_566",
+      "args": []
+    },
+    {
+      "name": "scrcmd_567",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_568",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_569",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_570",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_571",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_572",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_573",
+      "args": []
+    },
+    {
+      "name": "scrcmd_574",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_575",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_576",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_577",
+      "args": []
+    },
+    {
+      "name": "scrcmd_578",
+      "args": []
+    },
+    {
+      "name": "scrcmd_579",
+      "args": []
+    },
+    {
+      "name": "scrcmd_580",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_581",
+      "args": []
+    },
+    {
+      "name": "scrcmd_582",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_583",
+      "args": [
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_584",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_585",
+      "args": []
+    },
+    {
+      "name": "scrcmd_586",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_587",
+      "args": []
+    },
+    {
+      "name": "scrcmd_588",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_589",
+      "args": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_590",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_591",
+      "args": []
+    },
+    {
+      "name": "scrcmd_592",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_593",
+      "args": []
+    },
+    {
+      "name": "scrcmd_594",
+      "args": []
+    },
+    {
+      "name": "scrcmd_595",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_596",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_597",
+      "args": []
+    },
+    {
+      "name": "scrcmd_598",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_599",
+      "args": []
+    },
+    {
+      "name": "scrcmd_600",
+      "args": []
+    },
+    {
+      "name": "scrcmd_601",
+      "args": []
+    },
+    {
+      "name": "scrcmd_602",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_603",
+      "args": []
+    },
+    {
+      "name": "scrcmd_604",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_605",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_606",
+      "args": []
+    },
+    {
+      "name": "scrcmd_607",
+      "args": []
+    },
+    {
+      "name": "scrcmd_608",
+      "args": []
+    },
+    {
+      "name": "scrcmd_609",
+      "args": []
+    },
+    {
+      "name": "scrcmd_610",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_611",
+      "args": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_612",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_613",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_614",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_615",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_616",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_617",
+      "args": []
+    },
+    {
+      "name": "scrcmd_618",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_619",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_620",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_621",
+      "args": []
+    },
+    {
+      "name": "scrcmd_622",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_623",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_624",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_625",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_626",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_627",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_628",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_629",
+      "args": []
+    },
+    {
+      "name": "scrcmd_630",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_631",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_632",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_633",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_634",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_635",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_636",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_637",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_638",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_639",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_640",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_641",
+      "args": []
+    },
+    {
+      "name": "scrcmd_642",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_643",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_644",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_645",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_646",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_647",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_648",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_649",
+      "args": []
+    },
+    {
+      "name": "scrcmd_650",
+      "args": []
+    },
+    {
+      "name": "scrcmd_651",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_652",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_653",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_654",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_655",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_656",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_657",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_658",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_659",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_660",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_661",
+      "args": [
+        1,
+        4,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_662",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_663",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_664",
+      "args": []
+    },
+    {
+      "name": "scrcmd_665",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_666",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_667",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_668",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "getitemquantity",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_670",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_671",
+      "args": []
+    },
+    {
+      "name": "scrcmd_672",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_673",
+      "args": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_674",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_675",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_676",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_677",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_678",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_679",
+      "args": []
+    },
+    {
+      "name": "scrcmd_680",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_681",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_682",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_683",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_684",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_685",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_686",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_687",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_688",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_689",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_690",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_691",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_692",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_693",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_694",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_695",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_696",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_697",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_698",
+      "args": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_699",
+      "args": []
+    },
+    {
+      "name": "scrcmd_700",
+      "args": []
+    },
+    {
+      "name": "scrcmd_701",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_702",
+      "args": []
+    },
+    {
+      "name": "scrcmd_703",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_704",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_705",
+      "args": [
+        2,
+        4
+      ]
+    },
+    {
+      "name": "scrcmd_706",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_707",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_708",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_709",
+      "args": []
+    },
+    {
+      "name": "scrcmd_710",
+      "args": []
+    },
+    {
+      "name": "scrcmd_711",
+      "args": []
+    },
+    {
+      "name": "scrcmd_712",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_713",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_714",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_715",
+      "args": []
+    },
+    {
+      "name": "scrcmd_716",
+      "args": []
+    },
+    {
+      "name": "scrcmd_717",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_718",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_719",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_720",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_721",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_722",
+      "args": [
+        1,
+        1,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_723",
+      "args": [
+        1,
+        1,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_724",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_725",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_726",
+      "args": []
+    },
+    {
+      "name": "scrcmd_727",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_728",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_729",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_730",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_731",
+      "args": []
+    },
+    {
+      "name": "scrcmd_732",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_733",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_734",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_735",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_736",
+      "args": []
+    },
+    {
+      "name": "scrcmd_737",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_738",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_739",
+      "args": []
+    },
+    {
+      "name": "scrcmd_740",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_741",
+      "args": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_742",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_743",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_744",
+      "args": []
+    },
+    {
+      "name": "scrcmd_745",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_746",
+      "args": []
+    },
+    {
+      "name": "scrcmd_747",
+      "args": []
+    },
+    {
+      "name": "scrcmd_748",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_749",
+      "args": []
+    },
+    {
+      "name": "scrcmd_750",
+      "args": []
+    },
+    {
+      "name": "scrcmd_751",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_752",
+      "args": []
+    },
+    {
+      "name": "scrcmd_753",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_754",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_755",
+      "args": []
+    },
+    {
+      "name": "scrcmd_756",
+      "args": []
+    },
+    {
+      "name": "scrcmd_757",
+      "args": []
+    },
+    {
+      "name": "scrcmd_758",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_759",
+      "args": []
+    },
+    {
+      "name": "scrcmd_760",
+      "args": []
+    },
+    {
+      "name": "scrcmd_761",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_762",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_763",
+      "args": []
+    },
+    {
+      "name": "scrcmd_764",
+      "args": []
+    },
+    {
+      "name": "scrcmd_765",
+      "args": []
+    },
+    {
+      "name": "scrcmd_766",
+      "args": []
+    },
+    {
+      "name": "scrcmd_767",
+      "args": []
+    },
+    {
+      "name": "scrcmd_768",
+      "args": []
+    },
+    {
+      "name": "scrcmd_769",
+      "args": []
+    },
+    {
+      "name": "scrcmd_770",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_771",
+      "args": []
+    },
+    {
+      "name": "scrcmd_772",
+      "args": []
+    },
+    {
+      "name": "scrcmd_773",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_774",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_775",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_776",
+      "args": []
+    },
+    {
+      "name": "scrcmd_777",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_778",
+      "args": []
+    },
+    {
+      "name": "scrcmd_779",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_780",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_781",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_782",
+      "args": []
+    },
+    {
+      "name": "scrcmd_783",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_784",
+      "args": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_785",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_786",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_787",
+      "args": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_788",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_789",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_790",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_791",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_792",
+      "args": []
+    },
+    {
+      "name": "scrcmd_793",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_794",
+      "args": [
+        2,
+        4
+      ]
+    },
+    {
+      "name": "scrcmd_795",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_796",
+      "args": []
+    },
+    {
+      "name": "scrcmd_797",
+      "args": []
+    },
+    {
+      "name": "scrcmd_798",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_799",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_800",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_801",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_802",
+      "args": []
+    },
+    {
+      "name": "scrcmd_803",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_804",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_805",
+      "args": []
+    },
+    {
+      "name": "scrcmd_806",
+      "args": []
+    },
+    {
+      "name": "scrcmd_807",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_808",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_809",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_810",
+      "args": []
+    },
+    {
+      "name": "scrcmd_811",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_812",
+      "args": []
+    },
+    {
+      "name": "scrcmd_813",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_814",
+      "args": []
+    },
+    {
+      "name": "scrcmd_815",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_816",
+      "args": []
+    },
+    {
+      "name": "scrcmd_817",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_818",
+      "args": []
+    },
+    {
+      "name": "scrcmd_819",
+      "args": []
+    },
+    {
+      "name": "scrcmd_820",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_821",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_822",
+      "args": []
+    },
+    {
+      "name": "scrcmd_823",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_824",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_825",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_826",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_827",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_828",
+      "args": [
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_829",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_830",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_831",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_832",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_833",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_834",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_835",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_836",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_837",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_838",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_839",
+      "args": [
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_840",
+      "args": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_841",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_842",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_843",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_844",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_845",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_846",
+      "args": [
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_847",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_848",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_849",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_850",
+      "args": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "scrcmd_851",
+      "args": [
+        1
+      ]
+    },
+    {
+      "name": "scrcmd_852",
+      "args": [
+        1,
+        1
+      ]
+    }
+  ],
+  "ends": [
+    "end",
+    "return"
+  ],
+  "addresses": {
+    "goto": 0,
+    "objectgoto": 1,
+    "bggoto": 1,
+    "directiongoto": 1,
+    "call": 0,
+    "gotoif": 1,
+    "callif": 1,
+    "scrcmd_225": 0
+  }
+}
