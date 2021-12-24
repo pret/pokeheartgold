@@ -347,3 +347,18 @@ void PCStorage_ResetBoxModifiedFlags(PC_STORAGE* storage) {
 u32 PCStorage_GetBoxModifiedFlags(PC_STORAGE* storage) {
     return storage->boxModifiedFlag;
 }
+
+u32 sub_02074120(void) {
+    return sizeof(PC_BOX);
+}
+
+void sub_02074128(PC_STORAGE* storage) {
+    u8 i, j;
+
+    for (i = 0; i < NUM_BOXES; i++) {
+        for (j = 0; j < 16; j++) {
+            GF_ASSERT(storage->boxes[i].unk_FF0[j] == 0);
+            storage->boxes[i].unk_FF0[j] = 0;
+        }
+    }
+}
