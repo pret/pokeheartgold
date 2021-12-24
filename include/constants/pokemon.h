@@ -7,6 +7,10 @@
 #define MAX_EV        100
 #define MAX_EV_SUM    510
 
+#define NUM_BOXES              18
+#define MONS_PER_BOX           30
+#define BOX_NAME_LENGTH  20
+
 // Pokemon types
 #define TYPE_NONE             255
 #define TYPE_NORMAL           0

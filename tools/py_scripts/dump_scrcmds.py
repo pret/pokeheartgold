@@ -207,10 +207,16 @@ class SpecialScriptParser(ScriptParserBase):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('binfile', type=argparse.FileType('rb'))
-    parser.add_argument('scrfile', type=argparse.FileType('w'))
-    parser.add_argument('name')
+    parser.add_argument('scrfile', type=argparse.FileType('w'), nargs='?')
+    parser.add_argument('name', nargs='?')
     parser.add_argument('--mode', type=ScriptType.convert, default=ScriptType.normal)
     args = parser.parse_args(namespace=Namespace())
+
+    if args.scrfile is None:
+        scrfname = os.path.splitext(args.binfile.name)[0] + '.s'
+        args.scrfile = argparse.FileType('w')(scrfname)
+    if args.name is None:
+        args.name = os.path.splitext(os.path.basename(args.binfile.name))[0]
 
     if args.mode is ScriptType.normal:
         cls = NormalScriptParser

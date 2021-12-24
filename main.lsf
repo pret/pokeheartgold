@@ -214,6 +214,7 @@ Static main
 	Object waza.o
 	Object trainer_data.o
 	Object pokemon_storage_system.o
+	Object pokemon_storage_system_s.o
 	Object unk_02074120.o
 	Object party.o
 	Object unk_02074910.o
