@@ -16,13 +16,14 @@ typedef struct PC_Box {
 struct PokemonStorageSystem {
     /* 00000 */ PC_BOX boxes[NUM_BOXES];
     /* 12000 */ int curBox;
-    /* 12004 */ u8 unk_12204;
-    /* 12005 */ u8 filler_12005[3];
+    /* 12004 */ u32 boxModifiedFlag;
     /* 12008 */ u16 box_names[NUM_BOXES][BOX_NAME_LENGTH];
     /* 122D8 */ u8 wallpapers[NUM_BOXES];
     /* 122EA */ u8 unlockedWallpapers;
     /* 122EB */ u8 filler_122EB[0x11];
 };
+
+#define BOX_ALL_MODIFIED_FLAG      ((u32)((1<<NUM_BOXES)-1))
 
 void PCStorage_GetBoxName(PC_STORAGE *pcStorage, u32 boxno, STRING *dest);
 

@@ -250,3 +250,100 @@ void PCStorage_SetBoxName(PC_STORAGE* storage, u32 boxno, const STRING* src) {
         CopyStringToU16Array(src, storage->box_names[boxno], BOX_NAME_LENGTH);
     }
 }
+
+int PCStorage_CountMonsAndEggsInBox(PC_STORAGE* storage, u32 boxno) {
+    int i, count;
+    if (boxno == -1u) {
+        boxno = storage->curBox;
+    }
+    if (boxno < NUM_BOXES) {
+        count = 0;
+        for (i = 0; i < MONS_PER_BOX; i++) {
+            if (GetBoxMonData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES_EXISTS, NULL)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    GF_ASSERT(0);
+    return 0;
+}
+
+int PCStorage_CountMonsInBox(PC_STORAGE* storage, u32 boxno) {
+    int i, count;
+    if (boxno == -1u) {
+        boxno = storage->curBox;
+    }
+    if (boxno < NUM_BOXES) {
+        count = 0;
+        for (i = 0; i < MONS_PER_BOX; i++) {
+            if (GetBoxMonData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES_EXISTS, NULL)
+            && !GetBoxMonData(&storage->boxes[boxno].mons[i], MON_DATA_IS_EGG, NULL)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    GF_ASSERT(0);
+    return 0;
+}
+
+int PCStorage_CountMonsInAllBoxes(PC_STORAGE* storage) {
+    int count;
+    u32 i;
+
+    for (i = 0, count = 0; i < NUM_BOXES; i++) {
+        count += PCStorage_CountMonsInBox(storage, i);
+    }
+    return count;
+}
+
+u32 PCStorage_GetMonDataByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, int attr, void *ptr) {
+    GF_ASSERT(boxno < NUM_BOXES || boxno == -1u);
+    GF_ASSERT(slotno < MONS_PER_BOX);
+    if (boxno == -1u) {
+        boxno = storage->curBox;
+    }
+    return GetBoxMonData(&storage->boxes[boxno].mons[slotno], attr, ptr);
+}
+
+BOXMON* PCStorage_GetMonByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno) {
+    GF_ASSERT(boxno < NUM_BOXES || boxno == -1u);
+    GF_ASSERT(slotno < MONS_PER_BOX);
+    if (boxno == -1u) {
+        boxno = storage->curBox;
+    }
+    return &storage->boxes[boxno].mons[slotno];
+}
+
+void PCStorage_UnlockBonusWallpaper(PC_STORAGE* storage, u8 wallpaper) {
+    GF_ASSERT(wallpaper < NUM_BONUS_WALLPAPER);
+    storage->unlockedWallpapers |= (1 << wallpaper);
+}
+
+BOOL PCStorage_IsBonusWallpaperUnlocked(PC_STORAGE* storage, u8 wallpaper) {
+    GF_ASSERT(wallpaper < NUM_BONUS_WALLPAPER);
+    return (storage->unlockedWallpapers & (1 << wallpaper)) != 0;
+}
+
+void PCStorage_SetBoxModified(PC_STORAGE* storage, u8 boxno) {
+    if (boxno >= NUM_BOXES) {
+        GF_ASSERT(0);
+        return;
+    }
+    storage->boxModifiedFlag |= 1 << boxno;
+}
+
+void PCStorage_SetAllBoxesModified(PC_STORAGE* storage) {
+    storage->boxModifiedFlag = BOX_ALL_MODIFIED_FLAG;
+}
+
+void PCStorage_ResetBoxModifiedFlags(PC_STORAGE* storage) {
+    storage->boxModifiedFlag = 0;
+}
+
+u32 PCStorage_GetBoxModifiedFlags(PC_STORAGE* storage) {
+    return storage->boxModifiedFlag;
+}
