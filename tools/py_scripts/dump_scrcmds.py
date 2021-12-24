@@ -1,11 +1,20 @@
 import json
-import os.path
+import os
+import typing
 import warnings
 import enum
 import abc
+import re
 
 from typing import Union, BinaryIO, TextIO, Optional
 import argparse
+
+
+def parse_c_header(filename: str, prefix='') -> dict[int, str]:
+    with open(filename) as fp:
+        data = fp.read()
+    pat = re.compile(rf'#define\s+({prefix}\w+)\s+(\d+|0x[0-9a-fA-F]+)\n')
+    return {int(m[2], 0): m[1] for m in pat.finditer(data)}
 
 
 class ScriptType(enum.Enum):
@@ -52,9 +61,16 @@ class NormalScriptParser(ScriptParserBase):
         super().__init__(raw, prefix)
         with open(os.path.join(os.path.dirname(__file__), 'scrcmd.json')) as jsonfp:
             scrcmds = json.load(jsonfp)
+        header_path = os.path.join(os.path.dirname(__file__), '../..')
+        self.constants = {
+            'var': parse_c_header(os.path.join(header_path, 'include/constants/vars.h'), 'VAR_'),
+            'flag': parse_c_header(os.path.join(header_path, 'include/constants/flags.h'), 'FLAG_'),
+            'species': parse_c_header(os.path.join(header_path, 'include/constants/species.h'), 'SPECIES_'),
+            'item': parse_c_header(os.path.join(header_path, 'include/constants/items.h'), 'ITEM_'),
+            'move': parse_c_header(os.path.join(header_path, 'include/constants/moves.h'), 'MOVE_'),
+            'sound': parse_c_header(os.path.join(header_path, 'include/constants/sndseq.h'), 'SEQ_')
+        }
         self.commands: list[dict[str, Union[str, int, list[int], dict[str, list[int]]]]] = scrcmds.get('commands', [])
-        self.ends: list[str] = scrcmds.get('ends', [])
-        self.addresses: dict[str, int] = scrcmds.get('addresses', {})
         self.exported = []
         self.labels = {}
         self.lines = {}
@@ -69,7 +85,36 @@ class NormalScriptParser(ScriptParserBase):
             assert(self.exported[-1] < len(self.raw))
         if self.header_end != 4 * len(self.exported) + 2:
             raise ValueError('malformatted script file')
-        self.labels = {addr: False for addr in self.exported}
+        self.labels |= {addr: False for addr in self.exported}
+
+    def get_arg(self, size: typing.Union[int, str], pc: int) -> tuple[typing.Union[int, str], int]:
+        if isinstance(size, int):
+            assert size in [1, 2, 4]
+            return int.from_bytes(self.raw[pc:pc + size], 'little'), pc + size
+        match size:
+            case 'addr':
+                value = int.from_bytes(self.raw[pc:pc + 4], 'little')
+                pc += 4
+                value += pc
+                value &= 0xFFFFFFFF
+                assert value >= self.header_end
+                if value not in self.labels:
+                    self.labels[value] = False
+                return f'{self.prefix}_{value}', pc
+            case 'condition':
+                value = self.raw[pc]
+                pc += 1
+                return ['lt', 'eq', 'gt', 'le', 'ge', 'ne'][value], pc
+            case 'var' | 'flag':
+                value = int.from_bytes(self.raw[pc:pc + 2], 'little')
+                pc += 2
+                return self.constants[size].get(value, value), pc
+            case 'species' | 'item' | 'move' | 'sound':
+                value = int.from_bytes(self.raw[pc:pc + 2], 'little')
+                pc += 2
+                return self.constants['var'].get(value, self.constants[size].get(value, value)), pc
+            case _:
+                raise ValueError('unknown arg type: ' + size)
     
     def parse_script(self, pc: int):
         while pc < len(self.raw):
@@ -88,19 +133,14 @@ class NormalScriptParser(ScriptParserBase):
             special = cmd_struct.get('cases')
             switch_arg: Optional[int] = cmd_struct.get('switch_arg')
             for size in arg_sizes:
-                args.append(int.from_bytes(self.raw[pc:pc + size], 'little'))
-                pc += size
+                arg, pc = self.get_arg(size, pc)
+                args.append(arg)
             if special is not None and switch_arg is not None:
                 for size in special[str(args[switch_arg])]:
-                    args.append(int.from_bytes(self.raw[pc:pc + size], 'little'))
-                    pc += size
-            if name in self.addresses:
-                args[self.addresses[name]] += pc
-                args[self.addresses[name]] &= 0xFFFFFFFF
-                assert args[self.addresses[name]] >= self.header_end
-                self.labels[args[self.addresses[name]]] = args[self.addresses[name]] in self.lines
+                    arg, pc = self.get_arg(size, pc)
+                    args.append(arg)
             self.lines[prev_pc] = (name, args, pc)
-            if name in self.ends:
+            if cmd_struct.get('is_return'):
                 break
         
     def parse_all(self):
@@ -141,8 +181,6 @@ class NormalScriptParser(ScriptParserBase):
             args = list(args)
             if pc in self.labels:
                 s += f'\n{self.prefix}_{pc:08X}:\n'
-            if name in self.addresses:
-                args[self.addresses[name]] = f'{self.prefix}_{args[self.addresses[name]]:08X}'
             s += f'\t{name} ' + ', '.join(map(str, args)) + '\n'
             if nextpc != lines[i + 1][0]:
                 s += self.make_gap(nextpc, lines[i + 1][0])

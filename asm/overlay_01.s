@@ -19834,8 +19834,8 @@ _021EF098:
 _021EF0A0: .word ov01_022067C8
 	thumb_func_end ScrCmd_438
 
-	thumb_func_start ScrCmd_439
-ScrCmd_439: ; 0x021EF0A4
+	thumb_func_start ScrCmd_MessageExtern
+ScrCmd_MessageExtern: ; 0x021EF0A4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -19867,7 +19867,7 @@ ScrCmd_439: ; 0x021EF0A4
 	bl DestroyMsgData
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_439
+	thumb_func_end ScrCmd_MessageExtern
 
 	thumb_func_start ScrCmd_440
 ScrCmd_440: ; 0x021EF0F0
@@ -20133,8 +20133,8 @@ ScrCmd_527: ; 0x021EF2E0
 _021EF318: .word ov01_021EF348
 	thumb_func_end ScrCmd_527
 
-	thumb_func_start ScrCmd_045
-ScrCmd_045: ; 0x021EF31C
+	thumb_func_start ScrCmd_MsgBox
+ScrCmd_MsgBox: ; 0x021EF31C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20155,7 +20155,7 @@ ScrCmd_045: ; 0x021EF31C
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021EF344: .word ov01_021EF348
-	thumb_func_end ScrCmd_045
+	thumb_func_end ScrCmd_MsgBox
 
 	thumb_func_start ov01_021EF348
 ov01_021EF348: ; 0x021EF348

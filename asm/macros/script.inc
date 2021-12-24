@@ -320,7 +320,7 @@
 	.byte \msg_id
 	.endm
 
-	.macro scrcmd_045 a
+	.macro msgbox a
 	.short 45
 	.byte \a
 	.endm
@@ -344,7 +344,7 @@
 	.short 49
 	.endm
 
-	.macro scrcmd_050
+	.macro waitbutton
 	.short 50
 	.endm
 
@@ -356,7 +356,7 @@
 	.short 52
 	.endm
 
-	.macro scrcmd_053
+	.macro closemsg
 	.short 53
 	.endm
 
@@ -459,7 +459,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_073 arg0
+	.macro play_se arg0
 	.short 73
 	.short \arg0
 	.endm
@@ -571,11 +571,11 @@
 	.short 95
 	.endm
 
-	.macro scrcmd_096
+	.macro lockall
 	.short 96
 	.endm
 
-	.macro scrcmd_097
+	.macro releaseall
 	.short 97
 	.endm
 
@@ -609,7 +609,7 @@
 	.short 103
 	.endm
 
-	.macro scrcmd_104
+	.macro faceplayer
 	.short 104
 	.endm
 
@@ -2415,7 +2415,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_439 arg0, arg1
+	.macro message_extern arg0, arg1
 	.short 439
 	.short \arg0
 	.short \arg1

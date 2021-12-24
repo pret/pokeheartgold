@@ -10,13 +10,14 @@
     },
     {
       "name": "end",
-      "args": []
+      "args": [],
+      "is_return": true
     },
     {
       "name": "wait",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -113,15 +114,15 @@
     {
       "name": "comparevartovalue",
       "args": [
-        2,
+        "var",
         2
       ]
     },
     {
       "name": "comparevartovar",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -143,89 +144,90 @@
     {
       "name": "goto",
       "args": [
-        4
+        "addr"
       ]
     },
     {
       "name": "objectgoto",
       "args": [
         1,
-        4
+        "addr"
       ]
     },
     {
       "name": "bggoto",
       "args": [
         1,
-        4
+        "addr"
       ]
     },
     {
       "name": "directiongoto",
       "args": [
         1,
-        4
+        "addr"
       ]
     },
     {
       "name": "call",
       "args": [
-        4
+        "addr"
       ]
     },
     {
       "name": "return",
-      "args": []
+      "args": [],
+      "is_return": true
     },
     {
       "name": "gotoif",
       "args": [
-        1,
-        4
+        "condition",
+        "addr"
       ]
     },
     {
       "name": "callif",
       "args": [
-        1,
-        4
+        "condition",
+        "addr"
       ]
     },
     {
       "name": "setflag",
       "args": [
-        2
+        "flag"
       ]
     },
     {
       "name": "clearflag",
       "args": [
-        2
+        "flag"
       ]
     },
     {
       "name": "checkflag",
       "args": [
-        2
+        "flag"
       ]
     },
     {
       "name": "setflagvar",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "clearflagvar",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "checkflagvar",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -249,36 +251,36 @@
     {
       "name": "addvar",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "subvar",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "setvar",
       "args": [
-        2,
+        "var",
         2
       ]
     },
     {
       "name": "copyvar",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "setorcopyvar",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -288,7 +290,7 @@
       ]
     },
     {
-      "name": "scrcmd_045",
+      "name": "msgbox",
       "args": [
         1
       ]
@@ -316,7 +318,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_050",
+      "name": "waitbutton",
       "args": []
     },
     {
@@ -328,7 +330,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_053",
+      "name": "closemsg",
       "args": []
     },
     {
@@ -441,9 +443,9 @@
       ]
     },
     {
-      "name": "scrcmd_073",
+      "name": "play_se",
       "args": [
-        2
+        "sound"
       ]
     },
     {
@@ -569,11 +571,11 @@
       "args": []
     },
     {
-      "name": "scrcmd_096",
+      "name": "lockall",
       "args": []
     },
     {
-      "name": "scrcmd_097",
+      "name": "releaseall",
       "args": []
     },
     {
@@ -612,7 +614,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_104",
+      "name": "faceplayer",
       "args": []
     },
     {
@@ -744,47 +746,47 @@
     {
       "name": "giveitem",
       "args": [
-        2,
-        2,
-        2
+        "item",
+        "var",
+        "var"
       ]
     },
     {
       "name": "takeitem",
       "args": [
-        2,
-        2,
-        2
+        "item",
+        "var",
+        "var"
       ]
     },
     {
       "name": "hasspaceforitem",
       "args": [
-        2,
-        2,
-        2
+        "item",
+        "var",
+        "var"
       ]
     },
     {
       "name": "hasitem",
       "args": [
-        2,
-        2,
-        2
+        "item",
+        "var",
+        "var"
       ]
     },
     {
       "name": "itemistmorhm",
       "args": [
-        2,
-        2
+        "item",
+        "var"
       ]
     },
     {
       "name": "getitempocket",
       "args": [
-        2,
-        2
+        "item",
+        "var"
       ]
     },
     {
@@ -1381,7 +1383,7 @@
     {
       "name": "scrcmd_225",
       "args": [
-        4
+        "addr"
       ]
     },
     {
@@ -2681,7 +2683,7 @@
       ]
     },
     {
-      "name": "scrcmd_439",
+      "name": "message_extern",
       "args": [
         2,
         2
@@ -5254,19 +5256,5 @@
         1
       ]
     }
-  ],
-  "ends": [
-    "end",
-    "return"
-  ],
-  "addresses": {
-    "goto": 0,
-    "objectgoto": 1,
-    "bggoto": 1,
-    "directiongoto": 1,
-    "call": 0,
-    "gotoif": 1,
-    "callif": 1,
-    "scrcmd_225": 0
-  }
+  ]
 }

@@ -45,15 +45,15 @@ extern BOOL ScrCmd_SetVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CopyVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetOrCopyVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Message(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_045(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MsgBox(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_046(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_047(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_048(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_049(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_050(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WaitButton(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_051(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_052(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_053(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_054(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_055(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_056(SCRIPTCONTEXT *ctx);
@@ -73,7 +73,7 @@ extern BOOL ScrCmd_069(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_070(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_071(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_072(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_073(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlaySE(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_074(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_075(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_076(SCRIPTCONTEXT *ctx);
@@ -96,15 +96,15 @@ extern BOOL ScrCmd_092(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_093(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_094(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_095(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_096(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_097(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_LockAll(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ReleaseAll(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_098(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_099(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_100(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_101(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_102(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_103(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_104(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_FacePlayer(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_105(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_106(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_107(SCRIPTCONTEXT *ctx);
@@ -439,7 +439,7 @@ extern BOOL ScrCmd_435(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_436(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_DebugWatch(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_438(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_439(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MessageExtern(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_440(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_441(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_442(SCRIPTCONTEXT *ctx);
@@ -900,15 +900,15 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CopyVar,
     ScrCmd_SetOrCopyVar,
     ScrCmd_Message,
-    ScrCmd_045,
+    ScrCmd_MsgBox,
     ScrCmd_046,
     ScrCmd_047,
     ScrCmd_048,
     ScrCmd_049,
-    ScrCmd_050,
+    ScrCmd_WaitButton,
     ScrCmd_051,
     ScrCmd_052,
-    ScrCmd_053,
+    ScrCmd_CloseMsg,
     ScrCmd_054,
     ScrCmd_055,
     ScrCmd_056,
@@ -928,7 +928,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_070,
     ScrCmd_071,
     ScrCmd_072,
-    ScrCmd_073,
+    ScrCmd_PlaySE,
     ScrCmd_074,
     ScrCmd_075,
     ScrCmd_076,
@@ -951,15 +951,15 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_093,
     ScrCmd_094,
     ScrCmd_095,
-    ScrCmd_096,
-    ScrCmd_097,
+    ScrCmd_LockAll,
+    ScrCmd_ReleaseAll,
     ScrCmd_098,
     ScrCmd_099,
     ScrCmd_100,
     ScrCmd_101,
     ScrCmd_102,
     ScrCmd_103,
-    ScrCmd_104,
+    ScrCmd_FacePlayer,
     ScrCmd_105,
     ScrCmd_106,
     ScrCmd_107,
@@ -1294,7 +1294,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_436,
     ScrCmd_DebugWatch,
     ScrCmd_438,
-    ScrCmd_439,
+    ScrCmd_MessageExtern,
     ScrCmd_440,
     ScrCmd_441,
     ScrCmd_442,

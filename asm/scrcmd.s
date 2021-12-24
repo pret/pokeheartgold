@@ -2,7 +2,7 @@
 	.include "global.inc"
 
 	.public _020FAC94
-	.public _020FAC9C
+	.public sConditionTable
 	.public _020FACB0
 	.public _020FACC4
 	.public _020FACDC
@@ -16,14 +16,15 @@ sNumScriptCmds:
 _020FAC94:
 	.byte 0x03, 0x19, 0x0D, 0x06, 0x04, 0x0D
 	.short 0x021F
-	.public _020FAC9C
-_020FAC9C:
-	.byte 1, 0, 0
-	.byte 0, 1, 0
-	.byte 0, 0, 1
-	.byte 1, 1, 0
-	.byte 0, 1, 1
-	.byte 1, 0, 1
+	.public sConditionTable
+sConditionTable:
+	;     <  =  >
+	.byte 1, 0, 0 ; lt
+	.byte 0, 1, 0 ; eq
+	.byte 0, 0, 1 ; gt
+	.byte 1, 1, 0 ; le
+	.byte 0, 1, 1 ; ge
+	.byte 1, 0, 1 ; ne
 	.public _020FACB0
 	.balign 4, 0
 _020FACB0:
@@ -92,15 +93,15 @@ gScriptCmdTable:
 	.word ScrCmd_CopyVar                                ; 042
 	.word ScrCmd_SetOrCopyVar                           ; 043
 	.word ScrCmd_Message                                ; 044
-	.word ScrCmd_045                                    ; 045
+	.word ScrCmd_MsgBox                                    ; 045
 	.word ScrCmd_046                                    ; 046
 	.word ScrCmd_047                                    ; 047
 	.word ScrCmd_048                                    ; 048
 	.word ScrCmd_049                                    ; 049
-	.word ScrCmd_050                                    ; 050
+	.word ScrCmd_WaitButton                                    ; 050
 	.word ScrCmd_051                                    ; 051
 	.word ScrCmd_052                                    ; 052
-	.word ScrCmd_053                                    ; 053
+	.word ScrCmd_CloseMsg                                    ; 053
 	.word ScrCmd_054                                    ; 054
 	.word ScrCmd_055                                    ; 055
 	.word ScrCmd_056                                    ; 056
@@ -120,7 +121,7 @@ gScriptCmdTable:
 	.word ScrCmd_070                                    ; 070
 	.word ScrCmd_071                                    ; 071
 	.word ScrCmd_072                                    ; 072
-	.word ScrCmd_073                                    ; 073
+	.word ScrCmd_PlaySE                                    ; 073
 	.word ScrCmd_074                                    ; 074
 	.word ScrCmd_075                                    ; 075
 	.word ScrCmd_076                                    ; 076
@@ -143,15 +144,15 @@ gScriptCmdTable:
 	.word ScrCmd_093                                    ; 093
 	.word ScrCmd_094                                    ; 094
 	.word ScrCmd_095                                    ; 095
-	.word ScrCmd_096                                    ; 096
-	.word ScrCmd_097                                    ; 097
+	.word ScrCmd_LockAll                                    ; 096
+	.word ScrCmd_ReleaseAll                                    ; 097
 	.word ScrCmd_098                                    ; 098
 	.word ScrCmd_099                                    ; 099
 	.word ScrCmd_100                                    ; 100
 	.word ScrCmd_101                                    ; 101
 	.word ScrCmd_102                                    ; 102
 	.word ScrCmd_103                                    ; 103
-	.word ScrCmd_104                                    ; 104
+	.word ScrCmd_FacePlayer                                    ; 104
 	.word ScrCmd_105                                    ; 105
 	.word ScrCmd_106                                    ; 106
 	.word ScrCmd_107                                    ; 107
@@ -486,7 +487,7 @@ gScriptCmdTable:
 	.word ScrCmd_436                                    ; 436
 	.word ScrCmd_DebugWatch                             ; 437
 	.word ScrCmd_438                                    ; 438
-	.word ScrCmd_439                                    ; 439
+	.word ScrCmd_MessageExtern                                    ; 439
 	.word ScrCmd_440                                    ; 440
 	.word ScrCmd_441                                    ; 441
 	.word ScrCmd_442                                    ; 442
@@ -1562,7 +1563,7 @@ ScrCmd_GoToIf: ; 0x02040D04
 	add r1, r0, #0
 	lsl r0, r4, #1
 	add r3, r4, r0
-	ldr r0, _02040D34 ; =_020FAC9C
+	ldr r0, _02040D34 ; =sConditionTable
 	ldrb r2, [r5, #2]
 	add r0, r0, r3
 	ldrb r0, [r2, r0]
@@ -1576,7 +1577,7 @@ _02040D30:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02040D34: .word _020FAC9C
+_02040D34: .word sConditionTable
 	thumb_func_end ScrCmd_GoToIf
 
 	thumb_func_start ScrCmd_CallIf
@@ -1591,7 +1592,7 @@ ScrCmd_CallIf: ; 0x02040D38
 	add r1, r0, #0
 	lsl r0, r4, #1
 	add r3, r4, r0
-	ldr r0, _02040D68 ; =_020FAC9C
+	ldr r0, _02040D68 ; =sConditionTable
 	ldrb r2, [r5, #2]
 	add r0, r0, r3
 	ldrb r0, [r2, r0]
@@ -1605,7 +1606,7 @@ _02040D64:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02040D68: .word _020FAC9C
+_02040D68: .word sConditionTable
 	thumb_func_end ScrCmd_CallIf
 
 	thumb_func_start ScrCmd_SetFlag
@@ -2011,8 +2012,8 @@ _0204105A:
 _02041060: .word gMain
 	thumb_func_end sub_02041040
 
-	thumb_func_start ScrCmd_050
-ScrCmd_050: ; 0x02041064
+	thumb_func_start ScrCmd_WaitButton
+ScrCmd_WaitButton: ; 0x02041064
 	push {r3, lr}
 	ldr r1, _02041070 ; =sub_02041074
 	bl SetupNativeScript
@@ -2020,7 +2021,7 @@ ScrCmd_050: ; 0x02041064
 	pop {r3, pc}
 	.balign 4, 0
 _02041070: .word sub_02041074
-	thumb_func_end ScrCmd_050
+	thumb_func_end ScrCmd_WaitButton
 
 	thumb_func_start sub_02041074
 sub_02041074: ; 0x02041074
@@ -2157,8 +2158,8 @@ ScrCmd_052: ; 0x02041110
 	.balign 4, 0
 	thumb_func_end ScrCmd_052
 
-	thumb_func_start ScrCmd_053
-ScrCmd_053: ; 0x02041168
+	thumb_func_start ScrCmd_CloseMsg
+ScrCmd_CloseMsg: ; 0x02041168
 	push {r4, r5, r6, lr}
 	add r0, #0x80
 	ldr r5, [r0]
@@ -2185,7 +2186,7 @@ ScrCmd_053: ; 0x02041168
 	mov r0, #0
 	strb r0, [r6]
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_053
+	thumb_func_end ScrCmd_CloseMsg
 
 	thumb_func_start ScrCmd_054
 ScrCmd_054: ; 0x020411A4
@@ -3689,8 +3690,8 @@ _02041D3C:
 	.balign 4, 0
 	thumb_func_end sub_02041CF8
 
-	thumb_func_start ScrCmd_096
-ScrCmd_096: ; 0x02041D40
+	thumb_func_start ScrCmd_LockAll
+ScrCmd_LockAll: ; 0x02041D40
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r0, #0x80
@@ -3729,7 +3730,7 @@ _02041D90:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02041D94: .word sub_02041E60
-	thumb_func_end ScrCmd_096
+	thumb_func_end ScrCmd_LockAll
 
 	thumb_func_start sub_02041D98
 sub_02041D98: ; 0x02041D98
@@ -3941,8 +3942,8 @@ _02041F48: .word _021D415C
 _02041F4C: .word sub_02041D98
 	thumb_func_end ScrCmd_581
 
-	thumb_func_start ScrCmd_097
-ScrCmd_097: ; 0x02041F50
+	thumb_func_start ScrCmd_ReleaseAll
+ScrCmd_ReleaseAll: ; 0x02041F50
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -3950,7 +3951,7 @@ ScrCmd_097: ; 0x02041F50
 	bl sub_0205F5A4
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ScrCmd_097
+	thumb_func_end ScrCmd_ReleaseAll
 
 	thumb_func_start ScrCmd_098
 ScrCmd_098: ; 0x02041F60
@@ -4229,8 +4230,8 @@ ScrCmd_679: ; 0x02042184
 	.balign 4, 0
 	thumb_func_end ScrCmd_679
 
-	thumb_func_start ScrCmd_104
-ScrCmd_104: ; 0x0204219C
+	thumb_func_start ScrCmd_FacePlayer
+ScrCmd_FacePlayer: ; 0x0204219C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r0, #0x80
@@ -4353,7 +4354,7 @@ _020422AC:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_104
+	thumb_func_end ScrCmd_FacePlayer
 
 	thumb_func_start ScrCmd_105
 ScrCmd_105: ; 0x020422B4
@@ -13824,7 +13825,7 @@ _02046C9C:
 	cmp r0, #0
 	beq _02046CAC
 	ldr r0, [sp, #4]
-	bl ScrCmd_104
+	bl ScrCmd_FacePlayer
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 _02046CAC:
