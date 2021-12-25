@@ -71,6 +71,7 @@ class NormalScriptParser(ScriptParserBase):
             'sound': parse_c_header(os.path.join(header_path, 'include/constants/sndseq.h'), 'SEQ_')
         }
         self.commands: list[dict[str, Union[str, int, list[int], dict[str, list[int]]]]] = scrcmds.get('commands', [])
+        self.commands_d = {x['name']: x for x in self.commands}
         self.exported = []
         self.labels = {}
         self.lines = {}
@@ -92,15 +93,17 @@ class NormalScriptParser(ScriptParserBase):
             assert size in [1, 2, 4]
             return int.from_bytes(self.raw[pc:pc + size], 'little'), pc + size
         match size:
-            case 'addr':
+            case 'addr' | 'script':
                 value = int.from_bytes(self.raw[pc:pc + 4], 'little')
                 pc += 4
                 value += pc
                 value &= 0xFFFFFFFF
-                assert value >= self.header_end
+                assert self.header_end <= value < len(self.raw)
                 if value not in self.labels:
-                    self.labels[value] = False
-                return f'{self.prefix}_{value}', pc
+                    self.labels[value] = (size == 'addr')
+                else:
+                    self.labels[value] |= (size == 'addr')
+                return f'{self.prefix}_{value:08X}', pc
             case 'condition':
                 value = self.raw[pc]
                 pc += 1
@@ -117,6 +120,8 @@ class NormalScriptParser(ScriptParserBase):
                 raise ValueError('unknown arg type: ' + size)
     
     def parse_script(self, pc: int):
+        if self.labels[pc]:
+            return
         while pc < len(self.raw):
             if pc in self.labels:
                 self.labels[pc] = True
@@ -132,15 +137,20 @@ class NormalScriptParser(ScriptParserBase):
             arg_sizes = cmd_struct['args']
             special = cmd_struct.get('cases')
             switch_arg: Optional[int] = cmd_struct.get('switch_arg')
-            for size in arg_sizes:
-                arg, pc = self.get_arg(size, pc)
-                args.append(arg)
-            if special is not None and switch_arg is not None:
-                for size in special[str(args[switch_arg])]:
+            try:
+                for size in arg_sizes:
                     arg, pc = self.get_arg(size, pc)
                     args.append(arg)
+                if special is not None and switch_arg is not None:
+                    for size in special[str(args[switch_arg])]:
+                        arg, pc = self.get_arg(size, pc)
+                        args.append(arg)
+            except (ValueError, KeyError):
+                warnings.warn(f'script parser hit illegal command args to {cmd_i} at position {prev_pc} '
+                              f'(arg {len(args)}, last good arg: {None if not args else args[-1]})')
+                break
             self.lines[prev_pc] = (name, args, pc)
-            if cmd_struct.get('is_return'):
+            if cmd_struct.get('is_abs_branch'):
                 break
         
     def parse_all(self):
@@ -150,10 +160,10 @@ class NormalScriptParser(ScriptParserBase):
                 self.parse_script(label)
         self.is_parsed = True
 
-    def make_gap(self, pc, nextpc):
-        s = ''
-        if all(x == 0 for x in self.raw[pc:nextpc]):
+    def make_gap_internal(self, pc, nextpc):
+        if pc == nextpc:
             return ''
+        s = ''
         if pc & 15:
             gap = min(16 - (pc & 15), nextpc - pc)
             s += '\t.byte ' + ', '.join(map('0x{:02x}'.format, self.raw[pc:pc + gap])) + '\n'
@@ -164,6 +174,17 @@ class NormalScriptParser(ScriptParserBase):
             pc += gap
         return s
 
+    def make_gap(self, pc, nextpc):
+        if pc == nextpc or (nextpc == len(self.raw) and all(x == 0 for x in self.raw[pc:nextpc])):
+            return ''
+        s = ''
+        labels = sorted({x for x in self.labels if pc <= x < nextpc})
+        for x, y in zip([pc] + labels, labels + [nextpc]):
+            if x in labels:
+                s += f'\n{self.prefix}_{x:08X}:\n'
+            s += self.make_gap_internal(x, y)
+        return s
+
     def __str__(self):
         if not self.is_parsed:
             return repr(self)
@@ -172,7 +193,10 @@ class NormalScriptParser(ScriptParserBase):
         s += '\t.rodata\n\n'
         for i, addr in enumerate(self.exported):
             s += f'\tscrdef {self.prefix}_{addr:08X} ; {i:03d}\n'
-        s += '\tscrdef_end\n'
+        s += '\tscrdef_end\n\n'
+        if not self.lines:
+            s += self.make_gap(self.header_end, len(self.raw))
+            return s
         if self.header_end not in self.lines:
             s += self.make_gap(self.header_end, min(self.lines))
         lines = sorted(self.lines.items())
@@ -180,8 +204,13 @@ class NormalScriptParser(ScriptParserBase):
         for i, (pc, (name, args, nextpc)) in enumerate(lines[:-1]):
             args = list(args)
             if pc in self.labels:
-                s += f'\n{self.prefix}_{pc:08X}:\n'
-            s += f'\t{name} ' + ', '.join(map(str, args)) + '\n'
+                s += f'{self.prefix}_{pc:08X}:\n'
+            if args:
+                s += f'\t{name} ' + ', '.join(map(str, args)) + '\n'
+            else:
+                s += f'\t{name}\n'
+            if lines[i + 1][0] in self.labels and self.commands_d[name].get('is_abs_branch'):
+                s += '\n'
             if nextpc != lines[i + 1][0]:
                 s += self.make_gap(nextpc, lines[i + 1][0])
         s += '\t.balign 4, 0\n'

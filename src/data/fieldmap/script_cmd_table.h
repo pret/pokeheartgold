@@ -75,7 +75,7 @@ extern BOOL ScrCmd_071(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_072(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlaySE(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_074(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_075(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WaitSE(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_076(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_077(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_078(SCRIPTCONTEXT *ctx);
@@ -94,8 +94,8 @@ extern BOOL ScrCmd_090(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_091(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_092(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_093(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_094(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_095(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ApplyMovement(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WaitMovement(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_LockAll(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ReleaseAll(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_098(SCRIPTCONTEXT *ctx);
@@ -930,7 +930,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_072,
     ScrCmd_PlaySE,
     ScrCmd_074,
-    ScrCmd_075,
+    ScrCmd_WaitSE,
     ScrCmd_076,
     ScrCmd_077,
     ScrCmd_078,
@@ -949,8 +949,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_091,
     ScrCmd_092,
     ScrCmd_093,
-    ScrCmd_094,
-    ScrCmd_095,
+    ScrCmd_ApplyMovement,
+    ScrCmd_WaitMovement,
     ScrCmd_LockAll,
     ScrCmd_ReleaseAll,
     ScrCmd_098,

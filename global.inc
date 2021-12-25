@@ -1758,7 +1758,7 @@
 .public ScrCmd_072
 .public ScrCmd_PlaySE
 .public ScrCmd_074
-.public ScrCmd_075
+.public ScrCmd_WaitSE
 .public ScrCmd_076
 .public ScrCmd_077
 .public ScrCmd_078
@@ -1777,8 +1777,8 @@
 .public ScrCmd_091
 .public ScrCmd_092
 .public ScrCmd_093
-.public ScrCmd_094
-.public ScrCmd_095
+.public ScrCmd_ApplyMovement
+.public ScrCmd_WaitMovement
 .public ScrCmd_LockAll
 .public ScrCmd_ReleaseAll
 .public ScrCmd_098

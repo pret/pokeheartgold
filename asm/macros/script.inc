@@ -469,7 +469,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_075 arg0
+	.macro wait_se arg0
 	.short 75
 	.short \arg0
 	.endm
@@ -561,13 +561,13 @@
 	.short 93
 	.endm
 
-	.macro scrcmd_094 arg0, arg1
+	.macro apply_movement arg0, arg1
 	.short 94
 	.short \arg0
 	.word \arg1
 	.endm
 
-	.macro scrcmd_095
+	.macro wait_movement
 	.short 95
 	.endm
 

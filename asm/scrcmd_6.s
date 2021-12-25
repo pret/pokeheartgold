@@ -194,8 +194,8 @@ ScrCmd_074: ; 0x02049244
 	pop {r4, pc}
 	thumb_func_end ScrCmd_074
 
-	thumb_func_start ScrCmd_075
-ScrCmd_075: ; 0x02049260
+	thumb_func_start ScrCmd_WaitSE
+ScrCmd_WaitSE: ; 0x02049260
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -212,7 +212,7 @@ ScrCmd_075: ; 0x02049260
 	pop {r4, pc}
 	nop
 _02049284: .word sub_02049288
-	thumb_func_end ScrCmd_075
+	thumb_func_end ScrCmd_WaitSE
 
 	thumb_func_start sub_02049288
 sub_02049288: ; 0x02049288

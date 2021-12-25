@@ -123,7 +123,7 @@ gScriptCmdTable:
 	.word ScrCmd_072                                    ; 072
 	.word ScrCmd_PlaySE                                    ; 073
 	.word ScrCmd_074                                    ; 074
-	.word ScrCmd_075                                    ; 075
+	.word ScrCmd_WaitSE                                    ; 075
 	.word ScrCmd_076                                    ; 076
 	.word ScrCmd_077                                    ; 077
 	.word ScrCmd_078                                    ; 078
@@ -142,8 +142,8 @@ gScriptCmdTable:
 	.word ScrCmd_091                                    ; 091
 	.word ScrCmd_092                                    ; 092
 	.word ScrCmd_093                                    ; 093
-	.word ScrCmd_094                                    ; 094
-	.word ScrCmd_095                                    ; 095
+	.word ScrCmd_ApplyMovement                                    ; 094
+	.word ScrCmd_WaitMovement                                    ; 095
 	.word ScrCmd_LockAll                                    ; 096
 	.word ScrCmd_ReleaseAll                                    ; 097
 	.word ScrCmd_098                                    ; 098
@@ -3400,8 +3400,8 @@ ScrCmd_842: ; 0x02041AE4
 	pop {r4, pc}
 	thumb_func_end ScrCmd_842
 
-	thumb_func_start ScrCmd_094
-ScrCmd_094: ; 0x02041B04
+	thumb_func_start ScrCmd_ApplyMovement
+ScrCmd_ApplyMovement: ; 0x02041B04
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -3452,7 +3452,7 @@ _02041B46:
 	bl sub_02041CC4
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_094
+	thumb_func_end ScrCmd_ApplyMovement
 
 	thumb_func_start ScrCmd_563
 ScrCmd_563: ; 0x02041B74
@@ -3598,8 +3598,8 @@ _02041C8E:
 	.balign 4, 0
 	thumb_func_end sub_02041C70
 
-	thumb_func_start ScrCmd_095
-ScrCmd_095: ; 0x02041C98
+	thumb_func_start ScrCmd_WaitMovement
+ScrCmd_WaitMovement: ; 0x02041C98
 	push {r3, lr}
 	ldr r1, _02041CA4 ; =sub_02041CA8
 	bl SetupNativeScript
@@ -3607,7 +3607,7 @@ ScrCmd_095: ; 0x02041C98
 	pop {r3, pc}
 	.balign 4, 0
 _02041CA4: .word sub_02041CA8
-	thumb_func_end ScrCmd_095
+	thumb_func_end ScrCmd_WaitMovement
 
 	thumb_func_start sub_02041CA8
 sub_02041CA8: ; 0x02041CA8

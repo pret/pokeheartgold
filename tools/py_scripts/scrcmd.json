@@ -11,7 +11,8 @@
     {
       "name": "end",
       "args": [],
-      "is_return": true
+      "is_return": true,
+      "is_abs_branch": true
     },
     {
       "name": "wait",
@@ -35,14 +36,14 @@
       ]
     },
     {
-      "name": "loadbytefromaddr",
+      "name": "loadbytefromscript",
       "args": [
         1,
         4
       ]
     },
     {
-      "name": "writebytetoaddr",
+      "name": "writebytetoscript",
       "args": [
         4,
         1
@@ -144,53 +145,55 @@
     {
       "name": "goto",
       "args": [
-        "addr"
-      ]
+        "script"
+      ],
+      "is_abs_branch": true
     },
     {
       "name": "objectgoto",
       "args": [
         1,
-        "addr"
+        "script"
       ]
     },
     {
       "name": "bggoto",
       "args": [
         1,
-        "addr"
+        "script"
       ]
     },
     {
       "name": "directiongoto",
       "args": [
         1,
-        "addr"
+        "script"
       ]
     },
     {
       "name": "call",
       "args": [
-        "addr"
+        "script"
       ]
     },
     {
       "name": "return",
       "args": [],
-      "is_return": true
+      "is_return": true,
+      "is_abs_branch": true
     },
     {
       "name": "gotoif",
       "args": [
         "condition",
-        "addr"
+        "script"
       ]
     },
     {
       "name": "callif",
       "args": [
         "condition",
-        "addr"
+        "script"
       ]
     },
     {
@@ -399,11 +402,23 @@
     },
     {
       "name": "scrcmd_064",
-      "args": []
+      "args": [
+        1,
+        1,
+        1,
+        1,
+        "var"
+      ]
     },
     {
       "name": "scrcmd_065",
-      "args": []
+      "args": [
+        1,
+        1,
+        1,
+        1,
+        "var"
+      ]
     },
     {
       "name": "scrcmd_066",
@@ -418,11 +433,23 @@
     },
     {
       "name": "scrcmd_068",
-      "args": []
+      "args": [
+        1,
+        1,
+        1,
+        1,
+        "var"
+      ]
     },
     {
       "name": "scrcmd_069",
-      "args": []
+      "args": [
+        1,
+        1,
+        1,
+        1,
+        "var"
+      ]
     },
     {
       "name": "scrcmd_070",
@@ -455,9 +482,9 @@
       ]
     },
     {
-      "name": "scrcmd_075",
+      "name": "wait_se",
       "args": [
-        2
+        "sound"
       ]
     },
     {
@@ -560,14 +587,14 @@
       "args": []
     },
     {
-      "name": "scrcmd_094",
+      "name": "apply_movement",
       "args": [
-        2,
-        4
+        "var",
+        "addr"
       ]
     },
     {
-      "name": "scrcmd_095",
+      "name": "wait_movement",
       "args": []
     },
     {
@@ -1383,7 +1410,7 @@
     {
       "name": "scrcmd_225",
       "args": [
-        "addr"
+        "script"
       ]
     },
     {
@@ -2424,9 +2451,14 @@
     {
       "name": "scrcmd_400",
       "args": [
-        1,
-        2
-      ]
+        1
+      ],
+      "cases": {
+        "0": [],
+        "1": [],
+        "2": ["var"]
+      },
+      "switch_arg": 0
     },
     {
       "name": "scrcmd_401",
@@ -2854,28 +2886,31 @@
       "switch_arg": 0,
       "cases": {
         "0": [
-          2,
-          2
+          "var",
+          "var"
         ],
         "1": [
-          2,
-          2
+          "var",
+          "var"
         ],
         "2": [
-          2,
-          2
+          "var",
+          "var"
         ],
         "3": [
-          2,
-          2
+          "var",
+          "var"
         ],
         "4": [
-          2
+          "var"
         ],
         "5": [
-          2
+          "var"
         ],
-        "6": []
+        "6": [],
+        "7": [
+          "var"
+        ]
       }
     },
     {
@@ -3021,15 +3056,32 @@
     {
       "name": "scrcmd_489",
       "args": [
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
         2
-      ]
+      ],
+      "cases": {
+        "0": [],
+        "1": [
+          "var"
+        ],
+        "2": [
+          "var"
+        ],
+        "3": [
+          "var"
+        ],
+        "4": [],
+        "5": [
+          "var",
+          "var"
+        ],
+        "6": [
+          "var",
+          "var"
+        ],
+        "7": [],
+        "8": []
+      },
+      "switch_arg": 0
     },
     {
       "name": "scrcmd_490",
@@ -4323,8 +4375,12 @@
     {
       "name": "scrcmd_692",
       "args": [
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        "var",
+        "var"
       ]
     },
     {
@@ -4662,11 +4718,23 @@
     },
     {
       "name": "scrcmd_749",
-      "args": []
+      "args": [
+        1,
+        1,
+        1,
+        1,
+        "var"
+      ]
     },
     {
       "name": "scrcmd_750",
-      "args": []
+      "args": [
+        1,
+        1,
+        1,
+        1,
+        "var"
+      ]
     },
     {
       "name": "scrcmd_751",

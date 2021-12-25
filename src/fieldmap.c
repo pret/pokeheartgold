@@ -396,7 +396,7 @@ void ClearTempFieldEventData(UnkSavStruct80 *fsys) {
     u16 *vars;
 
     SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
-    flags = GetFlagAddr(state, FLAG_TEMP_001);
+    flags = GetFlagAddr(state, FLAG_TEMP_x4001);
     memset(flags, 0, NUM_TEMP_FLAGS / 8);
     vars = GetVarAddr(state, TEMP_VAR_BASE);
     memset(vars, 0, NUM_TEMP_VARS * 2);
