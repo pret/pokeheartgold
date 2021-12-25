@@ -15,7 +15,7 @@ scr_seq_00000947_0000000A:
 	gotoif eq, scr_seq_00000947_000000CA
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000947_0000003B
@@ -34,7 +34,7 @@ scr_seq_00000947_0000003B:
 	gotoif eq, scr_seq_00000947_000000BF
 	scrcmd_470 3
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_354 32772, 32773
+	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_239 32772, 32774
 	comparevartovalue VAR_SPECIAL_x8006, 0
 	gotoif eq, scr_seq_00000947_000000B2
@@ -76,7 +76,7 @@ scr_seq_00000947_000000D5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_529 32768
+	scrcmd_529 VAR_SPECIAL_x8000
 	scrcmd_480 32780, 32768, 24
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000947_00000199
@@ -87,10 +87,10 @@ scr_seq_00000947_000000D5:
 	gotoif lt, scr_seq_00000947_00000136
 	msgbox 6
 	scrcmd_481 32768, 24
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	scrcmd_190 1
 	msgbox 7
-	scrcmd_079
+	wait_fanfare
 	scrcmd_193 0, 32768
 	msgbox 8
 	waitbutton

@@ -23,7 +23,7 @@ scr_seq_00000948_00000016:
 scr_seq_00000948_00000036:
 	msgbox 1
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000948_0000005D
@@ -46,7 +46,7 @@ scr_seq_00000948_00000068:
 	scrcmd_175
 	comparevartovalue VAR_SPECIAL_x8002, 255
 	gotoif eq, scr_seq_00000948_0000014A
-	scrcmd_354 32770, 32769
+	get_partymon_species VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8001, 0
 	gotoif eq, scr_seq_00000948_00000134
 	scrcmd_396 32780, 32770
@@ -66,7 +66,7 @@ scr_seq_00000948_00000068:
 	scrcmd_399 0, 32770, 32769
 	msgbox 7
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000948_0000011D
@@ -76,8 +76,8 @@ scr_seq_00000948_00000068:
 
 scr_seq_00000948_0000011D:
 	scrcmd_397 32770, 32769
-	scrcmd_078 1192
-	scrcmd_079
+	play_fanfare SEQ_ME_WASURE
+	wait_fanfare
 	msgbox 8
 	waitbutton
 	closemsg
@@ -122,7 +122,7 @@ scr_seq_00000948_00000155:
 	scrcmd_175
 	comparevartovalue VAR_SPECIAL_x8005, 255
 	gotoif eq, scr_seq_00000948_0000022D
-	scrcmd_354 32773, 32780
+	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000948_00000247
 	scrcmd_466 32780, 32773
@@ -185,7 +185,7 @@ scr_seq_00000948_00000252:
 	setflag FLAG_UNK_186
 	msgbox 26
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000948_000002A5
@@ -194,7 +194,7 @@ scr_seq_00000948_00000252:
 scr_seq_00000948_00000287:
 	msgbox 27
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000948_000002A5
@@ -244,10 +244,10 @@ scr_seq_00000948_000002E1:
 	end
 
 scr_seq_00000948_000002EC:
-	scrcmd_332 16384
+	scrcmd_332 VAR_TEMP_x4000
 scr_seq_00000948_000002F0:
 	subvar VAR_TEMP_x4000, 1
-	scrcmd_354 16384, 32780
+	get_partymon_species VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000948_00000346
 	scrcmd_497 32772, 32773, 16384
@@ -278,7 +278,7 @@ scr_seq_00000948_00000359:
 	scrcmd_175
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000948_000002A5
-	scrcmd_354 32768, 32769
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8001, 0
 	gotoif eq, scr_seq_00000948_000002C6
 	call scr_seq_00000948_0000042B
@@ -287,7 +287,7 @@ scr_seq_00000948_00000359:
 	scrcmd_140 32780, 434, 32768
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000948_000002D1
-	scrcmd_382 32780, 32768
+	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif lt, scr_seq_00000948_000002E1
 	scrcmd_193 0, 32768
@@ -334,7 +334,7 @@ scr_seq_00000948_0000045D:
 	setflag FLAG_UNK_187
 	msgbox 43
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000948_000004AC
 	goto scr_seq_00000948_000006EE
@@ -342,7 +342,7 @@ scr_seq_00000948_0000045D:
 scr_seq_00000948_00000490:
 	msgbox 44
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000948_000004AC
 	goto scr_seq_00000948_000006EE
@@ -359,7 +359,7 @@ scr_seq_00000948_000004AC:
 	scrcmd_175
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000948_000006EE
-	scrcmd_354 32768, 32769
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8001, 0
 	gotoif eq, scr_seq_00000948_00000708
 	call scr_seq_00000948_000005F4
@@ -369,7 +369,7 @@ scr_seq_00000948_000004AC:
 	call scr_seq_00000948_000006B0
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000948_00000722
-	scrcmd_382 32780, 32768
+	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif lt, scr_seq_00000948_00000715
 	scrcmd_193 0, 32768
@@ -382,7 +382,7 @@ scr_seq_00000948_000004AC:
 scr_seq_00000948_00000555:
 	msgbox 52
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000948_000006EE
 	setvar VAR_SPECIAL_x8003, 307
@@ -391,7 +391,7 @@ scr_seq_00000948_00000555:
 scr_seq_00000948_00000577:
 	msgbox 53
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000948_000006EE
 	setvar VAR_SPECIAL_x8003, 308
@@ -400,7 +400,7 @@ scr_seq_00000948_00000577:
 scr_seq_00000948_00000599:
 	msgbox 54
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000948_000006EE
 	setvar VAR_SPECIAL_x8003, 338

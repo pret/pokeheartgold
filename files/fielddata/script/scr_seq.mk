@@ -5,6 +5,7 @@ SCRIPT_NARC := $(SCRIPT_DIR).narc
 SCRIPT_SRCS := $(wildcard $(SCRIPT_DIR)/*.s)
 SCRIPT_OBJS := $(SCRIPT_SRCS:%.s=%.o)
 SCRIPT_BINS := $(SCRIPT_SRCS:%.s=%.bin)
+SCRIPT_HEADS := $(SCRIPT_SRCS:%.s=%.h)
 
 ifneq (1,0)
 $(SCRIPT_BINS): MWASFLAGS += -DPM_ASM
@@ -15,9 +16,9 @@ $(SCRIPT_DEPS):
 $(SCRIPT_BINS): %.bin: %.s
 $(SCRIPT_BINS): %.bin: %.s %.d
 	$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $<
-	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
 	@$(call fixdep,$*.d)
 	@$(SED) -i 's/\.o/.bin/' $*.d
+	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
 
 include $(wildcard $(SCRIPT_DEPS))
 else
@@ -28,6 +29,8 @@ endif
 else
 $(SCRIPT_BINS):
 endif
+
+$(SCRIPT_HEADS): %.h: %.bin
 
 $(SCRIPT_NARC): $(SCRIPT_BINS) check_scripts
 

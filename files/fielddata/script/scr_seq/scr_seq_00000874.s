@@ -49,7 +49,7 @@ scr_seq_00000874_0000006D:
 	msgbox 0
 	scrcmd_049
 	closemsg
-	scrcmd_386 16385
+	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_00000874_000000A7
 	goto scr_seq_00000874_000000C7
@@ -61,8 +61,8 @@ scr_seq_00000874_000000A7:
 	wait_movement
 scr_seq_00000874_000000B1:
 	releaseall
-	scrcmd_101 0
-	scrcmd_079
+	hide_person 0
+	wait_fanfare
 	setflag FLAG_UNK_077
 	setflag FLAG_UNK_19E
 	setflag FLAG_UNK_19F
@@ -72,7 +72,7 @@ scr_seq_00000874_000000C7:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	scrcmd_106 253, 16386, 16387
+	get_person_coords 253, VAR_TEMP_x4002, VAR_TEMP_x4003
 	comparevartovalue VAR_TEMP_x4002, 5
 	gotoif ne, scr_seq_00000874_000000F4
 	apply_movement 0, scr_seq_00000874_000002E8
@@ -177,7 +177,7 @@ scr_seq_00000874_0000022D:
 	msgbox 15
 scr_seq_00000874_0000024A:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000874_0000026E
@@ -188,8 +188,8 @@ scr_seq_00000874_0000024A:
 scr_seq_00000874_0000026E:
 	scrcmd_190 0
 	msgbox 16
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	scrcmd_146 5
 	msgbox 17
 	waitbutton

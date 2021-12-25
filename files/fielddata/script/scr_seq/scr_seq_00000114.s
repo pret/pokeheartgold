@@ -22,13 +22,13 @@ scr_seq_00000114_00000014:
 	end
 
 scr_seq_00000114_0000003D:
-	scrcmd_339 4, 6, 1, 4, 0
-	scrcmd_339 5, 5, 1, 8, 1
+	show_person_at 4, 6, 1, 4, 0
+	show_person_at 5, 5, 1, 8, 1
 	end
 
 scr_seq_00000114_00000057:
-	scrcmd_339 4, 6, 1, 6, 1
-	scrcmd_339 5, 5, 1, 7, 0
+	show_person_at 4, 6, 1, 6, 1
+	show_person_at 5, 5, 1, 7, 0
 	scrcmd_375 253
 	scrcmd_606
 	end
@@ -77,7 +77,7 @@ scr_seq_00000114_00000079:
 	closemsg
 	scrcmd_081 0
 	play_se SEQ_SE_PL_FR03
-	scrcmd_080 1094
+	play_bgm SEQ_GS_SENKYO
 	msgbox 2
 	scrcmd_074 1432
 	closemsg
@@ -86,8 +86,8 @@ scr_seq_00000114_00000079:
 	msgbox 3
 	closemsg
 	setvar VAR_UNK_40FE, 3
-	scrcmd_213 700, 0, 1, 0
-	scrcmd_220 32780
+	trainer_battle 700, 0, 1, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000114_00000250
 	setvar VAR_UNK_40FE, 4
@@ -97,12 +97,12 @@ scr_seq_00000114_00000079:
 	closemsg
 	apply_movement 4, scr_seq_00000114_00000350
 	wait_movement
-	scrcmd_101 4
+	hide_person 4
 	setflag FLAG_UNK_303
 	apply_movement 255, scr_seq_00000114_00000380
 	apply_movement 5, scr_seq_00000114_00000380
 	wait_movement
-	scrcmd_084 0, 30
+	fade_out_bgm 0, 30
 	scrcmd_081 0
 	play_se SEQ_SE_PL_FR03
 	msgbox 5
@@ -113,8 +113,8 @@ scr_seq_00000114_00000079:
 	scrcmd_190 0
 	scrcmd_132 16, 15
 	closemsg
-	scrcmd_529 16386
-	scrcmd_354 16386, 32780
+	scrcmd_529 VAR_TEMP_x4002
+	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 251
 	callif ne, scr_seq_00000114_000002C0
 	apply_movement 253, scr_seq_00000114_000003A4
@@ -159,7 +159,7 @@ scr_seq_00000114_00000250:
 	scrcmd_174 6, 6, 1, 32767
 	scrcmd_175
 	wait_movement
-	scrcmd_101 4
+	hide_person 4
 	setflag FLAG_UNK_303
 	msgbox 19
 	closemsg
@@ -185,8 +185,8 @@ scr_seq_00000114_000002C0:
 	closemsg
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_078 1183
-	scrcmd_079
+	play_fanfare SEQ_ME_ASA
+	wait_fanfare
 	scrcmd_282
 	scrcmd_436
 	scrcmd_150

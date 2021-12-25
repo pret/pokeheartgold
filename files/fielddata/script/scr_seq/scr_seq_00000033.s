@@ -59,7 +59,7 @@ scr_seq_00000033_00000075:
 	msgbox 0
 	closemsg
 	wait 16, VAR_SPECIAL_x800C
-	scrcmd_386 16384
+	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_00000033_000000B8
 	apply_movement 0, scr_seq_00000033_00000258
@@ -119,7 +119,7 @@ scr_seq_00000033_0000018A:
 	setflag FLAG_UNK_2C6
 	clearflag FLAG_UNK_2C7
 	scrcmd_100 2
-	scrcmd_101 0
+	hide_person 0
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_00000033_000001B7
 	apply_movement 2, scr_seq_00000033_00000328
@@ -137,8 +137,8 @@ scr_seq_00000033_000001DA:
 	wait_movement
 	msgbox 3
 	closemsg
-	scrcmd_213 487, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 487, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000033_0000021D
 	msgbox 4

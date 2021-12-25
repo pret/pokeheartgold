@@ -23,7 +23,7 @@ scr_seq_00000165_00000035:
 scr_seq_00000165_00000037:
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000165_0000005E
@@ -32,7 +32,7 @@ scr_seq_00000165_00000037:
 	end
 
 scr_seq_00000165_0000005E:
-	scrcmd_084 42, 10
+	fade_out_bgm 42, 10
 	msgbox 8
 	scrcmd_345
 	wait 80, VAR_SPECIAL_x800C
@@ -50,7 +50,7 @@ scr_seq_00000165_0000005E:
 	scrcmd_092
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_548
-	scrcmd_199 0, VAR_SPECIAL_x8005
+	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	msgbox 2
 	scrcmd_549 32780
 	scrcmd_076 441, 0
@@ -67,11 +67,11 @@ scr_seq_00000165_000000C9:
 	end
 
 scr_seq_00000165_000000D5:
-	scrcmd_199 0, VAR_SPECIAL_x8005
+	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	msgbox 3
 	msgbox 4
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000165_0000005E

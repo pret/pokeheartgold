@@ -156,32 +156,32 @@ scr_seq_00000156_000001A0:
 	lockall
 	apply_movement 255, scr_seq_00000156_00000280
 	wait_movement
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 22
 	gotoif ne, scr_seq_00000156_000001D3
-	scrcmd_339 3, 31, 0, 16385, 2
+	show_person_at 3, 31, 0, VAR_TEMP_x4001, 2
 	goto scr_seq_00000156_0000023C
 
 scr_seq_00000156_000001D3:
 	comparevartovalue VAR_TEMP_x4000, 23
 	gotoif ne, scr_seq_00000156_000001F2
-	scrcmd_339 3, 32, 0, 16385, 2
+	show_person_at 3, 32, 0, VAR_TEMP_x4001, 2
 	goto scr_seq_00000156_0000023C
 
 scr_seq_00000156_000001F2:
 	comparevartovalue VAR_TEMP_x4000, 24
 	gotoif ne, scr_seq_00000156_00000211
-	scrcmd_339 3, 33, 0, 16385, 2
+	show_person_at 3, 33, 0, VAR_TEMP_x4001, 2
 	goto scr_seq_00000156_0000023C
 
 scr_seq_00000156_00000211:
 	comparevartovalue VAR_TEMP_x4000, 25
 	gotoif ne, scr_seq_00000156_00000230
-	scrcmd_339 3, 34, 0, 16385, 2
+	show_person_at 3, 34, 0, VAR_TEMP_x4001, 2
 	goto scr_seq_00000156_0000023C
 
 scr_seq_00000156_00000230:
-	scrcmd_339 3, 35, 0, 16385, 2
+	show_person_at 3, 35, 0, VAR_TEMP_x4001, 2
 scr_seq_00000156_0000023C:
 	apply_movement 3, scr_seq_00000156_00000288
 	apply_movement 255, scr_seq_00000156_000002A0
@@ -192,7 +192,7 @@ scr_seq_00000156_0000023C:
 	closemsg
 	apply_movement 3, scr_seq_00000156_000002C0
 	wait_movement
-	scrcmd_101 3
+	hide_person 3
 	setflag FLAG_UNK_215
 	setvar VAR_UNK_40CB, 2
 	scrcmd_074 2133

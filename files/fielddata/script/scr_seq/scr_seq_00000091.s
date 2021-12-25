@@ -31,8 +31,8 @@ scr_seq_00000091_00000051:
 	end
 
 scr_seq_00000091_00000060:
-	scrcmd_339 10, 22, 0, 15, 0
-	scrcmd_339 11, 22, 0, 15, 0
+	show_person_at 10, 22, 0, 15, 0
+	show_person_at 11, 22, 0, 15, 0
 	end
 
 scr_seq_00000091_0000007A:
@@ -57,8 +57,8 @@ scr_seq_00000091_0000007A:
 	apply_movement 5, scr_seq_00000091_00000124
 	apply_movement 6, scr_seq_00000091_0000012C
 	wait_movement
-	scrcmd_101 5
-	scrcmd_101 6
+	hide_person 5
+	hide_person 6
 	setflag FLAG_UNK_1E6
 	releaseall
 	setvar VAR_UNK_40AC, 1
@@ -115,7 +115,7 @@ scr_seq_00000091_0000013C:
 	scrcmd_602 1
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 6
-	scrcmd_101 16
+	hide_person 16
 	setflag FLAG_UNK_24C
 	clearflag FLAG_UNK_24D
 	releaseall
@@ -156,7 +156,7 @@ scr_seq_00000091_000001C3:
 	callstd 2031
 	clearflag FLAG_UNK_1FD
 	scrcmd_100 7
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 17
 	gotoif ne, scr_seq_00000091_000001FE
 	apply_movement 7, scr_seq_00000091_00000290
@@ -194,7 +194,7 @@ scr_seq_00000091_00000221:
 	apply_movement 7, scr_seq_00000091_000002D8
 	wait_movement
 	callstd 2032
-	scrcmd_101 7
+	hide_person 7
 	setflag FLAG_UNK_1FD
 	releaseall
 	setvar VAR_UNK_40AC, 3
@@ -248,7 +248,7 @@ scr_seq_00000091_000002F0:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 23
 	gotoif ne, scr_seq_00000091_00000329
 	apply_movement 255, scr_seq_00000091_0000040C
@@ -274,20 +274,20 @@ scr_seq_00000091_00000331:
 	clearflag FLAG_UNK_1F4
 	scrcmd_100 8
 	setflag FLAG_UNK_280
-	scrcmd_101 18
+	hide_person 18
 	apply_movement 8, scr_seq_00000091_0000047C
 	wait_movement
 	msgbox 6
 	closemsg
-	scrcmd_213 488, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 488, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000091_00000405
 	msgbox 7
 	closemsg
 	apply_movement 8, scr_seq_00000091_000004A8
 	wait_movement
-	scrcmd_101 8
+	hide_person 8
 	setflag FLAG_UNK_1F4
 	apply_movement 9, scr_seq_00000091_000004E4
 	wait_movement
@@ -305,7 +305,7 @@ scr_seq_00000091_00000331:
 	scrcmd_602 1
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 4
-	scrcmd_101 9
+	hide_person 9
 	setflag FLAG_UNK_24A
 	clearflag FLAG_UNK_24B
 	releaseall

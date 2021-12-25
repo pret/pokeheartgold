@@ -17,7 +17,7 @@ scr_seq_00000240_00000016:
 	end
 
 scr_seq_00000240_00000027:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_00000240_0000005C
 	comparevartovalue VAR_TEMP_x4000, 2
@@ -48,23 +48,23 @@ scr_seq_00000240_00000092:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 0
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000240_00000197
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000240_000001AB
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 1
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, scr_seq_00000240_0000010B
 	apply_movement 255, scr_seq_00000240_000001C0
@@ -85,7 +85,7 @@ scr_seq_00000240_00000136:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000240_0000015D
 	apply_movement 253, scr_seq_00000240_00000200
@@ -99,24 +99,24 @@ scr_seq_00000240_0000015D:
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
 	clearflag FLAG_UNK_189
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 2
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 scr_seq_00000240_00000197:
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 5
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 scr_seq_00000240_000001AB:
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 3
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
@@ -155,18 +155,18 @@ scr_seq_00000240_00000200:
 	.short 1, 1
 	.short 254, 0
 scr_seq_00000240_00000210:
-	scrcmd_055 28, 1, 4, 32780
+	scrcmd_055 28, 1, 4, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
 scr_seq_00000240_00000227:
-	scrcmd_055 29, 1, 19, 32780
+	scrcmd_055 29, 1, 19, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 

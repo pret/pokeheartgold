@@ -29,7 +29,7 @@ scr_seq_00000893_0000003F:
 	end
 
 scr_seq_00000893_0000004C:
-	scrcmd_339 0, 4, 0, 6, 3
+	show_person_at 0, 4, 0, 6, 3
 	end
 
 scr_seq_00000893_0000005A:
@@ -45,7 +45,7 @@ scr_seq_00000893_0000005A:
 	end
 
 scr_seq_00000893_00000078:
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000893_00000096
 	msgbox 5

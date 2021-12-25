@@ -38,7 +38,7 @@ scr_seq_00000181_0000005F:
 scr_seq_00000181_0000006E:
 	msgbox 2
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000181_000000E3

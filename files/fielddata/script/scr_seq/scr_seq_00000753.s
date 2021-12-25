@@ -23,7 +23,7 @@ scr_seq_00000753_00000022:
 	gotoif eq, scr_seq_00000753_000000C9
 	msgbox 3
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000753_000000BE
@@ -39,7 +39,7 @@ scr_seq_00000753_00000022:
 	gotoif eq, scr_seq_00000753_000000BE
 	scrcmd_470 9
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_354 32772, 32773
+	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
 	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	gotoif ne, scr_seq_00000753_000000B1

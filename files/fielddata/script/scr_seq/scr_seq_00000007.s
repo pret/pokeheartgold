@@ -21,22 +21,22 @@ scr_seq_00000007_00000006:
 	scrcmd_191 1
 	msgbox 0
 	closemsg
-	scrcmd_206 32780
+	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
 	gotoif ne, scr_seq_00000007_0000005A
-	scrcmd_213 286, 0, 0, 0
+	trainer_battle 286, 0, 0, 0
 	goto scr_seq_00000007_0000007D
 
 scr_seq_00000007_0000005A:
 	comparevartovalue VAR_SPECIAL_x800C, 155
 	gotoif ne, scr_seq_00000007_00000075
-	scrcmd_213 287, 0, 0, 0
+	trainer_battle 287, 0, 0, 0
 	goto scr_seq_00000007_0000007D
 
 scr_seq_00000007_00000075:
-	scrcmd_213 285, 0, 0, 0
+	trainer_battle 285, 0, 0, 0
 scr_seq_00000007_0000007D:
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000007_000000C9
 	callstd 2070
@@ -46,7 +46,7 @@ scr_seq_00000007_0000007D:
 	closemsg
 	apply_movement 0, scr_seq_00000007_000000E8
 	wait_movement
-	scrcmd_101 0
+	hide_person 0
 	callstd 2071
 	setflag FLAG_UNK_25C
 	clearflag FLAG_UNK_2E0

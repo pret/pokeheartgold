@@ -9,7 +9,7 @@
 	scrdef_end
 
 scr_seq_00000245_0000000E:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_UNK_4118, 1
 	gotoif ne, scr_seq_00000245_0000002D
 	clearflag FLAG_UNK_1C4
@@ -105,7 +105,7 @@ scr_seq_00000245_00000138:
 	gotoif ne, scr_seq_00000245_00000231
 	checkflag FLAG_UNK_1C4
 	gotoif eq, scr_seq_00000245_000001BA
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -130,7 +130,7 @@ scr_seq_00000245_000001A8:
 	goto scr_seq_00000245_000001DC
 
 scr_seq_00000245_000001BA:
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

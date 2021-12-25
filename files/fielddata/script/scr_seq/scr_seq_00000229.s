@@ -15,7 +15,7 @@ scr_seq_00000229_00000012:
 	end
 
 scr_seq_00000229_00000021:
-	scrcmd_339 0, 5, 0, 6, 3
+	show_person_at 0, 5, 0, 6, 3
 	end
 
 scr_seq_00000229_0000002F:
@@ -50,8 +50,8 @@ scr_seq_00000229_0000002F:
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
 	scrcmd_081 0
-	scrcmd_078 1183
-	scrcmd_079
+	play_fanfare SEQ_ME_ASA
+	wait_fanfare
 	scrcmd_282
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
@@ -91,7 +91,7 @@ scr_seq_00000229_0000012A:
 	scrcmd_190 0
 	scrcmd_132 16, 17
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000229_00000189
@@ -128,7 +128,7 @@ scr_seq_00000229_0000019F:
 	gotoif lt, scr_seq_00000229_0000011F
 	msgbox 7
 	closemsg
-	scrcmd_386 16384
+	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, scr_seq_00000229_000001CE
 	apply_movement 0, scr_seq_00000229_000001F8
@@ -195,7 +195,7 @@ scr_seq_00000229_00000234:
 	apply_movement 0, scr_seq_00000229_000003E4
 	wait_movement
 	scrcmd_190 0
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000229_000002B0
 	setvar VAR_SPECIAL_x8004, 535
@@ -227,7 +227,7 @@ scr_seq_00000229_000002D8:
 	.short 13, 1
 	.short 254, 0
 scr_seq_00000229_000002E8:
-	scrcmd_080 1067
+	play_bgm SEQ_GS_OHKIDO
 	apply_movement 1, scr_seq_00000229_00000424
 	wait_movement
 	apply_movement 255, scr_seq_00000229_00000414
@@ -246,25 +246,25 @@ scr_seq_00000229_000002E8:
 	msgbox 12
 	scrcmd_291
 	setflag FLAG_UNK_06B
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	scrcmd_573
 	scrcmd_132 13, 14
 	closemsg
 	scrcmd_190 0
 	msgbox 15
 	scrcmd_146 2
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	closemsg
 	apply_movement 1, scr_seq_00000229_00000450
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_101 1
+	hide_person 1
 	wait_se SEQ_SE_DP_DOOR
-	scrcmd_084 0, 30
+	fade_out_bgm 0, 30
 	scrcmd_081 0
-	scrcmd_082
+	reset_bgm
 	releaseall
 	setvar VAR_UNK_4107, 1
 	scrcmd_280 2

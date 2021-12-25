@@ -75,7 +75,7 @@ scr_seq_00000131_000000CE:
 	faceplayer
 	comparevartovalue VAR_UNK_40FB, 8
 	gotoif eq, scr_seq_00000131_00000165
-	scrcmd_529 16389
+	scrcmd_529 VAR_TEMP_x4005
 	scrcmd_698 2, 16389, 16390
 	comparevartovalue VAR_TEMP_x4006, 1
 	gotoif eq, scr_seq_00000131_0000011A
@@ -93,7 +93,7 @@ scr_seq_00000131_0000011A:
 	gotoif eq, scr_seq_00000131_00000154
 	msgbox 0
 	closemsg
-	scrcmd_332 32772
+	scrcmd_332 VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 2
 	gotoif ge, scr_seq_00000131_00000154
 	apply_movement 0, scr_seq_00000131_000002CC
@@ -122,7 +122,7 @@ scr_seq_00000131_00000165:
 scr_seq_00000131_00000170:
 	setvar VAR_UNK_40FB, 8
 	setvar VAR_UNK_4104, 1
-	scrcmd_386 16386
+	scrcmd_386 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, scr_seq_00000131_0000019B
 	apply_movement 0, scr_seq_00000131_000002B4
@@ -387,7 +387,7 @@ scr_seq_00000131_00000512:
 scr_seq_00000131_00000514:
 	scrcmd_490 16393
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000131_0000063E
@@ -409,7 +409,7 @@ scr_seq_00000131_00000545:
 	end
 
 scr_seq_00000131_00000550:
-	scrcmd_332 32772
+	scrcmd_332 VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif eq, scr_seq_00000131_0000056D
 	scrcmd_490 16392
@@ -417,7 +417,7 @@ scr_seq_00000131_00000550:
 	return
 
 scr_seq_00000131_0000056D:
-	scrcmd_529 16384
+	scrcmd_529 VAR_TEMP_x4000
 	comparevartovalue VAR_UNK_4102, 1
 	gotoif ne, scr_seq_00000131_000005B2
 	scrcmd_698 1, 16384, 32780
@@ -496,9 +496,9 @@ scr_seq_00000131_00000659:
 scr_seq_00000131_0000065F:
 	scrcmd_820 0
 	setvar VAR_UNK_4104, 0
-	scrcmd_105 32772, 32773
-	scrcmd_102 32772, 32773
-	scrcmd_386 16386
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	scrcmd_386 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4009, 483
 	gotoif ne, scr_seq_00000131_00000691
 	goto scr_seq_00000131_000006B0
@@ -601,7 +601,7 @@ scr_seq_00000131_0000082B:
 	goto scr_seq_00000131_00000833
 
 scr_seq_00000131_00000833:
-	scrcmd_084 0, 30
+	fade_out_bgm 0, 30
 	play_se SEQ_SE_GS_TAMASYUTUGEN
 	scrcmd_816
 	scrcmd_074 2366
@@ -609,7 +609,7 @@ scr_seq_00000131_00000833:
 	comparevartovalue VAR_UNK_40FB, 14
 	gotoif eq, scr_seq_00000131_0000086E
 	scrcmd_099 0
-	scrcmd_339 0, 16, 1, 28, 0
+	show_person_at 0, 16, 1, 28, 0
 	wait 5, VAR_SPECIAL_x800C
 	scrcmd_098 0
 scr_seq_00000131_0000086E:
@@ -630,8 +630,8 @@ scr_seq_00000131_000008AC:
 	wait 150, VAR_SPECIAL_x800C
 	scrcmd_174 6, 30, 1, 0
 	scrcmd_175
-	scrcmd_105 32772, 32773
-	scrcmd_102 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_490 32772
 	scrcmd_490 32773
 	apply_movement 241, scr_seq_00000131_00000CF0
@@ -660,14 +660,14 @@ scr_seq_00000131_0000090F:
 	scrcmd_490 16393
 	scrcmd_190 0
 	scrcmd_202 1, 16393, 0, 0
-	scrcmd_078 1188
+	play_fanfare SEQ_ME_SHINKAOME
 	msgbox 26
-	scrcmd_079
+	wait_fanfare
 	closemsg
 	apply_movement 241, scr_seq_00000131_00000CF8
 	wait_movement
 	scrcmd_103
-	scrcmd_082
+	reset_bgm
 	scrcmd_490 16393
 	comparevartovalue VAR_TEMP_x4009, 483
 	gotoif ne, scr_seq_00000131_0000097B
@@ -688,7 +688,7 @@ scr_seq_00000131_000009A2:
 scr_seq_00000131_000009B6:
 	scrcmd_746
 	msgbox 32
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	scrcmd_815 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -728,7 +728,7 @@ scr_seq_00000131_00000A4D:
 	scrcmd_175
 	comparevartovalue VAR_UNK_40FB, 14
 	gotoif eq, scr_seq_00000131_00000AAA
-	scrcmd_529 16389
+	scrcmd_529 VAR_TEMP_x4005
 	scrcmd_698 2, 16389, 16390
 	comparevartovalue VAR_TEMP_x4006, 1
 	gotoif ne, scr_seq_00000131_00000AA0
@@ -791,12 +791,12 @@ scr_seq_00000131_00000BAE:
 	end
 
 scr_seq_00000131_00000BB2:
-	scrcmd_332 32780
+	scrcmd_332 VAR_SPECIAL_x800C
 	subvar VAR_SPECIAL_x800C, 1
 	setvar VAR_TEMP_x4008, 0
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_173 32780, 16392
+	scrcmd_173 VAR_SPECIAL_x800C, VAR_TEMP_x4008
 	scrcmd_819
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175

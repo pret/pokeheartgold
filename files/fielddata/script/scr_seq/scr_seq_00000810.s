@@ -39,7 +39,7 @@ scr_seq_00000810_00000044:
 	lockall
 	faceplayer
 	msgbox 2
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000810_0000006E
 	apply_movement 6, scr_seq_00000810_0000009C

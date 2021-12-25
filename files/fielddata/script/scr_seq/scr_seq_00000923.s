@@ -34,7 +34,7 @@ scr_seq_00000923_00000022:
 	apply_movement 4, scr_seq_00000923_000000AC
 	apply_movement 255, scr_seq_00000923_000000C0
 	wait_movement
-	scrcmd_101 4
+	hide_person 4
 	setflag FLAG_UNK_1C5
 	clearflag FLAG_UNK_23E
 	setflag FLAG_UNK_976

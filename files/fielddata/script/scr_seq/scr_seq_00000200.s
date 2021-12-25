@@ -15,7 +15,7 @@ scr_seq_00000200_00000006:
 	gotoif ne, scr_seq_00000200_0000004C
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000200_00000057

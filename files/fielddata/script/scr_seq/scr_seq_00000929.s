@@ -15,7 +15,7 @@ scr_seq_00000929_0000000A:
 	gotoif eq, scr_seq_00000929_00000078
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000929_00000044
@@ -61,7 +61,7 @@ scr_seq_00000929_00000098:
 	faceplayer
 	msgbox 5
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000929_000000C7
@@ -72,7 +72,7 @@ scr_seq_00000929_00000098:
 scr_seq_00000929_000000C7:
 	msgbox 6
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000929_000000EE

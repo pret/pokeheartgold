@@ -53,22 +53,22 @@ scr_seq_00000822_00000068:
 	closemsg
 	comparevartovalue VAR_UNK_4135, 8
 	gotoif lt, scr_seq_00000822_0000009E
-	scrcmd_213 704, 0, 0, 0
+	trainer_battle 704, 0, 0, 0
 	goto scr_seq_00000822_000000A6
 
 scr_seq_00000822_0000009E:
-	scrcmd_213 418, 0, 0, 0
+	trainer_battle 418, 0, 0, 0
 scr_seq_00000822_000000A6:
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000822_000000DF
 	setflag FLAG_UNK_0E6
 	msgbox 1
 	closemsg
 	play_se SEQ_SE_DP_KI_GASYAN
-	scrcmd_101 2
-	scrcmd_101 3
-	scrcmd_101 4
+	hide_person 2
+	hide_person 3
+	hide_person 4
 	releaseall
 	end
 

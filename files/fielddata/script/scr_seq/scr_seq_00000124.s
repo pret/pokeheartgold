@@ -266,7 +266,7 @@ scr_seq_00000124_000003DB:
 	closemsg
 	scrcmd_747
 	scrcmd_081 0
-	scrcmd_082
+	reset_bgm
 	scrcmd_726
 	releaseall
 	end

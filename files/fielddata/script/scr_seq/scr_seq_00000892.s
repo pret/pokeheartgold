@@ -17,7 +17,7 @@ scr_seq_00000892_0000000E:
 	scrcmd_190 0
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000892_0000004B
@@ -26,7 +26,7 @@ scr_seq_00000892_0000000E:
 	end
 
 scr_seq_00000892_0000004B:
-	scrcmd_332 32773
+	scrcmd_332 VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 6
 	gotoif eq, scr_seq_00000892_000000DE
 	msgbox 1
@@ -34,11 +34,11 @@ scr_seq_00000892_0000004B:
 	setflag FLAG_UNK_095
 	scrcmd_190 0
 	msgbox 2
-	scrcmd_078 1187
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGET
+	wait_fanfare
 	msgbox 7
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000892_000000A0
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -48,7 +48,7 @@ scr_seq_00000892_000000A0:
 	setvar VAR_TEMP_x4000, 0
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_173 32773, 16384
+	scrcmd_173 VAR_SPECIAL_x8005, VAR_TEMP_x4000
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
 scr_seq_00000892_000000C6:
@@ -117,7 +117,7 @@ scr_seq_00000892_0000011F:
 scr_seq_00000892_00000152:
 	msgbox 12
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000892_00000179
@@ -129,8 +129,8 @@ scr_seq_00000892_00000179:
 	scrcmd_190 0
 	msgbox 13
 	scrcmd_146 9
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	waitbutton
 	closemsg
 	releaseall

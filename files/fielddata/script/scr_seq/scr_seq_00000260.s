@@ -13,7 +13,7 @@
 scr_seq_00000260_00000016:
 	setvar VAR_UNK_40EB, 1
 	setflag FLAG_UNK_9C9
-	scrcmd_495 16384
+	scrcmd_495 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, scr_seq_00000260_0000004F
 	scrcmd_342 4, 87, 385
@@ -48,7 +48,7 @@ scr_seq_00000260_000000B2:
 	scrcmd_142 32, 16385
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_00000260_000000E6
-	scrcmd_484 16386
+	scrcmd_484 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, scr_seq_00000260_000000E0
 	clearflag FLAG_UNK_304
@@ -74,7 +74,7 @@ scr_seq_00000260_0000010A:
 scr_seq_00000260_0000010C:
 	comparevartovalue VAR_UNK_40F9, 5
 	gotoif ge, scr_seq_00000260_00000162
-	scrcmd_495 16384
+	scrcmd_495 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, scr_seq_00000260_00000148
 	scrcmd_342 4, 87, 385
@@ -125,7 +125,7 @@ scr_seq_00000260_000001A9:
 	apply_movement 5, scr_seq_00000260_0000022C
 	wait_movement
 	msgbox 3
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000260_000001EB
 	apply_movement 5, scr_seq_00000260_00000234
@@ -175,11 +175,11 @@ scr_seq_00000260_0000024C:
 	faceplayer
 	msgbox 5
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000260_000002B5
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000260_000002C0
 	msgbox 6

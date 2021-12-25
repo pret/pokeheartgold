@@ -56,23 +56,23 @@ scr_seq_00000917_0000008F:
 	setflag FLAG_UNK_AB9
 	scrcmd_580 0, 32768
 	msgbox 6
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	msgbox 11
-	scrcmd_079
+	wait_fanfare
 	comparevartovalue VAR_SPECIAL_x8001, 0
 	gotoif eq, scr_seq_00000917_000000EB
 	scrcmd_580 0, 32769
 	msgbox 7
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	msgbox 11
-	scrcmd_079
+	wait_fanfare
 	comparevartovalue VAR_SPECIAL_x8002, 0
 	gotoif eq, scr_seq_00000917_000000EB
 	scrcmd_580 0, 32770
 	msgbox 8
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	msgbox 11
-	scrcmd_079
+	wait_fanfare
 	msgbox 9
 scr_seq_00000917_000000E3:
 	waitbutton

@@ -22,7 +22,7 @@ scr_seq_00000233_0000001E:
 	gotoif eq, scr_seq_00000233_0000008C
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000233_00000058
@@ -72,7 +72,7 @@ scr_seq_00000233_000000AC:
 	gotoif eq, scr_seq_00000233_00000121
 	msgbox 7
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000233_000000E0

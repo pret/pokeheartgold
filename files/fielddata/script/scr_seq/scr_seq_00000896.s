@@ -17,8 +17,8 @@ scr_seq_00000896_00000012:
 	scrcmd_688 16384, 492
 	comparevartovalue VAR_TEMP_x4000, 255
 	gotoif eq, scr_seq_00000896_00000058
-	scrcmd_529 16384
-	scrcmd_354 16384, 16385
+	scrcmd_529 VAR_TEMP_x4000
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 492
 	gotoif ne, scr_seq_00000896_00000058
 	setvar VAR_UNK_4082, 1
@@ -111,7 +111,7 @@ scr_seq_00000896_0000014C:
 scr_seq_00000896_00000154:
 	checkflag FLAG_UNK_0B5
 	gotoif eq, scr_seq_00000896_000001E5
-	scrcmd_294 2, 16384
+	scrcmd_294 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_00000896_00000185
 	play_se SEQ_SE_DP_SELECT
@@ -285,8 +285,8 @@ scr_seq_00000896_000003B5:
 	scrcmd_688 32780, 492
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000896_000003F2
-	scrcmd_529 16384
-	scrcmd_354 16384, 16385
+	scrcmd_529 VAR_TEMP_x4000
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 492
 	gotoif eq, scr_seq_00000896_00000432
 scr_seq_00000896_000003F2:
@@ -300,8 +300,8 @@ scr_seq_00000896_000003FD:
 	scrcmd_688 32780, 492
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000896_000003F2
-	scrcmd_529 16384
-	scrcmd_354 16384, 16385
+	scrcmd_529 VAR_TEMP_x4000
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 492
 	gotoif ne, scr_seq_00000896_000003F2
 	msgbox 7
@@ -315,7 +315,7 @@ scr_seq_00000896_00000432:
 	wait_movement
 	msgbox 5
 	closemsg
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000896_00000460
 	apply_movement 1, scr_seq_00000896_00000134

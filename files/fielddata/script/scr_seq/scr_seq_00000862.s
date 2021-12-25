@@ -17,7 +17,7 @@ scr_seq_00000862_00000022:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000862_00000049
 	apply_movement 0, scr_seq_00000862_00000164
@@ -41,7 +41,7 @@ scr_seq_00000862_00000087:
 	wait_movement
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000862_000000B0
@@ -52,7 +52,7 @@ scr_seq_00000862_00000087:
 scr_seq_00000862_000000B0:
 	msgbox 1
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000862_000000D7
@@ -63,7 +63,7 @@ scr_seq_00000862_000000B0:
 scr_seq_00000862_000000D7:
 	msgbox 2
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000862_000000FE
@@ -74,7 +74,7 @@ scr_seq_00000862_000000D7:
 scr_seq_00000862_000000FE:
 	msgbox 3
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000862_00000125
@@ -85,7 +85,7 @@ scr_seq_00000862_000000FE:
 scr_seq_00000862_00000125:
 	msgbox 4
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000862_0000014C
@@ -236,17 +236,17 @@ scr_seq_00000862_000002ED:
 	faceplayer
 	msgbox 19
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000862_00000353
 	msgbox 20
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000862_00000353
 	msgbox 21
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000862_00000353
 	msgbox 22

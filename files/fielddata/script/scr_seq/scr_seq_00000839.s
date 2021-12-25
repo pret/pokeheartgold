@@ -9,8 +9,8 @@
 scr_seq_00000839_00000006:
 	scrcmd_609
 	lockall
-	scrcmd_529 16384
-	scrcmd_354 16384, 16385
+	scrcmd_529 VAR_TEMP_x4000
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 479
 	gotoif ne, scr_seq_00000839_0000018C
 	scrcmd_602 0
@@ -67,7 +67,7 @@ scr_seq_00000839_000000F4:
 	wait_se SEQ_SE_DP_SELECT
 	scrcmd_488 32772, 1
 scr_seq_00000839_000000FE:
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000839_00000142
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -125,7 +125,7 @@ scr_seq_00000839_0000018C:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000839_000001C5
 	apply_movement 253, scr_seq_00000839_00000160

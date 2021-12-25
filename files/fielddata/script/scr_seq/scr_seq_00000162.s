@@ -24,11 +24,11 @@ scr_seq_00000162_0000002F:
 	scrcmd_609
 	lockall
 	setflag FLAG_UNK_0ED
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 19
 	gotoif eq, scr_seq_00000162_00000088
 	apply_movement 1, scr_seq_00000162_000000C4
-	scrcmd_729 16386
+	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, scr_seq_00000162_0000006B
 	apply_movement 253, scr_seq_00000162_00000114
@@ -121,14 +121,14 @@ scr_seq_00000162_00000153:
 	faceplayer
 	apply_movement 0, scr_seq_00000162_0000020C
 	wait_movement
-	scrcmd_729 16386
+	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, scr_seq_00000162_00000180
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
 scr_seq_00000162_00000180:
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000162_000001A7
 	apply_movement 255, scr_seq_00000162_00000218

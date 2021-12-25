@@ -41,7 +41,7 @@ scr_seq_00000100_00000062:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40AB, 1
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000100_00000093
 	apply_movement 255, scr_seq_00000100_00000118

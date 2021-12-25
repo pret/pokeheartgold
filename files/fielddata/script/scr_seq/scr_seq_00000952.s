@@ -114,7 +114,7 @@ scr_seq_00000952_00000118:
 	gotoif eq, scr_seq_00000952_00000186
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -125,7 +125,7 @@ scr_seq_00000952_00000118:
 	closemsg
 	scrcmd_784 4, 1
 	scrcmd_808 16384
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	callif eq, scr_seq_00000952_00000191
 	setflagvar VAR_TEMP_x4001
@@ -141,8 +141,8 @@ scr_seq_00000952_00000186:
 
 scr_seq_00000952_00000191:
 	msgbox 2
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	closemsg
 	scrcmd_555 1
 	return

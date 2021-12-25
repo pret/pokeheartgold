@@ -60,7 +60,7 @@ scr_seq_00000230_00000098:
 	scrcmd_351 16384
 	comparevartovalue VAR_TEMP_x4000, 255
 	gotoif eq, scr_seq_00000230_00000206
-	scrcmd_354 16384, 16385
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, scr_seq_00000230_0000021F
 	scrcmd_426 32780, 16384, 0
@@ -78,7 +78,7 @@ scr_seq_00000230_00000098:
 	scrcmd_150
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000230_00000149
 	apply_movement 255, scr_seq_00000230_000002BC
@@ -102,8 +102,8 @@ scr_seq_00000230_00000187:
 	wait_movement
 	scrcmd_190 0
 	msgbox 5
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 scr_seq_00000230_00000195:
 	msgbox 7
 	setvar VAR_UNK_4114, 2
@@ -185,8 +185,8 @@ scr_seq_00000230_0000026A:
 	closemsg
 	scrcmd_190 0
 	msgbox 6
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	scrcmd_428 16384
 	goto scr_seq_00000230_00000195
 
@@ -225,10 +225,10 @@ scr_seq_00000230_000002D4:
 	.short 35, 1
 	.short 254, 0
 scr_seq_00000230_000002DC:
-	scrcmd_055 13, 1, 2, 32780
+	scrcmd_055 13, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -236,7 +236,7 @@ scr_seq_00000230_000002F3:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 14, 32780
+	scrcmd_059 14, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 

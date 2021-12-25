@@ -100,7 +100,7 @@ scr_seq_00000075_00000142:
 	return
 
 scr_seq_00000075_00000148:
-	scrcmd_339 0, 8, 0, 3, 1
+	show_person_at 0, 8, 0, 3, 1
 	end
 
 scr_seq_00000075_00000156:
@@ -121,7 +121,7 @@ scr_seq_00000075_00000177:
 	scrcmd_190 0
 	msgbox 1
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000075_000001A3
@@ -181,7 +181,7 @@ scr_seq_00000075_00000246:
 	scrcmd_197 3, 32773
 	msgbox 6
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000075_000002B2
@@ -214,7 +214,7 @@ scr_seq_00000075_000002D3:
 	scrcmd_190 4
 	msgbox 15
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000075_0000031A
@@ -247,7 +247,7 @@ scr_seq_00000075_0000033E:
 	call scr_seq_00000075_00000216
 	msgbox 3
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000075_00000382
@@ -279,7 +279,7 @@ scr_seq_00000075_000003A3:
 	call scr_seq_00000075_00000216
 	msgbox 12
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000075_000003E7
@@ -311,7 +311,7 @@ scr_seq_00000075_00000408:
 	call scr_seq_00000075_00000216
 	msgbox 9
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000075_0000044C
@@ -388,7 +388,7 @@ scr_seq_00000075_000004E5:
 
 scr_seq_00000075_00000541:
 	setvar VAR_TEMP_x4000, 1
-	scrcmd_105 32768, 32769
+	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8000, 12
 	gotoif eq, scr_seq_00000075_00000562
 	goto scr_seq_00000075_00000574
@@ -411,7 +411,7 @@ scr_seq_00000075_00000584:
 	.byte 0x02, 0x00
 scr_seq_00000075_00000586:
 	setvar VAR_TEMP_x4000, 2
-	scrcmd_105 32768, 32769
+	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8000, 4
 	gotoif eq, scr_seq_00000075_000005A7
 	goto scr_seq_00000075_000005B9
@@ -434,7 +434,7 @@ scr_seq_00000075_000005C9:
 	.byte 0x02, 0x00
 scr_seq_00000075_000005CB:
 	setvar VAR_TEMP_x4000, 3
-	scrcmd_105 32768, 32769
+	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8001, 7
 	gotoif eq, scr_seq_00000075_000005EC
 	goto scr_seq_00000075_000005FE
@@ -457,7 +457,7 @@ scr_seq_00000075_0000060E:
 	.byte 0x02, 0x00
 scr_seq_00000075_00000610:
 	setvar VAR_TEMP_x4000, 4
-	scrcmd_105 32768, 32769
+	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8001, 9
 	gotoif eq, scr_seq_00000075_00000631
 	goto scr_seq_00000075_00000643
@@ -481,7 +481,7 @@ scr_seq_00000075_00000653:
 	.byte 0x02, 0x00
 scr_seq_00000075_00000655:
 	setvar VAR_TEMP_x4000, 5
-	scrcmd_105 32768, 32769
+	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8000, 8
 	gotoif eq, scr_seq_00000075_00000676
 	goto scr_seq_00000075_00000688

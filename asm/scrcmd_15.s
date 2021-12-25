@@ -115,8 +115,8 @@ ScrCmd_364: ; 0x0204D154
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_364
 
-	thumb_func_start ScrCmd_354
-ScrCmd_354: ; 0x0204D180
+	thumb_func_start ScrCmd_GetPartyMonSpecies
+ScrCmd_GetPartyMonSpecies: ; 0x0204D180
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -157,10 +157,10 @@ _0204D1D6:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_354
+	thumb_func_end ScrCmd_GetPartyMonSpecies
 
-	thumb_func_start ScrCmd_355
-ScrCmd_355: ; 0x0204D1DC
+	thumb_func_start ScrCmd_PartymonIsMine
+ScrCmd_PartymonIsMine: ; 0x0204D1DC
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -207,7 +207,7 @@ _0204D242:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_355
+	thumb_func_end ScrCmd_PartymonIsMine
 
 	thumb_func_start ScrCmd_138
 ScrCmd_138: ; 0x0204D248
@@ -2453,8 +2453,8 @@ _0204E4DA:
 	.balign 4, 0
 	thumb_func_end ScrCmd_701
 
-	thumb_func_start ScrCmd_827
-ScrCmd_827: ; 0x0204E4E0
+	thumb_func_start ScrCmd_GetPartymonForme
+ScrCmd_GetPartymonForme: ; 0x0204E4E0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -2484,7 +2484,7 @@ ScrCmd_827: ; 0x0204E4E0
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_827
+	thumb_func_end ScrCmd_GetPartymonForme
 
 	thumb_func_start ScrCmd_828
 ScrCmd_828: ; 0x0204E528

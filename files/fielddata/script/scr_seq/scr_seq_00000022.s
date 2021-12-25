@@ -22,7 +22,7 @@ scr_seq_00000022_0000001B:
 	scrcmd_147 37, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000022_00000084
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_00000022_00000067
 	clearflag FLAG_UNK_2CA
@@ -40,7 +40,7 @@ scr_seq_00000022_00000082:
 	end
 
 scr_seq_00000022_00000084:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_00000022_0000009F
 	clearflag FLAG_UNK_2CA
@@ -67,7 +67,7 @@ scr_seq_00000022_000000AB:
 	msgbox 0
 scr_seq_00000022_000000D6:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000022_000000FA
@@ -78,8 +78,8 @@ scr_seq_00000022_000000D6:
 scr_seq_00000022_000000FA:
 	scrcmd_190 0
 	msgbox 1
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	scrcmd_146 37
 	msgbox 2
 	waitbutton
@@ -87,7 +87,7 @@ scr_seq_00000022_000000FA:
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
 	setflag FLAG_UNK_2CA
-	scrcmd_101 0
+	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -112,11 +112,11 @@ scr_seq_00000022_00000157:
 scr_seq_00000022_00000159:
 	msgbox 5
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000022_000001BA
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000022_000001C5
 	msgbox 6

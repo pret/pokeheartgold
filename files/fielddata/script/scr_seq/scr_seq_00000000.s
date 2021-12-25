@@ -23,7 +23,7 @@ scr_seq_00000000_00000021:
 	lockall
 	msgbox 9
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000000_00000050

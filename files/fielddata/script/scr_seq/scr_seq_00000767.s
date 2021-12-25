@@ -54,10 +54,10 @@ scr_seq_00000767_0000005B:
 	end
 
 scr_seq_00000767_0000006E:
-	scrcmd_055 4, 0, 5, 32780
+	scrcmd_055 4, 0, 5, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -65,7 +65,7 @@ scr_seq_00000767_00000085:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 5, 32780
+	scrcmd_059 5, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -73,7 +73,7 @@ scr_seq_00000767_0000009A:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 6, 32780
+	scrcmd_059 6, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -81,7 +81,7 @@ scr_seq_00000767_000000AF:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 7, 32780
+	scrcmd_059 7, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

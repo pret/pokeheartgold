@@ -36,11 +36,11 @@ scr_seq_00000738_00000056:
 	gotoif eq, scr_seq_00000738_00000152
 	msgbox 1
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000738_00000147
-	scrcmd_332 32780
+	scrcmd_332 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000738_00000099
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -66,11 +66,11 @@ scr_seq_00000738_000000A7:
 	scrcmd_490 32772
 	comparevartovalue VAR_SPECIAL_x8004, 255
 	gotoif eq, scr_seq_00000738_00000147
-	scrcmd_354 32772, 16384
+	get_partymon_species VAR_SPECIAL_x8004, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_00000738_0000013C
 scr_seq_00000738_000000F0:
-	scrcmd_199 0, VAR_SPECIAL_x8004
+	bufferpartymonnick 0, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_FW367
 	msgbox 3
 	wait_se SEQ_SE_DP_FW367
@@ -116,15 +116,15 @@ scr_seq_00000738_0000015D:
 	msgbox 8
 scr_seq_00000738_0000016D:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000738_0000019D
 	scrcmd_146 31
 	scrcmd_190 0
 	msgbox 9
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	msgbox 10
 	waitbutton
 	closemsg

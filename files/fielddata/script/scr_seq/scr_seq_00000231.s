@@ -19,13 +19,13 @@ scr_seq_00000231_00000014:
 	apply_movement 2, scr_seq_00000231_0000028C
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_339 1, 10, 1, 7, 2
-	scrcmd_339 2, 10, 1, 7, 2
+	show_person_at 1, 10, 1, 7, 2
+	show_person_at 2, 10, 1, 7, 2
 	apply_movement 1, scr_seq_00000231_00000284
 	wait_movement
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_105 16384, 16385
-	scrcmd_729 16386
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
+	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ne, scr_seq_00000231_000000C3
 	comparevartovalue VAR_TEMP_x4001, 6
@@ -133,8 +133,8 @@ scr_seq_00000231_00000253:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_339 1, 12, 0, 28, 0
-	scrcmd_339 2, 12, 0, 28, 0
+	show_person_at 1, 12, 0, 28, 0
+	show_person_at 2, 12, 0, 28, 0
 	callstd 2030
 	releaseall
 	setvar VAR_UNK_4132, 1

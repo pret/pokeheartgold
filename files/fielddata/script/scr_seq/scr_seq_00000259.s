@@ -28,10 +28,10 @@ scr_seq_00000259_0000002C:
 	end
 
 scr_seq_00000259_00000037:
-	scrcmd_055 0, 1, 3, 32780
+	scrcmd_055 0, 1, 3, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -39,7 +39,7 @@ scr_seq_00000259_0000004E:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 1, 32780
+	scrcmd_059 1, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

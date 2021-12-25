@@ -28,7 +28,7 @@ scr_seq_00000038_00000020:
 	gotoif eq, scr_seq_00000038_00000081
 	msgbox 0
 	setflag FLAG_UNK_10F
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000038_00000077
 	apply_movement 0, scr_seq_00000038_0000009C
@@ -226,8 +226,8 @@ scr_seq_00000038_0000033C:
 scr_seq_00000038_00000345:
 	scrcmd_190 0
 	msgbox 16
-	scrcmd_078 1184
-	scrcmd_079
+	play_fanfare SEQ_ME_LVUP
+	wait_fanfare
 	addvar VAR_UNK_403E, 1
 	goto scr_seq_00000038_00000366
 

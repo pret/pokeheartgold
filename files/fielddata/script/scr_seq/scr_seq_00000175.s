@@ -16,8 +16,8 @@ scr_seq_00000175_00000016:
 	scrcmd_517 386, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000175_000002DF
-	scrcmd_529 16384
-	scrcmd_354 16384, 16385
+	scrcmd_529 VAR_TEMP_x4000
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 386
 	gotoif eq, scr_seq_00000175_00000050
 	scrcmd_518 3
@@ -27,8 +27,8 @@ scr_seq_00000175_00000050:
 	scrcmd_518 3
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_105 32774, 32775
-	scrcmd_386 32780
+	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
+	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -59,8 +59,8 @@ scr_seq_00000175_000000CD:
 	scrcmd_517 386, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000175_000002DF
-	scrcmd_529 16384
-	scrcmd_354 16384, 16385
+	scrcmd_529 VAR_TEMP_x4000
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 386
 	gotoif eq, scr_seq_00000175_00000107
 	scrcmd_518 2
@@ -70,8 +70,8 @@ scr_seq_00000175_00000107:
 	scrcmd_518 2
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_105 32774, 32775
-	scrcmd_386 32780
+	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
+	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -108,8 +108,8 @@ scr_seq_00000175_0000019B:
 	scrcmd_517 386, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000175_000002DF
-	scrcmd_529 16384
-	scrcmd_354 16384, 16385
+	scrcmd_529 VAR_TEMP_x4000
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 386
 	gotoif eq, scr_seq_00000175_000001D5
 	scrcmd_518 1
@@ -119,8 +119,8 @@ scr_seq_00000175_000001D5:
 	scrcmd_518 1
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_105 32774, 32775
-	scrcmd_386 32780
+	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
+	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -144,8 +144,8 @@ scr_seq_00000175_0000023B:
 	scrcmd_517 386, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000175_000002DF
-	scrcmd_529 16384
-	scrcmd_354 16384, 16385
+	scrcmd_529 VAR_TEMP_x4000
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 386
 	gotoif eq, scr_seq_00000175_00000275
 	scrcmd_518 0
@@ -155,8 +155,8 @@ scr_seq_00000175_00000275:
 	scrcmd_518 0
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_105 32774, 32775
-	scrcmd_386 32780
+	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
+	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -190,7 +190,7 @@ scr_seq_00000175_000002EA:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 0, 32780
+	scrcmd_059 0, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

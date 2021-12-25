@@ -23672,8 +23672,8 @@ _02066A72:
 _02066A78: .word 0x0000099D
 	thumb_func_end sub_02066A64
 
-	thumb_func_start sub_02066A7C
-sub_02066A7C: ; 0x02066A7C
+	thumb_func_start SetScriptVar
+SetScriptVar: ; 0x02066A7C
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
@@ -23699,10 +23699,10 @@ _02066AA4:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02066A7C
+	thumb_func_end SetScriptVar
 
-	thumb_func_start sub_02066AAC
-sub_02066AAC: ; 0x02066AAC
+	thumb_func_start GetScriptVar
+GetScriptVar: ; 0x02066AAC
 	push {r3, lr}
 	bl GetVarAddr
 	cmp r0, #0
@@ -23713,55 +23713,55 @@ _02066ABA:
 	ldrh r0, [r0]
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02066AAC
+	thumb_func_end GetScriptVar
 
 	thumb_func_start sub_02066AC0
 sub_02066AC0: ; 0x02066AC0
-	ldr r3, _02066AC8 ; =sub_02066A7C
+	ldr r3, _02066AC8 ; =SetScriptVar
 	add r2, r1, #0
 	ldr r1, _02066ACC ; =0x0000403F
 	bx r3
 	.balign 4, 0
-_02066AC8: .word sub_02066A7C
+_02066AC8: .word SetScriptVar
 _02066ACC: .word 0x0000403F
 	thumb_func_end sub_02066AC0
 
 	thumb_func_start sub_02066AD0
 sub_02066AD0: ; 0x02066AD0
-	ldr r3, _02066AD8 ; =sub_02066AAC
+	ldr r3, _02066AD8 ; =GetScriptVar
 	ldr r1, _02066ADC ; =0x0000403F
 	bx r3
 	nop
-_02066AD8: .word sub_02066AAC
+_02066AD8: .word GetScriptVar
 _02066ADC: .word 0x0000403F
 	thumb_func_end sub_02066AD0
 
-	thumb_func_start sub_02066AE0
-sub_02066AE0: ; 0x02066AE0
-	ldr r3, _02066AE8 ; =sub_02066A7C
+	thumb_func_start SetStarterToScriptState
+SetStarterToScriptState: ; 0x02066AE0
+	ldr r3, _02066AE8 ; =SetScriptVar
 	add r2, r1, #0
 	ldr r1, _02066AEC ; =0x00004030
 	bx r3
 	.balign 4, 0
-_02066AE8: .word sub_02066A7C
+_02066AE8: .word SetScriptVar
 _02066AEC: .word 0x00004030
-	thumb_func_end sub_02066AE0
+	thumb_func_end SetStarterToScriptState
 
-	thumb_func_start sub_02066AF0
-sub_02066AF0: ; 0x02066AF0
-	ldr r3, _02066AF8 ; =sub_02066AAC
+	thumb_func_start GetStarterFromScriptState
+GetStarterFromScriptState: ; 0x02066AF0
+	ldr r3, _02066AF8 ; =GetScriptVar
 	ldr r1, _02066AFC ; =0x00004030
 	bx r3
 	nop
-_02066AF8: .word sub_02066AAC
+_02066AF8: .word GetScriptVar
 _02066AFC: .word 0x00004030
-	thumb_func_end sub_02066AF0
+	thumb_func_end GetStarterFromScriptState
 
 	thumb_func_start sub_02066B00
 sub_02066B00: ; 0x02066B00
 	push {r3, lr}
 	ldr r1, _02066B20 ; =0x00004030
-	bl sub_02066AAC
+	bl GetScriptVar
 	ldr r2, _02066B24 ; =0x00000183
 	cmp r0, r2
 	bne _02066B12
@@ -23784,7 +23784,7 @@ _02066B24: .word 0x00000183
 sub_02066B28: ; 0x02066B28
 	push {r3, lr}
 	ldr r1, _02066B48 ; =0x00004030
-	bl sub_02066AAC
+	bl GetScriptVar
 	ldr r2, _02066B4C ; =0x00000183
 	cmp r0, r2
 	bne _02066B3A
@@ -23805,32 +23805,32 @@ _02066B4C: .word 0x00000183
 
 	thumb_func_start sub_02066B50
 sub_02066B50: ; 0x02066B50
-	ldr r3, _02066B58 ; =sub_02066AAC
+	ldr r3, _02066B58 ; =GetScriptVar
 	ldr r1, _02066B5C ; =0x00004035
 	bx r3
 	nop
-_02066B58: .word sub_02066AAC
+_02066B58: .word GetScriptVar
 _02066B5C: .word 0x00004035
 	thumb_func_end sub_02066B50
 
 	thumb_func_start sub_02066B60
 sub_02066B60: ; 0x02066B60
-	ldr r3, _02066B68 ; =sub_02066A7C
+	ldr r3, _02066B68 ; =SetScriptVar
 	add r2, r1, #0
 	ldr r1, _02066B6C ; =0x00004035
 	bx r3
 	.balign 4, 0
-_02066B68: .word sub_02066A7C
+_02066B68: .word SetScriptVar
 _02066B6C: .word 0x00004035
 	thumb_func_end sub_02066B60
 
 	thumb_func_start sub_02066B70
 sub_02066B70: ; 0x02066B70
-	ldr r3, _02066B78 ; =sub_02066AAC
+	ldr r3, _02066B78 ; =GetScriptVar
 	ldr r1, _02066B7C ; =0x0000403E
 	bx r3
 	nop
-_02066B78: .word sub_02066AAC
+_02066B78: .word GetScriptVar
 _02066B7C: .word 0x0000403E
 	thumb_func_end sub_02066B70
 
@@ -23865,7 +23865,7 @@ sub_02066B9C: ; 0x02066B9C
 	lsl r1, r1, #0x10
 	add r0, r5, #0
 	lsr r1, r1, #0x10
-	bl sub_02066A7C
+	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	nop
 _02066BBC: .word 0x00004043
@@ -23879,7 +23879,7 @@ sub_02066BC0: ; 0x02066BC0
 	add r1, r4, r1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_02066AAC
+	bl GetScriptVar
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02066B80
@@ -23903,7 +23903,7 @@ sub_02066BE8: ; 0x02066BE8
 	add r1, r1, r3
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_02066A7C
+	bl SetScriptVar
 _02066BFA:
 	pop {r3, pc}
 	.balign 4, 0
@@ -23949,7 +23949,7 @@ _02066C2C:
 	add r0, r5, #0
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x10
-	bl sub_02066A7C
+	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02066C48: .word 0x00004036
@@ -23972,7 +23972,7 @@ _02066C5C:
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_02066A7C
+	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	nop
 _02066C70: .word 0x00004036
@@ -23994,7 +23994,7 @@ _02066C84:
 	add r1, r4, r1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_02066AAC
+	bl GetScriptVar
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02066C00
@@ -24017,13 +24017,13 @@ sub_02066CAC: ; 0x02066CAC
 	ldr r1, _02066CCC ; =0x0000403C
 	lsr r2, r2, #0x10
 	add r5, r0, #0
-	bl sub_02066A7C
+	bl SetScriptVar
 	lsr r2, r4, #0x10
 	lsl r2, r2, #0x10
 	ldr r1, _02066CCC ; =0x0000403C
 	add r0, r5, #0
 	lsr r2, r2, #0x10
-	bl sub_02066A7C
+	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02066CCC: .word 0x0000403C
@@ -24034,11 +24034,11 @@ sub_02066CD0: ; 0x02066CD0
 	push {r3, r4, r5, lr}
 	ldr r1, _02066CEC ; =0x0000403C
 	add r5, r0, #0
-	bl sub_02066AAC
+	bl GetScriptVar
 	add r4, r0, #0
 	ldr r1, _02066CF0 ; =0x0000403D
 	add r0, r5, #0
-	bl sub_02066AAC
+	bl GetScriptVar
 	lsl r0, r0, #0x10
 	orr r0, r4
 	pop {r3, r4, r5, pc}
@@ -24086,22 +24086,22 @@ _02066D3C: .word 0x00003039
 
 	thumb_func_start sub_02066D40
 sub_02066D40: ; 0x02066D40
-	ldr r3, _02066D48 ; =sub_02066AAC
+	ldr r3, _02066D48 ; =GetScriptVar
 	ldr r1, _02066D4C ; =0x00004041
 	bx r3
 	nop
-_02066D48: .word sub_02066AAC
+_02066D48: .word GetScriptVar
 _02066D4C: .word 0x00004041
 	thumb_func_end sub_02066D40
 
 	thumb_func_start sub_02066D50
 sub_02066D50: ; 0x02066D50
-	ldr r3, _02066D58 ; =sub_02066A7C
+	ldr r3, _02066D58 ; =SetScriptVar
 	add r2, r1, #0
 	ldr r1, _02066D5C ; =0x00004041
 	bx r3
 	.balign 4, 0
-_02066D58: .word sub_02066A7C
+_02066D58: .word SetScriptVar
 _02066D5C: .word 0x00004041
 	thumb_func_end sub_02066D50
 
@@ -24126,7 +24126,7 @@ sub_02066D80: ; 0x02066D80
 	push {r4, lr}
 	ldr r1, _02066DA0 ; =0x00004042
 	add r4, r0, #0
-	bl sub_02066AAC
+	bl GetScriptVar
 	ldr r2, _02066DA4 ; =0x00002710
 	cmp r0, r2
 	bhs _02066D96
@@ -24136,7 +24136,7 @@ sub_02066D80: ; 0x02066D80
 _02066D96:
 	ldr r1, _02066DA0 ; =0x00004042
 	add r0, r4, #0
-	bl sub_02066A7C
+	bl SetScriptVar
 	pop {r4, pc}
 	.balign 4, 0
 _02066DA0: .word 0x00004042
@@ -24145,113 +24145,113 @@ _02066DA4: .word 0x00002710
 
 	thumb_func_start sub_02066DA8
 sub_02066DA8: ; 0x02066DA8
-	ldr r3, _02066DB0 ; =sub_02066AAC
+	ldr r3, _02066DB0 ; =GetScriptVar
 	ldr r1, _02066DB4 ; =0x00004042
 	bx r3
 	nop
-_02066DB0: .word sub_02066AAC
+_02066DB0: .word GetScriptVar
 _02066DB4: .word 0x00004042
 	thumb_func_end sub_02066DA8
 
 	thumb_func_start sub_02066DB8
 sub_02066DB8: ; 0x02066DB8
-	ldr r3, _02066DC0 ; =sub_02066AAC
+	ldr r3, _02066DC0 ; =GetScriptVar
 	ldr r1, _02066DC4 ; =0x0000404B
 	bx r3
 	nop
-_02066DC0: .word sub_02066AAC
+_02066DC0: .word GetScriptVar
 _02066DC4: .word 0x0000404B
 	thumb_func_end sub_02066DB8
 
 	thumb_func_start sub_02066DC8
 sub_02066DC8: ; 0x02066DC8
-	ldr r3, _02066DD0 ; =sub_02066A7C
+	ldr r3, _02066DD0 ; =SetScriptVar
 	add r2, r1, #0
 	ldr r1, _02066DD4 ; =0x0000404B
 	bx r3
 	.balign 4, 0
-_02066DD0: .word sub_02066A7C
+_02066DD0: .word SetScriptVar
 _02066DD4: .word 0x0000404B
 	thumb_func_end sub_02066DC8
 
 	thumb_func_start sub_02066DD8
 sub_02066DD8: ; 0x02066DD8
-	ldr r3, _02066DE0 ; =sub_02066AAC
+	ldr r3, _02066DE0 ; =GetScriptVar
 	ldr r1, _02066DE4 ; =0x0000404E
 	bx r3
 	nop
-_02066DE0: .word sub_02066AAC
+_02066DE0: .word GetScriptVar
 _02066DE4: .word 0x0000404E
 	thumb_func_end sub_02066DD8
 
 	thumb_func_start sub_02066DE8
 sub_02066DE8: ; 0x02066DE8
-	ldr r3, _02066DF0 ; =sub_02066AAC
+	ldr r3, _02066DF0 ; =GetScriptVar
 	ldr r1, _02066DF4 ; =0x0000404F
 	bx r3
 	nop
-_02066DF0: .word sub_02066AAC
+_02066DF0: .word GetScriptVar
 _02066DF4: .word 0x0000404F
 	thumb_func_end sub_02066DE8
 
 	thumb_func_start sub_02066DF8
 sub_02066DF8: ; 0x02066DF8
-	ldr r3, _02066E00 ; =sub_02066AAC
+	ldr r3, _02066E00 ; =GetScriptVar
 	ldr r1, _02066E04 ; =0x00004050
 	bx r3
 	nop
-_02066E00: .word sub_02066AAC
+_02066E00: .word GetScriptVar
 _02066E04: .word 0x00004050
 	thumb_func_end sub_02066DF8
 
 	thumb_func_start sub_02066E08
 sub_02066E08: ; 0x02066E08
-	ldr r3, _02066E10 ; =sub_02066AAC
+	ldr r3, _02066E10 ; =GetScriptVar
 	ldr r1, _02066E14 ; =0x00004051
 	bx r3
 	nop
-_02066E10: .word sub_02066AAC
+_02066E10: .word GetScriptVar
 _02066E14: .word 0x00004051
 	thumb_func_end sub_02066E08
 
 	thumb_func_start sub_02066E18
 sub_02066E18: ; 0x02066E18
-	ldr r3, _02066E20 ; =sub_02066AAC
+	ldr r3, _02066E20 ; =GetScriptVar
 	ldr r1, _02066E24 ; =0x0000404D
 	bx r3
 	nop
-_02066E20: .word sub_02066AAC
+_02066E20: .word GetScriptVar
 _02066E24: .word 0x0000404D
 	thumb_func_end sub_02066E18
 
 	thumb_func_start sub_02066E28
 sub_02066E28: ; 0x02066E28
-	ldr r3, _02066E30 ; =sub_02066AAC
+	ldr r3, _02066E30 ; =GetScriptVar
 	ldr r1, _02066E34 ; =0x0000404C
 	bx r3
 	nop
-_02066E30: .word sub_02066AAC
+_02066E30: .word GetScriptVar
 _02066E34: .word 0x0000404C
 	thumb_func_end sub_02066E28
 
 	thumb_func_start sub_02066E38
 sub_02066E38: ; 0x02066E38
-	ldr r3, _02066E40 ; =sub_02066A7C
+	ldr r3, _02066E40 ; =SetScriptVar
 	add r2, r1, #0
 	ldr r1, _02066E44 ; =0x0000404C
 	bx r3
 	.balign 4, 0
-_02066E40: .word sub_02066A7C
+_02066E40: .word SetScriptVar
 _02066E44: .word 0x0000404C
 	thumb_func_end sub_02066E38
 
 	thumb_func_start sub_02066E48
 sub_02066E48: ; 0x02066E48
-	ldr r3, _02066E50 ; =sub_02066AAC
+	ldr r3, _02066E50 ; =GetScriptVar
 	ldr r1, _02066E54 ; =0x00004052
 	bx r3
 	nop
-_02066E50: .word sub_02066AAC
+_02066E50: .word GetScriptVar
 _02066E54: .word 0x00004052
 	thumb_func_end sub_02066E48
 
@@ -24259,7 +24259,7 @@ _02066E54: .word 0x00004052
 sub_02066E58: ; 0x02066E58
 	push {r3, lr}
 	ldr r1, _02066E70 ; =0x00004077
-	bl sub_02066AAC
+	bl GetScriptVar
 	cmp r0, #2
 	blo _02066E68
 	cmp r0, #4
@@ -24276,22 +24276,22 @@ _02066E70: .word 0x00004077
 
 	thumb_func_start sub_02066E74
 sub_02066E74: ; 0x02066E74
-	ldr r3, _02066E7C ; =sub_02066AAC
+	ldr r3, _02066E7C ; =GetScriptVar
 	ldr r1, _02066E80 ; =0x00004057
 	bx r3
 	nop
-_02066E7C: .word sub_02066AAC
+_02066E7C: .word GetScriptVar
 _02066E80: .word 0x00004057
 	thumb_func_end sub_02066E74
 
 	thumb_func_start sub_02066E84
 sub_02066E84: ; 0x02066E84
-	ldr r3, _02066E8C ; =sub_02066A7C
+	ldr r3, _02066E8C ; =SetScriptVar
 	add r2, r1, #0
 	ldr r1, _02066E90 ; =0x00004057
 	bx r3
 	.balign 4, 0
-_02066E8C: .word sub_02066A7C
+_02066E8C: .word SetScriptVar
 _02066E90: .word 0x00004057
 	thumb_func_end sub_02066E84
 
@@ -24300,7 +24300,7 @@ sub_02066E94: ; 0x02066E94
 	push {r3, r4, r5, lr}
 	ldr r1, _02066EC8 ; =0x00004033
 	add r5, r0, #0
-	bl sub_02066AAC
+	bl GetScriptVar
 	add r4, r0, #0
 	bl LCRandom
 	mov r1, #0x1e
@@ -24317,7 +24317,7 @@ sub_02066E94: ; 0x02066E94
 _02066EBE:
 	ldr r1, _02066EC8 ; =0x00004033
 	add r0, r5, #0
-	bl sub_02066A7C
+	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02066EC8: .word 0x00004033
@@ -24325,11 +24325,11 @@ _02066EC8: .word 0x00004033
 
 	thumb_func_start sub_02066ECC
 sub_02066ECC: ; 0x02066ECC
-	ldr r3, _02066ED4 ; =sub_02066AAC
+	ldr r3, _02066ED4 ; =GetScriptVar
 	ldr r1, _02066ED8 ; =0x00004033
 	bx r3
 	nop
-_02066ED4: .word sub_02066AAC
+_02066ED4: .word GetScriptVar
 _02066ED8: .word 0x00004033
 	thumb_func_end sub_02066ECC
 

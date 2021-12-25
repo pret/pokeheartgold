@@ -39,7 +39,7 @@ scr_seq_00000930_00000065:
 	gotoif eq, scr_seq_00000930_0000010C
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000930_00000101
@@ -83,7 +83,7 @@ scr_seq_00000930_00000117:
 	gotoif eq, scr_seq_00000930_00000147
 	msgbox 3
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000930_0000009D
@@ -105,7 +105,7 @@ scr_seq_00000930_00000152:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 176
 	gotoif ne, scr_seq_00000930_00000193
 	apply_movement 0, scr_seq_00000930_00000284
@@ -124,7 +124,7 @@ scr_seq_00000930_000001A3:
 	gotoif eq, scr_seq_00000930_0000026D
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000930_000001DF
@@ -145,7 +145,7 @@ scr_seq_00000930_000001DF:
 	closemsg
 	setflag FLAG_UNK_163
 scr_seq_00000930_00000228:
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 176
 	gotoif ne, scr_seq_00000930_00000249
 	apply_movement 0, scr_seq_00000930_000002C4
@@ -252,10 +252,10 @@ scr_seq_00000930_00000318:
 	end
 
 scr_seq_00000930_0000032B:
-	scrcmd_055 17, 0, 19, 32780
+	scrcmd_055 17, 0, 19, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -263,7 +263,7 @@ scr_seq_00000930_00000342:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 18, 32780
+	scrcmd_059 18, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -271,7 +271,7 @@ scr_seq_00000930_00000357:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 19, 32780
+	scrcmd_059 19, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

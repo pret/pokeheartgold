@@ -93,10 +93,10 @@ scr_seq_00000144_00000121:
 	scrcmd_489 3, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000144_00000157
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	scrcmd_489 5, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
-	scrcmd_440 32773, 32774
-	scrcmd_079
+	scrcmd_440 VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
+	wait_fanfare
 	msgbox 20
 	waitbutton
 	scrcmd_489 4
@@ -104,7 +104,7 @@ scr_seq_00000144_00000121:
 
 scr_seq_00000144_00000157:
 	scrcmd_489 6, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
-	scrcmd_440 32773, 32774
+	scrcmd_440 VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	waitbutton
 	goto scr_seq_00000144_00000178
 

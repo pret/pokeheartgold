@@ -15,7 +15,7 @@ scr_seq_00000130_00000012:
 	end
 
 scr_seq_00000130_00000021:
-	scrcmd_339 0, 13, 1, 28, 0
+	show_person_at 0, 13, 1, 28, 0
 	end
 
 scr_seq_00000130_0000002F:
@@ -33,7 +33,7 @@ scr_seq_00000130_0000002F:
 	closemsg
 	apply_movement 0, scr_seq_00000130_000000A8
 	wait_movement
-	scrcmd_339 0, 13, 1, 28, 0
+	show_person_at 0, 13, 1, 28, 0
 	setvar VAR_UNK_40FB, 5
 	releaseall
 	end
@@ -76,7 +76,7 @@ scr_seq_00000130_000000B8:
 	scrcmd_308 77
 	apply_movement 0, scr_seq_00000130_00000114
 	wait_movement
-	scrcmd_101 0
+	hide_person 0
 	setflag FLAG_UNK_2DB
 	scrcmd_311 77
 	scrcmd_308 77
@@ -100,7 +100,7 @@ scr_seq_00000130_0000011C:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 7, 32780
+	scrcmd_059 7, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

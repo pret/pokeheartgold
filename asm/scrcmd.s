@@ -126,16 +126,16 @@ gScriptCmdTable:
 	.word ScrCmd_WaitSE                                    ; 075
 	.word ScrCmd_076                                    ; 076
 	.word ScrCmd_077                                    ; 077
-	.word ScrCmd_078                                    ; 078
+	.word ScrCmd_PlayFanfare                                    ; 078
 	.word ScrCmd_079                                    ; 079
-	.word ScrCmd_080                                    ; 080
+	.word ScrCmd_PlayBGM                                    ; 080
 	.word ScrCmd_081                                    ; 081
-	.word ScrCmd_082                                    ; 082
+	.word ScrCmd_ResetBGM                                    ; 082
 	.word ScrCmd_083                                    ; 083
-	.word ScrCmd_084                                    ; 084
+	.word ScrCmd_FadeOutBGM                                    ; 084
 	.word ScrCmd_085                                    ; 085
 	.word ScrCmd_086                                    ; 086
-	.word ScrCmd_087                                    ; 087
+	.word ScrCmd_TempBGM                                    ; 087
 	.word ScrCmd_088                                    ; 088
 	.word ScrCmd_089                                    ; 089
 	.word ScrCmd_090                                    ; 090
@@ -149,12 +149,12 @@ gScriptCmdTable:
 	.word ScrCmd_098                                    ; 098
 	.word ScrCmd_099                                    ; 099
 	.word ScrCmd_100                                    ; 100
-	.word ScrCmd_101                                    ; 101
+	.word ScrCmd_HidePerson                                    ; 101
 	.word ScrCmd_102                                    ; 102
 	.word ScrCmd_103                                    ; 103
 	.word ScrCmd_FacePlayer                                    ; 104
-	.word ScrCmd_105                                    ; 105
-	.word ScrCmd_106                                    ; 106
+	.word ScrCmd_GetPlayerCoords                                    ; 105
+	.word ScrCmd_GetPersonCoords                                    ; 106
 	.word ScrCmd_107                                    ; 107
 	.word ScrCmd_108                                    ; 108
 	.word ScrCmd_109                                    ; 109
@@ -179,7 +179,7 @@ gScriptCmdTable:
 	.word ScrCmd_HasItem                                ; 128
 	.word ScrCmd_ItemIsTMOrHM                           ; 129
 	.word ScrCmd_GetItemPocket                          ; 130
-	.word ScrCmd_131                                    ; 131
+	.word ScrCmd_SetStarterChoice                                    ; 131
 	.word ScrCmd_132                                    ; 132
 	.word ScrCmd_133                                    ; 133
 	.word ScrCmd_134                                    ; 134
@@ -193,7 +193,7 @@ gScriptCmdTable:
 	.word ScrCmd_142                                    ; 142
 	.word ScrCmd_143                                    ; 143
 	.word ScrCmd_144                                    ; 144
-	.word ScrCmd_145                                    ; 145
+	.word ScrCmd_RegisterPokegearCard                                    ; 145
 	.word ScrCmd_146                                    ; 146
 	.word ScrCmd_147                                    ; 147
 	.word ScrCmd_148                                    ; 148
@@ -247,21 +247,21 @@ gScriptCmdTable:
 	.word ScrCmd_196                                    ; 196
 	.word ScrCmd_197                                    ; 197
 	.word ScrCmd_198                                    ; 198
-	.word ScrCmd_199                                    ; 199
+	.word ScrCmd_BufferPartyMonNick                                    ; 199
 	.word ScrCmd_200                                    ; 200
 	.word ScrCmd_201                                    ; 201
 	.word ScrCmd_202                                    ; 202
 	.word ScrCmd_203                                    ; 203
 	.word ScrCmd_204                                    ; 204
 	.word ScrCmd_205                                    ; 205
-	.word ScrCmd_206                                    ; 206
+	.word ScrCmd_GetStarterChoice                                    ; 206
 	.word ScrCmd_207                                    ; 207
 	.word ScrCmd_208                                    ; 208
 	.word ScrCmd_209                                    ; 209
 	.word ScrCmd_210                                    ; 210
 	.word ScrCmd_211                                    ; 211
 	.word ScrCmd_212                                    ; 212
-	.word ScrCmd_213                                    ; 213
+	.word ScrCmd_TrainerBattle                                    ; 213
 	.word ScrCmd_214                                    ; 214
 	.word ScrCmd_215                                    ; 215
 	.word ScrCmd_216                                    ; 216
@@ -329,7 +329,7 @@ gScriptCmdTable:
 	.word ScrCmd_278                                    ; 278
 	.word ScrCmd_279                                    ; 279
 	.word ScrCmd_280                                    ; 280
-	.word ScrCmd_281                                    ; 281
+	.word ScrCmd_GetPlayerGender                                    ; 281
 	.word ScrCmd_282                                    ; 282
 	.word ScrCmd_283                                    ; 283
 	.word ScrCmd_284                                    ; 284
@@ -387,7 +387,7 @@ gScriptCmdTable:
 	.word ScrCmd_336                                    ; 336
 	.word ScrCmd_337                                    ; 337
 	.word ScrCmd_338                                    ; 338
-	.word ScrCmd_339                                    ; 339
+	.word ScrCmd_ShowPersonAt                                    ; 339
 	.word ScrCmd_340                                    ; 340
 	.word ScrCmd_341                                    ; 341
 	.word ScrCmd_342                                    ; 342
@@ -402,8 +402,8 @@ gScriptCmdTable:
 	.word ScrCmd_351                                    ; 351
 	.word ScrCmd_352                                    ; 352
 	.word ScrCmd_353                                    ; 353
-	.word ScrCmd_354                                    ; 354
-	.word ScrCmd_355                                    ; 355
+	.word ScrCmd_GetPartyMonSpecies                                    ; 354
+	.word ScrCmd_PartymonIsMine                                    ; 355
 	.word ScrCmd_356                                    ; 356
 	.word ScrCmd_357                                    ; 357
 	.word ScrCmd_358                                    ; 358
@@ -796,7 +796,7 @@ gScriptCmdTable:
 	.word ScrCmd_745                                    ; 745
 	.word ScrCmd_746                                    ; 746
 	.word ScrCmd_747                                    ; 747
-	.word ScrCmd_748                                    ; 748
+	.word ScrCmd_GetMenuChoice                                    ; 748
 	.word ScrCmd_749                                    ; 749
 	.word ScrCmd_750                                    ; 750
 	.word ScrCmd_751                                    ; 751
@@ -875,7 +875,7 @@ gScriptCmdTable:
 	.word ScrCmd_824                                    ; 824
 	.word ScrCmd_825                                    ; 825
 	.word ScrCmd_826                                    ; 826
-	.word ScrCmd_827                                    ; 827
+	.word ScrCmd_GetPartymonForme                                    ; 827
 	.word ScrCmd_828                                    ; 828
 	.word ScrCmd_829                                    ; 829
 	.word ScrCmd_830                                    ; 830
@@ -4036,8 +4036,8 @@ _02041FFA:
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ScrCmd_100
 
-	thumb_func_start ScrCmd_101
-ScrCmd_101: ; 0x02042000
+	thumb_func_start ScrCmd_HidePerson
+ScrCmd_HidePerson: ; 0x02042000
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -4061,7 +4061,7 @@ _0204202E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_101
+	thumb_func_end ScrCmd_HidePerson
 
 	thumb_func_start ScrCmd_102
 ScrCmd_102: ; 0x02042034
@@ -4356,8 +4356,8 @@ _020422AC:
 	.balign 4, 0
 	thumb_func_end ScrCmd_FacePlayer
 
-	thumb_func_start ScrCmd_105
-ScrCmd_105: ; 0x020422B4
+	thumb_func_start ScrCmd_GetPlayerCoords
+ScrCmd_GetPlayerCoords: ; 0x020422B4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -4386,10 +4386,10 @@ ScrCmd_105: ; 0x020422B4
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_105
+	thumb_func_end ScrCmd_GetPlayerCoords
 
-	thumb_func_start ScrCmd_106
-ScrCmd_106: ; 0x020422F8
+	thumb_func_start ScrCmd_GetPersonCoords
+ScrCmd_GetPersonCoords: ; 0x020422F8
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -4440,7 +4440,7 @@ _0204235A:
 _02042368:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_106
+	thumb_func_end ScrCmd_GetPersonCoords
 
 	thumb_func_start ScrCmd_386
 ScrCmd_386: ; 0x0204236C
@@ -6163,7 +6163,7 @@ ScrCmd_167: ; 0x020430C4
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0209600C
+	bl LaunchStarterChoiceScene
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -7245,8 +7245,8 @@ ScrCmd_211: ; 0x020438EC
 	.balign 4, 0
 	thumb_func_end ScrCmd_211
 
-	thumb_func_start ScrCmd_206
-ScrCmd_206: ; 0x02043938
+	thumb_func_start ScrCmd_GetStarterChoice
+ScrCmd_GetStarterChoice: ; 0x02043938
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -7260,15 +7260,15 @@ ScrCmd_206: ; 0x02043938
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066AF0
+	bl GetStarterFromScriptState
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_206
+	thumb_func_end ScrCmd_GetStarterChoice
 
-	thumb_func_start ScrCmd_131
-ScrCmd_131: ; 0x02043964
+	thumb_func_start ScrCmd_SetStarterChoice
+ScrCmd_SetStarterChoice: ; 0x02043964
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -7283,11 +7283,11 @@ ScrCmd_131: ; 0x02043964
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
 	add r1, r4, #0
-	bl sub_02066AE0
+	bl SetStarterToScriptState
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_131
+	thumb_func_end ScrCmd_SetStarterChoice
 
 	thumb_func_start ScrCmd_214
 ScrCmd_214: ; 0x02043990
@@ -8878,8 +8878,8 @@ ScrCmd_280: ; 0x020445CC
 	.balign 4, 0
 	thumb_func_end ScrCmd_280
 
-	thumb_func_start ScrCmd_281
-ScrCmd_281: ; 0x020445F8
+	thumb_func_start ScrCmd_GetPlayerGender
+ScrCmd_GetPlayerGender: ; 0x020445F8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -8899,7 +8899,7 @@ ScrCmd_281: ; 0x020445F8
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_281
+	thumb_func_end ScrCmd_GetPlayerGender
 
 	thumb_func_start ScrCmd_282
 ScrCmd_282: ; 0x02044628
@@ -9047,8 +9047,8 @@ ScrCmd_338: ; 0x020446EC
 	.balign 4, 0
 	thumb_func_end ScrCmd_338
 
-	thumb_func_start ScrCmd_339
-ScrCmd_339: ; 0x0204473C
+	thumb_func_start ScrCmd_ShowPersonAt
+ScrCmd_ShowPersonAt: ; 0x0204473C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -9108,7 +9108,7 @@ ScrCmd_339: ; 0x0204473C
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_339
+	thumb_func_end ScrCmd_ShowPersonAt
 
 	thumb_func_start ScrCmd_340
 ScrCmd_340: ; 0x020447CC
@@ -14189,14 +14189,14 @@ _02046F64:
 	.balign 4, 0
 	thumb_func_end ScrCmd_144
 
-	thumb_func_start ScrCmd_145
-ScrCmd_145: ; 0x02046F6C
+	thumb_func_start ScrCmd_RegisterPokegearCard
+ScrCmd_RegisterPokegearCard: ; 0x02046F6C
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	ldr r2, [r4, #8]
 	add r1, r2, #1
 	str r1, [r4, #8]
@@ -14210,19 +14210,19 @@ ScrCmd_145: ; 0x02046F6C
 	b _02046FA2
 _02046F92:
 	mov r1, #1
-	bl sub_0202EE00
+	bl Pokegear_RegisterCard
 	b _02046FA8
 _02046F9A:
 	mov r1, #2
-	bl sub_0202EE00
+	bl Pokegear_RegisterCard
 	b _02046FA8
 _02046FA2:
 	mov r1, #0
-	bl sub_0202EE00
+	bl Pokegear_RegisterCard
 _02046FA8:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_145
+	thumb_func_end ScrCmd_RegisterPokegearCard
 
 	thumb_func_start ScrCmd_804
 ScrCmd_804: ; 0x02046FAC
@@ -14233,7 +14233,7 @@ ScrCmd_804: ; 0x02046FAC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	ldrb r1, [r4]
 	bl sub_0202EE58
 	mov r0, #0
@@ -14247,7 +14247,7 @@ ScrCmd_146: ; 0x02046FC8
 	add r0, #0x80
 	ldr r0, [r0]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -14273,7 +14273,7 @@ ScrCmd_147: ; 0x02046FFC
 	add r0, #0x80
 	ldr r0, [r0]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -15276,8 +15276,8 @@ ScrCmd_815: ; 0x02047778
 	pop {r4, pc}
 	thumb_func_end ScrCmd_815
 
-	thumb_func_start ScrCmd_748
-ScrCmd_748: ; 0x02047790
+	thumb_func_start ScrCmd_GetMenuChoice
+ScrCmd_GetMenuChoice: ; 0x02047790
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -15298,7 +15298,7 @@ ScrCmd_748: ; 0x02047790
 	pop {r3, r4, r5, pc}
 	nop
 _020477BC: .word sub_020477C0
-	thumb_func_end ScrCmd_748
+	thumb_func_end ScrCmd_GetMenuChoice
 
 	thumb_func_start sub_020477C0
 sub_020477C0: ; 0x020477C0

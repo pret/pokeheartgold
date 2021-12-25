@@ -31,7 +31,7 @@ scr_seq_00000880_0000003A:
 scr_seq_00000880_00000042:
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000880_00000063
@@ -39,7 +39,7 @@ scr_seq_00000880_00000042:
 	goto scr_seq_00000880_0000003A
 
 scr_seq_00000880_00000063:
-	scrcmd_332 32780
+	scrcmd_332 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif ne, scr_seq_00000880_0000007D
 	msgbox 3
@@ -50,8 +50,8 @@ scr_seq_00000880_0000007D:
 	msgbox 1
 	scrcmd_190 0
 	msgbox 2
-	scrcmd_078 1210
-	scrcmd_079
+	play_fanfare SEQ_ME_PT_SPECIAL
+	wait_fanfare
 	setflag FLAG_UNK_0BF
 	setflag FLAG_UNK_ABD
 	goto scr_seq_00000880_0000003A
@@ -67,7 +67,7 @@ scr_seq_00000880_000000AB:
 scr_seq_00000880_000000AD:
 	msgbox 5
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000880_000001AA
@@ -110,7 +110,7 @@ scr_seq_00000880_0000014C:
 	goto scr_seq_00000880_00000192
 
 scr_seq_00000880_00000162:
-	scrcmd_382 32780, 16384
+	scrcmd_382 VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 149
 	gotoif le, scr_seq_00000880_00000181
 	call scr_seq_00000880_0000019A

@@ -26,7 +26,7 @@ scr_seq_00000224_0000002C:
 	checkflag FLAG_UNK_137
 	gotoif eq, scr_seq_00000224_0000012A
 	faceplayer
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000224_00000060
 	apply_movement 0, scr_seq_00000224_00000140

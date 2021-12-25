@@ -17,11 +17,11 @@
 scr_seq_00000213_00000026:
 	checkflag FLAG_UNK_12C
 	gotoif lt, scr_seq_00000213_0000003D
-	scrcmd_339 2, 15, 0, 8, 1
+	show_person_at 2, 15, 0, 8, 1
 scr_seq_00000213_0000003D:
 	checkflag FLAG_UNK_12B
 	gotoif lt, scr_seq_00000213_00000054
-	scrcmd_339 1, 7, 0, 8, 1
+	show_person_at 1, 7, 0, 8, 1
 scr_seq_00000213_00000054:
 	end
 
@@ -36,7 +36,7 @@ scr_seq_00000213_0000006B:
 	scrcmd_147 26, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000213_000000DF
-	scrcmd_294 12, 16386
+	scrcmd_294 12, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, scr_seq_00000213_0000009D
 	goto scr_seq_00000213_0000012C
@@ -130,7 +130,7 @@ scr_seq_00000213_0000016C:
 scr_seq_00000213_0000017F:
 	scrcmd_609
 	lockall
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 8
 	gotoif ne, scr_seq_00000213_000001A4
 	apply_movement 2, scr_seq_00000213_00000264
@@ -262,7 +262,7 @@ scr_seq_00000213_00000306:
 scr_seq_00000213_00000311:
 	scrcmd_609
 	lockall
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 8
 	gotoif ne, scr_seq_00000213_00000336
 	apply_movement 1, scr_seq_00000213_000003F8
@@ -403,7 +403,7 @@ scr_seq_00000213_000004A5:
 	msgbox 7
 scr_seq_00000213_000004D0:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000213_000004F4
@@ -414,8 +414,8 @@ scr_seq_00000213_000004D0:
 scr_seq_00000213_000004F4:
 	scrcmd_190 0
 	msgbox 8
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	scrcmd_146 26
 	msgbox 9
 	waitbutton
@@ -423,7 +423,7 @@ scr_seq_00000213_000004F4:
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
 	setflag FLAG_UNK_270
-	scrcmd_101 3
+	hide_person 3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -448,11 +448,11 @@ scr_seq_00000213_00000551:
 scr_seq_00000213_00000553:
 	msgbox 12
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000213_000005B4
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000213_000005BF
 	msgbox 13

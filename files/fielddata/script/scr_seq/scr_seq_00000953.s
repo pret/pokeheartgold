@@ -784,8 +784,8 @@ scr_seq_00000953_00000C2D:
 scr_seq_00000953_00000C2F:
 	closemsg
 	scrcmd_454
-	scrcmd_213 32772, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle VAR_SPECIAL_x8004, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000953_00000D99
 	copyvar VAR_TEMP_x4012, VAR_SPECIAL_x8004
@@ -860,7 +860,7 @@ scr_seq_00000953_00000D52:
 scr_seq_00000953_00000D54:
 	scrcmd_461 4, 32772, 32773
 	scrcmd_190 0
-	scrcmd_440 32772, 32773
+	scrcmd_440 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -896,26 +896,26 @@ scr_seq_00000953_00000DC7:
 
 scr_seq_00000953_00000DCF:
 	scrcmd_461 0, 32772, 32773
-	scrcmd_440 32772, 32773
+	scrcmd_440 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	goto scr_seq_00000953_00000DF9
 
 scr_seq_00000953_00000DE2:
 	.byte 0x02, 0x00
 scr_seq_00000953_00000DE4:
 	scrcmd_461 3, 32772, 32773
-	scrcmd_440 32772, 32773
+	scrcmd_440 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	goto scr_seq_00000953_00000DF9
 
 scr_seq_00000953_00000DF7:
 	.byte 0x02, 0x00
 scr_seq_00000953_00000DF9:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000953_00000E28
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	msgbox 101
 	scrcmd_461 1, 32772, 32773
 	scrcmd_146 16400
@@ -924,7 +924,7 @@ scr_seq_00000953_00000DF9:
 scr_seq_00000953_00000E28:
 	scrcmd_461 2, 32772, 32773
 scr_seq_00000953_00000E2F:
-	scrcmd_440 32772, 32773
+	scrcmd_440 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	waitbutton
 	closemsg
 	return
@@ -942,7 +942,7 @@ scr_seq_00000953_00000E3B:
 scr_seq_00000953_00000E57:
 	apply_movement VAR_SPECIAL_x800D, scr_seq_00000953_00000EBC
 	wait_movement
-	scrcmd_386 32768
+	scrcmd_386 VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8000, 0
 	callif eq, scr_seq_00000953_00000E9B
 	comparevartovalue VAR_SPECIAL_x8000, 1
@@ -978,7 +978,7 @@ scr_seq_00000953_00000EBC:
 scr_seq_00000953_00000EC4:
 	scrcmd_603
 	lockall
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000953_00000EDD
 	scrcmd_099 253
@@ -1006,8 +1006,8 @@ scr_seq_00000953_00000F0A:
 	scrcmd_052
 	scrcmd_214 32772, 0
 	closemsg
-	scrcmd_213 32772, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle VAR_SPECIAL_x8004, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000953_00001176
 	scrcmd_171 0, 32780
@@ -1049,8 +1049,8 @@ scr_seq_00000953_00000FC7:
 	scrcmd_052
 	scrcmd_214 32773, 7
 	closemsg
-	scrcmd_213 32772, 32773, 0, 0
-	scrcmd_220 32780
+	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000953_00001176
 	scrcmd_171 0, 32780
@@ -1101,8 +1101,8 @@ scr_seq_00000953_000010A8:
 	scrcmd_052
 	scrcmd_214 32773, 0
 	closemsg
-	scrcmd_213 32772, 32773, 0, 0
-	scrcmd_220 32780
+	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000953_00001176
 	scrcmd_171 0, 32780

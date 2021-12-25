@@ -43,7 +43,7 @@ scr_seq_00000157_0000005B:
 	gotoif eq, scr_seq_00000157_00000084
 	checkflag FLAG_UNK_092
 	gotoif eq, scr_seq_00000157_00000084
-	scrcmd_294 15, 16386
+	scrcmd_294 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_00000157_0000008F
 scr_seq_00000157_00000084:
@@ -198,7 +198,7 @@ scr_seq_00000157_000002D3:
 	lockall
 	msgbox 0
 	closemsg
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000157_000002FD
 	apply_movement 1, scr_seq_00000157_00000340
@@ -215,7 +215,7 @@ scr_seq_00000157_00000305:
 	setvar VAR_UNK_40CB, 4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_101 1
+	hide_person 1
 	setflag FLAG_UNK_217
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175

@@ -29,7 +29,7 @@ scr_seq_00000750_0000004B:
 	goto scr_seq_00000750_0000030E
 
 scr_seq_00000750_00000051:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif eq, scr_seq_00000750_00000075
 	comparevartovalue VAR_TEMP_x4000, 6
@@ -45,7 +45,7 @@ scr_seq_00000750_0000007B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000750_000000A5
 	checkflag FLAG_UNK_094
@@ -57,7 +57,7 @@ scr_seq_00000750_000000A5:
 	gotoif eq, scr_seq_00000750_00000108
 scr_seq_00000750_000000B0:
 	msgbox 2
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000750_000000E6
 	setvar VAR_SPECIAL_x8004, 482
@@ -91,23 +91,23 @@ scr_seq_00000750_00000113:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 0
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000750_00000218
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000750_0000022C
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 1
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000750_00000184
 	apply_movement 255, scr_seq_00000750_00000240
@@ -128,7 +128,7 @@ scr_seq_00000750_000001B7:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000750_000001DE
 	apply_movement 253, scr_seq_00000750_00000280
@@ -142,24 +142,24 @@ scr_seq_00000750_000001DE:
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
 	clearflag FLAG_UNK_189
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 2
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 scr_seq_00000750_00000218:
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 5
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 scr_seq_00000750_0000022C:
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 3
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
@@ -216,10 +216,10 @@ scr_seq_00000750_000002A3:
 	end
 
 scr_seq_00000750_000002B6:
-	scrcmd_055 20, 0, 3, 32780
+	scrcmd_055 20, 0, 3, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -227,7 +227,7 @@ scr_seq_00000750_000002CD:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 21, 32780
+	scrcmd_059 21, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -235,15 +235,15 @@ scr_seq_00000750_000002E2:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 22, 32780
+	scrcmd_059 22, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
 scr_seq_00000750_000002F7:
-	scrcmd_055 23, 2, 0, 32780
+	scrcmd_055 23, 2, 0, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -261,7 +261,7 @@ scr_seq_00000750_0000033B:
 scr_seq_00000750_0000033D:
 	clearflag FLAG_UNK_30C
 scr_seq_00000750_00000341:
-	scrcmd_495 16384
+	scrcmd_495 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, scr_seq_00000750_0000035C
 	clearflag FLAG_UNK_30D
@@ -278,7 +278,7 @@ scr_seq_00000750_00000362:
 	end
 
 scr_seq_00000750_00000371:
-	scrcmd_339 8, 1047, 6, 81, 2
+	show_person_at 8, 1047, 6, 81, 2
 	end
 
 scr_seq_00000750_0000037F:
@@ -287,16 +287,16 @@ scr_seq_00000750_0000037F:
 	end
 
 scr_seq_00000750_0000038C:
-	scrcmd_495 16384
+	scrcmd_495 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, scr_seq_00000750_000003AB
 	setflag FLAG_UNK_30D
-	scrcmd_101 9
+	hide_person 9
 	goto scr_seq_00000750_000003B3
 
 scr_seq_00000750_000003AB:
 	setflag FLAG_UNK_312
-	scrcmd_101 10
+	hide_person 10
 scr_seq_00000750_000003B3:
 	end
 
@@ -310,7 +310,7 @@ scr_seq_00000750_000003B5:
 	wait_movement
 	apply_movement 8, scr_seq_00000750_0000045C
 	wait_movement
-	scrcmd_495 16384
+	scrcmd_495 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, scr_seq_00000750_000003F1
 	msgbox 6
@@ -326,7 +326,7 @@ scr_seq_00000750_000003F4:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_495 16384
+	scrcmd_495 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, scr_seq_00000750_0000042C
 	msgbox 8
@@ -382,7 +382,7 @@ scr_seq_00000750_00000488:
 	scrcmd_546 0, 16384
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_00000750_00000649
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000750_000004C8
 	setvar VAR_TEMP_x400A, 381
@@ -411,7 +411,7 @@ scr_seq_00000750_000004D7:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000750_0000055A
 scr_seq_00000750_00000526:
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000750_00000540
 	msgbox 12
@@ -459,7 +459,7 @@ scr_seq_00000750_00000585:
 	comparevartovalue VAR_TEMP_x4000, 4
 	gotoif eq, scr_seq_00000750_000005FF
 scr_seq_00000750_000005D2:
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000750_000005EC
 	msgbox 16
@@ -496,7 +496,7 @@ scr_seq_00000750_0000061F:
 	closemsg
 	apply_movement 8, scr_seq_00000750_00000480
 	wait_movement
-	scrcmd_101 8
+	hide_person 8
 	comparevartovalue VAR_UNK_4130, 4
 	callif eq, scr_seq_00000750_0000064D
 scr_seq_00000750_00000649:

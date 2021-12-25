@@ -2067,7 +2067,7 @@ scr_seq_00000141_0000182A:
 
 scr_seq_00000141_00001830:
 	callstd 2001
-	scrcmd_101 32781
+	hide_person VAR_SPECIAL_x800D
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	itemistmorhm VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -2077,7 +2077,7 @@ scr_seq_00000141_00001830:
 	end
 
 scr_seq_00000141_00001862:
-	scrcmd_079
+	wait_fanfare
 	scrcmd_190 0
 	scrcmd_194 1, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C

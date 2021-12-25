@@ -238,6 +238,14 @@ class NormalScriptParser(ScriptParserBase):
         s += '\t.balign 4, 0\n'
         return s
 
+    def make_header(self):
+        s = f'#ifndef {self.prefix.upper()}_H_\n'
+        s += f'#define {self.prefix.upper()}_H_\n\n'
+        for i, name in enumerate(self.exported):
+            s += f'#define {name}    {i: 3d}\n'
+        s += f'\n#endif //{self.prefix.upper()}_H_\n'
+        return s
+
 
 class SpecialScriptParser(ScriptParserBase):
     def __init__(self, raw: bytes, prefix='_EV'):
@@ -308,7 +316,6 @@ def main():
         args.scrfile = argparse.FileType('w')(scrfname)
     if args.name is None:
         args.name = os.path.splitext(os.path.basename(args.binfile.name))[0]
-
     if args.mode is ScriptType.normal:
         cls = NormalScriptParser
     elif args.mode is ScriptType.special:
@@ -318,7 +325,8 @@ def main():
     data = args.binfile.read()
     while True:
         try:
-            print(cls(data, args.name).parse_all(), file=args.scrfile, end='')
+            parser = cls(data, args.name).parse_all()
+            print(parser, file=args.scrfile, end='')
         except Exception as e:
             if cls is NormalScriptParser:
                 cls = SpecialScriptParser
@@ -327,6 +335,9 @@ def main():
                 raise e
         else:
             break
+    # if cls is NormalScriptParser:
+    #     with open(os.path.splitext(args.scrfile.name)[0] + '.h', 'w') as hfile:
+    #         print(parser.make_header(), file=hfile, end='')
 
 
 if __name__ == '__main__':

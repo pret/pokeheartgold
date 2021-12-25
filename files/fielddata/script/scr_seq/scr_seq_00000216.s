@@ -27,7 +27,7 @@ scr_seq_00000216_0000003B:
 	clearflag FLAG_UNK_2B2
 	setflag FLAG_UNK_2A2
 scr_seq_00000216_00000050:
-	scrcmd_294 15, 16384
+	scrcmd_294 15, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_00000216_0000011B
 	comparevartovalue VAR_UNK_4089, 1
@@ -91,14 +91,14 @@ scr_seq_00000216_00000121:
 
 scr_seq_00000216_0000012E:
 	setflag FLAG_UNK_2A1
-	scrcmd_101 12
+	hide_person 12
 	clearflag FLAG_UNK_0A4
 	end
 
 scr_seq_00000216_0000013C:
 	scrcmd_609
 	lockall
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 40
 	gotoif ne, scr_seq_00000216_00000171
 	apply_movement 8, scr_seq_00000216_0000029C
@@ -121,7 +121,7 @@ scr_seq_00000216_0000019C:
 scr_seq_00000216_000001B4:
 	wait_movement
 	scrcmd_081 1061
-	scrcmd_080 1113
+	play_bgm SEQ_GS_EYE_K_SHOUJO
 	comparevartovalue VAR_TEMP_x4001, 40
 	gotoif ne, scr_seq_00000216_000001E1
 	apply_movement 8, scr_seq_00000216_0000032C
@@ -160,10 +160,10 @@ scr_seq_00000216_00000261:
 	apply_movement 255, scr_seq_00000216_00000394
 scr_seq_00000216_00000271:
 	wait_movement
-	scrcmd_101 9
-	scrcmd_101 8
+	hide_person 9
+	hide_person 8
 	scrcmd_081 1113
-	scrcmd_080 1061
+	play_bgm SEQ_GS_R_12_24
 	setflag FLAG_UNK_309
 	setflag FLAG_UNK_256
 	clearflag FLAG_UNK_253
@@ -282,7 +282,7 @@ scr_seq_00000216_000003A8:
 	msgbox 1
 scr_seq_00000216_000003D3:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000216_000003F7
@@ -293,8 +293,8 @@ scr_seq_00000216_000003D3:
 scr_seq_00000216_000003F7:
 	scrcmd_190 0
 	msgbox 2
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	scrcmd_146 29
 	msgbox 3
 	waitbutton
@@ -302,7 +302,7 @@ scr_seq_00000216_000003F7:
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
 	setflag FLAG_UNK_2CD
-	scrcmd_101 15
+	hide_person 15
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -333,11 +333,11 @@ scr_seq_00000216_00000456:
 	gotoif eq, scr_seq_00000216_000004DA
 	msgbox 6
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000216_000004E5
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000216_000004F0
 	msgbox 7
@@ -394,8 +394,8 @@ scr_seq_00000216_000004FB:
 	setflag FLAG_UNK_122
 	msgbox 13
 	closemsg
-	scrcmd_213 361, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 361, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000216_0000056D
 scr_seq_00000216_00000558:
@@ -432,7 +432,7 @@ scr_seq_00000216_00000573:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 40
 	gotoif ne, scr_seq_00000216_000005D4
 	apply_movement 255, scr_seq_00000216_00000650
@@ -545,7 +545,7 @@ scr_seq_00000216_000006DE:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 245, 40, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000216_000007AA
 	scrcmd_683 16386
@@ -566,7 +566,7 @@ scr_seq_00000216_00000766:
 	apply_movement 255, scr_seq_00000216_000007F4
 	apply_movement 13, scr_seq_00000216_00000800
 	wait_movement
-	scrcmd_101 13
+	hide_person 13
 	setflag FLAG_UNK_2A2
 	goto scr_seq_00000216_000007A0
 
@@ -574,7 +574,7 @@ scr_seq_00000216_00000786:
 	apply_movement 255, scr_seq_00000216_000007F4
 	apply_movement 14, scr_seq_00000216_00000800
 	wait_movement
-	scrcmd_101 14
+	hide_person 14
 	setflag FLAG_UNK_2B2
 scr_seq_00000216_000007A0:
 	setvar VAR_UNK_4089, 3
@@ -622,7 +622,7 @@ scr_seq_00000216_00000808:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 15, 32780
+	scrcmd_059 15, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

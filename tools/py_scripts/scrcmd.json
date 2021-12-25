@@ -139,7 +139,7 @@
       ]
     },
     {
-      "name": "restartcurrentscript",
+      "name": "endstd",
       "args": []
     },
     {
@@ -346,7 +346,7 @@
         1,
         1,
         2,
-        2
+        "var"
       ]
     },
     {
@@ -370,13 +370,13 @@
       "name": "scrcmd_059",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_060",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -499,19 +499,19 @@
       "args": []
     },
     {
-      "name": "scrcmd_078",
+      "name": "play_fanfare",
       "args": [
-        2
+        "sound"
       ]
     },
     {
-      "name": "scrcmd_079",
+      "name": "wait_fanfare",
       "args": []
     },
     {
-      "name": "scrcmd_080",
+      "name": "play_bgm",
       "args": [
-        2
+        "sound"
       ]
     },
     {
@@ -521,7 +521,7 @@
       ]
     },
     {
-      "name": "scrcmd_082",
+      "name": "reset_bgm",
       "args": []
     },
     {
@@ -531,7 +531,7 @@
       ]
     },
     {
-      "name": "scrcmd_084",
+      "name": "fade_out_bgm",
       "args": [
         2,
         2
@@ -551,9 +551,9 @@
       ]
     },
     {
-      "name": "scrcmd_087",
+      "name": "temp_bgm",
       "args": [
-        2
+        "sound"
       ]
     },
     {
@@ -624,16 +624,16 @@
       ]
     },
     {
-      "name": "scrcmd_101",
+      "name": "hide_person",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_102",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -645,18 +645,18 @@
       "args": []
     },
     {
-      "name": "scrcmd_105",
+      "name": "get_player_coords",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_106",
+      "name": "get_person_coords",
       "args": [
         2,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -817,9 +817,9 @@
       ]
     },
     {
-      "name": "scrcmd_131",
+      "name": "set_starter_choice",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -909,7 +909,7 @@
     {
       "name": "scrcmd_143",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -919,7 +919,7 @@
       ]
     },
     {
-      "name": "scrcmd_145",
+      "name": "register_pokegear_card",
       "args": [
         1
       ]
@@ -1075,8 +1075,8 @@
     {
       "name": "scrcmd_173",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -1239,7 +1239,7 @@
       ]
     },
     {
-      "name": "scrcmd_199",
+      "name": "bufferpartymonnick",
       "args": [
         1,
         "var"
@@ -1286,9 +1286,9 @@
       ]
     },
     {
-      "name": "scrcmd_206",
+      "name": "get_starter_choice",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1333,10 +1333,10 @@
       ]
     },
     {
-      "name": "scrcmd_213",
+      "name": "trainer_battle",
       "args": [
-        2,
-        2,
+        "var",
+        "var",
         1,
         1
       ]
@@ -1383,7 +1383,7 @@
     {
       "name": "scrcmd_220",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1743,9 +1743,9 @@
       ]
     },
     {
-      "name": "scrcmd_281",
+      "name": "get_player_gender",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1811,7 +1811,7 @@
       "name": "scrcmd_294",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -2007,7 +2007,7 @@
     {
       "name": "scrcmd_332",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2053,13 +2053,13 @@
       ]
     },
     {
-      "name": "scrcmd_339",
+      "name": "show_person_at",
       "args": [
-        2,
-        2,
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -2149,17 +2149,17 @@
       ]
     },
     {
-      "name": "scrcmd_354",
+      "name": "get_partymon_species",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_355",
+      "name": "partymon_is_mine",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2325,8 +2325,8 @@
     {
       "name": "scrcmd_382",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2355,7 +2355,7 @@
     {
       "name": "scrcmd_386",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2671,16 +2671,16 @@
     {
       "name": "getfossilpokemon",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "getfossilminimumamount",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -2710,22 +2710,22 @@
     {
       "name": "scrcmd_438",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "message_extern",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_440",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -3027,7 +3027,7 @@
     {
       "name": "scrcmd_484",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3121,7 +3121,7 @@
     {
       "name": "scrcmd_495",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3336,7 +3336,7 @@
     {
       "name": "scrcmd_529",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3875,7 +3875,7 @@
     {
       "name": "scrcmd_618",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4603,7 +4603,7 @@
     {
       "name": "scrcmd_729",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4711,7 +4711,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_748",
+      "name": "getmenuchoice",
       "args": [
         "var"
       ]
@@ -5154,10 +5154,10 @@
       ]
     },
     {
-      "name": "scrcmd_827",
+      "name": "get_partymon_forme",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {

@@ -47,9 +47,9 @@ scr_seq_00000012_00000085:
 	play_se SEQ_SE_DP_PINPON
 	scrcmd_190 0
 	msgbox 4
-	scrcmd_080 1002
-	scrcmd_078 1185
-	scrcmd_079
+	play_bgm SEQ_SILENCE_DUNGEON
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	closemsg
 	releaseall
 	setvar VAR_UNK_4124, 1
@@ -61,7 +61,7 @@ scr_seq_00000012_000000B1:
 	lockall
 	msgbox 5
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -133,11 +133,11 @@ scr_seq_00000012_00000178:
 scr_seq_00000012_00000180:
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000012_000001C9
-	scrcmd_281 32780
+	get_player_gender VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000012_000001B9
 	scrcmd_190 0

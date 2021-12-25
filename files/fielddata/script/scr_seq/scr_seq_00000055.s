@@ -19,7 +19,7 @@ scr_seq_00000055_0000001E:
 	goto scr_seq_00000055_00000095
 
 scr_seq_00000055_00000035:
-	scrcmd_529 16389
+	scrcmd_529 VAR_TEMP_x4005
 	comparevartovalue VAR_UNK_4102, 1
 	gotoif eq, scr_seq_00000055_00000059
 	comparevartovalue VAR_UNK_4102, 2
@@ -67,7 +67,7 @@ scr_seq_00000055_0000009F:
 	wait_movement
 	msgbox 2
 	closemsg
-	scrcmd_084 0, 30
+	fade_out_bgm 0, 30
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	scrcmd_174 6, 6, 0, 0
 	scrcmd_175
@@ -149,7 +149,7 @@ scr_seq_00000055_000001CC:
 	closemsg
 	apply_movement 0, scr_seq_00000055_00000250
 	wait_movement
-	scrcmd_101 0
+	hide_person 0
 	setflag FLAG_UNK_2E7
 	setvar VAR_UNK_40FB, 10
 	releaseall

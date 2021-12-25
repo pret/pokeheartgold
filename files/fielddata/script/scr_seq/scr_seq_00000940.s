@@ -51,7 +51,7 @@ scr_seq_00000940_0000005A:
 	goto scr_seq_00000940_00000146
 
 scr_seq_00000940_00000095:
-	scrcmd_354 32770, 32769
+	get_partymon_species VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8001, 129
 	gotoif eq, scr_seq_00000940_000000B1
 	msgbox 8

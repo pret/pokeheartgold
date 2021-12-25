@@ -38,7 +38,7 @@ scr_seq_00000030_00000068:
 scr_seq_00000030_0000006A:
 	comparevartovalue VAR_UNK_4077, 5
 	gotoif ne, scr_seq_00000030_00000083
-	scrcmd_339 3, 2, 1, 7, 3
+	show_person_at 3, 2, 1, 7, 3
 scr_seq_00000030_00000083:
 	end
 
@@ -187,7 +187,7 @@ scr_seq_00000030_000001EA:
 	gotoif eq, scr_seq_00000030_00000547
 	msgbox 14
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000030_00000552
@@ -205,8 +205,8 @@ scr_seq_00000030_0000022B:
 	wait_movement
 	scrcmd_132 20, 21
 	closemsg
-	scrcmd_386 16384
-	scrcmd_729 16386
+	scrcmd_386 VAR_TEMP_x4000
+	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, scr_seq_00000030_00000295
 	scrcmd_099 253
@@ -271,8 +271,8 @@ scr_seq_00000030_0000033F:
 	closemsg
 	scrcmd_146 8
 	msgbox 26
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	closemsg
 	apply_movement 9, scr_seq_00000030_00000628
 	wait_movement
@@ -323,9 +323,9 @@ scr_seq_00000030_00000450:
 	gotoif lt, scr_seq_00000030_00000486
 	msgbox 36
 	closemsg
-	scrcmd_078 1186
+	play_fanfare SEQ_ME_KEYITEM
 	msgbox 37
-	scrcmd_079
+	wait_fanfare
 	closemsg
 	comparevartovalue VAR_UNK_4115, 255
 	gotoif ge, scr_seq_00000030_00000480

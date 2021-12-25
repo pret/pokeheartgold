@@ -63,13 +63,13 @@ scr_seq_00000932_000000BE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 6, 32780
+	scrcmd_294 6, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000932_00000178
 	msgbox 0
 	closemsg
-	scrcmd_213 32, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 32, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000932_00000172
 	settrainerflag 482
@@ -87,8 +87,8 @@ scr_seq_00000932_000000BE:
 scr_seq_00000932_0000012F:
 	scrcmd_190 0
 	msgbox 2
-	scrcmd_078 1189
-	scrcmd_079
+	play_fanfare SEQ_ME_BADGE
+	wait_fanfare
 	msgbox 3
 	setvar VAR_SPECIAL_x8004, 334
 	setvar VAR_SPECIAL_x8005, 1
@@ -126,11 +126,11 @@ scr_seq_00000932_0000018E:
 scr_seq_00000932_00000198:
 	msgbox 6
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000932_000001F9
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000932_00000204
 	msgbox 7

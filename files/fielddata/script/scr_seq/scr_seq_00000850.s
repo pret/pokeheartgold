@@ -23,10 +23,10 @@ scr_seq_00000850_0000002E:
 	end
 
 scr_seq_00000850_0000003F:
-	scrcmd_294 2, 16384
+	scrcmd_294 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_00000850_0000007D
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_00000850_00000083
 	comparevartovalue VAR_TEMP_x4000, 3
@@ -49,7 +49,7 @@ scr_seq_00000850_0000008B:
 	apply_movement 0, scr_seq_00000850_00000350
 	wait_movement
 	callstd 2037
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 397
 	gotoif ne, scr_seq_00000850_000000BE
 	apply_movement 0, scr_seq_00000850_00000358
@@ -77,7 +77,7 @@ scr_seq_00000850_00000109:
 	msgbox 0
 	closemsg
 	scrcmd_190 0
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 397
 	gotoif ne, scr_seq_00000850_0000013C
 	apply_movement 0, scr_seq_00000850_00000390
@@ -188,8 +188,8 @@ scr_seq_00000850_00000228:
 	scrcmd_293
 	scrcmd_190 0
 	msgbox 7
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	msgbox 8
 	closemsg
 	apply_movement 0, scr_seq_00000850_00000580
@@ -202,7 +202,7 @@ scr_seq_00000850_00000228:
 	scrcmd_099 0
 	scrcmd_099 253
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_101 0
+	hide_person 0
 	wait_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_198
 	scrcmd_311 77
@@ -422,8 +422,8 @@ scr_seq_00000850_00000590:
 	clearflag FLAG_UNK_198
 	scrcmd_100 0
 	scrcmd_098 0
-	scrcmd_105 16384, 16385
-	scrcmd_339 0, 16384, 1, 394, 0
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
+	show_person_at 0, VAR_TEMP_x4000, 1, 394, 0
 	comparevartovalue VAR_TEMP_x4000, 549
 	gotoif ne, scr_seq_00000850_000005DB
 	apply_movement 0, scr_seq_00000850_0000068C
@@ -457,8 +457,8 @@ scr_seq_00000850_0000063E:
 	msgbox 9
 	scrcmd_190 0
 	msgbox 10
-	scrcmd_078 1186
-	scrcmd_079
+	play_fanfare SEQ_ME_KEYITEM
+	wait_fanfare
 	msgbox 11
 	msgbox 12
 	closemsg
@@ -466,9 +466,9 @@ scr_seq_00000850_0000063E:
 	wait_movement
 	callstd 2038
 	scrcmd_099 0
-	scrcmd_101 0
+	hide_person 0
 	setflag FLAG_UNK_198
-	scrcmd_145 1
+	register_pokegear_card 1
 	releaseall
 	setvar VAR_UNK_4073, 2
 	end
@@ -499,32 +499,32 @@ scr_seq_00000850_000006AC:
 scr_seq_00000850_000006B4:
 	scrcmd_609
 	lockall
-	scrcmd_084 0, 3
+	fade_out_bgm 0, 3
 	apply_movement 255, scr_seq_00000850_00000350
 	wait_movement
 	callstd 2031
-	scrcmd_105 16384, 16385
-	scrcmd_339 4, 583, 0, 16385, 2
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
+	show_person_at 4, 583, 0, VAR_TEMP_x4001, 2
 	apply_movement 4, scr_seq_00000850_00000808
 	wait_movement
 	msgbox 13
 	closemsg
-	scrcmd_206 32780
+	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
 	gotoif ne, scr_seq_00000850_0000070C
-	scrcmd_213 496, 0, 1, 0
+	trainer_battle 496, 0, 1, 0
 	goto scr_seq_00000850_0000072F
 
 scr_seq_00000850_0000070C:
 	comparevartovalue VAR_SPECIAL_x800C, 155
 	gotoif ne, scr_seq_00000850_00000727
-	scrcmd_213 497, 0, 1, 0
+	trainer_battle 497, 0, 1, 0
 	goto scr_seq_00000850_0000072F
 
 scr_seq_00000850_00000727:
-	scrcmd_213 495, 0, 1, 0
+	trainer_battle 495, 0, 1, 0
 scr_seq_00000850_0000072F:
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	callstd 2070
 	msgbox 14
 	closemsg
@@ -532,7 +532,7 @@ scr_seq_00000850_0000072F:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	scrcmd_105 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 398
 	gotoif ne, scr_seq_00000850_0000076B
 	apply_movement 255, scr_seq_00000850_00000890
@@ -556,7 +556,7 @@ scr_seq_00000850_000007A2:
 	wait_movement
 	msgbox 15
 	closemsg
-	scrcmd_106 4, 32772, 32773
+	get_person_coords 4, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 401
 	gotoif ne, scr_seq_00000850_000007D4
 	apply_movement 4, scr_seq_00000850_00000880
@@ -568,12 +568,12 @@ scr_seq_00000850_000007D4:
 	apply_movement 255, scr_seq_00000850_000008B8
 scr_seq_00000850_000007E4:
 	wait_movement
-	scrcmd_101 4
+	hide_person 4
 	setflag FLAG_UNK_19C
 	callstd 2071
 	releaseall
 	setvar VAR_UNK_4073, 4
-	setflag FLAG_UNK_099
+	setflag FLAG_MET_PASSERBY_BOY
 	end
 
 scr_seq_00000850_00000800:
@@ -673,23 +673,23 @@ scr_seq_00000850_00000919:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 0
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000850_00000A41
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000850_00000A55
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 1
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000850_00000992
 	apply_movement 255, scr_seq_00000850_00000A6C
@@ -717,7 +717,7 @@ scr_seq_00000850_000009E0:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000850_00000A07
 	apply_movement 253, scr_seq_00000850_00000ACC
@@ -731,24 +731,24 @@ scr_seq_00000850_00000A07:
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
 	clearflag FLAG_UNK_189
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 2
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 scr_seq_00000850_00000A41:
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 5
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 scr_seq_00000850_00000A55:
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 3
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
@@ -800,15 +800,15 @@ scr_seq_00000850_00000ADC:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 24, 32780
+	scrcmd_059 24, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
 scr_seq_00000850_00000AF1:
-	scrcmd_055 23, 0, 12, 32780
+	scrcmd_055 23, 0, 12, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 

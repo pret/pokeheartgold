@@ -33,7 +33,7 @@ scr_seq_00000132_0000004C:
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_386 16386
+	scrcmd_386 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, scr_seq_00000132_00000078
 	goto scr_seq_00000132_00000107
@@ -109,7 +109,7 @@ scr_seq_00000132_00000107:
 scr_seq_00000132_00000167:
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_2DD
-	scrcmd_101 0
+	hide_person 0
 	clearflag FLAG_UNK_2DC
 	wait_se SEQ_SE_DP_KAIDAN2
 	setvar VAR_UNK_40FB, 7
@@ -226,7 +226,7 @@ scr_seq_00000132_00000279:
 	faceplayer
 	msgbox 10
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000132_000002A6

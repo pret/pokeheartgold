@@ -68,7 +68,7 @@ scr_seq_00000825_0000009A:
 scr_seq_00000825_00000105:
 	checkflag FLAG_UNK_175
 	callif lt, scr_seq_00000825_00000227
-	scrcmd_495 16384
+	scrcmd_495 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, scr_seq_00000825_0000012D
 	goto scr_seq_00000825_0000023A
@@ -146,7 +146,7 @@ scr_seq_00000825_000001E7:
 	return
 
 scr_seq_00000825_000001ED:
-	scrcmd_294 15, 32780
+	scrcmd_294 15, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000825_00000204
 	clearflag FLAG_UNK_297

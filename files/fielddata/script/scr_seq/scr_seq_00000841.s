@@ -13,7 +13,7 @@
 	scrdef_end
 
 scr_seq_00000841_0000001E:
-	scrcmd_281 16393
+	get_player_gender VAR_TEMP_x4009
 	comparevartovalue VAR_TEMP_x4009, 0
 	gotoif ne, scr_seq_00000841_0000003B
 	setvar VAR_OBJ_0, 0
@@ -27,7 +27,7 @@ scr_seq_00000841_00000041:
 scr_seq_00000841_00000043:
 	comparevartovalue VAR_TEMP_x400B, 0
 	gotoif ne, scr_seq_00000841_0000005A
-	scrcmd_101 3
+	hide_person 3
 	setvar VAR_TEMP_x400B, 1
 scr_seq_00000841_0000005A:
 	end
@@ -101,7 +101,7 @@ scr_seq_00000841_00000125:
 	end
 
 scr_seq_00000841_0000014D:
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000841_0000016C
 	apply_movement 0, scr_seq_00000841_000002B0
@@ -118,7 +118,7 @@ scr_seq_00000841_00000187:
 scr_seq_00000841_0000018F:
 	wait_movement
 	scrcmd_100 3
-	scrcmd_101 0
+	hide_person 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000841_000001B4
 	apply_movement 3, scr_seq_00000841_00000304
@@ -137,7 +137,7 @@ scr_seq_00000841_000001D7:
 	return
 
 scr_seq_00000841_000001DB:
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000841_000001FA
 	apply_movement 3, scr_seq_00000841_000002B0
@@ -154,7 +154,7 @@ scr_seq_00000841_00000215:
 scr_seq_00000841_0000021D:
 	wait_movement
 	scrcmd_100 0
-	scrcmd_101 3
+	hide_person 3
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000841_00000242
 	apply_movement 0, scr_seq_00000841_00000304
@@ -241,7 +241,7 @@ scr_seq_00000841_00000320:
 	msgbox 12
 	waitbutton
 	closemsg
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000841_00000359
 	apply_movement 2, scr_seq_00000841_000003C8

@@ -11,8 +11,8 @@
 
 scr_seq_00000256_00000012:
 	scrcmd_081 1037
-	scrcmd_080 1112
-	scrcmd_386 32780
+	play_bgm SEQ_GS_EYE_ROCKET
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000256_00000037
 	goto scr_seq_00000256_00000095
@@ -67,7 +67,7 @@ scr_seq_00000256_000000D5:
 	wait_movement
 scr_seq_00000256_000000ED:
 	scrcmd_081 1112
-	scrcmd_080 1037
+	play_bgm SEQ_GS_R_7_42
 	setvar VAR_UNK_410F, 1
 	end
 

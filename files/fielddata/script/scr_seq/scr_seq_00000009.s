@@ -13,14 +13,14 @@ scr_seq_00000009_0000000E:
 	scrcmd_379 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif ne, scr_seq_00000009_0000003D
-	scrcmd_339 0, 18, 0, 10, 1
+	show_person_at 0, 18, 0, 10, 1
 	scrcmd_342 2, 20, 3
 	goto scr_seq_00000009_0000005E
 
 scr_seq_00000009_0000003D:
 	comparevartovalue VAR_TEMP_x4001, 4
 	gotoif ne, scr_seq_00000009_0000005E
-	scrcmd_339 0, 18, 0, 10, 1
+	show_person_at 0, 18, 0, 10, 1
 	scrcmd_342 2, 20, 3
 scr_seq_00000009_0000005E:
 	end
@@ -29,7 +29,7 @@ scr_seq_00000009_00000060:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 0, 32780
+	scrcmd_059 0, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 

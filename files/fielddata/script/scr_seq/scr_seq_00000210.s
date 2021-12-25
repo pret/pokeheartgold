@@ -17,10 +17,10 @@ scr_seq_00000210_00000017:
 	end
 
 scr_seq_00000210_0000001C:
-	scrcmd_055 0, 1, 1, 32780
+	scrcmd_055 0, 1, 1, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

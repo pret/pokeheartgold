@@ -288,7 +288,7 @@ scr_seq_00000145_00000440:
 	end
 
 scr_seq_00000145_0000046E:
-	scrcmd_079
+	wait_fanfare
 	scrcmd_190 0
 	scrcmd_194 1, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C

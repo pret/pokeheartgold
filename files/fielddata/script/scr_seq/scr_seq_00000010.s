@@ -13,7 +13,7 @@
 
 scr_seq_00000010_0000001A:
 	setflag FLAG_UNK_298
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_00000010_0000003B
 	goto scr_seq_00000010_00000060
@@ -55,7 +55,7 @@ scr_seq_00000010_0000009A:
 	end
 
 scr_seq_00000010_000000A6:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_00000010_000000C3
 	goto scr_seq_00000010_00000113
@@ -77,12 +77,12 @@ scr_seq_00000010_000000E2:
 	comparevartovalue VAR_UNK_40F6, 1
 	gotoif eq, scr_seq_00000010_00000141
 	setflag FLAG_UNK_26E
-	scrcmd_101 0
-	scrcmd_101 1
-	scrcmd_101 2
-	scrcmd_101 3
-	scrcmd_101 4
-	scrcmd_101 5
+	hide_person 0
+	hide_person 1
+	hide_person 2
+	hide_person 3
+	hide_person 4
+	hide_person 5
 	setvar VAR_UNK_40F6, 1
 	end
 
@@ -105,8 +105,8 @@ scr_seq_00000010_00000143:
 	scrcmd_609
 	lockall
 	clearflag FLAG_UNK_298
-	scrcmd_105 32772, 32773
-	scrcmd_102 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	apply_movement 241, scr_seq_00000010_00000330
 	apply_movement 0, scr_seq_00000010_00000344
 	apply_movement 1, scr_seq_00000010_00000350
@@ -167,12 +167,12 @@ scr_seq_00000010_00000143:
 	apply_movement 3, scr_seq_00000010_0000077C
 	apply_movement 5, scr_seq_00000010_00000798
 	wait_movement
-	scrcmd_101 0
-	scrcmd_101 1
-	scrcmd_101 2
-	scrcmd_101 3
-	scrcmd_101 4
-	scrcmd_101 5
+	hide_person 0
+	hide_person 1
+	hide_person 2
+	hide_person 3
+	hide_person 4
+	hide_person 5
 	setflag FLAG_UNK_26E
 	setvar VAR_UNK_40F6, 1
 	setflag FLAG_UNK_AB5
@@ -571,7 +571,7 @@ scr_seq_00000010_000007C0:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 1, 32780
+	scrcmd_059 1, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -598,12 +598,12 @@ scr_seq_00000010_000007E9:
 
 scr_seq_00000010_00000825:
 	callstd 2001
-	scrcmd_101 32781
+	hide_person VAR_SPECIAL_x800D
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	scrcmd_190 0
 	scrcmd_194 1, 32772
 	msgbox 2
-	scrcmd_079
+	wait_fanfare
 	scrcmd_190 0
 	scrcmd_194 1, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C

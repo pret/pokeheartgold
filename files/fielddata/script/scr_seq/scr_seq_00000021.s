@@ -19,7 +19,7 @@ scr_seq_00000021_0000001E:
 
 scr_seq_00000021_0000002B:
 	setflag FLAG_UNK_242
-	scrcmd_101 5
+	hide_person 5
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -40,11 +40,11 @@ scr_seq_00000021_0000005C:
 	gotoif lt, scr_seq_00000021_000000C3
 	comparevartovalue VAR_TEMP_x4003, 111
 	gotoif ne, scr_seq_00000021_000000BB
-	scrcmd_339 0, 16, 1, 18, 0
-	scrcmd_339 1, 12, 1, 18, 0
-	scrcmd_339 2, 12, 1, 12, 1
-	scrcmd_339 3, 18, 1, 18, 0
-	scrcmd_339 4, 18, 1, 12, 1
+	show_person_at 0, 16, 1, 18, 0
+	show_person_at 1, 12, 1, 18, 0
+	show_person_at 2, 12, 1, 12, 1
+	show_person_at 3, 18, 1, 18, 0
+	show_person_at 4, 18, 1, 12, 1
 scr_seq_00000021_000000BB:
 	setvar VAR_TEMP_x4003, 0
 	end
@@ -61,7 +61,7 @@ scr_seq_00000021_000000C5:
 	msgbox 4
 	scrcmd_077
 	closemsg
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000021_000000FD
 	setvar VAR_SPECIAL_x8004, 45
@@ -134,7 +134,7 @@ scr_seq_00000021_00000177:
 	wait_movement
 	wait 16, VAR_SPECIAL_x800C
 	scrcmd_081 0
-	scrcmd_087 1163
+	temp_bgm SEQ_GS_E_MAIKO_MAI
 	wait 18, VAR_SPECIAL_x800C
 	apply_movement 0, scr_seq_00000021_000007A0
 	apply_movement 1, scr_seq_00000021_000007A0
@@ -272,11 +272,11 @@ scr_seq_00000021_00000177:
 	scrcmd_099 2
 	scrcmd_099 3
 	scrcmd_099 4
-	scrcmd_339 0, 15, 1, 18, 0
-	scrcmd_339 1, 12, 1, 18, 0
-	scrcmd_339 2, 12, 1, 12, 1
-	scrcmd_339 3, 18, 1, 18, 0
-	scrcmd_339 4, 18, 1, 12, 1
+	show_person_at 0, 15, 1, 18, 0
+	show_person_at 1, 12, 1, 18, 0
+	show_person_at 2, 12, 1, 12, 1
+	show_person_at 3, 18, 1, 18, 0
+	show_person_at 4, 18, 1, 12, 1
 	wait 86, VAR_SPECIAL_x800C
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2

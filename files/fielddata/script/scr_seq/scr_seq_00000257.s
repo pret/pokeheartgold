@@ -15,15 +15,15 @@ scr_seq_00000257_00000010:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 0, 32780
+	scrcmd_059 0, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
 scr_seq_00000257_00000025:
-	scrcmd_055 1, 1, 1, 32780
+	scrcmd_055 1, 1, 1, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

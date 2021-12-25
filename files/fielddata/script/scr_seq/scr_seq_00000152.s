@@ -26,7 +26,7 @@ scr_seq_00000152_00000031:
 	apply_movement 1, scr_seq_00000152_000000E4
 	wait_movement
 	scrcmd_081 0
-	scrcmd_080 1067
+	play_bgm SEQ_GS_OHKIDO
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -43,9 +43,9 @@ scr_seq_00000152_00000031:
 	wait_movement
 	scrcmd_477 1, 32780
 	scrcmd_190 0
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	msgbox 11
-	scrcmd_079
+	wait_fanfare
 	scrcmd_463
 	msgbox 12
 	closemsg
@@ -55,12 +55,12 @@ scr_seq_00000152_00000031:
 	closemsg
 	apply_movement 1, scr_seq_00000152_00000128
 	wait_movement
-	scrcmd_101 1
+	hide_person 1
 	setflag FLAG_UNK_251
 	setvar VAR_UNK_411A, 0
-	scrcmd_084 0, 30
+	fade_out_bgm 0, 30
 	scrcmd_081 0
-	scrcmd_082
+	reset_bgm
 	releaseall
 	comparevartovalue VAR_UNK_40D3, 1
 	callif eq, scr_seq_00000152_000000DE
@@ -112,7 +112,7 @@ scr_seq_00000152_00000138:
 	gotoif lt, scr_seq_00000152_00000361
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ge, scr_seq_00000152_00000356
-	scrcmd_386 16385
+	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, scr_seq_00000152_00000320
 	comparevartovalue VAR_UNK_40CB, 7
@@ -151,7 +151,7 @@ scr_seq_00000152_00000138:
 	end
 
 scr_seq_00000152_000001FB:
-	scrcmd_484 32780
+	scrcmd_484 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000152_00000218
 	goto scr_seq_00000152_000002EE

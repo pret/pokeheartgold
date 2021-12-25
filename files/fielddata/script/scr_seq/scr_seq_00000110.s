@@ -20,7 +20,7 @@ scr_seq_00000110_0000001E:
 	clearflag FLAG_UNK_20A
 	scrcmd_100 0
 	callstd 2031
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 37
 	gotoif ne, scr_seq_00000110_00000059
 	apply_movement 0, scr_seq_00000110_00000180
@@ -46,28 +46,28 @@ scr_seq_00000110_0000007C:
 	scrcmd_190 0
 	msgbox 0
 	closemsg
-	scrcmd_206 32780
+	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
 	gotoif ne, scr_seq_00000110_000000C1
-	scrcmd_213 268, 0, 0, 0
+	trainer_battle 268, 0, 0, 0
 	goto scr_seq_00000110_000000E4
 
 scr_seq_00000110_000000C1:
 	comparevartovalue VAR_SPECIAL_x800C, 155
 	gotoif ne, scr_seq_00000110_000000DC
-	scrcmd_213 272, 0, 0, 0
+	trainer_battle 272, 0, 0, 0
 	goto scr_seq_00000110_000000E4
 
 scr_seq_00000110_000000DC:
-	scrcmd_213 264, 0, 0, 0
+	trainer_battle 264, 0, 0, 0
 scr_seq_00000110_000000E4:
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000110_0000015A
 	callstd 2070
 	msgbox 1
 	closemsg
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 37
 	gotoif ne, scr_seq_00000110_0000011F
 	apply_movement 0, scr_seq_00000110_000001C8
@@ -84,14 +84,14 @@ scr_seq_00000110_0000013A:
 scr_seq_00000110_00000142:
 	wait_movement
 	setflag FLAG_UNK_20A
-	scrcmd_101 0
+	hide_person 0
 	callstd 2071
 	setvar VAR_UNK_40C5, 1
 	releaseall
 	end
 
 scr_seq_00000110_0000015A:
-	scrcmd_101 0
+	hide_person 0
 	setflag FLAG_UNK_20A
 	scrcmd_219
 	releaseall
@@ -190,7 +190,7 @@ scr_seq_00000110_00000278:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40CA, 1
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000110_000002A9
 	apply_movement 255, scr_seq_00000110_00000330

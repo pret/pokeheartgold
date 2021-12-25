@@ -31,7 +31,7 @@ scr_seq_00000819_00000026:
 	gotoif le, scr_seq_00000819_000000AC
 	checkflag FLAG_UNK_AA9
 	gotoif eq, scr_seq_00000819_000000AC
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_00000819_0000008B
 	setvar VAR_UNK_4119, 1
@@ -86,14 +86,14 @@ scr_seq_00000819_000000D4:
 scr_seq_00000819_000000EF:
 	scrcmd_609
 	lockall
-	scrcmd_084 0, 3
+	fade_out_bgm 0, 3
 	apply_movement 255, scr_seq_00000819_000001DC
 	wait_movement
 	callstd 2031
-	scrcmd_105 32768, 32769
+	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	clearflag FLAG_UNK_250
 	scrcmd_100 5
-	scrcmd_339 5, 32768, 0, 23, 0
+	show_person_at 5, VAR_SPECIAL_x8000, 0, 23, 0
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -106,22 +106,22 @@ scr_seq_00000819_000000EF:
 	scrcmd_191 0
 	msgbox 3
 	closemsg
-	scrcmd_206 32780
+	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
 	gotoif ne, scr_seq_00000819_0000016E
-	scrcmd_213 490, 0, 0, 0
+	trainer_battle 490, 0, 0, 0
 	goto scr_seq_00000819_00000191
 
 scr_seq_00000819_0000016E:
 	comparevartovalue VAR_SPECIAL_x800C, 155
 	gotoif ne, scr_seq_00000819_00000189
-	scrcmd_213 491, 0, 0, 0
+	trainer_battle 491, 0, 0, 0
 	goto scr_seq_00000819_00000191
 
 scr_seq_00000819_00000189:
-	scrcmd_213 489, 0, 0, 0
+	trainer_battle 489, 0, 0, 0
 scr_seq_00000819_00000191:
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000819_000001CE
 	callstd 2070
@@ -132,13 +132,13 @@ scr_seq_00000819_00000191:
 	wait_movement
 	setvar VAR_UNK_4119, 0
 	setflag FLAG_UNK_AA9
-	scrcmd_101 5
+	hide_person 5
 	callstd 2071
 	releaseall
 	end
 
 scr_seq_00000819_000001CE:
-	scrcmd_101 5
+	hide_person 5
 	setflag FLAG_UNK_250
 	scrcmd_219
 	releaseall
@@ -189,7 +189,7 @@ scr_seq_00000819_00000244:
 	gotoif ge, scr_seq_00000819_00000293
 	msgbox 5
 	closemsg
-	scrcmd_386 16384
+	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, scr_seq_00000819_0000027D
 	apply_movement 8, scr_seq_00000819_000002A0

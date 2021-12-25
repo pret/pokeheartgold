@@ -32,9 +32,9 @@ scr_seq_00000032_00000056:
 scr_seq_00000032_00000058:
 	comparevartovalue VAR_UNK_4077, 4
 	gotoif ne, scr_seq_00000032_00000089
-	scrcmd_339 4, 18, 1, 12, 3
-	scrcmd_339 5, 19, 1, 12, 1
-	scrcmd_339 7, 20, 1, 12, 1
+	show_person_at 4, 18, 1, 12, 3
+	show_person_at 5, 19, 1, 12, 1
+	show_person_at 7, 20, 1, 12, 1
 scr_seq_00000032_00000089:
 	end
 
@@ -152,7 +152,7 @@ scr_seq_00000032_0000018C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	msgbox 12
-	scrcmd_386 16384
+	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, scr_seq_00000032_000001BF
 	apply_movement 2, scr_seq_00000032_00000210
@@ -164,8 +164,8 @@ scr_seq_00000032_000001C7:
 	wait_movement
 	msgbox 13
 	closemsg
-	scrcmd_213 200, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 200, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000032_00000209
 	settrainerflag 200

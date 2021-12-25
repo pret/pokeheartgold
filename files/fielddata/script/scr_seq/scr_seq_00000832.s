@@ -178,8 +178,8 @@ scr_seq_00000832_00000264:
 	faceplayer
 	msgbox 8
 	closemsg
-	scrcmd_213 714, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 714, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_000002C1
 	msgbox 9
@@ -189,7 +189,7 @@ scr_seq_00000832_00000264:
 	scrcmd_175
 	scrcmd_462 17
 	setflag FLAG_UNK_2B5
-	scrcmd_101 1
+	hide_person 1
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -208,8 +208,8 @@ scr_seq_00000832_000002C7:
 	faceplayer
 	msgbox 30
 	closemsg
-	scrcmd_213 724, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 724, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_00000324
 	msgbox 31
@@ -219,7 +219,7 @@ scr_seq_00000832_000002C7:
 	scrcmd_175
 	scrcmd_462 26
 	setflag FLAG_UNK_2B6
-	scrcmd_101 2
+	hide_person 2
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -238,8 +238,8 @@ scr_seq_00000832_0000032A:
 	faceplayer
 	msgbox 18
 	closemsg
-	scrcmd_213 719, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 719, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_00000387
 	msgbox 19
@@ -249,7 +249,7 @@ scr_seq_00000832_0000032A:
 	scrcmd_175
 	scrcmd_462 27
 	setflag FLAG_UNK_2B7
-	scrcmd_101 3
+	hide_person 3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -268,8 +268,8 @@ scr_seq_00000832_0000038D:
 	faceplayer
 	msgbox 24
 	closemsg
-	scrcmd_213 723, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 723, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_000003EA
 	msgbox 25
@@ -279,7 +279,7 @@ scr_seq_00000832_0000038D:
 	scrcmd_175
 	scrcmd_462 28
 	setflag FLAG_UNK_2B8
-	scrcmd_101 4
+	hide_person 4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -298,8 +298,8 @@ scr_seq_00000832_000003F0:
 	faceplayer
 	msgbox 26
 	closemsg
-	scrcmd_213 721, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 721, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_0000044D
 	msgbox 27
@@ -309,7 +309,7 @@ scr_seq_00000832_000003F0:
 	scrcmd_175
 	scrcmd_462 29
 	setflag FLAG_UNK_2B9
-	scrcmd_101 5
+	hide_person 5
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -328,8 +328,8 @@ scr_seq_00000832_00000453:
 	faceplayer
 	msgbox 32
 	closemsg
-	scrcmd_213 726, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 726, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_000004B0
 	msgbox 33
@@ -339,7 +339,7 @@ scr_seq_00000832_00000453:
 	scrcmd_175
 	scrcmd_462 30
 	setflag FLAG_UNK_2BA
-	scrcmd_101 16
+	hide_person 16
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -358,8 +358,8 @@ scr_seq_00000832_000004B6:
 	faceplayer
 	msgbox 34
 	closemsg
-	scrcmd_213 727, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 727, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_00000513
 	msgbox 35
@@ -369,7 +369,7 @@ scr_seq_00000832_000004B6:
 	scrcmd_175
 	scrcmd_462 31
 	setflag FLAG_UNK_2BB
-	scrcmd_101 6
+	hide_person 6
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -388,8 +388,8 @@ scr_seq_00000832_00000519:
 	faceplayer
 	msgbox 10
 	closemsg
-	scrcmd_213 718, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 718, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_00000576
 	msgbox 11
@@ -399,7 +399,7 @@ scr_seq_00000832_00000519:
 	scrcmd_175
 	scrcmd_462 32
 	setflag FLAG_UNK_2BC
-	scrcmd_101 7
+	hide_person 7
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -418,8 +418,8 @@ scr_seq_00000832_0000057C:
 	faceplayer
 	msgbox 28
 	closemsg
-	scrcmd_213 720, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 720, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_000005D9
 	msgbox 29
@@ -429,7 +429,7 @@ scr_seq_00000832_0000057C:
 	scrcmd_175
 	scrcmd_462 33
 	setflag FLAG_UNK_2BD
-	scrcmd_101 8
+	hide_person 8
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -448,8 +448,8 @@ scr_seq_00000832_000005DF:
 	faceplayer
 	msgbox 6
 	closemsg
-	scrcmd_213 713, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 713, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_0000063C
 	msgbox 7
@@ -459,7 +459,7 @@ scr_seq_00000832_000005DF:
 	scrcmd_175
 	scrcmd_462 34
 	setflag FLAG_UNK_2BE
-	scrcmd_101 9
+	hide_person 9
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -478,8 +478,8 @@ scr_seq_00000832_00000642:
 	faceplayer
 	msgbox 22
 	closemsg
-	scrcmd_213 725, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 725, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_0000069F
 	msgbox 23
@@ -489,7 +489,7 @@ scr_seq_00000832_00000642:
 	scrcmd_175
 	scrcmd_462 35
 	setflag FLAG_UNK_2BF
-	scrcmd_101 10
+	hide_person 10
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -508,8 +508,8 @@ scr_seq_00000832_000006A5:
 	faceplayer
 	msgbox 4
 	closemsg
-	scrcmd_213 712, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 712, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_00000702
 	msgbox 5
@@ -519,7 +519,7 @@ scr_seq_00000832_000006A5:
 	scrcmd_175
 	scrcmd_462 18
 	setflag FLAG_UNK_2C0
-	scrcmd_101 11
+	hide_person 11
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -538,8 +538,8 @@ scr_seq_00000832_00000708:
 	faceplayer
 	msgbox 20
 	closemsg
-	scrcmd_213 722, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 722, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_00000765
 	msgbox 21
@@ -549,7 +549,7 @@ scr_seq_00000832_00000708:
 	scrcmd_175
 	scrcmd_462 36
 	setflag FLAG_UNK_2C1
-	scrcmd_101 12
+	hide_person 12
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -568,8 +568,8 @@ scr_seq_00000832_0000076B:
 	faceplayer
 	msgbox 14
 	closemsg
-	scrcmd_213 715, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 715, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_000007C8
 	msgbox 15
@@ -579,7 +579,7 @@ scr_seq_00000832_0000076B:
 	scrcmd_175
 	scrcmd_462 37
 	setflag FLAG_UNK_2C2
-	scrcmd_101 13
+	hide_person 13
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -598,8 +598,8 @@ scr_seq_00000832_000007CE:
 	faceplayer
 	msgbox 12
 	closemsg
-	scrcmd_213 717, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 717, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_0000082B
 	msgbox 13
@@ -609,7 +609,7 @@ scr_seq_00000832_000007CE:
 	scrcmd_175
 	scrcmd_462 38
 	setflag FLAG_UNK_2C3
-	scrcmd_101 14
+	hide_person 14
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -628,8 +628,8 @@ scr_seq_00000832_00000831:
 	faceplayer
 	msgbox 16
 	closemsg
-	scrcmd_213 716, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 716, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000832_0000088E
 	msgbox 17
@@ -639,7 +639,7 @@ scr_seq_00000832_00000831:
 	scrcmd_175
 	scrcmd_462 39
 	setflag FLAG_UNK_2C4
-	scrcmd_101 15
+	hide_person 15
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0

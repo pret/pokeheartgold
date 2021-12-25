@@ -9,7 +9,7 @@
 scr_seq_00000802_00000006:
 	scrcmd_609
 	lockall
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000802_00000058
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -58,7 +58,7 @@ scr_seq_00000802_000000A9:
 scr_seq_00000802_000000B3:
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000802_00000150
@@ -72,7 +72,7 @@ scr_seq_00000802_000000B3:
 scr_seq_00000802_000000EE:
 	msgbox 1
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000802_00000150

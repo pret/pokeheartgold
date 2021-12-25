@@ -14,7 +14,7 @@
 
 scr_seq_00000903_0000001E:
 	setflag FLAG_UNK_1BE
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_00000903_00000046
 	comparevartovalue VAR_TEMP_x4000, 0
@@ -82,7 +82,7 @@ scr_seq_00000903_000000BA:
 	gotoif eq, scr_seq_00000903_00000172
 	msgbox 9
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000903_000000F6
@@ -101,7 +101,7 @@ scr_seq_00000903_000000F6:
 	gotoif eq, scr_seq_00000903_00000167
 	scrcmd_470 1
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_354 32772, 32773
+	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
 	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	gotoif ne, scr_seq_00000903_0000015A
@@ -158,10 +158,10 @@ scr_seq_00000903_00000199:
 	faceplayer
 	checkflag FLAG_UNK_08E
 	gotoif eq, scr_seq_00000903_00000219
-	scrcmd_529 32768
+	scrcmd_529 VAR_SPECIAL_x8000
 	scrcmd_193 0, 32768
 	msgbox 0
-	scrcmd_382 32780, 32768
+	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 149
 	gotoif ge, scr_seq_00000903_000001E3
 	comparevartovalue VAR_SPECIAL_x800C, 50

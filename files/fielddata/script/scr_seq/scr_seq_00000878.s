@@ -39,7 +39,7 @@ scr_seq_00000878_00000056:
 	goto scr_seq_00000878_000000E4
 
 scr_seq_00000878_0000005C:
-	scrcmd_332 32780
+	scrcmd_332 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000878_00000079
 	goto scr_seq_00000878_0000007F
@@ -53,12 +53,12 @@ scr_seq_00000878_0000007F:
 	msgbox 4
 	scrcmd_190 0
 	msgbox 5
-	scrcmd_078 1187
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGET
+	wait_fanfare
 	scrcmd_137 72, 15, 0, 0, 0, 32780
 	msgbox 6
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000878_000000BC
 	scrcmd_747
@@ -70,7 +70,7 @@ scr_seq_00000878_000000BC:
 	scrcmd_815 0
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_173 1, 32780
+	scrcmd_173 1, VAR_SPECIAL_x800C
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
 scr_seq_00000878_000000E0:
@@ -88,7 +88,7 @@ scr_seq_00000878_000000EF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 4, 32780
+	scrcmd_294 4, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000878_00000115
 	msgbox 2

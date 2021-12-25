@@ -16,7 +16,7 @@ scr_seq_00000252_0000001A:
 	lockall
 	apply_movement 255, scr_seq_00000252_0000017C
 	wait_movement
-	scrcmd_105 32768, 32769
+	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	clearflag FLAG_UNK_29D
 	scrcmd_100 10
 	comparevartovalue VAR_SPECIAL_x8001, 172
@@ -92,7 +92,7 @@ scr_seq_00000252_0000015E:
 scr_seq_00000252_00000166:
 	wait_movement
 	setflag FLAG_UNK_29D
-	scrcmd_101 10
+	hide_person 10
 	setvar VAR_UNK_4091, 1
 	releaseall
 	end
@@ -206,8 +206,8 @@ scr_seq_00000252_00000230:
 	apply_movement 12, scr_seq_00000252_00000340
 	wait_movement
 	callstd 2043
-	scrcmd_101 11
-	scrcmd_101 12
+	hide_person 11
+	hide_person 12
 	setflag FLAG_UNK_29E
 	setflag FLAG_UNK_2A3
 	setvar VAR_UNK_4092, 0
@@ -257,10 +257,10 @@ scr_seq_00000252_00000348:
 	.short 15, 1
 	.short 254, 0
 scr_seq_00000252_00000350:
-	scrcmd_055 0, 1, 1, 32780
+	scrcmd_055 0, 1, 1, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -268,7 +268,7 @@ scr_seq_00000252_00000367:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 1, 32780
+	scrcmd_059 1, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -276,15 +276,15 @@ scr_seq_00000252_0000037C:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 2, 32780
+	scrcmd_059 2, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
 scr_seq_00000252_00000391:
-	scrcmd_055 3, 1, 2, 32780
+	scrcmd_055 3, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

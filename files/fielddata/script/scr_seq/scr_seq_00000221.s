@@ -36,7 +36,7 @@ scr_seq_00000221_0000003B:
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 402
 	gotoif ne, scr_seq_00000221_0000006F
 	apply_movement 0, scr_seq_00000221_000000C4
@@ -83,15 +83,15 @@ scr_seq_00000221_000000D0:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 2, 32780
+	scrcmd_059 2, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
 scr_seq_00000221_000000E5:
-	scrcmd_055 3, 1, 5, 32780
+	scrcmd_055 3, 1, 5, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

@@ -23,7 +23,7 @@ scr_seq_00000103_00000032:
 	end
 
 scr_seq_00000103_0000003A:
-	scrcmd_339 0, 34, 1, 29, 3
+	show_person_at 0, 34, 1, 29, 3
 	setvar VAR_TEMP_x4003, 0
 	end
 
@@ -33,7 +33,7 @@ scr_seq_00000103_0000004E:
 	faceplayer
 	checkflag FLAG_UNK_117
 	gotoif eq, scr_seq_00000103_0000010D
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 8
 	gotoif eq, scr_seq_00000103_00000093
 	checkflag FLAG_UNK_106
@@ -66,7 +66,7 @@ scr_seq_00000103_000000B4:
 	end
 
 scr_seq_00000103_000000C5:
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 8
 	gotoif ne, scr_seq_00000103_000000EC
 	checkflag FLAG_UNK_109
@@ -105,7 +105,7 @@ scr_seq_00000103_00000118:
 	wait 60, VAR_SPECIAL_x800C
 	msgbox 3
 	closemsg
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000103_00000142
 	apply_movement 0, scr_seq_00000103_00000168

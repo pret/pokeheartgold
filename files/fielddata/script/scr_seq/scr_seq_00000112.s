@@ -23,7 +23,7 @@ scr_seq_00000112_0000002B:
 	goto scr_seq_00000112_0000005A
 
 scr_seq_00000112_0000003C:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_00000112_00000064
 	comparevartovalue VAR_TEMP_x4000, 4
@@ -122,7 +122,7 @@ scr_seq_00000112_0000019C:
 	scrcmd_190 0
 	msgbox 6
 	closemsg
-	scrcmd_339 3, 6, 0, 21, 0
+	show_person_at 3, 6, 0, 21, 0
 	wait 10, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_DOOR
 	wait 5, VAR_SPECIAL_x8004
@@ -149,8 +149,8 @@ scr_seq_00000112_0000019C:
 	msgbox 15
 	scrcmd_190 0
 	msgbox 16
-	scrcmd_078 1189
-	scrcmd_079
+	play_fanfare SEQ_ME_BADGE
+	wait_fanfare
 	scrcmd_295 7
 	msgbox 17
 	apply_movement 0, scr_seq_00000112_00000408
@@ -164,12 +164,12 @@ scr_seq_00000112_0000019C:
 	closemsg
 	apply_movement 3, scr_seq_00000112_00000434
 	wait_movement
-	scrcmd_101 3
+	hide_person 3
 	callstd 2045
-	scrcmd_079
+	wait_fanfare
 	apply_movement 0, scr_seq_00000112_00000450
 	wait_movement
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000112_000002D3
 	msgbox 20
@@ -313,7 +313,7 @@ scr_seq_00000112_00000458:
 	gotoif eq, scr_seq_00000112_0000052E
 	checkflag FLAG_UNK_0DA
 	gotoif eq, scr_seq_00000112_000004A6
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000112_0000049B
 	msgbox 20
@@ -329,7 +329,7 @@ scr_seq_00000112_0000049E:
 
 scr_seq_00000112_000004A6:
 	msgbox 26
-	scrcmd_332 32773
+	scrcmd_332 VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 6
 	gotoif ne, scr_seq_00000112_000004C3
 	msgbox 28
@@ -338,8 +338,8 @@ scr_seq_00000112_000004A6:
 scr_seq_00000112_000004C3:
 	scrcmd_190 0
 	msgbox 27
-	scrcmd_078 1188
-	scrcmd_079
+	play_fanfare SEQ_ME_SHINKAOME
+	wait_fanfare
 	scrcmd_137 147, 15, 0, 0, 0, 32780
 	checkflag FLAG_UNK_0DB
 	gotoif eq, scr_seq_00000112_000004F0
@@ -347,7 +347,7 @@ scr_seq_00000112_000004C3:
 scr_seq_00000112_000004F0:
 	msgbox 32
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000112_0000050E
@@ -357,7 +357,7 @@ scr_seq_00000112_0000050E:
 	closemsg
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_173 32773, 32780
+	scrcmd_173 VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
 scr_seq_00000112_0000052E:
@@ -405,23 +405,23 @@ scr_seq_00000112_00000576:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 0
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000112_0000069E
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000112_000006B2
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 1
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000112_000005EF
 	apply_movement 255, scr_seq_00000112_000006C8
@@ -449,7 +449,7 @@ scr_seq_00000112_0000063D:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000112_00000664
 	apply_movement 253, scr_seq_00000112_00000720
@@ -463,24 +463,24 @@ scr_seq_00000112_00000664:
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
 	clearflag FLAG_UNK_189
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 2
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 scr_seq_00000112_0000069E:
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 5
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 scr_seq_00000112_000006B2:
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 3
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall

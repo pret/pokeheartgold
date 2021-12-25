@@ -11,7 +11,7 @@
 scr_seq_00000058_0000000E:
 	checkflag FLAG_UNK_AB8
 	gotoif eq, scr_seq_00000058_0000003A
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_00000058_00000034
 	clearflag FLAG_UNK_30A
@@ -33,7 +33,7 @@ scr_seq_00000058_00000040:
 
 scr_seq_00000058_0000004D:
 	setflag FLAG_UNK_30A
-	scrcmd_101 3
+	hide_person 3
 	end
 
 scr_seq_00000058_00000057:
@@ -45,7 +45,7 @@ scr_seq_00000058_00000057:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 131, 20, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000058_0000008F
 	setflag FLAG_UNK_AB8

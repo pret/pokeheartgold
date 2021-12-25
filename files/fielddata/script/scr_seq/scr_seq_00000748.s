@@ -52,7 +52,7 @@ scr_seq_00000748_00000080:
 	msgbox 0
 scr_seq_00000748_00000091:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000748_000000ED
@@ -102,7 +102,7 @@ scr_seq_00000748_00000128:
 	lockall
 	msgbox 4
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000748_00000168

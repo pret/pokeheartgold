@@ -3,22 +3,22 @@
 
 	.text
 
-	thumb_func_start sub_0202ED74
-sub_0202ED74: ; 0x0202ED74
+	thumb_func_start SaveData_Pokegear_sizeof
+SaveData_Pokegear_sizeof: ; 0x0202ED74
 	ldr r0, _0202ED78 ; =0x00000658
 	bx lr
 	.balign 4, 0
 _0202ED78: .word 0x00000658
-	thumb_func_end sub_0202ED74
+	thumb_func_end SaveData_Pokegear_sizeof
 
-	thumb_func_start sub_0202ED7C
-sub_0202ED7C: ; 0x0202ED7C
+	thumb_func_start SaveData_Pokegear_get
+SaveData_Pokegear_get: ; 0x0202ED7C
 	ldr r3, _0202ED84 ; =SavArray_get
 	mov r1, #0x22
 	bx r3
 	nop
 _0202ED84: .word SavArray_get
-	thumb_func_end sub_0202ED7C
+	thumb_func_end SaveData_Pokegear_get
 
 	thumb_func_start sub_0202ED88
 sub_0202ED88: ; 0x0202ED88
@@ -30,8 +30,8 @@ sub_0202ED88: ; 0x0202ED88
 	.balign 4, 0
 	thumb_func_end sub_0202ED88
 
-	thumb_func_start sub_0202ED98
-sub_0202ED98: ; 0x0202ED98
+	thumb_func_start Pokegear_Init_internal
+Pokegear_Init_internal: ; 0x0202ED98
 	push {r4, lr}
 	ldr r2, _0202EDD8 ; =0x00000658
 	mov r1, #0
@@ -67,15 +67,15 @@ _0202EDDC: .word 0xFE03FFFF
 _0202EDE0: .word 0xF9FFFFFF
 _0202EDE4: .word 0xE7FFFFFF
 _0202EDE8: .word 0x000004B8
-	thumb_func_end sub_0202ED98
+	thumb_func_end Pokegear_Init_internal
 
-	thumb_func_start sub_0202EDEC
-sub_0202EDEC: ; 0x0202EDEC
-	ldr r3, _0202EDF0 ; =sub_0202ED98
+	thumb_func_start SaveData_Pokegear_init
+SaveData_Pokegear_init: ; 0x0202EDEC
+	ldr r3, _0202EDF0 ; =Pokegear_Init_internal
 	bx r3
 	.balign 4, 0
-_0202EDF0: .word sub_0202ED98
-	thumb_func_end sub_0202EDEC
+_0202EDF0: .word Pokegear_Init_internal
+	thumb_func_end SaveData_Pokegear_init
 
 	thumb_func_start sub_0202EDF4
 sub_0202EDF4: ; 0x0202EDF4
@@ -95,8 +95,8 @@ sub_0202EDFC: ; 0x0202EDFC
 	bx lr
 	thumb_func_end sub_0202EDFC
 
-	thumb_func_start sub_0202EE00
-sub_0202EE00: ; 0x0202EE00
+	thumb_func_start Pokegear_RegisterCard
+Pokegear_RegisterCard: ; 0x0202EE00
 	cmp r1, #0
 	beq _0202EE0E
 	cmp r1, #1
@@ -138,7 +138,7 @@ _0202EE30:
 	bx lr
 	.balign 4, 0
 _0202EE48: .word 0xF9FFFFFF
-	thumb_func_end sub_0202EE00
+	thumb_func_end Pokegear_RegisterCard
 
 	thumb_func_start sub_0202EE4C
 sub_0202EE4C: ; 0x0202EE4C

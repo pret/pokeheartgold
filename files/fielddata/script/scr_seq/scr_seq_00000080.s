@@ -34,9 +34,9 @@ scr_seq_00000080_0000003E:
 	gotoif eq, scr_seq_00000080_00000077
 	msgbox 1
 	scrcmd_190 0
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	msgbox 2
-	scrcmd_079
+	wait_fanfare
 	setflag FLAG_UNK_176
 scr_seq_00000080_00000077:
 	msgbox 3
@@ -130,7 +130,7 @@ scr_seq_00000080_0000017E:
 	faceplayer
 	msgbox 17
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000080_000001AD
@@ -162,7 +162,7 @@ scr_seq_00000080_000001CB:
 	faceplayer
 	msgbox 20
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000080_000001FA
@@ -194,7 +194,7 @@ scr_seq_00000080_00000218:
 	faceplayer
 	msgbox 23
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000080_00000247
@@ -226,7 +226,7 @@ scr_seq_00000080_00000265:
 	faceplayer
 	msgbox 26
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000080_00000294
@@ -258,7 +258,7 @@ scr_seq_00000080_000002B2:
 	faceplayer
 	msgbox 29
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000080_000002E1

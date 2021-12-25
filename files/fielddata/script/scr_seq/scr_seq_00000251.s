@@ -130,16 +130,16 @@ scr_seq_00000251_000001C2:
 	scrcmd_134 32774, 32770
 	scrcmd_850 0, 32772
 	msgbox 20
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	scrcmd_850 0, 32773
 	msgbox 20
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	scrcmd_850 0, 32774
 	msgbox 20
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	closemsg
 	setflag FLAG_UNK_101
 	goto scr_seq_00000251_000000D2
@@ -183,7 +183,7 @@ scr_seq_00000251_00000260:
 	scrcmd_049
 	msgbox 13
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000251_0000028C
@@ -250,8 +250,8 @@ scr_seq_00000251_00000337:
 	end
 
 scr_seq_00000251_0000033F:
-	scrcmd_078 1183
-	scrcmd_079
+	play_fanfare SEQ_ME_ASA
+	wait_fanfare
 	msgbox 17
 	waitbutton
 	closemsg

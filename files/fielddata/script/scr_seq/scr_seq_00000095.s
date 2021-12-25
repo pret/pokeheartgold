@@ -33,91 +33,91 @@ scr_seq_00000095_00000059:
 	checkflag FLAG_UNK_098
 	gotoif eq, scr_seq_00000095_0000013E
 	scrcmd_109 0, 9
-	scrcmd_339 1, 19, 0, 16, 1
-	scrcmd_339 7, 19, 0, 18, 0
-	scrcmd_339 9, 19, 0, 17, 0
-	scrcmd_339 10, 20, 0, 17, 0
-	scrcmd_339 11, 20, 0, 18, 0
+	show_person_at 1, 19, 0, 16, 1
+	show_person_at 7, 19, 0, 18, 0
+	show_person_at 9, 19, 0, 17, 0
+	show_person_at 10, 20, 0, 17, 0
+	show_person_at 11, 20, 0, 18, 0
 	end
 
 scr_seq_00000095_000000B3:
 	checkflag FLAG_UNK_098
 	gotoif eq, scr_seq_00000095_000002BF
 	scrcmd_109 0, 9
-	scrcmd_339 1, 19, 0, 16, 1
-	scrcmd_339 7, 19, 0, 18, 0
-	scrcmd_339 9, 19, 0, 17, 0
-	scrcmd_339 10, 20, 0, 17, 0
-	scrcmd_339 11, 20, 0, 18, 0
-	scrcmd_339 2, 3, 0, 14, 2
-	scrcmd_339 6, 1, 0, 14, 0
-	scrcmd_339 12, 1, 0, 13, 0
-	scrcmd_339 13, 2, 0, 13, 0
-	scrcmd_339 14, 2, 0, 14, 0
+	show_person_at 1, 19, 0, 16, 1
+	show_person_at 7, 19, 0, 18, 0
+	show_person_at 9, 19, 0, 17, 0
+	show_person_at 10, 20, 0, 17, 0
+	show_person_at 11, 20, 0, 18, 0
+	show_person_at 2, 3, 0, 14, 2
+	show_person_at 6, 1, 0, 14, 0
+	show_person_at 12, 1, 0, 13, 0
+	show_person_at 13, 2, 0, 13, 0
+	show_person_at 14, 2, 0, 14, 0
 	end
 
 scr_seq_00000095_0000013E:
 	scrcmd_109 0, 9
-	scrcmd_339 1, 19, 0, 16, 1
-	scrcmd_339 7, 19, 0, 18, 0
-	scrcmd_339 9, 19, 0, 17, 0
-	scrcmd_339 10, 20, 0, 17, 0
-	scrcmd_339 11, 20, 0, 18, 0
-	scrcmd_339 3, 7, 0, 17, 3
-	scrcmd_339 5, 8, 0, 18, 0
-	scrcmd_339 15, 8, 0, 17, 0
-	scrcmd_339 16, 9, 0, 17, 0
-	scrcmd_339 17, 9, 0, 18, 0
+	show_person_at 1, 19, 0, 16, 1
+	show_person_at 7, 19, 0, 18, 0
+	show_person_at 9, 19, 0, 17, 0
+	show_person_at 10, 20, 0, 17, 0
+	show_person_at 11, 20, 0, 18, 0
+	show_person_at 3, 7, 0, 17, 3
+	show_person_at 5, 8, 0, 18, 0
+	show_person_at 15, 8, 0, 17, 0
+	show_person_at 16, 9, 0, 17, 0
+	show_person_at 17, 9, 0, 18, 0
 	end
 
 scr_seq_00000095_000001BE:
 	checkflag FLAG_UNK_098
 	gotoif eq, scr_seq_00000095_00000245
-	scrcmd_339 2, 3, 0, 14, 2
-	scrcmd_339 6, 1, 0, 14, 0
-	scrcmd_339 12, 1, 0, 13, 0
-	scrcmd_339 13, 2, 0, 13, 0
-	scrcmd_339 14, 2, 0, 14, 0
+	show_person_at 2, 3, 0, 14, 2
+	show_person_at 6, 1, 0, 14, 0
+	show_person_at 12, 1, 0, 13, 0
+	show_person_at 13, 2, 0, 13, 0
+	show_person_at 14, 2, 0, 14, 0
 	end
 
 scr_seq_00000095_00000207:
-	scrcmd_339 3, 7, 0, 17, 3
-	scrcmd_339 5, 8, 0, 18, 0
-	scrcmd_339 15, 8, 0, 17, 0
-	scrcmd_339 16, 9, 0, 17, 0
-	scrcmd_339 17, 9, 0, 18, 0
+	show_person_at 3, 7, 0, 17, 3
+	show_person_at 5, 8, 0, 18, 0
+	show_person_at 15, 8, 0, 17, 0
+	show_person_at 16, 9, 0, 17, 0
+	show_person_at 17, 9, 0, 18, 0
 	end
 
 scr_seq_00000095_00000245:
-	scrcmd_339 2, 3, 0, 14, 2
-	scrcmd_339 6, 1, 0, 14, 0
-	scrcmd_339 12, 1, 0, 13, 0
-	scrcmd_339 13, 2, 0, 13, 0
-	scrcmd_339 14, 2, 0, 14, 0
-	scrcmd_339 3, 7, 0, 17, 3
-	scrcmd_339 5, 8, 0, 18, 0
-	scrcmd_339 15, 8, 0, 17, 0
-	scrcmd_339 16, 9, 0, 17, 0
-	scrcmd_339 17, 9, 0, 18, 0
+	show_person_at 2, 3, 0, 14, 2
+	show_person_at 6, 1, 0, 14, 0
+	show_person_at 12, 1, 0, 13, 0
+	show_person_at 13, 2, 0, 13, 0
+	show_person_at 14, 2, 0, 14, 0
+	show_person_at 3, 7, 0, 17, 3
+	show_person_at 5, 8, 0, 18, 0
+	show_person_at 15, 8, 0, 17, 0
+	show_person_at 16, 9, 0, 17, 0
+	show_person_at 17, 9, 0, 18, 0
 	end
 
 scr_seq_00000095_000002BF:
 	scrcmd_109 0, 9
-	scrcmd_339 1, 19, 0, 16, 1
-	scrcmd_339 7, 19, 0, 18, 0
-	scrcmd_339 9, 19, 0, 17, 0
-	scrcmd_339 10, 20, 0, 17, 0
-	scrcmd_339 11, 20, 0, 18, 0
-	scrcmd_339 2, 3, 0, 14, 2
-	scrcmd_339 6, 1, 0, 14, 0
-	scrcmd_339 12, 1, 0, 13, 0
-	scrcmd_339 13, 2, 0, 13, 0
-	scrcmd_339 14, 2, 0, 14, 0
-	scrcmd_339 3, 7, 0, 17, 3
-	scrcmd_339 5, 8, 0, 18, 0
-	scrcmd_339 15, 8, 0, 17, 0
-	scrcmd_339 16, 9, 0, 17, 0
-	scrcmd_339 17, 9, 0, 18, 0
+	show_person_at 1, 19, 0, 16, 1
+	show_person_at 7, 19, 0, 18, 0
+	show_person_at 9, 19, 0, 17, 0
+	show_person_at 10, 20, 0, 17, 0
+	show_person_at 11, 20, 0, 18, 0
+	show_person_at 2, 3, 0, 14, 2
+	show_person_at 6, 1, 0, 14, 0
+	show_person_at 12, 1, 0, 13, 0
+	show_person_at 13, 2, 0, 13, 0
+	show_person_at 14, 2, 0, 14, 0
+	show_person_at 3, 7, 0, 17, 3
+	show_person_at 5, 8, 0, 18, 0
+	show_person_at 15, 8, 0, 17, 0
+	show_person_at 16, 9, 0, 17, 0
+	show_person_at 17, 9, 0, 18, 0
 	end
 
 scr_seq_00000095_0000037B:
@@ -149,7 +149,7 @@ scr_seq_00000095_000003C9:
 	end
 
 scr_seq_00000095_000003DC:
-	scrcmd_106 4, 16384, 16385
+	get_person_coords 4, VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 15
 	gotoif ne, scr_seq_00000095_000003FD
 	goto scr_seq_00000095_0000041C

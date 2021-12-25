@@ -27,8 +27,8 @@ scr_seq_00000798_0000003A:
 scr_seq_00000798_00000046:
 	comparevartovalue VAR_UNK_412C, 0
 	gotoif ne, scr_seq_00000798_0000006B
-	scrcmd_339 5, 12, 0, 6, 2
-	scrcmd_339 6, 13, 0, 6, 2
+	show_person_at 5, 12, 0, 6, 2
+	show_person_at 6, 13, 0, 6, 2
 scr_seq_00000798_0000006B:
 	end
 
@@ -69,8 +69,8 @@ scr_seq_00000798_0000006D:
 	scrcmd_309 77
 	callstd 2030
 	setvar VAR_UNK_412C, 1
-	scrcmd_339 5, 29, 0, 29, 2
-	scrcmd_339 6, 29, 0, 29, 2
+	show_person_at 5, 29, 0, 29, 2
+	show_person_at 6, 29, 0, 29, 2
 	releaseall
 	end
 
@@ -131,8 +131,8 @@ scr_seq_00000798_00000198:
 	checkflag FLAG_UNK_143
 	gotoif eq, scr_seq_00000798_000001ED
 	msgbox 1
-	scrcmd_078 1195
-	scrcmd_079
+	play_fanfare SEQ_ME_HYOUKA2
+	wait_fanfare
 	closemsg
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
@@ -149,8 +149,8 @@ scr_seq_00000798_000001ED:
 	checkflag FLAG_UNK_144
 	gotoif eq, scr_seq_00000798_0000023A
 	msgbox 2
-	scrcmd_078 1195
-	scrcmd_079
+	play_fanfare SEQ_ME_HYOUKA2
+	wait_fanfare
 	closemsg
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
@@ -178,7 +178,7 @@ scr_seq_00000798_00000250:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 15, 32780
+	scrcmd_294 15, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000798_00000276
 	msgbox 7

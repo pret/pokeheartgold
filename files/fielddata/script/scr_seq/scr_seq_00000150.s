@@ -24,9 +24,9 @@ scr_seq_00000150_00000006:
 	scrcmd_626 1, 32768
 	msgbox 1
 	closemsg
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	msgbox 3
-	scrcmd_079
+	wait_fanfare
 	scrcmd_625 32768, 1, 32780
 	scrcmd_515 1
 	comparevartovalue VAR_SPECIAL_x800C, 0

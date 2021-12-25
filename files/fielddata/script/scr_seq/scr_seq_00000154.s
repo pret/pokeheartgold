@@ -24,10 +24,10 @@ scr_seq_00000154_00000029:
 	faceplayer
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ge, scr_seq_00000154_0000014D
-	scrcmd_386 16385
+	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, scr_seq_00000154_00000158
-	scrcmd_484 32780
+	scrcmd_484 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000154_0000006C
 	goto scr_seq_00000154_000000EF

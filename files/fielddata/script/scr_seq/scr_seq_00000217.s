@@ -15,7 +15,7 @@ scr_seq_00000217_00000006:
 	msgbox 0
 	setflag FLAG_UNK_14E
 scr_seq_00000217_00000020:
-	scrcmd_495 32770
+	scrcmd_495 VAR_SPECIAL_x8002
 	comparevartovalue VAR_SPECIAL_x8002, 8
 	gotoif ne, scr_seq_00000217_00000037
 	goto scr_seq_00000217_000000B1
@@ -92,7 +92,7 @@ scr_seq_00000217_0000011F:
 scr_seq_00000217_00000125:
 	msgbox 11
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000217_0000048D
@@ -107,7 +107,7 @@ scr_seq_00000217_00000125:
 	scrcmd_175
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000217_0000048D
-	scrcmd_354 32768, 32769
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8002, 8
 	gotoif ne, scr_seq_00000217_00000188
 	goto scr_seq_00000217_000002F0

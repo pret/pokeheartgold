@@ -49,8 +49,8 @@ scr_seq_00000066_00000062:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_DOOR
-	scrcmd_101 4
-	scrcmd_101 0
+	hide_person 4
+	hide_person 0
 	wait_se SEQ_SE_DP_DOOR
 	apply_movement 1, scr_seq_00000066_000001F0
 	wait_movement
@@ -62,15 +62,15 @@ scr_seq_00000066_00000062:
 scr_seq_00000066_000000B5:
 	msgbox 2
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000066_0000017F
 	takeitem ITEM_SECRETPOTION, 1, VAR_SPECIAL_x800C
 	scrcmd_190 0
 	msgbox 3
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	msgbox 4
 	closemsg
 	apply_movement 1, scr_seq_00000066_000001B0
@@ -99,7 +99,7 @@ scr_seq_00000066_000000B5:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_101 1
+	hide_person 1
 	releaseall
 	setflag FLAG_UNK_96A
 	setvar VAR_UNK_40A5, 2

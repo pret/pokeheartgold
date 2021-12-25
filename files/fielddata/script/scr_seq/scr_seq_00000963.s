@@ -16,7 +16,7 @@ scr_seq_00000963_0000000E:
 	end
 
 scr_seq_00000963_00000028:
-	scrcmd_339 0, 3, 0, 3, 0
+	show_person_at 0, 3, 0, 3, 0
 	end
 
 scr_seq_00000963_00000036:
@@ -30,7 +30,7 @@ scr_seq_00000963_0000003E:
 	gotoif eq, scr_seq_00000963_000000BE
 	checkflag FLAG_UNK_964
 	gotoif eq, scr_seq_00000963_000000B1
-	scrcmd_386 16384
+	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3
 	gotoif ne, scr_seq_00000963_00000079
 	apply_movement 0, scr_seq_00000963_000000E4

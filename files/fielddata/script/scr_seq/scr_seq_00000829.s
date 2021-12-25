@@ -17,20 +17,20 @@ scr_seq_00000829_00000016:
 	scrcmd_147 35, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000829_0000006C
-	scrcmd_294 13, 16384
+	scrcmd_294 13, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_00000829_00000055
 	goto scr_seq_00000829_00000083
 
 scr_seq_00000829_00000055:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_00000829_00000083
 	setflag FLAG_UNK_2F1
 	end
 
 scr_seq_00000829_0000006C:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_00000829_00000083
 	setflag FLAG_UNK_2F1
@@ -48,13 +48,13 @@ scr_seq_00000829_0000008F:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 13, 32780
+	scrcmd_294 13, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000829_00000140
 	msgbox 0
 	closemsg
-	scrcmd_213 258, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 258, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000829_00000156
 	scrcmd_295 13
@@ -68,8 +68,8 @@ scr_seq_00000829_0000008F:
 	msgbox 1
 	scrcmd_190 0
 	msgbox 2
-	scrcmd_078 1189
-	scrcmd_079
+	play_fanfare SEQ_ME_BADGE
+	wait_fanfare
 	msgbox 3
 	goto scr_seq_00000829_00000102
 
@@ -111,7 +111,7 @@ scr_seq_00000829_0000015C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 13, 32780
+	scrcmd_294 13, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000829_00000182
 	msgbox 6
@@ -131,7 +131,7 @@ scr_seq_00000829_0000018D:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 13, 32780
+	scrcmd_294 13, VAR_SPECIAL_x800C
 	scrcmd_190 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000829_000001B4

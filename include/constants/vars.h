@@ -60,7 +60,7 @@
 
 #define NUM_OBJ_GFX_VARS                    16
 
-#define VAR_UNK_4030                 0x4030
+#define VAR_PLAYER_STARTER           0x4030
 #define VAR_UNK_4031                 0x4031
 #define VAR_UNK_4032                 0x4032
 #define VAR_UNK_4033                 0x4033

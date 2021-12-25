@@ -42,9 +42,9 @@ scr_seq_00000096_00000071:
 	end
 
 scr_seq_00000096_00000096:
-	scrcmd_339 26, 18, 0, 14, 0
-	scrcmd_339 27, 24, 0, 14, 0
-	scrcmd_339 34, 24, 0, 14, 0
+	show_person_at 26, 18, 0, 14, 0
+	show_person_at 27, 24, 0, 14, 0
+	show_person_at 34, 24, 0, 14, 0
 	end
 
 scr_seq_00000096_000000BC:
@@ -352,7 +352,7 @@ scr_seq_00000096_0000061C:
 	scrcmd_609
 	lockall
 	callstd 2031
-	scrcmd_339 28, 28, 0, 4, 2
+	show_person_at 28, 28, 0, 4, 2
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -365,22 +365,22 @@ scr_seq_00000096_0000061C:
 	scrcmd_191 0
 	msgbox 0
 	closemsg
-	scrcmd_206 32780
+	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
 	gotoif ne, scr_seq_00000096_0000067D
-	scrcmd_213 289, 0, 0, 0
+	trainer_battle 289, 0, 0, 0
 	goto scr_seq_00000096_000006A0
 
 scr_seq_00000096_0000067D:
 	comparevartovalue VAR_SPECIAL_x800C, 155
 	gotoif ne, scr_seq_00000096_00000698
-	scrcmd_213 271, 0, 0, 0
+	trainer_battle 271, 0, 0, 0
 	goto scr_seq_00000096_000006A0
 
 scr_seq_00000096_00000698:
-	scrcmd_213 288, 0, 0, 0
+	trainer_battle 288, 0, 0, 0
 scr_seq_00000096_000006A0:
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000096_000006D9
 	callstd 2070
@@ -390,7 +390,7 @@ scr_seq_00000096_000006A0:
 	setvar VAR_UNK_40A0, 1
 	apply_movement 28, scr_seq_00000096_00000700
 	wait_movement
-	scrcmd_101 28
+	hide_person 28
 	callstd 2071
 	releaseall
 	end

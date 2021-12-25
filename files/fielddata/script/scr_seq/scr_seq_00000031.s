@@ -173,8 +173,8 @@ scr_seq_00000031_000001B4:
 	wait_movement
 	releaseall
 	setflag FLAG_UNK_1BF
-	scrcmd_101 7
-	scrcmd_101 8
+	hide_person 7
+	hide_person 8
 	setflag FLAG_UNK_090
 	end
 

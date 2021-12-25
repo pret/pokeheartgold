@@ -110,7 +110,7 @@ scr_seq_00000838_00000107:
 	comparevartovalue VAR_SPECIAL_x8003, 1
 	gotoif ge, scr_seq_00000838_000001E5
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000838_0000073D
 	goto scr_seq_00000838_00000189
@@ -162,7 +162,7 @@ scr_seq_00000838_00000231:
 scr_seq_00000838_00000250:
 	.byte 0x02, 0x00
 scr_seq_00000838_00000252:
-	scrcmd_199 0, VAR_SPECIAL_x8000
+	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	msgbox 11
 	scrcmd_675 32768, 0, 0, 0
 	scrcmd_174 6, 1, 0, 0
@@ -186,8 +186,8 @@ scr_seq_00000838_000002BF:
 	.byte 0x00
 scr_seq_00000838_000002C1:
 	scrcmd_815 0
-	scrcmd_105 32774, 32775
-	scrcmd_386 32780
+	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
+	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 403, 0, 32774, 32775, 32780
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
@@ -235,7 +235,7 @@ scr_seq_00000838_00000332:
 	scrcmd_175
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000838_000003AC
-	scrcmd_354 32768, 32780
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000838_0000041A
 	comparevartovalue VAR_SPECIAL_x800C, 479
@@ -277,7 +277,7 @@ scr_seq_00000838_000003C0:
 	scrcmd_175
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000838_0000073D
-	scrcmd_354 32768, 32780
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000838_0000041A
 	comparevartovalue VAR_SPECIAL_x800C, 479
@@ -332,8 +332,8 @@ scr_seq_00000838_000004CA:
 	.byte 0x02, 0x00
 scr_seq_00000838_000004CC:
 	scrcmd_490 16389
-	scrcmd_529 16384
-	scrcmd_354 16384, 16385
+	scrcmd_529 VAR_TEMP_x4000
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 479
 	gotoif ne, scr_seq_00000838_0000050C
 	comparevartovar VAR_TEMP_x4000, VAR_SPECIAL_x8000
@@ -345,7 +345,7 @@ scr_seq_00000838_000004CC:
 scr_seq_00000838_00000506:
 	setvar VAR_TEMP_x400A, 1
 scr_seq_00000838_0000050C:
-	scrcmd_199 0, VAR_SPECIAL_x8000
+	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	msgbox 10
 	goto scr_seq_00000838_00000671
 
@@ -353,8 +353,8 @@ scr_seq_00000838_0000051A:
 	.byte 0x02, 0x00
 scr_seq_00000838_0000051C:
 	scrcmd_490 16391
-	scrcmd_529 16384
-	scrcmd_354 16384, 16385
+	scrcmd_529 VAR_TEMP_x4000
+	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 479
 	gotoif ne, scr_seq_00000838_00000564
 	scrcmd_490 16384
@@ -368,10 +368,10 @@ scr_seq_00000838_0000051C:
 scr_seq_00000838_0000055E:
 	setvar VAR_TEMP_x400A, 1
 scr_seq_00000838_00000564:
-	scrcmd_199 0, VAR_SPECIAL_x8000
+	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	scrcmd_197 1, 32769
 	msgbox 0
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000838_00000649
 	goto scr_seq_00000838_0000058A
@@ -392,10 +392,10 @@ scr_seq_00000838_0000058A:
 	scrcmd_398 32780, 32768, 32770
 	scrcmd_197 1, 32780
 	msgbox 3
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000838_00000649
-	scrcmd_199 0, VAR_SPECIAL_x8000
+	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	scrcmd_398 32780, 32768, 32770
 	scrcmd_197 1, 32780
 	msgbox 4
@@ -406,8 +406,8 @@ scr_seq_00000838_0000058A:
 	wait 32, VAR_SPECIAL_x800C
 	scrcmd_197 1, 32769
 	msgbox 6
-	scrcmd_078 1184
-	scrcmd_079
+	play_fanfare SEQ_ME_LVUP
+	wait_fanfare
 	wait 16, VAR_SPECIAL_x800C
 	goto scr_seq_00000838_00000671
 
@@ -416,7 +416,7 @@ scr_seq_00000838_00000626:
 scr_seq_00000838_00000628:
 	scrcmd_197 1, 32769
 	msgbox 1
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000838_0000058A
 	goto scr_seq_00000838_00000649
@@ -424,7 +424,7 @@ scr_seq_00000838_00000628:
 scr_seq_00000838_00000647:
 	.byte 0x02, 0x00
 scr_seq_00000838_00000649:
-	scrcmd_199 0, VAR_SPECIAL_x8000
+	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	scrcmd_197 1, 32769
 	msgbox 2
 	waitbutton
@@ -456,23 +456,23 @@ scr_seq_00000838_00000671:
 scr_seq_00000838_000006D0:
 	.byte 0x02, 0x00
 scr_seq_00000838_000006D2:
-	scrcmd_101 0
+	hide_person 0
 	return
 
 scr_seq_00000838_000006D8:
-	scrcmd_101 1
+	hide_person 1
 	return
 
 scr_seq_00000838_000006DE:
-	scrcmd_101 2
+	hide_person 2
 	return
 
 scr_seq_00000838_000006E4:
-	scrcmd_101 3
+	hide_person 3
 	return
 
 scr_seq_00000838_000006EA:
-	scrcmd_101 4
+	hide_person 4
 	return
 
 

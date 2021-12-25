@@ -53,7 +53,7 @@ scr_seq_00000806_00000094:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_386 16386
+	scrcmd_386 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ne, scr_seq_00000806_000000B9
 	call scr_seq_00000806_000000EC
@@ -78,8 +78,8 @@ scr_seq_00000806_000000E4:
 	end
 
 scr_seq_00000806_000000EC:
-	scrcmd_105 16386, 16387
-	scrcmd_105 16386, 16387
+	get_player_coords VAR_TEMP_x4002, VAR_TEMP_x4003
+	get_player_coords VAR_TEMP_x4002, VAR_TEMP_x4003
 	comparevartovalue VAR_TEMP_x4002, 6
 	gotoif ne, scr_seq_00000806_00000113
 	apply_movement 0, scr_seq_00000806_00000084
@@ -129,7 +129,7 @@ scr_seq_00000806_0000019A:
 	msgbox 9
 scr_seq_00000806_0000019D:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000806_000001D4

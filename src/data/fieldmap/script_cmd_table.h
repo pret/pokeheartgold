@@ -78,16 +78,16 @@ extern BOOL ScrCmd_074(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_WaitSE(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_076(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_077(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_078(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlayFanfare(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_079(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_080(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlayBGM(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_081(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_082(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ResetBGM(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_083(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_084(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_FadeOutBGM(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_085(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_086(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_087(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TempBGM(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_088(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_089(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_090(SCRIPTCONTEXT *ctx);
@@ -101,12 +101,12 @@ extern BOOL ScrCmd_ReleaseAll(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_098(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_099(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_100(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_101(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_HidePerson(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_102(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_103(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_FacePlayer(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_105(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_106(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPlayerCoords(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPersonCoords(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_107(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_108(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_109(SCRIPTCONTEXT *ctx);
@@ -131,7 +131,7 @@ extern BOOL ScrCmd_HasSpaceForItem(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_HasItem(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ItemIsTMOrHM(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetItemPocket(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_131(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SetStarterChoice(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_132(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_133(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_134(SCRIPTCONTEXT *ctx);
@@ -145,7 +145,7 @@ extern BOOL ScrCmd_141(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_142(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_143(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_144(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_145(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_RegisterPokegearCard(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_146(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_147(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_148(SCRIPTCONTEXT *ctx);
@@ -199,21 +199,21 @@ extern BOOL ScrCmd_195(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_196(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_197(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_198(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_199(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferPartyMonNick(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_200(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_201(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_202(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_203(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_204(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_205(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_206(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetStarterChoice(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_207(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_208(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_209(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_210(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_211(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_212(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_213(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TrainerBattle(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_214(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_215(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_216(SCRIPTCONTEXT *ctx);
@@ -281,7 +281,7 @@ extern BOOL ScrCmd_277(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_278(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_279(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_280(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_281(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPlayerGender(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_282(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_283(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_284(SCRIPTCONTEXT *ctx);
@@ -339,7 +339,7 @@ extern BOOL ScrCmd_335(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_336(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_337(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_338(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_339(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ShowPersonAt(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_340(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_341(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_342(SCRIPTCONTEXT *ctx);
@@ -354,8 +354,8 @@ extern BOOL ScrCmd_350(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_351(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_352(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_353(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_354(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_355(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartyMonSpecies(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PartymonIsMine(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_356(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_357(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_358(SCRIPTCONTEXT *ctx);
@@ -748,7 +748,7 @@ extern BOOL ScrCmd_744(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_745(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_746(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_747(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_748(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetMenuChoice(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_749(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_750(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_751(SCRIPTCONTEXT *ctx);
@@ -827,7 +827,7 @@ extern BOOL ScrCmd_823(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_824(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_825(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_826(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_827(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartymonForme(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_828(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_829(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_830(SCRIPTCONTEXT *ctx);
@@ -933,16 +933,16 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_WaitSE,
     ScrCmd_076,
     ScrCmd_077,
-    ScrCmd_078,
+    ScrCmd_PlayFanfare,
     ScrCmd_079,
-    ScrCmd_080,
+    ScrCmd_PlayBGM,
     ScrCmd_081,
-    ScrCmd_082,
+    ScrCmd_ResetBGM,
     ScrCmd_083,
-    ScrCmd_084,
+    ScrCmd_FadeOutBGM,
     ScrCmd_085,
     ScrCmd_086,
-    ScrCmd_087,
+    ScrCmd_TempBGM,
     ScrCmd_088,
     ScrCmd_089,
     ScrCmd_090,
@@ -956,12 +956,12 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_098,
     ScrCmd_099,
     ScrCmd_100,
-    ScrCmd_101,
+    ScrCmd_HidePerson,
     ScrCmd_102,
     ScrCmd_103,
     ScrCmd_FacePlayer,
-    ScrCmd_105,
-    ScrCmd_106,
+    ScrCmd_GetPlayerCoords,
+    ScrCmd_GetPersonCoords,
     ScrCmd_107,
     ScrCmd_108,
     ScrCmd_109,
@@ -986,7 +986,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_HasItem,
     ScrCmd_ItemIsTMOrHM,
     ScrCmd_GetItemPocket,
-    ScrCmd_131,
+    ScrCmd_SetStarterChoice,
     ScrCmd_132,
     ScrCmd_133,
     ScrCmd_134,
@@ -1000,7 +1000,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_142,
     ScrCmd_143,
     ScrCmd_144,
-    ScrCmd_145,
+    ScrCmd_RegisterPokegearCard,
     ScrCmd_146,
     ScrCmd_147,
     ScrCmd_148,
@@ -1054,21 +1054,21 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_196,
     ScrCmd_197,
     ScrCmd_198,
-    ScrCmd_199,
+    ScrCmd_BufferPartyMonNick,
     ScrCmd_200,
     ScrCmd_201,
     ScrCmd_202,
     ScrCmd_203,
     ScrCmd_204,
     ScrCmd_205,
-    ScrCmd_206,
+    ScrCmd_GetStarterChoice,
     ScrCmd_207,
     ScrCmd_208,
     ScrCmd_209,
     ScrCmd_210,
     ScrCmd_211,
     ScrCmd_212,
-    ScrCmd_213,
+    ScrCmd_TrainerBattle,
     ScrCmd_214,
     ScrCmd_215,
     ScrCmd_216,
@@ -1136,7 +1136,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_278,
     ScrCmd_279,
     ScrCmd_280,
-    ScrCmd_281,
+    ScrCmd_GetPlayerGender,
     ScrCmd_282,
     ScrCmd_283,
     ScrCmd_284,
@@ -1194,7 +1194,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_336,
     ScrCmd_337,
     ScrCmd_338,
-    ScrCmd_339,
+    ScrCmd_ShowPersonAt,
     ScrCmd_340,
     ScrCmd_341,
     ScrCmd_342,
@@ -1209,8 +1209,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_351,
     ScrCmd_352,
     ScrCmd_353,
-    ScrCmd_354,
-    ScrCmd_355,
+    ScrCmd_GetPartyMonSpecies,
+    ScrCmd_PartymonIsMine,
     ScrCmd_356,
     ScrCmd_357,
     ScrCmd_358,
@@ -1603,7 +1603,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_745,
     ScrCmd_746,
     ScrCmd_747,
-    ScrCmd_748,
+    ScrCmd_GetMenuChoice,
     ScrCmd_749,
     ScrCmd_750,
     ScrCmd_751,
@@ -1682,7 +1682,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_824,
     ScrCmd_825,
     ScrCmd_826,
-    ScrCmd_827,
+    ScrCmd_GetPartymonForme,
     ScrCmd_828,
     ScrCmd_829,
     ScrCmd_830,

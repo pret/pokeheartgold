@@ -18,7 +18,7 @@ scr_seq_00000005_0000001F:
 	scrcmd_147 33, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000005_0000009E
-	scrcmd_294 15, 16386
+	scrcmd_294 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_00000005_0000004D
 	goto scr_seq_00000005_00000102
@@ -94,7 +94,7 @@ scr_seq_00000005_00000108:
 	msgbox 1
 scr_seq_00000005_00000133:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000005_00000157
@@ -105,8 +105,8 @@ scr_seq_00000005_00000133:
 scr_seq_00000005_00000157:
 	scrcmd_190 0
 	msgbox 2
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	scrcmd_146 33
 	msgbox 3
 	waitbutton
@@ -114,7 +114,7 @@ scr_seq_00000005_00000157:
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
 	setflag FLAG_UNK_262
-	scrcmd_101 1
+	hide_person 1
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -137,7 +137,7 @@ scr_seq_00000005_000001AB:
 scr_seq_00000005_000001B4:
 	.byte 0x02, 0x00
 scr_seq_00000005_000001B6:
-	scrcmd_484 32772
+	scrcmd_484 VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif ne, scr_seq_00000005_000001D8
 	checkflag FLAG_UNK_165
@@ -161,11 +161,11 @@ scr_seq_00000005_0000020E:
 	gotoif eq, scr_seq_00000005_00000357
 	msgbox 6
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000005_0000027C
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000005_00000287
 	msgbox 7
@@ -210,7 +210,7 @@ scr_seq_00000005_000002A8:
 	scrcmd_132 11, 12
 scr_seq_00000005_000002AF:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000005_00000346
@@ -227,7 +227,7 @@ scr_seq_00000005_000002AF:
 	gotoif eq, scr_seq_00000005_00000346
 	scrcmd_470 11
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_354 32772, 32773
+	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
 	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	gotoif ne, scr_seq_00000005_00000339

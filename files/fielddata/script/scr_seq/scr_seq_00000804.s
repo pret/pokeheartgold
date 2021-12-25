@@ -19,7 +19,7 @@ scr_seq_00000804_00000016:
 	setflag FLAG_UNK_172
 	msgbox 2
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000804_000000F2
@@ -30,7 +30,7 @@ scr_seq_00000804_0000004B:
 scr_seq_00000804_0000004D:
 	msgbox 3
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000804_000000F2
@@ -49,7 +49,7 @@ scr_seq_00000804_0000006D:
 	scrcmd_175
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000804_000000F2
-	scrcmd_354 32768, 32769
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8001, 0
 	gotoif eq, scr_seq_00000804_000000FD
 	scrcmd_670 32768, 32772
@@ -168,7 +168,7 @@ scr_seq_00000804_0000028E:
 	gotoif eq, scr_seq_00000804_00000990
 	scrcmd_194 0, 32772
 	msgbox 12
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_000002D7
 	closemsg
@@ -199,7 +199,7 @@ scr_seq_00000804_00000319:
 	gotoif eq, scr_seq_00000804_00000990
 	scrcmd_194 0, 32772
 	msgbox 12
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_00000362
 	closemsg
@@ -230,7 +230,7 @@ scr_seq_00000804_000003A4:
 	gotoif eq, scr_seq_00000804_00000990
 	scrcmd_194 0, 32772
 	msgbox 12
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_000003ED
 	closemsg
@@ -261,7 +261,7 @@ scr_seq_00000804_0000042F:
 	gotoif eq, scr_seq_00000804_00000990
 	scrcmd_194 0, 32772
 	msgbox 12
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_00000478
 	closemsg
@@ -292,7 +292,7 @@ scr_seq_00000804_000004BA:
 	gotoif eq, scr_seq_00000804_00000990
 	scrcmd_194 0, 32772
 	msgbox 12
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_00000503
 	closemsg
@@ -323,7 +323,7 @@ scr_seq_00000804_00000545:
 	gotoif eq, scr_seq_00000804_00000990
 	scrcmd_194 0, 32772
 	msgbox 12
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_0000058E
 	closemsg
@@ -354,7 +354,7 @@ scr_seq_00000804_000005D0:
 	gotoif eq, scr_seq_00000804_00000990
 	scrcmd_194 0, 32772
 	msgbox 12
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_00000619
 	closemsg
@@ -385,7 +385,7 @@ scr_seq_00000804_0000065B:
 	gotoif eq, scr_seq_00000804_00000990
 	scrcmd_194 0, 32772
 	msgbox 12
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_000006A4
 	closemsg
@@ -416,7 +416,7 @@ scr_seq_00000804_000006E6:
 	gotoif eq, scr_seq_00000804_00000990
 	scrcmd_194 0, 32772
 	msgbox 12
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_0000072F
 	closemsg
@@ -448,7 +448,7 @@ scr_seq_00000804_00000771:
 	gotoif eq, scr_seq_00000804_00000990
 	scrcmd_194 0, 32772
 	msgbox 12
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_000007BA
 	closemsg
@@ -508,7 +508,7 @@ scr_seq_00000804_00000889:
 	goto scr_seq_00000804_00000895
 
 scr_seq_00000804_00000895:
-	scrcmd_332 32773
+	scrcmd_332 VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 6
 	gotoif ne, scr_seq_00000804_000008B3
 	msgbox 15
@@ -519,7 +519,7 @@ scr_seq_00000804_00000895:
 scr_seq_00000804_000008B3:
 	scrcmd_202 1, 16386, 0, 0
 	msgbox 16
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000804_000008D7
 	closemsg

@@ -23,15 +23,15 @@ ScrCmd_575: ; 0x0204910C
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_575
 
-	thumb_func_start ScrCmd_080
-ScrCmd_080: ; 0x02049134
+	thumb_func_start ScrCmd_PlayBGM
+ScrCmd_PlayBGM: ; 0x02049134
 	push {r3, lr}
 	bl ScriptReadHalfword
 	bl PlayBGM
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_080
+	thumb_func_end ScrCmd_PlayBGM
 
 	thumb_func_start ScrCmd_081
 ScrCmd_081: ; 0x02049144
@@ -44,8 +44,8 @@ ScrCmd_081: ; 0x02049144
 	pop {r3, pc}
 	thumb_func_end ScrCmd_081
 
-	thumb_func_start ScrCmd_082
-ScrCmd_082: ; 0x02049158
+	thumb_func_start ScrCmd_ResetBGM
+ScrCmd_ResetBGM: ; 0x02049158
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -56,7 +56,7 @@ ScrCmd_082: ; 0x02049158
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_082
+	thumb_func_end ScrCmd_ResetBGM
 
 	thumb_func_start ScrCmd_083
 ScrCmd_083: ; 0x02049170
@@ -72,8 +72,8 @@ ScrCmd_083: ; 0x02049170
 	.balign 4, 0
 	thumb_func_end ScrCmd_083
 
-	thumb_func_start ScrCmd_084
-ScrCmd_084: ; 0x02049188
+	thumb_func_start ScrCmd_FadeOutBGM
+ScrCmd_FadeOutBGM: ; 0x02049188
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -90,7 +90,7 @@ ScrCmd_084: ; 0x02049188
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _020491AC: .word sub_020491B0
-	thumb_func_end ScrCmd_084
+	thumb_func_end ScrCmd_FadeOutBGM
 
 	thumb_func_start sub_020491B0
 sub_020491B0: ; 0x020491B0
@@ -141,15 +141,15 @@ ScrCmd_086: ; 0x020491E8
 	.balign 4, 0
 	thumb_func_end ScrCmd_086
 
-	thumb_func_start ScrCmd_087
-ScrCmd_087: ; 0x02049204
+	thumb_func_start ScrCmd_TempBGM
+ScrCmd_TempBGM: ; 0x02049204
 	push {r3, lr}
 	bl ScriptReadHalfword
 	bl sub_02005E44
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_087
+	thumb_func_end ScrCmd_TempBGM
 
 	thumb_func_start ScrCmd_088
 ScrCmd_088: ; 0x02049214
@@ -286,8 +286,8 @@ _020492FE:
 	.balign 4, 0
 	thumb_func_end sub_020492F0
 
-	thumb_func_start ScrCmd_078
-ScrCmd_078: ; 0x02049304
+	thumb_func_start ScrCmd_PlayFanfare
+ScrCmd_PlayFanfare: ; 0x02049304
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -299,7 +299,7 @@ ScrCmd_078: ; 0x02049304
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_078
+	thumb_func_end ScrCmd_PlayFanfare
 
 	thumb_func_start ScrCmd_079
 ScrCmd_079: ; 0x02049320

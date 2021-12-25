@@ -29,7 +29,7 @@ scr_seq_00000782_00000022:
 scr_seq_00000782_00000044:
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000782_0000009E
@@ -100,7 +100,7 @@ scr_seq_00000782_0000010B:
 
 scr_seq_00000782_00000116:
 	msgbox 11
-	scrcmd_101 5
+	hide_person 5
 	setflag FLAG_UNK_2FC
 	setvar VAR_SPECIAL_x8004, 479
 	setvar VAR_SPECIAL_x8005, 1

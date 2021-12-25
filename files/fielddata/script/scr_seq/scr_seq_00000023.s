@@ -18,22 +18,22 @@ scr_seq_00000023_00000012:
 	scrcmd_191 0
 	msgbox 0
 	closemsg
-	scrcmd_206 32780
+	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
 	gotoif ne, scr_seq_00000023_0000004B
-	scrcmd_213 267, 0, 0, 0
+	trainer_battle 267, 0, 0, 0
 	goto scr_seq_00000023_0000006E
 
 scr_seq_00000023_0000004B:
 	comparevartovalue VAR_SPECIAL_x800C, 155
 	gotoif ne, scr_seq_00000023_00000066
-	scrcmd_213 270, 0, 0, 0
+	trainer_battle 270, 0, 0, 0
 	goto scr_seq_00000023_0000006E
 
 scr_seq_00000023_00000066:
-	scrcmd_213 263, 0, 0, 0
+	trainer_battle 263, 0, 0, 0
 scr_seq_00000023_0000006E:
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000023_000000C7
 	callstd 2070
@@ -49,7 +49,7 @@ scr_seq_00000023_0000006E:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_101 0
+	hide_person 0
 	callstd 2071
 	setflag FLAG_UNK_1C6
 	setvar VAR_UNK_40A6, 1

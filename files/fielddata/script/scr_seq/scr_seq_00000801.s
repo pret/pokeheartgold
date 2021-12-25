@@ -9,7 +9,7 @@
 scr_seq_00000801_00000006:
 	scrcmd_609
 	lockall
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000801_00000058
 	comparevartovalue VAR_SPECIAL_x800C, 1

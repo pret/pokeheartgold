@@ -30,18 +30,18 @@ scr_seq_00000128_00000043:
 	scrcmd_744
 	setvar VAR_TEMP_x400F, 1
 scr_seq_00000128_00000058:
-	scrcmd_281 16384
+	get_player_gender VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_00000128_0000007B
-	scrcmd_339 2, 28, 0, 28, 0
+	show_person_at 2, 28, 0, 28, 0
 	goto scr_seq_00000128_00000087
 
 scr_seq_00000128_0000007B:
-	scrcmd_339 1, 28, 0, 28, 0
+	show_person_at 1, 28, 0, 28, 0
 scr_seq_00000128_00000087:
 	comparevartovalue VAR_TEMP_x400E, 1
 	gotoif ne, scr_seq_00000128_000000A6
-	scrcmd_339 0, 9, 0, 9, 1
+	show_person_at 0, 9, 0, 9, 1
 	setvar VAR_TEMP_x400E, 0
 scr_seq_00000128_000000A6:
 	end

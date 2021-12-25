@@ -24,8 +24,8 @@ scr_seq_00000018_00000025:
 	setvar VAR_UNK_40A4, 1
 	apply_movement 255, scr_seq_00000018_000000B4
 	wait_movement
-	scrcmd_105 32772, 32773
-	scrcmd_102 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	apply_movement 241, scr_seq_00000018_000000C0
 	wait_movement
 	apply_movement 3, scr_seq_00000018_000000D0
@@ -47,7 +47,7 @@ scr_seq_00000018_00000025:
 	play_se SEQ_SE_DP_KAIDAN2
 	apply_movement 6, scr_seq_00000018_000000E0
 	wait_movement
-	scrcmd_101 6
+	hide_person 6
 	setflag FLAG_UNK_078
 	callstd 2071
 	apply_movement 241, scr_seq_00000018_000000C8
@@ -110,8 +110,8 @@ scr_seq_00000018_0000013C:
 	gotoif eq, scr_seq_00000018_00000197
 	msgbox 3
 	closemsg
-	scrcmd_213 290, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 290, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000018_000001A2
 	msgbox 4

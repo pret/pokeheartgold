@@ -24,26 +24,26 @@ scr_seq_00000034_0000002F:
 	faceplayer
 	msgbox 0
 	closemsg
-	scrcmd_213 485, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 485, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000034_0000025D
 	msgbox 1
 	closemsg
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_101 0
+	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	clearflag FLAG_UNK_99B
-	scrcmd_084 0, 30
+	fade_out_bgm 0, 30
 	scrcmd_081 0
 	wait 15, VAR_SPECIAL_x800C
-	scrcmd_082
+	reset_bgm
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
-	scrcmd_339 1, 8, 1, 12, 1
-	scrcmd_105 16384, 16385
+	show_person_at 1, 8, 1, 12, 1
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, scr_seq_00000034_000000C1
 	apply_movement 1, scr_seq_00000034_00000288
@@ -53,7 +53,7 @@ scr_seq_00000034_000000C1:
 	comparevartovalue VAR_TEMP_x4000, 8
 	gotoif ne, scr_seq_00000034_000000ED
 	apply_movement 1, scr_seq_00000034_000002A4
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	callif eq, scr_seq_00000034_00000263
 	goto scr_seq_00000034_00000102
@@ -70,7 +70,7 @@ scr_seq_00000034_00000102:
 scr_seq_00000034_00000119:
 	wait_movement
 	msgbox 2
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000034_0000014E
 	setvar VAR_SPECIAL_x8004, 483
@@ -110,7 +110,7 @@ scr_seq_00000034_000001B2:
 	wait_movement
 	apply_movement 255, scr_seq_00000034_000002EC
 	wait_movement
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000034_000001E2
 	msgbox 7
@@ -129,7 +129,7 @@ scr_seq_00000034_000001E5:
 	play_se SEQ_SE_DP_DOOR10
 	wait_se SEQ_SE_DP_DOOR10
 	wait 8, VAR_SPECIAL_x800C
-	scrcmd_101 1
+	hide_person 1
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	releaseall
@@ -155,7 +155,7 @@ scr_seq_00000034_0000025D:
 	end
 
 scr_seq_00000034_00000263:
-	scrcmd_106 253, 32772, 32773
+	get_person_coords 253, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8004, 7
 	gotoif ne, scr_seq_00000034_00000286
 	wait 112, VAR_SPECIAL_x800C

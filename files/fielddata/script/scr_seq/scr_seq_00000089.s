@@ -66,73 +66,73 @@ scr_seq_00000089_000000DC:
 	callif ge, scr_seq_00000089_0000025D
 	comparevartovalue VAR_UNK_40AD, 2
 	gotoif ne, scr_seq_00000089_00000108
-	scrcmd_339 0, 44, 0, 3, 2
+	show_person_at 0, 44, 0, 3, 2
 	goto scr_seq_00000089_00000133
 
 scr_seq_00000089_00000108:
 	comparevartovalue VAR_UNK_40AD, 1
 	gotoif ne, scr_seq_00000089_00000127
-	scrcmd_339 0, 44, 0, 3, 1
+	show_person_at 0, 44, 0, 3, 1
 	goto scr_seq_00000089_00000133
 
 scr_seq_00000089_00000127:
-	scrcmd_339 0, 44, 0, 3, 0
+	show_person_at 0, 44, 0, 3, 0
 scr_seq_00000089_00000133:
 	comparevartovalue VAR_UNK_40AE, 2
 	gotoif ne, scr_seq_00000089_00000152
-	scrcmd_339 2, 18, 0, 3, 2
+	show_person_at 2, 18, 0, 3, 2
 	goto scr_seq_00000089_0000017D
 
 scr_seq_00000089_00000152:
 	comparevartovalue VAR_UNK_40AE, 1
 	gotoif ne, scr_seq_00000089_00000171
-	scrcmd_339 2, 18, 0, 3, 1
+	show_person_at 2, 18, 0, 3, 1
 	goto scr_seq_00000089_0000017D
 
 scr_seq_00000089_00000171:
-	scrcmd_339 2, 18, 0, 3, 0
+	show_person_at 2, 18, 0, 3, 0
 scr_seq_00000089_0000017D:
 	comparevartovalue VAR_UNK_40AF, 2
 	gotoif ne, scr_seq_00000089_0000019C
-	scrcmd_339 3, 44, 0, 10, 2
+	show_person_at 3, 44, 0, 10, 2
 	goto scr_seq_00000089_000001C7
 
 scr_seq_00000089_0000019C:
 	comparevartovalue VAR_UNK_40AF, 1
 	gotoif ne, scr_seq_00000089_000001BB
-	scrcmd_339 3, 44, 0, 10, 1
+	show_person_at 3, 44, 0, 10, 1
 	goto scr_seq_00000089_000001C7
 
 scr_seq_00000089_000001BB:
-	scrcmd_339 3, 44, 0, 10, 0
+	show_person_at 3, 44, 0, 10, 0
 scr_seq_00000089_000001C7:
 	comparevartovalue VAR_UNK_40B0, 2
 	gotoif ne, scr_seq_00000089_000001E6
-	scrcmd_339 4, 44, 0, 28, 2
+	show_person_at 4, 44, 0, 28, 2
 	goto scr_seq_00000089_00000211
 
 scr_seq_00000089_000001E6:
 	comparevartovalue VAR_UNK_40B0, 1
 	gotoif ne, scr_seq_00000089_00000205
-	scrcmd_339 4, 44, 0, 28, 1
+	show_person_at 4, 44, 0, 28, 1
 	goto scr_seq_00000089_00000211
 
 scr_seq_00000089_00000205:
-	scrcmd_339 4, 44, 0, 28, 0
+	show_person_at 4, 44, 0, 28, 0
 scr_seq_00000089_00000211:
 	comparevartovalue VAR_UNK_40B1, 2
 	gotoif ne, scr_seq_00000089_00000230
-	scrcmd_339 5, 18, 0, 28, 2
+	show_person_at 5, 18, 0, 28, 2
 	goto scr_seq_00000089_0000025B
 
 scr_seq_00000089_00000230:
 	comparevartovalue VAR_UNK_40B1, 1
 	gotoif ne, scr_seq_00000089_0000024F
-	scrcmd_339 5, 18, 0, 28, 1
+	show_person_at 5, 18, 0, 28, 1
 	goto scr_seq_00000089_0000025B
 
 scr_seq_00000089_0000024F:
-	scrcmd_339 5, 18, 0, 28, 0
+	show_person_at 5, 18, 0, 28, 0
 scr_seq_00000089_0000025B:
 	end
 
@@ -154,7 +154,7 @@ scr_seq_00000089_0000027D:
 	play_se SEQ_SE_GS_AJITO_SIREN
 	scrcmd_709
 	scrcmd_074 2173
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 4
 	gotoif ne, scr_seq_00000089_000002C4
 	addvar VAR_TEMP_x4001, 1
@@ -171,26 +171,26 @@ scr_seq_00000089_000002D0:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	scrcmd_100 1
-	scrcmd_339 1, 33, 0, 16385, 2
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_00000460
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000478
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_213 223, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 223, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_00000490
 	wait_movement
-	scrcmd_339 1, 33, 0, 16385, 3
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 3
 	apply_movement 1, scr_seq_00000089_00000460
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_213 224, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 224, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_00000490
@@ -201,32 +201,32 @@ scr_seq_00000089_0000036C:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	scrcmd_100 1
-	scrcmd_339 1, 33, 0, 16385, 2
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_0000046C
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000484
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_213 223, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 223, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_00000490
 	wait_movement
-	scrcmd_339 1, 33, 0, 16385, 3
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 3
 	apply_movement 1, scr_seq_00000089_0000046C
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_213 224, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 224, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_00000490
 	wait_movement
 scr_seq_00000089_00000402:
-	scrcmd_339 1, 37, 0, 0, 2
+	show_person_at 1, 37, 0, 0, 2
 	setflag FLAG_UNK_1E8
 	setvar VAR_UNK_40AD, 2
 	apply_movement 0, scr_seq_00000089_0000049C
@@ -300,7 +300,7 @@ scr_seq_00000089_000004B4:
 	wait_movement
 	play_se SEQ_SE_GS_AJITO_SIREN
 	scrcmd_709
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 4
 	gotoif ne, scr_seq_00000089_000004F7
 	addvar VAR_TEMP_x4001, 1
@@ -316,28 +316,28 @@ scr_seq_00000089_00000503:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
 	scrcmd_100 1
-	scrcmd_339 1, 27, 0, 16385, 2
+	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_00000668
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000478
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_213 223, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 223, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006C8
 	wait_movement
-	scrcmd_339 1, 27, 0, 16385, 2
+	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_00000668
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000478
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_213 224, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 224, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006C8
@@ -348,34 +348,34 @@ scr_seq_00000089_000005A9:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
 	scrcmd_100 1
-	scrcmd_339 1, 27, 0, 16385, 2
+	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_00000674
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000484
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_213 223, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 223, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006C8
 	wait_movement
-	scrcmd_339 1, 27, 0, 16385, 2
+	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_00000674
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000484
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_213 224, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 224, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006C8
 	wait_movement
 scr_seq_00000089_00000649:
-	scrcmd_101 1
+	hide_person 1
 	setflag FLAG_UNK_1E8
 	setvar VAR_UNK_40AE, 2
 	apply_movement 2, scr_seq_00000089_0000049C
@@ -454,7 +454,7 @@ scr_seq_00000089_000006F8:
 	wait_movement
 	play_se SEQ_SE_GS_AJITO_SIREN
 	scrcmd_709
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 11
 	gotoif ne, scr_seq_00000089_0000073B
 	addvar VAR_TEMP_x4001, 1
@@ -470,28 +470,28 @@ scr_seq_00000089_00000747:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	scrcmd_100 1
-	scrcmd_339 1, 33, 0, 16385, 2
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_00000680
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000478
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_213 223, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 223, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006D4
 	wait_movement
-	scrcmd_339 1, 33, 0, 16385, 2
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_00000680
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000478
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_213 224, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 224, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006D4
@@ -502,34 +502,34 @@ scr_seq_00000089_000007ED:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	scrcmd_100 1
-	scrcmd_339 1, 33, 0, 16385, 2
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_0000068C
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000484
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_213 223, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 223, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006D4
 	wait_movement
-	scrcmd_339 1, 33, 0, 16385, 2
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_0000068C
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000484
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_213 224, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 224, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006D4
 	wait_movement
 scr_seq_00000089_0000088D:
-	scrcmd_101 1
+	hide_person 1
 	setflag FLAG_UNK_1E8
 	setvar VAR_UNK_40AF, 2
 	apply_movement 3, scr_seq_00000089_0000049C
@@ -546,7 +546,7 @@ scr_seq_00000089_000008A9:
 	wait_movement
 	play_se SEQ_SE_GS_AJITO_SIREN
 	scrcmd_709
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 29
 	gotoif ne, scr_seq_00000089_000008EC
 	addvar VAR_TEMP_x4001, 1
@@ -562,28 +562,28 @@ scr_seq_00000089_000008F8:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	scrcmd_100 1
-	scrcmd_339 1, 33, 0, 16385, 2
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_00000698
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000478
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_213 223, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 223, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006E0
 	wait_movement
-	scrcmd_339 1, 33, 0, 16385, 2
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_00000698
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000478
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_213 224, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 224, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006E0
@@ -594,34 +594,34 @@ scr_seq_00000089_0000099E:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	scrcmd_100 1
-	scrcmd_339 1, 33, 0, 16385, 2
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_000006A4
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000484
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_213 223, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 223, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006E0
 	wait_movement
-	scrcmd_339 1, 33, 0, 16385, 2
+	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_000006A4
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000484
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_213 224, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 224, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006E0
 	wait_movement
 scr_seq_00000089_00000A3E:
-	scrcmd_101 1
+	hide_person 1
 	setvar VAR_UNK_40B0, 2
 	apply_movement 4, scr_seq_00000089_0000049C
 	wait_movement
@@ -637,7 +637,7 @@ scr_seq_00000089_00000A56:
 	wait_movement
 	play_se SEQ_SE_GS_AJITO_SIREN
 	scrcmd_709
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 29
 	gotoif ne, scr_seq_00000089_00000A99
 	addvar VAR_TEMP_x4001, 1
@@ -653,28 +653,28 @@ scr_seq_00000089_00000AA5:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
 	scrcmd_100 1
-	scrcmd_339 1, 27, 0, 16385, 2
+	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_000006B0
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000478
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_213 223, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 223, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006EC
 	wait_movement
-	scrcmd_339 1, 27, 0, 16385, 2
+	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_000006B0
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000478
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_213 224, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 224, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006EC
@@ -685,34 +685,34 @@ scr_seq_00000089_00000B4B:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
 	scrcmd_100 1
-	scrcmd_339 1, 27, 0, 16385, 2
+	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_000006BC
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000484
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_213 223, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 223, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006EC
 	wait_movement
-	scrcmd_339 1, 27, 0, 16385, 2
+	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_00000089_000006BC
 	wait_movement
 	apply_movement 255, scr_seq_00000089_00000484
 	wait_movement
 	msgbox 1
 	closemsg
-	scrcmd_213 224, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 224, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000C03
 	apply_movement 1, scr_seq_00000089_000006EC
 	wait_movement
 scr_seq_00000089_00000BEB:
-	scrcmd_101 1
+	hide_person 1
 	setvar VAR_UNK_40B1, 2
 	apply_movement 5, scr_seq_00000089_0000049C
 	wait_movement
@@ -857,7 +857,7 @@ scr_seq_00000089_00000D72:
 	gotoif eq, scr_seq_00000089_00000E58
 	msgbox 5
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000DB7
@@ -903,7 +903,7 @@ scr_seq_00000089_00000E4D:
 scr_seq_00000089_00000E58:
 	msgbox 6
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_00000E7D
@@ -964,7 +964,7 @@ scr_seq_00000089_00000F2F:
 	scrcmd_708 1
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40B2, 1
@@ -977,7 +977,7 @@ scr_seq_00000089_00000F5C:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40B3, 1
@@ -990,7 +990,7 @@ scr_seq_00000089_00000F89:
 	scrcmd_708 2
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40B4, 1
@@ -1003,7 +1003,7 @@ scr_seq_00000089_00000FB6:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40B5, 1
@@ -1016,7 +1016,7 @@ scr_seq_00000089_00000FE3:
 	scrcmd_708 2
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40B6, 1
@@ -1029,7 +1029,7 @@ scr_seq_00000089_00001010:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40B7, 1
@@ -1042,7 +1042,7 @@ scr_seq_00000089_0000103D:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40B8, 1
@@ -1055,7 +1055,7 @@ scr_seq_00000089_0000106A:
 	scrcmd_708 1
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40B9, 1
@@ -1068,7 +1068,7 @@ scr_seq_00000089_00001097:
 	scrcmd_708 1
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40BA, 1
@@ -1081,7 +1081,7 @@ scr_seq_00000089_000010C4:
 	scrcmd_708 2
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40BB, 1
@@ -1094,7 +1094,7 @@ scr_seq_00000089_000010F1:
 	scrcmd_708 2
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40BC, 1
@@ -1107,7 +1107,7 @@ scr_seq_00000089_0000111E:
 	scrcmd_708 1
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40BD, 1
@@ -1120,7 +1120,7 @@ scr_seq_00000089_0000114B:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40BE, 1
@@ -1133,7 +1133,7 @@ scr_seq_00000089_00001178:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40BF, 1
@@ -1146,7 +1146,7 @@ scr_seq_00000089_000011A5:
 	scrcmd_708 1
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40C0, 1
@@ -1159,7 +1159,7 @@ scr_seq_00000089_000011D2:
 	scrcmd_708 2
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000089_000011FF
 	setvar VAR_UNK_40C1, 1

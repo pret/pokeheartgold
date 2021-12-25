@@ -168,7 +168,7 @@
 	.endm
 
 	; Yield to parent context
-	.macro restartcurrentscript
+	.macro endstd
 	.short 21
 	.endm
 
@@ -504,16 +504,16 @@
 	.short 77
 	.endm
 
-	.macro scrcmd_078 arg0
+	.macro play_fanfare arg0
 	.short 78
 	.short \arg0
 	.endm
 
-	.macro scrcmd_079
+	.macro wait_fanfare
 	.short 79
 	.endm
 
-	.macro scrcmd_080 arg0
+	.macro play_bgm arg0
 	.short 80
 	.short \arg0
 	.endm
@@ -523,7 +523,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_082
+	.macro reset_bgm
 	.short 82
 	.endm
 
@@ -532,7 +532,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_084 arg0, arg1
+	.macro fade_out_bgm arg0, arg1
 	.short 84
 	.short \arg0
 	.short \arg1
@@ -549,7 +549,7 @@
 	.byte \arg1
 	.endm
 
-	.macro scrcmd_087 arg0
+	.macro temp_bgm arg0
 	.short 87
 	.short \arg0
 	.endm
@@ -614,7 +614,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_101 arg0
+	.macro hide_person arg0
 	.short 101
 	.short \arg0
 	.endm
@@ -633,13 +633,13 @@
 	.short 104
 	.endm
 
-	.macro scrcmd_105 arg0, arg1
+	.macro get_player_coords arg0, arg1
 	.short 105
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_106 arg0, arg1, arg2
+	.macro get_person_coords arg0, arg1, arg2
 	.short 106
 	.short \arg0
 	.short \arg1
@@ -782,7 +782,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_131 arg0
+	.macro set_starter_choice arg0
 	.short 131
 	.short \arg0
 	.endm
@@ -870,7 +870,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_145 arg0
+	.macro register_pokegear_card arg0
 	.short 145
 	.byte \arg0
 	.endm
@@ -1150,7 +1150,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_199 arg0, arg1
+	.macro bufferpartymonnick arg0, arg1
 	.short 199
 	.byte \arg0
 	.short \arg1
@@ -1190,7 +1190,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_206 arg0
+	.macro get_starter_choice arg0
 	.short 206
 	.short \arg0
 	.endm
@@ -1230,7 +1230,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_213 arg0, arg1, arg2, arg3
+	.macro trainer_battle arg0, arg1, arg2, arg3
 	.short 213
 	.short \arg0
 	.short \arg1
@@ -1588,7 +1588,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_281 arg0
+	.macro get_player_gender arg0
 	.short 281
 	.short \arg0
 	.endm
@@ -1866,7 +1866,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_339 arg0, arg1, arg2, arg3, arg4
+	.macro show_person_at arg0, arg1, arg2, arg3, arg4
 	.short 339
 	.short \arg0
 	.short \arg1
@@ -1951,13 +1951,13 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_354 arg0, arg1
+	.macro get_partymon_species arg0, arg1
 	.short 354
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_355 arg0, arg1
+	.macro partymon_is_mine arg0, arg1
 	.short 355
 	.short \arg0
 	.short \arg1
@@ -4150,7 +4150,7 @@
 	.short 747
 	.endm
 
-	.macro scrcmd_748 arg0
+	.macro getmenuchoice arg0
 	.short 748
 	.short \arg0
 	.endm
@@ -4545,7 +4545,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_827 arg0, arg1
+	.macro get_partymon_forme arg0, arg1
 	.short 827
 	.short \arg0
 	.short \arg1

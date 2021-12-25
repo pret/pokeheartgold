@@ -15,7 +15,7 @@ scr_seq_00000926_00000012:
 	end
 
 scr_seq_00000926_0000001F:
-	scrcmd_339 0, 16, 0, 8, 2
+	show_person_at 0, 16, 0, 8, 2
 	end
 
 scr_seq_00000926_0000002D:
@@ -26,13 +26,13 @@ scr_seq_00000926_0000002D:
 	gotoif eq, scr_seq_00000926_000000E8
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ge, scr_seq_00000926_000000C9
-	scrcmd_386 16385
+	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000926_000000D4
-	scrcmd_294 3, 32780
+	scrcmd_294 3, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000926_00000096
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000926_0000008B
 	msgbox 0
@@ -47,7 +47,7 @@ scr_seq_00000926_0000008E:
 	end
 
 scr_seq_00000926_00000096:
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000926_000000B0
 	msgbox 2
@@ -106,7 +106,7 @@ scr_seq_00000926_00000114:
 	gotoif eq, scr_seq_00000926_00000162
 	checkflag FLAG_UNK_103
 	gotoif eq, scr_seq_00000926_00000157
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000926_0000014C
 	msgbox 6

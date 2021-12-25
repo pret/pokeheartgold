@@ -39,7 +39,7 @@ scr_seq_00000002_0000005C:
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000002_00000352
 scr_seq_00000002_0000008A:
@@ -55,7 +55,7 @@ scr_seq_00000002_0000008A:
 	scrcmd_175
 	comparevartovalue VAR_SPECIAL_x8001, 255
 	gotoif eq, scr_seq_00000002_00000352
-	scrcmd_354 32769, 32770
+	get_partymon_species VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	comparevartovalue VAR_SPECIAL_x8002, 0
 	gotoif eq, scr_seq_00000002_00000391
 	scrcmd_652 32769, 32768, 32770
@@ -107,11 +107,11 @@ scr_seq_00000002_00000189:
 scr_seq_00000002_0000018F:
 	comparevartovalue VAR_SPECIAL_x8003, 65534
 	gotoif ne, scr_seq_00000002_000001D0
-	scrcmd_199 0, VAR_SPECIAL_x8001
+	bufferpartymonnick 0, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8004, 7
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000002_00000352
 	setvar VAR_SPECIAL_x8004, 0
@@ -143,7 +143,7 @@ scr_seq_00000002_0000021E:
 	goto scr_seq_00000002_00000352
 
 scr_seq_00000002_00000224:
-	scrcmd_199 0, VAR_SPECIAL_x8001
+	bufferpartymonnick 0, VAR_SPECIAL_x8001
 	scrcmd_197 1, 32771
 	scrcmd_396 32774, 32769
 	comparevartovalue VAR_SPECIAL_x8006, 4
@@ -153,7 +153,7 @@ scr_seq_00000002_00000241:
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000002_000003A4
 	scrcmd_174 6, 1, 0, 0
@@ -175,7 +175,7 @@ scr_seq_00000002_00000241:
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000002_000003A4
 	comparevartovalue VAR_SPECIAL_x8007, 0
@@ -204,8 +204,8 @@ scr_seq_00000002_00000328:
 	setvar VAR_SPECIAL_x8004, 14
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
-	scrcmd_078 1184
-	scrcmd_079
+	play_fanfare SEQ_ME_LVUP
+	wait_fanfare
 	scrcmd_556 32773
 	scrcmd_118 1
 	scrcmd_654 32769, 32774, 32771
@@ -229,7 +229,7 @@ scr_seq_00000002_00000381:
 	scrcmd_747
 	scrcmd_117
 	scrcmd_784 3, 1
-	restartcurrentscript
+	endstd
 	end
 
 scr_seq_00000002_00000391:
@@ -239,7 +239,7 @@ scr_seq_00000002_00000391:
 	scrcmd_747
 	scrcmd_117
 	scrcmd_784 3, 1
-	restartcurrentscript
+	endstd
 	end
 
 scr_seq_00000002_000003A4:
@@ -247,7 +247,7 @@ scr_seq_00000002_000003A4:
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000002_00000241

@@ -24,7 +24,7 @@ scr_seq_00000060_00000021:
 	faceplayer
 	msgbox 3
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000060_00000047
@@ -46,29 +46,29 @@ scr_seq_00000060_00000055:
 	faceplayer
 	msgbox 1
 	closemsg
-	scrcmd_213 486, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 486, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000060_00000193
 	msgbox 2
 	closemsg
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_101 1
-	scrcmd_101 2
-	scrcmd_101 3
-	scrcmd_101 4
+	hide_person 1
+	hide_person 2
+	hide_person 3
+	hide_person 4
 	setflag FLAG_UNK_1A9
 	wait 20, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
-	scrcmd_339 7, 36, 0, 7, 2
+	show_person_at 7, 36, 0, 7, 2
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000060_000000F7
 	apply_movement 7, scr_seq_00000060_0000019C

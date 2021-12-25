@@ -93,35 +93,35 @@ scr_seq_00000029_000000FD:
 	gotoif eq, scr_seq_00000029_00000243
 	msgbox 3
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000029_00000221
 	msgbox 4
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000029_0000022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	msgbox 5
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000029_0000022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	msgbox 6
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000029_0000022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	msgbox 7
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000029_0000022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	msgbox 8
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000029_0000022E
 	wait 30, VAR_SPECIAL_x800C
@@ -131,10 +131,10 @@ scr_seq_00000029_000000FD:
 	msgbox 9
 	scrcmd_190 0
 	msgbox 10
-	scrcmd_078 1186
-	scrcmd_079
+	play_fanfare SEQ_ME_KEYITEM
+	wait_fanfare
 	closemsg
-	scrcmd_145 2
+	register_pokegear_card 2
 	setflag FLAG_UNK_08A
 	scrcmd_602 0
 	scrcmd_603
@@ -151,7 +151,7 @@ scr_seq_00000029_000000FD:
 	wait 24, VAR_SPECIAL_x800C
 	apply_movement 255, scr_seq_00000029_0000036C
 	wait_movement
-	scrcmd_101 7
+	hide_person 7
 	setflag FLAG_UNK_318
 	releaseall
 	end
@@ -236,7 +236,7 @@ scr_seq_00000029_000002C2:
 	gotoif eq, scr_seq_00000029_00000316
 	msgbox 19
 	closemsg
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 5
 	gotoif ne, scr_seq_00000029_000002F5
 	apply_movement 6, scr_seq_00000029_00000354
@@ -253,7 +253,7 @@ scr_seq_00000029_0000030A:
 	end
 
 scr_seq_00000029_00000316:
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, scr_seq_00000029_00000333
 	setvar VAR_TEMP_x400B, 33
@@ -291,9 +291,9 @@ scr_seq_00000029_0000036C:
 scr_seq_00000029_00000384:
 	scrcmd_609
 	lockall
-	scrcmd_339 5, 13, 1, 6, 3
+	show_person_at 5, 13, 1, 6, 3
 	callstd 2031
-	scrcmd_106 6, 16384, 16385
+	get_person_coords 6, VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 5
 	gotoif ne, scr_seq_00000029_000003D0
 	apply_movement 5, scr_seq_00000029_00000670
@@ -386,8 +386,8 @@ scr_seq_00000029_00000540:
 	wait_movement
 	msgbox 23
 	closemsg
-	scrcmd_213 185, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 185, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000029_00000655
 	msgbox 24
@@ -411,7 +411,7 @@ scr_seq_00000029_000005AF:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_101 6
+	hide_person 6
 	callstd 2070
 	comparevartovalue VAR_TEMP_x4001, 5
 	gotoif ne, scr_seq_00000029_000005DE
@@ -440,7 +440,7 @@ scr_seq_00000029_00000625:
 	closemsg
 	apply_movement 5, scr_seq_00000029_00000938
 	wait_movement
-	scrcmd_101 5
+	hide_person 5
 	callstd 2071
 	releaseall
 	setvar VAR_UNK_4077, 4
@@ -727,7 +727,7 @@ scr_seq_00000029_00000966:
 	gotoif eq, scr_seq_00000029_000009AF
 	msgbox 28
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000029_000009E5
@@ -736,7 +736,7 @@ scr_seq_00000029_00000966:
 scr_seq_00000029_000009AF:
 	msgbox 45
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000029_000009E5
@@ -779,7 +779,7 @@ scr_seq_00000029_00000A24:
 	end
 
 scr_seq_00000029_00000A2F:
-	scrcmd_199 0, VAR_SPECIAL_x8001
+	bufferpartymonnick 0, VAR_SPECIAL_x8001
 	msgbox 33
 	goto scr_seq_00000029_00000A4B
 

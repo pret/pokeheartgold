@@ -116,7 +116,7 @@ scr_seq_00000143_000001EF:
 	gotoif eq, scr_seq_00000143_0000021E
 	msgbox 5
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000143_00000579
@@ -260,7 +260,7 @@ scr_seq_00000143_00000528:
 	scrcmd_465 3, VAR_SPECIAL_x8004, 1
 	msgbox 8
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000143_00000287
 	scrcmd_747

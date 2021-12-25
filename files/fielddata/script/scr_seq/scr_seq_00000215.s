@@ -22,7 +22,7 @@ scr_seq_00000215_00000025:
 scr_seq_00000215_0000002D:
 	scrcmd_609
 	lockall
-	scrcmd_386 16384
+	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_00000215_00000060
 	apply_movement 2, scr_seq_00000215_00000084
@@ -67,16 +67,16 @@ scr_seq_00000215_000000BC:
 	lockall
 	faceplayer
 	scrcmd_081 1061
-	scrcmd_080 1112
+	play_bgm SEQ_GS_EYE_ROCKET
 	msgbox 0
 	closemsg
-	scrcmd_213 353, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 353, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000215_0000014A
 	msgbox 2
 	closemsg
-	scrcmd_084 0, 30
+	fade_out_bgm 0, 30
 	msgbox 3
 	closemsg
 	scrcmd_602 0
@@ -90,10 +90,10 @@ scr_seq_00000215_000000BC:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_101 2
+	hide_person 2
 	setflag FLAG_UNK_255
 	clearflag FLAG_UNK_257
-	scrcmd_080 1061
+	play_bgm SEQ_GS_R_12_24
 	setvar VAR_UNK_4087, 3
 	releaseall
 	end

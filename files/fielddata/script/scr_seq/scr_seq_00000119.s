@@ -25,7 +25,7 @@ scr_seq_00000119_00000032:
 	wait_movement
 	msgbox 7
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000119_00000062
 	scrcmd_447 1, 0
@@ -51,7 +51,7 @@ scr_seq_00000119_00000062:
 	end
 
 scr_seq_00000119_000000BD:
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_00000119_000000E2
 	setvar VAR_TEMP_x4002, 5
@@ -85,7 +85,7 @@ scr_seq_00000119_0000013F:
 	lockall
 	apply_movement 255, scr_seq_00000119_000001E4
 	wait_movement
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_00000119_00000172
 	setvar VAR_TEMP_x4002, 5
@@ -158,7 +158,7 @@ scr_seq_00000119_00000208:
 	scrcmd_604 48
 	msgbox 29
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000119_0000025B
@@ -173,7 +173,7 @@ scr_seq_00000119_0000024A:
 scr_seq_00000119_0000025B:
 	msgbox 31
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000119_0000025B
@@ -362,7 +362,7 @@ scr_seq_00000119_000004CB:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000119_00000515
 	apply_movement 5, scr_seq_00000119_0000034C
@@ -413,7 +413,7 @@ scr_seq_00000119_0000058F:
 scr_seq_00000119_00000599:
 	msgbox 45
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000119_00000683
 scr_seq_00000119_000005AF:
@@ -488,7 +488,7 @@ scr_seq_00000119_000006AE:
 	msgbox 14
 scr_seq_00000119_000006B1:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000119_000006E7
@@ -530,14 +530,14 @@ scr_seq_00000119_00000728:
 scr_seq_00000119_00000736:
 	scrcmd_113 20, 2
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000119_00000846
 	scrcmd_507 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000119_00000773
-	scrcmd_332 32772
+	scrcmd_332 VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 6
 	gotoif eq, scr_seq_00000119_00000853
 scr_seq_00000119_00000773:
@@ -555,8 +555,8 @@ scr_seq_00000119_00000773:
 	setvar VAR_SPECIAL_x800C, 30
 	scrcmd_198 1, 32780
 	msgbox 5
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	msgbox 6
 	closemsg
 	scrcmd_114
@@ -747,7 +747,7 @@ scr_seq_00000119_00000A26:
 	msgbox 66
 scr_seq_00000119_00000A29:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000119_00000BFC
@@ -778,7 +778,7 @@ scr_seq_00000119_00000AAA:
 	.byte 0x02, 0x00
 scr_seq_00000119_00000AAC:
 	msgbox 86
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000119_00000A5D
 	setvar VAR_SPECIAL_x8004, 39
@@ -822,7 +822,7 @@ scr_seq_00000119_00000B20:
 
 scr_seq_00000119_00000B2F:
 	msgbox 86
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000119_00000A5D
 	setvar VAR_SPECIAL_x8004, 39
@@ -944,14 +944,14 @@ scr_seq_00000119_00000C84:
 scr_seq_00000119_00000C8F:
 	scrcmd_113 20, 2
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000119_00000D9F
 	scrcmd_507 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000119_00000CCC
-	scrcmd_332 32772
+	scrcmd_332 VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 6
 	gotoif eq, scr_seq_00000119_00000DAC
 scr_seq_00000119_00000CCC:
@@ -969,8 +969,8 @@ scr_seq_00000119_00000CCC:
 	setvar VAR_SPECIAL_x800C, 30
 	scrcmd_198 1, 32780
 	msgbox 58
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	msgbox 59
 	closemsg
 	scrcmd_114
@@ -1070,7 +1070,7 @@ scr_seq_00000119_00000E45:
 	msgbox 94
 scr_seq_00000119_00000E48:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000119_00000E68

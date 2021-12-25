@@ -91,7 +91,7 @@ scr_seq_00000164_0000011C:
 	faceplayer
 	msgbox 5
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000164_0000014F
@@ -151,13 +151,13 @@ scr_seq_00000164_000001E1:
 	scrcmd_187 32780
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_00000164_0000031B
-	scrcmd_332 16393
+	scrcmd_332 VAR_TEMP_x4009
 	setvar VAR_TEMP_x400A, 0
 scr_seq_00000164_00000215:
-	scrcmd_354 16394, 32780
+	get_partymon_species VAR_TEMP_x400A, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 172
 	gotoif ne, scr_seq_00000164_00000241
-	scrcmd_827 16394, 32780
+	get_partymon_forme VAR_TEMP_x400A, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000164_00000241
 	goto scr_seq_00000164_000004F8
@@ -217,7 +217,7 @@ scr_seq_00000164_000002EE:
 scr_seq_00000164_000002F0:
 	msgbox 11
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000164_00000331
@@ -267,7 +267,7 @@ scr_seq_00000164_00000356:
 	closemsg
 	scrcmd_600
 	scrcmd_282
-	scrcmd_105 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_815 0
 	apply_movement 255, scr_seq_00000164_00000474
 	wait_movement

@@ -52,7 +52,7 @@ scr_seq_00000913_0000009D:
 	scrcmd_147 28, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000913_0000015A
-	scrcmd_294 15, 16386
+	scrcmd_294 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_00000913_000000CB
 	goto scr_seq_00000913_0000015A
@@ -60,7 +60,7 @@ scr_seq_00000913_0000009D:
 scr_seq_00000913_000000C9:
 	.byte 0x02, 0x00
 scr_seq_00000913_000000CB:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 6
 	gotoif ne, scr_seq_00000913_000000E8
 	goto scr_seq_00000913_00000109
@@ -116,20 +116,20 @@ scr_seq_00000913_00000162:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 5, 32780
+	scrcmd_294 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000913_0000020C
 	msgbox 0
 	closemsg
-	scrcmd_213 33, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 33, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000913_00000235
 	msgbox 1
 	scrcmd_190 0
 	msgbox 2
-	scrcmd_078 1189
-	scrcmd_079
+	play_fanfare SEQ_ME_BADGE
+	wait_fanfare
 	scrcmd_295 5
 	addvar VAR_UNK_4134, 1
 	scrcmd_515 22
@@ -190,7 +190,7 @@ scr_seq_00000913_0000023B:
 scr_seq_00000913_00000264:
 	msgbox 8
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000913_0000034B
@@ -206,8 +206,8 @@ scr_seq_00000913_00000264:
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000913_0000034B
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_354 32772, 16387
-	scrcmd_827 32772, 16388
+	get_partymon_species VAR_SPECIAL_x8004, VAR_TEMP_x4003
+	get_partymon_forme VAR_SPECIAL_x8004, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4003, 0
 	gotoif eq, scr_seq_00000913_00000356
 	comparevartovalue VAR_TEMP_x4004, 0
@@ -221,10 +221,10 @@ scr_seq_00000913_00000264:
 	comparevartovalue VAR_TEMP_x4003, 479
 	gotoif eq, scr_seq_00000913_00000364
 scr_seq_00000913_0000030E:
-	scrcmd_199 1, VAR_SPECIAL_x8004
+	bufferpartymonnick 1, VAR_SPECIAL_x8004
 	msgbox 13
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000913_0000034B
@@ -281,7 +281,7 @@ scr_seq_00000913_00000390:
 	lockall
 	apply_movement 2, scr_seq_00000913_0000040C
 	wait_movement
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_00000913_000003BF
 	apply_movement 2, scr_seq_00000913_00000414
@@ -339,7 +339,7 @@ scr_seq_00000913_0000043C:
 	lockall
 	apply_movement 1, scr_seq_00000913_0000040C
 	wait_movement
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_00000913_0000046B
 	apply_movement 1, scr_seq_00000913_000004B8
@@ -384,7 +384,7 @@ scr_seq_00000913_000004D0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 5, 32780
+	scrcmd_294 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000913_000004F4
 	msgbox 20
@@ -406,7 +406,7 @@ scr_seq_00000913_00000512:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 5, 32780
+	scrcmd_294 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000913_00000536
 	msgbox 22
@@ -428,7 +428,7 @@ scr_seq_00000913_00000554:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 5, 32780
+	scrcmd_294 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000913_00000590
 	comparevartovalue VAR_UNK_410E, 0
@@ -455,7 +455,7 @@ scr_seq_00000913_0000059B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 5, 32780
+	scrcmd_294 5, VAR_SPECIAL_x800C
 	scrcmd_190 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000913_000005C2

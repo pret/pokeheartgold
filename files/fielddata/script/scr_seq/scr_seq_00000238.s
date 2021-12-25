@@ -47,7 +47,7 @@ scr_seq_00000238_0000000A:
 	wait_movement
 	scrcmd_132 6, 16
 	closemsg
-	scrcmd_281 32780
+	get_player_gender VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000238_000000C6
 	scrcmd_146 4
@@ -58,8 +58,8 @@ scr_seq_00000238_000000C6:
 scr_seq_00000238_000000CA:
 	scrcmd_190 0
 	scrcmd_132 7, 17
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	apply_movement 1, scr_seq_00000238_000001BC
 	wait_movement
 	scrcmd_132 8, 18
@@ -74,8 +74,8 @@ scr_seq_00000238_000000CA:
 	apply_movement 255, scr_seq_00000238_00000204
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_101 1
-	scrcmd_101 2
+	hide_person 1
+	hide_person 2
 	wait_se SEQ_SE_DP_KAIDAN2
 	setvar VAR_UNK_408E, 2
 	setflag FLAG_UNK_22D

@@ -12,9 +12,9 @@ scr_seq_00000891_0000000E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_529 32768
+	scrcmd_529 VAR_SPECIAL_x8000
 	msgbox 0
-	scrcmd_382 32780, 32768
+	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 250
 	gotoif ge, scr_seq_00000891_0000006C
 	comparevartovalue VAR_SPECIAL_x800C, 200

@@ -28,23 +28,23 @@ scr_seq_00000088_0000002A:
 	end
 
 scr_seq_00000088_0000005F:
-	scrcmd_339 4, 8, 0, 7, 2
+	show_person_at 4, 8, 0, 7, 2
 	end
 
 scr_seq_00000088_0000006D:
-	scrcmd_339 4, 10, 0, 7, 2
-	scrcmd_339 5, 4, 0, 3, 1
-	scrcmd_339 0, 9, 0, 3, 1
-	scrcmd_339 1, 8, 0, 3, 1
-	scrcmd_339 2, 9, 0, 4, 1
-	scrcmd_339 3, 8, 0, 4, 1
+	show_person_at 4, 10, 0, 7, 2
+	show_person_at 5, 4, 0, 3, 1
+	show_person_at 0, 9, 0, 3, 1
+	show_person_at 1, 8, 0, 3, 1
+	show_person_at 2, 9, 0, 4, 1
+	show_person_at 3, 8, 0, 4, 1
 	end
 
 scr_seq_00000088_000000B7:
-	scrcmd_339 0, 9, 0, 3, 1
-	scrcmd_339 1, 8, 0, 3, 1
-	scrcmd_339 2, 9, 0, 4, 1
-	scrcmd_339 3, 8, 0, 4, 1
+	show_person_at 0, 9, 0, 3, 1
+	show_person_at 1, 8, 0, 3, 1
+	show_person_at 2, 9, 0, 4, 1
+	show_person_at 3, 8, 0, 4, 1
 	end
 
 scr_seq_00000088_000000E9:
@@ -66,7 +66,7 @@ scr_seq_00000088_0000010F:
 
 scr_seq_00000088_00000119:
 	scrcmd_081 0
-	scrcmd_080 1079
+	play_bgm SEQ_GS_D_AJITO
 	scrcmd_609
 	lockall
 	apply_movement 255, scr_seq_00000088_00000214
@@ -113,10 +113,10 @@ scr_seq_00000088_00000119:
 	closemsg
 	apply_movement 7, scr_seq_00000088_000002A4
 	wait_movement
-	scrcmd_101 7
+	hide_person 7
 	apply_movement 8, scr_seq_00000088_000002DC
 	wait_movement
-	scrcmd_101 8
+	hide_person 8
 	setflag FLAG_UNK_1F8
 	setvar VAR_UNK_40A8, 2
 	releaseall

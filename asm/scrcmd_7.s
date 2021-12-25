@@ -237,8 +237,8 @@ ScrCmd_212: ; 0x02049618
 	.balign 4, 0
 	thumb_func_end ScrCmd_212
 
-	thumb_func_start ScrCmd_213
-ScrCmd_213: ; 0x02049648
+	thumb_func_start ScrCmd_TrainerBattle
+ScrCmd_TrainerBattle: ; 0x02049648
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r0, #0
@@ -303,7 +303,7 @@ _020496BE:
 	mov r0, #1
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_213
+	thumb_func_end ScrCmd_TrainerBattle
 
 	thumb_func_start ScrCmd_562
 ScrCmd_562: ; 0x020496DC

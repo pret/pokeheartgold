@@ -1,5 +1,6 @@
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -4449,7 +4450,7 @@ sub_02092D98: ; 0x02092D98
 	strh r0, [r4, #0x12]
 	ldr r0, [r5, #0xc]
 	str r0, [r4, #0x38]
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x38]
 	bl sub_0202ED88
@@ -4844,7 +4845,7 @@ sub_02093070: ; 0x02093070
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	mov r1, #9
 	bl sub_0202EEE4
 	cmp r0, #0xff
@@ -4892,7 +4893,7 @@ sub_020930C4: ; 0x020930C4
 	bl SavArray_Flags_get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	mov r1, #2
 	bl sub_0202EEE4
 	cmp r0, #0xff
@@ -4970,7 +4971,7 @@ sub_0209316C: ; 0x0209316C
 	bl SavArray_Flags_get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	mov r1, #6
 	bl sub_0202EEE4
 	cmp r0, #0xff
@@ -10932,8 +10933,8 @@ _02096008:
 	pop {r3, pc}
 	thumb_func_end sub_02095FF8
 
-	thumb_func_start sub_0209600C
-sub_0209600C: ; 0x0209600C
+	thumb_func_start LaunchStarterChoiceScene
+LaunchStarterChoiceScene: ; 0x0209600C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0xb
@@ -10943,15 +10944,15 @@ sub_0209600C: ; 0x0209600C
 	mov r0, #0
 	str r0, [r2]
 	ldr r0, [r4, #0x10]
-	ldr r1, _02096028 ; =sub_0209602C
+	ldr r1, _02096028 ; =CreateStarter
 	bl sub_02050530
 	pop {r4, pc}
 	.balign 4, 0
-_02096028: .word sub_0209602C
-	thumb_func_end sub_0209600C
+_02096028: .word CreateStarter
+	thumb_func_end LaunchStarterChoiceScene
 
-	thumb_func_start sub_0209602C
-sub_0209602C: ; 0x0209602C
+	thumb_func_start CreateStarter
+CreateStarter: ; 0x0209602C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	add r4, r0, #0
@@ -11151,7 +11152,7 @@ _020961CE:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020961D4: .word _02108514
-	thumb_func_end sub_0209602C
+	thumb_func_end CreateStarter
 
 	thumb_func_start sub_020961D8
 sub_020961D8: ; 0x020961D8
@@ -18822,7 +18823,9 @@ _0210847C:
 	.short 0x02A6
 	.balign 4, 0
 _02108514:
-	.byte 0x98, 0x00, 0x00, 0x00, 0x9B, 0x00, 0x00, 0x00, 0x9E, 0x00, 0x00, 0x00
+	.word SPECIES_CHIKORITA
+	.word SPECIES_CYNDAQUIL
+	.word SPECIES_TOTODILE
 _02108520:
 	.byte 0x00, 0x03, 0x03, 0x1A, 0x12, 0x01, 0x23, 0x00
 _02108528:

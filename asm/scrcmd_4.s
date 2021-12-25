@@ -400,8 +400,8 @@ _020486D8:
 	.balign 4, 0
 	thumb_func_end ScrCmd_661
 
-	thumb_func_start ScrCmd_199
-ScrCmd_199: ; 0x020486F0
+	thumb_func_start ScrCmd_BufferPartyMonNick
+ScrCmd_BufferPartyMonNick: ; 0x020486F0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -432,7 +432,7 @@ ScrCmd_199: ; 0x020486F0
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_199
+	thumb_func_end ScrCmd_BufferPartyMonNick
 
 	thumb_func_start ScrCmd_506
 ScrCmd_506: ; 0x02048738
@@ -625,7 +625,7 @@ ScrCmd_203: ; 0x020488A4
 	ldrb r5, [r1]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066AF0
+	bl GetStarterFromScriptState
 	mov r1, #4
 	bl sub_02048880
 	add r4, r0, #0

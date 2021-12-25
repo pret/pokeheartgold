@@ -10,7 +10,7 @@ scr_seq_00000884_00000006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000884_0000002B
 	goto scr_seq_00000884_00000031

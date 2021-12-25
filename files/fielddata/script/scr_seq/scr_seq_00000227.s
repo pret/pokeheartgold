@@ -72,7 +72,7 @@ scr_seq_00000227_000000A0:
 	wait_movement
 	msgbox 5
 	closemsg
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -116,7 +116,7 @@ scr_seq_00000227_00000148:
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
-	scrcmd_101 13
+	hide_person 13
 	setflag FLAG_UNK_24F
 	releaseall
 	setflag FLAG_UNK_06D
@@ -191,18 +191,18 @@ scr_seq_00000227_00000237:
 	end
 
 scr_seq_00000227_0000025F:
-	scrcmd_055 9, 1, 6, 32780
+	scrcmd_055 9, 1, 6, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
 scr_seq_00000227_00000276:
-	scrcmd_055 10, 1, 3, 32780
+	scrcmd_055 10, 1, 3, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -210,7 +210,7 @@ scr_seq_00000227_0000028D:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 12, 32780
+	scrcmd_059 12, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -218,7 +218,7 @@ scr_seq_00000227_000002A2:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 11, 32780
+	scrcmd_059 11, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 

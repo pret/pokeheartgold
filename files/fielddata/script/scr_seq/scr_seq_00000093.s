@@ -16,14 +16,14 @@ scr_seq_00000093_00000012:
 scr_seq_00000093_00000018:
 	scrcmd_609
 	lockall
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif eq, scr_seq_00000093_00000228
 	clearflag FLAG_UNK_2C8
 	scrcmd_100 3
 	comparevartovalue VAR_TEMP_x4001, 30
 	gotoif ne, scr_seq_00000093_00000050
-	scrcmd_339 3, 9, 0, 25, 2
+	show_person_at 3, 9, 0, 25, 2
 scr_seq_00000093_00000050:
 	play_se SEQ_SE_DP_KAIDAN2
 	apply_movement 3, scr_seq_00000093_00000174
@@ -43,13 +43,13 @@ scr_seq_00000093_00000050:
 	scrcmd_100 2
 	comparevartovalue VAR_TEMP_x4001, 30
 	gotoif ne, scr_seq_00000093_000000AB
-	scrcmd_339 2, 9, 0, 25, 2
+	show_person_at 2, 9, 0, 25, 2
 scr_seq_00000093_000000AB:
 	play_se SEQ_SE_DP_KAIDAN2
 	callstd 2029
 	apply_movement 2, scr_seq_00000093_000001C4
 	wait_movement
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000093_000000EE
 	apply_movement 3, scr_seq_00000093_00000218
@@ -81,8 +81,8 @@ scr_seq_00000093_00000100:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_2C8
-	scrcmd_101 2
-	scrcmd_101 3
+	hide_person 2
+	hide_person 3
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd 2030
 	setvar VAR_UNK_40F8, 1
@@ -162,7 +162,7 @@ scr_seq_00000093_00000228:
 	scrcmd_100 3
 	scrcmd_098 3
 	callstd 2029
-	scrcmd_339 2, 25, 0, 9, 0
+	show_person_at 2, 25, 0, 9, 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement 255, scr_seq_00000093_00000220
@@ -174,7 +174,7 @@ scr_seq_00000093_00000228:
 	apply_movement 255, scr_seq_00000093_00000310
 	apply_movement 2, scr_seq_00000093_00000318
 	wait 8, VAR_SPECIAL_x800C
-	scrcmd_339 3, 25, 0, 9, 0
+	show_person_at 3, 25, 0, 9, 0
 	apply_movement 3, scr_seq_00000093_00000320
 	wait_movement
 	scrcmd_603
@@ -194,8 +194,8 @@ scr_seq_00000093_00000228:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_2C8
-	scrcmd_101 2
-	scrcmd_101 3
+	hide_person 2
+	hide_person 3
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd 2030
 	setvar VAR_UNK_40F8, 1

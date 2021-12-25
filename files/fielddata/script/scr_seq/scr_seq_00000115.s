@@ -18,7 +18,7 @@ scr_seq_00000115_0000000A:
 scr_seq_00000115_0000002E:
 	.byte 0x02, 0x00
 scr_seq_00000115_00000030:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 4
 	gotoif ne, scr_seq_00000115_00000047
 	clearflag FLAG_UNK_263
@@ -37,7 +37,7 @@ scr_seq_00000115_0000004D:
 	msgbox 0
 scr_seq_00000115_00000065:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000115_00000089
@@ -48,8 +48,8 @@ scr_seq_00000115_00000065:
 scr_seq_00000115_00000089:
 	scrcmd_190 0
 	msgbox 1
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	scrcmd_146 34
 	msgbox 2
 	waitbutton
@@ -57,7 +57,7 @@ scr_seq_00000115_00000089:
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
 	setflag FLAG_UNK_263
-	scrcmd_101 0
+	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0

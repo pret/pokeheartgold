@@ -24,7 +24,7 @@ scr_seq_00000914_00000022:
 	lockall
 	msgbox 3
 	setvar VAR_TEMP_x4007, 77
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000914_00000068
 	apply_movement 7, scr_seq_00000914_000000FC
@@ -39,14 +39,14 @@ scr_seq_00000914_0000007D:
 	msgbox 4
 scr_seq_00000914_00000082:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000914_000000D5
 	msgbox 5
 	closemsg
-	scrcmd_213 728, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 728, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000914_000000E0
 	settrainerflag 728

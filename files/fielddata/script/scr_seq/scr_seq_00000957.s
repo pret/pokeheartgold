@@ -317,7 +317,7 @@ scr_seq_00000957_000004AF:
 	scrcmd_267 10, 32780
 	scrcmd_046 VAR_SPECIAL_x800C
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000957_000005C3
@@ -345,7 +345,7 @@ scr_seq_00000957_00000528:
 	scrcmd_267 12, 32780
 	scrcmd_046 VAR_SPECIAL_x800C
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000957_0000066C
@@ -388,7 +388,7 @@ scr_seq_00000957_000005DB:
 	scrcmd_267 11, 32780
 	scrcmd_046 VAR_SPECIAL_x800C
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000957_00000654
@@ -581,7 +581,7 @@ scr_seq_00000957_000007E4:
 scr_seq_00000957_00000863:
 	msgbox 11
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000957_000008CA
@@ -615,7 +615,7 @@ scr_seq_00000957_000008D9:
 scr_seq_00000957_000008DB:
 	msgbox 26
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000957_00000952
@@ -659,7 +659,7 @@ scr_seq_00000957_00000972:
 scr_seq_00000957_00000974:
 	msgbox 21
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000957_00000A22
@@ -714,7 +714,7 @@ scr_seq_00000957_00000A42:
 scr_seq_00000957_00000A44:
 	msgbox 30
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000957_00000A22
@@ -739,7 +739,7 @@ scr_seq_00000957_00000A44:
 scr_seq_00000957_00000AA2:
 	msgbox 33
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000957_00000A22
@@ -767,7 +767,7 @@ scr_seq_00000957_00000AA2:
 scr_seq_00000957_00000B11:
 	msgbox 18
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000957_00000B6F

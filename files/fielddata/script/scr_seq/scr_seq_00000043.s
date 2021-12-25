@@ -30,12 +30,12 @@ scr_seq_00000043_00000046:
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement 255, scr_seq_00000043_000002A4
 	wait_movement
-	scrcmd_101 1
+	hide_person 1
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_111
 	setflag FLAG_UNK_220
 	clearflag FLAG_UNK_235
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000043_0000009A
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -82,7 +82,7 @@ scr_seq_00000043_00000107:
 scr_seq_00000043_00000143:
 	scrcmd_609
 	lockall
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000043_00000167
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -160,7 +160,7 @@ scr_seq_00000043_00000253:
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement 255, scr_seq_00000043_000002A4
 	wait_movement
-	scrcmd_101 0
+	hide_person 0
 	setflag FLAG_UNK_21F
 	play_se SEQ_SE_DP_UG_008
 	releaseall

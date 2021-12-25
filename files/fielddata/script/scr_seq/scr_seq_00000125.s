@@ -32,7 +32,7 @@ scr_seq_00000125_0000004D:
 scr_seq_00000125_00000055:
 	comparevartovalue VAR_TEMP_x400B, 1
 	gotoif ne, scr_seq_00000125_00000074
-	scrcmd_339 2, 2, 1, 3, 3
+	show_person_at 2, 2, 1, 3, 3
 	setvar VAR_TEMP_x400B, 0
 scr_seq_00000125_00000074:
 	end

@@ -41,23 +41,23 @@ scr_seq_00000858_0000004E:
 	scrcmd_190 0
 	scrcmd_132 2, 3
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000858_000000F7
 scr_seq_00000858_0000007D:
-	scrcmd_332 32780
+	scrcmd_332 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000858_00000106
 	scrcmd_776
 	setflag FLAG_UNK_070
 	scrcmd_190 0
 	msgbox 4
-	scrcmd_078 1200
-	scrcmd_079
+	play_fanfare SEQ_ME_TAMAGO_GET
+	wait_fanfare
 	scrcmd_132 5, 6
 	closemsg
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, scr_seq_00000858_000000C5
 	apply_movement 4, scr_seq_00000858_0000014C
@@ -68,7 +68,7 @@ scr_seq_00000858_000000C5:
 scr_seq_00000858_000000CD:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_101 4
+	hide_person 4
 	wait_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_197
 	releaseall
@@ -98,7 +98,7 @@ scr_seq_00000858_00000115:
 	scrcmd_190 0
 	scrcmd_132 9, 10
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000858_0000007D

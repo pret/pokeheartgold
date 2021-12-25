@@ -18,10 +18,10 @@ scr_seq_00000197_00000012:
 
 scr_seq_00000197_0000002A:
 	setflag FLAG_UNK_261
-	scrcmd_101 4
-	scrcmd_101 8
-	scrcmd_101 7
-	scrcmd_101 9
+	hide_person 4
+	hide_person 8
+	hide_person 7
+	hide_person 9
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -48,7 +48,7 @@ scr_seq_00000197_0000006A:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 143, 50, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000197_000000B4
 	scrcmd_683 16389
@@ -69,10 +69,10 @@ scr_seq_00000197_000000BA:
 	return
 
 scr_seq_00000197_000000C0:
-	scrcmd_055 0, 1, 2, 32780
+	scrcmd_055 0, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -80,7 +80,7 @@ scr_seq_00000197_000000D7:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 1, 32780
+	scrcmd_059 1, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 	.balign 4, 0

@@ -48,7 +48,7 @@ scr_seq_00000263_00000095:
 scr_seq_00000263_00000097:
 	scrcmd_198 2, 1
 	msgbox 7
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000263_0000016B
 	scrcmd_557 1, 32780
@@ -154,10 +154,10 @@ scr_seq_00000263_000001F6:
 	hasspaceforitem VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000263_000002BD
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	msgbox 13
 	giveitem VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_x800C
-	scrcmd_079
+	wait_fanfare
 	scrcmd_049
 	return
 
@@ -174,10 +174,10 @@ scr_seq_00000263_00000242:
 	hasspaceforitem VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000263_000002BD
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	msgbox 13
 	giveitem VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_SPECIAL_x800C
-	scrcmd_079
+	wait_fanfare
 	scrcmd_049
 	return
 
@@ -194,10 +194,10 @@ scr_seq_00000263_0000028E:
 	hasspaceforitem VAR_TEMP_x4004, VAR_TEMP_x4005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000263_000002BD
-	scrcmd_078 1185
+	play_fanfare SEQ_ME_ITEM
 	msgbox 13
 	giveitem VAR_TEMP_x4004, VAR_TEMP_x4005, VAR_SPECIAL_x800C
-	scrcmd_079
+	wait_fanfare
 	scrcmd_049
 	return
 

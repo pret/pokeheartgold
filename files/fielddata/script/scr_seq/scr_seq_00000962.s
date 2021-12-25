@@ -16,7 +16,7 @@
 	scrdef_end
 
 scr_seq_00000962_0000002A:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_00000962_00000045
 	clearflag FLAG_UNK_206
@@ -31,7 +31,7 @@ scr_seq_00000962_0000004B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_529 32770
+	scrcmd_529 VAR_SPECIAL_x8002
 	scrcmd_480 32780, 32770, 59
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000962_00000171
@@ -41,16 +41,16 @@ scr_seq_00000962_0000004B:
 	gotoif eq, scr_seq_00000962_0000011F
 	checkflag FLAG_UNK_0D7
 	gotoif eq, scr_seq_00000962_00000101
-	scrcmd_484 32780
+	scrcmd_484 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000962_000000B2
-	scrcmd_438 0, 32780
-	scrcmd_440 32780, 3
+	scrcmd_438 0, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 3
 	goto scr_seq_00000962_000000F9
 
 scr_seq_00000962_000000B2:
-	scrcmd_438 0, 32780
-	scrcmd_440 32780, 0
+	scrcmd_438 0, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 0
 	setvar VAR_SPECIAL_x8004, 244
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -59,8 +59,8 @@ scr_seq_00000962_000000B2:
 	callstd 2033
 	setflag FLAG_UNK_0D7
 	addvar VAR_UNK_4094, 1
-	scrcmd_438 0, 32780
-	scrcmd_440 32780, 1
+	scrcmd_438 0, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 1
 scr_seq_00000962_000000F9:
 	waitbutton
 	closemsg
@@ -68,8 +68,8 @@ scr_seq_00000962_000000F9:
 	end
 
 scr_seq_00000962_00000101:
-	scrcmd_438 0, 32780
-	scrcmd_440 32780, 2
+	scrcmd_438 0, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 2
 	waitbutton
 	closemsg
 	releaseall
@@ -82,21 +82,21 @@ scr_seq_00000962_00000115:
 	end
 
 scr_seq_00000962_0000011F:
-	scrcmd_484 32780
+	scrcmd_484 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000962_00000142
-	scrcmd_438 0, 32780
-	scrcmd_440 32780, 3
+	scrcmd_438 0, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 3
 	goto scr_seq_00000962_000000F9
 
 scr_seq_00000962_00000142:
-	scrcmd_438 0, 32780
-	scrcmd_440 32780, 28
+	scrcmd_438 0, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 28
 	scrcmd_193 0, 32770
-	scrcmd_440 32780, 30
+	scrcmd_440 VAR_SPECIAL_x800C, 30
 	scrcmd_481 32770, 59
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	setflag FLAG_UNK_ABC
 	waitbutton
 	closemsg
@@ -104,16 +104,16 @@ scr_seq_00000962_00000142:
 	end
 
 scr_seq_00000962_00000171:
-	scrcmd_438 0, 32780
-	scrcmd_440 32780, 29
+	scrcmd_438 0, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 29
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 scr_seq_00000962_00000185:
-	scrcmd_438 0, 32780
-	scrcmd_440 32780, 31
+	scrcmd_438 0, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 31
 	waitbutton
 	closemsg
 	releaseall
@@ -124,7 +124,7 @@ scr_seq_00000962_00000199:
 	lockall
 	apply_movement 5, scr_seq_00000962_000002C8
 	wait_movement
-	scrcmd_105 32768, 32769
+	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8000, 252
 	gotoif ne, scr_seq_00000962_000001C8
 	apply_movement 5, scr_seq_00000962_000002D4
@@ -146,7 +146,7 @@ scr_seq_00000962_000001FE:
 	apply_movement 5, scr_seq_00000962_00000308
 scr_seq_00000962_00000206:
 	wait_movement
-	scrcmd_729 16386
+	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, scr_seq_00000962_00000223
 	scrcmd_602 0
@@ -165,7 +165,7 @@ scr_seq_00000962_00000223:
 	wait_movement
 	msgbox 16
 	closemsg
-	scrcmd_105 32768, 32769
+	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8000, 252
 	gotoif ne, scr_seq_00000962_00000274
 	apply_movement 5, scr_seq_00000962_00000324
@@ -268,10 +268,10 @@ scr_seq_00000962_0000036C:
 	end
 
 scr_seq_00000962_0000037F:
-	scrcmd_055 19, 1, 4, 32780
+	scrcmd_055 19, 1, 4, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 32780
+	scrcmd_060 VAR_SPECIAL_x800C
 	callstd 2000
 	end
 
@@ -279,7 +279,7 @@ scr_seq_00000962_00000396:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 20, 32780
+	scrcmd_059 20, VAR_SPECIAL_x800C
 	callstd 2000
 	end
 

@@ -108,7 +108,7 @@
 #define FLAG_UNK_067                 0x67
 #define FLAG_UNK_068                 0x68
 #define FLAG_UNK_069                 0x69
-#define FLAG_UNK_06A                 0x6A
+#define FLAG_GOT_STARTER                 0x6A
 #define FLAG_UNK_06B                 0x6B
 #define FLAG_UNK_06C                 0x6C
 #define FLAG_UNK_06D                 0x6D
@@ -155,7 +155,7 @@
 #define FLAG_UNK_096                 0x96
 #define FLAG_UNK_097                 0x97
 #define FLAG_UNK_098                 0x98
-#define FLAG_UNK_099                 0x99
+#define FLAG_MET_PASSERBY_BOY                 0x99
 #define FLAG_UNK_09A                 0x9A
 #define FLAG_UNK_09B                 0x9B
 #define FLAG_UNK_09C                 0x9C
@@ -354,7 +354,7 @@
 #define FLAG_UNK_15D                 0x15D
 #define FLAG_UNK_15E                 0x15E
 #define FLAG_UNK_15F                 0x15F
-#define FLAG_UNK_160                 0x160
+#define FLAG_ELM_RECEIVED_EMAIL                 0x160
 #define FLAG_UNK_161                 0x161
 #define FLAG_UNK_162                 0x162
 #define FLAG_UNK_163                 0x163

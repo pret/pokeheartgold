@@ -28,10 +28,10 @@ scr_seq_00000121_00000037:
 	end
 
 scr_seq_00000121_00000046:
-	scrcmd_386 16385
+	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 2
 	gotoif eq, scr_seq_00000121_00000065
-	scrcmd_339 3, 19, 0, 40, 1
+	show_person_at 3, 19, 0, 40, 1
 	end
 
 scr_seq_00000121_00000065:
@@ -86,7 +86,7 @@ scr_seq_00000121_00000117:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_2CE
-	scrcmd_101 3
+	hide_person 3
 	setvar VAR_UNK_40F9, 3
 	releaseall
 	end
@@ -163,7 +163,7 @@ scr_seq_00000121_000001BC:
 scr_seq_00000121_000001E7:
 	msgbox 1
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000121_0000020A

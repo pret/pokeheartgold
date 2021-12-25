@@ -12,8 +12,8 @@ scr_seq_00000107_00000006:
 	faceplayer
 	msgbox 0
 	closemsg
-	scrcmd_213 260, 0, 0, 0
-	scrcmd_220 32780
+	trainer_battle 260, 0, 0, 0
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000107_00000098
 	msgbox 1
@@ -21,7 +21,7 @@ scr_seq_00000107_00000006:
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
 	closemsg
-	scrcmd_101 0
+	hide_person 0
 	setflag FLAG_UNK_25F
 	setvar VAR_UNK_40FD, 1
 	comparevartovalue VAR_UNK_4131, 0
@@ -52,10 +52,10 @@ scr_seq_00000107_0000009E:
 	return
 
 scr_seq_00000107_000000B2:
-	scrcmd_332 32772
+	scrcmd_332 VAR_SPECIAL_x8004
 	setvar VAR_SPECIAL_x8005, 0
 scr_seq_00000107_000000BC:
-	scrcmd_354 32773, 32780
+	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000107_000000D5
 	scrcmd_481 32773, 72

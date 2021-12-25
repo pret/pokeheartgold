@@ -14,7 +14,7 @@ scr_seq_00000019_0000000E:
 	faceplayer
 	checkflag FLAG_UNK_116
 	gotoif eq, scr_seq_00000019_00000053
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 8
 	gotoif eq, scr_seq_00000019_00000048
 	checkflag FLAG_UNK_108
@@ -52,7 +52,7 @@ scr_seq_00000019_00000069:
 scr_seq_00000019_00000074:
 	scrcmd_609
 	lockall
-	scrcmd_386 16394
+	scrcmd_386 VAR_TEMP_x400A
 	comparevartovalue VAR_TEMP_x400A, 0
 	gotoif ne, scr_seq_00000019_00000097
 	apply_movement 0, scr_seq_00000019_000002D8
@@ -62,7 +62,7 @@ scr_seq_00000019_00000097:
 	apply_movement 0, scr_seq_00000019_000002E0
 scr_seq_00000019_0000009F:
 	wait_movement
-	scrcmd_105 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_TEMP_x400A, 0
 	callif eq, scr_seq_00000019_00000150
 	comparevartovalue VAR_TEMP_x400A, 2
@@ -85,7 +85,7 @@ scr_seq_00000019_00000101:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000019_00000127
 	msgbox 0
@@ -95,7 +95,7 @@ scr_seq_00000019_00000127:
 	msgbox 1
 scr_seq_00000019_0000012A:
 	closemsg
-	scrcmd_105 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_TEMP_x400A, 0
 	callif eq, scr_seq_00000019_000001EF
 	comparevartovalue VAR_TEMP_x400A, 2

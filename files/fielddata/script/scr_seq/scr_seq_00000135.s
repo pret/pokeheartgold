@@ -16,7 +16,7 @@ scr_seq_00000135_00000012:
 
 scr_seq_00000135_0000001F:
 	setflag FLAG_UNK_2D2
-	scrcmd_101 0
+	hide_person 0
 	end
 
 scr_seq_00000135_00000029:
@@ -80,7 +80,7 @@ scr_seq_00000135_000000C0:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 384, 50, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000135_00000142
 	scrcmd_683 16386

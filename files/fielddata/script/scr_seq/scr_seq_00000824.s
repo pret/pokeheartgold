@@ -43,7 +43,7 @@ scr_seq_00000824_0000005C:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_105 16384, 16385
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_00000824_0000008B
 	apply_movement 255, scr_seq_00000824_00000298
@@ -69,13 +69,13 @@ scr_seq_00000824_000000AE:
 	closemsg
 	comparevartovalue VAR_UNK_4135, 8
 	gotoif lt, scr_seq_00000824_000000E8
-	scrcmd_213 701, 0, 0, 0
+	trainer_battle 701, 0, 0, 0
 	goto scr_seq_00000824_000000F0
 
 scr_seq_00000824_000000E8:
-	scrcmd_213 244, 0, 0, 0
+	trainer_battle 244, 0, 0, 0
 scr_seq_00000824_000000F0:
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000824_00000290
 	scrcmd_190 0
@@ -83,16 +83,16 @@ scr_seq_00000824_000000F0:
 	closemsg
 	wait 10, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KI_GASYAN
-	scrcmd_101 4
-	scrcmd_339 2, 6, 0, 20, 0
-	scrcmd_339 1, 6, 0, 17, 0
+	hide_person 4
+	show_person_at 2, 6, 0, 20, 0
+	show_person_at 1, 6, 0, 17, 0
 	wait 30, VAR_SPECIAL_x8004
 	scrcmd_081 0
-	scrcmd_080 1107
+	play_bgm SEQ_GS_EYE_J_SHOUJO
 	apply_movement 0, scr_seq_00000824_000002C8
 	apply_movement 255, scr_seq_00000824_000002E0
 	wait_movement
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000824_000001A1
 	comparevartovalue VAR_TEMP_x4000, 5
@@ -139,7 +139,7 @@ scr_seq_00000824_000001A1:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000824_00000234
 	apply_movement 253, scr_seq_00000824_000003A4

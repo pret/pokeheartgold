@@ -15,7 +15,7 @@ scr_seq_00000024_0000000E:
 
 scr_seq_00000024_0000001B:
 	setflag FLAG_UNK_30E
-	scrcmd_101 12
+	hide_person 12
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -41,7 +41,7 @@ scr_seq_00000024_00000029:
 	wait_movement
 	apply_movement 1, scr_seq_00000024_00000234
 	wait_movement
-	scrcmd_105 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 16
 	gotoif ne, scr_seq_00000024_000000C8
 	apply_movement 0, scr_seq_00000024_00000244
@@ -70,9 +70,9 @@ scr_seq_00000024_000000E2:
 	setflag FLAG_UNK_1C9
 	setflag FLAG_UNK_1CA
 	setflag FLAG_UNK_1CB
-	scrcmd_101 2
-	scrcmd_101 1
-	scrcmd_101 0
+	hide_person 2
+	hide_person 1
+	hide_person 0
 	scrcmd_464 0
 	scrcmd_464 1
 	wait 15, VAR_SPECIAL_x800C
@@ -81,7 +81,7 @@ scr_seq_00000024_000000E2:
 	scrcmd_100 3
 	scrcmd_098 3
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_105 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 16
 	gotoif ne, scr_seq_00000024_0000015B
 	apply_movement 3, scr_seq_00000024_0000029C
@@ -93,7 +93,7 @@ scr_seq_00000024_0000015B:
 scr_seq_00000024_0000016B:
 	wait_movement
 	msgbox 0
-	scrcmd_105 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 16
 	gotoif ne, scr_seq_00000024_00000191
 	apply_movement 3, scr_seq_00000024_000002C4
@@ -107,7 +107,7 @@ scr_seq_00000024_000001A1:
 	scrcmd_190 0
 	msgbox 1
 	closemsg
-	scrcmd_105 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 16
 	gotoif ne, scr_seq_00000024_000001CC
 	apply_movement 3, scr_seq_00000024_000002E8
@@ -119,7 +119,7 @@ scr_seq_00000024_000001D4:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	wait 2, VAR_SPECIAL_x800C
-	scrcmd_101 3
+	hide_person 3
 	wait_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_1C8
 	setflag FLAG_UNK_1C7
@@ -233,7 +233,7 @@ scr_seq_00000024_0000030A:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 245, 40, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000024_0000035C
 	scrcmd_683 16386

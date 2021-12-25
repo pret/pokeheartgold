@@ -26,7 +26,7 @@ scr_seq_00000155_00000036:
 	end
 
 scr_seq_00000155_00000045:
-	scrcmd_339 0, 24, 0, 19, 2
+	show_person_at 0, 24, 0, 19, 2
 	end
 
 scr_seq_00000155_00000053:
@@ -69,7 +69,7 @@ scr_seq_00000155_000000A4:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 16384
+	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, scr_seq_00000155_000000EF
 	apply_movement 0, scr_seq_00000155_00000150

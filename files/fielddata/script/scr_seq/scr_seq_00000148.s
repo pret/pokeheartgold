@@ -59,7 +59,7 @@ scr_seq_00000148_000000DA:
 	waitbutton
 	closemsg
 	setvar VAR_SPECIAL_x800C, 0
-	restartcurrentscript
+	endstd
 	end
 
 scr_seq_00000148_000000EB:
@@ -69,10 +69,10 @@ scr_seq_00000148_000000EB:
 	scrcmd_198 6, 32773
 	msgbox 20
 	scrcmd_248 0, 32780, 32768
-	scrcmd_078 32768
+	play_fanfare VAR_SPECIAL_x8000
 	scrcmd_190 0
 	scrcmd_046 VAR_SPECIAL_x800C
-	scrcmd_079
+	wait_fanfare
 	scrcmd_423 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000148_0000012F
@@ -94,10 +94,10 @@ scr_seq_00000148_00000142:
 	scrcmd_198 6, 32773
 	msgbox 20
 	scrcmd_248 1, 32780, 32768
-	scrcmd_078 32768
+	play_fanfare VAR_SPECIAL_x8000
 	scrcmd_190 0
 	scrcmd_046 VAR_SPECIAL_x800C
-	scrcmd_079
+	wait_fanfare
 	scrcmd_424 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000148_00000183
@@ -107,6 +107,6 @@ scr_seq_00000148_00000142:
 scr_seq_00000148_00000183:
 	setvar VAR_SPECIAL_x800C, 2
 scr_seq_00000148_00000189:
-	restartcurrentscript
+	endstd
 	end
 	.balign 4, 0

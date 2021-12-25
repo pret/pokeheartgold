@@ -321,7 +321,7 @@ scr_seq_00000166_000003A7:
 scr_seq_00000166_000003B2:
 	.byte 0x02, 0x00
 scr_seq_00000166_000003B4:
-	scrcmd_281 32780
+	get_player_gender VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000166_000003CD
 	goto scr_seq_00000166_000003DB

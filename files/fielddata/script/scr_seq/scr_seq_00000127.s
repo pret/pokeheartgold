@@ -27,7 +27,7 @@ scr_seq_00000127_00000039:
 scr_seq_00000127_00000041:
 	comparevartovalue VAR_TEMP_x400D, 1
 	gotoif ne, scr_seq_00000127_00000060
-	scrcmd_339 0, 6, 1, 3, 3
+	show_person_at 0, 6, 1, 3, 3
 	setvar VAR_TEMP_x400D, 0
 scr_seq_00000127_00000060:
 	end
@@ -67,7 +67,7 @@ scr_seq_00000127_0000009E:
 	faceplayer
 	msgbox 3
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000127_000003AC
 scr_seq_00000127_000000BC:
@@ -276,7 +276,7 @@ scr_seq_00000127_000003B9:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000127_000003E0
 	apply_movement 3, scr_seq_00000127_0000043C

@@ -30,12 +30,12 @@ scr_seq_00000775_00000047:
 	scrcmd_190 0
 	scrcmd_132 4, 5
 	msgbox 6
-	scrcmd_078 1186
-	scrcmd_079
+	play_fanfare SEQ_ME_KEYITEM
+	wait_fanfare
 	setflag FLAG_UNK_11F
 	checkflag FLAG_UNK_08A
 	gotoif eq, scr_seq_00000775_00000069
-	scrcmd_145 2
+	register_pokegear_card 2
 scr_seq_00000775_00000069:
 	msgbox 7
 	waitbutton

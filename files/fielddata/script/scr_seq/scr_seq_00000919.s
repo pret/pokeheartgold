@@ -19,7 +19,7 @@ scr_seq_00000919_0000001E:
 	end
 
 scr_seq_00000919_0000002F:
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_00000919_0000004A
 	setflag FLAG_UNK_27E
@@ -107,23 +107,23 @@ scr_seq_00000919_00000113:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 0
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000919_0000025E
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000919_00000272
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 1
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000919_0000018C
 	apply_movement 255, scr_seq_00000919_00000288
@@ -144,7 +144,7 @@ scr_seq_00000919_000001B7:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 32780
+	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000919_000001DE
 	apply_movement 253, scr_seq_00000919_000002CC
@@ -158,8 +158,8 @@ scr_seq_00000919_000001DE:
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
 	clearflag FLAG_UNK_189
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 2
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 2
 	waitbutton
 	closemsg
 	releaseall
@@ -172,16 +172,16 @@ scr_seq_00000919_00000218:
 	.byte 0x0e, 0x00, 0x00, 0x00, 0x5e, 0x00, 0xff, 0x00, 0x54, 0x00, 0x00, 0x00, 0x16, 0x00, 0x08, 0x00
 	.byte 0x00, 0x00, 0x5e, 0x00, 0xff, 0x00, 0x52, 0x00, 0x00, 0x00, 0x5f, 0x00, 0x1b, 0x00
 scr_seq_00000919_0000025E:
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 5
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 scr_seq_00000919_00000272:
-	scrcmd_438 2, 32780
-	scrcmd_440 32780, 3
+	scrcmd_438 2, VAR_SPECIAL_x800C
+	scrcmd_440 VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
@@ -232,7 +232,7 @@ scr_seq_00000919_000002DC:
 	msgbox 4
 scr_seq_00000919_00000307:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000919_0000032B
@@ -243,8 +243,8 @@ scr_seq_00000919_00000307:
 scr_seq_00000919_0000032B:
 	scrcmd_190 0
 	msgbox 5
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	scrcmd_146 38
 	msgbox 6
 	waitbutton
@@ -252,7 +252,7 @@ scr_seq_00000919_0000032B:
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
 	setflag FLAG_UNK_2CB
-	scrcmd_101 4
+	hide_person 4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -277,11 +277,11 @@ scr_seq_00000919_00000388:
 scr_seq_00000919_0000038A:
 	msgbox 9
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000919_000003EB
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000919_000003F6
 	msgbox 10

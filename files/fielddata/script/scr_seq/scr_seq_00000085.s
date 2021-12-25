@@ -37,12 +37,12 @@ scr_seq_00000085_0000005A:
 
 scr_seq_00000085_0000007A:
 	scrcmd_338 11, 8, 11
-	scrcmd_339 11, 8, 0, 11, 2
+	show_person_at 11, 8, 0, 11, 2
 	return
 
 scr_seq_00000085_00000090:
 	scrcmd_338 11, 13, 11
-	scrcmd_339 11, 13, 0, 11, 2
+	show_person_at 11, 13, 0, 11, 2
 	return
 
 scr_seq_00000085_000000A6:
@@ -59,7 +59,7 @@ scr_seq_00000085_000000B5:
 	end
 
 scr_seq_00000085_000000D5:
-	scrcmd_101 12
+	hide_person 12
 	setflag FLAG_UNK_234
 	return
 
@@ -104,7 +104,7 @@ scr_seq_00000085_00000147:
 	end
 
 scr_seq_00000085_00000157:
-	scrcmd_281 16384
+	get_player_gender VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	callif eq, scr_seq_00000085_000001FB
 	comparevartovalue VAR_TEMP_x4000, 1
@@ -124,7 +124,7 @@ scr_seq_00000085_0000017D:
 	return
 
 scr_seq_00000085_000001B3:
-	scrcmd_281 16393
+	get_player_gender VAR_TEMP_x4009
 	comparevartovalue VAR_TEMP_x4009, 0
 	gotoif eq, scr_seq_00000085_000001D3
 	comparevartovalue VAR_TEMP_x4009, 1
@@ -311,7 +311,7 @@ scr_seq_00000085_00000414:
 scr_seq_00000085_0000042D:
 	.byte 0x02, 0x00
 scr_seq_00000085_0000042F:
-	scrcmd_354 16386, 16385
+	get_partymon_species VAR_TEMP_x4002, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_00000085_0000044A
 	scrcmd_747
@@ -393,7 +393,7 @@ scr_seq_00000085_0000057D:
 	.byte 0x02, 0x00
 scr_seq_00000085_0000057F:
 	msgbox 31
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000085_0000052E
 	scrcmd_747
@@ -421,7 +421,7 @@ scr_seq_00000085_000005D5:
 	.byte 0x02, 0x00
 scr_seq_00000085_000005D7:
 	msgbox 31
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000085_0000052E
 	scrcmd_747
@@ -716,8 +716,8 @@ scr_seq_00000085_00000966:
 	msgbox 13
 	scrcmd_190 0
 	msgbox 15
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	setvar VAR_UNK_404F, 2
 	return
 
@@ -725,8 +725,8 @@ scr_seq_00000085_0000097D:
 	msgbox 13
 	scrcmd_190 0
 	msgbox 14
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	setvar VAR_UNK_404F, 4
 	callstd 2040
 	return
@@ -847,9 +847,9 @@ scr_seq_00000085_00000A77:
 	scrcmd_190 0
 	msgbox 69
 	msgbox 70
-	scrcmd_078 1214
+	play_fanfare SEQ_ME_BPGET
 	msgbox 72
-	scrcmd_079
+	wait_fanfare
 	goto scr_seq_00000085_00000B0E
 
 scr_seq_00000085_00000AD3:
@@ -893,7 +893,7 @@ scr_seq_00000085_00000B16:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_281 32780
+	get_player_gender VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000085_00000C4A
 	goto scr_seq_00000085_00000B37
@@ -991,7 +991,7 @@ scr_seq_00000085_00000C29:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_281 32780
+	get_player_gender VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000085_00000B37
 	goto scr_seq_00000085_00000C4A

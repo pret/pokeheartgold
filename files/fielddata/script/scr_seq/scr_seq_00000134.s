@@ -11,7 +11,7 @@
 scr_seq_00000134_0000000E:
 	comparevartovalue VAR_UNK_40F9, 4
 	gotoif ge, scr_seq_00000134_0000007C
-	scrcmd_495 16384
+	scrcmd_495 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, scr_seq_00000134_00000038
 	goto scr_seq_00000134_0000004A
@@ -53,7 +53,7 @@ scr_seq_00000134_0000007E:
 
 scr_seq_00000134_0000008B:
 	setflag FLAG_UNK_2D1
-	scrcmd_101 0
+	hide_person 0
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -68,7 +68,7 @@ scr_seq_00000134_00000099:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 382, 50, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 32780
+	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000134_0000019D
 	scrcmd_683 16386
@@ -92,7 +92,7 @@ scr_seq_00000134_000000FB:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 16385
+	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_00000134_00000142
 	apply_movement 1, scr_seq_00000134_000001A4
@@ -122,7 +122,7 @@ scr_seq_00000134_00000156:
 	closemsg
 	apply_movement 1, scr_seq_00000134_000001EC
 	wait_movement
-	scrcmd_101 1
+	hide_person 1
 	setflag FLAG_UNK_2D4
 	setflag FLAG_UNK_2CF
 	releaseall

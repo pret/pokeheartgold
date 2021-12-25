@@ -25,12 +25,12 @@ scr_seq_00000104_0000002A:
 
 scr_seq_00000104_0000003B:
 	setflag FLAG_UNK_243
-	scrcmd_101 5
-	scrcmd_101 6
-	scrcmd_101 7
-	scrcmd_101 8
-	scrcmd_101 9
-	scrcmd_101 10
+	hide_person 5
+	hide_person 6
+	hide_person 7
+	hide_person 8
+	hide_person 9
+	hide_person 10
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -54,11 +54,11 @@ scr_seq_00000104_00000093:
 	gotoif lt, scr_seq_00000104_000000FA
 	comparevartovalue VAR_TEMP_x4003, 111
 	gotoif ne, scr_seq_00000104_000000FA
-	scrcmd_339 4, 16, 1, 32, 0
-	scrcmd_339 2, 13, 1, 33, 0
-	scrcmd_339 3, 13, 1, 27, 0
-	scrcmd_339 0, 19, 1, 33, 0
-	scrcmd_339 1, 19, 1, 27, 0
+	show_person_at 4, 16, 1, 32, 0
+	show_person_at 2, 13, 1, 33, 0
+	show_person_at 3, 13, 1, 27, 0
+	show_person_at 0, 19, 1, 33, 0
+	show_person_at 1, 19, 1, 27, 0
 	setvar VAR_TEMP_x4003, 0
 	end
 
@@ -74,7 +74,7 @@ scr_seq_00000104_000000FC:
 	msgbox 4
 	scrcmd_077
 	closemsg
-	scrcmd_495 32780
+	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000104_00000134
 	setvar VAR_SPECIAL_x8004, 70
@@ -149,7 +149,7 @@ scr_seq_00000104_000001AE:
 	wait_movement
 	wait 16, VAR_SPECIAL_x800C
 	scrcmd_081 0
-	scrcmd_087 1163
+	temp_bgm SEQ_GS_E_MAIKO_MAI
 	wait 18, VAR_SPECIAL_x800C
 	apply_movement 4, scr_seq_00000104_000009B8
 	apply_movement 2, scr_seq_00000104_000009B8
@@ -374,7 +374,7 @@ scr_seq_00000104_000001AE:
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
-	scrcmd_084 0, 100
+	fade_out_bgm 0, 100
 	scrcmd_081 0
 	wait 32, VAR_SPECIAL_x800C
 	apply_movement 4, scr_seq_00000104_00000B2C
@@ -392,7 +392,7 @@ scr_seq_00000104_000001AE:
 	wait_movement
 	scrcmd_763
 	wait 32, VAR_SPECIAL_x800C
-	scrcmd_087 1166
+	temp_bgm SEQ_GS_E_LUGIA
 	wait 48, VAR_SPECIAL_x800C
 	scrcmd_561 3, 3, 15, 5
 	wait 10, VAR_SPECIAL_x800C
@@ -416,11 +416,11 @@ scr_seq_00000104_000001AE:
 	scrcmd_099 3
 	scrcmd_099 0
 	scrcmd_099 1
-	scrcmd_339 4, 16, 1, 33, 0
-	scrcmd_339 2, 13, 1, 33, 0
-	scrcmd_339 3, 13, 1, 27, 0
-	scrcmd_339 0, 19, 1, 33, 0
-	scrcmd_339 1, 19, 1, 27, 0
+	show_person_at 4, 16, 1, 33, 0
+	show_person_at 2, 13, 1, 33, 0
+	show_person_at 3, 13, 1, 27, 0
+	show_person_at 0, 19, 1, 33, 0
+	show_person_at 1, 19, 1, 27, 0
 	scrcmd_773 1
 	scrcmd_767
 	scrcmd_174 6, 1, 1, 0

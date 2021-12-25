@@ -1460,7 +1460,7 @@ ov100_021E642C: ; 0x021E642C
 	str r0, [r4, #0x24]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]

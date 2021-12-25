@@ -191,7 +191,7 @@ scr_seq_00000167_0000028F:
 	scrcmd_745 3, 32768
 	msgbox 4
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000167_000001A7
 	scrcmd_815 0
@@ -215,10 +215,10 @@ scr_seq_00000167_0000028F:
 	scrcmd_188 4096
 	scrcmd_189
 	wait_movement
-	scrcmd_078 1208
+	play_fanfare SEQ_ME_PT_NEW
 	scrcmd_190 0
 	msgbox 8
-	scrcmd_079
+	wait_fanfare
 	wait 30, VAR_SPECIAL_x800C
 	msgbox 6
 	closemsg
@@ -262,8 +262,8 @@ scr_seq_00000167_0000028F:
 	scrcmd_198 2, 32770
 	msgbox 46
 	msgbox 20
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	comparevartovalue VAR_SPECIAL_x8003, 0
 	callif eq, scr_seq_00000167_000005AB
 	call scr_seq_00000167_00000567
@@ -412,8 +412,8 @@ scr_seq_00000167_000005CA:
 	scrcmd_190 0
 	scrcmd_198 2, 16393
 	msgbox 20
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	scrcmd_515 13
 	return
 
@@ -867,7 +867,7 @@ scr_seq_00000167_00000C44:
 	.byte 0x02, 0x00, 0x02, 0x00
 scr_seq_00000167_00000C48:
 	msgbox 28
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000167_00000BF7
 	scrcmd_226 40, 16395, 0, 32780
@@ -881,7 +881,7 @@ scr_seq_00000167_00000C86:
 	.byte 0x02, 0x00
 scr_seq_00000167_00000C88:
 	msgbox 28
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000167_00000BF7
 	scrcmd_227 40, 16395, 0, 32780
@@ -939,11 +939,11 @@ scr_seq_00000167_00000CE3:
 	scrcmd_188 4096
 	scrcmd_189
 	wait_movement
-	scrcmd_078 1208
+	play_fanfare SEQ_ME_PT_NEW
 	scrcmd_190 0
 	msgbox 35
 	wait 30, VAR_SPECIAL_x8004
-	scrcmd_079
+	wait_fanfare
 	scrcmd_745 3, 32768
 	scrcmd_451 16384
 	comparevartovalue VAR_TEMP_x4000, 0
@@ -1026,8 +1026,8 @@ scr_seq_00000167_00000EB5:
 	msgbox 46
 scr_seq_00000167_00000EB8:
 	msgbox 20
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	comparevartovalue VAR_SPECIAL_x8003, 1
 	callif le, scr_seq_00000167_00000F43
 	call scr_seq_00000167_00000F8D
@@ -1073,8 +1073,8 @@ scr_seq_00000167_00000F76:
 	scrcmd_190 0
 	scrcmd_198 2, 16393
 	msgbox 20
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	return
 
 scr_seq_00000167_00000F8D:

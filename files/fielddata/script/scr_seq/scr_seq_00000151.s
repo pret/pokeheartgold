@@ -74,7 +74,7 @@ scr_seq_00000151_000000CE:
 	scrcmd_789 0
 	msgbox 3
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -91,13 +91,13 @@ scr_seq_00000151_000000FD:
 	comparevartovalue VAR_UNK_4058, 0
 	gotoif eq, scr_seq_00000151_00000114
 	call scr_seq_00000151_000002BC
-	restartcurrentscript
+	endstd
 	end
 
 scr_seq_00000151_00000114:
 	checkflag FLAG_UNK_AA7
 	gotoif eq, scr_seq_00000151_000002A6
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, scr_seq_00000151_00000139
 	msgbox 4
@@ -121,7 +121,7 @@ scr_seq_00000151_00000165:
 
 scr_seq_00000151_0000016E:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000151_0000018E
@@ -134,22 +134,22 @@ scr_seq_00000151_0000018E:
 	scrcmd_507 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000151_000001B0
-	scrcmd_332 32772
+	scrcmd_332 VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 6
 	gotoif eq, scr_seq_00000151_000002B1
 scr_seq_00000151_000001B0:
 	scrcmd_357 32773, 6
 	comparevartovalue VAR_SPECIAL_x8005, 1
 	gotoif ne, scr_seq_00000151_000001D4
-	scrcmd_332 32772
+	scrcmd_332 VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif eq, scr_seq_00000151_0000021A
 scr_seq_00000151_000001D4:
-	scrcmd_529 32780
-	scrcmd_199 0, VAR_SPECIAL_x800C
+	scrcmd_529 VAR_SPECIAL_x800C
+	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	msgbox 10
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000151_00000200
@@ -159,16 +159,16 @@ scr_seq_00000151_000001D4:
 scr_seq_00000151_000001FE:
 	.byte 0x02, 0x00
 scr_seq_00000151_00000200:
-	scrcmd_084 0, 10
-	scrcmd_080 1090
+	fade_out_bgm 0, 10
+	play_bgm SEQ_GS_TAIKAIMAE
 	scrcmd_190 0
 	msgbox 13
 	setflag FLAG_UNK_15F
 	goto scr_seq_00000151_00000224
 
 scr_seq_00000151_0000021A:
-	scrcmd_084 0, 10
-	scrcmd_080 1090
+	fade_out_bgm 0, 10
+	play_bgm SEQ_GS_TAIKAIMAE
 scr_seq_00000151_00000224:
 	scrcmd_190 0
 	msgbox 14
@@ -190,7 +190,7 @@ scr_seq_00000151_00000260:
 	waitbutton
 scr_seq_00000151_00000262:
 	closemsg
-	restartcurrentscript
+	endstd
 	end
 
 scr_seq_00000151_00000268:
@@ -247,13 +247,13 @@ scr_seq_00000151_00000307:
 	scrcmd_789 0
 	msgbox 23
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000151_0000032B
 	msgbox 26
 	closemsg
-	restartcurrentscript
+	endstd
 	end
 
 scr_seq_00000151_0000032B:
@@ -261,7 +261,7 @@ scr_seq_00000151_0000032B:
 	closemsg
 	setvar VAR_UNK_4118, 2
 	call scr_seq_00000151_00000076
-	restartcurrentscript
+	endstd
 	end
 
 scr_seq_00000151_00000340:
@@ -271,8 +271,8 @@ scr_seq_00000151_00000340:
 	setvar VAR_UNK_40F7, 0
 	scrcmd_784 1, 0
 	scrcmd_787 16384, 16385, 16386
-	scrcmd_105 32772, 32773
-	scrcmd_102 32772, 32773
+	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	apply_movement 241, scr_seq_00000151_0000053C
 	wait_movement
 	msgbox 29
@@ -285,8 +285,8 @@ scr_seq_00000151_00000340:
 scr_seq_00000151_0000038E:
 	msgbox 31
 scr_seq_00000151_00000391:
-	scrcmd_078 1203
-	scrcmd_079
+	play_fanfare SEQ_ME_MUSHITORI3
+	wait_fanfare
 	msgbox 32
 	scrcmd_786 1
 	comparevartovalue VAR_TEMP_x4000, 1
@@ -297,8 +297,8 @@ scr_seq_00000151_00000391:
 scr_seq_00000151_000003B3:
 	msgbox 34
 scr_seq_00000151_000003B6:
-	scrcmd_078 1202
-	scrcmd_079
+	play_fanfare SEQ_ME_MUSHITORI2
+	wait_fanfare
 	msgbox 32
 	scrcmd_786 0
 	comparevartovalue VAR_TEMP_x4000, 0
@@ -311,8 +311,8 @@ scr_seq_00000151_000003DC:
 	clearflag FLAG_UNK_141
 	msgbox 36
 scr_seq_00000151_000003E3:
-	scrcmd_078 1201
-	scrcmd_079
+	play_fanfare SEQ_ME_MUSHITORI1
+	wait_fanfare
 	msgbox 32
 	scrcmd_190 0
 	scrcmd_194 3, 16385
@@ -344,14 +344,14 @@ scr_seq_00000151_0000045E:
 	scrcmd_202 1, 16386, 2, 1
 	msgbox 43
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000151_0000049E
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_173 255, 32780
+	scrcmd_173 255, VAR_SPECIAL_x800C
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
 scr_seq_00000151_0000049E:
@@ -363,8 +363,8 @@ scr_seq_00000151_0000049E:
 scr_seq_00000151_000004B5:
 	apply_movement 241, scr_seq_00000151_00000544
 	wait_movement
-	scrcmd_084 0, 10
-	scrcmd_080 1075
+	fade_out_bgm 0, 10
+	play_bgm SEQ_GS_D_KOUEN
 	scrcmd_103
 	call scr_seq_00000151_000004FD
 	setflag FLAG_UNK_AA7
@@ -373,8 +373,8 @@ scr_seq_00000151_000004B5:
 	clearflag FLAG_UNK_15F
 	scrcmd_785 1, 0
 	scrcmd_784 1, 1
-	scrcmd_084 0, 30
-	scrcmd_082
+	fade_out_bgm 0, 30
+	reset_bgm
 	releaseall
 	end
 

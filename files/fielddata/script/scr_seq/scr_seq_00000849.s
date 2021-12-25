@@ -21,11 +21,11 @@ scr_seq_00000849_00000027:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 0, 32780
+	scrcmd_294 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000849_0000006D
 	scrcmd_190 0
-	checkflag FLAG_UNK_06A
+	checkflag FLAG_GOT_STARTER
 	gotoif eq, scr_seq_00000849_0000005C
 	scrcmd_132 0, 1
 	waitbutton
@@ -42,7 +42,7 @@ scr_seq_00000849_0000005C:
 	end
 
 scr_seq_00000849_0000006D:
-	scrcmd_529 32774
+	scrcmd_529 VAR_SPECIAL_x8006
 	scrcmd_825 32774, 32780
 	checkflag FLAG_UNK_161
 	gotoif eq, scr_seq_00000849_000000B1
@@ -78,7 +78,7 @@ scr_seq_00000849_000000B1:
 scr_seq_00000849_000000E4:
 	scrcmd_190 0
 	scrcmd_727 32780
-	scrcmd_199 1, VAR_SPECIAL_x800C
+	bufferpartymonnick 1, VAR_SPECIAL_x800C
 	scrcmd_132 15, 16
 	closemsg
 	goto scr_seq_00000849_0000010D

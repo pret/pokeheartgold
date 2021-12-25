@@ -392,8 +392,8 @@ scr_seq_00000803_00000543:
 	scrcmd_120 18
 	scrcmd_190 0
 	msgbox 12
-	scrcmd_078 1185
-	scrcmd_079
+	play_fanfare SEQ_ME_ITEM
+	wait_fanfare
 	setflag FLAG_UNK_17C
 scr_seq_00000803_0000059B:
 	msgbox 13

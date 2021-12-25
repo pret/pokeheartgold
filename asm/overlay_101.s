@@ -12507,7 +12507,7 @@ ov101_Radio_OvyInit: ; 0x021ED7F8
 	str r0, [r1, #0x24]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x28]
 	ldr r0, [r4, #0x10]
@@ -25657,7 +25657,7 @@ ov101_021F3D34: ; 0x021F3D34
 	add r5, r0, #0
 	ldr r0, [r5, #0x1c]
 	mov r4, #0
-	bl sub_0202ED7C
+	bl SaveData_Pokegear_get
 	bl sub_0202EE70
 	add r6, r0, #0
 	mov r1, #1

@@ -94,7 +94,7 @@ scr_seq_00000904_00000123:
 	scrcmd_113 20, 2
 	msgbox 10
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000904_00000156
@@ -186,7 +186,7 @@ scr_seq_00000904_000002B5:
 	play_se SEQ_SE_GS_KUJI_ATARI
 	scrcmd_198 0, 2
 	msgbox 12
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_00000904_000002E4
 	setvar VAR_SPECIAL_x8004, 11
@@ -245,7 +245,7 @@ scr_seq_00000904_000003AC:
 	play_se SEQ_SE_GS_KUJI_OOATARI
 	scrcmd_198 0, 1
 	msgbox 12
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_00000904_000003DB
 	setvar VAR_SPECIAL_x8004, 329
@@ -334,7 +334,7 @@ scr_seq_00000904_000004DF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_484 16384
+	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_00000904_00000501
 	msgbox 18
@@ -424,7 +424,7 @@ scr_seq_00000904_000005CC:
 	msgbox 25
 scr_seq_00000904_000005F7:
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000904_0000061B
@@ -435,8 +435,8 @@ scr_seq_00000904_000005F7:
 scr_seq_00000904_0000061B:
 	scrcmd_190 0
 	msgbox 26
-	scrcmd_078 1206
-	scrcmd_079
+	play_fanfare SEQ_ME_POKEGEAR_REGIST
+	wait_fanfare
 	scrcmd_146 17
 	msgbox 27
 	waitbutton
@@ -444,7 +444,7 @@ scr_seq_00000904_0000061B:
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
 	setflag FLAG_UNK_26F
-	scrcmd_101 3
+	hide_person 3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_174 6, 1, 1, 0
@@ -469,11 +469,11 @@ scr_seq_00000904_00000678:
 scr_seq_00000904_0000067A:
 	msgbox 30
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000904_000006DB
-	scrcmd_618 32780
+	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000904_000006E6
 	msgbox 31

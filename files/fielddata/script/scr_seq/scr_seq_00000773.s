@@ -12,7 +12,7 @@ scr_seq_00000773_00000006:
 	faceplayer
 	msgbox 0
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000773_0000002E
@@ -34,16 +34,16 @@ scr_seq_00000773_0000002E:
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000773_000000B3
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	scrcmd_354 32773, 32780
+	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000773_000000BE
-	scrcmd_355 32773, 32780
+	partymon_is_mine VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000773_000000C9
-	scrcmd_199 0, VAR_SPECIAL_x8005
+	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	msgbox 2
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000773_000000D9
@@ -66,7 +66,7 @@ scr_seq_00000773_000000BE:
 	end
 
 scr_seq_00000773_000000C9:
-	scrcmd_199 0, VAR_SPECIAL_x8005
+	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	msgbox 7
 	waitbutton
 	closemsg
@@ -79,12 +79,12 @@ scr_seq_00000773_000000D9:
 	setvar VAR_SPECIAL_x800C, 0
 	scrcmd_174 6, 1, 0, 0
 	scrcmd_175
-	scrcmd_173 32773, 32780
+	scrcmd_173 VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	scrcmd_174 6, 1, 1, 0
 	scrcmd_175
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000773_0000011F
-	scrcmd_199 0, VAR_SPECIAL_x8005
+	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	msgbox 4
 	waitbutton
 	closemsg
@@ -92,7 +92,7 @@ scr_seq_00000773_000000D9:
 	end
 
 scr_seq_00000773_0000011F:
-	scrcmd_199 0, VAR_SPECIAL_x8005
+	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	msgbox 6
 	waitbutton
 	closemsg

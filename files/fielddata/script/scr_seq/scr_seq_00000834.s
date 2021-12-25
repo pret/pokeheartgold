@@ -42,7 +42,7 @@ scr_seq_00000834_00000080:
 	end
 
 scr_seq_00000834_0000008D:
-	scrcmd_339 0, 12, 0, 7, 3
+	show_person_at 0, 12, 0, 7, 3
 	end
 
 scr_seq_00000834_0000009B:
@@ -58,7 +58,7 @@ scr_seq_00000834_0000009B:
 	end
 
 scr_seq_00000834_000000B9:
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000834_000000D7
 	msgbox 5
@@ -139,7 +139,7 @@ scr_seq_00000834_0000018C:
 	faceplayer
 	msgbox 12
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000834_0000024F
@@ -156,7 +156,7 @@ scr_seq_00000834_0000018C:
 	gotoif eq, scr_seq_00000834_0000024F
 	scrcmd_470 10
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_354 32772, 32773
+	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
 	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	gotoif ne, scr_seq_00000834_00000242
@@ -165,7 +165,7 @@ scr_seq_00000834_0000018C:
 	setflag FLAG_UNK_162
 	msgbox 16
 	closemsg
-	scrcmd_386 32780
+	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000834_0000022C
 	apply_movement 4, scr_seq_00000834_0000025C
@@ -175,7 +175,7 @@ scr_seq_00000834_0000022C:
 	apply_movement 4, scr_seq_00000834_00000268
 scr_seq_00000834_00000234:
 	wait_movement
-	scrcmd_101 4
+	hide_person 4
 	setflag FLAG_UNK_2F7
 	releaseall
 	end

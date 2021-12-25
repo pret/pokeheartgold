@@ -31,7 +31,7 @@ scr_seq_00000265_00000057:
 	scrcmd_190 0
 	scrcmd_132 13, 14
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000265_00000082
@@ -55,12 +55,12 @@ scr_seq_00000265_00000094:
 	scrcmd_149 5
 	msgbox 1
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000265_000000F6
 	msgbox 10
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000265_000000F6
 	scrcmd_747
@@ -82,7 +82,7 @@ scr_seq_00000265_000000EB:
 
 scr_seq_00000265_000000F6:
 	scrcmd_747
-	scrcmd_332 32780
+	scrcmd_332 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif ne, scr_seq_00000265_00000114
 	msgbox 4
@@ -94,8 +94,8 @@ scr_seq_00000265_000000F6:
 scr_seq_00000265_00000114:
 	scrcmd_190 0
 	msgbox 5
-	scrcmd_078 1200
-	scrcmd_079
+	play_fanfare SEQ_ME_TAMAGO_GET
+	wait_fanfare
 	scrcmd_366
 	clearflag FLAG_UNK_067
 	comparevartovalue VAR_UNK_408E, 3
@@ -209,7 +209,7 @@ scr_seq_00000265_00000232:
 	gotoif eq, scr_seq_00000265_00000620
 	msgbox 21
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000265_00000290
 	scrcmd_747
@@ -248,7 +248,7 @@ scr_seq_00000265_000002F4:
 	scrcmd_690 32768, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000265_000003A1
-	scrcmd_354 32768, 32780
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000265_000003B1
 	scrcmd_357 32780, 32768
@@ -318,7 +318,7 @@ scr_seq_00000265_000003CE:
 scr_seq_00000265_000003DB:
 	msgbox 24
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000265_00000290
 	scrcmd_747
@@ -378,19 +378,19 @@ scr_seq_00000265_00000455:
 	call scr_seq_00000265_00000440
 	msgbox 24
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000265_00000290
 	msgbox 37
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000265_00000498
 	scrcmd_747
 	goto scr_seq_00000265_000003CE
 
 scr_seq_00000265_00000498:
-	scrcmd_332 32780
+	scrcmd_332 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000265_000005DC
 	scrcmd_313 32780
@@ -417,7 +417,7 @@ scr_seq_00000265_00000520:
 	scrcmd_367 32772, 32769
 	msgbox 33
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000265_00000544
 	scrcmd_747
@@ -460,7 +460,7 @@ scr_seq_00000265_00000566:
 scr_seq_00000265_000005BE:
 	msgbox 28
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000265_00000498
 	scrcmd_747
@@ -488,7 +488,7 @@ scr_seq_00000265_00000620:
 	call scr_seq_00000265_00000440
 	msgbox 37
 	scrcmd_746
-	scrcmd_748 VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000265_00000498
 	scrcmd_747
