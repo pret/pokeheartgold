@@ -20,6 +20,7 @@ def parse_c_header(filename: str, prefix='') -> dict[int, str]:
 class ScriptType(enum.Enum):
     normal = 0
     special = 1
+    __MAX__ = 2
 
     @classmethod
     def convert(cls, arg: str):
@@ -72,9 +73,11 @@ class NormalScriptParser(ScriptParserBase):
         }
         self.commands: list[dict[str, Union[str, int, list[int], dict[str, list[int]]]]] = scrcmds.get('commands', [])
         self.commands_d = {x['name']: x for x in self.commands}
+        self.movement_cmds = scrcmds.get('movement_commands', [])
         self.exported = []
         self.labels = {}
         self.lines = {}
+        self.movement_scripts = set()
         self.header_end = 0
     
     def parse_header(self):
@@ -93,16 +96,18 @@ class NormalScriptParser(ScriptParserBase):
             assert size in [1, 2, 4]
             return int.from_bytes(self.raw[pc:pc + size], 'little'), pc + size
         match size:
-            case 'addr' | 'script':
+            case 'addr' | 'script' | 'movement':
                 value = int.from_bytes(self.raw[pc:pc + 4], 'little')
                 pc += 4
                 value += pc
                 value &= 0xFFFFFFFF
                 assert self.header_end <= value < len(self.raw)
+                if size == 'movement':
+                    self.movement_scripts.add(value)
                 if value not in self.labels:
-                    self.labels[value] = (size == 'addr')
+                    self.labels[value] = (size != 'script')
                 else:
-                    self.labels[value] |= (size == 'addr')
+                    self.labels[value] |= (size != 'script')
                 return f'{self.prefix}_{value:08X}', pc
             case 'condition':
                 value = self.raw[pc]
@@ -159,11 +164,27 @@ class NormalScriptParser(ScriptParserBase):
             for label in sorted(self.labels):
                 self.parse_script(label)
         self.is_parsed = True
+        return self
 
     def make_gap_internal(self, pc, nextpc):
         if pc == nextpc:
             return ''
         s = ''
+        if pc in self.movement_scripts:
+            if pc & 1:
+                pc += 1
+            while pc < nextpc:
+                cmd = int.from_bytes(self.raw[pc:pc + 2], 'little')
+                is_end = cmd == 254
+                if cmd < len(self.movement_cmds):
+                    cmd = self.movement_cmds[cmd]
+                duration = int.from_bytes(self.raw[pc + 2:pc + 4], 'little')
+                s += f'\t.short {cmd}, {duration}\n'
+                pc += 4
+                if is_end:
+                    break
+            if pc == nextpc:
+                return s
         if pc & 15:
             gap = min(16 - (pc & 15), nextpc - pc)
             s += '\t.byte ' + ', '.join(map('0x{:02x}'.format, self.raw[pc:pc + gap])) + '\n'
@@ -178,8 +199,8 @@ class NormalScriptParser(ScriptParserBase):
         if pc == nextpc or (nextpc == len(self.raw) and all(x == 0 for x in self.raw[pc:nextpc])):
             return ''
         s = ''
-        labels = sorted({x for x in self.labels if pc <= x < nextpc})
-        for x, y in zip([pc] + labels, labels + [nextpc]):
+        labels = sorted({x for x in self.labels if pc <= x < nextpc} | {pc, nextpc})
+        for x, y in zip(labels[:-1], labels[1:]):
             if x in labels:
                 s += f'\n{self.prefix}_{x:08X}:\n'
             s += self.make_gap_internal(x, y)
@@ -188,7 +209,7 @@ class NormalScriptParser(ScriptParserBase):
     def __str__(self):
         if not self.is_parsed:
             return repr(self)
-        s = '#include "constants/scrcmd.h\n'
+        s = '#include "constants/scrcmd.h"\n'
         s += '\t.include "asm/macros/script.inc"\n\n'
         s += '\t.rodata\n\n'
         for i, addr in enumerate(self.exported):
@@ -196,23 +217,24 @@ class NormalScriptParser(ScriptParserBase):
         s += '\tscrdef_end\n\n'
         if not self.lines:
             s += self.make_gap(self.header_end, len(self.raw))
-            return s
-        if self.header_end not in self.lines:
-            s += self.make_gap(self.header_end, min(self.lines))
-        lines = sorted(self.lines.items())
-        lines.append((len(self.raw), ('', [], -1)))
-        for i, (pc, (name, args, nextpc)) in enumerate(lines[:-1]):
-            args = list(args)
-            if pc in self.labels:
-                s += f'{self.prefix}_{pc:08X}:\n'
-            if args:
-                s += f'\t{name} ' + ', '.join(map(str, args)) + '\n'
-            else:
-                s += f'\t{name}\n'
-            if lines[i + 1][0] in self.labels and self.commands_d[name].get('is_abs_branch'):
-                s += '\n'
-            if nextpc != lines[i + 1][0]:
-                s += self.make_gap(nextpc, lines[i + 1][0])
+        else:
+            if self.header_end not in self.lines:
+                s += self.make_gap(self.header_end, min(self.lines))
+            lines = sorted(self.lines.items())
+            lines.append((len(self.raw), ('', [], -1)))
+            for i, (pc, (name, args, nextpc)) in enumerate(lines[:-1]):
+                if pc != nextpc:
+                    args = list(args)
+                    if pc in self.labels:
+                        s += f'{self.prefix}_{pc:08X}:\n'
+                    if args:
+                        s += f'\t{name} ' + ', '.join(map(str, args)) + '\n'
+                    else:
+                        s += f'\t{name}\n'
+                    if nextpc in self.labels and self.commands_d[name].get('is_abs_branch'):
+                        s += '\n'
+                if nextpc != lines[i + 1][0]:
+                    s += self.make_gap(nextpc, lines[i + 1][0])
         s += '\t.balign 4, 0\n'
         return s
 
@@ -252,6 +274,7 @@ class SpecialScriptParser(ScriptParserBase):
             i += 1
         assert ((i + 3) & ~3) == len(self.raw)
         self.is_parsed = True
+        return self
 
     def __str__(self):
         if not self.is_parsed:
@@ -259,7 +282,7 @@ class SpecialScriptParser(ScriptParserBase):
         s = '\t.rodata\n\t.option alignment off\n\n'
         for kind, val1, val2 in self.table:
             if kind == 1:
-                s += f'\t.byte 1\n\t.word {self.prefix}_{self.init_offset:04X}-.-5\n'
+                s += f'\t.byte 1\n\t.word {self.prefix}_{self.init_offset:04X}-.-4\n'
             else:
                 s += f'\t.byte {kind}\n\t.short {val1}, {val2}\n'
         s += '\t.byte 0\n\n'
@@ -267,7 +290,8 @@ class SpecialScriptParser(ScriptParserBase):
             s += f'{self.prefix}_{self.init_offset:04X}:\n'
             for flex1, flex2, script in self.init_vars:
                 s += f'\t.short {flex1}, {flex2}, {script}\n'
-            s += '\t.short 0\n\n\t.balign 4, 0\n'
+            s += '\t.short 0\n\n'
+        s += '\t.balign 4, 0\n'
         return s
 
 
@@ -291,9 +315,18 @@ def main():
         cls = SpecialScriptParser
     else:
         raise TypeError(args.mode)
-    parser = cls(args.binfile.read(), args.name)
-    parser.parse_all()
-    print(parser, file=args.scrfile, end='')
+    data = args.binfile.read()
+    while True:
+        try:
+            print(cls(data, args.name).parse_all(), file=args.scrfile, end='')
+        except Exception as e:
+            if cls is NormalScriptParser:
+                cls = SpecialScriptParser
+            else:
+                print(f'Error with {args.binfile.name}')
+                raise e
+        else:
+            break
 
 
 if __name__ == '__main__':

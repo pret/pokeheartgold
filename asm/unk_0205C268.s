@@ -13643,8 +13643,8 @@ sub_020621F0: ; 0x020621F0
 	pop {r4, pc}
 	thumb_func_end sub_020621F0
 
-	thumb_func_start sub_02062214
-sub_02062214: ; 0x02062214
+	thumb_func_start EventObjectMovementMan_Create
+EventObjectMovementMan_Create: ; 0x02062214
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -13680,7 +13680,7 @@ _02062254:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0206225C: .word sub_0206229C
-	thumb_func_end sub_02062214
+	thumb_func_end EventObjectMovementMan_Create
 
 	thumb_func_start sub_02062260
 sub_02062260: ; 0x02062260
@@ -26217,7 +26217,7 @@ _02067D2E:
 	ldr r0, [r5, #0x40]
 	bl sub_0205C6DC
 	ldr r1, _02067DF0 ; =_020FE7AC
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x18]
 	ldrh r0, [r4, #4]
 	add r0, r0, #1

@@ -581,7 +581,7 @@ gScriptCmdTable:
 	.word ScrCmd_530                                    ; 530
 	.word ScrCmd_531                                    ; 531
 	.word ScrCmd_532                                    ; 532
-	.word ScrCmd_533                                    ; 533
+	.word ScrCmd_CheckGiveCoins                                    ; 533
 	.word ScrCmd_534                                    ; 534
 	.word ScrCmd_535                                    ; 535
 	.word ScrCmd_536                                    ; 536
@@ -3435,7 +3435,7 @@ _02041B46:
 	ldr r1, [r5, #8]
 	add r0, r7, #0
 	add r1, r1, r6
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -3555,7 +3555,7 @@ _02041C36:
 	strh r1, [r0, #2]
 	ldr r0, [sp, #4]
 	add r1, r4, #0
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80

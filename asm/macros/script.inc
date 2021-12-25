@@ -13,7 +13,7 @@
 	.endm
 
 	; Dummy command
-	.macro nop
+	.macro snop
 	.short 0
 	.endm
 
@@ -162,7 +162,7 @@
 	.endm
 
 	; Creates a new script context to run the indicated script and wait
-	.macro runscriptwait id
+	.macro callstd id
 	.short 20
 	.short \id
 	.endm
@@ -417,12 +417,22 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_064
+	.macro scrcmd_064 arg0, arg1, arg2, arg3, arg4
 	.short 64
+	.byte \arg0
+	.byte \arg1
+	.byte \arg2
+	.byte \arg3
+	.short \arg4
 	.endm
 
-	.macro scrcmd_065
+	.macro scrcmd_065 arg0, arg1, arg2, arg3, arg4
 	.short 65
+	.byte \arg0
+	.byte \arg1
+	.byte \arg2
+	.byte \arg3
+	.short \arg4
 	.endm
 
 	.macro scrcmd_066 arg0, arg1
@@ -435,12 +445,22 @@
 	.short 67
 	.endm
 
-	.macro scrcmd_068
+	.macro scrcmd_068 arg0, arg1, arg2, arg3, arg4
 	.short 68
+	.byte \arg0
+	.byte \arg1
+	.byte \arg2
+	.byte \arg3
+	.short \arg4
 	.endm
 
-	.macro scrcmd_069
+	.macro scrcmd_069 arg0, arg1, arg2, arg3, arg4
 	.short 69
+	.byte \arg0
+	.byte \arg1
+	.byte \arg2
+	.byte \arg3
+	.short \arg4
 	.endm
 
 	.macro scrcmd_070 arg0, arg1, arg2
@@ -564,7 +584,7 @@
 	.macro apply_movement arg0, arg1
 	.short 94
 	.short \arg0
-	.word \arg1
+	.word \arg1-.-4
 	.endm
 
 	.macro wait_movement
@@ -2189,10 +2209,12 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_400 arg0, arg1
+	.macro scrcmd_400 arg0, arg1=0
 	.short 400
 	.byte \arg0
+	.if \arg0 == 2
 	.short \arg1
+	.endif
 	.endm
 
 	.macro scrcmd_401 arg0, arg1
@@ -2679,7 +2701,7 @@
 	.short \arg0
 	.endm
 
-	.macro dummy
+	.macro dummy_486
 	.short 486
 	.endm
 
@@ -2694,16 +2716,17 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_489 arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7
+	.macro scrcmd_489 arg0, arg1=0, arg2=0
 	.short 489
 	.short \arg0
+	.if \arg0 >= 1 && \arg0 <= 3
+	.short \arg1
+	.else
+	.if \arg0 == 5 || \arg0 == 6
 	.short \arg1
 	.short \arg2
-	.short \arg3
-	.short \arg4
-	.short \arg5
-	.short \arg6
-	.short \arg7
+	.endif
+	.endif
 	.endm
 
 	.macro scrcmd_490 arg0
@@ -2946,7 +2969,7 @@
 	.word \arg1
 	.endm
 
-	.macro scrcmd_533 arg0, arg1
+	.macro checkgivecoins arg0, arg1
 	.short 533
 	.short \arg0
 	.short \arg1
@@ -3830,10 +3853,14 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_692 arg0, arg1
+	.macro scrcmd_692 arg0, arg1, arg2, arg3, arg4, arg5
 	.short 692
-	.short \arg0
-	.short \arg1
+	.byte \arg0
+	.byte \arg1
+	.byte \arg2
+	.byte \arg3
+	.short \arg4
+	.short \arg5
 	.endm
 
 	.macro scrcmd_693 arg0
@@ -4128,12 +4155,22 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_749
+	.macro scrcmd_749 arg0, arg1, arg2, arg3, arg4
 	.short 749
+	.byte \arg0
+	.byte \arg1
+	.byte \arg2
+	.byte \arg3
+	.short \arg4
 	.endm
 
-	.macro scrcmd_750
+	.macro scrcmd_750 arg0, arg1, arg2, arg3, arg4
 	.short 750
+	.byte \arg0
+	.byte \arg1
+	.byte \arg2
+	.byte \arg3
+	.short \arg4
 	.endm
 
 	.macro scrcmd_751 arg0, arg1, arg2

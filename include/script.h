@@ -21,7 +21,7 @@
 
 typedef struct UnkSavStruct80 UnkSavStruct80;
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
-typedef struct UnkSavStruct80_Sub3C UnkSavStruct80_Sub3C;
+typedef struct LocalMapObject LocalMapObject;
 
 #define Unk80_10_C_MAGIC         (222271)
 
@@ -31,7 +31,7 @@ typedef struct UnkSavStruct80_Sub10_SubC_Sub54 {
     int unk8;
     int unkC;
     int unk10;
-    UnkSavStruct80_Sub3C *unk14;
+    LocalMapObject *unk14;
     int unk18;
 } UnkSavStruct80_Sub10_SubC_Sub54;
 
@@ -39,10 +39,10 @@ typedef struct UnkSavStruct80_Sub10_SubC {
     u32 check;
     u8 unk_4;
     u8 unk_5;
-    u8 unk_6;
+    u8 numActiveMovement;
     u8 unk_7;
     u8 unk_8;
-    u8 unk_9;
+    u8 numActiveScrCtx;
     u16 unk_A;
     u32 unk_C;
     u32 unk_10;
@@ -52,7 +52,7 @@ typedef struct UnkSavStruct80_Sub10_SubC {
     u32 unk_20;
     u32 unk_24;
     void* unk_28;
-    UnkSavStruct80_Sub3C* unk_2C;
+    LocalMapObject* mapObjects;
     u32 unk_30;
     void* unk_34;
     SCRIPTCONTEXT* scriptContexts[3];
@@ -77,13 +77,13 @@ enum Unk80_10_C_Field {
     UNK80_10_C_14                              =  1,
     UNK80_10_C_24                              =  2,
     UNK80_10_C_05                              =  3,
-    UNK80_10_C_06                              =  4,
+    UNK80_10_C_NUM_ACTIVE_MOVEMENT             =  4,
     UNK80_10_C_07                              =  5,
     UNK80_10_C_08                              =  6,
-    UNK80_10_C_09                              =  7,
+    UNK80_10_C_NUM_ACTIVE_SCRCTX               =  7,
     UNK80_10_C_0A                              =  8,
     UNK80_10_C_28                              =  9,
-    UNK80_10_C_2C                              = 10,
+    UNK80_10_C_MAP_OBJECTS                     = 10,
     UNK80_10_C_30                              = 11,
     UNK80_10_C_34                              = 12,
     UNK80_10_C_SCRCTX_0                        = 13,
@@ -128,7 +128,7 @@ enum Unk80_10_C_Field {
     UNK80_10_C_SPECIAL_VAR_800A                = 52,
     UNK80_10_C_SPECIAL_VAR_800B                = 53,
     UNK80_10_C_SPECIAL_VAR_800C                = 54,
-    UNK80_10_C_SPECIAL_VAR_RESULT              = 55,
+    UNK80_10_C_SPECIAL_VAR_800D                = 55,
 };
 
 typedef struct UnkSavStruct80_Sub10 {
@@ -157,7 +157,7 @@ struct UnkSavStruct80 {
     u8 unk24[0xC];
     MAPMATRIX* map_matrix;
     u8 unk34[0x8];
-    UnkSavStruct80_Sub3C* unk3C;
+    LocalMapObject* unk3C;
     FIELD_PLAYER_AVATAR *unk40;
     u8 unk44[0x68];
     u32 unkAC;

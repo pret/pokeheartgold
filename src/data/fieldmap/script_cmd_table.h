@@ -533,7 +533,7 @@ extern BOOL ScrCmd_529(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_530(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_531(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_532(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_533(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckGiveCoins(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_534(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_535(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_536(SCRIPTCONTEXT *ctx);
@@ -1388,7 +1388,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_530,
     ScrCmd_531,
     ScrCmd_532,
-    ScrCmd_533,
+    ScrCmd_CheckGiveCoins,
     ScrCmd_534,
     ScrCmd_535,
     ScrCmd_536,

@@ -13362,7 +13362,7 @@ ov02_0224C05C: ; 0x0224C05C
 	bl ov01_021FCD8C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C0A8 ; =ov02_02253820
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	cmp r0, #0
@@ -13370,7 +13370,7 @@ ov02_0224C05C: ; 0x0224C05C
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C0A8 ; =ov02_02253820
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C092:
 	ldr r0, [r4]
@@ -13404,7 +13404,7 @@ _0224C0C8:
 	bl sub_0206226C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C144 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	cmp r0, #0
@@ -13414,7 +13414,7 @@ _0224C0C8:
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C144 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C0F0:
 	ldr r0, [r4, #4]
@@ -13478,7 +13478,7 @@ ov02_0224C14C: ; 0x0224C14C
 	bl sub_0206226C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C1B4 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	cmp r0, #0
@@ -13488,7 +13488,7 @@ ov02_0224C14C: ; 0x0224C14C
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C1B4 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C184:
 	bl sub_0200FB5C
@@ -13626,7 +13626,7 @@ _0224C270:
 	bl ov01_021FCD8C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C2A4 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -13652,7 +13652,7 @@ ov02_0224C2A8: ; 0x0224C2A8
 	bl sub_0206226C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C2E8 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 _0224C2C6:
 	bl sub_0200FB5C
@@ -13695,13 +13695,13 @@ _0224C2FE:
 	ldr r0, [r4, #0x20]
 	bge _0224C31C
 	ldr r1, _0224C330 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	mov r0, #0
 	pop {r4, pc}
 _0224C31C:
 	ldr r1, _0224C334 ; =ov02_02253884
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -14182,7 +14182,7 @@ ov02_0224C698: ; 0x0224C698
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C6D4 ; =ov02_02253770
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -14213,12 +14213,12 @@ _0224C6F0:
 	bl sub_0206226C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C718 ; =ov02_02253820
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	add r5, #0xe4
 	str r0, [r4, #0x10]
 	ldr r0, [r5]
 	ldr r1, _0224C718 ; =ov02_02253820
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -14243,7 +14243,7 @@ ov02_0224C71C: ; 0x0224C71C
 	bl ov01_021FCD8C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C754 ; =ov02_02253820
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -14276,7 +14276,7 @@ _0224C774:
 	bl sub_0206226C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C7D0 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	cmp r0, #0
@@ -14286,7 +14286,7 @@ _0224C774:
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C7D0 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C79C:
 	ldr r0, [r4, #4]
@@ -14332,7 +14332,7 @@ ov02_0224C7D4: ; 0x0224C7D4
 	bl sub_0206226C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C83C ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	cmp r0, #0
@@ -14342,7 +14342,7 @@ ov02_0224C7D4: ; 0x0224C7D4
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C83C ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C80C:
 	bl sub_0200FB5C
@@ -14413,7 +14413,7 @@ ov02_0224C87C: ; 0x0224C87C
 	bl ov01_021FCD8C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C8C8 ; =ov02_022537DC
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	cmp r0, #0
@@ -14421,7 +14421,7 @@ ov02_0224C87C: ; 0x0224C87C
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C8C8 ; =ov02_022537DC
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C8B2:
 	ldr r0, [r4]
@@ -14453,7 +14453,7 @@ _0224C8E4:
 	bl sub_0206226C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C938 ; =ov02_022537B8
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	cmp r0, #0
@@ -14464,7 +14464,7 @@ _0224C8E4:
 	add r0, #0xe4
 	ldr r0, [r0]
 	ldr r1, _0224C938 ; =ov02_022537B8
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C90E:
 	ldr r0, [r5, #0x40]
@@ -14509,7 +14509,7 @@ _0224C954:
 	bl sub_0206226C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C9B0 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	cmp r0, #0
@@ -14519,7 +14519,7 @@ _0224C954:
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C9B0 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C97C:
 	ldr r0, [r4, #4]
@@ -14566,7 +14566,7 @@ ov02_0224C9B8: ; 0x0224C9B8
 	bl sub_0206226C
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224CA34 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	cmp r0, #0
@@ -14577,7 +14577,7 @@ ov02_0224C9B8: ; 0x0224C9B8
 	add r0, #0xe4
 	ldr r0, [r0]
 	ldr r1, _0224CA34 ; =ov02_02253794
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C9F2:
 	bl sub_0200FB5C
@@ -22943,7 +22943,7 @@ _0225084C:
 	mul r2, r1
 	ldr r0, [r6]
 	add r1, r3, r2
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	str r0, [r5, #4]
 	ldr r0, [r4]
 	add r0, r0, #1

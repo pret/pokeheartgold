@@ -1,7 +1,7 @@
 {
   "commands": [
     {
-      "name": "nop",
+      "name": "snop",
       "args": []
     },
     {
@@ -133,7 +133,7 @@
       ]
     },
     {
-      "name": "runscriptwait",
+      "name": "callstd",
       "args": [
         2
       ]
@@ -301,7 +301,7 @@
     {
       "name": "scrcmd_046",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -590,7 +590,7 @@
       "name": "apply_movement",
       "args": [
         "var",
-        "addr"
+        "movement"
       ]
     },
     {
@@ -1242,7 +1242,7 @@
       "name": "scrcmd_199",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -2305,7 +2305,7 @@
     {
       "name": "scrcmd_379",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2653,7 +2653,7 @@
     {
       "name": "countfossils",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2704,7 +2704,7 @@
     {
       "name": "debugwatch",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3098,9 +3098,9 @@
     {
       "name": "scrcmd_492",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -3115,7 +3115,7 @@
       "name": "scrcmd_494",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -3361,10 +3361,10 @@
       ]
     },
     {
-      "name": "scrcmd_533",
+      "name": "checkgivecoins",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -3726,7 +3726,7 @@
     {
       "name": "scrcmd_590",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4713,7 +4713,7 @@
     {
       "name": "scrcmd_748",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -5279,7 +5279,7 @@
       "name": "scrcmd_846",
       "args": [
         1,
-        2,
+        "species",
         2,
         1
       ]

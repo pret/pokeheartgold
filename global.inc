@@ -2213,7 +2213,7 @@
 .public ScrCmd_530
 .public ScrCmd_531
 .public ScrCmd_532
-.public ScrCmd_533
+.public ScrCmd_CheckGiveCoins
 .public ScrCmd_534
 .public ScrCmd_535
 .public ScrCmd_536
@@ -28918,7 +28918,7 @@
 .public sub_02062198
 .public sub_020621C0
 .public sub_020621F0
-.public sub_02062214
+.public EventObjectMovementMan_Create
 .public sub_02062260
 .public sub_0206226C
 .public sub_0206234C

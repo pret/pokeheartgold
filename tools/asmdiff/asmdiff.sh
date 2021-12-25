@@ -240,6 +240,7 @@ case "$mode" in
     [[ -f "${buildfile}" ]] || { echo file not found: "${buildfile}"; exit 1; }
     basefile=${MYDIR}/.files/${filepath}
     [[ -f "${basefile}" ]] || {
+      mkdir -p $(dirname $basefile)
       "${MYDIR}"/ntrextractfile "${baserom}" "${filepath}" >"${basefile}"
     }
     diff -u <(hexdump -Cv "$basefile") <(hexdump -Cv "$buildfile")

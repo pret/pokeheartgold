@@ -244,8 +244,8 @@ _02259A94:
 	.balign 4, 0
 	thumb_func_end ScrCmd_570
 
-	thumb_func_start ScrCmd_533
-ScrCmd_533: ; 0x02259A9C
+	thumb_func_start ScrCmd_CheckGiveCoins
+ScrCmd_CheckGiveCoins: ; 0x02259A9C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -272,7 +272,7 @@ ScrCmd_533: ; 0x02259A9C
 	strh r0, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_533
+	thumb_func_end ScrCmd_CheckGiveCoins
 
 	thumb_func_start ScrCmd_122
 ScrCmd_122: ; 0x02259ADC

@@ -399,6 +399,6 @@
 #define VAR_SPECIAL_x800A               0x800A
 #define VAR_SPECIAL_x800B               0x800B
 #define VAR_SPECIAL_x800C               0x800C
-#define VAR_SPECIAL_RESULT              0x800D
+#define VAR_SPECIAL_x800D               0x800D
 
 #endif //POKEHEARTGOLD_CONSTANTS_VARS_H

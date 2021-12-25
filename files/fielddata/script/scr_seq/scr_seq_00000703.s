@@ -1,0 +1,12 @@
+	.rodata
+	.option alignment off
+
+	.byte 1
+	.word scr_seq_00000703_0006-.-4
+	.byte 0
+
+scr_seq_00000703_0006:
+	.short 16692, 4, 6
+	.short 0
+
+	.balign 4, 0

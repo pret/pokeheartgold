@@ -58,13 +58,13 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
 
 #define HEAP_ID_FIELDMAP                  11
 
-void StartMapSceneScript(UnkSavStruct80 *a0, u16 a1, UnkSavStruct80_Sub3C *a2) {
+void StartMapSceneScript(UnkSavStruct80 *a0, u16 a1, LocalMapObject *a2) {
     UnkSavStruct80_Sub10_SubC *r4 = sub_0204001C();
     sub_0204005C(a0, r4, a1, a2, NULL);
     sub_020504F0(a0, sub_0203FF44, r4);
 }
 
-void sub_0203FEA4(UnkSavStruct80 *a0, UnkSavStruct80_Sub3C *a1, int a2, int a3, int a4, int a5, int a6, int a7) {
+void sub_0203FEA4(UnkSavStruct80 *a0, LocalMapObject *a1, int a2, int a3, int a4, int a5, int a6, int a7) {
     UnkSavStruct80_Sub10_SubC *unk = sub_02050650(a0->unk10);
     UnkSavStruct80_Sub10_SubC_Sub54 *r0 = &unk->unk_54[a7];
     r0->unk0 = a2;
@@ -75,14 +75,14 @@ void sub_0203FEA4(UnkSavStruct80 *a0, UnkSavStruct80_Sub3C *a1, int a2, int a3, 
     r0->unk14 = a1;
 }
 
-void sub_0203FED4(UnkSavStruct80_Sub10 *a0, u16 a1, UnkSavStruct80_Sub3C *a2, void *a3) {
+void sub_0203FED4(UnkSavStruct80_Sub10 *a0, u16 a1, LocalMapObject *a2, void *a3) {
     UnkSavStruct80 *sp8 = sub_0205064C(a0);
     UnkSavStruct80_Sub10_SubC *r4 = sub_0204001C();
     sub_0204005C(sp8, r4, a1, a2, a3);
     sub_02050530(a0, sub_0203FF44, r4);
 }
 
-void sub_0203FF0C(UnkSavStruct80_Sub10 *a0, u16 a1, UnkSavStruct80_Sub3C *a2) {
+void sub_0203FF0C(UnkSavStruct80_Sub10 *a0, u16 a1, LocalMapObject *a2) {
     UnkSavStruct80 *sp8 = sub_0205064C(a0);
     UnkSavStruct80_Sub10_SubC *r4 = sub_0204001C();
     sub_0204005C(sp8, r4, a1, a2, NULL);
@@ -100,7 +100,7 @@ BOOL sub_0203FF44(UnkSavStruct80_Sub10 *unk) {
     switch (r4->unk_4) {
     case 0:
         r4->scriptContexts[0] = CreateScriptContext(sp0, r4->unk_A);
-        r4->unk_9 = 1;
+        r4->numActiveScrCtx = 1;
         r4->unk_44 = ScrStrBufs_new_custom(8, 64, HEAP_ID_FIELDMAP);
         r4->unk_48 = String_ctor(1024, HEAP_ID_FIELDMAP);
         r4->unk_4C = String_ctor(1024, HEAP_ID_FIELDMAP);
@@ -116,11 +116,11 @@ BOOL sub_0203FF44(UnkSavStruct80_Sub10 *unk) {
                 continue;
             }
             DestroyScriptContext(ctx);
-            GF_ASSERT(r4->unk_9 != 0);
+            GF_ASSERT(r4->numActiveScrCtx != 0);
             r4->scriptContexts[i] = NULL;
-            r4->unk_9--;
+            r4->numActiveScrCtx--;
         }
-        if (r4->unk_9 == 0) {
+        if (r4->numActiveScrCtx == 0) {
             void (*callback)(UnkSavStruct80 *a0) = r4->scrctx_end_cb;
             ScrStrBufs_delete(r4->unk_44);
             String_dtor(r4->unk_48);
@@ -153,10 +153,10 @@ void DestroyScriptContext(SCRIPTCONTEXT *ctx) {
     FreeToHeap(ctx);
 }
 
-void sub_0204005C(UnkSavStruct80 *a0, UnkSavStruct80_Sub10_SubC *a1, u16 a2, UnkSavStruct80_Sub3C *a3, void* a4) {
-    u16 *sp0 = FieldSysGetAttrAddrInternal(a1, UNK80_10_C_SPECIAL_VAR_RESULT);
+void sub_0204005C(UnkSavStruct80 *a0, UnkSavStruct80_Sub10_SubC *a1, u16 a2, LocalMapObject *a3, void* a4) {
+    u16 *sp0 = FieldSysGetAttrAddrInternal(a1, UNK80_10_C_SPECIAL_VAR_800D);
     a1->unk_28 = sub_0205C654(a0->unk40);
-    a1->unk_2C = a3;
+    a1->mapObjects = a3;
     a1->unk_A = a2;
     a1->unk_34 = a4;
     if (a3 != NULL) {
@@ -224,20 +224,20 @@ void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_
         return &unk->unk_24;
     case UNK80_10_C_05:
         return &unk->unk_5;
-    case UNK80_10_C_06:
-        return &unk->unk_6;
+    case UNK80_10_C_NUM_ACTIVE_MOVEMENT:
+        return &unk->numActiveMovement;
     case UNK80_10_C_07:
         return &unk->unk_7;
     case UNK80_10_C_08:
         return &unk->unk_8;
-    case UNK80_10_C_09:
-        return &unk->unk_9;
+    case UNK80_10_C_NUM_ACTIVE_SCRCTX:
+        return &unk->numActiveScrCtx;
     case UNK80_10_C_0A:
         return &unk->unk_A;
     case UNK80_10_C_28:
         return &unk->unk_28;
-    case UNK80_10_C_2C:
-        return &unk->unk_2C;
+    case UNK80_10_C_MAP_OBJECTS:
+        return &unk->mapObjects;
     case UNK80_10_C_30:
         return &unk->unk_30;
     case UNK80_10_C_34:
@@ -311,7 +311,7 @@ void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_
     case UNK80_10_C_SPECIAL_VAR_800A:
     case UNK80_10_C_SPECIAL_VAR_800B:
     case UNK80_10_C_SPECIAL_VAR_800C:
-    case UNK80_10_C_SPECIAL_VAR_RESULT:
+    case UNK80_10_C_SPECIAL_VAR_800D:
         return &unk->specialVars[field - UNK80_10_C_SPECIAL_VAR_8000];
     default:
         GF_ASSERT(0);
@@ -396,7 +396,7 @@ void ClearTempFieldEventData(UnkSavStruct80 *fsys) {
     u16 *vars;
 
     SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
-    flags = GetFlagAddr(state, FLAG_TEMP_x4001);
+    flags = GetFlagAddr(state, FLAG_UNK_001);
     memset(flags, 0, NUM_TEMP_FLAGS / 8);
     vars = GetVarAddr(state, TEMP_VAR_BASE);
     memset(vars, 0, NUM_TEMP_VARS * 2);
