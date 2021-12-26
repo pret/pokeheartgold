@@ -1,3 +1,5 @@
+This doc details the steps necessary to build a copy of Pokemon HeartGold (EN-US) from the sources contained in this repository.
+
 ### 1. Install MWCC compiler
 
 The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. We cannot distribute the correct compiler here so join the PRET discord and download the pinned mwccarm.zip zip in #pokeheartgold and extract it to tools/. Run each of the executables so they ask for a license.dat and provide the one in the rar (it may also ask for it when compiling). This only needs to be done once.
@@ -103,11 +105,14 @@ $ ./contrib/docker/build_docker.sh soulsilver # build pokesoulsilver
 
 Note: Docker may not run at a full performance if its underlying Linux kernel is being virtualized (mainly Windows and macOS hosts).
 
-#### macOS
+#### After updating from upstream
 
-To avoid issues, you will need to run the build as shown below. This avoids issues with missing features (i.e. "introduced in macOS 10.15" errors) and Apple's `make` being an older version.
+This repository is still in a volatile state, and several files may be moved around or renamed. If you pull from upstream and experience errors rebuilding, try the following troubleshooting steps, **one line at a time** until you get the message `build/heartgold.us/pokeheartgold.us.nds: OK`:
 
-```console
-$ export PATH=${HOMEBREW_PREFIX}/opt/llvm/bin:$PATH CC=clang CXX=clang++
-$ gmake
+```shell
+make tidy compare
+make clean compare
+git clean -fdx && make compare
 ```
+
+If, after the third step, you're still getting errors, please ask for help in the Discord.
