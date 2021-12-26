@@ -20651,8 +20651,8 @@ _021F95D8:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_021F9590
 
-	arm_func_start ov00_021F9610
-ov00_021F9610: ; 0x021F9610
+	arm_func_start DWC_SendReliable
+DWC_SendReliable: ; 0x021F9610
 	stmdb sp!, {r3, lr}
 	mov ip, r1
 	mov r3, r2
@@ -20661,7 +20661,7 @@ ov00_021F9610: ; 0x021F9610
 	mov r0, #1
 	bl ov00_021F9630
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021F9610
+	arm_func_end DWC_SendReliable
 
 	arm_func_start ov00_021F9630
 ov00_021F9630: ; 0x021F9630
@@ -20762,7 +20762,7 @@ _021F976C:
 	mov r0, sb
 	mov r1, r5
 	mov r2, r4
-	bl ov00_021F9610
+	bl DWC_SendReliable
 	cmp r0, #0
 	mvneq r0, sl
 	andeq r6, r6, r0
@@ -20775,8 +20775,8 @@ _021F97A8:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	arm_func_end ov00_021F9750
 
-	arm_func_start ov00_021F97C0
-ov00_021F97C0: ; 0x021F97C0
+	arm_func_start DWC_SendUnreliable
+DWC_SendUnreliable: ; 0x021F97C0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r6, r1
@@ -20815,7 +20815,7 @@ _021F9844:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _021F984C: .word ov00_0221B0A0
-	arm_func_end ov00_021F97C0
+	arm_func_end DWC_SendUnreliable
 
 	arm_func_start ov00_021F9850
 ov00_021F9850: ; 0x021F9850
